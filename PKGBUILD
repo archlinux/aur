@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=bisq-bin
-pkgver=1.2.9
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('AGPL3')
 depends=('java-runtime' 'gtk2' 'libnet')
 validpgpkeys=('CB36D7D2EBB2E35D9B75500BCD5DC1C529CDFD3B')
 source_x86_64=("https://github.com/bisq-network/bisq/releases/download/v${pkgver}/Bisq-64bit-${pkgver}.deb"{,.asc})
-sha512sums_x86_64=('2fb78f00a61630cdc1fc41f657750c572cbc1f880a16c4882d12c59cc193cf41f893f9bae92909cea082b8b31179697d95d50835d74fcb13f4d2e6f0c31f7934'
-                   '645217e514fafa7d898315c2a64e342690215c3545123c341ec4769731243c4b5cc123d7aee41c4b6c2882a41f3b2bbcc33988e99331217701ce21c43174402f')
+sha512sums_x86_64=('60b5ab3fa3ee494caca0b86de1e3201f1c7246fd5e3a9b49a047485e71554f35b51f86f81c04396626c9a7c966c40bc42fbebc4e9264c814b55009a402b2c3da'
+                   'a98aae4e716b60960a4f4b06bbbf9357e470cc0cbde86b747e1ea1828c0c81f7386f87d711b8d718f88dad9349a689faed55069891f533353df5e3852d3cbe8c')
 _binname=Bisq
 conflicts=("bisq" "bisq-git")
 provides=("bisq-bin")
