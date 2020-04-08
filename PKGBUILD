@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=5.6
-_minor=2
+_minor=3
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=3
+pkgrel=1
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,7 +72,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_uksm_path}/${_uksm_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v4/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0002-ALSA-hda-Fix-potential-access-overflow-in-beep-helpe.patch"
+        'sphinx-workaround.patch'
          # the main kernel config files
         'config')
 
@@ -314,12 +316,14 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('174e085eb14c64dedb15ea2186d0103baafce0653fe287b057b650e51cc3e5faa375a9224c046f2b2d3da995e1d79469c04d9ad666c91548790253b2078e2be7'
+sha512sums=('d518a6451f8fe35d1baf01f7d831f8ce90665ab1793849c885b4efc873583f50f07d81b98b922c45817f6ed091b06e17cfc9c9dd291fbbc52ca2c544b7d6e089'
             'SKIP'
             '9bfee5ca00d9640b8a822581666ebea693e9d6ae334c4a738d31921a3e1161816036565458beea81bb3d3e0770e28926c53ad60b40e33d46276c81065ad01c75'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
-            '080850eb686f4b8162e348eacc54d6407c810e4430f574a0da009ff851f89e7bc442cfd107a4a4edf009de6dbd83f1cd9ce1c75a2140554b34f35ff0a81c8779'
-            '909e4e88a3576fc0922d6c5b379d1b283e922d0309ca2805815d7ff24692fc1b37828853d7e64917a700206f15ce61571f9074fdfd7b616cd98c581607ed2388')
+            '8064aa16172a42a3f23cff6278056a5c2ff7fa6560f3b975e4a7dfd7ce5d00f15af851fd4ef1f40a78707aeaad5a1eef3012ef5f7fb9242ca584b3a230d343cd'
+            'e0b39955fd3a7d558aea0ad72ebcd59eb649c47d9270deea3130f7a3703aa4e319727ab97a95cd365e1e7fad0a9ab31fd0787b36a22858012af5f337153ab48f'
+            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
+            '59cb2decc7812664b862c32a6d5ccef173ced594fd5d13988b37addc6e5377664d9e0e5590204b16d4df23a765c48af5a3ce10a5b869a1415abdfaf9e1008d61')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
