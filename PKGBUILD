@@ -3,8 +3,8 @@
 pkgbase=krayan-kde-git
 pkgname=(krayan-kde-git kvantum-theme-krayan-git)
 _pkgname=KrayanKDE
-pkgver=r1.7dfaa56
-pkgrel=1
+pkgver=r1.e1e2161
+pkgrel=2
 pkgdesc="A darker and more modern twist on the Layan GTK Theme"
 arch=(any)
 url="https://github.com/lazerl0rd/$_pkgname"
