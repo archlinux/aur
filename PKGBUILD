@@ -1,6 +1,10 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
+# Modified by Wint3rmute, awaiting pull request
 
-pkgname=xilinx-ise
+# Download from here:
+# https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive-ise.html
+
+pkgname=xilinx-ise-w4-edition
 pkgver=14.7
 pkgrel=1
 pkgdesc="Xilinx ISE Design Suite"
@@ -11,7 +15,10 @@ depends=('libstdc++5' 'ncurses5-compat-libs' 'openmotif' 'qt4' 'rpcbind' 'xorg-f
 optdepends=('fxload: Firmware loader for some programmer dongles'
             'digilent.adept.utilities: Digilent programmer support')
 options=('!strip')
-source=('file://Xilinx_ISE_DS_Lin_14.7_1015_1.tar')
+conflicts=('xilinx-ise')
+
+# Just place the downloaded .tar into your homedir
+source=('local://Xilinx_ISE_DS_Lin_14.7_1015_1.tar')
 source_i686=('xilinx-ise-32.desktop')
 source_x86_64=('xilinx-ise-64.desktop')
 md5sums=('e8065b2ffb411bb74ae32efa475f9817')
@@ -29,6 +36,10 @@ elif [[ $CARCH == 'x86_64' ]]; then
 fi
 
 prepare() {
+	echo $srcdir
+	echo $srcdir
+	echo $srcdir
+	echo $srcdir
 	cd "${srcdir}"/Xilinx_ISE_DS_Lin_14.7_1015_1
 
 	# Generate a sample batch install file
