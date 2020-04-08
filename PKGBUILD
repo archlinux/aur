@@ -9,15 +9,16 @@ groups=('mingw-w64-coin-or')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure' 'mingw-w64-wine' 'wget')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("https://github.com/coin-or-tools/ThirdParty-ASL/archive/releases/$pkgver.tar.gz")
-sha256sums=('0a4cfa7c6c5df72d8e1c4c3ce74633421f807115a679e85cb5569c41df9a9aaf')
+source=("https://github.com/coin-or-tools/ThirdParty-ASL/archive/releases/$pkgver.tar.gz"
+        https://coin-or-tools.github.io/ThirdParty-ASL/solvers-64919f75f.tgz)
+sha256sums=('0a4cfa7c6c5df72d8e1c4c3ce74633421f807115a679e85cb5569c41df9a9aaf'
+            'e212926d1d797701adc901ef18eaab6b15edd13f9281dd8c9266e3cdaf8c2dd3')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "ThirdParty-ASL-releases-$pkgver"
-  ./get.ASL
-
+  ln -s ../solvers .
   # run configuration exe through wine
   sed -i "s|./a.out >arith.h|\$(MINGW_TARGET)-wine ./a.exe >arith.h|g" solvers/makefile.u
 }
