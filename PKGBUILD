@@ -2,7 +2,7 @@
 
 _plug=waifu2x-caffe
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r13.2.g7b679d8
+pkgver=r14.1.g89f5401
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (NVIDIA users only)(static libcaffe)(GIT version)"
 arch=('x86_64')
@@ -57,37 +57,6 @@ prepare() {
 
   cd "${_plug}"
 
-  # Fix opencv4
-  sed -e 's/CV_GRAY2RGB/cv::COLOR_GRAY2RGB/g' \
-      -e 's/CV_RGB2GRAY/cv::COLOR_RGB2GRAY/g' \
-      -e 's/CV_BGR2YUV/cv::COLOR_BGR2YUV/g' \
-      -e 's/CV_YUV2BGR/cv::COLOR_YUV2BGR/g' \
-      -e 's/CV_BGR2RGB/cv::COLOR_BGR2RGB/g' \
-      -e 's/CV_BGRA2RGBA/cv::COLOR_BGRA2RGBA/g' \
-      -e 's/CV_BGR2RGBA/cv::COLOR_BGR2RGBA/g' \
-      -e 's/CV_BGRA2RGB/cv::COLOR_BGRA2RGB/g' \
-      -i Waifu2x-caffe/stImage.cpp \
-      -i Waifu2x-caffe/waifu2x.cpp
-
-  # Fix unknown layer
-  echo '#include "caffe/common.hpp"
-#include "caffe/layers/input_layer.hpp"
-#include "caffe/layers/flatten_layer.hpp"
-#include "caffe/layers/scale_layer.hpp"
-#include "caffe/layers/crop_layer.hpp"
-namespace caffe{
-    extern INSTANTIATE_CLASS(InputLayer);
-    extern INSTANTIATE_CLASS(FlattenLayer);
-    extern INSTANTIATE_CLASS(ScaleLayer);
-    extern INSTANTIATE_CLASS(CropLayer);
-    //REGISTER_LAYER_CLASS(Scale);
-}' > Waifu2x-caffe/addlayer.h
-
-  sed '1i#include "addlayer.h"' \
-      -i Waifu2x-caffe/cNet.cpp \
-      -i Waifu2x-caffe/waifu2x.cpp \
-      -i Waifu2x-caffe/Waifu2x-caffe.cpp
-
   # rename models folder
   sed "s|models/|${_plug}-models/|g" -i Waifu2x-caffe/Waifu2x-caffe.cpp
 }
@@ -102,7 +71,8 @@ build() {
 
   cd "${srcdir}/build"
 
-  CXXFLAGS+=" $(pkg-config --cflags-only-I opencv4)" \
+
+  CXXFLAGS+=' -fpermissive'
   arch-meson "../${_plug}" \
     -Dcudaincludedir=/opt/cuda/include \
     -Dcudalibdir=/opt/cuda/lib64 \
