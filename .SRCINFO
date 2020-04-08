@@ -1,7 +1,7 @@
 pkgbase = shell2http-bin
 	pkgdesc = HTTP-server to execute shell commands
 	pkgver = 1.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/msoap/shell2http
 	arch = x86_64
 	license = MIT
