@@ -9,7 +9,8 @@ url='https://github.com/linode/linode-cli'
 arch=('any')
 license=('BSD')
 makedepends=('python-wheel' 'python2-wheel')
-depends=('python-colorclass' 'python2-colorclass' 'python-terminaltables' 'python2-terminaltables' 'python-requests' 'python2-requests' 'python-yaml' 'python2-yaml' 'python2-enum34')
+depends=('python-colorclass' 'python2-colorclass' 'python-terminaltables' 'python2-terminaltables' 
+	 'python-requests' 'python2-requests' 'python-yaml' 'python2-yaml' 'python2-enum34')
 replaces=('linode-cli-dev')
 install=linode-cli.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linode/linode-cli/archive/${pkgver}.tar.gz"

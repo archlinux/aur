@@ -1,4 +1,6 @@
 post_install() {
- echo "Run 'linode-cli configure' to configure the CLI with a token and optionally select some default values"
- echo "See https://www.linode.com/docs/platform/api/using-the-linode-cli/ for assistance"
+  echo
+  echo "Run 'linode-cli configure' to configure the CLI with a token and optionally select some default values"
+  echo "See https://www.linode.com/docs/platform/api/linode-cli/ for assistance"
+  echo
 }
