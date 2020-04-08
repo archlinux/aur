@@ -1,0 +1,13 @@
+pkgbase = quick-skeleton-bin
+	pkgdesc = Simple tool for scaffolding
+	pkgver = 0.4.7
+	pkgrel = 1
+	url = https://github.com/arthrp/quick-skeleton
+	arch = x86_64
+	license = GPL-3.0
+	provides = quick-skeleton
+	source = https://github.com/arthrp/quick-skeleton/releases/download/v0.4.7/quick-skeleton
+	md5sums = e1e83547767b6228ecf6dbd4a042ac81
+
+pkgname = quick-skeleton-bin
+
