@@ -1,6 +1,6 @@
 pkgbase = bazel-bootstrap
 	pkgdesc = (Bootstrap Build) Correct, reproducible, and fast builds for everyone
-	pkgver = 2.2.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://bazel.io/
 	arch = i686
@@ -19,10 +19,10 @@ pkgbase = bazel-bootstrap
 	options = !distcc
 	options = !strip
 	options = !ccache
-	source = bazel-bootstrap-2.2.0.zip::https://github.com/bazelbuild/bazel/releases/download/2.2.0/bazel-2.2.0-dist.zip
-	source = bazel-bootstrap-2.2.0.zip.sig::https://github.com/bazelbuild/bazel/releases/download/2.2.0/bazel-2.2.0-dist.zip.sig
+	source = bazel-bootstrap-3.0.0.zip::https://github.com/bazelbuild/bazel/releases/download/3.0.0/bazel-3.0.0-dist.zip
+	source = bazel-bootstrap-3.0.0.zip.sig::https://github.com/bazelbuild/bazel/releases/download/3.0.0/bazel-3.0.0-dist.zip.sig
 	validpgpkeys = 71A1D0EFCFEB6281FD0437C93D5919B448457EE0
-	sha512sums = 67011c3a045c0fd74cdcb98eef1c3ead6902a3bd65a629fe49911f9dbb4c39508bd91eb63c1fae68284136ad4994afb42a01c7f10983614e432f8be22a1c566e
+	sha512sums = 9947011db2719fc7d6abc48ad82abc06db9145ae36b2077d003cfb001a6d940e583c91e680a4c687f96cbdd1ec141bb24f598a85df361be0190b7b4d7a15ee3f
 	sha512sums = SKIP
 
 pkgname = bazel-bootstrap
