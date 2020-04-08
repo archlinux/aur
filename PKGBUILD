@@ -63,8 +63,8 @@ package() {
 		"$pkgdir/usr/share/bash-completion/completions/${pkgname%-git}"
 	install -Dm755 "scripts/${pkgname%-git}.fish" -t \
 		"$pkgdir/usr/share/fish/completions"
-#	install -Dm755 "scripts/${pkgname%-git}.zsh" \
-#		"$pkgdir/usr/share/zsh/site-functions/_${pkgname%-git}"
+	install -Dm755 "scripts/${pkgname%-git}.zsh" \
+		"$pkgdir/usr/share/zsh/site-functions/_${pkgname%-git}"
 	install -Dm644 LICENSE.txt \
 		"$pkgdir/usr/share/licenses/${pkgname%-git}/${pkgname%-git}-LICENSE"
 	install -Dm644 "doc/${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
