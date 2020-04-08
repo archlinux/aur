@@ -1,0 +1,13 @@
+pkgbase = s3-meta
+	pkgdesc = Gather metadata about your S3 buckets
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/whitfin/s3-meta
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = https://github.com/whitfin/s3-meta/archive/v1.0.1.tar.gz
+	md5sums = 89d09b6108aa9caf4b7091046f3784d4
+
+pkgname = s3-meta
+
