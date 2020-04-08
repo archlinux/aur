@@ -31,7 +31,9 @@ pkgbase = pebble-tool-git
 	optdepends = qemu: Emulation support
 	conflicts = pebble-sdk
 	source = git+https://github.com/pebble-dev/pebble-tool.git
+	source = phonesim_path.patch
 	md5sums = SKIP
+	md5sums = 6ec67257ae436ec2f2d2561a67064ca9
 
 pkgname = pebble-tool-git
 
