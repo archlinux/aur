@@ -1,4 +1,4 @@
-pkgbase = kayan-gtk-theme-git
+pkgbase = krayan-gtk-theme-git
 	pkgdesc = A darker and more modern twist on the Layan GTK Theme.
 	pkgver = 0.0.0.cf5e1e6
 	pkgrel = 2
@@ -8,10 +8,10 @@ pkgbase = kayan-gtk-theme-git
 	makedepends = git
 	optdepends = gtk-engine-murrine
 	optdepends = gtk-engines
-	provides = kayan-gtk-theme
-	conflicts = kayan-gtk-theme
+	provides = krayan-gtk-theme
+	conflicts = krayan-gtk-theme
 	source = git+https://github.com/lazerl0rd/Krayan.git
 	sha256sums = SKIP
 
-pkgname = kayan-gtk-theme-git
+pkgname = krayan-gtk-theme-git
 
