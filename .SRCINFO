@@ -1,13 +1,13 @@
 pkgbase = autotiling
 	pkgdesc = Script for sway and i3 to automatically switch the horizontal / vertical window split orientation
-	pkgver = 0.7
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/autotiling
 	arch = x86_64
 	license = GPL3
 	depends = python-i3ipc
-	source = https://github.com/nwg-piotr/autotiling/archive/v0.7.tar.gz
-	md5sums = 3a43f8edbf25e4858077499d538bef73
+	source = https://github.com/nwg-piotr/autotiling/archive/v0.9.tar.gz
+	md5sums = 384f27537274f1ba6add54b28605b641
 
 pkgname = autotiling
 
