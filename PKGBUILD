@@ -2,8 +2,8 @@
 
 pkgname=krayan-gtk-theme-git
 _reponame='KrayanGTK'
-pkgver=0.0.0.2520181
-pkgrel=4
+pkgver=0.0.0.7b8ce9e
+pkgrel=5
 pkgdesc='A darker and more modern twist on the Layan GTK Theme.'
 arch=("any")
 provides=("krayan-gtk-theme")
