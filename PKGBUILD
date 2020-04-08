@@ -4,7 +4,7 @@
 # Contributor: grimi <grimi at poczta dot fm>
 pkgname=matcha-gtk-theme
 _pkgname=Matcha-gtk-theme
-_pkgver=2020-04-03
+_pkgver=2020-04-08
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A flat design theme for GTK 3, GTK 2 and GNOME Shell"
@@ -17,10 +17,10 @@ optdepends=('matcha-icon-theme: Matching icon theme'
             'kvantum-theme-matcha: Matching Kvantum theme')
 source=("$pkgname-$_pkgver.zip::https://github.com/vinceliuice/Matcha-gtk-theme/archive/$_pkgver.tar.gz")
 options=('!strip')
-sha256sums=('9dbae48a1f2e5f87567a75527f43e287d21a8634e0bc4853cea6ef01324b17e6')
+sha256sums=('b672e04cc94aacf693e7d7fc533b33a50658b602af50dea579d76032d44fbb11')
 
 package() {
     cd "$_pkgname-$_pkgver"
-    install -dm755 "$pkgdir/usr/share/themes"
+    install -d "$pkgdir/usr/share/themes"
     ./install.sh -d "$pkgdir/usr/share/themes"
 }
