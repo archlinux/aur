@@ -3,7 +3,7 @@
 pkgname=cropgui
 arch=('any')
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple tool for lossless jpeg cropping"
 license=('GPL')
 url="https://github.com/jepler/cropgui"

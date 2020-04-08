@@ -1,7 +1,7 @@
 pkgbase = cropgui
 	pkgdesc = a simple tool for lossless jpeg cropping
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jepler/cropgui
 	arch = any
 	license = GPL
