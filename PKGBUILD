@@ -1,39 +1,37 @@
 pkgname=vesc_tool-git
-pkgver=r157.6f378c1
+pkgver=2.03
 pkgrel=1
 pkgdesc="VESC ESC graphical configuration tool"
-arch=('any')
-url="https://vesc-project.com/"
-license=('GPL')
-groups=()
-depends=("qt5-connectivity" "qt5-serialport" "qt5-quickcontrols2")
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+url="https://vesc-project.com/vesc_tool"
+license=('GPL3')
+depends=('qt5-base' 'qt5-connectivity' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-location')
 makedepends=('git')
-provides=("${pkgname%-VCS}")
-conflicts=("${pkgname%-VCS}")
-replaces=()
-backup=()
-options=()
-install=
-source=("git+https://github.com/vedderb/vesc_tool.git")
-noextract=()
-md5sums=('SKIP')
 
+source=("$pkgname"::"git+https://github.com/vedderb/vesc_tool.git"
+        'vesc_tool.pro')
+
+sha256sums=('SKIP'
+            'fb9eb66d9ef00606f61754a7efa8dbab18dff810c674a106e2e770e62899be68')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${pkgname}"
+  printf "${pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "${srcdir}/${pkgname}"
+    cp ${srcdir}/vesc_tool.pro .
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}"
-
-    qmake -config release "CONFIG += release_lin build_original"
-    make
+  cd "${srcdir}/${pkgname}"
+  qmake PREFIX=/usr LIBDIR=/usr/lib
+  make
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
-    mkdir -p $pkgdir/usr/bin/
-    cp build/lin/vesc_* $pkgdir/usr/bin/vesc_tool
+  cd "$srcdir/${pkgname}"
+  make INSTALL_ROOT="$pkgdir" install
 }
 
