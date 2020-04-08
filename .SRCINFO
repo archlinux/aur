@@ -53,6 +53,7 @@ pkgbase = mpv-build-git
 	depends = v4l-utils
 	depends = vulkan-icd-loader
 	depends = vapoursynth
+	depends = avisynthplus-git
 	optdepends = nvidia-utils: for hardware accelerated video decoding with CUDA
 	optdepends = youtube-dl: Another way to view youtuve videos with mpv
 	optdepends = zsh-completions: Additional completion definitions for Zsh users

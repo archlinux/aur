@@ -82,6 +82,9 @@ backup=('etc/mpv/encoding-profiles.conf')
 if [ -f /usr/lib/libvapoursynth.so ]; then
   depends+=('vapoursynth')
 fi
+if [ -f /usr/lib/libavisynth.so.*.*.* ]; then
+  depends+=('avisynthplus-git')
+fi
 
 pkgver() {
   cd mpv
@@ -108,8 +111,10 @@ prepare() {
     '--enable-libpulse'
     '--enable-nonfree'
     '--enable-cuda'
-    '--enable-avisynth'
     )
+if [ -f /usr/lib/libavisynth.so.*.*.* ]; then
+  _ffmpeg_options+=('--enable-avisynth')
+fi
   _mpv_options=(
     '--prefix=/usr'
     '--confdir=/etc/mpv'
