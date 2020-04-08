@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-rc
-pkgrel=1
+pkgrel=2
 _srcname=linux-5.6
 _major=5.6
 ### on initial release this is null otherwise it is the current stable subversion
@@ -31,6 +31,8 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0090-ALSA-hda-Fix-potential-access-overflow-in-beep-helpe.patch
+  0091-ALSA-ice1724-Fix-invalid-access-for-enumerated-ctl-i.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -41,7 +43,9 @@ sha256sums=('ee5ed31823de85c302419f562789716d4718839de3189be737d9a9cc1ee34e8a'
             '2d4d91d8329c1ed3826c61463650dd4bfbb6ad39dcee6dba4f98a7e94a67b5b9'
             'SKIP'
             'e78bfa9f5a1065d93396a37d59043bd79805f4681df27ef44dcddea8de092818'
-            '69117e252eb3c3bdfda08008c3e6e383675a4df5db03cdb76095089ee6a221f3')
+            '69117e252eb3c3bdfda08008c3e6e383675a4df5db03cdb76095089ee6a221f3'
+            'd9032bb428c42e093f2686ae2830133c3600496f93574b3b41dc0ec69af6d5ad'
+            'bc53f7ec92126955e221698e634d2185909e83bc526f7ff9c7ad86da3fd8c8f4')
 
 _kernelname=${pkgbase#linux}
 
