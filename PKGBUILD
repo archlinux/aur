@@ -8,7 +8,7 @@ pkgdesc='A darker and more modern twist on the Layan GTK Theme.'
 arch=("any")
 provides=("kayan-gtk-theme")
 conflicts=("kayan-gtk-theme")
-url="https://github.com/lazerl0rd/${_reponame}.git"
+url="https://github.com/lazerl0rd/${_reponame}"
 license=("GPL2")
 optdepends=(
         "gtk-engine-murrine"
