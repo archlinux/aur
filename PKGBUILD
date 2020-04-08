@@ -31,7 +31,6 @@ optdepends=('python2-virtualenv: Required for installing SDK'
             'arm-none-eabi-newlib: Required for installing SDK'
             'qemu-pebble: Emulation support')
 makedepends=('python2-setuptools')
-conflicts=('pebble-sdk')
 source=("git+https://github.com/armorking5/pebble-tool.git"
         'phonesim_path.patch'
         'sdk_headers.patch')
