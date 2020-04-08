@@ -1,0 +1,15 @@
+pkgbase = ruby-koala
+	pkgdesc = A lightweight Facebook library supporting the Graph, Marketing, and Atlas APIs, realtime updates, test users, and OAuth
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/arsduo/koala
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = $_gemname-$pkgver.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/koala-3.0.0.gem
+	md5sums = 32826fd1865ec601a321399e4371a699
+
+pkgname = ruby-koala
+
