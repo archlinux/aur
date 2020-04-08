@@ -2,7 +2,7 @@
 # Modified by Wint3rmute, awaiting pull request
 
 # Download from here:
-# https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive-ise.html
+_xilinx_download="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive-ise.html"
 
 pkgname=xilinx-ise-w4-edition
 pkgver=14.7
@@ -18,10 +18,10 @@ options=('!strip')
 conflicts=('xilinx-ise')
 
 # Just place the downloaded .tar into your homedir
-source=('file://~/Xilinx_ISE_DS_Lin_14.7_1015_1.tar')
+source=('local://home/wint3rmute/Downloads/Xilinx_ISE_DS_Lin_14.7_1015_1.tar')
 source_i686=('xilinx-ise-32.desktop')
 source_x86_64=('xilinx-ise-64.desktop')
-md5sums=('e8065b2ffb411bb74ae32efa475f9817')
+#md5sums=('e8065b2ffb411bb74ae32efa475f9817')
 sha256sums_i686=('ecde1d1a403ccf366def3f6199f84992ded5e4626eeb6399395ad76f0e3d7643')
 sha256sums_x86_64=('74b1bf6d07520314dec833a777ebc47a166992c3aeb771b20dca9562288da47a')
 
@@ -35,11 +35,25 @@ elif [[ $CARCH == 'x86_64' ]]; then
 	_bits=64
 fi
 
+# A warning
+echo ================== WARNING ==================
+echo 
+echo You will first need to download XILINX from 
+echo $_xilinx_download
+echo
+echo After downloading, place it in the build
+echo directory of your AUR helper:
+echo 
+echo eg: for Pikaur you will have to do
+echo mv Xilinx_ISE_DS_Lin_14.7_1015_1.tar ~/.cache/pikaur/build/xilinx-ise-w4-edition
+echo
+echo Other package managers also have a build
+echo directory inside ~/.cache, find that and use that.
+echo
+echo If you\'re using raw makepkg, just move
+echo the Xilinx tar into the cloned repo.
+
 prepare() {
-	echo $srcdir
-	echo $srcdir
-	echo $srcdir
-	echo $srcdir
 	cd "${srcdir}"/Xilinx_ISE_DS_Lin_14.7_1015_1
 
 	# Generate a sample batch install file
