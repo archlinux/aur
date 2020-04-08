@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop
-pkgver=3.69.5
+pkgver=3.70.1
 pkgrel=1
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('npm')
 source=("https://github.com/tutao/tutanota/archive/tutanota-release-$pkgver.tar.gz"
         "$pkgname"
         "$pkgname.desktop")
-sha256sums=('2369e8339d2ca382d95a34077eb697d824e1395155cf8b649d53159844894009'
+sha256sums=('37cc07bb49836e58ab9e72067fff9e48da48eeecd4ce216dc464f8ae6761f74d'
             '4f91e842bd92a3312943854383e4929f9baf6cb684a7027aa55edcce1bf4ca16'
             '1215678e2fc23cfbeb73063f68dc440891e5b2e10734fa7f402e06860c292e31')
 
