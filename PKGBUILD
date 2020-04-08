@@ -5,8 +5,8 @@
 # Maintainer: Michael Kogan <michael.kogan at gmx.net>
 
 pkgname=car
-pkgver=2016.03.25
-pkgrel=9
+pkgver=2020.04.08
+pkgrel=10
 url="http://car.rene-grothmann.de/"
 pkgdesc="Compass and Ruler is a dynamic geometry program"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('java-runtime' 'xdg-utils')
 source=("http://car.rene-grothmann.de/download/car.zip"
         "${pkgname}.desktop"
 	"${pkgname}.sh")
-md5sums=('fa68cdf9976b3826f6d8ac74fd4e1c0e'
+md5sums=('cced7e1d3e94550b19ab46866afd70d4'
          '94fdcd79f877188507c68434c2a80e67'
          '2539542867d5f23e823b7a7704f17443')
 
