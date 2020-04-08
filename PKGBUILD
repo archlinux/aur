@@ -1,19 +1,14 @@
 pkgname=dptf
-pkgver=8.7.10100
-pkgrel=3
+pkgver=8.7.10101
+pkgrel=1
 pkgdesc='Intel (R) Dynamic Platform and Thermal Framework (Intel (R) DPTF)'
 arch=('x86_64')
 url='https://github.com/intel/dptf'
 license=('custom')
 depends=('readline')
 makedepends=('cmake')
-source=("https://github.com/intel/dptf/archive/$pkgver.tar.gz" "fix-runtime-path.patch")
-sha256sums=('fbd9302973fcb3ca32aec9a38891fa25e8ab17720fab3c994955fd1ffca72661'
-            'c1ba1a2963b5b9a3d901bec3709c79f3130ee83bfd03885be526778403cb8ade')
-
-prepare() {
-    patch "$srcdir/$pkgname-$pkgver/ESIF/Products/ESIF_UF/Sources/lin/main.c" "$srcdir/fix-runtime-path.patch"
-}
+source=("https://github.com/intel/dptf/archive/$pkgver.tar.gz")
+sha256sums=('4a92a6cf2d0b97ed2c4ecaa27275c57c3171ba9cf0660e79cd56d80c921e6f1e')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -44,9 +39,9 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 DPTF/Linux/build/x64/release/Dptf{,Policy{Active,Critical,Passive}}.so -t "$pkgdir/usr/lib/dptf/ufx64/"
-    install -Dm755 ESIF/Products/ESIF_CMP/Linux/esif_cmp.so "$pkgdir/usr/lib/dptf/ufx64/esif_cmp.so"
-    install -Dm755 ESIF/Products/ESIF_WS/Linux/esif_ws.so "$pkgdir/usr/lib/dptf/ufx64/esif_ws.so"
+    install -Dm755 DPTF/Linux/build/x64/release/Dptf{,Policy{Active,Critical,Passive}}.so -t "$pkgdir/usr/share/dptf/ufx64/"
+    install -Dm755 ESIF/Products/ESIF_CMP/Linux/esif_cmp.so "$pkgdir/usr/share/dptf/ufx64/esif_cmp.so"
+    install -Dm755 ESIF/Products/ESIF_WS/Linux/esif_ws.so "$pkgdir/usr/share/dptf/ufx64/esif_ws.so"
     install -Dm644 ESIF/Packages/DSP/dsp.dv "$pkgdir/etc/dptf/dsp.dv"
     install -Dm755 ESIF/Products/ESIF_UF/Linux/esif_ufd "$pkgdir/usr/bin/esif_ufd"
     install -Dm644 ESIF/Packages/Installers/linux/dptf.service "$pkgdir/usr/lib/systemd/system/dptf.service"
