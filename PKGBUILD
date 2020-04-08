@@ -1,12 +1,15 @@
-# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Maintainer: Alexey Andreyev <aa13q@ya.ru>
+# Contributor: Sefa Eyeoglu <contact@scrumplex.net>
+
 pkgname=libquotient-git
-pkgver=0.6.0.r249.g8a574f8
+pkgver=0.6.0.r373.g803f5d2
 pkgrel=1
 pkgdesc="A Qt5 library to write cross-platform clients for Matrix"
 arch=(x86_64)
 url="https://github.com/quotient-im/libQuotient"
 license=("LGPL2")
-depends=("qt5-base" "qt5-multimedia" "libolm")
+depends=("qt5-base" "qt5-multimedia")
+optdepends=("qt5-olm-git")
 makedepends=("git" "cmake" "make" "gcc")
 provides=("libquotient")
 conflicts=("libquotient")
@@ -29,10 +32,6 @@ pkgver() {
 
 prepare() {
     mkdir -p "build"
-
-    cd "$srcdir/${pkgname}"
-    git submodule init
-    git submodule update
 }
 
 build() {
