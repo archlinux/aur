@@ -1,0 +1,15 @@
+pkgbase = shell2http-git
+	pkgdesc = HTTP-server to execute shell commands
+	pkgver = 1.13.r38.g4a8c022
+	pkgrel = 1
+	url = https://github.com/msoap/shell2http
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = shell2http
+	source = git+https://github.com/msoap/shell2http
+	md5sums = SKIP
+
+pkgname = shell2http-git
+
