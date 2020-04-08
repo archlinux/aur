@@ -1,7 +1,7 @@
 pkgbase = cartaodecidadao
 	pkgdesc = Portuguese Citizen Card Application
 	pkgver = 3.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.cartaodecidadao.pt/
 	arch = i686
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = cartaodecidadao
 	depends = libxerces-c-3.1
 	depends = libcurl-compat
 	depends = xml-security-c
-	optdepends = autenticacao-gov-pt: Necessário para autenticações online
+	optdepends = plugin-autenticacao-gov-pt: Necessário para autenticações online
 	optdepends = cartaodecidadao-pki: PKI que confirma a validade dos certificados dos CC
 	optdepends = ecce-gov-pt-certificates: Certificados da ECCE quem assina dos certificados contidos em cartaodecidadao-pki
 	conflicts = classpath
