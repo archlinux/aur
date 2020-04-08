@@ -1,4 +1,5 @@
-# Maintainer: Carlos Silva <r3pek@r3pek.org>
+# Maintainer: Bruno Silva <brunofernandes at ua dot pt>
+# Co-Maintainer: Carlos Silva <r3pek@r3pek.org>
 
 pkgname=cartaodecidadao
 _pkgname=autenticacao.gov
