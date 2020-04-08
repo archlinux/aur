@@ -1,15 +1,15 @@
 # Maintainer: Zach Hoffman <zach@zrhoffman.net>
 pkgname=f5vpn
-pkgver=7182.2019.0923.1
-pkgrel=5
-pkgdesc='VPN client used to connect to F5Networks BIG-IP APM 13.0'
+pkgver=7190.2020.0221.1
+pkgrel=1
+pkgdesc='VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM 13.0'
 arch=('x86_64')
 source=('LICENSE')
-source_x86_64=("linux_f5vpn-${pkgver}.x86_64.rpm::https://vpn.emory.edu/public/download/linux_f5vpn.x86_64.rpm")
+source_x86_64=("linux_f5vpn-${pkgver}.x86_64.rpm::https://connect.healthsystem.virginia.edu/public/download/linux_f5vpn.x86_64.rpm")
 sha256sums=('fc05e3488df94817af182605042f78ed6aa0fdddb1b4a38875053a0b91d756c3')
-sha256sums_x86_64=('86cf370981b8ad0bad7c9e9c6a676d02ae14c6f7e7f96c524205c38fe3eca93d')
+sha256sums_x86_64=('d66d2a65d019a22397b0210805092d4cd582d4db1c89d47c16b191dc847da14a')
 md5sums=('6e606f0137167b7c584c842405dab071')
-md5sums_x86_64=('bbacf7615d98505442d2e073560bbf6a')
+md5sums_x86_64=('561f1e54f3ecc4bfe371ac6af60f8c16')
 depends=(icu openssl qt5-base qt5-webkit)
 url='https://support.f5.com/csp/article/K32311645#link_04_05'
 license=('commercial')
