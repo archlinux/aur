@@ -1,6 +1,6 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 pkgname=pebble-tool-git
-pkgver=v4.6.rc1
+pkgver=v4.6.rc1.1.g050fda4
 pkgrel=1
 pkgdesc="The pebble tool that goes with libpebble2"
 arch=('any')
@@ -8,6 +8,7 @@ url="https://github.com/pebble-dev/pebble-tool"
 license=('MIT')
 depends=('python2'
          'python2-libpebble2-git'
+         'python2-distlib'
          'python2-enum34'
          'python2-httplib2'
          'python2-oauth2client'
@@ -31,7 +32,7 @@ optdepends=('python2-virtualenv: Required for installing SDK'
             'qemu-pebble: Emulation support')
 makedepends=('python2-setuptools')
 conflicts=('pebble-sdk')
-source=("git+https://github.com/pebble-dev/pebble-tool.git"
+source=("git+https://github.com/armorking5/pebble-tool.git"
         'phonesim_path.patch')
 md5sums=('SKIP'
          '6ec67257ae436ec2f2d2561a67064ca9')
