@@ -1,27 +1,22 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
 pkgname=prusa-slicer
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=(x86_64)
 url="https://github.com/prusa3d/PrusaSlicer"
 license=(AGPL3)
 depends=(boost-libs curl glew intel-tbb nlopt wxgtk2 qhull) #wxgtk3)
-makedepends=(cmake boost cereal eigen3 expat gtest libpng)
+makedepends=(cmake boost cereal eigen3 expat gtest libpng openvdb cgal)
 replaces=(slic3r-prusa3d)
 source=(${url}/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz
         ${pkgname}.desktop)
-sha256sums=('79d0681fbf3f4158cac25595522dcea330e0fa960934053ac929a15fa13c1072'
-            'f7119c86968cf20e61caf784269c859fc84fae1e499c7c3df82d3d34ae4c2138')
-
-prepare() {
-  mkdir -p build
-}
+sha256sums=('e6e0c83bf92e448ec058fd3063b84caca69f58b8b419e48eace6e8ce534937c0'
+            '9d21467c541b809f149b39c7c6b4f60b2c866823021fb6f8a076290583982d11')
 
 build() {
-  cd build
-  cmake ../PrusaSlicer-version_${pkgver} \
+  cmake -B build -S PrusaSlicer-version_${pkgver} \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DSLIC3R_FHS=ON \
@@ -29,7 +24,7 @@ build() {
     -DSLIC3R_WX_STABLE=ON #\
     #-DSLIC3R_GTK=3 \
     #-DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3
-  make
+  make -C build
 }
 
 check() {
@@ -38,10 +33,8 @@ check() {
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+  make -C build DESTDIR="${pkgdir}" install
 
-  cd ..
   # Desktop file
   install -Dm644 ${pkgname}.desktop -t "${pkgdir}"/usr/share/applications/
 

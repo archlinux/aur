@@ -1,9 +1,10 @@
 [Desktop Entry]
-Type=Application
 Name=PrusaSlicer
 Exec=/usr/bin/prusa-slicer
-Terminal=false
 Icon=prusa-slicer
+Terminal=false
+Type=Application
 StartupNotify=false
+MimeType=model/stl;application/vnd.ms-3mfdocument;application/prs.wavefront-obj;application/x-amf;
 Categories=Graphics;3DGraphics;
-MimeType=model/stl;
+Keywords=3D;Printing;Slicer;
