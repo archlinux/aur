@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <andrew.wja@gmail.com>
 
 pkgname=llvm90
-pkgdesc="LLVM compiler toolchain, version 9.0.0 (installed under /opt/llvm90)"
+pkgdesc="LLVM compiler toolchain, version 9.0.0"
 pkgver=9.0.0
 pkgrel=1
 arch=('x86_64')
@@ -9,6 +9,8 @@ url="https://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
 depends=('libedit' 'libxml2' 'python2')
 makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2')
+conflicts=('llvm')
+replaces=('llvm')
 options=('staticlibs')
 source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz)
 sha256sums=('SKIP')
@@ -18,7 +20,7 @@ build() {
   cd "$srcdir/llvm-$pkgver.src/build"
   cmake .. -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/opt/llvm90 \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DLLVM_HOST_TRIPLE=$CHOST \
     -DLLVM_BUILD_LLVM_DYLIB=ON \
     -DLLVM_LINK_LLVM_DYLIB=ON \
