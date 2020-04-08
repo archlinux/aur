@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=3.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('arm' 'armv6h' 'armv7h' 'x86_64')
 url="https://github.com/cheat/cheat"
@@ -11,7 +11,7 @@ license=('MIT' 'CC0 1.0 Universal')
 makedepends=('go-pie' 'git' 'pandoc')
 optdepends=('bash-completion: for bash completions'
             'fzf: Fuzzy Finder integration for bash-completion')
-conflicts=("python-$pkgname" "$pkgname-bash-git")
+conflicts=("python-$pkgname" "$pkgname-bash-git" 'zsh-completions')
 replaces=("python-$pkgname")
 backup=("etc/$pkgname/conf.yml")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
