@@ -7,7 +7,7 @@ pkgdesc="Universal grep: ultra fast searcher of file systems, text and binary fi
 arch=(x86_64)
 license=(BSD-3)
 url="https://github.com/Genivia/ugrep"
-optdepends=('pcre: Perl regular expressions support (preferred)'
+optdepends=('pcre2: Perl regular expressions support (preferred)'
             'boost-libs: Perl regular expressions support'
             'zlib: decompress support'
             'bzip2: bzip file support'
