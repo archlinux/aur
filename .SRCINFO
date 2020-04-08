@@ -1,0 +1,13 @@
+pkgbase = ergo-bin
+	pkgdesc = List of utilities for the daily developer workflow
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/beatlabs/ergo
+	arch = x86_64
+	license = BSD-3-Clause
+	provides = ergo
+	source = https://github.com/beatlabs/ergo/releases/download/0.4.0/ergo_0.4.0_linux-amd64
+	md5sums = ce784bed661ff431a7a1c840df3af146
+
+pkgname = ergo-bin
+
