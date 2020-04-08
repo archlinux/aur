@@ -11,12 +11,12 @@ pkgdesc='Qt5-based IM client for the Matrix protocol'
 url='https://matrix.org/docs/projects/client/quaternion.html'
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('qt5-tools' 'qt5-multimedia' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'libquotient>=0.5.3.2')
+depends=('qt5-tools' 'qt5-multimedia' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'libquotient>=0.5.3-2')
 makedepends=('cmake')
 provides=('quaternion')
 conflicts=('quaternion-git')
 source=("https://github.com/quotient-im/Quaternion/archive/$pkgver.tar.gz")
-sha256sums=('e489f331b49f18e0554b60070e61b7c9')
+sha512sums=('5478892b7dce96a60f1429ee6dff9dd0b4fbb89bf45ecc2e499ee90f615af4de12d1de0002804420a85a21a6ba533e4799c94d2411067cb7d7aacca183d9d981')
 
 build() {
   cd ${_appname}-${pkgver}

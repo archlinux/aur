@@ -11,11 +11,11 @@ pkgbase = quaternion
 	depends = qt5-multimedia
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
-	depends = libquotient>=0.5.3.2
+	depends = libquotient>=0.5.3-2
 	provides = quaternion
 	conflicts = quaternion-git
 	source = https://github.com/quotient-im/Quaternion/archive/0.0.9.4e.tar.gz
-	sha256sums = e489f331b49f18e0554b60070e61b7c9
+	sha512sums = 5478892b7dce96a60f1429ee6dff9dd0b4fbb89bf45ecc2e499ee90f615af4de12d1de0002804420a85a21a6ba533e4799c94d2411067cb7d7aacca183d9d981
 
 pkgname = quaternion
 
