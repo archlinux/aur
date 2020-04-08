@@ -1,0 +1,17 @@
+pkgbase = qemu-pebble
+	pkgdesc = QEMU emulator for the pebble smartwatch
+	pkgver = 4.5
+	pkgrel = 1
+	url = https://developer.rebble.io/developer.pebble.com/index.html
+	arch = i386
+	arch = x86_64
+	license = MIT
+	depends = dtc
+	depends = libpng12
+	source_i386 = https://developer.rebble.io/s3.amazonaws.com/assets.getpebble.com/pebble-tool/pebble-sdk-4.5-linux32.tar.bz2
+	sha1sums_i386 = f5e9e3ba91811b1a486a14b6b2c8558d13a01982
+	source_x86_64 = https://developer.rebble.io/s3.amazonaws.com/assets.getpebble.com/pebble-tool/pebble-sdk-4.5-linux64.tar.bz2
+	sha1sums_x86_64 = 7bc45d4dc085e7ffb6a49c3ae1d263461051c7f5
+
+pkgname = qemu-pebble
+
