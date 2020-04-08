@@ -11,7 +11,7 @@ pkgbase = libquotient
 	makedepends = gcc
 	depends = qt5-base
 	depends = qt5-multimedia
-	depends = qt5-olm
+	optdepends = qt5-olm
 	provides = libquotient
 	conflicts = libquotient
 	source = libquotient::git+https://github.com/quotient-im/libQuotient.git#tag=0.5.3.2
