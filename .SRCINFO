@@ -1,0 +1,18 @@
+pkgbase = ledgerhelpers
+	pkgdesc = A collection of helper programs and a helper library for Ledger (ledger-cli)
+	pkgver = v0.3.1.r7.580a2cb
+	pkgrel = 1
+	url = https://github.com/Rudd-O/ledgerhelpers
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	depends = ledger-git
+	provides = ledgerhelpers
+	conflicts = ledgerhelpers
+	source = git+https://github.com/phylor/ledgerhelpers
+	md5sums = SKIP
+
+pkgname = ledgerhelpers
+
