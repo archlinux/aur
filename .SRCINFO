@@ -1,16 +1,20 @@
-pkgbase = asd
+pkgbase = wool
 	pkgdesc = Preview Github Markdown Offline
-	pkgver = 0.1.0
-	pkgrel = 2
-	url = https://github.com/grapegrip/asd
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/grapegrip/wool
 	arch = i686
 	arch = x86_64
-	license = MIT
+	license = custom:Parity
 	makedepends = rust
 	makedepends = cargo
+	conflicts = wool-git
+	conflicts = asd
 	conflicts = asd-git
-	source = asd-0.1.0.tar.gz::https://github.com/grapegrip/asd/archive/0.1.0.tar.gz
-	sha256sums = 9257a56c4c22460d2927dcdeb4e4ac16787552c3a213c1e1baf23fd4e270b9e2
+	source = wool-0.1.2.tar.gz::https://github.com/grapegrip/wool/archive/0.1.2.tar.gz
+	source = Cargo.lock
+	sha256sums = 44f7c3de1056ff3263450dac37f9a1c6bbd0ac6b9a2826c9f58fd17d2765cee6
+	sha256sums = 8a1cee2d0bba13f18f7745f08ca0f4ca4dae29dca5d939c08688158343bbc2dc
 
-pkgname = asd
+pkgname = wool
 
