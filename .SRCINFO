@@ -1,6 +1,6 @@
 pkgbase = qemu-git
 	pkgdesc = A generic and open source machine emulator and virtualizer. Git version.
-	pkgver = v5.0.0.rc1.r0.g2833ad487c
+	pkgver = v5.0.0.rc2.r0.gf3bac27cc1
 	pkgrel = 1
 	epoch = 9
 	url = http://wiki.qemu.org/
@@ -13,7 +13,6 @@ pkgbase = qemu-git
 	makedepends = ceph
 	makedepends = libiscsi
 	makedepends = glusterfs
-	makedepends = python-sphinx
 	makedepends = git
 	depends = dtc
 	depends = virglrenderer
