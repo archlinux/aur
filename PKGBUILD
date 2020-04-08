@@ -3,7 +3,7 @@
 pkgname=cartaodecidadao
 _pkgname=autenticacao.gov
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Portuguese Citizen Card Application"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -47,8 +47,19 @@ build() {
 package() {
 	cd ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw
 
-	# Install programs and libraries
+	# Fix upstream bug not creating path
 	mkdir -p ${pkgdir}/usr/local/lib/
+
+	# Install programs and libraries
 	make INSTALL_ROOT="$pkgdir" DESTDIR=$pkgdir PREFIX=/usr install
-	mv ${pkgdir}/usr/local/lib/ ${pkgdir}/usr/lib/ 
+	
+	# Fix library path from debian to Arch Linux
+	mv ${pkgdir}/usr/local/lib/ ${pkgdir}/usr/lib/
+
+	# Install desktop files
+	install -Dm644 ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/debian/pteid-mw-gui.desktop ${pkgdir}/usr/share/applications/pteid-mw-gui.desktop
+
+	# Install image files
+	install -Dm644 ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/debian/pteid-signature.png ${pkgdir}/usr/share/pixmaps/pteid-signature.png
+	install -Dm644 ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/debian/pteid-scalable.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/pteid-scalable.svg
 }
