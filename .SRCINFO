@@ -1,5 +1,5 @@
 pkgbase = redshifter
-	pkgdesc = Fine control redshift color temperature and brightness
+	pkgdesc = Control redshift color temperature and brightness
 	pkgver = 20200404
 	pkgrel = 1
 	url = https://github.com/wizetek/bash/blob/master/redshifter

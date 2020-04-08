@@ -3,7 +3,7 @@
 pkgname=redshifter
 pkgver=20200404
 pkgrel=1
-pkgdesc="Fine control redshift color temperature and brightness"
+pkgdesc="Control redshift color temperature and brightness"
 arch=('any')
 url="https://github.com/wizetek/bash/blob/master/redshifter"
 license=('GPL')
