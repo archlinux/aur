@@ -1,6 +1,6 @@
 pkgbase = oscam-svn
 	pkgdesc = The Open Source Conditional Access Module daemon
-	pkgver = 11546
+	pkgver = 11578
 	pkgrel = 1
 	url = http://www.streamboard.tv/oscam
 	install = oscam.install
@@ -18,7 +18,7 @@ pkgbase = oscam-svn
 	depends = pcsclite
 	provides = oscam
 	conflicts = oscam
-	source = oscam-svn::svn+http://www.streamboard.tv/svn/oscam/trunk#revision=11546
+	source = oscam-svn::svn+http://www.streamboard.tv/svn/oscam/trunk#revision=11578
 	source = oscam.service
 	md5sums = SKIP
 	md5sums = 9feece4aed599a1ba005305c5e23960e
