@@ -6,8 +6,8 @@
 pkgbase=linux-hardened-git
 _srcname=${pkgbase/-git/}
 _gitbranch=5.6
-pkgver=5.6.2.r902727.ga28803964450
-pkgrel=2
+pkgver=5.6.3.r902758.gc0e0caa7d429
+pkgrel=1
 pkgdesc='Security-Hardened Linux'
 url='https://github.com/anthraxx/linux-hardened'
 arch=(x86_64)
@@ -18,8 +18,10 @@ makedepends=(
   git
 )
 options=('!strip')
-source=("${_srcname}::git+https://github.com/anthraxx/linux-hardened#branch=${_gitbranch}?signed"
-        config         # the main kernel config files
+source=(
+  "${_srcname}::git+https://github.com/anthraxx/linux-hardened#branch=${_gitbranch}?signed"
+  config         # the main kernel config files
+  sphinx-workaround.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -28,7 +30,8 @@ validpgpkeys=(
   'E240B57E2C4630BA768E2F26FC1B547C8D8172C8'  # Levente Polyak
 )
 sha256sums=('SKIP'
-            '4b634080227d5c00e0cbce15daeae45fb729cc20a41ca0edc92dd11953471d76')
+            'fe7154a72892a74a0e4163980f837d2547c3fcc254da634644a817324a6c20b8'
+            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
