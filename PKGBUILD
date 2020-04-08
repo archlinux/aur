@@ -1,7 +1,8 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=nufraw
-pkgver=0.42
+pkgver=0.43_3
+_pkgver=0.43-3
 pkgrel=1
 pkgdesc='A new version of the popular raw digital images manipulator ufraw.'
 arch=('i686' 'x86_64')
@@ -12,24 +13,24 @@ depends=('gtkimageview' 'exiv2' 'lcms' 'desktop-file-utils' 'cfitsio' 'lensfun')
 makedepends=('gimp')
 optdepends=('gimp: to use the gimp import plugin for raw images')
 source=(
-https://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz
+https://downloads.sourceforge.net/project/$pkgname/$pkgname-$_pkgver.tar.gz
 nufraw.desktop
 )
-noextract=($pkgname-$pkgver.tar.gz)
-sha512sums=('43c864e41e30e80b7d6bab68810646a6a5cee070cf0941321b35213bdfc68fd8ec41694de1add294163c1f6753f6afc12e11be25b1124d4cd7acd5b7c0de13a9'
+noextract=($pkgname-$_pkgver.tar.gz)
+sha512sums=('60a6d764ca0248f8c388f4b16ff67cded954f642515bb706d1d45bdab189d159593c93f29ec83bbe6cbe4597d6f229a1839f32a450d5ee1d73a135a825933ec8'
             'd906c384fe19ebda8e0e8a9207b193f2ca20fa5ef13ba70f6ecf4019babea6f20dbf3249bb766dd21db450db04bd6a41a8bbccb168ddb3a419cc6c27cd627688')
 prepare(){
   cd "$srcdir"
-  tar zxf $pkgname-$pkgver.tar.gz \
+  tar zxf $pkgname-$_pkgver.tar.gz \
     --exclude doc-pak --exclude=.git
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$_pkgver"
   chmod +x mkinstalldirs generate_schemas.sh
   mv nufraw.desktop.desktop nufraw.desktop
 #   msg2 "Fixing dcraw.cc: error: call of overloaded ‘abs(unsigned int&)’ is ambiguous"
 #   sed '9361s/abs/ABS/g' -i dcraw.cc
 }
 build(){
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir"/$pkgname-$_pkgver
 
   msg2 "Running autogen"
   ./autogen.sh
@@ -49,7 +50,7 @@ build(){
   make
 }
 package(){
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir"/$pkgname-$_pkgver
   msg2 "Running make install"
   make DESTDIR="$pkgdir/" install
   rm -f "$pkgdir/usr/bin/dcraw"                 # provided by dcraw
