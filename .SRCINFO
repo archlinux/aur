@@ -1,0 +1,19 @@
+pkgbase = facebook-cli
+	pkgdesc = Facebook command line tool
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://github.com/specious/facebook-cli
+	arch = any
+	license = ISC
+	depends = ruby
+	depends = ruby-json
+	depends = ruby-gli
+	depends = ruby-jsonpath
+	depends = ruby-koala
+	noextract = $pkgname-$pkgver.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/facebook-cli-1.7.1.gem
+	md5sums = fb289099fcbd8f28915d71c5e153c75f
+
+pkgname = facebook-cli
+
