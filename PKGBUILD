@@ -5,7 +5,7 @@ pkgver=0.9.1
 pkgrel=1
 pkgdesc="An application helping you to tune your TUXEDO"
 arch=(x86_64)
-url="https://aur.archlinux.org/packages/tuxedo-control-center/"
+url="https://www.tuxedocomputers.com/"
 license=('GPL')
 depends=('tuxedo-cc-wmi')
 
