@@ -2,7 +2,7 @@
 
 pkgbase=python-pid
 pkgname=(python-pid python2-pid)
-pkgver=3.0.0
+pkgver=3.0.3
 pkgrel=1
 pkgdesc='Python pid - pidfile featuring stale detection and file-locking'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL')
 makedepends=('python-setuptools' 'python2-setuptools')
 # There's a gpg signature, but no matching key. Where to get it?
 source=("${pkgname}-${pkgver}.tar.gz::https://pypi.io/packages/source/p/pid/pid-${pkgver}.tar.gz")
-sha512sums=('594ff007c41696f35bb925ff47a1864ca9fa65cb9197f1fd42a5c4cd5914cfca37f355f69cd6dec4f7e6ce5d24e21f3648b2aefda4f372fb2d3e26cad3e8027f')
+sha512sums=('58c0615e22b1f0d1d1c3490c2be52c2ddc9bc1bb9a9f00379a2d9c2511371875d914bdcadce227f4478e968b8fdc469e7e67e4dbdb5c00449740aa7e097de3f1')
 
 package_python-pid() {
   pkgdesc='Python pid - pidfile featuring stale detection and file-locking - python 3.x pkg'
