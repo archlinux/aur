@@ -1,6 +1,6 @@
 pkgbase = cabal-static
 	pkgdesc = The command-line interface for Cabal and Hackage. Statically linked.
-	pkgver = 3.0.0.0
+	pkgver = 3.2.0.0
 	pkgrel = 1
 	url = https://hackage.haskell.org/package/cabal-install
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = cabal-static
 	depends = libffi
 	provides = cabal-install
 	conflicts = cabal-install
-	source = https://hackage.haskell.org/package/cabal-install-3.0.0.0/cabal-install-3.0.0.0.tar.gz
-	md5sums = 937c6795b49d6bd9a660e911c0662861
+	source = https://hackage.haskell.org/package/cabal-install-3.2.0.0/cabal-install-3.2.0.0.tar.gz
+	md5sums = cc807bc0114eae46ccc90a4ad3bea877
 
 pkgname = cabal-static
 
