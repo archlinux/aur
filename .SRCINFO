@@ -1,0 +1,23 @@
+pkgbase = krayan-kde-git
+	pkgdesc = A darker and more modern twist on the Layan GTK Theme
+	pkgver = r1.e60091e
+	pkgrel = 1
+	url = https://github.com/lazerl0rd/KrayanKDE
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/lazerl0rd/KrayanKDE.git
+	sha256sums = SKIP
+
+pkgname = krayan-kde-git
+	optdepends = krayan-gtk-theme: Matching GTK theme
+	optdepends = kvantum-theme-krayan: Layan theme for Kvantum Qt style (recommended)
+	optdepends = papirus-icon-theme: Matching icon theme
+	provides = krayan-kde
+
+pkgname = kvantum-theme-krayan-git
+	pkgdesc = Krayan theme for KDE Plasma 5
+	depends = kvantum-qt5
+	provides = kvantum-theme-krayan
+
