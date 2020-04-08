@@ -12,7 +12,6 @@ pkgbase = pebble-sdk
 	depends = arm-none-eabi-newlib
 	depends = pebble-tool-git
 	depends = qemu-pebble
-	depends = python2-pypkjs-git
 	conflicts = pebble-sdk-beta
 
 pkgname = pebble-sdk

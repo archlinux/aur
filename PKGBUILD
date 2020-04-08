@@ -17,7 +17,8 @@ depends=('python2-virtualenv'
          'arm-none-eabi-newlib'
          'pebble-tool-git'
          'qemu-pebble'
-         'python2-pypkjs-git')
+         #'python2-pypkjs-git'
+        )
 conflicts=('pebble-sdk-beta')
 
 # vim:set ts=2 sw=2 et:
