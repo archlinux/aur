@@ -18,7 +18,7 @@ build() {
   python2 setup.py build --blosc=/usr --lzo=/usr --hdf5=/usr --bzip2=/usr
 }
 
-package_python2-pytables() {
+package() {
   depends=('lzo' 'hdf5' 'python2-numexpr' 'blosc')
 
   cd "$srcdir"/PyTables-${pkgver}
