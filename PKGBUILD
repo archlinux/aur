@@ -7,12 +7,8 @@ arch=('any')
 url="https://fatboy.site/"
 license=('unknown')
 source=("https://dl.fatboy.site/FatBoy-latest.7z")
-md5sums=("SKIP")
-
-pkgver() {
-	echo *sf2 | sed -e 's/FatBoy-v\(.*\).sf2/\1/'
-}
+sha256sums=(99c0ed3a19d1626c79ccea79c11ba60f92ce6251376d8251b5c26c5bafeff504)
 
 package() {
-	install -D "FatBoy-v$pkgver.sf2" "$pkgdir/usr/share/soundfonts/FatBoy.sf2"
+    install -Dm644 "FatBoy-v$pkgver.sf2" "$pkgdir/usr/share/soundfonts/FatBoy.sf2"
 }
