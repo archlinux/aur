@@ -1,6 +1,6 @@
 pkgbase = firefox-appmenu
 	pkgdesc = Firefox from extra with appmenu patch
-	pkgver = 74.0.1
+	pkgver = 75.0
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -41,17 +41,17 @@ pkgbase = firefox-appmenu
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = firefox=74.0.1
+	provides = firefox=75.0
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://archive.mozilla.org/pub/firefox/releases/74.0.1/source/firefox-74.0.1.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/74.0.1/source/firefox-74.0.1.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/75.0/source/firefox-75.0.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/75.0/source/firefox-75.0.source.tar.xz.asc
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch
 	source = firefox.desktop
 	source = unity-menubar.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 62e4297b682fad1ea50d8e32fc51c811169f8edec8d12d2aab0ea60b3197f011
+	sha256sums = bbb1054d8f2717c634480556d3753a8483986af7360e023bb6232df80b746b0f
 	sha256sums = SKIP
 	sha256sums = 5f7ac724a5c5afd9322b1e59006f4170ea5354ca1e0e60dab08b7784c2d8463c
 	sha256sums = e466789015e15be9409b7a7044353674ca6aa0f392e882217f90c79821fe2630
