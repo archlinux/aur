@@ -9,7 +9,7 @@ pkgname=nim-legacy
 _pkgname=Nim
 _csourcesver=0.20.0
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Imperative, multi-paradigm, compiled programming language'
 url='https://nim-lang.org/'
 arch=('x86_64')
@@ -29,6 +29,10 @@ prepare() {
   cd ${_pkgname}-${pkgver}
   [[ -d csources ]] || mv ../csources-${_csourcesver} csources
   rm bin/empty.txt
+  for nimcfg in {compiler,config}/nim.cfg; do
+    echo "gcc.options.always %= \"\${gcc.options.always} ${CFLAGS:-} ${CPPFLAGS}\"" >> "${nimcfg}"
+    echo "gcc.options.linker %= \"\${gcc.options.linker} ${LDFLAGS:-}\"" >> "${nimcfg}"
+  done
 }
 
 build() {
@@ -47,7 +51,9 @@ build() {
   (cd lib
     nim c --app:lib -d:createNimRtl -d:release nimrtl.nim
   )
+
   msg2 "Building tools"
+  ./koch tools
   (cd tools
     nim c -d:release nimgrep.nim
   )
@@ -70,8 +76,8 @@ package() {
   # Fix FS#48118, related to the doc2 command
   ln -s /usr/share/nim/doc "${pkgdir}/usr/lib/nim/doc"
 
-  install -Dm 644 config/* -t "${pkgdir}/etc"
-  install -Dm 755 bin/* tools/nimgrep nimsuggest/nimsuggest -t "${pkgdir}/usr/bin"
+  install -Dm 644 config/* -t "${pkgdir}/etc/nim"
+  install -Dm 755 bin/* -t "${pkgdir}/usr/bin"
 
   # Fix FS#50252, unusual placement of header files
   install -d "${pkgdir}/usr/include"
@@ -80,6 +86,16 @@ package() {
   install -d "${pkgdir}/usr/share/nim/doc"
   cp -a examples doc/* "${pkgdir}/usr/share/nim/doc"
 
-  install -Dm 644 copying.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 copying.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  # completions
+  for comp in tools/*.bash-completion; do
+    install -Dm 644 "${comp}" "${pkgdir}/usr/share/bash-completion/completions/$(basename "${comp/.bash-completion}")"
+  done
+  for comp in tools/*.zsh-completion; do
+    install -Dm 644 "${comp}" "${pkgdir}/usr/share/zsh/site-functions/_$(basename "${comp/.zsh-completion}")"
+  done
+
   rm -r "${pkgdir}/nim"
+  rm "${pkgdir}/usr/bin/nimble"
 }
