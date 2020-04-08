@@ -4,22 +4,21 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=windowmaker
-pkgver=0.95.8
-pkgrel=6
+pkgver=0.95.9
+pkgrel=1
 pkgdesc="An X11 window manager with a NEXTSTEP look and feel"
 arch=('i686' 'x86_64')
 url="http://www.windowmaker.org/"
 license=('GPL' 'custom')
 depends=('libxinerama' 'libxrandr' 'libxmu' 'libpng' 'libxpm' 'libxft' 'libtiff' 'giflib' 'libmagick' 'libbsd')
 source=("http://windowmaker.org/pub/source/release/WindowMaker-$pkgver.tar.gz"
-        'wmaker.desktop'
-        'https://gitweb.gentoo.org/repo/gentoo.git/plain/x11-wm/windowmaker/files/windowmaker-0.95.8-imagemagick7.patch')
+        'wmaker.desktop')
 
 prepare() {
   cd WindowMaker-$pkgver
-  patch -Np1 -b -z .orig < ../windowmaker-0.95.8-imagemagick7.patch
+# patch -Np1 -b -z .orig < ../windowmaker-0.95.8-imagemagick7.patch
   
-  autoreconf -fi
+# autoreconf -fi
   
   # fix some paths FS#3080 - ckeck also Gentoo ebuild
   for file in WindowMaker/*menu* util/wmgenmenu.c; do
@@ -37,6 +36,8 @@ build() {
   ./configure --prefix=/usr --sysconfdir=/etc --enable-xinerama \
     --localedir=/usr/share/locale --with-gnustepdir=/usr/lib/GNUstep \
     --enable-usermenu --enable-modelock --enable-randr
+  # Fight unused direct deps
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
   make V=0
 }
 
@@ -48,6 +49,5 @@ package() {
   install -D -m644 ../wmaker.desktop "$pkgdir/usr/share/xsessions/wmaker.desktop"
 }
 
-sha256sums=('9dbf5c5571bb79c4b1584f496c960ee2cd7379af45ef0f58b4b0f487259de88a'
-            '126da08ac9cffc4354bb4f246ec5ed5abd3cd29ed665d05d190c5bf842c84bef'
-            'e89e8c7638f38296f1fc31d892672122a73ce89ce40c192bb404d852cca06692')
+sha256sums=('f22358ff60301670e1e2b502faad0f2da7ff8976632d538f95fe4638e9c6b714'
+            '126da08ac9cffc4354bb4f246ec5ed5abd3cd29ed665d05d190c5bf842c84bef')
