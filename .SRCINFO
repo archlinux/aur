@@ -1,7 +1,7 @@
 pkgbase = cheat
 	pkgdesc = Allows you to create and view interactive cheatsheets on the command-line
 	pkgver = 3.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cheat/cheat
 	arch = arm
 	arch = armv6h
@@ -16,6 +16,7 @@ pkgbase = cheat
 	optdepends = fzf: Fuzzy Finder integration for bash-completion
 	conflicts = python-cheat
 	conflicts = cheat-bash-git
+	conflicts = zsh-completions
 	replaces = python-cheat
 	backup = etc/cheat/conf.yml
 	source = cheat-3.9.0.tar.gz::https://github.com/cheat/cheat/archive/3.9.0.tar.gz
