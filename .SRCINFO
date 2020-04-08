@@ -17,6 +17,7 @@ pkgbase = easyframework
 	depends = libpng
 	depends = libjpeg-turbo
 	depends = librsvg
+	depends = giflib
 	depends = freetype2
 	depends = fontconfig
 	depends = libxcb
