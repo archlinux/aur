@@ -1,0 +1,11 @@
+post_install() {
+  echo
+  echo "Copy /usr/share/webapps/roundcubemail/plugins/twofactor_gauthenticator/config.inc.php.dist to /usr/share/webapps/roundcubemail/plugins/twofactor_gauthenticator/config.inc.php and edit to indicate specific user settings."
+  echo
+  echo "Activate the plugin in the Roundcube config.inc.php file:
+
+		\$config['plugins'] = array(
+                            'twofactor_gauthenticator',
+                          );"
+  echo
+}
