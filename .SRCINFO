@@ -12,7 +12,7 @@ pkgbase = plugin-autenticacao-gov-pt
 	depends = ccid
 	source = plugin-autenticacao-gov-pt.install
 	source = https://autenticacao.gov.pt/fa/ajuda/software/plugin-autenticacao-gov.deb
-	sha512sums = bf6d104a7ad426e58922071165f8ab27f39f1a1e169b2c0dc082fdd46402406aac39190cc185ab6ace9e144c447a2ad37487c73650ab0a04d6a9fb4d5eb3f5af
+	sha512sums = b9e94b93c02bb483495438e085140743e918144de5d9b295dedc699e3e5c2603c78a3d8ff0437fc68be5013c99cc8b0e7436ade2bd077a5af1279b6ed0bf8374
 	sha512sums = 64aaf0e567e96cda1819e0108aac989fb8d92947d4fac52b525f592cfc4b8e625a2343b9c0568de336873a2ca952412e35f9196d470c0ed9f465c4a2a679dcc7
 
 pkgname = plugin-autenticacao-gov-pt

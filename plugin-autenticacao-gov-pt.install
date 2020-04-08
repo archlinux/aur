@@ -24,6 +24,10 @@ setup_icons() {
 	done
 }
 
+post_upgrade() {
+	post_install
+}
+
 post_install() {
 	setup_icons install
 }
