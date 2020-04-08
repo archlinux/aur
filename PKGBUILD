@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <andrew.wja@gmail.com>
 
 pkgname=clang90
-pkgdesc="C language family frontend for LLVM, version 9.0.0 (installed under /opt/llvm90)"
+pkgdesc="C language family frontend for LLVM, version 9.0.0"
 pkgver=9.0.0
 pkgrel=1
 arch=('x86_64')
@@ -9,6 +9,8 @@ url="https://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
 depends=('llvm90' 'python')
 makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2')
+conflicts=('clang')
+replaces=('clang')
 options=('staticlibs')
 source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz
         https://releases.llvm.org/$pkgver/cfe-$pkgver.src.tar.xz)
@@ -19,11 +21,9 @@ build() {
   mkdir "$srcdir/cfe-$pkgver.src/build"
   cd "$srcdir/cfe-$pkgver.src/build"
 
-  export PATH=/opt/llvm90/bin:$PATH
-
   cmake .. -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/opt/llvm90 \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DPYTHON_EXECUTABLE=/usr/bin/python \
     -DBUILD_SHARED_LIBS=ON \
     -DLLVM_LINK_LLVM_DYLIB=ON \

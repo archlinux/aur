@@ -1,5 +1,5 @@
 pkgbase = clang90
-	pkgdesc = C language family frontend for LLVM, version 9.0.0 (installed under /opt/llvm90)
+	pkgdesc = C language family frontend for LLVM, version 9.0.0
 	pkgver = 9.0.0
 	pkgrel = 1
 	url = https://llvm.org/
@@ -13,6 +13,8 @@ pkgbase = clang90
 	makedepends = libxml2
 	depends = llvm90
 	depends = python
+	conflicts = clang
+	replaces = clang
 	options = staticlibs
 	source = https://releases.llvm.org/9.0.0/llvm-9.0.0.src.tar.xz
 	source = https://releases.llvm.org/9.0.0/cfe-9.0.0.src.tar.xz
