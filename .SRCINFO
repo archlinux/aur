@@ -30,7 +30,6 @@ pkgbase = pebble-tool-git
 	optdepends = arm-none-eabi-gcc: Required for installing SDK
 	optdepends = arm-none-eabi-newlib: Required for installing SDK
 	optdepends = qemu-pebble: Emulation support
-	conflicts = pebble-sdk
 	source = git+https://github.com/armorking5/pebble-tool.git
 	source = phonesim_path.patch
 	source = sdk_headers.patch
