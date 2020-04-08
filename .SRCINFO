@@ -1,7 +1,7 @@
 pkgbase = vesc_tool-git
 	pkgdesc = VESC ESC graphical configuration tool
 	pkgver = 2.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vesc-project.com/vesc_tool
 	arch = i686
 	arch = x86_64
@@ -15,10 +15,15 @@ pkgbase = vesc_tool-git
 	depends = qt5-quickcontrols2
 	depends = qt5-serialport
 	depends = qt5-location
+	conflicts = vesc-tool
 	source = vesc_tool-git::git+https://github.com/vedderb/vesc_tool.git
 	source = vesc_tool.pro
+	source = vesc-tool.desktop
+	source = vesc-tool.png
 	sha256sums = SKIP
 	sha256sums = fb9eb66d9ef00606f61754a7efa8dbab18dff810c674a106e2e770e62899be68
+	sha256sums = a0d31826279e900ab614744afad1a26b849440c298d8a5e6e318df554beebdde
+	sha256sums = ace90b5a9bd1001e234800b935d3622c6a10c73445f726677e838d51fe4c8e02
 
 pkgname = vesc_tool-git
 
