@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-coin-or-ipopt
 	pkgdesc = Interior Point OPTimizer (mingw-w64)
 	pkgver = 3.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.coin-or.org/Ipopt
 	arch = any
 	groups = mingw-w64-coin-or
@@ -10,7 +10,7 @@ pkgbase = mingw-w64-coin-or-ipopt
 	makedepends = mingw-w64-wine
 	makedepends = wget
 	depends = mingw-w64-lapack
-	depends = mingw-w64-coin-or-coinasl
+	depends = mingw-w64-coin-or-asl
 	depends = mingw-w64-coin-or-coinmumps
 	options = staticlibs
 	options = !buildflags
