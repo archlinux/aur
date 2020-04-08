@@ -2,7 +2,7 @@
 
 pkgname=portmod
 pkgver=2.0_beta0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cli tool to manage mods for OpenMW"
 provides=('portmod')
 conflicts=('portmod')
@@ -12,7 +12,7 @@ url="https://gitlab.com/portmod/portmod"
 license=(GPL3)
 depends=("python" "patool" "python-setuptools" "python-colorama" "python-appdirs" "python-black" "python-gitpython"
          "python-yaml" "python-progressbar" "python-restrictedpython" "bubblewrap" "omwcmd" "python-redbaron"
-         "python-python-sat")
+         "python-python-sat" "python-requests")
 makedepends=("python" "python-setuptools" "python-setuptools-scm")
 checkdepends=("python-pytest")
 optdepends=("omwllf" "tes3cmd" "tr-patcher")

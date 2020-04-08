@@ -1,7 +1,7 @@
 pkgbase = portmod
 	pkgdesc = A cli tool to manage mods for OpenMW
 	pkgver = 2.0_beta0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/portmod/portmod
 	arch = any
 	license = GPL3
@@ -23,6 +23,7 @@ pkgbase = portmod
 	depends = omwcmd
 	depends = python-redbaron
 	depends = python-python-sat
+	depends = python-requests
 	optdepends = omwllf
 	optdepends = tes3cmd
 	optdepends = tr-patcher
