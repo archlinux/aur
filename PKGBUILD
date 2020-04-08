@@ -4,8 +4,8 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=windowmaker-git
-pkgver=0.95.8.r0.g5d643a67
-pkgrel=2
+pkgver=0.95.9.r0.gf9bc310f
+pkgrel=1
 pkgdesc="An X11 window manager with a NEXTSTEP look and feel"
 arch=('i686' 'x86_64')
 url="http://www.windowmaker.org/"
@@ -15,8 +15,7 @@ conflicts=('windowmaker')
 makedepends=('git')
 depends=('imagemagick' 'libxinerama' 'libxrandr' 'libxmu' 'libbsd' 'libxpm' 'libxft' 'libwebp' 'libexif')
 source=("$pkgname::git://repo.or.cz/wmaker-crm.git"
-        'wmaker.desktop'
-        'https://gitweb.gentoo.org/repo/gentoo.git/plain/x11-wm/windowmaker/files/windowmaker-0.95.8-imagemagick7.patch')
+        'wmaker.desktop')
 
 pkgver() {
   cd $pkgname
@@ -25,7 +24,7 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  patch -Np1 -b -z .orig < ../windowmaker-0.95.8-imagemagick7.patch
+# patch -Np1 -b -z .orig < ../windowmaker-0.95.8-imagemagick7.patch
   
   autoreconf -fi
   
@@ -45,6 +44,8 @@ build() {
   ./configure --prefix=/usr --sysconfdir=/etc --enable-xinerama \
     --localedir=/usr/share/locale --with-gnustepdir=/usr/lib/GNUstep \
     --enable-usermenu --enable-modelock --enable-randr
+  # Fight unused direct deps
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
   make V=0
 }
 
@@ -57,5 +58,4 @@ package() {
 }
 
 sha256sums=('SKIP'
-            '126da08ac9cffc4354bb4f246ec5ed5abd3cd29ed665d05d190c5bf842c84bef'
-            'e89e8c7638f38296f1fc31d892672122a73ce89ce40c192bb404d852cca06692')
+            '126da08ac9cffc4354bb4f246ec5ed5abd3cd29ed665d05d190c5bf842c84bef')

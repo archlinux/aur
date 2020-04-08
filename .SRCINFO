@@ -1,7 +1,7 @@
 pkgbase = windowmaker-git
 	pkgdesc = An X11 window manager with a NEXTSTEP look and feel
-	pkgver = 0.95.8.r0.g5d643a67
-	pkgrel = 2
+	pkgver = 0.95.9.r0.gf9bc310f
+	pkgrel = 1
 	url = http://www.windowmaker.org/
 	arch = i686
 	arch = x86_64
@@ -21,10 +21,8 @@ pkgbase = windowmaker-git
 	conflicts = windowmaker
 	source = windowmaker-git::git://repo.or.cz/wmaker-crm.git
 	source = wmaker.desktop
-	source = https://gitweb.gentoo.org/repo/gentoo.git/plain/x11-wm/windowmaker/files/windowmaker-0.95.8-imagemagick7.patch
 	sha256sums = SKIP
 	sha256sums = 126da08ac9cffc4354bb4f246ec5ed5abd3cd29ed665d05d190c5bf842c84bef
-	sha256sums = e89e8c7638f38296f1fc31d892672122a73ce89ce40c192bb404d852cca06692
 
 pkgname = windowmaker-git
 
