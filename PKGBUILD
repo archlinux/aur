@@ -6,10 +6,10 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
-_pkgver=2020.3
-_channel=stable
-pkgver=${_pkgver}.${_channel}
-pkgrel=3
+_pkgver=2020.4
+_channel=beta
+pkgver=${_pkgver}.${_channel}2
+pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -19,15 +19,13 @@ makedepends=('git' 'go-pie' 'rust' 'npm')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
-_commit='90b0c06b59a0b9d6cda69924377335f39854b216'
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"
+_commit='fbd0bd510547bed0596dbb7c456de7c4df9556e0'
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}2?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
-        "${pkgname%-beta}.sh"
-        'update-relays.sh')
+        "${pkgname%-beta}.sh")
 sha256sums=('SKIP'
             'SKIP'
-            'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4'
-            '89267795175c5be95d13e8f700b69654faf2f38f35be5033eb8e94da404d2353')
+            'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
 validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               # Linus Färnstrand (code signing key) <linus at mullvad dot net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
@@ -45,10 +43,14 @@ prepare() {
 }
 
 build() {
-	echo "Building Mullvad VPN $_pkgver..."
+	cd "$srcdir/mullvadvpn-app"
+	local PRODUCT_VERSION=$(node -p "require('./gui/package.json').version" | \
+		sed -Ee 's/\.0//g')
+
+	echo "Building Mullvad VPN $PRODUCT_VERSION..."
 
 	# Build wireguard-go
-	cd "$srcdir/mullvadvpn-app/wireguard/wireguard-go"
+	cd "$srcdir/mullvadvpn-app/wireguard/libwg"
 	mkdir -p "../../build/lib/$arch-unknown-linux-gnu"
 	go build \
 		-trimpath \
@@ -57,6 +59,14 @@ build() {
 		-buildmode c-archive
 
 	cd "$srcdir/mullvadvpn-app"
+
+	echo "Restoring version metadata files..."
+	./version-metadata.sh restore-backup
+	mv Cargo.lock.bak Cargo.lock || true
+
+	echo "Updating version in metadata files..."
+	cp Cargo.lock Cargo.lock.bak
+	./version-metadata.sh inject $PRODUCT_VERSION
 
 	# Remove old Rust build artifacts
 	echo "Removing old Rust build artifacts"
@@ -73,13 +83,14 @@ build() {
 		mullvad
 		mullvad-problem-report
 		libtalpid_openvpn_plugin.so
+		mullvad-setup
 	)
 	for binary in ${binaries[*]}; do
 		cp "target/release/$binary" "dist-assets/$binary"
 	done
 
 	# Update relay list & generate relays.json
-	../update-relays.sh
+	./update-relays.sh
 
 	# Build Electron GUI app
 	cd gui
@@ -118,10 +129,9 @@ package() {
 	# Link to the GUI binary
 	install -m755 "$srcdir/${pkgname%-beta}.sh" "$pkgdir/usr/bin/${pkgname%-beta}"
 
-	cd dist
-
 	# Install desktop file & icons from .deb
-	ar x "MullvadVPN-${_pkgver}.0_amd64.deb"
+	cd dist
+	ar x "MullvadVPN-${_pkgver}.0-${_channel}2_amd64.deb"
 	tar -xf data.tar.xz
 	install -Dm644 "usr/share/applications/${pkgname%-beta}.desktop" -t \
 		"$pkgdir/usr/share/applications"
