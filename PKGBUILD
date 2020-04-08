@@ -2,7 +2,7 @@
 
 _plug=lsmashsource
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=r1036.86f757d
+pkgver=r1042.c128310
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -20,12 +20,8 @@ makedepends=('git'
              )
 provides=("avisynth-plugin-${_plug}")
 conflicts=("avisynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/HolyWu/L-SMASH-Works.git"
-        'avisynth.patch'
-        )
-sha256sums=('SKIP'
-            '0acae0a04dbb1174eab08c4c41d33fa9df0bd33463f7e09bbb9b2e2581242f6a'
-            )
+source=("${_plug}::git+https://github.com/HolyWu/L-SMASH-Works.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -37,14 +33,12 @@ prepare() {
   mkdir -p build
 
   rm -fr "${_plug}/include/"{avs*,avi*}
-
-  patch -d "${_plug}" -p1 -i "${srcdir}/avisynth.patch"
 }
 
 build() {
   cd build
 
-  arch-meson "../${_plug}/AviSynth"
+  meson "../${_plug}/AviSynth"
 }
 
 package(){

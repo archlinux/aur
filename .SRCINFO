@@ -1,6 +1,6 @@
 pkgbase = avisynth-plugin-lsmashsource-git
 	pkgdesc = Plugin for Avisynth: lsmashsource (GIT version)
-	pkgver = r1036.86f757d
+	pkgver = r1042.c128310
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=167435
 	arch = x86_64
@@ -16,9 +16,7 @@ pkgbase = avisynth-plugin-lsmashsource-git
 	provides = avisynth-plugin-lsmashsource
 	conflicts = avisynth-plugin-lsmashsource
 	source = lsmashsource::git+https://github.com/HolyWu/L-SMASH-Works.git
-	source = avisynth.patch
 	sha256sums = SKIP
-	sha256sums = 0acae0a04dbb1174eab08c4c41d33fa9df0bd33463f7e09bbb9b2e2581242f6a
 
 pkgname = avisynth-plugin-lsmashsource-git
 
