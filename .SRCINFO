@@ -1,7 +1,7 @@
 pkgbase = android-simg2img
-	pkgdesc = Tool to convert Android sparse images to raw images (standalone, avoid complex building chains)
+	pkgdesc = standalone simg-tools
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anestisb/android-simg2img
 	arch = x86_64
 	license = Apache
