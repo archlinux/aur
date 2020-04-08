@@ -1,0 +1,19 @@
+pkgbase = python-shadow-useragent
+	pkgdesc = Pick the most common user-agents on the Internet
+	pkgver = 0.0.17
+	pkgrel = 0
+	url = https://github.com/lobstrio/shadow-useragent
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-coloredlogs
+	depends = python-pytz
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/s/shadow-useragent/shadow-useragent-0.0.17.tar.gz
+	source = https://raw.githubusercontent.com/lobstrio/shadow-useragent/master/LICENSE
+	sha256sums = ace3f53c0ec697b36eb35bb04ccc04d4727bf924edd5bf7caad78b64d272d755
+	sha256sums = 55c77c92b416cef25358a86bfaf96568b5fdead5914ccebd681893b874fa3bba
+
+pkgname = python-shadow-useragent
+
