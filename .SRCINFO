@@ -1,0 +1,18 @@
+pkgbase = karaokemusicvideomanager
+	pkgdesc = A software that scans folders after music videos, brings them together in a list and starts them
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/AnonymerNiklasistanonym/KaraokeMusicVideoManager
+	arch = x86_64
+	license = MIT
+	makedepends = maven
+	makedepends = python
+	depends = jdk8-openjdk
+	depends = java8-openjfx
+	provides = karaokemusicvideomanager
+	conflicts = karaokemusicvideomanager
+	source = karaokemusicvideomanager.git::git+https://github.com/AnonymerNiklasistanonym/KaraokeMusicVideoManager#branch=master
+	sha1sums = SKIP
+
+pkgname = karaokemusicvideomanager
+
