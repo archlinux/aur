@@ -7,11 +7,11 @@
 pkgname=virtiofsd
 pkgdesc="QEMU VirtioFSd"
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
 url="https://virtio-fs.gitlab.io/"
-makedepends=('pixman>=0.21.8' 'python2')
+makedepends=('pixman>=0.21.8' 'python2' 'git')
 source=(
   "git+https://gitlab.com/virtio-fs/qemu.git#tag=virtio-fs-v${pkgver}"
   0001-add-time-to-seccomp.patch

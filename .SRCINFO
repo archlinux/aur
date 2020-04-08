@@ -1,7 +1,7 @@
 pkgbase = virtiofsd
 	pkgdesc = QEMU VirtioFSd
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://virtio-fs.gitlab.io/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = virtiofsd
 	license = LGPL2.1
 	makedepends = pixman>=0.21.8
 	makedepends = python2
+	makedepends = git
 	source = git+https://gitlab.com/virtio-fs/qemu.git#tag=virtio-fs-v0.3
 	source = 0001-add-time-to-seccomp.patch
 	source = 0002-libvhost-user-Fix-the-VHOST_USER_PROTOCOL_F_SLAVE_SE.patch
