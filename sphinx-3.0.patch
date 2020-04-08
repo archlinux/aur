@@ -1,0 +1,103 @@
+From 16fc5f43358e9790f325e1c6abdc5defc2d58832 Mon Sep 17 00:00:00 2001
+From: Chih-Hsuan Yen <yan12125@gmail.com>
+Date: Wed, 8 Apr 2020 20:22:36 +0800
+Subject: [PATCH] Fixing building docs with Sphinx 3.0
+
+1. Remove the bbdocs.highlighterrors extension, which is incompatible with
+   Sphinx 3.0, where sphinx.highlighting.PygmentsBridge.unhighlighted()
+   is removed. Actually that extension appears to be unused all the time.
+   When that module is added [1], Sphinx 1.3.3 is used [2], while calls
+   to PygmentsBridge.unhighlighted() had been gradually removed in Sphinx
+   1.2 [3] and 1.3 [4].
+2. Fix duplicate names in docs. Two of them are caused by incorrect
+   function/class name, and others are by same class names in different
+   Python modules with missing py:module declarations.
+3. Bump the Sphinx version
+
+[1] https://github.com/buildbot/buildbot/commit/b3292b136a9bce478aacc36b2462e922d5575e93
+[2] https://github.com/buildbot/buildbot/blob/b3292b136a9bce478aacc36b2462e922d5575e93/.travis.yml#L127
+[3] https://github.com/sphinx-doc/sphinx/commit/b29226a0609d5803afd51c01f6d522bd30592dbf
+[4] https://github.com/sphinx-doc/sphinx/commit/db1cf80a69778d882f5c39b8966dc9fd5af256ac
+---
+ .../newsfragments/update-sphinx-3.doc         |  1 +
+ master/docs/bbdocs/highlighterrors.py         | 96 -------------------
+ master/docs/conf.py                           |  1 -
+ master/docs/developer/utils.rst               |  8 +-
+ .../docs/manual/configuration/buildsteps.rst  |  2 +-
+ requirements-cidocs.txt                       |  2 +-
+ 6 files changed, 10 insertions(+), 100 deletions(-)
+ create mode 100644 master/buildbot/newsfragments/update-sphinx-3.doc
+ delete mode 100644 master/docs/bbdocs/highlighterrors.py
+
+diff --git a/master/buildbot/newsfragments/update-sphinx-3.doc b/master/buildbot/newsfragments/update-sphinx-3.doc
+new file mode 100644
+index 0000000000..aa7accbaab
+--- /dev/null
++++ b/master/buildbot/newsfragments/update-sphinx-3.doc
+@@ -0,0 +1 @@
++Make docs build with Sphinx 3 and fix some typos and incorrect Python module declarations
+diff --git a/master/docs/conf.py b/master/docs/conf.py
+index 2e340b5a44..bc3738f9ce 100755
+--- a/master/docs/conf.py
++++ b/master/docs/conf.py
+@@ -56,7 +56,6 @@
+     'sphinx.ext.todo',
+     'sphinx.ext.extlinks',
+     'bbdocs.ext',
+-    'bbdocs.highlighterrors',
+     'sphinxcontrib.blockdiag',
+     'sphinxcontrib.jinja',
+     'sphinx_rtd_theme',
+diff --git a/master/docs/developer/utils.rst b/master/docs/developer/utils.rst
+index adc0cb2981..0c968ff133 100644
+--- a/master/docs/developer/utils.rst
++++ b/master/docs/developer/utils.rst
+@@ -789,7 +789,7 @@ The classes in the :py:mod:`buildbot.util.subscription` module are used for deal
+ 
+         Get a named state value from the object's state.
+ 
+-    .. py:method:: getState(name, value)
++    .. py:method:: setState(name, value)
+ 
+         :param name: the name of the value to change
+         :param value: the value to set - must be a JSONable object
+@@ -1143,6 +1143,8 @@ For example, a particular daily scheduler could be configured on multiple master
+ :py:mod:`buildbot.util.httpclientservice`
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
++.. py:module:: buildbot.util.httpclientservice
++
+ .. py:class:: HTTPClientService
+ 
+     This class implements a SharedService for doing http client access.
+@@ -1257,6 +1259,8 @@ For example, a particular daily scheduler could be configured on multiple master
+ :py:mod:`buildbot.test.fake.httpclientservice`
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
++.. py:module:: buildbot.test.fake.httpclientservice
++
+ .. py:class:: HTTPClientService
+ 
+     This class implements a fake version of the :class:`buildbot.util.httpclientservice.HTTPClientService` that needs to be used for testing services which needs http client access.
+@@ -1353,6 +1357,8 @@ For example, a particular daily scheduler could be configured on multiple master
+ :py:mod:`buildbot.util.ssl`
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
++.. py:module:: buildbot.util.ssl
++
+ This module is a copy of :py:mod:`twisted.internet.ssl` except it won't crash with :py:class:`ImportError` if :py:mod:`pyopenssl` is not installed.
+ If you need to use :py:mod:`twisted.internet.ssl`, please instead use :py:mod:`buildbot.util.ssl`, and call :py:func:`ssl.ensureHasSSL` in :py:meth:`checkConfig` to provide helpful message to the user, only if he enabled SSL for your plugin.
+ 
+diff --git a/master/docs/manual/configuration/buildsteps.rst b/master/docs/manual/configuration/buildsteps.rst
+index b4b45cb21d..c25ffe31d0 100644
+--- a/master/docs/manual/configuration/buildsteps.rst
++++ b/master/docs/manual/configuration/buildsteps.rst
+@@ -2658,7 +2658,7 @@ It is usually called with the ``value`` argument being specified as a :ref:`Inte
+ :class:`SetProperties` step
+ +++++++++++++++++++++++++++
+ 
+-.. py:class:: buildbot.steps.master.SetProperty
++.. py:class:: buildbot.steps.master.SetProperties
+ 
+ :bb:step:`SetProperties` takes a dictionary to be turned into build properties.
+ 
