@@ -1,7 +1,7 @@
 pkgbase = cheat-git
 	pkgdesc = Allows you to create and view interactive cheatsheets on the command-line
 	pkgver = 3.9.0.r0.gc4dd3b5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cheat/cheat
 	arch = arm
 	arch = armv6h
@@ -18,7 +18,6 @@ pkgbase = cheat-git
 	conflicts = cheat
 	conflicts = cheat-bash-git
 	conflicts = python-cheat
-	conflicts = zsh-completions
 	backup = etc/cheat-git/conf.yml
 	source = git+https://github.com/cheat/cheat.git
 	source = conf.yml

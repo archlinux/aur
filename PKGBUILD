@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 # Contributor: Bogdan <d0xi at inbox dot ru>
-# Contributor: Quan Guo < guotsuan@gmail.com>
+# Contributor: Quan Guo <guotsuan@gmail.com>
 pkgname=cheat-git
 pkgver=3.9.0.r0.gc4dd3b5
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('arm' 'armv6h' 'armv7h' 'x86_64')
 url="https://github.com/cheat/cheat"
@@ -13,8 +13,7 @@ makedepends=('git' 'go-pie' 'pandoc')
 optdepends=('fzf: for Fuzzy Finder integration'
             'bash-completion: for bash completions')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" "${pkgname%-git}-bash-git" "python-${pkgname%-git}"
-           'zsh-completions')
+conflicts=("${pkgname%-git}" "${pkgname%-git}-bash-git" "python-${pkgname%-git}")
 backup=("etc/$pkgname/conf.yml")
 source=('git+https://github.com/cheat/cheat.git'
         'conf.yml'
@@ -63,8 +62,8 @@ package() {
 		"$pkgdir/usr/share/bash-completion/completions/${pkgname%-git}"
 	install -Dm755 "scripts/${pkgname%-git}.fish" -t \
 		"$pkgdir/usr/share/fish/completions"
-	install -Dm755 "scripts/${pkgname%-git}.zsh" \
-		"$pkgdir/usr/share/zsh/site-functions/_${pkgname%-git}"
+#	install -Dm755 "scripts/${pkgname%-git}.zsh" \
+#		"$pkgdir/usr/share/zsh/site-functions/_${pkgname%-git}"
 	install -Dm644 LICENSE.txt \
 		"$pkgdir/usr/share/licenses/${pkgname%-git}/${pkgname%-git}-LICENSE"
 	install -Dm644 "doc/${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
