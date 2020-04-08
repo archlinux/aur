@@ -1,15 +1,15 @@
 pkgbase = python-casttube
 	pkgdesc = YouTube chromecast api
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = http://github.com/ur1katz/casttube
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	depends = python-requests
-	source = https://github.com/ur1katz/casttube/archive/0.2.0.tar.gz
-	sha256sums = 5dffe63803914ccd0f311940dc49865c4cd0bd4461f901c27a0ef22b3338cd14
+	source = https://github.com/ur1katz/casttube/archive/0.2.1.tar.gz
+	sha256sums = 351819818a10a107641675cab71c4154afb490762410b3138c18ef410cbf5c33
 
 pkgname = python-casttube
 
