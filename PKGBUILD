@@ -9,7 +9,7 @@
 ((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75) # Travis memory limit is not enough to build for arch 3.x.
 
 # Configuration.
-_fragment="#branch=master"
+_fragment=${FRAGMENT:-#branch=master}
 #some extra, unofficially supported stuff goes here:
 _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 ((DISABLE_EMBREE)) || {
