@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _major=5.6
-_minor=2
+_minor=3
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=3
+pkgrel=1
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -78,7 +78,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v4/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0002-ALSA-hda-Fix-potential-access-overflow-in-beep-helpe.patch"
+        'sphinx-workaround.patch'
          # the main kernel config files
         'config')
 
@@ -320,12 +322,14 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('174e085eb14c64dedb15ea2186d0103baafce0653fe287b057b650e51cc3e5faa375a9224c046f2b2d3da995e1d79469c04d9ad666c91548790253b2078e2be7'
+sha512sums=('d518a6451f8fe35d1baf01f7d831f8ce90665ab1793849c885b4efc873583f50f07d81b98b922c45817f6ed091b06e17cfc9c9dd291fbbc52ca2c544b7d6e089'
             'SKIP'
             'bb6892612524d0cd667048d4a3d8352b04fca0e65398dc96964cc29241c7167f5f3e7d8a1a10c8afa7167a374611f2f3dd57dab04ed351cbedc4fcac4103669c'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
-            '080850eb686f4b8162e348eacc54d6407c810e4430f574a0da009ff851f89e7bc442cfd107a4a4edf009de6dbd83f1cd9ce1c75a2140554b34f35ff0a81c8779'
-            '593bc1d9d6b43bb37d884fdaa073d024856c19f0002aae0f9bcace1f546c08e09dfced00caf7b6098750134ef166e5cbbebffcf7300c28085a37ec0da1160252')
+            '8064aa16172a42a3f23cff6278056a5c2ff7fa6560f3b975e4a7dfd7ce5d00f15af851fd4ef1f40a78707aeaad5a1eef3012ef5f7fb9242ca584b3a230d343cd'
+            'e0b39955fd3a7d558aea0ad72ebcd59eb649c47d9270deea3130f7a3703aa4e319727ab97a95cd365e1e7fad0a9ab31fd0787b36a22858012af5f337153ab48f'
+            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
+            'fb9188c7e5a2330eef2216bfb190585a0d1e624068f7a14ded774075428c927d54a5364ae2622ac08e51393f9ab2d7e62a41bb9245c0bd9cb61b4317bc0943ea')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
