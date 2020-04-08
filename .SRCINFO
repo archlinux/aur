@@ -5,7 +5,6 @@ pkgbase = air-bin
 	url = https://github.com/cosmtrek/air
 	arch = x86_64
 	license = GPL-3.0
-	makedepends = go
 	source = air-bin-1.12.0.tar.gz::https://github.com/cosmtrek/air/archive/v1.12.0.tar.gz
 	md5sums = 5752fc5ffadaae4c5b56e10847d933fd
 

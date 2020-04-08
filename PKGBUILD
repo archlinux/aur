@@ -7,7 +7,6 @@ pkgdesc="Cloud Live reload for Go apps"
 arch=('x86_64')
 url='https://github.com/cosmtrek/air'
 license=('GPL-3.0')
-makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cosmtrek/air/archive/v${pkgver}.tar.gz")
 md5sums=('5752fc5ffadaae4c5b56e10847d933fd')
 
