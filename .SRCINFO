@@ -1,14 +1,14 @@
 pkgbase = gavrasm
 	pkgdesc = Command line assembler for Atmel AVR microcontrollers with many extended features
-	pkgver = 4.3
+	pkgver = 4.6
 	pkgrel = 1
 	url = http://www.avr-asm-tutorial.net/gavrasm
 	arch = i686
 	arch = x86_64
 	license = Custom
 	makedepends = fpc
-	source = http://www.avr-asm-tutorial.net/gavrasm/v43/gavrasm_sources_lin_43.zip
-	sha256sums = 1dac3d690c1d47db260705d0a34431dfd28a597d4f5d8999619d69806cfad65e
+	source = http://www.avr-asm-tutorial.net/gavrasm/v46/gavrasm_sources_lin_46.zip
+	sha256sums = 983012b0bc2fc304c36a08d879548775d2db6442ed13c9bc156dad75b9e67a8a
 
 pkgname = gavrasm
 
