@@ -1,0 +1,18 @@
+pkgbase = marktex
+	pkgdesc = Web service for files that support advanced Markdown commands mixed with LaTeX sections
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AnonymerNiklasistanonym/MarkTeX
+	arch = x86_64
+	license = MIT
+	depends = nodejs
+	depends = inkscape-git
+	depends = pandoc
+	depends = texlive-core
+	provides = marktex
+	conflicts = marktex
+	source = marktex.git::git+https://github.com/AnonymerNiklasistanonym/MarkTeX#branch=master
+	sha1sums = SKIP
+
+pkgname = marktex
+
