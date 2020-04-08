@@ -1,0 +1,16 @@
+pkgbase = python-aktools
+	pkgdesc = AkTools is an elegant and simple HTTP server library for AkShare, built for aksharers
+	pkgver = 0.0.14
+	pkgrel = 1
+	url = https://aktools.readthedocs.io
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-akshare
+	depends = python-fastapi
+	provides = aktools
+	source = https://github.com/jindaxiang/aktools/archive/v0.0.14.tar.gz
+	md5sums = 8251cf12fde886e0544c021e5d59e2f8
+
+pkgname = python-aktools
+
