@@ -4,9 +4,9 @@
 
 pkgname=pycharm-community-eap
 
-_buildver=201.6668.67
+_buildver=201.6668.115
 _pkgver=2020.1
-_eap=y
+_eap=n
 pkgver="$_pkgver.$_buildver"
 pkgrel=1
 epoch=5
@@ -24,7 +24,7 @@ depends=('libdbusmenu-glib')
 
 options=('!strip')
 
-if [ "$_eap = y" ]; then
+if [ "$_eap" = y ]; then
     _filever="$_buildver"
 else
     _filever="$_pkgver"
