@@ -18,7 +18,7 @@ options=('!strip')
 conflicts=('xilinx-ise')
 
 # Just place the downloaded .tar into your homedir
-source=('local://Xilinx_ISE_DS_Lin_14.7_1015_1.tar')
+source=('file://~/Xilinx_ISE_DS_Lin_14.7_1015_1.tar')
 source_i686=('xilinx-ise-32.desktop')
 source_x86_64=('xilinx-ise-64.desktop')
 md5sums=('e8065b2ffb411bb74ae32efa475f9817')
