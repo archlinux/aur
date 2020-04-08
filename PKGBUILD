@@ -2,17 +2,17 @@
 
 pkgname=ruby-jsonpath
 _gemname=jsonpath
-pkgver=1.0.5
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Ruby implementation of http://goessner.net/articles/JsonPath'
 arch=('any')
 url='https://github.com/joshbuddy/jsonpath'
 license=('MIT')
-depends=('ruby')
+depends=('ruby' 'ruby-multi_json')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=('$_gemname-$pkgver.gem')
-md5sums=('935d7c185d5f4d4983437b5862e7d74c')
+md5sums=('b5dd754e81ad2ee39f92e511f50d7ef3')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
