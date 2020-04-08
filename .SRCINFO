@@ -11,7 +11,7 @@ pkgbase = cherrytree
 	optdepends = p7zip: for password protection support
 	optdepends = enchant-hspell: spell checking
 	source = https://www.giuspen.com/software/cherrytree-0.39.2.tar.xz
-	md5sums = d9c654e1393fd2ce859101fbba47ade7
+	sha256sums = 99b9a78beaf3749299df41fa1d2cf85e382a23c904d9ac3023b71326a63a5846
 
 pkgname = cherrytree
 
