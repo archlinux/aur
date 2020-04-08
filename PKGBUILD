@@ -2,7 +2,8 @@
 pkgname=opcoffox
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="OpenConnect Firefox"
+pkgdesc="Script to provide a Firefox connected to an Openconnect VPN without \
+affecting the hosts networking."
 arch=('x86_64')
 url="https://github.com/markeganfuller/opcoffox"
 license=('MIT')

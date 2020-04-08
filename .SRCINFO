@@ -1,5 +1,5 @@
 pkgbase = opcoffox
-	pkgdesc = OpenConnect Firefox
+	pkgdesc = Script to provide a Firefox connected to an Openconnect VPN without affecting the hosts networking.
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/markeganfuller/opcoffox
