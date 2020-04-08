@@ -1,6 +1,6 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
-	pkgver = 5.6.2
+	pkgver = 5.6.3
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = linux-clear
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.6.2.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.6.3.xz
 	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.6.2-932
 	source = enable_additional_cpu_optimizations-20191217.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20191217.tar.gz
 	source = pci-enable-overrides-for-missing-acs-capabilities.patch
@@ -22,7 +22,7 @@ pkgbase = linux-clear
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622
 	sha256sums = SKIP
-	sha256sums = f16c1edbc79caa6098ca9964b27330cff970f016adc32c7baf95f4c2e7a1665d
+	sha256sums = a677aa98df0fc907314130b511feef3108717d98c405c98a51dde4e06d1c492c
 	sha256sums = SKIP
 	sha256sums = 7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5
 	sha256sums = 4127910703ed934224941114c2a4e0bcc5b4841f46d04063ed7b20870a51baa0
