@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=aria2p
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Command-line tool and library to interact with an aria2c daemon process with JSON-RPC"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-loguru' 'python-requests' 'python-websocket-client')
 optdepends=('aria2: aria2c daemon'
             'python-asciimatics: interactive interface support')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('a0c10a91688d4f9e0205cebc789d11cbc3c3ca3fb056ab74a069d63bd803f70e')
+sha256sums=('d167f60c38ea230b1221b06d5f5318b7e97b8e34ff9c9c45c499cad64ee42051')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
