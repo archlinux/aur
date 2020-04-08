@@ -27,7 +27,16 @@ package() {
     dst="${pkgdir}/usr/share/icons"
     mkdir -p "${dst}"
     cd "${srcdir}/${_reponame}"
-    cp -r dist/ "${dst}/Layan-cursors"
-    cp -r dist-border/ "${dst}/Layan-border-cursors"
-    cp -r dist-white/ "${dst}/Layan-white-cursors"
+    if [ -z ${_cleancursordirname+x} ]; then
+        _cleancursordirname=false
+    fi
+    if [ "$_cleancursordirname" = "true" ]; then
+        cp -r dist/ "${dst}/Layan Unraveled"
+        cp -r dist-border/ "${dst}/Layan"
+        cp -r dist-white/ "${dst}/Layan Reborn"
+    else
+        cp -r dist/ "${dst}/Layan-cursors"
+        cp -r dist-border/ "${dst}/Layan-border-cursors"
+        cp -r dist-white/ "${dst}/Layan-white-cursors"
+    fi
 }
