@@ -4,17 +4,17 @@
 # Contributor: Quan Guo < guotsuan@gmail.com>
 pkgname=cheat-git
 pkgver=3.8.0.r0.g3e67eaa
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('arm' 'armv6h' 'armv7h' 'x86_64')
 url="https://github.com/cheat/cheat"
 license=('MIT' 'CC0 1.0 Universal')
-makedepends=('git' 'go-pie')
+makedepends=('git' 'go-pie' 'pandoc')
 optdepends=('fzf: for Fuzzy Finder integration'
-            'bash-completion: for bash completions'
-            'fish: for fish completions')
+            'bash-completion: for bash completions')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bash-git" "python-${pkgname%-git}")
+backup=("etc/$pkgname/conf.yml")
 source=('git+https://github.com/cheat/cheat.git'
         'conf.yml'
         'git+https://github.com/cheat/cheatsheets.git')
@@ -50,6 +50,9 @@ build() {
 
 	# Clean mod cache for makepkg -C
 	go clean -modcache
+
+	# Generate man page
+	pandoc -s -t man "doc/${pkgname%-git}.1.md" -o "doc/${pkgname%-git}.1"
 }
 
 package() {
@@ -57,8 +60,13 @@ package() {
 	install -Dm755 "dist/${pkgname%-git}" -t "$pkgdir/usr/bin"
 	install -Dm755 "scripts/${pkgname%-git}.bash" \
 		"$pkgdir/usr/share/bash-completion/completions/${pkgname%-git}"
-	install -Dm755 "scripts/${pkgname%-git}.fish" -t "$pkgdir/usr/share/fish/completions"
-	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/${pkgname%-git}/${pkgname%-git}-LICENSE"
+	install -Dm755 "scripts/${pkgname%-git}.fish" -t \
+		"$pkgdir/usr/share/fish/completions"
+#	install -Dm755 "scripts/${pkgname%-git}.zsh" \
+#		"$pkgdir/usr/share/zsh/site-functions/_${pkgname%-git}"
+	install -Dm644 LICENSE.txt \
+		"$pkgdir/usr/share/licenses/${pkgname%-git}/${pkgname%-git}-LICENSE"
+	install -Dm644 "doc/${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
 
 	install -dm755 "$pkgdir/usr/share/${pkgname%-git}/cheatsheets/community"
 	find "$srcdir/cheatsheets" \
