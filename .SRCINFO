@@ -1,7 +1,7 @@
 pkgbase = google-webdesigner
 	pkgdesc = Create engaging, interactive HTML5-based designs and motion graphics that can run on any device.
 	pkgver = 8.0.1.0401
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.google.com/webdesigner
 	install = google-webdesigner.install
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = google-webdesigner
 	options = !emptydirs
 	options = !strip
 	source = google-webdesigner_current_amd64.deb::https://dl.google.com/linux/direct/google-webdesigner_current_amd64.deb
-	sha256sums = d52652187917f917c8a30207b9d227172a23851a162d299422a94193fc419520
+	sha256sums = d6c4b8e90ad60e0a6bf131f3bfdbf8ff58cd0fb1adec2b08da74af2fd98bef15
 
 pkgname = google-webdesigner
 
