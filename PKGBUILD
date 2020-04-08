@@ -1,8 +1,7 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 _npmname=aws-cdk
-_npmver=1.31.0
 pkgname=nodejs-aws-cdk
-pkgver=1.31.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc="CDK Toolkit, the command line tool for CDK apps"
 arch=(any)
@@ -11,16 +10,15 @@ license=('Apache')
 depends=('nodejs')
 makedepends=('npm')
 optdepends=('python: python language support')
-source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
+source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('e65dea885fb1e2a0fbcaee4bc6f85c443f7d58f5')
+sha1sums=('659e2079deb684e39c1c504f9adddeb07cf6b7ef')
 
 package() {
-  cd $srcdir
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p $_npmdir
   cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+  npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
 }
 
 # vim:set ts=2 sw=2 et:
