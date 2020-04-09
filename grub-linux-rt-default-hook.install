@@ -1,4 +1,4 @@
-patch_file=/usr/share/grub-linux-default-hook/grub-linux-default-hook.patch
+patch_file=/usr/share/grub-linux-rt-default-hook/grub-linux-rt-default-hook.patch
 
 post_install() {
   patch -p0 <"$patch_file"

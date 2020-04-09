@@ -7,4 +7,4 @@ Target = grub
 [Action]
 Description = Patching grub to make vmlinuz-linux the first entry
 When = PostTransaction
-Exec = /usr/bin/patch -p0 -i /usr/share/grub-linux-default-hook/grub-linux-default-hook.patch
+Exec = /usr/bin/patch -p0 -i /usr/share/grub-linux-rt-default-hook/grub-linux-rt-default-hook.patch

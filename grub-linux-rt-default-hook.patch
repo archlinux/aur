@@ -5,7 +5,7 @@
  
  is_top_level=true
 +default_kernel_grabbed=false
-+default_kernel_name="/boot/vmlinuz-linux"
++default_kernel_name="/boot/vmlinuz-linux-rt"
  while [ "x$list" != "x" ] ; do
    linux=`version_find_latest $list`
 +  if [ "x$default_kernel_grabbed" = xfalse ] ; then
