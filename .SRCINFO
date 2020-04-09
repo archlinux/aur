@@ -13,7 +13,7 @@ pkgbase = kt6
 	depends = sqlite
 	options = strip
 	source = https://www.iztech.ru/content/files/app/kt6-latest-x86_64.tar.gz
-	md5sums = f45c955a8ea2aab6b16020f5cde7f309
+	md5sums = 884762a032b07de837e9f9612e75269d
 
 pkgname = kt6
 
