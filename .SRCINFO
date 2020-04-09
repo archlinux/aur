@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-inputstream-rtmp-git
 	pkgdesc = librtmp support for Kodi 18+
-	pkgver = 2.0.8.Leia.r0.gb45f675
+	pkgver = 2.0.9.Leia.r0.g5311e2f
 	pkgrel = 1
 	url = https://github.com/xbmc/inputstream.rtmp
 	arch = x86_64
