@@ -1,7 +1,7 @@
 pkgbase = ddd
 	pkgdesc = A graphical front-end for command-line debuggers such as GDB, JDB, pydb, perl debugger...
 	pkgver = 3.3.12
-	pkgrel = 10
+	pkgrel = 12
 	url = http://www.gnu.org/software/ddd/
 	arch = x86_64
 	license = GPL3

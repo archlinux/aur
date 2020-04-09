@@ -3,7 +3,7 @@
 
 pkgname=ddd
 pkgver=3.3.12
-pkgrel=10
+pkgrel=12
 pkgdesc="A graphical front-end for command-line debuggers such as GDB, JDB, pydb, perl debugger..."
 arch=('x86_64')
 url="http://www.gnu.org/software/ddd/"
