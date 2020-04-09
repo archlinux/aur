@@ -2,12 +2,12 @@
 
 pkgname=landeseternelles
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Landes Eternelles is a french role playing game (mmorpg), forked from Eternal Lands."
 arch=('i686' 'x86_64')
 url="https://www.landes-eternelles.com"
 license=(custom:'eternal_lands_license')
-depends=(sh libglvnd gtk2)
+depends=('gtk2' 'glu' 'cal3d' 'sdl_image' 'sdl_net' 'openal' 'libvorbis' 'libxslt')
 
 source=(
     https://landes-eternelles.com/client/1940/linux/LandesEternellesLinux.tar.gz
@@ -25,8 +25,8 @@ package() {
     install -m755 $srcdir/editeurlandeseternelles $pkgdir/usr/bin/editeurlandeseternelles
 
     cd "$srcdir/LandesEternelles"
-    install -m755 le.$CARCH.static.bin $pkgdir/usr/bin/le.$CARCH.static.bin
-    install -m755 mapedit.$CARCH.static.bin $pkgdir/usr/bin/mapedit.$CARCH.static.bin
+    install -m755 le.$CARCH.linux.bin $pkgdir/usr/bin/le.$CARCH.linux.bin
+    install -m755 mapedit.$CARCH.linux.bin $pkgdir/usr/bin/mapedit.$CARCH.linux.bin
     
     rm -f *.bin icon.bmp
     install -m644 Licence.txt $pkgdir/usr/share/licenses/$pkgname/Licence.txt
@@ -38,5 +38,5 @@ package() {
 sha256sums=('f5e249cf518914978e1e97aa49ca1f58d236c6984acb6771e248f2d482db3f2b'
             '1357259d4232d8533d3acdf22c63a9b650472f0ca2cf9841eb03ebd6a514e3f7'
             'f42bb2fdd8b981ca2ed5552110831e349852439b3ea0ead13f7fa328f3a30b72'
-            '066457e0c01436667bf85d3d34919fba87a6cf1b2953e6960c6353826a862dd4'
-            '5da82012b1c9aa39d7b151b97b7749b7d5145691d4f6aedeca3cfa45689b2704')
+            '8c4450e426a6d290e32b30d5dfe345689ae80d871088300a5a047567d05fe4a5'
+            '3166015f10f0b6592844f6935933f9684f8a055fd407eab7f9c789dac98ec998')

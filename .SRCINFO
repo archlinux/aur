@@ -1,14 +1,19 @@
 pkgbase = landeseternelles
 	pkgdesc = Landes Eternelles is a french role playing game (mmorpg), forked from Eternal Lands.
 	pkgver = 1.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.landes-eternelles.com
 	arch = i686
 	arch = x86_64
 	license = custom:eternal_lands_license
-	depends = sh
-	depends = libglvnd
 	depends = gtk2
+	depends = glu
+	depends = cal3d
+	depends = sdl_image
+	depends = sdl_net
+	depends = openal
+	depends = libvorbis
+	depends = libxslt
 	source = https://landes-eternelles.com/client/1940/linux/LandesEternellesLinux.tar.gz
 	source = landeseternelles.desktop
 	source = landeseternelles.png
@@ -17,8 +22,8 @@ pkgbase = landeseternelles
 	sha256sums = f5e249cf518914978e1e97aa49ca1f58d236c6984acb6771e248f2d482db3f2b
 	sha256sums = 1357259d4232d8533d3acdf22c63a9b650472f0ca2cf9841eb03ebd6a514e3f7
 	sha256sums = f42bb2fdd8b981ca2ed5552110831e349852439b3ea0ead13f7fa328f3a30b72
-	sha256sums = 066457e0c01436667bf85d3d34919fba87a6cf1b2953e6960c6353826a862dd4
-	sha256sums = 5da82012b1c9aa39d7b151b97b7749b7d5145691d4f6aedeca3cfa45689b2704
+	sha256sums = 8c4450e426a6d290e32b30d5dfe345689ae80d871088300a5a047567d05fe4a5
+	sha256sums = 3166015f10f0b6592844f6935933f9684f8a055fd407eab7f9c789dac98ec998
 
 pkgname = landeseternelles
 

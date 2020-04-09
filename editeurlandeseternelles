@@ -2,9 +2,9 @@
 
 cd /usr/share/landeseternelles
 
-if test -f /usr/bin/mapedit.x86_64.static.bin
+if test -f /usr/bin/mapedit.x86_64.linux.bin
 then
-        /usr/bin/mapedit.x86_64.static.bin
+        /usr/bin/mapedit.x86_64.linux.bin
 else
-        /usr/bin/mapedit.x86.static.bin
+        /usr/bin/mapedit.x86.linux.bin
 fi
