@@ -1,7 +1,7 @@
 pkgbase = bandwidthd
 	pkgdesc = Daemon for graphing traffic of subnet machines
 	pkgver = 2.0.2.r1.0307fbba56
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://github.com/neatbasis/bandwidthd
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = bandwidthd
 	sha256sums = fc38a5623e66d82dec2efd28d2729e76e8f3b6056fb2bc2462a1ea1549f68807
 	sha256sums = f3a9ade36279f86e897d3842a8cb22a5a56db419b12f1689557b2d03ea765e58
 	sha256sums = ab93801ae0b05129aaf62a49c065fdb62b7ae16d88d8b956164c2f416df5da81
-	sha256sums = 08f360c4ee926bd28ee5f945e03aa8b2b96f299c2022e48dc9b3abf9be4ad7b9
+	sha256sums = cd7b1ffff5dd9490ab69d777e459d79c229d5fef2e71a811df29f6c11e6acde4
 	sha256sums = 31780d5d9c67158277a0edeeb672c594af97f96678222107db47ab4b2ede43b2
 	sha256sums = 90e0fec629c87d2465ca311acedf0ca4ccf5d77ddf60a8db1f5095cc8c41a748
 	sha256sums = d734cea9710691a1658b9996e35cd407e85b542aa0961aec57fc49281516aa5d
