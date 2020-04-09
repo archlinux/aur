@@ -19,6 +19,5 @@ package() {
     install -d "$pkgdir/usr/share/licenses/$pkgname"
     find "$srcdir" -not -name "*Windows Compatible*" -a -name "*.otf" \
 	-exec install -Dm644 {} "$pkgdir/usr/share/fonts/OTF" \;
-    install -Dm644 "$srcdir/*.otf ${pkgdir}/usr/share/fonts/OTF"
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
