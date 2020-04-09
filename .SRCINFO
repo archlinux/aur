@@ -1,7 +1,7 @@
 pkgbase = smcroute
 	pkgdesc = A command line tool to manipulate the multicast routes of a UNIX kernel. It supports both IPv4 and IPv6 multicast routing.
 	pkgver = 2.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://troglobit.com/smcroute.html
 	arch = i686
 	arch = x86_64

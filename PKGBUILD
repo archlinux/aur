@@ -2,7 +2,7 @@
 # Contributor: Julien Sopena (jsopena.archlinux@free.fr)
 pkgname=smcroute
 pkgver=2.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line tool to manipulate the multicast routes of a UNIX kernel. It supports both IPv4 and IPv6 multicast routing."
 arch=('i686' 'x86_64')
 url="https://troglobit.com/smcroute.html"
@@ -18,13 +18,18 @@ md5sums=('a1dc8c54c684e8c8de139444f73a0ba3'
          '7b28500642045b2482f5ac873da0f86b')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr --sbindir=/usr/bin
+  cd $pkgname-$pkgver
+  ./configure \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc \
+    --runstatedir=/run \
+    --localstatedir=/var
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir/" install
 
   install -Dm644 "${srcdir}/smcroute.conf.example" "${pkgdir}/etc/smcroute.conf"
