@@ -1,0 +1,17 @@
+pkgbase = qmpdclient-qt5
+	pkgdesc = An Qt5 client for MPD
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/runelite/launcher
+	arch = x86_64
+	license = GPL2
+	depends = qt5-base
+	depends = qt5-xmlpatterns
+	depends = qt5-x11extras
+	depends = dbus
+	conflicts = qmpdclient
+	source = https://github.com/ChaoticEnigma/qmpdclient/archive/v2.0.1.tar.gz
+	sha256sums = 3b09622dcf2c7b31c25ca9caf6db4a701ba79e7786d8b4d76908239df8655e15
+
+pkgname = qmpdclient-qt5
+
