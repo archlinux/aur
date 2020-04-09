@@ -1,0 +1,13 @@
+pkgbase = python-rpdb
+	pkgdesc = python remote debugger based on pdb
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://pypi.org/project/rpdb/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	source = https://github.com/tamentis/rpdb/archive/0.1.6.tar.gz
+	sha256sums = 420032fe6d25fb306e5c1cba638904e7ec14c284f6c6f2a5d866790ae19c1c9e
+
+pkgname = python-rpdb
+
