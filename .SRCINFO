@@ -20,7 +20,7 @@ pkgbase = ocaml-ppx_assert
 	depends = ocaml-ppx_sexp_conv>=0.13.0
 	depends = ocaml-ppxlib>=0.9.0
 	options = !strip
-	source = ocaml-ppx_assert-0.13.0-1.tar.gz::https://github.com/janestreet/ppx_assert/archive/v0.13.0.tar.gz
+	source = ocaml-ppx_assert-1:0.13.0-1.tar.gz::https://github.com/janestreet/ppx_assert/archive/v0.13.0.tar.gz
 	sha256sums = d5e640cdde010da7dcdd1e9d99b11191c99b229e45ef4f06d5e0595a3f619366
 
 pkgname = ocaml-ppx_assert
