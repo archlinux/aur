@@ -27,12 +27,10 @@ package() {
   find node_modules -exec install -D {} "$pkgdir/opt/$pkgname/"{} \;
   find dist -exec install -D {} "$pkgdir/opt/$pkgname/"{} \;
 
-  echo "DATABASE_PATH=\"~/.$pkgname/database.db" > .env
-  install -D .env "$pkgdir/opt/$pkgname/.env"
-
   echo -e "\
 #!/usr/bin/env bash\n\
 mkdir -p \"\$HOME/.$pkgname\"\n\
+DATABASE_PATH=\"\${DATABASE_PATH:-\$HOME/.$pkgname/database.db}\"\n\
 cd \"/opt/$pkgname\"\n\
 node dist/index.js $@\n" > "$pkgname"
 
