@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
 depends=('libedit' 'libxml2' 'python2')
-makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2')
+makedepends=('cmake' 'libffi' 'libedit' 'ncurses' 'libxml2')
 options=('staticlibs')
 source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz)
 sha256sums=('SKIP')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 build() {
   mkdir "$srcdir/llvm-$pkgver.src/build"
   cd "$srcdir/llvm-$pkgver.src/build"
-  cmake .. -G Ninja \
+  cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/opt/llvm90 \
     -DLLVM_HOST_TRIPLE=$CHOST \
@@ -31,12 +31,12 @@ build() {
     -DLLVM_ENABLE_DOXYGEN=OFF \
     -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
     -DLLVM_BINUTILS_INCDIR=/usr/include
-  ninja
+  make -j1
 }
 
 package() {
   cd "$srcdir/llvm-$pkgver.src/build"
-  DESTDIR="$pkgdir" ninja install
+  DESTDIR="$pkgdir" make install
 
   install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
