@@ -12,7 +12,7 @@ pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
-makedepends=("go-pie=2:1.13.8-1" git)
+makedepends=("go-pie>=2:1.14.2-1" git)
 optdepends=('fuse2: for mounting/advanced use'
             'bash-completion: bash completion support')
 provides=("$_pkgname")
@@ -30,8 +30,8 @@ pkgver() {
   #VERSION=$(grep -E "^const CurrentVersionNumber = " version.go | awk '{ print $4 }' | sed 's/"//g')
   VERSION=$(git tag | grep -vE "floodsub|sharding-pre" | grep -ve "-dev" | sed 's/-/~/g' | sort --version-sort --reverse | sed 's/~/-/g' | head -n1)
   COUNT=$(git rev-list "$VERSION.." --count)
+  CHKSUM=$(git rev-list "$VERSION.." | head -n1)
   VERSION=$(echo "$VERSION" | sed 's/^v//' | sed 's/-//')
-  CHKSUM=$(git rev-list master | head -n1)
   printf "%s.%s.%s" "$VERSION" "r$COUNT" "g${CHKSUM:0:9}"
 }
 
