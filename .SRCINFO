@@ -5,6 +5,8 @@ pkgbase = napi-bash
 	url = http://3ed.github.io/napi-bash/
 	arch = any
 	license = GPL
+	makedepends = autoconf
+	makedepends = automake
 	depends = bash>=4.1
 	depends = curl
 	depends = p7zip

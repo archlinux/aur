@@ -8,6 +8,7 @@ arch=('any')
 url="http://3ed.github.io/napi-bash/"
 license=('GPL')
 depends=('bash>=4.1' 'curl' 'p7zip' 'coreutils' 'findutils')
+makedepends=('autoconf' 'automake')
 optdepends=('notification-daemon: dla wersji GUI/GTK'
             'dos2unix: konwertowanie znaku konca linii dos/unix'
             'subotage: konwertowanie formatów (nie wymagane dla detekcji)'
