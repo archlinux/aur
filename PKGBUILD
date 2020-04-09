@@ -28,9 +28,10 @@ build() {
   export GOPATH="$srcdir"/gopath
   cd gopath/src/$_gourl
   go install \
-    -trimpath \
-    -ldflags "-extldflags $LDFLAGS" \
-    -v ./...
+     -trimpath \
+     -modcacherw \
+     -ldflags "-extldflags $LDFLAGS" \
+     -v ./...
 }
 
 check() {
