@@ -1435,3 +1435,7 @@ PID_FILE_PATH=/var/run/exim.pid
 # ENABLE_DISABLE_FSYNC=yes
 
 EXTRALIBS=-ldl -lpam -lldap -llber
+
+# Fix Errors on loading modules like "undefined symbol: debug_printf_indent"
+# "Error loading lookup module <modulename>.so: NULL"
+EXTRALIBS_EXIM+=-rdynamic -ldl
