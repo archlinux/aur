@@ -113,7 +113,7 @@ diff --unified --recursive --text mujoco-py-2.0.2.9.orig/mujoco_py/utils.py mujo
      if not mujoco_path:
          mujoco_path = join(expanduser('~'), '.mujoco', 'mujoco200')
 +        if not exists(mujoco_path):
-+            mujoco_path = "/opt/mujoco/mujoco200"
++            mujoco_path = "/opt/mujoco"
  
      # We get lots of github issues that seem to be missing these
      # so check that mujoco is really there and raise errors if not.

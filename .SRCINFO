@@ -1,7 +1,7 @@
 pkgbase = python-mujoco-py
 	pkgdesc = Python interface to the MuJoCo physics engine
 	pkgver = 2.0.2.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/openai/mujoco-py
 	arch = x86_64
 	license = MIT
@@ -25,7 +25,7 @@ pkgbase = python-mujoco-py
 	source = mujoco-py-2.0.2.9.patch
 	sha256sums = 6ae20ca9509203758f5e30a7a4019cb2d581b6d40dc2c2669dbe3229cfdf05e8
 	sha256sums = fb896a8cbad505b0fe1f324e7d4f02032e56885c6544b7644180258d6077a71a
-	sha256sums = 5ac81282141cf7c5700b9967f85c4e9a3339a35a1bbdd3c383b877774525d660
+	sha256sums = 21163edd7ef1046d504caec64d517a79af8603e54cc0edb6819d34e9d9529865
 
 pkgname = python-mujoco-py
 

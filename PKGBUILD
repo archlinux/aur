@@ -2,7 +2,7 @@
 pkgname=python-mujoco-py
 _name=${pkgname#python-}
 pkgver=2.0.2.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Python interface to the MuJoCo physics engine"
 arch=('x86_64')
 url="https://github.com/openai/mujoco-py"
@@ -33,7 +33,7 @@ source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_nam
         "$_name-$pkgver.patch")
 sha256sums=('6ae20ca9509203758f5e30a7a4019cb2d581b6d40dc2c2669dbe3229cfdf05e8'
             'fb896a8cbad505b0fe1f324e7d4f02032e56885c6544b7644180258d6077a71a'
-            '5ac81282141cf7c5700b9967f85c4e9a3339a35a1bbdd3c383b877774525d660')
+            '21163edd7ef1046d504caec64d517a79af8603e54cc0edb6819d34e9d9529865')
 
 prepare() {
 	cd "$_name-$pkgver"
