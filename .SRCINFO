@@ -1,17 +1,17 @@
 pkgbase = linuxqq
 	pkgdesc = Tencent QQ for Linux
-	pkgver = 2.0.0.1076
-	pkgrel = 2
+	pkgver = 2.0.0.1082
+	pkgrel = 1
 	url = https://im.qq.com/linuxqq/
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	depends = gtk2
 	depends = nss
-	source_x86_64 = http://down.qq.com/qqweb/LinuxQQ/%E5%AE%89%E8%A3%85%E5%8C%85/linuxqq_2.0.0-b2-1076_x86_64.pkg.tar.xz
-	sha512sums_x86_64 = cf88a0dc2af564f22b7f14a1b6073e17d6bf305802db1dc36b0f82d123cc75fe557a9223228ab62760aaf02fcff1c8f7c6fd826c939911df16a28cd9e56aea5f
-	source_aarch64 = http://down.qq.com/qqweb/LinuxQQ/%E5%AE%89%E8%A3%85%E5%8C%85/linuxqq_2.0.0-b2-1076_aarch64.rpm
-	sha512sums_aarch64 = 05ead2b14cc0b359a7073c75542b2055bcd0728cfe11801b73280e771ef407f513280c3b6180b9e06208ef8846d59fad9d9bd9fc25c6f2c9d59af531174e821a
+	source_x86_64 = https://down.qq.com/qqweb/LinuxQQ_1/linuxqq_2.0.0-b2-1082_x86_64.pkg.tar.xz
+	sha512sums_x86_64 = 01a5babf0fbc5e96f5ddeef3fbb6f5e766523766742d6f95ecf84d2a7f599d35dd9971ba67c8976ae7c26c5cd5f985a81e124b3621d041ebb26c7ff9db525df7
+	source_aarch64 = https://down.qq.com/qqweb/LinuxQQ_1/linuxqq_2.0.0-b2-1082_aarch64.rpm
+	sha512sums_aarch64 = 9da9407a58dc9ef4361174feaef29c808241c4f77f2b543b6455211a55399baaefef8fab25c01095198b973486f6b2d4ec25e8995fe2a5502a2d45fdbd249953
 
 pkgname = linuxqq
 
