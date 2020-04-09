@@ -1,0 +1,26 @@
+--- src/perl/matcher.orig	2020-02-29 23:45:24.063211389 +0100
++++ src/perl/matcher	2020-03-01 00:17:42.830703028 +0100
+@@ -467,11 +467,11 @@
+    } elsif ($keysym == 0xff1b) { # escape
+       $self->view_start ($self->{view_start});
+       $self->select_leave;
+-   } elsif ($keysym == 0xff50) { # home
++   } elsif ($keysym == 0xff50 || $keysym == 0x0067) { # home
+       $self->select_search (+1, $self->top_row)
+-   } elsif ($keysym == 0xff57) { # end
++   } elsif ($keysym == 0xff57 || $keysym == 0x0047) { # end
+       $self->select_search (-1, $self->nrow - 1)
+-   } elsif ($keysym == 0xff52) { # up
++   } elsif ($keysym == 0xff52 || $keysym == 0x006b) { # up
+       if ($self->{id} > 0) {
+          $self->{id}--;
+          $self->want_refresh;
+@@ -480,7 +480,7 @@
+          $self->select_search (-1, $line->beg - 1)
+             if $line->beg > $self->top_row;
+       }
+-   } elsif ($keysym == 0xff54) { # down
++   } elsif ($keysym == 0xff54 || $keysym == 0x006a) { # down
+       if ($self->{id} < @{ $self->{matches} } - 1) {
+          $self->{id}++;
+          $self->want_refresh;
