@@ -1,10 +1,10 @@
 # Maintainer: Nathaniel Chin <thegamingorangutans+aur at gmail.com>
 # Contributor: Marko Korhonen <reekymarko at reekynet.com>
-# Original: Daniel Bermond <dbermond@archlinux.org>
-
+# Contributor: Bruno Filipe < gmail-com: bmilreu >
+# Original: Daniel Bermond <dbermond@archlinux.org> https://aur.archlinux.org/packages/mpv-full-git
 
 pkgname=mpv-amd-full-git
-pkgver=0.32.0.r321.gc8e5a615e9
+pkgver=0.32.0.r333.ga67bda2840
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
