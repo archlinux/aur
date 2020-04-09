@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=dankcli-git
-pkgver=0.5.8
+pkgver=0.5.8.r1.1a29626
 pkgrel=1
 pkgdesc="CLI Image Captioning Tool or Meme Generator which automatically adds whitespace and text to top"
 arch=('any')
@@ -14,7 +14,9 @@ source=("git+${url}")
 md5sums=('SKIP')
 
 pkgver() {
-  awk '/version/{print substr($1,10,5)}' cd ${srcdir}/dankcli/setup.py
+  _version=$(awk '/version/{print substr($1,10,5)}' ${srcdir}/dankcli/setup.py)
+  printf "$_version.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+ 
 }
 
 build() {
