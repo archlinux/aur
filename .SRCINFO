@@ -1,7 +1,7 @@
 pkgbase = xorg-fonts-cyrillic-otb
 	pkgdesc = X.org cyrillic fonts (OTB version)
 	pkgver = 1.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://xorg.freedesktop.org/
 	arch = any
 	license = custom
@@ -9,7 +9,7 @@ pkgbase = xorg-fonts-cyrillic-otb
 	depends = xorg-fonts-alias
 	depends = xorg-font-utils
 	depends = fontconfig
-	depends = fonttosfnt-git
+	depends = fonttosfnt
 	provides = xorg-fonts-cyrillic
 	conflicts = xorg-fonts-cyrillic
 	replaces = xorg-fonts-cyrillic
