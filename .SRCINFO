@@ -1,7 +1,7 @@
 pkgbase = gwe
 	pkgdesc = A system utility for controlling NVIDIA GPUs
-	pkgver = 0.14.0
-	pkgrel = 2
+	pkgver = 0.14.1
+	pkgrel = 1
 	url = https://gitlab.com/leinardi/gwe
 	arch = any
 	license = GPL3
@@ -19,10 +19,10 @@ pkgbase = gwe
 	depends = python-py3nvml
 	depends = python-requests
 	depends = python-rx
-	depends = python-xdg
+	depends = python-pyxdg
 	depends = python-xlib
-	source = https://gitlab.com/leinardi/gwe/-/archive/0.14.0/gwe-0.14.0.tar.gz
-	sha256sums = 867884a167a974ce0e3092bddde590883343661fd5e760546f3769bea9aaf24a
+	source = https://gitlab.com/leinardi/gwe/-/archive/0.14.1/gwe-0.14.1.tar.gz
+	sha256sums = 64ada9aac8adeabac7f8cb2114e2ecc158192789e41c25a4eabf9aded3bbf848
 
 pkgname = gwe
 
