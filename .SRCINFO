@@ -1,0 +1,47 @@
+pkgbase = gamescope
+	pkgdesc = The micro-compositor formerly known as steamcompmgr
+	pkgver = 3.6
+	pkgrel = 1
+	url = https://github.com/Plagman/gamescope
+	arch = x86_64
+	license = BSD
+	license = custom:BSD 2-Clause "Simplified" License
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = pixman
+	makedepends = pkgconf
+	makedepends = vulkan-headers
+	makedepends = wayland-protocols>=1.17
+	depends = wayland
+	depends = opengl-driver
+	depends = xorg-server-xwayland
+	depends = libdrm
+	depends = libinput
+	depends = libxkbcommon
+	depends = libxcomposite
+	depends = libcap
+	depends = libxcb
+	depends = libpng
+	depends = glslang
+	depends = libxrender
+	depends = libxtst
+	depends = vulkan-icd-loader
+	depends = sdl2
+	provides = steamcompmgr
+	provides = wlroots=3.6.1
+	provides = libliftoff=0.0.0
+	conflicts = gamescope-git
+	conflicts = wlroots
+	conflicts = libliftoff
+	replaces = steamcompmgr
+	source = https://github.com/Plagman/gamescope/archive/3.6.tar.gz
+	source = git+https://github.com/Plagman/wlroots.git#commit=49e33be5bf15fab9530013a7b862eaa0ecfb5161
+	source = git+https://github.com/emersion/libliftoff.git#commit=cfeee41ec1aa03578bfbe4cd513a25e84c407dec
+	md5sums = 95d0dcd88fd6423eee0743d478bbcb5b
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = gamescope
+
