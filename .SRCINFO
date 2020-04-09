@@ -1,0 +1,19 @@
+pkgbase = messenger-nativefier
+	pkgdesc = Facebook Messenger built into a desktop app using electron nativefier.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://messenger.com/
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = pentium4
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+
+pkgname = messenger-nativefier
+
