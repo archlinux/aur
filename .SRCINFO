@@ -1,15 +1,15 @@
 pkgbase = lens
 	pkgdesc = The Kubernetes IDE (previously Kontena Lens)
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/lensapp/lens
 	arch = x86_64
 	license = MIT
 	makedepends = nodejs-lts-erbium
 	makedepends = yarn
-	source = lens-3.1.0.tar.gz::https://github.com/lensapp/lens/archive/v3.1.0.tar.gz
+	source = lens-3.2.0.tar.gz::https://github.com/lensapp/lens/archive/v3.2.0.tar.gz
 	source = lens.desktop
-	sha256sums = 53ab7acef66098a9edc73aa48bfd57784a58f7a962b9202fb553a38802e61361
+	sha256sums = fff40b5559eeaf39678fab57d1e2246789ba5bba79f7811a841553b6fc15b378
 	sha256sums = e81c76d6ae2703c35a6e5d93830402f7a02a4f7bf19a06c91495b2ab52c56c94
 
 pkgname = lens
