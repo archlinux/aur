@@ -1,0 +1,15 @@
+pkgbase = licen-git
+	pkgdesc = Generate your license. Yet another lice, but implement with Jinja2 and docopt
+	pkgver = 0.2.1.r29.5969f6b
+	pkgrel = 1
+	url = https://github.com/lord63/licen
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-docopt
+	depends = python-jinja
+	source = git+https://github.com/lord63/licen
+	md5sums = SKIP
+
+pkgname = licen-git
+
