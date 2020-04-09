@@ -15,6 +15,3 @@ pkgname = lua-utf8
 pkgname = lua52-utf8
 	depends = lua52
 
-pkgname = lua51-utf8
-	depends = lua51
-
