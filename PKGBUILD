@@ -1,22 +1,30 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 # Former Maintainer: bemasher <bemasher@gmail.com>
 
-pkgname=rtlamr
-pkgver=0.9.1
-pkgrel=2
+_pkgname=rtlamr
+pkgname=rtlamr-git
+pkgver=v0.9.1.r16.g22749a72
+pkgrel=1
 pkgdesc="An rtl-sdr receiver for Itron ERT compatible smart meters operating in the 900MHz ISM band."
 arch=('any')
 url="https://github.com/bemasher/rtlamr"
-source=("https://github.com/bemasher/rtlamr/archive/v${pkgver}.tar.gz")
-md5sums=('8d47164413f6b6ca2aa188fb2a164f63')
+source=("git+https://github.com/bemasher/rtlamr.git")
+md5sums=('SKIP')
 license=('AGPL3')
 depends=('go' 'rtl-sdr')
+provides=('rtlamr')
+conflicts=('rtlamr')
 options=('!strip' '!emptydirs')
 _gourl=github.com/bemasher/rtlamr
 
+pkgver() {
+  cd "$_pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare(){
   mkdir -p gopath/src/${_gourl%/*}
-  ln -rTsf $pkgname-$pkgver gopath/src/$_gourl
+  ln -rTsf $_pkgname gopath/src/$_gourl
 }
 
 build() {
