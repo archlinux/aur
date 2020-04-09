@@ -1,12 +1,12 @@
 pkgname='remoteplaydetached-bin'
 pkgbase='remoteplaydetached'
 _pkgname='RemotePlayDetached'
-pkgver=v0.2.4
+pkgver=v0.3
 pkgrel=1
 pkgdesc='A simple launcher that is able to launch any external game or application with Steam Remote Play Together Support'
 arch=('x86_64')
 source=("https://github.com/smaTc/RemotePlayDetached/releases/download/${pkgver}/RemotePlayDetached")
-sha256sums=('404d75438067ffa8eb7a91774b538ecf978a4f901735af9f2e02d1fbeba134ea')
+sha256sums=('0009f803d5ac37318a2aba65bd0470c7ee69cdcb11bed7e361b077b33d9e7281')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"
