@@ -2,8 +2,8 @@
 
 pkgname=qmpdclient-qt5
 pkgver=2.0.1
-pkgrel=1
-pkgdesc='An Qt5 client for MPD'
+pkgrel=2
+pkgdesc='A Qt5 client for MPD'
 arch=('x86_64')
 license=('GPL2')
 url='https://github.com/runelite/launcher'
