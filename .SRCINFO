@@ -14,5 +14,7 @@ pkgbase = bluespec
 	source = https://s3.wasabisys.com/bluespec/downloads/Bluespec-2019.05.beta2/Bluespec-2019.05.beta2-centos7-amd64.tar.gz
 	sha256sums = 99bc63f992f80d983b22f50e660a39268a997caed1f484b97161949c7ccf13e4
 
-pkgname = bluespec
+pkgname = bluespec-tools
+
+pkgname = bluespec-docs
 

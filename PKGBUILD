@@ -1,4 +1,5 @@
-pkgname=bluespec
+pkgbase=bluespec
+pkgname=(bluespec-tools bluespec-docs)
 pkgver=2019.05.beta2
 pkgrel=0
 pkgdesc='Bluespec SystemVerilog Tools'
@@ -23,7 +24,7 @@ export BLUESPECDIR="/opt/bluespec"
 EOF
 }
 
-package() {
+package_bluespec-tools() {
 	cd "$srcdir"
 	install -d "$pkgdir/etc/profile.d"
 	install -Dm 755 ./bluespec-home.sh "$pkgdir/etc/profile.d/"
@@ -36,4 +37,11 @@ package() {
 
 	install -d "$pkgdir/usr/share/vim/vimfiles"
 	cp -r ./util/vim/{ftdetect,indent,syntax} "$pkgdir/usr/share/vim/vimfiles/"
+}
+
+package_bluespec-docs() {
+	cd "$srcdir/Bluespec-${pkgver}-centos7-amd64"
+	install -d "$pkgdir/usr/share/doc"
+	cp -r ./doc/* "$pkgdir/usr/share/doc/"
+
 }
