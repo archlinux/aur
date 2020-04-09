@@ -1,0 +1,15 @@
+pkgbase = python-bitwarden-keyring
+	pkgdesc = Bitwarden-CLI as keyring provider
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ewjoachim/bitwarden-keyring/
+	arch = any
+	license = MIT
+	depends = python
+	depends = bitwarden-cli
+	depends = python-keyring
+	source = bitwarden-keyring-0.3.0::https://github.com/ewjoachim/bitwarden-keyring/archive/0.3.0.tar.gz
+	sha512sums = afe23c77d5315f4d29230d4c987f6e6f622b64050640995dc7c140e670b4c1138274e932eebbbd85d6d24ac9a5e0c5df8eac85e8980e8a37430a425511354ff2
+
+pkgname = python-bitwarden-keyring
+
