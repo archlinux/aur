@@ -1,7 +1,7 @@
 pkgbase = reddit-fs
 	pkgdesc = maps subreddits to a FUSE filesystem, and comes with a systemd service
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Petraea/redditfs
 	arch = any
 	license = MIT

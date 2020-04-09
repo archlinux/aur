@@ -2,7 +2,7 @@
 pkgbase='reddit-fs'
 pkgname='redditfs'
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="maps subreddits to a FUSE filesystem, and comes with a systemd service"
 arch=('any')
 url="https://github.com/Petraea/redditfs"
@@ -16,6 +16,6 @@ package() {
     git clone https://github.com/Petraea/redditfs.git "$pkgdir"/opt/.redditfsdata
     mkdir "$pkgdir"/opt/r
     cp "$pkgname" "$pkgdir"/usr/bin
-    cp redditfs.service "$pkgdir"/user/lib/systemd/system/
+    cp redditfs.service "$pkgdir"/usr/lib/systemd/system/
 }
 
