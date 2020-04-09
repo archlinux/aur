@@ -12,7 +12,7 @@ depends=('libsecret' 'gtk3' 'libxss' 'nss')
 optdepends=('gnome-keyring: for storing passwords in GNOME keyring')
 
 source_x86_64=("https://github.com/iotaledger/trinity-wallet/releases/download/desktop-$pkgver/trinity-desktop-$pkgver.AppImage"{,.asc})
-sha256sums_x86_64=('3c2c8c9e9c2f8a176521264bc84a7c325788222f296e5118e194eb5dce460cbc'
+sha256sums_x86_64=('0a4538f833f0004f83e10cd260221cc2ef75d41f0208d167ac65cb784f6af92f'
                    'SKIP')
 
 source=("iota-trinity-wallet.desktop")
