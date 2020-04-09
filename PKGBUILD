@@ -1,7 +1,7 @@
 # Maintainer: François-Xavier Bru <francoisxavier.bru at orange dot com>
 pkgname=application-inspector-bin
 _pkgname=application-inspector
-pkgver=1.1.30
+pkgver=1.1.32
 pkgrel=1
 pkgdesc="Microsoft ApplicationInspector is a source code analyzer built for surfacing features of interest and other characteristics to answer the question 'what's in it' using static analysis with a json based rules engine (official CLI binary version)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('application-inspector')
 depends=(dotnet-runtime)
 options=(staticlibs)
 source=(https://github.com/microsoft/ApplicationInspector/releases/download/v${pkgver}/ApplicationInspector_linux_${pkgver}.zip)
-sha256sums=('92D119044A91388F412112D03C41B9EA35C9BE01D08BB744387EDFAB1BD1F7A8')
+sha256sums=('d04c180a9c64ce909e4920b14d294864b47d1e9a63acaf71d13e9b59d0ddfb86')
 install=${pkgname}.install
 
 package() {
