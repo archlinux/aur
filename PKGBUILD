@@ -5,7 +5,7 @@
 # Contributor: Denis Martinez <deuns.martinez [at] gmail [dot] com>
 
 pkgname=lib32-intel-tbb
-pkgver=2020.1
+pkgver=2020.2
 pkgrel=1
 pkgdesc="High level abstract threading library (32-bit)"
 arch=('x86_64')
@@ -14,16 +14,16 @@ license=('GPL')
 depends=("${pkgname#lib32-}" 'lib32-gcc-libs')
 makedepends=('gcc-multilib')
 source=("${pkgname#lib32-}-${pkgver}.tar.gz::https://github.com/intel/tbb/archive/v$pkgver.tar.gz")
-sha256sums=('48d51c63b16787af54e1ee4aaf30042087f20564b4eecf9a032d5568bc2f0bf8')
+sha256sums=('4804320e1e6cbe3a5421997b52199e3c1a3829b2ecb6489641da4b8e32faf500')
 
 build() {
-  cd "tbb-${pkgver}"
+  cd "oneTBB-${pkgver}"
   export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
   make arch=ia32
 }
 
 package() {
-  cd "tbb-${pkgver}"
+  cd "oneTBB-${pkgver}"
   install -d "${pkgdir}/usr/lib32"
   install -m755 build/linux_*/*.so* "${pkgdir}/usr/lib32"
 }

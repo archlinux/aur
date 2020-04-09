@@ -1,6 +1,6 @@
 pkgbase = lib32-intel-tbb
 	pkgdesc = High level abstract threading library (32-bit)
-	pkgver = 2020.1
+	pkgver = 2020.2
 	pkgrel = 1
 	url = https://threadingbuildingblocks.org
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = lib32-intel-tbb
 	makedepends = gcc-multilib
 	depends = intel-tbb
 	depends = lib32-gcc-libs
-	source = intel-tbb-2020.1.tar.gz::https://github.com/intel/tbb/archive/v2020.1.tar.gz
-	sha256sums = 48d51c63b16787af54e1ee4aaf30042087f20564b4eecf9a032d5568bc2f0bf8
+	source = intel-tbb-2020.2.tar.gz::https://github.com/intel/tbb/archive/v2020.2.tar.gz
+	sha256sums = 4804320e1e6cbe3a5421997b52199e3c1a3829b2ecb6489641da4b8e32faf500
 
 pkgname = lib32-intel-tbb
 
