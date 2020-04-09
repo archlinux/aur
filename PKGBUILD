@@ -13,13 +13,13 @@ pkgname=(exim-heavy
          exim-lookup-pgsql)
 pkgname=exim-heavy
 pkgver=4.93
-pkgrel=2
+pkgrel=3
 pkgdesc='Message Transfer Agent with maximal-enabled features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.exim.org/'
 license=('GPL')
-makedepends=('gdbm' 'libldap' 'libnsl' 'openssl' 'pam' 'pcre' 'sqlite')
-makedepends+=('libspf2' 'libidn' 'libidn2' 'opendmarc' 'libsrs_alt' 'postgresql-libs' 'libmariadbclient')
+depends=('gdbm' 'libldap' 'libnsl' 'openssl' 'pam' 'pcre' 'sqlite' 'libspf2' 'libidn' 'libidn2' 'opendmarc' 'libsrs_alt')
+makedepends=('postgresql-libs' 'libmariadbclient')
 source=("https://ftp.exim.org/pub/exim/exim4/exim-$pkgver.tar.bz2"{,.asc}
         aliases
         exim.logrotate
