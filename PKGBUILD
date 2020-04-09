@@ -1,6 +1,6 @@
 # Maintainer: Mario O.M. <marioortizmanero@gmail.com>
 pkgname=vidify
-pkgver=2.2.0
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Watch music videos in real-time for the songs playing on your device"
 arch=("any")
@@ -14,7 +14,7 @@ optdepends=("python-mpv: support for the mpv player"
             "vidify-audiosync: audio synchronization extension")
 makedepends=("python-setuptools")
 source=("https://github.com/vidify/vidify/archive/v$pkgver.tar.gz")
-md5sums=('a32df7bf83a87c91b6219b64ed4ffc51')
+md5sums=('25d5deb83b1c3ed4d11ddcddba4e3d89')
 
 build() {
     cd "$pkgname-$pkgver"
