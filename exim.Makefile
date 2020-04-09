@@ -763,6 +763,7 @@ HEADERS_CHARSET="ISO-8859-1"
 SUPPORT_TLS=yes
 
 # Uncomment one of these settings if you are using OpenSSL; pkg-config vs not
+USE_OPENSSL=yes
 USE_OPENSSL_PC=openssl
 # TLS_LIBS=-lssl -lcrypto
 
