@@ -2,7 +2,7 @@
 # Contributor: Matt Frichtl <frichtlm@gmail.com>
 
 _cranname=Rcpp
-_cranver=1.0.4
+_cranver=1.0.4.6
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=('r>=3.0.0')
 makedepends=(gcc)
 optdepends=(r-tinytest r-inline r-rbenchmark r-pkgkitten)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('2f2fff56e78ae63b0cc2551a4636af71')
+md5sums=('59c45d80a5dc8dc3b5635ffd3fec64e9')
 
 build() {
   cd "${srcdir}"
