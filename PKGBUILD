@@ -1,5 +1,5 @@
 # $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: morpheusthewhite <zffromGerace@hotmail.it>
 
 pkgname=ddd
 pkgver=3.3.12
