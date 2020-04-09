@@ -4,7 +4,7 @@ pkgname=epson-inkjet-printer-201601w
 _pkgname_filter=epson-inkjet-printer-filter
 _suffix=1lsb3.2.src.rpm
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Epson printer driver (L380/L382)"
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -50,4 +50,4 @@ package() {
   install -d "$pkgdir/opt/$pkgname/cups/lib/filter/"
   install -m 755 src/epson_inkjet_printer_filter "$pkgdir/opt/$pkgname/cups/lib/filter/epson_inkjet_printer_filter"
 }
-sha256sums=('cdaf79f17ef4485bfaf4439db14ab6f047c25e8159a6b6fffd57e915cf0599f5')
+sha256sums=('a56f9da8557ed826d3a122961cee3c95c32f42c73c273ff01442fed9ce416241')
