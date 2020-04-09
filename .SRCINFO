@@ -6,7 +6,6 @@ pkgbase = clang90
 	arch = x86_64
 	license = custom:University of Illinois/NCSA Open Source License
 	makedepends = cmake
-	makedepends = ninja
 	makedepends = libffi
 	makedepends = libedit
 	makedepends = ncurses

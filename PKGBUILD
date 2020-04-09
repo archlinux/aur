@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
 depends=('llvm90' 'python')
-makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2')
+makedepends=('cmake' 'libffi' 'libedit' 'ncurses' 'libxml2')
 options=('staticlibs')
 source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz
         https://releases.llvm.org/$pkgver/cfe-$pkgver.src.tar.xz)
@@ -21,7 +21,7 @@ build() {
 
   export PATH=/opt/llvm90/bin:$PATH
 
-  cmake .. -G Ninja \
+  cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/opt/llvm90 \
     -DPYTHON_EXECUTABLE=/usr/bin/python \
@@ -34,12 +34,12 @@ build() {
     -DLLVM_ENABLE_SPHINX=OFF \
     -DLLVM_EXTERNAL_LIT=/usr/bin/lit \
     -DLLVM_MAIN_SRC_DIR="$srcdir/llvm-$pkgver.src"
-  ninja
+  make -j1
 }
 
 package() {
   cd "$srcdir/cfe-$pkgver.src/build"
-  DESTDIR="$pkgdir" ninja install
+  DESTDIR="$pkgdir" make install
 
   install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
