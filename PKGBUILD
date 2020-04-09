@@ -1,20 +1,21 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=flowgger-git
-pkgver=0.2.9
+pkgver=0.2.11.r539.1e4a52d
 pkgrel=1
 pkgdesc="Flowgger is a fast, simple and lightweight data collector written in Rust"
 url="https://github.com/awslabs/flowgger"
 provides=('flowgger')
 makedepends=('git' 'cargo' 'pkgconf' 'snappy' 'capnproto')
 arch=('x86_64')
-license=('GPL-3.0')
+license=('BSD-2-Clause')
 source=("git+${url}")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/flowgger"
-    sed '4,4!d' Cargo.toml |  egrep -o "([0-9]{1,}\.)+[0-9]{1,}"
+  cd "${srcdir}/flowgger"
+  _version=$(sed '4,4!d' Cargo.toml |  egrep -o "([0-9]{1,}\.)+[0-9]{1,}")
+  printf "$_version.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

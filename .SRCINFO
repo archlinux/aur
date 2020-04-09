@@ -1,10 +1,10 @@
 pkgbase = flowgger-git
 	pkgdesc = Flowgger is a fast, simple and lightweight data collector written in Rust
-	pkgver = 0.2.9
+	pkgver = 0.2.11.r539.1e4a52d
 	pkgrel = 1
 	url = https://github.com/awslabs/flowgger
 	arch = x86_64
-	license = GPL-3.0
+	license = BSD-2-Clause
 	makedepends = git
 	makedepends = cargo
 	makedepends = pkgconf
