@@ -1,7 +1,7 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=('ocaml-atd' 'ocaml-atdgen')
 _oname=atd
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc=""
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ depends=('ocaml>=3.11'
 makedepends=('ocaml-findlib' 'dune' 'opam' 'scala')
 options=(!strip)
 source=("https://github.com/mjambon/${_oname}/archive/${pkgver}.tar.gz")
-md5sums=('2ab871bf6c6dc9fa6f8f4f02dba763a8')
+md5sums=('316d541f4a58ae8558b4cd52234fee05')
 _dune="dune $(getopt "j::" $MAKEOPTS 2>/dev/null | sed 's/--/\n/g' | head -n 1)"
 
 prepare() {
