@@ -8,7 +8,7 @@ pkgver=19.19
 pkgrel=1
 pkgdesc="A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques (mingw-w64)"
 arch=('any')
-url="http://www.dlib.net"
+url="http://dlib.net"
 license=('custom')
 depends=('mingw-w64-crt'
          'mingw-w64-cblas'
@@ -17,7 +17,7 @@ depends=('mingw-w64-crt'
          'mingw-w64-libpng')
 makedepends=('mingw-w64-cmake')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("https://downloads.sourceforge.net/project/dclib/${_pkgname}/v${pkgver}/${_pkgname}-${pkgver}.tar.bz2")
+source=("http://dlib.net/files/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('1decfe883635ce51acd72869cebe870ab9b85eb094d417adc8f48aa7b8c60cd7')
 
 build() {
