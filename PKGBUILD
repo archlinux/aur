@@ -12,7 +12,7 @@ license=('MIT')
 depends=('ocaml>=4.04.2' 'ocaml-base>=0.13.0' 'ocaml-ppx_here>=0.13.0' 'ocaml-ppxlib>=0.9.0')
 makedepends=('dune>=1.5.1')
 options=('!strip')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('a2ad9c54fb14523564521691c001cccb000d1c3d566c3843184aaa2f8d8a3015')
 
 _sourcedirectory="$_projectname-$pkgver"
