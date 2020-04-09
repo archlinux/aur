@@ -5,14 +5,14 @@
 _pkgname=tamsyn-font
 pkgname=tamsyn-font-otb
 pkgver=1.11
-pkgrel=4
+pkgrel=5
 pkgdesc="A monospaced bitmap font for the console and X11 (OTB Format)"
 arch=('any')
 url="http://www.fial.com/~scott/tamsyn-font"
 license=('custom')
 conflicts=('tamsyn-font')
 provides=('tamsyn-font')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils' 'fonttosfnt-git')
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils' 'fonttosfnt')
 source=("https://www.fial.com/~scott/$_pkgname/download/$_pkgname-$pkgver.tar.gz")
 md5sums=('6ec13672d2f0d6a829f2403cdeebd980')
 
