@@ -9,8 +9,6 @@ url="https://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
 depends=('llvm90' 'python')
 makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2')
-conflicts=('clang')
-replaces=('clang')
 options=('staticlibs')
 source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz
         https://releases.llvm.org/$pkgver/cfe-$pkgver.src.tar.xz)
