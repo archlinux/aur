@@ -21,9 +21,11 @@ build() {
   mkdir "$srcdir/cfe-$pkgver.src/build"
   cd "$srcdir/cfe-$pkgver.src/build"
 
+  export PATH=/opt/llvm90/bin:$PATH
+
   cmake .. -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_PREFIX=/opt/llvm90 \
     -DPYTHON_EXECUTABLE=/usr/bin/python \
     -DBUILD_SHARED_LIBS=ON \
     -DLLVM_LINK_LLVM_DYLIB=ON \
