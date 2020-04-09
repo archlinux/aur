@@ -15,12 +15,12 @@ _makenconfig=
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=y
+_localmodcfg=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.6.2
+pkgver=5.6.3
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -41,19 +41,21 @@ source=(
   config         # the main kernel config file
   "${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/1bb6eecc6f8b5eb7cadfe895ba426d01f171cfa1.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/e1293fa8ca1b8ef89c8c3eddf4fecd6c25119aeb.patch"
+  "0002-ALSA-hda-Fix-potential-access-overflow-in-beep-helpe.patch::https://github.com/archlinux/linux/commit/28a3a4bec629ccb9cef64c546998052e0806cb1b.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('2d4d91d8329c1ed3826c61463650dd4bfbb6ad39dcee6dba4f98a7e94a67b5b9'
+sha256sums=('1d13689abbcab59250a8231a5871747be25a1d2fe431cf263395de35780c50aa'
             'SKIP'
-            '9165f1d17d3610af29ec9b68f6f3d394327f3ea4d35dcf703e74133261527b5d'
+            '27b84575ea6b1050951906e0b595351fe3f8e39fab9d2ed05e32cb6eaddca08f'
             'd42ab10e8ff39acd3a9211fc83313c6fb7a69ae0c2d39deb7946c7516c0d5cd5'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
-            '6efbc986d0bdad0cfe1f85584bad42b45145c766dcdb6d41b6bd8ac07a5aef5a')
+            '88579f065258dcac1b3e59d334544f219c2608ac9b3b076f0137aca9dcaa16a1'
+            '3de884eeaeff4ed29a90f4d46487bad1ea59c3b04b010255d2744fd97bc65d2f')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
