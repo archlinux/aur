@@ -1,11 +1,13 @@
 pkgbase = anilibria-winmaclinux-git
 	pkgdesc = AniLibria client for major desktop platforms
 	pkgver = r34.566e0f3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anilibria/anilibria-winmaclinux
 	arch = x86_64
 	license = GPL3
 	makedepends = qt5-base
+	makedepends = qt5-multimedia
+	makedepends = qt5-svg
 	makedepends = git
 	depends = qt5-webview
 	provides = anilibria-winmaclinux
