@@ -1,6 +1,6 @@
 pkgbase = ytt
 	pkgdesc = YAML templating tool that works on YAML structure instead of text
-	pkgver = 0.26.0
+	pkgver = 0.27.1
 	pkgrel = 1
 	url = https://get-ytt.io/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = ytt
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = ytt-0.26.0.tar.gz::https://github.com/k14s/ytt/archive/v0.26.0.tar.gz
-	sha256sums = 602f3a952497c8ce983d4dcacb465e920f9d4e87eb2944d6b4e57799d94091b4
+	source = ytt-0.27.1.tar.gz::https://github.com/k14s/ytt/archive/v0.27.1.tar.gz
+	sha256sums = 9e270be4baed4379c69add961e0e3d92949ec2d4bd0327c9f70390dcfa98c257
 
 pkgname = ytt
 
