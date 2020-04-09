@@ -22,6 +22,6 @@ package() {
     cd ~/
     mkdir RemotePlayDetached
     cd RemotePlayDetached/
-    curl https://raw.githubusercontent.com/alx365/RemotePlayDetached/master/uninstall.sh > uninstall.sh
-    chmod +x uninstall.sh
+    #curl https://raw.githubusercontent.com/alx365/RemotePlayDetached/master/uninstall.sh > uninstall.sh
+    #chmod +x uninstall.sh
 }
