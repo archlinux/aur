@@ -1,6 +1,6 @@
 pkgbase = geeqie-git
 	pkgdesc = Lightweight image viewer
-	pkgver = 20200203
+	pkgver = 20200406
 	pkgrel = 1
 	url = http://www.geeqie.org/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = geeqie-git
 	optdepends = fbida: for jpeg rotation
 	provides = geeqie
 	conflicts = geeqie
-	source = git+https://github.com/BestImageViewer/geeqie.git
+	source = git+git://www.geeqie.org/geeqie.git
 	sha256sums = SKIP
 
 pkgname = geeqie-git

@@ -2,7 +2,7 @@
 # Contributer: Steven Honeyman <stevenhoneyman at gmail com>
 
 pkgname=geeqie-git
-pkgver=20200203
+pkgver=20200406
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('librsvg: SVG rendering'
             'fbida: for jpeg rotation')
 provides=('geeqie')
 conflicts=('geeqie')
-source=("git+https://github.com/BestImageViewer/geeqie.git")
+source=("git+git://www.geeqie.org/geeqie.git")
 sha256sums=('SKIP')
 
 pkgver() {
