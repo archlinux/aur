@@ -1,0 +1,17 @@
+pkgbase = klausies-git
+	pkgdesc = Tool for submitting listens to various services (Last.FM, Listenbrainz, etc)
+	pkgver = v0.1
+	pkgrel = 1
+	url = https://github.com/RodrigoLeiteF/klausies
+	arch = x86_64
+	license = GPLv2
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = klausies-git
+	conflicts = klausies-git
+	source = git+https://github.com/RodrigoLeiteF/klausies
+	md5sums = SKIP
+
+pkgname = klausies-git
+
