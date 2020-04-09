@@ -1,7 +1,7 @@
 # Maintainer: jcomcl rapcyss@gmail.com
 
 pkgname=umenu
-pkgver=0.4.0.gc534c22
+pkgver=1.0.1.1.g9cafc89
 pkgrel=1
 pkgdesc="command-line menu (a la dmenu, slmenu) with single-keypress interaction"
 arch=('x86_64')
@@ -24,5 +24,5 @@ build() {
 
 package() {
 	cd $pkgname
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir" install
 }
