@@ -1,6 +1,6 @@
 pkgbase = kmon
 	pkgdesc = Linux kernel manager and activity monitor
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/orhun/kmon
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = kmon
 	makedepends = cargo
 	makedepends = git
 	depends = libxcb
-	source = kmon-1.0.1.tar.gz::https://github.com/orhun/kmon/archive/v1.0.1.tar.gz
-	sha512sums = 0bf1aa1d8b65b028ed2bd10ff75f182e6a302920efc3c7cc3cf582b458466a406a5abea876bb62cc8454b590a253a344f0dc48d2aca069073c7ee993b2f7c249
+	source = kmon-1.1.0.tar.gz::https://github.com/orhun/kmon/archive/v1.1.0.tar.gz
+	sha512sums = 2b70337fd6e9e5afb5c23460a530b8c4d9c708d3268d148e6a9dd46c133fcfc5d8fff63403f43e8caaf2096d3b6678637a7a2bfb2b29d880270495d5c623c0ae
 
 pkgname = kmon
 
