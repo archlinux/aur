@@ -127,6 +127,7 @@ prepare() {
     # From https://github.com/Tk-Glitch/PKGBUILDS/tree/master/linux53-tkg/linux53-tkg-patches
     msg2 "Patching with Undead PDS 0.99o patches, rebased to 5.6 by TkG"
     for MyPatch in \
+        sphinx-workaround.patch \
         0005-v5.6_undead-pds099o.patch \
         0005-glitched-pds.patch
     do
