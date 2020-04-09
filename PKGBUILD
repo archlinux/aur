@@ -30,11 +30,9 @@ build() {
     -DLLVM_ENABLE_RTTI=ON \
     -DLLVM_BUILD_TESTS=OFF \
     -DLLVM_INCLUDE_DOCS=OFF \
-    -DLLVM_BUILD_DOCS=OFF \
-    -DLLVM_ENABLE_SPHINX=OFF \
     -DLLVM_EXTERNAL_LIT=/usr/bin/lit \
     -DLLVM_MAIN_SRC_DIR="$srcdir/llvm-$pkgver.src"
-  make -j1
+  make -j1 -Wno-dev
 }
 
 package() {
