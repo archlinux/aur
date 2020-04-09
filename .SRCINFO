@@ -1,0 +1,16 @@
+pkgbase = ponysay-rust-git
+	pkgdesc = Bare-bones implementation of ponysay in rust
+	pkgver = v0.1+0
+	pkgrel = 1
+	url = https://github.com/evant/ponysay-rust
+	arch = any
+	license = GPL3
+	license = FDL
+	makedepends = rust
+	provides = ponysay
+	conflicts = ponysay
+	source = ponysay::git+https://github.com/evant/ponysay-rust.git
+	md5sums = SKIP
+
+pkgname = ponysay-rust-git
+
