@@ -11,7 +11,8 @@ license=('custom')
 replaces=('xorg-fonts-cyrillic')
 provides=('xorg-fonts-cyrillic')
 conflicts=('xorg-fonts-cyrillic')
-depends=(xorg-fonts-encodings xorg-fonts-alias xorg-font-utils fontconfig fonttosfnt)
+makedepends=('fonttosfnt')
+depends=(xorg-fonts-encodings xorg-fonts-alias xorg-font-utils fontconfig)
 source=(${url}/releases/individual/font/font-cronyx-cyrillic-${pkgver}.tar.bz2
         ${url}/releases/individual/font/font-misc-cyrillic-${pkgver}.tar.bz2
         ${url}/releases/individual/font/font-screen-cyrillic-1.0.4.tar.bz2
