@@ -2,7 +2,7 @@
 
 _pkgname=coronavirus-tracker-cli
 pkgname="$_pkgname"-git
-pkgver=r138.ccb949f
+pkgver=r139.3af12dc
 pkgrel=1
 pkgdesc="Track The Coronavirus from your CLI"
 url="https://github.com/sagarkarira/coronavirus-tracker-cli"
