@@ -1,10 +1,10 @@
 pkgbase = python2-pyramid
-	pkgdesc = Pyramid is a very general open source Python web framework.
+	pkgdesc = Pyramid is a small, fast, down-to-earth, open source Python web framework. It makes real-world web application development and deployment more fun, more predictable, and more productive.
 	pkgver = 1.10.4
 	pkgrel = 2
-	url = http://www.pylonsproject.org/
+	url = https://pypi.org/project/pyramid/
 	arch = any
-	license = custom:BSD
+	license = BSD-derived Repoze Public License
 	makedepends = python2
 	depends = python2
 	depends = python2-mako
