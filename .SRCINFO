@@ -1,7 +1,7 @@
 pkgbase = ntopng
 	pkgdesc = The next generation version of the original ntop, a network traffic probe that shows the network usage
 	pkgver = 4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ntop.org/
 	install = ntopng.install
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = ntopng
 	depends = sqlite
 	depends = libmaxminddb
 	depends = zeromq
+	depends = rrdtool
 	source = ntopng-4.0.tar.gz::https://github.com/ntop/ntopng/archive/4.0.tar.gz
 	source = nDPI-3.2-stable.tar.gz::https://github.com/ntop/nDPI/archive/3.2-stable.tar.gz
 	source = ntopng@.service
