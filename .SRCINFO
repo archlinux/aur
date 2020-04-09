@@ -1,5 +1,5 @@
 pkgbase = virtualbox-ext-oracle-5
-	pkgdesc = Oracle VM VirtualBox Extension Pack 5.2.x
+	pkgdesc = Oracle VM VirtualBox Extension Pack 5.2.x (stable)
 	pkgver = 5.2.x
 	pkgrel = 1
 	url = https://www.virtualbox.org/
