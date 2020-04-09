@@ -4,12 +4,12 @@
 
 pkgname=xorg-fonts-100dpi-otb
 pkgver=1.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="X.org 100dpi fonts (OTB version)"
 arch=('any')
 url="https://xorg.freedesktop.org/"
 license=('custom')
-depends=('xorg-fonts-encodings' 'xorg-fonts-alias' 'xorg-font-utils' 'fontconfig' 'fonttosfnt-git')
+depends=('xorg-fonts-encodings' 'xorg-fonts-alias' 'xorg-font-utils' 'fontconfig' 'fonttosfnt')
 replaces=('xorg-fonts-100dpi')
 provides=('xorg-fonts-100dpi')
 conflicts=('xorg-fonts-100dpi')
