@@ -3,8 +3,8 @@
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
  
 pkgname=irpf
-pkgver=2020.1.5
-pkgrel=2
+pkgver=2020.1.6
+pkgrel=1
 license=('custom')
  
 arch=(any)
@@ -12,21 +12,21 @@ pkgdesc='Programa Oficial da Receita para elaboração do IRPF'
 url='http://www.receita.fazenda.gov.br'
  
 
-source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2020/irpf/arquivos/IRPF2020-1.5.zip
+source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2020/irpf/arquivos/IRPF2020-1.6.zip
         Copyright
         $pkgname.png
         $pkgname.desktop
         $pkgname.install
 		$pkgname)
  
-md5sums=('a4837c8291b6b85988b31fa8f010106f'
+md5sums=('f470d615d09b573b1c310bb9b1888596'
          '31c22ff443abed485f9ef65769bb3171'
          '43d8c9617118578f03b2c4eeb1c72c57'
          '5c3f364ed6e30e8aac69ad4394deabba'
          '2ea7481b649f5a12d90fe8d1617814c8'
          'a56e7e3e4a53dd027224e32b46cf3c7b')
  #java-environment
-depends=('jre8-openjdk' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('java-environment' 'hicolor-icon-theme' 'desktop-file-utils')
 install=$pkgname.install
  
  
