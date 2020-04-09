@@ -17,7 +17,7 @@ provides=('foldingathome-v7' 'foldingathome')
 conflicts=('foldingathome-v7' 'foldingathome')
 install=foldingathome.install
 
-_coarse_pkgver="${pkgver:0:3}" # 7.5.1 -> 7.5
+_coarse_pkgver="${pkgver%.*}" # 7.5.1 -> 7.5
 _tarball_name="fahclient_${pkgver}-64bit-release"
 _url="https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/v${_coarse_pkgver}/${_tarball_name}.tar.bz2"
 source=(foldingathome.service fah-config foldingathome.install "${_url}")
