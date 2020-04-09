@@ -1,7 +1,7 @@
 # Maintainer: TrueRandom <rantruedom at gmail dot com>
 pkgname=iota-trinity-wallet
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The IOTA Trinity Wallet"
 arch=(x86_64)
 url="https://trinity.iota.org/"
