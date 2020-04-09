@@ -1,0 +1,30 @@
+diff --git a/Source/Ember/EmberPch.h b/Source/Ember/EmberPch.h
+index 106f251..f5c3bbf 100644
+--- a/Source/Ember/EmberPch.h
++++ b/Source/Ember/EmberPch.h
+@@ -59,23 +59,25 @@
+ #include <vector>
+ #include <unordered_map>
+ 
+ //Third party headers.
+ #ifdef _WIN32
+ 	#include "libxml/parser.h"
+ #else
+ 	#include "libxml2/libxml/parser.h"
+ #endif
+ 
++#if !defined(Q_MOC_RUN)
+ //Intel's Threading Building Blocks is what's used for all threading.
+ #include <tbb/parallel_for.h>
+ #include <tbb/task_scheduler_init.h>
++#endif
+ 
+ #define GLM_FORCE_RADIANS 1
+ #define GLM_ENABLE_EXPERIMENTAL 1
+ 
+ #ifndef __APPLE__
+ 	#define GLM_FORCE_INLINE 1
+ #endif
+ 
+ //glm is what's used for matrix math.
+ #include <glm/glm.hpp>

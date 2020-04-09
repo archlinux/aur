@@ -1,0 +1,28 @@
+pkgbase = fractorium-git
+	pkgdesc = A Qt-based fractal flame editor which uses a C++ re-write of the flam3 algorithm named Ember and a GPU capable version named EmberCL which implements a portion of the cuburn algorithm in OpenCL.
+	pkgver = r830.d289301
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = libgl
+	makedepends = glm
+	makedepends = libjpeg-turbo
+	makedepends = libpng
+	makedepends = intel-tbb
+	makedepends = libxml2
+	makedepends = ocl-icd
+	makedepends = opencl-headers
+	makedepends = openexr
+	depends = qt5-base
+	depends = qt5-3d
+	provides = fractorium
+	source = fractorium::git+https://bitbucket.org/mfeemster/fractorium.git
+	source = TBB_MOC.patch
+	sha256sums = SKIP
+	sha256sums = 7547bb931059bf9162dce3fea9cb1ee42c227444aba7d3fca10b24894cf0538f
+
+pkgname = fractorium-git
+
