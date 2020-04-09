@@ -3,6 +3,8 @@ Description=Folding@home distributed computing client
 After=network.target
 
 [Service]
+CPUSchedulingPolicy=idle
+IOSchedulingClass=idle
 DynamicUser=yes
 Type=simple
 User=fah
