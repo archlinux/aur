@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Messenger
+Comment=Facebook Messenger desktop built with nativefier (electron)
+Exec=messenger-nativefier
+Icon=messenger-nativefier
+Encoding=UTF-8
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Chat;InstantMessaging;Application;
