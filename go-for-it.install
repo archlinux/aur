@@ -1,0 +1,8 @@
+post_upgrade() {
+    echo '>>> WARNING: Manual intervention required.'
+    echo '>>> As of version 1.7.3-2 the application system name changed'
+    echo '>>> from "com.github.jmoerman.go-for-it" to "go-for-it".'
+    echo '>>> This will affect application shortcut and config directory'
+    echo '>>> that might need adjustment. For example, rename'
+    echo '>>> "~/.config/com.github.jmoerman.go-for-it" to "~/.config/go-for-it".'
+}

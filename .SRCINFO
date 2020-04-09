@@ -1,8 +1,9 @@
 pkgbase = go-for-it
 	pkgdesc = A stylish to-do list with built-in productivity timer.
 	pkgver = 1.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mank319/Go-For-It
+	install = go-for-it.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
