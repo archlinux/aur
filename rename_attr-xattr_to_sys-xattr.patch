@@ -1,0 +1,41 @@
+--- src/eiciel-0.9.12.1/configure.ac	2018-01-16 19:41:43.000000000 +0000
++++ src2/eiciel-0.9.12.1/configure.ac	2018-09-28 09:20:06.548646722 +0000
+@@ -156,7 +156,7 @@
+ 
+ if test x$enable_eua = xyes;
+ then
+-    AC_CHECK_HEADERS([attr/xattr.h], [], AC_MSG_ERROR([This header is mandatory for extended user attributes support]), [])
++    AC_CHECK_HEADERS([sys/xattr.h], [], AC_MSG_ERROR([This header is mandatory for extended user attributes support]), [])
+     AC_DEFINE([ENABLE_USER_XATTR], [1], [Enables user extended attributes support])
+ fi
+ AM_CONDITIONAL(ENABLE_USER_XATTR, test x$enable_eua = xyes)
+
+--- src/eiciel-0.9.12.1/configure	2018-01-16 19:41:51.000000000 +0000
++++ src2/eiciel-0.9.12.1/configure	2018-09-28 09:00:29.392747415 +0000
+@@ -19169,9 +19169,9 @@
+ if test x$enable_eua = xyes;
+ then
+ 
+-for ac_header in attr/xattr.h
++for ac_header in sys/xattr.h
+ do :
+-  ac_fn_cxx_check_header_mongrel "$LINENO" "attr/xattr.h" "ac_cv_header_attr_xattr_h" "$ac_includes_default"
++  ac_fn_cxx_check_header_mongrel "$LINENO" "sys/xattr.h" "ac_cv_header_attr_xattr_h" "$ac_includes_default"
+ if test "x$ac_cv_header_attr_xattr_h" = xyes; then :
+   cat >>confdefs.h <<_ACEOF
+ #define HAVE_ATTR_XATTR_H 1
+
+--- src/eiciel-0.9.12.1/src/xattr_manager.hpp	2014-08-20 08:06:00.000000000 +0000
++++ src2/eiciel-0.9.12.1/src/xattr_manager.hpp	2018-09-28 09:12:54.336485500 +0000
+@@ -26,7 +26,10 @@
+ #include <sys/stat.h>
+ #include <unistd.h>
+ 
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
++#ifndef ENOATTR
++#define ENOATTR ENODATA
++#endif
+ 
+ #include <string>
+ #include <cstring>
