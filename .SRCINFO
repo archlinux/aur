@@ -1,6 +1,6 @@
 pkgbase = simutrans-extended
 	pkgdesc = Transportation simulation game - Extended Version
-	pkgver = 20200408
+	pkgver = 20200409
 	pkgrel = 1
 	url = https://www.simutrans.com/
 	arch = x86_64
