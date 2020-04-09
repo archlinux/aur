@@ -26,12 +26,10 @@ build() {
     -DLLVM_ENABLE_RTTI=ON \
     -DLLVM_ENABLE_FFI=ON \
     -DLLVM_BUILD_TESTS=OFF \
-    -DLLVM_BUILD_DOCS=OFF \
-    -DLLVM_ENABLE_SPHINX=OFF \
     -DLLVM_ENABLE_DOXYGEN=OFF \
     -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
     -DLLVM_BINUTILS_INCDIR=/usr/include
-  make -j1
+  make -j1 -Wno-dev
 }
 
 package() {
