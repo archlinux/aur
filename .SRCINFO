@@ -1,13 +1,14 @@
 pkgbase = python-av
 	pkgdesc = Pythonic bindings for FFmpeg
 	pkgver = 7.0.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://docs.mikeboers.com/pyav/
 	arch = x86_64
 	arch = i686
 	license = BSD
-	makedepends = python-setuptools
 	makedepends = cython
+	makedepends = python-setuptools
+	makedepends = pkgconf
 	depends = python
 	depends = ffmpeg
 	source = https://files.pythonhosted.org/packages/source/a/av/av-7.0.1.tar.gz
