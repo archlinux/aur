@@ -4,8 +4,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abiword-git
-pkgver=20584.bf3eff98e
-pkgrel=2
+pkgver=3.1.0.20598.bbd9f4864
+pkgrel=1
+epoch=1
 pkgdesc="Fully-featured word processor from official gnome gitlab mirror"
 arch=('i686' 'x86_64')
 url="http://www.abisource.com"
@@ -25,7 +26,10 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd AbiWord
-  printf "%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  major=$(awk '/\[abi_version_major\]/ {print $2}' configure.ac |tr -d \[ |tr -d \] | tr -d \))
+  minor=$(awk '/\[abi_version_minor\]/ {print $2}' configure.ac |tr -d \[ |tr -d \] | tr -d \))
+  micro=$(awk '/\[abi_version_micro\]/ {print $2}' configure.ac |tr -d \[ |tr -d \] | tr -d \))
+  printf "%s.%s.%s.%s.%s"  $major $minor $micro $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 prepare() {
