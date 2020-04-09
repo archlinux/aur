@@ -3,14 +3,14 @@
 
 pkgname=debhelper-python
 pkgver=3.8.2
-pkgrel=1
+pkgrel=2
 
 _debpy_name=python3-defaults
 _debpy_ver=$pkgver
-_debpy_rel=1
+_debpy_rel=3
 
 _py3def_name=dh-python
-_py3def_ver=4.20191017
+_py3def_ver=4.20200315
 
 pkgdesc="debhelper scripts for Python 3: py3versions, python3.pm"
 arch=('any')
@@ -23,8 +23,8 @@ provides=('debhelper-python' 'dh-python')
 source=(https://deb.debian.org/debian/pool/main/p/${_debpy_name}/${_debpy_name}_${_debpy_ver}-${_debpy_rel}.tar.gz
         https://deb.debian.org/debian/pool/main/d/${_py3def_name}/${_py3def_name}_${_py3def_ver}.tar.xz
         py3versions.patch)
-sha512sums=('263f286afea710e2615b273377e6e0a2510b4c8aabd41688c442dcb9689fc7eb67397b916304bdb50c383ef2988dbf54b9ef09a8deb69fda86333d3e1189dc01'
-            'efdc456d2066e5f9288251cf6ab2e3b7d63371ed7da6745b1b888e2e847e8f4cbee48ea745af9cbee5307f86c4338f2e89506619e14e7884800589bbef136509'
+sha512sums=('879cba03e43c859e1e8c7196fbf3cf4066020e4c51cd157eeddb86b62597ef6115baf8f78976a4b86cba010fbaafa30317a57670a89741ae9ffac2aa46500866'
+            '5e430d239be8c517f0ae98ba9c278de4dfd29a35f050ebc0470dbac255bef14808b94dbedb32923c17f99e2a355f1037f9ecb8d2ff6b98a8075acf26bec2d631'
             '772332cecd85331b6deda25c0d48eed2490e7e7f26d90c7936f46188c706f590771af6edcbb4740a23bff0434ed061bc2b49f8183561cbf4bbb845ed3bebc42a')
 
 prepare() {
