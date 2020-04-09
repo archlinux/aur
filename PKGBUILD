@@ -2,13 +2,13 @@
 pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
-pkgver=v0.2.0.rc1.r19.ga9997c6
+pkgver=v0.2.0.rc1.r29.gc536b8f
 pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://github.com/InfinityGhost/OpenTabletDriver"
 license=('GPL')
-depends=('dotnet-runtime>=3.0' 'dotnet-host>=3.0' 'fontconfig' 'libxrandr' 'libx11' 'libxtst')
+depends=('dotnet-runtime>=3.0' 'dotnet-host>=3.0' 'fontconfig' 'libevdev' 'libxrandr' 'libx11')
 makedepends=('git' 'dotnet-sdk>=3.0')
 provides=("opentabletdriver")
 conflicts=("opentabletdriver")
