@@ -34,7 +34,7 @@ package() {
 #!/usr/bin/env bash\n\
 mkdir -p \"\$HOME/.$pkgname\"\n\
 cd \"/opt/$pkgname\"\n\
-node dist/index.js\n" > "$pkgname"
+node dist/index.js $@\n" > "$pkgname"
 
   install -Dd "$pkgdir/usr/bin"
   install -Dm 777 "$pkgname" "$pkgdir/usr/bin"
