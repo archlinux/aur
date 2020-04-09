@@ -6,5 +6,5 @@ if [ "$IS_UNITY_FAMILY" == "Unity" ]; then
   export XDG_CURRENT_DESKTOP=Unity
 fi
 
-cd "/opt/upwork"
+cd "/opt/Upwork"
 exec "./upwork" "$@"
