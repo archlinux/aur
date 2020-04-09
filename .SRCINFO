@@ -7,7 +7,6 @@ pkgbase = flowgger-git
 	license = BSD-2-Clause
 	makedepends = git
 	makedepends = cargo
-	makedepends = pkgconf
 	makedepends = snappy
 	makedepends = capnproto
 	provides = flowgger
