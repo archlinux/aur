@@ -1,8 +1,8 @@
-# Maintainer: Barry <smithbarry at gmx com>
+# Maintainer: Barry <brrtsm at gmail . com>
 # Contributor: dmerej <d.merej@gmail.com>
 
 pkgname=hollywood
-pkgver=1.20
+pkgver=1.21
 pkgrel=1
 
 pkgdesc="Fill your console with Hollywood melodrama technobabble."
@@ -34,13 +34,11 @@ depends=(
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/trunk/${pkgver}/+download/${pkgname}_${pkgver}.orig.tar.gz"
-  "https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}-0ubuntu1.debian.tar.xz"
   "license.txt::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt"
 )
 
 md5sums=(
-  'a93bc2ffb978e5f1a41c9375fdeb00d2'
-  '347c36aff263f3f84b6d1594b99c0a09'
+  'c337ce86c017a8ba0231c24f7ce1eb7d'
   '65d3616852dbf7b1a6d4b53b00626032'
 )
 
@@ -52,7 +50,6 @@ package() {
   install -m 0644 "$srcdir/$pkgname-$pkgver/share/hollywood/"*  "$pkgdir/usr/share/hollywood"
   install -m 0644 "$srcdir/$pkgname-$pkgver/"{README,ChangeLog}  "$pkgdir/usr/share/hollywood"
   install -m 0644 "$srcdir/$pkgname-$pkgver/share/man/man1/"*  "$pkgdir/usr/share/man/man1"
-  # copyright and license
-  install -m 0644 "$srcdir/debian/copyright" "$pkgdir/usr/share/licenses/hollywood/copyright"
+  # license
   install -m 0644 "$srcdir/license.txt" "$pkgdir/usr/share/licenses/hollywood/license.txt"
 }
