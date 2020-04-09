@@ -1,11 +1,12 @@
 pkgbase = xcursor-semi-transparent
 	pkgdesc = Semi-transparent Cursors Theme
 	pkgver = 2016.04.15
-	pkgrel = 1
-	url = https://www.opendesktop.org/p/999955/
+	pkgrel = 2
+	url = https://www.pling.com/p/999955/
 	arch = any
 	license = GPL
-	source = xcursor-semi-transparent-2016.04.15.tar.gz::https://dl.opendesktop.org/api/files/download/id/1460735324/s/3d66792e55ce1167c3c96077b9705e10/t/1541095170/u//74499-semi-transparent.tar.gz
+	makedepends = perl
+	source = xcursor-semi-transparent-2016.04.15.tar.gz::https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE0NjA3MzUzMjQiLCJ1IjpudWxsLCJsdCI6ImZpbGVwcmV2aWV3IiwicyI6ImMwYTdjM2IzZGY1OGEwZGNmYmI5NTE0OWE1YThkZmEwMzlkMTIxY2Y5ZDY4MWMzNGY4MDgyOTBlMjZhMjM2MjY1NjliZDUyNzZjNTUzYzAyYWM4MDExOWY2ZGI3ODgyOTQ5N2NiN2UzYjg0YWJhOTI3ZjEwMzI1MmRiMjMwMjdlIiwidCI6MTU4NjQ1NTkyMywic3RmcCI6bnVsbCwic3RpcCI6bnVsbH0.r7xvp6N0Hzd7xsRvBelR-OEFfJtyTaG3K9bkdLUvPGw/74499-semi-transparent.tar.gz
 	sha256sums = 112b33b255e723a1d37426446763e8ef64d896da1a64bfc2303cce550a1cde63
 
 pkgname = xcursor-semi-transparent
