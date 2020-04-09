@@ -2,7 +2,7 @@
 pkgname=python-mujoco-py
 _name=${pkgname#python-}
 pkgver=2.0.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface to the MuJoCo physics engine"
 arch=('x86_64')
 url="https://github.com/openai/mujoco-py"
@@ -20,7 +20,7 @@ depends=(
 	'python-imageio'
 	'python-numpy'
 )
-makedepends=('python-setuptools')
+makedepends=('patchelf' 'python-setuptools')
 optdepends=()
 # Stripping breaks the generated cymj_*.so file
 options=(!strip)

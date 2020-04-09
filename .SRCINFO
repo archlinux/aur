@@ -1,11 +1,12 @@
 pkgbase = python-mujoco-py
 	pkgdesc = Python interface to the MuJoCo physics engine
 	pkgver = 2.0.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openai/mujoco-py
 	arch = x86_64
 	license = MIT
 	license = custom
+	makedepends = patchelf
 	makedepends = python-setuptools
 	depends = cython
 	depends = glew
