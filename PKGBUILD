@@ -12,7 +12,8 @@ url="http://www.fial.com/~scott/tamsyn-font"
 license=('custom')
 conflicts=('tamsyn-font')
 provides=('tamsyn-font')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils' 'fonttosfnt')
+makedepends=('fonttosfnt')
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 source=("https://www.fial.com/~scott/$_pkgname/download/$_pkgname-$pkgver.tar.gz")
 md5sums=('6ec13672d2f0d6a829f2403cdeebd980')
 
