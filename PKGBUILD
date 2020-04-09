@@ -2,11 +2,11 @@
 # Contributor: Josh VanderLinden <arch@cloudlery.com>
 pkgname=python-sphinxcontrib-programoutput
 _pkgname=sphinxcontrib-programoutput
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc="Sphinx extension to include program output"
 arch=('any')
-url="https://bitbucket.org/birkenfeld/sphinx-contrib"
+url="https://pypi.org/project/sphinxcontrib-programoutput/"
 license=('BSD')
 depends=('python' 'python-sphinx')
 makedepends=('python')
@@ -15,7 +15,7 @@ options=(!emptydirs)
 source=(
   "https://pypi.python.org/packages/source/s/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
 )
-sha256sums=('80dd5b4eab780a13ff2c23500cac3dbf0e04ef9976b409ef25a47c263ef8ab94')
+sha256sums=('0caaa216d0ad8d2cfa90a9a9dba76820e376da6e3152be28d10aedc09f82a3b0')
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
