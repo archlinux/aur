@@ -1,15 +1,20 @@
 pkgbase = lua-utf8
-	pkgdesc = Add UTF-8 support to Lua, compatible with Lua string module.
-	pkgver = 0.1.1
-	pkgrel = 3
+	pkgdesc = Add UTF-8 support to Lua, compatible with Lua string module
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://github.com/starwing/luautf8
 	arch = x86_64
 	license = MIT
 	makedepends = luarocks
-	depends = lua
-	noextract = luautf8-0.1.1-1.src.rock
-	source = https://luarocks.org/luautf8-0.1.1-1.src.rock
-	sha256sums = 51aa211a9d39d62c65bfcca4eccb8482a11bfe918992eed58104b646338d62a0
+	source = luautf8-0.1.2.tar.gz::https://github.com/starwing/luautf8/archive/0.1.2.tar.gz
+	sha256sums = 52578858e4519da7e09d019baef9135fef3ff2dfb0bc0a01e58fba7a70f7be26
 
 pkgname = lua-utf8
+	depends = lua
+
+pkgname = lua52-utf8
+	depends = lua52
+
+pkgname = lua51-utf8
+	depends = lua51
 
