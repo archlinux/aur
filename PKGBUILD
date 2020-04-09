@@ -7,12 +7,11 @@ pkgdesc='Estimate distinct count of values from standard input. Provides a very 
 arch=('x86_64')
 url='https://github.com/haroldfreeman/edcount'
 license=('GPL-3.0')
-source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('99fe6c46d4c12494af3ff78c96ebea4e')
+source=("${url}/releases/download/v${pkgver}/edcount-${pkgver}.tar.gz")
+md5sums=('d66fabc13d1112a936e14bf0ac14e6d1')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  autoreconf -i
   ./configure --prefix=/usr
 }
 

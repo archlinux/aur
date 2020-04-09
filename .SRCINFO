@@ -5,8 +5,8 @@ pkgbase = edcount
 	url = https://github.com/haroldfreeman/edcount
 	arch = x86_64
 	license = GPL-3.0
-	source = https://github.com/haroldfreeman/edcount/archive/v1.2.0.tar.gz
-	md5sums = 99fe6c46d4c12494af3ff78c96ebea4e
+	source = https://github.com/haroldfreeman/edcount/releases/download/v1.2.0/edcount-1.2.0.tar.gz
+	md5sums = d66fabc13d1112a936e14bf0ac14e6d1
 
 pkgname = edcount
 
