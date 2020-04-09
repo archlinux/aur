@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd /opt/.redditfsdata && virtualenv env && source env/bin/activate
+pip install fusepy
+pip install requests
+pip install -r reqs.txt 2>/dev/null
+python /opt/.redditfsdata/redditfs.py /opt/r
+chmod 777 /opt/r
