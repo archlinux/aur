@@ -1,6 +1,6 @@
 pkgbase = coronavirus-tracker-cli-git
 	pkgdesc = Track The Coronavirus from your CLI
-	pkgver = r131.1ea59c3
+	pkgver = r138.ccb949f
 	pkgrel = 1
 	url = https://github.com/sagarkarira/coronavirus-tracker-cli
 	arch = any
