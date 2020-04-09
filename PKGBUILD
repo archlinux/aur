@@ -6,7 +6,7 @@ pkgver=19.19
 pkgrel=1
 pkgdesc="A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques"
 arch=('x86_64')
-url="http://www.dlib.net"
+url="http://dlib.net"
 license=('custom')
 depends=('cblas'
          'lapack'
@@ -18,7 +18,7 @@ optdepends=('cuda: for CUDA support'
             'giflib: for GIF support'
             'sqlite: for sqlite support')
 makedepends=('cmake')
-source=("https://downloads.sourceforge.net/project/dclib/${pkgname}/v${pkgver}/${pkgname}-${pkgver}.tar.bz2")
+source=("http://dlib.net/files/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('1decfe883635ce51acd72869cebe870ab9b85eb094d417adc8f48aa7b8c60cd7')
 
 build() {
