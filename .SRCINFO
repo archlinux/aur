@@ -1,0 +1,12 @@
+pkgbase = libfuzzer-header
+	pkgdesc = FuzzedDataProvider header required for some program's debug builds
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://llvm.org/
+	arch = any
+	license = custom:Apache 2.0 with LLVM Exception
+	source = FuzzedDataProvider.h
+	sha256sums = 7f1ef1d73446f0fe3a3fc3a651ee159f024361599c2673eab7f2feb87ec3d716
+
+pkgname = libfuzzer-header
+
