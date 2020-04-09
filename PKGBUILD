@@ -92,6 +92,7 @@ source=(
     "git+$_repo_url?signed#tag=$_srcver_tag"
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
+    sphinx-workaround.patch
     0005-v5.6_undead-pds099o.patch
     0005-glitched-pds.patch
 )
@@ -102,7 +103,8 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'e1a19e8728ce16f239454317cdf94816ec4cdd78e8feb1c459939c1865ed31899c76bc91556a0cea77b88ae13f68b76883ea599d3a5c6718afc81b8212f9dd14'
+            'c43ca197e5d5ec0473d4f8cce2354020e5808d49716c811b14696a7738b99071fb979fb1056617d59bc90734587c4e9ac123206aeacf07e0ad789ee29618e889'
+            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             '8f3fce45a43c25800d1efb11010a769eafc0a678ea128d695ef5fe189efe1fe60f0bf16d4d7ff13111bdb2385fdcfb27d554c2d3a93debf2341e5e83224f6153'
             'dca2b705810db5e3c3782ac4c11f499e010752055629213ccada09c8e748d20cd1e8c49a93d2e28c5b0c7bf23a2247f0d9858a26d4a56b7cef35108c731cff1c')
 
