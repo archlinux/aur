@@ -1,11 +1,11 @@
 pkgbase = jmk-x11-fonts-otb
 	pkgdesc = Jim's Fonts for X (OTB conversion)
 	pkgver = 3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://nikolas.us.to/jmkfonts/
 	arch = any
 	license = GPL
-	makedepends = fonttosfnt-git
+	makedepends = fonttosfnt
 	makedepends = xorg-mkfontdir
 	provides = jmk-x11-fonts
 	conflicts = jmk-x11-fonts
