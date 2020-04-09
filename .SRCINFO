@@ -1,6 +1,6 @@
 pkgbase = cmpdl
 	pkgdesc = A lightweight alternative to Twitch App for downloading Minecraft modpacks
-	pkgver = 2.3.0
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/Franckyi/CMPDL
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = cmpdl
 	depends = minecraft-launcher
 	depends = java-runtime-openjdk=8
 	depends = java-openjfx=8
-	source = cmpdl-2.3.0.jar::https://github.com/Franckyi/CMPDL/releases/download/v2.3.0/cmpdl-2.3.0.jar
+	source = cmpdl-1.2.2.jar::https://github.com/Vazkii/CMPDL/releases/download/1.2.2/cmpdl-1.2.2.jar
 	source = cmpdl.desktop
-	md5sums = 5e8176fbc682497a0badc1c835db01ae
+	md5sums = 5caa35cee04de72d50164caf116b00c2
 	md5sums = b7b3e3e0228eef1d60ee934e3ad82b11
 
 pkgname = cmpdl
