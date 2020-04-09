@@ -1,0 +1,10 @@
+#!/bin/sh
+
+cd /usr/share/landeseternelles
+
+if test -f /usr/bin/le.x86_64.static.bin
+then
+        /usr/bin/le.x86_64.static.bin "$1"
+else
+        /usr/bin/le.x86.static.bin "$1"
+fi

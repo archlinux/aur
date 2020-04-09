@@ -1,75 +1,42 @@
 # Maintainer: Tosh (tosh <at> t0x0sh <dot> org)
 
 pkgname=landeseternelles
-pkgver=1.9.3
-pkgrel=2
+pkgver=1.9.4
+pkgrel=1
 pkgdesc="Landes Eternelles is a french role playing game (mmorpg), forked from Eternal Lands."
 arch=('i686' 'x86_64')
-url="http://www.landes-eternelles.com"
+url="https://www.landes-eternelles.com"
 license=(custom:'eternal_lands_license')
-depends=('sdl_net' 'sdl_image' 'cal3d' 'mesa' 'openal' 'libxslt' 'libvorbis' 'gtk2')
-install='landeseternelles.install'
-
-client_sources="Client_Sources-1.9.3"
-editeur_sources="Editeur_Sources-1.9.3"
-datas="LandesEternellesLinux-1.9.3"
-
+depends=(sh libglvnd gtk2)
 
 source=(
-    http://landes-eternelles.com/client/1930/$client_sources.zip
-    http://www.landes-eternelles.com/client/1930/$editeur_sources.zip
-    http://landes-eternelles.com/client/1930/linux/$datas.zip
+    https://landes-eternelles.com/client/1940/linux/LandesEternellesLinux.tar.gz
     landeseternelles.desktop
     landeseternelles.png
-    client_sources.patch
+    landeseternelles
+    editeurlandeseternelles
 )
-
-noextract=(
-   $client_sources.zip
-   $editeur_sources.zip
-)
-
-prepare() {
-          mkdir -p client_sources editeur_sources
-          (cd client_sources && bsdtar -x -f ../$client_sources.zip)
-          (cd editeur_sources && bsdtar -x -f ../$editeur_sources.zip)
-}
-
-build() {
-    cd "$srcdir/client_sources"
-    patch < ../client_sources.patch
-    make -f Makefile.linux || return 1
-
-    cd "$srcdir/editeur_sources"
-    make -f Makefile.linux || return 1
-}
 
 package() {
     mkdir -p $pkgdir/usr/{bin,share/{$pkgname,licenses/$pkgname,pixmaps,applications}}
     install -m644 $srcdir/landeseternelles.desktop $pkgdir/usr/share/applications/landeseternelles.desktop
     install -m644 $srcdir/landeseternelles.png $pkgdir/usr/share/pixmaps/landeseternelles.png
+    install -m755 $srcdir/landeseternelles $pkgdir/usr/bin/landeseternelles
+    install -m755 $srcdir/editeurlandeseternelles $pkgdir/usr/bin/editeurlandeseternelles
 
-    if [ $CARCH == "x86_64" ];then
-	    cd "$srcdir/client_sources"
-	    install -m755 le.x86_64.linux.bin $pkgdir/usr/bin/le.$CARCH.linux.bin
-	    cd "$srcdir/editeur_sources"
-	    install -m755 mapedit.x86_64.linux.bin $pkgdir/usr/bin/mapedit.$CARCH.linux.bin
-    else
-	    cd "$srcdir/client_sources"
-	    install -m755 le.x86.linux.bin $pkgdir/usr/bin/le.x86.linux.bin
-	    cd "$srcdir/editeur_Sources"
-	    install -m755 mapedit.x86.linux.bin $pkgdir/usr/bin/mapedit.x86.linux.bin
-    fi
-
-    cd "$srcdir/$datas"
+    cd "$srcdir/LandesEternelles"
+    install -m755 le.$CARCH.static.bin $pkgdir/usr/bin/le.$CARCH.static.bin
+    install -m755 mapedit.$CARCH.static.bin $pkgdir/usr/bin/mapedit.$CARCH.static.bin
+    
     rm -f *.bin icon.bmp
-    mv -f Licence.txt $pkgdir/usr/share/licenses/$pkgname/
+    install -m644 Licence.txt $pkgdir/usr/share/licenses/$pkgname/Licence.txt
     mv -f * $pkgdir/usr/share/$pkgname/
+    find $pkgdir/usr/share/$pkgname/ -type f -exec chmod 0644 {} \;
+    find $pkgdir/usr/share/$pkgname/ -type d -exec chmod 0755 {} \;
 }
 
-sha256sums=('e622b57d1a62a9ddf8d1574ac89f0deb482d89d6045073020f470c608b835858'
-            'ed33675c87723656544e63dabe59ad8ecf37576dacebf5a01d0ac0ad9a079390'
-            'efe94668e121a87717d850a14379797927730c9962a673cc1613e1c89addd8d0'
+sha256sums=('f5e249cf518914978e1e97aa49ca1f58d236c6984acb6771e248f2d482db3f2b'
             '1357259d4232d8533d3acdf22c63a9b650472f0ca2cf9841eb03ebd6a514e3f7'
             'f42bb2fdd8b981ca2ed5552110831e349852439b3ea0ead13f7fa328f3a30b72'
-            '8a775a31c459c5a3e8f1984e610db7abba395504e51ab28be173a263dc9a3f4b')
+            '066457e0c01436667bf85d3d34919fba87a6cf1b2953e6960c6353826a862dd4'
+            '5da82012b1c9aa39d7b151b97b7749b7d5145691d4f6aedeca3cfa45689b2704')

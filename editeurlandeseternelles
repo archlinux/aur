@@ -1,0 +1,10 @@
+#!/bin/sh
+
+cd /usr/share/landeseternelles
+
+if test -f /usr/bin/mapedit.x86_64.static.bin
+then
+        /usr/bin/mapedit.x86_64.static.bin
+else
+        /usr/bin/mapedit.x86.static.bin
+fi
