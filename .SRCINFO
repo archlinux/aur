@@ -1,7 +1,7 @@
 pkgbase = mujoco-bin
 	pkgdesc = A fast and accurate physics engine for research and development.
 	pkgver = 2.00
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.roboti.us
 	arch = x86_64
 	license = custom

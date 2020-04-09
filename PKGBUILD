@@ -3,7 +3,7 @@ pkgname=mujoco-bin
 pkgver=2.00
 _pkgname="${pkgname%-bin}"
 _pkgnamever="${_pkgname}${pkgver/.}"
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast and accurate physics engine for research and development."
 arch=('x86_64')
 url="https://www.roboti.us"
@@ -86,7 +86,7 @@ package() {
 	install -Dm644 -t "$pkgdir/usr/share/doc/${_pkgname}/sample" sample/*
 
 	# Complete bundled package for anything that expects it (like pip mujoco_py)
-	_bundle_root="$pkgdir/opt/$_pkgname/$_pkgnamever"
+	_bundle_root="$pkgdir/opt/$_pkgname"
 	# Include MuJoCo's bundled versions of libraries here.
 	install -Dm644 -t "$_bundle_root/bin" \
 		bin/libglew.so bin/libglewegl.so bin/libglewosmesa.so \
