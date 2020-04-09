@@ -1,7 +1,7 @@
 pkgbase=bluespec
 pkgname=(bluespec-tools bluespec-docs)
 pkgver=2019.05.beta2
-pkgrel=0
+pkgrel=1
 pkgdesc='Bluespec SystemVerilog Tools'
 url='http://forum.bluespec.com'
 arch=(x86_64)
