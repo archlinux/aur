@@ -6,8 +6,8 @@
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.4.23.r847.g11747ff79
-pkgrel=2
+pkgver=0.5.0rc1.r26.g729e0533f
+pkgrel=1
 pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
 arch=('i686' 'x86_64' 'armv7h')
@@ -30,7 +30,7 @@ pkgver() {
   #VERSION=$(grep -E "^const CurrentVersionNumber = " version.go | awk '{ print $4 }' | sed 's/"//g')
   VERSION=$(git tag | grep -vE "floodsub|sharding-pre" | grep -ve "-dev" | sed 's/-/~/g' | sort --version-sort --reverse | sed 's/~/-/g' | head -n1)
   COUNT=$(git rev-list "$VERSION.." --count)
-  VERSION=$(echo "$VERSION" | sed 's/^v//')
+  VERSION=$(echo "$VERSION" | sed 's/^v//' | sed 's/-//')
   CHKSUM=$(git rev-list master | head -n1)
   printf "%s.%s.%s" "$VERSION" "r$COUNT" "g${CHKSUM:0:9}"
 }
