@@ -1,7 +1,7 @@
 pkgbase = ryzencontroller-bin
 	pkgdesc = A minimal Electron application to use ryzenAdj through a friendly interface
 	pkgver = 2.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/ryzen-controller-team/ryzen-controller
 	arch = x86_64
 	license = CC0 1.0 Universal
