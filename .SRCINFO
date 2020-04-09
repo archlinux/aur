@@ -16,7 +16,7 @@ pkgbase = ocaml-ppx_here
 	depends = ocaml-base>=0.13.0
 	depends = ocaml-ppxlib>=0.9.0
 	options = !strip
-	source = ocaml-ppx_here-0.13.0-1.tar.gz::https://github.com/janestreet/ppx_here/archive/v0.13.0.tar.gz
+	source = ocaml-ppx_here-1:0.13.0-1.tar.gz::https://github.com/janestreet/ppx_here/archive/v0.13.0.tar.gz
 	sha256sums = 32522bd79cf7bcc960729dc6ccb20a2273a4ffde16b86ae1a13ea2fcb94225df
 
 pkgname = ocaml-ppx_here
