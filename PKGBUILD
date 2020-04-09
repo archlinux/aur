@@ -60,7 +60,7 @@ prepare () {
 	sed -i 's|graph false|graph true|' etc/bandwidthd.conf
 
 	sed -i 's|#log_dir "/usr/local/var/bandwidthd"|log_dir "/var/lib/bandwidthd"|' etc/bandwidthd.conf
-    sed -i 's|#htdocs_dir "/usr/local/var/bandwidthd/htdocs"|htdocs_dir "/var/lib/bandwidthd/htdocs"|' etc/bandwidthd.conf
+	sed -i 's|#htdocs_dir "/usr/local/var/bandwidthd/htdocs"|htdocs_dir "/var/lib/bandwidthd/htdocs"|' etc/bandwidthd.conf
 
 	sed -i 's|pgsql_connect_string "dbname = bandwidthd password=kahlas12451 user = perkins host = localhost"|#pgsql_connect_string "dbname = bandwidthd password=kahlas12451 user = perkins host = localhost"|' etc/bandwidthd.conf
 	sed -i 's|#sqlite_filename "/var/bandwidthd.db"|sqlite_filename "/var/lib/bandwidthd/bandwidthd.db"|' etc/bandwidthd.conf
