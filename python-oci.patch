@@ -1,6 +1,6 @@
-diff -rupN oci-python-sdk-2.12.2/setup.py oci-python-sdk-2.12.2b/setup.py
---- oci-python-sdk-2.12.2/setup.py	2020-03-31 13:03:31.000000000 -0400
-+++ oci-python-sdk-2.12.2b/setup.py	2020-04-01 20:59:34.952214692 -0400
+diff -rupN oci-python-sdk-2.12.3/setup.py oci-python-sdk-2.12.3b/setup.py
+--- oci-python-sdk-2.12.3/setup.py	2020-04-07 12:36:21.000000000 -0400
++++ oci-python-sdk-2.12.3b/setup.py	2020-04-08 19:18:33.514807916 -0400
 @@ -30,11 +30,10 @@ with open_relative("README.rst") as f:
  
  requires = [
