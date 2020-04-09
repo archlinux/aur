@@ -1,19 +1,43 @@
 pkgbase = autenticacao-gov-pt
-	pkgdesc = O Autenticação.gov.pt é o mecanismo que permite utilizar o Cartão de Cidadão eficientemente e em segurança nos navegadores que suportem ou não plugins Java
-	pkgver = 2.0.46
-	pkgrel = 1
-	url = http://autenticacao.gov.pt/
+	pkgdesc = Portuguese Citizen Card Application
+	pkgver = 3.1.0
+	pkgrel = 5
+	url = http://www.cartaodecidadao.pt/
 	install = autenticacao-gov-pt.install
-	arch = any
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL3
 	license = custom:EUPL
-	depends = java-runtime
-	depends = pcsclite
-	depends = pcsc-tools
+	makedepends = swig
+	makedepends = qconf
+	makedepends = git
+	makedepends = xml-security-c
+	makedepends = jdk11-openjdk
+	depends = qt5-base
+	depends = qt5-tools
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	depends = qt5-graphicaleffects
+	depends = pcsclite>=1.5.0
+	depends = openssl-1.0
 	depends = ccid
+	depends = libzip
+	depends = poppler-qt5
+	depends = libxerces-c-3.1
+	depends = libcurl-compat
+	depends = xml-security-c
+	optdepends = plugin-autenticacao-gov-pt: Necessário para autenticações online
+	optdepends = cartaodecidadao-pki: PKI que confirma a validade dos certificados dos CC
+	optdepends = ecce-gov-pt-certificates: Certificados da ECCE quem assina dos certificados contidos em cartaodecidadao-pki
+	conflicts = classpath
+	conflicts = cartaodecidadao
+	conflicts = cartaodecidadao-bin
+	replaces = cartaodecidadao
+	source = git+https://github.com/amagovpt/autenticacao.gov/#branch=openssl-migration
 	source = autenticacao-gov-pt.install
-	source = https://autenticacao.gov.pt/fa/ajuda/software/plugin-autenticacao-gov.deb
-	sha512sums = d80ecff72fa50f5e4a22a2a662c57b26d13750b89690c1a617db81b61097d1b8b9da8d7469f73f537c740f10660e048e7201d87fde53b8ac19a630720f8db7ed
-	sha512sums = 64aaf0e567e96cda1819e0108aac989fb8d92947d4fac52b525f592cfc4b8e625a2343b9c0568de336873a2ca952412e35f9196d470c0ed9f465c4a2a679dcc7
+	sha512sums = SKIP
+	sha512sums = 4a9b2405626854b744777c564f6d4254c605a0c291a8cf3d665ec9fbdfe1441be1efb77719ec5d154c60a8c65a8f73f5729c3fae5eb49a195edf846af192b35b
 
 pkgname = autenticacao-gov-pt
 

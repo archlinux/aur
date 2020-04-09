@@ -1,27 +1,38 @@
-post_install() {
-	XDG_ICON_RESOURCE="`which xdg-icon-resource 2> /dev/null || true`"
-	if [ ! -x "$XDG_ICON_RESOURCE" ]; then
-		echo "Error: Could not find xdg-icon-resource" >&2
-		exit 0
-	fi
-	for icon in "/usr/share/autenticacao-gov-pt/plugin_autenticacao_gov_"*.png; do
-		size="${icon##*/plugin_autenticacao_gov_}"
-		"$XDG_ICON_RESOURCE" install --size "${size%.png}" "$icon" "plugin-autenticacao-gov"
+set -e
+
+setup_icons() {
+	cd /usr/share/autenticacao-gov
+	regex="([^_]+)_([0-9]+).png$"
+	for file in *.png
+	do
+		if [[ $file  =~ $regex ]]
+		then
+			icon="${BASH_REMATCH[1]##*/}"
+			size="${BASH_REMATCH[2]}"
+			case "$1" in
+				install)
+					echo xdg-icon-resource install --context apps --size "$size" "$file" "$icon"
+					;;
+				uninstall)
+					echo xdg-icon-resource uninstall --context apps --size "$size" "$icon"
+					;;
+				*)
+					exit 1
+					;;
+			esac
+		fi
 	done
 }
 
 post_upgrade() {
-  post_install
+	post_install
 }
 
-post_remove() {
-	XDG_ICON_RESOURCE="`which xdg-icon-resource 2> /dev/null || true`"
-	if [ ! -x "$XDG_ICON_RESOURCE" ]; then
-		echo "Error: Could not find xdg-icon-resource" >&2
-		exit 0
-	fi
-	for icon in "/usr/share/autenticacao-gov-pt/plugin_autenticacao_gov_"*.png; do
-		size="${icon##*/plugin_autenticacao_gov_}"
-		"$XDG_ICON_RESOURCE" uninstall --size "${size%.png}" "$icon" "plugin-autenticacao-gov"
-	done
+post_install() {
+	setup_icons install
 }
+
+pre_remove() {
+	setup_icons uninstall
+}
+
