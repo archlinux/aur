@@ -17,7 +17,7 @@ pkgbase = ocaml-ppx_fields_conv
 	depends = ocaml-fieldslib>=0.13.0
 	depends = ocaml-ppxlib>=0.9.0
 	options = !strip
-	source = ocaml-ppx_fields_conv-0.13.0-1.tar.gz::https://github.com/janestreet/ppx_fields_conv/archive/v0.13.0.tar.gz
+	source = ocaml-ppx_fields_conv-1:0.13.0-1.tar.gz::https://github.com/janestreet/ppx_fields_conv/archive/v0.13.0.tar.gz
 	sha256sums = 7d59775e56c9ae8da250fbdfdb8d58eff6298227a786ceef12e55d9089a424e2
 
 pkgname = ocaml-ppx_fields_conv
