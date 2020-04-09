@@ -1,6 +1,6 @@
 # Maintainer: Philippe Hürlimann <p@hurlimann.org>
 pkgname=haskell-ide-engine
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="The engine for haskell ide-integration. Not an IDE"
 arch=('x86_64')
@@ -8,13 +8,13 @@ url="https://github.com/haskell/haskell-ide-engine"
 license=('custom:BSD3')
 makedepends=('stack')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/haskell/${pkgname}/archive/${pkgver}.tar.gz")
-sha384sums=('6c4a117f79c010747e622f1da8f70c7dd535fe4499c9eba718c2d299c9be035026bad824471a5a45a53a190d26fa67a3')
+sha384sums=('3c8584e51b8197f2890f0f0fedb36b28d2cfae86d0a48d735dcff179098f12e83185ac769f30f43cecf1eb65e7d969df')
 
 # Supported are '8.4.2' '8.4.3' '8.4.4' '8.6.4' '8.6.5' '8.8.1' '8.8.2'
 # activated by default are the ones also used in a stackage snapshot. Removing
 # versions you do not use will greatly reduce the compilation time of this
 # package
-_enabled_ghc_versions=('8.4.3' '8.4.4' '8.6.4' '8.6.5' '8.8.2')
+_enabled_ghc_versions=('8.8.2')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
