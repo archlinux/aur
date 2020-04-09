@@ -1,7 +1,7 @@
 pkgbase = visual-studio-code-bin
 	pkgdesc = Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (official binary version)
-	pkgver = 1.43.2
-	pkgrel = 2
+	pkgver = 1.44.0
+	pkgrel = 1
 	url = https://code.visualstudio.com/
 	arch = x86_64
 	license = custom: commercial
@@ -19,10 +19,10 @@ pkgbase = visual-studio-code-bin
 	optdepends = libdbusmenu-glib: Needed for KDE global menu
 	provides = code
 	conflicts = code
-	source = code_x64_1.43.2.tar.gz::https://vscode-update.azurewebsites.net/1.43.2/linux-x64/stable
+	source = code_x64_1.44.0.tar.gz::https://vscode-update.azurewebsites.net/1.44.0/linux-x64/stable
 	source = visual-studio-code.desktop
 	source = visual-studio-code-url-handler.desktop
-	sha256sums = 8f38474e258c1bbd469b5311051c50466a080b9e970b506e0e0bad387d524fed
+	sha256sums = 9dd2cad3f16750e9f16a3e8b58123ec5d01c3c3009e9fbbbb7cd564f54992e60
 	sha256sums = 0deefcb638e06c35a52e7e9fb8e19b2dc393f01e5c1c122d2938cddeb22cf8de
 	sha256sums = be3d123aacd575d8f836728266eb421ea70399d713d1fc30378dbc5602b519fb
 
