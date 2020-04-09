@@ -1,7 +1,7 @@
 # Maintainer: Michał Lisowski <lisu@riseup.net>
 
 pkgname=geocentral-lite
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Simple desktop application for quick geocaches logging"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("https://www.geocentral.pl/files/${pkgname}-${pkgver}-linux64.jar"
         "${pkgname}"
         "${pkgname}.png"
         "${pkgname}.desktop")
-md5sums=('818bbb21de8140a5be573d3018bae01c'
+md5sums=('12843d924f8f1045844e370fbc8145c2'
          '15531c21c1d3939dffc22e152160a2fd'
          '941e50f8ca6562c5753ffcd6da0513fb'
          '9dd977b6c37dcab0d13c2737c6935881')
