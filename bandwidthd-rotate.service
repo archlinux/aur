@@ -1,0 +1,7 @@
+[Unit]
+Description=Daemon for graphing traffic of subnet machines - Rotate
+
+[Service]
+User=bandwidthd
+Group=bandwidthd
+ExecStart=/usr/bin/bash -c '/usr/bin/kill -s HUP `cat /run/bandwidthd/bandwidthd.pid`'

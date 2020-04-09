@@ -1,0 +1,107 @@
+diff -u bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/bandwidthd.c bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/bandwidthd.c
+--- bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/bandwidthd.c	2019-03-27 20:05:31.000000000 +0100
++++ bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/bandwidthd.c	2020-04-09 11:23:31.431948002 +0200
+@@ -120,6 +120,7 @@
+ 	int NumGraphs = 0;
+ 	pid_t graphpid;
+ 	int Counter;
++	int niceness __attribute__((unused));
+ 	/* Did we catch any packets since last time? */
+ 	if (!DataStore) 
+ 		return -2;
+@@ -136,7 +137,7 @@
+ 			monstartup((u_long) &_start, (u_long) &etext);
+ #endif
+ 			signal(SIGHUP, SIG_IGN);
+-			nice(4); // reduce priority so I don't choke out other tasks
++			niceness = nice(4); // reduce priority so I don't choke out other tasks
+ 			// Count Number of IP's in datastore
+ 			for (DataStore = IPDataStore, Counter = 0; DataStore; Counter++, DataStore = DataStore->Next);
+ 			// +1 because we don't want to accidently allocate 0
+@@ -256,6 +257,7 @@
+ 	int ForkBackground = TRUE;
+ 	int ListDevices = FALSE;
+ 	int Counter;
++	int niceness __attribute__((unused));
+ 	char *bd_conf = NULL;
+ 	struct in_addr addr, addr2;
+ 	signal(SIGHUP, SIG_IGN);
+@@ -480,7 +482,7 @@
+ 	// This is also set in CloseInterval because it gets overwritten in some commit modules
+ 	signal(SIGALRM, handle_interval);
+ 	alarm(config.interval);
+-	nice(1);
++	niceness = nice(1);
+ 	while (1)
+ 		{
+ 		// Bookeeping
+@@ -610,7 +612,7 @@
+ 	int AlreadyTotaled = FALSE;
+ 	PacketCallbackLock = TRUE;
+ 	eptr = (struct ether_header *) p;
+-	vlanhdr = (struct vlanhdr *) p;
++	vlanhdr = (struct VlanHeader *) p;
+ 	if (eptr->ether_type == htons(1537))
+ 		ParseBroadcast(p);
+ 	if (vlanhdr->ether_type[0]==0x81 && vlanhdr->ether_type[1]==0x00) //Two byte-wise checks instead of 1 word-wise check to avoid word boundary issues on some intel processors
+diff -u bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/graph.c bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/graph.c
+--- bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/graph.c	2019-03-27 20:05:31.000000000 +0100
++++ bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/graph.c	2020-04-09 11:21:50.611498930 +0200
+@@ -387,7 +387,7 @@
+ 	FILE *OutputFile;
+ 	char filename[MAX_FILENAME];
+ 	gdImagePtr im, im2;
+-	int white;
++	int white __attribute__((unused));
+ 	unsigned long long int YMax;
+ 	char CharIp[20];
+ 
+@@ -489,7 +489,9 @@
+ 	char Buffer2[50];
+ 	
+ 	int blue, lblue, orange, red, yellow, purple, green, brown, black;
+-	int blue2, lblue2, orange2, red2, yellow2, purple2, green2, brown2, black2;
++	int blue2, lblue2;
++	int orange2 __attribute__((unused));
++	int red2, yellow2, purple2, green2, brown2, black2;
+ 
+ 	unsigned long long int SentPeak = 0;
+ 	unsigned long long int ReceivedPeak = 0;
+@@ -802,7 +804,8 @@
+ 	{
+ 	char buffer[100];
+ 	int black, red;
+-	time_t sample_begin, sample_end;	
++	time_t sample_begin;
++	time_t sample_end __attribute__((unused));
+ 	struct tm *timestruct;
+ 	long int MarkTime;
+ 	long int MarkTimeStep;
+diff -u bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/pgsql.c bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/pgsql.c
+--- bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/pgsql.c	2019-03-27 20:05:31.000000000 +0100
++++ bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/pgsql.c	2020-04-09 11:24:13.432131299 +0200
+@@ -471,10 +471,12 @@
+ 	}
+ #endif
+ 
++#ifdef HAVE_LIBPQ
+ static void pgsqllngjmp(int signal)
+ 	{
+ 	longjmp(pgsqljmp, 1);	
+ 	}
++#endif
+ 
+ void pgsqlStoreIPData(struct IPData IncData[], struct extensions *extension_data)
+ 	{
+diff -u bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/sqlite.c bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/sqlite.c
+--- bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/sqlite.c	2019-03-27 20:05:31.000000000 +0100
++++ bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/sqlite.c	2020-04-09 11:27:57.313078710 +0200
+@@ -250,7 +250,7 @@
+ 
+ 	time_t now;
+ 
+-	if (!config.output_database == DB_SQLITE)
++	if (config.output_database != DB_SQLITE)
+ 		return;
+ 
+ 	// ************ Inititialize the db if it's not already

@@ -1,0 +1,16 @@
+diff -u bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/bandwidthd.c bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/bandwidthd.c
+--- bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/bandwidthd.c	2019-03-27 20:05:31.000000000 +0100
++++ bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/bandwidthd.c	2020-04-09 10:49:12.151941214 +0200
+@@ -1148,10 +1148,10 @@
+ 		ip->timestamp = timestamp;
+ 		if (fscanf(cdf, "%llu,%llu,%llu,%llu,%llu,%llu,%llu,%llu,",
+ 			&ip->Send.total, &ip->Send.icmp, &ip->Send.udp,
+-			&ip->Send.tcp, &ip->Send.ftp, &ip->Send.http, &ip->Send.mail, &ip->Send.p2p) != 7
++			&ip->Send.tcp, &ip->Send.ftp, &ip->Send.http, &ip->Send.mail, &ip->Send.p2p) != 8
+ 		  || fscanf(cdf, "%llu,%llu,%llu,%llu,%llu,%llu,%llu,%llu",
+ 			&ip->Receive.total, &ip->Receive.icmp, &ip->Receive.udp,
+-			&ip->Receive.tcp, &ip->Receive.ftp, &ip->Receive.http, &ip->Receive.mail, &ip->Receive.p2p) != 7)
++			&ip->Receive.tcp, &ip->Receive.ftp, &ip->Receive.http, &ip->Receive.mail, &ip->Receive.p2p) != 8)
+ 			goto End_RecoverDataFromCdf;
+ 		}
+ End_RecoverDataFromCdf:

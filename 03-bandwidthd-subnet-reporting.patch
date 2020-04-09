@@ -1,0 +1,17 @@
+diff -u bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/bandwidthd.c bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/bandwidthd.c
+--- bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/bandwidthd.c	2019-03-27 20:05:31.000000000 +0100
++++ bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/bandwidthd.c	2020-04-09 11:13:08.489071600 +0200
+@@ -346,9 +346,12 @@
+ 	// Log list of monitored subnets
+ 	for (Counter = 0; Counter < SubnetCount; Counter++)
+ 		{
++		char subnet[16], mask[16];
+ 		addr.s_addr = ntohl(SubnetTable[Counter].ip);
+ 		addr2.s_addr = ntohl(SubnetTable[Counter].mask);
+-		syslog(LOG_INFO, "Monitoring subnet %s with netmask %s", inet_ntoa(addr), inet_ntoa(addr2));
++		strncpy(subnet, inet_ntoa(addr), 16);
++		strncpy(mask, inet_ntoa(addr2), 16);
++		syslog(LOG_INFO, "Monitoring subnet %s with netmask %s", subnet, mask);
+ 		}
+   for (Counter = 0; Counter < NotSubnetCount; Counter++)
+     {

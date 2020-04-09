@@ -1,0 +1,14 @@
+[Unit]
+Description=Daemon for graphing traffic of subnet machines
+Requires=network-online.target
+
+[Service]
+User=bandwidthd
+Group=bandwidthd
+CapabilityBoundingSet=CAP_NET_RAW
+AmbientCapabilities=CAP_NET_RAW
+ExecStart=/usr/bin/bandwidthd -D -c /etc/bandwidthd/bandwidthd.conf
+PIDFile=/run/bandwidthd/bandwidthd.pid
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,40 @@
+diff -u bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/README.md bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/README.md
+--- bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/README.md	2019-03-27 20:05:31.000000000 +0100
++++ bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/README.md	2020-04-09 13:41:44.713813385 +0200
+@@ -113,7 +113,7 @@
+ in it's directory.  recover_cdf will cause Bandwidthd to load that file when 
+ it starts.   You will also want to make a crontab entry like so:
+ 
+-0 0 * * * * /bin/kill -HUP `cat /var/run/bandwidthd.pid`
++0 0 * * * * /bin/kill -HUP `cat /run/bandwidthd/bandwidthd.pid`
+ 
+ This will send Bandwidthd a HUP every night at midnight.  When Bandwidthd 
+ receives a HUP it schedules a rotation of it's log files during the next 
+diff -u bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/bandwidthd.c bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/bandwidthd.c
+--- bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/bandwidthd.c	2019-03-27 20:05:31.000000000 +0100
++++ bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/bandwidthd.c	2020-04-09 13:41:49.993831659 +0200
+@@ -208,20 +208,20 @@
+ void makepidfile(pid_t pid) 
+ 	{
+ 	FILE *pidfile;
+-	pidfile = fopen("/var/run/bandwidthd.pid", "wt");
++	pidfile = fopen("/run/bandwidthd/bandwidthd.pid", "wt");
+ 	if (pidfile) 
+ 		{
+ 		if (fprintf(pidfile, "%d\n", pid) == 0) 
+ 			{
+-			syslog(LOG_ERR, "Bandwidthd: failed to write '%d' to /var/run/bandwidthd.pid", pid);
++			syslog(LOG_ERR, "Bandwidthd: failed to write '%d' to /run/bandwidthd/bandwidthd.pid", pid);
+ 			fclose(pidfile);
+-			unlink("/var/run/bandwidthd.pid");
++			unlink("/run/bandwidthd/bandwidthd.pid");
+ 			}
+ 		else
+ 			fclose(pidfile);
+ 		}
+ 	else
+-		syslog(LOG_ERR, "Could not open /var/run/bandwidthd.pid for write");
++		syslog(LOG_ERR, "Could not open /run/bandwidthd/bandwidthd.pid for write");
+ 	}
+ 
+ void PrintHelp(void)

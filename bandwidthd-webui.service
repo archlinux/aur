@@ -1,0 +1,15 @@
+[Unit]
+Description=Daemon for graphing traffic of subnet machines - Web UI
+PartOf=bandwidthd.service
+After=bandwidthd.service
+
+[Service]
+User=bandwidthd
+Group=bandwidthd
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+ExecStart=/usr/bin/nginx -c /etc/bandwidthd/bandwidthd-webui.conf
+PIDFile=/run/bandwidthd/bandwidthd-webui.pid
+
+[Install]
+WantedBy=bandwidthd.service

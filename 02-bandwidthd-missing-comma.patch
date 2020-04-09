@@ -1,0 +1,12 @@
+diff -u bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/bandwidthd.c bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/bandwidthd.c
+--- bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef/bandwidthd.c	2019-03-27 20:05:31.000000000 +0100
++++ bandwidthd-0307fbba56a39a6e65ebadf488ad87979c64fdef~/bandwidthd.c	2020-04-09 10:58:06.145231013 +0200
+@@ -889,7 +889,7 @@
+ 		HostIp2CharIp(IPData->ip, IPBuffer);
+ 		fprintf(cdf, "%s,%lu,", IPBuffer, IPData->timestamp);
+ 		Stats = &(IPData->Send);
+-		fprintf(cdf, "%llu,%llu,%llu,%llu,%llu,%llu,%llu,%llu", Stats->total, Stats->icmp, Stats->udp, Stats->tcp, Stats->ftp, Stats->http, Stats->mail, Stats->p2p); 
++		fprintf(cdf, "%llu,%llu,%llu,%llu,%llu,%llu,%llu,%llu,", Stats->total, Stats->icmp, Stats->udp, Stats->tcp, Stats->ftp, Stats->http, Stats->mail, Stats->p2p); 
+ 		Stats = &(IPData->Receive);
+ 		fprintf(cdf, "%llu,%llu,%llu,%llu,%llu,%llu,%llu,%llu\n", Stats->total, Stats->icmp, Stats->udp, Stats->tcp, Stats->ftp, Stats->http, Stats->mail, Stats->p2p); 
+ 		}
