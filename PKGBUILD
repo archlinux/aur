@@ -1,39 +1,42 @@
-# Maintainer: bemasher <bemasher@gmail.com>
+# Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
+# Former Maintainer: bemasher <bemasher@gmail.com>
 
-pkgname=rtlamr-git
-pkgver=0.9.0
-pkgrel=1
+pkgname=rtlamr
+pkgver=0.9.1
+pkgrel=2
 pkgdesc="An rtl-sdr receiver for Itron ERT compatible smart meters operating in the 900MHz ISM band."
-arch=('x86_64' 'i686')
-url="git+https://github.com:bemasher/rtlamr.git#tag=v0.9.1"
+arch=('any')
+url="https://github.com/bemasher/rtlamr"
+source=("https://github.com/bemasher/rtlamr/archive/v${pkgver}.tar.gz")
+md5sums=('8d47164413f6b6ca2aa188fb2a164f63')
 license=('AGPL3')
 depends=('go' 'rtl-sdr')
-makedepends=('git')
 options=('!strip' '!emptydirs')
 _gourl=github.com/bemasher/rtlamr
 
+prepare(){
+  mkdir -p gopath/src/$(dirname $_gourl)
+  ln -rTsf $pkgname-$pkgver gopath/src/$_gourl
+}
+
 build() {
-  GOPATH="$srcdir" go get -v ${_gourl}/...
+  export GOPATH="$srcdir"/gopath
+  cd gopath/src/$_gourl
+  go install \
+    -trimpath \
+    -ldflags "-extldflags $LDFLAGS" \
+    -v ./...
 }
 
 check() {
-  GOPATH="$srcdir" go test -v ${_gourl}/...
+  export GOPATH="$srcdir"/gopath
+  cd gopath/src/$_gourl
+  go test ./...
 }
 
+
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  install -p -m755 "$srcdir/bin/"* "$pkgdir/usr/bin"
-
-  mkdir -p "$pkgdir/$GOPATH"
-  cp -Rv --preserve=timestamps "$srcdir/"{src,pkg} "$pkgdir/$GOPATH"
-
-  # Package license (if available)
-  for f in LICENSE COPYING LICENSE.* COPYING.*; do
-    if [ -e "$srcdir/src/$_gourl/$f" ]; then
-      install -Dm644 "$srcdir/src/$_gourl/$f" \
-        "$pkgdir/usr/share/licenses/$pkgname/$f"
-    fi
-  done
+  install -p -Dm755 gopath/bin/rtlamr "$pkgdir/usr/bin/rtlamr"
 }
 
 # vim:set ts=2 sw=2 et:

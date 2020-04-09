@@ -3,17 +3,14 @@ pkgbase = rtlamr
 	pkgver = 0.9.1
 	pkgrel = 2
 	url = https://github.com/bemasher/rtlamr
-	arch = x86_64
-	arch = i686
-	arch = armv6h
-	arch = armv7h
-	arch = aarch64
+	arch = any
 	license = AGPL3
-	makedepends = git
 	depends = go
 	depends = rtl-sdr
 	options = !strip
 	options = !emptydirs
+	source = https://github.com/bemasher/rtlamr/archive/v0.9.1.tar.gz
+	md5sums = 8d47164413f6b6ca2aa188fb2a164f63
 
 pkgname = rtlamr
 
