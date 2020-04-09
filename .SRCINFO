@@ -35,7 +35,7 @@ pkgbase = ocaml-core_kernel
 	depends = ocaml-variantslib>=0.13.0
 	depends = ocaml-ppxlib>=0.9.0
 	options = !strip
-	source = ocaml-core_kernel-0.13.1-1.tar.gz::https://github.com/janestreet/core_kernel/archive/v0.13.1.tar.gz
+	source = ocaml-core_kernel-1:0.13.1-1.tar.gz::https://github.com/janestreet/core_kernel/archive/v0.13.1.tar.gz
 	sha256sums = 2e9dec37cf1b1a05fa3ad24ae8efd1e389b82928d598db097771405da1d6b214
 
 pkgname = ocaml-core_kernel
