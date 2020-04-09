@@ -4,8 +4,8 @@
 # Contributor: Valère Monseur <valere dot monseur at ymail dot com>
 
 pkgname=picom-tryone-git
-_gitname=compton
-pkgver=1361_0.1_beta2.1012.gc67d7d7_2020.03.31
+_gitname=picom
+pkgver=1389_Next.108.g8877844_2020.04.09
 pkgrel=1
 pkgdesc="tryone144's picom fork with dual_kawase blur, an X compositor (fork of compton)"
 arch=(i686 x86_64)
