@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=83.0.4100.3
+pkgver=83.0.4103.7
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -476,7 +476,7 @@ prepare() {
       -i chrome/common/chrome_constants.cc
   sed -e 's|chromium-browser|chromium-dev|g' \
       -i chrome/browser/shell_integration_linux.cc \
-      -i chrome/browser/ui/gtk/gtk_util.cc
+      -i ui/gtk/gtk_util.cc
   sed -e 's|chromium|&-dev|' \
       -i chrome/common/chrome_paths_linux.cc
   sed -e 's|/etc/chromium|&-dev|' \
