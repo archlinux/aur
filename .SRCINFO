@@ -1,0 +1,12 @@
+pkgbase = edcount
+	pkgdesc = Estimate distinct count of values from standard input. Provides a very fast way to perform unique count estimates on the command line
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/haroldfreeman/edcount
+	arch = x86_64
+	license = GPL-3.0
+	source = https://github.com/haroldfreeman/edcount/archive/v1.2.0.tar.gz
+	md5sums = 99fe6c46d4c12494af3ff78c96ebea4e
+
+pkgname = edcount
+
