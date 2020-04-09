@@ -1,6 +1,6 @@
 pkgbase = habitat-bin
 	pkgdesc = Application automation framework that allows you to build applications that have automation built-in
-	pkgver = 1.5.71
+	pkgver = 1.5.86
 	pkgrel = 1
 	url = https://www.habitat.sh/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = habitat-bin
 	provides = habitat
 	conflicts = habitat
 	conflicts = habitat-git
-	source = https://packages.chef.io/files/habitat/1.5.71/hab-x86_64-linux.tar.gz
-	sha256sums = 356db95c8e21dd5587284340ebce3bdcb0cfede3c50fd8753be66b2e5b081bbb
+	source = https://packages.chef.io/files/habitat/1.5.86/hab-x86_64-linux.tar.gz
+	sha256sums = 0fef1230e454a70e66f5d084dbc0be1ae4b0e981cb2782d820f24a30a203c842
 
 pkgname = habitat-bin
 
