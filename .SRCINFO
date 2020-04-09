@@ -1,7 +1,7 @@
 pkgbase = nvidia-390xx-settings
 	pkgdesc = Tool for configuring the NVIDIA graphics driver, 390xx legacy branch
 	pkgver = 390.132
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NVIDIA/nvidia-settings
 	arch = x86_64
 	license = GPL2

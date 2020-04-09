@@ -1,9 +1,10 @@
+# Maintainer: Alonso Rodriguez <alonsorodi20 (at) gmail (dot) com>
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgbase=nvidia-390xx-settings
 pkgname=('nvidia-390xx-settings' 'libxnvctrl-390xx')
 pkgver=390.132
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for configuring the NVIDIA graphics driver, 390xx legacy branch'
 url='https://github.com/NVIDIA/nvidia-settings'
 arch=('x86_64')
@@ -16,13 +17,15 @@ sha512sums=('ad6836c8b002478fe7b76fb7df6b685686e73ba0849533f5d2c6cc0ca489f212556
             'f69f5dc84fe624579a3c9ce877f4ae4e34c2184877576afbea07b8abdd7ff01e470517f2b77cd11a904518cbcb83fb388ca1d08888006f0ef2854723920c9cf8')
 
 prepare() {
-  export PREFIX=/usr
-  export NV_USE_BUNDLED_LIBJANSSON=0
   cd nvidia-settings-${pkgver}
   patch -p1 < "${srcdir}/libxnvctrl_so.patch"
 }
 
 build() {
+  # Set env variables
+  export PREFIX=/usr
+  export NV_USE_BUNDLED_LIBJANSSON=0
+  
   cd nvidia-settings-${pkgver}
   make
   make -C src/libXNVCtrl
