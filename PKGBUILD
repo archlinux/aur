@@ -15,7 +15,7 @@ options=('!strip' '!emptydirs')
 _gourl=github.com/bemasher/rtlamr
 
 prepare(){
-  mkdir -p gopath/src/$(dirname $_gourl)
+  mkdir -p gopath/src/${_gourl%/*}
   ln -rTsf $pkgname-$pkgver gopath/src/$_gourl
 }
 
