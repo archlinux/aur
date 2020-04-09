@@ -1,7 +1,7 @@
 # Maintainer: AnonymerNiklasistanonym <niklas.mikeler@gmail.com>
 pkgname=marktex
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Web service for files that support advanced Markdown commands mixed with LaTeX sections'
 arch=('x86_64')
 url='https://github.com/AnonymerNiklasistanonym/MarkTeX'
@@ -32,7 +32,7 @@ package() {
 mkdir -p \"\$HOME/.$pkgname\"\n\
 export DATABASE_PATH=\"\${DATABASE_PATH:-\$HOME/.$pkgname/database.db}\"\n\
 cd \"/opt/$pkgname\"\n\
-node dist/index.js $@\n" > "$pkgname"
+node dist/index.js \$@\n" > "$pkgname"
 
   install -Dd "$pkgdir/usr/bin"
   install -Dm 777 "$pkgname" "$pkgdir/usr/bin"
