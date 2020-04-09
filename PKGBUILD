@@ -20,7 +20,7 @@ build() {
   cd "$srcdir/llvm-$pkgver.src/build"
   cmake .. -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_PREFIX=/opt/llvm90 \
     -DLLVM_HOST_TRIPLE=$CHOST \
     -DLLVM_BUILD_LLVM_DYLIB=ON \
     -DLLVM_LINK_LLVM_DYLIB=ON \
