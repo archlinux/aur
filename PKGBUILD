@@ -3,7 +3,7 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=libsigrokdecode4dsl
-pkgver=1.10
+pkgver=1.11
 pkgrel=1
 pkgdesc='A library which provides the basic sigrok protocol decoders for DreamSourceLab hardware'
 url='https://github.com/DreamSourceLab/DSView'
@@ -14,7 +14,7 @@ makedepends=(git)
 source=(
   "DSView-$pkgver.tar.gz::https://github.com/DreamSourceLab/DSView/archive/v${pkgver}.tar.gz"
 )
-sha384sums=('6cd82ee9c729db48f86aa00c492eb7e18a8b444d3bd7a384fbd7433e24758d7190ef88082457111b752d28c28145d9a5')
+sha384sums=('82304119956e66fa0b37d0aaf31b1dbeeac8f3f4f2b3960dfd67fbbdad55a0681dd83b7bc12ecf3280dae85be18a975a')
 
 _wdir() {
 	cd "$srcdir/DSView-$pkgver/libsigrokdecode4DSL"
