@@ -1,6 +1,6 @@
 pkgbase = python-cvxpy
-	pkgdesc = A domain-specific language for modeling convex optimization problems in Python.
-	pkgver = 1.0.25
+	pkgdesc = A domain-specific language for modeling convex optimization problems
+	pkgver = 1.0.29
 	pkgrel = 1
 	url = http://github.com/cvxgrp/cvxpy/
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = python-cvxpy
 	depends = python-toolz
 	optdepends = python-scs
 	optdepends = python-nose
-	source = https://github.com/cvxgrp/cvxpy/archive/v1.0.25.tar.gz
-	sha256sums = 83967df22c424158b1a32953128c98c2899b6e2fed8989297fd7468d51158978
+	source = https://github.com/cvxgrp/cvxpy/archive/v1.0.29.tar.gz
+	sha256sums = 0369ba469cbf43e8f4b6d1a8afd528abed754bb63d8d8dd76f412c8f190a1abd
 
 pkgname = python-cvxpy
 
