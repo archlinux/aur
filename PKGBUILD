@@ -2,7 +2,7 @@
 # Contributor: Hervé Cauwelier <herve/oursours/net>
 gitname=guppy3
 pkgname=python-${gitname}-git
-pkgver=258.5bba757
+pkgver=286.bde3223
 pkgrel=1
 pkgdesc="Python memory profiler and debugger"
 arch=('any')
