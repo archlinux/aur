@@ -6,17 +6,17 @@
 
 _basename=x265
 pkgname=lib32-x265
-pkgver=3.2.1
+pkgver=3.3
 pkgrel=1
 pkgdesc='Open Source H265/HEVC video encoder. 32bit libraries.'
 arch=('x86_64')
 url='https://bitbucket.org/multicoreware/x265'
 license=('GPL')
-depends=('lib32-gcc-libs'  'lib32-numactl')
+depends=('x265' 'lib32-gcc-libs'  'lib32-numactl')
 makedepends=('cmake' 'nasm')
 provides=('libx265.so')
 source=("https://bitbucket.org/multicoreware/x265/downloads/x265_${pkgver}.tar.gz")
-sha256sums=('fb9badcf92364fd3567f8b5aa0e5e952aeea7a39a2b864387cec31e3b58cbbcc')
+sha256sums=('f26e148ed1f4dfb33fd1eb3ff5e60e08078d1b2017e88bcbb045b3fb58300b9c')
 
 prepare() {
   cd x265_${pkgver}
