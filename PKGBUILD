@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libupnp-git
-pkgver=1.8.4.r18.gb3f55df
+pkgver=1.12.1.r3.g0497e61
 pkgrel=1
 pkgdesc="Portable open source UPnP development kit"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('libupnp')
 conflicts=('libupnp')
 options=('staticlibs')
-source=("git+https://github.com/mrjimenez/pupnp.git")
+source=("git+https://github.com/pupnp/pupnp.git")
 sha256sums=('SKIP')
 
 
@@ -26,7 +26,8 @@ build() {
   cd "pupnp"
 
   ./bootstrap
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
@@ -40,5 +41,5 @@ package() {
   cd "pupnp"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/libupnp/COPYING"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/libupnp"
 }
