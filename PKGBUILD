@@ -3,7 +3,7 @@
 pkgbase='python2-rospkg'
 pkgname=('python2-rospkg')
 _module='rospkg'
-pkgver='1.2.3'
+pkgver='1.2.4'
 pkgrel=1
 pkgdesc="ROS package library"
 url="http://wiki.ros.org/rospkg"
@@ -13,7 +13,7 @@ makedepends=('python2-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('40f73faf27c7853da74b72bbd71538a7fd74241690dbeb91443683ea38b1bd29')
+sha256sums=('2ece38f11e3fcf5e2ce12b677e9967c4082ad2a00651d4c5c1bfaf73ab297997')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
