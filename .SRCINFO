@@ -1,0 +1,16 @@
+pkgbase = grin-wallet
+	pkgdesc = Reference implementation of Grin's wallet.
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/mimblewimble/grin-wallet
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = clang
+	makedepends = git
+	makedepends = rust
+	source = grin-wallet::git+https://github.com/mimblewimble/grin-wallet.git#tag=v3.1.1
+	sha256sums = SKIP
+
+pkgname = grin-wallet
+
