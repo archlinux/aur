@@ -4,32 +4,20 @@
 
 _basename=libdvdnav
 pkgname=lib32-libdvdnav
-pkgver=6.0.1
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="The library for xine-dvdnav plugin (32 bit)"
 arch=(x86_64)
 license=(GPL)
 url="https://www.videolan.org/developers/libdvdnav.html"
 depends=(lib32-libdvdread libdvdnav)
-makedepends=(git)
-_commit=ee4f6486d73ab54e7704b4fed2615a1bad76427f  # tags/6.0.1^0
-source=("git+https://code.videolan.org/videolan/libdvdnav.git#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "${_basename}"
-
-    git describe --tags | sed -e 's/-/+/g'
-}
-
-prepare() {
-    cd "${_basename}"
-
-    autoreconf -fi
-}
+source=("https://download.videolan.org/pub/videolan/libdvdnav/${pkgver}/libdvdnav-${pkgver}.tar.bz2"{,.asc})
+sha256sums=('f697b15ea9f75e9f36bdf6ec3726308169f154e2b1e99865d0bbe823720cee5b'
+            'SKIP')
+validpgpkeys=('65F7C6B4206BD057A7EB73787180713BE58D1ADC') # VideoLAN Release Signing Key
 
 build() {
-    cd "${_basename}"
+    cd "${_basename}-${pkgver}"
 
     export CC='gcc -m32'
     export CXX='g++ -m32'
@@ -44,7 +32,7 @@ build() {
 }
 
 package() {
-    cd "${_basename}"
+    cd "${_basename}-${pkgver}"
 
     make DESTDIR="${pkgdir}" install
 
