@@ -3,7 +3,7 @@
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=libsigrok4dsl
-pkgver=1.10
+pkgver=1.11
 pkgrel=1
 pkgdesc="Client software that supports the DSLogic DreamSourceLab logic analyzer"
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ replaces=('libsigrok4dslogic')
 source=(
   "DSView-$pkgver.tar.gz::https://github.com/DreamSourceLab/DSView/archive/v${pkgver}.tar.gz"
 )
-md5sums=('6a685740c4cc4ecebb58e979dc9127f7')
-sha384sums=('6cd82ee9c729db48f86aa00c492eb7e18a8b444d3bd7a384fbd7433e24758d7190ef88082457111b752d28c28145d9a5')
+md5sums=('a08acc3db85fa7ca242ebeaec17ecb72')
+sha384sums=('82304119956e66fa0b37d0aaf31b1dbeeac8f3f4f2b3960dfd67fbbdad55a0681dd83b7bc12ecf3280dae85be18a975a')
 
 prepare() {
   cd "$srcdir/DSView-$pkgver/libsigrok4DSL"
