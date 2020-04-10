@@ -3,13 +3,11 @@
 pkgname=redshifter
 pkgver=20200404
 pkgrel=1
-pkgdesc="Control redshift color temperature and brightness (blue light filter)"
+pkgdesc="Control blue light filter (redshift) color temperature and brightness"
 arch=('any')
 url="https://github.com/wizetek/bash/blob/master/redshifter"
 license=('GPL')
 depends=('redshift' 'bc' 'bash')
-provides=('redshifter')
-conflicts=('redshifter')
 source=("https://raw.githubusercontent.com/wizetek/bash/master/redshifter")
 md5sums=('0fe6eba2d4644d88b8e3c17c7f1f7385')
 
