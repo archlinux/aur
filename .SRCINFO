@@ -1,0 +1,15 @@
+pkgbase = grin-wallet-bin
+	pkgdesc = Reference implementation of Grin's wallet.
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/mimblewimble/grin-wallet
+	arch = x86_64
+	license = Apache
+	provides = grin-wallet
+	conflicts = grin-wallet
+	options = !strip
+	source = https://github.com/mimblewimble/grin-wallet/releases/download/v3.1.1/grin-wallet-v3.1.1-linux-amd64.tar.gz
+	sha256sums = 4fa55924078df6a5feab3fc07cd07f399f3891f40c37f95f5818e4eab40c77f3
+
+pkgname = grin-wallet-bin
+
