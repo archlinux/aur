@@ -1,7 +1,7 @@
 pkgbase = whalebird-desktop
 	pkgdesc = Electron-based Mastodon/Pleroma client
 	pkgver = 4.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://whalebird.org
 	arch = any
 	license = MIT

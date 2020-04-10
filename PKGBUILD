@@ -4,7 +4,7 @@
 # TODO cleanup asar, drop as much as possible, remove local references
 pkgname=whalebird-desktop
 pkgver=4.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Electron-based Mastodon/Pleroma client'
 arch=('any')
 url='https://whalebird.org'
@@ -59,6 +59,6 @@ package() {
 
   cd icons/icon.iconset
   for i in 16 32 128 256 512; do
-    install -Dm644 "icon_${i}x${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
+    install -Dm644 "icon_${i}x${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/whalebird.png"
   done
 }
