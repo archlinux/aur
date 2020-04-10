@@ -1,7 +1,7 @@
 pkgbase = hop
 	pkgdesc = Software Development Kit for the Web
 	pkgver = 3.1.0
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 1
 	url = http://hop.inria.fr
 	install = hop.install
@@ -9,7 +9,7 @@ pkgbase = hop
 	license = GPL
 	license = LGPL
 	makedepends = git
-	depends = bigloo
+	depends = bigloo=4.3f
 	depends = gmp
 	depends = libunistring
 	depends = libuv

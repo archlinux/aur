@@ -3,13 +3,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=hop
+_biglooversion=4.3f
 epoch=1
 pkgver=3.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Software Development Kit for the Web"
 arch=('x86_64')
 license=('GPL' 'LGPL')
-depends=('bigloo' 'gmp' 'libunistring' 'libuv' 'avahi' 'sqlite')
+depends=("bigloo=${_biglooversion}" 'gmp' 'libunistring' 'libuv' 'avahi' 'sqlite')
 makedepends=('git')
 conflicts=('hop')
 provides=('hop')
@@ -23,7 +24,7 @@ build() {
   cd $pkgname
   ./configure --prefix=/usr --etcdir=/etc/hop --mandir=/usr/share/man \
 	      --disable-ssl --bigloobindir=/usr/bin --link=dynamic \
-	      --bigloolibdir=/usr/lib/bigloo/4.3f
+	      --bigloolibdir=/usr/lib/bigloo/${_biglooversion}
   sed -i 's/, -static-all-bigloo//' share/Makefile
   LD_LIBRARY_PATH="$PWD/lib/hop/3.1.0/" make
 }
