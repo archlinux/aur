@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster (milkii on Freenode)
 # Contributor:  <skrylar@UFO>
 pkgname=ams-mod-lv2-git
-pkgver=142
+pkgver=176
 pkgrel=1
 epoch=
 pkgdesc="Alsa Modular modules in LV2 form, MOD fork (0-10V range)."
@@ -22,7 +22,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/moddevices/ams-lv2#branch=change_uri")
+source=("git+https://github.com/moddevices/ams-lv2#branch=change_ranges")
 md5sums=('SKIP')
 noextract=()
 
