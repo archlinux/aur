@@ -1,0 +1,13 @@
+[Unit]
+Description=Aeron message daemon
+
+[Service]
+ExecStart=/usr/bin/aeronmd
+Restart=on-failure
+SuccessExitStatus=3 4
+RestartForceExitStatus=3 4
+
+[Install]
+WantedBy=default.target
+
+
