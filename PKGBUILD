@@ -3,13 +3,13 @@
 
 pkgname=rasterbator
 pkgver=1.21
-pkgrel=2
+pkgrel=3
 pkgdesc="Create huge, rasterized images from any picture."
 url="http://arje.net/rasterbator"
 license=('custom')
 arch=('i686' 'x86_64')
 depends=('mono')
-source=(http://arje.net/files/Rasterbator_Standalone_${pkgver}.zip
+source=(https://rasterbatorapi.azureedge.net/downloads/Rasterbator_Standalone_${pkgver}.zip
         http://www.gnu.org/licenses/agpl-3.0.txt
         readme.licenses
         $pkgname.patch
@@ -17,11 +17,11 @@ source=(http://arje.net/files/Rasterbator_Standalone_${pkgver}.zip
         $pkgname.png
         $pkgname.desktop)
 md5sums=('426ed9e545433d6d4b83ce555539c48a'
-         '73f1eb20517c55bf9493b7dd6e480788'
+         'eb1e647870add0502f8f010b19de32af'
          '1da706012a634ece69c0ad83f0321640'
          'd60a3b969f3e413584a4be1b7cd19114'
          'd26d0e432dc4ec0f80bac0cda5978efa'
-         '49753e22af9b3268d31825bc2c502a18'
+         '96002e81b88105e7916d44fb9367ae03'
          '679d0dbd73404815d6e6b0b35c3910b7')
 
 prepare() {
