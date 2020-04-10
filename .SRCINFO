@@ -7,6 +7,7 @@ pkgbase = redshift-wayland-git
 	license = GPL3
 	makedepends = intltool
 	makedepends = python
+	makedepends = git
 	depends = geoclue2
 	depends = libdrm
 	depends = libxcb
@@ -19,7 +20,7 @@ pkgbase = redshift-wayland-git
 	provides = redshift-sway-git
 	conflicts = redshift
 	conflicts = redshift-sway-git
-	source = redshift::git+https://github.com/CameronNemo/redshift.git#branch=wlroots-nemo
+	source = redshift::git+https://github.com/minus7/redshift.git#branch=wayland
 	md5sums = SKIP
 
 pkgname = redshift-wayland-git
