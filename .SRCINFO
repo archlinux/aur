@@ -1,6 +1,6 @@
 pkgbase = r-reshape2
 	pkgdesc = Flexibly Reshape Data: A Reboot of the Reshape Package
-	pkgver = 1.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=reshape2
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = r-reshape2
 	depends = r-stringr
 	optdepends = r-covr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/reshape2_1.4.3.tar.gz
-	md5sums = 8f35f5a2b7d4f081e9825f1095133288
+	source = https://cran.r-project.org/src/contrib/reshape2_1.4.4.tar.gz
+	md5sums = ab6b937ba184817a8f33690b5ed6ffcb
 
 pkgname = r-reshape2
 
