@@ -1,0 +1,14 @@
+pkgbase = python-swagger_ui_bundle
+	pkgdesc = bundled swagger-ui pip package
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/dtkav/swagger_ui_bundle
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-jinja>=2.0
+	source = python-swagger_ui_bundle-0.0.6.tar.gz::https://github.com/dtkav/swagger_ui_bundle/archive/v0.0.6.tar.gz
+	sha512sums = 2172bc039d1b4ad603412b1298211d738384d94df47612fb384da10fb69bf71f6b37c5afdcbe94dbe7b5c4df1495d43801cc11b2d4bebc8783f4d3442676f62f
+
+pkgname = python-swagger_ui_bundle
+
