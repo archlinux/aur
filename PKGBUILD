@@ -1,8 +1,8 @@
 #Maintainer: Sudhip Nashi <sudhip@nashi.us>
 pkgbase='reddit-fs'
 pkgname='redditfs'
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="maps subreddits to a FUSE filesystem, and comes with a systemd service"
 arch=('any')
 url="https://github.com/Petraea/redditfs"
