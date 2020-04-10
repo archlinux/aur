@@ -1,20 +1,22 @@
 # Maintainer: Michal Ulianko <michal (dot) ulianko (at) gmail (dot) com>
 
 pkgname=coin-hg
-pkgver=r11844.cf2a467adeca
+pkgver=r12110.04c2890cc357
 pkgrel=1
 pkgdesc="A high-level, retained-mode 3D graphics toolkit compatible with Open Inventor 2.1"
 arch=('x86_64')
 url="https://bitbucket.org/Coin3D/coin"
 license=('BSD')
 depends=('glu')
-makedepends=('mercurial' 'cmake' 'doxygen')
+makedepends=('mercurial' 'cmake' 'doxygen' 'boost')
 provides=("${pkgname%-hg}")
 conflicts=("${pkgname%-hg}")
 source=('coin::hg+https://bitbucket.org/Coin3D/coin#branch=default'
         'generalmsvcgeneration::hg+https://bitbucket.org/Coin3D/generalmsvcgeneration#branch=default'
+        'cpack.d::hg+https://bitbucket.org/Coin3D/cpack.d#branch=default'
         'boost-header-libs-full::hg+https://bitbucket.org/Coin3D/boost-header-libs-full#branch=default')
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP')
 
