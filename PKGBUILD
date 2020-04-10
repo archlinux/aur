@@ -18,7 +18,7 @@ source=(
 md5sums=('c4c2767651d310f0db7f078846e1b8a4'
          '3c1588261be092a9865d907574f86a0b'
          '0aa42a53137d759faf7eacb29c1b3e48'
-         'cfb9b65ddd163f9ac40ba8856d0e641d')
+         'e74a255a0dda31ea841899b16414a30d')
 
 build() {
     # Build shell completion files for pueue client
