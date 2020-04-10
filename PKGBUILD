@@ -6,7 +6,7 @@
 pkgnameorg=ocrmypdf
 pkgname=ocrmypdf-py3
 pkgverorg=9.7.0
-pkgver=$pkgverorg~fix2
+pkgver=$pkgverorg~fix3
 pkgrel=1
 pkgdesc="A tool to add an OCR text layer to scanned PDF files, allowing them to be searched"
 url="https://github.com/jbarlow83/OCRmyPDF"
