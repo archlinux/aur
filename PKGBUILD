@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/aristocratos/bashtop"
 license=('Apache')
 depends=('bash')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/aristocratos/bashtop.git')
