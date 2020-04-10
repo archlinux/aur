@@ -8,6 +8,7 @@ pkgbase = ferdi
 	arch = armv7h
 	arch = aarch64
 	license = Apache
+	makedepends = git
 	makedepends = npm
 	makedepends = python
 	depends = electron
