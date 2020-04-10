@@ -9,6 +9,7 @@ arch=('any')
 url="https://denysdovhan.com/spaceship-prompt/"
 license=('MIT')
 depends=('zsh')
+makedepends=('git')
 conflicts=('spaceship-zsh-theme-git'
            'spaceship-prompt')
 install="${pkgname}.install"
