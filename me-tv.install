@@ -1,0 +1,5 @@
+## arg 1:  the new package version
+post_install() {
+	echo "Generate a dvb-channels.conf file and put it in ~/.config/gstreamer-1.0 directory"
+	echo "dvbv5-scan --output=~/.config/gstreamer-1.0/dvb-channels.conf /usr/share/dvb/dvb-t/uk-CrystalPalace"
+}
