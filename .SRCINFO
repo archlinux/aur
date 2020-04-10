@@ -1,21 +1,24 @@
 pkgbase = ocaml-lambda-term
-	pkgdesc = A cross-platform library for manipulating the terminal
-	pkgver = 2.0.2
+	pkgdesc = Terminal manipulation library for OCaml
+	pkgver = 2.0.3
 	pkgrel = 1
-	url = https://github.com/diml/lambda-term
-	arch = i686
+	url = https://github.com/ocaml-community/lambda-term
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = BSD
-	makedepends = dune
-	depends = ocaml
-	depends = ocaml-lwt
+	makedepends = dune>=1.0.0
+	depends = ocaml>=4.02.3
+	depends = ocaml-camomile>=1.0.1
+	depends = ocaml-lwt>=4.0.0
 	depends = ocaml-lwt_log
 	depends = ocaml-react
-	depends = ocaml-zed
-	depends = ocaml-camomile
+	depends = ocaml-zed>=2.0.3
 	options = !strip
-	source = https://github.com/diml/lambda-term/releases/download/2.0.2/lambda-term-2.0.2.tbz
-	sha512sums = 61b4f3d80a8e17562cd7efe3a15258134a41fad67db200e9bde8896e39bff63c3274f3fff54f0233441555b5119fddcbea80fbab9b82caaa0b6b4deb56843f09
+	source = ocaml-lambda-term-2.0.3-1.tar.gz::https://github.com/ocaml-community/lambda-term/archive/2.0.3.tar.gz
+	sha256sums = 56e26288e05aa5f06b10b680ccd633f77926fa1eac04781a0c88fa9a65f12c82
 
 pkgname = ocaml-lambda-term
-
