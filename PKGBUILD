@@ -5,7 +5,8 @@
 pkgname=hop-git
 epoch=2
 pkgver=3.2.0.r5367
-pkgrel=3
+pkgrel=4
+_biglooversion=4.3h
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
@@ -29,7 +30,7 @@ build() {
   cd ${pkgname%-git}
   ./configure --prefix=/usr --etcdir=/etc/hop --mandir=/usr/share/man \
 	      --disable-ssl --bigloobindir=/usr/bin \
-	      --bigloolibdir=/usr/lib/bigloo/4.3f
+	      --bigloolibdir=/usr/lib/bigloo/${_biglooversion}
   sed -i 's/, -static-all-bigloo//' share/Makefile
   LD_LIBRARY_PATH="$PWD/lib/hop/3.2.0/" make
   make doc
