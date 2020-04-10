@@ -2,8 +2,8 @@
 
 _srcname=I.Ming
 _version=6.12
-_version_pkg_updates=0
-_gitcommit=460c4d40a696485f319a2e13d9e91011fc4f709e
+_version_pkg_updates=1
+_gitcommit=a2728a757229c85bd2694c491ff6ab98560bf667
 
 pkgname=ttf-i.ming
 pkgver="${_version}+${_version_pkg_updates}+${_gitcommit::7}"
