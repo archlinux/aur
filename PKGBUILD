@@ -2,8 +2,8 @@
 
 pkgname=amdgpuinfo-git
 _pkgname=amdgpuinfo
-pkgrel=3
-pkgver=0.1.0.131.00cc950
+pkgrel=1
+pkgver=0.1.0.134.d0eb6ff
 pkgdesc="Get information from AMD Radeon GPUs"
 arch=('x86_64')
 url="https://gitlab.com/andrealmeid/amdgpuinfo"
