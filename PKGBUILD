@@ -3,7 +3,7 @@
 pkgname=xhip
 pkgver=8.0.alpha.r1100
 pkgrel=1
-pkgdesc="Xhip free software subtractive/hybrid synthesizer plug-in"
+pkgdesc="Free subtractive/hybrid synthesizer VST plug-in"
 arch=('x86_64' 'i686')
 url="http://xhip.net/synth/"
 license=('custom')

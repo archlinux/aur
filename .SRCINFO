@@ -1,5 +1,5 @@
 pkgbase = xhip
-	pkgdesc = Xhip free software subtractive/hybrid synthesizer plug-in
+	pkgdesc = Free subtractive/hybrid synthesizer VST plug-in
 	pkgver = 8.0.alpha.r1100
 	pkgrel = 1
 	url = http://xhip.net/synth/
