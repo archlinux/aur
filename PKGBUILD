@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=stmm-input-au
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Device input event library - sound playback"
 url='https://www.efanomars.com/libraries/stmm-input-au'
@@ -16,8 +16,8 @@ optdepends=()
 #replaces=("stmm-input-au")
 #conflicts=("stmm-input-au")
 
-source=('https://efanomars.com/sources/stmm-input-au-0.2.tar.gz')
-sha256sums=('16ce2e342b96a0b94efca78ce65740f65709a58be11029fb116af8c21862d5b4')
+source=('https://efanomars.com/sources/stmm-input-au-0.3.tar.gz')
+sha256sums=('80de3331e4243efea950c354d38f8e5ab5858e44d093e6302dcc1d33193ff8ea')
 
 build() {
   cd "${srcdir}/stmm-input-au"
