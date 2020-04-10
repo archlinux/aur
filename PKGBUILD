@@ -2,23 +2,22 @@
 
 pkgname=python-tgs
 _name=${pkgname//python-}
-pkgver=0.3.6
-pkgrel=3
+pkgver=0.4.4
+pkgrel=1
 pkgdesc='Telegram Animated Stickers Tools'
 arch=(any)
 url=https://pypi.org/project/tgs
 license=(MIT)
 depends=(python)
 makedepends=(python-setuptools)
-optdepends=(python-pillow 'python-pypotrace>=0.2' python-numpy python-scipy python-cairosvg python-fonttools)
+optdepends=(python-coverage python-pillow 'python-pypotrace>=0.2' python-numpy python-scipy python-cairosvg python-fonttools)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-$pkgver.tar.gz
         LICENSE::https://gitlab.com/mattia.basaglia/tgs/raw/master/COPYING)
-md5sums=(dacf23a870cc033816f920b806c86406
-         SKIP)
+md5sums=('08e914bd1d94ea930a13f49a99b808fc'
+         'bf4f3c60e4d121211608f0ad0dbaf67c')
 
 build() {
 	cd $srcdir/${_name}-$pkgver
-	python setup.py clean --all
 	python setup.py build
 }
 
