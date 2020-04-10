@@ -1,14 +1,14 @@
 pkgbase = firefox-bookmarkdupes
 	pkgdesc = Display/Remove duplicate bookmarks, empty folders or descriptions
-	pkgver = 6.3
+	pkgver = 6.4
 	pkgrel = 1
 	url = https://github.com/vaeth/bookmarkdupes
 	arch = any
 	groups = firefox-addons
 	license = GPL
-	noextract = bookmark_dupes-6.3-fx.xpi
-	source = https://addons.cdn.mozilla.net/user-media/addons/870263/bookmark_dupes-6.3-fx.xpi
-	sha256sums = f05a790f179671bd4ebbd3fa38ea3af7af6746138c71a0be8ed001d45cfa3054
+	noextract = bookmark_dupes-6.4-fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/870263/bookmark_dupes-6.4-fx.xpi
+	sha256sums = 1932788cf8efab523fbf3395744df0993c864ad3719390156628a08378824dde
 
 pkgname = firefox-bookmarkdupes
 
