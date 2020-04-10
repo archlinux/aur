@@ -1,7 +1,7 @@
 pkgbase = python-aioopenssl
 	pkgdesc = An asyncio Transport that uses PyOpenSSL instead of the built-in ssl module.
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/horazont/aioopenssl
 	arch = any
 	license = Apache

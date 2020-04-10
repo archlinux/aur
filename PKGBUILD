@@ -5,7 +5,7 @@
 pkgname=python-aioopenssl
 _name=${pkgname#python-}
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An asyncio Transport that uses PyOpenSSL instead of the built-in ssl module.'
 arch=('any')
 url='https://github.com/horazont/aioopenssl'
@@ -21,9 +21,14 @@ build() {
   python setup.py build
 }
 
+build() {
+  cd "$_name-$pkgver"
+  python setup.py build
+}
+
 package() {
   cd "$_name-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python setup.py install --skip-build --root="$pkgdir/" --optimize=1 --skip-build
 }
 
 # vim:set ts=2 sw=2 et:
