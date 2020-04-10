@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.32.0.328.gc5f8ec76b1
+pkgver=v0.32.0.351.gb4c1554f7a
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -114,6 +114,9 @@ prepare() {
     )
 if [ -f /usr/lib/libavisynth.so.*.*.* ]; then
   _ffmpeg_options+=('--enable-avisynth')
+fi
+if [ -f /usr/lib/libvapoursynth.so ]; then
+  _ffmpeg_options+=('--enable-vapoursynth')
 fi
   _mpv_options=(
     '--prefix=/usr'
