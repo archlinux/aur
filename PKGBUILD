@@ -11,7 +11,6 @@ license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 changelog=changelog
 provides=('proton')
 depends=('python'
-         'winetricks'
          'vulkan-icd-loader')
 optdepends=('kdialog: KDE splash dialog support'
             'zenity: GNOME splash dialog support'
@@ -20,6 +19,10 @@ optdepends=('kdialog: KDE splash dialog support'
             'lib32-vulkan-icd-loader: dxvk dependency for 32bit prefixes'
             'vulkan-driver: actually have a vulkan driver installed'
             'linux-fsync: a kernel with futex-wait-multiple support'
+            'linux-zen: a kernel with futex-wait-multiple support'
+            'linux-pf: a kernel with futex-wait-multiple support'
+            'winetricks: protonfixes backend - highly recommended'
+            'wine: support for 32bit prefixes'
             'xboxdrv: gamepad driver service')
 
 ## makepkg options
