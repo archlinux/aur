@@ -22,6 +22,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DKDChart_EXAMPLES=OFF \
+        -DDISABLE_PYTHON_BINDINGS=true \
         ../KDChart-${pkgname}-${pkgver}
     make
 }
