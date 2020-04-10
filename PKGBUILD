@@ -1,27 +1,37 @@
-# Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
+# Maintainer:  Antoni Przybylik <antoni.przybylik@wp.pl>
 
 pkgname=libosmo-dsp
-pkgver=0.3
+pkgver=0.4.0
 pkgrel=1
+epoch=0
 pkgdesc="A library with SDR DSP primitives"
-arch=('any')
-url="http://cgit.osmocom.org/libosmo-dsp/"
-license=(GPL)
+arch=('x86_64')
+url="https://git.osmocom.org/libosmo-dsp/"
+license=('GPL2')
 depends=('fftw')
-makedepends=('git')
-source=("git://git.osmocom.org/${pkgname}.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+makedepends=('autoconf' 'make' 'git')
+source=('git://git.osmocom.org/libosmo-dsp')
+sha1sums=('SKIP')
+_gitname=libosmo-dsp
 
-build() {
-  cd "${srcdir}/${pkgname}"
-  autoreconf -i
-  ./configure --prefix=/usr
+build()
+{
+
+  cd $_gitname
+  libtoolize
+  aclocal
+  autoconf
+  autoheader
+  automake --add-missing
+  ./configure
   make
+
 }
 
-package() {
-  cd "${srcdir}/${pkgname}"
-  make DESTDIR=$pkgdir install
-}
+package()
+{
 
-# vim:set ts=2 sw=2 et:
+  cd $_gitname
+  make DESTDIR=${pkgdir} install
+
+}
