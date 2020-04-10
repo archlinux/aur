@@ -1,0 +1,13 @@
+diff --git a/tensorboard_plugin_wit/pip_package/build_pip_package.sh b/tensorboard_plugin_wit/pip_package/build_pip_package.sh
+index bf48538..133adb4 100755
+--- a/tensorboard_plugin_wit/pip_package/build_pip_package.sh
++++ b/tensorboard_plugin_wit/pip_package/build_pip_package.sh
+@@ -31,7 +31,7 @@ command -v npm >/dev/null
+ 
+ plugin_runfile_dir="${RUNFILES}/ai_google_pair_wit"
+ 
+-dest="/tmp/wit-pip"
++dest="${BUILD_WORKSPACE_DIRECTORY}/wit-pip"
+ mkdir -p "$dest"
+ cd "$dest"
+ 

@@ -1,0 +1,18 @@
+pkgbase = tensorboard-plugin-wit
+	pkgdesc = What-If Tool TensorBoard plugin
+	pkgver = 1.6.0
+	pkgrel = 2
+	url = https://github.com/PAIR-code/what-if-tool
+	arch = any
+	license = APACHE
+	makedepends = bazel
+	depends = python-tensorflow
+	depends = tensorboard
+	depends = python-werkzeug
+	source = git+https://github.com/PAIR-code/what-if-tool#commit=2cee8a42598cb2342a04577d583ce1985a794edd
+	source = destdir.patch
+	sha256sums = SKIP
+	sha256sums = ae32103e068471eec0ce533feaaed94511f4f2a0274e55d798bfc08d97742af7
+
+pkgname = tensorboard-plugin-wit
+
