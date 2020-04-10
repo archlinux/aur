@@ -2,7 +2,7 @@
 
 _pyname='aiogram'
 pkgname="python-${_pyname}"
-pkgver=2.6.1
+pkgver=2.7
 pkgrel=1
 pkgdesc="A pretty simple and fully asynchronous library for Telegram Bot API written in Python 3.7 with asyncio and aiohttp"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
 #    'python-rethinkdb: RethinkDB storage support'  # No such package yet
 )
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('5f5bdadc67a0a81d3c9a529cfbc694a09c7813ee32606b506401df955a99cb6b')
+sha256sums=('c8dc7849b26185af1c9972a99c47b0f82819ea2d09413f37c653442f4bddfb5f')
 
 build() {
     cd "$srcdir/${_pyname}-${pkgver}"
