@@ -1,69 +1,77 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Lightning <sgsdxzy@gmail.com>
-
-pkgbase=dolphin-emu-git
-pkgname=('dolphin-emu-git' 'dolphin-emu-nogui-git')
-pkgver=5.0.r8775.cd29cdb584
-pkgrel=1
-pkgdesc='A GameCube / Wii / Triforce emulator'
-arch=('x86_64')
-url='http://www.dolphin-emu.org/'
-license=('GPL')
+_projectname='dolphin'
+_mainpkgname="$_projectname-emu"
+_noguipkgname="$_projectname-emu-nogui"
+pkgbase="$_mainpkgname-git"
+pkgname=("$pkgbase" "$_noguipkgname-git")
+pkgver='5.0.r11834.gd8d620ef0e'
+pkgrel='2'
+pkgdesc='A Gamecube / Wii / Triforce emulator'
+_pkgdescappend=' - git version'
+arch=('x86_64' 'aarch64')
+url="https://$_mainpkgname.org"
+license=('GPL2')
 depends=(
-  'alsa-lib' 'bluez-libs' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpng'
-  'libpulse' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'pugixml' 'qt5-base'
-  'sfml' 'zlib'
-  'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so'
-  'libminiupnpc.so' 'libswscale.so' 'libudev.so' 'libusb-1.0.so' 'libxxhash.so'
+	'alsa-lib' 'bluez-libs' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpng'
+	'libpulse' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'pugixml' 'qt5-base'
+	'sfml' 'zlib'
+	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so'
+	'libminiupnpc.so' 'libswscale.so' 'libudev.so' 'libusb-1.0.so'
 )
-makedepends=('cmake' 'git' 'libglvnd' 'python')
+makedepends=('cmake' 'git' 'python')
 optdepends=('pulseaudio: PulseAudio backend')
-options=('!emptydirs')
-source=('dolphin-emu::git+https://github.com/dolphin-emu/dolphin.git')
+source=("$pkgname::git+https://github.com/$_mainpkgname/$_projectname")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd dolphin-emu
-
-  git describe | sed 's/-/.r/; s/-g/./'
-}
+_sourcedirectory="$pkgname"
 
 prepare() {
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
+	cd "$srcdir/$_sourcedirectory/"
+	if [ -d 'build/' ]; then rm -rf 'build/'; fi
+	mkdir 'build/'
+}
+
+pkgver() {
+	cd "$srcdir/$_sourcedirectory/"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd build
-
-  cmake ../dolphin-emu \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
-    -DENABLE_QT='TRUE' \
-    -DUSE_SHARED_ENET='TRUE' \
-    -DXXHASH_FOUND='TRUE'\
-    -DDISTRIBUTOR='aur.archlinux.org'
-  make
+	cd "$srcdir/$_sourcedirectory/"
+	cmake -S '.' -B 'build/' \
+		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-DUSE_SHARED_ENET=ON \
+		-DDISTRIBUTOR=archlinux.org
+	make -C 'build/'
 }
 
 package_dolphin-emu-git() {
-  provides=('dolphin-emu')
-  conflicts=('dolphin-emu')
+	pkgdesc="$pkgdesc$_pkgdescappend"
+	provides=("$_mainpkgname")
+	conflicts=("$_mainpkgname")
 
-  make DESTDIR="${pkgdir}" -C build install
-  rm "${pkgdir}"/usr/bin/dolphin-emu-nogui
-  rm -rf "${pkgdir}"/usr/{include,lib/libdiscord-rpc.a}
+	cd "$srcdir/$_sourcedirectory/"
+	make DESTDIR="$pkgdir" -C 'build/' install
+	install -Dm644 'Data/51-usb-device.rules' "$pkgdir/usr/lib/udev/rules.d/51-usb-device.rules"
 
-  install -Dm 644 dolphin-emu/Data/51-usb-device.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
+	rm -rf "$pkgdir/usr/bin/$_noguipkgname"
+	rm -rf "$pkgdir/usr/include"
+	rm -rf "$pkgdir/usr/lib/libdiscord-rpc.a"
+	rm -rf "$pkgdir/usr/share/man/man6/$_noguipkgname.6"
 }
 
 package_dolphin-emu-nogui-git() {
-  depends=('dolphin-emu-git')
+	pkgdesc="$pkgdesc - no GUI$_pkgdescappend"
+	depends=("$pkgbase")
+	optdepends=()
+  	provides=("$_noguipkgname" "$_mainpkgname-cli")
+	conflicts=("$_noguipkgname" "$_mainpkgname-cli")
 
-  install -dm 755 "${pkgdir}"/usr/bin
-  install -m 755 build/Binaries/dolphin-emu-nogui "${pkgdir}"/usr/bin/dolphin-emu-cli
+	cd "$srcdir/$_sourcedirectory/"
+	install -Dm755 "$srcdir/$_sourcedirectory/build/Binaries/$_noguipkgname" "$pkgdir/usr/bin/$_noguipkgname"
+	ln -sf "/usr/bin/$_noguipkgname" "$pkgdir/usr/bin/$_mainpkgname-cli"
+	install -Dm644 "Data/$_noguipkgname.6" "$pkgdir/usr/share/man/man6/$_noguipkgname.6"
 }
-
-# vim: ts=2 sw=2 et:
