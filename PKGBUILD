@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=python-jupyter_telemetry
-pkgver=0.0.5
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Configurable event-logging for Jupyter applications and extensions"
 url="https://github.com/jupyter/telemetry"
@@ -14,7 +14,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/j/jupyter_telemetry/jupyter_telemetry-$pkgver.tar.gz"
 )
 sha256sums=(
-  'd3eaac14be17510a4d288f3737580107ce14eef543e6133d56654d3f0e742b9b'
+  '445c613ae3df70d255fe3de202f936bba8b77b4055c43207edf22468ac875314'
 )
 
 build() {
