@@ -1,6 +1,6 @@
 pkgbase = magic-git
 	pkgdesc = A VLSI layout system
-	pkgver = 8.2.r750.aecda68
+	pkgver = 8.3.r604.97df4e8
 	pkgrel = 1
 	url = http://opencircuitdesign.com/magic/
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = magic-git
 	optdepends = blt: to create a tree diagram of the cell hierarchy in a design
 	provides = magic
 	conflicts = magic
-	source = git://opencircuitdesign.com/magic#branch=magic-8.2
+	source = git://opencircuitdesign.com/magic#branch=magic-8.3
 	md5sums = SKIP
 
 pkgname = magic-git
