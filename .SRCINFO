@@ -1,6 +1,6 @@
 pkgbase = mupen64plus-git
 	pkgdesc = Nintendo64 Emulator (git version)
-	pkgver = 2.5.9.r8.gb4566a65.20190318.054142
+	pkgver = 2.5.9.r62.gdbd75133.20200405.081354
 	pkgrel = 1
 	url = https://www.mupen64plus.org/
 	arch = i686

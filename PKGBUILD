@@ -1,4 +1,4 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 # NOTE:
 # The additional field in $pkgver is in the format 'YYYMMDD.HHMMSS', which
@@ -7,7 +7,7 @@
 # mupen64plus component receives a new commit.
 
 pkgname=mupen64plus-git
-pkgver=2.5.9.r8.gb4566a65.20190318.054142
+pkgver=2.5.9.r62.gdbd75133.20200405.081354
 pkgrel=1
 pkgdesc='Nintendo64 Emulator (git version)'
 arch=('i686' 'x86_64')
@@ -86,4 +86,8 @@ build() {
 package() {
     # set LDCONFIG since we are using fakeroot and scripts run root commands by checking the uid
     ./m64p_install.sh DESTDIR="$pkgdir" PREFIX='/usr' MANDIR='/usr/share/man' LDCONFIG='true'
+    
+    local _sover
+    _sover="$(find mupen64plus-core/projects/unix -type f -name 'libmupen64plus.so.*.*' | sed 's/^.*\.so\.//')"
+    ln -s "libmupen64plus.so.${_sover}" "${pkgdir}/usr/lib/libmupen64plus.so"
 }
