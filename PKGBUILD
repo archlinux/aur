@@ -1,24 +1,23 @@
 pkgname=openturns
-pkgver=1.14
+pkgver=1.15rc1
 pkgrel=1
 pkgdesc="Uncertainty treatment library"
 license=('LGPL')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.openturns.org/"
-depends=('libxml2' 'muparser' 'intel-tbb' 'hmat-oss' 'python-matplotlib' 'python-psutil' 'nlopt' 'cminpack' 'ceres-solver' 'dlib' 'coin-or-bonmin')
-makedepends=('cmake' 'swig' 'boost')
+depends=('libxml2' 'intel-tbb' 'hmat-oss' 'python-matplotlib' 'python-psutil' 'nlopt' 'cminpack' 'ceres-solver' 'dlib' 'coin-or-bonmin')
+makedepends=('cmake' 'swig' 'boost' 'spectra')
 backup=('etc/openturns/openturns.conf')
 source=("https://github.com/openturns/openturns/archive/v$pkgver.tar.gz")
-sha256sums=('22f55bb3bc6e94a5308d94ad6b6272ea74145ba172746fdc1252a5869eb492a8')
+sha256sums=('c96d1d4c2e06c5a976f09a2557f17bcfeb343f2c4d9c4307592594655e031d55')
 
 build() {
   cd openturns-$pkgver
-  curl -L https://github.com/openturns/openturns/commit/4b035f24654f7a8ff1a0c4782e6a1b730b4d989a.patch | patch -p1
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_SKIP_INSTALL_RPATH=ON \
         -DOPENTURNS_SYSCONFIG_PATH=/etc \
         -DUSE_SPHINX=OFF \
-        -DUSE_COTIRE=ON -DCOTIRE_MAXIMUM_NUMBER_OF_UNITY_INCLUDES="-j16" \
+        -DCMAKE_UNITY_BUILD=ON -DCMAKE_UNITY_BUILD_BATCH_SIZE=32 \
         -DSWIG_COMPILE_FLAGS="-O1" \
         .
   make

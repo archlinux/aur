@@ -1,16 +1,15 @@
 pkgbase = openturns
 	pkgdesc = Uncertainty treatment library
-	pkgver = 1.14
+	pkgver = 1.15rc1
 	pkgrel = 1
 	url = http://www.openturns.org/
-	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
 	makedepends = swig
 	makedepends = boost
+	makedepends = spectra
 	depends = libxml2
-	depends = muparser
 	depends = intel-tbb
 	depends = hmat-oss
 	depends = python-matplotlib
@@ -21,8 +20,8 @@ pkgbase = openturns
 	depends = dlib
 	depends = coin-or-bonmin
 	backup = etc/openturns/openturns.conf
-	source = https://github.com/openturns/openturns/archive/v1.14.tar.gz
-	sha256sums = 22f55bb3bc6e94a5308d94ad6b6272ea74145ba172746fdc1252a5869eb492a8
+	source = https://github.com/openturns/openturns/archive/v1.15rc1.tar.gz
+	sha256sums = c96d1d4c2e06c5a976f09a2557f17bcfeb343f2c4d9c4307592594655e031d55
 
 pkgname = openturns
 
