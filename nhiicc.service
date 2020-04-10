@@ -6,7 +6,8 @@ Type=simple
 ExecStart=/usr/bin/mLNHIICC
 PrivateTmp=true
 DynamicUser=true
-BindPaths=/usr/share/NHIICC:/usr/local/share/NHIICC
+TemporaryFileSystem=/usr/local/share:ro
+BindReadOnlyPaths=/usr/share/NHIICC:/usr/local/share/NHIICC
 
 [Install]
 WantedBy=multi-user.target

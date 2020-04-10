@@ -3,7 +3,7 @@
 pkgname=nhiicc
 # XXX: Upstream does not provide a version string :/
 pkgver=20200319
-pkgrel=4
+pkgrel=5
 arch=(x86_64)
 url='https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mEventesting.htm'
 license=(custom)
@@ -17,7 +17,7 @@ source=("https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mLNHIICC_Setup.Ubuntu.
         nhiicc.service)
 # See https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mEventesting.htm for MD5 sums
 md5sums=('52eacb7ca2b4d0a5a869df01079bf4d6'
-         '9adafe804b874aa96e236d4a4cd91645')
+         '616a69724e3bc4dab688ca4bc5298c41')
 install=nhiicc.install
 
 prepare() {
