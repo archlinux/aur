@@ -2,8 +2,8 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Eugene Tan <jmingtan at gmail dot com>
 
-_pkgname="librocket-asarium"
-pkgname="$_pkgname-git"
+_pkgname="librocket"
+pkgname="$_pkgname-asarium-git"
 pkgver=1.2.2
 pkgrel=1
 pkgdesc="The HTML/CSS User Interface library, maintained fork"
@@ -12,8 +12,8 @@ url="https://asarium.github.io/libRocket/wiki/documentation.html"
 license=('MIT')
 depends=('boost-libs' 'freetype2' 'python' 'libgl' 'lua')
 makedepends=('cmake' 'mesa' 'git' 'boost')
-conflicts=("$_pkgname")
-provides=("$_pkgname" "$pkgname")
+conflicts=("$_pkgname" "$_pkgname-git")
+provides=("$_pkgname" "$_pkgname-git")
 source=("$pkgname::git+https://github.com/asarium/libRocket.git"
 'lua-port.patch' 'python3.patch' 'glew-link.patch' 'lua-sample-build.patch')
 sha256sums=('SKIP'
@@ -48,7 +48,7 @@ build() {
     -DBUILD_LUA_BINDINGS=True \
     -DBUILD_SAMPLES=False \
     .
-  make -j1
+  make
 }
 
 package() {
