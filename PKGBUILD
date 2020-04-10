@@ -1,7 +1,7 @@
 # Maintainer : Ashcon Mohseninia <ashcon50@gmail.com>
 
 pkgname="razer-laptop-control-dkms-git"
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=2
 pkgdesc="Kernel module for razer laptop's for RGB, fan and power control"
 arch=('i686' 'x86_64')
