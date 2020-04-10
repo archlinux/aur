@@ -2,20 +2,20 @@
 pkgname=osdlyrics-git
 provides=(osdlyrics)
 conflicts=(osdlyrics osdlyrics-pedrohlc)
-_pkgver=0.4.99
-pkgver=0.4.99.r825.840afef
+_pkgver=0.5.0
+pkgver=0.5.0.r926.818bac8
 pkgrel=1
 pkgdesc="Standalone lyrics fetcher/displayer (windowed and OSD mode). Supports MPRIS1/2 players, and MPD."
 arch=(i686 x86_64)
 url="https://github.com/osdlyrics/osdlyrics"
 license=(GPL3)
 depends=(dbus-glib desktop-file-utils gtk2 hicolor-icon-theme libnotify
-         python2-dbus python2-chardet python2-gobject2 python2-pycurl
+         python-{future,dbus,chardet,gobject,pycurl}
          sqlite)
 makedepends=(intltool)
 optdepends=('gobject-introspection-runtime: proxy detection in Gnome'
-            'kdebindings-python2: proxy detection in KDE'
-            'python2-mpd: to interface with MPD')
+            'kdebindings-python: proxy detection in KDE'
+            'python-mpd: to interface with MPD')
 install=$provides.install
 source=("${provides}::git+git://github.com/osdlyrics/osdlyrics.git#branch=master")
 md5sums=(SKIP)
@@ -29,7 +29,7 @@ build()
 {
     cd "$srcdir/$provides"
     ./autogen.sh
-    ./configure --prefix=/usr PYTHON=/usr/bin/python2
+    ./configure --prefix=/usr PYTHON=/usr/bin/python
     make
 }
 
