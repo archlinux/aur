@@ -2,7 +2,7 @@
 # PKGBUILD-Credit: https://aur.archlinux.org/account/teprrr
 
 pkgname=portfolio-performance-bin
-pkgver=0.41.1
+pkgver=0.46.0
 pkgrel=1
 pkgdesc="A simple tool to calculate the overall performance of an investment portfolio."
 arch=('x86_64')
@@ -29,5 +29,5 @@ package() {
     install -Dm 644 "$srcdir"/portfolio/icon.xpm -t "$pkgdir"/usr/share/pixmaps/PortfolioPerformance.xpm
 }
 
-md5sums=('3d2f53e4afdc9dd8b4ac250b63129d81'
-         'a1204cabfcbf5a026cd44923b87be026')
+md5sums=('e84e63bc3401d4b5c00e999a8993a77d'
+         'd06f3f804dce0a605db450f863da9326')
