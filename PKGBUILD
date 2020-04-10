@@ -2,8 +2,8 @@
 
 _pkgbase=uvesafb
 pkgname=uvesafb-dkms
-pkgver=1.0.1
-pkgrel=1
+pkgver=1.0.3
+pkgrel=2
 _v86d=v86d
 _v86dver=0.1.10
 pkgdesc="uvesafb dkms driver and v86d userspace helper for uvesafb that runs x86 code in an emulated environment"
