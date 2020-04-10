@@ -1,14 +1,15 @@
-# Maintainer: vorpalblade77@gmail.com
+# Maintainer: ju.adde-gmail-com
+# Contributor: vorpalblade77@gmail.com
 pkgname=python-steamcontroller-git
 _pkgname=steamcontroller
-pkgver=r125.80928ce
+pkgver=1.2.r13.g80928ce
 pkgrel=1
 pkgdesc="Standalone userland driver for the Steam controller"
 arch=('i686' 'x86_64')
 url="https://github.com/ynsta/${_pkgname}"
 license=('MIT')
 makedepends=('python-distutils-extra')
-depends=('python-libusb1')
+depends=('python-libusb1' 'python-psutil')
 optdepends=('python-pyside: Required for sc-gyro-plot.py'
 	'python-pyqtgraph: Required for sc-gyro-plot.py'
 	'steam: udev rules for the controller')
@@ -17,15 +18,10 @@ conflicts=("${_pkgname}")
 changelog='changelog.txt'
 source=("git+https://github.com/ynsta/${_pkgname}.git")
 sha256sums=('SKIP')
-install='steamcontroller.install'
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	( set -o pipefail
-	git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	      )
-#	git describe --always | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
@@ -34,8 +30,6 @@ build() {
 }
 
 package() {
-	#install -m755 -d "${pkgdir}/usr/lib/udev/rules.d"
-	#install -Dm 644 "99-steamcontroller.rules" "${pkgdir}/usr/lib/udev/rules.d/99-steamcontroller.rules"
 	cd "${srcdir}/${_pkgname}"
 	python setup.py install --root="${pkgdir}" \
 	--prefix="/usr" \
