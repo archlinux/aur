@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=stmm-input-xi
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc="Device input event library - xi floating keyboards"
 url='https://www.efanomars.com/libraries/stmm-input-xi'
@@ -16,8 +16,8 @@ optdepends=()
 #replaces=("stmm-input-xi")
 #conflicts=("stmm-input-xi")
 
-source=('https://efanomars.com/sources/stmm-input-xi-0.9.tar.gz')
-sha256sums=('0299f437ebe2ba3950bce2a5e7ff26dc82fe45be67919186a1ae3293a2e6c865')
+source=('https://efanomars.com/sources/stmm-input-xi-0.10.tar.gz')
+sha256sums=('8467c1b5fced25974fb01c7cb23b1293941875059865dfafbdf21090e3233b18')
 
 build() {
   cd "${srcdir}/stmm-input-xi"
