@@ -1,19 +1,16 @@
 pkgbase = fastoredis
-	pkgdesc = FastoRedis, cross-platform open source Redis GUI management tool.
-	pkgver = 2.4.0
+	pkgdesc = FastoRedis (fork of FastoNoSQL) - is a cross-platform open source Redis management tool (i.e. Admin GUI)
+	pkgver = 2.5.0
 	pkgrel = 1
-	url = https://fastoredis.com/
+	url = https://fastoredis.com
 	arch = x86_64
-	license = custom
-	makedepends = rsync
+	license = GPL-3.0
+	license = Trial
 	depends = qt5-base
 	depends = python2
-	provides = fastoredis
-	conflicts = fastoredis
-	source = fastoredis.desktop
-	source = fastoredis-2.4.0-x86_64.tar.gz::https://fastoredis.com/downloads/linux/fastoredis-2.4.0-x86_64.tar.gz
-	md5sums = a3da6c7bf56828a0b94e106960a41f9f
-	md5sums = 723eb97c191406c0a98252ce9d4b77a2
+	options = !emptydirs
+	source = fastoredis-2.5.0.tar.gz::https://fastoredis.com/downloads_pro/linux/fastoredis_pro-2.5.0-x86_64.tar.gz
+	md5sums = 7310a48c299aa671d1a3762291d4b176
 
 pkgname = fastoredis
 

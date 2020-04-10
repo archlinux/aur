@@ -1,39 +1,29 @@
-# Maintainer: Clarence <xjh.azzbcc@gmail.com>
-_pkgname=fastoredis
-pkgname=${_pkgname}
-pkgver=2.4.0
-_build_ver=5993817
-pkgrel=1
-pkgdesc="FastoRedis, cross-platform open source Redis GUI management tool."
-arch=('x86_64')
-url="https://fastoredis.com/"
-license=('custom')
-depends=('qt5-base' 'python2')
-makedepends=('rsync')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("${_pkgname}.desktop"
-        "${_pkgname}-${pkgver}-x86_64.tar.gz::https://fastoredis.com/downloads/linux/${_pkgname}-${pkgver}-x86_64.tar.gz")
-md5sums=('a3da6c7bf56828a0b94e106960a41f9f'
-         '723eb97c191406c0a98252ce9d4b77a2')
+# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Clarence <xjh.azzbcc@gmail.com>
 
-build() {
-    echo ${_pkgname} ${pkgver}
-}
+pkgname=fastoredis
+pkgver=2.5.0
+pkgrel=1
+pkgdesc="FastoRedis (fork of FastoNoSQL) - is a cross-platform open source Redis management tool (i.e. Admin GUI)"
+arch=('x86_64')
+url="https://fastoredis.com"
+license=('GPL-3.0' 'Trial')
+depends=('qt5-base' 'python2')
+options=('!emptydirs')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/downloads_pro/linux/${pkgname}_pro-${pkgver}-x86_64.tar.gz")
+md5sums=('7310a48c299aa671d1a3762291d4b176')
 
 package() {
-    src_base_dir=${srcdir}/${_pkgname}-${pkgver}-x86_64-${_build_ver}/opt/${_pkgname}
-    pkg_base_dir=${pkgdir}/opt/${_pkgname}
-
-    install -d -m 755 "${pkg_base_dir}/share"
-    install -d -m 755 "${pkgdir}/usr/share/pixmaps/"
-    install -d -m 755 "${pkgdir}/usr/share/applications/"
-    install -d -m 755 "${pkgdir}/usr/share/licenses/${_pkgname}/"
-
-    rsync -rtl "${src_base_dir}/bin" "${pkg_base_dir}"
-    rsync -rtl "${src_base_dir}/share/resources" "${pkg_base_dir}/share"
-
-    install -D -m 644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/"
-    install -D -m 644 "${src_base_dir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/"
-    install -D -m 644 "${src_base_dir}/share/icons/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/"
+  install -Dm644 "${srcdir}"/${pkgname}*/opt/${pkgname}/LICENSE \
+   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}"/${pkgname}*/opt/${pkgname}/share/applications/${pkgname}.desktop \
+   -t "${pkgdir}/usr/share/applications/"
+  install -Dm644 "${srcdir}"/${pkgname}*/opt/${pkgname}/share/icons/${pkgname}.png \
+   -t "${pkgdir}/usr/share/pixmaps/"
+  mv "${srcdir}"/${pkgname}*/opt "${pkgdir}"/
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -s /opt/${pkgname}/bin/FastoRedis "${pkgdir}/usr/bin/fastoredis"
+  rm "${pkgdir}/opt/${pkgname}/LICENSE" 
+  rm "${pkgdir}/opt/${pkgname}/share/applications/${pkgname}.desktop"
+  rm "${pkgdir}/opt/${pkgname}/share/icons/${pkgname}.png"
 }
