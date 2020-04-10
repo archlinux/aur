@@ -1,22 +1,23 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
-pkgname='qmapshack-hg'
-pkgver=1.13.0.r50.55dee1ae0d55
+pkgname='qmapshack-git'
+pkgver=1.14.1.r3.g72bf4529
 pkgrel=1
 pkgdesc='Plan your next outdoor trip'
 arch=('x86_64')
 url='https://bitbucket.org/maproom/qmapshack/'
 license=('GPL3')
 depends=('gdal' 'desktop-file-utils' 'quazip' 'qt5-webengine' 'routino>=3.1')
-makedepends=('cmake' 'mercurial')
+makedepends=('cmake' 'git')
 conflicts=('qmapshack')
 provides=('qmapshack')
-source=("$pkgname::hg+https://bitbucket.org/maproom/qmapshack")
+replaces=('qmapshack-hg')
+source=("$pkgname::git+https://github.com/Maproom/qmapshack.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
 
-    hg log -r . --template '{latesttag}.r{latesttagdistance}.{node|short}' | sed 's/V //'
+    git describe --long --tags  | sed 's/^V_//' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

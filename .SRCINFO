@@ -1,12 +1,12 @@
-pkgbase = qmapshack-hg
+pkgbase = qmapshack-git
 	pkgdesc = Plan your next outdoor trip
-	pkgver = 1.13.0.r50.55dee1ae0d55
+	pkgver = 1.14.1.r3.g72bf4529
 	pkgrel = 1
 	url = https://bitbucket.org/maproom/qmapshack/
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	makedepends = mercurial
+	makedepends = git
 	depends = gdal
 	depends = desktop-file-utils
 	depends = quazip
@@ -14,8 +14,9 @@ pkgbase = qmapshack-hg
 	depends = routino>=3.1
 	provides = qmapshack
 	conflicts = qmapshack
-	source = qmapshack-hg::hg+https://bitbucket.org/maproom/qmapshack
+	replaces = qmapshack-hg
+	source = qmapshack-git::git+https://github.com/Maproom/qmapshack.git
 	sha256sums = SKIP
 
-pkgname = qmapshack-hg
+pkgname = qmapshack-git
 
