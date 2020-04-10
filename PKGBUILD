@@ -6,7 +6,7 @@ arch=('x86_64')
 pkgdesc="A Qt tool for creating business and scientific charts."
 license=("GPL2" "custom:KDAB commercial license")
 depends=('qt5-base')
-makedepends=('cmake' 'qt5-tools')
+makedepends=('cmake' 'ninja' 'qt5-tools')
 url="https://www.kdab.com/kd-chart/"
 source=("https://github.com/KDAB/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('22088fe2e7173f160a4c6cc0b1d50e785d61ff7bab56df851d64788c6f3ced0b')
@@ -23,11 +23,12 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DKDChart_EXAMPLES=OFF \
         -DDISABLE_PYTHON_BINDINGS=true \
+        -G Ninja \
         ../KDChart-${pkgname}-${pkgver}
-    make
+    ninja
 }
 
 package() {
     cd build
-    make DESTDIR="$pkgdir" install
+    DESTDIR="${pkgdir}" ninja install
 }

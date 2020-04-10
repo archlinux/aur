@@ -7,6 +7,7 @@ pkgbase = kdchart
 	license = GPL2
 	license = custom:KDAB commercial license
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = qt5-tools
 	depends = qt5-base
 	source = https://github.com/KDAB/kdchart/archive/kdchart-2.7.0.tar.gz
