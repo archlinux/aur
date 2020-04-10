@@ -5,17 +5,32 @@ pkgbase = jrnl
 	url = https://maebert.github.io/jrnl
 	arch = any
 	license = MIT
-	depends = python-parsedatetime>=1.2
-	depends = python-yaml>=5.1.2
-	depends = python-pytz>=2013b
-	depends = python-six>=1.6.1
-	depends = python-tzlocal>=1.1
-	depends = python-keyring>=3.3
-	depends = python-dateutil>=2.2
-	depends = python-passlib>=1.6.2
-	depends = python-asteval>=0.9.8
-	depends = python-xdg>=0.26
-	optdepends = python-crypto: AES256-encrypted journal
+	depends = python-pyxdg>=0.26
+	depends = python-pyxdg<1.0
+	depends = python-parsedatetime>=2.4
+	depends = python-parsedatetime<3.0
+	depends = python-cryptography>=2.7
+	depends = python-cryptography<3.0
+	depends = python-passlib>=1.7
+	depends = python-passlib<2.0
+	depends = python-parsedatetime>=2.4
+	depends = python-parsedatetime<3.0
+	depends = python-keyring>=19.0
+	depends = python-keyring<20.0
+	depends = python-pytz>=2019.1
+	depends = python-pytz<2020.0
+	depends = python-tzlocal>1.5
+	depends = python-tzlocal<3.0
+	depends = python-asteval>=0.9.14
+	depends = python-asteval<1.0
+	depends = python-colorama>=0.4.1
+	depends = python-colorama<1.0
+	depends = python-dateutil>=2.8
+	depends = python-dateutil<3.0
+	depends = python-yaml>=5.1
+	depends = python-yaml<6.0
+	depends = python-ansiwrap>=0.8.4
+	depends = python-ansiwrap<1.0
 	source = https://pypi.python.org/packages/source/j/jrnl/jrnl-2.3.1.tar.gz
 	sha256sums = c780f656e61516fe7cbb1fa5e96e1959df3f7340c6c6cc7af69239cc19dd3dc1
 
