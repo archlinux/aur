@@ -1,10 +1,11 @@
 # Maintainer: Fredrick Brennan <copypaste@kittens.ph>
+# Maintainer: Pig Monkey <pm@pig-monkey.com>
 # Contributor: mutantmonkey <aur@mutantmonkey.in>
 # Contributor: Stephan Eisvogel <eisvogel at embinet dot de>
 # Contributor: Daniel Reuter <daniel.robin.reuter@googlemail.com>
 
 pkgname=ocrmypdf
-pkgver=9.6.0
+pkgver=9.7.1
 pkgrel=1
 pkgdesc="A tool to add an OCR text layer to scanned PDF files, allowing them to be searched"
 url="https://github.com/jbarlow83/OCRmyPDF"
@@ -15,8 +16,8 @@ depends=('python' 'python-cffi' 'img2pdf' 'python-pillow' 'tesseract' 'ghostscri
 
 makedepends=('python-setuptools')
 optdepends=('jbig2enc: Better compression algorithm; results in smaller PDF files')
-source=("https://files.pythonhosted.org/packages/a9/4f/6fdbdadc554b28e75998eda555c5a0ea084da4668567302bde6736e63dbf/ocrmypdf-9.6.0.tar.gz")
-sha256sums=('5a8f5c95a67bd3c14f7fab657f1a88c3b46e9f7ce5b5aef15eb1b4b7f5ff0075')
+source=("https://files.pythonhosted.org/packages/4d/13/a9969946ee6a02a3dfc89fb487b8039bd93940036c43715f35760beb18eb/ocrmypdf-9.7.1.tar.gz")
+sha256sums=('fd029b97463e054d95eed361843397a76b2aa35913ac96c57cf8c15a15411971')
 
 package () {
   cd "${srcdir}/${pkgname}-${pkgver}"
