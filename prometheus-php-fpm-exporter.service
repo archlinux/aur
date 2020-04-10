@@ -1,0 +1,29 @@
+[Unit]
+Description=Prometheus PHP-FPM exporter
+After=network.target
+
+[Service]
+User=http
+Group=http
+Environment=PHP_FPM_SCRAPE_URI=unix:///run/php-fpm/php-fpm.sock;/status
+ExecStart=/usr/bin/prometheus-php-fpm-exporter server
+Restart=on-failure
+
+NoNewPrivileges=true
+RestrictSUIDSGID=true
+ProtectSystem=strict
+ProtectKernelModules=true
+ProtectKernelTunables=true
+PrivateTmp=true
+LockPersonality=true
+ProtectHostname=true
+ProtectHome=true
+ProtectControlGroups=true
+ProtectKernelLogs=true
+PrivateDevices=true
+RestrictRealtime=true
+CapabilityBoundingSet=
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target
