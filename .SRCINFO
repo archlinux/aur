@@ -1,0 +1,13 @@
+pkgbase = phytool
+	pkgdesc = MDIO register access
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/wkz/phytool
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = https://github.com/wkz/phytool/releases/download/v2/phytool-2.tar.xz
+	md5sums = 972982f8e5f7237cbccfc6d275da7348
+
+pkgname = phytool
+
