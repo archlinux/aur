@@ -1,16 +1,13 @@
 pkgbase = python-sphinxcontrib-programoutput
-	pkgdesc = Sphinx extension to include program output
+	pkgdesc = Sphinx extension to insert the output of arbitrary commands into documents.
 	pkgver = 0.16
 	pkgrel = 1
-	url = https://pypi.org/project/sphinxcontrib-programoutput/
+	url = https://sphinxcontrib-programoutput.readthedocs.io
 	arch = any
 	license = BSD
-	makedepends = python
-	depends = python
+	makedepends = python-setuptools
 	depends = python-sphinx
-	provides = sphinxcontrib-programoutput
-	options = !emptydirs
-	source = https://pypi.python.org/packages/source/s/sphinxcontrib-programoutput/sphinxcontrib-programoutput-0.16.tar.gz
+	source = https://pypi.org/packages/source/s/sphinxcontrib-programoutput/sphinxcontrib-programoutput-0.16.tar.gz
 	sha256sums = 0caaa216d0ad8d2cfa90a9a9dba76820e376da6e3152be28d10aedc09f82a3b0
 
 pkgname = python-sphinxcontrib-programoutput
