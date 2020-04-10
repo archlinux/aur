@@ -8,6 +8,7 @@ pkgbase = r-minqa
 	license = GPL2
 	makedepends = gcc
 	makedepends = make
+	makedepends = gcc-fortran
 	depends = r
 	depends = r-rcpp>=0.9.10
 	source = https://cran.r-project.org/src/contrib/minqa_1.2.4.tar.gz
