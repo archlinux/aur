@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=tixeoclient
-pkgver=15.0.3.0
+pkgver=15.0.4.0
 pkgrel=1
 pkgdesc="Tixeo secure video conferencing client"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('libxss' 'libsecret' 'libappindicator-gtk3' 'zlib' 'dbus-glib' 'gtk3' 'xdg-utils')
 makedepends=()
 source=("http://repos.tixeo.com/debian/pool/non-free/t/tixeoclient/${pkgname}_${pkgver}_amd64.deb")
-md5sums=('bb5952decd45e20d3f6732bdf36d8bd3')
+md5sums=('bb7111d75f84dce3ac514a6631c01777')
 
 package() {
 	tar -C "${pkgdir}" -xf data.tar.gz
