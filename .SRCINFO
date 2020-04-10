@@ -1,6 +1,6 @@
 pkgbase = lib32-libgphoto2
 	pkgdesc = The core library of gphoto2, designed to allow access to digital camera by external programs. (32-bit)
-	pkgver = 2.5.23
+	pkgver = 2.5.24
 	pkgrel = 1
 	url = http://www.gphoto.org/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = lib32-libgphoto2
 	depends = lib32-libusb
 	depends = lib32-libxml2
 	depends = libgphoto2
-	source = git+https://github.com/gphoto/libgphoto2#commit=276c1a403f07aac74224a65079c51ef600c6837b
+	source = git+https://github.com/gphoto/libgphoto2#commit=63f8c5233e73aedbf47f4a65fc30f579307cb4da
 	validpgpkeys = 7C4AFD61D8AAE7570796A5172209D6902F969C95
 	sha256sums = SKIP
 
