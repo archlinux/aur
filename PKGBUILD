@@ -4,7 +4,7 @@ pkgver() {
 	cd "$srcdir/$pkgname"
 	printf $(git describe | sed "s/-/./g")
 }
-pkgver=v1.0.5.gcdac9ea
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A simple shellscript to manage personal journals"
 arch=('any')
