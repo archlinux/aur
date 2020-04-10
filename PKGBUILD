@@ -1,4 +1,5 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer:  Yamada Hayao <hayao@fascode.net> 
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: Tatsuyuki Ishi <ishitatsuyuki at gmail>
 # Contributor: Ben Darwin <bcdarwin at gmail>
 # Contributor: speps <speps at aur dot archlinux dot org>
