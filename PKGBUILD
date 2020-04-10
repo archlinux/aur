@@ -4,7 +4,7 @@
 # Upstream: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-vfio
-pkgver=5.6.2.arch1
+pkgver=5.6.3.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -23,6 +23,7 @@ source=(
   config         # the main kernel config file
   add-acs-overrides.patch
   i915-vga-arbiter.patch
+  sphinx-workaround.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -30,9 +31,10 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '5c809f7ca4f21ebd95368533b20c0ed78fe2e006762dff742e5fd0751521ad11'
+            '6ac452e2124f92747a57c5a50e11ca2f1e8112669845b4431311545c7fd2a36c'
             '4938b7121862e54c614668d1f662fcdd37e0c4f11cf386a425f9d4c3849d00ef'
-            '094a29902b52cec2f0840219225a1458ca925f875524ecb7827da62a33c74ccf')
+            '094a29902b52cec2f0840219225a1458ca925f875524ecb7827da62a33c74ccf'
+            'e2e2e64ed4b716046a999b880fe41def580eca89fb6eb412ed141d2d3c7715da')
 
 
 export KBUILD_BUILD_HOST=archlinux
