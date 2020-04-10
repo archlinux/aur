@@ -10,7 +10,7 @@ _biglooversion=4.3h
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
-depends=('bigloo' 'gmp' 'libunistring' 'libuv' 'avahi' 'sqlite')
+depends=("bigloo=${_biglooversion}" 'gmp' 'libunistring' 'libuv' 'avahi' 'sqlite')
 makedepends=('git')
 conflicts=('hop')
 provides=('hop')

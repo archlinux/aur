@@ -10,7 +10,7 @@ pkgbase = hop-git
 	license = GPL
 	license = LGPL
 	makedepends = git
-	depends = bigloo
+	depends = bigloo=4.3h
 	depends = gmp
 	depends = libunistring
 	depends = libuv
