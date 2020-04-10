@@ -1,12 +1,12 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Det <nimetonmaili g-mail> 
 
 # check the latest version with:
 # $ curl -sL https://dl.google.com/linux/earth/deb/dists/stable/main/binary-amd64/Packages | grep -Pom1 'Version: \K[^-]*'
 
 pkgname=google-earth-pro
-pkgver=7.3.2.5776
-pkgrel=2
+pkgver=7.3.2.5815
+pkgrel=1
 pkgdesc='3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)'
 arch=('x86_64')
 url='https://www.google.com/earth/'
@@ -26,7 +26,7 @@ source=("https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stab
         'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html'::'https://www.google.com/help/legalnotices_maps.html'
         'Google-Privacy-Policy.html'::'https://www.google.com/intl/ALL/policies/privacy/index.html')
 noextract=("google-earth-pro-stable_${pkgver}-r0_amd64.deb")
-sha256sums=('7084d3c760db472cefa89b06d0627e029d3c50be44b58020fd0ee57500ff4ab5'
+sha256sums=('57b6c970609dc2960e9255b08a7ddf3af2581cb7c06ff92d16820269d0b2530d'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -35,8 +35,7 @@ sha256sums=('7084d3c760db472cefa89b06d0627e029d3c50be44b58020fd0ee57500ff4ab5'
 _installdir='/opt/google/earth/pro'
 
 prepare() {
-    mkdir "${pkgname}-${pkgver}"
-    
+    mkdir -p "${pkgname}-${pkgver}"
     bsdtar -xf "google-earth-pro-stable_${pkgver}-r0_amd64.deb" -C "${pkgname}-${pkgver}"
 }
 
@@ -50,7 +49,7 @@ package() {
     local _res
     for _res in 16 22 24 32 48 64 128 256
     do
-        install -Dm644 "${pkgdir}/${_installdir}/product_logo_${_res}.png" \
+        install -D -m644 "${pkgdir}/${_installdir}/product_logo_${_res}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/google-earth-pro.png"
     done
     
