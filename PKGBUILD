@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Tremesaygues <killruana@slaanesh.org>
 pkgname=magic-git
-pkgver=8.2.r750.aecda68
+pkgver=8.3.r604.97df4e8
 pkgrel=1
 pkgdesc="A VLSI layout system"
 url="http://opencircuitdesign.com/magic/"
@@ -14,12 +14,12 @@ optdepends=('mesa: for better graphics'
             'cairo: for better graphics'
             'glu: for better graphics'
             'blt: to create a tree diagram of the cell hierarchy in a design')
-source=("git://opencircuitdesign.com/magic#branch=magic-8.2")
+source=("git://opencircuitdesign.com/magic#branch=magic-8.3")
 md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    printf "8.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "8.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
