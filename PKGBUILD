@@ -4,7 +4,7 @@
 
 pkgname=python-aioxmpp
 _name=${pkgname#python-}
-pkgver=0.10.5
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="An XMPP library for use with Python 3.4 asyncio"
 arch=('any')
@@ -27,7 +27,7 @@ depends=('libxml2'
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('1b7f9cb3c0dbed904e866028fd7db926bde358e131ef829a96a8278878d011d6')
+sha256sums=('63e5e133925e8a8e67f4deb9c5b68123f867fdec2747b57e8e83d09a655063cc')
 
 check() {
   cd "aioxmpp-$pkgver"
