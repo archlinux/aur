@@ -1,7 +1,7 @@
 # Maintainer: Ridales
 
 pkgname=plata-theme-slim
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc='A Gtk theme based on Material Design Refresh, built with most options disabled.'
 arch=('any')
