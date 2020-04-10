@@ -1,3 +1,7 @@
+Git commits 60499dc->80928ce
+	* Trackpad improvements
+	* src/events.py: Added math, sin/cos and deadzone handling
+
 Git commits 02f27c4->60499dc
 	* emulated XBox version changed (0x110)
 	* uinput device version now a parameter
