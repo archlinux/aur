@@ -2,7 +2,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=automatic
 pkgver=0.8.3
-pkgrel=4
+pkgrel=5
 pkgdesc="RSS downloader for Linux based systems, capable of adding downloaded torrents directly to Transmission"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://forum.dsmg600.info/viewtopic.php?id=2291"
