@@ -1,4 +1,5 @@
 # Maintainer: Nicolai Schmid <nicolai@schmid.uno>
+# PKGBUILD-Credit: https://aur.archlinux.org/account/teprrr
 
 pkgname=portfolio-performance-bin
 pkgver=0.41.1
@@ -15,12 +16,17 @@ source=(
 )
 
 package() {
-    # Extract the core package
-    tar xzf portfolio_${pkgver}.tar.gz -C "${pkgdir}"
+    install -d "$pkgdir"/{opt,usr/bin}
+
+    cp -a "$srcdir"/portfolio "${pkgdir}"/opt/PortfolioPerformance
+
+    #tar xzf portfolio_${pkgver}.tar.gz -C "${pkgdir}"/opt/PortfolioPerformance
+    ln -s /opt/PortfolioPerformance/PortfolioPerformance "$pkgdir"/usr/bin/PortfolioPerformance
 
     mkdir -p ${pkgdir}/usr/share/applications
     install -m644 "${srcdir}/portfolio-performance.desktop" "${pkgdir}/usr/share/applications/portfolio-performance.desktop"
 
+    install -Dm 644 "$srcdir"/portfolio/icon.xpm -t "$pkgdir"/usr/share/pixmaps/PortfolioPerformance.xpm
 }
 
 md5sums=('3d2f53e4afdc9dd8b4ac250b63129d81'
