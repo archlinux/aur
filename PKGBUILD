@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=fofimon
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="Monitor selected folders and files for modifications"
 url='https://www.efanomars.com/utilities/fofimon'
@@ -16,8 +16,8 @@ optdepends=()
 #replaces=("fofimon")
 #conflicts=("fofimon")
 
-source=('https://efanomars.com/sources/fofimon-0.7.tar.gz')
-sha256sums=('ef3e9a8661d594c9129947088932e2e6689f203fa6de545929a4ff95f006118f')
+source=('https://efanomars.com/sources/fofimon-0.8.tar.gz')
+sha256sums=('ba66102c6d0f3b4854c57dd762777f30d2a1ef43161ee093da7989a3c7929b05')
 
 build() {
   cd "${srcdir}/fofimon"
