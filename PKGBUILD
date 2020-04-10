@@ -2,7 +2,7 @@
 # Contributor: Mr. Outis <mroutis@protonmail.com>
 
 pkgname=dvc
-pkgver=0.92.1
+pkgver=0.93.0
 pkgrel=1
 pkgdesc="Open-source version control system for data science projects"
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=('python-google-cloud-storage: support for Google Cloud'
 	    )
 # OptDeps to upload on AUR: python-oss2, 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('10862619f16e07d2285e91dfd64e91d199fc3a61d604b5ba28a0a58262f353c8')
+sha256sums=('0bb55be6687d0fa5d8980ff0a05da6dbbf9e13f582855e95bb1a9dafbc90f85a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
