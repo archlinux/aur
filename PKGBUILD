@@ -1,8 +1,6 @@
 # Maintainer: Eddie.website <maintainer@eddie.website>
 # Based on work by Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ> and Beini <bane aτ iki dot fi>
 
-# Pending work: man & changelog files generated automatically. 
-
 pkgname=eddie-ui
 pkgver=2.18.9
 pkgrel=1
@@ -30,12 +28,12 @@ build() {
   export TERM=xterm # Fix Mono bug "Magic number is wrong".
 
   # Compile C# sources
-  cd * # First folder
+  cd "Eddie-$pkgver"
   xbuild /verbosity:minimal /p:Configuration="Release" /p:Platform="$_pkgarch" src/eddie2.linux.sln
 
   # Compile C sources (Tray)
   cd src/UI.GTK.Linux.Tray
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=.  
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=. 
   make
   strip -S --strip-unneeded -o eddie-tray-strip eddie_tray
   cd ../..
@@ -47,7 +45,7 @@ build() {
 }
 
 package() {
-  cd * # First folder
+  cd "Eddie-$pkgver"
   install -Dm755 "src/App.Forms.Linux/bin/$_pkgarch/Release/App.Forms.Linux.exe" "$pkgdir/usr/lib/eddie-ui/eddie-ui.exe"
   install -Dm755 "src/App.Forms.Linux/bin/$_pkgarch/Release/eddie-cli-elevated" "$pkgdir/usr/lib/eddie-ui/eddie-cli-elevated"
   install -Dm644 "src/App.Forms.Linux/bin/$_pkgarch/Release/Lib.Core.dll" "$pkgdir/usr/lib/eddie-ui/Lib.Core.dll"
@@ -64,13 +62,21 @@ package() {
   install -Dm644 "common/icon_gray.png"       "$pkgdir/usr/share/eddie-ui/tray_gray.png"
   install -Dm644 "common/iso-3166.json"       "$pkgdir/usr/share/eddie-ui/iso-3166.json"
   install -Dm644 "common/lang/inv.json"       "$pkgdir/usr/share/eddie-ui/lang/inv.json"
-  # cp -r "common/webui"	"$pkgdir/usr/share/eddie-ui/webui"
-  # install -Dm644 "repository/linux_arch/bundle/eddie-ui/usr/share/doc/eddie-ui/changelog.Debian.gz" "$pkgdir/usr/share/doc/eddie-ui/changelog.gz" # TOFIX: Missing changelog generation
   install -Dm644 "repository/linux_arch/bundle/eddie-ui/usr/share/doc/eddie-ui/copyright"    "$pkgdir/usr/share/doc/eddie-ui/copyright"
-  # install -Dm644 "repository/linux_arch/bundle/eddie-ui/usr/share/man/man8/eddie-ui.8.gz"    "$pkgdir/usr/share/man/man1/eddie-ui.8.gz" # TOFIX: Missing man generation
   install -Dm644 "repository/linux_arch/bundle/eddie-ui/usr/share/polkit-1/actions/org.airvpn.eddie.ui.elevated.policy" "$pkgdir/usr/share/polkit-1/actions/org.airvpn.eddie.ui.elevated.policy"
   sed -i 's/{@lib}/lib/g' "$pkgdir/usr/share/polkit-1/actions/org.airvpn.eddie.ui.elevated.policy"
   install -Dm644 "repository/linux_arch/bundle/eddie-ui/usr/share/pixmaps/eddie-ui.png"  "$pkgdir/usr/share/pixmaps/eddie-ui.png"
+
+  # cp -r "common/webui"	"$pkgdir/usr/share/eddie-ui/webui"
+
+  # Generate changelog
+  curl "https://eddie.website/changelog/?software=client&format=debian&hidden=yes" -o "$pkgdir/usr/share/doc/eddie-ui/changelog"
+  gzip -n -9 "$pkgdir/usr/share/doc/eddie-ui/changelog"
+
+  # Generate man
+  mkdir -p "$pkgdir/usr/share/man/man8/"
+  mono "$pkgdir/usr/lib/eddie-ui/eddie-ui.exe" --cli --path.resources="$pkgdir/usr/share/eddie-ui/" --help --help.format=man >"$pkgdir/usr/share/man/man8/eddie-ui.8"
+  gzip -n -9 "$pkgdir/usr/share/man/man8/eddie-ui.8"
 
   ## Fix .desktop file for KDE
   _desktop_session=$(printf "%s" "$DESKTOP_SESSION" | awk -F "/" '{print $NF}')
