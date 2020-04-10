@@ -5,10 +5,10 @@
 
 pkgbase=pamac
 pkgname=('pamac-common' 'pamac-cli-src' 'pamac-gtk' 'pamac-tray-appindicator-src')
-_pkgver=9.4.1
-pkgver=9.4.1
+_pkgver=9.4.2
+pkgver=9.4.2
 pkgrel=1
-_commit=641dd802e2b483f6d42d0aa194944cad0c3bd20f
+_commit=227b4ec121eeee2ea5f8ca605f5cda9d6f7a8b59
 pkgdesc="A Package Manager based on libalpm with AUR and Appstream support"
 arch=('x86_64')
 url="https://gitlab.manjaro.org/applications/pamac"
@@ -22,7 +22,7 @@ options=(!emptydirs)
 
 source=("pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz")
         #"pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz")
-sha256sums=('098f6134414bbfd9afcdc9d3b31d40e1c38dca653cf4641f481605346ce269ee')
+sha256sums=('55dc8d6d38f011513915a717f437577c4a31576ee6570a08d835bb08a3a28ff7')
 
 prepare() {
   mv "$srcdir/pamac-$_commit" "$srcdir/pamac-v$_pkgver"
@@ -42,6 +42,7 @@ build() {
         -Denable-appindicator=true \
         -Denable-snap=false \
         -Denable-flatpak=false \
+        -Denable-fake-gnome-software=false \
         --buildtype=debug
 
   # build
