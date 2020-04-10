@@ -2,7 +2,7 @@
 pkgname=esteidpkcs11loader
 _name=firefox-pkcs11-loader
 _browser=firefox
-pkgver=3.13.4.1080
+pkgver=3.13.5.1081
 pkgrel=1
 pkgdesc="Firefox PKCS#11 module loader"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('opensc' 'pcsclite' 'ccid')
 optdepends=('chrome-token-signing: signing for firefox 52+')
 makedepends=('cmake' 'unzip' 'zip')
 source=("https://installer.id.ee/media/ubuntu/pool/main/f/$_name/${_name}_$pkgver.orig.tar.xz")
-sha256sums=('73dcc44ec8edce034807d96f730264bc2a40e2deb55013992210ed9bae74f6c4')
+sha256sums=('c5ede843ef16431df8e4242c38683ce8582d8f5dbd9df9c5ed74e93f3586596d')
 
 build() {
   cd "$srcdir"
