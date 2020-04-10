@@ -1,8 +1,9 @@
 pkgbase = flast
 	pkgdesc = Cross-platform browser based on Chromium.
-	pkgver = 80.1.0
+	pkgver = 82.0.5
 	pkgrel = 1
 	url = https://github.com/Aoichaan0513/flast
+	install = flast.install
 	arch = x86_64
 	license = GPL
 	depends = at-spi2-core
@@ -17,8 +18,8 @@ pkgbase = flast
 	depends = libxtst
 	depends = nss
 	depends = xdg-utils
-	source = http://aoichaan0513.xyz/flast/linux/x64//Beta/Flast_80.1.0_amd64.deb
-	md5sums = 17a7386d6f3c5283739df1e5996db96d
+	source = https://flast.aoichaan0513.jp/releases/linux/Beta/Flast_82.0.5_amd64.deb
+	md5sums = 292a1aae6d890e2fe8e4098e3bc732cc
 
 pkgname = flast
 
