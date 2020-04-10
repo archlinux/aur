@@ -1,28 +1,49 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
-
-pkgname=ocaml-charinfo_width
-pkgver=1.1.0
-_changeset=6a2ed28ba68c
-pkgrel=1
-pkgdesc="Determine column width for a character"
-arch=('x86_64')
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
+_author='zandoye'
+_opamname='charInfo_width'
+_projectname="${_opamname,,}"
+pkgname="ocaml-$_projectname"
+pkgver='1.1.0'
+_changeset='6a2ed28ba68c'
+pkgrel='2'
+pkgdesc='Determine column width for a character'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://bitbucket.org/$_author/$_projectname"
 license=('MIT')
-url="https://bitbucket.org/zandoye/charinfo_width"
-depends=('ocaml' 'ocaml-result' 'ocaml-camomile')
+depends=('ocaml>=4.02.3' 'ocaml-camomile>=1.0.0' 'ocaml-result')
 makedepends=('dune')
-source=("https://bitbucket.org/zandoye/charinfo_width/get/${pkgver}.tar.gz")
-sha512sums=('0d04b8b3a29c024b8784cd3d0c81c602a58883cdca152814002afda857f1582f5e9c11d246180543fd0b7bf450b8f27c8d50cedd58af1495d016c105dd05698b')
+checkdepends=('ocaml-ppx_expect')
+options=('!strip')
+source=(
+	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/get/$pkgver.tar.gz"
+	"$pkgname-$pkgver-$pkgrel-LICENSE::$url/raw/049dc7b9e5c183a7c6bfc6e97f062e418f5be4bc/LICENSE"
+)
+sha256sums=('0601e0b9f0f1f225592360a53b634bc66cef134f8d1ff0c9071e69ecc3257b01'
+            '861f4f38563857ccf124b890b03182a1711c685b8e55c07e4e2565add10c885a')
+
+_sourcedirectory="$_author-$_projectname-$_changeset"
 
 build() {
-  cd "${srcdir}/zandoye-charinfo_width-${_changeset}"
+	cd "$srcdir/$_sourcedirectory/"
+	dune build -p "$_opamname" --verbose
+}
 
-  dune build --profile release
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+	dune runtest -p "$_opamname" --verbose
 }
 
 package() {
-  cd "${srcdir}/zandoye-charinfo_width-${_changeset}"
+	cd "$srcdir/$_sourcedirectory/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
 
-  dune install --destdir "${pkgdir}"
-  install -dm755 "${pkgdir}/usr/share"
-  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+	mv "$pkgdir/usr/doc/$_opamname/"* "$pkgdir/usr/share/doc/$pkgname/"
+	rm -r "$pkgdir/usr/doc/"
+
+	install -Dm644 "../$pkgname-$pkgver-$pkgrel-LICENSE" "$pkgdir/usr/share/doc/$pkgname/LICENSE"
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
