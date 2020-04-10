@@ -1,0 +1,14 @@
+pkgbase = firefox-extension-foxyproxy-basic
+	pkgdesc = FoxyProxy Basic is a simple on/off proxy switcher - basic version
+	pkgver = 7.4.3
+	pkgrel = 1
+	url = https://github.com/foxyproxy/firefox-extension
+	arch = any
+	groups = firefox-addons
+	license = GPL
+	noextract = foxyproxy_basic-7.4.3-an+fx.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/3476522/foxyproxy_basic-7.4.3-an+fx.xpi
+	sha256sums = d13888eb30f5779d7b8969d9f2a1735876f4e372acf917459579cb7ce06217a8
+
+pkgname = firefox-extension-foxyproxy-basic
+
