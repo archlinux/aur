@@ -2,7 +2,7 @@
 pkgname=terminator-git
 pkgver=1.91.103.g5151db48
 pkgrel=1
-pkgdesc='python3 port for terminal emulator that supports tabs and grids python3'
+pkgdesc='multiple GNOME terminals in one window'
 arch=('any')
 url='https://github.com/gnome-terminator/terminator.git'
 license=('GPL2')
