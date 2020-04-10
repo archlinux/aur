@@ -2,7 +2,7 @@
 
 _name=simplekv
 pkgname=python-simplekv
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="A simple key-value store for binary data"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("${_name}-${pkgver}.tar.gz"::"https://github.com/mbr/${_name}/archive/${pkgver}.tar.gz")
-sha512sums=('e82e9172ec0d4cd77ea9aa93e999aa57785d0c5d2ec3e221d97b63c63e04dd90ace08bf1951a6a5ada43247af24248e5c72549fa84aa9261f72b236e15944d8f')
+sha512sums=('accc8dd77fc267f8236fca807a6fe0e3772736929a7198139a6d3bc0311ce7ffb17f8a64b7c64c6641e9fc9c6c145bc756783fec59c39d366e905159c93c19fa')
 
 build(){
   cd "${srcdir}/${_name}-${pkgver}"

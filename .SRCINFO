@@ -1,14 +1,14 @@
 pkgbase = python-simplekv
 	pkgdesc = A simple key-value store for binary data
-	pkgver = 0.14.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/mbr/simplekv
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = simplekv-0.14.0.tar.gz::https://github.com/mbr/simplekv/archive/0.14.0.tar.gz
-	sha512sums = e82e9172ec0d4cd77ea9aa93e999aa57785d0c5d2ec3e221d97b63c63e04dd90ace08bf1951a6a5ada43247af24248e5c72549fa84aa9261f72b236e15944d8f
+	source = simplekv-0.14.1.tar.gz::https://github.com/mbr/simplekv/archive/0.14.1.tar.gz
+	sha512sums = accc8dd77fc267f8236fca807a6fe0e3772736929a7198139a6d3bc0311ce7ffb17f8a64b7c64c6641e9fc9c6c145bc756783fec59c39d366e905159c93c19fa
 
 pkgname = python-simplekv
 
