@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mame-git
-pkgver=0.219.r0.g221f0064426
+pkgver=0.220.r0.gc5c5723b9d5
 pkgrel=1
 pkgdesc='A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support (git version)'
 url='https://www.mamedev.org/'
@@ -50,8 +50,8 @@ package() {
     # binaries
     install -D -m755 mame64 "${pkgdir}/usr/lib/mame/mame"
     local _bin
-    for _bin in castool chdman imgtool jedutil nltool nlwav pngcmp regrep romcmp src2html \
-                split srcclean ldverify ldresample
+    for _bin in castool chdman floptool imgtool jedutil ldresample ldverify nltool \
+                nlwav pngcmp regrep romcmp split srcclean testkeys unidasm
     do
         install -D -m755 "$_bin" -t   "${pkgdir}/usr/lib/mame"
         ln -s "/usr/lib/mame/${_bin}" "${pkgdir}/usr/bin/mame-${_bin}"
