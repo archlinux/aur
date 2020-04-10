@@ -1,6 +1,6 @@
 pkgbase = sonnet-git
 	pkgdesc = Spelling framework for Qt5
-	pkgver = r470.8f98ba4
+	pkgver = r524.2ce07be
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/sonnet
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = sonnet-git
 	optdepends = hspell: spell checking for Hebrew
 	provides = sonnet
 	conflicts = sonnet
-	source = git://anongit.kde.org/sonnet.git
+	source = git://anongit.kde.org/sonnet.git#commit=2ce07be5dff339f6f3e43ebd72b1d94792bb17f7
 	md5sums = SKIP
 
 pkgname = sonnet-git

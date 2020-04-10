@@ -1,7 +1,7 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonnet-git
-pkgver=r470.8f98ba4
+pkgver=r524.2ce07be
 pkgrel=1
 pkgdesc='Spelling framework for Qt5'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('hunspell: spell checking via hunspell' 'aspell: spell checking via 
 groups=('kf5')
 conflicts=('sonnet')
 provides=('sonnet')
-source=('git://anongit.kde.org/sonnet.git')
+source=('git://anongit.kde.org/sonnet.git#commit=2ce07be5dff339f6f3e43ebd72b1d94792bb17f7')
 md5sums=('SKIP')
 
 pkgver() {
