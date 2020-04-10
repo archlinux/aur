@@ -1,33 +1,43 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: wenLiangcan <boxeed at gmail dot com>
 # Contributor: Taylor Venable <taylor@metasyntax.net>
-
-pkgname="ocaml-utop"
-pkgver=2.2.0
-pkgrel=1
-pkgdesc='A toplevel for OCaml that supports completion, colors, and parenthesis matching'
-arch=('i686' 'x86_64')
-url='https://github.com/diml/utop'
+_projectname='utop'
+pkgname="ocaml-$_projectname"
+pkgver='2.4.3'
+pkgrel='1'
+pkgdesc='Universal toplevel for OCaml'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/ocaml-community/$_projectname"
 license=('BSD')
-depends=('ocaml' 'ocaml-findlib' 'ocaml-lambda-term' 'ocaml-lwt' 'ocaml-camomile' 'ocaml-react')
-makedepends=('dune' 'cppo')
+depends=('ocaml>=4.03.0' 'ocaml-camomile' 'ocaml-findlib>=1.7.2' 'ocaml-lambda-term>=2.0.0' 'ocaml-lwt' 'ocaml-react>=1.0.0')
+makedepends=('cppo>=1.1.2' 'dune>=1.0.0')
 options=('!strip')
-source=("https://github.com/diml/utop/releases/download/${pkgver}/utop-${pkgver}.tbz")
-sha512sums=('edacbd475c452de08e8d7c1697d0b624acc2f4854c200853664e1818ab9f9c26a3edc1c4d0a3b39bfc6f6be31440de6d45db8d342868a61fe36c4cbe4c7b5dab')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('3c882347d4673a20a524101cfdd724c3652dfc9a59598f7d3ef8cb2881bc1784')
 
-build() {
-  cd "${srcdir}/utop-${pkgver}"
+_sourcedirectory="$_projectname-$pkgver"
 
-  jbuilder build
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+	sed -i "s/%%VERSION%%/$pkgver/g" 'src/lib/uTop.ml'
 }
 
+build() {
+	cd "$srcdir/$_sourcedirectory/"
+	dune build -p "$_projectname" --verbose
+}
 
 package() {
-  cd "${srcdir}/utop-${pkgver}"
+	cd "$srcdir/$_sourcedirectory/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
 
-  install -dm755 "${pkgdir}$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
-  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
-  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
-  mv "${pkgdir}/usr/man" "${pkgdir}/usr/share/"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
+	rm -r "$pkgdir/usr/doc/"
+
+	mv "$pkgdir/usr/man/" "$pkgdir/usr/share/man/"
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
