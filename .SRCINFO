@@ -1,0 +1,16 @@
+pkgbase = kdchart
+	pkgdesc = A Qt tool for creating business and scientific charts.
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://www.kdab.com/kd-chart/
+	arch = x86_64
+	license = GPL2
+	license = custom:KDAB commercial license
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qt5-base
+	source = https://github.com/KDAB/kdchart/archive/kdchart-2.7.0.tar.gz
+	sha256sums = 22088fe2e7173f160a4c6cc0b1d50e785d61ff7bab56df851d64788c6f3ced0b
+
+pkgname = kdchart
+
