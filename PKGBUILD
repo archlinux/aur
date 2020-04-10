@@ -1,0 +1,68 @@
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
+
+# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
+
+pkgname=zfs-dkms-git-any
+pkgver=0.8.0.r709.g5a42ef04f
+pkgrel=1
+epoch=1
+pkgdesc="Kernel modules for the Zettabyte File System."
+arch=('any')
+url="https://zfsonlinux.org/"
+depends=("zfs-utils-git-any" "dkms")
+license=('CDDL')
+makedepends=('git')
+conflicts=("zfs-dkms-git" "zfs-dkms")
+provides=("zfs-dkms-git" "zfs-dkms")
+# ambiguous, provided for backwards compat, pls don't use
+provides+=('zfs')
+replaces=("zfs-dkms-git" "zfs-dkms")
+source=("git+https://github.com/zfsonlinux/zfs.git"
+        "0001-only-build-the-module-in-dkms.conf.patch")
+sha256sums=('SKIP'
+            '780e590383fb00389c5e02ac15709b7a476d9e07d3c4935ed9eb67c951a88409')
+b2sums=('SKIP'
+        '1fdae935043d979b9241f07f8baa25a9a0367c24c31c84a59dfe8d6b468a523d8f49b68da3c7fd3194db6638f9d7bef046fc5e2669ce25d73c65009c16bf6c50')
+
+pkgver() {
+    cd "${srcdir}"/zfs
+
+    git describe --long | sed 's/^zfs-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "${srcdir}"/zfs
+
+    patch -p1 -i ../0001-only-build-the-module-in-dkms.conf.patch
+
+    # remove unneeded sections from module build
+    sed -ri "/AC_CONFIG_FILES/,/]\)/{
+/AC_CONFIG_FILES/n
+/]\)/n
+/^\s*(module\/.*)?(zfs.release|Makefile)/!d
+}" configure.ac
+
+    autoreconf -fi
+}
+
+build() {
+    cd "${srcdir}"/zfs
+
+    ./scripts/dkms.mkconf -n zfs -v ${pkgver} -f dkms.conf
+    # update metadata
+    ./scripts/make_gitrev.sh
+    _meta_release=${pkgver#*.r}
+    sed -i -e "s/Release:[[:print:]]*/Release:      ${_meta_release/./_}/" META
+}
+
+package() {
+
+    cd "${srcdir}"/zfs
+
+    dkmsdir="${pkgdir}/usr/src/zfs-${pkgver}"
+    install -d "${dkmsdir}"/{config,scripts}
+    cp -a configure dkms.conf Makefile.in META zfs_config.h.in zfs.release.in include/ module/ "${dkmsdir}"/
+    cp config/config.* config/missing config/*sh "${dkmsdir}"/config/
+    cp scripts/enum-extract.pl scripts/dkms.postbuild "${dkmsdir}"/scripts/
+}
