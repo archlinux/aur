@@ -3,7 +3,7 @@
 
 pkgname=hollywood
 pkgver=1.21
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Fill your console with Hollywood melodrama technobabble."
 
@@ -34,7 +34,7 @@ depends=(
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/trunk/${pkgver}/+download/${pkgname}_${pkgver}.orig.tar.gz"
-  "license.txt::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt"
+  "license.txt"
 )
 
 md5sums=(
