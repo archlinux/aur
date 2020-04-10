@@ -1,5 +1,6 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 # Contributor: renek <aur@spaceshore.net>
+# Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
 pkgname=python-aioxmpp
 _name=${pkgname#python-}
@@ -33,9 +34,14 @@ check() {
   python -m nose
 }
 
+build() {
+  cd "aioxmpp-$pkgver"
+  python setup.py build
+}
+
 package() {
   cd "aioxmpp-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --skip-build --root="$pkgdir/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
