@@ -5,6 +5,7 @@ pkgbase = automatic
 	url = http://forum.dsmg600.info/viewtopic.php?id=2291
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = GPLv2
 	depends = curl
 	depends = libxml2
