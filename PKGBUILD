@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Tremesaygues <killruana@slaanesh.org>
 pkgname=qrouter-git
 pkgver=1.4.r257.3c74097
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc='Multi-level, over-the-cell maze router'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ provides=('qrouter')
 conflicts=('qrouter')
 url='http://opencircuitdesign.com/qrouter/'
 license=('GPL')
-depends=('tk')
+depends=('tk' 'libxt')
 makedepends=('git')
 source=("git://opencircuitdesign.com/qrouter#branch=qrouter-1.4")
 sha512sums=('SKIP')
