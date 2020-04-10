@@ -7,7 +7,7 @@
 
 pkgname=freefilesync
 pkgver=10.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="https://freefilesync.org"
@@ -19,6 +19,7 @@ source=(
 	revert_xdg_config_path.patch
 	revert_bulk_append.patch
 	revert_linkflags.patch
+	revert_ssl_error_handling.patch
 	FreeFileSync.desktop
 	RealTimeSync.desktop
 	dlagent
@@ -28,6 +29,7 @@ sha256sums=('80a8b5fffef25ffe697d5d74a6d8851f39bcd8b64e3aad5af021aee929359c79'
             '0f9a9a6b2c3c460bbde7425bd62273c925259db1cc9dc18c6013aae99fb15cd8'
             '92ba719d98af91a67325387ec32fae12c9f1eb0ace054b9db34ae6b6b6d9381c'
             'd3dedc100163ce00ae5889a6039a1fff11ae32b676ae5e83ae9182509f80638d'
+            'b195dfd114e6222ba8e8fd0d9899a40a8126ad8e47238b646482913e9a6edc17'
             '590d87707240529ca893199f852143f5d7c7266cb050e37e615900b013ac3d51'
             '82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830'
             '1649e7ea66235c6f82daf9beb6b61b7765df54e9ef70f7f6fc1283f5c2b1e54a')
@@ -48,6 +50,9 @@ prepare() {
 
 # add LINKFLAGS that were removed but that we still need in our case
     patch -p1 -i revert_linkflags.patch
+
+# revert use of openssl constant that disappeared in openssl 1.1.1f
+    patch -p1 -i revert_ssl_error_handling.patch
 
 # inlining of constants not present in libssh2's distributed headers
     sed -i 's/MAX_SFTP_READ_SIZE/30000/g' FreeFileSync/Source/afs/sftp.cpp

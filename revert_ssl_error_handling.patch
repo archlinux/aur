@@ -1,0 +1,20 @@
+diff -r -u FreeFileSync_10.22_Source/zen/open_ssl.cpp b/zen/open_ssl.cpp
+--- a/zen/open_ssl.cpp	2020-03-18 15:55:28.000000000 +0100
++++ b/zen/open_ssl.cpp	2020-04-10 18:02:56.253798717 +0200
+@@ -566,14 +566,8 @@
+         if (rv != 1)
+         {
+             const int sslError = ::SSL_get_error(ssl_, rv);
+-            if (sslError == SSL_ERROR_ZERO_RETURN)
+-                return 0; //EOF + close_notify alert
+-
+-            warn_static("find a better solution for SSL_read_ex + EOF")
+-            //"sslError == SSL_ERROR_SYSCALL && ::ERR_peek_last_error() == 0" => obsolete as of OpenSSL 1.1.1e
+-            //https://github.com/openssl/openssl/issues/10880#issuecomment-575746226
+-            const auto ec = ::ERR_peek_last_error();
+-            if (sslError == SSL_ERROR_SSL && ERR_GET_REASON(ec) == SSL_R_UNEXPECTED_EOF_WHILE_READING) //EOF: only expected for HTTP/1.0
++            if (sslError == SSL_ERROR_ZERO_RETURN || //EOF + close_notify alert
++                (sslError == SSL_ERROR_SYSCALL && ::ERR_peek_last_error() == 0)) //EOF: only expected for HTTP/1.0
+                 return 0;
+ 
+             throw SysError(formatLastOpenSSLError(L"SSL_read_ex") + L' ' + formatSslErrorCode(sslError));
