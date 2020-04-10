@@ -1,9 +1,10 @@
 # Maintainer:  Dave <orangechannel@pm.me>
+# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=acsuite
 pkgname=vapoursynth-tools-${_plug}-git
-pkgver=v3.0.0.0.gc14204b
-pkgrel=2
+pkgver=3.0.1.r0.g89e7ba2
+pkgrel=1
 pkgdesc="Tool for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/OrangeChannel/acsuite'
@@ -25,7 +26,7 @@ _site_packages="$(python -c "from distutils.sysconfig import get_python_lib; pri
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  git describe --long | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package(){
@@ -35,5 +36,4 @@ package(){
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
-  install -Dm644 tests.py "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/tests.py"
 }
