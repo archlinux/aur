@@ -3,7 +3,7 @@
 pkgname=python-steamcontroller-git
 _pkgname=steamcontroller
 pkgver=1.2.r13.g80928ce
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone userland driver for the Steam controller"
 arch=('i686' 'x86_64')
 url="https://github.com/ynsta/${_pkgname}"
@@ -35,4 +35,5 @@ package() {
 	--prefix="/usr" \
 	--compile -O1
 	install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 res/sc-xbox.service "${pkgdir}/usr/lib/systemd/system/sc-xbox.service"
 }

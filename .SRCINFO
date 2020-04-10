@@ -1,7 +1,7 @@
 pkgbase = python-steamcontroller-git
 	pkgdesc = Standalone userland driver for the Steam controller
 	pkgver = 1.2.r13.g80928ce
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ynsta/steamcontroller
 	changelog = changelog.txt
 	arch = i686
