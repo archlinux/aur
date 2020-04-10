@@ -1,6 +1,6 @@
 pkgbase = lib32-imagemagick
 	pkgdesc = An image viewing/manipulation program (32-bit)
-	pkgver = 7.0.9.26
+	pkgver = 7.0.10.6
 	pkgrel = 1
 	url = https://www.imagemagick.org/
 	arch = x86_64
@@ -24,11 +24,11 @@ pkgbase = lib32-imagemagick
 	depends = lib32-openexr
 	depends = lib32-openjpeg2
 	depends = imagemagick
-	source = https://imagemagick.org/download/releases/ImageMagick-7.0.9-26.tar.xz
-	source = https://imagemagick.org/download/releases/ImageMagick-7.0.9-26.tar.xz.asc
+	source = https://imagemagick.org/download/releases/ImageMagick-7.0.10-6.tar.xz
+	source = https://imagemagick.org/download/releases/ImageMagick-7.0.10-6.tar.xz.asc
 	source = arch-fonts.diff
 	validpgpkeys = D8272EF51DA223E4D05B466989AB63D48277377A
-	sha256sums = a360449eb2a0bf87de880e6ba6a2b4a2e242746df9e2b10975b86e580703089e
+	sha256sums = 30ac7ce423cef9fb7baf0aefc734ae7b2593b9499c3782057ab73b7a360a0ac5
 	sha256sums = SKIP
 	sha256sums = a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73
 
