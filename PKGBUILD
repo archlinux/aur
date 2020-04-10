@@ -15,7 +15,7 @@ depends=(dbus-glib desktop-file-utils gtk2 hicolor-icon-theme libnotify
 makedepends=(intltool)
 optdepends=('gobject-introspection-runtime: proxy detection in Gnome'
             'kdebindings-python: proxy detection in KDE'
-            'python-mpd: to interface with MPD')
+            'python-mpd2: to interface with MPD')
 install=$provides.install
 source=("${provides}::git+git://github.com/osdlyrics/osdlyrics.git#branch=master")
 md5sums=(SKIP)
