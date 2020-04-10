@@ -40,7 +40,7 @@ diff --git a/drivers/gpu/drm/i915/display/intel_display.c b/drivers/gpu/drm/i915
 index b670239a293b..edb11715de56 100644
 --- a/drivers/gpu/drm/i915/display/intel_display.c
 +++ b/drivers/gpu/drm/i915/display/intel_display.c
-@@ -17719,6 +17719,7 @@ static void intel_hpd_poll_fini(struct drm_i915_private *i915)
+@@ -18469,6 +18469,7 @@ static void intel_hpd_poll_fini(struct drm_i915_private *i915)
  
  void intel_modeset_driver_remove(struct drm_i915_private *i915)
  {
@@ -115,7 +115,7 @@ diff --git a/drivers/gpu/drm/i915/i915_drv.c b/drivers/gpu/drm/i915/i915_drv.c
 index 3c512c571e60..742e138e894f 100644
 --- a/drivers/gpu/drm/i915/i915_drv.c
 +++ b/drivers/gpu/drm/i915/i915_drv.c
-@@ -287,9 +287,11 @@ static int i915_driver_modeset_probe(struct drm_i915_private *i915)
+@@ -289,9 +289,11 @@ static int i915_driver_modeset_probe(struct drm_i915_private *i915)
  
  	intel_bios_init(i915);
  
@@ -130,7 +130,7 @@ index 3c512c571e60..742e138e894f 100644
  
  	intel_register_dsm_handler();
  
-@@ -324,6 +326,12 @@ static int i915_driver_modeset_probe(struct drm_i915_private *i915)
+@@ -326,6 +328,12 @@ static int i915_driver_modeset_probe(struct drm_i915_private *i915)
  	if (ret)
  		goto cleanup_gem;
  
@@ -173,7 +173,7 @@ diff --git a/drivers/gpu/drm/i915/display/intel_display.h b/drivers/gpu/drm/i915
 index f417e0948001..6e865b86db09 100644
 --- a/drivers/gpu/drm/i915/display/intel_display.h
 +++ b/drivers/gpu/drm/i915/display/intel_display.h
-@@ -477,6 +477,7 @@ int vlv_get_cck_clock_hpll(struct drm_i915_private *dev_priv,
+@@ -497,6 +497,7 @@ int vlv_get_cck_clock_hpll(struct drm_i915_private *dev_priv,
  			   const char *name, u32 reg);
  void lpt_disable_pch_transcoder(struct drm_i915_private *dev_priv);
  void lpt_disable_iclkip(struct drm_i915_private *dev_priv);

@@ -1,7 +1,6 @@
 *
+!*.patch
 !.gitignore
 !.SRCINFO
-!add-acs-overrides.patch
 !config
-!i915-vga-arbiter.patch
 !PKGBUILD

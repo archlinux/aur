@@ -1,7 +1,7 @@
 # Maintainer: Shayne Hartford<shayneehartford@gmail.com>
 
 pkgbase=linux-zen-vfio
-pkgver=5.5.13.zen1
+pkgver=5.6.3.zen1
 pkgrel=1
 pkgdesc='Linux ZEN'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -20,6 +20,7 @@ source=(
   config         # the main kernel config file
   add-acs-overrides.patch # patch for acs overrides
   i915-vga-arbiter.patch  # patch for i915 VGA arbiter
+  sphinx-workaround.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -27,9 +28,10 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '775e62bef116136f7b258ecc32ad1071dc2c6b161176d78092e29f180136dac9'
-            '14a660a9d445ed3d1abde0338e92d7f23d94d850c3fc21634c45147d00e1ca61'
-            'fb0d88c416328639db0a870d31c0e2c6cb7b5428f3f3fe89be37d09d13f685c0')
+            '1ec82ca781239be0657384dbd2cce6c75910508639720adec8f05e9909b7d49b'
+            '4938b7121862e54c614668d1f662fcdd37e0c4f11cf386a425f9d4c3849d00ef'
+            '094a29902b52cec2f0840219225a1458ca925f875524ecb7827da62a33c74ccf'
+            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -71,6 +73,8 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd $_srcname
   local kernver="$(<version)"
@@ -89,9 +93,6 @@ _package() {
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -167,9 +168,6 @@ _package-headers() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
@@ -189,9 +187,6 @@ _package-docs() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
