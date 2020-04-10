@@ -1,20 +1,22 @@
 pkgbase = ocaml-zed
-	pkgdesc = An abstract engine for text editing
-	pkgver = 2.0.5
+	pkgdesc = Abstract engine for text edition in OCaml
+	pkgver = 2.0.7
 	pkgrel = 1
-	url = https://github.com/diml/zed
-	arch = i686
+	url = https://github.com/ocaml-community/zed
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = BSD
-	makedepends = dune
-	depends = glibc
-	depends = ocaml
-	depends = ocaml-camomile
+	makedepends = dune>=1.1.0
+	depends = ocaml>=4.02.3
+	depends = ocaml-camomile>=1.0.1
 	depends = ocaml-react
-	depends = ocaml-charinfo_width
+	depends = ocaml-charinfo_width>=1.1.0
 	options = !strip
-	source = zed-2.0.5.tar.gz::https://github.com/diml/zed/archive/2.0.5.tar.gz
-	sha512sums = 64b47b80dcea4d8016ce0203684511f0be9ac3adb8393e0755d847483690c6a56b2147ca217e9419de715a8513a59b821767969ceab418f11bcf30273b62724b
+	source = ocaml-zed-2.0.7-1.tar.gz::https://github.com/ocaml-community/zed/archive/2.0.7.tar.gz
+	sha256sums = 21f333604c54ac9ab324e3174218f5a1aaa4bb391abe1b5544a51f292e147929
 
 pkgname = ocaml-zed
-
