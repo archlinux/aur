@@ -4,7 +4,7 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.21.r29070.28b894cb8d
+pkgver=2.21.r29133.cf4876d399
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ optdepends=('extractpdfmark: for reducing the size of pdf output significantly'
 	    'tk: for the gui')
 provides=('lilypond')
 conflicts=('lilypond')
-source=(git://git.savannah.gnu.org/lilypond.git#commit=28b894cb8d121eb7f531e193d1736b99fe593edf)
+source=(git://git.savannah.gnu.org/lilypond.git)
 md5sums=('SKIP')
 options=('!makeflags')
 
