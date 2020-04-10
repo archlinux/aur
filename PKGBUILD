@@ -5,7 +5,7 @@ pkgver=2.3.1
 pkgrel=1
 pkgdesc="A simple command line journal application that stores your journal in a plain text file"
 arch=('any')
-url="https://maebert.github.io/jrnl"
+url="https://jrnl.sh"
 license=('MIT')
 depends=('python-pyxdg>=0.26'
          'python-pyxdg<1.0'
