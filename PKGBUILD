@@ -6,7 +6,7 @@
 pkgname=bigloo-devel
 #_pkgver=4.3h-alpha10Mar20
 pkgver=4.3h
-pkgrel=2
+pkgrel=4
 epoch=1
 pkgdesc="Fast scheme compiler"
 arch=('x86_64')
@@ -17,11 +17,10 @@ makedepends=('java-environment' 'emacs' 'zip' 'sqlite' 'alsa-lib' 'flac' 'avahi'
 optdepends=('java-environment' 'emacs' 'zip' 'sqlite' 'alsa-lib' 'flac' 'avahi')
 options=('!makeflags' 'staticlibs')
 conflicts=('bigloo')
-provides=('bigloo')
+provides=("bigloo=$pkgver")
 source=(ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${pkgname%-devel}-unstable.tar.gz bigloo-emacs.patch)
-sha256sums=('8c0b86eaad61b7916930695e3d03ad914ebafbac84992dfff4aa10046a3d9ada'
-            '80356c27b58a302775f75e848a89ab2d588796a548f4ce7a20df048e215deab0')
-
+md5sums=('c48f7c29c1d204b5effb4256a79f226e'
+         '35b417dfd1928c8cacca3e3931cc4c3a')
 elisp_dir=/usr/share/emacs/site-lisp/bigloo
 
 build() {
