@@ -1,6 +1,6 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=ksd
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='kubernetes secret decoder'
 arch=('x86_64' 'i686')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f6ad0468ce2ab6b79e709aa584fa7905ea0beba985484ed154c49036a869f81e')
+sha256sums=('90d1b0bc68de22b2acf7f24f53aaa6756cecb4122dd646949118c2d9bcd7eed0')
 
 build() {
   cd "${pkgname}-${pkgver}"
