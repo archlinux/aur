@@ -1,8 +1,8 @@
 pkgbase = tikzit-git
 	pkgdesc = Creation and modification of TeX diagrams written using the pgf/TikZ macro library - rewrite in QT and C++
-	pkgver = 2.1.4r2.g6c5d96d
+	pkgver = 2.1.4.r9.gf17f2a4
 	pkgrel = 1
-	epoch = 2
+	epoch = 3
 	url = https://tikzit.github.io/
 	arch = i686
 	arch = x86_64
