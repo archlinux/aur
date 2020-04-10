@@ -1,0 +1,26 @@
+pkgbase = xhip
+	pkgdesc = Xhip free software subtractive/hybrid synthesizer plug-in
+	pkgver = 8.0.alpha.r1100
+	pkgrel = 1
+	url = http://xhip.net/synth/
+	arch = x86_64
+	arch = i686
+	groups = vst-plugins
+	license = custom
+	source = http://xhip.net/synth/releases/xhip_factory_bank.xhipbank
+	source = http://xhip.net/synth/releases/synth_drums_1e.xhipbank
+	source = http://xhip.net/synth/releases/xhip_8_user_manual.pdf
+	source = http://xhip.net/synth/releases/xhip_icon.7z
+	md5sums = 21157e98cfb900d552e231c22de6bf1e
+	md5sums = b0ade51c3c3b2ee27477e0408d8b489c
+	md5sums = d7d5f87fde2de9ffedc8171e9b846f6a
+	md5sums = 71b67e6859a32ee97c369b7167e672e7
+	source_x86_64 = http://xhip.net/synth/releases/xhip_8_linux_64bit_alpha_r1100.7z
+	source_x86_64 = http://xhip.net/synth/releases/xhip_8_linux_32bit_alpha_r1100.7z
+	md5sums_x86_64 = 01ea40a2219fe85ce8b7109e64862000
+	md5sums_x86_64 = ae332480b70c4d78c360f393cbf5c77d
+	source_i686 = http://xhip.net/synth/releases/xhip_8_linux_32bit_alpha_r1100.7z
+	md5sums_i686 = ae332480b70c4d78c360f393cbf5c77d
+
+pkgname = xhip
+
