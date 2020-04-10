@@ -1,16 +1,16 @@
 # Maintainer: Hugo Parente Lima <hugo.pl@gmail.com>
 
 pkgname=queryit
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A very basic setupless terminal based SQL query"
 arch=("x86_64")
 url="https://github.com/hugopl/queryit"
 license=("MIT")
-depends=("termbox-git" "sqlite>=3.30.1" "gc" "libevent" "pcre" "libyaml>=0.2.0" "openssl>=1.1.1")
-makedepends=("crystal>=0.32.1" "shards>=0.9.0" "make")
+depends=("sqlite>=3.30.1" "gc" "libevent" "pcre" "libyaml>=0.2.0" "openssl>=1.1.1")
+makedepends=("crystal>=0.34.0" "shards>=0.9.0" "make" "python")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hugopl/queryit/archive/v${pkgver}.tar.gz")
-sha256sums=('3f59d0b6483bbd5301c70c5cc55d8a87073ac26f444a75c5605c92c31e06cf9e')
+sha256sums=('0bb65213ccc9107fa6e882442a080d503f5c1e298d5e35828471128ef2fac4da')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
