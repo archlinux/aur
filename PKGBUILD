@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=chrome-token-signing
-pkgver=1.1.1.513
-pkgrel=2
+pkgver=1.1.2.517
+pkgrel=1
 epoch=1
 pkgdesc="Chrome and Firefox extension for signing with your eID on the web"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('LGPL2.1')
 depends=('qt5-base' 'pcsclite' 'ccid')
 makedepends=('lsb-release')
 source=("https://installer.id.ee/media/ubuntu/pool/main/c/$pkgname/${pkgname}_$pkgver-1604.tar.xz")
-sha256sums=('d545cbf5367a3d3bd638a39aa7b2258ec66cc5f53b25e45f4242133882e25564')
+sha256sums=('5d012c8ee0b6ccb5da6b7b125d2f921cb047cfdc3bad65fcc38ff6de387a4a91')
 
 build() {
     cd "$srcdir/$pkgname/"
