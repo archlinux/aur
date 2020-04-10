@@ -1,0 +1,13 @@
+diff --git Source/Core/Lua/LuaEventListener.cpp Source/Core/Lua/LuaEventListener.cpp
+index 23e74e5..ab91b52 100644
+--- Source/Core/Lua/LuaEventListener.cpp
++++ Source/Core/Lua/LuaEventListener.cpp
+@@ -79,7 +79,7 @@ LuaEventListener::LuaEventListener(lua_State* L, int narg)
+ 
+ LuaEventListener::~LuaEventListener()
+ {
+-	lua_unref(Interpreter::GetLuaState(), luaFuncRef);
++    luaL_unref(Interpreter::GetLuaState(), LUA_REGISTRYINDEX, luaFuncRef);
+ }
+ 
+ /// Process the incoming Event

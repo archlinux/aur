@@ -1,0 +1,329 @@
+diff --git Build/CMakeLists.txt Build/CMakeLists.txt
+index 4f5198b..5eaf42a 100644
+--- Build/CMakeLists.txt
++++ Build/CMakeLists.txt
+@@ -206,8 +206,8 @@ mark_as_advanced(FREETYPE_INCLUDE_DIRS FREETYPE_LIBRARY FREETYPE_LINK_DIRECTORIE
+ 
+ # Boost and Python
+ if(BUILD_PYTHON_BINDINGS)
+-    find_package(PythonInterp 2 REQUIRED)
+-    find_package(PythonLibs 2 REQUIRED)
++    find_package(PythonInterp 3 REQUIRED)
++    find_package(PythonLibs 3 REQUIRED)
+     execute_process(
+         COMMAND ${PYTHON_EXECUTABLE} -c "from distutils import sysconfig; print(sysconfig.get_python_lib(1,0,prefix=''))"
+         OUTPUT_VARIABLE PYTHON_INSTDIR
+diff --git Include/Rocket/Core/Python/ElementInstancer.h Include/Rocket/Core/Python/ElementInstancer.h
+index f94d56b..de0246f 100644
+--- Include/Rocket/Core/Python/ElementInstancer.h
++++ Include/Rocket/Core/Python/ElementInstancer.h
+@@ -73,7 +73,7 @@ class ElementInstancer : public Rocket::Core::ElementInstancer
+ 
+ 		// Build the arguments
+ 		PyObject* args = PyTuple_New(1);
+-		PyTuple_SetItem(args, 0, PyString_FromString(tag.CString()));
++		PyTuple_SetItem(args, 0, PyUnicode_FromString(tag.CString()));
+ 
+ 		PyObject* instance = PyObject_CallObject(class_definition, args);
+ 		Py_DECREF(args);
+diff --git Include/Rocket/Core/Python/NameIndexInterface.h Include/Rocket/Core/Python/NameIndexInterface.h
+index 5080cfc..7dca181 100644
+--- Include/Rocket/Core/Python/NameIndexInterface.h
++++ Include/Rocket/Core/Python/NameIndexInterface.h
+@@ -80,13 +80,13 @@ class NameIndexInterface : public python::def_visitor< NameIndexInterface< HostT
+ 		static LengthAccessor length_accessor;
+ 		static IndexAccessor index_accessor;
+ 
+-		if (PyString_Check(key.ptr()))
++		if (PyUnicode_Check(key.ptr()))
+ 		{
+-			return Rocket::Core::Python::Utilities::MakeObject(name_accessor(host, PyString_AsString(key.ptr())));
++			return Rocket::Core::Python::Utilities::MakeObject(name_accessor(host, PyUnicode_AsUTF8(key.ptr())));
+ 		}
+-		else if (PyInt_Check(key.ptr()))
++		else if (PyLong_Check(key.ptr()))
+ 		{
+-			int index = PyInt_AsLong(key.ptr());
++			int index = PyLong_AsLong(key.ptr());
+ 
+ 			// Support indexing from both ends.
+ 			if (index < 0)
+diff --git Source/Controls/Python/DataFormatterWrapper.cpp Source/Controls/Python/DataFormatterWrapper.cpp
+index 53b62b8..1e09b83 100644
+--- Source/Controls/Python/DataFormatterWrapper.cpp
++++ Source/Controls/Python/DataFormatterWrapper.cpp
+@@ -52,7 +52,7 @@ void DataFormatterWrapper::FormatData(Rocket::Core::String& formatted_data, cons
+ 	if (!callable)
+ 	{
+ 		PyObject* name = PyObject_GetAttrString(self, "__name__");
+-		Rocket::Core::Log::Message(Rocket::Core::Log::LT_WARNING, "Function \"FormatData\" not found on python data formatter %s.", PyString_AsString(name));
++		Rocket::Core::Log::Message(Rocket::Core::Log::LT_WARNING, "Function \"FormatData\" not found on python data formatter %s.", PyUnicode_AsUTF8(name));
+ 		Py_DECREF(name);
+ 		return;
+ 	}
+@@ -62,9 +62,9 @@ void DataFormatterWrapper::FormatData(Rocket::Core::String& formatted_data, cons
+ 	Py_DECREF(callable);
+ 
+ 	// If it's a string, then just return it.
+-	if (result && PyString_Check(result))
++	if (result && PyUnicode_Check(result))
+ 	{
+-		formatted_data = PyString_AsString(result);
++		formatted_data = PyUnicode_AsUTF8(result);
+ 	}
+ 	else
+ 	{
+diff --git Source/Controls/Python/DataSourceWrapper.cpp Source/Controls/Python/DataSourceWrapper.cpp
+index 58c3f3b..3f29e81 100644
+--- Source/Controls/Python/DataSourceWrapper.cpp
++++ Source/Controls/Python/DataSourceWrapper.cpp
+@@ -59,10 +59,10 @@ static Core::String GetPythonClassName(PyObject* object)
+ 	PyObject* py_class_name = PyObject_GetAttrString(object, "__name__");
+ 	if (py_class_name != NULL)
+ 	{
+-		const char* class_name = PyString_AsString(py_class_name);
++		const char* class_name = PyUnicode_AsUTF8(py_class_name);
+ 
+ 		PyObject* py_module_name = PyObject_GetAttrString(object, "__module__");
+-		const char* module_name = PyString_AsString(py_module_name);
++		const char* module_name = PyUnicode_AsUTF8(py_module_name);
+ 
+ 		full_name.FormatString(128, "%s.%s", module_name, class_name);
+ 
+@@ -133,13 +133,13 @@ void DataSourceWrapper::GetRow(Core::StringList& row, const Core::String& table,
+ 			Core::String entry;
+ 
+ 			PyObject* entry_object = PyList_GetItem(result, i);
+-			if (PyString_Check(entry_object))
++			if (PyUnicode_Check(entry_object))
+ 			{
+-				entry = PyString_AS_STRING(entry_object);
++				entry = PyUnicode_AsUTF8(entry_object);
+ 			}
+-			else if (PyInt_Check(entry_object))
++			else if (PyLong_Check(entry_object))
+ 			{
+-				int entry_int = (int)PyInt_AS_LONG(entry_object);
++				int entry_int = (int)PyLong_AsLong(entry_object);
+ 				Core::TypeConverter< int, Core::String >::Convert(entry_int, entry);
+ 			}
+ 			else if (PyFloat_Check(entry_object))
+@@ -199,9 +199,9 @@ int DataSourceWrapper::GetNumRows(const Core::String& table)
+ 	PyObject* result = PyObject_CallObject(callable, python::make_tuple(table.CString()).ptr());
+ 	Py_DECREF(callable);
+ 
+-	if (result && PyInt_Check(result))
++	if (result && PyLong_Check(result))
+ 	{
+-		num_rows = PyInt_AsLong(result);
++		num_rows = PyLong_AsLong(result);
+ 	}
+ 	else
+ 	{
+diff --git Source/Core/Python/ContextInstancer.cpp Source/Core/Python/ContextInstancer.cpp
+index 2b847b3..7181280 100644
+--- Source/Core/Python/ContextInstancer.cpp
++++ Source/Core/Python/ContextInstancer.cpp
+@@ -49,7 +49,7 @@ Context* ContextInstancer::InstanceContext(const Rocket::Core::String& name)
+ {
+ 	// Put the arguments into a tuple.
+ 	PyObject* args = PyTuple_New(1);	
+-	PyTuple_SetItem(args, 0, PyString_FromString(name.CString()));
++	PyTuple_SetItem(args, 0, PyUnicode_FromString(name.CString()));
+ 
+ 	// Instance the context.
+ 	PyObject* instance = PyObject_CallObject(instancer, args);
+diff --git Source/Core/Python/Converters.cpp Source/Core/Python/Converters.cpp
+index dfed048..ed62164 100644
+--- Source/Core/Python/Converters.cpp
++++ Source/Core/Python/Converters.cpp
+@@ -71,19 +71,19 @@ struct VariantConverter
+ 		{
+ 			case Variant::STRING:
+ 			{
+-				object = PyString_FromString(variant.Get< String >().CString());
++				object = PyUnicode_FromString(variant.Get< String >().CString());
+ 			}
+ 			break;
+ 
+ 			case Variant::INT:
+ 			{
+-				object = PyInt_FromLong(variant.Get< int >());
++				object = PyLong_FromLong(variant.Get< int >());
+ 			}
+ 			break;
+ 
+ 			case Variant::WORD:
+ 			{
+-				object = PyInt_FromLong(variant.Get< word >());
++				object = PyLong_FromLong(variant.Get< word >());
+ 			}
+ 			break;
+ 
+@@ -121,7 +121,7 @@ struct VariantConverter
+ 
+ 	static void* Convertible(PyObject* object)
+ 	{
+-		if (!PyString_Check(object) && !PyInt_Check(object) && !PyFloat_Check(object))
++		if (!PyUnicode_Check(object) && !PyLong_Check(object) && !PyFloat_Check(object))
+ 			return 0;
+ 		return object;
+ 	}
+@@ -131,13 +131,13 @@ struct VariantConverter
+ 		void* storage = ((boost::python::converter::rvalue_from_python_storage< Variant >*)data)->storage.bytes;
+ 		Variant* variant = new (storage) Variant();
+ 
+-		if (PyString_Check(object))
++		if (PyUnicode_Check(object))
+ 		{
+-			variant->Set(String(PyString_AsString(object)));
++			variant->Set(String(PyUnicode_AsUTF8(object)));
+ 		}
+-		else if (PyInt_Check(object))
++		else if (PyLong_Check(object))
+ 		{
+-			variant->Set((int)PyInt_AsLong(object));
++			variant->Set((int)PyLong_AsLong(object));
+ 		}
+ 		else if (PyFloat_Check(object))
+ 		{
+@@ -170,14 +170,14 @@ struct StringConverter
+ 
+ 	static void* Convertible(PyObject* obj_ptr)
+ 	{
+-		if (!PyString_Check(obj_ptr))
++		if (!PyUnicode_Check(obj_ptr))
+ 			return 0;
+ 		return obj_ptr;
+ 	}
+ 
+ 	static void Construct(PyObject* obj_ptr, boost::python::converter::rvalue_from_python_stage1_data* data)
+ 	{
+-		const char* value = PyString_AsString(obj_ptr);
++		const char* value = PyUnicode_AsUTF8(obj_ptr);
+ 		if (value == 0) 
+ 			boost::python::throw_error_already_set();
+ 		void* storage = ((boost::python::converter::rvalue_from_python_storage< String >*)data)->storage.bytes;
+diff --git Source/Core/Python/ElementInterface.cpp Source/Core/Python/ElementInterface.cpp
+index c3596d9..88a118a 100644
+--- Source/Core/Python/ElementInterface.cpp
++++ Source/Core/Python/ElementInterface.cpp
+@@ -207,7 +207,7 @@ void ElementInterface::DispatchEvent(Element* element, const char* event, const
+ 	for (int i = 0; i < num_keys; ++i)
+ 	{
+ 		PyObject* py_key = PyList_GetItem(keys, i);
+-		if (!PyString_Check(py_key))
++		if (!PyUnicode_Check(py_key))
+ 		{
+ 			Py_DECREF(keys);
+ 			PyErr_SetString(PyExc_KeyError, "Only string keys supported.");
+@@ -222,7 +222,7 @@ void ElementInterface::DispatchEvent(Element* element, const char* event, const
+ 			python::throw_error_already_set();
+ 		}
+ 
+-		const char* key = PyString_AsString(py_key);
++		const char* key = PyUnicode_AsUTF8(py_key);
+ 		ROCKET_parameters.Set(key, value);
+ 	}
+ 
+diff --git Source/Core/Python/EventInstancer.cpp Source/Core/Python/EventInstancer.cpp
+index 9823746..d257d20 100644
+--- Source/Core/Python/EventInstancer.cpp
++++ Source/Core/Python/EventInstancer.cpp
+@@ -60,7 +60,7 @@ Event* EventInstancer::InstanceEvent(Element* target, const Rocket::Core::String
+ 
+ 		// Put the arguments into a tuple
+ 		PyObject* args = PyTuple_New(3);
+-		PyTuple_SetItem(args, 0, PyString_FromString(name.CString()));
++		PyTuple_SetItem(args, 0, PyUnicode_FromString(name.CString()));
+ 		PyTuple_SetItem(args, 1, params.ptr());
+ 		PyTuple_SetItem(args, 2, PyBool_FromLong(interruptable));
+ 	
+diff --git Source/Core/Python/EventListener.cpp Source/Core/Python/EventListener.cpp
+index fa2713a..b227a77 100644
+--- Source/Core/Python/EventListener.cpp
++++ Source/Core/Python/EventListener.cpp
+@@ -77,10 +77,10 @@ EventListener::EventListener(PyObject* object)
+ 			PyErr_Clear();
+ 		}
+ 	}
+-	else if (PyString_Check(object))
++	else if (PyUnicode_Check(object))
+ 	{
+ 		// Its a string, we need to compile it
+-		source_code = PyString_AsString(object);
++		source_code = PyUnicode_AsUTF8(object);
+ 	}
+ 	else
+ 	{
+diff --git Source/Core/Python/Utilities.cpp Source/Core/Python/Utilities.cpp
+index 5598b22..f733490 100644
+--- Source/Core/Python/Utilities.cpp
++++ Source/Core/Python/Utilities.cpp
+@@ -101,14 +101,14 @@ bool Utilities::ConvertToVariant(Variant& variant, PyObject* object)
+ 		variant.Set((float) PyFloat_AsDouble(object));
+ 		return true;
+ 	}
+-	else if (PyInt_Check(object))
++	else if (PyLong_Check(object))
+ 	{
+-		variant.Set((int) PyInt_AsLong(object));
++		variant.Set((int) PyLong_AsLong(object));
+ 		return true;
+ 	}
+-	else if (PyString_Check(object))
++	else if (PyUnicode_Check(object))
+ 	{
+-		variant.Set(String(PyString_AsString(object)));
++		variant.Set(String(PyUnicode_AsUTF8(object)));
+ 		return true;
+ 	}
+ 
+diff --git a/Source/Controls/Python/DataSourceWrapper.cpp b/Source/Controls/Python/DataSourceWrapper.cpp
+index 3f29e81..cae7756 100644
+--- Source/Controls/Python/DataSourceWrapper.cpp
++++ Source/Controls/Python/DataSourceWrapper.cpp
+@@ -42,7 +42,7 @@ static Core::String GetPythonClassName(PyObject* object)
+ 	// Check if the object is a class; either a standard Python class or a Boost Python class metatype. If so, we can
+ 	// query the name of the class object directly; otherwise, it is an object that we have to query the class type
+ 	// from.
+-	bool is_class = PyClass_Check(object) ||
++	bool is_class = PyObject_IsInstance(object, (PyObject *)&PyType_Type) ||
+ 					object->ob_type == python::objects::class_metatype().get();
+ 	PyObject* py_class = NULL;
+ 	if (!is_class)
+diff --git a/Samples/pyinvaders/src/PythonInterface.cpp b/Samples/pyinvaders/src/PythonInterface.cpp
+index 64d8209..434ccff 100644
+--- Samples/pyinvaders/src/PythonInterface.cpp
++++ Samples/pyinvaders/src/PythonInterface.cpp
+@@ -31,6 +31,8 @@
+ #include "ElementGame.h"
+ #include "HighScores.h"
+ 
++#include <wchar.h>
++
+ void SubmitHighScore()
+ {
+ 	int score = GameDetails::GetScore();
+@@ -74,9 +76,9 @@ bool PythonInterface::Initialise(const char* path)
+ 	Py_Initialize();
+ 
+ 	// Setup the Python search path.
+-	const char* python_path = Py_GetPath();
+-	char buffer[1024];
+-	snprintf(buffer, 1024, "%s%s%s", path, PATH_SEPARATOR, python_path);
++	const wchar_t* python_path = Py_GetPath();
++	wchar_t buffer[1024];
++	swprintf(buffer, 1024, L"%s%s%s", path, PATH_SEPARATOR, python_path);
+ 	buffer[1023] = '\0';
+ 	PySys_SetPath(buffer);
+ 
+@@ -85,7 +87,7 @@ bool PythonInterface::Initialise(const char* path)
+ 		return false;
+ 
+ 	// Define our game specific interface.
+-	initgame();
++	init_module_game();
+ 
+ 	return true;
+ }

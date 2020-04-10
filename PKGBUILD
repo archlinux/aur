@@ -2,41 +2,63 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Eugene Tan <jmingtan at gmail dot com>
 
-pkgname=librocket-git
+_pkgname="librocket-asarium"
+pkgname="$_pkgname-git"
 pkgver=1.2.2
 pkgrel=1
-pkgdesc="The HTML/CSS User Interface library"
+pkgdesc="The HTML/CSS User Interface library, maintained fork"
 arch=('i686' 'x86_64')
-url="http://librocket.com"
+url="https://asarium.github.io/libRocket/wiki/documentation.html"
 license=('MIT')
-depends=('boost' 'freetype2' 'python2' 'libgl' 'glu')
-makedepends=('cmake' 'mesa')
-conflicts=('librocket')
-provides=('librocket' "$pkgname")
-source=("$pkgname::git+https://github.com/libRocket/libRocket.git")
-sha256sums=('SKIP')
+depends=('boost-libs' 'freetype2' 'python' 'libgl' 'lua')
+makedepends=('cmake' 'mesa' 'git' 'boost')
+conflicts=("$_pkgname")
+provides=("$_pkgname" "$pkgname")
+source=("$pkgname::git+https://github.com/asarium/libRocket.git"
+'lua-port.patch' 'python3.patch' 'glew-link.patch' 'lua-sample-build.patch')
+sha256sums=('SKIP'
+    'SKIP' 'SKIP' 'SKIP' 'SKIP') # Skip patches tracked by git
 
-#prepare() {
-#  # fix samples folder
-#  sed 's|opt/Rocket/Samples|share/librocket/samples|' -i \
-#    libRocket-release-$pkgver/Build/CMakeLists.txt
-#}
+prepare() {
+    cd "$pkgname"
+
+    echo " == patch: Fixes build with lua newer than 5.1 =="
+    patch -Np0 < ../lua-port.patch
+
+    echo " == patch: Fixes build with python 3 =="
+    patch -Np0 < ../python3.patch
+
+    echo " == patch: Fixes wrong name used for GLEW library when linking samples =="
+    patch -Np0 < ../glew-link.patch
+
+    echo " == patch: Fix building of lua sample =="
+    patch -Np0 < ../lua-sample-build.patch
+}
 
 build() {
-  cd $pkgname/Build
-  cmake -DCMAKE_INSTALL_PREFIX="" -DBUILD_SAMPLES=ON \
-    -DBUILD_PYTHON_BINDINGS=ON -DPYTHON_EXECUTABLE=/usr/bin/python2 .
-  make
+  cd "$pkgname/Build"
+
+  # Skip samples, they won't install nicely
+  #  -DSAMPLES_DIR="/usr/share/doc/$_pkgname/"
+
+  cmake -Wno-dev \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DBUILD_PYTHON_BINDINGS=True \
+    -DBUILD_LUA_BINDINGS=True \
+    -DBUILD_SAMPLES=False \
+    .
+  make -j1
 }
 
 package() {
-  cd $pkgname
-  make -C Build install DESTDIR="$pkgdir/usr"
+  cd "$pkgname"
+  make -C Build DESTDIR="$pkgdir" install
 
   # doc
-  install -d "$pkgdir"/usr/share/doc/librocket
-  install -m644 readme.md changelog.txt "$pkgdir"/usr/share/doc/librocket
+  install -d "$pkgdir/usr/share/doc/$_pkgname"
+  install -m644 readme.md changelog.txt "$pkgdir/usr/share/doc/$_pkgname"
   # license
-  install -d "$pkgdir"/usr/share/licenses/librocket
-  tail -n20 readme.md > "$pkgdir"/usr/share/licenses/librocket/LICENSE.md
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  tail -n20 readme.md > "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }

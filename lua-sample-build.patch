@@ -1,0 +1,13 @@
+diff --git a/Samples/luainvaders/src/main.cpp b/Samples/luainvaders/src/main.cpp
+index a9b79ac..4a51913 100644
+--- Samples/luainvaders/src/main.cpp
++++ Samples/luainvaders/src/main.cpp
+@@ -139,7 +139,7 @@ int main(int, char**)
+ 	context->RemoveReference();
+ 	
+ 	// Shutdown Lua  before we shut down Rocket.
+-	Rocket::Core::Lua::Interpreter::Shutdown();
++	Rocket::Core::Lua::Interpreter::Shutdown(true);
+ 
+ 	// Shut down the game singletons.
+ 	HighScores::Shutdown();
