@@ -2,16 +2,19 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Tristelune <tristelune@archlinux.info>
 
-pkgname=pdfstudio
+pkgname=pdfstudio-bin
 pkgver=19.2.1
-pkgrel=2
+pkgrel=1
 pkgdesc='Review, annotate, and edit PDF Documents'
 arch=('x86_64' 'i686')
 url='http://www.qoppa.com/pdfstudio/'
 license=('custom')
 depends=('java-runtime>=6')
-source=("$pkgname.desktop"
-	    "$pkgname.png")
+source=("${pkgname%-bin}.desktop"
+	    "${pkgname%-bin}.png")
+provides=("${pkgname%-bin}")
+conflicts=("${provides[@]}")
+replaces=("${provides[@]}")
 source_x86_64=("http://download.qoppa.com/pdfstudio/PDFStudio_linux64.deb")
 source_i686=("http://download.qoppa.com/pdfstudio/PDFStudio_linux.deb")
 sha256sums=('8bbf7d3aaedfdde658e8fe5fc9bf30b92f1643986507b3d90e0eb6ebf1c39a0c'
@@ -26,11 +29,11 @@ prepare() {
 }
 
 package() {
-	install -Dm644 -t "${pkgdir}/usr/share/applications/" "$pkgname.desktop"
-	install -Dm644 -t "${pkgdir}/usr/share/pixmaps/" "$pkgname.png"
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" resources/license.html
+	install -Dm644 -t "${pkgdir}/usr/share/applications/" "${pkgname%-bin}.desktop"
+	install -Dm644 -t "${pkgdir}/usr/share/pixmaps/" "${pkgname%-bin}.png"
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname%-bin}/" resources/license.html
 	install -dm 755 "$pkgdir/usr/share/"
-	cp -r opt/pdfstudio2019 "$pkgdir/usr/share/$pkgname"
+	cp -r opt/pdfstudio2019 "$pkgdir/usr/share/${pkgname%-bin}"
 	install -dm 755 "$pkgdir/usr/bin"
-	ln -sf "/usr/share/$pkgname/pdfstudio2019" "$pkgdir/usr/bin/$pkgname"
+	ln -sf "/usr/share/${pkgname%-bin}/pdfstudio2019" "$pkgdir/usr/bin/${pkgname%-bin}"
 }

@@ -1,12 +1,15 @@
-pkgbase = pdfstudio
+pkgbase = pdfstudio-bin
 	pkgdesc = Review, annotate, and edit PDF Documents
 	pkgver = 19.2.1
-	pkgrel = 2
+	pkgrel = 1
 	url = http://www.qoppa.com/pdfstudio/
 	arch = x86_64
 	arch = i686
 	license = custom
 	depends = java-runtime>=6
+	provides = pdfstudio
+	conflicts = pdfstudio
+	replaces = pdfstudio
 	source = pdfstudio.desktop
 	source = pdfstudio.png
 	sha256sums = 8bbf7d3aaedfdde658e8fe5fc9bf30b92f1643986507b3d90e0eb6ebf1c39a0c
@@ -16,5 +19,5 @@ pkgbase = pdfstudio
 	source_i686 = http://download.qoppa.com/pdfstudio/PDFStudio_linux.deb
 	sha256sums_i686 = a8e41cf6c9d34359a790afac451ecfac3a7bb80134910f6bf81e4851ea04fda3
 
-pkgname = pdfstudio
+pkgname = pdfstudio-bin
 
