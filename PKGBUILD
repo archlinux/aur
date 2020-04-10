@@ -1,14 +1,14 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 
 pkgname=onlyoffice-bin
-pkgver=5.4.2
+pkgver=5.5.1
 pkgrel=1
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://www.onlyoffice.com/'
 license=('AGPL3')
-depends=('alsa-lib' 'curl' 'wget' 'libxss' 'gtkglext' 'cairo' 'gconf' 'gcc-libs'
+depends=('alsa-lib' 'curl' 'wget' 'libxss' 'gtkglext' 'cairo' 'gconf'
          'ttf-dejavu' 'ttf-liberation' 'ttf-carlito' 'xdg-utils' 'libx11' 'fontconfig'
          'freetype2' 'libsm' 'libxtst' 'gstreamer' 'gst-plugins-base-libs' 'libdrm'
          'pango' 'libice' 'libpulse' 'libxext' 'libxdamage' 'nss' 'nspr'
@@ -26,7 +26,7 @@ _srcfile='onlyoffice-desktopeditors_amd64.deb'
 _srcurl="https://github.com/ONLYOFFICE/DesktopEditors/releases/download/ONLYOFFICE-DesktopEditors-${pkgver}/${_srcfile}"
 source=("onlyoffice-desktopeditors-${pkgver}_amd64.deb"::"$_srcurl")
 noextract=("onlyoffice-desktopeditors-${pkgver}_amd64.deb")
-sha256sums=('32959ba8369468868ad0c416c3107b64e570ba3c159572f441609e68fc6dbbfa')
+sha256sums=('2e56595cebd0b2d248c4e52b96c8167c56ab52bb1ac6e9d8aaf3f99a31f97fff')
 
 prepare() {
     mkdir -p "onlyoffice-${pkgver}"
@@ -47,13 +47,6 @@ package() {
         ln -s "../../../../../../opt/onlyoffice/desktopeditors/asc-de-${_res}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/asc-de.png"
     done
-    
-    # fix directory permissions
-    local _dir
-    while read -r -d '' _dir
-    do
-        chmod 755 "$_dir"
-    done < <(find "$pkgdir" -type d -print0)
     
     # 3rd party licenses
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
