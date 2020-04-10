@@ -1,8 +1,9 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sonnet-git
 pkgver=r524.2ce07be
-pkgrel=1
+pkgrel=2
 pkgdesc='Spelling framework for Qt5'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/sonnet'

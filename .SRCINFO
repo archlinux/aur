@@ -1,7 +1,7 @@
 pkgbase = sonnet-git
 	pkgdesc = Spelling framework for Qt5
 	pkgver = r524.2ce07be
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.kde.org/projects/frameworks/sonnet
 	arch = i686
 	arch = x86_64
