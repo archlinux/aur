@@ -1,0 +1,24 @@
+[Unit]
+Description=Prometheus exporter for MySQL server metrics
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/conf.d/prometheus-mysqld-exporter
+ExecStart=/usr/bin/prometheus-mysqld-exporter $MYSQLD_EXPORTER_ARGS
+Restart=on-failure
+
+DynamicUser=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+LockPersonality=true
+ProtectHostname=true
+ProtectHome=true
+ProtectControlGroups=true
+ProtectKernelLogs=true
+PrivateDevices=true
+RestrictRealtime=true
+CapabilityBoundingSet=
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target
