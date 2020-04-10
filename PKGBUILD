@@ -1,5 +1,5 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
-# Contributor: Mark Wagie <yochanan.marqos@gmail.com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Nikola Milinković <nikmil@gmail.com>
 # Contributor: Quentin Stievenart <quentin.stievenart@gmail.com>
 

@@ -1,4 +1,7 @@
-pkg
-src
-subliminal
-*.tar.xz
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
