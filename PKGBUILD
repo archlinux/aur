@@ -1,6 +1,6 @@
 # Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=ttk-theme-chooser
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="TTK theme chooser is an application to choose and set the default TTK theme"
 url="https://github.com/Geballin/TTK-Theme-chooser"
@@ -15,7 +15,7 @@ backup=()
 install=
 source=("https://github.com/Geballin/TTK-Theme-chooser/archive/${pkgver}.tar.gz")
 
-md5sums=('58dccd1e5a8982d7eb78f2c929a67c0d')
+md5sums=('2fce0a7e8efa44e790795d75a11d3ca0')
 
 build() {
   tar xzf ${pkgver}.tar.gz
