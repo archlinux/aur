@@ -47,7 +47,7 @@ prepare() {
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
-  
+
   echo "Setting config..."
   cp ../config .config
   yes "" | make ARCH=um config >/dev/null
