@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=pingo-bin
-pkgver=0.99.rc2.14
+pkgver=0.99.rc2.15
 pkgrel=1
 pkgdesc='An experimental, fast Web PNG/JPG optimizer with visually lossless or lossy compression (unix binary)'
 arch=('x86_64')
@@ -12,11 +12,11 @@ conflicts=('pingo')
 options=('!strip')
 source=("pingo-nix64-${pkgver}.zip"::'https://css-ig.net/bin/pingo-nix64.zip')
 noextract=("pingo-nix64-${pkgver}.zip")
-sha256sums=('683a1fa483152e0e5f93f62c3e595b30ad2455ca3f437912481989e627283aba')
+sha256sums=('5efd1dffd26cf8cf30613923c78ca43e90b5a9557a60d30eaabb0653c19f58c4')
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/80.0.3987.149 \
+                        Chrome/81.0.4044.92 \
                         Safari/537.36"
 
 _useragent="$(printf '%s' "$_useragent" | sed 's/[[:space:]]\+/\\ /g')"
