@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=TickTick
+Comment=Todo list, checklist, and task manager app
+Exec=ticktick
+Icon=ticktick
+Terminal=false
+Type=Application
+Categories=Productivity;Application;
