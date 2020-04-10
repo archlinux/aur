@@ -1,0 +1,14 @@
+pkgbase = lattice
+	pkgdesc = An interface to latco, for computing lattice cohomology
+	pkgver = 0.0
+	pkgrel = 1
+	url = https://bitbucket.org/baldursigurds/lattice
+	arch = any
+	license = GPL
+	depends = glibc
+	depends = latco
+	source = git+https://bitbucket.org/baldursigurds/lattice
+	md5sums = SKIP
+
+pkgname = lattice
+
