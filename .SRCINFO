@@ -1,5 +1,5 @@
 pkgbase = dolphin-emu-git
-	pkgdesc = A Gamecube / Wii / Triforce emulator
+	pkgdesc = A Gamecube / Wii emulator
 	pkgver = 5.0.r11834.gd8d620ef0e
 	pkgrel = 2
 	url = https://dolphin-emu.org
@@ -39,12 +39,12 @@ pkgbase = dolphin-emu-git
 	sha256sums = SKIP
 
 pkgname = dolphin-emu-git
-	pkgdesc = A Gamecube / Wii / Triforce emulator - git version
+	pkgdesc = A Gamecube / Wii emulator - git version
 	provides = dolphin-emu
 	conflicts = dolphin-emu
 
 pkgname = dolphin-emu-nogui-git
-	pkgdesc = A Gamecube / Wii / Triforce emulator - no GUI - git version
+	pkgdesc = A Gamecube / Wii emulator - no GUI - git version
 	depends = dolphin-emu-git
 	optdepends = 
 	provides = dolphin-emu-nogui
