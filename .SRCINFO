@@ -1,0 +1,28 @@
+pkgbase = zfs-utils-git-any
+	pkgdesc = Userspace utilities for the Zettabyte File System.
+	pkgver = 0.8.0.r709.g5a42ef04f
+	pkgrel = 1
+	epoch = 1
+	url = https://zfsonlinux.org/
+	arch = any
+	license = CDDL
+	makedepends = git
+	optdepends = python: for arcstat/arc_summary/dbufstat
+	provides = zfs-utils-git
+	provides = zfs-utils
+	conflicts = zfs-utils-git
+	conflicts = zfs-utils
+	replaces = zfs-utils-git
+	replaces = zfs-utils
+	source = git+https://github.com/zfsonlinux/zfs.git
+	source = zfs.initcpio.install
+	source = zfs.initcpio.hook
+	sha256sums = SKIP
+	sha256sums = da1cdc045d144d2109ec7b5d97c53a69823759d8ecff410e47c3a66b69e6518d
+	sha256sums = f95ad1a5421ccbb8b01f448373f46cfd1f718361a82c2687a597325cf9827e3e
+	b2sums = SKIP
+	b2sums = 570e995bba07ea0fb424dff191180b8017b6469501964dc0b70fd51e338a4dad260f87cc313489866cbfd1583e4aac2522cf7309c067cc5314eb83c37fe14ff3
+	b2sums = 491a7f20b0c6b4ce4fcedab617b2d7a4f2a01f1bc8f1ae57efde2fb22c2ab09a1107a8f4877b95c27576fe4216d01f181936787f51ce532bb13c5806badf7519
+
+pkgname = zfs-utils-git-any
+
