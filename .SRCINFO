@@ -1,7 +1,7 @@
 pkgbase = lightzone
 	pkgdesc = A professional photo browser and editor, like Aperture or Lightroom
-	pkgver = 4.2.0
-	pkgrel = 2
+	pkgver = 4.2.1
+	pkgrel = 1
 	url = http://lightzoneproject.org/
 	arch = x86_64
 	license = custom:BSD-3-Clause
@@ -27,8 +27,8 @@ pkgbase = lightzone
 	depends = libxml2
 	provides = lightzone
 	conflicts = lightzone-git
-	source = https://github.com/ktgw0316/LightZone/archive/4.2.0.zip
-	md5sums = f24698649389915d8f48d5079d4d933b
+	source = https://github.com/ktgw0316/LightZone/archive/4.2.1.zip
+	md5sums = bf64dad3db8d524bfa060b01387fd5e9
 
 pkgname = lightzone
 

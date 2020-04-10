@@ -4,8 +4,8 @@
 # Contributor: N30N <archlinux@alunamation.com>
 
 pkgname=lightzone
-pkgver=4.2.0
-pkgrel=2
+pkgver=4.2.1
+pkgrel=1
 pkgdesc="A professional photo browser and editor, like Aperture or Lightroom"
 url="http://lightzoneproject.org/"
 license=("custom:BSD-3-Clause")
@@ -34,7 +34,7 @@ makedepends=('java-environment=11'
     'libtiff')
 
 source=("https://github.com/ktgw0316/LightZone/archive/${pkgver}.zip")
-md5sums=('f24698649389915d8f48d5079d4d933b')
+md5sums=('bf64dad3db8d524bfa060b01387fd5e9')
 
 # https://github.com/Aries85/LightZone/issues/218#issuecomment-357868376
 MAKEFLAGS="-j1"
