@@ -2,8 +2,8 @@
 
 pkgname=m64p
 pkgver=20200409
-pkgrel=1
-pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI (git version)'
+pkgrel=2
+pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI'
 arch=('x86_64')
 url='https://github.com/m64p/mupen64plus-gui/'
 license=('GPL3')
