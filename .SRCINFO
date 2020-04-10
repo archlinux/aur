@@ -1,6 +1,6 @@
 pkgbase = redshift-wayland-git
 	pkgdesc = Adjusts the color temperature of your screen according to your surroundings.
-	pkgver = 1.12.r25.g39c162c
+	pkgver = 1.12.r25.g7da875d
 	pkgrel = 1
 	url = http://jonls.dk/redshift/
 	arch = x86_64
