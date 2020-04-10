@@ -1,0 +1,13 @@
+pkgbase = latco
+	pkgdesc = A shared library for computing lattice cohomology
+	pkgver = 0.0
+	pkgrel = 1
+	url = https://bitbucket.org/baldursigurds/latco
+	arch = any
+	license = GPL
+	depends = glibc
+	source = git+https://bitbucket.org/baldursigurds/latco
+	md5sums = SKIP
+
+pkgname = latco
+
