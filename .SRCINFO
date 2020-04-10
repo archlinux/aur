@@ -1,11 +1,11 @@
 pkgbase = portfolio-performance-bin
 	pkgdesc = A simple tool to calculate the overall performance of an investment portfolio.
-	pkgver = 0.41.1
+	pkgver = 0.46.0
 	pkgrel = 1
 	url = https://www.portfolio-performance.info
 	arch = x86_64
 	options = !strip
-	source = portfolio_0.41.1.tar.gz::https://github.com/buchen/portfolio/releases/download/0.41.1/PortfolioPerformance-0.41.1-linux.gtk.x86_64.tar.gz
+	source = portfolio_0.46.0.tar.gz::https://github.com/buchen/portfolio/releases/download/0.46.0/PortfolioPerformance-0.46.0-linux.gtk.x86_64.tar.gz
 	source = portfolio-performance.desktop
 	md5sums = 3d2f53e4afdc9dd8b4ac250b63129d81
 	md5sums = a1204cabfcbf5a026cd44923b87be026
