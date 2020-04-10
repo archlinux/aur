@@ -1,22 +1,23 @@
 # Maintainer: Yardena Cohen <yardenack at gmail dot com>
 
 pkgname=soqt-hg
-pkgver=1933.e8310fe21c1b
+pkgver=2075.2c0e8b0de743
 pkgrel=1
 pkgdesc="The glue between Coin & Qt"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/Coin3D/soqt"
 license=("GPL")
-depends=('coin' 'qt4')
-makedepends=('doxygen' 'mercurial')
+depends=(coin-hg qt5-base)
+makedepends=(doxygen mercurial cmake)
 provides=('soqt')
 conflicts=('soqt')
 options=('!libtool')
 source=("${pkgname}::hg+https://bitbucket.org/Coin3D/soqt"
+	 "hg+https://bitbucket.org/Coin3D/cpack.d"
 	 "hg+https://bitbucket.org/Coin3D/generalmsvcgeneration"
 	 "hg+https://bitbucket.org/Coin3D/soanydata"
 	 "hg+https://bitbucket.org/Coin3D/sogui")
-sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
@@ -24,23 +25,25 @@ pkgver() {
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
-	./configure --prefix=/usr \
-		--enable-optimization \
-		--enable-man \
-		--enable-exceptions \
-		--disable-debug \
-		--disable-maintainer-mode \
-		--disable-dependency-tracking \
-		--enable-shared \
-		--disable-static \
-		--with-qt=/usr \
-		--enable-threadsafe \
-		--enable-html
-	make
+    cd "${srcdir}/${pkgname}"
+    cmake \
+        -Bsoqt_build \
+        -G "Unix Makefiles" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DSOQT_BUILD_DOCUMENTATION=OFF \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_PREFIX_PATH=/usr \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib
+    cmake \
+        --build soqt_build \
+        --target all \
+        --config Release
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
-	make DESTDIR=${pkgdir} install
+    cd "${srcdir}/${pkgname}"
+    DESTDIR=${pkgdir} cmake \
+           --build soqt_build \
+           --target install \
+           --config Release
 }
