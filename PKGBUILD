@@ -68,10 +68,10 @@ _use_current=
 _major=5.6
 _minor=3
 _srcname=linux-${_major}
-_clr=${_major}.2-932
+_clr=${_major}.3-935
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -166,6 +166,9 @@ prepare() {
                        --enable SECURITY_TOMOYO \
                        --enable SECURITY_APPARMOR \
                        --enable SECURITY_YAMA
+
+        ## Library routines
+        scripts/config --enable FONT_TER16x32
 
         make olddefconfig
 
