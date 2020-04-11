@@ -1,0 +1,7 @@
+# source files
+*.jar
+*.pkg.tar.xz
+pkg/**
+src/**
+build.sh
+test.sh
