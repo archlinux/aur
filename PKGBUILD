@@ -24,7 +24,7 @@ build() {
   cd llvm-cbe
   mkdir -p build
   cd build
-  cmake .. -DUSE_SYSTEM_LLVM=ON
+  cmake .. -DUSE_SYSTEM_LLVM=ON -DCMAKE_BUILD_TYPE=Release
   make -j
 }
 
