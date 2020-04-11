@@ -2,7 +2,7 @@
 
 pkgbase=level-zero-git
 pkgname=('level-zero-headers-git' 'level-zero-loader-git')
-pkgver=0.91.10.r0.gebb363e
+pkgver=0.91.10.r2.g13d1883
 pkgrel=1
 pkgdesc='API for accessing low level interfaces in oneAPI platform devices (git version)'
 arch=('x86_64')
@@ -37,6 +37,7 @@ package_level-zero-headers-git() {
     
     # remove loader files
     [ -d 'loader' ] && rm -rf loader
+    mkdir -p loader
     mv "${pkgdir}/usr/lib" loader
 }
 
@@ -47,7 +48,6 @@ package_level-zero-loader-git() {
     provides=('level-zero-loader')
     conflicts=('level-zero-loader')
     
-    mkdir -p "${pkgdir}/usr"
-    mv loader "${pkgdir}/usr/lib"
+    mv loader "${pkgdir}/usr"
     install -D -m644 level-zero/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
