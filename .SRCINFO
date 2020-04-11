@@ -1,0 +1,13 @@
+pkgbase = cling-bin
+	pkgdesc = The cling C++ interpreter
+	pkgver = 20200402
+	pkgrel = 1
+	url = https://root.cern.ch/cling
+	arch = x86_64
+	license = Cling Release License
+	depends = ncurses5-compat-libs
+	source = https://root.cern/download/cling/cling_2020-04-02_ubuntu18.tar.bz2
+	sha256sums = 70fa2bd9848286da4b0dbf7fb639c91951db05ca0457ea2b857571587b541e39
+
+pkgname = cling-bin
+
