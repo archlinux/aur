@@ -1,0 +1,15 @@
+pkgbase = jtc
+	pkgdesc = Select JSON elements from input and apply various (e.g. sort, transform, etc) action then output, think it as an alternative of jq
+	pkgver = 1.75d
+	pkgrel = 1
+	url = https://github.com/ldn-softdev/jtc
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/ldn-softdev/jtc#tag=1.75d
+	b2sums = SKIP
+
+pkgname = jtc
+
