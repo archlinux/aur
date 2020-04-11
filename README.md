@@ -35,3 +35,13 @@ It just simply download the subscribe config file and override `http-port`, `soc
 If your can access your subscribe url directly, it just download and update config file before clash start.
 
 Otherwise your subscribe url is banned, it download and update the config file after clash start and then restart clash.
+
+## FAQ
+
+* How to see log
+  
+    `journalctl --user -u clash -e`
+
+* How to add custom rules
+
+    edit `~/.config/clash/clashup.json` and `systemctl --user restart clash`
