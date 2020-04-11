@@ -1,0 +1,25 @@
+pkgbase = linvst3-bin
+	pkgdesc = enables Windows vst3's to be used as Linux vst's in Linux vst capable DAW's
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://github.com/osxmidi/LinVst3
+	arch = x86_64
+	makedepends = git
+	depends = wine
+	depends = freetype2
+	depends = xcb-util
+	depends = xcb-util-cursor
+	depends = xcb-util-keysyms
+	depends = libxkbcommon-x11
+	depends = libx11
+	depends = expat
+	depends = gtkmm3
+	depends = sqlite
+	conflicts = linvst3
+	source = https://github.com/osxmidi/LinVst3/releases/download/1.8/LinVst3-1.8-Debian-Buster.zip
+	source = git+https://github.com/usrmusicman/ArchStudioUtils.git
+	sha256sums = 10cc5b4146b52f2b90f2b8de82115f92c8b03be050019a27b319c2249d61a5eb
+	sha256sums = SKIP
+
+pkgname = linvst3-bin
+
