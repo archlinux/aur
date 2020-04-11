@@ -2,7 +2,7 @@
 
 _plug=descale
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.5.g646974a
+pkgver=r2.7.g642b2fe
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -25,6 +25,8 @@ pkgver() {
 
 prepare() {
   cd "${_plug}"
+
+  CFLAGS="${CFLAGS//-march=x86-64 -mtune=generic/-march=native}"
 
   echo "all:
 	  gcc -c -std=c99 -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o descale.o descale.c
