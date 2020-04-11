@@ -1,5 +1,5 @@
 pkgname=mingw-w64-coin-or-clp
-pkgver=1.17.5
+pkgver=1.17.6
 pkgrel=1
 pkgdesc="COIN-OR linear programming solver (mingw-w64)"
 arch=('any')
@@ -9,13 +9,13 @@ groups=('mingw-w64-coin-or')
 depends=('mingw-w64-coin-or-osi')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
-source=("http://www.coin-or.org/download/source/Clp/Clp-${pkgver}.tgz")
-sha256sums=('49a9f917002b8db9df4df549119b0d44ec5a2f321b08f610dcc53be72879bc78')
+source=("https://github.com/coin-or/Clp/archive/releases/${pkgver}.tar.gz")
+sha256sums=('afff465b1620cfcbb7b7c17b5d331d412039650ff471c4160c7eb24ae01284c9')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-  cd Clp-$pkgver
+  cd Clp-releases-$pkgver
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     COIN_SKIP_PROJECTS="Sample" \
@@ -32,11 +32,10 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "$srcdir"/Clp-$pkgver/build-${_arch}
+    cd "$srcdir"/Clp-releases-$pkgver/build-${_arch}
     PKG_CONFIG_PATH_CUSTOM="$pkgdir"/usr/${_arch}/lib/pkgconfig/ \
     make DESTDIR="$pkgdir"/ install
     rm -r "$pkgdir"/usr/${_arch}/share
-    rm "$pkgdir"/usr/${_arch}/lib/pkgconfig/coindatanetlib.pc
     rm "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
