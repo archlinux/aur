@@ -3,7 +3,7 @@
 
 pkgname=ddnet
 pkgver=13.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.tw"
@@ -36,7 +36,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release  \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DAUTOUPDATE=OFF            \
-        -DANTIBOT=ON                \
+        -DANTIBOT=OFF               \
         -DVIDEORECORDER=ON          \
         -GNinja                     \
         $_mysql_opt
