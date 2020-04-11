@@ -1,6 +1,6 @@
 pkgbase = gonvim-fork
 	pkgdesc = Neovim GUI written in Golang - fork for the purpose of maintenance and enhancement
-	pkgver = 0.4.2
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/akiyosi/goneovim
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = gonvim-fork
 	depends = qt5-webengine
 	provides = goneovim
 	conflicts = gonvim
-	source = https://github.com/akiyosi/goneovim/releases/download/v0.4.2/Goneovim-0.4.2-linux.tar.bz2
-	sha256sums = ce07bf62b380e43bf6aee69b4b01b8e90e360786cbf1d9148cff8ffa9a13ae14
+	source = https://github.com/akiyosi/goneovim/releases/download/v0.4.5/Goneovim-0.4.5-linux.tar.bz2
+	sha256sums = d8137306e68929e4eb8d8bbb63e6b73187a496f57f63b5bfe04d000797d9bdf7
 
 pkgname = gonvim-fork
 

@@ -1,7 +1,7 @@
 # Maintainer: lans9831@gmail.com
 _pkgname=goneovim
 pkgname=gonvim-fork
-pkgver=0.4.2
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Neovim GUI written in Golang - fork for the purpose of maintenance and enhancement"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('neovim' 'qt5-base' 'qt5-tools' 'qt5-multimedia' 'qt5-svg' 'qt5-declara
 provides=("${_pkgname}")
 conflicts=("gonvim")
 source=("https://github.com/akiyosi/goneovim/releases/download/v$pkgver/Goneovim-$pkgver-linux.tar.bz2")
-sha256sums=('ce07bf62b380e43bf6aee69b4b01b8e90e360786cbf1d9148cff8ffa9a13ae14')
+sha256sums=('d8137306e68929e4eb8d8bbb63e6b73187a496f57f63b5bfe04d000797d9bdf7')
 
 package() {
   cd "Goneovim-$pkgver-linux"
