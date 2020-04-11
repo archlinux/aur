@@ -3,7 +3,7 @@
 # Contributor: felix <base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg==>
 
 pkgname=djgpp-gcc
-pkgver=9.2.0
+pkgver=9.3.0
 _target="i686-pc-msdosdjgpp"
 _islver=0.18
 _djver=2.05
@@ -13,18 +13,19 @@ arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
 license=('GPL3' 'LGPL3')
 groups=('djgpp')
-depends=('zlib' 'libmpc' 'djgpp-binutils>=2.30' 'djgpp-djcrx')
+depends=('zlib' 'libmpc' 'djgpp-binutils>=2.30' 'djgpp-djcrx' 'gcc-ada')
 makedepends=('unzip')
 optdepends=('djgpp-djcrx: headers and utilities')
+optdepends+=('djgpp-djcrx-bootstrap: first build of djgpp-gcc before djgpp-djcrx is built')
 options=('!strip' 'staticlibs' '!emptydirs')
 source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
         "lto.patch"
 	"gcc-djgpp.diff")
-sha256sums=('ea6ef08f121239da5695f76c9b33637a118dcf63e24164422231917fa61fb206'
+sha256sums=('71e197867611f6054aa1119b13a0c0abac12834765fe2d81f35ac57f84f742d1'
             '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
             'c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0'
-            '6b8c0d59078efdd8e79e9b12ddbb2685270ef2bac4087efd104f5fa34d5f8326')
+            '9c625e1ed54d9d6c212977676c582d01888dd2eca5af9b1d4254d1be3479273f')
 
 prepare() {
   cd gcc-$pkgver

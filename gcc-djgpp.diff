@@ -97,10 +97,10 @@ index 8b21aa7de70..58b81351ff4 100644
     pragma Import (C, Current_Process_Id, "__gnat_current_process_id");
  
 diff --git a/gcc/collect2.c b/gcc/collect2.c
-index eb84f84639b..ba7291f293b 100644
+index 8f092e7539e..10ecf05e23f 100644
 --- a/gcc/collect2.c
 +++ b/gcc/collect2.c
-@@ -1235,21 +1235,30 @@ main (int argc, char **argv)
+@@ -1242,21 +1242,30 @@ main (int argc, char **argv)
    *ld1++ = *ld2++ = ld_file_name;
  
    /* Make temp file names.  */
