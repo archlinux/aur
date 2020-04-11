@@ -1,7 +1,7 @@
 # Maintainer: Kyle Manna kyle[at]kylemanna[d0t]com
 
 pkgname=mynewt-newt
-pkgver=1.7.0
+pkgver=1.8.0
 _pkgver=${pkgver//./_}
 pkgrel=1
 epoch=
@@ -12,7 +12,7 @@ license=('Apache')
 depends=()
 makedepends=('go')
 source=("https://github.com/apache/mynewt-newt/archive/mynewt_${_pkgver}_tag.tar.gz")
-sha512sums=('ea3ff490bf1322127a1c7c3b77a6f4289b94d66b7c7bf7ad8e5749ef0da73c7a3afdbf297e1f53a28da2e93f1f31ffa170a5433dc7dff36736a279f8d3e0b5f1')
+sha512sums=('8c1983c5e3be3a8f1a35627bc4eb854fe11f316653fba86841d3bd2ad8c7dbda70e132b05a1f30b8df531f73bcb8b2d3b84c34e353d0fee9456ff98ea27537b1')
 
 build() {
 	cd "${srcdir}/mynewt-newt-mynewt_${_pkgver}_tag"
