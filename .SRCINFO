@@ -1,6 +1,6 @@
 pkgbase = wikibase-cli
 	pkgdesc = The command-line interface to Wikibase (Wikidata)
-	pkgver = 9.2.1
+	pkgver = 10.0.0
 	pkgrel = 1
 	url = https://github.com/maxlath/wikibase-cli#readme
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = wikibase-cli
 	makedepends = npm
 	depends = nodejs
 	replaces = nodejs-wikibase-cli
-	noextract = wikibase-cli-9.2.1.tgz
+	noextract = wikibase-cli-10.0.0.tgz
 	options = !strip
-	source = https://registry.npmjs.org/wikibase-cli/-/wikibase-cli-9.2.1.tgz
-	sha256sums = 5ff038397a23b40339159a19e1d8fed2e49eb281cd70346597a66f9f6e449c14
+	source = https://registry.npmjs.org/wikibase-cli/-/wikibase-cli-10.0.0.tgz
+	sha256sums = dffeb7d8b1c7c5840b0b5170fe620d1ff2882cf4473bab90a11184f0c2a71192
 
 pkgname = wikibase-cli
 
