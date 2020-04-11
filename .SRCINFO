@@ -1,7 +1,7 @@
 pkgbase = gtkttk
 	pkgdesc = ttk theme that gives to your Tk applications a native GTK+ look and feel.
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Geballin/gtkTtk
 	install = gtkttk.install
 	arch = x86_64
