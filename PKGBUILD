@@ -2,8 +2,8 @@
 
 _plug=descale
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.3.gc211f99
-pkgrel=2
+pkgver=r2.5.g646974a
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Irrational-Encoding-Wizardry/vapoursynth-descale.git'
@@ -27,8 +27,8 @@ prepare() {
   cd "${_plug}"
 
   echo "all:
-	  g++ -c -std=c++11 -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o descale.o descale.cpp
-	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so descale.o" > Makefile
+	  gcc -c -std=c99 -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o descale.o descale.c
+	  gcc -shared -fPIC ${LDFLAGS} -o lib${_plug}.so descale.o" > Makefile
 }
 
 build() {
