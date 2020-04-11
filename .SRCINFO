@@ -9,6 +9,7 @@ pkgbase = mimalloc
 	makedepends = git
 	depends = glibc
 	provides = mimalloc
+	conflicts = mimalloc-git
 	source = ::git+https://github.com/microsoft/.git#tag=v1.6.1
 	sha256sums = SKIP
 

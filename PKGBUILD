@@ -7,6 +7,7 @@ pkgdesc='General-purpose allocator with excellent performance characteristics'
 arch=('x86_64')
 license=('MIT')
 url='https://github.com/microsoft/mimalloc'
+conflicts=('mimalloc-git')
 depends=('glibc')
 makedepends=('cmake' 'git')
 provides=('mimalloc')
