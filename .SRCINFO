@@ -5,6 +5,8 @@ pkgbase = python-cvxpy
 	url = http://github.com/cvxgrp/cvxpy/
 	arch = any
 	license = Apache
+	checkdepends = python-nose
+	checkdepends = python-osqp
 	checkdepends = python-scs
 	makedepends = python-setuptools
 	depends = python
@@ -15,7 +17,7 @@ pkgbase = python-cvxpy
 	depends = python-scipy
 	depends = python-toolz
 	optdepends = python-scs
-	optdepends = python-nose
+	optdepends = python-osqp
 	source = https://github.com/cvxgrp/cvxpy/archive/v1.0.29.tar.gz
 	sha256sums = 0369ba469cbf43e8f4b6d1a8afd528abed754bb63d8d8dd76f412c8f190a1abd
 

@@ -12,8 +12,8 @@ depends=('python'
     'python-scipy'
     'python-toolz')
 makedepends=('python-setuptools')
-optdepends=('python-scs' 'python-nose')
-checkdepends=('python-scs')
+optdepends=('python-scs' 'python-osqp')
+checkdepends=('python-nose' 'python-osqp' 'python-scs')
 license=('Apache')
 arch=('any')
 source=("https://github.com/cvxgrp/cvxpy/archive/v${pkgver}.tar.gz")
