@@ -6,7 +6,7 @@
 
 pkgname=ppsspp
 pkgver=1.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
 url=https://www.ppsspp.org/
@@ -56,7 +56,8 @@ source=(
   git+https://github.com/Tencent/rapidjson.git
   git+https://github.com/KhronosGroup/SPIRV-Cross.git
   armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git
-  ppsspp.desktop
+  ppsspp-sdl.desktop
+  ppsspp-qt.desktop
   ppsspp-flags.patch
 )
 sha256sums=('SKIP'
@@ -67,7 +68,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '93685b9f05322fa24753fc857bf63da7d6e0ee1bcb7e2167ba7600f38079e277'
+            '47977bbdc36cd9eebe74b204e69aa8c0eb39b1ec66d89e7b90b1c216e5778d8d'
+            '7df9274e8f404a8009042a529729ca43332c264cff032f32b2ce1bf5adf04042'
             '6694643d96dae673f01555637139468eb277f3379afbcceccad3f7e0ae670278')
 
 pkgver() {
@@ -103,25 +105,36 @@ prepare() {
 }
 
 build() {
-  cmake -S ppsspp -B build \
+  cmake -S ppsspp -B build-sdl \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_SKIP_RPATH=ON \
     -DHEADLESS=ON \
     -DUSE_SYSTEM_FFMPEG=ON \
     -DUSE_SYSTEM_LIBZIP=ON \
     -DUSE_SYSTEM_SNAPPY=ON \
+    -DUSING_QT_UI=OFF
+  make -C build-sdl
+  cmake -S ppsspp -B build-qt \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DHEADLESS=OFF \
+    -DUSE_SYSTEM_FFMPEG=ON \
+    -DUSE_SYSTEM_LIBZIP=ON \
+    -DUSE_SYSTEM_SNAPPY=ON \
     -DUSING_QT_UI=ON
-  make -C build
+  make -C build-qt
 }
 
 package() {
-  install -Dm 755 build/PPSSPPHeadless -t "${pkgdir}"/usr/bin/
-  install -Dm 755 build/PPSSPPQt -t "${pkgdir}"/usr/bin/
+  install -Dm 755 build-sdl/PPSSPPSDL -t "${pkgdir}"/usr/bin/
+  install -Dm 755 build-sdl/PPSSPPHeadless -t "${pkgdir}"/usr/bin/
+  install -Dm 755 build-qt/PPSSPPQt -t "${pkgdir}"/usr/bin/
   install -dm 755 "${pkgdir}"/usr/share/{icons,ppsspp}
-  cp -dr --no-preserve=ownership build/assets "${pkgdir}"/usr/share/ppsspp/
+  cp -dr --no-preserve=ownership build-sdl/assets "${pkgdir}"/usr/share/ppsspp/
   cp -dr --no-preserve=ownership ppsspp/icons/hicolor "${pkgdir}"/usr/share/icons/
   install -Dm 644 ppsspp/icons/icon-512.svg "${pkgdir}"/usr/share/pixmaps/ppsspp.svg
-  install -Dm 644 ppsspp.desktop -t "${pkgdir}"/usr/share/applications/
+  install -Dm 644 ppsspp-sdl.desktop -t "${pkgdir}"/usr/share/applications/
+  install -Dm 644 ppsspp-qt.desktop -t "${pkgdir}"/usr/share/applications/
 }
 
 # vim: ts=2 sw=2 et:
