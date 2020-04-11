@@ -1,0 +1,17 @@
+[Unit]
+Description=Readarr Service
+After=syslog.target network.target
+
+[Service]
+User=readarr
+Group=readarr
+ExecStart=/usr/lib/readarr/Readarr -nobrowser -data=/var/lib/readarr
+Type=simple
+TimeoutStopSec=20
+
+# Lets built in updater work well.
+Restart=on-failure
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
