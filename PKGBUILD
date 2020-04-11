@@ -3,14 +3,14 @@
 pkgbase='navidrome-bin'
 pkgname=(navidrome-bin)
 pkgver='0.14.2'
-pkgrel=1
+pkgrel=2
 pkgdesc='Music Server and Streamer compatible with Subsonic/Airsonic'
 url='https://www.navidrome.org/'
 license=('GPL3')
 arch=(x86_64 armv6h armv7h aarch64)
 provides=('navidrome')
 conflicts=('navidrome')
-depends=('glibc')
+depends=('glibc' 'ffmpeg')
 source_x86_64=('https://github.com/deluan/navidrome/releases/download/v0.14.2/navidrome_0.14.2_Linux_x86_64.tar.gz')
 source_armv6h=('https://github.com/deluan/navidrome/releases/download/v0.14.2/navidrome_0.14.2_Linux_armv6.tar.gz')
 source_armv7h=('https://github.com/deluan/navidrome/releases/download/v0.14.2/navidrome_0.14.2_Linux_armv7.tar.gz')
