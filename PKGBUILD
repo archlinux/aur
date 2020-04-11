@@ -1,6 +1,8 @@
+# Maintainer: Antoine Viallon <antoine.viallon@gmail.com>
+
 pkgname=arch-silence-grub-theme
 pkgver=r1.3c851d8
-pkgrel=2
+pkgrel=3
 pkgdesc="Arch Silence - GRUB2 theme"
 arch=('any')
 license=('GPL')
@@ -19,5 +21,5 @@ pkgver() {
 
 package() {
   mkdir -p "${pkgdir}/boot/grub/themes/arch-silence"
-  cp -TR "${srcdir}/arch-silence/theme" "${pkgdir}/boot/grub/themes/arch-silence"
+  cp -TRv "${srcdir}/arch-silence/theme" "${pkgdir}/boot/grub/themes/arch-silence"
 }
