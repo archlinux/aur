@@ -12,6 +12,8 @@ StateDirectoryMode=0750
 LogsDirectory=jicofo
 LogsDirectoryMode=0750
 
+Restart=on-failure
+
 # Hardening
 NoNewPrivileges=yes
 PrivateTmp=yes

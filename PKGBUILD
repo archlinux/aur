@@ -1,8 +1,8 @@
 _pkgname=jicofo
 pkgname=${_pkgname}-bin
-pkgver=1.0.539
+pkgver=1.0.544
 pkgrel=1
-_debver=1.0-539-1
+_debver=1.0-544-1
 pkgdesc="JItsi Meet COnference FOcus"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -20,12 +20,14 @@ source=("https://download.jitsi.org/stable/${_pkgname}_${_debver}_all.deb"
         "${_pkgname}.service"
         'sysusers.conf'
         'tmpfiles.conf'
-        'config')
-sha256sums=('d5d4939bef9afa0dfafb2fa671fef3ec0c11f347ac914555f7690c394ff4af2c'
-            'c814d2bf3ea08fd9f64aae8f8821a63a156301e4d902f9a098c01f0f32675f8b'
+        'config'
+        'sip-communicator.properties')
+sha256sums=('34944ee997551c6cee68bf5933c256e29eef77e3d884716a96e0d6ab9879baea'
+            '7c37d43d586c0cb0f868c5de967bbbeed1c6497e93f434993347cbc07abf5c6f'
             '0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440'
             '1d19c303780f4640bc0cae6f40d8203b119bb81b74f50d61dbe72c548fa37372'
-            'b36f987ce17388260fd6f6bcfb8372bf1aa1458959a996a44d073182414ba298')
+            'b36f987ce17388260fd6f6bcfb8372bf1aa1458959a996a44d073182414ba298'
+            '64e30304bf8188240c1560f215b74b04bdbf06a67b1204d4c000e829f0a3eadf')
 
 package() {
   cd "${srcdir}"
@@ -41,7 +43,7 @@ package() {
   install -Dm644 'sysusers.conf' "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
   install -Dm644 'tmpfiles.conf' "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
   install -Dm644 'config' "${pkgdir}/etc/jitsi/jicofo/config"
-  touch "${pkgdir}/etc/jitsi/jicofo/sip-communicator.properties"
+  install -Dm644 'sip-communicator.properties' "${pkgdir}/etc/jitsi/jicofo/sip-communicator.properties"
 }
 
 # vim: set ts=2 sw=2 et:
