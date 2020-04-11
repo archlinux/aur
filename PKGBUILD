@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=S4Vectors
-_bcver=0.24.3
+_bcver=0.24.4
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=('r>=3.3.0' 'r-biocgenerics>=0.31.1')
 makedepends=(gcc)
 optdepends=(r-iranges r-genomicranges r-summarizedexperiment r-delayedarray r-shortread r-data.table r-runit r-biocstyle)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('9e10d69623764be8d700ca06a273ee889c1df321bac04d31972af149746dc705')
+sha256sums=('6c8d260f97c47a44824309d042fd7bab11858ce37e18ec44fd8ef3d18444fabb')
 
 build() {
   cd "${srcdir}"
