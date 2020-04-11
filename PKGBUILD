@@ -24,5 +24,5 @@ prepare() {
 package() {
    install -d "$pkgdir/opt" "$pkgdir/usr/bin"
    mv "$srcdir/$file_name" "$pkgdir/opt/$_pkgname"
-   ln -s "/opt/$_pkgname/cling" "$pkgdir/usr/bin"
+   ln -s "/opt/$_pkgname/bin/cling" "$pkgdir/usr/bin"
 }
