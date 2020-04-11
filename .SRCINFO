@@ -1,6 +1,6 @@
 pkgbase = grisbi-git
 	pkgdesc = Personal financial management program
-	pkgver = 1.9.90.r75.g7fe25bb5c
+	pkgver = 1.9.90.r125.g4aff077c0
 	pkgrel = 1
 	url = http://www.grisbi.org
 	arch = any
