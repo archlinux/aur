@@ -1,0 +1,16 @@
+pkgbase = clashup
+	pkgdesc = auto update clash's config file
+	pkgver = 0.1
+	pkgrel = 3
+	arch = any
+	license = GPL
+	depends = python
+	depends = clash
+	depends = python-requests
+	source = clashup
+	source = clashup.conf
+	md5sums = baaa9b4feb4f5500bad97feb4cc259c7
+	md5sums = 177338346005e11d33e27edc1f8ab780
+
+pkgname = clashup
+
