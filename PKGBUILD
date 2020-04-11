@@ -6,7 +6,7 @@ _svt_av1_ver='0.8.0'
 _svt_vp9_ver='0.1.0'
 
 pkgname=ffmpeg-intel-full-git
-pkgver=4.3.r96534.gde1b2aa796
+pkgver=4.3.r97298.g9f4054a0cb
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for intel; git version) (based on dbermond package)'
 arch=('x86_64')
@@ -56,26 +56,21 @@ sha256sums=('SKIP'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
-    cd ffmpeg
-    
-    # add svt codec support for hevc, av1 and vp9
-    git apply --index "${srcdir}/ffmpeg-full-git-add-svt-hevc-${_svt_hevc_ver}.patch"
-    patch -Np1 -i     "${srcdir}/ffmpeg-full-git-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
-    git apply --index "${srcdir}/ffmpeg-full-git-add-svt-av1-${_svt_av1_ver}.patch"
-    git apply --index "${srcdir}/ffmpeg-full-git-add-svt-vp9-${_svt_vp9_ver}.patch"
+   # add svt codec support for hevc, av1 and vp9
+    rm -f ffmpeg/libavcodec/libsvt_{hevc,av1,vp9}.c
+    patch -d ffmpeg -Np1 -i "${srcdir}/ffmpeg-full-git-add-svt-hevc-${_svt_hevc_ver}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/ffmpeg-full-git-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/ffmpeg-full-git-add-svt-av1-${_svt_av1_ver}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/ffmpeg-full-git-add-svt-vp9-${_svt_vp9_ver}.patch"
 }
 
 pkgver() {
-    cd ffmpeg
-    
     local _version
     local _revision
     local _shorthash
-    
-    _version="$(  git describe  --tags --long      | awk -F'-' '{ sub(/^n/, "", $1); print $1 }')"
-    _revision="$( git describe  --tags --match 'N' | awk -F'-' '{ print $2 }')"
-    _shorthash="$(git rev-parse --short HEAD)"
-    
+    _version="$(git -C ffmpeg describe  --tags --long | awk -F'-' '{ sub(/^n/, "", $1); print $1 }')"
+    _revision="$(git -C ffmpeg describe  --tags --match 'N' | awk -F'-' '{ print $2 }')"
+    _shorthash="$(git -C ffmpeg rev-parse --short HEAD)"
     printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
 }
 
