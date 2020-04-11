@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=MagicMirror
+Description=MagicMirror is an open source modular smart mirror platform. With a growing list of installable modules, the MagicMirror² allows you to convert your hallway or bathroom mirror into your personal assistant. MagicMirror² is built by the creator of the original MagicMirror with the incredible help of a growing community of contributors.
+Exec=magicmirror
+Terminal=false
+Type=Application
+Icon=/usr/share/icons/magicmirror.png
+Categories=Office;Utilities;
