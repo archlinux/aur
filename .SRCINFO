@@ -1,6 +1,6 @@
 pkgbase = vgrive
 	pkgdesc = Google Drive client made in Vala
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/bcedu/VGrive
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = vgrive
 	depends = libsoup
 	optdepends = libunity
 	optdepends = libappindicator-gtk3
-	source = vgrive-1.5.2.tar.gz::https://github.com/bcedu/VGrive/archive/1.5.2.tar.gz
-	sha256sums = 160ea1a5519862d8cccace78b7940c685b079956fa7ee5845d8d4ac9d78b99eb
+	source = vgrive-1.5.3.tar.gz::https://github.com/bcedu/VGrive/archive/1.5.3.tar.gz
+	sha256sums = 7e1b0d8eba6019287f4de2ec0bf7028e233918a01603f9f6e528066c194a352e
 
 pkgname = vgrive
 
