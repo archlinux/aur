@@ -1,8 +1,6 @@
-# Maintainer: Genki Sky <alt+archlinux.org@genki.is>
-
 pkgname=slurp-git
-pkgver=1
-pkgrel=6
+pkgver=20200407.8d2117c
+pkgrel=1
 pkgdesc='Select a region in a Wayland compositor'
 arch=('x86_64')
 url='https://github.com/emersion/slurp'
