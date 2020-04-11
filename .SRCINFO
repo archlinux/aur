@@ -1,0 +1,15 @@
+pkgbase = orchestrator-bin
+	pkgdesc = MySQL high availability and replication management tool, runs as a service and provides command line access, HTTP API and Web interface
+	pkgver = 3.1.4
+	pkgrel = 1
+	url = https://github.com/openark/orchestrator
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	noextract = orchestrator-3.1.4-linux-amd64.tar.gz
+	options = !emptydirs
+	source = https://github.com/openark/orchestrator/releases/download/v3.1.4/orchestrator-3.1.4-linux-amd64.tar.gz
+	md5sums = 9ba2127366c91f60c34bd169f524a4e0
+
+pkgname = orchestrator-bin
+
