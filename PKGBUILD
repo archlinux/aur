@@ -5,7 +5,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=2020.03
+pkgver=2020.04
 pkgrel=1
 pkgdesc="Fork of Mozilla Firefox featuring some legacy extensions, removed telemetry and no Pocket integration. This is the Current branch."
 arch=(x86_64)
@@ -23,10 +23,10 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs !makeflags !strip)
-_archivename=2020.03-current # patch releases don't follow the same format so we can't use $pkgver
+_archivename=2020.04-current # patch releases don't follow the same format so we can't use $pkgver
 source=(Waterfox-$_archivename.tar.gz::https://github.com/MrAlex94/Waterfox/archive/$_archivename.tar.gz
         $pkgname.desktop)
-sha256sums=('88b02f0a4b3e60a675640df2d3f324af2c134d975963b5ac8238daf02303678a'
+sha256sums=('72eb65abd54bbd141f3d17e6011f6f2248fd0775e3ee0177bfaf3d885bd24007'
             '3c8a3e73ffcb4670ca25fc7087b9c5d93ebbef2f3be8a33cf81ae424c3f27fa3')
 
 prepare() {
