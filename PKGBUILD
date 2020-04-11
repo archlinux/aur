@@ -3,12 +3,13 @@
 pkgname=devdocs-desktop-bin
 pkgver=0.7.1
 _debfile=DevDocs_${pkgver}_amd64.deb
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-featured desktop app for DevDocs.io."
 arch=('x86_64')
 url="https://devdocs.egoist.sh/"
 license=('MIT')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
+makedepends=('imagemagick')
 source=("$_debfile::https://github.com/egoist/devdocs-desktop/releases/download/v$pkgver/$_debfile")
 sha256sums=('77bb24c322e520bbc6b58a74b0e788678394f52ff6a9672471befcf57b0f0716')
 

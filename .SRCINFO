@@ -1,10 +1,11 @@
 pkgbase = devdocs-desktop-bin
 	pkgdesc = A full-featured desktop app for DevDocs.io.
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://devdocs.egoist.sh/
 	arch = x86_64
 	license = MIT
+	makedepends = imagemagick
 	depends = alsa-lib
 	depends = gconf
 	depends = gtk2
