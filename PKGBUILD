@@ -26,8 +26,13 @@ pkgver() {
 prepare() {
   cd "${_plug}"
 
+  _AVX2=$(gcc -march=native -dM -E - </dev/null | grep _AVX2_ | cut -d ' ' -f3)
+  if [ "${_AVX2}" = "1" ]; then
+    CFLAGS+=" -D__AVX2__"
+  fi
+
   echo "all:
-	  gcc -c -std=c99 -fPIC ${CFLAGS//-march=x86-64 -mtune=generic/-march=native} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o descale.o descale.c
+	  gcc -c -std=c99 -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o descale.o descale.c
 	  gcc -shared -fPIC ${LDFLAGS} -o lib${_plug}.so descale.o" > Makefile
 }
 
