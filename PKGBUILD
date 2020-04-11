@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 url='http://icculus.org/prey/'
 license=('custom')
 depends=('xterm')
-depends_i686=('libxext' 'openal' 'sdl')
-depends_x86_64=('lib32-libxext' 'lib32-openal' 'lib32-sdl')
+depends_i686=('alsa-lib' 'libpulse' 'libxext' 'mesa' 'openal' 'sdl')
+depends_x86_64=('lib32-alsa-lib' 'lib32-libpulse' 'lib32-libxext' 'lib32-mesa' 'lib32-openal' 'lib32-sdl')
 install='prey.install'
 source=(
     ${pkgname}.desktop
