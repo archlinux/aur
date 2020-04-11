@@ -1,0 +1,24 @@
+pkgbase = sentry-native-git
+	pkgdesc = Sentry SDK for C, C++ and native applications.
+	pkgver = 0.2.3.r1.gf9f2521
+	pkgrel = 1
+	url = http://sentry.io/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = curl
+	makedepends = git
+	provides = sentry-native
+	source = git+https://github.com/getsentry/sentry-native.git
+	source = breakpad::git+https://chromium.googlesource.com/breakpad/breakpad.git
+	source = crashpad::git+https://github.com/getsentry/crashpad.git
+	source = libunwindstack-ndk::git+https://github.com/getsentry/libunwindstack-ndk
+	source = lss::git+https://chromium.googlesource.com/linux-syscall-support
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sentry-native-git
+
