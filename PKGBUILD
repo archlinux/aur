@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=ai-dungeon-cli
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Play ai dungeon on your terminal"
 arch=('any')
@@ -21,7 +21,16 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=("eea815637526a471f3b85b588e4478c1703130e8c289f08aef2eb8780019b99d")
+sha256sums=("95c42769d26970b7e00d34c2ce4feb8503d3be348a0fa33bff91a81ae06b663a")
+
+prepare() {
+	cd "$pkgname-$pkgver"
+
+	# setuptools-git-version can't work outside a git repo.
+	sed -i \
+		-e "s/version_format.*/version=\"${pkgver}\",/" \
+		-e "s/setup_requires.*//" setup.py
+}
 
 build() {
 	cd "$pkgname-$pkgver"
