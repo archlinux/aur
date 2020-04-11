@@ -1,0 +1,14 @@
+[Unit]
+Description=Google Music Manager Uploader Daemon
+After=network.target
+
+[Service]
+Type=simple
+User=gmusic-uploader
+DynamicUser=yes
+EnvironmentFile=/etc/conf.d/google-music-manager-uploader
+StateDirectory=google-music-manager-uploader
+ExecStart=/usr/bin/google-music-upload --directory $DIRECTORY --oauth $OAUTH
+
+[Install]
+WantedBy=multi-user.target
