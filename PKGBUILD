@@ -1,24 +1,18 @@
-# Maintainer: Ranieri Althoff <ranisalt+aur at gmail dot com>
+# Maintainer: René Wagner < rwagner at rw-net dot de >
 
-_pkgname=mimalloc
-pkgname=${_pkgname}-git
-pkgver=r31.8a81a6c
+pkgname=mimalloc
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='General-purpose allocator with excellent performance characteristics'
 arch=('x86_64')
 license=('MIT')
 url='https://github.com/microsoft/mimalloc'
 depends=('glibc')
-makedepends=('cmake')
-provides=('libmimalloc.so=1.0')
+makedepends=('cmake' 'git')
+provides=('mimalloc')
 _branch=master
-source=("${_pkgname}::git+https://github.com/microsoft/${_pkgname}.git#branch=master")
+source=("${_pkgname}::git+https://github.com/microsoft/${_pkgname}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
   cd "$_pkgname"
