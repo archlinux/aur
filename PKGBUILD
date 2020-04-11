@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=plata-theme-gs330
-pkgver=0.6.2
+pkgver=0.9.7
 pkgrel=1
 pkgdesc='Plata theme for GTK apps and GNOME Shell only'
 conflicts=(plata-theme)
