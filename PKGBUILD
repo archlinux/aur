@@ -5,7 +5,7 @@
 pkgbase=gdm-prime
 pkgname=(gdm-prime libgdm-prime)
 pkgver=3.34.1
-pkgrel=2
+pkgrel=3
 url="https://wiki.gnome.org/Projects/GDM"
 arch=(x86_64)
 license=(GPL)
