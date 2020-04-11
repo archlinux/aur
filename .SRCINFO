@@ -1,0 +1,14 @@
+pkgbase = nishang-git
+	pkgdesc = A collection of scripts and payloads which enables usage of PowerShell for offensive security.
+	pkgver = r335.eb25ca3
+	pkgrel = 1
+	url = https://github.com/samratashok/nishang
+	arch = any
+	license = GPL
+	makedepends = git
+	conflicts = nishang
+	source = nishang-git::git+https://github.com/samratashok/nishang
+	sha256sums = SKIP
+
+pkgname = nishang-git
+
