@@ -1,6 +1,6 @@
 pkgbase = teamspeak5
 	pkgdesc = The future of gaming communication
-	pkgver = 5.0.0beta19
+	pkgver = 5.0.0beta24
 	pkgrel = 1
 	url = http://www.teamspeak.com
 	arch = x86_64

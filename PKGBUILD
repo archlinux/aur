@@ -1,7 +1,7 @@
-# Maintainer: Arkadiusz Dzięgielewski <arek.dzski@gmail.com>
+# Maintainer: Shayne Hartford <shayneehartford@gmail.com>
 
 pkgname=teamspeak5
-pkgver=5.0.0beta19
+pkgver=5.0.0beta24
 pkgrel=1
 pkgdesc="The future of gaming communication"
 url="http://www.teamspeak.com"
