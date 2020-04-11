@@ -13,7 +13,7 @@ JVB_PORT=5347
 JVB_SECRET=
 
 # extra options to pass to the JVB daemon
-JVB_OPTS=""
+JVB_OPTS="--apis=,"
 
 # adds java system props that are passed to jvb (default are for home and logging config file)
 JAVA_SYS_PROPS="-Dnet.java.sip.communicator.SC_HOME_DIR_LOCATION=/etc/jitsi\

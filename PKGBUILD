@@ -1,7 +1,7 @@
 _pkgname=jitsi-videobridge
 pkgname=${_pkgname}-bin
 epoch=1
-pkgver=2.1+157+g389b69ff
+pkgver=2.1+169+ga28eb88e
 pkgrel=1
 _debname=${_pkgname}2
 _debrel=1
@@ -26,12 +26,12 @@ source=("https://download.jitsi.org/stable/${_debname}_${pkgver//+/-}-${_debrel}
         'tmpfiles.conf'
         'config'
         'sip-communicator.properties')
-sha256sums=('f0cbb0b0146c20f2ff2b3936d5e2ef4b140e4f75cc7b69a6bc7d412c48d01781'
-            '076a945d5b188e2800d8f0d7f3024de1bf272710026fd48c9f2bbd6c39199c23'
+sha256sums=('d8a091c000bbbd6ea3ea77ef6a54e63c04d3483169cadce6b0187e318b97c499'
+            '834361b7a5f926a900b5c39dc3f177085de2341527c2d68696de3f0c77e02e3a'
             '5b47b031d7a1dec536d3fc53e71d971b1052ea2e78e1060b404a792211363515'
             '885923de1718b757826596aaec8e58025ae40ed622bad4b5f43b12ab975c86a2'
-            '0ede8fcca8600afa2195fdc839639735cb9ab2fd4ae6ee9b03d22d1ba129b8f7'
-            '60de82ad5c0fbaad2c8afa56a90a7011499ed47c691cc557e44eb9c13e3f0bdf')
+            '4d458fdac2f1a5ff761d6239076e7cfafe4812a3d4a12e754b48c828f46a1f44'
+            'be0a457c27ba99c514bbad4f2ce3494589eb242987f42246f2fe2df636538790')
 
 package() {
   cd "${srcdir}"
