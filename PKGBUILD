@@ -1,4 +1,4 @@
-# Maintainer: gryffyn <evanmicahp@gmail.com>
+# Maintainer: gryffyn <aur@evan.mp>
 
 pkgname=python-pytelegrambotapi-git
 _pkgname=pyTelegramBotAPI
