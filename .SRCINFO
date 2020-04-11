@@ -1,0 +1,16 @@
+pkgbase = cargo-cache-git
+	pkgdesc = Display info and prune cargo cache
+	pkgver = 0.4.2.1098.ga354167
+	pkgrel = 1
+	url = https://github.com/matthiaskrgr/cargo-cache
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = cargo
+	provides = cargo-cache
+	conflicts = cargo-cache
+	source = cargo-cache::git+https://github.com/matthiaskrgr/cargo-cache
+	sha256sums = SKIP
+
+pkgname = cargo-cache-git
+
