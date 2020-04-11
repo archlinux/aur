@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=google-music-manager-uploader
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Google Music Manager Uploader Daemon"
 arch=('any')
@@ -19,4 +19,4 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     python setup.py install --root="$pkgdir" --optimize=1
 }
-md5sums=('610219654b12bab7b4ab033fc80d2d65')
+md5sums=('93214c9e81aeb076c34eae2cd62dece3')

@@ -1,6 +1,6 @@
 pkgbase = google-music-manager-uploader
 	pkgdesc = Google Music Manager Uploader Daemon
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/jaymoulin/google-music-manager-uploader
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = google-music-manager-uploader
 	depends = python-gmusicapi
 	depends = python-netifaces
 	depends = python-watchdog
-	source = https://github.com/jaymoulin/google-music-manager-uploader/archive/1.6.1.tar.gz
-	md5sums = 610219654b12bab7b4ab033fc80d2d65
+	source = https://github.com/jaymoulin/google-music-manager-uploader/archive/1.6.2.tar.gz
+	md5sums = 93214c9e81aeb076c34eae2cd62dece3
 
 pkgname = google-music-manager-uploader
 
