@@ -1,6 +1,6 @@
 pkgbase = libindy
 	pkgdesc = Shared crypto library for Hyperledger Indy components
-	pkgver = 1.14.2
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://github.com/hyperledger/indy-sdk
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = libindy
 	depends = libsodium
 	depends = openssl
 	depends = sqlite3
-	source = https://github.com/hyperledger/indy-sdk/archive/v1.14.2.tar.gz
-	sha256sums = d3c0fdfd2adbb3de5dcb6c031de74b75b5ddd3dd759472d06050e3322c273881
+	source = https://github.com/hyperledger/indy-sdk/archive/v1.15.0.tar.gz
+	sha256sums = 4955a95cb3ffc1d49ad3d7299c1b5f3c44b03777c2c37324f5e80f89964f1652
 
 pkgname = libindy
 
