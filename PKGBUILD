@@ -1,6 +1,6 @@
 pkgname=ifcopenshell-git
-pkgver=0.5.0.preview2.r374.g0ae1c90
-pkgrel=2
+pkgver=0.5.0rc0.r17.g8625aab5
+pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon. GIT version."
 arch=('x86_64' 'i686')
 url="http://ifcopenshell.org/"
@@ -8,7 +8,7 @@ license=('LGPL3')
 depends=('boost-libs>=1.58.0' 'opencascade' 'icu' 'opencollada' 'python')
 optdepends=()
 makedepends=('cmake' 'boost>=1.58.0' 'swig')
-provides=('ifcopenshell' 'ifcblender' 'IfcConvert' 'IfcGeomServer')
+provides=('ifcopenshell' 'IfcBlender' 'IfcConvert' 'IfcGeomServer')
 conflicts=('ifcopenshell')
 replaces=()
 backup=()
@@ -57,8 +57,8 @@ build() {
 	-DOPENCOLLADA_LIBRARY_DIR=/usr/lib/opencollada \
 	-DICU_INCLUDE_DIR=/usr/include/unicode \
 	-DICU_LIBRARY_DIR=/usr/lib \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python${_pythonver:7:3}m \
-        -DPYTHON_LIBRARY=/usr/lib64/libpython${_pythonver:7:3}m.so \
+  -DPYTHON_INCLUDE_DIR=/usr/include/python${_pythonver:7:3} \
+  -DPYTHON_LIBRARY=/usr/lib64/libpython${_pythonver:7:3}.so \
 	-DSWIG_EXECUTABLE=/usr/bin/swig \
 	../cmake
   make
