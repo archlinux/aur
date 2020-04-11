@@ -1,12 +1,13 @@
 pkgbase = archuseriso
 	pkgdesc = Build your own Arch Linux Live iso image. Featuring Persistence, Encryption.
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/laurent85v/archuseriso
 	install = archuseriso.install
 	arch = any
 	license = GPL
 	depends = archiso
+	depends = syslinux
 	conflicts = archuseriso
 	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.4.tar.gz
 	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.4.tar.gz.sig
