@@ -3,7 +3,7 @@
 
 pkgname=android-support
 pkgver=r23.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Android Support Package'
 arch=('any')
 url="https://developer.android.com/sdk/compatibility-library.html"

@@ -1,7 +1,7 @@
 pkgbase = android-support
 	pkgdesc = Android Support Package
 	pkgver = r23.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.android.com/sdk/compatibility-library.html
 	arch = any
 	license = custom
