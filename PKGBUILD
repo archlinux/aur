@@ -2,8 +2,8 @@
 
 pkgorg='stack-of-tasks'
 pkgname=('pinocchio' 'pinocchio-docs')
-pkgver=2.3.1
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
