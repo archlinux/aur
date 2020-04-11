@@ -1,6 +1,6 @@
 pkgname=cargo-binutils
-pkgver=0.1.6
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='Cargo subcommands to invoke the LLVM tools shipped with the Rust toolchain'
 url="https://github.com/rust-embedded/$pkgname"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('Apache' 'MIT')
 depends=('rustup' 'cargo')
 install="$pkgname.install"
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('5514aefc982944c9fb965881a533817a4faaad883c871daa6fd5c820ce91ef6f')
+sha256sums=('a9f6e581e8f00dc98d043218ee2c36eb7d8b21398a1b97f24100dbe6e2084846')
 
 build() {
 	cd "$pkgname-$pkgver"
