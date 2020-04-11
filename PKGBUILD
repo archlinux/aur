@@ -1,7 +1,8 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=fragments-git
-pkgver=1.3.r25.g07ee2b7
+pkgver=1.4.r131.g9d7bedf
 pkgrel=1
 pkgdesc="BitTorrent client for GNOME"
 arch=(i686 x86_64 armv6h armv7h)
@@ -18,46 +19,16 @@ makedepends=(git
              libdazzle
              libhandy
              meson
-             vala)
+             vala
+             libtransmission)
 provides=(fragments)
 conflicts=(fragments)
-source=("git+https://gitlab.gnome.org/World/Fragments.git"
-        "git+https://github.com/transmission/transmission"
-        "git+https://github.com/transmission/dht"
-        "git+https://github.com/transmission/libb64"
-        "git+https://github.com/transmission/libevent"
-        "git+https://github.com/transmission/libnatpmp"
-        "git+https://github.com/transmission/libutp"
-        "git+https://github.com/transmission/miniupnpc")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+source=("git+https://gitlab.gnome.org/World/Fragments.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd Fragments
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd Fragments
-    git submodule init
-    git config --local submodule.submodules/transmission.url "$srcdir/transmission"
-    git submodule update
-
-    cd submodules/transmission
-    git submodule init
-    git config --local submodule.third-party/dht.url "$srcdir/dht"
-    git config --local submodule.third-party/libb64.url "$srcdir/libb64"
-    git config --local submodule.third-party/libevent.url "$srcdir/libevent"
-    git config --local submodule.third-party/libnatpmp.url "$srcdir/libnatpmp"
-    git config --local submodule.third-party/libutp.url "$srcdir/libutp"
-    git config --local submodule.third-party/miniupnpc.url "$srcdir/miniupnpc"
-    git submodule update
 }
 
 build() {
