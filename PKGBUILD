@@ -59,12 +59,12 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.6
-_minor=0
-_rc=7
-_srcname=linux-${_major}-rc${_rc}
-_clr=${_major}.0.rc6-16
+_minor=3
+_rc=
+_srcname=linux-${_major}
+_clr=${_major}.3-19
 pkgbase=linux-clear-current
-pkgver=${_major}.${_minor}.rc${_rc}
+pkgver=${_major}.${_minor}
 pkgrel=1
 pkgdesc='Clear Linux current'
 arch=('x86_64')
@@ -74,7 +74,9 @@ makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
 _gcc_more_v='20191217'
 source=(
-  "https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
+  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
+  "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=${_clr}"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
 )
@@ -144,6 +146,9 @@ prepare() {
                        --enable SECURITY_APPARMOR \
                        --enable SECURITY_YAMA
 
+        ## Library routines
+        scripts/config --enable FONT_TER16x32
+
         make olddefconfig
 
     ### Patch source to unlock additional gcc CPU optimizations
@@ -199,7 +204,7 @@ _package() {
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
-    provides=('WIREGUARD-MODULE')
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
     install=linux.install
 
     cd $_srcname
@@ -311,7 +316,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('d18c846ef07a699561d3884a34f10941aed4e079c5f2a6fc151e9c54dd8d6373'
+sha256sums=('e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622'
+            'SKIP'
+            'a677aa98df0fc907314130b511feef3108717d98c405c98a51dde4e06d1c492c'
             'SKIP'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5')
 

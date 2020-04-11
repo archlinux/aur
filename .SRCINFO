@@ -1,6 +1,6 @@
 pkgbase = linux-clear-current
 	pkgdesc = Clear Linux current
-	pkgver = 5.6.0.rc7
+	pkgver = 5.6.3
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-current
 	arch = x86_64
@@ -12,12 +12,16 @@ pkgbase = linux-clear-current
 	makedepends = libelf
 	makedepends = xmlto
 	options = !strip
-	source = https://git.kernel.org/torvalds/t/linux-5.6-rc7.tar.gz
-	source = clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=5.6.0.rc6-16
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.6.3.xz
+	source = clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=5.6.3-19
 	source = enable_additional_cpu_optimizations-20191217.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20191217.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = d18c846ef07a699561d3884a34f10941aed4e079c5f2a6fc151e9c54dd8d6373
+	sha256sums = e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622
+	sha256sums = SKIP
+	sha256sums = a677aa98df0fc907314130b511feef3108717d98c405c98a51dde4e06d1c492c
 	sha256sums = SKIP
 	sha256sums = 7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5
 
@@ -30,6 +34,7 @@ pkgname = linux-clear-current
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 
 pkgname = linux-clear-current-headers
