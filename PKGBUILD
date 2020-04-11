@@ -4,7 +4,7 @@
 _basename=gst-plugins-bad
 pkgname=lib32-gst-plugins-bad
 pkgver=1.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer open-source multimedia framework bad plugins (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -19,7 +19,7 @@ depends=(lib32-aom lib32-bluez-libs lib32-celt lib32-chromaprint lib32-curl lib3
         lib32-sbc lib32-soundtouch lib32-spandsp lib32-srt lib32-vulkan-icd-loader lib32-wayland
         lib32-webrtc-audio-processing lib32-wildmidi lib32-x265 lib32-zbar lib32-zvbi
         gst-plugins-bad)
-makedepends=(git gobject-introspection lib32-gtk3 lib32-libtiger lib32-vulkan-validation-layers lv2
+makedepends=(git lib32-gtk3 lib32-libtiger lib32-vulkan-validation-layers lv2
              meson python vulkan-headers)
 _commit=a6f26408f74a60d02ce6b4f0daee392ce847055f  # tags/1.16.2^0
 source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=$_commit")
@@ -65,7 +65,9 @@ build() {
         -D glib-asserts=disabled \
         -D glib-checks=disabled \
         -D package-name="GStreamer Bad Plugins (Arch Linux)" \
-        -D package-origin="https://www.archlinux.org/"
+        -D package-origin="https://www.archlinux.org/" \
+        -D introspection=disabled \
+        -D dtls=disabled
 
     ninja -C build
 
@@ -77,6 +79,14 @@ check() {
 
 package() {
     DESTDIR="$pkgdir" meson install -C build
+
+    # Fix link error in /usr/lib32/gstreamer-1.0/libgstdvdread.so
+    ln -sr "${pkgdir}/usr/lib32/libdvdread.so" "${pkgdir}/usr/lib32/libdvdread.so.7"
+
+    # Fix link error in /usr/lib32/gstreamer-1.0/libgstladspa.so
+    ln -sr "${pkgdir}/usr/lib32/libicui18n.so" "${pkgdir}/usr/lib32/libicui18n.so.63"
+    ln -sr "${pkgdir}/usr/lib32/libicuuc.so" "${pkgdir}/usr/lib32/libicuuc.so.63"
+    ln -sr "${pkgdir}/usr/lib32/libicudata.so" "${pkgdir}/usr/lib32/libicudata.so.63"
 
     rm -rf "${pkgdir}"/usr/{bin,include,share}
 }
