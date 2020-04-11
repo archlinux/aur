@@ -63,6 +63,7 @@ optdepends=(
 'nemo-dropbox'
 # pdf editing
 'jpdfbookmarks'
+'okular'
 )
 
 package() {
