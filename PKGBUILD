@@ -4,7 +4,7 @@
 # Contributor: mar77i <mar77i at protonmail dot ch>
 
 pkgname=micro
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=("armv6h" "armv7h" "i686" "x86_64")
@@ -87,6 +87,9 @@ prepare() {
 build() {
   cd "${srcdir}/gopath/src/github.com/zyedidia/${pkgname}"
   GOPATH="${srcdir}/gopath" PATH="${PATH}:${GOPATH}/bin" make build-quick
+
+  # To avoid issues deleting directories next time
+  GOPATH="${srcdir}/gopath" go clean --modcache
 }
 
 package() {
