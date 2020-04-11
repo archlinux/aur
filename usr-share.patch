@@ -1,16 +1,17 @@
 diff --git a/setup.py b/setup.py
-index cd47505..50faa3e 100644
+index 794e0f9..4f2bf38 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -61,8 +61,8 @@ setuptools.setup(
-         "web/static/*.png", "web/static/*.css", "web/static/*.html", "web/static/*.js",
+@@ -70,8 +70,9 @@ setuptools.setup(
+         "example-config.yaml",
      ]},
      data_files=[
--        (".", ["example-config.yaml", "alembic.ini"]),
+-        (".", ["alembic.ini"]),
 -        ("alembic", ["alembic/env.py"]),
 -        ("alembic/versions", glob.glob("alembic/versions/*.py"))
-+        ("./share/mautrix-facebook", ["example-config.yaml", "alembic.ini"]),
++        ("./share/mautrix-facebook", ["alembic.ini"]),
 +        ("./share/mautrix-facebook/alembic", ["alembic/env.py"]),
 +        ("./share/mautrix-facebook/alembic/versions", glob.glob("alembic/versions/*.py"))
++
      ],
  )

@@ -2,8 +2,8 @@
 
 _pkgbase=mautrix-facebook
 pkgname=${_pkgbase}-git
-pkgver=r128.0a972cd
-pkgrel=1
+pkgver=r150.9264125
+pkgrel=0
 pkgdesc="A Matrix-Facebook puppeting bridge with multi-user support"
 arch=(any)
 conflicts=(mautrix-facebook)
@@ -23,18 +23,20 @@ makedepends=(git)
 optdepends=()
 source=("${_pkgbase}::git+https://github.com/tulir/${_pkgbase}"
 	    "usr-share.patch"
+	    "reqs.patch"
 	    "README"
 	    "mautrix-facebook-db-upgrade"
 	    "sysusers-mautrix-facebook.conf"
 	    "tmpfiles-mautrix-facebook.conf"
 	    "${_pkgbase}.service")
 sha256sums=('SKIP'
-            '2b4d54734bb9cdbd7cd4995cba519c05acf5c76dec8f93b2f7596e85c2c0c01e'
+            'e0e19d47562e452c1d8e54e44aee7dd1f58ffc77fd2a70aab642361e11564739'
+            '54b2d8abbdd0e873d50c5ee9b8e7044c9f8a4effeb5395e312fc728c29789328'
             'f02378ab2d0d4e83ce33ad24c09b2171292423a3fc96481523a735196ef4751e'
             '793016de273d6dc0a2fdfd1090942aa2ec3cc75c0cad333ed231bb8561fddfd0'
             'd981fb6fef944b83a4089683075ab2ae1cf095a6814e4d3bdce500d3309cb617'
             '9e7d00ea24067447fde0f3c4c08ea70760db85975d93496ed82f597cd8c863d6'
-            '9ce98679d5ec0cf73ecf70a5f92c3240ae7ef35f82691bb58bf06a03c893bfbd')
+            'c9a5e4b4cbe9ea6cc5957ab7352e247daefa53cb90d340083553ea7170f72ee4')
 
 pkgver() {
   cd "$srcdir/${_pkgbase}"
@@ -45,6 +47,7 @@ prepare() {
   cd "$srcdir/${_pkgbase}"
   git reset --hard
   patch < ../usr-share.patch
+  patch < ../reqs.patch
 }
 
 package() {
