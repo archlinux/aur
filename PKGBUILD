@@ -4,7 +4,7 @@
 
 pkgname=aerc-git
 _pkgname=aerc
-pkgver=0.3.0.r68.g472c421
+pkgver=0.3.0.r138.g1fbce01
 pkgrel=1
 pkgdesc='Email Client for your Terminal'
 arch=('x86_64')
