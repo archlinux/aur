@@ -1,22 +1,18 @@
-pkgname=("python-django-formtools" "python2-django-formtools")
-pkgbase=python-django-formtools
-pkgver=2.1
+# Maintainer: Klemens Schölhorn <klemens@schoelhorn.eu>
+
+pkgname='python-django-formtools'
+pkgver=2.2
 pkgrel=1
 pkgdesc='A set of high-level abstractions for Django forms'
 arch=('any')
-url="http://pypi.python.org/pypi/django-formtools/"
+url="https://github.com/jazzband/django-formtools"
 license=('BSD')
-source=("https://pypi.python.org/packages/4a/86/ccbb8225dec0621f99f7e19f3dea0a629f1e41bd99fd58ac3e2f388e028f/django-formtools-2.1.tar.gz")
-md5sums=('c904be4967b3e90efb7ba86ca9c891e4')
+depends=('python-django')
+makedepends=('python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('751f91d9e1e5562169435c54ce7233f8d4e3adf560d70e1e80619130e688375b')
 
-package_python-django-formtools() {
-    depends=('python')
+package() {
     cd "$srcdir/django-formtools-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
-}
-
-package_python2-django-formtools() {
-    depends=('python2')
-    cd "$srcdir/django-formtools-$pkgver"
-    python2 setup.py install --root="$pkgdir/" --optimize=1
 }
