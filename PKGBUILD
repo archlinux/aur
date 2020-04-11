@@ -6,7 +6,7 @@ pkgdesc="aarch64-compatible bits of /opt/vc for Raspberry Pi (vcgencmd, tvservic
 arch=('aarch64')
 url="https://github.com/raspberrypi/userland"
 license=('custom')
-makedepends=('git' 'cmake' 'ed')
+makedepends=('git' 'cmake')
 provides=('raspberrypi-firmware' 'raspberrypi-userland-aarch64')
 source=('git+https://github.com/raspberrypi/userland.git'
         'raspberrypi-userland.conf'
@@ -23,17 +23,12 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/userland"
-	echo -e "1,\$s/sudo /true sudo /\nw\nq"|ed buildme
-}
-
-build() {
-	cd "$srcdir/userland"
-	./buildme --aarch64
+        sed -i -e 's/sudo //' buildme
 }
 
 package() {
-	cd "$srcdir/userland/build/raspberry/release"
-        make install DESTDIR="$pkgdir"
+	cd "$srcdir/userland"
+	./buildme --aarch64 "$pkgdir"
 	cd "$srcdir/userland"
 	install -Dm644 -t "$pkgdir/etc/ld.so.conf.d" "$srcdir/raspberrypi-userland.conf"
         install -Dm644 -t "$pkgdir/etc/profile.d" "$srcdir/raspberrypi-userland.sh"

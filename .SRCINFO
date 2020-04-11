@@ -7,7 +7,6 @@ pkgbase = raspberrypi-userland-aarch64-git
 	license = custom
 	makedepends = git
 	makedepends = cmake
-	makedepends = ed
 	provides = raspberrypi-firmware
 	provides = raspberrypi-userland-aarch64
 	source = git+https://github.com/raspberrypi/userland.git
