@@ -1,5 +1,5 @@
 pkgname=mingw-w64-suitesparse
-pkgver=5.6.0
+pkgver=5.7.2
 pkgrel=1
 pkgdesc="A collection of sparse matrix libraries (mingw-w64)"
 url="http://www.cise.ufl.edu/research/sparse/SuiteSparse/"
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-cmake' 'mingw-w64-make')
 license=('GPL')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v${pkgver}.tar.gz" suitesparse-no-demo.patch)
-sha256sums=('76d34d9f6dafc592b69af14f58c1dc59e24853dcd7c2e8f4c98ffa223f6a1adb' SKIP)
+sha256sums=('fe3bc7c3bd1efdfa5cffffb5cebf021ff024c83b5daf0ab445429d3d741bd3ad' SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -42,7 +42,7 @@ build() {
   for _arch in ${_architectures}; do
     cp -r SuiteSparse-${pkgver} build-${_arch} && pushd build-${_arch}
     ${_arch}-make \
-      UNAME=Windows BLAS="-lblas -lgfortran -lquadmath" \
+      UNAME=Windows BLAS="-llapack -lblas -lgfortran -lquadmath" \
       CHOLMOD_CONFIG='-DNPARTITION' \
       CMAKE_OPTIONS="-DCMAKE_INSTALL_PREFIX=\"/usr/${_arch}\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=\"/usr/share/mingw/toolchain-${_arch}.cmake\"" \
       MY_METIS_LIB="-lmetis" JOBS=2
@@ -55,7 +55,7 @@ package() {
     install -dm755 "${pkgdir}"/usr/${_arch}/{bin,lib,include/suitesparse}
     cd "${srcdir}"/build-${_arch}
     ${_arch}-make install \
-      UNAME=Windows BLAS="-lblas -lgfortran -lquadmath" \
+      UNAME=Windows BLAS="-llapack -lblas -lgfortran -lquadmath" \
       CHOLMOD_CONFIG='-DNPARTITION' \
       CMAKE_OPTIONS="-DCMAKE_INSTALL_PREFIX=\"/usr/${_arch}\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=\"/usr/share/mingw/toolchain-${_arch}.cmake\"" \
       MY_METIS_LIB="-lmetis" \
