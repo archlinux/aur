@@ -1,0 +1,14 @@
+pkgbase = libffi6
+	pkgdesc = A portable, high level programming interface to various calling conventions (ABI version 6)
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = http://sourceware.org/libffi
+	arch = x86_64
+	license = MIT
+	checkdepends = dejagnu
+	depends = glibc
+	source = https://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz
+	sha1sums = 280c265b789e041c02e5c97815793dfc283fb1e6
+
+pkgname = libffi6
+
