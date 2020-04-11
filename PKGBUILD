@@ -35,6 +35,7 @@ package_level-zero-headers() {
     
     # remove loader files
     [ -d 'loader' ] && rm -rf loader
+    mkdir -p loader
     mv "${pkgdir}/usr/lib" loader
 }
 
@@ -43,7 +44,6 @@ package_level-zero-loader() {
     depends=('gcc-libs')
     #optdepends=('level-zero-gpu-driver: for packaged Level Zero GPU driver') # no package provides this yet
     
-    mkdir -p "${pkgdir}/usr"
-    mv loader "${pkgdir}/usr/lib"
+    mv loader "${pkgdir}/usr"
     install -D -m644 "${pkgbase}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
