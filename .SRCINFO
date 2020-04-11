@@ -1,7 +1,7 @@
 pkgbase = mate-menu
 	pkgdesc = Advanced menu for MATE Panel, a fork of MintMenu
-	pkgver = 20.04.1
-	pkgrel = 2
+	pkgver = 20.04.3
+	pkgrel = 1
 	url = https://github.com/ubuntu-mate/mate-menu
 	arch = any
 	license = GPL
@@ -17,8 +17,8 @@ pkgbase = mate-menu
 	depends = python-setproctitle
 	depends = mate-menus
 	depends = python-cairo
-	source = mate-menu-20.04.1.tar.gz::https://github.com/ubuntu-mate/mate-menu/archive/20.04.1.tar.gz
-	sha256sums = 1cb702b9d05d695df4f591a1a53e2245009ec325da964c7570b13d4b5a0af7da
+	source = mate-menu-20.04.3.tar.gz::https://github.com/ubuntu-mate/mate-menu/archive/20.04.3.tar.gz
+	sha256sums = 7cba18164cf52e11c2ab8d11b0861a54e9f9f495f66df3f491c1b2edab0c49e4
 
 pkgname = mate-menu
 
