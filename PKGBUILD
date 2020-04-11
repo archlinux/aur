@@ -2,7 +2,7 @@
 
 pkgname=mupen64plus-gui-git
 pkgver=r205.g93383ee
-pkgrel=1
+pkgrel=2
 pkgdesc='Mupen64Plus Graphical User Interface written in Qt5 (git version)'
 arch=('x86_64')
 url='https://github.com/m64p/mupen64plus-gui/'
@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('qt5-base' 'sdl2' 'p7zip' 'mupen64plus-git' 'libpng' 'zlib'
          'freetype2' 'libgl')
 makedepends=('git' 'cmake')
-provides=('m64p' 'mupen64plus-gui' 'mupenplus-video-gliden64')
-conflicts=('m64p' 'mupen64plus-gui' 'mupenplus-video-gliden64')
+provides=('mupen64plus-gui' 'mupenplus-video-gliden64')
+conflicts=('mupen64plus-gui' 'mupenplus-video-gliden64' 'm64p')
 source=('git+https://github.com/m64p/mupen64plus-gui.git'
         'git+https://github.com/m64p/mupen64plus-input-qt.git'
         'GLideN64-loganmc10'::'git+https://github.com/loganmc10/GLideN64.git#branch=NUI'
