@@ -2,7 +2,7 @@
 
 _plug=adaptivegrain
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.2.0.22.g3307943
+pkgver=0.2.1.24.gcde9f66
 pkgrel=1
 pkgdesc='Reimplementation of the adaptive grain mask as a Vapoursynth plugin'
 arch=('x86_64')
@@ -25,7 +25,7 @@ build() {
     echo 'If the build fails with “no default toolchain configured”, you may need to set up rust.
 When using rustup, this can be done via
 rustup install stable && rustup default stable'
-    cargo build --release --locked
+    RUSTFLAGS="$RUSTFLAGS -C target-cpu=native" cargo build --release --locked
 }
 
 package() {
