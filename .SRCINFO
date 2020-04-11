@@ -1,0 +1,14 @@
+pkgbase = intermodal
+	pkgdesc = User-friendly and featureful CLI BitTorrent metainfo utility, written in Rust
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/casey/intermodal
+	arch = x86_64
+	license = custom:CC0
+	makedepends = cargo
+	conflicts = intermodal-bin
+	source = intermodal-0.1.5.tar.gz::https://github.com/casey/intermodal/archive/v0.1.5.tar.gz
+	sha256sums = 104528437aa21f1afeea57031848b2c93676963a5b2f7702eee9d96fc4141635
+
+pkgname = intermodal
+
