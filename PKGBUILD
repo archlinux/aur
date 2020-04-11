@@ -1,12 +1,12 @@
 pkgname='remoteplaydetached-bin'
 pkgbase='remoteplaydetached'
 _pkgname='RemotePlayDetached'
-pkgver=v0.3
+pkgver=v0.4
 pkgrel=1
 pkgdesc='A simple launcher that is able to launch any external game or application with Steam Remote Play Together Support'
 arch=('x86_64')
 source=("https://github.com/smaTc/RemotePlayDetached/releases/download/${pkgver}/RemotePlayDetached")
-sha256sums=('0009f803d5ac37318a2aba65bd0470c7ee69cdcb11bed7e361b077b33d9e7281')
+sha256sums=('2f44b3a7f654a4c0f750a9bb56e63a6133271d90501ac3149ba6f2ad7bc86ceb')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"
@@ -22,6 +22,6 @@ package() {
     cd ~/
     mkdir RemotePlayDetached
     cd RemotePlayDetached/
-    #curl https://raw.githubusercontent.com/alx365/RemotePlayDetached/master/uninstall.sh > uninstall.sh
-    #chmod +x uninstall.sh
+    curl https://raw.githubusercontent.com/alx365/RemotePlayDetached/master/uninstall.sh > uninstall.sh
+    chmod +x uninstall.sh
 }
