@@ -1,7 +1,7 @@
 # Maintainer: Sergey A. <murlakatamenka@disroot.org>
 
 pkgname=zenith
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Terminal system monitor with histograms, written in Rust"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 provides=('zenith')
 conflicts=('zenith-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-md5sums=('7451bd8d82e3f1dd6a2707d84e4bb7ce')
+md5sums=('e52edf3f45a8602c3a53483fb5f8c1a6')
 
 build() {
     cd "$pkgname-$pkgver"
