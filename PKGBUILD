@@ -1,6 +1,6 @@
 pkgname=tepl-git
 _pkgname=tepl
-pkgver=4.3.1+1+g03287cd
+pkgver=4.4.0+35+g2e08c26
 pkgrel=1
 pkgdesc="Library that eases the development of GtkSourceView-based text editors and IDEs"
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=('amtk' 'gtksourceview4' 'uchardet')
 makedepends=('gobject-introspection' 'gtk-doc' 'vala')
 provides=('tepl')
 conflicts=('tepl')
-source=("git+https://gitlab.gnome.org/GNOME/tepl")
+source=("git+https://gitlab.gnome.org/GNOME/tepl.git/")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -19,13 +19,14 @@ pkgver() {
 }
 
 build() {
-  cd $_pkgname
-  ./autogen.sh --prefix=/usr
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  arch-meson $_pkgname build
+  ninja -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd $_pkgname
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 }
