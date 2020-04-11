@@ -1,0 +1,17 @@
+pkgbase = python-traces-git
+	pkgdesc = Python library for unevenly-spaced time series analysis
+	pkgver = 0.5.1.r21.gc15ed57
+	pkgrel = 1
+	url = https://traces.readthedocs.io/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-traces
+	conflicts = python-traces
+	source = git+https://github.com/datascopeanalytics/traces.git
+	sha256sums = SKIP
+
+pkgname = python-traces-git
+
