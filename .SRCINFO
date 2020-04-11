@@ -12,9 +12,11 @@ pkgbase = raspberrypi-userland-aarch64-git
 	source = git+https://github.com/raspberrypi/userland.git
 	source = raspberrypi-userland.conf
 	source = raspberrypi-userland.sh
+	source = 10-vchiq.rules
 	md5sums = SKIP
 	md5sums = 72e0d5818fc513ece1b964f25f7e7882
 	md5sums = 734f220923521411450b7cb48333c142
+	md5sums = d54988a1f88048e981fe2c427e2f74d9
 
 pkgname = raspberrypi-userland-aarch64-git
 
