@@ -1,6 +1,6 @@
 pkgbase = pacana-git
 	pkgdesc = Pacman repository analysis tool
-	pkgver = 0.10.r2.gdc77568
+	pkgver = 0.10.r3.ge530a9c
 	pkgrel = 1
 	url = https://github.com/bbidulock/pacana
 	arch = i686
