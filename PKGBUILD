@@ -1,7 +1,7 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=antimicrox-git
-pkgver=2.25.39.geaf3d1b
+pkgver=2.25.51.g160b6bd5
 pkgrel=1
 pkgdesc='Map keyboard and mouse actions to gamepad buttons, inspired by qjoypad. Antimicro fork'
 url='https://github.com/juliagoda/antimicroX'
@@ -26,7 +26,7 @@ pkgver() {
 build() {
 	cd antimicroX
 	cmake -DCMAKE_INSTALL_PREFIX=/usr \
-              -DUSE_SDL_2=ON \
+              -DWITH_X11=ON \
               -DWITH_XTEST=ON \
               -DWITH_UINPUT=OFF \
               -DAPPDATA=ON
