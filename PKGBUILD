@@ -14,6 +14,7 @@ source=('teamspeak5.desktop'
 sha256sums=('1a94b6735bba053e3e0a3dc26459761d8e2b64cf95f84c987cbd9486d3c42f82'
             '61cb18d776be69cc0c260aa578fb874dc093e9e1b874b4358d87d504b98dedfc'
             'SKIP')
+conflicts=('teamspeak') # Incorrectly named and structured
 
 package() {
   install -d "${pkgdir}/usr/bin/"

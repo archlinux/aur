@@ -6,6 +6,7 @@ pkgbase = teamspeak5
 	arch = x86_64
 	license = custom
 	optdepends = libpulse
+	conflicts = teamspeak
 	source = teamspeak5.desktop
 	source = teamspeak5.svg
 	source = https://files.teamspeak-services.com/teamspeak/teamspeak-client.tar.gz
