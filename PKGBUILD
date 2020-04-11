@@ -4,7 +4,7 @@ _target=aarch64-linux-gnu
 
 _pkgname=glib2
 pkgname=$_target-$_pkgname
-pkgver=2.64.1
+pkgver=2.64.2
 pkgrel=1
 pkgdesc='Low level core library (ARM64)'
 arch=(x86_64)
