@@ -1,0 +1,19 @@
+pkgbase = pcem-hg
+	pkgdesc = Emulator for various IBM PC computers and clones - development version
+	pkgver = r1559.2f82eb504b30
+	pkgrel = 1
+	url = http://pcem-emulator.co.uk/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = mercurial
+	makedepends = automake-1.15
+	depends = wxgtk2
+	depends = openal
+	depends = sdl2
+	conflicts = pcem
+	source = hg+https://bitbucket.org/pcem_emulator/pcem
+	sha256sums = SKIP
+
+pkgname = pcem-hg
+
