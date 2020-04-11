@@ -3,17 +3,19 @@
 _pkgbase=v4l2loopback
 pkgname=v4l2loopback-dkms
 pkgver=0.12.4
-pkgrel=1
+pkgrel=2
 pkgdesc="v4l2-loopback device"
 url="https://github.com/umlaeute/v4l2loopback"
 arch=('x86_64' 'i686')
 license=('GPLv2')
 depends=('dkms')
-optdepends=('linux-headers: build against the Arch kernel'
-            'linux-lts-headers: build against the LTS kernel'
-            'linux-zen-headers: build against the ZEN kernel'
-            'linux-hardened-headers: build against the HARDENED kernel')
-makedepends=('help2man')
+makedepends=(
+'help2man'
+'linux-headers'
+#'linux-lts-headers'
+#'linux-zen-headers'
+#'linux-hardened-headers'
+)
 conflicts=("${_pkgbase}")
 source=("https://github.com/umlaeute/v4l2loopback/archive/v$pkgver.tar.gz")
 sha256sums=('6483a64050d1c32de909a34379913d2f949141ed37a2ccc250d491a40bf96af9')
