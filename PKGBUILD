@@ -5,7 +5,7 @@
 # Contributor: Peter Johansson <zeronightfall at gmail dot com>
 
 pkgname=starfighter
-pkgver=2.0.0.3
+pkgver=2.1
 pkgrel=1
 pkgdesc="Side-scrolling shoot 'em up space game"
 arch=('x86_64')
@@ -13,7 +13,7 @@ url="https://pr-starfighter.github.io/"
 license=('GPL3')
 depends=('sdl2_image' 'sdl2_mixer')
 source=($pkgname-$pkgver.tar.gz::https://github.com/pr-starfighter/$pkgname/releases/download/v${pkgver}/$pkgname-${pkgver:0:3}-src.tar.gz)
-md5sums=('dcb7da670b84acfc25cf146df3033045')
+md5sums=('b2dc59a9a28389e8c7a14d3a83d946e8')
 
 build() {
   cd $pkgname-${pkgver:0:3}-src
