@@ -11,7 +11,6 @@ license=('custom')
 depends=('xterm')
 depends_i686=('libxext' 'openal' 'sdl')
 depends_x86_64=('lib32-libxext' 'lib32-openal' 'lib32-sdl')
-makedepends=('unzip')
 install='prey.install'
 source=(
     ${pkgname}.desktop

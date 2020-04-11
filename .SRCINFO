@@ -7,7 +7,6 @@ pkgbase = prey
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = unzip
 	depends = xterm
 	source = prey.desktop
 	source = prey.launcher
