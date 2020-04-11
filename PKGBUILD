@@ -1,4 +1,4 @@
-# Maintainer: juantascon <juantascon.aur@horlux.org>
+# Maintainer: gryffyn <aur@evan.mp>
 
 pkgname=python-pytelegrambotapi
 _pkgname=pyTelegramBotAPI
