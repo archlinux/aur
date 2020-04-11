@@ -16,12 +16,6 @@ if [[ $# == 2 ]]; then
     pkgrel=$2
 fi
 
-SRCS=(
-
-)
-
-rm -rf 'download?job=build_logo'
-
 printf '' > PKGBUILD
 echo "# Maintainer: Sumner Evans <me [at] sumnerevans [dot] com>
 
