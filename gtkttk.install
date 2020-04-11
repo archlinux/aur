@@ -1,0 +1,4 @@
+## arg 1:  the new package version
+post_install() {
+    ttk-theme-chooser gtkTtk
+}
