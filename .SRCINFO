@@ -1,0 +1,30 @@
+pkgbase = linux-rockchip-ayufan
+	pkgdesc = The Linux Kernel and modules - rockchip ayufan
+	pkgver = 4.4.202
+	pkgrel = 1237
+	url = https://github.com/ayufan-rock64/linux-kernel
+	install = linux-rockchip-ayufan.install
+	arch = aarch64
+	license = GPL2
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = kernel26
+	provides = linux=4.4.202
+	conflicts = kernel26
+	conflicts = linux
+	source = https://github.com/ayufan-rock64/linux-kernel/releases/download/4.4.202-1237-rockchip-ayufan/linux-image-4.4.202-1237-rockchip-ayufan-gfd4492386213_4.4.202-1237-rockchip-ayufan_arm64.deb
+	source = 60-linux-rockchip-ayufan.hook
+	source = 90-linux-rockchip-ayufan.hook
+	source = linux-rockchip-ayufan.install
+	source = linux-rockchip-ayufan.preset
+	sha256sums = eabf8e88a958f46f9a8c68f2a512e700a4550b4931e2092547468b9593c8b261
+	sha256sums = 304c57d870e8718cdaddc28f23f03d3bb05d0dcaa4869a5eee6e151dab5e22c2
+	sha256sums = 1ae0110a21acb2bb13327592ded352a5327dc248ec382fb32ce9163902dc0602
+	sha256sums = 2fb92aaac64a05ed9716bffd67be9468c67805b4e03ecbc81ab1e59e004696d3
+	sha256sums = 13edb9b975b4176dc4b664f18ead201f2a87bacd0c76d50fd9453fc4e89316f1
+
+pkgname = linux-rockchip-ayufan
+
