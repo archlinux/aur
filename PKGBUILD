@@ -3,7 +3,7 @@
 _pkgbase=mautrix-facebook
 pkgname=${_pkgbase}-git
 pkgver=r150.9264125
-pkgrel=0
+pkgrel=1
 pkgdesc="A Matrix-Facebook puppeting bridge with multi-user support"
 arch=(any)
 conflicts=(mautrix-facebook)
@@ -23,7 +23,6 @@ makedepends=(git)
 optdepends=()
 source=("${_pkgbase}::git+https://github.com/tulir/${_pkgbase}"
 	    "usr-share.patch"
-	    "reqs.patch"
 	    "README"
 	    "mautrix-facebook-db-upgrade"
 	    "sysusers-mautrix-facebook.conf"
@@ -31,7 +30,6 @@ source=("${_pkgbase}::git+https://github.com/tulir/${_pkgbase}"
 	    "${_pkgbase}.service")
 sha256sums=('SKIP'
             'e0e19d47562e452c1d8e54e44aee7dd1f58ffc77fd2a70aab642361e11564739'
-            '54b2d8abbdd0e873d50c5ee9b8e7044c9f8a4effeb5395e312fc728c29789328'
             'f02378ab2d0d4e83ce33ad24c09b2171292423a3fc96481523a735196ef4751e'
             '793016de273d6dc0a2fdfd1090942aa2ec3cc75c0cad333ed231bb8561fddfd0'
             'd981fb6fef944b83a4089683075ab2ae1cf095a6814e4d3bdce500d3309cb617'
@@ -46,8 +44,10 @@ pkgver() {
 prepare() {
   cd "$srcdir/${_pkgbase}"
   git reset --hard
+  echo 'Apply patch to follow fileplacement guidelines per `man heir`'
   patch < ../usr-share.patch
-  patch < ../reqs.patch
+  echo 'Applying patch to permit use of newest mautrix version'
+  sed -i 's/^mautrix==/mautrix>=/' requirements.txt
 }
 
 package() {
