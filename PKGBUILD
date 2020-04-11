@@ -2,7 +2,7 @@
 
 pkgname=mimalloc
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='General-purpose allocator with excellent performance characteristics'
 arch=('x86_64')
 license=('MIT')
@@ -11,7 +11,7 @@ conflicts=('mimalloc-git')
 depends=('glibc')
 makedepends=('cmake' 'git')
 provides=('mimalloc')
-_branch=master
+options=('staticlibs')
 source=("${pkgname}_${pkgver}::git+https://github.com/microsoft/${pkgname}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
