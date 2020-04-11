@@ -20,6 +20,21 @@ pkgver() {
     git describe --tags --abbrev=0
 }
 
+prepare() {
+    rustc_version=$([[ "$(rustc --version)" =~ rustc\ 1.([0-9]+).* ]] && echo "${BASH_REMATCH[1]}")
+
+    (($rustc_version >= 40)) && return 0;
+
+    # Set error color
+    echo -e '\e[0;31m'
+    echo 'Minimum supported rust version is 1.40.0, please update'
+    echo ' * rustup way: `rustup update`'
+    echo ' * pacman way: `pacman -Sy rust`'
+    # Reset color
+    echo -e '\e[0m'
+    return 1
+}
+
 package() {
     checkout_project_root
 
