@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cd "/opt/prey"
-./prey $*
+export TERM=xterm
+export LD_LIBRARY_PATH="/usr/lib32/:$LD_LIBRARY_PATH:."
+./prey.x86 "$@"
 exit $?
-
