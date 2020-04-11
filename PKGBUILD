@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ezra-project-git
-pkgver=0.12.0.r52.gd9b8e2c
+pkgver=0.12.1.r25.g7104405
 pkgrel=1
 pkgdesc='Bible study tool focussing on topical study based on keywords/tags'
 arch=('x86_64')
@@ -62,4 +62,5 @@ package() {
     install -Dm644 -t "$pkgdir/usr/lib/${pkgname%-git}/resources/" "${pkgname%-git}-linux-x64/resources/app.asar"
     install -Dm644 -t "$pkgdir/usr/share/licences/${pkgname%-git}/" LICENSE
     install -Dm644 -t "$pkgdir/usr/share/doc/${pkgname%-git}/" {CHANGELOG,README,TECH,LOC_METRICS}.md
+    install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/" icons/${pkgname%-git}.svg
 }
