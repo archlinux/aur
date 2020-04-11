@@ -6,12 +6,12 @@
 
 pkgname='pass-patched-passmenu-notify-git'
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely'
 arch=('any')
 url='http://zx2c4.com/projects/password-store/'
 license=('GPL2')
-depends=('xclip' 'bash' 'gnupg' 'pwgen' 'tree')
+depends=('xclip' 'bash' 'gnupg' 'tree')
 optdepends=('git: for Git support'
             'dmenu: for passmenu'
             'libnotify: for passmenu desktop notifications')

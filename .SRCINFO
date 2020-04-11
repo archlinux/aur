@@ -1,14 +1,13 @@
 pkgbase = pass-patched-passmenu-notify-git
 	pkgdesc = Stores, retrieves, generates, and synchronizes passwords securely
-	pkgver = latest-passmenu-notify
-	pkgrel = 2
+	pkgver = latest
+	pkgrel = 3
 	url = http://zx2c4.com/projects/password-store/
 	arch = any
 	license = GPL2
 	depends = xclip
 	depends = bash
 	depends = gnupg
-	depends = pwgen
 	depends = tree
 	optdepends = git: for Git support
 	optdepends = dmenu: for passmenu
@@ -17,7 +16,9 @@ pkgbase = pass-patched-passmenu-notify-git
 	provides = passmenu
 	conflicts = passmenu
 	replaces = passmenu
-	source = git+ssh://git@github.com/emlun/password-store.git#branch=passmenu-notify
+	source = passmenu-notify.patch
+	source = https://git.zx2c4.com/password-store/snapshot/password-store-master.tar.xz
+	md5sums = c12e88d852175da95af85958ed83a59b
 	md5sums = SKIP
 
 pkgname = pass-patched-passmenu-notify-git
