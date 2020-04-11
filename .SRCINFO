@@ -1,0 +1,14 @@
+pkgbase = linux-rockchip-ayufan-headers
+	pkgdesc = Header files and scripts for building modules for linux kernel - rockchip ayufan
+	pkgver = 4.4.202
+	pkgrel = 1237
+	url = https://github.com/ayufan-rock64/linux-kernel
+	arch = aarch64
+	license = GPL2
+	provides = linux-headers=4.4.202
+	conflicts = linux-headers
+	source = https://github.com/ayufan-rock64/linux-kernel/releases/download/4.4.202-1237-rockchip-ayufan/linux-headers-4.4.202-1237-rockchip-ayufan-gfd4492386213_4.4.202-1237-rockchip-ayufan_arm64.deb
+	sha256sums = 1927ace8b2dc735937bfee06d2083ee51660680b9d5c8729e9c655cb219b08f2
+
+pkgname = linux-rockchip-ayufan-headers
+
