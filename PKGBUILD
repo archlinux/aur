@@ -3,7 +3,7 @@
 _pkgbase=mautrix-hangouts
 pkgname=${_pkgbase}-git
 pkgver=r61.9f5d965
-pkgrel=0
+pkgrel=2
 pkgdesc="A Matrix-Hangouts puppeting bridge with multi-user support"
 arch=(any)
 conflicts=(mautrix-hangouts)
@@ -44,7 +44,10 @@ pkgver() {
 prepare() {
   cd "$srcdir/${_pkgbase}"
   git reset --hard
+  echo 'Apply patch to follow fileplacement guidelines per `man heir`'
   patch < ../usr-share.patch
+  echo 'Applying patch to permit use of newest mautrix version'
+  sed -i 's/^mautrix==/mautrix>=/' requirements.txt
 }
 
 package() {

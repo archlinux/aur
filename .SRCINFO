@@ -1,7 +1,7 @@
 pkgbase = mautrix-hangouts-git
 	pkgdesc = A Matrix-Hangouts puppeting bridge with multi-user support
 	pkgver = r61.9f5d965
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = AGPLv3
 	makedepends = git
