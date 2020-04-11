@@ -18,14 +18,17 @@ pkgbase = prey
 	sha256sums = b3d06fc51afbb5dc88d7e0f9d5267cd9d171edf9d18c84c5f66c8172da74b357
 	depends_i686 = alsa-lib
 	depends_i686 = libpulse
-	depends_i686 = mesa
+	depends_i686 = libglvnd
 	depends_i686 = openal
 	depends_i686 = sdl
+	optdepends_i686 = alsa-plugins: pulseaudio-support
+	optdepends_i686 = libpulse: pulseaudio support
 	depends_x86_64 = lib32-alsa-lib
-	depends_x86_64 = lib32-libpulse
-	depends_x86_64 = lib32-mesa
+	depends_x86_64 = lib32-libglvnd
 	depends_x86_64 = lib32-openal
 	depends_x86_64 = lib32-sdl
+	optdepends_x86_64 = lib32-alsa-plugins: pulseaudio-support
+	optdepends_x86_64 = lib32-libpulse: pulseaudio support
 
 pkgname = prey
 
