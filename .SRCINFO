@@ -1,0 +1,22 @@
+pkgbase = js-test-git
+	pkgdesc = Application to test javascript code designed for Pantheon Shell
+	pkgver = r208.ed3150b
+	pkgrel = 1
+	url = https://github.com/timecraft/js-test
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	depends = granite
+	depends = gtksourceview3
+	depends = webkit2gtk
+	provides = js-test
+	conflicts = js-test
+	source = git+https://github.com/timecraft/js-test.git
+	md5sums = SKIP
+
+pkgname = js-test-git
+
