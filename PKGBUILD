@@ -5,6 +5,7 @@ pkgrel=3
 pkgdesc="auto update clash's config file"
 license=('GPL')
 arch=('any')
+url="https://github.com/felinae98/clashup"
 depends=(python
          clash
          python-requests)

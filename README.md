@@ -7,7 +7,7 @@ An updator for clash on Archlinux
 
 or use aur
 
-`tbd`
+`yay -Sy clashup`
 
 and just
 
