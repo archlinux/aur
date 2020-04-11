@@ -1,6 +1,6 @@
 pkgbase = gdm-prime
 	pkgver = 3.34.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/GDM
 	arch = x86_64
 	license = GPL

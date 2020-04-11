@@ -5,7 +5,7 @@
 pkgbase=gdm-prime
 pkgname=(gdm-prime libgdm-prime)
 pkgver=3.34.1
-pkgrel=1
+pkgrel=2
 url="https://wiki.gnome.org/Projects/GDM"
 arch=(x86_64)
 license=(GPL)
@@ -81,6 +81,11 @@ package_gdm-prime() {
 
   # Unused or created at start
   rm -r "$pkgdir"/var/{cache,log,run}
+
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/gdm.conf" <<END
+g gdm 120 -
+u gdm 120 "Gnome Display Manager" /var/lib/gdm
+END
 
 ### Split libgdm
   mkdir -p libgdm/{lib,share}
