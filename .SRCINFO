@@ -1,7 +1,7 @@
 pkgbase = aarch64-linux-gnu-glib2
 	pkgdesc = Low level core library (ARM64)
 	pkgver = 2.64.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = x86_64
 	license = LGPL2.1
@@ -13,7 +13,7 @@ pkgbase = aarch64-linux-gnu-glib2
 	depends = aarch64-linux-gnu-zlib
 	options = !buildflags
 	source = https://gitlab.gnome.org/GNOME/glib/-/archive/2.64.2/glib-2.64.2.tar.gz
-	sha256sums = 562c7f04b39cda4d6349b06ab62377f33c6cb9055dff36cd51c04d1291ec654c
+	sha256sums = e9ad4d1b5a1468f1d1cd44f8c4ff4183ed5c8eb54e09da0bfd52d368e15f721a
 
 pkgname = aarch64-linux-gnu-glib2
 
