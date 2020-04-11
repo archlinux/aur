@@ -4,7 +4,7 @@
 _pkgname=nxt-python
 _author=Eelviny
 _pkgver=d532427e90b526ecfd73efe2d566ec69f0c4728a
-pkgname=python-$_pkgname
+pkgname=python-nxt
 pkgver=3.0
 pkgrel=1
 pkgdesc="A python driver/interface for the Lego Mindstorms NXT robot based on NXT_python."
@@ -13,8 +13,8 @@ url="https://github.com/$_author/$_pkgname"
 license=('GPL3')
 depends=('python')
 makedepends=('python-setuptools')
-provides=("python-$_pkgname")
-conflicts=("python-$_pkgname")
+provides=("$pkgname")
+conflicts=("$pkgname")
 source=("https://github.com/$_author/$_pkgname/archive/$_pkgver.zip")
 sha256sums=('78028f567b8722502d8c97dda479a866b5a3e2f9a9563a02863532ba5ca4660b')
 
