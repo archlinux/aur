@@ -2,11 +2,12 @@
 
 pkgname=grin-wallet
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Reference implementation of Grin's wallet."
 arch=('i686' 'x86_64')
 url='https://github.com/mimblewimble/grin-wallet'
 license=('Apache')
+optdepends=('tor: for immediate transactions through Tor anonymizing network')
 makedepends=('clang' 'git' 'rust')
 source=("$pkgname::git+https://github.com/mimblewimble/grin-wallet.git#tag=v${pkgver}")
 sha256sums=('SKIP')
