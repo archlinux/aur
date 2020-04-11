@@ -1,11 +1,11 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=protoc-gen-grpc-java
-pkgver=1.25.0
+pkgver=1.28.1
 pkgrel=1
 epoch=0
 pkgdesc="Protobuf gRPC compiler for Java."
 arch=('x86_64')
-url="http://central.maven.org/"
+url="https://grpc.io"
 license=('MIT')
 depends=()
 makedepends=()
@@ -16,9 +16,9 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-_source="http://central.maven.org/maven2/io/grpc/protoc-gen-grpc-java/${pkgver}/protoc-gen-grpc-java-${pkgver}-linux-x86_64.exe"
+_source="https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/${pkgver}/protoc-gen-grpc-java-${pkgver}-linux-x86_64.exe"
 source=($_source $_source.asc)
-sha1sums=('52e4b308cae18ae37af4722eea3f6bc0e0b928c6'
+sha1sums=('f7e1ecba7819b65316034f3501969a628af4f408'
           'SKIP')
 validpgpkeys=('B02335AA54CCF21E52BBF9ABD9C565AA72BA2FDD')
 
