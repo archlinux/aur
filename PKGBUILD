@@ -1,8 +1,8 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=lib32-libyaml
 _pkgname=libyaml
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="YAML 1.1 library (32-bit)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('lib32-glibc' "${_pkgname}")
 makedepends=('gcc-multilib' 'lib32-gcc-libs')
 source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/yaml/libyaml/archive/${pkgver}.tar.gz")
-sha256sums=('46bca77dc8be954686cff21888d6ce10ca4016b360ae1f56962e6882a17aa1fe')
+sha256sums=('e36ec947f89725e90e062eca39a8a8c88fdce4f83315ab942aa896627236421e')
 
 prepare() {
   cd "${srcdir}/libyaml-${pkgver}"
