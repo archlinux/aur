@@ -1,8 +1,8 @@
 pkgbase = devdocs-desktop-bin
 	pkgdesc = A full-featured desktop app for DevDocs.io.
-	pkgver = 0.6.9
+	pkgver = 0.7.1
 	pkgrel = 1
-	url = https://devdocs.egoist.rocks/
+	url = https://devdocs.egoist.sh/
 	arch = x86_64
 	license = MIT
 	depends = alsa-lib
@@ -11,8 +11,8 @@ pkgbase = devdocs-desktop-bin
 	depends = libxss
 	depends = libxtst
 	depends = nss
-	source = DevDocs_0.6.9_amd64.deb::https://github.com/egoist/devdocs-desktop/releases/download/v0.6.9/DevDocs_0.6.9_amd64.deb
-	sha256sums = 6bc53d31f7c462087f9c32154fe2935cc9d915f208d8ce6a213e15a164b36930
+	source = DevDocs_0.7.1_amd64.deb::https://github.com/egoist/devdocs-desktop/releases/download/v0.7.1/DevDocs_0.7.1_amd64.deb
+	sha256sums = 77bb24c322e520bbc6b58a74b0e788678394f52ff6a9672471befcf57b0f0716
 
 pkgname = devdocs-desktop-bin
 
