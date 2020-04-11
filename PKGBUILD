@@ -13,7 +13,7 @@ optdepends=('dmenu:     interface'
             'ffmpeg:    taking screencasts'
             'libnotify: upload notification')
 source=("https://github.com/Toqozz/slip/archive/${pkgver}.tar.gz")
-sha256sums=('9a749af5ad26d590fa673c04487d79866d929f3f36c69dedfba0d525a1b827dc')
+sha256sums=('dde8f3048bbb95be6bc79b4889b47482a0631f8584152145c3f74405187dfe58')
 
 package() {
     cd "$pkgname-$pkgver"
