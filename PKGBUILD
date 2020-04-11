@@ -1,6 +1,6 @@
 # Maintainer: Lily Wilson <hotaru@thinkindifferent.net>
 pkgname=raspberrypi-userland-aarch64-git
-pkgver=r764.6e6a2c8
+pkgver=r768.a246147
 pkgrel=1
 pkgdesc="aarch64-compatible bits of /opt/vc for Raspberry Pi (vcgencmd, tvservice, etc.)" 
 arch=('aarch64')
@@ -32,11 +32,8 @@ build() {
 }
 
 package() {
-	cd "$srcdir/userland"
-	install -Dm755 -t "$pkgdir/opt/vc/bin" build/bin/*
-	install -Dm644 -t "$pkgdir/opt/vc/lib" build/lib/*
-	cd build/inc
-        find . -type f -printf "install -Dm644 -t \"$pkgdir/opt/vc/include/%h\" %h/%f\n" | sh
+	cd "$srcdir/userland/build/raspberry/release"
+        make install DESTDIR="$pkgdir"
 	cd "$srcdir/userland"
 	install -Dm644 -t "$pkgdir/etc/ld.so.conf.d" "$srcdir/raspberrypi-userland.conf"
         install -Dm644 -t "$pkgdir/etc/profile.d" "$srcdir/raspberrypi-userland.sh"
