@@ -1,15 +1,15 @@
 # Maintainer: pfm <vorticity at mail dot ru>
 pkgname=("python-txsni" "python2-txsni")
 _pkgname=txsni
-pkgver=0.1.9
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Simple support for running a TLS server with Twisted"
 arch=(any)
 url="https://github.com/glyph/txsni"
 license=('MIT')
 makedepends=("python-setuptools" "python2-setuptools")
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/glyph/$_pkgname/archive/v$pkgver.tar.gz")
-md5sums=('c647172765bc4f932b79d53268b8b124')
+md5sums=('eb2e48f731264a4398b8b3e6141af08e')
 
 prepare() {
     cp -a $_pkgname-$pkgver{,-py2}
