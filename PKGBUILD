@@ -5,7 +5,7 @@
 
 pkgname=picom-tryone-git
 _gitname=picom
-pkgver=1389_Next.108.g8877844_2020.04.09
+pkgver=1417_Next.136.g7a3137b_2020.04.11
 pkgrel=1
 pkgdesc="tryone144's picom fork with dual_kawase blur, an X compositor (fork of compton)"
 arch=(i686 x86_64)
@@ -40,7 +40,11 @@ prepare() {
   git config --local user.email picom@makepkg.aur
   git rebase --abort 2>&1 >/dev/null || :
   git fetch https://github.com/yshui/picom.git next
-  git rebase FETCH_HEAD
+  git -c commit.gpgsign=false rebase \
+    --fork-point \
+    --rerere-autoupdate \
+    --strategy-option=ours \
+    FETCH_HEAD
 }
 
 build() {
