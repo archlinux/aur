@@ -1,0 +1,18 @@
+pkgbase = peass
+	pkgdesc = Privilege Escalation Awesome Scripts SUITE for Windows and Linux: LinPEAS and WinPEAS.
+	pkgver = r224.0a5b2b6
+	pkgrel = 1
+	url = https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	optdepends = fping
+	optdepends = nmap
+	optdepends = ping
+	optdepends = gnu-netcat
+	source = peass::git+https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite
+	sha256sums = SKIP
+
+pkgname = peass
+
