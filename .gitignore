@@ -1,6 +1,8 @@
 libssh-*.tar.xz
 libssh-*.tar.xz.asc
+libssh-gnutls-*.pkg.tar.zst
 libssh-gnutls-*.pkg.tar.xz
+libssh-gnutls-docs-*.pkg.tar.zst
 libssh-gnutls-docs-*.pkg.tar.xz
 libssh-gnutls-*.log
 libssh-gnutls-docs-*.log
