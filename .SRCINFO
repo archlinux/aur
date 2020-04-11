@@ -1,23 +1,20 @@
 pkgbase = skywire
 	pkgdesc = Skywire: Building a New Internet. Skycoin.com
 	pkgver = 0.2.0
-	pkgrel = 2
-	url = https://github.com/SkycoinProject/skywire-mainnet
+	pkgrel = 3
+	url = https://github.com/SkycoinProject/skybian
 	arch = x86_64
 	arch = aarch64
 	arch = armv7
 	arch = armv8
 	makedepends = git
+	makedepends = go
 	makedepends = skycoin-keyring
 	source = git+https://github.com/SkycoinProject/skybian.git#branch=develop
-	source = skywire-scripts.tar.gz
-	source = hypervisorconfigPKGBUILD
 	source = PKGBUILD.sig
 	validpgpkeys = DE08F924EEE93832DABC642CA8DC761B1C0C0CFC
 	validpgpkeys = 98F934F04F9334B81DFA3398913BBD5206B19620
 	sha256sums = SKIP
-	sha256sums = a5f90034db1b199a3fede6b2b23453e234aa366c1ee06dbe3ddfc16f26a0c3a7
-	sha256sums = 399926d8addcde6bb588a67739971525f953060b83693cb2a7a081480c4c5091
 	sha256sums = SKIP
 	source_x86_64 = https://github.com/SkycoinProject/skywire-mainnet/releases/download/v0.2.0/skywire-v0.2.0-linux-amd64.tar.gz
 	sha256sums_x86_64 = 988a9925b1650424a97836951b284e633fc78e857b908d65e40cbf6d18eb96d7
