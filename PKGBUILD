@@ -2,13 +2,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=aisleriot-git
-pkgver=3.22.10.r8.g4c79d5b0
+pkgver=3.22.11.r3.g809656b7
 pkgrel=1
 pkgdesc="A collection of patience games written in guile scheme"
 url="https://wiki.gnome.org/Apps/Aisleriot"
 arch=('x86_64')
 license=('GPL')
-depends=('guile-git' 'gtk3' 'qt5-svg')
+depends=('guile' 'gtk3' 'qt5-svg')
 provides=('aisleriot')
 conflicts=('aisleriot')
 makedepends=('appdata-tools' 'gnome-common' 'git' 'meson')
@@ -29,8 +29,9 @@ build() {
   [[ -d builddir ]] || mkdir builddir
   meson . builddir --prefix=/usr \
 	--libexecdir=/usr/lib \
-	-Dtheme_kde_path=/usr/share/carddecks \
-	--buildtype=plain 
+	-D theme_kde=false \
+	-D guile=2.2 \
+	--buildtype=plain
   ninja -j1 -C builddir
 }
 
