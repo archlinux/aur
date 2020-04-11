@@ -1,7 +1,7 @@
 # Maintainer: Kyle Laker <kyle@laker.email>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=warpinator-git
-pkgver=r135.596d88f
+pkgver=0.0.1.r135.596d88f
 pkgrel=1
 pkgdesc="Share files across the LAN"
 arch=('x86_64')
@@ -20,7 +20,8 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/warp"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s" "$(head -n 1 debian/changelog | cut -d'(' -f 2 | cut -d')' -f 1 | \
+		sed 's/-/./')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
