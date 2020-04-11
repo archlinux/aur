@@ -1,14 +1,13 @@
 pkgbase = llvm-cbe-git
 	pkgdesc = resurrected LLVM C Backend, with improvements
-	pkgver = a66518a
+	pkgver = b110169
 	pkgrel = 1
 	url = https://github.com/JuliaComputing/llvm-cbe
 	arch = x86_64
 	license = LLVM Release License
+	makedepends = cmake
 	depends = llvm
-	source = https://github.com/llvm-mirror/llvm/archive/release_70.zip
-	source = git+https://github.com/JuliaComputing/llvm-cbe.git
-	sha256sums = 7c3d96b4df6517ff1168cddc61251e7d41eaee17742d7515578c42576664f97e
+	source = git+https://github.com/woachk/llvm-cbe.git#branch=fix-llvm9
 	sha256sums = SKIP
 
 pkgname = llvm-cbe-git
