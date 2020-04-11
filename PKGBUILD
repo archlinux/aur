@@ -1,14 +1,14 @@
-# Maintainer: Abigail G <me@kb6.ee>
+# Maintainer: Abigail G <dev@kb6.ee>
 pkgname=espresso-logic
-pkgver=1.1
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="The espresso PLA logic minimization program"
 arch=('x86_64')
 depends=('glibc')
-url="https://github.com/galengold/espresso-logic"
+url="https://github.com/classabbyamp/espresso-logic"
 license=('MIT')
-source=($pkgname-$pkgver.tar.gz::https://github.com/classabbyamp/$pkgname/archive/$pkgver.tar.gz)
-md5sums=('611f8b45b2828402aae791364bc9b6d5')
+source=($pkgname-$pkgver.tar.gz::https://github.com/classabbyamp/$pkgname/archive/v$pkgver.tar.gz)
+md5sums=('05f5b217fff617cd1d2f1f32c3648f17')
 
 build() {
   cd "$pkgname-$pkgver/espresso-src"
