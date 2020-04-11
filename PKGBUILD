@@ -61,6 +61,8 @@ optdepends=(
 'google-musicmanager'
 'dropbox'
 'nemo-dropbox'
+# pdf editing
+'jpdfbookmarks'
 )
 
 package() {
