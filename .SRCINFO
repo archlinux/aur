@@ -1,10 +1,12 @@
 pkgbase = xfce-simple-dark
 pkgdesc = Set of dark themes for Xfce widgets, Xfce window decoration and Geany.
 pkgver = 9
-pkgrel = 1
+pkgrel = 2
 url = https://github.com/trustable-code/xfce-simple-dark
 arch = x86_64
 license = GPLv3, Copyright 2017-2020 Simon Krauter
 source = https://github.com/trustable-code/xfce-simple-dark/archive/v9.tar.gz
 md5sums = 94dea0ec74580f118b6273624406878f
+
 pkgname = xfce-simple-dark
+
