@@ -1,15 +1,16 @@
-# Maintainer: Jonathon Fernyhough <jonathon_at_manjaro dot+org>
+# Maintainer: Jonathon Fernyhough <jonathon_at+manjaro dot+org>
 # Contributor: Kr1ss <kr1ss.x#yandex#com>
+# Contributor: Dmitry Valter <dvalter"protonmail"com>
 
 _pkgbase=birdtray
 pkgname=$_pkgbase-git
 pkgver=latest
-pkgrel=3
+pkgrel=4
 pkgdesc="Run Thunderbird with a system tray icon."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/gyunaev/birdtray"
 license=('GPL-3.0')
-depends=(qt5-base sqlite3)
+depends=(qt5-svg qt5-x11extras)
 makedepends=(cmake git qt5-tools)
 conflicts=($_pkgbase)
 provides=($_pkgbase)
