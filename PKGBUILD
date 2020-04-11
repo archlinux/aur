@@ -3,7 +3,7 @@
 pkgbase=chromeos-kde-git
 pkgname=(chromeos-kde-git kvantum-theme-chromeos-git)
 _pkgname=chromeos-kde
-pkgver=r13.715710d
+pkgver=r15.b9fe1bd
 pkgrel=1
 pkgdesc="ChromeOS theme for kde plasma"
 arch=(any)
@@ -40,7 +40,7 @@ package_chromeos-kde-git() {
 
 package_kvantum-theme-chromeos-git() {
     provides=('kvantum-theme-chromeos')
-    pkgdesc="Layan theme for KDE Plasma 5"
+    pkgdesc="ChromeOS theme for KDE Plasma 5"
     depends=(kvantum-qt5)
 
     cd $_pkgname

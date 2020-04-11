@@ -1,6 +1,6 @@
 pkgbase = chromeos-kde-git
 	pkgdesc = ChromeOS theme for kde plasma
-	pkgver = r13.715710d
+	pkgver = r15.b9fe1bd
 	pkgrel = 1
 	url = https://github.com/vinceliuice/chromeos-kde
 	arch = any
@@ -17,7 +17,7 @@ pkgname = chromeos-kde-git
 	provides = chromeos-kde
 
 pkgname = kvantum-theme-chromeos-git
-	pkgdesc = Layan theme for KDE Plasma 5
+	pkgdesc = ChromeOS theme for KDE Plasma 5
 	depends = kvantum-qt5
 	provides = kvantum-theme-chromeos
 
