@@ -1,0 +1,24 @@
+diff -Naurp a/build.sh b/build.sh
+--- a/build.sh	2020-04-11 12:38:19.000000000 +0000
++++ b/build.sh	2020-04-11 12:38:31.845571199 +0000
+@@ -12,8 +12,6 @@ else
+   suffix=".so"
+ fi
+ 
+-export NO_ASM=1
+-
+ install_dir=$PWD/mupen64plus
+ mkdir $install_dir
+ base_dir=$PWD
+@@ -66,9 +64,9 @@ make
+ 
+ cd $base_dir/GLideN64/projects/cmake
+ if [[ $UNAME == *"MINGW"* ]]; then
+-  cmake -G "MSYS Makefiles" -DNOHQ=On -DVEC4_OPT=On -DCRC_OPT=On -DMUPENPLUSAPI=On ../../src/
++  cmake -G "MSYS Makefiles" -DMUPENPLUSAPI=On ../../src/
+ else
+-  cmake -DNOHQ=On -DVEC4_OPT=On -DCRC_OPT=On -DMUPENPLUSAPI=On ../../src/
++  cmake -DMUPENPLUSAPI=On ../../src/
+ fi
+ make
+ 
