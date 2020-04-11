@@ -1,13 +1,13 @@
 pkgname=ifcopenshell
 pkgver=0.6.0b0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
 arch=('x86_64' 'i686')
 url="http://ifcopenshell.org/"
 license=('LGPL3')
 depends=('boost-libs>=1.58.0' 'opencascade' 'icu' 'opencollada' 'python')
 optdepends=()
-makedepends=('cmake' 'boost>=1.58.0' 'swig')
+makedepends=('cmake' 'boost>=1.58.0' 'swig3')
 provides=('ifcopenshell' 'ifcblender' 'IfcConvert' 'IfcGeomServer')
 conflicts=()
 replaces=()
@@ -24,18 +24,16 @@ build() {
   mkdir -p build
   cd "${srcdir}/IfcOpenShell-${pkgver//_/-}/build"
   local _pythonver=$(python --version >&1)
-  cmake  ../cmake \
+
+  cmake \
 	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_CXX_STANDARD=11 \
-	-DOCC_INCLUDE_DIR=/usr/include/opencascade \
+  	-DOCC_INCLUDE_DIR=/usr/include/opencascade \
 	-DOCC_LIBRARY_DIR=/usr/lib \
-	-DOPENCOLLADA_INCLUDE_DIR=/usr/include/opencollada \
-	-DOPENCOLLADA_LIBRARY_DIR=/usr/lib/opencollada \
-    -DPYTHON_INCLUDE_DIR=/usr/include/python${_pythonver:7:3}m \
-    -DPYTHON_LIBRARY=/usr/lib64/libpython${_pythonver:7:3}m.so \
-	-DSWIG_EXECUTABLE=/usr/bin/swig \
 	-DLIBXML2_INCLUDE_DIR=/usr/include/libxml2 \
-	-DLIBXML2_LIBRARIES="/usr/lib/libxml2.so.2;/usr/lib/libicuuc.so.64;/usr/lib/libz.so.1;/usr/lib/liblzma.so.5;/usr/lib/libicudata.so.64"
+	-DLIBXML2_LIBRARIES="/usr/lib/libxml2.so.2"  \
+	-DSWIG_EXECUTABLE="/usr/bin/swig-3" \
+	../cmake/
+
   make
 }
 
