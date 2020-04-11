@@ -1,7 +1,7 @@
 # Maintainer: Aaron DeVore <aaron.devore@gmail.com>
 pkgname=xsv-git
-pkgver=0.9.8.r1.411a3bb
-pkgrel=2
+pkgver=0.13.0.r12.3de6c04
+pkgrel=1
 pkgdesc="A fast CSV toolkit written in Rust"
 arch=(i686 x86_64)
 url="https://github.com/BurntSushi/xsv"
