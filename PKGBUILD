@@ -2,7 +2,7 @@
 
 pkgname=sia-ui
 _pkgname=Sia-UI
-pkgver=1.4.6
+pkgver=1.4.7
 _pkgver="v${pkgver}"
 pkgrel=1
 pkgdesc="Blockchain-based marketplace for file storage"
@@ -11,7 +11,7 @@ url="https://sia.tech"
 license=('MIT')
 depends=('gconf' 'gtk2' 'nss' 'libxss')
 source=("https://sia.tech/releases/Sia-UI-${_pkgver}.AppImage")
-sha512sums=('6a0f5263599b2e0e1d144aa632731d834c3fcc9186d509ab7a797e663777da7829b0fd228837d015497a627bfe4a7a40b7f543a7004e798fdedbef3984fff2ca')
+sha512sums=('69ea72eef5841edce0d356b831d149bdb007c0606fc55e414ce6406b4233c5faee83fa27ccc0a5d1f210d96ff092442798a9e0584c769eccd9ca57101fc29898')
 
 
 prepare() {
