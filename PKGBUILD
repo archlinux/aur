@@ -28,7 +28,7 @@ prepare() {
 
   _AVX2=$(gcc -march=native -dM -E - </dev/null | grep _AVX2_ | cut -d ' ' -f3)
   if [ "${_AVX2}" = "1" ]; then
-    CFLAGS+=" -D__AVX2__"
+    CFLAGS+=" -mavx2 -mfma"
   fi
 
   echo "all:
