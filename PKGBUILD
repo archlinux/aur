@@ -1,18 +1,18 @@
 # Maintainer: Mateusz Janczuk <devqore@gmail.com>
 pkgname=myrdp
-pkgver=2018.2.0
-pkgrel=3
+pkgver=2018.2.1
+pkgrel=1
 pkgdesc="RDP manager using freerdp. Similar to Remmina, mRemoteNG, RDCMan."
 arch=('any')
 url="https://github.com/devqore/myrdp"
 license=('GPL')
-depends=('freerdp' 'python2' 'python2-alembic' 'python2-pyqt4'
-         'python2-pycryptodomex' 'python2-sip-pyqt4')
+depends=('freerdp' 'python3' 'python-alembic' 'python-pyqt4'
+         'python-pycryptodomex' 'python-sip-pyqt4')
 makedepends=('git')
 source=("myrdp.sh"
         "myrdp.desktop"
         "$pkgname::git+https://github.com/devqore/myrdp#tag=$pkgver")
-sha256sums=('7ca211c23f2600d4406058f32cc22b8a42f0c9874b366496e3d0bda0c05ea4b5'
+sha256sums=('5ed6946ec870caa6ab5affd4f4d6603ca849e96d1ba8d82d26e44e6565a5f7f2'
             '2caadd2656255a47876ab8717afd7c622013da9d2f92cb43e229f489e4e562d8'
             'SKIP')
 
