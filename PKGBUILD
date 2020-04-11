@@ -3,7 +3,7 @@
 _plug=surfaceblur
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r0.1.gf8fac49
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/MoePus/VapourSynth-surfaceBlur'
@@ -23,8 +23,10 @@ pkgver() {
 prepare() {
   cd "${_plug}"
 
-  # Comment if you use a AVX processor capable
-  echo "" > config.h
+  _AVX=$(gcc -march=native -dM -E - </dev/null | grep _AVX_ | cut -d ' ' -f3)
+  if [ "${_AVX}" != "1" ]; then
+    echo "" > config.h
+  fi
 
   echo "all:
 	  g++ -c -std=gnu++11 -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o VSPlugin.o VSPlugin.cpp
