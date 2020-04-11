@@ -9,8 +9,7 @@ User=mautrix-hangouts
 Group=mautrix-hangouts
 WorkingDirectory=/var/lib/mautrix-hangouts/
 ExecStart=/usr/bin/mautrix-hangouts -c /etc/synapse/mautrix-hangouts/config.yaml \
-          -r /etc/synapse/mautrix-hangouts/registration.yaml \
-          -b /usr/share/mautrix-hangouts/example-config.yaml
+          -r /etc/synapse/mautrix-hangouts/registration.yaml
 Restart=always
 RestartSec=3
 

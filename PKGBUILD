@@ -2,8 +2,8 @@
 
 _pkgbase=mautrix-hangouts
 pkgname=${_pkgbase}-git
-pkgver=r49.1241db9
-pkgrel=2
+pkgver=r61.9f5d965
+pkgrel=0
 pkgdesc="A Matrix-Hangouts puppeting bridge with multi-user support"
 arch=(any)
 conflicts=(mautrix-hangouts)
@@ -29,12 +29,12 @@ source=("${_pkgbase}::git+https://github.com/tulir/${_pkgbase}"
 	    "tmpfiles-mautrix-hangouts.conf"
 	    "${_pkgbase}.service")
 sha256sums=('SKIP'
-            '627acf28bc80600abb3c0ddf4b0ed563bd77814687c96afabaf1779a55c335d9'
+            'ab5f4cb4d1f8d4c2199dd3f1499712abeed26ac65f3696dec9fb3ed5108da300'
             'eefb2404ecc09eb1484ff3fb73986c9a44d92c5ae729e41269f82148b4299160'
             '918d04d07223c83324e18f44fc181abaadc49b747de76a9bcfd48e6bdda6bd05'
             '36aee765d66afa89778962432660ff49f711bf6982758e0c572d760568555758'
             'e078d74a16e9cbf8b7f6426274256e72f84ab34ed29c240cce3249985fb566da'
-            '6cef4d60dbe05b92c8d5a2353de3e3ea8b3b34a25aad27c0b985f62e8942e833')
+            '6029e541b610e8fe05463749a9f44490d796e0ccf752ccedbaa6d6430672ca64')
 
 pkgver() {
   cd "$srcdir/${_pkgbase}"
