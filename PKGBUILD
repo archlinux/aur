@@ -13,13 +13,12 @@ url="https://${pkggopath}"
 license=()
 makedepends=(gzip)
 depends=()
-source=("https://github.com/skycoin/skyflash/releases/download/Skyflash-v0.0.6/Skyflash_Skyflash-v0.0.6_linux_amd64.gz"
-"https://raw.githubusercontent.com/0pcom/skycoin_archlinux_packages/master/key")
-sha256sums=('30641fcac0595789a9ee7fb8c533bfdc3d0a5002718ae8eef2e850e30fe5c492'
-'41c0a4a42ae64479b008392053f4a947618acd6bb9c3ed2672dafdb2453caa14')
-
+source=("https://github.com/Skyfleet/sky-update/releases/download/skyimager/skyimager-linux-amd64-v0.1.0-2.tar.xz")
+sha256sums=('68e35897495b307d1c6c75fe9adf071213943122d197b38a1f9206d1d4efc99e')
+validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC'  # Moses Narrow <moe_narrow@use.startmail.com>
+              '98F934F04F9334B81DFA3398913BBD5206B19620') #iketheadore skycoin <luxairlake@protonmail.com>
 prepare() {
-  gpg --import key
+  #gpg --import key
   #verify PKGBUILD signature
   gpg --verify ../PKGBUILD.sig ../PKGBUILD
   #Skyflash_Skyflash-v0.0.6_linux_amd64'
@@ -27,8 +26,7 @@ prepare() {
 
 package() {
   msg2 'installing files'
-  install -Dm755 ${srcdir}/Skyflash_Skyflash-v0.0.6_linux_amd64  ${pkgdir}/usr/lib/${projectname}/go/bin/skyflash-gui
-  mkdir -p ${pkgdir}/usr/bin
-  ln -rTsf ${pkgdir}/usr/lib/${projectname}/go/bin/skyflash-gui ${pkgdir}/usr/bin/skyflash-gui
-  chmod 755 ${pkgdir}/usr/bin/skyflash-gui
+  install -Dm755 ${srcdir}/linux-amd64/skyimager-gui ${pkgdir}/usr/bin/skyimager-gui
+  ln -rTsf ${pkgdir}/usr/bin/skyimager-gui ${pkgdir}/usr/bin/skyflash-gui
+  chmod 755 ${pkgdir}/usr/bin/skyimager-gui
 }
