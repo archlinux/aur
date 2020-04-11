@@ -5,8 +5,8 @@
 
 pkgnameorg=ocrmypdf
 pkgname=ocrmypdf-py3
-pkgverorg=9.7.0
-pkgver=$pkgverorg~fix4
+pkgverorg=9.7.1
+pkgver=$pkgverorg
 pkgrel=1
 pkgdesc="A tool to add an OCR text layer to scanned PDF files, allowing them to be searched"
 url="https://github.com/jbarlow83/OCRmyPDF"
@@ -17,9 +17,9 @@ depends=('python' 'python-cffi' 'img2pdf' 'python-pillow' 'tesseract' 'ghostscri
 conflicts=("ocrmypdf" "python-pdfminer")
 makedepends=('python-setuptools')
 optdepends=('jbig2enc: Better compression algorithm; results in smaller PDF files')
-source=("https://files.pythonhosted.org/packages/48/78/da99a62b459eac0069b11698027b7db964f6b00541ea7fb6d510599cec24/ocrmypdf-9.7.0.tar.gz")
-sha256sums=('78adc233a4de86c852777c64fd2126b2f8f188dc98551d6ccb6b02eb61bf6b69')
-
+source=("https://files.pythonhosted.org/packages/4d/13/a9969946ee6a02a3dfc89fb487b8039bd93940036c43715f35760beb18eb/ocrmypdf-9.7.1.tar.gz")
+sha256sums=('fd029b97463e054d95eed361843397a76b2aa35913ac96c57cf8c15a15411971')
+ 
 package () {
   cd "${srcdir}/${pkgnameorg}-${pkgverorg}"
   python setup.py install --root="$pkgdir/" --optimize=1
