@@ -25,7 +25,7 @@ prepare() {
 
   _AVX=$(gcc -march=native -dM -E - </dev/null | grep _AVX_ | cut -d ' ' -f3)
   if [ "${_AVX}" = "1" ]; then
-    CXXFLAGS+=" -mavx2 -mfma"
+    CXXFLAGS+=" -mavx -mfma"
   else
     echo "" > config.h
   fi
