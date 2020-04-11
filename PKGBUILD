@@ -7,7 +7,7 @@
 pkgname=tllocalmgr-git
 _pkgname='texlive-localmanager'
 pkgver=v0.7.r3.gbbd8488
-pkgrel=3
+pkgrel=4
 pkgdesc='A shell and command-line utility to manage TeXLive on Arch Linux'
 arch=('any')
 url='https://git.archlinux.org/users/remy/texlive-localmanager.git/'
@@ -31,12 +31,12 @@ sha256sums=('SKIP'
             'a7698d0076f4e1a7ef401899c174ed9a290674a7e89e9c818ba078e17548c6e7')
 
 pkgver() {
-  cd $_pkgname
+  cd "$_pkgname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd $_pkgname
+  cd "$_pkgname"
 
   # enhances the tllocalmgr script a bit
   # thanks: @sharethewisdom and @cobaltspace
@@ -48,11 +48,11 @@ prepare() {
 }
 
 package() {
-  cd $_pkgname
-  install -d $pkgdir/usr/{bin,share/texmf/arch/tlpkg/TeXLive}
-  install -m755 tllocalmgr $pkgdir/usr/bin/
+  cd "$_pkgname"
+  install -d "$pkgdir/usr/"{bin,share/texmf/arch/tlpkg/TeXLive}
+  install -m755 tllocalmgr "$pkgdir/usr/bin/"
   cd tlpkg/TeXLive
   for _f in *; do
-    install -m644 $_f $pkgdir/usr/share/texmf/arch/tlpkg/TeXLive/
+    install -m644 "$_f" "$pkgdir/usr/share/texmf/arch/tlpkg/TeXLive/"
   done
 }
