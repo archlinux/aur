@@ -1,21 +1,21 @@
 pkgbase = myrdp
 	pkgdesc = RDP manager using freerdp. Similar to Remmina, mRemoteNG, RDCMan.
-	pkgver = 2018.2.0
-	pkgrel = 3
+	pkgver = 2018.2.1
+	pkgrel = 1
 	url = https://github.com/devqore/myrdp
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = freerdp
-	depends = python2
-	depends = python2-alembic
-	depends = python2-pyqt4
-	depends = python2-pycryptodomex
-	depends = python2-sip-pyqt4
+	depends = python3
+	depends = python-alembic
+	depends = python-pyqt4
+	depends = python-pycryptodomex
+	depends = python-sip-pyqt4
 	source = myrdp.sh
 	source = myrdp.desktop
-	source = myrdp::git+https://github.com/devqore/myrdp#tag=2018.2.0
-	sha256sums = 7ca211c23f2600d4406058f32cc22b8a42f0c9874b366496e3d0bda0c05ea4b5
+	source = myrdp::git+https://github.com/devqore/myrdp#tag=2018.2.1
+	sha256sums = 5ed6946ec870caa6ab5affd4f4d6603ca849e96d1ba8d82d26e44e6565a5f7f2
 	sha256sums = 2caadd2656255a47876ab8717afd7c622013da9d2f92cb43e229f489e4e562d8
 	sha256sums = SKIP
 
