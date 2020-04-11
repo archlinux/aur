@@ -1,7 +1,7 @@
-From 59b4a3ed754311917646a1032da4a42cdc2cfde6 Mon Sep 17 00:00:00 2001
+From 28a3a4bec629ccb9cef64c546998052e0806cb1b Mon Sep 17 00:00:00 2001
 From: Takashi Iwai <tiwai@suse.de>
 Date: Tue, 7 Apr 2020 10:36:22 +0200
-Subject: [PATCH] ALSA: hda: Fix potential access overflow in beep helper
+Subject: [PATCH 2/3] ALSA: hda: Fix potential access overflow in beep helper
 
 The beep control helper function blindly stores the values in two
 stereo channels no matter whether the actual control is mono or
@@ -38,5 +38,5 @@ index f5fd62ed4df5..841523f6b88d 100644
  		return 0;
  	}
 -- 
-2.25.0
+2.26.0
 
