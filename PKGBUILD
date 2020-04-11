@@ -3,12 +3,12 @@
 
 pkgname=ttyd
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Share your terminal over the web'
 arch=('i686' 'x86_64' 'armv7h')
 url=https://tsl0922.github.io/ttyd/
 license=('MIT')
-depends=('json-c' 'libpcap' 'libwebsockets' 'zlib')
+depends=('json-c' 'libpcap' 'libwebsockets-libuv' 'zlib')
 makedepends=('cmake' 'vim') # vim needed for its xxd binary
 source=("ttyd.service"
 	"https://github.com/tsl0922/ttyd/archive/$pkgver/ttyd-$pkgver.tar.gz")
