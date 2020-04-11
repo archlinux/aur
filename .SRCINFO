@@ -1,0 +1,35 @@
+pkgbase = quassel-core-small-git
+	pkgdesc = Next-generation distributed IRC client - core only, minimal dependencies
+	pkgver = 0.14.pre.r191.gb134e777
+	pkgrel = 1
+	url = https://quassel-irc.org/
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-tools
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = boost
+	makedepends = git
+	depends = qt5-base-headless
+	depends = qca
+	depends = qt5-script
+	optdepends = postgresql: PostgreSQL database support
+	provides = quassel-core
+	provides = quassel-core-small
+	conflicts = quassel-core
+	conflicts = quassel-core-small
+	backup = etc/conf.d/quassel
+	source = git+https://github.com/quassel/quassel.git
+	source = quassel.service
+	source = quassel.sysusers
+	source = quassel.tmpfiles
+	source = quassel.conf
+	sha256sums = SKIP
+	sha256sums = 0f5adfcaf9a640a795255d6bb82d6242882a1106a7b53b86bcbee6cc1e704241
+	sha256sums = 3c72441a99e2668c6a8a751fa07beeb44f937576c8a1b5f615e4a55f841d93d9
+	sha256sums = 2afd4340c7713f6533e5d175a86b28fd118ecd907776c2b10925d1a4fb31cdca
+	sha256sums = f3031ea8217e01ba42cea14606169e3e27affa5918968ffd5a03c21ae92fe2b8
+
+pkgname = quassel-core-small-git
+
