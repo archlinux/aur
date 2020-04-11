@@ -16,8 +16,8 @@ build() {
   ./configure \
     --prefix=/usr \
     --mandir=/usr/share/man \
-	--enable-64bit \
-  	--with-itcl=/usr/lib/itcl4.2.0
+    --enable-64bit \
+    --with-itcl=/usr/lib/itcl4.2.0
   make
 }
 
