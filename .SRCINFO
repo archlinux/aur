@@ -1,0 +1,13 @@
+pkgbase = sleep_forever
+	pkgdesc = sleep_forever does what the name suggests! Use cases: setting it as shell so you could login and not quit -- so SSH doesn't quit and you could port-forward
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gist.github.com/rany0/4746bf432e4aef2be2336fa5d86f763f
+	arch = any
+	license = unknown
+	provides = sleep_forever
+	conflicts = sleep_forever
+	sha512sums = SKIP
+
+pkgname = sleep_forever
+
