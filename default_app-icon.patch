@@ -1,14 +1,14 @@
 --- a/electron/default_app/default_app.ts
 +++ b/electron/default_app/default_app.ts
-@@ -60,7 +60,7 @@
-   }
+@@ -62,7 +62,7 @@
+   };
  
    if (process.platform === 'linux') {
--    options.icon = path.join(__dirname, 'icon.png')
-+    options.icon = '/usr/share/pixmaps/electron.png'
+-    options.icon = path.join(__dirname, 'icon.png');
++    options.icon = '/usr/share/pixmaps/electron.png';
    }
  
-   mainWindow = new BrowserWindow(options)
+   mainWindow = new BrowserWindow(options);
 --- a/electron/filenames.gni
 +++ b/electron/filenames.gni
 @@ -6,7 +6,6 @@

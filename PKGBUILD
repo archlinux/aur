@@ -1,13 +1,14 @@
 # Maintainer: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 # Contributor: Nicola Squartini <tensor5@gmail.com>
+# Contributor: Valentin Hăloiu <vially.ichb@gmail.com>
 
 pkgname=electron-ozone
-pkgver=7.1.8
+pkgver=8.2.1
 provides=('electron')
 conflicts=('electron')
-_commit=30a94ac944127293d3fd54ede2e3882a871ea8ec
-_chromiumver=78.0.3904.130
-pkgrel=2
+_commit=46a07c4595cd3d386c9ead147fd2b17961a9fc30
+_chromiumver=80.0.3987.163
+pkgrel=1
 pkgdesc='Electron compiled with wayland support via Ozone'
 arch=('x86_64')
 options=(debug !strip)
@@ -22,25 +23,40 @@ optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'libappindicator-gtk3: StatusNotifierItem support'
             'trash-cli: file deletion support (trash-put)'
             "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
-source=('git+https://github.com/hedgepigdaniel/electron.git#branch=arch7.1.8-1'
+source=('git+https://github.com/vially/electron.git#branch=arch8.2.1-1'
         'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git'
         'electron.desktop'
         'default_app-icon.patch'
         'use-system-libraries-in-node.patch'
         'chromium-skia-harmony.patch'
-        'icu65.patch'
-        'chromium-system-icu.patch'
-        'chromium-system-zlib.patch'
+        'fix-building-with-system-zlib.patch'
+        'fix-building-with-unbundled-libxml.patch'
+        'fix-shim-header-generation-when-unbundling-ICU.patch'
+        '0001-Add-missing-algorithm-header-in-bitmap_cursor_factor.patch'
+        'cros-search-service-Include-cmath-for-std-pow.patch'
+        'move-RemoteTreeNode-declaration.patch'
+        'sync-enable-USSPasswords-by-default.patch'
+        'remove-verbose-logging-in-local-unique-font-matching.patch'
+        'rename-Relayout-in-DesktopWindowTreeHostPlatform.patch'
+        'rebuild-Linux-frame-button-cache-when-activation.patch'
        )
 sha256sums=('SKIP'
             'SKIP'
             '5270db01f3f8aaa5137dec275a02caa832b7f2e37942e068cba8d28b3a29df39'
-            '51d6e4239b51084a1e9df87ed4d94dcaa22f8d4f332e941eb56fe71b834e9a7a'
+            '00b21418b9468064f6f275566d3cf64c6b014e596acc650100a5a46da31efbfa'
             'c7eadac877179e586d0cce7f898aa1462b4c207733e68ecc17de9754b691713a'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
-            '1de9bdbfed482295dda45c7d4e323cee55a34e42f66b892da1c1a778682b7a41'
-            'e73cc2ee8d3ea35aab18c478d76fdfc68ca4463e1e10306fa1e738c03b3f26b5'
-            'eb67eda4945a89c3b90473fa8dc20637511ca4dcb58879a8ed6bf403700ca9c8')
+            '18276e65c68a0c328601b12fefb7e8bfc632346f34b87e64944c9de8c95c5cfa'
+            'e530d1b39504c2ab247e16f1602359c484e9e8be4ef6d4824d68b14d29a7f60b'
+            'e477aa48a11ca4d53927f66a9593567fcd053325fb38af30ac3508465f1dd1f6'
+            '716c28bed9f6e9c32e3617e125c1b04806700aef691763923cd4ed14b8d23279'
+            '0a8d1af2a3734b5f99ea8462940e332db4acee7130fe436ad3e4b7ad133e5ae5'
+            '21f631851cdcb347f40793485b168cb5d0da65ae26ae39ba58d624c66197d0a5'
+            '08ef82476780e0864b5bf7f20eb19db320e73b9a5d4f595351e12e97dda8746f'
+            '5bc775c0ece84d67855f51b30eadcf96fa8163b416d2036e9f9ba19072f54dfe'
+            'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
+            '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
+           )
 
 _system_libs=('ffmpeg'
               'flac'
@@ -119,6 +135,21 @@ prepare() {
   yarn install --frozen-lockfile
   cd ..
 
+  echo "Applying local patches..."
+  patch -Np0 -i ../chromium-skia-harmony.patch
+  patch -Np1 -i ../fix-building-with-system-zlib.patch
+  patch -Np1 -i ../fix-building-with-unbundled-libxml.patch
+  patch -Np1 -i ../fix-shim-header-generation-when-unbundling-ICU.patch
+  patch -Np1 -i ../use-system-libraries-in-node.patch
+  patch -Np1 -i ../default_app-icon.patch  # Icon from .desktop file
+  patch -Np1 -i ../0001-Add-missing-algorithm-header-in-bitmap_cursor_factor.patch
+  patch -Np1 -i ../cros-search-service-Include-cmath-for-std-pow.patch
+  patch -Np1 -i ../move-RemoteTreeNode-declaration.patch
+  patch -Np1 -i ../sync-enable-USSPasswords-by-default.patch
+  patch -Np1 -i ../remove-verbose-logging-in-local-unique-font-matching.patch
+  patch -Np1 -i ../rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
+  patch -Np1 -i ../rebuild-Linux-frame-button-cache-when-activation.patch
+
   echo "Patching Chromium for using system libraries..."
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
       tools/generate_shim_headers/generate_shim_headers.py
@@ -137,14 +168,6 @@ prepare() {
   python2 build/linux/unbundle/replace_gn_files.py \
       --system-libraries \
       "${_system_libs[@]}"
-
-  echo "Applying local patches..."
-  patch -Np0 -i ../chromium-skia-harmony.patch
-  patch -Np1 -i ../icu65.patch
-  patch -Np1 -i ../chromium-system-icu.patch
-  patch -Np1 -i ../chromium-system-zlib.patch
-  patch -Np1 -i ../use-system-libraries-in-node.patch
-  patch -Np1 -i ../default_app-icon.patch  # Icon from .desktop file
 }
 
 build() {
