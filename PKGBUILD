@@ -11,8 +11,8 @@ license=('custom')
 depends=('android-sdk')
 options=('!strip')
 source=("http://dl-ssl.google.com/android/repository/support_${pkgver}.zip" 'source.properties')
-sha1sums=('41121bbc412c2fce0be170d589d20cfa3e78e857'
-          '43f89b499226845fccb75bd3deab57fb16a18153')
+sha512sums=('390accebb79a41fda6bd01bbe1343c408af83aea2d216806ce56092a652b27bbec0bff32facb87d3d2325bd0e52ca9bb2fa73eacee36ba62c75717b4417bad66'
+            'e2ee0fd0fe547bff9f4915b610c5cb1a46c88c014440bf592430a38f554f1cf212f4628cb370f4b619a02587992f59577ca42aee70f2f7e1dc57d0627ce3f28c')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/extras/android/"
