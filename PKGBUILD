@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=vmaf-git
-pkgver=1.5.1.r0.g35c6044
+pkgver=1.5.1.r41.g23aa467a
 pkgrel=1
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion (git version)'
 arch=('x86_64')
@@ -15,13 +15,8 @@ replaces=('libvmaf-git')
 source=('git+https://github.com/Netflix/vmaf.git')
 sha256sums=('SKIP')
 
-prepare() {
-    mkdir -p vmaf/libvmaf/build
-}
-
 pkgver() {
-    cd vmaf
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    git -C vmaf describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
@@ -35,13 +30,6 @@ check() {
 
 package() {
     DESTDIR="$pkgdir" ninja -v -C vmaf/libvmaf/build install
-    
-    local _bin
-    install -D -m755 vmaf/libvmaf/build/tools/vmaf -t "${pkgdir}/usr/bin"
-    for _bin in moment ms_ssim psnr ssim
-    do
-        install -D -m755 "vmaf/libvmaf/build/tools/${_bin}" "${pkgdir}/usr/bin/vmaf-${_bin}"
-    done
-    
+    install -D -m755 vmaf/libvmaf/build/tools/vmaf_{feature,rc} -t "${pkgdir}/usr/bin"
     install -D -m644 vmaf/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
