@@ -2,6 +2,7 @@ pkgbase = clashup
 	pkgdesc = auto update clash's config file
 	pkgver = 0.1
 	pkgrel = 3
+	url = https://github.com/felinae98/clashup
 	arch = any
 	license = GPL
 	depends = python
