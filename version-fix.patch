@@ -1,16 +1,16 @@
 diff --git a/build.sbt b/build.sbt
-index e73ff967..d3e13746 100644
+index 4f7002bb..7b701a2f 100644
 --- a/build.sbt
 +++ b/build.sbt
-@@ -2,10 +2,7 @@ def localSnapshotVersion = "0.5.1-SNAPSHOT"
- def isCI = System.getenv("CI") != null
+@@ -14,10 +14,7 @@ val MUnitFramework = new TestFramework("munit.Framework")
+ 
  inThisBuild(
    List(
 -    version ~= { dynVer =>
 -      if (isCI) dynVer
--      else localSnapshotVersion // only for local publishng
+-      else localSnapshotVersion // only for local publishing
 -    },
-+    version := "0.8.3",
++    version := "0.8.4",
      scalaVersion := V.scala212,
      crossScalaVersions := List(V.scala212),
      scalacOptions ++= List(
