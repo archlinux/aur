@@ -1,55 +1,45 @@
-# Maintener: sputnick <gilles *DOT* quenot *AT* gmail *DOT* com>
+# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: sputnick <gilles *DOT* quenot *AT* gmail *DOT* com>
 # Contributor: ianux <ianux@free.fr>
 
 pkgname=weboob-git
-pkgver=1.5_241_gf0b528c74
+pkgver=2.0.r315.g0f6bc340c
 pkgrel=1
-pkgdesc="Weboob (Web Out Of Browsers) provides several applications to interact with a lot of websites."
-url="http://weboob.org"
-license=('AGPL3')
-arch=('i686' 'x86_64' 'armv6h')
-depends=(
-    phonon-qt5
-    python2-cssselect
-    python2-dateutil
-    python2-feedparser
-    python2-futures
-    python2-google-api-python-client
-    python2-html2text
-    python2-imaging
-    python2-lxml
-    python2-prettytable
-    python2-pyqt5
-    python2-pysqlite
-    python2-requests
-    python2-simplejson
-    python2-unidecode
-    python2-yaml
-    which
-)
-makedepends=(git python2-distribute python2-setuptools make)
-optdepends=('gnupg: check for repository authenticity'
-            'python2-routes: contrib backends'
-            'python2-webob: contrib backends'
-            'python2-mako: contrib backends'
-            'pywebkitgtk: contrib backends'
-            'python2-pillow: PIL replacement'
-            'python2-termcolor: color formatting'
-            'python2-nose: test suite')
-conflicts=('weboob')
-provides=('weboob')
-source=("$pkgname"::'git+https://git.weboob.org/weboob/weboob')
-sha256sums=('SKIP')
+pkgdesc="Core library and modules for Web Outside of Browsers"
+arch=(any)
+url="https://weboob.org/"
+license=('LGPL-3.0+')
+depends=('python-lxml'
+	     'python-cssselect'
+	     'python-requests'
+	     'python-dateutil'
+	     'python-yaml'
+	     'python-html2text'
+	     'python-six'
+	     'python-unidecode'
+	     'python-pillow'
+	     'python-babel'
+	     'python-simplejson')
+optdepends=('python-prettytable: CLI output formatting'
+    		'python-feedparser: required by some modules')
+makedepends=('python-setuptools' 'git')
+replaces=('weboob-headless')
+provides=('weboob-headless')
+conflicts=('weboob-headless')
+source=("git+https://git.weboob.org/weboob/weboob")
+md5sums=('SKIP')
 
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    local ver="$(git describe --long)"
-    printf "%s" "${ver//-/.}"
+  cd "${srcdir}/weboob"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "${srcdir}/weboob"
+  python setup.py build
 }
 
 package() {
-   cd ${srcdir}/${pkgname}
-   python2 setup.py install --qt --xdg --prefix=/usr --root="$pkgdir"
-   install -Dm 644 tools/weboob_bash_completion "$pkgdir/etc/bash_completion.d/weboob"
+  cd "${srcdir}/weboob"
+  python setup.py install --prefix=/usr --root="${pkgdir}" --skip-build --optimize=1
 }
-
