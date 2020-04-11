@@ -5,9 +5,8 @@ pkgver=0.5.1.r21.gc15ed57
 pkgrel=1
 pkgdesc="Python library for unevenly-spaced time series analysis"
 url="https://traces.readthedocs.io/"
-depends=(python)
-makedepends=(git
-             python-setuptools)
+depends=(python-infinity)
+makedepends=(git python-setuptools)
 provides=(python-traces)
 conflicts=(python-traces)
 license=(MIT)
