@@ -24,10 +24,10 @@ prepare() {
   cd "${_plug}"
 
   _AVX=$(gcc -march=native -dM -E - </dev/null | grep _AVX_ | cut -d ' ' -f3)
-  if [ "${_AVX}" != "1" ]; then
-    echo "" > config.h
-  else
+  if [ "${_AVX}" = "1" ]; then
     CFLAGS+=" -mavx2 -mfma"
+  else
+    echo "" > config.h
   fi
 
   echo "all:
