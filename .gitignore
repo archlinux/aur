@@ -1,6 +1,7 @@
 # source files
 *.jar
 *.pkg.tar.xz
+*.tar.gz
 pkg/**
 src/**
 build.sh
