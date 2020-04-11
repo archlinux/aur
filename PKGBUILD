@@ -23,7 +23,7 @@ prepare() {
 
 package() {
     # kernel sources
-    install -d "$srcdir/usr/src/linux-headers-${pkgver}-${pkgrel}-${_kname}" "$pkgdir/usr/src/linux-headers-${pkgver}-${pkgrel}-${_kname}"
+    install -d "$srcdir/${_kname}-${pkgver}-${pkgrel}/usr/src/linux-headers-${pkgver}-${pkgrel}-${_kname}" "$pkgdir/usr/src/linux-headers-${pkgver}-${pkgrel}-${_kname}"
     install -d "$pkgdir/lib/modules/${pkgver}-${pkgrel}-${_kname}"
     ln -sf "/usr/src/linux-headers-${pkgver}-${pkgrel}-${_kname}" "$pkgdir/lib/modules/${pkgver}-${pkgrel}-${_kname}/build"
 }
