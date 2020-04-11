@@ -16,6 +16,7 @@ install='prey.install'
 source=(
     ${pkgname}.desktop
     ${pkgname}.launcher
+    ${pkgname}ded.launcher
     "http://icculus.org/prey/downloads/${pkgname}-installer-${pkgver}.bin"
 )
 
@@ -54,6 +55,10 @@ package() {
     # Install Client Launcher
     install -D -m 0755 "${srcdir}/${pkgname}.launcher" \
     "${pkgdir}/usr/bin/${pkgname}"
+
+    # Install Ded Launcher
+    install -D -m 0755 "${srcdir}/${pkgname}ded.launcher" \
+    "${pkgdir}/usr/bin/${pkgname}ded"
     
     # Install Icon
     install -D -m 0755 "${pkgdir}/opt/${pkgname}/${pkgname}.png" \
@@ -71,9 +76,11 @@ package() {
     # Cleanup
     rm "${pkgdir}/opt/${pkgname}/${pkgname}.png"
     rm "${pkgdir}/opt/${pkgname}/${pkgname}"
+    rm "${pkgdir}/opt/${pkgname}/${pkgname}ded"
 }
 
 sha256sums=('a4362a051d42e7b65f1b8359af037974741dd573ce322a61fe095ceadf322410'
             'ffa4f2f80e93f9c7e14ca262f26873f7bc7901d048045934819f98074f870abd'
+            '5fb4ba343bf9823bd430a6f46ce08268ed842b4eec315cfaae87408623550df8'
             'b3d06fc51afbb5dc88d7e0f9d5267cd9d171edf9d18c84c5f66c8172da74b357')
 
