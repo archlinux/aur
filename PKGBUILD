@@ -38,6 +38,7 @@ prepare() {
   export GIT_CONFIG_NOSYSTEM=1
   git config --local user.name makepkg
   git config --local user.email picom@makepkg.aur
+  git rebase --abort 2>&1 >/dev/null || :
   git fetch https://github.com/yshui/picom.git next
   git rebase FETCH_HEAD
 }
