@@ -26,6 +26,7 @@ arch=(x86_64 armv6h armv7h aarch64)
 provides=('${EXECUTABLE_NAME}')
 conflicts=('${EXECUTABLE_NAME}')
 makedepends=('go' 'git' 'npm')
+depends=('ffmpeg')
 source=('${AUR_NAME}::git+https://github.com/deluan/navidrome.git')
 sha256sums=('SKIP')
 

@@ -11,6 +11,7 @@ arch=(x86_64 armv6h armv7h aarch64)
 provides=('navidrome')
 conflicts=('navidrome')
 makedepends=('go' 'git' 'npm')
+depends=('ffmpeg')
 source=('navidrome-git::git+https://github.com/deluan/navidrome.git')
 sha256sums=('SKIP')
 
