@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cod-git
-pkgver=0.0.0.r1.g0240bf2
+pkgver=0.0.0.r4.g7465330
 pkgrel=1
 pkgdesc="A completion daemon for bash/zsh"
 arch=('any')
 url="https://github.com/dim-an/cod"
 license=('Apache-2.0')
 makedepends=('git' 'go-pie')
-optdepends=('bash-completion' 'zsh')
+optdepends=('bash-completion')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/dim-an/cod.git')
