@@ -13,6 +13,6 @@ generate_install:
 	bash generate_install.sh
 
 publish: build
-	git add Makefile PKGBUILD .SRCINFO .install
+	git add Makefile PKGBUILD .SRCINFO .install generate_install.sh
 	git commit -m "$(MSG)"
 	git push
