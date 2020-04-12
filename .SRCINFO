@@ -7,6 +7,7 @@ pkgbase = purism-chatty
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = GPL3
 	makedepends = meson
 	makedepends = pkg-config

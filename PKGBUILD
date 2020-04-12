@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="XMPP and SMS messaging via libpurple and Modemmanager"
 url="https://source.puri.sm/Librem5/chatty"
 license=(GPL3)
-arch=(i686 x86_64 armv6h armv7h)
+arch=(i686 x86_64 armv6h armv7h aarch64)
 depends=(feedbackd
          folks
          libhandy
