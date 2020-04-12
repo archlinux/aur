@@ -20,10 +20,9 @@ prepare() {
     cd $srcdir/$pkgname-desktop-$pkgver
     npm install --silent
 }
+
 build() {
     cd $srcdir/$pkgname-desktop-$pkgver
-    
-    npm install --silent
     npm run build
     npm prune --production
 }
