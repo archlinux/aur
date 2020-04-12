@@ -1,4 +1,5 @@
-# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 # Contributor: cassfalg <cassfalg-git@gmx.de>
 # Contributor: Christian Bühler <christian@cbuehler.de>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
@@ -9,7 +10,7 @@
 # Contributor: fana-m <geminin@gmx.net>
 
 pkgname=freeorion-git
-pkgver=r13546.19febb8f0
+pkgver=r18992.f7bd25fd6
 pkgrel=1
 pkgdesc="turn-based space empire and galactic conquest (4X) computer game"
 url="http://www.freeorion.org/"
@@ -25,7 +26,6 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $srcdir/$pkgname
-
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
