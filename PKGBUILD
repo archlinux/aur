@@ -65,7 +65,7 @@ _srcname=linux-${_major}
 _clr=${_major}.3-19
 pkgbase=linux-clear-current
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux current'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-current"
@@ -87,6 +87,10 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 prepare() {
     cd ${_srcname}
+
+    ### Add upstream patches
+        echo "Add upstream patches"
+        patch -Np1 -i ../patch-${pkgver}
 
     ### Setting version
         echo "Setting version..."

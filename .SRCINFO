@@ -1,7 +1,7 @@
 pkgbase = linux-clear-current
 	pkgdesc = Clear Linux current
 	pkgver = 5.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux-current
 	arch = x86_64
 	license = GPL2
