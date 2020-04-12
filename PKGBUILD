@@ -13,7 +13,7 @@ pkgbase=samba-heimdal
 pkgbaseorig=samba
 pkgname=('libwbclient-heimdal' 'smbclient-heimdal' 'samba-heimdal')
 pkgver=4.11.7
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url="https://www.samba.org"
 license=('GPL3')
@@ -162,7 +162,7 @@ pkgdesc="SMB Fileserver and AD Domain server (using internal Heimdal server)"
 depends=('db>=4.7' 'popt' 'libcups' 'libcap>=2.16' 'gnutls>=2.4.1'
          'talloc' 'ldb-heimdal' 'libbsd' 'python' 'iniparser' 'tdb' 'libaio' 'perl-parse-yapp' "smbclient-heimdal>=$pkgver" 'gpgme'
          'libldb.so' 'libtdb.so' 'libtevent.so')
-optdepends=('python-dnsupdate: required for AD DC provisioning'
+optdepends=('python-dnspython: required for AD DC provisioning'
             'gamin: required for AD DC provisioning')
 provides=('samba')
 conflicts=('samba')
