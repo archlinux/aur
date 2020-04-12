@@ -1,0 +1,22 @@
+pkgbase = synth-shell-greeter-git
+	pkgdesc = Terminal greeter to overwiew system health and status
+	pkgver = v1.0.r0.gbafabea
+	pkgrel = 1
+	url = https://github.com/andresgongora/synth-shell-greeter
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = sed
+	makedepends = grep
+	depends = bash
+	depends = bc
+	depends = ldns
+	depends = lm_sensors
+	optdepends = 
+	provides = synth-shell-greeter
+	conflicts = synth-shell-greeter
+	source = git://github.com/andresgongora/synth-shell-greeter.git#branch=master
+	md5sums = SKIP
+
+pkgname = synth-shell-greeter-git
+
