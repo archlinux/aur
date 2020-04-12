@@ -1,0 +1,1 @@
+d /var/lib/meilisearch 0750 meilisearch meilisearch -

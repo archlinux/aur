@@ -8,7 +8,15 @@ pkgbase = meilisearch
 	makedepends = rust
 	depends = gcc-libs
 	source = meilisearch-0.10.0.tar.gz::https://github.com/meilisearch/MeiliSearch/archive/v0.10.0.tar.gz
+	source = meilisearch.service
+	source = meilisearch.tmpfiles
+	source = meilisearch.sysusers
+	source = meilisearch.conf
 	sha512sums = f07622a25b1a7ba97b6a8139b5fa3b61e16ddf4176f9adb870339a4c33fbd1dfb6b41230b8cf220c50f65ca3add7679c160765ce1fd020abb5a45665b5af2eaf
+	sha512sums = 88c5cf90aca1cc058dffdb19a8fcef2f9232a6458f18190704ede5a165bdedaf7f7ea8a1365cfb34c42f917bbc2354c3fb1f397fc966aaebdce8b5f30040df20
+	sha512sums = 76284bf4c436a6b3365edd6bd12ffcb186b721d284b29933e77ddc841d333be9eeb2701c89fba1567a8eedda52787be8d3c5f55809a051488b7295fbb6842bce
+	sha512sums = b83518bd61cb587baac784b1b9bbe4a6a12be91c0a5b6cc0b3b631dde9cee1d59d6e43800a0d32b909fb2d90fe3f64e1ab63c3c8028428be3333d39f6c05d60c
+	sha512sums = 9d63a9cca6cafb248fffcd4a6e5bac0905d4b87f3eb9793576003d3965e35e217c4c1d6b3206b25ef47143e7d538e71c746bc0352bcdf248ed19e12f58aedc12
 
 pkgname = meilisearch
 
