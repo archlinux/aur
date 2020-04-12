@@ -2,7 +2,7 @@
 
 pkgname=jellyfin-mpv-shim
 pkgver='1.5.7'
-pkgrel=2
+pkgrel=3
 pkgdesc="Cast media from Jellyfin Mobile and Web apps to MPV. (Unofficial)"
 arch=('any')
 url='https://github.com/iwalton3/jellyfin-mpv-shim'
@@ -14,10 +14,8 @@ optdepends=('python-pystray: systray support'
 	'python-pywebview: desktop client and display mirroring support'
 	'python-werkzeug: desktop client support'
 	'python-flask: desktop client support')
-source=("https://pypi.python.org/packages/source/j/jellyfin-mpv-shim/jellyfin-mpv-shim-$pkgver.tar.gz"
-	"https://raw.githubusercontent.com/iwalton3/jellyfin-mpv-shim/master/LICENSE.md")
-sha256sums=('83405606babc2fdad4bd0067f59a5d0473f87bc3824f6a006bd93c452d17df6f'
-	'e36bf8f5853f1dff59a4973e0911d5c90d5d94be33b8096158321fae4445d98a')
+source=("https://github.com/iwalton3/jellyfin-mpv-shim/archive/v1.5.7.tar.gz")
+sha256sums=('0006c228473fb3df8fc849a7c22908dcd9afe77e1ffc1207098c1a068150bc38')
 
 build() {
 	cd "${srcdir}/jellyfin-mpv-shim-${pkgver}"
@@ -25,8 +23,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}"
+	cd "${srcdir}/jellyfin-mpv-shim-${pkgver}"
 	install -Dm 644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	cd "jellyfin-mpv-shim-${pkgver}"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
