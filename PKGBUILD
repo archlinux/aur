@@ -1,17 +1,17 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 
 pkgname=git-brws
-pkgver=0.11.6
+pkgver=0.11.8
 pkgrel=1
 pkgdesc='CLI tool to open repository URLs for GitHub, BitBucket and GitLab in your browser'
 arch=('x86_64')
 url="https://github.com/rhysd/git-brws"
 license=('MIT')
-depends=()
+depends=('openssl')
 conflicts=('git-brws-git')
-makedepends=('rust' 'cargo')
+makedepends=('cargo')
 source=("$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7b2d778b134441880d3dd2bd094ba3bb98f6e0bff6394842e3653625ce062e35')
+sha256sums=('e3555fd14193585912253cadaf82f74924688a56dc7fe3ea0582320d8785fe6e')
 
 build() {
   cd "$pkgname-$pkgver"
