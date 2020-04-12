@@ -13,8 +13,7 @@ Quick Setup:
 
 3. Generate the registration:
  sudo mautrix-hangouts -g -c /etc/synapse/mautrix-hangouts/config.yaml \
-	  -r /etc/synapse/mautrix-hangouts/registration.yaml \
-      -b /usr/share/mautrix-hangouts/example-config.yaml
+	  -r /etc/synapse/mautrix-hangouts/registration.yaml
 
 4. Add the registration file to Synapse's homeserver.yaml:
  #homeserver.yaml

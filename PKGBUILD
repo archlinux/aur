@@ -3,7 +3,7 @@
 _pkgbase=mautrix-hangouts
 pkgname=${_pkgbase}-git
 pkgver=r61.9f5d965
-pkgrel=2
+pkgrel=3
 pkgdesc="A Matrix-Hangouts puppeting bridge with multi-user support"
 arch=(any)
 conflicts=(mautrix-hangouts)
@@ -30,7 +30,7 @@ source=("${_pkgbase}::git+https://github.com/tulir/${_pkgbase}"
 	    "${_pkgbase}.service")
 sha256sums=('SKIP'
             'ab5f4cb4d1f8d4c2199dd3f1499712abeed26ac65f3696dec9fb3ed5108da300'
-            'eefb2404ecc09eb1484ff3fb73986c9a44d92c5ae729e41269f82148b4299160'
+            '797083657b11728c7e711182f6d161871fc2fcae02ee5e651d7082a5c34625bd'
             '918d04d07223c83324e18f44fc181abaadc49b747de76a9bcfd48e6bdda6bd05'
             '36aee765d66afa89778962432660ff49f711bf6982758e0c572d760568555758'
             'e078d74a16e9cbf8b7f6426274256e72f84ab34ed29c240cce3249985fb566da'
