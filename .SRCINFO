@@ -1,6 +1,6 @@
 pkgbase = mitamae
 	pkgdesc = Configuration management tool embedding mruby
-	pkgver = 1.11.5
+	pkgver = 1.11.7
 	pkgrel = 1
 	url = https://github.com/k0kubun/mitamae
 	arch = i686
@@ -11,12 +11,12 @@ pkgbase = mitamae
 	makedepends = git
 	depends = openssl
 	depends = pacman
-	source = https://github.com/k0kubun/mitamae/archive/v1.11.5.tar.gz
+	source = https://github.com/k0kubun/mitamae/archive/v1.11.7.tar.gz
 	source = mruby-2.0.1.tar.gz::https://github.com/mruby/mruby/archive/2.0.1.tar.gz
 	source = build_config.rb
-	sha512sums = 69867ef9b3ace12ac12f1488201294fbcaeeb51124dda1c57b4a06b5dff0a8a180b19b87434c7a8a32651e9303e48b0c1312443c326e5182115bae0bf12f9973
+	sha512sums = 31acabb5e115fa6b576f54cc4ccb198b3c98dfc27d6313727fe3aeb4cb454edff6380ec05190afb50f95a7b8fa64e3002dd8047e93712510ef09f6f5f0838356
 	sha512sums = 74403f928c5af52c615ee2490b0aa685b4d62238f3da3778b3e44748e523e1916f110b42f2e73729be24d561b89a9ae498ff32f549ebe241e97a70d83cf39ded
-	sha512sums = a6168fc5931699842db003f7f3ad2b06c90eb465712709fd12b02f17ec24c9900cc70711fdb8086025318db97b32890e0771082b4c88afc8d867144e035d9512
+	sha512sums = 47f8cbe495a1a4f74207f41fc1000d50785516cf589d49d61a9f054c7315a037bb6e50c8c926949a51dd35677d1f109d0f2a396e13b19448e4f3a6a4281dc15e
 
 pkgname = mitamae
 

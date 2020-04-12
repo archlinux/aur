@@ -17,9 +17,9 @@ MRuby::Build.new do |conf|
   conf.gem github: 'iij/mruby-process', checksum_hash: '95da206a5764f4e80146979b8e35bd7a9afd6850' # Latest
   conf.gem github: 'k0kubun/mruby-erb', checksum_hash: '978257e478633542c440c9248e8cdf33c5ad2074' # Specified by mitamae
   conf.gem github: 'k0kubun/mruby-hashie', checksum_hash: 'c69255a94debcd641f2087b569f5625509bde698' # Specified by mitamae
-  conf.gem github: 'k0kubun/mruby-open3', checksum_hash: 'b7480b6300a81d0e5fac469a36a383518e3dfc78' # Specified by mitamae
+  conf.gem github: 'k0kubun/mruby-open3', checksum_hash: 'b2dba93fdbd60dcff8aa20b6c56014ac89d267ad' # Specified by mitamae
   conf.gem github: 'k0kubun/mruby-shellwords', checksum_hash: '2a284d99b2121615e43d6accdb0e4cde1868a0d8' # Specified by mitamae
-  conf.gem github: 'k0kubun/mruby-specinfra', checksum_hash: '95994e41b5d40f50dbf0e10ff20a38bd124fd30c' # Specified by mitamae
+  conf.gem github: 'k0kubun/mruby-specinfra', checksum_hash: '69fe4306e2b004baa9dd54d4fbf9262988ce7d03' # Specified by mitamae
   conf.gem github: 'k0kubun/mruby-tempfile', checksum_hash: 'e628c8fcb4bca3f3456640a8b56d1ae98c594e24' # Specified by mitamae
   conf.gem github: 'ksss/mruby-at_exit', checksum_hash: '09af1ecdce7b39582023c7614f8305386ee4d789' # Latest
   conf.gem github: 'ksss/mruby-file-stat', checksum_hash: '2d3ea9b5d59d2b41133228a71c110b75cb30a31e' # Specified by mitamae
