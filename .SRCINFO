@@ -1,5 +1,5 @@
 pkgbase = zig-master
-	pkgdesc = robust, optimal, and maintainable programming language
+	pkgdesc = Master build of static zig compiler
 	pkgver = 0.5.0+f79faf900
 	pkgrel = 1
 	url = https://ziglang.org/
