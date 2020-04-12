@@ -1,3 +1,7 @@
+# Maintainer: Julian Daube <joposter at gmail dot com>
+# Contributer: Julian Daube <joposter at gmail dot com>
+
+
 pkgname=swaycwd
 pkgdesc="alternative to xcwd for swayvm"
 pkgrel=1
