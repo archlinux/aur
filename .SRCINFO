@@ -1,6 +1,6 @@
 pkgbase = gnome-terminal-fedora
 	pkgdesc = The GNOME Terminal Emulator with Fedora patches
-	pkgver = 3.36.0.1
+	pkgver = 3.36.1.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal
 	arch = i686
@@ -21,16 +21,16 @@ pkgbase = gnome-terminal-fedora
 	depends = dconf
 	optdepends = gconf: for gnome-terminal-migration
 	optdepends = libnautilus-extension: for "Open Terminal Here" in GNOME Files
-	provides = gnome-terminal=3.36.0.1
+	provides = gnome-terminal=3.36.1.1
 	conflicts = gnome-terminal
 	options = !emptydirs
 	source = https://download.gnome.org/sources/gnome-terminal/3.36/gnome-terminal-3.36.0.1.tar.xz
-	source = 0001-build-Don-t-treat-warnings-as-errors.patch-0a92aafeb1c4d1148e3ff98484edbba63832c4bb::http://src.fedoraproject.org/rpms/gnome-terminal/raw/0a92aafeb1c4d1148e3ff98484edbba63832c4bb/f/0001-build-Don-t-treat-warnings-as-errors.patch
-	source = gnome-terminal-cntr-ntfy-autottl-ts.patch-0a92aafeb1c4d1148e3ff98484edbba63832c4bb::http://src.fedoraproject.org/rpms/gnome-terminal/raw/0a92aafeb1c4d1148e3ff98484edbba63832c4bb/f/gnome-terminal-cntr-ntfy-autottl-ts.patch
-	source = org.gnome.Terminal.gschema.override-0a92aafeb1c4d1148e3ff98484edbba63832c4bb::http://src.fedoraproject.org/rpms/gnome-terminal/raw/0a92aafeb1c4d1148e3ff98484edbba63832c4bb/f/org.gnome.Terminal.gschema.override
-	sha256sums = 8b31c1ce622031b860aef6dd9295e1cac89edcc58c27b925543c9a17dffb40e2
+	source = 0001-build-Don-t-treat-warnings-as-errors.patch-bb5f88b61f68a1bb0b1f1269dfb48eabfc35b5c0::http://src.fedoraproject.org/rpms/gnome-terminal/raw/bb5f88b61f68a1bb0b1f1269dfb48eabfc35b5c0/f/0001-build-Don-t-treat-warnings-as-errors.patch
+	source = gnome-terminal-cntr-ntfy-autottl-ts.patch-bb5f88b61f68a1bb0b1f1269dfb48eabfc35b5c0::http://src.fedoraproject.org/rpms/gnome-terminal/raw/bb5f88b61f68a1bb0b1f1269dfb48eabfc35b5c0/f/gnome-terminal-cntr-ntfy-autottl-ts.patch
+	source = org.gnome.Terminal.gschema.override-bb5f88b61f68a1bb0b1f1269dfb48eabfc35b5c0::http://src.fedoraproject.org/rpms/gnome-terminal/raw/bb5f88b61f68a1bb0b1f1269dfb48eabfc35b5c0/f/org.gnome.Terminal.gschema.override
+	sha256sums = f3d708a1e76d77c1c85b126f6e003220a15d4a46a50fd8070e1a3aabe678a376
 	sha256sums = 672615edf1f8e5ede72bdfa2e671ad35d355a1df64f349762899ad7bc7254769
-	sha256sums = 320adda8d4d2fde25168b3b9bbfe281f42d9015b1ce528fb735fcb3cdf358ceb
+	sha256sums = 8417a68521fd8bae432b5e9832321d95a296279fa4cdc64827520db552829cf5
 	sha256sums = a4a22834d6524fb697a8edf91c9489617d5ab2e513413fc84c6b8575320938f9
 
 pkgname = gnome-terminal-fedora
