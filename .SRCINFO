@@ -1,7 +1,7 @@
 pkgbase = beehive
 	pkgdesc = A flexible event and agent system with lots of bees
-	pkgver = 0.3.2
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/muesli/beehive
 	install = beehive.install
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = beehive
 	options = !strip
 	options = !emptydirs
 	options = !makeflags
-	source = beehive-0.3.2::git+https://github.com/muesli/beehive#tag=v0.3.2
+	source = https://github.com/muesli/beehive/archive/v0.4.0.tar.gz
 	source = beehive.install
 	source = beehive.service
-	sha256sums = SKIP
+	sha256sums = cfe18e937556371be11a08dee152b4d5258708d592d7ada3dfdfe8b1369bc380
 	sha256sums = 6c6d380bd00e907b42fecb87bd07157d9e4c7806daf2f293ec9e2f9e656363c0
 	sha256sums = 0b25ced04449720cba74c0c13bc6c0b75ff6f34bcaad58889745f572f66e7160
 
