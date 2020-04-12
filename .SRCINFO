@@ -1,0 +1,14 @@
+pkgbase = batch
+	pkgdesc = A command-line program for batch processing of files using your favorite text editor
+	pkgver = r18.f306c54
+	pkgrel = 1
+	url = https://github.com/alexherbo2/batch
+	arch = any
+	license = Unlicense
+	makedepends = shards
+	makedepends = git
+	source = git+https://github.com/alexherbo2/batch.git
+	sha256sums = SKIP
+
+pkgname = batch
+
