@@ -1,7 +1,7 @@
 # Maintainer: Hauke Rehfeld <aur.archlinux.org@haukerehfeld.de>
 pkgname=python-keyring-minimal-git
 pkgver=r8.3cebb2a
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimal libsecret keyring in python that works with keepassxc."
 arch=('x86_64' 'i686')
 url="https://github.com/hrehfeld/python-keyring-minimal"
@@ -13,9 +13,10 @@ replaces=()
 backup=()
 options=()
 install=
-source=("git+${url}.git")
+source=("shebang.patch" "git+${url}.git")
 noextract=()
-md5sums=('SKIP')
+md5sums=('f99146004b79338c0aeaf02217a6e1d6'
+         'SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -27,6 +28,7 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 	git checkout master
+	patch keyring-minimal ${srcdir}/shebang.patch
 }
 
 package() {

@@ -1,0 +1,8 @@
+--- keyring-minimal	2020-04-12 22:14:08.648670242 +0200
++++ keyring-minimal.org	2020-04-12 22:13:50.211914890 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ import gi
+ 
