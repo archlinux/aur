@@ -1,7 +1,7 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=imageburner-git
-pkgver=1.0.2.r8.g4ba23e4
+pkgver=1.0.2.r12.g84f44e0
 pkgrel=1
 pkgdesc="Image burner for Pantheon, developed by Artem Anufrij"
 arch=(x86_64)
