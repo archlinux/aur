@@ -1,7 +1,7 @@
 # Maintainer: Trent Palmer trenttdually at gmail
 _name='nvim-yarp'
 pkgname="${_name}-git"
-pkgver=r49.83c6f4e
+pkgver=r51.b710bf4
 pkgrel=1
 pkgdesc="(an) attempt (at) writing a remote plugin framework without :UpdateRemotePlugins."
 arch=('any')
