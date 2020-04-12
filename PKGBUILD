@@ -25,11 +25,11 @@ backup=('etc/conf.d/tvheadend')
 source=(
     "${_gitname}::git+https://github.com/tvheadend/tvheadend.git#branch=master"
     'dvb-scan-tables::git+https://git.linuxtv.org/dtv-scan-tables.git#branch=master'
+    'tvheadend.conf'
 )
-md5sums=(
-    'SKIP'
-    'SKIP'
-)
+md5sums=('SKIP'
+         'SKIP'
+         '2dfcd6632de3862e79aa258f7f0f64fb')
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
@@ -110,12 +110,6 @@ package() {
     sed -i 's|/etc/sysconfig|/etc/conf.d|g' \
         "$pkgdir/usr/lib/systemd/system/tvheadend.service"
 
-    install -d "$pkgdir/etc/conf.d"
-    cat << EOF > "$pkgdir/etc/conf.d/tvheadend"
-# Configuration file for the tvheadend service.
-
-MALLOC_ARENA_MAX=4
-OPTIONS="-u hts -g video -6 --http_port 9981 --htsp_port 9982"
-EOF
+    install -D -m 644 "$srcdir/tvheadend.conf" "$pkgdir/etc/conf.d/tvheadend"
 }
 
