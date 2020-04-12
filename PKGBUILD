@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=ai-dungeon-cli-git
-pkgver=r68.a9c72d1
+pkgver=r69.632ffcf
 pkgrel=1
 pkgdesc="Play ai dungeon on your terminal"
 arch=('any')
