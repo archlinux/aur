@@ -1,8 +1,8 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=inxi-git
-pkgver=3.0.34.r1.g24667eb4
+pkgver=3.0.38.r0.gb6f453ec
 pkgrel=1
 pkgdesc="Full featured CLI system information tool"
 arch=(any)
