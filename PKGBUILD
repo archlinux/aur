@@ -3,7 +3,7 @@
 _pkgbase=mautrix-facebook
 pkgname=${_pkgbase}-git
 pkgver=r150.9264125
-pkgrel=1
+pkgrel=2
 pkgdesc="A Matrix-Facebook puppeting bridge with multi-user support"
 arch=(any)
 conflicts=(mautrix-facebook)
@@ -30,7 +30,7 @@ source=("${_pkgbase}::git+https://github.com/tulir/${_pkgbase}"
 	    "${_pkgbase}.service")
 sha256sums=('SKIP'
             'e0e19d47562e452c1d8e54e44aee7dd1f58ffc77fd2a70aab642361e11564739'
-            'f02378ab2d0d4e83ce33ad24c09b2171292423a3fc96481523a735196ef4751e'
+            '881c2f6a8c4c74be6277bc0ec689b17623bbe08939bde9187ab04ed71e55c447'
             '793016de273d6dc0a2fdfd1090942aa2ec3cc75c0cad333ed231bb8561fddfd0'
             'd981fb6fef944b83a4089683075ab2ae1cf095a6814e4d3bdce500d3309cb617'
             '9e7d00ea24067447fde0f3c4c08ea70760db85975d93496ed82f597cd8c863d6'

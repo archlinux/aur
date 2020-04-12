@@ -13,8 +13,7 @@ Quick Setup:
 
 3. Generate the registration:
  sudo mautrix-facebook -g -c /etc/synapse/mautrix-facebook/config.yaml \
-	  -r /etc/synapse/mautrix-facebook/registration.yaml \
-      -b /usr/share/mautrix-facebook/example-config.yaml
+	  -r /etc/synapse/mautrix-facebook/registration.yaml
 
 4. Add the registration file to Synapse's homeserver.yaml:
  #homeserver.yaml
