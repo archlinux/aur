@@ -1,0 +1,18 @@
+pkgbase = trenta-icons
+	pkgdesc = A crisp, modern icon theme for Trenta OS.
+	pkgver = 0.r448.c217cf9
+	pkgrel = 1
+	url = https://github.com/trenta-io/trenta-icons
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	provides = trenta-icons
+	conflicts = trenta-icons
+	replaces = rainier-ui-icons-git
+	options = !strip
+	source = trenta-icons::git+https://github.com/trenta-io/trenta-icons.git
+	sha256sums = SKIP
+
+pkgname = trenta-icons
+
