@@ -3,14 +3,14 @@
 pkgname=playerctl-git
 _pkgname=playerctl
 pkgver=2.0.1.r4.g20b3b82
-pkgrel=2
+pkgrel=3
 pkgdesc="mpris media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others."
 arch=('i686' 'x86_64')
 url="https://github.com/acrisci/playerctl"
 license=('LGPL3')
-depends=('glib2' 'gobject-introspection')
+depends=('glib2')
 optdepends=('python-gobject: python bindings')
-makedepends=('git' 'gtk-doc' 'meson' 'ninja')
+makedepends=('git' 'gtk-doc' 'meson' 'ninja' 'gobject-introspection')
 provides=('playerctl')
 conflicts=('playerctl')
 source=("$_pkgname::git+https://github.com/acrisci/playerctl.git")
