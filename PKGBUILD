@@ -2,8 +2,8 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-epgsearch
-pkgver=2.4.0.r10.g602d66c
-_gitver=602d66c55964998ce25c6c57b302949a9517f149
+pkgver=2.4.0.r11.gd8cff1a
+_gitver=d8cff1a251ef2b54f1de3f8e6ea55a838eeb73c3
 _vdrapi=2.4.1
 epoch=1
 pkgrel=1
