@@ -12,16 +12,16 @@ package() {
     mkdir -p "${pkgdir}/usr/bin"
     install -Dm0755 "$_pkgname" "$pkgdir"/usr/bin
      
-    curl https://raw.githubusercontent.com/alx365/RemotePlayDetached/master/remoteplaydetached.desktop > remoteplaydetached.desktop
-    sed -i "s#user#${USER}#g" remoteplaydetached.desktop
-    mv remoteplaydetached.desktop ~/.local/share/applications
+    #curl https://raw.githubusercontent.com/alx365/RemotePlayDetached/master/remoteplaydetached.desktop > remoteplaydetached.desktop
+    #sed -i "s#user#${USER}#g" remoteplaydetached.desktop
+    #mv remoteplaydetached.desktop ~/.local/share/applications
     
     
-    curl https://raw.githubusercontent.com/alx365/RemotePlayDetached/master/resources/logo.png > remoteplaydetached.png
-    mv remoteplaydetached.png ~/.icons/
-    cd ~/
-    mkdir RemotePlayDetached
-    cd RemotePlayDetached/
-    curl https://raw.githubusercontent.com/alx365/RemotePlayDetached/master/uninstall.sh > uninstall.sh
-    chmod +x uninstall.sh
+    #curl https://raw.githubusercontent.com/alx365/RemotePlayDetached/master/resources/logo.png > remoteplaydetached.png
+    #mv remoteplaydetached.png ~/.icons/
+    #cd ~/
+    #mkdir RemotePlayDetached
+    #cd RemotePlayDetached/
+    #curl https://raw.githubusercontent.com/alx365/RemotePlayDetached/master/uninstall.sh > uninstall.sh
+    #chmod +x uninstall.sh
 }
