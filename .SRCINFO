@@ -5,7 +5,7 @@ pkgrel = 1
 url = http://int10h.org/oldschool-pc-fonts/
 arch = any
 license = custom:CC-SA-4.0
-source = http://int10h.org/oldschool-pc-fonts//download/ultimate_oldschool_pc_font_pack_v1.0.zip
+source = http://int10h.org/oldschool-pc-fonts/download/ultimate_oldschool_pc_font_pack_v1.0.zip
 sha512sums = 2251aab960370dbe910c1b5be3fc902af7a54f948499996f426f4e669532bbee2f917554ecb76211fbbc524b387bcf3545327d3e8bf07599d8a94ab6264e290e
 
 pkgname = ttf-oldschool-pc-fonts
