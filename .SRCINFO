@@ -1,0 +1,29 @@
+pkgbase = apostrophe-git
+	pkgdesc = A distraction free Markdown editor for GNU/Linux made with GTK+
+	pkgver = 2.2.0.beta1.4.r283.g219fa89
+	pkgrel = 1
+	url = https://gitlab.gnome.org/somas/apostrophe
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = appstream-glib
+	depends = gtk3
+	depends = webkit2gtk
+	depends = gspell
+	depends = python-pypandoc
+	depends = python-regex
+	depends = python-levenshtein
+	depends = python-pyenchant
+	depends = python-gobject
+	depends = python-cairo
+	optdepends = texlive-core: Export as PDF files
+	optdepends = otf-fira-mono: Recommended font (OTF)
+	optdepends = ttf-fira-mono: Recommended font (TTF)
+	provides = apostrophe
+	conflicts = apostrophe
+	source = git+https://gitlab.gnome.org/somas/apostrophe.git
+	sha256sums = SKIP
+
+pkgname = apostrophe-git
+
