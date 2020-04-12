@@ -3,7 +3,7 @@
 pkgname=tvheadend-satip-server-git
 _gitname='tvheadend-git'
 pkgver=4.3.r1857.g221c29b40
-pkgrel=1
+pkgrel=2
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://tvheadend.org/"
