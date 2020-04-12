@@ -2,7 +2,7 @@
 
 pkgname=linvst2-bin
 pkgver=2.8
-pkgrel=2
+pkgrel=3
 pkgdesc="enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's"
 arch=('x86_64')
 url="https://github.com/osxmidi/LinVst"
@@ -10,18 +10,18 @@ depends=('wine' 'python>=3.8')
 makedepends=('git')
 conflicts=('linvst' 'linvst-stable' 'linvst2')
 replaces=('linvst' 'linvst-stable' 'linvst2')
-source=("https://github.com/osxmidi/LinVst/archive/${pkgver}.zip"
+source=("https://github.com/osxmidi/LinVst/releases/download/2.8/LinVst-${pkgver}-Debian-Stretch.zip"
         "git+https://github.com/usrmusicman/ArchStudioUtils.git")
-sha256sums=('c955a6fce5e4d8a6014dd2e7daed8ddca1f57ca9e394caf69f93c4f55b892a48'
+sha256sums=('7bd075b8e208f633d20173b066542855ade04e9605e189f32a982330998ca51c'
             'SKIP')
 
-build() {
-	cd $srcdir/LinVst-${pkgver}
-	make -f Makefile-embed-6432 DESTDIR="${pkgdir}" all 
-}
-
 package() {
-	cd $srcdir/LinVst-${pkgver}
-	make -f Makefile-embed-6432 DESTDIR="${pkgdir}" VST_DIR="${pkgdir}/usr/bin" install
+	cd "${srcdir}/LinVst-${pkgver}-Debian-Stretch/embedded/"
+	for file in *.so; do
+        	install -Dm755 $file $pkgdir/usr/bin/$file
+	done
+	for file in *.exe; do
+		install -Dm755 $file $pkgdir/usr/bin/$file
+	done
 	install -Dm755 $srcdir/ArchStudioUtils/w2lvst2 $pkgdir/usr/bin/w2lvst2
 }
