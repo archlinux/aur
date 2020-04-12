@@ -25,7 +25,6 @@ prepare() {
   cd "$srcdir/bsc"
   git submodule update --init --recursive
   patch -p1 -i "${srcdir}/archlinux.patch"
-  sed -i "s,^BINDIR=.*$,BINDIR=${_prefix}/bin," src/comp/wrapper.sh
 }
 
 build(){
@@ -44,6 +43,7 @@ package() {
   install -d "${pkgdir}/usr/bin"
   local _prog
   for _prog in bsc bluetcl bluewish; do
+    sed -i "s,^BINDIR=.*$,BINDIR=${_prefix}/bin," "${pkgdir}${_prefix}/bin/${_prog}"
     ln -s "${_prefix}/bin/${_prog}" "${pkgdir}/usr/bin"
   done
 
