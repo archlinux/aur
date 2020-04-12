@@ -1,7 +1,7 @@
 pkgbase = ezanvakti
 	pkgdesc = Islamic Prayer Times bash script for Turkish users
-	pkgver = 6.3.4
-	pkgrel = 2
+	pkgver = 7.0
+	pkgrel = 1
 	url = https://gitlab.com/fbostanci/ezanvakti
 	arch = any
 	license = GPL3
@@ -10,12 +10,11 @@ pkgbase = ezanvakti
 	depends = gawk
 	depends = grep
 	depends = libnotify
-	depends = mplayer
-	depends = perl-www-mechanize
-	depends = yad
-	optdepends = bash-completion: bash tab completion support
-	source = https://github.com/fbostanci/ezanvakti/archive/v6.3.4.tar.gz
-	md5sums = ad5c89570a8d18e1ab0f7c4b218afe8c
+	depends = curl
+	depends = ffmpeg
+	optdepends = yad: gui support
+	source = https://github.com/fbostanci/ezanvakti/archive/v7.0.tar.gz
+	md5sums = b425122e4ab94d8267e9671e2ac22d35
 
 pkgname = ezanvakti
 
