@@ -1,17 +1,22 @@
 pkgbase = ashuffle-git
-	pkgver = r64.aab5d80
-	pkgrel = 2
+	pkgdesc = Automatic library-wide shuffle for mpd. (git)
+	pkgver = 2.1.0.r2.gefb54d6
+	pkgrel = 1
 	url = https://github.com/joshkunz/ashuffle
 	arch = x86_64
 	arch = i686
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = git
+	makedepends = meson
 	depends = libmpdclient
 	provides = ashuffle
 	conflicts = ashuffle
-	source = ashuffle::git+https://github.com/joshkunz/ashuffle
+	source = git+https://github.com/joshkunz/ashuffle.git
+	source = git+https://github.com/zorgnax/libtap.git
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = ashuffle-git
