@@ -1,6 +1,6 @@
 pkgbase = vim-closetag-git
 	pkgdesc = Auto close (X)HTML tags
-	pkgver = r48.9f13011
+	pkgver = r49.90cf416
 	pkgrel = 1
 	url = https://github.com/alvan/vim-closetag
 	arch = any
