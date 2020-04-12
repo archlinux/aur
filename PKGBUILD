@@ -1,7 +1,7 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
  
 pkgname=mauikit-git
-pkgver=r1047.98e368c
+pkgver=r1409.0e7e766
 pkgrel=1
 pkgdesc='Utilities and "templated" controls based on Kirigami and QCC2 that follow the ongoing work on the Maui HIG'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
