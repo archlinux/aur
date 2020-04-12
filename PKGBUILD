@@ -80,7 +80,7 @@ build() {
         --disable-vaapi \
         --disable-mmal \
         --disable-omx \
-        --enable-inotify \
+        --disable-inotify \
         --enable-epoll \
         --disable-pcre --enable-pcre2 \
         --enable-uriparser \
