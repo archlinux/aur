@@ -13,7 +13,7 @@ BLUE="${BOLD}$(tput setaf 4)"
 YELLOW="${BOLD}$(tput setaf 3)"
 
 post_install() {
-    note "To use with systemd, place a config file in ~/.config/imapnotify/<config> and use systemctl --user enable imapnotify@<config>, where <config> is either a .json or .js file"
+    note "To use with systemd, place a config file in ~/.config/imapnotify/<config>.json and use systemctl --user enable imapnotify@<config>"
 }
 
 post_upgrade() {
