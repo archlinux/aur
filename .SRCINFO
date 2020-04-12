@@ -1,0 +1,18 @@
+pkgbase = wofipassmenu
+	pkgdesc = Wofi based implementation of passmenu
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/ovlach/wofipassmenu
+	arch = any
+	license = GPL2
+	depends = pass
+	depends = wofi
+	depends = bash
+	depends = wl-clipboard
+	provides = wofipassmenu
+	conflicts = wofipassmenu
+	source = wofipassmenu0.0.2.tar.gz::https://github.com/ovlach/wofipassmenu/archive/v0.0.2.tar.gz
+	md5sums = 41d084df6980d9af2a3414d69e35f69e
+
+pkgname = wofipassmenu
+
