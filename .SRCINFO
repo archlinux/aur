@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-virtual-desktop-bar-git
 	pkgdesc = KDE Plasma panel applet for managing virtual desktops
-	pkgver = r422.25ec1c0
+	pkgver = r432.b144b08
 	pkgrel = 1
 	url = https://github.com/wsdfhjxc/virtual-desktop-bar
 	arch = i686
