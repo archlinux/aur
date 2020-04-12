@@ -4,12 +4,15 @@
 
 pkgname=serpent-browser
 pkgver=2020.03.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Unbranded version of Basilisk web browser"
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.basilisk-browser.org/"
-depends=('gtk2' 'gtk3' 'dbus-glib' 'libxt' 'mime-types' 'nss' 'alsa-lib' 'icu' 'ttf-font')
+conflicts=('basilisk' 'basilisk-bin')
+replaces=('basilisk' 'basilisk-bin')
+provides=('basilisk' 'basilisk-bin')
+depends=('gtk2' 'gtk3' 'dbus-glib' 'libxt' 'mime-types' 'nss' 'alsa-lib' 'icu' 'ttf-font' 'dbus' 'libpulse')
 optdepends=('hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
             'ffmpeg: record, convert, and stream audio and video')
@@ -46,7 +49,7 @@ ac_add_options --enable-av1
 ac_add_options --enable-eme
 ac_add_options --enable-official-vendor
 ac_add_options --enable-optimize="-O2 -msse2 -mfpmath=sse"
-
+ac_add_options --disable-gconf
 ac_add_options --disable-debug-symbols 
 ac_add_options --disable-tests
 ac_add_options --prefix=/usr
