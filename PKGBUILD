@@ -4,9 +4,9 @@
 pkgname=wifi2qr-git
 pkgver=13.c84e73c
 pkgrel=1
-pkgdesc=""
+pkgdesc="A simple script to share your computer's WiFi connection via QR code"
 arch=('any')
-url=""
+url="https://github.com/dlenski/wifi2qr"
 license=('GPL3')
 depends=('networkmanager' 'bash' 'qrencode')
 makedepends=()
