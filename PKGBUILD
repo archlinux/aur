@@ -1,11 +1,11 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=mstreamexpress-bin
 pkgver=0.16
 pkgrel=1
 pkgdesc="Music streaming server with Flac support, based on Electron"
 arch=(x86_64)
-url="http://www.mstream.io/"
+url="https://www.mstream.io/"
 license=(GPL3)
 depends=(alsa-lib gtk3 libxtst libxss nss)
 conflicts=(mstreamexpress)
