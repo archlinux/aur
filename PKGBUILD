@@ -4,7 +4,7 @@ pkgver=0.2
 pkgrel=1
 license=(MIT)
 pkgdesc="Screen recorder for wlroots-based compositors such as sway"
-makedepends=("meson" "wayland-protocols" "ninja" "scdoc")
+makedepends=("meson" "wayland-protocols" "ninja" "scdoc" "opencl-headers")
 depends=("ffmpeg" "ocl-icd")
 optdepends=(
 	"slurp: limit recording to a part of the screen"

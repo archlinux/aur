@@ -10,6 +10,7 @@ pkgbase = wf-recorder
 	makedepends = wayland-protocols
 	makedepends = ninja
 	makedepends = scdoc
+	makedepends = opencl-headers
 	depends = ffmpeg
 	depends = ocl-icd
 	optdepends = slurp: limit recording to a part of the screen
