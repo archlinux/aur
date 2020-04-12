@@ -2,7 +2,7 @@
 
 pkgbase='navidrome-git'
 pkgname=(navidrome-git)
-pkgver=v0.14.2.r8.g803a577
+pkgver=v0.14.3.r0.gc4eab5d
 pkgrel=1
 pkgdesc='Music Server and Streamer compatible with Subsonic/Airsonic'
 url='https://www.navidrome.org/'

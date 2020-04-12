@@ -1,7 +1,7 @@
 pkgbase = navidrome-git
 	pkgdesc = Music Server and Streamer compatible with Subsonic/Airsonic
-	pkgver = v0.14.2.8.g803a577
-	pkgrel = 2
+	pkgver = v0.14.3.r0.gc4eab5d
+	pkgrel = 1
 	url = https://www.navidrome.org/
 	arch = x86_64
 	arch = armv6h
