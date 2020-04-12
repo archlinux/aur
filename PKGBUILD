@@ -12,7 +12,7 @@
 pkgbase=samba-heimdal
 pkgbaseorig=samba
 pkgname=('libwbclient-heimdal' 'smbclient-heimdal' 'samba-heimdal')
-pkgver=4.11.6
+pkgver=4.11.7
 pkgrel=1
 arch=(x86_64)
 url="https://www.samba.org"
