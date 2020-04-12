@@ -1,6 +1,6 @@
 pkgbase = python-plaidml
 	pkgdesc = PlaidML machine learning accelerator
-	pkgver = 0.6.4
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/plaidml/plaidml
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = python-plaidml
 	depends = python-numpy
 	depends = python-requests
 	depends = python-six
-	source = https://files.pythonhosted.org/packages/py2.py3/p/plaidml/plaidml-0.6.4-py2.py3-none-manylinux1_x86_64.whl
-	sha256sums = 9ae55eded885cbcd48e1a9482a23b1afa54c5963555c1d732da11e7a0b4f9f6c
+	source = https://files.pythonhosted.org/packages/py2.py3/p/plaidml/plaidml-0.7.0-py2.py3-none-manylinux1_x86_64.whl
+	sha256sums = b847af3d3762bc714c1b63e96f8b662b76d8742f0c87716c79e11e5612d641f8
 
 pkgname = python-plaidml
 
