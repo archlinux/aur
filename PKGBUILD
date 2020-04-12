@@ -1,6 +1,6 @@
 # Maintainer: Majid Butler <majidbutler@akuma-dev.com>
 pkgname=creep2
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="A pretty sweet version of the creep pixel font for terminals without negative spacing support."
 arch=('any')
