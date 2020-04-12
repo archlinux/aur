@@ -8,9 +8,13 @@ url='https://www.baycom.de/hardware/netceiver/'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('libxml2')
-makedepends=('subversion')
+#makedepends=('subversion')
+makedepends=('git')
 optdepends=('tnftp6: Required for netcvupdate')
-source=("svn+https://svn.baycom.de/repos/vdr-mcli-plugin/#revision=${_svnver}"
+# Changed source to GIT mirror as SVN causes heavy problems with qemu
+# https://bugs.launchpad.net/qemu/+bug/1869782
+#source=("svn+https://svn.baycom.de/repos/vdr-mcli-plugin/#revision=${_svnver}"
+source=("git+https://github.com/VDR4Arch/vdr-mcli-plugin.git#commit=89e6d75b49fd1de665a4370e5ccf61b29af8e83d"
         'libmcli-fhs-socket-dir.patch'
         'libmcli-ftp-command.patch')
 sha256sums=('SKIP'
