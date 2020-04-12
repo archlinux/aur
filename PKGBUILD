@@ -5,11 +5,11 @@
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=ungoogled-chromium-ozone
-pkgver=80.0.3987.163
+pkgver=81.0.4044.92
 pkgrel=1
 _pkgname=ungoogled-chromium
 _launcher_ver=6
-_ungoogled_ver=80.0.3987.163-1
+_ungoogled_ver=81.0.4044.92-2
 pkgdesc="A lightweight approach to removing Google web service dependency with patches for wayland support via Ozone"
 arch=('x86_64')
 url="https://ungoogled-software.github.io/"
@@ -31,13 +31,6 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        cros-search-service-Include-cmath-for-std-pow.patch
-        move-RemoteTreeNode-declaration.patch
-        sync-enable-USSPasswords-by-default.patch
-        fix-shim-header-generation-when-unbundling-ICU.patch
-        fix-building-with-system-zlib.patch
-        remove-verbose-logging-in-local-unique-font-matching.patch
-        fix-building-with-unbundled-libxml.patch
         rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
         rebuild-Linux-frame-button-cache-when-activation.patch
         chromium-widevine.patch
@@ -46,30 +39,21 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         $_pkgname-$_ungoogled_ver.zip::https://github.com/Eloston/ungoogled-chromium/archive/$_ungoogled_ver.zip
         flags.archlinux.gn
         chromium-drirc-disable-10bpc-color-configs.conf
-        vaapi-fix.patch
-        vaapi-fix-wayland-init.patch
-        0001-Add-missing-algorithm-header-in-bitmap_cursor_factor.patch
+        vdpau-support.patch
+        vaapi-build-fix.patch
         fix-vaapi-ozone-build.patch)
-sha256sums=('b6ddefa9434877a9b923631b7525f7f2f80118dd986ecdac87f2c9f11f237346'
+sha256sums=('a2cf3fd07a66330b189724cdcb4549ddac72705fba6adb33020bc6444efb1a44'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '0a8d1af2a3734b5f99ea8462940e332db4acee7130fe436ad3e4b7ad133e5ae5'
-            '21f631851cdcb347f40793485b168cb5d0da65ae26ae39ba58d624c66197d0a5'
-            '08ef82476780e0864b5bf7f20eb19db320e73b9a5d4f595351e12e97dda8746f'
-            'e477aa48a11ca4d53927f66a9593567fcd053325fb38af30ac3508465f1dd1f6'
-            '18276e65c68a0c328601b12fefb7e8bfc632346f34b87e64944c9de8c95c5cfa'
-            '5bc775c0ece84d67855f51b30eadcf96fa8163b416d2036e9f9ba19072f54dfe'
-            'e530d1b39504c2ab247e16f1602359c484e9e8be4ef6d4824d68b14d29a7f60b'
             'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
             '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
             '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
             # -----------
-            'b3de413dfd363e9a77c625ecd96d3dcbb6c12201856bd31f91b1be31fad06031'
-            '53e8a314da1f33b99d4286cc3c2e4cb2d43132b75af8a282414fda950bd493e9'
+            'd05b18cb06e815bb0d3976da5ba3f78ee31c6dae75e4553999e63c29f6614739'
+            'c6ca2806ffb45cf55c0320f9985e605c105d717e140eb8786d8e292796aec35d'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a'
-            'a4c022263b474ae14abd899b8e453f7d9ed9c0715b0b248b8a423aa2777095c4'
-            'd8a57adf4b3106ab4d7ecdf5b050e02b87901b61c33cfa8810a7143c483e1fe4'
+            'fad5e678d62de0e45db1c2aa871628fdc981f78c26392c1dccc457082906a350'
             '9aebd800e5fe191cd5f4bd82c33419eefdd80919e6c6f5a3a9346a224625f094')
 provides=('chromium')
 conflicts=('chromium')
@@ -97,8 +81,7 @@ declare -gA _system_libs=(
   [zlib]=minizip
 )
 _unwanted_bundled_libs=(
-  ${!_system_libs[@]}
-  ${_system_libs[libjpeg]+libjpeg_turbo}
+  $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
 )
 depends+=(${_system_libs[@]})
 
@@ -115,25 +98,6 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
 
-  # https://crbug.com/957519
-  patch -Np1 -i ../cros-search-service-Include-cmath-for-std-pow.patch
-  patch -Np1 -i ../move-RemoteTreeNode-declaration.patch
-
-  # https://crbug.com/1027929
-  patch -Np1 -i ../sync-enable-USSPasswords-by-default.patch
-
-  # https://crbug.com/989153
-  patch -Np1 -i ../fix-shim-header-generation-when-unbundling-ICU.patch
-
-  # https://crbug.com/977964
-  patch -Np1 -i ../fix-building-with-system-zlib.patch
-
-  # https://crbug.com/1005508
-  patch -Np1 -i ../remove-verbose-logging-in-local-unique-font-matching.patch
-
-  # https://crbug.com/1043042
-  patch -Np1 -i ../fix-building-with-unbundled-libxml.patch
-
   # https://crbug.com/1049258
   patch -Np1 -i ../rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
   patch -Np1 -i ../rebuild-Linux-frame-button-cache-when-activation.patch
@@ -145,15 +109,14 @@ prepare() {
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
 
-  # Fix VA-API on Intel and Nvidia
-  patch -Np1 -i ../vaapi-fix.patch
-  patch -Np1 -i ../vaapi-fix-wayland-init.patch
+  # Fix VA-API on Nvidia
+  patch -Np1 -i ../vdpau-support.patch
+
+  # Fix VAAPI build on chromium 81+
+  patch -Np1 -i ../vaapi-build-fix.patch
 
   # Fix vaapi linkage error
   patch -Np1 -i ../fix-vaapi-ozone-build.patch
-
-  # build fixes
-  patch -Np1 -i ../0001-Add-missing-algorithm-header-in-bitmap_cursor_factor.patch
 
   # Ungoogled chromium stuff
   _ungoogled_repo="$srcdir/$_pkgname-$_ungoogled_ver"
@@ -281,4 +244,4 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/chromium/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set ts=2 sw=2 et ft=sh:
