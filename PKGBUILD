@@ -33,17 +33,15 @@ prepare() {
 }
 
 build() {
-  cd "$_gitname"
-  [[ -d build ]] || mkdir build
-  cd build
+  cd "${_gitname}"
   export PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig"
-  cmake .. \
+  cmake . \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release
   make
 }
 
 package() {
-  cd "$_gitname"/build
+  cd "$_gitname"
   make DESTDIR="$pkgdir" install
 }
