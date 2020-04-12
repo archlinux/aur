@@ -36,7 +36,7 @@ prepare() {
 
 	# Using system installed python-setuptool-git-ver
 	sed -i \
-		-e's/\(import.*\)/\1\nfrom setuptools_git_ver import version_from_git/' \
+		-e 's/\(import.*\)/\1\nfrom setuptools_git_ver import version_from_git/' \
 		-e 's/setup_requires.*//' \
 		-e 's/version_format.*/version=version_from_git(),/' setup.py
 }
