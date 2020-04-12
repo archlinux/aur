@@ -9,6 +9,7 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://tvheadend.org/"
 license=('GPL3')
 depends=(
+    'dbus'
     'openssl'
     'pcre2'
     'uriparser'
@@ -26,10 +27,12 @@ source=(
     "${_gitname}::git+https://github.com/tvheadend/tvheadend.git#branch=master"
     'dvb-scan-tables::git+https://git.linuxtv.org/dtv-scan-tables.git#branch=master'
     'tvheadend.conf'
+    'tvheadend-dbus.conf'
 )
 md5sums=('SKIP'
          'SKIP'
-         '2e80ac965a4e730a79dec65db4f6e67d')
+         '57185c43bcd3512296cb23c849f4b872'
+         '67222bc49a82fab4189083cf993fa659')
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
@@ -89,7 +92,7 @@ build() {
         --disable-bundle \
         --disable-pngquant \
         --disable-kqueue \
-        --disable-dbus_1 \
+        --enable-dbus_1 \
         --disable-android \
         --disable-gtimer_check \
         --disalbe-slow_memoryinfo \
@@ -111,5 +114,8 @@ package() {
         "$pkgdir/usr/lib/systemd/system/tvheadend.service"
 
     install -D -m 644 "$srcdir/tvheadend.conf" "$pkgdir/etc/conf.d/tvheadend"
+
+    install -D -m 644 "$srcdir/tvheadend-dbus.conf" \
+        "$pkgdir/usr/share/dbus-1/system.d/tvheadend.conf"
 }
 
