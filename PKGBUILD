@@ -7,17 +7,18 @@
 
 pkgname=helm2-bin
 pkgver=2.16.5
-pkgrel=2
+pkgrel=3
 pkgdesc="The Kubernetes Package Manager"
 arch=(
   "x86_64"  # amd64
   "aarch64"  # arm64
-  "armv6h"  # arm
+  "arm" "armv6h" "armv7h"  # arm
   "i486" "i686"  # i386
 )
 url="https://helm.sh/"
 license=("Apache")
 provides=("helm")
+makedepends=("grep")
 validpgpkeys=(
   '672C657BE06B4B30969C4A57461449C25E36B98E'  # Matthew Farina <matt@mattfarina.com>, https://keybase.io/mattfarina
 )
@@ -32,7 +33,7 @@ validpgpkeys=(
   'SKIP'
 )
 
-[ "${CARCH}" = "armv6h" ] && _CARCH=arm && sha256sums=(
+echo ${CARCH} | grep -E '^arm' &>/dev/null && _CARCH=arm && sha256sums=(
   'f35b694ba14555ea4124c558967e3947859282ec8d9c3a883c96bd1ae0ddc2b5'
   'SKIP'
 )
