@@ -1,17 +1,18 @@
 # Contributor: holishing
 pkgname=esunbank-webatm
 pkgver=1.0.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="WebATM service tool for Esun Bank at Taiwan"
 arch=('x86_64')
 url="https://www.esunbank.com.tw"
 license=('custom')
 makedepends=('libarchive' 'icoutils')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'libappindicator-gtk2' 'libcanberra' 'nss' 'pcsclite')
-## please use browser agent to download deb package:
-## https://netbank.esunbank.com.tw/webatm/assets/ActiveX/EsunATM.deb
-source=('local://EsunATM.deb')
+source=('https://netbank.esunbank.com.tw/webatm/assets/ActiveX/EsunATM.deb')
 sha512sums=('176fdf1d9b331deabe3037a4e2ba49783b08f4cb430c1bbab21755e4b4d17185407c487f53da1cfa2909187fec7ed723bdea20fc4397ff0ad33fcfd973d4d48b')
+
+# Esun website does not like curl
+DLAGENTS=('https::/usr/bin/curl -A "Mozilla" -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u')
 
 prepare() {
     bsdtar -xvf data.tar.xz -C "${srcdir}"
