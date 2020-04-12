@@ -8,15 +8,17 @@ arch=('any')
 url="http://modplug-xmms.sourceforge.net/"
 license=('custom')
 depends=('mingw-w64-crt')
-options=('!strip' '!buildflags' '!libtool' 'staticlibs')
+options=('!strip' '!buildflags' 'staticlibs')
 makedepends=('mingw-w64-gcc' 'mingw-w64-configure')
-source=("http://downloads.sourceforge.net/modplug-xmms/libmodplug-${pkgver}.tar.gz")
+source=("https://downloads.sourceforge.net/modplug-xmms/libmodplug-${pkgver}.tar.gz")
 sha1sums=('9d18572f85fdd95091befa972ee5d94139dcefde')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   for _arch in ${_architectures}; do
     mkdir -p ${srcdir}/libmodplug-${pkgver}/build-${_arch} && cd ${srcdir}/libmodplug-${pkgver}/build-${_arch}
+
+    export LDFLAGS="-lssp"
 
     ${_arch}-configure
     make
