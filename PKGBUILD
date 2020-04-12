@@ -13,7 +13,7 @@ _PXE='0'
 _pkgname='refind'
 pkgname="${_pkgname}-efi-git"
 pkgver=0.12.0.r692.g4a84fce
-pkgrel=1
+pkgrel=2
 pkgdesc='rEFInd Boot Manager - git version'
 url='https://www.rodsbooks.com/refind/'
 arch=('x86_64')
@@ -32,8 +32,8 @@ optdepends=('sudo: privilege elevation'
 
 options=('!strip' '!buildflags' '!makeflags')
 
-conflicts=("${pkgname%-git}")
-provides=("${pkgname%-git}=${pkgver}")
+conflicts=('refind' 'refind-efi')
+provides=("refind=${pkgver}" "refind-efi=${pkgver}")
 
 install="${pkgname%-git}.install"
 
