@@ -8,6 +8,7 @@ pkgbase = cpeditor-git
 	makedepends = gcc
 	makedepends = cmake
 	makedepends = git
+	makedepends = python3
 	depends = qt5-base
 	conflicts = cpeditor
 	source = git+https://github.com/cpeditor/cpeditor.git

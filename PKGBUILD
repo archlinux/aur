@@ -2,14 +2,14 @@
 
 pkgname=cpeditor-git
 _pkgname=cpeditor
-pkgver=20200402
+pkgver=20200412
 pkgrel=1
 pkgdesc='The editor for competitive programming'
 arch=('x86_64')
 url='https://github.com/cpeditor/cpeditor'
 license=('GPLv3+')
 depends=('qt5-base')
-makedepends=("gcc" "cmake" "git")
+makedepends=("gcc" "cmake" "git" "python3")
 conflicts=("cpeditor")
 source=('git+https://github.com/cpeditor/cpeditor.git')
 md5sums=('SKIP')
