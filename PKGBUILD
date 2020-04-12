@@ -1,7 +1,7 @@
 pkgname=jtc
 pkgver=1.75d
 pkgrel=1
-pkgdesc="Select JSON elements from input and apply various (e.g. sort, transform, etc) action then output, think it as an alternative of jq"
+pkgdesc="Select JSON elements from input and apply various (e.g. sort, transform, etc) action then output, think it as an alternative to jq"
 url=https://github.com/ldn-softdev/jtc
 license=(MIT)
 source=(git+$url#tag=$pkgver)

@@ -1,5 +1,5 @@
 pkgbase = jtc
-	pkgdesc = Select JSON elements from input and apply various (e.g. sort, transform, etc) action then output, think it as an alternative of jq
+	pkgdesc = Select JSON elements from input and apply various (e.g. sort, transform, etc) action then output, think it as an alternative to jq
 	pkgver = 1.75d
 	pkgrel = 1
 	url = https://github.com/ldn-softdev/jtc
