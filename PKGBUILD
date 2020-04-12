@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Leo is an Outliner, Editor, and Personal Information Manager written in 100% Python"
 arch=('any')
 url="http://leoeditor.com/"
-license=('MIT' 'Modified BSD')
+license=('MIT' 'BSD')
 depends=('python'
          'desktop-file-utils'
          'shared-mime-info'
@@ -42,7 +42,9 @@ prepare() {
 build() {
     cd "${pkgname}-editor-${pkgver}"
     python setup.py build
-    gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --mimetypes=application/x-leo-outline --exec="$pkgname" --categories=TextEditor\;Development --icon "$pkgname"
+    gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
+     --mimetypes=application/x-leo-outline --exec="$pkgname" \
+      --categories=TextEditor\;Development --icon "$pkgname"
 }
 
 package() {
