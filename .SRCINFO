@@ -1,0 +1,15 @@
+pkgbase = ruby-iostruct
+	pkgdesc = A Struct that can read/write itself from/to IO-like objects
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://rubygems.org/gems/iostruct
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = iostruct-0.0.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/iostruct-0.0.4.gem
+	sha256sums = ac3b15d4ebfc0a92a93b4c3c02a8e7997fedc33e0f715fcf1f520c1d7d36974f
+
+pkgname = ruby-iostruct
+
