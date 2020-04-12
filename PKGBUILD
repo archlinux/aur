@@ -5,7 +5,7 @@ _repouser=neatbasis
 _reponame=bandwidthd
 _rev=0307fbba56a39a6e65ebadf488ad87979c64fdef
 pkgver=2.0.2.r1.${_rev:0:10}
-pkgrel=7
+pkgrel=8
 epoch=1
 pkgdesc="Daemon for graphing traffic of subnet machines"
 arch=(x86_64)
@@ -37,7 +37,7 @@ sha256sums=('7e8ebf7e2eeb5266af904a8f7188b11d5a13ebb0343022c2a118b86f48a952e4'
             '0290183d1e682eff11b88f4cc0ce5ee361db2a97a36300ab46a64c72fde9ae12'
             'cd7b1ffff5dd9490ab69d777e459d79c229d5fef2e71a811df29f6c11e6acde4'
             '31780d5d9c67158277a0edeeb672c594af97f96678222107db47ab4b2ede43b2'
-            '90e0fec629c87d2465ca311acedf0ca4ccf5d77ddf60a8db1f5095cc8c41a748'
+            '7526f4baa5e2e66f87647f876a0b3a4c766ed7d7489ae801e85608338c85a782'
             'd734cea9710691a1658b9996e35cd407e85b542aa0961aec57fc49281516aa5d'
             '6c9e5bf89ecb580261a5a68ac240bd80ee43a7516c79023864acacbd8cee0ae2')
 
