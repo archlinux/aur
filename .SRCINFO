@@ -11,7 +11,12 @@ pkgbase = 3mux-git
 	arch = aarch64
 	arch = pentium4
 	license = MIT
-	makedepends = go
+	makedepends = git
+	makedepends = go-pie
+	makedepends = golang-github-kr-pty
+	makedepends = golang-golang-x-crypto
+	provides = 3mux
+	conflicts = 3mux
 	source = 3mux::git+https://github.com/aaronjanse/3mux.git
 	sha1sums = SKIP
 
