@@ -4,13 +4,13 @@ pkgbase='nginx-lazerl0rd-git'
 provides=('nginx=1.17.9' 'nginx-src=1.17.9' 'nginx-mod-brotli' 'nginx-mod-cookie_flag_module')
 pkgname=('nginx-lazerl0rd-git' 'nginx-lazerl0rd-src-git')
 pkgver=1.17.9
-pkgrel=2
+pkgrel=3
 pkgdesc='NGINX with beefed up security and performance'
 arch=('x86_64')
 url='https://github.com/lazerl0rd/nginx'
 license=('custom')
 depends=('pcre' 'zlib' 'geoip' 'mailcap' 'liburing' 'libatomic_ops')
-makedepends=('mercurial' 'rust>=1.39.0' 'cmake' 'go' 'perl')
+makedepends=('rust>=1.39.0' 'cmake' 'go' 'perl' 'git')
 backup=(etc/nginx/fastcgi.conf
         etc/nginx/fastcgi_params
         etc/nginx/koi-win

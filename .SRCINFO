@@ -1,16 +1,16 @@
 pkgbase = nginx-lazerl0rd-git
 	pkgdesc = NGINX with beefed up security and performance
 	pkgver = 1.17.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lazerl0rd/nginx
 	install = nginx.install
 	arch = x86_64
 	license = custom
-	makedepends = mercurial
 	makedepends = rust>=1.39.0
 	makedepends = cmake
 	makedepends = go
 	makedepends = perl
+	makedepends = git
 	depends = pcre
 	depends = zlib
 	depends = geoip
