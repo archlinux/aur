@@ -8,13 +8,13 @@
 
 pkgname=aseprite
 pkgver=1.2.17
-pkgrel=2
+pkgrel=3
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="http://www.aseprite.org/"
 license=('custom')
 depends=('cmark' 'curl' 'giflib' 'zlib' 'libpng' 'tinyxml' 'freetype2'
-         'harfbuzz' 'nettle' 'fontconfig' 'libxcursor' 'hicolor-icon-theme')
+         'harfbuzz-icu' 'nettle' 'fontconfig' 'libxcursor' 'hicolor-icon-theme')
 makedepends=('cmake' 'ninja' 'git' 'python2' 'freeglut' 'xorgproto')
 conflicts=("aseprite-git" "aseprite-gpl" "skia-git")
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname^}-\
