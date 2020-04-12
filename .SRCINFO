@@ -1,0 +1,18 @@
+pkgbase = vxwireguard-generator-git
+	pkgdesc = Utility to generate VXLAN over Wireguard mesh SD-WAN configuration
+	pkgver = r16.779f0a5
+	pkgrel = 1
+	url = https://github.com/m13253/VxWireguard-Generator
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-pynacl
+	depends = python-setuptools
+	depends = python-toml
+	provides = vwgen
+	conflicts = vwgen
+	source = vxwireguard-generator-git::git+https://github.com/m13253/VxWireguard-Generator.git
+	sha256sums = SKIP
+
+pkgname = vxwireguard-generator-git
+
