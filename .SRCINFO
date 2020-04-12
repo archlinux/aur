@@ -1,0 +1,28 @@
+pkgbase = ldb-heimdal
+	pkgdesc = Schema-less, ldap like, API and database (built for Samba with Heimdal)
+	pkgver = 2.0.8
+	pkgrel = 1
+	epoch = 1
+	url = https://ldb.samba.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = python
+	makedepends = cmocka
+	makedepends = docbook-xsl
+	makedepends = tevent
+	depends = talloc
+	depends = libtevent.so
+	depends = tdb
+	depends = libtdb.so
+	depends = popt
+	depends = lmdb
+	optdepends = python: for python bindings
+	provides = ldb
+	provides = libldb.so
+	conflicts = ldb
+	replaces = ldb
+	source = https://samba.org/ftp/ldb/ldb-2.0.8.tar.gz
+	sha512sums = 23a44968c9b4b57deb3f7b7b2466f140b4d8534a07a5e866545dd108c3d305ee4b0ea9bceec3177fcd09a4efcb4876a8283ca58b5c496fcf323b810666e1e79a
+
+pkgname = ldb-heimdal
+
