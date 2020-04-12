@@ -1,10 +1,10 @@
 # Maintainer: Diab Neiroukh <officiallazerl0rd@gmail.com>
 
 pkgbase='nginx-lazerl0rd-git'
-provides=('nginx=1.17.9' 'nginx-src=1.17.9' 'nginx-mod-brotli')
+provides=('nginx=1.17.9' 'nginx-src=1.17.9' 'nginx-mod-brotli' 'nginx-mod-cookie_flag_module')
 pkgname=('nginx-lazerl0rd-git' 'nginx-lazerl0rd-src-git')
 pkgver=1.17.9
-pkgrel=1
+pkgrel=2
 pkgdesc='NGINX with beefed up security and performance'
 arch=('x86_64')
 url='https://github.com/lazerl0rd/nginx'

@@ -1,7 +1,7 @@
 pkgbase = nginx-lazerl0rd-git
 	pkgdesc = NGINX with beefed up security and performance
 	pkgver = 1.17.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lazerl0rd/nginx
 	install = nginx.install
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = nginx-lazerl0rd-git
 	provides = nginx=1.17.9
 	provides = nginx-src=1.17.9
 	provides = nginx-mod-brotli
+	provides = nginx-mod-cookie_flag_module
 	backup = etc/nginx/fastcgi.conf
 	backup = etc/nginx/fastcgi_params
 	backup = etc/nginx/koi-win
