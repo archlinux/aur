@@ -1,0 +1,28 @@
+#==> Auto-generated file from PKGBUILD <==#
+pkgname="xfce-simple-dark"
+_home="/home/$(logname)"
+_pretty_pkgname="Xfce-Simple-Dark"
+_themes="$_home/.themes"
+_dstdir="$_home/.local/share/themes/$_pretty_pkgname"
+_geany_config="$_home/.config/geany/colorschemes"
+_geany_file="simple-dark.conf"
+
+post_remove() {
+  # Remove previous version source
+  if [ -d $_dstdir ]; then
+    echo "Remove $_dstdir"
+    rm -r $_dstdir
+  fi
+  # Remove previous version links
+  for ln in $_themes/$_pretty_pkgname*; do
+    link=$_themes/$(basename $ln)
+    if [ -L $link ]; then
+      echo "Unlink $link"
+      unlink $link
+    fi
+  done
+  if [ -L $_geany_config/$_geany_file ]; then
+    echo "Unlink $_geany_config/$_geany_file"
+    unlink $_geany_config/$_geany_file
+  fi
+}
