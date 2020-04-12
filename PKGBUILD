@@ -1,10 +1,10 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Stefano Capitani <stefanoatmanjarodotorg>
 # Contributor: Florian Pritz <f-p@gmx.at>
 
 pkgname=inxi
-pkgver=3.0.37
-pkgrel=2
+pkgver=3.0.38
+pkgrel=1
 pkgdesc="Full featured CLI system information tool"
 arch=(any)
 url="https://github.com/smxi/inxi"
@@ -34,7 +34,7 @@ optdepends=(
   "xorg-xrandr: inxi -G single screen resolution"
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/smxi/inxi/archive/${pkgver}-1.tar.gz")
-sha256sums=('bc16d8b975a8ed064949bc8209e0c01c204c01c9046076f62709366e672bea40')
+sha256sums=('5adbbe8145e970de1d516a404554e887806d31382de81d290e71fe270183c28a')
 
 package() {
   cd "${pkgname}-${pkgver}-1"
