@@ -1,0 +1,16 @@
+pkgbase = node-fanyi
+	pkgdesc = A CN and US translate tool in your command line.
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://github.com/afc163/fanyi
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = festival
+	noextract = v4.2.0.tar.gz
+	source = https://github.com/afc163/fanyi/archive/v4.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = node-fanyi
+
