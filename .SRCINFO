@@ -30,6 +30,10 @@ pkgname = linux-mainline
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-mainline
+	replaces = wireguard-maineline
 
 pkgname = linux-mainline-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Mainline kernel
