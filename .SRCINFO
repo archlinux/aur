@@ -16,7 +16,7 @@ pkgbase = jrnl
 	depends = python-parsedatetime>=2.4
 	depends = python-parsedatetime<3.0
 	depends = python-keyring>=19.0
-	depends = python-keyring<20.0
+	depends = python-keyring<22.0
 	depends = python-pytz>=2019.1
 	depends = python-pytz<2020.0
 	depends = python-tzlocal>1.5
