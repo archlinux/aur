@@ -1,7 +1,7 @@
 pkgbase = art-rawconverter
 	pkgdesc = Raw Converter forked from RawTherapee including blackfoxx-theme
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/agriggio/art/wiki/Home
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = art-rawconverter
 	makedepends = gcc
 	makedepends = hicolor-icon-theme
 	makedepends = fakeroot
+	depends = gperftools
 	depends = lensfun
 	depends = exiv2
 	depends = fftw
