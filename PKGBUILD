@@ -2,14 +2,19 @@
 
 pkgname=gnome-news-git
 _gitname=gnome-news
-pkgver=r308.4ad310a84996
+pkgver=r309.ab62e5299f52
 pkgrel=1
 pkgdesc='A GNOME 3 Feed Reader'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://git.gnome.org/browse/${_gitname}"
 depends=('gtk3' 'python' 'tracker>=1.5.1')
-makedepends=('appstream-glib' 'autoconf' 'automake' 'git' 'intltool')
+makedepends=('appstream-glib'
+             'autoconf'
+             'autoconf-archive'
+             'automake'
+             'git'
+             'intltool')
 options=('!emptydirs')
 install=gnome-news.install
 source=("git+https://gitlab.gnome.org/GNOME/${_gitname}.git")
