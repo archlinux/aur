@@ -16,6 +16,7 @@ pkgbase = monado-git
 	depends = wayland
 	optdepends = libuvc: optical tracking support
 	optdepends = opencv: optical tracking support
+	optdepends = xr-hardware: udev permissions for popular XR hardware
 	provides = openxr-runtime
 	source = monado::git+https://gitlab.freedesktop.org/monado/monado.git
 	md5sums = SKIP

@@ -10,7 +10,8 @@ url='https://monado.dev'
 depends=('openxr-loader' 'openhmd' 'vulkan-icd-loader' 'libgl' 'wayland')
 makedepends=('eigen' 'ninja' 'shaderc')
 optdepends=('libuvc: optical tracking support'
-            'opencv: optical tracking support')
+            'opencv: optical tracking support'
+            'xr-hardware: udev permissions for popular XR hardware')
 provides=("openxr-runtime")
 
 #'doxygen' #When building docs
