@@ -1,7 +1,22 @@
-index a92bf70c..cf5a4cb4 100644
+index 2c694d95..bba34865 100644
+--- a/src/app/app.component.ts
++++ b/src/app/app.component.ts
+@@ -140,6 +140,10 @@ export class AppComponent implements OnDestroy, OnInit {
+                         }
+                         break;
+                     case 'showToast':
++                        if (typeof message.text === "string" && (message.text.indexOf("this.subtle") != -1 || message.text.indexOf("importKey") != -1)) {
++                            message.title="This browser requires HTTPS to use the web vault";
++                            message.text="Check the bitwarden_rs wiki for details on how to enable it";
++                        }
+                         this.showToast(message);
+                         break;
+                     case 'analyticsEventTrack':
+diff --git a/src/app/services/services.module.ts b/src/app/services/services.module.ts
+index c74261dd..f61ccefe 100644
 --- a/src/app/services/services.module.ts
 +++ b/src/app/services/services.module.ts
-@@ -123,20 +123,16 @@ const environmentService = new EnvironmentService(apiService, storageService, no
+@@ -127,22 +127,31 @@ const environmentService = new EnvironmentService(apiService, storageService, no
  const auditService = new AuditService(cryptoFunctionService, apiService);
  const eventLoggingService = new EventLoggingService(storageService, apiService, userService, cipherService);
  
@@ -11,6 +26,19 @@ index a92bf70c..cf5a4cb4 100644
  containerService.attachToWindow(window);
  
  export function initFactory(): Function {
++    function getBaseUrl() {
++        // If the base URL is `https://bitwarden.example.com/base/path/`,
++        // `window.location.href` should have one of the following forms:
++        //
++        // - `https://bitwarden.example.com/base/path/`
++        // - `https://bitwarden.example.com/base/path/#/some/endpoint[?queryParam=...]`
++        //
++        // We want to get to just `https://bitwarden.example.com/base/path`.
++        let baseUrl = window.location.href;
++        baseUrl = baseUrl.replace(/#.*/, '');  // Strip off `#` and everything after.
++        baseUrl = baseUrl.replace(/\/+$/, ''); // Trim any trailing `/` chars.
++        return baseUrl;
++    }
      return async () => {
          await (storageService as HtmlStorageService).init();
 -        const isDev = platformUtilsService.isDev();
@@ -21,11 +49,14 @@ index a92bf70c..cf5a4cb4 100644
 -                'https://notifications.bitwarden.com'; // window.location.origin + '/notifications';
 -        }
 +        const isDev = false;
-+        environmentService.baseUrl = window.location.origin;
-+        environmentService.notificationsUrl = window.location.origin + '/notifications';
++        environmentService.baseUrl = getBaseUrl();
++        environmentService.notificationsUrl = environmentService.baseUrl + '/notifications';
          apiService.setUrls({
-             base: isDev ? null : window.location.origin,
+-            base: isDev ? null : window.location.origin,
++            base: isDev ? null : environmentService.baseUrl,
              api: isDev ? 'http://localhost:4000' : null,
+             identity: isDev ? 'http://localhost:33656' : null,
+             events: isDev ? 'http://localhost:46273' : null,
 index 5560c476..a9b954a8 100644
 --- a/src/app/settings/two-factor-u2f.component.ts
 +++ b/src/app/settings/two-factor-u2f.component.ts
@@ -37,7 +68,7 @@ index 5560c476..a9b954a8 100644
          }], [], (data: any) => {
              this.ngZone.run(() => {
                  this.u2fListening = false;
-index 2e1dbec9..2d9b635f 100644
+index 80951953..5c784175 100644
 --- a/src/scss/styles.scss
 +++ b/src/scss/styles.scss
 @@ -1,5 +1,31 @@
