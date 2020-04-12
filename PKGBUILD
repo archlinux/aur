@@ -1,7 +1,6 @@
 pkgname=inkscape-shallow-git
-pkgver=1.0+devel.r2.g6edc3e959f
+pkgver=1.1.dev.r0.g5215a56
 pkgrel=1
-epoch=2
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master (shallow clone)"
 url="https://gitlab.com/inkscape/inkscape"
 arch=('i686' 'x86_64')
@@ -23,12 +22,20 @@ _gitname="inkscape.git"
 
 pkgver() {
   cd "$_gitname"
-  printf %s "1.0+devel.r2.g6edc3e959f"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  git clone --depth 1 https://gitlab.com/inkscape/inkscape "$_gitname"
-  cd "$_gitname"
+  if [[ -d "$_gitname" ]]; then
+    cd $_gitname
+    git pull
+  else
+    git clone --depth 1 https://gitlab.com/inkscape/inkscape "$_gitname"
+    cd "$_gitname"
+  fi
+  version=$(packaging/snappy/version.sh; git restore -- .)
+  git branch $(git symbolic-ref --short HEAD) --contains "$version" 2>/dev/null ||
+    git tag -a -m "$version" "$version"
   git submodule update --init --recursive
 }
 

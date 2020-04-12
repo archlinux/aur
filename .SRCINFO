@@ -1,8 +1,7 @@
 pkgbase = inkscape-shallow-git
 	pkgdesc = An Open Source vector graphics editor, using SVG file format, from git master (shallow clone)
-	pkgver = 1.0+devel.r2.g6edc3e959f
+	pkgver = 1.1.dev.r0.g5215a56
 	pkgrel = 1
-	epoch = 2
 	url = https://gitlab.com/inkscape/inkscape
 	arch = i686
 	arch = x86_64
