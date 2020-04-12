@@ -8,7 +8,7 @@ pkgdesc="A distraction free Markdown editor for GNU/Linux made with GTK+"
 arch=('any')
 url="https://gitlab.gnome.org/somas/apostrophe"
 license=('GPL3')
-depends=('gtk3' 'webkit2gtk' 'gspell' 'python-pypandoc' 'python-regex' 'python-levenshtein'
+depends=('webkit2gtk' 'gspell' 'python-pypandoc' 'python-regex' 'python-levenshtein'
          'python-pyenchant' 'python-gobject' 'python-cairo')
 makedepends=('git' 'meson' 'appstream-glib')
 optdepends=('texlive-core: Export as PDF files'

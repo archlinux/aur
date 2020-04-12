@@ -8,7 +8,6 @@ pkgbase = apostrophe-git
 	makedepends = git
 	makedepends = meson
 	makedepends = appstream-glib
-	depends = gtk3
 	depends = webkit2gtk
 	depends = gspell
 	depends = python-pypandoc
