@@ -38,7 +38,9 @@ pkgbase = inkscape-shallow-git
 	optdepends = ruby: for simplepath extension
 	optdepends = imagemagick: for some file conversions
 	provides = inkscape
+	provides = inkscape-git
 	conflicts = inkscape
+	conflicts = inkscape-git
 	options = !libtool
 	options = !buildflags
 

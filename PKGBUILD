@@ -19,8 +19,8 @@ optdepends=('python-numpy: some extensions'
 	    'ruby: for simplepath extension'
 	    'imagemagick: for some file conversions')
 makedepends=('cmake' 'boost' 'intltool' 'git' 'gettext' 'pango' 'python' 'fontconfig')
-provides=('inkscape')
-conflicts=('inkscape')
+provides=('inkscape' 'inkscape-git')
+conflicts=('inkscape' 'inkscape-git')
 options=('!libtool' '!buildflags')
 _gitname="inkscape.git"
 
