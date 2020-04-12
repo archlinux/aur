@@ -5,7 +5,7 @@
 
 pkgname=openblas-lapack-ilp64
 _pkgname=OpenBLAS
-pkgver=0.2.20
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="Optimized BLAS library based on GotoBLAS2 (dynamic arch)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('gcc-libs')
 makedepends=('perl' 'gcc-fortran')
 options=(staticlibs)
 source=(${_pkgname}-v${pkgver}.tar.gz::https://github.com/xianyi/OpenBLAS/archive/v${pkgver}.tar.gz)
-sha256sums=('5ef38b15d9c652985774869efd548b8e3e972e1e99475c673b25537ed7bcf394')
+sha256sums=('17d4677264dfbc4433e97076220adc79b050e4f8a083ea3f853a53af253bc380')
 
 _config="USE_OPENMP=1 NO_LAPACK=0 INTERFACE64=1 BINARY=64 DYNAMIC_ARCH=1"
 
@@ -48,4 +48,3 @@ package() {
   sed -i -e "s%${pkgdir}%%" "${pkgdir}/opt/${pkgname}/lib/cmake/openblas/OpenBLASConfig.cmake"
 }
 
-# vim:set ts=2 sw=2 et:
