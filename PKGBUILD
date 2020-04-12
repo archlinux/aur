@@ -1,7 +1,7 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=ashuffle
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Automatic library-wide shuffle for mpd."
 url="https://github.com/joshkunz/ashuffle"
@@ -13,11 +13,11 @@ makedepends=("meson")
 
 source=(
   "https://github.com/joshkunz/ashuffle/archive/v${pkgver}/ashuffle-${pkgver}.tar.gz"
-  "https://github.com/zorgnax/libtap/raw/14e6708db5215a657e615171682a1741023c9c0c/tap.c"
-  "https://github.com/zorgnax/libtap/raw/14e6708db5215a657e615171682a1741023c9c0c/tap.h"
+  "tap-14e6.c::https://github.com/zorgnax/libtap/raw/14e6708db5215a657e615171682a1741023c9c0c/tap.c"
+  "tap-14e6.h::https://github.com/zorgnax/libtap/raw/14e6708db5215a657e615171682a1741023c9c0c/tap.h"
 )
 sha256sums=(
-  "7b1ce117568de33e26bcc762c0fba8c1a487952d93668358d10ae0dd52d5c487"
+  "f3e4e46832c5e50fd1090eeb749fd2bf43ee62d837a9dbbb494e7ba95fbe115e"
   "5952a5c99a273cc630eeb773461e5ee8255b3ddd19a9051f189e0ab1c1b7eaa8"
   "063dbe4bbd0c93707b31f536b54c698d30793be3410f428f0647aeb859c267c9"
 )
@@ -27,7 +27,8 @@ build() {
   cd "ashuffle-${pkgver}"
 
   mkdir -p t/libtap
-  cp -a "$srcdir/tap.c" "$srcdir/tap.h" t/libtap/
+  cp -a "$srcdir/tap-14e6.c" t/libtap/tap.c
+  cp -a "$srcdir/tap-14e6.h" t/libtap/tap.h
 
   arch-meson -Dtests=enabled builddir
 
