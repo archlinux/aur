@@ -1,0 +1,15 @@
+pkgbase = wifi2qr-git
+	pkgver = 13.c84e73c
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	depends = networkmanager
+	depends = bash
+	depends = qrencode
+	provides = wifi2qr
+	conflicts = wifi2qr
+	source = wifi2qr-git::git://github.com/dlenski/wifi2qr.git
+	md5sums = SKIP
+
+pkgname = wifi2qr-git
+
