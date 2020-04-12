@@ -1,10 +1,10 @@
-# Maintainer: Ilaï Deutel
+# Maintainer: Ilaï Deutel <PlMWPh1WSmypRv0JQljz> (echo ... | tr 'A-Za-z' 'l-za-kL-ZA-K' | base64 -d)
 # Contributor: Flaviu Tamas <me@flaviutamas.com>
 # Contributor: Morten Linderud <foxboron@archlinux.org>
 # Contributor: Maikel Wever <maikelwever@gmail.com>
 
 pkgname=python-pipenv-git
-pkgver=2018.11.26.r690.ga883ef51
+pkgver=2018.11.26.r751.g5c01c682
 pkgrel=1
 pkgdesc="Python Development Workflow for Humans."
 url="https://pipenv.pypa.io"
@@ -33,18 +33,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$pkgname"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  # The setuptools package removes pkg_resources.extern because "Upstream
-  # devendoring logic is badly broken". We use the canonical location instead.
-  # Relevant links:
-  # https://bugs.archlinux.org/task/58670
-  # https://github.com/pypa/pip/issues/5429
-  # https://github.com/pypa/setuptools/issues/1383
-  # https://github.com/sarugaku/requirementslib/issues/185
-  find "$srcdir/$pkgname/pipenv/vendor/requirementslib" -name \*.py \
-    -exec sed -i 's/pkg_resources.extern.packaging/packaging/' {} \;
 }
 
 build() {
