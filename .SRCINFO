@@ -1,6 +1,6 @@
 pkgbase = phoronix-test-suite-milestone
 	pkgdesc = The most comprehensive testing and benchmarking platform available for Linux, milestone version
-	pkgver = 9.4.0m2
+	pkgver = 9.6.0m1
 	pkgrel = 1
 	url = http://www.phoronix-test-suite.com/
 	arch = any
@@ -18,9 +18,9 @@ pkgbase = phoronix-test-suite-milestone
 	provides = phoronix-test-suite
 	conflicts = phoronix-test-suite
 	options = !strip
-	source = phoronix-test-suite-milestone-9.4.0m2.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v9.4.0m2.tar.gz
+	source = phoronix-test-suite-milestone-9.6.0m1.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v9.6.0m1.tar.gz
 	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/phoronix-test-suite-launcher.patch
-	sha256sums = 54d12af9c6ec425140ecc9547bce8f3d0f656b0992c8ef878db2cc36c809afcf
+	sha256sums = eceb0cff6c2afc296553119a474a6cbd563311e4dcc6b8caa9266f68f783a80f
 	sha256sums = 577326343d0303a59fd469c3f9c9740e756dd59c0660c54363b62d6fd1cee26d
 
 pkgname = phoronix-test-suite-milestone
