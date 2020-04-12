@@ -1,33 +1,26 @@
-# Maintainer: Sebastian Krzyszkowiak <dos@dosowisko.net>
+# Maintainer: Vlad Petrov <ejiek@mail.ru>
 
-pkgname=kgx-git
-pkgver=0.0.1.r76.8f51085
+pkgname=kgx
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A minimal terminal for GNOME"
 url="https://gitlab.gnome.org/ZanderBrown/kgx"
 license=("GPL3")
-arch=(i686 x86_64 armv6h armv7h)
+arch=(i686 x86_64 armv6h armv7h aarch64)
 depends=(vte3
          gtk3
          glib2
          libgtop)
 makedepends=(
-             git
              meson
              )
 conflicts=(kgx)
-provides=(kgx)
-source=("git+https://gitlab.gnome.org/ZanderBrown/kgx.git")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    printf "0.0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("https://gitlab.gnome.org/ZanderBrown/kgx/-/archive/${pkgver}/kgx-${pkgver}.tar.gz")
+sha256sums=('70a814b0baf70049d5a20791d58a32e92661428d2deeeb56d91b81cc4dc5e81a')
 
 build() {
     rm -rf build
-    arch-meson kgx build
+    arch-meson kgx-${pkgver} build
     ninja -C build
 }
 
