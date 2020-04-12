@@ -1,0 +1,28 @@
+pkgbase = ioninja
+	pkgdesc = Professional, scriptable, all-in-one terminal/sniffer
+	pkgver = 3.14.0
+	pkgrel = 1
+	url = https://ioninja.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = qt5-base
+	depends = openssl
+	options = !strip
+	source = ioninja-16x16.png
+	source = ioninja-32x32.png
+	source = ioninja-48x48.png
+	source = ioninja-64x64.png
+	source = ioninja-256x256.png
+	sha256sums = 448660bfad8a4ef0be277d851df31adbe0ac04e1a3fe1bf47e6970401e1cfb98
+	sha256sums = ffbc8076d346fc1b05cd257e90137ec938de39a0e36b100cf164e2f2810c5f87
+	sha256sums = fdb37e8ee814eefeb5162c4a9fa026778854d7ec5b93d9bf3c5bed10504f0c97
+	sha256sums = 47bfac3143d5486a3abc433bd33c6a1300505213812e3196a2419fa832e1fb77
+	sha256sums = 6bb9a201534c99e475823b0aacc7114815fcb199ae2ddf0d359d5fd2d9af8b9c
+	source_i686 = https://tibbo.com/downloads/archive/ioninja/ioninja-3.14.0/ioninja-3.14.0-linux-x86.tar.xz
+	sha256sums_i686 = 808909a967145b7215d6eb71cde68616df9baaa6806ebce65806c298fb532dca
+	source_x86_64 = https://tibbo.com/downloads/archive/ioninja/ioninja-3.14.0/ioninja-3.14.0-linux-amd64.tar.xz
+	sha256sums_x86_64 = b85173291841f269c29e01dec2012bc2174ae13eb611895513e0f9fef651b0ec
+
+pkgname = ioninja
+
