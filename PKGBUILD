@@ -3,7 +3,7 @@
 
 pkgname=mandoc
 pkgver=1.14.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A suite of tools compiling mdoc from the OpenBSD project'
 arch=('i686' 'x86_64')
 url='https://mdocml.bsd.lv/'
@@ -22,6 +22,9 @@ sha256sums=('8219b42cb56fc07b2aa660574e6211ac38eefdbf21f41b698d3348793ba5d8f7'
 
 prepare() {
     cp "$srcdir"/configure.local $pkgname-$pkgver
+
+    # fix configure script - see https://aur.archlinux.org/packages/mandoc/#comment-739085
+    sed -i -e 's/^CC=.*/CC=cc/' $pkgname-$pkgver/configure
 }
 
 build() {
