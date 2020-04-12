@@ -1,10 +1,10 @@
 # Contributor: aimileus <me at aimileus dot nl>
-# Maintainer: Fabio 'Lolix' Loli <lolix at disroot.org>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Andreas Schönfelder <passtschu at freenet dot de>
 
 pkgname=phoronix-test-suite
-pkgver=9.2.1
+pkgver=9.4.1
 pkgrel=1
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux"
 arch=(any)
@@ -22,7 +22,7 @@ optdepends=('php-gd'
             'openmpi: required for universe-cli test suite')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/phoronix-test-suite-launcher.patch")
-sha256sums=('28acbcb6c5b8eb27c20329cd1a5ea3f1a27abb69812c4b1eeade4b91c89fc7d8'
+sha256sums=('9875450bc5f25015e3efe0065f3ed3128e6d23b008455ab8a99a8e4c95946673'
             '577326343d0303a59fd469c3f9c9740e756dd59c0660c54363b62d6fd1cee26d')
 options=(!strip)
 
@@ -49,9 +49,6 @@ package() {
 
   install -D "${srcdir}/phoronix-test-suite-${pkgver}"/pts-core/external-test-dependencies/xml/generic-packages.xml \
              "${pkgdir}"/usr/share/phoronix-test-suite/pts-core/external-test-dependencies/xml/generic-packages.xml
-
-  install    "${srcdir}/phoronix-test-suite-${pkgver}"/phoronix-test-suite \
-             "${pkgdir}"/usr/bin/phoronix-test-suite
 
   ln -s /usr/bin/phoronix-test-suite "$pkgdir/usr/bin/pts"
 }
