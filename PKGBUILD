@@ -1,8 +1,8 @@
 # Maintainer: Filip Parag <aur@filiparag.com>
 
 pkgname=wmrc
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc='WMRC is a shell utility for extending window manager capabilities using modules with dependency and error checking.'
 arch=('any')
 url='https://github.com/filiparag/wmrc'
