@@ -1,42 +1,61 @@
-# Maintainer: Peter Ivanov <ivanovp@gmail.com>
+# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Peter Ivanov <ivanovp@gmail.com>
 # Contributor: Alec Ari <neotheuser@ymail.com>
 
 pkgname=linuxcnc
-pkgver=2.7.14
-pkgrel=2
-pkgdesc="It can interpret G-code and simulate a CNC machine (formerly EMC2)."
+pkgver=2.7.15
+pkgrel=1
+pkgdesc="LinuxCNC controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=('i686' 'x86_64')
-license=('GPL2')
+license=('GPL-2.0')
 url="http://linuxcnc.org/"
-depends=('bc' 'bwidget' 'tcl' 'tk' 'xorg-server' 'python2-imaging' 'tkimg' 'python2-gtkglext' 'tclx' 'boost' 'boost-libs' 'libtirpc' 'procps-ng' 'psmisc')
-source=($_gitname::"git://github.com/LinuxCNC/linuxcnc.git#tag=v$pkgver" 'linuxcnc.sh' 'libtirpc.patch')
-sha256sums=('72e4dad9c929b00d2a73d125d86f18600dc1c852abadcd3947fa0a7cbc28c88e'
-            'c0f1ea0d8c20baa5d69d89a1d6eb3549bc57cc56ff1a0af3d5b9917cbc6211a7'
-            '92f63a3f58173fa9463329f74cff7365bfefd937729a70bbdc52684d9252333f')
-makedepends=('git' 'intltool')
-PKGEXT='.pkg.tar'
+depends=('bc'
+         'bwidget'
+         'tcl'
+         'tk'
+         'xorg-server'
+         'python2-imaging'
+         'python2-yapps2'
+         'tkimg'
+         'python2-gtkglext'
+         'tclx'
+         'boost'
+         'boost-libs'
+         'libtirpc'
+         'procps-ng'
+         'psmisc')
+source=("https://github.com/LinuxCNC/linuxcnc/archive/v${pkgver}.tar.gz"
+        'libtirpc.patch')
+md5sums=('28ed8e2083cfb7fa5935db1884950331'
+         'SKIP')
+makedepends=('intltool')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}/src"
+  echo "export TCLLIBPATH=$TCLLIBPATH:/usr/lib/tcltk/linuxcnc" > ${pkgname}.sh
+  find . -iname fixpaths.py -o -iname checkglade -o \
+   -iname update_ini | xargs perl -p -i -e "s/python/python2/"
+  patch -Np2 -i $srcdir/libtirpc.patch
+  ./autogen.sh
+  ./configure --with-realtime=uspace \
+   --without-libmodbus --prefix=/usr \
+    --with-python=/usr/bin/python2.7 \
+     --enable-non-distributable=yes
+}
 
 build () {
-  find . -iname fixpaths.py -o -iname checkglade -o -iname update_ini|xargs perl -p -i -e "s/python/python2/"
-  cd $srcdir/$_gitname/src
-
-  patch -Np2 -i $srcdir/libtirpc.patch
-
-  ./autogen.sh
-  ./configure --with-realtime=uspace --without-libmodbus --prefix=/usr --with-python=/usr/bin/python2.7 --enable-non-distributable=yes
+  cd "${srcdir}/${pkgname}-${pkgver}/src"
   make
 }
 
 package() {
-  cd $srcdir/linuxcnc/src
-  make install DESTDIR=${pkgdir} || return 1
-  #Stop hiding it from GNOME
-  cp -PR $srcdir/linuxcnc/share/applications $pkgdir/usr/share/
-  mkdir -p $pkgdir/etc/xdg
-#  echo To avoid conflict with linux-manpages...
-#  mv -v $pkgdir/usr/share/man/man9/abs.9.gz $pkgdir/usr/share/man/man9/linuxcnc_abs.9.gz
-  cp -PR $srcdir/linuxcnc/share/menus $pkgdir/etc/xdg/
-  install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
-  ln -s /usr/bin/linuxcnc ~/Desktop/linuxcnc
+  cd "${srcdir}/${pkgname}-${pkgver}/src"
+  DESTDIR=${pkgdir} make install 
+  cp -PR "${srcdir}/${pkgname}-${pkgver}/share/applications" $pkgdir/usr/share
+  mkdir -p "${pkgdir}/etc/xdg"
+  cp -PR "${srcdir}/${pkgname}-${pkgver}/share/menus" "${pkgdir}/etc/xdg/"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/src/${pkgname}.sh" \
+   "${pkgdir}/etc/profile.d/${pkgname}.sh"
+  sed -i "s|${srcdir}||" "${pkgdir}/usr/include/linuxcnc/config.h"
+  sed -i "s|${srcdir}||" "${pkgdir}/usr/share/linuxcnc/Makefile.modinc"
 }
-
