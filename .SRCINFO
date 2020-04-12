@@ -1,7 +1,7 @@
 pkgbase = likwid
 	pkgdesc = Lightweight performance tools
 	pkgver = 5.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RRZE-HPC/likwid
 	arch = x86_64
 	arch = i686
