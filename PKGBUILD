@@ -2,7 +2,7 @@
 
 pkgname=wmrc
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='WMRC is a shell utility for extending window manager capabilities using modules with dependency and error checking.'
 arch=('any')
 url='https://github.com/filiparag/wmrc'
@@ -17,7 +17,7 @@ package() {
   install -Dm 775 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -d -m 775 "${pkgdir}/usr/share/${pkgname}"
   install -Dm 664 "rc.conf" "${pkgdir}/usr/share/${pkgname}/"
-  install -Dm 664 "readme.txt" "${pkgdir}/usr/share/${pkgname}/"
+  install -Dm 664 "usage.txt" "${pkgdir}/usr/share/${pkgname}/"
   install -Dm 664 "wmrc.man" "${pkgdir}/usr/share/man/man1/${pkgname}.${pkgver}"
   cp -r --preserve=mode "modules" "${pkgdir}/usr/share/${pkgname}/"
 }
