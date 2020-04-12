@@ -1,7 +1,7 @@
 # Maintainer: Andres Gongora <mail at andresgongora dot com>
 
 pkgname="synth-shell-greeter-git"
-pkgver=v1.0.r4.g4169877
+pkgver=v1.0.r6.g245b315
 pkgrel=1
 _branch=master
 pkgdesc="Terminal greeter to overwiew system health and status"
