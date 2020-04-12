@@ -2,26 +2,26 @@
 
 pkgname=linvst2x-bin
 pkgver=2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's (single wineserver instance variant)"
 arch=('x86_64')
 url="https://github.com/osxmidi/LinVst"
 depends=('wine' 'python>=3.8')
 makedepends=('git')
-conflicts=('linvst' 'linvst-stable' 'linvst2x')
-replaces=('linvst' 'linvst-stable' 'linvst2x')
-source=("https://github.com/osxmidi/LinVst-X/archive/${pkgver}.tar.gz"
+conflicts=('linvst2s')
+replaces=('linvst2s')
+source=("https://github.com/osxmidi/LinVst-X/releases/download/2.7/LinVst-X-${pkgver}-Manjaro.zip"
         "git+https://github.com/usrmusicman/ArchStudioUtils.git")
-sha256sums=('319f1518f3a868d963850d7eb6d259a955284b8348035484bea030616b2fe116'
+sha256sums=('468fc95ea916b13a83660f6fac2c583457296fa173c1f1f3a993718c64bca339'
             'SKIP')
 
-build() {
-	cd $srcdir/LinVst-X-${pkgver}
-	make DESTDIR="${pkgdir}" all 
-}
-
 package() {
-	cd $srcdir/LinVst-X-${pkgver}
-	make DESTDIR="${pkgdir}" VST_DIR="${pkgdir}/usr/bin" install
+	cd "${srcdir}/LinVst-X-${pkgver}-Manjaro/embedded/"
+	for file in *.so; do
+        	install -Dm755 $file $pkgdir/usr/bin/$file
+	done
+	for file in *.exe; do
+		install -Dm755 $file $pkgdir/usr/bin/$file
+	done
 	install -Dm755 $srcdir/ArchStudioUtils/w2lvst2_X $pkgdir/usr/bin/w2lvst2_X
 }
