@@ -2,7 +2,7 @@
 
 _pkgname=polybar-mullvad
 pkgname=${_pkgname}-git
-pkgver=r5.deb5056
+pkgver=r10.3eeff2f
 pkgrel=1
 pkgdesc='A module for showing connection status of the Mullvad VPN service.'
 arch=(any)
