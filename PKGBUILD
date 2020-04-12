@@ -2,9 +2,9 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=kodi-addon-pvr-vdr-vnsi
-pkgver=3.6.3
-# Note: Use commits from "master" branch for Kodi 18
-_gitver=9e4d93afdc2673850e93d5945f2f7f98ef023dbd
+pkgver=3.6.4
+# Note: Use commits from "Leia" branch for Kodi 18
+_gitver=379b83043a66702f830195bda4893b92ec779c7b
 pkgrel=1
 url="https://github.com/kodi-pvr/pvr.vdr.vnsi"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
