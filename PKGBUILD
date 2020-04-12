@@ -2,7 +2,7 @@
 
 pkgname=mimalloc
 pkgver=1.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc='General-purpose allocator with excellent performance characteristics'
 arch=('x86_64')
 license=('MIT')
@@ -25,4 +25,6 @@ package() {
   cd "${pkgname}_${pkgver}"
   make DESTDIR="$pkgdir" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  ln -s "mimalloc-1.6/libmimalloc.so.1.6" "${pkgdir}/usr/lib/"
 }
