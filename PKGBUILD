@@ -17,9 +17,6 @@ makedepends=(
     'git'
     'python'
 )
-optdepends=(
-    'xmltv: For an alternative source of programme listings'
-)
 provides=('tvheadend')
 conflicts=('tvheadend' 'hts-tvheadend' 'hts-tvheadend-svn' 'tvheadend-git')
 install=tvheadend.install
