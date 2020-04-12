@@ -9,8 +9,11 @@ pkgbase = opensta-git
 	makedepends = swig
 	makedepends = bison
 	makedepends = flex
+	makedepends = git
+	makedepends = cmake
 	optdepends = libzip: read Verilog, SDF, SPF, and SPEF files compressed with gzip
 	optdepends = cudd: a binary decision diageram package for improving conditional timing arc handling
+	provides = opensta
 	source = git://github.com/The-OpenROAD-Project/OpenSTA.git
 	md5sums = SKIP
 
