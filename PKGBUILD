@@ -13,7 +13,7 @@ pkgbase=samba-heimdal
 pkgbaseorig=samba
 pkgname=('libwbclient-heimdal' 'smbclient-heimdal' 'samba-heimdal')
 pkgver=4.11.7
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://www.samba.org"
 license=('GPL3')
@@ -25,7 +25,7 @@ source=(https://us1.samba.org/samba/ftp/stable/${pkgbaseorig}-${pkgver}.tar.gz
         samba.logrotate
         samba.pam
         samba.conf)
-sha512sums=('3815080a1693c596a126371a5ea4e8534317a7266803c7de13a7e5b3ee9757dfbf13c0de20d498a6683d3aaf56941ed42f289e3c24f88713529a5f047a691af2'
+sha512sums=('c728adbc9fd86f9b745f62d2f435d0fd5e8d1381725a657f8d14ec246d5c758c9eb92bd82c25b0c3f40ce4d10eaf5ce7792363b8a8c4df2e6c78c1458fef4f95'
             '2ba0691ded467e4d6e40821f6de58c00f8962209efe2e60284c0c87756ab471c22c3d63b77d506e48c90ed0d852a2a24e41be1d499cf74a73cb99da0b503c858'
             '1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67'
             'e46ee848baabb261e7468ecee43aba4d001a24f86f5322ae522abdb75030fd0ebd9063b9df0be3576c4d1654d81331f5e389aee16ec2fa138259ae4728e94efc')
@@ -162,6 +162,8 @@ pkgdesc="SMB Fileserver and AD Domain server (using internal Heimdal server)"
 depends=('db>=4.7' 'popt' 'libcups' 'libcap>=2.16' 'gnutls>=2.4.1'
          'talloc' 'ldb-heimdal' 'libbsd' 'python' 'iniparser' 'tdb' 'libaio' 'perl-parse-yapp' "smbclient-heimdal>=$pkgver" 'gpgme'
          'libldb.so' 'libtdb.so' 'libtevent.so')
+optdepends=('python-dnsupdate: required for AD DC provisioning'
+            'gamin: required for AD DC provisioning')
 provides=('samba')
 conflicts=('samba')
 backup=(etc/logrotate.d/samba

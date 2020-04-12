@@ -1,6 +1,6 @@
 pkgbase = samba-heimdal
 	pkgver = 4.11.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.samba.org
 	arch = x86_64
 	license = GPL3
@@ -94,6 +94,8 @@ pkgname = samba-heimdal
 	depends = libldb.so
 	depends = libtdb.so
 	depends = libtevent.so
+	optdepends = python-dnsupdate: required for AD DC provisioning
+	optdepends = gamin: required for AD DC provisioning
 	provides = samba
 	conflicts = samba
 	backup = etc/logrotate.d/samba
