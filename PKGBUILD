@@ -5,13 +5,13 @@
 
 pkgname=mingw-w64-l-smash
 pkgver=2.14.5
-pkgrel=1
+pkgrel=2
 pkgdesc='MP4 muxer and other tools'
 arch=('any')
 url='https://github.com/l-smash/l-smash'
 license=('custom')
 depends=('mingw-w64-crt')
-makedepends=('mingw-w64-gcc' 'fakeroot')
+makedepends=('mingw-w64-gcc' 'fakeroot' "mingw-w64-environment")
 options=(!strip !buildflags staticlibs)
 source=("l-smash-${pkgver}.tar.gz::https://github.com/l-smash/l-smash/archive/v${pkgver}.tar.gz")
 sha256sums=('e6f7c31de684f4b89ee27e5cd6262bf96f2a5b117ba938d2d606cf6220f05935')
@@ -21,10 +21,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p ${srcdir}/l-smash-${pkgver}/build-${_arch} && cd ${srcdir}/l-smash-${pkgver}/build-${_arch}
 
-    mingw_c_flags="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
-    LDFLAGS=""
-    export CFLAGS="$mingw_c_flags $CFLAGS"
-    export CXXFLAGS="$mingw_c_flags $CXXFLAGS"
+    source mingw-env ${_arch}
 
     ${srcdir}/l-smash-${pkgver}/configure \
        --prefix=/usr/${_arch} \
@@ -40,6 +37,8 @@ build() {
 package() {
   for _arch in ${_architectures}; do
     cd ${srcdir}/l-smash-${pkgver}/build-${_arch}
+
+    source mingw-env ${_arch}
 
     make DESTDIR="${pkgdir}" install
 
