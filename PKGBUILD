@@ -28,6 +28,6 @@ package() {
     bindir="$pkgdir/usr/bin"
     sharedir="$pkgdir/usr/share/$pkgname"
 	mkdir -p "$sharedir" "$bindir"
-	ln -sf "${PWD}/bin/batch" "$bindir"
+	ln -sf "${PWD}/bin/batch" "$bindir/batch_process"
 	ln -sf "${PWD}/scripts/rename" "${PWD}/scripts/convert" "${PWD}/scripts/relink" "$sharedir"
 }
