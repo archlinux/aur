@@ -5,7 +5,7 @@ _repouser=neatbasis
 _reponame=bandwidthd
 _rev=0307fbba56a39a6e65ebadf488ad87979c64fdef
 pkgver=2.0.2.r1.${_rev:0:10}
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc="Daemon for graphing traffic of subnet machines"
 arch=(x86_64)
@@ -33,13 +33,13 @@ sha256sums=('7e8ebf7e2eeb5266af904a8f7188b11d5a13ebb0343022c2a118b86f48a952e4'
             '88c38a18b7bda6f3496dda3030ba118f8c461447dea426c13245099ae37a6d86'
             'be5fa230311258f14d4af6a00496443bfbc1a148a77f237bb4a0b663947e090a'
             'fc38a5623e66d82dec2efd28d2729e76e8f3b6056fb2bc2462a1ea1549f68807'
-            'f3a9ade36279f86e897d3842a8cb22a5a56db419b12f1689557b2d03ea765e58'
+            '89c13a354ec9f9d913d82d21989bfbc90de6c15eff98697f7043142ae02f0fbf'
             'ab93801ae0b05129aaf62a49c065fdb62b7ae16d88d8b956164c2f416df5da81'
             'cd7b1ffff5dd9490ab69d777e459d79c229d5fef2e71a811df29f6c11e6acde4'
             '31780d5d9c67158277a0edeeb672c594af97f96678222107db47ab4b2ede43b2'
             '90e0fec629c87d2465ca311acedf0ca4ccf5d77ddf60a8db1f5095cc8c41a748'
             'd734cea9710691a1658b9996e35cd407e85b542aa0961aec57fc49281516aa5d'
-            '21886618648cbd5ac499328740e3d1185537d3ad81cfceeaeb3167c468fa4e41')
+            '6c9e5bf89ecb580261a5a68ac240bd80ee43a7516c79023864acacbd8cee0ae2')
 
 backup=('etc/bandwidthd/bandwidthd.conf'
 		'etc/bandwidthd/bandwidthd-webui.conf')
