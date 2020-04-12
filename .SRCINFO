@@ -1,0 +1,14 @@
+pkgbase = cppglob
+	pkgdesc = C++ port of Python glob module
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Kogia-sima/cppglob
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	provides = libcppglob.so
+	source = cppglob-1.1.0.tar.gz::https://github.com/Kogia-sima/cppglob/archive/v1.1.0.tar.gz
+	sha256sums = 8baedb70e9a56d3eb99510d6a6cb4863bfeaa89069b5a2970ba6817201821552
+
+pkgname = cppglob
+
