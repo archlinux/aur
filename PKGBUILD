@@ -1,8 +1,9 @@
+# Maintainer: Carlos Galindo <carlos.s.galindo (at) gmail.com>
 # Maintainer: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-polls
-pkgver=0.10.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Poll app for Nextcloud"
 arch=('any')
@@ -12,7 +13,7 @@ depends=('nextcloud')
 makedepends=()
 options=('!strip')
 source=("nextcloud-app-poll-${pkgver}.tar.gz::https://github.com/nextcloud/polls/releases/download/v${pkgver}/polls.tar.gz")
-sha512sums=("ba5ce9b1ba2990e169b33a85fc1f98ee1a4874a497af0be333b9395121f937ab5b26a44a3f658b1cf4f596da19ae1baf1d8e2a61a6c78e246ea558b8d154ec9b")
+sha512sums=("e9b409fa224556353f56e6e1e02e160e19e7fab1a5ec453ecf66e8a7e00219be2cbbf7d3a323a7011283dc052d62174f4257d1973d833fa1334d3e85110e1239")
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
