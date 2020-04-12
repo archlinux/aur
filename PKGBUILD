@@ -29,7 +29,7 @@ source=(
 )
 md5sums=('SKIP'
          'SKIP'
-         '2dfcd6632de3862e79aa258f7f0f64fb')
+         '2e80ac965a4e730a79dec65db4f6e67d')
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
