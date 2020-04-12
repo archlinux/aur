@@ -9,7 +9,7 @@ pkgbase = python-plaidml-keras
 	depends = python-keras-applications
 	depends = python-keras-preprocessing
 	source = https://files.pythonhosted.org/packages/py2.py3/p/plaidml-keras/plaidml_keras-0.7.0-py2.py3-none-any.whl
-	sha256sums = 81cd63754916903d392ac73eebfe02775f2dddea44331158bf33142be090682d
+	sha256sums = e49cc34d47a6eec6acca8a6bf5ac7af6a8172e333d422ffac8c85846d8521bbc
 
 pkgname = python-plaidml-keras
 
