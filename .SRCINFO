@@ -1,7 +1,7 @@
 pkgbase = java-openjfx-bin
 	pkgdesc = Java OpenJFX 14 client application platform (Gluon build).
-	pkgver = 14rc8
-	pkgrel = 2
+	pkgver = 14
+	pkgrel = 1
 	url = https://openjfx.io/
 	arch = x86_64
 	license = GPL2
@@ -13,12 +13,12 @@ pkgbase = java-openjfx-bin
 	depends = webkit2gtk
 	provides = java-openjfx=14
 	conflicts = java14-openjfx
-	source = https://download2.gluonhq.com/openjfx/14/openjfx-14-ea+8_linux-x64_bin-sdk.zip
-	source = https://download2.gluonhq.com/openjfx/14/openjfx-14-ea+8_linux-x64_bin-jmods.zip
-	source = https://download2.gluonhq.com/openjfx/14/openjfx-14-ea+8-javadoc.zip
-	sha256sums = 5e849d7c2071529c7ee7ac49eb4877cd28754df5175a8b04cfa8bb4f9d6cf759
-	sha256sums = 91e5647fb5689906fe012ca81b71bc78e94af6058d9e3674dc53dad6abc907b3
-	sha256sums = f114656702f23aa59b3d3828db5228436962f13af20d83b96716915d04211d27
+	source = https://download2.gluonhq.com/openjfx/14/openjfx-14_linux-x64_bin-sdk.zip
+	source = https://download2.gluonhq.com/openjfx/14/openjfx-14_linux-x64_bin-jmods.zip
+	source = https://download2.gluonhq.com/openjfx/14/openjfx-14-javadoc.zip
+	sha256sums = dc0ce35ba41956b08fe62e2db9b8cf6dd80ba21716564d78ad652ddd945d6dbd
+	sha256sums = 07e76608102dacc96c95a7a8d18f844df0c33bd8fbda8675d7c158cc642b119c
+	sha256sums = 5c7d03bd6dde6f9d0f185fb9c1dfe8ed70fab0d21eef131856fcedec9074986f
 
 pkgname = java-openjfx-bin
 

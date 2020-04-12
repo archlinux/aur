@@ -1,10 +1,9 @@
-# Maintainer: M A <morealaz at gmail dot com>
+# Maintainer: L B <leobaldin dot 2000 at gmail dot com>
 
 pkgname=java-openjfx-bin
 _majorver=14
-_buildver=8
-pkgver=${_majorver}rc${_buildver}
-pkgrel=2
+pkgver=14
+pkgrel=1
 pkgdesc="Java OpenJFX ${_majorver} client application platform (Gluon build)."
 arch=('x86_64')
 url='https://openjfx.io/'
@@ -12,12 +11,12 @@ license=('GPL2')
 depends=('ffmpeg' 'gstreamer' 'java-openjdk-bin' 'libxtst' 'qt5-base' 'webkit2gtk')
 provides=("java-openjfx=${_majorver}")
 conflicts=("java${_majorver}-openjfx")
-source=("https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}_linux-x64_bin-sdk.zip"
-        "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}_linux-x64_bin-jmods.zip"
-        "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}-javadoc.zip")
-sha256sums=('5e849d7c2071529c7ee7ac49eb4877cd28754df5175a8b04cfa8bb4f9d6cf759'
-            '91e5647fb5689906fe012ca81b71bc78e94af6058d9e3674dc53dad6abc907b3'
-            'f114656702f23aa59b3d3828db5228436962f13af20d83b96716915d04211d27')
+source=("https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}_linux-x64_bin-sdk.zip"
+        "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}_linux-x64_bin-jmods.zip"
+        "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-javadoc.zip")
+sha256sums=('dc0ce35ba41956b08fe62e2db9b8cf6dd80ba21716564d78ad652ddd945d6dbd'
+            '07e76608102dacc96c95a7a8d18f844df0c33bd8fbda8675d7c158cc642b119c'
+            '5c7d03bd6dde6f9d0f185fb9c1dfe8ed70fab0d21eef131856fcedec9074986f')
 
 _jvmdir=usr/lib/jvm/java-${_majorver}-openjdk
 
