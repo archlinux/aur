@@ -10,6 +10,7 @@ license=('GPL2' 'CC BY-SA4')
 makedepends=('git' 'inkscape' 'libxml2' 'parallel' 'sassc')
 optdepends=('gtk-engine-murrine: for gtk2 theming'
             'ttf-roboto: Recommended font')
+provides=('plata-theme')
 conflicts=('plata-theme')
 source=("git+https://gitlab.com/tista500/plata-theme.git#tag=${pkgver}")
 md5sums=('SKIP')

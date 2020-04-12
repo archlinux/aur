@@ -13,6 +13,7 @@ pkgbase = plata-theme-slim
 	makedepends = sassc
 	optdepends = gtk-engine-murrine: for gtk2 theming
 	optdepends = ttf-roboto: Recommended font
+	provides = plata-theme
 	conflicts = plata-theme
 	source = git+https://gitlab.com/tista500/plata-theme.git#tag=0.9.7
 	md5sums = SKIP
