@@ -1,17 +1,17 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=madrigal-git
 pkgver=r192.8395a23
 pkgrel=3
 pkgdesc="Qt5 OpenHome control point, still in development"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="https://github.com/CDrummond/madrigal"
-license=('GPL3')
-depends=('qt5-svg' 'hicolor-icon-theme')
-makedepends=('git' 'cmake')
-provides=('madrigal')
+license=(GPL3)
+depends=(qt5-svg hicolor-icon-theme)
+makedepends=(git cmake)
+provides=(madrigal)
 source=("${pkgname}::git+https://github.com/CDrummond/madrigal.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
@@ -23,10 +23,10 @@ prepare() {
 }
 build() {
   cd "$srcdir/$pkgname/build"
-	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-	make
+  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  make
 }
 package() {
-	cd ${srcdir}/${pkgname}/build
-	make DESTDIR=$pkgdir install
+  cd ${srcdir}/${pkgname}/build
+  make DESTDIR=$pkgdir install
 }

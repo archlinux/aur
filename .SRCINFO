@@ -12,7 +12,7 @@ pkgbase = madrigal-git
 	depends = hicolor-icon-theme
 	provides = madrigal
 	source = madrigal-git::git+https://github.com/CDrummond/madrigal.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = madrigal-git
 
