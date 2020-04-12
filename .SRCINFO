@@ -1,13 +1,12 @@
 pkgbase = prey
 	pkgdesc = A FPS based on the id Tech 4 engine using portals and variable gravity. You need the retail game files to play.
 	pkgver = 02192009
-	pkgrel = 2
+	pkgrel = 3
 	url = http://icculus.org/prey/
 	install = prey.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = xterm
 	source = prey.desktop
 	source = prey.launcher
 	source = preyded.launcher
