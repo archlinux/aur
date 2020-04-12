@@ -1,10 +1,10 @@
 pkgbase = cpeditor-git
 	pkgdesc = The editor for competitive programming
-	pkgver = 20200402
+	pkgver = 20200412
 	pkgrel = 1
 	url = https://github.com/cpeditor/cpeditor
 	arch = x86_64
-	license = GPLv3+
+	license = GPL3
 	makedepends = gcc
 	makedepends = cmake
 	makedepends = git
