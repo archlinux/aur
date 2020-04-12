@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=isoband
-_cranver=0.2.0
+_cranver=0.2.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,10 +10,10 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
 depends=(r r-rcpp r-testthat)
-makedepends=('gcc>=4.3')
-optdepends=(r-covr r-ggplot2 r-knitr r-lwgeom r-magick r-microbenchmark r-rmarkdown r-sf)
+makedepends=('gcc>=4.8')
+optdepends=(r-covr r-ggplot2 r-knitr r-magick r-microbenchmark r-rmarkdown r-sf r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('d7e56f9a0ec28581171ab3927f0975c8')
+md5sums=('2766692dec6ae8d497b59352764d9dfb')
 
 build() {
   cd "${srcdir}"
