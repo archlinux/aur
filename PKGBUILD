@@ -5,7 +5,7 @@ _repouser=neatbasis
 _reponame=bandwidthd
 _rev=0307fbba56a39a6e65ebadf488ad87979c64fdef
 pkgver=2.0.2.r1.${_rev:0:10}
-pkgrel=8
+pkgrel=9
 epoch=1
 pkgdesc="Daemon for graphing traffic of subnet machines"
 arch=(x86_64)
@@ -82,6 +82,8 @@ build() {
 
 package() {
 	cd "${_reponame}-${_rev}"
+
+	install -dm700 "${pkgdir}/var/lib/bandwidthd"
 
 	make DESTDIR="${pkgdir}" install
 

@@ -1,7 +1,7 @@
 pkgbase = bandwidthd
 	pkgdesc = Daemon for graphing traffic of subnet machines
 	pkgver = 2.0.2.r1.0307fbba56
-	pkgrel = 8
+	pkgrel = 9
 	epoch = 1
 	url = https://github.com/neatbasis/bandwidthd
 	arch = x86_64
