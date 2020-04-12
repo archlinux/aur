@@ -1,6 +1,6 @@
 pkgbase = v4l2loopback-dkms-git
 	pkgdesc = v4l2-loopback device
-	pkgver = 0.12.3.r6.ge4f2c3c
+	pkgver = 0.12.4.r0.g9bd5553
 	pkgrel = 1
 	url = https://github.com/umlaeute/v4l2loopback
 	install = v4l2loopback-dkms-git.install
