@@ -3,7 +3,7 @@
 # Contributor: Tristan Webb <t2webb@ucsd.edu>
 # Contributor Sindwiller
 pkgname=pyspread
-pkgver=1.1.3
+pkgver=1.99.1
 pkgrel=1
 pkgdesc="A cross-platform Python spreadsheet application. Python 2.7 version"
 arch=('any')
