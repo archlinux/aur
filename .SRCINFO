@@ -1,6 +1,6 @@
 pkgbase = polybar-mullvad-git
 	pkgdesc = A module for showing connection status of the Mullvad VPN service.
-	pkgver = r5.deb5056
+	pkgver = r10.3eeff2f
 	pkgrel = 1
 	url = https://github.com/simon1573/polybar-mullvad
 	arch = any
