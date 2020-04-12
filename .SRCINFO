@@ -1,6 +1,6 @@
 pkgbase = nemu
 	pkgdesc = ncurses interface for QEMU
-	pkgver = 2.2.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://bitbucket.org/PascalRD/nemu
 	arch = i686
@@ -8,14 +8,13 @@ pkgbase = nemu
 	license = BSD
 	makedepends = cmake
 	depends = qemu
-	depends = glibc
 	depends = ncurses
 	depends = sqlite
 	depends = udev
 	depends = libusb
-	source = nemu-2.2.1.tar.bz2::https://bitbucket.org/PascalRD/nemu/get/v2.2.1.tar.bz2
+	source = nemu-2.3.0.tar.bz2::https://bitbucket.org/PascalRD/nemu/get/v2.3.0.tar.bz2
 	source = https://bitbucket.org/PascalRD/nemu/raw/1e73a64638ef804f0e241e89aeb31305eb4f602d/LICENSE
-	sha256sums = db881e39d94034d93251846f86696133635ea3859e9392adf27ced25cdb24e36
+	sha256sums = 28bd8b9bf591ec73b0bcf34f199617626d5e93961255ca0893eec9910b857742
 	sha256sums = 0853b096d8bc114f9e17a36939192982eb4440a15a00bb375a45bd6d27cd3210
 
 pkgname = nemu
