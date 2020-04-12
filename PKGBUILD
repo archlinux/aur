@@ -5,7 +5,7 @@
 
 pkgname=ldb-heimdal
 pkgnameorig=ldb
-pkgver=2.0.8
+pkgver=2.0.9
 pkgrel=1
 epoch=1
 pkgdesc='Schema-less, ldap like, API and database (built for Samba with Heimdal)'
@@ -19,7 +19,7 @@ optdepends=('python: for python bindings')
 conflicts=('ldb')
 replaces=('ldb')
 provides=('ldb' 'libldb.so')
-sha512sums=('23a44968c9b4b57deb3f7b7b2466f140b4d8534a07a5e866545dd108c3d305ee4b0ea9bceec3177fcd09a4efcb4876a8283ca58b5c496fcf323b810666e1e79a')
+sha512sums=('f4d2480491f16aac7837fa2ff071e81e429bd9b3a365264723245791aad1831a236ffeff0f01f85becb998b224c321b166f3edd3f9a828714b7c3b24aed11a5e')
 
 build() {
   cd ${pkgnameorig}-${pkgver}
