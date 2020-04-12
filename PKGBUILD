@@ -4,7 +4,7 @@
 # https://github.com/sudoforge/pkgbuilds
 
 pkgname=copybara-git
-pkgver=0.0.0.r1941.gba3540c1
+pkgver=0.0.0.r1946.g9953379e
 pkgrel=1
 pkgdesc="A tool for transforming and moving code between repositories"
 arch=('x86_64')
