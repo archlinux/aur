@@ -5,7 +5,7 @@ pkgname='python-plaidml-keras'
 _name='plaidml'
 _pkgname="${_name}-keras"
 
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='PlaidML Keras backend implementation'
 url="https://github.com/${_name}/${_name}"
