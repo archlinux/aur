@@ -1,16 +1,15 @@
-pkgbase = ttf-astra-sans
-	pkgdesc = Free russian sans-serif fonts by Astra
-	pkgver = 1001
+pkgbase = ttf-astra-serif
+	pkgdesc = Free serif metric-compatible Times New Roman replacement by Paratype
+	pkgver = 20200412
 	pkgrel = 1
-	install = ttf-astra-sans.install
+	url = https://www.paratype.ru/fonts/pt/pt-astra-serif
+	install = ttf-astra-serif.install
 	arch = any
 	license = OFL
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = http://astra-linux.su/images/fonts/PTAstraSans&Serif_TTF_ver1001.zip
-	md5sums = 31b30481edf94b82ff33c4129e60e48a
-
-pkgname = ttf-astra-sans
+	source = http://webfonts.ru/original/ptastraserif/ptastraserif.zip
+	md5sums = 7d52a1451cf3e70f0af82c4ab1161d64
 
 pkgname = ttf-astra-serif
 
