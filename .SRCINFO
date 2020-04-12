@@ -1,14 +1,14 @@
 pkgbase = lua-multipart-post
 	pkgdesc = HTTP Multipart Post helper for lua
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/catwell/lua-multipart-post
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = lua-socket
-	source = https://github.com/catwell/lua-multipart-post/archive/v1.1.tar.gz
-	sha256sums = 0e032ddaa4debe3d33dce635281a64882fd871084747071e4323f3848073d3bd
+	source = https://github.com/catwell/lua-multipart-post/archive/v1.2.tar.gz
+	sha256sums = 90eaf2de28258b87780efe2aabdbbe1913f0b9d420f90b5540dd360968d56ac9
 
 pkgname = lua-multipart-post
 
