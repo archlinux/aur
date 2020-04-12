@@ -23,7 +23,7 @@ optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'libappindicator-gtk3: StatusNotifierItem support'
             'trash-cli: file deletion support (trash-put)'
             "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
-source=('git+https://github.com/vially/electron.git#branch=arch8.2.1-1'
+source=('git+https://github.com/hedgepigdaniel/electron.git#tag=arch8.2.1-1'
         'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git'
         'electron.desktop'
         'default_app-icon.patch'
@@ -55,8 +55,7 @@ sha256sums=('SKIP'
             '08ef82476780e0864b5bf7f20eb19db320e73b9a5d4f595351e12e97dda8746f'
             '5bc775c0ece84d67855f51b30eadcf96fa8163b416d2036e9f9ba19072f54dfe'
             'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
-            '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
-           )
+            '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014')
 
 _system_libs=('ffmpeg'
               'flac'

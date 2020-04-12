@@ -43,7 +43,7 @@ pkgbase = electron-ozone
 	conflicts = electron
 	options = debug
 	options = !strip
-	source = git+https://github.com/vially/electron.git#branch=arch8.2.1-1
+	source = git+https://github.com/hedgepigdaniel/electron.git#tag=arch8.2.1-1
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = electron.desktop
 	source = default_app-icon.patch
