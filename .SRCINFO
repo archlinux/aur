@@ -1,0 +1,20 @@
+pkgbase = libtree-git
+	pkgdesc = ldd as a tree with an option to bundle dependencies into a single folder
+	pkgver = v1.0.0.r7.g4571d36
+	pkgrel = 1
+	url = https://github.com/otreblan/libtree
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = cxxopts
+	makedepends = termcolor
+	makedepends = elfio
+	depends = cppglob
+	provides = libtree
+	conflicts = libtree
+	source = libtree-git::git+https://github.com/otreblan/libtree.git
+	md5sums = SKIP
+
+pkgname = libtree-git
+
