@@ -3,7 +3,7 @@
 
 pkgname=snx
 pkgver=800010003
-pkgrel=1
+pkgrel=2
 pkgdesc="Check Point SSL Network Extender (VPN Client)"
 arch=('x86_64')
 url="https://supportcenter.checkpoint.com/supportcenter/portal/user/anon/page/default.psml/media-type/html?action=portlets.DCFileAction&eventSubmit_doGetdcdetails=&fileid=22824"
@@ -26,4 +26,6 @@ prepare() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 snx $pkgdir/usr/bin/snx
+    install -dm0700 $pkgdir/etc/snx
+    install -dm0700 $pkgdir/etc/snx/tmp
 }
