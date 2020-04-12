@@ -1,0 +1,11 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/modprobe.d/91-amdgpu.*.conf
+
+[Action]
+Description = Updating all initcpios for amdgpu-experimental
+When = PostTransaction
+Exec = /usr/bin/mkinitcpio -P
