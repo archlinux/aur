@@ -1,50 +1,42 @@
 # This PKGBUILD is part of the VDR4Arch project [https://github.com/vdr4arch]
 
-# Maintainer: Alexander Grothe <seahawk1986[at]hotmail[dot]com>
+# Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=vdr-markad
-pkgver=0.1.4_45_gea2e182
+pkgver=1.0.3
+_logover=ea2e182ec798375f3830f8b794e7408576f139ad
 epoch=1
-_gitver=ea2e182ec798375f3830f8b794e7408576f139ad
 _vdrapi=2.4.1
-pkgrel=3
+pkgrel=1
 pkgdesc="automatic advertisement detection"
-url="http://projects.vdr-developer.org/projects/plg-markad"
+url="https://github.com/kfb77/vdr-plugin-markad"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('ffmpeg' "vdr-api=${_vdrapi}")
-makedepends=('git')
 _plugname=${pkgname//vdr-/}
-source=("git+https://projects.vdr-developer.org/git/vdr-plugin-markad.git#commit=$_gitver"
-        "vdr-markad-ffmpeg4-fix.patch"
-        "vdr-markad-newmakefile.diff"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/kfb77/vdr-plugin-markad/archive/v1.0.3.tar.gz"
+        "$pkgname-logos-1.tar.bz2::https://projects.vdr-developer.org/git/vdr-plugin-markad.git/snapshot/vdr-plugin-markad-$_logover.tar.bz2"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('SKIP'
-         '118d57db2dd99bf5fbb829e2e55887ed'
-         '77001bbf5f138d1d1cd7a6f334fa8202'
-         'c0d6383c9c9b8ee6c34af19179676bf3')
-
-pkgver() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
-  git describe --tags | sed 's/-/_/g;s/v//'
-}
+sha256sums=('087b5300da3841d7790afdfa23aeaf1511cf5c848bb30a2c3532de8c3b9162f7'
+            'c5316bd48ebdb58ecad8bf8de29b2b92337aa8350a4d3340e8383301d4f7719f'
+            '614cbd493d5556249d17598a4a0a43eacfc084e9c0446b27f0cf6ff846dd8640')
 
 prepare() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
-  patch -p1 -i "$srcdir/vdr-markad-newmakefile.diff"
-  patch -p1 -i "$srcdir/vdr-markad-ffmpeg4-fix.patch"
+  cd "${srcdir}/vdr-plugin-${_plugname}-$pkgver"
+  rm -rf "command/logos"
+  mv "${srcdir}/vdr-plugin-$_plugname-$_logover/command/logos" "command"
 }
 
 build() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-$pkgver"
   make
 }
 
 package() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-$pkgver"
   make DESTDIR="$pkgdir" install
 
-  #Move the logofiles to the right place and add a symlink to workaround patching.
+  # Move the logofiles to the right place and add a symlink to prevent patching.
   mkdir -p "$pkgdir/usr/share"
   mv "$pkgdir/var/lib/markad" "$pkgdir/usr/share/markad"
   ln -s /usr/share/markad "$pkgdir/var/lib/markad"
