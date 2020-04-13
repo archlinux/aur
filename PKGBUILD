@@ -23,7 +23,7 @@ prepare() {
 build() {
     cd "${srcdir}/squash"
 
-    ./autogen.sh
+    ./autogen.sh --prefix=/usr
     make
 }
 
