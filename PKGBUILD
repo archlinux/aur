@@ -1,10 +1,9 @@
 # Maintainer: Jan-Erik Rediger <badboy at archlinux dot us>
-# Co-Maintainer: Ingo Bürk <ingo.buerk@airblader.de>
 # Contributor: Thorsten Töpper <atsutane-aur@freethoughts.de>
 # Contributor: William Giokas <1007380@gmail.com>
 
 pkgname=i3lock-git
-pkgver=2.12.r0.gabe1e3c
+pkgver=2.12.r9.gf3b0612
 pkgrel=1
 pkgdesc="An improved screenlocker based upon XCB and PAM"
 arch=('i686' 'x86_64')
@@ -27,36 +26,31 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
   cd "$_gitname"
 
   # Fix ticket FS#31544, sed line taken from gentoo
   sed -i -e 's:login:system-auth:' pam/i3lock
 
-  autoreconf --force --install
+  autoreconf -fiv
+}
 
-  rm -rf build/
-  mkdir -p build && cd build/
+build() {
+  cd "$_gitname"
 
-  ../configure \
+  ./configure \
     --prefix=/usr \
-    --sysconfdir=/etc \
-    --disable-sanitizers
-
-  # See https://lists.archlinux.org/pipermail/arch-dev-public/2013-April/024776.html
-  make CPPFLAGS+="-U_FORTIFY_SOURCE"
+    --sysconfdir=/etc
+  make
 }
 
 
 package() {
   cd "$_gitname"
-  cd build/
+  make DESTDIR="${pkgdir}" install
 
-  make DESTDIR="$pkgdir/" install
-
-  install -Dm644 ../LICENSE \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 i3lock.1 ${pkgdir}/usr/share/man/man1/i3lock.1
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
-
