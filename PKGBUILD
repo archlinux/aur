@@ -1,7 +1,7 @@
 # Maintainer: Kyle Laker <kyle@laker.email>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=warpinator-git
-pkgver=0.0.1.r135.596d88f
+pkgver=0.0.1.r137.de5bd0a
 pkgrel=1
 pkgdesc="Share files across the LAN"
 arch=('x86_64')
@@ -29,7 +29,8 @@ prepare() {
 
 	# Fix hard-coded libexec dir
 	sed -i 's/libexec/lib/g' \
-		bin/warp install-scripts/meson_generate_and_install_protobuf_files.py
+		"bin/${pkgname%-git}" \
+		install-scripts/meson_generate_and_install_protobuf_files.py
 }
 
 build() {
@@ -39,11 +40,4 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" ninja -C build install
-
-	# Binary name conflicts with haskell-wai-app-static
-	mv "$pkgdir/usr/bin/warp" "$pkgdir/usr/bin/${pkgname%-git}"
-
-	sed -i 's/Exec=warp/Exec=warpinator/g' \
-		"$pkgdir/etc/xdg/autostart/warp-autostart.desktop" \
-		"$pkgdir/usr/share/applications/warp.desktop"
 }
