@@ -1,0 +1,17 @@
+pkgbase = google-chat-linux-electron7-git
+	pkgdesc = Unofficial electron-7-based desktop client for Google Chat, electron 7 patch
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/squalou/google-chat-linux.git
+	arch = x86_64
+	arch = i686
+	license = WTFPL
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = xz
+	makedepends = binutils
+	source = google-chat-linux-electron7-git::git+https://github.com/squalou/google-chat-linux.git#branch=master
+	sha256sums = SKIP
+
+pkgname = google-chat-linux-electron7-git
+

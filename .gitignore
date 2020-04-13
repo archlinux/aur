@@ -1,0 +1,6 @@
+src
+pkg
+*.xz
+google-chat-linux-electron7-git
+google-chat-linux
+updateSRCINFO.sh
