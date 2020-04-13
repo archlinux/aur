@@ -4,8 +4,8 @@
 ## ATTENTION!! You will need to download the trial and/or obtain a license from Harrison Consoles. Then, drop all appropriate files in the root with the PKGBUILD. Also, uncomment the lines that reference the license file if you want an easy install process.
 
 pkgname=mixbus32c
-pkgver=6.0.655
-pkgrel=2
+pkgver=6.0.697
+pkgrel=1
 pkgdesc="Harrison Mixbus - Digital Audio Workstation (32C Version)"
 arch=('x86_64')
 url="http://harrisonconsoles.com/site/$pkgname.html"
