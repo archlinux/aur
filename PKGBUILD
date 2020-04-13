@@ -1,31 +1,41 @@
-# Contributor: Radu Potop <radu@wooptoo.com>
+# Maintainer: Diab Neiroukh <officiallazerl0rd@gmail.com>
 
-pkgname=zlib-ng-git
-pkgver=1.2.8
+pkgname="zlib-ng-git"
+pkgver=1.9.9
 pkgrel=1
-pkgdesc='zlib for the "next generation" systems. Drop-In replacement with some serious optimizations.'
-arch=('i686' 'x86_64')
-license=('zlib')
-url="https://github.com/Dead2/zlib-ng"
-depends=('glibc')
-source=("git://github.com/Dead2/zlib-ng.git")
-conflicts=('zlib')
-md5sums=('SKIP')
-_gitname='zlib-ng'
+pkgdesc='zlib replacement with optimizations for "next generation" systems'
+arch=("any")
+url="https://github.com/zlib-ng/zlib-ng"
+license=("custom")
+depends=("glibc")
+makedepends=("cmake")
+provides=("zlib=1.2.11" "zlib-ng=1.9.9")
+conflicts=("zlib-ng")
+options=("staticlibs")
+source=("git+${url}.git"
+        "zlib-ng.conf")
+b2sums=("SKIP"
+        "bf6eb01985db45c6b209a981aa5dbb97c9533fac960cd92ad9aee2d7926f0ec0e133f7df65901ced722fc51bdb362c6bfa3442c8d023db079b6636d109856071")
 
-build() {
-    cd ${srcdir}/${_gitname}
-    ./configure --prefix=/usr
-    make
+build()
+{
+	cd zlib-ng
+	./configure --prefix=/opt/zlib-ng --zlib-compat
+	make
 }
 
-package() {
-    cd ${srcdir}/${_gitname}
-    make install DESTDIR=${pkgdir}
+check()
+{
+	cd zlib-ng
+	make test
+}
 
-    install -D libz.so ${pkgdir}/usr/lib/libz.so
-    install -D libz.so.1 ${pkgdir}/usr/lib/libz.so.1
-    install -D libz.so.${pkgver}.zlib-ng ${pkgdir}/usr/lib/libz.so.${pkgver}
-    
-    install -D -m644 LICENSE.md ${pkgdir}/usr/share/licenses/zlib/LICENSE
+package()
+{
+	install -D -m644 zlib-ng.conf ${pkgdir}/etc/ld.so.conf.d/zlib-ng.conf
+
+	cd zlib-ng
+	make install DESTDIR=${pkgdir}
+
+	install -D -m644 LICENSE.md ${pkgdir}/usr/share/licenses/zlib-ng/LICENSE
 }
