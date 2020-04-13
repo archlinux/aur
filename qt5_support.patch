@@ -1,0 +1,86 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7f4730e..ea0f03c 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,12 +1,10 @@
+ cmake_minimum_required(VERSION 2.4)
+ project(MasterPatch)
+ 
+-find_package(Qt4 REQUIRED)
+-include(${QT_USE_FILE})
+-include_directories(${QT_INCLUDES})
++find_package(Qt5 COMPONENTS Widgets REQUIRED)
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ 
+-qt4_wrap_ui(UI_FILES
++qt5_wrap_ui(UI_FILES
+ 	main.ui
+ )
+ 
+@@ -21,4 +19,4 @@ add_executable(patch WIN32
+ 	patcher.cpp
+ )
+ 
+-target_link_libraries(patch ${QT_LIBRARIES})
++target_link_libraries(patch Qt5::Widgets)
+diff --git a/main.cpp b/main.cpp
+index 438037d..d76801b 100755
+--- a/main.cpp
++++ b/main.cpp
+@@ -72,7 +72,7 @@ void MainWindow::done(QAbstractButton *button)
+ 		if(out.isEmpty())
+ 			return;
+ 
+-		QString ret = Patcher::patch(path.toAscii().constData(), out.toAscii().constData(), (Patcher::MapProgression)mapBox->currentIndex(), (Patcher::MusicSelections)musicBox->currentIndex(), doomWad, doom2Wad);
++		QString ret = Patcher::patch(path.toUtf8().constData(), out.toUtf8().constData(), (Patcher::MapProgression)mapBox->currentIndex(), (Patcher::MusicSelections)musicBox->currentIndex(), doomWad, doom2Wad);
+ 		if(ret.isEmpty())
+ 		{
+ 			QMessageBox::information(this, tr("Done"), tr("The patching process has been completed!"));
+diff --git a/patcher.cpp b/patcher.cpp
+index 2c218b7..9ffa23f 100755
+--- a/patcher.cpp
++++ b/patcher.cpp
+@@ -622,7 +622,7 @@ QString Patcher::patch(const char* in, const char* out, Patcher::MapProgression
+ 	for(unsigned int i = 0;i < NUM_FILES;i++)
+ 	{
+ 		QString path = QString(in) + "/" + files[i];
+-		WadFile *file = WadFile::FromFile(path.toAscii());
++		WadFile *file = WadFile::FromFile(path.toUtf8());
+ 		if(file == NULL)
+ 			return QString("Could not read \"") + files[i] + "\"";
+ 
+@@ -660,8 +660,8 @@ QString Patcher::patch(const char* in, const char* out, Patcher::MapProgression
+ 				oldName = "MAP01";
+ 				break;
+ 		}
+-		file->RenameLump(oldName, mapName.toAscii());
+-		output << file->GetLump(mapName.toAscii());
++		file->RenameLump(oldName, mapName.toUtf8());
++		output << file->GetLump(mapName.toUtf8());
+ 		output << file->GetLump("THINGS");
+ 		output << file->GetLump("LINEDEFS");
+ 		output << file->GetLump("SIDEDEFS");
+@@ -725,12 +725,12 @@ QString Patcher::patch(const char* in, const char* out, Patcher::MapProgression
+ 	else
+ 		mapinfoData = mapinfoData.arg(11).arg(11).arg(11).arg(clusterinfo).arg("SKY1");
+ 
+-	output.AddLump("MAPINFO", mapinfoData.length(), (const unsigned char*)mapinfoData.toAscii().constData());
++	output.AddLump("MAPINFO", mapinfoData.length(), (const unsigned char*)mapinfoData.toUtf8().constData());
+ 	output.AddLump("LANGUAGE", sizeof(language), language);
+ 
+ 	if(musicSelections == Patcher::MS_XASERPICKS || musicSelections == Patcher::MS_BLZUT3PICKS)
+ 	{
+-		WadFile *extraFile = WadFile::FromFile(doom2Wad.toAscii());
++		WadFile *extraFile = WadFile::FromFile(doom2Wad.toUtf8());
+ 		extraFile->RenameLump("D_DM2INT", "D_INTDM2");
+ 		output << extraFile->GetLump("D_INTDM2");
+ 		if(musicSelections == Patcher::MS_XASERPICKS)
+@@ -743,7 +743,7 @@ QString Patcher::patch(const char* in, const char* out, Patcher::MapProgression
+ 
+ 	if(musicSelections == Patcher::MS_XASERPICKS)
+ 	{
+-		WadFile *extraFile = WadFile::FromFile(doomWad.toAscii());
++		WadFile *extraFile = WadFile::FromFile(doomWad.toUtf8());
+ 		output << extraFile->GetLump("D_E1M5");
+ 		output << extraFile->GetLump("D_E1M7");
+ 		output << extraFile->GetLump("D_E1M8");
