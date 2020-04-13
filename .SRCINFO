@@ -1,0 +1,29 @@
+pkgbase = foosynth-plugin-neo_minideen-git
+	pkgdesc = Plugin for Vapoursynth: neo_minideen (Dual interface for Vapoursynth/Avisynth) (GIT version)
+	pkgver = r7.1.gddcbeaa
+	pkgrel = 1
+	url = https://forum.doom9.org/showthread.php?t=176554
+	arch = x86_64
+	license = ISC
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = clang
+	makedepends = avisynthplus
+	makedepends = vapoursynth
+	depends = gcc-libs
+	source = neo_minideen::git+https://github.com/HomeOfAviSynthPlusEvolution/minideen.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-neo_minideen-git
+	pkgdesc = Plugin for Avisynth: neo_minideen (GIT version)
+	depends = avisynthplus
+	provides = avisynth-plugin-neo_minideen
+	conflicts = avisynth-plugin-neo_minideen
+
+pkgname = vapoursynth-plugin-neo_minideen-git
+	pkgdesc = Plugin for Vapoursynth: neo_minideen (GIT version)
+	depends = vapoursynth
+	provides = vapoursynth-plugin-neo_minideen
+	conflicts = vapoursynth-plugin-neo_minideen
+
