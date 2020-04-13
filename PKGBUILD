@@ -2,11 +2,11 @@
 
 pkgname=phoc
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Wlroots based Phone compositor"
 url="https://source.puri.sm/Librem5/phoc"
 license=("GPL3")
-arch=(i686 x86_64 armv6h armv7h)
+arch=(i686 x86_64 arm armv6h armv7h aarch64)
 depends=(gnome-desktop
          wlroots)
 makedepends=(ctags
