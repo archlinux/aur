@@ -2,7 +2,7 @@
 
 pkgname="zlib-ng-git"
 pkgver=1.9.9
-pkgrel=2
+pkgrel=3
 pkgdesc="zlib replacement with optimizations for \"next generation\" systems"
 arch=("any")
 url="https://github.com/zlib-ng/zlib-ng"
@@ -32,10 +32,10 @@ check()
 
 package()
 {
-	install -D "zlib-ng.conf" "${pkgdir}/etc/ld.so.conf.d/zlib-ng.conf"
+	install -D -m644 "zlib-ng.conf" "${pkgdir}/etc/ld.so.conf.d/zlib-ng.conf"
 
 	cd "zlib-ng"
 	make install DESTDIR="${pkgdir}"
 
-	install -D "LICENSE.md" "${pkgdir}/usr/share/licenses/zlib-ng/LICENSE"
+	install -D -m644 "LICENSE.md" "${pkgdir}/usr/share/licenses/zlib-ng/LICENSE"
 }
