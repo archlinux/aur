@@ -1,7 +1,7 @@
 # Maintainer: f0x <aur at cthu dot lu>
 
 pkgname=hikari-darcs
-pkgver=1.0.2.20200412091748
+pkgver=1.0.2.20200412164624
 pkgrel=1
 epoch=1
 pkgdesc='Stacking Wayland compositor with additional tiling capabilities, heavily inspired by the Calm Window manager (cwm)'
@@ -17,14 +17,7 @@ source=()
 _darcsmod="hikari"
 _darcstrunk="https://hub.darcs.net/raichoo"
 
-pkgver(){
-  cd ${srcdir}/$_darcsmod
-  lastver=$(darcs show tags | head -n1)
-  timestamp=$(darcs log -n 1 --xml-output | grep -oP "(?<=date=')\d+")
-  echo $lastver.$timestamp
-}
-
-build(){
+prepare() {
   cd ${srcdir}
   if [[ -d ${srcdir}/$_darcsmod/_darcs ]]
   then
@@ -36,6 +29,17 @@ build(){
     darcs get --set-scripts-executable $_darcstrunk/$_darcsmod
     cd $_darcsmod
   fi
+}
+
+pkgver() {
+  cd ${srcdir}/$_darcsmod
+  lastver=$(darcs show tags | head -n1)
+  timestamp=$(darcs log -n 1 --xml-output | grep -oP "(?<=date=')\d+")
+  echo $lastver.$timestamp
+}
+
+build() {
+  cd "$srcdir/$_darcsmod"
   bmake WITH_POSIX_C_SOURCE=YES WITH_XWAYLAND=YES WITH_SCREENCOPY=YES WITH_GAMMACONTROL=YES WITH_LAYERSHELL=YES
 }
 
