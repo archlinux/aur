@@ -1,26 +1,27 @@
 pkgbase = nginx-lazerl0rd-git
-	pkgdesc = NGINX with beefed up security and performance
 	pkgver = 1.17.9
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/lazerl0rd/nginx
-	install = nginx.install
+	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = rust>=1.39.0
 	makedepends = cmake
+	makedepends = git
 	makedepends = go
 	makedepends = perl
-	makedepends = git
-	depends = pcre
-	depends = zlib
+	makedepends = rust>=1.39.0
 	depends = geoip
-	depends = mailcap
-	depends = liburing
+	depends = gzip
 	depends = libatomic_ops
+	depends = liburing
+	depends = mailcap
+	depends = pcre
 	provides = nginx=1.17.9
-	provides = nginx-src=1.17.9
 	provides = nginx-mod-brotli
 	provides = nginx-mod-cookie_flag_module
+	provides = nginx-src=1.17.9
+	conflicts = nginx
+	conflicts = nginx-src
 	backup = etc/nginx/fastcgi.conf
 	backup = etc/nginx/fastcgi_params
 	backup = etc/nginx/koi-win
@@ -34,9 +35,11 @@ pkgbase = nginx-lazerl0rd-git
 	source = git+https://github.com/AirisX/nginx_cookie_flag_module.git
 	source = git+https://github.com/cloudflare/quiche.git
 	source = git+https://github.com/google/ngx_brotli.git
+	source = git+https://github.com/cloudflare/zlib.git
 	source = https://nginx.org/LICENSE
 	source = service
 	source = logrotate
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -46,8 +49,8 @@ pkgbase = nginx-lazerl0rd-git
 	b2sums = fe32fb75a7677abca86c4bc3f4ca9bfeccb3cd7afb4dd3c4ec21ab8b53cc0d72ba5330a1131498b5df222c2e517bd01e2df9f67256011ff15241b777a85be6b3
 
 pkgname = nginx-lazerl0rd-git
+	pkgdesc = NGINX with beefed up security and performance
 
 pkgname = nginx-lazerl0rd-src-git
-	pkgdesc = Source code of nginx 1.17.9, useful for building modules
-	depends = 
+	pkgdesc = Source code of nginx-lazerl0rd 1.17.9, useful for building modules
 
