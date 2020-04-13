@@ -1,5 +1,5 @@
 pkgbase = google-chat-linux-electron7-git
-	pkgdesc = Unofficial electron-7-based desktop client for Google Chat, electron 7 patch
+	pkgdesc = electron-7-based desktop client for Google Chat, electron 7 patch for Cinnamon systray
 	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/squalou/google-chat-linux.git
@@ -10,6 +10,7 @@ pkgbase = google-chat-linux-electron7-git
 	makedepends = npm
 	makedepends = xz
 	makedepends = binutils
+	conflicts = google-chat-linux-git
 	source = google-chat-linux-electron7-git::git+https://github.com/squalou/google-chat-linux.git#branch=master
 	sha256sums = SKIP
 
