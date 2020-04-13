@@ -5,7 +5,7 @@
 
 pkgname=mixbus32c
 pkgver=6.0.655
-pkgrel=1
+pkgrel=2
 pkgdesc="Harrison Mixbus - Digital Audio Workstation (32C Version)"
 arch=('x86_64')
 url="http://harrisonconsoles.com/site/$pkgname.html"
@@ -39,7 +39,7 @@ cp -r $srcdir/Mixbus32C_$(uname -m)-$pkgver/* $pkgdir/opt/$pkgname
 
 ## Installing License Files
 msg2 "Installing Mixbus Licenses..."
-for plugin in essentials $pkgname-6 xt_bc3 xt_ds xt_eg xt_eq xt_lc xt_mc xt_me xt_sc xt_tg; do
+for plugin in essentials $pkgname-6 xt_bc3 xt_ds xt_eg xt_eq xt_lc xt_mc xt_me xt_sc xt_sp xt_tg; do
 	if [ -f ../license_key_harrison_$plugin.txt ]; then
 		install -Dm644 ../license_key_harrison_$plugin.txt $pkgdir/usr/local/share/license_key_harrison_$plugin.txt
 	fi
