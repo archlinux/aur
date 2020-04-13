@@ -1,5 +1,5 @@
 pkgbase = sdb-git
-	pkgdesc = Simple and fast string key/value database based on djb\'s cdb, supports JSON and arrays introspection
+	pkgdesc = Simple and fast string key/value database based on djb's cdb, supports JSON and arrays introspection
 	pkgver = 1.4.1+r14.20200409.geb148d8
 	pkgrel = 1
 	url = https://github.com/radareorg/sdb

@@ -1,7 +1,7 @@
 pkgname=sdb-git
 pkgver=1.4.1+r14.20200409.geb148d8
 pkgrel=1
-pkgdesc="Simple and fast string key/value database based on djb\'s cdb, supports JSON and arrays introspection"
+pkgdesc="Simple and fast string key/value database based on djb's cdb, supports JSON and arrays introspection"
 url=https://github.com/radareorg/sdb
 license=(MIT)
 source=(git+$url)
@@ -18,10 +18,14 @@ pkgver() {
   echo ${_long%.*}.${_date//-/}.${_long##*.}
 }
 
-build() {
+prepare() {
   cd sdb
   make clean
   git clean -xdf
+}
+
+build() {
+  cd sdb
   make
 }
 
