@@ -1,6 +1,6 @@
 pkgbase = bluespec-git
 	pkgdesc = Bluespec Compiler (BSC)
-	pkgver = r285.9dfe8f5
+	pkgver = r287.d9e5b0f
 	pkgrel = 1
 	url = https://github.com/B-Lang-org/bsc
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = bluespec-git
 	source = git+https://github.com/b-lang-org/bsc.git
 	source = archlinux.patch
 	sha256sums = SKIP
-	sha256sums = 32f1befc93b371c5a744cf01447c8386337641c2efae75090abea0a119e330aa
+	sha256sums = b7d08d9ff38728449566fbd5acbee942d4b781a7592f3ff777b4b0015593fd17
 
 pkgname = bluespec-git
 

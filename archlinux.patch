@@ -20,31 +20,3 @@ index 5e38ec2..b832d80 100644
  endif
  
  # -----
-diff --git a/src/vendor/htcl/Makefile b/src/vendor/htcl/Makefile
-index a5deb63..ec51a6b 100644
---- a/src/vendor/htcl/Makefile
-+++ b/src/vendor/htcl/Makefile
-@@ -1,9 +1,9 @@
--CFLAGS += -Wall $(shell pkg-config --silence-errors --cflags-only-I tcl || echo -I/usr/include/tcl)
-+GHCFLAGS += -Wall $(shell pkg-config --silence-errors --cflags-only-I tcl || echo -I/usr/include/tcl)
- GHC ?= ghc
- 
- # We use GHC to compile this, so it has the proper RTS includes
- %.o: %.c
--	$(GHC) $(CFLAGS) -c $<
-+	$(GHC) $(GHCFLAGS) -c $<
- 
- libhtcl.a: haskell.o
- 	ar -r $@ $(filter %.o, $+)
-diff --git a/src/vendor/stp/src/sat/Makefile b/src/vendor/stp/src/sat/Makefile
-index 0d0937d..912f7b1 100644
---- a/src/vendor/stp/src/sat/Makefile
-+++ b/src/vendor/stp/src/sat/Makefile
-@@ -13,6 +13,7 @@ export COPTIMIZE=$(CFLAGS_M32) $(CFLAGS_FPIC) -O3
- core: $(LIB)
- 
- # $(LIB) depends on */lib$(SUB)_release.a and will be rebuilt only if they have been updated
-+.NOTPARALLEL:
- $(LIB): core/libcore_release.a core_prop/libcore_prop_release.a simp/libsimp_release.a utils/libutils_release.a cryptominisat2/libminisat.a $(OBJS)
- 	$(RM) $@
- 	$(call arcat,$@,$(filter %.a,$^))

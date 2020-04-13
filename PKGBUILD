@@ -2,7 +2,7 @@
 # Maintainer: Paulo Matias <matias@ufscar.br>
 
 pkgname=bluespec-git
-pkgver=r285.9dfe8f5
+pkgver=r287.d9e5b0f
 pkgrel=1
 pkgdesc='Bluespec Compiler (BSC)'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'gperf' 'ghc' 'xorg-server-xvfb')
 source=("git+https://github.com/b-lang-org/bsc.git"
         "archlinux.patch")
 sha256sums=('SKIP'
-            '32f1befc93b371c5a744cf01447c8386337641c2efae75090abea0a119e330aa')
+            'b7d08d9ff38728449566fbd5acbee942d4b781a7592f3ff777b4b0015593fd17')
 _prefix="/opt/bluespec"
 
 pkgver() {
