@@ -1,0 +1,20 @@
+pkgbase = pass-audit-git
+	pkgdesc = A password-store extension for auditing your password repository.
+	pkgver = v1.0.1.r28.e08d707
+	pkgrel = 1
+	url = https://github.com/roddhjav/pass-audit
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = pass
+	depends = python
+	depends = python-requests
+	depends = python-zxcvbn
+	provides = pass-audit
+	conflicts = pass-audit
+	source = pass-audit::git+https://github.com/roddhjav/pass-audit
+	md5sums = SKIP
+
+pkgname = pass-audit-git
+
