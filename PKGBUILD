@@ -1,9 +1,9 @@
 # Maintainer: Richard Neumann (schard) <mail at richard dash neumann period de>
 # Original PKGBUILD by: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
-pkgbase=linux-sfh
-pkgver=5.6.arch1
-pkgrel=3
+pkgbase=linux-sfh-testing
+pkgver=5.6.3.arch1
+pkgrel=1
 pkgdesc='Linux with experimental AMD Sensor Fusion Hub (SFH) drivers'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
@@ -20,11 +20,7 @@ options=('!strip')
 _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
-  #"amd-sfh-v4.1.patch::https://patchwork.kernel.org/patch/11407741/raw/" # Formatting is currently broken
-  "amd-sfh-v4.2.patch::https://patchwork.kernel.org/patch/11407747/raw/"
-  "amd-sfh-v4.3.patch::https://patchwork.kernel.org/patch/11407749/raw/"
-  "amd-sfh-v4.4.patch::https://patchwork.kernel.org/patch/11407753/raw/"
-  "amd-sfh-fix.patch::https://gist.githubusercontent.com/conqp/e8a0793406fbe7c9714f01f3078ea33a/raw/ac2de743e68d1dd90430e57cb28df8c1dc5d1098/amd-sfh.patch"
+  "amd-sfh.patch::https://gist.githubusercontent.com/conqp/33baa079d9524914c4c0c196200e4f89/raw/903139a4136f102b35b2459c067b345ea2ffb9f7/amd-sfh.patch"
   config         # the main kernel config file
 )
 validpgpkeys=(
@@ -33,10 +29,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '0ebe2bd3ef3a61827551fe08914b1a0ecc1416362390c2396843a9861d9077f5'
-            '88b95a3d8d4ea1a994bb00ec8e00064d3b3b4924cd2149396793aeba05072ab4'
-            '885e81ac84179117aa1d1ade566f91e19424c0475136b770bfc39c98c83bb945'
-            'cd677fdb15ee75a9f65f08b428f1e72922750043445835f49aaed79266f46b32'
+            '25920d3c9b8db7dca5b7bbb65bf697d2ba8e5eff0b715fa09cf4e148baedd714'
             '7c520fa4f32a236bb1126689b851c6bf695c3210e4013d56b7ebad4805dbaedf')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -202,7 +195,7 @@ _package-docs() {
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+pkgname=("$pkgbase" "$pkgbase-headers")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
