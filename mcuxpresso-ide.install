@@ -1,0 +1,50 @@
+msg() {
+    # check if messages are to be printed using color
+    unset ALL_OFF BOLD BLUE GREEN RED YELLOW
+    # prefer terminal safe colored and bold text when tput is supported
+    if tput setaf 0 &>/dev/null; then
+        ALL_OFF="$(tput sgr0)"
+        BOLD="$(tput bold)"
+        BLUE="${BOLD}$(tput setaf 4)"
+        GREEN="${BOLD}$(tput setaf 2)"
+        RED="${BOLD}$(tput setaf 1)"
+        YELLOW="${BOLD}$(tput setaf 3)"
+    else
+        ALL_OFF="\e[0m"
+        BOLD="\e[1m"
+        BLUE="${BOLD}\e[34m"
+        GREEN="${BOLD}\e[32m"
+        RED="${BOLD}\e[31m"
+        YELLOW="${BOLD}\e[33m"
+    fi
+
+    local mesg=$1; shift
+    printf "${RED}  ->${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@" >&2
+}
+
+license() {
+        msg "Be advised that the package you are currently installing should be downloaded through"
+        msg "NXP's License Wall at https://www.nxp.com/MCUXpresso"
+        msg "By installing this package you agree to the terms of this license."
+        msg "A copy of the License is available in /usr/share/licenses/mcuxpresso-ide"
+}
+
+pre_install(){
+    license
+}
+
+pre_upgrade() {
+    license
+}
+
+post_install() {
+        msg "Warning! If you want to be able to install or update plugins"
+        msg "in MCUXpresso, you either need to launch it as root, or"
+        msg "chown the /usr/local/mcuxpressoide-${pkgver}/ide/ folder to your user."
+}
+
+post_upgrade() {
+        msg "Warning! If you want to be able to install or update plugins"
+        msg "in MCUXpresso, you either need to launch it as root, or"
+        msg "chown the /usr/local/mcuxpressoide-${pkgver}/ide/ folder to your user."
+}
