@@ -1,6 +1,6 @@
 pkgbase = libtree-git
 	pkgdesc = ldd as a tree with an option to bundle dependencies into a single folder
-	pkgver = v1.0.0.r7.g4571d36
+	pkgver = 1.0.0.r10.g8a8de63
 	pkgrel = 1
 	url = https://github.com/otreblan/libtree
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = libtree-git
 	depends = cppglob
 	provides = libtree
 	conflicts = libtree
-	source = libtree-git::git+https://github.com/otreblan/libtree.git
+	source = git+https://github.com/otreblan/libtree.git
 	md5sums = SKIP
 
 pkgname = libtree-git
