@@ -4,8 +4,8 @@
 # Contributor: Dr-Shadow <kerdiles.robin@gmail.com>
 
 pkgname=mingw-w64-python
-pkgver=3.7.2
-_pybasever=3.7
+pkgver=3.8.2
+_pybasever=3.8
 pkgrel=1
 pkgdesc="Next generation of the python high-level scripting language (mingw-w64)"
 arch=('any')
@@ -31,11 +31,11 @@ options=('staticlibs' '!buildflags' '!strip')
 source=("https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
         'patches.tar.xz'
         "wine-python.sh")
-sha1sums=('c3dc6928516bcb934cf4740461044c79c7c35494'
-          '6c8d7eda26e78578a01ea76943893ddf535c1579'
+sha1sums=('5ae54baf26628a7ed74206650a31192e6d5c6f93'
+          'faa2298aaf144079ab3cdd9fd3d71f384be631ee'
           'a024e7fd7eea7984a0d050164a4a015dea762da7')
-sha512sums=('6cd2d6d8455558783b99d55985cd7b22d67b98f41a09b4fdd96f680a630a4e035220d2b903f8c59ed513aa5ffe6730fa947ddb55bb72ce36f0e945ef8af5d971'
-            '773bcf9dc5cae9ac281a5e844e11c3a8d8aabd4d24bfb40406d3281801d0575e636ebb722764e862bf9b090d664e52c3aed33e0ce91ef875ff0984c31a4e89b8'
+sha512sums=('ca37ad0e7c5845f5f228566aa8ff654a8f428c7d4a5aaabff29baebb0ca3219b31ba8bb2607f89e37cf3fc564f023b8407e53a4f2c47bd99122c1cc222613e37'
+            '76de68db3fc05152f5dbe2520ddf3f3a2c56f653b7b98cce84f013a6e3ba60e2cebb12bb936dbf0d69da8af77ec0be7b1816142efb09e450b38e15af7b860c4a'
             'd0fb7f0e1a3d98a170ebea301226ad8caa7ffab9fc0bee224abc31c22875c892b43d3468dffbdd15eb71ca1b5260e039d0fceb21ecc92341b9bb6949d7e9be6a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -84,8 +84,7 @@ prepare() {
     0170-MINGW-add-srcdir-PC-to-CPPFLAGS.patch \
     0180-MINGW-init-system-calls.patch \
     0200-MINGW-build-in-windows-modules-winreg.patch \
-    0210-MINGW-determine-if-pwdmodule-should-be-used.patch \
-    0230-MINGW-AC_LIBOBJ-replacement-of-fileblocks.patch
+    0210-MINGW-determine-if-pwdmodule-should-be-used.patch
 
   plain "Apply Roumen Petrov's compiler patch (2)"
   apply_patch_with_msg \
@@ -98,7 +97,6 @@ prepare() {
     0300-MINGW-configure-for-shared-build.patch \
     0310-MINGW-dynamic-loading-support.patch \
     0330-MINGW-ignore-main-program-for-frozen-scripts.patch \
-    0340-MINGW-setup-exclude-termios-module.patch \
     0350-MINGW-setup-_multiprocessing-module.patch \
     0360-MINGW-setup-select-module.patch \
     0370-MINGW-setup-_ctypes-module-with-system-libffi.patch \
@@ -142,25 +140,22 @@ prepare() {
     0720-mingw-pdcurses_ISPAD.patch \
     0740-grammar-fixes.patch \
     0750-builddir-fixes.patch \
-    0760-msys-monkeypatch-os-system-via-sh-exe.patch \
     0770-msys-replace-slashes-used-in-io-redirection.patch \
     0800-mingw-install-layout-as-posix.patch \
     0810-remove_path_max.default.patch \
     0820-dont-link-with-gettext.patch \
     0830-ctypes-python-dll.patch \
     0840-gdbm-module-includes.patch \
-    0845-3.7-_abs-mingw.patch \
     0850-use-gnu_printf-in-format.patch \
     0870-mingw-fix-ssl-dont-use-enum_certificates.patch \
     0890-mingw-build-optimized-ext.patch \
     0900-cygwinccompiler-dont-strip-modules-if-pydebug.patch \
     0910-fix-using-dllhandle-and-winver-mingw.patch \
     0920-mingw-add-LIBPL-to-library-dirs.patch \
-    0930-mingw-w64-build-overlapped-module.patch \
-    0940-mingw-w64-Also-define-_Py_BEGIN_END_SUPPRESS_IPH-when-Py_BUILD_CORE_MODULE.patch \
     0970-Add-AMD64-to-sys-config-so-msvccompiler-get_build_version-works.patch \
     0990-MINGW-link-with-additional-library.patch \
-    1010-install-msilib.patch
+    1010-install-msilib.patch \
+    1060-dont-include-system-ncurses-path.patch
 
   plain "New patches added for the update from 3.5.3 to 3.6.1"
   apply_patch_with_msg \
@@ -189,12 +184,36 @@ prepare() {
     1810-3.7-mpdec-mingw.patch \
     1830-mingw-implement-setenv-for-PY_COERCE_C_LOCALE.patch \
     1850-disable-readline.patch \
-    1860-fix-isselectable.patch
+    1860-fix-isselectable.patch \
+    1870-use-_wcsnicmp-instead-wcsncasecmp.patch \
+    1880-make-default-python.patch \
+    1890-_xxsubinterpretersmodule.patch
 
-  apply_patch_with_msg 2000-warnings-fixes.patch
+  # https://github.com/msys2/MINGW-packages/issues/5184
+  apply_patch_with_msg 2010-configure-have-inet-pton.patch
 
-  # https://github.com/python/cpython/pull/9258
-  apply_patch_with_msg 1900-ctypes-dont-depend-on-internal-libffi.patch
+  # https://github.com/msys2/MINGW-packages/issues/5155
+  apply_patch_with_msg 2030-fix-msvc9-import.patch
+
+  # https://github.com/msys2/MINGW-packages/issues/5001
+  apply_patch_with_msg 2050-undo-venv-redirector.patch
+  apply_patch_with_msg 2051-set-venv-activate-path-unix.patch
+  apply_patch_with_msg 2052-venv-remove-msys-from-env-and-add-exe-prefix.patch
+
+  apply_patch_with_msg 2060-pass-gen-profile-ldflags.patch
+  
+  apply_patch_with_msg 2070-distutils-add-windmc-to-cygwinccompiler.patch
+  apply_patch_with_msg 2080-pkg-config-windows-must-link-ext-with-python-lib.patch
+
+  # https://github.com/msys2/MINGW-packages/issues/6035
+  apply_patch_with_msg 3000-importlib-bootstrap-path-sep.patch
+  apply_patch_with_msg 3001-pathlib-path-sep.patch
+
+  apply_patch_with_msg 5000-warnings-fixes.patch
+
+  apply_patch_with_msg extra_fixups.patch
+
+  apply_patch_with_msg mingw_host_platform.patch
 
   # fix case
   sed -e "s|MSTcpIP.h|mstcpip.h|g" -i ${srcdir}/Python-${pkgver}/Modules/socketmodule.h
@@ -281,21 +300,21 @@ package() {
     cd "${srcdir}/Python-${pkgver}/build-${_arch}"
     make install DESTDIR="$pkgdir"
     if check_option "debug" "n"; then
-      VERABI=${_pybasever}m
+      VERABI=${_pybasever}
     else
-      VERABI=${_pybasever}dm
+      VERABI=${_pybasever}d
     fi
     
     [[ -d "${pkgdir}/usr/${_arch}"/share/gdb/python3/ ]] || mkdir -p "${pkgdir}/usr/${_arch}"/share/gdb/python3/
     install -D -m644 python.exe-gdb.py "${pkgdir}/usr/${_arch}/share/gdb/python3/python_gdb.py"
     
     chmod 755 "$pkgdir"/usr/${_arch}/bin/*.dll
-    install -m 644 libpython${_pybasever}m.a "$pkgdir"/usr/${_arch}/lib
-    install -m 644 libpython${_pybasever}m.dll.a "$pkgdir"/usr/${_arch}/lib
+    install -m 644 libpython${_pybasever}.a "$pkgdir"/usr/${_arch}/lib
+    install -m 644 libpython${_pybasever}.dll.a "$pkgdir"/usr/${_arch}/lib
     
     # Need for building boost python3 module
     cp -f "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/config-${VERABI}/libpython${VERABI}.dll.a "${pkgdir}/usr/${_arch}"/lib/libpython${_pybasever}.dll.a
-    cp -f "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/config-${VERABI}/libpython${VERABI}.dll.a "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/config-${VERABI}/libpython${_pybasever}.dll.a
+    #cp -f "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/config-${VERABI}/libpython${VERABI}.dll.a "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/config-${VERABI}/libpython${_pybasever}.dll.a
     
     # some useful "stuff"
     install -dm755 "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/Tools/{i18n,scripts}
@@ -309,8 +328,8 @@ package() {
     # clean-up reference to build directory
     sed -i "s#${srcdir}/Python-${pkgver}:##" "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/config-${VERABI}/Makefile
 
-    for fscripts in 2to3-${_pybasever} idle3 idle${_pybasever} pydoc3 pydoc${_pybasever} pyvenv pyvenv-${_pybasever}; do
-      sed -e "s|/usr/${_arch}/bin/python${_pybasever}.exe|/usr/bin/env python${_pybasever}.exe|g" -i "${pkgdir}/usr/${_arch}"/bin/$fscripts
+    for fscripts in 2to3-${_pybasever} idle3 idle${_pybasever} pydoc3 pydoc${_pybasever}; do
+      sed -e "s|/usr/bin/python${_pybasever}.exe|/usr/bin/env python${_pybasever}.exe|g" -i "${pkgdir}/usr/${_arch}"/bin/$fscripts
     done
 
     sed -i "s|#!${pkgdir}/usr/${_arch}/bin/python${VERABI}.exe|#!/usr/bin/env python${_pybasever}.exe|" "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/config-${VERABI}/python-config.py
@@ -340,10 +359,10 @@ package() {
       -e "s/'\/share'/sys.prefix + '\/share'/g" \
       -i "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/_sysconfigdata*.py
     
-    # Correct name of _sysconfigdata_m_win32_.py and copy both to lib-dynload
-    cp -f "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/_sysconfigdata_m_win_.py "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/_sysconfigdata_m_win32_.py
-    cp -f "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/_sysconfigdata_m_win_.py "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/lib-dynload/_sysconfigdata_m_win_.py
-    cp -f "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/_sysconfigdata_m_win32_.py "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/lib-dynload/_sysconfigdata_m_win32_.py 
+    # Correct name of _sysconfigdata__win32_.py and copy both to lib-dynload
+    cp -f "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/_sysconfigdata__win_.py "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/_sysconfigdata__win32_.py
+    cp -f "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/_sysconfigdata__win_.py "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/lib-dynload/_sysconfigdata__win_.py
+    cp -f "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/_sysconfigdata__win32_.py "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/lib-dynload/_sysconfigdata__win32_.py
     
     # strip executables and libraries
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.exe
@@ -356,8 +375,8 @@ package() {
     install -m755 ${_arch}-python3 "${pkgdir}"/usr/bin/${_arch}-python3
     install -m755 ${_arch}-python "${pkgdir}"/usr/bin/${_arch}-python
       
-    ln -s "/usr/${_arch}/bin/python${_pybasever}.exe" "${pkgdir}/usr/${_arch}/bin/python.exe"
-    ln -s "/usr/${_arch}/bin/python3-config" "${pkgdir}/usr/${_arch}/bin/python-config"
+    #ln -s "/usr/${_arch}/bin/python${_pybasever}.exe" "${pkgdir}/usr/${_arch}/bin/python.exe"
+    #ln -s "/usr/${_arch}/bin/python3-config" "${pkgdir}/usr/${_arch}/bin/python-config"
     ln -s "/usr/${_arch}/bin/idle3" "${pkgdir}/usr/${_arch}/bin/idle"
     ln -s "/usr/${_arch}/bin/pydoc3" "${pkgdir}/usr/${_arch}/bin/pydoc"
   done

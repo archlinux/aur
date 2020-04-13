@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-python
 	pkgdesc = Next generation of the python high-level scripting language (mingw-w64)
-	pkgver = 3.7.2
+	pkgver = 3.8.2
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = any
@@ -25,14 +25,14 @@ pkgbase = mingw-w64-python
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tar.xz
+	source = https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz
 	source = patches.tar.xz
 	source = wine-python.sh
-	sha1sums = c3dc6928516bcb934cf4740461044c79c7c35494
-	sha1sums = 6c8d7eda26e78578a01ea76943893ddf535c1579
+	sha1sums = 5ae54baf26628a7ed74206650a31192e6d5c6f93
+	sha1sums = faa2298aaf144079ab3cdd9fd3d71f384be631ee
 	sha1sums = a024e7fd7eea7984a0d050164a4a015dea762da7
-	sha512sums = 6cd2d6d8455558783b99d55985cd7b22d67b98f41a09b4fdd96f680a630a4e035220d2b903f8c59ed513aa5ffe6730fa947ddb55bb72ce36f0e945ef8af5d971
-	sha512sums = 773bcf9dc5cae9ac281a5e844e11c3a8d8aabd4d24bfb40406d3281801d0575e636ebb722764e862bf9b090d664e52c3aed33e0ce91ef875ff0984c31a4e89b8
+	sha512sums = ca37ad0e7c5845f5f228566aa8ff654a8f428c7d4a5aaabff29baebb0ca3219b31ba8bb2607f89e37cf3fc564f023b8407e53a4f2c47bd99122c1cc222613e37
+	sha512sums = 76de68db3fc05152f5dbe2520ddf3f3a2c56f653b7b98cce84f013a6e3ba60e2cebb12bb936dbf0d69da8af77ec0be7b1816142efb09e450b38e15af7b860c4a
 	sha512sums = d0fb7f0e1a3d98a170ebea301226ad8caa7ffab9fc0bee224abc31c22875c892b43d3468dffbdd15eb71ca1b5260e039d0fceb21ecc92341b9bb6949d7e9be6a
 
 pkgname = mingw-w64-python
