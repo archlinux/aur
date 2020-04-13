@@ -1,0 +1,43 @@
+--- a/script/create-dist
++++ b/script/create-dist
+@@ -79,7 +79,7 @@ BINARIES = {
+     'libffmpeg.dylib',
+   ],
+   'linux': [
+-    'libffmpeg.so',
++    # 'libffmpeg.so',
+   ],
+   'win32': [
+     'd3dcompiler_47.dll',
+@@ -414,7 +414,7 @@ def generate_ninja(args, ninja):
+       copy_locales(target_arch, component, ninja)
+ 
+   if args.component != 'native_mksnapshot':
+-    copy_ffmpeg(target_arch, ninja)
++    # copy_ffmpeg(target_arch, ninja)
+     copy_sources(ninja)
+   generate_licenses(ninja)
+ 
+@@ -542,9 +542,9 @@ def copy_binaries(target_arch, component, create_debug_archive,
+       else:
+         binaries = [ 'chromedriver', 'clang_x64_v8_mips64el/mksnapshot' ]
+     else:
+-      binaries = [ 'chromedriver', 'mksnapshot' ]
++      binaries = [ 'mksnapshot' ]
+ 
+-    ffmpeg_output_dir = get_output_dir(SOURCE_ROOT, target_arch, 'ffmpeg')
++    ffmpeg_output_dir = get_output_dir(SOURCE_ROOT, target_arch, 'static_library')
+     for binary in binaries:
+       ninja.copy(os.path.join(ffmpeg_output_dir, binary), target_dir)
+ 
+--- a/script/update
++++ b/script/update
+@@ -20,7 +20,7 @@ VENDOR_DIR = os.path.join(SOURCE_ROOT, 'vendor')
+ SRC_DIR = os.path.join(SOURCE_ROOT, 'src')
+ CHROMIUMCONTENT_SOURCE_DIR = os.path.join(SOURCE_ROOT, 'chromiumcontent')
+ CHROMIUMCONTENT_DESTINATION_DIR = os.path.join(SRC_DIR, 'chromiumcontent')
+-COMPONENTS = ['static_library', 'shared_library', 'ffmpeg', 'native_mksnapshot']
++COMPONENTS = ['static_library', 'native_mksnapshot']
+ DEPOT_TOOLS = os.path.join(VENDOR_DIR, 'depot_tools')
+ 
+ # URL to the mips64el sysroot image.

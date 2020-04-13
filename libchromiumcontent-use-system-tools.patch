@@ -1,0 +1,57 @@
+--- a/script/build
++++ b/script/build
+@@ -17,7 +17,7 @@
+ # Whether the host system is a mips64el machine.
+ IS_MIPS64EL_HOST = platform.uname()[5] == 'mips64'
+ 
+-NINJA = os.path.join(VENDOR_DIR, 'depot_tools', 'ninja')
++NINJA = 'ninja'
+ if sys.platform == 'win32':
+   NINJA = '{0}.exe'.format(NINJA)
+ elif IS_MIPS64EL_HOST:
+--- a/script/create-dist
++++ b/script/create-dist
+@@ -34,7 +34,7 @@
+ # Whether the host system is a mips64el machine.
+ IS_MIPS64EL_HOST = platform.uname()[5] == 'mips64'
+ 
+-NINJA = os.path.join(VENDOR_DIR, 'depot_tools', 'ninja')
++NINJA = 'ninja'
+ if sys.platform == 'win32':
+   NINJA = '{0}.exe'.format(NINJA)
+ elif IS_MIPS64EL_HOST:
+--- a/script/lib/gn.py
++++ b/script/lib/gn.py
+@@ -10,7 +10,7 @@
+   if platform in ['win32', 'cygwin']:
+     relative_path = ['buildtools', 'win', 'gn.exe']
+   elif platform == 'linux2':
+-    relative_path = ['buildtools', 'linux64', 'gn']
++    relative_path = ['out', 'Release', 'gn']
+   elif platform == 'darwin':
+     relative_path = ['buildtools', 'mac', 'gn']
+ 
+--- a/script/update
++++ b/script/update
+@@ -75,17 +75,16 @@
+   if target_arch == 'mips64el' and IS_MIPS64EL_HOST:
+     os.system('sh script/mips64el/runhooks-mips64el')
+ 
+-  if sys.platform == 'linux2':
+-    install_sysroot(target_arch)
+-  elif sys.platform in ['win32', 'cygwin']:
+-    update_toolchain_json()
++  # if sys.platform == 'linux2':
++  #   install_sysroot(target_arch)
++  # elif sys.platform in ['win32', 'cygwin']:
++  #   update_toolchain_json()
+ 
+   if target_arch == 'arm64':
+     install_aarch64_bintools()
+ 
+   return ((apply_patches(target_arch) if args.apply_patches else 0) or
+           copy_chromiumcontent_files() or
+-          update_clang() or
+           setup_mips64el_toolchain(target_arch) or
+           run_gn(target_arch))
+ 

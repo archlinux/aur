@@ -1,0 +1,536 @@
+--- a/patches/v8/007-backport_f19b889.patch
++++ b/patches/v8/007-backport_f19b889.patch
+@@ -113,63 +113,6 @@
+    void resetContextGroup(int contextGroupId) override;
+    void idleStarted() override;
+    void idleFinished() override;
+-diff --git a/test/inspector/inspector-test.cc b/test/inspector/inspector-test.cc
+-index 930d6c9477..767168b297 100644
+---- a/test/inspector/inspector-test.cc
+-+++ b/test/inspector/inspector-test.cc
+-@@ -642,6 +642,9 @@ class InspectorExtension : public IsolateData::SetupGlobalTask {
+-     inspector->Set(ToV8String(isolate, "fireContextDestroyed"),
+-                    v8::FunctionTemplate::New(
+-                        isolate, &InspectorExtension::FireContextDestroyed));
+-+    inspector->Set(
+-+        ToV8String(isolate, "freeContext"),
+-+        v8::FunctionTemplate::New(isolate, &InspectorExtension::FreeContext));
+-     inspector->Set(ToV8String(isolate, "addInspectedObject"),
+-                    v8::FunctionTemplate::New(
+-                        isolate, &InspectorExtension::AddInspectedObject));
+-@@ -683,6 +686,12 @@ class InspectorExtension : public IsolateData::SetupGlobalTask {
+-     data->FireContextDestroyed(context);
+-   }
+- 
+-+  static void FreeContext(const v8::FunctionCallbackInfo<v8::Value>& args) {
+-+    v8::Local<v8::Context> context = args.GetIsolate()->GetCurrentContext();
+-+    IsolateData* data = IsolateData::FromContext(context);
+-+    data->FreeContext(context);
+-+  }
+-+
+-   static void AddInspectedObject(
+-       const v8::FunctionCallbackInfo<v8::Value>& args) {
+-     if (args.Length() != 2 || !args[0]->IsInt32()) {
+-diff --git a/test/inspector/isolate-data.cc b/test/inspector/isolate-data.cc
+-index 74c367a5e9..bd97a927e8 100644
+---- a/test/inspector/isolate-data.cc
+-+++ b/test/inspector/isolate-data.cc
+-@@ -303,6 +303,13 @@ void IsolateData::FireContextDestroyed(v8::Local<v8::Context> context) {
+-   inspector_->contextDestroyed(context);
+- }
+- 
+-+void IsolateData::FreeContext(v8::Local<v8::Context> context) {
+-+  int context_group_id = GetContextGroupId(context);
+-+  auto it = contexts_.find(context_group_id);
+-+  if (it == contexts_.end()) return;
+-+  contexts_.erase(it);
+-+}
+-+
+- std::vector<int> IsolateData::GetSessionIds(int context_group_id) {
+-   std::vector<int> result;
+-   for (auto& it : sessions_) {
+-diff --git a/test/inspector/isolate-data.h b/test/inspector/isolate-data.h
+-index a94316ff9b..c96a8d1bbd 100644
+---- a/test/inspector/isolate-data.h
+-+++ b/test/inspector/isolate-data.h
+-@@ -68,6 +68,7 @@ class IsolateData : public v8_inspector::V8InspectorClient {
+-   void DumpAsyncTaskStacksStateForTest();
+-   void FireContextCreated(v8::Local<v8::Context> context, int context_group_id);
+-   void FireContextDestroyed(v8::Local<v8::Context> context);
+-+  void FreeContext(v8::Local<v8::Context> context);
+- 
+-  private:
+-   struct VectorCompare {
+ diff --git a/test/inspector/runtime/context-destroyed-on-context-collected-expected.txt b/test/inspector/runtime/context-destroyed-on-context-collected-expected.txt
+ new file mode 100644
+ index 0000000000..9a5e1708c1
+--- a/patches/v8/009-backport_bca8409.patch
++++ b/patches/v8/009-backport_bca8409.patch
+@@ -136,25 +136,3 @@
+      base::Semaphore pending_sweeper_tasks_semaphore_;
+      base::Mutex mutex_;
+      SweptList swept_list_[kAllocationSpaces];
+-diff --git a/test/unittests/cancelable-tasks-unittest.cc b/test/unittests/cancelable-tasks-unittest.cc
+-index eb5dd91589..d0462877f5 100644
+---- a/test/unittests/cancelable-tasks-unittest.cc
+-+++ b/test/unittests/cancelable-tasks-unittest.cc
+-@@ -180,7 +180,7 @@ TEST(CancelableTask, RemoveBeforeCancelAndWait) {
+-   ResultType result1 = 0;
+-   TestTask* task1 = new TestTask(&manager, &result1, TestTask::kCheckNotRun);
+-   ThreadedRunner runner1(task1);
+--  uint32_t id = task1->id();
+-+  CancelableTaskManager::Id id = task1->id();
+-   EXPECT_EQ(id, 1u);
+-   EXPECT_TRUE(manager.TryAbort(id));
+-   runner1.Start();
+-@@ -195,7 +195,7 @@ TEST(CancelableTask, RemoveAfterCancelAndWait) {
+-   ResultType result1 = 0;
+-   TestTask* task1 = new TestTask(&manager, &result1);
+-   ThreadedRunner runner1(task1);
+--  uint32_t id = task1->id();
+-+  CancelableTaskManager::Id id = task1->id();
+-   EXPECT_EQ(id, 1u);
+-   runner1.Start();
+-   runner1.Join();
+--- a/patches/v8/010-backport_f9c4b7a.patch
++++ b/patches/v8/010-backport_f9c4b7a.patch
+@@ -194,15 +194,3 @@
+  
+    DumpAndResetStats();
+  
+-diff --git a/test/cctest/heap/test-spaces.cc b/test/cctest/heap/test-spaces.cc
+-index 26b2fdd193..b99913ab80 100644
+---- a/test/cctest/heap/test-spaces.cc
+-+++ b/test/cctest/heap/test-spaces.cc
+-@@ -370,6 +370,7 @@ TEST(NewSpace) {
+-   }
+- 
+-   new_space.TearDown();
+-+  memory_allocator->unmapper()->WaitUntilCompleted();
+-   memory_allocator->TearDown();
+-   delete memory_allocator;
+- }
+--- a/patches/v8/013-revert_abi_breaking_changes_in_6_1.patch
++++ b/patches/v8/013-revert_abi_breaking_changes_in_6_1.patch
+@@ -552,167 +552,3 @@
+  
+  struct ProtectedInstructionData {
+    // The offset of this instruction from the start of its code object.
+-diff --git a/test/cctest/heap/test-heap.cc b/test/cctest/heap/test-heap.cc
+-index 6781d3de6a..d9608292e8 100644
+---- a/test/cctest/heap/test-heap.cc
+-+++ b/test/cctest/heap/test-heap.cc
+-@@ -4806,7 +4806,7 @@ HEAP_TEST(Regress538257) {
+-   FLAG_manual_evacuation_candidates_selection = true;
+-   v8::Isolate::CreateParams create_params;
+-   // Set heap limits.
+--  create_params.constraints.set_max_semi_space_size_in_kb(1024);
+-+  create_params.constraints.set_max_semi_space_size(1);
+-   create_params.constraints.set_max_old_space_size(6);
+-   create_params.array_buffer_allocator = CcTest::array_buffer_allocator();
+-   v8::Isolate* isolate = v8::Isolate::New(create_params);
+-diff --git a/test/cctest/test-api.cc b/test/cctest/test-api.cc
+-index 2d64279bf8..aa4cba5a60 100644
+---- a/test/cctest/test-api.cc
+-+++ b/test/cctest/test-api.cc
+-@@ -3453,16 +3453,10 @@ class ScopedArrayBufferContents {
+-  public:
+-   explicit ScopedArrayBufferContents(const v8::ArrayBuffer::Contents& contents)
+-       : contents_(contents) {}
+--  ~ScopedArrayBufferContents() { free(contents_.AllocationBase()); }
+-+  ~ScopedArrayBufferContents() { free(contents_.Data()); }
+-   void* Data() const { return contents_.Data(); }
+-   size_t ByteLength() const { return contents_.ByteLength(); }
+- 
+--  void* AllocationBase() const { return contents_.AllocationBase(); }
+--  size_t AllocationLength() const { return contents_.AllocationLength(); }
+--  v8::ArrayBuffer::Allocator::AllocationMode AllocationMode() const {
+--    return contents_.AllocationMode();
+--  }
+--
+-  private:
+-   const v8::ArrayBuffer::Contents contents_;
+- };
+-@@ -3738,43 +3732,15 @@ THREADED_TEST(ArrayBuffer_NeuteringScript) {
+-   CheckDataViewIsNeutered(dv);
+- }
+- 
+--THREADED_TEST(ArrayBuffer_AllocationInformation) {
+--  LocalContext env;
+--  v8::Isolate* isolate = env->GetIsolate();
+--  v8::HandleScope handle_scope(isolate);
+--
+--  const size_t ab_size = 1024;
+--  Local<v8::ArrayBuffer> ab = v8::ArrayBuffer::New(isolate, ab_size);
+--  ScopedArrayBufferContents contents(ab->Externalize());
+--
+--  // Array buffers should have normal allocation mode.
+--  CHECK(contents.AllocationMode() ==
+--        v8::ArrayBuffer::Allocator::AllocationMode::kNormal);
+--  // The allocation must contain the buffer (normally they will be equal, but
+--  // this is not required by the contract).
+--  CHECK_NOT_NULL(contents.AllocationBase());
+--  const uintptr_t alloc =
+--      reinterpret_cast<uintptr_t>(contents.AllocationBase());
+--  const uintptr_t data = reinterpret_cast<uintptr_t>(contents.Data());
+--  CHECK_LE(alloc, data);
+--  CHECK_LE(data + contents.ByteLength(), alloc + contents.AllocationLength());
+--}
+--
+- class ScopedSharedArrayBufferContents {
+-  public:
+-   explicit ScopedSharedArrayBufferContents(
+-       const v8::SharedArrayBuffer::Contents& contents)
+-       : contents_(contents) {}
+--  ~ScopedSharedArrayBufferContents() { free(contents_.AllocationBase()); }
+-+  ~ScopedSharedArrayBufferContents() { free(contents_.Data()); }
+-   void* Data() const { return contents_.Data(); }
+-   size_t ByteLength() const { return contents_.ByteLength(); }
+- 
+--  void* AllocationBase() const { return contents_.AllocationBase(); }
+--  size_t AllocationLength() const { return contents_.AllocationLength(); }
+--  v8::ArrayBuffer::Allocator::AllocationMode AllocationMode() const {
+--    return contents_.AllocationMode();
+--  }
+--
+-  private:
+-   const v8::SharedArrayBuffer::Contents contents_;
+- };
+-@@ -20361,7 +20327,7 @@ class InitDefaultIsolateThread : public v8::base::Thread {
+-     create_params.array_buffer_allocator = CcTest::array_buffer_allocator();
+-     switch (testCase_) {
+-       case SetResourceConstraints: {
+--        create_params.constraints.set_max_semi_space_size_in_kb(1024);
+-+        create_params.constraints.set_max_semi_space_size(1);
+-         create_params.constraints.set_max_old_space_size(6);
+-         break;
+-       }
+-@@ -26057,29 +26023,6 @@ TEST(FutexInterruption) {
+-   timeout_thread.Join();
+- }
+- 
+--THREADED_TEST(SharedArrayBuffer_AllocationInformation) {
+--  i::FLAG_harmony_sharedarraybuffer = true;
+--  LocalContext env;
+--  v8::Isolate* isolate = env->GetIsolate();
+--  v8::HandleScope handle_scope(isolate);
+--
+--  const size_t ab_size = 1024;
+--  Local<v8::SharedArrayBuffer> ab =
+--      v8::SharedArrayBuffer::New(isolate, ab_size);
+--  ScopedSharedArrayBufferContents contents(ab->Externalize());
+--
+--  // Array buffers should have normal allocation mode.
+--  CHECK(contents.AllocationMode() ==
+--        v8::ArrayBuffer::Allocator::AllocationMode::kNormal);
+--  // The allocation must contain the buffer (normally they will be equal, but
+--  // this is not required by the contract).
+--  CHECK_NOT_NULL(contents.AllocationBase());
+--  const uintptr_t alloc =
+--      reinterpret_cast<uintptr_t>(contents.AllocationBase());
+--  const uintptr_t data = reinterpret_cast<uintptr_t>(contents.Data());
+--  CHECK_LE(alloc, data);
+--  CHECK_LE(data + contents.ByteLength(), alloc + contents.AllocationLength());
+--}
+- 
+- static int nb_uncaught_exception_callback_calls = 0;
+- 
+-diff --git a/test/cctest/test-strings.cc b/test/cctest/test-strings.cc
+-index 73e9c58596..d98a4819b5 100644
+---- a/test/cctest/test-strings.cc
+-+++ b/test/cctest/test-strings.cc
+-@@ -1301,7 +1301,7 @@ TEST(SliceFromSlice) {
+- UNINITIALIZED_TEST(OneByteArrayJoin) {
+-   v8::Isolate::CreateParams create_params;
+-   // Set heap limits.
+--  create_params.constraints.set_max_semi_space_size_in_kb(1024);
+-+  create_params.constraints.set_max_semi_space_size(1);
+-   create_params.constraints.set_max_old_space_size(7);
+-   create_params.array_buffer_allocator = CcTest::array_buffer_allocator();
+-   v8::Isolate* isolate = v8::Isolate::New(create_params);
+-diff --git a/test/unittests/heap/heap-unittest.cc b/test/unittests/heap/heap-unittest.cc
+-index 6262eff210..8dab181ca7 100644
+---- a/test/unittests/heap/heap-unittest.cc
+-+++ b/test/unittests/heap/heap-unittest.cc
+-@@ -63,14 +63,19 @@ TEST(Heap, MaxHeapGrowingFactor) {
+- }
+- 
+- TEST(Heap, SemiSpaceSize) {
+--  const size_t KB = static_cast<size_t>(i::KB);
+--  const size_t MB = static_cast<size_t>(i::MB);
+--  const size_t pm = i::Heap::kPointerMultiplier;
+--  ASSERT_EQ(1u * pm * MB / 2, i::Heap::ComputeMaxSemiSpaceSize(0u) * KB);
+--  ASSERT_EQ(1u * pm * MB / 2, i::Heap::ComputeMaxSemiSpaceSize(512u * MB) * KB);
+--  ASSERT_EQ(3u * pm * MB, i::Heap::ComputeMaxSemiSpaceSize(1024u * MB) * KB);
+--  ASSERT_EQ(8u * pm * MB, i::Heap::ComputeMaxSemiSpaceSize(2024u * MB) * KB);
+--  ASSERT_EQ(8u * pm * MB, i::Heap::ComputeMaxSemiSpaceSize(4095u * MB) * KB);
+-+  uint64_t configurations[][2] = {
+-+      {0, 1 * i::Heap::kPointerMultiplier},
+-+      {512 * i::MB, 1 * i::Heap::kPointerMultiplier},
+-+      {1 * i::GB, 3 * i::Heap::kPointerMultiplier},
+-+      {2 * static_cast<uint64_t>(i::GB), i::Heap::kMaxSemiSpaceSize},
+-+      {4 * static_cast<uint64_t>(i::GB), i::Heap::kMaxSemiSpaceSize},
+-+      {8 * static_cast<uint64_t>(i::GB), i::Heap::kMaxSemiSpaceSize}};
+-+
+-+  for (auto configuration : configurations) {
+-+    ASSERT_EQ(configuration[1],
+-+              static_cast<uint64_t>(
+-+                  i::Heap::ComputeMaxSemiSpaceSize(configuration[0])));
+-+  }
+- }
+- 
+- TEST(Heap, OldGenerationSize) {
+--- a/patches/v8/015-backport_9b21865822243.patch
++++ b/patches/v8/015-backport_9b21865822243.patch
+@@ -332,80 +332,3 @@
+  
+    GetExternallyAllocatedMemoryInBytesCallback external_memory_callback_;
+  
+-diff --git a/test/cctest/test-api.cc b/test/cctest/test-api.cc
+-index aa4cba5a60..06ce7c565e 100644
+---- a/test/cctest/test-api.cc
+-+++ b/test/cctest/test-api.cc
+-@@ -19592,6 +19592,19 @@ void EpilogueCallbackSecond(v8::Isolate* isolate,
+-   ++epilogue_call_count_second;
+- }
+- 
+-+void PrologueCallbackNew(v8::Isolate* isolate, v8::GCType,
+-+                         v8::GCCallbackFlags flags, void* data) {
+-+  CHECK_EQ(flags, v8::kNoGCCallbackFlags);
+-+  CHECK_EQ(gc_callbacks_isolate, isolate);
+-+  ++*static_cast<int*>(data);
+-+}
+-+
+-+void EpilogueCallbackNew(v8::Isolate* isolate, v8::GCType,
+-+                         v8::GCCallbackFlags flags, void* data) {
+-+  CHECK_EQ(flags, v8::kNoGCCallbackFlags);
+-+  CHECK_EQ(gc_callbacks_isolate, isolate);
+-+  ++*static_cast<int*>(data);
+-+}
+- 
+- void PrologueCallbackAlloc(v8::Isolate* isolate,
+-                            v8::GCType,
+-@@ -19666,6 +19679,52 @@ TEST(GCCallbacksOld) {
+-   CHECK_EQ(2, epilogue_call_count_second);
+- }
+- 
+-+TEST(GCCallbacksWithData) {
+-+  LocalContext context;
+-+
+-+  gc_callbacks_isolate = context->GetIsolate();
+-+  int prologue1 = 0;
+-+  int epilogue1 = 0;
+-+  int prologue2 = 0;
+-+  int epilogue2 = 0;
+-+
+-+  context->GetIsolate()->AddGCPrologueCallback(PrologueCallbackNew, &prologue1);
+-+  context->GetIsolate()->AddGCEpilogueCallback(EpilogueCallbackNew, &epilogue1);
+-+  CHECK_EQ(0, prologue1);
+-+  CHECK_EQ(0, epilogue1);
+-+  CHECK_EQ(0, prologue2);
+-+  CHECK_EQ(0, epilogue2);
+-+  CcTest::CollectAllGarbage();
+-+  CHECK_EQ(1, prologue1);
+-+  CHECK_EQ(1, epilogue1);
+-+  CHECK_EQ(0, prologue2);
+-+  CHECK_EQ(0, epilogue2);
+-+  context->GetIsolate()->AddGCPrologueCallback(PrologueCallbackNew, &prologue2);
+-+  context->GetIsolate()->AddGCEpilogueCallback(EpilogueCallbackNew, &epilogue2);
+-+  CcTest::CollectAllGarbage();
+-+  CHECK_EQ(2, prologue1);
+-+  CHECK_EQ(2, epilogue1);
+-+  CHECK_EQ(1, prologue2);
+-+  CHECK_EQ(1, epilogue2);
+-+  context->GetIsolate()->RemoveGCPrologueCallback(PrologueCallbackNew,
+-+                                                  &prologue1);
+-+  context->GetIsolate()->RemoveGCEpilogueCallback(EpilogueCallbackNew,
+-+                                                  &epilogue1);
+-+  CcTest::CollectAllGarbage();
+-+  CHECK_EQ(2, prologue1);
+-+  CHECK_EQ(2, epilogue1);
+-+  CHECK_EQ(2, prologue2);
+-+  CHECK_EQ(2, epilogue2);
+-+  context->GetIsolate()->RemoveGCPrologueCallback(PrologueCallbackNew,
+-+                                                  &prologue2);
+-+  context->GetIsolate()->RemoveGCEpilogueCallback(EpilogueCallbackNew,
+-+                                                  &epilogue2);
+-+  CcTest::CollectAllGarbage();
+-+  CHECK_EQ(2, prologue1);
+-+  CHECK_EQ(2, epilogue1);
+-+  CHECK_EQ(2, prologue2);
+-+  CHECK_EQ(2, epilogue2);
+-+}
+- 
+- TEST(GCCallbacks) {
+-   LocalContext context;
+--- a/patches/v8/017-backport_163d360.patch
++++ b/patches/v8/017-backport_163d360.patch
+@@ -142,61 +142,3 @@
+        chunk->ResetProgressBar();
+        MarkingState::Internal(chunk).SetLiveBytes(0);
+      }
+-diff --git a/test/cctest/heap/test-heap.cc b/test/cctest/heap/test-heap.cc
+-index d9608292e8..a2273d2d8c 100644
+---- a/test/cctest/heap/test-heap.cc
+-+++ b/test/cctest/heap/test-heap.cc
+-@@ -6237,6 +6237,53 @@ HEAP_TEST(Regress5831) {
+-   CHECK(chunk->NeverEvacuate());
+- }
+- 
+-+TEST(Regress6800) {
+-+  CcTest::InitializeVM();
+-+  Isolate* isolate = CcTest::i_isolate();
+-+  HandleScope handle_scope(isolate);
+-+
+-+  const int kRootLength = 1000;
+-+  Handle<FixedArray> root =
+-+      isolate->factory()->NewFixedArray(kRootLength, TENURED);
+-+  {
+-+    HandleScope inner_scope(isolate);
+-+    Handle<FixedArray> new_space_array = isolate->factory()->NewFixedArray(1);
+-+    for (int i = 0; i < kRootLength; i++) {
+-+      root->set(i, *new_space_array);
+-+    }
+-+    for (int i = 0; i < kRootLength; i++) {
+-+      root->set(i, CcTest::heap()->undefined_value());
+-+    }
+-+  }
+-+  CcTest::CollectGarbage(NEW_SPACE);
+-+  CHECK_EQ(0, RememberedSet<OLD_TO_NEW>::NumberOfPreFreedEmptyBuckets(
+-+                  MemoryChunk::FromAddress(root->address())));
+-+}
+-+
+-+TEST(Regress6800LargeObject) {
+-+  CcTest::InitializeVM();
+-+  Isolate* isolate = CcTest::i_isolate();
+-+  HandleScope handle_scope(isolate);
+-+
+-+  const int kRootLength = i::kMaxRegularHeapObjectSize / kPointerSize;
+-+  Handle<FixedArray> root =
+-+      isolate->factory()->NewFixedArray(kRootLength, TENURED);
+-+  CcTest::heap()->lo_space()->Contains(*root);
+-+  {
+-+    HandleScope inner_scope(isolate);
+-+    Handle<FixedArray> new_space_array = isolate->factory()->NewFixedArray(1);
+-+    for (int i = 0; i < kRootLength; i++) {
+-+      root->set(i, *new_space_array);
+-+    }
+-+    for (int i = 0; i < kRootLength; i++) {
+-+      root->set(i, CcTest::heap()->undefined_value());
+-+    }
+-+  }
+-+  CcTest::CollectGarbage(OLD_SPACE);
+-+  CHECK_EQ(0, RememberedSet<OLD_TO_NEW>::NumberOfPreFreedEmptyBuckets(
+-+                  MemoryChunk::FromAddress(root->address())));
+-+}
+-+
+- HEAP_TEST(RegressMissingWriteBarrierInAllocate) {
+-   if (!FLAG_incremental_marking) return;
+-   FLAG_black_allocation = true;
+--- a/patches/v8/023-backport_b1cd96e.patch
++++ b/patches/v8/023-backport_b1cd96e.patch
+@@ -57,88 +57,3 @@
+ +  await Protocol.Debugger.disable();
+ +  InspectorTest.completeTest();
+ +})();
+-diff --git a/test/inspector/inspector-test.cc b/test/inspector/inspector-test.cc
+-index 767168b297..4c133cee1f 100644
+---- a/test/inspector/inspector-test.cc
+-+++ b/test/inspector/inspector-test.cc
+-@@ -299,6 +299,10 @@ class UtilsExtension : public IsolateData::SetupGlobalTask {
+-     utils->Set(ToV8String(isolate, "setLogConsoleApiMessageCalls"),
+-                v8::FunctionTemplate::New(
+-                    isolate, &UtilsExtension::SetLogConsoleApiMessageCalls));
+-+    utils->Set(
+-+        ToV8String(isolate, "setLogMaxAsyncCallStackDepthChanged"),
+-+        v8::FunctionTemplate::New(
+-+            isolate, &UtilsExtension::SetLogMaxAsyncCallStackDepthChanged));
+-     utils->Set(ToV8String(isolate, "createContextGroup"),
+-                v8::FunctionTemplate::New(isolate,
+-                                          &UtilsExtension::CreateContextGroup));
+-@@ -485,6 +489,17 @@ class UtilsExtension : public IsolateData::SetupGlobalTask {
+-         args[0].As<v8::Boolean>()->Value());
+-   }
+-
+-+  static void SetLogMaxAsyncCallStackDepthChanged(
+-+      const v8::FunctionCallbackInfo<v8::Value>& args) {
+-+    if (args.Length() != 1 || !args[0]->IsBoolean()) {
+-+      fprintf(stderr,
+-+              "Internal error: setLogMaxAsyncCallStackDepthChanged(bool).");
+-+      Exit();
+-+    }
+-+    backend_runner_->data()->SetLogMaxAsyncCallStackDepthChanged(
+-+        args[0].As<v8::Boolean>()->Value());
+-+  }
+-+
+-   static void CreateContextGroup(
+-       const v8::FunctionCallbackInfo<v8::Value>& args) {
+-     if (args.Length() != 0) {
+-diff --git a/test/inspector/isolate-data.cc b/test/inspector/isolate-data.cc
+-index bd97a927e8..2e9a64f66d 100644
+---- a/test/inspector/isolate-data.cc
+-+++ b/test/inspector/isolate-data.cc
+-@@ -355,6 +355,10 @@ void IsolateData::SetLogConsoleApiMessageCalls(bool log) {
+-   log_console_api_message_calls_ = log;
+- }
+-
+-+void IsolateData::SetLogMaxAsyncCallStackDepthChanged(bool log) {
+-+  log_max_async_call_stack_depth_changed_ = log;
+-+}
+-+
+- v8::MaybeLocal<v8::Value> IsolateData::memoryInfo(v8::Isolate* isolate,
+-                                                   v8::Local<v8::Context>) {
+-   if (memory_info_.IsEmpty()) return v8::MaybeLocal<v8::Value>();
+-@@ -381,3 +385,8 @@ void IsolateData::consoleAPIMessage(int contextGroupId,
+-   Print(isolate_, stack->toString()->string());
+-   fprintf(stdout, "\n");
+- }
+-+
+-+void IsolateData::maxAsyncCallStackDepthChanged(int depth) {
+-+  if (!log_max_async_call_stack_depth_changed_) return;
+-+  fprintf(stdout, "maxAsyncCallStackDepthChanged: %d\n", depth);
+-+}
+-diff --git a/test/inspector/isolate-data.h b/test/inspector/isolate-data.h
+-index c96a8d1bbd..af2bf0ef1e 100644
+---- a/test/inspector/isolate-data.h
+-+++ b/test/inspector/isolate-data.h
+-@@ -64,6 +64,7 @@ class IsolateData : public v8_inspector::V8InspectorClient {
+-   void SetCurrentTimeMS(double time);
+-   void SetMemoryInfo(v8::Local<v8::Value> memory_info);
+-   void SetLogConsoleApiMessageCalls(bool log);
+-+  void SetLogMaxAsyncCallStackDepthChanged(bool log);
+-   void SetMaxAsyncTaskStacksForTest(int limit);
+-   void DumpAsyncTaskStacksStateForTest();
+-   void FireContextCreated(v8::Local<v8::Context> context, int context_group_id);
+-@@ -105,6 +106,7 @@ class IsolateData : public v8_inspector::V8InspectorClient {
+-                          const v8_inspector::StringView& url,
+-                          unsigned lineNumber, unsigned columnNumber,
+-                          v8_inspector::V8StackTrace*) override;
+-+  void maxAsyncCallStackDepthChanged(int depth) override;
+-
+-   TaskRunner* task_runner_;
+-   SetupGlobalTasks setup_global_tasks_;
+-@@ -122,6 +124,7 @@ class IsolateData : public v8_inspector::V8InspectorClient {
+-   bool current_time_set_ = false;
+-   double current_time_ = 0.0;
+-   bool log_console_api_message_calls_ = false;
+-+  bool log_max_async_call_stack_depth_changed_ = false;
+-
+-   DISALLOW_COPY_AND_ASSIGN(IsolateData);
+- };
+--- a/patches/v8/025-cherry_pick_cc55747.patch
++++ /dev/null
+@@ -1,13 +0,0 @@
+-diff --git a/test/message/testcfg.py b/test/message/testcfg.py
+-index 0576458af2..1bbb2b16d8 100644
+---- a/test/message/testcfg.py
+-+++ b/test/message/testcfg.py
+-@@ -107,7 +107,7 @@ class MessageTestSuite(testsuite.TestSuite):
+-         expected_lines, actual_lines, fillvalue=''):
+-       pattern = re.escape(expected.rstrip() % env)
+-       pattern = pattern.replace("\\*", ".*")
+--      pattern = pattern.replace("\\{NUMBER\\}", "\d(?:\.\d*)?")
+-+      pattern = pattern.replace("\\{NUMBER\\}", "\d+(?:\.\d*)?")
+-       pattern = "^%s$" % pattern
+-       if not re.match(pattern, actual):
+-         return True

@@ -1,0 +1,11 @@
+--- a/script/bootstrap.py
++++ b/script/bootstrap.py
+@@ -31,7 +31,7 @@ def main():
+   if sys.platform == 'cygwin':
+     update_win32_python()
+ 
+-  update_submodules()
++  # update_submodules()
+ 
+   libcc_source_path = args.libcc_source_path
+   libcc_shared_library_path = args.libcc_shared_library_path

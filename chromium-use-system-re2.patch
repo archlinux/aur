@@ -1,0 +1,10 @@
+--- a/build/linux/unbundle/re2.gn
++++ b/build/linux/unbundle/re2.gn
+@@ -11,7 +11,6 @@
+     "re2/re2.h",
+     "re2/set.h",
+     "re2/stringpiece.h",
+-    "re2/variadic_function.h",
+   ]
+ }
+ 

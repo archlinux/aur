@@ -1,0 +1,32 @@
+--- a/chromiumcontent/build_libs.py
++++ b/chromiumcontent/build_libs.py
+@@ -13,7 +13,8 @@ def gen_list(out, name, obj_dirs):
+     out.write(name + " = [\n")
+     for base_dir in obj_dirs:
+         for dir, subdirs, files in os.walk(os.path.join('obj', base_dir)):
+-            for f in files:
++            subdirs.sort()
++            for f in sorted(files):
+                 if f.endswith('.obj') or f.endswith('.o'):
+                     out.write('"' + os.path.abspath(os.path.join(dir, f)) + '",\n')
+     out.write("]\n")
+--- a/tools/generate_filenames_gypi.py
++++ b/tools/generate_filenames_gypi.py
+@@ -99,7 +99,7 @@ def main(target_file, code_dir, shared_dir, static_dir):
+ 
+ 
+ def find_libraries(dirpath, library_suffix, list_of_excludes):
+-  libraries = glob.glob(os.path.join(dirpath, '*.' + library_suffix))
++  libraries = sorted(glob.glob(os.path.join(dirpath, '*.' + library_suffix)))
+   if (library_suffix == 'so'):
+     # Handle "libname.so.123"
+     libraries += find_files_by_regex(dirpath, re.compile('.*\.so\.[0-9]+'))
+@@ -132,7 +132,7 @@ def find_files_by_regex(dirpath, regex):
+       if regex.match(file):
+         files_found.append(os.path.join(root, file))
+ 
+-  return files_found
++  return sorted(files_found)
+ 
+ 
+ def is_v8_library(p):
