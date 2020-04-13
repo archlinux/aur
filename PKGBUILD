@@ -2,7 +2,7 @@
 
 pkgname=python-tokenize-rt
 _pkgname=tokenize-rt
-pkgver=3.2.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="A wrapper around the stdlib tokenize which roundtrips."
 arch=('any')
