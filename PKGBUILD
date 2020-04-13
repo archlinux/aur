@@ -13,7 +13,7 @@ depends=("python-bidi"
 	"python-google-auth-httplib2"
 	"python-google-auth-oauthlib"
 )
-makedepends=("python-setuptools-git-ver" "git")
+makedepends=("python-setuptools" "git")
 checkdepends=()
 optdepends=()
 provides=(${pkgname%-git})
