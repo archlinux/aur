@@ -1,0 +1,14 @@
+pkgbase = python-inwx
+	pkgdesc = Python 3 library for INWX API.
+	pkgver = 3.0.5
+	pkgrel = 1
+	url = https://www.inwx.com/en/offer/api
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://api.github.com/repos/inwx/python-client/zipball/v3.0.5
+	sha512sums = e5dc57f037940a4b9a0783f2a28b817b3dd8367a3f8615f4a7106fd58c14f689f9656a1707940a6bc552eadf3e3db4b391bcdad1607220f1be439a58a95cbea8
+
+pkgname = python-inwx
+
