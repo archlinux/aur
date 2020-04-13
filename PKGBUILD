@@ -7,11 +7,11 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-_pkgver=1.4.0
-pkgver=1.4.0.r7961.310497a40
+pkgver=1.3.0.rc2.r399.g7ed7d95f4
 pkgrel=1
+epoch=1
 arch=('i686' 'x86_64')
-pkgdesc='A voice chat application similar to TeamSpeak'
+pkgdesc='A voice chat application similar to TeamSpeak (git version)'
 url='https://www.mumble.info/'
 license=('BSD')
 depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libspeechd' 'libx11' 'libxi'
@@ -29,7 +29,7 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
