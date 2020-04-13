@@ -3,7 +3,7 @@
 
 pkgname=torrent-file-editor-qt5-git
 _pkgname=torrent-file-editor
-pkgver=0.3.15.r20.g350570d
+pkgver=0.3.17.r3.g811e401
 pkgrel=1
 pkgdesc="Qt based GUI tool designed to create and edit .torrent files. Qt5 build"
 arch=('i686' 'x86_64')
@@ -26,7 +26,8 @@ build() {
   cmake . \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DQT5_BUILD=ON
+    -DQT5_BUILD=ON \
+    -DENABLE_PCH=OFF
   make
 }
 
