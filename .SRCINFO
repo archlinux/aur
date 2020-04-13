@@ -1,22 +1,29 @@
 pkgbase = bugwarrior
 	pkgdesc = pull issues from issue trackers into taskwarrior (GitHub, GitLab, Bitbucket, etc.)
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bugwarrior.readthedocs.io
 	arch = any
 	license = GPL3
 	depends = python
 	depends = python-setuptools
 	depends = python-requests
-	depends = python-taskw
+	depends = python-taskw>=0.8
 	depends = python-dateutil
 	depends = python-pytz
-	depends = python-six
-	depends = python-jinja
-	depends = python-dogpile.cache
-	depends = python-lockfile
+	depends = python-six>=1.9.0
+	depends = python-jinja>=2.7.2
+	depends = python-dogpile.cache>=0.5.3
+	depends = python-lockfile>=0.9.1
 	depends = python-click
 	depends = python-future
+	optdepends = python-keyring: keyring support
+	optdepends = python-jira>=0.22: jira support
+	optdepends = python-pysimplesoap: bts support
+	optdepends = python-debianbts>=2.6.1: bts support
+	optdepends = python-offtrac: Trac support
+	optdepends = python-google-api-python-client: gmail support
+	optdepends = python-oauth2client<4.0.0: gmail support
 	conflicts = bugwarrior-git
 	source = bugwarrior-1.7.0.tar.gz::https://github.com/ralphbean/bugwarrior/archive/1.7.0.tar.gz
 	sha256sums = 2d7cee5043e35aa1a63d13eeccd14264759ae4358fdd60178bb96eda51b6b487
