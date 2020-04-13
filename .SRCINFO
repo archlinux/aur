@@ -1,0 +1,26 @@
+pkgbase = foosynth-plugin-neo_tmedian-git
+	pkgdesc = Plugin for Vapoursynth/Avisynth: neo_tmedian (Dual interface for Vapoursynth/Avisynth) (GIT version)
+	pkgver = r1.1.g4199078
+	pkgrel = 1
+	url = https://github.com/HomeOfAviSynthPlusEvolution/neo_TMedian.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = avisynthplus-git
+	makedepends = vapoursynth
+	source = neo_tmedian::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_TMedian.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-neo_tmedian-git
+	pkgdesc = Plugin for Avisynth: neo_tmedian (GIT version)
+	depends = avisynthplus
+	provides = avisynth-plugin-neo_tmedian
+	conflicts = avisynth-plugin-neo_tmedian
+
+pkgname = vapoursynth-plugin-neo_tmedian-git
+	pkgdesc = Plugin for Vapoursynth: neo_tmedian (GIT version)
+	depends = vapoursynth
+	provides = vapoursynth-plugin-neo_tmedian
+	conflicts = vapoursynth-plugin-neo_tmedian
+
