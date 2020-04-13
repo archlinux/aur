@@ -1,0 +1,36 @@
+pkgbase = zsh-fix-winchanged-git
+	pkgver = 5.7.1.r312.g8f21786fc
+	pkgrel = 1
+	url = https://github.com/romkatv/powerlevel10k/issues/175#issuecomment-522345552
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = yodl
+	makedepends = texinfo
+	makedepends = texlive-plainextra
+	makedepends = pcre
+	makedepends = libcap
+	makedepends = gdbm
+	source = zsh::git://github.com/romkatv/zsh#branch=fix-winchanged
+	source = zprofile
+	md5sums = SKIP
+	md5sums = 24a9335edf77252a7b5f52e079f7aef7
+
+pkgname = zsh-fix-winchanged-git
+	pkgdesc = A very advanced and programmable command interpreter (shell) for UNIX; patched to minimize reflow artifacts
+	install = zsh.install
+	depends = pcre
+	depends = libcap
+	depends = gdbm
+	provides = zsh=5.7.1
+	conflicts = zsh
+	conflicts = zsh-git
+	backup = etc/zsh/zprofile
+
+pkgname = zsh-fix-winchanged-doc-git
+	pkgdesc = Info, HTML and PDF format of the ZSH documentation
+	provides = zsh-doc
+	conflicts = zsh-doc
+	conflicts = zsh-doc-git
+
