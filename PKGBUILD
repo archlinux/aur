@@ -1,14 +1,15 @@
 pkgname=yltra-flat-icons
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple flat icon theme, derived from Ultra Flat icons'
 arch=('any')
 url='https://github.com/kimifetch/yltra-flat-icon-theme'
 license=('CCPL:cc-by-nc-sa-4.0')
 makedepends=('git')
 provides=("${pkgname}")
+conflicts=("${pkgname}")
 options=(!strip !emptydirs)
-source=('git+https://github.com/kimifetch/yltra-flat-icon-theme.git')
+source=("git+${url}.git")
 md5sums=('SKIP')
 
 package() {
@@ -48,7 +49,6 @@ package() {
 	find "${pkgdir}" \( -name CREDITS -o -name "*.txt" \) -exec rm {} \;
 
 	# License
-	install -d -m 755 "${pkgdir}"/usr/share/licenses/${pkgname}
-	cp "${srcdir}"/$_themefolder/"$_themename"/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-	cp "${srcdir}"/$_themefolder/"$_themename"/CREDITS "${pkgdir}"/usr/share/licenses/${pkgname}
+	install -Dm644 "${srcdir}"/$_themefolder/"$_themename"/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+	install -m644 "${srcdir}"/$_themefolder/"$_themename"/CREDITS "${pkgdir}"/usr/share/licenses/${pkgname}
 }
