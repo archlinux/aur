@@ -1,7 +1,7 @@
 # Maintainer: Félix Saparelli <felix @ passcod.name>
 
 pkgname=plv8
-pkgver=2.1.0
+pkgver=2.3.14
 pkgrel=3
 pkgdesc="V8 Engine Javascript Procedural Language add-on for PostgreSQL"
 url="https://github.com/plv8/plv8"
@@ -20,7 +20,7 @@ makedepends=(
   'python2-virtualenv'
 )
 source=("https://github.com/plv8/plv8/archive/v${pkgver}.tar.gz")
-sha512sums=('83c44111138d6804d81752226589bf0f257a513f995d9d5eedfb098579e93cb9c51b4e4f1722b8239e848d399d913e36df4eefa78724875a244b887b39eeb85a')
+sha512sums=('8f8b1ddbc4554fb52125b96e54b0befbd22a75ee3138309b34b63180f8a943fd427fea9477bc04b2d267e0c11ac01d30bfb9c35e0f8c2b6fac56f50aa41090a7')
 
 build() {
   cd "plv8-${pkgver}"
