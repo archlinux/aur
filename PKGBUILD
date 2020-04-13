@@ -5,14 +5,14 @@
 _gitname=Apktool
 pkgname=android-apktool-git
 pkgver=2.2.4.r5.g2f387288
-pkgrel=1
+pkgrel=2
 pkgdesc="a tool for reengineering Android apk files"
 arch=(any)
 url="https://ibotpeaches.github.io/Apktool/"
 license=(Apache)
 depends=(bash 'java-runtime>=8' android-sdk-build-tools)
 conflicts=(android-apktool)
-makedepends=(git 'java-environment>=8') # openjdk has had issues in the past, be warned!
+makedepends=(git 'java-environment>=8' gradle) # openjdk has had issues in the past, be warned!
 source=("git+https://github.com/iBotPeaches/$_gitname.git")
 sha512sums=('SKIP')
 
@@ -30,7 +30,7 @@ build() {
   cd "$srcdir/$_gitname"
 
   # Build (OpenJDK sometimes fails to find aapt)
-  ./gradlew build proguard # proguard isn't needed, but makes the binary a little bit smaller
+  gradle build proguard --no-daemon
 }
 
 package() {
