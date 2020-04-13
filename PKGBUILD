@@ -1,26 +1,21 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Rootyjr <rooty (a+) kwtechllc (dot) com>
+# Maintainer: Booglejr <rooty (a+) kwtechllc (dot) com>
 pkgname=aespresso
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 epoch=0
 pkgdesc="A Gtk3 frontend for archlinux's archlinux-java script."
 arch=('x86_64')
-url="https://github.com/Rootyjr/$pkgname/releases"
+url="https://github.com/Booglejr/$pkgname/releases"
 license=('custom:BSD')
 depends=('gtk3' 'lxqt-sudo')
 makedepends=('rust')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Rootyjr/$pkgname/archive/v${pkgver}.tar.gz")
-md5sums=('d7acd650bf4930946eb679c7b7330126')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Booglejr/$pkgname/archive/v${pkgver}.tar.gz")
+md5sums=('1ba647355812a2ca9fdb26aa03d1b18c')
 
 
 build() {
 	cd "$pkgname-$pkgver"
-	cargo build --release --bin aespresso --target-dir .
+	cargo build --release --bin ${pkgname} --target-dir .
 }
 
 package() {
