@@ -6,6 +6,7 @@ pkgbase = zlib-ng-git
 	arch = any
 	license = custom
 	makedepends = cmake
+	makedepends = git
 	depends = glibc
 	provides = zlib=1.2.11
 	provides = zlib-ng=1.9.9
