@@ -5,7 +5,7 @@
 # This PKGBUILD was prepared for pacman 4.1 by William. Thank you. :-)
 
 pkgname=i3-git
-pkgver=4.18.r3.g30e886b0
+pkgver=4.18.r82.g831a52de
 pkgrel=1
 pkgdesc='An improved dynamic tiling window manager'
 arch=('i686' 'x86_64')
@@ -14,16 +14,15 @@ license=('BSD')
 provides=('i3-wm')
 conflicts=('i3-wm' 'i3bar' 'i3bar-git')
 groups=('i3-vcs')
-depends=('xcb-util-keysyms' 'xcb-util-wm' 'libev' 'yajl'
-         'startup-notification' 'pango' 'perl' 'xcb-util-cursor'
-         'libxkbcommon-x11' 'xcb-util-xrm')
-makedepends=('git' 'asciidoc' 'docbook-xsl' 'pkgconfig' 'xmlto')
-optdepends=('rxvt-unicode: The terminal emulator used in the default config.'
-            'dmenu: As menu.'
+depends=(xcb-util-cursor xcb-util-keysyms xcb-util-wm xcb-util-xrm libev yajl startup-notification
+         pango libxkbcommon-x11)
+makedepends=(bison flex asciidoc xmlto)
+optdepends=('dmenu: As menu.'
             'i3lock: For locking your screen.'
             'i3status: To display system information with a bar.'
-            'perl-json-xs: For i3-save-tree'
-            'perl-anyevent-i3: For i3-save-tree')
+            'perl: i3-save-tree and i3-dmenu-desktop'
+            'perl-anyevent-i3: Features like saving the layout.'
+            'perl-json-xs: Features like saving the layout.')
 options=('docs' '!strip' 'debug')
 source=('git://github.com/i3/i3')
 sha1sums=('SKIP')
@@ -35,10 +34,15 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+
+prepare() {
   cd "$_gitname"
 
-  autoreconf --force --install
+  autoreconf -fvi
+}
+
+build() {
+  cd "$_gitname"
 
   rm -rf build
   mkdir -p build && cd build
@@ -48,8 +52,7 @@ build() {
     --sysconfdir=/etc \
     --disable-sanitizers
 
-  # See https://lists.archlinux.org/pipermail/arch-dev-public/2013-April/024776.html
-  make CPPFLAGS+="-U_FORTIFY_SOURCE"
+  make
 }
 
 package() {
@@ -62,4 +65,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
