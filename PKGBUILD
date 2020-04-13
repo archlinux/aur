@@ -1,7 +1,7 @@
 # Maintainer: Jan-Erik Rediger <badboy at archlinux dot us>
 
 pkgname=sozu-git
-pkgver=0.1.1.r171.gaaab376
+pkgver=0.11.46
 pkgrel=1
 pkgdesc="HTTP reverse proxy, configurable at runtime, fast and safe, built in Rust"
 arch=('i686' 'x86_64')
