@@ -3,10 +3,10 @@
 pkgname=i3-ws-nick-git
 _pkgname=${pkgname%-git}
 pkgver=dac6b63
-pkgrel=1
-pkgdesc='Multi-monitor workspace helper for i3-wm (nicholastay fork)'
+pkgrel=2
+pkgdesc='Multi-monitor workspace helper for i3-wm'
 arch=('x86_64')
-license=('custom')
+license=('unknown')
 url='https://github.com/nicholastay/i3-ws'
 depends=('jsoncpp' 'libsigc++')
 makedepends=('git' 'cmake')
@@ -26,7 +26,8 @@ pkgver() {
 
 build() {
 	cd "${_pkgname}"
-	cmake '.'
+	cmake '.' \
+		-DCMAKE_INSTALL_PREFIX='/usr'
 	make
 }
 
