@@ -1,0 +1,10 @@
+[Unit]
+Description=Pixelfeed horizon worker
+After=network.target mysqld.service postgresql.service
+
+[Service]
+ExecStart=/usr/bin/php /usr/share/webapps/pixelfed/artisan queue:work
+User=http
+
+[Install]
+WantedBy=multi-user.target

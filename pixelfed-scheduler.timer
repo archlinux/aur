@@ -1,0 +1,8 @@
+[Unit]
+Description=Pixelfed scheduler
+
+[Timer]
+OnCalendar=hourly
+
+[Install]
+WantedBy=timers.target
