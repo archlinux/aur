@@ -49,7 +49,7 @@ package() {
   chmod 755 "$pkgdir/opt/$pkgname/$pkgname"
   install -Dm644 "$srcdir/$_pkgname-$pkgver/dist/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   for res in 32 48 64; do
-    install -Dm644 "$srcdir/$_pkgname/install/icons/$res/$pkgname.png" "$pkgdir/usr/share/icons/hicolor/$res/$pkgname.png"
+    install -Dm644 "$srcdir/$_pkgname-$pkgver/install/icons/$res/$pkgname.png" "$pkgdir/usr/share/icons/hicolor/$res/$pkgname.png"
   done
 
   ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
