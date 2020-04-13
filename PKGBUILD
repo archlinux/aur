@@ -5,15 +5,16 @@
 # https://github.com/m0n0l0c0/mutant
 
 pkgname=mutant
+_pkgname=Mutant
 pkgrel=1
-pkgver=0.1.11
-_packager_pkgver=0.1.5
+pkgver=0.2.1
 pkgdesc="Linux Spotlight Productivity launcher, but more customizable."
 url="https://github.com/m0n0l0c0/mutant"
 provides=('mutant')
 arch=('x86_64')
 license=('MIT')
 depends=(
+  'nodejs-lts-erbium'
   'pkg-config'
   'sqlite'
   'git'
@@ -25,54 +26,31 @@ makedepends=()
 backup=()
 install=''
 source=(
-  "mutant::https://github.com/m0n0l0c0/$pkgname/archive/v$pkgver.tar.gz"
-  "mutant-packager::https://github.com/m0n0l0c0/mutant-packager/archive/v$_packager_pkgver.tar.gz"
+  "$pkgname-$pkgver::https://github.com/m0n0l0c0/$pkgname/archive/v$pkgver.tar.gz"
 )
 sha256sums=(
-  'd01df56c811df074ff938a65a952cc10b33c88932a697414f4615a93c26bdc48'
-  '0029373d851cd86f01e97f452826d84f45646a30c569ec72c3653fa85fecd7ea'
+  '369b371689566d84b3700e6416a278a70baf7173bccce8aa4cc23bda98de7732'
 )
 
 package() {
-  # Prepare executable files
-  #chmod 755 -R "$srcdir/mutant-packager-$_packager_pkgver/"
   # Launch npm installer
-  msg2 "Launch installer"
-  "$srcdir/mutant-packager-$_packager_pkgver/install.sh" "$srcdir/Mutant-$pkgver"
-  # Generate theme and list apps
-    msg2 "Search theme..."
-    # Default theme in most distros
-    theme="Adwaita"
-    # Guess settings agent
-    if test `which gtk-query-settings`; then
-      theme="$(gtk-query-settings gtk-icon-theme-name | awk '{print $2}')"
-    else
-      theme="$(gsettings get org.gnome.desktop.interface icon-theme | sed -e 's/'\''/"/g')"
-    fi
-    msg2 "Found: $theme"
-    # Save theme
-    msg2 "{\"theme\": $theme }" > "$srcdir/Mutant-$pkgver/misc/theme.json"
-    msg2 "Compile..."
-    # Make compiler executable
-    chmod 755 "$srcdir/mutant-packager-$_packager_pkgver/gtkcc.sh"
-    "$srcdir/mutant-packager-$_packager_pkgver/gtkcc.sh" "$srcdir/mutant-packager-$_packager_pkgver/listApps"
-    msg2 "Move"
-    # Copy listApps to dst folder
-    mv "$srcdir/mutant-packager-$_packager_pkgver/listApps" "$srcdir/Mutant-$pkgver/apps/native/listApps"
-    # Make listApps executable
-    chmod 755 "$srcdir/Mutant-$pkgver/apps/native/listApps"
-    msg2 "Done"
-  
-  # Make the program itself
-  "$srcdir/mutant-packager-$_packager_pkgver/mkDist.sh" "$srcdir/Mutant-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver/"
+  msg2 "Installing dependencies"
+  ./install/install.sh
+  npm run postinstall
+  msg2 "Packaging application"
+  ./install/mkDist.sh
   # Create necessary dirs
   install -dm755 "$pkgdir"/{opt,usr/{bin,share}}
   # Copy executable to fakeroot
-  cp -R "$srcdir/Mutant-$pkgver/$pkgname-linux-x64" "$pkgdir/opt/$pkgname"
+  # cp -R "$srcdir/$pkgname-$pkgver/dist/$pkgname-linux-x64" "$pkgdir/opt/$pkgname"
+  cp -R "$srcdir/$_pkgname-$pkgver/dist/$pkgname" "$pkgdir/opt/$pkgname"
   # Set permissions on pkgdir
   chmod 755 "$pkgdir/opt/$pkgname/$pkgname"
-  install -Dm644 "$srcdir/mutant-packager-$_packager_pkgver/mutant.desktop" "${pkgdir}/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "$srcdir/mutant-packager-$_packager_pkgver/icns/$pkgname.png" "${pkgdir}/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 "$srcdir/$_pkgname-$pkgver/dist/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  for res in 32 48 64; do
+    install -Dm644 "$srcdir/$_pkgname/install/icons/$res/$pkgname.png" "$pkgdir/usr/share/icons/hicolor/$res/$pkgname.png"
+  done
 
   ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
