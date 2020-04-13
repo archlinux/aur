@@ -3,7 +3,7 @@
 
 pkgname=bitwarden_rs-git
 _pkgbase=bitwarden_rs
-pkgver=1.14.r0.g70f3ab8
+pkgver=1.14.2.r0.ge3feba2
 pkgrel=1
 pkgdesc="An unofficial lightweight implementation of the bitwarden-server using rust and sqlite. Does NOT include the web-interface."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -39,10 +39,17 @@ pkgver() {
 }
 
 build() {
+	# rustup is not required, but if it exists, we have to set the profile. Otherwise, fail silently.
+	# This is necessary because some of the optional toolchain components (e.g. clippy) fail regularly on nightly and rustup/cargo will fail if it can't download those.
+	RUSTUP_PROFILE=`rustup show profile 2>/dev/null`
+	rustup set profile minimal 2>/dev/null && echo "Set rustup profile to 'minimal'. Will reset to '$RUSTUP_PROFILE' after a successful build."
+
 	#build bitwarden_rs
 	cd "$srcdir/$_pkgbase"
 	patch -N -p1 -i "$srcdir/0001-Disable-Vault.patch"
 	cargo build --release --locked --features sqlite
+
+	rustup set profile $RUSTUP_PROFILE 2>/dev/null && echo "Set rustup profile back to '$RUSTUP_PROFILE'."
 }
 
 check() {
