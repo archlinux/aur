@@ -31,7 +31,7 @@ prepare() {
   cd "${pkgname%-git}"
 
   git submodule init
-  git config submodule.libtap.url $srcdir/libtap
+  git config submodule."src/t/libtap".url $srcdir/libtap
   git submodule update
 }
 
