@@ -1,13 +1,14 @@
 pkgbase = dmenu-recent-aliases-git
-	pkgdesc = Launch dmenu sorted based on a frequency of use.
-	pkgver = 2020.04.11.79aeecc
+	pkgdesc = Launch dmenu sorted based on a frequency of use
+	pkgver = 20200411.79aeecc
 	pkgrel = 1
 	url = https://gitlab.com/y2kbugger-projects/scripts/dmenu-recent-aliases
 	arch = any
 	license = MIT
 	depends = dmenu2
 	provides = dmenu-recent-aliases
-	source = dmenu-recent-aliases-git::git+https://gitlab.com/y2kbugger-projects/scripts/dmenu-recent-aliases.git
+	conflicts = dmenu-recent-aliases
+	source = git+https://gitlab.com/y2kbugger-projects/scripts/dmenu-recent-aliases.git
 	md5sums = SKIP
 
 pkgname = dmenu-recent-aliases-git
