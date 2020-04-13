@@ -1,5 +1,5 @@
 pkgbase = utqemu-git
-	pkgdesc = Ubuntu qemu is an easy to use ubuntu touch emulator/virtual machine
+	pkgdesc = Ubuntu touch qemu is an easy to use ubuntu touch emulator/virtual machine
 	pkgver = r26.cd7bb30
 	pkgrel = 1
 	url = https://github.com/ubports/utqemu

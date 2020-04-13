@@ -2,7 +2,7 @@
 pkgname=utqemu-git
 pkgver=r26.cd7bb30
 pkgrel=1
-pkgdesc="Ubuntu qemu is an easy to use ubuntu touch emulator/virtual machine"
+pkgdesc="Ubuntu touch qemu is an easy to use ubuntu touch emulator/virtual machine"
 arch=('any')
 url="https://github.com/ubports/utqemu"
 license=('LGPL3')
