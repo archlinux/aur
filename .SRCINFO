@@ -11,12 +11,13 @@ pkgbase = mcuxpresso-ide-10.3.1_2233
 	depends = glibc
 	depends = lib32-glibc
 	depends = jlink-software-and-documentation
-	noextract = mcuxpressoide-11.1.1_3241.x86_64.deb.bin
+	noextract = mcuxpressoide-10.3.1_2233.x86_64.deb.bin
 	options = !strip
-	source = https://freescaleesd.flexnetoperations.com/337170/17/15604017/mcuxpressoide-11.1.1_3241.x86_64.deb.bin
+	source = https://freescaleesd.flexnetoperations.com/337170/17/15604017/mcuxpressoide-10.3.2_2233.x86_64.deb.bin
 	source = LICENSE
-	sha256sums = e062d31a45cb5ebf1e12cb560bb151d8227ffdf435b0c338e712c361e322aba7
+
+	sha256sums = 6ade20050025214b1c7771bff76b69d45b1bc730ab125a267608b21247a000be
 	sha256sums = 5b5270f67599c666fabf3fac2d7cb65572a4cc07fd21efe26d990d9baa19f2a1
 
-pkgname = mcuxpresso-ide
+pkgname = mcuxpresso-ide-10.3.1_2233
 
