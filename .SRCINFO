@@ -1,6 +1,6 @@
 pkgbase = panther-launcher-git
 	pkgdesc = Fork of Slingshot launcher without Elementary dependencies
-	pkgver = 1.13.0.r4.g971cdce
+	pkgver = 1.13.0.r5.gbdb7d63
 	pkgrel = 1
 	url = https://gitlab.com/rastersoft/panther_launcher
 	arch = i686
