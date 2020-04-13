@@ -11,7 +11,7 @@ license=('MIT')
 depends=("python")
 makedepends=('python-setuptools')
 source=("${_pkgname}-${pkgver}::https://github.com/asottile/tokenize-rt/archive/v${pkgver}.tar.gz")
-sha256sums=('d43801fbc8ca369736ba336246df0c3923134649e3daa150c0f48d6dd0fcbc75')
+sha256sums=('620262d87dff65498f88c661794e1745018e3b5f081645fb1d5c640d879af554')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"

@@ -8,7 +8,7 @@ pkgbase = python-tokenize-rt
 	makedepends = python-setuptools
 	depends = python
 	source = tokenize-rt-4.0.0::https://github.com/asottile/tokenize-rt/archive/v4.0.0.tar.gz
-	sha256sums = d43801fbc8ca369736ba336246df0c3923134649e3daa150c0f48d6dd0fcbc75
+	sha256sums = 620262d87dff65498f88c661794e1745018e3b5f081645fb1d5c640d879af554
 
 pkgname = python-tokenize-rt
 
