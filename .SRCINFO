@@ -1,0 +1,15 @@
+pkgbase = vim-asyncomplete-lsp-git
+	pkgdesc = LSP source for asyncomplete.vim vim-lsp
+	pkgver = r26.5c470ae
+	pkgrel = 1
+	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim.git
+	arch = any
+	groups = vim-plugins
+	license = Custom
+	depends = vim
+	depends = vim-asyncomplete-git
+	source = asyncomplete.vim::git+https://github.com/prabirshrestha/asyncomplete-lsp.vim.git
+	sha512sums = SKIP
+
+pkgname = vim-asyncomplete-lsp-git
+
