@@ -1,4 +1,4 @@
-# Maintainer:  Keating Reid <keating.reid@tutanota.com>
+# Maintainer:  Keating Reid <keating.reid@protonmail.com>
 pkgname=libmowgli-2-git
 pkgver=2.1.3.8be3be8
 pkgrel=1
