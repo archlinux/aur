@@ -1,6 +1,6 @@
 pkgbase = trufont
 	pkgdesc = A streamlined and hackable font editor
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://trufont.github.io
 	arch = any
@@ -28,8 +28,8 @@ pkgbase = trufont
 	depends = python-ufo2ft
 	depends = python-unicodedata2
 	depends = python-zopfli
-	source = https://files.pythonhosted.org/packages/source/t/trufont/trufont-0.6.3.zip
-	sha256sums = ae711220d89721d6535c809518c689279ccb2af01ebeeae0ffddab6ee19ae0be
+	source = https://files.pythonhosted.org/packages/source/t/trufont/trufont-0.6.4.zip
+	sha256sums = 2a28ad178cbdd208a37ed91cb78f70756657f0c2c4da580d15f79cc589cb83c6
 
 pkgname = trufont
 
