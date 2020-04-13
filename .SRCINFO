@@ -1,0 +1,29 @@
+pkgbase = foosynth-plugin-neo_gradient-mask-git
+	pkgdesc = Plugin for Avisynth: neo_gradient-mask (GIT version)
+	pkgver = d460f60
+	pkgrel = 1
+	url = https://github.com/HomeOfAviSynthPlusEvolution/neo_Gradient_Mask
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = avisynthplus-git
+	makedepends = vapoursynth
+	makedepends = intel-tbb
+	source = neo_gradient-mask::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_Gradient_Mask.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-neo_gradient-mask-git
+	pkgdesc = Plugin for Avisynth: neo_gradient-mask (GIT version)
+	depends = avisynthplus
+	depends = intel-tbb
+	provides = avisynth-plugin-neo_gradient-mask
+	conflicts = avisynth-plugin-neo_gradient-mask
+
+pkgname = vapoursynth-plugin-neo_gradient-mask-git
+	pkgdesc = Plugin for Vapoursynth: neo_gradient-mask (GIT version)
+	depends = vapoursynth
+	depends = intel-tbb
+	provides = vapoursynth-plugin-neo_gradient-mask
+	conflicts = vapoursynth-plugin-neo_gradient-mask
+
