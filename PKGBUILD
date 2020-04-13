@@ -56,7 +56,7 @@ _disabled_modules=(languages/mod_spidermonkey
 
 pkgname=freeswitch
 pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
@@ -148,7 +148,7 @@ disable_module() {
 }
 
 prepare() {
-  cd ${srcdir}/${_pkgname}
+  cd ${srcdir}/${_pkgname}-${pkgver}
 
   # BUILD BEGINS
   msg "Bootstrapping..."
@@ -200,7 +200,7 @@ prepare() {
 }
 
 build() {
-  cd ${srcdir}/${_pkgname}
+  cd ${srcdir}/${_pkgname}-${pkgver}
 
   # COMPILE
   # https://freeswitch.org/jira/browse/FS-11345
@@ -233,7 +233,7 @@ disable_mod_xml() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}/" install
   make DESTDIR="${pkgdir}/" ${_sounds}moh-install
   make DESTDIR="${pkgdir}/" ${_sounds}sounds-install
@@ -252,11 +252,11 @@ package() {
   install -D -m 0644 ${srcdir}/freeswitch.service usr/lib/systemd/system/freeswitch.service
   install -D -m 0644 "${srcdir}/freeswitch.conf.d" etc/conf.d/freeswitch
   install -D -m 0644 "${srcdir}/README.freeswitch" usr/share/doc/freeswitch/README
-  cp -a "${srcdir}/${_pkgname}/docs" usr/share/doc/freeswitch
+  cp -a "${srcdir}/${_pkgname}-${pkgver}/docs" usr/share/doc/freeswitch
   install -D -m 0755 -d usr/share/doc/freeswitch/support-d
-  cp -a "${srcdir}/${_pkgname}/support-d" usr/share/doc/freeswitch/
+  cp -a "${srcdir}/${_pkgname}-${pkgver}/support-d" usr/share/doc/freeswitch/
   install -D -m 0755 -d usr/share/freeswitch/scripts
-  cp -a "${srcdir}/${_pkgname}/scripts" usr/share/freeswitch/.
+  cp -a "${srcdir}/${_pkgname}-${pkgver}/scripts" usr/share/freeswitch/.
   # Copy upstream confs 
   install -D -m 0755 -d usr/share/doc/freeswitch/examples/conf.default
   install -D -m 0755 -d usr/share/doc/freeswitch/examples/conf.archlinux
