@@ -3,7 +3,7 @@
 
 pkgname=read-it-later-git
 _pkgname=read-it-later
-pkgver=0.0.1.r90.e01b815
+pkgver=0.0.2.r122.b3c7567
 pkgrel=1
 pkgdesc='A wallabag client GTK GUI'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=(${pkgname%-*})
 conflicts=()
 depends=('appstream-glib' 'libhandy' 'webkit2gtk')
 makedepends=('git' 'meson' 'rust')
-source=('git+https://gitlab.gnome.org/bilelmoussaoui/read-it-later.git')
+source=('git+https://gitlab.gnome.org/World/read-it-later.git')
 sha512sums=('SKIP')
 builddir=build
 
