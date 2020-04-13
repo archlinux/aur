@@ -1,0 +1,19 @@
+pkgbase = cartographer-dkms-git
+	pkgdesc = Linux Kernel Module to spoof /proc maps
+	pkgver = r15.6544036
+	pkgrel = 1
+	url = https://github.com/LWSS/Cartographer
+	arch = x86_64
+	license = GPL
+	makedepends = elfutils
+	makedepends = dkms
+	provides = cartographer
+	provides = cartographer-git
+	conflicts = cartographer-git
+	source = git://github.com/LWSS/Cartographer.git
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 7cdc59c656ceb4d62ab032885d0908bde92551fbbddae50005c07cfdcdcbac6c
+
+pkgname = cartographer-dkms-git
+
