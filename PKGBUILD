@@ -62,6 +62,7 @@ optdepends=(
 'dropbox'
 'nemo-dropbox'
 # pdf editing
+'pdfarranger'
 'jpdfbookmarks'
 'okular'
 )
