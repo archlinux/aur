@@ -11,10 +11,8 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (Dual interface for Vapoursynth/Avisyn
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=176554'
 license=('ISC' 'MIT')
-depends=('gcc-libs')
 makedepends=('git'
              'cmake'
-             'clang'
              'avisynthplus'
              'vapoursynth'
              )

@@ -8,10 +8,8 @@ pkgbase = foosynth-plugin-neo_minideen-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	makedepends = clang
 	makedepends = avisynthplus
 	makedepends = vapoursynth
-	depends = gcc-libs
 	source = neo_minideen::git+https://github.com/HomeOfAviSynthPlusEvolution/minideen.git
 	sha256sums = SKIP
 
