@@ -8,6 +8,7 @@ url="https://github.com/squalou/google-chat-linux.git"
 electron_version='electron@v7.1.0'
 license=('WTFPL')
 makedepends=('nodejs' 'npm' 'xz' 'binutils')
+conflicts=('google-chat-linux-electron7-git')
 appname="${pkgname%-git}"
 
 [[ $CARCH == 'x86_64' ]] && _arch='x64' || _arch='ia32'
