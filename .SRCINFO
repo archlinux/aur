@@ -1,0 +1,16 @@
+pkgbase = libflowmanager
+	pkgdesc = This library is designed to facilitate performing flow-based measurement tasks using packet-based inputs, particularly packet trace files
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://research.wand.net.nz/software/libflowmanager.php
+	arch = x86_64
+	license = LGPL
+	depends = libtrace
+	source = 0001-Define-missing-UINT32_MAX.patch
+	source = https://research.wand.net.nz/software/libflowmanager/libflowmanager-3.0.0.tar.gz
+	validpgpkeys = 1E9E2C1BCF7639B219FBE159903A00FC06CC137B
+	md5sums = 89e6837ad16547a485a5d4db9bd8845a
+	md5sums = edd8be7a8a4ff678e9c0c3b5bb5946f0
+
+pkgname = libflowmanager
+

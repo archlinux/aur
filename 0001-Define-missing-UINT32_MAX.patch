@@ -1,0 +1,25 @@
+From da10f0dfe23533f121abb54545407d6021b91a8e Mon Sep 17 00:00:00 2001
+From: Lukas Matt <lukas@matt.wf>
+Date: Mon, 13 Apr 2020 15:25:48 +0200
+Subject: [PATCH] Define missing UINT32_MAX
+
+---
+ lib/tcp_reorder.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/lib/tcp_reorder.h b/lib/tcp_reorder.h
+index c711b97..7bf707f 100644
+--- a/lib/tcp_reorder.h
++++ b/lib/tcp_reorder.h
+@@ -25,6 +25,8 @@
+  *
+  */
+ 
++#define UINT32_MAX  (0xffffffff)
++
+ #ifndef TCP_REORDER_H_
+ #define TCP_REORDER_H_
+ 
+-- 
+2.26.0
+
