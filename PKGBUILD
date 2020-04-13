@@ -1,7 +1,7 @@
 # Maintainer: Zak Kohler <git@y2kbugger.com>
 
 pkgname=dmenu-recent-aliases-git
-pkgver=20200411.79aeecc
+pkgver="v1.0.0"
 pkgrel=1
 pkgdesc="Launch dmenu sorted based on a frequency of use"
 arch=('any')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${pkgname%-git}"
-    printf "%s.%s" "$(date +%Y%m%d)" "$(git rev-parse --short HEAD)"
+    git describe
 }
 
 package() {
