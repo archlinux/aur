@@ -2,7 +2,7 @@
 
 pkgname=ruby-ctf-party
 _gemname=ctf-party
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A library to enhance and speed up script/exploit writting for CTF players'
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!emptydirs)
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 #source=("https://github.com/Orange-Cyberdefense/$pkgname/archive/v$pkgver.tar.gz")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('7ed9aad9275a66c694b25c17b2b787c1cdcf3dc37d5977b18fdfde4585e2fa13bc96ba8c8fe4bfbd142a07f15980a5f7e530f25fe2489780d8da5e44c8b94b06')
+b2sums=('2aafce9ee3cf78e9c417058ccfcdcd74ad2c1964bf5b1bd07c7272207d2f0fedb08640a88083b9e5b4bb07beca7a95fcd6bbf2b9b0a069a747770f7f5125b2c7')
 
 package() {
   _gemdir="$(ruby -e'puts Gem.default_dir')"
