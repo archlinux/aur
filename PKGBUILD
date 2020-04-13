@@ -2,36 +2,15 @@
 
 pkgname=drawio-desktop-bin
 pkgver=12.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Diagram drawing application built on web technology"
 arch=('x86_64')
 url="https://github.com/jgraph/drawio-desktop"
 license=('Apache')
 depends=(
-    "alsa-lib"
-    "at-spi2-atk"
-    "atk"
-    "gconf"
-    "gdk-pixbuf2"
     "gtk3"
-    "libcups"
-    "libnotify"
-    "libx11"
-    "libxcb"
-    "libxcomposite"
-    "libxcursor"
-    "libxdamage"
-    "libxext"
-    "libxfixes"
-    "libxi"
-    "libxrandr"
-    "libxrender"
     "libxss"
-    "libxss"
-    "libxtst"
-    "nspr"
     "nss"
-    "pango"
 )
 provides=('drawio-desktop')
 conflicts=('drawio-desktop')
