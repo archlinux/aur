@@ -1,7 +1,7 @@
 pkgname=sdb
 pkgver=1.4.1
 pkgrel=1
-pkgdesc="Simple and fast string key/value database based on djb\'s cdb, supports JSON and arrays introspection"
+pkgdesc="Simple and fast string key/value database based on djb's cdb, supports JSON and arrays introspection"
 url=https://github.com/radareorg/sdb
 license=(MIT)
 source=(git+$url#commit=4ceb42283ec726b07cc16651270f6db00c1d44b4)
@@ -11,10 +11,14 @@ optdepends=('glib2: vala bindings')
 makedepends=(vala git)
 conflicts=(sdb-git)
 
-build() {
+prepare() {
   cd sdb
   make clean
   git clean -xdf
+}
+
+build() {
+  cd sdb
   make
 }
 
