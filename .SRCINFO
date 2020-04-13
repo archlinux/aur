@@ -1,6 +1,6 @@
 pkgbase = flowee-git
 	pkgdesc = Flowee Bitcoin products
-	pkgver = c1671c707
+	pkgver = 63021917e
 	pkgrel = 1
 	url = https://flowee.org/
 	install = flowee.install
@@ -8,8 +8,6 @@ pkgbase = flowee-git
 	license = GPL
 	makedepends = boost
 	makedepends = cmake
-	makedepends = autoconf
-	makedepends = automake
 	makedepends = pkgconf
 	depends = boost-libs
 	depends = libevent

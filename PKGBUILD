@@ -1,14 +1,14 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee-git
-pkgver=c1671c707
+pkgver=63021917e
 pkgrel=1
 pkgdesc="Flowee Bitcoin products"
 arch=('x86_64')
 url="https://flowee.org/"
 license=('GPL')
 depends=('boost-libs' 'libevent' 'openssl')
-makedepends=('boost' 'cmake' 'autoconf' 'automake' 'pkgconf')
+makedepends=('boost' 'cmake' 'pkgconf')
 provides=('flowee-hub')
 backup=("etc/flowee/flowee.conf")
 install=flowee.install
@@ -31,7 +31,6 @@ build() {
   mkdir -p build
   cd build
   cmake -Dbuild_tests=true -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ ../thehub
-  make -j1 univalue leveldb
   make
 }
 
