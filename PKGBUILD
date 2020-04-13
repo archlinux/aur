@@ -65,7 +65,7 @@ prepare() {
   patch -Np1 -i ../no-plt.diff
 
   patch -Np1 -i ../classic-kde-2020.03.patch
-  patch -Np1 -i ../classic-kde-xul-2020.03.patch
+  patch -Np1 -i ../classic-kde-xul-2020.04.patch
   patch -Np1 -i ../pgo_fix_missing_kdejs.patch
 
   cat >.mozconfig <<END
