@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=bibtool-git
-pkgver=2.67.11.ga7f8b05
+pkgver=2.68.r5.g58f538c
 pkgrel=1
 pkgdesc="Command line manipulation of BibTeX files - from git-repo"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ options=('!makeflags')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags | sed 's|[-_]|.|g' | cut -c9-
+  git describe --tags | cut -c9- | tr _ . | sed 's+-+.r+' | tr - .
 }
 
 build() {
