@@ -1,0 +1,18 @@
+pkgbase = sdb-git
+	pkgdesc = Simple and fast string key/value database based on djb\'s cdb, supports JSON and arrays introspection
+	pkgver = 1.4.1+r14.20200409.geb148d8
+	pkgrel = 1
+	url = https://github.com/radareorg/sdb
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = vala
+	makedepends = git
+	optdepends = glib2: vala bindings
+	conflicts = sdb
+	source = git+https://github.com/radareorg/sdb
+	b2sums = SKIP
+
+pkgname = sdb-git
+
