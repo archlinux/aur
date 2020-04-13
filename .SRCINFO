@@ -1,13 +1,13 @@
 pkgbase = dse
 	pkgdesc = AES file encryption using a keyfile
-	pkgver = 1.32
+	pkgver = 1.33
 	pkgrel = 1
 	url = https://github.com/kewlfft/dse
 	arch = x86_64
 	license = MIT
 	makedepends = glibc
-	source = dse-1.32.tar.gz::https://github.com/kewlfft/dse/archive/v1.32.tar.gz
-	sha256sums = 5de0ac6455b785d9f16156095cf4fd87f32de575034959357b2f5b2fea962ec7
+	source = dse-1.33.tar.gz::https://github.com/kewlfft/dse/archive/v1.33.tar.gz
+	sha256sums = 95c34cce79d68ff749530ef81dcc1112f5b83592884b606405566c4fceedd002
 
 pkgname = dse
 
