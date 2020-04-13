@@ -1,0 +1,27 @@
+pkgbase = rbdl-git
+	pkgdesc = RBDL - Rigid Body Dynamics Library. Git version.
+	pkgver = 3.0.0+5.g4e36ba8
+	pkgrel = 1
+	url = https://github.com/ORB-HD/rbdl-orb
+	arch = x86_64
+	license = zlib
+	makedepends = cmake
+	makedepends = eigen3
+	makedepends = git
+	makedepends = lua51
+	makedepends = python
+	makedepends = cython
+	makedepends = python-numpy
+	optdepends = lua51: Lua model add-on
+	optdepends = python: Python wrapper
+	optdepends = cython: Python wrapper
+	optdepends = python-numpy: Python wrapper
+	optdepends = python-scipy: Python wrapper
+	provides = rbdl
+	conflicts = rbdl
+	conflicts = rbdl-hg
+	source = git+https://github.com/ORB-HD/rbdl-orb.git
+	sha1sums = SKIP
+
+pkgname = rbdl-git
+
