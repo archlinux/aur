@@ -1,10 +1,9 @@
 # Maintainer: Yurii Kolesykov <root@yurikoles.com>
-# Credits: Thaodan <theodorstormgrade@gmail.com>
-# Credits: Mikael Eriksson <mikael_eriksson@miffe.org>
+# based on core/linux: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-pf-git
 pkgdesc="Linux pf-kernel (git version)"
-pkgver=5.6.1.r47.geedece8f2280e
+pkgver=5.6.2.r81.gf805c6cf2339c
 _basekernel=5.6
 _product=linux-pf
 pkgrel=1
@@ -13,7 +12,7 @@ url="https://gitlab.com/post-factum/pf-kernel/wikis/README"
 license=(GPL2)
 makedepends=(
   bc kmod libelf
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  xmlto python-sphinx-2 python-sphinx_rtd_theme graphviz imagemagick
   git
 )
 _srcname="${pkgbase}"
@@ -21,8 +20,8 @@ source=("${_srcname}::git+https://gitlab.com/post-factum/pf-kernel.git#branch=pf
 	      'config'
         'pf_defconfig')
 sha256sums=('SKIP'
-            '625410a00ba052dd15fc5174ccb595dc08f8cb2107eb6033d624b7590e20d53d'
-            '41bafedbcd2788508f998782cb0ef870948dbdd9827c75e93cbae7613f743c55')
+            '6ac452e2124f92747a57c5a50e11ca2f1e8112669845b4431311545c7fd2a36c'
+            '02bd388f03fcdda5ed12e84f4f58f7239a05574755573026f8f1bfc6ce52a46e')
 
 pkgver() {
   cd "${_srcname}"
@@ -39,19 +38,11 @@ prepare() {
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
-  echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux}" > localversion.20-pkgname
-
-  _pfrel=`git describe --abbrev=0 --tags| cut -d'-' -f2|sed 's/pf//g'`
+  # _pfrel=`git describe --abbrev=0 --tags| cut -d'-' -f2|sed 's/pf//g'`
 
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
-
-  sed -ri "s|SUBLEVEL = 0|SUBLEVEL = $_pfrel|" Makefile
-
-  # Set EXTRAVERSION to -pf
-  sed -ri "s|^(EXTRAVERSION =).*|\1|" Makefile
 
   # merge our changes to arches kernel config
   ./scripts/kconfig/merge_config.sh .config "$srcdir"/pf_defconfig
@@ -62,7 +53,8 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules htmldocs
+  make all
+  make htmldocs
 }
 
 _package-git() {
@@ -70,6 +62,8 @@ _package-git() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd $_srcname
   local kernver="$(<version)"
@@ -87,10 +81,7 @@ _package-git() {
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # remove build and source links
-  rm -f "$modulesdir"/{source,build}
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
+  rm "$modulesdir"/{source,build}
 }
 
 _package-headers-git() {
@@ -166,9 +157,6 @@ _package-headers-git() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs-git() {
@@ -188,9 +176,6 @@ _package-docs-git() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$_product-headers-git" "$_product-docs-git")
