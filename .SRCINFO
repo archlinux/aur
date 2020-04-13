@@ -1,5 +1,5 @@
 pkgbase = pass-audit-git
-	pkgdesc = A password-store extension for auditing your password repository.
+	pkgdesc = A pass extension for auditing your password repository.
 	pkgver = v1.0.1.r28.e08d707
 	pkgrel = 1
 	url = https://github.com/roddhjav/pass-audit

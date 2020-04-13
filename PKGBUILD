@@ -3,7 +3,7 @@
 pkgname=pass-audit-git
 pkgrel=1
 pkgver=v1.0.1.r28.e08d707
-pkgdesc="A password-store extension for auditing your password repository."
+pkgdesc="A pass extension for auditing your password repository."
 arch=('any')
 url="https://github.com/roddhjav/pass-audit"
 license=('GPL3')
