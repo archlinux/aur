@@ -7,15 +7,15 @@ pkgname=("avisynth-plugin-${_plug}-git"
          )
 pkgver=d460f60
 pkgrel=1
-pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
+pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
 url='https://github.com/HomeOfAviSynthPlusEvolution/neo_Gradient_Mask'
 license=('GPL')
 makedepends=('git'
              'cmake'
+             'intel-tbb'
              'avisynthplus-git'
              'vapoursynth'
-             'intel-tbb'
              )
 source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_Gradient_Mask.git")
 sha256sums=('SKIP')
