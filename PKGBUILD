@@ -2,7 +2,7 @@
 
 pkgname="layan-cursor-theme-git"
 pkgver=0.0.0.7a37de2
-pkgrel=4
+pkgrel=5
 pkgdesc='A x-cursor theme inspired by layan gtk theme and based on capitaine-cursors'
 arch=("any")
 url="https://github.com/vinceliuice/Layan-cursors"
@@ -29,7 +29,7 @@ package()
         _cleancursordirname=false
     fi
 
-    mkdir -p "${pkgdir}/usr/share/icons"
+    install -d "${pkgdir}/usr/share/icons"
     
     cd "Layan-cursors"
     if [ "$_cleancursordirname" = "true" ]; then
