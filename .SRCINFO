@@ -1,0 +1,16 @@
+pkgbase = i3-ws-nick-git
+	pkgdesc = Multi-monitor workspace helper for i3-wm (nicholastay fork)
+	pkgver = dac6b63
+	pkgrel = 1
+	url = https://github.com/nicholastay/i3-ws
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = jsoncpp
+	depends = libsigc++
+	source = i3-ws-nick::git+https://github.com/nicholastay/i3-ws
+	sha256sums = SKIP
+
+pkgname = i3-ws-nick-git
+
