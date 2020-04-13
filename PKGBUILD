@@ -1,9 +1,9 @@
 # Maintainer: Zak Kohler <git@y2kbugger.com>
 
 pkgname=dmenu-recent-aliases-git
-pkgver=1.0.0.r1.g74a584c
+pkgver=1.0.0.r2.gffb39fc
 pkgrel=1
-pkgdesc="Launch dmenu sorted based on a frequency of use"
+pkgdesc="Dmenu2 based application launcher. Supports user bash aliases."
 arch=('any')
 url="https://gitlab.com/y2kbugger-projects/scripts/dmenu-recent-aliases"
 license=('MIT')

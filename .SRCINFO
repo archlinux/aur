@@ -1,6 +1,6 @@
 pkgbase = dmenu-recent-aliases-git
-	pkgdesc = Launch dmenu sorted based on a frequency of use
-	pkgver = 1.0.0.r1.g74a584c
+	pkgdesc = Dmenu2 based application launcher. Supports user bash aliases.
+	pkgver = 1.0.0.r2.gffb39fc
 	pkgrel = 1
 	url = https://gitlab.com/y2kbugger-projects/scripts/dmenu-recent-aliases
 	arch = any
