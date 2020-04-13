@@ -1,0 +1,22 @@
+pkgbase = bbswitch-ati-git
+	pkgdesc = kernel module allowing to switch also AMD integrated and Nvidia dedicated graphics card on Optimus laptops (Git version)
+	pkgver = v0.8.2.g9dd2270
+	pkgrel = 1
+	url = http://github.com/Bumblebee-Project/bbswitch
+	install = bbswitch-ati.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-headers
+	makedepends = git
+	provides = bbswitch
+	conflicts = bbswitch
+	conflicts = bbswitch-dkms
+	conflicts = bbswitch-git-dkms
+	source = bbswitch-ati-git::git+https://github.com/Bumblebee-Project/bbswitch.git#branch=develop
+	source = https://www.qua-it.org/XFCE/shots/share-with-pclos/pclos/bbswitch-v0.8-proc_ops-struct.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = bbswitch-ati-git
+
