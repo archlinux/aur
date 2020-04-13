@@ -1,0 +1,20 @@
+diff --git a/mythtv/libs/libmythui/mythmainwindow.cpp b/mythtv/libs/libmythui/mythmainwindow.cpp
+index 7bdfe41bb3..d111162286 100644
+--- a/mythtv/libs/libmythui/mythmainwindow.cpp
++++ b/mythtv/libs/libmythui/mythmainwindow.cpp
+@@ -1002,16 +1002,10 @@ void MythMainWindow::Init(bool mayReInit)
+ 
+     // On Compiz/Unit, when the window is fullscreen and frameless changing
+     // screen position ends up stuck. Adding a border temporarily prevents this
+     setWindowFlags(windowFlags() & ~Qt::FramelessWindowHint);
+ 
+-    if (!inwindow)
+-    {
+-        LOG(VB_GENERAL, LOG_INFO, "Using Frameless Window");
+-        flags |= Qt::FramelessWindowHint;
+-    }
+-
+     // Workaround Qt/Windows playback bug?
+ #ifdef _WIN32
+     flags |= Qt::MSWindowsOwnDC;
+ #endif

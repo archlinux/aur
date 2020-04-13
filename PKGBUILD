@@ -83,6 +83,7 @@ source=(
     'mythbackend.service'
     'mythtv.desktop'
     'mythtv.png'
+    'wayland-hide-mouse-cursor.patch'
     '99-mythbackend.rules'
     'sysusers.d'
 )
@@ -91,6 +92,7 @@ sha256sums=(
     '7e6b4cb48bb76dca1c991aebab2790d09f2ba87519ed5f90597e3b5d13a9cd76'
     '3fd2018d0d5aaa7d530835305dac80d4ca7d8fc991cdf9e1cebadebd86e25c03'
     '12cb52bf9b084a4f16419c9370fef0450ce6a11308b0c3f7240f4f83df7e2ab6'
+    'bc43d38acac43bbc15dd6b27b74ff5a7e7abc16ad80ce6e676b108a2d501660c'
     'ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333'
     '470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae'
 )
@@ -98,6 +100,11 @@ sha256sums=(
 pkgver() {
   cd "${srcdir}/mythtv/mythtv"
   echo -n "31+fixes.$(git show -s --format=%cd --date=short | tr -d -).$(git rev-parse --short=8 HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}/mythtv/mythtv"
+  patch -Np2 < "${srcdir}/wayland-hide-mouse-cursor.patch"
 }
 
 build() {
