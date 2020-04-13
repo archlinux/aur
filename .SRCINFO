@@ -1,7 +1,7 @@
 pkgbase = vdo
 	pkgdesc = Userspace tools for managing VDO volumes
 	pkgver = 6.2.2.117
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dm-vdo/vdo
 	arch = x86_64
 	license = GPL2

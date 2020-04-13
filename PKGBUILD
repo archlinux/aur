@@ -1,7 +1,8 @@
 # Maintainer: zapp-brannigan (fuerst.reinje@web.de)
+#             jgottula
 
 pkgname=vdo
-pkgrel=1
+pkgrel=2
 pkgver=6.2.2.117
 pkgdesc='Userspace tools for managing VDO volumes'
 arch=('x86_64')
@@ -23,4 +24,8 @@ package() {
        presetdir=/usr/lib/systemd/system-preset \
        mandir=/usr/share/man \
        install
+  cd $pkgdir
+  mkdir -p usr/share/bash-completion/completions
+  mv bash_completion.d/* usr/share/bash-completion/completions/
+  rmdir bash_completion.d
 }
