@@ -1,5 +1,9 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
+pre_install() {
+	echo -e "You need to download '\e[32msnx_install.sh\e[37m' from \e[32mhttps://supportcenter.checkpoint.com/supportcenter/portal/user/anon/page/default.psml/media-type/html?action=portlets.DCFileAction&eventSubmit_doGetdcdetails=&fileid=22824\e[37m and place it where PKGBUILD is located."
+}
+
 pre_remove() {
 	rm -rf /etc/snx
 }
