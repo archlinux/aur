@@ -8,15 +8,15 @@ arch=('any')
 license=('GPL3')
 
 pkgver=5.4.2
-pkgrel=1
+pkgrel=2
 
-depends=('python3' 'noto-fonts' 'noto-fonts-extra' 'sdl2_image' 'python-pillow' 'python-pylast' 'python-gobject' 'xdg-utils' 'python-beautifulsoup4' 'python-requests' 'python-cairo' 'python-stagger' 'python-hsaudiotag3k' 'python-flask' 'python-setproctitle' 'flac' 'python-musicbrainzngs' 'python-discogs-client' 'alsa-plugins' 'gstreamer' 'gst-plugins-base' 'python-dbus')
+depends=('python3' 'noto-fonts' 'noto-fonts-extra' 'sdl2_image' 'python-pillow' 'python-pylast' 'python-gobject' 'xdg-utils' 'python-beautifulsoup4' 'python-requests' 'python-cairo' 'python-flask' 'python-setproctitle' 'flac' 'python-musicbrainzngs' 'alsa-plugins' 'gstreamer' 'gst-plugins-base' 'python-dbus' 'python-oauthlib' 'python-six')
 
 optdepends=('ffmpeg: File transcoding' 'noto-fonts-cjk: Matching font for CJK characters' 'p7zip: 7z archive extraction support' 'unrar: RAR archive extraction support' 'python-plexapi: PLEX client streaming' 'picard: Tag editing' 'gst-plugins-good: Extra GStreamer codecs' 'gst-plugins-bad: Extra GStreamer codecs' 'gst-plugins-ugly: Extra GStreamer codecs')
 
-source=('https://github.com/Taiko2k/tauonmb/releases/download/v5.4.2/Tauon.Music.Box.v5.4.2.Linux.zip')
+source=('https://github.com/Taiko2k/tauonmb/releases/download/v5.4.2/Tauon.Music.Box.v5.4.2-2.Linux.zip')
 
-sha1sums=('ea656e48972619b74044a09c0566bf1033157c15')
+sha1sums=('606ae38c7bbf4c0e4207e649ae6cd9aa68d1fc44')
 
 package() {
 
