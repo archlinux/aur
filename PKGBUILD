@@ -12,19 +12,20 @@
 # Find it here:   https://bugs.gentoo.org/show_bug.cgi?id=270486
 
 pkgname=awesfx
-pkgver=0.5.1e
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Utilities for emu10k1 cards (e.g. asfxload)"
 arch=('i686' 'x86_64')
 url="https://github.com/tiwai/awesfx"
 license=('GPL2')
 depends=('alsa-lib')
-source=("http://ftp.suse.com/pub/people/tiwai/awesfx/${pkgname}-${pkgver}.tar.bz2")
-sha1sums=('cd9aa258cd28ef7179a375925be4874058316ff7')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tiwai/awesfx/archive/v0.5.2.tar.gz")
+sha256sums=('0d3ff4e00b22cf9ef8b538304a6a11391e8618dae112f56f16e3083379ac8888')
 
 build() {
   cd "${pkgname}-${pkgver}"
-  
+
+  autoreconf -i
   ./configure --prefix=/usr
   make
 }
