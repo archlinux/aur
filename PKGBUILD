@@ -1,16 +1,16 @@
 # Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=pyupgrade
-pkgver=1.25.1
+pkgver=2.1.1
 pkgrel=1
-pkgdesc="A tool to automatically upgrade syntax for newer versions of the language."
+pkgdesc="A tool to automatically upgrade syntax for newer versions of the language"
 arch=('any')
 url="https://github.com/asottile/pyupgrade"
 license=('MIT')
 depends=("python" "python-tokenize-rt")
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}::https://github.com/asottile/pyupgrade/archive/v${pkgver}.tar.gz")
-sha256sums=('2e004fc7c95695da728e19624a7a221da0cdfadf593892d3158130acca0acbf8')
+sha256sums=('cd7e435952826cc300a059911b8c964f729556365496456765ffc8a30cf53ac1')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
