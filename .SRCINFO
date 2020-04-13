@@ -1,4 +1,4 @@
-pkgbase = mcuxpresso-ide.10.3.1_2233
+pkgbase = mcuxpresso-ide-10.3.1_2233
 	pkgdesc = An easy-to-use integrated development environment (IDE) for creating, building, debugging, and optimizing your application. From BIN package distributed by NXP.
 	pkgver = 10.3.1_2233
 	pkgrel = 1
