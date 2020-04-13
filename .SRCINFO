@@ -1,14 +1,15 @@
 pkgbase = secrethub-cli
 	pkgdesc = Command Line Interface for SecretHub
-	pkgver = v0.37.0
-	pkgrel = 1
-	url = https://github.com/secrethub/secrethub-cli
+	pkgver = 0.37.0
+	pkgrel = 2
+	url = https://secrethub.io/
 	arch = x86_64
 	license = Apache
+	makedepends = go-pie
 	optdepends = xclip: Clipboard support
 	optdepends = less: Improved pagination experience
-	source = https://github.com/secrethub/secrethub-cli/releases/download/v0.37.0/secrethub-v0.37.0-linux-amd64.tar.gz
-	sha256sums = 05b6381ce152e6d5d7304bdcd25e5c55a09aafd1e61f3beaf3fe63edc1348adb
+	source = secrethub-cli::git+https://github.com/secrethub/secrethub-cli.git#tag=v0.37.0
+	sha256sums = SKIP
 
 pkgname = secrethub-cli
 
