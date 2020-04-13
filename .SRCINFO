@@ -1,0 +1,17 @@
+pkgbase = allmark-bin
+	pkgdesc = Fast, standalone markdown web server
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/andreaskoch/allmark
+	arch = any
+	license = custom: New BSD License
+	provides = allmark
+	conflicts = allmark
+	conflicts = allmark-git
+	source = allmark::https://allmark.io/bin/files/allmark_linux_amd64
+	source = LICENSE::https://raw.githubusercontent.com/andreaskoch/allmark/develop/LICENSE
+	sha256sums = e21313f89ec6773787ebaff54d55c380c3484cc523fa53a502cff7bbb8e83171
+	sha256sums = bb45a00c4b29a24712c5e081b7d75fb58ef1ecf5adbbdd40ed81f93fed252b81
+
+pkgname = allmark-bin
+
