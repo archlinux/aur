@@ -3,6 +3,6 @@ sratom/
 src/
 pkg/
 sratom-git-*.tar.xz
+sratom-git-*.tar.zst
 sratom-git-*.src.tar.gz
 .AURINFO
-
