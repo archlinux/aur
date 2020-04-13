@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=i3-agenda-git
-pkgver=r37.bcbd84b
+pkgver=1.0.r8.g65d5225
 pkgrel=1
 pkgdesc=" Show your next google calendar event in polybar or i3-bar"
 arch=('any')
@@ -45,6 +45,4 @@ package() {
 	cd "$pkgname"
 
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
