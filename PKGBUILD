@@ -1,8 +1,8 @@
 # Maintainer: Paolo Viotti <skypixel@gmail.com>
 
 pkgname=edumips64
-pkgver=1.2.6
-pkgrel=2
+pkgver=1.2.7
+pkgrel=1
 pkgdesc="Cross-platform educational MIPS64 CPU simulator"
 arch=('any')
 url="https://www.edumips.org"
@@ -12,7 +12,7 @@ source=(https://github.com/EduMIPS64/$pkgname/releases/download/v$pkgver/$pkgnam
         $pkgname.desktop
         $pkgname.png
         $pkgname)
-sha256sums=('aafe69a73a8f131647c9ce4579eee248f4714cdce943d5973ccbadc74c8fdda8'
+sha256sums=('9a0f010fe7b312f8e7699a5495c5b87fca4729e0d556cd6d0378d1ab6ad9c31d'
             '95ac7ee775fc01c9868fcba81b89c11bd104531c4d48316721e8a2ff9ef29922'
             '25d07c621bd61d1153e1ebf21a2d111a46ec1d74f8c8887ddade423cadbd47d4'
             '264dd0122d4ca1242a6c4cbb106ab3df0f745ddcb0bd63c1e4eb9ae5732b909d')
