@@ -1,7 +1,7 @@
 # Maintainer: Zak Kohler <git@y2kbugger.com>
 
 pkgname=dmenu-recent-aliases-git
-pkgver="v1.0.0"
+pkgver=1.0.0.r1.g74a584c
 pkgrel=1
 pkgdesc="Launch dmenu sorted based on a frequency of use"
 arch=('any')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${pkgname%-git}"
-    git describe
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
