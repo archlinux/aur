@@ -1,12 +1,12 @@
 pkgbase = otf-joscelyn
 	pkgdesc = Joscelyn, an authentic secretary hand (serif) font
-	pkgver = 1.004
+	pkgver = 1.012
 	pkgrel = 1
 	url = https://github.com/psb1558/Joscelyn-font
 	arch = any
 	license = OFL
-	source = Joscelyn-1.004.zip::https://github.com/psb1558/Joscelyn-font/releases/download/v1.004/Joscelyn.zip
-	sha256sums = f00a5f26155a7138da91803a0f14a6340bdfea02109a0a8500227591fd0817e2
+	source = Joscelyn-1.012.zip::https://github.com/psb1558/Joscelyn-font/releases/download/v1.012/Joscelyn.zip
+	sha256sums = 2b08726b44545f70eac318105cb464536f8d7c28b80d219569d073271f8cddd1
 
 pkgname = otf-joscelyn
 
