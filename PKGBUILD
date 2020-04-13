@@ -1,8 +1,8 @@
 # Maintainer: Antoine Viallon <antoine.viallon@gmail.com>
 
 pkgname=arch-silence-grub-theme
-pkgver=r1.3c851d8
-pkgrel=3
+pkgver=r5.9fda3bf
+pkgrel=1
 pkgdesc="Arch Silence - GRUB2 theme"
 arch=('any')
 license=('GPL')
