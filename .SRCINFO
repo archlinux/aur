@@ -1,20 +1,24 @@
 pkgbase = uberwriter
 	pkgdesc = A distraction free Markdown editor for GNU/Linux made with GTK+
-	pkgver = 2.1.4
+	pkgver = 2.1.5a
 	pkgrel = 1
-	url = http://uberwriter.github.io/uberwriter/
+	url = https://github.com/UberWriter/uberwriter
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
-	depends = gtk3
-	depends = pandoc
-	depends = python-gtkspellcheck
-	optdepends = texlive-core
-	optdepends = otf-fira-mono: Recommended font
-	provides = uberwriter
-	conflicts = uberwriter
-	source = git+https://github.com/UberWriter/uberwriter.git#tag=v2.1.4
-	sha256sums = SKIP
+	depends = webkit2gtk
+	depends = gspell
+	depends = python-pypandoc
+	depends = python-regex
+	depends = python-levenshtein
+	depends = python-pyenchant
+	depends = python-gobject
+	depends = python-cairo
+	optdepends = texlive-core: Export as PDF files
+	optdepends = otf-fira-mono: Recommended font (OTF)
+	optdepends = ttf-fira-mono: Recommended font (TTF)
+	source = uberwriter-2.1.5a.tar.gz::https://github.com/UberWriter/uberwriter/archive/v2.1.5a.tar.gz
+	sha256sums = 68d7abf443e841e07366d0db622f689327742ea052ba19b7695fedd3d959e16c
 
 pkgname = uberwriter
 
