@@ -10,8 +10,8 @@ url="https://supportcenter.checkpoint.com/supportcenter/portal/user/anon/page/de
 license=('GPL')
 depends=('lib32-pam' 'lib32-libstdc++5' 'lib32-libx11')
 install=snx.install
-source=("https://vpnportal.aktifbank.com.tr/SNX/INSTALL/snx_install.sh")
-md5sums=('f54c1b997d6f358a4cf32c6cc34b1a12')
+source=("")
+md5sums=('72c2c91791690927da0586ec873430cf')
 
 prepare() {
     mkdir "$pkgname-$pkgver"

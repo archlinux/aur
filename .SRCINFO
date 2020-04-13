@@ -9,8 +9,8 @@ pkgbase = snx
 	depends = lib32-pam
 	depends = lib32-libstdc++5
 	depends = lib32-libx11
-	source = https://vpnportal.aktifbank.com.tr/SNX/INSTALL/snx_install.sh
-	md5sums = f54c1b997d6f358a4cf32c6cc34b1a12
+	source = 
+	md5sums = 72c2c91791690927da0586ec873430cf
 
 pkgname = snx
 
