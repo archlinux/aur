@@ -2,7 +2,7 @@
 
 
 pkgname=bbswitch-ati-git
-pkgver=v0.8.2.g9dd2270
+pkgver=0.8.2.g9dd2270
 pkgrel=1
 pkgdesc='kernel module allowing to switch also AMD integrated and Nvidia dedicated graphics card on Optimus laptops (Git version)'
 arch=('i686' 'x86_64')
@@ -14,12 +14,12 @@ makedepends=('linux-headers' 'git')
 source=("${pkgname}::git+https://github.com/Bumblebee-Project/bbswitch.git#branch=develop"
 'https://www.qua-it.org/XFCE/shots/share-with-pclos/pclos/bbswitch-v0.8-proc_ops-struct.patch'
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP' '3ebaf305628587fce64f64648f8ee6c1bc51e0eab855e1725538be995649a73c')
 install=bbswitch-ati.install
 
 pkgver () {
   cd "${srcdir}/${pkgname}"
-  git describe --always | sed 's|-|.|g'
+  git describe --always | sed 's|-|.|g' | sed 's/v//g'
 }
 
 build() {
@@ -28,11 +28,8 @@ build() {
     cd "${srcdir}/${pkgname}"
     if [ $kernel_ver > "5.6" ]; then 
         git apply "${srcdir}"/bbswitch-v0.8-proc_ops-struct.patch
-        echo 12225555
     fi
     if [ "$cpu" = "AMD" ]; then
-        echo "AMD integrated card detected"
-        echo "${srcdir}/${pkgname}"/bbswitch.c
         sed -i 's/PCI_VENDOR_ID_INTEL/PCI_VENDOR_ID_ATI/g' "${srcdir}/${pkgname}"/bbswitch.c
     fi
     make

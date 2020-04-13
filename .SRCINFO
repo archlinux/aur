@@ -16,7 +16,7 @@ pkgbase = bbswitch-ati-git
 	source = bbswitch-ati-git::git+https://github.com/Bumblebee-Project/bbswitch.git#branch=develop
 	source = https://www.qua-it.org/XFCE/shots/share-with-pclos/pclos/bbswitch-v0.8-proc_ops-struct.patch
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 3ebaf305628587fce64f64648f8ee6c1bc51e0eab855e1725538be995649a73c
 
 pkgname = bbswitch-ati-git
 
