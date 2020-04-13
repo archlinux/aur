@@ -4,7 +4,7 @@
 pkgname=bitwarden_rs
 _pkgbase=bitwarden_rs
 pkgver=1.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial lightweight implementation of the bitwarden-server using rust and sqlite. Does NOT include the web-interface."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/dani-garcia/bitwarden_rs"
@@ -29,13 +29,18 @@ sha512sums=('242f10592dec87b83cd9ea360dc83901cb8adaf019c9220ea910824d8f9a7d98c71
             '9fde678747d120704d0d99751af1eebd89ba2643af5917da9d9d2a8712fe5bb6ef1d3545d3b669467d14cab51c0c1514853364f323ff92bab7e7ed8501fe5b56')
 _src="$pkgname-$pkgver"
 
-
-
 build() {
+	# rustup is not required, but if it exists, we have to set the profile. Otherwise, fail silently.
+	# This is necessary because some of the optional toolchain components (e.g. clippy) fail regularly on nightly and rustup/cargo will fail if it can't download those.
+	RUSTUP_PROFILE=`rustup show profile 2>/dev/null`
+	rustup set profile minimal 2>/dev/null && echo "Set rustup profile to 'minimal'. Will reset to '$RUSTUP_PROFILE' after a successful build."
+
 	#build bitwarden_rs
 	cd "$srcdir/$_src"
 	patch -N -p1 -i "$srcdir/0001-Disable-Vault.patch"
 	cargo build --release --locked --features sqlite
+
+	rustup set profile $RUSTUP_PROFILE 2>/dev/null && echo "Set rustup profile back to '$RUSTUP_PROFILE'."
 }
 
 check() {
