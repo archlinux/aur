@@ -1,0 +1,16 @@
+pkgbase = xrandr-multihead-bottom-git
+	pkgdesc = Align a bunch of screens to the bottom edge left to right via a xrandr call.
+	pkgver = r2.ee61e56
+	pkgrel = 1
+	url = https://github.com/hrehfeld/xrandr-multihead-bottom
+	arch = x86_64
+	arch = i686
+	makedepends = git
+	depends = xorg-xrandr
+	provides = xrandr-multihead-bottom
+	conflicts = xrandr-multihead-bottom
+	source = git+https://github.com/hrehfeld/xrandr-multihead-bottom.git
+	md5sums = SKIP
+
+pkgname = xrandr-multihead-bottom-git
+
