@@ -14,6 +14,12 @@ optdepends=('mysql'
             'postgresql'
             'php-fpm'
             'php-pgsql'
+            'php-gd'
+            'php-imagick'
+            'redis'
+            'jpegoptim'
+            'optipng'
+            'pngquant'
             )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pixelfed/pixelfed/archive/v${pkgver}.tar.gz"
         "pixelfed-queue.service"
