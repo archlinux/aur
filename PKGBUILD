@@ -1,7 +1,7 @@
 # Maintainer: Jan-Erik Rediger <badboy@archlinux.us>
 
 pkgname=dit-git
-pkgver=0.2.r0.g94b4867
+pkgver=0.5.r15.gd08a9e8
 pkgrel=1
 pkgdesc="A console text editor for Unix systems that you already know how to use"
 arch=('i686' 'x86_64')
