@@ -1,24 +1,17 @@
 # Maintainer: William Turner <willtur.will@gmail.com>
 pkgname=presto-cli
-pkgver=0.222
+pkgver=332
 pkgrel=1
 pkgdesc='Distributed SQL Query Engine for Big Data - Client'
 arch=('any')
-url='https://prestodb.io/'
-license=('custom:Apache 2')
+url='https://prestosql.io/'
+license=('Apache')
 depends=('java-runtime>=8' 'sh')
-source=("https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/${pkgver}/presto-cli-${pkgver}-executable.jar"
-        'https://raw.githubusercontent.com/prestodb/presto/master/LICENSE')
+source=("https://repo1.maven.org/maven2/io/prestosql/presto-cli/${pkgver}/presto-cli-${pkgver}-executable.jar")
 noextract=("presto-cli-${pkgver}-executable.jar")
-sha256sums=('731397ebe97413f402fb92bcd87dd9639f0844a5dfe52d6dcc69eb4c221362a5'
-            'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
+sha256sums=('38b2253e1c33353ff6fe66d6f4c9b07ff7667b9288642775502878274c8f8e2c')
 
 package() {
   cd "${srcdir}"
-
-  # install in bin
   install -D -m755 "presto-cli-${pkgver}-executable.jar" "${pkgdir}/usr/bin/presto"
-
-  # add license
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
