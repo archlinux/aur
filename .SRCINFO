@@ -1,12 +1,13 @@
 pkgbase = linvst2-bin
 	pkgdesc = enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's
 	pkgver = 2.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/osxmidi/LinVst
 	arch = x86_64
 	makedepends = git
 	depends = wine
 	depends = python>=3.8
+	optdepends = linvstmanager: GUI for managing LinVST bridges
 	conflicts = linvst
 	conflicts = linvst-stable
 	conflicts = linvst2
@@ -14,9 +15,7 @@ pkgbase = linvst2-bin
 	replaces = linvst-stable
 	replaces = linvst2
 	source = https://github.com/osxmidi/LinVst/releases/download/2.8/LinVst-2.8-Debian-Stretch.zip
-	source = git+https://github.com/usrmusicman/ArchStudioUtils.git
 	sha256sums = 7bd075b8e208f633d20173b066542855ade04e9605e189f32a982330998ca51c
-	sha256sums = SKIP
 
 pkgname = linvst2-bin
 
