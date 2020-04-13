@@ -39,4 +39,3 @@ package() {
 	rm -rf 	${pkgdir}/usr/share/{dejagnu,doc,gcc-*,gdb,info,locale}
 	rm -rf 	${pkgdir}/usr/share/man/{man1/runtest.1,man5,man7}
 }
-sha512sums=('4bd7eae5a85d04f29c3f70e1a25a1cc2aa99a40c4926ed5cc21b5a16807a9f3eefd7c1c476e348a29d325f23150a65feab3c3b977c115170ccfcf73473ae139a')
