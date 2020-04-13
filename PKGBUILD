@@ -3,7 +3,7 @@
 
 pkgbase=linux-sfh
 pkgver=5.6.3.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux with experimental AMD Sensor Fusion Hub (SFH) drivers'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
@@ -19,7 +19,7 @@ options=('!strip')
 _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
-  "amd-sfh.patch::https://gist.githubusercontent.com/conqp/33baa079d9524914c4c0c196200e4f89/raw/903139a4136f102b35b2459c067b345ea2ffb9f7/amd-sfh.patch"
+  "amd-sfh.patch::https://gist.githubusercontent.com/conqp/33baa079d9524914c4c0c196200e4f89/raw/48acfd6cfbbdb4fc7d0b96b0bd054c66782a253c/amd-sfh.patch"
   config         # the main kernel config file
 )
 validpgpkeys=(
@@ -63,7 +63,7 @@ prepare() {
 build() {
   cd $_srcname
   make all
-  make htmldocs
+  #make htmldocs
 }
 
 _package() {

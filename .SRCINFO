@@ -1,7 +1,7 @@
 pkgbase = linux-sfh
 	pkgdesc = Linux with experimental AMD Sensor Fusion Hub (SFH) drivers
 	pkgver = 5.6.3.arch1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.archlinux.org/linux.git/log/?h=v5.6.3-arch1
 	arch = x86_64
 	license = GPL2
@@ -18,7 +18,7 @@ pkgbase = linux-sfh
 	provides = WIREGUARD-MODULE
 	options = !strip
 	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.6.3-arch1
-	source = amd-sfh.patch::https://gist.githubusercontent.com/conqp/33baa079d9524914c4c0c196200e4f89/raw/903139a4136f102b35b2459c067b345ea2ffb9f7/amd-sfh.patch
+	source = amd-sfh.patch::https://gist.githubusercontent.com/conqp/33baa079d9524914c4c0c196200e4f89/raw/48acfd6cfbbdb4fc7d0b96b0bd054c66782a253c/amd-sfh.patch
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
