@@ -2,7 +2,7 @@
 # Maintainer: Eric Schulte <eschulte@grammatech.com>
 _srcname=gtirb
 pkgname=gtirb-git
-pkgver=v1.2.0.r91.g2aa2dcec
+pkgver=v1.1.0.r165.g8449f1d6
 pkgrel=1
 pkgdesc="GrammaTech Intermediate Representation for Binaries"
 arch=('x86_64')
@@ -24,13 +24,13 @@ pkgver() {
 
 build() {
     cd "$_srcname/"
-    cmake . -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER=clang++ -DGTIRB_PY_API=OFF -DGTIRB_CL_API=OFF
+    cmake . -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER=clang++ -DGTIRB_CL_API=OFF
     cmake --build build --target all doc
 }
 
 package() {
   cd "$_srcname/"
-  make -Cbuild DESTDIR="$pkgdir" install
+  make -Cbuild DESTDIR="$pkgdir" install install-python
   mkdir -p "$pkgdir"/usr/share/doc/$_srcname
   cp -R build/doc/html/ "$pkgdir"/usr/share/doc/$_srcname
 }
