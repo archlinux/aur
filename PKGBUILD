@@ -66,11 +66,11 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod
-pkgver=5.6.2
+pkgver=5.6.4
 _major=5.6
 _branch=5.x
-xanmod=2
-pkgrel=2
+xanmod=1
+pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -101,7 +101,7 @@ done
 
 sha256sums=('e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622'
             'SKIP'
-            '706bc8d3f8692521ff1fa78820d004b40bd03c51ad7d7df3d0c107eaa9def9ec'
+            '183fb214dedbaed2c040ff44209dd121c2590521a8c42e27a58cdd2c880d9f51'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
