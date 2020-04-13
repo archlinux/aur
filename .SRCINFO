@@ -1,6 +1,6 @@
 pkgbase = vidify-audiosync
 	pkgdesc = Audio synchronization feature for Vidify
-	pkgver = 0.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/vidify/audiosync
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = vidify-audiosync
 	depends = fftw
 	depends = ffmpeg
 	depends = pulseaudio
-	source = https://github.com/vidify/audiosync/archive/v0.2.tar.gz
-	md5sums = e67b6285db676aa783e42d144c37b1a8
+	source = https://github.com/vidify/audiosync/archive/v0.3.0.tar.gz
+	md5sums = 86dead703d02f70569d67659df77bcbf
 
 pkgname = vidify-audiosync
 
