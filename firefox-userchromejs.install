@@ -1,0 +1,19 @@
+post_install() {
+    cat << EOF
+
+To complete the installation of userchromeJS, you need to copy the directory:
+
+  /usr/share/firefox-userchromejs/chrome
+
+into your firefox profile directory, which should be located at:
+
+  ~/.mozilla/firefox/<some-chars>.<profile-name>
+
+(including the 'chrome' directory itself). Then you can copy additional .uc.js
+and .as.css files to be loaded into the 'chrome' folder. See more detailed
+instructions, as well as some scripts and themes to chose from, see:
+
+  https://github.com/Izheil/Quantum-Nox-Firefox-Dark-Full-Theme/tree/master/Multirow%20and%20other%20functions/JS%20Loader
+
+EOF
+}
