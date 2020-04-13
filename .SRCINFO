@@ -8,7 +8,7 @@ pkgbase = jtc
 	arch = aarch64
 	license = MIT
 	makedepends = git
-	source = git+https://github.com/ldn-softdev/jtc#tag=1.75d
+	source = git+https://github.com/ldn-softdev/jtc#commit=21f4957315ed888599858641f07439bed4a5e871
 	b2sums = SKIP
 
 pkgname = jtc

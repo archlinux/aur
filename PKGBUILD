@@ -4,10 +4,11 @@ pkgrel=1
 pkgdesc="Select JSON elements from input and apply various (e.g. sort, transform, etc) action then output, think it as an alternative to jq"
 url=https://github.com/ldn-softdev/jtc
 license=(MIT)
-source=(git+$url#tag=$pkgver)
+source=(git+$url#commit=21f4957315ed888599858641f07439bed4a5e871)
 b2sums=(SKIP)
 arch=(x86_64 i686 aarch64)
 makedepends=(git)
+conflicts=(jtc-git)
 
 build() {
   cd $pkgname
