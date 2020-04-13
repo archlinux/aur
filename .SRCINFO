@@ -1,0 +1,14 @@
+pkgbase = vim-asyncomplete-git
+	pkgdesc = Async autocompletion for Vim 8 and Neovim with timers
+	pkgver = r170.5713fa6
+	pkgrel = 1
+	url = https://github.com/prabirshrestha/asyncomplete.vim.git
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	depends = vim
+	source = asyncomplete.vim::git+https://github.com/prabirshrestha/asyncomplete.vim.git
+	sha512sums = SKIP
+
+pkgname = vim-asyncomplete-git
+
