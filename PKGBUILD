@@ -1,4 +1,5 @@
-# Maintainer: Andrea Scarpino <me at andreascarpino dot it>
+# Maintainer: Andrea Scarpino <andrea at archlinux dot org>
+# Maintainer: Benjamin Bädorf <aur at benjaminbaedorf dot eu>
 
 pkgname=base16-builder-rust-git
 _pkgname=base16-builder-rust
