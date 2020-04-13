@@ -3,7 +3,7 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=jellyfin
-pkgver=10.5.3
+pkgver=10.5.4
 pkgrel=1
 pkgdesc='The Free Software Media System'
 arch=('i686' 'x86_64' 'armv6h')
@@ -18,8 +18,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin/archive/v
         'jellyfin.sysusers'
         'jellyfin.tmpfiles')
 backup=('etc/conf.d/jellyfin')
-sha512sums=('648a32bb823ea3cc1ef737a9031d8beba72adc12790e94036bc9e095e143bdaad58927661787965272bb51fcf4da0470b083cfe5ad3e496bbed9c209bdf28b80'
-            'ef8ac1afc4499b3a0a1fa916f6d138a854e2cd50de7b4d6ee858419831c998a654c4705181e7fd681ba9187427297e3dab02f02b0b1268358e1b8997971f6bfc'
+sha512sums=('bd88e66cf670ebcc84c2bb5a9caa69b7c2de98df3873fc48246e03492dabefca6392b1be4dfa3f830473dde92c06f8d7d4ae107fca64654a4c23f40e9182b2aa'
+            '9404186a93753ec414ed079a1f0c174318dd4abc643766bbfdbdb147dd6e5c9ab41244bc31dbd7b859691cff9cc19ba93a4a62244d5ca1d9fc324388e9a0fe4e'
             '2aa97a1a7a8a447171b59be3e93183e09cbbc32c816843cc47c6777b9aec48bd9c1d9d354f166e0b000ad8d2e94e6e4b0559aa52e5c159abbc103ed2c5afa3f0'
             '99d02080b1b92e731250f39ddd13ceca7129d69d0c05e0939620cbc3f499a9574668c63fa889704a4905560888131e980d7ab1fbcc5837b04d33ce26daa9d42b'
             '6fc2638e6ec4b1ee0240e17815c91107b694e5fde72c1bc7956c83067bbeacb632de899b86837e47a0ec04288131b15c20746373b45e0669c8976069a55d627a'
