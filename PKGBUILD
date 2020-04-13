@@ -7,7 +7,7 @@ pkgname=("avisynth-plugin-${_plug}-git"
          )
 pkgver=r7.1.gddcbeaa
 pkgrel=1
-pkgdesc="Plugin for Vapoursynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
+pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=176554'
 license=('ISC' 'MIT')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --first-parent --tags --always | tr - .)"
 }
 
 prepare() {
