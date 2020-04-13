@@ -1,7 +1,7 @@
 pkgbase = linvst3x-bin
 	pkgdesc = enables Windows vst3's to be used as Linux vst's in Linux vst capable DAW's (single wineserver instance variant)
 	pkgver = 1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/osxmidi/LinVst3
 	arch = x86_64
 	makedepends = git
@@ -15,12 +15,11 @@ pkgbase = linvst3x-bin
 	depends = expat
 	depends = gtkmm3
 	depends = sqlite
+	optdepends = linvstmanager: GUI for managing LinVST bridges
 	conflicts = linvst3x
 	replaces = linvst3x
 	source = https://github.com/osxmidi/LinVst3-X/releases/download/1.7/LinVst3-X-1.7-Manjaro.zip
-	source = git+https://github.com/usrmusicman/ArchStudioUtils.git
 	sha256sums = b209d32bfe3c89f5fda545ebbdb868d51ad74245c6fba5805aac2cbc8ae20253
-	sha256sums = SKIP
 
 pkgname = linvst3x-bin
 
