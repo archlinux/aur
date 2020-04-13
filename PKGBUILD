@@ -2,7 +2,7 @@
 
 pkgname=wine-x64
 pkgver=5.6
-pkgrel=2
+pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs. This only configured with x64 support."
 url="http://www.winehq.com"
 arch=(x86_64)
