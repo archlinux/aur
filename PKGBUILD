@@ -8,7 +8,7 @@
 
 pkgname=aseprite-skia-bin
 pkgver=1.2.17
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url='http://www.aseprite.org/'
@@ -16,6 +16,7 @@ license=('custom')
 depends=('cmark' 'curl' 'giflib' 'zlib' 'libpng' 'tinyxml' 'freetype2'
          'harfbuzz-icu' 'nettle' 'fontconfig' 'libxcursor' 'hicolor-icon-theme')
 makedepends=('cmake' 'ninja' 'freeglut')
+provides=('aseprite')
 conflicts=('aseprite-git' 'aseprite-gpl' 'skia-git' 'aseprite')
 source=("https://github.com/aseprite/aseprite/releases/download/v${pkgver}/Aseprite-v${pkgver}\
 -Source.zip"
