@@ -5,11 +5,8 @@ After=network.target mysqld.service
 
 [Service]
 Type=simple
-Environment=HOME=/var/lib/mythtv
 User=mythtv
-ExecStart=/usr/bin/mythbackend --logpath /var/log/mythtv
-ExecStop=/usr/bin/mythshutdown --setscheduledwakeup
-#ExecStop=/usr/bin/mythshutdown --shutdown
+ExecStart=/usr/bin/mythbackend --noupnp
 Restart=on-failure
 
 [Install]

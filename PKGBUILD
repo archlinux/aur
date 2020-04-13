@@ -81,12 +81,16 @@ replaces=('myththemes' 'mythplugins-mythvideo' 'mythtv')
 source=(
     "git+https://github.com/MythTV/mythtv#branch=fixes/31"
     'mythbackend.service'
+    'mythtv.desktop'
+    'mythtv.png'
     '99-mythbackend.rules'
     'sysusers.d'
 )
 sha256sums=(
     'SKIP'
-    '086f573884e4df1ff6e6e8de5a423a9ff900166acfe085abe65b62f32730e4a3'
+    '7e6b4cb48bb76dca1c991aebab2790d09f2ba87519ed5f90597e3b5d13a9cd76'
+    '3fd2018d0d5aaa7d530835305dac80d4ca7d8fc991cdf9e1cebadebd86e25c03'
+    '12cb52bf9b084a4f16419c9370fef0450ce6a11308b0c3f7240f4f83df7e2ab6'
     'ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333'
     '470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae'
 )
@@ -129,6 +133,10 @@ package() {
   cp -R 'contrib' "$pkgdir/usr/share/mythtv"
   mkdir -p "$pkgdir/var/log/mythtv"
 
-# Install udev rules https://www.mythtv.org/wiki/Systemd_mythbackend_Configuration#Delay_starting_the_backend_until_tuners_have_initialized
+  # Install udev rules https://www.mythtv.org/wiki/Systemd_mythbackend_Configuration#Delay_starting_the_backend_until_tuners_have_initialized
   install -Dm644 "$srcdir/99-mythbackend.rules" "$pkgdir/usr/lib/udev/rules.d/99-mythbackend.rules"
+
+  # Install desktop file
+  install -Dm644 "$srcdir/mythtv.png" "$pkgdir/usr/share/pixmaps/mythtv.png"
+  install -Dm644 "$srcdir/mythtv.desktop" "$pkgdir/usr/share/applications/mythtv.desktop"
 }
