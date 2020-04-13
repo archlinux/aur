@@ -10,7 +10,7 @@ depends=('dbus-glib' 'frei0r-plugins' 'gmic' 'gtk3' 'librsvg' 'mlt'
 	 'python-mlt'
          'movit' 'pygtk' 'python-dbus' 'pygobject-devel'
          'python-gobject' 'python-numpy' 'python-pillow' 'sdl_image'
-         'sox' 'swh-plugins')
+         'sox' 'swh-plugins' 'python-cairo' )
 makedepends=('git')
 conflicts=('flowblade' 'flowblade-hg')
 provides=('flowblade')

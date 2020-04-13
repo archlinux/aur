@@ -23,6 +23,7 @@ pkgbase = flowblade-git
 	depends = sdl_image
 	depends = sox
 	depends = swh-plugins
+	depends = python-cairo
 	provides = flowblade
 	conflicts = flowblade
 	conflicts = flowblade-hg
