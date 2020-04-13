@@ -3,15 +3,15 @@
 # Contributor: William Giokas <1007380@gmail.com>
 
 pkgname=i3status-git
-pkgver=2.13.r4.g54e798e
+pkgver=2.13.r69.gd088bae
 pkgrel=1
 pkgdesc='Generates status bar to use with dzen2 or wmii'
 arch=('i686' 'x86_64')
 url='http://i3wm.org/i3status/'
 license=('BSD')
 groups=('i3-vcs')
-depends=('confuse' 'alsa-lib' 'yajl' 'libpulse' 'libnl')
-makedepends=('git' 'pkgconfig' 'asciidoc' 'xmlto')
+depends=('confuse' 'alsa-lib' 'yajl' 'libpulse' 'libnl' 'xmlto')
+makedepends=('git' 'pkgconfig' 'asciidoc')
 options=('docs')
 install=i3status.install
 conflicts=('i3status')
@@ -27,27 +27,23 @@ pkgver() {
 }
 
 build() {
-  cd "$_gitname"
-
+  cd "$srcdir/$_gitname"
   autoreconf --force --install
 
-  rm -rf build/
-  mkdir -p build && cd build/
+  rm -rf build
+  mkdir build && cd build
 
   ../configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --disable-sanitizers
 
-  # See https://lists.archlinux.org/pipermail/arch-dev-public/2013-April/024776.html
-  make CPPFLAGS+="-U_FORTIFY_SOURCE"
+  make
 }
 
 package() {
-  cd "$_gitname"
-  cd build/
-
-  make DESTDIR="$pkgdir/" install
+  cd "$srcdir/$_gitname/build"
+  make DESTDIR="$pkgdir" install
 
   install -Dm644 ../LICENSE \
     ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
