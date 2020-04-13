@@ -28,12 +28,12 @@ build() {
     [ -d build ] || mkdir build
     cd build
     meson ..
-    ninja
+    meson configure -Dprefix=/usr
+    meson configure -Dcpp_args=-O2
+    ninja -j8
 }
 
 package() {
     cd "$_pkgname/build"
-    meson configure -Dprefix=/usr
-    meson configure -Dcpp_args=-O2
     DESTDIR="$(realpath "$pkgdir")" ninja install
 }
