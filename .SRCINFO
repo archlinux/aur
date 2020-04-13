@@ -8,7 +8,7 @@ pkgbase = vim-asyncomplete-lsp-git
 	license = Custom
 	depends = vim
 	depends = vim-asyncomplete-git
-	source = asyncomplete.vim::git+https://github.com/prabirshrestha/asyncomplete-lsp.vim.git
+	source = asyncomplete-lsp.vim::git+https://github.com/prabirshrestha/asyncomplete-lsp.vim.git
 	sha512sums = SKIP
 
 pkgname = vim-asyncomplete-lsp-git

@@ -1,13 +1,13 @@
 # Maintainer: Wilson E. Alvarez <wilson.e.alvarez1@gmail.com>
 # Contributor: Rodrigo Gryzinski <rogryza@gmail.com>
 
-_pkgname=asyncomplete.vim
+_pkgname=asyncomplete-lsp.vim
 pkgname=vim-asyncomplete-lsp-git
 pkgver=r26.5c470ae
 pkgrel=1
 pkgdesc="LSP source for asyncomplete.vim vim-lsp"
 arch=('any')
-url="https://github.com/prabirshrestha/asyncomplete-lsp.vim.git"
+url="https://github.com/prabirshrestha/${_pkgname}.git"
 license=('Custom')
 depends=('vim' 'vim-asyncomplete-git')
 groups=('vim-plugins')
@@ -26,7 +26,7 @@ pkgver()
 package() {
 	cd "$srcdir/$_pkgname"
 
-	# TODO: Install license when available
+	# TODO: Install license when available -- see https://github.com/prabirshrestha/asyncomplete-lsp.vim/issues/31
 	#install -Dm 644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 
 	# Install vimfiles
