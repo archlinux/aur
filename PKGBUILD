@@ -2,7 +2,7 @@
 
 pkgname='xmrig-proxy'
 pkgver=5.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Stratum protocol proxy for Monero; HTTP API disabled, donation percentage is 0.'
 arch=('x86_64')
 url='https://github.com/xmrig/xmrig-proxy'
@@ -12,7 +12,6 @@ optdepends=('monero: XMR wallet'
             'xmrig: XMR CPU miner')
 license=('GPL')
 install="${pkgname}.install"
-changelog=CHANGELOG.md
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('53b152dbc57526adc8591269074f4298c292bf701ea2f5384d4624b116819c4b')
 
@@ -39,5 +38,4 @@ package() {
   install -Dm775 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 src/config.json "${pkgdir}/usr/share/doc/${pkgname}/config.json.example"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 }
