@@ -2,11 +2,11 @@
 
 pkgname=lightning-lang-patcher
 pkgver=1.4.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Patch langs of Lightning thunderbird addon"
 arch=('x86_64')
 license=('GPL3')
-url="https://www.tuxnvape.fr/"
+url="https://github.com/Elrondo46/lightning-lang-patcher"
 depends=('python' 'python-gobject' 'thunderbird')
 source=("https://github.com/Elrondo46/lightning-lang-patcher/archive/${pkgver}.tar.gz")
 
