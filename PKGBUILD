@@ -1,6 +1,6 @@
 # Maintainer: Angelo Dalzotto <angelodalzotto97 at gmail dot com>
 pkgname=ns-usbloader
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="Awoo Installer/TinFoil/GoldLeaf NSPs (and other files) uploader and RCM tool."
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
 	'nx-udev: udev rules to run without root'
 )
 source=("https://github.com/developersu/ns-usbloader/releases/download/v$pkgver/$pkgname-$pkgver.jar")
-sha256sums=('062b27e30574e4c57cf20b0319f799915d9eb77172263d03a4b5d92a2d4b48df')
+sha256sums=('747ce790b12d1c5b98d1f1f8730e67be2b947c6e93997765003c0b0ddc9aa74c')
 
 package() {
 	install -Dm 644 res/app_icon32x32.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/ns-usbloader.png"
