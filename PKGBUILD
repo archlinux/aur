@@ -4,7 +4,7 @@
 
 pkgname=ejabberd-current
 _pkgname=ejabberd
-pkgver=20.01
+pkgver=20.03
 pkgrel=0
 pkgdesc="Jabber server written in Erlang"
 arch=('x86_64')
@@ -54,7 +54,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/processone/ejabberd/archive
 	"$pkgname.logrotate"
 	"ejabberd.service"
 	"sysuser.conf")
-sha256sums=('9ddb07b9b370fa3fbd97631eda3f5fc3e2113b541f1e57b9069ef4047b9102a9'
+sha256sums=('b456d73b5e4a0d7af3f2a7adce819d33673750b026cf84a858cc8e7a2687604b'
             'SKIP'
             'SKIP'
             'SKIP'

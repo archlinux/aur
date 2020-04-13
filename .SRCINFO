@@ -1,6 +1,6 @@
 pkgbase = ejabberd-current
 	pkgdesc = Jabber server written in Erlang
-	pkgver = 20.01
+	pkgver = 20.03
 	pkgrel = 0
 	url = http://www.ejabberd.im/
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = ejabberd-current
 	backup = etc/ejabberd/ejabberd.yml
 	backup = etc/ejabberd/ejabberdctl.cfg
 	backup = etc/logrotate.d/ejabberd
-	source = ejabberd-current-20.01.tar.gz::https://github.com/processone/ejabberd/archive/20.01.tar.gz
+	source = ejabberd-current-20.03.tar.gz::https://github.com/processone/ejabberd/archive/20.03.tar.gz
 	source = base64url::git://github.com/dvv/base64url.git#commit=f2c64ed8b9bebc536fad37ad97243452b674b837
 	source = cache_tab::git://github.com/processone/cache_tab#commit=204bdd6c1b95b7bdddaa8b7f30ff43b57620b586
 	source = eimp::git://github.com/processone/eimp#commit=d16fd3f050bd1114d72bacbf2029dc6dd5b31da0
@@ -62,7 +62,7 @@ pkgbase = ejabberd-current
 	source = ejabberd-current.logrotate
 	source = ejabberd.service
 	source = sysuser.conf
-	sha256sums = 9ddb07b9b370fa3fbd97631eda3f5fc3e2113b541f1e57b9069ef4047b9102a9
+	sha256sums = b456d73b5e4a0d7af3f2a7adce819d33673750b026cf84a858cc8e7a2687604b
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
