@@ -4,7 +4,7 @@
 # Contributor: megadriver <megadriver at gmx dot com>
 
 pkgname=ttf-unifont
-pkgver=12.1.04
+pkgver=13.0.01
 pkgrel=1
 pkgdesc="TrueType version of the GNU Unifont"
 url="http://unifoundry.com/unifont.html"
@@ -16,13 +16,13 @@ source=(
 "https://ftp.gnu.org/gnu/unifont/unifont-$pkgver/unifont_jp-$pkgver.ttf"{,.sig}
 "https://ftp.gnu.org/gnu/unifont/unifont-$pkgver/unifont_upper-$pkgver.ttf"{,.sig}
 )
-sha256sums=('5e404613c970866884836ce1f1aa756210498b08ff132ab1d3c3eb5073c7e19d'
+sha256sums=('8f3d8b12841ad564ef649c1c302248efa8c53dd40b603c9ad1335d58e269ab78'
             'SKIP'
-            '247198ef0a75ec881db5b234edf91221cf364b66a8bf16eec83a1a2962a825d7'
+            '0d09b80116163a332e39d723e9867e0f340abf3e3f8acbfa9dcabd7b977a37bd'
             'SKIP'
-            '1c9f21e2ee22a0ecb2d187e1d32beac649504dcaadb834552566b4d135a1145c'
+            '961c85507bc4e7918e5335004daf2ca84d24427e77eef47e114420b42d12a05b'
             'SKIP'
-            'bc60d1117333e97045a45df0863ffc15a13714d64ef84e76688675b126df1c31'
+            '674ba01bb6c245023b47d7a846983fe0cebe6358e77d1e6764bf846411d640da'
             'SKIP')
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy
 
