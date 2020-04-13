@@ -1,7 +1,7 @@
 pkgbase = secrethub-cli
 	pkgdesc = Command Line Interface for SecretHub
 	pkgver = 0.37.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://secrethub.io/
 	arch = x86_64
 	license = Apache
