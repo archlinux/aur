@@ -1,8 +1,8 @@
 pkgbase = linux-selinux
 	pkgdesc = Linux SELinux
-	pkgver = 5.5.6.arch1
+	pkgver = 5.6.3.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.5.6-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.6.3-arch1
 	arch = x86_64
 	groups = selinux
 	license = GPL2
@@ -16,13 +16,15 @@ pkgbase = linux-selinux
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.5.6-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.6.3-arch1
 	source = config
+	source = sphinx-workaround.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = a841aa011edf6bae0ffbe8ead8177e5056de5a6d7333bb96e16917903de4d868
+	sha256sums = 6ac452e2124f92747a57c5a50e11ca2f1e8112669845b4431311545c7fd2a36c
+	sha256sums = 8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c
 
 pkgname = linux-selinux
 	pkgdesc = The Linux SELinux kernel and modules
@@ -31,6 +33,10 @@ pkgname = linux-selinux
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
 
 pkgname = linux-selinux-headers
 	pkgdesc = Headers and scripts for building modules for the Linux SELinux kernel
