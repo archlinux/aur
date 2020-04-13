@@ -4,7 +4,7 @@
 ## pkginfo
 pkgdesc="A fancy custom distribution of Valves Proton with various patches"
 pkgname=proton-ge-custom-bin
-pkgver=5.5_GE_1
+pkgver=5.6_GE_1
 pkgrel=1
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
@@ -23,7 +23,8 @@ optdepends=('kdialog: KDE splash dialog support'
             'linux-pf: a kernel with futex-wait-multiple support'
             'winetricks: protonfixes backend - highly recommended'
             'wine: support for 32bit prefixes'
-            'xboxdrv: gamepad driver service')
+            'xboxdrv: gamepad driver service'
+            'python-cef: generic splash dialog support')
 
 ## makepkg options
 options=('!strip')
@@ -47,15 +48,8 @@ backup=("${_protoncfg}")
 url='https://github.com/GloriousEggroll/proton-ge-custom'
 source=(${_pkgname}-${_pkgver}.tar.gz::"${url}/releases/download/${_pkgver}/${_srcdir}.tar.gz"
         "supplementary.tar.zst")
-md5sums=('b57d0fae11e9cebde66e120198ca216d'
+md5sums=('f4035b3177f6e2e23276227e409c6bff'
          '3ae457f1acc34660244975884b2e0f68')
-
-prepare() {
-## unpack wine
-install -d ${_srcdir}/dist
-bsdtar -xf ${_srcdir}/proton_dist.tar.gz -C ${_srcdir}/dist/
-rm ${_srcdir}/proton_dist.tar.gz
-}
 
 build() {
 ## remove unused: dist_lock, extract_tarball(), make_default_prefix()

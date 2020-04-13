@@ -1,6 +1,6 @@
 pkgbase = proton-ge-custom-bin
 	pkgdesc = A fancy custom distribution of Valves Proton with various patches
-	pkgver = 5.5_GE_1
+	pkgver = 5.6_GE_1
 	pkgrel = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	changelog = changelog
@@ -25,12 +25,13 @@ pkgbase = proton-ge-custom-bin
 	optdepends = winetricks: protonfixes backend - highly recommended
 	optdepends = wine: support for 32bit prefixes
 	optdepends = xboxdrv: gamepad driver service
+	optdepends = python-cef: generic splash dialog support
 	provides = proton
 	options = !strip
 	backup = usr/share/steam/compatibilitytools.d/proton-ge-custom/user_settings.py
-	source = proton-ge-custom-5.5-GE-1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/5.5-GE-1/Proton-5.5-GE-1.tar.gz
+	source = proton-ge-custom-5.6-GE-1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/5.6-GE-1/Proton-5.6-GE-1.tar.gz
 	source = supplementary.tar.zst
-	md5sums = b57d0fae11e9cebde66e120198ca216d
+	md5sums = f4035b3177f6e2e23276227e409c6bff
 	md5sums = 3ae457f1acc34660244975884b2e0f68
 
 pkgname = proton-ge-custom-bin

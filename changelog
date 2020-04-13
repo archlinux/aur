@@ -1,3 +1,42 @@
+Proton-5.6-GE-1
+
+GloriousEggroll released this Apr 13, 2020
+
+This is a pre-release continuation of the mfplat work done by Guy1524 (Derek) along with some additional fixes.
+
+Wine + Wine-staging:
+-Update to 5.6 release
+
+mfplat:
+-Add partial WMV playback support (Should allow RE2 and RE3 movies to play)
+-Add gst-plugins-ugly and wmv playback patch to build
+
+protonfixes:
+-Add dxgi=n override for Darksiders Warmastered Edition, game seems to crash with wine's dxgi when using dxvk
+-Add Divinity Original Sin 2 symlink fix update - fixes black screen on first launch
+-Add SECCOMP override for RE3, needed by Denuvo
+-Add SECCOMP override for DOOM Eternal, needed by Denuvo
+
+proton:
+-Add Proton 5.0.6 alpha patches
+-Add Proton 5.0.6 alpha DOOM Eternal Audio patches
+-fixed build system to include dist folder directly instead of tarball. This fixes the issue with sometimes having to hit the play button twice, or some issues people have on their system where the dist tarball never extracts.
+-fullscreen hack patches modified to work with staging's winex11.drv-mouse-coorrds and rawinput patch sets
+
+Notes:
+-Spyro is still broken
+-MHW Tutorials are still broken
+-BL3 usually wants to set Direct12, which crashes. This generally leads to a popup asking you to restore default settings (confirm/hit yes). You will then need to relaunch the game and go in the games settings and change it to DirectX11 manually. After that DirectX11 should stick as the default mode.
+-RE2 Crashes in DX12 with vkd3d at main menu, you'll need to set DirectX11 in re2_config.ini for DX11 with DXVK
+-RE3 Seems to work with DX12 and vkd3d with minor interface graphical glitches. Can set DirectX11 in re3_config.ini for DX11 with DXVK
+-FFXV seems to be working again
+
+Again, I must note that 'pre-release' builds are basically alpha-testing builds. While they may contain a lot of fixes, some things may also be broken that normally are not.
+
+Specifically in this regard - proton normally disables 'mfplay' which allows media foundation movies in many games (WMV and MP4) to just be skipped automatically. Since we enable this without full functionality, some games, such as Spyro or MHW, may hang when a movie tries to play.
+
+If you wish to re-disable media foundation to use this version with your other games, you can use WINEDLLOVERRIDES=mfplay=n %command% in the game's launch options.
+
 
 Proton-5.5-GE-1
 
