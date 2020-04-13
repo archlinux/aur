@@ -1,6 +1,6 @@
 # Maintainer: Max Mazurov <fox.cpp at disroot dot org>
 pkgname=chasquid
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='SMTP (email) server with a focus on simplicity, security, and ease of operation'
 arch=('x86_64')
@@ -44,12 +44,18 @@ check() {
     cd "${srcdir}/${pkgname}-git"
 
     go test ${GOFLAGS} ./...
+
+    # run.sh replaces binary in the repo root so back it up.
+    mv chasquid chasquid.bkp
+
     setsid -w ./test/run.sh
     # https://blitiri.com.ar/git/r/chasquid/c/43573797379b6e9364e46bc01554698bdecd040d/
     #setsid -w ./test/stress.sh
     setsid -w ./cmd/chasquid-util/test.sh
     setsid -w ./cmd/mda-lmtp/test.sh
     setsid -w ./cmd/dovecot-auth-cli/test.sh
+
+    mv chasquid.bkp chasquid
 }
 
 package() {
