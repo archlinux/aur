@@ -1,7 +1,7 @@
 pkgbase = linux-sfh
 	pkgdesc = Linux with experimental AMD Sensor Fusion Hub (SFH) drivers
 	pkgver = 5.6.3.arch1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.archlinux.org/linux.git/log/?h=v5.6.3-arch1
 	arch = x86_64
 	license = GPL2
@@ -14,8 +14,6 @@ pkgbase = linux-sfh
 	makedepends = graphviz
 	makedepends = imagemagick
 	makedepends = git
-	provides = VIRTUALBOX-GUEST-MODULES
-	provides = WIREGUARD-MODULE
 	options = !strip
 	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.6.3-arch1
 	source = amd-sfh.patch::https://gist.githubusercontent.com/conqp/33baa079d9524914c4c0c196200e4f89/raw/48acfd6cfbbdb4fc7d0b96b0bd054c66782a253c/amd-sfh.patch
@@ -24,7 +22,7 @@ pkgbase = linux-sfh
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = 25920d3c9b8db7dca5b7bbb65bf697d2ba8e5eff0b715fa09cf4e148baedd714
+	sha256sums = 1a87b585296a73cebb923ac50300a2cf81613616d84e9d6dbef0c8261ff21851
 	sha256sums = 7c520fa4f32a236bb1126689b851c6bf695c3210e4013d56b7ebad4805dbaedf
 
 pkgname = linux-sfh
@@ -34,7 +32,14 @@ pkgname = linux-sfh
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
 
 pkgname = linux-sfh-headers
 	pkgdesc = Headers and scripts for building modules for the Linux with experimental AMD Sensor Fusion Hub (SFH) drivers kernel
+
+pkgname = linux-sfh-docs
+	pkgdesc = Documentation for the Linux with experimental AMD Sensor Fusion Hub (SFH) drivers kernel
 

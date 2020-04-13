@@ -3,7 +3,7 @@
 
 pkgbase=linux-sfh
 pkgver=5.6.3.arch1
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux with experimental AMD Sensor Fusion Hub (SFH) drivers'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
@@ -14,7 +14,6 @@ makedepends=(
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
-provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 options=('!strip')
 _srcname=archlinux-linux
 source=(
@@ -28,7 +27,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '25920d3c9b8db7dca5b7bbb65bf697d2ba8e5eff0b715fa09cf4e148baedd714'
+            '1a87b585296a73cebb923ac50300a2cf81613616d84e9d6dbef0c8261ff21851'
             '7c520fa4f32a236bb1126689b851c6bf695c3210e4013d56b7ebad4805dbaedf')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -63,7 +62,7 @@ prepare() {
 build() {
   cd $_srcname
   make all
-  #make htmldocs
+  make htmldocs
 }
 
 _package() {
@@ -71,6 +70,8 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd $_srcname
   local kernver="$(<version)"
@@ -89,9 +90,6 @@ _package() {
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -167,9 +165,6 @@ _package-headers() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
@@ -189,12 +184,9 @@ _package-docs() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers")
+pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
