@@ -1,7 +1,7 @@
 # Maintainer: Christoph Reiter <reiter.christoph@gmail.com>
 
 pkgname=quodlibet-git
-pkgver=r9458.b2a0a2c44
+pkgver=r10393.ed4d84575
 pkgrel=1
 pkgdesc="An audio library tagger, manager and player"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://quodlibet.readthedocs.io"
 depends=('gtk3' 'python-gobject' 'python-dbus' 'python-cairo' 'python-mutagen'
          'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly'
          'desktop-file-utils' 'python-feedparser')
-makedepends=('intltool')
+makedepends=('gettext')
 optdepends=('gst-libav: for ffmpeg (ASF/WMA) support'
             'gst-plugins-bad: for Musepack support'
             'libkeybinder3: for the multimedia keys support'
@@ -30,11 +30,11 @@ pkgver() {
 }
 
 build() {
-  cd ${pkgname}/quodlibet
+  cd ${pkgname}
   python3 setup.py build
 }
 
 package() {
-  cd ${pkgname}/quodlibet
+  cd ${pkgname}
   python3 setup.py install --root="${pkgdir}" --skip-build --optimize=1
 }

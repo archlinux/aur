@@ -1,11 +1,11 @@
 pkgbase = quodlibet-git
 	pkgdesc = An audio library tagger, manager and player
-	pkgver = r9458.b2a0a2c44
+	pkgver = r10393.ed4d84575
 	pkgrel = 1
 	url = https://quodlibet.readthedocs.io
 	arch = any
 	license = GPL2
-	makedepends = intltool
+	makedepends = gettext
 	depends = gtk3
 	depends = python-gobject
 	depends = python-dbus
