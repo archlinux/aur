@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
 url='https://github.com/HomeOfAviSynthPlusEvolution/neo_TMedian.git'
-license=('GPL')
+license=('MIT')
 makedepends=('git'
              'cmake'
              'avisynthplus-git'
