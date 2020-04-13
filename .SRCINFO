@@ -24,5 +24,6 @@ pkgbase = hawck-git
 	source = git+https://github.com/snyball/Hawck.git
 	md5sums = SKIP
 
+
 pkgname = hawck-git
 
