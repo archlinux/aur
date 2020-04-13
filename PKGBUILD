@@ -1,8 +1,8 @@
 # Maintainer: Sergey A. <murlakatamenka@disroot.org>
 
 pkgname=rust-analyzer-bin
-pkgver=20200406
-_pkgver='2020-04-06'
+pkgver=20200413
+_pkgver='2020-04-13'
 pkgrel=1
 pkgdesc="An experimental Rust compiler front-end for IDEs. Binary build."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT' 'Apache')
 provides=('rust-analyzer')
 conflicts=('rust-analyzer' 'rust-analyzer-git' 'rust-analyzer-vscode-git')
 source=("rust-analyzer-$_pkgver::$url/releases/download/$_pkgver/rust-analyzer-linux")
-md5sums=('e2631a093bdf36bd6eb562f7d6f0cdba')
+md5sums=('afcf62b9e14fd599d84fc592d1dbb011')
 
 pkgver() {
     echo ${_pkgver//-}
