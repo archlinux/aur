@@ -1,0 +1,14 @@
+pkgbase = squash-git
+	pkgdesc = tool for compression benchmarks
+	pkgver = v0.7.0.r498.g713eeca
+	pkgrel = 1
+	url = https://quixdb.github.io/squash/
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	depends = ragel
+	source = git+https://github.com/quixdb/squash.git
+	md5sums = SKIP
+
+pkgname = squash-git
+
