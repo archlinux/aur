@@ -14,6 +14,7 @@ sha256sums=('SKIP')
 
 build() {
   cd wslu
+  bash ./configure.sh --build
   make
 }
 
