@@ -6,13 +6,13 @@
 _google_breakpad_commit=9474c3f
 _google_mock_commit=17945db
 _google_test_commit=50d6fc3
-_openfx_commit=1645fd7
-_SequenceParsing_commit=977e36f
+_openfx_commit=db5aa97
+_SequenceParsing_commit=1bbcd07
 _tinydir_commit=3aae922
 
 pkgname=natron
 _pkgname=Natron
-pkgver=2.3.15_rc16
+pkgver=2.3.15_rc19
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
@@ -20,7 +20,7 @@ arch=('i686' 'pentium4' 'x86_64')
 url="https://github.com/NatronGitHub/Natron"
 license=('GPL')
 depends=('openfx-arena' 'openfx-gmic' 'openfx-io' 'openfx-misc' 'python2-pyside')
-makedepends=('boost' 'expat' 'glfw-x11' 'openmp' 'pango')
+makedepends=('boost' 'expat' 'glfw-x11' 'openmp')
 optdepends=('natron-plugins')
 source=("$_pkgname-$_pkgver.tar.gz::https://github.com/NatronGitHub/Natron/archive/v$_pkgver.tar.gz"
         "google-breakpad-$_google_breakpad_commit.tar.gz::https://github.com/NatronGitHub/google-breakpad/tarball/$_google_breakpad_commit"
@@ -31,7 +31,7 @@ source=("$_pkgname-$_pkgver.tar.gz::https://github.com/NatronGitHub/Natron/archi
         "tinydir-$_tinydir_commit.tar.gz::https://github.com/NatronGitHub/tinydir/tarball/$_tinydir_commit"
         "OpenColorIO-Configs-$_pkgname-v${pkgver%.??_*}.tar.gz::https://github.com/NatronGitHub/OpenColorIO-Configs/archive/$_pkgname-v${pkgver%.??_*}.tar.gz"
         "config.pri")
-sha512sums=('19e780d8e84d5caf38cfd97922096443d69574297060f232a3c065ddb9a36884077d074117608231d8ae22202605b7400bb90b3041db3f6fec7d42c375f699fe'
+sha512sums=('d09659f22b23f0691cb0ca867c7f5af4d18282d198ff498350e1b3ec05ed9866135167e2929902913761e2df6800a6e42d92874789fafcfccc8520b355b66505'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -50,9 +50,6 @@ prepare() {
   
   mv "$srcdir/OpenColorIO-Configs-Natron-v${pkgver%.??_*}" \
      "$srcdir/$_pkgname-$_pkgver/OpenColorIO-Configs"
-
-  rm -rf OpenColorIO-Configs/aces*
-  rm -rf OpenColorIO-Configs/spi*
 
   tar -xzf "$srcdir/google-breakpad-$_google_breakpad_commit.tar.gz" --strip 1 \
       -C   "$srcdir/$_pkgname-$_pkgver/libs/google-breakpad/"
