@@ -1,22 +1,17 @@
 pkgbase = tvdb_api
 	pkgdesc = easy to use interface to thetvdb.com
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/dbr/tvdb_api
 	arch = any
-	license = GPL
+	license = Unlicense
 	makedepends = python-setuptools
-	conflicts = tvdb_api
-	source = http://github.com/dbr/tvdb_api/tarball/2.0
-	sha512sums = 77192ea62f5d604694e11f432ea4d0364ecc5aa91ee8157f09df089f8af535b6263bfd99ef5b3e0ac5d970477549e2541b88b3ba121841d51704da3b36a2c09d
-
-pkgname = python-tvdb_api
 	depends = python
 	depends = python-requests
 	depends = python-requests-cache
+	conflicts = tvdb_api
+	source = python-tvdb_api-2.0.tar.gz::http://github.com/dbr/tvdb_api/archive/2.0.tar.gz
+	sha512sums = c3913190292de970c16c010eeab04b791ea0ca9a8a244f522c7f53e791786c2b506de58c0287729e23895b20204fe4ecd914cdeb2fe178fc80c50f3431c0f0a3
 
-pkgname = python2-tvdb_api
-	depends = python2
-	depends = python2-requests
-	depends = python2-requests-cache
+pkgname = python-tvdb_api
 
