@@ -15,5 +15,5 @@ pkgbase = arm-linux-gnueabihf-gcc-linaro-bin-5.2
 	source = http://releases.linaro.org/components/toolchain/binaries/5.2-2015.11-2/arm-linux-gnueabihf/gcc-linaro-5.2-2015.11-2-x86_64_arm-linux-gnueabihf.tar.xz
 	sha512sums = 4bd7eae5a85d04f29c3f70e1a25a1cc2aa99a40c4926ed5cc21b5a16807a9f3eefd7c1c476e348a29d325f23150a65feab3c3b977c115170ccfcf73473ae139a
 
-pkgname = arm-linux-gnueabihf-gcc-linaro-bin-5.2
+pkgname = arm-linux-gnueabihf-gcc-linaro-5.2
 

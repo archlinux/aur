@@ -4,7 +4,7 @@ _target=arm-linux-gnueabihf
 _pkgdate=2015.11-2
 
 
-pkgname=${_target}-gcc-linaro-bin
+pkgname=${_target}-gcc-linaro-5.2
 pkgver=5.2
 pkgrel=1
 epoch=
