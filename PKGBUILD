@@ -1,42 +1,38 @@
 # Maintainer: Stephen Smith <stephen304@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgname=('lua-copas' 'lua51-copas' 'lua52-copas')
-pkgbase=lua-copas
 _rockname=copas
+pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=2.0.2
+_rockrel=1
 pkgrel=1
-pkgdesc="Copas is a dispatcher based on coroutines that can be used by TCP/IP servers."
-arch=('i686' 'x86_64')
-url="http://keplerproject.github.io/copas"
+pkgdesc='A dispatcher based on coroutines that can be used by TCP/IP servers'
+arch=('x86_64' 'i686')
+url="https://keplerproject.github.io/$_rockname"
 license=('MIT')
-source=("${_rockname}-${pkgver}.tar.gz::https://github.com/keplerproject/${_rockname}/archive/${pkgver}.tar.gz")
-md5sums=('dfb5969f077b4bf9a222a3c532400b45')
+_lua_deps=('socket' 'coxpcall')
+makedepends=('luarocks')
+source=("$_rockname-$pkgver.tar.gz::https://github.com/keplerproject/$_rockname/archive/$pkgver.tar.gz")
+sha256sums=('1469eaf987513f5a9a0bee345c040c8fa30ca6194bc75ad78171362f9904cf3e')
 
 _package_helper() {
-  _lua_ver=$1
-
-  mkdir -p "$_lua_ver"
   cd "$_rockname-$pkgver"
-  luarocks-${_lua_ver} make --pack-binary-rock --deps-mode=none "rockspec/$_rockname-$pkgver-1.rockspec"
-  mv *.rock ../${_lua_ver}/
-  luarocks-${_lua_ver} install --tree="$pkgdir/usr/" --deps-mode=none ../${_lua_ver}/*.rock
-  find "$pkgdir/usr" -name manifest -delete
-}
-
-package_lua51-copas() {
-  depends=('lua51' 'lua51-socket' 'lua51-coxpcall' 'luarocks5.1')
-
-  _package_helper "5.1"
-}
-
-package_lua52-copas() {
-  depends=('lua52' 'lua52-socket' 'lua52-coxpcall' 'luarocks5.2')
-
-  _package_helper "5.2"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
+    make --deps-mode=none --no-manifest \
+    "rockspec/$_rockname-$pkgver-$_rockrel.rockspec"
 }
 
 package_lua-copas() {
-  depends=('lua' 'lua-socket' 'lua-coxpcall' 'luarocks')
+  depends+=('lua' "${_lua_deps[@]/#/lua-}")
+  _package_helper 5.3
+}
 
-  _package_helper "5.3"
+package_lua52-copas() {
+  depends+=('lua52' "${_lua_deps[@]/#/lua52-}")
+  _package_helper 5.2
+}
+
+package_lua51-copas() {
+  depends+=('lua51' "${_lua_deps[@]/#/lua51-}")
+  _package_helper 5.1
 }
