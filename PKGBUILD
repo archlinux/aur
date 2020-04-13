@@ -2,8 +2,8 @@
 # Original PKGBUILD by: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-sfh
-pkgver=5.6.3.arch1
-pkgrel=3
+pkgver=5.6.4.arch1
+pkgrel=1
 pkgdesc='Linux with experimental AMD Sensor Fusion Hub (SFH) drivers'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
@@ -19,6 +19,7 @@ _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
   "amd-sfh.patch::https://gist.githubusercontent.com/conqp/33baa079d9524914c4c0c196200e4f89/raw/48acfd6cfbbdb4fc7d0b96b0bd054c66782a253c/amd-sfh.patch"
+  sphinx-workaround.patch
   config         # the main kernel config file
 )
 validpgpkeys=(
@@ -28,6 +29,7 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             '1a87b585296a73cebb923ac50300a2cf81613616d84e9d6dbef0c8261ff21851'
+            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '7c520fa4f32a236bb1126689b851c6bf695c3210e4013d56b7ebad4805dbaedf')
 
 export KBUILD_BUILD_HOST=archlinux
