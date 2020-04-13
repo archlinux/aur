@@ -2,14 +2,16 @@
 
 _plug=descale
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.7.g642b2fe
+pkgver=r2.8.g0d439e5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Irrational-Encoding-Wizardry/vapoursynth-descale.git'
 license=('custom:WTFPL')
 depends=('vapoursynth')
-makedepends=('git')
+makedepends=('git'
+             'meson'
+             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vapoursynth-descale.git")
@@ -24,26 +26,21 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_plug}"
-
-  _AVX2=$(gcc -march=native -dM -E - </dev/null | grep _AVX2_ | cut -d ' ' -f3)
-  if [ "${_AVX2}" = "1" ]; then
-    CFLAGS+=" -mavx2 -mfma"
-  fi
-
-  echo "all:
-	  gcc -c -std=c99 -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o descale.o descale.c
-	  gcc -shared -fPIC ${LDFLAGS} -o lib${_plug}.so descale.o" > Makefile
+  mkdir -p build
 }
 
 build() {
-  make -C "${_plug}"
+  cd build
+  arch-meson "../${_plug}" \
+    --libdir /usr/lib/vapoursynth
+
+  ninja
 }
 
-package(){
-  cd "${_plug}"
-  install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
+package() {
+  DESTDIR="${pkgdir}" ninja -C build install
 
+  cd "${_plug}"
   install -Dm644 descale.py "${pkgdir}${_site_packages}/${_plug}.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
