@@ -22,10 +22,10 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -d "$pkgdir"/{opt/"${pkgname%-git}",usr/bin,usr/share/applications}
+	install -d "$pkgdir"/{opt/"${pkgname%-git}",usr/share/applications}
 	cp -r ./* "$pkgdir/opt/${pkgname%-git}"
 	rm -rf "$pkgdir/opt/${pkgname%-git}"/{build,install.sh,uninstall.sh}
-	ln -s "/opt/${pkgname%-git}/src/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
+	install -Dm755 "src/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
 	install -Dm644 "src/ui/assets/${pkgname%-git}.svg" -t \
 		"$pkgdir/usr/share/icons/hicolor/scalable/apps"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
