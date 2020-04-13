@@ -2,23 +2,24 @@
 # Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-_openfx_arena_commit=e6672bc
-_lodepng_commit=5a0dba1
-_openfx_commit=1645fd7
-_openfx_io_commit=587643d
-_openfx_supportext_commit=6f7cdfe
-_SequenceParsing_commit=977e36f
+_openfx_arena_commit=53cb2e9
+_lodepng_commit=e34ac04
+_openfx_commit=db5aa97
+_openfx_io_commit=4b84d12
+_openfx_supportext_commit=53c12bd
+_SequenceParsing_commit=1bbcd07
 _tinydir_commit=3aae922
 
 pkgname=openfx-arena
-pkgver=2.3.15_rc16
-pkgrel=2
+pkgver=2.3.15_rc19
+pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/NatronGitHub/openfx-arena"
 license=('GPL')
 depends=('libcdr' 'libgl' 'libmagick' 'librsvg' 'libxt' 'libzip' \
-        'opencolorio' 'pango' 'poppler-glib' 'sox')
+        'opencolorio' 'poppler-glib' 'sox')
+makedepends=('pango')
 source=("openfx-arena_$_openfx_arena_commit.tar.gz::https://github.com/NatronGitHub/openfx-arena/tarball/$_openfx_arena_commit"
         "lodepng_$_lodepng_commit.tar.gz::https://github.com/lvandeve/lodepng/tarball/$_lodepng_commit"
         "openfx_$_openfx_commit.tar.gz::https://github.com/NatronGitHub/openfx/tarball/$_openfx_commit"
