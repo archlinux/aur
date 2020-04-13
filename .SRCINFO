@@ -1,7 +1,7 @@
 pkgbase = gtk3-ubuntu
 	pkgdesc = GObject-based multi-platform toolkit
-	pkgver = 3.24.13
-	pkgrel = 2
+	pkgver = 3.24.17
+	pkgrel = 1
 	url = http://www.gtk.org/
 	arch = x86_64
 	license = LGPL
@@ -39,18 +39,18 @@ pkgbase = gtk3-ubuntu
 	depends = wayland
 	depends = wayland-protocols
 	depends = gtk-update-icon-cache
-	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=f737908d2f7dc121e0d85507c16fd7a399d4b36a
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#tag=3.24.17
 	source = settings.ini
 	source = gtk-query-immodules-3.0.hook
 	source = gtk-update-icon-cache.hook
 	source = gtk-update-icon-cache.script
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/gtk+3.0_3.24.13-1ubuntu1.debian.tar.xz
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/gtk+3.0_3.24.17-3ubuntu1.debian.tar.xz
 	sha512sums = SKIP
 	sha512sums = ad2c0b0388f4169592b9574f0b3db673a969b7c4721548c4ac7c438eddbcdc378fcaac04e2b6c858a1562cc23ddf4804e5f7be08068340b7c9365e2b11ddcfb8
 	sha512sums = f0ffd95544863f2e10fda81488b4727aa9a8a35a7d39fb96872db6664d03442db2b58af788b5990825c7b3a83681f7220ca481409cca5421dfb39b9a3bbac9ac
 	sha512sums = abfd73de4faa6f53784182800395aa3c39bb98e15a0eb300fb4142073ff7ce565a0836a2363393b2f132060b5293dbc0c30c380a023f38d5bd39c62cb58389c2
 	sha512sums = 5cd50d93bb6bc203438a2a0764bd717409658e124058b18a1da26a21f10ef7564a16f32fc0633a68b45b2e303fa63a5efefeadd6b0bf1d7f474556df8cdb6c58
-	sha512sums = bf7c8572421711fdf2e82be0d18b6a93747ac9ed236e4bcc8ab65e66d927ee704c6633f9479206c394e7823ed03958e98d43c2e21e4d2be3a7c8db7bb7bef1e0
+	sha512sums = b2661d8d1ad5d78dbffb6a60763f1ee8188003907827c9d34fca25a76c20404a61dfc3e5de017a6d959ce47d20181a3944f74cb9e27cd240b118a93a74417caa
 
 pkgname = gtk3-ubuntu
 	install = gtk3.install
@@ -84,11 +84,14 @@ pkgname = gtk3-ubuntu
 	depends = wayland-protocols
 	depends = gtk-update-icon-cache
 	depends = gtk-update-icon-cache
-	provides = gtk3
+	provides = gtk3=3.24.17
 	provides = gtk3-print-backends
+	provides = libgtk-3.so
+	provides = libgdk-3.so
+	provides = libgailutil-3.so
 	conflicts = gtk3
 	conflicts = gtk3-print-backends
-	replaces = gtk3-print-backends<=3.22.26-1
+	replaces = gtk3-print-backends
 
 pkgname = gtk-update-icon-cache-ubuntu
 	pkgdesc = GTK+ icon cache updater
