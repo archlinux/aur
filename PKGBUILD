@@ -1,6 +1,6 @@
 # Maintainer : Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-x264
-pkgver=0.157.r2980.34c06d1
+pkgver=0.159.r2999.296494a
 pkgrel=1
 epoch=3
 pkgdesc='Open Source H264/AVC video encoder (mingw-w64)'
@@ -11,7 +11,7 @@ depends=('mingw-w64-crt' 'mingw-w64-l-smash')
 #provides=('mingw-w64-libx264.so')
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'git' 'nasm')
-source=('git+https://code.videolan.org/videolan/x264.git#commit=34c06d1c17ad968fbdda153cb772f77ee31b3095')
+source=('git+https://code.videolan.org/videolan/x264.git#commit=296494a4011f58f32adc54304a2654627558c59a')
 sha256sums=(SKIP)
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -29,7 +29,8 @@ build() {
     ${srcdir}/x264/configure --host=${_arch} \
       --cross-prefix="${_arch}-" \
       --enable-shared \
-      --enable-static
+      --enable-static \
+      --disable-avs
 
     make
   done
