@@ -2,7 +2,7 @@
 
 pkgname="zlib-ng-git"
 pkgver=1.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc="zlib replacement with optimizations for \"next generation\" systems"
 arch=("any")
 url="https://github.com/zlib-ng/zlib-ng"
