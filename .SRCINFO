@@ -26,7 +26,6 @@ pkgbase = r-ggplot2
 	optdepends = r-maptools
 	optdepends = r-multcomp
 	optdepends = r-munsell
-	optdepends = r-nlme
 	optdepends = r-profvis
 	optdepends = r-quantreg
 	optdepends = r-rgeos
