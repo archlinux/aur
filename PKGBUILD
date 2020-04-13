@@ -2,7 +2,7 @@
 
 pkgname=phosh
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A pure Wayland shell prototype for GNOME on mobile devices"
 url="https://source.puri.sm/Librem5/phosh"
 license=("GPL3")

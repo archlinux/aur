@@ -1,7 +1,7 @@
 pkgbase = phosh
 	pkgdesc = A pure Wayland shell prototype for GNOME on mobile devices
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://source.puri.sm/Librem5/phosh
 	arch = i686
 	arch = x86_64
