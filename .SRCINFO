@@ -1,4 +1,4 @@
-pkgbase = linux-sfh-testing
+pkgbase = linux-sfh
 	pkgdesc = Linux with experimental AMD Sensor Fusion Hub (SFH) drivers
 	pkgver = 5.6.3.arch1
 	pkgrel = 1
@@ -14,8 +14,8 @@ pkgbase = linux-sfh-testing
 	makedepends = graphviz
 	makedepends = imagemagick
 	makedepends = git
+	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
-	replaces = WIREGUARD-MODULE
 	options = !strip
 	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.6.3-arch1
 	source = amd-sfh.patch::https://gist.githubusercontent.com/conqp/33baa079d9524914c4c0c196200e4f89/raw/903139a4136f102b35b2459c067b345ea2ffb9f7/amd-sfh.patch
@@ -27,7 +27,7 @@ pkgbase = linux-sfh-testing
 	sha256sums = 25920d3c9b8db7dca5b7bbb65bf697d2ba8e5eff0b715fa09cf4e148baedd714
 	sha256sums = 7c520fa4f32a236bb1126689b851c6bf695c3210e4013d56b7ebad4805dbaedf
 
-pkgname = linux-sfh-testing
+pkgname = linux-sfh
 	pkgdesc = The Linux with experimental AMD Sensor Fusion Hub (SFH) drivers kernel and modules
 	depends = coreutils
 	depends = kmod
@@ -35,6 +35,6 @@ pkgname = linux-sfh-testing
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 
-pkgname = linux-sfh-testing-headers
+pkgname = linux-sfh-headers
 	pkgdesc = Headers and scripts for building modules for the Linux with experimental AMD Sensor Fusion Hub (SFH) drivers kernel
 

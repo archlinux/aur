@@ -1,7 +1,7 @@
 # Maintainer: Richard Neumann (schard) <mail at richard dash neumann period de>
 # Original PKGBUILD by: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
-pkgbase=linux-sfh-testing
+pkgbase=linux-sfh
 pkgver=5.6.3.arch1
 pkgrel=1
 pkgdesc='Linux with experimental AMD Sensor Fusion Hub (SFH) drivers'
@@ -14,8 +14,7 @@ makedepends=(
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
-provides=(WIREGUARD-MODULE)
-replaces=(WIREGUARD-MODULE)
+provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 options=('!strip')
 _srcname=archlinux-linux
 source=(
