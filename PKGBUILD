@@ -3,8 +3,8 @@
 
 pkgname=herbstluftwm-git
 _pkgname=herbstluftwm
-pkgver=0.7.2.r852.g031c5ce4
-pkgrel=4
+pkgver=0.8.0.r14.g3387014f
+pkgrel=1
 pkgdesc="Manual tiling window manager for X"
 arch=('i686' 'x86_64')
 url="http://herbstluftwm.org"
