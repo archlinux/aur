@@ -1,7 +1,7 @@
 # Maintainer: Rin Cat <me@rin.cat>
 pkgname=mtg-git
 _pkgbase=mtg
-pkgver=0.15.1.r27.gc2b8e88
+pkgver=0.15.1.r175.gad7acee
 pkgrel=1
 pkgdesc='Bullshit-free MTProto proxy for Telegram'
 arch=('x86_64')
@@ -17,8 +17,8 @@ source=(
 )
 sha256sums=(
      'SKIP'
-     'da2722bfcf0d15d8acc308fcd9b2e5cd65420eb92d11a6a8d33f6aefd1e07da6'     
-     '02a0aa1205374d417e6b148a73476ced0f77bfb0918e6138eb48982676bc2940'
+     '49bc96acf5c3d69800315eb9a06510ba71f7cf9024d3fa8f204937f2fad4bbf7'
+     '74b77ac1dcf44c52d38f58d339d2317930207fff95dfce75ebfc82a3683d5e75'
 )
 
 backup=('etc/conf.d/mtg')

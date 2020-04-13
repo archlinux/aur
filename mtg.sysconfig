@@ -4,7 +4,8 @@ ADTAG=""
 
 # Other options can be set here as documented at
 # https://github.com/9seconds/mtg#environment-variables
-# MTG_IP="127.0.0.1"
-# MTG_PORT="3128"
-# MTG_SECURE_ONLY=true
+# MTG_IPV4=""
+# MTG_IPV6=""
+# MTG_BIND="0.0.0.0:3128"
+# MTG_CLOAK_PORT="443"
 

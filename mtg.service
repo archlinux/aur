@@ -6,7 +6,7 @@ After=network-online.target
 User=nobody
 Group=nobody
 EnvironmentFile=/etc/conf.d/mtg
-ExecStart=/usr/bin/mtg "${SECRET}" "${ADTAG}"
+ExecStart=/usr/bin/mtg run "${SECRET}" "${ADTAG}"
 
 [Install]
 WantedBy=multi-user.target
