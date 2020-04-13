@@ -1,7 +1,7 @@
 # Maintainer: Waffle Lapkin <waffle.lapkin@gmail.com>
 pkgname='anilibria-winmaclinux-git'
-pkgver=r34.566e0f3
-pkgrel=2
+pkgver=r55.78c941a
+pkgrel=1
 pkgdesc='AniLibria client for major desktop platforms'
 arch=('x86_64')
 url='https://github.com/anilibria/anilibria-winmaclinux'
@@ -11,7 +11,7 @@ depends=('qt5-webview')
 makedepends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/anilibria/anilibria-winmaclinux.git#commit=566e0f388f8f098aea9651972d786074a5c6e703'
+source=('git+https://github.com/anilibria/anilibria-winmaclinux.git#commit=78c941ae35ce2970f175919f4411ce7261771274'
         '0001-Change-instalation-path-to-be-Arch-linux-friendly.patch')
 md5sums=('SKIP'
          '90c273d473ea81ecba60f5c31a2db94f')
