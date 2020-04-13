@@ -197,8 +197,17 @@ package_lightdm-guest() {
 
   # Install autologin systemd service
   cd /$srcdir
-  install -Dm755 $_add_group.script $pkgdir/usr/bin/$_add_group
-  install -Dm644 $_add_group.service $pkgdir/etc/systemd/system/$_add_group.service
+
+  if [ ! -f $pkgdir/usr/bin/$_add_group.script ]; then
+    install -Dm755 $_add_group.script $pkgdir/usr/bin/$_add_group
+  fi
+
+  if [ ! -f $pkgdir/usr/bin/$_add_group.service ]; then
+    install -Dm644 $_add_group.service $pkgdir/etc/systemd/system/$_add_group.service
+  fi
+
+  #install -Dm755 $_add_group.script $pkgdir/usr/bin/$_add_group
+  #install -Dm644 $_add_group.service $pkgdir/etc/systemd/system/$_add_group.service
 }
 
 package_liblightdm-qt5-guest() {
