@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-mygui
-	pkgdesc = A multilayer and overlappable GUI System for OGRE (mingw-w64)
-	pkgver = 3.2.2
+	pkgdesc = A multilayer and overlappable GUI System (mingw-w64)
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = http://mygui.info/
 	arch = any
@@ -13,22 +13,14 @@ pkgbase = mingw-w64-mygui
 	makedepends = ttf-dejavu
 	depends = mingw-w64-crt
 	depends = mingw-w64-boost
-	depends = mingw-w64-ogre
-	depends = mingw-w64-ois
+	depends = mingw-w64-sdl2
+	depends = mingw-w64-sdl2_image
 	depends = mingw-w64-pkg-config
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/MyGUI/mygui/archive/MyGUI3.2.2.tar.gz
-	source = findogre.patch
-	source = platforms.patch
-	source = cmakeinstall.patch
-	source = cmake-boost-system.patch
-	md5sums = 0023a689a2a63febc2cc703f81f86c62
-	md5sums = bb4b844665e339fe1f5e596b8997d162
-	md5sums = d0fb901ad31fb43357d88ce091999652
-	md5sums = 03369fc85c24a92af9a24b6e530fac40
-	md5sums = 69c53e5e0b57a9537092dbaf0a0d03c2
+	source = https://github.com/MyGUI/mygui/archive/MyGUI3.4.0.tar.gz
+	sha512sums = 3f560fd9c7e5b514da40e41c7753dc20649f80b763f5ee20afc9627df3be14242ea833eff09eac16b9e88b1c9fbed7c09def0c5068c832e710c247191fb53487
 
 pkgname = mingw-w64-mygui
 
