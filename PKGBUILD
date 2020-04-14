@@ -8,8 +8,10 @@ pkgdesc='Bluespec Compiler (BSC)'
 arch=('x86_64')
 url='https://github.com/B-Lang-org/bsc'
 license=('BSD')
-depends=('tk' 'haskell-old-time' 'haskell-syb' 'haskell-regex-compat' 'haskell-split')
-makedepends=('git' 'gperf' 'ghc')
+depends=('haskell-old-time' 'haskell-syb' 'haskell-regex-compat' 'haskell-split')
+makedepends=('git' 'gperf' 'ghc' 'tk')
+optdepends=('tcl: bluesim and bluetcl'
+            'tk: bluewish')
 source=("git+https://github.com/b-lang-org/bsc.git")
 sha256sums=('SKIP')
 _prefix="/opt/bluespec"
