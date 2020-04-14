@@ -1,7 +1,9 @@
+# Maintainer: Yamada Hayao <hayao@fascode.net>
 # Maintainer: EHfive <eh5@sokka.cn>
 
-pkgname=pulseaudio-modules-bt-git
-pkgver=r145.5b546e1
+pkgname=pulseaudio-modules-bt
+pkgver=1.3
+pulseaudio_ver=13.99.1
 pkgrel=1
 pkgdesc="PulseAudio Bluetooth modules with SBC, AAC, APTX, APTX-HD, Sony LDAC (A2DP codec) support"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
@@ -14,25 +16,20 @@ optdepends=("libavcodec.so>=58: aptX Classic, aptX HD support"
 provides=("pulseaudio-bluetooth")
 conflicts=("pulseaudio-bluetooth")
 
-source=("git+https://github.com/EHfive/pulseaudio-modules-bt.git"
-        "git+https://github.com/pulseaudio/pulseaudio.git")
+source=("https://github.com/EHfive/pulseaudio-modules-bt/archive/v${pkgver}.zip"
+        "https://github.com/pulseaudio/pulseaudio/archive/v${pulseaudio_ver}.zip")
 
 md5sums=('SKIP' 'SKIP')
 
-pkgver() {
-    cd "$srcdir/pulseaudio-modules-bt"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
-
 prepare() {
-    cd "$srcdir/pulseaudio-modules-bt"
+    cd "$srcdir/pulseaudio-modules-bt-${pkgver}"
     rm -rf pa
-    ln -sf -T "../pulseaudio" "pa"
-    git -C pa checkout v`pkg-config libpulse --modversion|sed 's/[^0-9.]*\([0-9.]*\).*/\1/'`
+    ln -sf -T "../pulseaudio-${pulseaudio_ver}" "pa"
+    # git -C pa checkout v`pkg-config libpulse --modversion|sed 's/[^0-9.]*\([0-9.]*\).*/\1/'`
 }
 
 build() {
-    cd "$srcdir/pulseaudio-modules-bt"
+    cd "$srcdir/pulseaudio-modules-bt-${pkgver}"
     cmake \
         -DCMAKE_BUILD_TYPE=Release \
         .
@@ -40,6 +37,6 @@ build() {
 }
 
 package() {
-    cd "$srcdir/pulseaudio-modules-bt"
+    cd "$srcdir/pulseaudio-modules-bt-${pkgver}"
     make DESTDIR="$pkgdir" install
 }
