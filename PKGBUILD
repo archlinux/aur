@@ -7,10 +7,11 @@ pkgdesc="ldd as a tree with an option to bundle dependencies into a single folde
 arch=('x86_64')
 url="https://github.com/haampie/libtree"
 license=('MIT')
-depends=('cppglob' 'binutils' 'chrpath')
+depends=('cppglob')
 makedepends=('cmake' 'cxxopts' 'termcolor' 'elfio')
-provides=()
-conflicts=()
+optdepends=('binutils: For the --strip option'
+	'chrpath: For the --chrpath option'
+	)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('f5f90118b7e3608980bca81228064344ace3d8d1f8f7c94c9384ec5f59180f09')
 
