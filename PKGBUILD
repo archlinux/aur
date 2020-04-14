@@ -17,7 +17,7 @@ makedepends=('pandoc'
              # 'noto-fonts-alpha'
              'texlive-core'
              'xorg-xwininfo')
-provides=("${pkgname%/git}")
+provides=("${pkgname/%-git}")
 conflicts=("${provides[@]}")
 source=("git://repo.or.cz/${pkgname/-/.}"
         "git://git.sv.gnu.org/gnulib.git")
