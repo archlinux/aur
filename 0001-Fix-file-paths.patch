@@ -1,19 +1,34 @@
-From 104b0ed4916d639c53cdb2d5e9caf3549330c113 Mon Sep 17 00:00:00 2001
+From 125e3293d068aa641dd29d4b51f8c37b6f464884 Mon Sep 17 00:00:00 2001
 From: Jan Cholasta <jan@cholasta.net>
 Date: Thu, 6 Feb 2020 07:59:18 +0100
 Subject: [PATCH] Fix file paths
 
 ---
- source/common/gameconfigfile.cpp     | 13 +------------
- source/common/gamecontrol.cpp        |  2 +-
- source/common/music/i_soundfont.cpp  |  4 +---
- source/platform/posix/sdl/i_main.cpp | 14 +-------------
+ source/common/audio/music/i_soundfont.cpp |  4 +---
+ source/core/gameconfigfile.cpp            | 13 +------------
+ source/core/gamecontrol.cpp               |  2 +-
+ source/platform/posix/sdl/i_main.cpp      | 14 +-------------
  4 files changed, 4 insertions(+), 29 deletions(-)
 
-diff --git a/source/common/gameconfigfile.cpp b/source/common/gameconfigfile.cpp
+diff --git a/source/common/audio/music/i_soundfont.cpp b/source/common/audio/music/i_soundfont.cpp
+index a8b4e9fdf..911b8e308 100644
+--- a/source/common/audio/music/i_soundfont.cpp
++++ b/source/common/audio/music/i_soundfont.cpp
+@@ -232,9 +232,7 @@ FPatchSetReader::FPatchSetReader(const char *filename)
+ #ifndef _WIN32
+ 	mCaseSensitivePaths = true;
+ 	const char *paths[] = {
+-		"/usr/local/lib/timidity",
+-		"/etc/timidity",
+-		"/etc"
++		"/etc/timidity++"
+ 	};
+ #else
+ 	const char *paths[] = {
+diff --git a/source/core/gameconfigfile.cpp b/source/core/gameconfigfile.cpp
 index dd4c0889e..ae7d282d4 100644
---- a/source/common/gameconfigfile.cpp
-+++ b/source/common/gameconfigfile.cpp
+--- a/source/core/gameconfigfile.cpp
++++ b/source/core/gameconfigfile.cpp
 @@ -100,15 +100,10 @@ FGameConfigFile::FGameConfigFile ()
  		// Debian likes them in /usr/share/games/doom
  		// I assume other distributions don't do anything radically different
@@ -54,11 +69,11 @@ index dd4c0889e..ae7d282d4 100644
  #endif
  	}
  
-diff --git a/source/common/gamecontrol.cpp b/source/common/gamecontrol.cpp
-index 05ed78781..4b330ddff 100644
---- a/source/common/gamecontrol.cpp
-+++ b/source/common/gamecontrol.cpp
-@@ -599,7 +599,7 @@ int RunGame()
+diff --git a/source/core/gamecontrol.cpp b/source/core/gamecontrol.cpp
+index d5650c85a..7f2ae609b 100644
+--- a/source/core/gamecontrol.cpp
++++ b/source/core/gamecontrol.cpp
+@@ -639,7 +639,7 @@ int RunGame()
  	FString logfile = Args->TakeValue("+logfile");
  
  	// As long as this engine is still in prerelease mode let's always write a log file.
@@ -67,26 +82,11 @@ index 05ed78781..4b330ddff 100644
  
  	if (logfile.IsNotEmpty())
  	{
-diff --git a/source/common/music/i_soundfont.cpp b/source/common/music/i_soundfont.cpp
-index 672ec9268..046c52b7b 100644
---- a/source/common/music/i_soundfont.cpp
-+++ b/source/common/music/i_soundfont.cpp
-@@ -230,9 +230,7 @@ FPatchSetReader::FPatchSetReader(const char *filename)
- #ifndef _WIN32
- 	mCaseSensitivePaths = true;
- 	const char *paths[] = {
--		"/usr/local/lib/timidity",
--		"/etc/timidity",
--		"/etc"
-+		"/etc/timidity++"
- 	};
- #else
- 	const char *paths[] = {
 diff --git a/source/platform/posix/sdl/i_main.cpp b/source/platform/posix/sdl/i_main.cpp
-index b0e2ce978..0c2a2a96e 100644
+index e593963ac..314f757fa 100644
 --- a/source/platform/posix/sdl/i_main.cpp
 +++ b/source/platform/posix/sdl/i_main.cpp
-@@ -121,19 +121,7 @@ int main (int argc, char **argv)
+@@ -124,19 +124,7 @@ int main (int argc, char **argv)
  	Args = new FArgs(argc, argv);
  
  	// Should we even be doing anything with progdir on Unix systems?
@@ -108,5 +108,5 @@ index b0e2ce978..0c2a2a96e 100644
  	I_StartupJoysticks();
  
 -- 
-2.25.0
+2.26.0
 
