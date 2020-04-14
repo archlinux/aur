@@ -13,6 +13,7 @@ pkgbase = foxify-cli-git
 	depends = python-fuzzywuzzy
 	depends = python-tqdm
 	depends = python-colorama
+	depends = python-levenshtein
 	provides = foxify-cli
 	conflicts = foxify-cli
 	source = foxify-cli-git::git+https://github.com/M4cs/foxify-cli.git
