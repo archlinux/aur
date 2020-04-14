@@ -11,6 +11,7 @@ pkgbase = autopsy
 	depends = sleuthkit-java=4.8.0
 	depends = java8-openjfx
 	optdepends = opencv: media files (64-bit)
+	optdepends = perl-parse-registry: regripper
 	source = https://github.com/sleuthkit/autopsy/releases/download/autopsy-4.14.0/autopsy-4.14.0.zip
 	source = Autopsy.desktop
 	md5sums = bbc764b61891f8842900586acb0a7600
