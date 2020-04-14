@@ -6,10 +6,10 @@
 # Contributor: Kyle Manna <kyle(at)kylemanna(dot)com>
 
 pkgname=slack-desktop-black-theme-night-mood
-pkgver=4.1.2
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux, with black theme night mood patch"
-cssver=766623d
+cssver=c09f3e0fe9c3f362f3c8c9e55554da076a04a354
 arch=('x86_64')
 url="https://slack.com/downloads"
 license=('custom')
@@ -18,14 +18,14 @@ makedepends=('asar')
 optdepends=('gnome-keyring')
 conflicts=('slack-desktop' 'slack-desktop-dark')
 source=("https://downloads.slack-edge.com/linux_releases/${pkgname%-black-theme-night-mood}-${pkgver}-amd64.deb"
-        "slack-4-${pkgver}-${pkgrel}::https://raw.githubusercontent.com/caiceA/slack-raw/${cssver}/slack-4"
+        "slack-4-${pkgver}-${pkgrel}-dark.css::https://raw.githubusercontent.com/caiceA/slack-black-theme/${cssver}/slack-dark-mode.css"
         "darkify_slack.js"
         "${pkgname}.patch")
 noextract=("${pkgname%-black-theme-night-mood}-${pkgver}-amd64.deb")
-sha256sums=('70667911fff7f338d68137eaae93daf02c2c0f68f51db25a76345418d0142b28'
-            'dfddb59821d99d40a2bb2795ac6109f33071d2e8ea89778cde20675a8df0ab8a'
-            '13fc4ea2c9bfd113e123a7f74375f17c17a7256d7481f9acacb466088b913418'
-            'c952eb32dd59beff9fc5374853b04acde4a60ed8c39934fcd0b66829455d594d')
+sha256sums=('38ebbf79365226b83527cd754474ad680b0c83bd420d0fe1e5e4626889535908'
+            '341056a19165860715c0ba12911c930d04214c51ee863bbd5cad4e2b2be78f68'
+            'b5c2d94ef8bac73c7a97bcde303505f20d6b8561dfd86ed2278b4109e0c5412c'
+            'd351d8ff3eee0006d1c66e3efec60a78ae8cc10fd8c3042e8d899125a1c4bf47')
 
 package() {
     bsdtar -O -xf "slack-desktop-${pkgver}"*.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
@@ -48,14 +48,14 @@ package() {
 
     # Insert the black theme directly into ssb-interop
     lineno=$(sed -n '/HERE/=' darkify_slack.js)
-    file="${resources}/app.asar.unpacked/dist/ssb-interop.bundle.js"
+    file="${resources}/app.asar.unpacked/dist/main-preload-entry-point.bundle.js"
 
     # The last line of ssb-interop is comment, so a newline prevents the first line
     # of our function from being commented out
     echo "" >> $file
     head -n $((lineno - 1)) darkify_slack.js >> $file
-	sed -i -e '/\\E/d' -e 's/939393/ffffff/' slack-4-${pkgver}-${pkgrel}
-    cat slack-4-${pkgver}-${pkgrel} >> $file
+	# sed -i -e '/\\E/d' -e 's/939393/ffffff/' slack-4-${pkgver}-${pkgrel}-dark.css
+    cat slack-4-${pkgver}-${pkgrel}-dark.css >> $file
     tail -n +$((lineno + 1)) darkify_slack.js >> $file
 
     # Repack with the theme change
