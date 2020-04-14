@@ -1,5 +1,6 @@
+# Maintainer: alex4401 <rylatgl@gmail.com>
 pkgname=update-efi-entry
-pkgver=r13.23a6ce3
+pkgver=r14.8dd14fc
 pkgrel=1
 pkgdesc="Script for easy EFISTUB entry setup and management."
 arch=('any')
@@ -22,15 +23,16 @@ pkgver() {
 
 build() {
     cd "$srcdir/$pkgname"
-    sed -i 's/CONFIG_DIR=.\/config/CONFIG_DIR=\/etc\/boot-entry/g' update-efi-entry
+    sed -i 's/CONFIG_DIR=.\/config/CONFIG_DIR=\/etc\/boot/g' update-efi-entry
     sed -i 's/HOOKS_DIR=.\/hooks/HOOKS_DIR=\/usr\/lib\/update-efi-entry\/hooks/g' update-efi-entry
 }
 
 package() {
     install -dm755 "$pkgdir/usr/lib/update-efi-entry/hooks/"
-    install -dm755 "$pkgdir/etc/boot-entry/"
+    install -dm755 "$pkgdir/etc/boot/"
+    
     install -Dm755 "$srcdir/$pkgname/update-efi-entry" "$pkgdir/usr/bin/update-efi-entry"
-    install -Dm644 "$srcdir/$pkgname/config/entry" "$pkgdir/etc/boot-entry/entry"
-    install -Dm644 "$srcdir/$pkgname/config/kernel-parameters" "$pkgdir/etc/boot-entry/kernel-parameters"
+    install -Dm644 "$srcdir/$pkgname/config/entry" "$pkgdir/etc/boot/entry"
+    install -Dm644 "$srcdir/$pkgname/config/kernel-parameters" "$pkgdir/etc/boot/kernel-parameters"
     install -Dm644 "$srcdir/$pkgname/hooks/"* "$pkgdir/usr/lib/update-efi-entry/hooks/"
 }
