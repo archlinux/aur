@@ -7,7 +7,7 @@ pkgdesc='Firefox Command-Line Theme Manager'
 arch=(any)
 url='https://github.com/M4cs/foxify-cli'
 license=(GPL3)
-depends=(python python-setuptools python-requests python-ruamel-yaml)
+depends=(python python-setuptools python-requests python-ruamel-yaml python-psutil)
 source=("foxify-cli-git::git+https://github.com/M4cs/foxify-cli.git")
 sha256sums=('SKIP')
 
