@@ -1,6 +1,6 @@
 pkgbase = libbpf
 	pkgdesc = BPF library
-	pkgver = 0.0.4
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/libbpf/libbpf
 	arch = x86_64
@@ -8,14 +8,8 @@ pkgbase = libbpf
 	makedepends = rsync
 	depends = libelf
 	depends = linux-api-headers
-	source = git+https://github.com/libbpf/libbpf#tag=v0.0.4
-	source = LICENSE
-	source = LICENSE.BSD-2-Clause
-	source = 0001-Fix-Makefile-to-always-link-libelf-even-if-not-used.patch
+	source = git+https://github.com/libbpf/libbpf#tag=v0.0.7
 	sha256sums = SKIP
-	sha256sums = 847f4addbd56e2d5be20c4ea0845e972672fc07b755fadaae5f7abd35d71e349
-	sha256sums = 6313108c23efffa36948f8b2cff1560a5935373b527b0e1a837cc77e6ed1bacd
-	sha256sums = 7c4099472757d082f56a546f6d08a2418262f08e289b6b65e8fbbe33f9ddc2c3
 
 pkgname = libbpf
 
