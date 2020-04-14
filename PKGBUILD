@@ -1,7 +1,7 @@
 # Maintainer: Luke Street <luke.street@encounterpc.com>
 
 pkgname=gnome-shell-extension-gamemode-git
-pkgver=4.r2.ge7cd644
+pkgver=4.r5.g03d73fb
 pkgrel=1
 pkgdesc="GNOME Shell extension for Feral Interactive's GameMode"
 arch=('any')
