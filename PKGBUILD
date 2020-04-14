@@ -1,6 +1,6 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=wayfire-git
-pkgver=r1363.2d49da0
+pkgver=r1510.84dc5c9
 pkgrel=1
 pkgdesc="3D wayland compositor"
 arch=('x86_64')
@@ -40,5 +40,5 @@ package() {
 	cd "$srcdir/wayfire"
 	DESTDIR="$pkgdir/" ninja -C build install
   install -Dm644 wayfire.desktop $pkgdir/usr/share/wayland-sessions/wayfire.desktop 
-  cp wayfire.ini.default $pkgdir/usr/share
+  cp wayfire.ini $pkgdir/usr/share
 }
