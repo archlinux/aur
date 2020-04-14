@@ -1,3 +1,4 @@
+# Maintainer: ZenTauro <zentauro at riseup dot net>
 # Maintainer: Ruben De Smet <ruben dot de dot smet at glycos dot org>
 # Contributor: Jashandeep Sohi <jashandeep.s.sohi@gmail.com>
 
