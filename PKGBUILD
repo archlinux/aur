@@ -5,7 +5,7 @@
 # Contributor: Dobroslaw Kijowski
 
 pkgname=mitmproxy
-pkgver=5.0.1
+pkgver=5.1.0
 pkgrel=1
 pkgdesc='SSL-capable man-in-the-middle HTTP proxy'
 arch=('any')
@@ -17,12 +17,12 @@ depends=('python-blinker' 'python-brotli' 'python-click' 'python-cryptography' '
          'python-ruamel-yaml' 'python-setuptools' 'python-sortedcontainers' 'python-tornado'
          'python-urwid' 'python-wsproto' 'python-publicsuffix2' 'python-zstandard')
 checkdepends=('python-asynctest' 'python-beautifulsoup4' 'python-parver' 'python-pytest-runner'
-              'python-pytest-asyncio' 'python-requests')
+              'python-pytest-asyncio' 'python-requests' 'python-hypothesis')
 provides=('pathod')
 conflicts=('pathod')
 replaces=('pathod')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mitmproxy/mitmproxy/archive/v$pkgver.tar.gz")
-sha512sums=('57dbd05b73452eed279889c683ed2ca34ca69f1ab68326e21fb1988a498f9ef617ea522e6a44d332723002b116f81c593291622399a4086ee1c5ccff3e225847')
+sha512sums=('cec15a5651f4e5826ced45cd43d6c83af1f2922f6d25e7a20032e152c37eebc82b1d83dff63d729f02a72ff58b8ca70df737850e44e5f8dbfd65113807f0a1e9')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -44,15 +44,7 @@ build() {
 
 check() {
   cd $pkgname-$pkgver
-  # test/mitmproxy/proxy/test_server.py::*::test_tcp hangs: https://github.com/mitmproxy/mitmproxy/issues/3666
-  # test/mitmproxy/net/test_tcp.py::* fails due to TLS 1.3
-  python setup.py pytest --addopts "--deselect test/mitmproxy/proxy/test_server.py::TestHTTPS::test_tcp \
-                                    --deselect test/mitmproxy/proxy/test_server.py::TestReverseSSL::test_tcp \
-                                    --deselect test/mitmproxy/proxy/test_server.py::TestTransparentSSL::test_tcp \
-                                    --deselect test/mitmproxy/proxy/test_server.py::TestUpstreamProxySSL::test_tcp \
-                                    --deselect test/mitmproxy/net/test_tcp.py::TestServerCipherList::test_echo \
-                                    --deselect test/mitmproxy/net/test_tcp.py::TestServerCurrentCipher::test_echo \
-                                    --deselect test/mitmproxy/net/test_tcp.py::TestDHParams::test_dhparams"
+  python setup.py pytest
 }
 
 package() {
