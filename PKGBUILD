@@ -1,26 +1,24 @@
-# Maintainer: Utkan Güngördü <utkan@freeconsole.org>
+# Maintainer: Mitch Bigelow <ipha00@gmail.com>
+# Contributor: Utkan Güngördü <utkan@freeconsole.org>
 
 pkgname=ncnn-git
 _pkgname=ncnn
-pkgver=20200226.r86.gee118e7d
+pkgver=20200413.r0.g5580da45
 pkgrel=1
 pkgdesc="High-performance neural network inference framework optimized for the mobile platform"
 url="https://github.com/Tencent/ncnn"
 license=('BSD')
-depends=('vulkan-headers')
-makedepends=('git' 'cmake' 'glslang')
+depends=()
+makedepends=('git' 'cmake' 'glslang' 'vulkan-headers' 'vulkan-icd-loader')
 conflicts=('ncnn')
 provides=('ncnn')
 arch=('i686' 'x86_64')
-source=("git://github.com/Tencent/ncnn.git#commit=ee118e7d702536f3be11ecc6c29daca41024b7c1")
+source=("git://github.com/Tencent/ncnn.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/ncnn"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
