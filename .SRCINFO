@@ -1,6 +1,6 @@
 pkgbase = cpeditor-git
 	pkgdesc = The editor for competitive programming
-	pkgver = 20200412
+	pkgver = 20200414
 	pkgrel = 1
 	url = https://github.com/cpeditor/cpeditor
 	arch = x86_64
@@ -11,7 +11,17 @@ pkgbase = cpeditor-git
 	makedepends = python3
 	depends = qt5-base
 	conflicts = cpeditor
-	source = git+https://github.com/cpeditor/cpeditor.git
+	source = git://github.com/cpeditor/cpeditor.git
+	source = git://github.com/cpeditor/QCodeEditor.git
+	source = git://github.com/cpeditor/QtFindReplaceDialog.git
+	source = git://github.com/cpeditor/lsp-cpp.git
+	source = git://github.com/itay-grudev/singleapplication.git
+	source = git://github.com/MikeMirzayanov/testlib.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = cpeditor-git

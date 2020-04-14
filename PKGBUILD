@@ -2,7 +2,7 @@
 
 pkgname=cpeditor-git
 _pkgname=cpeditor
-pkgver=20200412
+pkgver=20200414
 pkgrel=1
 pkgdesc='The editor for competitive programming'
 arch=('x86_64')
@@ -11,17 +11,32 @@ license=('GPL3')
 depends=('qt5-base')
 makedepends=("gcc" "cmake" "git" "python3")
 conflicts=("cpeditor")
-source=('git+https://github.com/cpeditor/cpeditor.git')
-md5sums=('SKIP')
+
+source=('git://github.com/cpeditor/cpeditor.git'
+	'git://github.com/cpeditor/QCodeEditor.git'
+	'git://github.com/cpeditor/QtFindReplaceDialog.git'
+	'git://github.com/cpeditor/lsp-cpp.git'
+	'git://github.com/itay-grudev/singleapplication.git'
+	'git://github.com/MikeMirzayanov/testlib.git')
+
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd $_pkgname
-	TZ=UTC date -d @$(git log -1 --format=%ct) +%Y%m%d
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
 	cd $_pkgname
-	git submodule update --init
+	git submodule init
+	
+	git config submodule.QCodeEditor.url $srcdir/third_party/QCodeEditor
+	git config submodule.QtFindReplaceDialog.url $srcdir/third_party/QtFindReplaceDialog
+	git config submodule.lsp-cpp.url $srcdir/third_party/lsp-cpp
+	git config submodule.singleapplication.url $srcdir/third_party/singleapplication
+	git config submodule.testlib.url $srcdir/third_party/testlib
+
+	git submodule update
 }
 
 build() {
