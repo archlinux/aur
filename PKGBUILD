@@ -4,7 +4,7 @@
 
 pkgname=ttfautohint-git
 pkgver=1.8.3.r16.g701aa67
-pkgrel=1
+pkgrel=3
 pkgdesc='Provides automated hinting process for web fonts'
 arch=('i686' 'x86_64')
 url="http://www.freetype.org/${pkgname%-git}"
@@ -17,6 +17,8 @@ makedepends=('pandoc'
              # 'noto-fonts-alpha'
              'texlive-core'
              'xorg-xwininfo')
+provides=("${pkgname%/git}")
+conflicts=("${provides[@]}")
 source=("git://repo.or.cz/${pkgname/-/.}"
         "git://git.sv.gnu.org/gnulib.git")
 sha256sums=('SKIP'

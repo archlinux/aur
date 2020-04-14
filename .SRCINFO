@@ -1,7 +1,7 @@
 pkgbase = ttfautohint-git
 	pkgdesc = Provides automated hinting process for web fonts
 	pkgver = 1.8.3.r16.g701aa67
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.freetype.org/ttfautohint
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,8 @@ pkgbase = ttfautohint-git
 	depends = freetype2
 	depends = harfbuzz
 	depends = qt5-base
+	provides = ttfautohint-git
+	conflicts = ttfautohint-git
 	source = git://repo.or.cz/ttfautohint.git
 	source = git://git.sv.gnu.org/gnulib.git
 	sha256sums = SKIP
