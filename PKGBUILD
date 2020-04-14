@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=libtree
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="ldd as a tree with an option to bundle dependencies into a single folder "
 arch=('x86_64')
@@ -11,9 +11,10 @@ depends=('cppglob' 'gcc-libs')
 makedepends=('cmake' 'cxxopts' 'termcolor' 'elfio')
 optdepends=('binutils: For the --strip option'
 	'chrpath: For the --chrpath option'
-	)
+)
+checkdepends=('gtest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('93941b2d240d3b5481b050e6ea12d4601404baf41777784b0e648b5726ff0eb8')
+sha256sums=('debfdc607f9dde898bbec07b2d375fec9c598b61a9d9abb3fffa47a3dc9ba61e')
 
 prepare() {
 	mkdir -p "$pkgname-$pkgver/build"
