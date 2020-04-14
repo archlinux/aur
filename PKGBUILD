@@ -5,7 +5,7 @@
 _pkgname=PDFStudio
 pkgname=${_pkgname,,}-bin
 _pkgver=2019
-pkgver=${_pkgver}.2.1
+pkgver=$_pkgver.2.1
 pkgrel=1
 pkgdesc='Review, annotate, and edit PDF Documents'
 arch=('x86_64' 'i686')
@@ -31,9 +31,9 @@ prepare() {
 }
 
 package() {
-	install -Dm644 -t "${pkgdir}/usr/share/applications/" "${pkgname%-bin}.desktop"
-	install -Dm644 -t "${pkgdir}/usr/share/pixmaps/" "${pkgname%-bin}.png"
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname%-bin}/" resources/license.html
+	install -Dm644 -t "$pkgdir/usr/share/applications/" "${pkgname%-bin}.desktop"
+	install -Dm644 -t "$pkgdir/usr/share/pixmaps/" "${pkgname%-bin}.png"
+	install -Dm644 -t "$pkgdir/usr/share/licenses/${pkgname%-bin}/" resources/license.html
 	install -dm 755 "$pkgdir/usr/share/"
 	cp -r "opt/${pkgname%-bin}$_pkgver" "$pkgdir/usr/share/${pkgname%-bin}"
 	install -dm 755 "$pkgdir/usr/bin"
