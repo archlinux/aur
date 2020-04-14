@@ -11,7 +11,7 @@
 # Contributor: Doug Johnson <dougvj at dougvj.net>
 
 pkgbase=linux-nitrous-git
-_srcname=linux-nitrous
+_srcname=linux-nitrous-git
 pkgver=5.6+
 pkgrel=1
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=('git+https://gitlab.com/xdevs23/linux-nitrous.git#branch=v'"$pkgver"
         # standard config files for mkinitcpio ramdisk
         "${_srcname}.preset")
 sha256sums=('SKIP'
-            '03a08e1df74541e9848685da38134d701684694c43e3428197c6db41e968f246')
+            'ecfa409b29641e070ef45baa9f866659e9f64ccbad8bedbb52f946c186d360ac')
 
 _kernelname=${pkgbase#linux}
 
@@ -73,8 +73,8 @@ _package() {
     'linux-nitrous-git-headers: to build DKMS modules against this kernel'
   )
   provides=('linux')
-  __kernelname=linux-nitrous
-  backup=("etc/mkinitcpio.d/linux-nitrous.preset")
+  __kernelname=linux-nitrous-git
+  backup=("etc/mkinitcpio.d/linux-nitrous-git.preset")
   install=${pkgbase}.install
 
   cd "${_srcname}"

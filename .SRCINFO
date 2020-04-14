@@ -15,9 +15,9 @@ pkgbase = linux-nitrous-git
 	makedepends = coreutils
 	options = !strip
 	source = git+https://gitlab.com/xdevs23/linux-nitrous.git#branch=v5.6+
-	source = linux-nitrous.preset
+	source = linux-nitrous-git.preset
 	sha256sums = SKIP
-	sha256sums = 03a08e1df74541e9848685da38134d701684694c43e3428197c6db41e968f246
+	sha256sums = ecfa409b29641e070ef45baa9f866659e9f64ccbad8bedbb52f946c186d360ac
 
 pkgname = linux-nitrous-git
 	pkgdesc = Modified Linux kernel optimized for Haswell (and newer) compiled using clang
@@ -29,7 +29,7 @@ pkgname = linux-nitrous-git
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-nitrous-git-headers: to build DKMS modules against this kernel
 	provides = linux
-	backup = etc/mkinitcpio.d/linux-nitrous.preset
+	backup = etc/mkinitcpio.d/linux-nitrous-git.preset
 
 pkgname = linux-nitrous-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel (git version)
