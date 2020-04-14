@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=PhpStorm
-Icon=/opt/phpstorm/bin/phpstorm
+Icon=phpstorm
 Exec="/opt/phpstorm/bin/phpstorm.sh" %f
 Comment=Lightning-smart PHP IDE
 Categories=Development;IDE;
