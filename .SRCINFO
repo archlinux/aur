@@ -7,7 +7,7 @@ pkgbase = screen-desktop
 	license = unknown
 	makedepends = libarchive
 	source = https://download.screen.so/desktop-app/linux/1.0.24/screen-desktop-1.0.24-1.x86_64.rpm
-	md5sums = 6a780d7a760b281d65c8235d7c3c7dff
+	md5sums = 59e76790f7106a7b192975e801cf2103
 
 pkgname = screen-desktop
 
