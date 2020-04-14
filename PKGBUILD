@@ -2,6 +2,17 @@
 # Maintainer of emacs-git: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
 
 ################################################################################
+# The difference between this PKGBUILD and the one from `emacs-git` is that:
+# - this one builds emacs from `feature/native-comp` branch.
+# - built-in packages are native compiled by default.
+# - link-time optimization is disabled by default.
+#
+# Pre-compiling all built-in elisp modules takes *hours* on fast systems. You
+# can set FAST_BOOT="YES" to pre-compile the bare minimum, then you'll need to
+# manage native-compilation later (eg. with comp-deferred-compilation).
+################################################################################
+
+################################################################################
 # CAVEAT LECTOR: This PKGBUILD is highly opinionated. I give you
 #                enough rope to hang yourself, but by default it
 #                only enables the features I use.
@@ -23,7 +34,7 @@
 ################################################################################
 CHECK=            # Run tests. May fail, this is developement after all.
 CLANG=            # Use clang.
-LTO="YES"         # Enable link-time optimization. Not that experimental anymore.
+LTO=              # Enable link-time optimization. Not that experimental anymore.
                   # Seems fixed in GCC, so I've reenabled binutils support, please
 		  # report any bug, to make it use clang by default again.
 CLI=              # CLI only binary.
@@ -55,6 +66,8 @@ MAGICK=           # ImageMagick 7 support. Deprecated (read the logs).
 		  #are doing.
                   # -->>If you just *believe* you need it, you don't.<<--
 NOGZ="YES"        # Don't compress .el files.
+FAST_BOOT=        # Only native-compile the bare minimum. Intended for use with
+                  # deferred compilation to native-compile on-demand at runtime.
 ################################################################################
 
 ################################################################################
@@ -263,7 +276,11 @@ fi
   # Please note that incremental compilation implies that you
   # are reusing your src directory!
   #
-  make NATIVE_FAST_BOOT=1
+  if [[ $FAST_BOOT == "YES" ]]; then
+    make NATIVE_FAST_BOOT=1
+  else
+    make
+  fi
 
   # You may need to run this if 'loaddefs.el' files become corrupt.
   #cd "$srcdir/emacs-git/lisp"
