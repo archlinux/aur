@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="8.0.336.0"
+pkgver="8.0.337.0"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -11,9 +11,10 @@ url="https://www.tracker-software.com/product/pdf-xchange-editor"
 _downloadsource="https://www.tracker-software.com/downloads"
 _x64file="EditorV8.x64.msi"
 _installdir="/usr/lib"
+_programname="PDF Editor"
 
 source=($_downloadsource/$_x64file)
-sha256sums=('5dec8a658fb33f4ec6bf9f20c9f1b5a5c6d9f8e57fedf247d3e1420c4299fc10')
+sha256sums=('d24ed86022a8bb421b4fa638bcdd16809208eca3635289c385556a4fc01dd3c8')
 
 prepare()
 {
@@ -45,6 +46,7 @@ package()
  install -Dm644 "$srcdir/FID_Color64" "$pkgdir${_installdir}/$pkgname/PDF Editor/Plugins.x64/ColorConvert.pvp"
  install -Dm644 "$srcdir/FID_OffConv64" "$pkgdir${_installdir}/$pkgname/PDF Editor/Plugins.x64/ConvertPDF.pvp"
  install -Dm644 "$srcdir/FID_CSVtoPDF64" "$pkgdir${_installdir}/$pkgname/PDF Editor/Plugins.x64/CSVtoPDF.pvp"
+ install -Dm644 "$srcdir/FID_DX43_64" "$pkgdir${_installdir}/$pkgname/PDF Editor/Plugins.x64/d3dx9_43.dll"
  install -Dm644 "$srcdir/FID_DB64" "$pkgdir${_installdir}/$pkgname/PDF Editor/Plugins.x64/DropBox.pvp"
  install -Dm644 "$srcdir/FID_EOCR64" "$pkgdir${_installdir}/$pkgname/PDF Editor/Plugins.x64/EnhancedOCR.pvp"
  install -Dm644 "$srcdir/FID_FileOpenSH64" "$pkgdir${_installdir}/$pkgname/PDF Editor/Plugins.x64/FileOpenSH.pvp"
@@ -105,6 +107,7 @@ package()
  install -Dm644 "$srcdir/FID_BOX_fi_FI" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/BoxFS.fi-FI.xcl"
  install -Dm644 "$srcdir/FID_BOX_fr_FR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/BoxFS.fr-FR.xcl"
  install -Dm644 "$srcdir/FID_BOX_gl_ES" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/BoxFS.gl-ES.xcl"
+ install -Dm644 "$srcdir/FID_BOX_he_IL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/BoxFS.he-IL.xcl"
  install -Dm644 "$srcdir/FID_BOX_hr_HR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/BoxFS.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_BOX_id_ID" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/BoxFS.id-ID.xcl"
  install -Dm644 "$srcdir/FID_BOX_it_IT" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/BoxFS.it-IT.xcl"
@@ -119,11 +122,14 @@ package()
  install -Dm644 "$srcdir/FID_BOX_tr_TR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/BoxFS.tr-TR.xcl"
  install -Dm644 "$srcdir/FID_BOX_uk_UA" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/BoxFS.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_BOX_zh_CN" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/BoxFS.zh-CN.xcl"
+ install -Dm644 "$srcdir/FID_BOX_zh_TW" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/BoxFS.zh-TW.xcl"
  install -Dm644 "$srcdir/FID_CC_de_DE" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/ColorConvert.de-DE.xcl"
  install -Dm644 "$srcdir/FID_CC_es_ES" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/ColorConvert.es-ES.xcl"
  install -Dm644 "$srcdir/FID_CC_fi_FI" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/ColorConvert.fi-FI.xcl"
  install -Dm644 "$srcdir/FID_CC_fr_FR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/ColorConvert.fr-FR.xcl"
+ install -Dm644 "$srcdir/FID_CC_he_IL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/ColorConvert.he-IL.xcl"
  install -Dm644 "$srcdir/FID_CC_hr_HR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/ColorConvert.hr-HR.xcl"
+ install -Dm644 "$srcdir/FID_CC_ja_JP" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/ColorConvert.ja-JP.xcl"
  install -Dm644 "$srcdir/FID_CC_ko_KR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/ColorConvert.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_CC_nl_NL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/ColorConvert.nl-NL.xcl"
  install -Dm644 "$srcdir/FID_CC_pl_PL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/ColorConvert.pl-PL.xcl"
@@ -134,11 +140,14 @@ package()
  install -Dm644 "$srcdir/FID_CC_tr_TR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/ColorConvert.tr-TR.xcl"
  install -Dm644 "$srcdir/FID_CC_uk_UA" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/ColorConvert.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_CC_zh_CN" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/ColorConvert.zh-CN.xcl"
+ install -Dm644 "$srcdir/FID_CC_zh_TW" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/ColorConvert.zh-TW.xcl"
  install -Dm644 "$srcdir/FID_CSV_de_DE" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/CSVtoPDF.de-DE.xcl"
  install -Dm644 "$srcdir/FID_CSV_es_ES" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/CSVtoPDF.es-ES.xcl"
  install -Dm644 "$srcdir/FID_CSV_fi_FI" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/CSVtoPDF.fi-FI.xcl"
  install -Dm644 "$srcdir/FID_CSV_fr_FR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/CSVtoPDF.fr-FR.xcl"
+ install -Dm644 "$srcdir/FID_CSV_he_IL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/CSVtoPDF.he-IL.xcl"
  install -Dm644 "$srcdir/FID_CSV_hr_HR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/CSVtoPDF.hr-HR.xcl"
+ install -Dm644 "$srcdir/FID_CSV_ja_JP" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/CSVtoPDF.ja-JP.xcl"
  install -Dm644 "$srcdir/FID_CSV_ko_KR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/CSVtoPDF.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_CSV_nl_NL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/CSVtoPDF.nl-NL.xcl"
  install -Dm644 "$srcdir/FID_CSV_pl_PL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/CSVtoPDF.pl-PL.xcl"
@@ -147,6 +156,7 @@ package()
  install -Dm644 "$srcdir/FID_CSV_sl_SI" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/CSVtoPDF.sl-SI.xcl"
  install -Dm644 "$srcdir/FID_CSV_tr_TR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/CSVtoPDF.tr-TR.xcl"
  install -Dm644 "$srcdir/FID_CSV_zh_CN" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/CSVtoPDF.zh-CN.xcl"
+ install -Dm644 "$srcdir/FID_CSV_zh_TW" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/CSVtoPDF.zh-TW.xcl"
  install -Dm644 "$srcdir/FID_DB_cs_CZ" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/DropBox.cs-CZ.xcl"
  install -Dm644 "$srcdir/FID_DB_da_DK" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/DropBox.da-DK.xcl"
  install -Dm644 "$srcdir/FID_DB_de_DE" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/DropBox.de-DE.xcl"
@@ -155,6 +165,7 @@ package()
  install -Dm644 "$srcdir/FID_DB_fr_FR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/DropBox.fr-FR.xcl"
  install -Dm644 "$srcdir/FID_DB_fy_NL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/DropBox.fy-NL.xcl"
  install -Dm644 "$srcdir/FID_DB_gl_ES" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/DropBox.gl-ES.xcl"
+ install -Dm644 "$srcdir/FID_DB_he_IL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/DropBox.he-IL.xcl"
  install -Dm644 "$srcdir/FID_DB_hr_HR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/DropBox.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_DB_hu_HU" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/DropBox.hu-HU.xcl"
  install -Dm644 "$srcdir/FID_DB_id_ID" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/DropBox.id-ID.xcl"
@@ -182,6 +193,7 @@ package()
  install -Dm644 "$srcdir/FID_FO_fr_FR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/FileOpenSH.fr-FR.xcl"
  install -Dm644 "$srcdir/FID_FO_fy_NL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/FileOpenSH.fy-NL.xcl"
  install -Dm644 "$srcdir/FID_FO_gl_ES" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/FileOpenSH.gl-ES.xcl"
+ install -Dm644 "$srcdir/FID_FO_he_IL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/FileOpenSH.he-IL.xcl"
  install -Dm644 "$srcdir/FID_FO_hr_HR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/FileOpenSH.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_FO_id_ID" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/FileOpenSH.id-ID.xcl"
  install -Dm644 "$srcdir/FID_FO_it_IT" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/FileOpenSH.it-IT.xcl"
@@ -208,6 +220,7 @@ package()
  install -Dm644 "$srcdir/FID_GD_fr_FR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/GoogleDrive.fr-FR.xcl"
  install -Dm644 "$srcdir/FID_GD_fy_NL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/GoogleDrive.fy-NL.xcl"
  install -Dm644 "$srcdir/FID_GD_gl_ES" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/GoogleDrive.gl-ES.xcl"
+ install -Dm644 "$srcdir/FID_GD_he_IL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/GoogleDrive.he-IL.xcl"
  install -Dm644 "$srcdir/FID_GD_hr_HR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/GoogleDrive.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_GD_id_ID" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/GoogleDrive.id-ID.xcl"
  install -Dm644 "$srcdir/FID_GD_it_IT" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/GoogleDrive.it-IT.xcl"
@@ -234,6 +247,7 @@ package()
  install -Dm644 "$srcdir/FID_MD_fr_FR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/Markdown.fr-FR.xcl"
  install -Dm644 "$srcdir/FID_MD_fy_NL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/Markdown.fy-NL.xcl"
  install -Dm644 "$srcdir/FID_MD_gl_ES" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/Markdown.gl-ES.xcl"
+ install -Dm644 "$srcdir/FID_MD_he_IL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/Markdown.he-IL.xcl"
  install -Dm644 "$srcdir/FID_MD_hr_HR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/Markdown.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_MD_id_ID" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/Markdown.id-ID.xcl"
  install -Dm644 "$srcdir/FID_MD_it_IT" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/Markdown.it-IT.xcl"
@@ -288,6 +302,7 @@ package()
  install -Dm644 "$srcdir/FID_OD_fi_FI" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/OneDrive.fi-FI.xcl"
  install -Dm644 "$srcdir/FID_OD_fr_FR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/OneDrive.fr-FR.xcl"
  install -Dm644 "$srcdir/FID_OD_gl_ES" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/OneDrive.gl-ES.xcl"
+ install -Dm644 "$srcdir/FID_OD_he_IL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/OneDrive.he-IL.xcl"
  install -Dm644 "$srcdir/FID_OD_hr_HR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/OneDrive.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_OD_id_ID" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/OneDrive.id-ID.xcl"
  install -Dm644 "$srcdir/FID_OD_it_IT" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/OneDrive.it-IT.xcl"
@@ -335,6 +350,7 @@ package()
  install -Dm644 "$srcdir/FID_CONV_fr_FR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/PDFConverter.fr-FR.xcl"
  install -Dm644 "$srcdir/FID_CONV_fy_NL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/PDFConverter.fy-NL.xcl"
  install -Dm644 "$srcdir/FID_CONV_gl_ES" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/PDFConverter.gl-ES.xcl"
+ install -Dm644 "$srcdir/FID_CONV_he_IL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/PDFConverter.he-IL.xcl"
  install -Dm644 "$srcdir/FID_CONV_hr_HR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/PDFConverter.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_CONV_id_ID" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/PDFConverter.id-ID.xcl"
  install -Dm644 "$srcdir/FID_CONV_it_IT" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/PDFConverter.it-IT.xcl"
@@ -413,6 +429,8 @@ package()
  install -Dm644 "$srcdir/FID_SAN_es_ES" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/Sanitize.es-ES.xcl"
  install -Dm644 "$srcdir/FID_SAN_fi_FI" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/Sanitize.fi-FI.xcl"
  install -Dm644 "$srcdir/FID_SAN_fr_FR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/Sanitize.fr-FR.xcl"
+ install -Dm644 "$srcdir/FID_SAN_hr_HR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/Sanitize.hr-HR.xcl"
+ install -Dm644 "$srcdir/FID_SAN_ja_JP" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/Sanitize.ja-JP.xcl"
  install -Dm644 "$srcdir/FID_SAN_ko_KR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/Sanitize.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_SAN_nl_NL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/Sanitize.nl-NL.xcl"
  install -Dm644 "$srcdir/FID_SAN_pl_PL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/Sanitize.pl-PL.xcl"
@@ -428,6 +446,7 @@ package()
  install -Dm644 "$srcdir/FID_SP_fr_FR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/SharePoint.fr-FR.xcl"
  install -Dm644 "$srcdir/FID_SP_fy_NL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/SharePoint.fy-NL.xcl"
  install -Dm644 "$srcdir/FID_SP_gl_ES" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/SharePoint.gl-ES.xcl"
+ install -Dm644 "$srcdir/FID_SP_he_IL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/SharePoint.he-IL.xcl"
  install -Dm644 "$srcdir/FID_SP_hr_HR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/SharePoint.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_SP_id_ID" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/SharePoint.id-ID.xcl"
  install -Dm644 "$srcdir/FID_SP_it_IT" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/SharePoint.it-IT.xcl"
@@ -515,7 +534,9 @@ package()
  install -Dm644 "$srcdir/FID_U3D_fi_FI" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/U3DPlugin.fi-FI.xcl"
  install -Dm644 "$srcdir/FID_U3D_fr_FR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/U3DPlugin.fr-FR.xcl"
  install -Dm644 "$srcdir/FID_U3D_gl_ES" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/U3DPlugin.gl-ES.xcl"
+ install -Dm644 "$srcdir/FID_U3D_he_IL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/U3DPlugin.he-IL.xcl"
  install -Dm644 "$srcdir/FID_U3D_hr_HR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/U3DPlugin.hr-HR.xcl"
+ install -Dm644 "$srcdir/FID_U3D_ja_JP" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/U3DPlugin.ja-JP.xcl"
  install -Dm644 "$srcdir/FID_U3D_ko_KR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/U3DPlugin.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_U3D_nl_NL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/U3DPlugin.nl-NL.xcl"
  install -Dm644 "$srcdir/FID_U3D_pl_PL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/U3DPlugin.pl-PL.xcl"
@@ -526,6 +547,7 @@ package()
  install -Dm644 "$srcdir/FID_U3D_tr_TR" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/U3DPlugin.tr-TR.xcl"
  install -Dm644 "$srcdir/FID_U3D_uk_UA" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/U3DPlugin.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_U3D_zh_CN" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/U3DPlugin.zh-CN.xcl"
+ install -Dm644 "$srcdir/FID_U3D_zh_TW" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/Languages/U3DPlugin.zh-TW.xcl"
  install -Dm644 "$srcdir/FID_LEAD64_Lfbmpx" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/LeadTools/Bin/x64/Lfbmpx.dll"
  install -Dm644 "$srcdir/FID_LEAD64_Lfpngx" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/LeadTools/Bin/x64/Lfpngx.dll"
  install -Dm644 "$srcdir/FID_LEAD64_Ltannx" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/LeadTools/Bin/x64/Ltannx.dll"
@@ -674,9 +696,9 @@ package()
 
  echo '#!/bin/bash' > "$pkgdir/usr/bin/$pkgname"
  echo "pkgname=\"${pkgname}\"" >> "$pkgdir/usr/bin/$pkgname"
+ echo 'program="$pkgname/'"$_programname"'"' >> "$pkgdir/usr/bin/$pkgname"
 
  cat >> "$pkgdir/usr/bin/$pkgname" << 'EOF'
-program="$pkgname/PDF Editor"
 if [ -z "$XDG_DATA_HOME" ]; then
    XDG_DATA_HOME="$HOME/.local/share"
 fi
@@ -705,9 +727,9 @@ fi
 
 sed -i s/'\"CommonFilesDir\"\=\"C\:\\\\Program Files (x86)\\\\Common Files\"'/'\"CommonFilesDir\"\=\"Z\:\\\\usr\\\\lib\\\\pdf-xchange\\\\Common Files\"'/g "$prefix/system.reg"
 sed -i s/'\"CommonFilesDir\"\=\"C\:\\\\Program Files\\\\Common Files\"'/'\"CommonFilesDir\"\=\"Z\:\\\\usr\\\\lib\\\\pdf-xchange\\\\Common Files\"'/g "$prefix/system.reg"
-WINEPREFIX="$prefix" /usr/bin/wine "/usr/lib/$program/PDFXEdit.exe" "$document"
 EOF
 
+ echo 'WINEPREFIX="$prefix" /usr/bin/wine "'"$_installdir"'/$program/PDFXEdit.exe" "$document"' >> "$pkgdir/usr/bin/$pkgname"
  chmod 0755 "$pkgdir/usr/bin/$pkgname"
 
 }
