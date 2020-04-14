@@ -3,7 +3,7 @@
 pkgbase="nginx-lazerl0rd-git"
 pkgname=("nginx-lazerl0rd-git" "nginx-src-lazerl0rd-git")
 pkgver=1.17.9
-pkgrel=12
+pkgrel=13
 arch=("i686" "x86_64")
 url="https://github.com/lazerl0rd/nginx"
 license=("custom")
@@ -74,7 +74,6 @@ build() {
 	export CPPFLAGS="-D_FORTIFY_SOURCE=2"
 	export CFLAGS="-march=native -mtune=native -O3 -pipe -fno-plt"
 	export CXXFLAGS="-march=native -mtune=native -O3 -pipe -fno-plt"
-	export LDFLAGS="-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
 
 	cd "nginx"
 	./auto/configure \
