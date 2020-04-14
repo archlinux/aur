@@ -1,0 +1,20 @@
+pkgbase = python-pyenet-piqueserver-git
+	pkgdesc = pyenet is a python wrapper for the ENet library (piqueserver fork)
+	pkgver = 1.3.13.post7.r4.g7f619c8
+	pkgrel = 1
+	url = https://github.com/piqueserver/pyenet
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = cython
+	provides = pyenet
+	conflicts = pyenet
+	source = python-pyenet-piqueserver-git::git+https://github.com/piqueserver/pyenet.git
+	md5sums = SKIP
+
+pkgname = python-pyenet-piqueserver-git
+
