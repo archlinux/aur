@@ -1,8 +1,0 @@
-post_install() {
-	/usr/bin/nextdns install
-}
-
-pre_remove() {
-	systemctl stop nextdns
-	/usr/bin/nextdns uninstall
-}
