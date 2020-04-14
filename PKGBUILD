@@ -1,6 +1,6 @@
 # Maintainer: Your Name <drmargarido@gmail.com>
 pkgname=d-tracker
-pkgver=1.2.r0.g14723c9
+pkgver=1.3.r1.g3481fc4
 pkgrel=1
 pkgdesc="Lightweight, cross-platform and simple to setup timetracker. Similar to hamster but uses about 10MB of RAM and has a small quantity of dependencies."
 arch=("i686" "x86_64")
