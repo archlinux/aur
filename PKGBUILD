@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=11.0.0_r347294.9620fe02dfe
+pkgver=11.0.0_r351289.994543abc9b
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -56,7 +56,7 @@ prepare() {
 
     cd llvm-project
     # remove code parts not needed for build
-    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl mlir libc
+    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl mlir libc flang
 }
 
 build() {
