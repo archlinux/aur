@@ -1,7 +1,7 @@
-# Maintainer: David Birks <david@tellus.space>
+# Maintainer: David Birks <david@birks.dev>
 
 pkgname=kubeval
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Command line tool to validate your Kubernetes configuration files'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(Apache)
 conflicts=('kubeval-bin')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/instrumenta/kubeval/archive/$pkgver.tar.gz")
-sha512sums=('bb0f83a15fdd04df9fa9b45ff2ab9493b8c554347ea0e1dbce2519a493c49301d4f18d84d90a37e8cc34102bbcae89f1f42b52645722fbf6adbc4d6207b35080')
+sha512sums=('2f957786614ae25f784d10fa019c580ccc0219658758ad0e992675032537eb60a2c27dd4df33ee57e5dcb381923a29b0f5ac057742f04356eda1af2002ec647e')
 
 build() {
   # Flags to trim path from binary
