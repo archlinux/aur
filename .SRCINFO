@@ -38,9 +38,11 @@ pkgname = nginx-lazerl0rd-git
 	depends = zlib
 	optdepends = nginx-src-lazerl0rd-git: dynamic module support
 	provides = nginx=1.17.9
+	provides = nginx-src-lazerl0rd=1.17.9
 	provides = nginx-mod-brotli
 	provides = nginx-mod-cookie_flag_module
 	conflicts = nginx
+	conflicts = nginx-lazerl0rd
 	conflicts = nginx-mod-brotli
 	conflicts = nginx-mod-cookie_flag_module
 	backup = etc/nginx/fastcgi.conf
@@ -56,5 +58,7 @@ pkgname = nginx-lazerl0rd-git
 pkgname = nginx-src-lazerl0rd-git
 	pkgdesc = Source code of nginx-lazerl0rd 1.17.9, useful for building modules
 	provides = nginx-src=1.17.9
+	provides = nginx-src-lazerl0rd=1.17.9
 	conflicts = nginx-src
+	conflicts = nginx-src-lazerl0rd
 

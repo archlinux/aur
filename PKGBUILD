@@ -113,8 +113,8 @@ package_nginx-lazerl0rd-git() {
 	pkgdesc="NGINX with beefed up security and performance"
 	depends=("geoip" "gzip" "libatomic_ops" "liburing" "mailcap" "pcre" "zlib")
 	optdepends=("nginx-src-lazerl0rd-git: dynamic module support")
-	provides=("nginx=1.17.9" "nginx-mod-brotli" "nginx-mod-cookie_flag_module")
-	conflicts=("nginx" "nginx-mod-brotli" "nginx-mod-cookie_flag_module")
+	provides=("nginx=1.17.9" "nginx-src-lazerl0rd=1.17.9" "nginx-mod-brotli" "nginx-mod-cookie_flag_module")
+	conflicts=("nginx" "nginx-lazerl0rd" "nginx-mod-brotli" "nginx-mod-cookie_flag_module")
 	backup=("etc/nginx/fastcgi.conf"
 			"etc/nginx/fastcgi_params"
 			"etc/nginx/koi-win"
@@ -169,8 +169,8 @@ package_nginx-lazerl0rd-git() {
 
 package_nginx-src-lazerl0rd-git() {
 	pkgdesc="Source code of nginx-lazerl0rd $pkgver, useful for building modules"
-	provides=("nginx-src=1.17.9")
-	conflicts=("nginx-src")
+	provides=("nginx-src=1.17.9" "nginx-src-lazerl0rd=1.17.9")
+	conflicts=("nginx-src" "nginx-src-lazerl0rd")
 
 	install -d "${pkgdir}/usr/src"
 	cp -r "nginx-src" "${pkgdir}/usr/src/nginx"
