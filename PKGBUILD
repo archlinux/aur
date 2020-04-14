@@ -37,12 +37,12 @@ install -dm755 "${pkgdir}"/etc/ld.so.conf.d/
 install -Dm755 -t "${pkgdir}"/usr/lib/${pkgname} \
   lib/libjniortools.so \
   lib/libortools.so \
-  dependencies/install/lib/libprotobuf-lite.so.3.9.0.0 \
+  dependencies/install/lib/libprotobuf-lite.so.3.11.2.0 \
   dependencies/install/lib/libgflags_nothreads.so.2.2.2 \
-  dependencies/install/lib/libprotoc.so.3.9.0.0 \
+  dependencies/install/lib/libprotoc.so.3.11.2.0 \
   dependencies/install/lib/libgflags.so.2.2.2 \
   dependencies/install/lib/libglog.so.0.4.0 \
-  dependencies/install/lib/libprotobuf.so.3.9.0.0
+  dependencies/install/lib/libprotobuf.so.3.11.2.0
 for i in ${pkgdir}/usr/lib/${pkgname}/*.so.*; do ln -rs ${i} ${i%so.*}so; done
 install -Dm755 -t "${pkgdir}/usr/share/java/${pkgname}" lib/com.google.ortools.jar
 echo "/usr/lib/${pkgname}" > "${pkgdir}"/etc/ld.so.conf.d/${pkgname}.conf
