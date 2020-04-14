@@ -2,18 +2,16 @@
 # Maintainer: Paulo Matias <matias@ufscar.br>
 
 pkgname=bluespec-git
-pkgver=r287.d9e5b0f
+pkgver=r289.1f95696
 pkgrel=1
 pkgdesc='Bluespec Compiler (BSC)'
 arch=('x86_64')
 url='https://github.com/B-Lang-org/bsc'
 license=('BSD')
-depends=('tk-itk' 'haskell-old-time' 'haskell-syb' 'haskell-regex-compat' 'haskell-split')
-makedepends=('git' 'gperf' 'ghc' 'xorg-server-xvfb')
-source=("git+https://github.com/b-lang-org/bsc.git"
-        "archlinux.patch")
-sha256sums=('SKIP'
-            'b7d08d9ff38728449566fbd5acbee942d4b781a7592f3ff777b4b0015593fd17')
+depends=('tk' 'haskell-old-time' 'haskell-syb' 'haskell-regex-compat' 'haskell-split')
+makedepends=('git' 'gperf' 'ghc')
+source=("git+https://github.com/b-lang-org/bsc.git")
+sha256sums=('SKIP')
 _prefix="/opt/bluespec"
 
 pkgver() {
@@ -24,7 +22,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/bsc"
   git submodule update --init --recursive
-  patch -p1 -i "${srcdir}/archlinux.patch"
 }
 
 build(){
