@@ -1,0 +1,52 @@
+From 4688af885256bf5603328fff4163365d7a99bad0 Mon Sep 17 00:00:00 2001
+From: Emily Fertig <emilyaf@google.com>
+Date: Thu, 30 Jan 2020 09:09:08 -0800
+Subject: [PATCH] Whitelist `tf.linalg.LinearOperatorBlockLowerTriangular` for
+ the TFP Numpy/Jax backends.
+
+PiperOrigin-RevId: 292360495
+---
+ tensorflow_probability/python/internal/backend/jax/BUILD       | 1 +
+ tensorflow_probability/python/internal/backend/numpy/BUILD     | 1 +
+ tensorflow_probability/python/internal/backend/numpy/linalg.py | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/tensorflow_probability/python/internal/backend/jax/BUILD b/tensorflow_probability/python/internal/backend/jax/BUILD
+index b945887a..b9080ffb 100644
+--- a/tensorflow_probability/python/internal/backend/jax/BUILD
++++ b/tensorflow_probability/python/internal/backend/jax/BUILD
+@@ -64,6 +64,7 @@ FILENAMES = [
+     "linear_operator_adjoint",
+     "linear_operator_algebra",
+     "linear_operator_block_diag",
++    "linear_operator_block_lower_triangular",
+     "linear_operator_circulant",
+     "linear_operator_composition",
+     "linear_operator_diag",
+diff --git a/tensorflow_probability/python/internal/backend/numpy/BUILD b/tensorflow_probability/python/internal/backend/numpy/BUILD
+index 07e6a735..1bec87a6 100644
+--- a/tensorflow_probability/python/internal/backend/numpy/BUILD
++++ b/tensorflow_probability/python/internal/backend/numpy/BUILD
+@@ -380,6 +380,7 @@ LINOP_FILES = [
+     "linear_operator_adjoint",
+     "linear_operator_algebra",
+     "linear_operator_block_diag",
++    "linear_operator_block_lower_triangular",
+     "linear_operator_circulant",
+     "linear_operator_composition",
+     "linear_operator_diag",
+diff --git a/tensorflow_probability/python/internal/backend/numpy/linalg.py b/tensorflow_probability/python/internal/backend/numpy/linalg.py
+index f9f09f45..01181b1a 100644
+--- a/tensorflow_probability/python/internal/backend/numpy/linalg.py
++++ b/tensorflow_probability/python/internal/backend/numpy/linalg.py
+@@ -32,6 +32,7 @@ from tensorflow_probability.python.internal.backend.numpy import solve_registrat
+ from tensorflow_probability.python.internal.backend.numpy.linalg_impl import *
+ from tensorflow_probability.python.internal.backend.numpy.linear_operator import *
+ from tensorflow_probability.python.internal.backend.numpy.linear_operator_block_diag import *
++from tensorflow_probability.python.internal.backend.numpy.linear_operator_block_lower_triangular import *
+ from tensorflow_probability.python.internal.backend.numpy.linear_operator_circulant import *
+ from tensorflow_probability.python.internal.backend.numpy.linear_operator_composition import *
+ from tensorflow_probability.python.internal.backend.numpy.linear_operator_diag import *
+-- 
+2.26.0
+
