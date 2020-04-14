@@ -1,11 +1,11 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=libtree-git
-pkgver=1.0.0.r10.g8a8de63
+pkgver=1.0.3.r0.ga48bb32
 pkgrel=1
 pkgdesc="ldd as a tree with an option to bundle dependencies into a single folder "
 arch=('x86_64')
-url="https://github.com/otreblan/libtree"
+url="https://github.com/haampie/libtree"
 license=('MIT')
 depends=('cppglob')
 makedepends=('git' 'cmake' 'cxxopts' 'termcolor' 'elfio')
