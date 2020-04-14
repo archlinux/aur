@@ -1,20 +1,23 @@
 pkgbase = samrewritten-git
 	pkgdesc = A Steam Achievement Manager For Linux.
-	pkgver = r119.7ff28cf
-	pkgrel = 2
+	pkgver = r135.cbc9583
+	pkgrel = 1
 	url = https://github.com/PaulCombal/SamRewritten
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = make
+	makedepends = gcc>=9.0
 	depends = steam
 	depends = yajl
-	depends = gtk3
+	depends = gtkmm3
 	depends = glibc
-	conflicts = sam-rewritten-git
+	depends = curl
+	optdepends = zenity: error messages with style
+	optdepends = valgrind: for automated dev script
+	optdepends = massif-visualizer: for automated dev script
 	source = git+https://github.com/PaulCombal/SamRewritten.git
-	source = samrewritten.desktop
 	sha256sums = SKIP
-	sha256sums = 0a2cb9f113839dab134738500d14987ba825449701f1782ef4d269c325f2f9e1
 
 pkgname = samrewritten-git
 
