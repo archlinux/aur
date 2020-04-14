@@ -1,6 +1,6 @@
 pkgbase = vim-youcompleteme-git
 	pkgdesc = A code-completion engine for Vim
-	pkgver = r2640.4dda6a71
+	pkgver = r2658.05fb5592
 	pkgrel = 1
 	url = https://ycm-core.github.io/YouCompleteMe/
 	install = install.sh
@@ -19,6 +19,7 @@ pkgbase = vim-youcompleteme-git
 	depends = nodejs
 	depends = vim
 	depends = clang
+	depends = python-watchdog
 	optdepends = rustup: rust language support
 	optdepends = omnisharp-roslyn-http-bin: C# language support
 	source = git+https://github.com/bottlepy/bottle.git

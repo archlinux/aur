@@ -38,7 +38,7 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 #                                    Default PKGBUILD Configuration                                       #
 #=========================================================================================================#
 pkgname=vim-youcompleteme-git
-pkgver=r2640.4dda6a71
+pkgver=r2658.05fb5592
 pkgver() {
 	cd "YouCompleteMe" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -49,7 +49,7 @@ arch=('x86_64')
 url='https://ycm-core.github.io/YouCompleteMe/'
 license=('GPL3')
 groups=('vim-plugins')
-depends=('boost' 'boost-libs' 'python' 'nodejs' 'vim' 'clang')
+depends=('boost' 'boost-libs' 'python' 'nodejs' 'vim' 'clang' 'python-watchdog')
 optdepends=('rustup: rust language support'
             'omnisharp-roslyn-http-bin: C# language support')
 makedepends=('cmake' 'git' 'make' 'curl')
@@ -189,7 +189,7 @@ build() {
 	make ycm_core
 
 	if [[ "$_gocode" == "y" ]]; then
-		cd "$srcdir"/YouCompleteMe/third_party/ycmd/third_party/go/src/golang.org/x/tools/cmd/gopls || exit
+		cd "$srcdir"/YouCompleteMe/third_party/ycmd/third_party/go/src/golang.org/x/tools/gopls || exit
 		go build
 	else
 		echo 'Skipping Gocode completer...'
