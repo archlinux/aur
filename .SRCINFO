@@ -8,6 +8,7 @@ pkgbase = foxify-cli-git
 	depends = python
 	depends = python-setuptools
 	depends = python-requests
+	depends = python-ruamel-yaml
 	provides = foxify-cli
 	conflicts = foxify-cli
 	source = foxify-cli-git::git+https://github.com/M4cs/foxify-cli.git
