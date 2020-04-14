@@ -1,9 +1,9 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
-# Contributor: josephgbr <rafael.f.f1@gmail.com>
+# Maintainer: rafaelff <rafaelff@gnome.org>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.5.0.r3332.363b87b33
+pkgver=1.5.0.r3401.49e316e48
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -49,9 +49,6 @@ prepare() {
     rm -rf build
   fi
   mkdir build
-
-  # Disable ZeroGS and ZZOgl-PG
-  rm -rf pcsx2/plugins/{zerogs,zzogl-pg}
 }
 
 build() {
@@ -62,13 +59,15 @@ build() {
 
   cmake ../pcsx2 \
     -DCMAKE_TOOLCHAIN_FILE=cmake/linux-compiler-i386-multilib.cmake \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_LIBRARY_PATH=/usr/lib32 \
     -DPLUGIN_DIR=/usr/lib32/pcsx2 \
     -DGAMEINDEX_DIR=/usr/share/pcsx2 \
-    -DEXTRA_PLUGINS=ON \
-    -DREBUILD_SHADER=ON \
     -DGLSL_API=ON \
+    -DOPENCL_API=ON \
+    -DREBUILD_SHADER=ON \
+    -DGSDX_LEGACY=ON \
     -DPACKAGE_MODE=ON \
     -DXDG_STD=ON
   make
