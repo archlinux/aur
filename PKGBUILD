@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-skia-pathops'
 _pkgname='skia-pathops'
-pkgver='0.3.0'
+pkgver='0.4.0'
 pkgrel=1
 pkgdesc="Python bindings for the Skia library's Path Ops."
 url="https://github.com/fonttools/skia-pathops"
@@ -12,7 +12,7 @@ optdepends=()
 license=('BSD')
 arch=('x86_64')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip")
-sha256sums=('9d5ad3d0e7be0e6ba542ad769a8149f97bf0d431520167840ad3fc4472d16585')
+sha256sums=('cef6a6a263c8fa8f1149be7888ec41db1fa927caec6e7db5845c5e8560347987')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
