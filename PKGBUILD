@@ -3,38 +3,48 @@
 # Contributor: samæ <samæ at marvid dot fr>
 
 _name=league-spartan
-pkgbase=$_name-font
-pkgname=(otf-$_name ttf-$_name ttf-$_name-variable)
-pkgver=2.201
+pkgbase=$_name-font-git
+pkgname=(otf-$_name-git ttf-$_name-git ttf-$_name-variable-git)
+pkgver=2.201.r1.g3675ae1
 pkgrel=1
-epoch=1
 pkgdesc='A geometric sans-serif revival of ATF’s classic Spartan'
 arch=('any')
 url="https://www.theleagueofmoveabletype.com/$_name"
 license=('OFL')
 groups=('lmt-fonts')
-source=("$_name-$pkgver.tar.gz::https://github.com/theleagueof/$_name/archive/$pkgver.tar.gz")
-sha256sums=('7550066a20c19767e5084085d525efba71b7d73fbba2fce4a8eda98464c491b2')
+makedepends=('gftools' 'python-fontmake' 'sfnt2woff-zopfli' 'ttfautohint')
+source=("$_name-git::git+https://github.com/theleagueof/$_name.git")
+sha256sums=('SKIP')
 
-package_otf-league-spartan() {
-    provides=("$pkgbase")
-    cd "$_name-$pkgver"
+pkgver() {
+    cd "$_name-git"
+    git describe --tags --abbrev=7 HEAD | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+    cd "$_name-git"
+    ./build.sh
+}
+
+package_otf-league-spartan-git() {
+    provides=("${pkgbase%-git}")
+    cd "$_name-git"
     install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" fonts/static/otf/*.otf
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ofl{,-faq}.markdown
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.markdown
 }
 
-package_ttf-league-spartan() {
-    provides=("$pkgbase")
-    cd "$_name-$pkgver"
+package_ttf-league-spartan-git() {
+    provides=("${pkgbase%-git}")
+    cd "$_name-git"
     install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" fonts/static/ttf/*.ttf
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ofl{,-faq}.markdown
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.markdown
 }
 
-package_ttf-league-spartan-variable() {
-    provides=("$pkgbase-variable")
-    cd "$_name-$pkgver"
+package_ttf-league-spartan-variable-git() {
+    provides=("${pkgbase%-git}-variable")
+    cd "$_name-git"
     install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" fonts/variable/*.ttf
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ofl{,-faq}.markdown
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.markdown
