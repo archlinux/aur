@@ -1,7 +1,7 @@
 # Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
 
 pkgname="python-yacl"
-pkgver="0.3.1"
+pkgver="0.3.2"
 pkgrel="1"
 pkgdesc="Yet another color logger for Python."
 arch=("any")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("python")
 makedepends=("python-setuptools")
 source=("https://github.com/IngoHeimbach/yacl/archive/v${pkgver}.tar.gz")
-sha256sums=("c91f269d0486c70975fe1c1645c0950aadf1692cac7ea3d7e306ce70d380d2a5")
+sha256sums=("da5c11a60210b062c6c3c55ca3d1e1492cc4dd540edc55a1100ad05f24d89b99")
 
 build() {
     cd "${srcdir}/${pkgname#*-}-${pkgver}" || return
