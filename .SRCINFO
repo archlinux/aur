@@ -11,6 +11,7 @@ pkgbase = foxify-cli-git
 	depends = python-ruamel-yaml
 	depends = python-psutil
 	depends = python-fuzzywuzzy
+	depends = python-tqdm
 	provides = foxify-cli
 	conflicts = foxify-cli
 	source = foxify-cli-git::git+https://github.com/M4cs/foxify-cli.git
