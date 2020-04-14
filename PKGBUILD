@@ -2,20 +2,20 @@
 # Contributor: Lucas Werkmeister <mail@lucaswerkmeister.de>
 # Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
-pkgname=otf-now
-pkgdesc="Now typeface by Alfredo Marco Pradil (OpenType)"
-url='https://fontlibrary.org/en/font/now'
+pkgname=otf-futura-renner
+pkgdesc="A digital version of Futura"
+url='https://fontlibrary.org/en/font/futura-renner'
 license=('custom:SIL Open Font License')
 pkgver=1
-pkgrel=2
+pkgrel=1
 depends=('fontconfig' 'xorg-font-utils' 'fontforge')
 arch=('any')
 install=$pkgname.install
 
-source=(https://fontlibrary.org/assets/downloads/now/92f81dc6f3ba4a48ba3e70f5e826207d/now.zip
+source=(https://fontlibrary.org/assets/downloads/futura-renner/951a69f210c7e73b8d89c27bcd07320a/futura-renner.zip
   convert.ff
 )
-sha512sums=('963899ef209fb9ccdc0548ee24710b43a6183f9b58224f6c3550ec00cb92a2c7d0930efa92aa90a0d3002814296ff86bfb02b9c630a62ceed72f1e233a105258'
+sha512sums=('7f4f9a8299364778357cec0cb76dd40ece3c137c477e38259d95d7ac07caa2b34f8f0cbe807445d6a9f8a0dd362eca542b9753c22839a517137a3d142dd21a97'
             '3224a9e0ad2e7082ef04722711a9b4cb79baec4f1af505926ef8f0494047ce9636c9a1315d69e0c3b4bc0a66ac590f95764912bde913ad6183198d11aa3b7bcc')
 
 package() {
