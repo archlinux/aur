@@ -2,7 +2,7 @@
 
 pkgname=piqueserver-git
 _pkgname=piqueserver
-pkgver=0.1869.433221c
+pkgver=v0.1.3.r534.gd0ee6456
 pkgrel=1
 pkgdesc="an Ace of Spades 0.75 server based on PySnip"
 arch=('any')
@@ -18,14 +18,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  echo "0.$(git rev-list --count HEAD).$(git describe --always)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
-## if needed
-# build() {
-#   cd "${srcdir}/${pkgname}"
-#   python setup.py build
-# }
 
 package() {
   cd "${srcdir}/${pkgname}"
