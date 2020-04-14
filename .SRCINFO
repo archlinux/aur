@@ -10,6 +10,7 @@ pkgbase = libtree
 	makedepends = termcolor
 	makedepends = elfio
 	depends = cppglob
+	depends = gcc-libs
 	optdepends = binutils: For the --strip option
 	optdepends = chrpath: For the --chrpath option
 	source = libtree-1.0.3.tar.gz::https://github.com/haampie/libtree/archive/v1.0.3.tar.gz
