@@ -1,0 +1,6 @@
+post_install() {
+  echo "To be able to use lxdream you will need a copy of the Dreamcast BIOS.
+Guides to dump the BIOS are available at the following URLs:
+https://www.ngemu.com/threads/how-to-dump-your-own-dc-bios-and-flash.51969/
+http://www.dc-swat.ru/www/forum/showthread.php?tid=2304"
+}

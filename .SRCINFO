@@ -1,0 +1,24 @@
+pkgbase = lxdream-git
+	pkgdesc = A linux-based emulator for the Sega Dreamcast system
+	pkgver = r1315.82661a5
+	pkgrel = 1
+	url = http://www.lxdream.org/
+	install = lxdream.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gtk2
+	depends = libgl
+	depends = libisofs
+	depends = sdl
+	optdepends = lirc-utils
+	conflicts = lxdream
+	options = !makeflags
+	source = git+https://github.com/lxdream/lxdream.git
+	source = lxdream.install
+	md5sums = SKIP
+	md5sums = 93c7ce3ab727ccdf79569bc520b3d7a1
+
+pkgname = lxdream-git
+
