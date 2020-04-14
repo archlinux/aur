@@ -3,8 +3,8 @@
 # Contributor: m4tx <m4tx@m4tx.p>
 
 pkgname=edb-debugger
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="EDB (Evan's Debugger) is a cross platform AArch32/x86/x86-64 debugger, inspired by Ollydbg."
 arch=('i686' 'x86_64')
 url='http://www.codef00.com/projects#debugger'
@@ -15,7 +15,7 @@ optdepends=('graphviz')
 source=("https://github.com/eteran/edb-debugger/releases/download/$pkgver/edb-debugger-$pkgver.tgz"
         'edb.desktop'
         'plugin_path.patch')
-sha256sums=('f13de8fd3f26fa1210fb0ff50ff756c2de8de51e75770a57aca35df06d6a0187'
+sha256sums=('96f8ee00c5983e6a4e108a0d738464e8b74da187018229334b498c80e7fe4917'
             'f3e725642c6b87d5a7fd25331a9560d4f9803c22566875b722bc27e275f311a6'
             'f216174d68ef7c26f29a58e409261c5b36af6593fe1778f6b2ad284095662b10')
 
