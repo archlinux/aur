@@ -23,6 +23,7 @@ pkgbase = pulseaudio-modules-bt
 	optdepends = libldac: LDAC support
 	provides = pulseaudio-bluetooth
 	conflicts = pulseaudio-bluetooth
+	conflicts = pulseaudio-modules-bt-git
 	source = https://github.com/EHfive/pulseaudio-modules-bt/archive/v1.3.zip
 	source = https://github.com/pulseaudio/pulseaudio/archive/v13.99.1.zip
 	md5sums = SKIP

@@ -14,7 +14,7 @@ makedepends=("cmake>=3.0" "libavcodec.so>=58" "libldac" "git")
 optdepends=("libavcodec.so>=58: aptX Classic, aptX HD support"
             "libldac: LDAC support")
 provides=("pulseaudio-bluetooth")
-conflicts=("pulseaudio-bluetooth")
+conflicts=("pulseaudio-bluetooth" "pulseaudio-modules-bt-git")
 
 source=("https://github.com/EHfive/pulseaudio-modules-bt/archive/v${pkgver}.zip"
         "https://github.com/pulseaudio/pulseaudio/archive/v${pulseaudio_ver}.zip")
