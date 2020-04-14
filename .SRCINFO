@@ -1,6 +1,6 @@
 pkgbase = libtree
 	pkgdesc = ldd as a tree with an option to bundle dependencies into a single folder
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/haampie/libtree
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = libtree
 	depends = gcc-libs
 	optdepends = binutils: For the --strip option
 	optdepends = chrpath: For the --chrpath option
-	source = libtree-1.0.3.tar.gz::https://github.com/haampie/libtree/archive/v1.0.3.tar.gz
-	sha256sums = f5f90118b7e3608980bca81228064344ace3d8d1f8f7c94c9384ec5f59180f09
+	source = libtree-1.0.4.tar.gz::https://github.com/haampie/libtree/archive/v1.0.4.tar.gz
+	sha256sums = 93941b2d240d3b5481b050e6ea12d4601404baf41777784b0e648b5726ff0eb8
 
 pkgname = libtree
 
