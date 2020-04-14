@@ -1,36 +1,50 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
+# Maintainer: LightDot <lightdot -a-t- g m a i l>
 # Contributor: samæ <samæ at marvid dot fr>
 
 pkgbase=league-fonts
-pkgname=(ttf-$pkgbase otf-$pkgbase)
-pkgver=20171115
-pkgrel=2
+pkgname=($pkgbase $pkgbase-variable otf-$pkgbase ttf-$pkgbase)
+pkgver=0
+pkgrel=1
+epoch=1
 pkgdesc='A package depending on all the fonts from The League of Moveable Type'
 arch=('any')
 url='https://www.theleagueofmoveabletype.com'
 license=('OFL')
-_fonts=('league-spartan'
-        'blackout'
-        'linden-hill'
-        'raleway'
-        'fanwood'
-        'sorts-mill-goudy'
-        'prociono'
-        'chunk'
-        'ostrich-sans'
-        'junction'
-        'league-gothic'
-        'league-mono'
-        'knewave'
-        'league-script'
-        'orbitron'
-        'goudy-bookletter-1911'
-        'sniglet')
+# Some fonts are available only in TTF format
+_ttf=('blackout'
+      'goudy-bookletter-1911'
+      'knewave'
+      'league-mono'
+      'league-script'
+      'linden-hill'
+      'orbitron'
+      'ostrich-sans'
+      'prociono'
+      'sniglet'
+      'sorts-mill-goudy')
+# Some have OTF and TTF variants
+_otf=('chunk'
+      'fanwood'
+      'junction'
+      'league-gothic'
+      'raleway')
+# Some also have VF variants
+_var=('league-spartan')
 
-package_ttf-league-fonts() {
-    depends=("${_fonts[@]/#/ttf-}")
+package_league-fonts() {
+    depends=("${_var[@]/%/-font}" "${_otf[@]/#/otf-}" "${_ttf[@]/#/ttf-}")
+}
+
+package_league-fonts-variable() {
+    depends=("${_var[@]/%/-variable}")
 }
 
 package_otf-league-fonts() {
-    depends=("${_fonts[@]/#/otf-}")
+    depends=("${_var[@]/#/otf-}" "${_otf[@]/#/otf-}")
 }
+
+package_ttf-league-fonts() {
+    depends=("${_var[@]/#/ttf-}" "${_otf[@]/#/otf-}" "${_ttf[@]/#/ttf-}")
+}
+
