@@ -1,8 +1,8 @@
 # Maintainer: Ruben De Smet <ruben dot de dot smet at glycos dot org>
 # Contributor: Jashandeep Sohi <jashandeep.s.sohi@gmail.com>
 
-_gccmajor="9.2.0"
-_gccver="9.2.0"
+_gccmajor="9.3.0"
+_gccver="9.3.0"
 _gccsrc="gcc-${_gccver}"
 
 pkgname='libgccjit'
@@ -16,8 +16,8 @@ license=(
 source=(
    "ftp://gcc.gnu.org/pub/gcc/releases/gcc-$_gccmajor/$_gccsrc.tar.xz"
 )
+sha512sums=('4b9e3639eef6e623747a22c37a904b4750c93b6da77cf3958d5047e9b5ebddb7eebe091cc16ca0a227c0ecbd2bf3b984b221130f269a97ee4cc18f9cf6c444de')
 #  "https://sources.archlinux.org/other/gcc/gcc-8.2.1-20180831.tar.xz"
-sha512sums=('a12dff52af876aee0fd89a8d09cdc455f35ec46845e154023202392adc164848faf8ee881b59b681b696e27c69fd143a214014db4214db62f9891a1c8365c040')
 arch=(
  'i686'
  'x86_64'
@@ -45,18 +45,17 @@ options=(
 
 prepare() {
  cd "$srcdir/$_gccsrc"
- 
+
  # Do not run fixincludes
  sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
- 
 }
 
-build() { 
+build() {
  install -d "$srcdir/$pkgname-build"
  cd "$srcdir/$pkgname-build"
- 
+
  CPPFLAGS="$CPPFLAGS -O2"
- 
+
  ../$_gccsrc/configure \
   --prefix="/usr" \
   --libexecdir="/usr/lib" \
@@ -68,6 +67,7 @@ build() {
   --enable-checking=release \
   --enable-languages=jit \
   --enable-linker-build-id \
+  --enable-checking=release \
   --disable-multilib \
   --disable-bootstrap \
   --disable-libssp \
@@ -78,19 +78,21 @@ build() {
   --disable-libsanitizer \
   --disable-libquadmath-support \
   --disable-libgomp \
-  --disable-libvtv
- 
- make
-}
+  --disable-libvtv \
+  --disable-libsanitizer
 
-check() {
- cd "$srcdir/$pkgname-build/gcc"
- make check-jit RUNTESTFLAGS="-v -v -v"
+
+ make -j$(nproc)
 }
 
 package() {
  cd "$srcdir/$pkgname-build/gcc"
  make DESTDIR="$pkgdir" jit.install-common jit.install-info
+}
+
+check() {
+ cd "$srcdir/$pkgname-build/gcc"
+ make check-jit RUNTESTFLAGS="-v -v -v"
 }
 
 post_install() {
