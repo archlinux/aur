@@ -1,14 +1,13 @@
 pkgbase = kubeval
 	pkgdesc = Command line tool to validate your Kubernetes configuration files
-	pkgver = 0.15.0
+	pkgver = 0.16.1
 	pkgrel = 1
 	url = https://github.com/instrumenta/kubeval
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	conflicts = kubeval-bin
-	source = kubeval-0.15.0.tar.gz::https://github.com/instrumenta/kubeval/archive/0.15.0.tar.gz
-	sha512sums = 2f957786614ae25f784d10fa019c580ccc0219658758ad0e992675032537eb60a2c27dd4df33ee57e5dcb381923a29b0f5ac057742f04356eda1af2002ec647e
+	source = kubeval-0.16.1.tar.gz::https://github.com/instrumenta/kubeval/archive/refs/tags/v0.16.1.tar.gz
+	sha512sums = 6ed4603d6a754c5d256c68a113c3f53745c118f605f215125cebf9d17e4fef505c4011330abec40ce89be6724f13f093a0ed6b5a1bbda3484dcc303a9208bbc8
 
 pkgname = kubeval
-

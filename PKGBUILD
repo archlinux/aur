@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@birks.dev>
 
 pkgname=kubeval
-pkgver=0.15.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc='Command line tool to validate your Kubernetes configuration files'
 arch=(x86_64)
@@ -9,18 +9,23 @@ url='https://github.com/instrumenta/kubeval'
 license=(Apache)
 conflicts=('kubeval-bin')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/instrumenta/kubeval/archive/$pkgver.tar.gz")
-sha512sums=('2f957786614ae25f784d10fa019c580ccc0219658758ad0e992675032537eb60a2c27dd4df33ee57e5dcb381923a29b0f5ac057742f04356eda1af2002ec647e')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/instrumenta/kubeval/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=('6ed4603d6a754c5d256c68a113c3f53745c118f605f215125cebf9d17e4fef505c4011330abec40ce89be6724f13f093a0ed6b5a1bbda3484dcc303a9208bbc8')
 
 build() {
-  # Flags to trim path from binary
-  export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=vendor -modcacherw"
 
-  cd $pkgname-$pkgver
-  go mod vendor
-  go build -ldflags "-X main.version=$pkgver" -o bin/kubeval .
+    #export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
+
+    cd $pkgname-$pkgver
+    go mod vendor
+    go build -ldflags "-X main.version=$pkgver" -o bin/kubeval .
 }
 
 package() {
-  install -Dm 755 "$srcdir/$pkgname-$pkgver/bin/kubeval" "$pkgdir/usr/bin/kubeval"
+    install -Dm 755 "$srcdir/$pkgname-$pkgver/bin/kubeval" "$pkgdir/usr/bin/kubeval"
 }
