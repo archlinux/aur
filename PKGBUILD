@@ -1,13 +1,13 @@
 # Maintainer: Max Beikirch <max.beikirch (at) unitybox (dot) de>
 pkgname=squash-git
-pkgver=v0.7.0.r498.g713eeca
+pkgver=0.7.0.r498.g713eeca
 pkgrel=1
 pkgdesc="tool for compression benchmarks"
 arch=('x86_64')
 url="https://quixdb.github.io/squash/"
-license=('custom')
+license=('MIT')
 depends=('ragel')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 source=("git+https://github.com/quixdb/squash.git")
 md5sums=('SKIP')
 
