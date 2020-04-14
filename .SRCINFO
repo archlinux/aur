@@ -1,0 +1,19 @@
+pkgbase = dhcp-helper
+	pkgdesc = daemon for DHCP relay agent
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://thekelleys.org.uk/dhcp-helper/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = iproute
+	backup = etc/conf.d/dhcp-helper
+	source = http://thekelleys.org.uk/dhcp-helper/dhcp-helper-1.2.tar.gz
+	source = dhcp-helper.conf
+	source = dhcp-helper.service
+	sha256sums = ae9e589ec50f1b5be302e7ebb8111ad734a11e2422a9cf61d08f7858ea2366ad
+	sha256sums = 08a8691c2eb4d249be20f6d93bd2fd987a73d9c91e4be8d73c239a3756788d5f
+	sha256sums = 90edc47cbd1264cb3b8619c3aebab78fd59de40b81550ccf488e404cb9d4f1da
+
+pkgname = dhcp-helper
+

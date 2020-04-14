@@ -1,0 +1,11 @@
+[Unit]
+Description=daemon for DHCP relay agent
+
+[Service]
+Type=forking
+PIDFile=/run/dhcp-helper.pid
+EnvironmentFile=/etc/conf.d/dhcp-helper
+ExecStart=/usr/bin/dhcp-helper -r /run/dhcp-helper.pid -i $INTIF -b $EXTIF
+
+[Install]
+WantedBy=multi-user.target
