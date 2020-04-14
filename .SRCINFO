@@ -1,6 +1,6 @@
 pkgbase = spotify-tray-git
 	pkgdesc = Tray icon for the Spotify Linux client application
-	pkgver = r13.2793099
+	pkgver = 1.2.0.r0.gdb2f164
 	pkgrel = 1
 	url = https://github.com/tsmetana/spotify-tray
 	arch = x86_64

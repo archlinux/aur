@@ -1,6 +1,6 @@
 # Maintainer: Matthew Sexton <wsdmatty@gmail.com>
 pkgname=spotify-tray-git
-pkgver=r13.2793099
+pkgver=1.2.0.r0.gdb2f164
 pkgrel=1
 pkgdesc="Tray icon for the Spotify Linux client application"
 arch=('x86_64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -27,5 +27,5 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir" install
 }
