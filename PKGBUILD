@@ -4,7 +4,7 @@
 # Contributor: Qinq-net
 
 pkgname=osp-tracker
-pkgver=5.1.3
+pkgver=5.1.4
 arch=('x86_64')
 pkgrel=2
 pkgdesc='Tracker video analysis and modeling tool'
