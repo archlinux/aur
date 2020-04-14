@@ -3,7 +3,7 @@
 
 pkgname=pagmo
 pkgver=2.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model"
 arch=('i686' 'x86_64')
 url="https://github.com/esa/pagmo2"
@@ -12,47 +12,14 @@ depends=('boost' 'intel-tbb')
 optdepends=('coin-or-ipopt: Ipopt optimizer support'
             'eigen: library for matrix math'
             'nlopt: NLopt optimizer support')
-makedepends=('cmake')
+makedepends=('cmake' 'coin-or-ipopt' 'eigen' 'nlopt')
 _name=pagmo2
 source=(https://github.com/esa/${_name}/archive/v${pkgver}.tar.gz)
 sha256sums=('07977be690b512ea11fc40d5b8bfa0a7a8507ce9053a615c2bc4725d355ef9a8')
 
 _buildtype="Release"
 
-_cmake_options=()
-
-check_optdepends() {
-
-    # Check if coin-or-ipopt is installed
-    if (pacman -Qqs coin-or-ipopt >/dev/null) ; then
-        msg "Enabling ipopt support"
-        _cmake_options=(${_cmake_options[@]} -DPAGMO_WITH_IPOPT=ON)
-    else
-        msg "Disabling ipopt support"
-    fi
-
-    # Check if eigen is installed
-    if (pacman -Qqs eigen3 >/dev/null) ; then
-        msg "Enabling eigen support"
-        _cmake_options=(${_cmake_options[@]} -DPAGMO_WITH_EIGEN3=ON)
-    else
-        msg "Disabling eigen support"
-    fi
-
-    # Check if nlopt is installed
-    if (pacman -Qqs nlopt >/dev/null) ; then
-        msg "Enabling nlopt support"
-        _cmake_options=(${_cmake_options[@]} -DPAGMO_WITH_NLOPT=ON)
-    else
-        msg "Disabling nlopt support"
-    fi
-
-}
-
 build() {
-
-    # Check optional dependencies
-    check_optdepends
 
     cd "${srcdir}/${_name}-${pkgver}"
 
@@ -65,7 +32,6 @@ build() {
     cmake \
         -DCMAKE_BUILD_TYPE="${buildtype}" \
         -DCMAKE_INSTALL_PREFIX="/usr" \
-        ${_cmake_options[@]} \
         "${srcdir}/${_name}-${pkgver}"
 
     msg "Building the project"
