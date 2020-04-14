@@ -1,7 +1,8 @@
 pkgbase = audacious-plugins-git
-	pkgdesc = Plugins for Audacious
-	pkgver = 4.1.r8730.06d896040
+	pkgdesc = Plugins for Audacious (git version)
+	pkgver = 4.0.beta1.r146.g0eb3c3d31
 	pkgrel = 1
+	epoch = 1
 	url = https://audacious-media-player.org/
 	arch = i686
 	arch = x86_64
@@ -33,7 +34,7 @@ pkgbase = audacious-plugins-git
 	makedepends = libcue
 	makedepends = libbs2b
 	makedepends = git
-	depends = audacious-git>=4.1
+	depends = audacious-git
 	optdepends = alsa-lib: Advanced Linux Sound Arch. output
 	optdepends = pulseaudio: PulseAudio output
 	optdepends = jack2: Jack Audio Connection Kit output

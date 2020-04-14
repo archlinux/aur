@@ -6,16 +6,16 @@
 
 _pkgname=audacious-plugins
 pkgname="$_pkgname-git"
-_pkgver=4.1
-pkgver=4.1.r8730.06d896040
+pkgver=4.0.beta1.r146.g0eb3c3d31
 pkgrel=1
-pkgdesc="Plugins for Audacious"
+epoch=1
+pkgdesc="Plugins for Audacious (git version)"
 arch=('i686' 'x86_64')
 url="https://audacious-media-player.org/"
 license=('BSD' 'GPL')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-depends=("audacious-git>=$_pkgver")
+depends=('audacious-git')
 
 makedepends=('glib2' 'python' # for gdbus-codegen
              'alsa-lib' 'pulseaudio' 'jack' 'lame' 'libvorbis' 'flac' 'mpg123'
@@ -55,7 +55,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^audacious-plugins-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
