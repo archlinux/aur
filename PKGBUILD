@@ -1,4 +1,5 @@
-# Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
+# Maintainer: Andrew Whatson <https://aur.archlinux.org/account/flatwhatson>
+# Maintainer of emacs-git: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
 
 ################################################################################
 # CAVEAT LECTOR: This PKGBUILD is highly opinionated. I give you
@@ -57,19 +58,19 @@ NOGZ="YES"        # Don't compress .el files.
 ################################################################################
 
 ################################################################################
-pkgname="emacs-git"
-pkgver=28.0.50.139945
+pkgname="emacs-native-comp-git"
+pkgver=28.0.50.141681
 pkgrel=1
-pkgdesc="GNU Emacs. Development master branch."
+pkgdesc="GNU Emacs. Development native-comp branch."
 arch=('x86_64' )
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3' )
-depends=('alsa-lib' 'gnutls' 'libxml2' 'jansson' 'libotf' 'harfbuzz' 'gpm')
+depends=('alsa-lib' 'gnutls' 'libxml2' 'jansson' 'libotf' 'harfbuzz' 'gpm' 'libgccjit')
 makedepends=('git')
 provides=('emacs' 'emacs-seq')
-conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq')
-replaces=('emacs26-git' 'emacs27-git' 'emacs-seq')
-source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
+conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-git' 'emacs-seq')
+replaces=('emacs26-git' 'emacs27-git' 'emacs-git' 'emacs-seq')
+source=("emacs-git::git://git.savannah.gnu.org/emacs.git#branch=feature/native-comp")
 # If Savannah access is blocked for reasons, use Github instead.
 # Edit the config file of your local repo copy as well.
 #source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
@@ -188,6 +189,7 @@ build() {
 # Good luck!
    --without-gconf
    --without-gsettings
+   --with-nativecomp
   )
 
 ################################################################################
@@ -261,7 +263,7 @@ fi
   # Please note that incremental compilation implies that you
   # are reusing your src directory!
   #
-  make
+  make NATIVE_FAST_BOOT=1
 
   # You may need to run this if 'loaddefs.el' files become corrupt.
   #cd "$srcdir/emacs-git/lisp"
