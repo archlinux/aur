@@ -1,6 +1,6 @@
 # Maintainer: Stefanos Mitropoulos stefmitropoulos@gmail.com
 pkgname=wol_qt
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="Qt gui for sending WakeOnLan packets"
 arch=(x86_64)
@@ -12,11 +12,11 @@ depends=('qt5-base')
 makedepends=('gcc'
              'cmake')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/stefmitropoulos/wol_qt/archive/v${pkgver}.tar.gz"
-    "linet.tar.gz::https://github.com/stefmitropoulos/linet/archive/v1.1.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/stefmitropoulos/wol_qt/archive/${pkgver}.tar.gz"
+    "linet.tar.gz::https://github.com/stefmitropoulos/linet/archive/1.3.tar.gz"
 )
-sha256sums=('e6445994a6e768f7964c3cb78c9d240c321bacb65afe50659ef9b61a732e4684'
-            '09d33b9d733f59f6792247a0dfcaa9414102d4a04531386679f4e49b8b326cae')
+sha256sums=('91788c80d2cf71371dd69821636005dd4b8b6643a788ce45c066506f8a7e5a3c'
+            '7c2d9af700ae1ed4784b8d471d26af4ba3bbb74973d02a9bb8dd5ec468b36e4c')
 
 prepare() {
   mkdir "${pkgname}-${pkgver}/build"
