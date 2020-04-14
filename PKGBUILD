@@ -8,8 +8,8 @@ pkgdesc='A FPS based on the id Tech 4 engine using portals and variable gravity.
 arch=('i686' 'x86_64')
 url='http://icculus.org/prey/'
 license=('custom')
-depends_i686=('alsa-lib' 'libpulse' 'libglvnd' 'openal' 'sdl')
-depends_x86_64=('lib32-alsa-lib' 'lib32-libglvnd' 'lib32-openal' 'lib32-sdl')
+depends_i686=('alsa-lib' 'libpulse' 'mesa' 'openal' 'sdl')
+depends_x86_64=('lib32-alsa-lib' 'lib32-mesa' 'lib32-openal' 'lib32-sdl')
 optdepends_i686=(
     'alsa-plugins: pulseaudio-support'
 'libpulse: pulseaudio support')
