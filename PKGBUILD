@@ -1,44 +1,35 @@
 # Maintainer: Stefanos Mitropoulos stefmitropoulos@gmail.com
 pkgname=wol_qt
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
-epoch=
 pkgdesc="Qt gui for sending WakeOnLan packets"
 arch=(x86_64)
 url="https://github.com/stefmitropoulos/wol_qt"
 license=('GPL')
-#depends=(
-#    'libc.so'
-#    'libQt5Widgets.so'
-#    'libQt5Core.so'
-#    'libstdc++.so'
-#    'libgcc_s.so'
-#)
+
+depends=('qt5-base')
 
 makedepends=('gcc'
              'cmake')
-backup=()
-options=()
-install=
-changelog=
-source=("linet::https://github.com/stefmitropoulos/linet/archive/master.tar.gz"
-        "${pkgname}-${pkgver}.tar.gz::https://github.com/stefmitropoulos/wol_qt/archive/master.tar.gz"
-        )
-md5sums=('2b83a75ee4e31632de5390b8eebaac57'
-         '9a743fc5acfe60d0222347a2a89a3cee')
+source=(
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/stefmitropoulos/wol_qt/archive/v${pkgver}.tar.gz"
+    "linet.tar.gz::https://github.com/stefmitropoulos/linet/archive/v1.1.tar.gz"
+)
+sha256sums=('e6445994a6e768f7964c3cb78c9d240c321bacb65afe50659ef9b61a732e4684'
+            '09d33b9d733f59f6792247a0dfcaa9414102d4a04531386679f4e49b8b326cae')
 
 prepare() {
-  mkdir "$pkgname-master"/build
-	mv linet-master "$pkgname-master/linet"
+  mkdir "${pkgname}-${pkgver}/build"
+	mv linet-*/* "${pkgname}-${pkgver}/linet"
 }
 
 build() {
-	cd "$pkgname-master/build"
+	cd "${pkgname}-${pkgver}/build"
   cmake ..
-  make -j$(nproc)
+  make 
 }
 
 package() {
-	cd "$pkgname-master"/build
+	cd "${pkgname}-${pkgver}/build"
 	make DESTDIR="$pkgdir/" install
 }

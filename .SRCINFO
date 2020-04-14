@@ -1,16 +1,17 @@
 pkgbase = wol_qt
 	pkgdesc = Qt gui for sending WakeOnLan packets
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/stefmitropoulos/wol_qt
 	arch = x86_64
 	license = GPL
 	makedepends = gcc
 	makedepends = cmake
-	source = linet::https://github.com/stefmitropoulos/linet/archive/master.tar.gz
-	source = wol_qt-1.4.tar.gz::https://github.com/stefmitropoulos/wol_qt/archive/master.tar.gz
-	md5sums = 2b83a75ee4e31632de5390b8eebaac57
-	md5sums = 9a743fc5acfe60d0222347a2a89a3cee
+	depends = qt5-base
+	source = wol_qt-1.5.tar.gz::https://github.com/stefmitropoulos/wol_qt/archive/v1.5.tar.gz
+	source = linet.tar.gz::https://github.com/stefmitropoulos/linet/archive/v1.1.tar.gz
+	sha256sums = e6445994a6e768f7964c3cb78c9d240c321bacb65afe50659ef9b61a732e4684
+	sha256sums = 09d33b9d733f59f6792247a0dfcaa9414102d4a04531386679f4e49b8b326cae
 
 pkgname = wol_qt
 
