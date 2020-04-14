@@ -4,6 +4,7 @@ pkgbase="ttf-inter"
 pkgname=("ttf-inter" "ttf-inter-display")
 pkgver=3.13
 pkgrel=1
+epoch=1
 arch=("any")
 url="https://rsms.me/inter"
 license=("custom")
@@ -34,9 +35,10 @@ package_ttf-inter()
 	pkgname="ttf-inter"
 	pkgdesc="A typeface carefully crafted & designed for computer screens"
 
+	cd "Inter"
 	install -D -m644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/Inter/LICENSE"
 
-	cd "Inter/Inter Desktop"
+	cd "Inter Desktop"
 	rm "Inter-V.otf"
 	install -D -m644 *".otf" "${pkgdir}/usr/share/fonts/opentype"
 }
@@ -46,9 +48,10 @@ package_ttf-inter-display()
 	pkgname="ttf-inter-display"
 	pkgdesc="A new \"display\" variant of Inter"
 
+	cd "Inter Display"
 	install -D -m644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/Inter Display/LICENSE"
 
-	cd "Inter Display/Inter Desktop"
+	cd "Inter Desktop"
 	rm "InterDisplay-V.otf"
 	install -D -m644 *".otf" "${pkgdir}/usr/share/fonts/opentype"
 }

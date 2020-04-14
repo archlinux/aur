@@ -1,6 +1,7 @@
 pkgbase = ttf-inter
 	pkgver = 3.13
 	pkgrel = 1
+	epoch = 1
 	url = https://rsms.me/inter
 	arch = any
 	license = custom
