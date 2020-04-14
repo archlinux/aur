@@ -2,7 +2,7 @@
 #                         (What a silly email, I regret making it like this.).
 
 pkgname=("stretchy-snek-boi")
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="A snake game clone."
 arch=("x86_64")
