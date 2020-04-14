@@ -1,0 +1,26 @@
+pkgbase = porto-python
+	pkgdesc = Edit Jupyter notebooks on the desktop - written in Python with Gtk
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://www.cvfosammmm.org/porto/
+	arch = any
+	license = GPL3
+	makedepends = tar
+	depends = hicolor-icon-theme
+	depends = sagemath
+	depends = python-bleach
+	depends = python-markdown
+	depends = python-pypandoc
+	depends = python-jupyter_client
+	depends = python-ipykernel
+	depends = jupyter-nbformat
+	depends = gtk3
+	depends = gtksourceview3
+	depends = pygobject-devel
+	source = https://github.com/cvfosammmm/Porto/archive/v0.0.2.tar.gz
+	source = porto.sh
+	sha256sums = 7c786c215d2bb4d68f36500505a7614071ebcdbfb94c4b85559e5e33b4f56b73
+	sha256sums = 451a05ac1ad44580dbab838458adcf3d1ece9c74febb679272d514a54e02d10c
+
+pkgname = porto-python
+
