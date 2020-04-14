@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libjcat
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Library for reading and writing Jcat files"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('glibc' 'gpgme' 'json-glib')
 makedepends=('meson' 'gobject-introspection' 'help2man' 'vala')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/hughsie/libjcat/archive/$pkgver.tar.gz")
-sha256sums=('07bce18b9b4ddbfd3e106251a540884be0715047aaece7f53dcdaed1bd2f1b11')
+sha256sums=('0b1fae2b1ca8658848ae20b190ae7a70b480730ac0342cc86b2c9aa48a5a2c46')
 
 
 build() {

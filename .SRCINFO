@@ -1,6 +1,6 @@
 pkgbase = libjcat
 	pkgdesc = Library for reading and writing Jcat files
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/hughsie/libjcat
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = libjcat
 	depends = glibc
 	depends = gpgme
 	depends = json-glib
-	source = libjcat-0.1.0-src.tar.gz::https://github.com/hughsie/libjcat/archive/0.1.0.tar.gz
-	sha256sums = 07bce18b9b4ddbfd3e106251a540884be0715047aaece7f53dcdaed1bd2f1b11
+	source = libjcat-0.1.1-src.tar.gz::https://github.com/hughsie/libjcat/archive/0.1.1.tar.gz
+	sha256sums = 0b1fae2b1ca8658848ae20b190ae7a70b480730ac0342cc86b2c9aa48a5a2c46
 
 pkgname = libjcat
 
