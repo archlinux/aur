@@ -3,7 +3,7 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 
 pkgname=rust-nightly-bin
-pkgver=1.37.0_2019.06.23
+pkgver=1.44.0_2020.04.13
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Fast, concurrent, safe. The Rust programming language and its package manager, Cargo.'
@@ -32,7 +32,7 @@ package() {
         --disable-ldconfig \
         --destdir="${pkgdir}" \
         --prefix=/usr/ \
-        --components=rustc,cargo,rls-preview,miri-preview,llvm-tools-preview,rustfmt-preview,rust-std-x86_64-unknown-linux-gnu,rust-docs,rust-analysis-x86_64-unknown-linux-gnu
+        --components=rustc,cargo,llvm-tools-preview,rust-std-x86_64-unknown-linux-gnu,rust-docs,rust-analysis-x86_64-unknown-linux-gnu
 
 
     install -dm755 "${pkgdir}/usr/share/bash-completion/"
