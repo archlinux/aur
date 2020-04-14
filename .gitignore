@@ -1,5 +1,6 @@
-/*.zip
-/*.gz
-/*.xz
-/src/
-/pkg/
+*.gz
+/pkg
+/src
+*.tar
+*.xz
+*.zip
