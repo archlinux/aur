@@ -1,0 +1,25 @@
+--- /usr/bin/kali-undercover	2020-03-05 16:03:06.000000000 +0800
++++ /usr/bin/kali-undercover.new	2020-04-14 21:30:44.488616038 +0800
+@@ -17,7 +17,9 @@
+ mkdir -p $DIR
+ 
+ # Hide existing notifications
+-killall xfce4-notifyd 2> /dev/null
++# Disabled for Arch, new theme does apply on existing notification and if we want to do this,
++# we should make sure it will be up again
++# killall xfce4-notifyd 2> /dev/null
+ 
+ # TODO remove old code block
+ # Actual functionality moved to desktopconfig.py
+@@ -72,6 +74,11 @@
+ 	enable_undercover
+ fi
+ 
++# On Arch, xfsettingsd may die and xfce4-panel needs an extra restart to work
++sleep 1
++xfsettingsd
++xfce4-panel --restart
++
+ if [ $(cat /proc/$PPID/comm) = 'bash' ]
+ then
+ 	clear

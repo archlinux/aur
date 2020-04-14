@@ -1,7 +1,7 @@
 pkgbase = kali-undercover
 	pkgdesc = Kali Undercover Mode
 	pkgver = 2020.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/kalilinux/packages/kali-undercover/
 	arch = any
 	license = GPL3
@@ -11,13 +11,16 @@ pkgbase = kali-undercover
 	depends = xfdesktop
 	depends = xfwm4
 	depends = ttf-liberation
+	depends = xfce4-settings
 	optdepends = xfce4-whiskermenu-plugin: for menu on undercover mode
 	optdepends = xfce4-datetime-plugin: for date and time on undercover mode
 	optdepends = xfce4-notifyd: for settings restored notification
 	optdepends = libnotify: for settings restored notification
 	optdepends = psmisc: for clearing existing notificaion
 	source = https://gitlab.com/kalilinux/packages/kali-undercover/-/archive/kali/2020.2.0/kali-undercover-kali-2020.2.0.tar.gz
+	source = kali-undercover.patch
 	sha256sums = 906e7881da3be1756dcc77bcad2612eb53f2f5a17e1349c24fee060b7f522d14
+	sha256sums = f652a97f81712cfc81ad9f92478e6b6a8470e9097387e4cf4c84dd0b6b4bbdf8
 
 pkgname = kali-undercover
 
