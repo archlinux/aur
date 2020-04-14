@@ -1,0 +1,14 @@
+pkgbase = grpcurl
+	pkgdesc = Like cURL, but for gRPC: Command-line tool for interacting with gRPC servers
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/fullstorydev/grpcurl
+	arch = x86_64
+	license = MIT
+	makedepends = go-pie
+	conflicts = grpcurl-bin
+	source = grpcurl-1.5.1.tar.gz::https://github.com/fullstorydev/grpcurl/archive/v1.5.1.tar.gz
+	md5sums = 2be962886db190fd11b5f4492ac979d9
+
+pkgname = grpcurl
+
