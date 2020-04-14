@@ -4,9 +4,10 @@
 
 _name=league-spartan
 pkgbase=$_name-font
-pkgname=(otf-$_name ttf-$_name-variable) # ttf-$_name
+pkgname=(otf-$_name ttf-$_name ttf-$_name-variable)
 pkgver=2.201
 pkgrel=1
+epoch=1
 pkgdesc='A geometric sans-serif revival of ATF’s classic Spartan'
 arch=('any')
 url="https://www.theleagueofmoveabletype.com/$_name"
