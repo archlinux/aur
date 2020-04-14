@@ -15,7 +15,6 @@ pkgbase = scipoptsuite
 	makedepends = cppad
 	makedepends = bliss
 	makedepends = boost
-	makedepends = bliss
 	depends = gmp
 	depends = readline
 	depends = zlib

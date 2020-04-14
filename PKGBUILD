@@ -14,7 +14,7 @@ url='https://scip.zib.de'
 license=('LGPL-3.0' 'ZIB Academic License')
 replaces=('ziboptsuite')
 depends=('gmp' 'readline' 'zlib' 'gmp' 'cppad' 'bliss')
-makedepends=('ninja' 'cmake' "${depends[@]}" 'boost' 'bliss')
+makedepends=('ninja' 'cmake' "${depends[@]}" 'boost')
 optdepends=('coin-or-ipopt: COIN-OR Interior Point Optimizer IPOPT'
             'gsl: GNU Scientific Library'
             'cliquer: C routines for finding cliques in an arbitrary weighted graph'
