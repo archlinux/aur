@@ -1,7 +1,7 @@
-# mkinitcpio preset file for the 'linux-git' package
+# mkinitcpio preset file for the 'linux-nitrous' package
 
 ALL_config="/etc/mkinitcpio.conf"
-ALL_kver="/boot/vmlinuz-linux-nitrous-git"
+ALL_kver="/boot/vmlinuz-linux-nitrous"
 
 PRESETS=('default' 'fallback')
 
