@@ -4,7 +4,7 @@
 # Maintainer: Andre Klitzing <aklitzing () gmail () com>
 # AUR Category: devel
 pkgname=tortoisehg
-pkgver=5.3.1
+pkgver=5.3.2
 pkgrel=1
 #_pkgchangeset=1067191796e8
 pkgdesc="Graphical tools for Mercurial"
@@ -42,4 +42,4 @@ package() {
 	rm -rf "${pkgdir}/usr/lib/python3.8/site-packages/hgext3rd/__pycache__/"
 }
 
-sha256sums=('1fb4945e2a7daaf684d52bb05f1d9c6eddfdb1b6bc2b7b5afc5dd1d3200ca7d0')
+sha256sums=('ad67279fd774132212494a2debfa474b6bdd2fb320f7dbe090a4ad5520e3443d')
