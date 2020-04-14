@@ -40,7 +40,7 @@ package_ttf-inter()
 
 	cd "Inter Desktop"
 	rm "Inter-V.otf"
-	install -D -m644 *".otf" "${pkgdir}/usr/share/fonts/opentype"
+	install -D -m644 *".otf" -t "${pkgdir}/usr/share/fonts/opentype"
 }
 
 package_ttf-inter-display()
@@ -53,5 +53,5 @@ package_ttf-inter-display()
 
 	cd "Inter Desktop"
 	rm "InterDisplay-V.otf"
-	install -D -m644 *".otf" "${pkgdir}/usr/share/fonts/opentype"
+	install -D -m644 *".otf" -t "${pkgdir}/usr/share/fonts/opentype"
 }
