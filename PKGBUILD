@@ -79,8 +79,8 @@ prepare()
 build()
 {
 	export CPPFLAGS="-D_FORTIFY_SOURCE=2"
-	export CFLAGS="-march=native -mtune=native -O3 -pipe -fno-plt"
-	export CXXFLAGS="-march=native -mtune=native -O3 -pipe -fno-plt"
+	export CFLAGS="-O3 -pipe -fno-plt"
+	export CXXFLAGS="-O3 -pipe -fno-plt"
 
 	cd "nginx"
 	./auto/configure \
