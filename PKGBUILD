@@ -5,7 +5,7 @@
 pkgbase=league-fonts
 pkgname=($pkgbase $pkgbase-variable otf-$pkgbase ttf-$pkgbase)
 pkgver=0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='A package depending on all the fonts from The League of Moveable Type'
 arch=('any')
@@ -45,6 +45,5 @@ package_otf-league-fonts() {
 }
 
 package_ttf-league-fonts() {
-    depends=("${_var[@]/#/ttf-}" "${_otf[@]/#/otf-}" "${_ttf[@]/#/ttf-}")
+    depends=("${_var[@]/#/ttf-}" "${_otf[@]/#/ttf-}" "${_ttf[@]/#/ttf-}")
 }
-
