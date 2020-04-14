@@ -7,6 +7,7 @@ pkgdesc='Command-line tool to manage your hosts file'
 arch=('x86_64')
 url='https://github.com/guumaster/hostctl'
 license=('MIT')
+conflicts=("${pkgname}-bin")
 makedepends=('go-pie')
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('f5c1778797a6f9b4550f55538822b166d4a9307a68bb01428eeec2eb12cbc5a1')
