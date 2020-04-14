@@ -1,6 +1,6 @@
 pkgbase = bpftrace
 	pkgdesc = High-level tracing language for Linux eBPF
-	pkgver = 0.9.4
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/iovisor/bpftrace
 	arch = i686
@@ -14,10 +14,11 @@ pkgbase = bpftrace
 	depends = llvm-libs
 	depends = clang
 	depends = bcc
+	optdepends = libbpf>=0.0.5: BTF support (required at compile time)
 	provides = bpftrace
 	conflicts = bpftrace-git
-	source = https://github.com/iovisor/bpftrace/archive/v0.9.4.tar.gz
-	sha512sums = d2b32235fa81d6f06771df32877388a9105230adfc638b0d0ebf4f11a567246e8514d93c14da9c7008dbacd6b2c4108604fc5a2721ef831efa5c596cbe50b1da
+	source = https://github.com/iovisor/bpftrace/archive/v0.10.0.tar.gz
+	sha512sums = da400efe78cea505a32deead594b047ec4394d3eefe86e7b6853fe2dc715c5847a3abcbd26c1fac39d0a534f1e57d6c0bc3625e0c3f1054b0d84b7b1d6eb69b9
 
 pkgname = bpftrace
 
