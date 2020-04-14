@@ -10,9 +10,7 @@ pkgbase = otf-futura-renner
 	depends = xorg-font-utils
 	depends = fontforge
 	source = https://fontlibrary.org/assets/downloads/futura-renner/951a69f210c7e73b8d89c27bcd07320a/futura-renner.zip
-	source = convert.ff
 	sha512sums = 7f4f9a8299364778357cec0cb76dd40ece3c137c477e38259d95d7ac07caa2b34f8f0cbe807445d6a9f8a0dd362eca542b9753c22839a517137a3d142dd21a97
-	sha512sums = 3224a9e0ad2e7082ef04722711a9b4cb79baec4f1af505926ef8f0494047ce9636c9a1315d69e0c3b4bc0a66ac590f95764912bde913ad6183198d11aa3b7bcc
 
 pkgname = otf-futura-renner
 
