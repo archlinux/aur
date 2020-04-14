@@ -1,7 +1,7 @@
 pkgbase = libgccjit
 	pkgdesc = Just-In-Time Compilation using GCC.
-	pkgver = 9.2.0
-	pkgrel = 1
+	pkgver = 9.3.0
+	pkgrel = 0
 	url = https://gcc.gnu.org/wiki/JIT
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = libgccjit
 	depends = libmpc
 	depends = zlib
 	options = !emptydirs
-	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-9.2.0/gcc-9.2.0.tar.xz
-	sha512sums = a12dff52af876aee0fd89a8d09cdc455f35ec46845e154023202392adc164848faf8ee881b59b681b696e27c69fd143a214014db4214db62f9891a1c8365c040
+	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-9.3.0/gcc-9.3.0.tar.xz
+	sha512sums = 4b9e3639eef6e623747a22c37a904b4750c93b6da77cf3958d5047e9b5ebddb7eebe091cc16ca0a227c0ecbd2bf3b984b221130f269a97ee4cc18f9cf6c444de
 
 pkgname = libgccjit
 

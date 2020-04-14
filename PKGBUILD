@@ -8,7 +8,7 @@ _gccsrc="gcc-${_gccver}"
 
 pkgname='libgccjit'
 pkgver="${_gccver}"
-pkgrel=1
+pkgrel=0
 pkgdesc='Just-In-Time Compilation using GCC.'
 url='https://gcc.gnu.org/wiki/JIT'
 license=(
