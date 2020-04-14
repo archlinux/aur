@@ -1,0 +1,17 @@
+pkgbase = rime-xkjd6-ducksoft-git
+	pkgdesc = 星空键道6 for Rime (DuckSoft 调教版)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/DuckSoft/rime-jd6-ducksoft
+	arch = x86_64
+	license = GPL3
+	makedepends = librime
+	makedepends = rime-prelude
+	makedepends = rime-essay
+	provides = rime-xkjd6
+	conflicts = rime-xkjd6
+	source = rime-xkjd6-ducksoft-git::git+https://github.com/DuckSoft/rime-jd6-ducksoft
+	sha512sums = SKIP
+
+pkgname = rime-xkjd6-ducksoft-git
+
