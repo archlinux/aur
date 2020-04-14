@@ -1,0 +1,15 @@
+[Unit]
+Description=metricbeat
+Documentation=https://www.elastic.co/guide/en/beats/metricbeat/current
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/metricbeat -c /etc/metricbeat/metricbeat.yml \
+                            -path.config /etc/metricbeat \
+                            -path.home /usr/share/metricbeat \
+                            -path.data /var/lib/metricbeat \
+                            -path.logs /var/log/metricbeat
+User=metricbeat
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,27 @@
+pkgbase = metricbeat-oss-bin
+	pkgdesc = Metrics collection and shipping beats component (precompiled)
+	pkgver = 7.6.2
+	pkgrel = 1
+	url = https://www.elastic.co/products/beats
+	install = metricbeat.install
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	optdepends = elasticsearch: for running standalone installation
+	provides = metricbeat
+	conflicts = metricbeat
+	options = !strip
+	backup = etc/metricbeat/metricbeat.yml
+	source = metricbeat.install
+	source = metricbeat.service
+	source = metricbeat.sysusers
+	sha256sums = 1399976457d5c848a5274fa739ade7bdd187b035b5885dc77691051c3b5da718
+	sha256sums = f4c4c85169d27ceea967c046109baacf54aa99e6569cd8acbedcab530dba48e3
+	sha256sums = dd96ec7ab1f0464f6aa193d710d482aff8784c489b0cf6c7dadd7e3aabdf499a
+	source_i686 = https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-oss-7.6.2-linux-x86.tar.gz
+	sha256sums_i686 = 286cd62684a4c24ae18ac37c0365874669494813d8ff09489e5a5210f66ff780
+	source_x86_64 = https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-oss-7.6.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = cdf938cea6a058b4c5dd4129e185e21c77f35d5170e77ce6c0aa2d89c10856d6
+
+pkgname = metricbeat-oss-bin
+

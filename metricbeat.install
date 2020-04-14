@@ -1,0 +1,26 @@
+# Arg 1: the new package version
+post_install() {
+
+  # Create user and group
+  systemd-sysusers metricbeat.conf
+
+  # Required at this stage to ensure user & group are available
+  install -d -o metricbeat -g metricbeat /var/lib/metricbeat
+  install -d -o metricbeat -g metricbeat /var/log/metricbeat
+}
+
+# Arg 1: new package version, arg 2: old package version
+post_upgrade() {
+  # All packages <= 1.0.0_rc2-1 didn't have discrete users
+  if [ "`vercmp $2 1.0.0_rc2-1`" -le 0 ] ; then
+      post_install
+  fi
+}
+
+# Arg 1: the old package version
+post_remove() {
+  echo "This package does not automatically remove the metricbeat user."
+  echo "Please do so manually if it is no longer required."
+}
+
+# vim:set ts=2 sw=2 et:
