@@ -1,38 +1,45 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname=ttf-muli
-pkgver=2.0
-pkgrel=2
+pkgver=3.000
+pkgrel=1
 description='Sans serif font by Vernon Adams'
-arch=('any')
-url='https://github.com/vernnobile/MuliFont/'
-license=('custom:OFL')
-_dl_base_url="https://github.com/vernnobile/MuliFont/raw/master/version-${pkgver}"
-source=("${_dl_base_url}/roman/Muli-Bold.ttf"
-        "${_dl_base_url}/roman/Muli-ExtraLight.ttf"
-        "${_dl_base_url}/roman/Muli-Light.ttf"
-        "${_dl_base_url}/roman/Muli-SemiBold.ttf"
-        "${_dl_base_url}/roman/Muli.ttf"
-        "${_dl_base_url}/italic/Muli-BoldItalic.ttf"
-        "${_dl_base_url}/italic/Muli-ExtraLightItalic.ttf"
-        "${_dl_base_url}/italic/Muli-Italic.ttf"
-        "${_dl_base_url}/italic/Muli-LightItalic.ttf"
-        "${_dl_base_url}/italic/Muli-Semi-BoldItalic.ttf"
-        "${_dl_base_url}/OFL.txt")
-sha512sums=('9775a3680531a7f1112b66bb417724d53511234fcea2fe78597d335c393e9f7307a20a5b011063f06a99c8e2428a5af20f34041a452fe7f9ea7f66736ac93b6c'
-            'cfe97ac8e58b2ed08ed660cf4b3b96bb9fac232b8f61973c3f3b0c04e9325efd9d9f87cabca32ac9f08747ff85c1f63f4b69524395bf3bdf20873710c54b96fb'
-            '2714b297848483675ccea6f7f08b2ae98d50f0402faad81ed82b36d4529f55f66cc25e6bcb62dc11094cf2d403c1d732ee7a25f45beff4cb07a1d39699358cbc'
-            '234c6364ed719da10bbb3db05b5b35d3da5ff12dc562379546ce2dc8b18b4f4b2da5632c27c41e4e4a9a8769fde757cd83ccad5bcd8d1e60467f06734707e026'
-            '7b105ea2d7f505435519444826958f064ab7d96583f8fa9a963b9285054452599b117957e4015e36125d749fc51863ac55341d04e0317d3d36f2d93e4c6607f9'
-            '5f016fbffcecf0196ab8251d835fb3e1f3cc868c188dd1229d5b5a01370d5c796bb49b766307c239759d131ce361c6ddbab04cec78a355d8b3631d5300d2121d'
-            '030fc87f9a754bc5e61edf5a45570cb6e3976e74359f9b912c94d3253c7c5dc6fc2a3a2607ef8c47fbd1146945be6579f7643313f63d891e15e5ba12e6b710f5'
-            '749e7eb1a91b5cf7d667d7380c653116931d377ba100fa149a4fe93d4ed20b4d41153bafecd48f7e8992d1c2a161502a86a2dd0ba791b7318cdf65d985b49e91'
-            '7416c5ced2cfca0e7652784e9324c69b8c7685390d3731d4dc527502251dd0c88a52757febba6a5a7a3c837a83299bdd48db6476acb555dee0b638a9d145e06f'
-            '0e235f66e2961076b4dbc726638f414990d58e7b65acc42e03e36ebc791150e9a7969b628cf7def74c1a28c09b0a071c584755a8531d3b33182a01ebba8ce0a5'
-            '6585a5b7141555914fc09c9601c4e517e1014935cab1d8815d55c876e81d4451a6568e021a9b0ac5d3ae68fc8df6b6b84d9d91e560bccfe0e06d7aacb69a040d')
+arch=(any)
+url=https://github.com/googlefonts/MuliFont
+license=(custom:OFL)
+_commit=580b05e1f2ad319cd98a8de03fd2da7b36677954
+_dl_base_url="${url}/raw/${_commit}/fonts"
+source=("${_dl_base_url}/Muli-Black.ttf"
+        "${_dl_base_url}/Muli-BlackItalic.ttf"
+        "${_dl_base_url}/Muli-Bold.ttf"
+        "${_dl_base_url}/Muli-BoldItalic.ttf"
+        "${_dl_base_url}/Muli-ExtraBold.ttf"
+        "${_dl_base_url}/Muli-ExtraBoldItalic.ttf"
+        "${_dl_base_url}/Muli-ExtraLight.ttf"
+        "${_dl_base_url}/Muli-ExtraLightItalic.ttf"
+        "${_dl_base_url}/Muli-Italic.ttf"
+        "${_dl_base_url}/Muli-Light.ttf"
+        "${_dl_base_url}/Muli-LightItalic.ttf"
+        "${_dl_base_url}/Muli-Regular.ttf"
+        "${_dl_base_url}/Muli-SemiBold.ttf"
+        "${_dl_base_url}/Muli-SemiBoldItalic.ttf"
+        "${_dl_base_url}/../OFL.txt")
+sha512sums=('c63a1a9569fb9f960efcdd59add97411b027b507584d61e5861bdf867b6b000f3d57a89e30c3ab055f71ed3f7e03b29715e46c713a40e1aef5c3841f4b20fca7'
+            'ab18b0bb06b23bebee69caccef94bc9d91c1d39648b5dd5c4cf63210b6df8f8d7f318f2c95266daabd2aaec5045c3dbb98b1162173e69616f57e6bd541f2f647'
+            'befe26690bbd1039c8dbc9266b7fe8ec2f63cb0d976c3e44296156a748ee00821fc43d84ce6f0366cc22748125ea5d7ab887084e1e59c0a8621baedaaae4e517'
+            '596291b8777abc067bf732e40c82741602955331e508788b99635701a080c34b924eaf3852452c87d65ad544496622e87157d6eae899b84d69b436b3c180271c'
+            '2a23e141571ed628174fc29890e03517f435e63f64a16091248d19935e1c56f7274f41c5b7d34d8d01326493ec561cdb63036da11010424817863d9070348eee'
+            '9e7360d026af067af95d55e43e25b610270579841244568217c47558c100767d41e00a85f1722c16343a4e96f7033963a26f67e1f8ebcaba47a9b00c75fb3320'
+            'af5df5d932fc87a32a8434c3736cc12ae91fb93d3fdd8a8e1b739c8a9ffb5e271d134e5567edb159a99120767c32ff03a763bb7f4a17629fc8965c1821dd7f66'
+            '729454c335c87e3ff744008ce45f6f1b0139e9b93af31a3f737ad3ffe0fa12f138d3b97a87fd3cfaa82c9d4b17a1813bf9dc98c95dbbc5bbbe511208141274f7'
+            'af906a77366aed6b7b55b548b31cd8a8884b0240e6ec504bcb377368ee2eb1e656ac1d727fda75cd9018dcb53cd7a2230fb9f7dc00df353cf358d0e238b7969f'
+            '6e680007e5fb73f0eeed04282afc84fe17ac3260542ae1a903b02c0ab4c37a5814331623cd8398abd1f4ecac34f0a641d837b7cc960c7b122e05675971718aaa'
+            'd7ebc2496d752943dfb9118dbc626110861410bb267692fe2a403f76c87804391d0bc462bbfdf4d9be991da17ada682f1340ed5f043b6ec71ae668ca77ef72f2'
+            'dc9818f326d0ff51bdc83b25250bf2c282e4592bd738df23bdccc65122b052998e3caae28f76702962373f4c5a3f60c1863fe855fecc4d23cfcb57630010554f'
+            'dfd98d3570cc39d8dbeef7caa25ac195c717a44fb4bd0f91c1c8150171eced37a6b08d3c0ae5246f3d585f19770620d525a3a4340b937ece237da934629fefdc'
+            '254f1988ab8e0d5abe008471db248814e3694581d69c7da21316bee727c68b2c426b8d7acb57b5cb3aa84d7269ff8fee040d04dfd8bb67863dada5790d95d4fc'
+            'de158dd435e4a8ba4f4cac80314a5aae6ef9da2dd46d8ce2b29bc4de6af1e28d80ba121ce61ec623822dcb1a7cd1545d5118e6b8dcb8cf9b1a10ad411233f43c')
 
 package () {
-	install -m755 -d "${pkgdir}/usr/share/fonts/ttf-muli/"
-	install -m644 -t "${pkgdir}/usr/share/fonts/ttf-muli/" "${srcdir}"/*.ttf
-	install -Dm644 "${srcdir}/OFL.txt" \
-		"${pkgdir}/usr/share/licenses/${pkgname}/OFL"
+	install -Dm644 -t "${pkgdir}/usr/share/fonts/${pkgname}/" "${srcdir}"/*.ttf
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "${srcdir}/OFL.txt"
 }
