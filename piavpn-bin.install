@@ -1,0 +1,34 @@
+# copy-pasted from install.sh in .run file
+function addRoutingTable() {
+    local highestIndex=$(awk '/^[0-9]/{print $1}' /etc/iproute2/rt_tables | sort -n | tail -1)
+    local newIndex=$(($highestIndex + 1))
+    local routingTable="$1"
+
+    if ! grep -q "$routingTable" /etc/iproute2/rt_tables; then
+        echo -e "$newIndex\t$routingTable" >> /etc/iproute2/rt_tables
+    fi
+}
+
+pre_install() {
+	groupadd piavpn
+	groupadd piahnsd
+
+	addRoutingTable piavpnrt
+	addRoutingTable piavpnOnlyrt
+	addRoutingTable piavpnWgrt
+}
+
+post_remove() {
+	sed -i '/.*piavpnrt$/d' /etc/iproute2/rt_tables
+	sed -i '/.*piavpnOnlyrt$/d' /etc/iproute2/rt_tables
+	sed -i '/.*piavpnWgrt$/d' /etc/iproute2/rt_tables
+	groupdel piavpn
+	groupdel piahnsd
+}
+
+post_upgrade() {
+	if systemctl is-active pia-daemon; then
+		systemctl restart pia-daemon
+	fi
+}
+

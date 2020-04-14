@@ -1,0 +1,25 @@
+pkgbase = piavpn-bin
+	pkgdesc = Private Internet Access client
+	pkgver = 2.0.1_04518
+	pkgrel = 1
+	url = https://privateinternetaccess.com/
+	install = piavpn-bin.install
+	arch = x86_64
+	license = custom
+	makedepends = libcap
+	depends = net-tools
+	depends = libxkbcommon-x11
+	depends = openvpn
+	depends = wireguard-tools
+	depends = WIREGUARD-MODULE
+	provides = piavpn
+	conflicts = pia-launch
+	conflicts = pia-manager
+	conflicts = pia-tools
+	conflicts = private-internet-access-vpn
+	options = !strip
+	source = https://installers.privateinternetaccess.com/download/pia-linux-2.0.1-04518.run
+	sha1sums = bca661ba5882089a3eb51e53f37a1f9c3edb3c1f
+
+pkgname = piavpn-bin
+
