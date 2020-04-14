@@ -1,0 +1,14 @@
+pkgbase = rogauracore-git
+	pkgdesc = RGB keyboard control for Asus ROG laptops
+	pkgver = 1.2.r1.ga2ba0c4
+	pkgrel = 1
+	url = https://github.com/wroberts/rogauracore
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libusb
+	source = git+https://github.com/wroberts/rogauracore.git
+	md5sums = SKIP
+
+pkgname = rogauracore-git
+
