@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://download.screen.so/desktop-app/linux/${pkgver}/${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm")
 noextract=()
-md5sums=('6a780d7a760b281d65c8235d7c3c7dff')
+md5sums=('59e76790f7106a7b192975e801cf2103')
 validpgpkeys=()
 
 package() {
