@@ -1,0 +1,18 @@
+pkgbase = washingtondc-git
+	pkgdesc = Open-source Sega Dreamcast emulator
+	pkgver = r2193.781d8327
+	pkgrel = 1
+	url = https://washemu.org/
+	install = washingtondc.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	conflicts = washingtondc
+	source = git+https://github.com/washingtondc-emu/washingtondc.git
+	source = washingtondc.install
+	md5sums = SKIP
+	md5sums = 210bf6305e0dddbdd03338e069f769d7
+
+pkgname = washingtondc-git
+
