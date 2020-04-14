@@ -1,6 +1,6 @@
 pkgbase = nginx-lazerl0rd-git
 	pkgver = 1.17.9
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/lazerl0rd/nginx
 	arch = i686
 	arch = x86_64
@@ -36,7 +36,6 @@ pkgname = nginx-lazerl0rd-git
 	depends = mailcap
 	depends = pcre
 	depends = zlib
-	optdepends = nginx-src-lazerl0rd-git: dynamic module support
 	provides = nginx=1.17.9
 	provides = nginx-src-lazerl0rd=1.17.9
 	provides = nginx-mod-brotli
