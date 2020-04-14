@@ -6,9 +6,13 @@ pkgbase = rogauracore-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	depends = glibc
 	depends = libusb
+	depends = udev
 	source = git+https://github.com/wroberts/rogauracore.git
+	source = 90-rogauracore.rules
 	md5sums = SKIP
+	md5sums = acf8f96f46cbd14c5d208594684a69e4
 
 pkgname = rogauracore-git
 
