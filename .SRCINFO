@@ -1,10 +1,11 @@
 pkgbase = libtree-git
 	pkgdesc = ldd as a tree with an option to bundle dependencies into a single folder
-	pkgver = 1.0.3.r0.ga48bb32
+	pkgver = 1.0.4.r8.g02ee2b1
 	pkgrel = 1
 	url = https://github.com/haampie/libtree
 	arch = x86_64
 	license = MIT
+	checkdepends = gtest
 	makedepends = git
 	makedepends = cmake
 	makedepends = cxxopts

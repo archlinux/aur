@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=libtree-git
-pkgver=1.0.3.r0.ga48bb32
+pkgver=1.0.4.r8.g02ee2b1
 pkgrel=1
 pkgdesc="ldd as a tree with an option to bundle dependencies into a single folder "
 arch=('x86_64')
@@ -12,6 +12,7 @@ makedepends=('git' 'cmake' 'cxxopts' 'termcolor' 'elfio')
 optdepends=('binutils: For the --strip option'
 	'chrpath: For the --chrpath option'
 	)
+checkdepends=('gtest')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")
@@ -40,6 +41,12 @@ build() {
 		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
 		..
 	make
+}
+
+check() {
+	cd "${pkgname%-git}/build" || exit 1
+
+	make test
 }
 
 package() {
