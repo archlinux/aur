@@ -1,9 +1,10 @@
-# Maintainer: gato_lento <vukk.euob at gmail>
+# Maintainer: osch <oliver@luced.de>
+#             gato_lento <vukk.euob at gmail>
 # Based on axoloti-git and axoloti-runtime-git PKGBUILDs by: Joakim Reinert <mail+aur@jreinert.com>
 
 pkgname=axoloti
 pkgver=1.0.12_2
-pkgrel=1
+pkgrel=2
 pkgdesc='Firmware and GUI for the Axoloti Core'
 arch=('x86_64')
 url='http://www.axoloti.com'
@@ -57,6 +58,8 @@ build() {
         USB_LIBS="$srcdir/${pkgname}-runtime/platform_linux/lib/libusb-1.0.a -ludev -pthread" \
         USB_CFLAGS="-I$srcdir/${pkgname}-runtime/platform_linux/include/libusb-1.0/"
     make
+    sed -i -e 's/SPACE := */EMPTY :=/'                     "$srcdir/$pkgname"/firmware/Makefile.patch
+    sed -i -e 's/SPACE += */SPACE := \$(EMPTY) \$(EMPTY)/' "$srcdir/$pkgname"/firmware/Makefile.patch
     make install
     make clean
     ldd "$srcdir/${pkgname}-runtime/platform_linux/bin/dfu-util"

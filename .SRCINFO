@@ -1,7 +1,7 @@
 pkgbase = axoloti
 	pkgdesc = Firmware and GUI for the Axoloti Core
 	pkgver = 1.0.12_2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.axoloti.com
 	install = axoloti.install
 	arch = x86_64
