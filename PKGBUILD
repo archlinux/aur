@@ -4,7 +4,7 @@
 
 pkgname=cmake
 pkgver=3.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
 url="https://www.cmake.org/"
@@ -49,4 +49,8 @@ package() {
 
   install -Dm644 Copyright.txt \
     "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+
+# install bash completions
+  mkdir -p "$pkgdir"/usr/share/bash-completion/completions
+  ln -s /usr/share/cmake-${pkgver%.*}/completions/{cmake,cpack,ctest} "$pkgdir"/usr/share/bash-completion/completions
 }
