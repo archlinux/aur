@@ -1,3 +1,4 @@
+# Maintainer: Samuel Walladge <aur@swalladge.net>
 pkgname=python-pyenet-piqueserver-git
 _pkgname=pyenet
 provides=('pyenet')
