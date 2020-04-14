@@ -2,7 +2,7 @@
 
 pkgname=youtubemusic-nativefier
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="YouTube Music Client built with nodejs-nativefier (electron)"
 arch=("i686" "x86_64")
 url="https://music.youtube.com/"
@@ -23,7 +23,7 @@ build() {
 package() {
 	install -dm755 "${pkgdir}/"{opt,usr/share/applications,usr/bin}
 	cp -rL "${srcdir}/YouTubeMusic-linux"* "${pkgdir}/opt/${pkgname}"
-	ln -s "/opt/${pkgname}/you-tube-music" "${pkgdir}/usr/bin/${pkgname}"
+	ln -s "/opt/${pkgname}/YouTubeMusic" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	for _size in "192x192" "128x128" "96x96" "64x64" "48x48" "32x32" "24x24" "22x22" "20x20" "16x16" "8x8"
 	do
