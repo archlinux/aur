@@ -1,4 +1,4 @@
-# Maintainer: Mikael Blomstrand <mbloms ÅT kth DÖT se>
+# Maintainer: Mikael Blomstrand <gmail: chawlindel>
 
 # PKGBUILD based on community/ncurses:
 # Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
@@ -7,8 +7,8 @@
 
 pkgname=('ncurses-nohex' 'infocmp-nohex')
 conflicts=(ncurses)
-pkgver=6.1
-pkgrel=6
+pkgver=6.2
+pkgrel=1
 pkgdesc="System V Release 4.0 curses emulation library. Patch disables hexadecimal in infocmp."
 arch=(x86_64)
 url='https://invisible-island.net/ncurses/ncurses.html'
@@ -18,15 +18,15 @@ provides=(ncurses libncurses++w.so libformw.so libmenuw.so libpanelw.so libncurs
 source=(https://ftp.gnu.org/pub/gnu/ncurses/ncurses-$pkgver.tar.gz{,.sig}
   nohex.patch::https://github.com/mbloms/ncurses/commit/2e8af507b9ea61ca9f70e023e89faa16aa01c8b1.patch
   README.md)
-md5sums=('98c889aaf8d23910d2b92d65be2e737a'
+md5sums=('e812da327b1c2214ac1aed440ea3ae8d'
          'SKIP'
          'ba2cd274835935bf83bf3859a131fd1e'
          '0fd492d6811b9f520fdfd6188f290069')
-sha1sums=('57acf6bc24cacd651d82541929f726f4def780cc'
+sha1sums=('56e410fb77f2b5501a0b2f6a995376f3cefe1097'
           'SKIP'
           '5fb4b04bd1c2c3ce89f140fffa6769dfd2e3f741'
           '0abec6eae58208ad167753fee41c63b130c16f0d')
-sha256sums=('aa057eeeb4a14d470101eff4597d5833dcef5965331be3528c08d99cebaa0d17'
+sha256sums=('30306e0c76e0f9f1f0de987cf1c82a5c21e1ce6568b9227f7da5b71cbea86c9d'
             'SKIP'
             'c59a4209ea84a31bba0ea5721ce1ed32252a951270dda3f932cfc6ab4ca821b8'
             '77aaa2c490d561955c1e28ab7fe32976553771e6bfe1ce0ffc57848ce4edb605')

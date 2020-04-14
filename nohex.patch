@@ -1,0 +1,66 @@
+From 2e8af507b9ea61ca9f70e023e89faa16aa01c8b1 Mon Sep 17 00:00:00 2001
+From: Mikael Blomstrand <mbloms@kth.se>
+Date: Sat, 7 Apr 2018 13:22:16 +0200
+Subject: [PATCH] revert number_format in patch 20170506
+
+    - modify tic/infocmp display of numeric values to use hexadecimal when
+      they are "close" to a power of two, making the result more readable.
+
+This patch fixes problems with i.a. earlier versions of jline and sbt<0.13.16.
+
+* jline issue: jline/jline2#281
+* sbt issue: sbt/sbt#3240
+---
+ progs/dump_entry.c | 31 +------------------------------
+ 1 file changed, 1 insertion(+), 30 deletions(-)
+
+diff --git a/progs/dump_entry.c b/progs/dump_entry.c
+index 3b1fcb1e..d0345c13 100644
+--- a/progs/dump_entry.c
++++ b/progs/dump_entry.c
+@@ -842,30 +842,6 @@ fmt_complex(TERMTYPE2 *tterm, const char *capability, char *src, int level)
+     return src;
+ }
+ 
+-/*
+- * Make "large" numbers a little easier to read by showing them in hexadecimal
+- * if they are "close" to a power of two.
+- */
+-static const char *
+-number_format(int value)
+-{
+-    const char *result = "%d";
+-    if ((outform != F_TERMCAP) && (value > 255)) {
+-	unsigned long lv = (unsigned long) value;
+-	unsigned long mm;
+-	int bits = sizeof(unsigned long) * 8;
+-	int nn;
+-	for (nn = 8; nn < bits; ++nn) {
+-	    mm = 1UL << nn;
+-	    if ((mm - 16) <= lv && (mm + 16) > lv) {
+-		result = "%#x";
+-		break;
+-	    }
+-	}
+-    }
+-    return result;
+-}
+-
+ #define SAME_CAP(n,cap) (&tterm->Strings[n] == &cap)
+ #define EXTRA_CAP 20
+ 
+@@ -961,13 +937,8 @@ fmt_entry(TERMTYPE2 *tterm,
+ 		_nc_SPRINTF(buffer, _nc_SLIMIT(sizeof(buffer))
+ 			    "%s@", name);
+ 	    } else {
+-		size_t nn;
+ 		_nc_SPRINTF(buffer, _nc_SLIMIT(sizeof(buffer))
+-			    "%s#", name);
+-		nn = strlen(buffer);
+-		_nc_SPRINTF(buffer + nn, _nc_SLIMIT(sizeof(buffer) - nn)
+-			    number_format(tterm->Numbers[i]),
+-			    tterm->Numbers[i]);
++			    "%s#%d", name, tterm->Numbers[i]);
+ 		if (i + 1 > num_values)
+ 		    num_values = i + 1;
+ 	    }
