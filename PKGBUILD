@@ -1,23 +1,40 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: LightDot <lightdot -a-t- g m a i l>
 # Contributor: samæ <samæ at marvid dot fr>
 
-_fnt_name=league-spartan
-pkgname=ttf-$_fnt_name
-pkgver=20160215
-# 20140922
-_sha=c350408b07ca284b6c097b7194f2f14f428013f5
-pkgrel=4
-pkgdesc="A geometric sans-serif revival of ATF's classic Spartan"
+_name=league-spartan
+pkgbase=$_name-font
+pkgname=(otf-$_name ttf-$_name ttf-$_name-variable)
+pkgver=2.201
+pkgrel=1
+pkgdesc='A geometric sans-serif revival of ATF’s classic Spartan'
 arch=('any')
-url="https://www.theleagueofmoveabletype.com/$_fnt_name"
+url="https://www.theleagueofmoveabletype.com/$_name"
 license=('OFL')
 groups=('lmt-fonts')
-source=("$pkgname-$pkgver.zip::https://github.com/theleagueof/league-spartan/archive/$_sha.zip")
-sha256sums=('ddac4b049281424adfefec1cc7b2bca3e1f64897cb4edc421f6b2c217aa3c141')
+source=("$_name-$pkgver.tar.gz::https://github.com/theleagueof/$_name/archive/$pkgver.tar.gz")
+sha256sums=('7550066a20c19767e5084085d525efba71b7d73fbba2fce4a8eda98464c491b2')
 
-package() {
-    cd "$_fnt_name-$_sha"
-    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" _webfonts/*.ttf
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ofl*.markdown
+package_otf-league-spartan() {
+    provides=("$pkgbase")
+    cd "$_name-$pkgver"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" fonts/static/otf/*.otf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ofl{,-faq}.markdown
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.markdown
+}
+
+package_ttf-league-spartan() {
+    provides=("$pkgbase")
+    cd "$_name-$pkgver"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" fonts/static/ttf/*.ttf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ofl{,-faq}.markdown
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.markdown
+}
+
+package_ttf-league-spartan-variable() {
+    provides=("$pkgbase-variable")
+    cd "$_name-$pkgver"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" fonts/variable/*.ttf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ofl{,-faq}.markdown
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.markdown
 }
