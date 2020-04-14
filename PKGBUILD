@@ -2,7 +2,7 @@
 
 pkgname=mpy-repl-tool
 _pkgname=mpy-repl-tool
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc="Communicate and transfer files from and to MicroyPython boards via REPL"
 arch=('any')
@@ -11,8 +11,8 @@ license=('custom')
 makedepends=('python-setuptools')
 depends=(python-pyserial python-colorama)
 optdepends=('python-fusepy: for mounting the micropython filesystem')
-source=(https://files.pythonhosted.org/packages/8d/55/9f37c714fdfab9f591ac4c245910b0dd1c76fd8175935373ff97ec9f884d/${pkgname}-${pkgver}.tar.gz)
-md5sums=('b1ddf7d9620672a206fce499ad2cb5b7')
+source=(https://files.pythonhosted.org/packages/14/05/5ff6656c6737da474d6a35a46959b4d8ef37471846f18e2dad2d3befa165/${pkgname}-${pkgver}.tar.gz)
+md5sums=('a3ca4281da6b584a0bad07d9667234cd')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
