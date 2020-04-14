@@ -8,6 +8,7 @@ post_install() {
 		echo "Creating user 'mysql'..."
 		groupadd mysql -g "${_mysql_uuid}"
 		useradd -u "${_mysql_uuid}" -r -g mysql -s /bin/false mysql
+		mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
 	fi
 
