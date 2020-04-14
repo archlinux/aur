@@ -1,7 +1,7 @@
 pkgbase = libgccjit
 	pkgdesc = Just-In-Time Compilation using GCC.
 	pkgver = 9.3.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://gcc.gnu.org/wiki/JIT
 	arch = i686
 	arch = x86_64
