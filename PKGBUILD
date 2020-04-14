@@ -10,7 +10,7 @@ url="https://github.com/eternnoir/pyTelegramBotAPI"
 license=("GPL3")
 depends=('python' 'python-requests')
 source=("https://github.com/eternnoir/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('45be513508eafc2402e4596fcaaeff14e6285df3912e50be10777352bdbb2591')
+sha256sums=('47f0682bea216524814724db54c58fa6c17ea50db0b48f8b1e99807e72fdc468')
 
 package() {
     cd ${srcdir}/${_pkgname}-${pkgver}/
