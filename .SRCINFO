@@ -1,7 +1,7 @@
 pkgbase = python-albumentations
 	pkgdesc = Fast image augmentation library and easy to use wrapper around other libraries
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/albumentations-team/albumentations
 	arch = any
 	license = MIT
