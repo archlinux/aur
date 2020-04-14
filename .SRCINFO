@@ -14,11 +14,9 @@ pkgbase = nginx-lazerl0rd-git
 	source = git+https://github.com/AirisX/nginx_cookie_flag_module.git
 	source = git+https://github.com/cloudflare/quiche.git
 	source = git+https://github.com/google/ngx_brotli.git
-	source = git+https://github.com/cloudflare/zlib.git
 	source = https://nginx.org/LICENSE
 	source = service
 	source = logrotate
-	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -36,8 +34,8 @@ pkgname = nginx-lazerl0rd-git
 	depends = mailcap
 	depends = pcre
 	depends = zlib
+	optdepends = nginx-src-lazerl0rd-git: dynamic module support
 	provides = nginx=1.17.9
-	provides = nginx-src-lazerl0rd=1.17.9
 	provides = nginx-mod-brotli
 	provides = nginx-mod-cookie_flag_module
 	conflicts = nginx

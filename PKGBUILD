@@ -12,12 +12,10 @@ source=("git+${url}.git"
 		"git+https://github.com/AirisX/nginx_cookie_flag_module.git"
 		"git+https://github.com/cloudflare/quiche.git"
 		"git+https://github.com/google/ngx_brotli.git"
-		"git+https://github.com/cloudflare/zlib.git"
 		"https://nginx.org/LICENSE"
 		"service"
 		"logrotate")
 b2sums=("SKIP"
-		"SKIP"
 		"SKIP"
 		"SKIP"
 		"SKIP"
@@ -105,7 +103,8 @@ build() {
 package_nginx-lazerl0rd-git() {
 	pkgdesc="NGINX with beefed up security and performance"
 	depends=("geoip" "gzip" "libatomic_ops" "liburing" "mailcap" "pcre" "zlib")
-	provides=("nginx=1.17.9" "nginx-src-lazerl0rd=1.17.9" "nginx-mod-brotli" "nginx-mod-cookie_flag_module")
+	optdepends=("nginx-src-lazerl0rd-git: dynamic module support")
+	provides=("nginx=1.17.9" "nginx-mod-brotli" "nginx-mod-cookie_flag_module")
 	conflicts=("nginx" "nginx-lazerl0rd" "nginx-mod-brotli" "nginx-mod-cookie_flag_module")
 	backup=("etc/nginx/fastcgi.conf"
 			"etc/nginx/fastcgi_params"
