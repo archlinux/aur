@@ -7,8 +7,11 @@ pkgdesc="ldd as a tree with an option to bundle dependencies into a single folde
 arch=('x86_64')
 url="https://github.com/haampie/libtree"
 license=('MIT')
-depends=('cppglob')
+depends=('cppglob' 'gcc-libs')
 makedepends=('git' 'cmake' 'cxxopts' 'termcolor' 'elfio')
+optdepends=('binutils: For the --strip option'
+	'chrpath: For the --chrpath option'
+	)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")
