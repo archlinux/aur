@@ -1,43 +1,64 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Mario Finelli <mario at finel dot li>
 # Contributor: Arthur Titeica <arthur dot titeica at gmail dot com>
 
-pkgname=ttfautohint
-pkgver=1.8.3
+pkgname=ttfautohint-git
+pkgver=1.8.3.r16.g701aa67
 pkgrel=1
-pkgdesc="Provides automated hinting process for web fonts."
+pkgdesc='Provides automated hinting process for web fonts'
 arch=('i686' 'x86_64')
-url="http://www.freetype.org/ttfautohint/"
+url="http://www.freetype.org/${pkgname%-git}"
 license=('GPL' 'custom')
-depends=('freetype2' 'qt5-base' 'noto-fonts' 'noto-fonts-alpha')
-optdepends=('texlive-bin: generate docs'
-            'pandoc: generate docs'
-            'ghc: pandoc filter')
-source=(https://download.savannah.gnu.org/releases/freetype/$pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('87bb4932571ad57536a7cc20b31fd15bc68cb5429977eb43d903fa61617cf87e'
+depends=('freetype2' 'harfbuzz' 'qt5-base')
+makedepends=('pandoc'
+             'inkscape'
+             'imagemagick'
+             'noto-fonts'
+             # 'noto-fonts-alpha'
+             'texlive-core'
+             'xorg-xwininfo')
+source=("git://repo.or.cz/${pkgname/-/.}"
+        "git://git.sv.gnu.org/gnulib.git")
+sha256sums=('SKIP'
             'SKIP')
-validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
+
+pkgver() {
+    cd "${pkgname%-git}"
+    git describe --tags --abbrev=7 --match="v*" HEAD |
+        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare(){
+    cd "${pkgname%-git}"
+    git submodule init
+    git config submodule.gnulib.url "$srcdir/gnulib"
+    git submodule update
+    echo "GNULIB_URL='$srcdir/gnulib'" > bootstrap.conf
+    sed -i -e '400s/yes/no/' bootstrap
+    ./bootstrap --force
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  export QMAKE='/usr/bin/qmake'
-  export MOC='/usr/bin/moc'
-  export UIC='/usr/bin/uic'
-  export RCC='/usr/bin/rcc'
-  export TTFONTS='/usr/share/fonts/noto'
-  ./configure --prefix=/usr --with-qt=/usr/lib/qt \
-    --with-freetype-config="pkg-config freetype2"
-  make
+    cd "${pkgname%-git}"
+    export QMAKE='/usr/bin/qmake'
+    export MOC='/usr/bin/moc'
+    export UIC='/usr/bin/uic'
+    export RCC='/usr/bin/rcc'
+    export TTFONTS='/usr/share/fonts/noto'
+    ./configure \
+        --prefix=/usr \
+        --with-qt=/usr/lib/qt \
+        --with-freetype-config="pkg-config freetype2"
+    make
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make -k check
+    cd "${pkgname%-git}"
+    make -k check
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
-
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-  install -Dm644 FTL.TXT "${pkgdir}/usr/share/licenses/${pkgname}/FTL.TXT"
+    cd "${pkgname%-git}"
+    make DESTDIR="$pkgdir" install
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING FTL.TXT
 }
