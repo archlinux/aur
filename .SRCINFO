@@ -1,33 +1,33 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = Repackaging of the Arch kernel with a unique package name for each version
-	pkgver = 5.6.3.arch1
+	pkgver = 5.6.4.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.6.3-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.6.4-arch1
 	arch = x86_64
 	license = GPL2
 	options = !strip
-	source = http://arch.mirror.constant.com/core/os/x86_64/linux-5.6.3.arch1-1-x86_64.pkg.tar.zst
-	source = http://arch.mirror.constant.com/core/os/x86_64/linux-headers-5.6.3.arch1-1-x86_64.pkg.tar.zst
-	source = http://arch.mirror.constant.com/core/os/x86_64/linux-docs-5.6.3.arch1-1-x86_64.pkg.tar.zst
-	sha256sums = ffe7d0a66de6584882efdc92ccbe65a8a541a98bcda04215ddbf6d013247d615
-	sha256sums = 77ea6b75aea48fc31f64bd333846c2bc623ad3f9edb3ebc7c6c04b4e47e20376
-	sha256sums = d7369b6f18dd17f12de211d270e00b1950ca9b79997d28f6621a225562457b80
+	source = http://arch.mirror.constant.com/core/os/x86_64/linux-5.6.4.arch1-1-x86_64.pkg.tar.zst
+	source = http://arch.mirror.constant.com/core/os/x86_64/linux-headers-5.6.4.arch1-1-x86_64.pkg.tar.zst
+	source = http://arch.mirror.constant.com/core/os/x86_64/linux-docs-5.6.4.arch1-1-x86_64.pkg.tar.zst
+	sha256sums = 27d6180953f2c4b04568e09f36b2af28165f720e9561e19b07df4f0e34355e9f
+	sha256sums = 58eac15d39018de07a806931fed83845259a0edd77dc0b9df54b9fbd4e9f8d12
+	sha256sums = eca491435360bc805c62df4eb55c14789f6da8c86d22cf5d609546bcabae9873
 
 pkgname = linux-versioned-bin
-	pkgdesc = Dummy package depending on linux5.6.3.arch1-1-bin
-	depends = linux5.6.3.arch1-1-bin
+	pkgdesc = Dummy package depending on linux5.6.4.arch1-1-bin
+	depends = linux5.6.4.arch1-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.6.3.arch1-1-headers-bin
-	depends = linux5.6.3.arch1-1-headers-bin
+	pkgdesc = Dummy package depending on linux5.6.4.arch1-1-headers-bin
+	depends = linux5.6.4.arch1-1-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.6.3.arch1-1-docs-bin
-	depends = linux5.6.3.arch1-1-docs-bin
+	pkgdesc = Dummy package depending on linux5.6.4.arch1-1-docs-bin
+	depends = linux5.6.4.arch1-1-docs-bin
 
-pkgname = linux5.6.3.arch1-1-bin
-	pkgdesc = The Linux kernel and modules, version 5.6.3-arch1-1
+pkgname = linux5.6.4.arch1-1-bin
+	pkgdesc = The Linux kernel and modules, version 5.6.4-arch1-1
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -35,11 +35,11 @@ pkgname = linux5.6.3.arch1-1-bin
 	optdepends = linux-firmware: firmware images needed for some devices
 	conflicts = linux
 
-pkgname = linux5.6.3.arch1-1-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.6.3-arch1-1
+pkgname = linux5.6.4.arch1-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.6.4-arch1-1
 	conflicts = linux-headers
 
-pkgname = linux5.6.3.arch1-1-docs-bin
-	pkgdesc = Documentation for the Linux kernel 5.6.3-arch1-1
+pkgname = linux5.6.4.arch1-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 5.6.4-arch1-1
 	conflicts = linux-docs
 
