@@ -7,7 +7,7 @@
 # Contributor: Nathan Owe <ndowens04 at gmail>
 
 pkgname=filebot
-pkgver=4.9.0
+pkgver=4.9.1
 pkgrel=1
 pkgdesc="The ultimate TV and Movie Renamer"
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
@@ -33,7 +33,7 @@ source=(#"https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-po
         #$pkgname.desktop
         )
 
-md5sums=('6fc1123a1bae8ccf9544ccac82546186'
+md5sums=('07dc606ca9a5132bb39bf1bb55088605'
          '3506d0f6c990fb918e91337c634ba70c')
 
 optdepends=('libzen: Required by libmediainfo'
