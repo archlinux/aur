@@ -3,11 +3,12 @@
 _pkgbase=mautrix-hangouts
 pkgname=${_pkgbase}-git
 pkgver=r61.9f5d965
-pkgrel=3
+pkgrel=4
 pkgdesc="A Matrix-Hangouts puppeting bridge with multi-user support"
 arch=(any)
 conflicts=(mautrix-hangouts)
 license=(AGPLv3)
+url=https://github.com/tulir/mautrix-hangouts
 depends=(python
 	     python-aiohttp
 	     python-alembic
