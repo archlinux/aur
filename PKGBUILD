@@ -18,12 +18,13 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/squash"
+
+    ./autogen.sh --prefix=/usr
 }
 
 build() {
     cd "${srcdir}/squash"
 
-    ./autogen.sh --prefix=/usr
     make
 }
 
