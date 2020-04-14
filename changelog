@@ -1,3 +1,15 @@
+Proton-5.6-GE-2
+
+GloriousEggroll released this Apr 14, 2020
+
+-This is a hotfix that reverts the fullscreen hack changes, as they introduced a regression with mouse stutter on movement after a period of time. What this means:
+-Fullscreen hack is still enabled, it's just using proton's version, not customized for staging
+-Staging's winex11.drv-mouse-coorrds and rawinput patchsets have been disabled
+-Proton's rawinput patchset has been re-enabled.
+
+Normally I'd wait to release smaller changes like this, but the regression made some games basically unplayable. This should allow games to be played at least without the mouse stutter.
+
+
 Proton-5.6-GE-1
 
 GloriousEggroll released this Apr 13, 2020
