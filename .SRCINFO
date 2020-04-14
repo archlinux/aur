@@ -1,7 +1,7 @@
 pkgbase = otf-futura-renner
 	pkgdesc = A digital version of Futura
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fontlibrary.org/en/font/futura-renner
 	install = otf-futura-renner.install
 	arch = any
