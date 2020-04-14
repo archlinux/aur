@@ -1,0 +1,25 @@
+pkgbase = catclock-aubio-git
+	pkgdesc = X clock, with cat mode, using aubio and pulseaudio to swing the tail to a beat
+	pkgver = r34.9de77d0
+	pkgrel = 1
+	url = https://github.com/BarkyTheDog/catclock
+	arch = x86_64
+	license = custom
+	makedepends = xorg-util-macros
+	makedepends = git
+	depends = libx11
+	depends = libxmu
+	depends = libxaw
+	depends = libxrender
+	depends = libxft
+	depends = libxkbfile
+	depends = openmotif
+	depends = pulseaudio
+	depends = aubio
+	provides = xorg-xclock
+	conflicts = xorg-xclock
+	source = catclock::git+http://github.com/BarkyTheDog/catclock#branch=master
+	md5sums = SKIP
+
+pkgname = catclock-aubio-git
+
