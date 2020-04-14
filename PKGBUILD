@@ -3,7 +3,7 @@
 
 pkgname=("stretchy-snek-boi-git")
 _pkgname=("stretchy-snek-boi")
-pkgver=1.0.8.r5.gee96940
+pkgver=1.0.11.r0.gfeaa0ee
 pkgrel=1
 pkgdesc="A snake game clone."
 arch=("x86_64")
