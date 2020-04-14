@@ -77,5 +77,5 @@ package() {
 	install -vDm 0644 "docs/${pkgname%-efi-git}/"*.{html,png,svg,txt} -t "${pkgdir}/usr/share/doc/${pkgname%-efi-git}/html"
 	install -vDm 0644 docs/Styles/*.css -t "${pkgdir}/usr/share/doc/${pkgname%-efi-git}/html"
 	# license
-	install -vDm 0644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname%-efi-git}"
+	install -vDm 0644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
