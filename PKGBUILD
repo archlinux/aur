@@ -1,7 +1,7 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgname=zoom
-pkgver=3.5.383291.0407
+pkgver=3.5.385850.0413
 pkgrel=1
 pkgdesc="Video Conferencing and Web Conferencing Service"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('qt5-webengine: SSO login support'
 			'xcompmgr: extra compositor needed by some window managers for screen sharing')
 options=(!strip)
 source=("${pkgname}-${pkgver}_orig_x86_64.pkg.tar.xz"::"https://zoom.us/client/${pkgver}/zoom_x86_64.pkg.tar.xz")
-sha512sums=('5ee46c81b09daa66459da40fcb09011e75dece56f7744618c80a119fe22d35b88ce70f136029ba33eb1aad4a5282b03fa0dcfca1031e5199dcf585f934d10723')
+sha512sums=('6ecc53a1662ae5c6fd3b2b44f16a43c355f81d17635bbe97fdf60496fa45da6f050563df561035f810ebc7bafc3114449c2bbf4d9debe58c29855c7543db1eaf')
 
 package() {
 	cp -dpr --no-preserve=ownership opt usr "${pkgdir}"
