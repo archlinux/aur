@@ -1,0 +1,11 @@
+pkgbase = ttf-open-sauce-sans
+	pkgver = 1.474
+	pkgrel = 1
+	url = https://github.com/marcologous/Open-Sauce-Sans
+	arch = any
+	license = custom:OFL
+	source = ttf-open-sauce-sans::git+https://github.com/marcologous/Open-Sauce-Sans#commit=f47d508e52433f70e19c50feb6cea53242631274
+	sha256sums = SKIP
+
+pkgname = ttf-open-sauce-sans
+
