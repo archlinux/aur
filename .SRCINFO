@@ -1,6 +1,6 @@
 pkgbase = nginx-lazerl0rd-git
 	pkgver = 1.17.9
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/lazerl0rd/nginx
 	arch = i686
 	arch = x86_64

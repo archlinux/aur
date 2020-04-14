@@ -3,7 +3,7 @@
 pkgbase="nginx-lazerl0rd-git"
 pkgname=("nginx-lazerl0rd-git" "nginx-src-lazerl0rd-git")
 pkgver=1.17.9
-pkgrel=9
+pkgrel=10
 arch=("i686" "x86_64")
 url="https://github.com/lazerl0rd/nginx"
 license=("custom")
