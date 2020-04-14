@@ -2,17 +2,19 @@
 
 
 ##################### How to package latest release ? #####################
-## $ pacman -S base-devel python-setuptools python-distro python-netifaces
+#### Install required dependencies...
+##
+## $ pacman -S base-devel pacman-contrib
+## $ pacman -S python-setuptools python-distro python-netifaces
+##
+#### Clone this very repository...
 ##
 ## $ git clone https://aur.archlinux.org/archey4.git
 ## $ cd archey4/
 ##
 #### Edit PKGBUILD as needed...
 ##
-## $ makepkg -g >> PKGBUILD
-##
-#### Please clean fingerprints in PKGBUILD...
-##
+## $ updpkgsums
 ## $ makepkg
 ## $ pacman -U ./archey4-*-any.pkg.tar.xz
 ## $ archey
@@ -24,13 +26,13 @@
 
 pkgname=archey4
 pkgver=v4.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple system information tool written in Python"
 arch=('any')
 url="https://github.com/HorlogeSkynet/archey4.git"
 license=('GPLv3')
 group=('utils')
-depends=('procps' 'python' 'python-distro' 'python-netifaces')
+depends=('procps-ng' 'python>=3.4' 'python-distro' 'python-netifaces')
 makedepends=('python-setuptools')
 optdepends=('bind-tools: WAN_IP would be detected faster'
             'lm_sensors: Temperature would be more accurate'

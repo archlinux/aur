@@ -1,14 +1,14 @@
 pkgbase = archey4
 	pkgdesc = A simple system information tool written in Python
 	pkgver = v4.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/HorlogeSkynet/archey4.git
 	install = archey4.install
 	arch = any
 	license = GPLv3
 	makedepends = python-setuptools
-	depends = procps
-	depends = python
+	depends = procps-ng
+	depends = python>=3.4
 	depends = python-distro
 	depends = python-netifaces
 	optdepends = bind-tools: WAN_IP would be detected faster
