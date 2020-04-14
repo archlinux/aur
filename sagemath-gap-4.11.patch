@@ -15,7 +15,7 @@ diff --git a/src/sage/coding/linear_code.py b/src/sage/coding/linear_code.py
 index e106498063..b56388830b 100644
 --- a/src/sage/coding/linear_code.py
 +++ b/src/sage/coding/linear_code.py
-@@ -540,17 +540,17 @@ class AbstractLinearCode(AbstractCode, Module):
+@@ -481,17 +481,17 @@ class AbstractLinearCode(AbstractCode, Module):
              0
              sage: C = codes.HammingCode(GF(4, 'z'), 3)
              sage: C.automorphism_group_gens()
@@ -38,7 +38,7 @@ index e106498063..b56388830b 100644
                  Defn: z |--> z),
                ((z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1, z + 1); (), Ring endomorphism of Finite Field in z of size 2^2
                  Defn: z |--> z)],
-@@ -816,10 +816,10 @@ class AbstractLinearCode(AbstractCode, Module):
+@@ -707,10 +707,10 @@ class AbstractLinearCode(AbstractCode, Module):
              sage: C_iso == aut_group_can_label.get_canonical_form()
              True
              sage: aut_group_can_label.get_autom_gens()

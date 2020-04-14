@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.1.beta9.r0.g6a4580546f
+pkgver=9.1.rc0.r0.g10ed24e3ed
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -41,6 +41,7 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-cremona.patch
         sagemath-singular-4.1.2.patch
         sagemath-ecl-sigfpe.patch
+        sagemath-no-dict-sorting.patch
         sagemath-ipython7.patch
         sagemath-python-3.8.patch
         sagemath-pexpect-4.8.patch
@@ -49,19 +50,20 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-pari-2.11.3.patch
         sagemath-jedi-0.16.patch)
 sha256sums=('SKIP'
-            '9cbb72a1422416152cedd6849944d3c02a1639642758b470931f9fc5ddf42d22'
+            'b1112875776635b4f33bc13c8aaedfbbaed8f62a1dac986f7b8faa7565d6abae'
             '6a5470d7044a50a35a6478f57c19adf72fe54aefebeea8a095915b63f9e219ac'
             '887b931b0eb3c7fcfcb01ae0cfda9668925ed59740c4134cba13c43dfe0dd088'
             '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
-            '7950ba0309d661bc73cc46a929d52fba26849d58769aaba2f046dfec70d963f8'
+            '408e193c96a466cfe0134fe44a28e93659916d1d28bd4ea89460aec7fefe8657'
             'e44bbde87f3312548faad75b7383ef21fade55be251ab5804de41cd3842ca8a0'
-            '38b72ef07cb942b6565685147cf6c5cdba9219746fd1baf2f26a72cafdac8acd'
-            'f812e32718eab0292d726bed386217524dcdae3d4078ce82c66c20d00b9806f7'
+            '0ef047e671ddd288e07e9f544f646a9a0bd908accfe6b96dcaf4ee52fa6037e7'
+            'fc28ca3aa1a656bfb451181d5086b3041238f24bf462cc69626d3cd603a246df'
+            'e5aa663c7f76d737ea697a805094734ab8e06eab35bbeadcb4dcab89998d7b31'
             '5e6d1aa34959bd4369bd08a80648a5c7bc2d38e72c97e9a5f986e91f8a7aca07'
-            'd75f551fd942963b0158f5b25cefbecb213c37549375dd2e0f88e1856555fa1e'
+            '588d831b44ec28ca18540d5649e8af518500b82431a59542f3daa92d6c3007cd'
             '979777363001cca87f73128dd4db5f372fc9e4f1079805a20af01df47797468f'
-            'e9c450a30c3f76b05808ece2f40b86f5222cd39563fe7d901712937df28eb4ee'
-            'efb5e8b314b0c29eca79f29d70cd302ef9565813fd331a9f1ecb4ac70f416f94')
+            '1f41b35c916df74fc943949ccde1155e59e7bbbee220c845c9afdf4e0f76bfbc'
+            '30e15715cdc90639d7cbd34e76bbadae2e6d8bab6241617a386aed9513207b8a')
 
 pkgver() {
   cd sage
@@ -78,6 +80,8 @@ prepare(){
   patch -p0 -i ../test-optional.patch
 # use correct latte-count binary name
   patch -p1 -i ../latte-count.patch
+# Remove dict sorting, it doesn't work with ipython >= 7.10
+  patch -p1 -i ../sagemath-no-dict-sorting.patch
 # Python 3.8 support
   patch -p1 -i ../sagemath-python-3.8.patch
 # Fix expect_peek with pexpect 4.8

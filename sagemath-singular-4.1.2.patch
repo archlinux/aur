@@ -1,3 +1,4 @@
+diff --git a/src/doc/en/constructions/algebraic_geometry.rst b/src/doc/en/constructions/algebraic_geometry.rst
 index a312548..d1c9c95 100644
 --- a/src/doc/en/constructions/algebraic_geometry.rst
 +++ b/src/doc/en/constructions/algebraic_geometry.rst
@@ -36,7 +37,7 @@ index ee71373..799f16f 100644
  
  From looking at the output, notice that our wrapper function will need
 diff --git a/src/sage/algebras/free_algebra.py b/src/sage/algebras/free_algebra.py
-index c24add0..25e84ff 100644
+index 2ba6b72..926ca07 100644
 --- a/src/sage/algebras/free_algebra.py
 +++ b/src/sage/algebras/free_algebra.py
 @@ -39,7 +39,15 @@ two-sided ideals, and thus provide ideal containment tests::
@@ -429,7 +430,7 @@ index d7214d1..5b8cf48 100644
          libsingular_options['redSB'] = bck[1]
          self.__GB = A.ideal(out,side='twosided',coerce=False)
 diff --git a/src/sage/combinat/root_system/hecke_algebra_representation.py b/src/sage/combinat/root_system/hecke_algebra_representation.py
-index 7c4f64a..24750be 100644
+index 51f4113..ba42ed1 100644
 --- a/src/sage/combinat/root_system/hecke_algebra_representation.py
 +++ b/src/sage/combinat/root_system/hecke_algebra_representation.py
 @@ -746,7 +746,7 @@ class HeckeAlgebraRepresentation(WithEqualityById, SageObject):
@@ -512,7 +513,7 @@ index 0d32a8d..5e48f87 100644
          return self( self._s(left)*self._s(right) )
  
 diff --git a/src/sage/interfaces/singular.py b/src/sage/interfaces/singular.py
-index 2f08a9d..dbf9b13 100644
+index 78e65d0..bf02916 100644
 --- a/src/sage/interfaces/singular.py
 +++ b/src/sage/interfaces/singular.py
 @@ -191,13 +191,21 @@ The 1x1 and 2x2 minors::
@@ -540,7 +541,7 @@ index 2f08a9d..dbf9b13 100644
  ::
  
 diff --git a/src/sage/libs/singular/function.pyx b/src/sage/libs/singular/function.pyx
-index b649ab1..3742260 100644
+index b649ab1..a405ab2 100644
 --- a/src/sage/libs/singular/function.pyx
 +++ b/src/sage/libs/singular/function.pyx
 @@ -1257,7 +1257,7 @@ cdef class SingularFunction(SageObject):
@@ -551,6 +552,15 @@ index b649ab1..3742260 100644
 +            Wrong number of arguments (got 2 arguments, arity code is 302)
              sage: size('foobar', ring=P)
              6
+ 
+@@ -1308,7 +1308,7 @@ cdef class SingularFunction(SageObject):
+             ...
+             RuntimeError: error in Singular function call 'triangL':
+             The input is no groebner basis.
+-            leaving triang.lib::triangL
++            leaving triang.lib::triangL (0)
+ 
+         Flush any stray output -- see :trac:`28622`::
  
 @@ -1671,17 +1671,17 @@ def singular_function(name):
          Traceback (most recent call last):
@@ -573,6 +583,28 @@ index b649ab1..3742260 100644
  
      The Singular function ``list`` can be called with any number of
      arguments::
+diff --git a/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py b/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py
+index 8b03d22..c5cd87b 100644
+--- a/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py
++++ b/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py
+@@ -1580,7 +1580,7 @@ class FractionWithFactoredDenominator(RingElement):
+             (1, [(x*y + x + y - 1, 2)])
+             sage: alpha = [4, 3]
+             sage: decomp = F.asymptotic_decomposition(alpha); decomp
+-            (0, []) + (-3/2*r*(1/y + 1) - 1/2/y - 1/2, [(x*y + x + y - 1, 1)])
++            (0, []) + (-2*r*(1/x + 1) - 1/2/x - 1/2, [(x*y + x + y - 1, 1)])
+             sage: F1 = decomp[1]
+             sage: p = {y: 1/3, x: 1/2}
+             sage: asy = F1.asymptotics(p, alpha, 2, verbose=True)
+@@ -1614,7 +1614,7 @@ class FractionWithFactoredDenominator(RingElement):
+             sage: alpha = [3, 3, 2]
+             sage: decomp = F.asymptotic_decomposition(alpha); decomp
+             (0, []) +
+-            (-16*r*(3/y - 4/z) - 16/y + 32/z,
++            (16*r*(3/x - 2/z) + 16/x - 16/z,
+              [(x + 2*y + z - 4, 1), (2*x + y + z - 4, 1)])
+             sage: F1 = decomp[1]
+             sage: p = {x: 1, y: 1, z: 1}
 diff --git a/src/sage/rings/polynomial/multi_polynomial_element.py b/src/sage/rings/polynomial/multi_polynomial_element.py
 index e5d6921..f4027eb 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_element.py
@@ -587,7 +619,7 @@ index e5d6921..f4027eb 100644
          -1
          sage: degree_lowest_rational_function(r,b)
 diff --git a/src/sage/rings/polynomial/multi_polynomial_ideal.py b/src/sage/rings/polynomial/multi_polynomial_ideal.py
-index 767f3ae..09a2306e 100644
+index 962205f..1c9a81d 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_ideal.py
 +++ b/src/sage/rings/polynomial/multi_polynomial_ideal.py
 @@ -170,7 +170,7 @@ when the system has no solutions over the rationals.
@@ -624,10 +656,10 @@ index 767f3ae..09a2306e 100644
               10*b*c + 12*c^2 - b - 4*c,
               a + 2*b + 2*c - 1]
 diff --git a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
-index fd03639..851f1b2 100644
+index ab18796..868ca8c 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
 +++ b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
-@@ -2587,6 +2587,26 @@ cdef class MPolynomial_libsingular(MPolynomial):
+@@ -2549,6 +2549,26 @@ cdef class MPolynomial_libsingular(MPolynomial):
          """
          return  singular_polynomial_str_with_changed_varnames(self._poly, self._parent_ring, varnames)
  
@@ -655,10 +687,10 @@ index fd03639..851f1b2 100644
          """
          Return the degree of this polynomial.
 diff --git a/src/sage/rings/polynomial/plural.pyx b/src/sage/rings/polynomial/plural.pyx
-index d2dec78..6fa2680 100644
+index 42001d4..8e4eea9 100644
 --- a/src/sage/rings/polynomial/plural.pyx
 +++ b/src/sage/rings/polynomial/plural.pyx
-@@ -2876,7 +2876,8 @@ cpdef MPolynomialRing_libsingular new_CRing(RingWrap rw, base_ring):
+@@ -2888,7 +2888,8 @@ cpdef MPolynomialRing_libsingular new_CRing(RingWrap rw, base_ring):
      self.__ngens = rw.ngens()
      self.__term_order =  TermOrder(rw.ordering_string(), force=True)
  
@@ -680,17 +712,4 @@ index 592bb68..962821c 100644
 +            [(-2*x + y)/(x + y), (-x + z)/(x + y)]
  
          .. NOTE::
- 
-diff --git a/src/sage/libs/singular/function.pyx b/src/sage/libs/singular/function.pyx
-index b649ab1e64..72f34fd67d 100644
---- a/src/sage/libs/singular/function.pyx
-+++ b/src/sage/libs/singular/function.pyx
-@@ -1308,7 +1308,7 @@ cdef class SingularFunction(SageObject):
-             ...
-             RuntimeError: error in Singular function call 'triangL':
-             The input is no groebner basis.
--            leaving triang.lib::triangL
-+            leaving triang.lib::triangL (0)
- 
-         Flush any stray output -- see :trac:`28622`::
  
