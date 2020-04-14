@@ -1,7 +1,7 @@
 pkgbase = helm2-bin
 	pkgdesc = The Kubernetes Package Manager
-	pkgver = 2.16.5
-	pkgrel = 3
+	pkgver = 2.16.6
+	pkgrel = 1
 	url = https://helm.sh/
 	arch = x86_64
 	arch = aarch64
@@ -13,10 +13,10 @@ pkgbase = helm2-bin
 	license = Apache
 	makedepends = grep
 	provides = helm
-	source = https://get.helm.sh/helm-v2.16.5-linux-amd64.tar.gz
-	source = https://github.com/helm/helm/releases/download/v2.16.5/helm-v2.16.5-linux-amd64.tar.gz.asc
+	source = https://get.helm.sh/helm-v2.16.6-linux-amd64.tar.gz
+	source = https://github.com/helm/helm/releases/download/v2.16.6/helm-v2.16.6-linux-amd64.tar.gz.asc
 	validpgpkeys = 672C657BE06B4B30969C4A57461449C25E36B98E
-	sha256sums = 7cd54f56f787d62fd7311d5ae2c26e31310d37d27e3622014e5c769bec008cab
+	sha256sums = e38fea59bc382feb0f80322d582266465d76ab72acdc0079c2350cc3fd8a3f4c
 	sha256sums = SKIP
 
 pkgname = helm2-bin

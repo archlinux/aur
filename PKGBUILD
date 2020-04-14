@@ -6,8 +6,8 @@
 # Contributor: Matthias Lisin <ml@visu.li>
 
 pkgname=helm2-bin
-pkgver=2.16.5
-pkgrel=3
+pkgver=2.16.6
+pkgrel=1
 pkgdesc="The Kubernetes Package Manager"
 arch=(
   "x86_64"  # amd64
@@ -24,22 +24,22 @@ validpgpkeys=(
 )
 
 [ "${CARCH}" = "x86_64" ] && _CARCH=amd64 && sha256sums=(
-  '7cd54f56f787d62fd7311d5ae2c26e31310d37d27e3622014e5c769bec008cab'
+  'e38fea59bc382feb0f80322d582266465d76ab72acdc0079c2350cc3fd8a3f4c'
   'SKIP'
 )
 
 [ "${CARCH}" = "aarch64" ] && _CARCH=arm64 && sha256sums=(
-  'ace7eef2a446886600e5ff7efec4a03bab85de0bef29c6af2fb4bfd96d54c31e'
+  '115bef1e1171c3d71df3475ac4bc3ee7a43a5632591fafb6add797b65008026a'
   'SKIP'
 )
 
 echo ${CARCH} | grep -E '^arm' &>/dev/null && _CARCH=arm && sha256sums=(
-  'f35b694ba14555ea4124c558967e3947859282ec8d9c3a883c96bd1ae0ddc2b5'
+  '5c72eb00e5273297dbafb570607bcff8c59b06096d50ac0d74872528992f9d70'
   'SKIP'
 )
 
 [ "${CARCH}" = "i486" -o "${CARCH}" = "i686" ] && _CARCH=386 && sha256sums=(
-  'ace7eef2a446886600e5ff7efec4a03bab85de0bef29c6af2fb4bfd96d54c31e'
+  '72b5f80e97c7b385a01c525bdd2d9c10b7a7b472f99ca99d3e5f55a4ead9ac40'
   'SKIP'
 )
 
@@ -49,7 +49,7 @@ source=(
 )
 
 package(){
-    cd "linux-${_CARCH}"
+    cd "${srcdir}/linux-${_CARCH}"
     install -Dm755 -t "$pkgdir/usr/bin" helm tiller
     ./helm completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/helm"
     ./helm completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_helm"
