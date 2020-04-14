@@ -9,10 +9,10 @@
 
 _pkgname=audacious
 pkgname="$_pkgname-git"
-_pkgver=4.1
-pkgver=4.1.r9041.ef184ee52
+pkgver=4.0.beta1.r100.g27313f081
 pkgrel=1
-pkgdesc="Lightweight, advanced audio player focused on audio quality"
+epoch=1
+pkgdesc="Lightweight, advanced audio player focused on audio quality (git version)"
 arch=('i686' 'x86_64')
 url="https://audacious-media-player.org/"
 license=('BSD')
@@ -27,7 +27,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^audacious-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
