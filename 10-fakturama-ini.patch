@@ -1,0 +1,9 @@
+diff --git a/Fakturama.ini b/Fakturama.ini.new
+index 7ce76e1..5f1a02e 100644
+--- a/Fakturama.ini
++++ b/Fakturama.ini.new
+@@ -6,4 +6,3 @@ plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.1100.v20190907-0426
+ -DREFRESH_BUNDLES=false
+ -Dorg.eclipse.e4.ui.css.dynamic=true
+ --add-modules=ALL-SYSTEM
+--clean
