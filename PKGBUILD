@@ -18,6 +18,7 @@ build() {
 package() {
   cd $pkgname-$pkgver
   install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 "$srcdir/nextdns.service" "$pkgdir/usr/lib/systemd/system/nextdns.service"
 }
 
 sha256sums=('ee0059ee0723a2755de933abc45ac0923bf473b6cb0bab66343cf3cb408a7d7f'
