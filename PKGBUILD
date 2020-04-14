@@ -1,25 +1,13 @@
 # Maintainer: Diab Neiroukh <officiallazerl0rd@gmail.com>
 
 pkgbase="nginx-lazerl0rd-git"
-pkgname=("nginx-lazerl0rd-git" "nginx-lazerl0rd-src-git")
+pkgname=("nginx-lazerl0rd-git" "nginx-src-lazerl0rd-git")
 pkgver=1.17.9
-pkgrel=5
+pkgrel=6
 arch=("i686" "x86_64")
 url="https://github.com/lazerl0rd/nginx"
 license=("custom")
-depends=("geoip" "gzip" "libatomic_ops" "liburing" "mailcap" "pcre")
 makedepends=("cmake" "git" "go" "perl" "rust>=1.39.0")
-provides=("nginx=1.17.9" "nginx-mod-brotli" "nginx-mod-cookie_flag_module" "nginx-src=1.17.9")
-conflicts=("nginx" "nginx-src")
-backup=("etc/nginx/fastcgi.conf"
-		"etc/nginx/fastcgi_params"
-		"etc/nginx/koi-win"
-		"etc/nginx/koi-utf"
-		"etc/nginx/nginx.conf"
-		"etc/nginx/scgi_params"
-		"etc/nginx/uwsgi_params"
-		"etc/nginx/win-utf"
-		"etc/logrotate.d/nginx")
 source=("git+${url}.git"
 		"git+https://github.com/AirisX/nginx_cookie_flag_module.git"
 		"git+https://github.com/cloudflare/quiche.git"
@@ -76,10 +64,16 @@ _stable_flags=(
 	--with-libatomic
 	--with-openssl="../quiche/deps/boringssl"
 	--with-quiche="../quiche"
-	--with-zlib="../zlib"
 )
 
-prepare() {
+prepare_nginx-lazerl0rd-git() {
+	cp -r "nginx"{,"-src"}
+
+	cd "quiche"
+	git submodule update --init
+}
+
+prepare_nginx-src-lazerl0rd-git() {
 	cp -r "nginx"{,"-src"}
 
 	cd "quiche"
@@ -87,13 +81,10 @@ prepare() {
 }
 
 build() {
-	export CC=gcc
-	export CXX=g++
-
-	CPPFLAGS="-D_FORTIFY_SOURCE=2"
-	CFLAGS="-march=native -mtune=native -O2 -pipe -fno-plt -flto"
-	CXXFLAGS="-march=native -mtune=native -O2 -pipe -fno-plt -flto"
-	LDFLAGS="-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
+	export CPPFLAGS="-D_FORTIFY_SOURCE=2"
+	export CFLAGS="-march=native -mtune=native -O2 -pipe -fno-plt"
+	export CXXFLAGS="-march=native -mtune=native -O2 -pipe -fno-plt"
+	export LDFLAGS="-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
 
 	cd "nginx"
 	./auto/configure \
@@ -120,18 +111,35 @@ build() {
 
 package_nginx-lazerl0rd-git() {
 	pkgdesc="NGINX with beefed up security and performance"
+	depends=("geoip" "gzip" "libatomic_ops" "liburing" "mailcap" "pcre" "zlib")
+	optdepends=("nginx-src-lazerl0rd-git: dynamic module support")
+	provides=("nginx=1.17.9" "nginx-mod-brotli" "nginx-mod-cookie_flag_module")
+	conflicts=("nginx" "nginx-mod-brotli" "nginx-mod-cookie_flag_module")
+	backup=("etc/nginx/fastcgi.conf"
+			"etc/nginx/fastcgi_params"
+			"etc/nginx/koi-win"
+			"etc/nginx/koi-utf"
+			"etc/nginx/nginx.conf"
+			"etc/nginx/scgi_params"
+			"etc/nginx/uwsgi_params"
+			"etc/nginx/win-utf"
+			"etc/logrotate.d/nginx")
 
 	cd "nginx"
 
-	make install DESTDIR="${pkgdir}" 
+	make install DESTDIR="${pkgdir}"
 
 	sed -e "s|\<user\s\+\w\+;|user html;|g" \
 		-e "44s|html|/usr/share/nginx/html|" \
 		-e "54s|html|/usr/share/nginx/html|" \
 		-i "${pkgdir}/etc/nginx/nginx.conf"
 
-	rm "${pkgdir}/etc/nginx/*.default"
-	rm "${pkgdir}/etc/nginx/mime.types"
+    for i in "${pkgdir}/etc/nginx/"*".default"; do
+        rm "$i"
+    done
+    if [ -f "${pkgdir}/etc/nginx/mime.types" ]; then
+        rm "${pkgdir}/etc/nginx/mime.types"
+    fi
 
 	install -d -m755 "${pkgdir}/var/lib/nginx"
 	chown root:root "${pkgdir}/var/log/nginx"
@@ -145,7 +153,7 @@ package_nginx-lazerl0rd-git() {
 
 	cd ..
 	install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-	
+
 	cd "nginx"
 
 	rmdir "${pkgdir}/run"
@@ -159,8 +167,10 @@ package_nginx-lazerl0rd-git() {
 	done
 }
 
-package_nginx-lazerl0rd-src-git() {
+package_nginx-src-lazerl0rd-git() {
 	pkgdesc="Source code of nginx-lazerl0rd $pkgver, useful for building modules"
+	provides=("nginx-src=1.17.9")
+	conflicts=("nginx-src")
 
 	install -d "${pkgdir}/usr/src"
 	cp -r "nginx-src" "${pkgdir}/usr/src/nginx"

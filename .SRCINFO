@@ -1,6 +1,6 @@
 pkgbase = nginx-lazerl0rd-git
 	pkgver = 1.17.9
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/lazerl0rd/nginx
 	arch = i686
 	arch = x86_64
@@ -10,27 +10,6 @@ pkgbase = nginx-lazerl0rd-git
 	makedepends = go
 	makedepends = perl
 	makedepends = rust>=1.39.0
-	depends = geoip
-	depends = gzip
-	depends = libatomic_ops
-	depends = liburing
-	depends = mailcap
-	depends = pcre
-	provides = nginx=1.17.9
-	provides = nginx-mod-brotli
-	provides = nginx-mod-cookie_flag_module
-	provides = nginx-src=1.17.9
-	conflicts = nginx
-	conflicts = nginx-src
-	backup = etc/nginx/fastcgi.conf
-	backup = etc/nginx/fastcgi_params
-	backup = etc/nginx/koi-win
-	backup = etc/nginx/koi-utf
-	backup = etc/nginx/nginx.conf
-	backup = etc/nginx/scgi_params
-	backup = etc/nginx/uwsgi_params
-	backup = etc/nginx/win-utf
-	backup = etc/logrotate.d/nginx
 	source = git+https://github.com/lazerl0rd/nginx.git
 	source = git+https://github.com/AirisX/nginx_cookie_flag_module.git
 	source = git+https://github.com/cloudflare/quiche.git
@@ -50,7 +29,32 @@ pkgbase = nginx-lazerl0rd-git
 
 pkgname = nginx-lazerl0rd-git
 	pkgdesc = NGINX with beefed up security and performance
+	depends = geoip
+	depends = gzip
+	depends = libatomic_ops
+	depends = liburing
+	depends = mailcap
+	depends = pcre
+	depends = zlib
+	optdepends = nginx-src-lazerl0rd-git: dynamic module support
+	provides = nginx=1.17.9
+	provides = nginx-mod-brotli
+	provides = nginx-mod-cookie_flag_module
+	conflicts = nginx
+	conflicts = nginx-mod-brotli
+	conflicts = nginx-mod-cookie_flag_module
+	backup = etc/nginx/fastcgi.conf
+	backup = etc/nginx/fastcgi_params
+	backup = etc/nginx/koi-win
+	backup = etc/nginx/koi-utf
+	backup = etc/nginx/nginx.conf
+	backup = etc/nginx/scgi_params
+	backup = etc/nginx/uwsgi_params
+	backup = etc/nginx/win-utf
+	backup = etc/logrotate.d/nginx
 
-pkgname = nginx-lazerl0rd-src-git
+pkgname = nginx-src-lazerl0rd-git
 	pkgdesc = Source code of nginx-lazerl0rd 1.17.9, useful for building modules
+	provides = nginx-src=1.17.9
+	conflicts = nginx-src
 
