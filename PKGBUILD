@@ -5,29 +5,30 @@
 # Contributor: Johannes Schlatow <johannes.schlatow@googlemail.com>
 # Contributor: Stephan Friedrichs <deduktionstheorem@googlemail.com>
 
-pkgname=('scipoptsuite')
-pkgver=6.0.2
-pkgrel=6
-pkgdesc='Toolbox for generating and solving optimization problems'
+pkgname=scipoptsuite
+pkgver=7.0.0
+pkgrel=1
+pkgdesc='Toolbox for generating and solving optimization problems (with Parallel Processing)'
 arch=('x86_64')
 url='https://scip.zib.de'
-license=('LGPL-3.0' 'custom:ZIB Academic License')
+license=('LGPL-3.0' 'ZIB Academic License')
 replaces=('ziboptsuite')
-depends=('gmp' 'readline' 'zlib')
-makedepends=('ninja' 'cmake' "${depends[@]}")
+depends=('gmp' 'readline' 'zlib' 'gmp' 'cppad' 'bliss')
+makedepends=('ninja' 'cmake' "${depends[@]}" 'boost' 'bliss')
 optdepends=('coin-or-ipopt: COIN-OR Interior Point Optimizer IPOPT'
             'gsl: GNU Scientific Library'
             'cliquer: C routines for finding cliques in an arbitrary weighted graph'
-            'bliss: Library for computing automorphism groups and canonical forms of graphs'
-            )
-provides=('scip=6.0.2' 'soplex=4.0.2' 'zimpl=3.3.8')
-source=("${url}/download/release/${pkgname}-${pkgver}.tgz")
-md5sums=('6b2b6cacc43ba6776cc5018edabb0cc4')
+            'hmetis: A set of programs for partitioning hypergraphs'
+            'criterion: A cross-platform C and C++ unit testing framework')
+provides=('scip=7.0.0' 'soplex=5.0.0' 'zimpl=3.3.9')
+source=("local:///${pkgname}-${pkgver}.tgz")
+md5sums=('eb86857ee047bd40ee1b7bdfc3587672')
+options=('strip')
 
 prepare() {
   mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
   cd "${srcdir}/${pkgname}-${pkgver}/build"
-  cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DTPI=tny ..
 }
 
 build() {
@@ -44,5 +45,7 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   DESTDIR="${pkgdir}" ninja install
   install -D -m644 ../COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  sed -i "180s|${srcdir}/${pkgname}-${pkgver}/build/zimpl/src/|usr/include|" ${pkgdir}/usr/include/zimpl/mmlparse2.h
+  sed -i "6s|${srcdir}||" ${pkgdir}/usr/lib/cmake/gcg/gcg-config.cmake
 }
 # vim:set ts=2 sw=2 et:
