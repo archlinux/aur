@@ -1,6 +1,6 @@
 pkgbase = update-efi-entry
 	pkgdesc = Script for easy EFISTUB entry setup and management.
-	pkgver = r13.23a6ce3
+	pkgver = r14.8dd14fc
 	pkgrel = 1
 	url = https://github.com/alex4401/update-efi-entry
 	arch = any
