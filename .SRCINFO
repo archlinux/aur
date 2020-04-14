@@ -1,0 +1,19 @@
+pkgbase = python-vttlib
+	pkgdesc = Dump, merge and compile Visual TrueType data in UFO3 with FontTools
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/daltonmaag/vttLib
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-fonttools
+	depends = python-fs
+	depends = python-lxml
+	depends = python-pyparsing
+	depends = python-ufolib2
+	source = https://files.pythonhosted.org/packages/source/v/vttLib/vttLib-0.9.0.zip
+	sha256sums = 67f8cf9ca91042096fe35e47940f65ccddf39e19ea1ff777f1656666350aaa72
+
+pkgname = python-vttlib
+
