@@ -1,4 +1,4 @@
-# Maintainer: sanya <sanya@national.shitposting.agency>
+# Maintainer: 5anya <sanya@national.shitposting.agency>
 pkgname=updsched
 pkgver=1.0.1
 pkgrel=1
