@@ -29,5 +29,5 @@ package() {
   make DESTDIR="$pkgdir" install
   
   mkdir -p ${pkgdir}/usr/bin
-  ln -s ${pkgdir}/opt/rocm/bin/rocminfo ${pkgdir}/usr/bin/rocminfo
+  ln -s /opt/rocm/bin/rocminfo ${pkgdir}/usr/bin/rocminfo
 }
