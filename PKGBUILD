@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Gladkov <vovkos[at]gmail>
 
 pkgname=ioninja
-pkgver=3.14.0
+pkgver=3.14.1
 pkgrel=1
 pkgdesc="Professional, scriptable, all-in-one terminal/sniffer"
 arch=("i686" "x86_64")
@@ -25,8 +25,8 @@ sha256sums=(
 	"47bfac3143d5486a3abc433bd33c6a1300505213812e3196a2419fa832e1fb77"  # ioninja-64x64.png
 	"6bb9a201534c99e475823b0aacc7114815fcb199ae2ddf0d359d5fd2d9af8b9c"  # ioninja-256x256.png
 	)
-sha256sums_i686=("808909a967145b7215d6eb71cde68616df9baaa6806ebce65806c298fb532dca")
-sha256sums_x86_64=("b85173291841f269c29e01dec2012bc2174ae13eb611895513e0f9fef651b0ec")
+sha256sums_i686=("64e4aed73ca2b87c22120b29ad8acbc189af072c608853c4c417f23a9b25363f")
+sha256sums_x86_64=("0bfa2190dcde9ba554a1324d2c436a8a81dead2caae7bd21ea7bd51f8da97bf0")
 
 prepare() {
 	gendesk -f --name="IO Ninja" --pkgname="$pkgname" --pkgdesc="$pkgdesc" --categories="Network;Utility;Development" PKGBUILD
