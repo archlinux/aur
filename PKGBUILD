@@ -1,7 +1,7 @@
 # Maintainer: Mykola Dimura <mykola.dimura@gmail.com>
 pkgname=mingw-w64-readerwriterqueue-git
 pkgver=r77.66a9b18
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast single-producer, single-consumer lock-free queue for C++. (mingw-w64)"
 arch=('any')
 url='https://github.com/cameron314/readerwriterqueue'
