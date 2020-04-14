@@ -1,7 +1,7 @@
 pkgbase = queryit
-	pkgdesc = A very basic setupless terminal based SQL query
+	pkgdesc = A very basic setupless terminal based SQL query runner
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hugopl/queryit
 	arch = x86_64
 	license = MIT
