@@ -5,14 +5,14 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r8391.e480a8032
+pkgver=r8396.263e5be78
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/citra-emu/citra/"
 license=('GPL2')
-depends=('ffmpeg' 'qt5-multimedia')
-makedepends=('git' 'cmake' 'sdl2' 'qt5-base' 'shared-mime-info' 'desktop-file-utils')
+depends=('ffmpeg')
+makedepends=('git' 'cmake' 'sdl2' 'qt5-base' 'shared-mime-info' 'desktop-file-utils' 'qt5-multimedia')
 source=("$_pkgbase::git+https://github.com/citra-emu/citra")
 md5sums=('SKIP')
 
@@ -55,7 +55,7 @@ package_citra-git() {
 }
 
 package_citra-qt-git() {
-	depends=('qt5-base' 'sdl2' 'shared-mime-info' 'desktop-file-utils')
+	depends=('qt5-base' 'qt5-multimedia' 'sdl2' 'shared-mime-info' 'desktop-file-utils')
 	optdepends=('libxkbcommon-x11: for X11 support'
 	            'qt5-wayland: for Wayland support')
 
