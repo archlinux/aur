@@ -7,8 +7,8 @@ Description=Hangouts Matrix Puppet
 Type=simple
 Environment=DEBUG=verbose:matrix-puppet:*
 Environment=HOME=/var/lib/matrix-puppet-hangouts/%i/
-User=synapse
-Group=synapse
+User=matrix-hangouts
+Group=matrix-hangouts
 WorkingDirectory=/var/lib/matrix-puppet-hangouts/%i/
 ExecStart=/usr/bin/node /usr/lib/node_modules/matrix-puppet-hangouts/index.js
 Restart=always

@@ -1,7 +1,8 @@
 pkgbase = matrix-puppet-hangouts-git
-	pkgdesc = Single user Node.js Hangouts bridge for Matrix-Synapse <1.10.x
+	pkgdesc = Unmaintained, single user Node.js Hangouts bridge for Matrix-Synapse <1.10.x
 	pkgver = r57.b055642
-	pkgrel = 2
+	pkgrel = 3
+	url = https://github.com/matrix-hacks/matrix-puppet-hangouts
 	arch = any
 	license = Apache
 	makedepends = npm
@@ -17,13 +18,17 @@ pkgbase = matrix-puppet-hangouts-git
 	source = setup.sh
 	source = config-paths.patch
 	source = hangups_manual_login.py
+	source = sysusers-matrix-hangouts.conf
+	source = tmpfiles-matrix-hangouts.conf
 	source = matrix-puppet-hangouts@.service
-	sha256sums = SKIP
-	sha256sums = 69aaa542079a8fa4a4ac73a0598acef5d2991a24b657af987c13014ee96e21e0
-	sha256sums = 19bc3e24513c0c580dc862f2fc14f40baff9b4d2b09280586014042af32881bf
-	sha256sums = 7e17b23c7f23558e1cdee0bd3e3c0820c91ac1f05a2b7ce7edcbc750413aa371
-	sha256sums = 39ef6f75eed3c743bafc3974e83a8916446120985a5e2b39f9c6aa70abfbe585
-	sha256sums = e80f54718c308237eeae039326c69e6b599c6578db3ed72ab7b79d2f8e1c38d6
+	md5sums = SKIP
+	md5sums = 0d02b2c6ff05a1477e3e65aa242b064c
+	md5sums = 09214cd85350e18a0ba2bb38c8420005
+	md5sums = 1fa946f5f038d84121bea3d3e3b915ee
+	md5sums = 7dd4e8eae5064114ff5f85bb94ce21c0
+	md5sums = 5c2a8067f31008533e7c99817d8c7f7e
+	md5sums = 6c86d68053b5c9eaab4559d2877857cc
+	md5sums = a25c1e7dffb9fb2684387009bf55a847
 
 pkgname = matrix-puppet-hangouts-git
 
