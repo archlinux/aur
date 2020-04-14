@@ -3,11 +3,12 @@
 _pkgbase=mautrix-facebook
 pkgname=${_pkgbase}-git
 pkgver=r150.9264125
-pkgrel=2
+pkgrel=3
 pkgdesc="A Matrix-Facebook puppeting bridge with multi-user support"
 arch=(any)
 conflicts=(mautrix-facebook)
 license=(AGPLv3)
+url="https://github.com/tulir/mautrix-facebook"
 depends=(python
 	     python-aiohttp
 	     python-alembic

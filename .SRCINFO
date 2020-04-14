@@ -1,7 +1,8 @@
 pkgbase = mautrix-facebook-git
 	pkgdesc = A Matrix-Facebook puppeting bridge with multi-user support
 	pkgver = r150.9264125
-	pkgrel = 2
+	pkgrel = 3
+	url = https://github.com/tulir/mautrix-facebook
 	arch = any
 	license = AGPLv3
 	makedepends = git
