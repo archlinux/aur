@@ -9,14 +9,14 @@ arch=('x86_64')
 url='http://www.axoloti.com'
 license=('GPL')
 depends=('jre8-openjdk' 'bash' 'udev' 'lib32-bzip2' 'lib32-zlib' 'lib32-ncurses')
-makedepends=('apache-ant' 'git')
+makedepends=('apache-ant' 'git' 'jdk8-openjdk')
 conflicts=('axoloti-git' 'axoloti-runtime-git')
 options=('!strip')
 install="$pkgname.install"
 
 _chibios_version=2.6.9
-_chibios=ChibiOS_${_chibios_version}
-_chibios_archive=${_chibios}.zip
+_chibios=ChibiOS-ver${_chibios_version}
+_chibios_archive=ver${_chibios_version}.zip
 _toolchain=gcc-arm-none-eabi-4_9-2015q2
 _toolchain_archive=${_toolchain}-20150609-linux.tar.bz2
 _libusb=libusb-1.0.19
@@ -27,7 +27,7 @@ _dfu_util_archive=${_dfu_util}.tar.gz
 source=(
   "git+https://github.com/axoloti/axoloti.git"
   "axoloti.sh"
-  "https://sourceforge.net/projects/chibios/files/ChibiOS%20GPL3/Version%20${_chibios_version}/${_chibios_archive}"
+  "https://github.com/ChibiOS/ChibiOS/archive/${_chibios_archive}"
   "https://launchpad.net/gcc-arm-embedded/4.9/4.9-2015-q2-update/+download/${_toolchain_archive}"
   "${_libusb_archive}::http://sourceforge.net/projects/libusb/files/libusb-1.0/${_libusb}/${_libusb_archive}/download"
   "http://dfu-util.sourceforge.net/releases/${_dfu_util_archive}"
@@ -36,7 +36,7 @@ source=(
 sha512sums=(
   SKIP
   d3df8647a7adb5df40549fe8f81579df11cbe409527f42101d5a1948102895afbd764ee0b7dfb53f56694aea4ba0b1ffeadee012d7b36a9c032d686e1586a0b3
-  9724896d82cec1f0eb222bebb7b9b97173ec9b536d7f7bad36cebff24323a8c439db1693ba45107ac6087c9cc339da0b420392deea458ef2f383cd72e2916d9d
+  d3e936d85315a2184e2a13d60265d2a6487079d4c5fca54888510f38a068476ea729b574b53fcd9d3d22f6c3421275834fbdddc09ff58552bf94615da43d78f6
   73fbd6c2ba6350422b8b708456e2344d785344aa57777bcd7b5a4d9b8524eeed13d5b10eb47e1c13513519e1e670db726e7f969c4ca9124f33c9dfe04e6e7a8a
   f42f0187bfec16ebabad64efef7a7651ee85dcf2af1b7cbe543b7de615f9c6432f7eea5fcc6b23335591dcad287c905eb9bd56199cc5d3b47435027ad678f2c1
   a192019654a03f816c8270257785d504bd88ca279844d7d01082b1b1eb219a87135691ccb7cec5de951a87e0864fc39b55f1774c78b4c851940ba467412bee6e
