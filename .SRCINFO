@@ -1,0 +1,17 @@
+pkgbase = updsched
+	pkgdesc = An automatic Arch Linux update download scheduler
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/head47/updsched
+	arch = any
+	license = AGPL3
+	depends = pacman
+	depends = sudo
+	depends = libnotify
+	depends = dunst
+	depends = iputils
+	source = https://github.com/head47/updsched/archive/1.0.1.zip
+	md5sums = 5a71f676e3c6eaa9aa3312ee78f115ad
+
+pkgname = updsched
+
