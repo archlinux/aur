@@ -1,15 +1,18 @@
 pkgbase = protonfixes-git
-	pkgdesc = A module for applying fixes at runtime to unsupported games with Steam Proton without changing game installation files
-	pkgver = r167.bf49d41
-	pkgrel = 2
+	pkgdesc = A module for applying fixes at runtime to unsupported games with Steam Proton without changing game installation files - git version
+	pkgver = r241.203b4c2
+	pkgrel = 1
 	url = https://github.com/simons-public/protonfixes
 	arch = any
 	license = BSD
+	makedepends = git
 	makedepends = python-setuptools
 	optdepends = wine: win32 proton prefix support
 	optdepends = winetricks: winetricks support
-	optdepends = cefpython3: splash dialog support
-	optdepends = zenity: splash dialog support
+	optdepends = python-cef: splash progress dialog - deprecated
+	optdepends = python-kivy: splash progress dialog
+	optdepends = kdialog: splash progress dialog
+	optdepends = zenity: splash progress dialog
 	source = protonfixes-git::git+https://github.com/simons-public/protonfixes#branch=master
 	md5sums = SKIP
 
