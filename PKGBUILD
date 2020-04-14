@@ -1,5 +1,5 @@
 # Maintainer: Stefanos Mitropoulos stefmitropoulos@gmail.com
-pkgname=wol-qt
+pkgname=wol_qt
 pkgver=1.4
 pkgrel=1
 epoch=
