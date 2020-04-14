@@ -2,11 +2,11 @@
 
 pkgname=virtboard
 pkgver=0.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Basic keyboard, blazing the path of modern Wayland keyboards"
 url="https://source.puri.sm/Librem5/virtboard"
 license=("GPL3")
-arch=(i686 x86_64 armv6h armv7h)
+arch=(i686 x86_64 armv7h aarch64)
 depends=(cairo
          libxkbcommon
          wayland)
