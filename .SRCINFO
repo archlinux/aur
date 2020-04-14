@@ -1,37 +1,36 @@
 pkgbase = refind-efi-git
-	pkgdesc = rEFInd Boot Manager - git version - Built with GNU-EFI libs
+	pkgdesc = rEFInd Boot Manager - git version
 	pkgver = 0.12.0.r692.g4a84fce
 	pkgrel = 2
 	url = https://www.rodsbooks.com/refind/
-	install = refind-efi.install
-	arch = x86_64
+	arch = any
+	license = BSD
+	license = CCPL
+	license = FDL1.3
+	license = GPL2
 	license = GPL3
-	license = custom
+	license = LGPL3
 	makedepends = git
 	makedepends = gnu-efi-libs
 	depends = bash
 	depends = dosfstools
 	depends = efibootmgr
 	depends = which
-	optdepends = sudo: privilege elevation
-	optdepends = gptfdisk: For finding ESP
-	optdepends = imagemagick: For refind-mkfont script
-	optdepends = python: For refind-mkdefault script
-	optdepends = openssl: To generate Secure Boot keys
-	optdepends = sbsigntools: For EFI binary signing
+	optdepends = gptfdisk: for finding non-vfat ESP with refind-install
+	optdepends = imagemagick: for refind-mkfont
+	optdepends = openssl: for generating local certificates with refind-install
 	optdepends = preloader-signed: pre-signed Secure Boot shim loader
+	optdepends = python: for refind-mkdefault
+	optdepends = sudo: for privilege elevation in refind-install and refind-mkdefault
 	optdepends = shim-signed: pre-signed Secure Boot shim loader
+	optdepends = sbsigntools: for EFI binary signing with refind-install
 	provides = refind=0.12.0.r692.g4a84fce
 	provides = refind-efi=0.12.0.r692.g4a84fce
 	conflicts = refind
 	conflicts = refind-efi
-	options = !strip
-	options = !buildflags
 	options = !makeflags
 	source = refind::git+https://git.code.sf.net/p/refind/code#branch=master
-	source = refind_linux.conf
 	sha512sums = SKIP
-	sha512sums = d54b1a0b135594de9a8583a50f54de6daf3c8e38f1bc453794fa3959e826989a44a286e14cf8d8cb2eb04a1e97c984e62292a03e92c98aed044373381bca52d8
 
 pkgname = refind-efi-git
 
