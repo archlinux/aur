@@ -3,7 +3,7 @@
 pkgbase="nginx-lazerl0rd-git"
 pkgname=("nginx-lazerl0rd-git" "nginx-src-lazerl0rd-git")
 pkgver=1.17.9
-pkgrel=10
+pkgrel=12
 arch=("i686" "x86_64")
 url="https://github.com/lazerl0rd/nginx"
 license=("custom")
@@ -25,7 +25,6 @@ b2sums=("SKIP"
 
 _common_flags=(
 	--with-compat
-	--with-debug
 	--with-file-aio
 	--with-http_addition_module
 	--with-http_auth_request_module
