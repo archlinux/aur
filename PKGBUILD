@@ -24,6 +24,7 @@ package() {
     INCDIR="${pkgdir}/usr/${_arch}/include/readerwriterqueue"
     mkdir -p "${INCDIR}"
     cp readerwriterqueue.h atomicops.h "${INCDIR}/"
+    chmod -R a+r "${INCDIR}"
 #    ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
 #    ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
   done
