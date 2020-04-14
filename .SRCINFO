@@ -1,7 +1,7 @@
 pkgbase = lf
 	pkgdesc = A terminal file manager inspred by ranger written in Go
-	pkgver = 13
-	pkgrel = 4
+	pkgver = 14
+	pkgrel = 1
 	url = https://github.com/gokcehan/lf
 	arch = aarch64
 	arch = armv7h
@@ -10,8 +10,8 @@ pkgbase = lf
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = lf-r13.tar.gz::https://github.com/gokcehan/lf/archive/r13.tar.gz
-	sha256sums = fe99ed9785fbdc606835139c0c52c854b32b1f1449ba83567a115b21d2e882f4
+	source = lf-r14.tar.gz::https://github.com/gokcehan/lf/archive/r14.tar.gz
+	sha256sums = 5266afa808f4612733af65289024c9eb182864f6a224fdfdf58f405a30c79644
 
 pkgname = lf
 
