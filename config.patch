@@ -54,7 +54,7 @@
  
    mod_version:
      show_os: true
-@@ -76,18 +67,17 @@
+@@ -76,19 +67,17 @@
      max_stanza_size: 65536
      resource_conflict: replace  # [override, replace, reject]
  
@@ -79,4 +79,4 @@
 -      - digest_md5
        - scram_sha_1
        - scram_sha_256
-       - scram_sha_512
+-      - scram_sha_512
