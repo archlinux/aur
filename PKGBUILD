@@ -2,7 +2,7 @@
 
 pkgname=youtubemusic-nativefier
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="YouTube Music Client built with nodejs-nativefier (electron)"
 arch=("i686" "x86_64")
 url="https://music.youtube.com/"
@@ -17,7 +17,7 @@ sha256sums=("28b36360694313d9558ed620194a700296dbbf971e7fff90d18ad5c7cf74950a"
 
 build() {
 	cd "${srcdir}"
-	nativefier --name "YouTube Music" --icon "${pkgname}.png" --verbose --internal-urls "(.*?)(accounts\.google\.com/ServiceLogin|music\.youtube\.com)(.*?)" "${url}"
+	nativefier "https://music.youtube.com" --user-agent 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0' --name "YouTube Music" --internal-urls ".*accounts.google.com.*|.*youtube.com.*"
 }
 
 package() {
