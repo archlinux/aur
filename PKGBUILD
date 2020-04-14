@@ -7,21 +7,25 @@ pkgrel=13
 arch=("i686" "x86_64")
 url="https://github.com/lazerl0rd/nginx"
 license=("custom")
-makedepends=("cmake" "git" "go" "perl" "rust>=1.39.0")
-source=("git+${url}.git"
-		"git+https://github.com/AirisX/nginx_cookie_flag_module.git"
-		"git+https://github.com/cloudflare/quiche.git"
-		"git+https://github.com/google/ngx_brotli.git"
-		"https://nginx.org/LICENSE"
-		"service"
-		"logrotate")
-b2sums=("SKIP"
-		"SKIP"
-		"SKIP"
-		"SKIP"
-		"fbd993990b43a4476d0963287bdc5f55f73fa5ce828f11977cf1abeedd478729a95861d930e27c6a1b0e78b16397164395afc4473fd34e050cadd32b94336beb"
-		"b6414f9917fe62cc57556a2927fb404cc839398dac64a0d60c1d45af11a4e6be71bbee5f9bae17ce3604c31ab9247e8c6aec759f86890b54f86267db1fe7c08a"
-		"fe32fb75a7677abca86c4bc3f4ca9bfeccb3cd7afb4dd3c4ec21ab8b53cc0d72ba5330a1131498b5df222c2e517bd01e2df9f67256011ff15241b777a85be6b3")
+makedepends=("cmake" "git" "go" "mercurial" "perl" "rust>=1.39.0")
+source=(
+	"git+${url}.git"
+	"git+https://github.com/AirisX/nginx_cookie_flag_module.git"
+	"git+https://github.com/cloudflare/quiche.git"
+	"git+https://github.com/google/ngx_brotli.git"
+	"https://nginx.org/LICENSE"
+	"hg+http://hg.nginx.org/nginx-tests"
+	"service"
+	"logrotate")
+b2sums=(
+	"SKIP"
+	"SKIP"
+	"SKIP"
+	"SKIP"
+	"SKIP"
+	"fbd993990b43a4476d0963287bdc5f55f73fa5ce828f11977cf1abeedd478729a95861d930e27c6a1b0e78b16397164395afc4473fd34e050cadd32b94336beb"
+	"b6414f9917fe62cc57556a2927fb404cc839398dac64a0d60c1d45af11a4e6be71bbee5f9bae17ce3604c31ab9247e8c6aec759f86890b54f86267db1fe7c08a"
+	"fe32fb75a7677abca86c4bc3f4ca9bfeccb3cd7afb4dd3c4ec21ab8b53cc0d72ba5330a1131498b5df222c2e517bd01e2df9f67256011ff15241b777a85be6b3")
 
 _common_flags=(
 	--with-compat
@@ -63,14 +67,16 @@ _stable_flags=(
 	--with-quiche="../quiche"
 )
 
-prepare() {
+prepare()
+{
 	cp -r "nginx"{,"-src"}
 
 	cd "quiche"
 	git submodule update --init
 }
 
-build() {
+build()
+{
 	export CPPFLAGS="-D_FORTIFY_SOURCE=2"
 	export CFLAGS="-march=native -mtune=native -O3 -pipe -fno-plt"
 	export CXXFLAGS="-march=native -mtune=native -O3 -pipe -fno-plt"
@@ -98,7 +104,14 @@ build() {
 	make
 }
 
-package_nginx-lazerl0rd-git() {
+check()
+{
+	cd "nginx-tests"
+	TEST_NGINX_BINARY="../nginx/objs/nginx" prove .
+}
+
+package_nginx-lazerl0rd-git()
+{
 	pkgdesc="NGINX with beefed up security and performance"
 	depends=("geoip" "gzip" "libatomic_ops" "liburing" "mailcap" "pcre" "zlib")
 	optdepends=("nginx-src-lazerl0rd-git: dynamic module support")
@@ -156,7 +169,8 @@ package_nginx-lazerl0rd-git() {
 	done
 }
 
-package_nginx-src-lazerl0rd-git() {
+package_nginx-src-lazerl0rd-git()
+{
 	pkgdesc="Source code of nginx-lazerl0rd $pkgver, useful for building modules"
 	provides=("nginx-src=1.17.9" "nginx-src-lazerl0rd=1.17.9")
 	conflicts=("nginx-src" "nginx-src-lazerl0rd")
