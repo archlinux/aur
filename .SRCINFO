@@ -1,7 +1,7 @@
 pkgbase = league-fonts
 	pkgdesc = A package depending on all the fonts from The League of Moveable Type
 	pkgver = 0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.theleagueofmoveabletype.com
 	arch = any
@@ -27,7 +27,7 @@ pkgname = league-fonts
 	depends = ttf-sorts-mill-goudy
 
 pkgname = league-fonts-variable
-	depends = league-spartan-variable
+	depends = league-spartan-font-variable
 
 pkgname = otf-league-fonts
 	depends = otf-league-spartan
