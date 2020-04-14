@@ -1,19 +1,19 @@
 # Maintainer: Benjamin Hedrich <code at pagenotfound.de>
 
 pkgname=gerbera-git
-pkgver=3099.5200f0e2
+pkgver=3408.5c035382
 pkgrel=1
 pkgdesc="UPnP Media Server (Based on MediaTomb)"
 arch=(i686 x86_64 armv7h)
-url="https://github.com/v00d00/gerbera"
+url="https://github.com/gerbera/gerbera"
 license=('GPL2')
 depends=('taglib' 'curl' 'sqlite' 'file' 'gcc-libs' 'libupnp18' 'libmatroska'
-	 'duktape' 'libexif' 'expat' 'libebml')
+   'duktape' 'libexif' 'expat' 'libebml' 'fmt' 'spdlog' 'pugixml')
 makedepends=('cmake')
 install=gerbera.install
 options=('emptydirs')
-source=("$pkgname::git+https://github.com/v00d00/gerbera.git"
-	gerbera.sysusers
+source=("$pkgname::git+https://github.com/gerbera/gerbera.git"
+        gerbera.sysusers
         gerbera.tmpfiles)
 conflicts=(gerbera)
 provides=(gerbera)
@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr 
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr
     make
 }
 
@@ -37,7 +37,7 @@ package() {
     make DESTDIR="$pkgdir/" install
 
     install -dm0755 "$pkgdir"/var/lib/gerbera
-    install -dm0755 "${pkgdir}"/etc/gerbera   
+    install -dm0755 "${pkgdir}"/etc/gerbera
     install -Dm0644 "$srcdir"/gerbera.sysusers "$pkgdir"/usr/lib/sysusers.d/gerbera.conf
     install -Dm0644 "$srcdir"/gerbera.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/${pkgname}.conf
 }
