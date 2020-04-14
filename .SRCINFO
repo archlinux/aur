@@ -5,7 +5,6 @@ pkgbase = electrum-ltc
 	url = https://electrum-ltc.org/
 	arch = any
 	license = MIT
-	depends = desktop-file-utils
 	depends = libsecp256k1
 	depends = python-aiohttp
 	depends = python-aiohttp-socks
@@ -20,6 +19,7 @@ pkgbase = electrum-ltc
 	depends = python-pyaes
 	depends = python-pycryptodomex
 	depends = python-pyqt5
+	depends = python-qdarkstyle
 	depends = python-qrcode
 	depends = python-scrypt
 	depends = python-websocket-client
@@ -27,8 +27,8 @@ pkgbase = electrum-ltc
 	source = https://electrum-ltc.org/download/Electrum-LTC-3.3.8.1.tar.gz
 	source = https://electrum-ltc.org/download/Electrum-LTC-3.3.8.1.tar.gz.asc
 	validpgpkeys = CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA
-	sha256sums = d13e9420fb3df4ea5c5b2789a5f2e406ec42d9d26867322b95640abfa4c9f755
-	sha256sums = SKIP
+	b2sums = 481530e09570a624d8419fa2265139c95d911c941ca57393b3d4fff9a44446c90fd52fec4642648b641b6ca17bccee19acb50a92f98c023ce247a94f201f564c
+	b2sums = SKIP
 
 pkgname = electrum-ltc
 
