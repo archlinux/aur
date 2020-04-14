@@ -29,6 +29,7 @@ pkgbase = scipoptsuite
 	provides = scip=7.0.0
 	provides = soplex=5.0.0
 	provides = zimpl=3.3.9
+	provides = gcg=3.0.3
 	replaces = ziboptsuite
 	options = strip
 	source = local:///scipoptsuite-7.0.0.tgz
