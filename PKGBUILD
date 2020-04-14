@@ -4,7 +4,7 @@
 
 _name=league-spartan
 pkgbase=$_name-font
-pkgname=(otf-$_name ttf-$_name ttf-$_name-variable)
+pkgname=(otf-$_name ttf-$_name-variable) # ttf-$_name
 pkgver=2.201
 pkgrel=1
 pkgdesc='A geometric sans-serif revival of ATF’s classic Spartan'

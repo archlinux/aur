@@ -12,9 +12,6 @@ pkgbase = league-spartan-font
 pkgname = otf-league-spartan
 	provides = league-spartan-font
 
-pkgname = ttf-league-spartan
-	provides = league-spartan-font
-
 pkgname = ttf-league-spartan-variable
 	provides = league-spartan-font-variable
 
