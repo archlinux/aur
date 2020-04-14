@@ -5,7 +5,7 @@
 
 # Maintainer: Sergio Rosello <alcanalimail at gmail dot com>
 pkgname=screen-desktop
-pkgver=1.0.22
+pkgver=1.0.24
 pkgrel=1
 epoch=
 pkgdesc="Work together like you’re in the same room. Fast screen sharing with multiplayer control, drawing & video."
