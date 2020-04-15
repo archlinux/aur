@@ -15,14 +15,14 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=11.0.0_r351360.edbb27ccb63
+pkgver=11.0.0_r351366.9743123af81
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=(   'git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'python-sphinx'
                             'ocaml' 'ocaml-ctypes' 'ocaml-findlib'
-                            'python-sphinx' 'python-recommonmark' 'swig' 'python' 'python-six' 'z3' 'lua')
+                            'python-sphinx' 'python-recommonmark' 'swig' 'python' 'python-six' 'z3' 'lua' 'ocl-icd' 'opencl-headers')
 checkdepends=('python-psutil')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
               'llvm-config.h')
