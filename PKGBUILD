@@ -2,7 +2,7 @@
 # Contributor: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=kubernetes-helm2
-pkgver=2.16.5
+pkgver=2.16.6
 pkgrel=1
 pkgdesc="A tool to manage Kubernetes charts"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
@@ -24,8 +24,9 @@ prepare() {
 build() {
   export GOPATH="$srcdir"
   cd "$GOPATH/src/k8s.io/helm"
+  export CGO_LDFLAGS="$LDFLAGS"
   make bootstrap
-  make build
+  make GOFLAGS="-buildmode=pie -trimpath" build
 }
 
 package() {
