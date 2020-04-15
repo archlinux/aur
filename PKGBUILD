@@ -5,9 +5,9 @@ pkgver=1.3
 pkgrel=1
 pkgdesc="A very simple application that changes MacBooks' keyboard backlight level."
 arch=("x86_64")
-url="https://github.com/hobarrera/kbdlight/"
+url="https://github.com/WhyNotHugo/kbdlight/"
 license=('BSD')
-source=("https://github.com/hobarrera/$pkgname/archive/v${pkgver}.zip")
+source=("https://github.com/WhyNotHugo/$pkgname/archive/v${pkgver}.zip")
 md5sums=('a1f8fd0a6e0bc134b4823fa0f831d1b0')
 
 build() {
