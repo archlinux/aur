@@ -3,7 +3,7 @@
 
 pkgname=libqtolm
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Qt wrapper for libolm'
 url='https://gitlab.com/b0/libQtOlm'
 arch=('any')
@@ -13,6 +13,7 @@ conflicts=('libqtolm-git')
 replaces=('libqtolm-git')
 makedepends=('cmake')
 source=("https://gitlab.com/b0/libQtOlm/-/archive/v$pkgver/libqtolm-v$pkgver.tar.gz")
+sha256sums=('b7de94f3e3232d9b0307eaa4ae4fc8df2996f1968bef4750a52791a171edc09e')
 _builddir="$pkgname-v$pkgver"
 
 build() {
@@ -29,7 +30,3 @@ package() {
     cd "$_builddir"
 	make -C build DESTDIR="$pkgdir" install
 }
-
-b2sums=('27e3bf4ea3c735358d954ac7d48e8762be91867617231ee8b2fee3774e22bb4d9381d030b9444d9a3e85c19c524a3918f9f6b1939dd0b95607d2e9aca85214d5')
-b2sums=('27e3bf4ea3c735358d954ac7d48e8762be91867617231ee8b2fee3774e22bb4d9381d030b9444d9a3e85c19c524a3918f9f6b1939dd0b95607d2e9aca85214d5')
-b2sums=('9b5279020fa8c8fac21690fb184357614d411db4fd89e8ad83896fe1ee80078a220d229269935fb7ff24f9eddb92e733ad88cb52ac7ae88f2aa27e23dcb1db5b')
