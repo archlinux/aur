@@ -8,7 +8,6 @@ arch=('x86_64')
 url="https://github.com/DEC05EBA/sibs"
 license=('GPL3')
 depends=('curl' 'libarchive' 'libgit2' 'ninja' 'cmake' 'ccache')
-makedepends=('curl' 'libarchive' 'libgit2' 'cmake' 'git')
 optdepends=('git')
 provides=('sibs')
 conflicts=('sibs')
