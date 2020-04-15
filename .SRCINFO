@@ -1,6 +1,6 @@
 pkgbase = core
 	pkgdesc = Common Open Research Emulator
-	pkgver = 6.2.0
+	pkgver = 6.3.0
 	pkgrel = 1
 	url = https://github.com/coreemu/core/
 	arch = i686
@@ -33,8 +33,8 @@ pkgbase = core
 	depends = xterm
 	optdepends = openvswitch: Open vSwitch support
 	backup = etc/core/core.conf
-	source = https://github.com/coreemu/core/archive/release-6.2.0.tar.gz
-	md5sums = 0330ed87897d11fa96b1f37754f7ee7f
+	source = https://github.com/coreemu/core/archive/release-6.3.0.tar.gz
+	md5sums = a20e285e77cc4282a503595181ab305d
 
 pkgname = core
 
