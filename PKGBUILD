@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=git-trim
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Trims your git remote tracking branches'
 arch=('i686' 'x86_64')
 url="https://github.com/foriequal0/git-trim"

@@ -1,7 +1,7 @@
 pkgbase = git-trim
 	pkgdesc = Trims your git remote tracking branches
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/foriequal0/git-trim
 	arch = i686
 	arch = x86_64
