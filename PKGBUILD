@@ -2,7 +2,7 @@
 
 pkgname=pymedusa
 _gitname=Medusa
-pkgver=0.3.14
+pkgver=0.3.15
 pkgrel=1
 pkgdesc="Automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic."
 arch=('any')
@@ -25,7 +25,7 @@ source=("https://github.com/${pkgname}/${_gitname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
 
-sha256sums=('87073f82374c12bbbf836d0aba59e7c8e26d53838dd3e29f5564848b2e0c849e'
+sha256sums=('450240f9502d6c25adac3ea8dad94ad404ae6daebbf5f74db853e2886c5a32af'
             '413f2788b6d98d7090c25e226894a68de89bdde16fd94dcb7a3abf74db7b70b8'
             '2353be80d2ba3ddf6a81c039acfab4f9f13b058d7df99f506d51434a76dc8a37'
             'aab2c27aa38db65175e58dd9f50558a91b8a5b8d6fd07120877e47ea1b97764e')
