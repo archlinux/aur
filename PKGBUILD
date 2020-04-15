@@ -142,7 +142,7 @@ package_gstreamer-nvidia-libs() {
 }
 
 package_gstreamer-nvidia() {
-  depends=("gstreamer-nvidia-libs=$pkgver" cuda neon)
+  depends=("gstreamer-nvidia-libs=$pkgver" cuda-10.1 neon)
 
 #~ gst-plugins-good
 #~ aom libass libbs2b bzip2 chromaprint pango lcms2 curl libxml2

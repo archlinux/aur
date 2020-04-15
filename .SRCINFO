@@ -26,6 +26,6 @@ pkgname = gstreamer-nvidia-libs
 
 pkgname = gstreamer-nvidia
 	depends = gstreamer-nvidia-libs=1.16.2
-	depends = cuda
+	depends = cuda-10.1
 	depends = neon
 
