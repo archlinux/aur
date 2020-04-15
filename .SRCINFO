@@ -17,7 +17,7 @@ pkgbase = infra-arcana
 	source = infra-arcana.desktop
 	source = infra-arcana.sh
 	md5sums = SKIP
-	md5sums = 7c9b6d90f53be077e6f6c93b251f64ba
+	md5sums = d82f8781f8d1ce1df8c53094ce5c3b27
 	md5sums = 2e28c2803d7d2cd4376dcd3aa6512774
 	md5sums = 87294b81f5a2f98a78d318a5dcec7caf
 

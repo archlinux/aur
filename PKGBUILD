@@ -18,7 +18,7 @@ source=( "git+https://gitlab.com/martin-tornqvist/ia.git#tag=v""$pkgver"
 		"${pkgname}.desktop"
 		"${pkgname}.sh")
 md5sums=('SKIP'
-         '7c9b6d90f53be077e6f6c93b251f64ba'
+         'd82f8781f8d1ce1df8c53094ce5c3b27'
          '2e28c2803d7d2cd4376dcd3aa6512774'
          '87294b81f5a2f98a78d318a5dcec7caf')
 
