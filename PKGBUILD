@@ -1,6 +1,6 @@
 # Maintainer: Svitozar Cherepii <razotivs@gmail.com>
 pkgname=rvgl-skins
-pkgver=20.0302
+pkgver=20.0413
 pkgrel=1
 pkgdesc="Additional RVGL skins for default and pack cars."
 url='https://rvgl.re-volt.io'
@@ -10,10 +10,14 @@ depends=('rvgl-bin')
 optdepends=('rvgl-cars: additional cars skins provided for'
             'rvgl-cars-bonus: additional cars skins provided for')
 source=("$pkgname-$pkgver.zip::https://distribute.re-volt.io/packs/io_skins.zip")
-sha256sums=('20749cf4c146329d2ef4916a42f1822d2318b9aec196d744692e874616d53fea')
+sha256sums=('f95d9b45569a37c2dcceb624b31d1bcb57799b59b38d2f7620d7645b787ff4a3')
+
+prepare() {
+    # Remove conflicting files present in rvgl-cars
+    rm cars/fd5vector/carlux.bmp cars/phim_sentaro/car-khronos.bmp cars/selsia/carcelicapp.bmp
+}
 
 package() {
-    rm cars/selsia/carcelicapp.bmp
     find cars -type f -exec \
         install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
