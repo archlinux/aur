@@ -4,7 +4,7 @@
 # Contributor: Chloe Kudryavtsev <toast@toastin.space>
 
 pkgname=vlang-git
-pkgver=r3390.876b73f9
+pkgver=r4147.93b942de
 pkgrel=2
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software. Compiles itself in <1s with zero dependencies'
 arch=('x86_64')
@@ -17,6 +17,7 @@ optdepends=('glfw-x11: Needed for graphics support'
 conflicts=('v' 'vlang')
 source=('git+https://github.com/vlang/v')
 sha256sums=('SKIP')
+options=('!strip')
 
 pkgver() {
     cd "${srcdir}/v"
@@ -33,6 +34,8 @@ package() {
     install -d "$pkgdir/usr/lib/vlang" "$pkgdir/usr/share/vlang" "$pkgdir/usr/bin"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm755 v "$pkgdir/usr/lib/vlang"
+    cp -a cmd "$pkgdir/usr/lib/vlang/"
+    chmod -R 755 "$pkgdir/usr/lib/vlang/cmd"
     cp -a examples "$pkgdir/usr/share/vlang/"
     cp -a thirdparty "$pkgdir/usr/lib/vlang/"
     cp -a vlib "$pkgdir/usr/lib/vlang/"
