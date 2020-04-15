@@ -21,8 +21,6 @@ sha512sums=('SKIP' '8aef78240aacf4a5c15cfb648400750a17db3203d230d6a1f8a84b1db71f
 package() {
   mkdir -p "${pkgdir}/usr/src/${pkgname}-${pkgver}"
   cp -r "${srcdir}/${pkgname}"/* "${pkgdir}/usr/src/${pkgname}-${pkgver}"
-  sed -i "s/^KDIR.*$//g" "${pkgdir}/usr/src/${pkgname}-${pkgver}/Makefile"
-  sed -i "s/KDIR/KERNELDIR/g" "${pkgdir}/usr/src/${pkgname}-${pkgver}/Makefile"
   install -D "${srcdir}/${pkgname}/dkms.conf" "${pkgdir}/usr/src/${pkgname}-${pkgver}/dkms.conf"
   echo "Copy tuxedo_keyboard.conf to /etc/modprobe.d/tuxedo_keyboard.conf"
   install -Dm644 "${srcdir}/${pkgname}/tuxedo_keyboard.conf" "${pkgdir}/etc/modprobe.d/tuxedo_keyboard.conf"
