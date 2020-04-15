@@ -1,11 +1,11 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
-pkgname=fontship-git
-pkgver=0.0.1.r15.g3990d07
+pkgname=fontship
+pkgver=0.0.1
 pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
-url="https://github.com/theleagueof/${pkgname%-git}"
+url="https://github.com/theleagueof/$pkgname"
 license=('AGPL3')
 depends=('entr'
          'font-v'
@@ -18,29 +18,21 @@ depends=('entr'
          'python-fonttools'
          'python-ufonormalizer'
          'zsh')
-provides=("${pkgname%-git}")
-conflicts=("${provides[@]}")
-source=("git+$url.git")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "${pkgname%-git}"
-    git describe --long --abbrev=7 --match 'v*' --tags |
-        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('f3ea8e0ea91f407d6b99fd8602a039392ef9ef8417f09b0399a7f94795cc7749')
 
 prepare() {
-    cd "${pkgname%-git}"
+    cd "$pkgname-$pkgver"
     ./bootstrap.sh
 }
 
 build() {
-    cd "${pkgname%-git}"
+    cd "$pkgname-$pkgver"
     ./configure --prefix="/usr"
     make
 }
 
 package() {
-    cd "${pkgname%-git}"
+    cd "$pkgname-$pkgver"
     make DESTDIR="$pkgdir" install
 }
