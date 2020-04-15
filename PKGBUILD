@@ -4,7 +4,7 @@
 _gitname=pantheon-agent-geoclue2
 _author=elementary
 pkgname=("${_gitname}")
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Geoclue2 Agent for Pantheon. The location services agent appears whenever an application wants to request permission to use location services."
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=()
 provides=("${_gitname}" "pantheon-geoclue2-agent")
 conflicts=("${_gitname}-git" "pantheon-geoclue2-agent" "pantheon-geoclue2-agent-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=("5f75c205db68ea533de59433f6877dc64aebb1d7189dbf5734a2cd9398c8c9a9")
+sha256sums=("079b0886039ec25ee4076b25776d024209e67e3c80eb1be67cd8d3e9b6a5602d")
 
 build() {
     cd "${_gitname}-${pkgver}/"
