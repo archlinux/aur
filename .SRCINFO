@@ -1,7 +1,7 @@
 pkgbase = coot
 	pkgdesc = Crystallographic Object-Oriented Toolkit for model building, completion and validation
-	pkgver = 0.8.9.1
-	pkgrel = 4
+	pkgver = 0.8.9.2
+	pkgrel = 1
 	url = http://lmb.bioch.ox.ac.uk/coot/
 	arch = i686
 	arch = x86_64
@@ -31,10 +31,10 @@ pkgbase = coot
 	depends = which
 	depends = bc
 	depends = sqlite
-	depends = rdkit-python2<=2017_09_3-1
+	depends = rdkit-python2<=2017_09_3-2
 	depends = mmdb2>=2.0.12-4
 	replaces = coot-data
-	source = http://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/source/releases/coot-0.8.9.1.tar.gz
+	source = coot-0.8.9.2.tar.gz::https://github.com/pemsley/coot/archive/Release-0.8.9.2-fix.tar.gz
 	source = https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/dependencies/refmac-monomer-library.tar.gz
 	source = https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/dependencies/reference-structures.tar.gz
 	source = coot-configure.ac.patch
@@ -48,7 +48,7 @@ pkgbase = coot
 	source = coot-pyrogen.patch
 	source = coot-dynarama.patch
 	source = coot.in
-	sha256sums = 51b6faef11177a8ab682fbe28448f935ae1252ad53b4efa31339ff658a63ff94
+	sha256sums = d8dcf9184ab91de225eb3cb91ef83e057b241e27a6d21f585f2c25b35da54e4f
 	sha256sums = 03562eec612103a48bd114cfe0d171943e88f94b84610d16d542cda138e5f36b
 	sha256sums = 44db38506f0f90c097d4855ad81a82a36b49cd1e3ffe7d6ee4728b15109e281a
 	sha256sums = 2babfbc3cb798868d9e22f19ee49d12981fac35e3dfba2d8f7318716f59f673c

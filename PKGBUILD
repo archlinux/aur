@@ -1,15 +1,15 @@
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=coot
-pkgver=0.8.9.1
-pkgrel=4
+pkgver=0.8.9.2
+pkgrel=1
 pkgdesc="Crystallographic Object-Oriented Toolkit for model building, completion and validation"
 arch=('i686' 'x86_64')
 url="http://lmb.bioch.ox.ac.uk/coot/"
 license=('GPL')
 replaces=('coot-data')
 depends=('guile1.8' 'guile1.8-lib' 'guile1.8-gtk' 'guile1.8-gui' 'gtkglext' 'libccp4>=6.5.1-2' 'libclipper>=2.1.20170202-3' 'goocanvas1' 'gsl' 'libgnomecanvas' 'imlib' 'swig'
-         'freeglut' 'libgl' 'gtk2' 'cairo' 'libssm>=1.4.0-2' 'zlib' 'curl' 'python2' 'pygtk' 'gtkglarea' 'which' 'bc' 'sqlite' 'rdkit-python2<=2017_09_3-1' 'mmdb2>=2.0.12-4')
-source=(http://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/source/releases/$pkgname-$pkgver.tar.gz
+         'freeglut' 'libgl' 'gtk2' 'cairo' 'libssm>=1.4.0-2' 'zlib' 'curl' 'python2' 'pygtk' 'gtkglarea' 'which' 'bc' 'sqlite' 'rdkit-python2<=2017_09_3-2' 'mmdb2>=2.0.12-4')
+source=($pkgname-$pkgver.tar.gz::https://github.com/pemsley/$pkgname/archive/Release-$pkgver-fix.tar.gz
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/refmac-monomer-library.tar.gz
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/reference-structures.tar.gz
         coot-configure.ac.patch
@@ -25,7 +25,7 @@ source=(http://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/source/releases/
         coot.in
         )
 
-sha256sums=('51b6faef11177a8ab682fbe28448f935ae1252ad53b4efa31339ff658a63ff94'
+sha256sums=('d8dcf9184ab91de225eb3cb91ef83e057b241e27a6d21f585f2c25b35da54e4f'
             '03562eec612103a48bd114cfe0d171943e88f94b84610d16d542cda138e5f36b'
             '44db38506f0f90c097d4855ad81a82a36b49cd1e3ffe7d6ee4728b15109e281a'
             '2babfbc3cb798868d9e22f19ee49d12981fac35e3dfba2d8f7318716f59f673c'
@@ -42,7 +42,7 @@ sha256sums=('51b6faef11177a8ab682fbe28448f935ae1252ad53b4efa31339ff658a63ff94'
 
 prepare() {
 
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-Release-$pkgver-fix"
 
   patch -Np0 -i "$srcdir/coot-configure.ac.patch"
   patch -Np0 -i "$srcdir/coot-makefile.patch"
@@ -58,12 +58,12 @@ prepare() {
   iconv -f iso8859-1 -t utf-8 README > README.conv && mv -f README.conv README
 
   cp $srcdir/coot.in src/
-  rm macros/libtool.m4
-  
+  # rm macros/libtool.m4
+
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-Release-$pkgver-fix"
 
   aclocal -I macros
   libtoolize --automake --copy
@@ -88,7 +88,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-Release-$pkgver-fix"
   make DESTDIR="$pkgdir/" install
   sed -i 's|COOT_PYTHON_DIR=|COOT_PYTHON_DIR=/usr/lib/python2.7/site-packages/coot|' src/$pkgname
   sed -i 's|COOT_REFMAC_LIB_DIR=|COOT_REFMAC_LIB_DIR=/usr/share/coot/lib/|' src/$pkgname
