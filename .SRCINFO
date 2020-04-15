@@ -1,6 +1,6 @@
 pkgbase = gr-osmosdr-git
 	pkgdesc = GNU Radio source block for OsmoSDR, which is a 100% Free Software based small form-factor inexpensive SDR (Software Defined Radio) project.
-	pkgver = 0.1.4.48.g86ad584
+	pkgver = d77577
 	pkgrel = 1
 	url = http://sdr.osmocom.org/trac/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = gr-osmosdr-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
-	makedepends = python2-cheetah
+	makedepends = python-cheetah3
 	depends = gnuradio
 	depends = swig
 	depends = rtl-sdr
@@ -19,7 +19,7 @@ pkgbase = gr-osmosdr-git
 	depends = airspy-git
 	provides = gr-osmosdr
 	provides = gnuradio-osmosdr
-	source = git://git.osmocom.org/gr-osmosdr
+	source = git+https://github.com/drmpeg/gr-osmosdr39.git
 	md5sums = SKIP
 
 pkgname = gr-osmosdr-git
