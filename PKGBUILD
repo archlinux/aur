@@ -4,7 +4,7 @@
 # Contributor: Mark Taylor <skymt0@gmail.com>
 
 pkgname=contextfree
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="A program that generates images from written instructions called a grammar"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('libpng' 'gcc-libs')
 makedepends=('bison' 'flex')
 source=("https://www.contextfreeart.org/download/ContextFreeSource${pkgver}.tgz")
-sha256sums=('b5a0662c904c1369116a3cc9ab76d20eef8d21eb4caf47ec1b989c2cd40e315a')
+sha256sums=('d96cee09cee9022f25c0a085d68249df3e1d384017dd069b3a76fe0053ade977')
 
 
 build() {
