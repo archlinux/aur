@@ -1,0 +1,89 @@
+pkgbase = mythplugins-git
+	pkgver = 31+fixes.20200413.4d092420
+	pkgrel = 1
+	url = http://www.mythtv.org
+	arch = x86_64
+	license = GPL
+	makedepends = dvdauthor
+	makedepends = dvd+rw-tools
+	makedepends = mesa-libgl
+	makedepends = mythtv-git>=31+fixes
+	makedepends = perl-datetime-format-iso8601
+	makedepends = perl-date-manip
+	makedepends = perl-image-size
+	makedepends = perl-cgi
+	makedepends = perl-json
+	makedepends = perl-libwww
+	makedepends = perl-soap-lite
+	makedepends = perl-xml-simple
+	makedepends = perl-xml-xpath
+	makedepends = libhdhomerun
+	makedepends = python-pillow
+	makedepends = python-pycurl
+	makedepends = python-oauthlib
+	makedepends = gdb
+	makedepends = mariadb-libs
+	makedepends = minizip
+	makedepends = python-lxml
+	makedepends = perl-xml-xpath
+	makedepends = python-urllib3
+	makedepends = libcdio-paranoia
+	source = git+https://github.com/MythTV/mythtv#branch=fixes/31
+	sha256sums = SKIP
+
+pkgname = mythplugins-mytharchive-git
+	pkgdesc = Create DVDs or archive recorded shows in MythTV
+	depends = dvdauthor
+	depends = dvd+rw-tools
+	depends = mythtv-git>=31+fixes
+	depends = python-pillow
+	conflicts = mythplugins-mytharchive
+	replaces = mythplugins-mytharchive
+
+pkgname = mythplugins-mythbrowser-git
+	pkgdesc = Mini web browser for MythTV
+	depends = mythtv-git>=31+fixes
+	conflicts = mythplugins-mythbrowser
+	replaces = mythplugins-mythbrowser
+
+pkgname = mythplugins-mythgame-git
+	pkgdesc = Game emulator plugin for MythTV
+	depends = mythtv-git>=31+fixes
+	depends = minizip
+	conflicts = mythplugins-mythgame
+	replaces = mythplugins-mythgame
+
+pkgname = mythplugins-mythmusic-git
+	pkgdesc = Music playing plugin for MythTV
+	depends = mythtv-git>=31+fixes
+	depends = libcdio-paranoia
+	conflicts = mythplugins-mythmusic
+	replaces = mythplugins-mythmusic
+
+pkgname = mythplugins-mythnews-git
+	pkgdesc = News checking plugin for MythTV
+	depends = mythtv-git>=31+fixes
+	conflicts = mythplugins-mythnews
+	replaces = mythplugins-mythnews
+
+pkgname = mythplugins-mythweather-git
+	pkgdesc = Weather checking plugin for MythTV
+	depends = mythtv-git>=31+fixes
+	depends = perl-date-manip
+	depends = perl-json
+	depends = perl-soap-lite
+	depends = perl-xml-simple
+	depends = perl-xml-xpath
+	depends = perl-image-size
+	depends = perl-datetime-format-iso8601
+	conflicts = mythplugins-mythweather
+	replaces = mythplugins-mythweather
+
+pkgname = mythplugins-mythzoneminder-git
+	pkgdesc = View CCTV footage from zoneminder in MythTV
+	depends = mythtv-git>=31+fixes
+	depends = mariadb-libs
+	depends = zoneminder
+	conflicts = mythplugins-mythzoneminder
+	replaces = mythplugins-mythzoneminder
+
