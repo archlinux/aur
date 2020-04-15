@@ -1,6 +1,6 @@
 pkgbase = adcli
 	pkgdesc = Active Directory account management tool
-	pkgver = 0.9.0
+	pkgver = 0.9.0.r6.g08bac09
 	pkgrel = 1
 	url = https://freedesktop.org/software/realmd/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = adcli
 	makedepends = xmlto
 	depends = krb5
 	depends = openldap
-	source = git+https://gitlab.freedesktop.org/realmd/adcli.git#commit=1b1528038e084a9f81ea108cffca9c2707623b9c
+	source = git+https://gitlab.freedesktop.org/realmd/adcli.git#commit=08bac0946de29f3e5de90743ce6dfc7118d4ad20
 	validpgpkeys = C0F67099B808FB063E2C81117BFB1108D92765AF
 	sha256sums = SKIP
 
