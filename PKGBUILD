@@ -1,7 +1,7 @@
 #Maintainer: paskali <paskali2005 at gmail dot com>
 pkgname=infra-arcana
 pkgver=20.0
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="Roguelike game inspired by H.P. Lovecraft"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('custom:Infra Arcana License')
 groups=()
 makedepends=(cmake)
 depends=('sdl2_image' 'sdl2_mixer' 'hicolor-icon-theme')
-conflicst=('infra-arcana-git')
+conflicts=('infra-arcana-git')
 
 install=${pkgname}.install
 source=( "git+https://gitlab.com/martin-tornqvist/ia.git#tag=v""$pkgver"
@@ -47,8 +47,6 @@ package() {
           "${pkgdir}/usr/share/doc/${pkgname}/contact.txt"
 	install -DTm644 "build/credits.txt" \
           "${pkgdir}/usr/share/doc/${pkgname}/credits.txt"
-	install -DTm644 "build/manual.txt" \
-          "${pkgdir}/usr/share/doc/${pkgname}/manual.txt"
 	install -DTm644 "build/release_history.txt" \
           "${pkgdir}/usr/share/doc/${pkgname}/release_history.txt"
 	# copy data
@@ -56,6 +54,7 @@ package() {
         cp -R build/audio "${pkgdir}/opt/${pkgname}/"
         cp -R build/data "${pkgdir}/opt/${pkgname}/"
         cp -R build/gfx "${pkgdir}/opt/${pkgname}/"
+        cp build/manual.txt "${pkgdir}/opt/${pkgname}/"
 	# copy main binary
 	cp build/ia "${pkgdir}/opt/${pkgname}/"
         # this shell script is required as the compiled binary relies on

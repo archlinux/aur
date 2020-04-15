@@ -1,6 +1,7 @@
 post_install() {
   xdg-icon-resource forceupdate --theme hicolor &> /dev/null
   echo 'Installed. Run infra-arcana to launch.'
+  echo 'Saved games and other game data are located in ~/.local/share/infra_arcana'
 }
 
 post_upgrade() {
