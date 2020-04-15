@@ -1,0 +1,18 @@
+pkgbase = mythweb-git
+	pkgdesc = Web interface for the MythTV scheduler
+	pkgver = 31+fixes.20200303.d90538ce
+	pkgrel = 1
+	url = http://www.mythtv.org
+	arch = any
+	license = GPL
+	depends = php
+	depends = perl-cgi
+	optdepends = lighttpd
+	optdepends = php-apache
+	conflicts = mythplugins-mythweb
+	replaces = mythplugins-mythweb
+	source = git+https://github.com/MythTV/mythweb#branch=fixes/31
+	sha256sums = SKIP
+
+pkgname = mythweb-git
+
