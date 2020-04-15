@@ -1,16 +1,13 @@
 pkgbase = i3-style
-	pkgdesc = Add styles and colorschemes to i3wm
-	pkgver = 0.10.0
+	pkgdesc = Make your i3 config a little more stylish
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/acrisci/i3-style
 	arch = any
-	license = custom:BSD 2-Clause
-	makedepends = npm
-	makedepends = coffee-script
-	depends = nodejs
-	options = !emptydirs
-	source = https://github.com/acrisci/i3-style/archive/v0.10.0.tar.gz
-	sha256sums = e052063abe7a07f24bdc93e3aa18ff93b81282093b4641cfb245ba3b74baddf3
+	license = BSD-2-Clause
+	makedepends = cargo
+	source = https://github.com/altdesktop/i3-style/archive/v1.0.2.tar.gz
+	md5sums = f1cec0d8d31416e5bbaf2a2b7afbd308
 
 pkgname = i3-style
 

@@ -1,22 +1,25 @@
-# Maintainer: Tony Crisci <tony@dubstepdish.com>
+# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Tony Crisci <tony@dubstepdish.com>
+
 pkgname=i3-style
-pkgver=0.10.0
+pkgver=1.0.2
 pkgrel=1
-pkgdesc="Add styles and colorschemes to i3wm"
+pkgdesc="Make your i3 config a little more stylish"
 arch=('any')
 url="https://github.com/acrisci/i3-style"
-license=('custom:BSD 2-Clause')
-depends=('nodejs')
-makedepends=('npm' 'coffee-script')
-source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
-sha256sums=("eec470851b87304f18465c859759d3767acd6c141736c49d2fd49c172b114519")
+license=('BSD-2-Clause')
+makedepends=('cargo')
+source=("https://github.com/altdesktop/i3-style/archive/v${pkgver}.tar.gz")
+md5sums=('f1cec0d8d31416e5bbaf2a2b7afbd308')
 
-package() {
-  cd "$srcdir"
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p $_npmdir
-  cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $pkgname@$pkgver
+build() {
+  cd "${pkgname}-${pkgver}"
+  cargo build --release
 }
 
+package() {
+  install -Dm644 "${pkgname}-${pkgver}/themes"/* -t "$pkgdir/usr/share/${pkgname}/themes/"
+  install -Dm644 "${pkgname}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 "${pkgname}-${pkgver}/target/release/${pkgname}" "$pkgdir/usr/bin/${pkgname}"
+}
 # vim:set ts=2 sw=2 et:
