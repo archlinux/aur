@@ -1,0 +1,48 @@
+pkgbase = java8-adoptopenjdk
+	pkgdesc = AdoptOpenJDK 8 HotSpot
+	pkgver = 8.u242
+	pkgrel = 1
+	url = https://adoptopenjdk.net/
+	arch = x86_64
+	license = custom
+	makedepends = ca-certificates-utils
+	makedepends = hicolor-icon-theme
+	makedepends = java-environment-common
+	makedepends = java-runtime-common
+	makedepends = nss
+	makedepends = xdg-utils
+	source = https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u242-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u242b08.tar.gz
+	sha256sums = f39b523c724d0e0047d238eb2bb17a9565a60574cf651206c867ee5fc000ab43
+
+pkgname = jre8-adoptopenjdk-headless
+	pkgdesc = AdoptOpenJDK Java 8 headless runtime environment
+	install = install_jre8-adoptopenjdk-headless.sh
+	depends = java-runtime-common
+	depends = ca-certificates-utils
+	depends = nss
+	optdepends = java-rhino: for some JavaScript support
+	provides = java-runtime-headless=8
+	provides = java-runtime-headless-openjdk=8
+	backup = 
+
+pkgname = jre8-adoptopenjdk
+	pkgdesc = AdoptOpenJDK Java 8 full runtime environment
+	install = install_jre8-adoptopenjdk.sh
+	depends = jre8-adoptopenjdk-headless=8.u242-1
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = icedtea-web: web browser plugin + Java Web Start
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for the Gtk+ look and feel - desktop usage
+	optdepends = java8-openjfx: for JavaFX GUI components support
+	provides = java-runtime=8
+	provides = java-runtime-openjdk=8
+
+pkgname = jdk8-adoptopenjdk
+	pkgdesc = AdoptOpenJDK Java 8 development kit
+	install = install_jdk8-adoptopenjdk.sh
+	depends = java-environment-common
+	depends = jre8-adoptopenjdk=8.u242-1
+	provides = java-environment=8
+	provides = java-environment-openjdk=8
+
