@@ -1,5 +1,5 @@
 pkgbase = llvm-git
-	pkgver = 11.0.0_r351377.c3c67e95310
+	pkgver = 11.0.0_r351457.8a9d48b46d4
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = llvm-git
 	makedepends = lua
 	makedepends = ocl-icd
 	makedepends = opencl-headers
+	makedepends = z3
 	options = staticlibs
 	source = llvm-project::git+https://github.com/llvm/llvm-project.git
 	source = llvm-config.h
@@ -34,7 +35,7 @@ pkgbase = llvm-git
 
 pkgname = llvm-git
 	pkgdesc = LLVM development version. includes clang and many other tools
-	depends = llvm-libs-git=11.0.0_r351377.c3c67e95310-1
+	depends = llvm-libs-git=11.0.0_r351457.8a9d48b46d4-1
 	depends = perl
 	depends = python-six
 	depends = z3
@@ -72,7 +73,7 @@ pkgname = llvm-libs-git
 
 pkgname = llvm-ocaml-git
 	pkgdesc = OCaml bindings for LLVM
-	depends = llvm-git=11.0.0_r351377.c3c67e95310-1
+	depends = llvm-git=11.0.0_r351457.8a9d48b46d4-1
 	depends = ocaml
 	depends = ocaml-ctypes
 	provides = llvm-ocaml

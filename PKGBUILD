@@ -15,14 +15,14 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=11.0.0_r351377.c3c67e95310
+pkgver=11.0.0_r351457.8a9d48b46d4
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=(   'git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'python-sphinx'
                             'ocaml' 'ocaml-ctypes' 'ocaml-findlib'
-                            'python-sphinx' 'python-recommonmark' 'swig' 'python' 'python-six' 'lua' 'ocl-icd' 'opencl-headers')
+                            'python-sphinx' 'python-recommonmark' 'swig' 'python' 'python-six' 'lua' 'ocl-icd' 'opencl-headers' 'z3')
 checkdepends=('python-psutil')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
               'llvm-config.h')
@@ -67,8 +67,6 @@ prepare() {
     # llvm-project contains a lot of stuff, remove parts that aren't used by this package
     rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind llgo openmp parallel-libs pstl libc mlir flang
     
-    # cd clang
-    # patch --forward --strip=1 --input="$srcdir"/enable-SSP-and-PIE-by-default.patch
 }
 
 build() {
