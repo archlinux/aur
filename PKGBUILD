@@ -1,14 +1,14 @@
 pkgname=toot
 _name=toot
-pkgver=0.25.2
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="a Mastodon CLI client"
 depends=('python-requests' 'python-beautifulsoup4' 'python-wcwidth' 'python-urwid')
 license=('GPL3')
 arch=('any')
 url="https://github.com/ihabunek/toot"
-source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz)
-sha256sums=('78138c6b7fef1bd150942bb5b5567359e3a498aed0b8b732cea264f74fa35399')
+source=(https://github.com/ihabunek/${_name}/archive/${pkgver}.zip)
+sha256sums=('494a398a7078c0fd61f7767dd694f88af1df128fde60e54dd3fc9c2b771872a3')
 
 build() {
     cd "$pkgname-$pkgver"
