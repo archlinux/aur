@@ -1,0 +1,31 @@
+From 66781d299d9dfd812c7aca9a04de7ea37f4d57e2 Mon Sep 17 00:00:00 2001
+From: Carl Joseph Hirner III <k.j.hirner.wisdom@gmail.com>
+Date: Sat, 16 Nov 2019 02:08:30 -0800
+Subject: [PATCH] Update setup.py
+
+modified to enable getting distro for python3.8 while maintaining ability to use python3.7 and below
+---
+ setup.py | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 37452ba..2ff7dc4 100644
+--- a/setup.py
++++ b/setup.py
+@@ -33,9 +33,13 @@
+ from distutils.core import setup
+ 
+ SHARE = 'share'
+-
+-# detect linux distribution
+-distro = platform.dist()[0]
++try:
++    #for distributions that use python3.8
++    import distro as d
++    distro=d.LinuxDistribution()._os_release_info['name']
++except:
++    # detect linux distribution on python >=3.7
++    distro = platform.dist()[0]
+ 
+ 
+ def file_list(path):
