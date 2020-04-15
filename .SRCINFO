@@ -1,7 +1,7 @@
 pkgbase = texlive-moderncv-git
 	pkgdesc = A modern curriculum vitae class for LaTeX
 	pkgver = v2.0.0.r10.g2033517
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xdanaux/moderncv
 	arch = any
 	license = The LaTeX Project Public Li­cense, version 1.3c
@@ -9,7 +9,7 @@ pkgbase = texlive-moderncv-git
 	depends = texlive-core
 	depends = texlive-latexextra
 	depends = texlive-fontsextra
-	depends = fontawesome.sty
+	depends = ttf-font-awesome
 	provides = texlive-moderncv
 	conflicts = texlive-moderncv
 	source = git+https://github.com/xdanaux/moderncv.git
