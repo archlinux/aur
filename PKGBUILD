@@ -17,7 +17,7 @@ package() {
   install -Dm755 "${srcdir}/hmetis-1.5-linux/hmetis" -t "${pkgdir}/usr/bin"
   install -Dm755 "${srcdir}/hmetis-1.5-linux/khmetis" -t "${pkgdir}/usr/bin"
   install -Dm644 "${srcdir}/hmetis-1.5-linux/manual.ps" -t "${pkgdir}/usr/share/doc/hmetis/"
-  install -Dm644 "${srcdir}/hmetis-1.5-linux/COPYRIGHT" "${pkgdir}/usr/share/licenses/LICENSE"
+  install -Dm644 "${srcdir}/hmetis-1.5-linux/COPYRIGHT" "${pkgdir}/usr/share/licenses/hmetis/LICENSE"
   install -Dm644 "${srcdir}/hmetis-1.5-linux/libhmetis.a" -t "${pkgdir}/lib/hmetis"
   install -Dm644 "${srcdir}/hmetis-1.5-linux/s13207P.hgr" -t "${pkgdir}/usr/share/hmetis/examples/"
 }
