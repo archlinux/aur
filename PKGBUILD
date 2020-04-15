@@ -2,7 +2,7 @@
 pkgname=piavpn-bin
 pkgver=2.0.1_04518
 _pkgver=2.0.1-04518
-pkgrel=1
+pkgrel=2
 pkgdesc="Private Internet Access client"
 arch=(x86_64)
 url="https://privateinternetaccess.com/"
@@ -42,6 +42,7 @@ package() {
 
 	mkdir -p $pkgdir/usr/lib/systemd/system
 	cp installfiles/piavpn.service $pkgdir/usr/lib/systemd/system/piavpn.service	
+	sed -i '/^After/s/syslog.target //' $pkgdir/usr/lib/systemd/system/piavpn.service
 
 	mkdir -p $pkgdir/usr/share/licenses/$pkgname/
 	cp $pkgdir/opt/piavpn/share/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/
