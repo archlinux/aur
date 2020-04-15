@@ -1,6 +1,6 @@
 pkgname=cherrytree-bin
 basename=${pkgname%*-bin}
-pkgver=0.39.1
+pkgver=0.39.2
 pkgrel=1
 pkgdesc='Binary version of cherrytree'
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('pygtksourceview2' 'python2-dbus')
 optdepends=('python2-pyenchant: for spell checking support' 'p7zip: for password protection support')
 source=(http://www.giuspen.com/software/$basename\_$pkgver-0_all.deb)
-sha256sums=('527f2955ab553f75e09d1ccca73fbe7ce22cb98b441f29121ae94685e63440ec')
+sha256sums=('c1628b72d4b675f5cadab55887dbbb46204a8eedc22926b322d281e20902d2c9')
 
 package() {
 	msg2 "Extracting the data.tar.xz..."
