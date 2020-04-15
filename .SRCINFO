@@ -1,0 +1,13 @@
+pkgbase = tiler-bin
+	pkgdesc = Window aligning utility, written in rust
+	pkgver = 2020_04_15
+	pkgrel = 1
+	url = https://github.com/Wint3rmute/tiler
+	arch = x86_64
+	license = custom:WTFPL
+	makedepends = wget
+	source = https://github.com/Wint3rmute/tiler/releases/download/1.1/tiler
+	sha1sums = 3366e6043af91dedfb0fdbe8c42b0242832526ea
+
+pkgname = tiler-bin
+
