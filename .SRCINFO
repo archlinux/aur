@@ -1,7 +1,7 @@
 pkgbase = pebbles-git
 	pkgdesc = Pebbles is an advanced calculator application designed for Pantheon Shell
 	pkgver = r264.fe8a046
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SubhadeepJasu/pebbles
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = pebbles-git
 	depends = granite
 	depends = gsl>=2.4
 	depends = glib2
+	depends = libsoup
+	depends = json-glib
 	provides = pebbles
 	conflicts = pebbles
 	source = git+https://github.com/SubhadeepJasu/pebbles.git
