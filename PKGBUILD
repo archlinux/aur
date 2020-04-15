@@ -3,7 +3,7 @@
 
 _gemname=gh
 pkgname=ruby-$_gemname
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='layered github client'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('d2d4b70af21725b97cf85a1a0f63eb8fe43969b3d3138bc211ffbc30de646c527e7e61c54606706e813629585ac02a6700826b93bf12341624a6682980c85a59')
+sha512sums=('02b022c6f3dc8e8661a80a1debfb723880fbd9f9a0b71c56bb62b7640243450d4a66d1f3f78c23e78460a55b2a7ad484a82a677895b6569d6ae50c318fa4cab7')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

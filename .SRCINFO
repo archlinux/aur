@@ -1,6 +1,6 @@
 pkgbase = ruby-gh
 	pkgdesc = layered github client
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/travis-ci/gh
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = ruby-gh
 	depends = ruby-addressable
 	depends = ruby-net-http-persistent
 	depends = ruby-net-http-pipeline
-	noextract = gh-0.16.0.gem
+	noextract = gh-0.17.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/gh-0.16.0.gem
-	sha512sums = d2d4b70af21725b97cf85a1a0f63eb8fe43969b3d3138bc211ffbc30de646c527e7e61c54606706e813629585ac02a6700826b93bf12341624a6682980c85a59
+	source = https://rubygems.org/downloads/gh-0.17.0.gem
+	sha512sums = 02b022c6f3dc8e8661a80a1debfb723880fbd9f9a0b71c56bb62b7640243450d4a66d1f3f78c23e78460a55b2a7ad484a82a677895b6569d6ae50c318fa4cab7
 
 pkgname = ruby-gh
 
