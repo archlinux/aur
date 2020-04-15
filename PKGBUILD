@@ -1,6 +1,6 @@
 # Maintainer: Mihir Lad <mihirlad55@gmail.com>
 pkgname=polybar-spotify-module
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Programs to display spotify information and control spotify with polybar"
 arch=('any')
@@ -11,7 +11,7 @@ optdepends=('nerd-fonts-complete: play, pause, etc. icons for spotify module'
             'ttf-font-awesome: more icons for spotify module')
 
 makedepends=('git' 'make')
-source=("${pkgname}::git+${url}.git")
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
 build() {
