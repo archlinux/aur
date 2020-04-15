@@ -1,16 +1,16 @@
-# Maintainer: foo <foo(at)example(dot)org>
+# Maintainer: Yifan Xu <foo(at)example(dot)org>
 # Contributor: bar <bar(at)example(dot)org>
 _kver=$(uname -r)
 _pkgbase=rcraid
 pkgname=rcraid-dkms
 pkgver=17.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD AM4 socket X370 chipset motherbroad NVMe/SATA RAID driver (DKMS)"
 arch=('i686' 'x86_64')
 url="https://www.amd.com/en/support/chipsets/amd-socket-am4/x370"
 license=('GPL2')
 depends=('dkms')
-makedepends=('linux-headers>=4.15')
+makedepends=('linux-headers>=5.6')
 # conflicts=("${_pkgbase}")
 # install=${pkgname}.install
 source=('manual://raid_linux_driver_8_01_00_039_public.zip'
