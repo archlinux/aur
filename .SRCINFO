@@ -1,6 +1,6 @@
 pkgbase = mcpelauncher-hx-script
 	pkgdesc = A script that downloads ChristopherHX's mcpelauncher fork. Doesn't check for updates, so just run it every once and a while.
-	pkgver = v1.0
+	pkgver = v1.1
 	pkgrel = 1
 	url = https://github.com/ChristopherHX/mcpelauncher-manifest
 	arch = any
