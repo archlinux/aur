@@ -1,9 +1,10 @@
 # Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh
-pkgver=0.8.5
+pkgver=0.9.0
 pkgrel=1
-pkgdesc="Graphical interface for managing your applications ( AppImage, Flatpak, Snap, AUR and Web )"
+_file="$pkgname-$pkgver-py3-none-any.whl"
+pkgdesc="Graphical interface for managing your applications ( AppImage, Flatpak, Snap, Arch/AUR, Web )"
 arch=('any')
 url="https://github.com/vinifmor/bauh"
 license=('zlib/libpng')
@@ -34,27 +35,18 @@ optdepends=('flatpak: required for Flatpak support'
             'aria2: faster AppImages and AUR source downloads'
             'breeze: for KDE Plasma main theme be available')
 makedepends=('git' 'python' 'python-pip' 'python-setuptools')
-source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('d2305d94995f7a2473d5737901760d6e635d743e97c1d656ea5757fc65a345cc012a60510d9ebda7787030d277a2dbde9c9b86d21f8c106b0e8017f6275beb36')
-
-build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python3 setup.py build
-}
+source=("https://files.pythonhosted.org/packages/c7/e3/a340e2109b6755356a6e8eeb5bc73e85f844af0ad6cf107a37674ed30f14/$_file")
+sha256sums=('2f63373c3a48da86a1fff40a02e7c662721d057a9a015f2f433ecb1fddf37b30')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
+  pip3 install $_file --root="$pkgdir" || return 1
   
-  mkdir -p $pkgdir/usr/share/icons/hicolor
+  pydir=$(ls $pkgdir/usr/lib)
+  mkdir -p $pkgdir/usr/share/icons/hicolor/scalable/apps
 
-  python3 aur/copy_icons.py aur/icons $pkgdir/usr/share/icons/hicolor
+  cp $pkgdir/usr/lib/$pydir/site-packages/bauh/view/resources/img/logo.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/bauh.svg
  
   mkdir -p $pkgdir/usr/share/applications
-  mv aur/bauh.desktop $pkgdir/usr/share/applications/
-  mv aur/bauh_tray.desktop $pkgdir/usr/share/applications/
-  
-  mkdir -p $pkgdir/usr/local/bin
-  chmod +x aur/bauh-tray
-  mv aur/bauh-tray $pkgdir/usr/local/bin/
+  cp $pkgdir/usr/lib/$pydir/site-packages/bauh/desktop/bauh.desktop $pkgdir/usr/share/applications/
+  cp $pkgdir/usr/lib/$pydir/site-packages/bauh/desktop/bauh_tray.desktop $pkgdir/usr/share/applications/
 }

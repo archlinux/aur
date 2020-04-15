@@ -1,6 +1,6 @@
 pkgbase = bauh
-	pkgdesc = Graphical interface for managing your applications ( AppImage, Flatpak, Snap, AUR and Web )
-	pkgver = 0.8.5
+	pkgdesc = Graphical interface for managing your applications ( AppImage, Flatpak, Snap, Arch/AUR, Web )
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/vinifmor/bauh
 	arch = any
@@ -39,8 +39,8 @@ pkgbase = bauh
 	optdepends = ccache: can improve AUR packages compilation speed
 	optdepends = aria2: faster AppImages and AUR source downloads
 	optdepends = breeze: for KDE Plasma main theme be available
-	source = https://github.com/vinifmor/bauh/archive/0.8.5.tar.gz
-	sha512sums = d2305d94995f7a2473d5737901760d6e635d743e97c1d656ea5757fc65a345cc012a60510d9ebda7787030d277a2dbde9c9b86d21f8c106b0e8017f6275beb36
+	source = https://files.pythonhosted.org/packages/c7/e3/a340e2109b6755356a6e8eeb5bc73e85f844af0ad6cf107a37674ed30f14/bauh-0.9.0-py3-none-any.whl
+	sha256sums = 2f63373c3a48da86a1fff40a02e7c662721d057a9a015f2f433ecb1fddf37b30
 
 pkgname = bauh
 
