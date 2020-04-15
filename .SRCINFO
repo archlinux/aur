@@ -1,0 +1,18 @@
+pkgbase = python-flammkuchen-git
+	pkgdesc = flexible HDF5 saving/loading library forked from deepdish for python3
+	pkgver = 0.9.2.r2.gc1b48e9
+	pkgrel = 1
+	url = https://github.com/portugueslab/flammkuchen
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-scipy
+	depends = python-numpy
+	depends = python-pytables
+	source = git+https://github.com/portugueslab/flammkuchen.git
+	md5sums = SKIP
+
+pkgname = python-flammkuchen-git
+
