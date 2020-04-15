@@ -2,7 +2,7 @@
 
 pkgname=yubioath-desktop
 pkgdesc='Yubico Authenticator for Desktop'
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Yubico/yubioath-desktop'
@@ -32,9 +32,10 @@ package() {
 
     make INSTALL_ROOT="$pkgdir" install
 
-    install -Dm 644 debian/copyright "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -Dm 644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
     install -Dm 644 resources/icons/com.yubico.yubioath.svg "$pkgdir"/usr/share/pixmaps/com.yubico.yubioath.svg
-    install -Dm 755 resources/yubioath-desktop.desktop "$pkgdir"/usr/share/applications/yubioath-desktop.desktop
+    install -Dm 755 resources/com.yubico.yubioath.desktop "$pkgdir"/usr/share/applications/com.yubico.yubioath.desktop
+    install -Dm 755 resources/com.yubico.yubioath.appdata.xml "$pkgdir"/usr/share/metainfo/com.yubico.yubioath.appdata.xml
 }
 
