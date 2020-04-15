@@ -3,7 +3,7 @@
 pkgname=piqueserver-git
 _pkgname=piqueserver
 pkgver=v0.1.3.r534.gd0ee6456
-pkgrel=2
+pkgrel=3
 pkgdesc="an Ace of Spades 0.75 server based on PySnip"
 arch=('any')
 url="https://github.com/piqueserver/${_pkgname}"
@@ -15,6 +15,7 @@ depends=(
   'python-pillow'
   'python-pyenet-piqueserver-git'
   'python-setuptools'
+  'python-service-identity'
   'python-toml'
   'python-twisted'
   'python-zope-interface'
