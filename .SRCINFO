@@ -1,0 +1,18 @@
+pkgbase = rime-double-pinyin-zrm-ducksoft
+	pkgdesc = 自然码双拼 佛振方案 for Rime (DuckSoft 移植版)
+	pkgver = 0.15
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	makedepends = librime
+	makedepends = rime-prelude
+	makedepends = rime-essay
+	makedepends = rime-luna-pinyin
+	depends = rime-luna-pinyin
+	provides = rime-double-pinyin-zrm
+	conflicts = rime-double-pinyin-zrm
+	source = double_pinyin_zrm.schema.yaml
+	sha512sums = c4a9bfcd55aa7b6b555de7dbb6d01119d11c15659f6f2764c00ff89e70aac6cc8dae395744cd5464da862ba2310b1c1d1b476f06f7d3112a2acfa66c0c267f7d
+
+pkgname = rime-double-pinyin-zrm-ducksoft
+
