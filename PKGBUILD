@@ -1,15 +1,15 @@
 # Maintainer: nzbr <aur@nzbr.de>
 pkgname=razer-nari-pulseaudio-profile
-pkgver=0
-pkgrel=2
+pkgver=20200415
+pkgrel=0
 pkgdesc="Pulseaudio profile for Razer Nari"
 arch=('any')
-url="https://github.com/Omico/razer-nari-pulseaudio-profile"
+url="https://github.com/imustafin/razer-nari-pulseaudio-profile"
 license=('MIT')
 
 depends=('pulseaudio')
 
-source=("$pkgname-$pkgver::git+https://github.com/Omico/razer-nari-pulseaudio-profile.git#commit=651673bad46af1595bfac0ff8a05c89e806d86f4")
+source=("$pkgname-$pkgver::git+https://github.com/imustafin/razer-nari-pulseaudio-profile.git#commit=5c9ef430e3831c46476d086088fcd58cf61b86de")
 md5sums=('SKIP')
 
 package() {
