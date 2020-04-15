@@ -3,7 +3,8 @@
 pkgbase="nginx-lazerl0rd-git"
 pkgname=("nginx-lazerl0rd-git" "nginx-src-lazerl0rd-git")
 pkgver=1.17.9
-pkgrel=13
+pkgrel=1
+epoch=1
 arch=("i686" "x86_64")
 url="https://github.com/lazerl0rd/nginx"
 license=("custom")
@@ -16,17 +17,18 @@ source=(
 	"https://nginx.org/LICENSE"
 	"hg+http://hg.nginx.org/nginx-tests"
 	"service"
-	"logrotate")
+	"logrotate"
+)
 b2sums=(
 	"SKIP"
 	"SKIP"
 	"SKIP"
 	"SKIP"
-	"SKIP"
-	"SKIP"
 	"fbd993990b43a4476d0963287bdc5f55f73fa5ce828f11977cf1abeedd478729a95861d930e27c6a1b0e78b16397164395afc4473fd34e050cadd32b94336beb"
+	"SKIP"
 	"b6414f9917fe62cc57556a2927fb404cc839398dac64a0d60c1d45af11a4e6be71bbee5f9bae17ce3604c31ab9247e8c6aec759f86890b54f86267db1fe7c08a"
-	"fe32fb75a7677abca86c4bc3f4ca9bfeccb3cd7afb4dd3c4ec21ab8b53cc0d72ba5330a1131498b5df222c2e517bd01e2df9f67256011ff15241b777a85be6b3")
+	"fe32fb75a7677abca86c4bc3f4ca9bfeccb3cd7afb4dd3c4ec21ab8b53cc0d72ba5330a1131498b5df222c2e517bd01e2df9f67256011ff15241b777a85be6b3"
+)
 
 _common_flags=(
 	--with-compat
@@ -100,14 +102,16 @@ build()
 		--http-uwsgi-temp-path="/var/lib/nginx/uwsgi" \
 		--with-cc-opt="$CFLAGS $CPPFLAGS -DTCP_FASTOPEN=23" \
 		--with-ld-opt="$LDFLAGS" \
-		${_common_flags[@]} \
-		${_stable_flags[@]}
+		"${_common_flags[@]}" \
+		"${_stable_flags[@]}"
 	make
 }
 
 check()
 {
 	cd "nginx-tests"
+	# We skip this test as HTTP/2 HPACK encoding isn't supported.
+	rm -rf "h2_server_push.t"
 	TEST_NGINX_BINARY="../nginx/objs/nginx" prove .
 }
 
@@ -128,6 +132,8 @@ package_nginx-lazerl0rd-git()
 			"etc/nginx/win-utf"
 			"etc/logrotate.d/nginx")
 
+	install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
 	cd "nginx"
 
 	make install DESTDIR="${pkgdir}"
@@ -137,15 +143,15 @@ package_nginx-lazerl0rd-git()
 		-e "54s|html|/usr/share/nginx/html|" \
 		-i "${pkgdir}/etc/nginx/nginx.conf"
 
-    for i in "${pkgdir}/etc/nginx/"*".default"; do
-        rm "$i"
-    done
-    if [ -f "${pkgdir}/etc/nginx/mime.types" ]; then
-        rm "${pkgdir}/etc/nginx/mime.types"
-    fi
+	for i in "${pkgdir}/etc/nginx/"*".default"; do
+		rm "$i"
+	done
 
-	install -d -m755 "${pkgdir}/var/lib/nginx"
-	chown root:root "${pkgdir}/var/log/nginx"
+	if [ -f "${pkgdir}/etc/nginx/mime.types" ]; then
+		rm "${pkgdir}/etc/nginx/mime.types"
+	fi
+
+	install -d -g0 -m755 -o0 "${pkgdir}/var/lib/nginx"
 	install -d -m700 "${pkgdir}/var/lib/nginx/proxy"
 
 	install -d "${pkgdir}/usr/share/nginx"
@@ -153,11 +159,6 @@ package_nginx-lazerl0rd-git()
 
 	install -D -m644 "../logrotate" "${pkgdir}/etc/logrotate.d/nginx"
 	install -D -m644 "../service" "${pkgdir}/usr/lib/systemd/system/nginx.service"
-
-	cd ..
-	install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-
-	cd "nginx"
 
 	rmdir "${pkgdir}/run"
 
@@ -172,10 +173,12 @@ package_nginx-lazerl0rd-git()
 
 package_nginx-src-lazerl0rd-git()
 {
-	pkgdesc="Source code of nginx-lazerl0rd $pkgver, useful for building modules"
+	pkgdesc="Source code of nginx-lazerl0rd ${pkgver}, useful for building modules"
 	provides=("nginx-src=1.17.9" "nginx-src-lazerl0rd=1.17.9")
 	conflicts=("nginx-src" "nginx-src-lazerl0rd")
 
 	install -d "${pkgdir}/usr/src"
 	cp -r "nginx-src" "${pkgdir}/usr/src/nginx"
+
+	install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
