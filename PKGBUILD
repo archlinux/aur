@@ -3,7 +3,7 @@
 
 pkgname=kotatogram-desktop
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Kotatogram – experimental Telegram Desktop fork"
 arch=(x86_64)
 url="https://kotatogram.github.io"
@@ -21,7 +21,6 @@ depends=(
 	openssl
 	libdbusmenu-qt5
 	hunspell
-	libtgvoip
 	hicolor-icon-theme
 )
 makedepends=(
@@ -46,7 +45,8 @@ build() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DTDESKTOP_API_TEST=ON \
 		-DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
-		-DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF
+		-DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF \
+		-DTDESKTOP_USE_PACKAGED_TGVOIP=OFF
 
 	cmake --build .
 }
