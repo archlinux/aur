@@ -1,0 +1,967 @@
+From 4aed9bd33e5230b0c1e496c3ba75b41a2a74b231 Mon Sep 17 00:00:00 2001
+From: nig <nig@tutao.de>
+Date: Thu, 26 Mar 2020 17:10:42 +0100
+Subject: [PATCH 1/4] [desktop] add builds w/o auto-updates and unpacked
+ builds, close #1857
+
+adds some options to the dist.js build script:
+--unpacked
+disables the building of installers (dir target for all platforms)
+
+--out-dir <outDir>
+move the built installers (or dirs) into the path outDir after building.
+Defaults to build/desktop and build/desktop-test
+
+--custom-release
+disable autoUpdate in the release target by not including an update url.
+---
+ buildSrc/DesktopBuilder.js                 | 45 ++++++++++++----------
+ buildSrc/electron-package-json-template.js | 42 +++++++++++---------
+ dist.js                                    | 25 ++++++++----
+ doc/BUILDING.md                            | 28 +++++++++++++-
+ src/desktop/ElectronUpdater.js             | 10 +++++
+ test/client/desktop/ElectronUpdaterTest.js | 42 ++++++++++++++++++++
+ 6 files changed, 142 insertions(+), 50 deletions(-)
+
+diff --git a/buildSrc/DesktopBuilder.js b/buildSrc/DesktopBuilder.js
+index 819fc78a1..9e144c836 100644
+--- a/buildSrc/DesktopBuilder.js
++++ b/buildSrc/DesktopBuilder.js
+@@ -3,15 +3,14 @@ const babel = Promise.promisifyAll(require("babel-core"))
+ const fs = Promise.promisifyAll(require("fs-extra"))
+ const path = require("path")
+ 
+-
+-function build(dirname, version, targets, updateUrl, nameSuffix, notarize) {
++function build(dirname, version, targets, updateUrl, nameSuffix, notarize, outDir, unpacked) {
+ 	const targetString = Object.keys(targets)
+ 	                           .filter(k => typeof targets[k] !== "undefined")
+ 	                           .join(" ")
+ 	console.log("Building desktop client for v" + version + " (" + targetString + ")...")
+-	const updateSubDir = "desktop" + nameSuffix
+ 	const distDir = path.join(dirname, '/build/dist/')
+-
++	outDir = path.join(outDir || path.join(distDir, ".."), 'desktop' + nameSuffix)
++	console.log("artifacts will be moved to", outDir)
+ 	const requiredEntities = fs.readdirSync(path.join(dirname, './src/api/entities/sys/'))
+ 	                           .map(fn => path.join(dirname, './src/api/entities/sys', fn))
+ 	const languageFiles = fs.readdirSync(path.join(dirname, './src/translations/'))
+@@ -24,14 +23,14 @@ function build(dirname, version, targets, updateUrl, nameSuffix, notarize) {
+ 		updateUrl,
+ 		path.join(dirname, "/resources/desktop-icons/logo-solo-red.png"),
+ 		nameSuffix !== "-snapshot",
+-		notarize
++		notarize,
++		unpacked
+ 	)
+-	console.log("updateUrl is", updateUrl)
+ 	let writeConfig = fs.writeFileAsync("./build/dist/package.json", JSON.stringify(content), 'utf-8')
+ 
+ 	//prepare files
+ 	return writeConfig
+-		.then(() => fs.removeAsync(path.join(distDir, "..", updateSubDir)))
++		.then(() => fs.removeAsync(outDir))
+ 		.then(() => {
+ 			console.log("Tracing dependencies...")
+ 			transpile(['./src/desktop/DesktopMain.js', './src/desktop/preload.js']
+@@ -52,24 +51,28 @@ function build(dirname, version, targets, updateUrl, nameSuffix, notarize) {
+ 			})
+ 		})
+ 		.then(() => {
+-			console.log("Move output to /build/" + updateSubDir + "/...")
++			const installerDir = path.join(distDir, 'installers')
++			console.log("Move artifacts to", outDir)
++			const unpackedFilter = file => file.endsWith("-unpacked") || file === "mac"
++			const packedFilter = file => file.startsWith(content.name) || file.endsWith('.yml')
++
+ 			return Promise.all(
+-				fs.readdirSync(path.join(distDir, '/installers'))
+-				  .filter((file => file.startsWith(content.name) || file.endsWith('.yml')))
++				fs.readdirSync(installerDir)
++				  .filter(unpacked ? unpackedFilter : packedFilter)
+ 				  .map(file => fs.moveAsync(
+-					  path.join(distDir, '/installers/', file),
+-					  path.join(distDir, `../${updateSubDir}`, file)
++					  path.join(installerDir, file),
++					  path.join(outDir, file)
+ 					  )
+ 				  )
+-			).then(() => Promise.all([
+-				fs.removeAsync(path.join(distDir, '/installers/')),
+-				fs.removeAsync(path.join(distDir, '/node_modules/')),
+-				fs.removeAsync(path.join(distDir, '/cache.json')),
+-				fs.removeAsync(path.join(distDir, '/package.json')),
+-				fs.removeAsync(path.join(distDir, '/package-lock.json')),
+-				fs.removeAsync(path.join(distDir, '/src/')),
+-			]))
+-		})
++			)
++		}).then(() => Promise.all([
++			fs.removeAsync(path.join(distDir, '/installers/')),
++			fs.removeAsync(path.join(distDir, '/node_modules/')),
++			fs.removeAsync(path.join(distDir, '/cache.json')),
++			fs.removeAsync(path.join(distDir, '/package.json')),
++			fs.removeAsync(path.join(distDir, '/package-lock.json')),
++			fs.removeAsync(path.join(distDir, '/src/')),
++		]))
+ }
+ 
+ /**
+diff --git a/buildSrc/electron-package-json-template.js b/buildSrc/electron-package-json-template.js
+index 3243f06d1..a24067fb3 100644
+--- a/buildSrc/electron-package-json-template.js
++++ b/buildSrc/electron-package-json-template.js
+@@ -6,7 +6,7 @@ const pj = require('../package.json')
+  * 2. copied to app-desktop/build/dist from dist.js (DesktopBuilder)
+  */
+ 
+-module.exports = function (nameSuffix, version, targetUrl, iconPath, sign, notarize) {
++module.exports = function (nameSuffix, version, updateUrl, iconPath, sign, notarize, unpacked) {
+ 	return {
+ 		"name": "tutanota-desktop" + nameSuffix,
+ 		"main": "./src/desktop/DesktopMain.js",
+@@ -88,12 +88,14 @@ module.exports = function (nameSuffix, version, targetUrl, iconPath, sign, notar
+ 				}
+ 			],
+ 			"forceCodeSigning": sign || !!process.env.JENKINS,
+-			"publish": {
+-				"provider": "generic",
+-				"url": targetUrl,
+-				"channel": "latest",
+-				"publishAutoUpdate": true
+-			},
++			"publish": updateUrl
++				? {
++					"provider": "generic",
++					"url": updateUrl,
++					"channel": "latest",
++					"publishAutoUpdate": true
++				}
++				: undefined,
+ 			"directories": {
+ 				"output": "installers"
+ 			},
+@@ -112,7 +114,7 @@ module.exports = function (nameSuffix, version, targetUrl, iconPath, sign, notar
+ 					: undefined,
+ 				"target": [
+ 					{
+-						"target": "nsis",
++						"target": unpacked ? "dir" : "nsis",
+ 						"arch": "x64"
+ 					}
+ 				]
+@@ -134,16 +136,18 @@ module.exports = function (nameSuffix, version, targetUrl, iconPath, sign, notar
+ 				"extendInfo": {
+ 					"LSUIElement": 1 //hide dock icon on startup
+ 				},
+-				"target": [
+-					{
+-						"target": "zip",
+-						"arch": "x64"
+-					},
+-					{
+-						"target": "dmg",
+-						"arch": "x64"
+-					}
+-				]
++				"target": unpacked
++					? [{"target": "dir", "arch": "x64"}]
++					: [
++						{
++							"target": "zip",
++							"arch": "x64"
++						},
++						{
++							"target": "dmg",
++							"arch": "x64"
++						}
++					]
+ 			},
+ 			"linux": {
+ 				"icon": path.join(path.dirname(iconPath), "icon/"),
+@@ -154,7 +158,7 @@ module.exports = function (nameSuffix, version, targetUrl, iconPath, sign, notar
+ 				},
+ 				"target": [
+ 					{
+-						"target": "AppImage",
++						"target": unpacked ? "dir" : "AppImage",
+ 						"arch": "x64"
+ 					}
+ 				]
+diff --git a/dist.js b/dist.js
+index fce9a681d..ca1f54f09 100644
+--- a/dist.js
++++ b/dist.js
+@@ -49,6 +49,9 @@ options
+ 	.option('-m --mac', 'Build desktop client for mac')
+ 	.option('-d, --deb', 'Build .deb package. Requires -wlm to be set or installers to be present')
+ 	.option('-p, --publish', 'Git tag and upload package, only allowed in release stage. Implies -d.')
++	.option('--custom-release', "use if manually building from source. doesn't install autoupdates, but may still notify about new releases")
++	.option('--unpacked', "don't pack the app into an installer")
++	.option('--out-dir <outDir>', "where to copy the client",)
+ 	.action((stage, host) => {
+ 		if (!["test", "prod", "local", "host", "release", undefined].includes(stage)
+ 			|| (stage !== "host" && host)
+@@ -177,26 +180,32 @@ function buildDesktopClient() {
+ 	if (options.desktop) {
+ 		const desktopBuilder = require('./buildSrc/DesktopBuilder.js')
+ 		if (options.stage === "release") {
+-			return createHtml(env.create(SystemConfig.distRuntimeConfig(bundles), "https://mail.tutanota.com", version, "Desktop", true), bundles)
+-				.then(() => desktopBuilder.build(__dirname, version, options.desktop, "https://mail.tutanota.com/desktop", "",  /*notarize*/true))
+-				.then(() => createHtml(env.create(SystemConfig.distRuntimeConfig(bundles), "https://test.tutanota.com", version, "Desktop", true), bundles))
+-				.then(() => desktopBuilder.build(__dirname, version, options.desktop, "https://test.tutanota.com/desktop", "-test",  /*notarize*/true))
++			const updateUrl = options.customRelease
++				? ""
++				: "https://mail.tutanota.com/desktop"
++			const buildPromise = createHtml(env.create(SystemConfig.distRuntimeConfig(bundles), "https://mail.tutanota.com", version, "Desktop", true), bundles)
++				.then(() => desktopBuilder.build(__dirname, version, options.desktop, updateUrl, "",  /*notarize*/true, options.outDir, options.unpacked))
++			if (!options.customRelease) { // don't build the test version for manual/custom builds
++				buildPromise.then(() => createHtml(env.create(SystemConfig.distRuntimeConfig(bundles), "https://test.tutanota.com", version, "Desktop", true), bundles))
++				            .then(() => desktopBuilder.build(__dirname, version, options.desktop, "https://test.tutanota.com/desktop", "-test",  /*notarize*/true, options.outDir, options.unpacked))
++			}
++			return buildPromise
+ 		} else if (options.stage === "local") {
+ 			return createHtml(env.create(SystemConfig.distRuntimeConfig(bundles), "http://localhost:9000", version, "Desktop", true), bundles)
+ 				.then(() => desktopBuilder.build(__dirname, `${new Date().getTime()}.0.0`,
+-					options.desktop, "http://localhost:9000", "-snapshot"))
++					options.desktop, "http://localhost:9000", "-snapshot", options.outDir, options.unpacked))
+ 		} else if (options.stage === "test") {
+ 			return createHtml(env.create(SystemConfig.distRuntimeConfig(bundles), "https://test.tutanota.com", version, "Desktop", true), bundles)
+ 				.then(() => desktopBuilder.build(__dirname, `${new Date().getTime()}.0.0`,
+-					options.desktop, "https://test.tutanota.com/desktop", "-test"))
++					options.desktop, "https://test.tutanota.com/desktop", "-test", options.outDir, options.unpacked))
+ 		} else if (options.stage === "prod") {
+ 			return createHtml(env.create(SystemConfig.distRuntimeConfig(bundles), "https://mail.tutanota.com", version, "Desktop", true), bundles)
+ 				.then(() => desktopBuilder.build(__dirname, `${new Date().getTime()}.0.0`,
+-					options.desktop, "http://localhost:9000/desktop", ""))
++					options.desktop, "http://localhost:9000/desktop", "", options.outDir, options.unpacked))
+ 		} else { // stage = host
+ 			return createHtml(env.create(SystemConfig.distRuntimeConfig(bundles), options.host, version, "Desktop", true), bundles)
+ 				.then(() => desktopBuilder.build(__dirname, `${new Date().getTime()}.0.0`,
+-					options.desktop, "http://localhost:9000/desktop-snapshot", "-snapshot"))
++					options.desktop, "http://localhost:9000/desktop-snapshot", "-snapshot", options.outDir, options.unpacked))
+ 		}
+ 	}
+ }
+diff --git a/doc/BUILDING.md b/doc/BUILDING.md
+index 75bf18373..b43010f65 100644
+--- a/doc/BUILDING.md
++++ b/doc/BUILDING.md
+@@ -12,7 +12,7 @@ your own. If you prefer the auto-update feature, you can use the official [mail]
+ 1. Clone the repository: `git clone https://github.com/tutao/tutanota.git`
+ 2. Switch into the repository directory: `cd tutanota`
+ 3. Checkout the latest web release tag: `git checkout tutanota-release-xxx`
+-4. Do `npm install`
++4. run `npm install` to install dependencies.
+ 5. Build the web part: `node dist prod`
+ 6. Switch into the build directory: `cd build/dist`
+ 7. Run local server. Either use `node server` or `python -m SimpleHTTPServer 9000`.
+@@ -21,7 +21,7 @@ your own. If you prefer the auto-update feature, you can use the official [mail]
+ ## Building and running your own Tutanota Android app
+ 
+ If you build and install the Tutanota Android app by yourself, keep in mind that you will not get updates automatically.
+-If you prefer the auto-update feature, use the Google Play Store or F-Droid in the future.
++If you prefer the auto-update feature, download the app from the Google Play Store or F-Droid.
+ 
+ #### Pre-requisites:
+ * An up-to-date version of Git is installed
+@@ -37,3 +37,27 @@ If you prefer the auto-update feature, use the Google Play Store or F-Droid in t
+ 5. Create a keystore if you don't have one: `keytool -genkey -noprompt -keystore MyKeystore.jks -alias tutaKey -keyalg RSA -keysize 2048 -validity 10000 -deststoretype pkcs12 -storepass CHANGEME -keypass CHANGEME -dname "CN=com.example"`
+ 6. run `APK_SIGN_ALIAS="tutaKey" APK_SIGN_STORE='MyKeystore.jks' APK_SIGN_STORE_PASS="CHANGEME" APK_SIGN_KEY_PASS="CHANGEME" node android`
+ 7. Install the app on your device: `adb install -r <path-to-apk>` (path as printed by the build script)
++
++## Building and running your own Tutanota Desktop client
++
++Keep in mind that your own build of Tutanota Desktop will not update automatically.
++
++### Pre-requisites:
++* An up-to-date version of Git is installed.
++* An up-to-date version of Node.js is installed
++
++### Preparations:
++0. Open a terminal.
++1. Clone the repository: `git clone https://github.com/tutao/tutanota.git`.
++2. Switch into the Tutanota directory: `cd tutanota`
++3. Checkout the latest web release tag: `git checkout tutanota-release-xxx`
++4. Run `npm install` to install dependencies.
++
++### Build:  
++Linux: `node dist -l --custom-release`  
++Windows: `node dist -w --custom-release`  
++MacOs: `node dist -m --custom-release`
++
++The client will be in `build/desktop/`
++Note that you can add `--unpacked` to the build command to skip the packaging of the installer.
++This will yield a directory containing the client that can be run without installation.
+\ No newline at end of file
+diff --git a/src/desktop/ElectronUpdater.js b/src/desktop/ElectronUpdater.js
+index 6c8c61ccd..29269ca9b 100644
+--- a/src/desktop/ElectronUpdater.js
++++ b/src/desktop/ElectronUpdater.js
+@@ -9,6 +9,8 @@ import type {DesktopConfigHandler} from './config/DesktopConfigHandler'
+ import {neverNull} from "../api/common/utils/Utils"
+ import {UpdateError} from "../api/common/error/UpdateError"
+ import {DesktopTray} from "./tray/DesktopTray"
++import fs from 'fs-extra'
++import path from 'path'
+ 
+ export class ElectronUpdater {
+ 	_conf: DesktopConfigHandler;
+@@ -91,6 +93,14 @@ export class ElectronUpdater {
+ 	+_enableAutoUpdateListener = () => this.start()
+ 
+ 	start() {
++		try {
++			const appUpdateYmlPath = path.join(path.dirname(app.getPath('exe')), 'resources', 'app-update.yml')
++			fs.accessSync(appUpdateYmlPath, fs.constants.R_OK)
++		} catch (e) {
++			console.log("no update info on disk, disabling updater.")
++			return
++		}
++
+ 		// if user changes auto update setting, we want to know
+ 		this._conf.removeListener('enableAutoUpdate', this._enableAutoUpdateListener)
+ 		    .on('enableAutoUpdate', this._enableAutoUpdateListener)
+diff --git a/test/client/desktop/ElectronUpdaterTest.js b/test/client/desktop/ElectronUpdaterTest.js
+index 43580cec6..d5b4194db 100644
+--- a/test/client/desktop/ElectronUpdaterTest.js
++++ b/test/client/desktop/ElectronUpdaterTest.js
+@@ -98,6 +98,13 @@ o.spec("ElectronUpdater Test", function (done, timeout) {
+ 		}
+ 	}
+ 
++	const fs = {
++		accessSync: () => {},
++		constants: {
++			"R_OK": 1
++		}
++	}
++
+ 	const lang = {
+ 		lang: {
+ 			get: (key: string) => {
+@@ -142,6 +149,7 @@ o.spec("ElectronUpdater Test", function (done, timeout) {
+ 
+ 	o("update is available", done => {
+ 		//mock node modules
++		const fsMock = n.mock('fs-extra', fs).set()
+ 		const forgeMock = n.mock('node-forge', nodeForge).set()
+ 		const autoUpdaterMock = n.mock('electron-updater', autoUpdater).set().autoUpdater
+ 		const electronMock = n.mock('electron', electron).set()
+@@ -201,6 +209,7 @@ o.spec("ElectronUpdater Test", function (done, timeout) {
+ 
+ 	o("update is not available", done => {
+ 		//mock node modules
++		const fsMock = n.mock('fs-extra', fs).set()
+ 		const forgeMock = n.mock('node-forge', nodeForge).set()
+ 		const electronMock = n.mock('electron', electron).set()
+ 		const autoUpdaterMock = n.mock('electron-updater', autoUpdater)
+@@ -242,6 +251,7 @@ o.spec("ElectronUpdater Test", function (done, timeout) {
+ 
+ 	o("enable autoUpdate while running", done => {
+ 		//mock node modules
++		const fsMock = n.mock('fs-extra', fs).set()
+ 		const forgeMock = n.mock('node-forge', nodeForge).set()
+ 		const electronMock = n.mock('electron', electron).set()
+ 		const autoUpdaterMock = n.mock('electron-updater', autoUpdater).set().autoUpdater
+@@ -317,6 +327,7 @@ o.spec("ElectronUpdater Test", function (done, timeout) {
+ 
+ 	o("retry after autoUpdater reports an error", done => {
+ 		//mock node modules
++		const fsMock = n.mock('fs-extra', fs).set()
+ 		const forgeMock = n.mock('node-forge', nodeForge).set()
+ 		const electronMock = n.mock('electron', electron).set()
+ 		const autoUpdaterMock = n.mock('electron-updater', autoUpdater)
+@@ -388,6 +399,7 @@ o.spec("ElectronUpdater Test", function (done, timeout) {
+ 		const MAX_NUM_ERRORS = 5
+ 		let threw = false
+ 		//mock node modules
++		const fsMock = n.mock('fs-extra', fs).set()
+ 		const forgeMock = n.mock('node-forge', nodeForge).set()
+ 		const electronMock = n.mock('electron', electron).set()
+ 		const autoUpdaterMock = n.mock('electron-updater', autoUpdater)
+@@ -432,6 +444,7 @@ o.spec("ElectronUpdater Test", function (done, timeout) {
+ 	o("works if second key is right one", done => {
+ 
+ 		//mock node modules
++		const fsMock = n.mock('fs-extra', fs).set()
+ 		const forgeMock = n.mock('node-forge', nodeForge).with({
+ 			publicKeyFromPem: (pem: string) => n.spyify(pem === "no" ? rightKey : wrongKey)
+ 		}).set()
+@@ -492,4 +505,33 @@ o.spec("ElectronUpdater Test", function (done, timeout) {
+ 			done()
+ 		}, 190)
+ 	})
++
++	o("updater disables itself if accessSync throws", function () {
++			//mock node modules
++			const fsMock = n.mock('fs-extra', fs).with({
++				accessSync: undefined
++			}).set()
++			const forgeMock = n.mock('node-forge', nodeForge).set()
++			const autoUpdaterMock = n.mock('electron-updater', autoUpdater).set().autoUpdater
++			const electronMock = n.mock('electron', electron).set()
++
++			//mock our modules
++			n.mock('./tray/DesktopTray', desktopTray).set()
++			n.mock('../misc/LanguageViewModel', lang).set()
++
++			//mock instances
++			const confMock = n.mock('__conf', conf).set()
++			const notifierMock = n.mock('__notifier', notifier).set()
++
++			const {ElectronUpdater} = n.subject('../../src/desktop/ElectronUpdater.js')
++			const upd = new ElectronUpdater(confMock, notifierMock)
++
++			o(autoUpdaterMock.on.callCount).equals(5)
++			o(autoUpdaterMock.logger).equals(null)
++
++			upd.start()
++
++			o(confMock.removeListener.callCount).equals(0)
++		}
++	)
+ })
+
+From 9b5a5eee1bfbdaa6e45fdc49dc176a333989b88a Mon Sep 17 00:00:00 2001
+From: nig <nig@tutao.de>
+Date: Tue, 31 Mar 2020 15:55:11 +0200
+Subject: [PATCH 2/4] [desktop] improve custom desktop builds
+
+- automatically build for current platform if no platform flag is given
+- disable notarization on mac
+- disable code signing for custom builds without updates
+---
+ buildSrc/DesktopBuilder.js |  2 +-
+ dist.js                    | 19 +++++++++++++------
+ doc/BUILDING.md            |  6 ++----
+ 3 files changed, 16 insertions(+), 11 deletions(-)
+
+diff --git a/buildSrc/DesktopBuilder.js b/buildSrc/DesktopBuilder.js
+index 9e144c836..8449c5923 100644
+--- a/buildSrc/DesktopBuilder.js
++++ b/buildSrc/DesktopBuilder.js
+@@ -22,7 +22,7 @@ function build(dirname, version, targets, updateUrl, nameSuffix, notarize, outDi
+ 		version,
+ 		updateUrl,
+ 		path.join(dirname, "/resources/desktop-icons/logo-solo-red.png"),
+-		nameSuffix !== "-snapshot",
++		nameSuffix !== '-snapshot' && updateUrl !== "", // don't sign if it's a test build or if we don't download updates
+ 		notarize,
+ 		unpacked
+ 	)
+diff --git a/dist.js b/dist.js
+index ca1f54f09..2731f8bf9 100644
+--- a/dist.js
++++ b/dist.js
+@@ -49,7 +49,7 @@ options
+ 	.option('-m --mac', 'Build desktop client for mac')
+ 	.option('-d, --deb', 'Build .deb package. Requires -wlm to be set or installers to be present')
+ 	.option('-p, --publish', 'Git tag and upload package, only allowed in release stage. Implies -d.')
+-	.option('--custom-release', "use if manually building from source. doesn't install autoupdates, but may still notify about new releases")
++	.option('--custom-desktop-release', "use if manually building desktop client from source. doesn't install auto updates, but may still notify about new releases.")
+ 	.option('--unpacked', "don't pack the app into an installer")
+ 	.option('--out-dir <outDir>', "where to copy the client",)
+ 	.action((stage, host) => {
+@@ -63,15 +63,21 @@ options
+ 		options.stage = stage || "release"
+ 		options.host = host
+ 		options.deb = options.deb || options.publish
+-
+ 		options.desktop = {
+ 			win: options.win ? [] : undefined,
+ 			linux: options.linux ? [] : undefined,
+ 			mac: options.mac ? [] : undefined
+ 		}
++
+ 		options.desktop = Object.values(options.desktop).some(Boolean)
+ 			? options.desktop
+-			: undefined
++			: !!options.customDesktopRelease // no platform flags given, build desktop for current platform if customDesktopBuild flag is set.
++				? {
++					win: process.platform === "win32" ? [] : undefined,
++					linux: process.platform === "linux" ? [] : undefined,
++					mac: process.platform === "darwin" ? [] : undefined
++				}
++				: undefined
+ 	})
+ 	.parse(process.argv)
+ 
+@@ -180,12 +186,13 @@ function buildDesktopClient() {
+ 	if (options.desktop) {
+ 		const desktopBuilder = require('./buildSrc/DesktopBuilder.js')
+ 		if (options.stage === "release") {
+-			const updateUrl = options.customRelease
++			const updateUrl = options.customDesktopRelease
+ 				? ""
+ 				: "https://mail.tutanota.com/desktop"
++			const notarize = !!options.customDesktopRelease
+ 			const buildPromise = createHtml(env.create(SystemConfig.distRuntimeConfig(bundles), "https://mail.tutanota.com", version, "Desktop", true), bundles)
+-				.then(() => desktopBuilder.build(__dirname, version, options.desktop, updateUrl, "",  /*notarize*/true, options.outDir, options.unpacked))
+-			if (!options.customRelease) { // don't build the test version for manual/custom builds
++				.then(() => desktopBuilder.build(__dirname, version, options.desktop, updateUrl, "", notarize, options.outDir, options.unpacked))
++			if (!options.customDesktopRelease) { // don't build the test version for manual/custom builds
+ 				buildPromise.then(() => createHtml(env.create(SystemConfig.distRuntimeConfig(bundles), "https://test.tutanota.com", version, "Desktop", true), bundles))
+ 				            .then(() => desktopBuilder.build(__dirname, version, options.desktop, "https://test.tutanota.com/desktop", "-test",  /*notarize*/true, options.outDir, options.unpacked))
+ 			}
+diff --git a/doc/BUILDING.md b/doc/BUILDING.md
+index b43010f65..2e6994817 100644
+--- a/doc/BUILDING.md
++++ b/doc/BUILDING.md
+@@ -54,10 +54,8 @@ Keep in mind that your own build of Tutanota Desktop will not update automatical
+ 4. Run `npm install` to install dependencies.
+ 
+ ### Build:  
+-Linux: `node dist -l --custom-release`  
+-Windows: `node dist -w --custom-release`  
+-MacOs: `node dist -m --custom-release`
++Run `node dist --custom-desktop-release`.
+ 
+-The client will be in `build/desktop/`
++The client for your platform will be in `build/desktop/`.
+ Note that you can add `--unpacked` to the build command to skip the packaging of the installer.
+ This will yield a directory containing the client that can be run without installation.
+\ No newline at end of file
+
+From 20d3255a294de040747d67103a375f0061035426 Mon Sep 17 00:00:00 2001
+From: nig <nig@tutao.de>
+Date: Fri, 3 Apr 2020 08:10:16 +0200
+Subject: [PATCH 3/4] [desktop] hide auto update option for custom desktop
+ builds
+
+---
+ src/desktop/ElectronUpdater.js                         |  5 +++++
+ src/desktop/config/DesktopConfigHandler.js             |  1 +
+ src/desktop/config/migrations/DesktopConfigMigrator.js |  2 ++
+ src/desktop/config/migrations/migration-0001.js        |  7 +++++++
+ src/settings/DesktopSettingsViewer.js                  |  5 ++++-
+ test/client/desktop/ElectronUpdaterTest.js             | 10 ++++++++++
+ .../config/migrations/DesktopConfigMigratorTest.js     |  6 ++++--
+ 7 files changed, 33 insertions(+), 3 deletions(-)
+ create mode 100644 src/desktop/config/migrations/migration-0001.js
+
+diff --git a/src/desktop/ElectronUpdater.js b/src/desktop/ElectronUpdater.js
+index 29269ca9b..e7e6009fd 100644
+--- a/src/desktop/ElectronUpdater.js
++++ b/src/desktop/ElectronUpdater.js
+@@ -98,9 +98,14 @@ export class ElectronUpdater {
+ 			fs.accessSync(appUpdateYmlPath, fs.constants.R_OK)
+ 		} catch (e) {
+ 			console.log("no update info on disk, disabling updater.")
++			this._conf.setDesktopConfig('showAutoUpdateOption', false)
+ 			return
+ 		}
+ 
++		// if we got here, we could theoretically download updates.
++		// show the option in the settings menu
++		this._conf.setDesktopConfig('showAutoUpdateOption', true)
++
+ 		// if user changes auto update setting, we want to know
+ 		this._conf.removeListener('enableAutoUpdate', this._enableAutoUpdateListener)
+ 		    .on('enableAutoUpdate', this._enableAutoUpdateListener)
+diff --git a/src/desktop/config/DesktopConfigHandler.js b/src/desktop/config/DesktopConfigHandler.js
+index ae753a1c1..d907968a6 100644
+--- a/src/desktop/config/DesktopConfigHandler.js
++++ b/src/desktop/config/DesktopConfigHandler.js
+@@ -11,6 +11,7 @@ export const DesktopConfigKey = {
+ 	heartbeatTimeoutInSeconds: 'heartbeatTimeoutInSeconds',
+ 	defaultDownloadPath: 'defaultDownloadPath',
+ 	enableAutoUpdate: 'enableAutoUpdate',
++	showAutoUpdateOption: 'showAutoUpdateOption',
+ 	pushIdentifier: 'pushIdentifier',
+ 	runAsTrayApp: 'runAsTrayApp',
+ 	lastBounds: 'lastBounds',
+diff --git a/src/desktop/config/migrations/DesktopConfigMigrator.js b/src/desktop/config/migrations/DesktopConfigMigrator.js
+index 5914bc235..e23e22981 100644
+--- a/src/desktop/config/migrations/DesktopConfigMigrator.js
++++ b/src/desktop/config/migrations/DesktopConfigMigrator.js
+@@ -15,6 +15,8 @@ export default function applyMigrations(migrationFunction: "migrateClient" | "mi
+ 			oldConfig = applyMigration(require('./migration-0000')[migrationFunction], oldConfig)
+ 		// no break, fallthrough applies all migrations in sequence
+ 		case 0:
++			oldConfig = applyMigration(require('./migration-0001')[migrationFunction], oldConfig)
++		case 1:
+ 			console.log("config up to date")
+ 			/* add new migrations as needed */
+ 			break;
+diff --git a/src/desktop/config/migrations/migration-0001.js b/src/desktop/config/migrations/migration-0001.js
+new file mode 100644
+index 000000000..c46c19bf3
+--- /dev/null
++++ b/src/desktop/config/migrations/migration-0001.js
+@@ -0,0 +1,7 @@
++// @flow
++function migrate(oldConfig: any) {
++	return Object.assign(oldConfig, {"desktopConfigVersion": 1, "showAutoUpdateOption": true})
++}
++
++export const migrateClient = migrate
++export const migrateAdmin = migrate
+\ No newline at end of file
+diff --git a/src/settings/DesktopSettingsViewer.js b/src/settings/DesktopSettingsViewer.js
+index 4591adcce..a27e03134 100644
+--- a/src/settings/DesktopSettingsViewer.js
++++ b/src/settings/DesktopSettingsViewer.js
+@@ -32,6 +32,7 @@ export class DesktopSettingsViewer implements UpdatableSettingsViewer {
+ 	_runOnStartup: Stream<?boolean>;
+ 	_isIntegrated: Stream<?boolean>;
+ 	_isAutoUpdateEnabled: Stream<?boolean>;
++	_showAutoUpdateOption: Stream<?boolean>;
+ 	_isPathDialogOpen: boolean;
+ 
+ 	constructor() {
+@@ -40,6 +41,7 @@ export class DesktopSettingsViewer implements UpdatableSettingsViewer {
+ 		this._runOnStartup = stream(false)
+ 		this._isIntegrated = stream(false)
+ 		this._isAutoUpdateEnabled = stream(false)
++		this._showAutoUpdateOption = stream(true)
+ 		this._requestDesktopConfig()
+ 	}
+ 
+@@ -157,7 +159,7 @@ export class DesktopSettingsViewer implements UpdatableSettingsViewer {
+ 				m(DropDownSelectorN, setRunOnStartupAttrs),
+ 				m(TextFieldN, defaultDownloadPathAttrs),
+ 				env.platformId === 'linux' ? m(DropDownSelectorN, setDesktopIntegrationAttrs) : null,
+-				m(DropDownSelectorN, setAutoUpdateAttrs)
++				this._showAutoUpdateOption() ? m(DropDownSelectorN, setAutoUpdateAttrs) : null,
+ 			])
+ 		]
+ 	}
+@@ -190,6 +192,7 @@ export class DesktopSettingsViewer implements UpdatableSettingsViewer {
+ 			         this._runAsTrayApp(desktopConfig.runAsTrayApp)
+ 			         this._runOnStartup(desktopConfig.runOnStartup)
+ 			         this._isIntegrated(desktopConfig.isIntegrated)
++			         this._showAutoUpdateOption(desktopConfig.showAutoUpdateOption)
+ 			         this._isAutoUpdateEnabled(desktopConfig.enableAutoUpdate)
+ 			         m.redraw()
+ 		         })
+diff --git a/test/client/desktop/ElectronUpdaterTest.js b/test/client/desktop/ElectronUpdaterTest.js
+index d5b4194db..c686f1c39 100644
+--- a/test/client/desktop/ElectronUpdaterTest.js
++++ b/test/client/desktop/ElectronUpdaterTest.js
+@@ -123,10 +123,13 @@ o.spec("ElectronUpdater Test", function (done, timeout) {
+ 	const conf = {
+ 		removeListener: (key: string, cb: ()=>void) => n.spyify(conf),
+ 		on: (key: string) => n.spyify(conf),
++		setDesktopConfig: (key, value) => {},
+ 		getDesktopConfig: (key: string) => {
+ 			switch (key) {
+ 				case 'enableAutoUpdate':
+ 					return true
++				case 'showAutoUpdateOption':
++					return true
+ 				default:
+ 					throw new Error(`unexpected getDesktopConfig key ${key}`)
+ 			}
+@@ -170,6 +173,9 @@ o.spec("ElectronUpdater Test", function (done, timeout) {
+ 
+ 		upd.start()
+ 
++		o(confMock.setDesktopConfig.callCount).equals(1)
++		o(confMock.setDesktopConfig.args).deepEquals(['showAutoUpdateOption', true])
++
+ 		// there is only one enableAutoUpdate listener
+ 		o(confMock.removeListener.callCount).equals(1)
+ 		o(confMock.removeListener.args[0]).equals('enableAutoUpdate')
+@@ -278,6 +284,8 @@ o.spec("ElectronUpdater Test", function (done, timeout) {
+ 				                  switch (key) {
+ 					                  case 'enableAutoUpdate':
+ 						                  return enabled
++					                  case 'showAutoUpdateOption':
++						                  return true
+ 					                  default:
+ 						                  throw new Error(`unexpected getDesktopConfig key ${key}`)
+ 				                  }
+@@ -531,6 +539,8 @@ o.spec("ElectronUpdater Test", function (done, timeout) {
+ 
+ 			upd.start()
+ 
++			o(confMock.setDesktopConfig.callCount).equals(1)
++			o(confMock.setDesktopConfig.args).deepEquals(['showAutoUpdateOption', false])
+ 			o(confMock.removeListener.callCount).equals(0)
+ 		}
+ 	)
+diff --git a/test/client/desktop/config/migrations/DesktopConfigMigratorTest.js b/test/client/desktop/config/migrations/DesktopConfigMigratorTest.js
+index 47e3c943a..2f15ea616 100644
+--- a/test/client/desktop/config/migrations/DesktopConfigMigratorTest.js
++++ b/test/client/desktop/config/migrations/DesktopConfigMigratorTest.js
+@@ -15,7 +15,8 @@ o.spec('desktop config migrator test', function () {
+ 			"defaultDownloadPath": null,
+ 			"enableAutoUpdate": true,
+ 			"runAsTrayApp": true,
+-			"desktopConfigVersion": 0
++			"desktopConfigVersion": 1,
++			"showAutoUpdateOption": true,
+ 		}
+ 
+ 		o(migrator("migrateClient", oldConfig, oldConfig)).deepEquals(requiredResult)
+@@ -28,7 +29,8 @@ o.spec('desktop config migrator test', function () {
+ 		}
+ 		const requiredResult = {
+ 			"runAsTrayApp": true,
+-			"desktopConfigVersion": 0
++			"desktopConfigVersion": 1,
++			"showAutoUpdateOption": true,
+ 		}
+ 
+ 		o(migrator("migrateAdmin", oldConfig, oldConfig)).deepEquals(requiredResult)
+
+From 75330e12c0019db586c4cb91f3dbe0afa8a744b7 Mon Sep 17 00:00:00 2001
+From: nig <nig@tutao.de>
+Date: Tue, 7 Apr 2020 10:32:03 +0200
+Subject: [PATCH 4/4] [desktop] define options object for desktopBuilder
+
+---
+ buildSrc/DesktopBuilder.js                    | 58 ++++++++++++------
+ buildSrc/electron-package-json-template.js    |  4 +-
+ dist.js                                       | 60 ++++++++++++++-----
+ make.js                                       | 14 ++---
+ src/desktop/ElectronUpdater.js                |  2 +
+ .../migrations/DesktopConfigMigratorTest.js   | 11 +++-
+ 6 files changed, 105 insertions(+), 44 deletions(-)
+
+diff --git a/buildSrc/DesktopBuilder.js b/buildSrc/DesktopBuilder.js
+index 8449c5923..45fbaaa5f 100644
+--- a/buildSrc/DesktopBuilder.js
++++ b/buildSrc/DesktopBuilder.js
+@@ -3,7 +3,17 @@ const babel = Promise.promisifyAll(require("babel-core"))
+ const fs = Promise.promisifyAll(require("fs-extra"))
+ const path = require("path")
+ 
+-function build(dirname, version, targets, updateUrl, nameSuffix, notarize, outDir, unpacked) {
++function build(opts) {
++	let {
++		dirname, // directory this was called from
++		version, // application version that gets built
++		targets, // which desktop targets to build and how to package them
++		updateUrl, // where the client should pull its updates from, if any
++		nameSuffix, // suffix used to distinguish test-, prod- or snapshot builds on the same machine
++		notarize, // for the MacOs notarization feature
++		outDir, // where to copy the finished artifacts
++		unpacked // output desktop client without packing it into an installer
++	} = opts
+ 	const targetString = Object.keys(targets)
+ 	                           .filter(k => typeof targets[k] !== "undefined")
+ 	                           .join(" ")
+@@ -17,15 +27,16 @@ function build(dirname, version, targets, updateUrl, nameSuffix, notarize, outDi
+ 	                        .map(fn => path.join(dirname, './src/translations', fn))
+ 
+ 	console.log("Updating electron-builder config...")
+-	const content = require('./electron-package-json-template')(
+-		nameSuffix,
+-		version,
+-		updateUrl,
+-		path.join(dirname, "/resources/desktop-icons/logo-solo-red.png"),
+-		nameSuffix !== '-snapshot' && updateUrl !== "", // don't sign if it's a test build or if we don't download updates
+-		notarize,
+-		unpacked
+-	)
++	const content = require('./electron-package-json-template')({
++		nameSuffix: nameSuffix,
++		version: version,
++		updateUrl: updateUrl,
++		iconPath: path.join(dirname, "/resources/desktop-icons/logo-solo-red.png"),
++		sign: nameSuffix !== '-snapshot' && updateUrl !== "",
++		nameSuffix: nameSuffix,
++		notarize: notarize,
++		unpacked: unpacked
++	})
+ 	let writeConfig = fs.writeFileAsync("./build/dist/package.json", JSON.stringify(content), 'utf-8')
+ 
+ 	//prepare files
+@@ -53,17 +64,26 @@ function build(dirname, version, targets, updateUrl, nameSuffix, notarize, outDi
+ 		.then(() => {
+ 			const installerDir = path.join(distDir, 'installers')
+ 			console.log("Move artifacts to", outDir)
+-			const unpackedFilter = file => file.endsWith("-unpacked") || file === "mac"
+-			const packedFilter = file => file.startsWith(content.name) || file.endsWith('.yml')
++			const outFiles = fs.readdirSync(installerDir)
++			let filesToCopy
++			// the output of the builder is very inconsistently named and contains
++			// files that are irrelevant to us. these filters enable us to copy them
++			// without naming every possible file name explicitly
++			if (unpacked) {
++				// when the unpacked option is set, output is a directory for each platform, with
++				// the mac directory missing the "-unpacked" suffix.
++				filesToCopy = outFiles.filter(file => file.endsWith("-unpacked") || file === "mac")
++			} else {
++				// the installers start with the application name + suffix. the update manifests end in yml.
++				filesToCopy = outFiles.filter(file => file.startsWith(content.name) || file.endsWith('.yml'))
++			}
+ 
+ 			return Promise.all(
+-				fs.readdirSync(installerDir)
+-				  .filter(unpacked ? unpackedFilter : packedFilter)
+-				  .map(file => fs.moveAsync(
+-					  path.join(installerDir, file),
+-					  path.join(outDir, file)
+-					  )
+-				  )
++				filesToCopy.map(file => fs.moveAsync(
++					path.join(installerDir, file),
++					path.join(outDir, file)
++					)
++				)
+ 			)
+ 		}).then(() => Promise.all([
+ 			fs.removeAsync(path.join(distDir, '/installers/')),
+diff --git a/buildSrc/electron-package-json-template.js b/buildSrc/electron-package-json-template.js
+index a24067fb3..5fc9e2706 100644
+--- a/buildSrc/electron-package-json-template.js
++++ b/buildSrc/electron-package-json-template.js
+@@ -6,7 +6,9 @@ const pj = require('../package.json')
+  * 2. copied to app-desktop/build/dist from dist.js (DesktopBuilder)
+  */
+ 
+-module.exports = function (nameSuffix, version, updateUrl, iconPath, sign, notarize, unpacked) {
++module.exports = function (opts) {
++	const {nameSuffix, version, updateUrl, iconPath, sign, notarize, unpacked} = opts
++
+ 	return {
+ 		"name": "tutanota-desktop" + nameSuffix,
+ 		"main": "./src/desktop/DesktopMain.js",
+diff --git a/dist.js b/dist.js
+index 2731f8bf9..c7dc6f993 100644
+--- a/dist.js
++++ b/dist.js
+@@ -185,34 +185,66 @@ function buildWebapp() {
+ function buildDesktopClient() {
+ 	if (options.desktop) {
+ 		const desktopBuilder = require('./buildSrc/DesktopBuilder.js')
+-		if (options.stage === "release") {
+-			const updateUrl = options.customDesktopRelease
++		const desktopBaseOpts = {
++			dirname: __dirname,
++			version: version,
++			targets: options.desktop,
++			updateUrl: options.customDesktopRelease
+ 				? ""
+-				: "https://mail.tutanota.com/desktop"
+-			const notarize = !!options.customDesktopRelease
++				: "https://mail.tutanota.com/desktop",
++			nameSuffix: "",
++			notarize: !!options.customDesktopRelease,
++			outDir: options.outDir,
++			unpacked: options.unpacked
++		}
++		if (options.stage === "release") {
+ 			const buildPromise = createHtml(env.create(SystemConfig.distRuntimeConfig(bundles), "https://mail.tutanota.com", version, "Desktop", true), bundles)
+-				.then(() => desktopBuilder.build(__dirname, version, options.desktop, updateUrl, "", notarize, options.outDir, options.unpacked))
++				.then(() => desktopBuilder.build(desktopBaseOpts))
+ 			if (!options.customDesktopRelease) { // don't build the test version for manual/custom builds
++				const desktopTestOpts = Object.assign({}, desktopBaseOpts, {
++					updateUrl: "https://test.tutanota.com",
++					nameSuffix: "-test",
++					notarize: true
++				})
+ 				buildPromise.then(() => createHtml(env.create(SystemConfig.distRuntimeConfig(bundles), "https://test.tutanota.com", version, "Desktop", true), bundles))
+-				            .then(() => desktopBuilder.build(__dirname, version, options.desktop, "https://test.tutanota.com/desktop", "-test",  /*notarize*/true, options.outDir, options.unpacked))
++				            .then(() => desktopBuilder.build(desktopTestOpts))
+ 			}
+ 			return buildPromise
+ 		} else if (options.stage === "local") {
++			const desktopLocalOpts = Object.assign({}, desktopBaseOpts, {
++				version: `${new Date().getTime()}.0.0`,
++				updateUrl: "http://localhost:9000",
++				nameSuffix: "-snapshot",
++				notarize: false
++			})
+ 			return createHtml(env.create(SystemConfig.distRuntimeConfig(bundles), "http://localhost:9000", version, "Desktop", true), bundles)
+-				.then(() => desktopBuilder.build(__dirname, `${new Date().getTime()}.0.0`,
+-					options.desktop, "http://localhost:9000", "-snapshot", options.outDir, options.unpacked))
++				.then(() => desktopBuilder.build(desktopLocalOpts))
+ 		} else if (options.stage === "test") {
++			const desktopTestOpts = Object.assign({}, desktopBaseOpts, {
++				version: `${new Date().getTime()}.0.0`,
++				updateUrl: "https://test.tutanota.com/desktop",
++				nameSuffix: "-test",
++				notarize: false
++			})
+ 			return createHtml(env.create(SystemConfig.distRuntimeConfig(bundles), "https://test.tutanota.com", version, "Desktop", true), bundles)
+-				.then(() => desktopBuilder.build(__dirname, `${new Date().getTime()}.0.0`,
+-					options.desktop, "https://test.tutanota.com/desktop", "-test", options.outDir, options.unpacked))
++				.then(() => desktopBuilder.build(desktopTestOpts))
+ 		} else if (options.stage === "prod") {
++			const desktopProdOpts = Object.assign({}, desktopBaseOpts, {
++				version: `${new Date().getTime()}.0.0`,
++				updateUrl: "http://localhost:9000/desktop",
++				notarize: false
++			})
+ 			return createHtml(env.create(SystemConfig.distRuntimeConfig(bundles), "https://mail.tutanota.com", version, "Desktop", true), bundles)
+-				.then(() => desktopBuilder.build(__dirname, `${new Date().getTime()}.0.0`,
+-					options.desktop, "http://localhost:9000/desktop", "", options.outDir, options.unpacked))
++				.then(() => desktopBuilder.build(desktopProdOpts))
+ 		} else { // stage = host
++			const desktopHostOpts = Object.assign({}, desktopBaseOpts, {
++				version: `${new Date().getTime()}.0.0`,
++				updateUrl: "http://localhost:9000/desktop-snapshot",
++				nameSuffix: "-snapshot",
++				notarize: false
++			})
+ 			return createHtml(env.create(SystemConfig.distRuntimeConfig(bundles), options.host, version, "Desktop", true), bundles)
+-				.then(() => desktopBuilder.build(__dirname, `${new Date().getTime()}.0.0`,
+-					options.desktop, "http://localhost:9000/desktop-snapshot", "-snapshot", options.outDir, options.unpacked))
++				.then(() => desktopBuilder.build(desktopHostOpts))
+ 		}
+ 	}
+ }
+diff --git a/make.js b/make.js
+index 14ea97356..1530125fe 100644
+--- a/make.js
++++ b/make.js
+@@ -87,13 +87,13 @@ function startDesktop() {
+ 	if (options.desktop) {
+ 		console.log("Trying to start desktop client...")
+ 		const version = require('./package.json').version
+-		const packageJSON = require('./buildSrc/electron-package-json-template.js')(
+-			"-debug",
+-			version,
+-			"http://localhost:9000",
+-			path.join(__dirname, "/resources/desktop-icons/logo-solo-red.png"),
+-			false
+-		)
++		const packageJSON = require('./buildSrc/electron-package-json-template.js')({
++			nameSuffix: "-debug",
++			version: version,
++			updateUrl: "http://localhost:9000",
++			iconPath: path.join(__dirname, "/resources/desktop-icons/logo-solo-red.png"),
++			sign: false
++		})
+ 		const content = JSON.stringify(packageJSON)
+ 		return fs.writeFileAsync("./build/package.json", content, 'utf-8')
+ 		         .then(() => {
+diff --git a/src/desktop/ElectronUpdater.js b/src/desktop/ElectronUpdater.js
+index e7e6009fd..efcdeef3c 100644
+--- a/src/desktop/ElectronUpdater.js
++++ b/src/desktop/ElectronUpdater.js
+@@ -36,6 +36,8 @@ export class ElectronUpdater {
+ 			error: (m: string, ...args: any) => console.error.apply(console, ["autoUpdater error:\n", m].concat(args)),
+ 		}
+ 		autoUpdater.logger = null
++		// default behaviour is to just dl the update as soon as found, but we want to check the signature
++		// before doing telling the updater to get the file.
+ 		autoUpdater.autoDownload = false
+ 		autoUpdater.autoInstallOnAppQuit = false
+ 		autoUpdater.on('update-available', updateInfo => {
+diff --git a/test/client/desktop/config/migrations/DesktopConfigMigratorTest.js b/test/client/desktop/config/migrations/DesktopConfigMigratorTest.js
+index 2f15ea616..228808869 100644
+--- a/test/client/desktop/config/migrations/DesktopConfigMigratorTest.js
++++ b/test/client/desktop/config/migrations/DesktopConfigMigratorTest.js
+@@ -7,9 +7,14 @@ o.spec('desktop config migrator test', function () {
+ 	o("migrations result in correct default config, client", function () {
+ 		const migrator = n.subject('../../src/desktop/config/migrations/DesktopConfigMigrator.js').default
+ 		const configPath = "../../../../../../buildSrc/electron-package-json-template.js"
+-		const oldConfig = require(configPath)(
+-			"", "0.0.0", "", "", "", false, false
+-		)["tutao-config"]["defaultDesktopConfig"]
++		const oldConfig = require(configPath)({
++			nameSuffix: "",
++			version: "0.0.0",
++			updateUrl: "",
++			iconPath: "",
++			sign: false,
++			notarize: false
++		})["tutao-config"]["defaultDesktopConfig"]
+ 		const requiredResult = {
+ 			"heartbeatTimeoutInSeconds": 30,
+ 			"defaultDownloadPath": null,
