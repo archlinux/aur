@@ -1,0 +1,26 @@
+pkgbase = sibs-git
+	pkgdesc = A simple cross-platform build system and package manager for c, c++ and zig. Inspired by rusts cargo
+	pkgver = v0.3.2.r0.g784919f
+	pkgrel = 1
+	url = https://github.com/DEC05EBA/sibs
+	arch = x86_64
+	license = GPL3
+	makedepends = curl
+	makedepends = libarchive
+	makedepends = libgit2
+	makedepends = cmake
+	makedepends = git
+	depends = curl
+	depends = libarchive
+	depends = libgit2
+	depends = ninja
+	depends = cmake
+	depends = ccache
+	optdepends = git
+	provides = sibs
+	conflicts = sibs
+	source = git+https://github.com/DEC05EBA/sibs.git
+	sha512sums = SKIP
+
+pkgname = sibs-git
+
