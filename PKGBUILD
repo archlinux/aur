@@ -1,7 +1,7 @@
 # Maintainer: Rustam Aliyev <ru5j4r0@google.com>
 pkgname=pyflow-git
 _pkgname=${pkgname%-git}
-pkgver=0.2.4.r3.96624b7
+pkgver=0.2.5.1.r6.dc0ed92
 pkgrel=1
 pkgdesc="An installation and dependency system for Python"
 arch=('x86_64' 'i686')
