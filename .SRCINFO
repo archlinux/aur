@@ -1,7 +1,7 @@
 pkgbase = lf-bin
 	pkgdesc = A terminal file manager inspired by ranger (Precompiled binary from official repository)
 	pkgver = 14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gokcehan/lf
 	arch = i686
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = lf-bin
 	conflicts = lf
 	options = !strip
 	options = !emptydirs
-	source_i686 = https://github.com/gokcehan/lf/releases/download/r14/lf-linux-386.tar.gz
+	source_i686 = lf-14-linux-386.tar.gz::https://github.com/gokcehan/lf/releases/download/r14/lf-linux-386.tar.gz
 	sha256sums_i686 = a63ddad2ed10d1e0b32a3402f8faa24664772012b9f15b28d51aede434a11b71
-	source_x86_64 = https://github.com/gokcehan/lf/releases/download/r14/lf-linux-amd64.tar.gz
+	source_x86_64 = lf-14-linux-amd64.tar.gz::https://github.com/gokcehan/lf/releases/download/r14/lf-linux-amd64.tar.gz
 	sha256sums_x86_64 = c0837a5facf7bd3457b2300771531d5132120be8695c5665fc95b8af26005292
-	source_armv7h = https://github.com/gokcehan/lf/releases/download/r14/lf-linux-arm.tar.gz
+	source_armv7h = lf-14.linux-arm.tar.gz::https://github.com/gokcehan/lf/releases/download/r14/lf-linux-arm.tar.gz
 	sha256sums_armv7h = 8e658796e26ac6a2f62697fb30df1cc49aa3d65523a0d99ae395a2733d4c731e
 
 pkgname = lf-bin
