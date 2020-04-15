@@ -1,0 +1,488 @@
+From 181461364ddf790c194108c4d6130cdd117c3a0a Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 18 Sep 2016 18:32:00 +0200
+Subject: [PATCH 20/31] Pull dependencies of static libraries in CMake modules
+
+When doing a static build of Qt, the dependencies of the Qt
+libraries and plugins itself must be specified when linking
+the final application.
+
+With Qt 5.13.0 the support for doing that has been re-added.
+However, some pieces are still missing and that's what this
+patch provides:
+
+1. Take dependencies of static plugins into account as well
+2. Create imported targets for the dependencies to prevent
+   problems with -Wl,-Bstatic and -Wl,-Bdynamic
+
+Note that this patch has been harmonized with official changes,
+e.g. to use QMAKE_PRL_LIBS instead of QMAKE_PRL_LIBS_FOR_CMAKE.
+
+See https://github.com/Martchus/PKGBUILDs/issues/86#issuecomment-476840055
+for further details on 2.
+
+With Qt 5.14.0 the support for using static libraries seems
+to be further improved. I had not time to test whether it
+actually works so I keep using my own implemention for now.
+That's why this patch now removes a lot of the 5.14.0 additions
+in favour of 'how it used to work'.
+
+Change-Id: I6566d42d7e27d4cd23d261a0eacca9efad9ce6df
+---
+ .../data/cmake/Qt5BasicConfig.cmake.in        | 241 ++++++++++--------
+ .../data/cmake/Qt5PluginTarget.cmake.in       |  84 +-----
+ 2 files changed, 135 insertions(+), 190 deletions(-)
+
+diff --git a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
+index 1099a761ce..a82e6a886f 100644
+--- a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
++++ b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
+@@ -53,6 +53,10 @@ function(_qt5_$${CMAKE_MODULE_NAME}_process_prl_file prl_file_location Configura
+     set(_lib_deps)
+     set(_link_flags)
+ 
++    # prefer static libs
++    set(CMAKE_FIND_LIBRARY_SUFFIXES .a .lib)
++    set(CMAKE_FIND_LIBRARY_PREFIXES lib \"\")
++
+ !!IF isEmpty(CMAKE_LIB_DIR_IS_ABSOLUTE)
+     set(_qt5_install_libs \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/$${CMAKE_LIB_DIR}\")
+ !!ELSE
+@@ -61,6 +65,10 @@ function(_qt5_$${CMAKE_MODULE_NAME}_process_prl_file prl_file_location Configura
+ 
+     if(EXISTS \"${prl_file_location}\")
+         file(STRINGS \"${prl_file_location}\" _prl_strings REGEX \"QMAKE_PRL_LIBS_FOR_CMAKE[ \\t]*=\")
++        if(NOT _prl_strings)
++            message(WARNING \"Prl file for Qt 5 module $${CMAKE_MODULE_NAME} does not contain QMAKE_PRL_LIBS_FOR_CMAKE. Was looking at \\\"${prl_file_location}\\\".\")
++            return()
++        endif()
+ 
+         # file(STRINGS) replaces all semicolons read from the file with backslash semicolons.
+         # We need to do a reverse transformation in CMake. For that we replace all backslash
+@@ -92,7 +100,7 @@ function(_qt5_$${CMAKE_MODULE_NAME}_process_prl_file prl_file_location Configura
+                     # Handle normal libraries passed as -lfoo
+                     set(_lib \"${CMAKE_MATCH_1}\")
+                     foreach(_standard_library ${_standard_libraries})
+-                        if(_standard_library MATCHES \"^${_lib}(\\\\.lib)?$\")
++                        if(_standard_library MATCHES \"^${_lib}(\\\\.lib|\\\\.a)?$\")
+                             set(_lib_is_default_linked TRUE)
+                             break()
+                         endif()
+@@ -139,6 +147,37 @@ function(_qt5_$${CMAKE_MODULE_NAME}_process_prl_file prl_file_location Configura
+     set(${lib_deps} ${_lib_deps} PARENT_SCOPE)
+     set(${link_flags} \"SHELL:${_link_flags}\" PARENT_SCOPE)
+ endfunction()
++
++if(NOT COMMAND _qt5_add_dependencies)
++    # add dependencies via imported targets so CMake does not mess with their (absolute) file path
++    # which can be problematic with unwanted -Wl,-Bstatic or -Wl,-Bdynamic in the linker line
++    function(_qt5_add_dependencies IMPORTED_TARGET_NAME IMPORTED_TARGET_CONFIG STATIC_DEPENDENCIES)
++        set(DEPENDENCY_INDEX 0)
++        unset(EXTRA_PATHS)
++        unset(DEPENDENCY_TARGETS)
++
++        foreach(LIBRARY_LOCATION ${STATIC_DEPENDENCIES})
++            if (TARGET \"${LIBRARY_LOCATION}\")
++                list(APPEND DEPENDENCY_TARGETS \"${LIBRARY_LOCATION}\")
++                continue()
++            endif()
++            set(DEPENDENCY_NAME ${IMPORTED_TARGET_NAME}_DEPENDENCY_${DEPENDENCY_INDEX})
++            if (NOT TARGET \"${DEPENDENCY_NAME}\")
++                add_library(${DEPENDENCY_NAME} STATIC IMPORTED)
++                set_property(TARGET ${DEPENDENCY_NAME} PROPERTY IMPORTED_LOCATION ${LIBRARY_LOCATION})
++            endif()
++            list(APPEND DEPENDENCY_TARGETS ${DEPENDENCY_NAME})
++            math(EXPR DEPENDENCY_INDEX \"${DEPENDENCY_INDEX} + 1\")
++        endforeach()
++
++        if (\"${IMPORTED_TARGET_CONFIG}\" STREQUAL \"ALL\" OR \"${IMPORTED_TARGET_CONFIG}\" STREQUAL \"RELEASE\")
++            set_property(TARGET ${IMPORTED_TARGET_NAME} PROPERTY INTERFACE_LINK_LIBRARIES ${DEPENDENCY_TARGETS})
++        endif()
++        if (NOT \"${IMPORTED_TARGET_CONFIG}\" STREQUAL \"ALL\")
++            set_property(TARGET ${IMPORTED_TARGET_NAME} PROPERTY INTERFACE_LINK_LIBRARIES_${IMPORTED_TARGET_CONFIG} ${DEPENDENCY_TARGETS})
++        endif()
++    endfunction()
++endif()
+ !!ENDIF
+ 
+ !!IF !equals(TEMPLATE, aux)
+@@ -152,61 +191,39 @@ macro(_populate_$${CMAKE_MODULE_NAME}_target_properties Configuration LIB_LOCATI
+     set(imported_location \"$${CMAKE_DLL_DIR}${LIB_LOCATION}\")
+ !!ENDIF
+     _qt5_$${CMAKE_MODULE_NAME}_check_file_exists(${imported_location})
++
+     set(_deps
+         ${_Qt5$${CMAKE_MODULE_NAME}_LIB_DEPENDENCIES}
+-    )
+-    set(_static_deps
+ !!IF !isEmpty(CMAKE_STATIC_TYPE)
+         ${_Qt5$${CMAKE_MODULE_NAME}_STATIC_${Configuration}_LIB_DEPENDENCIES}
+ !!ENDIF
+     )
+ 
++    # FIXME: handle IsDebugAndRelease like in official version
++
++!!IF !isEmpty(CMAKE_STATIC_TYPE)
+     set_target_properties(Qt5::$${CMAKE_MODULE_NAME} PROPERTIES
+         \"IMPORTED_LOCATION_${Configuration}\" ${imported_location}
+ !!IF !isEmpty(CMAKE_LIB_SONAME)
+         \"IMPORTED_SONAME_${Configuration}\" \"$${CMAKE_LIB_SONAME}\"
+ !!ENDIF
+-        # For backward compatibility with CMake < 2.8.12
+-        \"IMPORTED_LINK_INTERFACE_LIBRARIES_${Configuration}\" \"${_deps};${_static_deps}\"
+     )
+-    set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} APPEND PROPERTY INTERFACE_LINK_LIBRARIES
+-                 \"${_deps}\"
+-    )
+-
+-!!IF !isEmpty(CMAKE_STATIC_TYPE)
+-    if(NOT "${IsDebugAndRelease}")
+-        set(_genex_condition \"1\")
+-    else()
+-        if("${Configuration}" STREQUAL "DEBUG")
+-            set(_genex_condition \"$<CONFIG:Debug>\")
+-        else()
+-            set(_genex_condition \"$<NOT:$<CONFIG:Debug>>\")
+-        endif()
+-    endif()
+-
+-    if(_static_deps)
+-        set(_static_deps_genex \"$<${_genex_condition}:${_static_deps}>\")
+-        set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} APPEND PROPERTY INTERFACE_LINK_LIBRARIES
+-                     \"${_static_deps_genex}\"
++    _qt5_add_dependencies(Qt5::$${CMAKE_MODULE_NAME} \"${Configuration}\" \"${_deps}\")
++    if(NOT CMAKE_VERSION VERSION_LESS \"3.13\")
++        set_target_properties(Qt5::$${CMAKE_MODULE_NAME} PROPERTIES
++            \"INTERFACE_LINK_OPTIONS\" \"${_Qt5$${CMAKE_MODULE_NAME}_STATIC_${Configuration}_LINK_FLAGS}\"
+         )
+     endif()
+-
+-    set(_static_link_flags \"${_Qt5$${CMAKE_MODULE_NAME}_STATIC_${Configuration}_LINK_FLAGS}\")
+-    if(_static_link_flags)
+-        set(_static_link_flags_genex \"$<${_genex_condition}:${_static_link_flags}>\")
+-        if(NOT CMAKE_VERSION VERSION_LESS \"3.13\")
+-            set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} APPEND PROPERTY INTERFACE_LINK_OPTIONS
+-                \"${_static_link_flags_genex}\"
+-            )
+-        else()
+-            # Abuse INTERFACE_LINK_LIBRARIES to add link flags when CMake version is too low.
+-            # Strip out SHELL:, because it is not supported in this property. And hope for the best.
+-            string(REPLACE \"SHELL:\" \"\" _static_link_flags_genex \"${_static_link_flags_genex}\")
+-            set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} APPEND PROPERTY INTERFACE_LINK_LIBRARIES
+-                \"${_static_link_flags_genex}\"
+-            )
+-        endif()
+-    endif()
++!!ELSE
++    set_target_properties(Qt5::$${CMAKE_MODULE_NAME} PROPERTIES
++        \"INTERFACE_LINK_LIBRARIES_${Configuration}\" \"${_deps}\"
++        \"IMPORTED_LOCATION_${Configuration}\" ${imported_location}
++!!IF !isEmpty(CMAKE_LIB_SONAME)
++        \"IMPORTED_SONAME_${Configuration}\" \"$${CMAKE_LIB_SONAME}\"
++!!ENDIF
++        # For backward compatibility with CMake < 2.8.12
++        \"IMPORTED_LINK_INTERFACE_LIBRARIES_${Configuration}\" \"${_deps}\"
++    )
+ !!ENDIF
+ 
+ !!IF !isEmpty(CMAKE_WINDOWS_BUILD)
+@@ -223,6 +240,15 @@ macro(_populate_$${CMAKE_MODULE_NAME}_target_properties Configuration LIB_LOCATI
+     endif()
+ !!ENDIF
+ endmacro()
++
++macro(_populate_$${CMAKE_MODULE_NAME}_plugin_target_dependencies_from_prl_file PLUGIN_TARGET_NAME PRL_FILE_LOCATION CONFIGURATION LIB_DIRECTORY LIB_LOCATION)
++    _qt5_$${CMAKE_MODULE_NAME}_process_prl_file(
++        \"${PRL_FILE_LOCATION}\"
++        \"${CONFIGURATION}\"
++        _Qt5$${CMAKE_MODULE_NAME}_STATIC_PLUGIN_${CONFIGURATION}_LIB_DEPENDENCIES
++        _Qt5$${CMAKE_MODULE_NAME}_STATIC_PLUGIN_${CONFIGURATION}_LINK_FLAGS)
++    _qt5_add_dependencies(\"${PLUGIN_TARGET_NAME}\" ALL \"${_Qt5$${CMAKE_MODULE_NAME}_STATIC_PLUGIN_${CONFIGURATION}_LIB_DEPENDENCIES}\")
++endmacro()
+ !!ENDIF
+ 
+ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -408,13 +434,15 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+ 
+     add_library(Qt5::$${CMAKE_MODULE_NAME} STATIC IMPORTED)
+     set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} PROPERTY IMPORTED_LINK_INTERFACE_LANGUAGES "CXX")
+-!!ELSE
++
++!!ELSE // !isEmpty(CMAKE_STATIC_TYPE)
+ !!IF equals(TEMPLATE, aux)
+     add_library(Qt5::$${CMAKE_MODULE_NAME} INTERFACE IMPORTED)
+ !!ELSE
+     add_library(Qt5::$${CMAKE_MODULE_NAME} SHARED IMPORTED)
+ !!ENDIF
+-!!ENDIF
++!!ENDIF // !isEmpty(CMAKE_STATIC_TYPE)
++
+ !!IF !equals(TEMPLATE, aux)
+ !!IF !isEmpty(CMAKE_BUILD_IS_FRAMEWORK)
+     set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} PROPERTY FRAMEWORK 1)
+@@ -431,6 +459,56 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+ 
+     set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} PROPERTY INTERFACE_QT_PLUGIN_TYPES \"$${CMAKE_MODULE_PLUGIN_TYPES}\")
+ 
++    # Find plugin targets
++    file(GLOB pluginTargetsMaybe \"${CMAKE_CURRENT_LIST_DIR}/*Qt5$${CMAKE_MODULE_NAME}_*.cmake\")
++    unset(pluginTargets)
++    if(pluginTargetsMaybe)
++        foreach(pluginTarget ${pluginTargetsMaybe})
++            file(STRINGS ${pluginTarget} matched REGEX Qt5$${CMAKE_MODULE_NAME}_PLUGINS)
++            if(matched)
++                list(APPEND pluginTargets ${pluginTarget})
++            endif()
++        endforeach()
++    endif()
++
++    macro(_populate_$${CMAKE_MODULE_NAME}_plugin_properties TARGET_NAME PLUGIN_TARGET_NAME PLUGIN_NAME CONFIG PLUGIN_LOCATION)
++        set_property(TARGET ${PLUGIN_TARGET_NAME} APPEND PROPERTY IMPORTED_CONFIGURATIONS ${CONFIG})
++
++!!IF isEmpty(CMAKE_PLUGIN_DIR_IS_ABSOLUTE)
++        set(imported_location \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/$${CMAKE_PLUGIN_DIR}${PLUGIN_LOCATION}\")
++!!ELSE
++        set(imported_location \"$${CMAKE_PLUGIN_DIR}${PLUGIN_LOCATION}\")
++!!ENDIF
++        _qt5_$${CMAKE_MODULE_NAME}_check_file_exists(${imported_location})
++        set_target_properties(${PLUGIN_TARGET_NAME} PROPERTIES
++            \"IMPORTED_LOCATION_${CONFIG}\" ${imported_location}
++        )
++!!IF !isEmpty(CMAKE_STATIC_TYPE)
++        set_property(TARGET ${TARGET_NAME} APPEND PROPERTY STATIC_PLUGINS ${PLUGIN_NAME})
++        get_filename_component(_PLUGIN_DIR ${PLUGIN_LOCATION} PATH)
++        get_filename_component(_PLUGIN_DIR_NAME ${_PLUGIN_DIR} NAME)
++        get_filename_component(_PLUGIN_NAME ${PLUGIN_LOCATION} NAME)
++        string(REGEX REPLACE \"^lib(.*)\\\\.a\" \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/lib/qt/plugins/${_PLUGIN_DIR_NAME}/\\\\1.static.prl\" PLUGIN_PRL_FILE_LOCATION ${_PLUGIN_NAME})
++        if(NOT EXISTS ${PLUGIN_PRL_FILE_LOCATION})
++            string(REGEX REPLACE \"^lib(.*)\\\\.a\" \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/lib/qt/plugins/${_PLUGIN_DIR_NAME}/\\\\1.prl\" PLUGIN_PRL_FILE_LOCATION ${_PLUGIN_NAME})
++        endif()
++        if(NOT EXISTS ${PLUGIN_PRL_FILE_LOCATION})
++            string(REGEX REPLACE \"^lib(.*)\\\\.a\" \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/lib/qt/plugins/${_PLUGIN_DIR_NAME}/lib\\\\1.prl\" PLUGIN_PRL_FILE_LOCATION ${_PLUGIN_NAME})
++        endif()
++        if(NOT EXISTS ${PLUGIN_PRL_FILE_LOCATION})
++            message(FATAL_ERROR "The prl file containing dependencies of static plugin ${PLUGIN_TARGET_NAME} of ${TARGET_NAME} could not be found.")
++        endif()
++        _populate_$${CMAKE_MODULE_NAME}_plugin_target_dependencies_from_prl_file(${PLUGIN_TARGET_NAME} ${PLUGIN_PRL_FILE_LOCATION} ${CONFIG} \"lib/qt/plugins\" ${PLUGIN_LOCATION})
++!!ENDIF
++
++    endmacro()
++
++    if(pluginTargets)
++        foreach(pluginTarget ${pluginTargets})
++            include(${pluginTarget})
++        endforeach()
++    endif()
++
+     set(_Qt5$${CMAKE_MODULE_NAME}_PRIVATE_DIRS_EXIST TRUE)
+     foreach (_Qt5$${CMAKE_MODULE_NAME}_PRIVATE_DIR ${Qt5$${CMAKE_MODULE_NAME}_OWN_PRIVATE_INCLUDE_DIRS})
+         if (NOT EXISTS ${_Qt5$${CMAKE_MODULE_NAME}_PRIVATE_DIR})
+@@ -449,9 +527,13 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+                 list(APPEND _Qt5$${CMAKE_MODULE_NAME}_PRIVATEDEPS ${dep}Private)
+             endif()
+         endforeach()
++!!IF !isEmpty(CMAKE_STATIC_TYPE)
++        _qt5_add_dependencies(Qt5::$${CMAKE_MODULE_NAME}Private ALL \"Qt5::$${CMAKE_MODULE_NAME};${_Qt5$${CMAKE_MODULE_NAME}_PRIVATEDEPS}\")
++!!ELSE
+         set_property(TARGET Qt5::$${CMAKE_MODULE_NAME}Private PROPERTY
+             INTERFACE_LINK_LIBRARIES Qt5::$${CMAKE_MODULE_NAME} ${_Qt5$${CMAKE_MODULE_NAME}_PRIVATEDEPS}
+         )
++!!ENDIF // CMAKE_STATIC_TYPE
+     endif()
+ 
+ !!IF !equals(TEMPLATE, aux)
+@@ -521,9 +603,11 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+ !!ELSE
+         \"$${CMAKE_IMPLIB_FILE_LOCATION_RELEASE}\" )
+ !!ENDIF
+-        _populate_$${CMAKE_MODULE_NAME}_target_properties(RELEASE \"$${CMAKE_LIB_FILE_LOCATION_RELEASE}\" \"$${CMAKE_IMPLIB_FILE_LOCATION_RELEASE}\" $${CMAKE_DEBUG_AND_RELEASE})
+-!!ENDIF // CMAKE_STATIC_WINDOWS_BUILD
++        _populate_$${CMAKE_MODULE_NAME}_target_properties(Qt5::$${CMAKE_MODULE_NAME} RELEASE \"$${CMAKE_LIB_FILE_LOCATION_RELEASE}\" \"$${CMAKE_IMPLIB_FILE_LOCATION_RELEASE}\" $${CMAKE_DEBUG_AND_RELEASE})
+     endif()
++!!ENDIF // CMAKE_STATIC_TYPE
++
++
+ !!ENDIF // CMAKE_RELEASE_TYPE
+ !!ENDIF // CMAKE_FIND_OTHER_LIBRARY_BUILD
+ 
+@@ -534,73 +618,6 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+     )
+ !!ENDIF // TEMPLATE != aux
+ 
+-!!IF isEmpty(CMAKE_INTERNAL_MODULE)
+-
+-    file(GLOB pluginTargets \"${CMAKE_CURRENT_LIST_DIR}/Qt5$${CMAKE_MODULE_NAME}_*Plugin.cmake\")
+-
+-    macro(_populate_$${CMAKE_MODULE_NAME}_plugin_properties Plugin Configuration PLUGIN_LOCATION
+-          IsDebugAndRelease)
+-        set_property(TARGET Qt5::${Plugin} APPEND PROPERTY IMPORTED_CONFIGURATIONS ${Configuration})
+-
+-!!IF isEmpty(CMAKE_PLUGIN_DIR_IS_ABSOLUTE)
+-        set(imported_location \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/$${CMAKE_PLUGIN_DIR}${PLUGIN_LOCATION}\")
+-!!ELSE
+-        set(imported_location \"$${CMAKE_PLUGIN_DIR}${PLUGIN_LOCATION}\")
+-!!ENDIF
+-        _qt5_$${CMAKE_MODULE_NAME}_check_file_exists(${imported_location})
+-        set_target_properties(Qt5::${Plugin} PROPERTIES
+-            \"IMPORTED_LOCATION_${Configuration}\" ${imported_location}
+-        )
+-
+-!!IF !isEmpty(CMAKE_STATIC_TYPE)
+-        set(_static_deps
+-            ${_Qt5${Plugin}_STATIC_${Configuration}_LIB_DEPENDENCIES}
+-        )
+-
+-        if(NOT "${IsDebugAndRelease}")
+-            set(_genex_condition \"1\")
+-        else()
+-            if("${Configuration}" STREQUAL "DEBUG")
+-                set(_genex_condition \"$<CONFIG:Debug>\")
+-            else()
+-                set(_genex_condition \"$<NOT:$<CONFIG:Debug>>\")
+-            endif()
+-        endif()
+-        if(_static_deps)
+-            set(_static_deps_genex \"$<${_genex_condition}:${_static_deps}>\")
+-            set_property(TARGET Qt5::${Plugin} APPEND PROPERTY INTERFACE_LINK_LIBRARIES
+-                         \"${_static_deps_genex}\"
+-            )
+-        endif()
+-
+-        set(_static_link_flags \"${_Qt5${Plugin}_STATIC_${Configuration}_LINK_FLAGS}\")
+-        if(_static_link_flags)
+-            set(_static_link_flags_genex \"$<${_genex_condition}:${_static_link_flags}>\")
+-            if(NOT CMAKE_VERSION VERSION_LESS \"3.13\")
+-                set_property(TARGET Qt5::${Plugin} APPEND PROPERTY INTERFACE_LINK_OPTIONS
+-                    \"${_static_link_flags_genex}\"
+-                )
+-            else()
+-                # Abuse INTERFACE_LINK_LIBRARIES to add link flags when CMake version is too low.
+-                # Strip out SHELL:, because it is not supported in this property. And hope for the best.
+-                string(REPLACE \"SHELL:\" \"\" _static_link_flags_genex \"${_static_link_flags_genex}\")
+-                set_property(TARGET Qt5::${Plugin} APPEND PROPERTY INTERFACE_LINK_LIBRARIES
+-                    \"${_static_link_flags_genex}\"
+-                )
+-            endif()
+-        endif()
+-!!ENDIF
+-    endmacro()
+-
+-    if (pluginTargets)
+-        foreach(pluginTarget ${pluginTargets})
+-            include(${pluginTarget})
+-        endforeach()
+-    endif()
+-
+-!!ENDIF // isEmpty(CMAKE_INTERNAL_MODULE)
+-
+-
+ !!IF !isEmpty(CMAKE_MODULE_EXTRAS)
+     include(\"${CMAKE_CURRENT_LIST_DIR}/Qt5$${CMAKE_MODULE_NAME}ConfigExtras.cmake\")
+ !!ENDIF
+diff --git a/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in b/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
+index 7b70cfed09..25f2162fe6 100644
+--- a/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
++++ b/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
+@@ -1,5 +1,6 @@
+-
+-add_library(Qt5::$$CMAKE_PLUGIN_NAME MODULE IMPORTED)
++# Some Qt modules also load plugin target in extra config, so check whether the target already exists
++if(NOT TARGET Qt5::$$CMAKE_PLUGIN_NAME)
++    add_library(Qt5::$$CMAKE_PLUGIN_NAME MODULE IMPORTED)
+ 
+ !!IF !isEmpty(CMAKE_STATIC_TYPE)
+ set(_Qt5$${CMAKE_PLUGIN_NAME}_MODULE_DEPENDENCIES \"$${CMAKE_PLUGIN_MODULE_DEPS}\")
+@@ -16,87 +17,14 @@ foreach(_module_dep ${_Qt5$${CMAKE_PLUGIN_NAME}_MODULE_DEPENDENCIES})
+ endforeach()
+ 
+ !!IF !isEmpty(CMAKE_RELEASE_TYPE)
+-!!IF isEmpty(CMAKE_LIB_DIR_IS_ABSOLUTE)
+-_qt5_$${CMAKE_MODULE_NAME}_process_prl_file(
+-    \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/$${CMAKE_PLUGIN_DIR}$${CMAKE_PRL_FILE_LOCATION_RELEASE}\" RELEASE
+-    _Qt5$${CMAKE_PLUGIN_NAME}_STATIC_RELEASE_LIB_DEPENDENCIES
+-    _Qt5$${CMAKE_PLUGIN_NAME}_STATIC_RELEASE_LINK_FLAGS
+-)
+-!!ELSE
+-_qt5_$${CMAKE_MODULE_NAME}_process_prl_file(
+-    \"$${CMAKE_PLUGIN_DIR}$${CMAKE_PRL_FILE_LOCATION_RELEASE}\" RELEASE
+-    _Qt5$${CMAKE_PLUGIN_NAME}_STATIC_RELEASE_LIB_DEPENDENCIES
+-    _Qt5$${CMAKE_PLUGIN_NAME}_STATIC_RELEASE_LINK_FLAGS
+-)
+-!!ENDIF
+-!!ENDIF
+-
+-!!IF !isEmpty(CMAKE_DEBUG_TYPE)
+-!!IF isEmpty(CMAKE_LIB_DIR_IS_ABSOLUTE)
+-_qt5_$${CMAKE_MODULE_NAME}_process_prl_file(
+-    \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/$${CMAKE_PLUGIN_DIR}$${CMAKE_PRL_FILE_LOCATION_DEBUG}\" DEBUG
+-    _Qt5$${CMAKE_PLUGIN_NAME}_STATIC_DEBUG_LIB_DEPENDENCIES
+-    _Qt5$${CMAKE_PLUGIN_NAME}_STATIC_DEBUG_LINK_FLAGS
+-)
+-!!ELSE
+-_qt5_$${CMAKE_MODULE_NAME}_process_prl_file(
+-    \"$${CMAKE_PLUGIN_DIR}$${CMAKE_PRL_FILE_LOCATION_DEBUG}\" DEBUG
+-    _Qt5$${CMAKE_PLUGIN_NAME}_STATIC_DEBUG_LIB_DEPENDENCIES
+-    _Qt5$${CMAKE_PLUGIN_NAME}_STATIC_DEBUG_LINK_FLAGS
+-)
+-!!ENDIF
++    _populate_$${CMAKE_MODULE_NAME}_plugin_properties(Qt5::$$CMAKE_MODULE_NAME Qt5::$$CMAKE_PLUGIN_NAME $$CMAKE_PLUGIN_NAME RELEASE \"$${CMAKE_PLUGIN_LOCATION_RELEASE}\")
+ !!ENDIF
+-
+-set_property(TARGET Qt5::$$CMAKE_PLUGIN_NAME PROPERTY INTERFACE_SOURCES
+-    \"${CMAKE_CURRENT_LIST_DIR}/Qt5$${CMAKE_MODULE_NAME}_$${CMAKE_PLUGIN_NAME}_Import.cpp\"
+-)
+ !!ENDIF
+ 
+-!!IF !isEmpty(CMAKE_RELEASE_TYPE)
+-_populate_$${CMAKE_MODULE_NAME}_plugin_properties($$CMAKE_PLUGIN_NAME RELEASE \"$${CMAKE_PLUGIN_LOCATION_RELEASE}\" $${CMAKE_DEBUG_AND_RELEASE})
+-!!ENDIF
+ !!IF !isEmpty(CMAKE_DEBUG_TYPE)
+-_populate_$${CMAKE_MODULE_NAME}_plugin_properties($$CMAKE_PLUGIN_NAME DEBUG \"$${CMAKE_PLUGIN_LOCATION_DEBUG}\" $${CMAKE_DEBUG_AND_RELEASE})
++    _populate_$${CMAKE_MODULE_NAME}_plugin_properties(Qt5::$$CMAKE_MODULE_NAME Qt5::$$CMAKE_PLUGIN_NAME $$CMAKE_PLUGIN_NAME DEBUG \"$${CMAKE_PLUGIN_LOCATION_DEBUG}\")
+ !!ENDIF
+ 
+ list(APPEND Qt5$${CMAKE_MODULE_NAME}_PLUGINS Qt5::$$CMAKE_PLUGIN_NAME)
+-set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} APPEND PROPERTY QT_ALL_PLUGINS_$${CMAKE_PLUGIN_TYPE_ESCAPED} Qt5::$${CMAKE_PLUGIN_NAME})
+-!!IF !isEmpty(CMAKE_STATIC_TYPE)
+-# $<GENEX_EVAL:...> wasn\'t added until CMake 3.12, so put a version guard around it
+-if(CMAKE_VERSION VERSION_LESS \"3.12\")
+-    set(_manual_plugins_genex \"$<TARGET_PROPERTY:QT_PLUGINS>\")
+-    set(_plugin_type_genex \"$<TARGET_PROPERTY:QT_PLUGINS_$${CMAKE_PLUGIN_TYPE_ESCAPED}>\")
+-    set(_no_plugins_genex \"$<TARGET_PROPERTY:QT_NO_PLUGINS>\")
+-else()
+-    set(_manual_plugins_genex \"$<GENEX_EVAL:$<TARGET_PROPERTY:QT_PLUGINS>>\")
+-    set(_plugin_type_genex \"$<GENEX_EVAL:$<TARGET_PROPERTY:QT_PLUGINS_$${CMAKE_PLUGIN_TYPE_ESCAPED}>>\")
+-    set(_no_plugins_genex \"$<GENEX_EVAL:$<TARGET_PROPERTY:QT_NO_PLUGINS>>\")
++
+ endif()
+-set(_user_specified_genex
+-    \"$<IN_LIST:Qt5::$$CMAKE_PLUGIN_NAME,${_manual_plugins_genex};${_plugin_type_genex}>\"
+-)
+-string(CONCAT _plugin_genex
+-    \"$<$<OR:\"
+-        # Add this plugin if it\'s in the list of manual plugins or plugins for the type
+-        \"${_user_specified_genex},\"
+-        # Add this plugin if the list of plugins for the type is empty, the PLUGIN_EXTENDS
+-        # is either empty or equal to the module name, and the user hasn\'t blacklisted it
+-        \"$<AND:\"
+-            \"$<STREQUAL:${_plugin_type_genex},>,\"
+-            \"$<OR:\"
+-                \"$<STREQUAL:$<TARGET_PROPERTY:Qt5::$${CMAKE_PLUGIN_NAME},QT_PLUGIN_EXTENDS>,Qt5::$${CMAKE_MODULE_NAME}>,\"
+-                \"$<STREQUAL:$<TARGET_PROPERTY:Qt5::$${CMAKE_PLUGIN_NAME},QT_PLUGIN_EXTENDS>,>\"
+-            \">,\"
+-            \"$<NOT:$<IN_LIST:Qt5::$${CMAKE_PLUGIN_NAME},${_no_plugins_genex}>>\"
+-        \">\"
+-    \">:Qt5::$$CMAKE_PLUGIN_NAME>\"
+-)
+-set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} APPEND PROPERTY INTERFACE_LINK_LIBRARIES
+-    ${_plugin_genex}
+-)
+-set_property(TARGET Qt5::$${CMAKE_PLUGIN_NAME} APPEND PROPERTY INTERFACE_LINK_LIBRARIES
+-    \"$${CMAKE_PLUGIN_QT5_MODULE_DEPS}\"
+-)
+-!!ENDIF
+-set_property(TARGET Qt5::$${CMAKE_PLUGIN_NAME} PROPERTY QT_PLUGIN_TYPE \"$$CMAKE_PLUGIN_TYPE\")
+-set_property(TARGET Qt5::$${CMAKE_PLUGIN_NAME} PROPERTY QT_PLUGIN_EXTENDS \"$$CMAKE_PLUGIN_EXTENDS\")
+-- 
+2.26.0
+
