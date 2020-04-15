@@ -2,8 +2,8 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppxlib'
 pkgname="ocaml-$_projectname"
-pkgver='0.12.0'
-pkgrel='3'
+pkgver='0.13.0'
+pkgrel='1'
 pkgdesc='Base library and tools for ppx rewriters'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-ppx/$_projectname"
@@ -16,7 +16,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz"
 	"$pkgname-$pkgver-$pkgrel-fix-tests.diff::$url/pull/111.diff"
 )
-sha256sums=('6b562c9b3b9350777318729921f890850b385c469db60769aafd9371998a2c42'
+sha256sums=('59fd9eaac23e6fd1c5b6183c37499ec3dbabee1f6c7ede4fb080e5f9b746f4e0'
             '891640f82db542e682d250547e1f39290b8a230b287fbcd0b22c2e43adaa6f64')
 
 _sourcedirectory="$_projectname-$pkgver"
