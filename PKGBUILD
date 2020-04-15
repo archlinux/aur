@@ -15,7 +15,7 @@ makedepends=(xz)
 provides=('find-cursor')
 conflicts=('find-cursor')
 source=("https://github.com/arp242/find-cursor/archive/master.tar.gz")
-md5sums=('80051fea879fdae88f57ec258ccbef79')
+md5sums=('a6c93dc54baf06aac0ffcfc9f41381bd')
 
 package() {
     cd "$srcdir/find-cursor-master"
