@@ -7,7 +7,7 @@ pkgname=("${_pkgname}-git"
          "${_pkgname}-host-git"
          "obs-plugin-${_pkgname}-git")
 epoch=2
-pkgver=B1.r162.gb953b2b
+pkgver=B1.r176.g80437c5
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.hostfission.com"
@@ -47,10 +47,7 @@ build() {
 	cd "${srcdir}/${_pkgname}"
 	for b in {client,c-host,obs}; do
 		pushd "${b}"
-		# CFLAGS for https://github.com/gnif/PureSpice/issues/1
-		cmake -DCMAKE_INSTALL_PREFIX=/usr \
-			-DCMAKE_C_FLAGS="-O0" \
-			.
+		cmake -DCMAKE_INSTALL_PREFIX=/usr .
 		make
 		popd
 	done
