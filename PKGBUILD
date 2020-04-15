@@ -3,17 +3,18 @@
 
 _pkgname=lv2
 pkgname="${_pkgname}-git"
-pkgver=1.17.0.r1192.06d3f56
+pkgver=1.17.2.r1257.c0773f8
 pkgrel=1
 pkgdesc="Plugin standard for audio systems (git version)"
 arch=('i686' 'x86_64')
 url="http://lv2plug.in/"
 license=('custom:ISC')
 makedepends=('asciidoc' 'doxygen' 'git' 'gtk2' 'libsndfile' 'pygmentize'
-             'python-lxml' 'python-pygments' 'python-rdflib')
+             'python-lxml' 'python-markdown' 'python-pygments' 'python-rdflib')
 optdepends=('libsndfile: example sampler plugin'
             'gtk2: example scope plugin'
             'python-lxml: for lv2specgen.py'
+            'python-markdown: for lv2specgen.py'
             'python-pygments: for lv2specgen.py'
             'python-rdflib: for lv2specgen.py')
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}" 'lv2core' "${_pkgname}-svn")
