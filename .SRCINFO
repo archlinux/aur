@@ -1,0 +1,16 @@
+pkgbase = libowfat-bin
+	pkgdesc = Reimplementation of libdjb, shared library (binary version)
+	pkgver = 0.30
+	pkgrel = 1
+	url = https://www.fefe.de/libowfat/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	options = !strip
+	source_x86_64 = http://ftp.debian.org/debian/pool/main/libo/libowfat/libowfat0_0.30-2+b1_amd64.deb
+	sha1sums_x86_64 = fcbf4cb85779a4e38c6937e7d86e735629ef6ac2
+	source_i686 = http://ftp.debian.org/debian/pool/main/libo/libowfat/libowfat0_0.30-2+b1_i386.deb
+	sha1sums_i686 = e7cd16154f8ae62887d523823f5c60340e0064ac
+
+pkgname = libowfat-bin
+
