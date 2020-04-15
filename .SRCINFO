@@ -1,0 +1,22 @@
+pkgbase = fontship-git
+	pkgdesc = A font development toolkit and collaborative work flow
+	pkgver = 0.0.0.r0.g4cbb5ee
+	pkgrel = 1
+	url = https://github.com/theleagueof/fontship
+	arch = any
+	license = AGPL3
+	depends = font-v
+	depends = git
+	depends = make
+	depends = python
+	depends = python-ufonormalizer
+	depends = python-fontmake
+	depends = python-fonttools
+	depends = zsh
+	provides = fontship
+	conflicts = fontship
+	source = git+https://github.com/theleagueof/fontship.git
+	sha256sums = SKIP
+
+pkgname = fontship-git
+
