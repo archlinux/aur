@@ -1,0 +1,18 @@
+pkgbase = plasma5-applets-nx-systemtray
+	pkgdesc = System tray applet from NX Desktop by Nitrux SA.
+	pkgver = r15.fd33154
+	pkgrel = 1
+	url = https://github.com/nx-desktop/nx-systemtray-applet.git
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = plasma-workspace
+	depends = qt5-base
+	provides = plasma5-applets-nx-systemtray
+	conflicts = plasma5-applets-nx-systemtray
+	source = git+https://github.com/nx-desktop/nx-systemtray-applet.git#branch=master
+	md5sums = SKIP
+
+pkgname = plasma5-applets-nx-systemtray
+
