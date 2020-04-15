@@ -1,9 +1,9 @@
 # Maintainer: Vitaly Utkin <vautkin AT teknik DOT io>
 pkgname=ovras
-pkgver=4.0.1
-pkgrel=3
+pkgver=5.0.0
+pkgrel=0
 epoch=0
-pkgdesc="Advanced settings and custom behavior for SteamVR using OpenVR."
+pkgdesc="Advanced settings and custom behavior for SteamVR using OpenVR (OVR)."
 arch=("x86_64")
 url="https://github.com/OpenVR-Advanced-Settings/OpenVR-AdvancedSettings"
 license=("GPL")
@@ -12,9 +12,10 @@ depends=("qt5-declarative"
          "libudev0-shim"
          "mesa")
 optdepends=("dbus: media player support"
-            "xorg-server: send keyboard keys")
+            "xorg-server: send keyboard keys"
+            "pulseaudio: pulse audio support")
 source=("https://github.com/OpenVR-Advanced-Settings/OpenVR-AdvancedSettings/archive/v$pkgver.tar.gz")
-sha256sums=("371d5a3f81a986ec5b3446c62a36cbf5eb951c97ea2b4a64752c4709bb8e6c76")
+sha256sums=("34fe507e7c519ec3b4aed8612663cca0a6af21176de57a80c74f553f2c49339e")
 
 build() {
     cd "OpenVR-AdvancedSettings-$pkgver"
@@ -39,9 +40,14 @@ build() {
         echo "DBUS features enabled."
     fi
 
-    # Fix segfault when compiling with Qt 5.14.0
-    sed -i 's/reply->request().~QNetworkRequest();//' src/overlaycontroller.cpp
-    sed -i 's/reply->~QNetworkReply();/reply->deleteLater();/' src/overlaycontroller.cpp
+    # Attempting to compile without package will result in compile error
+    pacman -Qi pulseaudio >/dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        _additionalOptions+=" CONFIG+=noPulse"
+        echo "Pulse features disabled."
+    else
+        echo "Pulse features enabled."
+    fi
 
     qmake PREFIX="$pkgdir/opt/" $_additionalOptions
     make
