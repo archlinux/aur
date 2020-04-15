@@ -4,7 +4,7 @@
 pkgname=kubelet-bin
 pkgdesc="Kubernetes.io kubelet binary"
 pkgver=1.18.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="http://kubernetes.io"
 license=('apache')
@@ -27,9 +27,9 @@ case "$CARCH" in
     ;;
 esac
 
-source+=("https://storage.googleapis.com/kubernetes-release/release/v${pkgver}/bin/linux/${_pkgarch}/kubelet")
+source+=(${pkgname}-${pkgver}::"https://storage.googleapis.com/kubernetes-release/release/v${pkgver}/bin/linux/${_pkgarch}/kubelet")
 
 package() {
   install -D -m0644 "kubelet.service" "${pkgdir}/usr/lib/systemd/system/kubelet.service"
-  install -D -m0755 "kubelet" "${pkgdir}/usr/bin/kubelet"
+  install -D -m0755 "${pkgname}-${pkgver}" "${pkgdir}/usr/bin/kubelet"
 }
