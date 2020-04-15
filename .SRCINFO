@@ -1,6 +1,6 @@
 pkgbase = jitsi-meet-git
 	pkgdesc = WebRTC JavaScript video conferences
-	pkgver = r2.06ae186
+	pkgver = r7209.1bd930a3c
 	pkgrel = 1
 	url = https://github.com/jitsi/jitsi-meet
 	arch = x86_64
