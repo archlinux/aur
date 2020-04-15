@@ -9,8 +9,8 @@ pkgbase = chromium-widevine
 	provides = chromium-widevine-dev=4.10.1610.0
 	conflicts = chromium-widevine-dev
 	options = !strip
-	source = https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_81.0.4044.92-1_amd64.deb
-	sha256sums = e2b8dcb8aa9249b00c5f2cef5e755152a249b891bd38d7a0eb814375594ae8c5
+	source = https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_81.0.4044.113-1_amd64.deb
+	sha256sums = e3ee96e54bf085804dea671f8a8f29086aa2f43d5928470a2908c1c13375e72a
 
 pkgname = chromium-widevine
 	depends = gcc-libs
