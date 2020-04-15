@@ -1,0 +1,14 @@
+pkgbase = python-symspellpy
+	pkgdesc = Python SymSpell
+	pkgver = 6.5.2
+	pkgrel = 1
+	url = https://github.com/mammothb/symspellpy
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-setuptools
+	source = python-symspellpy-6.5.2.tar.gz::https://github.com/mammothb/symspellpy/archive/v6.5.2.tar.gz
+	sha256sums = 60c44186dd3a993f08887c09af14cb75635dff7570b5bf045f5d9360792e3fec
+
+pkgname = python-symspellpy
+
