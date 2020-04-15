@@ -1,13 +1,13 @@
 pkgbase = c_otp
 	pkgdesc = HOTP / TOTP pure C implementation
-	pkgver = v1.0
-	pkgrel = 1
+	pkgver = v1.1
+	pkgrel = 2
 	url = htps://github.com/fmount/c_otp.git
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = openssl
-	source = git://github.com/fmount/c_otp.git
+	source = git+https://github.com/fmount/c_otp.git#tag=v1.1
 	md5sums = SKIP
 
 pkgname = c_otp

@@ -4,15 +4,15 @@
 pkgname=('c_otp')
 _pkgname="c_otp"
 packager="fmount"
-pkgver=v1.0
-pkgrel=1
+pkgver=v1.1
+pkgrel=2
 bindir=usr/bin
 pkgdesc="HOTP / TOTP pure C implementation"
 url="htps://github.com/fmount/${pkgname}.git"
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('openssl')
-source=("git://github.com/fmount/${pkgname}.git")
+source=("git+https://github.com/fmount/${pkgname}.git#tag=${pkgver}")
 md5sums=('SKIP')
 
 pkgver() {
