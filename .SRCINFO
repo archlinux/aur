@@ -1,11 +1,12 @@
 pkgbase = python-meta
 	pkgdesc = Python Meta Programming
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/srossross/Meta
 	arch = any
 	license = BSD
 	depends = python
+	depends = python-setuptools
 	source = python-meta-0.4.1.tar.gz::https://github.com/srossross/Meta/archive/0.4.1.tar.gz
 	sha256sums = 9d918bd5277ce4f41f9ffe25584928cc04001ca2aae25d1f7f1dac87e0ba398c
 

@@ -2,12 +2,12 @@
 
 pkgname=python-meta
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Meta Programming"
 arch=('any')
 url="https://github.com/srossross/Meta"
 license=('BSD')
-depends=(python)
+depends=('python' 'python-setuptools')
 source=(
     ${pkgname}-${pkgver}.tar.gz::https://github.com/srossross/Meta/archive/${pkgver}.tar.gz
 )
@@ -17,11 +17,11 @@ sha256sums=(
 
 build() {
     cd "Meta-${pkgver}"
-    python setup.py build
+    LANG=en_US.UTF-8 python setup.py build
 }
 
 package() {
     cd "Meta-${pkgver}"
-    python setup.py install --skip-build --root="$pkgdir/" --optimize=1
+    LANG=en_US.UTF-8 python setup.py install --root=$pkgdir --optimize=1 --skip-build
     install -D -m644 license.rst "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
