@@ -1,11 +1,11 @@
-# Maintainer: John Gerritse <tyrannis.hawk@gmail.com>
+# Maintainer: John Gerritse <tyrannis dot hawk at gmail dot com>
 
 _gemname=video_transcoding
 pkgname=ruby-$_gemname
 pkgver=0.25.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools to transcode, inspect and convert videos.'
-arch=(any)
+arch=('any')
 url='https://github.com/donmelton/video_transcoding'
 license=(Ruby)
 makedepends=('ruby-rdoc')

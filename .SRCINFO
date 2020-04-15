@@ -1,7 +1,7 @@
 pkgbase = ruby-video_transcoding
 	pkgdesc = Tools to transcode, inspect and convert videos.
 	pkgver = 0.25.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/donmelton/video_transcoding
 	arch = any
 	license = Ruby
