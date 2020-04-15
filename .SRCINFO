@@ -1,7 +1,7 @@
 pkgbase = nsight-graphics
 	pkgdesc = Standalone application for the debugging and profiling of graphics applications
 	pkgver = 2020.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developer.nvidia.com/nsight-graphics
 	arch = x86_64
 	license = custom

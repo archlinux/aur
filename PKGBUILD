@@ -1,7 +1,7 @@
 pkgname=nsight-graphics
 pkgver=2020.2
 _pkgver=${pkgver//\./_}
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone application for the debugging and profiling of graphics applications"
 arch=(x86_64)
 url="https://developer.nvidia.com/nsight-graphics"
@@ -21,8 +21,8 @@ prepare() {
   # Extract package
   sh "NVIDIA_Nsight_Graphics_${pkgver}.run" --noexec --target ${pkgname}
   # Fix install path /usr to ${pkgdir}/usr for registering of layers
-  sed -i "s,=/usr/,=${pkgdir}/usr/,g" ${srcdir}/${pkgname}/pkg/host/linux-desktop-nomad-x64/VK_LAYER_NV_nomad.sh
-  sed -i "s,=/usr/,=${pkgdir}/usr/,g" ${srcdir}/${pkgname}/pkg/host/linux-desktop-nomad-x64/VK_LAYER_NV_GPU_Trace.sh
+  sed -i "s,\([= ]\)/usr/,\1${pkgdir}/usr/,g" ${srcdir}/${pkgname}/pkg/host/linux-desktop-nomad-x64/VK_LAYER_NV_nomad.sh
+  sed -i "s,\([= ]\)/usr/,\1${pkgdir}/usr/,g" ${srcdir}/${pkgname}/pkg/host/linux-desktop-nomad-x64/VK_LAYER_NV_GPU_Trace.sh
 }
 
 package() {
@@ -31,6 +31,9 @@ package() {
 
   install -dm 755 "${pkgdir}"/usr/bin
   ln -s /opt/${pkgname}/host/linux-desktop-nomad-x64/nv-nsight-gfx "${pkgdir}"/usr/bin
+
+  rm ${pkgdir}/opt/${pkgname}/host/linux-desktop-nomad-x64/VK_LAYER_NV_nomad.sh
+  rm ${pkgdir}/opt/${pkgname}/host/linux-desktop-nomad-x64/VK_LAYER_NV_GPU_Trace.sh
 
   install -Dm644 "${srcdir}/${pkgname}.desktop" ${pkgdir}/usr/share/applications/${pkgname}.desktop
   install -Dm644 "${srcdir}/${pkgname}.png" ${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
