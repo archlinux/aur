@@ -1,14 +1,14 @@
 pkgbase = dimemas
 	pkgdesc = High-abstracted network simulator for message-passing programs (from BSC).
-	pkgver = 5.4.1.20190802
+	pkgver = 5.4.2.20200414
 	pkgrel = 1
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	depends = boost
-	source = https://ftp.tools.bsc.es/dimemas/dimemas-5.4.1-src.tar.bz2
-	sha512sums = 2eb05e0cf48f6e3ae8a6af31910da09559e0b6730e4506c9c8ce17e1f158155f0314d61ae1a8fd2c2c0b0fd3f61fd4dbf993d2ec82c91f151c6ac526af99aaee
+	source = https://ftp.tools.bsc.es/dimemas/dimemas-5.4.2-src.tar.bz2
+	sha512sums = b2a1b63a079bc1a32074759debf1af232fb804081af3581de1c1739775117b49413bcca1cdee534c890786cea22430f04525d456e26b4505f92aad726b7e4138
 
 pkgname = dimemas
 
