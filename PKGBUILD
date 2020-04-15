@@ -4,17 +4,16 @@ pkgname=android-file-transfer-linux-git
 _pkgname="${pkgname/-git/}"
 _gitbranch=master
 _gitauthor=whoozle
-pkgver=3.2.r26.gb966969
+pkgver=continuous.r0.g14cdedc
 pkgrel=1
 pkgdesc="An interactive MTP client implemented in C++ using Qt toolkit"
 arch=('i686' 'x86_64')
 url="https://github.com/whoozle/android-file-transfer-linux"
-license=(GPL3)
-depends=('qt5-base' 'fuse' 'hicolor-icon-theme' 'xdg-utils' 'libxkbcommon-x11' 'file')
+license=(LGPL2.1)
+depends=('qt5-base' 'fuse' 'hicolor-icon-theme' 'taglib')
 makedepends=('cmake' 'git' 'ninja' 'mesa')
 conflicts=('android-file-transfer')
-install=$pkgname.install
-source=("git://github.com/$_gitauthor/$_pkgname.git#branch=$_gitbranch")
+source=("git+https://github.com/$_gitauthor/$_pkgname.git#branch=$_gitbranch")
 md5sums=('SKIP')
 
 
