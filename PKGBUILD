@@ -1,14 +1,14 @@
 # Maintainer: Federico Giuliani <federico.giuliani86 at gmail dot com>
 
 pkgname=airsonic
-pkgver=10.5.0
-_relver=10.5
+pkgver=10.6.0
+_relver=10.6
 pkgrel=1
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
 url="https://github.com/Airsonic/airsonic/"
 license=('GPL3')
-depends=('java-runtime-headless')
+depends=('java-runtime-headless' 'ttf-dejavu')
 backup=('etc/airsonic/airsonic.conf')
 noextract=(${pkgname}.war)
 source=(${pkgname}-${pkgver}.war::https://github.com/airsonic/airsonic/releases/download/v${pkgver}/${pkgname}.war
@@ -36,10 +36,8 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
   
 }
-
-sha256sums=('588e5362351406ac7e4eafede4fe3dae7b1e24eac6b6c330f51f413cfa184a5a'
+sha256sums=('90fe5dbf83d71b83a955abbca8765ba144996ca8530648e93d1bb50d70fde827'
             '059a43fe100d95aaaae8091d1c312f4d3a2a2b4edc1969358dd7be35f6525930'
-            '21deabc2802a3909c040451c60a3fdf4ee157a3e05b5b9bafa164bc12ce9c0b2'
+            '6f2e626e393d1e706e3edb45d5dfabf026d9360016d0c2643430c4503dc3e9e2'
             '25af0b92b247df928db5ac8fec3fb4fa2cdc717e649729d5e0c059a5b81e058e'
             '952c15c8c6b53b9c63a96eb6b2402eae42bde56dc9c6c60484cf039a03a82963')
-
