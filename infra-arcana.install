@@ -1,8 +1,6 @@
 post_install() {
   xdg-icon-resource forceupdate --theme hicolor &> /dev/null
   echo 'Installed. Run infra-arcana to launch.'
-  echo 'You will have to be a member of the games group to be able to save'
-  echo 'Saved games and other game data are located in /var/lib/infra-arcana/data'
 }
 
 post_upgrade() {
@@ -10,7 +8,7 @@ post_upgrade() {
 }
 
 post_remove() {
-  echo 'To remove application data such as saved games, delete /var/lib/infra-arcana'
+  echo 'To remove application data such as saved games, delete ~/.local/share/infra_arcana'
 }
 
 # vim:set ts=2 sw=2 et:
