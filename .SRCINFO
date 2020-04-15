@@ -9,6 +9,7 @@ pkgbase = gstreamer-nvidia
 	makedepends = meson
 	makedepends = neon
 	makedepends = cuda
+	makedepends = gobject-introspection
 	depends = gst-plugins-base-libs
 	depends = orc
 	depends = libdrm

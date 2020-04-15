@@ -11,7 +11,7 @@ url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
 license=(LGPL)
 depends=(gst-plugins-base-libs orc libdrm libx11 libgudev libusb libvdpau)
-makedepends=(git meson neon cuda)
+makedepends=(git meson neon cuda gobject-introspection)
 
 #~ mjpegtools curl chromaprint libmms faad2 libdca libdvdnav
 #~ libmodplug libgme nettle libkate wayland libofa openjpeg2 libwebp
@@ -20,7 +20,7 @@ makedepends=(git meson neon cuda)
 #~ webrtc-audio-processing libdc1394 libmpcdec zvbi openexr libbs2b
 #~ libnice lcms2 bluez-libs glu srt aom x265 liblrdf libde265 zbar
 #~ librsvg fluidsynth lilv lv2 gst-plugins-good python gtk-doc git
-#~ gobject-introspection vulkan-headers vulkan-validation-layers
+#~ vulkan-headers vulkan-validation-layers
 #~ wayland-protocols gtk3
 
 checkdepends=()
