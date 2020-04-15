@@ -5,10 +5,10 @@
 # Contributor: M0Rf30
 
 pkgname=virtualbox-bin
-pkgver=6.1.4
-_build=136177
-_rev=79806
-pkgrel=2
+pkgver=6.1.6
+_build=137129
+_rev=83509
+pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('x86_64')
 url='https://www.virtualbox.org/'
@@ -38,22 +38,20 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         'vboxweb.conf'
         'do_dkms'
         'dkms.conf'
-        '013-Makefile.patch'
-        '015-linux-5.6.patch')
+        '013-Makefile.patch')
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
-sha256sums=('02e609e7404afa448c4a789136326e4dbacd28bbd1b3f7a4d59f644aea0fb98c'
-            '755d07a510574940ad6b664fa63fb7fa4b752d121f7decb76cc8e7fa77ba9718'
-            '584f02a2a1e83b9cabd7b7e3b00a0515b118e040160eb46c014ea6fd3a16586e'
-            '600df773fca199dc21acde10c95a4733b03b3efd8ffaef3a9fb9da363a9cd114'
-            '452351c15d97aeda29e45dbcb0da69412dc3a615c9aece43a424af3639368d49'
+sha256sums=('d76ac2b82b359d5b7cba2d4727b909c380de2f9e1ce656bf76789ea09a3f2489'
+            'f1f718aa3cec3d23d43b589915dfdc05dd2fc9dd9f3bdd62f0145e768fa2bbea'
+            '61eab70173ec0c4959ec3b8bf9fa19cfac49bb223a0bb041fe12aa14742db15a'
+            'f54c38e2d112e0221daa1ddd563a260d18d7d510c485a7d27c317d379e06ff79'
+            '2ef58e7f24ed9114dbf29dfa77372b5e15962a2244315ffbfb592cdc10920ad8'
             '0aebe22abab402ea6b6573af637a99d8056a904920a52d84fb97729219219c23'
             '69417a9e8855cab8e4878886abe138f559fd17ae487d4cd19c8a24974a8bbec2'
             '656905de981ffa24f6f921c920538854a235225053f44baedacc07b46ca0cf56'
             '12dbba3b59991f2b68cddeeeda20236aeff63e11b7e2d1b08d9d6a82225f6651'
             'cc1c0500ab07bc13563d99037f776bf64bdc90bb521e31e2e0b04e42ea5bb36a'
             '63f1e9eabedec2170bd0589aaa2bf5025ff8f8ec1764cc4823cbe446e9ce1388'
-            '268e794de9d66a2751006b2ca3810fc6a05da4af2ffa8b58c56c94b292f1f424'
-            '09ae0e211f1f35e231a00f55704b5339a79080def896d650cd54fb5a5af60700')
+            '268e794de9d66a2751006b2ca3810fc6a05da4af2ffa8b58c56c94b292f1f424')
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}/VirtualBox-extracted"
@@ -68,9 +66,6 @@ prepare() {
     
     # fix dkms build
     patch -d "${pkgname}-${pkgver}/VirtualBox-extracted" -Np1 -i "${srcdir}/013-Makefile.patch"
-    
-    # linux 5.6 fix
-    patch -d "${pkgname}-${pkgver}/VirtualBox-extracted" -Np1 -i "${srcdir}/015-linux-5.6.patch"
 }
 
 build() {
