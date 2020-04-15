@@ -1,7 +1,7 @@
 pkgbase = stack-client
 	pkgdesc = The STACK Client provides file sync to desktop clients.
 	pkgver = 2.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.transip.nl/stack/
 	arch = x86_64
 	license = GPL2
@@ -10,7 +10,7 @@ pkgbase = stack-client
 	makedepends = extra-cmake-modules
 	makedepends = frameworkintegration
 	depends = qtkeychain
-	depends = qt5-webkit
+	depends = qt5-webengine
 	depends = hicolor-icon-theme
 	depends = xdg-utils
 	optdepends = python-nautilus: integration with Nautilus

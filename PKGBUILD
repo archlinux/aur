@@ -1,11 +1,11 @@
 pkgname=stack-client
 pkgver=2.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The STACK Client provides file sync to desktop clients."
 arch=('x86_64')
 url='https://www.transip.nl/stack/'
 license=(GPL2)
-depends=('qtkeychain' 'qt5-webkit' 'hicolor-icon-theme' 'xdg-utils')
+depends=('qtkeychain' 'qt5-webengine' 'hicolor-icon-theme' 'xdg-utils')
 optdepends=('python-nautilus: integration with Nautilus' 'nemo-python: integration with Nemo')
 makedepends=('cmake' 'qt5-tools' 'extra-cmake-modules' 'frameworkintegration')
 conflicts=('stack-client-bin')
