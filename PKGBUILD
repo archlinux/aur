@@ -1,8 +1,9 @@
-# Maintainer: Ronuk Raval <ronuk.raval at gmail dot com>
+# Maintainer: John Gerritse <tyrannis dot hawk at gmail dot com>
+# Contributor: Ronuk Raval <ronuk.raval at gmail dot com>
 
 pkgname=python-meta
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Python Meta Programming"
 arch=('any')
 url="https://github.com/srossross/Meta"
