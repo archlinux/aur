@@ -6,6 +6,8 @@ pkgbase = python-demoji
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	depends = python-requests
+	depends = python-colorama
 	source = python-demoji-0.2.1.tar.gz::https://github.com/bsolomon1124/demoji/archive/v0.2.1.tar.gz
 	sha512sums = 7eb70bb14de7f38e1f99fa83e610e43f888e2f012cdec5beb49f2c2dbd31b76d9c57f66ca508f7f1a13502ab6e0100fbd6ae6f9b7a75ab6bda4edd658627c51c
 
