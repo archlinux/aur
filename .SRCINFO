@@ -1,7 +1,7 @@
 pkgbase = porto-python
 	pkgdesc = Edit Jupyter notebooks on the desktop - written in Python with Gtk
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cvfosammmm.org/porto/
 	arch = any
 	license = GPL3
@@ -20,7 +20,7 @@ pkgbase = porto-python
 	source = https://github.com/cvfosammmm/Porto/archive/v0.0.2.tar.gz
 	source = porto.sh
 	sha256sums = 7c786c215d2bb4d68f36500505a7614071ebcdbfb94c4b85559e5e33b4f56b73
-	sha256sums = 451a05ac1ad44580dbab838458adcf3d1ece9c74febb679272d514a54e02d10c
+	sha256sums = d93f2f9678a4215ee2375ff3d2e2d5b45d517f30b2fdf5456f8233e0dd0dd458
 
 pkgname = porto-python
 

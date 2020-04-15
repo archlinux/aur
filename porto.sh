@@ -1,2 +1,2 @@
 #!/bin/sh
-python3 /usr/lib/porto/porto
+python3 /opt/porto/porto

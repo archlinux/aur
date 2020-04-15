@@ -1,7 +1,7 @@
 # Maintainer: Nico <desoxhd@gmail.com>
 pkgname=porto-python
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Edit Jupyter notebooks on the desktop - written in Python with Gtk"
 arch=('any')
 url="https://www.cvfosammmm.org/porto/"
@@ -9,23 +9,24 @@ license=('GPL3')
 depends=('hicolor-icon-theme' 'sagemath' 'python-bleach' 'python-markdown' 'python-pypandoc' 'python-jupyter_client' 'python-ipykernel' 'jupyter-nbformat' 'gtk3' 'gtksourceview3' 'python-gobject')
 makedepends=('tar')
 source=("https://github.com/cvfosammmm/Porto/archive/v${pkgver}.tar.gz" "porto.sh")
-sha256sums=('7c786c215d2bb4d68f36500505a7614071ebcdbfb94c4b85559e5e33b4f56b73' '451a05ac1ad44580dbab838458adcf3d1ece9c74febb679272d514a54e02d10c')
+sha256sums=('7c786c215d2bb4d68f36500505a7614071ebcdbfb94c4b85559e5e33b4f56b73' 'd93f2f9678a4215ee2375ff3d2e2d5b45d517f30b2fdf5456f8233e0dd0dd458')
 
 package() {
+  _appfolder="${pkgdir}/opt/porto/"
+  
   cd "${srcdir}/Porto-${pkgver}"
   
-  # install libraries
-  # TODO: i am unsure if this is the correct way of doing this
-  mkdir -p "${pkgdir}/usr/lib/porto/"
-  cp -r app "${pkgdir}/usr/lib/porto/"
-  cp -r cell "${pkgdir}/usr/lib/porto/"
-  cp -r dialogs "${pkgdir}/usr/lib/porto/"
-  cp -r helpers "${pkgdir}/usr/lib/porto/"
-  cp -r resources "${pkgdir}/usr/lib/porto/"
-  cp -r result_factory "${pkgdir}/usr/lib/porto/"
-  cp -r notebook "${pkgdir}/usr/lib/porto/"
-  cp -r workspace "${pkgdir}/usr/lib/porto/"
-  install -Dm 755 "__main__.py" "${pkgdir}/usr/lib/porto/porto"
+  # install python app files
+  mkdir -p "${_appfolder}"
+  cp -r app "${_appfolder}"
+  cp -r cell "${_appfolder}"
+  cp -r dialogs "${_appfolder}"
+  cp -r helpers "${_appfolder}"
+  cp -r resources "${_appfolder}"
+  cp -r result_factory "${_appfolder}"
+  cp -r notebook "${_appfolder}"
+  cp -r workspace "${_appfolder}"
+  install -Dm 755 "__main__.py" "${_appfolder}/porto"
   
   # install binary
   install -Dm 755 "${srcdir}/porto.sh" "${pkgdir}/usr/bin/porto"
