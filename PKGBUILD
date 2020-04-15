@@ -6,11 +6,11 @@
 
 # https://jlk.fjfi.cvut.cz/arch/manpages/man/PKGBUILD.5
 pkgname=popcorntime-git
-pkgver=v0.4.0+r6485+g597a9871
+pkgver=v0.4.2+r6586+gef22f16d
 pkgrel=1
 pkgdesc='Popcorn Time is a multi-platform, free software BitTorrent client that includes an integrated media player.'
 arch=(i686 x86_64)
-url=https://popcorntime.app
+url=https://github.com/popcorn-official/popcorn-desktop
 license=(GPL3)
 depends=(gtk3 libxss nss nodejs)
 makedepends=(git yarn npm)
