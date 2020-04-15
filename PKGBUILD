@@ -2,8 +2,8 @@
 
 _srcname=I.Ming
 _version=6.12
-_version_pkg_updates=1
-_gitcommit=a2728a757229c85bd2694c491ff6ab98560bf667
+_version_pkg_updates=2
+_gitcommit=e948fb4c46c83571199b9e779dc186b5a6c72799
 
 pkgname=ttf-i.ming
 pkgver="${_version}+${_version_pkg_updates}+${_gitcommit::7}"
@@ -24,7 +24,7 @@ package() {
   install -D -m644 "${_version}/I.MingVar-${_version}.ttf" "${pkgdir}/usr/share/fonts/TTF/I.MingVar-${_version}.ttf"
   install -D -m644 "${_version}/I.MingVarCP-${_version}.ttf" "${pkgdir}/usr/share/fonts/TTF/I.MingVarCP-${_version}.ttf"
 
-  install -D -m644 "${_version}/I.Ming_readme.md" "${pkgdir}/usr/share/doc/${pkgname}/I.Ming_readme.md"
+  install -D -m644 "${_version}/readme.md" "${pkgdir}/usr/share/doc/${pkgname}/readme.md"
   install -D -m644 "${_version}/I.Ming_history.md" "${pkgdir}/usr/share/doc/${pkgname}/I.Ming_history.md"
   install -D -m644 "${_version}/I.MingVar_history.md" "${pkgdir}/usr/share/doc/${pkgname}/I.MingVar_history.md"
 
