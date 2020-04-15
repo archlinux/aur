@@ -1,6 +1,6 @@
 # Maintainer: Rustam Aliyev <ru5j4r0@google.com>
 pkgname=pyflow
-pkgver=0.2.4
+pkgver=0.2.5.1
 pkgrel=1
 pkgdesc="An installation and dependency system for Python"
 arch=('x86_64' 'i686')
@@ -10,8 +10,8 @@ depends=('xz')
 makedepends=('cargo')
 checkdepends=('cargo')
 changelog=CHANGELOG.md
-source=("https://github.com/David-OConnor/pyflow/archive/0.2.4.tar.gz")
-b2sums=(75cf6463928ed34ac9234973d00ea9b087df8b6fb0aff75e11b99b91eb1bef76c32c898e81d9f5dff5350efbf7d51c816200cc89052837ce54c2a875c2a126f5)
+source=("https://github.com/David-OConnor/pyflow/archive/0.2.5.1.tar.gz")
+b2sums=(d1b97ad55a7571aa8dfb6e1cd863d49207185a1895957b5776f710fa5b60474c27da120907b4d8973ca7c59ce22ef8fa67dc66a898bdb381c32fa8aedb29ec07)
 validpgpkeys=(B3D4420410BC16F84C358DF6AF36488D565A347A)
 
 build() {
