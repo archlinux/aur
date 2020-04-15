@@ -42,13 +42,6 @@ source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'brave-browser.desktop')
 arch_revision=9102943de95dd7e51f973ad9f7554c8e01d6ab22
 for Patches in \
-        cros-search-service-Include-cmath-for-std-pow.patch \
-        move-RemoteTreeNode-declaration.patch \
-        sync-enable-USSPasswords-by-default.patch \
-        fix-shim-header-generation-when-unbundling-ICU.patch \
-        fix-building-with-system-zlib.patch \
-        remove-verbose-logging-in-local-unique-font-matching.patch \
-        fix-building-with-unbundled-libxml.patch \
         rename-Relayout-in-DesktopWindowTreeHostPlatform.patch \
         rebuild-Linux-frame-button-cache-when-activation.patch \
         chromium-widevine.patch \
@@ -65,13 +58,6 @@ sha256sums=('SKIP'
             '2b07eabd8b3d42456d2de44f6dca6cf2e98fa06fc9b91ac27966fca8295c5814'
             '43f442d9ffacd69a1ca770b029083aaa544d48c052939a66e58a868d91ebde70'
             '2191ba32800a423f37b7a667093e2bdef5762fe5111fee1d5067e66e26564488'
-            '0a8d1af2a3734b5f99ea8462940e332db4acee7130fe436ad3e4b7ad133e5ae5'
-            '21f631851cdcb347f40793485b168cb5d0da65ae26ae39ba58d624c66197d0a5'
-            '08ef82476780e0864b5bf7f20eb19db320e73b9a5d4f595351e12e97dda8746f'
-            'e477aa48a11ca4d53927f66a9593567fcd053325fb38af30ac3508465f1dd1f6'
-            '18276e65c68a0c328601b12fefb7e8bfc632346f34b87e64944c9de8c95c5cfa'
-            '5bc775c0ece84d67855f51b30eadcf96fa8163b416d2036e9f9ba19072f54dfe'
-            'e530d1b39504c2ab247e16f1602359c484e9e8be4ef6d4824d68b14d29a7f60b'
             'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
             '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
             '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
@@ -98,25 +84,6 @@ prepare() {
     msg2 "Apply Chromium patches..."
     cd src/
 
-    # https://crbug.com/957519
-    patch -Np1 -i "${srcdir}"/cros-search-service-Include-cmath-for-std-pow.patch || true
-    patch -Np1 -i "${srcdir}"/move-RemoteTreeNode-declaration.patch || true
-  
-    # https://crbug.com/1027929
-    patch -Np1 -i "${srcdir}"/sync-enable-USSPasswords-by-default.patch || true
-  
-    # https://crbug.com/989153
-    patch -Np1 -i "${srcdir}"/fix-shim-header-generation-when-unbundling-ICU.patch || true
-  
-    # https://crbug.com/977964
-    patch -Np1 -i "${srcdir}"/fix-building-with-system-zlib.patch || true
-  
-    # https://crbug.com/1005508
-    patch -Np1 -i "${srcdir}"/remove-verbose-logging-in-local-unique-font-matching.patch || true
-  
-    # https://crbug.com/1043042
-    patch -Np1 -i "${srcdir}"/fix-building-with-unbundled-libxml.patch || true
-  
     # https://crbug.com/1049258
     patch -Np1 -i "${srcdir}"/rename-Relayout-in-DesktopWindowTreeHostPlatform.patch || true
     patch -Np1 -i "${srcdir}"/rebuild-Linux-frame-button-cache-when-activation.patch || true

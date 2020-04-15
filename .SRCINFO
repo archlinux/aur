@@ -29,13 +29,6 @@ pkgbase = brave
 	source = brave-vaapi-enable.patch
 	source = brave-launcher
 	source = brave-browser.desktop
-	source = cros-search-service-Include-cmath-for-std-pow.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/cros-search-service-Include-cmath-for-std-pow.patch?h=packages/chromium&id=9102943de95dd7e51f973ad9f7554c8e01d6ab22
-	source = move-RemoteTreeNode-declaration.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/move-RemoteTreeNode-declaration.patch?h=packages/chromium&id=9102943de95dd7e51f973ad9f7554c8e01d6ab22
-	source = sync-enable-USSPasswords-by-default.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/sync-enable-USSPasswords-by-default.patch?h=packages/chromium&id=9102943de95dd7e51f973ad9f7554c8e01d6ab22
-	source = fix-shim-header-generation-when-unbundling-ICU.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/fix-shim-header-generation-when-unbundling-ICU.patch?h=packages/chromium&id=9102943de95dd7e51f973ad9f7554c8e01d6ab22
-	source = fix-building-with-system-zlib.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/fix-building-with-system-zlib.patch?h=packages/chromium&id=9102943de95dd7e51f973ad9f7554c8e01d6ab22
-	source = remove-verbose-logging-in-local-unique-font-matching.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/remove-verbose-logging-in-local-unique-font-matching.patch?h=packages/chromium&id=9102943de95dd7e51f973ad9f7554c8e01d6ab22
-	source = fix-building-with-unbundled-libxml.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/fix-building-with-unbundled-libxml.patch?h=packages/chromium&id=9102943de95dd7e51f973ad9f7554c8e01d6ab22
 	source = rename-Relayout-in-DesktopWindowTreeHostPlatform.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/rename-Relayout-in-DesktopWindowTreeHostPlatform.patch?h=packages/chromium&id=9102943de95dd7e51f973ad9f7554c8e01d6ab22
 	source = rebuild-Linux-frame-button-cache-when-activation.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/rebuild-Linux-frame-button-cache-when-activation.patch?h=packages/chromium&id=9102943de95dd7e51f973ad9f7554c8e01d6ab22
 	source = chromium-widevine.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium&id=9102943de95dd7e51f973ad9f7554c8e01d6ab22
@@ -46,13 +39,6 @@ pkgbase = brave
 	sha256sums = 2b07eabd8b3d42456d2de44f6dca6cf2e98fa06fc9b91ac27966fca8295c5814
 	sha256sums = 43f442d9ffacd69a1ca770b029083aaa544d48c052939a66e58a868d91ebde70
 	sha256sums = 2191ba32800a423f37b7a667093e2bdef5762fe5111fee1d5067e66e26564488
-	sha256sums = 0a8d1af2a3734b5f99ea8462940e332db4acee7130fe436ad3e4b7ad133e5ae5
-	sha256sums = 21f631851cdcb347f40793485b168cb5d0da65ae26ae39ba58d624c66197d0a5
-	sha256sums = 08ef82476780e0864b5bf7f20eb19db320e73b9a5d4f595351e12e97dda8746f
-	sha256sums = e477aa48a11ca4d53927f66a9593567fcd053325fb38af30ac3508465f1dd1f6
-	sha256sums = 18276e65c68a0c328601b12fefb7e8bfc632346f34b87e64944c9de8c95c5cfa
-	sha256sums = 5bc775c0ece84d67855f51b30eadcf96fa8163b416d2036e9f9ba19072f54dfe
-	sha256sums = e530d1b39504c2ab247e16f1602359c484e9e8be4ef6d4824d68b14d29a7f60b
 	sha256sums = ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db
 	sha256sums = 46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014
 	sha256sums = 709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070
