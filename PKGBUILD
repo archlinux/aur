@@ -1,7 +1,7 @@
 # Maintainer: Niklas Krafczyk <krafczyk.n at gmail dot com>
 pkgname=klee
 pkgver=2.1
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="Symbolic virtual machine built on top of the LLVM compiler infrastructure"
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=('llvm>=3.8'
              'clang'
              'cmake'
              'git')
-checkdepends=()
+checkdepends=('python-tabulate')
 optdepends=()
 provides=('klee=2.1')
 conflicts=()
