@@ -6,4 +6,4 @@ After=mpd.service
 ExecStart=/usr/bin/mpdas
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
