@@ -42,4 +42,3 @@ package(){
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/naiveproxy/LICENSE
   popd
 }
-md5sums=('1c57ff9a8e7e47d79ee16385fe5ee09d')
