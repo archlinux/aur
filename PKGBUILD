@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=certbot-dns-hetzner-git
 pkgdesc="Certbot plugin enabling dns-01 challenge on the Hetzner DNS API"
-pkgver=v1.0.1.34aed9b
+pkgver=r27.34aed9b
 pkgrel=1
 arch=(any)
 url="https://github.com/ctrlaltcoop/certbot-dns-hetzner"
@@ -14,7 +14,7 @@ sha256sums=("SKIP")
 
 pkgver() {
 	cd "${srcdir}/certbot-dns-hetzner"
-	printf "%s.%s" "$(git describe --abbrev=0 --tags)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
