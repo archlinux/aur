@@ -1,0 +1,14 @@
+pkgbase = hmetis-bin
+	pkgdesc = hMETIS is a set of programs for partitioning hypergraphs such as those corresponding to VLSI circuits
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = http://glaros.dtc.umn.edu/gkhome/metis/hmetis/overview
+	arch = x86_64
+	license = Apache-2.0
+	provides = hmetis
+	noextract = hmetis-bin-1.5.3
+	source = local:///hmetis-1.5-linux.tar.gz
+	md5sums = d114e45ecaec68a111866e964eccc5bf
+
+pkgname = hmetis-bin
+
