@@ -6,10 +6,10 @@ pkgrel=1
 pkgdesc='hMETIS is a set of programs for partitioning hypergraphs such as those corresponding to VLSI circuits'
 arch=('x86_64')
 url="http://glaros.dtc.umn.edu/gkhome/metis/hmetis/overview"
-license=('Apache-2.0')
+license=('custom')
 provides=('hmetis')
 noextract=("${pkgname}-${pkgver}")
-source=("local:///hmetis-1.5-linux.tar.gz")
+source=("http://glaros.dtc.umn.edu/gkhome/fetch/sw/hmetis/hmetis-1.5-linux.tar.gz")
 md5sums=('d114e45ecaec68a111866e964eccc5bf')
 
 package() {

@@ -4,10 +4,10 @@ pkgbase = hmetis-bin
 	pkgrel = 1
 	url = http://glaros.dtc.umn.edu/gkhome/metis/hmetis/overview
 	arch = x86_64
-	license = Apache-2.0
+	license = custom
 	provides = hmetis
 	noextract = hmetis-bin-1.5.3
-	source = local:///hmetis-1.5-linux.tar.gz
+	source = http://glaros.dtc.umn.edu/gkhome/fetch/sw/hmetis/hmetis-1.5-linux.tar.gz
 	md5sums = d114e45ecaec68a111866e964eccc5bf
 
 pkgname = hmetis-bin
