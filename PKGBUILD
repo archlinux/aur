@@ -2,14 +2,14 @@
 # Past Maintainer: brent s. <bts[at]square-r00t[dot]net>
 
 pkgname=storcli
-pkgver=007.1211.0000.0000
+pkgver=007.1316.0000.0000
 pkgrel=1
 pkgdesc="CLI program for LSI MegaRAID cards"
 url="https://www.broadcom.com/"
 license=('custom')
 arch=('any')
-source=("$pkgname-$pkgver.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/007.1211.0000.0000_Unified_StorCLI.zip")
-sha512sums=('f28ae41adf2286153ecd57f7d022940069356c9636e45aaae4ae45215487bbb8e3dea51fa4aa00b9e9340069036c1be21b186ce177e0fd0a6a0bb786cb58181f')
+source=("$pkgname-$pkgver.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_Unified_StorCLI.zip")
+sha512sums=('049b34d44bb1140ad804f6bb6d8fb133ac9bbc4aface721051e713c7a1056acb0f894f4f4793ef9e02e48958a745d12bc5389e7e763716c780fb1c2c387e34d6')
 
 package() {
   bsdtar -poxf "$srcdir/Unified_storcli_all_os/Linux/$pkgname-$pkgver-1.noarch.rpm" -C "$pkgdir"
