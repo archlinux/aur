@@ -7,17 +7,17 @@ arch=(any)
 url="https://github.com/ctrlaltcoop/certbot-dns-hetzner"
 license=(Apache)
 depends=(certbot)
-makedepends=(python-setuptools)
-provides=(certbot-dns-hetzner)
-source=("certbot-dns-hetzner::git+${url}.git")
+makedepends=(python-setuptools git)
+provides=("${pkgname%-git}")
+source=("${pkgname%-git}::git+${url}.git")
 sha256sums=("SKIP")
 
 pkgver() {
-	cd "${srcdir}/certbot-dns-hetzner"
+	cd "${srcdir}/${pkgname%-git}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "${srcdir}/certbot-dns-hetzner"
+	cd "${srcdir}/${pkgname%-git}"
 	python setup.py install --root="${pkgdir}"
 }

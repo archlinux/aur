@@ -6,6 +6,7 @@ pkgbase = certbot-dns-hetzner-git
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	makedepends = git
 	depends = certbot
 	provides = certbot-dns-hetzner
 	source = certbot-dns-hetzner::git+https://github.com/ctrlaltcoop/certbot-dns-hetzner.git
