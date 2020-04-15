@@ -1,11 +1,12 @@
 # Maintainer: DuckSoft <realducksoft at gmail dot com>
 pkgname=rime-double-pinyin-flypy-ducksoft
 pkgver=0.17
-pkgrel=1
+pkgrel=2
 pkgdesc='小鹤双拼 佛振方案 for Rime (DuckSoft 移植版)'
 arch=('x86_64')
 provides=('rime-double-pinyin-flypy')
 conflicts=('rime-double-pinyin-flypy')
+depends=('rime-stroke' 'rime-luna-pinyin')
 license=('GPL3')
 makedepends=('librime' 'rime-prelude' 'rime-essay' 'rime-stroke' 'rime-luna-pinyin')
 source=('double_pinyin_flypy.schema.yaml')
