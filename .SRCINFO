@@ -1,0 +1,14 @@
+pkgbase = python-pyspellchecker
+	pkgdesc = Pure python spell checker based on work by Peter Norvig
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://github.com/barrust/pyspellchecker
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-setuptools
+	source = python-pyspellchecker-0.5.4.tar.gz::https://github.com/barrust/pyspellchecker/archive/v0.5.4.tar.gz
+	sha256sums = 26172269c1ea76e47d36409b207760f1ba3b986e8e3d942e25d862cab8b0076b
+
+pkgname = python-pyspellchecker
+
