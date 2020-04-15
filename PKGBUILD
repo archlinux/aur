@@ -5,13 +5,13 @@ pkgname1=skyimager-gui
 projectname=skycoin
 pkgdesc="Skywire Node microSD / TFcard setup utility. skycoin.com"
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://${pkggopath}"
 license=()
 makedepends=()
 depends=()
-source=("https://github.com/Skyfleet/sky-update/releases/download/${pkgname}/${pkgname}-linux-amd64-v${pkgver}-2.tar.xz")
+source=("https://github.com/Skyfleet/sky-update/releases/download/skyimager/skyimager-linux-amd64-v0.1.0-2.tar.xz")
 sha256sums=('68e35897495b307d1c6c75fe9adf071213943122d197b38a1f9206d1d4efc99e')
 validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC'  # Moses Narrow <moe_narrow@use.startmail.com>
               '98F934F04F9334B81DFA3398913BBD5206B19620') #iketheadore skycoin <luxairlake@protonmail.com>
