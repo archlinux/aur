@@ -1,0 +1,15 @@
+pkgbase = python-fakewebcam
+	pkgdesc = The ultimate Python library in building OAuth and OpenID Connect servers.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://authlib.org/
+	arch = any
+	license = LGPLv3
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pyfakewebcam/pyfakewebcam-0.1.0.tar.gz
+	sha256sums = 2ad8ceada6605d8ba6ba76e087edf20bfce22d544fc410013067d7ce347d5694
+
+pkgname = python-fakewebcam
+	depends = python
+
