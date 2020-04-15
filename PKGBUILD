@@ -2,7 +2,7 @@
 
 pkgname=libclc
 pkgver=0.2.0+589+9aa6f35
-pkgrel=1
+pkgrel=2
 pkgdesc="Library requirements of the OpenCL C programming language"
 arch=('any')
 url="https://libclc.llvm.org/"
