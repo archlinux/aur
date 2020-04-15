@@ -1,0 +1,8 @@
+# makepkg files:
+/pkg/
+/src/
+*.pkg.tar*
+
+# xcalib-specific files:
+/xcalib/
+

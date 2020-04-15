@@ -1,5 +1,6 @@
-# Maintainer: gato_lento
-# yaroslav <proninyaroslav@mail.ru>
+# Maintainer: Vasya Novikov <vnnn91@yandex.ru> (replace "nnn" with a single "n")
+# Contributor: gato_lento
+# Contributor: yaroslav <proninyaroslav@mail.ru>
 # Contributor: Frank Ickstadt (frank dot ickstadt at gmail dot com)
 # adpoted from mOLOk since pkgver=0.7
 
@@ -12,7 +13,7 @@ url="https://github.com/OpenICC/xcalib"
 license=('GPL2')
 depends=('libxxf86vm' 'libxrandr')
 makedepends=('git')
-source=(${pkgname}::"git://github.com/OpenICC/xcalib.git")
+source=("${pkgname}::git://github.com/OpenICC/xcalib.git")
 sha256sums=('SKIP')
 
 build() {
@@ -22,8 +23,9 @@ build() {
 
 package() {
     cd ${pkgname}
-    install -d ${pkgdir}/usr/{share/xcalib,share/man/man1,bin}
+    install -d "${pkgdir}"/usr/{share/xcalib,share/man/man1,bin}
     install -m755 xcalib "${pkgdir}/usr/bin"
-    install -m644 *.icc *.icm "${pkgdir}/usr/share/xcalib/"
-    install -m644 *.1 "${pkgdir}/usr/share/man/man1/"
+    install -m644 -- *.icc *.icm "${pkgdir}/usr/share/xcalib/"
+    install -m644 -- *.1 "${pkgdir}/usr/share/man/man1/"
 }
+
