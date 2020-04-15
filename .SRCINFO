@@ -1,0 +1,17 @@
+pkgbase = libretro-bnes
+	pkgdesc = Nintendo Entertainment System cores
+	pkgver = 1
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/libretro/bnes-libretro
+	arch = x86_64
+	groups = libretro
+	license = GPL3
+	makedepends = git
+	depends = gcc-libs
+	depends = libretro-core-info
+	source = libretro-bnes::git+https://github.com/libretro/bnes-libretro.git#commit=8e26e89a93bef8eb8992d1921b539dce1792660a
+	sha256sums = SKIP
+
+pkgname = libretro-bnes
+
