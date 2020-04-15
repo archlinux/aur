@@ -1,24 +1,23 @@
 # Maintainer: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=oclint
-pkgver=0.13
-pkgrel=2
+pkgver=0.15
+pkgrel=1
 pkgdesc="A static source code analysis tool to improve quality and reduce
 defects for C, C++ and Objective-C"
 arch=('i686' 'x86_64')
 url="http://oclint.org/"
 license=('BSD')
 dependencies=('clang' 'clang-analyzer' 'llvm' 'llvm-libs' 'openssl')
-makedepends=('clang' 'cmake' 'ninja' 'subversion' 'python' 'llvm' 'libxml2'
-'countly-cpp')
+makedepends=('clang' 'cmake' 'ninja' 'subversion' 'python' 'llvm')
 source=("https://github.com/oclint/oclint/archive/v${pkgver}.tar.gz"
-        "openssl.patch")
-sha1sums=('54b8c074469d8758cf90752c14f94695acb558c9'
-          '234485f8cd210794cfb393e8b550079c33d21192')
+        "oclint-llvm-link.patch")
+sha1sums=('0951193cb2e594ac212fea05e51355be8f9b0172'
+          '73d13cad422f5bf5e8383376182ca8addbc586de')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  patch -p1 < $srcdir/openssl.patch
+  patch -p1 < $srcdir/oclint-llvm-link.patch
 }
 
 build() {
@@ -30,8 +29,8 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 
   # FIX: Copy llvm LICENSE file for bundle script
-  mkdir -p llvm
-  cp /usr/include/llvm/Support/LICENSE.TXT llvm
+  # mkdir -p llvm
+  # cp /usr/include/llvm/Support/LICENSE.TXT llvm
 
   # Run bundle scripts
   cd oclint-scripts
