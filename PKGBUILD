@@ -1,27 +1,27 @@
-# Maintainer: Ben Isenhart <bisenhar(at)uvm(dot)edu>
+# Maintainer: SuperITMan <admin(at)superitman(dot)com>
+# Contributor: Ben Isenhart <bisenhar(at)uvm(dot)edu>
 # Contributor: Seamus Connor
 # Contributor: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 # Contributor: Simon Gomizelj <simongmzlj(at)gmail(dot)com>
 # Contributor: Kyle Manna <kyle(at)kylemanna(dot)com>
 
-pkgname=slack-desktop-dark
+pkgname=slack-desktop-black-theme-night-mood
 pkgver=4.1.2
 pkgrel=1
-pkgdesc="Slack Desktop (Beta) for Linux, with dark theme patch"
+pkgdesc="Slack Desktop (Beta) for Linux, with black theme night mood patch"
 cssver=766623d
 arch=('x86_64')
 url="https://slack.com/downloads"
 license=('custom')
-depends=('alsa-lib' 'gconf' 'gtk3' 'libcurl-compat' 'libsecret' 'libxss'
-         'libxtst' 'nss' 'ttf-muli' 'glibc>=2.28-4' 'xdg-utils')
+depends=('alsa-lib' 'gconf' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss' 'ttf-muli' 'xdg-utils')
 makedepends=('asar')
 optdepends=('gnome-keyring')
-conflicts=('slack-desktop')
-source=("https://downloads.slack-edge.com/linux_releases/${pkgname%-dark}-${pkgver}-amd64.deb"
+conflicts=('slack-desktop' 'slack-desktop-dark')
+source=("https://downloads.slack-edge.com/linux_releases/${pkgname%-black-theme-night-mood}-${pkgver}-amd64.deb"
         "slack-4-${pkgver}-${pkgrel}::https://raw.githubusercontent.com/caiceA/slack-raw/${cssver}/slack-4"
         "darkify_slack.js"
         "${pkgname}.patch")
-noextract=("${pkgname%-dark}-${pkgver}-amd64.deb")
+noextract=("${pkgname%-black-theme-night-mood}-${pkgver}-amd64.deb")
 sha256sums=('70667911fff7f338d68137eaae93daf02c2c0f68f51db25a76345418d0142b28'
             'dfddb59821d99d40a2bb2795ac6109f33071d2e8ea89778cde20675a8df0ab8a'
             '13fc4ea2c9bfd113e123a7f74375f17c17a7256d7481f9acacb466088b913418'
