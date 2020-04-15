@@ -1,0 +1,10 @@
+/*.tar.xz
+/*.tar.gz
+/*.tar.zst
+/pkg
+/src
+/ffmpeg
+ffmpeg-full-git-add-svt-av1-0.8.0.patch
+ffmpeg-full-git-add-svt-hevc-1.4.3.patch
+ffmpeg-full-git-add-svt-hevc-docs-1.4.3.patch
+ffmpeg-full-git-add-svt-vp9-0.1.0.patch
