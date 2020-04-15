@@ -1,6 +1,6 @@
 pkgbase = python-spotipy
 	pkgdesc = Simple client for the Spotify Web API
-	pkgver = 2.9.0
+	pkgver = 2.11.1
 	pkgrel = 1
 	url = https://github.com/plamere/spotipy
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-spotipy
 	depends = python-simplejson
 	conflicts = python-spotipy-git
 	options = !emptydirs
-	source = https://github.com/plamere/spotipy/archive/2.9.0.tar.gz
-	sha256sums = 51197f578a56c0197b717e4bbe7a60e11aa8ad41ea15b5d8773c24fa398e42db
+	source = https://github.com/plamere/spotipy/archive/2.11.1.tar.gz
+	sha256sums = 2789c0b95d86080dbb996c88449b9afc68d38f85d6cd7193fa348d8ae4c5faf6
 
 pkgname = python-spotipy
 
