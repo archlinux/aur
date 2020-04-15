@@ -2,7 +2,7 @@
 # Contributor: mawcomw  <mawcomw@gmail.com>
 
 pkgname=limesurvey
-pkgver=4.1.16+200407
+pkgver=4.1.17+200414
 pkgrel=1
 pkgdesc="The most popular FOSS online survey tool on the web."
 depends=('php')
@@ -13,7 +13,7 @@ changelog=limesurvey.changelog
 source=(
 https://download.limesurvey.org/latest-stable-release/limesurvey${pkgver}.zip
 )
-sha256sums=('9695dc92cd7f00ae5b7da009fef2d4cbe59d7c7e8ccf383a30167521b1fc3bfb')
+sha256sums=('8ecf757914903a3f290ee621bc4c3001eb4e045ee333b48d86eaf38a18afd81d')
 
 optdepends=('apache: a supported application server'
 	    'nginx: a supported application server'
@@ -31,7 +31,7 @@ package() {
 
 
     #install license
-    install -Dm644 "${srcdir}/${pkgname}/docs/license.txt" "$pkgdir/usr/share/licenses/$pkgname/license.txt"
+    install -Dm644 "${srcdir}/${pkgname}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     cd "$_instdir"
     cp -ra "$srcdir"/limesurvey/ .
