@@ -4,7 +4,7 @@
 
 pkgbase=gstreamer-nvidia
 pkgname=(gstreamer-nvidia-libs gstreamer-nvidia)
-pkgver=1.16.2
+pkgver=1.17
 pkgrel=1
 pkgdesc="GStreamer open-source multimedia framework NVENC and NVDEC plugins"
 url="https://gstreamer.freedesktop.org/"
@@ -26,7 +26,7 @@ makedepends=(git meson neon cuda gobject-introspection)
 checkdepends=()
 options=(!emptydirs)
 _commit=a6f26408f74a60d02ce6b4f0daee392ce847055f  # tags/1.16.2^0
-source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=$_commit")
+source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git")
 sha256sums=('SKIP')
 
 _plugins_enabled="nvenc nvdec"
