@@ -1,14 +1,13 @@
-# Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
-# Contributor: Cedric MATHIEU <me.xenom @ gmail.com>
+# Maintainer: Gontier Julien <gontierjulien68@gmail.com>
 
 _name=firefox
 _channel=nightly
 _lang=en-US
-pkgname=${_name}-${_channel}
-pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
+pkgname=${_name}-${_channel}-every-day
+pkgdesc="Standalone Web Browser from Mozilla — Nightly build (Updated every day) (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 _version=77.0a1
-pkgver=77.0a177.0a1.20200415
+pkgver=77.0a1.20200415
 pkgrel=1
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -21,10 +20,11 @@ optdepends=('pulseaudio: audio support'
             'networkmanager: location detection via available WiFi networks'
             'speech-dispatcher: text-to-speech'
             'startup-notification: support for FreeDesktop Startup Notification')
+conflicts=('firefox-nightly')
 _url="https://download-installer.cdn.mozilla.net/pub/${_name}/nightly/latest-mozilla-central"
 _src="${_name}-${_version}.${_lang}.linux"
 _filename="$(date +%Y%m%d)-${_src}"
-source=("${pkgname}.desktop" 'policies.json')
+source=("${_name}-${_channel}.desktop" 'policies.json')
 source_i686=("${_filename}-i686.tar.bz2"::"${_url}/${_src}-i686.tar.bz2"
              "${_filename}-i686.tar.bz2.asc"::"${_url}/${_src}-i686.tar.bz2.asc"
              "${_filename}-i686.txt"::"${_url}/${_src}-i686.txt")
