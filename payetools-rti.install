@@ -1,3 +1,12 @@
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
 post_install() {
     note "This package embeds, for its exclusive use, an unmaintained version of lib32-krb5"
     note "The mainainer of this package accepts no liability for any consequence of this"
