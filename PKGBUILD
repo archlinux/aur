@@ -2,7 +2,7 @@
 # Maintainer: Maxime Poulin <maxpoulin64@gmail.com>
 pkgname=thelounge
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern self-hosted web IRC client'
 url='https://thelounge.chat/'
 arch=('any')
@@ -22,7 +22,7 @@ sha256sums=('c4058bb9db0ef94480203f88c3d989945c2df0a5636ba3637040ef3e58237846'
             'c92210f6ac8f01c1cd01b6b26793094cd2feea583ed21fab3564d6bcafdc7a20'
             'c609f3309f54bd6285e99ff29ca2464828bec7bbbca67243ee688bd2d605dbf0'
             '30fab63b8a4ffcfdda4c5b8d7c66822a323c4f1de6ca62b77fe9500f4befc0a5'
-            '4060efc92346c7193e699ffe1b802d85dc45daa7b5260ecdf70a6b993c30b01a')
+            'bade9cf0e9fb27328db0c9d7300e9e215f2ff79305d94f1797d946e065a714bf')
 
 package() {
     export NODE_ENV=production
