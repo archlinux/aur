@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-nlopt
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="nonlinear optimization library (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('staticlibs' '!buildflags' '!strip')
 source=("https://github.com/stevengj/nlopt/archive/v${pkgver}.tar.gz")
-sha256sums=('66d63a505187fb6f98642703bd0ef006fedcae2f9a6d1efa4f362ea919a02650')
+sha256sums=('cfa5981736dd60d0109c534984c4e13c615314d3584cf1c392a155bfe1a3b17e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
