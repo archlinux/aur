@@ -2,7 +2,7 @@
 
 _pkgname=starlette
 pkgname=python-starlette
-pkgver=0.13.2
+pkgver=0.13.3
 pkgrel=1
 pkgdesc="Starlette is a lightweight ASGI framework/toolkit, which is ideal for building high performance asyncio services."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-setuptools')
 _name=${pkgname#python-}
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('e00fce31cb3d525d2c2f31be5de168ef')
+md5sums=('94b97ed36c2d478ab410600422cc19c9')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
