@@ -16,7 +16,7 @@ depends=('cairo'  'fontconfig'          'freetype2'
          'xcb-util-keysyms' 'libxkbcommon-x11')
 makedepends=('premake-git' 'git' 'python')
 provides=('surge-synthesizer' 'surge-synthesizer-bin')
-conflicts=('surge-synthesizer' 'surge-synthesizer-bin')
+conflicts=('surge-synthesizer' 'surge-synthesizer-bin' 'surge')
 source=("git+https://github.com/surge-synthesizer/surge.git")
 options=()
 md5sums=('SKIP')

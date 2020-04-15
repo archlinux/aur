@@ -24,6 +24,7 @@ pkgbase = surge-synthesizer-git
 	provides = surge-synthesizer-bin
 	conflicts = surge-synthesizer
 	conflicts = surge-synthesizer-bin
+	conflicts = surge
 	source = git+https://github.com/surge-synthesizer/surge.git
 	md5sums = SKIP
 
