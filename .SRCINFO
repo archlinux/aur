@@ -1,7 +1,7 @@
 pkgbase = tuxedo-keyboard
 	pkgdesc = Keyboard Backlight Driver from TUXEDO Computers
-	pkgver = 2.0.0
-	pkgrel = 11
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = https://github.com/tuxedocomputers/tuxedo-keyboard
 	arch = x86_64
 	license = GPL
