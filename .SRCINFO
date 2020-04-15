@@ -13,7 +13,7 @@ pkgbase = adcli
 	makedepends = xmlto
 	depends = krb5
 	depends = openldap
-	source = git+https://anongit.freedesktop.org/git/realmd/adcli.git#commit=0c027538f398b3823bedbfbf5f388ad97784a0ec
+	source = git+https://gitlab.freedesktop.org/realmd/adcli.git#commit=0c027538f398b3823bedbfbf5f388ad97784a0ec
 	validpgpkeys = C0F67099B808FB063E2C81117BFB1108D92765AF
 	sha256sums = SKIP
 

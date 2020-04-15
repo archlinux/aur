@@ -9,7 +9,7 @@ license=(GPL3)
 depends=(krb5 openldap)
 makedepends=(docbook-xml docbook-xsl git intltool xmlto)
 _commit=0c027538f398b3823bedbfbf5f388ad97784a0ec
-source=("git+https://anongit.freedesktop.org/git/realmd/adcli.git#commit=$_commit")
+source=("git+https://gitlab.freedesktop.org/realmd/adcli.git#commit=$_commit")
 sha256sums=('SKIP')
 #source=("https://www.freedesktop.org/software/realmd/releases/$pkgname-$pkgver.tar.gz"
 #        "https://www.freedesktop.org/software/realmd/releases/$pkgname-$pkgver.tar.gz.sig")
