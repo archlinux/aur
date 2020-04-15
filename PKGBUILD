@@ -52,7 +52,7 @@ sha1sums_x86_64=('67a80e016612974805a151badefe98d03b233f72')
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
 package() {
-  cd jre-${pkgver/+*/}
+  cd jre-${pkgver/+*/}-full
 
   install -dm 755 "${pkgdir}/${_jvmdir}"
   cp -a . "${pkgdir}/${_jvmdir}/"
