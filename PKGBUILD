@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://smallstep.com/cli"
 license=('Apache')
 
-source=("https://github.com/smallstep/cli/releases/download/v${pkgver}/step_${pkgver}_linux_amd64.tar.gz"
+source=("https://github.com/smallstep/cli/releases/download/v${pkgver}/step_linux_${pkgver}_amd64.tar.gz"
 	"https://github.com/smallstep/cli/raw/v${pkgver}/autocomplete/bash_autocomplete"
 	"https://github.com/smallstep/cli/raw/v${pkgver}/autocomplete/zsh_autocomplete")
 
