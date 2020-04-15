@@ -10,7 +10,7 @@ pkgname=('starlabstheme-backgrounds-git'
          'starlabstheme-session-git'
          'starlabstheme-sounds-git')
 pkgbase=starlabstheme-git
-pkgver=1.1.3.r1345.d00eca8b0d
+pkgver=1.1.8.r1356.b0c6e0b208
 pkgrel=1
 pkgdesc="Star Labs GNOME Shell and GTK Theme"
 arch=('any')
@@ -35,13 +35,10 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgbase%-git}"
-	git submodule init extensions/gnome-shell-extension-lockkeys
-	git config submodule.gnome-shell-extension-lockkeys.url \
+	git submodule init
+	git config submodule."extensions/gnome-shell-extension-lockkeys".url \
 		"$srcdir/gnome-shell-extension-lockkeys"
-	git submodule update
-
-	git submodule init upstream/yaru
-	git config submodule.yaru.url "$srcdir/yaru"
+	git config submodule."upstream/yaru".url "$srcdir/yaru"
 	git submodule update
 }
 

@@ -1,6 +1,6 @@
 pkgbase = starlabstheme-git
 	pkgdesc = Star Labs GNOME Shell and GTK Theme
-	pkgver = 1.1.3.r1345.d00eca8b0d
+	pkgver = 1.1.8.r1356.b0c6e0b208
 	pkgrel = 1
 	url = https://starlabs.systems
 	arch = any
