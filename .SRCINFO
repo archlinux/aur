@@ -1,6 +1,6 @@
 pkgbase = dbus-action
 	pkgdesc = Watch D-Bus to action configured commands on specific events
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/bulletmark/dbus-action
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = dbus-action
 	depends = python-dbus
 	depends = python-ruamel-yaml
 	backup = etc/dbus-action.conf
-	source = dbus-action-1.0.tar.gz::https://github.com/bulletmark/dbus-action/archive/1.0.tar.gz
-	md5sums = bc39aad2989bba541b467f5426ef3334
+	source = dbus-action-1.1.tar.gz::https://github.com/bulletmark/dbus-action/archive/1.1.tar.gz
+	md5sums = bdc1f215f186149db81e1d420e753996
 
 pkgname = dbus-action
 

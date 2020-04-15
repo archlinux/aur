@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=dbus-action
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Watch D-Bus to action configured commands on specific events"
 url="https://github.com/bulletmark/$pkgname"
@@ -10,7 +10,7 @@ depends=("python>=3.6" "gtk3" "python-gobject" "python-dbus"
 "python-ruamel-yaml")
 backup=("etc/$pkgname.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-md5sums=('bc39aad2989bba541b467f5426ef3334')
+md5sums=('bdc1f215f186149db81e1d420e753996')
 
 package() {
   cd "$pkgname-$pkgver"
