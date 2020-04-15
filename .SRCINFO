@@ -8,7 +8,7 @@ pkgbase = gstreamer-nvidia
 	makedepends = git
 	makedepends = meson
 	makedepends = neon
-	makedepends = cuda-10.1
+	makedepends = cuda
 	makedepends = gobject-introspection
 	depends = gst-plugins-base-libs
 	depends = orc
@@ -26,6 +26,6 @@ pkgname = gstreamer-nvidia-libs
 
 pkgname = gstreamer-nvidia
 	depends = gstreamer-nvidia-libs=1.16.2
-	depends = cuda-10.1
+	depends = cuda
 	depends = neon
 

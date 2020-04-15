@@ -11,7 +11,7 @@ url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
 license=(LGPL)
 depends=(gst-plugins-base-libs orc libdrm libx11 libgudev libusb libvdpau)
-makedepends=(git meson neon cuda-10.1 gobject-introspection)
+makedepends=(git meson neon cuda gobject-introspection)
 
 #~ mjpegtools curl chromaprint libmms faad2 libdca libdvdnav
 #~ libmodplug libgme nettle libkate wayland libofa openjpeg2 libwebp
@@ -142,7 +142,7 @@ package_gstreamer-nvidia-libs() {
 }
 
 package_gstreamer-nvidia() {
-  depends=("gstreamer-nvidia-libs=$pkgver" cuda-10.1 neon)
+  depends=("gstreamer-nvidia-libs=$pkgver" cuda neon)
 
 #~ gst-plugins-good
 #~ aom libass libbs2b bzip2 chromaprint pango lcms2 curl libxml2
