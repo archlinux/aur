@@ -14,7 +14,7 @@ source=(
 "readonly-cache.service"
 "readonlycache.go"
 "PKGBUILD.sig")
-sha256sums=('bf35dea37bd88c13be6483ad84a6e18c6b78c9711d88ea7bcbe984fb6193aeef'
+sha256sums=('ead0e5aab4196336060e41e3792291b173f0140034db638b9715c6018f49f6f1'
             'ffd37e7bf091d51b45ea8ae546c94ee9353088ba36c722e4a09e55ecc7edec88'
             '78818a89c5ea6fa96d59f7daddbdf05eda92f1ca211c29957331609b0017a308'
             'ccfe41daa38a45b0498cc6dd9f6636db4a7e835ee5c48c3e952cac038006b5f4'
