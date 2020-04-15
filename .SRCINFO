@@ -1,6 +1,6 @@
 pkgbase = linux-amd-staging-drm-next-git
 	pkgdesc = Linux kernel with AMDGPU DC patches
-	pkgver = 5.5.875752.a90553955f0c
+	pkgver = 5.7.904365.5ca28f3f536f0
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/~agd5f/linux/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = linux-amd-staging-drm-next-git
 	makedepends = kmod
 	makedepends = libelf
 	makedepends = xmlto
-	makedepends = python-sphinx
+	makedepends = python-sphinx-2
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
@@ -18,7 +18,7 @@ pkgbase = linux-amd-staging-drm-next-git
 	source = linux-amd-staging-drm-next-git::git://people.freedesktop.org/~agd5f/linux#branch=amd-staging-drm-next
 	source = config
 	sha256sums = SKIP
-	sha256sums = 88119dad6de83d020a6c65b39b9e2854024d6ec333d2fda6868f7f171e8f5b2b
+	sha256sums = 6ac452e2124f92747a57c5a50e11ca2f1e8112669845b4431311545c7fd2a36c
 
 pkgname = linux-amd-staging-drm-next-git
 	pkgdesc = The Linux kernel with AMDGPU DC patches kernel and modules
@@ -27,10 +27,14 @@ pkgname = linux-amd-staging-drm-next-git
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
 
-pkgname = linux-amd-staging-drm-next-git-headers
+pkgname = linux-amd-staging-drm-next-headers-git
 	pkgdesc = Headers and scripts for building modules for the Linux kernel with AMDGPU DC patches kernel
 
-pkgname = linux-amd-staging-drm-next-git-docs
+pkgname = linux-amd-staging-drm-next-docs-git
 	pkgdesc = Documentation for the Linux kernel with AMDGPU DC patches kernel
 
