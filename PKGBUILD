@@ -1,19 +1,22 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontship-git
-pkgver=0.0.0.r0.g4cbb5ee
+pkgver=0.0.1.r15.g3990d07
 pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
 url="https://github.com/theleagueof/${pkgname%-git}"
 license=('AGPL3')
-depends=('font-v'
+depends=('entr'
+         'font-v'
          'git'
+         'libarchive'
          'make'
          'python'
-         'python-ufonormalizer'
+         'python-click'
          'python-fontmake'
          'python-fonttools'
+         'python-ufonormalizer'
          'zsh')
 provides=("${pkgname%-git}")
 conflicts=("${provides[@]}")
