@@ -1,0 +1,19 @@
+pkgbase = plasma5-applets-nx-audio
+	pkgdesc = Audio applet from NX Desktop, by Nitrux SA.
+	pkgver = r20.c06a670
+	pkgrel = 1
+	url = https://github.com/nx-desktop/nx-audio-applet.git
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = kdesdk-meta
+	depends = plasma-workspace
+	depends = qt5-base
+	provides = plasma5-applets-nx-audio
+	conflicts = plasma5-applets-nx-audio
+	source = git+https://github.com/nx-desktop/nx-audio-applet.git#branch=master
+	md5sums = SKIP
+
+pkgname = plasma5-applets-nx-audio
+
