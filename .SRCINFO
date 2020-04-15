@@ -1,11 +1,14 @@
 pkgbase = tuxedo-cc-wmi
 	pkgdesc = WMI method control for TUXEDO laptops
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tuxedocomputers.com
 	arch = x86_64
 	license = GPL
 	depends = dkms
+	optdepends = linux-headers: build modules against Arch kernel
+	optdepends = linux-lts-headers: build modules against LTS kernel
+	optdepends = linux-zen-headers: build modules against ZEN kernel
 	conflicts = tuxedo-wmi
 	conflicts = tuxedo-wmi-dkms
 	source = http://deb.tuxedocomputers.com/ubuntu/pool/main/t/tuxedo-cc-wmi/tuxedo-cc-wmi_0.1.3_all.deb
