@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=vgrive
-pkgver=1.5.3
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Google Drive client made in Vala"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3' 'granite' 'libsoup')
 makedepends=('meson' 'vala' 'cmake' 'appstream-glib')
 optdepends=('libunity' 'libappindicator-gtk3')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('7e1b0d8eba6019287f4de2ec0bf7028e233918a01603f9f6e528066c194a352e')
+sha256sums=('f5f6ca93d8122549789faf1e6016277f0d36d5df5c2cf138448e2c0f1dd26eac')
 
 build() {
 	arch-meson "VGrive-$pkgver" build
