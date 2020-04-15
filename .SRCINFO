@@ -1,12 +1,13 @@
 pkgbase = python-flask-paginate
 	pkgdesc = A simple paginate extension for flask
-	pkgver = 0.5.5
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://pypi.org/project/flask-paginate
 	arch = any
 	license = BSD
 	makedepends = python-pip
-	source = https://files.pythonhosted.org/packages/a2/5a/133899485b67440d0bddbead5f90191f9bbb3c60b600dbddd184f85c2c1a/flask_paginate-0.5.5-py2.py3-none-any.whl
-	sha512sums = ffba99a5167c55faa3eee1afcb71313fc1bce10ad47949a728c51defb8124c8becfcae3cb2ab03780bf76bbebb6a42b2689358ab8c4dd37075c3b94ab27f088e
+	source = https://files.pythonhosted.org/packages/py2.py3/f/flask-paginate/flask_paginate-0.6.0-py2.py3-none-any.whl
+	sha512sums = b05513b792a9c1abaf0e53c0d9d80d401f3623bc6f50751f6d0ad9b2b3d5f1151157323d41559dd7908898164936084eb2a9a725c3ab890755e88196efd56642
 
 pkgname = python-flask-paginate
+
