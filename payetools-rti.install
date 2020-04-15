@@ -3,3 +3,7 @@ post_install() {
     note "The mainainer of this package accepts no liability for any consequence of this"
     note "Please complain to the editor of the software so they fix it."
 }
+
+post_upgrade() {
+    post_install
+}
