@@ -14,6 +14,8 @@ depends=('java-runtime-common>=3' 'java-environment-common=3'
          'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'libnet'
          'freetype2' 'giflib' 'libelf')
 
+#CARCH=armv7h
+
 case "$CARCH" in
     armv?h) _arch='aarch32hf'
         _build=11.37.48
@@ -26,16 +28,16 @@ case "$CARCH" in
         provides=("java-environment=13" "java-runtime=13")
         ;;
     i686) _arch='i686'
-        _build=14.27.1
+        _build=14.28.1
         pkgver=14
-        sha256sums=('751cfb6c439b718e8346357623e7882cd798ca4fb70a2efd23a712fcfd892d22')
+        sha256sums=('bc29244e547d5301ac2054d581cfefb37c33e427c58acc12b56fbb3c91ad3d60')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_i686.tar.gz")
         provides=("java-environment=14" "java-runtime=14")
         ;;
     x86_64) _arch='x64'
-        _build=14.27.1
+        _build=14.28.1
         pkgver=14
-        sha256sums=('e92b27bcaed8190af798409895153701cd9aebe2b91de88dd76fc39dad1cbbd3')
+        sha256sums=('b7f0a9df24d6f355cf1611b7b3b8b4d5da514b8d3e1815b643d6b8c064f1dc69')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_x64.tar.gz")
         provides=("java-environment=14" "java-runtime=14")
         ;;
