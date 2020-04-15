@@ -1,0 +1,5 @@
+post_install() {
+    note "This package embeds, for its exclusive use, an unmaintained version of lib32-krb5"
+    note "The mainainer of this package accepts no liability for any consequence of this"
+    note "Please complain to the editor of the software so they fix it."
+}
