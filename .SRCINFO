@@ -11,9 +11,12 @@ pkgbase = rcraid-dkms
 	source = manual://raid_linux_driver_8_01_00_039_public.zip
 	source = dkms.conf
 	source = linux-4.15.patch
+	source = linux-5.4.patch
+	source = linux-5.6.patch
 	md5sums = f5692d2ef952f8c903af90cdd9eb3ce6
 	md5sums = 3a14dcc84daf257a62727bcde1882edf
 	md5sums = 461866e715a1fded49a3f7c043a173d7
+	md5sums = cac98de11cc5bd61fff72ff1c8cf363d
+	md5sums = bd1ef2b6bcefaec0abf7a832e937f01a
 
 pkgname = rcraid-dkms
-

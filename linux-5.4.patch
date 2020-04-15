@@ -1,0 +1,15 @@
+--- old/Makefile	2020-04-15 19:29:43.713384470 +0200
++++ new/Makefile	2020-04-15 19:30:44.170050346 +0200
+@@ -57,10 +57,10 @@
+ .PHONY: install bbanner ibanner
+ 
+ all: bbanner
+-	$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) modules
++	$(MAKE) -C $(KDIR) M=$(PWD) modules
+ 
+ clean:
+-	@rm -f *.o *.ko vers.c .*.cmd .*.d 
++	@rm -f *.o *.ko vers.c .*.cmd .*.d
+ 	@rm -f rcraid.mod.c Module.symvers Modules.symvers
+ 	@rm -rf .tmp_versions Module.markers modules.order
+ 

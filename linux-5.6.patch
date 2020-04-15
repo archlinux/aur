@@ -1,0 +1,1113 @@
+--- old/rc_init.c	2020-04-15 19:38:42.143378067 +0200
++++ new/rc_init.c	2020-04-15 18:50:53.643411826 +0200
+@@ -49,7 +49,7 @@
+ #include <linux/sysctl.h>
+ #include <linux/pm_runtime.h>
+ 
+-// FIXME: some older kernels still supported by RAIDCore do not have 
++// FIXME: some older kernels still supported by RAIDCore do not have
+ //        DMA_BIT_MASK().  Remove once support for them has been dropped.
+ #ifndef DMA_BIT_MASK
+ #define DMA_BIT_MASK(n) (((n) == 64) ? ~0ULL : ((1ULL<<(n))-1))
+@@ -83,7 +83,7 @@
+ #endif
+ MODULE_PARM_DESC (tag_q_depth, "individual tagged command queue depth");
+ 
+-static int max_xfer = 448; // AHCI PRD limit is 224K or 448 sectors 
++static int max_xfer = 448; // AHCI PRD limit is 224K or 448 sectors
+ #ifdef module_param_named
+ module_param_named(max_xfer, max_xfer, int, 0444);
+ #else
+@@ -183,7 +183,7 @@
+ #else
+ int         rc_queue_cmd_lck(struct scsi_cmnd * scp, void (*CompletionRoutine) (struct scsi_cmnd *));
+ #endif
+-			 
++
+ #ifdef RC_AHCI_SUPPORT
+ // Additions for AHCI driver
+ static inline void rc_ahci_disable_irq(rc_adapter_t *adapter);
+@@ -332,7 +332,7 @@
+ 	.proc_name =               RC_DRIVER_NAME,
+ 	.proc_dir =                NULL,
+ 	.info =                    rc_info,
+-	.ioctl =                   rc_ioctl,    
++	.ioctl =                   rc_ioctl,
+ 	.queuecommand =            rc_queue_cmd,
+ 	.bios_param =              rc_bios_params,
+ 	.can_queue =               1,
+@@ -364,7 +364,7 @@
+ 	extern char       *rc_ident;
+ 
+ 	rc_printk(RC_NOTE, "%s %s raid driver version %s build_number %s built "
+-		  "%s\n", VER_COMPANYNAME_STR, RC_DRIVER_NAME, 
++		  "%s\n", VER_COMPANYNAME_STR, RC_DRIVER_NAME,
+                   RC_DRIVER_VERSION, RC_BUILD_NUMBER, RC_DRIVER_BUILD_DATE);
+ 	rc_printk(RC_NOTE, "%s %s\n", RC_DRIVER_NAME, rc_ident);
+ 
+@@ -387,7 +387,7 @@
+ 	use_swl |= RC_SHWL_TYPE_CARD; // always support cards
+ 
+ 	rc_printk(RC_NOTE, "rcraid: cmd_q_depth %d, tag_q_depth %d, max_xfer "
+-                  "%d, use_swl 0x%x\n", cmd_q_depth, tag_q_depth, max_xfer, 
++                  "%d, use_swl 0x%x\n", cmd_q_depth, tag_q_depth, max_xfer,
+                   use_swl);
+ 
+ 	rc_msg_level += debug;
+@@ -404,7 +404,7 @@
+ 	RC_EnableDIPM = RCRAID_DEFAULT_DIPM;
+ 	RC_EnableHIPM = RCRAID_DEFAULT_HIPM;
+     RC_EnableAN = RCRAID_DEFAULT_AN;
+-    RC_EnableNCQ = RCRAID_DEFAULT_NCQ;    
++    RC_EnableNCQ = RCRAID_DEFAULT_NCQ;
+     RC_EnableZPODD = RCRAID_DEFAULT_ZPODD;
+ 
+     // Setup ACPI work handler
+@@ -835,7 +835,7 @@
+ 	if ((adapter_count && rc_adapter_count == rc_state.num_hba) ||
+         (rc_adapter_count == 999 && adapter_count == rc_state.num_hba)) {
+ 		int err;
+-        
++
+ 		err = rc_init_host(dev);
+ 		if (!err) {
+ 			if (misc_register(&rccfg_api_dev))
+@@ -917,7 +917,7 @@
+ void rc_start_all_threads(void);
+ void rc_msg_suspend_work(rc_adapter_t *adapter);
+ void rc_msg_init_tasklets(rc_softstate_t *state);
+-void rc_msg_kill_tasklets(rc_softstate_t *state);  
++void rc_msg_kill_tasklets(rc_softstate_t *state);
+ void rc_msg_suspend(rc_softstate_t *state, rc_adapter_t* adapter);
+ void rc_msg_free_all_dma_memory(rc_adapter_t   *adapter);
+ 
+@@ -931,7 +931,7 @@
+  */
+ static int rcraid_suspend_one(struct pci_dev *pdev, pm_message_t mesg)
+ {
+-    
++
+     rc_softstate_t  *state;
+     rc_adapter_t	*adapter;
+     int             i;
+@@ -945,7 +945,7 @@
+     //
+     // Looks like a race condition somewhere... this delay
+     // seems to solve the issue with suspend/hibernate cycles.
+-    // Placement of the delay seems to matter -- after 
++    // Placement of the delay seems to matter -- after
+     // scsi_block_requests() doesn't work...
+     //
+     msleep(rc_suspend_delay);
+@@ -978,12 +978,12 @@
+     //
+ 
+     state = &rc_state;
+-    
++
+     rc_printk(RC_NOTE, RC_DRIVER_NAME ": suspend pdev %p\n",
+         pdev);
+-    
++
+     pdev->dev.power.power_state = mesg;
+-    
++
+     rc_printk(RC_ERROR, "%s: event=%d \n",__FUNCTION__, mesg.event);
+ 
+     //
+@@ -1008,7 +1008,7 @@
+     for (i = rc_state.num_hba -1; i > 0; i--)
+     {
+         adapter = rc_dev[i];
+-        
++
+         pci_save_state(adapter->pdev);
+ 
+         pci_disable_device(adapter->pdev);
+@@ -1034,7 +1034,7 @@
+ 	pci_disable_device(pdev);
+ 
+ 	pci_set_power_state(pdev, pci_choose_state(pdev, mesg));
+-    
++
+     state->adapter_is_suspended |= (1 << adapter->instance);
+ 
+     return 0;
+@@ -1079,7 +1079,7 @@
+     // If we made it here then we're the master adapter/controller
+     //
+ 
+-    state = &rc_state;    
++    state = &rc_state;
+ 
+     //
+     // Bring up the slave controllers first
+@@ -1132,7 +1132,7 @@
+     {
+ 		(*adapter->version->start_func)(adapter);
+     }
+-    
++
+     rc_msg_init_tasklets(state);
+ 
+     rc_start_all_threads();
+@@ -1180,7 +1180,7 @@
+ 
+ #ifdef RC_AHCI_SUPPORT
+ #define ICH6_REG_OFFSET_GHC     0x04    // Global HBA Control register
+-#define AHCI_GHC_IE             (1 << 1)  // global IRQ enable 
++#define AHCI_GHC_IE             (1 << 1)  // global IRQ enable
+ /*
+  * disable HW interrupts on all ports on an adapter
+  */
+@@ -1344,9 +1344,9 @@
+ {
+ 	rc_mpt2_disable_irq(adapter);
+ 
+-	if (pci_enable_msi(adapter->pdev)) 
++	if (pci_enable_msi(adapter->pdev))
+ 		rc_printk(RC_WARN, "%s: pci_enable_msi failed\n",__FUNCTION__);
+-	else 
++	else
+ 		adapter->hardware.ismsi = 1;
+ 
+ 	return 0;
+@@ -1406,7 +1406,7 @@
+ 
+     // If we are suspended(controller is not restarted) block any IO from coming in
+     if (  (rc_state.is_suspended == 1) || ( (rc_state.state & SHUTDOWN) == SHUTDOWN) ) {
+-        return SCSI_MLQUEUE_DEVICE_BUSY; 
++        return SCSI_MLQUEUE_DEVICE_BUSY;
+     }
+ 
+ 	return(rc_msg_send_srb(scp));
+@@ -1554,13 +1554,12 @@
+     return single_open(file, rc_proc_show_hex, &RC_EnableDIPM);
+ }
+ 
+-static const struct file_operations rc_proc_dipm_fops = {
+-    .owner      = THIS_MODULE,
+-    .open       = rc_proc_dipm_open,
+-    .read       = seq_read,
+-    .llseek     = seq_lseek,
+-    .write	    = rc_proc_write_dipm,
+-    .release    = single_release,
++static const struct proc_ops rc_proc_dipm_fops = {
++    .proc_open    = rc_proc_dipm_open,
++    .proc_read    = seq_read,
++    .proc_lseek   = seq_lseek,
++    .proc_write   = rc_proc_write_dipm,
++    .proc_release = single_release,
+ };
+ 
+ static ssize_t
+@@ -1586,13 +1585,12 @@
+     return single_open(file, rc_proc_show_hex, &RC_EnableHIPM);
+ }
+ 
+-static const struct file_operations rc_proc_hipm_fops = {
+-    .owner      = THIS_MODULE,
+-    .open       = rc_proc_hipm_open,
+-    .read       = seq_read,
+-    .llseek     = seq_lseek,
+-    .write	    = rc_proc_write_hipm,
+-    .release    = single_release,
++static const struct proc_ops rc_proc_hipm_fops = {
++    .proc_open    = rc_proc_hipm_open,
++    .proc_read    = seq_read,
++    .proc_lseek   = seq_lseek,
++    .proc_write   = rc_proc_write_hipm,
++    .proc_release = single_release,
+ };
+ 
+ static ssize_t
+@@ -1623,7 +1621,7 @@
+ static int
+ rc_proc_debug_show(struct seq_file *sfile, void *v)
+ {
+-    seq_printf(sfile, "%d %d %d\n", rc_msg_level, RC_PANIC, RC_TAIL - 1); 
++    seq_printf(sfile, "%d %d %d\n", rc_msg_level, RC_PANIC, RC_TAIL - 1);
+     return 0;
+ }
+ 
+@@ -1633,13 +1631,12 @@
+     return single_open(file, rc_proc_debug_show, NULL);
+ }
+ 
+-static const struct file_operations rc_proc_debug_fops = {
+-    .owner      = THIS_MODULE,
+-    .open       = rc_proc_debug_open,
+-    .read       = seq_read,
+-    .llseek     = seq_lseek,
+-    .write      = rc_proc_write_debug,
+-    .release    = single_release,
++static const struct proc_ops rc_proc_debug_fops = {
++    .proc_open    = rc_proc_debug_open,
++    .proc_read    = seq_read,
++    .proc_lseek   = seq_lseek,
++    .proc_write   = rc_proc_write_debug,
++    .proc_release = single_release,
+ };
+ 
+ static ssize_t
+@@ -1657,7 +1654,7 @@
+     if (num >= 0 && num < 0xFFFFFFFF)
+     {
+         rc_send_arg_t   args;
+-        
++
+         RC_EnableAN = num;
+         memset(&args, 0, sizeof(args));
+         args.call_type = RC_CTS_CHANGE_PARAM;
+@@ -1674,13 +1671,12 @@
+     return single_open(file, rc_proc_show_hex, &RC_EnableAN);
+ }
+ 
+-static const struct file_operations rc_proc_an_fops = {
+-    .owner      = THIS_MODULE,
+-    .open       = rc_proc_an_open,
+-    .read       = seq_read,
+-    .llseek     = seq_lseek,
+-    .write	= rc_proc_write_an,
+-    .release    = single_release,
++static const struct proc_ops rc_proc_an_fops = {
++    .proc_open    = rc_proc_an_open,
++    .proc_read    = seq_read,
++    .proc_lseek   = seq_lseek,
++    .proc_write   = rc_proc_write_an,
++    .proc_release = single_release,
+ };
+ 
+ static ssize_t
+@@ -1698,7 +1694,7 @@
+     if (num >= 0 && num <= 1)
+     {
+         rc_send_arg_t   args;
+-        
++
+         RC_EnableZPODD = num;
+         memset(&args, 0, sizeof(args));
+         args.call_type = RC_CTS_CHANGE_PARAM;
+@@ -1716,20 +1712,19 @@
+     return single_open(file, rc_proc_show_hex, &RC_EnableZPODD);
+ }
+ 
+-static const struct file_operations rc_proc_zpodd_fops = {
+-    .owner      = THIS_MODULE,
+-    .open       = rc_proc_zpodd_open,
+-    .read       = seq_read,
+-    .llseek     = seq_lseek,
+-    .write	    = rc_proc_write_zpodd,
+-    .release    = single_release,
++static const struct proc_ops rc_proc_zpodd_fops = {
++    .proc_open    = rc_proc_zpodd_open,
++    .proc_read    = seq_read,
++    .proc_lseek   = seq_lseek,
++    .proc_write   = rc_proc_write_zpodd,
++    .proc_release = single_release,
+ };
+ 
+ static ssize_t
+ rc_proc_write_delay(struct file *file, const char __user *buffer,
+                     size_t count, loff_t *off)
+ {
+-    int			        err;
++    int                 err;
+     unsigned long       num;
+ 
+     if (!capable(CAP_SYS_ADMIN) || !capable(CAP_SYS_RAWIO))
+@@ -1747,13 +1742,12 @@
+     return single_open(file, rc_proc_show_int, &rc_suspend_delay);
+ }
+ 
+-static const struct file_operations rc_proc_delay_fops = {
+-    .owner      = THIS_MODULE,
+-    .open       = rc_proc_delay_open,
+-    .read       = seq_read,
+-    .llseek     = seq_lseek,
+-    .write	    = rc_proc_write_delay,
+-    .release    = single_release,
++static const struct proc_ops rc_proc_delay_fops = {
++    .proc_open    = rc_proc_delay_open,
++    .proc_read    = seq_read,
++    .proc_lseek   = seq_lseek,
++    .proc_write   = rc_proc_write_delay,
++    .proc_release = single_release,
+ };
+ 
+ static int
+@@ -1769,12 +1763,11 @@
+     return single_open(file, rc_proc_version_show, NULL);
+ }
+ 
+-static const struct file_operations rc_proc_version_fops = {
+-    .owner      = THIS_MODULE,
+-    .open       = rc_proc_version_open,
+-    .read       = seq_read,
+-    .llseek     = seq_lseek,
+-    .release    = single_release,
++static const struct proc_ops rc_proc_version_fops = {
++    .proc_open    = rc_proc_version_open,
++    .proc_read    = seq_read,
++    .proc_lseek   = seq_lseek,
++    .proc_release = single_release,
+ };
+ 
+ static int
+@@ -1783,7 +1776,7 @@
+     char *kbuf;
+ 
+     kbuf = kmalloc(8192, GFP_KERNEL);
+-    
++
+     if (kbuf)
+     {
+ 	    int	ret;
+@@ -1804,19 +1797,18 @@
+     return single_open(file, rc_proc_stats_show, NULL);
+ }
+ 
+-static const struct file_operations rc_proc_stats_fops = {
+-    .owner      = THIS_MODULE,
+-    .open       = rc_proc_stats_open,
+-    .read       = seq_read,
+-    .llseek     = seq_lseek,
+-    .release    = single_release,
++static const struct proc_ops rc_proc_stats_fops = {
++    .proc_open    = rc_proc_stats_open,
++    .proc_read    = seq_read,
++    .proc_lseek   = seq_lseek,
++    .proc_release = single_release,
+ };
+ 
+ static struct proc_dir_entry *proc_parent = NULL;
+ 
+ static const struct rc_proc_entry {
+-    const char                    *name;
+-    const struct file_operations  *fops;
++    const char            *name;
++    const struct proc_ops *fops;
+ } rc_proc_entries[] = {
+     { "dipm", &rc_proc_dipm_fops },
+     { "hipm", &rc_proc_hipm_fops },
+@@ -1835,7 +1827,7 @@
+     if (proc_parent == NULL)
+     {
+         proc_parent = proc_mkdir("scsi/rcraid", NULL);
+-    
++
+         if (proc_parent)
+         {
+             const struct rc_proc_entry    *rpe = rc_proc_entries;
+@@ -2001,7 +1993,7 @@
+  *
+  * Postconditions
+  *  For reads
+- *  - if Offset > 0 return next portion of previous built buffer, or 0 if all 
++ *  - if Offset > 0 return next portion of previous built buffer, or 0 if all
+  *      of the buffer has been returned
+  *  - if Offset == 0 Write data to ProcBuffer and set the Startptr to
+  *  beginning of ProcBuffer, return the number of characters written.
+@@ -2037,14 +2029,14 @@
+             kfree(info_buffer);
+         }
+         info_buffer = NULL;
+-        info_buffer_size = 0;    
++        info_buffer_size = 0;
+     }
+     //End of Request
+     else if (offset > info_buffer_size - 1) {
+         if (info_buffer != NULL) {
+-            kfree(info_buffer);         
++            kfree(info_buffer);
+         }
+-        info_buffer = NULL; 
++        info_buffer = NULL;
+         info_buffer_size = 0;
+         return (0);
+     }
+@@ -2055,7 +2047,7 @@
+         memcpy(buf, &info_buffer[offset], length);
+         return length;
+     }
+-    
++
+     size = 4096;
+     info_buffer = kmalloc(size, GFP_KERNEL);
+     if (info_buffer == NULL) {
+@@ -2063,8 +2055,8 @@
+             __LINE__);
+         return length;
+     }
+-    
+-    //This is the first time being called for a request build the string	
++
++    //This is the first time being called for a request build the string
+ 	cp = info_buffer;
+ 	len = 0;
+ 	cnt = 0;
+@@ -2087,14 +2079,14 @@
+ 	len = rc_mop_stats(cp, size - cnt);
+ 	cnt += len;
+ 
+-    
++
+     info_buffer_size = (cnt);
+-    
+-    //return minimum of actual string size or max buffer length (1024 bytes)    
++
++    //return minimum of actual string size or max buffer length (1024 bytes)
+     length = min_t(int, cnt, buf_size);
+     memcpy(buf, &info_buffer[0], length);
+     *start = buf;
+-    
++
+ 	return (length);
+ }
+ 
+@@ -2192,7 +2184,7 @@
+ 		cnt += len;
+ 		*start = buf;
+ 		break;
+-        
++
+     case RC_PROC_NCQ:
+ 		*peof = 1;
+ 		if (offset)
+@@ -2203,7 +2195,7 @@
+ 		cnt += len;
+ 		*start = buf;
+ 		break;
+-        
++
+     case RC_PROC_ZPODD:
+         *peof = 1;
+         if (offset)
+@@ -2318,7 +2310,7 @@
+ 		}
+ 		ret = count;
+ 		break;
+-        
++
+     case RC_PROC_NCQ:
+ 		/* set NCQ */
+ 		page[count] = '\0';
+@@ -2329,7 +2321,7 @@
+ 		}
+ 		ret = count;
+ 		break;
+-        
++
+     case RC_PROC_ZPODD:
+         /* set ZPODD */
+         page[count] = '\0';
+@@ -2509,7 +2501,7 @@
+ static int rc_notify_reboot(struct notifier_block *this, unsigned long code,
+ 			    void *x)
+ {
+-	if ((code == SYS_DOWN) || (code == SYS_HALT) || (code == SYS_POWER_OFF)) 
++	if ((code == SYS_DOWN) || (code == SYS_HALT) || (code == SYS_POWER_OFF))
+ 		printk(KERN_INFO "%s: stopping all RAIDCore (tm) devices.\n", __FUNCTION__);
+ 	return NOTIFY_DONE;
+ }
+@@ -2628,21 +2620,21 @@
+ 	  .maxlen	= sizeof(unsigned int),
+ 	  .mode		= 0644,
+ 	  .proc_handler	= &proc_dointvec
+-	},     
++	},
+     {
+       .procname = "zpodd",
+       .data     = &RC_EnableZPODD,
+ 	  .maxlen	= sizeof(unsigned int),
+ 	  .mode		= 0644,
+ 	  .proc_handler	= &proc_dointvec
+-	},     
++	},
+     {
+       .procname = "suspend_delay",
+       .data     = &rc_suspend_delay,
+ 	  .maxlen	= sizeof(unsigned int),
+ 	  .mode		= 0644,
+ 	  .proc_handler	= &proc_dointvec
+-	},     
++	},
+ 	{ }
+ };
+ 
+--- old/rc_msg.c	2020-04-15 19:43:56.103374337 +0200
++++ new/rc_msg.c	2020-04-15 19:09:45.206731841 +0200
+@@ -25,6 +25,7 @@
+ #include "asm/msr.h"
+ #include <linux/page-flags.h>
+ #include <linux/vmalloc.h>
++#include <linux/timekeeping.h>
+ #include "rc_ahci.h"
+ 
+ int  rc_setup_communications(void);
+@@ -70,7 +71,7 @@
+ int  rc_mop_stats(char *buf, int buf_size);
+ void rc_wakeup_all_threads(void);
+ 
+-void 
++void
+ rc_add_dmaMemoryList(void *cpu_addr, dma_addr_t* dmaHandle, rc_uint32_t bytes,
+ 			rc_adapter_t *adapter);
+ 
+@@ -209,7 +210,7 @@
+ rc_vprintf(uint32_t severity, const char *format, va_list ar)
+ {
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(5,0,0)
+-	struct timespec ts;
++	struct timespec64 ts;
+ #else
+ 	struct timeval tv;
+ #endif
+@@ -220,8 +221,8 @@
+ 
+         if (severity && rc_saw_newline) {
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 0, 0))
+-		getnstimeofday(&ts);
+-		printk("rcraid: (%li.%06li) ", ts.tv_sec, ts.tv_nsec / 1000);
++		ktime_get_real_ts64(&ts);
++		printk("rcraid: (%lli.%06li) ", ts.tv_sec, ts.tv_nsec / 1000);
+ #else
+ 		do_gettimeofday(&tv);
+ 		printk("rcraid: (%li.%06li) ", tv.tv_sec, tv.tv_usec);
+@@ -268,7 +269,7 @@
+ void
+ rc_check_interrupt(rc_adapter_t* adapter)
+ {
+-    
++
+ 	preempt_disable();
+     rc_interface_header->check_interrupt_arg = adapter->private_mem.vaddr;
+ 
+@@ -334,11 +335,11 @@
+ {
+     rc_send_arg_t   args;
+     int             i;
+-    
++
+     rc_printk(RC_NOTE, "%s\n",__FUNCTION__);
+-    
++
+     state->is_suspended = 1;
+-    
++
+     // flush the logical disk cache
+     rc_printk(RC_ALERT, "rc_msg_suspend: flushing cache\n");
+ 	rc_msg_send_srb_function(state, RC_SRB_FLUSH);
+@@ -354,7 +355,7 @@
+ 	}
+     rc_printk(RC_ALERT, "rc_msg_suspend: pausing for 1/4 second\n");
+     rc_msg_timeout(HZ>>2);
+-    
++
+     // make sure all IOs are completed
+ 	spin_lock(&state->osic_lock);
+ 	check_lock(state);
+@@ -374,7 +375,7 @@
+     }
+     state->osic_locked = 0;
+ 	spin_unlock(&state->osic_lock);
+-    
++
+     for (i = state->num_hba - 1; i >= 0; i--)
+     {
+         rc_msg_free_all_dma_memory(rc_dev[i]);
+@@ -392,16 +393,16 @@
+  *        None
+  *
+  */
+-void rc_msg_resume(rc_softstate_t *state, rc_adapter_t* adapter) 
++void rc_msg_resume(rc_softstate_t *state, rc_adapter_t* adapter)
+ {
+     rc_send_arg_t   args;
+     int             i;
+ 
+-    rc_printk(RC_NOTE, "%s\n",__FUNCTION__);       
+-    
++    rc_printk(RC_NOTE, "%s\n",__FUNCTION__);
++
+     // don't lock, holding a spinlock while restarting the controller makes linux unhappy
+     // since the timer and interrupts are disable this should be fine
+-           
++
+     for (i = state->num_hba - 1; i >= 0; i--)
+     {
+         if (rc_dev[i]->private_mem.vaddr) {
+@@ -413,13 +414,13 @@
+             rc_printk(RC_ERROR, "%s: no adapter memory :( \n",__FUNCTION__);
+         }
+     }
+-    
++
+ 	if ((state->state & ENABLE_TIMER) != ENABLE_TIMER)
+ 	{
+     	state->state |= ENABLE_TIMER;
+ 		add_timer(&state->timer);
+ 	}
+-   
++
+     if (state->is_suspended)
+     {
+         rc_msg_send_srb_function(state, RC_SRB_RESTART);
+@@ -551,9 +552,9 @@
+ 	    {
+ 	        //set_current_state(TASK_RUNNING);
+ 	        rc_work = (rc_work_t *) acpi_work_item_head;
+-	
++
+ 	        args = (struct rc_receive_arg_s *) rc_work->args;
+-	
++
+ 	        switch (rc_work->call_type)
+ 	        {
+ 	        case RC_ACPI_INVOKE:
+@@ -566,7 +567,7 @@
+                     // Somewhere after 3.2.0, ACPI no longer enables GPE's if the device
+                     // is WAKE capable. Instead, ACPI relies on the power management system
+                     // to handle this. Since power management more or less requires the module
+-                    // to have a GPL license to call many of the required APIs, we need to 
++                    // to have a GPL license to call many of the required APIs, we need to
+                     // deal with the GPE clear/enable here...
+                     //
+                     // Check if we're trying to turn off the power. If so, handle the GPE.
+@@ -594,7 +595,7 @@
+ 	            } else {
+ 	                union acpi_object *out_object;
+ 	                struct acpi_buffer outBuf = { ACPI_ALLOCATE_BUFFER, NULL };
+-	
++
+ 	                if (args->u.acpi.inPtr)
+ 	                {
+ 	                    if (args->u.acpi.outPtr) {
+@@ -638,14 +639,14 @@
+ 	            //  to have the callback executed. Falling through allows that.
+ 	            ;
+ 	        }
+-	
++
+ 	        if (args->u.acpi.callback)
+ 	        {
+ 	            (*args->u.acpi.callback)(rc_work->args);
+ 	        }
+-	
++
+ 	        kfree((void *) rc_work->method);
+-	
++
+ 	        spin_lock(&acpi_work_item_lock);
+ 	        if (acpi_work_item_head == acpi_work_item_tail)
+ 	        {
+@@ -654,7 +655,7 @@
+ 	            acpi_work_item_head = acpi_work_item_head->next;
+ 	        }
+ 	        spin_unlock(&acpi_work_item_lock);
+-	
++
+ 	        kfree((void *) rc_work);        // Make sure this is rc_work as kthread passes NULL for parameter work!
+ 	    }
+ 
+@@ -719,10 +720,10 @@
+ 	case RC_CTR_MAP_MEMORY:
+ 		rc_msg_map_mem(&args->u.map_memory);
+ 		break;
+-    
++
+     case RC_CTR_GET_DMA_ADDRESS:
+         rc_msg_get_dma_memory(&args->u.get_dma_memory);
+-        break;    
++        break;
+ 
+ 	case RC_CTR_UNMAP_MEMORY:
+ 		rc_msg_unmap_mem(&args->u.unmap_memory);
+@@ -731,11 +732,11 @@
+ 	case RC_CTR_PRINT_VA:
+ 		rc_vprintf(args->u.print_va.severity, args->u.print_va.format, args->u.print_va.va_l);
+ 		break;
+-    
++
+     case RC_CTR_SCHEDULE_DPC:
+         rc_msg_schedule_dpc();
+-        break;    
+-    
++        break;
++
+ 	case RC_CTR_WAIT_MICROSECONDS:
+ 		delay = args->u.wait_microseconds.microseconds;
+ 		//        rc_printk(RC_DEBUG2, "delay %d microseconds\n", delay);
+@@ -797,11 +798,11 @@
+ 	case RC_CTR_MEMORY_OP:
+ 		rc_msg_mem_op(args->u.mem_op);
+ 		break;
+-        
++
+     case RC_CTR_ACCESS_OK:
+         rc_msg_access_ok(args->u.isAccessOk);
+         break;
+-                       
++
+ 	case RC_PCI_READ_CONFIG_BYTE:
+ 	case RC_PCI_READ_CONFIG_DWORD:
+ 	case RC_PCI_WRITE_CONFIG_BYTE:
+@@ -908,13 +909,13 @@
+ {
+     rc_adapter_t* adapter;
+     adapter = rc_dev[0];
+-    rc_printk(RC_ERROR, "%s: schedule resume tasklet\n",__FUNCTION__);    
++    rc_printk(RC_ERROR, "%s: schedule resume tasklet\n",__FUNCTION__);
+     rc_msg_resume(&rc_state, adapter);
+ }
+ 
+ void rc_msg_suspend_work(rc_adapter_t *adapter)
+ {
+-    rc_printk(RC_ERROR, "%s: schedule suspend tasklet\n",__FUNCTION__);    
++    rc_printk(RC_ERROR, "%s: schedule suspend tasklet\n",__FUNCTION__);
+     rc_msg_suspend(&rc_state, adapter);
+ }
+ 
+@@ -962,7 +963,7 @@
+ 	 * setup lock and counter for processing pending interrupts
+ 	 */
+ 	atomic_set(&state->intr_pending, 0);
+-    
++
+ 	/*
+ 	 * setup tasklet for srb q processing;
+ 	 */
+@@ -970,9 +971,9 @@
+ 	state->srb_q.head = (rc_srb_t *)0;
+ 	state->srb_q.tail = (rc_srb_t *)0;
+     spin_lock_init(&state->srb_q.lock);
+-        
++
+     INIT_DELAYED_WORK(&state->resume_work, (void *) rc_msg_resume_work);
+-    
++
+     /*
+ 	 * setup tasklet for srb done processing;
+ 	 */
+@@ -1082,7 +1083,7 @@
+ 	if (SmartPollInterval != SMART_POLL_INTERVAL_DEFAULT)
+ 		rc_printk(RC_INFO, "rcraid: set parameter SmartPollInterval = %d "
+ 			  "seconds\n", SmartPollInterval);
+-              
++
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,31)
+     args.u.get_info.support4kNativeDisks = 0;
+ #else
+@@ -1231,29 +1232,29 @@
+ 	state->osic_locked = 0;
+ //   spin_unlock(&state->osic_lock);
+ 
+-    
+-    
+-	state->state |= PROCESS_INTR;   
++
++
++	state->state |= PROCESS_INTR;
+     // we are ready to process interrupts
+     // check all adapters to see if any are outstanding
+-    for (i=0; i < rc_state.num_hba; i++) {   
++    for (i=0; i < rc_state.num_hba; i++) {
+         rc_msg_isr(rc_dev[i]);
+     }
+ 
+ 	/*
+ 	 * intialize the periodic timer for the OSIC
+-	 */          
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)	 
++	 */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ 	init_timer(&state->timer);
+ 	state->timer.expires = jiffies  + state->timer_interval ;
+ 	state->timer.data = (unsigned long)state;
+ 	state->timer.function = rc_msg_timer;
+ #else
+ 	timer_setup(&state->timer, rc_msg_timer, 0);
+-	state->timer.expires = jiffies + state->timer_interval;	
++	state->timer.expires = jiffies + state->timer_interval;
+ #endif
+ 	state->state |= ENABLE_TIMER;
+- 
++
+ 	add_timer(&state->timer);
+ 
+     rc_printk(RC_INFO2,"rc_msg_init: timer started.... wait for callback \n");
+@@ -1279,7 +1280,7 @@
+ 	return(0);
+ }
+ void
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)	 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ rc_msg_timer(unsigned long data)
+ #else
+ rc_msg_timer(struct timer_list * t)
+@@ -1288,7 +1289,7 @@
+ 	rc_softstate_t *state;
+ 	rc_send_arg_t    args;
+ 
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)	 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ 	state = (rc_softstate_t *)data;
+ #else
+ 	state = from_timer(state, t, timer);
+@@ -1300,7 +1301,7 @@
+ 	/*
+ 	 * set up timeout
+ 	 */
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)	 	 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ 	init_timer(&state->timer);
+ 	state->timer.expires = jiffies  + state->timer_interval;
+ 	state->timer.data = (unsigned long)state;
+@@ -1331,19 +1332,19 @@
+ 
+ 	rc_softstate_t *state;
+ 	state = &rc_state;
+-   
++
+     // Do not process any interrupts until PROCESS_INTR flag is set
+     // indicating the bottom driver is ready
+     // rc_msg_init will check all adapters for interrupts at that time
+ 
+ 
+     if ( (state->state & PROCESS_INTR) != 0) {
+-        atomic_inc(&adapter->checkInterrupt); 
++        atomic_inc(&adapter->checkInterrupt);
+         tasklet_schedule(&state->intr_tasklet);
+     }
+ 
+-    
+-    
++
++
+ }
+ 
+ 
+@@ -1353,8 +1354,8 @@
+     rc_adapter_t* adapter;
+     int i;
+     state = (rc_softstate_t *)arg;
+-    
+-    
++
++
+ 
+ 
+     if ( (state->state & PROCESS_INTR) != 0) {
+@@ -1384,8 +1385,8 @@
+ {
+     rc_softstate_t *state;
+     state = &rc_state;
+-    
+-    
++
++
+     if (atomic_read(&state->intr_pending) < 20) {
+         atomic_inc(&state->intr_pending);
+ 
+@@ -1652,8 +1653,8 @@
+ 	do {
+ 		/*
+ 		 * Process any pending interrupts
+-		 */         
+-         
++		 */
++
+ 		progress = 0;
+ 		stat_last_pending = 0;
+ 		stat_intr_low = 0;
+@@ -1749,8 +1750,8 @@
+ 			stat_intr_hi -= stat_intr_low;
+ 			if (sp->max_intr_delay < stat_intr_hi)
+ 				sp->max_intr_delay = stat_intr_hi;
+-		}                           
+-        
++		}
++
+         spin_unlock_irqrestore(&state->srb_q.lock, irql);
+ 
+ 	} while (progress);
+@@ -1782,7 +1783,7 @@
+ 	}
+ 
+ 	spin_unlock_irqrestore(&state->srb_done.lock, irql);
+-    
++
+ }
+ 
+ void
+@@ -1895,7 +1896,7 @@
+ 		kfree(srb);
+ 		return;
+ 	}
+-    
++
+ 	/*
+ 	 * Something went wrong.  May need to check specific error codes
+ 	 */
+@@ -1930,7 +1931,7 @@
+ 	PUT_IO_REQUEST_LOCK_IRQRESTORE(irql);
+ 	srb->seq_num = -1;
+ 	kfree(srb);
+-    
++
+ }
+ 
+ /*
+@@ -2148,29 +2149,29 @@
+ }
+ 
+ 
+-void 
++void
+ rc_add_dmaMemoryList(void *cpu_addr, dma_addr_t* dmaHandle, rc_uint32_t bytes,
+ 			rc_adapter_t *adapter)
+ {
+     struct DmaMemoryNode *newNode;
+-    
++
+     //newNode = vmalloc(sizeof(struct DmaMemoryNode));
+     newNode = kmalloc(sizeof(struct DmaMemoryNode), GFP_KERNEL);
+-    
++
+     if (newNode)
+     {
+         newNode->cpu_addr = cpu_addr;
+         newNode->dmaHandle = *dmaHandle;
+         newNode->bytes = bytes;
+         newNode->nextNode = NULL;
+-    
++
+         if(adapter->dmaMemoryListHead) {
+             adapter->dmaMemoryListTail->nextNode = newNode;
+         }
+         else {
+             adapter->dmaMemoryListHead = newNode;
+         }
+-        adapter->dmaMemoryListTail = newNode;        
++        adapter->dmaMemoryListTail = newNode;
+     }
+ 
+ }
+@@ -2181,7 +2182,7 @@
+ {
+     dma_addr_t* 	    dmaHandle;
+     rc_adapter_t	    *adapter;
+-    
++
+     adapter = (rc_adapter_t *) dma_address->dev_handle;
+     dmaHandle = (dma_addr_t*) &dma_address->dmaHandle;
+ 
+@@ -2200,11 +2201,11 @@
+     pci_free_consistent(adapter->pdev, bytes, cpu_addr, dmaHandle);
+ }
+ 
+-void 
++void
+ rc_msg_free_all_dma_memory(rc_adapter_t	*adapter)
+ {
+ 
+-    struct DmaMemoryNode *dmaNode;    
++    struct DmaMemoryNode *dmaNode;
+ 
+     dmaNode = adapter->dmaMemoryListHead;
+ 
+@@ -2215,12 +2216,12 @@
+ 		dmaNode->dmaHandle,
+ 		dmaNode->bytes
+ 		);
+-    
+-        adapter->dmaMemoryListHead = adapter->dmaMemoryListHead->nextNode;    
++
++        adapter->dmaMemoryListHead = adapter->dmaMemoryListHead->nextNode;
+         kfree(dmaNode);
+         dmaNode = adapter->dmaMemoryListHead;
+     }
+-    
++
+     if (adapter->dmaMemoryListHead == NULL)
+     {
+ 	    //adapter->dmaMemoryListTail = NULL;
+@@ -2284,8 +2285,8 @@
+ 			offset = (unsigned long)vaddr & (PAGE_SIZE-1);
+ 			len_mapped = PAGE_SIZE - offset;
+ 			if (len < len_mapped)
+-				len_mapped = len;    
+-                
++				len_mapped = len;
++
+ 			map->physical_address = dma_map_page(&adapter->pdev->dev, page, offset, len_mapped, PCI_DMA_BIDIRECTIONAL);
+             if (dma_mapping_error(&adapter->pdev->dev, map->physical_address))
+             {
+@@ -2296,8 +2297,8 @@
+ 		}
+     } else if ((map->memory_id & MEM_TYPE) == RC_MEM_DMA) {
+         vaddr = (void *)(rc_uint_ptr_t)map->address;
+-        
+-        map->physical_address = dma_map_single(&adapter->pdev->dev, vaddr, map->number_bytes, PCI_DMA_BIDIRECTIONAL); 
++
++        map->physical_address = dma_map_single(&adapter->pdev->dev, vaddr, map->number_bytes, PCI_DMA_BIDIRECTIONAL);
+         if (dma_mapping_error(&adapter->pdev->dev, map->physical_address))
+         {
+             map->number_bytes = 0;
+@@ -2376,7 +2377,7 @@
+ 
+ 
+ void
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)	 	 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ rc_msg_timeout_done(unsigned long data)
+ #else
+ rc_msg_timeout_done(struct timer_list * t)
+@@ -2384,7 +2385,7 @@
+ {
+ 	rc_softstate_t *state;
+ 
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)	 	 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ 	state = (rc_softstate_t *)data;
+ 	init_timer(&state->msg_timeout);
+ #else
+@@ -2404,21 +2405,21 @@
+ 	 * set up timeout
+ 	 */
+ 
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)	 	 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ 	init_timer(&state->msg_timeout);
+ 	state->msg_timeout.expires = jiffies  + to;
+ 	state->msg_timeout.data = (unsigned long)state;
+ 	state->msg_timeout.function = rc_msg_timeout_done;
+ #else
+ 	timer_setup(&state->msg_timeout, rc_msg_timeout_done, 0);
+-	state->msg_timeout.expires = jiffies  + to;	
++	state->msg_timeout.expires = jiffies  + to;
+ #endif
+ 	add_timer(&state->msg_timeout);
+ 	down(&state->msg_timeout_sema);
+ 
+ }
+ 
+-void 
++void
+ rc_msg_access_ok(rc_access_ok_t accessOk)
+ {
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 0, 0)
+@@ -2604,7 +2605,7 @@
+ 
+     if (!handle || method == NULL || ret == NULL)
+         return AE_BAD_PARAMETER;
+-    
++
+     memset(&buffer, 0, sizeof(buffer));
+     buffer.length = ACPI_ALLOCATE_BUFFER;
+ 
+@@ -2651,4 +2652,3 @@
+ 
+     return ac_stat;
+ }
+-
