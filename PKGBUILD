@@ -8,7 +8,7 @@ pkgname=${_name}-${_channel}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 _version=77.0a1
-pkgver=77.0a1.20200413
+pkgver=77.0a177.0a1.20200415
 pkgrel=1
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -68,3 +68,11 @@ package() {
   ln -sf /usr/share/hunspell "${pkgdir}"/${OPT_PATH}/dictionaries
   ln -sf /usr/share/hyphen "${pkgdir}"/${OPT_PATH}/hyphenation
 }
+sha512sums=('42426e7b510bd88cbf7b246bf66d7768afa5d71389bf15f7a4231dc24f99fd73284dd9a0a8eb4342b42337c2c7dd843e570a93afa7d3b44c97ecbf5e38e433ac'
+            '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308')
+sha512sums_i686=('43bb72dd5310e9afb779495b602f7400a467d65080698582a63e467bf9193ebda3e41259dd16161e221eb45399d24141fc0ded703ec3f719c850fdebeb1d665a'
+                 'SKIP'
+                 '14fc07f42ab44fa71c17d36603276988b8fac73ca500c8755d9a1ab9f91019e886f3eeb37d27711479334389f255b6a714dff85d7ce23b5dff32be91cb409df9')
+sha512sums_x86_64=('3a880af1a57e98c4d96a3857a6f0b23f6bad59200f0a1bc2fa6c690099058f8baeff4cd0a9f1069dccc41a531768a04ef94d7de1d246620f39c1d8a06f7a4d4b'
+                   'SKIP'
+                   'b39aa809ba729537bdb1b783f36ac58eb9e5da5252a5dc031c90e18c77f4e9f13f73f62f499a638363f4b59f2b1eaa8b7f428279ba3efaac082e9b621a901bc8')
