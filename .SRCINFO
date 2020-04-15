@@ -1,7 +1,7 @@
 pkgbase = php-sqlsrv
 	pkgdesc = Microsoft SQL Server Drivers for PHP.
-	pkgver = 5.8.0
-	pkgrel = 2
+	pkgver = 5.8.1
+	pkgrel = 1
 	url = https://pecl.php.net/package/sqlsrv
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = php-sqlsrv
 	depends = php
 	depends = msodbcsql
 	backup = etc/php/conf.d/sqlsrv.ini
-	source = https://pecl.php.net/get/sqlsrv-5.8.0.tgz
-	sha256sums = dccadca621d14d98e3f0a2f31304f4c01396fce3af69b0528a19121e669e64cf
+	source = https://pecl.php.net/get/sqlsrv-5.8.1.tgz
+	sha256sums = 39c5c07989d8b53e9ccdd79e8dc5eb6159632be89b1c01e23ea308c8e0332a31
 
 pkgname = php-sqlsrv
 

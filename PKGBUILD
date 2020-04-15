@@ -3,16 +3,16 @@
 
 pkgname=php-sqlsrv
 _extname=${pkgname#php-}
-pkgver=5.8.0
+pkgver=5.8.1
 _pkgver=${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Microsoft SQL Server Drivers for PHP."
 arch=('i686' 'x86_64')
 url="https://pecl.php.net/package/$_extname"
 license=('MIT')
 depends=('php' 'msodbcsql')
 source=("https://pecl.php.net/get/$_extname-${_pkgver}.tgz")
-sha256sums=('dccadca621d14d98e3f0a2f31304f4c01396fce3af69b0528a19121e669e64cf')
+sha256sums=('39c5c07989d8b53e9ccdd79e8dc5eb6159632be89b1c01e23ea308c8e0332a31')
 backup=("etc/php/conf.d/$_extname.ini")
 
 build() {
