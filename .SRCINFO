@@ -1,0 +1,19 @@
+pkgbase = polybar-spotify-module
+	pkgdesc = Programs to display spotify information and control spotify with polybar
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mihirlad55/polybar-spotify-module
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	depends = dbus
+	depends = spotify
+	depends = polybar
+	optdepends = nerd-fonts-complete: play, pause, etc. icons for spotify module
+	optdepends = ttf-font-awesome: more icons for spotify module
+	source = polybar-spotify-module::git+https://github.com/mihirlad55/polybar-spotify-module.git
+	md5sums = SKIP
+
+pkgname = polybar-spotify-module
+
