@@ -1,0 +1,31 @@
+pkgbase = eduke32-git
+	pkgdesc = Advanced Duke Nukem 3D source port - git version
+	pkgver = r8865_c4e58ebe9
+	pkgrel = 1
+	url = http://eduke32.com
+	install = eduke32-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom: BUILD
+	makedepends = subversion
+	makedepends = gendesk
+	makedepends = glu
+	depends = sdl2_mixer
+	depends = libvpx
+	depends = gtk2
+	optdepends = timidity-freepats: a free soundfont for music
+	optdepends = fluidsynth: alternative midi sequencer
+	optdepends = eduke32-shareware-episode: Duke Nukem 3D Demo
+	provides = eduke32
+	provides = eduke32-svn
+	conflicts = eduke32
+	conflicts = eduke32-svn
+	source = eduke32-git::git+https://voidpoint.io/terminx/eduke32
+	source = eduke32.png
+	sha256sums = SKIP
+	sha256sums = b55a264b4682afabd49587d700d4c85ce6c2e7af7ce2764dd217ebe167549863
+	makedepends_i686 = nasm
+
+pkgname = eduke32-git
+
