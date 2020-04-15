@@ -1,7 +1,7 @@
 # Maintainer: Niklas Krafczyk <krafczyk.n at gmail dot com>
 pkgname=klee
 pkgver=2.1
-pkgrel=5
+pkgrel=6
 epoch=
 pkgdesc="Symbolic virtual machine built on top of the LLVM compiler infrastructure"
 arch=('x86_64')
@@ -59,7 +59,7 @@ prepare() {
 
 build() {
     cd "$srcdir/build"
-    make -j$(nproc)
+    make $MAKEFLAGS
 }
 
 package() {

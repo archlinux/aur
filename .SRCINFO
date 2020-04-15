@@ -1,7 +1,7 @@
 pkgbase = klee
 	pkgdesc = Symbolic virtual machine built on top of the LLVM compiler infrastructure
 	pkgver = 2.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://klee.github.io/
 	arch = x86_64
 	license = custom:UIUC
