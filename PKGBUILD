@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=11.0.0_r346859.84aa6cf1a9f
+pkgver=11.0.0_r351315.1cd92e480c1
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -87,6 +87,7 @@ build() {
         -D FFI_INCLUDE_DIR:PATH="$(pkg-config --variable=includedir libffi)" \
         -D LLVM_BUILD_LLVM_DYLIB=ON \
         -D LLVM_LINK_LLVM_DYLIB=ON \
+        -D LLVM_POLLY_LINK_INTO_TOOLS=OFF \
         -D LLVM_INSTALL_UTILS=ON \
         -D LLVM_BUILD_DOCS=ON \
         -D LLVM_ENABLE_DOXYGEN=OFF \
