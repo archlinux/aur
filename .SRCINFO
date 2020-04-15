@@ -11,6 +11,8 @@ pkgbase = wrapland-git
 	makedepends = qt5-doc
 	makedepends = wayland-protocols
 	depends = kwayland
+	provides = wrapland
+	conflicts = wrapland
 	source = wrapland::git+https://gitlab.com/kwinft/wrapland.git
 	md5sums = SKIP
 
