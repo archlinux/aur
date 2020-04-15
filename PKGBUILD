@@ -1,6 +1,6 @@
 # Maintainer: Martin Rys <rys.pw/#contact_me>
 pkgname=jitsi-meet-git
-pkgver=r2.06ae186
+pkgver=r7209.1bd930a3c
 pkgrel=1
 epoch=
 pkgdesc="WebRTC JavaScript video conferences"
@@ -28,6 +28,11 @@ source=($pkgname::git+https://github.com/jitsi/jitsi-meet)
 noextract=()
 sha256sums=("SKIP")
 validpgpkeys=()
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "${srcdir}/${pkgname}"
