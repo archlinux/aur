@@ -1,13 +1,15 @@
 pkgbase = trac-mercurial
 	pkgdesc = Mercurial plugin for Trac
-	pkgver = 1.0.0.4
+	pkgver = 1.0.0.9
 	pkgrel = 1
 	url = http://trac.edgewall.org/wiki/TracMercurial
 	arch = any
 	license = GPL2
-	makedepends = mercurial
-	depends = setuptools
+	depends = python2-setuptools
 	depends = trac>=1.0
+	depends = mercurial
+	source = https://pypi.io/packages/source/T/TracMercurial/TracMercurial-1.0.0.9.tar.gz
+	md5sums = 51f151c7d10ae2b7a1e3b67a4b427e5b
 
 pkgname = trac-mercurial
 
