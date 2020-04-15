@@ -59,9 +59,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=26
-_rtpatchver=17
-_clr=${_major}.19-56
+_minor=28
+_rtpatchver=19
+_clr=${_major}.28-61
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
 pkgver=${_major}.${_minor}.${_rtpatchver}
@@ -100,7 +100,7 @@ prepare() {
 
     ### Add Clearlinux patches
         for i in $(grep '^Patch' ${srcdir}/clearlinux-preempt-rt/linux-preempt-rt.spec |\
-          grep -Ev '^Patch0000|^Patch0123|^Patch0051' | sed -n 's/.*: //p'); do
+          grep -Ev '^Patch0000|^Patch0123' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux-preempt-rt/${i}"
         done
@@ -149,6 +149,9 @@ prepare() {
                        --enable SECURITY_TOMOYO \
                        --enable SECURITY_APPARMOR \
                        --enable SECURITY_YAMA
+
+        ## Library routines
+        scripts/config --enable FONT_TER16x32
 
         make olddefconfig
 
@@ -226,9 +229,6 @@ _package() {
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
-
-    echo "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -304,9 +304,6 @@ _package-headers() {
     echo "Adding symlink..."
     mkdir -p "$pkgdir/usr/src"
     ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-    echo "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -317,9 +314,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('669a74f4aeef07645061081d9c05d23216245702b4095afb3d957f79098f0daf'
+sha256sums=('c863cc1346348f9a40083b4bc0d34375117b1c401af920994d42e855653ef7a4'
             'SKIP'
-            'b0e996543c49278f184b269f90dab9030cf88ca75d13c6f2e4bac1a11ca41584'
+            'a804ec4fb5294c8cd83573ee2f6387c6b641443d055ca336367bfd47c39a09fd'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
