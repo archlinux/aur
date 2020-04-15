@@ -14,7 +14,8 @@ depends=('libusb-compat'
          'sqlite'
          'boost-libs'
          'lua'
-         'mosquitto')
+         'mosquitto'
+         'python')
 makedepends=('git'
              'cmake'
              'boost'

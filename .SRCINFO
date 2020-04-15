@@ -20,6 +20,7 @@ pkgbase = domoticz
 	depends = boost-libs
 	depends = lua
 	depends = mosquitto
+	depends = python
 	source = https://github.com/domoticz/domoticz/archive/2020.1.tar.gz
 	source = domoticz.service
 	md5sums = 00ea7ab5c3f6de94fe590b8cf99a7e1f
