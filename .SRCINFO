@@ -1,6 +1,6 @@
 pkgbase = pyflow-git
 	pkgdesc = An installation and dependency system for Python
-	pkgver = 0.2.4.r3.96624b7
+	pkgver = 0.2.5.1.r6.dc0ed92
 	pkgrel = 1
 	url = https://github.com/David-OConnor/pyflow
 	changelog = CHANGELOG.md
