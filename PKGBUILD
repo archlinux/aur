@@ -2,8 +2,7 @@
 
 pkgname=bauh
 pkgver=0.9.0
-pkgrel=1
-_file="$pkgname-$pkgver-py3-none-any.whl"
+pkgrel=2
 pkgdesc="Graphical interface for managing your applications ( AppImage, Flatpak, Snap, Arch/AUR, Web )"
 arch=('any')
 url="https://github.com/vinifmor/bauh"
@@ -35,18 +34,23 @@ optdepends=('flatpak: required for Flatpak support'
             'aria2: faster AppImages and AUR source downloads'
             'breeze: for KDE Plasma main theme be available')
 makedepends=('git' 'python' 'python-pip' 'python-setuptools')
-source=("https://files.pythonhosted.org/packages/c7/e3/a340e2109b6755356a6e8eeb5bc73e85f844af0ad6cf107a37674ed30f14/$_file")
-sha256sums=('2f63373c3a48da86a1fff40a02e7c662721d057a9a015f2f433ecb1fddf37b30')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha512sums=('b2c76e6965f927c1ab9cb7a66e194f0556e5d3b7968ae6edaf46576b38d04fa774de3f15c49199fbc86d8ab84a528c4cb0c2e9d9982789bc8c75c82602238793')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python3 setup.py build
+}
 
 package() {
-  pip3 install $_file --root="$pkgdir" || return 1
+  cd "${srcdir}/bauh-${pkgver}"  
+  python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
   
-  pydir=$(ls $pkgdir/usr/lib)
   mkdir -p $pkgdir/usr/share/icons/hicolor/scalable/apps
 
-  cp $pkgdir/usr/lib/$pydir/site-packages/bauh/view/resources/img/logo.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/bauh.svg
+  cp bauh/view/resources/img/logo.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/bauh.svg
  
   mkdir -p $pkgdir/usr/share/applications
-  cp $pkgdir/usr/lib/$pydir/site-packages/bauh/desktop/bauh.desktop $pkgdir/usr/share/applications/
-  cp $pkgdir/usr/lib/$pydir/site-packages/bauh/desktop/bauh_tray.desktop $pkgdir/usr/share/applications/
+  mv bauh/desktop/bauh.desktop $pkgdir/usr/share/applications/
+  mv bauh/desktop/bauh_tray.desktop $pkgdir/usr/share/applications/
 }
