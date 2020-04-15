@@ -3,14 +3,13 @@
 _projectname='ppxlib'
 pkgname="ocaml-$_projectname"
 pkgver='0.13.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Base library and tools for ppx rewriters'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-ppx/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.04.1' 'ocaml-base>=0.11.0' 'ocaml-compiler-libs-repackaged>=0.11.0' 'ocaml-migrate-parsetree>=1.3.1' 'ocaml-ppx_derivers>=1.0.0' 'ocaml-stdio>=0.11.0')
 makedepends=('dune')
-checkdepends=('ocaml-cinaps>=0.12.1' 'ocaml-findlib')
 options=('!strip')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz"
@@ -32,10 +31,11 @@ build() {
 	dune build -p "$_projectname" --verbose
 }
 
-check() {
-	cd "$srcdir/$_sourcedirectory/"
-	dune runtest -p "$_projectname" --verbose
-}
+# fails because of a circular dependency on this package by ppx_jane
+# check() {
+#	cd "$srcdir/$_sourcedirectory/"
+#	dune runtest -p "$_projectname" --verbose
+# }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
