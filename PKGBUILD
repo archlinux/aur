@@ -1,16 +1,15 @@
 # Maintainer: Pau Ruiz Safont <unduthegun@gmail.com>
 pkgname=otfcc
-pkgver=0.10.3.alpha
+pkgver=0.10.4
 pkgrel=1
-tgzver=0.10.3-alpha
-foldname="${pkgname}-${tgzver}"
+foldname="${pkgname}-${pkgver}"
 pkgdesc='A C library and utility for parsing and writing OpenType font files.'
 arch=('i686' 'x86_64')
 url='https://github.com/caryll/otfcc'
 license=('APACHE')
 makedepends=('premake-git') # premake5
-source=("https://github.com/caryll/${pkgname}/archive/v${tgzver}.tar.gz")
-md5sums=('e396c8a1c8feaef5d6757c7244c3c884')
+source=("https://github.com/caryll/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('d9c74825ddac700eb429de31de7cb0a249636f47c6a4cc64eaa102a40966cf00')
 
 build() {
   cd "${foldname}"
