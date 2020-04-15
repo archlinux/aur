@@ -7,7 +7,7 @@
 
 pkgname=helm2-bin
 pkgver=2.16.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The Kubernetes Package Manager"
 arch=(
   "x86_64"  # amd64
@@ -17,7 +17,8 @@ arch=(
 )
 url="https://helm.sh/"
 license=("Apache")
-provides=("helm")
+provides=("helm2" "kubernetes-helm2" "helm" "kubernetes-helm")
+conflicts=("helm2" "kubernetes-helm2")
 makedepends=("grep")
 validpgpkeys=(
   '672C657BE06B4B30969C4A57461449C25E36B98E'  # Matthew Farina <matt@mattfarina.com>, https://keybase.io/mattfarina
@@ -50,7 +51,8 @@ source=(
 
 package(){
     cd "${srcdir}/linux-${_CARCH}"
-    install -Dm755 -t "$pkgdir/usr/bin" helm tiller
-    ./helm completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/helm"
-    ./helm completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_helm"
+    install -Dm755 helm "${pkgdir}/usr/bin/helm2"
+    install -Dm755 tiller "${pkgdir}/usr/bin/tiller2"
+    ./helm completion bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/helm2"
+    ./helm completion zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_helm2"
 }
