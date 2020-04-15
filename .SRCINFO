@@ -1,5 +1,5 @@
 pkgbase = nginx-lazerl0rd-git
-	pkgver = 1.17.9
+	pkgver = 1.17.10
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/lazerl0rd/nginx
@@ -57,7 +57,7 @@ pkgname = nginx-lazerl0rd-git
 	backup = etc/logrotate.d/nginx
 
 pkgname = nginx-src-lazerl0rd-git
-	pkgdesc = Source code of nginx-lazerl0rd 1.17.9, useful for building modules
+	pkgdesc = Source code of nginx-lazerl0rd 1.17.10, useful for building modules
 	provides = nginx-src=1.17.9
 	provides = nginx-src-lazerl0rd=1.17.9
 	conflicts = nginx-src

@@ -2,7 +2,7 @@
 
 pkgbase="nginx-lazerl0rd-git"
 pkgname=("nginx-lazerl0rd-git" "nginx-src-lazerl0rd-git")
-pkgver=1.17.9
+pkgver=1.17.10
 pkgrel=1
 epoch=1
 arch=("i686" "x86_64")
@@ -63,6 +63,7 @@ _common_flags=(
 _stable_flags=(
 	--add-module="../ngx_brotli"
 	--add-module="../nginx_cookie_flag_module"
+	--build="lazerl0rd"
 	--with-http_v2_hpack_enc
 	--with-http_v3_module
 	--with-libatomic
