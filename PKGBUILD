@@ -1,6 +1,6 @@
 # Maintainer: Timo Sarawinski <timo@it-kraut.net>
 pkgname=ofork
-pkgver=9.0.2
+pkgver=9.0.5
 pkgrel=1
 pkgdesc="OFORK is a OTRS fork open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
@@ -38,9 +38,9 @@ optdepends=("mariadb:  Fast SQL database server, drop-in replacement for MySQL"
 backup=("etc/webapps/${pkgname}/Config.pm")
 install="${pkgname}.install"
 source=("${pkgname}.install"
-        "https://ftp.o-fork.de/ofork-9.0.2.tar.gz")
+        "https://ftp.o-fork.de/ofork-${pkgver}.tar.gz")
 sha256sums=('237bea50871d37e6822b5b47c6c47e90061981293a7edfe3c679e968e7088b42'
-            'b270646c13ee679d0e342d3058204c32748f2c9c983e2091e68273c78be51d1e')
+            'd657e6847b9000cb7969d77c87f5f1ff2d1a8ab416af469d05e12f68e122645e')
 
 prepare() {
 cat << EOL > "${srcdir}/${pkgname}.service"
