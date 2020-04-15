@@ -2,8 +2,9 @@
 
 pkgname=evince-lcd-standalone
 _pkgname=evince
-pkgver=3.32.0
+pkgver=3.36.0
 pkgrel=1
+popplerver=0.87.0
 pkgdesc="Document viewer (PDF, Postscript, djvu, etc.) with built-in LCD subpixel rendering"
 url="https://wiki.gnome.org/Apps/Evince"
 arch=(x86_64)
@@ -17,16 +18,16 @@ makedepends=('itstool' 'libnautilus-extension' 'texlive-bin' 'gobject-introspect
              'qt4' 'qt5-base' 'icu' 'pkgconfig' 'lcms2')
 optdepends=('texlive-bin: DVI support'
 	    'gvfs: bookmark support and session saving')
-provides=("evince=$pkgver")
+provides=('evince=$pkgver' libev{document,view}3.so)
 conflicts=('evince' 'evince-lcdfilter')
 groups=(gnome)
 options=('!emptydirs')
-_commit=10da4bcec1cdd535a267e4b8e971668a47f0138b  # tags/3.32.0^0
+_commit=605711b172378fb55192b984455e0af8e00b3181  # tags/3.36.0^0
 source=("git+https://gitlab.gnome.org/GNOME/evince.git#commit=$_commit"
-        "https://poppler.freedesktop.org/poppler-0.76.0.tar.xz"
+        "https://poppler.freedesktop.org/poppler-$popplerver.tar.xz"
         "git+https://github.com/jonathanffon/poppler-lcd-patch.git")
 sha256sums=('SKIP'
-            '370f5fcfe2bbf0c76fc394d338cd72ed7f2044b67f4eb4b115eb074ccfc70d63'
+            '6f602b9c24c2d05780be93e7306201012e41459f289b8279a27a79431ad4150e'
             'SKIP')
 
 pkgver() {
@@ -42,7 +43,7 @@ prepare() {
 
 build() {
   #patch poppler
-  cd $srcdir/poppler-0.76.0
+  cd $srcdir/poppler-$popplerver
   for patch in `ls ../poppler-lcd-patch/*.patch`; do
     patch -p1<$patch
   done
@@ -50,7 +51,7 @@ build() {
   # build poppler 
   cd $srcdir
   mkdir -p pbuild&&cd $_
-  cmake ../poppler-0.76.0 \
+  cmake ../poppler-$popplerver \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=$srcdir/usr/local \
     -DCMAKE_INSTALL_LIBDIR=$srcdir/usr/local/lib \
@@ -59,13 +60,13 @@ build() {
     -DBUILD_QT5_TESTS=OFF -DBUILD_CPP_TESTS=OFF
   make install
   
-  # Build evince with subpixel patched poppler-0.76
+  # Build evince with subpixel patched poppler
   cd $srcdir/$_pkgname
   sed -i 's#$(BACKEND_LIBTOOL_FLAGS)#& -Wl,-rpath -Wl,/usr/lib/evince/poppler-lcd#' ./backend/pdf/Makefile.am
 
   BROWSER_PLUGIN_DIR=/usr/lib/epiphany/plugins \
   POPPLER_CFLAGS="-I$srcdir/usr/local/include/poppler/glib -I$srcdir/usr/local/include/poppler `pkg-config --cflags glib-2.0 gobject-2.0 cairo libxml-2.0`" \
-  POPPLER_LIBS="-L$srcdir/usr/local/lib -l:libpoppler-glib.so.8 -l:libpoppler.so.87 `pkg-config --libs glib-2.0 gobject-2.0 cairo libxml-2.0`" \
+  POPPLER_LIBS="-L$srcdir/usr/local/lib -l:libpoppler-glib.so.8 -l:libpoppler.so.98 `pkg-config --libs glib-2.0 gobject-2.0 cairo libxml-2.0`" \
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --libexecdir=/usr/lib/$_pkgname \
     --disable-static \
@@ -90,5 +91,5 @@ package() {
   make DESTDIR="$pkgdir" install
   libdir=$pkgdir/usr/lib/evince/poppler-lcd
   mkdir -p $libdir
-  cp "$srcdir/usr/local/lib/libpoppler"{-glib.so.8,.so.87} $libdir
+  cp "$srcdir/usr/local/lib/libpoppler"{-glib.so.8,.so.98} $libdir
 }
