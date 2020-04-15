@@ -15,14 +15,14 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=11.0.0_r351315.1cd92e480c1
+pkgver=11.0.0_r351360.edbb27ccb63
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=(   'git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'python-sphinx'
                             'ocaml' 'ocaml-ctypes' 'ocaml-findlib'
-                            'python-sphinx' 'python-recommonmark' 'swig' 'python' 'python-six')
+                            'python-sphinx' 'python-recommonmark' 'swig' 'python' 'python-six' 'z3' 'lua')
 checkdepends=('python-psutil')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
               'llvm-config.h')
@@ -65,9 +65,9 @@ prepare() {
     
     cd llvm-project
     # llvm-project contains a lot of stuff, remove parts that aren't used by this package
-    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind llgo openmp parallel-libs pstl libc mlir
+    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind llgo openmp parallel-libs pstl libc mlir flang
     
-    cd clang
+    # cd clang
     # patch --forward --strip=1 --input="$srcdir"/enable-SSP-and-PIE-by-default.patch
 }
 
@@ -100,7 +100,8 @@ build() {
         -D LLDB_USE_SYSTEM_SIX=1 \
         -D LLVM_ENABLE_PROJECTS="polly;lldb;lld;compiler-rt;clang-tools-extra;clang"
 
-    ninja $NINJAFLAGS all ocaml_doc
+    ninja $NINJAFLAGS
+    ninja $NINJAFLAGS ocaml_doc
 }
 
 check() {
@@ -141,7 +142,7 @@ package_llvm-git() {
     rmdir "$pkgdir"/usr/libexec
     sed -i 's|libexec|lib/clang|' "$pkgdir"/usr/bin/scan-build
 
-    # The runtime libraries go into llvm-libs
+    # The runtime libraries go into llvm-libs-git
     mv -f "$pkgdir"/usr/lib/lib{LLVM,LTO}*.so* "$srcdir"
     mv -f "$pkgdir"/usr/lib/LLVMgold.so "$srcdir"
 
