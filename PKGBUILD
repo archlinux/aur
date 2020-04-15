@@ -4,7 +4,7 @@
 
 pkgname=domoticz
 pkgver=2020.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Web based home automation"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://www.domoticz.com'
@@ -38,7 +38,7 @@ prepare() {
   -DUSE_STATIC_BOOST=NO \
   -DUSE_STATIC_LIBSTDCXX=NO \
   -DUSE_OPENSSL_STATIC=NO \
-  -DUSE_PYTHON=NO \
+  -DUSE_PYTHON=YES \
   ..
 }
 
