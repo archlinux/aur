@@ -1,8 +1,8 @@
 pkgbase = python-fakewebcam
-	pkgdesc = The ultimate Python library in building OAuth and OpenID Connect servers.
+	pkgdesc = An API for writing RGB frames to a fake webcam device on Linux
 	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://authlib.org/
+	url = https://github.com/jremmons/pyfakewebcam/
 	arch = any
 	license = LGPLv3
 	makedepends = python-setuptools
