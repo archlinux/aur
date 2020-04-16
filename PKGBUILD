@@ -1,9 +1,10 @@
-# Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
-# Previous Maintainer: Alex Talker <alextalker at openmailbox dot org>
-# Original maintainer: Simonas Racinas <racinas at icloud.com>
+# Maintainer: ny-a <nyaarch64@gmail..com>
+# Contributor: Miguel Revilla <yo at miguelrevilla dot com>
+# Contributor: Alex Talker <alextalker at openmailbox dot org>
+# Contributor: Simonas Racinas <racinas at icloud.com>
 pkgname=visual-paradigm-community
 pkgver=16.1
-pkgrel=20200231
+pkgrel=20200401
 pkgdesc="UML design application"
 url='http://www.visual-paradigm.com/download/community.jsp'
 arch=('x86_64')
@@ -22,7 +23,7 @@ source=("https://$_server.visual-paradigm.com/visual-paradigm/vpce$pkgver/$pkgre
   'LICENSE.txt'
   'x-visual-paradigm.xml')
 
-sha256sums=('dc90bbb2f1a887576c2b0c7a31847e1bb16e7e0989a73b29a7e658f9e13f392c'
+sha256sums=('3c6f8ca527ae1f471af5bdc1e9fe30c9ed60cc7ffb021f37d229f1171a02c1b0'
             '52d244345f2ce8080d2b20c8c75b3ef833dfe9c5d605cac7129013b087bf2806'
             '5cdc0f50573d805938172c1f35664aa264fc5964fd92daed09b467565a6347b1'
             '41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15'
@@ -37,14 +38,13 @@ prepare() {
 
 package() {
   mkdir -p "${pkgdir}/usr/share/applications"
-  mkdir -p "${pkgdir}/usr/share/licenses/visual-paradigm-community-edition/"
   mkdir -p "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
   mkdir -p "${pkgdir}/usr/share/${pkgname}/Application"
   cp -r "${srcdir}/Visual_Paradigm_CE_${pkgver}/Application/" "${pkgdir}/usr/share/${pkgname}/"
   cp -r "${srcdir}/Visual_Paradigm_CE_${pkgver}/.install4j/" "${pkgdir}/usr/share/${pkgname}/.install4j/"
   cp "visual-paradigm.desktop" "${pkgdir}/usr/share/applications/visual-paradigm.desktop"
   cp "visual-paradigm.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/visual-paradigm.png"
-  install -m 644 LICENSE.txt "${pkgdir}/usr/share/licenses/visual-paradigm-community-edition/LICENSE"
+  install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   mkdir -p "${pkgdir}/usr/bin"
   ln -sr "${pkgdir}/usr/share/${pkgname}/Application/bin/Visual_Paradigm" "${pkgdir}/usr/bin/${pkgname}"
   mkdir -p ${pkgdir}/usr/share/mime/packages
