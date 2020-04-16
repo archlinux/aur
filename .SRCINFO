@@ -1,7 +1,7 @@
 pkgbase = pam-ihosts-git
 	pkgdesc = A PAM module that provides access control by ip, mac-address, or country-code/region.
 	pkgver = r33.24f61b1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ColumPaget/pam_ihosts
 	arch = any
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = pam-ihosts-git
 	makedepends = gcc
 	makedepends = binutils
 	depends = pam
+	depends = libffi
 	provides = pam-ihosts
 	conflicts = pam-ihosts
 	source = pam-ihosts::git+https://github.com/ColumPaget/pam_ihosts
