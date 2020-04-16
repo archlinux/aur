@@ -6,18 +6,6 @@ pkgbase = dotnet-core-2.1
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	makedepends = clang
-	makedepends = cmake
-	makedepends = curl
-	makedepends = git
-	makedepends = icu
-	makedepends = krb5
-	makedepends = libunwind
-	makedepends = lldb
-	makedepends = llvm
-	makedepends = lttng-ust
-	makedepends = openssl
-	makedepends = zlib
 	options = staticlibs
 	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/e730fe40-e2ea-42e5-a5d0-f86830d75849/571e5a2f4ebf9f8117878eeaad5cb19b/dotnet-sdk-2.1.805-linux-x64.tar.gz
 	sha512sums_x86_64 = ceceaf569060c313e9e1b519ad2bfda37bb11c4549689d01080bed84b8a1b64f4c8a35fce4622b2f951a7ccf574e7ea4552c076fa2ba302846d4e1c5ae5b3a0c
@@ -39,11 +27,14 @@ pkgname = dotnet-runtime-2.1
 	provides = dotnet-runtime-2.1
 	provides = dotnet-runtime=2.1.17.sdk805
 	conflicts = dotnet-runtime-2.1
+	conflicts = dotnet-runtime=2.1.17.sdk805
 
 pkgname = dotnet-sdk-2.1
 	pkgdesc = The .NET Core SDK version 2.1
 	depends = dotnet-runtime-2.1
+	depends = glibc
 	provides = dotnet-sdk-2.1
 	provides = dotnet-sdk=2.1.17.sdk805
 	conflicts = dotnet-sdk-2.1
+	conflicts = dotnet-sdk=2.1.17.sdk805
 

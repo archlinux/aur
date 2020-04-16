@@ -9,10 +9,6 @@ pkgrel=2
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
-makedepends=(
-  'clang' 'cmake' 'curl' 'git' 'icu' 'krb5' 'libunwind' 'lldb' 'llvm'
-  'lttng-ust' 'openssl' 'zlib'
-)
 options=('staticlibs')
 source_armv7h=('https://download.visualstudio.microsoft.com/download/pr/57666a6d-0c82-4431-b251-f70356a1b6f7/8190a9b4ff5e962eb4547955c88848c3/dotnet-sdk-2.1.805-linux-arm.tar.gz')
 source_aarch64=('https://download.visualstudio.microsoft.com/download/pr/e9a7e3c5-2db0-4eb2-9dc4-cc7060d0ee81/1ed6a7621a066dd15a06d4bb4a894a29/dotnet-sdk-2.1.805-linux-arm64.tar.gz')
@@ -30,7 +26,7 @@ package_dotnet-runtime-2.1() {
            'libcurl.so')
   optdepends=('lttng-ust: CoreCLR tracing')
   provides=("dotnet-runtime-2.1" "dotnet-runtime=${pkgver}")
-  conflicts=("dotnet-runtime-2.1")
+  conflicts=("dotnet-runtime-2.1" "dotnet-runtime=${pkgver}")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -39,9 +35,9 @@ package_dotnet-runtime-2.1() {
 
 package_dotnet-sdk-2.1() {
   pkgdesc='The .NET Core SDK version 2.1'
-  depends=('dotnet-runtime-2.1')
+  depends=('dotnet-runtime-2.1' 'glibc')
   provides=("dotnet-sdk-2.1" "dotnet-sdk=${pkgver}")
-  conflicts=("dotnet-sdk-2.1")
+  conflicts=("dotnet-sdk-2.1" "dotnet-sdk=${pkgver}")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   cp -dr --no-preserve='ownership' sdk "${pkgdir}"/usr/share/dotnet/
