@@ -1,3 +1,11 @@
 post_install() {
-  echo -e "\nFollow the official instructions to make asdf-vm work, replacing '\$HOME/.asdf' with '/opt/asdf-vm': https://asdf-vm.com/#/core-manage-asdf-vm?id=add-to-your-shell\n"
+  cat <<EOF
+
+Follow the official instructions [1] to make asdf-vm work, replacing
+"\$HOME/.asdf" with "/opt/asdf-vm". The completions are already installed, just
+make sure your shell is configured to use them.
+
+[1] https://asdf-vm.com/#/core-manage-asdf-vm?id=add-to-your-shell
+
+EOF
 }
