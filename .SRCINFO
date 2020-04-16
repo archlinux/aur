@@ -1,0 +1,21 @@
+pkgbase = cadet-gtk-git
+	pkgdesc = A GTK based GUI for the CADET subsystem of GNUnet.
+	pkgver = 0.1.0.r2.g8a88c8c
+	pkgrel = 1
+	url = https://gitlab.com/TheJackiMonster/cadet-gtk
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	depends = gtk3
+	depends = libhandy
+	depends = gnunet
+	provides = cadet-gtk
+	conflicts = cadet-gtk
+	source = git+https://gitlab.com/TheJackiMonster/cadet-gtk.git
+	md5sums = SKIP
+
+pkgname = cadet-gtk-git
+
