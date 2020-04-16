@@ -2,8 +2,8 @@
 # Contributor: S Stewart <tda@null.net>
 # Special thanks to RyanTheAllmighty for making hyper-appimage
 pkgname="gdlauncher"
-pkgver="0.0.2"
-pkgrel=1
+pkgver="0.0.4"
+pkgrel=2
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdevs.io"
