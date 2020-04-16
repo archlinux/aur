@@ -1,13 +1,13 @@
 pkgbase = vape
 	pkgdesc = A command-line tool that converts text into 'vaporwave' text - fullwidth UTF-8 characters.
-	pkgver = 0.2.2
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/JoshuaRLi/vape
 	arch = x86_64
 	license = MIT
-	makedepends = rust
-	source_x86_64 = https://github.com/JoshuaRLi/vape/archive/v0.2.2.tar.gz
-	sha512sums_x86_64 = edb41a10e1fba8da3f601c63a44aa56fb2066b23be9341157cf0302170b79da8c84a3bc9d26d6b04b077a3cf41148ae204f7c69700f16b49ae81765fb9bf1b32
+	makedepends = cargo
+	source = https://github.com/JoshuaRLi/vape/archive/v0.3.1.tar.gz
+	md5sums = e40ebf822bd0f14f45d1a7acf51ea83e
 
 pkgname = vape
 
