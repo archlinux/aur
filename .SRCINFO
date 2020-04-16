@@ -1,0 +1,19 @@
+pkgbase = libserdes-git
+	pkgdesc = Schema-based serializer/deserializer C/C++ library with support for Avro and the Confluent Platform Schema Registry.
+	pkgver = r126.b259d15
+	pkgrel = 1
+	url = https://github.com/confluentinc/libserdes
+	arch = x86_64
+	license = APACHE2
+	makedepends = git
+	depends = glibc
+	depends = jansson
+	depends = avro-c
+	depends = curl
+	provides = libserdes
+	conflicts = libserdes
+	source = git+https://github.com/confluentinc/libserdes
+	sha256sums = SKIP
+
+pkgname = libserdes-git
+
