@@ -2,7 +2,7 @@
 # shellcheck disable=SC2154,SC2034,SC2164
 
 pkgname=ledger-live
-pkgver=2.1.0
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Open source companion app for your Ledger devices"
 arch=('x86_64')
@@ -15,7 +15,7 @@ changelog=
 
 source=("https://github.com/LedgerHQ/ledger-live-desktop/archive/v${pkgver}.tar.gz"
         "ledger-live.desktop")
-sha512sums=('81c66645fdf2127160fc981813bfdc7603dd8b9daa97b3113425a170b63e80aa5804705bbeeae72f636ea065798448c8d2db245efa0f7b2f05e661312775211a'
+sha512sums=('a718460dbf89546ddda67f9ee1356ac30ab2727db98839699862a9456ab14cad8b44b3a22cf8cf62693cce31fdc8a054b39379ab8f43cc72ac25091def39ddc1'
             '282faf948b4ab1204f61d838e8362c398ffa731533c75f2b42056a53b939255de89b82e4a9553c161874694f27089070217e56cad18a258e0b18796ab4722955')
 # TODO sign with ledger pgp
 validpgpkeys=()
