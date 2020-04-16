@@ -1,6 +1,6 @@
 pkgbase = yabddnsd
 	pkgdesc = Yet another bash dynamic DNS daemon
-	pkgver = 0.7.3
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://eomanis.duckdns.org/permshare/yabddnsd/
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = yabddnsd
 	depends = wget
 	optdepends = miniupnpc: Detection of public IPv4 address using UPnP
 	replaces = freedns-maintain-ip
-	source = https://eomanis.duckdns.org/permshare/yabddnsd/yabddnsd-0.7.3.tar.gz
-	sha384sums = f67775e59d8a92f7ad101b158d0aace22ea41506798aee2b25eb30fea65bc96e22cb076b57ab52fd599f9964d25572d7
+	source = https://eomanis.duckdns.org/permshare/yabddnsd/yabddnsd-0.8.0.tar.gz
+	sha384sums = ac4711a7932ec32abaac93fccb36c669f3e1d13f84eb611d726b25cd3bc75c7cec981f3822b1ef7b57014c3b125f1f05
 
 pkgname = yabddnsd
 
