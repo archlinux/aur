@@ -1,8 +1,8 @@
-# Maintainer: Miguel de Val-Borro <miguel at archlinux dot net>
+# Maintainer: Miguel de Val-Borro <miguel dot deval at gmail dot com>
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=astrometry.net
 pkgver=0.79
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic recognition of astronomical images"
 arch=('i686' 'x86_64')
 url="http://astrometry.net/"
