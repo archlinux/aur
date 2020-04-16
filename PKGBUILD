@@ -28,5 +28,6 @@ package() {
     install -dm755 "${pkgdir}/usr/share/icons"
     install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/${_pkgname}"
     install -Dm644 "squashfs-root/devdocs.desktop" "${pkgdir}/usr/share/applications/devdocs.desktop"
+    install -Dm644 "squashfs-root/usr/share/icons/hicolor/1024x1024/apps/devdocs.png" "${pkgdir}/usr/share/pixmaps/devdocs.png"
     cp -R "squashfs-root/usr/share/icons/hicolor" "${pkgdir}/usr/share/icons"
 }
