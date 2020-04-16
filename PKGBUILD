@@ -1,7 +1,7 @@
 # Maintainer: Joseph R. Quinn <quinn period josephr at protonmail dot com>
 pkgname=nginx-h5bp-server-configs
 _pkgname=server-configs-nginx
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Nginx HTTP server boilerplate configs"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nginx')
 provides=("$pkgname")
 install='.install'
 source=("https://github.com/h5bp/$_pkgname/archive/$pkgver.tar.gz")
-sha1sums=('c611f5c717114c461f2d08b3bf9de47f590cb8cf')
+sha1sums=('832ff2a1e89dedd2cf398253cc88c96d5c8fcd74')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
