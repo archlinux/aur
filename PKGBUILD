@@ -1,8 +1,8 @@
 # Maintainer: hashworks <mail@hashworks.net>
 
 pkgname=goaccess-git
-pkgrel=8
-pkgver=r2768.2789816
+pkgrel=1
+pkgver=r2991.906e048
 pkgdesc='GoAccess is a real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.'
 url='https://goaccess.io'
 license=('MIT')
@@ -23,7 +23,7 @@ pkgver() {
 build() {
 	cd "goaccess"
 	autoreconf -fiv
-	./configure --prefix=/usr --enable-utf8 --enable-geoip --sysconfdir=/etc --with-openssl
+	./configure --prefix=/usr --enable-utf8 --enable-geoip=legacy --sysconfdir=/etc --with-openssl
 	make
 }
 
