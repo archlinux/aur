@@ -4,12 +4,13 @@
 
 pkgname=protonmail-bridge
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 _pkgrel=1
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
 url="https://www.protonmail.com/bridge"
-license=('MIT')
+license=('GPL3')
+makedepends=('go' 'gcc')
 depends=('hicolor-icon-theme' 'libsecret' 'qt5-multimedia' 'ttf-dejavu')
 optdepends=(
     'gnome-keyring: supported password manager (password manager is required)'
@@ -17,26 +18,26 @@ optdepends=(
 )
 conflicts=('protonmail-bridge-bin')
 options=('!emptydirs' '!strip')
-source=("https://protonmail.com/download/protonmail-bridge_${pkgver}-${_pkgrel}_amd64.deb")
-sha256sums=('34fdc917fb2c6f06ec6c6a71041f31ad3599b4ee5556e09ad919c36d71eac247')
+source=("git://github.com/ProtonMail/proton-bridge.git"
+        "protonmail-bridge.desktop"
+        "protonmail-bridge")
+sha256sums=('SKIP'
+            '38638abfe99372a618a3b6e8939f1e94037203e1499cbd7c93fc6b0b47da0a2e'
+            '0b95101d33653e337e74e866a13b2a6006304a9a157e74ba36fa49b2b68ec826')
 
 prepare() {
-    tar xf data.tar.xz
-
-#    mkdir -p usr/share/icons/hicolor/scalable/apps
-#    mv usr/share/icons/protonmail/ProtonMail_Bridge.svg \
-#        usr/share/icons/hicolor/scalable/apps/"${pkgname}".svg
-#
-#    mv usr/share/applications/ProtonMail_Bridge.desktop \
-#        usr/share/applications/"${pkgname}".desktop
-#    sed -i "s|Icon=.*|Icon=protonmail-bridge|" \
-#        usr/share/applications/"${pkgname}".desktop
-
+    cd ${srcdir}/proton-bridge/
+    export PATH=$PATH:$(go env GOPATH)/bin/
+    make clean
+    make build
 }
 
 package() {
-    mv usr/ "${pkgdir}"
-
-    install -D -m644 "${pkgdir}"/usr/lib/protonmail/bridge/{eula.txt,LICENSE} \
-        -t "${pkgdir}"/usr/share/licenses/"${pkgname}"
+    mkdir -p "${pkgdir}"/opt
+    mkdir -p "${pkgdir}"/usr/bin
+    cp -r "${srcdir}"/proton-bridge/cmd/Desktop-Bridge/deploy/linux/ "${pkgdir}"/opt/protonmail-bridge
+    install -D -m644 "${pkgdir}"/opt/protonmail-bridge/LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    install -D -m644 "${pkgdir}"/opt/protonmail-bridge/logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/"${pkgname}".svg
+    install -D -m644 "${srcdir}"/protonmail-bridge.desktop -t "${pkgdir}"/usr/share/applications/
+    install -D -m755 "${srcdir}"/protonmail-bridge -t "${pkgdir}"/usr/bin/
 }
