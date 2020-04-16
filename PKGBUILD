@@ -22,7 +22,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.xz")
 noextract=()
-sha256sums=('8611d9869c3d526477271b2477656243f963f8d858768495a775e106d4be90bb')
+sha256sums=('62a34fa0906b1298e191ed599914ce6c45565f8581a21f1e6226bbb900b90cd5')
 validpgpkeys=()
 
 build() {
