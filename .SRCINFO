@@ -1,7 +1,7 @@
 pkgbase = gdlauncher
 	pkgdesc = GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience
-	pkgver = 0.0.2
-	pkgrel = 1
+	pkgver = 0.0.4
+	pkgrel = 2
 	url = https://gdevs.io
 	install = gdlauncher.install
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = gdlauncher
 	depends = libappindicator-gtk3
 	depends = rust
 	source_x86_64 = gdlauncher.desktop
-	source_x86_64 = GDLauncher-linux-setup.AppImage::https://github.com/gorilla-devs/GDLauncher-Releases/releases/download/v0.0.2/GDLauncher-linux-setup.AppImage
+	source_x86_64 = GDLauncher-linux-setup.AppImage::https://github.com/gorilla-devs/GDLauncher-Releases/releases/download/v0.0.4/GDLauncher-linux-setup.AppImage
 	sha256sums_x86_64 = 9b512c4b92ee7405e3774aa66348636738e30866a8227937578aaa67cfc8ed51
 	sha256sums_x86_64 = b10f7d115d7aaaaff128c03b9f679cbd968a61c61a19d228cfd131ba7c658ab7
 
