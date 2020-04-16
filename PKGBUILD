@@ -1,11 +1,11 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=pam-ihosts
 pkgver=1.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A PAM module that provides access control by ip, mac-address, or country-code/region."
 license=("GPL3")
 arch=("any")
-depends=("pam")
+depends=("pam" "libffi")
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 makedepends=("gcc" "binutils")
