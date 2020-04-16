@@ -10,7 +10,7 @@ pkgbase = mochi-appimage
 	noextract = mochi-appimage-1.4.12.AppImage
 	options = !strip
 	source_x86_64 = mochi-appimage-1.4.12.AppImage::https://mochi.cards/releases/Mochi-1.4.12.AppImage
-	sha256sums_x86_64 = a9015b14b923523bce2c25401788583da533a6506116a2dfd853a72cc56e30c2
+	sha256sums_x86_64 = 3e0e12a3fee9b9046dc878e665c94649b128532f2c9f7c8dc34cfd51b8c61935
 
 pkgname = mochi-appimage
 
