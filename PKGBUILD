@@ -6,23 +6,23 @@
 
 pkgname=xcalib
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiny monitor calibration loader for X.org"
 arch=('i686' 'x86_64')
 url="https://github.com/OpenICC/xcalib"
 license=('GPL2')
 depends=('libxxf86vm' 'libxrandr')
 makedepends=('git')
-source=("${pkgname}::git://github.com/OpenICC/xcalib.git")
-sha256sums=('SKIP')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('67dbf2dcc4ae67fde48b48630980c1fa6f89fda5810347f616ec85094c274055')
 
 build() {
-    cd ${pkgname}
+    cd "${pkgname}-${pkgver}"
     make
 }
 
 package() {
-    cd ${pkgname}
+    cd "${pkgname}-${pkgver}"
     install -d "${pkgdir}"/usr/{share/xcalib,share/man/man1,bin}
     install -m755 xcalib "${pkgdir}/usr/bin"
     install -m644 -- *.icc *.icm "${pkgdir}/usr/share/xcalib/"

@@ -4,5 +4,5 @@
 *.pkg.tar*
 
 # xcalib-specific files:
-/xcalib/
+/xcalib-*.tar.gz
 
