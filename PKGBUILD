@@ -3,14 +3,12 @@
 # shellcheck disable=SC2034,SC2154 # allow unused/unset variables
 # shellcheck disable=SC2191 # preserve current _CMAKE_FLAGS initialization.
 
-# To force cuda compute arch uncomment this line and update value of sm_xx model accordingly
-#_cuda_capability+=(sm_30 sm_35 sm_37)
-#_cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
-((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75) # Travis memory limit is not enough to build for arch 3.x.
-
 # Configuration.
 _fragment=${FRAGMENT:-#branch=master}
+[[ -v CUDA_ARCH ]] && _cuda_capability=${CUDA_ARCH}
+
 #some extra, unofficially supported stuff goes here:
+((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75) # Travis memory limit is not enough to build for arch 3.x.
 _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 ((DISABLE_EMBREE)) || {
   _CMAKE_FLAGS+=( -DWITH_CYCLES_EMBREE=ON )
@@ -26,7 +24,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
 pkgname=blender-2.8-git
-pkgver=2.83.r94548.g671d811323e
+pkgver=2.90.r95021.gec263547b53
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 changelog=blender.changelog
