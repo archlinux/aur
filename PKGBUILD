@@ -1,4 +1,4 @@
-# Maintainer: Gustavo Jasso <flying at monkey dot net>
+# Maintainer: Gustavo Jasso <gustavo at jasso dot info>
 pkgname='remarkable-mouse'
 pkgdesc="Python scripts to use reMarkable tablet as mouse input."
 pkgver=5
