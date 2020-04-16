@@ -21,11 +21,11 @@ prepare() {
 }
 
 build() {
-	"$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 	python setup.py build
 }
 
 package() {
-	"$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
