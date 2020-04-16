@@ -4,11 +4,11 @@
 
 pkgname=heasoft
 pkgver=6.27
-pkgrel=1
+pkgrel=2
 _mod="src_no_xspec_modeldata" 
 pkgdesc="NASA high energy astrophysics library"
-makedepends=("gcc" "glibc" "gcc-fortran" "perl" "python")
-depends=("ncurses" "readline" "libxpm" )
+makedepends=("gcc" "glibc" "gcc-fortran" "perl" "python-numpy")
+depends=("ncurses" "readline" "libxpm" "libidn")
 url="https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/"
 arch=('x86_64')
 license=('NASA' 'GPL')
