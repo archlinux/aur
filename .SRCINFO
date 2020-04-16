@@ -1,6 +1,6 @@
 pkgbase = r-corpus
 	pkgdesc = Text Corpus Analysis
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=corpus
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = r-corpus
 	depends = r-utf8>=1.1.0
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/corpus_0.10.0.tar.gz
-	md5sums = e04afcf4e56ed90fdde829399913e1c5
+	source = https://cran.r-project.org/src/contrib/corpus_0.10.1.tar.gz
+	md5sums = 869c88a356573008563c1ea98a9f61ce
 
 pkgname = r-corpus
 

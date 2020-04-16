@@ -2,7 +2,7 @@
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 _cranname=corpus
-_cranver=0.10.0
+_cranver=0.10.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=('r>=3.3' 'r-utf8>=1.1.0')
 makedepends=(gcc)
 optdepends=(r-knitr r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('e04afcf4e56ed90fdde829399913e1c5')
+md5sums=('869c88a356573008563c1ea98a9f61ce')
 
 build() {
   cd "${srcdir}"
