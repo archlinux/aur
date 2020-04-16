@@ -47,8 +47,9 @@ package() {
   bsdtar -C ./opt/onos -xkf "$srcdir/onos/bazel-bin/onos-test.tar.gz" --strip-components=1
   bsdtar -C ./opt/onos -xkf "$srcdir/onos/bazel-bin/karaf.zip" --strip-components=1
   for bin in "$pkgdir/opt/onos/bin"/*; do
-    ln -s "/opt/onos/bin/$(basename $bin)" \
-            "$pkgdir/usr/bin/$(basename $bin)"
+    echo "#!/bin/bash" > "$pkgdir/usr/bin/$(basename $bin)"
+    echo "/opt/onos/bin/$(basename $bin) \"\$@\"" >> "$pkgdir/usr/bin/$(basename $bin)"
+    chmod 755 "$pkgdir/usr/bin/$(basename $bin)"
   done
   rm usr/bin/_*
   rm usr/bin/*.bk
