@@ -1,0 +1,18 @@
+pkgbase = yajl-edenhill-git
+	pkgdesc = Edenhill variant of Yet Another JSON Library
+	pkgver = r276.886c955
+	pkgrel = 1
+	url = https://github.com/edenhill/yajl/tree/edenhill
+	arch = x86_64
+	license = ISC
+	makedepends = cmake
+	makedepends = git
+	provides = yajl
+	provides = yajl-edenhill
+	conflicts = yajl
+	conflicts = yajl-git
+	source = git+https://github.com/edenhill/yajl#branch=edenhill
+	sha256sums = SKIP
+
+pkgname = yajl-edenhill-git
+
