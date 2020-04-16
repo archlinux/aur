@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::https://download.wavebox.app/stable/linux/tar/
         'wavebox.menu'
         'LICENSE')
 md5sums=('b309ad45c3323bd8ffab4f46de4b720e'
-         'cf3416572bcd3e3528958f36306e6e7c'
+         '170a7d4e04402fa5c759e8f5e87e9d9c'
          '4f08794ea93eafd0e77b522ac7738638'
          'b92c8854e4553540df6bc998afe68cc4')
 
