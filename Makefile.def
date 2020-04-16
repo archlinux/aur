@@ -9,7 +9,7 @@
 #  Written: mickele
 #  Created: 12/2014
 #  Modified: nema.arpit
-#  Last modified: 09/2016
+#  Last modified: 04/2020
 #
 #  Send bug reports, comments or suggestions to
 #  https://aur.archlinux.org/packages/opensees/
@@ -34,7 +34,7 @@ OpenSees_PROGRAM = $(INSTALLDIR)/bin/OpenSees
 OPERATING_SYSTEM = LINUX
 
 # GRAPHICS = UsingOpenGL, UsingX11, NONE
-GRAPHICS = UsingOpenGL
+GRAPHICS = NONE
 
 # PROGRAMMING_MODE = SEQUENTIAL, THREADS, PARALLEL_INTERPRETERS, PARALLEL
 PROGRAMMING_MODE = SEQUENTIAL
@@ -66,20 +66,20 @@ CBLASdir     = $(HOME)/OpenSees/OTHER/CBLAS
 LAPACKdir    = $(HOME)/OpenSees/OTHER/LAPACK
 ARPACKdir    = $(HOME)/OpenSees/OTHER/ARPACK
 UMFPACKdir   = $(HOME)/OpenSees/OTHER/UMFPACK
-# METISdir     = $(HOME)/OpenSees/OTHER/METIS
+METISdir     = $(HOME)/OpenSees/OTHER/METIS
 CSPARSEdir   = $(HOME)/OpenSees/OTHER/CSPARSE
 SRCdir       = $(HOME)/OpenSees/SRC
 
 ifeq ($(PROGRAMMING_MODE), THREADS)
     SUPERLUdir   = $(HOME)/OpenSees/OTHER/SuperLU_MT
 else
-    SUPERLUdir   = $(HOME)/OpenSees/OTHER/SuperLU_5.0/SRC
+    SUPERLUdir   = $(HOME)/OpenSees/OTHER/SuperLU_5.1.1/SRC
 endif
 
 ifeq ($(PROGRAMMING_MODE), SEQUENTIAL)
     SUPERLU_DISTdir =
 else
-    SUPERLU_DISTdir   = $(HOME)/OpenSees/OTHER/SuperLU_DIST_2.5/SRC
+    SUPERLU_DISTdir   = $(HOME)/OpenSees/OTHER/SuperLU_DIST_4.3/SRC
 endif
 
 DIRS = $(BLASdir) $(CBLASdir) $(LAPACKdir) $(AMDdir) $(CSPARSEdir) \
@@ -112,18 +112,24 @@ BLAS_LIBRARY    = $(HOME)/lib/libBlas.a
 #BLAS_LIBRARY    = -lblas
 SUPERLU_LIBRARY = $(HOME)/lib/libSuperLU.a
 CBLAS_LIBRARY   = $(HOME)/lib/libCBlas.a
+#SUPERLU_LIBRARY = $(HOME)/lib/libSuperLU.a
 #CBLAS_LIBRARY   = -lcblas
 ARPACK_LIBRARY  = $(HOME)/lib/libArpack.a
 UMFPACK_LIBRARY = $(HOME)/lib/libUmfpack.a
-# METIS_LIBRARY   = $(HOME)/lib/libMetis.a
-METIS_LIBRARY   = -lmetis-4
-METIS_INCLUDE   = /usr/include/metis-4
+#METIS_LIBRARY   = $(HOME)/lib/libmetis.a
+#METIS_INCLUDE   = -I$(METISdir)
+METIS_LIBRARY   = -lmetis
+METIS_INCLUDE   = /usr/include/
 CSPARSE_LIBRARY = $(HOME)/lib/libCSparse.a
-TCL_LIBRARY     = -ltk8.6 -ltcl8.6
-TCL_INCLUDE     =
-BLITZ_LIBRARY   =
+#CSPARSE_LIBRARY = $(HOME)/lib/libCSparse.a
+TCL_LIBRARY     = -ltcl8.6
+PYTHON_LIBRARY  = -lpython3
+TCL_INCLUDE     = 
+PYTHON_INCLUDE  = -I/usr/include/python3.8
+BLITZ_LIBRARY   = 
 BLITZ_INCLUDE   = 
 AMD_LIBRARY     = $(HOME)/lib/libAmd.a
+#AMD_LIBRARY     = -lamd
 
 ifeq ($(PROGRAMMING_MODE), SEQUENTIAL)
     DISTRIBUTED_SUPERLU_LIBRARY =
@@ -157,8 +163,6 @@ WIPE_LIBS      = $(FE_LIBRARY) \
 		 $(UMFPACK_LIBRARY) \
 		 $(CSPARSE_LIBRARY) \
 		 $(RELIABILITY_LIBRARY)
-
-#	         $(METIS_LIBRARY) \
 
 # %---------------------------------------------------------%
 # | SECTION 5: COMPILERS                                    |
@@ -257,16 +261,16 @@ ifeq ($(DEBUG_MODE), DEBUG)
 else
 
     # modified as optimizaton currently causing problems with Steel01 code
-    C++FLAGS        = -Wall -O3 -D_UNIX -D_LINUX -std=c++98 \
+    C++FLAGS        = -march=native -mtune=native -Wall -O3 -D_UNIX -D_LINUX -std=c++11 \
     		      $(GRAPHIC_FLAG) $(RELIABILITY_FLAG) $(DEBUG_FLAG) $(PROGRAMMING_FLAG) \
-		      -ffloat-store -fpermissive
+		      -ffloat-store -fpermissive -fPIC
 
-    CFLAGS          = -Wall -O3 $(GRAPHIC_FLAG) $(RELIABILITY_FLAG) $(DEBUG_FLAG) $(PROGRAMMING_FLAG)
-    FFLAGS          = -Wall -O
+    CFLAGS          = -march=native -mtune=native -Wall -O3 $(GRAPHIC_FLAG) $(RELIABILITY_FLAG) $(DEBUG_FLAG) $(PROGRAMMING_FLAG) -fPIC
+    FFLAGS          = -march=native -mtune=native -Wall -O3 -fPIC
 
     # Linker
     LINKER          = $(CC++)
-    LINKFLAGS       = 
+    LINKFLAGS       = -fPIC
 
 endif
 
@@ -337,17 +341,11 @@ ifeq ($(HAVEMUMPS), YES)
     MUMPS = YES
     MUMPS_FLAG = -D_MUMPS -D_OPENMPI
     MUMPS_DIR = /usr
-    MUMPS_LIB = $(FE)/system_of_eqn/linearSOE/mumps/MumpsSOE.o \
-                $(FE)/system_of_eqn/linearSOE/mumps/MumpsSolver.o \
-                $(FE)/system_of_eqn/linearSOE/mumps/MumpsParallelSOE.o \
-                $(FE)/system_of_eqn/linearSOE/mumps/MumpsParallelSolver.o \
-                -L$(MUMPS_DIR)/lib \
-                -ldmumps -lmumps_common -lesmumps -lscotch -lscotcherr -lpord -lscalapack
+    MUMPS_LIB = -L$(MUMPS_DIR)/lib -ldmumps -lmumps_common -lesmumps -lscotch -lscotcherr -lpord -lscalapack
     MUMPS_INCLUDE = -I$(MUMPS_DIR)/include
 endif
 
-MACHINE_LINKLIBS = -L$(BASE)/lib \
-		   -L$(HOME)/lib 
+MACHINE_LINKLIBS = -L$(BASE)/lib -L$(HOME)/lib 
 
 MACHINE_NUMERICAL_LIBS  = $(RELIABILITY_LIBRARY) -lm \
 			  $(ARPACK_LIBRARY) \
@@ -363,14 +361,9 @@ MACHINE_NUMERICAL_LIBS  = $(RELIABILITY_LIBRARY) -lm \
 ifeq ($(PROGRAMMING_MODE), SEQUENTIAL)
     PARALLEL_LIB = 
 else ifeq ($(PROGRAMMING_MODE), PARALLEL)
-    PARALLEL_LIB = $(FE)/system_of_eqn/linearSOE/sparseGEN/DistributedSparseGenColLinSOE.o \
-                   $(FE)/system_of_eqn/linearSOE/sparseGEN/SparseGenColLinSolver.o \
-	           $(FE)/system_of_eqn/linearSOE/sparseGEN/DistributedSuperLU.o \
-		   $(METIS_LIBRARY) $(MUMPS_LIB) -lmpi -lmpi_mpifh $(DISTRIBUTED_SUPERLU_LIBRARY)
+    PARALLEL_LIB = $(METIS_LIBRARY) $(MUMPS_LIB) -lmpi -lmpi_mpifh $(DISTRIBUTED_SUPERLU_LIBRARY)
 else ifeq ($(PROGRAMMING_MODE), PARALLEL_INTERPRETERS)
-    PARALLEL_LIB = $(FE)/system_of_eqn/linearSOE/sparseGEN/DistributedSparseGenColLinSOE.o \
-                   $(FE)/system_of_eqn/linearSOE/sparseGEN/DistributedSuperLU.o \
-                   $(METIS_LIBRARY) $(MUMPS_LIB) -lmpi -lmpi_mpifh $(DISTRIBUTED_SUPERLU_LIBRARY)
+    PARALLEL_LIB = $(METIS_LIBRARY) $(MUMPS_LIB) -lmpi -lmpi_mpifh $(DISTRIBUTED_SUPERLU_LIBRARY)
 endif
 
 ifeq ($(PROGRAMMING_MODE), THREADS)
@@ -394,7 +387,8 @@ MACHINE_INCLUDES = -I$(BASE)/include \
                    $(MUMPS_INCLUDE) \
                    $(METIS_INCLUDE) \
                    $(BLITZ_INCLUDE) \
-                   $(TCL_INCLUDE)
+                   $(TCL_INCLUDE) \
+		   $(PYTHON_INCLUDE)
 
 # this file contains all the OpenSees/SRC includes FE_INCLUDES
 include $(FE)/Makefile.incl
