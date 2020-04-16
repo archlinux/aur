@@ -9,10 +9,6 @@ pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
-makedepends=(
-  'clang' 'cmake' 'curl' 'git' 'icu' 'krb5' 'libunwind' 'lldb' 'llvm'
-  'lttng-ust' 'openssl' 'zlib'
-)
 options=('staticlibs')
 source=('dotnet.sh')
 sha512sums=('448e2ad41a1ac5b7adf4a17ef27d01d1f20c6d355fdb1e10b0ceb4bd6edd8b3a24874aa8c42cfcf56267a6a85c5896b5f69764e5e59526f6938ec7c9d1ec7383')
@@ -42,7 +38,7 @@ package_dotnet-runtime-bin() {
            'libcurl.so')
   optdepends=('lttng-ust: CoreCLR tracing')
   provides=("dotnet-runtime-3.1" "dotnet-runtime=${pkgver}")
-  conflicts=("dotnet-runtime-3.1")
+  conflicts=("dotnet-runtime-3.1" "dotnet-runtime=${pkgver}")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -53,7 +49,7 @@ package_aspnet-runtime-bin() {
   pkgdesc='The ASP.NET Core runtime (binary)'
   depends=('dotnet-runtime-3.1')
   provides=("aspnet-runtime-3.1" "aspnet-runtime=${pkgver}")
-  conflicts=("aspnet-runtime-3.1")
+  conflicts=("aspnet-runtime-3.1" "aspnet-runtime=${pkgver}")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -62,9 +58,9 @@ package_aspnet-runtime-bin() {
 
 package_dotnet-sdk-bin() {
   pkgdesc='The .NET Core SDK (binary)'
-  depends=('dotnet-runtime-3.1')
+  depends=('dotnet-runtime-3.1' 'glibc')
   provides=("dotnet-sdk-3.1" "dotnet-sdk=${pkgver}")
-  conflicts=("dotnet-sdk-3.1")
+  conflicts=("dotnet-sdk-3.1" "dotnet-sdk=${pkgver}")
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   cp -dr --no-preserve='ownership' packs sdk templates "${pkgdir}"/usr/share/dotnet/
   ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-sdk

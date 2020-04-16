@@ -6,18 +6,6 @@ pkgbase = dotnet-core-bin
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	makedepends = clang
-	makedepends = cmake
-	makedepends = curl
-	makedepends = git
-	makedepends = icu
-	makedepends = krb5
-	makedepends = libunwind
-	makedepends = lldb
-	makedepends = llvm
-	makedepends = lttng-ust
-	makedepends = openssl
-	makedepends = zlib
 	options = staticlibs
 	source = dotnet.sh
 	sha512sums = 448e2ad41a1ac5b7adf4a17ef27d01d1f20c6d355fdb1e10b0ceb4bd6edd8b3a24874aa8c42cfcf56267a6a85c5896b5f69764e5e59526f6938ec7c9d1ec7383
@@ -39,6 +27,7 @@ pkgname = aspnet-runtime-bin
 	provides = aspnet-runtime-3.1
 	provides = aspnet-runtime=3.1.3.sdk201
 	conflicts = aspnet-runtime-3.1
+	conflicts = aspnet-runtime=3.1.3.sdk201
 
 pkgname = dotnet-runtime-bin
 	pkgdesc = The .NET Core runtime (binary)
@@ -53,11 +42,14 @@ pkgname = dotnet-runtime-bin
 	provides = dotnet-runtime-3.1
 	provides = dotnet-runtime=3.1.3.sdk201
 	conflicts = dotnet-runtime-3.1
+	conflicts = dotnet-runtime=3.1.3.sdk201
 
 pkgname = dotnet-sdk-bin
 	pkgdesc = The .NET Core SDK (binary)
 	depends = dotnet-runtime-3.1
+	depends = glibc
 	provides = dotnet-sdk-3.1
 	provides = dotnet-sdk=3.1.3.sdk201
 	conflicts = dotnet-sdk-3.1
+	conflicts = dotnet-sdk=3.1.3.sdk201
 
