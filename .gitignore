@@ -3,4 +3,5 @@ ganv/
 pkg/
 src/
 ganv-git-*.tar.xz
+ganv-git-*.tar.zst
 ganv-git-*.src.tar.gz

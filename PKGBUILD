@@ -3,19 +3,19 @@
 
 _pkgname=ganv
 pkgname="${_pkgname}-git"
-pkgver=1.5.4.r348.8b3520b
+pkgver=1.6.0.r354.662bcbc
 pkgrel=1
 pkgdesc="An interactive Gtkmm canvas widget for graph-based interfaces (git version)"
 arch=('i686' 'x86_64')
-url="http://drobilla.net/software/ganv/"
+url="https://drobilla.net/software/ganv/"
 license=('GPL3')
-depends=('atk' 'cairo' 'fontconfig' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'glibmm' 'graphviz' 'gtk2' 'gtkmm'
-'libfreetype.so' 'pango')
+depends=('atk' 'cairo' 'fontconfig' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'glibmm'
+         'graphviz' 'gtk2' 'gtkmm' 'libfreetype.so' 'pango')
 makedepends=('git' 'python')
 provides=("$_pkgname" "$_pkgname=${pkgver//.r*/}" "lib${_pkgname}-${pkgver::1}.so")
 conflicts=("$_pkgname")
-source=("${_pkgname}::git+http://gitlab.com/drobilla/${_pkgname}.git"
-        'autowaf::git+http://gitlab.com/drobilla/autowaf.git')
+source=("${_pkgname}::git+https://gitlab.com/drobilla/${_pkgname}.git"
+        'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
 sha256sums=('SKIP'
             'SKIP')
 
@@ -49,6 +49,5 @@ package() {
   cd "$srcdir/${_pkgname}"
 
   python waf install --destdir=${pkgdir}
-  install -vDm 644 {AUTHORS,NEWS,README} \
-    -t "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -vDm 644 AUTHORS NEWS README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
