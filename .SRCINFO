@@ -7,7 +7,7 @@ pkgbase = repotool
 	license = GPLv3
 	depends = python
 	source = https://github.com/conqp/repotool/archive/1.2.7.tar.gz
-	sha256sums = d1881ba5a5cbd04246305a38a4d48f4e80767cf8b8729850aaf500e3ea292c68
+	sha256sums = a20e6f950bbece6f6966c747443020a9218b38abfa65e9d7d8d06d8a7529cab2
 
 pkgname = repotool
 
