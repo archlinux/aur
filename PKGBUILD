@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=hostctl
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc='Command-line tool to manage your hosts file'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 conflicts=("${pkgname}-bin")
 makedepends=('go-pie')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('6615b57926772c2488833e0f3a2913aa667f61babe7f12908c433765c1102b22')
+sha256sums=('54c9a9d80bc128165713706d520f9962dd3e37e268fd73ae0adae400b89c2ab4')
 
 build() {
   cd $pkgname-$pkgver
