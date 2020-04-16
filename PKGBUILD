@@ -3,7 +3,7 @@
 pkgname='clevo-xsm-wmi'
 pkgver='1.1'
 _pkgtag='6bfe9fe44e04'
-pkgrel=2
+pkgrel=3
 pkgdesc='A reverse engineering driver for the Clevo laptop models backlight keyboard.'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -11,7 +11,7 @@ url='https://bitbucket.org/tuxedocomputers/clevo-xsm-wmi'
 source=("clevo-xsm-wmi-${pkgver}.src.tar.gz::https://bitbucket.org/tuxedocomputers/clevo-xsm-wmi/get/v${pkgver}.tar.gz"
         "clevo-xsm-wmi.patch")
 sha256sums=('630ff6dbfa90c8a9285badf75b60579b2a9495e85862b62ef77a3654535e4b72'
-            '65b34f44045cb87f65aed766b397a1cfed6175ededb35d08eabd5d10d2664e52')
+            '7324fb7426daea15270ff584a35681d63499c8087cddfc6958f458c806bbc094')
 options=(!emptydirs)
 makedepends=('linux-headers')
 install='clevo-xsm-wmi.install'

@@ -86,26 +86,26 @@ index 26f1af6..f540f91 100644
 +		.callback = clevo_xsm_dmi_matched,
 +		.driver_data = &kb_full_color_with_extra_ops,
 +	},
-+  {
++       {
 +		.ident = "Clevo N870HP6",
 +		.matches = {
 +			DMI_MATCH(DMI_PRODUCT_NAME, "N85_87HP6"),
 +		},
 +		.callback = clevo_xsm_dmi_matched,
 +		.driver_data = &kb_full_color_ops,
-+  },
++       },
 +	{
-+    .ident = "Clevo P65_67HSHP",
-+    .matches = {
-+        DMI_MATCH(DMI_PRODUCT_NAME, "P65_67HSHP"),
-+    },
-+    .callback = clevo_xsm_dmi_matched,
-+    .driver_data = &kb_full_color_ops,
-+  },
++               .ident = "Clevo P65_67HSHP",
++               .matches = {
++                       DMI_MATCH(DMI_PRODUCT_NAME, "P65_67HSHP"),
++               },
++               .callback = clevo_xsm_dmi_matched,
++               .driver_data = &kb_full_color_ops,
++       },
  	/* Ones that don't follow the 'standard' product names above */
  	{
  		.ident = "Clevo P7xxDM(-G)",
-@@ -1457,36 +1553,44 @@ static struct dmi_system_id clevo_xsm_dmi_table[] __initdata = {
+@@ -1457,36 +1553,52 @@ static struct dmi_system_id clevo_xsm_dmi_table[] __initdata = {
  	{
  		.ident = "Clevo P750ZM",
  		.matches = {
@@ -161,6 +161,14 @@ index 26f1af6..f540f91 100644
 +                .callback = clevo_xsm_dmi_matched,
 +                .driver_data = &kb_full_color_ops,
 +        },
++        {
++		.ident = "Clevo N8xEJEK",
++		.matches = {
++			DMI_MATCH(DMI_PRODUCT_NAME, "N8xEJEK"),
++		},
++		.callback = clevo_xsm_dmi_matched,
++		.driver_data = &kb_full_color_with_extra_ops,
++	},
  	{
  		/* terminating NULL entry */
  	},
