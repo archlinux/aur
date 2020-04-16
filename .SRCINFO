@@ -1,7 +1,7 @@
 pkgbase = ylva
 	pkgdesc = Command line password manager.
-	pkgver = 1.5
-	pkgrel = 2
+	pkgver = 1.6
+	pkgrel = 1
 	url = https://www.ylvapasswordmanager.com/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = ylva
 	makedepends = gcc
 	depends = openssl
 	depends = sqlite
-	source = ylva-1.5.tar.gz::https://github.com/nrosvall/ylva/archive/v1.5.tar.gz
-	sha256sums = e4351032a70e8dc12189e0bd0d3b22e7fb01f87ad1c9073150f54fb960531bca
+	source = ylva-1.6.tar.gz::https://github.com/nrosvall/ylva/archive/v1.6.tar.gz
+	sha256sums = 3d756c06131786b444e39ea6a4b09575d13d0b9db2ec081a6356698f502b4e8d
 
 pkgname = ylva
 

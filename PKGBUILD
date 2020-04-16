@@ -3,8 +3,8 @@
 # Co-Maintainer: Zachary Matthews <zacharymatt5@gmail.com>
 
 pkgname=ylva
-pkgver=1.5
-pkgrel=2
+pkgver=1.6
+pkgrel=1
 pkgdesc='Command line password manager.'
 arch=('i686' 'x86_64')
 url='https://www.ylvapasswordmanager.com/'
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('openssl' 'sqlite')
 makedepends=('gcc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nrosvall/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('e4351032a70e8dc12189e0bd0d3b22e7fb01f87ad1c9073150f54fb960531bca')
+sha256sums=('3d756c06131786b444e39ea6a4b09575d13d0b9db2ec081a6356698f502b4e8d')
 
 prepare() {
   cd $pkgname-$pkgver
