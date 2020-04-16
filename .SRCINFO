@@ -1,13 +1,12 @@
 pkgbase = heasoft
 	pkgdesc = NASA high energy astrophysics library
 	pkgver = 6.27
-	pkgrel = 2
+	pkgrel = 3
 	url = https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/
 	install = heasoft.install
 	arch = x86_64
 	license = NASA
 	license = GPL
-	makedepends = gcc
 	makedepends = glibc
 	makedepends = gcc-fortran
 	makedepends = perl
