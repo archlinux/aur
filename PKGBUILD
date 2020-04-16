@@ -8,8 +8,8 @@ pkgname=${_name}-${_channel}-every-day
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (Updated every day) (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 _version=77.0a1
-pkgver=77.0a1.20200415
-pkgrel=3
+pkgver=77.0a1.20200416
+pkgrel=1
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 depends=(dbus-glib gtk3 libxt nss mime-types)
@@ -109,3 +109,11 @@ sha512sums_i686=('15b1dffc3d2d03d8d24cc7ed7108ccc9bad77b1c981508e4a7f2b3ec2f300e
 sha512sums_x86_64=('3a880af1a57e98c4d96a3857a6f0b23f6bad59200f0a1bc2fa6c690099058f8baeff4cd0a9f1069dccc41a531768a04ef94d7de1d246620f39c1d8a06f7a4d4b'
                    'SKIP'
                    'b39aa809ba729537bdb1b783f36ac58eb9e5da5252a5dc031c90e18c77f4e9f13f73f62f499a638363f4b59f2b1eaa8b7f428279ba3efaac082e9b621a901bc8')
+sha512sums=('42426e7b510bd88cbf7b246bf66d7768afa5d71389bf15f7a4231dc24f99fd73284dd9a0a8eb4342b42337c2c7dd843e570a93afa7d3b44c97ecbf5e38e433ac'
+            '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308')
+sha512sums_i686=('6d1ba87b8b2061b57a116d43e0c2ffa0d7ea75014734a3e5d163b47552f1bddfddd6fe59ec2d7e171d3f94bc685776c4a2ce1ecfcf288b792be76965028ead8c'
+                 'SKIP'
+                 '8927ea3b0a85691229e0215634fff87e6d267079c60a9d9a4ff6ae0438efbc02fe46acb4e66b30de708f25f5fc01288b8ee39a88d9add9bf220f1b03968ada55')
+sha512sums_x86_64=('acb2cf2c854f8fda216659fa84192da5a2aedc53e6a6573d12f7ef4b1ed373715ba8c2e389b0d6235b8f09d6c072213d0a2f7b9a4a9eb68d37be73fef798681a'
+                   'SKIP'
+                   '8927ea3b0a85691229e0215634fff87e6d267079c60a9d9a4ff6ae0438efbc02fe46acb4e66b30de708f25f5fc01288b8ee39a88d9add9bf220f1b03968ada55')
