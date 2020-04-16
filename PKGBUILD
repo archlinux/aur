@@ -9,6 +9,7 @@ license=('GPL')
 depends=(zlib syntax-highlighting sonnet breeze
     qt5-{base,svg,quickcontrols{,2}}
     k{textwidgets,widgetsaddons,archive,config,iconthemes,coreaddons}
+    ttf-roboto ttf-roboto-mono ttf-opensans
 )
 makedepends=(git cmake extra-cmake-modules)
 provides=(${pkgname/-git/})
@@ -27,7 +28,7 @@ build() {
     # TODO: Use existing font packages instead
     cmake \
         -DCOMPILE_ONLY_WORD=On \
-        -DINSTALL_FONT=On \
+        -DINSTALL_FONT=Off \
         ..
     make
 }
@@ -38,4 +39,13 @@ package() {
     cd ..
     install -Dm644 -t "${pkgdir}/usr/share/licenses/o20" \
         COPYING LICENSE
+    cd dev
+    # Some fonts are on AUR, I am still thinking about whether
+    # to put them in dependencies
+    find o20.fonts/Roboto -name 'RobotoSlab*.ttf' -exec \
+        install -Dm644 {} "${pkgdir}/usr/share/fonts/"{} \;
+    find o20.fonts/Ubuntu -name 'Ubuntu*.ttf' -exec \
+        install -Dm644 {} "${pkgdir}/usr/share/fonts/"{} \;
+    find o20.fonts/Lobster -type f -exec \
+        install -Dm644 {} "${pkgdir}/usr/share/fonts/"{} \;
 }
