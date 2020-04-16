@@ -4,8 +4,8 @@
 # Contributor: Bruno Pagani <archange at archlinux dot org>
 
 pkgname=mattermost
-pkgver=5.20.2
-pkgrel=2
+pkgver=5.22.0
+pkgrel=1
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://mattermost.com'
@@ -28,14 +28,19 @@ source=("$pkgname-server-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname-se
         "$pkgname.service"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('f59ff61c9ba426c76c3196288085967061c14df072c33ad2f799524671988da5'
-            '082a7a5652e008ab52f66fe13b075a0d8a31cc73f6db099dfa2d4d646ebf7da5'
-            '7ec8231894fdac8cba7fdd1cede7b47dbce68dae6868bab35fd16f2ceda433ee'
+sha256sums=('122b8ef00cee86e2f5aabdafd3b68b72c67a6bb7f549b17e325650cbc18501b2'
+            '241789b0d037c5484f108b8bdcebac3ea77b4fdf79e1640350a12071f1aa44ab'
+            '08685fa8aad0097cb97bba3484c0a0f8908a4e5123928351b7e7732aecc914f2'
             '522f44f3a68f73e43d854421f40e18055f3256453bc00a2162956902d1e577f8'
             'f7bd36f6d7874f1345d205c6dcb79af1804362fc977a658db88951a172d1dfa0'
             '15220909751b960b811fc3eb3d1b8e2c0c5855d726d834461f667b5458d3bdad')
 
 prepare() {
+    # The build scripts dereference symlinks and sometimes end up in the root
+    # source dir when they were launched from the Go domain path structure.
+    ln -sf "$pkgname-server-$pkgver" "$pkgname-server"
+    ln -sf "$pkgname-webapp-$pkgver" "$pkgname-webapp"
+
     # Create the directory structure to match Go namespaces
     mkdir -p "src/github.com/$pkgname"
     cd "src/github.com/$pkgname"
@@ -46,7 +51,7 @@ prepare() {
 
     # Pass Arch Linux's Go compilation flags to Mattermost in order to take
     # into account advanced features like PIE.
-    patch < "$srcdir/$pkgname-ldflags.patch"
+    patch -p1 < "$srcdir/$pkgname-ldflags.patch"
 
     # We are not using docker, no need to stop it.
     sed -r -i Makefile \
@@ -94,7 +99,7 @@ prepare() {
 
     # Enforce build hash to Arch Linux as well for the field corresponding to
     # the webapp.
-    cd "$srcdir/$pkgname-webapp"
+    cd "$srcdir/$pkgname-webapp-$pkgver"
     sed -r -i webpack.config.js \
         -e "s/^(\s*)COMMIT_HASH:(.*),$/\1COMMIT_HASH: JSON.stringify\(\"$pkgver-$pkgrel Arch Linux \($CARCH\)\"\),/"
 

@@ -1,11 +1,9 @@
---- Makefile	2019-12-28 12:38:41.471311251 +0100
-+++ Makefile.new	2019-12-28 12:41:37.194305874 +0100
-@@ -48,14 +48,23 @@
- # Golang Flags
- export GO111MODULE=on
- GOPATH ?= $(shell go env GOPATH)
--GOFLAGS ?= $(GOFLAGS:) -mod=vendor
-+GOFLAGS ?= $(GOFLAGS:) -mod=vendor
+diff --git a/Makefile b/Makefile
+index 97cd2446d0..9340c9b3dc 100644
+--- a/Makefile
++++ b/Makefile
+@@ -58,11 +58,20 @@ GOFLAGS ?= $(GOFLAGS:) -mod=vendor
+ export GOBIN ?= $(PWD)/bin
  GO=go
  DELVE=dlv
 -LDFLAGS += -X "github.com/mattermost/mattermost-server/v5/model.BuildNumber=$(BUILD_NUMBER)"
