@@ -1,7 +1,7 @@
 # Maintainer: Gaspard d'Hautefeuille <gaspard@dhautefeuille.eu>
 pkgname=hash-slinger
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to generate special DNS records (SSHFP, TLSA, OPENPGPKEY, IPSECKEY)"
 arch=(any)
 url="https://github.com/letoams/hash-slinger"
@@ -14,19 +14,7 @@ optdepends=('openssh: for sshfp'
             'openswan: for ipseckey (if not using libreswan or strongswan)'
             'strongswan: for ipseckey (if not using libreswan or openswan)')
 source=(https://github.com/letoams/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('cd888eaee222bbe994d60aab7bc638b6c3417f43b68d0e6a8f1802104f6d7b8d'
-            'SKIP')
-validpgpkeys=('F384E78A1D3352D3EB928AB862D3582FE0FD94D2')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  for f in ipseckey openpgpkey sshfp tlsa; do
-    sed -i 's@#!/usr/bin/python$@#!/usr/bin/env python@' $f
-  done
-
-  # Indentation issue :)
-  sed -i 's/        /\t/g' ipseckey
-}
+sha256sums=('1e39dbba1926a5b07119dcbd55a7f55f09349f3b7bda7fba12dae5056535c0ef')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
