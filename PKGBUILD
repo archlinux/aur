@@ -12,7 +12,6 @@ arch=('i686' 'x86_64')
 url="https://github.com/OpenICC/xcalib"
 license=('GPL2')
 depends=('libxxf86vm' 'libxrandr')
-makedepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('67dbf2dcc4ae67fde48b48630980c1fa6f89fda5810347f616ec85094c274055')
 
