@@ -1,7 +1,7 @@
 pkgbase = python36
 	pkgdesc = Major release 3.6 of the Python high-level programming language
 	pkgver = 3.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.python.org/
 	arch = i686
 	arch = x86_64

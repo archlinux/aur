@@ -3,7 +3,7 @@
 
 pkgname=python36
 pkgver=3.6.10
-pkgrel=1
+pkgrel=2
 _pybasever=3.6
 _pymajver=3
 pkgdesc="Major release 3.6 of the Python high-level programming language"
