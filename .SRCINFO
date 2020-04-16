@@ -1,7 +1,7 @@
 pkgbase = mesen-s-git
 	pkgdesc = A cross-platform Super Nintendo emulator
-	pkgver = 0.3.0.r160.g1b44400
-	pkgrel = 1
+	pkgver = 0.3.0.r164.g58f37c6
+	pkgrel = 2
 	url = https://github.com/SourMesen/Mesen-S
 	arch = x86_64
 	license = GPL3
