@@ -31,21 +31,8 @@ makedepends=(
     pandoc
 )
 optdepends=(gnupg)
-provides=(crema)
-conflicts=(crema-git)
-
-depends+=(
-#    jq
-#    pacutils
-#    parallel
-#    wget
-)
-#makedepends+=(m4)
-#optdepends+=(
-#    "bash-completion: bash completion"
-#    "devtools: aur-chroot"
-#    "vifm: build file interaction"
-#)
+provides=(crema-git)
+conflicts=(crema)
 
 pkgver() {
     cd "$srcdir/$_pkgname"
