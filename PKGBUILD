@@ -21,7 +21,7 @@ sha512sums_x86_64=('9d70b4a8a63b66da90544087199a0f681d135bf90d43ca53b12ea97cc600
 # https://docs.microsoft.com/en-us/dotnet/core/versions/#versioning-details
 
 package_dotnet-runtime-2.2() {
-  pkgdesc='The .NET Core runtime version 2.2 - latest (End of Life)'
+  pkgdesc='The .NET Core runtime binary version 2.2 - latest (End of Life)'
   depends=('dotnet-host' 'icu' 'krb5' 'libunwind' 'openssl' 'zlib'
            'libcurl.so')
   optdepends=('lttng-ust: CoreCLR tracing')
@@ -34,7 +34,7 @@ package_dotnet-runtime-2.2() {
 }
 
 package_dotnet-sdk-2.2() {
-  pkgdesc='The .NET Core SDK version 2.2 - latest (End of Life)'
+  pkgdesc='The .NET Core SDK binary version 2.2 - latest (End of Life)'
   depends=('dotnet-runtime-2.2')
   provides=("dotnet-sdk-2.2" "dotnet-sdk=${pkgver}")
   conflicts=("dotnet-sdk-2.2")

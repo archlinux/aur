@@ -15,7 +15,7 @@ pkgbase = dotnet-core-2.2
 	sha512sums_aarch64 = 565fe5cbc2c388e54b3ee548d5b98e1fd85d920ceeeb5475a2bf2daa7f090fc925d8afef19b2b76973af439fbb749c6996711790287eafd588e4d916a016e84c
 
 pkgname = dotnet-runtime-2.2
-	pkgdesc = The .NET Core runtime version 2.2 - latest (End of Life)
+	pkgdesc = The .NET Core runtime binary version 2.2 - latest (End of Life)
 	depends = dotnet-host
 	depends = icu
 	depends = krb5
@@ -29,7 +29,7 @@ pkgname = dotnet-runtime-2.2
 	conflicts = dotnet-runtime-2.2
 
 pkgname = dotnet-sdk-2.2
-	pkgdesc = The .NET Core SDK version 2.2 - latest (End of Life)
+	pkgdesc = The .NET Core SDK binary version 2.2 - latest (End of Life)
 	depends = dotnet-runtime-2.2
 	provides = dotnet-sdk-2.2
 	provides = dotnet-sdk=2.2.8.sdk207
