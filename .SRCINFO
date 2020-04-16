@@ -5,7 +5,6 @@ pkgbase = cajviewer-appimage
 	url = http://cajviewer.cnki.net
 	arch = x86_64
 	provides = cajviewer
-	conflicts = cajviewer
 	noextract = CAJViewer-x86_64-libc-2.24.AppImage
 	options = !strip
 	source = http://viewer.d.cnki.net/CAJViewer-x86_64-libc-2.24.AppImage

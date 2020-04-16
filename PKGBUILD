@@ -10,7 +10,6 @@ url="http://cajviewer.cnki.net"
 noextract=("CAJViewer-x86_64-libc-2.24.AppImage")
 options=("!strip")
 provides=('cajviewer')
-conflicts=('cajviewer')
 _pkgname="CAJViewer-x86_64-libc-2.24.AppImage"
 source=("http://viewer.d.cnki.net/CAJViewer-x86_64-libc-2.24.AppImage")
 sha256sums=("2ee4ca35cc031ebdc413bcb46d63bb1b7f720c7a9db45641e25614f589f4933f")
