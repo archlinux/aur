@@ -2,14 +2,14 @@
 # Contributor: Ryan Eschinger <ryanesc[at]gmail[dot]com>
 
 pkgname=argocd-bin
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Declarative continuous deployment for Kubernetes."
 arch=('x86_64')
 url="https://github.com/argoproj/argo-cd"
 license=('Apache')
 source=("argocd_$pkgver::https://github.com/argoproj/argo-cd/releases/download/v$pkgver/argocd-linux-amd64")
-sha256sums=('e485fdc8f40596d6c6bb2622444f4fc0595ae448b70db29cd10455e08dcc5f52')
+sha256sums=('b50607f3f81347cc25ba7812fa1cbeaaa5ff0e29ce71da8f4ed474200be867b9')
 
 package() {
   install -Dm755 "argocd_$pkgver" "$pkgdir/usr/bin/argocd"
