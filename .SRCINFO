@@ -1,14 +1,14 @@
 pkgbase = python-language-check
 	pkgdesc = Checks grammar using LanguageTool.
-	pkgver = 0.7.2
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 3
 	url = https://github.com/myint/language-check
 	arch = any
 	license = GPL3
 	makedepends = python
 	depends = python
-	source = https://pypi.python.org/packages/source/l/language-check/language-check-0.7.2.tar.gz
-	sha256sums = 58faf02629511f1b3f9a165c8c0251ea01a36ba8574d063c11b573e5393ee4ad
+	source = https://pypi.python.org/packages/source/l/language-check/language-check-1.1.tar.gz
+	sha256sums = 9b140fa9f0be4903ffc91e2342e77ef35596de837ebde25ac6dc066f54417fab
 
 pkgname = python-language-check
 

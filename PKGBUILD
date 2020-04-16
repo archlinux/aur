@@ -1,7 +1,7 @@
 pkgname=python-language-check
 _name=language-check
-pkgver=0.7.2
-pkgrel=2
+pkgver=1.1
+pkgrel=3
 pkgdesc="Checks grammar using LanguageTool."
 url="https://github.com/myint/language-check"
 depends=('python')
@@ -10,7 +10,7 @@ optdepends=()
 license=('GPL3')
 arch=('any')
 source=("https://pypi.python.org/packages/source/l/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('58faf02629511f1b3f9a165c8c0251ea01a36ba8574d063c11b573e5393ee4ad')
+sha256sums=('9b140fa9f0be4903ffc91e2342e77ef35596de837ebde25ac6dc066f54417fab')
 
 build() {
   cd "$srcdir/${_name}-${pkgver}"
