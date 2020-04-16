@@ -1,13 +1,13 @@
 pkgbase = mn88472-firmware
 	pkgdesc = Firmware for Panasonic MN88472 DVB-T/T2/C demodulator
-	pkgver = 170427
+	pkgver = 191226
 	pkgrel = 1
 	url = http://www.astrometa.com.tw/
 	arch = any
 	license = unknown
 	makedepends = p7zip
-	source = https://dl.dropbox.com/s/ffckhetzp3vmjio/AMDVBT2_Setup_170427.exe
-	md5sums = da86f51a047df8acfd8d744834a09fcd
+	source = mn88472-firmware-191226.exe::https://dl.dropbox.com/s/7eay10a9yy5qteb/AMDVBT2_Setup64_191226.exe
+	md5sums = 66fa0c07daaff3e821712b81c490cf65
 
 pkgname = mn88472-firmware
 
