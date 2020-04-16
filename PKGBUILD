@@ -3,10 +3,10 @@
 # Contributor: Valentin Hăloiu <vially.ichb@gmail.com>
 
 pkgname=electron-ozone
-pkgver=8.2.1
+pkgver=8.2.2
 provides=('electron')
 conflicts=('electron')
-_commit=46a07c4595cd3d386c9ead147fd2b17961a9fc30
+_commit=8faf8a3535b624884a06e22ac1d95ea88bf17433
 _chromiumver=80.0.3987.163
 pkgrel=1
 pkgdesc='Electron compiled with wayland support via Ozone'
@@ -23,7 +23,7 @@ optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'libappindicator-gtk3: StatusNotifierItem support'
             'trash-cli: file deletion support (trash-put)'
             "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
-source=('git+https://github.com/hedgepigdaniel/electron.git#tag=arch8.2.1-1'
+source=('git+https://github.com/electron/electron.git'
         'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git'
         'electron.desktop'
         'default_app-icon.patch'
@@ -39,6 +39,13 @@ source=('git+https://github.com/hedgepigdaniel/electron.git#tag=arch8.2.1-1'
         'remove-verbose-logging-in-local-unique-font-matching.patch'
         'rename-Relayout-in-DesktopWindowTreeHostPlatform.patch'
         'rebuild-Linux-frame-button-cache-when-activation.patch'
+        '0001-fix-use-ozone-version-of-global_shortcut_listener-wh.patch'
+        '0002-fix-don-t-include-global_menu_bar_x11-sources-in-ozo.patch'
+        '0003-fix-fix-ifdefs-and-add-NOTIMPLEMENTEDs-to-make-nativ.patch'
+        '0004-fix-remove-various-x11-sources-from-filenames.gni-in.patch'
+        '0005-fix-atom_browser_main_parts-move-non-X11-specific-th.patch'
+        '0006-fix-scripts-account-for-sys.platform-being-linux-as-.patch'
+        '0007-fix-add-ifdefs-around-some-X11-specific-code-to-focu.patch'
        )
 sha256sums=('SKIP'
             'SKIP'
@@ -55,7 +62,14 @@ sha256sums=('SKIP'
             '08ef82476780e0864b5bf7f20eb19db320e73b9a5d4f595351e12e97dda8746f'
             '5bc775c0ece84d67855f51b30eadcf96fa8163b416d2036e9f9ba19072f54dfe'
             'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
-            '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014')
+            '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
+            '11c6a9d7526df9624d5d66afa9b8a0fae3f7193822a6673a043211d467d0c617'
+            'd7cb9ad2421b71715c77a9b37f881442cb8e6942e1b8ec1c809325bb5ec4e15f'
+            '54a92af10ca2f11e7326354a2f634bd7e800f89deadef4009a75bda6c8edd898'
+            '5d273ec671efe79665ad032d8f7c5cc6486fa4b5ecd281fe84235abaca0a67d5'
+            'd7a2187930dcf2046e3a7a03c913616dfd77a693e8e8a48f929d3fa03c4899e8'
+            'd07f70f24df69a44383eac5b5d868fcb5a17c6940b420c93c3a4129567123f0a'
+            'ce70a1dfa6234245e4e6a55ac513d1cb32b5428beb05e5a019d67a076cf784e9')
 
 _system_libs=('ffmpeg'
               'flac'
@@ -80,9 +94,7 @@ _system_libs=('ffmpeg'
              )
 
 prepare() {
-  mkdir -p "${srcdir}"/python2-path
-  ln -sf /usr/bin/python2 "${srcdir}/python2-path/python"
-  export PATH="${srcdir}/python2-path:${PATH}:${srcdir}/depot_tools"
+  export PATH="${PATH}:${srcdir}/depot_tools"
 
   echo "Fetching chromium..."
   git clone --branch=${_chromiumver} --depth=1 \
@@ -105,6 +117,17 @@ prepare() {
       --with_branch_heads \
       --with_tags \
       --nohooks
+
+  cd src/electron
+  echo "Applying local electron patches"
+  patch -Np1 -i ../../0001-fix-use-ozone-version-of-global_shortcut_listener-wh.patch
+  patch -Np1 -i ../../0002-fix-don-t-include-global_menu_bar_x11-sources-in-ozo.patch
+  patch -Np1 -i ../../0003-fix-fix-ifdefs-and-add-NOTIMPLEMENTEDs-to-make-nativ.patch
+  patch -Np1 -i ../../0004-fix-remove-various-x11-sources-from-filenames.gni-in.patch
+  patch -Np1 -i ../../0005-fix-atom_browser_main_parts-move-non-X11-specific-th.patch
+  patch -Np1 -i ../../0006-fix-scripts-account-for-sys.platform-being-linux-as-.patch
+  patch -Np1 -i ../../0007-fix-add-ifdefs-around-some-X11-specific-code-to-focu.patch
+  cd ../../
 
   sed -e "s/'am'/'apply'/" -i src/electron/script/lib/git.py
 
@@ -134,7 +157,7 @@ prepare() {
   yarn install --frozen-lockfile
   cd ..
 
-  echo "Applying local patches..."
+  echo "Applying local Chromium patches..."
   patch -Np0 -i ../chromium-skia-harmony.patch
   patch -Np1 -i ../fix-building-with-system-zlib.patch
   patch -Np1 -i ../fix-building-with-unbundled-libxml.patch
@@ -148,6 +171,9 @@ prepare() {
   patch -Np1 -i ../remove-verbose-logging-in-local-unique-font-matching.patch
   patch -Np1 -i ../rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
   patch -Np1 -i ../rebuild-Linux-frame-button-cache-when-activation.patch
+
+  # Force script incompatible with Python 3 to use /usr/bin/python2
+  sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
 
   echo "Patching Chromium for using system libraries..."
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
@@ -191,6 +217,7 @@ build() {
     'use_system_minigbm = true'
     'use_system_libdrm = true'
     'use_glib = true'
+    'rtc_use_pipewire=true'
   )
 
   if check_buildoption ccache y; then
@@ -206,7 +233,8 @@ build() {
   fi
 
   gn gen out/Release \
-      --args="import(\"//electron/build/args/release.gn\") ${_flags[*]}"
+      --args="import(\"//electron/build/args/release.gn\") ${_flags[*]}" \
+      --script-executable=/usr/bin/python2
   ninja -C out/Release electron
   # Strip before zip to avoid
   # zipfile.LargeZipFile: Filesize would require ZIP64 extensions

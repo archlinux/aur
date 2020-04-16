@@ -1,0 +1,43 @@
+From 6f5c943254097c2041729475dfb60c09d0a5cc4d Mon Sep 17 00:00:00 2001
+From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
+Date: Mon, 25 Nov 2019 10:58:21 +1100
+Subject: [PATCH 4/7] fix: remove various x11 sources from filenames.gni in
+ ozone builds
+
+---
+ filenames.gni | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/filenames.gni b/filenames.gni
+index 49863eb4e..abf07bd62 100644
+--- a/filenames.gni
++++ b/filenames.gni
+@@ -399,12 +399,6 @@ filenames = {
+     "shell/browser/ui/win/notify_icon_host.h",
+     "shell/browser/ui/win/taskbar_host.cc",
+     "shell/browser/ui/win/taskbar_host.h",
+-    "shell/browser/ui/x/event_disabler.cc",
+-    "shell/browser/ui/x/event_disabler.h",
+-    "shell/browser/ui/x/window_state_watcher.cc",
+-    "shell/browser/ui/x/window_state_watcher.h",
+-    "shell/browser/ui/x/x_window_utils.cc",
+-    "shell/browser/ui/x/x_window_utils.h",
+     "shell/browser/unresponsive_suppressor.cc",
+     "shell/browser/unresponsive_suppressor.h",
+     "shell/browser/web_contents_permission_helper.cc",
+@@ -604,6 +598,12 @@ filenames = {
+       "chromium_src/chrome/browser/ui/views/frame/global_menu_bar_registrar_x11.h",
+       "shell/browser/ui/views/global_menu_bar_x11.cc",
+       "shell/browser/ui/views/global_menu_bar_x11.h",
++      "shell/browser/ui/x/event_disabler.cc",
++      "shell/browser/ui/x/event_disabler.h",
++      "shell/browser/ui/x/window_state_watcher.cc",
++      "shell/browser/ui/x/window_state_watcher.h",
++      "shell/browser/ui/x/x_window_utils.cc",
++      "shell/browser/ui/x/x_window_utils.h",
+     ]
+   }
+ 
+-- 
+2.26.1
+

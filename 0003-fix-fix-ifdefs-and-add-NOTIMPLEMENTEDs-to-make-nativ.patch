@@ -1,0 +1,125 @@
+From c54847e3e9599700b58aa998b28d37bca76339d0 Mon Sep 17 00:00:00 2001
+From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
+Date: Mon, 25 Nov 2019 10:54:34 +1100
+Subject: [PATCH 3/7] fix: fix ifdefs and add NOTIMPLEMENTEDs to make
+ native_window_views compile on linux ozone builds
+
+---
+ shell/browser/browser_linux.cc       |  2 +-
+ shell/browser/native_window_views.cc | 35 +++++++++++++++++++++++-----
+ 2 files changed, 30 insertions(+), 7 deletions(-)
+
+diff --git a/shell/browser/browser_linux.cc b/shell/browser/browser_linux.cc
+index fcbb359e0..b8835a45d 100644
+--- a/shell/browser/browser_linux.cc
++++ b/shell/browser/browser_linux.cc
+@@ -15,7 +15,7 @@
+ #include "shell/browser/window_list.h"
+ #include "shell/common/application_info.h"
+ 
+-#if defined(USE_X11)
++#if defined(OS_LINUX)
+ #include "chrome/browser/ui/libgtkui/gtk_util.h"
+ #include "shell/browser/linux/unity_service.h"
+ #endif
+diff --git a/shell/browser/native_window_views.cc b/shell/browser/native_window_views.cc
+index 00da49a73..908de47dc 100644
+--- a/shell/browser/native_window_views.cc
++++ b/shell/browser/native_window_views.cc
+@@ -43,13 +43,15 @@
+ #include "ui/wm/core/shadow_types.h"
+ #include "ui/wm/core/window_util.h"
+ 
++#if defined(OS_LINUX)
++#include "shell/browser/ui/views/frameless_view.h"
++#include "shell/browser/ui/views/native_frame_view.h"
++
+ #if defined(USE_X11)
+ #include "base/strings/string_util.h"
+ #include "shell/browser/browser.h"
+ #include "shell/browser/linux/unity_service.h"
+-#include "shell/browser/ui/views/frameless_view.h"
+ #include "shell/browser/ui/views/global_menu_bar_x11.h"
+-#include "shell/browser/ui/views/native_frame_view.h"
+ #include "shell/browser/ui/x/event_disabler.h"
+ #include "shell/browser/ui/x/window_state_watcher.h"
+ #include "shell/browser/ui/x/x_window_utils.h"
+@@ -57,6 +59,8 @@
+ #include "ui/gfx/x/x11_types.h"
+ #include "ui/views/widget/desktop_aura/desktop_window_tree_host_x11.h"
+ #include "ui/views/window/native_frame_view.h"
++#endif
++
+ #elif defined(OS_WIN)
+ #include "shell/browser/ui/views/win_frame_view.h"
+ #include "shell/browser/ui/win/electron_desktop_native_widget_aura.h"
+@@ -433,9 +437,14 @@ bool NativeWindowViews::IsVisible() {
+ bool NativeWindowViews::IsEnabled() {
+ #if defined(OS_WIN)
+   return ::IsWindowEnabled(GetAcceleratedWidget());
+-#elif defined(USE_X11)
++#elif defined(OS_LINUX)
++#if defined(USE_OZONE)
++  NOTIMPLEMENTED();
++  return false;
++#else
+   return !event_disabler_.get();
+ #endif
++#endif
+ }
+ 
+ void NativeWindowViews::IncrementChildModals() {
+@@ -484,13 +493,17 @@ void NativeWindowViews::SetEnabledInternal(bool enable) {
+ #endif
+ }
+ 
+-#if defined(USE_X11)
++#if defined(OS_LINUX)
+ void NativeWindowViews::Maximize() {
++#if defined(USE_OZONE)
++  NOTIMPLEMENTED();
++#else
+   if (IsVisible())
+     widget()->Maximize();
+   else
+     widget()->native_widget_private()->Show(ui::SHOW_STATE_MAXIMIZED,
+                                             gfx::Rect());
++#endif
+ }
+ #endif
+ 
+@@ -788,9 +801,14 @@ bool NativeWindowViews::IsClosable() {
+     return false;
+   }
+   return !(info.fState & MFS_DISABLED);
+-#elif defined(USE_X11)
++#elif defined(OS_LINUX)
++#if defined(USE_OZONE)
++  NOTIMPLEMENTED();
++  return false;
++#else
+   return true;
+ #endif
++#endif
+ }
+ 
+ void NativeWindowViews::SetAlwaysOnTop(ui::ZOrderLevel z_order,
+@@ -1352,9 +1370,14 @@ bool NativeWindowViews::CanMaximize() const {
+ bool NativeWindowViews::CanMinimize() const {
+ #if defined(OS_WIN)
+   return minimizable_;
+-#elif defined(USE_X11)
++#elif defined(OS_LINUX)
++#if defined(USE_OZONE)
++  NOTIMPLEMENTED();
++  return false;
++#else
+   return true;
+ #endif
++#endif
+ }
+ 
+ base::string16 NativeWindowViews::GetWindowTitle() const {
+-- 
+2.26.1
+

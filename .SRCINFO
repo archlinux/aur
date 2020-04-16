@@ -1,6 +1,6 @@
 pkgbase = electron-ozone
 	pkgdesc = Electron compiled with wayland support via Ozone
-	pkgver = 8.2.1
+	pkgver = 8.2.2
 	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = electron-ozone
 	conflicts = electron
 	options = debug
 	options = !strip
-	source = git+https://github.com/hedgepigdaniel/electron.git#tag=arch8.2.1-1
+	source = git+https://github.com/electron/electron.git
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = electron.desktop
 	source = default_app-icon.patch
@@ -59,6 +59,13 @@ pkgbase = electron-ozone
 	source = remove-verbose-logging-in-local-unique-font-matching.patch
 	source = rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
 	source = rebuild-Linux-frame-button-cache-when-activation.patch
+	source = 0001-fix-use-ozone-version-of-global_shortcut_listener-wh.patch
+	source = 0002-fix-don-t-include-global_menu_bar_x11-sources-in-ozo.patch
+	source = 0003-fix-fix-ifdefs-and-add-NOTIMPLEMENTEDs-to-make-nativ.patch
+	source = 0004-fix-remove-various-x11-sources-from-filenames.gni-in.patch
+	source = 0005-fix-atom_browser_main_parts-move-non-X11-specific-th.patch
+	source = 0006-fix-scripts-account-for-sys.platform-being-linux-as-.patch
+	source = 0007-fix-add-ifdefs-around-some-X11-specific-code-to-focu.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 5270db01f3f8aaa5137dec275a02caa832b7f2e37942e068cba8d28b3a29df39
@@ -75,6 +82,13 @@ pkgbase = electron-ozone
 	sha256sums = 5bc775c0ece84d67855f51b30eadcf96fa8163b416d2036e9f9ba19072f54dfe
 	sha256sums = ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db
 	sha256sums = 46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014
+	sha256sums = 11c6a9d7526df9624d5d66afa9b8a0fae3f7193822a6673a043211d467d0c617
+	sha256sums = d7cb9ad2421b71715c77a9b37f881442cb8e6942e1b8ec1c809325bb5ec4e15f
+	sha256sums = 54a92af10ca2f11e7326354a2f634bd7e800f89deadef4009a75bda6c8edd898
+	sha256sums = 5d273ec671efe79665ad032d8f7c5cc6486fa4b5ecd281fe84235abaca0a67d5
+	sha256sums = d7a2187930dcf2046e3a7a03c913616dfd77a693e8e8a48f929d3fa03c4899e8
+	sha256sums = d07f70f24df69a44383eac5b5d868fcb5a17c6940b420c93c3a4129567123f0a
+	sha256sums = ce70a1dfa6234245e4e6a55ac513d1cb32b5428beb05e5a019d67a076cf784e9
 
 pkgname = electron-ozone
 
