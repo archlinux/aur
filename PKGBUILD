@@ -2,7 +2,7 @@
 
 pkgname=asdf-vm
 pkgver=0.7.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more'
 arch=('any')
 url='https://asdf-vm.com'
@@ -46,7 +46,7 @@ package() {
 
   cd completions
 
-  install -Dm 644 -t "${usrshare}/bash-completion/completions/" asdf.bash
-  install -Dm 644 -t "${usrshare}/fish/completions/"            asdf.fish
-  install -Dm 644 -t "${usrshare}/zsh/site-functions/"          _asdf
+  install -Dm 644 asdf.bash "${usrshare}/bash-completion/completions/asdf"
+  install -Dm 644 asdf.fish "${usrshare}/fish/completions/asdf"
+  install -Dm 644 _asdf     "${usrshare}/zsh/site-functions/_asdf"
 }
