@@ -2,12 +2,12 @@
 _repo=blender_mmd_tools
 pkgname=blender-plugin-mmd-tools-git
 _version=0.4.4
-pkgver=v0.4.4.r397.g74efbc1
+pkgver=v0.6.0.r64.g4bcd9bc
 pkgrel=1
 pkgdesc="Blender addon for importing Models and Motions of MikuMikuDance."
 arch=('i686' 'x86_64')
 url="https://github.com/powroupi/blender_mmd_tools"
-license=('MIT')
+license=('GPL3')
 groups=('blender')
 depends=('blender')
 makedepends=('git')
