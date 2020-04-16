@@ -1,0 +1,17 @@
+pkgbase = kafkacat
+	pkgdesc = Generic command line non-JVM Apache Kafka producer and consumer
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/edenhill/kafkacat
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	depends = zlib
+	depends = librdkafka
+	depends = yajl
+	depends = avro-c
+	source = kafkacat-1.5.0.tar.gz::https://github.com/edenhill/kafkacat/archive/1.5.0.tar.gz
+	sha256sums = 16f358fab258cbefc328cf642f72ee8b5dae1648657d508997279ca5bd0fbef0
+
+pkgname = kafkacat
+
