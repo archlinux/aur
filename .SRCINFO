@@ -1,12 +1,16 @@
 pkgbase = libreoffice-slim-git
 	pkgdesc = A slimmed down Git version of LibreOffice
 	pkgver = latest
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.libreoffice.org/community/developers/
 	arch = x86_64
 	arch = i386
 	license = GPL
 	makedepends = git
+	makedepends = gperf
+	makedepends = yasm
+	makedepends = zip
+	makedepends = unzip
 
 pkgname = libreoffice-slim-git
 

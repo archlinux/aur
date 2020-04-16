@@ -1,12 +1,12 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=libreoffice-slim-git
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc="A slimmed down Git version of LibreOffice"
 arch=('x86_64' 'i386')
 url="https://www.libreoffice.org/community/developers/"
 license=('GPL')
-makedepends=('git')
+makedepends=('git' 'gperf' 'yasm' 'zip' 'unzip')
 
 _gitroot=https://anongit.freedesktop.org/git/libreoffice/core.git
 _gitname=core
