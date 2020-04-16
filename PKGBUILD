@@ -8,7 +8,7 @@
 
 pkgname=mythtv-git
 pkgver=31+fixes.20200411.2921af55
-pkgrel=1
+pkgrel=2
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
 url="https://www.mythtv.org/"
@@ -89,7 +89,7 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    '7e6b4cb48bb76dca1c991aebab2790d09f2ba87519ed5f90597e3b5d13a9cd76'
+    '0588fb34c116521590ff970083bffaf55722e184d06e80cbfe6c5f2b39ee80f1'
     '3fd2018d0d5aaa7d530835305dac80d4ca7d8fc991cdf9e1cebadebd86e25c03'
     '12cb52bf9b084a4f16419c9370fef0450ce6a11308b0c3f7240f4f83df7e2ab6'
     'bc43d38acac43bbc15dd6b27b74ff5a7e7abc16ad80ce6e676b108a2d501660c'

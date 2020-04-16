@@ -6,7 +6,7 @@ After=network.target mysqld.service
 [Service]
 Type=simple
 User=mythtv
-ExecStart=/usr/bin/mythbackend --noupnp
+ExecStart=/usr/bin/mythbackend
 Restart=on-failure
 
 [Install]
