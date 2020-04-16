@@ -3,7 +3,7 @@
 
 pkgname=audacity-git
 _pkgname=audacity
-pkgver=2.3.0.r483.g1c21e9358
+pkgver=2.3.3.r1073.g9827d4a75
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://www.audacityteam.org/"
 license=('GPL')
 depends=('libmad' 'libid3tag' 'wxgtk3' 'lame' 'soundtouch'
          'ffmpeg' 'vamp-plugin-sdk' 'portsmf' 'twolame' 'suil' 'lilv')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 optdepends=('audacity-extras: nyquist plugins for audacity')
 #options=('!makeflags')
 provides=('audacity')
