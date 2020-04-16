@@ -4,6 +4,7 @@ pkgbase = fatrace
 	pkgrel = 1
 	url = https://launchpad.net/fatrace
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	depends = python
 	depends = powertop
