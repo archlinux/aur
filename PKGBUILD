@@ -2,7 +2,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 _modname="ngx_vod"
-_nginxver=1.17.9
+_nginxver=1.17.10
 
 pkgname=nginx-mainline-mod-vod-git
 pkgver=r1252.f453ef8
