@@ -1,11 +1,11 @@
 pkgbase = mapillary_tools-git
 	pkgdesc = Library for processing and uploading geotagged images to Mapillary
-	pkgver = r1249.ab011ab
+	pkgver = r1256.30f46eb
 	pkgrel = 1
 	url = https://github.com/mapillary/mapillary_tools
 	arch = any
 	license = BSD
-	depends = python-exifread
+	depends = python2-exifread
 	depends = python2-gpxpy
 	depends = python2-pillow
 	depends = python2-piexif
