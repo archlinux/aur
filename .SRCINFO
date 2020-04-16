@@ -1,6 +1,6 @@
 pkgbase = tor-git
 	pkgdesc = An anonymizing overlay network (development version)
-	pkgver = 0.4.3.2.alpha.r265.g3f2bd
+	pkgver = 0.4.3.2.alpha.r572.g77507
 	pkgrel = 1
 	url = https://www.torproject.org
 	arch = i686

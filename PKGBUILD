@@ -6,7 +6,7 @@ _with_rust=1
 #_malloc=jemalloc # tcmalloc
 
 pkgname=tor-git
-pkgver=0.4.3.2.alpha.r265.g3f2bd
+pkgver=0.4.3.2.alpha.r572.g77507
 pkgrel=1
 pkgdesc="An anonymizing overlay network (development version)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -77,6 +77,7 @@ build() {
         --enable-lzma \
         --enable-pic \
         --with-malloc=${_malloc:-system}
+        #--disable-module-relay \
         #--disable-unittests
     make
 }
