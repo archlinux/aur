@@ -1,7 +1,7 @@
 pkgbase = hepmc3
 	pkgdesc = A particle physics package for storing collision events from Monte Carlo generators.
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hepmc.web.cern.ch/hepmc/
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,9 @@ pkgbase = hepmc3
 	makedepends = cmake
 	optdepends = root: ROOT I/O support
 	source = https://hepmc.web.cern.ch/hepmc/releases/HepMC3-3.2.1.tar.gz
+	source = https://gitlab.cern.ch/hepmc/HepMC3/-/commit/ba38f14d8f56c16cc4105d98f6d4540c928c6150.diff
 	md5sums = 8cc6cc4f13fdf8be9ed677924daea250
+	md5sums = d8635566838595ff7d5884f0294bb960
 
 pkgname = hepmc3
 
