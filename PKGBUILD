@@ -8,25 +8,25 @@ pkgdesc="A full-featured desktop app for DevDocs.io."
 arch=("x86_64")
 url="https://github.com/egoist/devdocs-desktop"
 license=("MIT")
-noextract=("DevDocs-${pkgver}.AppImage")
+_pkgname="DevDocs-${pkgver}.AppImage"
+noextract=(${_pkgname})
 options=("!strip")
 provides=('devdocs-desktop')
-source=("https://github.com/egoist/devdocs-desktop/releases/download/v${pkgver}/DevDocs-${pkgver}.AppImage")
+source=("https://github.com/egoist/devdocs-desktop/releases/download/v${pkgver}/${_pkgname}")
 sha256sums=("5bba99a34c90a65eff67aface0b7446cbf43d620a1c195f27e7bb33ab6d3d0c2")
 
 prepare() {
     cd "${srcdir}"
-    mv "DevDocs-${pkgver}.AppImage" "DevDocs.AppImage"
-    chmod a+x "DevDocs.AppImage"
-    ${srcdir}/DevDocs.AppImage --appimage-extract
-    sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/DevDocs.AppImage %U+" "squashfs-root/devdocs.desktop"
+    chmod a+x ${_pkgname}
+    ${srcdir}/${_pkgname} --appimage-extract
+    sed -i "s+AppRun+${_installdir}/${_pkgname} %U+" "squashfs-root/devdocs.desktop"
     mv "squashfs-root/usr/share/icons/hicolor/0x0" "squashfs-root/usr/share/icons/hicolor/1024x1024"
     find "squashfs-root/usr/share/icons/hicolor" -type d -exec chmod 755 {} \;
 }
 
 package() {
     install -dm755 "${pkgdir}/usr/share/icons"
-    install -Dm755 "DevDocs.AppImage" "${pkgdir}/${_installdir}/DevDocs.AppImage"
+    install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/${_pkgname}"
     install -Dm644 "squashfs-root/devdocs.desktop" "${pkgdir}/usr/share/applications/devdocs.desktop"
     cp -R "squashfs-root/usr/share/icons/hicolor" "${pkgdir}/usr/share/icons"
 }
