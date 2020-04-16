@@ -1,0 +1,15 @@
+pkgbase = blocky
+	pkgdesc = DNS proxy as ad-blocker for local network
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/0xERR0R/blocky
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = go-pie
+	depends = glibc
+	source = https://github.com/0xERR0R/blocky/archive/v0.6.tar.gz
+	sha256sums = e99f9480b9efb0e06b33df686cfabb25bea0220f48e68eb0efe107f11caf785c
+
+pkgname = blocky
+
