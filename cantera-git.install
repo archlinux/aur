@@ -1,4 +1,22 @@
 post_install() {
-    echo "Set Cantera Environment:"
-    echo "$ source /usr/bin/setup_cantera"
+    echo "
+        File locations:
+        
+        applications                /usr/bin
+        library files               /usr/lib
+        C++ headers                 /usr/include
+        samples                     /usr/share/cantera/samples
+        data files                  /usr/share/cantera/data  
+        Python package (cantera)    /usr/lib/python3.8/site-packages
+        Python samples              /usr/lib/python3.8/site-packages/cantera/examples
+        Setup scripts to configure the environment for Cantera are at:
+        setup script (bash)         /usr/bin/setup_cantera
+        setup script (csh/tcsh)     /usr/bin/setup_cantera.csh
+        
+        It is recommended that you run the script for your shell by typing:
+        
+        source /usr/bin/setup_cantera
+        
+        before using Cantera, or else include its contents in your shell login script.
+        "
 }

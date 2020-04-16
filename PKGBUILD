@@ -2,7 +2,7 @@
 _pkgname=cantera
 pkgname="${_pkgname}-git"
 pkgver='2.4.0.r689.g29437efc4'
-pkgrel=1
+pkgrel=2
 pkgdesc='suite of tools for kinetics, thermodynamics, and transport processes'
 arch=('x86_64')
 url='https://cantera.org/'
@@ -14,9 +14,8 @@ makedepends=('scons' 'git' 'gcc' 'fmt')
 checkdepends=('gtest' 'gmock')
 optdepends=('python-numpy: numerical python support' 
             'cython: compiler for python interface' 
-            'python-ruamel-yaml: for cython test cases in check()'
+            'python-ruamel-yaml: cython support'
             'doxygen: documentation' 
-            'python-sphinx: documentation'
             'tcsh: csh scripts')
 provides=('libcantera_shared.so=2-64')
 install="$pkgname.install"
@@ -39,11 +38,9 @@ build() {
         googletest='system' \
         extra_inc_dirs='/usr/include/eigen3'
     # build documentation
-    if [ $(pacman -Qi doxygen &> /dev/null) -eq "0" ]; then
+    $(pacman -Qi doxygen &> /dev/null)
+    if [ "$?" -eq "0" ]; then
         scons doxygen
-    fi
-    if [ $(pacman -Qi python-sphinx &> /dev/null) -eq "0" ]; then
-        scons sphinx
     fi
     # build cantera samples
     scons samples
@@ -51,8 +48,16 @@ build() {
 
 check() {
 	cd "$_pkgname"
-    # run tests
-	scons test
+    $(pacman -Qi python-numpy &> /dev/null) && \
+    $(pacman -Qi python-ruamel-yaml &> /dev/null) && \
+    $(pacman -Qi cython &> /dev/null) 
+    if [ "$?" -ne "0" ]; then
+        # run tests without python
+        scons test-help | grep "test-" | sed '/python/d' | xargs scons
+    else
+        # run all tests
+	    scons test
+    fi
 }
 
 package() {
