@@ -4,7 +4,7 @@
 
 pkgname=nitrogen
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Background browser and setter for X windows"
 arch=('x86_64')
 url="http://projects.l3ib.org/nitrogen/"
