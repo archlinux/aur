@@ -1,0 +1,20 @@
+pkgbase = libkscreen-kwinft-git
+	pkgdesc = KDE screen management software, fork with support for KWinFT through wrapland
+	pkgver = r1525.fe0bad4
+	pkgrel = 1
+	url = https://gitlab.com/kwinft/libkscreen
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = qt5-x11extras
+	depends = libxrandr
+	depends = wrapland
+	provides = libkscreen
+	conflicts = libkscreen
+	source = git+https://gitlab.com/kwinft/libkscreen.git
+	md5sums = SKIP
+
+pkgname = libkscreen-kwinft-git
+
