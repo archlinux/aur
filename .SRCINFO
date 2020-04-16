@@ -1,6 +1,6 @@
 pkgbase = alphaplot
 	pkgdesc = Application for Scientific Data Analysis and Visualization, fork of SciDavis / QtiPlot
-	pkgver = 0.01_alpha_prerelease_git
+	pkgver = 0.01_alpha_git
 	pkgrel = 1
 	url = http://alphaplot.sourceforge.net/
 	install = alphaplot.install
@@ -13,10 +13,9 @@ pkgbase = alphaplot
 	depends = glu
 	depends = mesa
 	depends = shared-mime-info
-	depends = qt4
-	depends = qwt5
+	depends = qt5
 	depends = qwtplot3d
-	source = git+https://github.com/narunlifescience/alphaplot.git#branch=release-0.01A-alpha
+	source = git+https://github.com/narunlifescience/alphaplot.git
 	sha256sums = SKIP
 
 pkgname = alphaplot
