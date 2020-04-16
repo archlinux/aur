@@ -1,0 +1,20 @@
+pkgbase = pass-spell-git
+	pkgdesc = A pass extension for your ears.
+	pkgver = 0.1.0.r0.gbfc130c
+	pkgrel = 1
+	url = https://github.com/Qu4tro/pass-spell
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = sed
+	depends = pass
+	depends = nato-spell-git
+	provides = pass-spell
+	conflicts = pass-spell
+	backup = etc/pass-spell/pass-spell.conf
+	source = pass-spell::git+https://github.com/Qu4tro/pass-spell.git
+	md5sums = SKIP
+
+pkgname = pass-spell-git
+
