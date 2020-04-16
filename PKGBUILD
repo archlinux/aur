@@ -1,5 +1,5 @@
 pkgname=charliecloud
-pkgver=0.14
+pkgver=0.15
 pkgrel=1
 pkgdesc="Lightweight user-defined software stacks for high-performance computing"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
 	'docker>=17.03'
 )
 source=("https://github.com/hpc/charliecloud/releases/download/v${pkgver}/charliecloud-${pkgver}.tar.gz")
-sha1sums=('f8a19ff388195d03c1b6971a9baf8c02be799f78')
+sha1sums=('b3ee77c6b60d9288835edf5f81f672d0bb21f0c9')
 url="https://hpc.github.io/charliecloud"
 options+=('!emptydirs')
 
