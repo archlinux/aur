@@ -6,11 +6,11 @@
 # Contributor: ThinCarrotShrimp <christoph.r.martin+arch at gmail dot com>
 
 pkgname=oh-my-zsh-git
-pkgver=r4317.291e96dc
+pkgver=r5620.31eca46ee
 pkgrel=1
 pkgdesc="A community-driven framework for managing your zsh configuration. Includes 180+ optional plugins and over 120 themes to spice up your morning, and an auto-update tool so that makes it easy to keep up with the latest updates from the community"
 arch=('any')
-url='https://github.com/robbyrussell/oh-my-zsh'
+url='https://github.com/ohmyzsh/ohmyzsh'
 license=('MIT')
 depends=('zsh')
 makedepends=('git')
@@ -20,7 +20,7 @@ optdepends=('ruby: for some plugin functionality'
             'bullet-train-oh-my-zsh-theme-git: better powerline theme'
             'git: most themes use git (highly recommended but still optional)')
 install=${pkgname}.install
-source=("${pkgname}::git+git://github.com/robbyrussell/oh-my-zsh.git"
+source=("${pkgname}::git+https://github.com/ohmyzsh/ohmyzsh.git"
         '0001-zshrc.patch')
 sha256sums=('SKIP'
             '9b77769319944f394a36f07b9abb296d24fe643c03b8eead74e10b7da52002b1')
