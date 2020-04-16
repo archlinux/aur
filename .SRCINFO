@@ -1,6 +1,6 @@
 pkgbase = emborg
 	pkgdesc = Front-end to Borg backup
-	pkgver = 1.16
+	pkgver = 1.17
 	pkgrel = 1
 	url = https://github.com/KenKundert/emborg
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = emborg
 	depends = python-inform
 	depends = python-quantiphy
 	depends = python-shlib
-	source = https://github.com/KenKundert/emborg/archive/v1.16.tar.gz
-	sha256sums = 6d507dad298e2be25571f5c0217fde3317a4c416a872539489b0e52c9d35050a
+	source = https://github.com/KenKundert/emborg/archive/v1.17.tar.gz
+	sha256sums = 77964a59ddfc974860b09afeeaf50b20927be4473d027fd6610d801ebbaaa4ed
 
 pkgname = emborg
 
