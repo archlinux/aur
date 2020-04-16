@@ -1,6 +1,6 @@
 pkgbase = starlabstheme-git
 	pkgdesc = Star Labs GNOME Shell and GTK Theme
-	pkgver = 1.1.8.r1356.b0c6e0b208
+	pkgver = 1.1.8.r1359.511c0d9544
 	pkgrel = 1
 	url = https://starlabs.systems
 	arch = any
@@ -14,8 +14,6 @@ pkgbase = starlabstheme-git
 	options = !strip
 	source = starlabstheme::git+https://github.com/StarLabsLtd/StarLabsTheme.git
 	source = git+https://github.com/kazysmaster/gnome-shell-extension-lockkeys.git
-	source = git+https://github.com/ubuntu/yaru.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

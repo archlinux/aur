@@ -10,7 +10,7 @@ pkgname=('starlabstheme-backgrounds-git'
          'starlabstheme-session-git'
          'starlabstheme-sounds-git')
 pkgbase=starlabstheme-git
-pkgver=1.1.8.r1356.b0c6e0b208
+pkgver=1.1.8.r1359.511c0d9544
 pkgrel=1
 pkgdesc="Star Labs GNOME Shell and GTK Theme"
 arch=('any')
@@ -21,10 +21,8 @@ provides=("${pkgbase%-git}")
 conflicts=("${pkgbase%-git}")
 options=('!strip')
 source=("${pkgbase%-git}::git+https://github.com/StarLabsLtd/StarLabsTheme.git"
-        'git+https://github.com/kazysmaster/gnome-shell-extension-lockkeys.git'
-        'git+https://github.com/ubuntu/yaru.git')
+        'git+https://github.com/kazysmaster/gnome-shell-extension-lockkeys.git')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -38,7 +36,6 @@ prepare() {
 	git submodule init
 	git config submodule."extensions/gnome-shell-extension-lockkeys".url \
 		"$srcdir/gnome-shell-extension-lockkeys"
-	git config submodule."upstream/yaru".url "$srcdir/yaru"
 	git submodule update
 }
 
