@@ -2,7 +2,7 @@
 # Contributor: renyuneyun (Rui ZHAO) <renyuneyun@gmail.com>
 
 pkgname=flipper
-pkgver=0.36.0
+pkgver=0.37.0
 pkgrel=1
 pkgdesc="A desktop debugging platform for mobile developers"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('watchman: An inotify-based file watching and job triggering command
 			      'android-sdk: Android debugging support')
 makedepends=('git' 'yarn' 'gendesk')
 source=("https://github.com/facebook/flipper/archive/v${pkgver}.tar.gz")
-md5sums=('d287caae09c1d99a5a07d26d9f6b1831')
+md5sums=('3bd9f35dad853d3884f809f6bbeb4128')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}/desktop"
@@ -33,8 +33,11 @@ package() {
   mkdir -p "${pkgdir}/opt/flipper"
   cp -aR "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/." "${pkgdir}/opt/flipper"
   mkdir -p "$pkgdir/usr/bin"
-  ln -s "/opt/flipper/flipper-project" "$pkgdir/usr/bin/flipper"
+  ln -s "/opt/flipper/flipper" "$pkgdir/usr/bin/flipper"
   gendesk -f -n --pkgname "flipper" --pkgdesc "${pkgdesc}" --exec="flipper" --categories=Application\;Development --icon flipper
   install -Dm644 "${srcdir}/flipper.desktop" "${pkgdir}/usr/share/applications/flipper.desktop"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/resources/app/icon.png" "${pkgdir}/usr/share/pixmaps/flipper.png"
+  # Temp fix for srcdir nagging
+  sed -i "s|$srcdir/$pkgname-$pkgver/desktop|/opt/flipper|g" "${pkgdir}/opt/${pkgname}/resources/app/defaultPlugins"/*.map
+  sed -i "s|$srcdir/$pkgname-$pkgver/desktop|/opt/flipper|g" "${pkgdir}/opt/${pkgname}/resources/app"/*.map
 }
