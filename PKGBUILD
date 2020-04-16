@@ -8,7 +8,7 @@ pkgname=${_name}-${_channel}-every-day
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (Updated every day) (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 _version=77.0a1
-pkgver=77.0a1.20200416
+pkgver=77.0a1+20200416
 pkgrel=1
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -117,3 +117,11 @@ sha512sums_i686=('6d1ba87b8b2061b57a116d43e0c2ffa0d7ea75014734a3e5d163b47552f1bd
 sha512sums_x86_64=('acb2cf2c854f8fda216659fa84192da5a2aedc53e6a6573d12f7ef4b1ed373715ba8c2e389b0d6235b8f09d6c072213d0a2f7b9a4a9eb68d37be73fef798681a'
                    'SKIP'
                    '8927ea3b0a85691229e0215634fff87e6d267079c60a9d9a4ff6ae0438efbc02fe46acb4e66b30de708f25f5fc01288b8ee39a88d9add9bf220f1b03968ada55')
+sha512sums=('42426e7b510bd88cbf7b246bf66d7768afa5d71389bf15f7a4231dc24f99fd73284dd9a0a8eb4342b42337c2c7dd843e570a93afa7d3b44c97ecbf5e38e433ac'
+            '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308')
+sha512sums_i686=('6d1ba87b8b2061b57a116d43e0c2ffa0d7ea75014734a3e5d163b47552f1bddfddd6fe59ec2d7e171d3f94bc685776c4a2ce1ecfcf288b792be76965028ead8c'
+                 'SKIP'
+                 '8927ea3b0a85691229e0215634fff87e6d267079c60a9d9a4ff6ae0438efbc02fe46acb4e66b30de708f25f5fc01288b8ee39a88d9add9bf220f1b03968ada55')
+sha512sums_x86_64=('87bdf41aabd3aee09b517b07cb776dd6b9c75db32373d3df976efc98406275735e7d70d5e357efc4e779601ef27431e75d87a7d4645c274676be35f6a86a4b29'
+                   'SKIP'
+                   '7b4f9b96b0a883d314ff81190ea20ddbc858ec87b085be15d1582f7184d888776e2959fb8da51a427e002b8810fdeb48d2612414a63fc78d58852f3c7f721a64')
