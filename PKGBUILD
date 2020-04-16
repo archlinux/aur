@@ -2,24 +2,25 @@
 
 _pkgname=sphinx-typlog-theme
 pkgname=python-$_pkgname
-pkgver=0.7.3
+_commit=f8f82b66e9c4ec9522fc08fdb77c0ae21500e12a
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='A sphinx theme by Typlog'
 arch=('any')
 url='https://github.com/typlog/sphinx-typlog-theme'
 license=('custom:BSD-3-Clause')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('df2ae8aadd9aa598fac01678c209d421e5c1e6f0fb995f419b791c542a64de3e7eb710b9c271954adf5cebca46e36daf912fd6204a321d9ab807e851cca790a8')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
+sha512sums=('b2d2b4df4b69de333c82025ef3084016fe4ca7b67226dc3c230451affee24a75045db2962ec9080ce3748bbab5a47037bf8fb665441fda9e8adf0343ee066d05')
 
 build() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname-$_commit
 
   python setup.py build
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname-$_commit
 
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
