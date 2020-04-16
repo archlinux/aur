@@ -1,0 +1,4 @@
+post_install() {
+    echo "Set Cantera Environment:"
+    echo "$ source /usr/bin/setup_cantera"
+}
