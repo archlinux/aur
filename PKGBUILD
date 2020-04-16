@@ -18,7 +18,6 @@ sha256sums=("3b054e2c7fe0bc65a2f3e1823f489642293a2e958dd3f82b89097f3191ad5fb8")
 
 prepare() {
     cd "${srcdir}"
-    # mv "Listen1_${pkgver}_linux_x86_64.AppImage" "listen1.AppImage"
     chmod a+x ${_pkgname}
     ${srcdir}/${_pkgname} --appimage-extract
     sed -i "s+AppRun+${_installdir}/${_pkgname} %U+" "squashfs-root/listen1.desktop"
