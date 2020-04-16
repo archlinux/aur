@@ -9,7 +9,7 @@ license=("GPL")
 depends=("db" "gmp")
 makedepends=("gcc" "help2man")
 options=("!libtool")
-source=("$pkgname-$pkgver.tar.xz"::"http://sourceforge.net/projects/open-cobol/files/$pkgname/3.0/$pkgname-$_tarver.tar.xz")
+source=("$pkgname-$pkgver.tar.xz"::"https://sourceforge.net/projects/open-cobol/files/$pkgname/3.0/$pkgname-$_tarver.tar.xz")
 sha256sums=("bf76441ee7f8dc9aeb78291231f32273eafc4ec827f26840846a257a04bbc594")
 
 build() {
