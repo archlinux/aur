@@ -1,0 +1,9 @@
+post_install() {
+	mkdir -p usr/lib/firmware/kinect
+	/usr/sbin/kinect_fetch_fw usr/lib/firmware/kinect
+}
+
+pre_remove() {
+	rm -f usr/lib/firmware/kinect/UACFirmware
+	rmdir usr/lib/firmware/kinect 2> /dev/null || echo "/usr/lib/firmware/kinect directory is not empty"
+}

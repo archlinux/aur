@@ -1,0 +1,3 @@
+# Rule to load the Kinect UAC firmware on the "generic" USB device
+# (this will allow using Kinect microphone as any standard USB audio device)
+ACTION=="add", SUBSYSTEMS=="usb", ATTRS{idVendor}=="045e", ATTRS{idProduct}=="02ad", RUN+="/usr/bin/kinect_upload_fw /usr/lib/firmware/kinect/UACFirmware"
