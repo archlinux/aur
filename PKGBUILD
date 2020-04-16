@@ -6,17 +6,17 @@ pkgrel=1
 pkgdesc="Foreign language reading and translation assistant based on copy and translate."
 arch=("any")
 url="https://copytranslator.github.io"
-noextract=("copytranslator-${pkgver}.AppImage")
+_pkgname="copytranslator-${pkgver}.AppImage"
+noextract=(${_pkgname})
 options=("!strip")
-source=("https://github.com/CopyTranslator/CopyTranslator/releases/download/v${pkgver}/copytranslator-${pkgver}.AppImage")
+source=("https://github.com/CopyTranslator/CopyTranslator/releases/download/v${pkgver}/${_pkgname}")
 sha256sums=("38abb1add4f24a77afca17c1cd752d670b7675589709785076f762ca92378b48")
 
 prepare() {
     cd "${srcdir}"
-    mv "copytranslator-${pkgver}.AppImage" "copytranslator.AppImage"
-    chmod a+x "copytranslator.AppImage"
-    ${srcdir}/copytranslator.AppImage --appimage-extract
-    sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/copytranslator.AppImage %U+" "squashfs-root/copytranslator.desktop"
+    chmod a+x ${_pkgname}
+    ${srcdir}/${_pkgname} --appimage-extract
+    sed -i "s+AppRun+${_installdir}/${_pkgname} %U+" "squashfs-root/copytranslator.desktop"
     sed -i "s+/opt/copytranslator/resources/linux-icon/icon.png+copytranslator+" "squashfs-root/copytranslator.desktop"
     sed -i "s+Name=copytranslator+Name=CopyTranslator+" "squashfs-root/copytranslator.desktop"
     find "squashfs-root/usr/share/icons/hicolor" -type d -exec chmod 755 {} \;
@@ -24,7 +24,7 @@ prepare() {
 
 package() {
     install -dm755 "${pkgdir}/usr/share/icons"
-    install -Dm755 "copytranslator.AppImage" "${pkgdir}/${_installdir}/copytranslator.AppImage"
+    install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/${_pkgname}"
     install -Dm644 "squashfs-root/copytranslator.desktop" "${pkgdir}/usr/share/applications/copytranslator.desktop"
     cp -R "squashfs-root/usr/share/icons/hicolor" "${pkgdir}/usr/share/icons"
 }
