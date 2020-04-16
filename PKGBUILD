@@ -89,7 +89,8 @@ build() {
   msg "python version detected: ${_pyver}"
 
   # determine whether we can precompile CUDA kernels
-  if pacman -Qq cuda 2>&- ; then
+  _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
+  if [ "$_CUDA_PKG" != "" ] && ! ((DISABLE_CUDA)) ; then
     _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
                   -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
     ((DISABLE_OPTIX)) || _CMAKE_FLAGS+=( -DOPTIX_ROOT_DIR=/opt/optix )
