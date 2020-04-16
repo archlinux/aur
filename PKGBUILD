@@ -7,7 +7,7 @@ _srcname=linux-5.6
 _major=5.6
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=3
+_minor=4
 ### on initial release comment this out and set to =1
 _minorc=$((_minor+1))
 #_minorc=1
@@ -31,19 +31,17 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-ALSA-hda-Fix-potential-access-overflow-in-beep-helpe.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('9ff0aabccd0c4e5b59ef7350c9e88473c4d7deedc64fd36d7e6ccb84e4fd83de'
+sha256sums=('11172f889b1660f0c0de38d69f17b45fb3f064cbe5cce58ff20345d64b3dadc9'
             'SKIP'
-            '1d13689abbcab59250a8231a5871747be25a1d2fe431cf263395de35780c50aa'
+            '5df1741e550cb6fa7471530f42da98bac5093e693e2c4f3aef4393d8135b9d91'
             'SKIP'
             '0b414b6974b732cfb71b6f45b6210d127528aa6452132e9b9338719ac021bf06'
-            '0e5124563d5413e6ae7e6f21c100c32575f099272aa6d0957616fd3aeb888a1d'
-            'b38f5c127f75ae7ced2cfa350147bebb72ae56ebfb191a6393f2edcc94e557ae')
+            '1f4cebcd41f497b2d8680d5001ce6036a1142973ad68b1421a10a2ddf99d568b')
 
 _kernelname=${pkgbase#linux}
 
