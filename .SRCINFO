@@ -1,6 +1,6 @@
 pkgbase = python-rtmidi
 	pkgdesc = Python bindings for the cross-platform MIDI I/O library RtMidi
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/SpotlightKid/python-rtmidi
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = python-rtmidi
 	makedepends = python-setuptools
 	depends = jack
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/python-rtmidi/python-rtmidi-1.4.0.tar.gz
-	sha256sums = 4ed5da58e4b57e84074f15e9c27bb3fc1b535258c502517f3c7e1042ed74ffe4
+	source = https://files.pythonhosted.org/packages/source/p/python-rtmidi/python-rtmidi-1.4.1.tar.gz
+	sha256sums = 07bfecdbd6f1abe11f57f4448cf1da29dc199daee16ee7e5a8db092a2d1c1e2c
 
 pkgname = python-rtmidi
 
