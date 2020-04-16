@@ -12,7 +12,7 @@ arch=(x86_64)
 url="https://gitlab.com/kwinft/kwinft"
 license=(LGPL)
 #Depends on kscreenlocker 5.19 API
-depends=(kscreenlocker-git xcb-util-cursor plasma-framework kcmutils breeze kinit qt5-sensors qt5-script wrapland)
+depends=(kscreenlocker-git xcb-util-cursor plasma-framework kcmutils breeze kinit qt5-sensors qt5-script wrapland libkscreen-kwinft-git)
 makedepends=(extra-cmake-modules qt5-tools kdoctools)
 optdepends=('qt5-virtualkeyboard: virtual keyboard support for kwin-wayland')
 provides=("$_pkgname")
