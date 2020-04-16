@@ -8,7 +8,7 @@
 # Contributor: Ricardo Band <me [at] xengi [dot] de>
 
 pkgname=popcorntime
-pkgver=0.4.1
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=(i686 x86_64)
@@ -20,9 +20,9 @@ optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 #install="popcorntime.install"
 # Needed variables for sources downloads
-# Commit SHA256 updated on date: 2020-03-23
-# v0.4.1 but with extra fixes
-_commit_hash="commit=c219ddf7d389b51f595803f23a95e195a22156af"
+# Commit SHA256 updated on date: 2020-04-16
+# v0.4.4 but with extra stuff
+_commit_hash="commit=b20073444f0d442d9c2cd1c09de23740dd091b8b"
 _pkgname="popcorn-desktop"
 
 # NW.js version to use while building
