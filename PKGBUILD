@@ -1,7 +1,11 @@
-# Maintainer: Michael Picht <mipi@fsfe.org> 
+# Maintainer: Michael Picht <mipi@fsfe.org>
+#
+# SPDX-FileCopyrightText: 2018-2020 Michael Picht <mipi@fsfe.org>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
  
 pkgname=crema
-pkgver=2.1.3
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Manage (remote) custom repositories"          
 arch=(any) 
@@ -11,12 +15,15 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${pkgname}-${pk
 md5sums=(SKIP) 
 validpgpkeys=(11ECD6695134183B3E7AF1C2223AAA374A1D59CE) # Michael Picht <mipi@fsfe.org>
 depends=( 
-    binutils 
     devtools
+    git
+    pacman
     rsync
     sudo
 ) 
 makedepends=(
+    git
+    go
     make
     pandoc
 ) 
@@ -24,39 +31,12 @@ optdepends=(gnupg)
 provides=(crema)
 conflicts=(crema-git)
  
-# aurutils 
-conflicts+=( 
-    aurutils 
-    aurutils-git 
-) 
-depends+=( 
-    git 
-    jq 
-    pacutils 
-    parallel 
-    wget 
-) 
-makedepends+=(m4)
-optdepends+=( 
-    "bash-completion: bash completion" 
-    "devtools: aur-chroot" 
-    "vifm: build file interaction" 
-) 
- 
 build() { 
     cd "${pkgname}-${pkgver}"
     make
-
-    # aurutils 
-    cd aurutils
-    make DESTDIR="$pkgdir" 
 } 
  
 package() { 
   cd "${pkgname}-${pkgver}"
-  make DESTDIR="$pkgdir" install 
- 
-  # aurutils 
-  cd aurutils 
   make DESTDIR="$pkgdir" install 
 } 
