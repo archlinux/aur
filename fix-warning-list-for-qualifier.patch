@@ -1,0 +1,18 @@
+--- setup.py.old	2019-12-31 13:07:53.432978632 +0100
++++ setup.py	2019-12-31 13:08:03.056499371 +0100
+@@ -17,7 +17,7 @@
+     keywords="exif image metadata photo",
+     description=" ".join(exifread.__doc__.splitlines()).strip(),
+     long_description=readme_file,
+-    classifiers=(
++    classifiers=[
+         "Development Status :: 5 - Production/Stable",
+         "Environment :: Console",
+         "Intended Audience :: Developers",
+@@ -30,5 +30,5 @@
+         "Programming Language :: Python :: 3.6",
+         "Programming Language :: Python :: 3.7",
+         "Topic :: Utilities",
+-    ),
++    ],
+ )
