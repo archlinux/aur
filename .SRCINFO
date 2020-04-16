@@ -1,7 +1,7 @@
 pkgbase = vim-glsl-git
 	pkgdesc = Vim runtime files for OpenGL Shading Language.
 	pkgver = r45.fbdb226
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tikhomirov/vim-glsl
 	arch = x86_64
 	license = MIT
