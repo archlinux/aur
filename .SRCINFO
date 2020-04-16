@@ -15,6 +15,7 @@ pkgbase = gpu-screen-recorder-git
 	depends = libpulse
 	depends = nvidia-utils
 	depends = cuda
+	depends = libglvnd
 	provides = gpu-screen-recorder
 	conflicts = gpu-screen-recorder
 	source = git+https://github.com/DEC05EBA/gpu-screen-recorder.git
