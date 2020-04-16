@@ -1,23 +1,11 @@
 pkgbase = dotnet-core-3.0
 	pkgver = 3.0.3.sdk103
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	makedepends = clang
-	makedepends = cmake
-	makedepends = curl
-	makedepends = git
-	makedepends = icu
-	makedepends = krb5
-	makedepends = libunwind
-	makedepends = lldb
-	makedepends = llvm
-	makedepends = lttng-ust
-	makedepends = openssl
-	makedepends = zlib
 	options = staticlibs
 	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/43f3a3bd-3df2-41e6-beca-3ec4952ca6c4/30fe7779249607d1bb3bb4b20d61a479/dotnet-sdk-3.0.103-linux-x64.tar.gz
 	sha512sums_x86_64 = 22acd337c1f837c586b9d0e3581feeba828c7d6dc64e4c6c9b24bdc6159c635eb7019c3fb0534edeb4f84971e9c3584c7e3a4d80854cf5664d2792ee8fde189b
@@ -32,6 +20,7 @@ pkgname = aspnet-runtime-3.0
 	provides = aspnet-runtime-3.0
 	provides = aspnet-runtime=3.0.3.sdk103
 	conflicts = aspnet-runtime-3.0
+	conflicts = aspnet-runtime=3.0.3.sdk103
 
 pkgname = dotnet-runtime-3.0
 	pkgdesc = The .NET Core runtime (binary) - End-of-life
@@ -46,12 +35,15 @@ pkgname = dotnet-runtime-3.0
 	provides = dotnet-runtime-3.0
 	provides = dotnet-runtime=3.0.3.sdk103
 	conflicts = dotnet-runtime-3.0
+	conflicts = dotnet-runtime=3.0.3.sdk103
 
 pkgname = dotnet-sdk-3.0
 	pkgdesc = The .NET Core SDK (binary) - End-of-life
 	depends = dotnet-runtime-3.0
+	depends = dotnet-sdk>=3.1
+	depends = glibc
 	provides = dotnet-sdk-3.0
 	provides = dotnet-sdk=3.0.3.sdk103
 	conflicts = dotnet-sdk-3.0
-	conflicts = dotnet-sdk>=3
+	conflicts = dotnet-sdk=3.0.3.sdk103
 

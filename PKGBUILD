@@ -5,14 +5,10 @@ pkgname=( 'aspnet-runtime-3.0' 'dotnet-runtime-3.0' 'dotnet-sdk-3.0')
 pkgver=3.0.3.sdk103
 _runtimever=3.0.3
 _sdkver=3.0.103
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
-makedepends=(
-  'clang' 'cmake' 'curl' 'git' 'icu' 'krb5' 'libunwind' 'lldb' 'llvm'
-  'lttng-ust' 'openssl' 'zlib'
-)
 options=('staticlibs')
 source_armv7h=('https://download.visualstudio.microsoft.com/download/pr/4a44d4d2-19c1-485a-8b58-fa06805cddcf/cc805a1ebd9d72099309dcd46492d36f/dotnet-sdk-3.0.103-linux-arm.tar.gz')
 source_aarch64=('https://download.visualstudio.microsoft.com/download/pr/eb4ffaf1-b0a9-466d-8440-0220dca8f806/48df585d8d978c5418fa514da6a2bd9b/dotnet-sdk-3.0.103-linux-arm64.tar.gz')
@@ -27,7 +23,7 @@ package_dotnet-runtime-3.0() {
            'libcurl.so')
   optdepends=('lttng-ust: CoreCLR tracing')
   provides=("dotnet-runtime-3.0" "dotnet-runtime=${pkgver}")
-  conflicts=("dotnet-runtime-3.0")
+  conflicts=("dotnet-runtime-3.0" "dotnet-runtime=${pkgver}")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -38,7 +34,7 @@ package_aspnet-runtime-3.0() {
   pkgdesc='The ASP.NET Core runtime (binary) - End-of-life'
   depends=('dotnet-runtime-3.0')
   provides=("aspnet-runtime-3.0" "aspnet-runtime=${pkgver}")
-  conflicts=("aspnet-runtime-3.0")
+  conflicts=("aspnet-runtime-3.0" "aspnet-runtime=${pkgver}")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -47,10 +43,12 @@ package_aspnet-runtime-3.0() {
 
 package_dotnet-sdk-3.0() {
   pkgdesc='The .NET Core SDK (binary) - End-of-life'
-  depends=('dotnet-runtime-3.0')
+  depends=('dotnet-runtime-3.0' 'dotnet-sdk>=3.1' 'glibc')
   provides=("dotnet-sdk-3.0" "dotnet-sdk=${pkgver}")
-  conflicts=("dotnet-sdk-3.0" "dotnet-sdk>=3")
+  conflicts=("dotnet-sdk-3.0" "dotnet-sdk=${pkgver}")
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
-  cp -dr --no-preserve='ownership' packs sdk templates "${pkgdir}"/usr/share/dotnet/
+  # Not copying packs because /usr/share/dotnet/packs/NETStandard.Library.Ref/2.1.0/ contained in 3.1
+  # as well, depend on it instead
+  cp -dr --no-preserve='ownership' sdk templates "${pkgdir}"/usr/share/dotnet/
   ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-sdk-3.0
 }
