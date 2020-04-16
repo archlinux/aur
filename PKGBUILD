@@ -1,4 +1,8 @@
 # Maintainer: Michael Picht <mipi@fsfe.org>
+#
+# SPDX-FileCopyrightText: 2018-2020 Michael Picht <mipi@fsfe.org>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 _pkgorg=gitlab.com/mipimipi
 pkgname=crema-git
@@ -15,35 +19,33 @@ md5sums=(SKIP)
 depends=(
     binutils
     devtools
+    git
+    pacman
     rsync
     sudo
 )
 makedepends=(
     git
+    go
     make
     pandoc
 )
 optdepends=(gnupg)
 provides=(crema)
-conflicts=(crema)
+conflicts=(crema-git)
 
-# aurutils
-conflicts+=(
-    aurutils
-    aurutils-git
-)
 depends+=(
-    jq
-    pacutils
-    parallel
-    wget
+#    jq
+#    pacutils
+#    parallel
+#    wget
 )
-makedepends+=(m4)
-optdepends+=(
-    "bash-completion: bash completion"
-    "devtools: aur-chroot"
-    "vifm: build file interaction"
-)
+#makedepends+=(m4)
+#optdepends+=(
+#    "bash-completion: bash completion"
+#    "devtools: aur-chroot"
+#    "vifm: build file interaction"
+#)
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -53,17 +55,9 @@ pkgver() {
 build() {
     cd "$srcdir/$_pkgname"
     make
-
-    # aurutils
-    cd aurutils
-    make DESTDIR="$pkgdir"
 }
 
 package() {
     cd "$srcdir/$_pkgname"
-    make DESTDIR="$pkgdir" install
-
-    # aurutils
-    cd aurutils
     make DESTDIR="$pkgdir" install
 }
