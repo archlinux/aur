@@ -21,7 +21,8 @@ build() {
 
   ./configure --prefix="/opt/${pkgname}" --build=${CHOST}
 
-  make
+  # parallel builds may fail
+  make -j1
 }
 
 package(){
