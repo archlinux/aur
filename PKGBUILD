@@ -58,7 +58,7 @@ _conf_files=(
 )
 
 package() {
-  cd jdk${pkgver/+*/}
+  cd jdk${pkgver/+*/}-full
 
   install -dm 755 "${pkgdir}/${_jvmdir}"
   cp -a . "${pkgdir}/${_jvmdir}/"
