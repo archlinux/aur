@@ -1,11 +1,12 @@
-# Maintainer: fclad <fcladera at fcladera.com>
+# Maintainer: TH Campbell (dysphoria) <thcampbell (at) protonmail (dot) com>
+# Contributor: fclad <fcladera at fcladera.com>
 # Contributor: Antonio Rojas
 # Contributor: prettyvanilla <prettyvanilla at posteo.at>
 # Contributor: vnoel <victor.noel at crazydwarves dot org>
 
 _pkgname=kile
 pkgname=kile-git
-pkgver=v2.1.r673.g6c824b81
+pkgver=v3.0b2.r90.g5b83c2a0
 pkgrel=1
 pkgdesc="A TeX/LaTeX frontend for KDE"
 arch=('i686' 'x86_64')
