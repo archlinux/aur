@@ -3,7 +3,7 @@
 
 pkgname=openvpn-openssl-1.0
 _pkgname=openvpn
-pkgver=2.4.8
+pkgver=2.4.9
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) (build against openssl-1.0)'
 arch=('i686' 'x86_64')
