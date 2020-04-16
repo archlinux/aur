@@ -1,7 +1,7 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=rivet
 pkgver=3.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A particle physics package for data analysis and validation of Monte Carlo event generators"
 arch=('x86_64' 'i686')
 url="http://rivet.hepforge.org"
@@ -21,25 +21,24 @@ md5sums=('d5eb0e69aa3fdf44f5925419e0d40dc9'
          '33be87d5ea7f658b916e43dde3bbc3f8'
          'e10f1d04be0c091a13fb2091842c2eb3')
 
-build() {
+package() {
 	cd "$srcdir/Rivet-$pkgver"
         patch -p1 < ../900d209692893606e52d92ec37375b5131d5b1f0.diff
         patch -p1 < ../6dc3735a2dfe4aa80e64afe0a169366f0db1016d.diff
         patch -p1 < ../rivet-3-1-0-with-hepmc-3-2-1-MR85.patch
-	./configure --prefix=/usr --with-hepmc3=/usr
-	make
-}
-
-package() {
-	cd "$srcdir/Rivet-$pkgver"
-	make DESTDIR="$pkgdir/" install
 
         # If python2 is present, also build a library for it
+        # Have to do this first, such that files like rivet-config get overwritten with the "proper" Python3 version
         if [ -x /usr/bin/python2 ]; then
           PYTHON=/usr/bin/python2 ./configure --prefix=/usr --with-hepmc3=/usr
           make DESTDIR="$pkgdir/" install
+          make clean
         fi
         
+	./configure --prefix=/usr --with-hepmc3=/usr
+	make
+        make DESTDIR="$pkgdir/" install
+
         mkdir -p $pkgdir/etc/bash_completion.d
         mv $pkgdir/usr/share/Rivet/rivet-completion $pkgdir/etc/bash_completion.d
 }
