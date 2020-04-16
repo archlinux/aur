@@ -1,0 +1,13 @@
+pkgbase = linux-a11y-sound-theme
+	pkgdesc = Sound theme for the linux accessibility organization
+	pkgver = r19.730e525
+	pkgrel = 1
+	url = https://github.com/coffeeking/linux-a11y-sound-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = git+https://github.com/coffeeking/linux-a11y-sound-theme.git
+	sha256sums = SKIP
+
+pkgname = linux-a11y-sound-theme
+
