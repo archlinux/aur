@@ -5,7 +5,7 @@
 pkgbase=mlapack
 pkgname=('mlapack')
 pkgver=0.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Multiple precision linear algebra package (fork of MPLAPACK)"
 arch=('x86_64' 'i686')
 license=('Custom')
@@ -41,7 +41,8 @@ build() {
       --with-system-qd \
       --disable-benchmark \
       --disable-examples \
-      --disable-reference
+      --disable-reference \
+      CPPFLAGS=-fpermissive
   make
 }
 
