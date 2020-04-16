@@ -5,7 +5,7 @@
 
 pkgname=virtuoso
 pkgver=7.2.4.2
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='http://virtuoso.openlinksw.com/wiki/main/Main/'
 license=('GPL')

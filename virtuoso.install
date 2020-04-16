@@ -8,5 +8,9 @@ post_upgrade(){
   getent group virtuoso >/dev/null 2>&1 || groupadd -g 2000 virtuoso &>/dev/null
   getent passwd virtuoso >/dev/null 2>&1 || useradd -u 2000 -g virtuoso \ 
     -d /var/lib/virtuoso-opensource-7/db -s /bin/false virtuoso &>/dev/null
+  systemctl is-enabled virtuoso && systemctl start virtuoso
 }
 
+pre_upgrade() {
+  systemctl stop virtuoso
+}
