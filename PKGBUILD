@@ -7,6 +7,7 @@ _geckover=2.47.1
 _monover=4.9.4
 #_dxvkver=1.5
 pkgrel=1
+epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 arch=(x86_64)
 url="https://github.com/ValveSoftware/Proton"
