@@ -1,21 +1,20 @@
 pkgbase = mutant
 	pkgdesc = Linux Spotlight Productivity launcher, but more customizable.
-	pkgver = 0.1.11
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/m0n0l0c0/mutant
 	arch = x86_64
 	license = MIT
+	makedepends = git
+	depends = nodejs-lts-erbium
 	depends = pkg-config
 	depends = sqlite
-	depends = git
 	depends = npm
 	depends = gtk3
 	depends = librsvg
 	provides = mutant
-	source = mutant::https://github.com/m0n0l0c0/mutant/archive/v0.1.11.tar.gz
-	source = mutant-packager::https://github.com/m0n0l0c0/mutant-packager/archive/v0.1.5.tar.gz
-	sha256sums = d01df56c811df074ff938a65a952cc10b33c88932a697414f4615a93c26bdc48
-	sha256sums = 0029373d851cd86f01e97f452826d84f45646a30c569ec72c3653fa85fecd7ea
+	source = git://github.com/m0n0l0c0/mutant.git#branch=develop
+	sha256sums = SKIP
 
 pkgname = mutant
 
