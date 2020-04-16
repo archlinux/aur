@@ -1,0 +1,14 @@
+pkgbase = prosody-mod-auth-imap-hg
+	pkgdesc = IMAP authentication module for Prosody
+	pkgver = tip
+	pkgrel = 1
+	url = https://modules.prosody.im/mod_auth_external.html
+	arch = any
+	license = MIT
+	makedepends = mercurial
+	depends = prosody
+	source = hg+https://hg.prosody.im/prosody-modules/
+	sha1sums = SKIP
+
+pkgname = prosody-mod-auth-imap-hg
+
