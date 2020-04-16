@@ -1,0 +1,16 @@
+pkgbase = eternalterminal-bash-completion
+	pkgdesc = Bash completion for eternalterminal
+	pkgver = r3.65cb401
+	pkgrel = 1
+	url = https://github.com/kescherCode/eternalterminal-bash-completion
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = bash-completion
+	optdepends = eternalterminal: Needed if eternalterminal-client isn't installed
+	optdepends = eternalterminal-client: Needed if eternalterminal isn't installed
+	source = git+https://github.com/kescherCode/eternalterminal-bash-completion.git
+	md5sums = SKIP
+
+pkgname = eternalterminal-bash-completion
+
