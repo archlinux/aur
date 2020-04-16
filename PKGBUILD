@@ -1,5 +1,5 @@
 pkgname=fontforge-git
-pkgver=20190801.r31.g4dc8313c0
+pkgver=20190801.r246.gf28b9e6b5
 pkgrel=1
 epoch=1
 
@@ -8,15 +8,14 @@ url='https://fontforge.github.io/'
 arch=('i686' 'x86_64')
 license=('GPL3' 'BSD')
 
-depends=('libxkbui' 'libxi' 'pango' 'giflib' 'libltdl' 'libspiro' 'desktop-file-utils'
-         'gtk-update-icon-cache' 'libuninameslist' 'gc' 'python' 'shared-mime-info'
-         'zeromq')
+depends=('libtool' 'pango' 'giflib' 'libtiff' 'libxml2' 'libspiro' 'python'
+         'potrace' 'woff2' 'gtk3' 'libuninameslist')
 makedepends=('git' 'cmake' 'ninja')
 
 provides=('fontforge')
 conflicts=('fontforge')
 
-source=('git://github.com/fontforge/fontforge.git')
+source=('git+https://github.com/fontforge/fontforge.git')
 
 sha256sums=('SKIP')
 
@@ -32,8 +31,11 @@ build() {
     cd build
     cmake \
         -G"Ninja" \
+	-D"CMAKE_BUILD_TYPE:STRING=Release" \
         -D"CMAKE_INSTALL_PREFIX:PATH=/usr" \
-        -D"CMAKE_INSTALL_LIBDIR:PATH=lib" \
+        -D"ENABLE_MAINTAINER_TOOLS:BOOL=TRUE" \
+        -D"ENABLE_FONTFORGE_EXTRAS:BOOL=TRUE" \
+        -D"UNIX:BOOL=TRUE" \
         ..
     ninja
 }
