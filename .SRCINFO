@@ -1,6 +1,6 @@
 pkgbase = openxcom-extended
 	pkgdesc = An extended version of the open-source reimplementation of X-COM (OXCE)
-	pkgver = 6.4.3
+	pkgver = 6.4.4
 	pkgrel = 1
 	url = https://openxcom.org/forum/index.php/topic,5251.0.html
 	install = openxcom-extended.install
@@ -12,18 +12,9 @@ pkgbase = openxcom-extended
 	makedepends = docbook-xml
 	makedepends = docbook-xsl
 	makedepends = doxygen
-	makedepends = sdl_mixer
-	makedepends = sdl_gfx
-	makedepends = sdl_image
-	makedepends = sdl
-	makedepends = yaml-cpp
-	makedepends = libgl
-	makedepends = gcc-libs
-	makedepends = glibc
 	makedepends = boost
 	makedepends = glu
 	makedepends = cmake
-	makedepends = hicolor-icon-theme
 	makedepends = xorgproto
 	depends = sdl_mixer
 	depends = sdl_gfx
@@ -31,15 +22,14 @@ pkgbase = openxcom-extended
 	depends = sdl
 	depends = yaml-cpp
 	depends = libgl
-	depends = gcc-libs
-	depends = glibc
 	depends = hicolor-icon-theme
+	depends = gcc-libs
 	optdepends = openxcom-data-steam: pacman-tracked X-COM data files from Steam
 	optdepends = openxcom-tftd-data-steam: pacman-tracked Terror From The Deep data files from Steam
 	provides = openxcom
 	provides = openxcom-git
 	conflicts = openxcom
-	source = openxcom-extended::git+https://github.com/MeridianOXC/OpenXcom.git#commit=20a521a13b2778ec3b4ef65085cb20275207c51a
+	source = openxcom-extended::git+https://github.com/MeridianOXC/OpenXcom.git#commit=b34bf90719292f5eaf219ebbad273323fe3d64bb
 	md5sums = SKIP
 
 pkgname = openxcom-extended
