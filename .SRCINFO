@@ -1,11 +1,11 @@
 pkgbase = mazespheres-bin
 	pkgdesc = A horror-themed minimalistic maze game
 	pkgver = 1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://varden.info/product.php?sid=27
 	arch = x86_64
 	license = custom
-	source = https://varden.info/~m/aur/Mazespheres-Linux-v1.1.tar.xz
+	source = Mazespheres-Linux-v1.1.tar.xz::https://varden.info/download.php?sid=27
 	source = LICENSE
 	source = mazespheres.sh
 	sha256sums = 180dbe7369e6116d000698e2d3e77b8a3913bface1f21db6f59cdf689998a3d2
