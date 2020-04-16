@@ -1,0 +1,16 @@
+[Unit]
+Description=Open Network Operating System
+After=network-online.target
+After=local-fs.target
+
+[Service]
+Type=exec
+Environment="JAVA_HOME=/usr/lib/jvm/default"
+ExecStart=/opt/onos/bin/onos-service server
+ExecStop=/opt/onos/bin/onos-service stop
+SuccessExitStatus=143
+Restart=always
+RestartSec=1s
+
+[Install]
+WantedBy=multi-user.target

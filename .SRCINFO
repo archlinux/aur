@@ -1,0 +1,24 @@
+pkgbase = onos-git
+	pkgdesc = Open Network Operating System
+	pkgver = 2.4.0.SNAPSHOT.r14753.f86cfc9b3cf
+	pkgrel = 1
+	url = https://www.opennetworking.org/onos/
+	arch = any
+	license = Apache
+	makedepends = bazel
+	makedepends = git
+	depends = git
+	depends = unzip
+	depends = zip
+	depends = curl
+	depends = python2
+	depends = python
+	provides = onos
+	conflicts = onos
+	source = onos::git+https://gerrit.onosproject.org/onos
+	source = onos.service
+	sha256sums = SKIP
+	sha256sums = e5f47ddcab03d7a885e4bbde1d3be7f05696e3a2f7677b0345a7909aec5a145e
+
+pkgname = onos-git
+
