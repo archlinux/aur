@@ -5,13 +5,13 @@
 
 pkgname=tikzit-git
 epoch=3
-pkgver=2.1.4.r9.gf17f2a4
+pkgver=2.1.5.r8.g5ca0a2e
 pkgrel=1
 pkgdesc="Creation and modification of TeX diagrams written using the pgf/TikZ macro library - rewrite in QT and C++"
 arch=('i686' 'x86_64')
 url="https://tikzit.github.io/"
 license=('GPL')
-depends=('qt5-base' 'desktop-file-utils' 'hicolor-icon-theme' 'poppler-qt5')
+depends=('hicolor-icon-theme' 'poppler-qt5')
 makedepends=('git' 'poppler-qt5')
 provides=('tikzit')
 conflicts=('tikzit')
