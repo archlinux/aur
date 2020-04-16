@@ -8,6 +8,7 @@ pkgbase = breeze-hacked-cursor-theme-git
 	makedepends = gnome-themes-extra
 	makedepends = inkscape
 	makedepends = xorg-xcursorgen
+	makedepends = git
 	provides = breeze-hacked-cursor-theme
 	conflicts = breeze-hacked-cursor-theme
 	source = git+https://github.com/codejamninja/breeze-hacked-cursor-theme
