@@ -9,8 +9,8 @@ url="https://github.com/Rafostar/$pkgname"
 arch=("x86_64")
 license=("GPL")
 
-pkgver=12
-pkgrel=1
+pkgver=14
+pkgrel=0
 
 depends=(
     "gnome-shell"
@@ -18,7 +18,7 @@ depends=(
     "nodejs"
 )
 optdepends=(
-  "python-nautilus: Nautilus integration"
+    "python-nautilus: Nautilus integration"
 )
 makedepends=(
     "npm"
@@ -29,7 +29,7 @@ source=(
     "install_node_modules.patch"
 )
 sha256sums=(
-    "163f749ddf79b9d6a578644bfaaf6436f18c3711cd943c39f3358c5fc5bd615f"
+    "bcc71224d78cf838d491b1d6b5a995a1f4415f4acbebcdcae70bf5fa977e5c44"
     "b24fa4e6b04cae500ec267345ac48f9c92452e0d9ad798ac28132984387b98cc"
 )
 
@@ -62,7 +62,6 @@ package() {
         -Dm644 \
         nautilus/nautilus-cast-to-tv.py \
         "$pkgdir/usr/share/nautilus-python/extensions/nautilus-cast-to-tv.py"
-
 
     # Non-deterministic race in npm gives 777 permissions to random directories.
     # See https://github.com/npm/npm/issues/9359 for details.
