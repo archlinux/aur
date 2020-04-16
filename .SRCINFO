@@ -1,0 +1,31 @@
+pkgbase = o20-git
+	pkgdesc = Office365 on your Linux PC
+	pkgver = r133.4f14dbe
+	pkgrel = 1
+	url = https://gitlab.com/abstractsoftware/o20/o20coreapps
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = zlib
+	depends = syntax-highlighting
+	depends = sonnet
+	depends = breeze
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	depends = ktextwidgets
+	depends = kwidgetsaddons
+	depends = karchive
+	depends = kconfig
+	depends = kiconthemes
+	depends = kcoreaddons
+	provides = o20
+	conflicts = o20
+	source = o20-git::git+https://gitlab.com/abstractsoftware/o20/o20coreapps.git
+	sha256sums = SKIP
+
+pkgname = o20-git
+
