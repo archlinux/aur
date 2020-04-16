@@ -4,12 +4,12 @@
 
 pkgname=protonmail-bridge-bin
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 _pkgrel=1
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
 url="https://www.protonmail.com/bridge"
-license=('MIT')
+license=('GPL3')
 depends=('hicolor-icon-theme' 'libsecret' 'qt5-multimedia' 'ttf-dejavu')
 optdepends=(
     'gnome-keyring: supported password manager (password manager is required)'
@@ -17,27 +17,18 @@ optdepends=(
 )
 conflicts=('protonmail-bridge')
 options=('!emptydirs' '!strip')
-source=("https://protonmail.com/download/protonmail-bridge_${pkgver}-${_pkgrel}_amd64.deb")
-sha256sums=('34fdc917fb2c6f06ec6c6a71041f31ad3599b4ee5556e09ad919c36d71eac247')
+source=("https://protonmail.com/download/protonmail-bridge_${pkgver}-${_pkgrel}_amd64.deb"
+        "https://raw.githubusercontent.com/ProtonMail/proton-bridge/master/LICENSE")
+sha256sums=('34fdc917fb2c6f06ec6c6a71041f31ad3599b4ee5556e09ad919c36d71eac247'
+            '1b3782ccad7b8614100cda30d3faf42fc39f2e97932908c543005053b654ca68')
 
 prepare() {
     tar xf data.tar.xz
-
-#    mkdir -p usr/share/icons/hicolor/scalable/apps
-#    mv usr/share/icons/protonmail/ProtonMail_Bridge.svg \
-#        usr/share/icons/hicolor/scalable/apps/"${pkgname}".svg
-#
-#    mv usr/share/applications/ProtonMail_Bridge.desktop \
-#        usr/share/applications/"${pkgname}".desktop
-#    sed -i "s|Icon=.*|Icon=protonmail-bridge-bin|" \
-#        usr/share/applications/"${pkgname}".desktop
-
 }
 
 package() {
     mv usr/ "${pkgdir}"
 
-    install -D -m644 "${pkgdir}"/usr/lib/protonmail/bridge/{eula.txt,LICENSE} \
-        -t "${pkgdir}"/usr/share/licenses/"${pkgname}"
+    install -D -m644 "${srcdir}"/LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"
 }
 
