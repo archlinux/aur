@@ -1,6 +1,6 @@
 pkgbase = alphaplot
 	pkgdesc = Application for Scientific Data Analysis and Visualization, fork of SciDavis / QtiPlot
-	pkgver = 0.01_alpha_git
+	pkgver = 1.01_alpha_git
 	pkgrel = 1
 	url = http://alphaplot.sourceforge.net/
 	install = alphaplot.install

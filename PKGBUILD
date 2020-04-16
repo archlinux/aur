@@ -1,7 +1,7 @@
 # Maintainer: Arun Narayanankutty <n.arun.lifescience@gmail.com>
 
 pkgname=alphaplot
-pkgver=0.01_alpha_git
+pkgver=1.01_alpha_git
 pkgrel=1
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of SciDavis / QtiPlot"
 url='http://alphaplot.sourceforge.net/'
