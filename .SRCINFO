@@ -1,0 +1,24 @@
+pkgbase = kafkacat-avro-git
+	pkgdesc = Apache Kafka command line producer and consumer with Avro support
+	pkgver = r257.e982568
+	pkgrel = 1
+	url = https://github.com/edenhill/kafkacat
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	makedepends = git
+	depends = glibc
+	depends = zlib
+	depends = librdkafka
+	depends = libserdes
+	depends = avro-c
+	depends = yajl-edenhill
+	provides = kafkacat
+	conflicts = kafkacat
+	conflicts = kafkacat-git
+	source = git+https://github.com/edenhill/kafkacat
+	sha256sums = SKIP
+
+pkgname = kafkacat-avro-git
+
