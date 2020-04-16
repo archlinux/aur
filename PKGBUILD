@@ -1,7 +1,7 @@
 # Maintainer: Chris Sculley <cs.sculley at gmail dot com>
 pkgname=idena-desktop-git
-pkgver=v0.0.10.r233.g647bc41
-pkgrel=2
+pkgver=v0.0.10.r280.g1525b85
+pkgrel=1
 pkgdesc="The idena-desktop application for the Idena network"
 arch=("x86_64")
 url="https://github.com/idena-network/idena-desktop"
@@ -30,9 +30,12 @@ build() {
     # see: https://wiki.archlinux.org/index.php/Electron_package_guidelines
     _electronDist=$(dirname $(realpath $(which electron)))
     _electronVer=$(electron --version | tail -c +2)
-    # sed -i '/		"electron": /d' ./package.json
+    _version=`git describe --abbrev=0 --tags | sed -e "s/v//g"`
+    echo Building Version: $_version
+    sed -i.bak -E "s/\"version\":\ \"[0-9]+\.[0-9]+\.[0-9]+/\"version\":\ \"$_version/g" ./package.json
     HOME="$srcdir/$pkgname/.electron-gyp" npm install --cache "$srcdir/$pkgname/npm-cache"
-    npm run build && ./node_modules/.bin/electron-builder --linux --x64 --dir dist -c.electronDist=$_electronDist -c.electronVersion=$_electronVer
+    npm upgrade
+    npm run build && ./node_modules/.bin/electron-builder --linux --publish onTag --x64 --dir dist -c.electronDist=$_electronDist -c.electronVersion=$_electronVer
 }
 
 package() {
