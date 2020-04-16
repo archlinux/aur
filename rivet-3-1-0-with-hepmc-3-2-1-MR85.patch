@@ -1,0 +1,255 @@
+diff --git a/bin/rivet-nopy.cc b/bin/rivet-nopy.cc
+index ae7ab8211..f9fdbcfc0 100644
+--- a/bin/rivet-nopy.cc
++++ b/bin/rivet-nopy.cc
+@@ -1,3 +1,4 @@
++#include <string>
+ #include <fstream>
+ #include "Rivet/Tools/RivetHepMC.hh"
+ #include "Rivet/AnalysisHandler.hh"
+@@ -18,11 +19,14 @@ int main(int argc, char** argv) {
+     ah.addAnalysis(argv[i]);
+   }
+ 
+-  std::shared_ptr<std::istream> istr;
+-  
+-  std::shared_ptr<Rivet::HepMC_IO_type> reader = Rivet::HepMCUtils::makeReader(argv[1], istr);
+-  
++  #ifdef RIVET_ENABLE_HEPMC_3
++  std::shared_ptr<Rivet::RivetHepMC::Reader> reader = Rivet::RivetHepMC::deduce_reader(argv[1]);
++  std::shared_ptr<Rivet::RivetHepMC::GenEvent> evt = std::make_shared<Rivet::RivetHepMC::GenEvent>();
++  #else
++  std::shared_ptr<std::istream> istr= std::shared_ptr<std::istream>(new std::ifstream (argv[1], std::ios::in));
++  std::shared_ptr<Rivet::HepMC_IO_type> reader = Rivet::HepMCUtils::makeReader(argv[1],istr);
+   std::shared_ptr<Rivet::RivetHepMC::GenEvent> evt = std::make_shared<Rivet::RivetHepMC::GenEvent>();
++  #endif
+ 
+  
+   while(reader && Rivet::HepMCUtils::readEvent(reader, evt)){
+diff --git a/include/Rivet/Tools/Exceptions.hh b/include/Rivet/Tools/Exceptions.hh
+index c57ee5344..e352b9907 100644
+--- a/include/Rivet/Tools/Exceptions.hh
++++ b/include/Rivet/Tools/Exceptions.hh
+@@ -63,6 +63,22 @@ namespace Rivet {
+   };
+ 
+ 
++  /// @brief Error for I/O failures.
++  struct IOError : public Error {
++    IOError(const std::string& what) : Error(what) {}
++  };
++
++  /// @brief Error for read failures.
++  struct ReadError : public IOError {
++    ReadError(const std::string& what) : IOError(what) {}
++  };
++
++  /// @brief Error for write failures.
++  struct WriteError : public IOError {
++    WriteError(const std::string& what) : IOError(what) {}
++  };
++
++
+ }
+ 
+ #endif
+diff --git a/include/Rivet/Tools/RivetHepMC.hh b/include/Rivet/Tools/RivetHepMC.hh
+index 7c53b4541..1c614cfa4 100644
+--- a/include/Rivet/Tools/RivetHepMC.hh
++++ b/include/Rivet/Tools/RivetHepMC.hh
+@@ -16,6 +16,12 @@
+ #ifndef HEPMC_HAS_CROSS_SECTION
+ #define HEPMC_HAS_CROSS_SECTION
+ #endif
++
++namespace HepMC3 {
++  std::shared_ptr<HepMC3::Reader> deduce_reader(const std::string &filename);
++  std::shared_ptr<HepMC3::Reader> deduce_reader(std::istream &stream);
++}
++
+ namespace Rivet {
+   namespace RivetHepMC = HepMC3;
+ 
+diff --git a/src/Core/Run.cc b/src/Core/Run.cc
+index 9c495fac5..380c7634c 100644
+--- a/src/Core/Run.cc
++++ b/src/Core/Run.cc
+@@ -3,6 +3,8 @@
+ #include "Rivet/AnalysisHandler.hh"
+ #include "Rivet/Math/MathUtils.hh"
+ #include "Rivet/Tools/RivetPaths.hh"
++#include "Rivet/Tools/RivetHepMC.hh"
++#include "zstr/zstr.hpp"
+ #include <limits>
+ #include <iostream>
+ 
+@@ -11,6 +13,14 @@ using std::endl;
+ 
+ namespace Rivet {
+ 
++
++  /// Byte/number conversion via union, for HepMC file inspection
++  union magic_t {
++    uint8_t bytes[4];
++    uint32_t number;
++  };
++
++
+   Run::Run(AnalysisHandler& ah)
+     : _ah(ah), _fileweight(1.0), _xs(NAN)
+   { }
+@@ -57,11 +67,80 @@ namespace Rivet {
+     // In case makeReader fails.
+     std::string errormessage;
+ 
++    #ifdef RIVET_ENABLE_HEPMC_3
++    if (evtfile == "-") {
++      // Turn off the buffering to make IO faster and make ungetc work on cin
++      std::basic_ios<char>::sync_with_stdio(false);
++      #ifdef HAVE_LIBZ
++      _istr = make_shared<zstr::istream>(std::cin);
++      #else
++      _istr = make_shared<std::istream>(std::cin);
++      #endif
++      // Use standard HepMC3 deduction on stream. For HepMC3 < 3.2.0 the function is implemented in Rivet
++      _hepmcReader = RivetHepMC::deduce_reader(*_istr);
++    } else {
++      // Use standard HepMC3 deduction on file
++      _hepmcReader = RivetHepMC::deduce_reader(evtfile);
++      // Check if the file is compressed, if the deduction fails
++      /// @todo Can we move this into the RivetHepMC.hh header? This is a *lot* of HepMC-specific noise for the Run manager class
++      if (!_hepmcReader) {
++        Log::getLog("Rivet.Run") << Log::INFO<< "No success with deduction of file type. Test if the file is compressed"<<std::endl;
++        std::ifstream file_test(evtfile);
++        magic_t my_magic = {0x1f, 0x8b, 0x08, 0x08};
++        magic_t file_magic;
++        file_test.read((char *) file_magic.bytes, sizeof(file_magic));
++        if (file_magic.number == my_magic.number) {
++          Log::getLog("Rivet.Run") << Log::INFO<< "File is compressed"<<std::endl;
++          #ifdef HAVE_LIBZ
++          _istr = make_shared<zstr::ifstream>(evtfile);
++          _hepmcReader = RivetHepMC::deduce_reader(*_istr);
++          #else
++          Log::getLog("Rivet.Run") << Log::INFO<< "No zlib support.");
++          #endif
++        } else {
++          // File is not compressed. Open stream and let the code below to handle it
++          Log::getLog("Rivet.Run") << Log::INFO<< "File is not compressed. No succes with deduction of file type."<<std::endl;
++          _istr = make_shared<std::ifstream>(evtfile);
++        }
++      }
++    }
++
++    // If the deduction has failed, check custom formats
++    /// @todo Move this into the RivetHepMC.hh header: this is a *lot* of HepMC-specific noise for the Run manager class
++    if (!_hepmcReader) {
++      std::vector<std::string> head;
++      head.push_back("");
++      size_t back=0;
++      size_t backnonempty=0;
++      while (back < 200 && backnonempty < 100 && _istr) { ///< @todo Document this
++        char c = _istr->get();
++        back++;
++        if (c == '\n') {
++          if (head.back().length() != 0)
++            head.push_back("");
++        } else {
++          head.back() += c;
++          backnonempty++;
++        }
++      }
++      if (!_istr) Log::getLog("Rivet.Run") << Log::INFO<< "Info in deduce_reader: input stream is too short or invalid."<<std::endl;
++      for (size_t i = 0; i < back; ++i) _istr->unget();
++      if (strncmp(head.at(0).c_str(), "HepMC::Version", 14) == 0 &&
++          strncmp(head.at(1).c_str(), "HepMC::CompressedAsciiv3-START_EVENT_LISTING", 44) == 0) {
++        Log::getLog("Rivet.Run") << Log::INFO<< "Info in deduce_reader: Attempt CompressedAsciiv3"<<std::endl;
++        //_hepmcReader= make_shared<Rivet::RivetHepMC::ReaderCompressedAscii>(_istr);
++      }
++    }
++    #endif
++
++
++    #ifndef RIVET_ENABLE_HEPMC_3
+     // Use Rivet's own file format deduction (which uses the one in
+     // HepMC3 if needed).
+     _hepmcReader = HepMCUtils::makeReader(evtfile, _istr, &errormessage);
+ 
+     // Check that it worked.
++    #endif
+     if (_hepmcReader == nullptr) {
+       Log::getLog("Rivet.Run")
+         << Log::ERROR << "Read error in file '" << evtfile << "' "
+diff --git a/src/Tools/RivetHepMC_3.cc b/src/Tools/RivetHepMC_3.cc
+index fb0e2c642..ad13cfa30 100644
+--- a/src/Tools/RivetHepMC_3.cc
++++ b/src/Tools/RivetHepMC_3.cc
+@@ -9,6 +9,69 @@
+ #include <cassert>
+ #include "../Core/zstr/zstr.hpp"
+ 
++#if HEPMC3_VERSION_CODE<3002000
++/** @brief THis function will deduce the type of input stream based on its content and will return appropriate Reader*/
++namespace HepMC3
++{
++std::shared_ptr<Reader> deduce_reader(std::istream &stream)
++{
++    std::vector<std::string> head;
++    head.push_back("");
++    size_t back=0;
++    size_t backnonempty=0;
++    while ( (back<200&&backnonempty<100)&&stream) {char c=stream.get(); back++; if (c=='\n') { if (head.back().length()!=0) head.push_back("");} else { head.back()+=c; backnonempty++;} }
++    if (!stream)
++    {
++        printf("Info in deduce_reader: input stream is too short or invalid.\n");
++        return shared_ptr<Reader>(nullptr);
++    }
++
++    for (size_t i=0; i<back; i++)  stream.unget();
++
++    if( strncmp(head.at(0).c_str(),"HepMC::Version",14) == 0 && strncmp(head.at(1).c_str(),"HepMC::Asciiv3",14)==0 )
++    {
++        printf("Info in deduce_reader: Attempt ReaderAscii\n");
++        return std::shared_ptr<Reader>((Reader*) ( new ReaderAscii(stream)));
++    }
++
++    if( strncmp(head.at(0).c_str(),"HepMC::Version",14) == 0 && strncmp(head.at(1).c_str(),"HepMC::IO_GenEvent",18)==0 )
++    {
++        printf("Info in deduce_reader: Attempt ReaderAsciiHepMC2\n");
++        return std::shared_ptr<Reader>((Reader*) ( new ReaderAsciiHepMC2(stream)));
++    }
++#if HEPMC3_VERSION_CODE >=  3001002
++    if( strncmp(head.at(0).c_str(),"<LesHouchesEvents",17) == 0)
++    {
++        printf("Info in deduce_reader: Attempt ReaderLHEF\n");
++        return std::shared_ptr<Reader>((Reader*) ( new ReaderLHEF(stream)));
++    }
++    printf("Info in deduce_reader: Attempt ReaderHEPEVT\n");
++    std::stringstream st_e(head.at(0).c_str());
++    char attr=' ';
++    bool HEPEVT=true;
++    int m_i,m_p;
++    while (true)
++    {
++        if (!(st_e>>attr)) {
++            HEPEVT=false;
++            break;
++        }
++        if (attr==' ') continue;
++        if (attr!='E') {
++            HEPEVT=false;
++            break;
++        }
++        HEPEVT=static_cast<bool>(st_e>>m_i>>m_p);
++        break;
++    }
++    if (HEPEVT) return std::shared_ptr<Reader>((Reader*) ( new ReaderHEPEVT(stream)));
++    printf("Info in deduce_reader: All attempts failed\n");
++#endif
++    return shared_ptr<Reader>(nullptr);
++}
++}
++#endif
++
+ namespace Rivet{
+   
+   namespace HepMCUtils{
