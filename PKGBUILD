@@ -16,7 +16,7 @@ build() {
   cd $pkgname-$pkgver
   go build \
     -trimpath \
-    -ldflags "-X github.com/guumaster/hostctl/cmd.version=$pkgver -s -w -extldflags $LDFLAGS" \
+    -ldflags "-X github.com/guumaster/hostctl/pkg/cmd.version=$pkgver -s -w -extldflags $LDFLAGS" \
     -o $pkgname cmd/hostctl/main.go
 }
 
