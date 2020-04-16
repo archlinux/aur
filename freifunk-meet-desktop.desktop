@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=FreifunkMeet
+Comment=Freifunk Meet Desktop App
+Exec=freifunk-meet
+Terminal=false
+Type=Application
+Icon=freifunk-meet
+StartupWMClass=Jitsi Meet
+Categories=VideoConference;AudioVideo;Audio;Video;Network;

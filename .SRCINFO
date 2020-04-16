@@ -1,0 +1,22 @@
+pkgbase = freifunk-meet-desktop
+	pkgdesc = Freifunk Meet desktop application
+	pkgver = 2.0.8
+	pkgrel = 1
+	url = https://github.com/freifunkMUC/jitsi-meet-electron
+	arch = x86_64
+	license = Apache
+	makedepends = coreutils
+	makedepends = npm
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	conflicts = freifunk-meet-desktop-bin
+	replaces = freifunk-meet-desktop-bin
+	options = !strip
+	source = freifunk-meet-desktop_2.0.8.tar.gz::https://github.com/freifunkMUC/jitsi-meet-electron/archive/v2.0.8.tar.gz
+	source = freifunk-meet-desktop.desktop
+	sha256sums = 4a1614c481d23e276e7edde7b3bf762846c9fef34123c4bda326e5ebf77fc377
+	sha256sums = 855d3b8031bfbb14d4bb02aaa9f2fe40ae77e0cc6eac4f1b918562f85b6c50f7
+
+pkgname = freifunk-meet-desktop
+
