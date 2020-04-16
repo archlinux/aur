@@ -1,0 +1,23 @@
+pkgbase = rofi-spotify-git
+	pkgdesc = A python program to interact with Spotify via rofi based on spotipy
+	pkgver = r46.17d7cd0
+	pkgrel = 1
+	url = https://github.com/AnySomebody1/rofi-spotify
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = binutils
+	makedepends = python-setuptools
+	makedepends = fakeroot
+	depends = python
+	depends = python-appdirs
+	depends = python-spotipy
+	depends = python-rofi
+	depends = rofi
+	provides = rofi-spotify
+	conflicts = rofi-spotify
+	source = git+https://github.com/AnySomebody1/rofi-spotify.git
+	sha256sums = SKIP
+
+pkgname = rofi-spotify-git
+
