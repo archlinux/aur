@@ -1,7 +1,7 @@
 pkgbase = odio-edit
 	pkgdesc = A lightweight audio wave editor
 	pkgver = 20.4.13.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tari.in/www/software/odio-edit
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = odio-edit
 	depends = gst-plugins-base
 	depends = gtk3
 	depends = dconf
-	optdepends = gst-libav
+	depends = gst-libav
 	options = !emptydirs
 	source = bzr+lp:/odio-edit/trunk
 	md5sums = SKIP
