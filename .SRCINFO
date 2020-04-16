@@ -1,8 +1,8 @@
 pkgbase = dosbox-staging-git
 	pkgdesc = A modernized DOSBox project using current development practices and tools, fixing issues, adding features that better support today's systems
-	pkgver = v0.75.0.pre.649.g01f5ca43
+	pkgver = v0.75.0.pre.835.g6f0786b3
 	pkgrel = 1
-	url = https://github.com/dreamer/dosbox-staging
+	url = https://github.com/dosbox-staging/dosbox-staging
 	arch = any
 	license = GPL2
 	makedepends = autoconf
@@ -17,7 +17,7 @@ pkgbase = dosbox-staging-git
 	optdepends = ncurses
 	provides = dosbox
 	conflicts = dosbox
-	source = git+https://github.com/dreamer/dosbox-staging.git
+	source = git+https://github.com/dosbox-staging/dosbox-staging.git
 	md5sums = SKIP
 
 pkgname = dosbox-staging-git

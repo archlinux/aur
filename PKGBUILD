@@ -2,11 +2,11 @@
 
 pkgname=dosbox-staging-git
 _pkgname=dosbox-staging
-pkgver=v0.75.0.pre.649.g01f5ca43
+pkgver=v0.75.0.pre.835.g6f0786b3
 pkgrel=1
 pkgdesc="A modernized DOSBox project using current development practices and tools, fixing issues, adding features that better support today's systems"
 arch=('any')
-url="https://github.com/dreamer/dosbox-staging"
+url="https://github.com/dosbox-staging/dosbox-staging"
 license=('GPL2')
 depends=('sdl2' 'sdl2_net' 'opusfile'  'alsa-lib')
 optdepends=('libpng' 'ncurses')
@@ -14,7 +14,7 @@ makedepends=('autoconf' 'automake' 'gcc' 'gzip')
 provides=("dosbox")
 conflicts=("dosbox")
 source=(
-  "git+https://github.com/dreamer/${_pkgname}.git"
+  "git+https://github.com/dosbox-staging/${_pkgname}.git"
 )
 md5sums=(
   'SKIP'
@@ -52,7 +52,7 @@ package() {
 
   # desktop file and icon
   install -Dm 644 "$srcdir/${_pkgname}/contrib/icons/dosbox-staging.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/dosbox-staging.svg"
-  install -Dm 644 "$srcdir/${_pkgname}/contrib/linux/dosbox-staging.desktop" "$pkgdir/usr/share/applications/dosbox-staging.svg"
+  install -Dm 644 "$srcdir/${_pkgname}/contrib/linux/dosbox-staging.desktop" "$pkgdir/usr/share/applications/dosbox-staging.desktop"
 
   # dosbox-staging documents
   install -Dm 644 "$srcdir/${_pkgname}/docs/README.template" "$pkgdir/usr/share/doc/${_pkgname}/README"
