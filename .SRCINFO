@@ -1,7 +1,7 @@
 pkgbase = gazebo
 	pkgdesc = A multi-robot simulator for outdoor environments
-	pkgver = 10.2.0
-	pkgrel = 2
+	pkgver = 11.0.0
+	pkgrel = 1
 	url = http://gazebosim.org/
 	install = gazebo.install
 	arch = i686
@@ -9,24 +9,25 @@ pkgbase = gazebo
 	license = Apache
 	makedepends = cmake
 	makedepends = doxygen
-	depends = boost>=1.40.0
-	depends = curl>=4.0
+	makedepends = ruby-ronn
+	depends = boost
+	depends = curl
 	depends = freeglut
-	depends = freeimage>=3.0
-	depends = intel-tbb>=3.0
-	depends = libccd>=1.4
-	depends = libltdl>=2.4.2
-	depends = libtar>=1.2
-	depends = libxml2>=2.7.7
+	depends = freeimage
+	depends = intel-tbb
+	depends = libccd
+	depends = libltdl
+	depends = libtar
+	depends = libxml
 	depends = ogre-1.9
 	depends = protobuf>=2.3.0
-	depends = sdformat=6
-	depends = ignition-math=4
-	depends = ignition-transport=4
-	depends = ignition-cmake-0
-	depends = ignition-common=1
-	depends = ignition-fuel_tools=1
-	depends = ignition-msgs=1
+	depends = sdformat>=9
+	depends = ignition-math>=6
+	depends = ignition-transport>=8
+	depends = ignition-cmake>=2
+	depends = ignition-common>=3
+	depends = ignition-fuel_tools>=4
+	depends = ignition-msgs>=5
 	depends = tinyxml2
 	depends = qwt
 	optdepends = bullet: Bullet support
@@ -36,13 +37,12 @@ pkgbase = gazebo
 	optdepends = libdart: DART support
 	optdepends = libspnav: space navigator joystick support
 	optdepends = libusb: USB peripherals support
-	optdepends = ruby-ronn: Generate manpages
 	optdepends = simbody: Simbody support
 	optdepends = urdfdom: Load URDF files
-	source = http://osrf-distributions.s3.amazonaws.com/gazebo/releases/gazebo-10.2.0.tar.bz2
-	source = fix-openal.patch::https://bitbucket.org/shrit/gazebo/commits/556354dcebd180e0f1015b96890f9906e441b551/raw
-	sha256sums = 47d8bfe70ffcde21cbc6dec142f3aecefaac66c63562aab6114f442f7ab27392
-	sha256sums = 4b386e845e94008102609a4fb666d698bee0480d2ce88b250dc1d849cfc93b72
+	source = http://osrf-distributions.s3.amazonaws.com/gazebo/releases/gazebo-11.0.0.tar.bz2
+	source = fix-link-error.patch
+	sha256sums = 3c823e3ed6fbf79a23663eade5f33460c5334dde3b99e376dcb69fa2561886f5
+	sha256sums = fa193721e84d636031cd47e8f1cce3f0dc97da5358ce63925e23614d78dfa7f7
 
 pkgname = gazebo
 

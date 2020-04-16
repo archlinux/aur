@@ -7,17 +7,16 @@
 # Contributor: Vladimir Ermakov <vooon341@gmail.com>
 
 pkgname=gazebo
-pkgver=10.2.0
-pkgrel=2
+pkgver=11.0.0
+pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
 license=('Apache')
 # See: http://www.gazebosim.org/tutorials?tut=install_from_source&cat=install
-depends=('boost>=1.40.0' 'curl>=4.0' 'freeglut' 'freeimage>=3.0'
-         'intel-tbb>=3.0' 'libccd>=1.4' 'libltdl>=2.4.2' 'libtar>=1.2' 'libxml2>=2.7.7'
-         'ogre-1.9' 'protobuf>=2.3.0' 'sdformat=6' 'ignition-math=4' 'ignition-transport=4'
-         'ignition-cmake-0' 'ignition-common=1' 'ignition-fuel_tools=1' 'ignition-msgs=1' 'tinyxml2' 'qwt')
+depends=('boost' 'curl' 'freeglut' 'freeimage' 'intel-tbb' 'libccd' 'libltdl'
+         'libtar' 'libxml' 'ogre-1.9' 'protobuf>=2.3.0' 'sdformat>=9' 'ignition-math>=6' 'ignition-transport>=8'
+         'ignition-cmake>=2' 'ignition-common>=3' 'ignition-fuel_tools>=4' 'ignition-msgs>=5' 'tinyxml2' 'qwt')
 optdepends=('bullet: Bullet support'
             'cegui: Design custom graphical interfaces'
             'ffmpeg: Playback movies on textured surfaces'
@@ -25,19 +24,18 @@ optdepends=('bullet: Bullet support'
             'libdart: DART support'
             'libspnav: space navigator joystick support'
             'libusb: USB peripherals support'
-            'ruby-ronn: Generate manpages'
             'simbody: Simbody support'
             'urdfdom: Load URDF files')
-makedepends=('cmake' 'doxygen')
+makedepends=('cmake' 'doxygen' 'ruby-ronn')
 install="${pkgname}.install"
 source=("http://osrf-distributions.s3.amazonaws.com/$pkgname/releases/$pkgname-$pkgver.tar.bz2"
-        "fix-openal.patch::https://bitbucket.org/shrit/gazebo/commits/556354dcebd180e0f1015b96890f9906e441b551/raw")
-sha256sums=('47d8bfe70ffcde21cbc6dec142f3aecefaac66c63562aab6114f442f7ab27392'
-            '4b386e845e94008102609a4fb666d698bee0480d2ce88b250dc1d849cfc93b72')
+        "fix-link-error.patch")
+sha256sums=('3c823e3ed6fbf79a23663eade5f33460c5334dde3b99e376dcb69fa2561886f5'
+            'fa193721e84d636031cd47e8f1cce3f0dc97da5358ce63925e23614d78dfa7f7')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  patch --strip=1 --input=../fix-openal.patch
+  patch --strip=1 --input=../fix-link-error.patch
 }
 
 build() {
@@ -45,7 +43,6 @@ build() {
 
   mkdir -p build && cd build
 
-  # Note: we skip unit tests (else set to TRUE)
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib"

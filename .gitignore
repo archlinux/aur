@@ -1,5 +1,4 @@
 *.tar
-*.patch
 *.tar.*
 *.jar
 *.exe
