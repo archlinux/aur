@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=xiphos-git
-pkgver=4.1.0.r85.gf134af4
+pkgver=4.1.0.r91.ge24c07f
 pkgrel=1
 epoch=1
 pkgdesc='A Bible study tool for GTK3'
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('gtkhtml4'
          'libbiblesync.so'
          'libgsf'
-         'sword>=1.8.1'
+         'sword'
          'webkit2gtk')
 makedepends=('appstream-glib'
              'cmake'
@@ -22,6 +22,7 @@ makedepends=('appstream-glib'
              'gnome-doc-utils'
              'gtkmm'
              'intltool'
+             'libffi'
              'libxml2'
              'python')
 provides=('gnomesword' "${pkgname%-git}")
