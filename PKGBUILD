@@ -1,0 +1,33 @@
+pkgname=allfilesystems
+pkgver=1
+pkgrel=1
+pkgdesc='Metapackage for all file systems (no out-of-tree file systems and file system as part of Linux kernel)'
+arch=('any')
+license=('none')
+url="https://www.archlinux.org/"
+depends=(
+  'btrfs-progs'
+  'dosfstools'
+  'exfat-utils'
+  'f2fs-tools'
+  'e2fsprogs'
+  'hfsprogs'
+  'jfsutils'
+  'nilfs-utils'
+  'ntfs-3g'
+  'reiserfsprogs'
+  'udftools'
+  'xfsprogs'
+  'ecryptfs-utils'
+  'mergerfs'
+  'mhddfs'
+  'unionfs-fuse'
+  'squashfs-tools'
+  'ceph'
+  'glusterfs'
+  'go-ipfs'
+  'moosefs'
+  'openafs'
+  'sheepdog'
+  'tahoe-lafs'
+)

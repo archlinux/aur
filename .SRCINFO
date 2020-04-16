@@ -1,0 +1,34 @@
+pkgbase = allfilesystems
+	pkgdesc = Metapackage for all file systems (no out-of-tree file systems and file system as part of Linux kernel)
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.archlinux.org/
+	arch = any
+	license = none
+	depends = btrfs-progs
+	depends = dosfstools
+	depends = exfat-utils
+	depends = f2fs-tools
+	depends = e2fsprogs
+	depends = hfsprogs
+	depends = jfsutils
+	depends = nilfs-utils
+	depends = ntfs-3g
+	depends = reiserfsprogs
+	depends = udftools
+	depends = xfsprogs
+	depends = ecryptfs-utils
+	depends = mergerfs
+	depends = mhddfs
+	depends = unionfs-fuse
+	depends = squashfs-tools
+	depends = ceph
+	depends = glusterfs
+	depends = go-ipfs
+	depends = moosefs
+	depends = openafs
+	depends = sheepdog
+	depends = tahoe-lafs
+
+pkgname = allfilesystems
+
