@@ -4,28 +4,31 @@
 pkgname=seamonkey-gtk2
 _pkgname=seamonkey
 pkgver=2.49.4
-pkgrel=4
+pkgrel=5
 pkgdesc="SeaMonkey internet suite (GTK2 version)"
 arch=('x86_64' 'i686')
 license=('MPL')
 depends=('alsa-lib'  'dbus-glib'  'desktop-file-utils'  'gtk2' 'hunspell'  'libevent'  'libnotify'  'libvpx'  'libxt' 'mime-types'  'mozilla-common'  'nss'  'sqlite'  'startup-notification' 'libpulse' 'icu')
 provides=("$_pkgname=$pkgver.$pkgrel")
 conflicts=("$_pkgname")
-makedepends=('unzip' 'zip' 'pkg-config'  'python2' 'yasm' 'wireless_tools' 'mesa' 'autoconf2.13' 'imake' 'python3' 'gst-plugins-base')
+makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'autoconf2.13' 'imake' 'python3' 'gst-plugins-base')
 optdepends=('gst-plugins-base: vorbis decoding, ogg demuxing'
             'gst-plugins-bad: aac, vp8 and opus decoding'
             'gst-plugins-good: webm and mp4 demuxing'
-            'gst-plugins-ugly: h.264 decoding')
-url="http://www.seamonkey-project.org/"
+            'gst-plugins-ugly: h.264 decoding'
+            'networkmanager: Location detection via available WiFi networks')
+url="https://www.seamonkey-project.org/"
 source=("https://archive.mozilla.org/pub/mozilla.org/seamonkey/releases/$pkgver/source/seamonkey-$pkgver.source.tar.xz"
         mozconfig
         seamonkey-2.0-lang.patch
         patch-bug1435212.xz
+        gettid.patch
 	no-crmf.diff)
 sha256sums=('c8a66774d0a3525698b559fa2c41397186f2de99c5733e35b8eafb0ae5ccc4ee'
             '6ff9fd323eec175eb02cfefd3136c79491c3b40be0b1f899da7c75c2f76259ca'
             'ab19d10fbd6258aec37ab5e5efb12429814b2c24a1193284a48dd654311b4e2e'
             'dce68858694f820a9a1fc2428038a88ea00b4835cea0778734db794fea3bb21a'
+            '923154d052f041af15a2495ceb1f76f7c8619fd8bfc66a0bbedfeab2514adf0b'
             'fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb')
 
 prepare() {
@@ -40,6 +43,9 @@ prepare() {
   # ffmpeg 4.0 patch from freebsd
   # https://github.com/freebsd/freebsd-ports/blob/master/www/seamonkey/files/patch-bug1435212
   patch -Np1 -d mozilla -i ../../patch-bug1435212
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1533969
+  patch -Np1 -i ../gettid.patch
 
   # Don't exit with error when some libs are missing which we have in
   # system.
@@ -71,6 +77,9 @@ build() {
   # GCC 6
   CFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
   CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
+
+  # GCC 9
+  CXXFLAGS+=" -Wno-format-overflow"
 
   make -j1 -f client.mk build
 }

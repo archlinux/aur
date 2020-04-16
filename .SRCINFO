@@ -1,17 +1,15 @@
 pkgbase = seamonkey-gtk2
 	pkgdesc = SeaMonkey internet suite (GTK2 version)
 	pkgver = 2.49.4
-	pkgrel = 4
-	url = http://www.seamonkey-project.org/
+	pkgrel = 5
+	url = https://www.seamonkey-project.org/
 	arch = x86_64
 	arch = i686
 	license = MPL
 	makedepends = unzip
 	makedepends = zip
-	makedepends = pkg-config
 	makedepends = python2
 	makedepends = yasm
-	makedepends = wireless_tools
 	makedepends = mesa
 	makedepends = autoconf2.13
 	makedepends = imake
@@ -37,17 +35,20 @@ pkgbase = seamonkey-gtk2
 	optdepends = gst-plugins-bad: aac, vp8 and opus decoding
 	optdepends = gst-plugins-good: webm and mp4 demuxing
 	optdepends = gst-plugins-ugly: h.264 decoding
-	provides = seamonkey=2.49.4.4
+	optdepends = networkmanager: Location detection via available WiFi networks
+	provides = seamonkey=2.49.4.5
 	conflicts = seamonkey
 	source = https://archive.mozilla.org/pub/mozilla.org/seamonkey/releases/2.49.4/source/seamonkey-2.49.4.source.tar.xz
 	source = mozconfig
 	source = seamonkey-2.0-lang.patch
 	source = patch-bug1435212.xz
+	source = gettid.patch
 	source = no-crmf.diff
 	sha256sums = c8a66774d0a3525698b559fa2c41397186f2de99c5733e35b8eafb0ae5ccc4ee
 	sha256sums = 6ff9fd323eec175eb02cfefd3136c79491c3b40be0b1f899da7c75c2f76259ca
 	sha256sums = ab19d10fbd6258aec37ab5e5efb12429814b2c24a1193284a48dd654311b4e2e
 	sha256sums = dce68858694f820a9a1fc2428038a88ea00b4835cea0778734db794fea3bb21a
+	sha256sums = 923154d052f041af15a2495ceb1f76f7c8619fd8bfc66a0bbedfeab2514adf0b
 	sha256sums = fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb
 
 pkgname = seamonkey-gtk2
