@@ -1,14 +1,14 @@
 pkgbase = python-numpy-doc
 	pkgdesc = Documentation for NumPy
-	pkgver = 1.15.1
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = http://docs.scipy.org
 	arch = any
 	license = BSD
 	makedepends = unzip
-	noextract = python-numpy-doc-1.15.1.zip
-	source = python-numpy-doc-1.15.1.zip::http://docs.scipy.org/doc/numpy-1.15.1/numpy-html-1.15.1.zip
-	md5sums = 95b5d45d5c7ab7ba43fd1609baeddfc1
+	noextract = python-numpy-doc-1.17.0.zip
+	source = python-numpy-doc-1.17.0.zip::http://docs.scipy.org/doc/numpy-1.17.0/numpy-html-1.17.0.zip
+	md5sums = 9c2d7630b7f078cac07ae7796882b92f
 
 pkgname = python-numpy-doc
 
