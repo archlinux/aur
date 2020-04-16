@@ -10,7 +10,7 @@ url="http://interactivebrokers.com/"
 license=('custom')
 backup=('etc/ib-tws.conf' 'etc/ib-gw.conf')
 depends=(bash)
-optdepends=(ffmpeg)
+optdepends=(ffmpeg-compat-55)
 makedepends=(gtk2 imagemagick unzip)
 
 source=('LICENSE'
