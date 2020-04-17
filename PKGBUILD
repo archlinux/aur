@@ -2,7 +2,7 @@
 # Contributor: TBK <aur@jjtc.eu>
 
 pkgname=termius-beta
-pkgver=5.7.2
+pkgver=5.9.1
 pkgrel=1
 pkgdesc="Desktop SSH Client"
 url="https://www.termius.com/"
@@ -14,46 +14,46 @@ makedepends=('squashfs-tools')
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-beta | jq '.download_url' -r
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-beta | jq '.version' -r
 source=(
-    "${pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/yyZzRdoyiRz3EM7iuvjhaIjDfnlFJcZs_88.snap"
+    "$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/yyZzRdoyiRz3EM7iuvjhaIjDfnlFJcZs_90.snap"
     "termius-beta.desktop"
     "tos.html"
 )
-sha256sums=('2f19a8437e8cbf7d505db93f24857665bd831e5f20be8f9fb914ea940ef12932'
-            'cd9d14924c7721042640d6db1fbdc882b156d756bd906cd09193221b59f979f5'
-            '9c969cc82314240860737dc09d48970271c798c9b1116ceb91556f75959788a2')
+sha512sums=('151e09d423acfad2777f3633f1394b9e6424490ec364586648f294c70fa521f3b86e01b1ed2a2b1de6a348dd01195adfb7de6fd2c7c83600c476d745d39b8e8f'
+            'f626754916d9a07faa6d1b2bbdf34da8385aaf1b29eca3c0007079b06de18a4a3c51007d8b753a0c9d721c9ea48f646d00ac3ec219cb4eb77c4419bba634d34b'
+            '53f9c61fba12b72817c5e7f4e0ac520489265fbf425fa46f13129da66632b41a2a128072d9e0e64e37e4e8feb8424bc1c15eed127d630314e6459ceb2dbafb4b')
 
 prepare() {
-    mkdir ${pkgname}
-    unsquashfs -f -d ${pkgname} ${pkgname}-${pkgver}.snap
+    mkdir $pkgname
+    unsquashfs -f -d $pkgname $pkgname-$pkgver.snap
 }
 
 package() {
     # Option 1 - copy only the needed files ~183 MiB
-    mkdir -p "$pkgdir"/opt/${pkgname}
+    mkdir -p "$pkgdir"/opt/$pkgname
 
-    cd "$srcdir"/${pkgname}
+    cd "$srcdir"/$pkgname
 
-    cp -r icudtl.dat \
+    cp -r \
+        icudtl.dat \
         libffmpeg.so \
         locales \
-        natives_blob.bin \
         resources \
         resources.pak \
         termius-beta \
         v8_context_snapshot.bin \
-        "$pkgdir"/opt/${pkgname}
+        "$pkgdir"/opt/$pkgname
     
     cd "$srcdir"
     # Option 2 - copy all files from the .snap file ~503 MiB
     #mkdir -p "$pkgdir"/opt/
-    #cp -r "$srcdir"/${pkgname} "$pkgdir"/opt/${pkgname}
+    #cp -r "$srcdir"/$pkgname "$pkgdir"/opt/$pkgname
 
-    find "$pkgdir"/opt/${pkgname}/ -type f -exec chmod 644 {} \;
-    chmod 755 "$pkgdir"/opt/${pkgname}/termius-beta
+    find "$pkgdir"/opt/$pkgname/ -type f -exec chmod 644 {} \;
+    chmod 755 "$pkgdir"/opt/$pkgname/termius-beta
 
-    mkdir -p "${pkgdir}"/usr/bin
-    ln -sf /opt/${pkgname}/termius-beta "${pkgdir}"/usr/bin/${pkgname}
-    install -Dm0644 tos.html "${pkgdir}"/usr/share/licenses/${pkgname}/tos.html
-    install -Dm0644 ${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
-    install -Dm0644 ${pkgname}/meta/gui/icon.png "${pkgdir}"/usr/share/pixmaps/${pkgname}.png
+    mkdir -p "$pkgdir"/usr/bin
+    ln -sf /opt/$pkgname/termius-beta "$pkgdir"/usr/bin/$pkgname
+    install -Dm0644 tos.html "$pkgdir"/usr/share/licenses/$pkgname/tos.html
+    install -Dm0644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+    install -Dm0644 $pkgname/meta/gui/icon.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
 }
