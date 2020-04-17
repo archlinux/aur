@@ -1,0 +1,24 @@
+pkgbase = gnuradio-iio-patched-3.8
+	pkgdesc = IIO blocks for GNU Radio (Patched for Gnuradio version 3.8, not compatible with 3.9-git)
+	pkgver = r240.d6d1f6a
+	pkgrel = 1
+	url = https://github.com/analogdevicesinc/gr-iio
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = swig
+	depends = gnuradio
+	depends = libad9361
+	provides = gnuradio-iio
+	conflicts = gnuradio-iio
+	conflicts = gnuradio-iio-git
+	conflicts = gnuradio-git
+	source = gnuradio-iio::git+https://github.com/analogdevicesinc/gr-iio.git#commit=d6d1f6ac7db5be3eb990ee8ef78bb65cf3a15dd7
+	source = 0001-several-fixes.patch
+	md5sums = SKIP
+	md5sums = 4eaf91573461c143b825e0462564244c
+
+pkgname = gnuradio-iio-patched-3.8
+
