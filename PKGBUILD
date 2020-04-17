@@ -2,8 +2,8 @@
 
 pkgbase=linux-amd
 _srcname=linux
-gitver=v5.6.4
-pkgver=5.6.v.4
+gitver=v5.6.5
+pkgver=5.6.v.5
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -21,18 +21,14 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         "${pkgbase}.preset"
 	# patch from our gentoo overlords
 	5012_enable-cpu-optimizations-for-gcc91.patch
-	# asus WMI patch
-	asusbat.patch
 )
 sha256sums=('SKIP'
 	#config.x86_64
-            '0d6b813dfce30333f61eca57b42b36367ede4fad66abeeab973bb1170010f9ce'
+            'dcf938e044b44db4732576b3e8da9eda1790e1931215c3c63fe0c7151d70d6dc'
 	#.preset file
             '71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08'
 	#patch gentoo
             'cc739c9c9f7ce08e6bbc161b8232208bbc00820342a32fb1f69bff6326ae1370'
-	#Asusbat gitfile
-            'c0a1604da4e0ae360f0c93a9adf244f9a8cffb5d219c94c0a58e23fb2c007a68'
            )
 
 _kernelname=${pkgbase#linux}
@@ -59,8 +55,6 @@ prepare() {
   git apply ../5012_enable-cpu-optimizations-for-gcc91.patch
   # get kernel version
   yes "" | make prepare
-  # Implement suggested asus_wmi change
-  git apply ../asusbat.patch
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
