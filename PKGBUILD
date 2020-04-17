@@ -3,47 +3,31 @@
 pkgname=rocm-comgr
 pkgdesc='Radeon Open Compute - compiler support'
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/RadeonOpenCompute/ROCm-CompilerSupport'
-license=('custom')
-makedepends=(cmake git llvm-roc)
-source=(
-    "rocm-comgr::git+https://github.com/RadeonOpenCompute/ROCm-CompilerSupport#tag=rocm-$pkgver"
-#    "rocm-comgr-2.6.0-find-clang.patch"
-#	"rocm-comgr-2.6.0-find-lld-includes.patch"
-	# "rocm-comgr-2.8.0-dependencies.patch"
-)
-sha256sums=('SKIP')
-#            'f04ff936e87a888264e9c0920c9356a85b18e9ec9d729fcf53f83755c171828c'
-#            '4571b16961f15249e8cc8b9a9ae7f0863600345aa5e95959192149eacdb01d2e')
-
-prepare() {
-    cd "$srcdir/rocm-comgr/lib/comgr"
-
-    local src
-    for src in "${source[@]}"; do
-        src="${src%%::*}"
-        src="${src##*/}"
-        [[ $src = *.patch ]] || continue
-        msg2 "Applying patch $src..."
-        patch -Np1 -i "$srcdir/$src"
-    done
-}
+license=('custom:NCSAOSL')
+depends=(llvm-roc)
+makedepends=(cmake rocm-cmake rocm-device-libs)
+source=("$url/archive/rocm-$pkgver.tar.gz")
+sha256sums=('01e2524e0f28ecd6f46c9720f279207de935d826b0172158792aa3ec86af9ca7')
+# makepkg-optimize options will not work due to llvm-roc not bundling dependencies
+options=(!lto !lto-clang !lto-thin !lto-thin-clang !graphite !polly !rice !rice-clang)
+_dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
 build() {
-    if check_buildoption "ccache" "y"; then
-        CMAKE_FLAGS="-DROCM_CCACHE_BUILD=ON"
-    fi
-
-    cmake $CMAKE_FLAGS \
-        -DCMAKE_BUILD_TYPE=Release \
+  cmake -DCMAKE_C_COMPILER=/opt/rocm/bin/clang \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DAMDDeviceLibs_DIR=/opt/rocm/lib/cmake/AMDDeviceLibs/AMDDeviceLibsConfig.cmake \
         -DClang_DIR=/opt/rocm/lib/cmake/clang \
-        "$srcdir/rocm-comgr/lib/comgr"
-    make
+        -DLLD_INCLUDE_DIRS=/opt/rocm/include/lld \
+        -DROCM_DIR=/opt/rocm/share/rocm/cmake \
+        "$_dirname/lib/comgr"
+  make
 }
 
 package() {
-    DESTDIR="$pkgdir/" make -C "$srcdir" install
+  DESTDIR="$pkgdir" make install
+  install -Dm644 "$_dirname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
