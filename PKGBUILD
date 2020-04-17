@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/feelpp"
 license=('LGPL')
 depends=('cln' 'mumps' 'slepc' 'gmsh' 'fftw' 'ann' 'glpk' 'gsl' 'python')
-makedepends=('cmake')
+makedepends=('cmake' 'eigen')
 source=("${pkgname}-${pkgver}::git+https://github.com/feelpp/feelpp.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
@@ -42,6 +42,7 @@ build() {
     -DFEELPP_ENABLE_ANN=ON \
     -DFEELPP_ENABLE_FFTW=ON \
     -DFEELPP_ENABLE_GSL=ON \
+    -DFEELPP_ENABLE_SYSTEM_EIGEN3=ON \
     ..
   make
 }
