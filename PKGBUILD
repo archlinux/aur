@@ -1,14 +1,14 @@
 # Maintainer: FichteFoll <fichtefoll2@googlemail.com>
 
 pkgname=open-riichi-git
-pkgver=0.1.3.2.r1.g8c5918e
+pkgver=0.2.0.3.r19.g9d28fb1
 pkgrel=1
 pkgdesc='An open source riichi (Japanese) mahjong client'
 arch=('x86_64')
 url='https://github.com/FluffyStuff/OpenRiichi'
 license=('GPL')
-depends=('gcc' 'libgee' 'glew' 'pango' 'sdl2' 'sdl2_image' 'csfml' 'sfml')
-makedepends=('git' 'vala')
+depends=('libgee' 'gtk3' 'glew' 'pango' 'sdl2' 'sdl2_image' 'csfml' 'sfml')
+makedepends=('git' 'gcc' 'vala' 'meson')
 source=('OpenRiichi::git+https://github.com/FluffyStuff/OpenRiichi.git'
         'Engine::git+https://github.com/FluffyStuff/Engine.git'
         'OpenRiichi.desktop')
@@ -22,19 +22,27 @@ pkgver() {
   git describe --tags --long | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
+prepare() {
+  cd OpenRiichi
+  # https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git_Submodules
+  git submodule init
+  git config submodule.Engine.url "${srcdir}/Engine"
+  git submodule update
+
+  meson bin -Dbuildtype=release
+}
+
 build() {
   cd OpenRiichi
-
-  make release
+  ninja -C bin
 }
 
 package() {
   install -Dm 644 OpenRiichi.desktop -t "${pkgdir}"/usr/share/applications
-  # install -Dm 755 ../OpenRiichi.sh "${pkgdir}"/usr/bin/OpenRiichi
 
   cd OpenRiichi
-  mkdir -p "${pkgdir}"/opt/OpenRiichi
-  cp -r bin/* "${pkgdir}"/opt/OpenRiichi
-  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/$pkgname/
-  install -Dm 644 bin/Data/Icon.png "${pkgdir}"/usr/share/pixmaps/OpenRiichi.png
+  mkdir -p "${pkgdir}/opt/OpenRiichi"
+  cp -r bin/* "${pkgdir}/opt/OpenRiichi"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm 644 bin/Data/Icon.png "${pkgdir}/usr/share/pixmaps/OpenRiichi.png"
 }
