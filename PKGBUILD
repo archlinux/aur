@@ -10,7 +10,7 @@ url="http://www.pygtk.org/"
 arch=('x86_64')
 license=('LGPL')
 depends=('libglade' 'python2-cairo' 'python2-gobject2')
-makedepends=('python2-numpy' 'pygobject2-devel' 'pango')
+makedepends=('python2-numpy' 'pygobject2-devel' 'wget')
 optdepends=('python2-numpy')
 source=("https://download.gnome.org/sources/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2"
         "https://gitlab.gnome.org/Archive/pygtk/-/commit/4aaa48eb80c6802aec6d03e5695d2a0ff20e0fc2.patch"
@@ -23,6 +23,11 @@ md5sums=('a1051d5794fd7696d3c1af6422d17a49'
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  # Detect latest architecture
+  wget 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD' \
+  -O config.guess
+  wget 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD' \
+  -O config.sub
   # https://bugzilla.gnome.org/show_bug.cgi?id=623965
   patch -Np1 -i "${srcdir}/python27.patch"
   # https://bugzilla.gnome.org/show_bug.cgi?id=660216
