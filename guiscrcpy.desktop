@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=guiscrcpy
-Comment=Your PC is your Android Device
-Exec=guiscrcpy
-Terminal=false
-Icon=guiscrcpy
-Type=Application
-Categories=Utility
-StartupNotify=false
