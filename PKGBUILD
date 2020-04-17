@@ -4,8 +4,8 @@
 # Based on [extra]'s thunderbird
 
 pkgname=thunderbird-nightly
-pkgver=75.0a1.20200227
-_version=75.0a1
+pkgver=77.0a1.20200416
+_version=77.0a1
 pkgrel=1
 pkgdesc='Standalone Mail/News reader - Nightly build'
 arch=('i686' 'x86_64')
@@ -27,10 +27,10 @@ source=("${FX_SRC_URI}.txt"
         "$pkgname.desktop"
         "vendor.js")
 
-sha512sums=('SKIP'
-            'SKIP'
-            'c75c6d5b6f48e25a3c2ea666ae9b42f4e3372de9aaf6cd4270f3356c7046f9f19caa1651e5d779b95d790edfd4dd39dc3f4261361d882a62166dc9e91e9e8cb1'
-            'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
+b2sums=('SKIP'
+        'SKIP'
+        '1f954c9a23842367be37c1f56b853de6a336c1b4156df42f88b14f1614d194c2f996f1cc589cdbfcea398bb9cedcd527ef3c6fb8b01e2f07c46290043e24c6b7'
+        '674d1ee883e675c37b0af0ac97c339a8c0f2b53cb06e64db64aaa3f22f83d7179b6fa3e122344f3413ccb9956776288db9bc608b5cedef640cbd223838be7476')
 
 pkgver(){
   echo "${_version}.$(head -n1 "${FX_SRC}.txt" |cut -c -8)"

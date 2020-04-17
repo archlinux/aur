@@ -1,6 +1,6 @@
 pkgbase = thunderbird-nightly
 	pkgdesc = Standalone Mail/News reader - Nightly build
-	pkgver = 75.0a1.20200227
+	pkgver = 77.0a1.20200416
 	pkgrel = 1
 	url = http://www.mozilla.org/thunderbird
 	install = thunderbird-nightly.install
@@ -31,15 +31,15 @@ pkgbase = thunderbird-nightly
 	depends = sqlite
 	depends = startup-notification
 	optdepends = libcanberra: for sound support
-	provides = thunderbird=75.0a1
-	source = https://download-installer.cdn.mozilla.net/pub/thunderbird/nightly/latest-comm-central/thunderbird-75.0a1.en-US.linux-x86_64.txt
-	source = https://download-installer.cdn.mozilla.net/pub/thunderbird/nightly/latest-comm-central/thunderbird-75.0a1.en-US.linux-x86_64.tar.bz2
+	provides = thunderbird=77.0a1
+	source = https://download-installer.cdn.mozilla.net/pub/thunderbird/nightly/latest-comm-central/thunderbird-77.0a1.en-US.linux-x86_64.txt
+	source = https://download-installer.cdn.mozilla.net/pub/thunderbird/nightly/latest-comm-central/thunderbird-77.0a1.en-US.linux-x86_64.tar.bz2
 	source = thunderbird-nightly.desktop
 	source = vendor.js
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = c75c6d5b6f48e25a3c2ea666ae9b42f4e3372de9aaf6cd4270f3356c7046f9f19caa1651e5d779b95d790edfd4dd39dc3f4261361d882a62166dc9e91e9e8cb1
-	sha512sums = aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = 1f954c9a23842367be37c1f56b853de6a336c1b4156df42f88b14f1614d194c2f996f1cc589cdbfcea398bb9cedcd527ef3c6fb8b01e2f07c46290043e24c6b7
+	b2sums = 674d1ee883e675c37b0af0ac97c339a8c0f2b53cb06e64db64aaa3f22f83d7179b6fa3e122344f3413ccb9956776288db9bc608b5cedef640cbd223838be7476
 
 pkgname = thunderbird-nightly
 
