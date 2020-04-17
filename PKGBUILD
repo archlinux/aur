@@ -21,7 +21,7 @@ if (("${_disable_mate}" == 0));then
 	_opts+=(-DENABLE_MATE=ON)
 	pkgname+=('mate-panel-genmon-git')
 	makedepends+=('mate-panel')
-	msg "Mate applet enabled"
+#	msg "Mate applet enabled"
 else
 	_opts+=(-DENABLE_MATE=OFF)
 fi
@@ -30,7 +30,7 @@ if (("${_disable_xfce}" == 0));then
 	_opts+=(-DENABLE_XFCE=ON)
 	pkgname+=('xfce4-panel-genmon-ng-git')
 	makedepends+=('xfce4-panel>=4.11.2')
-	msg "Xfce applet enabled"
+#	msg "Xfce applet enabled"
 else
 	_opts+=(-DENABLE_XFCE=OFF)
 fi
@@ -39,7 +39,7 @@ if (("${_disable_vala}" == 0));then
 	_opts+=(-DENABLE_VALAPANEL=ON)
 	pkgname+=('vala-panel-genmon-git')
 	makedepends+=('vala-panel>=0.4.60')
-	msg "Vala Panel applet enabled"
+#	msg "Vala Panel applet enabled"
 else
 	_opts+=(-DENABLE_VALAPANEL=OFF)
 fi
@@ -48,20 +48,20 @@ if (("${_disable_budgie}" == 0));then
 	_opts+=(-DENABLE_BUDGIE=ON)
 	pkgname+=('budgie-genmon-git')
 	makedepends+=('budgie-desktop')
-	msg "Budgie applet enabled"
+#	msg "Budgie applet enabled"
 else
 	_opts+=(-DENABLE_BUDGIE=OFF)
 fi
 
 
-msg "If you want to disable an applet, edit pkgbuild variables _disable_[applet]"
+#msg "If you want to disable an applet, edit pkgbuild variables _disable_[applet]"
 
 pkgbase=generic-monitor-plugin-git
 _pkgbase=xfce4-genmon-plugin
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cyclically spawns a script/program, captures its output and displays the resulting string in the panel"
 url="https://gitlab.com/vala-panel-project/xfce4-genmon-plugin"
 arch=('i686' 'x86_64')
