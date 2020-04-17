@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Riot Beta
+Comment=A feature-rich beta client for Matrix.org
+Exec="/usr/bin/riot-desktop-beta"
+Terminal=false
+Type=Application
+Icon=riot
+StartupWMClass="Riot"
+Categories=Network;InstantMessaging;Chat;IRCClient
+
