@@ -2,7 +2,7 @@
 # Contributor: Otto Allmendinger <otto.allmendinger@gmail.com>
 
 pkgname=vertx
-pkgver=3.8.5
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="Effortless asynchronous application development for the modern web and enterprise"
 arch=(any)
@@ -11,7 +11,7 @@ license=("APACHE")
 depends=("java-environment>=7")
 
 source=("https://bintray.com/artifact/download/vertx/downloads/vert.x-${pkgver}-full.tar.gz")
-sha256sums=("ce21b4846f1ad485cdba76cc65690be9ec254c5db12cd57bab2cc8ee73ab9806")
+sha256sums=("d00c138a1a43c7daf2d4a6a6b747f5c56989018edc4d210bc1b008e87548124c")
 
 package() {
     install -d -m 755 ${pkgdir}/opt
