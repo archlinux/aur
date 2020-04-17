@@ -1,11 +1,11 @@
 # Maintainer:  Joakim Hernberg <jbh@alchemy.lu>
 # Contributor: David Runge <dvzrv@archlinux.org>
 
-_pkgver=4.19.106
-_rtpatchver=46
+_pkgver=4.19.115
+_rtpatchver=48
 pkgbase=linux-rt-lts
 pkgver=${_pkgver}.${_rtpatchver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux RT LTS'
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
@@ -30,11 +30,11 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('63c8bd76a9b282e18112f8ff9e3fd41e3d1df9f9b7248ea1a370b05a827e9cda'
+sha256sums=('11b2d97c8ea5ceb40c5e1d0bb87ad5b2b8c84560181bc60c0d28ec3a3e3801c2'
             'SKIP'
-            '4b16c051cbf28c76a1b34d1b24ea4dcb9be28bdb640eab0c01f24b090e828a07'
+            '1d2be62fe9ad8f6fd77f24dff0c5f349a352e3b60fba53c4b3037764ca24f8c5'
             'SKIP'
-            '285708f83ef8aa4bc25643b2abd1a1aa7313f368d7221fa1c4bb6512b7a63236'
+            '915ab71b3a5075f62a793c27142a21fbf883c60f2d182c4a70ce591dd8edd3bf'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
 
 export KBUILD_BUILD_HOST=archlinux
