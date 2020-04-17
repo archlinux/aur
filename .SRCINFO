@@ -1,0 +1,26 @@
+pkgbase = eigen-git
+	pkgdesc = Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra.
+	pkgver = 3.2.92.r8463
+	pkgrel = 1
+	url = https://eigen.tuxfamily.org
+	arch = any
+	license = GPL3
+	license = LGPL2.1
+	license = BSD
+	license = custom:MPL2
+	license = custom:MINPACK
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = freeglut
+	makedepends = gcc-fortran
+	makedepends = fftw
+	makedepends = suitesparse
+	makedepends = boost
+	makedepends = git
+	provides = eigen
+	conflicts = eigen
+	source = git+https://gitlab.com/libeigen/eigen.git
+	sha1sums = SKIP
+
+pkgname = eigen-git
+
