@@ -8,7 +8,7 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('429' '493' '579' '983' '256')
+# available MR: ('429' '493' '579' '983' '256' '798')
 _merge_requests_to_use=('983' '1124' '256') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
@@ -132,6 +132,13 @@ prepare() {
   # Status: 2
   # Comment:
   pick_mr '983'
+  
+  # Title: Wayland surface fullscreen unredirect
+  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/798
+  # Type: 2
+  # Status: 4
+  # Comment:
+  pick_mr '798'
 
 }
 
