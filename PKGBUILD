@@ -24,10 +24,10 @@ pkgver() {
 }
 
 build() {
-  meson --prefix=/usr --buildtype=plain journable build
-  ninja -C build
+	meson --prefix=/usr --buildtype=plain journable build
+	ninja -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" ninja -C build install
 }
