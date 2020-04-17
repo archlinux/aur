@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=pg_partman
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc='Partition management extention for PostgreSQL'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('custom:PostgreSQL')
 depends=('python' 'postgresql')
 makedepends=('llvm')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('8ab92cb1709f4082ea622a3f8274def0ae428c99af14184fbed4e4084e8391ea')
+sha256sums=('8a189d5157b348b4adefcd82b5a1c762613d4d5d1cf3fa46fe2e90d641e56812')
 
 build()
 {
