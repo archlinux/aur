@@ -1,11 +1,9 @@
 pkgbase = plexamp-appimg
-	pkgdesc = Play music from Plex
+	pkgdesc = Music focused client for Plex
 	pkgver = 3.0.0
 	pkgrel = 0
 	url = https://plexamp.plex.tv
 	arch = x86_64
-	license = MIT
-	depends = fuse
 	provides = plexamp
 	conflicts = plexamp
 	options = !strip
