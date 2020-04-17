@@ -3,7 +3,7 @@
 pkgname=perl-sah
 _author=PERLANCAR
 _pkgname=Sah
-pkgver=0.9.46
+pkgver=0.9.49
 pkgrel=1
 pkgdesc='Schema for data structures'
 arch=('any')
@@ -14,7 +14,7 @@ url="https://metacpan.org/release/${_pkgname}"
 
 _lastauthor=${_author:0:1}/${_author:0:2}/${_author}
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha512sums=('1159e54d695a3c40061c6a14f776ea639b4c043e496790503330958bd9bef6364187d9d3752d3338982df085a46a632dbfb50e929709f42c9e07ded0f677ce88')
+sha512sums=('28f300814c54e9f17a497f80e4ef634e1a2b4aaa88e037bf010e01600aaba85ad1df10a5247c00ae98c9d7b1c91b8034a988684b47199c624d2060dd34710ae7')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
