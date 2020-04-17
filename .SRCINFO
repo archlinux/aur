@@ -1,7 +1,7 @@
 pkgbase = arrow
 	pkgdesc = A columnar in-memory analytics layer for big data.
 	pkgver = 0.17.0
-	pkgrel = 3
+	pkgrel = 1
 	url = https://arrow.apache.org
 	arch = x86_64
 	license = Apache
