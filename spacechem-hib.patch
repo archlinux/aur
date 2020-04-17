@@ -1,8 +1,7 @@
---- opt/zachtronicsindustries/spacechem/spacechem-launcher.sh	2011-08-14 03:04:40.000000000 -0400
-+++ opt/zachtronicsindustries/spacechem/spacechem-launcher.sh.new	2018-08-26 14:48:48.092916021 -0400
-@@ -1,4 +1,4 @@
+diff --unified --recursive --text SpaceChem/spacechem-launcher.sh SpaceChem.new/spacechem-launcher.sh
+--- SpaceChem/spacechem-launcher.sh	2019-04-06 09:16:22.000000000 -0400
++++ SpaceChem.new/spacechem-launcher.sh	2020-04-17 13:29:30.167850161 -0400
+@@ -1,2 +1,3 @@
  #!/bin/sh
--cd /opt/zachtronicsindustries/spacechem/
-+cd /opt/spacechem/
++cd /opt/spacechem || exit 1
  mono SpaceChem.exe
- 
