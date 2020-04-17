@@ -3,10 +3,10 @@
 # Contributor: Valentin Hăloiu <vially.ichb@gmail.com>
 
 pkgname=electron-ozone
-pkgver=8.2.2
+pkgver=8.2.3
 provides=('electron')
 conflicts=('electron')
-_commit=8faf8a3535b624884a06e22ac1d95ea88bf17433
+_commit=663d389925a9637609c07f1212edeca337f591be
 _chromiumver=80.0.3987.163
 pkgrel=1
 pkgdesc='Electron compiled with wayland support via Ozone'
