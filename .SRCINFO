@@ -1,6 +1,6 @@
 pkgbase = journable-git
 	pkgdesc = A simple bullet journal.
-	pkgver = 0.0.1
+	pkgver = 0.1.1.r1.4957fc5
 	pkgrel = 1
 	url = https://gitlab.gnome.org/BjoernDaase/journable
 	arch = any
