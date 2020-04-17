@@ -57,6 +57,7 @@ package() {
   make DESTDIR="$pkgdir" install
   rm "$pkgdir"/usr/bin/{ginsh,gflags_completions.sh}
   rm "$pkgdir"/usr/lib/*.a
+  rm "$pkgdir"/usr/lib/libc99snprintf.so
   rm -r "$pkgdir"/usr/doc
   rm -r "$pkgdir"/home
 }
