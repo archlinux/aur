@@ -1,0 +1,13 @@
+pkgbase = python-asyncio-contextmanager
+	pkgdesc = Decorator that turns async generator functions into async context managers.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/sashgorokhov/asyncio-contextmanager
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/a/asyncio-contextmanager/asyncio-contextmanager-1.0.1.tar.gz
+	md5sums = c8ce0047d83dfcb6654debd8a434d7b7
+
+pkgname = python-asyncio-contextmanager
+
