@@ -1,7 +1,7 @@
-From d73794f48b5b20b05c0bd6c4657181f16dce8c2a Mon Sep 17 00:00:00 2001
+From bcac6dec62f192996a5bc061c140da211fc7e8bf Mon Sep 17 00:00:00 2001
 From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
-Date: Sun, 5 Apr 2020 18:07:27 +1000
-Subject: [PATCH 3/3] Revert "[FragmentItem] Two fixes for outline"
+Date: Fri, 17 Apr 2020 02:30:27 +1000
+Subject: [PATCH 8/8] Revert "[FragmentItem] Two fixes for outline"
 
 This reverts commit a340aadc092315215068045d847516f985b6a9f3.
 ---
@@ -80,5 +80,5 @@ index 82f57612ce45..a2f8092c791a 100644
      // Outlines of out-of-flow positioned descendants are handled in
      // NGPhysicalBoxFragment::AddSelfOutlineRects().
 -- 
-2.26.0
+2.26.1
 

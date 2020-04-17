@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-dev-ozone
-pkgver=83.0.4100.3
+pkgver=83.0.4103.14
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone (dev channel)"
@@ -31,16 +31,26 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-widevine.patch
         chromium-skia-harmony.patch
-        0001-add-missing-algorithm-header.patch
-        0002-libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch
-        0003-Revert-FragmentItem-Two-fixes-for-outline.patch)
-sha256sums=('de935646f509f31110c0c80353fb82178a8f6ff4fa39e07449f20bb3abdccde7'
+        0001-Revert-RTCInsertableStreams-Make-RTCEncodedAudioFram.patch
+        0002-Revert-RTCInsertableStreams-Make-RTCEncodedVideoFram.patch
+        0003-Add-missing-algorithm-header-in-crx_install_error.cc.patch
+        0004-libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch
+        0005-Revert-Trace-ICU-object-creation-in-ICU.CreateInstan.patch
+        0006-Revert-PM-Add-calculation-of-maximum-simultaneous-lo.patch
+        0007-Add-missing-memory-header-in-trust_token_attribute_p.patch
+        0008-Revert-FragmentItem-Two-fixes-for-outline.patch)
+sha256sums=('6e3d4853dcbd3c2375a1462a764102f6893c3b0505037e28c04bf90002e526e8'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
-            '09f847e4abaa91f9bf92e084ec45f331dbb79936e742fb3ec9ed7a916503ef12'
-            'ad336230b964644ed8db148c497091a001d8601a220b5dd7307b91d13b5473d4'
-            'b65b6cf6e0239ddb6c44b8b2fdc87f711b9e936e8fa6cdd2bdd0f4988b3d759f')
+            'c53edc13ca335652608607e628284a79d91f5524d9b5e72a8f2d29b4d7618c75'
+            'cf27aa2a98bc71686e3e0f482b720d7d25017158ab2c7d93b548b3578c4b53e2'
+            '9f2211edf347d54b8167a3b9d773e38aeabce5f98fb1932e7db1aeec845579f6'
+            '5db92d614aba64e9eb684f35e06f36786b74d5a1456308d4d40a65f12e32f62b'
+            '52b0129ac7db760078087a2839e257183f10df8e9f831ec07e6cfc8f5ba455eb'
+            '2b594ff5bc731897274027ddb79a77d247a52ef0990d574ec815b36082ac093a'
+            '91cc1ac6cd6568de8c45a3fb3c6b57fa9ea6e6ae6f2a05f1ff82677d0cdbdedb'
+            '771b862e16ff42e0d43d6f0f5fd49d65210732bb0ae19cc4ea18c2220b4cb041')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -77,7 +87,7 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
-# Branch point: 737173
+# Branch point: 756066
 # Extra commits related specifically to wayland support:
 
 # These consist of the above commits and their dependencies
@@ -105,9 +115,14 @@ prepare() {
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
 
-  patch -Np1 -i ../0001-add-missing-algorithm-header.patch
-  patch -Np1 -i ../0002-libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch
-  patch -Np1 -i ../0003-Revert-FragmentItem-Two-fixes-for-outline.patch
+  patch -Np1 -i ../0001-Revert-RTCInsertableStreams-Make-RTCEncodedAudioFram.patch
+  patch -Np1 -i ../0002-Revert-RTCInsertableStreams-Make-RTCEncodedVideoFram.patch
+  patch -Np1 -i ../0003-Add-missing-algorithm-header-in-crx_install_error.cc.patch
+  patch -Np1 -i ../0004-libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch
+  patch -Np1 -i ../0005-Revert-Trace-ICU-object-creation-in-ICU.CreateInstan.patch
+  patch -Np1 -i ../0006-Revert-PM-Add-calculation-of-maximum-simultaneous-lo.patch
+  patch -Np1 -i ../0007-Add-missing-memory-header-in-trust_token_attribute_p.patch
+  patch -Np1 -i ../0008-Revert-FragmentItem-Two-fixes-for-outline.patch
 
   for PATCH in ${_bugfix_patches[@]}
   do

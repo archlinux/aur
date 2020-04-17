@@ -1,7 +1,7 @@
-From 6800459ad3b60208f27f638d8c6d170fb8461c84 Mon Sep 17 00:00:00 2001
+From ffa47b54c9dbed28a8b1b2b9428049073937b3fe Mon Sep 17 00:00:00 2001
 From: Stephan Hartmann <stha09@googlemail.com>
 Date: Sun, 5 Apr 2020 08:29:21 +0000
-Subject: [PATCH 2/3] libstdc++: fix incomplete-type in AXTree for
+Subject: [PATCH 4/8] libstdc++: fix incomplete-type in AXTree for
  NodeSetSizePosInSetInfo
 
 std::unordered_map<T, U> requires U to be fully declared. ax_tree.h
@@ -56,5 +56,5 @@ index a51ca8de4c84..8c1c57517ac0 100644
    // Represents the content of an ordered set which includes the ordered set
    // items and the ordered set container if it exists.
 -- 
-2.26.0
+2.26.1
 
