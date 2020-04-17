@@ -32,11 +32,11 @@ package() {
   install -Dm644 squashfs-root/kontena-lens.png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/kontena-lens.png
   rm -rf "${pkgdir}/opt/lens/usr"
   
-  install -Dm644 "${srcdir}/lens.desktop" "${pkgdir}/usr/share/applications"
+  install -Dm644 "${srcdir}/lens.desktop" "${pkgdir}/usr/share/applications/lens.desktop"
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
-      "${srcdir}/squashfs-root/resources/LICENSE" \
-      "${srcdir}/squashfs-root/LICENSE.electron.txt" \
-      "${srcdir}/squashfs-root/LICENSES.chromium.html"
+    "${srcdir}/squashfs-root/resources/LICENSE" \
+    "${srcdir}/squashfs-root/LICENSE.electron.txt" \
+    "${srcdir}/squashfs-root/LICENSES.chromium.html"
   install -Dm755 "${srcdir}/lens.sh" "${pkgdir}/usr/bin/lens"
   #ln -s ../../../opt/lens/kontena-lens "${pkgdir}/usr/bin/lens"
 }
