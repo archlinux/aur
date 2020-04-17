@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Lens
+Exec=/usr/bin/lens
+Terminal=false
+Type=Application
+Icon=kontena-lens
+StartupWMClass=Lens
+Comment=Lens - The Kubernetes IDE
+Categories=Network;
