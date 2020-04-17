@@ -2,7 +2,7 @@
 pkgbase=mingw-w64-mygui
 pkgname=('mingw-w64-mygui')
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multilayer and overlappable GUI System (mingw-w64)"
 arch=('any')
 url="http://mygui.info/"
@@ -63,8 +63,14 @@ package() {
     cd ${srcdir}/build-${_arch}
     make DESTDIR=${pkgdir} install
 
-    ${_arch}-strip -x -g ${pkgdir}/usr/${_arch}/bin/Release/*.dll
-    ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/Release/*.a
+    mv ${pkgdir}/usr/${_arch}/bin/Release/*.dll ${pkgdir}/usr/${_arch}/bin/
+    mv ${pkgdir}/usr/${_arch}/lib/Release/*.a ${pkgdir}/usr/${_arch}/lib/
+
+    rmdir ${pkgdir}/usr/${_arch}/bin/Release
+    rmdir ${pkgdir}/usr/${_arch}/lib/Release
+
+    ${_arch}-strip -x -g ${pkgdir}/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
   done
 }
 

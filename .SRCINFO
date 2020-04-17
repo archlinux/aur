@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-mygui
 	pkgdesc = A multilayer and overlappable GUI System (mingw-w64)
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mygui.info/
 	arch = any
 	license = LGPL
