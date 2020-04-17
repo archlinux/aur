@@ -1,6 +1,6 @@
 pkgbase = dpdk
 	pkgdesc = A set of libraries and drivers for fast packet processing
-	pkgver = 19.11
+	pkgver = 20.02
 	pkgrel = 1
 	url = http://dpdk.org
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = dpdk
 	depends = libelf
 	depends = libpcap
 	options = staticlibs
-	source = http://fast.dpdk.org/rel/dpdk-19.11.tar.xz
-	sha1sums = 435b0b3a5da6d7417d318050e5b50ac400354c60
+	source = http://fast.dpdk.org/rel/dpdk-20.02.tar.xz
+	sha1sums = 4d4d7489b7e820850ea09f3c2da4d905ead3693b
 
 pkgname = dpdk
 
