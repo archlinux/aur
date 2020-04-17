@@ -10,7 +10,7 @@ makedepends=('git' 'perl' 'cmake' 'flex' 'bison')
 provides=('retdec')
 conflicts=('retdec')
 
-source=("${pkgname}::git+https://github.com/avast-tl/retdec.git")
+source=("${pkgname}::git+https://github.com/avast/retdec.git")
 sha1sums=('SKIP')
 
 pkgver() {
