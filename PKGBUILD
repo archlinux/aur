@@ -2,7 +2,7 @@
 
 pkgname=slit-git
 pkgver=1.2.0.r12.g0700c97
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern PAGER for viewing logs, get more than most in less time'
 arch=(x86_64)
 url="https://github.com/tigrawap/slit"
@@ -28,7 +28,7 @@ prepare() {
 	cd "${srcdir}/go/src/github.com/tigrawap/slit"
 
 	export GOPATH="${srcdir}/go"
-	go get -v ./...
+	go get -modcacherw -v ./...
 }
 
 build() {
@@ -37,7 +37,7 @@ build() {
 	mkdir -p build
 
 	export GOPATH="${srcdir}/go"
-	go build -ldflags "-s -w" \
+	go build -modcacherw -ldflags "-s -w" \
 		-gcflags="all=-trimpath=${GOPATH}/src" \
 		-asmflags="all=-trimpath=${GOPATH}/src" \
 		-o build/slit ./cmd/slit
