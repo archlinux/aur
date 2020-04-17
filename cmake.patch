@@ -1,9 +1,9 @@
-diff -ruN OIS-3b4c2d6ceaa14f38a371b92de61d2603d2522b71/CMakeLists.txt patched/CMakeLists.txt
---- OIS-3b4c2d6ceaa14f38a371b92de61d2603d2522b71/CMakeLists.txt	2018-04-06 23:45:56.522571618 +0200
-+++ patched/CMakeLists.txt	2018-04-06 23:45:29.602098309 +0200
-@@ -208,7 +213,7 @@
-   FRAMEWORK DESTINATION Library/Frameworks
- )
+diff -ruN OIS-1.5/CMakeLists.txt patched/CMakeLists.txt
+--- OIS-1.5/CMakeLists.txt	2018-12-02 02:24:29.000000000 +0100
++++ patched/CMakeLists.txt	2020-04-17 22:38:16.219998682 +0200
+@@ -230,7 +230,7 @@
+   install(FILES $<TARGET_PDB_FILE:OIS> DESTINATION bin OPTIONAL)
+ endif(MSVC)
  
 -if(UNIX)
 +if(UNIX OR MINGW)

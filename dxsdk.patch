@@ -1,25 +1,21 @@
-diff -ruN OIS-3b4c2d6ceaa14f38a371b92de61d2603d2522b71/CMakeLists.txt patched/CMakeLists.txt
---- OIS-3b4c2d6ceaa14f38a371b92de61d2603d2522b71/CMakeLists.txt	2016-10-27 19:14:16.000000000 +0200
-+++ patched/CMakeLists.txt	2018-04-06 23:38:23.264601077 +0200
-@@ -74,7 +74,7 @@
-         add_definitions(-DOIS_DYNAMIC_LIB)
-     endif(BUILD_SHARED_LIBS)
+diff -ruN OIS-1.5/CMakeLists.txt patched/CMakeLists.txt
+--- OIS-1.5/CMakeLists.txt	2020-04-17 22:39:07.023332015 +0200
++++ patched/CMakeLists.txt	2020-04-17 22:44:07.306665344 +0200
+@@ -95,7 +95,7 @@
+         add_definitions(-DOIS_WIN32_XINPUT_SUPPORT)
+     endif()
  
--    include_directories("${DXSDK_DIR}/Include")
-+    include_directories("${DXSDK_DIR}/include")
+-    include_directories("${OIS_WIN32_DXSDK_DIR}/Include")
++    include_directories("${OIS_WIN32_DXSDK_DIR}/include")
  
      set(ois_source
          ${ois_source}
-@@ -139,7 +139,11 @@
-         set(DIRECTX_ARCH x86)
+@@ -161,6 +161,8 @@
+ 
+     if (WINDOWSSDK_FOUND)
+         target_link_libraries(OIS "dinput8.lib" "dxguid.lib")
++    elseif(MINGW)
++        target_link_libraries(OIS "${DXSDK_DIR}/lib/libdinput8.a" "${DXSDK_DIR}/lib/libdxguid.a")
+     else()
+         target_link_libraries(OIS "${DXSDK_DIR}/Lib/${DIRECTX_ARCH}/dinput8.lib" "${DXSDK_DIR}/Lib/${DIRECTX_ARCH}/dxguid.lib")
      endif()
- 
--    target_link_libraries(OIS "${DXSDK_DIR}/Lib/${DIRECTX_ARCH}/dinput8.lib" "${DXSDK_DIR}/Lib/${DIRECTX_ARCH}/dxguid.lib")
-+    if(MINGW)
-+    	target_link_libraries(OIS "${DXSDK_DIR}/lib/libdinput8.a" "${DXSDK_DIR}/lib/libdxguid.a")
-+    else()
-+    	target_link_libraries(OIS "${DXSDK_DIR}/Lib/${DIRECTX_ARCH}/dinput8.lib" "${DXSDK_DIR}/Lib/${DIRECTX_ARCH}/dxguid.lib")
-+    endif()
- endif()
- 
- if(UNIX)

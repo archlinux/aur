@@ -1,20 +1,22 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-ois
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Object Oriented Input System (mingw-w64)"
 arch=('any')
-url="http://sourceforge.net/projects/wgois"
+url="https://github.com/wgois/OIS"
 license=('custom:zlib/libpng')
 depends=('mingw-w64-crt')
 options=(!strip !buildflags !libtool staticlibs)
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
-source=("https://github.com/ogre3d/OIS/archive/3b4c2d6ceaa14f38a371b92de61d2603d2522b71.zip"
+source=("https://github.com/wgois/OIS/archive/v${pkgver}.tar.gz"
         "dxsdk.patch"
-        "cmake.patch")
-sha512sums=('b1c69f3f2a5be22adc88a886f97dc27501e80b96de377ca588662fc03206deb6f885895f618db6e99541cbb97a564afeb84c5ee97709873eaf060c0062d1240b'
-            '0fdf8ad0daacf994646a574d6ec51bce43bb8712955fd3a601f9bb9faf62374e82b4f9e608a89792183a0aa68e457ea1a382be45a37c43390d0ab995d8544fac'
-            '4709504c7f7cbf420b1b2d7eb2f06300007614de1d8ecd02ba5ec497d07e42af5697c431f78f63c465a35ddc8491e4e964cbd69302c379a82845214b6feced37')
+        "cmake.patch"
+        "xinput.patch")
+sha512sums=('5ab1dda7c25c1959ccbbb758ea3fda36bd62ad65f46e2c6b418317a5eb39e0bace52a44ae079dfb69fc58c90df54f8e50d589daae1100ec615325363c9d77513'
+            'f9cbaa72acf16982533ce9687efd9c1321b7f38dfeeb5401cc75eaa2ab094927217be87bafcf574120a4a486b46be47a6cd06eeafdfa858693cce661e1585a1a'
+            '057f65d3ea564daf5661f91c323554ed356830242ce0597eaa562b229fb70be983ba4443003eec9164da3ed7a4a17ecdf312da4e54e78fb93474562db86e1531'
+	    '37e9a63e9de1ee71fef8331c3fedf84f4a22827c90b62150d57c1780a30cbda6c41a5470a017acf68bb9977c14c00cea315214544d812044e28ff5825a386a76')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -22,20 +24,24 @@ prepare() {
 
   patch -Np1 < ${srcdir}/dxsdk.patch
   patch -Np1 < ${srcdir}/cmake.patch
+  patch -Np1 < ${srcdir}/xinput.patch
 }
 
 build() {
+
   for _arch in ${_architectures}; do
     cd ${srcdir}/OIS-*
     mkdir -p build-static-${_arch} && cd build-static-${_arch}
-    ${_arch}-cmake -DBUILD_SHARED_LIBS="OFF" -DDXSDK_DIR="/usr/${_arch}/" ..
+    export DXSDK_DIR="/usr/${_arch}/"
+    ${_arch}-cmake -DOIS_BUILD_DEMOS="OFF" -DOIS_BUILD_SHARED_LIBS="OFF" -DDXSDK_DIR="/usr/${_arch}/" ..
     make
   done
 
   for _arch in ${_architectures}; do
     cd ${srcdir}/OIS-*
     mkdir -p build-${_arch} && cd build-${_arch}
-    ${_arch}-cmake -DDXSDK_DIR="/usr/${_arch}/" ..
+    export DXSDK_DIR="/usr/${_arch}/"
+    ${_arch}-cmake -DOIS_BUILD_DEMOS="OFF" -DDXSDK_DIR="/usr/${_arch}/" ..
     make
   done
 }

@@ -1,0 +1,27 @@
+diff -ruN OIS-1.5/includes/win32/Win32Prereqs.h patched/includes/win32/Win32Prereqs.h
+--- OIS-1.5/includes/win32/Win32Prereqs.h	2018-12-02 02:24:29.000000000 +0100
++++ patched/includes/win32/Win32Prereqs.h	2020-04-17 23:44:28.819998723 +0200
+@@ -33,7 +33,7 @@
+ #include <dinput.h>
+ 
+ #ifdef OIS_WIN32_XINPUT_SUPPORT
+-#include <XInput.h>
++#include <xinput.h>
+ #endif
+ 
+ //Max number of elements to collect from buffered DirectInput
+--- OIS-1.5/CMakeLists.txt	2020-04-17 23:57:01.363332055 +0200
++++ patched/CMakeLists.txt	2020-04-17 23:54:53.353332066 +0200
+@@ -162,7 +162,11 @@
+     if (WINDOWSSDK_FOUND)
+         target_link_libraries(OIS "dinput8.lib" "dxguid.lib")
+     elseif(MINGW)
+-        target_link_libraries(OIS "${DXSDK_DIR}/lib/libdinput8.a" "${DXSDK_DIR}/lib/libdxguid.a")
++        if(OIS_WIN32_XINPUT_SUPPORT)
++            target_link_libraries(OIS "${DXSDK_DIR}/lib/libdinput8.a" "${DXSDK_DIR}/lib/libdxguid.a" "${DXSDK_DIR}/lib/libxinput.a")
++	else(OIS_WIN32_XINPUT_SUPPORT)
++            target_link_libraries(OIS "${DXSDK_DIR}/lib/libdinput8.a" "${DXSDK_DIR}/lib/libdxguid.a")
++        endif(OIS_WIN32_XINPUT_SUPPORT)
+     else()
+         target_link_libraries(OIS "${DXSDK_DIR}/Lib/${DIRECTX_ARCH}/dinput8.lib" "${DXSDK_DIR}/Lib/${DIRECTX_ARCH}/dxguid.lib")
+     endif()
