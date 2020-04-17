@@ -2,8 +2,7 @@
 #Maintainer: Heiko Nickerl <devATheiko-nickerlDOTcom>
 pkgname=jes
 pkgver=2.02.45
->>>>>>> Stashed changes
-pkgrel=1
+pkgrel=2
 pkgdesc="A java-based tool for german cash method of accounting (Einnahmen-Überschuss-Rechnung)"
 arch=('any')
 url="http://www.jes-eur.de"
