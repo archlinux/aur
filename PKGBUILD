@@ -38,5 +38,6 @@ package() {
     "${srcdir}/squashfs-root/LICENSE.electron.txt" \
     "${srcdir}/squashfs-root/LICENSES.chromium.html"
   install -Dm755 "${srcdir}/lens.sh" "${pkgdir}/usr/bin/lens"
+  chmod a+rx "${pkgdir}/opt/lens"
   #ln -s ../../../opt/lens/kontena-lens "${pkgdir}/usr/bin/lens"
 }
