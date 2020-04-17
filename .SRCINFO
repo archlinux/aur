@@ -5,6 +5,7 @@ pkgbase = kpeople-vcard-git
 	url = https://phabricator.kde.org/source/kpeoplevcard/
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = extra-cmake-modules
 	depends = kpeople
 	depends = kcontacts
