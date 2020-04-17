@@ -1,11 +1,12 @@
-# Contributor: TBK <aur@jjtc.eu>
-# Maintainer: TBK <aur@jjtc.eu>
+# Maintainer: TBK <aur at jjtc dot eu>
+# Contributor: TBK <aur at jjtc dot eu>
+
 pkgname=amiitool
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc='Reverse-engineered amiibo cryptography'
 url='https://github.com/socram8888/amiitool'
-arch=('any')
+arch=('x86_64')
 license=('MIT')
 makedepends=('git' 'mbedtls') # git is used to pull head version
 source=("$pkgname-r$pkgver.tar.gz::https://github.com/socram8888/amiitool/archive/r$pkgver.tar.gz"
