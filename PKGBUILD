@@ -10,7 +10,7 @@ url="https://github.com/K0lb3/UnityPy"
 license=('MIT')
 provides=('python-unitypy')
 conflicts=('python-unitypy')
-depends=('brotli' 'python-pillow' 'python-fsb5' 'python-tex2img')
+depends=('python-brotli' 'python-pillow' 'python-fsb5' 'python-tex2img')
 checkdepends=('python-pytest' 'python-pytest-cov')
 
 source=("git+https://github.com/K0lb3/UnityPy.git")
