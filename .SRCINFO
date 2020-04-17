@@ -1,18 +1,26 @@
-pkgbase = python2-qrtools
-	pkgdesc = A high level library for reading and generating QR codes.
-	pkgver = 1.4
-	pkgrel = 4
+pkgbase = python-qrtools
+	pkgver = 2.0
+	pkgrel = 1
 	url = https://launchpad.net/qr-tools
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = python2
-	depends = python2-pillow
-	depends = python2-zbar
-	depends = qrencode
-	provides = python2-qrtools
-	source = https://launchpad.net/~qr-tools-developers/+archive/ubuntu/qr-tools-stable/+sourcefiles/python-qrtools/1.4-0~30~ubuntu18.04.1/python-qrtools_1.4-0~30~ubuntu18.04.1.tar.gz
-	sha256sums = 88d826e752bd3e3ee00244fc0713f8c21328543faf229c7aee9bdd9aac337ca7
+	source = https://launchpad.net/~qr-tools-developers/+archive/ubuntu/daily/+sourcefiles/python3-qrtools/2.0-0~39~ubuntu20.04.1/python3-qrtools_2.0-0~39~ubuntu20.04.1.tar.gz
+	source = https://launchpad.net/~qr-tools-developers/+archive/ubuntu/daily/+sourcefiles/qtqr/2.0-0~39~ubuntu20.04.1/qtqr_2.0-0~39~ubuntu20.04.1.tar.gz
+	sha256sums = 25f500a6c78929cd048a8c5c39d84ef2592f4419029e8499937af69ed27337fc
+	sha256sums = dfb531e90a65749c7a43cc714d47c120d81a8e3149639d0d2c4f25000c8b77ec
 
-pkgname = python2-qrtools
+pkgname = python-qrtools
+	pkgdesc = A high level library for reading and generating QR codes.
+	depends = python
+	depends = python-pillow
+	depends = python-zbar
+	depends = qrencode
+
+pkgname = qtqr3
+	pkgdesc = A Graphical interface QR Code generator and decoder.
+	depends = python
+	depends = python-qrtools
+	depends = python-pyqt5
+	provides = qtqr
 
