@@ -13,7 +13,7 @@ license=("MIT")
 depends=("mkdocs" "python-pygments" "pymdown-extensions" "python-mkdocs-minify-plugin")
 makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/squidfunk/mkdocs-material/archive/$pkgver.tar.gz")
-sha256sums=('299d15a9b567a956348998017cce6dc9654e3cdb008ab6d8b11b89891224af1e')
+sha256sums=('fc6686a3ece70978c97a3131720873af382b0f8e97b5c4c9663d69b06cec2cd9')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
