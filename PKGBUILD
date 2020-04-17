@@ -1,8 +1,8 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 
 pkgname=armcl-opencl
-pkgver=19.02
-pkgrel=4
+pkgver=20.02.1
+pkgrel=1
 
 epoch=
 pkgdesc="ARM Computer Vision and Machine Learning Library (x86_64 OpenCL Backend)"
@@ -18,7 +18,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=( !strip )
+options=( '!strip' '!emptydirs' 'staticlibs' )
 install=
 changelog=
 source=("git+https://github.com/ARM-software/ComputeLibrary.git")
