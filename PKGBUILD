@@ -5,7 +5,7 @@ DOC_DIRS=(opt/hydrus/help)
 pkgbase=hydrus
 pkgname=(hydrus)
 pkgver=393
-pkgrel=1
+pkgrel=2
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
 license=(WTFPL)
@@ -21,6 +21,7 @@ makedepends=(git)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
             'desktop-file-utils: to add Hydrus to your desktop environment menus'
+            'python-cloudscraper: bypass cloudflare "checking your browser" challenges'
             )
 source=("${pkgbase}::git+https://github.com/hydrusnetwork/${pkgbase}.git#commit=eabff1015b714d1ab455a8fad6bf1f85a0d19a16"
         paths-in-opt.patch
