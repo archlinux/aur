@@ -59,12 +59,12 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=32
+_minor=33
 _srcname=linux-${_major}
 _clr=${_major}.32-30
 pkgbase=linux-clear-lts2019
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc='Clear Linux lts2019'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2019"
@@ -316,7 +316,7 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '3f200361532c6f4ddc6bafdf593accb9a3ec25f64296c1d66d68f2ccc1b12d9a'
+            '557cd21952003913271b8f659f336d6bbf2ec0f9a6a5eea27e1926708282f3a6'
             'SKIP'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5')
 
