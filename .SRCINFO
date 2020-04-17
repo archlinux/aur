@@ -1,19 +1,15 @@
 pkgbase = fahcontrol
-	pkgdesc = A Graphical User Interface (GUI)for Folding@Home
-	pkgver = 7.5.1
+	pkgdesc = Graphical monitor and control utility for the Folding@home client
+	pkgver = 7.6.8.1
 	pkgrel = 1
-	url = http://folding.stanford.edu/English/HomePage
-	arch = x86_64
+	url = https://foldingathome.org
+	arch = any
 	license = GPL3
-	depends = gtk2
 	depends = python2
 	depends = pygtk
-	depends = glib2
-	depends = pango
-	options = !docs
-	options = !libtool
-	source = https://download.foldingathome.org/releases/public/release/fahcontrol/debian-stable-64bit/v7.5/fahcontrol_7.5.1-1_all.deb
-	md5sums = 74cb2eae8654b254783aca4702dc702d
+	optdepends = fahviewer: 3D simulation viewer
+	source = https://download.foldingathome.org/releases/public/release/fahcontrol/debian-stable-64bit/v7.6/fahcontrol_7.6.8-1_all.deb
+	md5sums = f893e0f42de97b561b59b418b397502d
 
 pkgname = fahcontrol
 
