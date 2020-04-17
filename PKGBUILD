@@ -19,7 +19,7 @@ prepare() {
   git submodule update -f --init
 
   # https://github.com/feelpp/feelpp/pull/1415
-  git cherry-pick 8b29331f5b2a4c6f47631b788829d5529eaf2d17
+  git cherry-pick cad7be165e2c4e377a4acfcf89abfb5365b43601 8b29331f5b2a4c6f47631b788829d5529eaf2d17
 
   # https://gitlab.com/libeigen/eigen/-/issues/1676
   cd feelpp/contrib/eigen/
