@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-every-day
 	pkgdesc = Standalone Web Browser from Mozilla — Nightly build (Updated every day) (en-US)
-	pkgver = 77.0a1+20200417
+	pkgver = 77.0a1.r20200417
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/nightly
 	arch = i686
@@ -30,15 +30,15 @@ pkgbase = firefox-nightly-every-day
 	source_i686 = 20200417-firefox-77.0a1.en-US.linux-i686.tar.bz2::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central/firefox-77.0a1.en-US.linux-i686.tar.bz2
 	source_i686 = 20200417-firefox-77.0a1.en-US.linux-i686.tar.bz2.asc::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central/firefox-77.0a1.en-US.linux-i686.tar.bz2.asc
 	source_i686 = 20200417-firefox-77.0a1.en-US.linux-i686.txt::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central/firefox-77.0a1.en-US.linux-i686.txt
-	sha512sums_i686 = 642e216078dc3d94bbb7d4d4a7dc6d89031acfe16d7dfcb4b840d90daad29d568aad9f27ce1fea4e2ad26bf40c3196fb5260ea292ac7af3d5d095a11bc8c4ec9
+	sha512sums_i686 = a7091d8f3671b0579d25571bca45e78643bc79a49dbaf0a066622e5daf5ff2ade331face7e3389743a351febed88b27951b0f7bb957a06fc5f3a3ff406f84f8b
 	sha512sums_i686 = SKIP
-	sha512sums_i686 = 7b4f9b96b0a883d314ff81190ea20ddbc858ec87b085be15d1582f7184d888776e2959fb8da51a427e002b8810fdeb48d2612414a63fc78d58852f3c7f721a64
+	sha512sums_i686 = dacad011497cc8443210c2df8936ffe3defbb06d3678a4ec223e05ea2cbb2efeb6a8799a3d3881790ace3f02019f4e956a74711a097a662062a5fe93ce19190f
 	source_x86_64 = 20200417-firefox-77.0a1.en-US.linux-x86_64.tar.bz2::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central/firefox-77.0a1.en-US.linux-x86_64.tar.bz2
 	source_x86_64 = 20200417-firefox-77.0a1.en-US.linux-x86_64.tar.bz2.asc::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central/firefox-77.0a1.en-US.linux-x86_64.tar.bz2.asc
 	source_x86_64 = 20200417-firefox-77.0a1.en-US.linux-x86_64.txt::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central/firefox-77.0a1.en-US.linux-x86_64.txt
-	sha512sums_x86_64 = 87bdf41aabd3aee09b517b07cb776dd6b9c75db32373d3df976efc98406275735e7d70d5e357efc4e779601ef27431e75d87a7d4645c274676be35f6a86a4b29
+	sha512sums_x86_64 = cd6a1ca03154b83bdce5c5e665b94cd89f1daa4df3f7e6f355ed6c11835e95344436eb6291184c7b6d7113054ab70b0bb5dbc21d8eb00c9cc33c921e7905318f
 	sha512sums_x86_64 = SKIP
-	sha512sums_x86_64 = 7b4f9b96b0a883d314ff81190ea20ddbc858ec87b085be15d1582f7184d888776e2959fb8da51a427e002b8810fdeb48d2612414a63fc78d58852f3c7f721a64
+	sha512sums_x86_64 = dacad011497cc8443210c2df8936ffe3defbb06d3678a4ec223e05ea2cbb2efeb6a8799a3d3881790ace3f02019f4e956a74711a097a662062a5fe93ce19190f
 
 pkgname = firefox-nightly-every-day
 
