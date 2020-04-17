@@ -1,4 +1,4 @@
-# Termius
+# libqtolm-git
  Arch User Repository libqtolm-git
 
 ## Update package
