@@ -1,0 +1,21 @@
+pkgbase = pixelchart
+	pkgdesc = Map binary data into a beautiful chart
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://pixelchart.cf/index.html
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-paint
+	depends = ruby-docopt
+	depends = libvips
+	depends = imagemagick
+	depends = ruby-rmagick
+	depends = ruby-ruby-vips
+	noextract = pixelchart-1.0.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/pixelchart-1.0.1.gem
+	b2sums = ed771bba45a9edecb84045957d2b448d712e5e7ac302024293760b6d9b93c68d527b245f6eec4544bcf989fae9e7562a4e031f05f47d36544e33992dd28a8170
+
+pkgname = pixelchart
+
