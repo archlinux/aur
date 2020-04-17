@@ -1,6 +1,6 @@
 pkgbase = xiphos-git
 	pkgdesc = A Bible study tool for GTK3
-	pkgver = 4.1.0.r94.g6abeb8d
+	pkgver = 4.1.0.r95.ged6730e
 	pkgrel = 1
 	epoch = 1
 	url = http://xiphos.org
@@ -18,6 +18,7 @@ pkgbase = xiphos-git
 	makedepends = libffi
 	makedepends = libxml2
 	makedepends = python
+	makedepends = zlib
 	depends = gtkhtml4
 	depends = libbiblesync.so
 	depends = minizip

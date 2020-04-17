@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=xiphos-git
-pkgver=4.1.0.r94.g6abeb8d
+pkgver=4.1.0.r95.ged6730e
 pkgrel=1
 epoch=1
 pkgdesc='A Bible study tool for GTK3'
@@ -24,7 +24,8 @@ makedepends=('appstream-glib'
              'intltool'
              'libffi'
              'libxml2'
-             'python')
+             'python'
+             'zlib')
 provides=('gnomesword' "${pkgname%-git}")
 conflicts=("${provides[@]}")
 source=("git+https://github.com/crosswire/xiphos.git")
