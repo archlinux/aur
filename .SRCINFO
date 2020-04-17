@@ -9,6 +9,7 @@ pkgbase = doom-infinity
 	depends = ultimate-doom-visor
 	depends = gzdoom
 	depends = qzdl-git
+	optdepends = freedoom: if you dont own doom
 
 pkgname = doom-infinity
 
