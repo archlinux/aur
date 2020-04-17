@@ -1,0 +1,11 @@
+post_install(){
+  type -p helm || ln -s /usr/bin/helm2 /usr/local/bin/helm
+}
+
+post_upgrade(){
+  post_install "${@}"
+}
+
+pre_remove(){
+  [ -h /usr/local/bin/helm -o -L /usr/local/bin/helm ] && rm /usr/local/bin/helm
+}

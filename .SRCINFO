@@ -1,8 +1,9 @@
 pkgbase = helm2-bin
 	pkgdesc = The Kubernetes Package Manager
 	pkgver = 2.16.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://helm.sh/
+	install = helm2-bin.install
 	arch = x86_64
 	arch = aarch64
 	arch = arm

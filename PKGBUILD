@@ -7,7 +7,7 @@
 
 pkgname=helm2-bin
 pkgver=2.16.6
-pkgrel=3
+pkgrel=4
 pkgdesc="The Kubernetes Package Manager"
 arch=(
   "x86_64"  # amd64
@@ -20,6 +20,7 @@ license=("Apache")
 provides=("helm2" "kubernetes-helm2" "helm" "kubernetes-helm")
 conflicts=("helm2" "kubernetes-helm2")
 makedepends=("grep")
+install=helm2-bin.install
 validpgpkeys=(
   '672C657BE06B4B30969C4A57461449C25E36B98E'  # Matthew Farina <matt@mattfarina.com>, https://keybase.io/mattfarina
 )
