@@ -1,15 +1,14 @@
-# Maintainer: Martin Kostolný <clearmartin at zoho dot com>
-# Contributor: Zdravko Yanakiev <zdravko.yanakiev at gmail dot com>
+# Maintainer: Zdravko Yanakiev <zdravko.yanakiev at gmail dot com>
 
 pkgname=plasma5-applets-redshift-control-git
 _pkgname=plasma5-applets-redshift-control
 _gitpkgname=plasma-redshift-control
-pkgver=r23.28481b6
+pkgver=r34.2476d6e
 pkgrel=1
 epoch=1
 pkgdesc="Plasmoid for Plasma 5 for controlling redshift."
 arch=('any')
-url="git://anongit.kde.org/plasma-redshift-control"
+url="https://phabricator.kde.org/source/plasma-redshift-control"
 license=('GPL')
 depends=('plasma-workspace' 'qt5-graphicaleffects' 'redshift')
 makedepends=('git' 'extra-cmake-modules')
