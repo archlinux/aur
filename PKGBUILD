@@ -3,7 +3,7 @@
 pkgbase="nginx-lazerl0rd-git"
 pkgname=("nginx-lazerl0rd-git" "nginx-src-lazerl0rd-git")
 pkgver=1.17.10
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=("i686" "x86_64")
 url="https://github.com/lazerl0rd/nginx"
@@ -18,6 +18,7 @@ source=(
 	"hg+http://hg.nginx.org/nginx-tests"
 	"service"
 	"logrotate"
+	"hg+http://hg.nginx.org/njs"
 )
 b2sums=(
 	"SKIP"
@@ -28,6 +29,7 @@ b2sums=(
 	"SKIP"
 	"b6414f9917fe62cc57556a2927fb404cc839398dac64a0d60c1d45af11a4e6be71bbee5f9bae17ce3604c31ab9247e8c6aec759f86890b54f86267db1fe7c08a"
 	"fe32fb75a7677abca86c4bc3f4ca9bfeccb3cd7afb4dd3c4ec21ab8b53cc0d72ba5330a1131498b5df222c2e517bd01e2df9f67256011ff15241b777a85be6b3"
+	"SKIP"
 )
 
 _common_flags=(
@@ -63,6 +65,7 @@ _common_flags=(
 _stable_flags=(
 	--add-module="../ngx_brotli"
 	--add-module="../nginx_cookie_flag_module"
+	--add-module="../njs"
 	--build="lazerl0rd"
 	--with-http_v2_hpack_enc
 	--with-http_v3_module
