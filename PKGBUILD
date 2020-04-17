@@ -3,7 +3,7 @@
 
 pkgname=('libvhdi-git')
 pkgver=r142.58c6aa2
-pkgrel=1
+pkgrel=2
 pkgdesc="Library and tools to access the Virtual Hard Disk (VHD) image format"
 arch=('x86_64')
 url="https://github.com/libyal/libvhdi"

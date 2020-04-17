@@ -1,7 +1,7 @@
 pkgbase = libvhdi-git
 	pkgdesc = Library and tools to access the Virtual Hard Disk (VHD) image format
 	pkgver = r142.58c6aa2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/libyal/libvhdi
 	arch = x86_64
 	license = LGPL3
