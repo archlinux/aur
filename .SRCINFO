@@ -9,7 +9,6 @@ pkgbase = pam-ihosts-git
 	makedepends = gcc
 	makedepends = binutils
 	depends = pam
-	depends = libffi
 	provides = pam-ihosts
 	conflicts = pam-ihosts
 	source = pam-ihosts::git+https://github.com/ColumPaget/pam_ihosts
