@@ -7,7 +7,7 @@
 
 pkgbase=pagure
 pkgname=("$pkgbase" "$pkgbase-apache" "$pkgbase-mariadb" "$pkgbase-postgresql" "$pkgbase-sqlite")
-pkgver=5.8.1
+pkgver=5.9.1
 pkgrel=0.20
 pkgdesc="A git-centered forge based on python using pygit2"
 arch=("any")
@@ -53,7 +53,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-tox')
 source=("https://releases.pagure.org/$pkgbase/$pkgbase-$pkgver.tar.gz"
         "https://src.fedoraproject.org/rpms/pagure/raw/master/f/0501-Revert-Add-a-upper-limit-to-sqlalchemy.patch")
-sha256sums=('5e150bad0a3f932d265cb59d46c8b6a532be0f757aab695a8c37df3f5f4db687'
+sha256sums=('ad4938975b202eee30098d112b250309d2690194099bc59f3f6d9d7069b78d3c'
             'c1da9e6ae2255f7896920ecb261f18c59f8ad6ba5726a8484f6287ae3962c854')
 _homedir="/var/lib/$pkgbase"
 _user=$pkgbase
