@@ -1,6 +1,6 @@
 pkgbase = jupyter-matlab_kernel-git
 	pkgdesc = A Jupyter/IPython kernel for Matlab
-	pkgver = r156.3755cb2
+	pkgver = 0.16.9.r0.gab41f9b
 	pkgrel = 1
 	url = https://github.com/Calysto/matlab_kernel.git
 	arch = any
@@ -9,12 +9,14 @@ pkgbase = jupyter-matlab_kernel-git
 	makedepends = jupyter-metakernel
 	depends = python
 	depends = jupyter
-	depends = matlab-engine-for-python
 	depends = jupyter-metakernel
+	optdepends = matlab-engine-for-python: Runtime dependency on matlab kernel.
 	provides = jupyter-matlab_kernel
 	conflicts = jupyter-matlab_kernel
-	source = matlab_kernel::git+https://github.com/Calysto/matlab_kernel.git
+	source = git+https://github.com/Calysto/matlab_kernel.git
+	source = matlab_kernel.install
 	sha256sums = SKIP
+	sha256sums = 1e38965cb9e4b08d253262c0d4cf04a6a420f5924c3823a043138fb3fc0fbded
 
 pkgname = jupyter-matlab_kernel-git
 

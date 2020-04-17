@@ -1,41 +1,50 @@
-# Maintainer: Brendan Van Hook <brendan at vastactive dot com>
+# Maintainer: Batuhan Baserdem
+# vim:ft=PKGBUILD
 
-_pkgname=matlab_kernel
-pkgname=jupyter-$_pkgname-git
-pkgver=r156.3755cb2
+_name=matlab_kernel
+pkgname="jupyter-${_name}-git"
+pkgver=0.16.9.r0.gab41f9b
 pkgrel=1
 pkgdesc="A Jupyter/IPython kernel for Matlab"
 arch=('any')
-url="https://github.com/Calysto/matlab_kernel.git"
+url="https://github.com/Calysto/${_name}.git"
 license=('BSD')
-depends=('python' 'jupyter' 'matlab-engine-for-python' 'jupyter-metakernel')
+depends=('python' 'jupyter' 'jupyter-metakernel')
 makedepends=('git' 'jupyter-metakernel')
-provides=(jupyter-$_pkgname)
-conflicts=(jupyter-$_pkgname)
-source=("$_pkgname::git+https://github.com/Calysto/matlab_kernel.git")
-sha256sums=('SKIP')
+optdepends=('matlab-engine-for-python: Runtime dependency on matlab kernel.')
+provides=("jupyter-${_name}")
+conflicts=("jupyter-${_name}")
+source=("git+https://github.com/Calysto/${_name}.git"
+        'matlab_kernel.install')
+sha256sums=('SKIP'
+            '1e38965cb9e4b08d253262c0d4cf04a6a420f5924c3823a043138fb3fc0fbded')
 
 pkgver() {
-  cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    # Get git version name
+    cd "${_name}"
+    git describe --long --tags | sed 's|\([^-]*-g\)|r\1|;s|-|.|g;s|^v||g'
 }
 
 build() {
-  cd $srcdir/$_pkgname
-  python setup.py build
-  python -W ignore -c "import json; from matlab_kernel.kernel import MatlabKernel; print(json.dumps(MatlabKernel.kernel_json))" > kernel.json
+    # Build files
+    cd "${srcdir}/${_name}"
+    python setup.py build
 }
 
 package() {
-  cd $srcdir/$_pkgname
-  python setup.py install --root="${pkgdir}" --optimize=1
+    # Install files
+    cd "${srcdir}/${_name}"
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
-  install -D -m644 LICENSE.txt $pkgdir/usr/share/licenses/${pkgname}/LICENSE
-  install -D -m644 kernel.json "$pkgdir/usr/share/jupyter/kernels/$_pkgname/kernel.json"
+    # Install license
+    install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  local _pyver=$(python --version | grep -o "3\.[0-9]")
-  local _pydir=/usr/lib/python${_pyver}/site-packages
-  cd $pkgdir/usr/share/jupyter/kernels/$_pkgname
-  ln -s "$_pydir/metakernel/images/logo-32x32.png"
-  ln -s "$_pydir/metakernel/images/logo-64x64.png"
+    # Input links to images
+    _pyver="$(python --version | grep -o "3\.[0-9]")"
+    _pypre="$(python -c 'import sys; print(sys.prefix)')"
+    _pydir="${_pypre}/lib/python${_pyver}/site-packages"
+    _lndir="${pkgdir}/usr/share/jupyter/kernels/${_name}"
+    install -dm 0755 "${_lndir}"
+    ln -s "${_pydir}/metakernel/images/logo-32x32.png" "${_lndir}/logo-32x32.png"
+    ln -s "${_pydir}/metakernel/images/logo-64x64.png" "${_lndir}/logo-64x64.png"
 }

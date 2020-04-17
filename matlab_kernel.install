@@ -1,0 +1,15 @@
+post_install() {
+    # Warn users
+    echo '[jupyter-matlab_kernel-git]==> WARNING!'
+    echo 'matlab-engine-for-python is listed as an optional dependency.'
+    echo 'The reason for this is the AUR packaged version is not a proper package,'
+    echo 'AND most people will not bother packaging MATLAB for arch.'
+    echo 'For proper integration; you can;'
+    echo '* Install MATLAB Engine API for Python directly from your MATLAB installation'
+    echo '  https://www.mathworks.com/help/matlab/matlab_external/install-the-matlab-engine-for-python.html'
+    echo '* Run the PKGBUILD for the API on a machine that already has MATLAB'
+    echo '  (Read through the script to make sure your MATLAB is detected correctly.)'
+    echo '* Check my MATLAB PKGBUILD on how to package your MATLAB installation.'
+    echo '  https://github.com/bbaserdem/Arch/tree/master/matlab'
+    echo 'Without a working MATLAB python API installation; the kernel will not work'
+}
