@@ -8,7 +8,7 @@ provides=('electron')
 conflicts=('electron')
 _commit=663d389925a9637609c07f1212edeca337f591be
 _chromiumver=80.0.3987.163
-pkgrel=1
+pkgrel=2
 pkgdesc='Electron compiled with wayland support via Ozone'
 arch=('x86_64')
 options=(debug !strip)
@@ -238,7 +238,9 @@ build() {
   ninja -C out/Release electron
   # Strip before zip to avoid
   # zipfile.LargeZipFile: Filesize would require ZIP64 extensions
-  strip -s out/Release/electron
+  if check_option strip y; then
+    strip -s out/Release/electron
+  fi
   ninja -C out/Release electron_dist_zip
   # ninja -C out/Release third_party/electron_node:headers
 }
