@@ -2,7 +2,7 @@
  
 pkgname=distccd-x86_64
 arch=(armv7h aarch64)
-_date=20200410
+_date=20200417
 # inspect source tarball under $name/share/gcc-x.y.z
 pkgver=9.3.0.$_date
 pkgrel=1
@@ -23,9 +23,9 @@ validpgpkeys=(
 )
 sha256sums=('23e791054de2b2599699482fdd880066c9d03758f9e38eb4634dc571cb90959e'
             'ea406b82e10b7084192d0a480ec24ee889a6a592ea3e339dc81cf3a6f1058bf9')
-sha256sums_armv7h=('a1600e7b78a77f2e945da9cac8a8d21ef8d1365dd502744231d41c7f3db9298d'
+sha256sums_armv7h=('fcceedd50c7e9f3f441f8407b650e0308e937d62f0a49ea3945e26ca655565ca'
                    'SKIP')
-sha256sums_aarch64=('998d180d638d61137cf2b926c04710bf27a8092613bc3254e082caf3abe358b3'
+sha256sums_aarch64=('acab4c8ffeb253d09dea86f222fb31a7429a471bc69ba43ba97b1eb962e069ba'
                     'SKIP')
 
 package() {
