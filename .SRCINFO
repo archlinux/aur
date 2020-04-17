@@ -1,16 +1,15 @@
 pkgbase = kiwix-lib
 	pkgdesc = Library providing the Kiwix software core
 	pkgver = 9.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kiwix/kiwix-lib
 	arch = armv7h
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = libffi
 	makedepends = meson
 	makedepends = gtest
-	depends = libzim>=6.1.0
+	depends = libzim>=6.1.1
 	depends = pugixml
 	depends = mustache=3.2.1
 	depends = xapian-core
