@@ -6,10 +6,12 @@ After=network.target
 Type=simple
 User=fah
 DynamicUser=yes
+PermissionsStartOnly=true
+ConfigurationDirectory=foldingathome
 StateDirectory=fah
 WorkingDirectory=/var/lib/fah
-ExecStartPre=/usr/bin/cp /etc/foldingathome/config.xml /var/lib/fah/
-ExecStart=/usr/bin/FAHClient
+ExecStartPre=/usr/bin/chown fah:fah /etc/foldingathome/config.xml
+ExecStart=/usr/bin/FAHClient --config /etc/foldingathome/config.xml
 CPUSchedulingPolicy=idle
 IOSchedulingClass=3
 
