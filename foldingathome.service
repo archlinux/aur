@@ -11,6 +11,8 @@ WorkingDirectory=/var/lib/fah
 ReadWritePaths=/etc/foldingathome/config.xml
 ExecStartPre=/usr/bin/cp /etc/foldingathome/config.xml /var/lib/fah/
 ExecStart=/usr/bin/FAHClient
+CPUSchedulingPolicy=idle
+IOSchedulingClass=3
 
 [Install]
 WantedBy=multi-user.target
