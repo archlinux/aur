@@ -5,7 +5,6 @@ After=network.target
 [Service]
 Type=simple
 User=fah
-SupplementaryGroups=video
 DynamicUser=yes
 ConfigurationDirectory=foldingathome
 StateDirectory=fah
