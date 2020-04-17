@@ -1,0 +1,17 @@
+pkgbase = ruby-ruby-vips
+	pkgdesc = Ruby extension for the vips image processing library.
+	pkgver = 2.0.17
+	pkgrel = 1
+	url = https://github.com/libvips/ruby-vips
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = libvips
+	depends = ruby-ffi
+	noextract = ruby-vips-2.0.17.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ruby-vips-2.0.17.gem
+	b2sums = 404416e476adabcfc71324d6a0afd8133332f7db1e89a7721857aa4682cd3d32457920c19705c5f05ce0c0f2080ebf3c67092ad5d7f3757b86e438bbedb9f976
+
+pkgname = ruby-ruby-vips
+
