@@ -5,6 +5,7 @@ pkgbase = nautilus-gnome-disks-git
 	url = https://github.com/thebitstick/nautilus-gnome-disks
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = python-nautilus
 	depends = gnome-disk-utility
 	provides = nautilus-gnome-disks

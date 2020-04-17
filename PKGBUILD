@@ -1,13 +1,14 @@
 # Maintainer: TheBitStick <thebitstick@librem.one> <the@bitstick.rip>
 pkgname=nautilus-gnome-disks-git
 _pkgname=nautilus-gnome-disks
-pkgver=r2.fc84c48
+pkgver=r4.496beb7
 pkgrel=1
 pkgdesc="Allows you to restore/write a disk image to storage devices using GNOME Disks from Nautilus"
 arch=('any')
 url="https://github.com/thebitstick/nautilus-gnome-disks"
 license=('GPL3')
 depends=('python-nautilus' 'gnome-disk-utility')
+makedepends=('git')
 provides=('nautilus-gnome-disks')
 conflicts=('nautilus-gnome-disks')
 source=('git+https://github.com/thebitstick/nautilus-gnome-disks')
