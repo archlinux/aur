@@ -1,0 +1,32 @@
+pkgbase = nootka-git
+	pkgdesc = Tool for learning classical score notation (git)
+	pkgver = r3683.29c8ac7e
+	pkgrel = 1
+	url = http://nootka.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cmake
+	makedepends = qt5-base
+	makedepends = fftw
+	makedepends = libvorbis
+	makedepends = soundtouch
+	makedepends = alsa-lib
+	makedepends = git
+	depends = qt5-base
+	depends = fftw
+	depends = shared-mime-info
+	depends = libvorbis
+	depends = soundtouch
+	depends = alsa-lib
+	optdepends = libpulse: for PulseAudio
+	optdepends = jack: for JACK
+	optdepends = qt5-translations: for other languages support
+	conflicts = nootka
+	conflicts = nootka-hg
+	replaces = nootka-hg
+	source = nootka-git::git+https://www.opencode.net/seelook/nootka.git
+	md5sums = SKIP
+
+pkgname = nootka-git
+
