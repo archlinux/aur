@@ -3,7 +3,7 @@
 
 pkgname=amiitool
 pkgver=2
-pkgrel=2
+pkgrel=3
 pkgdesc='Reverse-engineered amiibo cryptography'
 url='https://github.com/socram8888/amiitool'
 arch=('x86_64')
@@ -16,16 +16,16 @@ md5sums=('a3c193286e4930fa903d742424f5cad5'
 _builddir="$pkgname-r$pkgver"
 
 prepare() {
-	cd "_$builddir"
-	patch -p1 < "${srcdir}/fix-mbedtls_include.patch"
+	cd "$_builddir"
+	patch -p1 < "$srcdir/fix-mbedtls_include.patch"
 }
 
 build() {
-	cd "_$builddir"
+	cd "$_builddir"
 	make prefix=/usr
 }
 
 package() {
-	cd "_$builddir"
+	cd "$_builddir"
 	make prefix=/usr DESTDIR="$pkgdir" install
 }
