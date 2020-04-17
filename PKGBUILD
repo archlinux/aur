@@ -2,7 +2,7 @@
 
 pkgname=cnpy-git
 pkgver=r53.4e8810b
-pkgrel=1
+pkgrel=2
 pkgdesc='Library to read/write .npy and .npz files in C/C++'
 arch=('i686' 'x86_64')
 url='https://github.com/rogersce/cnpy'
@@ -12,7 +12,6 @@ optdepends=()
 makedepends=('cmake' 'git')
 _name=cnpy
 provides=('cnpy')
-conflicts=('')
 source=("git+https://github.com/rogersce/cnpy.git")
 md5sums=('SKIP')
 
