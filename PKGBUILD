@@ -1,7 +1,7 @@
 # Maintainer: Hauke Rehfeld <aur.archlinux.org@haukerehfeld.de>
 pkgname=archivebox-git
 pkgver=r969.737c5c3
-pkgrel=6
+pkgrel=7
 pkgdesc="Create a local, static, browsable HTML clone of websites (it saves HTML, JS, media files, PDFs, images and more)."
 arch=('x86_64' 'i686')
 url="https://github.com/pirate/ArchiveBox/"
@@ -15,6 +15,7 @@ options=()
 source=("archivebox::git+${url}")
 noextract=()
 md5sums=('SKIP')
+license=('MIT')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -41,4 +42,5 @@ OUTPUT_DIR=\"\${OUTPUT_DIR:=\$HOME/.archivebox}\" \"${DST}/${pkgname%-git}/bin/a
 	install -Dm 755 "$SHFILE" "$pkgdir/usr/bin/archivebox"
 	set +x
 
+	install -Dm644 "$srcdir/${pkgname%-git}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
