@@ -5,12 +5,12 @@ After=network.target
 [Service]
 Type=simple
 User=fah
+SupplementaryGroups=video
 DynamicUser=yes
-PermissionsStartOnly=true
 ConfigurationDirectory=foldingathome
 StateDirectory=fah
 WorkingDirectory=/var/lib/fah
-ExecStartPre=/usr/bin/chown fah:fah /etc/foldingathome/config.xml
+ExecStartPre=!/usr/bin/chown -R fah:fah /etc/foldingathome
 ExecStart=/usr/bin/FAHClient --config /etc/foldingathome/config.xml
 CPUSchedulingPolicy=idle
 IOSchedulingClass=3

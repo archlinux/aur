@@ -1,7 +1,7 @@
 pkgbase = foldingathome
 	pkgdesc = A distributed computing project for simulating protein dynamics
 	pkgver = 7.6.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://foldingathome.org/
 	install = foldingathome.install
 	arch = x86_64
@@ -16,8 +16,10 @@ pkgbase = foldingathome
 	backup = etc/foldingathome/config.xml
 	source = https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/v7.6/fahclient_7.6.8-64bit-release.tar.bz2
 	source = foldingathome.service
+	source = GPUs.txt
 	sha256sums = 588253c0042dcb0a6b97c9e16ccb8189b316df051094be4202881120255e5d31
-	sha256sums = 76bcba46247d75668adcf1b0bb965e720cdefa9e24d325ed16a45e76a0074754
+	sha256sums = 694e5d6a76bb90c3db99514c21c85c6c2c8167c5c2dc87873ed9903d5217e330
+	sha256sums = 5944a6df06b42c5edd4e5f0922f16e3f04cb755bd248d0e610c9262f3814aff9
 
 pkgname = foldingathome
 
