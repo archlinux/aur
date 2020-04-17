@@ -5,11 +5,9 @@ pkgbase = marvin_dsc
 	url = https://github.com/Roidujeu/easy-android-sdk
 	arch = x86_64
 	license = MIT
-	makedepends = make>=3.0.0
-	depends = curl>=1.0.0
-	depends = unzip>=3.0.0
-	depends = tar>=1.0
-	depends = ncurses>=4.0.0
+	depends = curl
+	depends = unzip
+	depends = ncurses
 	source = marvin_dsc-1.0.0.tar.xz
 	sha256sums = 004853f3075986b9d7427f0c763f894c2ce155f4d1d1c6028691e738ca56ca24
 
