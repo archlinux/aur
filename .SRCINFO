@@ -1,6 +1,6 @@
 pkgbase = python-qrtools
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/qr-tools
 	arch = i686
 	arch = x86_64
@@ -23,4 +23,5 @@ pkgname = qtqr3
 	depends = python-qrtools
 	depends = python-pyqt5
 	provides = qtqr
+	conflicts = qtqr
 

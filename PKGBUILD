@@ -7,7 +7,7 @@ pkgname=(
   qtqr3
 )
 pkgver="2.0"
-pkgrel="1"
+pkgrel="2"
 url="https://launchpad.net/qr-tools"
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -31,6 +31,7 @@ package_python-qrtools() {
 
 package_qtqr3(){
   provides=(qtqr)
+  conflicts=(qtqr)
   pkgdesc="A Graphical interface QR Code generator and decoder."
   depends=("python" "python-qrtools" "python-pyqt5")
 
