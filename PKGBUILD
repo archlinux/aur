@@ -3,8 +3,8 @@
 # Contributor: Lari Tikkanen <lartza@outlook.com>
 
 pkgname=feedthebeast
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="Feed The Beast offers many different styles of Minecraft modpacks to the community, catering to all tastes."
 arch=('any')
 url='https://feed-the-beast.com/'
@@ -17,7 +17,7 @@ source=("$pkgname"
         "${pkgname}.desktop")
 noextract=("${pkgname}-$pkgver.jar")
 sha256sums=('0da942aa85086a6caebd497a31ea882e8259ad0e6989323926f9e32c2563d80f'
-            '47d6ce99fc052d12b587beaa11b94441336b8190525b30a9e45ee4622d2d6b50'
+            'de18ccf8c0aad4d0dc214cd017151f1ff57f2542cb61ca0080593fa94335df44'
             '9b1af045ee5c08237a64cdc8b4331f6cd18a054688ae44789bb456c708bbf7a7')
 
 package() {
