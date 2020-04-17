@@ -1,6 +1,6 @@
 pkgbase = python-objection
 	pkgdesc = runtime mobile exploration
-	pkgver = 1.8.3
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/sensepost/objection
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = python-objection
 	depends = python-delegator
 	depends = nodejs
 	depends = litecli
-	source = https://github.com/sensepost/objection/archive/1.8.3.tar.gz
-	sha256sums = cefe206ab0479b06c4ff3a88476f9756c3bafdf47af3ff1c73f812b7d5429944
+	source = https://github.com/sensepost/objection/archive/1.9.1.tar.gz
+	sha256sums = 1351f0b6ddb0e4c370912f2e2d790a5663fa50df9bb515842ee76a0412fec94d
 
 pkgname = python-objection
 
