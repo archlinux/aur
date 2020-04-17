@@ -1,16 +1,16 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=avif
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Library for encoding and decoding .avif files"
 arch=('i686' 'x86_64')
 url="https://github.com/AOMediaCodec/libavif"
 license=('BSD')
-depends=('glibc' 'aom' 'dav1d' 'libpng')
+depends=('glibc' 'aom' 'dav1d' 'libjpeg' 'libpng')
 makedepends=('git' 'cmake' 'nasm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AOMediaCodec/libavif/archive/v$pkgver.tar.gz")
-sha256sums=('197d93d20a6090627c1c7abf0449c8476534eeaed59fe9cc09b6e7ed7aaf9489')
+sha256sums=('dab591ae59aab87909ee171c830581b8c6a38e283b8a8a3b9645f0d32cd1957b')
 
 
 build() {
