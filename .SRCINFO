@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-mman-win32-git
+	pkgdesc = A light implementation of the mmap functions (mingw-w64)
+	pkgver = r29.2d1c576
+	pkgrel = 1
+	url = https://github.com/dlfcn-win32/dlfcn-win32
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-cmake
+	makedepends = git
+	depends = mingw-w64-crt
+	provides = mingw-w64-mman-win32
+	conflicts = mingw-w64-mman-win32
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/witwall/mman-win32.git
+	sha256sums = SKIP
+
+pkgname = mingw-w64-mman-win32-git
+
