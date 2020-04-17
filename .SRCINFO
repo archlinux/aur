@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-mariadb-connector-c
 	pkgdesc = MariaDB Connector/C is used to connect applications developed in C/C++ to MariaDB and MySQL databases (mingw-w64)
-	pkgver = 2.3.3
+	pkgver = 3.1.7
 	pkgrel = 1
 	url = https://mariadb.com/kb/en/mariadb/about-mariadb-connector-c
 	arch = any
@@ -9,20 +9,17 @@ pkgbase = mingw-w64-mariadb-connector-c
 	depends = mingw-w64-crt
 	depends = mingw-w64-openssl
 	depends = mingw-w64-zlib
-	provides = mingw-w64-libmariadbclient=2.3.3
+	depends = mingw-w64-curl
+	provides = mingw-w64-libmariadbclient=3.1.7
 	conflicts = mingw-w64-libmariadbclient
 	replaces = mingw-w64-libmariadbclient
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://archive.mariadb.org/connector-c-2.3.3/mariadb-connector-c-2.3.3-src.tar.gz
-	source = 0001-Fix-libnames-for-mingw-w64.patch
-	source = 0002-Fix-_SIZE_T_DEFINED-under-mingw-w64.patch
-	source = 0003-Use-fopen-rather-than-fopen_s-for-XP-compatibility.patch
-	sha1sums = 6fbf541a4465cd729c7f790a3d9cd337e8dd2666
-	sha1sums = 12a2d0b8d521dc097cecc3ea32efcaee0e7f9781
-	sha1sums = f07a59cdd02ad89e60edcb18a1cdc3ccda93fc2b
-	sha1sums = 3aa503bb7ad9b84c21cdef94f3a55d96a7fa8811
+	source = http://archive.mariadb.org/connector-c-3.1.7/mariadb-connector-c-3.1.7-src.tar.gz
+	source = 0001-Fix-mingw-w64-build.patch
+	sha1sums = 5d88983a1ace1885fc22f5bfb1ee28a23187e412
+	sha1sums = a426c9d60a88035400311291a59dea63625c82e9
 
 pkgname = mingw-w64-mariadb-connector-c
 
