@@ -8,8 +8,8 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('429' '493' '579' '983' '256' '798')
-_merge_requests_to_use=('983' '1124' '256') # safe pick
+# available MR: ('429' '493' '579' '983' '798')
+_merge_requests_to_use=('983' '1124') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
