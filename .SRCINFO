@@ -1,0 +1,18 @@
+pkgbase = regrader.lv2-git
+	pkgdesc = A delay effect where the repeats degrade in resolution.
+	pkgver = v1.0.0.r1.gd95b253
+	pkgrel = 1
+	url = https://github.com/linuxmao-org/regrader-port
+	arch = x86_64
+	groups = lv2-plugins
+	license = MIT
+	depends = git
+	depends = pkgconf
+	depends = cairo
+	depends = jack
+	depends = mesa
+	source = regrader.lv2-git::git+https://github.com/linuxmao-org/regrader-port
+	md5sums = SKIP
+
+pkgname = regrader.lv2-git
+
