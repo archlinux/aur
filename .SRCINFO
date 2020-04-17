@@ -1,6 +1,6 @@
 pkgbase = ripgrep-all-bin
 	pkgdesc = rga: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.
-	pkgver = 0.9.3
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/phiresky/ripgrep-all
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = ripgrep-all-bin
 	conflicts = rga-bin
 	conflicts = ripgrep-all
 	conflicts = ripgrep-all-git
-	source = https://github.com/phiresky/ripgrep-all/releases/download/0.9.3/ripgrep_all-0.9.3-x86_64-unknown-linux-musl.tar.gz
-	sha1sums = 035db954d13d9c282eb9a2689f9ab7fb32366c91
+	source = https://github.com/phiresky/ripgrep-all/releases/download/v0.9.5/ripgrep_all-v0.9.5-x86_64-unknown-linux-musl.tar.gz
+	sha1sums = 61b0096e07ef1f6b5ec162bb560dbce8841c46db
 
 pkgname = ripgrep-all-bin
 
