@@ -1,7 +1,7 @@
 # Maintainer:  Dave Kleinschmidt <dave.f.kleinschmidt at gmail dot com>
 _pkgname=spaceship-prompt
 pkgname=$_pkgname-git
-pkgver=LATEST
+pkgver=v3.11.2.r13.g50e371f
 pkgrel=1
 epoch=
 pkgdesc="A Zsh prompt for Astronauts"
@@ -12,6 +12,8 @@ depends=('zsh')
 makedepends=('git')
 conflicts=('spaceship-zsh-theme-git'
            'spaceship-prompt')
+provides=('spaceship-zsh-theme'
+          'spaceship-prompt')
 install="${pkgname}.install"
 source=("git+https://github.com/denysdovhan/${_pkgname}.git"
         "$pkgname.install")
