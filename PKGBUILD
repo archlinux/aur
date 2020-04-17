@@ -75,7 +75,7 @@ _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
-        #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
+        "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
@@ -323,6 +323,7 @@ done
 
 sha512sums=('42a160b6d51619e77ef3743cdafc18aa3d0c86aec0508f057730cd25f21dbb5765f20627dc938d9c9c348f64bb5608aab790d6ff8984b76a8980522d45d9cc39'
             'SKIP'
+            '5346af9864b905bb34dd7abb00b9386b4439338875c7a5d55acf1ee56a2320a7f58afa7995e00c9300664fd8a8c7d941fd91e75566dd3a04dbd004237954db9d'
             'bb6892612524d0cd667048d4a3d8352b04fca0e65398dc96964cc29241c7167f5f3e7d8a1a10c8afa7167a374611f2f3dd57dab04ed351cbedc4fcac4103669c'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
             'eacf9612b758381b1490409911c64a4d0a96f33cdfc5a1cbcfd4c5feb70d08a350ea017f8ef853d74906158d26ec5cd57ce7109f00d4593966fb0c05eff66ae4'
