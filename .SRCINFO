@@ -1,12 +1,13 @@
 pkgbase = sdl2_compat12-git
 	pkgdesc = Provides a binary-compatible API for programs written against SDL 1.2, but it uses SDL 2.0 behind the scenes.
-	pkgver = 8102943c
+	pkgver = r120+.dc55edfe5d2f+
 	pkgrel = 1
 	url = https://hg.libsdl.org/sdl12-compat/
 	arch = i686
 	arch = x86_64
 	license = ZLIB
 	makedepends = cmake
+	makedepends = mercurial
 	depends = sdl2
 	provides = sdl
 	conflicts = sdl

@@ -25,7 +25,6 @@ prepare() {
 
 pkgver() {
   cd sdl12-compat 
-  #git log | head -n1 | sed -e 's/^commit\s*\(........\).*/\1/'
   printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
