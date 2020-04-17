@@ -1,19 +1,16 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 
 pkgname=pulumi
-pkgver=1.14.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Modern Infrastructure as Code'
 arch=('x86_64')
 url="https://github.com/$pkgname/$pkgname"
 license=('GPL')
 depends=('glibc')
-makedepends=(
-  'git'
-  'go-pie'
-)
+makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('29aff43b9b9daf20f5ae251af7b184273d3262e9fa28b52e9792de978e456470')
+sha256sums=('615a836b4cca33250bee178bba969b5358025a615cd491e964bc2da5c8159e86')
 
 _plugins=(
   "sdk/nodejs/cmd/pulumi-language-nodejs"
@@ -28,7 +25,7 @@ build() {
   # Build the `pulumi` executable
   pushd "pkg" > /dev/null && go build \
     -trimpath \
-    -ldflags "-X github.com/pulumi/pulumi/pkg/version.Version=${pkgver} -extldflags ${LDFLAGS}" \
+    -ldflags "-X github.com/pulumi/pulumi/pkg/v2/version.Version=${pkgver} -extldflags ${LDFLAGS}" \
     -o "${srcdir}/${pkgname}-${pkgver}/bin/${pkgname}" \
     "./cmd/${pkgname}" \
   && popd > /dev/null
