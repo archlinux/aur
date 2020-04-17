@@ -1,0 +1,14 @@
+pkgbase = uniconize
+	pkgdesc = A workaround for Wine games blackscreening on sway
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/neXromancers/uniconize
+	arch = x86_64
+	license = MPL2
+	makedepends = rust
+	depends = gcc-libs
+	source = uniconize-1.0.0.tar.gz::https://static.crates.io/crates/uniconize/uniconize-1.0.0.crate
+	sha512sums = ec608efce6934b48d130c010aae7f457443a2d7b07663de9bcd1e0627d03671f081a520f772967b94f10e461668281101ea9596fdb296a7b7cf43fbf00c1286c
+
+pkgname = uniconize
+
