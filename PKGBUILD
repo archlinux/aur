@@ -6,11 +6,11 @@
 
 pkgname=st-ruifm-git
 _pkgname=st-ruifm
-pkgver=0.8.2.r1102.50a6c3e
-pkgrel=1
+pkgver=0.8.2.r1105.50a6c3e
+pkgrel=2
 pkgdesc='Simple virtual terminal emulator for X'
 url='https://github.com/ruifm/st.git'
-arch=('i686' 'x86_64')
+arch=('any')
 license=('MIT')
 options=('zipman')
 depends=('libxft')
@@ -25,6 +25,12 @@ pkgver() {
   cd "${_pkgname}"
   _pkgver=$(awk '/VERSION/ {print $3}' config.mk|head -1)
   echo "${_pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${_pkgname}"
+  # skip terminfo which conflicts with nsurses
+  sed -i '/tic /d' Makefile
 }
 
 build() {

@@ -1,10 +1,9 @@
 pkgbase = st-ruifm-git
 	pkgdesc = Simple virtual terminal emulator for X
-	pkgver = 0.8.2.r1102.50a6c3e
-	pkgrel = 1
+	pkgver = 0.8.2.r1105.50a6c3e
+	pkgrel = 2
 	url = https://github.com/ruifm/st.git
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = ncurses
 	makedepends = libxext
