@@ -1,6 +1,6 @@
 # Maintainer: Souper <me at souper dot dev>
 pkgname=soup-launcher-v2-git
-pkgver=0.1.12
+pkgver=0.1.14
 pkgrel=1
 _srcname="SoupLauncher-$pkgver"
 pkgdesc='Soup Launcher is a custom Minecraft launcher specifically designed for Modded Minecraft. Another attempt at making a Minecraft Launcher.'
