@@ -1,5 +1,5 @@
 pkgname=retdec-git
-pkgver=20171213_b19112d
+pkgver=20200417_bc01f3b0
 pkgrel=1
 arch=('x86' 'x86_64')
 pkgdesc="RetDec is a retargetable machine-code decompiler based on LLVM."
