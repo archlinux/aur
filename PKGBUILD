@@ -1,5 +1,5 @@
-# Maintainer: Jonas Köritz <jonas.koeritz@gmail.com>
-# Contributor: 	Olivier Médoc <o_medoc@yahoo.fr>
+# Maintainer: Jonas Köritz <jonas.koeritz at gmail dot com>
+# Contributor: 	Olivier Médoc <o_medoc at yahoo dot fr>
 
 pkgname=('libvhdi-git')
 pkgver=r142.58c6aa2
