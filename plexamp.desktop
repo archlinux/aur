@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Plexamp
+GenericName=Music Player
+Comment=Play music from Plex
+Type=Application
+Icon=plexamp
+Exec=Plexamp.AppImage
+Categories=Music;Player;
+Keywords=Music;Entertainment
+StartupNotify=true

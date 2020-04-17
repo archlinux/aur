@@ -1,0 +1,20 @@
+pkgbase = plexamp-appimg
+	pkgdesc = Play music from Plex
+	pkgver = 3.0.0
+	pkgrel = 0
+	url = https://plexamp.plex.tv
+	arch = x86_64
+	license = MIT
+	depends = fuse
+	provides = plexamp
+	conflicts = plexamp
+	options = !strip
+	source = https://plexamp.plex.tv/plexamp.plex.tv/desktop/Plexamp-3.0.0.AppImage
+	source = plexamp.desktop
+	source = plexamp.svg::https://plexamp.com/img/plexamp_transparent.svg
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = plexamp-appimg
+
