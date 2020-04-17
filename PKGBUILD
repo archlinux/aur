@@ -7,11 +7,11 @@
 # Compiled with 'nogui' option
 # Included is a user systemd service. Try: systemctl status --user bridge.service
 # You can login and register accounts using the interactive cli
-# Names screen session accessible as: screen -R -S bridgedaemon
+# Named screen session accessible as: screen -R -S bridgedaemon
 
 pkgname=protonmail-bridge-nogui
 pkgver=1.2.6
-pkgrel=1
+pkgrel=22
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
 url="https://www.protonmail.com/bridge"
