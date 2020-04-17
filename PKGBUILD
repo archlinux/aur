@@ -4,7 +4,7 @@ pkgname=('pipewire-git'
          'pipewire-jack-git'
          'pipewire-pulse-git'
          )
-pkgver=0.3.2.11.ge00c0ffd
+pkgver=0.3.2.73.gdfd1adf8
 pkgrel=1
 pkgdesc='Server and user space API to deal with multimedia pipelines. (GIT version)'
 arch=('x86_64')
@@ -90,6 +90,7 @@ package_pipewire-git() {
   provides=('pipewire'
             "libpipewire-${pkgver:0:3}.so"
             )
+  conflicts=('pipewire')
   backup=('etc/pipewire/pipewire.conf')
   install=pipewire-git.install
 
@@ -107,7 +108,7 @@ package_pipewire-git() {
 
 package_pipewire-docs-git() {
   pkgdesc='Server and user space API to deal with multimedia pipelines. (documentation)(GIT Version)'
-  provides=('pipewire-dics')
+  provides=('pipewire-docs')
   conflicts=('pipewire-docs')
 
   mv docs/* "${pkgdir}"
