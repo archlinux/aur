@@ -4,10 +4,10 @@ pkgname=pegasus-metadata-editor-git
 _pkgname=pegasus-metaed
 pkgver=continuous.r0.gc7aa199
 pkgrel=1
-pkgdesc='A cross-platform Super Nintendo emulator'
+pkgdesc='A graphical metadata editor for Pegasus'
 arch=('x86_64')
-makedepends=('clang' 'gendesk' 'zip')
-depends=('mono' 'sdl2')
+makedepends=('wget' 'gendesk' 'qt5-base')
+depends=('git' 'qt5-tools')
 url='https://github.com/mmatyas/pegasus-metadata-editor'
 license=('GPL3')
 source=("pegasus-metadata-editor-git::git+https://github.com/mmatyas/pegasus-metadata-editor.git")
@@ -20,7 +20,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
-	gendesk -f --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --exec "/usr/bin/${_pkgname}" -n
+	gendesk -f --pkgname "Pegasus Metadata Editor" --pkgdesc "${pkgdesc}" --exec "/usr/bin/${_pkgname}" -n
 }
 
 build() {
@@ -33,8 +33,7 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}"
-	# install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-	install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+	install -Dm644 "Pegasus Metadata Editor.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
 	wget https://raw.githubusercontent.com/mmatyas/pegasus-frontend/master/assets/icon.png
 	install -Dm644 "icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
