@@ -11,7 +11,7 @@ pkgbase = marvin_dsc
 	depends = tar>=1.0
 	depends = ncurses>=4.0.0
 	source = marvin_dsc-1.0.0.tar.xz
-	sha256sums = 62a34fa0906b1298e191ed599914ce6c45565f8581a21f1e6226bbb900b90cd5
+	sha256sums = 004853f3075986b9d7427f0c763f894c2ce155f4d1d1c6028691e738ca56ca24
 
 pkgname = marvin_dsc
 
