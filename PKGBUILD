@@ -1,10 +1,11 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Jonathan Kotta <jpkotta@gmail.com>
 # Contributor: paul2lv <paul2lv@gmail.com>
 # Contributor: dtw <dibblethewrecker@gmail.com>
 
 pkgname=foldingathome
 pkgver=7.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A distributed computing project for simulating protein dynamics'
 arch=(x86_64)
 url=https://foldingathome.org/
