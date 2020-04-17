@@ -24,8 +24,8 @@ pkgbase = zulu-embedded-jdk8
 	provides = java-environment=8
 	provides = java-runtime=8
 	options = !strip
-	source = https://cdn.azul.com/zulu/bin/zulu8.44.0.11-ca-jdk8.0.242-linux_x64.tar.gz
-	sha256sums = 2db117fcaeec0ccd00d08fc3bb374aa15d871a01120d7090cf91fe9764756ae9
+	source = https://cdn.azul.com/zulu/bin/zulu8.46.0.19-ca-jdk8.0.252-linux_x64.tar.gz
+	sha256sums = ab8a4194006f12dd48bf7f176ca7879706d3f8fc7d3208313a46cc9ee2270716
 
 pkgname = zulu-embedded-jdk8
 
