@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-every-day
 	pkgdesc = Standalone Web Browser from Mozilla — Nightly build (Updated every day) (en-US)
-	pkgver = 77.0a1.r20200417
+	pkgver = 77.0a1.20200417
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/nightly
 	arch = i686
