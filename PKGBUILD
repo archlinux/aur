@@ -3,7 +3,7 @@
 pkgbase="nginx-lazerl0rd-git"
 pkgname=("nginx-lazerl0rd-git" "nginx-src-lazerl0rd-git")
 pkgver=1.17.10
-pkgrel=2
+pkgrel=3
 epoch=1
 arch=("i686" "x86_64")
 url="https://github.com/lazerl0rd/nginx"
@@ -65,7 +65,7 @@ _common_flags=(
 _stable_flags=(
 	--add-module="../ngx_brotli"
 	--add-module="../nginx_cookie_flag_module"
-	--add-module="../njs"
+	--add-module="../njs/nginx"
 	--build="lazerl0rd"
 	--with-http_v2_hpack_enc
 	--with-http_v3_module

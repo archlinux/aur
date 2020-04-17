@@ -1,6 +1,6 @@
 pkgbase = nginx-lazerl0rd-git
 	pkgver = 1.17.10
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/lazerl0rd/nginx
 	arch = i686
