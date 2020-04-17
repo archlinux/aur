@@ -33,6 +33,7 @@ prepare() {
 build() {
     cd "$srcdir/build"
     cmake \
+        -DBUILD_TESTING=ON \
         -DBUILD_SHIBBOLETH_SUPPORT=ON \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX='/usr' \
@@ -40,7 +41,12 @@ build() {
     make
 }
 
-package () {
+check() {
+    cd "$srcdir/build"
+    make test
+}
+
+package() {
     cd "$srcdir/build"
     make DESTDIR="$pkgdir" install
 }
