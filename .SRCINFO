@@ -1,0 +1,20 @@
+pkgbase = journable-git
+	pkgdesc = A simple bullet journal.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitlab.gnome.org/BjoernDaase/journable
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = cmake
+	depends = gtk3
+	depends = appstream-glib
+	depends = python
+	provides = journable
+	conflicts = journable
+	source = git+https://gitlab.gnome.org/BjoernDaase/journable.git
+	md5sums = SKIP
+
+pkgname = journable-git
+
