@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/feelpp"
 license=('LGPL')
 depends=('cln' 'mumps' 'slepc' 'gmsh' 'fftw' 'ann' 'glpk' 'gsl' 'python')
-makedepends=('cmake' 'clang')
+makedepends=('cmake')
 source=("${pkgname}-${pkgver}::git+https://github.com/feelpp/feelpp.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
@@ -29,8 +29,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_C_COMPILER=/usr/bin/clang \
-    -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
     -DPETSC_DIR=/opt/petsc/linux-c-opt/ \
     -DSLEPC_DIR=/opt/slepc/linux-c-opt/ \
     -DFEELPP_MINIMAL_CONFIGURATION=ON \
@@ -45,14 +43,15 @@ build() {
     -DFEELPP_ENABLE_FFTW=ON \
     -DFEELPP_ENABLE_GSL=ON \
     ..
-  # templates take a lot of ram
-  make -j1
+  make
 }
 
 package() {
   cd ${pkgname}-${pkgver}/build
   make DESTDIR="$pkgdir" install
-  rm "$pkgdir"/usr/bin/ginsh
-  rm "$pkgdir"/usr/lib/libz.a
+  rm "$pkgdir"/usr/bin/{ginsh,gflags_completions.sh}
+  rm "$pkgdir"/usr/lib/*.a
+  rm -r "$pkgdir"/usr/doc
+  rm -r "$pkgdir"/home
 }
 
