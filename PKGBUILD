@@ -2,7 +2,7 @@
 
 pkgname=python-ijson
 _pkgname=ijson
-pkgver=2.3
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Iterative JSON parser with Pythonic interface"
 arch=('any')
@@ -10,8 +10,8 @@ url="https://github.com/isagalaev/ijson"
 license=('custom')
 depends=('python' 'yajl')
 makedepends=('python-setuptools')
-source=("https://github.com/isagalaev/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('5db72cc5ebad786ee2cf85ae277ae068c14f965e0747fd8b65bf4d8d9c4c8395')
+source=("https://github.com/ICRAR/${_pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('0de71830929c9fda9d5f7942511cad313c0df91ad4b4def2a0628e39e40adc52')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
