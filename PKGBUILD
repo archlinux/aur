@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-aufs
 # pkgname=('linux-aufs' 'linux-aufs-headers' 'linux-aufs-docs')
 _major=5.6
-_minor=4
+_minor=5
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -71,8 +71,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0002-ALSA-hda-Fix-potential-access-overflow-in-beep-helpe.patch"
+        "${_lucjanpath}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -315,12 +314,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('aa3c01539621ed85115710455c33aa5bd3c48217822a197deec50d1624cdf9aa06efe8761f70aa8802d5ccb6501ebb0045eb3552bbec397c2b9691519ac77eec'
+sha512sums=('42a160b6d51619e77ef3743cdafc18aa3d0c86aec0508f057730cd25f21dbb5765f20627dc938d9c9c348f64bb5608aab790d6ff8984b76a8980522d45d9cc39'
             'SKIP'
             '334a05f6a2c51f96095c1305df398c822815ed770815c1dea915f22ba3031d0eff56c10cd97ccbdca846d1365d36671362be24ff7114cd49b936fbeed23558fa'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
-            '8064aa16172a42a3f23cff6278056a5c2ff7fa6560f3b975e4a7dfd7ce5d00f15af851fd4ef1f40a78707aeaad5a1eef3012ef5f7fb9242ca584b3a230d343cd'
-            'e0b39955fd3a7d558aea0ad72ebcd59eb649c47d9270deea3130f7a3703aa4e319727ab97a95cd365e1e7fad0a9ab31fd0787b36a22858012af5f337153ab48f'
+            'eacf9612b758381b1490409911c64a4d0a96f33cdfc5a1cbcfd4c5feb70d08a350ea017f8ef853d74906158d26ec5cd57ce7109f00d4593966fb0c05eff66ae4'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             '581dc1160191a581f0b017d0e8ef4a8a8c59442ab596f748f323b41406e2cd4a3290d4e13e43932082b56f2904ad19ea1f3c93ab5af1ab4fdf1efadff6fc99f2')
 
