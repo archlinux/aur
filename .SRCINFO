@@ -9,7 +9,7 @@ pkgbase = sameboy-git
 	makedepends = make
 	makedepends = git
 	depends = sdl2
-	source = git+ssh://git@github.com/LIJI32/SameBoy.git
+	source = git+https://github.com/LIJI32/SameBoy
 	sha1sums = SKIP
 
 pkgname = sameboy-git
