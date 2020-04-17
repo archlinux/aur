@@ -1,8 +1,8 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 
 pkgname=arm-linux-gnueabihf-armcl-opencl+neon
-pkgver=19.02
-pkgrel=4
+pkgver=20.02.1
+pkgrel=1
 
 epoch=
 pkgdesc="ARM Computer Vision and Machine Learning Library (armv7a OpenCL + NEON Backends)"
@@ -18,7 +18,7 @@ provides=()
 conflicts=( 'arm-linux-gnueabihf-armcl-neon' )
 replaces=()
 backup=()
-options=( !strip )
+options=( '!strip' '!emptydirs' 'staticlibs' )
 install=
 changelog=
 source=("git+https://github.com/ARM-software/ComputeLibrary.git")
