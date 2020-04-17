@@ -7,11 +7,12 @@ githuborg=SkycoinProject
 pkgdesc="Skywire: Building a New Internet. Skycoin.com"
 pkgver=0.2.1
 pkggopath="github.com/${githuborg}/${pkgname1}"
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'aarch64' 'armv7' 'armv8' 'armv7l' 'armv7h')
 url="https://${pkggopath}"
 license=()
 makedepends=(git go skycoin-keyring)
+depends=(networkmanager)
 #source=("git+${url}.git#branch=${BRANCH:-develop}"
 source=("git+https://github.com/SkycoinProject/skybian.git#branch=${BRANCH:-develop}"
 "PKGBUILD.sig")

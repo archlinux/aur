@@ -1,7 +1,7 @@
 pkgbase = skywire
 	pkgdesc = Skywire: Building a New Internet. Skycoin.com
 	pkgver = 0.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/SkycoinProject/skybian
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = skywire
 	makedepends = git
 	makedepends = go
 	makedepends = skycoin-keyring
+	depends = networkmanager
 	source = git+https://github.com/SkycoinProject/skybian.git#branch=develop
 	source = PKGBUILD.sig
 	validpgpkeys = DE08F924EEE93832DABC642CA8DC761B1C0C0CFC
