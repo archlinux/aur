@@ -1,0 +1,15 @@
+pkgbase = marvin_dsc
+	pkgdesc = A minimalist software which helps in setting up an android development environment.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Roidujeu/easy-android-sdk
+	arch = x86_64
+	license = MIT
+	depends = curl
+	depends = unzip
+	depends = ncurses
+	source = marvin_dsc-1.0.0.tar.xz
+	sha256sums = 2732308933d1f42325b8c0ab8d353836b4d549bd404442ca3dbf4f7f7604008d
+
+pkgname = marvin_dsc
+
