@@ -3,9 +3,9 @@ Version=1.0
 Name=Brutal Doom
 GenericName=Brutal Doom
 Type=Application
-Icon=/usr/share/pixmaps/brutal-doom.png
-Exec=brutal-doom
+Icon=brutal-doom
+Exec=brutal-doom %F
+MimeType=application/x-doom-wad;
 Keywords=game;
 Terminal=false
-Categories=Game
-
+Categories=Game;ActionGame;

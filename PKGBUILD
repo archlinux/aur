@@ -3,7 +3,7 @@
 
 pkgname=brutal-doom
 pkgver=21
-pkgrel=2
+pkgrel=3
 pkgdesc="Brutal Doom via the GzDoom engine."
 arch=(any)
 url="http://www.moddb.com/mods/brutal-doom"
@@ -20,13 +20,13 @@ source=(
 		'brutal-doom.desktop'
 )
 noextract=('brutalv21.pk3')
-sha1sums=(
-			'3260fccd428d9b8e9327e36978f80dc48fe31000'
-			'de01ec06563a442ed04649f5062cd1b61cfc1917'
-			'0255b97eb04619e43d65774eaccc257863ecdb36'
-			'8207776f36fd46a0ee85b72b047e79484e2079f3'
-			'0259b3c20a2749f28c8add5cd55755c51bd2cef6'
-			'1f9e71edef0131d24f0aced422ba7b7cb8573a1c'
+sha256sums=(
+			'd4c901a92757c9ae7d3a8437172e4669fe0a3e939229160c26f99269b704a227'
+			'7d285d342ba27a432e7b795fa1b7656bb9bd7cb9680105a8d7d565677fc56a9f'
+			'91f58cc1c670c5408100305463960c195200f8ad35619eedd2c531dc9c60badf'
+			'aee3fd4580da214b9c981534928de5dfef65461c459d5c56dd343bf579912b75'
+			'905cc17cccca54d3c4da821cdd974c8540deacd42534077ca4da9092c4a96074'
+			'9c2b7a7cd048fd4e6a7fe65b93376cf2d9a9fa4564b8f3cc7b2baac38ea8e5f3'
 	    )
 
 package() {

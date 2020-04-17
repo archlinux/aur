@@ -11,4 +11,8 @@ if  [ ! -f "$XDG_CONFIG_HOME/brutal-doom/gzdoom.ini" ]; then
     cp "/usr/share/games/brutal-doom/gzdoom.ini" "$XDG_CONFIG_HOME/brutal-doom/"
 fi
 
-gzdoom -config "$XDG_CONFIG_HOME/brutal-doom/gzdoom.ini"
+for arg in "$@"; do 
+    args="$args -file $arg" 
+done
+
+gzdoom -config "$XDG_CONFIG_HOME/brutal-doom/gzdoom.ini" $args
