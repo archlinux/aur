@@ -1,13 +1,14 @@
 # Maintainer: TheBitStick <thebitstick@librem.one> <the@bitstick.rip>
 pkgname=tsubasa-git
 _pkgname=tsubasa
-pkgver=r19.9e8c463
+pkgver=r27.2982c5a
 pkgrel=1
 pkgdesc="Script for sharing screenshots and/or status updates using ihabunek/toot"
 arch=('any')
 url="https://github.com/thebitstick/tsubasa"
 license=('GPL3')
 depends=('fish' 'gnome-screenshot' 'zenity')
+makedepends=('git')
 provides=('tsubasa')
 conflicts=('tsubasa')
 source=('git+https://github.com/thebitstick/tsubasa')
