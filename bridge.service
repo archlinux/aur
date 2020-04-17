@@ -1,0 +1,12 @@
+[Unit]
+Description=Desktop-Bridge: Protonmail Bridge - ProtonMail IMAP and SMTP Bridge
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/screen -Dm -S bridgedaemon sh -c "sleep 5; protonmail-bridge -c"
+Restart=always
+ExecStop=/usr/bin/screen -X -S bridgedaemon quit
+KillMode=process
+
+[Install]
+WantedBy=default.target
