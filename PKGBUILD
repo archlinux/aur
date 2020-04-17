@@ -2,7 +2,7 @@
 
 pkgname=python-occ
 _pkgname=pythonocc-core
-pkgver=0.18.2
+pkgver=7.4.0
 pkgrel=1
 pkgdesc="A python library whose purpose is to provide 3D modeling features"
 url="https://github.com/tpaviot/pythonocc-core"
@@ -11,7 +11,7 @@ license=('GPLv3')
 makedepends=('cmake' 'swig')
 depends=('oce' 'python')
 source=(https://github.com/tpaviot/${_pkgname}/archive/${pkgver}.tar.gz)
-md5sums=('dbff673c9fc61af78d0c6d34be1e498c')
+md5sums=('3cf3401e4912c0303ebab144e4f5234c')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
