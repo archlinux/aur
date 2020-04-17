@@ -4,8 +4,7 @@
 
 pkgname=protonmail-bridge
 pkgver=1.2.6
-pkgrel=2
-_pkgrel=1
+pkgrel=3
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
 url="https://www.protonmail.com/bridge"
@@ -19,11 +18,9 @@ optdepends=(
 conflicts=('protonmail-bridge-bin')
 options=('!emptydirs' '!strip')
 source=("git://github.com/ProtonMail/proton-bridge.git"
-        "protonmail-bridge.desktop"
-        "protonmail-bridge")
+        "protonmail-bridge.desktop")
 sha256sums=('SKIP'
-            '38638abfe99372a618a3b6e8939f1e94037203e1499cbd7c93fc6b0b47da0a2e'
-            '0b95101d33653e337e74e866a13b2a6006304a9a157e74ba36fa49b2b68ec826')
+            '38638abfe99372a618a3b6e8939f1e94037203e1499cbd7c93fc6b0b47da0a2e')
 
 prepare() {
     cd ${srcdir}/proton-bridge/
@@ -39,5 +36,5 @@ package() {
     install -D -m644 "${pkgdir}"/opt/protonmail-bridge/LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
     install -D -m644 "${pkgdir}"/opt/protonmail-bridge/logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/"${pkgname}".svg
     install -D -m644 "${srcdir}"/protonmail-bridge.desktop -t "${pkgdir}"/usr/share/applications/
-    install -D -m755 "${srcdir}"/protonmail-bridge -t "${pkgdir}"/usr/bin/
+    ln -s "/opt/protonmail-bridge/proton-bridge" "$pkgdir/usr/bin/protonmail-bridge"
 }
