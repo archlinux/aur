@@ -1,0 +1,18 @@
+pkgbase = fogpad.lv2-git
+	pkgdesc = A reverb where reflections can be frozen, filtered, pitch shifted and disintegrated.
+	pkgver = v1.0.0.r1.g618cbaf
+	pkgrel = 1
+	url = https://github.com/linuxmao-org/fogpad-port
+	arch = x86_64
+	groups = lv2-plugins
+	license = MIT
+	depends = git
+	depends = pkgconf
+	depends = cairo
+	depends = jack
+	depends = mesa
+	source = fogpad.lv2-git::git+https://github.com/linuxmao-org/fogpad-port
+	md5sums = SKIP
+
+pkgname = fogpad.lv2-git
+
