@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname='arrow'
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=3
 pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('parquet-cpp')
 conflicts=('parquet-cpp')
 makedepends=('apache-orc' 'boost' 'cmake' 'flatbuffers' 'python-numpy')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz")
-sha256sums=('d7b3838758a365c8c47d55ab0df1006a70db951c6964440ba354f81f518b8d8d')
+sha256sums=('4db2233c25d1ef14f90f9de8e9d808a2d386c67e7116405ddd22d8f981fe66c1')
 
 build(){
   cd "$srcdir"
@@ -36,6 +36,7 @@ build(){
                                       -DARROW_PLASMA=ON \
                                       -DARROW_TENSORFLOW=ON \
                                       -DARROW_USE_SIMD=ON \
+                                      -DARROW_SIMD_LEVEL=AVX2 \
                                       -DARROW_FLIGHT=ON \
                                       -DARROW_GANDIVA=OFF \
                                       -DARROW_PROTOBUF_USE_SHARED=ON \
