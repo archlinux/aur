@@ -1,0 +1,12 @@
+post_install() {
+  cat << 'EOF'
+  --> To join the Arch Linux team, please use team number 45032
+EOF
+}
+
+post_upgrade() {
+  cat << 'EOF'
+  --> Please migrate your configuration to /etc/foldingathome/config.xml
+EOF
+}
+

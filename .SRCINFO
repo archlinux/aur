@@ -1,8 +1,9 @@
 pkgbase = foldingathome
 	pkgdesc = A distributed computing project for simulating protein dynamics
 	pkgver = 7.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://foldingathome.org/
+	install = foldingathome.install
 	arch = x86_64
 	license = custom
 	depends = gcc-libs

@@ -5,7 +5,7 @@
 
 pkgname=foldingathome
 pkgver=7.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A distributed computing project for simulating protein dynamics'
 arch=(x86_64)
 url=https://foldingathome.org/
@@ -22,6 +22,7 @@ optdepends=(
   'opencl-nvidia: for folding with an NVIDIA GPU'
 )
 backup=(etc/foldingathome/config.xml)
+install=foldingathome.install
 source=(
   https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/v${pkgver%.*}/fahclient_${pkgver}-64bit-release.tar.bz2
   foldingathome.service
