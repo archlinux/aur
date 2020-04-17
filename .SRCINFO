@@ -11,7 +11,7 @@ pkgbase = zulu-embedded-jdk11
 	arch = x86_64
 	license = custom
 	depends = java-runtime-common>=3
-	depends = java-environment-common=3
+	depends = java-environment-common>=3
 	depends = ca-certificates-utils
 	depends = nss
 	depends = libjpeg-turbo

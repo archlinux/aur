@@ -1,6 +1,7 @@
 case "$CARCH" in
-    armv?h|aarch64) THIS_JDK='zulu-embedded-11' ;;
-    i686|x86_64)    THIS_JDK='zulu-embedded-13' ;;
+    armv?h)      THIS_JDK='zulu-embedded-11' ;;
+    aarch64)     THIS_JDK='zulu-embedded-13' ;;
+    i686|x86_64) THIS_JDK='zulu-embedded-14' ;;
 esac
 
 fix_default() {
@@ -30,6 +31,8 @@ post_install() {
   if [ ! -f /etc/ssl/certs/java/cacerts ]; then
     /usr/bin/update-ca-trust
   fi
+
+  /usr/bin/java -Xshare:dump
 }
 
 post_upgrade() {
@@ -41,6 +44,8 @@ post_upgrade() {
   if [ ! -f /etc/ssl/certs/java/cacerts ]; then
     /usr/bin/update-ca-trust
   fi
+
+  /usr/bin/java -Xshare:dump
 }
 
 pre_remove() {
