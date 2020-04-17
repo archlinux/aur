@@ -1,6 +1,6 @@
 # Maintainer: Arthur Poulet (arthur.poulet@sceptique.eu)
 pkgname=transfer-more
-pkgver=v0.5.1.r0.f9a54de
+pkgver=v0.5.2.r0.c184931
 pkgrel=1
 pkgdesc="Fast and lite file upload server (transfer.sh clone)"
 arch=('any')
