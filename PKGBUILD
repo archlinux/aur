@@ -21,7 +21,7 @@ pkgname=(
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
 _gitname='xbmc'
-pkgver=r54254.0275416dcde
+pkgver=r54744.7091757383c
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -34,7 +34,7 @@ makedepends=(
   'libvdpau' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
   'python-pycryptodomex' 'python-pillow' 'python-pybluez' 'python-simplejson'
   'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
-  'upower' 'giflib' 'rapidjson' 'ghostscript' 'git'
+  'upower' 'giflib' 'rapidjson' 'ghostscript' 'git' 'meson'
   # wayland
   'wayland-protocols' 'waylandpp>=0.2.7-1'
   # gbm
@@ -57,10 +57,11 @@ _libdvdcss_version="1.4.2-$_codename-Beta-5"
 _libdvdnav_version="6.0.0-$_codename-Alpha-3"
 _libdvdread_version="6.0.0-$_codename-Alpha-3"
 _ffmpeg_version="4.2.2-Matrix-Alpha1"
-_fmt_version="5.1.0"
+_fmt_version="6.1.2"
 _crossguid_version="8f399e8bd4"
 _fstrcmp_version="0.7.D001"
 _flatbuffers_version="1.11.0"
+_spdlog_version="1.5.0"
 
 source=(
   "git://github.com/xbmc/xbmc.git#branch=master"
@@ -72,6 +73,7 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/crossguid-$_crossguid_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
+  "http://mirrors.kodi.tv/build-deps/sources/spdlog-$_spdlog_version.tar.gz"
   cpuinfo
   000-python3.8.patch
 )
@@ -84,16 +86,18 @@ noextract=(
   "crossguid-$_crossguid_version.tar.gz"
   "fstrcmp-$_fstrcmp_version.tar.gz"
   "flatbuffers-$_flatbuffers_version.tar.gz"
+  "spdlog-$_spdlog_version.tar.gz"
 )
 sha256sums=('SKIP'
             '38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
             'a30b6aa0aad0f2c505bc77948af2d5531a80b6e68112addb4c123fca24d5d3bf'
             '0dba571f9809588cfbdc29d6a551dab4cd5736701653d9263847c9ac67bcde86'
-            '73d4cab4fa8a3482643d8703de4d9522d7a56981c938eca42d929106ff474b44'
+            '1cafc80701b746085dddf41bd9193e6d35089e1c6ec1940e037fcb9c98f62365'
             '3d77d09a5df0de510aeeb940df4cb534787ddff3bb1828779753f5dfa1229d10'
             'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
             '1789b97e790da8f2cb5ff827d15580878c8629fd889f5f038d7524dca43eacc9'
+            'b38e0bbef7faac2b82fed550a0c19b0d4e7f6737d5321d4fd8f216b80f8aee8a'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
             'edff38cea510817c3682c7c6086054ac49adaa478285093ea294d83db065b83f')
 
@@ -139,6 +143,7 @@ build() {
     -DENABLE_INTERNAL_CROSSGUID=ON \
     -DENABLE_INTERNAL_FSTRCMP=ON \
     -DENABLE_INTERNAL_FLATBUFFERS=ON \
+    -DENABLE_INTERNAL_SPDLOG=ON \
     -DENABLE_MYSQLCLIENT=ON \
     -DX11_RENDER_SYSTEM=gl \
     -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
@@ -149,6 +154,7 @@ build() {
     -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz" \
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz" \
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz" \
+    -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz" \
     ../xbmc
   make
   make preinstall
@@ -163,6 +169,7 @@ build() {
     -DENABLE_INTERNAL_CROSSGUID=ON \
     -DENABLE_INTERNAL_FSTRCMP=ON \
     -DENABLE_INTERNAL_FLATBUFFERS=ON \
+    -DENABLE_INTERNAL_SPDLOG=ON \
     -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
     -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
@@ -171,6 +178,7 @@ build() {
     -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz" \
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz" \
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz" \
+    -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz" \
     -DCORE_PLATFORM_NAME=wayland \
     -DWAYLAND_RENDER_SYSTEM=gl \
     ../xbmc
@@ -187,6 +195,7 @@ build() {
     -DENABLE_INTERNAL_CROSSGUID=ON \
     -DENABLE_INTERNAL_FSTRCMP=ON \
     -DENABLE_INTERNAL_FLATBUFFERS=ON \
+    -DENABLE_INTERNAL_SPDLOG=ON \
     -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
     -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
@@ -195,6 +204,7 @@ build() {
     -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz" \
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz" \
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz" \
+    -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz" \
     -DCORE_PLATFORM_NAME=gbm \
     -DGBM_RENDER_SYSTEM=gles \
     ../xbmc
