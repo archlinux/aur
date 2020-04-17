@@ -1,0 +1,15 @@
+pkgbase = tftools-bin
+	pkgdesc = A CLI helper for working with TensorFlow
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kamek-pf/tftools
+	arch = x86_64
+	license = MIT
+	depends = tensorflow
+	provides = tftools
+	conflicts = tftools
+	source = tftools::https://github.com/kamek-pf/tftools/releases/download/0.1.0/tftools-x86_64-unknown-linux-gnu
+	sha256sums = 08b146fc02e39de896ddbc92a97bb491977e87276802b3756dc88cc3830c4cf8
+
+pkgname = tftools-bin
+
