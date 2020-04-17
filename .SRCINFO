@@ -1,7 +1,7 @@
 pkgbase = contextfree
 	pkgdesc = A program that generates images from written instructions called a grammar
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.contextfreeart.org/
 	arch = i686
 	arch = x86_64

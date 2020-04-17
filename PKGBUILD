@@ -5,7 +5,7 @@
 
 pkgname=contextfree
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A program that generates images from written instructions called a grammar"
 arch=('i686' 'x86_64')
 url="https://www.contextfreeart.org/"
@@ -17,11 +17,12 @@ sha256sums=('d96cee09cee9022f25c0a085d68249df3e1d384017dd069b3a76fe0053ade977')
 
 
 build() {
-  # NOTE: 3.1 tarball packages files directly in the root of the archive
+  # NOTE: 3.1+ tarball packages files directly in the root of the archive
   # instead of under a directory.
   # cd "$srcdir/context-free-$pkgver"
   cd "$srcdir"
 
+  sed -i 's/c++14/c++17/' Makefile
   make
 }
 
