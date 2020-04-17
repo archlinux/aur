@@ -22,7 +22,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.xz")
 noextract=()
-sha256sums=('62a34fa0906b1298e191ed599914ce6c45565f8581a21f1e6226bbb900b90cd5')
+sha256sums=('004853f3075986b9d7427f0c763f894c2ce155f4d1d1c6028691e738ca56ca24')
 validpgpkeys=()
 
 build() {
@@ -33,9 +33,4 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	sudo make install
-}
-
-uninstall() {
-	sudo rm -rf /usr/bin/marvin
-	sudo rm -rf /usr/share/marvin
 }
