@@ -1,36 +1,32 @@
-# Maintainer: Nicola Squartini <tensor5@gmail.com>
+# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=eclair
-pkgver=0.2alpha11
-_commit=dbb4f5b467ef6af3f1337a2ffee0a4d0a035ab38
+pkgver=0.3.4
 pkgrel=1
-pkgdesc='A scala implementation of the Lightning Network'
+pkgdesc='A Scala implementation of the Lightning Network (GUI)'
 arch=('any')
 url='https://github.com/ACINQ/eclair'
-license=('Apache')
+license=('Apache-2.0')
 depends=('java-environment=8' 'java-openjfx')
-makedepends=('git' 'maven')
-source=("git+https://github.com/ACINQ/eclair.git#commit=${_commit}"
-        'eclair.sh')
-sha256sums=('SKIP'
-            'f70c72dfdcf25f09f1c72413b9302f81422db58bb8ed0c6c904ac2fb5432b414')
+makedepends=('maven' 'unzip')
+source=("https://github.com/ACINQ/eclair/archive/v0.3.4.tar.gz")
+md5sums=('f46ba8d738f5bb38593c7d3b8609dd35')
 
 build() {
-    cd ${pkgname}
-
-    mvn package -Dmaven.test.skip=true
-}
-
-check() {
-    cd ${pkgname}
-
-    mvn test
+  cd ${pkgname}-${pkgver}
+  mvn package -DskipTests
 }
 
 package() {
-    cd ${pkgname}
-
-    install -Dm644 eclair-node-gui/target/eclair-node-gui-*.jar \
-            "${pkgdir}/usr/share/${pkgname}/${pkgname}.jar"
-    install -Dm755 "${srcdir}/eclair.sh" "${pkgdir}/usr/bin/eclair"
+  mkdir -p "${pkgdir}/opt"
+  unzip ${pkgname}-${pkgver}/eclair-node-gui/target/eclair-node-gui-${pkgver}-*-bin.zip -d "${pkgdir}/opt"
+  mv "${pkgdir}/opt"/eclair* "${pkgdir}/opt"/eclair
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -s /opt/eclair/bin/eclair-cli "${pkgdir}/usr/bin/eclair"
+  ln -s /opt/eclair/bin/eclair-node-gui.sh "${pkgdir}/usr/bin/eclair-node-gui"
+  install -Dm644 "${pkgdir}/opt/eclair/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${pkgname}-${pkgver}/contrib/eclair-cli.bash-completion" -t "${pkgdir}/etc/profile.d/"
+  rm "${pkgdir}/opt/eclair/bin/eclair-node-gui.bat"
+  rm "${pkgdir}/opt/eclair/LICENSE"
 }
