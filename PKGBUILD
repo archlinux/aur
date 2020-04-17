@@ -11,6 +11,7 @@ url="https://www.languagetool.org/"
 license=('LGPL')
 groups=('libreoffice-extensions')
 depends=('libreoffice' 'java-runtime>=8')
+optdepends=('jre8-openjdk: java 8 or greater is required')
 source=("https://www.languagetool.org/download/LanguageTool-${pkgver}.oxt")
 noextract=("LanguageTool-${pkgver}.oxt")
 sha512sums=('0f1e430388e648057ea9ee91dea1171e83de6b601806c1499600693085c7ef3cee5051477efcf341976af85e36f263da0f4f5c2e5b55eb410346d359538b5baa')
