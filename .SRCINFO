@@ -1,6 +1,6 @@
 pkgbase = minecraft
 	pkgdesc = Minecraft Launcher
-	pkgver = 2.1.13509
+	pkgver = 2.1.13829
 	pkgrel = 1
 	url = https://www.minecraft.net/
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = minecraft
 	conflicts = minecraft-launcher
 	conflicts = minecraft-launcher-beta
 	source = https://launcher.mojang.com/download/Minecraft.deb
-	sha256sums = cd0ae1dc28f029e6bf2c61cb4a36bb244d4129519917d7a17a7f4c8ad98adb37
+	sha256sums = 2529439c003b4d05256f814e9e05a5d3e6a797f1be43f38660dcf3768798e6fd
 
 pkgname = minecraft
 
