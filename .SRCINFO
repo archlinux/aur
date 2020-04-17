@@ -1,22 +1,22 @@
 pkgbase = foldingathome
-	pkgdesc = Folding@Home is a distributed computing project which studies protein folding, misfolding, aggregation, and related diseases.
+	pkgdesc = A distributed computing project for simulating protein dynamics
 	pkgver = 7.5.1
-	pkgrel = 1
-	url = http://folding.stanford.edu/
-	install = foldingathome.install
+	pkgrel = 2
+	url = https://foldingathome.org/
 	arch = x86_64
-	license = CUSTOM
+	license = custom
+	depends = gcc-libs
 	depends = glibc
-	optdepends = opencl-nvidia: for folding with an nVidia GPU
-	optdepends = cuda: for folding with an nVidia GPU
-	optdepends = opencl-mesa: for folding with an older AMD GPU
+	depends = zlib
+	optdepends = cuda: for folding with an NVIDIA GPU
 	optdepends = opencl-amd: for folding with a newer AMD GPU
-	conflicts = foldingathome-v7
-	replaces = foldingathome-v7
+	optdepends = opencl-mesa: for folding with an older AMD GPU
+	optdepends = opencl-nvidia: for folding with an NVIDIA GPU
+	backup = etc/foldingathome/config.xml
 	source = https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/v7.5/fahclient_7.5.1-64bit-release.tar.bz2
 	source = foldingathome.service
-	md5sums = 5353688a1c5cb0a226ce8e24b8ecb771
-	md5sums = dd55dbae3fbe56f90bed0e40f2b0de3c
+	sha256sums = 69a2562a4bc30bf10e1954bedd8b96aaf57df7eafcfca828f29304fbbbc2521f
+	sha256sums = 8ddb89e8f9e9d66fc690a54b1d1c19e83cfdff29e198c5d31a7c485f451005a3
 
 pkgname = foldingathome
 

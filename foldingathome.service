@@ -4,8 +4,13 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/opt/fah
-ExecStart=/opt/fah/FAHClient --config /opt/fah/config.xml --exec-directory=/opt/fah --data-directory=/opt/fah
+User=fah
+DynamicUser=yes
+StateDirectory=fah
+WorkingDirectory=/var/lib/fah
+ReadWritePaths=/etc/foldingathome/config.xml
+ExecStartPre=/usr/bin/cp /etc/foldingathome/config.xml /var/lib/fah/
+ExecStart=/usr/bin/FAHClient
 
 [Install]
 WantedBy=multi-user.target
