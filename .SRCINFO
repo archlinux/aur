@@ -1,6 +1,6 @@
 pkgbase = xiaomi-adb-fastboot-tools
 	pkgdesc = Simple tool for managing Xiaomi devices on desktop using ADB and Fastboot
-	pkgver = 6.9.1
+	pkgver = 7.0
 	pkgrel = 1
 	url = https://szaki.github.io/XiaomiADBFastbootTools/
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = xiaomi-adb-fastboot-tools
 	makedepends = gendesk
 	depends = java-runtime>=11
 	depends = android-tools
-	source = xiaomi-adb-fastboot-tools-6.9.1.tar.gz::https://github.com/Szaki/XiaomiADBFastbootTools/archive/6.9.1.tar.gz
+	source = xiaomi-adb-fastboot-tools-7.0.tar.gz::https://github.com/Szaki/XiaomiADBFastbootTools/archive/7.0.tar.gz
 	source = xiaomi-adb-fastboot-tools.sh
-	sha256sums = e58d50bd297c71125b669e94ca6a7e99ccca708cf85787974b785f8c25a0e3ab
+	sha256sums = de93e8dfdf4631896fc99f07c164f6140177835468e221fd360d374e1dc32ff6
 	sha256sums = f170e8d5fce6990423bf914ac0a846a01c67885bc0fd13aaf888dc4be4a541e0
 
 pkgname = xiaomi-adb-fastboot-tools
