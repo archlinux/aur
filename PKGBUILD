@@ -3,8 +3,8 @@
 # Based on basilisk browser PKGBUILD
 
 pkgname=serpent-browser
-pkgver=2020.03.11
-pkgrel=2
+pkgver=2020.04.15
+pkgrel=1
 pkgdesc="Unbranded version of Basilisk web browser"
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -18,18 +18,18 @@ optdepends=('hunspell: spell checker and morphological analyzer'
             'ffmpeg: record, convert, and stream audio and video')
 makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'autoconf2.13')
 options=(!emptydirs !makeflags)
-_commit=88da01c294175f81091e1499374415404e27a57a
+_commit=20200408
 source=("https://github.com/MoonchildProductions/Basilisk/archive/v$pkgver.tar.gz"
-        "https://github.com/MoonchildProductions/UXP/archive/$_commit.tar.gz"
+        "https://github.com/MoonchildProductions/UXP/archive/RELBASE_$_commit.tar.gz"
         "serpent-browser.desktop")
-sha512sums=('4b0c4769b7bf2968aedad8f36a550e66e7ae9b91af11f8d5bdb4618091b81438ac8fa68ebdb7d33fbd6297dd4c73d35f7c4401c71e23d2d2a435b4240c8e963f'
-            'e56e3ec9ef06cea6c8482ed2a7c5278e2d34219827f4d093b2a0973b792cff0b8680a0093588ad035371b0b3f99e90cdea0bb633584cdbfe3acd76a62b2c6d3f'
+sha512sums=('bc24549f3d1c5634d3836cc58a361d2c9ff1d0d7840ace0fbf8e20810a40bf5fbab0bd4587bb261ecaf8c0ca08bb35a4887d56d7c598a6efc72c1dbb8a4987aa'
+            '4739c5921eea513faa76aef3fb017a68aba2edcfb948ffe82c6ef51af006e035a1eb890aefbdb274da7b759a8d5b811ae7c565448317f273ac57d5ccb6d7ef8a'
             'c30a3b149adada481165c2f207e25144ff55791d93dd9febfc6a15dbafac907277d9e0fa63b284abdf71dd5ffeb11fca8bcdec4e859d497364fb9524921d0073')
 
 prepare() {
   cd "$srcdir/Basilisk-$pkgver"
 
-  mv -T "$srcdir/UXP-$_commit" platform
+  mv -T "$srcdir/UXP-RELBASE_$_commit" platform
   ln -s serpent browser
   cat >.mozconfig <<END
 mk_add_options AUTOCLOBBER=1
@@ -47,7 +47,7 @@ ac_add_options --with-pthreads
 ac_add_options --enable-update-channel=release
 ac_add_options --enable-av1
 ac_add_options --enable-eme
-ac_add_options --enable-official-vendor
+ac_add_options --disable-official-vendor
 ac_add_options --enable-optimize="-O2 -msse2 -mfpmath=sse"
 ac_add_options --disable-gconf
 ac_add_options --disable-debug-symbols 
