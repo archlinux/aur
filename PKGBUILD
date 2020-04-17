@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.5.17
+pkgver=5.5.18
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -80,7 +80,6 @@ source=(
   "http://ck.kolivas.org/patches/5.0/5.5/5.5-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-0003-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch
 0004-drm-i915-Serialise-i915_active_acquire-with-__active.patch
 0005-drm-i915-gem-Take-runtime-pm-wakeref-prior-to-unbind.patch
 0006-drm-i915-gem-Avoid-parking-the-vma-as-we-unbind.patch
@@ -93,14 +92,13 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('40dab59ec83470bc321aeaed18ca49ca51ece088d1c3649891ed1fa53d855819'
+sha256sums=('e804347326d707a68720a16d71426cf037a355ea8a8bb28c2fcc7bdd088e3106'
             'SKIP'
             '0b414b6974b732cfb71b6f45b6210d127528aa6452132e9b9338719ac021bf06'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
             '37a9d61e8a0b5a73992e1397c3a9cc947d39e715f205f3c665eb157b96d58f98'
             '62b087dd679e096a18611648308c05c896c587b488631fef4df51524dc4d2b6c'
             'ab9b3259ca838688a02beb37df3ba0d058b3b3847b703e99352b193a1be961e6'
-            '32c0ca29f46c7335ed8f7c2052ee1eccc88287d88680e7d4d1a6104134abf5a2'
             '2dfd1fc8c6115a7633dca86df1098cc55e6401ec7cbee1c2d0f1cbcfa1d7bf78'
             'ef83a35e3516b456923be416606ccabfd05abe8ca587007a2fc00001c609ecca'
             'd8cb6bf029d5a3729149bdd6fb88b4d57691d37baf4e6d280283197693c82f24'
