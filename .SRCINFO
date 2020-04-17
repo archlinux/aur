@@ -1,7 +1,7 @@
 pkgbase = aarch64-linux-gnu-armcl-opencl+neon
 	pkgdesc = ARM Computer Vision and Machine Learning Library (arm64-v8a OpenCL + NEON Backends)
-	pkgver = 19.02
-	pkgrel = 3
+	pkgver = 20.02.1
+	pkgrel = 1
 	url = https://github.com/ARM-software/ComputeLibrary
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,8 @@ pkgbase = aarch64-linux-gnu-armcl-opencl+neon
 	makedepends = aarch64-linux-gnu-gcc
 	conflicts = aarch64-linux-gnu-armcl-neon
 	options = !strip
+	options = !emptydirs
+	options = staticlibs
 	source = git+https://github.com/ARM-software/ComputeLibrary.git
 	sha1sums = SKIP
 
