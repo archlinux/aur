@@ -1,0 +1,45 @@
+pkgbase = intel-caffe-git
+	pkgdesc = Intel Caffe
+	pkgver = 1.1.16
+	pkgrel = 1
+	url = https://bitbucket.org/STG-TCD/trinnity-caffe
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = boost-libs
+	depends = protobuf
+	depends = google-glog
+	depends = gflags
+	depends = hdf5
+	depends = python
+	depends = boost
+	depends = cython
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = ipython
+	depends = python-networkx
+	depends = python-nose
+	depends = python-pandas
+	depends = python-dateutil
+	depends = python-protobuf
+	depends = python-gflags
+	depends = python-yaml
+	depends = python-pillow
+	depends = python-six
+	depends = python-scikit-image
+	depends = openexr
+	depends = opencv>=4.0.0
+	depends = gtk3
+	depends = openmp
+	depends = onednn
+	optdepends = openblas: OpenBLAS for backend linear algebra ops,
+	optdepends = cblas: Use CBLAS for backend linear algebra ops,
+	optdepends = intel-mkl: Use Intel MKL for backend linear algebra ops
+	provides = caffe
+	conflicts = caffe
+	source = intel-caffe::git+https://github.com/intel/caffe.git
+	sha256sums = SKIP
+
+pkgname = intel-caffe-git
+
