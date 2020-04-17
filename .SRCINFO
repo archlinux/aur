@@ -1,13 +1,12 @@
 pkgbase = teamviewer-runit
 	pkgdesc = Teamviewer, runit init scripts
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/teamviewer-runit
 	arch = any
 	license = BSD3
 	depends = runit-rc
 	depends = teamviewer
-	optdepends = clamav-unofficial-sigs
 	replaces = teamviewer-runit
 	source = teamviewerd.run
 	source = teamviewerd.install
