@@ -1,13 +1,13 @@
 pkgbase = non-mixer-lv2-git
 	pkgdesc = Jack audio mixer from the NON DAW + LV2 plugin patch by falkTX and others
-	pkgver = 1.2.0.r8.g41a318f
+	pkgver = 1.1.0.r735.g7b1fc6e
 	pkgrel = 1
 	url = http://non.tuxfamily.org/
 	arch = x86_64
 	arch = i686
 	license = GPL2
 	makedepends = git
-	depends = ntk-git
+	depends = ntk
 	depends = jack
 	depends = liblo
 	depends = ladspa
@@ -19,7 +19,7 @@ pkgbase = non-mixer-lv2-git
 	conflicts = non-mixer
 	conflicts = non-mixer-git
 	conflicts = non-mixer-lv2-git
-	source = git+https://github.com/mxmilkb/non.git
+	source = git+https://github.com/falktx/non.git
 	md5sums = SKIP
 
 pkgname = non-mixer-lv2-git
