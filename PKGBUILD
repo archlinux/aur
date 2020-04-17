@@ -6,8 +6,8 @@
 # https://github.com/michaellass/AUR
 
 pkgname=eagle
-pkgver=9.6.0
-pkgrel=2
+pkgver=9.6.1
+pkgrel=1
 pkgdesc="Powerful suite for schematic capture and printed circuit board design (aka eaglecad)"
 arch=('x86_64')
 url="http://www.autodesk.com/products/eagle"
@@ -23,7 +23,7 @@ source=(# Official source according to website:
         "$pkgname.sh"
         "$pkgname.desktop"
         "$pkgname.xml")
-sha256sums=('e813190f31e53d566187249b3b4f5ad843f189cc0602a05d2bff0bcd0ff333b3'
+sha256sums=('bc4911169e55306983a0df293fec09ee40e18b9aefe4b51329e31198a15204c7'
             'd8f8adf45c8c136030f877975aed22ec97c6e26f6aa2218905c7b14b51bc1334'
             '2037dd28ed9d6c2f41a3e6d2fde59c3f1c27b203093be26a7d8c8cea69bcd272'
             '40e5a40cea787c0e823946271031744fdd9c755363da97d6dd4bea1eee7ee6b6'
