@@ -1,7 +1,7 @@
 pkgbase = razer-laptop-control-dkms-git
 	pkgdesc = Kernel module for razer laptop's for RGB, fan and power control
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rnd-ash/razer-laptop-control
 	arch = i686
 	arch = x86_64
