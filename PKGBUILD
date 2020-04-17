@@ -1,33 +1,20 @@
-_pkgname="python-pytmx"
-pkgname="${_pkgname}"
-pkgver="master"
+# Maintainer: morguldir <morguldir@protonmail.com>
+_gitname=PyTMX
+pkgname=python-pytmx
+pkgver=3.20.17
 pkgrel=1
 pkgdesc="Python library to read Tiled Map Editor's TMX maps"
 arch=('i686' 'x86_64')
-url="https://github.com/bitcraft/PyTMX"
-license=('LGPL v3')
-depends=('python>=3.1' 'python-six')
+url="https://github.com/bitcraft/$_gitname"
+license=('LGPL')
+depends=('python>=3.3' 'python-six')
 makedepends=('git')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-_gitroot="https://github.com/bitcraft/PyTMX.git"
-_gitname=("${_pkgname}")
-
-build() {
-  cd "${srcdir}"
-  msg "Connecting to GIT server...."
-
-  if [ -d ${_gitname} ] ; then
-    cd ${_gitname} && git pull origin
-    msg "The local files are updated."
-  else
-    git clone ${_gitroot} ${_gitname}
-  fi
-
-  msg "GIT checkout done or server timeout"
-}
+provides=($pkgname)
+conflicts=($pkgname)
+source=("git+https://github.com/bitcraft/$_gitname.git#commit=1896511afff65b5a5eb18295976ec44b68a9bb5a")
+sha256sums=('SKIP')
 
 package(){
-  cd ${_gitname}
+  cd $_gitname
   python setup.py install --root="$pkgdir" --prefix=/usr
 }
