@@ -1,0 +1,15 @@
+pkgbase = xerox-phaser-3020
+	pkgdesc = Driver for the Xerox Phaser 3020
+	pkgver = 1.00.25
+	pkgrel = 0
+	url = https://www.support.xerox.com/support/phaser-3020
+	arch = x86_64
+	license = custom
+	depends = libusb-compat
+	depends = cups
+	depends = ghostscript
+	source = http://download.support.xerox.com/pub/drivers/3020/drivers/linux/en_GB/Xerox_Phaser_3020_Linux-Driver.tar.gz
+	md5sums = 86b8422bcd5be598f48a608fdbfeb2f1
+
+pkgname = xerox-phaser-3020
+
