@@ -27,7 +27,7 @@ source=("mythtv-$pkgver.tar.gz::https://github.com/MythTV/mythtv/archive/v$pkgve
         "mythweb-$pkgver.tar.gz::https://github.com/MythTV/mythweb/archive/v$pkgver.tar.gz"
         '001-mythnetvision-configure.patch'
 )
-sha256sums=('096ace898e4a075293bb720bd9f33ae5818650f0ef62e722db290c68e522612f'
+sha256sums=('907d1747950ec6ef1ec965069c75500b4538b781333f60e16d62d519b221a86d'
             '064a3417d2e04fc9d85355e8128ea93586fe63e17c26ba27ed758e056bd00afc'
             '08c46792e5bae7060a9362b1952caf5dc783f2ad7c609bdd61abd974499329c7')
 
