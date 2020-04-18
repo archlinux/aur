@@ -5,9 +5,9 @@
 pkgname=perl-ipc-sharelite
 _cpanname="IPC-ShareLite"
 pkgver=0.17
-pkgrel=5
+pkgrel=6
 pkgdesc="Lightweight interface to shared memory"
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'armv7h')
 url="http://search.cpan.org/~andya/$_cpanname-$pkgver/"
 license=('GPL' 'PerlArtistic')
 depends=('glibc')

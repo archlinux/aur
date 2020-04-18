@@ -1,9 +1,11 @@
 pkgbase = perl-ipc-sharelite
 	pkgdesc = Lightweight interface to shared memory
 	pkgver = 0.17
-	pkgrel = 5
+	pkgrel = 6
 	url = http://search.cpan.org/~andya/IPC-ShareLite-0.17/
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = GPL
 	license = PerlArtistic
 	depends = glibc
