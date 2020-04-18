@@ -3,15 +3,15 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Thomas Hartmann <thomas@th-ht.de>
 pkgname=htcondor
 pkgver=8.8.8
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc=""
+pkgdesc="Distributed workload management system"
 arch=("x86_64")
-url=""
-license=('GPL')
+url="https://research.cs.wisc.edu/htcondor/"
+license=('apache')
 groups=()
 depends=("boost" "munge" "libxss" "curl" "gawk" "java-runtime" "libcgroup" "pcre" "sqlite" "python")
 makedepends=("cmake")
@@ -24,13 +24,13 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://research.cs.wisc.edu/htcondor/debian/8.8/buster/pool/contrib/c/condor/condor_$pkgver.orig.tar.gz")
+source=("https://github.com/htcondor/htcondor/archive/V${pkgver//./_}.tar.gz")
 noextract=()
-md5sums=('SKIP')
+md5sums=('e248a1506d367cacab0575fb18aa1e11')
 validpgpkeys=()
 
 build() {
-	cd "condor-$pkgver"
+	cd "htcondor-${pkgver//./_}"
 	mkdir -p build_folder
 	cd build_folder
 	cmake -DSYSTEM_NAME=arch -DWITH_VOMS=False -DWITH_GLOBUS=False -DWITH_PYTHON_BINDINGS=False -DCMAKE_INSTALL_PREFIX=/opt/htcondor ../
@@ -38,9 +38,9 @@ build() {
 }
 
 package() {
-	cd "condor-$pkgver/build_folder"
+	cd "htcondor-${pkgver//./_}/build_folder"
 	make DESTDIR="$pkgdir/" install
-	
+
 	echo "export PATH=$PATH:/opt/htcondor/bin" > $srcdir/htcondor.sh
 	install -Dm644 $srcdir/htcondor.sh $pkgdir/etc/profile.d/htcondor.sh
 }
