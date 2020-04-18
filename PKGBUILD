@@ -2,16 +2,18 @@
 
 _appname=hyperspace
 pkgname="$_appname-bin"
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 epoch=1
 pkgdesc='The fluffiest client for the fediverse'
 arch=(x86_64)
 url='https://hyperspace.marquiskurt.net/'
-license=(Apache)
+license=('custom:NPLv4')
 depends=(gtk3 libnotify nss libxss libxtst xdg-utils libappindicator-gtk3 libsecret)
-source=("https://github.com/hyperspacedev/hyperspace/releases/download/v${pkgver//_/-}/hyperspace_${pkgver//_/-}_amd64.deb")
-sha256sums=('703a933b0c13b097e97fb4eca90bb6e8a10fac2acc21be0d648bf5bcf05c0909')
+source=("https://github.com/hyperspacedev/hyperspace/releases/download/v${pkgver//_/-}/hyperspace_${pkgver//_/-}_amd64.deb"
+        'LICENSE.txt')
+sha256sums=('478044ab47a3f7f5de7f901d537ce21fed41a00031b5bafc260014d9363980ac'
+            'f49ae3685bf4635b0eb6f07fe684ed1b30f5b2a2c9b5b05b589fb9edfead8d35')
 
 build() {
   cd $srcdir
@@ -23,4 +25,5 @@ package() {
   cp -R opt/ usr/ $pkgdir
   mkdir $pkgdir/usr/bin
   ln -s "/opt/Hyperspace Desktop/hyperspace" $pkgdir/usr/bin/hyperspace
+  install -Dm644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
