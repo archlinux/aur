@@ -11,7 +11,7 @@ url="https://smallstep.com/certificates"
 license=('Apache')
 
 source=("https://github.com/smallstep/certificates/releases/download/v${pkgver}/step-certificates_linux_${pkgver}_amd64.tar.gz")
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums=('449ffec899ac774828b10a471b4a7bbd8c385078743ac6f31ed46321e26b4c86')
 
 package() {
 	install -Dm755 "step-certificates_$pkgver/bin/$_binname" "$pkgdir/usr/bin/$_binname"
