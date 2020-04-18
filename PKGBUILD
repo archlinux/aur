@@ -1,6 +1,6 @@
 # Maintainer: Jeffrey Zhang zhang.lei.fly@gmail.com
 pkgname=terminator-git
-pkgver=1.91.103.g5151db48
+pkgver=1.92.3.ga92ea847
 pkgrel=1
 pkgdesc='multiple GNOME terminals in one window'
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/terminator"
-  printf "%s" "$(git describe --tags|sed 's/-/./g')"
+  printf "%s" "$(git describe --tags|sed -e 's/^v//g' -e 's/-/./g')"
 }
 
 build() {
