@@ -1,7 +1,7 @@
 pkgbase = cylon
 	pkgdesc = Updates, Maintenance, backup and system checks in a menu driven TUI written in Bash
-	pkgver = 5.6
-	pkgrel = 8
+	pkgver = 5.7
+	pkgrel = 9
 	url = https://github.com/gavinlyonsrepo/cylon
 	arch = any
 	license = GPL
@@ -13,18 +13,16 @@ pkgbase = cylon
 	optdepends = lostfiles: For finding lost files
 	optdepends = arch-audit: collect CVE data
 	optdepends = rmlint: Finds lint and other unwanted
-	optdepends = rkhunter: finds root kits malware
 	optdepends = clamav: used for finding malware
 	optdepends = bleachbit: used for system clean
 	optdepends = gnu-netcat: used for checking network
 	optdepends = openbsd-netcat: used for checking network
-	optdepends = ccrypt: used for encrypting
+	optdepends = ccrypt: AUR, used for encrypting
 	optdepends = rsync: used for backup
 	optdepends = libnotify: desktop notifications
 	optdepends = speedtest-cli: internet bandwidth
-	optdepends = lynis: system audit tool
-	source = https://github.com/gavinlyonsrepo/cylon/archive/5.6.tar.gz
-	md5sums = 644a4a4ecf15fc5212c3239cb0209b2c
+	source = https://github.com/gavinlyonsrepo/cylon/archive/5.7.tar.gz
+	md5sums = e21ccf029bc674070ab45aa615f76d7b
 
 pkgname = cylon
 
