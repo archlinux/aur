@@ -2,7 +2,7 @@
 
 pkgname='chrysalis'
 pkgdesc="A graphical configuration tool for programmable keyboards. Prebuilt AppImage Releases"
-pkgver=0.6.2
+pkgver=0.7.4
 pkgrel=0
 arch=('x86_64')
 url='https://github.com/keyboardio/Chrysalis'
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=()
 options=('!strip')
 source=("https://github.com/keyboardio/Chrysalis/releases/download/$pkgname-$pkgver/Chrysalis-$pkgver.AppImage")
-sha512sums=('71fa67b41b22a94032e9a1a37e6e1f0fd16bb970b674ddab613f974ef9bb7a3d1196910d1782f29d59fed1a741ba29e2894ec580cb160ef2c6e165ee6666bdc4')
+sha512sums=('1dd9dba6e89719db7be5087326c5493a76d4bde826d6507af6c92e495682b3108d2bb45e954d6e7dc26650d740b4b11daedcfec8f68caf6321d0cb6c1dfdd7ab')
 
 package() {
     mkdir -p "$pkgdir/usr/bin"
