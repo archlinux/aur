@@ -1,11 +1,11 @@
 pkgbase = logisim-evolution-bin
 	pkgdesc = An educational tool for designing and simulating digital logic circuits
 	pkgver = 3.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/reds-heig/logisim-evolution
 	arch = any
 	license = GPL3
-	depends = java-runtime>=8
+	depends = java-runtime>=10
 	depends = bash
 	depends = hicolor-icon-theme
 	source = logisim-evolution-3.3.4.jar::https://github.com/reds-heig/logisim-evolution/releases/download/v3.3.4/logisim-evolution-3.3.4-all.jar
