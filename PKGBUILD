@@ -1,26 +1,24 @@
 pkgname=lua54
 _pkgver=5.4.0
-_pkgaver=$_pkgver-beta
-_pkgrver=$_pkgaver
-pkgver=${_pkgrver//\-/.}
+_pkgaver=$_pkgver-rc1
+pkgver=${_pkgaver//\-/.}
 pkgrel=1
 pkgdesc='Powerful lightweight programming language designed for extending applications'
 arch=('x86_64')
 url='https://www.lua.org/'
 depends=('readline')
 license=('MIT')
-options=('!emptydirs')
-source=(https://www.lua.org/work/lua-$_pkgrver.tar.gz
+options=('!emptydirs' '!strip')
+source=(https://www.lua.org/work/lua-$_pkgaver.tar.gz
         liblua.so.patch
         lua.pc
         LICENSE)
-sha512sums=('4ddc46c7955aa007268fe50afc9487e17a526e5b87f04cfda4a4f904267d7ce58a3379cc1175676d410e8ff4ba089d6904ee1e501909573d299f50c89ff07dcd'
-            '09f5e567ea18e6bcd7d99384e136ffb091f8bfd6fac08a9ed97c549f9ba210214e1da363e07e9836e3610fb2a343ef572f159defbb12b3477412e2d92c6225dc'
+sha512sums=('bca2d0ef57122d04659858f5301f0043f0d980363de087fa9fc5a7e9ef0c7a7a8875724cb230f46d6da1a1cfc54f666a0d2adefddb2304df47a296810b00a020'
+            'b53d289255cedde25608bcfe0ab21838744af08f99210543b1c56bbc70ba5fb1e1816581717b56fc173aa2b5f6f8ffc7a31408287d1d0fc7ef2f61a72c11591d'
             'a3ae5f5c63a27956a2c69464cf966512be7404aef72d49b0b3b17e35999ceed04ec7be12ef19269f4cac908141b98dd5d16df9c238823fe0c1e068212914657a'
             'bef221ae96e72d11785ec608ce96fa688ce4e12fecaaadc8c3e38d7d153922f4fdd2cf06a47e9f8840a165d42d9aa31f44c322f5c6c8402e8e31475de4e5893b')
-
 prepare() {
-  cd lua-$_pkgaver
+  cd lua-$_pkgver
   patch -p1 -i ../liblua.so.patch
 
   sed "s/%VER%/${_pkgver%.*}/g;s/%REL%/$_pkgver/g" ../lua.pc > lua.pc
@@ -29,13 +27,13 @@ prepare() {
 }
 
 build() {
-  cd lua-$_pkgaver
+  cd lua-$_pkgver
 
-  make MYCFLAGS="$CFLAGS -fPIC -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2" MYLDFLAGS="$LDFLAGS" linux
+  make MYCFLAGS="$CFLAGS -fPIC -DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2 -g" MYLDFLAGS="$LDFLAGS" linux
 }
 
 package() {
-  cd lua-$_pkgaver
+  cd lua-$_pkgver
 
   make \
     TO_BIN='lua5.4 luac5.4' \
