@@ -1,10 +1,10 @@
 pkgbase = psychopy
 	pkgdesc = An experiment builder for neuroscience, psychology and psychophysics
-	pkgver = 3.2.4
+	pkgver = 2020.1.3
 	pkgrel = 1
 	url = http://www.psychopy.org
 	arch = any
-	license = GPL3
+	license = GPL-3.0
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python-matplotlib
@@ -45,8 +45,8 @@ pkgbase = psychopy
 	depends = python-mock
 	depends = opencv
 	optdepends = python-seaborn: For nice graphs
-	source = https://github.com/psychopy/psychopy/archive/3.2.4.tar.gz
-	sha512sums = 084f8715193d5c6ac836e012a7f082cd027e5ed14a4c08d1ad7db85749df8cec015ded828c32a36f999b5cec51f6d221812f94a21043e5e08d68c5c78b09d6f9
+	source = https://github.com/psychopy/psychopy/archive/2020.1.3.tar.gz
+	sha512sums = ef0d510b8f1ca739ae74f1da8d04b234665703cb29f0faebd04d171c9330aac7b2879a53142981bb4fc3bdecc95e7ccbdf80d94a687ee511e195942d1e3b94cf
 
 pkgname = psychopy
 

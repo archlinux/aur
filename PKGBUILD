@@ -1,14 +1,15 @@
-# Maintainer: Andrew Steinke <rkcf@rkcf.me>
+# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Andrew Steinke <rkcf@rkcf.me>
 # Contributor: Daniel E. Shub <daniel.e.shub@gmail.com>
 # Contributor: Martin Corley <Martin.Corley@ed.ac.uk>
 
 pkgname=psychopy
-pkgver=3.2.4
+pkgver=2020.1.3
 pkgrel=1
 pkgdesc="An experiment builder for neuroscience, psychology and psychophysics"
 arch=('any')
 url="http://www.psychopy.org"
-license=('GPL3')
+license=('GPL-3.0')
 depends=('python-matplotlib' 'python-pandas' 'python-opengl' 'python-pyglet'
          'python-moviepy' 'python-lxml' 'python-openpyxl' 'python-configobj'
          'python-freetype-py' 'python-gitpython' 'python-gitlab' 'python-pyzmq'
@@ -20,8 +21,8 @@ depends=('python-matplotlib' 'python-pandas' 'python-opengl' 'python-pyglet'
          'python-arabic-reshaper' 'python-wxpython' 'webkit2gtk' 'python-mock' 'opencv')
 makedepends=('python-wheel' 'python-setuptools')
 optdepends=('python-seaborn: For nice graphs')
-source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('084f8715193d5c6ac836e012a7f082cd027e5ed14a4c08d1ad7db85749df8cec015ded828c32a36f999b5cec51f6d221812f94a21043e5e08d68c5c78b09d6f9')
+source=("https://github.com/psychopy/psychopy/archive/${pkgver}.tar.gz")
+sha512sums=('ef0d510b8f1ca739ae74f1da8d04b234665703cb29f0faebd04d171c9330aac7b2879a53142981bb4fc3bdecc95e7ccbdf80d94a687ee511e195942d1e3b94cf')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -31,12 +32,10 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-
   # desktop files
   cd "$pkgname/app/Resources"
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm644 "$pkgname.xml" "$pkgdir/usr/share/mime/packages/$pkgname.xml"
 }
-
 # vim:set ts=2 sw=2 et:
