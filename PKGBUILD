@@ -4,7 +4,7 @@
 _basename=gst-plugins-bad
 pkgname=lib32-gst-plugins-bad
 pkgver=1.16.2
-pkgrel=2
+pkgrel=3
 pkgdesc="GStreamer open-source multimedia framework bad plugins (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -82,11 +82,6 @@ package() {
 
     # Fix link error in /usr/lib32/gstreamer-1.0/libgstdvdread.so
     ln -sr "${pkgdir}/usr/lib32/libdvdread.so" "${pkgdir}/usr/lib32/libdvdread.so.7"
-
-    # Fix link error in /usr/lib32/gstreamer-1.0/libgstladspa.so
-    ln -sr "${pkgdir}/usr/lib32/libicui18n.so" "${pkgdir}/usr/lib32/libicui18n.so.63"
-    ln -sr "${pkgdir}/usr/lib32/libicuuc.so" "${pkgdir}/usr/lib32/libicuuc.so.63"
-    ln -sr "${pkgdir}/usr/lib32/libicudata.so" "${pkgdir}/usr/lib32/libicudata.so.63"
 
     rm -rf "${pkgdir}"/usr/{bin,include,share}
 }
