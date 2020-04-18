@@ -83,6 +83,7 @@ def nerdfont_patch(
             ],
             cwd=font_dir,
         ).check_returncode()
+        font.rename(f"{font.name}.unpatched")
 
 
 def parse_config(config_file: Path) -> Tuple[str, Dict[str, Set[str]], Optional[List]]:
@@ -118,7 +119,7 @@ def parse_config(config_file: Path) -> Tuple[str, Dict[str, Set[str]], Optional[
 
 def store_fonts(dest: Path, source: Path):
     dest.mkdir(parents=True, exist_ok=True)
-    for font in filter(lambda f: f.is_file(), source.glob("*")):
+    for font in filter(lambda f: f.is_file(), source.glob("*.ttf")):
         shutil.move(source / font, dest / font.name)
 
     subprocess.run(["fc-cache", "--force"]).check_returncode()
