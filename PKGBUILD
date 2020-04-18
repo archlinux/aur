@@ -16,7 +16,7 @@
 # Maintainer: Samuel Littley <samuellittley@google.com>
 
 pkgname='google-compute-engine'
-pkgver=20191121
+pkgver=20191210
 pkgrel=1
 pkgdesc='Google Compute Engine guest environment'
 arch=('any')
@@ -24,7 +24,7 @@ url='https://github.com/GoogleCloudPlatform/compute-image-packages'
 license=('Apache')
 depends=('ethtool' 'google-compute-engine-oslogin' 'inetutils' 'python-boto' 'python-distro' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/compute-image-packages/archive/v$pkgver.tar.gz")
-sha256sums=('3a8fd0fcede35552e7efd091a96d2697e7d149383b5fe54008c68d4f53f69951')
+sha256sums=('19a2ca537f876e4a19341646f2865c6429b8ea041a3a6651ff8c1ed966f72fe1')
 
 build() {
 	cd "compute-image-packages-$pkgver/packages/python-google-compute-engine"
