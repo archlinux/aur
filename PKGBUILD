@@ -1,8 +1,8 @@
 # Maintainer: Ainola
 
 pkgname=python-image
-pkgver=1.5.27
-pkgrel=2
+pkgver=1.5.29
+pkgrel=1
 pkgdesc="Django application that provides editing for images and videos"
 arch=('any')
 url="https://github.com/francescortiz/image"
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 depends=('python-pillow' 'python-requests' 'python-django')
 optdepends=('ffmpeg: For video thumbnails')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/i/image/image-$pkgver.tar.gz")
-sha256sums=('3f0ea15fb523c68a08098153bb06f4a8913300277e11b61c5e71fdd57b243783')
+sha256sums=('4960226156fe7d3c7f2e8db5efe3deda58481a46daa7a1c26fbc0fa1f5654cc4')
 
 build() {
     cd "image-$pkgver"

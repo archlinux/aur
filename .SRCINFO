@@ -1,7 +1,7 @@
 pkgbase = python-image
 	pkgdesc = Django application that provides editing for images and videos
-	pkgver = 1.5.27
-	pkgrel = 2
+	pkgver = 1.5.29
+	pkgrel = 1
 	url = https://github.com/francescortiz/image
 	arch = any
 	license = BSD
@@ -10,8 +10,8 @@ pkgbase = python-image
 	depends = python-requests
 	depends = python-django
 	optdepends = ffmpeg: For video thumbnails
-	source = python-image-1.5.27.tar.gz::https://files.pythonhosted.org/packages/source/i/image/image-1.5.27.tar.gz
-	sha256sums = 3f0ea15fb523c68a08098153bb06f4a8913300277e11b61c5e71fdd57b243783
+	source = python-image-1.5.29.tar.gz::https://files.pythonhosted.org/packages/source/i/image/image-1.5.29.tar.gz
+	sha256sums = 4960226156fe7d3c7f2e8db5efe3deda58481a46daa7a1c26fbc0fa1f5654cc4
 
 pkgname = python-image
 
