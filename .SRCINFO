@@ -1,6 +1,6 @@
 pkgbase = perl-net-curl
 	pkgdesc = Perl interface for libcurl
-	pkgver = 0.43
+	pkgver = 0.44
 	pkgrel = 1
 	url = http://search.mcpan.org/dist/Net-Curl
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = perl-net-curl
 	depends = curl>=7.37.0
 	depends = perl
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/S/SY/SYP/Net-Curl-0.43.tar.gz
-	sha256sums = 8bf55332d1fb9288034537fa682e1058affbf7269819fa62ef9e032328dc93b6
+	source = http://search.mcpan.org/CPAN/authors/id/S/SY/SYP/Net-Curl-0.44.tar.gz
+	sha256sums = dc4e16d634bd9e09c06ed79863d47c76c292c7100eb4e2e418431f7446664bc6
 
 pkgname = perl-net-curl
 
