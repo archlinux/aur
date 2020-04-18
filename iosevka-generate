@@ -7,7 +7,7 @@ import subprocess
 import sys
 from pathlib import Path
 from textwrap import dedent
-from typing import Dict, Set, Tuple
+from typing import Dict, Iterable, List, Optional, Set, Tuple
 
 import inflection
 from git import Repo
@@ -65,7 +65,9 @@ def generate_font(iosevka_dir: Path, font_name: str, font_styles: Dict[str, Set[
     ).check_returncode()
 
 
-def nerdfont_patch(font_dir: Path, repo_dir: Path, mono: bool = True) -> None:
+def nerdfont_patch(
+    font_dir: Path, repo_dir: Path, options: Iterable[str] = [], mono: bool = True
+) -> None:
     get_repo(repo_dir, NERDFONT_REPO)
 
     for font in filter(Path.is_file, font_dir.glob("*")):
@@ -76,13 +78,14 @@ def nerdfont_patch(font_dir: Path, repo_dir: Path, mono: bool = True) -> None:
                 "--careful",
                 "--progressbars",
                 *(["--mono"] if mono else []),
+                *map(lambda o: f"--{o}", options),
                 font,
             ],
             cwd=font_dir,
         ).check_returncode()
 
 
-def parse_config(config_file: Path) -> Tuple[str, Dict[str, Set[str]], bool]:
+def parse_config(config_file: Path) -> Tuple[str, Dict[str, Set[str]], Optional[List]]:
     print(f"Parsing iosevka-generate conf: {config_file} ...", file=sys.stderr)
 
     config = configparser.ConfigParser(
@@ -99,18 +102,18 @@ def parse_config(config_file: Path) -> Tuple[str, Dict[str, Set[str]], bool]:
         for section in sections
     }
 
-    use_nerdfont = False
+    nerdfont: Optional[List] = None
     for option, value in config["options"].items():
         if option == "name":
             font_name = value
         elif option == "nerdfont":
-            use_nerdfont = True
+            nerdfont = value.split(" ")
         elif not value:
             font_styles["common"].add(option)
         else:
             font_styles["common"].add(f"{option}-{value}")
 
-    return (font_name, font_styles, use_nerdfont)
+    return (font_name, font_styles, nerdfont)
 
 
 def store_fonts(dest: Path, source: Path):
@@ -129,16 +132,18 @@ if __name__ == "__main__":
 
     install_iosevka(install_dir)
     for conf in Path(config_dir).glob("*.ini"):
-        name, styles, nerdfont = parse_config(conf)
+        name, styles, nerdfont_opts = parse_config(conf)
 
         generate_font(install_dir, name, styles)
         gen_dir = install_dir / "dist" / name / "ttf"
 
-        if nerdfont:
+        if nerdfont_opts is not None:
             mono = any(
                 filter(lambda o: o in styles["common"], ("sp-term", "sp-fixed"))
             )
 
-            nerdfont_patch(gen_dir, cache_dir / "nerdfont", mono=mono)
+            nerdfont_patch(
+                gen_dir, cache_dir / "nerdfont", options=nerdfont_opts, mono=mono
+            )
 
         store_fonts(font_dir, gen_dir)
