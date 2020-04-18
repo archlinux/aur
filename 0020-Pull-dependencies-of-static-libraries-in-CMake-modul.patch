@@ -1,4 +1,4 @@
-From 181461364ddf790c194108c4d6130cdd117c3a0a Mon Sep 17 00:00:00 2001
+From 13269a57b3bd20b86c50d0bd8b4e9fb2dc771601 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:32:00 +0200
 Subject: [PATCH 20/31] Pull dependencies of static libraries in CMake modules
@@ -484,5 +484,5 @@ index 7b70cfed09..25f2162fe6 100644
 -set_property(TARGET Qt5::$${CMAKE_PLUGIN_NAME} PROPERTY QT_PLUGIN_TYPE \"$$CMAKE_PLUGIN_TYPE\")
 -set_property(TARGET Qt5::$${CMAKE_PLUGIN_NAME} PROPERTY QT_PLUGIN_EXTENDS \"$$CMAKE_PLUGIN_EXTENDS\")
 -- 
-2.26.0
+2.26.1
 
