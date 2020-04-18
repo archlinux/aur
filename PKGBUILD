@@ -1,89 +1,40 @@
-# Maintainer Seva Alekseyev <sevaa@yarxi.ru>
-# Maintainer Stoyan Minaev <stoyan.minaev@gmail.com>
+# Maintainer: Frederik Enste <frederik at fenste dot de>
+# Maintainer: t00manysecrets <frederik at fenste dot de>
 
-pkgbase=pkgbase
-pkgname=yarxi
-pkgver=1.10
+pkgname=materialize-bin
+pkgver=1.78
 pkgrel=1
-pkgdesc="Japanese-Russian kanji and word dictionary"
-url="http://www.susi.ru/yarxi/"
-license=('custom')
-_source=(
-    "http://www.susi.ru/yarxi/yarxi_${pkgver}-${pkgrel}_amd64.deb"
-    "http://ftp.uk.debian.org/debian/pool/main/q/qt4-x11/libqtcore4_4.8.7+dfsg-11_amd64.deb"
-    "http://ftp.uk.debian.org/debian/pool/main/q/qt4-x11/libqtgui4_4.8.7+dfsg-11_amd64.deb"
-    "http://ftp.uk.debian.org/debian/pool/main/q/qt4-x11/libqt4-network_4.8.7+dfsg-11_amd64.deb"
-)
-arch=('x86_64')
-_md5sums=(
-    '812d2265816ed781751c5c0eb6664d91'
-    'b243ada8569b2b3d4586dc4178fd8d56'
-    '797e351a57c9d56368f710e7cba40f21'
-    'b3cff12767e21d3a76794046557d3df0'
-)
-depends=(
-   ttf-sazanami nas
-)
-
-prepare() {
-    cd $srcdir/
-    echo "Due to 'makepkg' and 'PKGBUILD' specs limitations I need to dowanload sources and validate them by myself"
-    for source_url in ${_source[@]}; do
-        source_filename=${source_url##*/}
-        if [ ! -f "$source_filename" ]; then
-            echo "Downloading next source - $source_filename ..."
-            curl -A DUMMY -O "$source_url";
-        else
-            echo "Found already downloaded source - $source_filename"
-        fi
-    done
-    echo "And now we must validated dowanloaded sources ..."
-    for (( i=0; i<${#_source[@]}; ++i )); do
-        source_url=${_source[i]}
-        source_filename=${source_url##*/}
-        source_expected_md5sum=${_md5sums[i]}
-        source_actual_md5sum=$(md5sum $source_filename | awk '{print $1}')
-        if [ "$source_actual_md5sum" == "$source_expected_md5sum" ]; then
-            echo "Validated next source - $source_filename"
-        else
-            echo "Found corrupted source - $source_filename"; return 1
-        fi
-    done    
-}
+pkgdesc="Image to Material tool (uses Wine)."
+arch=(x86_64)
+url="http://boundingboxsoftware.com/index.html"
+license=('GNU' 'custom:GNU General Public License v3.0')
+depends=(wine winetricks desktop-file-utils)
+makedepends=(unzip)
+source=("http://boundingboxsoftware.com/materialize/download/Materialize_${pkgver}.zip"
+        "https://raw.githubusercontent.com/BoundingBoxSoftware/Materialize/master/LICENSE"
+        "${pkgname}.sh"
+        "${pkgname}.desktop")
+install="${pkgname}.install"
+sha256sums=('b0f6e3a905781e85dcd7db2383646bce51b8984ab93d1e3d13be42d5bea8904a'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+            'ed9dcdab4071a854a460bfa56a79738895e2ca6cd7641d1928d160984c0619bd'
+            'd1247c77728c389d385c7c830802d9bcbb1c20be9b98136b815188c8c3d79cbe')
 
 build() {
-    cd $srcdir/
-    mkdir -p deb/{$pkgname,qt4core,qt4gui,qt4network}
-    bsdtar xf yarxi_${pkgver}-${pkgrel}_amd64.deb -C deb/$pkgname/
-    bsdtar xf libqtcore4_4.8.7+dfsg-11_amd64.deb -C deb/qt4core/
-    bsdtar xf libqtgui4_4.8.7+dfsg-11_amd64.deb -C deb/qt4gui/
-    bsdtar xf libqt4-network_4.8.7+dfsg-11_amd64.deb -C deb/qt4network/
-    for dir in deb/$pkgname deb/qt4core deb/qt4gui deb/qt4network; do
-        cd $dir; tar xf data.tar.*; cd $srcdir
-    done
+  # unpack the zip file (into Materialize_Data)
+  unzip -o Materialize_${pkgver}.zip -d materialize
 }
 
 package() {
-    cd $srcdir/
-    mkdir -p $pkgdir/usr/lib/
-    mkdir -p $pkgdir/usr/bin/
-    mkdir -p $pkgdir/usr/share/
-    mkdir -p $pkgdir/usr/share/applications/
-    mkdir -p $pkgdir/usr/share/doc/$pkgname/
-    mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16/apps,32x32/apps,48x48/apps}/
-    mkdir -p $pkgdir/usr/share/pixmaps/
-    mkdir -p $pkgdir/usr/share/$pkgname/
-    install -m 0755 $srcdir/deb/$pkgname/usr/bin/$pkgname $pkgdir/usr/bin/$pkgname
-    install -m 0755 $srcdir/deb/qt4core/usr/lib/x86_64-linux-gnu/libQtCore.so.4.8.7 $pkgdir/usr/lib/libQtCore.so.4
-    install -m 0755 $srcdir/deb/qt4gui/usr/lib/x86_64-linux-gnu/libQtGui.so.4.8.7 $pkgdir/usr/lib/libQtGui.so.4
-    install -m 0755 $srcdir/deb/qt4network/usr/lib/x86_64-linux-gnu/libQtNetwork.so.4.8.7 $pkgdir/usr/lib/libQtNetwork.so.4
-    install -m 0644 $srcdir/deb/$pkgname/usr/share/applications/seva-yarxi.desktop $pkgdir/usr/share/applications/
-    install -m 0644 $srcdir/deb/$pkgname/usr/share/doc/$pkgname/copyright $pkgdir/usr/share/doc/$pkgname/
-    for icons in 16x16 32x32 48x48; do
-        install -m 0644 $srcdir/deb/$pkgname/usr/share/icons/hicolor/$icons/apps/seva-yarxi.png $pkgdir/usr/share/icons/hicolor/$icons/apps/
-    done
-    install -m 0644 $srcdir/deb/$pkgname/usr/share/pixmaps/*.xpm $pkgdir/usr/share/pixmaps/
-    install -m 0644 $srcdir/deb/$pkgname/usr/share/$pkgname/yarxice.db $pkgdir/usr/share/$pkgname/
-}
+  # install program into destination
+  mkdir -p "${pkgdir}/opt/${pkgname}"
+  cp -r ${srcdir}/materialize/* "${pkgdir}/opt/${pkgname}"
+  chown root:root "${pkgdir}/opt/${pkgname}"
+  chmod -R 755 "${pkgdir}/opt/${pkgname}"
 
-#vim: syntax=sh
+  # install license
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/license/${pkgname}/LICENSE"
+
+  # install start script
+  install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+}

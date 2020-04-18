@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Materialize
+GenericName=3D Material Tool
+Comment=Image to Material Tool
+Encoding=UTF-8
+Version=1.78
+Type=Application
+Terminal=false
+Icon=foobar2000
+Exec=materialize-bin
+Categories=Utility;Game
+StartupWMClass=Materialize.exe

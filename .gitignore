@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!materialize-bin.sh
+!materialize-bin.install
+!materialize-bin.desktop
