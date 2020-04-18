@@ -1,7 +1,7 @@
 # Maintainer: Filippo Berto <berto.f@protonmail.com>
 _pkgname=ndn-traffic-generator
 pkgname=${_pkgname}-git
-pkgver=r46.d2ef9a7
+pkgver=r50.7393cb4
 pkgrel=1
 # epoch=
 pkgdesc="This tool is designed to generate Interest and Data traffic in an NDN network"
@@ -24,27 +24,23 @@ noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
 
-prepare() {
-	cd "${srcdir}/${_pkgname}"
-	git submodule update --init
-	# Run the initial configuration
-	./waf configure
-}
-
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+	cd "${srcdir}/${_pkgname}"
+	git submodule update --init --recursive
+	./waf configure --prefix=/usr
+}
+
 build() {
 	cd "${srcdir}/${_pkgname}"
-	# Build libraries and tools
 	./waf build
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}"
 	./waf install --destdir="${pkgdir}"
-	
-	mv "${pkgdir}/usr/local/"* "${pkgdir}/usr"
 }
