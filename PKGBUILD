@@ -1,7 +1,7 @@
 # Maintainer: Filippo Berto <berto.f@protonmail.com>
 _pkgname=ndn-cxx
 pkgname=${_pkgname}-git
-pkgver=ndn.cxx.0.6.6.r47.ge6e125ea
+pkgver=ndn.cxx.0.7.0.r13.g9603325b
 pkgrel=1
 # epoch=
 pkgdesc="Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications"
@@ -12,7 +12,7 @@ groups=()
 depends=('boost')
 makedepends=('git' 'gcc' 'python' 'pkgconf' 'sqlite' 'openssl>=1.0.2')
 checkdepends=()
-optdepends=()
+optdepends=('boost-stacktrace-backtrace')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 replaces=()
@@ -26,21 +26,15 @@ validpgpkeys=()
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	./waf configure
-}
-
-pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	./waf configure --prefix=/usr
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
 	./waf build
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}"
 	./waf install --destdir="${pkgdir}"
-	mv "${pkgdir}/usr/local/"* "${pkgdir}/usr"
 }
