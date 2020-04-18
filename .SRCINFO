@@ -1,7 +1,6 @@
 pkgbase = collabora-online-server-nodocker
-	pkgdesc = Collabora CODE (LibreOffice Online) server for Nextcloud or ownCloud, without Docker
-	pkgver = 4.2.0
-	pkgrel = 2
+	pkgver = 4.2.2
+	pkgrel = 1
 	url = https://www.collaboraoffice.com/code/
 	install = install
 	arch = x86_64
@@ -31,8 +30,6 @@ pkgbase = collabora-online-server-nodocker
 	depends = cpio
 	optdepends = hunspell: Use with language-specific hunspell dictionaries for LibreOffice spell-check
 	optdepends = hyphen: Use with language-specific hyphen rules for LibreOffice hyphenation
-	provides = libreoffice
-	provides = libreoffice-en-US
 	backup = etc/apache2/conf-available/loolwsd.conf
 	backup = etc/loolwsd/loolkitconfig.xcu
 	backup = etc/loolwsd/loolwsd.xml
@@ -43,41 +40,365 @@ pkgbase = collabora-online-server-nodocker
 	source = mkcert_example.sh
 	source = sysusers
 	source = tmpfiles
-	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/loolwsd_4.2.0-2_amd64.deb
-	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-calc_6.2.10.2-2_amd64.deb
-	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-core_6.2.10.2-2_amd64.deb
-	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-ure_6.2.10.2-2_amd64.deb
-	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-graphicfilter_6.2.10.2-2_amd64.deb
-	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-images_6.2.10.2-2_amd64.deb
-	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-impress_6.2.10.2-2_amd64.deb
-	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-ooofonts_6.2.10.2-2_amd64.deb
-	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-writer_6.2.10.2-2_amd64.deb
-	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2_6.2.10.2-2_amd64.deb
-	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-en-us_6.2.10.2-2_amd64.deb
-	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-draw_6.2.10.2-2_amd64.deb
-	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-extension-pdf-import_6.2.10.2-2_amd64.deb
-	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-ooolinguistic_6.2.10.2-2_amd64.deb
-	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/code-brand_4.2-12_all.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/loolwsd_4.2.2-2_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-calc_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-core_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-ure_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-graphicfilter_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-images_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-impress_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-ooofonts_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-writer_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-en-us_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-draw_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-extension-pdf-import_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-ooolinguistic_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/code-brand_4.2-20_all.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-en-gb_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-lv_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-lt_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-ro_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-gl_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-gu_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-ml_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-sl_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-sk_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-pt-br_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-zh-cn_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-gd_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-lv_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-sv_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-lt_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-ga_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-sr_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-gd_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-mr_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-pl_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-uk_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-de_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-ru_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-gu_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-gl_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-da_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-sv_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-el_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-id_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-ru_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-sr_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-fr_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-uk_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-nl_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-ar_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-no_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-pl_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-ja_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-oc_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-it_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-is_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-pt_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-et_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-eu_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-de_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-sl_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-ro_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-sk_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-da_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-es_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-hr_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-hi_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-bg_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-cs_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-hu_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-ca_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-te_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-br_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-he_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-kn_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-ko_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-km_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-cs_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-ca_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-br_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-he_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-hr_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-hi_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-vi_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-bn-in_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-bg_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-sr-latn_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-hu_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-cy_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-vi_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-es_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-et_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-zh-tw_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-pa-in_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-oc_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-te_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-is_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-fi_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-it_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-ta_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-nl_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-ar_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-as_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-nn_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-pt-br_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-fr_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-or_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-ca-valencia_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-pt-pt_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-id_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-tr_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-el_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraofficebasis6.2-nb_6.2.10.10-10_amd64.deb
+	source = https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/collaboraoffice6.2-dict-en_6.2.10.10-10_amd64.deb
 	sha1sums = SKIP
 	sha1sums = 4dea8c0bb62525f90d94d74a08c6f18f78a27ca9
 	sha1sums = 3fe2db88f4f7ee203520c59760582103d3e41210
 	sha1sums = 2d271f9493ea14c675af1bfa76f6b654569dd51f
 	sha1sums = f9c102a06b2582548f13121e78790237e2cb38e1
-	sha1sums = 751428514b8fdeaad7619b87bfe96ef37a0986b1
-	sha1sums = 359f38e039b125af5b115c66a77147dbe9c01be5
-	sha1sums = 2c768d440b5b7a8fb5d4296ae00da8093d16bae4
-	sha1sums = 05c8ab0a4b0c7ed5cc37c51804ca4d545cb0023b
-	sha1sums = 7efca4c4f7893b7881dbb70a262c241be3d83c83
-	sha1sums = 405ceaaf2ed11a9f104972b8dacb5557a409a850
-	sha1sums = 36d8b9360dbc685626a9aaba3803cb7a5b5987c6
-	sha1sums = ac67427de72b65f5ca835ec2704168b51f998dae
-	sha1sums = b10dc2f1de690a08d71fdfe449850c140f1a145f
-	sha1sums = 528310e035ebf788ab2487d3c09c56b68168150a
-	sha1sums = c22b99e94291e7e5b589ce7d8003d27254df07ae
-	sha1sums = 1c1b5e83bce1a67509fa33ac4a1ef6f21ec344a4
-	sha1sums = 1b877e51731aa182eb41861d542596be67c1cfb1
-	sha1sums = 4f5b38060c70dbe33f580001e82b7341b33bdb78
-	sha1sums = 2202f2dfc37992e15979e5a639973bd778ef5068
+	sha1sums = 403f31e013e83757141538f1ea6b8a3b455c83b5
+	sha1sums = ae22434257e7ad5ebb0db533239caa411290d764
+	sha1sums = 07ecac5f08e379c52bc93121842a39939853d87e
+	sha1sums = e8a382d724c26dfd5ec3c7707897ca9681e20b4b
+	sha1sums = ed7a7c6f8ef23ec69f07e88e13820534e6a29e99
+	sha1sums = 988cf6a8116eb3a22aaf5f506275c936dbb69c6c
+	sha1sums = 086e171948d7ac1121b205730371c11d248a0bee
+	sha1sums = 948e1594f4875b25d5e81068ef6b93fa57740cb7
+	sha1sums = 5870d1877af3a1f813e15db78645abe9a7373115
+	sha1sums = 18805bf1116bccff5da32dcf9090144cff9129fc
+	sha1sums = 85da6d51a8797d3f2536682210bab7cf3a36409f
+	sha1sums = aaff4e3b7ce1bf057aec3307d67ddd9bd4e5b1ca
+	sha1sums = e7f673457538164d1b62b5610399a3970d1c5399
+	sha1sums = 7213f2e56ab41baedf9260856c93f7d0b31c5f75
+	sha1sums = cb5dbb957e865fbf3deae248e0a71a590ecf908d
+	sha1sums = 5a1cb56c6b05d3871cbeea4f7cc616bea64d1bf2
+	sha1sums = 3660f001879434157268488943dc85be178315db
+	sha1sums = f055114b425e9c50c2c6289664f6cd4f83f6238e
+	sha1sums = 75715d1133c4fc504a973fdc93697c2424c5c45a
+	sha1sums = bea19f1134552e3aa8884a45abc0dd5b5d38f757
+	sha1sums = c6b781ebc6887ee09d9d911a107b4e3f72ba1e3b
+	sha1sums = 28b0ebb2e261dc2a21b945e345a9ec6bf6f41b6c
+	sha1sums = 625ce4d2eabe2464d1cdf6c182a49cbadd54cb6e
+	sha1sums = 20fcc7e49d8662bf4ebbf4cee37fb8cce6c9a341
+	sha1sums = 125cf51854bc630fbede85e76877dd5566c18bf0
+	sha1sums = f34ca724344a65eb878166efb587080f44229422
+	sha1sums = db548b5794982ed354c59928d884748745855fb3
+	sha1sums = b8dc092e4d04cf765f03eadc4f78500dde8bd5b6
+	sha1sums = 8b2477d23c3b2f77eba83aa5987ccf2ee0864bf5
+	sha1sums = f3ef7ed35694cb4b5695abe696f0f096f001ca7d
+	sha1sums = 6f18ed111cdd9579bef0b2c99b8c5b05ae0e26a0
+	sha1sums = 8c4bd1d255599aa5d26c227979307c3614103649
+	sha1sums = 3bc5487513e453c7a8b3178c35828084dba9c0c5
+	sha1sums = e113ee205ee28dabdf341291494c89c91481b1b5
+	sha1sums = dc68c8e86b5ccab5ccbc48fcc68320a70ccc00d5
+	sha1sums = 6f099e4928fe385d3007ebf8092ac3b727cccce2
+	sha1sums = 68102660789dbb1122bbfd11400cddefb4b4ffbd
+	sha1sums = 329bbf730e96cefbf553fdb07f943b7d1a05a49d
+	sha1sums = 76250d05c2cdab2665d70fa3d6991cb3e935de68
+	sha1sums = b91e75d5f01266082a5376d8f76c3fef079c870f
+	sha1sums = 79ea06f9e4a3f86cf94c32af2a18f2db0b768e5a
+	sha1sums = 430dc842179ffd84a2b690725b967da699769964
+	sha1sums = c2988b0a34c43f8b4486f4814f95c7b3566fb054
+	sha1sums = 7dca544acbb8c0fbd078336aa363c7aebefc0362
+	sha1sums = 84f6b1257584c667d9ce0a8aa8b83973db05e475
+	sha1sums = 1d4827d92420b41556e845674809767f56068222
+	sha1sums = 3dfbd17302c97b4f9ac294754aa83e3fa446e83e
+	sha1sums = 1b59e015c6e071ab1bfb8613bdd76e9362248faa
+	sha1sums = 0a00b625cf16901821ac80bd9b22df25bebd7ad5
+	sha1sums = 570f8dad73045797fc08a81d94b1815edca16a4b
+	sha1sums = 7788f6cf56d0ceb12d9589cc090b720ec896b682
+	sha1sums = 7222f5f65e69031d149bdabe4340d3baa3e3bf12
+	sha1sums = 93ad07be122e5e385b05201b05a7e27dbe8ae23e
+	sha1sums = aae6f9dfc66b0239c6ce2f3945cd5256e3f93a73
+	sha1sums = 3a42d138b9c5e1ff5d421f5c6be5006345dbcc0e
+	sha1sums = 2c8402fc649cb2d5b1d83603e9529223e0bcb018
+	sha1sums = 5fb10b66b259e57eb2825b666b2786b02e808054
+	sha1sums = affa23c576c78201c72d13a1231e9f636b076065
+	sha1sums = b26b3ef993826a7005e7c86a528c5a90cf439daf
+	sha1sums = c6493d30677f0605141cb25a6f6dce8537df298f
+	sha1sums = 678c5a90e7dfe0c5eac7d21e4d8b32829ca832ba
+	sha1sums = db938e74e7c644db3decb32c6a290848da3b4bbd
+	sha1sums = 6cc9bb7caf6a6c4cc4dceb0616f2fb59d6f995a2
+	sha1sums = d9ab0c2f9f9a17f71beb84fe71b24ac1045feb55
+	sha1sums = d7b125bddde3eef0521ed2edb6e0a01f939dfb5a
+	sha1sums = e17b232070218acbe7804707fb25aedd45f84ed8
+	sha1sums = 3a514afa00dffb86ab1f674bdc5e8afe81272d83
+	sha1sums = 63f582dcb83dbce9e837b688b4c9556f3f89795a
+	sha1sums = 1c0bc55c46d3c21108f00879876f6e9c06ea3853
+	sha1sums = 8c35e48cda115e0d1ac51b10b7872a5fc2f415a9
+	sha1sums = 54bf03a5c36e5e7ed7a6c5d463e6b068a41cd699
+	sha1sums = b905a54d3c8c936137f32ae95ad02ac15121aed1
+	sha1sums = 930c515299de690f71f1a3f05bae7dc78291f564
+	sha1sums = 9891fc286d7a1f1d8e6d4c463e3226657e59d02e
+	sha1sums = 296a08b91b113236ff7aac282bd7fc89161b142a
+	sha1sums = d63e78d28c4d2c87c9f907649706c8d68b650983
+	sha1sums = 996b0f5afc262309c30f1b86cbde8c5cd41e3cfc
+	sha1sums = 79a9a1641f126296aed359e1c2b9845f721b7edc
+	sha1sums = 6931b8093c6036f1222de9f117cc995f4c1b4bfb
+	sha1sums = 7c7dc7347d1d19bada62a8e8a9e27a049b68f7a1
+	sha1sums = c7d6810a2b5baef3e3eeb8f5c1008a5e308af553
+	sha1sums = 21a1d8eb14999508a275af00cc389053f218bbfa
+	sha1sums = 47c8457edfb1a8a501ae9b6aca85fc6b370e8bb7
+	sha1sums = 2c4540684a2599c97c75ffb767c3a47154c0036b
+	sha1sums = 740a5a9dea9c75dd811084fd39e52a2416ff0cb3
+	sha1sums = f156c27ca136d1e51cefe6571f9bc2e3cbf4c3b4
+	sha1sums = 2d3f9fde7076cc36e72bab85c303837c9df57018
+	sha1sums = 69eb8f29e1876cb1f0c061e9d01a63b87cc4964a
+	sha1sums = 02c3a79d356945772765acd0ef111058204f7e1d
+	sha1sums = 5ab9fa85c931c8bc9fd097f92e5b04fbfd21918a
+	sha1sums = 980b1eec476d97876533de3dfd45a14532198c8a
+	sha1sums = f66b888f651206d5e50a152991b4a7e91343db48
+	sha1sums = 374fe1ff631f2726c09a4d3ee784b28b282370af
+	sha1sums = 7562c51a084c76a226f0a83e18ee643a7a83c4c7
+	sha1sums = 8c570a50e44168dd1159cfbbf7e525f2ffb626e3
+	sha1sums = 3ed60b7f0b2305a37dfbd1f97e36ad880d709de0
+	sha1sums = 189b650816602a258c7f11a074ca79957ca02bcb
+	sha1sums = b7a2edbe8c3836b3224c1f36ac6a9050985c8974
+	sha1sums = 730a8c9d5b02d4c1adba7d1512345c5a5ffcf512
+	sha1sums = 89d53e1986cced0675908c6c4d1514a079054f2d
+	sha1sums = 916c1f242cba1b8e62927f0fc7452575f45fb7ce
+	sha1sums = e94c9610223fcc43fb9ffb782c93613244100bb9
+	sha1sums = bcebfa84e6426985f2dea09758dba7357619c038
+	sha1sums = cbfb9dfabebca657023af33b5b0faf74defc0e16
+	sha1sums = 29d21fdd734f343d14592879c0698e8a68ee4277
+	sha1sums = 75c2fd795c2d1bbe7420cb03ba7719300d9b17c1
+	sha1sums = 6839d2d72f3fece1caa0db5c483c76ec7ff565e5
+	sha1sums = 7ea7b2b992ceb282961682db194f835926526dc6
+	sha1sums = bb41ab5508a92b060b52c8959c5613c02dcd4b3b
+	sha1sums = 8c47d21d2430306619533d5915bc07577df31b06
+	sha1sums = a1a351ca234612b05c875abc0b2f53975748360f
+	sha1sums = ddbcb70f512ffbdc5984c5207d5447a4be7a0676
+	sha1sums = d2c8e4064d524343abf62f0d0bce36e30e9c7b9e
+	sha1sums = fbada005514e569ee2dd9db2ec16ddfe190a01fa
 
 pkgname = collabora-online-server-nodocker
+
+pkgname = collabora-online-server-nodocker_ar
+
+pkgname = collabora-online-server-nodocker_as
+
+pkgname = collabora-online-server-nodocker_bg
+
+pkgname = collabora-online-server-nodocker_bn-in
+
+pkgname = collabora-online-server-nodocker_br
+
+pkgname = collabora-online-server-nodocker_ca
+
+pkgname = collabora-online-server-nodocker_ca-valencia
+
+pkgname = collabora-online-server-nodocker_cs
+
+pkgname = collabora-online-server-nodocker_cy
+
+pkgname = collabora-online-server-nodocker_da
+
+pkgname = collabora-online-server-nodocker_de
+
+pkgname = collabora-online-server-nodocker_el
+
+pkgname = collabora-online-server-nodocker_en
+
+pkgname = collabora-online-server-nodocker_en-gb
+
+pkgname = collabora-online-server-nodocker_es
+
+pkgname = collabora-online-server-nodocker_et
+
+pkgname = collabora-online-server-nodocker_eu
+
+pkgname = collabora-online-server-nodocker_fi
+
+pkgname = collabora-online-server-nodocker_fr
+
+pkgname = collabora-online-server-nodocker_ga
+
+pkgname = collabora-online-server-nodocker_gd
+
+pkgname = collabora-online-server-nodocker_gl
+
+pkgname = collabora-online-server-nodocker_gu
+
+pkgname = collabora-online-server-nodocker_he
+
+pkgname = collabora-online-server-nodocker_hi
+
+pkgname = collabora-online-server-nodocker_hr
+
+pkgname = collabora-online-server-nodocker_hu
+
+pkgname = collabora-online-server-nodocker_id
+
+pkgname = collabora-online-server-nodocker_is
+
+pkgname = collabora-online-server-nodocker_it
+
+pkgname = collabora-online-server-nodocker_ja
+
+pkgname = collabora-online-server-nodocker_km
+
+pkgname = collabora-online-server-nodocker_kn
+
+pkgname = collabora-online-server-nodocker_ko
+
+pkgname = collabora-online-server-nodocker_lt
+
+pkgname = collabora-online-server-nodocker_lv
+
+pkgname = collabora-online-server-nodocker_ml
+
+pkgname = collabora-online-server-nodocker_mr
+
+pkgname = collabora-online-server-nodocker_nb
+
+pkgname = collabora-online-server-nodocker_nl
+
+pkgname = collabora-online-server-nodocker_nn
+
+pkgname = collabora-online-server-nodocker_no
+
+pkgname = collabora-online-server-nodocker_oc
+
+pkgname = collabora-online-server-nodocker_or
+
+pkgname = collabora-online-server-nodocker_pa-in
+
+pkgname = collabora-online-server-nodocker_pl
+
+pkgname = collabora-online-server-nodocker_pt
+
+pkgname = collabora-online-server-nodocker_pt-br
+
+pkgname = collabora-online-server-nodocker_pt-pt
+
+pkgname = collabora-online-server-nodocker_ro
+
+pkgname = collabora-online-server-nodocker_ru
+
+pkgname = collabora-online-server-nodocker_sk
+
+pkgname = collabora-online-server-nodocker_sl
+
+pkgname = collabora-online-server-nodocker_sr
+
+pkgname = collabora-online-server-nodocker_sr-latn
+
+pkgname = collabora-online-server-nodocker_sv
+
+pkgname = collabora-online-server-nodocker_ta
+
+pkgname = collabora-online-server-nodocker_te
+
+pkgname = collabora-online-server-nodocker_tr
+
+pkgname = collabora-online-server-nodocker_uk
+
+pkgname = collabora-online-server-nodocker_vi
+
+pkgname = collabora-online-server-nodocker_zh-cn
+
+pkgname = collabora-online-server-nodocker_zh-tw
 

@@ -1,13 +1,14 @@
 # Maintainer: Yves G. <theYinYeti@yalis.fr>
 
-pkgname=collabora-online-server-nodocker
-pkgver=4.2.0
-pkgrel=2
-pkgdesc="Collabora CODE (LibreOffice Online) server for Nextcloud or ownCloud, without Docker"
+# Choose which language(s) to package (in addition to “en-us”)
+# This is a “full-line” extended regular-expression, eg.: 'pt' if you want “pt” but not “pt-br” or “pt-pt”
+_I18N_EREGEX='.*'
+_pkgname=collabora-online-server-nodocker
+pkgver=4.2.2
+pkgrel=1
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"
 license=('MPL')
-provides=('libreoffice' 'libreoffice-en-US')
 makedepends=(bzip2 coreutils curl fontconfig gawk grep gzip libcap sed systemd tar util-linux xz)
 
 optdepends=(
@@ -47,7 +48,7 @@ backup=(
 install=install
 
 # From Dockerfile (https://github.com/CollaboraOnline/Docker-CODE), minus i18n files
-_upstream_deps='loolwsd code-brand'
+_upstream_deps=(loolwsd code-brand)
 
 # DEBIAN–ARCHLINUX EQUIVALENCES
 #
@@ -87,33 +88,33 @@ _upstream_equiv='
 _upstream_equiv_OLD='
 '
 
+_main_debs=
+_i18n_debs=
+declare -A __main_debs __i18n_debs
+
 # >>>> START OF DYNAMIC ADAPTATION OF PKGBUILD
 _upstream_handle_dep() {
-  local dep="$1"
+  local dep="$2"
   local eqv="$(grep "^[[:blank:]]*$(sed 's/[.]/\\\0/g' <<<"$dep")[[:blank:]]*=" <<<"$_upstream_equiv")"
   local meta="$(awk -F$'\n' -vRS= "/^Package:[[:blank:]]*$(sed 's/[.]/\\\0/g' <<<"$dep")\\n/{print}" Packages)"
-  local seen=
+  local seen depurl
   if [ -n "$eqv" ]; then
     dep="$(sed 's/.*=[[:blank:]]*//' <<<"$eqv")"
     [ -n "$dep" ] || return
     for seen in "${depends[@]}"; do
       [ "$seen" == "$dep" ] && return
     done
-    if [[ "$dep" =~ :// ]]; then
-      source[${#source[*]}]="$dep"
-      sha1sums[${#sha1sums[*]}]="SKIP"
-    else
-      depends[${#depends[*]}]="$dep"
-    fi
+    depends+=("$dep")
   elif [ -n "$meta" ]; then
-    dep="$(sed -rn "s#^Filename:[[:blank:]]*(.*/)?#${source[0]%Packages}#p" <<<"$meta")"
+    depurl="$(sed -rn "s#^Filename:[[:blank:]]*(.*/)?#${source[0]%Packages}#p" <<<"$meta")"
     for seen in "${source[@]}"; do
-      [ "$seen" == "$dep" ] && return
+      [ "$seen" == "$depurl" ] && return
     done
-    source[${#source[*]}]="$dep"
-    sha1sums[${#sha1sums[*]}]="$(sed -rn "s#^SHA1:[[:blank:]]*##p" <<<"$meta")"
+    [ $1 == main ] && __main_debs[$dep]="$depurl" || __i18n_debs[$dep]="$depurl"
+    source+=("$depurl")
+    sha1sums+=("$(sed -rn "s#^SHA1:[[:blank:]]*##p" <<<"$meta")")
     while read dep; do if [ -n "$dep" ]; then
-      _upstream_handle_dep "$dep"
+      _upstream_handle_dep "$1" "$dep"
     fi; done < <(
         sed -rn "s#^Depends:[[:blank:]]*##p" <<<"$meta" \
       | sed 's#([^)]*)##g; s#[[:blank:]]*,[[:blank:]]*#\n#g'
@@ -129,18 +130,55 @@ if [ ${#source[*]} -eq 5 ]; then
     awk -F$'\n' -vRS= '/^Package:[[:blank:]]*loolwsd\n/{print}' Packages \
     | sed -n 's/^Version:[[:blank:]]*\(.*\)-.*/\1/p'
   )
-  for dep in $_upstream_deps; do
-    _upstream_handle_dep "$dep"
+
+  for d in "${_upstream_deps[@]}"; do __main_debs[$d]=_pending_; done
+  if [ -z "$_I18N_EREGEX" ]; then
+    pkgname=$_pkgname
+    eval 'package() { _main_package; }'
+  else
+    pkgname=($_pkgname)
+    eval "package_$_pkgname() { _main_package; }"
+    for p in $( \
+      sed -nr 's#^Package:[[:blank:]]*((collaboraoffice[0-9.]+-dict|collaboraofficebasis[0-9.]+)-[a-z]{2}(-[a-z]+)?)$#\1#p' Packages \
+      | grep -ve '-en-us$' \
+      | grep -E "[0-9.]+(-dict)?-($_I18N_EREGEX)\$")
+    do
+      __i18n_debs[$p]=_pending_
+    done
+    while read l; do
+      pkgname+=(${_pkgname}_${l})
+      eval "package_${_pkgname}_${l}() { _i18n_package $l; }"
+    done < <( \
+      sed -nr 's#^Package: (collaboraoffice[0-9.]+-dict-|collaboraofficebasis[0-9.]+-)([a-z]{2}(-[a-z]+)?)$#\2#p' Packages \
+      | grep -vxF en-us \
+      | sort -u \
+      | grep -Exe "$_I18N_EREGEX")
+  fi
+
+  for dep in "${!__main_debs[@]}"; do
+    _upstream_handle_dep main "$dep"
   done
+  for dep in "${!__i18n_debs[@]}"; do
+    _upstream_handle_dep i18n "$dep"
+  done
+  _main_debs="$(IFS='|'; echo "${__main_debs[*]}")"
+  _i18n_debs="$(IFS='|'; echo "${__i18n_debs[*]}")"
 fi
-unset _upstream_handle_dep _upstream_equiv _upstream_deps
+unset _upstream_handle_dep _upstream_equiv _upstream_deps __main_debs __i18n_debs
 # <<<< END OF DYNAMIC ADAPTATION OF PKGBUILD
 
-package() {
-  local data= f=
+_i18n_package() {
+  depends=()
+  backup=()
+  install=
+  pkgdesc="Language ${1} internationalization files for Collabora CODE (LibreOffice Online)"
+
+  local data f
   cd "$pkgdir"
 
-  for f in "$srcdir"/*.deb; do
+  while read f; do
+    [[ "$f" =~ [0-9.]+(-dict)?-$1 ]] || continue
+    f="$srcdir/$(basename "$f")"
     data="$(ar t "$f" | grep ^data)"
     case "$data" in
     *.bz2) ar p "$f" "$data" | tar -xjf - ;;
@@ -148,7 +186,26 @@ package() {
     *.xz) ar p "$f" "$data" | tar -xJf - ;;
     *) echo "Unknown file format: $data" >&2; exit 1 ;;
     esac
-  done
+  done < <(tr '|' '\n' <<<"$_i18n_debs")
+  chown -R $(id -nu):$(id -ng) .
+}
+
+_main_package() {
+  pkgdesc="Collabora CODE (LibreOffice Online) server for Nextcloud or ownCloud, without Docker"
+
+  local data f
+  cd "$pkgdir"
+
+  while read f; do
+    f="$srcdir/$(basename "$f")"
+    data="$(ar t "$f" | grep ^data)"
+    case "$data" in
+    *.bz2) ar p "$f" "$data" | tar -xjf - ;;
+    *.gz) ar p "$f" "$data" | tar -xzf - ;;
+    *.xz) ar p "$f" "$data" | tar -xJf - ;;
+    *) echo "Unknown file format: $data" >&2; exit 1 ;;
+    esac
+  done < <(tr '|' '\n' <<<"$_main_debs")
   chown -R $(id -nu):$(id -ng) .
 
   # /lib is deprecated
