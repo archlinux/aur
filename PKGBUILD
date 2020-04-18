@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <aanderso at t c d dot ie>
 pkgname=intel-caffe-git
 _srcname=intel-caffe
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
