@@ -1,19 +1,18 @@
 pkgbase = logisim-evolution
 	pkgdesc = An educational tool for designing and simulating digital logic circuits
-	pkgver = 2.15.0
-	pkgrel = 2
+	pkgver = 3.3.4
+	pkgrel = 1
 	url = https://github.com/reds-heig/logisim-evolution
 	arch = any
 	license = GPL3
-	makedepends = java-environment-openjdk=8
-	depends = java-runtime=8
+	depends = java-runtime>=10
 	depends = bash
 	depends = hicolor-icon-theme
-	source = logisim-evolution-2.15.0.tar.gz::https://github.com/reds-heig/logisim-evolution/archive/v2.15.0.tar.gz
+	source = logisim-evolution-3.3.4.jar::https://github.com/reds-heig/logisim-evolution/releases/download/v3.3.4/logisim-evolution-3.3.4-all.jar
 	source = logisim-evolution.desktop
 	source = logisim-evolution.sh
 	source = logisim-evolution.xml
-	sha256sums = 54c55415fce36801ed668c3bed64903444b0f6f3326091d63e84c253523fc8d8
+	sha256sums = b04e666ed0b74126dfc8c2ce6ae0d425ad5bb39c2d77ef214158b6dfc67f8b0d
 	sha256sums = 086851b07012f669743080dc4f059cf7727b19200384070852b34e142533385b
 	sha256sums = d5975cc0025905ab8a8a451ce4362ba876bed88008d3a5b2c0a7f664a85da1ba
 	sha256sums = f90c3709748af806a33c14e81c8bf91dc06c3a4f58fe00cfe14a8f1842e09dec
