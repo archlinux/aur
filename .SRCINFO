@@ -1,14 +1,14 @@
 pkgbase = python-txacme
 	pkgdesc = ACME protocol implementation for Twisted
-	pkgver = 0.9.2
-	pkgrel = 2
+	pkgver = 0.9.3
+	pkgrel = 1
 	url = https://txacme.readthedocs.io
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = txacme-0.9.2.tar.gz::https://github.com/twisted/txacme/archive/0.9.2.tar.gz
-	md5sums = ec9591dd60cc64b4504df1c9b8785e98
+	source = txacme-0.9.3.tar.gz::https://github.com/twisted/txacme/archive/0.9.3.tar.gz
+	md5sums = 78b2dea6877a23910a33d47a4d79bf90
 
 pkgname = python-txacme
 	depends = python

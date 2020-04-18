@@ -1,15 +1,15 @@
 # Maintainer: pfm <vorticity at mail dot ru>
 pkgname=("python-txacme" "python2-txacme")
 _pkgname=txacme
-pkgver=0.9.2
-pkgrel=2
+pkgver=0.9.3
+pkgrel=1
 pkgdesc="ACME protocol implementation for Twisted"
 arch=(any)
 url="https://txacme.readthedocs.io"
 license=('MIT')
 makedepends=("python-setuptools" "python2-setuptools")
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/twisted/$_pkgname/archive/$pkgver.tar.gz")
-md5sums=('ec9591dd60cc64b4504df1c9b8785e98')
+md5sums=('78b2dea6877a23910a33d47a4d79bf90')
 
 prepare() {
     cp -a $_pkgname-$pkgver{,-py2}
