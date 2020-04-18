@@ -28,6 +28,7 @@ pkgbase = prey
 	depends_x86_64 = lib32-sdl
 	optdepends_x86_64 = lib32-alsa-plugins: pulseaudio-support
 	optdepends_x86_64 = lib32-libpulse: pulseaudio support
+	optdepends_x86_64 = lib32-nvidia-utils: NVIDIA GPU detection
 
 pkgname = prey
 

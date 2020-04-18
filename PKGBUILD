@@ -15,7 +15,8 @@ optdepends_i686=(
 'libpulse: pulseaudio support')
 optdepends_x86_64=(
     'lib32-alsa-plugins: pulseaudio-support'
-'lib32-libpulse: pulseaudio support')
+    'lib32-libpulse: pulseaudio support'
+'lib32-nvidia-utils: NVIDIA GPU detection')
 install='prey.install'
 source=(
     ${pkgname}.desktop
