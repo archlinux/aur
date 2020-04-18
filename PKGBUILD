@@ -6,7 +6,7 @@
 #   french pkgbuild here: https://git.deparis.io/pkgbuilds/tree/cliqz_work/PKGBUILD?id=17ec1716c90dd08
 pkgname=cliqz
 _gitname=browser-f
-pkgver=1.34.1
+pkgver=1.35.0
 pkgrel=1
 _cqzchannel=release
 _cqzbuildid=$(curl -s "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
@@ -24,8 +24,8 @@ makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake
 optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
-        '0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=573f01ecdb53dc1add3b4b68a8e5a4113896e304')
-sha256sums=('6c95ba9d3bab89e145fc3d1dd5616748c066f9f67f977a5c3079e527fd47d9f3'
+        '0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=f0a7ecdbfe3df6bf8b25621efcdccc68fb6a8f15')
+sha256sums=('90b746da10e849dbe3d2dbc0736bc640759c9234c0162c25c0df43551f7382ae'
             '5f7ac724a5c5afd9322b1e59006f4170ea5354ca1e0e60dab08b7784c2d8463c')
 options=(!emptydirs !makeflags !strip)
 
@@ -126,11 +126,8 @@ build() {
   export CQZ_VERSION=$pkgver
   export CQZ_BUILD_ID="$_cqzbuildid"
 
-  # Uncomment the following line to have a deutsch build
-  # Also, change the target object name bellow
-  #export CQZ_BUILD_DE_LOCALIZATION=1
-
   export MOZ_NOSPAM=1
+  export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   # LTO needs more open files
   ulimit -n 4096
 
@@ -139,13 +136,13 @@ build() {
   CFLAGS="${CFLAGS/-fno-plt/}"
   CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
-  ./magic_build_and_package.sh
+  # Add --de switch to have a deutsch build. Also change the target
+  # object name bellow.
+  ./magic_build_and_package.sh --clobber
 }
 
 package() {
   install -d -m755 ${pkgdir}/usr/{bin,lib}
-
-  ln -s "/usr/lib/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   cd "$srcdir"
   # Uncomment the two following lines and comment the en-US ones if you
@@ -156,6 +153,7 @@ package() {
   tar xjf "$pkgname-$pkgver.en-US.linux-x86_64.tar.bz2"
 
   cp -R "$pkgname" "$pkgdir/usr/lib/"
+  ln -srf "$pkgdir/usr/lib/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   cd "${_gitname}-$pkgver"
   for size in 16 22 24 32 48 256; do
@@ -188,6 +186,12 @@ END
 
   install -D -m644 mozilla-release/toolkit/mozapps/installer/linux/rpm/mozilla.desktop \
           "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+  # Use system certificates
+  local nssckbi="$pkgdir/usr/lib/$pkgname/libnssckbi.so"
+  if [[ -e $nssckbi ]]; then
+    ln -srf "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
+  fi
 }
 
 # Local Variables:
