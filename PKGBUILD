@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-auth_spnego
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 
 _modname=spnego-http-auth-nginx-module
-_nginxver=1.13.4
+_nginxver=1.17.9
 
 pkgdesc='Nginx module to use SPNEGO for http authentication'
 arch=('i686' 'x86_64')
@@ -14,11 +14,16 @@ url="https://github.com/stnoonan/spnego-http-auth-nginx-module"
 license=('BSD')
 
 source=(
-    https://nginx.org/download/nginx-$_nginxver.tar.gz
+    https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
     git+https://github.com/stnoonan/spnego-http-auth-nginx-module.git
 )
 
-sha256sums=('de21f3c49ba65c611329d8759a63d72e5fcf719bc6f2a3270e2541348ef1fbba'
+validpgpkeys=(
+	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
+)
+
+sha256sums=('7dd65d405c753c41b7fdab9415cfb4bdbaf093ec6d9f7432072d52cb7bcbb689'
+            'SKIP'
             'SKIP')
 
 build() {
