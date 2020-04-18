@@ -1,6 +1,6 @@
 pkgbase = kotlin-native-bin
-	pkgdesc = A LLVM backend for the Kotlin compiler
-	pkgver = 1.3.71
+	pkgdesc = An LLVM backend for the Kotlin compiler
+	pkgver = 1.3.72
 	pkgrel = 1
 	url = https://github.com/JetBrains/kotlin-native
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = kotlin-native-bin
 	options = staticlibs
 	options = libtool
 	options = !strip
-	source = https://github.com/JetBrains/kotlin/releases/download/v1.3.71/kotlin-native-linux-1.3.71.tar.gz
-	sha256sums = fd7506f829f1fa04c15a3815b723e7ac7e6dbcbf0c6c54d43e8aa052233e7906
+	source = https://github.com/JetBrains/kotlin/releases/download/v1.3.72/kotlin-native-linux-1.3.72.tar.gz
+	sha256sums = 85534a02d7cb6c07f51945e98cd4c0f2644e8528176da17c351b605845857b8c
 
 pkgname = kotlin-native-bin
 
