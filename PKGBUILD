@@ -26,6 +26,4 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -Dm755 "target/release/wasm2obj" "$pkgdir/usr/bin/wasm2obj"
-    install -Dm755 "target/release/wast" "$pkgdir/usr/bin/wast"
 }
