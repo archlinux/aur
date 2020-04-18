@@ -6,7 +6,7 @@ _pkgname=libstrangle
 pkgname=${_pkgname}-git
 pkgdesc="Simple FPS Limiter"
 pkgver=r68.a5aa280
-pkgrel=3
+pkgrel=4
 url='https://gitlab.com/torkel104/libstrangle'
 arch=('x86_64')
 makedepends=('git' 'gcc-multilib')
@@ -32,4 +32,8 @@ package() {
     cd $_pkgname
 
     make prefix=/usr DESTDIR="$pkgdir" install
+
+    # Install the README.md locally
+    install -d "$pkgdir/usr/share/doc/$_pkgname"
+    install -m644 -t "$pkgdir/usr/share/doc/$_pkgname" README.*
 }
