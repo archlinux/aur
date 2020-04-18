@@ -1,0 +1,16 @@
+pkgbase = trojan-qt5-appimage
+	pkgdesc = A cross-platform Trojan GUI Client
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/TheWanderingCoel/Trojan-Qt5
+	arch = x86_64
+	license = GPL3
+	makedepends = gendesk
+	provides = trojan-qt5
+	conflicts = trojan-qt5
+	options = !strip
+	source = https://github.com/TheWanderingCoel/Trojan-Qt5/releases/download/v0.0.8/Trojan-Qt5-Linux.AppImage
+	sha512sums = SKIP
+
+pkgname = trojan-qt5-appimage
+
