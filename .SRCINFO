@@ -1,7 +1,7 @@
 pkgbase = ndn-nfd-git
 	pkgdesc = NFD is a network forwarder that implements and evolves together with the Named Data Networking (NDN) protocol
 	pkgver = NFD.0.7.0.r21.gc68b2e8a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/named-data/NFD
 	arch = any
 	license = GPL
@@ -15,6 +15,8 @@ pkgbase = ndn-nfd-git
 	depends = ndn-cxx
 	depends = boost
 	optdepends = valgrind: memory analysis
+	optdepends = doxygen: build documentation
+	optdepends = python-sphinx: build documentation
 	provides = ndn-nfd
 	conflicts = ndn-nfd
 	source = git+https://github.com/named-data/NFD.git
