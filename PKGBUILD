@@ -1,17 +1,18 @@
 # Maintainer: Filippo Berto <berto.f@protonmail.com>
-pkgname=ndn-cxx
-pkgver=0.6.6
+_pkgname=ndn-cxx
+pkgname=${_pkgname}
+pkgver=0.7.0
 pkgrel=1
 # epoch=
 pkgdesc="Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications"
-arch=("any")
+arch=('i686' 'x86_64')
 url="https://github.com/named-data/${pkgname}"
 license=('GPL')
 groups=()
 depends=('boost')
 makedepends=('git' 'gcc' 'python' 'pkgconf' 'sqlite' 'openssl>=1.0.2')
 checkdepends=()
-optdepends=()
+optdepends=('boost-stacktrace-backtrace')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 replaces=()
@@ -20,22 +21,20 @@ options=()
 install=
 source=(https://github.com/named-data/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz)
 noextract=()
-sha256sums=('abadd5b7599a74dbe11a4491aefe30ea4a00fdecf477c1035d5eb82ce46b8f9b')
+sha256sums=('0efa2e7828bd8751ea2fb1aed0c83359410e7f76390c4fec905a6f4dea8a1b70')
 validpgpkeys=()
 
 prepare() {
-	cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
-	./waf configure
+	cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
+	./waf configure --prefix=/usr
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
 	./waf build
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
+	cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
 	./waf install --destdir="${pkgdir}"
-	
-	mv "${pkgdir}/usr/local/"* "${pkgdir}/usr"
 }
