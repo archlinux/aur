@@ -18,6 +18,7 @@ IOSEVKA_REPO = "https://github.com/be5invis/iosevka"
 
 def get_repo(repo_dir: Path) -> Repo:
     if repo_dir.exists():
+        print(f"Updating {remote_url} ...", file=sys.stderr)
         repo = Repo(repo_dir)
         repo.remote().pull()
     else:
@@ -27,8 +28,17 @@ def get_repo(repo_dir: Path) -> Repo:
 
 def install_iosevka(repo_dir: Path):
     get_repo(repo_dir)
-    subprocess.run(["npm", "install"], cwd=repo_dir).check_returncode()
-    subprocess.run(["npm", "audit", "fix"], cwd=repo_dir).check_returncode()
+
+    print("Installing iosevka...", file=sys.stderr)
+    try:
+        subprocess.run(["npm", "install"], cwd=repo_dir).check_returncode()
+        subprocess.run(["npm", "install", "--package-lock-only"], cwd=repo_dir).check_returncode()
+        subprocess.run(["npm", "audit", "fix"], cwd=repo_dir).check_returncode()
+    except subprocess.CalledProcessError:
+        print("Failed to install iosevka", file=sys.stderr)
+        sys.exit(1)
+    else:
+        print("Iosevka installed.", file=sys.stderr)
 
 
 def generate_font(iosevka_dir: Path, font_name: str, font_styles: Dict[str, Set[str]]):
