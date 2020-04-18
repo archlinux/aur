@@ -1,6 +1,6 @@
 pkgbase = thunderbird-sogo-connector-bin
 	pkgdesc = Thunderbird frontend for SOGo
-	pkgver = 60.0.2
+	pkgver = 68.0.1
 	pkgrel = 1
 	url = http://www.sogo.nu/downloads/frontends.html
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = thunderbird-sogo-connector-bin
 	license = GPL
 	license = LGPL
 	depends = thunderbird>=60
-	provides = sogo-connector=60.0.2
+	provides = sogo-connector=68.0.1
 	conflicts = sogo-connector-bin
 	replaces = sogo-connector-bin
 	options = !strip
-	source = sogo-connector-60.0.2.xpi::http://www.sogo.nu/files/downloads/SOGo/Thunderbird/sogo-connector-60.0.2.xpi
-	sha256sums = 733bce56e90f9f295ce944b6c707916c53d0ad102922fcb319d9b362bda7cd55
+	source = sogo-connector-68.0.1.xpi::http://www.sogo.nu/files/downloads/SOGo/Thunderbird/sogo-connector-68.0.1-demo.xpi
+	sha256sums = 1ed0863d5d01f30a04fa749100cf9dbee4583ef40986d300dccbd6b4fcb66856
 
 pkgname = thunderbird-sogo-connector-bin
 
