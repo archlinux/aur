@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 User=fah
+SupplementaryGroups=video
 DynamicUser=yes
 ConfigurationDirectory=foldingathome
 StateDirectory=fah
@@ -13,6 +14,11 @@ ExecStartPre=!/usr/bin/chown -R fah:fah /etc/foldingathome
 ExecStart=/usr/bin/FAHClient --config /etc/foldingathome/config.xml
 CPUSchedulingPolicy=idle
 IOSchedulingClass=3
+
+# Nvidia
+ReadWritePaths=-/dev/nvidia-uvm
+ExecStartPre=!-/usr/bin/nvidia-modprobe
+ExecStartPre=!-/usr/bin/nvidia-modprobe -c 0 -u
 
 [Install]
 WantedBy=multi-user.target
