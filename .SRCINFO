@@ -1,7 +1,7 @@
 pkgbase = mu
 	pkgdesc = Maildir indexer/searcher and Emacs client (mu4e)
-	pkgver = 1.2
-	pkgrel = 3
+	pkgver = 1.4
+	pkgrel = 1
 	url = http://www.djcbsoftware.nl/code/mu
 	arch = x86_64
 	license = GPL
@@ -11,8 +11,8 @@ pkgbase = mu
 	depends = guile2.0
 	optdepends = guile: guile support
 	optdepends = emacs: mu4e support
-	source = mu-1.2.tar.gz::https://github.com/djcb/mu/archive/1.2.tar.gz
-	md5sums = 5e7d7c3549b9428ec0b5ea7d374b6d0d
+	source = mu-1.4.tar.gz::https://github.com/djcb/mu/archive/1.4.tar.gz
+	md5sums = 7a679ca4cec44a40654def96c776f0db
 
 pkgname = mu
 
