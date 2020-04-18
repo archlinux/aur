@@ -1,0 +1,18 @@
+pkgbase = nomino
+	pkgdesc = Batch rename utility for developers
+	pkgver = 0.1.4
+	pkgrel = 4
+	url = https://github.com/yaa110/nomino
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = python3
+	depends = gcc-libs
+	provides = nomino
+	conflicts = nomino-bin
+	source = 0.1.4.tar.gz::https://github.com/yaa110/nomino/archive/0.1.4.tar.gz
+	sha512sums = f6a7201ac5469e421845f091b88f6c071eb1c7791c5fd2692924a19204084d56312160f98f8e34a20aa1a4ff125ef822d8ab68ed336885cce0855c3921b87bea
+
+pkgname = nomino
+
