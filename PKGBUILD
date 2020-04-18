@@ -2,7 +2,7 @@
 _pkgname=ndn-cxx
 pkgname=${_pkgname}-git
 pkgver=ndn.cxx.0.7.0.r13.g9603325b
-pkgrel=1
+pkgrel=2
 # epoch=
 pkgdesc="Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications"
 arch=("any")
@@ -23,6 +23,11 @@ source=("git+${url}.git")
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
+
+pkgver() {
+	cd "${srcdir}/${_pkgname}"
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
