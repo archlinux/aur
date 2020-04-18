@@ -1,0 +1,28 @@
+pkgbase = foosynth-plugin-neo_f3kdb-git
+	pkgdesc = Plugin for Vapoursynth/Avisynth: neo_f3kdb (Dual interface for Vapoursynth/Avisynth) (GIT version)
+	pkgver = r4.1.gc9ec0f8
+	pkgrel = 1
+	url = https://forum.doom9.org/showthread.php?t=176553
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = avisynthplus-git
+	makedepends = vapoursynth
+	source = neo_f3kdb::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_f3kdb.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-neo_f3kdb-git
+	pkgdesc = Plugin for Avisynth: neo_f3kdb (GIT version)
+	depends = avisynthplus
+	depends = intel-tbb
+	provides = avisynth-plugin-neo_f3kdb
+	conflicts = avisynth-plugin-neo_f3kdb
+
+pkgname = vapoursynth-plugin-neo_f3kdb-git
+	pkgdesc = Plugin for Vapoursynth: neo_f3kdb (GIT version)
+	depends = vapoursynth
+	depends = intel-tbb
+	provides = vapoursynth-plugin-neo_f3kdb
+	conflicts = vapoursynth-plugin-neo_f3kdb
+
