@@ -1,0 +1,53 @@
+# Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
+# Contributor: S Stewart <tda@null.net>
+# Special thanks to RyanTheAllmighty for making hyper-appimage
+pkgname="gdlauncher-classic"
+pkgver="0.13.0"
+pkgrel=1
+arch=('x86_64')
+pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
+url="https://github.com/CrankySupertoon/GDLauncher-Classic"
+license=('MIT')
+install="gdlauncher-classic.install"
+depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3' 'rust')
+
+sha256sums_x86_64=('83cb84935a7b31d64cb4a6c82c938c2a6ab0b59d1db2bdb0791ae16b27580d73'
+                   '9f15151603ea384e395f3cc8bda12c45a179b4ef0d8be9537ddd7b3d47d93e25')
+
+source_x86_64=(
+    "gdlauncher-classic.desktop"
+    "GDLauncher-linux-setup.AppImage::https://github.com/CrankySupertoon/GDLauncher-Classic/releases/download/v${pkgver}/GDLauncher-linux-setup.AppImage"
+)
+
+prepare() {
+    # mark as executable
+    chmod +x "${srcdir}/GDLauncher-linux-setup.AppImage"
+    # extract (didn't know this was possible)
+    "${srcdir}/GDLauncher-linux-setup.AppImage" --appimage-extract
+    # executable isnt needed now
+    chmod -x "${srcdir}/GDLauncher-linux-setup.AppImage"
+}
+
+package() {
+    # install the main files.
+    install -d -m755 "${pkgdir}/opt/${pkgname}"
+    cp -Rr "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname}"
+
+    # desktop entry
+    install -D -m644 "${srcdir}/gdlauncher-classic.desktop" "${pkgdir}/usr/share/applications/gdlauncher-classic.desktop"
+
+    # install the icons
+    install -d -m755 "${pkgdir}/usr/share/icons/hicolor"
+    cp -Rr "${srcdir}/squashfs-root/usr/share/icons/hicolor/" "${pkgdir}/usr/share/icons/hicolor"
+
+    # fix file permissions - all files as 644 - directories as 755
+    find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
+    find "${pkgdir}/"{opt,usr} -type f -exec chmod 644 {} \;
+
+    # make sure the main binary has the right permissions
+    chmod +x "${pkgdir}/opt/${pkgname}/gdlauncher"
+
+    # link the binary
+    install -d -m755 "${pkgdir}/usr/bin"
+    ln -sr "${pkgdir}/opt/${pkgname}/gdlauncher-classic" "${pkgdir}/usr/bin/gdlauncher-classic"
+}
