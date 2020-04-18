@@ -1,0 +1,22 @@
+pkgbase = synth-shell-prompt-git
+	pkgdesc = Fancy terminal prompt with colors and git support
+	pkgver = v1.0.r0.gbafabea
+	pkgrel = 1
+	url = https://github.com/andresgongora/synth-shell-prompt
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = sed
+	makedepends = grep
+	depends = bash
+	depends = bc
+	depends = ldns
+	depends = lm_sensors
+	optdepends = 
+	provides = synth-shell-prompt
+	conflicts = synth-shell-prompt
+	source = git://github.com/andresgongora/synth-shell-prompt.git#branch=master
+	md5sums = SKIP
+
+pkgname = synth-shell-prompt-git
+
