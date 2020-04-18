@@ -1,0 +1,18 @@
+pkgbase = ssr.lv2-git
+	pkgdesc = A sympathetic string resonator.
+	pkgver = r3.a40fa53
+	pkgrel = 1
+	url = https://github.com/jpcima/ssr
+	arch = x86_64
+	groups = lv2-plugins
+	license = MIT
+	depends = git
+	depends = pkgconf
+	depends = cairo
+	depends = jack
+	depends = mesa
+	source = ssr.lv2-git::git+https://github.com/jpcima/ssr
+	md5sums = SKIP
+
+pkgname = ssr.lv2-git
+
