@@ -10,7 +10,7 @@ license=(GPL2)
 source=(https://download.storage.infomaniak.com/drive/desktopclient/kDrive-$pkgver.AppImage
         kDrive.desktop
         kDrive.png)
-sha256sums=('3f2b105791d356b17cc3b653540cead9f4ea2e612f010f2ebb3c6cac48e4039a'
+sha256sums=('381023e9d4c7b1afe96fd8926142ecaa2daa4ddf1f043ba7be284944947509db'
             'c4616b0ddbb137aef453f7031f5285b727addfa26f035a9ecbe62e1c6f195c5d'
             'b142e3a06de916f47e8666bddc74dfe37249616fd578ab9ae63b17a945d46813')
 conflicts=(kdrive)
