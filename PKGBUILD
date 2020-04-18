@@ -1,7 +1,7 @@
 # Maintainer: Daniel Mason <daniel@m2.nz>
 pkgbase=riot-desktop-beta-git
 pkgver=v1.6.0.rc.3.r0.g4e07c647
-pkgrel=1
+pkgrel=2
 pkgname=riot-desktop-beta-git
 pkgdesc="A glossy Matrix collaboration beta client for the desktop."
 arch=('any')
@@ -17,7 +17,7 @@ source=('riot-desktop-beta-git::git://github.com/vector-im/riot-web.git#tag=v1.6
         "riot-desktop-beta.sh"
         "fetch-develop.deps.sh")
 sha256sums=('SKIP'
-            '0ecaab0006798cddf1660edb6e3c2fa73d8afa4714ce44b318d2e5c75b4f7454'
+            'b5a37c284e39dab0db7397ada7d04bc4fdb791b3a16d9b7b262d97eb6e8ab377'
             'e566567a35fdf882b63c5acf332fdde30030bf1e98288a1078aca9c0b8413e64'
             'e373f394b3cad5a02c4e1d9de51009a3bd103c045328996fdf523566035b156a')
 

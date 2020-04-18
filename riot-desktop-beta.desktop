@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Riot Beta
+Name=Riot
 Comment=A feature-rich beta client for Matrix.org
 Exec="/usr/bin/riot-desktop-beta"
 Terminal=false
