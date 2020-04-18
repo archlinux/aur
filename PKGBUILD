@@ -2,15 +2,15 @@
 
 pkgname=weechat-matrix-git
 _pkgname=${pkgname%-git}
-pkgver=r717.2a24096
+pkgver=r723.d415841
 pkgrel=1
 pkgdesc='Weechat Matrix protocol script written in Python'
 arch=('any')
 url="https://github.com/poljar/weechat-matrix"
 license=('ISC')
-depends=('python-atomicwrites' 'python-attrs' 'python-future' 'python-logbook'
-         'python-matrix-nio' 'python-pygments' 'python-pyopenssl' 'python-webcolors')
-makedepends=('git')
+depends=('python-atomicwrites' 'python-attrs' 'python-future' 'python-logbook' 'python-matrix-nio'
+         'python-pygments' 'python-pyopenssl' 'python-webcolors')
+makedepends=('git' 'python-dephell')
 checkdepends=('python-hypothesis' 'python-pytest')
 optdepends=('python-aiohttp: matrix_sso_helper support'
             'python-magic: matrix_upload support'
@@ -31,6 +31,12 @@ pkgver() {
 prepare() {
     cd "${_pkgname}"
     sed -ri 's|#!/usr/bin/env( -S)? python3|#!/usr/bin/python3|' contrib/*.py
+    dephell deps convert --from pyproject.toml --to setup.py
+}
+
+build() {
+    cd "${_pkgname}"
+    python setup.py build
 }
 
 check() {
@@ -41,7 +47,10 @@ check() {
 package() {
     cd "${_pkgname}"
 
-    make DESTDIR="${pkgdir}" PREFIX=/usr/share/weechat install
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+
+    install -Dm755 main.py \
+        "${pkgdir}/usr/share/weechat/python/weechat-matrix.py"
 
     for _script in matrix_decrypt matrix_sso_helper matrix_upload
     do

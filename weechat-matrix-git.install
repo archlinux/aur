@@ -1,11 +1,16 @@
 _install_update_msg() {
     echo "In order to use this plugin after installation, you'll need to run the following command as the user running weechat:"
     echo ""
-    echo "    $ ln -s /usr/share/weechat/python/{matrix,matrix.py} -t ~/.weechat/python"
+    echo "    $ ln -s /usr/share/weechat/python/weechat-matrix.py -t ~/.weechat/python/"
     echo ""
     echo "If you want the script to be loaded on start-up, you'll also need to symlink it into the autoload folder:"
     echo ""
-    echo "    $ ln -s /usr/share/weechat/python/matrix.py ~/.weechat/python/autoload/"
+    echo "    $ ln -s /usr/share/weechat/python/weechat-matrix.py -t ~/.weechat/python/autoload/"
+    echo ""
+    echo "The location of the script has changed in April 2020, remove your old symlinks and follow the instructions above:"
+    echo ""
+    echo "    $ rm ~/.weechat/python/{matrix,matrix.py}"
+    echo "    $ rm ~/.weechat/python/autoload/matrix.py"
     echo ""
 }
 
