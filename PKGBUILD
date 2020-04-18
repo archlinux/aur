@@ -5,7 +5,7 @@ pkgname=openttd-btpro
 _pkgname=openttd
 _btpro_release=D_110101
 pkgver=1.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc='An engine for running Transport Tycoon Deluxe. BTPro patches applied.'
 arch=('x86_64')
 url='http://openttd.btpro.nl/index.php/forum/30-btpro-openttd-client-talk/'
@@ -50,6 +50,7 @@ package() {
   cd ${_pkgname}-${pkgver} 
  
   make install
-  install -m644 -D ../innerhighlight.grf "${pkgdir}/usr/share/openttd/newgrf/innerhighlight.grf"
+  mkdir -p "${pkgdir}/usr/share/openttd/baseset/newgrf/"
+  install -m644 -D ../innerhighlight.grf "${pkgdir}/usr/share/openttd/baseset/newgrf/innerhighlight.grf"
 }
 
