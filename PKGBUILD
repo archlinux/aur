@@ -3,8 +3,8 @@
 _pkgbase=mautrix-facebook
 pkgname=${_pkgbase}-git
 pkgver=r150.9264125
-pkgrel=3
-pkgdesc="A Matrix-Facebook puppeting bridge with multi-user support"
+pkgrel=4
+pkgdesc="A double puppeting Facebook bridge with multi-user support for Hangouts"
 arch=(any)
 conflicts=(mautrix-facebook)
 license=(AGPLv3)
@@ -18,6 +18,11 @@ depends=(python
 	     python-mautrix
 	     python-magic-git
 	     python-fbchat-asyncio
+	     python-beautifulsoup4
+	     python-pillow
+	     python-yaml
+	     python-idna
+	     python-future
 	     sudo
 	    )
 makedepends=(git)
