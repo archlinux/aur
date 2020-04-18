@@ -10,7 +10,7 @@ pkgbase = sincon-git
 	depends = python-beautifulsoup4
 	provides = sincon
 	conflicts = sincon
-	source = sincon-git::git+https://git.antonionapolitano.eu/zAxny32/sincon
+	source = sincon-git::git+https://git.antonionapolitano.eu/napaalm/sincon
 	md5sums = SKIP
 
 pkgname = sincon-git
