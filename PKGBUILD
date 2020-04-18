@@ -2,7 +2,7 @@
 pkgname=intel-caffe-git
 _srcname=intel-caffe
 pkgver=1.1.16
-pkgrel=2
+pkgrel=3
 pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
 url="https://github.com/intel/caffe"
@@ -13,7 +13,7 @@ depends=(
         'python-matplotlib' 'ipython' 'python-networkx' 'python-nose'
         'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
         'python-yaml' 'python-pillow' 'python-six' 'python-scikit-image'
-        'openexr' 'opencv>=4.0.0' 'gtk3' 'openmp' 'onednn'
+        'openexr' 'opencv>=4.0.0' 'gtk3' 'openmp'
 )
 optdepends=('openblas: OpenBLAS for backend linear algebra ops',
             'cblas: Use CBLAS for backend linear algebra ops',
