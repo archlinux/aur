@@ -5,7 +5,7 @@
 pkgname=grub2-editor-frameworks-git
 _product=grub2-editor
 pkgver=0.8.1.r0.g2f7de2c
-pkgrel=1
+pkgrel=2
 pkgdesc="A KDE Control Module for configuring the GRUB2 bootloader. Unofficial KF5 port."
 arch=('x86_64')
 url='https://github.com/maz-1/grub2-editor'
@@ -13,7 +13,7 @@ license=('GPL')
 provides=(grub2-editor)
 conflicts=(grub2-editor)
 depends=('grub' 'hwinfo' 'imagemagick' 'qt5-base' 'kio' 'ki18n' 'kauth' 'kconfigwidgets' 'solid')
-makedepends=('extra-cmake-modules' 'git' 'kdoctools')
+makedepends=('cmake' 'ninja' 'extra-cmake-modules' 'git' 'kdoctools')
 optdepends=('os-prober: Create entries for other operating systems')
 source=("git+https://github.com/maz-1/${_product}.git")
 groups=('plasma')

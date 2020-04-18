@@ -1,11 +1,13 @@
 pkgbase = grub2-editor-frameworks-git
 	pkgdesc = A KDE Control Module for configuring the GRUB2 bootloader. Unofficial KF5 port.
 	pkgver = 0.8.1.r0.g2f7de2c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maz-1/grub2-editor
 	arch = x86_64
 	groups = plasma
 	license = GPL
+	makedepends = cmake
+	makedepends = ninja
 	makedepends = extra-cmake-modules
 	makedepends = git
 	makedepends = kdoctools
