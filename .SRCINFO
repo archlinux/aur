@@ -1,23 +1,21 @@
 pkgbase = sunclock
 	pkgdesc = An astronomical world map that shows day and night and the Sun and Moon positions
 	pkgver = 3.57
-	pkgrel = 3
-	url = https://github.com/mdoege/Sunclock
+	pkgrel = 1
+	url = https://www.spinnaker.de/debian/sunclock.html
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = imake
-	makedepends = git
 	makedepends = tar
+	makedepends = gendesk
 	depends = libjpeg-turbo
 	depends = libpng
 	depends = libxpm
-	source = git://github.com/mdoege/Sunclock.git
+	source = https://www.spinnaker.de/debian/sunclock_3.57.orig.tar.gz
 	source = disable_zlib.patch
-	source = sunclock.desktop
+	md5sums = 827a41c3f87e9ac65adeaa1ebd0f2c33
 	md5sums = SKIP
-	md5sums = 04b25149d5f2f2573c65192e6d6b0b0e
-	md5sums = 1857fc30b03ca09d8d9babc8c9857dc6
 
 pkgname = sunclock
 
