@@ -1,0 +1,16 @@
+pkgbase = rime-xhux-ducksoft-git
+	pkgdesc = 小鹤双形 音形输入方案 (DuckSoft 魔改版)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/DuckSoft/rime-xhux-ducksoft
+	arch = x86_64
+	license = custom
+	makedepends = rime-prelude
+	makedepends = librime
+	provides = rime-xhux
+	conflicts = rime-xhux
+	source = rime-xhux-ducksoft-git::git+https://github.com/DuckSoft/rime-xhux-ducksoft
+	sha512sums = SKIP
+
+pkgname = rime-xhux-ducksoft-git
+
