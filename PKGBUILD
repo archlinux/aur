@@ -3,7 +3,7 @@ _reponame=NFD
 _pkgname=ndn-nfd
 pkgname=$_pkgname
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 # epoch=
 pkgdesc="NFD is a network forwarder that implements and evolves together with the Named Data Networking (NDN) protocol"
 arch=("any")
@@ -15,7 +15,7 @@ makedepends=('git' 'gcc' 'python' 'boost' 'pkgconf' 'sqlite' 'openssl>=1.0.2')
 checkdepends=()
 optdepends=('valgrind: memory analysis'
             'doxygen: build documentation'
-            'python-sphynx: build documentation')
+            'python-sphinx: build documentation')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 replaces=()
