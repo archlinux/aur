@@ -1,11 +1,11 @@
 # Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 _pkgname=gasher
 pkgname=gasher-git
-pkgver=15
-pkgrel=4
+pkgver=101.226f4f1
+pkgrel=1
 pkgdesc="A GNU Social client written in bash."
 arch=('any')
-url="http://github.com/wmb-solutions/gasher"
+url="https:/git.2mb.codes/~lilmike/gasher"
 license=('GPL3')
 depends=('bash' 'curl')
 makedepends=('git')
@@ -14,7 +14,7 @@ optdepends=('sox: soundclip recording and playback'
   'mpv: sound clip playback')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+git://github.com/2mb-solutions/$_pkgname.git")
+source=("$_pkgname::git+https://git.2mb.codes/~lilmike/$_pkgname")
 md5sums=("SKIP")
 
  pkgver()
