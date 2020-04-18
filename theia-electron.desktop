@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Theia (Electron)
+Comment=Cloud & Desktop IDE Platform
+GenericName=Text Editor
+Exec=/usr/bin/theia-electron %F
+Icon=theia
+Type=Application
+StartupNotify=false
+StartupWMClass=theia-electron
+Categories=Utility;TextEditor;Development;IDE;
+MimeType=text/plain;
+Keywords=theia;electron

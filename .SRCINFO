@@ -1,0 +1,21 @@
+pkgbase = theia-electron
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.theia-ide.org/
+	arch = any
+	license = EPL2
+	makedepends = yarn
+	depends = nodejs>=10.11.0
+	depends = nodejs<12
+	options = !strip
+	source = theia-electron
+	source = package.json
+	source = theia-electron.desktop
+	source = https://raw.githubusercontent.com/eclipse-theia/theia/v1.0.0/logo/theia.svg
+	md5sums = 3503b21ff57ffecfe428da5be1b21171
+	md5sums = 5eb49842d52aa16e7310064c0fef9900
+	md5sums = b316dead79fa33f45c8d689a1c940dab
+	md5sums = 1dde0e422484895d3509f4ee9bb8d980
+
+pkgname = theia-electron
+
