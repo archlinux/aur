@@ -1,7 +1,7 @@
 # Maintainer: Yoan Blanc <yoan@dosimple.ch>
 
 pkgname='eclint'
-pkgver=v0.1.8
+pkgver=v0.1.9
 pkgrel=1
 pkgdesc='EditorConfig linter'
 url='https://gitlab.com/greut/eclint'
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go' 'gzip')
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/greut/eclint/-/archive/${pkgver}/eclint-${pkgver}.tar.gz")
-sha256sums=('4c9fc6f3294f7ac4f69999ed1f97e66513fa92fcceaf3a3bc3510a172852ac6f')
+sha256sums=('5e1c580cbf109c770f9726476a9ad060b46644a1a9c946ae754786971d8d77ad')
 
 build() {
   export CGO_LDFLAGS="$LDFLAGS"
