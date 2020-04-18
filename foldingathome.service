@@ -1,5 +1,6 @@
 [Unit]
 Description=Folding@home distributed computing client
+After=multi-user.target
 After=network.target
 
 [Service]
@@ -21,5 +22,5 @@ ExecStartPre=!-/usr/bin/nvidia-modprobe
 ExecStartPre=!-/usr/bin/nvidia-modprobe -c 0 -u
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 
