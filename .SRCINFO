@@ -1,7 +1,7 @@
 pkgbase = verona
 	pkgdesc = Microsoft's Verona programming language interpreter and compiler
 	pkgver = 8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/verona
 	arch = x86_64
 	makedepends = python-pip
@@ -12,7 +12,7 @@ pkgbase = verona
 	depends = python
 	provides = veronac
 	provides = verona-interpreter
-	source = git+https://github.com/microsoft/verona#commit=f193b1ce246333d6826e4538bebb29e117996ce6
+	source = git+https://github.com/microsoft/verona#commit=9cab6b27490fdae34cf67454549abe8c06be345a
 	md5sums = SKIP
 
 pkgname = verona

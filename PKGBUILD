@@ -3,8 +3,8 @@
 
 pkgname=verona
 pkgver=8
-pkgrel=1
-commit_hash=f193b1ce246333d6826e4538bebb29e117996ce6
+pkgrel=2
+commit_hash=9cab6b27490fdae34cf67454549abe8c06be345a
 pkgdesc="Microsoft's Verona programming language interpreter and compiler"
 arch=('x86_64')
 url='https://github.com/microsoft/verona'
