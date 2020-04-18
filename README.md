@@ -1,3 +1,4 @@
-# THIS FONT WAS NOT MADE BY ME. I DO NOT TAKE CREDIT FOR ITS CREATION. THE ORIGINAL FONT AND ITS MODIFIED CAN BE FOUND BELOW:
+## creeptifica
 
-[romeovs](https://github.com/romeovs/creep) * [raymond-w-ko](https://github.com/raymond-w-ko/creep2)
+[creeptifica](https://github.com/Akuma/creeptifica) is an adaptation of the amazingly simplistic yet stunning [creep](https://github.com/romeovs/creep) & [scientifica](https://github.com/NerdyPepper/scientifica).
+Like the two formerly mentioned projects, most characters are only 4px wide, which greatly accommodates low dpi displays.
