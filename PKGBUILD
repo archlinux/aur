@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=nodejs-n
-pkgver=6.0.1
+pkgver=6.5.1
 pkgrel=1
 pkgdesc="Node version manager"
 arch=("any")
@@ -10,9 +10,9 @@ depends=("bash")
 url="https://github.com/tj/n"
 license=("MIT")
 install="${pkgname}.install"
-source=("https://github.com/tj/n/archive/v6.0.1.zip"
+source=("https://github.com/tj/n/archive/v$pkgver.zip"
         "LICENSE.md")
-md5sums=('3d32c74fb290600264cbe7ca54fa301b'
+md5sums=('b823cc462d676cfd561989b15129c9f6'
          '55761bbdb8c6dfe8c83a1f27122bdff1')
 
 package() {
