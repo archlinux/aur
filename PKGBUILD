@@ -16,23 +16,26 @@
 # Maintainer: Samuel Littley <samuellittley@google.com>
 
 pkgname='google-compute-engine-oslogin'
-pkgver=20200325
-_commit='1eca1d61245dbb1b24be23a4fb75e98b56aaeb6a'
+pkgver=20200325.00
 pkgrel=1
 pkgdesc='Google Compute Engine OS login support'
 arch=('x86_64')
 url='https://github.com/GoogleCloudPlatform/guest-oslogin'
 license=('Apache')
 depends=('curl' 'json-c' 'pam')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/guest-oslogin/archive/$_commit.tar.gz")
-sha256sums=('c7c19993b86d9820c0e4d981ab84c3fde201ae6b5f54e20b37c059735f15fd1c')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/guest-oslogin/archive/$pkgver.tar.gz")
+sha256sums=('6291198dad14bcad4c3e34a52acf3a5631ed005e7366e0eb5f4069a59afe82a2')
 
 build() {
-	cd "guest-oslogin-$_commit"
+	cd "guest-oslogin-$pkgver"
 	make
 }
 
 package() {
-	cd "guest-oslogin-$_commit"
+	cd "guest-oslogin-$pkgver"
 	make DESTDIR="$pkgdir/" install
+
+	mkdir -p "$pkgdir/usr/lib/systemd"
+	mv "$pkgdir"/{,usr/}lib/systemd/system
+	rm -r "$pkgdir/lib"
 }
