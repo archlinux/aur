@@ -1,6 +1,6 @@
 pkgbase = terminator-git
-	pkgdesc = python3 port for terminal emulator that supports tabs and grids python3
-	pkgver = 1.91.103.g5151db48
+	pkgdesc = multiple GNOME terminals in one window
+	pkgver = 1.92.3.ga92ea847
 	pkgrel = 1
 	url = https://github.com/gnome-terminator/terminator.git
 	arch = any
