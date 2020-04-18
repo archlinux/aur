@@ -5,7 +5,7 @@
 
 pkgname=psychopy
 pkgver=2020.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An experiment builder for neuroscience, psychology and psychophysics"
 arch=('any')
 url="http://www.psychopy.org"
@@ -18,7 +18,8 @@ depends=('python-matplotlib' 'python-pandas' 'python-opengl' 'python-pyglet'
          'python-gevent' 'python-pyaml' 'python-cryptography' 'python-pyopenssl'
          'python-xlrd' 'python-pyosf' 'python-bidi' 'python-esprima'
          'python-pyparallel' 'python-psutil' 'python-astunparse' 'python-pyserial'
-         'python-arabic-reshaper' 'python-wxpython' 'webkit2gtk' 'python-mock' 'opencv')
+         'python-arabic-reshaper' 'python-wxpython' 'webkit2gtk' 'python-mock' 'opencv'
+         'python-questplus' 'python-opencv-python' 'python-glfw')
 makedepends=('python-wheel' 'python-setuptools')
 optdepends=('python-seaborn: For nice graphs')
 source=("https://github.com/psychopy/psychopy/archive/${pkgver}.tar.gz")
