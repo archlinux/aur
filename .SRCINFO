@@ -1,0 +1,22 @@
+pkgbase = mojoshader-hg
+	pkgdesc = library to work with Direct3D shaders on alternate 3D APIs and non-Windows platforms
+	pkgver = 1242
+	pkgrel = 1
+	url = https://icculus.org/mojoshader/
+	arch = x86_64
+	license = custom:zlib
+	makedepends = mercurial
+	source = hg+https://hg.icculus.org/icculus/mojoshader
+	source = optional-spirv-tools.patch
+	md5sums = SKIP
+	md5sums = 1e2e365b39d32e3372658d2b4070df1a
+
+pkgname = mojoshader-hg
+	provides = mojoshader
+	conflicts = mojoshader
+
+pkgname = lib32-mojoshader-hg
+	depends = mojoshader-hg
+	provides = lib32-mojoshader
+	conflicts = lib32-mojoshader
+
