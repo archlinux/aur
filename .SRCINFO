@@ -1,6 +1,6 @@
 pkgbase = qt5-olm-git
 	pkgdesc = A Qt wrapper for libolm
-	pkgver = r56.f610197
+	pkgver = r70.750ae3a
 	pkgrel = 1
 	url = https://gitlab.com/b0/libQtOlm
 	arch = i686

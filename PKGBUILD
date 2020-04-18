@@ -2,7 +2,7 @@
 
 _gitname=libQtOlm
 pkgname=qt5-olm-git
-pkgver=r56.f610197
+pkgver=r70.750ae3a
 pkgrel=1
 pkgdesc="A Qt wrapper for libolm"
 arch=(i686 x86_64 armv7 aarch64)
