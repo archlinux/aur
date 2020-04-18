@@ -11,7 +11,7 @@ license=('GPL')
 provides=('rofi-spotify')
 conflicts=('rofi-spotify')
 makedepends=('git' 'binutils' 'python-setuptools' 'fakeroot')
-depends=('python' 'python-appdirs' 'python-spotipy' 'python-rofi' 'rofi')
+depends=('python' 'python-appdirs' 'python-spotipy' 'python-rofi-git' 'rofi')
 
 source=("git+https://github.com/AnySomebody1/rofi-spotify.git")
 
