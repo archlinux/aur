@@ -1,8 +1,8 @@
 # Maintainer: Andrew Anderson <aanderso at t c d dot ie>
 pkgname=intel-caffe-git
 _srcname=intel-caffe
-pkgver=1.1.16
-pkgrel=3
+pkgver=1.1.14
+pkgrel=1
 pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
 url="https://github.com/intel/caffe"
@@ -22,12 +22,12 @@ optdepends=('openblas: OpenBLAS for backend linear algebra ops',
 makedepends=('cmake')
 provides=('caffe')
 conflicts=('caffe')
-source=("${_srcname}"::"git+https://github.com/andrew-wja/caffe.git")
+source=("${_srcname}"::"git+https://github.com/intel/caffe.git")
 sha256sums=('SKIP')
 
 prepare() {
     cd "${_srcname}"
-    git checkout master
+    git checkout 1.1.14
     cd -
 
     mkdir -p build
@@ -35,7 +35,6 @@ prepare() {
     CMAKE_BUILD_TYPE="Release" \
     CMAKE_PARALLEL_LEVEL=`grep processor /proc/cpuinfo | wc -l` \
     cmake \
-    -DWARNING_AS_ERROR=OFF \
     -DCPU_ONLY=ON \
     -DBUILD_tools=ON \
     -DBUILD_SHARED_LIBS=OFF \
