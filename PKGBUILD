@@ -3,7 +3,7 @@
 # Contributor: Rowisi < nomail <at> private <dot> com >
 
 pkgname=vscodium-bin
-pkgver=1.44.1
+pkgver=1.44.2
 pkgrel=1
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -19,22 +19,29 @@ optdepends=(
 )
 provides=('code')
 conflicts=('code')
+
+sha256sums_x86_64=('4e856de6ba89a4e9e9c54ff7a1b503602af2aab58d9431ddfd4f2fa182e43090')
+sha256sums_aarch64=('baa4fbaf7e78f11a421fb65f648dcf5b7de6b16c0421969c0df2438ab8b82f8b')
+sha256sums_armv7h=('f1030cde63153f67bf301e646cfd43e915499dff1eb4eede1180ded63ee3bfe5')
+
 source=(vscodium-bin.desktop)
 sha256sums=('5504e93bd55f2bc068c29e4fa962c1eddc6e08edb39c3255319dd5ad998a1b86')
+source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-x64.tar.gz::${url}/releases/download/${pkgver}/VSCodium-linux-x64-${pkgver}.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-${pkgrel}-arm64.tar.gz::${url}/releases/download/${pkgver}/VSCodium-linux-arm64-${pkgver}.tar.gz")
+source_armv7h=("${pkgname}-${pkgver}-${pkgrel}-arm.tar.gz::${url}/releases/download/${pkgver}/VSCodium-linux-arm-${pkgver}.tar.gz")
 
-source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-x86_64.tar.gz::${url}/releases/download/${pkgver}/VSCodium-linux-x64-${pkgver}.tar.gz")
-source_aarch64=("${pkgname}-${pkgver}-${pkgrel}-aarch64.tar.gz::${url}/releases/download/${pkgver}/VSCodium-linux-arm64-${pkgver}.tar.gz")
-source_armv7h=("${pkgname}-${pkgver}-${pkgrel}-armv7h.tar.gz::${url}/releases/download/${pkgver}/VSCodium-linux-arm-${pkgver}.tar.gz")
+case ${CARCH} in
+    x86_64) _arch=x64 ;;
+    aarch64) _arch=arm64 ;;
+    armv7h) _arch=arm ;;
+    *) _arch=unknown ;;
+esac
 
-sha256sums_x86_64=('ab5265197811c339fdc42660edbfb32cbc83cc1bc16fdee9e6362b7ebb851c9b')
-sha256sums_aarch64=('cabc2cfdd1431f412b36bdf66c8de62473f1280ad44068cc10035569275f3740')
-sha256sums_armv7h=('e74ca782caedad4a3a58ddbf572b4694ee4f9299bd6905a5b29155734ba73ce9')
-
-noextract=("${pkgname}-${pkgver}-${pkgrel}-${CARCH}.tar.gz")
+noextract=("${pkgname}-${pkgver}-${pkgrel}-${_arch}.tar.gz")
 
 prepare() {
     mkdir -p ${srcdir}/${pkgname}
-    tar -xf ${srcdir}/${pkgname}-${pkgver}-${pkgrel}-${CARCH}.tar.gz -C ${srcdir}/${pkgname}
+    tar -xf ${srcdir}/${pkgname}-${pkgver}-${pkgrel}-${_arch}.tar.gz -C ${srcdir}/${pkgname}
 }
 
 package() {
