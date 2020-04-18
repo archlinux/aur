@@ -26,9 +26,9 @@ package() {
 
   cargo install \
     --no-track \
+    --locked \
     --root "$pkgdir/usr" \
-    --path "$srcdir/$pkgname-$pkgver" \
-    --locked
+    --path "$srcdir/$pkgname-$pkgver"
 
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/routinator"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/routinator"
