@@ -2,7 +2,7 @@
 
 pkgname=hopper
 _pkgname=hopperv4
-pkgver=4.5.22
+pkgver=4.5.24
 pkgrel=1
 pkgdesc="Reverse engineering tool that lets you disassemble, decompile and debug your applications"
 arch=(x86_64)
@@ -13,7 +13,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://d2ap6ypl1xbe4k.cloudfront.net/Hopper-v4-${pkgver}-Linux.pkg.tar.xz"
         'LICENSE')
-sha1sums=('5cf33b21498062fc20bbf86f4ab6f6c978093541'
+sha1sums=('0a1e41c2e06501ed7e6437c591dae1c91cb8bfce'
           'c3f410d29524eb02a8bf3dc1b29aaeb82b1844e6')
 changelog=ChangeLog
 

@@ -1,3 +1,15 @@
+4.5.24 (2020-04-17 18:49:07)
+
+    Fixes parsing of Objective-C metadata for binaries targeting the iOS simulator,
+    Fixes a crash while navigating small binaries with keyboard,
+    Fixes issues with addressing mode decoding of MOS 6502 instructions,
+    Added an Oric TAP loader.
+
+4.5.23 (2020-04-06 18:52:22)
+
+    Improves decompilation of ivar access of Objective-C programs,
+    Fixes a few issues with controls alignment and dark mode.
+
 4.5.22 (2020-03-16 21:07:37)
 
     Fixes a crash when one modifies a structure referenced in the assembly,
