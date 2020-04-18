@@ -1,46 +1,25 @@
-# Maintainer: KevMoriarty <kevmoriarty@gmx.com>
+# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=vim-easy-align
-pkgver=20150716
+pkgver=2.10.0
 pkgrel=1
-pkgdesc='A Vim alignment plugin'
+pkgdesc='Vim alignment plugin'
 arch=('any')
-url="https://github.com/junegunn/vim-easy-align"
-license=('MIT')
-depends=('vim')
-groups=('vim-plugins')
-install='vimdoc.install'
-conflicts=('')
-replaces=('')
-provides=('')
-
-# Cleaner _git format
-_gitdomain='github.com'
-_gituser='junegunn'
-_gitname='vim-easy-align'
-_gitroot="https://$_gitdomain/$_gituser/$_gitname.git"
-
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server.... [$_gitdomain:$_gituser:$_gitname]"
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone --depth=1 $_gitroot $_gitname
-  fi
-  msg "GIT checkout done or server timeout"
-}
+LICENSE=('MIT')
+url='https://github.com/junegunn/vim-easy-align'
+source=("$url/archive/$pkgver.tar.gz")
+sha256sums=('c6a4e0a360aa8e642f5c628ae273bfbe7e513a394302eef8c668e16949bd2cbb')
 
 package() {
-  install -d ${pkgdir}/usr/share/vim/vimfiles/{autoload,doc,plugin}
+  cd $pkgname-$pkgver
 
-  install -D -m644 ${srcdir}/$_gitname/autoload/* \
-    ${pkgdir}/usr/share/vim/vimfiles/autoload/
+  for _dir in autoload plugin doc
+  do
+    install -dm755 "$pkgdir"/usr/share/vim/vimfiles/"$_dir"
 
-  install -D -m644 ${srcdir}/$_gitname/doc/* \
-    ${pkgdir}/usr/share/vim/vimfiles/doc/
-
-  install -D -m644 ${srcdir}/$_gitname/plugin/* \
-    ${pkgdir}/usr/share/vim/vimfiles/plugin/
+    for _file in "$_dir"/easy_align.*
+    do
+      install -Dm644 "$_file" "$pkgdir"/usr/share/vim/vimfiles/"$_file"
+    done
+  done
 }
