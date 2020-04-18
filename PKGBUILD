@@ -1,6 +1,6 @@
 # Maintainer: Vitaly Utkin <vautkin AT teknik DOT io>
 pkgname=ovras
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=0
 epoch=0
 pkgdesc="Advanced settings and custom behavior for SteamVR using OpenVR (OVR)."
@@ -15,7 +15,7 @@ optdepends=("dbus: media player support"
             "xorg-server: send keyboard keys"
             "pulseaudio: pulse audio support")
 source=("https://github.com/OpenVR-Advanced-Settings/OpenVR-AdvancedSettings/archive/v$pkgver.tar.gz")
-sha256sums=("34fe507e7c519ec3b4aed8612663cca0a6af21176de57a80c74f553f2c49339e")
+sha256sums=("a19ebfb1ae765335c21ff052731639e4fa0771fce2d97c2a5135de4e3d7720ae")
 
 build() {
     cd "OpenVR-AdvancedSettings-$pkgver"
