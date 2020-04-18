@@ -3,7 +3,7 @@
 _pkgname=horovod
 pkgname=python-horovod
 pkgver=0.19.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Distributed training framework for TensorFlow, Keras, PyTorch, and Apache MXNet'
 arch=('x86_64')
 url='https://github.com/horovod/horovod'
@@ -13,24 +13,27 @@ depends=(
   'cudnn'
   'nccl'
   'openmpi'
+  'python-cloudpickle'
   'python-h5py'
   'python-mock'
   'python-mpi4py'
+  'python-psutil'
+  'python-pycparser'
+  'python-pyaml'
   'python-scipy'
+  'python-six'
   'python-tqdm'
 )
 makedepends=(
   'cmake'
   'git'
   'mxnet-cuda'
-  'python-keras-applications'
   'python-pytorch-cuda'
   'python-setuptools'
   'python-tensorflow-cuda'
 )
 optdepends=(
   'mxnet-cuda'
-  'python-keras-applications'
   'python-pytorch-cuda'
   'python-tensorflow-cuda'
 )
