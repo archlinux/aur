@@ -2,7 +2,7 @@
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=libquotient-git
-pkgver=0.6.0.r373.g803f5d2
+pkgver=0.6.0.r387.g7036ed0
 pkgrel=1
 pkgdesc="A Qt5 library to write cross-platform clients for Matrix"
 arch=(x86_64)
