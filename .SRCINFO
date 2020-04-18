@@ -1,0 +1,23 @@
+pkgbase = htcondor
+	pkgver = 8.8.8
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = boost
+	depends = munge
+	depends = libxss
+	depends = curl
+	depends = gawk
+	depends = java-runtime
+	depends = libcgroup
+	depends = pcre
+	depends = sqlite
+	depends = python
+	provides = htcondor
+	conflicts = htcondor
+	source = https://research.cs.wisc.edu/htcondor/debian/8.8/buster/pool/contrib/c/condor/condor_8.8.8.orig.tar.gz
+	md5sums = SKIP
+
+pkgname = htcondor
+
