@@ -1,0 +1,13 @@
+pkgbase = initify
+	pkgdesc = Convert systemd services to OpenRC init-scripts.
+	pkgver = r12.f9ccbb1
+	pkgrel = 1
+	url = https://github.com/goose121/initify
+	arch = any
+	license = MIT
+	depends = perl
+	source = initify::git+https://github.com/goose121/initify.git
+	sha512sums = SKIP
+
+pkgname = initify
+
