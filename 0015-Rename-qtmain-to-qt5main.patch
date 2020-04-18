@@ -1,4 +1,4 @@
-From d61af2077d70356fc0f69aeb27e82bed66f8d52e Mon Sep 17 00:00:00 2001
+From 1bbc646bd5ceb497aba73d8fc77214bf29d34f48 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:25:40 +0200
 Subject: [PATCH 15/31] Rename qtmain to qt5main
@@ -76,5 +76,5 @@ index 1f54c846ec..162e7a4b1b 100644
  
  CONFIG += static
 -- 
-2.26.0
+2.26.1
 
