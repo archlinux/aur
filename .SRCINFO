@@ -1,0 +1,13 @@
+pkgbase = roundcubemail-plugin-delete_old
+	pkgdesc = A Roundcube plugin to delete messages older than configurable timespans.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/ron4mac/roundcube_delete_old
+	arch = any
+	license = GPL3
+	depends = roundcubemail
+	source = https://github.com/ron4mac/roundcube_delete_old/releases/download/v1.0.2/delete_old.1.0.2.zip
+	sha256sums = 249438b70593d88cdc5cf456e7d00d43109d1c9a18e9042265a85ac4ca300c87
+
+pkgname = roundcubemail-plugin-delete_old
+
