@@ -1,14 +1,15 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Marcin Mikołajczak <me@mkljczk.pl>
 
 pkgname=kscreenlocker-git
-pkgver=v5.17.90.r14.g98da04c
+pkgver=v5.17.90.r20.gf2c89ed
 pkgrel=1
 pkgdesc='Library and components for secure lock screen architecture'
 arch=(i686 x86_64)
 url='https://projects.kde.org/kscreenlocker'
 license=(LGPL)
-depends=(plasma-framework-git kidletime-git kwayland-git libxcursor)
-makedepends=(extra-cmake-modules-git git python kdoctools-git)
+depends=(plasma-framework kidletime kwayland libxcursor)
+makedepends=(extra-cmake-modules git python kdoctools)
 provides=(kscreenlocker)
 conflicts=(kscreenlocker)
 source=('git://anongit.kde.org/kscreenlocker.git')
