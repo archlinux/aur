@@ -11,7 +11,7 @@ depends=('dkms' 'linux-headers' 'bc')
 provides=('hid-nintendo')
 source=("git+${url}" "dkms.conf")
 md5sums=("SKIP"
-         '7352b2bc2587a09abd876c1f2c216f43')
+         '7dee3612b857c0aeb9de37977ed64d36')
 
 package() {
   mkdir -p "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
