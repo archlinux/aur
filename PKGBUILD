@@ -1,11 +1,12 @@
-# Maintainer: Justin Dray <justin@dray.be
+# Maintainer: Francois Menning <f.menning@protonmail.com>
+# Contributor: Justin Dray <justin@dray.be
 # Contributor: Jaroslaw Swierczynski <swiergot@aur.archlinux.org>
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=preload
 pkgver=0.6.4
-pkgrel=6
-arch=('i686' 'x86_64')
+pkgrel=7
+arch=('any')
 pkgdesc="Makes applications run faster by prefetching binaries and shared objects"
 url="http://sourceforge.net/projects/preload"
 license=('GPL2')

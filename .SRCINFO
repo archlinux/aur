@@ -1,11 +1,10 @@
 pkgbase = preload
 	pkgdesc = Makes applications run faster by prefetching binaries and shared objects
 	pkgver = 0.6.4
-	pkgrel = 6
+	pkgrel = 7
 	url = http://sourceforge.net/projects/preload
 	install = preload.install
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL2
 	makedepends = help2man
 	depends = glib2
