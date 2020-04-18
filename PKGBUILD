@@ -16,7 +16,7 @@ source=("https://github.com/smallstep/cli/releases/download/v${pkgver}/step_linu
 
 sha256sums=('fc87a2ed3648e5b039ca51dd5b6b4d22f7e0edde80c94d231234097f42e9cafc'
             'add3e078e394e265f6b6a3bf12af81cc7897410ae5e6a0d4ee7714a5b856a7be'
-            '5f5e5bc5cdd96109a82f91e61b8cdffb8695aee201d3bd61ca3874471819372e')
+            '3e65c7f99484497e39d20eed3e4ceb4006e8db62dc9987f83a789bb575636e18')
 
 prepare() {
 	sed -i "s/step/${_binname}/g" "zsh_autocomplete"
