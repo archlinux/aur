@@ -2,10 +2,10 @@
 pkgname=intel-caffe-git
 _srcname=intel-caffe
 pkgver=1.1.16
-pkgrel=1
-pkgdesc="Intel Caffe"
+pkgrel=2
+pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
-url="https://bitbucket.org/STG-TCD/trinnity-caffe"
+url="https://github.com/intel/caffe"
 license=('BSD')
 depends=(
         'boost-libs' 'protobuf' 'google-glog' 'gflags' 'hdf5'
@@ -22,7 +22,7 @@ optdepends=('openblas: OpenBLAS for backend linear algebra ops',
 makedepends=('cmake')
 provides=('caffe')
 conflicts=('caffe')
-source=("${_srcname}"::"git+https://github.com/intel/caffe.git")
+source=("${_srcname}"::"git+https://github.com/andrew-wja/caffe.git")
 sha256sums=('SKIP')
 
 prepare() {
@@ -35,6 +35,7 @@ prepare() {
     CMAKE_BUILD_TYPE="Release" \
     CMAKE_PARALLEL_LEVEL=`grep processor /proc/cpuinfo | wc -l` \
     cmake \
+    -DWARNING_AS_ERROR=OFF \
     -DCPU_ONLY=ON \
     -DBUILD_tools=ON \
     -DBUILD_SHARED_LIBS=OFF \

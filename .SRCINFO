@@ -1,8 +1,8 @@
 pkgbase = intel-caffe-git
-	pkgdesc = Intel Caffe
+	pkgdesc = Intel® Distribution of Caffe
 	pkgver = 1.1.16
-	pkgrel = 1
-	url = https://bitbucket.org/STG-TCD/trinnity-caffe
+	pkgrel = 2
+	url = https://github.com/intel/caffe
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
@@ -38,7 +38,7 @@ pkgbase = intel-caffe-git
 	optdepends = intel-mkl: Use Intel MKL for backend linear algebra ops
 	provides = caffe
 	conflicts = caffe
-	source = intel-caffe::git+https://github.com/intel/caffe.git
+	source = intel-caffe::git+https://github.com/andrew-wja/caffe.git
 	sha256sums = SKIP
 
 pkgname = intel-caffe-git
