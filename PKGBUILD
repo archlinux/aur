@@ -21,7 +21,7 @@ pkgname=(
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
 _gitname='xbmc'
-pkgver=r54744.7091757383c
+pkgver=r54763.392dcf7331e
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -34,7 +34,7 @@ makedepends=(
   'libvdpau' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
   'python-pycryptodomex' 'python-pillow' 'python-pybluez' 'python-simplejson'
   'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
-  'upower' 'giflib' 'rapidjson' 'ghostscript' 'git' 'meson'
+  'upower' 'giflib' 'rapidjson' 'ghostscript' 'git' 'meson' 'gtest'
   # wayland
   'wayland-protocols' 'waylandpp>=0.2.7-1'
   # gbm
