@@ -1,15 +1,16 @@
 # Maintainer: Vyacheslav Levit <dev@vlevit.org>
 pkgname=notify-send.sh
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="notify-send drop-in replacement with more features"
 arch=('any')
 url="https://github.com/vlevit/notify-send.sh"
 license=('GPL3')
 depends=('glib2')
+optdepends=('bc: --force-expire support')
 source=("https://github.com/vlevit/$pkgname/archive/v"$pkgver".tar.gz")
-md5sums=('341e6712086b4843b44d663528dcc68a')
-sha256sums=('ec06365be9d66b2a2ec57f1867529a20c6b56f40c8c0379eb9af95eebb006b6b')
+md5sums=('b83ad1f86b7949f74d4e977dadaaff12')
+sha256sums=('58460c5fc84ab4fa45d2de62a38e7d0a08af2c106327ce49a83a8dcbb91ba438')
 
 package() {
 	cd "$pkgname-$pkgver"
