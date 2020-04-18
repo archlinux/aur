@@ -1,15 +1,14 @@
 pkgbase = ocaml-dtools-git
 	pkgdesc = OCaml modules for writing daemons
-	pkgver = r100.c9df99e
+	pkgver = r110.3da13a8
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-dtools
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = ocaml-findlib
+	makedepends = dune
 	depends = ocaml
-	depends = ocaml-syslog
-	options = !strip
+	optdepends = ocaml-syslog
 	source = ocaml-dtools-git::git+https://github.com/savonet/ocaml-dtools
 	md5sums = SKIP
 
