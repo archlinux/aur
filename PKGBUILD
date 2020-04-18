@@ -2,7 +2,7 @@
 
 pkgname=routinator-git
 pkgver=0.6.4.r79.g804c74e
-pkgrel=1
+pkgrel=2
 pkgdesc="RPKI validator written in Rust"
 arch=('i686' 'x86_64')
 url="https://nlnetlabs.nl/rpki"
@@ -11,7 +11,6 @@ depends=('gcc-libs' 'rsync')
 makedepends=('git' 'rust')
 provides=('routinator')
 conflicts=('routinator')
-options=('staticlibs')
 source=("git+https://github.com/NLnetLabs/routinator.git")
 sha256sums=('SKIP')
 
