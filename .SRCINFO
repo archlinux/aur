@@ -1,6 +1,6 @@
 pkgbase = creep2
 	pkgdesc = A pretty sweet version of the creep pixel font for terminals without negative spacing support.
-	pkgver = 1.8
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/akuma-dev/creep2
 	arch = any
