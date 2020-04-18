@@ -3,20 +3,20 @@
 
 pkgname=spectral-matrix
 _pkgname=spectral
-pkgver=817
-pkgrel=2
-_commit_sortfilterproxymodel="36befddf5d57faad990e72c88c5844794f274145"
+pkgver=854
+pkgrel=1
+_commit_sortfilterproxymodel="6678acc67c4fce90851e7ee7602b4350b6b4c15b"
 pkgdesc='Glossy cross-platform client for Matrix'
 url='https://gitlab.com/spectral-im/spectral'
-arch=('any')
+arch=('x86_64')
 license=('GPL-3.0-or-later')
 conflicts=('spectral-matrix-git')
 depends=('qt5-graphicaleffects' 'qt5-multimedia' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-tools' 'qtkeychain' 'libquotient-git' 'libqtolm')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/spectral-im/spectral/-/archive/$pkgver/spectral-$pkgver.tar.gz"
 		"SortFilterProxyModel-$_commit_sortfilterproxymodel.tar.gz::https://github.com/oKcerG/SortFilterProxyModel/archive/$_commit_sortfilterproxymodel.tar.gz")
-sha256sums=('6888ad58282eb5baab83d7037423d22b6c2d5be60f8452168b57b39b53e6ca0d'
-			'1f5a6c64f793e7d74e8922e071392cf33baa4e7457e70f396c1e1fcb9d63b378')
+sha256sums=('923aed0f2d0963859ac2758b0eb550aff4064b421b6d724c90899b9bec8f4911'
+            '9f7c25fa9c21e3a40f56de02e4a53b36746094910cda9f642647a2b01e60b434')
 _builddir="$_pkgname-$pkgver"
 
 prepare() {
@@ -32,8 +32,8 @@ build() {
   cmake -B build \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DUSE_INTREE_LIBQMC=false \
-	-DGIT_FOUND=false
+	-DUSE_INTREE_LIBQMC=False \
+	-DGIT_FOUND=False
   make -C build
 }
 
