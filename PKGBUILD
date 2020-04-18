@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=orion-git
-pkgver=1.6.7.r2.gb7360bb
+pkgver=1.6.7.r3.g516d280
 pkgrel=1
 pkgdesc="QML/C++-written desktop client for Twitch.tv"
 arch=('x86_64')
