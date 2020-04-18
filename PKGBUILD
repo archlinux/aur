@@ -19,6 +19,8 @@ prepare() {
   # Fix patch for DKMS
   filterdiff -p1 -x "Documentation/hid/index.rst" \
                  -x "MAINTAINERS" \
+                 -x "drivers/hid/Kconfig" \
+                 -x "drivers/hid/Makefile" \
   "${srcdir}/${_pkgbase}-${pkgver}.patch" | patch -Np1
 }
 

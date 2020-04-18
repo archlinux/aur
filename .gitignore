@@ -1,4 +1,4 @@
 src/
-dst/
+pkg/
 *.pkg.*
 *.patch
