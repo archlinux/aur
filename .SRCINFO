@@ -1,7 +1,7 @@
 pkgbase = cyrus-imapd
 	pkgdesc = An email, contacts and calendar server
 	pkgver = 3.0.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.cyrusimap.org/
 	arch = i686
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = cyrus-imapd
 	makedepends = perl
 	makedepends = clamav
 	makedepends = rsync
-	makedepends = python-sphinx
+	makedepends = python-sphinx<3
 	makedepends = perl-pod-pom-view-restructured
 	source = https://github.com/cyrusimap/cyrus-imapd/releases/download/cyrus-imapd-3.0.13/cyrus-imapd-3.0.13.tar.gz
 	source = https://github.com/cyrusimap/cyrus-imapd/releases/download/cyrus-imapd-3.0.13/cyrus-imapd-3.0.13.tar.gz.sig

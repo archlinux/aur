@@ -7,7 +7,7 @@
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
 pkgver=3.0.13
-pkgrel=2
+pkgrel=3
 pkgdesc="An email, contacts and calendar server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://www.cyrusimap.org/"
@@ -15,7 +15,7 @@ license=('BSD')
 makedepends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
              'mariadb-libs' 'postgresql-libs' 'libnghttp2' 'brotli' 'shapelib'
              'libldap' 'libcap' 'net-snmp' 'xapian-core' 'perl' 'clamav' 'rsync'
-             'python-sphinx' 'perl-pod-pom-view-restructured')
+             'python-sphinx<3' 'perl-pod-pom-view-restructured')
 source=("https://github.com/cyrusimap/cyrus-imapd/releases/download/${pkgbase}-${pkgver}/${pkgbase}-${pkgver}.tar.gz"{,.sig}
         "libcap.patch::https://github.com/cyrusimap/cyrus-imapd/pull/2991.patch"
         "perl-libs.patch"
