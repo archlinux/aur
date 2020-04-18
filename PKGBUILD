@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <aanderso at t c d dot ie>
 pkgname=intel-caffe-git
 _srcname=intel-caffe
-pkgver=1.1.14
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
@@ -27,7 +27,7 @@ sha256sums=('SKIP')
 
 prepare() {
     cd "${_srcname}"
-    git checkout 1.1.14
+    git checkout 1.1.4
     cd -
 
     mkdir -p build
