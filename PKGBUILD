@@ -1,10 +1,10 @@
 # Maintainer: Daniel Haß <aur@hass.onl>
 pkgname=gtk-theme-numix-sx
 pkgver=20170424
-pkgrel=6
+pkgrel=7
 pkgdesc="Gray variation of numix theme for Cinnamon/Gnome"
 arch=('any')
-url="https://www.opendesktop.org/c/1465521207"
+url="https://www.gnome-look.org/p/1117412/"
 license=('GPL3')
 depends=('gtk-engine-murrine')
 conflicts=('gtk-theme-numix-sx-beta')
