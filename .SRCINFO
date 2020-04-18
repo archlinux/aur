@@ -1,8 +1,8 @@
 pkgbase = v2raya
-	pkgdesc = A V2Ray Linux client with web GUI, compatible with SS and SSR and supporting transparent proxy
+	pkgdesc = A web GUI client of Project V which supports V2Ray, SS, SSR, Trojan and PingTunnel protocols
 	pkgver = 0.7.0
 	pkgrel = 1
-	url = https://github.com/mzz2017/V2RayA
+	url = https://github.com/mzz2017/v2rayA
 	install = .INSTALL
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = v2raya
 	makedepends = go>=2:1.11.3-1
 	depends = glibc
 	depends = v2ray
-	source = v2raya-0.7.0.tar.gz::https://github.com/mzz2017/V2RayA/archive/v0.7.0.tar.gz
+	source = v2raya-0.7.0.tar.gz::https://github.com/mzz2017/v2rayA/archive/v0.7.0.tar.gz
 	sha512sums = SKIP
 
 pkgname = v2raya
