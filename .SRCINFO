@@ -1,7 +1,7 @@
 pkgbase = ndn-tools-git
 	pkgdesc = ndn-tools is a collection of basic tools for Named Data Networking
-	pkgver = ndn.tools.0.6.4.r23.g11c6991
-	pkgrel = 2
+	pkgver = ndn.tools.0.7.r10.g8a2907e
+	pkgrel = 1
 	url = https://github.com/named-data/ndn-tools
 	arch = any
 	license = GPL
