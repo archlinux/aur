@@ -1,7 +1,7 @@
 pkgbase = wifiman
 	pkgdesc = Minimalistic wpa_supplicant configuration manager
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BiteDasher/wifiman
 	arch = any
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = wifiman
 	depends = systemd
 	optdepends = zenity: Run wifigui
 	provides = wifigui
-	source = wifiman-1.0.tar.gz::https://github.com/BiteDasher/wifiman/archive/1.0.zip
+	source = wifiman-1.0.tar.gz::https://github.com/BiteDasher/wifiman/archive/1.0.tar.gz
 	sha256sums = 653bd97caf2c4218852f6a290e52b6552f0709a20b29fb44c309436d250b5a7e
 
 pkgname = wifiman
