@@ -1,0 +1,17 @@
+pkgbase = git-lab-git
+	pkgdesc = Subcommand for git providing an arcanist-style interface to GitLab.
+	pkgver = r39.268af55
+	pkgrel = 1
+	url = https://invent.kde.org/jbbgameich/git-lab
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python-gitlab
+	depends = python-gitpython
+	provides = git-lab
+	conflicts = git-lab
+	source = git+https://invent.kde.org/jbbgameich/git-lab.git
+	sha256sums = SKIP
+
+pkgname = git-lab-git
+
