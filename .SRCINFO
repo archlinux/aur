@@ -1,7 +1,7 @@
 pkgbase = python-rofi-git
 	pkgdesc = A Python module to make simple GUIs with Rofi
 	pkgver = r18.d20b3a2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bcbnz/python-rofi
 	arch = any
 	license = GPL
@@ -10,6 +10,7 @@ pkgbase = python-rofi-git
 	makedepends = fakeroot
 	depends = python
 	depends = rofi
+	provides = python-rofi
 	conflicts = python-rofi
 	source = git+https://github.com/bcbnz/python-rofi.git
 	sha256sums = SKIP

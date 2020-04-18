@@ -3,12 +3,13 @@
 pkgname=python-rofi-git
 _gitname=python-rofi
 pkgver=r18.d20b3a2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python module to make simple GUIs with Rofi"
 arch=('any')
 url="https://github.com/bcbnz/python-rofi"
 license=('GPL')
 conflicts=('python-rofi')
+provides=('python-rofi')
 makedepends=('git' 'python-setuptools' 'fakeroot')
 depends=('python' 'rofi')
 
