@@ -1,17 +1,17 @@
-# Maintainer: scan
+# Maintainer: Louis Lefevre <louislefev@gmail.com>
 
 pkgname=gnome-shell-theme-black-maia-git
-pkgver=r20.9fdcf83
-pkgrel=1
-pkgdesc="Black Maia GNOME Shell Theme for GNOME 3.32"
-arch=("any")
+pkgver=r33.6f99f66
+pkgrel=2
+pkgdesc="Black Maia, a dark theme for the GNOME Shell"
+arch=('any')
 url="https://github.com/bolimage/Black-Maia"
-license=("GPL")
-depends=("gnome-shell>3.32")
-makedepends=("git")
-optdepends=("gnome-tweak-tool: A tool to customize advanced GNOME 3 options.")
-source=("black-maia-theme::git+https://github.com/bolimage/Black-Maia")
-sha256sums=("SKIP")
+license=('LGPL3')
+depends=('gnome-shell>=3.36')
+makedepends=('git')
+optdepends=('gnome-tweaks: Graphical interface for advanced GNOME 3 settings (Tweak Tool)')
+source=("black-maia-theme::git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
     cd black-maia-theme
@@ -19,8 +19,8 @@ pkgver() {
 }
 
 package() {
-    install -d ${pkgdir}/usr/share/themes
-    cp -r black-maia-theme $pkgdir/usr/share/themes/Black-Maia
+    install -d "${pkgdir}/usr/share/themes"
+    cp -r black-maia-theme "${pkgdir}/usr/share/themes/Black-Maia"
     find ${pkgdir} -type f -exec chmod 644 {} \;
     find ${pkgdir} -type d -exec chmod 755 {} \;
 }
