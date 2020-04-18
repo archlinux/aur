@@ -10,7 +10,7 @@ url="https://github.com/bcbnz/python-rofi"
 license=('GPL')
 provides=('python-rofi')
 conflicts=('python-rofi')
-makedepends=('git' 'binutils' 'python-setuptools' 'fakeroot')
+makedepends=('git' 'python-setuptools' 'fakeroot')
 depends=('python' 'rofi')
 
 source=("git+https://github.com/bcbnz/python-rofi.git")
