@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=google-music-manager-auth
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Google Music Manager Auth Daemon"
 arch=('any')
@@ -20,4 +20,4 @@ package() {
     python setup.py install --root="$pkgdir" --optimize=1
 }
 
-sha256sums=('cced52b6b3c927daf94ed97ddecab29ad252e9fac3edb4d2400a4e979cda207e')
+sha256sums=('d20453d18dbef8996e9b3e4ed463bd7b3f7921395ae6dc29a16d506972c64e43')
