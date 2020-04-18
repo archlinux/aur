@@ -1,7 +1,7 @@
 pkgbase = eclair
 	pkgdesc = A Scala implementation of the Lightning Network (GUI)
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ACINQ/eclair
 	arch = any
 	license = Apache-2.0
