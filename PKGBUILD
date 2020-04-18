@@ -2,12 +2,12 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=iosevka-generate
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A tool to generate custom Iosevka fonts from a configuration file'
 url='https://github.com/OJFord/iosevka-generate'
 license=('GPL')
 source=("$url/archive/v$pkgver.tar.gz")
-md5sums=('af408b3931983ae2fcf513ceec80bc91')
+md5sums=('fc096ad969207ba80415760af13adcad')
 arch=('any')
 depends=(
     'npm'
