@@ -1,7 +1,7 @@
 pkgbase = openttd-btpro
 	pkgdesc = An engine for running Transport Tycoon Deluxe. BTPro patches applied.
 	pkgver = 1.10.1
-	pkgrel = 1
+	pkgrel = 3
 	url = http://openttd.btpro.nl/index.php/forum/30-btpro-openttd-client-talk/
 	arch = x86_64
 	license = GPL
