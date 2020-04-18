@@ -1,0 +1,14 @@
+[Desktop Entry]
+Comment=See and change information on your Portuguese eID Card
+Comment[pt]=Pluggin Autenticação.Gov
+Encoding=UTF-8
+Exec=java -jar /opt/plugin-autenticacao-gov/plugin-autenticacao-gov.jar
+GenericName=Portuguese eID Data
+GenericName[pt]=Dados do Cartão de Cidadão
+Icon=plugin-autenticacao-gov
+Name=Autenticação.gov
+Name[pt]=Autenticação.gov
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Office;

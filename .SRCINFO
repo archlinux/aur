@@ -1,0 +1,19 @@
+pkgbase = plugin-autenticacao-gov
+	pkgdesc = Portuguese Government pluggin for national ID card authentication
+	pkgver = 2.0.46
+	pkgrel = 1
+	url = https://www.autenticacao.gov.pt/cc-software
+	arch = any
+	license = MIT
+	depends = java-runtime
+	depends = opensc
+	noextract = plugin-autenticacao-gov.jar
+	source = https://autenticacao.gov.pt/fa/ajuda/software/plugin-autenticacao-gov.jar
+	source = pteid-mw-gui.desktop
+	source = pteid-scalable.svg
+	sha256sums = d90380adebf58a3366098ed86ac5b85ddc419ea80ba7822fb1c193fad4e01cbb
+	sha256sums = c83cc5081b99ceaf7f872e1f5329b3acde7774a4448bc9d4c82e2a07d0d84281
+	sha256sums = a3c13286b536f007d2776d642a4d5461adf6e0d9be705f289475c7232353a130
+
+pkgname = plugin-autenticacao-gov
+
