@@ -1,35 +1,28 @@
-# Maintainer: Cobalt Space <cobaltspace at protonmail dot com>
+# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Cobalt Space <cobaltspace at protonmail dot com>
+
 pkgname=blobsaver
-pkgver=2.4.0
-pkgrel=2
-epoch=
-pkgdesc="A cross-platform GUI app for saving SHSH blobs using s0uthwest's fork of tsschecker"
+pkgver=2.5.0
+pkgrel=1
+pkgdesc="A cross-platform GUI app for saving SHSH blobs using tsschecker"
 arch=('any')
-url="https://github.com/airsquared/blobsaver"
-license=('GPL3')
-groups=()
-depends=('java-runtime=8' 'java8-openjfx' 'archlinux-java-run')
-makedepends=()
-checkdepends=()
-optdepends=('libimobiledevice: get plugged in device information')
-provides=()
-conflicts=('blobsaver-git')
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("$url/releases/download/v$pkgver/$pkgname-linux.tar.gz" "$pkgname.sh" "$pkgname.desktop")
-noextract=()
-md5sums=('b944c7f36d774d8d777f439e5a2e72c1'
-         'cf64cc261dd259213bf37c311edbe71f'
-         'd8f5b91f53eb6b390b28ca7cd21a9fcf')
-validpgpkeys=()
+url='https://github.com/airsquared/blobsaver'
+license=('GPL-3.0')
+depends=('java-runtime=8' 'java8-openjfx' 'archlinux-java-run' 'libfragmentzip')
+optdepends=('libimobiledevice: Get plugged in device information'
+			'libirecovery: Utility to talk to iBoot/iBSS via USB')
+makedepends=('gendesk')
+source=("${url}/releases/download/v${pkgver}/blobsaver-linux.tar.gz")
+md5sums=('d5fffa4c30776df2b679387ad3bd8543')
 
 package() {
-
-	install -Dm755 "$srcdir/$pkgname.jar" "$pkgdir/usr/share/$pkgname/$pkgname.jar"
-	install -Dm755 "$srcdir/tsschecker" "$pkgdir/usr/share/$pkgname/tsschecker"
-	install -Dm775 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  gendesk -f -n --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" \
+   --exec="${pkgname}" --categories=Utility --icon "${pkgname}"
+  echo "#!/usr/bin/env bash
+archlinux-java-run -a 8 -b 8 -- -jar /usr/share/java/blobsaver/blobsaver.jar
+" > "${pkgname}.sh"
+  install -Dm755 "$srcdir/$pkgname.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+  install -Dm755 "$srcdir/tsschecker" "$pkgdir/usr/share/java/$pkgname/tsschecker"
+  install -Dm775 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
