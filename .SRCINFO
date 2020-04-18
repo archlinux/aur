@@ -19,8 +19,6 @@ pkgbase = ocaml-ppxlib
 	depends = ocaml-stdio>=0.11.0
 	options = !strip
 	source = ocaml-ppxlib-0.13.0-2.tar.gz::https://github.com/ocaml-ppx/ppxlib/archive/0.13.0.tar.gz
-	source = ocaml-ppxlib-0.13.0-2-fix-tests.diff::https://github.com/ocaml-ppx/ppxlib/pull/111.diff
 	sha256sums = 59fd9eaac23e6fd1c5b6183c37499ec3dbabee1f6c7ede4fb080e5f9b746f4e0
-	sha256sums = 891640f82db542e682d250547e1f39290b8a230b287fbcd0b22c2e43adaa6f64
 
 pkgname = ocaml-ppxlib

@@ -11,20 +11,10 @@ license=('MIT')
 depends=('ocaml>=4.04.1' 'ocaml-base>=0.11.0' 'ocaml-compiler-libs-repackaged>=0.11.0' 'ocaml-migrate-parsetree>=1.3.1' 'ocaml-ppx_derivers>=1.0.0' 'ocaml-stdio>=0.11.0')
 makedepends=('dune')
 options=('!strip')
-source=(
-	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz"
-	"$pkgname-$pkgver-$pkgrel-fix-tests.diff::$url/pull/111.diff"
-)
-sha256sums=('59fd9eaac23e6fd1c5b6183c37499ec3dbabee1f6c7ede4fb080e5f9b746f4e0'
-            '891640f82db542e682d250547e1f39290b8a230b287fbcd0b22c2e43adaa6f64')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('59fd9eaac23e6fd1c5b6183c37499ec3dbabee1f6c7ede4fb080e5f9b746f4e0')
 
 _sourcedirectory="$_projectname-$pkgver"
-
-prepare() {
-	cd "$srcdir/$_sourcedirectory/"
-	# https://github.com/ocaml-ppx/ppxlib/pull/111
-	patch --forward -p1 < "../$pkgname-$pkgver-$pkgrel-fix-tests.diff"
-}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
@@ -32,6 +22,7 @@ build() {
 }
 
 # fails because of a circular dependency on this package by ppx_jane
+# $pkgname-$pkgver-$pkgrel-fix-tests.diff::https://github.com/ocaml-ppx/ppxlib/pull/111
 # check() {
 #	cd "$srcdir/$_sourcedirectory/"
 #	dune runtest -p "$_projectname" --verbose
