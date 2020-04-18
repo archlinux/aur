@@ -1,0 +1,20 @@
+pkgbase = plasma-mediacenter
+	pkgdesc = A mediacenter user interface based on KDE Plasma components
+	pkgver = 5.7.5
+	pkgrel = 1
+	url = https://community.kde.org/Plasma/Plasma_Media_Center/
+	arch = x86_64
+	license = GPL3
+	makedepends = extra-cmake-modules
+	depends = plasma-workspace
+	depends = baloo
+	source = https://download.kde.org/stable/plasma-mediacenter/5.7.5/plasma-mediacenter-5.7.5.tar.xz
+	source = https://download.kde.org/stable/plasma-mediacenter/5.7.5/plasma-mediacenter-5.7.5.tar.xz.sig
+	validpgpkeys = 2D1D5B0588357787DE9EE225EC94D18F7F05997E
+	validpgpkeys = 348C8651206633FD983A8FC4DEACEA00075E1D76
+	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
+	sha256sums = dd0df7dbc3e51ec4e329a6365c25b2b2e3d6e4dd7fd8e0aa916f3f9559a863bf
+	sha256sums = SKIP
+
+pkgname = plasma-mediacenter
+
