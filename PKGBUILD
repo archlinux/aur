@@ -1,17 +1,13 @@
-# Maintainer: Meriadec Pillet <meriadec.pillet@gmail.com>
-# shellcheck disable=SC2154,SC2034,SC2164
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 
 pkgname=ledger-live
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source companion app for your Ledger devices"
 arch=('x86_64')
 url="https://www.ledgerwallet.com/live"
 license=('MIT')
-makedepends=(yarn python2)
-
-# TODO generate changelog from release notes
-changelog=
+makedepends=(yarn python nodejs-lts-erbium)
 
 source=("https://github.com/LedgerHQ/ledger-live-desktop/archive/v${pkgver}.tar.gz"
         "ledger-live.desktop")
@@ -48,6 +44,6 @@ package() {
   ln -s "/opt/${pkgname}/ledger-live-desktop" "${pkgdir}/usr/bin/${pkgname}"
 
   install -D -m644 \
-    "static/images/browser-window-icon-512x512.png" \
+    "build/icons/icon@4x.png" \
     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/ledger-live.png"
 }
