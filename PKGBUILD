@@ -6,7 +6,7 @@
 
 pkgname=ppsspp
 pkgver=1.9.4
-pkgrel=3
+pkgrel=4
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
 url=https://www.ppsspp.org/
@@ -16,12 +16,7 @@ depends=(
   glew
   glibc
   hicolor-icon-theme
-  libavcodec.so
-  libavformat.so
-  libavutil.so
   libgl
-  libswresample.so
-  libswscale.so
   libzip
   qt5-base
   sdl2
@@ -51,6 +46,7 @@ source=(
   git+https://github.com/hrydgard/ppsspp.git#tag=e3c9793cb3a68ec9f44371c7ebb45a0abed1ecca
   git+https://github.com/Kingcom/armips.git
   git+https://github.com/discordapp/discord-rpc.git
+  git+https://github.com/hrydgard/ppsspp-ffmpeg.git
   ppsspp-glslang::git+https://github.com/hrydgard/glslang.git
   git+https://github.com/hrydgard/ppsspp-lang.git
   git+https://github.com/Tencent/rapidjson.git
@@ -61,6 +57,7 @@ source=(
   ppsspp-flags.patch
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -83,7 +80,7 @@ prepare() {
 
   patch -Np1 -i ../ppsspp-flags.patch
 
-  for submodule in assets/lang ext/glslang; do
+  for submodule in assets/lang ext/glslang ffmpeg; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git submodule update ${submodule}
@@ -109,16 +106,16 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_SKIP_RPATH=ON \
     -DHEADLESS=ON \
-    -DUSE_SYSTEM_FFMPEG=ON \
     -DUSE_SYSTEM_LIBZIP=ON \
+    -DOpenGL_GL_PREFERENCE=GLVND \
     -DUSE_SYSTEM_SNAPPY=ON \
     -DUSING_QT_UI=OFF
   make -C build-sdl
   cmake -S ppsspp -B build-qt \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_SKIP_RPATH=ON \
+    -DOpenGL_GL_PREFERENCE=GLVND \
     -DHEADLESS=OFF \
-    -DUSE_SYSTEM_FFMPEG=ON \
     -DUSE_SYSTEM_LIBZIP=ON \
     -DUSE_SYSTEM_SNAPPY=ON \
     -DUSING_QT_UI=ON
