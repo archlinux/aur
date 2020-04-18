@@ -1,0 +1,14 @@
+pkgbase = spectacle.lv2-git
+	pkgdesc = Realtime graphical spectrum analyzer.
+	pkgver = v1.0.r1.ga47fd22
+	pkgrel = 1
+	url = https://github.com/jpcima/spectacle
+	arch = x86_64
+	groups = lv2-plugins
+	depends = cairo
+	depends = lv2
+	source = spectacle.lv2-git::git+https://github.com/jpcima/spectacle
+	md5sums = SKIP
+
+pkgname = spectacle.lv2-git
+
