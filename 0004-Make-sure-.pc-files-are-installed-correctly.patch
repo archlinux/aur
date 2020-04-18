@@ -62,5 +62,5 @@ index 3ec2704625..f33edb5bd9 100644
                      uninst.append("\n\t");
                  uninst.append("-$(DEL_FILE) " + escapeFilePath(dst_pc));
 -- 
-2.26.0
+2.26.1
 
