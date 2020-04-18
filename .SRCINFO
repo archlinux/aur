@@ -1,0 +1,18 @@
+pkgbase = cfnts-git
+	pkgdesc = NTS protocol implementation written in Rust
+	pkgver = r190.g094611f
+	pkgrel = 1
+	url = https://blog.cloudflare.com/announcing-cfnts/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	provides = cfnts
+	conflicts = cfnts
+	source = git+https://github.com/cloudflare/cfnts.git
+	sha256sums = SKIP
+
+pkgname = cfnts-git
+
