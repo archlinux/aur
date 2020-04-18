@@ -3,11 +3,11 @@
 
 pkgname=fdutils
 pkgver=5.5
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 pkgdesc="Utilities for the Linux floppy driver, i.e. for formatting extra capacity disks"
 url="http://fdutils.linux.lu/index.html"
-makedepends=('texinfo' 'tcc')
+makedepends=('texinfo' 'tcc' 'texlive-bin' 'texlive-core')
 depends=('glibc' 'tcc' 'texinfo')
 source=(http://deb.debian.org/debian/pool/main/f/fdutils/fdutils_5.5-20060227.orig.tar.gz
         http://deb.debian.org/debian/pool/main/f/fdutils/fdutils_5.5-20060227-7.debian.tar.xz)
