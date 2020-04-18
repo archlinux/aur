@@ -3,7 +3,7 @@ _reponame=NFD
 _pkgname=ndn-nfd
 pkgname=$_pkgname
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 # epoch=
 pkgdesc="NFD is a network forwarder that implements and evolves together with the Named Data Networking (NDN) protocol"
 arch=("any")
@@ -38,8 +38,6 @@ prepare() {
   ln -vs "${srcdir}/websocketpp-0.8.1-hotfix" "${srcdir}/${_reponame}-${_reponame}-${pkgver}/websocketpp"
 
   cd "${srcdir}/${_reponame}-${_reponame}-${pkgver}"
-
-  ls -la
 
   ./waf configure --prefix=/usr
 }
