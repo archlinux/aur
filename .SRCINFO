@@ -1,0 +1,13 @@
+pkgbase = vim-bracketed-paste-git
+	pkgdesc = Vim plugin to handle bracketed-paste-mode (aka. automatic `:set paste`)
+	pkgver = r38.c4c639f3ca
+	pkgrel = 1
+	url = https://github.com/conradirwin/vim-bracketed-paste
+	arch = any
+	provides = vim-bracketed-paste
+	conflicts = vim-bracketed-paste
+	source = https://github.com/conradirwin/vim-bracketed-paste
+	sha256sums = SKIP
+
+pkgname = vim-bracketed-paste-git
+
