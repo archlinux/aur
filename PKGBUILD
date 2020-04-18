@@ -2,7 +2,7 @@
 
 pkgname=v2raya-bin
 _pkgname=v2raya
-pkgver=0.6.8.5
+pkgver=0.6.9
 pkgrel=1
 install=.INSTALL
 pkgdesc="A V2Ray Linux client with web GUI, compatible with SS and SSR and supporting transparent proxy"
@@ -46,19 +46,19 @@ sha1sums=(
 )
 
 sha1sums_i686=(
-    '27b462fd797969d7c59f6be2e67e8104f1955c43'
+    '9a1f3a7efb4aecada3b3ff35f7b51381299aabce'
 )
 sha1sums_x86_64=(
-    'a744e849b75a2a7799ce341189ae53e0a558e077'
+    '4d94f5fcac422ded873565bf68b2ef86a0989728'
 )
 sha1sums_aarch64=(
-    'd4409f2b773ea14074a0727cdde0249759721950'
+    '3498e6fb75506247854c0cf6bcbcba389cb3a9ba'
 )
 sha1sums_armv6h=(
-    '88bab95059fee7691ce9c3dbbb82f894a5dd9e8c'
+    '0caafd553836d0f8d6cf02b2ff4634bb8f2a5816'
 )
 sha1sums_armv7h=(
-    '88bab95059fee7691ce9c3dbbb82f894a5dd9e8c'
+    '0caafd553836d0f8d6cf02b2ff4634bb8f2a5816'
 )
 
 package() {
