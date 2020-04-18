@@ -1,6 +1,7 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Aaron DeVore <aaron.devore@gmail.com>
 # Contributor: Michael Fellinger <m.fellinger@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=diakonos
 pkgver=0.9.7
