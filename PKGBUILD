@@ -1,14 +1,14 @@
 # Author: Artemii Sudakov <finziyr@yandex.ru>
 pkgname=sakuri
 pkgver=1.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple bash AUR helper'
 arch=('any')
 url='https://github.com/BiteDasher/sakuri'
 license=('MIT')
 depends=('bash' 'git' 'sudo' 'binutils')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BiteDasher/sakuri/archive/${pkgver}.tar.gz")
-sha256sums=("f51529e8e901d80497d34c4f9b2ccfd4775095d6df315d8283f0b995ef8180e2")
+sha256sums=("b8a83037b8e8dcdd2c164540b35b0e3e5663f6ab2c4f20691227a8d204ad6e5c")
 package() {
 mkdir -p $pkgdir/usr/bin
 cd "$srcdir/$pkgname-$pkgver"
