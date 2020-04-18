@@ -3,8 +3,8 @@
 
 pkgname=git-delta
 _name="${pkgname#*-}"
-pkgver=0.0.17
-pkgrel=2
+pkgver=0.0.18
+pkgrel=1
 
 pkgdesc='A syntax-highlighting pager for git and diff output'
 arch=('x86_64')
@@ -12,10 +12,10 @@ url="https://github.com/dandavison/$_name"
 license=('MIT')
 
 depends=('git')
-makedepends=('rust')
+makedepends=('rust' 'clang' 'llvm')
 
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('ac1f26ac5ea10d43b300675189c49437dcae7a9fca7e51f615058ab0550d27e5')
+sha256sums=('e159f2eacfbcfe7de97047d304e4eb404e1e54cc01aa6670e159c0e771dbe104')
 
 
 prepare() {
@@ -37,7 +37,7 @@ build() {
 
 check() {
   cd "$_name-$pkgver"
-  cargo test --release --locked
+  cargo test --locked
 }
 
 package() {
