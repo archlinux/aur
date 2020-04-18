@@ -1,8 +1,8 @@
 # Maintainer: Michael Taboada <michael@2mb.solutions.
 # Maintainer: Storm Dragon <storm_dragon@linux-a11y.org>
 pkgname=swamp-wine
-pkgver=3.8C
-pkgrel=4
+pkgver=3.8D
+pkgrel=1
 pkgdesc="First-person Audio Shooter"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'pentium4')
 url="https://kaldobsky.com/audiogames"
@@ -12,20 +12,24 @@ depends=(wine winetricks wine_gecko wine-mono sdl2 ncurses mpg123 libpulse libpn
 if [ "$CARCH" == "x86_64" ] ;then
   depends+=(${_depends_x86_64[@]})
 fi
-makedepends=(unzip)
+makedepends=(unzip wget)
 install="swamp-wine.install"
-source=('https://kaldobsky.com/audiogames/Swamp.zip'
-        'swamp.sh'
+source=('swamp.sh'
         'swamp.desktop')
-md5sums=('57b40c8eb603ce0d4afdcdb0ab0d5df6'
-         '831198b7160219381e6a5cedc0412eef'
+md5sums=('662be95ce8b52349f32e1d895f850ec2'
          '34dc658b23e7411ee8af44d01b4877f1')
-noextract=('Swamp.zip')
 
 prepare() {
   cd "$srcdir"
-  mkdir swamp
-  unzip -q -d swamp Swamp.zip
+  [ ! -f swamp-${pkgver}.zip ] && wget 'https://kaldobsky.com/audiogames/Swamp.zip' -O swamp-${pkgver}.zip
+  _md5sum=57b40c8eb603ce0d4afdcdb0ab0d5df6
+  if [ "$_md5sum" = "$(md5sum swamp-${pkgver}.zip |cut -d\  -f1)" ] ; then
+    mkdir swamp
+    unzip -q -d swamp swamp-${pkgver}.zip
+  else
+    echo "Md5sum doesn't match for this swamp version, please notify the package maintainer." >&2
+    return 1
+  fi
 }
 
 package() {

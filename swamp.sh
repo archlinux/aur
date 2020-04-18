@@ -11,7 +11,7 @@ if [ ! -d "$HOME/.local/wine/swamp" ] ; then
   DISPLAY="" WINEPREFIX="$HOME/.local/wine/swamp" WINEARCH=win32 wineboot -u # Clearing the display temporarily is required to work around wine complaining about mono which we install later
   WINEPREFIX="$HOME/.local/wine/swamp" wine msiexec /i z:/usr/share/wine/mono/$(ls -1 /usr/share/wine/mono/) /silent
   WINEPREFIX="$HOME/.local/wine/swamp" wine msiexec /i z:$(ls -1 /usr/share/wine/gecko/*x86.msi) /silent
-  WINEPREFIX="$HOME/.local/wine/swamp" winetricks -q vb6run dx8vb quartz speechsdk corefonts winxp
+  WINEPREFIX="$HOME/.local/wine/swamp" winetricks -q vb6run dx8vb quartz speechsdk corefonts winxp vd=1024x768
   cp -R /opt/swamp "$HOME/.local/wine/swamp/drive_c/users/$USER/Downloads"
   WINEPREFIX="$HOME/.local/wine/swamp" wine cmd.exe /c 'cd /d c:\users\'$USER'\Downloads\swamp && Windows32bit.bat'
   echo "Installation of the wineprefix has been completed. The game will now launch."
