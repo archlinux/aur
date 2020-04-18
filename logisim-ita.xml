@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/x-logisim-ita">
+        <sub-class-of type="application/xml"/>
+        <comment>Logisim Italian Fork</comment>
+        <icon name="logisim-ita"/>
+        <glob pattern="*.circ"/>
+    </mime-type>
+</mime-info>

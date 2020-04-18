@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Logisim ITA
+Comment=An educational tool for designing and simulating digital logic circuits
+Exec=/usr/bin/logisim-ita
+Icon=logisim-ita
+Terminal=false
+Type=Application
+Categories=Education
+MimeType=application/x-logisim-ita
