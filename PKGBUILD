@@ -8,7 +8,6 @@ pkgdesc="A Python module to make simple GUIs with Rofi"
 arch=('any')
 url="https://github.com/bcbnz/python-rofi"
 license=('GPL')
-provides=('python-rofi')
 conflicts=('python-rofi')
 makedepends=('git' 'python-setuptools' 'fakeroot')
 depends=('python' 'rofi')
