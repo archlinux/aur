@@ -1,15 +1,13 @@
 pkgbase = vim-quickscope
 	pkgdesc = Highlight which characters to target for f, F and family
-	pkgver = 1.1.1
+	pkgver = 2.5.3
 	pkgrel = 1
 	url = https://github.com/unblevable/quick-scope
-	install = vimdoc.install
 	arch = any
 	groups = vim-plugins
 	license = MIT
-	depends = vim>=7.0
-	source = https://github.com/unblevable/quick-scope/archive/v1.1.1.tar.gz
-	sha256sums = 820a4340f51722cf59a44a17832d209b44e5ba9e83f89d6a8b0931cc8368ac1d
+	source = https://github.com/unblevable/quick-scope/archive/v2.5.3.tar.gz
+	sha256sums = c9354f414cb26c3eb770dec18620379ad30fdfba8186fa20a363434fc66a5d03
 
 pkgname = vim-quickscope
 
