@@ -1,6 +1,6 @@
 pkgbase = chrysalis
 	pkgdesc = A graphical configuration tool for programmable keyboards. Prebuilt AppImage Releases
-	pkgver = 0.6.2
+	pkgver = 0.7.4
 	pkgrel = 0
 	url = https://github.com/keyboardio/Chrysalis
 	arch = x86_64
