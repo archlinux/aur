@@ -1,7 +1,7 @@
 pkgbase = python-cu2qu
 	pkgdesc = Cubic-to-quadratic bezier curve conversion
 	pkgver = 1.6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googlefonts/cu2qu
 	arch = any
 	license = Apache
@@ -10,12 +10,12 @@ pkgbase = python-cu2qu
 	checkdepends = python-flask-compress
 	makedepends = python-setuptools
 	makedepends = cython
-	depends = python-defcon
+	depends = python
 	depends = python-fonttools
-	source = https://pypi.org/packages/source/c/cu2qu/cu2qu-1.6.7.zip
-	md5sums = dcc95740dd7f60ba9132062d10f8bff0
+	depends = python-defcon
+	depends = python-fs
+	source = https://files.pythonhosted.org/packages/source/c/cu2qu/cu2qu-1.6.7.zip
+	sha256sums = 559e962539c27a2964e7a2693c7053eacdabf771f0103e83baaadfa567bd8139
 
 pkgname = python-cu2qu
-	depends = python-defcon
-	depends = python-fonttools
 
