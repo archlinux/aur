@@ -1,7 +1,7 @@
 pkgbase = edex-ui-git
 	pkgdesc = A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support.
 	pkgver = 3.0.0.pre
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GitSquared/edex-ui
 	install = edex-ui.install
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = edex-ui-git
 	license = GPL3
 	makedepends = npm
 	makedepends = git
+	makedepends = python
 	makedepends = rsync
 	depends = gtk3
 	depends = libxss
