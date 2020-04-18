@@ -3,13 +3,13 @@
 pkgname=hqplayer-embedded
 _debpkgver=4.16.0-47
 pkgver=4.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
 arch=('x86_64')
 url="http://www.signalyst.com/custom.html"
 license=('custom')
-depends=('alsa-lib' 'glibc' 'flac' 'gcc-libs' 'libgmpris' 'glib2' 'rygel' 'adduser-deb')
+depends=('alsa-lib' 'glibc' 'flac' 'gcc-libs' 'libgmpris' 'glib2' 'rygel' 'adduser-deb' 'zip' 'unzip')
 source=("https://www.signalyst.eu/bins/hqplayerd/bionic/hqplayerd_"$_debpkgver"_amd64.deb" 'hqplayerd.service'  'hqplayerd2.service') 
 install=install
 sha256sums=('SKIP'
@@ -21,8 +21,11 @@ package() {
       install -Dm755 "$srcdir/usr/bin/hqplayerd" \
     "$pkgdir/usr/bin/hqplayerd"
     
-      install -Dm755 "$srcdir/usr/bin/start-uac-gadget.sh" \
-    "$pkgdir/usr/bin/start-uac-gadget.sh"
+      install -Dm755 "$srcdir/usr/bin/hqplayer-create-backup.sh" \
+    "$pkgdir/usr/bin/hqplayer-create-backup.sh"
+    
+      install -Dm755 "$srcdir/usr/bin/hqplayer-restore-backup.sh" \
+    "$pkgdir/usr/bin/hqplayer-restore-backup.sh"
     
      #install -Dm644 "$srcdir/etc/hqplayer/hqplayerd.xml" \
     #"$pkgdir/etc/hqplayer/hqplayerd.xml"
@@ -37,9 +40,6 @@ package() {
     
      install -Dm644 "$srcdir/usr/share/doc/hqplayerd/hqplayerd.xml-rme.gz" \
     "$pkgdir/usr/share/doc/hqplayerd/hqplayerd.xml-rme.gz"
-    
-      install -Dm644 "$srcdir/usr/share/doc/hqplayerd/hqplayerd.xml-uac2" \
-    "$pkgdir/usr/share/doc/hqplayerd/hqplayerd.xml-uac2"
   
      install -Dm644 "$srcdir/usr/share/doc/hqplayerd/copyright" \
     "$pkgdir/usr/share/licenses/$pkgname/COPYING"
