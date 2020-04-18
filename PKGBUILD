@@ -50,6 +50,6 @@ package() {
   cd ${_pkgname}-${pkgver} 
  
   make install
-  install -m644 -D ../innerhighlight.grf "${pkgdir}"/usr/share/openttd/baseset/innerhighlight.grf
+  install -m644 -D ../innerhighlight.grf "${pkgdir}/usr/share/openttd/newgrf/innerhighlight.grf"
 }
 
