@@ -1,7 +1,7 @@
 # Maintainer: Oscar Shrimpton <oscar.shrimpton.personal@gmail.com>
 pkgname=autopsy
 pkgver=4.14.0
-pkgrel=0
+pkgrel=1
 pkgdesc='Digital forensics platform and graphical interface to The Sleuth Kit® and other digital forensic tools'
 arch=(x86_64)
 url='http://www.sleuthkit.org/autopsy/'
@@ -36,5 +36,5 @@ package() {
   cp icon.ico $pkgdir/usr/share/pixmaps/autopsy.ico
 
   mkdir -p $pkgdir/usr/share/applications
-  install -Dm644 ../../Autopsy.desktop $pkgdir/usr/share/applications
+  install -Dm644 $srcdir/Autopsy.desktop $pkgdir/usr/share/applications
 }
