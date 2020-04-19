@@ -12,7 +12,7 @@ pkgbase = nomino
 	provides = nomino
 	conflicts = nomino-bin
 	source = 0.2.0.tar.gz::https://github.com/yaa110/nomino/archive/0.2.0.tar.gz
-	sha512sums = f6a7201ac5469e421845f091b88f6c071eb1c7791c5fd2692924a19204084d56312160f98f8e34a20aa1a4ff125ef822d8ab68ed336885cce0855c3921b87bea
+	sha512sums = 9c23fdf04ce2862c83b8e51b35b314c7a415e31d55004ff8f92ef1e8779002afa676178ce74de7584df54ded64b936a57bd3a17825d034ca556c921c8eb157b1
 
 pkgname = nomino
 
