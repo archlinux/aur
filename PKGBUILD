@@ -3,7 +3,7 @@
 _pkgbase=amd-sfh-hid
 pkgname="${_pkgbase}-dkms"
 pkgver=1
-pkgrel=2
+pkgrel=3
 _patchfile="${_pkgbase}-${pkgver}-${pkgrel}.patch"
 pkgdesc="Experimental HID driver modules for the AMD Sensor Fusion Hub (DKMS)"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ source=("${_patchfile}::https://gist.githubusercontent.com/conqp/33baa079d952491
         'Makefile.append'
         'dkms.conf')
 sha256sums=('e096b2c033601603ab1a820fd0bc6cd0402b7f1926ba04a627153466b4be80a3'
-            'd3a380dd24434afd88eec19c31e9425d83c47c6b007452a71c9ac5dfc87dcd40'
-            '06a1781464433882c0def17fce634001bcede6efb096a8cffcc26cbdef587676')
+            'aac46663193f08c6331b76faa8752b08b3169fe586da337f662c0e43428d94fb'
+            '345bebda48d6dda26f8f0c8282f7c276f946fb14d089b831817eb01fd6ea5dce')
 
 prepare() {
 	# Fix patch for DKMS.
