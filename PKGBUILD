@@ -15,19 +15,25 @@ depends=()
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
 sha256sums=(8bfdf4f11613181880fdb8bfc7fce3717c961d495b42ab605baf1b7c94e821aa)
 makedepends=(python-setuptools python2-setuptools)
+prepare() {
+    # copy folder, so we can cleanly build for both python versions
+    cp -rup $_name-$pkgver $_name-$pkgver-py2
+}
 build() {
     cd "$srcdir/$_name-$pkgver"
     python setup.py build
+    cd "$srcdir/$_name-$pkgver-py2"
+    python2 setup.py build
 }
 package_python-options()
 {
-    depends=( python python-six python-chainmap python-combomethod python-nulltype )
+    depends=( python )
     cd "$srcdir/$_name-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 package_python2-options()
 {
-    depends=( python2 python2-six python2-chainmap python2-combomethod python2-nulltype )
-    cd "$srcdir/$_name-$pkgver"
+    depends=( python2 )
+    cd "$srcdir/$_name-$pkgver-py2"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }

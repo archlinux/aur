@@ -12,15 +12,7 @@ pkgbase = python-options
 
 pkgname = python-options
 	depends = python
-	depends = python-six
-	depends = python-chainmap
-	depends = python-combomethod
-	depends = python-nulltype
 
 pkgname = python2-options
 	depends = python2
-	depends = python2-six
-	depends = python2-chainmap
-	depends = python2-combomethod
-	depends = python2-nulltype
 
