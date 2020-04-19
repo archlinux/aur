@@ -9,7 +9,7 @@ pkgdesc="X11 window switcher with fancy look"
 url="https://gitlab.com/TheCynicalLiger/xwingridselect"
 arch=('i686' 'x86_64')
 license=('GNU General Public License v3.0')
-depends=('gtk2')
+depends=('gtk2' 'gtk-engines' 'gtk-engine-murrine')
 makedepends=('cmake' 'git' 'make')
 options=(!libtool strip)
 
