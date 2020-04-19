@@ -1,0 +1,18 @@
+pkgbase = python-nulltype
+	pkgdesc = Null values and sentinels like (but not) None, False & True
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://bitbucket.org/jeunice/nulltype
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/n/nulltype/nulltype-2.3.1.zip
+	sha256sums = 64aa3cb2ab5e904d1b37175b9b922bea268c13f9ce32e3d373313150ab5ef272
+
+pkgname = python-nulltype
+	depends = python
+
+pkgname = python2-nulltype
+	depends = python2
+
