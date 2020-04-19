@@ -1,0 +1,18 @@
+pkgbase = python-ndn
+	pkgdesc = An NDN client library with AsyncIO support in Python 3
+	pkgver = 0.2b2.post1
+	pkgrel = 1
+	url = https://github.com/zjkmxy/python-ndn
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pycryptodomex
+	depends = python-pygtrie
+	source = https://pypi.io/packages/source/p/python-ndn/python-ndn-0.2b2.post1.tar.gz
+	source = LICENSE
+	sha256sums = 81e677deb7b05bc854046a849d324cf011bb2cfe7793b16e7de006e2e78e69ee
+	sha256sums = 7d5450cb2d142651b8afa315b5f238efc805dad827d91ba367d8516bc9d49e7a
+
+pkgname = python-ndn
+
