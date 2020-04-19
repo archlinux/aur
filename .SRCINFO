@@ -1,0 +1,13 @@
+pkgbase = barbarian
+	pkgdesc = A frontend for the Conan package manager, written in Qt.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = cmake
+	source = barbarian-1.0.0.tar.xz
+	sha256sums = 0d8349fd329233696fee62551a31960bbb69ef3edd8363ac118b528d2b0982d2
+
+pkgname = barbarian
+
