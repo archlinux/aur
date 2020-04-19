@@ -1,7 +1,7 @@
 pkgbase = qmk
 	pkgdesc = CLI tool for customizing supported mechanical keyboards.
-	pkgver = 0.0.31
-	pkgrel = 2
+	pkgver = 0.0.33
+	pkgrel = 1
 	url = https://github.com/qmk/qmk_cli
 	arch = any
 	license = MIT
@@ -30,8 +30,8 @@ pkgbase = qmk
 	depends = unzip
 	depends = wget
 	depends = zip
-	source = https://files.pythonhosted.org/packages/source/q/qmk/qmk-0.0.31.tar.gz
-	sha256sums = 843c89914ac9749880913c2f54739c7c7ff15b45cfa988008385615f85403deb
+	source = https://files.pythonhosted.org/packages/source/q/qmk/qmk-0.0.33.tar.gz
+	sha256sums = 48c0c77929f5e795516beb2c44f851b9083420d7b6e0f76c9d716f827b2fc893
 
 pkgname = qmk
 
