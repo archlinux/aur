@@ -1,13 +1,13 @@
 # Maintainer: Zineddine SAIBI <saibi.zineddine@yahoo.com>
 
 pkgname=deeptags
-pkgver=0.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A Markdown notes manager"
 arch=('x86_64')
 url="https://github.com/SZinedine/DeepTags"
 license=('GPL3')
-depends=('qt5-base>=5.6' 'qt5-svg>=5.6' 'hicolor-icon-theme')
+depends=('qt5-base' 'qt5-svg')
 makedepends=('qt5-tools' 'git' 'wget' 'gcc' 'make')
 source=("$pkgname::git+https://github.com/SZinedine/DeepTags.git#tag=$pkgver")
 md5sums=('SKIP')
@@ -23,11 +23,8 @@ build() {
 package() {
     cd $pkgname/
     make INSTALL_ROOT=$pkgdir install
-    
-    if [ $pkgver != 0.5 ]; then     # the appdata.xml is introduced after the 0.5 version
-        install -Dm 644 packaging/resources/$pkgname.appdata.xml    $pkgdir/usr/share/metainfo/$pkgname.appdata.xml; 
-    fi
-    
+
+    install -Dm 644 packaging/resources/$pkgname.appdata.xml    $pkgdir/usr/share/metainfo/$pkgname.appdata.xml;
     install -Dm 644 packaging/resources/$pkgname.desktop        $pkgdir/usr/share/applications/$pkgname.desktop
     install -Dm 644 LICENSE                                     $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
@@ -35,6 +32,6 @@ package() {
         install -Dm 644 packaging/resources/icons/hicolor/$icon/apps/$pkgname.png $pkgdir/usr/share/icons/hicolor/$icon/apps/$pkgname.png
     done
     install -Dm 644 packaging/resources/icons/hicolor/scalable/apps/$pkgname.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg
-    
-    
+
+
 }
