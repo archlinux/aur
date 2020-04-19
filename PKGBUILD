@@ -35,8 +35,8 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         no-plt.diff
         "dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/dont-statically-link-libstdc%2B%2B.patch"
         pgo_fix_missing_kdejs.patch
-        "classic-kde-2020.03.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/classic-kde-2020.03.patch"
-        "classic-kde-xul-2020.04.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/classic-kde-xul-2020.04.patch")
+        "classic-kde.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/classic-kde.patch"
+        "classic-kde-xul.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/classic-kde-xul.patch")
 sha256sums=('SKIP'
             '03b734e8127678ebb260f69702f3be3cba1431c70b67a6e9f0dae62df091f516'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
@@ -64,8 +64,8 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1382942
   patch -Np1 -i ../no-plt.diff
 
-  patch -Np1 -i ../classic-kde-2020.03.patch
-  patch -Np1 -i ../classic-kde-xul-2020.04.patch
+  patch -Np1 -i ../classic-kde.patch
+  patch -Np1 -i ../classic-kde-xul.patch
   patch -Np1 -i ../pgo_fix_missing_kdejs.patch
 
   cat >.mozconfig <<END
