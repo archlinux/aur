@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-libfdk_aac
 	pkgdesc = Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)
 	pkgver = 4.2.2
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://ffmpeg.org/
 	arch = x86_64
@@ -64,6 +64,7 @@ pkgbase = ffmpeg-libfdk_aac
 	depends = libfdk-aac
 	optdepends = intel-media-sdk: Intel QuickSync support
 	optdepends = ladspa: LADSPA filters
+	optdepends = nvidia-utils: Nvidia NVDEC/NVENC support
 	provides = libavcodec.so
 	provides = libavdevice.so
 	provides = libavfilter.so
