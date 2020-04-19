@@ -5,7 +5,7 @@
 # Contributor: dos1
 
 pkgname=performous-git
-pkgver=1.0_888_g0bfa0324
+pkgver=1.0_1021_gd30f96ae
 pkgrel=1
 pkgdesc='A free game like "Singstar", "Rockband" or "Stepmania" (version from git)'
 arch=('i686' 'x86_64')
@@ -16,8 +16,12 @@ optdepends=('portmidi: MIDI drum support' 'opencv: webcam support' 'ttf-ms-fonts
 makedepends=('cmake>=2.4' 'git' 'help2man' 'glm' 'cpprestsdk')
 provides=(performous)
 conflicts=(performous)
-source=($pkgname::"git+https://github.com/performous/performous.git")
-md5sums=(SKIP)
+source=($pkgname::"git+https://github.com/performous/performous.git"
+        "git+https://github.com/performous/compact_enc_det.git"
+        "git+https://github.com/performous/aubio.git")
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -25,8 +29,13 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname}/ced"
+  cd "${srcdir}/${pkgname}/3rdparty/ced"
   git submodule init
+  git config submodule.ced.url https://github.com/performous/compact_enc_det.git
+  git submodule update
+  cd "${srcdir}/${pkgname}/3rdparty/aubio"
+  git submodule init
+  git config submodule.aubio.url https://github.com/performous/aubio.git
   git submodule update
 }
 
