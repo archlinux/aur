@@ -11,6 +11,7 @@ DynamicUser=yes
 ConfigurationDirectory=foldingathome
 StateDirectory=fah
 WorkingDirectory=/var/lib/fah
+ReadWritePaths=/dev/dri
 ExecStartPre=!/usr/bin/chown -R fah:fah /etc/foldingathome
 ExecStart=/usr/bin/FAHClient --config /etc/foldingathome/config.xml
 CPUSchedulingPolicy=idle

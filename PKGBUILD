@@ -4,8 +4,8 @@
 # Contributor: dtw <dibblethewrecker@gmail.com>
 
 pkgname=foldingathome
-pkgver=7.6.8
-pkgrel=7
+pkgver=7.6.9
+pkgrel=1
 pkgdesc='A distributed computing project for simulating protein dynamics'
 arch=(x86_64)
 url=https://foldingathome.org/
@@ -27,10 +27,12 @@ install=foldingathome.install
 source=(
   https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/v${pkgver%.*}/fahclient_${pkgver}-64bit-release.tar.bz2
   foldingathome.service
+  foldingathome-user.service
   GPUs.txt
 )
-sha256sums=('588253c0042dcb0a6b97c9e16ccb8189b316df051094be4202881120255e5d31'
-            'c6d5fd1072e6f12818c9d9363e416e2bb65331e59add3dd8a99651282e9abb3c'
+sha256sums=('b580a8076f3147bacb9d1599e1b1765956a8e37b8a79bd961ffe2e3adc7df110'
+            '0ab7c2dbbbc3b4c1da8224968514f000664a4b462bf6303110199d71ca567e5a'
+            '41997239dc363570e2ca5bec0eca8c7d88aada6ace0bb5793bf3ec6d101f40bb'
             '5944a6df06b42c5edd4e5f0922f16e3f04cb755bd248d0e610c9262f3814aff9')
 
 package() {
@@ -41,6 +43,7 @@ package() {
   install -Dm 644 fahclient_${pkgver}-64bit-release/copyright -t "${pkgdir}"/usr/share/licenses/foldingathome/
   install -Dm 644 fahclient_${pkgver}-64bit-release/sample-config.xml "${pkgdir}"/etc/foldingathome/config.xml
   install -Dm 644 foldingathome.service -t "${pkgdir}"/usr/lib/systemd/system/
+  install -Dm 644 foldingathome-user.service "${pkgdir}"/usr/lib/systemd/user/foldingathome.service
   install -Dm 644 GPUs.txt -t "${pkgdir}"/etc/foldingathome/
 }
 
