@@ -13,7 +13,7 @@ depends=('java-runtime')
 makedepends=('gendesk')
 source=("https://gitlab.com/pika-lab/tuprolog/2p/wikis/uploads/87b96d15ce4a1c42ac9825883fd3cfdd/2p-4.0.3.jar")
 noextract=('2p-4.0.3.jar')
-sha256sums=('SKIP')
+sha512sums=('d059408604bbe4e7826ee62ed136ef3545d94307e08905c2839968ab5b06d1f09ad5a1948e7177164ac8ff5b9c76e4b399c3999ba4a55323f6e860db7673d9ba')
 
 package() {
   echo "#!/bin/sh
