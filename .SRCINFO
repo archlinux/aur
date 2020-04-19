@@ -1,8 +1,8 @@
 pkgbase = ocs-url
 	pkgdesc = An install helper program for items served via OpenCollaborationServices (ocs://).
 	pkgver = 3.1.0
-	pkgrel = 6
-	url = https://www.opencode.net/akiraohgaki/ocs-url
+	pkgrel = 7
+	url = https://www.opencode.net/dfn2/ocs-url
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -12,7 +12,7 @@ pkgbase = ocs-url
 	depends = qt5-quickcontrols>=5.2.0
 	provides = xdgurl
 	conflicts = xdgurl
-	source = git+https://www.opencode.net/akiraohgaki/ocs-url.git#tag=release-3.1.0
+	source = git+https://www.opencode.net/dfn2/ocs-url.git#tag=release-3.1.0
 	source = new-version-format.patch
 	sha256sums = SKIP
 	sha256sums = c80a519c8caa7c1ebb9cc26374f25c7681f5740d64a4d88ffaf495e077e234fc
