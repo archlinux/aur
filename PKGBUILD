@@ -1,7 +1,7 @@
 # Maintainer: Will Daly <will.e.daly@gmail.com>
 pkgname=devlog
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tool for tracking your day-to-day software development work."
 arch=('x86_64')
 url="https://github.com/wedaly/devlog"
@@ -13,12 +13,12 @@ sha512sums=('dce5bc1390f1246b8c3240dc416aa64f2912f9c24df8a2f415a24ef9955e085799b
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked
+  RUSTUP_TOOLCHAIN=stable cargo build --release --locked
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --release --locked
+  RUSTUP_TOOLCHAIN=stable cargo test --release --locked
 }
 
 package() {
