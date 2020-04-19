@@ -1,0 +1,26 @@
+pkgbase = nota-git
+	pkgdesc = Simple Text Editor for KDE
+	pkgver = r166.7d70269
+	pkgrel = 1
+	url = https://vvave.kde.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = syntax-highlighting
+	makedepends = appstream
+	depends = ki18n
+	depends = knotifications
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	depends = kio
+	depends = mauikit-git
+	depends = kirigami2
+	provides = nota
+	conflicts = nota
+	source = git+https://invent.kde.org/kde/nota.git
+	sha256sums = SKIP
+
+pkgname = nota-git
+
