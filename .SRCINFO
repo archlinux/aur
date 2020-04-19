@@ -1,12 +1,13 @@
 pkgbase = python-rospkg
 	pkgdesc = ROS package library
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/rospkg
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
+	depends = python-distro
 	depends = python-yaml
 	conflicts = python2-rospkg
 	source = https://files.pythonhosted.org/packages/source/r/rospkg/rospkg-1.2.4.tar.gz
