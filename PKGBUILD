@@ -2,7 +2,7 @@
 # Contributor: Max Bruckner (FSMaxB)
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 pkgname=freac
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Audio converter and CD ripper with support for various popular formats and encoders."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('faac' 'faad2' 'libjpeg-turbo' 'lame' 'libmp4v2' 'mpg123' 'libogg' 'opus' 'libpng'
          'speex' 'libvorbis' 'libpulse' 'libgudev' 'boca' 'hicolor-icon-theme')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/enzo1982/freac/archive/v$pkgver.tar.gz")
-sha256sums=('21b6a1473de5058983ccde41e5ae218bc11a2d249edb0e1773e6be30764ab87c')
+sha256sums=('3f3eb00ef03c71a02c7f0e501b801b85d8584c1ea9ef017f9a4eaef8bcd43892')
 
 prepare() {
 	cd "$pkgname-$pkgver"
