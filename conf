@@ -1,0 +1,4 @@
+*:80 {
+	gzip
+	root /srv/http
+}
