@@ -1,7 +1,7 @@
 pkgbase = libva-vdpau-driver-vp9-git
 	pkgdesc = VDPAU backend for VA API. (Version with VP9 codec support)
-	pkgver = r50.60e296c
-	pkgrel = 2
+	pkgver = r51.dabc009
+	pkgrel = 1
 	url = https://github.com/xtknight/vdpau-va-driver-vp9
 	arch = x86_64
 	license = GPL
@@ -14,9 +14,7 @@ pkgbase = libva-vdpau-driver-vp9-git
 	conflicts = libva-vdpau-driver
 	replaces = vdpau-video
 	source = libva-vdpau-driver-vp9-git::git+https://github.com/xtknight/vdpau-va-driver-vp9.git
-	source = chromium-fix.patch
 	sha256sums = SKIP
-	sha256sums = 5684b9520bbbe232322b33b313dff9457e339019c3f7e551b78e92adcd354902
 
 pkgname = libva-vdpau-driver-vp9-git
 
