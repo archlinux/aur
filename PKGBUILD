@@ -1,57 +1,36 @@
-# Maintainer: James An <james@jamesan.ca>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 
 pkgname=nginx-upload-module-git
-_pkgname=${pkgname%-git}
-pkgver=2.2.0.r25.gaba1e3f
-pkgrel=2
-pkgdesc="Module for nginx web server for handling file uploads using multipart/form-data encoding (RFC 1867)"
-arch=('i686' 'x86_64' 'any')
-url="https://github.com/jamesan/$_pkgname"
-license=('GPL')
-depends=()
+pkgver=2.3.0.r19.g4423994
+pkgrel=1
+
+_modname=nginx-upload-module
+_nginxver=1.16.1
+
+pkgdesc="A module for nginx web server for handling file uploads using multipart/form-data encoding (RFC 1867)."
+arch=('i686' 'x86_64')
+depends=('nginx')
 makedepends=('git')
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
-options=()
-install=
-source=("$_pkgname"::"git+https://github.com/vkholodkov/$_pkgname.git#branch=2.2"
-        http://nginx.org/download/nginx-1.10.2.tar.gz
+url="https://github.com/vkholodkov/nginx-upload-module"
+license=('GPL')
+provides=("$_modname=$pkgver")
+conflicts=("$_modname")
+
+
+source=("$_modname"::"git+https://github.com/vkholodkov/$_modname.git"
+        https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
         config)
-md5sums=('SKIP'
-         'e8f5f4beed041e63eb97f9f4f55f3085'
-         '4a291a76ae504098afc75f0b83fa312d')
+sha512sums=('SKIP'
+            '17e95b43fa47d4fef5e652dea587518e16ab5ec562c9c94355c356440166d4b6a6a41ee520d406e5a34791a327d2e3c46b3f9b105ac9ce07afdd495c49eca437'
+            'SKIP'
+            '898eb9dd5f50985ddad1571c056739761045e60fce04315a38f3a4334394534140925aad649c2a2c3c1c285a4c015c04864d0d8f59110bdd39630d7d1eaf64c9')
 
-_common_flags=(
-  --with-ipv6
-  --with-pcre-jit
-  --with-file-aio
-  --with-http_addition_module
-  --with-http_auth_request_module
-  --with-http_dav_module
-  --with-http_degradation_module
-  --with-http_flv_module
-  --with-http_geoip_module
-  --with-http_gunzip_module
-  --with-http_gzip_static_module
-  --with-http_mp4_module
-  --with-http_realip_module
-  --with-http_secure_link_module
-  --with-http_ssl_module
-  --with-http_stub_status_module
-  --with-http_sub_module
-  --with-http_v2_module
-  --with-mail
-  --with-mail_ssl_module
-  --with-stream
-  --with-stream_ssl_module
-  --with-threads
-)
-
-_stable_flags=(
+validpgpkeys=(
+  'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
 pkgver() {
-  cd "$_pkgname"
+  cd $srcdir/$_modname
   (
     set -o pipefail
     git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
@@ -60,38 +39,25 @@ pkgver() {
 }
 
 prepare() {
-  cd "$_pkgname"
+  cd $srcdir/$_modname
   [ -f config ] && rm config
   cp -a "$srcdir/config" .
 }
 
 build() {
-  cd nginx-1.10.2
+  cd $srcdir/nginx-$_nginxver
 
-  ./configure \
-    --prefix=/etc/nginx \
-    --conf-path=/etc/nginx/nginx.conf \
-    --sbin-path=/usr/bin/nginx \
-    --pid-path=/run/nginx.pid \
-    --lock-path=/run/lock/nginx.lock \
-    --user=http \
-    --group=http \
-    --http-log-path=/var/log/nginx/access.log \
-    --error-log-path=stderr \
-    --http-client-body-temp-path=/var/lib/nginx/client-body \
-    --http-proxy-temp-path=/var/lib/nginx/proxy \
-    --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
-    --http-scgi-temp-path=/var/lib/nginx/scgi \
-    --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
-    ${_common_flags[@]} \
-    ${_stable_flags[@]} \
-    --add-dynamic-module="$srcdir/$_pkgname"
-
+  ./configure --with-compat --add-dynamic-module=../$_modname
   make modules
 }
 
 package() {
-  cd nginx-1.10.2
+  install -Dm644 "$srcdir"/$_modname/LICENCE \
+                  "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
-  install -Dm755 objs/ngx_http_upload_module.so "$pkgdir/etc/nginx/modules/ngx_http_upload_module.so"
+  cd "$srcdir"/nginx-$_nginxver/objs
+  for mod in ngx_*.so; do
+      install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
+  done
+
 }
