@@ -4,9 +4,9 @@
 # you also find the URL of a binary repository.
 
 _reponame=reflective-rapidjson
-_llvmver=9
+_llvmver=10
 pkgname=reflective-rapidjson
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON'
@@ -18,7 +18,7 @@ makedepends=('cmake' 'clang-tools-extra' 'llvm')
 checkdepends=('cppunit' 'boost')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('978c4d70862f16bb926ba6481ebfd1e650dae02fdcf3c335070748f547745db3')
+sha256sums=('647e045ac2d4d28b828256246fad815e861509ddae394bdc3e0bd53f73d0fd43')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
