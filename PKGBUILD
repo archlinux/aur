@@ -3,7 +3,7 @@
 _pkgname="nginx"
 pkgname=nginx-mainline-libressl
 pkgver=1.17.10
-pkgrel=1
+pkgrel=2
 _libresslver=3.1.0
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release with LibreSSL'
 arch=('i686' 'x86_64')
