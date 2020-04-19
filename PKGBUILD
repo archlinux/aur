@@ -1,7 +1,7 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=ashuffle
-pkgver=2.1.0
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Automatic library-wide shuffle for mpd."
 url="https://github.com/joshkunz/ashuffle"
@@ -17,7 +17,7 @@ source=(
   "tap-14e6.h::https://github.com/zorgnax/libtap/raw/14e6708db5215a657e615171682a1741023c9c0c/tap.h"
 )
 sha256sums=(
-  "f3e4e46832c5e50fd1090eeb749fd2bf43ee62d837a9dbbb494e7ba95fbe115e"
+  "beec5e08336e70a29ae2a75c6ec4de9b9d0d48abf04b2c66f4db2fdc4e4af1e1"
   "5952a5c99a273cc630eeb773461e5ee8255b3ddd19a9051f189e0ab1c1b7eaa8"
   "063dbe4bbd0c93707b31f536b54c698d30793be3410f428f0647aeb859c267c9"
 )
