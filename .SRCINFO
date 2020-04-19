@@ -1,6 +1,6 @@
 pkgbase = nomino
 	pkgdesc = Batch rename utility for developers
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/yaa110/nomino
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = nomino
 	depends = gcc-libs
 	provides = nomino
 	conflicts = nomino-bin
-	source = 0.2.0.tar.gz::https://github.com/yaa110/nomino/archive/0.2.0.tar.gz
-	sha512sums = 9c23fdf04ce2862c83b8e51b35b314c7a415e31d55004ff8f92ef1e8779002afa676178ce74de7584df54ded64b936a57bd3a17825d034ca556c921c8eb157b1
+	source = 0.3.0.tar.gz::https://github.com/yaa110/nomino/archive/0.3.0.tar.gz
+	sha512sums = b0cb7fa630ac84bee9d381ce66f94dc90800df73349197e50238f0b678085713fae289dbde2e27ba6ebcf8ff391d9b85f023b0f62d05842b19cbcf6a6ddb1db7
 
 pkgname = nomino
 
