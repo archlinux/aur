@@ -2,7 +2,7 @@
 # Contributor: Falke Carlsen "cogitantium" <falke dot cs at gmail dot com>
 _pkgname=spotirec
 pkgname=${_pkgname}-git
-pkgver=r158.f88a38d
+pkgver=r204.7150682
 pkgrel=1
 pkgdesc="Create playlist of recommended tracks on Spotify"
 arch=('any')
@@ -25,12 +25,12 @@ pkgver() {
 
 package() {
     cd "$srcdir/${_pkgname}"
-    mkdir -p "$pkgdir/usr/lib/spotirec"
     mkdir -p "$pkgdir/usr/bin"
     mkdir -p "$HOME/.config/spotirec"
 
-    install tuning-opts -t "$HOME/.config/spotirec"
-    install spotirec.py oauth2.py conf.py recommendation.py api.py -t "$pkgdir/usr/lib/spotirec"
+    python test.py
 
-    ln -s "/usr/lib/spotirec/spotirec.py" "$pkgdir/usr/bin/spotirec"
+    install tuning-opts -t "$HOME/.config/spotirec"
+
+    python3 setup.py install --root="${pkgdir}" --prefix=/usr
 }
