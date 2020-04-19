@@ -2,16 +2,15 @@
 
 pkgbase=julie
 pkgname=julie
-pkgver=2020031902
-pkgrel=2020031902
+pkgver=2020051901
+pkgrel=2020031901
 pkgdesc="A command line tool made to simplify the usage of gpg"
 url="https://framagit.org/SirCipherz/julie"
 license=('GPL3')
-conflicts=(julie-ssh)
 
 arch=('any')
 depends=(
-   gnupg xclip curl jq git python3 ffmpeg
+   gnupg xclip curl jq git python3 ffmpeg tor torsocks
 )
 
 package() {
@@ -41,6 +40,9 @@ package() {
     fi
 
     python3 replacer.py $editor
+
+    echo "Testing if tor is correctly installed"
+    sudo systemctl --now enable tor
 
     echo "Copying the files ..."
 
