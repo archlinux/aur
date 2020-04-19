@@ -1,0 +1,15 @@
+pkgbase = vim-lsp-ultisnips-git
+	pkgdesc = UltiSnips integration with vim-lsp
+	pkgver = r19.494cd3c
+	pkgrel = 1
+	url = https://github.com/thomasfaingnaert/vim-lsp-ultisnips.git
+	arch = any
+	groups = vim-plugins
+	license = custom:BSD-3-Clause
+	depends = vim
+	depends = vim-lsp-git
+	source = vim-lsp-ultisnips::git+https://github.com/thomasfaingnaert/vim-lsp-ultisnips.git
+	sha512sums = SKIP
+
+pkgname = vim-lsp-ultisnips-git
+
