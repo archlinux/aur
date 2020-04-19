@@ -5,13 +5,13 @@ pkgbase=python-pytorch
 pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pytorch-opt-cuda")
 _pkgname="pytorch"
 pkgver=1.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml'
-         'python-numpy' 'protobuf' 'ffmpeg' 'python-future' 'qt5-base' 'intel-dnnl' 'intel-mkl')
+         'python-numpy' 'protobuf' 'ffmpeg' 'python-future' 'qt5-base' 'onednn' 'intel-mkl')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
              'cudnn' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
