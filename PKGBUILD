@@ -1,13 +1,13 @@
 # Maintainer : Achilleas Pipinellis <axil archlinux gr>
 pkgname=doh-cli
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple DNS over HTTPS client"
 arch=('any')
 url="https://pypi.python.org/pypi/doh-cli"
 license=('GPL3')
 depends=('python')
-makedepends=('python-distribute')
+makedepends=('python-setuptools')
 depends=('python-requests' 'python-dnspython')
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz)
 
