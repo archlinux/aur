@@ -4,7 +4,7 @@ pkgbase=linux-amd-raven
 _srcname=linux
 gitver=v5.4.33
 pkgver=5.4.v.33
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -20,15 +20,20 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
 	# patch from our gentoo overlords
-	'5012_enable-cpu-optimizations-for-gcc91.patch')
+	'5012_enable-cpu-optimizations-for-gcc91.patch'
+	# amdgpuhang on reboot patch	
+	'amdgpu_hwhang_reboot.patch'
+)
 sha256sums=('SKIP'
-             #config.x86_64
+            #config.x86_64
             'e31ddac0ee6e644bce4379e89de0a59b8aebeb20822d560b10bd3a87d6c24e84'
-             #.preset file
-             '0ac0cf410b0f3eeaa07d41505613e118ea59e01144e905f2dc0a808379f87e87'
-             #patch file
+            #.preset file
+            '0ac0cf410b0f3eeaa07d41505613e118ea59e01144e905f2dc0a808379f87e87'
+            #patch file
             'fb98e49d7a640e05bf0d3a65ca49d0adb19de7547cb7ffca7a6cbacb1f461f0b'
-             )
+            #amdgpuhang on reboot patch
+            '62fc91e581c56240220dac84b77684387ae3d5c52afc5904f76a8cfa43e73c05'
+)
 
 _kernelname=${pkgbase#linux}
 
@@ -52,6 +57,9 @@ prepare() {
 
   # Implement cpu optimisation (MZEN2) patch from our gentoo lords
   git apply ../5012_enable-cpu-optimizations-for-gcc91.patch
+
+  # Implement amdgpu_hwhang_reboot.patch
+  git apply ../amdgpu_hwhang_reboot.patch
 
   # get kernel version
   yes "" | make prepare
