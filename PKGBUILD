@@ -1,6 +1,6 @@
-# Maintainer: Your Name <nguyenhongky1998@gmail.com>
+ # Maintainer: Your Name <nguyenhongky1998@gmail.com>
 pkgname=stm32pio
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 #epoch=
 pkgdesc="Automate managing STM32CubeMX + PlatformIO projects" 
