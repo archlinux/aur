@@ -10,7 +10,7 @@ depends=('rime-stroke' 'rime-luna-pinyin')
 license=('GPL3')
 makedepends=('librime' 'rime-prelude' 'rime-essay' 'rime-stroke' 'rime-luna-pinyin')
 source=('double_pinyin_flypy.schema.yaml')
-sha512sums=('19c7f7ede3b08991d97cc4f064657f02a54b09db1089dd07f7f7e24a212f51db2eb9ff7b9322e48c981526489ac83d7f9061696b4cbb2e89a450e694cd7efadb')
+sha512sums=('37921faf71171cf8df1e39642f0d29b5721832f86fbe9ebcb15d2a2d266a9d57d021646aca910391b437383a8412db4b0272eab2c7ccb9ef263170352d373d11')
 
 prepare() {
     for _f in $(pacman -Qql rime-prelude rime-essay rime-stroke rime-luna-pinyin | grep -v "/$"); do ln -sf $_f; done
