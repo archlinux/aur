@@ -1,6 +1,6 @@
 pkgbase = linux-gc
 	pkgdesc = Linux
-	pkgver = 5.6.4
+	pkgver = 5.6.5
 	pkgrel = 1
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
@@ -15,23 +15,25 @@ pkgbase = linux-gc
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.4.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.4.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.5.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.5.tar.sign
 	source = config
 	source = bmq_v5.6-r2.patch::https://gitlab.com/alfredchen/bmq/raw/master/5.6/bmq_v5.6-r2.patch
 	source = enable_additional_cpu_optimizations-20191217.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20191217.tar.gz
-	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/cdc8cdae459c2ca60fd4d3ddf78e4568bb741d2d.patch
-	source = 0002-ALSA-hda-Fix-potential-access-overflow-in-beep-helpe.patch::https://github.com/archlinux/linux/commit/080da567cf3c1935204c2a88b580ce5f85a622a2.patch
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/31d4f0d32196b85f66945ed01b60ed1b55ee5f54.patch
+	source = 0002-Revert-ACPI-EC-Do-not-clear-boot_ec_is_ecdt-in-acpi_.patch::https://github.com/archlinux/linux/commit/e5016d0b5460c3bed8f78033723ad22775db7725.patch
+	source = 0003-drm-amdgpu-fix-the-hw-hang-during-perform-system-reb.patch::https://github.com/archlinux/linux/commit/1f8782c04f587b9e0901f7736c112814dd0dcc47.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
-	sha256sums = 5df1741e550cb6fa7471530f42da98bac5093e693e2c4f3aef4393d8135b9d91
+	sha256sums = f79bd3dbcbe1e7afba256d59b4ca21da12d2c5b4189804dffb2a49fd2b9b52e6
 	sha256sums = SKIP
 	sha256sums = 27b84575ea6b1050951906e0b595351fe3f8e39fab9d2ed05e32cb6eaddca08f
 	sha256sums = 0e1b569bf16a6c514710715eff06df04447378d1c067b853db0c454ac3c5e463
 	sha256sums = 7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5
-	sha256sums = da555d4f3ecd3511b5dbe4063262c9f0b350d0256e43735bd753dfc0bd1b3a2c
-	sha256sums = 20631caf830d12e401608ba2dee9408b256b255b732a980fd46fba87e5c1cf54
+	sha256sums = e8abbc772f3a9b3face6e8a75990f039022fb679d5d84f3813a291cc91fe828a
+	sha256sums = f4f9c8392eeb6bc4d29d7571f67a8b979099bee2a944c34b2b2413020f4ea02d
+	sha256sums = 673fd2206a4ae18976908e85b6b7ee7b775896473ab7239930e639378808ec64
 
 pkgname = linux-gc
 	pkgdesc = The Linux kernel and modules with the BMQ CPU scheduler
@@ -40,11 +42,11 @@ pkgname = linux-gc
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-gc=5.6.4
+	provides = linux-gc=5.6.5
 
 pkgname = linux-gc-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel
 	depends = linux-gc
-	provides = linux-gc-headers=5.6.4
-	provides = linux-headers=5.6.4
+	provides = linux-gc-headers=5.6.5
+	provides = linux-headers=5.6.5
 
