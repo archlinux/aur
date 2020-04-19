@@ -1,10 +1,11 @@
 pkgbase = fail2rest-git
 	pkgdesc = REST server for fail2ban
 	pkgver = r52.42cfa41
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sean-Der/fail2rest
 	arch = any
 	license = MIT
+	makedepends = go
 	depends = fail2ban
 	provides = fail2rest
 	conflicts = fail2rest
