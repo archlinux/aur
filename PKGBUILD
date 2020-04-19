@@ -1,41 +1,53 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Det <nimetonmaili g-mail>
 # Based on [extra]'s thunderbird: https://git.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/thunderbird
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-_pkgver=75.0
-pkgver=75.0b2
+_pkgver=76.0
+pkgver=76.0b1
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
-pkgrel=3
+pkgrel=1
 pkgdesc="Standalone mail and news reader from mozilla.org - Bleeding edge version"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/thunderbird/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib
          nss hunspell sqlite ttf-font icu)
-makedepends=(unzip zip diffutils python python2 yasm nasm mesa imake libpulse inetutils xorg-server-xvfb autoconf2.13 rust clang llvm gtk2 cbindgen nodejs)
+makedepends=(unzip zip diffutils python python2 yasm nasm mesa imake libpulse inetutils xorg-server-xvfb
+             autoconf2.13 rust clang llvm gtk2 cbindgen nodejs)
 optdepends=('libcanberra: sound support')
+options=(!emptydirs !makeflags)
 provides=("thunderbird=$pkgver")
 conflicts=('thunderbird-beta-bin')
-options=(!emptydirs !makeflags)
 install=$pkgname.install
-source=(https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
-		'thunderbird-beta.desktop')
-sha256sums=('ac28660fa6190aca1cf2a0745eaa9154b53ec3b56bdfec689bace7d8a9409323'
-            'd7aa1bd77f74c255446eec4171e4360c7a6215dac1d29c8ee71ec1f2a03bda3d')
+source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
+	'thunderbird-beta.desktop')
+sha512sums=('b22becc57e6f2ca8c19bf2580d6ef4a4aa11517bd6c3a2cf008820ab677f528a17d3a9f3780252b95f2fc59bad7968f1ee4dc0a802219b6c7cda8c87e8322c56'
+            'SKIP'
+            'cab681d5acf17dd8dabf732c0bb5f73fd0444796bb4fd82decdfa8764122513fd2f05c562cf9246eacac67ea84ae85a220f59d7eea7106e0b2f6fc16bc520dd4')
 
-# RC
-#if [[ $_build = ? ]]; then
-#  source[0]="https://ftp.mozilla.org/pub/thunderbird/candidates/$_major-candidates/build$_build/#source/thunderbird-$_major.source.tar.xz"
-#fi
+validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
 
-prepare() {
-  
-cd $_pkgname-$_pkgver
+# Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys. Feel free to contact foutrelis@archlinux.org for
+# more information.
+_google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 
-  # mozconfig
+# Mozilla API keys (see https://location.services.mozilla.com/api)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys. Feel free to contact heftig@archlinux.org for
+# more information.
+_mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
+
+prepare() {  
+  cd $_pkgname-$_pkgver
+
+  echo -n "$_google_api_key" >google-api-key
+  echo -n "$_mozilla_api_key" >mozilla-api-key
+
   cat >.mozconfig <<END
 
 ac_add_options --enable-application=comm/mail
@@ -46,10 +58,12 @@ ac_add_options --enable-release
 ac_add_options --enable-linker=gold
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
+#ac_add_options --enable-rust-simd
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1423822
 ac_add_options --disable-elf-hack
 
 # Branding
-
 ac_add_options --with-branding=comm/mail/branding/nightly 
 #ac_add_options --enable-update-channel=nightly
 ac_add_options --with-distribution-id=org.archlinux
@@ -59,6 +73,7 @@ ac_add_options --with-system-zlib
 ac_add_options --with-system-bz2
 ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
+# ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 ac_add_options --enable-system-sqlite
@@ -78,6 +93,7 @@ build() {
   cd $_pkgname-$_pkgver
   ./mach configure
   ./mach build
+  ./mach buildsymbols
 }
 
 package() {
