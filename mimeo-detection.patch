@@ -1,6 +1,6 @@
-commit bd3e1905f54b06ff5ca541272253fcee7aba4819
+commit 26aeded432434afe7152e30e34b0c820a5567b93
 Author: Narrat <autumn-wind@web.de>
-Date:   Mon Apr 13 15:59:44 2020 +0200
+Date:   Sun Apr 19 20:06:49 2020 +0200
 
     Add support for mimeo
 
@@ -117,7 +117,7 @@ index 95f707e..9c2f511 100644
        ;;
    esac
 diff --git a/scripts/xdg-settings.in b/scripts/xdg-settings.in
-index 3781de8..e6ea67b 100644
+index 3781de8..e60fe95 100644
 --- a/scripts/xdg-settings.in
 +++ b/scripts/xdg-settings.in
 @@ -471,6 +471,44 @@ set_browser_xfce()
@@ -152,7 +152,7 @@ index 3781de8..e6ea67b 100644
 +{
 +    DEBUG 1 "Running mimeo --prefer x-scheme-handler/http \"$1\""
 +    for protocol in http https about unknown; do
-+        mimeo --prefer x-scheme-handler/$protocol \"$1\" || return
++        mimeo --prefer x-scheme-handler/$protocol "$1" || return
 +    done
 +    if [ $? -eq 0 ]; then
 +        exit_success
@@ -202,10 +202,20 @@ index 3781de8..e6ea67b 100644
      dispatch_specific generic "$@"
      ;;
 diff --git a/scripts/xdg-utils-common.in b/scripts/xdg-utils-common.in
-index b4333e2..983d261 100644
+index b4333e2..10b3ebf 100644
 --- a/scripts/xdg-utils-common.in
 +++ b/scripts/xdg-utils-common.in
-@@ -319,6 +319,7 @@ detectDE()
+@@ -303,6 +303,9 @@ detectDE()
+          XFCE)
+            DE=xfce
+            ;;
++         MIMEO|mimeo)
++           DE=xfce
++           ;;
+          X-Generic)
+            DE=generic
+            ;;
+@@ -319,6 +322,7 @@ detectDE()
        elif xprop -root 2> /dev/null | grep -i '^xfce_desktop_window' >/dev/null 2>&1; then DE=xfce
        elif echo $DESKTOP | grep -q '^Enlightenment'; then DE=enlightenment;
        elif [ x"$LXQT_SESSION_CONFIG" != x"" ]; then DE=lxqt;
