@@ -1,7 +1,6 @@
 [Unit]
 Description=Daemon for graphing traffic of subnet machines - Web UI
 PartOf=bandwidthd.service
-After=bandwidthd.service
 
 [Service]
 User=bandwidthd

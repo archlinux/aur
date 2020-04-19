@@ -1,6 +1,6 @@
 [Unit]
 Description=Daemon for graphing traffic of subnet machines
-Requires=network-online.target
+Requires=network-online.target bandwidthd-rotate.timer bandwidthd-webui.service
 
 [Service]
 User=bandwidthd

@@ -1,7 +1,6 @@
 [Unit]
 Description=Daemon for graphing traffic of subnet machines - Rotate
 PartOf=bandwidthd.service
-After=bandwidthd.service
 
 [Timer]
 OnCalendar=*-*-* 00:00:00
