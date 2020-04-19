@@ -2,7 +2,7 @@
 # based on `bitwig-studio-demo` AUR package
 
 pkgname='bitwig-8-track'
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Music production system for production, remixing and performance. Lite version limited to 8 tracks for german Beat music magazine."
 arch=( 'x86_64' )
@@ -19,7 +19,7 @@ conflicts=('bitwig-studio-demo-rc' 'bitwig-studio-demo' 'bitwig-studio')
 # strip debugging symbols
 options=(!strip)
 source=("https://downloads.bitwig.com/stable/${pkgver}/bitwig-studio-${pkgver}.deb")
-sha512sums=('405de9ab6352d85a3bb6250f4e024d7fcef7d3b92879732cf985ac33b3979c4f75965a57e8f838f1df2e1d2039b65d0e4c4d81abd8d35246db4375ae18afd36f')
+sha512sums=('02b6c9c21bd0924370b32f2132d943a245d8410be0b57850aeedf75d8ba98d92b6b1816b42300910d59d935f9a4b0a865b37b4b0edd67f347e603bf5ad0106ea')
 
 package() {
   cd $srcdir
