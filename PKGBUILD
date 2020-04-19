@@ -8,7 +8,7 @@ _pkgver=76.0
 pkgver=76.0b1
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone mail and news reader from mozilla.org - Bleeding edge version"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -76,7 +76,6 @@ ac_add_options --with-system-jpeg
 # ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --enable-system-sqlite
 ac_add_options --enable-system-ffi
 
 # Features
