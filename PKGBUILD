@@ -1,14 +1,14 @@
 # Maintainer: Nathan Parsons <nathan at nparsons dot uk>
 
 pkgname=j4-persist
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="i3wm's kill, but with persistent containers"
 url="https://github.com/n-parsons/j4-persist"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 license=(MIT)
 makedepends=(cargo git)
-_commit=7b4f5e433a1070c4ba64ece80e43021fbf4b2ef7  # tags/v0.1.2
+_commit=62c4f65f0b301604d37a9c7211b2e39efcc437bc  # tags/v0.1.3
 source=("git+https://github.com/n-parsons/j4-persist#commit=$_commit")
 sha512sums=('SKIP')
 
