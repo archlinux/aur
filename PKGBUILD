@@ -4,7 +4,7 @@
 pkgname=blobsaver-bin
 _pkgname=blobsaver
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 provides=('blobsaver')
 pkgdesc="A cross-platform GUI app for saving SHSH blobs using tsschecker"
 arch=('any')
@@ -18,7 +18,7 @@ source=("${url}/releases/download/v${pkgver}/blobsaver-linux.tar.gz")
 md5sums=('d5fffa4c30776df2b679387ad3bd8543')
 
 package() {
-  gendesk -f -n --_pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" \
+  gendesk -f -n --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" \
    --exec="${_pkgname}" --categories=Utility --icon "${_pkgname}"
   echo "#!/usr/bin/env bash
 archlinux-java-run -a 8 -b 8 -- -jar /usr/share/java/blobsaver/blobsaver.jar

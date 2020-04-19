@@ -1,7 +1,7 @@
 pkgbase = blobsaver-bin
 	pkgdesc = A cross-platform GUI app for saving SHSH blobs using tsschecker
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/airsquared/blobsaver
 	arch = any
 	license = GPL-3.0
