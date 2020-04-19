@@ -1,6 +1,6 @@
 pkgbase = protonfixes-git
 	pkgdesc = A module for applying fixes at runtime to unsupported games with Steam Proton without changing game installation files - git version
-	pkgver = r241.203b4c2
+	pkgver = 1.0.15.r102.g1202914
 	pkgrel = 1
 	url = https://github.com/simons-public/protonfixes
 	arch = any

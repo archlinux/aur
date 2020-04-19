@@ -2,7 +2,7 @@
 # Contributor: Chris Simons < chris at simonsmail dot net >
 
 pkgname=("protonfixes-git")
-pkgver=r241.203b4c2
+pkgver=1.0.15.r102.g1202914
 pkgrel=1
 pkgdesc="A module for applying fixes at runtime to unsupported games with Steam Proton without changing game installation files - git version"
 arch=("any")
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
