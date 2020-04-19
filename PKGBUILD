@@ -23,20 +23,20 @@ provides=("waterfox-classic=${pkgver}")
 conflicts=('waterfox-classic' 'waterfox-kde')
 replaces=('waterfox-kde')
 options=('!emptydirs' '!makeflags' 'zipman')
-_patchrev=7339b115a221
-_patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
+_filesrev=29877042dd393774197b134426e37cb0dbabef34
+_filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-classic-kpe
 _commit=5c5f42717434038ef4ab01def2f4546e83d0531a
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
-        "waterfox-classic.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/waterfox-classic.desktop"
-        "kde.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/kde.js"
-        "distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/distribution.ini"
-        "waterfox-classic.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/waterfox-classic.1"
+        "waterfox-classic.desktop::$_filesurl/waterfox-classic.desktop"
+        "kde.js::$_filesurl/kde.js"
+        "distribution.ini::$_filesurl/distribution.ini"
+        "waterfox-classic.1::$_filesurl/waterfox-classic.1"
         jack-system-ports.patch
         no-plt.diff
-        "dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/dont-statically-link-libstdc%2B%2B.patch"
+        "dont-statically-link-libstdc++.patch::$_filesurl/patches/dont-statically-link-libstdc%2B%2B.patch"
         pgo_fix_missing_kdejs.patch
-        "classic-kde.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/classic-kde.patch"
-        "classic-kde-xul.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/classic-kde-xul.patch")
+        "classic-kde.patch::$_filesurl/patches/classic-kde.patch"
+        "classic-kde-xul.patch::$_filesurl/patches/classic-kde-xul.patch")
 sha256sums=('SKIP'
             '03b734e8127678ebb260f69702f3be3cba1431c70b67a6e9f0dae62df091f516'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
