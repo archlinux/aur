@@ -1,0 +1,17 @@
+diff --git a/src/ui/dialogs/texteditor.cpp b/src/ui/dialogs/texteditor.cpp
+index 3439e62..618b7fd 100644
+--- a/src/ui/dialogs/texteditor.cpp
++++ b/src/ui/dialogs/texteditor.cpp
+@@ -82,10 +82,10 @@ void TextEditor::setupSignals()
+     connect(ui->textEdit, &QTextEdit::currentCharFormatChanged, this, &TextEditor::currentCharFormatChanged);
+ 
+     // Font family
+-    connect(ui->fontFamily, static_cast<void (QComboBox::*)(const QString&)> (&QComboBox::activated), this, &TextEditor::textFamily);
++    connect(ui->fontFamily, static_cast<void (QComboBox::*)(const QString&)> (&QComboBox::textHighlighted), this, &TextEditor::textFamily);
+ 
+     // Font size
+-    connect(ui->fontSize, static_cast<void (QComboBox::*)(const QString&)> (&QComboBox::activated), this, &TextEditor::textSize);
++    connect(ui->fontSize, static_cast<void (QComboBox::*)(const QString&)> (&QComboBox::textHighlighted), this, &TextEditor::textSize);
+ 
+     // Undo/redo:
+     connect(ui->textEdit->document(), &QTextDocument::undoAvailable, ui->action_Undo, &QAction::setEnabled);
