@@ -3,7 +3,8 @@
 ghuser=Nudin
 ghrepo=LexData
 pkgname=python-lexdata
-pkgver=0.1.10
+pkgver=0.2
+whlver=0.2.0
 pkgrel=1
 pkgdesc='Python bot framework for Lexemes on Wikidata'
 arch=(any)
@@ -13,7 +14,7 @@ depends=('python'
          'python-requests')
 makedepends=('python-pip')
 source=("https://github.com/${ghuser}/${ghrepo}/archive/v${pkgver}.tar.gz")
-sha256sums=('259824d10551da8a1a4bddfd6e9a1a354f07ca38ca902eb6a17fff35bbf2b13a')
+sha256sums=('c9a5abf44281a3fae4c73a17dd3fe3b6dccd7b631bbbad37b8dd38542116a4e5')
 
 build() {
     cd "${srcdir}/${ghrepo}-${pkgver}"
@@ -21,6 +22,6 @@ build() {
 }
 
 package() {
-    pip install --root "${pkgdir}" --no-deps --ignore-installed "${ghrepo}-${pkgver}-py3-none-any.whl"
+    pip install --root "${pkgdir}" --no-deps --ignore-installed "${ghrepo}-${whlver:-$pkgver}-py3-none-any.whl"
     install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}/" "${ghrepo}-${pkgver}/LICENSE"
 }
