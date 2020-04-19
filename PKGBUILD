@@ -1,7 +1,7 @@
 # Maintainer: Tom <reztho@archlinux.org>
 # Based on a contribution of: bitwave
 pkgname=textadept
-pkgver=10.6
+pkgver=10.8
 pkgrel=1
 pkgdesc="A fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=('i686' 'x86_64')
@@ -53,4 +53,4 @@ package() {
 }
 
 md5sums=('SKIP'
-         '11c9820da7e63948b2ef23551079c0fb')
+         '91523bb909acb9ceff20b6da6ceddf78')

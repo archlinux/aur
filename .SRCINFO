@@ -1,6 +1,6 @@
 pkgbase = textadept
 	pkgdesc = A fast, minimalist, and remarkably extensible cross-platform text editor
-	pkgver = 10.6
+	pkgver = 10.8
 	pkgrel = 1
 	url = http://foicica.com/textadept/
 	arch = i686
@@ -14,10 +14,10 @@ pkgbase = textadept
 	provides = textadept
 	conflicts = textadept-bin
 	replaces = textadept-bin
-	source = hg+http://foicica.com/hg/textadept#tag=textadept_10.6
-	source = http://foicica.com/textadept/download/textadept_10.6.modules.zip
+	source = hg+http://foicica.com/hg/textadept#tag=textadept_10.8
+	source = http://foicica.com/textadept/download/textadept_10.8.modules.zip
 	md5sums = SKIP
-	md5sums = 11c9820da7e63948b2ef23551079c0fb
+	md5sums = 91523bb909acb9ceff20b6da6ceddf78
 
 pkgname = textadept
 
