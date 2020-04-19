@@ -1,11 +1,11 @@
 # Maintainer: Michael Picht <mipi@fsfe.org>
 #
-# SPDX-FileCopyrightText: 2018-2020 Michael Picht <mipi@fsfe.org>
+# SPDX-FileCopyrightText: 2019-2020 Michael Picht <mipi@fsfe.org>
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
  
 pkgname=crema
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Manage (remote) custom repositories"          
 arch=(any) 
