@@ -2,7 +2,7 @@
 
 pkgname=cpeditor-git
 _pkgname=cpeditor
-pkgver=6.3.1.r12.gc685eea
+pkgver=6.3.1.r13.gdd41126
 pkgrel=1
 pkgdesc='The editor for competitive programming'
 arch=('x86_64')
@@ -30,11 +30,11 @@ prepare() {
 	cd $_pkgname
 	git submodule init
 	
-	git config submodule.QCodeEditor.url $srcdir/third_party/QCodeEditor
-	git config submodule.QtFindReplaceDialog.url $srcdir/third_party/QtFindReplaceDialog
-	git config submodule.lsp-cpp.url $srcdir/third_party/lsp-cpp
-	git config submodule.singleapplication.url $srcdir/third_party/singleapplication
-	git config submodule.testlib.url $srcdir/third_party/testlib
+	git config submodule.third_party/QCodeEditor.url $srcdir/QCodeEditor
+	git config submodule.third_party/QtFindReplaceDialog.url $srcdir/QtFindReplaceDialog
+	git config submodule.third_party/lsp-cpp.url $srcdir/lsp-cpp
+	git config submodule.third_party/singleapplication.url $srcdir/singleapplication
+	git config submodule.third_party/testlib.url $srcdir/testlib
 
 	git submodule update
 }
@@ -42,13 +42,10 @@ prepare() {
 build() {
 	cd $_pkgname
 	cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER=g++
-	cmake --build build
+	cmake --build build -j$(nproc)
 }
 
 package() {
 	cd $_pkgname/build
 	make DESTDIR="$pkgdir" install
 }
-
-
-
