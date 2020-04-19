@@ -1,7 +1,7 @@
 # Maintainer: AnonymerNiklasistanonym <niklas.mikeler@gmail.com>
 pkgname=marktex
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Web service for files that support advanced Markdown commands mixed with LaTeX sections'
 arch=('x86_64')
 url='https://github.com/AnonymerNiklasistanonym/MarkTeX'
@@ -18,7 +18,7 @@ build() {
   npm install
   npm run build
   rm -rf node_modules
-  npm install --prod
+  npm install --only=production
 }
 
 package() {
