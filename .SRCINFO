@@ -1,0 +1,20 @@
+pkgbase = otb-uw_ttyp0
+	pkgdesc = Bitmap monospaced font with unicode support and powerline symbols
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0
+	arch = any
+	license = custom:TTYP0
+	makedepends = git
+	conflicts = uw-ttyp0-font
+	source = otb-uw_ttyp0-1.3-bold.otb::https://github.com/9las/uw_ttyp0/raw/master/font/UW-Ttyp0-Bold.otb
+	source = otb-uw_ttyp0-1.3-italic.otb::https://github.com/9las/uw_ttyp0/raw/master/font/UW-Ttyp0-Italic.otb
+	source = otb-uw_ttyp0-1.3.otb::https://github.com/9las/uw_ttyp0/raw/master/font/UW-Ttyp0.otb
+	source = otb-uw_ttyp0-1.3-ttyp0::https://raw.githubusercontent.com/9las/uw_ttyp0/master/TTYP0
+	md5sums = b7dd09a73936851b7751a9d4f9cdcce6
+	md5sums = 5a0764e704a1ea352533ce018645df29
+	md5sums = c930c72646a59161125dc03801421e5e
+	md5sums = 939cef4d4d6fa3d4124b9116a0121408
+
+pkgname = otb-uw_ttyp0
+
