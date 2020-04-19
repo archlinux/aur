@@ -8,13 +8,13 @@
 pkgname=aseprite-git
 _pkgname=aseprite
 pkgver=1.2.17.r64.gf689c2c48
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
 license=('BSD' 'custom')
 depends=('cmark' 'curl' 'libjpeg-turbo' 'giflib' 'tinyxml' 'libxcursor' 'fontconfig' 'hicolor-icon-theme')
-makedepends=('git' 'ninja' 'python2' 'clang' 'cmake' 'libglvnd')
+makedepends=('git' 'ninja' 'python2' 'clang' 'cmake' 'libglvnd' 'harfbuzz-icu' 'pixman')
 conflicts=("${_pkgname}" "${_pkgname}-gpl" "${_pkgname}-skia-bin")
 source=(
         "git+https://github.com/${_pkgname}/laf.git"
