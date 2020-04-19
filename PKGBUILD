@@ -40,7 +40,7 @@ package() {
 
     find "$pkgdir"/opt/gitkraken/ -type f -exec chmod 644 {} \;
     chmod 755 "$pkgdir"/opt/gitkraken/gitkraken
-    chmod 755 "$pkgdir"opt/gitkraken/resources/app.asar.unpacked/src/js/redux/domain/AskPass/askPass.sh
+    chmod 755 "$pkgdir"/opt/gitkraken/resources/app.asar.unpacked/src/js/redux/domain/AskPass/AskPass.sh
 
     install -d "$pkgdir"/usr/bin
 
