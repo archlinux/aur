@@ -1,8 +1,8 @@
 # Maintainer: Jonathan Neidel <aur at jneidel dot com>
 
 pkgname=epr-git
-pkgver=2.3.0b
-pkgrel=2
+pkgver=2.4.6
+pkgrel=1
 pkgdesc="CLI Epub Reader"
 arch=(any)
 url="https://github.com/wustho/epr"
