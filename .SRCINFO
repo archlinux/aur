@@ -14,7 +14,7 @@ pkgbase = protonvpn-linux-gui
 	depends = gtk3
 	depends = libappindicator-gtk3
 	source = https://github.com/calexandru2018/protonvpn-linux-gui/archive/v2.0.5.tar.gz
-	md5sums = fd429fe884dd37b4b9334777d6de19f8
+	md5sums = bc06f894fb2755601c5d8dc287123230
 
 pkgname = protonvpn-linux-gui
 
