@@ -16,10 +16,10 @@ pkgbase = pygtk
 	source = https://gitlab.gnome.org/Archive/pygtk/-/commit/4aaa48eb80c6802aec6d03e5695d2a0ff20e0fc2.patch
 	source = python27.patch
 	source = fix-leaks-of-pango-objects.patch
-	md5sums = a1051d5794fd7696d3c1af6422d17a49
-	md5sums = 956d35fc408e8815476a8f0e4f8ab1c8
-	md5sums = 12acfacd26f19c504a0a2d0edeb66121
-	md5sums = d7bbcdacd34b16dbf94e7f4df9e27b88
+	sha512sums = 64f4344fcf7636e0b2016ffd5310250b5c02a1bf87e44aef39b5d4cf4a5fc50d27cb4f030d4c6802cff61fffb88dee7752821e3d8a4cd1c34dc3745d9ff2f0da
+	sha512sums = 121df3804ab4f3356c726a1adfcea1aedfef73bf04cc91241c48fdc32cd53b8082df4919cefd14945090d8a2e9ae7ff397eb7735f9cd4f0a72feadefb303462c
+	sha512sums = badc250bfc592408a14e321060f087e3c28f81c5b40f60468737267ad4cae85a3fff2842fc9a488fe884390b2f33d58525eeebca56499a612de4f05cea3dccc8
+	sha512sums = bc385060c0b0cfee406d245c26bf7895be43db36160cf976c4def6416d7c06284a4d1eea0332fbe10e4065a1a3f1ca49ef3286a557e027fb953910a2aaa8359c
 
 pkgname = pygtk
 
