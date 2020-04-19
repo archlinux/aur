@@ -1,0 +1,14 @@
+pkgbase = devlog
+	pkgdesc = Command-line tool for tracking your day-to-day software development work.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/wedaly/devlog
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = nano
+	source = devlog-1.0.4.tar.gz::https://github.com/wedaly/devlog/archive/1.0.4.tar.gz
+	sha512sums = dce5bc1390f1246b8c3240dc416aa64f2912f9c24df8a2f415a24ef9955e085799b8a36f1a58a3f0b7b6012ec1bdd8448b02b687d7437b8fad76db0dd4321477
+
+pkgname = devlog
+
