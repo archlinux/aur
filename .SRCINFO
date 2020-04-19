@@ -5,7 +5,6 @@ pkgbase = remarkable-mouse
 	url = https://github.com/Evidlo/remarkable_mouse
 	arch = any
 	license = GPL3
-	makedepends = python-setuptools
 	depends = python-setuptools
 	depends = python-paramiko
 	depends = python-libevdev
