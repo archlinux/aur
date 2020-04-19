@@ -9,9 +9,9 @@
 
 pkgname=pure-ftpd
 pkgver=1.0.49
-pkgrel=3
+pkgrel=4
 pkgdesc="A secure, production-quality and standard-conformant FTP server, focused on efficiency and ease of use."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://www.pureftpd.org/"
 license=('custom')
 depends=('openssl' 'mariadb-libs')
@@ -36,6 +36,7 @@ build() {
 	--bindir=/usr/bin \
 	--sbindir=/usr/bin \
 	--with-puredb \
+	--with-pam \
 	--with-ftpwho \
 	--with-altlog \
 	--with-cookie \
