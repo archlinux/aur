@@ -3,8 +3,8 @@
 # Contributor: ValHue <vhuelamo@gmail.com>
 #
 pkgname="wp-desktop"
-pkgver="5.0.0"
-pkgrel="2"
+pkgver="5.0.1"
+pkgrel="1"
 pkgdesc="WordPress.com Desktop client"
 url="https://desktop.wordpress.com/"
 _url="https://github.com/Automattic/wp-desktop"
@@ -14,7 +14,7 @@ depends=('alsa-lib' 'gcc-libs' 'gconf' 'gtk2' 'libgpg-error' 'libxss' 'libxkbfil
 
 source=("wp-desktop-linux-x64-${pkgver}.tar.gz::${_url}/releases/download/v${pkgver}/WordPressDesktop-${pkgver}.tar.gz")
 
-sha256sums=('e30c1511e96b4980c6b3c421040c27c979db5557c2cb41796e460770b0bee1ae')
+sha256sums=('28684ffaf02ef7ad9f68886a521532c4bc5bc0aca9628fededcaa96dc756e5a3')
 
 _wpcom_desktop="[Desktop Entry]
 Name=WordPress.com
@@ -47,7 +47,7 @@ package() {
     cd "${srcdir}"
     install -m 644 *.desktop ${pkgdir}/usr/share/applications
     install -m 755 wpcom ${pkgdir}/usr/bin
-    
+
     cd "${pkgdir}/usr/share/wpcom/"
     install -m 644 ./resources/app/public_desktop/app-logo.png ${pkgdir}/usr/share/pixmaps/wpcom.png
     install -m 644 LICENSE.electron.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
