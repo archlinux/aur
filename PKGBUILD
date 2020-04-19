@@ -5,7 +5,7 @@
 
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=uclibc-ng
-pkgver=1.0.31
+pkgver=1.0.33
 pkgrel=1
 epoch=
 pkgdesc="A C library for embedded Linux"
@@ -29,7 +29,7 @@ source=(
 	"config"
 )
 noextract=()
-sha512sums=('4103287a2861429f476ea4a5534cc291017bf237e9224d47285de05c83bcb58efc1be51985ab2f3e4cf73f43c1429190908ed7a4567c3f2248f4bd5a38d5d1ed'
+sha512sums=('badc4bed19787d74813e1f050d5652fa48c69e9823f4c2d04e02074108250bdc25022776a6420c4afdcebcc0e8df61367da92f3a68ae8ff74a8e956983363095'
             '0318e67ead594929f54dec56377465fe1877a996d81c0bfbc4537745fb8a54bbdeaca8b43fb1a3196dc4ab9e680cc787aa8599fd11dcf28808d404fd61b65fda')
 
 prepare() {
