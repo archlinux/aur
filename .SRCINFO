@@ -1,0 +1,15 @@
+pkgbase = iliasbuddydesktop
+	pkgdesc = Read private Ilias RSS feed and notify about changes
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AnonymerNiklasistanonym/IliasBuddyDesktop
+	arch = x86_64
+	license = MIT
+	depends = electron
+	provides = iliasbuddydesktop
+	conflicts = iliasbuddydesktop
+	source = iliasbuddydesktop.git::git+https://github.com/AnonymerNiklasistanonym/IliasBuddyDesktop#branch=master
+	sha1sums = SKIP
+
+pkgname = iliasbuddydesktop
+
