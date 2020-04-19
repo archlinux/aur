@@ -1,8 +1,8 @@
 pkgbase = python2-yt
 	pkgdesc = A community-developed analysis and visualization toolkit for volumetric data
 	pkgver = 3.6.0
-	pkgrel = 1
-	url = http://yt-project.org
+	pkgrel = 2
+	url = https://yt-project.org
 	arch = any
 	license = BSD
 	depends = python2-numpy

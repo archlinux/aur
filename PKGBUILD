@@ -3,10 +3,10 @@
 pkgname=python2-yt
 _module_name=yt
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A community-developed analysis and visualization toolkit for volumetric data"
 arch=(any)
-url="http://yt-project.org"
+url="https://yt-project.org"
 license=('BSD')
 depends=('python2-numpy' 'python2-matplotlib' 'cython2' 'python2-nose' 'python2-sympy' 'python2-h5py')
 optdepends=('ipython2' 'ipython2-notebook')
