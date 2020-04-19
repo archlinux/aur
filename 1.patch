@@ -1,0 +1,35 @@
+From 90746baa074040fd72397b4de56891a2c979650d Mon Sep 17 00:00:00 2001
+From: dianlujitao <dianlujitao@gmail.com>
+Date: Fri, 17 Apr 2020 00:17:44 +0800
+Subject: [PATCH] Catch one more gobject exception
+
+On Arch Linux, the gi package is provided by libibus while gi.require_version
+is provided by python-gobject. Catch the following exception to use another
+backend when python-gobject is not installed.
+
+In [1]: import gi
+
+In [2]: gi.require_version("Secret", "1")
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-2-f1d223eb7694> in <module>
+----> 1 gi.require_version("Secret", "1")
+
+AttributeError: module 'gi' has no attribute 'require_version'
+---
+ __init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/__init__.py b/__init__.py
+index 8df37fe..fa74968 100644
+--- a/__init__.py
++++ b/__init__.py
+@@ -116,7 +116,7 @@ def get_linux_pass(browser="Chrome"):
+ 
+         gi.require_version("Secret", "1")
+         from gi.repository import Secret
+-    except ImportError:
++    except (ImportError, AttributeError):
+         pass
+     else:
+         flags = Secret.ServiceFlags.LOAD_COLLECTIONS
