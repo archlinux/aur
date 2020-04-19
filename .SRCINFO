@@ -1,0 +1,16 @@
+pkgbase = tuprolog-bin
+	pkgdesc = A light-weight Prolog system for distributed applications and infrastructures.
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = http://apice.unibo.it/xwiki/bin/view/Tuprolog/
+	arch = any
+	license = LGPL
+	makedepends = gendesk
+	depends = java-runtime
+	provides = tuprolog
+	noextract = 2p-4.0.3.jar
+	source = https://gitlab.com/pika-lab/tuprolog/2p/wikis/uploads/87b96d15ce4a1c42ac9825883fd3cfdd/2p-4.0.3.jar
+	sha256sums = SKIP
+
+pkgname = tuprolog-bin
+
