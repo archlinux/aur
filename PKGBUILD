@@ -7,53 +7,43 @@
 
 pkgname=aseprite-git
 _pkgname=aseprite
-pkgver=1.2.13.r0.gaf4fd54c2
-pkgrel=3
+pkgver=1.2.17.r64.gf689c2c48
+pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
 license=('BSD' 'custom')
-depends=('cmark' 'curl' 'libjpeg-turbo' 'giflib' 'tinyxml' 'pixman' 'libxcursor' 'fontconfig' 'nettle' 'hicolor-icon-theme')
-makedepends=('git' 'ninja' 'python' 'python2' 'clang' 'cmake' 'libglvnd')
-conflicts=("${_pkgname}" "${_pkgname}-gpl")
+depends=('cmark' 'curl' 'libjpeg-turbo' 'giflib' 'tinyxml' 'libxcursor' 'fontconfig' 'hicolor-icon-theme')
+makedepends=('git' 'ninja' 'python2' 'clang' 'cmake' 'libglvnd')
+conflicts=("${_pkgname}" "${_pkgname}-gpl" "${_pkgname}-skia-bin")
 source=(
-        # "git+https://github.com/${_pkgname}/pixman.git"
-        "git+https://github.com/${_pkgname}/simpleini.git"
-        # "git+https://github.com/${_pkgname}/gtest.git"
-        "git+https://github.com/${_pkgname}/libwebp.git"
-        "git+https://github.com/${_pkgname}/flic.git"
-        # "git+https://github.com/${_pkgname}/freetype2.git"
-        # "git+https://github.com/${_pkgname}/zlib.git"
-        # "git+https://github.com/${_pkgname}/libpng.git"
-        "git+https://github.com/${_pkgname}/clip.git"
-        "git+https://github.com/${_pkgname}/observable.git"
-        "git+https://github.com/${_pkgname}/undo.git"
         "git+https://github.com/${_pkgname}/laf.git"
-        # "git+https://github.com/${_pkgname}/cmark.git"
-        # "git+https://github.com/${_pkgname}/harfbuzz.git"
-        "git+https://github.com/${_pkgname}/libarchive.git"
-        "git+https://github.com/${_pkgname}/json11.git"
-        # "git+https://github.com/${_pkgname}/benchmark.git"
-        # "git+https://github.com/${_pkgname}/giflib.git"
+        "git+https://github.com/${_pkgname}/clip.git"
+        "git+https://github.com/${_pkgname}/flic.git"
+        "git+https://github.com/${_pkgname}/observable.git"
+        "git+https://github.com/${_pkgname}/tga.git"
+        "git+https://github.com/${_pkgname}/undo.git"
+        "git+https://github.com/${_pkgname}/benchmark.git"
+        "git+https://github.com/${_pkgname}/cmark.git"
         "git+https://github.com/${_pkgname}/fmt.git"
-        "git+https://github.com/${_pkgname}/tinyexpr.git"
+        "git+https://github.com/${_pkgname}/freetype2.git"
+        "git+https://github.com/${_pkgname}/giflib.git"
+        "git+https://github.com/${_pkgname}/harfbuzz.git"
+        "git+https://github.com/${_pkgname}/json11.git"
+        "git+https://github.com/${_pkgname}/libarchive.git"
+        "git+https://github.com/${_pkgname}/libpng.git"
+        "git+https://github.com/${_pkgname}/libwebp.git"
         "git+https://github.com/${_pkgname}/lua"
+        "git+https://github.com/${_pkgname}/pixman.git"
+        "git+https://github.com/${_pkgname}/simpleini.git"
+        "git+https://github.com/${_pkgname}/tinyexpr.git"
+        "git+https://github.com/${_pkgname}/zlib.git"
         "git+https://github.com/${_pkgname}/stringencoders"
-        # "git+https://github.com/${_pkgname}/googletest"
-        "git+https://github.com/${_pkgname}/skia.git#branch=aseprite-m71"
+        "git+https://github.com/${_pkgname}/googletest"
+        "git+https://github.com/${_pkgname}/skia.git#branch=aseprite-m81"
         "git+https://github.com/${_pkgname}/${_pkgname}.git"
         'desktop.patch')
 sha256sums=(
-            # 'SKIP'
-            # 'SKIP'
-            # 'SKIP'
-            # 'SKIP'
-            # 'SKIP'
-            # 'SKIP'
-            # 'SKIP'
-            # 'SKIP'
-            # 'SKIP'
-            # 'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -69,51 +59,61 @@ sha256sums=(
             'SKIP'
             'SKIP'
             'SKIP'
-            'bcb6229e42cef16a8a0273c2fce67ce81d243a085c90bd52ac15183e757ff875')
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9')
 _submodules=(
-    # 'pixman'
-    'simpleini'
-    # 'gtest'
-    'libwebp'
-    'flic'
-    # 'freetype2'
-    # 'zlib'
-    # 'libpng'
-    'clip'
-    'observable'
-    'undo'
     'laf'
-    # 'cmark'
-    # 'harfbuzz'
-    'libarchive'
-    'json11'
-    # 'benchmark'
-    # 'giflib'
+    'clip'
+    'flic'
+    'observable'
+    'tga'
+    'undo'
+    'benchmark'
+    'cmark'
     'fmt'
+    'freetype2'
+    'giflib'
+    'harfbuzz'
+    'json11'
+    'libarchive'
+    'libpng'
+    'libwebp'
+    'lua'
+    'pixman'
+    'simpleini'
     'tinyexpr'
-    'lua')
+    'zlib')
 _submodules_path=(
-    # "third_party/pixman"
-    "third_party/simpleini"
-    # "third_party/gtest"
-    "third_party/libwebp"
-    "src/flic"
-    # "third_party/freetype2"
-    # "third_party/zlib"
-    # "third_party/libpng"
-    "src/clip"
-    "src/observable"
-    "src/undo"
     "laf"
-    # "third_party/cmark"
-    # "third_party/harfbuzz"
-    "third_party/libarchive"
-    "third_party/json11"
-    # "third_party/benchmark"
-    # "third_party/giflib"
+    "src/clip"
+    "src/flic"
+    "src/observable"
+    "src/tga"
+    "src/undo"
+    "third_party/benchmark"
+    "third_party/cmark"
     "third_party/fmt"
+    "third_party/freetype2"
+    "third_party/giflib"
+    "third_party/harfbuzz"
+    "third_party/json11"
+    "third_party/libarchive"
+    "third_party/libpng"
+    "third_party/libwebp"
+    "third_party/lua"
+    "third_party/pixman"
+    "third_party/simpleini"
     "third_party/tinyexpr"
-    "third_party/lua")
+    "third_party/zlib")
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -131,7 +131,7 @@ prepare() {
     cd laf
     git submodule init
     git config submodule.third_party/stringencoders.url "${srcdir}/stringencoders"
-    # git config submodule.third_party/googletest.url "${srcdir}/googletest"
+    git config submodule.third_party/googletest.url "${srcdir}/googletest" #
     git submodule update
 
     cd "${srcdir}/${_pkgname}"
@@ -140,19 +140,23 @@ prepare() {
 
     cd "${srcdir}/skia"
     python2 tools/git-sync-deps
+
+    mkdir -p "${srcdir}/.pkgbuild-bin"
+    ln -sf "$(which python2)" "${srcdir}/.pkgbuild-bin/python"
 }
 
 build() {
+    export PATH="${srcdir}/.pkgbuild-bin":$PATH
     cd "${srcdir}/skia"
     bin/gn gen out/Clang --args='is_debug=false is_official_build=true cc="clang" cxx="clang++" skia_use_system_expat=false skia_use_system_icu=false skia_use_system_libjpeg_turbo=false skia_use_system_libpng=false skia_use_system_libwebp=false skia_use_system_zlib=false'
-    ninja -C out/Clang skia
+    ninja -C out/Clang skia modules
 
     cd "${srcdir}/${_pkgname}/build"
     cmake \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-        -DLAF_OS_BACKEND=skia \
+        -DLAF_BACKEND=skia \
         -DSKIA_DIR="$srcdir/skia" \
-        -DSKIA_OUT_DIR="$srcdir/skia/out/Clang" \
+        -DSKIA_LIBRARY_DIR="$srcdir/skia/out/Clang" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DUSE_SHARED_CMARK=ON \
         -DUSE_SHARED_CURL=ON \
@@ -165,9 +169,10 @@ build() {
         -DUSE_SHARED_FREETYPE=ON \
         -DUSE_SHARED_HARFBUZZ=ON \
         -DWITH_WEBP_SUPPORT=ON \
-        -DLAF_WITH_TESTS=OFF \
         -DENABLE_TESTS=OFF \
         -DENABLE_BENCHMARKS=OFF \
+        -DLAF_WITH_TESTS=OFF \
+        -DLAF_WITH_EXAMPLES=OFF \
         -G Ninja \
         ..
     ninja ${_pkgname}
@@ -180,6 +185,7 @@ package() {
     # Remove extraneous files
     # https://github.com/aseprite/aseprite/issues/1574
     # https://github.com/aseprite/aseprite/issues/1602
+
     rm -f "${pkgdir}"/usr/bin/bsd*
     rm -f "${pkgdir}"/usr/lib/pkgconfig/libarchive.pc
     rm -f "${pkgdir}"/usr/share/man/man1/bsd*
