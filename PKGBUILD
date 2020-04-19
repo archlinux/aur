@@ -8,7 +8,7 @@
 
 pkgname=logisim-evolution
 pkgver=3.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='An educational tool for designing and simulating digital logic circuits'
 arch=('any')
 url="https://github.com/reds-heig/logisim-evolution"
@@ -26,8 +26,6 @@ sha256sums=('b04e666ed0b74126dfc8c2ce6ae0d425ad5bb39c2d77ef214158b6dfc67f8b0d'
 
 package() {
     cd "$srcdir"
-
-    jar xf ${pkgname}-${pkgver}.jar "resources/logisim/img/"
 
     install -Dm644 ${pkgname}-${pkgver}.jar "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
     install -Dm644 ${pkgname}.xml "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
