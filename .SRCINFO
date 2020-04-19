@@ -1,0 +1,18 @@
+pkgbase = python-combomethod
+	pkgdesc = Decorator indicating a method is both a class and an instance method
+	pkgver = 1.0.12
+	pkgrel = 1
+	url = https://bitbucket.org/jeunice/combomethod
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/c/combomethod/combomethod-1.0.12.zip
+	sha256sums = 4975b436ffe3e0a2561b58e3e9d047a50f4b16c8d4956d6a3e6ce566d034dd5e
+
+pkgname = python-combomethod
+	depends = python
+
+pkgname = python2-combomethod
+	depends = python2
+
