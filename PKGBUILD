@@ -1,7 +1,7 @@
 # Maintainer: John Fawkes
 pkgname=dnscrypt-proxy-git
 pkgver=2.0.31.r25.ge6a4a4f
-pkgrel=3
+pkgrel=4
 pkgdesc="A flexible DNS proxy, with support for modern encrypted DNS protocols such as DNSCrypt v2 and DNS-over-HTTP/2."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/jedisct1/dnscrypt-proxy"
