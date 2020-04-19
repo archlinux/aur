@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.6.2-arch1 Kernel Configuration
+# Linux/x86 5.6.5-arch2 Kernel Configuration
 #
 
 #
@@ -4433,7 +4433,7 @@ CONFIG_I2C_CROS_EC_TUNNEL=m
 CONFIG_I2C_FSI=m
 # end of I2C Hardware Bus support
 
-# CONFIG_I2C_STUB is not set
+CONFIG_I2C_STUB=m
 CONFIG_I2C_SLAVE=y
 CONFIG_I2C_SLAVE_EEPROM=m
 # CONFIG_I2C_DEBUG_CORE is not set
@@ -6683,7 +6683,7 @@ CONFIG_SND_VERBOSE_PRINTK=y
 CONFIG_SND_DEBUG=y
 # CONFIG_SND_DEBUG_VERBOSE is not set
 # CONFIG_SND_PCM_XRUN_DEBUG is not set
-CONFIG_SND_CTL_VALIDATION=y
+# CONFIG_SND_CTL_VALIDATION is not set
 CONFIG_SND_VMASTER=y
 CONFIG_SND_DMA_SGBUF=y
 CONFIG_SND_SEQUENCER=m
