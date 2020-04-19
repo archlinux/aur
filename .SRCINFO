@@ -1,0 +1,21 @@
+pkgbase = nsz-git
+	pkgdesc = Switch Homebrew compatible NSP/XCI compressor/decompressor
+	pkgver = 3.1.1.r25.g571147e
+	pkgrel = 1
+	url = https://github.com/nicoboss/nsz
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python>=3.6
+	depends = python-pycryptodome>=3.9.0
+	depends = python-zstandard
+	depends = python-enlighten
+	optdepends = python-pygame
+	optdepends = python-kivy==1.11.1
+	provides = nsz=3.1.1.r25.g571147e
+	conflicts = nsz
+	source = nsz-git::git+https://github.com/nicoboss/nsz.git
+	sha256sums = SKIP
+
+pkgname = nsz-git
+
