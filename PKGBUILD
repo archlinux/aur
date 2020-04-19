@@ -1,12 +1,12 @@
 _pkgname="mavproxy"
 pkgname="$_pkgname-git"
-pkgver='r1691.1b887ed'
-pkgrel='1'
+pkgver=r2212.dfbc22d0
+pkgrel=1
 pkgdesc='MAVLink proxy and command line ground station.'
 arch=('any')
 url='https://dronecode.github.io/MAVProxy/html/index.html'
 license=('GPL3')
-depends=('python2-pymavlink-git')
+depends=('python-pymavlink')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=('git+https://github.com/Dronecode/MAVProxy.git')
@@ -21,7 +21,7 @@ pkgver() {
 
 package() {
   cd "$_srcdir"
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
