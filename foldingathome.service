@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/opt/fah
-ExecStart=/opt/fah/FAHClient --config /opt/fah/config.xml --exec-directory=/opt/fah --data-directory=/opt/fah
+ExecStart=/opt/fah/FAHClient --config /opt/fah/config.xml --chdir=/opt/fah
 
 [Install]
 WantedBy=multi-user.target
