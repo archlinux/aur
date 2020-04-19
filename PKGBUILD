@@ -13,25 +13,27 @@ optdepends=('doom3bfg-data: packaged game data files')
 provides=('rbdoom3-bfg')
 conflicts=('rbdoom-3-bfg')
 install=rbdoom3-bfg-git.install
-source=('rbdoom3-bfg-git::git+https://github.com/RobertBeckebans/RBDOOM-3-BFG.git'
+source=("$pkgname::git+https://github.com/RobertBeckebans/RBDOOM-3-BFG.git"
         'rbdoom3-bfg-git.desktop' 
-        'doom3bfg.png')
-md5sums=('SKIP'
-         'f5458e6cc915282aec2406dbdc824f9f'
-         '86455bb86d4267b447bd882dbde35231')
+        'doom3bfg.png'
+        'sdl2-cmake.patch')
+sha256sums=('SKIP'
+            'a651aa2e71a8a525e66173a8f76b907712b73c950c88f5468ccab79f7533361f'
+            '0fb6a3bb9b47cad65d5012ba20dc9de3b1487f4ac1908ee847e6087511b7f09e'
+            '438993ae976453143d1055fd851e3fd0d48c5309818d485b276e1cfcd6701ce9')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "$srcdir/$pkgname"
-    git revert 988420 -n --no-edit
+    cd "$pkgname"
+    patch -p1 -i "$srcdir/sdl2-cmake.patch"
 }
 
 build() {
-  cd "$srcdir/$pkgname/neo"
+  cd "$pkgname/neo"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DUSE_SYSTEM_ZLIB=1 \
         -DUSE_SYSTEM_LIBPNG=0 \

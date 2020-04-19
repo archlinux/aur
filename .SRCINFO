@@ -20,9 +20,11 @@ pkgbase = rbdoom3-bfg-git
 	source = rbdoom3-bfg-git::git+https://github.com/RobertBeckebans/RBDOOM-3-BFG.git
 	source = rbdoom3-bfg-git.desktop
 	source = doom3bfg.png
-	md5sums = SKIP
-	md5sums = f5458e6cc915282aec2406dbdc824f9f
-	md5sums = 86455bb86d4267b447bd882dbde35231
+	source = sdl2-cmake.patch
+	sha256sums = SKIP
+	sha256sums = a651aa2e71a8a525e66173a8f76b907712b73c950c88f5468ccab79f7533361f
+	sha256sums = 0fb6a3bb9b47cad65d5012ba20dc9de3b1487f4ac1908ee847e6087511b7f09e
+	sha256sums = 438993ae976453143d1055fd851e3fd0d48c5309818d485b276e1cfcd6701ce9
 
 pkgname = rbdoom3-bfg-git
 

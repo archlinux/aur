@@ -1,0 +1,15 @@
+diff --git a/neo/CMakeLists.txt b/neo/CMakeLists.txt
+index 1a36eef..ba149df 100644
+--- a/neo/CMakeLists.txt
++++ b/neo/CMakeLists.txt
+@@ -1599,8 +1599,8 @@ else()
+ 
+ 		if(SDL2)
+ 			find_package(SDL2 REQUIRED)
+-			include_directories(${SDL2_INCLUDE_DIRS})
+-			set(SDLx_LIBRARY ${SDL2_LIBRARIES})
++			include_directories(SDL2::SDL2)
++			set(SDLx_LIBRARY SDL2::SDL2)
+ 		else()
+ 			find_package(SDL REQUIRED)
+ 			include_directories(${SDL_INCLUDE_DIR})
