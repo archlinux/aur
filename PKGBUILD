@@ -7,7 +7,7 @@ pkgver="7.1.0"
 pkgrel="1"
 arch=("x86_64")
 url="https://lld.llvm.org/"
-license=("custom:Apache 2.0 with LLVM Exception")
+license=("custom:University of Illinois/NCSA Open Source License")
 makedepends=("llvm7" "cmake" "ninja" "python-sphinx")
 conflicts=("lld")
 
