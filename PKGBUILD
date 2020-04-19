@@ -1,11 +1,11 @@
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: jakbyte <jakbyte@gmail.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
-# ************************************************************************** #
-# This package is meant to be used for compiling packages that have not been #
-# ported to LLVM 8 yet. Such packages may depend on llvm7-libs but not llvm7 #
-# which is not co-installable with the main llvm package (currently LLVM 8). #
-# ************************************************************************** #
+# ******************************************************************************* #
+# This package is meant to be used for compiling packages that have not been      #
+# ported to the latest version of LLVM yet. Such packages may depend on           #
+# llvm7-libsbut not llvm7 which is not co-installable with the main llvm package. #
+# ******************************************************************************* #
 
 pkgname=('llvm7' 'llvm7-libs')
 pkgver=7.1.0
