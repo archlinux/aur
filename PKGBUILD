@@ -1,8 +1,8 @@
 # Maintainer: yaa110 <yaa110@gmail.com>
 
 pkgname=nomino
-pkgver=0.1.4
-pkgrel=4
+pkgver=0.2.0
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yaa110/nomino"
 license=("MIT")
