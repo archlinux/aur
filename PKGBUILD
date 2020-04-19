@@ -9,7 +9,7 @@ url="https://github.com/Rafostar/$pkgname"
 arch=("x86_64")
 license=("GPL")
 
-pkgver=14
+pkgver=15
 pkgrel=0
 
 depends=(
@@ -29,7 +29,7 @@ source=(
     "install_node_modules.patch"
 )
 sha256sums=(
-    "bcc71224d78cf838d491b1d6b5a995a1f4415f4acbebcdcae70bf5fa977e5c44"
+    "d6cfb02291d8b6edc4b65b59006606bf052aceb0c43843ec654f528a2d4fdaf3"
     "b24fa4e6b04cae500ec267345ac48f9c92452e0d9ad798ac28132984387b98cc"
 )
 
