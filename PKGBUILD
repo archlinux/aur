@@ -2,23 +2,22 @@
 # Contributor: Paul B <paul2lv@gmail.com>
 
 pkgname=fahviewer
-pkgver=7.6.8
+pkgver=7.6.9
 pkgrel=1
 pkgdesc="Folding@home 3D Simulation Viewer"
-url="http://folding.stanford.edu/English/HomePage"
+url="https://foldingathome.org"
 arch=('x86_64')
 license=('GPL2')
-depends=('glew' 'gtk2' 'freetype2' 'glut')
-source=(https://download.foldingathome.org/releases/public/release/fahviewer/debian-stable-64bit/v${pkgver%.*}/fahviewer_${pkgver}-64bit-release.tar.bz2)
+depends=('glu' 'gtk2' 'freetype2' 'glut')
+source=(https://download.foldingathome.org/releases/public/release/${pkgname}/debian-stable-64bit/v${pkgver%.*}/${pkgname}_${pkgver}-64bit-release.tar.bz2)
 
-sha1sums=('23163ebc3b648aa45b829d64eebd2976c7f49106')
-sha256sums=('a2c2c90e081d013fd4d273c5c8e6d6a62fdcc87fb8e0b04eda927d476d1aacc0')
-sha512sums=('8846db077e67ad04bc7f74176199b201eedd4b01954d42157acb7f3193eff7ad133339361014302835f659273a4c64e5021993974b98bff2abb04e8a4e775f67')
+sha1sums=('d5bc6f2c673654843630999ff7dd7947f2ea00f2')
+sha256sums=('14186b8e0fab3d7bf195f8b6a18e6d2e423491a34ac2d75e3a63bc57666f38da')
+sha512sums=('e427264dd9057a7fac16ea0e3e671422b5d1fefaf27a7052ceceb54d4224d8a7e5cfcfa21d2a159785427cfd9380e38b9a1cb323db095cfe4a3ef9731df60073')
 
 package() {
-	cd ${srcdir}
 	install -dm755 ${pkgdir}/opt/fah/
-	cp -rf fahviewer_${pkgver}-64bit-release/backgrounds ${pkgdir}/opt/fah/
+	cp -rf ${pkgname}_${pkgver}-64bit-release/backgrounds ${pkgdir}/opt/fah/
 
 	install -d "${pkgdir}/usr/bin"
 	install -D -m0755 ${srcdir}/fahviewer_${pkgver}-64bit-release/FAHViewer ${pkgdir}/opt/fah/FAHViewer
