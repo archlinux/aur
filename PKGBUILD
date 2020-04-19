@@ -1,7 +1,7 @@
 # Maintainer: vtyulb <vtyulb@vtyulb.ru>
 
 pkgname=kumir2-git
-pkgver=08.07.2019
+pkgver=19.04.2020
 pkgrel=1
 pkgdesc="An educational programming language and IDE in Russian schools"
 url="https://www.niisi.ru/kumir/index.htm"
