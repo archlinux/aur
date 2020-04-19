@@ -30,8 +30,8 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox-current.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/waterfox-current.1"
         "syspref.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/syspref.js"
         "mozilla-nongnome-proxies.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/patches/mozilla-nongnome-proxies.patch"
-        "current-kde-2020.03.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/master/waterfox-current-kpe/patches/current-kde-2020.03.patch"
-        "current-kde-xul-2020.03.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/master/waterfox-current-kpe/patches/current-kde-xul-2020.03.patch"
+        "current-kde.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/master/waterfox-current-kpe/patches/current-kde.patch"
+        "current-kde-xul.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/master/waterfox-current-kpe/patches/current-kde-xul.patch"
         )
 sha256sums=('SKIP'
             'ca152a5d24a59aa5552cc49915b13eef5181aac4ac6d2efa02c705efaeaed97b'
@@ -47,8 +47,8 @@ prepare() {
 
   cd Waterfox
 
-  patch -Np1 -i ../current-kde-2020.03.patch
-  patch -Np1 -i ../current-kde-xul-2020.03.patch
+  patch -Np1 -i ../current-kde.patch
+  patch -Np1 -i ../current-kde-xul.patch
   patch -Np1 -i ../mozilla-nongnome-proxies.patch
 
   cat >.mozconfig <<END
