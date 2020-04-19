@@ -1,6 +1,6 @@
 pkgname=yltra-flat-icons
 pkgver=2.5
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple flat icon theme, derived from Ultra Flat icons'
 arch=('any')
 url='https://github.com/kimifetch/yltra-flat-icon-theme'
@@ -9,8 +9,10 @@ makedepends=('git')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 options=(!strip !emptydirs)
-source=("git+${url}.git")
-md5sums=('SKIP')
+source=("git+${url}.git"
+        'fix-malformed-svg.patch')
+md5sums=('SKIP'
+         '7d6ff90bc8e816a79ecb2d8014723ea4')
 
 package() {
 	# Create base directory 
@@ -18,6 +20,11 @@ package() {
 
 	local _themefolder=$(basename ${url})
 	local _themename="Yltra Flat"
+
+	# Fix malformed svg
+	cd "${srcdir}"/$_themefolder
+	patch -p1 -s -i ../fix-malformed-svg.patch
+	cd ..
 
 	# Copy folders without spaces in the filename
 	find "${srcdir}"/$_themefolder -mindepth 1 -prune -type d ! -name .git -print0 | \

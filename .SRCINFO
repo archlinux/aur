@@ -1,7 +1,7 @@
 pkgbase = yltra-flat-icons
 	pkgdesc = A simple flat icon theme, derived from Ultra Flat icons
 	pkgver = 2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kimifetch/yltra-flat-icon-theme
 	arch = any
 	license = CCPL:cc-by-nc-sa-4.0
@@ -11,7 +11,9 @@ pkgbase = yltra-flat-icons
 	options = !strip
 	options = !emptydirs
 	source = git+https://github.com/kimifetch/yltra-flat-icon-theme.git
+	source = fix-malformed-svg.patch
 	md5sums = SKIP
+	md5sums = 7d6ff90bc8e816a79ecb2d8014723ea4
 
 pkgname = yltra-flat-icons
 
