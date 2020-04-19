@@ -1,7 +1,7 @@
 pkgbase = crispy-doom
 	pkgdesc = Vanilla-compatible enhanced Doom engine
 	pkgver = 5.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fabiangreffrath.github.io/crispy-doom
 	install = crispy-doom.install
 	arch = i686
