@@ -9,7 +9,7 @@
 pkgname=logisim-ita-bin
 _name=logisim-ita
 pkgver=2.16.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An educational tool for designing and simulating digital logic circuits (Italian fork)'
 arch=('any')
 url="https://github.com/LogisimIt/Logisim"
@@ -26,8 +26,6 @@ sha256sums=('0a9d4a1b0ec0da4a431d1c45967766d7f992eb8f4b931b3bdb14c6ff23c5833a'
 
 package() {
     cd "$srcdir"
-
-    jar xf "${_name}-${pkgver}.jar" "resources/logisim/img/"
 
     install -Dm644 ${_name}-${pkgver}.jar "${pkgdir}/usr/share/java/${_name}/${_name}.jar"
     install -Dm644 ${_name}.xml "${pkgdir}/usr/share/mime/packages/${_name}.xml"

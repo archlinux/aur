@@ -1,7 +1,7 @@
 pkgbase = logisim-ita-bin
 	pkgdesc = An educational tool for designing and simulating digital logic circuits (Italian fork)
 	pkgver = 2.16.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LogisimIt/Logisim
 	arch = any
 	license = GPL3
