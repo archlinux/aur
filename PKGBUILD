@@ -7,7 +7,7 @@ url="https://github.com/Evidlo/remarkable_mouse"
 arch=('any')
 license=('GPL3')
 makedepends=('python-setuptools')
-depends=('python-paramiko' 'python-libevdev' 'python-pynput' 'python-screeninfo')
+depends=('python-setuptools' 'python-paramiko' 'python-libevdev' 'python-pynput' 'python-screeninfo')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('b46030d96d49e7e13baefec0360f50af')
 
