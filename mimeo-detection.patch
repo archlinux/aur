@@ -1,6 +1,6 @@
-commit 26aeded432434afe7152e30e34b0c820a5567b93
+commit 14a285fc21110e35d55ec96e77562b3a0f5983e3
 Author: Narrat <autumn-wind@web.de>
-Date:   Sun Apr 19 20:06:49 2020 +0200
+Date:   Sun Apr 19 23:49:50 2020 +0200
 
     Add support for mimeo
 
@@ -117,7 +117,7 @@ index 95f707e..9c2f511 100644
        ;;
    esac
 diff --git a/scripts/xdg-settings.in b/scripts/xdg-settings.in
-index 3781de8..e60fe95 100644
+index 3781de8..39734b1 100644
 --- a/scripts/xdg-settings.in
 +++ b/scripts/xdg-settings.in
 @@ -471,6 +471,44 @@ set_browser_xfce()
@@ -129,7 +129,7 @@ index 3781de8..e60fe95 100644
 +get_browser_mimeo()
 +{
 +    DEBUG 1 "Running mimeo -d 'http:'"
-+    mimeo -d http: | sed -rn '2s/  ([^ ]+) +.*/\1/p'
++    mimeo -d http: | awk 'FNR == 2 {print}' | cut -d' ' -f3
 +    if [ $? -eq 0 ]; then
 +        exit_success
 +    else
