@@ -1,6 +1,8 @@
+# Maintainer: blacktea <blackteahamburger@outlook.com>
+
 pkgname=allfilesystems
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Metapackage for all AUR and official repository file system tools (no out-of-tree file systems and file system as part of Linux kernel)'
 arch=('any')
 license=('none')

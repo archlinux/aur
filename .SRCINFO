@@ -1,7 +1,7 @@
 pkgbase = allfilesystems
 	pkgdesc = Metapackage for all AUR and official repository file system tools (no out-of-tree file systems and file system as part of Linux kernel)
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.archlinux.org/
 	arch = any
 	license = none
