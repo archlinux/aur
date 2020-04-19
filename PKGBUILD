@@ -22,7 +22,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.xz")
 noextract=()
-sha256sums=('2732308933d1f42325b8c0ab8d353836b4d549bd404442ca3dbf4f7f7604008d')
+sha256sums=('890e2fa23398c0a39529010a08df75ff63a877270faa873b43ae0ab6cf12586a')
 validpgpkeys=()
 
 build() {
@@ -32,5 +32,15 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	sudo make install
+	mkdir -p $pkgdir/usr
+	mkdir -p $pkgdir/usr/bin
+	mkdir -p $pkgdir/usr/share/
+	mkdir -p $pkgdir/usr/share/marvin
+	mkdir -p $pkgdir/usr/share/marvin/license
+	mkdir -p $pkgdir/usr/share/marvin/scripts
+	install $srcdir/$pkgname-$pkgver/marvin $pkgdir/usr/bin
+	install $srcdir/$pkgname-$pkgver/LICENSE $pkgdir/usr/share/marvin/license/
+	install $srcdir/$pkgname-$pkgver/ASDKinstaller.sh $pkgdir/usr/share/marvin/scripts/
+	install $srcdir/$pkgname-$pkgver/JDKinstaller.sh $pkgdir/usr/share/marvin/scripts/
+	install $srcdir/$pkgname-$pkgver/editorSetup.sh $pkgdir/usr/share/marvin/scripts/
 }
