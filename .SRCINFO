@@ -1,0 +1,14 @@
+pkgbase = ghcup-hs-bin
+	pkgdesc = an installer for the general purpose language Haskell
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://gitlab.haskell.org/haskell/ghcup-hs
+	install = ghcup-hs-bin.install
+	arch = x86_64
+	license = LGPL3
+	conflicts = ghcup-git
+	source = ghcup-0.1.4::https://downloads.haskell.org/~ghcup/0.1.4/x86_64-linux-ghcup-0.1.4
+	sha256sums = 78d69ed4c9a810a445af89ea25e4217a632799ecb427b06cd2320ffb574f555e
+
+pkgname = ghcup-hs-bin
+
