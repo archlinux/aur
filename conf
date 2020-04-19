@@ -1,4 +1,5 @@
-*:80 {
-	gzip
-	root /srv/http
+{
+    storage file_system {
+        root /var/lib/caddy2
+    }
 }

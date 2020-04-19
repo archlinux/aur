@@ -1,19 +1,19 @@
 [Unit]
 Description=Caddy HTTP/2 web server
-Documentation=https://caddyserver.com/docs
+Documentation=https://github.com/caddyserver/caddy/wiki/v2:-Documentation
 After=network-online.target
 
 [Service]
 User=http
 Group=http
-Environment=CADDYPATH=/var/lib/caddy
-ExecStart=/usr/bin/caddy -agree -conf /etc/caddy.conf
-ExecReload=/usr/bin/kill -USR1 $MAINPID
+ExecStart=/usr/bin/caddy2 run --config /etc/caddy2.conf --adapter caddyfile
+ExecReload=/usr/bin/caddy2 reload --config /etc/caddy2.conf --adapter caddyfile
+ExecStop=/usr/bin/caddy2 stop
 PrivateTmp=true
 ProtectHome=true
 PrivateDevices=true
 ProtectSystem=strict
-ReadWritePaths=/var/lib/caddy
+ReadWritePaths=/var/lib/caddy2
 AmbientCapabilities=CAP_NET_BIND_SERVICE
 
 [Install]
