@@ -1,7 +1,7 @@
 pkgbase = pulseaudio-dlna-python3-git
 	pkgdesc = Small DLNA server which brings DLNA/UPnP support to PulseAudio
 	pkgver = 0.5.2.r152.gb0db813
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/masmu/pulseaudio-dlna
 	arch = x86_64
 	license = GPL3
@@ -28,7 +28,9 @@ pkgbase = pulseaudio-dlna-python3-git
 	provides = pulseaudio-dlna
 	conflicts = pulseaudio-dlna
 	source = git+https://github.com/masmu/pulseaudio-dlna.git#branch=python3
+	source = wait_for_chromecast.patch::https://github.com/masmu/pulseaudio-dlna/commit/d46f419abd5105e48342ee45219cbf557d342af4.patch
 	sha512sums = SKIP
+	sha512sums = 8bc5a15184f049f5b385796eb0ee1b2b6b2c535c24a5317f227975041a49a50d60b4c5d95276a9c5c4a33b33169917938a025a6f80294e05bd63f6a4784e17d5
 
 pkgname = pulseaudio-dlna-python3-git
 
