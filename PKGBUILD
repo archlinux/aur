@@ -40,6 +40,6 @@ package() {
 	mkdir -p $pkgdir/usr/share/barbarian/logo
 	mkdir -p $pkgdir/usr/share/barbarian/license
 	install $srcdir/$pkgname-$pkgver/res/barbarian.jpeg $pkgdir/usr/share/barbarian/logo
-	install $srcdir/$pkgname-$pkgver/build/Barbarian $pkgdir/usr/bin
+	install $srcdir/$pkgname-$pkgver/build/barbarian $pkgdir/usr/bin
 	install $srcdir/$pkgname-$pkgver/COPYING $pkgdir/usr/share/barbarian/license/
 }
