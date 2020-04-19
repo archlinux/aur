@@ -4,7 +4,7 @@
 _binname=step-ca
 pkgname=$_binname-bin
 pkgver=0.14.2
-pkgrel=1
+pkgrel=4
 pkgdesc="An online certificate authority and related tools for secure automated certificate management, so you can use TLS everywhere."
 arch=('x86_64')
 url="https://smallstep.com/certificates"
