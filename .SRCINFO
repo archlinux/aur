@@ -1,0 +1,20 @@
+pkgbase = python-pygtrie
+	pkgdesc = Python library implementing a trie data structure
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = https://github.com/google/pygtrie
+	arch = any
+	license = Apache
+	source = https://pypi.io/packages/source/p/pygtrie/pygtrie-2.3.3.tar.gz
+	source = LICENSE
+	sha256sums = 2204dbd95584f67821da5b3771c4305ac5585552b3230b210f1f05322608db2c
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+
+pkgname = python-pygtrie
+	depends = python
+	depends = python-setuptools
+
+pkgname = python2-pygtrie
+	depends = python2
+	depends = python2-setuptools
+
