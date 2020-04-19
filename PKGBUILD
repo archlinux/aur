@@ -2,7 +2,7 @@
 
 pkgname=cpeditor-git
 _pkgname=cpeditor
-pkgver=6.3.1.r13.gdd41126
+pkgver=6.3.1.r14.g609deb1
 pkgrel=1
 pkgdesc='The editor for competitive programming'
 arch=('x86_64')
@@ -29,7 +29,7 @@ pkgver() {
 prepare() {
 	cd $_pkgname
 	git submodule init
-	
+
 	git config submodule.third_party/QCodeEditor.url $srcdir/QCodeEditor
 	git config submodule.third_party/QtFindReplaceDialog.url $srcdir/QtFindReplaceDialog
 	git config submodule.third_party/lsp-cpp.url $srcdir/lsp-cpp
