@@ -1,6 +1,6 @@
 pkgbase = boca
 	pkgdesc = A component library used by the fre:ac audio converter
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/enzo1982/BoCA
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = boca
 	provides = libboca-1.0.so=2-64
 	provides = freac_cdk
 	conflicts = freac_cdk
-	source = BoCA-1.0.tar.gz::https://github.com/enzo1982/BoCA/archive/v1.0.tar.gz
-	sha256sums = ceb2c79776f423f83421a5e63faab0ee22262a808aa34debecd0eeb28afeccbf
+	source = BoCA-1.0.1.tar.gz::https://github.com/enzo1982/BoCA/archive/v1.0.1.tar.gz
+	sha256sums = 1ee01691495c2415e056a30328732b9d486af90f98b71ba0aa6b3f93adf9190c
 
 pkgname = boca
 
