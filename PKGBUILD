@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=rocm-validation-suite
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Tool for detecting and troubleshooting common problems affecting AMD
 GPUs"
@@ -11,7 +11,7 @@ depends=('pciutils' 'doxygen' 'rocblas' 'rocm-smi-lib' 'git')
 makedepends=('cmake')
 options=(!staticlibs strip)
 source=("rocm_validation_suite-roc-$pkgver.tar.gz::https://github.com/ROCm-Developer-Tools/ROCmValidationSuite/archive/roc-$pkgver.tar.gz")
-sha256sums=('be0e4bc1910a6e91119c2f26398b25efaa1c3943cd14ee3272bcd1838d416a33')
+sha256sums=('37c62381a98d3f83aecad0b4870bdc98059b844e71a60fbc0eab1348d407a87a')
 
 build() {
   mkdir -p "$srcdir/build"
