@@ -22,16 +22,18 @@ provides=("waterfox-current=${pkgver}")
 conflicts=('waterfox-current')
 options=('!emptydirs' '!makeflags' 'zipman')
 replaces=("waterfox-beta-kde")
+_filesrev=29877042dd393774197b134426e37cb0dbabef34
+_filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-current-kpe
 _commit=9996cf65e65d7656a458964e2b52e8766463b89d
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
-        "waterfox-current.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/waterfox-current.desktop"
-        "distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/distribution.ini"
-        "vendor.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/vendor.js"
-        "waterfox-current.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/waterfox-current.1"
-        "syspref.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/syspref.js"
-        "mozilla-nongnome-proxies.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/patches/mozilla-nongnome-proxies.patch"
-        "current-kde.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/master/waterfox-current-kpe/patches/current-kde.patch"
-        "current-kde-xul.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/master/waterfox-current-kpe/patches/current-kde-xul.patch"
+        "waterfox-current.desktop::$_filesurl/waterfox-current.desktop"
+        "distribution.ini::$_filesurl/distribution.ini"
+        "vendor.js::$_filesurl/vendor.js"
+        "waterfox-current.1::$_filesurl/waterfox-current.1"
+        "syspref.js::$_filesurl/syspref.js"
+        "mozilla-nongnome-proxies.patch::$_filesurl/patches/mozilla-nongnome-proxies.patch"
+        "current-kde.patch::$_filesurl/patches/current-kde.patch"
+        "current-kde-xul.patch::$_filesurl/patches/current-kde-xul.patch"
         )
 sha256sums=('SKIP'
             'ca152a5d24a59aa5552cc49915b13eef5181aac4ac6d2efa02c705efaeaed97b'
