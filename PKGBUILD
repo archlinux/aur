@@ -4,7 +4,7 @@
 _binname=step-cli
 pkgname=$_binname-bin
 pkgver=0.14.2
-pkgrel=1
+pkgrel=4
 pkgdesc="A zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc."
 arch=('x86_64')
 url="https://smallstep.com/cli"
