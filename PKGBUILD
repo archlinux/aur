@@ -10,7 +10,7 @@ url="http://www.pygtk.org/"
 arch=('x86_64')
 license=('LGPL')
 depends=('libglade' 'python2-cairo' 'python2-gobject2')
-makedepends=('python2-numpy' 'pygobject2-devel' 'wget')
+makedepends=('python2-numpy' 'pygobject2-devel')
 optdepends=('python2-numpy')
 source=("https://download.gnome.org/sources/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2"
         "https://gitlab.gnome.org/Archive/pygtk/-/commit/4aaa48eb80c6802aec6d03e5695d2a0ff20e0fc2.patch"

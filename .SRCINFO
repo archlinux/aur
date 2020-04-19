@@ -7,7 +7,6 @@ pkgbase = pygtk
 	license = LGPL
 	makedepends = python2-numpy
 	makedepends = pygobject2-devel
-	makedepends = wget
 	depends = libglade
 	depends = python2-cairo
 	depends = python2-gobject2
