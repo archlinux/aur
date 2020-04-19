@@ -1,0 +1,12 @@
+pkgbase = amdvbflash
+	pkgdesc = AMD vBIOS flash utility.
+	pkgver = v4.69
+	pkgrel = 1
+	url = https://github.com/patrickschur/amdvbflash
+	arch = x86_64
+	license = custom
+	source = git+https://github.com/patrickschur/amdvbflash.git
+	md5sums = SKIP
+
+pkgname = amdvbflash
+
