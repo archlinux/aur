@@ -1,2 +1,2 @@
 #!/bin/bash
-python ./script.py
+python /usr/share/mcpelauncher-hx-script/script.py
