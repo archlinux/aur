@@ -3,39 +3,45 @@
 _pkgbase=amd-sfh-hid
 pkgname="${_pkgbase}-dkms"
 pkgver=1
-pkgrel=1
+pkgrel=2
+_patchfile="${_pkgbase}-${pkgver}-${pkgrel}.patch"
 pkgdesc="Experimental HID driver modules for the AMD Sensor Fusion Hub (DKMS)"
 arch=('i686' 'x86_64')
 url="https://gist.github.com/conqp/33baa079d9524914c4c0c196200e4f89"
 license=('GPL2')
 depends=('dkms')
 makedepends=('patchutils')
-source=("${_pkgbase}-${pkgver}.patch::https://gist.githubusercontent.com/conqp/33baa079d9524914c4c0c196200e4f89/raw/72a578d08abb8cba1be9bec0c435094dc1ee2da6/amd-sfh.patch"
+source=("${_patchfile}::https://gist.githubusercontent.com/conqp/33baa079d9524914c4c0c196200e4f89/raw/a4effce73423cfd36615ff664b0331e52ef95e92/amd-sfh.patch"
+        'Makefile.append'
         'dkms.conf')
-md5sums=('35e6da8143ef70216cffcf1dc125ea70'
-         '9cfe1506bb695c72daaf03978dd43637')
+sha256sums=('e096b2c033601603ab1a820fd0bc6cd0402b7f1926ba04a627153466b4be80a3'
+            'd3a380dd24434afd88eec19c31e9425d83c47c6b007452a71c9ac5dfc87dcd40'
+            '06a1781464433882c0def17fce634001bcede6efb096a8cffcc26cbdef587676')
 
 prepare() {
-  # Fix patch for DKMS
-  filterdiff -p1 -x "Documentation/hid/index.rst" \
-                 -x "MAINTAINERS" \
-                 -x "drivers/hid/Kconfig" \
-                 -x "drivers/hid/Makefile" \
-  "${srcdir}/${_pkgbase}-${pkgver}.patch" | patch -Np1
+	# Fix patch for DKMS.
+	filterdiff -p1 -x "Documentation/*" \
+	               -x "MAINTAINERS" \
+	               -x "drivers/hid/Kconfig" \
+	               -x "drivers/hid/Makefile" \
+	"${srcdir}/${_patchfile}" | patch -Np1
+
+	# Append DKMS targets to Makefile.
+	cat Makefile.append >> drivers/hid/amd-sfh-hid/Makefile
 }
 
 package() {
-  local DEST="${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
+	local DEST="${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
 
-  install -dm 755 "${DEST}"
+	install -dm 755 "${DEST}"
 
-  for file in drivers/hid/amd-sfh-hid/*; do
-    install -m 640 "${file}" "${DEST}"
-  done
+	for file in drivers/hid/amd-sfh-hid/*; do
+		install -m 640 "${file}" "${DEST}"
+	done
 
-  # Copy dkms.conf
-  install -m644 dkms.conf "${DEST}"
+	# Copy dkms.conf
+	install -m644 dkms.conf "${DEST}"
 
-  # Set name and version
-  sed -e "s/@PKGVER@/${pkgver}/" -i "${DEST}/dkms.conf"
+	# Set name and version
+	sed -e "s/@PKGVER@/${pkgver}/" -i "${DEST}/dkms.conf"
 }
