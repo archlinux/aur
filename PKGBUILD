@@ -3,7 +3,7 @@
 
 pkgname=xwingridselect
 _gitname=xwingridselect
-pkgver=v0.4.2
+pkgver=v1.0.0
 pkgrel=1
 pkgdesc="X11 window switcher with fancy look"
 url="https://gitlab.com/TheCynicalLiger/xwingridselect"
