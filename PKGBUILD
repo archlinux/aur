@@ -13,9 +13,9 @@ source=($url"/archive/v${pkgver}.tar.gz")
 md5sums=('SKIP')
 build(){
 	cd "$srcdir/$pkgname-$pkgver"
-    python setup.py build
+    	python setup.py build
 }
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 
+    	python setup.py install --root="$pkgdir" --optimize=1 
 }
