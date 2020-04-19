@@ -2,7 +2,7 @@
 # Helpful url: https://readarr.servarr.com/v1/update/readarr/updatefile?os=linux&runtime=netcore&arch=x64
 
 pkgname="readarr"
-pkgver=0.1.0.22
+pkgver=0.1.0.29
 pkgrel=1
 pkgdesc="eBook and audio book downloader for usenet and torrents."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -32,9 +32,9 @@ source=('readarr.service'
 sha512sums=('9a8a56929999a6c79c4acf816f88002c5cc1271ca28f5ba100a7fc76ade1aed3f7b5fd9a209d754bfff67bddf71fa1a5c6465040c1c38cffacfd2b49032e7a3a'
             '91d27251667d9ffa03b5ab1b5ba459889a62b6f26a575c1fa47bac323d7c31913ee46eab27057bdfecb9719ecb4eb3c3d631351d9fa6cda3ecbb501757d60a14'
             '99f8210754ea5ec742ba6b0b9f05c8312237cb0225bc0d28a2a8ee8362b464da0880499b64ea58c84b64c0eb727748c3c15630cedb8785d7d94d856c76cf17eb')
-sha512sums_x86_64=('bfca7bb7c2515aa74bfaa680d33e57c30511b457c795a60f6bc049f1f9d2e2d0555171e09ef99991d02bcbb1b5767d515e0badd39947f173ba7f5768fe629bb7')
-sha512sums_aarch64=('ff254b838c4dde70a372589770a382a7a3451fe25cc912bead05a9e67beba19f2302454543c21740a055cf2808ea7b80a9fe32e8ae0eb9287df54b38f7afcb8b')
-sha512sums_armv7h=('5e037fc3e0aa9b9e18176dd5f6d7a4364c086fbaa75469bc03c6956a670becef6c42c94a37c63ccb41965bf27f6edcd13e2a9d147f486d45b84b8d59390a5df3')
+sha512sums_x86_64=('06aaf303afb7dd9a290af26f17a82a19dfd161430e6d110a729dabb8dacbede2599873b9cd5b113c5a6e18e2db5469a00a6fb4627f6f6dabe3323f07f9de14ac')
+sha512sums_aarch64=('224b3d024d68a217c399a3f5e1267808f81b525ca409525ff665ef729af13bb36dc95ee44f6e52c72f3e9f6efc2ddaa0ea94b2ae1913aaa1e1fd2e3471539abf')
+sha512sums_armv7h=('0a3352e85425687ea1a12fe5a26d487baa14ca4f07cc41e62b1472916f9ea0cee182424995271548f7b02497a6816e7ebfac704255096dad33bd43281bb1a719')
 
 
 
