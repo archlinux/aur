@@ -8,7 +8,7 @@ url="https://www.niisi.ru/kumir/index.htm"
 arch=('x86_64')
 license=('GPL2')
 makedepends=('git' 'cmake' 'python')
-depends=('qt5-base', 'qt5-svg', 'qt5-x11extras', 'qt5-script', 'qt5-tools')
+depends=('qt5-base' 'qt5-svg' 'qt5-x11extras' 'qt5-script' 'qt5-tools')
 replaces=("kumir")
 
 build() {

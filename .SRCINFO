@@ -1,11 +1,18 @@
 pkgbase = kumir2-git
 	pkgdesc = An educational programming language and IDE in Russian schools
-	pkgver = 08.06.2019
+	pkgver = 19.04.2020
 	pkgrel = 1
 	url = https://www.niisi.ru/kumir/index.htm
 	arch = x86_64
 	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = python
 	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-x11extras
+	depends = qt5-script
+	depends = qt5-tools
 	replaces = kumir
 
 pkgname = kumir2-git
