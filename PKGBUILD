@@ -1,7 +1,7 @@
 # Maintainer: Marc Plano-Lesay <marc.planolesay@gmail.com>
 
 pkgname="bazelisk"
-pkgver="1.3.0"
+pkgver="1.4.0"
 pkgrel="1"
 pkgdesc="A user-friendly launcher for Bazel."
 arch=("i686" "x86_64")
@@ -10,7 +10,7 @@ url="https://github.com/bazelbuild/bazelisk"
 makedepends=("bazel" "git")
 
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=("b10d3e3bb5e34c0c0c64c289022589ea7e166158f64b2b515a277304cb458ed9")
+sha256sums=("4d20541b39de1fe38a5b888cdd44d8111a40586ef2bda026f82ab0df46c70a97")
 
 build() {
   cd bazelisk-$pkgver
