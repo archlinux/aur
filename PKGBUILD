@@ -2,10 +2,10 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=shortwave-git
-pkgver=0.0.2.r0.ga22cc20
+pkgver=1.0.1.r21.gf38f79b
 pkgrel=1
 pkgdesc="Find and listen to internet radio stations"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://gitlab.gnome.org/World/Shortwave"
 license=('GPL3')
 depends=('gst-plugins-bad'
