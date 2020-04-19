@@ -1,6 +1,8 @@
 post_install() {
   update-desktop-database -q /usr/share/applications
-  echo 'Please execute "materialize-bin --init" afterwards to initialize the wineprefix'
+  echo ' '
+  echo 'Before running materialize-bin please execute "materialize-bin --init" for every user who wants to use this software.'
+  echo ' '
 }
 
 post_upgrade() {
@@ -8,7 +10,7 @@ post_upgrade() {
 }
 
 post_remove() {
-  post_install $1
+  update-desktop-database -q /usr/share/applications
 }
 
 # vim:set ts=2 sw=2 et:
