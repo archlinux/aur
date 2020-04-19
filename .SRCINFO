@@ -1,7 +1,7 @@
 pkgbase = heasoft
 	pkgdesc = NASA high energy astrophysics library
-	pkgver = 6.27
-	pkgrel = 3
+	pkgver = 6.27.1
+	pkgrel = 1
 	url = https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/
 	install = heasoft.install
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = heasoft
 	depends = readline
 	depends = libxpm
 	depends = libidn
-	source = https://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/lheasoft6.27/heasoft-6.27src_no_xspec_modeldata.tar.gz
-	sha256sums = a2359c2c765828eb9c1782769398e2a1f83cbcd3d46fb1be6b59a89b847cc5d4
+	source = https://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/lheasoft6.27.1/heasoft-6.27.1src_no_xspec_modeldata.tar.gz
+	sha256sums = 6186f518a68397a10d3bbd0ecb624e583c213a372b2d9db01f41d8e0ca874c9a
 
 pkgname = heasoft
 
