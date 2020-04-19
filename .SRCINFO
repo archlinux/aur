@@ -1,7 +1,7 @@
 pkgbase = lld7
 	pkgdesc = Linker from the LLVM project.
 	pkgver = 7.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lld.llvm.org/
 	arch = x86_64
 	license = custom:University of Illinois/NCSA Open Source License

@@ -4,7 +4,7 @@
 pkgname=("lld7" "lld7-headers" "lld7-libs" "lld7-libs-static" "lld7-docs")
 pkgdesc="Linker from the LLVM project."
 pkgver="7.1.0"
-pkgrel="1"
+pkgrel="2"
 arch=("x86_64")
 url="https://lld.llvm.org/"
 license=("custom:University of Illinois/NCSA Open Source License")
