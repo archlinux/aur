@@ -1,5 +1,5 @@
 pkgbase = linux-drm-tip-git
-	pkgver = 5.6.891992.8ec40a15b9a9
+	pkgver = 5.8.915938.279672c3e071
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm-tip/
 	arch = x86_64
@@ -8,16 +8,16 @@ pkgbase = linux-drm-tip-git
 	makedepends = kmod
 	makedepends = libelf
 	makedepends = xmlto
-	makedepends = python-sphinx
+	makedepends = python-sphinx-2
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = linux-drm-tip-git::git+https://anongit.freedesktop.org/git/drm-tip.git#branch=drm-tip
+	source = linux-drm-tip-git::git://anongit.freedesktop.org/drm-tip#branch=drm-tip
 	source = config
 	sha256sums = SKIP
-	sha256sums = 1c084a9526b2b2c55657301e2ed162b2da36f589f3030653f18588b09a4bc86c
+	sha256sums = 6ac452e2124f92747a57c5a50e11ca2f1e8112669845b4431311545c7fd2a36c
 
 pkgname = linux-drm-tip-git
 	pkgdesc = The kernel and modules
@@ -26,10 +26,14 @@ pkgname = linux-drm-tip-git
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
 
-pkgname = linux-drm-tip-git-headers
+pkgname = linux-drm-tip-headers-git
 	pkgdesc = Headers and scripts for building modules for the kernel
 
-pkgname = linux-drm-tip-git-docs
+pkgname = linux-drm-tip-docs-git
 	pkgdesc = Documentation for the kernel
 
