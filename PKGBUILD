@@ -2,9 +2,9 @@
 # Maintainer: Hy Goldsher <hyness-at-freshlegacycode-dot-org>
 pkgname=davmail
 pkgver=5.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a POP/IMAP/SMTP/Caldav/LDAP gateway for the exchange service"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="http://$pkgname.sourceforge.net/"
 license=('GPL')
 makedepends=('unzip')
