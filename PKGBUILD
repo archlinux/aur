@@ -4,7 +4,7 @@ pkgname=wasi-sdk-bin
 _pkgname=wasi-sdk
 pkgver=10.0
 _pkgver_major=10
-pkgrel=1
+pkgrel=2
 pkgdesc="WASI-enabled WebAssembly C/C++ toolchain"
 arch=('x86_64')
 url="https://github.com/WebAssembly/wasi-sdk"
@@ -19,7 +19,7 @@ sha512sums=('768074d7dcc769d03ed35aef73bb5c5c01272fddc4943e03a7d7e933da28104b119
             '5501477a6fb5ab5c98f40dff76a3f8da1e3ad62881e456ef2665410248f2d4c2c45f3722ca3706efef2b219e6c17ecb4aa3221d84d44017f17388320db525692')
 
 package() {
-    _clang_version=9.0.1
+    _clang_version=$(clang --version | grep version | cut -d" " -f3)
     cd $srcdir
     mkdir -p "$pkgdir/opt/wasi-sdk" "$pkgdir/usr/lib/clang/${_clang_version}/"
 
