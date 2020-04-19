@@ -1,0 +1,11 @@
+[Unit]
+Description=gatling web server
+After=syslog.target
+After=network.target
+
+[Service]
+PIDFile=/run/gatling.pid
+ExecStart=gatling -V -D -S -F -u nobody -c /srv/http
+
+[Install]
+WantedBy=multi-user.target

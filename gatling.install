@@ -1,0 +1,15 @@
+post_install() {
+	[ ! -f /srv/http/index.html ] && echo "<html><body><h2>Server online.</h2></body></html>" >/srv/http/index.html
+	[ ! -d /srv/ftp ] && mkdir -m 775 /srv/ftp && chown ftp.ftp /srv/ftp
+	echo
+	echo "*** USAGE ***"
+	echo
+	echo "'systemctl start gatling.service'     starts the HTTP server."
+	echo "'systemctl start gatling-ftp.service' starts the FTP server."
+	echo "'systemctl start gatling-smb.service' starts the SMB server."
+	echo "Web server root is /srv/http, FTP server root is /srv/ftp."
+	echo
+}
+
+post_upgrade() {
+}

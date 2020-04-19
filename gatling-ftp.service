@@ -1,0 +1,11 @@
+[Unit]
+Description=gatling FTP server
+After=syslog.target
+After=network.target
+
+[Service]
+PIDFile=/run/gatling-ftp.pid
+ExecStart=gatling -H -V -D -S -f -u ftp -c /srv/ftp
+
+[Install]
+WantedBy=multi-user.target
