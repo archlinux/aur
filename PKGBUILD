@@ -20,7 +20,7 @@ options=()
 install=
 changelog=
 source=("$pkgname-$pkgver.tar.xz")
-sha256sums=('6022c9e0ee130ccc43b8b028b9e307e9745f50f1fb4e8dfd7a39e40f08f9f4e7')
+sha256sums=('deba96ab663c67e5a9d46b1cf4088a4ac4860404e3ed8105fc077252567b8d1c')
 noextract=()
 validpgpkeys=()
 
