@@ -21,6 +21,7 @@ pkgbase = openjk-git
 	source = openjkmp.desktop
 	source = openja.desktop
 	source = openjo.desktop
+	source = sdl2-cmake.patch
 	sha256sums = SKIP
 	sha256sums = 3e9d36b3f982cc29fb3e4385ddc46e431be9fa045b32a811346f4254fa8d372c
 	sha256sums = 0e82e720777eeb2043c2c25cdbce702c6d4ca077543aedfe51e5c4e96cf03969
@@ -28,6 +29,7 @@ pkgbase = openjk-git
 	sha256sums = d3ad7dd270e57d36a22caef21bff17f2eb4acb0ad9087f6a17ca4a0bf9c566fc
 	sha256sums = 698792f86b75311a5c96d0b1310d97e242107559d341ea23a705f259e20a5ec2
 	sha256sums = 08812c7d1791b86a842401ecc54f29117d3d8b77369ad04db520561d57df41dd
+	sha256sums = 2e1af0df37e69553731e1e18e10483735f31463a6dd856ae26aebb50ae97a734
 
 pkgname = openjk-git
 

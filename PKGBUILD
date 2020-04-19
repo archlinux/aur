@@ -21,7 +21,8 @@ source=(
   'openjo.png'
   'openjkmp.desktop'
   'openja.desktop'
-  'openjo.desktop')
+  'openjo.desktop'
+  'sdl2-cmake.patch')
 sha256sums=(
   'SKIP'
   '3e9d36b3f982cc29fb3e4385ddc46e431be9fa045b32a811346f4254fa8d372c'
@@ -30,23 +31,24 @@ sha256sums=(
   'd3ad7dd270e57d36a22caef21bff17f2eb4acb0ad9087f6a17ca4a0bf9c566fc'
   '698792f86b75311a5c96d0b1310d97e242107559d341ea23a705f259e20a5ec2'
   '08812c7d1791b86a842401ecc54f29117d3d8b77369ad04db520561d57df41dd'
+  '2e1af0df37e69553731e1e18e10483735f31463a6dd856ae26aebb50ae97a734'
 )
 
 pkgver() {
-	cd "${pkgname}"
-
-  printf "r%s.%s"                  \
-    "$(git rev-list --count HEAD)" \
+    cd "$pkgname"
+    
+    printf "r%s.%s"                  \
+    "$(git rev-list --count HEAD)"   \
     "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "${pkgname}"
-    git revert 5203023 -n --no-edit 
+    cd "$pkgname"
+    patch -p1 -i "$srcdir/sdl2-cmake.patch"
 }
 
 build() {
-  cd "${pkgname}"
+  cd "$pkgname"
 
   mkdir -p build
   cd build
@@ -60,7 +62,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}/build"
+  cd "$pkgname/build"
 
   _jkarch="${CARCH}"
   echo "${_jkarch}"

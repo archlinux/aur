@@ -1,0 +1,26 @@
+diff --git a/code/CMakeLists.txt b/code/CMakeLists.txt
+index 3c844d1e7..6f60c1d2e 100644
+--- a/code/CMakeLists.txt
++++ b/code/CMakeLists.txt
+@@ -90,6 +90,8 @@ if(BuildSPEngine OR BuildJK2SPEngine)
+ 			)
+ 	else()
+ 		find_package(SDL2 REQUIRED CONFIG)
++		get_target_property(SDL2_INCLUDE_DIRS SDL2::SDL2 INTERFACE_INCLUDE_DIRECTORIES)
++		get_target_property(SDL2_LIBRARIES SDL2::SDL2 IMPORTED_LOCATION_NOCONFIG)
+ 		set(SPEngineIncludeDirectories ${SPEngineIncludeDirectories} ${SDL2_INCLUDE_DIRS})
+ 		set(SPEngineLibraries ${SPEngineLibraries} ${SDL2_LIBRARIES})
+ 	endif()
+diff --git a/codemp/CMakeLists.txt b/codemp/CMakeLists.txt
+index a55ddf789..be3765cd2 100644
+--- a/codemp/CMakeLists.txt
++++ b/codemp/CMakeLists.txt
+@@ -397,6 +397,8 @@ if(BuildMPEngine)
+ 			)
+ 	else()
+ 		find_package(SDL2 REQUIRED CONFIG)
++		get_target_property(SDL2_INCLUDE_DIRS SDL2::SDL2 INTERFACE_INCLUDE_DIRECTORIES)
++		get_target_property(SDL2_LIBRARIES SDL2::SDL2 IMPORTED_LOCATION_NOCONFIG)
+ 		set(MPEngineIncludeDirectories ${MPEngineIncludeDirectories} ${SDL2_INCLUDE_DIRS})
+ 		set(MPEngineLibraries ${MPEngineLibraries} ${SDL2_LIBRARIES})
+ 	endif()
