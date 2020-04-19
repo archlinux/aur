@@ -1,12 +1,14 @@
 # Maintainer: zer0def <zer0def@github>
 pkgname=lens-bin
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The Kubernetes IDE (previously Kontena Lens)'
 arch=('x86_64')
-url='https://github.com/lensapp/lens'
+url='https://k8slens.dev'
 license=('MIT')
 depends=('libxss' 'libxtst')
+provides=('lens')
+conflicts=('lens')
 
 source=(
   "https://github.com/lensapp/lens/releases/download/v${pkgver}/Lens-${pkgver}.AppImage"
