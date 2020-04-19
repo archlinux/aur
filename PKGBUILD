@@ -1,5 +1,6 @@
-# Maintainer: Stephen Cox: stephencoxmail -at- gmail com
-# Maintainer: Alexey Stukalov: astukalov -t- gmail com
+# Maintainer: Kaixiang Huang: kxhuang0 -at- gmail.com
+# Contributor: Stephen Cox: stephencoxmail -at- gmail com
+# Contributor: Alexey Stukalov: astukalov -t- gmail com
 # Contributor: Ignat Harczuk: ignathe -at- gmail com
 # Contributor: Mark Wells: mwellsa -at- gmail com
 # Contributor: Simone Riva: siomone.rva -a- gmail com
@@ -14,7 +15,7 @@
 # intel-compiler-base:          Intel C/C++ compiler and base libs
 # intel-fortran-compiler:       Intel Fortran compiler and base libs"
 # intel-ipp:                    Intel Integrated Performance Primitives
-# intel-mkl:                    Intel Math Kernel Library (Intel® MKL)
+# intel-mkl_psxe:               Intel Math Kernel Library (Intel® MKL)
 # intel-mpi:                    Intel Message passing interface (MPI)
 # intel-tbb_psxe:               Intel Threading Building Blocks (TBB)
 # intel-vtune-profiler:         Intel Vtune Profiler
@@ -44,7 +45,7 @@ pkgname=('intel-common-libs'
          'intel-compiler-base'
          'intel-fortran-compiler'
          'intel-ipp'
-         'intel-mkl'
+         'intel-mkl_psxe'
          'intel-mpi'
          'intel-tbb_psxe'
          'intel-advisor'
@@ -86,24 +87,24 @@ _remove_static_objects_ipp=false
 ########################################
 
 _year='2020'
-_v_a='0'
-_v_b='166'
+_v_a='1'
+_v_b='217'
 # year, version a and version b found in /opt/intel/compilers_and_libraries_YEAR_A_B
 
-_update=''
+_update='1'
 
 pkgrel=1
 
 _sp='cluster_edition'
-_icc_ver='19.1.0'
-_vtune_ver='2020.0.0.605129'
-_inspector_ver='2020.0.0.603904'
-_advisor_ver='2020.0.0.604394'
+_icc_ver='19.1.1'
+_vtune_ver='2020.1.0.607630'
+_inspector_ver='2020.1.0.604266'
+_advisor_ver='2020.1.0.605410'
 
 pkgver=${_year}.${_v_a}.${_v_b}
 
 # package download folders
-_dir_nr='16225'
+_dir_nr='16526'
 
 options=(strip libtool staticlibs)
 
@@ -135,7 +136,7 @@ source=(
   'EULA.txt'
 )
 
-sha256sums=('573b1d20707d68ce85b70934cfad15b5ad9cc14124a261c17ddd7717ba842c64'
+sha256sums=('fd11d8de72b2bd60474f8bce7b463e4cbb2255969b9eaf24f689575aa2a2abab'
             '0704025fdfe40e4fce08e88b641128310c3a3b51332668aab60fb815b424f52b'
             '12f932f99e6d3ee9dd828b95e630f096a9e58707db39bea15fba22a1ad80f211'
             '63b12c66d9c8c2310a7bbd5206c82ba9667fb6ffb3dc7e3f9304a17ed8c8fbcd'
@@ -516,13 +517,15 @@ package_intel-ipp() {
   ln -s ./${_composer_xe_dir}/linux/ipp/ ${pkgdir}/opt/intel/ipp
 }
 
-package_intel-mkl() {
+package_intel-mkl_psxe() {
 
   set_build_vars
 
   pkgdesc="Intel Math Kernel Library (Intel® MKL)"
   depends=("intel-common-libs=$pkgver")
   optdepends=("intel-openmp: Intel OpenMP Implementation")
+  provides=('intel-mkl')
+  conflicts=('intel-mkl')
   install=intel-mkl.install
   backup=('etc/intel-mkl-th.conf')
 
