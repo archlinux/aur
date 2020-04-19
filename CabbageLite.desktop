@@ -7,4 +7,4 @@ Categories=AudioVideo;Audio;Multimedia
 Exec=/usr/bin/CabbageLite
 Terminal=false
 StartupNotify=false
-Icon=/usr/share/icons/hicolor/48x48/apps/cabbage.png
+Icon=/usr/share/icons/hicolor/512x512/apps/cabbage.png
