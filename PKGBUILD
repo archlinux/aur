@@ -3,7 +3,7 @@
 _pkgbase=amd-sfh-hid
 pkgname="${_pkgbase}-dkms"
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 _patchfile="${_pkgbase}-${pkgver}-${pkgrel}.patch"
 pkgdesc="Experimental HID driver modules for the AMD Sensor Fusion Hub (DKMS)"
 arch=('i686' 'x86_64')
@@ -11,18 +11,17 @@ url="https://github.com/conqp/linux.git"
 license=('GPL2')
 depends=('dkms')
 makedepends=('git')
-source=("linux-sfh::${url}#branch=amd-sfh#tag=${_pkgbase}-${pkgver}"
+source=("linux-sfh::git+${url}#tag=${_pkgbase}-${pkgver}"
         'dkms.conf')
 sha256sums=('SKIP'
-            'aac46663193f08c6331b76faa8752b08b3169fe586da337f662c0e43428d94fb'
-            '345bebda48d6dda26f8f0c8282f7c276f946fb14d089b831817eb01fd6ea5dce')
+            '18630528fbfc741113082bd6cf11da6d7ce430314b4cd3d56e0e7a3b26866505')
 
 package() {
 	local DEST="${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
 
 	install -dm 755 "${DEST}"
 
-	for file in drivers/hid/amd-sfh-hid/*; do
+	for file in linux-sfh/drivers/hid/amd-sfh-hid/*; do
 		install -m 640 "${file}" "${DEST}"
 	done
 
