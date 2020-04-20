@@ -1,15 +1,15 @@
 pkgbase = archivemount
 	pkgdesc = FUSE based filesystem for mounting compressed archives
-	pkgver = 0.8.12
-	pkgrel = 2
+	pkgver = 0.9.1
+	pkgrel = 1
 	url = https://www.cybernoia.de/software/archivemount.html
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = fuse
 	depends = libarchive
-	source = https://www.cybernoia.de/software/archivemount/archivemount-0.8.12.tar.gz
-	sha256sums = 247e475539b84e6d2a13083fd6df149995560ff1ea92fe9fdbfc87569943cb89
+	source = https://www.cybernoia.de/software/archivemount/archivemount-0.9.1.tar.gz
+	sha256sums = c529b981cacb19541b48ddafdafb2ede47a40fcaf16c677c1e2cd198b159c5b3
 
 pkgname = archivemount
 
