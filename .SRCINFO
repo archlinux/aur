@@ -1,7 +1,7 @@
 pkgbase = arm-linux-gnueabihf-musl
 	pkgdesc = Lightweight implementation of C standard library
 	pkgver = 1.1.24
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.musl-libc.org/
 	arch = i686
 	arch = x86_64
