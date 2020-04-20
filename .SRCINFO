@@ -1,6 +1,6 @@
 pkgbase = navidrome-bin
 	pkgdesc = Music Server and Streamer compatible with Subsonic/Airsonic
-	pkgver = 0.14.5
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://www.navidrome.org/
 	arch = x86_64
@@ -12,14 +12,14 @@ pkgbase = navidrome-bin
 	depends = ffmpeg
 	provides = navidrome
 	conflicts = navidrome
-	source_x86_64 = https://github.com/deluan/navidrome/releases/download/v0.14.5/navidrome_0.14.5_Linux_x86_64.tar.gz
-	md5sums_x86_64 = 372f42c3656164bd1a5e91500b529397
-	source_armv6h = https://github.com/deluan/navidrome/releases/download/v0.14.5/navidrome_0.14.5_Linux_armv6.tar.gz
-	md5sums_armv6h = 3250f757862ffa892d71ac4108e33c14
-	source_armv7h = https://github.com/deluan/navidrome/releases/download/v0.14.5/navidrome_0.14.5_Linux_armv7.tar.gz
-	md5sums_armv7h = 53ce747fb83c5b119858ee0524770cd2
-	source_aarch64 = https://github.com/deluan/navidrome/releases/download/v0.14.5/navidrome_0.14.5_Linux_arm64.tar.gz
-	md5sums_aarch64 = 945720c13b111046a045a7938d4ebf15
+	source_x86_64 = https://github.com/deluan/navidrome/releases/download/v0.15.0/navidrome_0.15.0_Linux_x86_64.tar.gz
+	md5sums_x86_64 = dfae861073d265852325aaa06394fae1
+	source_armv6h = https://github.com/deluan/navidrome/releases/download/v0.15.0/navidrome_0.15.0_Linux_armv6.tar.gz
+	md5sums_armv6h = 1c96e6d3b35dfacf5f1af6352f25374b
+	source_armv7h = https://github.com/deluan/navidrome/releases/download/v0.15.0/navidrome_0.15.0_Linux_armv7.tar.gz
+	md5sums_armv7h = d73863bfa6bcec739a35da1793fdff80
+	source_aarch64 = https://github.com/deluan/navidrome/releases/download/v0.15.0/navidrome_0.15.0_Linux_arm64.tar.gz
+	md5sums_aarch64 = f87f762307168343276e4ae43793cb68
 
 pkgname = navidrome-bin
 
