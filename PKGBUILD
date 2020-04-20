@@ -24,6 +24,7 @@ noextract=()
 sha256sums=('b3972940cb0dbb8cf9e16caffaf188779bb87a67ca71f629ee983ce31114b723')
 
 prepare() {
+	rm -rf "$pkgname-$pkgver"
 	mv "${pkgname#python-}.py-$pkgver" "$pkgname-$pkgver" || true
 }
 
