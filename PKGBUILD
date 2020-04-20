@@ -2,7 +2,7 @@
 pkgname=intel-caffe-git
 _srcname=intel-caffe
 pkgver=1.1.6
-pkgrel=16
+pkgrel=17
 pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
 url="https://github.com/intel/caffe"
@@ -41,6 +41,9 @@ prepare() {
     sed -i 's/CV_LOAD_IMAGE_GRAYSCALE/cv::IMREAD_GRAYSCALE/g' src/caffe/test/test_io.cpp
     sed -i 's/CV_LOAD_IMAGE_COLOR/cv::IMREAD_COLOR/g' src/caffe/util/io.cpp
     sed -i 's/CV_LOAD_IMAGE_GRAYSCALE/cv::IMREAD_GRAYSCALE/g' src/caffe/util/io.cpp
+    sed -i 's/CV_CAP_PROP_FRAME_COUNT/cv::CAP_PROP_FRAME_COUNT/g' src/caffe/video_data_layer.cpp
+    sed -i 's/CV_CAP_PROP_POS_FRAMES/cv::CAP_PROP_POS_FRAMES/g' src/caffe/video_data_layer.cpp
+
     cd -
 
     mkdir -p build
