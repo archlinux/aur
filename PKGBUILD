@@ -2,8 +2,7 @@
 pkgname=osdlyrics-git
 provides=(osdlyrics)
 conflicts=(osdlyrics osdlyrics-pedrohlc)
-_pkgver=0.5.0
-pkgver=0.5.0.r926.818bac8
+pkgver=0.5.5.rc2.r0.g818bac8
 pkgrel=1
 pkgdesc="Standalone lyrics fetcher/displayer (windowed and OSD mode). Supports MPRIS1/2 players, and MPD."
 arch=(i686 x86_64)
@@ -22,7 +21,7 @@ md5sums=(SKIP)
 
 pkgver() {
     cd "$srcdir/$provides"
-    printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build()
