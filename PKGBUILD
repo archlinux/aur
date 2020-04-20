@@ -2,21 +2,16 @@
 pkgname=intel-caffe-git
 _srcname=intel-caffe
 pkgver=1.1.6
-pkgrel=28
+pkgrel=29
 pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
 url="https://github.com/intel/caffe"
 license=('BSD')
 depends=(
         'boost-libs' 'protobuf' 'google-glog' 'gflags' 'hdf5'
-        'python' 'boost' 'cython' 'python-numpy' 'python-scipy'
-        'python-matplotlib' 'ipython' 'python-networkx' 'python-nose'
-        'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
-        'python-yaml' 'python-pillow' 'python-six' 'python-scikit-image'
-        'openexr' 'opencv>=4.0.0' 'gtk3' 'openmp'
+        'boost' 'openexr' 'opencv>=4.0.0' 'gtk3' 'openmp'
 )
-optdepends=('openblas: OpenBLAS for backend linear algebra ops',
-            'cblas: Use CBLAS for backend linear algebra ops',
+optdepends=('openblas: Use OpenBLAS for backend linear algebra ops',
             'intel-mkl: Use Intel MKL for backend linear algebra ops'
 )
 makedepends=('cmake')
