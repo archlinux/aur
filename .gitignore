@@ -1,0 +1,7 @@
+# ignore everything
+*
+
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.desktop

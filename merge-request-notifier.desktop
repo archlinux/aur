@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Merge Request Notifier
+Exec="/opt/merge-request-notifier/merge-request-notifier" %U
+Terminal=false
+Type=Application
+Icon=merge-request-notifier
+StartupWMClass=Merge Request Notifier
+Comment=This app shows your merge requests grouped by projects and WIP status. It is accessible from the system tray.
+Categories=Development;
