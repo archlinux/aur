@@ -1,0 +1,19 @@
+pkgbase = jigasi-git
+	pkgdesc = WebRTC JavaScript video conferences
+	pkgver = r492.31112b0
+	pkgrel = 1
+	url = https://github.com/jitsi/jigasi
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = maven
+	optdepends = jicofo
+	optdepends = jitsi-videobridge
+	optdepends = jitsi-meet
+	backup = etc/jitsi/jigasi/config
+	backup = opt/jigasi/jigasi-home/sip-communicator.properties
+	source = jigasi-git::git+https://github.com/jitsi/jigasi
+	sha256sums = SKIP
+
+pkgname = jigasi-git
+
