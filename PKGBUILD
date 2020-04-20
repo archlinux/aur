@@ -1,4 +1,4 @@
-# Maintainer: TC <crt@archlinux.email>
+# Maintainer: AK <crt@archlinux.email>
 pkgname=openssh-ldap-publickey
 pkgver=a3c1846
 pkgrel=1
