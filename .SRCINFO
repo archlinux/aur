@@ -1,0 +1,13 @@
+pkgbase = libdlibxx
+	pkgdesc = A generalized C++ wrapper around the POSIX dynamic libraries functions dlopen, dlsym, dlclose, etc.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/m-renaud/libdlibxx
+	arch = x86_64
+	license = BSD 2-Clause
+	makedepends = git
+	source = libdlibxx::git+https://github.com/m-renaud/libdlibxx.git#tag=v1.1.0
+	sha256sums = SKIP
+
+pkgname = libdlibxx
+
