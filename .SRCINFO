@@ -1,0 +1,21 @@
+pkgbase = astah-uml-bin
+	pkgdesc = Lightweight and easy-to-use UML2.x modeler (Trial)
+	pkgver = 8.2.0.b743f7.0
+	pkgrel = 1
+	url = https://astah.net/products/astah-uml
+	install = astah-uml.install
+	arch = any
+	license = custom
+	makedepends = shared-mime-info
+	makedepends = gtk-update-icon-cache
+	makedepends = desktop-file-utils
+	depends = java-runtime=8
+	provides = astah-uml
+	conflicts = astah-community
+	conflicts = astah-professional
+	options = !emptydirs
+	source = http://cdn.change-vision.com/files/astah-uml-8.2.0.b743f7-0.noarch.rpm
+	sha256sums = e384286a1b7cf0ed592d84be52c473652ff88716972e7235a8a4daddf0018f1f
+
+pkgname = astah-uml-bin
+
