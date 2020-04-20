@@ -2,7 +2,7 @@
 pkgname=intel-caffe-git
 _srcname=intel-caffe
 pkgver=1.1.6
-pkgrel=27
+pkgrel=28
 pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
 url="https://github.com/intel/caffe"
@@ -37,6 +37,7 @@ prepare() {
     sed -i 's/                      GIT_TAG/                      UPDATE_COMMAND \/bin\/true\n                      GIT_TAG/' cmake/MKLDNN.cmake
     sed -i 's/ -Werror//' CMakeLists.txt
     sed -i 's/set(BUILD_SHARED_LIBS on)//' CMakeLists.txt
+    sed -i 's/set(BUILD_SHARED_LIBS off)//' CMakeLists.txt
 
     sed -i 's/CV_LOAD_IMAGE_COLOR/cv::IMREAD_COLOR/g' src/caffe/layers/*.cpp src/caffe/test/*.cpp src/caffe/util/*.cpp
     sed -i 's/CV_LOAD_IMAGE_GRAYSCALE/cv::IMREAD_GRAYSCALE/g' src/caffe/test/*.cpp src/caffe/util/*.cpp
