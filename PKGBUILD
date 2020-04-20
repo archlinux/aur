@@ -1,31 +1,31 @@
 # Maintainer: Paragoumba <paragoumba at protonmail dot com>
 pkgname=open-joystick-display
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful and easy to use streamer-ready overlay for your joystick or gamepad. Completely free and open source."
-arch=("any")
+arch=("x86_64")
 url="https://ojdproject.com/"
-license=('custom:Open Joystick Display License')
-makedepends=() # TODO ("yarn")
-checkdepends=() # TODO
+license=('BSD')
+depends=(libxss gtk3 nss)
+makedepends=('nvm')
 changelog= # TODO "CHANGELOG.md"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/KernelZechs/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('20c6af63306b719983b34c487b65c734ee0f6805fd8c2942630ce1c3ec8a0214')
 
 prepare() {
-	# TODO WIP 
 	cd "$pkgname-$pkgver"
-	echo "Prepare $pkgdir $srcdir"
+	source /usr/share/nvm/init-nvm.sh
+	nvm install 12
+	nvm use 12
+	npm install yarn gulp && rm package-lock.json && node_modules/yarn/bin/yarn install	
 }
 
 build() {
-	# TODO WIP
 	cd "$pkgname-$pkgver"
-	gulp build && gulp rebuild-electron && yarn electron-builder --linux dir
+	node_modules/gulp/bin/gulp.js build && node_modules/gulp/bin/gulp.js rebuild-electron && node_modules/yarn/bin/yarn electron-builder --linux dir
 }
 
 package() {
-	# TODO WIP
 	install -Dm 644 ../"$pkgname".desktop -t "$pkgdir"/usr/share/applications/
 	
 	cd "$pkgname-$pkgver"
