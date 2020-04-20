@@ -3,7 +3,7 @@
 pkgname=adguardhome
 _pkgname=AdGuardHome
 pkgver=0.101.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Network-wide ads and trackers blocking DNS server"
 arch=('x86_64')
 url="https://github.com/AdguardTeam/AdGuardHome"
@@ -14,7 +14,7 @@ $_pkgname.service
 makedepends=(go npm git)
 install=readme.install
 sha256sums=('924392f3659de076fa8c1200e90bbd74c214ef0869fcd580e8f226dafd84558c'
-            '9f47d9b2d7daad4b4db08d7cf8c10a7fb55323f40e06161a56e6fcf109f890cd')
+            '6a4d449f4749c5528cd324bb1bfa55090fb43a58dd3038f39f1ca9aed4a1b5ae')
 
 build(){
   cd "$_pkgname-$pkgver"
