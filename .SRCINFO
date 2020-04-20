@@ -1,6 +1,6 @@
 pkgbase = statping
 	pkgdesc = An easy to use Status Page for your websites and applications.
-	pkgver = 0.90.29
+	pkgver = 0.90.30
 	pkgrel = 1
 	url = https://statping.com/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = statping
 	makedepends = go.rice
 	makedepends = yarn
 	depends = glibc
-	source = statping-0.90.29.tar.gz::https://github.com/statping/statping/archive/v0.90.29.tar.gz
-	sha256sums = 2d870f6c28d7ce0782b06189eb7eecac338cdc762e6c1c7ec03fd3f05c706460
+	source = statping-0.90.30.tar.gz::https://github.com/statping/statping/archive/v0.90.30.tar.gz
+	sha256sums = 461c814b4d52fe839a38aaadee4a3c0ae6d1ec5d81f59e4c885bb627cd16e301
 
 pkgname = statping
 
