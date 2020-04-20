@@ -1,4 +1,4 @@
-# Maintainer: TC <crt@archlinux.email>
+# Maintainer: AK <crt@archlinux.email>
 pkgname=discord-irc
 _npmname='discord-irc'
 pkgver=2.8.1
