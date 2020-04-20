@@ -160,7 +160,7 @@ case "$ACTION" in
                 echo "Error: invalid action \"$ACTION\"." && exit 3
         ;;
 esac
-[ -z "$KRB5CC" ] && KRB5CC=/run/dhcpd.krb5cc
+[ -z "$KRB5CC" ] && KRB5CC=/tmp/dhcpd.krb5cc
 [ -z "$DOMAIN" ] && echo "Error: invalid domain." && exit 4
 [ -z "$HNAME" ] && [ "$ACTION" == "ADD" ] && \
      echo "Error: hostname not set." && exit 5

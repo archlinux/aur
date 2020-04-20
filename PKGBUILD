@@ -1,19 +1,19 @@
 # Maintainer: DJ Lucas <dj_AT_linuxfromscratch_DOT_org>
 
 pkgname=samba-dhcpd-update
-pkgver=20160426
+pkgver=20200420
 pkgrel=1
 arch=('any')
 pkgdesc="Allow dhcpd to update Samba DNS"
 url="n/a"
-depends=('samba>=4.0' 'dhcp')
+depends=('samba' 'dhcp')
 license=('MPL')
 source=('samba-dnsupdate.sh'
         'dhcpd-update-samba-dns.sh'
         'dhcpd-update-samba-dns.conf')
-sha256sums=('f08a0afe7440d317b722afe556098407482bd6c6dc81eca005d5b036187880e7'
+sha256sums=('574d91173235b242d682dc19b6e4e547242afb8ff6c9197b7d3fadbbfbe12ca4'
             '987b140911631809db70f9f7044700fec6c966e4da153da1c6d8a15d13632029'
-            'c71d4c58ca59436fba35cb64d861e6cfc9c9ae7218f0e5387f1f68bd38260bbc')
+            '90a500bc8680ae992e2b052b97d476e09b7a2fd55907870d6d385aa683fdc6d5')
 backup=('etc/dhcpd/dhcpd-update-samba-dns.conf')
 
 package() {
