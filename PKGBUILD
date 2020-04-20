@@ -23,7 +23,7 @@ pkgver() {
 package() {
 	cd "${srcdir}/${_pkgname}"
 	install -m755 -d "${pkgdir}/usr/share/themes"
-	./install_test.sh \
+	./install.sh \
 		 --dest "${pkgdir}/usr/share/themes" \
 		 --icon arch 
 }
