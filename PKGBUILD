@@ -2,14 +2,14 @@
 # based on Eugene Cherny's PKGBUILD 
 # builds the develop branch of cabbage against the master branch of juce
 pkgname=cabbage
-pkgrel=1 
+pkgrel=2 
 pkgver=2.3.39.git
 pkgdesc='A framework for audio software development'
 arch=('x86_64')
 url="http://cabbageaudio.com/"
 license=('GPLv3')
 makedepends=('freeglut' 'jack' 'libxcomposite' 'libxrandr' 'libxcursor'
-             'libx11' 'libxinerama' 'mesa' 'gtk3' 'vim' 'webkit2gtk' )
+             'libx11' 'libxinerama' 'mesa' )
 depends=('csound' 'csound-doc' 'steinberg-vst36')
 conflicts=('cabbage')
 provides=('cabbage')
