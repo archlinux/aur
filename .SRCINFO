@@ -1,0 +1,15 @@
+pkgbase = git-annex-metadata-gui
+	pkgdesc = Graphical interface for git-annex metadata commands
+	pkgver = 0.2.0
+	pkgrel = 0
+	url = https://github.com/alpernebbi/git-annex-metadata-gui
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = git-annex-adapter
+	depends = python-pyqt5
+	source = git-annex-metadata-gui-0.2.0.tar.gz::https://github.com/alpernebbi/git-annex-metadata-gui/archive/v0.2.0.tar.gz
+	sha256sums = 25f0c23439918223bf272a4efd168758dfe7a80919dcfff327a7e4a1672bc891
+
+pkgname = git-annex-metadata-gui
+
