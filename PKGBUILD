@@ -2,7 +2,7 @@
 
 pkgname=cmake-language-server
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python based cmake language server"
 arch=('any')
 url="https://github.com/regen100/cmake-language-server"
@@ -26,6 +26,7 @@ prepare() {
 	cd $pkgname-$pkgver
 
 	sed -i "s/from distutils.core import setup/from setuptools import setup/" setup.py
+	sed -i "s/pygls>=0.8.1,<0.9.0/pygls>=0.8.1/" setup.py
 }
 
 build() {
