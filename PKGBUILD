@@ -1,21 +1,21 @@
 # Maintainer Alex Mcmillan <linuxguy93@gmail.com>
 
 pkgname=linvst2-bin
-pkgver=2.8
-pkgrel=4
+pkgver=2.8.1
+pkgrel=1
 pkgdesc="enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's"
 arch=('x86_64')
 url="https://github.com/osxmidi/LinVst"
-depends=('wine' 'python>=3.8')
+depends=('wine')
 makedepends=('git')
 optdepends=('linvstmanager: GUI for managing LinVST bridges')
 conflicts=('linvst' 'linvst-stable' 'linvst2')
 replaces=('linvst' 'linvst-stable' 'linvst2')
-source=("https://github.com/osxmidi/LinVst/releases/download/2.8/LinVst-${pkgver}-Debian-Stretch.zip")
-sha256sums=('7bd075b8e208f633d20173b066542855ade04e9605e189f32a982330998ca51c')
+source=("https://github.com/osxmidi/LinVst/releases/download/2.8/LinVst-${pkgver}-Manjaro.zip")
+sha256sums=('76dd35e9fd49e71debed6346c9d812401ecfd358e29f35a10e452c1ceba448c1')
 
 package() {
-	cd "${srcdir}/LinVst-${pkgver}-Debian-Stretch/embedded/"
+	cd "${srcdir}/LinVst-${pkgver}-Manjaro/embedded/"
 	for file in *.so; do
         	install -Dm755 $file $pkgdir/usr/bin/$file
 	done
