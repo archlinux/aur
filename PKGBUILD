@@ -52,7 +52,6 @@ build() {
   cd pycharm-$_pkgver
 
   # compile PyDev debugger used by PyCharm to speedup debugging
-  python2 plugins/python/helpers/pydev/setup_cython.py build_ext --build-temp build --build-lib .
   python3 plugins/python/helpers/pydev/setup_cython.py build_ext --build-temp build --build-lib .
   
   rm -rf bin/fsnotifier{,-arm} lib/libpty/linux/x86
