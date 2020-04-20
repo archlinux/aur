@@ -7,7 +7,7 @@ pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc="systemd (git version)"
-pkgver=244.r941.ge06d7d0fb0
+pkgver=245.r630.g842a362c3a
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -16,7 +16,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
-             'bash-completion')
+             'bash-completion' 'p11-kit')
 options=('!strip')
 source=('git+https://github.com/systemd/systemd'
         '0001-Use-Arch-Linux-device-access-groups.patch'
@@ -74,7 +74,6 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-
 build() {
   local _timeservers=({0..3}.arch.pool.ntp.org)
   local _nameservers=(
@@ -128,13 +127,15 @@ package_systemd-git() {
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' 'systemd-libs' 'libidn2' 'libidn2.so' 'lz4' 'pam' 'libelf'
-           'libseccomp' 'util-linux' 'xz' 'pcre2' 'audit')
-  provides=("${_pkgbase}=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
+           'libseccomp' 'util-linux' 'xz' 'pcre2' 'audit' 'libp11-kit')
+  provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
+            "${_pkgbase}=$pkgver")
   replaces=('nss-myhostname' 'systemd-tools' 'udev')
-  conflicts=("${_pkgbase}" 'nss-myhostname' 'systemd-tools' 'udev')
+  conflicts=('nss-myhostname' 'systemd-tools' 'udev'
+            "${_pkgbase}")
   optdepends=('libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
-              'systemd-sysvcompat-git: symlink package to provide sysvinit binaries'
+              'systemd-sysvcompat: symlink package to provide sysvinit binaries'
               'polkit: allow administration as unprivileged user'
               'curl: machinectl pull-tar and pull-raw')
   backup=(etc/pam.d/systemd-user
@@ -212,8 +213,10 @@ package_systemd-libs-git() {
   pkgdesc='systemd client libraries (git version)'
   depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz')
   license=('LGPL2.1')
-  provides=('systemd-libs' 'libsystemd' 'libsystemd.so' 'libudev.so')
-  conflicts=('systemd-libs' 'libsystemd')
+  provides=('libsystemd' 'libsystemd.so' 'libudev.so'
+            'systemd-libs')
+  conflicts=('libsystemd'
+             'systemd-libs')
   replaces=('libsystemd')
 
   install -d -m0755 "$pkgdir"/usr
@@ -224,8 +227,10 @@ package_systemd-resolvconf-git() {
   pkgdesc='systemd resolvconf replacement (for use with systemd-resolved, git version)'
   license=('LGPL2.1')
   depends=("${pkgbase}")
-  provides=('systemd-resolvconf' 'openresolv' 'resolvconf')
-  conflicts=('systemd-resolvconf' 'openresolv')
+  provides=('openresolv' 'resolvconf'
+            'systemd-resolvconf')
+  conflicts=('openresolv'
+             'systemd-resolvconf')
 
   install -d -m0755 "$pkgdir"/usr/bin
   ln -s resolvectl "$pkgdir"/usr/bin/resolvconf
@@ -238,9 +243,10 @@ package_systemd-resolvconf-git() {
 package_systemd-sysvcompat-git() {
   pkgdesc='sysvinit compat for systemd (git version)'
   license=('GPL2')
+  conflicts=('sysvinit'
+             'systemd-sysvcompat')
   depends=("${pkgbase}")
-  provides=('systemd-sysvcompat')
-  conflicts=('systemd-sysvcompat' 'sysvinit')
+  provides=('systemd-sysvcompat')  
 
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
     build/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8

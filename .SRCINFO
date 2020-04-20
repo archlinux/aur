@@ -1,6 +1,6 @@
 pkgbase = systemd-git
 	pkgdesc = systemd (git version)
-	pkgver = 244.r941.ge06d7d0fb0
+	pkgver = 245.r630.g842a362c3a
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -34,6 +34,7 @@ pkgbase = systemd-git
 	makedepends = kexec-tools
 	makedepends = libxkbcommon
 	makedepends = bash-completion
+	makedepends = p11-kit
 	options = !strip
 	source = git+https://github.com/systemd/systemd
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
@@ -100,19 +101,20 @@ pkgname = systemd-git
 	depends = xz
 	depends = pcre2
 	depends = audit
+	depends = libp11-kit
 	optdepends = libmicrohttpd: remote journald capabilities
 	optdepends = quota-tools: kernel-level quota management
-	optdepends = systemd-sysvcompat-git: symlink package to provide sysvinit binaries
+	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	optdepends = curl: machinectl pull-tar and pull-raw
-	provides = systemd=244.r941.ge06d7d0fb0
 	provides = nss-myhostname
-	provides = systemd-tools=244.r941.ge06d7d0fb0
-	provides = udev=244.r941.ge06d7d0fb0
-	conflicts = systemd
+	provides = systemd-tools=245.r630.g842a362c3a
+	provides = udev=245.r630.g842a362c3a
+	provides = systemd=245.r630.g842a362c3a
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
+	conflicts = systemd
 	replaces = nss-myhostname
 	replaces = systemd-tools
 	replaces = udev
@@ -138,29 +140,29 @@ pkgname = systemd-libs-git
 	depends = libgcrypt
 	depends = lz4
 	depends = xz
-	provides = systemd-libs
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
-	conflicts = systemd-libs
+	provides = systemd-libs
 	conflicts = libsystemd
+	conflicts = systemd-libs
 	replaces = libsystemd
 
 pkgname = systemd-resolvconf-git
 	pkgdesc = systemd resolvconf replacement (for use with systemd-resolved, git version)
 	license = LGPL2.1
 	depends = systemd-git
-	provides = systemd-resolvconf
 	provides = openresolv
 	provides = resolvconf
-	conflicts = systemd-resolvconf
+	provides = systemd-resolvconf
 	conflicts = openresolv
+	conflicts = systemd-resolvconf
 
 pkgname = systemd-sysvcompat-git
 	pkgdesc = sysvinit compat for systemd (git version)
 	license = GPL2
 	depends = systemd-git
 	provides = systemd-sysvcompat
-	conflicts = systemd-sysvcompat
 	conflicts = sysvinit
+	conflicts = systemd-sysvcompat
 
