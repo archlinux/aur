@@ -1,4 +1,4 @@
-# Maintainer:  TC <crt@archlinux.email>
+# Maintainer:  AK <crt@archlinux.email>
 # Contributor: Leif Thande <leif.thande@gmail.com>
 pkgname=memfetch
 pkgver=0.05b
