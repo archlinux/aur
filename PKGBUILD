@@ -2,7 +2,7 @@
 
 pkgname=pulumi
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern Infrastructure as Code'
 arch=('x86_64')
 url="https://github.com/$pkgname/$pkgname"
@@ -22,24 +22,27 @@ _plugins=(
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+
   # Build the `pulumi` executable
-  pushd "pkg" > /dev/null && go build \
-    -trimpath \
+  cd "${srcdir}/${pkgname}-${pkgver}/pkg"
+  go build \
     -ldflags "-X github.com/pulumi/pulumi/pkg/v2/version.Version=${pkgver} -extldflags ${LDFLAGS}" \
     -o "${srcdir}/${pkgname}-${pkgver}/bin/${pkgname}" \
     "./cmd/${pkgname}" \
-  && popd > /dev/null
 
   # Build the plugins
-  for plugin in ${_plugins[@]}; do
-    plugin_name="${plugin##*/}"
-
-    pushd "sdk" > /dev/null && go build \
-      -trimpath \
-      -ldflags "-X github.com/pulumi/pulumi/pkg/version.Version=$pkgver -extldflags $LDFLAGS" \
+  cd "${srcdir}/${pkgname}-${pkgver}/sdk"
+  for plugin in "${_plugins[@]}"; do
+    plugin_name=${plugin##*/}
+    go build \
+      -ldflags "-X github.com/pulumi/pulumi/pkg/v2/version.Version=${pkgver} -extldflags ${LDFLAGS}" \
       -o "${srcdir}/${pkgname}-${pkgver}/bin/${plugin_name}" \
-      "./${plugin##sdk/}" \
-    && popd > /dev/null
+      "./${plugin##sdk/}"
   done
 }
 
