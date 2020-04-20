@@ -16,7 +16,7 @@ pkgbase = jdk14-openj9-bin
 	provides = java-runtime-headless-openjdk=14
 	options = !strip
 	source = https://github.com/AdoptOpenJDK/openjdk14-binaries/releases/download/jdk-14.0.1%2B7_openj9-0.20.0/OpenJDK14U-jdk_x64_linux_openj9_14.0.1_7_openj9-0.20.0.tar.gz
-	sha256sums = e5536df914af2a36f3612658827a3ed9fa041ea747ae9ea48c7c91da218dbc6a
+	sha256sums = 2350592f4b0db1439fdd48d4fa7e05b270f271dcc79b2c7f174489ee2f6b14c1
 
 pkgname = jdk14-openj9-bin
 
