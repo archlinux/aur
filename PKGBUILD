@@ -1,12 +1,12 @@
 # Maintainer: Mykola Dimura <mykola.dimura@gmail.com>
 pkgname=mingw-w64-async++-git
-pkgver=r161.8ba15ed
+pkgver=r187.172ca3f
 pkgrel=1
 pkgdesc="Async++ is a lightweight concurrency framework for C++11. (mingw-w64)"
 arch=('any')
 url='https://github.com/Amanieu/asyncplusplus'
 license=('MIT')
-depends=('mingw-w64-crt' 'mingw-w64-gcc')
+depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("${pkgname%-git}::git+https://github.com/Amanieu/asyncplusplus.git#branch=master")

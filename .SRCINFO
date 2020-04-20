@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-async++-git
 	pkgdesc = Async++ is a lightweight concurrency framework for C++11. (mingw-w64)
-	pkgver = r161.8ba15ed
+	pkgver = r187.172ca3f
 	pkgrel = 1
 	url = https://github.com/Amanieu/asyncplusplus
 	arch = any
@@ -8,7 +8,6 @@ pkgbase = mingw-w64-async++-git
 	makedepends = mingw-w64-cmake
 	makedepends = git
 	depends = mingw-w64-crt
-	depends = mingw-w64-gcc
 	options = !strip
 	options = !buildflags
 	options = staticlibs
@@ -16,4 +15,4 @@ pkgbase = mingw-w64-async++-git
 	sha1sums = SKIP
 
 pkgname = mingw-w64-async++-git
- 
+
