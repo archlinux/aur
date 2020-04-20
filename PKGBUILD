@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sword-svn
-pkgver=3700
+pkgver=r3722
 pkgrel=1
 pkgdesc="Libraries for Bible programs - svn-version"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname%-svn}"
   local ver="$(svnversion)"
-  printf "%s" "${ver//[[:alpha:]]}"
+  printf "r%s" "${ver//[[:alpha:]]}"
 }
 
 build() {
