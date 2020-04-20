@@ -15,14 +15,14 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=11.0.0_r351457.8a9d48b46d4
+pkgver=11.0.0_r351931.a9b137f9ffb
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=(   'git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'python-sphinx'
                             'ocaml' 'ocaml-ctypes' 'ocaml-findlib'
-                            'python-sphinx' 'python-recommonmark' 'swig' 'python' 'python-six' 'lua' 'ocl-icd' 'opencl-headers' 'z3')
+                            'python-sphinx' 'python-recommonmark' 'swig' 'python' 'python-six' 'lua' 'ocl-icd' 'opencl-headers' 'z3' 'jsoncpp')
 checkdepends=('python-psutil')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
               'llvm-config.h')
@@ -70,31 +70,30 @@ prepare() {
 }
 
 build() {
-
     cd _build
     cmake "$srcdir"/llvm-project/llvm  -G Ninja \
         -D CMAKE_C_FLAGS="${CFLAGS}" \
         -D CMAKE_CXX_FLAGS="${CXXFLAGS}" \
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX=/usr \
+        -D LLVM_BINUTILS_INCDIR=/usr/include \
         -D PYTHON_EXECUTABLE=/usr/bin/python \
         -D LLVM_APPEND_VC_REV=ON \
+        -D LLVM_VERSION_SUFFIX="" \
         -D LLVM_HOST_TRIPLE=$CHOST \
         -D LLVM_ENABLE_RTTI=ON \
         -D LLVM_ENABLE_FFI=ON \
         -D FFI_INCLUDE_DIR:PATH="$(pkg-config --variable=includedir libffi)" \
         -D LLVM_BUILD_LLVM_DYLIB=ON \
         -D LLVM_LINK_LLVM_DYLIB=ON \
-        -D LLVM_POLLY_LINK_INTO_TOOLS=OFF \
         -D LLVM_INSTALL_UTILS=ON \
         -D LLVM_BUILD_DOCS=ON \
         -D LLVM_ENABLE_DOXYGEN=OFF \
         -D LLVM_ENABLE_SPHINX=ON \
         -D SPHINX_OUTPUT_HTML:BOOL=OFF \
         -D SPHINX_WARNINGS_AS_ERRORS=OFF \
-        -D LLVM_BINUTILS_INCDIR=/usr/include \
-        -D LLVM_VERSION_SUFFIX="" \
         -D POLLY_ENABLE_GPGPU_CODEGEN=ON \
+        -D LLVM_POLLY_LINK_INTO_TOOLS=OFF \
         -D LLDB_USE_SYSTEM_SIX=1 \
         -D LLVM_ENABLE_PROJECTS="polly;lldb;lld;compiler-rt;clang-tools-extra;clang"
 
@@ -114,7 +113,7 @@ check() {
 
 package_llvm-git() {
     pkgdesc="LLVM development version. includes clang and many other tools"
-    depends=("llvm-libs-git=$pkgver-$pkgrel" 'perl' 'python-six' 'z3')
+    depends=("llvm-libs-git=$pkgver-$pkgrel" 'perl')
     optdepends=('python: for scripts'
                            'python-setuptools: for using lit = LLVM Integrated Tester'
     )
@@ -178,7 +177,7 @@ package_llvm-git() {
 
 package_llvm-libs-git() {
     pkgdesc="runtime libraries for llvm-git"
-    depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2')
+    depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2' 'z3' 'lua')
     provides=(aur-llvm-libs-git llvm-libs)
     conflicts=('llvm-libs')
 
