@@ -35,8 +35,8 @@ _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 package() {
   # Install
   install -d "${pkgdir}/${_jvmdir}"
-  cd jdk-${_jdkver}+${_buildvershort}
-  cp -a bin demo include jmods lib release "${pkgdir}/${_jvmdir}/"
+  cd jdk-${_jdkfullver}+${_buildvershort}
+  cp -a bin include jmods lib release "${pkgdir}/${_jvmdir}/"
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"
   ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}/${_jvmdir}/lib/security/cacerts"
