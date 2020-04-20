@@ -1,7 +1,7 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 _srcname=RankCheck
 pkgname=rankcheck
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 epoch=
 pkgdesc="A tool for Awesomenauts which automatically fetches and displays the leaderboard ranks of each player in the current match"
@@ -22,17 +22,18 @@ conflicts=()
 backup=()
 options=()
 source=("https://github.com/Marukyu/$_srcname/archive/v$pkgver.tar.gz"
-	"https://rankcheck.marukyu.de/files/rankcheck.dat")
-md5sums=('ac3175e8728baa5560298dd8e995943c'
-         '5946964d98fa7c349acfc5f5c1b43f2b')
+	"https://rankcheck.marukyu.de/files/rankcheck.dat"
+	"https://sourceforge.net/projects/tinyfiledialogs/files/v3.4/tinyfiledialogs-3.4.3.zip")
+md5sums=('655683def77850ac017557a355daf1fb'
+         '5946964d98fa7c349acfc5f5c1b43f2b'
+         'ea04d7a40a47d1aebc6b5ae31e56b3bf')
 
 prepare() {
 	cd "$_srcname-$pkgver"
 
-	if [[ -d build ]]; then
-		rm -rf build
-	fi
-	mkdir build
+	rmdir src/Shared/External/tinyfiledialogs/
+	ln -s "$srcdir/tinyfiledialogs/" src/Shared/External/
+	mkdir -p build
 }
 
 build() {
