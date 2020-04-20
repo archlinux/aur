@@ -5,8 +5,8 @@
 pkgname=compiler-rt-headers
 _pkgname=compiler-rt
 pkgver=10.0.0
-pkgrel=1
-pkgdesc="Compiler runtime libraries for clang"
+pkgrel=2
+pkgdesc="Compiler runtime headers for clang"
 arch=('x86_64')
 url="https://compiler-rt.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')

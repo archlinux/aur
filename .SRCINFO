@@ -1,7 +1,7 @@
 pkgbase = compiler-rt-headers
-	pkgdesc = Compiler runtime libraries for clang
+	pkgdesc = Compiler runtime headers for clang
 	pkgver = 10.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://compiler-rt.llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
