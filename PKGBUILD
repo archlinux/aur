@@ -2,7 +2,7 @@
 
 pkgname=terragrunt
 pkgver=0.23.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A thin wrapper for Terraform that provides extra tools for working with multiple Terraform modules"
 url="https://github.com/gruntwork-io/terragrunt"
 arch=('x86_64')
@@ -33,7 +33,7 @@ package() {
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Install the executable
-  install -D -m 0644 \
+  install -D -m 0755 \
     "${srcdir}/${pkgname}-${pkgver}/${pkgname}-${pkgver}" \
     "${pkgdir}/usr/bin/${pkgname}"
 }
