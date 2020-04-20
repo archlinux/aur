@@ -2,7 +2,7 @@
 pkgname=intel-caffe-git
 _srcname=intel-caffe
 pkgver=1.1.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
 url="https://github.com/intel/caffe"
@@ -31,6 +31,8 @@ prepare() {
     git checkout ${pkgver}
     echo 'rls-v0.19' > mkldnn.commit
     sed -i 's/git reset --hard/git checkout/' Makefile.mkldnn
+    sed -i 's/https:\/\/github.com\/01org\/mkl-dnn.git/https:\/\/github.com\/oneapi-src\/oneDNN.git/g' Makefile.mkldnn
+    sed -i 's/https:\/\/github.com\/intel\/mkl-dnn.git/https:\/\/github.com\/oneapi-src\/oneDNN.git/g' cmake/MKLDNN.cmake
     cd -
 
     mkdir -p build
