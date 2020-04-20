@@ -1,7 +1,7 @@
 pkgbase = jami-ubuntu-latest
 	pkgdesc = Free and universal communication platform which preserves the users` privacy and freedoms (gtk frontend)
 	pkgver = 20200318.1.f44e7d0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jami.net
 	arch = x86_64
 	license = GPL3
@@ -22,6 +22,7 @@ pkgbase = jami-ubuntu-latest
 	depends = qrencode
 	depends = qt5-base
 	depends = webkit2gtk
+	depends = ayatana-ido
 	provides = jami-gnome
 	provides = libjamiclient
 	conflicts = jami-gnome
