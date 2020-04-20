@@ -1,0 +1,15 @@
+pkgbase = git-annex-adapter
+	pkgdesc = Call git-annex commands from Python
+	pkgver = 0.2.1
+	pkgrel = 0
+	url = https://github.com/alpernebbi/git-annex-adapter
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = git-annex
+	depends = python-pygit2
+	source = https://github.com/alpernebbi/git-annex-adapter/archive/v0.2.1.tar.gz
+	sha256sums = 218736e8eee4b9200a4a76aae7e0f0c98feb1e91ca6dcf0132c83e8c2614bd3b
+
+pkgname = git-annex-adapter
+
