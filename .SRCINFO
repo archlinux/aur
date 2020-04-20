@@ -1,0 +1,17 @@
+pkgbase = ignition-plugin
+	pkgdesc = Library for registering plugin libraries and dynamically loading them at runtime.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/ignitionrobotics/ign-plugin
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = ignition-cmake
+	source = https://github.com/ignitionrobotics/ign-plugin/archive/ignition-plugin_1.1.0.tar.gz
+	md5sums = 26092f1aa1c9eff0393e0e965b1b8ddc
+	sha1sums = d2e0901c7d7c746ab33c360908aaee79673e8240
+
+pkgname = ignition-plugin
+
