@@ -13,6 +13,9 @@ pkgbase = protonvpn-linux-gui
 	depends = python-gobject
 	depends = gtk3
 	depends = libappindicator-gtk3
+	depends = protonvpn-cli-ng
+	conflicts = protonvpn-cli-ng
+	conflicts = protonvpn-cli-ng-git
 	source = https://github.com/calexandru2018/protonvpn-linux-gui/archive/v2.0.6.tar.gz
 	md5sums = 88022b19711009383f45efc1e0934abf
 
