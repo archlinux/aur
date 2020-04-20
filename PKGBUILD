@@ -2,7 +2,7 @@
 
 pkgname=nats-cclient-git
 _pkgname=nats.c
-pkgver=r421.c7aa654
+pkgver=r485.cb773ae
 pkgrel=1
 pkgdesc="NATS & NATS Streaming - C Client"
 arch=('i686' 'x86_64')
@@ -27,6 +27,7 @@ build() {
 	mkdir build && cd build
 	cmake -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
+				-DNATS_BUILD_TLS_USE_OPENSSL_1_1_API=ON \
         -DCMAKE_BUILD_TYPE=Release ..
 	make
 }

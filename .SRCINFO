@@ -1,6 +1,6 @@
 pkgbase = nats-cclient-git
 	pkgdesc = NATS & NATS Streaming - C Client
-	pkgver = r421.c7aa654
+	pkgver = r485.cb773ae
 	pkgrel = 1
 	url = https://github.com/nats-io/nats.c
 	arch = i686
