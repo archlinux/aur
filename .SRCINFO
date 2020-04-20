@@ -1,10 +1,12 @@
 pkgbase = git-identity-git
 	pkgdesc = Manage your identity in Git
 	pkgver = latest
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/madx/git-identity
 	arch = any
 	license = custom:WTFPL
+	makedepends = git
+	makedepends = bash-completion
 	depends = git
 	optdepends = zsh: for zsh completion
 	provides = git-identity
