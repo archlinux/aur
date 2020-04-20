@@ -1,8 +1,8 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.1.0.r59.g7ea80e7
-pkgrel=2
+pkgver=0.1.0.r74.g4907e35
+pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=('any')
 url="https://github.com/sile-typesetter/${pkgname%-git}"
@@ -57,12 +57,13 @@ source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname%-git}"
-    git describe --long --abbrev=7 --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$pkgname"
+    git describe --long --abbrev=7 --tags |
+        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package () {
-    cd "${pkgname%-git}"
+    cd "$pkgname"
     install -dm755 "$pkgdir/usr/share"
     cp -a ./ "$pkgdir/usr/share/${pkgname%-git}"
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
