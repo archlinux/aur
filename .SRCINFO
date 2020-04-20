@@ -1,6 +1,6 @@
 pkgbase = protonvpn-linux-gui
 	pkgdesc = Unofficial GUI client for ProtonVPN
-	pkgver = 2.0.5
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://github.com/calexandru2018/protonvpn-linux-gui
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = protonvpn-linux-gui
 	depends = python-gobject
 	depends = gtk3
 	depends = libappindicator-gtk3
-	source = https://github.com/calexandru2018/protonvpn-linux-gui/archive/v2.0.5.tar.gz
-	md5sums = bc06f894fb2755601c5d8dc287123230
+	source = https://github.com/calexandru2018/protonvpn-linux-gui/archive/v2.0.6.tar.gz
+	md5sums = 88022b19711009383f45efc1e0934abf
 
 pkgname = protonvpn-linux-gui
 

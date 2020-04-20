@@ -1,7 +1,7 @@
 # Maintainer: Alexandru Cheltutior <acrandom@pm.me>
 
 pkgname=protonvpn-linux-gui
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="Unofficial GUI client for ProtonVPN"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("GPL3")
 depends=("python>=3.5" "python-requests>=2.23.0" "python-configparser>=4.0.2" "openvpn" "python-gobject" "gtk3" "libappindicator-gtk3")
 makedepends=("python-setuptools")
 source=("https://github.com/calexandru2018/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('bc06f894fb2755601c5d8dc287123230')
+md5sums=('88022b19711009383f45efc1e0934abf')
 
 package() {
 	cd "$pkgname-$pkgver"
