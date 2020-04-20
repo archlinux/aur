@@ -31,6 +31,6 @@ package() {
   install -Dm 644 "$srcdir"/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
 
   # Symlink binary
-  install -d "$pkgdir"/usr/bin/$pkgname
-  ln -s "$pkgdir"/opt/$pkgname/kontena-lens "$pkgdir"/usr/bin/
+  install -d "$pkgdir"/usr/bin
+  ln -s /opt/$pkgname/kontena-lens "$pkgdir"/usr/bin/
 }
