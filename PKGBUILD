@@ -1,7 +1,7 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname=feedbackd
-pkgver=0.0.0+git20200305
+pkgver=0.0.0+git20200420
 pkgrel=1
 pkgdesc="A daemon to provide haptic feedback on events"
 url="https://source.puri.sm/Librem5/feedbackd"
@@ -19,7 +19,7 @@ provides=(libfeedback
           purism-feedbackd
           purism-libfeedback)
 source=("https://source.puri.sm/Librem5/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('299854dc81470f0aeb808f58662d379b641a3f6f983d8e8e1ff2d5889d494e16')
+sha256sums=('4c50d72654b6716fd12843ad4e9460a4020bbd1ced958c211c06b0f48bebe49f')
 
 build() {
 	rm -rf build
