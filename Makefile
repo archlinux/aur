@@ -8,7 +8,7 @@ build:
 	makepkg -f
 
 prepare:
-	sed -ie "s|md5sums.*|`makepkg -g 2>&1|grep md5sums`|g" PKGBUILD
+	sed -i "s|md5sums.*|`makepkg -g 2>&1|grep md5sums`|g" PKGBUILD
 	makepkg --printsrcinfo > .SRCINFO
 
 clean:
