@@ -2,7 +2,7 @@
 pkgname=intel-caffe-git
 _srcname=intel-caffe
 pkgver=1.1.6
-pkgrel=18
+pkgrel=19
 pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
 url="https://github.com/intel/caffe"
@@ -43,6 +43,17 @@ prepare() {
     sed -i 's/CV_LOAD_IMAGE_GRAYSCALE/cv::IMREAD_GRAYSCALE/g' src/caffe/util/io.cpp
     sed -i 's/CV_CAP_PROP_FRAME_COUNT/cv::CAP_PROP_FRAME_COUNT/g' src/caffe/layers/video_data_layer.cpp
     sed -i 's/CV_CAP_PROP_POS_FRAMES/cv::CAP_PROP_POS_FRAMES/g' src/caffe/layers/video_data_layer.cpp
+    sed -i 's/CV_FILLED/cv::FILLED/g' src/caffe/util/*.cpp
+    sed -i 's/CV_FOURCC/cv::FOURCC/g' src/caffe/util/*.cpp
+    sed -i 's/CV_BGR2GRAY/cv::COLOR_BGR2GRAY/g' src/caffe/util/*.cpp
+    sed -i 's/CV_GRAY2BGR/cv::COLOR_GRAY2BGR/g' src/caffe/util/*.cpp
+    sed -i 's/CV_BGR2YCrCb/cv::COLOR_BGR2YCrCb/g' src/caffe/util/*.cpp
+    sed -i 's/CV_YCrCb2BGR/cv::COLOR_YCrCb2BGR/g' src/caffe/util/*.cpp
+    sed -i 's/CV_IMWRITE_JPEG_QUALITY/cv::IMWRITE_JPEG_QUALITY/g' src/caffe/util/*.cpp
+    sed -i 's/CV_BGR2HSV/cv::COLOR_BGR2HSV/g' src/caffe/util/*.cpp
+    sed -i 's/CV_BGR2Lab/cv::COLOR_BGR2Lab/g' src/caffe/util/*.cpp
+    sed -i 's/CV_HSV2BGR/cv::COLOR_HSV2BGR/g' src/caffe/util/*.cpp
+    sed -i 's/CV_LOAD_IMAGE_COLOR/cv::IMREAD_COLOR/g' src/caffe/util/*.cpp
 
     cd -
 
