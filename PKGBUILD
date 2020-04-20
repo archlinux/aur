@@ -1,6 +1,6 @@
 # Maintainer: Eugene Dvoretsky <radioxoma at gmail dot com>
 pkgname=pilorama-git
-pkgver=2.1.r4.g82e5f99
+pkgver=2.1.r18.gd47de29
 pkgrel=1
 epoch=
 pkgdesc="Advanced timeboxing pomodoro timer"
@@ -9,7 +9,7 @@ url="https://github.com/eplatonoff/pilorama"
 license=('GPLv3')
 groups=()
 depends=('qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-multimedia')
-makedepends=('git' 'libicns')
+makedepends=('git')
 checkdepends=()
 optdepends=()
 provides=('pilorama')
@@ -29,11 +29,6 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$srcdir/$pkgname/src/assets/app_icons"
-  icns2png -x -s 48x48 icon.icns  # Extract icon_48x48x32.png
-}
-
 build() {
     cd "$srcdir/$pkgname"
     qmake src/pilorama.pro 
@@ -43,13 +38,13 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
     make INSTALL_ROOT="$pkgdir" install
-    # install -Dm644 "$srcdir/$pkgname/src/assets/app_icons/icon_16x16x32.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/pilorama.png"
-    # install -Dm644 "$srcdir/$pkgname/src/assets/app_icons/icon_32x32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/pilorama.png"
-    install -Dm644 "$srcdir/$pkgname/src/assets/app_icons/icon_48x48x32.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/pilorama.png"  # Important
-    # install -Dm644 "$srcdir/$pkgname/src/assets/app_icons/icon_128x128x32.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/pilorama.png"
-    # install -Dm644 "$srcdir/$pkgname/src/assets/app_icons/icon_256x256x32.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/pilorama.png"
-    # install -Dm644 "$srcdir/$pkgname/src/assets/app_icons/icon_512x512x32.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/pilorama.png"
-    # install -Dm644 "$srcdir/$pkgname/src/assets/app_icons/hicolor/app.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/pilorama.svg"
+
+    for res in '8x8' '16x16' '20x20' '22x22' '24x24' '32x32' '36x36' '40x40' '42x42' '48x48' '64x64' '72x72' '80x80' '96x96' '192x192' '128x128' '256x256' '384x384' '512x512' ;
+      do
+        install -Dm644 "$srcdir/$pkgname/src/assets/app_icons/hicolor/${res}.png" "$pkgdir/usr/share/icons/hicolor/${res}/apps/pilorama.png"
+      done
+
+    install -Dm644 "$srcdir/$pkgname/src/assets/app_icons/hicolor/app.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/pilorama.svg"
     install -Dm644 "$srcdir/$pkgname/src/pilorama.desktop" -t "$pkgdir/usr/share/applications"
     install -Dm644 "$srcdir/$pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
