@@ -14,6 +14,7 @@ sha256sums=('13972a3a9b1871eb293793add083e9ff301f4bccca6a247aa21a70464cd905c5')
 _srcname=gmtrn
 
 build() {
+    export GOPATH="${srcdir}"
     cd ${_srcname}-${pkgver}/cmd/${pkgname}
     go build \
        -trimpath \
