@@ -4,6 +4,7 @@ pkgbase = libxft-bgra
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = x86_64
+	groups = modified
 	license = custom
 	makedepends = git
 	makedepends = pkgconfig
