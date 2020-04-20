@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
+	git checkout production
 	python setup.py build
 }
 
