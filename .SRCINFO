@@ -1,6 +1,6 @@
 pkgbase = nginx-unit
 	pkgdesc = Lightweight, dynamic, open-source server for diverse web applications.
-	pkgver = 1.15.0
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://unit.nginx.org/
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = nginx-unit
 	makedepends = ruby
 	makedepends = perl
 	makedepends = npm
-	source = https://unit.nginx.org/download/unit-1.15.0.tar.gz
+	source = https://unit.nginx.org/download/unit-1.17.0.tar.gz
 	source = unit.service
-	sha256sums = f8b231d02865b5695825a2a77ecbfd0cff33c0954c0d351d2d773d7e5f6237dd
+	sha256sums = 3f7e7c0b3cdd715bb5c0e010231a2987c56fbeadf23c7147632bc76be3cf0378
 	sha256sums = 8c9b2f732d6e50aa747aa7703303e5fff69f5abc6f5fc1741b774b422e029606
 
 pkgname = nginx-unitd
