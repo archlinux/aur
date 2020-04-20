@@ -2,7 +2,7 @@
 pkgname=intel-caffe-git
 _srcname=intel-caffe
 pkgver=1.1.6
-pkgrel=31
+pkgrel=32
 pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
 url="https://github.com/intel/caffe"
@@ -30,7 +30,7 @@ prepare() {
     sed -i 's/https:\/\/github.com\/intel\/mkl-dnn.git/https:\/\/github.com\/oneapi-src\/oneDNN.git/g' cmake/MKLDNN.cmake
     sed -i 's/\${NCORE}/2/g' cmake/MKLDNN.cmake
     sed -i 's/                      GIT_TAG/                      UPDATE_COMMAND \/bin\/true\n                      GIT_TAG/' cmake/MKLDNN.cmake
-    sed -i 's/ -Werror/ -lrt/' CMakeLists.txt
+    sed -i 's/ -Werror/ -lrt -lmpi/' CMakeLists.txt
     sed -i 's/set(BUILD_SHARED_LIBS on)//' CMakeLists.txt
     sed -i 's/set(BUILD_SHARED_LIBS off)//' CMakeLists.txt
     sed -i 's/set(LIBDIR lib64)/set(LIBDIR lib)/g' cmake/Dependencies.cmake
