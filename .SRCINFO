@@ -1,7 +1,7 @@
 pkgbase = vimiv-qt
 	pkgdesc = An image viewer with vim-like keybindings
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/karlch/vimiv-qt
 	arch = any
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = vimiv-qt
 	depends = python-pyqt5
 	optdepends = qt5-svg: for svg support
 	optdepends = python-piexif: for exif support
+	optdepends = qt5-imageformats: for additional image formats
 	provides = vimiv
 	conflicts = vimiv
 	conflicts = vimiv-git
