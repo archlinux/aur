@@ -1,0 +1,17 @@
+pkgbase = xdg-sound
+	pkgdesc = Command line XDG sound theme utilities
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/bbidulock/xdg-sound
+	arch = i686
+	arch = x86_64
+	groups = xde
+	license = GPL
+	makedepends = pkgconfig
+	depends = glib2
+	depends = libcanberra
+	source = https://github.com/bbidulock/xdg-sound/releases/download/0.9/xdg-sound-0.9.tar.lz
+	sha256sums = ce06180c41f9640741778a330186462178c7b3e2af830aac99ec1c35865425d0
+
+pkgname = xdg-sound
+
