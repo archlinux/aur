@@ -1,0 +1,23 @@
+pkgbase = leed
+	pkgdesc = Leed (short for Light Feed) is a minimalist RSS/ATOM aggregator which offers fast RSS consultation and non-intrusive features.
+	pkgver = 1.8.4
+	pkgrel = 1
+	url = https://github.com/LeedRSS/Leed
+	install = leed.install
+	arch = any
+	license = AGPL-3.0
+	makedepends = unzip
+	depends = php
+	depends = mariadb
+	optdepends = php-apache: to use the Apache web server
+	options = emptydirs
+	backup = etc/webapps/leed/apache.conf
+	source = leed-1.8.4.zip::https://github.com/LeedRSS/Leed/archive/v1.8.4.zip
+	source = apache.conf
+	source = leed.perm.sh
+	md5sums = e94088506f8e4fea6d9512e6e2bf718b
+	md5sums = 099b05b5761b964e60e8eb209f1fccf5
+	md5sums = 24cc8fa2aa47807bccb1c64d2f6b7198
+
+pkgname = leed
+

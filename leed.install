@@ -1,0 +1,14 @@
+post_install () {
+    set-leed-perm
+    echo "**********" 
+    echo "From your browser, go to the setup page install.php (eg your.domaine.fr/leed/install.php)"
+    echo "Once the installation is complete, remove the /usr/share/webapps/leed/install.php as a security measure."
+    echo "**********" 
+}
+
+post_upgrade() {
+    set-leed-perm
+    echo "**********" 
+    echo "Once the upgrade is complete, remove the /usr/share/webapps/leed/install.php as a security measure."
+    echo "**********" 
+}
