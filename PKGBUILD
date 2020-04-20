@@ -2,7 +2,7 @@
 
 pkgname=lib32-libyaml
 _pkgname=libyaml
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="YAML 1.1 library (32-bit)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('lib32-glibc' "${_pkgname}")
 makedepends=('gcc-multilib' 'lib32-gcc-libs')
 source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/yaml/libyaml/archive/${pkgver}.tar.gz")
-sha256sums=('e36ec947f89725e90e062eca39a8a8c88fdce4f83315ab942aa896627236421e')
+sha256sums=('02265e0229675aea3a413164b43004045617174bdb2c92bf6782f618f8796b55')
 
 prepare() {
   cd "${srcdir}/libyaml-${pkgver}"
