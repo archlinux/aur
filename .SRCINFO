@@ -1,6 +1,6 @@
 pkgbase = kcm-fcitx5-git
 	pkgdesc = KDE Config Module for Fcitx5
-	pkgver = r260.fe1120a
+	pkgver = r277.c932375
 	pkgrel = 1
 	url = https://github.com/fcitx/kcm-fcitx5
 	arch = i686
@@ -13,6 +13,8 @@ pkgbase = kcm-fcitx5-git
 	depends = fcitx5-qt5-git
 	depends = kconfigwidgets
 	depends = kitemviews
+	depends = kirigami2
+	depends = kpackage
 	provides = kcm-fcitx5
 	conflicts = kcm-fcitx5
 	source = git+https://github.com/fcitx/kcm-fcitx5.git
