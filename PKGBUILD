@@ -1,6 +1,6 @@
 # Maintainer: Adam Veldhousen adam@vdhsn.com
 pkgname=powerbar
-pkgver=makepkg
+pkgver=master
 pkgrel=1
 pkgdesc="Battery status module for Waybar"
 arch=('x86_64')
