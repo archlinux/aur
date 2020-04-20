@@ -3,12 +3,12 @@
 
 pkgname=powerline-go
 pkgver=1.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful, useful and fast prompt for your shell"
 arch=('x86_64')
 url="https://github.com/justjanne/powerline-go"
 license=('GPL3')
-makedepends=('go-pie' 'dep')
+makedepends=('go-pie' 'dep' 'git')
 optdepends=('powerline-fonts')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/justjanne/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('25d54855473c13348423d56406ebd0edc9318b3d4518d151994d90e49f496cb8')
