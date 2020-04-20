@@ -2,7 +2,7 @@
 pkgname=intel-caffe-git
 _srcname=intel-caffe
 pkgver=1.1.6
-pkgrel=25
+pkgrel=26
 pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
 url="https://github.com/intel/caffe"
@@ -36,6 +36,7 @@ prepare() {
     sed -i 's/\${NCORE}/1/g' cmake/MKLDNN.cmake
     sed -i 's/                      GIT_TAG/                      UPDATE_COMMAND \/bin\/true\n                      GIT_TAG/' cmake/MKLDNN.cmake
     sed -i 's/ -Werror//' CMakeLists.txt
+    sed -i 's/set(BUILD_SHARED_LIBS on)//' CMakeLists.txt
 
     sed -i 's/CV_LOAD_IMAGE_COLOR/cv::IMREAD_COLOR/g' src/caffe/layers/*.cpp src/caffe/test/*.cpp src/caffe/util/*.cpp
     sed -i 's/CV_LOAD_IMAGE_GRAYSCALE/cv::IMREAD_GRAYSCALE/g' src/caffe/test/*.cpp src/caffe/util/*.cpp
@@ -62,15 +63,16 @@ prepare() {
     CMAKE_BUILD_TYPE="Release" \
     cmake \
     -DCPU_ONLY=ON \
+    -DUSE_OPENCV=ON \
+    -DUSE_OPENMP=ON \
+    -DBUILD_SHARED_LIBS=OFF \
     -DBUILD_python=OFF \
     -DBUILD_matlab=OFF \
     -DBUILD_docs=OFF \
-    -DBUILD_python_layer=ON \
-    -DUSE_OPENCV=ON \
+    -DBUILD_python_layer=OFF \
     -DUSE_LEVELDB=OFF \
     -DUSE_LMDB=OFF \
     -DALLOW_LMDB_NOLOCK=OFF \
-    -DUSE_OPENMP=ON \
     -D python_version=3 \
     -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr \
     ../"${_srcname}"
