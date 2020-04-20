@@ -1,21 +1,22 @@
 # $Id$
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: 
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-beta
 _pkgname=firefox
-name=firefox-beta
-pkgver=76.0b3
+pkgver=76.0b6
 _pkgver=76.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/en-US/firefox/channel/#beta"
-depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
-         ffmpeg nss ttf-font libpulse)
+depends=(gtk3 libxt startup-notification mime-types dbus-glib ffmpeg nss
+         ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2
              python nodejs python2-psutil cbindgen nasm xorgproto)
@@ -27,18 +28,39 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 provides=("firefox=$pkgver")
 conflicts=('firefox-beta-bin')
 options=(!emptydirs !makeflags !strip)
-source=("http://ftp.mozilla.org/pub/firefox/releases/$pkgver/source/$_pkgname-$pkgver.source.tar.xz"
-		"$_pkgname.sh"
-        "$pkgname.desktop"
-        "$_pkgname-symbolic.svg")
-sha256sums=('0f556a29bb5648a33ba76559f4d5fec6a44818f2a85a6558dbf54e6772f027c5'
+source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/$_pkgname-$pkgver.source.tar.xz{,.asc}
+        0001-Use-remoting-name-for-GDK-application-names.patch
+	$_pkgname.sh
+        $pkgname.desktop)
+sha256sums=('94a64b424e818fe08041c964e98dc6f57810cb651b6af9f33cee8a0511ae049e'
+            'SKIP'
+            '5f7ac724a5c5afd9322b1e59006f4170ea5354ca1e0e60dab08b7784c2d8463c'
             '367100e5f66523a90c3792e2e0d0e2fe8a3c28748b905ce9f5f6b121343d7842'
-            'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd'
-            'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9')
+            'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd')
+validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
+
+# Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys. Feel free to contact foutrelis@archlinux.org for
+# more information.
+_google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
+
+# Mozilla API keys (see https://location.services.mozilla.com/api)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys. Feel free to contact heftig@archlinux.org for
+# more information.
+_mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
+
 
 prepare() {
   mkdir mozbuild
   cd firefox-$_pkgver
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
+  patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
+
+  echo -n "$_google_api_key" >google-api-key
+  echo -n "$_mozilla_api_key" >mozilla-api-key
 
   cat >.mozconfig <<END
 ac_add_options --enable-application=browser
@@ -48,7 +70,6 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
-
 export CC=clang
 export CXX=clang++
 export AR=llvm-ar
@@ -57,12 +78,18 @@ export RANLIB=llvm-ranlib
 
 # Branding
 ac_add_options --with-branding=browser/branding/aurora
-#ac_add_options --enable-update-channel=beta
+ac_add_options --enable-update-channel=beta
 ac_add_options --with-distribution-id=org.archlinux
+ac_add_options --with-unsigned-addon-scopes=app,system
+ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
-#export MOZ_TELEMETRY_REPORTING=0
-export MOZ_ADDON_SIGNING=1
-export MOZ_REQUIRE_SIGNING=0
+export MOZ_TELEMETRY_REPORTING=1
+export MOZ_REQUIRE_SIGNING=1
+
+# Keys
+ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
+ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
+ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 # System libraries
 ac_add_options --with-system-nspr
@@ -76,7 +103,6 @@ ac_add_options --enable-crashreporter
 ac_add_options --disable-gconf
 ac_add_options --disable-updater
 ac_add_options --disable-tests
-
 END
 }
 
@@ -86,17 +112,31 @@ build() {
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
 
-  ./mach configure
+  # LTO needs more open files
+  ulimit -n 4096
+
+  # -fno-plt with cross-LTO causes obscure LLVM errors
+  # LLVM ERROR: Function Import: link error
+  CFLAGS="${CFLAGS/-fno-plt/}"
+  CXXFLAGS="${CXXFLAGS/-fno-plt/}"
+
+  # Do 3-tier PGO
+  echo "Building instrumented browser..."
+  cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-profile-generate=cross
+END
   ./mach build
 
+  echo "Building symbol archive..."
+  ./mach buildsymbols
 }
 
 package() {
   cd firefox-$_pkgver
   DESTDIR="$pkgdir" ./mach install
 
-  _vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
-  install -Dm644 /dev/stdin "$_vendorjs" <<END
+  local vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
+  install -Dvm644 /dev/stdin "$vendorjs" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
@@ -108,11 +148,10 @@ pref("browser.shell.checkDefaultBrowser", false);
 
 // Don't disable our bundled extensions in the application directory
 pref("extensions.autoDisableScopes", 11);
-pref("extensions.shownSelectionUI", true);
 END
 
-  _distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
-  install -Dm644 /dev/stdin "$_distini" <<END
+  local distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
+  install -Dm644 /dev/stdin "$distini" <<END
 [Global]
 id=archlinux
 version=1.0
@@ -124,29 +163,42 @@ app.distributor.channel=$pkgname
 app.partner.archlinux=archlinux
 END
 
+local i theme=official
   for i in 16 22 24 32 48 64 128 256; do
-    install -Dm644 browser/branding/official/default$i.png \
+    install -Dvm644 browser/branding/$theme/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
-  install -Dm644 browser/branding/official/content/about-logo.png \
+  install -Dvm644 browser/branding/$theme/content/about-logo.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgname.png"
-  install -Dm644 browser/branding/official/content/about-logo@2x.png \
+  install -Dvm644 browser/branding/$theme/content/about-logo@2x.png \
     "$pkgdir/usr/share/icons/hicolor/384x384/apps/$pkgname.png"
-  install -Dm644 ../firefox-symbolic.svg \
+  install -Dvm644 browser/branding/$theme/content/identity-icons-brand.svg \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.svg"
 
-  install -Dm644 ../$pkgname.desktop \
+  install -Dvm644 ../$pkgname.desktop \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
+  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
 #!/bin/sh
 exec /usr/lib/$pkgname/firefox "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srf "$pkgdir/usr/bin/$pkgname" \
-    "$pkgdir/usr/lib/$pkgname/firefox-bin"
-}
+  ln -srfv "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/lib/$pkgname/firefox-bin"
 
+  # Use system certificates
+  local nssckbi="$pkgdir/usr/lib/$pkgname/libnssckbi.so"
+  if [[ -e $nssckbi ]]; then
+    ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
+  fi
+
+  if [[ -f "$startdir/.crash-stats-api.token" ]]; then
+    find . -name '*crashreporter-symbols-full.zip' -exec \
+      "$startdir/upload-symbol-archive" "$startdir/.crash-stats-api.token" {} +
+  else
+    find . -name '*crashreporter-symbols-full.zip' -exec \
+      cp -fvt "$startdir" {} +
+  fi
+}
