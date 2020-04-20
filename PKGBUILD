@@ -3,8 +3,8 @@
 _srcname=pypinfo
 
 pkgname=python-pypinfo
-pkgver=15.0.0
-pkgrel=2
+pkgver=16.0.0
+pkgrel=1
 pkgdesc="View PyPI download statistics with ease."
 arch=('any')
 url="https://github.com/ofek/pypinfo"
@@ -24,7 +24,7 @@ source=(
   "https://github.com/ofek/pypinfo/archive/${pkgver}.tar.gz"
 )
 sha256sums=(
-  '64de011de2e8fd61f57a555124b6b462f595cd0c08a239d009e397a1525d1ac4'
+  '87c4d5e007a57db51fbd5522a74531bab9b2593fba0cb2063e1f079226d5666c'
 )
 
 build() {
