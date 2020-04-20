@@ -29,7 +29,7 @@ makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspe
 optdepends=('gnome-control-center: System settings'
             'evolution-data-server: Evolution calendar integration')
 groups=(gnome)
-provides=(gnome-shell gnome-shell=$pkgver)
+provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
 conflicts=(gnome-shell)
 install=$pkgname.install
 _commit=a6783692c5f6307c0e2264201381ebfcb9c66c8c  # tags/3.36.1^31
