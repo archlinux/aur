@@ -1,6 +1,6 @@
 pkgbase = flashy
 	pkgdesc = Java tool to handle firmware and logic flashing for iniVation devices.
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://gitlab.com/inivation/dv/flashy/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = flashy
 	depends = libxi
 	depends = libxrender
 	depends = libxtst
-	source = http://release.inivation.com/flashy/flashy-linux-1.5.1.tar.gz
-	sha256sums = 5b2056b758ca005905e1cac2d02857b5a0a17c15e92c71ab41963dfe9d782637
+	source = http://release.inivation.com/flashy/flashy-linux-1.5.2.tar.gz
+	sha256sums = 1b148fe3ff4693aa4c027e8251cb478754d225abd35c9c8ee3b69f1a02b6ec9e
 
 pkgname = flashy
 
