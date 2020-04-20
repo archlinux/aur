@@ -2,8 +2,8 @@
 # Contributor: S Stewart <tda@null.net>
 # Special thanks to RyanTheAllmighty for making hyper-appimage
 pkgname="gdlauncher-classic"
-pkgver="0.13.0"
-pkgrel=1
+pkgver="0.13.1"
+pkgrel=2
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://github.com/CrankySupertoon/GDLauncher-Classic"
@@ -11,8 +11,8 @@ license=('MIT')
 install="gdlauncher-classic.install"
 depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3' 'rust')
 
-sha256sums_x86_64=('83cb84935a7b31d64cb4a6c82c938c2a6ab0b59d1db2bdb0791ae16b27580d73'
-                   '9f15151603ea384e395f3cc8bda12c45a179b4ef0d8be9537ddd7b3d47d93e25')
+sha256sums_x86_64=('0ee4d9c7b0336584b3d7a85e1f46395cb54127e1650be5236cb89341b4211fa4'
+                   '72c487fc70de98ae58d51a93314747150e544f143a748320d87e5ce687d70a5a')
 
 source_x86_64=(
     "gdlauncher-classic.desktop"
