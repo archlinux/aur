@@ -2,7 +2,7 @@
 
 _pkgbase=amd-sfh-hid
 pkgname="${_pkgbase}-dkms"
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=2
 _patchfile="${_pkgbase}-${pkgver}-${pkgrel}.patch"
 pkgdesc="Experimental HID driver modules for the AMD Sensor Fusion Hub (DKMS)"
