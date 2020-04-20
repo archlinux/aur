@@ -1,4 +1,4 @@
-# Maintainer: TC <crt@archlinux.email>
+# Maintainer: AK <crt@archlinux.email>
 pkgname=ossec-hids
 pkgver=3.5.0
 pkgrel=1
