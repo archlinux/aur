@@ -1,4 +1,4 @@
-# Maintainer: TC <crt@archlinux.email>
+# Maintainer: AK <crt@archlinux.email>
 pkgname=automx
 pkgver=v1.1.1.13.g4aee43f
 pkgrel=2
