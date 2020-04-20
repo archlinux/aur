@@ -2,7 +2,7 @@
 pkgname=intel-caffe-git
 _srcname=intel-caffe
 pkgver=1.1.6
-pkgrel=9
+pkgrel=10
 pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
 url="https://github.com/intel/caffe"
@@ -43,7 +43,6 @@ prepare() {
     CMAKE_PARALLEL_LEVEL=`grep processor /proc/cpuinfo | wc -l` \
     cmake \
     -DCPU_ONLY=ON \
-    -DBUILD_tools=ON \
     -DBUILD_SHARED_LIBS=OFF \
     -DBUILD_python=ON \
     -DBUILD_matlab=OFF \
@@ -52,12 +51,10 @@ prepare() {
     -DUSE_OPENCV=ON \
     -DUSE_LEVELDB=OFF \
     -DUSE_LMDB=OFF \
-    -DUSE_HDF5=ON \
     -DALLOW_LMDB_NOLOCK=OFF \
     -DUSE_OPENMP=ON \
     -D python_version=3 \
     -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     ../"${_srcname}"
 }
 
