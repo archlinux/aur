@@ -3,7 +3,7 @@
 _pkgbase=zombietrackergps
 pkgname=zombietrackergps-git
 pkgver=0.98.r3.g9812d72
-pkgrel=1
+pkgrel=2
 _ldutils_projects_url="https://gitlab.com/ldutils-projects/"
 pkgdesc="GPS track manager for Qt using KDE Marble maps. Currently supports GPX and TCX format import."
 arch=('x86_64')
@@ -14,12 +14,10 @@ makedepends=('git' 'findutils')
 source=("git+${url}.git"
         "git+${_ldutils_projects_url}ldutils.git"
        "archlinux.patch"
-       "ldutils.patch"
      )
 sha256sums=('SKIP'
             'SKIP'
-            '8e3e6f27e65dff5f743e722e0a1e00c6f6d6a278cd77c9167ee4463a501a2ea9'
-            '338fcb5648ea45ca2d4088f44f7b0807dffcaaa19d0b822777b0ca3f2ed14ec4')
+            '8e3e6f27e65dff5f743e722e0a1e00c6f6d6a278cd77c9167ee4463a501a2ea9')
 
 pkgver() {
   cd ${_pkgbase}
@@ -29,7 +27,6 @@ pkgver() {
 prepare() {
   #ldutils
   cd $srcdir/ldutils
-  patch --forward --strip=1 --input="${srcdir}/ldutils.patch"
   mkdir -p $srcdir/buildldutils
   cd $srcdir/buildldutils
 
