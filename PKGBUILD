@@ -1,14 +1,14 @@
 # Maintainer: Bruno Silva <brunofernandes at ua dot pt>
 pkgname=xmr-stak-rx-git
 pkgver=r1519.6091644
-pkgrel=1
+pkgrel=2
 pkgdesc="Unified All-in-one Monero miner with randomx fork"
 arch=('x86_64')
 url="https://github.com/fireice-uk/xmr-stak/releases/tag/1.0.0-rx"
 license=('GPL3')
-makedepends=('git' 'cmake' 'opencl-headers')
+makedepends=('git' 'cmake' 'opencl-headers' 'cuda')
 depends=('libmicrohttpd' 'openssl' 'hwloc' 'cuda' 'ocl-icd')
-conflicts=('xmr-stak' 'xmr-stak-git')
+conflicts=('xmr-stak')
 provides=('xmr-stak')
 source=("${pkgname}::git+https://github.com/fireice-uk/xmr-stak.git#branch=xmr-stak-rx-dev")
 sha256sums=('SKIP')
