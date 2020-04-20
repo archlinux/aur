@@ -82,8 +82,7 @@ build() {
   --disable-libvtv \
   --disable-libsanitizer
 
-
- make -j$(nproc)
+ make
 }
 
 package() {
