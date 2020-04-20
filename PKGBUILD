@@ -4,7 +4,7 @@ pkgbase=linux-slim
 _srcname=linux
 gitver=v5.6.5
 pkgver=5.6.v.5
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -21,6 +21,8 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         "${pkgbase}.preset"
 	# patch from our gentoo overlords
 	'5012_enable-cpu-optimizations-for-gcc91.patch'
+        # amdgpuhang on reboot patch    
+        'amdgpu_hwhang_reboot.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
@@ -29,6 +31,8 @@ sha256sums=('SKIP'
             '41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367'
             #patch file
             'cc739c9c9f7ce08e6bbc161b8232208bbc00820342a32fb1f69bff6326ae1370'
+            #amdgpuhang on reboot patch
+            '62fc91e581c56240220dac84b77684387ae3d5c52afc5904f76a8cfa43e73c05'
            )
 
 _kernelname=${pkgbase#linux}
@@ -56,6 +60,9 @@ prepare() {
 
   # Implement cpu optimisation (MZEN2) patch from our gentoo lords
   git apply ../5012_enable-cpu-optimizations-for-gcc91.patch
+
+  # Implement amdgpu_hwhang_reboot.patch
+  git apply ../amdgpu_hwhang_reboot.patch
 
   # get kernel version
   yes "" | make prepare
