@@ -8,7 +8,7 @@ url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
 license=('EPL2')
 depends=('nodejs>=10.11.0' 'nodejs<12')
-makedepends=('yarn')
+makedepends=('yarn' 'node-gyp')
 options=(!strip) #to speed up build
 
 source=(

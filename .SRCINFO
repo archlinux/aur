@@ -6,6 +6,7 @@ pkgbase = theia-electron
 	arch = any
 	license = EPL2
 	makedepends = yarn
+	makedepends = node-gyp
 	depends = nodejs>=10.11.0
 	depends = nodejs<12
 	options = !strip
