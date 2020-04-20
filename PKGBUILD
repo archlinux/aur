@@ -1,7 +1,9 @@
-# Maintainer: Hannes Schulze <projects@guidedlinux.org>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Hannes Schulze <projects@guidedlinux.org>
 pkgname=archmaker
 pkgver=0.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Quickly and easily create your own arch-based GNU/Linux-distribution"
 arch=('x86_64')
 url="https://archmaker.guidedlinux.org/"
