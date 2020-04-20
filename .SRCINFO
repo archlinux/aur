@@ -1,7 +1,7 @@
 pkgbase = arcticfox-config-bin
 	pkgdesc = Configuration Tool for Vape Battery Mods with Arcticfox Firmware. Works on MacOS and Linux.
 	pkgver = 1.11.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hobbyquaker/arcticfox-config
 	install = arcticfox-config-bin.install
 	arch = any

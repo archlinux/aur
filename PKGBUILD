@@ -1,8 +1,10 @@
-# Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=arcticfox-config-bin
 pkgver=1.11.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Configuration Tool for Vape Battery Mods with Arcticfox Firmware. Works on MacOS and Linux."
 arch=('any')
 url="https://github.com/hobbyquaker/arcticfox-config"
