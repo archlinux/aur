@@ -1,0 +1,26 @@
+diff -u a/configure.sh b/configure.sh
+--- a/configure.sh	2014-05-20 21:48:17.000000000 +0200
++++ b/configure.sh	2020-04-20 01:40:55.999879286 +0200
+@@ -138,14 +138,14 @@
+   -e "s/@CFLAGS@/$CFLAGS/" \
+   -e "s/@AIGBMCTARGET@/$AIGBMCTARGET/" \
+   -e "s/@AIGBMCTARGET@/$AIGBMCTARGET/" \
+-  -e "s,@AIGBMCHDEPS@,$AIGBMCHDEPS," \
+-  -e "s,@AIGBMCODEPS@,$AIGBMCODEPS," \
+-  -e "s,@AIGBMCLIBS@,$AIGBMCLIBS," \
+-  -e "s,@AIGBMCFLAGS@,$AIGBMCFLAGS," \
++  -e "s#@AIGBMCHDEPS@#$AIGBMCHDEPS#" \
++  -e "s#@AIGBMCODEPS@#$AIGBMCODEPS#" \
++  -e "s#@AIGBMCLIBS@#$AIGBMCLIBS#" \
++  -e "s#@AIGBMCFLAGS@#$AIGBMCFLAGS#" \
+   -e "s/@AIGDEPTARGET@/$AIGDEPTARGET/" \
+   -e "s/@AIGDEPTARGET@/$AIGDEPTARGET/" \
+-  -e "s,@AIGDEPHDEPS@,$AIGDEPHDEPS," \
+-  -e "s,@AIGDEPCODEPS@,$AIGDEPCODEPS," \
+-  -e "s,@AIGDEPLIBS@,$AIGDEPLIBS," \
+-  -e "s,@AIGDEPFLAGS@,$AIGDEPFLAGS," \
++  -e "s#@AIGDEPHDEPS@#$AIGDEPHDEPS#" \
++  -e "s#@AIGDEPCODEPS@#$AIGDEPCODEPS#" \
++  -e "s#@AIGDEPLIBS@#$AIGDEPLIBS#" \
++  -e "s#@AIGDEPFLAGS@#$AIGDEPFLAGS#" \
+   makefile.in > makefile

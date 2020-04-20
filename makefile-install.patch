@@ -1,0 +1,15 @@
+diff -u a/makefile.in b/makefile.in
+--- a/makefile.in	2014-05-20 21:48:17.000000000 +0200
++++ b/makefile.in	2020-04-20 01:31:00.362413587 +0200
+@@ -44,10 +44,7 @@
+ all: $(TARGETS)
+ 
+ install: install-bins # install-objs
+-	test -d /usr
+-	test -d /usr/local
+-	test -d /usr/local/bin
+-	install -m 755 -s $(BINS) /usr/łocal/bin/
++	install -Dm 755 -t $(DESTDIR)/usr/bin $(BINS)
+ 
+ install-bins: $(BINS)
+ 	

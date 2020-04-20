@@ -1,0 +1,17 @@
+pkgbase = aiger
+	pkgdesc = A format, library and set of utilities for And-Inverter Graphs (AIGs)
+	pkgver = 1.9.9
+	pkgrel = 1
+	url = http://fmv.jku.at/aiger/
+	arch = x86_64
+	license = MIT
+	license = BSD
+	source = http://fmv.jku.at/aiger/aiger-1.9.9.tar.gz
+	source = makefile-install.patch
+	source = configure-sh-commas-in-cflags.patch
+	sha256sums = 1e50d3db36f5dc5ed0e57aa4c448b9bcf82865f01736dde1f32f390b780350c7
+	sha256sums = 7103083de75ad6af76ee5272ba3c372741ccf1bcbd88fee6902eba8f2a0e416e
+	sha256sums = a43096303e4f94c02eda74534056cfd8e31375aaf3d64635cbf062625e61b072
+
+pkgname = aiger
+
