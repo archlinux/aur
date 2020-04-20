@@ -1,12 +1,8 @@
-# Maintainer : Rob McCathie <korrode at gmail>
-# Contributor: SpepS <dreamspepser at yahoo dot it>
-# Contributor: vinz <vinz@archlinux.us>
-# Contributor: Aurélien DESBRIÈRES <ice.cube@gmx.com>
-# Contributor: Daniel Jenssen <daerandin@gmail.com>
+# Maintainer : Sébastien Deligny <sebdeligny at gmail>
  
 pkgname=thunar-shares-plugin
-pkgver=0.3.0.git
-pkgrel=2
+pkgver=0.3.1.git
+pkgrel=1
 pkgdesc="Thunar plugin to quickly share a folder using Samba without requiring root access"
 arch=('i686' 'x86_64')
 url="http://goodies.xfce.org/projects/thunar-plugins/${pkgname}"
