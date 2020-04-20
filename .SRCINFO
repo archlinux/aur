@@ -1,6 +1,6 @@
 pkgbase = open-riichi-git
 	pkgdesc = An open source riichi (Japanese) mahjong client
-	pkgver = 0.2.0.3.r19.g9d28fb1
+	pkgver = 0.2.0.3.r42.gac1e975
 	pkgrel = 1
 	url = https://github.com/FluffyStuff/OpenRiichi
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = open-riichi-git
 	source = OpenRiichi.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = fa43b7e9477b3cba48e9a0f50699a480d0b1c12320c950f9b4465eb1d9b4a742
+	sha256sums = 49f93bb7a1cb9b128a0a2137438ee7723cd3e9826b59dfafa5ccee83195961d0
 
 pkgname = open-riichi-git
 
