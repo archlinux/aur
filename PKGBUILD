@@ -4,7 +4,7 @@
 
 pkgname=wapiti
 
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 
 pkgdesc='A comprehensive web app vulnerability scanner written in Python'
@@ -22,7 +22,7 @@ options=('zipman')
 
 changelog=ChangeLog
 source=("http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname/$pkgname-$pkgver/$pkgname${pkgver:0:1}-$pkgver.tar.gz")
-sha256sums=('df86cab9f66c7794cab54fede16029056a764f5da565b2695524f9bd2bc9a384')
+sha256sums=('059f778453ebf05b38e9c6c837d3b3eb9b8921c8fdc6d4029df89f2b0e84f5b7')
 
 
 build() {
@@ -36,4 +36,4 @@ package() {
 }
 
 
-# vim: ts=2 sw=2 et ft=PKGBUILD:
+# vim: ts=4 sw=4 et ft=PKGBUILD:
