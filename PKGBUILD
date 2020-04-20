@@ -1,7 +1,7 @@
 # Maintainer: Coelacanthus <liuhongwu2003@outlook.com>
 
 pkgname=lemon-lime
-pkgver=v0.1.3
+pkgver=v0.1.4
 pkgrel=1
 epoch=
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
@@ -50,7 +50,7 @@ check() {
 package() {
 	cd "Project_LemonLime-$pkgver"
 	install -D -m755 lemon "$pkgdir/usr/bin/$pkgname"
-	
+
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -D -m644 pics/icon.png "$pkgdir/usr/share/pixmaps/lemon-lime.png"
 	install -D -m644 ../$pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
