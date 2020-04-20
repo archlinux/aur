@@ -8,7 +8,7 @@ pkgdesc='Command line tool for working with Jenkins X'
 arch=('x86_64')
 url='https://github.com/jenkins-x/jx'
 license=('Apache')
-depends=('go')
+makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jenkins-x/jx/archive/v$pkgver.tar.gz")
 sha256sums=('9a3c4aa92a6f337bee28466d64dd1efede2c13edfef0cd0854f1143d515ff836')
 

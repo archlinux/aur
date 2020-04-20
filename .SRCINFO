@@ -5,7 +5,7 @@ pkgbase = jx
 	url = https://github.com/jenkins-x/jx
 	arch = x86_64
 	license = Apache
-	depends = go
+	makedepends = go
 	source = jx-2.1.3.tar.gz::https://github.com/jenkins-x/jx/archive/v2.1.3.tar.gz
 	sha256sums = 9a3c4aa92a6f337bee28466d64dd1efede2c13edfef0cd0854f1143d515ff836
 
