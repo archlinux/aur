@@ -1,10 +1,10 @@
-# Maintainer: Marcel Hoppe <hoppe.marcel@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # https://github.com/rvm/rvm/
 
 pkgname=rvm
 pkgbase=${pkgname}
-pkgver=1.29.9
-pkgrel=2
+pkgver=1.29.10
+pkgrel=1
 pkgdesc='RVM is a command-line tool which allows you to easily install, manage, and work with multiple ruby environments from interpreters to sets of gems.'
 arch=('any')
 url="https://rvm.io/"
