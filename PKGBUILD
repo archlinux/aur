@@ -2,9 +2,8 @@
 # Contributor: Arnaud Taffanel <dev@taffanel.org>
 # Contributor: Victor Häggqvist <aur a snilius d com>
 
-_name=Solaar
 pkgname=solaar-git
-pkgver=0.9.2.r323.gdef11e1
+pkgver=1.0.2.rc1.r23.g377c954
 pkgrel=1
 pkgdesc="Device manager for Logitech's Unifying receiver peripherals"
 url="https://pwr-solaar.github.io/Solaar/"
@@ -13,6 +12,7 @@ arch=('any')
 provides=("solaar")
 conflicts=("solaar")
 depends=('gtk3' 'libnotify' 'python-dbus' 'python-gobject' 'python-pyudev')
+makedepends=('git')
 source=("${pkgname}::git+https://github.com/pwr-Solaar/Solaar.git")
 sha512sums=('SKIP')
 
@@ -38,7 +38,5 @@ package() {
   # docs
   install -vDm 644 {ChangeLog,README.md} \
     -t "${pkgdir}/usr/share/doc/${pkgname}/"
-  # install fix
-  mv "${pkgdir}/usr/etc" "${pkgdir}/etc"
 }
 # vim:set ts=2 sw=2 et:
