@@ -5,7 +5,7 @@ pkgname=python-opencv-python
 _name="${pkgname#python-}"
 
 _py=cp38
-_rel=32
+_rel=34
 pkgver=4.2.0.$_rel
 pkgrel=1
 
@@ -18,7 +18,7 @@ makedepends=('python-pip')
 depends=('python-numpy>=1.17.3')
 
 source=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name/-/_}-$pkgver-$_py-${_py}-manylinux1_x86_64.whl")
-sha256sums=('1b90d50bc7a31e9573a8da1b80fcd1e4d9c86c0e5f76387858e1b87eb8b0332b')
+sha256sums=('0e7c91718351449877c2d4141abd64eee1f9c8701bcfaf4e8627bd023e303368')
 
 options=('!strip')
 
