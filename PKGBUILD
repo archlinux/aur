@@ -51,7 +51,7 @@ _major=5.6
 _minor=5
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -71,7 +71,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0002-Revert-ACPI-EC-Do-not-clear-boot_ec_is_ecdt-in-acpi_.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0003-drm-amdgpu-fix-the-hw-hang-during-perform-system-reb.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -318,9 +320,11 @@ sha512sums=('42a160b6d51619e77ef3743cdafc18aa3d0c86aec0508f057730cd25f21dbb5765f
             'SKIP'
             '334a05f6a2c51f96095c1305df398c822815ed770815c1dea915f22ba3031d0eff56c10cd97ccbdca846d1365d36671362be24ff7114cd49b936fbeed23558fa'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
-            'eacf9612b758381b1490409911c64a4d0a96f33cdfc5a1cbcfd4c5feb70d08a350ea017f8ef853d74906158d26ec5cd57ce7109f00d4593966fb0c05eff66ae4'
+            '2c1e3cb329bb08a38a2e9ea3c4a20da9cc8fec46c020d243a3af677844fe51f7872d653157ec34c1a08f481e252f9db3f12897d2dfe4caeecf42952d9c019b54'
+            'b15cda605e6e18ccff817d8f832929e5222a8905dc2321edd939fcedad5048e708f0a09a82702dd0b402e68ac3c34553d1df8917580f17efc954bdee3e998e16'
+            'fdcf8d04c642c4c8ecd9fa4b7fbc936fad94ad28d4ce9792b0832cee54aebd171b6ff5355b48cab3fdd9b52cfe9d52aaa60f2f678c919499dfa3139e3feeff3d'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
-            '581dc1160191a581f0b017d0e8ef4a8a8c59442ab596f748f323b41406e2cd4a3290d4e13e43932082b56f2904ad19ea1f3c93ab5af1ab4fdf1efadff6fc99f2')
+            '33e4311ed5d5ec9cbdde44620abe2429b4d4e14f99bc36b650ba3eed354bef70477d0428983fb8ba5ae4547d90d224550eaa8311aafc40b43ad8d559feda9fac')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
