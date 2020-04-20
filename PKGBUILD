@@ -2,7 +2,7 @@
 
 pkgname=pilgo-bin
 _binname=plg
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Configuration-based symlink farm manager CLI and framework'
 arch=('x86_64')
