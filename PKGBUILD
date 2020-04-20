@@ -26,8 +26,8 @@ build() {
 
 package() {
     install -D -m755 "$srcdir/$pkgname/bin/xmr-stak-rx" -t "$pkgdir/usr/bin/"
-    install -D -m644 "$srcdir/$pkgname/bin/libxmr-stak-backend.a" -t "$pkgdir/usr/lib/"
+    install -D -m644 "$srcdir/$pkgname/bin/libxmr-stak-rx-backend.a" -t "$pkgdir/usr/lib/"
     install -D -m644 "$srcdir/$pkgname/bin/libxmr-stak-randomx.a" -t "$pkgdir/usr/lib/"
-    install -D -m644 "$srcdir/$pkgname/bin/libxmrstak_cuda_backend.so" -t "$pkgdir/usr/lib"
-    install -D -m644 "$srcdir/$pkgname/bin/libxmrstak_opencl_backend.so" -t "$pkgdir/usr/lib"
+    install -D -m644 "$srcdir/$pkgname/bin/libxmrstakrx_cuda_backend.so" -t "$pkgdir/usr/lib"
+    install -D -m644 "$srcdir/$pkgname/bin/libxmrstakrx_opencl_backend.so" -t "$pkgdir/usr/lib"
 }
