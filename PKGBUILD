@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-mingw
-pkgver=1.6
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
@@ -29,46 +29,45 @@ prepare() {
 
     # Uncomment to enable extra optimizations
     # Patch crossfiles with extra optimizations from makepkg.conf
-    #patch -p1 -i ../extraopts.patch
+    patch -p1 -i "$srcdir"/extraopts.patch
+    local dxvk_cflags="$CFLAGS"
+    local dxvk_ldflags="$LDFLAGS"
     # Filter known bad flags before applying optimizations
     # If using -march=native and the CPU supports AVX, launching a d3d9
     # game can cause an Unhandled exception. The cause seems to be the
     # combination of AVX instructions and tree vectorization (implied by O3),
     # all tested archictures from sandybridge to haswell are affected.
-    # Disabling either AVX (and AVX2 as a side-effect) or tree
-    # vectorization fixes the issue. I am not sure which one is better
-    # to disable so below you can choose. Append either of these flags.
+    # Disabling AVX (and AVX2 as a side-effect).
     # Relevant Wine issues
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
-    CFLAGS+=" -mno-avx"
-    #CFLAGS+=" -fno-tree-vectorize"
-    # Filter fstack-protector flag for MingW.
+    dxvk_cflags+=" -mno-avx"
+    # Filter fstack-protector{ ,-all,-strong} flag for MingW.
     # https://github.com/Joshua-Ashton/d9vk/issues/476
-    CFLAGS+=" -fno-stack-protector"
-    #CFLAGS="${CFLAGS// -fstack-protector+(-all|-strong)/}"
-    #CFLAGS="${CFLAGS// -fstack-protector+(?=[ ])/}"
+    #dxvk_cflags+=" -fno-stack-protector"
+    dxvk_cflags="${dxvk_cflags// -fstack-protector*([\-all|\-strong])/}"
     # Adjust optimization level in meson arguments. This is ignored
     # anyway because meson sets its own optimization level.
-    CFLAGS="${CFLAGS// -O+([0-3s]|fast)/}"
+    dxvk_cflags="${dxvk_cflags// -O+([0-3s]|fast)/}"
     # Doesn't compile with these flags in MingW so remove them.
     # They are also filtered in Wine PKGBUILDs so remove them
     # for winelib versions too.
-    CFLAGS="${CFLAGS/ -fno-plt/}"
-    LDFLAGS="${LDFLAGS/,-z,relro,-z,now/}"
+    dxvk_cflags="${dxvk_cflags/ -fno-plt/}"
+    dxvk_ldflags="${dxvk_ldflags/,-z,now/}"
+    dxvk_ldflags="${dxvk_ldflags/,-z,relro/}"
     sed -i build-win64.txt \
-        -e "s|@CARGS@|\'${CFLAGS// /\',\'}\'|g" \
-        -e "s|@LDARGS@|\'${LDFLAGS// /\',\'}\'|g"
+        -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
+        -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
     sed -i build-win32.txt \
-        -e "s|@CARGS@|\'${CFLAGS// /\',\'}\'|g" \
-        -e "s|@LDARGS@|\'${LDFLAGS// /\',\'}\'|g"
+        -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
+        -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
 
     # Uncomment to enable dxvk async patch.
     # Enable at your own risk. If you don't know what it is,
     # and its implications, leave it as is. You have been warned.
     # I am not liable if anything happens to you by using it.
     # Patch enables async by default. YOU HAVE BEEN WARNED.
-    #patch -p1 -i ../dxvk-async.patch
+    #patch -p1 -i "$srcdir"/dxvk-async.patch
 }
 
 build() {
