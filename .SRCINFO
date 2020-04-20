@@ -1,7 +1,7 @@
 pkgbase = xnconvert
 	pkgdesc = A powerful batch image-converter and resizer.
-	pkgver = 1.83
-	pkgrel = 4
+	pkgver = 1.85
+	pkgrel = 1
 	url = https://www.xnview.com/en/xnconvert/
 	arch = x86_64
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = xnconvert
 	depends = gtk3
 	source = xnconvert.desktop
 	sha256sums = b163bca7039f6877239535b88b9aacb6fde78573dc141a52addb99cb85b35f82
-	source_x86_64 = XnConvert-linux-x64_1.83.tgz::http://download.xnview.com/XnConvert-linux-x64.tgz
-	sha256sums_x86_64 = 0e75d76e37a1654dc749a2dc16a4a1282ae36bd4085e834f0275c3f510a20a37
-	source_i686 = XnConvert-linux_1.83.tgz::http://download.xnview.com/XnConvert-linux.tgz
+	source_x86_64 = XnConvert-linux-x64_1.85.tgz::http://download.xnview.com/XnConvert-linux-x64.tgz
+	sha256sums_x86_64 = ee5385cbd25cffec70d2cbfa6f7995bd23a65c66f87accd0c41c3f858b38339d
+	source_i686 = XnConvert-linux_1.85.tgz::http://download.xnview.com/XnConvert-linux.tgz
 	sha256sums_i686 = 6e3a021d7636f747d15b1556051855c78c1916e05cb057b919d8a66d6271680a
 
 pkgname = xnconvert
