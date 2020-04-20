@@ -47,7 +47,7 @@ package() {
   ln -s /etc/java${_jdkver}-j9 "${pkgdir}/${_jvmdir}/conf"
   # Man pages
   for f in man/man1/*; do
-    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-openjdk13-j9.1}"
+    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-openjdk14-j9.1}"
   done
   ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
 }
