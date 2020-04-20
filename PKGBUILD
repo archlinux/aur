@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ezra-project
-pkgver=0.12.1
+pkgver=0.12.2
 pkgrel=1
 pkgdesc='Bible study tool focussing on topical study based on keywords/tags'
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=('jq'
              'npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'ezra-project.sh')
-sha256sums=('e7aba44f9c2535ec982ac8434b2418477981153968daba580a0e941c15914756'
+sha256sums=('89180569faf805d48c71e69d827bc33fd9dba3c0cb8ed182064671394222a0a4'
             '0a36167bce248b6082045163cf60b143d02ca1e447a791cf0c88e960a7fdc618')
 
 prepare() {
@@ -54,4 +54,6 @@ package() {
     install -Dm644 -t "$pkgdir/usr/lib/$pkgname/resources/" "$pkgname-linux-x64/resources/app.asar"
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" {CHANGELOG,README,TECH,LOC_METRICS}.md
+    # TODO: added after 0.12.1, but not in the branched bugfix 0.12.2 release, enable for 0.13.0:
+    # install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/" icons/$pkgname.svg
 }
