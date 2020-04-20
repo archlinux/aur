@@ -1,0 +1,19 @@
+[Desktop Entry]
+Comment[ru_RU]=
+Comment=
+Exec=/opt/zesarux/zesarux
+GenericName[ru_RU]=Multiple Z80-based machines emulator
+GenericName=Multiple Z80-based machines emulator
+Icon=/usr/share/pixmaps/zesarux.png
+MimeType=
+Name[ru_RU]=Zesarux
+Name=Zesarux
+Path=/opt/zesarux
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
