@@ -1,0 +1,14 @@
+pkgbase = python-pyminifier
+	pkgdesc = Image augmentation for machine learning experiments
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/aleju/imgaug
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/2c/8a/946b0b43e0912c907aba42507073675c2e4a4a836c5b1ce10be6f12575d0/pyminifier-2.1.tar.gz
+	sha256sums = e192618fe901830e9298825b32828bc9555ae8649e05af37bfab2db328546777
+
+pkgname = python-pyminifier
+
