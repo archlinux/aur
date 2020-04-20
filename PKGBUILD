@@ -1,7 +1,7 @@
 
 pkgname=leed
 pkgver=1.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimalist RSS/ATOM aggregator which offers fast RSS consultation and non-intrusive features"
 arch=(any)
 url="https://github.com/LeedRSS/Leed"
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.zip::https://github.com/LeedRSS/Leed/archive/v$pkgver.
 	'leed.perm.sh')
 md5sums=('e94088506f8e4fea6d9512e6e2bf718b'
          'f980af079368ad99447c7722e1cd376a'
-         '24cc8fa2aa47807bccb1c64d2f6b7198')
+         '43376a391f39e9fd177cec991ab45706')
 
 
 pkgver() {
@@ -29,12 +29,12 @@ pkgver() {
 
 package() {
     ### install leed
-    mkdir -p "${pkgdir}/usr/share/webapps/leed"
-    cp -a Leed-$pkgver "${pkgdir}/usr/share/webapps/leed"
+    mkdir -p "${pkgdir}/usr/share/webapps/"
+    cp -ar Leed-$pkgver "${pkgdir}/usr/share/webapps/leed"
 
     ### default perm
-    find "${pkgdir}/usr/share/webapps/leed/" -type f -print0 | xargs -0 chmod 0640
-    find "${pkgdir}/usr/share/webapps/leed/" -type d -print0 | xargs -0 chmod 0750
+    find "${pkgdir}/usr/share/webapps/leed/" -type f -exec chmod 0640 {} \;
+    find "${pkgdir}/usr/share/webapps/leed/" -type d -exec chmod 0750 {} \;
     install -D -m755 "${srcdir}/leed.perm.sh" "${pkgdir}/usr/bin/set-leed-perm"
 
     ### apache conf (optionnal)
