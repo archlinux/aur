@@ -1,7 +1,7 @@
 pkgbase = aqua-data-studio
 	pkgdesc = An universal database query tool and administration tool
 	pkgver = 20.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.aquafold.com/
 	arch = any
 	license = custom

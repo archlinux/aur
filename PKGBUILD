@@ -1,11 +1,13 @@
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Douglas Soares de Andrade <dsandrade@gmail.com>
 # Contributor: Aquila Deus <aquila.deus@gmail.com>
 # Contributor: Vinay Shastry <vinayshastry@gmail.com>
 
 pkgname=aqua-data-studio
 pkgver=20.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An universal database query tool and administration tool"
 arch=('any')
 url="http://www.aquafold.com/"
