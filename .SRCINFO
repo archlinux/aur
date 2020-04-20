@@ -1,7 +1,7 @@
 pkgbase = php72-imagick
 	pkgdesc = PHP extension for IMagick
 	pkgver = 3.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pecl.php.net/package/imagick
 	install = php-imagick.install
 	arch = i686
