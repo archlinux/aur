@@ -1,6 +1,6 @@
 pkgbase = linux-slim
 	pkgver = 5.6.v.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -16,10 +16,12 @@ pkgbase = linux-slim
 	source = config.x86_64
 	source = linux-slim.preset
 	source = 5012_enable-cpu-optimizations-for-gcc91.patch
+	source = amdgpu_hwhang_reboot.patch
 	sha256sums = SKIP
 	sha256sums = bec18c2288e5841e32a3058fa2fee766bf58c5a6f4e597cad9ce001342493b18
 	sha256sums = 41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367
 	sha256sums = cc739c9c9f7ce08e6bbc161b8232208bbc00820342a32fb1f69bff6326ae1370
+	sha256sums = 62fc91e581c56240220dac84b77684387ae3d5c52afc5904f76a8cfa43e73c05
 
 pkgname = linux-slim
 	pkgdesc = Linux kernel slimmed down to only work on AMD hardware. Zero compatibility.
