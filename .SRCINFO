@@ -31,7 +31,7 @@ pkgbase = abrowser-bin
 	depends = libevent
 	depends = libpng
 	depends = cairo
-	source = http://archive.trisquel.info/trisquel/pool/main/f/firefox/abrowser_75.0+build3-0ubuntu0.16.04.1+8.0trisquel68_amd64.deb
+	source = http://archive.trisquel.info/trisquel/pool/main/f/firefox/abrowser_75.0+build3-0ubuntu0.18.04.1+9.0trisquel69_amd64.deb
 	sha256sums = c11e4196d057347967c8c1d4f9b52f63898ded2f2d9b2e3c5dc156b4bdb26122
 
 pkgname = abrowser-bin
