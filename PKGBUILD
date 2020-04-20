@@ -2,7 +2,7 @@
 
 pkgname=ava-plugins
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Harrison Consoles VST Plugin Suite."
 arch=('x86_64')
 url="https://www.harrisonconsoles.com/site/ava-plugins.html"
@@ -31,9 +31,7 @@ package() {
 
 	## Install EULA
 	install -Dm644 "$srcdir/Harrison_AVA/EULA.txt" "$pkgdir/usr/share/licenses/$pkgname/EULA.txt"
-}
 
-post-install() {
 	## Where To Put License Files
-	msg2 "Put AVA plugin licenses in ${HOME}/Downloads to unlock them."
+	msg2 "Put AVA plugin licenses in ${HOME} to unlock them."
 }

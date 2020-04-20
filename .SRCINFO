@@ -1,7 +1,7 @@
 pkgbase = ava-plugins
 	pkgdesc = Harrison Consoles VST Plugin Suite.
 	pkgver = 3.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.harrisonconsoles.com/site/ava-plugins.html
 	arch = x86_64
 	license = EULA
