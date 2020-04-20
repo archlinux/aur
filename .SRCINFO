@@ -1,9 +1,8 @@
 pkgbase = cutemarked-git
 	pkgdesc = Qt Markdown Editor
-	pkgver = 0.11.2.r97.gdf584c4
+	pkgver = 0.11.3r849
 	pkgrel = 1
 	url = https://github.com/cloose/CuteMarkEd
-	install = cutemarked-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -17,9 +16,7 @@ pkgbase = cutemarked-git
 	provides = cutemarked
 	conflicts = cutemarked
 	source = git://github.com/cloose/CuteMarkEd.git
-	source = cutemarked-git.install
 	md5sums = SKIP
-	md5sums = 262fc1597fb332894d1367f510a7f39b
 
 pkgname = cutemarked-git
 
