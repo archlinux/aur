@@ -3,9 +3,10 @@ Description=SABnzbd binary newsreader
 After=network.target
 
 [Service]
-ExecStart=/opt/sabnzbd/SABnzbd.py -l0 -f /opt/sabnzbd/sabnzbd.ini
+ExecStart=/user/lib/sabnzbd/SABnzbd.py --logging 0 --config-file /var/lib/sabnzbd/sabnzbd.ini
 User=sabnzbd
 Group=sabnzbd
+SyslogIdentifier=sabnzbd
 
 [Install]
 WantedBy=multi-user.target

@@ -1,0 +1,24 @@
+# To start SABNzbd once for USER use:
+#   systemctl start sabnzbd@USER.service
+#
+# To start SABNzbd on boot for USER use:
+#   systemctl enable sabnzbd@USER.service
+#
+# Config will be placed in ~/.sabnzbd/
+
+[Unit]
+Description=SABnzbd binary newsreader
+Documentation=https://sabnzbd.org/wiki/
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+# Default location is ~/.sabnzbd/sabnzbd.ini, but package previously used ~/.sabnzbd.ini so default to that
+ExecStart=/usr/lib/sabnzbd/SABnzbd.py --logging 1 --browser 0 --config-file /home/%I/.sabnzbd.ini
+User=%I
+Group=%I
+Type=simple
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
