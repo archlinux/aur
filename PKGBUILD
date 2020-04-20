@@ -1,20 +1,19 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
 # Maintainer: Boris Timofeev <btimofeev@emunix.org>
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Peter Kosyh <p.kosyhgmail.com>
 
 pkgname=instead
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="a quest interpreter"
 arch=('i686' 'x86_64')
 url="https://github.com/instead-hub/instead"
 license=('MIT')
-depends=('sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'gtk2' 'luajit')
+depends=('sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'gtk3' 'luajit')
 makedepends=('cmake')
 optdepends=('instead-launcher: install and update INSTEAD games from net','insteadman: Manager for INSTEAD interpreter.')
 source=(https://github.com/instead-hub/instead/releases/download/${pkgver}/instead_${pkgver}.tar.gz)
-sha256sums=('00879f36ad9221fd75c7497dd091460c7477fc6e53151a0ea50a342b1bbb7781')
+sha256sums=('bb98f6903291bcc40fb06f2203ab8e05272ec84fded412482b6faa54bea3a90b')
 
 build() {
   cd "${srcdir}"
@@ -24,6 +23,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DWITH_LUAJIT=1 \
+    -DWITH_GTK3=1 \
     "${srcdir}"/$pkgname-$pkgver
   make
 }
