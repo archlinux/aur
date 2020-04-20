@@ -21,7 +21,7 @@ _localmodcfg=
 
 pkgbase=linux-gc
 pkgver=5.6.5
-pkgrel=1
+pkgrel=3
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
 arch=(x86_64)
@@ -33,7 +33,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_bmqversion=5.6-r2
+_bmqversion=5.6-r3
 _bmq_patch="bmq_v${_bmqversion}.patch"
 _gcc_more_v='20191217'
 source=(
@@ -52,8 +52,8 @@ validpgpkeys=(
 )
 sha256sums=('f79bd3dbcbe1e7afba256d59b4ca21da12d2c5b4189804dffb2a49fd2b9b52e6'
             'SKIP'
-            '27b84575ea6b1050951906e0b595351fe3f8e39fab9d2ed05e32cb6eaddca08f'
-            '0e1b569bf16a6c514710715eff06df04447378d1c067b853db0c454ac3c5e463'
+            'a6c181f4c93dd302fdf5437bfff32bc938d8e36985898485aa9c839947fa39d4'
+            '2340925904efa3594cc65a7bae4fbff233d5d8bc7db605ce08acaca7450d2471'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
             'b8e6d6001d96cfa3d54611fa00f2b0370f9b6ae83baa5c6e3abb6c478ed69cce'
             'f7aeb902c0d7705d1ff9e8538cad504b32326e8ee0348e1fe01488a59363d1cd'
