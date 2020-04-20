@@ -1,13 +1,13 @@
 # Maintainer: FichteFoll <fichtefoll2@googlemail.com>
 
 pkgname=open-riichi-git
-pkgver=0.2.0.3.r42.gac1e975
+pkgver=0.2.0.3.r44.g9a483f3
 pkgrel=1
 pkgdesc='An open source riichi (Japanese) mahjong client'
 arch=('x86_64')
 url='https://github.com/FluffyStuff/OpenRiichi'
 license=('GPL')
-depends=('libgee' 'gtk3' 'glew' 'pango' 'sdl2' 'sdl2_image' 'csfml' 'sfml')
+depends=('libgee' 'gtk3' 'glew' 'pango' 'sdl2' 'sdl2_image' 'sdl2_mixer')
 makedepends=('git' 'gcc' 'vala' 'meson')
 source=('OpenRiichi::git+https://github.com/FluffyStuff/OpenRiichi.git'
         'Engine::git+https://github.com/FluffyStuff/Engine.git'
@@ -29,7 +29,7 @@ prepare() {
   git config submodule.Engine.url "${srcdir}/Engine"
   git submodule update
 
-  meson build -Dbuildtype=release
+  arch-meson build
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = open-riichi-git
 	pkgdesc = An open source riichi (Japanese) mahjong client
-	pkgver = 0.2.0.3.r42.gac1e975
+	pkgver = 0.2.0.3.r44.g9a483f3
 	pkgrel = 1
 	url = https://github.com/FluffyStuff/OpenRiichi
 	arch = x86_64
@@ -15,8 +15,7 @@ pkgbase = open-riichi-git
 	depends = pango
 	depends = sdl2
 	depends = sdl2_image
-	depends = csfml
-	depends = sfml
+	depends = sdl2_mixer
 	source = OpenRiichi::git+https://github.com/FluffyStuff/OpenRiichi.git
 	source = Engine::git+https://github.com/FluffyStuff/Engine.git
 	source = OpenRiichi.desktop
