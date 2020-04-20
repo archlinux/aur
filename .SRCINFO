@@ -4,6 +4,7 @@ pkgbase = mu
 	pkgrel = 1
 	url = http://www.djcbsoftware.nl/code/mu
 	arch = x86_64
+	arch = armv7h
 	license = GPL
 	makedepends = emacs
 	depends = gmime3
