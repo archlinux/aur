@@ -8,13 +8,11 @@ pkgbase = bluespec-git
 	makedepends = git
 	makedepends = gperf
 	makedepends = ghc
-	makedepends = tk
 	depends = haskell-old-time
 	depends = haskell-syb
 	depends = haskell-regex-compat
 	depends = haskell-split
 	optdepends = tcl: bluesim and bluetcl
-	optdepends = tk: bluewish
 	source = git+https://github.com/b-lang-org/bsc.git
 	sha256sums = SKIP
 
