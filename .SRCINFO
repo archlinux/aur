@@ -1,14 +1,14 @@
 pkgbase = pilgo-bin
 	pkgdesc = Configuration-based symlink farm manager CLI and framework
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gbrlsnchs/pilgo
 	arch = x86_64
 	license = MIT
 	provides = pilgo
 	conflicts = pilgo
 	source = https://github.com/gbrlsnchs/pilgo/releases/download/v0.4.0/linux.tar.gz
-	sha256sums = c591951ac616378dd9f196b4088d9a7fe961a4f0ffe65a3b37affc560fe4899c
+	sha256sums = cdd17a47ae8d89404416df2fc151cf287b638a06ee3b29e286a635565017cdab
 
 pkgname = pilgo-bin
 
