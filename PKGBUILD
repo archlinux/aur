@@ -1,7 +1,7 @@
 # Maintainer: Sergey A. <murlakatamenka@disroot.org>
 
 pkgname=intermodal
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="User-friendly and featureful CLI BitTorrent metainfo utility, written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom:CC0')
 makedepends=('cargo')
 conflicts=('intermodal-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('104528437aa21f1afeea57031848b2c93676963a5b2f7702eee9d96fc4141635')
+sha256sums=('ed31a15642d74b89f2d1ee556e02aee216b9c70e9663615224c57b846e793f0e')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -24,7 +24,7 @@ package() {
     install -Dm 755 "target/release/imdl"  "$pkgdir/usr/bin/imdl"
 
     # shell completions
-    install -Dm644 "completions/imdl.zsh" "$pkgdir/usr/share/zsh/site-functions/_imdl"
+    install -Dm644 "completions/_imdl" "$pkgdir/usr/share/zsh/site-functions/_imdl"
     install -Dm644 "completions/imdl.bash" "$pkgdir/usr/share/bash-completion/completions/imdl"
     install -Dm644 "completions/imdl.fish" "$pkgdir/usr/share/fish/vendor_completions.d/imdl.fish"
 
