@@ -2,7 +2,7 @@
 
 pkgname=pilgo
 _binname=plg
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Configuration-based symlink farm manager CLI and framework'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 conflicts=("${pkgname}-bin")
 makedepends=('go-pie')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('19e0a831e054aee0f1f2618fbb279381cfa74377ea0bbb1572c2d20c76888a23')
+sha256sums=('97a523032cf8ae405ef29eb0ce30395a4f3b848fa48fdc865c40fa4bf7716f18')
 
 build() {
   cd $pkgname-$pkgver
