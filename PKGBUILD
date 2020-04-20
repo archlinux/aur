@@ -2,7 +2,7 @@
 pkgname=intel-caffe-git
 _srcname=intel-caffe
 pkgver=1.1.6
-pkgrel=33
+pkgrel=34
 pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
 url="https://github.com/intel/caffe"
@@ -28,7 +28,7 @@ prepare() {
     sed -i 's/git reset --hard/git checkout/' Makefile.mkldnn
     sed -i 's/https:\/\/github.com\/01org\/mkl-dnn.git/https:\/\/github.com\/oneapi-src\/oneDNN.git/g' Makefile.mkldnn
     sed -i 's/https:\/\/github.com\/intel\/mkl-dnn.git/https:\/\/github.com\/oneapi-src\/oneDNN.git/g' cmake/MKLDNN.cmake
-    sed -i 's/\${NCORE}/2/g' cmake/MKLDNN.cmake
+    sed -i 's/\${NCORE}//g' cmake/MKLDNN.cmake
     sed -i 's/                      GIT_TAG/                      UPDATE_COMMAND \/bin\/true\n                      GIT_TAG/' cmake/MKLDNN.cmake
     sed -i 's/ -Werror/ -lrt -lmpi/' CMakeLists.txt
     sed -i 's/set(BUILD_SHARED_LIBS on)//' CMakeLists.txt
@@ -77,7 +77,7 @@ prepare() {
 
 build() {
     cd build
-    make -j2 caffeproto caffe
+    make -j caffeproto caffe
     cp ${srcdir}/${_srcname}/LICENSE .
     cp ${srcdir}/${_srcname}/external/mkldnn/install/lib*/lib*.so* ${pkgdir}/usr/lib/
     cp ${srcdir}/${_srcname}/external/mlsl/install/lib*/lib*.so* ${pkgdir}/usr/lib/
