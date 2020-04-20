@@ -2,13 +2,15 @@
 
 pkgname=fdiff-git
 pkgver=v1.0.2.r8.g4961155
-pkgrel=1
+pkgrel=2
 pkgdesc='An OpenType table diff tool for fonts based on the fontTools TTX format'
 arch=(any)
 url="https://github.com/source-foundry/${pkgname%-git}"
 license=('MIT')
 depends=('python' 'python-aiodns' 'python-aiofiles' 'python-aiohttp' 'python-fonttools>=4.8.1')
 makedepends=('python-setuptools')
+provides=("${pkgname%-git}")
+conflicts=("${provides[@]}")
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
