@@ -1,6 +1,6 @@
 # Maintainer: Adam Veldhousen adam@vdhsn.com
 pkgname=powerbar
-pkgver=master
+pkgver=v1.0.0
 pkgrel=1
 pkgdesc="Battery status module for Waybar"
 arch=('x86_64')
@@ -40,8 +40,8 @@ pkgver() {
 		return
 	fi
 
-    cd "$srcdir/$pkgname"
-    local VERSION=$(git describe --all | sed s:heads/::g)
+    cd $srcdir/$pkgname
+    local VERSION=$(git describe --tags | sed s:-.*::g)
     if [[ "$(echo $VERSION | grep "fatal: No names found")" ]]; then
         # local date=$(git log -1 --format="%cd" --date=short | sed s/-//g)
         # local count=$(git rev-list --count HEAD)

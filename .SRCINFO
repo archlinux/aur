@@ -1,6 +1,6 @@
 pkgbase = powerbar
 	pkgdesc = Battery status module for Waybar
-	pkgver = master
+	pkgver = v1.0.0
 	pkgrel = 1
 	url = https://github.com/adamveld12/powerbar
 	arch = x86_64
