@@ -1,7 +1,7 @@
 # Maintainer: Aaron Paden <aaronbpaden@gmail.com>
 # Contributor: Natalia Portillo <claunia@clania.com>
 pkgname=pcem
-pkgver=15
+pkgver=16
 pkgrel=1
 pkgdesc="Emulator for various IBM PC computers and clones."
 url="http://pcem-emulator.co.uk/"
@@ -12,7 +12,7 @@ source=("http://pcem-emulator.co.uk/files/PCemV${pkgver}Linux.tar.gz")
 
 build() {
   cd "${srcdir}"
-  ./configure --enable-release-build --enable-networking --prefix=/usr
+  ./configure --enable-alsa --enable-release-build --enable-networking --prefix=/usr
   make
 }
 
@@ -23,4 +23,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('b501d3fc2b11bb6127d23fbbcd2de14aabf53460db52daf5d664a80c6f5c85f0')
+sha256sums=('45ae9321ee25375f0e685a49d84e8a5acba8ed33ccf597299edcf287cb3c8499')
