@@ -6,19 +6,19 @@
 pkgname=emacs-pretest
 _pkgname=emacs
 pkgver=27.0
-_pkgver=27.0.90
-pkgrel=0.90
+_pkgver=27.0.91
+pkgrel=0.91
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
-depends=('gpm' 'm17n-lib' 'gtk3' 'imagemagick')
+depends=('gpm' 'm17n-lib' 'gtk3' 'jansson')
 provides=('emacs')
 conflicts=('emacs')
 source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig})
-sha512sums=('1a6f319e964f20ad35574eb2d2e18ae8c86d9d2ab9ae038334f0f468c40602d1f9b20880cfa704ea2067bdd7a3952ea3e6b565d5bb3d6d304922ad1d98c1c76b'
+sha512sums=('fcae087c7d153ce45640dc5785e0829e85b14400eec70f833e1f7ee7d3903f1e4adb469d812596fc6e7ff792ccaeda3fde5fa1c37b609ab83e8432d9f63be36a'
             'SKIP')
-validpgpkeys=('B29426DEFB07724C3C35E5D36592E9A3A0B0F199' '28D3BED851FDF3AB57FEF93C233587A47C207910' 'D405AA2C862C54F17EEE6BE0E8BCD7866AFCF978')
+validpgpkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')
 
 build() {
   cd "$srcdir"/$_pkgname-$_pkgver
