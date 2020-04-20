@@ -18,6 +18,8 @@ CPUSchedulingPolicy=idle
 IOSchedulingClass=3
 
 # Nvidia
+ReadWritePaths=-/dev/nvidia0
+ReadWritePaths=-/dev/nvidiactl
 ReadWritePaths=-/dev/nvidia-uvm
 ExecStartPre=!-/usr/bin/nvidia-modprobe
 ExecStartPre=!-/usr/bin/nvidia-modprobe -c 0 -u

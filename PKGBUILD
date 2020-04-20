@@ -5,7 +5,7 @@
 
 pkgname=foldingathome
 pkgver=7.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A distributed computing project for simulating protein dynamics'
 arch=(x86_64)
 url=https://foldingathome.org/
@@ -31,7 +31,7 @@ source=(
   GPUs.txt
 )
 sha256sums=('b580a8076f3147bacb9d1599e1b1765956a8e37b8a79bd961ffe2e3adc7df110'
-            '0ab7c2dbbbc3b4c1da8224968514f000664a4b462bf6303110199d71ca567e5a'
+            '03633db6db07d2d5f077e14caeec6398f2302d684374f2fe6394ab3edc2de995'
             '41997239dc363570e2ca5bec0eca8c7d88aada6ace0bb5793bf3ec6d101f40bb'
             '5944a6df06b42c5edd4e5f0922f16e3f04cb755bd248d0e610c9262f3814aff9')
 
