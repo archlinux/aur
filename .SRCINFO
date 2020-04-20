@@ -1,7 +1,7 @@
 pkgbase = freetype2-infinality
 	pkgdesc = Font rasterization library with Infinality patches and custom settings.
 	pkgver = 2.10.1
-	pkgrel = 4
+	pkgrel = 1
 	url = http://www.freetype.org/
 	arch = armv7h
 	arch = i686
@@ -27,8 +27,7 @@ pkgbase = freetype2-infinality
 	source = 0001-Enable-table-validation-modules.patch
 	source = 0002-infinality-2.10.1-2019.08.21.patch
 	source = 0003-Enable-long-PCF-family-names.patch
-	source = 0004-pcf-Fix-handling-of-undefined-glyph-56067.patch
-	source = 0005-freetype-2.5.2-more-demos.patch
+	source = 0004-freetype-2.5.2-more-demos.patch
 	source = freetype2.sh
 	validpgpkeys = 58E0C111E39F5408C5D3EC76C1A60EACE707FDA5
 	sha256sums = 3a60d391fd579440561bf0e7f31af2222bc610ad6ce4d9d7bd2165bca8669110
@@ -40,7 +39,6 @@ pkgbase = freetype2-infinality
 	sha256sums = 739a67083b810c04e5cb87fa7e5a7819983410307e3d38d8f2a334c23085a5c2
 	sha256sums = afdc909def9d7e839f227a83a4e3b58d4060a28861739f9e1ab5540e60929cc8
 	sha256sums = 778a084b84215fbe62dafaed1dd7ebcdbd35c5c7af681d2789b5fe37764ceadd
-	sha256sums = a964981ca456a7a4fc54b95fd082a0d5d33358c15292328af7bdc66bc2d68a82
 	sha256sums = 36484db4b926ed026e7f32570573493b5a9793a129f08d54383a26d65a6af89b
 	sha256sums = f7f8e09c44f7552c883846e9a6a1efc50377c4932234e74adc4a8ff750606467
 

@@ -7,7 +7,7 @@
 pkgbase="freetype2-infinality"
 pkgname=("${pkgbase}" "${pkgbase/-/-demos-}" "${pkgbase/-/-docs-}")
 pkgver=2.10.1
-pkgrel=4
+pkgrel=1
 _patchrel=2019.08.21
 pkgdesc="Font rasterization library with Infinality patches and custom settings."
 arch=("armv7h" "i686" "x86_64")
@@ -25,8 +25,7 @@ source=("https://download-mirror.savannah.gnu.org/releases/${pkgbase%2-infinalit
         "0001-Enable-table-validation-modules.patch"
         "0002-infinality-${pkgver}-${_patchrel}.patch"
         "0003-Enable-long-PCF-family-names.patch"
-        "0004-pcf-Fix-handling-of-undefined-glyph-56067.patch"
-        "0005-freetype-2.5.2-more-demos.patch"
+        "0004-freetype-2.5.2-more-demos.patch"
         freetype2.sh
         )
 sha256sums=('3a60d391fd579440561bf0e7f31af2222bc610ad6ce4d9d7bd2165bca8669110'
@@ -38,7 +37,6 @@ sha256sums=('3a60d391fd579440561bf0e7f31af2222bc610ad6ce4d9d7bd2165bca8669110'
             '739a67083b810c04e5cb87fa7e5a7819983410307e3d38d8f2a334c23085a5c2'
             'afdc909def9d7e839f227a83a4e3b58d4060a28861739f9e1ab5540e60929cc8'
             '778a084b84215fbe62dafaed1dd7ebcdbd35c5c7af681d2789b5fe37764ceadd'
-            'a964981ca456a7a4fc54b95fd082a0d5d33358c15292328af7bdc66bc2d68a82'
             '36484db4b926ed026e7f32570573493b5a9793a129f08d54383a26d65a6af89b'
             'f7f8e09c44f7552c883846e9a6a1efc50377c4932234e74adc4a8ff750606467')
 validpgpkeys=("58E0C111E39F5408C5D3EC76C1A60EACE707FDA5")
@@ -53,12 +51,9 @@ prepare() {
   patch -Np1 -i "${srcdir}/0002-infinality-${pkgver}-${_patchrel}.patch"
   patch -Np1 -i "${srcdir}/0003-Enable-long-PCF-family-names.patch"
   
-  # https://bugs.archlinux.org/task/62395
-  patch -Np1 -i  "${srcdir}/0004-pcf-Fix-handling-of-undefined-glyph-56067.patch"
-
   cd "${srcdir}/${pkgbase%-infinality}-demos"
   # Enable more demos
-  patch -Np1 -i "${srcdir}/0005-${pkgbase%2-infinality}-2.5.2-more-demos.patch"
+  patch -Np1 -i "${srcdir}/0004-${pkgbase%2-infinality}-2.5.2-more-demos.patch"
 
   # Suppress RPATH
   sed -i "/X11_LIB:%=-R%/d" "graph/x11/rules.mk"
