@@ -1,6 +1,6 @@
 pkgbase = linux-drm-fixes-git
 	pkgdesc = DRM kernel graphics driver development tree
-	pkgver = 5.6.888899.d5226fa6dbae
+	pkgver = 5.8.915728.ae83d0b416db
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm/drm
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = linux-drm-fixes-git
 	makedepends = kmod
 	makedepends = libelf
 	makedepends = xmlto
-	makedepends = python-sphinx
+	makedepends = python-sphinx-2
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
@@ -18,7 +18,7 @@ pkgbase = linux-drm-fixes-git
 	source = linux-drm-fixes-git::git://anongit.freedesktop.org/drm/drm#branch=drm-fixes
 	source = config
 	sha256sums = SKIP
-	sha256sums = f100439200ef5c386cc3b9347f4d48fe701debc9351c9613ec66f0c4ca3ca9be
+	sha256sums = dfd3310bc2d3c4adbaba5e4f2260a8a110706993be1c3e02a5ddfe88bf0c63ce
 
 pkgname = linux-drm-fixes-git
 	pkgdesc = The DRM kernel graphics driver development tree kernel and modules
@@ -27,10 +27,14 @@ pkgname = linux-drm-fixes-git
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
 
-pkgname = linux-drm-fixes-git-headers
+pkgname = linux-drm-fixes-headers-git
 	pkgdesc = Headers and scripts for building modules for the DRM kernel graphics driver development tree kernel
 
-pkgname = linux-drm-fixes-git-docs
+pkgname = linux-drm-fixes-docs-git
 	pkgdesc = Documentation for the DRM kernel graphics driver development tree kernel
 
