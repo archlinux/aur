@@ -2,7 +2,7 @@
 
 pkgname=lilyjazz
 pkgver=r6.8fa7d55
-pkgrel=1
+pkgrel=2
 pkgdesc="LilyJAZZ font for LilyPond"
 arch=('any')
 url="https://github.com/OpenLilyPondFonts"
@@ -12,7 +12,7 @@ depends=('lilypond')
 source=("git+https://github.com/OpenLilyPondFonts/${pkgname}.git")
 sha256sums=('SKIP')
 
-lilypond_ver=2.19.82
+lilypond_ver=$(pacman -Qi lilypond | grep -Po '(?<=^Version).*' | sed "s/^\s*: //" | sed "s/\-.*//")
 
 pkgver() {
   cd "$srcdir/${pkgname}"
@@ -29,3 +29,4 @@ package() {
   mkdir -p $pkgdir/usr/share/lilypond/${lilypond_ver}/ly
   cp -r $srcdir/$pkgname/stylesheet/* $pkgdir/usr/share/lilypond/${lilypond_ver}/ly
 }
+
