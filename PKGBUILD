@@ -1,33 +1,25 @@
-# Maintainer: David Birks <david@tellus.space>
+# Maintainer: David Birks <david@birks.dev>
 # Contributor: Jacob Mason <jacob@jacobmason.net>
 
 pkgname=jx
-pkgver=2.0.690
+pkgver=2.1.3
 pkgrel=1
 pkgdesc='Command line tool for working with Jenkins X'
 arch=('x86_64')
 url='https://github.com/jenkins-x/jx'
 license=('Apache')
-depends=('go>=1.11.4')
+depends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jenkins-x/jx/archive/v$pkgver.tar.gz")
-sha256sums=('0ab48a507a723e4cb07aa59dd62974f591eeb730895cbd0876dd8e670a67f2db')
-
-prepare() {
-  mkdir -p gopath/src/github.com/jenkins-x
-  ln -rTsf $pkgname-$pkgver gopath/src/github.com/jenkins-x/jx
-}
+sha256sums=('9a3c4aa92a6f337bee28466d64dd1efede2c13edfef0cd0854f1143d515ff836')
 
 build() {
-  # Trim $PWD in build
-  export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
-  export GOPATH="$srcdir/gopath"
-
-  cd gopath/src/github.com/jenkins-x/jx
-  VERSION=${pkgver} make build
+  cd $pkgname-$pkgver
+  export VERSION=$pkgver
+  make build
 }
 
 package() {
-  install -Dm 755 "${srcdir}/gopath/src/github.com/jenkins-x/jx/build/jx" "${pkgdir}/usr/bin/jx"
+  install -Dm 755 "${srcdir}/$pkgname-$pkgver/build/jx" "${pkgdir}/usr/bin/jx"
 
   # Populate bash and zsh completions
   install -dm 755 "${pkgdir}/usr/share/bash-completion/completions"
