@@ -1,19 +1,13 @@
-pkgbase = mixbus4
+pkgbase = mixbus6
 	pkgdesc = Harrison Mixbus - Digital Audio Workstation
-	pkgver = 4.2.74
+	pkgver = 6.0.697
 	pkgrel = 1
 	url = http://harrisonconsoles.com/site/mixbus.html
-	arch = i686
 	arch = x86_64
 	license = EULA, GPLv2
 	depends = glibc
 	depends = xorg-server
-	provides = mixbus4
-	conflicts = mixbus4
-	source = file://Mixbus-4.2.74-x86_64-gcc5.run
-	source = mixbus4.png
-	sha256sums = SKIP
-	sha256sums = SKIP
+	conflicts = mixbus
 
-pkgname = mixbus4
+pkgname = mixbus6
 

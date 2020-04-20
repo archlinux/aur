@@ -1,87 +1,60 @@
 # Maintainer: Alexander Mcmillan <linuxguy93@gmail.com> 
 # Software Vendor: Harrison Consoles <mixbus@harrisonconsoles.com>
 
-## ATTENTION!! You will need to download the trial and/or obtain a license from Harrison Consoles. Then, drop all appropriate files in the root with the PKGBUILD. Also, uncomment the lines that reference the license file if you want an easy install process.
+## ATTENTION!! You will need to download the trial and/or obtain a license from Harrison Consoles. Then, drop all appropriate files in the root with the PKGBUILD directory. Also, uncomment the lines that reference the license file if you want an easy install process.
 
 pkgname=mixbus4
-pkgver=4.2.74
+appname=${pkgname/4/}
+pkgver=4.3.19
 pkgrel=1
 pkgdesc="Harrison Mixbus - Digital Audio Workstation"
-arch=('i686' 'x86_64')
-url="http://harrisonconsoles.com/site/mixbus.html"
+arch=('x86_64')
+url="http://harrisonconsoles.com/site/${appname}.html"
 license=('EULA, GPLv2')
 depends=('glibc' 'xorg-server')
-provides=('mixbus4')
-conflicts=('mixbus4')
-source=("Mixbus-$pkgver-$(uname -m)-gcc5.tar"
-	"mixbus4.png"
-	#"license_key_harrison_mixbus4.txt"
-	)
-sha256sums=('SKIP'
-	    'SKIP'
-	    #'SKIP'
-	    )
+conflicts=('mixbus')
 
-build() {
-## Change to source directory
-cd $srcdir
-
+prepare() {
 ## Setup mixbus for installation
-# Unpack intallation files
-echo "Preparing Installation..."
-
-echo "Unpacking Installer..."
-tar -xf Mixbus-$pkgver-$(uname -m)-gcc5.tar
-./Mixbus-$pkgver-$(uname -m)-gcc5.run --tar xf 
-find . ! -name "Mixbus_$(uname -m)-$pkgver.tar" -type f -exec rm -f {} +
-tar -xf Mixbus_$(uname -m)-$pkgver.tar
-
-## Check for the license file
-if [ ! -L license_key_harrison_mixbus4.txt ];
-	then echo "PLEASE OBTAIN A LICENSE FROM $url!!"
+_archive="`xdg-user-dir DOWNLOAD`/Mixbus-$pkgver-Linux-64bit-gcc5.tar"
+if [ -f ${_archive} ]; then
+	ln -srf ${_archive} "$srcdir/`basename ${_archive}`"
+	msg2 "Unpacking Installer..."
+	tar -xf ${_archive}
+	./Mixbus-$pkgver-$(uname -m)-gcc5.run --tar xf
+	tar -xf $srcdir/Mixbus_$(uname -m)-$pkgver.tar
 else
-	echo "Installing License..."
-	cp license_key_harrison_mixbus4.txt Mixbus_$(uname -m)-$pkgver
+	msg2 "Please download a copy from https://harrisonconsoles.com/site/${appname}.html. Then put the `basename ${_archive}` in the `xdg-user-dir DOWNLOAD` directory."
+    exit 1
 fi
 }
 
 package() {
-## Change into package directory
-cd $pkgdir
-
 ## Create package directories
-echo "Creating Directories..."
-mkdir -p opt/$pkgname
-mkdir -p usr/local/bin
-mkdir -p usr/local/lib
-mkdir -p usr/share/applications
+msg2 "Creating Directories..."
+mkdir -p $pkgdir/opt/${appname}
+mkdir -p $pkgdir/usr/share/applications
 
 ## Copy installation directory to package directory
-echo "Getting Ready To Package..."
-cp -r $srcdir/Mixbus_$(uname -m)-$pkgver/* opt/$pkgname
-cp $srcdir/mixbus4.png opt/$pkgname/share
+msg2 "Getting Ready To Package..."
+cp -r $srcdir/Mixbus_$(uname -m)-$pkgver/* $pkgdir/opt/${appname}
 
-## Create links to excuteables
-ln -sr ./opt/$pkgname/bin/mixbus4 ./usr/local/bin/mixbus4
-ln -sr ./opt/$pkgname/lib/LV2 ./usr/local/lib/lv2
-if [ ! -f ./opt/$pkgname/license_key_harrison_mixbus4.txt ];
-	then echo "PLEASE OBTAIN A LICENSE FROM $url"
-else
-	mkdir -p home/$USER
-	ln -sr ./opt/$pkgname/license_key_harrison_mixbus4.txt ./$HOME/license_key_harrison_mixbus4.txt
-fi
+## Installing License Files
+msg2 "Install Mixbus DAW and plugin licenses to ${HOME}..."
 
 ## Create a .desktop file
-echo "Creating A Desktop Entry..."
-echo -e "[Desktop Entry]\nEncoding=UTF-8\nVersion=1.0\nType=Application\nTerminal=false\nExec=/opt/$pkgname/bin/mixbus4\nName=Mixbus 4\nIcon=/opt/$pkgname/share/mixbus4.png\nComment=Digital Audio Workstation\nCategories=AudioVideo;AudioEditing;Audio;Recorder;" > usr/share/applications/mixbus4.desktop
+msg2 "Creating A Desktop Entry..."
+echo -e "[Desktop Entry]\nEncoding=UTF-8\nVersion=1.0\nType=Application\nTerminal=false\nExec=/opt/${appname}/bin/${appname}6\nName=Mixbus $pkgver\nIcon=/opt/${appname}/share/resources/Mixbus-icon_256px.png\nComment=Digital Audio Workstation\nCategories=AudioVideo;AudioEditing;Audio;Recorder;" > $pkgdir/usr/share/applications/${appname}.desktop
 
 # Mark as excuteable
-chmod 755 /usr/share/applications/mixbus4.desktop
+chmod 644 $pkgdir/usr/share/applications/${appname}.desktop
 
-## Remove package and source directories
-echo "Cleaning Up Installation..." 
-rm -r $srcdir
+# Remove uninstall script
+rm $pkgdir/opt/${appname}/bin/Mixbus-$pkgver.uninstall.sh
+
+# Remove Plugins Provided By Archlinux
+# rm -r $pkgdir/opt/${appname}/lib/LV2/{avldrums,b_synth,b_whirl,dpl,fil4,gmsynth,meters,midifilter,reasonablesynth,stereoroute,tuna}.lv2
 
 ## Package has built successfully message
-echo "Package Built Successfully!!"
+msg2 "Package Built Successfully!!"
 }
