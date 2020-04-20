@@ -1,13 +1,13 @@
-pkgbase = mixbus6
+pkgbase = mixbus5
 	pkgdesc = Harrison Mixbus - Digital Audio Workstation
 	pkgver = 5.3.22
 	pkgrel = 1
-	url = http://harrisonconsoles.com/site/mixbus6.html
+	url = http://harrisonconsoles.com/site/mixbus.html
 	arch = x86_64
 	license = EULA, GPLv2
 	depends = glibc
 	depends = xorg-server
 	conflicts = mixbus
 
-pkgname = mixbus6
+pkgname = mixbus5
 
