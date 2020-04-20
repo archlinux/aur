@@ -51,7 +51,7 @@ _major=5.6
 _minor=5
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -78,7 +78,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0002-Revert-ACPI-EC-Do-not-clear-boot_ec_is_ecdt-in-acpi_.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0003-drm-amdgpu-fix-the-hw-hang-during-perform-system-reb.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -326,9 +328,11 @@ sha512sums=('42a160b6d51619e77ef3743cdafc18aa3d0c86aec0508f057730cd25f21dbb5765f
             '5346af9864b905bb34dd7abb00b9386b4439338875c7a5d55acf1ee56a2320a7f58afa7995e00c9300664fd8a8c7d941fd91e75566dd3a04dbd004237954db9d'
             'bb6892612524d0cd667048d4a3d8352b04fca0e65398dc96964cc29241c7167f5f3e7d8a1a10c8afa7167a374611f2f3dd57dab04ed351cbedc4fcac4103669c'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
-            'eacf9612b758381b1490409911c64a4d0a96f33cdfc5a1cbcfd4c5feb70d08a350ea017f8ef853d74906158d26ec5cd57ce7109f00d4593966fb0c05eff66ae4'
+            '2c1e3cb329bb08a38a2e9ea3c4a20da9cc8fec46c020d243a3af677844fe51f7872d653157ec34c1a08f481e252f9db3f12897d2dfe4caeecf42952d9c019b54'
+            'b15cda605e6e18ccff817d8f832929e5222a8905dc2321edd939fcedad5048e708f0a09a82702dd0b402e68ac3c34553d1df8917580f17efc954bdee3e998e16'
+            'fdcf8d04c642c4c8ecd9fa4b7fbc936fad94ad28d4ce9792b0832cee54aebd171b6ff5355b48cab3fdd9b52cfe9d52aaa60f2f678c919499dfa3139e3feeff3d'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
-            'fb9188c7e5a2330eef2216bfb190585a0d1e624068f7a14ded774075428c927d54a5364ae2622ac08e51393f9ab2d7e62a41bb9245c0bd9cb61b4317bc0943ea')
+            'd79b5ab4532f28f40076716d8907fda692359f401ce43e1c02c9b7057936adfcdb1eecc2e60ca5081f246e92122a0482733a6514f91886d741cc8e059850b2f7')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
