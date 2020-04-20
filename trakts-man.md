@@ -77,48 +77,59 @@ Trakt.tv has a lot of [plugins](https://trakt.tv/apps) to automatically scrobble
 `auth` [-f]
 :   `-f`    Force run the flow, ignoring already existing credentials
 
-`autostart` [enable|disable]
+`autostart` \<enable|disable>
    `enable`    Installs and enables the autostart service
    `disable`   Disables the autostart service
 
-`backlog` [list|clear]
-   `clear`  Try to sync the backlog with trakt servers
-   `list`   List the files in backlog
+`backlog` \<list|clear>
+   `clear`     Try to sync the backlog with trakt servers
+   `list`      List the files in backlog
 
 `config` list [--all]
-   `list`   Lists configuration settings. By default, only overriden values are shown
+   `list`      Lists configuration settings. By default,
+             only overriden values are shown
       `--all`  Include default values too
 
 `config` set [--add] \<key> \<value1> ... [<valueN>]
-   `set` Set the value for a config parameter.
-      Separate multiple values with spaces.
-      For values containing space(s), surround them with double-quotes
+   `set`       Set the value for a config parameter.
+             Separate multiple values with spaces.
+             For values containing space(s),
+             surround them with double-quotes
 
-      <key>   Config parameter
-      <value> Setting value
-      --add  In case of list values, add them to the end
+     <key>   Config parameter
+     <value> Setting value
+     --add   In case of list values, add them to the end
              instead of overwriting
-      Eg:
-           $ trakts config set players.monitored mpv vlc mpc-be
-           will set: players.monitored = ['mpv', 'vlc' ]
-           $ trakts config set --add players.monitored plex mpc-hc
-           will add: players.monitored = ['mpv', 'vlc', 'plex', 'mpc-hc]
+     Eg:
+          $ trakts config set players.monitored mpv vlc mpc-be
+          will set: players.monitored = ['mpv', 'vlc' ]
+          $ trakts config set --add players.monitored plex mpc-hc
+          will add: players.monitored = ['mpv', 'vlc', 'plex', 'mpc-hc]
+
 `config` unset \<key>
-   `unset` Reset a config value to its default
-   \<key>   Config parameter
+   `unset`     Reset a config value to its default
+   \<key>     Config parameter
 
 `help` [\<command1>] ... [\<commandN>]
-:   \<command>  The command name
+   \<command> The command name
 
-`log` [path|open]
-   `open`   Open the latest log file in your default editor
-   `path`   Prints the location of the log file
+`log` \<path|open>
+   `open`      Open the latest log file in your default editor
+   `path`      Prints the location of the log file
 
 `plex` [-f]
 :  `-f`    Force run the flow, ignoring already existing credentials
 
 `start` [-r]
 :  -r    Restart the service
+
+`whitelist` add \<folder1> ... [\<folderN>]
+   \<folder>  Folder to be whitelisted
+
+`whitelist` \<remove|show>
+   `show`      Show the current whitelist
+   `remove`    Remove folder(s) from whitelist (interactive)
+
 # AUTHORS
 
 This program is written by Krut Patel(@iamkroot:github.com).
