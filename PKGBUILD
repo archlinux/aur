@@ -2,7 +2,7 @@
 pkgname=intel-caffe-git
 _srcname=intel-caffe
 pkgver=1.1.6
-pkgrel=22
+pkgrel=23
 pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
 url="https://github.com/intel/caffe"
@@ -59,7 +59,6 @@ prepare() {
     mkdir -p build
     cd build
     CMAKE_BUILD_TYPE="Release" \
-    CMAKE_PARALLEL_LEVEL=`grep processor /proc/cpuinfo | wc -l` \
     cmake \
     -DCPU_ONLY=ON \
     -DBUILD_SHARED_LIBS=OFF \
