@@ -6,9 +6,9 @@
 # Maintainer: Solomon Choina <shlomochoina at gmail dot com>
 pkgbase="freetype2-infinality"
 pkgname=("${pkgbase}" "${pkgbase/-/-demos-}" "${pkgbase/-/-docs-}")
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=4
-_patchrel=2019.03.21
+_patchrel=2019.08.21
 pkgdesc="Font rasterization library with Infinality patches and custom settings."
 arch=("armv7h" "i686" "x86_64")
 license=("GPL")
@@ -29,14 +29,14 @@ source=("https://download-mirror.savannah.gnu.org/releases/${pkgbase%2-infinalit
         "0005-freetype-2.5.2-more-demos.patch"
         freetype2.sh
         )
-sha256sums=('955e17244e9b38adb0c98df66abb50467312e6bb70eac07e49ce6bd1a20e809a'
+sha256sums=('3a60d391fd579440561bf0e7f31af2222bc610ad6ce4d9d7bd2165bca8669110'
             'SKIP'
-            'd44a3046e5963ba04112beb927f4ea5c628f66a68fac5c01fa84dc2d25cb2c26'
+            'a4e4a8e69c7bf833eba7c158254a572fd43131d5e9b8791bd2ecbb03546ce155'
             'SKIP'
-            'dcf88dfd0b3966f9f8a38f53fc0eb8216b4b129742148167931148e65d262568'
+            '5e9e94a2db9d1a945293a1644a502f6664a2173a454d4a55b19695e2e2f4a0bc'
             'SKIP'
             '739a67083b810c04e5cb87fa7e5a7819983410307e3d38d8f2a334c23085a5c2'
-            'f67fe435d4c8cd1009614557470faf0401e184405f5b45fea9b65f3f744f2683'
+            'afdc909def9d7e839f227a83a4e3b58d4060a28861739f9e1ab5540e60929cc8'
             '778a084b84215fbe62dafaed1dd7ebcdbd35c5c7af681d2789b5fe37764ceadd'
             'a964981ca456a7a4fc54b95fd082a0d5d33358c15292328af7bdc66bc2d68a82'
             '36484db4b926ed026e7f32570573493b5a9793a129f08d54383a26d65a6af89b'
