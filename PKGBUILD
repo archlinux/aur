@@ -2,8 +2,8 @@
 
 pkgname=newsflash-git
 _pkgname=news_flash_gtk
-pkgver=402.510b8c6
-pkgrel=2
+pkgver=473.cd41e93
+pkgrel=1
 pkgdesc="The spiritual successor to FeedReader"
 arch=(any)
 url="https://gitlab.com/news-flash/news_flash_gtk"
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
 	cd "${_pkgname}"
-	rm -rf _build
+	#rm -rf _build
 	arch-meson _build
 	ninja -C _build
 }
