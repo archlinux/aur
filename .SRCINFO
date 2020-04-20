@@ -1,7 +1,7 @@
 pkgbase = intel-caffe-git
 	pkgdesc = Intel® Distribution of Caffe
 	pkgver = 1.1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/intel/caffe
 	arch = x86_64
 	license = BSD

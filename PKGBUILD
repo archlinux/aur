@@ -2,7 +2,7 @@
 pkgname=intel-caffe-git
 _srcname=intel-caffe
 pkgver=1.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
 url="https://github.com/intel/caffe"
@@ -29,6 +29,7 @@ options=( '!strip' '!emptydirs' 'staticlibs' )
 prepare() {
     cd "${_srcname}"
     git checkout ${pkgver}
+    echo 'rls-v0.19' > mkldnn.commit
     cd -
 
     mkdir -p build
