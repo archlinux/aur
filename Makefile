@@ -1,5 +1,5 @@
 all:
-	make srcinfo
+	make prepare
 	make build
 	make clean
 	make check
@@ -7,7 +7,8 @@ all:
 build:
 	makepkg -f
 
-srcinfo:
+prepare:
+	sed -ie "s|md5sums.*|`makepkg -g 2>&1|grep md5sums`|g" PKGBUILD
 	makepkg --printsrcinfo > .SRCINFO
 
 clean:
