@@ -1,0 +1,16 @@
+pkgbase = richod-sp3700-ppds
+	pkgdesc = PPD files for Ricoh's SP3700 multifunction printers, supplied by Ricoh
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://support.ricoh.com/bb/html/dr_ut_e/re1/model/sp320sn/sp320sn.htm
+	arch = any
+	license = custom
+	makedepends = rpmextract
+	depends = cups
+	depends = ghostscript
+	depends = cups-filters
+	source = https://support.ricoh.com/w/bb/pub_j/dr_ut_d/4101038/4101038412/V102/5224415/sp_2300_3700p_pcl-1.02-0.noarch.rpm
+	sha256sums = f2a18b8232091ad490cfa0f5fc9826a193f6c0817ca26f2185113e951976e64b
+
+pkgname = richod-sp3700-ppds
+
