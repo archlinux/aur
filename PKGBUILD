@@ -31,9 +31,9 @@ package() {
   done
 
   for bank_file in *.xhipbank; do
-    install -Dm644 "${srcdir}/${bank_file}" "${pkgdir}/usr/share/xhip/banks/${bank_file}"
+    install -Dm644 "${srcdir}/${bank_file}" "${pkgdir}/usr/share/${pkgname}/banks/${bank_file}"
   done
 
-  install -Dm644 "${srcdir}/xhip_8_user_manual.pdf" "${pkgdir}/usr/share/doc/xhip//xhip_8_user_manual.pdf"
-  install -Dm644 "${srcdir}/xhip.ico" "${pkgdir}/usr/share/xhip/icons/xhip.ico"
+  install -Dm644 "${srcdir}/xhip_8_user_manual.pdf" "${pkgdir}/usr/share/doc/${pkgname}/xhip_8_user_manual.pdf"
+  install -Dm644 "${srcdir}/xhip.ico" "${pkgdir}/usr/share/${pkgname}/icons/xhip.ico"
 }
