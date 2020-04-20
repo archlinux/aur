@@ -1,9 +1,12 @@
+# Maintainer: Andreas Muttscheller <firstname.lastname at gmail dot com>
+
 pkgname=merge-request-notifier
 pkgver=1.7.0
 pkgrel=1
-pkgdesc="
-This app shows your merge requests grouped by projects and WIP status. It is accessible from the system tray."
+pkgdesc="This app shows your merge requests grouped by projects and WIP status. It is accessible from the system tray."
 arch=('x86_64')
+license=('MIT')
+url='https://github.com/codecentric/merge-request-notifier'
 source=("https://github.com/codecentric/merge-request-notifier/releases/download/v${pkgver}/merge-request-notifier-${pkgver}.tar.xz"
 	"https://raw.githubusercontent.com/codecentric/merge-request-notifier/master/build/icon.png"
 	"merge-request-notifier.desktop")
@@ -22,6 +25,8 @@ package() {
 	cp -R merge-request-notifier-1.7.0/* "${pkgdir}/opt/merge-request-notifier"
 
 	ln -sf /opt/merge-request-notifier/merge-request-notifier "${pkgdir}/usr/bin/merge-request-notifier"
+
+	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	chmod -R go-w "${pkgdir}"
 }
