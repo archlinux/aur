@@ -38,7 +38,7 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 #                                    Default PKGBUILD Configuration                                       #
 #=========================================================================================================#
 pkgname=vim-youcompleteme-git
-pkgver=r2658.05fb5592
+pkgver=r2666.367c1518
 pkgver() {
 	cd "YouCompleteMe" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -189,8 +189,10 @@ build() {
 	make ycm_core
 
 	if [[ "$_gocode" == "y" ]]; then
-		cd "$srcdir"/YouCompleteMe/third_party/ycmd/third_party/go/src/golang.org/x/tools/gopls || exit
-		go build
+		local _local_GOPATH="$srcdir"/YouCompleteMe/third_party/ycmd/third_party/go
+		mkdir ${_local_GOPATH} || exit
+		cd ${_local_GOPATH} || exit
+		GO111MODULE=on GOPATH=${_local_GOPATH} go get golang.org/x/tools/gopls@v0.4.0
 	else
 		echo 'Skipping Gocode completer...'
 	fi
