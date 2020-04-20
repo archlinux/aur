@@ -6,7 +6,7 @@
 pkgname=lib32-systemd-git
 _pkgname=lib32-systemd
 _pkgbasename=systemd
-pkgver=244.r123.g36f43076b9
+pkgver=245.r630.g842a362c3a
 pkgrel=1
 pkgdesc='system and service manager (32-bit, git version)'
 arch=('x86_64')
@@ -19,13 +19,13 @@ makedepends=('git' 'gperf' 'intltool' 'lib32-acl' 'lib32-bzip2'
              'lib32-curl' 'lib32-dbus' 'lib32-gcc-libs' 'lib32-glib2'
              'lib32-gnutls' 'lib32-libelf' 'lib32-libidn2' 'lib32-pcre2'
              'libxslt' 'meson')
-options=('!strip')
+options=('strip')
 source=('git+https://github.com/systemd/systemd')
 sha512sums=('SKIP')
 
 pkgver() {
   cd "$_pkgbasename"
-  # cutting off 'foo-' prefix that presents in the git tag
+  # cutting off 'v' prefix that presents in the git tag
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -56,21 +56,23 @@ build() {
     -Dversion-tag="${pkgver}-${pkgrel}-arch"
 
     -Daudit=false
-    -Dgnu-efi=false
-    -Dima=false
-    -Dlibidn2=true
-    -Dlz4=false
     -Dblkid=false
+    -Dgnu-efi=false
+    -Dhtml=false
+    -Dima=false
     -Dkmod=false
     -Dlibcryptsetup=false
+    -Dlibidn2=true
     -Dlibiptc=false
+    -Dlz4=false
+    -Dman=false
     -Dmanpages=false
+    -Dmicrohttpd=false
     -Dnetworkd=false
     -Dpam=false
     -Dpython=false
+    -Drepart=false
     -Dseccomp=false
-    -Dman=false
-    -Dhtml=false
 
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
     -Ddefault-hierarchy=hybrid
@@ -85,7 +87,7 @@ build() {
     -Dsysvrcnd-path=
   )
 
-  arch-meson "$_pkgbasename" build "${_meson_options[@]}"
+  arch-meson "${_pkgbasename}" build "${_meson_options[@]}"
 
   ninja -C build
 }
