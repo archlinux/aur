@@ -1,11 +1,11 @@
-# Maintainer: ValHue <vhuelamo at gmail dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 #
 # Contributor: ValHue <vhuelamo at gmail dot com>
 #
 _ubuntur="0extras19.06.7"
 pkgname="caja-pdf-tools"
 pkgver="1.2.9"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A set of tools to work with PDF documents from Caja."
 arch=('any')
 url="https://www.atareao.es/aplicacion/pdf-tools-o-modificar-pdf-en-linux/#"
@@ -32,7 +32,6 @@ package() {
 	done
 	cp ./src/*.py ${pkgdir}/usr/share/caja-python/extensions/
 	cp ./src/pdf-tools/*.py ${pkgdir}/usr/share/caja-python/extensions/pdf-tools/
-	cp ./PyPDF2/PyPDF2/*.py ${pkgdir}/usr/share/caja-python/extensions/pdf-tools/PyPDF2/
 	cp ./data/icons/updf.svg ${pkgdir}/usr/share/caja-python/extensions/pdf-tools/icons/
 	cp ./debian/changelog ${pkgdir}/usr/share/caja-python/extensions/pdf-tools/
 
