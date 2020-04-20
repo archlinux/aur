@@ -123,7 +123,7 @@ _url=https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-x86_64/xpi
 
 for _lang in "${_languages[@]}"; do
   _locale=${_lang%% *}
-  _pkgname=firefox-i18n-${_locale,,}
+  _pkgname=firefox-beta-i18n-${_locale,,}
 
   pkgname+=($_pkgname)
   source+=("firefox-i18n-$pkgver-$_locale.xpi::$_url/$_locale.xpi")

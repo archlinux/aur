@@ -298,195 +298,195 @@ pkgbase = firefox-beta-i18n
 	md5sums = ad79cee4a886620c071071041ad1086f
 	md5sums = cb568e27f9e405e2fd803bb16b93a9d7
 
-pkgname = firefox-i18n-ach
+pkgname = firefox-beta-i18n-ach
 
-pkgname = firefox-i18n-af
+pkgname = firefox-beta-i18n-af
 
-pkgname = firefox-i18n-an
+pkgname = firefox-beta-i18n-an
 
-pkgname = firefox-i18n-ar
+pkgname = firefox-beta-i18n-ar
 
-pkgname = firefox-i18n-ast
+pkgname = firefox-beta-i18n-ast
 
-pkgname = firefox-i18n-az
+pkgname = firefox-beta-i18n-az
 
-pkgname = firefox-i18n-be
+pkgname = firefox-beta-i18n-be
 
-pkgname = firefox-i18n-bg
+pkgname = firefox-beta-i18n-bg
 
-pkgname = firefox-i18n-bn
+pkgname = firefox-beta-i18n-bn
 
-pkgname = firefox-i18n-br
+pkgname = firefox-beta-i18n-br
 
-pkgname = firefox-i18n-bs
+pkgname = firefox-beta-i18n-bs
 
-pkgname = firefox-i18n-ca-valencia
+pkgname = firefox-beta-i18n-ca-valencia
 
-pkgname = firefox-i18n-ca
+pkgname = firefox-beta-i18n-ca
 
-pkgname = firefox-i18n-cak
+pkgname = firefox-beta-i18n-cak
 
-pkgname = firefox-i18n-cs
+pkgname = firefox-beta-i18n-cs
 
-pkgname = firefox-i18n-cy
+pkgname = firefox-beta-i18n-cy
 
-pkgname = firefox-i18n-da
+pkgname = firefox-beta-i18n-da
 
-pkgname = firefox-i18n-de
+pkgname = firefox-beta-i18n-de
 
-pkgname = firefox-i18n-dsb
+pkgname = firefox-beta-i18n-dsb
 
-pkgname = firefox-i18n-el
+pkgname = firefox-beta-i18n-el
 
-pkgname = firefox-i18n-en-ca
+pkgname = firefox-beta-i18n-en-ca
 
-pkgname = firefox-i18n-en-gb
+pkgname = firefox-beta-i18n-en-gb
 
-pkgname = firefox-i18n-en-us
+pkgname = firefox-beta-i18n-en-us
 
-pkgname = firefox-i18n-eo
+pkgname = firefox-beta-i18n-eo
 
-pkgname = firefox-i18n-es-ar
+pkgname = firefox-beta-i18n-es-ar
 
-pkgname = firefox-i18n-es-cl
+pkgname = firefox-beta-i18n-es-cl
 
-pkgname = firefox-i18n-es-es
+pkgname = firefox-beta-i18n-es-es
 
-pkgname = firefox-i18n-es-mx
+pkgname = firefox-beta-i18n-es-mx
 
-pkgname = firefox-i18n-et
+pkgname = firefox-beta-i18n-et
 
-pkgname = firefox-i18n-eu
+pkgname = firefox-beta-i18n-eu
 
-pkgname = firefox-i18n-fa
+pkgname = firefox-beta-i18n-fa
 
-pkgname = firefox-i18n-ff
+pkgname = firefox-beta-i18n-ff
 
-pkgname = firefox-i18n-fi
+pkgname = firefox-beta-i18n-fi
 
-pkgname = firefox-i18n-fr
+pkgname = firefox-beta-i18n-fr
 
-pkgname = firefox-i18n-fy-nl
+pkgname = firefox-beta-i18n-fy-nl
 
-pkgname = firefox-i18n-ga-ie
+pkgname = firefox-beta-i18n-ga-ie
 
-pkgname = firefox-i18n-gd
+pkgname = firefox-beta-i18n-gd
 
-pkgname = firefox-i18n-gl
+pkgname = firefox-beta-i18n-gl
 
-pkgname = firefox-i18n-gn
+pkgname = firefox-beta-i18n-gn
 
-pkgname = firefox-i18n-gu-in
+pkgname = firefox-beta-i18n-gu-in
 
-pkgname = firefox-i18n-he
+pkgname = firefox-beta-i18n-he
 
-pkgname = firefox-i18n-hi-in
+pkgname = firefox-beta-i18n-hi-in
 
-pkgname = firefox-i18n-hr
+pkgname = firefox-beta-i18n-hr
 
-pkgname = firefox-i18n-hsb
+pkgname = firefox-beta-i18n-hsb
 
-pkgname = firefox-i18n-hu
+pkgname = firefox-beta-i18n-hu
 
-pkgname = firefox-i18n-hy-am
+pkgname = firefox-beta-i18n-hy-am
 
-pkgname = firefox-i18n-ia
+pkgname = firefox-beta-i18n-ia
 
-pkgname = firefox-i18n-id
+pkgname = firefox-beta-i18n-id
 
-pkgname = firefox-i18n-is
+pkgname = firefox-beta-i18n-is
 
-pkgname = firefox-i18n-it
+pkgname = firefox-beta-i18n-it
 
-pkgname = firefox-i18n-ja
+pkgname = firefox-beta-i18n-ja
 
-pkgname = firefox-i18n-ka
+pkgname = firefox-beta-i18n-ka
 
-pkgname = firefox-i18n-kab
+pkgname = firefox-beta-i18n-kab
 
-pkgname = firefox-i18n-kk
+pkgname = firefox-beta-i18n-kk
 
-pkgname = firefox-i18n-km
+pkgname = firefox-beta-i18n-km
 
-pkgname = firefox-i18n-kn
+pkgname = firefox-beta-i18n-kn
 
-pkgname = firefox-i18n-ko
+pkgname = firefox-beta-i18n-ko
 
-pkgname = firefox-i18n-lij
+pkgname = firefox-beta-i18n-lij
 
-pkgname = firefox-i18n-lt
+pkgname = firefox-beta-i18n-lt
 
-pkgname = firefox-i18n-lv
+pkgname = firefox-beta-i18n-lv
 
-pkgname = firefox-i18n-mk
+pkgname = firefox-beta-i18n-mk
 
-pkgname = firefox-i18n-mr
+pkgname = firefox-beta-i18n-mr
 
-pkgname = firefox-i18n-ms
+pkgname = firefox-beta-i18n-ms
 
-pkgname = firefox-i18n-my
+pkgname = firefox-beta-i18n-my
 
-pkgname = firefox-i18n-nb-no
+pkgname = firefox-beta-i18n-nb-no
 
-pkgname = firefox-i18n-ne-np
+pkgname = firefox-beta-i18n-ne-np
 
-pkgname = firefox-i18n-nl
+pkgname = firefox-beta-i18n-nl
 
-pkgname = firefox-i18n-nn-no
+pkgname = firefox-beta-i18n-nn-no
 
-pkgname = firefox-i18n-oc
+pkgname = firefox-beta-i18n-oc
 
-pkgname = firefox-i18n-pa-in
+pkgname = firefox-beta-i18n-pa-in
 
-pkgname = firefox-i18n-pl
+pkgname = firefox-beta-i18n-pl
 
-pkgname = firefox-i18n-pt-br
+pkgname = firefox-beta-i18n-pt-br
 
-pkgname = firefox-i18n-pt-pt
+pkgname = firefox-beta-i18n-pt-pt
 
-pkgname = firefox-i18n-rm
+pkgname = firefox-beta-i18n-rm
 
-pkgname = firefox-i18n-ro
+pkgname = firefox-beta-i18n-ro
 
-pkgname = firefox-i18n-ru
+pkgname = firefox-beta-i18n-ru
 
-pkgname = firefox-i18n-si
+pkgname = firefox-beta-i18n-si
 
-pkgname = firefox-i18n-sk
+pkgname = firefox-beta-i18n-sk
 
-pkgname = firefox-i18n-sl
+pkgname = firefox-beta-i18n-sl
 
-pkgname = firefox-i18n-son
+pkgname = firefox-beta-i18n-son
 
-pkgname = firefox-i18n-sq
+pkgname = firefox-beta-i18n-sq
 
-pkgname = firefox-i18n-sr
+pkgname = firefox-beta-i18n-sr
 
-pkgname = firefox-i18n-sv-se
+pkgname = firefox-beta-i18n-sv-se
 
-pkgname = firefox-i18n-ta
+pkgname = firefox-beta-i18n-ta
 
-pkgname = firefox-i18n-te
+pkgname = firefox-beta-i18n-te
 
-pkgname = firefox-i18n-th
+pkgname = firefox-beta-i18n-th
 
-pkgname = firefox-i18n-tl
+pkgname = firefox-beta-i18n-tl
 
-pkgname = firefox-i18n-tr
+pkgname = firefox-beta-i18n-tr
 
-pkgname = firefox-i18n-trs
+pkgname = firefox-beta-i18n-trs
 
-pkgname = firefox-i18n-uk
+pkgname = firefox-beta-i18n-uk
 
-pkgname = firefox-i18n-ur
+pkgname = firefox-beta-i18n-ur
 
-pkgname = firefox-i18n-uz
+pkgname = firefox-beta-i18n-uz
 
-pkgname = firefox-i18n-vi
+pkgname = firefox-beta-i18n-vi
 
-pkgname = firefox-i18n-xh
+pkgname = firefox-beta-i18n-xh
 
-pkgname = firefox-i18n-zh-cn
+pkgname = firefox-beta-i18n-zh-cn
 
-pkgname = firefox-i18n-zh-tw
+pkgname = firefox-beta-i18n-zh-tw
 
