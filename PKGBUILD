@@ -4,8 +4,8 @@
 pkgname=('jre8-adoptopenjdk-headless' 'jre8-adoptopenjdk' 'jdk8-adoptopenjdk')
 pkgbase=java8-adoptopenjdk
 _java_ver=8
-_jdk_update=242
-_jdk_build=08
+_jdk_update=252
+_jdk_build=09
 pkgver=${_java_ver}.u${_jdk_update}
 _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
 _targz_ver=${_java_ver}u${_jdk_update}b${_jdk_build}
@@ -18,7 +18,7 @@ makedepends=('ca-certificates-utils' 'hicolor-icon-theme'
              'java-environment-common' 'java-runtime-common' 'nss' 'xdg-utils')
 source=(https://github.com/AdoptOpenJDK/openjdk${_java_ver}-binaries/releases/download/${_repo_ver}/OpenJDK${_java_ver}U-jdk_x64_linux_hotspot_${_targz_ver}.tar.gz)
 
-sha256sums=('f39b523c724d0e0047d238eb2bb17a9565a60574cf651206c867ee5fc000ab43')
+sha256sums=('2b59b5282ff32bce7abba8ad6b9fde34c15a98f949ad8ae43e789bbd78fc8862')
 
 _JARCH=amd64
 _jdkname=adoptopenjdk${_java_ver}
