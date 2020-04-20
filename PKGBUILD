@@ -1,10 +1,11 @@
-# Maintainer:  Michael DeGuzis <mdeguzis@gmail.com>
+# Maintainer: 
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Mark Weiman <mark.weiman@markzz.com>
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 # Contributor: Tony Lambiris <tony@critialstack.com>
 
 pkgname=apt
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Command-line package manager used on Debian-based systems"
 arch=('i686' 'x86_64')
