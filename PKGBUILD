@@ -3,7 +3,7 @@
 pkgname=freemajor
 _pkgname=FreeMajor
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TC Electronic G-Major editor"
 arch=('x86_64')
 url='https://github.com/linuxmao-org/FreeMajor/'
@@ -23,5 +23,4 @@ package() {
   make install DESTDIR="$pkgdir"
 }
 
-sha1sums=('2f048a6e779cb28632fa6a39a99ef7c40a6fc0e1'
-          'ba7881159c242e3a69da7e0d965f47679e6bd371')
+sha1sums=('2f048a6e779cb28632fa6a39a99ef7c40a6fc0e1')
