@@ -19,6 +19,10 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    sed -i 's/uint16_t>/uint32_t>/g' ${srcdir}/${_pkgname}/src/ArduPilotPlugin.cc
+}
+
 build() {
     mkdir -p ${srcdir}/${_pkgname}/build
     cd ${srcdir}/${_pkgname}/build
