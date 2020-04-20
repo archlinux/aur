@@ -1,0 +1,17 @@
+pkgbase = gluon-scene-builder-11-bin
+	pkgdesc = Open Source Drag & Drop UI Design tool for JavaFX, by Gluon (For Java 11)
+	pkgver = 11.0.0
+	pkgrel = 1
+	url = https://gluonhq.com/products/scene-builder
+	arch = x86_64
+	license = BSD
+	makedepends = gendesk
+	depends = java-environment=11
+	provides = gluon-scene-builder-11
+	provides = gluon-scene-builder
+	conflicts = javafx-scenebuilder
+	source = https://download2.gluonhq.com/scenebuilder/11.0.0/install/linux/scenebuilder-11.0.0-1.x86_64.rpm
+	sha256sums = a1766a84e2b87de6229878f5b94fc3a3e2646776725525776da5db310234d955
+
+pkgname = gluon-scene-builder-11-bin
+
