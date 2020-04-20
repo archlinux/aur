@@ -1,6 +1,6 @@
 pkgbase = python-alerta-client
 	pkgdesc = Unified CLI, terminal GUI and python SDK for the Alerta monitoring system
-	pkgver = 7.4.4
+	pkgver = 7.5.0
 	pkgrel = 1
 	url = https://github.com/alerta/python-alerta-client
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-alerta-client
 	depends = python-requests
 	depends = python-tabulate
 	depends = python-requests-hawk
-	source = https://github.com/alerta/python-alerta-client/archive/v7.4.4.tar.gz
-	sha256sums = d06ad0893ea760fb9726172a31b3d47dbaafc0fcd84b0d6f59a01f0c5bf2f8b6
+	source = https://github.com/alerta/python-alerta-client/archive/v7.5.0.tar.gz
+	sha256sums = 8ca1847aaf1b06356e9ee2d4bd80db9b95e1906cb4f5ed23f8152e59690b1ba8
 
 pkgname = python-alerta-client
 
