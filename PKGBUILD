@@ -1,16 +1,16 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=apache-opennlp
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A machine learning-based toolkit for the processing of natural language text"
 arch=('any')
 url="http://opennlp.apache.org/"
 license=('Apache')
 depends=('java-environment' 'bash')
 source=("http://www.apache.org/dist//opennlp/opennlp-$pkgver/$pkgname-$pkgver-bin.tar.gz"{,.asc})
-sha256sums=('26b55416a6c330e9c91bf9ad31183f3ed3104643b3d74ad2ee6e16b0c0e44f3b'
+sha512sums=('d92a470e907e5844fec8ac42a05eab8be80d7dbb6d57028abafbe5c4b5d525366eb60e33e155724cb5aaf23ca93c07cc76eb2f382ce584fd33291d7d07a6236e'
             'SKIP')
 validpgpkeys=('6786BCFFBD2AE66E737FE97760E63AD841EF12D8')
 

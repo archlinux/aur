@@ -1,7 +1,7 @@
 pkgbase = apache-opennlp
 	pkgdesc = A machine learning-based toolkit for the processing of natural language text
 	pkgver = 1.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://opennlp.apache.org/
 	arch = any
 	license = Apache
@@ -10,8 +10,8 @@ pkgbase = apache-opennlp
 	source = http://www.apache.org/dist//opennlp/opennlp-1.9.2/apache-opennlp-1.9.2-bin.tar.gz
 	source = http://www.apache.org/dist//opennlp/opennlp-1.9.2/apache-opennlp-1.9.2-bin.tar.gz.asc
 	validpgpkeys = 6786BCFFBD2AE66E737FE97760E63AD841EF12D8
-	sha256sums = 26b55416a6c330e9c91bf9ad31183f3ed3104643b3d74ad2ee6e16b0c0e44f3b
-	sha256sums = SKIP
+	sha512sums = d92a470e907e5844fec8ac42a05eab8be80d7dbb6d57028abafbe5c4b5d525366eb60e33e155724cb5aaf23ca93c07cc76eb2f382ce584fd33291d7d07a6236e
+	sha512sums = SKIP
 
 pkgname = apache-opennlp
 
