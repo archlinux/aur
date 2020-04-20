@@ -2,7 +2,7 @@
 pkgname=intel-caffe-git
 _srcname=intel-caffe
 pkgver=1.1.6
-pkgrel=21
+pkgrel=22
 pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
 url="https://github.com/intel/caffe"
@@ -79,7 +79,7 @@ prepare() {
 
 build() {
     cd build
-    make -j
+    make
     cp ${srcdir}/${_srcname}/LICENSE .
 }
 
