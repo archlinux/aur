@@ -167,7 +167,7 @@ prepare() {
   # If it's a full config, will be replaced
   # If not, you should use scripts/config commands, one by line
   if [ -f "${startdir}/myconfig" ]; then
-    if [ $(wc -l < "${startdir}/myconfig") -gt 5000 ]; then
+    if [ $(wc -l < "${startdir}/myconfig") -gt 1000 ]; then
       # myconfig is a full config file. Replace it
       msg2 "Using user CUSTOM config..."
       cp -f "${startdir}"/myconfig .config
