@@ -2,33 +2,38 @@
 # Contributor:
 
 pkgname=crusta-browser-git
-pkgver=1.4.3.1.r311.g6875afc
+pkgver=r54.3e9989f
 pkgrel=1
 pkgdesc="Fast, secure, and free web browser built for the modern web."
 arch=('i686' 'x86_64')
 url="http://www.crustabrowser.com/"
 license=('GPL3')
 depends=('qt5-speech' 'qt5-webengine')
-makedepends=('git' 'qt5-charts')
+makedepends=('git' 'qt5-charts' 'cmake' )
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=('git+https://github.com/CrustaBrowser/CrustaBrowser.git')
+source=('git+https://github.com/Tarptaeya/Crusta.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd CrustaBrowser
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
+  cd Crusta
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd CrustaBrowser
-  qmake
+  rm -rf "Crusta/build"
+	mkdir "Crusta/build"
+	cd "Crusta/build"
+	cmake \
+			..
   make
 }
 
 package() {
-  cd CrustaBrowser
-  install -Dm755 Crusta "${pkgdir}/opt/${pkgname%-*}/crusta"
+  cd Crusta/build
   install -d "$pkgdir/usr/bin"
-  ln -sf "/opt/${pkgname%-*}/crusta" "$pkgdir/usr/bin/crusta"
+  install -Dm755 crusta "${pkgdir}/usr/lib/Crusta/crusta"
+  install -Dm755 adblock "${pkgdir}/usr/lib/Crusta/adblock"
+  install -Dm755 libcrusta-private.so "${pkgdir}/usr/lib/Crusta/libcrusta-private.so"
+  ln -sf "/usr/lib/Crusta/crusta" "$pkgdir/usr/bin/crusta"
 }
