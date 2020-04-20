@@ -1,5 +1,5 @@
 pkgbase = jigasi-git
-	pkgdesc = WebRTC JavaScript video conferences
+	pkgdesc = Jitsi-meet SIP gateway
 	pkgver = r492.31112b0
 	pkgrel = 1
 	url = https://github.com/jitsi/jigasi
