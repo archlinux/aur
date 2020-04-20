@@ -2,7 +2,7 @@
 pkgname=intel-caffe-git
 _srcname=intel-caffe
 pkgver=1.1.6
-pkgrel=34
+pkgrel=36
 pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
 url="https://github.com/intel/caffe"
@@ -77,15 +77,16 @@ prepare() {
 
 build() {
     cd build
-    make -j caffeproto caffe
+    make -j $((($(nproc) / 2) + 1)) caffeproto caffe
     cp ${srcdir}/${_srcname}/LICENSE .
-    cp ${srcdir}/${_srcname}/external/mkldnn/install/lib*/lib*.so* ${pkgdir}/usr/lib/
-    cp ${srcdir}/${_srcname}/external/mlsl/install/lib*/lib*.so* ${pkgdir}/usr/lib/
-    cp ${srcdir}/${_srcname}/external/mkl/install/lib*/lib*.so* ${pkgdir}/usr/lib/
+    cp ${srcdir}/${_srcname}/external/mkldnn/install/lib*/lib*.so* lib/
+    cp ${srcdir}/${_srcname}/external/mlsl/*/*/lib*/lib*.so* lib/
+    cp ${srcdir}/${_srcname}/external/mkl/*/lib*/lib*.so* lib/
 }
 
 package() {
     cd build
     make install
     install -m644 LICENSE ${pkgdir}/usr/share/Caffe
+    cp lib/lib*.so ${pkgdir}/usr/lib/
 }
