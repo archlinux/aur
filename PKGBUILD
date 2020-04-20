@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.zip::https://github.com/LeedRSS/Leed/archive/v$pkgver.
 	'apache.conf'
 	'leed.perm.sh')
 md5sums=('e94088506f8e4fea6d9512e6e2bf718b'
-         '099b05b5761b964e60e8eb209f1fccf5'
+         'f980af079368ad99447c7722e1cd376a'
          '24cc8fa2aa47807bccb1c64d2f6b7198')
 
 
