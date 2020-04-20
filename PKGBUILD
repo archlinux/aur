@@ -1,4 +1,4 @@
-# Maintainer: TC <crt@archlinux.email>
+# Maintainer: AK <crt@archlinux.email>
 
 pkgname=check_email_delivery
 pkgver=0.7.1b
