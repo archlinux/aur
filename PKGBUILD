@@ -2,7 +2,7 @@
 # Contributor: Attenuation <ouyangjun1999@gmail.com>
 
 pkgname=procs
-pkgver=0.9.20
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A modern replacement for ps written in Rust"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('509e8085a7b68c4084e9940ad418e03b4704cef518f6de55e5b3f421f4639a36')
+sha256sums=('04bc4baa483015af766b71b27fc7afa63b7da857968f5a39493f62668d2928ac')
 
 build() {
     cd "$pkgname-$pkgver"
