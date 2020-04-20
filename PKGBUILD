@@ -1,8 +1,8 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=chatterino2-git
-pkgver=r2554.5ad427bd
+pkgver=r2590.354ad6a3
 pkgrel=1
-pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
+pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version. use --devel to make sure it stays up-to-date'
 arch=('any')
 url=https://chatterino.com
 license=('MIT')
