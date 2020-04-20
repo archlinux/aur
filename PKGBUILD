@@ -9,9 +9,8 @@ arch=('x86_64')
 url='https://github.com/B-Lang-org/bsc'
 license=('BSD')
 depends=('haskell-old-time' 'haskell-syb' 'haskell-regex-compat' 'haskell-split')
-makedepends=('git' 'gperf' 'ghc' 'tk')
-optdepends=('tcl: bluesim and bluetcl'
-            'tk: bluewish')
+makedepends=('git' 'gperf' 'ghc')
+optdepends=('tcl: bluesim and bluetcl')
 source=("git+https://github.com/b-lang-org/bsc.git")
 sha256sums=('SKIP')
 _prefix="/opt/bluespec"
@@ -41,7 +40,7 @@ package() {
 
   install -d "${pkgdir}/usr/bin"
   local _prog
-  for _prog in bsc bluetcl bluewish; do
+  for _prog in bsc bluetcl; do
     sed -i "s,^BINDIR=.*$,BINDIR=${_prefix}/bin," "${pkgdir}${_prefix}/bin/${_prog}"
     ln -s "${_prefix}/bin/${_prog}" "${pkgdir}/usr/bin"
   done
