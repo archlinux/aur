@@ -2,41 +2,38 @@
 
 pkgname=ava-plugins
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Harrison Consoles VST Plugin Suite."
 arch=('x86_64')
 url="https://www.harrisonconsoles.com/site/ava-plugins.html"
 license=('EULA')
 depends=('glibc' 'libcurl-gnutls')
-provides=("$pkgname")
 conflicts=("$pkgname")
 
 prepare () {
-	_archive=Harrison-AVA-linux-64bit.tar.gz
-	if [ -f ../Harrison-AVA-linux-64bit.tar.gz ]; then
-		ln -srf ../${_archive} $srcdir/Harrison-AVA-linux-64bit.tar.gz
+	## Extract AVA Plugins Archive
+	_archive=`xdg-user-dir DOWNLOAD`/Harrison-AVA-linux-64bit.tar.gz
+	if [ -f ${_archive} ]; then
+		ln -srf ${_archive} "$srcdir/`basename ${_archive}`"
 		tar -xvzf Harrison-AVA-linux-64bit.tar.gz
 	else
-		echo "Please download a copy from https://harrisonconsoles.com/site/ava-plugins.html. Then put the Harrison-AVA-linux-64bit.tar.gz in the root of this PKGBUILD directory."
+		echo "Please download a copy from https://harrisonconsoles.com/site/ava-plugins.html. Then put the `basename ${_archive}` in the `xdg-user-dir DOWNLOAD` directory."
 	fi
 }
 
 package() {
-	## Install Plugins And Manual
+	## Install Plugins
 	for plugin in DS LegacyQ MC ME SC; do
 		if [ -f $srcdir/Harrison_AVA/vst/AVA-$plugin.so ]; then
 			install -Dm644 "$srcdir/Harrison_AVA/vst/AVA-$plugin.so" "$pkgdir/usr/lib/vst/AVA-$plugin.so"
-			# install -Dm644 "../AVA-$plugin.pdf" $pkgdir/usr/share/doc/harrison_consoles/ava-plugins/AVA-$plugin.pdf ## Manual is optional, download and save as appropriately named files.
 		fi
 	done
-	
-	## Install Serial Keys
-	for license in ds legacyq mc me sc; do
-		if [ -f ../license_key_harrison_ava_${license}.txt ]; then
-			install -Dm644 ../license_key_harrison_ava_$license.txt $pkgdir/usr/local/share/license_key_harrison_ava_$license.txt
-		fi
-	done
-	
-	## Install Software License
+
+	## Install EULA
 	install -Dm644 "$srcdir/Harrison_AVA/EULA.txt" "$pkgdir/usr/share/licenses/$pkgname/EULA.txt"
+}
+
+post-install() {
+	## Where To Put License Files
+	msg2 "Put AVA plugin licenses in ${HOME}/Downloads to unlock them."
 }
