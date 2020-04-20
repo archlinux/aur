@@ -1,9 +1,10 @@
 pkgbase = gigalixir-cli
 	pkgdesc = CLI tool for Gigalixir hosting service
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://www.gigalixir.com/
 	arch = any
+	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	depends = python-click
@@ -11,8 +12,8 @@ pkgbase = gigalixir-cli
 	depends = python-stripe
 	depends = python-rollbar
 	depends = python-pygments
-	source = https://files.pythonhosted.org/packages/source/g/gigalixir/gigalixir-1.1.7.tar.gz
-	sha256sums = 080e9ba07527b0f1889d87ceb6d41eb816c32914d5e4c4c17abf1978e5aeac73
+	source = https://files.pythonhosted.org/packages/source/g/gigalixir/gigalixir-1.1.8.tar.gz
+	sha256sums = e7a00aa5420cb63d47beb9f6cfb8dca08bf9621fc73780a80a4a97ad2fb7b170
 
 pkgname = gigalixir-cli
 
