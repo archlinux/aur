@@ -1,7 +1,7 @@
 # Maintainer: Lily Wilson <hotaru@thinkindifferent.net>
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 pkgname=ipxe-netboot
-pkgver=r5911.a4f8c6e3
+pkgver=r5941.bdf0e029
 pkgrel=1
 pkgdesc="iPXE build for Arch Linux netboot"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ source=('ipxe::git+https://git.ipxe.org/ipxe.git#branch=master'
         dst_x1.pem
         test-netboot)
 sha256sums=('SKIP'
-            'f789c81cade88537b4dc0acd1ce1beb26d1c1e63b837423a14a7c096b31b0230'
+            '2f018d7a5f76efff4078ab3c9a83ebd8ddb8e1dc1a993f86180850e4788e45db'
             '3ba0cf390975bb07bf1d3c7ff802d6977bdf901c94883ea2de44c16d444252e5'
             '64d021f345a0b4633de17ba43d816295076adc8a378eaa54e6796e8c0e95d6d0'
             '139a5e4a4e0fa505378c72c5f700934ce8333f4e6b1b508886c4b0eb14f4be99'
@@ -40,6 +40,7 @@ prepare() {
   echo '#define NET_PROTO_IPV6' >> config/local/general.h
   echo '#define DOWNLOAD_PROTO_HTTPS' >> config/local/general.h
   echo '#define IMAGE_TRUST_CMD' >> config/local/general.h
+  echo '#define NTP_CMD' >> config/local/general.h
 }
 
 build() {

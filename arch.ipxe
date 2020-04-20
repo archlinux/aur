@@ -1,3 +1,4 @@
 #!ipxe
 ifconf
-chain https://www.archlinux.org/releng/netboot/archlinux.ipxe || shell
+ntp pool.ntp.org
+chain https://ipxe.archlinux.org/releng/netboot/archlinux.ipxe || shell
