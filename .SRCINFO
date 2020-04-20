@@ -1,7 +1,7 @@
 pkgbase = leed
-	pkgdesc = Leed (short for Light Feed) is a minimalist RSS/ATOM aggregator which offers fast RSS consultation and non-intrusive features.
+	pkgdesc = A minimalist RSS/ATOM aggregator which offers fast RSS consultation and non-intrusive features
 	pkgver = 1.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LeedRSS/Leed
 	install = leed.install
 	arch = any

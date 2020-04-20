@@ -1,8 +1,8 @@
 
 pkgname=leed
 pkgver=1.8.4
-pkgrel=1
-pkgdesc="Leed (short for Light Feed) is a minimalist RSS/ATOM aggregator which offers fast RSS consultation and non-intrusive features."
+pkgrel=2
+pkgdesc="A minimalist RSS/ATOM aggregator which offers fast RSS consultation and non-intrusive features"
 arch=(any)
 url="https://github.com/LeedRSS/Leed"
 license=("AGPL-3.0")
@@ -30,7 +30,7 @@ pkgver() {
 package() {
     ### install leed
     mkdir -p "${pkgdir}/usr/share/webapps/leed"
-    cp -a Leed-$pkgver "${pkgdir}/usr/share/webapps/leed/."
+    cp -a Leed-$pkgver "${pkgdir}/usr/share/webapps/leed"
 
     ### default perm
     find "${pkgdir}/usr/share/webapps/leed/" -type f -print0 | xargs -0 chmod 0640
