@@ -2,7 +2,7 @@
 pkgname=intel-caffe-git
 _srcname=intel-caffe
 pkgver=1.1.6
-pkgrel=24
+pkgrel=25
 pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
 url="https://github.com/intel/caffe"
@@ -62,8 +62,7 @@ prepare() {
     CMAKE_BUILD_TYPE="Release" \
     cmake \
     -DCPU_ONLY=ON \
-    -DBUILD_SHARED_LIBS=OFF \
-    -DBUILD_python=ON \
+    -DBUILD_python=OFF \
     -DBUILD_matlab=OFF \
     -DBUILD_docs=OFF \
     -DBUILD_python_layer=ON \
