@@ -1,0 +1,24 @@
+pkgbase = spice-streaming-agent-git
+	pkgdesc = Guest agent to stream video from guest cards
+	pkgver = v0.3.r40.gadcbc83
+	pkgrel = 1
+	url = https://spice-space.org
+	arch = x86_64
+	license = APACHE
+	makedepends = spice-protocol
+	makedepends = meson
+	makedepends = pixman
+	makedepends = gstreamer
+	makedepends = gst-plugins-base
+	makedepends = xorg-xrandr
+	depends = pixman
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = xorg-xrandr
+	source = git+https://gitlab.freedesktop.org/spice/spice-streaming-agent.git
+	source = git+https://gitlab.freedesktop.org/spice/spice-common.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = spice-streaming-agent-git
+
