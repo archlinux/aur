@@ -1,6 +1,6 @@
 # Maintainer: Bruno Silva <brunofernandes at ua dot pt>
 pkgname=xmr-stak-rx-git
-pkgver=r1463.e46dfe6
+pkgver=r1519.6091644
 pkgrel=1
 pkgdesc="Unified All-in-one Monero miner with randomx fork"
 arch=('x86_64')
