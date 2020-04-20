@@ -2,13 +2,14 @@
 # Contributor: GrbavaCigla <alexa.ognjanovic at gmail dot com>
 # Contributor: hawerner 
 pkgname=pureref
-pkgver=1.10.0
+pkgver=1.10.4
 pkgrel=1
 pkgdesc="Reference Image Viewer"
 arch=('x86_64')
 url="http://www.pureref.com"
 license=('unknown')
 makedepends=('curl' 'libarchive' 'binutils')
+options=(!strip)
 source=("${pkgname}-${pkgver}.deb::https://www.pureref.com/files/build.php?build=LINUX64.deb&downloadKey=$(curl https://www.pureref.com/download.php 0>/dev/null | grep var\ key | cut -d "\"" -f2)")
 sha512sums=('SKIP')
 
