@@ -1,8 +1,8 @@
 # Maintainer Alex Mcmillan <linuxguy93@gmail.com>
 
 pkgname=linvst3-bin
-pkgver=1.8
-pkgrel=3
+pkgver=1.8.1
+pkgrel=1
 pkgdesc="enables Windows vst3's to be used as Linux vst's in Linux vst capable DAW's"
 arch=('x86_64')
 url="https://github.com/osxmidi/LinVst3"
@@ -11,11 +11,11 @@ makedepends=('git')
 optdepends=('linvstmanager: GUI for managing LinVST bridges')
 conflicts=('linvst3')
 replaces=('linvst3')
-source=("https://github.com/osxmidi/LinVst3/releases/download/1.8/LinVst3-${pkgver}-Debian-Buster.zip")
-sha256sums=('10cc5b4146b52f2b90f2b8de82115f92c8b03be050019a27b319c2249d61a5eb')
+source=("https://github.com/osxmidi/LinVst3/releases/download/1.8/LinVst3-${pkgver}-Manjaro.zip")
+sha256sums=('5111ef5a0683267781ae6f943e954d1c1ebb225b886b12f6558aab5397a8d88d')
 
 package() {
-	cd "${srcdir}/LinVst3-${pkgver}-Debian-Buster/embedded/"
+	cd "${srcdir}/LinVst3-${pkgver}-Manjaro/embedded/"
 	for file in *.so; do
         	install -Dm755 $file $pkgdir/usr/bin/$file
 	done
