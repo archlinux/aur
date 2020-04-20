@@ -10,6 +10,7 @@ pkgbase = opensend-git
 	depends = python-zeroconf
 	depends = python-pyftpdlib
 	depends = python-pyqt5
+	depends = avahi
 	source = git+https://gitlab.com/moussaelianarsen/opensend.git
 	md5sums = SKIP
 

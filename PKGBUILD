@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Send files and URLs securely across systems"
 arch=('any')
 license=('GPLv2')
-depends=('python' 'python-pip' 'python-pynacl' 'python-zeroconf' 'python-pyftpdlib' 'python-pyqt5')
+depends=('python' 'python-pip' 'python-pynacl' 'python-zeroconf' 'python-pyftpdlib' 'python-pyqt5' 'avahi')
 source=('git+https://gitlab.com/moussaelianarsen/opensend.git')
 md5sums=('SKIP')
 
