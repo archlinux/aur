@@ -192,7 +192,8 @@ build() {
 		local _local_GOPATH="$srcdir"/YouCompleteMe/third_party/ycmd/third_party/go
 		mkdir ${_local_GOPATH} || exit
 		cd ${_local_GOPATH} || exit
-		GO111MODULE=on GOPATH=${_local_GOPATH} go get golang.org/x/tools/gopls@v0.4.0
+		GO111MODULE=on GOPATH=${_local_GOPATH} go get -trimpath golang.org/x/tools/gopls@v0.4.0
+		GO111MODULE=on GOPATH=${_local_GOPATH} go clean -modcache
 	else
 		echo 'Skipping Gocode completer...'
 	fi
