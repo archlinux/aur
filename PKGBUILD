@@ -3,7 +3,7 @@
 
 pkgname=aws-vault
 pkgver=5.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A vault for securely storing and accessing AWS credentials in development environments'
 arch=('x86_64' 'i686')
 url='https://github.com/99designs/aws-vault'
@@ -15,20 +15,24 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('67fac0bbc4be7f2297e47004a9cb224ba103b51206e00ee4fb98252faf298793')
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
+  export CGO_LDFLAGS=$LDFLAGS
+  export CGO_CFLAGS=$CFLAGS
+  export CGO_CPPFLAGS=$CPPFLAGS
+  export CGO_CXXFLAGS=$CXXFLAGS
+  export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
+
   go build \
-    -trimpath \
-    -ldflags "-extldflags $LDFLAGS" \
-    -ldflags="-X main.Version=v$pkgver" \
+    -ldflags="-extldflags '$LDFLAGS' -X main.Version=v$pkgver" \
     -o $pkgname .
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   go test ./...
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
 }
