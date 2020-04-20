@@ -1,33 +1,42 @@
-_pypiname="delegator.py"
-pkgbase="python-delegator"
-pkgname=("python-delegator" "python2-delegator")
-pkgdesc="Subprocesses for Humans 2.0"
-url="https://github.com/kennethreitz/delegator.py"
-pkgver=0.0.14
+# Maintainer: Otreblan <otreblain@gmail.com>
+
+pkgname=python-delegator
+pkgver=0.1.1
 pkgrel=1
-source=("https://files.pythonhosted.org/packages/source/d/$_pypiname/$_pypiname-$pkgver.tar.gz")
-makedepends=('python-setuptools' 'python2-setuptools')
-license=("MIT")
-arch=("any")
+pkgdesc="Subprocesses for Humans 2.0."
+arch=('any')
+url="https://github.com/amitt001/delegator.py"
+license=('MIT')
+groups=()
+depends=("python-pexpect")
+makedepends=("python-setuptools")
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+noextract=()
+sha256sums=('b3972940cb0dbb8cf9e16caffaf188779bb87a67ca71f629ee983ce31114b723')
+
+prepare() {
+	mv "${pkgname#python-}.py-$pkgver" "$pkgname-$pkgver" || true
+}
 
 build() {
-    cd "$srcdir"
-    cp -r "$_pypiname-$pkgver" "$_pypiname-$pkgver-py2"
+	cd "$pkgname-$pkgver"
+
+	python setup.py build
 }
 
-package_python-delegator() {
-    depends=("python" "python-pexpect")
-    conflicts=('python-delegator.py')
-    provides=('python-delegator.py')
-    cd "$srcdir/$_pypiname-$pkgver"
-    python setup.py install --prefix="/usr" --root="$pkgdir" -O1
-}
+package() {
+	cd "$pkgname-$pkgver"
 
-package_python2-delegator() {
-    depends=("python2" "python2-pexpect")
-    conflicts=('python2-delegator.py')
-    provides=('python2-delegator.py')
-    cd "$srcdir/$_pypiname-$pkgver-py2"
-    python2 setup.py install --prefix="/usr" --root="$pkgdir" -O1
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha256sums=('27eb1585935ee5dd297a133bf0d91edb4fe84cc5615750fbfbcd6222cc66cc2b')
