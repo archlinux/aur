@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=cmake-language-server-git
-pkgver=v0.1.0.r18.gaf59e9b
+pkgver=v0.1.1.r3.g40d9352
 pkgrel=1
 pkgdesc="Python based cmake language server"
 arch=('any')
@@ -11,8 +11,8 @@ groups=()
 depends=("python-pygls" "python-pyparsing" "cmake")
 makedepends=("python-setuptools" "python-poetry" "git")
 optdepends=()
-provides=("cmake-language-server")
-conflicts=("cmake-language-server")
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 replaces=()
 backup=()
 options=()
@@ -34,6 +34,7 @@ prepare() {
 	cd $pkgname
 
 	sed -i "s/from distutils.core import setup/from setuptools import setup/" setup.py
+	sed -i "s/pygls>=0.8.1,<0.9.0/pygls>=0.8.1/" setup.py
 }
 
 pkgver() {
