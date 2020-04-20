@@ -28,7 +28,7 @@ provides=(
 )
 options=(!strip)
 source=("https://github.com/AdoptOpenJDK/openjdk${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/OpenJDK${_jdkver}U-jdk_x64_linux_openj9_${_jdkfullver}_${_buildver}.tar.gz")
-sha256sums=('e5536df914af2a36f3612658827a3ed9fa041ea747ae9ea48c7c91da218dbc6a')
+sha256sums=('2350592f4b0db1439fdd48d4fa7e05b270f271dcc79b2c7f174489ee2f6b14c1')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 
