@@ -3,7 +3,7 @@
 # Contributor: csllbr; Popsch <popsch@gmx.net>
 
 pkgname=mu
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Maildir indexer/searcher and Emacs client (mu4e)"
 arch=("x86_64" "armv7h")
@@ -14,7 +14,7 @@ makedepends=("emacs")
 optdepends=("guile: guile support"
 	"emacs: mu4e support")
 source=("mu-$pkgver.tar.gz::https://github.com/djcb/mu/archive/$pkgver.tar.gz")
-md5sums=('7a679ca4cec44a40654def96c776f0db')
+md5sums=('3625f11503a2fb5b3ed5ddaff494fd41')
 
 prepare() {
 	cd "$pkgname-$pkgver"
