@@ -4,7 +4,7 @@ pkgver=253.git.db64539
 pkgrel=1
 pkgdesc="A Sole Survivor-inspired mod of OpenRA, warning you will need the original game assets to play this game"
 arch=('any')
-url="https://www.openra.net"
+url="https://github.com/MustaphaTR/sole-survivor"
 license=('GPL3')
 install=openra-ss.install
 depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
@@ -56,5 +56,4 @@ package() {
     install -Dm644 $srcdir/openra-ss.desktop $pkgdir/usr/share/applications/openra-ss.desktop
     rm $pkgdir/usr/lib/openra-ss/*.sh
 }
-
 
