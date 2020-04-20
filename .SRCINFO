@@ -1,7 +1,7 @@
 pkgbase = pycharm-professional
 	pkgdesc = Python IDE for Professional Developers. Professional Edition
 	pkgver = 2020.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/pycharm/
 	arch = x86_64
 	license = custom
@@ -14,6 +14,7 @@ pkgbase = pycharm-professional
 	depends = libxtst
 	depends = libxslt
 	depends = python
+	optdepends = ttf-jetbrains-mono: Official mono font by JetBrains
 	optdepends = ipython2: For enhanced interactive Python shell v2 inside Pycharm
 	optdepends = ipython: For enhanced interactive Python shell v3 inside Pycharm
 	optdepends = openssh: For deployment and remote connections

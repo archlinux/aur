@@ -3,7 +3,7 @@
 pkgname=pycharm-professional
 pkgver=2020.1.0
 _pkgver=2020.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64')
 url='https://www.jetbrains.com/pycharm/'
