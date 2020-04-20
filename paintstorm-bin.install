@@ -1,0 +1,9 @@
+post_install() {
+	echo
+	echo "==> Paintstorm will crash if it can't find the following directories"
+	echo "==> /usr/share/fonts/truetype"
+	echo "==> /usr/share/fonts/opentype"
+	echo "==> Please create them manually if they are missing."
+	echo
+}
+

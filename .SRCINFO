@@ -1,0 +1,20 @@
+pkgbase = paintstorm-bin
+	pkgdesc = Professional software for digital painting
+	pkgver = 2.43
+	pkgrel = 4
+	url = http://www.paintstormstudio.com
+	install = paintstorm-bin.install
+	arch = x86_64
+	license = Commercial
+	depends = gtk2
+	depends = freeglut
+	depends = ftgl
+	depends = libcurl-gnutls
+	depends = glew1.13
+	provides = paintstorm
+	conflicts = paintstorm
+	source = https://paintstormstudio.com/Paintstorm_linux_v2.43.run.tar.gz
+	sha256sums = c94a7174666a04ad9329dfd7a3ed9963e49cacdfc4de4880b26d337767c9b84b
+
+pkgname = paintstorm-bin
+
