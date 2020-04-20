@@ -1,7 +1,7 @@
 pkgbase = lilyjazz
 	pkgdesc = LilyJAZZ font for LilyPond
 	pkgver = r6.8fa7d55
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenLilyPondFonts
 	arch = any
 	license = custom:GPL
