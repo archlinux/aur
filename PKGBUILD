@@ -2,13 +2,13 @@
 pkgname=git-identity
 _pkgver=1.0.0
 pkgver="v${_pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage your identity in Git"
 arch=('any')
 url="https://github.com/madx/git-identity"
 license=('custom:WTFPL')
 depends=('git')
-# makedepends=()
+makedepends=('bash-completion')
 # checkdepends=()
 optdepends=('zsh: for zsh completion')
 provides=('git-identity')
