@@ -1,7 +1,7 @@
 # Maintainer: Thanos Apostolou <thanosapostolou@outlook.com>
 
 pkgname=gnome-shell-extension-tray-icons
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Simple version of TopIcons Plus"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/zhangkaizhao/gnome-shell-extension-tray-icons"
 license=('GPL3')
 depends=('gnome-shell')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('febe7da467de83b2ca30dd1e3261da7a16457ac2078442b9c4dd78d61f775f64')
+sha256sums=('04207044b3f15cc402624495dc101f33ac7b8a73092d57d96bc7e47ecbec796d')
 
 package() {
 	cd "$pkgname-$pkgver"
