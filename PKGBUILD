@@ -3,7 +3,7 @@
 
 ## ATTENTION!! You will need to download the trial and/or obtain a license from Harrison Consoles. Then, drop all appropriate files in the root with the PKGBUILD. Also, uncomment the lines that reference the license file if you want an easy install process.
 
-pkgname=mixbus32c6
+pkgname=mixbus32c5
 appname=${pkgname/5/}
 pkgver=5.3.22
 pkgrel=1
