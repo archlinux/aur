@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer: TC <crt@archlinux.email>
+# Maintainer: AK <crt@archlinux.email>
 pkgname=pwhois_milter
 pkgver=1.3
 pkgrel=3
