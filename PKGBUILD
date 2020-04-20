@@ -2,7 +2,7 @@
 
 pkgname=katago-opencl
 pkgver=1.3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Baduk engine with no human-provided knowledge."
 arch=('x86_64')
 provides=("katago")
@@ -11,14 +11,13 @@ license=('MIT')
 depends=('libzip' 'ocl-icd' 'boost-libs')
 makedepends=('git' 'opencl-headers' 'cmake')
 source=("${pkgname}::git+https://github.com/lightvector/KataGo#tag=v${pkgver}"
-        "g170e-b20c256x2-s3354994176-d716845198.bin.gz::https://github.com/lightvector/KataGo/releases/download/v1.3.4/g170e-b20c256x2-s3354994176-d716845198.bin.gz"
-        "g170-b30c320x2-s2271129088-d716970897.bin.gz::https://github.com/lightvector/KataGo/releases/download/v1.3.4/g170-b30c320x2-s2271129088-d716970897.bin.gz"
-        "g170-b40c256x2-s2383550464-d716628997.bin.gz::https://github.com/lightvector/KataGo/releases/download/v1.3.4/g170-b40c256x2-s2383550464-d716628997.bin.gz")
+        "g170e-b20c256x2-s3761649408-d809581368.bin.gz::https://github.com/lightvector/KataGo/releases/download/v1.3.5-nets/g170e-b20c256x2-s3761649408-d809581368.bin.gz"
+        "g170-b30c320x2-s2846858752-d829865719.bin.gz::https://github.com/lightvector/KataGo/releases/download/v1.3.5-nets/g170-b30c320x2-s2846858752-d829865719.bin.gz"
+        "g170-b40c256x2-s2990766336-d830712531.bin.gz::https://github.com/lightvector/KataGo/releases/download/v1.3.5-nets/g170-b40c256x2-s2990766336-d830712531.bin.gz")
 sha256sums=('SKIP'
-            'fa73912ad2fc84940e5b9edc78a3ef2d775ed18f3c9a735f4051c378b7526d6e'
-            '16a907dca44709d69c64f738c9cce727c91406d10aea212631db30da66bef98a'
-            '08721ba6daef132f12255535352c6b15bcc51c56f48761ddfefcd522ec47a3f2')
-
+            '872175c02c50486c990aa5c2f9f0099ceece7bfcf024c3194dc7fa4760dca6c1'
+            '1229b83725345694e7d08f5cf1f483b7409583dd532a914b0809485a91c3f5e5'
+            'fc3e56e0ef92801b28cc0f363f31b4436f0ac0f55dff752f270d3ef27346b0b7')
 
 prepare() {
   cd $srcdir/$pkgname
@@ -34,9 +33,9 @@ build() {
 package() {
   cd $srcdir/$pkgname
   install -Dm755 cpp/katago $pkgdir/usr/bin/katago
-  install -Dm644 $srcdir/g170e-b20c256x2-s3354994176-d716845198.bin.gz $pkgdir/usr/share/katago/networks/weights-b20.bin.gz
-  install -Dm644 $srcdir/g170-b30c320x2-s2271129088-d716970897.bin.gz $pkgdir/usr/share/katago/networks/weights-b30.bin.gz
-  install -Dm644 $srcdir/g170-b40c256x2-s2383550464-d716628997.bin.gz $pkgdir/usr/share/katago/networks/weights-b40.bin.gz
+  install -Dm644 $srcdir/g170e-b20c256x2-s3761649408-d809581368.bin.gz $pkgdir/usr/share/katago/networks/weights-b20.bin.gz
+  install -Dm644 $srcdir/g170-b30c320x2-s2846858752-d829865719.bin.gz $pkgdir/usr/share/katago/networks/weights-b30.bin.gz
+  install -Dm644 $srcdir/g170-b40c256x2-s2990766336-d830712531.bin.gz $pkgdir/usr/share/katago/networks/weights-b40.bin.gz
   install -Dm644 $srcdir/katago-opencl/LICENSE $pkgdir/usr/share/licenses/katago-opencl/LICENSE
 }
 
