@@ -2,7 +2,7 @@
 pkgname=intel-caffe-git
 _srcname=intel-caffe
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel® Distribution of Caffe"
 arch=('x86_64')
 url="https://github.com/intel/caffe"
@@ -24,6 +24,7 @@ provides=('caffe')
 conflicts=('caffe')
 source=("${_srcname}"::"git+https://github.com/intel/caffe.git")
 sha256sums=('SKIP')
+options=( '!strip' '!emptydirs' 'staticlibs' )
 
 prepare() {
     cd "${_srcname}"
