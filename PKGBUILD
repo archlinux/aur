@@ -1,11 +1,11 @@
-# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 
+pkgname=openssl-static
 _pkgname=openssl
-pkgname=$_pkgname-static
 _ver=1.1.1f
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (static library)'
 arch=('i686' 'x86_64')
 url='https://www.openssl.org'
@@ -17,7 +17,7 @@ source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"{,.asc}
         'ca-dir.patch')
 sha512sums=('b00bd9b5ad5298fbceeec6bb19c1ab0c106ca5cfb31178497c58bf7e0e0cf30fcc19c20f84e23af31cc126bf2447d3e4f8461db97bafa7bd78f69561932f000c'
             'SKIP'
-            '209ad95ba6757cc17a3550dbe1e231e4dc9a77516f69478c5970722d32157ee53b68cd614650eae6cd8c1c3961eb0de3a2e6ee00f973bf16b537c608fce1936d')
+            '6eb0e388107a751d2ab1222efe5dec736111d4edad72c9b7c3f4dc55270e19811e89e9df596210e3f79751e60b77c7bc891e181e67cff79aa1b64a02a20bc2e7')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
               '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
 

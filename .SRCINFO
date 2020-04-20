@@ -1,7 +1,7 @@
 pkgbase = openssl-static
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (static library)
 	pkgver = 1.1.1.f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openssl.org
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = openssl-static
 	validpgpkeys = 7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C
 	sha512sums = b00bd9b5ad5298fbceeec6bb19c1ab0c106ca5cfb31178497c58bf7e0e0cf30fcc19c20f84e23af31cc126bf2447d3e4f8461db97bafa7bd78f69561932f000c
 	sha512sums = SKIP
-	sha512sums = 209ad95ba6757cc17a3550dbe1e231e4dc9a77516f69478c5970722d32157ee53b68cd614650eae6cd8c1c3961eb0de3a2e6ee00f973bf16b537c608fce1936d
+	sha512sums = 6eb0e388107a751d2ab1222efe5dec736111d4edad72c9b7c3f4dc55270e19811e89e9df596210e3f79751e60b77c7bc891e181e67cff79aa1b64a02a20bc2e7
 
 pkgname = openssl-static
 
