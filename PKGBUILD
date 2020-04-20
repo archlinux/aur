@@ -1,7 +1,7 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 _srcname=RankCheck
 pkgname=rankcheck
-pkgver=1.5
+pkgver=1.5.1
 pkgrel=1
 epoch=
 pkgdesc="A tool for Awesomenauts which automatically fetches and displays the leaderboard ranks of each player in the current match"
@@ -22,16 +22,12 @@ conflicts=()
 backup=()
 options=()
 source=("https://github.com/Marukyu/$_srcname/archive/v$pkgver.tar.gz"
-	"rankcheck.patch"
 	"https://rankcheck.marukyu.de/files/rankcheck.dat")
-md5sums=('db13606669414db984860468da3aa970'
-         '705349d952239d390a5ee40c1229fdb1'
+md5sums=('ac3175e8728baa5560298dd8e995943c'
          '5946964d98fa7c349acfc5f5c1b43f2b')
 
 prepare() {
 	cd "$_srcname-$pkgver"
-
-	patch -p1 -i "$srcdir/rankcheck.patch"
 
 	if [[ -d build ]]; then
 		rm -rf build

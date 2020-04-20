@@ -1,6 +1,6 @@
 pkgbase = rankcheck
 	pkgdesc = A tool for Awesomenauts which automatically fetches and displays the leaderboard ranks of each player in the current match
-	pkgver = 1.5
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://rankcheck.marukyu.de/
 	arch = i686
@@ -11,11 +11,9 @@ pkgbase = rankcheck
 	depends = poco
 	depends = glu
 	depends = zlib
-	source = https://github.com/Marukyu/RankCheck/archive/v1.5.tar.gz
-	source = rankcheck.patch
+	source = https://github.com/Marukyu/RankCheck/archive/v1.5.1.tar.gz
 	source = https://rankcheck.marukyu.de/files/rankcheck.dat
-	md5sums = db13606669414db984860468da3aa970
-	md5sums = 705349d952239d390a5ee40c1229fdb1
+	md5sums = ac3175e8728baa5560298dd8e995943c
 	md5sums = 5946964d98fa7c349acfc5f5c1b43f2b
 
 pkgname = rankcheck
