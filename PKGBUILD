@@ -5,10 +5,13 @@
 
 pkgname=jdk14-openj9-bin
 _jdkver=14
-_openj9ver=0.19.0
-_buildvershort=36
+_jdkminor=0
+_jdkpatch=1
+_jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch}
+_openj9ver=0.20.0
+_buildvershort=7
 _buildver=${_buildvershort}_openj9-${_openj9ver}
-pkgver=${_jdkver}b${_buildver//-/_}
+pkgver=${_jdkfullver}b${_buildver//-/_}
 pkgrel=1
 pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk${_jdkver}"
 arch=('x86_64')
@@ -24,7 +27,7 @@ provides=(
   "java-runtime-headless-openjdk=${_jdkver}"
 )
 options=(!strip)
-source=("https://github.com/AdoptOpenJDK/openjdk${_jdkver}-binaries/releases/download/jdk-${_jdkver}%2B${_buildver}/OpenJDK${_jdkver}-jdk_x64_linux_openj9_${_jdkver}_${_buildver}.tar.gz")
+source=("https://github.com/AdoptOpenJDK/openjdk${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/OpenJDK${_jdkver}U-jdk_x64_linux_openj9_${_jdkfullver}_${_buildver}.tar.gz")
 sha256sums=('e5536df914af2a36f3612658827a3ed9fa041ea747ae9ea48c7c91da218dbc6a')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
