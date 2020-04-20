@@ -1,0 +1,16 @@
+pkgbase = freemajor
+	pkgdesc = TC Electronic G-Major editor
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/linuxmao-org/FreeMajor/
+	arch = x86_64
+	license = Boost
+	depends = fltk
+	depends = jack
+	source = https://github.com/linuxmao-org/FreeMajor/releases/download/v1.0/freemajor-1.0.tar.gz
+	source = FreeMajor.desktop
+	sha1sums = 2f048a6e779cb28632fa6a39a99ef7c40a6fc0e1
+	sha1sums = ba7881159c242e3a69da7e0d965f47679e6bd371
+
+pkgname = freemajor
+
