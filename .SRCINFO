@@ -1,0 +1,15 @@
+pkgbase = powerbar
+	pkgdesc = Battery status module for Waybar
+	pkgver = makepkg
+	pkgrel = 1
+	url = https://github.com/adamveld12/powerbar
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	depends = upower>=0.99.11-1
+	source = git://github.com/adamveld12/powerbar.git
+	sha1sums = SKIP
+
+pkgname = powerbar
+
