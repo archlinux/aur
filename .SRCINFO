@@ -1,10 +1,9 @@
 pkgbase = praat-bin
 	pkgdesc = Doing Phonetics by computer (speech analysis)
-	pkgver = 6.1.11
+	pkgver = 6.1.12
 	pkgrel = 1
 	url = http://www.praat.org/
 	arch = x86_64
-	arch = i686
 	license = GPL
 	depends = alsa-lib
 	depends = gtk2
@@ -15,10 +14,8 @@ pkgbase = praat-bin
 	optdepends = ttf-sil-fonts
 	provides = praat
 	conflicts = praat
-	source_x86_64 = http://http.at.debian.org/debian/pool/main/p/praat/praat_6.1.11-1_amd64.deb
-	sha256sums_x86_64 = 93ca8b20b6a0e9685e22dac214589d854c25ed56e98d71998c51cb05b2b6970e
-	source_i686 = http://http.at.debian.org/debian/pool/main/p/praat/praat_6.1.11-1_i386.deb
-	sha256sums_i686 = addd297570631cec1f23a299729094a8750dac0cbc16cc564ac2007511696926
+	source_x86_64 = http://http.at.debian.org/debian/pool/main/p/praat/praat_6.1.12-2_amd64.deb
+	sha256sums_x86_64 = 86636c7938a29a12c20e79abe168f1f838e269687b8d3a7283661f5c350815bb
 
 pkgname = praat-bin
 
