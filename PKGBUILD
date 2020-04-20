@@ -1,10 +1,11 @@
-# Maintainer: Mark Tompkins
+# Contributor: Felix Golatofski
+# Contributor: Mark Tompkins
 
 _pkgname=arch-silence-grub-theme
 pkgname=arch-silence-grub-theme-git
 _gitname="arch-silence"
-pkgver=r5.9fda3bf
-pkgrel=2
+pkgver=r7.cd4bba1
+pkgrel=1
 pkgdesc="Arch Silence - GRUB2 theme - GIT version"
 arch=('any')
 license=('GPL')
