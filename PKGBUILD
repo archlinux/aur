@@ -2,7 +2,7 @@
 # Contributor: Mopi <mopi@dotslashplay.it>
 
 pkgname=play.it-git
-pkgver=2.11.1.r849.g1a4d6b0e
+pkgver=2.11.3.r77.gefb6330b
 pkgrel=1
 pkgdesc="Easy way to install games on Linux - git version"
 arch=('any')
