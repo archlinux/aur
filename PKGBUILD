@@ -2,7 +2,7 @@
 
 pkgname=protonvpn-linux-gui
 pkgver=2.0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Unofficial GUI client for ProtonVPN"
 arch=("x86_64")
 url="https://github.com/calexandru2018/protonvpn-linux-gui"
@@ -18,9 +18,9 @@ package() {
 	install -d -m755 "${pkgdir}/usr/share/applications"
 
 # Gui Desktop Icon
-cat <<EOF > "${pkgdir}/usr/share/applications/protonvpn-gui-test.desktop"
+cat <<EOF > "${pkgdir}/usr/share/applications/protonvpn-gui.desktop"
 [Desktop Entry]
-Name=GUI TEST
+Name=ProtonVPN GUI
 Version=2.0.0
 Comment=${pkgdesc}
 Exec=sudo protonvpn-gui
@@ -32,9 +32,9 @@ Categories=Utility;GUI;Network;VPN
 EOF
 
 # Tray Desktop Icon
-cat <<EOF > "${pkgdir}/usr/share/applications/protonvpn-tray-test.desktop"
+cat <<EOF > "${pkgdir}/usr/share/applications/protonvpn-tray.desktop"
 [Desktop Entry]
-Name=TRAY TEST
+Name=ProtonVPN GUI Tray
 Version=2.0.0
 Comment=Unofficial ProtonVPN GUI Tray
 Exec=protonvpn-tray
