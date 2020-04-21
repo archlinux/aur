@@ -1,31 +1,16 @@
 pkgbase = astah-uml
-	pkgdesc = Lightweight and easy-to-use UML2.x modeler
-	pkgver = 8.1.0
+	pkgdesc = Lightweight and easy-to-use UML2.x modeler (Trial)
+	pkgver = 8.2.0.b743f7.0
 	pkgrel = 1
-	url = http://astah.net/editions/uml-new
-	install = astah-uml.install
+	url = https://astah.net/products/astah-uml
 	arch = any
 	license = custom
-	makedepends = shared-mime-info
-	makedepends = gtk-update-icon-cache
-	makedepends = desktop-file-utils
-	depends = java-runtime>=8
-	provides = astah_uml
-	conflicts = astah_uml
-	conflicts = astah_community
+	depends = java-runtime=8
+	conflicts = astah-community
 	conflicts = astah-professional
-	source = http://cdn.change-vision.com/files/astah-uml-8_1_0-3ac74f.zip
-	source = astah_uml.desktop
-	source = astah_uml.xml
-	source = astah_uml.png
-	source = astah_splash_uml.png
-	source = LICENSE
-	sha256sums = 4e9c9698cb6b8e5d983a8e28bb6fe10e91099a9deaaf3f27e4f5e8856bb041ac
-	sha256sums = 560cdde7f1bb1fde639a8dd82deab6ee3ae6366d8385e485f32c050f4269592d
-	sha256sums = 0f820a854465a84a0ec718108bee8d96b572f1eb4ab4c558d83c13eb5eb03513
-	sha256sums = 5b02d285410a97e29eb0888b1c095d200bbecc14edc2e9129c281691c3021f49
-	sha256sums = 35f96337f046d3ce25a61db4aa79fe2036e515b090eea597f4b3df081adb9006
-	sha256sums = da5c641c2a9f1e0d616d142ad340b9724b798f55cfb30ba171bee7be2530aa1a
+	options = !emptydirs
+	source = http://cdn.change-vision.com/files/astah-uml-8.2.0.b743f7-0.noarch.rpm
+	sha256sums = e384286a1b7cf0ed592d84be52c473652ff88716972e7235a8a4daddf0018f1f
 
 pkgname = astah-uml
 

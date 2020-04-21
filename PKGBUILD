@@ -1,45 +1,26 @@
-# Maintainer: Ludovico de Nittis <aasonykk+aur at google mail dot com>
-# Forked from Phillipe Smith <phillipe@archlinux.com.br>
+# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=astah-uml
-_pkgname=${pkgname/-/_}
-pkgver=8.1.0
-_pkgver=${pkgver//./_}
+pkgver=8.2.0.b743f7.0
 pkgrel=1
-_pkgrel=3ac74f
-pkgdesc="Lightweight and easy-to-use UML2.x modeler"
-arch=("any")
-license=("custom")
-depends=("java-runtime>=8")
-makedepends=("shared-mime-info" "gtk-update-icon-cache" "desktop-file-utils")
-provides=("$_pkgname")
-conflicts=("$_pkgname" "astah_community" "astah-professional")
-install="${pkgname}.install"
-url="http://astah.net/editions/uml-new"
-source=("http://cdn.change-vision.com/files/${pkgname}-${_pkgver}-${_pkgrel}.zip"
-        "${_pkgname}.desktop"
-        "${_pkgname}.xml"
-        "${_pkgname}.png"
-        "astah_splash_uml.png"
-        "LICENSE")
+url='https://astah.net/products/astah-uml'
+pkgdesc='Lightweight and easy-to-use UML2.x modeler (Trial)'
+arch=('any')
+license=('custom')
+depends=('java-runtime=8')
+conflicts=('astah-community' 'astah-professional')
+options=('!emptydirs')
+source=("http://cdn.change-vision.com/files/astah-uml-${pkgver:0:12}-${pkgver:13}.noarch.rpm")
+sha256sums=('e384286a1b7cf0ed592d84be52c473652ff88716972e7235a8a4daddf0018f1f')
 
-sha256sums=('4e9c9698cb6b8e5d983a8e28bb6fe10e91099a9deaaf3f27e4f5e8856bb041ac'
-            '560cdde7f1bb1fde639a8dd82deab6ee3ae6366d8385e485f32c050f4269592d'
-            '0f820a854465a84a0ec718108bee8d96b572f1eb4ab4c558d83c13eb5eb03513'
-            '5b02d285410a97e29eb0888b1c095d200bbecc14edc2e9129c281691c3021f49'
-            '35f96337f046d3ce25a61db4aa79fe2036e515b090eea597f4b3df081adb9006'
-            'da5c641c2a9f1e0d616d142ad340b9724b798f55cfb30ba171bee7be2530aa1a')
-
-package() {         
-    install -Dm755 $srcdir/$_pkgname/astah $pkgdir/usr/bin/astah || return 1
-    install -Dm755 $srcdir/$_pkgname/astah-command.sh $pkgdir/usr/bin/astah-command || return 1
-    install -Dm644 $srcdir/${_pkgname}.desktop $pkgdir/usr/share/applications/${_pkgname}.desktop || return 1
-    install -Dm644 $srcdir/${_pkgname}.xml $pkgdir/usr/share/mime/packages/${_pkgname}.xml || return 1
-    install -Dm644 $srcdir/${_pkgname}.png $pkgdir/usr/share/pixmaps/${_pkgname}.png || return 1
-    install -Dm644 $srcdir/astah_splash_uml.png ${srcdir}/${_pkgname}/astah_splash_uml.png || return 1
-    install -Dm644 $srcdir/LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE || return 1
-    mkdir -p ${pkgdir}/usr/lib/
-    cp -rf ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/${pkgname} || return 1
-    chmod +x ${pkgdir}/usr/lib/${pkgname}/astah{,-command.sh}
-    sed -i -r "s|^(ASTAH_HOME=).*|\1/usr/lib/$pkgname|" ${pkgdir}/usr/bin/astah
+package() {
+  cp -aR "${srcdir}/usr" "${pkgdir}"
+  mkdir -p "${pkgdir}/opt/"
+  mv "${pkgdir}/usr/lib/astah_uml" "${pkgdir}/opt/astah-uml"
+  mkdir -p "${pkgdir}/usr/share/doc/astah-uml/"
+  mv "${pkgdir}/opt/astah-uml"/ReferenceManual-* "${pkgdir}/usr/share/doc/astah-uml/"
+  mkdir -p "${pkgdir}/usr/share/licenses/astah-uml"
+  mv "${pkgdir}/opt/astah-uml"/AstahLicenseAgreement-e.txt "${pkgdir}/usr/share/licenses/astah-uml/LICENSE"
+  rm "${pkgdir}/usr/bin/astah-uml"
+  ln -s /opt/astah-uml/astah-uml "${pkgdir}/usr/bin"
 }
