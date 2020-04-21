@@ -1,0 +1,21 @@
+pkgbase = python-igl-git
+	pkgdesc = Python bindings for libigl
+	pkgver = 0.4.1.r54.ae3b42e
+	pkgrel = 1
+	url = https://github.com/libigl/libigl-python-bindings
+	arch = x86_64
+	license = GPL
+	license = MPL2
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = cmake>=3.2
+	depends = glibc
+	depends = gcc-libs
+	depends = python-numpy
+	provides = python-igl
+	conflicts = python-igl
+	source = python-igl::git+https://github.com/libigl/libigl-python-bindings.git
+	md5sums = SKIP
+
+pkgname = python-igl-git
+
