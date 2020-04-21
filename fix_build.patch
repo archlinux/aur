@@ -1,0 +1,16 @@
+diff --git a/fuse/hashtbl.c b/fuse/hashtbl.c
+index 5772a41..dcedb32 100644
+--- a/fuse/hashtbl.c
++++ b/fuse/hashtbl.c
+@@ -1891,8 +1891,9 @@ void folder_tree_cleanup_filecache(folder_tree * tree, uint64_t allowed_size)
+ 
+     for (;;) {
+         endp = NULL;
+-        retval = readdir_r(dirp, entryp, &endp);
+-        if (retval != 0) {
++        errno = 0;
++        endp = readdir(dirp);
++        if (!endp && errno) {
+             fprintf(stderr, "readdir_r failed\n");
+             free(entryp);
+             closedir(dirp);
