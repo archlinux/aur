@@ -1,0 +1,13 @@
+pkgbase = github-markdown-toc
+	pkgdesc = Easy TOC creation for GitHub README.md
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/ekalinin/github-markdown-toc
+	arch = any
+	license = MIT
+	depends = bash
+	source = github-markdown-toc-0.6.1.tar.gz::https://github.com/ekalinin/github-markdown-toc/archive/0.6.1.tar.gz
+	sha1sums = e3d2ad16461c9ce670975ac9d3ef22db14a13bf1
+
+pkgname = github-markdown-toc
+
