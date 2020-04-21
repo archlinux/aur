@@ -1,6 +1,6 @@
 pkgbase = foot
 	pkgver = 1.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/dnkl/foot
 	arch = x86_64
 	license = mit
@@ -15,10 +15,10 @@ pkgbase = foot
 	depends = pixman
 	source = https://codeberg.org/dnkl/foot/archive/1.2.3.tar.gz
 	source = https://codeberg.org/dnkl/tllist/archive/1.0.0.tar.gz
-	source = https://codeberg.org/dnkl/fcft/archive/1.1.5.tar.gz
+	source = https://codeberg.org/dnkl/fcft/archive/1.1.7.tar.gz
 	sha256sums = 1255319e67bf7b1b8bcb1aeb9c12d95bd6d10b1ea56577f71c17a2190194f421
 	sha256sums = 115f067f6b7029959fea39e45ec64697806e901fe4ca2de67c7eb2af4b7d2ae2
-	sha256sums = 844905877077afdbe4449c76a086fe21ab2b449f2791f66984ef2d95640d9997
+	sha256sums = 4b4c30b1033ac1d261d6b83eec7f5122dafdb6a80a2319b0af3d6623c360f722
 
 pkgname = foot
 	pkgdesc = A wayland native terminal emulator
