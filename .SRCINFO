@@ -1,6 +1,6 @@
 pkgbase = blihbetter
 	pkgdesc = A simple python script to simplify BLIH usage for Epitech students.
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/mrCaelum/blihbetter
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = blihbetter
 	depends = python>=3.3.0
 	depends = python-requests
 	depends = git
-	source = blihbetter-2.3.0.tar.gz::https://github.com/mrCaelum/blihbetter/releases/latest/download/v2.3.0.tar.gz
-	sha256sums = 9c2b190e324f2f6bde4ed24db1b85fe2013946db927d33e280ef0daf1c8120a8
+	source = blihbetter-2.4.0.tar.gz::https://github.com/mrCaelum/blihbetter/releases/latest/download/v2.4.0.tar.gz
+	sha256sums = a3f4ffd86cf93f062f232fdccb63e58f8983c2b701ae0098886976a4f057ceff
 
 pkgname = blihbetter
 

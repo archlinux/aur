@@ -1,6 +1,6 @@
 # Maintainer: Louis Kleiver <louis.kleiver@gmail.com>
 pkgname=blihbetter
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A simple python script to simplify BLIH usage for Epitech students."
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python>=3.3.0'
 	'python-requests'
 	'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mrCaelum/${pkgname}/releases/latest/download/v${pkgver}.tar.gz")
-sha256sums=("9c2b190e324f2f6bde4ed24db1b85fe2013946db927d33e280ef0daf1c8120a8")
+sha256sums=("a3f4ffd86cf93f062f232fdccb63e58f8983c2b701ae0098886976a4f057ceff")
 
 build() {
 	mv "${pkgname}.py" "${pkgname}"
