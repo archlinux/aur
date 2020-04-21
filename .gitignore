@@ -2,3 +2,5 @@ src/
 pkg/
 *.pkg.*
 linux-sfh/
+*.patch
+*.log
