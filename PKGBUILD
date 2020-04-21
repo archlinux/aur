@@ -2,7 +2,7 @@
 
 _pkgname=net-ipv4
 pkgname=php-$_pkgname
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="IPv4 network calculations and validation"
 arch=("any")
@@ -11,8 +11,8 @@ license=("PHP")
 depends=("php>=5.4.0")
 makedepends=("php-pear")
 options=("!strip" "!emptydirs")
-source=("http://download.pear.php.net/package/Net_IPv4-1.3.4.tgz")
-sha256sums=("8eb1a7a44c7a6f5504b5d186a3b458df3edd83e46430c259a8d7cb7b31b0787b")
+source=("http://download.pear.php.net/package/Net_IPv4-${pkgver}.tgz")
+sha256sums=('3e843c9b1901e8f6b6fd6dbcebf87b52b0ac4a41cb8a6bafb8d02d8e502e6438')
 
 package() {
     cd "${srcdir}"
