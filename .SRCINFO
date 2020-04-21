@@ -1,7 +1,7 @@
 pkgbase = buffalo-bin
 	pkgdesc = A Go web development eco-system, designed to make your project easier.
 	pkgver = 0.16.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gobuffalo/buffalo/
 	arch = x86_64
 	license = MIT

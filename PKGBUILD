@@ -2,7 +2,7 @@
 # Contributor: Marco Steiger <marco (at) steiger (dot) online>
 pkgname=buffalo-bin
 pkgver=0.16.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A Go web development eco-system, designed to make your project easier.'
 url="https://github.com/gobuffalo/buffalo/"
 arch=('x86_64')
