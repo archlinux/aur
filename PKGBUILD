@@ -1,14 +1,15 @@
-# Maintainer: Antoine Bolvy <antoine.bolvy@gmail.com>
+# Maintainer: Antoine Bolvy <antoine.bolvy@gmail.com> -- 2020-04-21
+# Maintainer: Robert Schadek <rburners@gmail.com> 2020-04-21 --
 
 pkgname="libpostal-git"
 pkgrel=1
-pkgver=v0.3.3.r0.g577f26e4
+pkgver=v1.1.alpha.r31.g790e24bc
 pkgdesc="A C library for parsing/normalizing street addresses around the world. Powered by statistical NLP and open geo data. (git version)"
 arch=("any")
 url="https://github.com/openvenues/${pkgname%-git}"
 license=('MIT')
 makedepends=('git')
-depends=('curl' 'snappy')
+depends=('curl' 'snappy' 'automake' 'autoconf')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git://github.com/openvenues/${pkgname%-git}.git")
