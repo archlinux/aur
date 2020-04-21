@@ -31,5 +31,6 @@ check() {
 package() {
 	cd "${_pkgname}-${pkgver}"
 	zig build install --prefix .
-	install -vDm 755 bin/river -t "${pkgdir}/usr/bin/"
+	install -Dm 755 bin/river -t "${pkgdir}/usr/bin/"
+	install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
 }
