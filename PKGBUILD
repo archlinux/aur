@@ -7,7 +7,7 @@
 pkgname=st-ruifm-git
 _pkgname=st-ruifm
 pkgver=0.8.2.1107.002817f
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple virtual terminal emulator for X'
 url='https://github.com/ruifm/st.git'
 arch=('any')
