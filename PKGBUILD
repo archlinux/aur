@@ -17,11 +17,11 @@ install="chronograf.install"
 source=("git+https://github.com/influxdata/chronograf#tag=${pkgver}"
         'chronograf.sysusers'
         'chronograf.tmpfiles'
-        'Makefile.patch')
+)
 sha256sums=('SKIP'
             '594777c81e3728fe1d5033c61034fb58d26a7c79f00f2a6daa143de521cf5440'
             'c81f81247b99928bd20428f7188c1790fff89c4521f3322a8ff148272b24bab6'
-            'b439f430a7efdcd480f3a76fc67c1d6eb6deb5e4b52c65ff1d4eb3306f608299')
+)
 
 build() {
 	export GOPATH="${srcdir}"
@@ -32,7 +32,6 @@ build() {
 
 	cd "${GOPATH}/src/github.com/influxdata/chronograf"
 
-	git apply "${srcdir}/Makefile.patch"
 	make
 	go install github.com/influxdata/${pkgname}/cmd/${pkgname}
 	go install github.com/influxdata/${pkgname}/cmd/chronoctl
