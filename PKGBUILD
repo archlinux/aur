@@ -18,7 +18,4 @@ package() {
     cd $srcdir
 	mkdir -p $pkgdir/usr/share/icons/$pkgname
 	cp -r McMojave-cursors-master/dist/* $pkgdir/usr/share/icons/$pkgname
-    # rm -rf $srcdir
-    # cd ../..
-    # rm master.zip
 }
