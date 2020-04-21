@@ -4,7 +4,7 @@
 pkgname=harrison-xt
 appname=mixbus-plugins
 pkgver=6.0.697
-pkgrel=1
+pkgrel=2
 pkgdesc="Harrison XT LV2 Plugins"
 arch=('x86_64')
 url="http://harrisonconsoles.com/site/${appname}.html"
@@ -37,4 +37,7 @@ done
     
 ## Package has built successfully message
 msg2 "Package Built Successfully!!"
+
+## License Install Message
+msg2 "Install licenses to ${HOME} to unlock plugins"
 }
