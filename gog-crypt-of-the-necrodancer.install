@@ -5,5 +5,7 @@ post_install() {
   chmod 666 /opt/gog/crypt-of-the-necrodancer/game/data/played.dat
   chmod 666 /opt/gog/crypt-of-the-necrodancer/game/data/save_data.xml
   chmod 666 /opt/gog/crypt-of-the-necrodancer/game/data/save_data.xml_TEMP
+  chmod 666 /opt/gog/crypt-of-the-necrodancer/game/replays/
+  chmod 666 /opt/gog/crypt-of-the-necrodancer/game/logs/
   echo "==> The save is located in /opt/gog/crypt-of-the-necrodancer/game/data/"
 }
