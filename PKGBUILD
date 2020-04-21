@@ -2,7 +2,7 @@
 
 pkgname=speedtest++
 _gitname=SpeedTest
-pkgver=1.14.r65.262daf8
+pkgver=1.14.r67.6adf567
 pkgrel=1
 pkgdesc="Unofficial speedtest.net cli using raw TCP for better accuracy"
 arch=('any')
