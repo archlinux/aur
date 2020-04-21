@@ -34,7 +34,7 @@ build() {
 
 package() {
   cd play.it
-  make DESTDIR="$pkgdir" prefix="/usr" bindir="/usr/bin" install
+  make DESTDIR="$pkgdir"/ prefix=/usr bindir=/usr/bin datadir=/usr/share install
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
