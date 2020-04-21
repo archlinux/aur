@@ -1,7 +1,7 @@
 pkgbase = ipetitions-bot
 	pkgdesc = A bot to get signatures for iPetitions
 	pkgver = 1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Raymo111/iPetitions-Bot
 	arch = any
 	license = GPL3
