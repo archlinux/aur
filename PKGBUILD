@@ -69,7 +69,7 @@ package() {
   install -Dm 644 pycharm-professional.desktop $pkgdir/usr/share/applications/
   
   # remove internal fonts, instead use system fonts
-  sudo rm -rf $pkgdir/opt/pycharm-professional/jbr/lib/fonts
+  rm -rf $pkgdir/opt/pycharm-professional/jbr/lib/fonts
   
   # exec
   install -dm 755 $pkgdir/usr/bin/
