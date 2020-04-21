@@ -13,7 +13,7 @@ depends=('libglade' 'python2-cairo' 'python2-gobject2')
 makedepends=('python2-numpy' 'pygobject2-devel')
 optdepends=('python2-numpy')
 source=("https://download.gnome.org/sources/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2"
-        "https://gitlab.gnome.org/Archive/pygtk/-/commit/4aaa48eb80c6802aec6d03e5695d2a0ff20e0fc2.patch"
+        'drop-pangofont.patch'
         'python27.patch'
         'fix-leaks-of-pango-objects.patch')
 sha512sums=('64f4344fcf7636e0b2016ffd5310250b5c02a1bf87e44aef39b5d4cf4a5fc50d27cb4f030d4c6802cff61fffb88dee7752821e3d8a4cd1c34dc3745d9ff2f0da'
@@ -29,7 +29,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/fix-leaks-of-pango-objects.patch"
   # fix build with new pango:
   # https://gitlab.gnome.org/Archive/pygtk/-/merge_requests/1
-  patch -p1 -i ../4aaa48eb80c6802aec6d03e5695d2a0ff20e0fc2.patch
+  patch -p1 -i ../drop-pangofont.patch
   # Python 2
   sed -i -e 's#env python$#env python2#' examples/pygtk-demo/{,demos/}*.py
   # No docs
