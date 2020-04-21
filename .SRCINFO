@@ -1,7 +1,7 @@
 pkgbase = maestral
 	pkgdesc = A light-weight and open-source CLI Dropbox client.
 	pkgver = 1.0.0.dev4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SamSchott/maestral-dropbox
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,8 @@ pkgbase = maestral
 	depends = python-blinker
 	depends = python-bugsnag
 	depends = python-click>=7.0
-	depends = python-dropbox>=9.4.0
+	depends = python-dropbox>=10.0
+	depends = python-jeepney
 	depends = python-keyring>=19.0.0
 	depends = python-keyrings-alt>=3.0.0
 	depends = python-lockfile
