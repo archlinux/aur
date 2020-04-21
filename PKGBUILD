@@ -10,7 +10,7 @@ license=('MIT')
 conflicts=("${pkgname}-bin")
 makedepends=('go-pie')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('73b7acb50d5cc022efe3370ab73c48cfd0185ec2eb216d76789dfd1ff6f40649')
+sha256sums=('2e39eb64306168593248ea9b2505d22caca9fac1eff3c1e3bf1f0f966df36a8a')
 
 build() {
   cd $pkgname-$pkgver
