@@ -1,11 +1,12 @@
 pkgbase = nymphcast-sdk-git
 	pkgdesc = Audio and video casting system with support for custom applications.
-	pkgver = 131
+	pkgver = 243
 	pkgrel = 1
 	url = https://github.com/MayaPosch/NymphCast
 	arch = any
 	license = BSD-3-Clause
 	makedepends = git
+	depends = nymphrpc
 	provides = nymphcast-sdk
 	source = git+https://github.com/MayaPosch/NymphCast.git
 	md5sums = SKIP
