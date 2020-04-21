@@ -1,11 +1,10 @@
 pkgbase = ietf-id2xml
 	pkgdesc = Convert internet-draft text to XML
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/id2xml/
 	arch = any
 	license = custom:BSD
-	depends = python
 	depends = python-decorator
 	depends = python-lxml
 	depends = python-pathlib2

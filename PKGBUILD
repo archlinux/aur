@@ -3,12 +3,11 @@
 _pkgname=id2xml
 pkgname=ietf-id2xml
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert internet-draft text to XML'
 url='https://pypi.org/project/id2xml/'
 arch=(any)
-depends=(python
-         python-decorator
+depends=(python-decorator
          python-lxml
          python-pathlib2
          python-requests
@@ -22,5 +21,5 @@ package() {
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir"
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/id2xml/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
