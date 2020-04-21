@@ -8,9 +8,10 @@ pkgdesc='A framework for audio software development'
 arch=('x86_64')
 url="http://cabbageaudio.com/"
 license=('GPLv3')
-makedepends=('freeglut' 'jack' 'libxcomposite' 'libxrandr' 'libxcursor'
-             'libx11' 'libxinerama' 'mesa' )
-depends=('csound' 'csound-doc' 'steinberg-vst36')
+makedepends=()
+depends=('csound' 'csound-doc' 'steinberg-vst36' 'curl' 
+        'libx11' 'libxinerama' 'mesa' 'gtk3' 'vim' 'webkit2gtk' 
+        'freeglut' 'jack' 'libxcomposite' 'libxrandr' 'libxcursor')
 conflicts=('cabbage')
 provides=('cabbage')
 source=('git+https://github.com/rorywalsh/cabbage.git#branch=develop'
