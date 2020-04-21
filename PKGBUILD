@@ -5,8 +5,8 @@
 # Contributor: Gesina Schwalbe <gesina.schwalbe /at/ pheerai /dot/ de>
 
 pkgname=multimarkdown
-pkgver=6.3.2
-pkgrel=2
+pkgver=6.5.2
+pkgrel=1
 pkgdesc="A superset of Markdown with various output formats"
 arch=("i686" "x86_64")
 url="http://fletcherpenney.net/multimarkdown/"
