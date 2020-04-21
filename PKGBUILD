@@ -3,23 +3,28 @@
 pkgbase=python-libinput
 pkgname=python-libinput
 _module='python-libinput'
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.3.0pre1
+# TODO: remove
+_commit=1f477ee9f1d56b284b20e0317ea8967c64ef1218
+pkgrel=1
 pkgdesc="Object-oriented wrapper for libinput using ctypes"
 url="https://github.com/OzymandiasTheGreat/python-libinput"
 depends=('python' 'libinput')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('e6b20e7fd889001fe74b01a1ff456e5f53c9ed01b016d6ceb65b6f573f129758')
+# TODO: revert
+source=("$_module-$pkgver.tar.gz::https://github.com/OzymandiasTheGreat/python-libinput/archive/$_commit.tar.gz")
+sha256sums=('d3b3f8d70cf43ca74bd15abc449eecf91a5d2111360e1911ff193ee5856aaeb4')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
+    # TODO: revert
+    cd "${srcdir}/${_module}-$_commit"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/${_module}-${pkgver}"
+    # TODO: revert
+    cd "${srcdir}/${_module}-$_commit"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
