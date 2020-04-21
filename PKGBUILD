@@ -2,8 +2,9 @@
 # former Maintainer: Daniele Vazzola <daniele.vazzola@gmail.com>
 # Contributor: Ciarán Coffey <ciaran@ccoffey.ie>
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
+# Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 pkgname=icaclient
-pkgver=19.12
+pkgver=20.04
 pkgrel=1
 pkgdesc="Citrix Workspace App for x86_64 (64bit) Linux (ICAClient, Citrix Receiver)"
 arch=('x86_64' 'i686' 'armv7h')
@@ -30,9 +31,9 @@ md5sums=('71aca6257f259996ac59729604f32978'
          '1f214f6f456f59afd1a3275580f4240e'
          '59f8e50cc0e0c399d47eb7ace1df5a32'
          'dca5a1f51449ef35f1441b900d622276')
-sha256sums_x86_64=('EAC890571BC4DA03F421FB1ABF26B8CDC91601A283BD3D574A15ADB7FAAC25EA')
-sha256sums_i686=('9E55DC1AD1AF7347E35F7892B68E46C4A6A2CC07EEF478F647795B3D41BA2E1F')
-sha256sums_armv7h=('E7E394B8DE52262156A89794D25AF1DACBB96E6083AFED31AC22C94177414B59')
+sha256sums_x86_64=('E923592216F9541173846F932784E6C062CB09C9E8858219C7489607BF82A0FB')
+sha256sums_i686=('A2E2E1882723DA6796E68916B3BB2B44DD575A83DEB03CA90A262F6C81B1A53F')
+sha256sums_armv7h=('F5BF09E725153DBE8E4FB8931DC4AE019333010716062E91ABE20C639349EBFA')
 install=citrix-client.install
 
 package() {
