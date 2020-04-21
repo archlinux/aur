@@ -1,7 +1,7 @@
 # Maintainer: Weslen Nascimento <weslenng@outlook.com>
 
 pkgname=sspl
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Bypass SSL Pinning on Android"
 arch=("x86_64")
@@ -28,7 +28,7 @@ build() {
 
   # build
   cd sspl
-  go build .
+  go build
 }
 
 package() {
@@ -39,7 +39,7 @@ package() {
   mkdir -p $HOME/.sspl
 
   # network security config
-  cp bin/network_security_config.xml $HOME/.sspl/
+  cp static/network_security_config.xml $HOME/.sspl/
 
   # install
   install -Dm755 $pkgname "$pkgdir"/usr/local/bin/$pkgname
