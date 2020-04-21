@@ -2,7 +2,7 @@
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=qactus
-pkgver=1.0.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='A Qt-based OBS notifier application'
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(GPL2 GPL3)
 depends=(desktop-file-utils gtk-update-icon-cache qtkeychain)
 makedepends=(cmake)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/javierllorente/qactus/archive/v$pkgver.tar.gz")
-sha256sums=('6ad205715f377bb95c3b01f141eef588b0f5a939030478df4be4d2912c8673a4')
+sha256sums=('5b19b678a93af8aefd61956a5bd747bfba6ee9aeb5bb200681f452036a4970e5')
 
 build() {
     cd $pkgname-$pkgver
