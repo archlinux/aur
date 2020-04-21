@@ -1,4 +1,5 @@
 # Maintainer: 5anya <sanya at national shitposting agency>
+# Contributor: Luke Chen <doomer at yahoo dot com>
 pkgname=gog-crypt-of-the-necrodancer
 _pkgname=crypt-of-the-necrodancer
 epoch=1
