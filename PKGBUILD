@@ -9,7 +9,7 @@ arch=('any')
 licence=('gpl')
 url='https://tambi-soft.github.io'
 makedepends=('git')
-depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'ffmpeg')
+depends=('qt5-base' 'qt5-webview' 'qt5-charts')
 source=(${_pkgname}::git+https://github.com/tambi-soft/trinitrotoluol.git)
 sha256sums=('SKIP')
 
