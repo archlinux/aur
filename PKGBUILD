@@ -16,4 +16,7 @@ package() {
 
     sed -i "s+Exec=/usr/local/sunlogin/bin/sunloginclient+Exec=${_installdir}/usr/local/sunlogin/bin/sunloginclient+" ${pkgdir}/usr/share/applications/sunlogin.desktop
     sed -i "s+Icon=/usr/local/sunlogin/res/icon/sunlogin_client.png+Icon=${_installdir}/usr/local/sunlogin/res/icon/sunlogin_client.png+" ${pkgdir}/usr/share/applications/sunlogin.desktop
+
+    cp -R "${pkgdir}"/usr ${_installdir}
+    install -Dm644 ${pkgdir}/usr/share/applications/sunlogin.desktop ${pkgdir}/usr/share/applications/sunlogin.desktop
 }
