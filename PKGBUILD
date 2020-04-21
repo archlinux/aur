@@ -6,18 +6,24 @@
 # Minimal fork of https://aur.archlinux.org/packages/protonmail-bridge/
 # Compiled with 'nogui' option
 # Included is a user systemd service. Try: systemctl status --user bridge.service
-# You can login and register accounts using the interactive cli
-# Named screen session accessible as: screen -R -S bridgedaemon
+# You can login and register accounts using the interactive cli: protonmail-bridge --cli
+# Once you have everything configured and automated. You can enable and use bridge.service to run bridge in background.
+
+# The following is an alternative way to run the bridge in interactive cli mode encapsulated within a named screen session.
+# Can be added to bridge.service
+# ExecStart=/usr/bin/screen -Dm -S bridgedaemon sh -c "sleep 5; protonmail-bridge -c"
+# ExecStop=/usr/bin/screen -X -S bridgedaemon quit
+
 
 pkgname=protonmail-bridge-nogui
 pkgver=1.2.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
 url="https://www.protonmail.com/bridge"
 license=('GPL3')
 makedepends=('go' 'gcc')
-depends=('libsecret' 'screen')
+depends=('libsecret')
 optdepends=(
     'gnome-keyring: supported password manager (password manager is required)'
     'pass: supported password manager (password manager is required)'
@@ -27,7 +33,7 @@ options=('!emptydirs' '!strip')
 source=("git://github.com/ProtonMail/proton-bridge.git"
 	"bridge.service")
 sha256sums=('SKIP'
-            '07cc30765dd43307a995ac4f3aed5dee4d6af7e2bc32a21a1201d888a39603c0')
+            '6b2fd1e042b55dc6d0ffe5eb44e82ffd233452b4571ef571132600e7ec0d5d82')
 
 prepare() {
     cd "${srcdir}"/proton-bridge/

@@ -3,10 +3,14 @@ Description=Desktop-Bridge: Protonmail Bridge - ProtonMail IMAP and SMTP Bridge
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/screen -Dm -S bridgedaemon sh -c "sleep 5; protonmail-bridge -c"
+ExecStart=/usr/bin/protonmail-bridge --noninteractive
 Restart=always
-ExecStop=/usr/bin/screen -X -S bridgedaemon quit
 KillMode=process
+
+# The following is an alternative way to run the bridge in interactive cli mode encapsulated within a named screen session.
+# Can be added to bridge.service
+# ExecStart=/usr/bin/screen -Dm -S bridgedaemon sh -c "sleep 5; protonmail-bridge -c"
+# ExecStop=/usr/bin/screen -X -S bridgedaemon quit
 
 [Install]
 WantedBy=default.target

@@ -1,14 +1,13 @@
 pkgbase = protonmail-bridge-nogui
 	pkgdesc = Integrate ProtonMail paid account with any program that supports IMAP and SMTP
 	pkgver = 1.2.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.protonmail.com/bridge
 	arch = x86_64
 	license = GPL3
 	makedepends = go
 	makedepends = gcc
 	depends = libsecret
-	depends = screen
 	optdepends = gnome-keyring: supported password manager (password manager is required)
 	optdepends = pass: supported password manager (password manager is required)
 	conflicts = protonmail-bridge-bin
@@ -18,7 +17,7 @@ pkgbase = protonmail-bridge-nogui
 	source = git://github.com/ProtonMail/proton-bridge.git
 	source = bridge.service
 	sha256sums = SKIP
-	sha256sums = 07cc30765dd43307a995ac4f3aed5dee4d6af7e2bc32a21a1201d888a39603c0
+	sha256sums = 6b2fd1e042b55dc6d0ffe5eb44e82ffd233452b4571ef571132600e7ec0d5d82
 
 pkgname = protonmail-bridge-nogui
 
