@@ -4,7 +4,7 @@
 # Contributor: Quan Guo <guotsuan@gmail.com>
 pkgname=cheat-git
 pkgver=3.9.0.r0.gc4dd3b5
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('arm' 'armv6h' 'armv7h' 'x86_64')
 url="https://github.com/cheat/cheat"
@@ -14,13 +14,15 @@ optdepends=('fzf: for Fuzzy Finder integration'
             'bash-completion: for bash completions')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bash-git" "python-${pkgname%-git}")
-backup=("etc/$pkgname/conf.yml")
+backup=("etc/${pkgname%-git}/conf.yml")
 source=('git+https://github.com/cheat/cheat.git'
         'conf.yml'
-        'git+https://github.com/cheat/cheatsheets.git')
+        'git+https://github.com/cheat/cheatsheets.git'
+        "https://raw.githubusercontent.com/${pkgname%-git}/cheatsheets/master/.github/LICENSE.txt")
 sha256sums=('SKIP'
             'efffbe20041efc3d49ffe596ab5abe60a10adf70219c2ddecdf1caf350972212'
-            'SKIP')
+            'SKIP'
+            'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
