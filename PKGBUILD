@@ -47,11 +47,11 @@ build() {
   done
 }
 
-#check() {
-#  cd $pkgname
-#
-#  go test -v ./...
-#}
+check() {
+  cd $pkgname
+
+  go test -v ./...
+}
 
 package() {
   cd $pkgname
