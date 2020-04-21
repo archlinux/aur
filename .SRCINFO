@@ -1,7 +1,7 @@
 pkgbase = gcalcli
 	pkgdesc = Google calendar command line interface
-	pkgver = 4.2.0
-	pkgrel = 2
+	pkgver = 4.2.1
+	pkgrel = 1
 	url = https://github.com/insanum/gcalcli
 	arch = any
 	license = MIT
@@ -13,8 +13,8 @@ pkgbase = gcalcli
 	depends = python-oauth2client
 	depends = python-parsedatetime
 	optdepends = python-vobject: for ics/vcal importing
-	source = gcalcli-4.2.0.tar.gz::https://github.com/insanum/gcalcli/archive/v4.2.0.tar.gz
-	sha256sums = 81532e9e60ce94530eb19d6fe720cbbaaef5f543b6c4128111f1f47226830368
+	source = gcalcli-4.2.1.tar.gz::https://github.com/insanum/gcalcli/archive/v4.2.1.tar.gz
+	sha256sums = cfe16274a24c3dee92f6bbe257efce28ebc126a1c70bd341f35920baf98ccd1d
 
 pkgname = gcalcli
 
