@@ -1,14 +1,22 @@
 pkgbase = theia-electron
 	pkgdesc = Cloud & Desktop IDE Platform
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.theia-ide.org/
 	arch = any
 	license = EPL2
 	makedepends = yarn
+	makedepends = make
+	makedepends = gcc
+	makedepends = pkgconf
+	makedepends = python2
 	makedepends = node-gyp
-	depends = nodejs>=10.11.0
-	depends = nodejs<12
+	depends = nodejs-lts-dubnium
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	depends = libxkbfile
+	optdepends = git: git support
 	options = !strip
 	source = theia-electron
 	source = package.json
