@@ -21,7 +21,6 @@ post_install() {
     chown -R -L gogios:gogios $DATABASE_DIR
     chmod 755 $DATABASE_DIR
 
-    cp -f $SCRIPT_DIR/gogios.service /usr/lib/systemd/system/gogios.service
     systemctl enable gogios || true
     systemctl daemon-reload || true
 
