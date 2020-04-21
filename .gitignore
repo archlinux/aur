@@ -1,0 +1,5 @@
+pkg/
+src/
+applet-latte-sidebar-button/
+*.pkg.*
+
