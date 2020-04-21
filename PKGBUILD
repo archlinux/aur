@@ -3,7 +3,7 @@
 pkgname=lens
 pkgdesc='The Kubernetes IDE (previously Kontena Lens)'
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('MIT')
 url='https://github.com/lensapp/lens'
@@ -21,8 +21,8 @@ build() {
 
 package() {
   # Copy the entire distribution to /opt
-  install -d "$pkgdir"/opt/$pkgname
-  cp -a "$srcdir"/$pkgname-${pkgver/_/-}/dist/linux-unpacked/* "$pkgdir"/opt/$pkgname
+  mkdir -p "$pkgdir"/opt/$pkgname
+  mv "$srcdir"/$pkgname-${pkgver/_/-}/dist/linux-unpacked/* "$pkgdir"/opt/$pkgname
 
   # Icon
   install -Dm 644 "$srcdir"/$pkgname-${pkgver/_/-}/build/icons/512x512.png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/$pkgname.png
@@ -31,6 +31,6 @@ package() {
   install -Dm 644 "$srcdir"/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
 
   # Symlink binary
-  install -d "$pkgdir"/usr/bin
-  ln -s /opt/$pkgname/kontena-lens "$pkgdir"/usr/bin/
+  mkdir -p "$pkgdir"/usr/bin
+  ln -sf ../../opt/$pkgname/kontena-lens "$pkgdir"/usr/bin/kontena-lens
 }
