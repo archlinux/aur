@@ -2,7 +2,7 @@
 # Based on work by Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ> and Beini <bane aτ iki dot fi>
 
 pkgname=eddie-ui-git
-pkgver=2.19.1
+pkgver=2.19.2
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - beta version'
 arch=('i686' 'x86_64')
