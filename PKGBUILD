@@ -5,7 +5,7 @@
 
 pkgname=openmw-tes3mp
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TES3MP is a project aiming to add multiplayer functionality to OpenMW, a free and open source recreation of the popular Bethesda Softworks game \"The Elder Scrolls III: Morrowind\"."
 arch=('x86_64')
 url="http://tes3mp.com"
@@ -15,12 +15,12 @@ optdepends=('openmw: create initial engine configuration files')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
-source=("$pkgname.tar.gz"::'https://github.com/TES3MP/openmw-tes3mp/releases/download/0.7.0-alpha/tes3mp-GNU+Linux-x86_64-release-$pkgver-alpha-abc4090a0f-01d297f5c6.tar.gz'
-        'https://raw.githubusercontent.com/TES3MP/openmw-tes3mp/master/files/tes3mp/tes3mp_logo.png'
-        'tes3mp-browser.desktop')
-sha256sums=('bfb942414e6b187f9da9365cd7b9ae959b9ff1e511e2c3a5682662dea3725ba8'
-          '861e5e8cc7ddec2dbfb842d68cdd45e7cc564079b9cb37ad113ff140bf424fd9'
-          'ddccf2f35e41c2cbb35816f3bbfc53a9dd5809cd2830e8e324f45550852f6408')
+source=("$pkgname.tar.gz"::"https://github.com/TES3MP/openmw-tes3mp/releases/download/0.7.0-alpha/tes3mp-GNU+Linux-x86_64-release-0.7.0-alpha-abc4090a0f-01d297f5c6.tar.gz"
+        "tes3mp.png"::"https://raw.githubusercontent.com/TES3MP/openmw-tes3mp/$pkgver/files/tes3mp/tes3mp_logo.png"
+        "tes3mp-browser.desktop")
+sha256sums=("bfb942414e6b187f9da9365cd7b9ae959b9ff1e511e2c3a5682662dea3725ba8"
+          "861e5e8cc7ddec2dbfb842d68cdd45e7cc564079b9cb37ad113ff140bf424fd9"
+          "ddccf2f35e41c2cbb35816f3bbfc53a9dd5809cd2830e8e324f45550852f6408")
 
 prepare() {
   cd "$srcdir/TES3MP"
@@ -33,7 +33,7 @@ prepare() {
 
   # Remove junk files
   rm CoreScripts/README.md
-  rm CoreScripts/Turtorial.md
+  rm CoreScripts/Tutorial.md
   rm tes3mp-package-info.txt
 
   # Remove OpenMW junk files
@@ -45,8 +45,6 @@ prepare() {
 package() {
   
   # Install .desktop files
-  install -Dm644 tes3mp.desktop "$pkgdir/usr/share/applications/tes3mp.desktop"
-  install -Dm644 tes3mp-server.desktop "$pkgdir/usr/share/applications/tes3mp-server.desktop"
   install -Dm644 tes3mp-browser.desktop "$pkgdir/usr/share/applications/tes3mp-browser.desktop"
   
   # Icon for .desktop files
