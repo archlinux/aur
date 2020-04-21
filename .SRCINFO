@@ -1,7 +1,7 @@
 pkgbase = remmina-plugin-anydesk-git
 	pkgdesc = A protocol plugin for Remmina to launch an Anydesk connection.
 	pkgver = 20200414
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jose1711/remmina-plugin-anydesk/
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = remmina-plugin-anydesk-git
 	makedepends = git
 	depends = gtk3
 	depends = remmina
-	depends = teamviewer
+	depends = anydesk
 	source = remmina-plugin-builder_1.3.0.0.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/1.3.0.0.tar.gz
 	source = git+https://github.com/jose1711/remmina-plugin-anydesk
 	sha256sums = 0e4e2d6a79dc569444016a5479b437016386985d96a958da7505c15b1695f98c
