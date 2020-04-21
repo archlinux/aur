@@ -8,7 +8,7 @@
 
 # Intel Parallel Studio XE 2019 for Linux - ( Intel compiler icc suite )
 ##########################################################################
-# this PKGBUILD splits the main Parallel Studio XE package in 8 sub-packages:
+# this PKGBUILD splits the main Parallel Studio XE package in 10 sub-packages:
 #
 # intel-common-libs:            Intel Common Libraries
 # intel-openmp:                 Intel OpenMP Implementation
