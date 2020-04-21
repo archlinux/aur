@@ -1,7 +1,7 @@
 pkgbase = gdlauncher-classic
 	pkgdesc = GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience
 	pkgver = 0.13.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/CrankySupertoon/GDLauncher-Classic
 	install = gdlauncher-classic.install
 	arch = x86_64
