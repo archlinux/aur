@@ -6,7 +6,7 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-git
-pkgver=v6.2.0.r123.gf68601dd72
+pkgver=v6.2.0.r191.gde011c60a1
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
@@ -114,7 +114,8 @@ build() {
     --with-storage-lvm --with-udev --without-hal --disable-static \
     --with-init-script=systemd \
     --with-qemu-user=nobody --with-qemu-group=nobody \
-    --with-netcf --with-interface
+    --with-netcf --with-interface \
+    --without-wireshark-dissector # working around bug 63828
   make
 }
 
