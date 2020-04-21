@@ -1,8 +1,9 @@
-# Maintainer: Storm Dragon <stormdragon2976@gmail.com>
+# Maintainer: Jason Paris <paris3200@gmail.com>
+# Contributer: Storm Dragon <stormdragon2976@gmail.com>
 # Contributer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ruby-sequel
-pkgver=5.10.0
+pkgver=5.31.0
 pkgrel=1
 pkgdesc="The Database Toolkit for Ruby"
 arch=('any')
@@ -15,15 +16,15 @@ source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
 noextract=("${pkgname#*-}-${pkgver}.gem")
 provides=('sequel' 'ruby-sequel')
 conflicts=('sequel')
-md5sums=('536a90cecefb0381098567780e694c1a')
+sha256sums=('19f11682cc9ac11eb6c8c897120c1daf256db88dceef955b89dc4e8ba9086257')
 
 package() {
   cd "$srcdir"
 
-  msg2 'Installing...'
+  echo 'Installing...'
   gem install \
     --no-user-install \
     --ignore-dependencies \
-    -i "$pkgdir$(ruby -rubygems -e'puts Gem.default_dir')" \
+    -i "$pkgdir$(ruby -r rubygems -e'puts Gem.default_dir')" \
     ${pkgname#*-}-$pkgver.gem
 }
