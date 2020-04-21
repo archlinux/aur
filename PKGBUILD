@@ -37,7 +37,7 @@ package() {
     # Install PolicyKit file for allowing the lightdm user to use NetworkManager
     # Note: PolicyKit no longer reads pkla files after version 0.107, so Ubuntu's
     # policy file won't work.
-    install -dm775 "${pkgdir}/usr/share/polkit-1/rules.d/"
+    install -dm750 "${pkgdir}/usr/share/polkit-1/rules.d/"
     install -m644 "${srcdir}/50-arctica-greeter.rules" \
         "${pkgdir}/usr/share/polkit-1/rules.d/"
 
