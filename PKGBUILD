@@ -11,7 +11,7 @@ license=('MIT')
 install="gdlauncher-classic.install"
 depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3' 'rust')
 
-sha256sums_x86_64=('0ee4d9c7b0336584b3d7a85e1f46395cb54127e1650be5236cb89341b4211fa4'
+sha256sums_x86_64=('d8c39315cd92eab464021d25ed73011ad0b9406689a976909df8ff185ca60d3e'
                    '72c487fc70de98ae58d51a93314747150e544f143a748320d87e5ce687d70a5a')
 
 source_x86_64=(
