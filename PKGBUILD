@@ -27,11 +27,11 @@ md5sums_i686=('ae332480b70c4d78c360f393cbf5c77d')
 
 package() {
   for so_file in *.so; do
-    install -Dm755 "${srcdir}/${so_file}" "${pkgdir}/usr/lib/vst/${so_file}"
+    install -Dm755 "${srcdir}/${so_file}" -t "${pkgdir}/usr/lib/vst"
   done
 
   for bank_file in *.xhipbank; do
-    install -Dm644 "${srcdir}/${bank_file}" "${pkgdir}/usr/share/${pkgname}/banks/${bank_file}"
+    install -Dm644 "${srcdir}/${bank_file}" -t "${pkgdir}/usr/share/${pkgname}/banks"
   done
 
   install -Dm644 "${srcdir}/xhip_8_user_manual.pdf" -t "${pkgdir}/usr/share/doc/${pkgname}"
