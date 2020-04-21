@@ -1,7 +1,7 @@
 #Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 
 pkgname=antibody-bin
-pkgver=4.3.1
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="Antibody is a shell plugin manager made from the ground up thinking about performance"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,11 +13,11 @@ source_armv7h=("$pkgname-$pkgver.tar.gz::https://github.com/getantibody/antibody
 source_aarch64=("$pkgname-$pkgver.tar.gz::https://github.com/getantibody/antibody/releases/download/v$pkgver/antibody_Linux_arm64.tar.gz")
 url="https://github.com/getantibody/antibody"
 license=("MIT")
-sha256sums_i686=("bbea1cbf1e520629b33a3d86cff64fee100530fd0c599aab915c415564235140")
-sha256sums_x86_64=("ab58ef6085794ad1ce99cd59a6c59959aa5f7320c7c34d96af730afb4c05800f")
-sha256sums_armv6h=("5f23fdf4e2cf2b7860c1d4366018a3e416cc47899e29b704fa8e217873571a88")
-sha256sums_armv7h=("45d1a682ddfd9b2178356d2de1ad94d40801ed76d11ca2f880a5abfbb30ada59")
-sha256sums_aarch64=("73d424cee0df8e0015bbaef70d9bdb99837bd028b076e0bba801cb34ddb5a0b2")
+sha256sums_i686=("7b5f91e6c7c04cb6764cd21aa6905afe5d8c9f463cdb135a9d1e4ab5e8a49e9c")
+sha256sums_x86_64=("4a4dbe96aaa098b40488087a51cd8ee29ded8e0f4400520126fe8616c48ac0c5")
+sha256sums_armv6h=("96e9ca5e184cb6647ef121c9339644d58182d5eed4e74762b73d801cc19ecd8a")
+sha256sums_armv7h=("674d387a7819b3558c209c54e0b22c36d455a07b52585ffa26c82075fafd3b34")
+sha256sums_aarch64=("9a3824d02598bfada2627c5840f0bd03653aad17f71ceff3c5341c2bff65b1f2")
 
 package() {
   # Unpack, flag as executable and move to the right directory
