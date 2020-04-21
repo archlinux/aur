@@ -52,7 +52,7 @@ build() {
   cd "pycharm-$_pkgver"
 
   # compile PyDev debugger used by PyCharm to speedup debugging
-  python3 plugins/python/helpers/pydev/setup_cython.py build_ext --build-temp build --build-lib .
+  python plugins/python/helpers/pydev/setup_cython.py build_ext --build-temp build --build-lib .
   
   rm -r bin/fsnotifier lib/pty4j-native/linux/{x86,ppc64le}
 }
