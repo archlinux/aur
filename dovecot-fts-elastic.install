@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# arg 1:  the new package version
+post_install() {
+	cat <<-EOF
+	Make sure elasticsearch is started, then create the index mapping with:
+	
+	curl -X PUT "http://localhost:9200/m?pretty" -H 'Content-Type: application/json' -d "@/usr/share/doc/dovecot/elastic7-schema.json"
+	
+	Make sure the /etc/dovecot/conf.d/90-fts.conf file is included in you dovecot configuration, then restart dovecot.
+	For more info see: https://github.com/filiphanes/fts-elastic#configuration.
+	EOF
+}
