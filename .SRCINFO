@@ -1,7 +1,7 @@
 pkgbase = bcc
 	pkgdesc = BPF Compiler Collection
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iovisor/bcc
 	arch = x86_64
 	license = Apache
@@ -14,13 +14,18 @@ pkgbase = bcc
 	makedepends = bison
 	makedepends = python
 	source = bcc-0.13.0.tar.gz::https://github.com/iovisor/bcc/releases/download/v0.13.0/bcc-src-with-submodule.tar.gz
+	source = cmake_clang10_patch.patch::https://github.com/iovisor/bcc/commit/1599c2ef8206988d5d.patch
 	sha512sums = 9f95f70bbebb3b5e175b2c513a51c024fdbe67283c02b81b56cdef74b1720b82df40a4555c1e1fdcfa56c64cd418abfa11b371e4111ffb3997c848f014690471
+	sha512sums = eb6bf782385f5381b07235922d0ffdfa8d76c29f28aa2d43ee87097abfcdfaea6beb56939ab4e1070c1c51311d292996e72d865ccc3a5eddfd79dc145b246fa6
 
 pkgname = bcc
 	pkgdesc = BPF Compiler Collection - C library and examples
 	depends = clang>=3.7.0
 	depends = libelf
-	optdepends = linux-headers: build against the Arch kernel
+	optdepends = linux-headers: build modules against the Arch kernel
+	optdepends = linux-lts-headers: build modules against the LTS kernel
+	optdepends = linux-zen-headers: build modules against the ZEN kernel
+	optdepends = linux-hardened-headers: build modules against the HARDENED kernel
 	optdepends = bcc-tools: Python utilites using the BCC library
 	optdepends = python-bcc: Python 3 bindings for BCC
 	provides = bcc
