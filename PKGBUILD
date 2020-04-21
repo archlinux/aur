@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --first-parent --tags --always | tr - .)"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 prepare() {
