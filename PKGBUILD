@@ -1,24 +1,27 @@
-# Maintainer: Luke Chen <doomer at yahoo dot com>
+# Maintainer: 5anya <sanya@national.shitposting.agency>
 pkgname=gog-crypt-of-the-necrodancer
 _pkgname=crypt-of-the-necrodancer
-pkgver=2.1.0.3
+epoch=1
+pkgver=1.29.14917
+_pkgver=1_29_14917
 pkgrel=1
 pkgdesc="A roguelike rhythm game! Move on the beat to navigate ever changing dungeons"
 arch=('i686' 'x86_64')
 license=('custom')
-depends_i686=('glibc' 'alsa-lib' 'libgl')
-depends_x86_64=('lib32-glibc' 'lib32-alsa-lib' 'lib32-libgl')
-optdepends_i686=()
-optdepends_x86_64=()
 install=${pkgname}.install
-source=("local://gog_crypt_of_the_necrodancer_${pkgver}.sh"
+source=("local://crypt_of_the_necrodancer_en_${_pkgver}.sh"
 	"$pkgname"
-	"$pkgname.desktop")
+	"$pkgname.desktop"
+	"$pkgname.install")
 sha256sums=(SKIP
 	    'd80562a04ded4b25bca9738267d1d93d2be8fef74570aa7d00d83471c4e71121'
-	    '9753ea711a428a24333cb37be1f11a3a35860072723e89dd7599d1842f0f4f89')
+	    '9753ea711a428a24333cb37be1f11a3a35860072723e89dd7599d1842f0f4f89'
+            '05a773f76b64ffe89b099f5c1e373061d1ffc1183ba0859ef7dfefdae9dc9434')
+PKGEXT=".pkg.tar"
 
 package() {
+  depends_i686=('libglvnd' 'openal' 'libxrandr' 'libpulse')
+  depends_x86_64=('lib32-libglvnd' 'lib32-openal' 'lib32-libxrandr' 'lib32-libpulse')
   mkdir -p "$pkgdir"/opt/gog/$_pkgname
   cp -r data/noarch/* "$pkgdir"/opt/gog/$_pkgname
   install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"

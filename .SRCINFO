@@ -1,23 +1,28 @@
 pkgbase = gog-crypt-of-the-necrodancer
 	pkgdesc = A roguelike rhythm game! Move on the beat to navigate ever changing dungeons
-	pkgver = 2.1.0.3
+	pkgver = 1.29.14917
 	pkgrel = 1
+	epoch = 1
 	install = gog-crypt-of-the-necrodancer.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	source = local://gog_crypt_of_the_necrodancer_2.1.0.3.sh
+	source = local://crypt_of_the_necrodancer_en_1_29_14917.sh
 	source = gog-crypt-of-the-necrodancer
 	source = gog-crypt-of-the-necrodancer.desktop
+	source = gog-crypt-of-the-necrodancer.install
 	sha256sums = SKIP
 	sha256sums = d80562a04ded4b25bca9738267d1d93d2be8fef74570aa7d00d83471c4e71121
 	sha256sums = 9753ea711a428a24333cb37be1f11a3a35860072723e89dd7599d1842f0f4f89
-	depends_i686 = glibc
-	depends_i686 = alsa-lib
-	depends_i686 = libgl
-	depends_x86_64 = lib32-glibc
-	depends_x86_64 = lib32-alsa-lib
-	depends_x86_64 = lib32-libgl
+	sha256sums = 05a773f76b64ffe89b099f5c1e373061d1ffc1183ba0859ef7dfefdae9dc9434
 
 pkgname = gog-crypt-of-the-necrodancer
+	depends_i686 = libglvnd
+	depends_i686 = openal
+	depends_i686 = libxrandr
+	depends_i686 = libpulse
+	depends_x86_64 = lib32-libglvnd
+	depends_x86_64 = lib32-openal
+	depends_x86_64 = lib32-libxrandr
+	depends_x86_64 = lib32-libpulse
 

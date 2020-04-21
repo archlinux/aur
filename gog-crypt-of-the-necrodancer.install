@@ -1,18 +1,9 @@
 post_install() {
-  update-desktop-database -q
   touch /opt/gog/crypt-of-the-necrodancer/game/data/played.dat
   touch /opt/gog/crypt-of-the-necrodancer/game/data/save_data.xml
   touch /opt/gog/crypt-of-the-necrodancer/game/data/save_data.xml_TEMP
-  chmod 777 /opt/gog/crypt-of-the-necrodancer/game/data/played.dat
-  chmod 777 /opt/gog/crypt-of-the-necrodancer/game/data/save_data.xml
-  chmod 777 /opt/gog/crypt-of-the-necrodancer/game/data/save_data.xml_TEMP
+  chmod 666 /opt/gog/crypt-of-the-necrodancer/game/data/played.dat
+  chmod 666 /opt/gog/crypt-of-the-necrodancer/game/data/save_data.xml
+  chmod 666 /opt/gog/crypt-of-the-necrodancer/game/data/save_data.xml_TEMP
   echo "==> The save is located in /opt/gog/crypt-of-the-necrodancer/game/data/"
-}
-
-post_upgrade() {
-  post_install
-}
-
-post_remove() {
-  post_install
 }
