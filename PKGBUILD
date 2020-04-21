@@ -6,12 +6,12 @@ pkgdesc="Bring your stream back to life with modern effects!"
 arch=("x86_64")
 url="https://github.com/Xaymar/obs-StreamFX"
 license=("GPL2")
-# same dependencies as OBS Studio
+# same dependencies as OBS Studio + ninja makedepends
 depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11"
          "qt5-x11extras" "curl" "gtk-update-icon-cache"
          "obs-studio>=25")
 makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264" "jack"
-             "vlc" "swig" "luajit" "python")
+             "vlc" "swig" "luajit" "python" "ninja")
 source=("$pkgname::git+https://github.com/Xaymar/obs-StreamFX.git#tag="$pkgver)
 md5sums=("SKIP")
 
