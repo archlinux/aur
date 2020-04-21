@@ -5,7 +5,7 @@ pkgbase="foosynth-plugin-${_plug}-git"
 pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
          )
-pkgver=r4.1.gc9ec0f8
+pkgver=r5.1.gc3f18b1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
@@ -21,12 +21,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --first-parent --tags --always | tr - .)"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 prepare() {
   cd "${_plug}"
-
   mkdir -p build
 
   sed '1i#include <cpuid.h>' -i src/cpuid.cpp
