@@ -5,7 +5,7 @@
 
 pkgname=foldingathome
 pkgver=7.6.9
-pkgrel=4
+pkgrel=5
 pkgdesc='A distributed computing project for simulating protein dynamics'
 arch=(x86_64)
 url=https://foldingathome.org/
@@ -29,13 +29,11 @@ source=(
   foldingathome.service
   foldingathome-nvidia.service
   foldingathome-user.service
-  GPUs.txt
 )
 sha256sums=('b580a8076f3147bacb9d1599e1b1765956a8e37b8a79bd961ffe2e3adc7df110'
-            'df73687b3171fe846b81e0c1ce414f11d23bb72d3a0a08af1be14da35a935693'
+            '2e3419430d1ea1e2448c3d523dc1bb0fceb4128223dc98d6409ecdc122bdac47'
             'f0eec0c8f6a278f53a5537446c996b7d97431706d54f0a7e1adce53478b39e70'
-            '41997239dc363570e2ca5bec0eca8c7d88aada6ace0bb5793bf3ec6d101f40bb'
-            '5944a6df06b42c5edd4e5f0922f16e3f04cb755bd248d0e610c9262f3814aff9')
+            '41997239dc363570e2ca5bec0eca8c7d88aada6ace0bb5793bf3ec6d101f40bb')
 
 package() {
   install -Dm 755 fahclient_${pkgver}-64bit-release/FAHClient -t "${pkgdir}"/usr/bin/
@@ -47,7 +45,6 @@ package() {
   install -Dm 644 foldingathome.service -t "${pkgdir}"/usr/lib/systemd/system/
   install -Dm 644 foldingathome-nvidia.service -t "${pkgdir}"/usr/lib/systemd/system/
   install -Dm 644 foldingathome-user.service "${pkgdir}"/usr/lib/systemd/user/foldingathome.service
-  install -Dm 644 GPUs.txt -t "${pkgdir}"/etc/foldingathome/
 }
 
 # vim: ts=2 sw=2 et:

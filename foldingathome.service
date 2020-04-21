@@ -10,11 +10,14 @@ User=fah
 SupplementaryGroups=video
 DynamicUser=yes
 ConfigurationDirectory=foldingathome
+LogsDirectory=foldingathome
 StateDirectory=fah
 WorkingDirectory=/var/lib/fah
 ReadWritePaths=/dev/dri
 ExecStartPre=!/usr/bin/chown -R fah:fah /etc/foldingathome
-ExecStart=/usr/bin/FAHClient --config /etc/foldingathome/config.xml
+ExecStart=/usr/bin/FAHClient --config /etc/foldingathome/config.xml \
+                             --log /var/log/foldingathome/log.txt \
+                             --log-rotate-dir /var/log/foldingathome
 CPUSchedulingPolicy=idle
 IOSchedulingClass=3
 
