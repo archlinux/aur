@@ -3,7 +3,7 @@
 pkgname=regal
 pkgver=11.823d99e
 pkgrel=1
-pkgdesc='a simple regular alarm for terminal'
+pkgdesc='Simple CLI regular alarm'
 arch=('any')
 url='https://github.com/yoarch/regal'
 license=('MIT')
