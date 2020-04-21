@@ -1,7 +1,7 @@
 pkgbase = intel-parallel-studio-xe
-	pkgdesc = Intel C++ C and FORTRAN compiler - Intel Parallel Studio XE - Cluster Edition - icc icpc ifort ipp mkl
+	pkgdesc = Intel C++ C and FORTRAN compiler - Intel Parallel Studio XE - Cluster Edition - icc icpc ifort ipp
 	pkgver = 2020.1.217
-	pkgrel = 1
+	pkgrel = 2
 	url = http://software.intel.com/en-us/articles/non-commercial-software-download/
 	arch = x86_64
 	license = custom
@@ -23,13 +23,9 @@ pkgbase = intel-parallel-studio-xe
 	source = intel-common-libs.conf
 	source = intel-fortran.conf
 	source = intel-openmp.conf
-	source = intel-mkl.conf
 	source = intel-mpi.conf
 	source = intel-ipp.conf
 	source = intel-tbb.conf
-	source = intel-mkl.sh
-	source = intel-mkl.install
-	source = intel-mkl-th.conf
 	source = intel-tbb.install
 	source = EULA.txt
 	sha256sums = fd11d8de72b2bd60474f8bce7b463e4cbb2255969b9eaf24f689575aa2a2abab
@@ -41,13 +37,9 @@ pkgbase = intel-parallel-studio-xe
 	sha256sums = 31ac4d0f30a93fe6393f48cb13761d7d1ce9719708c76a377193d96416bed884
 	sha256sums = 6151bc273b6f741a4ce93d8160b6f167c8ad499dbc6e8e3f6e08d48571d6a52a
 	sha256sums = 99cc9683cc75934cc21bb5a09f6ad83365ee48712719bfd914de9444695eed13
-	sha256sums = a856326362e9b80c19dc237cbf66bf3d96a69bd7ad1baff99ec9849f8208348c
 	sha256sums = 2345695151930806cc73c14a35b8cde94281def144d0c2c180357862fd08fcaa
 	sha256sums = da6f41c2e002c9a793c75a18c8d1c85ef7ef5bf83a7a0a158ff144481491aac8
 	sha256sums = 5d3ac1ba31d7fc5795821d95b17956b0c977c8f3576b02f664f8ebf476213a43
-	sha256sums = 5e68c529c65cac54218026c869e54b2ddb268179725fc1e6b56d920470dad999
-	sha256sums = 11398c0ae2e2011902b1d6356d916d41bb8b54d39d090c6c83630f4b0e84e93a
-	sha256sums = e515cb28bf40cdb0db818db6a2688a0028575153a1b9d5acfb0bc5f13fe45722
 	sha256sums = fde83eb0071a5bd2887de127b56cc573a254e30131ec7b2d956987512c3e90c2
 	sha256sums = 228ac25e147adb9b872e1a562e522d2fd48809ccae89b765112009896a6d55a5
 
@@ -72,15 +64,6 @@ pkgname = intel-fortran-compiler
 pkgname = intel-ipp
 	pkgdesc = Intel Integrated Performance Primitives
 	install = intel-composer.install
-
-pkgname = intel-mkl_psxe
-	pkgdesc = Intel Math Kernel Library (Intel® MKL)
-	install = intel-mkl.install
-	depends = intel-common-libs=2020.1.217
-	optdepends = intel-openmp: Intel OpenMP Implementation
-	provides = intel-mkl
-	conflicts = intel-mkl
-	backup = etc/intel-mkl-th.conf
 
 pkgname = intel-mpi
 	pkgdesc = Intel MPI library

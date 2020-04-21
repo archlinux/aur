@@ -8,14 +8,13 @@
 
 # Intel Parallel Studio XE 2019 for Linux - ( Intel compiler icc suite )
 ##########################################################################
-# this PKGBUILD splits the main Parallel Studio XE package in 9 sub-packages:
+# this PKGBUILD splits the main Parallel Studio XE package in 8 sub-packages:
 #
 # intel-common-libs:            Intel Common Libraries
 # intel-openmp:                 Intel OpenMP Implementation
 # intel-compiler-base:          Intel C/C++ compiler and base libs
 # intel-fortran-compiler:       Intel Fortran compiler and base libs"
 # intel-ipp:                    Intel Integrated Performance Primitives
-# intel-mkl_psxe:               Intel Math Kernel Library (Intel® MKL)
 # intel-mpi:                    Intel Message passing interface (MPI)
 # intel-tbb_psxe:               Intel Threading Building Blocks (TBB)
 # intel-vtune-profiler:         Intel Vtune Profiler
@@ -45,7 +44,6 @@ pkgname=('intel-common-libs'
          'intel-compiler-base'
          'intel-fortran-compiler'
          'intel-ipp'
-         'intel-mkl_psxe'
          'intel-mpi'
          'intel-tbb_psxe'
          'intel-advisor'
@@ -79,9 +77,6 @@ fi
 _remove_docs=true
 
 # set to true if you want to remove the static objects from the libs.
-#_remove_static_objects_mkl=true
-_remove_static_objects_mkl=false
-
 #_remove_static_objects_ipp=true
 _remove_static_objects_ipp=false
 ########################################
@@ -93,7 +88,7 @@ _v_b='217'
 
 _update='1'
 
-pkgrel=1
+pkgrel=2
 
 _sp='cluster_edition'
 _icc_ver='19.1.1'
@@ -125,13 +120,9 @@ source=(
   'intel-common-libs.conf'
   'intel-fortran.conf'
   'intel-openmp.conf'
-  'intel-mkl.conf'
   'intel-mpi.conf'
   'intel-ipp.conf'
   'intel-tbb.conf'
-  'intel-mkl.sh'
-  'intel-mkl.install'
-  'intel-mkl-th.conf'
   'intel-tbb.install'
   'EULA.txt'
 )
@@ -145,13 +136,9 @@ sha256sums=('fd11d8de72b2bd60474f8bce7b463e4cbb2255969b9eaf24f689575aa2a2abab'
             '31ac4d0f30a93fe6393f48cb13761d7d1ce9719708c76a377193d96416bed884'
             '6151bc273b6f741a4ce93d8160b6f167c8ad499dbc6e8e3f6e08d48571d6a52a'
             '99cc9683cc75934cc21bb5a09f6ad83365ee48712719bfd914de9444695eed13'
-            'a856326362e9b80c19dc237cbf66bf3d96a69bd7ad1baff99ec9849f8208348c'
             '2345695151930806cc73c14a35b8cde94281def144d0c2c180357862fd08fcaa'
             'da6f41c2e002c9a793c75a18c8d1c85ef7ef5bf83a7a0a158ff144481491aac8'
             '5d3ac1ba31d7fc5795821d95b17956b0c977c8f3576b02f664f8ebf476213a43'
-            '5e68c529c65cac54218026c869e54b2ddb268179725fc1e6b56d920470dad999'
-            '11398c0ae2e2011902b1d6356d916d41bb8b54d39d090c6c83630f4b0e84e93a'
-            'e515cb28bf40cdb0db818db6a2688a0028575153a1b9d5acfb0bc5f13fe45722'
             'fde83eb0071a5bd2887de127b56cc573a254e30131ec7b2d956987512c3e90c2'
             '228ac25e147adb9b872e1a562e522d2fd48809ccae89b765112009896a6d55a5')
 
@@ -307,13 +294,6 @@ build() {
     msg2 "Remove Documentation: NO"
   fi
 
-  if  ${_remove_static_objects_mkl} ; then
-    msg2 "Remove Static Objects from MKL: YES"
-    warning "If your software is based on the static MKL objects, edit"
-    warning "the _remove_static_objects_mkl option at the line 50 of this PKGBUILD"
-  else
-    msg2 "Remove Static Objects from MKL: NO"
-  fi
   if  ${_remove_static_objects_ipp} ; then
     msg2 "Remove Static Objects from IPP: YES"
     warning "If your software is based on the static IPP objects, edit"
@@ -515,60 +495,6 @@ package_intel-ipp() {
   mv ${xe_build_dir}/etc ${pkgdir}/
 
   ln -s ./${_composer_xe_dir}/linux/ipp/ ${pkgdir}/opt/intel/ipp
-}
-
-package_intel-mkl_psxe() {
-
-  set_build_vars
-
-  pkgdesc="Intel Math Kernel Library (Intel® MKL)"
-  depends=("intel-common-libs=$pkgver")
-  optdepends=("intel-openmp: Intel OpenMP Implementation")
-  provides=('intel-mkl')
-  conflicts=('intel-mkl')
-  install=intel-mkl.install
-  backup=('etc/intel-mkl-th.conf')
-
-  mkdir -p ${xe_build_dir}
-  cd ${xe_build_dir}
-  mkdir -p ./opt
-  mkdir -p ./etc/ld.so.conf.d
-  mkdir -p ./etc/profile.d
-
-  cp ${srcdir}/intel-mkl.sh ./etc/profile.d/
-  chmod a+x ./etc/profile.d/intel-mkl.sh
-
-  cp ${srcdir}/intel-mkl-th.conf ./etc/
-
-  sed "s/<arch>/${_i_arch}/" < ${srcdir}/intel-mkl.conf > ./etc/ld.so.conf.d/intel-mkl.conf
-
-  msg2 "Extracting RPMS"
-  extract_rpms 'intel-mkl-*.rpm'  $xe_build_dir
-
-  cd ./opt/intel/${_composer_xe_dir}/linux/mkl
-
-  msg2 "Updating scripts"
-  rm ./bin/mklvars.csh
-  sed -i "s/<INSTALLDIR>/\/opt\/intel\/${_composer_xe_dir}\/linux/g" ./bin/mklvars.sh
-
-  if ${_remove_docs} ; then
-    msg2 "Removing documentation"
-    rm -rf ./examples
-    rm -rf ./benchmarks
-    rm -rf $xe_build_dir/opt/intel/documentation_${_year}
-  fi
-
-  if ${_remove_static_objects_mkl} ; then
-    msg2 "Removing static objects"
-    rm -f ./lib/${_i_arch}/libmkl_*.a
-    rm -f ./lib/mic/libmkl_*.a
-  fi
-
-  msg2 "Moving package files"
-  mv ${xe_build_dir}/opt ${pkgdir}/
-  mv ${xe_build_dir}/etc ${pkgdir}/
-
-  ln -s ./${_composer_xe_dir}/linux/mkl/ ${pkgdir}/opt/intel/mkl
 }
 
 package_intel-mpi() {
@@ -775,6 +701,6 @@ package_intel-inspector() {
   mv ${xe_build_dir}/etc ${pkgdir}/
   mv ${xe_build_dir}/usr ${pkgdir}/
 }
-pkgdesc="Intel C++ C and FORTRAN compiler - Intel Parallel Studio XE - Cluster Edition - icc icpc ifort ipp mkl"
+pkgdesc="Intel C++ C and FORTRAN compiler - Intel Parallel Studio XE - Cluster Edition - icc icpc ifort ipp"
 depends=('bash' 'gcc')
 
