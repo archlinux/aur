@@ -1,16 +1,15 @@
 # Maintainer: K1412 <jonathan@opensides.be>
 pkgname=php-cas
-pkgver=1.3.4
+pkgver=1.3.8
 pkgrel=1
 pkgdesc="CAS library for PHP"
 arch=("any")
-url="http://developer.jasig.org/cas-clients/php/"
+url="https://apereo.github.io/phpCAS/"
 license=("Apache")
 depends=('php')
 
-source=("http://developer.jasig.org/cas-clients/php/$pkgver/CAS-$pkgver.tgz")
-
-md5sums=('58f93724ec52929658bb8f1be8fa2154')
+source=("https://github.com/apereo/phpCAS/releases/download/${pkgver}/CAS-${pkgver}.tgz")
+sha512sums=('6e89c4843ce96340ced93c6e7ad813015f8a7624928ef0ddfdc714b2d9ad55fc9b6549c413b43d4fd4dd482d806701a11212be11de689be8ede136570cda1c4b')
 
 package() {
   # Go in directory
