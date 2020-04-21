@@ -4,7 +4,7 @@
 pkgname=openvpn-openssl-1.0
 _pkgname=openvpn
 pkgver=2.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) (build against openssl-1.0)'
 arch=('i686' 'x86_64')
 url='https://openvpn.net/index.php/open-source.html'
@@ -73,7 +73,7 @@ package() {
 
   # Install contrib
   for FILE in $(find contrib -type f); do
-    case "$(file --brief --mime-type "${FILE}")" in
+    case "$(file --brief --mime-type --no-sandbox "${FILE}")" in
       "text/x-shellscript") install -D -m0755 "${FILE}" "${pkgdir}/usr/share/openvpn/${FILE}" ;;
       *) install -D -m0644 "${FILE}" "${pkgdir}/usr/share/openvpn/${FILE}" ;;
     esac
