@@ -6,7 +6,7 @@ url='https://wiki.ros.org/cv_bridge'
 pkgname='ros-melodic-cv-bridge'
 pkgver='1.13.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=5
+pkgrel=6
 license=('BSD')
 
 ros_makedepends=(
@@ -48,8 +48,8 @@ sha256sums=('c8db35dbb6b470cdedb45195f725bc2cfda7f0dc3155e16a5a37e4b48e29fa59'
 
 prepare() {
   cd "${srcdir}/${_dir}"
-  patch -uN src/module.hpp ../../../endian-fix.patch || return 1
-  patch -uN CMakeLists.txt ../../../boost-fix.patch || return 1
+  patch -uN src/module.hpp ${srcdir}/endian-fix.patch || return 1
+  patch -uN CMakeLists.txt ${srcdir}/boost-fix.patch || return 1
 }
 
 build() {
