@@ -15,5 +15,34 @@ md5sums=('88022b19711009383f45efc1e0934abf')
 package() {
 	cd "$pkgname-$pkgver"
 	python setup.py install --optimize=1 --root="$pkgdir"
+	install -d -m755 "${pkgdir}/usr/share/applications"
+
+# Gui Desktop Icon
+cat <<EOF > "${pkgdir}/usr/share/applications/protonvpn-gui-test.desktop"
+[Desktop Entry]
+Name=GUI TEST
+Version=2.0.0
+Comment=${pkgdesc}
+Exec=sudo protonvpn-gui
+Icon=/usr/lib/python3.8/site-packages/protonvpn_linux_gui/resources/img/logo/protonvpn_logo.png
+Terminal=false
+StartupNotify=false
+Type=Application
+Categories=Utility;GUI;Network;VPN
+EOF
+
+# Tray Desktop Icon
+cat <<EOF > "${pkgdir}/usr/share/applications/protonvpn-tray-test.desktop"
+[Desktop Entry]
+Name=TRAY TEST
+Version=2.0.0
+Comment=Unofficial ProtonVPN GUI Tray
+Exec=protonvpn-tray
+Icon=/usr/lib/python3.8/site-packages/protonvpn_linux_gui/resources/img/logo/protonvpn_logo.png
+Terminal=false
+StartupNotify=false
+Type=Application
+Categories=Utility;GUI;Network;VPN
+EOF
 }
 
