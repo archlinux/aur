@@ -18,5 +18,5 @@ package() {
 	cp -f formfind.pl "$pkgdir/usr/lib/$pkgname"
 	mkdir -p "$pkgdir/usr/bin"
 	ln -sf "/usr/lib/$pkgname/bot.sh" "$pkgdir/usr/bin/$pkgname"
-	chmod +x "$pkgdir/usr/bin/$pkgname"
+	chmod +x "/usr/bin/$pkgname"
 }
