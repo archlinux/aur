@@ -2,7 +2,7 @@
 
 pkgname=coil
 pkgver=1.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="CNI IPAM + intra-node routing plugin in favor of UNIX philosophy"
 arch=('x86_64')
 url="https://github.com/cybozu-go/coil"
@@ -20,7 +20,7 @@ build() {
       -trimpath \
       -mod=vendor \
       -ldflags "-w -s -extldflags $LDFLAGS" \
-      -o hypercoil .
+      -o hypercoil ./pkg/hypercoil
 }
 
 package() {
