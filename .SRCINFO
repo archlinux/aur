@@ -1,0 +1,16 @@
+pkgbase = qfitsview
+	pkgdesc = FITS file viewer based on DPUSER
+	pkgver = 4.0
+	pkgrel = 1
+	url = http://www.mpe.mpg.de/~ott/QFitsView/index.html
+	arch = x86_64
+	license = GPL2+
+	source = http://www.mpe.mpg.de/~ott/QFitsView/download/QFitsView_4.0
+	source = qfitsview.png
+	source = QFitsView.desktop
+	md5sums = cb62ba59c96563303d63c97442485a74
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = qfitsview
+
