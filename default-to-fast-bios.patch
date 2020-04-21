@@ -1,30 +1,30 @@
 diff --git a/include/control.h b/include/control.h
-index f7d839a04..e341f9b8c 100644
+index 398b8ad15..c3ddf2eae 100644
 --- a/include/control.h
 +++ b/include/control.h
-@@ -91,7 +91,7 @@ public:
- 		opt_erasemapper = false;
- 		opt_resetmapper = false;
- 		opt_startmapper = false;
+@@ -93,7 +93,7 @@ public:
+         opt_erasemapper = false;
+         opt_resetmapper = false;
+         opt_startmapper = false;
 -        opt_fastbioslogo = false;
 +        opt_fastbioslogo = true;
          opt_alt_vga_render = false;
          opt_date_host_forced = false;
- 		opt_disable_numlock_check = false;
+         opt_disable_numlock_check = false;
 diff --git a/src/gui/sdlmain.cpp b/src/gui/sdlmain.cpp
-index 9ab978397..8291852f2 100644
+index 8d1476320..e7a41d8a4 100644
 --- a/src/gui/sdlmain.cpp
 +++ b/src/gui/sdlmain.cpp
-@@ -5885,7 +5885,7 @@ bool DOSBOX_parse_argv() {
+@@ -6258,7 +6258,7 @@ bool DOSBOX_parse_argv() {
              fprintf(stderr,"                                          Make sure to surround the command in quotes to cover spaces.\n");
              fprintf(stderr,"  -break-start                            Break into debugger at startup\n");
              fprintf(stderr,"  -time-limit <n>                         Kill the emulator after 'n' seconds\n");
 -            fprintf(stderr,"  -fastbioslogo                           Fast BIOS logo (skip 1-second pause)\n");
 +            fprintf(stderr,"  -bioslogo                               Show BIOS logo (1-second pause)\n");
              fprintf(stderr,"  -log-con                                Log CON output to a log file\n");
- 
- #if defined(WIN32)
-@@ -5957,8 +5957,8 @@ bool DOSBOX_parse_argv() {
+             fprintf(stderr,"  -log-int21                              Log calls to INT 21h (debug level)\n");
+             fprintf(stderr,"  -log-fileio                             Log file I/O through INT 21h (debug level)\n");
+@@ -6332,8 +6332,8 @@ bool DOSBOX_parse_argv() {
          else if (optname == "lang") {
              if (!control->cmdline->NextOptArgv(control->opt_lang)) return false;
          }
