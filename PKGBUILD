@@ -1,7 +1,7 @@
 # Maintainer: Yann Orieult <yo.managements@gmail.com>
 
 pkgname=zipf
-pkgver='1.0.4'
+pkgver='1.0.5'
 pkgrel='1'
 pkgdesc='CLI tool to directly zip several files/folders or an existing folder'
 arch=('any')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('python>=3')
 makedepends=('python' 'python-setuptools')
 
-source=("https://files.pythonhosted.org/packages/source/z/zipfs/zipfs-1.0.4.tar.gz")
-sha256sums=('472a97123650df7734f6c903aac21e5e87e1657ded3a24a4fb7cbc5c9d709ea0')
+source=("https://files.pythonhosted.org/packages/source/z/zipfs/zipfs-1.0.5.tar.gz")
+sha256sums=('fcf7ccac767ccc326e4f4843aa11e0e053dac8946d7f5cc7bedc70bba312c82e')
 #source#=("file:///$MHOME/dev/python/zipf/dist/zipfs-1.0.4.tar.gz")
 #sha256sums#=("SKIP")
 
