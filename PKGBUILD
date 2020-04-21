@@ -59,13 +59,13 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.6
-_minor=4
+_minor=6
 _rc=
 _srcname=linux-${_major}
-_clr=${_major}.4-22
+_clr=${_major}.5-23
 pkgbase=linux-clear-current
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc='Clear Linux current'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-current"
@@ -229,9 +229,6 @@ _package() {
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
-
-    echo "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -307,9 +304,6 @@ _package-headers() {
     echo "Adding symlink..."
     mkdir -p "$pkgdir/usr/src"
     ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-    echo "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -322,7 +316,7 @@ done
 
 sha256sums=('e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622'
             'SKIP'
-            'aa4c22f64cb11f7d143e68f9e0373647302da03a97053f4fb61b132e7be515e1'
+            '669e3bebb988e7f1124e6687e384304ed70139ea4a869bd4159c3df27c3d9082'
             'SKIP'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5')
 
