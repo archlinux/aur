@@ -1,0 +1,37 @@
+From b2a7e9735ab2864330be9d00d7f38c961c28de5d Mon Sep 17 00:00:00 2001
+From: Prike Liang <Prike.Liang@amd.com>
+Date: Mon, 13 Apr 2020 21:41:14 +0800
+Subject: drm/amdgpu: fix the hw hang during perform system reboot and reset
+
+From: Prike Liang <Prike.Liang@amd.com>
+
+commit b2a7e9735ab2864330be9d00d7f38c961c28de5d upstream.
+
+The system reboot failed as some IP blocks enter power gate before perform
+hw resource destory. Meanwhile use unify interface to set device CGPG to ungate
+state can simplify the amdgpu poweroff or reset ungate guard.
+
+Fixes: 487eca11a321ef ("drm/amdgpu: fix gfx hang during suspend with video playback (v2)")
+Signed-off-by: Prike Liang <Prike.Liang@amd.com>
+Tested-by: Mengbing Wang <Mengbing.Wang@amd.com>
+Tested-by: Paul Menzel <pmenzel@molgen.mpg.de>
+Acked-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Cc: stable@vger.kernel.org
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_device.c |    2 ++
+ 1 file changed, 2 insertions(+)
+
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
+@@ -2176,6 +2176,8 @@ static int amdgpu_device_ip_suspend_phas
+ {
+ 	int i, r;
+ 
++	amdgpu_device_set_pg_state(adev, AMD_PG_STATE_UNGATE);
++	amdgpu_device_set_cg_state(adev, AMD_CG_STATE_UNGATE);
+ 
+ 	for (i = adev->num_ip_blocks - 1; i >= 0; i--) {
+ 		if (!adev->ip_blocks[i].status.valid)
