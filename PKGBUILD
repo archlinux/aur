@@ -10,8 +10,7 @@ arch=(i686 x86_64)
 url="https://github.com/LMMS/veal"
 license=(LGPL2.1)
 groups=(ladspa-plugins pro-audio)
-depends=(ladspa)
-makedepends=(cmake)
+makedepends=(cmake ladspa)
 conflicts=(lmms)
 source=("https://github.com/LMMS/$_forkname/archive/$_commit.tar.gz"
         "https://raw.githubusercontent.com/LMMS/lmms/aa0ce7fc545bbf2f63cb4df8853c1de474faba0d/plugins/LadspaEffect/calf/CMakeLists.txt"
