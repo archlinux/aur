@@ -1,33 +1,33 @@
 pkgbase = linux-lts-versioned-bin
 	pkgdesc = Repackaging of the Arch kernel with a unique package name for each version
-	pkgver = 5.4.33
-	pkgrel = 3
+	pkgver = 5.4.34
+	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
 	options = !strip
-	source = http://arch.mirror.constant.com/core/os/x86_64/linux-lts-5.4.33-3-x86_64.pkg.tar.zst
-	source = http://arch.mirror.constant.com/core/os/x86_64/linux-lts-headers-5.4.33-3-x86_64.pkg.tar.zst
-	source = http://arch.mirror.constant.com/core/os/x86_64/linux-lts-docs-5.4.33-3-x86_64.pkg.tar.zst
-	sha256sums = ec1b51fbfd3dba3db98e1fc0a8bb8c197cbe0ad869fac6ce8b61dc0023d84976
-	sha256sums = 7c29c99e6906f0f1b97c46dda2e114562193da7c3646ebc1356ea9a565a729d2
-	sha256sums = 6dff49872b16d6fcc657d95c1b1fe111388cd71e172f35995284dc6cbb47a61f
+	source = http://arch.mirror.constant.com/core/os/x86_64/linux-lts-5.4.34-1-x86_64.pkg.tar.zst
+	source = http://arch.mirror.constant.com/core/os/x86_64/linux-lts-headers-5.4.34-1-x86_64.pkg.tar.zst
+	source = http://arch.mirror.constant.com/core/os/x86_64/linux-lts-docs-5.4.34-1-x86_64.pkg.tar.zst
+	sha256sums = ffea70be49494e762f7ebf247ea39fa25a2114fbe1792e1d9d1e6d22b35a7bcb
+	sha256sums = ed5524bccc753b35f43e31e0347ba2645aec6fa1548adee17c24209eecce33de
+	sha256sums = a798d117131ec9cac89d74981e83a8ce6d7c38c5a2f06815d327fb454dab167d
 
 pkgname = linux-lts-versioned-bin
-	pkgdesc = Dummy package depending on linux5.4.33-3-lts-bin
-	depends = linux5.4.33-3-lts-bin
+	pkgdesc = Dummy package depending on linux5.4.34-1-lts-bin
+	depends = linux5.4.34-1-lts-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-lts-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.4.33-3-lts-headers-bin
-	depends = linux5.4.33-3-lts-headers-bin
+	pkgdesc = Dummy package depending on linux5.4.34-1-lts-headers-bin
+	depends = linux5.4.34-1-lts-headers-bin
 
 pkgname = linux-lts-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.4.33-3-lts-docs-bin
-	depends = linux5.4.33-3-lts-docs-bin
+	pkgdesc = Dummy package depending on linux5.4.34-1-lts-docs-bin
+	depends = linux5.4.34-1-lts-docs-bin
 
-pkgname = linux5.4.33-3-lts-bin
-	pkgdesc = The Linux kernel and modules, version 5.4.33-3-lts
+pkgname = linux5.4.34-1-lts-bin
+	pkgdesc = The Linux kernel and modules, version 5.4.34-1-lts
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -35,11 +35,11 @@ pkgname = linux5.4.33-3-lts-bin
 	optdepends = linux-firmware: firmware images needed for some devices
 	conflicts = linux-lts
 
-pkgname = linux5.4.33-3-lts-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.4.33-3-lts
+pkgname = linux5.4.34-1-lts-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.4.34-1-lts
 	conflicts = linux-lts-headers
 
-pkgname = linux5.4.33-3-lts-docs-bin
-	pkgdesc = Documentation for the Linux kernel 5.4.33-3-lts
+pkgname = linux5.4.34-1-lts-docs-bin
+	pkgdesc = Documentation for the Linux kernel 5.4.34-1-lts
 	conflicts = linux-lts-docs
 
