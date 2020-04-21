@@ -1,6 +1,6 @@
 # Maintainer: Petr Šťastný <aur@soptik.tech>
 pkgname=desed-git
-pkgver=1.0.r15.g0417cbc
+pkgver=1.1.1.0417cbc
 pkgrel=1
 pkgdesc="Debugger for sed, written in rust. Step through code and observe sed inner state."
 arch=('x86_64')
@@ -15,7 +15,9 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$pkgname"
 
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    latest_version_published=$(git tag | tail -1 | sed 's/^v//')
+    latest_commit_hash=$(git log -1 --format="%h")
+    echo "$latest_version_published.$latest_commit_hash"
 }
 
 build() {
