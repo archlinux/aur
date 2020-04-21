@@ -3,24 +3,16 @@
 
 pkgbase=bcc
 pkgname=('bcc' 'bcc-tools' 'python-bcc')
-pkgver=0.13.0
-pkgrel=2
+pkgver=0.14.0
+pkgrel=1
 pkgdesc='BPF Compiler Collection'
 arch=('x86_64')
 url='https://github.com/iovisor/bcc'
 license=('Apache')
 makedepends=('cmake' 'clang>=3.7.0' 'llvm>=3.7.0' 'flex' 'bison' 'python')
 checkdepends=('netperf' 'iperf')
-source=("${pkgbase}-${pkgver}.tar.gz"::"https://github.com/iovisor/${pkgbase}/releases/download/v${pkgver}/${pkgbase}-src-with-submodule.tar.gz"
-		"cmake_clang10_patch.patch"::"https://github.com/iovisor/bcc/commit/1599c2ef8206988d5d.patch")
-sha512sums=('9f95f70bbebb3b5e175b2c513a51c024fdbe67283c02b81b56cdef74b1720b82df40a4555c1e1fdcfa56c64cd418abfa11b371e4111ffb3997c848f014690471'
-            'eb6bf782385f5381b07235922d0ffdfa8d76c29f28aa2d43ee87097abfcdfaea6beb56939ab4e1070c1c51311d292996e72d865ccc3a5eddfd79dc145b246fa6')
-
-prepare() {
-	cd "${srcdir}/${pkgbase}"
-
-	patch -Np1 -i ../cmake_clang10_patch.patch
-}
+source=("${pkgbase}-${pkgver}.tar.gz"::"https://github.com/iovisor/${pkgbase}/releases/download/v${pkgver}/${pkgbase}-src-with-submodule.tar.gz")
+sha512sums=('f1093894069507ab149d452cce9c2ffe3dbb8dff14481d61031dda5e67f0b1676ea13beb6cd806fc4839dad2172efab782558b7c6d78b39979411552d6faa805')
 
 build() {
 	cd "${srcdir}/${pkgbase}"
