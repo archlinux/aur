@@ -10,16 +10,19 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - with tran
 # NodeJS versioning cheatsheet:
 #   - carbon: 8
 #   - dubnium: 10
+#   - ?: 11 (not in repos)
+#   - erbium: 12
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
 _electron=electron7
-pkgver=1.43.2
+pkgver=1.44.1
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
 license=('MIT')
 depends=($_electron 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 optdepends=('bash-completion: Bash completions'
-            'zsh-completions: ZSH completitons')
+            'zsh-completions: ZSH completitons'
+            'x11-ssh-askpass: SSH authentication')
 makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-dubnium')
 conflicts=('code')
 provides=('code')
@@ -35,7 +38,7 @@ sha512sums=('SKIP'
             '0e75ee88274cbaf48c59ef6f363f6b8ac2ea83f8b17a61155008db773b709a1f0233754fa63a136ec0417313ba90a7eb17db000ec22a38ca8840d8ba6c47cab1'
             '8ec47e497287d67f37e7b669af416f43d5cdbd4574892867d7b95996ef5de53640b5bc919b06b177e1fd91cb005579d6ed0c17325117b9914ba7cf28f5f06e40'
             'b267dcedaf51067a782d0f14007663b706973c1538f7fb91f093475134c2145fd0ffd5ed2b47ad7f01c6167a78a4af285d2818d7850fc67a7f7a473324824664'
-            '2c1ac7f17399fddfb8330f8f05a79cb27d5e15180ced60400d5abae75207ce4f6c9684054e3b7cde549376782349350bfae71f3191f0cf25b64885bf2e2d3e8f')
+            '680804ebe32b653df274a71b68f10a72eb478141095e8d360dcb45ad8139f2f3a31d4eeac6ddc9a5a9e615b79a3584e1fa5cdb98ff32884313337aa27da3b957')
 
 # Even though we don't officially support other archs, let's
 # allow the user to use this PKGBUILD to compile the package
@@ -93,10 +96,12 @@ prepare() {
           s|@@URLPROTOCOL@@|vscode|g
           s|inode/directory;||' resources/linux/code{.appdata.xml,.desktop,-url-handler.desktop}
 
+  sed -i 's|MimeType=.*|MimeType=x-scheme-handler/code-oss;|' resources/linux/code-url-handler.desktop
+
   # Add completitions for code-oss
   cp resources/completions/bash/code resources/completions/bash/code-oss
   cp resources/completions/zsh/_code resources/completions/zsh/_code-oss
-  
+
   # Patch completitions with correct names
   sed -i 's|@@APPNAME@@|code|g' resources/completions/{bash/code,zsh/_code}
   sed -i 's|@@APPNAME@@|code-oss|g' resources/completions/{bash/code-oss,zsh/_code-oss}

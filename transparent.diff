@@ -27,19 +27,18 @@ index b55f409..8c61319 100644
  				minHeight: CodeWindow.MIN_HEIGHT,
  				show: !isFullscreenOrMaximized,
 diff --git a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
-index 188874a..5769904 100644
---- a/src/vs/workbench/common/theme.ts
-+++ b/src/vs/workbench/common/theme.ts
-@@ -7,20 +7,24 @@ import * as nls from 'vs/nls';
+--- a/src/vs/workbench/common/theme.ts	2020-04-21 11:28:02.140938188 +0800
++++ b/src/vs/workbench/common/theme.ts	2020-04-21 11:36:36.133491755 +0800
+@@ -6,20 +6,24 @@
+ import * as nls from 'vs/nls';
  import { registerColor, editorBackground, contrastBorder, transparent, editorWidgetBackground, textLinkForeground, lighten, darken, focusBorder, activeContrastBorder, editorWidgetForeground, editorErrorForeground, editorWarningForeground, editorInfoForeground } from 'vs/platform/theme/common/colorRegistry';
- import { Disposable } from 'vs/base/common/lifecycle';
- import { IThemeService, ITheme } from 'vs/platform/theme/common/themeService';
+ import { IColorTheme } from 'vs/platform/theme/common/themeService';
 -import { Color } from 'vs/base/common/color';
 +import { Color, RGBA } from 'vs/base/common/color';
- 
+
  // < --- Workbench (not customizable) --- >
- 
--export function WORKBENCH_BACKGROUND(theme: ITheme): Color {
+
+-export function WORKBENCH_BACKGROUND(theme: IColorTheme): Color {
 -	switch (theme.type) {
 -		case 'dark':
 -			return Color.fromHex('#252526');
@@ -49,7 +48,7 @@ index 188874a..5769904 100644
 -			return Color.fromHex('#000000');
 -	}
 -}
-+export const WORKBENCH_BACKGROUND = (theme: ITheme) => theme.getColor(
++export const WORKBENCH_BACKGROUND = (theme: IColorTheme) => theme.getColor(
 +	registerColor(
 +		'workbench.background',
 +		{
