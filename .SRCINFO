@@ -7,7 +7,7 @@ pkgbase = gluon-scene-builder11
 	license = BSD
 	makedepends = gendesk
 	depends = java-environment=11
-	conflicts = javafx-scenebuilder
+	conflicts = gluon-scene-builder8
 	source = https://download2.gluonhq.com/scenebuilder/11.0.0/install/linux/scenebuilder-11.0.0-1.x86_64.rpm
 	sha256sums = a1766a84e2b87de6229878f5b94fc3a3e2646776725525776da5db310234d955
 
