@@ -1,6 +1,6 @@
 pkgbase = timer
-	pkgdesc = a simple timer for terminal with audio alarm
-	pkgver = 8.378985f
+	pkgdesc = Simple CLI timer
+	pkgver = 9.a677cff
 	pkgrel = 1
 	url = https://github.com/yoarch/timer
 	arch = any

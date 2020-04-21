@@ -1,9 +1,9 @@
 # Maintainer: Yann Orieult <yo.managements@gmail.com>
 
 pkgname=timer
-pkgver=8.378985f
+pkgver=9.a677cff
 pkgrel=1
-pkgdesc='a simple timer for terminal with audio alarm'
+pkgdesc='Simple CLI timer'
 arch=('any')
 url='https://github.com/yoarch/timer'
 license=('MIT')
