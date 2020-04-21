@@ -1,0 +1,16 @@
+pkgbase = cgproxy
+	pkgdesc = A transparent proxy program with cgroup2, like proxychains
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	groups = 
+	license = 
+	makedepends = cmake
+	options = !strip
+	options = !emptydirs
+	backup = etc/cgproxy.conf
+	source_x86_64 = https://github.com/springzfx/cgproxy/archive/v1.0.tar.gz
+	md5sums_x86_64 = 9697f8eab3b441bd7b066f948c2c2bf8
+
+pkgname = cgproxy
+
