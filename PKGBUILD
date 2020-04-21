@@ -1,17 +1,17 @@
 # Maintainer: Yann Orieult <yo.managements@gmail.com>
 
 pkgname=replace
-pkgver='1.1.2'
+pkgver='1.1.3'
 pkgrel='1'
-pkgdesc='search and replace tool for strings on the all system'
+pkgdesc='Search and replace CLI tool for strings on the all system'
 arch=('any')
 url='https://github.com/yoarch/replace'
 license=('MIT')
 depends=('python>=3')
 makedepends=('python' 'python-setuptools')
 
-source=("https://files.pythonhosted.org/packages/source/r/replacefs/replacefs-1.1.2.tar.gz")
-sha256sums=('2b6f607b8d69a4045992ce7ad75db1196efa28786b3327395106c039a9188bbd')
+source=("https://files.pythonhosted.org/packages/source/r/replacefs/replacefs-1.1.3.tar.gz")
+sha256sums=('a7aebd6c1aeee29953786700af4e23c61e9459ddd0b5dd5f885b0d8191d299cb')
 #source#=("file:///$MHOME/dev/python/replacefs/dist/replacefs-1.1.2.tar.gz")
 #sha256sums#=("SKIP")
 
