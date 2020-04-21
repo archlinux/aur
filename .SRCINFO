@@ -1,0 +1,20 @@
+pkgbase = buffalo-git
+	pkgdesc = A Go web development eco-system, designed to make your project easier.
+	pkgver = v0.16.8.r1.g0ffd608c
+	pkgrel = 1
+	url = https://github.com/gobuffalo/buffalo/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = go>=1.13
+	optdepends = nodejs>=8: frontend
+	optdepends = npm: asset pipeline
+	optdepends = yarn: frontend dependency management
+	optdepends = gcc: for building sqlite3 support
+	optdepends = git: for VCS support
+	conflicts = buffalo-bin
+	source = buffalo-git::git+https://github.com/gobuffalo/buffalo.git
+	md5sums = SKIP
+
+pkgname = buffalo-git
+
