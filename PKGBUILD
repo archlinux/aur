@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=3.71.4
+pkgver=3.72.0
 pkgrel=1
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("https://github.com/tutao/tutanota/archive/tutanota-release-$pkgver.tar.
         '1928.patch'
         "$pkgname"
         "$pkgname.desktop")
-sha256sums=('e4fbf7a8876433dc1ffdd9e24d6dc980e7b2ff2e4da389169aec72588babd41e'
+sha256sums=('2d2fad61b85fec6398a4efaaf5aa23be3049fe632439ebaf01604ecc21662136'
             '614755f15fe792caf617829b19198d6a74b480436fea45568b315773c60a9ae6'
             '4f91e842bd92a3312943854383e4929f9baf6cb684a7027aa55edcce1bf4ca16'
             '1215678e2fc23cfbeb73063f68dc440891e5b2e10734fa7f402e06860c292e31')
