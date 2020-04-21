@@ -1,7 +1,7 @@
 pkgbase = xmppc
 	pkgdesc = Command Line Interface Tool for XMPP
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/Anoxinon_e.V./xmppc
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = xmppc
 	depends = libstrophe
 	depends = gpgme
 	source = https://codeberg.org/Anoxinon_e.V./xmppc/archive/0.0.4.tar.gz
-	md5sums = d0f84bd8e1b8a94b34763ff53e42870b
+	md5sums = 9b4db3812b07cc593811c13c8cfaaf36
 
 pkgname = xmppc
 
