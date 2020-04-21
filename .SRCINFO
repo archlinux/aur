@@ -1,22 +1,23 @@
 pkgbase = calf-ladspa
-	pkgdesc = JACK audio plug-ins for musicians (LADSPA lmms fork)
-	pkgver = 0.90
-	pkgrel = 2
+	pkgdesc = JACK audio plug-ins for musicians (LADSPA version)
+	pkgver = 0.90.1.0
+	pkgrel = 1
 	url = https://github.com/LMMS/veal
 	arch = i686
 	arch = x86_64
 	groups = ladspa-plugins
-	license = LGPL
-	makedepends = ladspa
+	groups = pro-audio
+	license = LGPL2.1
 	makedepends = cmake
+	depends = ladspa
 	conflicts = lmms
-	noextract = ladspa.zip
-	source = https://github.com/LMMS/veal/archive/ladspa.zip
-	source = https://raw.githubusercontent.com/LMMS/lmms/master/plugins/LadspaEffect/calf/CMakeLists.txt
-	source = https://raw.githubusercontent.com/LMMS/lmms/master/plugins/LadspaEffect/calf/config.h.in
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	noextract = f889b76ff8d288df6f2ea4c9e315632b63831039.tar.gz
+	source = https://github.com/LMMS/veal/archive/f889b76ff8d288df6f2ea4c9e315632b63831039.tar.gz
+	source = https://raw.githubusercontent.com/LMMS/lmms/aa0ce7fc545bbf2f63cb4df8853c1de474faba0d/plugins/LadspaEffect/calf/CMakeLists.txt
+	source = https://raw.githubusercontent.com/LMMS/lmms/ae0dd21df30fb42a2194e2752d1c00ea0d2afdb9/plugins/LadspaEffect/calf/config.h.in
+	sha256sums = 38280b04d18a58ef105c6cc1570f544c3c9d22cbf9a7d692a8725268bccb48f3
+	sha256sums = e9f94704e2cfbdca02e729aebcf5da9e65a9ebbead5434b69a29872a9ffdb63c
+	sha256sums = 8cd19eb7f19ecdbcbe3b82f91e703981f0c36d348d6a150f640ab2162d8cbad4
 
 pkgname = calf-ladspa
 
