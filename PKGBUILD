@@ -16,6 +16,6 @@ source=("http://freepats.zenvoid.org/Piano/${_corename}/${_tarname}.tar.bz2")
 md5sums=('cd216d04641c8a7c75147444494cd602')
 
 package() {
-  install -Dm644 "${srcdir}/${_tarname}/${_sf2name}.sf2" "${pkgdir}/usr/share/soundfonts/${_sf2name}.sf2"
+  install -Dm644 "${srcdir}/${_tarname}/${_sf2name}.sf2" -t "${pkgdir}/usr/share/soundfonts"
   install -Dm644 "${srcdir}/${_tarname}/${_sf2name}.txt" "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
