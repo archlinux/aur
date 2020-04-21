@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=11.0.0_r351931.a9b137f9ffb
+pkgver=11.0.0_r352044.2e1cfd02d0f
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -140,7 +140,7 @@ package_llvm-git() {
     sed -i 's|libexec|lib/clang|' "$pkgdir"/usr/bin/scan-build
 
     # The runtime libraries go into llvm-libs-git
-    mv -f "$pkgdir"/usr/lib/lib{LLVM,LTO}*.so* "$srcdir"
+    mv -f "$pkgdir"/usr/lib/lib{LLVM,LTO,Remarks}*.so* "$srcdir"
     mv -f "$pkgdir"/usr/lib/LLVMgold.so "$srcdir"
 
     # OCaml bindings go to a separate package
@@ -183,7 +183,7 @@ package_llvm-libs-git() {
 
     install -d "$pkgdir"/usr/lib
     cp -P \
-        "$srcdir"/lib{LLVM,LTO}*.so* \
+        "$srcdir"/lib{LLVM,LTO,Remarks}*.so* \
         "$srcdir"/LLVMgold.so \
         "$pkgdir"/usr/lib/
 
