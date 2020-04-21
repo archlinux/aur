@@ -64,15 +64,17 @@ build() {
     cd _build
 
     cmake "$srcdir"/llvm-project/llvm  -G Ninja \
+        -D PYTHON_EXECUTABLE=/usr/bin/python \
         -D CMAKE_C_FLAGS="${CFLAGS}" \
         -D CMAKE_CXX_FLAGS="${CXXFLAGS}" \
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX=/usr \
-        -D CMAKE_POLICY_DEFAULT_CMP0075=NEW \
+        -D LLVM_BINUTILS_INCDIR=/usr/include \
         -D FFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
+        -D LLVM_VERSION_SUFFIX="" \
+        -D LLVM_APPEND_VC_REV=ON \
         -D LLVM_HOST_TRIPLE=$CHOST \
         -D LLVM_TARGETS_TO_BUILD="AMDGPU;X86" \
-        -D PYTHON_EXECUTABLE=/usr/bin/python \
         -D LLVM_BUILD_LLVM_DYLIB=ON \
         -D LLVM_LINK_LLVM_DYLIB=ON \
         -D LLVM_INSTALL_UTILS=ON \
@@ -82,9 +84,6 @@ build() {
         -D LLVM_ENABLE_SPHINX=ON \
         -D SPHINX_WARNINGS_AS_ERRORS=OFF \
         -D LLVM_ENABLE_DOXYGEN=OFF \
-        -D LLVM_BINUTILS_INCDIR=/usr/include \
-        -D LLVM_VERSION_SUFFIX="" \
-        -D LLVM_APPEND_VC_REV=ON \
         -D LLVM_ENABLE_BINDINGS=OFF \
         -D LLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang"
         
