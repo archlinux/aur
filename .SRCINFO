@@ -1,7 +1,7 @@
 pkgbase = python-libinput
 	pkgdesc = Object-oriented wrapper for libinput using ctypes
 	pkgver = 0.3.0pre1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OzymandiasTheGreat/python-libinput
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = python-libinput
 	depends = python
 	depends = libinput
 	source = python-libinput-0.3.0pre1.tar.gz::https://github.com/OzymandiasTheGreat/python-libinput/archive/1f477ee9f1d56b284b20e0317ea8967c64ef1218.tar.gz
-	sha256sums = d3b3f8d70cf43ca74bd15abc449eecf91a5d2111360e1911ff193ee5856aaeb4
+	sha256sums = 122b5bff25094e1179ceff6f978c8ba19bc5a0a25b5520ffe1f20e92f99017a5
 
 pkgname = python-libinput
 
