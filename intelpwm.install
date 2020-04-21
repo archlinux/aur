@@ -1,0 +1,8 @@
+post_install() {
+	echo "PWM frequency settings on Intel HD Graphics with modprobe.d"
+	echo "Default PWM frequency is 860Hz. In most cases 1000Hz is the maximum. Be careful and see the documentation for your hardware! Tested on Thinkapd X230"
+    echo "Edit /etc/intelpwm.conf to suit your needs"
+    echo "Visit http://devbraindom.blogspot.com/2013/03/eliminate-led-screen-flicker-with-intel.html for more details"
+}
+
+

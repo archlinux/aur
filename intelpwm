@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+CONFIG=/etc/intelpwm.conf
+if [ ! -f "$CONFIG" ]; then
+    echo "$CONFIG not found"
+    exit 1
+fi
+
+source $CONFIG
+
+RAW_DATA="$(intel_reg read ${REGISTER})"
+CYCLE="${RAW_DATA:56:4}"
+HEX=$(printf "0x%08x" $((1000000*0x7d/128/FREQ)))
+PERIOD="${HEX:6:9}"
+
+intel_reg write "${REGISTER}" "0x${PERIOD}${CYCLE}"
+

@@ -1,0 +1,19 @@
+pkgbase = intelpwm
+	pkgdesc = PWM frequency setting on Intel HD Graphics with modprobe.d
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://devbraindom.blogspot.com/2013/03/eliminate-led-screen-flicker-with-intel.html
+	install = intelpwm.install
+	arch = x86_64
+	license = GPL
+	depends = intel-gpu-tools
+	backup = etc/intelpwm.conf
+	source = i915-pwm.conf
+	source = intelpwm
+	source = intelpwm.conf
+	sha256sums = f25b883744dbe177d0ec7efaca17ffb288f4a7994e819883f299c90c27295f85
+	sha256sums = 51f14a522767ff4c803ac1149980715714966356e36ed1e92cf61110a35bf784
+	sha256sums = 7fefe55b66278e97eaca2fdf0aad125720cd00c95069dc38ef02ae1ee4e846b0
+
+pkgname = intelpwm
+
