@@ -1,5 +1,5 @@
 pkgname=stm32pio
-pkgver=1.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Automate managing STM32CubeMX + PlatformIO projects" 
 arch=('x86_64')
