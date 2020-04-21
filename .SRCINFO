@@ -1,7 +1,7 @@
 pkgbase = nsz-git
 	pkgdesc = Switch Homebrew compatible NSP/XCI compressor/decompressor
 	pkgver = 3.1.1.r25.g571147e
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/nicoboss/nsz
 	arch = any
 	license = MIT
@@ -16,9 +16,7 @@ pkgbase = nsz-git
 	provides = nsz=3.1.1.r25.g571147e
 	conflicts = nsz
 	source = nsz-git::git+https://github.com/nicoboss/nsz.git
-	source = 0001-Stopping-the-bar-manager-is-needed-to-properly-reset.patch
 	sha256sums = SKIP
-	sha256sums = 55171dd660017e425ddcd73cb76ce684d3ce41cb997d8fd6e50263a91a2c4997
 
 pkgname = nsz-git
 
