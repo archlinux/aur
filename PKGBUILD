@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=11.0.0_r351289.994543abc9b
+pkgver=11.0.0_r351986.0535fab2375
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -77,6 +77,7 @@ build() {
         -D LLVM_TARGETS_TO_BUILD="AMDGPU;X86" \
         -D LLVM_BUILD_LLVM_DYLIB=ON \
         -D LLVM_LINK_LLVM_DYLIB=ON \
+        -D CLANG_LINK_CLANG_DYLIB=ON \
         -D LLVM_INSTALL_UTILS=ON \
         -D LLVM_ENABLE_RTTI=ON \
         -D LLVM_ENABLE_FFI=ON \
