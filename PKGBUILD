@@ -1,6 +1,6 @@
 _pkgname='river'
 pkgname="${_pkgname}-git"
-pkgver=r145.adc4e12
+pkgver=r147.109a744
 pkgrel=1
 pkgdesc='A dyanmic wayland compositor.'
 arch=('any')
@@ -20,17 +20,17 @@ pkgver() {
 
 build() {
 	cd "${_pkgname}-${pkgver}"
-	zig build
+	zig build -Drelease-safe
 }
 
 check() {
 	cd "${_pkgname}-${pkgver}"
-	zig build test
+	zig build test -Drelease-safe
 }
 
 package() {
 	cd "${_pkgname}-${pkgver}"
-	zig build install --prefix .
+	zig build install -Drelease-safe --prefix .
 	install -Dm 755 bin/river -t "${pkgdir}/usr/bin/"
 	install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
 }
