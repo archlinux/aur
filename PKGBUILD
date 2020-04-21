@@ -1,7 +1,7 @@
 # Maintainer:  Maxim Novikov <the.mlex@gmail.com>
 
 pkgname=php-pdo-oci
-pkgver=7.4.0
+pkgver=7.4.5
 pkgrel=1
 _extname=pdo_oci
 pkgdesc="PDO driver for OCI8"
@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/php/php-src/tree/master/ext/pdo_oci"
 license=('PHP')
 depends=(
-    'php>=7.4.0'
+    'php>=7.4.5'
     'php-oci8>=2.1.0'   
 )
 conflicts=('php-pdo-oci-git')
