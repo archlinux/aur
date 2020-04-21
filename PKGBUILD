@@ -1,22 +1,22 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=php-http
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.2.3
+pkgrel=1
 pkgdesc="Aims to provide a convenient and powerful set of functionality for one of PHPs major applications"
 arch=('i686' 'x86_64')
 license=('BSD')
 url=""https://mdref.m6w6.name/http
-depends=('php' 'php-raphf' 'php-propro')
+depends=('php' 'php-raphf' 'php-propro' 'brotli' 'libevent')
 backup=('etc/php/conf.d/http.ini')
 source=("https://pecl.php.net/get/pecl_http-${pkgver}.tgz")
-md5sums=('42485c5e9c65224c92e0da49721c053b')
+sha512sums=('e955e3246db9a9172081dd9a077154139c585bfce546e91839052bbab4d0db9d0695122574a66891ceba5c0b7e8a8f0768274e1516521ccb95cd19504dc13666')
 
 build() {
   cd "${srcdir}/pecl_http-${pkgver}"
 
   phpize
-  ./configure --with-http-libidn-dir=no
+  ./configure --with-http-libidn2-dir=no
   make
 }
 
