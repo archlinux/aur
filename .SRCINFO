@@ -1,6 +1,6 @@
 pkgbase = php-net-ipv6
 	pkgdesc = Check and validate IPv6 addresses
-	pkgver = 1.3.0b3
+	pkgver = 1.3.0b4
 	pkgrel = 1
 	url = https://pear.php.net/package/Net_IPv6/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = php-net-ipv6
 	depends = php>=5.4.0
 	options = !strip
 	options = !emptydirs
-	source = http://download.pear.php.net/package/Net_IPv6-1.3.0b3.tgz
-	sha256sums = 2b804dc88cd5928da86ef7a8b1bec072b991a492233445fb151f39186d80110b
+	source = http://download.pear.php.net/package/Net_IPv6-1.3.0b4.tgz
+	sha256sums = ec676dc81c54e02f11b7162fffdf6f5211d25d5d7a00e21a7ded6b0042c9f61b
 
 pkgname = php-net-ipv6
 
