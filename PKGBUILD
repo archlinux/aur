@@ -1,7 +1,7 @@
 # Maintainer: Raymo111 <hi@raymond.li>
 pkgname=ipetitions-bot
 pkgver=1.3
-pkgrel=4
+pkgrel=3
 pkgdesc="A bot to get signatures for iPetitions"
 arch=('any')
 url="https://github.com/Raymo111/iPetitions-Bot"
@@ -18,5 +18,5 @@ package() {
 	cp -f formfind.pl "$pkgdir/usr/lib/$pkgname"
 	mkdir -p "$pkgdir/usr/bin"
 	ln -sf "/usr/lib/$pkgname/bot.sh" "$pkgdir/usr/bin/$pkgname"
-	chmod +x "/usr/bin/$pkgname"
+	#chmod +x "/usr/bin/$pkgname"
 }
