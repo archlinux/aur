@@ -3,11 +3,12 @@
 
 pkgname=monitoring-plugins
 pkgver=2.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Plugins for Icinga, Naemon, Nagios, Shinken, Sensu and other monitoring applications"
 arch=('x86_64')
 url="https://www.monitoring-plugins.org"
 license=('GPL3')
+depends=('perl')
 makedepends=('net-snmp' 'postgresql-libs' 'libdbi' 'mariadb-libs'
   'procps-ng' 'iputils' 'fping' 'dnsutils' 'rpcbind' 'smbclient' 'openssh'
   'inetutils' 'postfix' 'perl-net-snmp')
