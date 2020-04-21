@@ -13,5 +13,5 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gobuffalo/buffalo/relea
 sha256sums=('77ade8c844d19d40bdece33366902df1b8c9cdde74632d7062621cc81d1a6094')
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/buffalo"
+  install -Dm755 "${srcdir}/buffalo" "${pkgdir}/usr/bin/buffalo"
 }
