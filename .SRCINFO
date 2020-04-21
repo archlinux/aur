@@ -1,6 +1,6 @@
 pkgbase = libpostal-git
 	pkgdesc = A C library for parsing/normalizing street addresses around the world. Powered by statistical NLP and open geo data. (git version)
-	pkgver = v0.3.3.r0.g577f26e4
+	pkgver = v1.1.alpha.r31.g790e24bc
 	pkgrel = 1
 	url = https://github.com/openvenues/libpostal
 	install = libpostal-git.install
@@ -9,6 +9,8 @@ pkgbase = libpostal-git
 	makedepends = git
 	depends = curl
 	depends = snappy
+	depends = automake
+	depends = autoconf
 	provides = libpostal
 	conflicts = libpostal
 	source = git://github.com/openvenues/libpostal.git
