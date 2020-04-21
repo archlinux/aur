@@ -3,8 +3,8 @@
 # Based on PMS PKGBUILD
 
 pkgname=ums
-pkgver=9.4.0
-pkgrel=2
+pkgver=9.4.2
+pkgrel=1
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server."
 arch=('x86_64')
 url="http://www.universalmediaserver.com/"
@@ -25,7 +25,7 @@ source=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/d
         'ums.desktop'
         'ums.service'
         'ums.timer')
-sha256sums=('467c22cdfcb50626be87d24c6e62960dd8be461b6b7b76d18566727827527dea'
+sha256sums=('834bb9bd773929a0e9ddbf98c84ae9887e77113ec10dadc8f7ae398374048c1f'
             '0cdadbabef215b6539e56755147a8f626d9f1fadfb85e2e5b7f7f1b66f1cdef9'
             '1f6efefa58dde9148396bd9236a6985db0fa27f1c767067b52bfae1832f32284'
             '7fd36db71f39fde3d515c697101190f979b308d910b3c4210b90422669683ab0')
