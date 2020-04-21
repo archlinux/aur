@@ -1,0 +1,15 @@
+pkgbase = ietf-idnits
+	pkgdesc = Check internet-drafts for submission nits
+	pkgver = 2.16.04
+	pkgrel = 1
+	url = https://tools.ietf.org/tools/idnits/
+	arch = any
+	license = GPL2
+	depends = aspell
+	depends = bash
+	depends = languagetool
+	source = https://tools.ietf.org/tools/idnits/idnits-2.16.04.tgz
+	sha256sums = 1eef34b131d9c0b45090192f972db0b5dae15047271a7962959c8019dd8cc06b
+
+pkgname = ietf-idnits
+
