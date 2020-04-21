@@ -1,0 +1,81 @@
+diff -ruw lkrg-0.7.orig/src/modules/exploit_detection/p_exploit_detection.c lkrg-0.7/src/modules/exploit_detection/p_exploit_detection.c
+--- lkrg-0.7.orig/src/modules/exploit_detection/p_exploit_detection.c	2019-07-19 13:51:17.000000000 +0200
++++ lkrg-0.7/src/modules/exploit_detection/p_exploit_detection.c	2020-04-21 19:04:29.138591608 +0200
+@@ -772,6 +772,7 @@
+           "Entering function <p_validate_selinux>\n");
+ 
+    mutex_lock(&p_ed_guard_globals.p_selinux_lock);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 6, 0)
+    if (p_ed_guard_globals.p_selinux.p_selinux_enabled != *p_selinux_enabled) {
+       p_print_log(P_LKRG_CRIT,
+              "<Exploit Detection> Detected data corruption against SELINUX! 'selinux_enabled' has "
+@@ -779,6 +780,7 @@
+                                   *p_selinux_enabled,p_ed_guard_globals.p_selinux.p_selinux_enabled);
+       *p_selinux_enabled = p_ed_guard_globals.p_selinux.p_selinux_enabled;
+    }
++#endif
+ 
+ #ifdef CONFIG_SECURITY_SELINUX_DEVELOP
+  #if LINUX_VERSION_CODE >= KERNEL_VERSION(4,17,0)
+@@ -1264,7 +1266,9 @@
+    }
+ 
+ #ifdef CONFIG_SECURITY_SELINUX
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 6, 0)
+    p_selinux_enabled    = (int *)p_kallsyms_lookup_name("selinux_enabled");
++#endif
+ #ifdef CONFIG_SECURITY_SELINUX_DEVELOP
+  #if LINUX_VERSION_CODE >= KERNEL_VERSION(4,17,0)
+    p_selinux_state      = (struct p_selinux_state *)p_kallsyms_lookup_name("selinux_state");
+@@ -1287,6 +1291,7 @@
+  #endif
+ #endif
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 6, 0)
+    if (!p_selinux_enabled) {
+       p_print_log(P_LKRG_ERR,
+              "[ED] ERROR: Can't find 'selinux_enabled' variable :( Exiting...\n");
+@@ -1294,6 +1299,7 @@
+       goto p_exploit_detection_init_out;
+    }
+ #endif
++#endif
+ 
+    if (p_init_rb_ed_pids()) {
+       p_print_log(P_LKRG_ERR,
+@@ -1314,7 +1320,9 @@
+    p_ed_guard_globals.p_selinux.p_selinux_enforcing = *p_selinux_enforcing;
+  #endif
+ #endif
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 6, 0)
+    p_ed_guard_globals.p_selinux.p_selinux_enabled = *p_selinux_enabled;
++#endif
+    mutex_init(&p_ed_guard_globals.p_selinux_lock);
+ #endif
+ 
+diff -ruw lkrg-0.7.orig/src/modules/exploit_detection/p_exploit_detection.h lkrg-0.7/src/modules/exploit_detection/p_exploit_detection.h
+--- lkrg-0.7.orig/src/modules/exploit_detection/p_exploit_detection.h	2019-07-19 13:51:17.000000000 +0200
++++ lkrg-0.7/src/modules/exploit_detection/p_exploit_detection.h	2020-04-21 19:04:59.588485501 +0200
+@@ -222,7 +222,9 @@
+    int p_selinux_enforcing;
+  #endif
+ #endif
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 6, 0)
+    int p_selinux_enabled;
++#endif
+ 
+ };
+ #endif
+diff -ruw lkrg-0.7.orig/src/modules/exploit_detection/syscalls/p_sel_write_enforce/p_sel_write_enforce.c lkrg-0.7/src/modules/exploit_detection/syscalls/p_sel_write_enforce/p_sel_write_enforce.c
+--- lkrg-0.7.orig/src/modules/exploit_detection/syscalls/p_sel_write_enforce/p_sel_write_enforce.c	2019-05-09 17:08:25.000000000 +0200
++++ lkrg-0.7/src/modules/exploit_detection/syscalls/p_sel_write_enforce/p_sel_write_enforce.c	2020-04-21 19:05:39.418333669 +0200
+@@ -91,7 +91,9 @@
+       p_ed_guard_globals.p_selinux.p_selinux_enforcing = *p_selinux_enforcing;
+  #endif
+ #endif
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 6, 0)
+       p_ed_guard_globals.p_selinux.p_selinux_enabled = *p_selinux_enabled;
++#endif
+    }
+ 
+    // unlock shadow SELinux updates
