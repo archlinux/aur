@@ -3,7 +3,7 @@
 # Contributor: Stefan Cocora <stefan dot cocora at gmail dot com>
 
 pkgname=skaffold
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A command line tool that facilitates continuous development for Kubernetes applications"
 arch=("x86_64")
@@ -20,10 +20,10 @@ source=(
   "build_info.patch"
 )
 sha256sums=(
-  "918d9550a54d9c015800c1e107e01678bc19ba25105ac39942551337bc1aa850"
+  "aeea6fb54ef51f5e47e3c4dfca7ffb094a8c9dcaa29f0b6b779c88a824f4eb54"
   "9363c1f0dda736d3c055368844f36c6b17850a8f576e834737032ea54aabe780"
 )
-_commit="145f59579470eb1f0a7f40d8e0924f8716c6f05b"
+_commit="bd280192092e28067f0f52584c8bcb4f4dc480e4"
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
