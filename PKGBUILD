@@ -1,7 +1,7 @@
 # Maintainer: Graeme Gott <graeme@gottcode.org>
 
 pkgname=hexalate
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc='A color matching game'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt5-base')
 makedepends=('qt5-tools')
 source=("https://gottcode.org/$pkgname/$pkgname-$pkgver-src.tar.bz2")
-sha256sums=('422f5fed8adc7e2bc43e22a5c0573385143f8b15e8b3495b7b766e0409fa9782')
+sha256sums=('5d3198523960d4df394d2092cd7e7b9003878a70a2934dbada60947651b1c88d')
 
 build() {
   cd "$pkgname-$pkgver"
