@@ -1,8 +1,8 @@
 # Maintainer: Polichronucci <nick AT discloud DOT eu>
 
 pkgname=prosody-mod-auth-dovecot
-pkgver=20200421
-_pkgver=9ec23a457f9a
+pkgver=20180104
+_pkgver=afeb06e4cdea
 pkgrel=1
 pkgdesc='Prosody authentication plugin which uses Dovecot as the backend'
 arch=('any')
