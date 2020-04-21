@@ -58,10 +58,10 @@ _localmodcfg=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.4
-_minor=28
-_rtpatchver=19
-_clr=${_major}.28-61
+_major=5.6
+_minor=4
+_rtpatchver=3
+_clr=${_major}.4-62
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
 pkgver=${_major}.${_minor}.${_rtpatchver}
@@ -72,11 +72,11 @@ url="https://github.com/clearlinux-pkgs/linux-preempt-rt"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20190822'
+_gcc_more_v='20191217'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.sign"
-  "https://cdn.kernel.org/pub/linux/kernel/projects/rt/5.4/patch-${_major}.${_minor}-rt${_rtpatchver}.patch.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_major}.${_minor}-rt${_rtpatchver}.patch.xz"
   "clearlinux-preempt-rt::git+https://github.com/clearlinux-pkgs/linux-preempt-rt.git#tag=${_clr}"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
 )
@@ -158,8 +158,8 @@ prepare() {
     ### Patch source to unlock additional gcc CPU optimizations
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
-        echo "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
-        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
+        echo "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch ..."
+        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
         fi
 
     ### Get kernel version
@@ -208,7 +208,7 @@ _package() {
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
-    provides=('WIREGUARD-MODULE')
+    provides=(VIRTUALBOX-GUEST-MODULES)
     install=linux.install
 
     cd $_srcname
@@ -314,11 +314,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('c863cc1346348f9a40083b4bc0d34375117b1c401af920994d42e855653ef7a4'
+sha256sums=('5df1741e550cb6fa7471530f42da98bac5093e693e2c4f3aef4393d8135b9d91'
             'SKIP'
-            'a804ec4fb5294c8cd83573ee2f6387c6b641443d055ca336367bfd47c39a09fd'
+            'a9bb755ad66269d209c7b1f66034be9eae0901ea8440bab7b5c2ad1a2ec7eed5'
             'SKIP'
-            '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
+            '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
