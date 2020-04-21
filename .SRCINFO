@@ -1,0 +1,16 @@
+pkgbase = desed
+	pkgdesc = Debugger for sed, written in rust. Step through code and observe sed inner state.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/soptikha2/desed
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	conflicts = desed
+	source = desed::git+https://github.com/soptikha2/desed.git
+	sha256sums = SKIP
+
+pkgname = desed
+
