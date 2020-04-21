@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OONI Probe
+Exec="/opt/OONI Probe/ooniprobe-desktop" %U
+Terminal=false
+Type=Application
+Icon=ooniprobe-desktop
+StartupWMClass=OONI Probe
+Comment=OONI Probe Desktop app
+Categories=Network;

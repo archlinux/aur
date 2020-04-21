@@ -1,0 +1,24 @@
+pkgbase = ooniprobe-desktop
+	pkgdesc = The next generation OONI Probe desktop app
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://ooni.org
+	arch = x86_64
+	license = MIT
+	makedepends = yarn
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = libappindicator-gtk3
+	depends = libsecret
+	conflicts = ooniprobe
+	replaces = ooniprobe
+	source = ooniprobe-desktop-3.0.0.tar.gz::https://github.com/ooni/probe-desktop/archive/v3.0.0.tar.gz
+	source = ooniprobe-desktop.desktop
+	sha256sums = abc1da606070b3efd3a3376bf59c435bf570ad6eb6656e95d904d4fa69f9c4b5
+	sha256sums = baaf4f3cca079dddc0b4e048c8778c6cc84786bb88fd9d218424b7b9f04f1135
+
+pkgname = ooniprobe-desktop
+
