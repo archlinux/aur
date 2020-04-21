@@ -1,7 +1,7 @@
 # Maintainer: Raymo111 <hi@raymond.li>
 pkgname=ipetitions-bot
 pkgver=1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A bot to get signatures for iPetitions"
 arch=('any')
 url="https://github.com/Raymo111/iPetitions-Bot"
