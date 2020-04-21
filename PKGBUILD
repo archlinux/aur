@@ -6,7 +6,7 @@
 
 _name=apache
 pkgname=apache22
-pkgver=2.2.31
+pkgver=2.2.34
 pkgrel=1
 pkgdesc='A high performance Unix-based HTTP server'
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ provides=("$_name=$pkgver")
 conflicts=("$_name")
 install=apache.install
 _itkurl=http://mpm-itk.sesse.net/apache2.2-mpm-itk-2.2.17-01
-source=(http://www.apache.org/dist/httpd/httpd-${pkgver}.tar.bz2
+source=(https://archive.apache.org/dist/httpd/httpd-${pkgver}.tar.bz2
         ${_itkurl}/02-rename-prefork-to-itk.patch
         ${_itkurl}/03-add-mpm-to-build-system.patch
         ${_itkurl}/04-correct-output-makefile-location.patch
@@ -41,23 +41,23 @@ source=(http://www.apache.org/dist/httpd/httpd-${pkgver}.tar.bz2
         httpd.logrotate
         httpd.service
         arch.layout)
-md5sums=('6c10e15835ab214464228a9beb7afba8'
-         'f1d9d41360908ceb2374da55ae99197a'
-         'cdfa04985a0efa850976aef01c2a0c40'
-         '0930d2d0612eb0a53a0d00aea7e8687f'
-         '3a0c29bb91442c33ea73ebbe072af922'
-         '0ef4729a6f1ffc848ad0e9b440a66f66'
-         '940944caa948340b11ddae56adaef89b'
-         'ce09a987523884de8838f73dc8ec0d19'
-         'e75b7dd8d8afcd299ba4ab2ab81c11e4'
-         'ce1ccc21f3ad8625169c8f62913450ac'
-         '1e5b222edcfbf99a3edc56fcb2074fbe'
-         '4ac64df6e019edbe137017cba1ff2f51'
-         '08b3c875f6260644f2f52b4056d656b0'
-         '82068753dab92fe86312b1010a2904d7'
-         '13dbaaf949c5bc36cfcf5718b95cb020'
-         'a823bb355c136fd0e2b3fb820e2d903c'
-         '6b7122245a67597230a3b3f317eaf34e')
+sha512sums=('e6dac5865a48533c025fe17523ee74d68c3a23f9512c9441b78a140e33cfb6835573eb049b0ad424eb5c5ca78a1915778c54e8a409da95fbdd3890cb99e08240'
+            '8e6e7759a7dc711e2936c05b6c1f89b8b2efe499ee9b8b503e9c06fd319de51c3bb9910a416b1747b4447b47162e7b3ab45b8858a3bab67a1238b034696c72e3'
+            'd3749ff6e06030c08779d97e715be06a191bbfdeb5907957f396c2df87b46ddc242f76a61dd7d1ae625acc1a9a96ff7cb626497cba36f434d3369a03362cd262'
+            '2b725c8d312bb6d26619fced90945557d0d0af28811795860984f08f94a49e01f8656e04412bd6e987e182fc1d84d5fb10efc693a3838b9a04244c1b0dc4105e'
+            '98dfec1054074cfa90daf36cf41be115f4ea63f953e26c5df81476344cda62e009614549328841a775dee4aa3b8cc169333b65940395bb70ef2c0702a97bf754'
+            'eb88374eca43620eea69968e8c677327bdb71963ddb892f23755040619c7b663ebdc2b8fc43fb43d91cb4bfef8c87056cefa009f32934202e395e0f09de04661'
+            'd3dd6a4c5538ae9ae5a145d781799423597bbac86d74c898eb57dc2accbd66ab92843c046df855c89a8cc4a9a6be7a2859d59c4b347e43dc76aedb3f86e251fe'
+            '5ca0c5a613a21f2cfc055d2b351ca66923b2d66aabd257e646deb2d150db2ee60d4a4374028708ef3be814d0ebfb5f137dac6d29c8ecea91e34d3f366792e894'
+            '14bbceb2ce9376fa9067f853024cbeb10470613683c907b6392b6ce3d958dcfe2f46902952f0984571560e6477e28fa7923370f492efe27bc87df915acb2bffa'
+            '569bea3dffbedbc37e9564909497c84df3584fcbf100194f7761c9259524cdd9f125db044030cc5f9dfddb95e49b4631b86384b6320c8a0bbe2c314e42c962fe'
+            'ebffac6a8a31a1fc18ad7b2d1a69dcd55da6dbe45ba6fe9ef56163b804950f8a6d06583d98755781c5c639c5b8fda9f2b8ffa4dda823270178caf7b156169083'
+            '64d13dbcf8f7be02cd5d17dd6174cb2be594d04c45cebdaba974c74ff5b5abfa869fc7f9bfcf43fa9cea819eae7605f67501050afea60ebe91463c0152f438ae'
+            '89a60c44564ba265f8f1afee06b65bcd11c0ce3ece33fb9e8f91d919605a852181c8bf31323986be4d39038f69a160f1176e794141ebb706cc3451d2fbc9101d'
+            '57fece1a3e4e3cbd6135203172ecf32570405f7205dc84adc076a50cdab20db868270d8e658314f5273616f81b356d7b88c31e0ee8a8ce6a3e77ab15ef6a8f36'
+            'cd64a6652ad015eb26d7a0e8d8da8fe4ca9228b490a0cdb357e0a015a2153e1d699a9669b96fe7b3951b70e326a940c7fd01e1d3dbafc0dff741abe4ade786f3'
+            '31cc2caefb37021deaf4ed18619160e67f239c1075cc2868f351660b1c04a124d1fe2d98e67d1b4b23cf4e46fadde2b3466bcd14d83765a0779caf4d173cfd35'
+            'eec751f171b91b589d61a579ec85c2c2fae84a158a9d14ebabe37a587f1aa884b97c701d611d55960c11e1aea82d18f4e56dcb60c48cdd1daa82c5429d59de38')
 
 build() {
 	cd "${srcdir}/httpd-${pkgver}"
