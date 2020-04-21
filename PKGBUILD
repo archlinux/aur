@@ -4,7 +4,7 @@
 
 pkgname=caja-pdf-tools
 pkgver=1.2.9
-pkgrel=3
+pkgrel=4
 _ubuntur=0extras19.06.7
 pkgdesc='A set of tools to work with PDF documents from Caja'
 arch=('any')
@@ -27,12 +27,16 @@ package() {
 	install -d ${pkgdir}/usr/share/caja-python/extensions/pdf-tools/{icons,PyPDF2}
 	install -d ${pkgdir}/usr/share/locale
 	for n in ./po/*.mo; do
-		install -p -D -m644 $n ${pkgdir}/usr/share/locale/`basename $n .mo`/LC_MESSAGES/${pkgname}.mo
+		install -p -Dm644 $n ${pkgdir}/usr/share/locale/`basename $n .mo`/LC_MESSAGES/${pkgname}.mo
 	done
 	cp ./src/*.py ${pkgdir}/usr/share/caja-python/extensions/
 	cp ./src/pdf-tools/*.py ${pkgdir}/usr/share/caja-python/extensions/pdf-tools/
 	cp ./data/icons/updf.svg ${pkgdir}/usr/share/caja-python/extensions/pdf-tools/icons/
 	cp ./debian/changelog ${pkgdir}/usr/share/caja-python/extensions/pdf-tools/
-	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 data/icons/updf.svg -t \
+		"$pkgdir/usr/share/caja-python/extensions/pdf-tools/icons"
+	install -Dm644 data/icons/pdf-tools-password-{hide,show}.svg -t \
+		"$pkgdir/usr/share/icons/hicolor/scalable/status"
 }
 # vim: set ts=4 sw=4 et syn=sh ft=sh:
