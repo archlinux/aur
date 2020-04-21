@@ -1,8 +1,8 @@
 # Maintainer: somini <dev@somini.xyz>
 pkgbase=inpulse-to-talk
 pkgname=inpulse-to-talk
-pkgver=v1.0.0
-pkgrel=1
+pkgver=v1.0
+pkgrel=2
 pkgdesc="Push-to-Talk with libinput + Pulseaudio"
 url="https://gitlab.com/somini/inpulse-to-talk"
 # Technically, 'pulseaudio-ctl' is optdepends
@@ -14,7 +14,7 @@ arch=('any')
 source=(
     "$pkgname-$pkgver.tar.gz::https://gitlab.com/somini/inpulse-to-talk/-/archive/$pkgver/inpulse-to-talk-$pkgver.tar.gz"
     )
-sha256sums=('f263da23a79cc4d4c6612973f93fbec83054ec8c6de443929ce46bb32b4d5f09')
+sha256sums=('80f7585843400d2b0c5e81a35d3afb2c0a160e780db440e33fa446cec0f3f1bb')
 
 package() {
     cd "${srcdir}/$pkgname-$pkgver"
@@ -27,6 +27,7 @@ package() {
     done
 
     # Polkit
+    install -dD -m750 /usr/share/polkit-1/rules.d
     install -D -m644 polkit/xyz.somini.inpulse-to-talk.run.policy "$pkgdir/usr/share/polkit-1/actions/xyz.somini.inpulse-to-talk.run.policy"
     install -D -m644 polkit/inpulse-to-talk.rules "$pkgdir/usr/share/polkit-1/rules.d/inpulse-to-talk.rules"
 }
