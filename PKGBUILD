@@ -3,7 +3,7 @@
 _pkgbase=amd-sfh-hid
 pkgname="${_pkgbase}-dkms"
 pkgver=2.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Experimental HID driver modules for the AMD Sensor Fusion Hub (DKMS)"
 arch=('i686' 'x86_64')
 url="https://github.com/conqp/linux.git"
@@ -13,7 +13,7 @@ makedepends=('git')
 source=("linux-sfh::git+${url}#tag=${_pkgbase}-${pkgver}"
         'dkms.conf')
 sha256sums=('SKIP'
-            '18630528fbfc741113082bd6cf11da6d7ce430314b4cd3d56e0e7a3b26866505')
+            '989aae3b663ad67652a90ff4cfdde85daa9035a099a5f2e72794ae5715fb6fcd')
 
 package() {
 	local DEST="${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
@@ -28,5 +28,7 @@ package() {
 	install -m 644 dkms.conf "${DEST}"
 
 	# Set name and version
-	sed -e "s/@PKGVER@/${pkgver}/" -i "${DEST}/dkms.conf"
+	sed -e "s/@PKGNAME@/${_pkgbase}/" \
+	    -e "s/@PKGVER@/${pkgver}/" \
+	    -i "${DEST}/dkms.conf"
 }
