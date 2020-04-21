@@ -1,5 +1,5 @@
 pkgname=dotnet-sdk-lts-bin
-pkgver="2.1.801"
+pkgver="3.1.201"
 pkgrel=1
 pkgdesc="Provides the .NET core software development kit (sdk)."
 arch=(x86_64)
@@ -9,8 +9,8 @@ depends=('dotnet-runtime' 'dotnet-host')
 makedepends=()
 options=('staticlibs')
 
-source=("https://download.visualstudio.microsoft.com/download/pr/b95d51d0-6be0-49eb-aae7-4092c77634d3/4dd3723dcee0d50ad5e5ead5f4f4127e/dotnet-sdk-${pkgver}-linux-x64.tar.gz")
-sha256sums=('bec7886110ead64ec231583fc30eebd405f4f8676de1762f501b69cc865258c7')
+source=("https://download.visualstudio.microsoft.com/download/pr/f65a8eb0-4537-4e69-8ff3-1a80a80d9341/cc0ca9ff8b9634f3d9780ec5915c1c66/dotnet-sdk-${pkgver}-linux-x64.tar.gz")
+sha256sums=('222f5363d2ab9f2aa852846bc0745c449677d1cccf8c8407cd0a44d3299cc7be')
 
 
 package() {
