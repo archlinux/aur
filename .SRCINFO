@@ -1,0 +1,19 @@
+pkgbase = libpam-x2go
+	pkgdesc = Arctica Greeter: Remote logon support for X2Go (PAM module)
+	pkgver = 0.0.2.0
+	pkgrel = 1
+	url = https://github.com/ArcticaProject/libpam-x2go
+	arch = x86_64
+	license = GPL3
+	makedepends = libssh
+	makedepends = x2goserver
+	depends = pam
+	depends = libssh
+	options = !libtool
+	options = !staticlibs
+	options = !emptydirs
+	source = https://github.com/ArcticaProject/libpam-x2go/archive/0.0.2.0.tar.gz
+	md5sums = 48d7752172deb9c45089584de9084c47
+
+pkgname = libpam-x2go
+
