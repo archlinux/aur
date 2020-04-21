@@ -9,12 +9,17 @@ pre_install() {
 }
 
 post_install() {
+    DATABASE_DIR=/var/lib/gogios
     LOG_DIR=/var/log/gogios
     SCRIPT_DIR=/usr/lib/gogios/scripts
 
     test -d $LOG_DIR || mkdir -p $LOG_DIR
     chown -R -L gogios:gogios $LOG_DIR
     chmod 755 $LOG_DIR
+
+    test -d $DATABASE_DIR || mkdir -p $DATABASE_DIR
+    chown -R -L gogios:gogios $DATABASE_DIR
+    chmod 755 $DATABASE_DIR
 
     cp -f $SCRIPT_DIR/gogios.service /usr/lib/systemd/system/gogios.service
     systemctl enable gogios || true
@@ -30,9 +35,6 @@ post_install() {
         echo "Making default check file"
         cp /etc/gogios/example.json /etc/gogios/checks.json
     fi
-
-    # Gogios will fail to start if these files aren't owned
-    chown gogios:gogios -R /opt/gogios
 }
 
 post_upgrade() {

@@ -1,20 +1,24 @@
 pkgbase = gogios-bin
 	pkgdesc = Checks to see if required services are still running on important machines.
-	pkgver = 2.2.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://angrysysadmins.tech
 	install = gogios-bin.install
 	arch = x86_64
 	license = MIT
+	optdepends = nmap
+	optdepends = sqlite
 	optdepends = nginx
 	optdepends = gogios-plugins
 	provides = gogios
 	conflicts = gogios
-	noextract = gogios-2.2.1-1-x86_64.pkg.tar.xz
+	noextract = gogios-3.0.0-1-x86_64.pkg.tar.xz
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/BKasin/gogios/releases/download/2.2.1/gogios-2.2.1-1-x86_64.pkg.tar.xz
-	sha256sums = 521125ed75fb3b27b41298a7871bbe512d70e07ecc0fb3b813e62c1b85bf2293
+	backup = etc/gogios/gogios.toml
+	backup = etc/gogios/checks.json
+	source = https://github.com/BKasin/gogios/releases/download/3.0.0/gogios-3.0.0-1-x86_64.pkg.tar.xz
+	sha256sums = b7a0f1289ab2f8e5ce47862e68e76ea9978b042894afd82c866d8643aca02314
 
 pkgname = gogios-bin
 
