@@ -1,7 +1,7 @@
 # Maintainer: Sigvald Marholm <marholm@marebakken.com>
 
 pkgname=petsc4py
-pkgver=3.12.0
+pkgver=3.13.0
 pkgrel=1
 _config=linux-c-opt
 pkgdesc="Python bindings for PETSc"
@@ -10,7 +10,7 @@ url="https://bitbucket.org/petsc/petsc4py/src/master"
 license=(custom)
 depends=(petsc openmpi python-numpy)
 source=(https://bitbucket.org/petsc/petsc4py/downloads/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('1a02fa0336c27583aabf399124ac0610ef20452cf6b837a1082f7788f17fadad')
+sha256sums=('ace21f71102e752fefac6c81b65207edba89a6974b3c58c71599c6c358640f39')
 
 _petsc_dir=/opt/petsc/${_config}
 _petsc_arch="arch-linux-c-opt"
