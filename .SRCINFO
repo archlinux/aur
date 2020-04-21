@@ -1,6 +1,6 @@
 pkgbase = linux-amd
-	pkgver = 5.6.v.5
-	pkgrel = 2
+	pkgver = 5.6.v.6
+	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -16,12 +16,10 @@ pkgbase = linux-amd
 	source = config.x86_64
 	source = linux-amd.preset
 	source = 5012_enable-cpu-optimizations-for-gcc91.patch
-	source = amdgpu_hwhang_reboot.patch
 	sha256sums = SKIP
-	sha256sums = dcf938e044b44db4732576b3e8da9eda1790e1931215c3c63fe0c7151d70d6dc
+	sha256sums = 145149dcb9a254ace776d25459e37378bfa90ce8ac909cfe31d4c5e944ea5640
 	sha256sums = 71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08
 	sha256sums = cc739c9c9f7ce08e6bbc161b8232208bbc00820342a32fb1f69bff6326ae1370
-	sha256sums = 62fc91e581c56240220dac84b77684387ae3d5c52afc5904f76a8cfa43e73c05
 
 pkgname = linux-amd
 	pkgdesc = Linux kernel for AMD CPU based hardware
