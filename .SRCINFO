@@ -1,7 +1,7 @@
 pkgbase = st-ruifm-git
 	pkgdesc = Simple virtual terminal emulator for X
-	pkgver = 0.8.2.1107.002817f
-	pkgrel = 2
+	pkgver = 0.8.2.r1107.002817f
+	pkgrel = 3
 	url = https://github.com/ruifm/st.git
 	arch = any
 	license = MIT
