@@ -2,7 +2,7 @@
 pkgname=nymphrpc-git
 _pkgname=nymphrpc
 _reponame=NymphRPC
-pkgver=1
+pkgver=58
 pkgrel=1
 pkgdesc="Versatile and fast remote procedure call library."
 arch=('x86_64')
@@ -28,8 +28,5 @@ build() {
 package() {
 	cd ${srcdir}/${_reponame}
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	install -Dm644 lib/libnymphrpc.a "$pkgdir/usr/lib/libnymphrpc.a"
-	install -d "$pkgdir/usr/local/include/nymph"
-	install -Dm644 src/*.h "$pkgdir/usr/local/include/nymph"
-	#install -Dm644 lib/std/$_realname/*.lua -t "$pkgdir"/usr/lib/lua/5.3/std/$_realname/
+	make DESTDIR="$pkgdir/" install
 }

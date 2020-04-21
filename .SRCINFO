@@ -1,6 +1,6 @@
 pkgbase = nymphrpc-git
 	pkgdesc = Versatile and fast remote procedure call library.
-	pkgver = 1
+	pkgver = 58
 	pkgrel = 1
 	url = https://github.com/MayaPosch/NymphRPC
 	arch = x86_64
