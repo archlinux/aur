@@ -1,6 +1,6 @@
 pkgbase = nautilus-pdf-tools-git
 	pkgver = 1.2.9.0extras19.06.7.r95.2c2eb1f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/atareao/nautilus-pdf-tools
 	arch = any
 	license = MIT

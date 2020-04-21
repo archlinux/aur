@@ -2,7 +2,7 @@
 pkgname=('nautilus-pdf-tools-git' 'nemo-pdf-tools-git' 'caja-pdf-tools-git')
 pkgbase=nautilus-pdf-tools-git
 pkgver=1.2.9.0extras19.06.7.r95.2c2eb1f
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/atareao/nautilus-pdf-tools"
 license=('MIT')
@@ -86,14 +86,14 @@ package_caja-pdf-tools-git() {
 	conflicts=("${pkgname%-git}")
 
 	cd "$srcdir/${pkgbase%-git}"
-	install -d "$pkgdir/usr/share/python-caja/extensions/pdf-tools"
-	cp -r src/*.py "$pkgdir/usr/share/python-caja/extensions"
-	cp -r src/pdf-tools/*.py "$pkgdir/usr/share/python-caja/extensions/pdf-tools"
+	install -d "$pkgdir/usr/share/caja-python/extensions/pdf-tools"
+	cp -r src/*.py "$pkgdir/usr/share/caja-python/extensions"
+	cp -r src/pdf-tools/*.py "$pkgdir/usr/share/caja-python/extensions/pdf-tools"
 	install -Dm644 data/icons/updf.svg -t \
-		"$pkgdir/usr/share/python-caja/extensions/pdf-tools/icons"
+		"$pkgdir/usr/share/caja-python/extensions/pdf-tools/icons"
 	install -Dm644 data/icons/pdf-tools-password-{hide,show}.svg -t \
 		"$pkgdir/usr/share/icons/hicolor/scalable/status"
-	install -Dm644 debian/changelog -t "$pkgdir/usr/share/python-caja/extensions/pdf-tools"
+	install -Dm644 debian/changelog -t "$pkgdir/usr/share/caja-python/extensions/pdf-tools"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 	./make_translations-caja.sh
 }
