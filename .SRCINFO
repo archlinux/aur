@@ -1,7 +1,7 @@
 pkgbase = foldingathome
 	pkgdesc = A distributed computing project for simulating protein dynamics
 	pkgver = 7.6.9
-	pkgrel = 5
+	pkgrel = 6
 	url = https://foldingathome.org/
 	install = foldingathome.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = foldingathome
 	depends = gcc-libs
 	depends = glibc
 	depends = zlib
+	optdepends = clinfo: for folding with an NVIDIA GPU
 	optdepends = cuda: for folding with an NVIDIA GPU
 	optdepends = ocl-icd: for folding with any GPU
 	optdepends = opencl-amd: for folding with an AMD GPU (>= GCN)
