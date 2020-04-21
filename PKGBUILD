@@ -2,9 +2,9 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-gitver=v5.4.33
-pkgver=5.4.v.33
-pkgrel=2
+gitver=v5.4.34
+pkgver=5.4.v.34
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
