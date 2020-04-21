@@ -1,7 +1,7 @@
 pkgbase = ioninja
 	pkgdesc = Professional, scriptable, all-in-one terminal/sniffer
 	pkgver = 3.14.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ioninja.com
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = ioninja
 	depends = qt5-base
 	depends = openssl
 	options = !strip
-	source_i686 = https://tibbo.com/downloads/archive/ioninja/ioninja-3.14.1/ioninja-3.14.1-linux-x86.tar.xz
-	sha256sums_i686 = 64e4aed73ca2b87c22120b29ad8acbc189af072c608853c4c417f23a9b25363f
-	source_x86_64 = https://tibbo.com/downloads/archive/ioninja/ioninja-3.14.1/ioninja-3.14.1-linux-amd64.tar.xz
-	sha256sums_x86_64 = 0bfa2190dcde9ba554a1324d2c436a8a81dead2caae7bd21ea7bd51f8da97bf0
+	source_i686 = https://tibbo.com/downloads/archive/ioninja/ioninja-3.14.1/ioninja-3.14.1-a-linux-x86.tar.xz
+	sha256sums_i686 = 59f34dfd8abed515c7337f1b2c1842b7e7a37e18019fe25ffba2581743362576
+	source_x86_64 = https://tibbo.com/downloads/archive/ioninja/ioninja-3.14.1/ioninja-3.14.1-a-linux-amd64.tar.xz
+	sha256sums_x86_64 = 71b998e019af30abfdffabc8ca0e12aa2b0054a093f8c360f59cfda91f7e9bb4
 
 pkgname = ioninja
 
