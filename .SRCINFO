@@ -1,0 +1,28 @@
+pkgbase = foosynth-plugin-neo_vague_denoiser-git
+	pkgdesc = Plugin for Vapoursynth/Avisynth: neo_vague_denoiser (Dual interface for Vapoursynth/Avisynth) (GIT version)
+	pkgver = r1.3.g4b19ea8
+	pkgrel = 1
+	url = https://github.com/HomeOfAviSynthPlusEvolution/neo_Vague_Denoiser.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = avisynthplus-git
+	makedepends = vapoursynth
+	source = neo_vague_denoiser::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_Vague_Denoiser.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-neo_vague_denoiser-git
+	pkgdesc = Plugin for Avisynth: neo_vague_denoiser (GIT version)
+	depends = avisynthplus
+	depends = intel-tbb
+	provides = avisynth-plugin-neo_vague_denoiser
+	conflicts = avisynth-plugin-neo_vague_denoiser
+
+pkgname = vapoursynth-plugin-neo_vague_denoiser-git
+	pkgdesc = Plugin for Vapoursynth: neo_vague_denoiser (GIT version)
+	depends = vapoursynth
+	depends = intel-tbb
+	provides = vapoursynth-plugin-neo_vague_denoiser
+	conflicts = vapoursynth-plugin-neo_vague_denoiser
+
