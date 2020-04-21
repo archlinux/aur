@@ -14,7 +14,7 @@ If you're not running Arch as your main OS, you can perform the `makepkg` steps
 inside of a docker container like so:
 
 ```bash
-docker run --mount type=bind,source=$(pwd),target=/tmp/ddev-bin --workdir=/tmp/ddev-bin -it archlinux:latest bash
+docker run --rm --mount type=bind,source=$(pwd),target=/tmp/ddev-bin --workdir=/tmp/ddev-bin -it archlinux:latest bash
 ```
 
 Once the container comes up, you'll need to install a couple of things:
