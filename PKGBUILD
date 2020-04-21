@@ -54,17 +54,17 @@ build() {
   # compile PyDev debugger used by PyCharm to speedup debugging
   python3 plugins/python/helpers/pydev/setup_cython.py build_ext --build-temp build --build-lib .
   
-  rm -r bin/fsnotifier{,-arm} lib/libpty/linux/x86
+  rm -r bin/fsnotifier lib/pty4j-native/linux/{x86,ppc64le}
 }
 
 package() {
   # workaround FS#40934
-  sed -i "s/lcd/on/" "pycharm-$_pkgver/bin/*.vmoptions"
+  sed -i "s/lcd/on/" "pycharm-$_pkgver/bin/"*.vmoptions
 
   # base
   install -dm 755 "$pkgdir/opt/$pkgname"
-  cp -dr --no-preserve=ownership "pycharm-$_pkgver/*" "$pkgdir/opt/$pkgname/"
-  install -dm 755 "$pkgdir/usr/share/{applications,pixmaps}"
+  cp -dr --no-preserve=ownership "pycharm-$_pkgver/"* "$pkgdir/opt/$pkgname/"
+  install -dm 755 "$pkgdir/usr/share/"{applications,pixmaps}
   install -Dm 644 "$pkgdir/opt/$pkgname/bin/pycharm.png" "$pkgdir/usr/share/pixmaps/pycharm.png"
   install -Dm 644 pycharm-professional.desktop "$pkgdir/usr/share/applications/"
   
@@ -77,7 +77,7 @@ package() {
   
   # licenses
   install -dm 755 "$pkgdir/usr/share/licenses/$pkgname/"
-  cp -dr --no-preserve=ownership "pycharm-$_pkgver/license/*" "$pkgdir/usr/share/licenses/$pkgname/"
+  cp -dr --no-preserve=ownership "pycharm-$_pkgver/license/"* "$pkgdir/usr/share/licenses/$pkgname/"
   
   # install charm application - for edit a single file in Pycharm
   install -Dm 755 charm "$pkgdir/usr/bin/"
