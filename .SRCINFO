@@ -1,0 +1,14 @@
+pkgbase = buffalo-bin
+	pkgdesc = A Go web development eco-system, designed to make your project easier.
+	pkgver = 0.16.8
+	pkgrel = 1
+	url = https://github.com/gobuffalo/buffalo/
+	arch = x86_64
+	license = MIT
+	makedepends = tar
+	conflicts = buffalo
+	source = buffalo-bin-0.16.8.tar.gz::https://github.com/gobuffalo/buffalo/releases/download/v0.16.8/buffalo_0.16.8_Linux_x86_64.tar.gz
+	sha256sums = 77ade8c844d19d40bdece33366902df1b8c9cdde74632d7062621cc81d1a6094
+
+pkgname = buffalo-bin
+
