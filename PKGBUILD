@@ -10,14 +10,14 @@
 
 pkgname=vagrant
 pkgver=2.2.7
-pkgrel=4
+pkgrel=5
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
 license=('MIT')
 options=('!emptydirs')
 depends=('curl' 'libarchive' 'libssh2' 'libxml2' 'libxslt' 'rsync'
-         'ruby' 'xz')
+         'ruby' 'xz' 'perl')
 makedepends=('git' 'go-pie')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
