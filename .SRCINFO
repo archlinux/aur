@@ -16,12 +16,10 @@ pkgbase = linux-amd-raven
 	source = config.x86_64
 	source = linux-amd-raven.preset
 	source = 5012_enable-cpu-optimizations-for-gcc91.patch
-	source = amdgpu_hwhang_reboot.patch
 	sha256sums = SKIP
 	sha256sums = e31ddac0ee6e644bce4379e89de0a59b8aebeb20822d560b10bd3a87d6c24e84
 	sha256sums = 0ac0cf410b0f3eeaa07d41505613e118ea59e01144e905f2dc0a808379f87e87
 	sha256sums = fb98e49d7a640e05bf0d3a65ca49d0adb19de7547cb7ffca7a6cbacb1f461f0b
-	sha256sums = 62fc91e581c56240220dac84b77684387ae3d5c52afc5904f76a8cfa43e73c05
 
 pkgname = linux-amd-raven
 	pkgdesc = Linux kernel with working amdgpu for Raven Ridge hardware
