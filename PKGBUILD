@@ -7,7 +7,7 @@ _srcname=linux-5.6
 _major=5.6
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=4
+_minor=5
 ### on initial release comment this out and set to =1
 _minorc=$((_minor+1))
 #_minorc=1
@@ -36,12 +36,12 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('11172f889b1660f0c0de38d69f17b45fb3f064cbe5cce58ff20345d64b3dadc9'
+sha256sums=('65cf70310a2c269c29cffd9f5ed4d9fc3ad7f3b16097ec905d8cf2db9496358a'
             'SKIP'
-            '5df1741e550cb6fa7471530f42da98bac5093e693e2c4f3aef4393d8135b9d91'
+            'f79bd3dbcbe1e7afba256d59b4ca21da12d2c5b4189804dffb2a49fd2b9b52e6'
             'SKIP'
-            '0b414b6974b732cfb71b6f45b6210d127528aa6452132e9b9338719ac021bf06'
-            '1f4cebcd41f497b2d8680d5001ce6036a1142973ad68b1421a10a2ddf99d568b')
+            'dfd3310bc2d3c4adbaba5e4f2260a8a110706993be1c3e02a5ddfe88bf0c63ce'
+            '76583cf912c01fdcbca445628ac6e4c03b7f22fda321ee0c7143f3703081650f')
 
 _kernelname=${pkgbase#linux}
 
