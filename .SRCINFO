@@ -1,0 +1,18 @@
+pkgbase = cninja
+	pkgdesc = cninja, an opinionated cmake config manager
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/jcelerier/cninja
+	arch = x86_64
+	license = AGPLv3
+	makedepends = boost
+	depends = cmake
+	depends = clang
+	depends = lld
+	depends = ninja
+	provides = cninja=2.0.0
+	source = https://github.com/jcelerier/cninja/releases/download/v2.0.0/cninja-2.0.0-src.tar.gz
+	sha512sums = 32414b604c6850d5fb657ca6b533ed19e0f16301132c1cce9bade2c38270c003067d52d861af6020b46ea12fadcaa9b099d123b7c691cda3042d09ec25ed7f0e
+
+pkgname = cninja
+
