@@ -1,7 +1,7 @@
 # Maintainer: Graeme Gott <graeme@gottcode.org>
 
 pkgname=peg-e
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc='Peg elimination game'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt5-base')
 makedepends=('qt5-tools')
 source=("https://gottcode.org/$pkgname/$pkgname-$pkgver-src.tar.bz2")
-sha256sums=('07025165f903a2e0e57c5ff537a7abb6e849a8d0f0c531b48db4a452edf6a0fc')
+sha256sums=('06d6a07c056b82372cdd6ac258dbfedab397ad4f13b70117f548b8218201ff17')
 
 build() {
   cd "$pkgname-$pkgver"
