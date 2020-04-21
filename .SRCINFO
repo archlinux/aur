@@ -8,6 +8,7 @@ pkgbase = bluespec-git
 	makedepends = git
 	makedepends = gperf
 	makedepends = ghc
+	makedepends = tcl
 	depends = haskell-old-time
 	depends = haskell-syb
 	depends = haskell-regex-compat
