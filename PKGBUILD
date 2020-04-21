@@ -5,7 +5,7 @@
 
 pkgname=thunderbird-beta-bin-de
 _pkgname=thunderbird-beta
-pkgver=72.0b3
+pkgver=76.0b1
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -23,7 +23,7 @@ install=$pkgname.install
 source=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/de/thunderbird-$pkgver.tar.bz2"
         'thunderbird-beta-bin-de.desktop'
         'vendor.js')
-sha512sums=('0dc83f7c87f27b729cbaf5c43eceb6821082a08b3adc18e95e9fd806c44d208f4df11bfef35c34d01a40b0b680c25dbf02e65a045261583871201788db723ef8'
+sha512sums=('04965c213459cd2c0983a8b5a8dac3c621b1200ce9eb14807668bd169d2e26ecb4ffc080c69fc4ce89e634973fbaa8b23473fecd61ed2da0b87a446ec1906d64'
             'e5649ddee3ca9cfdcf56652e9c8e6160d52c69d1439f9135b0c0d436ce61a25f17758afc0dd6cac3434c26234c584828eb07fdf9604797f7dd3f617ec194b79a'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
 # RC
@@ -44,6 +44,7 @@ package() {
 
   # Launchers
   ln -s /opt/$_pkgname/thunderbird "$pkgdir"/usr/bin/$_pkgname
+  # breaks application as of 68.0b1
   # ln -sf thunderbird "$pkgdir"/opt/$_pkgname/thunderbird-bin
 
   # vendor.js
@@ -59,6 +60,7 @@ pref("mail.shell.checkDefaultMail", false);
 pref("extensions.autoDisableScopes", 11);
 pref("extensions.shownSelectionUI", true);
 END
+
 
   # Desktop
   install -m644 $pkgname.desktop "$pkgdir"/usr/share/applications/
