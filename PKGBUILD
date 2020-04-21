@@ -37,6 +37,7 @@ build() {
 
   # Keep downloaded dependencies inside srcdir
   GOPATH="$srcdir/build"
+  mkdir -p "$GOPATH"
   go mod vendor
 
   # Allow cleanup (makepkg --clean)
