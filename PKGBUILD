@@ -3,7 +3,7 @@
 # Special thanks to RyanTheAllmighty for making hyper-appimage
 pkgname="gdlauncher-classic"
 pkgver="0.13.1"
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://github.com/CrankySupertoon/GDLauncher-Classic"
