@@ -1,7 +1,7 @@
 pkgbase = gog-crypt-of-the-necrodancer
 	pkgdesc = A roguelike rhythm game! Move on the beat to navigate ever changing dungeons
 	pkgver = 1.29.14917
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	install = gog-crypt-of-the-necrodancer.install
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = gog-crypt-of-the-necrodancer
 	sha256sums = SKIP
 	sha256sums = d80562a04ded4b25bca9738267d1d93d2be8fef74570aa7d00d83471c4e71121
 	sha256sums = 9753ea711a428a24333cb37be1f11a3a35860072723e89dd7599d1842f0f4f89
-	sha256sums = 05a773f76b64ffe89b099f5c1e373061d1ffc1183ba0859ef7dfefdae9dc9434
+	sha256sums = 5ffedc649b436179c8532ab44a8f6c86b0598a154ba26b1130256920f6ef067f
 
 pkgname = gog-crypt-of-the-necrodancer
 	depends_i686 = libglvnd
