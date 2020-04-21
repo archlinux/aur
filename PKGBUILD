@@ -1,4 +1,4 @@
-# Maintainer: 5anya <sanya@national.shitposting.agency>
+# Maintainer: 5anya <sanya at national shitposting agency>
 pkgname=gog-crypt-of-the-necrodancer
 _pkgname=crypt-of-the-necrodancer
 epoch=1
