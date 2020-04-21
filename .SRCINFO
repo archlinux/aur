@@ -1,17 +1,27 @@
 pkgbase = maszyna-git
 	pkgdesc = Polish train simulator
 	pkgver = r1277.c45081b2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://eu07.pl/
 	arch = x86_64
 	license = MPL2
+	license = custom
 	makedepends = cmake
 	makedepends = git
 	makedepends = glfw
 	makedepends = glm
 	makedepends = libserialport
+	makedepends = p7zip
+	noextract = MaSzyna1908.zip
+	noextract = 1908HF.zip
 	source = maszyna-git::git://github.com/eu07/maszyna.git
+	source = http://stuff.eu07.pl/MaSzyna1908.zip
+	source = http://stuff.eu07.pl/1908HF.zip
+	source = https://eu07.pl/theme/Maszyna/dokumentacja/inne/readme_pliki/licencja.html
 	md5sums = SKIP
+	md5sums = 1e33a4155c4dfeabfe8a72aaab6406be
+	md5sums = 70178c340fc236217343fe8ddcb63114
+	md5sums = fdbde83abd66899b540800c3d4b5f0a2
 
 pkgname = maszyna-git
 
