@@ -13,7 +13,6 @@ pkgbase = caja-pdf-tools
 	depends = poppler
 	depends = python-pypdf2
 	depends = python-sh
-	conflicts = caja-pdf-tools
 	source = caja-pdf-tools-1.2.9.tar.xz::https://launchpad.net/~atareao/+archive/ubuntu/caja-extensions/+sourcefiles/caja-pdf-tools/1.2.9-0extras19.06.7/caja-pdf-tools_1.2.9-0extras19.06.7.tar.xz
 	sha256sums = 712367ad53e4bdce539559033c95ffb0cf38755cfbd91fe5a179aeebcb7633ef
 

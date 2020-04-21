@@ -10,7 +10,6 @@ pkgdesc='A set of tools to work with PDF documents from Caja'
 arch=('any')
 url='https://www.atareao.es/aplicacion/pdf-tools-o-modificar-pdf-en-linux/#'
 license=('GPL-3.0')
-conflicts=("${pkgname%-git}")
 depends=('python-caja' 'python-gobject' 'python-cairo' 'python-pillow' 'gtk3' 'poppler'
 	         'python-pypdf2' 'python-sh')
 source=("${pkgname}-${pkgver}.tar.xz::https://launchpad.net/~atareao/+archive/ubuntu/caja-extensions/+sourcefiles/${pkgname}/${pkgver}-${_ubuntur}/${pkgname}_${pkgver}-${_ubuntur}.tar.xz")
