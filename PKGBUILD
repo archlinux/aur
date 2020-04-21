@@ -1,7 +1,7 @@
 # Maintainer: Yann Orieult <yo.managements@gmail.com>
 
 pkgname=trashf
-pkgver='1.0.2'
+pkgver='1.0.3'
 pkgrel='1'
 pkgdesc='CLI tool to safely remove any file and directory by putting them in the trash'
 arch=('any')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('python>=3')
 makedepends=('python' 'python-setuptools')
 
-source=("https://files.pythonhosted.org/packages/source/t/trashf/trashf-1.0.2.tar.gz")
-sha256sums=('3fcaf46be43f7da7086e8633de9a9c03a3cada805945f2004e27df962ffdc0bc')
+source=("https://files.pythonhosted.org/packages/source/t/trashf/trashf-1.0.3.tar.gz")
+sha256sums=('0adb2d9129f753f1f9984a5934755802094ca88d219088c2dc142b7c43ff37dd')
 #source#=("file:///$MHOME/dev/python/trashf/dist/trashf-1.0.1.tar.gz")
 #sha256sums#=("SKIP")
 
