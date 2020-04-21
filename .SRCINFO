@@ -1,15 +1,15 @@
 pkgbase = php-msgpack
 	pkgdesc = PHP extension for interfacing with MessagePack
-	pkgver = 2.0.2
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = http://msgpack.org/
 	arch = i686
 	arch = x86_64
 	license = New BSD
 	depends = php
 	backup = etc/php/conf.d/msgpack.ini
-	source = http://pecl.php.net/get/msgpack-2.0.2.tgz
-	sha256sums = b04980df250214419d9c3d9a5cb2761047ddf5effe5bc1481a19fee209041c01
+	source = https://pecl.php.net/get/msgpack-2.1.0.tgz
+	md5sums = 901960fda542dec313ab4d89bd63d06d
 
 pkgname = php-msgpack
 
