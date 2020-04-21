@@ -14,9 +14,9 @@ sha256sums=("da2a61d106c2cecce271c89cd182b162bce34018539e1ba431580c5bbe120252")
 package() {
     bsdtar -xf data.tar.xz -C "$pkgdir/"
 
-    sed -i "s+Exec=/usr/local/sunlogin/bin/sunloginclient+Exec=${_installdir}/usr/local/sunlogin/bin/sunloginclient+" ${pkgdir}/usr/share/applications/sunlogin.desktop
-    sed -i "s+Icon=/usr/local/sunlogin/res/icon/sunlogin_client.png+Icon=${_installdir}/usr/local/sunlogin/res/icon/sunlogin_client.png+" ${pkgdir}/usr/share/applications/sunlogin.desktop
+    sed -i "s+Exec=/usr/local/sunlogin/bin/sunloginclient+Exec=${_installdir}/usr/local/sunlogin/bin/sunloginclient+" usr/share/applications/sunlogin.desktop
+    sed -i "s+Icon=/usr/local/sunlogin/res/icon/sunlogin_client.png+Icon=${_installdir}/usr/local/sunlogin/res/icon/sunlogin_client.png+" usr/share/applications/sunlogin.desktop
 
     cp -R usr ${pkgdir}/${_installdir}
-    install -Dm644 ${pkgdir}/usr/share/applications/sunlogin.desktop ${pkgdir}/usr/share/applications/sunlogin.desktop
+    install -Dm644 usr/share/applications/sunlogin.desktop ${pkgdir}/usr/share/applications/sunlogin.desktop
 }
