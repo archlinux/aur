@@ -1,13 +1,13 @@
 pkgbase = rtcp
 	pkgdesc = A simple reverse tcp and socks5 proxy
-	pkgver = 2
+	pkgver = 3
 	pkgrel = 1
 	url = https://git.sr.ht/~rumpelsepp/rtcp
 	arch = x86_64
 	license = GPL
 	makedepends = go-pie
-	source = rtcp-v2.tar.gz::https://git.sr.ht/~rumpelsepp/rtcp/archive/v2.tar.gz
-	sha256sums = c5222eae45df6d9eccab289c4b86d575759970adb62ddce8c38ccbffeede009c
+	source = rtcp-v3.tar.gz::https://git.sr.ht/~rumpelsepp/rtcp/archive/v3.tar.gz
+	sha256sums = 710601616587fdf423c6025b434c8ad61bec5b05bfba5247d02452ca83e76069
 
 pkgname = rtcp
 
