@@ -8,6 +8,7 @@ pkgbase = feelpp
 	license = LGPL
 	makedepends = cmake
 	makedepends = clang
+	makedepends = eigen
 	depends = cln
 	depends = mumps
 	depends = slepc
