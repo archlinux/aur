@@ -1,0 +1,13 @@
+[Unit]
+Description=Folding@home helper for NVIDIA GPUs
+After=default.target
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/nvidia-modprobe
+ExecStart=/usr/bin/nvidia-modprobe -c 0 -u
+
+[Install]
+WantedBy=default.target
+

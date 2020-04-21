@@ -1,7 +1,8 @@
 [Unit]
 Description=Folding@home distributed computing client
-After=multi-user.target
+After=default.target
 After=network.target
+After=foldingathome-nvidia.service
 
 [Service]
 Type=simple
@@ -21,8 +22,6 @@ IOSchedulingClass=3
 ReadWritePaths=-/dev/nvidia0
 ReadWritePaths=-/dev/nvidiactl
 ReadWritePaths=-/dev/nvidia-uvm
-ExecStartPre=!-/usr/bin/nvidia-modprobe
-ExecStartPre=!-/usr/bin/nvidia-modprobe -c 0 -u
 
 [Install]
 WantedBy=default.target
