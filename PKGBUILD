@@ -2,7 +2,7 @@
 
 pkgname=protonvpn-linux-gui
 pkgver=2.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial GUI client for ProtonVPN"
 arch=("x86_64")
 url="https://github.com/calexandru2018/protonvpn-linux-gui"
