@@ -3,13 +3,12 @@
 pkgbase=dxvk-wine-git
 pkgname=('dxvk-winelib-git')
 pkgver=1.6.1.r1.g436357e2
-pkgrel=1
+pkgrel=2
 pkgdesc="No longer supported upstream. Please use the dxvk-mingw-git package instead"
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
 license=('zlib/libpng')
 depends=("dxvk-mingw-git")
-provides=("dxvk" "d9vk" "dxvk=$pkgver")
 makedepends=("dxvk-mingw-git")
 
 build() {
