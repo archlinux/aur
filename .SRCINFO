@@ -1,7 +1,7 @@
 pkgbase = pycharm-professional
 	pkgdesc = Python IDE for Professional Developers. Professional Edition
 	pkgver = 2020.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.jetbrains.com/pycharm/
 	arch = x86_64
 	license = custom
