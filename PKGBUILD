@@ -11,7 +11,6 @@ license=('BSD')
 conflicts=('gluon-scene-builder11')
 depends=('java-environment=11')
 makedepends=('gendesk')
-conflicts=('javafx-scenebuilder')
 source=("https://download2.gluonhq.com/scenebuilder/${pkgver}/install/linux/scenebuilder-${pkgver}-1.x86_64.rpm")
 sha256sums=('c7242c4bfd3dde295462eef4c978387e15faf7d44627f74eb194c483b631f36c')
 
