@@ -1,0 +1,24 @@
+pkgbase = dream
+	pkgdesc = A software radio for AM and Digital Radio Mondiale (DRM)
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/drm
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	depends = fftw
+	depends = opus
+	depends = libsndfile
+	depends = speexdsp
+	depends = hamlib
+	depends = libpulse
+	depends = qwt
+	depends = qt5-webkit
+	depends = qt5-svg
+	depends = qt5-base
+	source = https://sourceforge.net/projects/drm/files/dream/2.1.1/dream-2.1.1-svn808.tar.gz
+	md5sums = 4745a4f03216bc3afda077398d0e5d3b
+
+pkgname = dream
+
