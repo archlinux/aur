@@ -14,7 +14,7 @@ pkgbase = gdlauncher-classic
 	depends = rust
 	source_x86_64 = gdlauncher-classic.desktop
 	source_x86_64 = GDLauncher-linux-setup.AppImage::https://github.com/CrankySupertoon/GDLauncher-Classic/releases/download/v0.13.1/GDLauncher-linux-setup.AppImage
-	sha256sums_x86_64 = 0ee4d9c7b0336584b3d7a85e1f46395cb54127e1650be5236cb89341b4211fa4
+	sha256sums_x86_64 = d8c39315cd92eab464021d25ed73011ad0b9406689a976909df8ff185ca60d3e
 	sha256sums_x86_64 = 72c487fc70de98ae58d51a93314747150e544f143a748320d87e5ce687d70a5a
 
 pkgname = gdlauncher-classic
