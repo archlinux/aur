@@ -1,15 +1,15 @@
 pkgbase = php-scrypt
 	pkgdesc = A PHP wrapper to Colin Percival's Scrypt hashing function implementation
-	pkgver = 1.2
-	pkgrel = 2
-	url = http://pecl.php.net/package/scrypt
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://pecl.php.net/package/scrypt
 	arch = x86_64
 	arch = i686
 	license = BSD 2-Clause
 	depends = php
-	backup = etc/php/conf.d/scrypt.ini
-	source = http://pecl.php.net/get/scrypt-1.2.tgz
-	sha256sums = b5089b32bdf5d4e1406081c29a7f72447ec801ef863cb7aefed22e82941f56f9
+	backup = etc/php/conf.d/_extname.ini
+	source = https://pecl.php.net/get/scrypt-1.4.2.tgz
+	sha256sums = 94c7e7f3378f6ddf1755f59d99f61570f380df2b2fa630853a932d58fa38389c
 
 pkgname = php-scrypt
 
