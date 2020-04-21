@@ -1,6 +1,6 @@
 pkgbase = flauncher
-	pkgdesc = universal file launcher for terminal
-	pkgver = 1.1.8
+	pkgdesc = Universal CLI file launcher
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/yoarch/flauncher
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = flauncher
 	makedepends = python
 	makedepends = python-setuptools
 	depends = python>=3
-	source = https://files.pythonhosted.org/packages/source/f/flauncher/flauncher-1.1.8.tar.gz
-	sha256sums = 3fdde1adcc97829e688c4aec0bd2a7bd0a164975b6dc42635c9b9f502517b856
+	source = https://files.pythonhosted.org/packages/source/f/flauncher/flauncher-1.2.4.tar.gz
+	sha256sums = e2150fd3a576fff4bcdb2b8c7f43635e1d84d89de65f6d97a610276cafabc8fb
 
 pkgname = flauncher
 
