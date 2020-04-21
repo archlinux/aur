@@ -1,6 +1,6 @@
 pkgbase = openhab2
 	pkgdesc = openHAB2 open source home automation software
-	pkgver = 2.5.3
+	pkgver = 2.5.4
 	pkgrel = 1
 	url = http://www.openhab.org/
 	install = openhab2.install
@@ -10,19 +10,19 @@ pkgbase = openhab2
 	conflicts = openhab-runtime
 	conflicts = openhab-addons
 	conflicts = openhab-beta
-	noextract = openhab-2.5.3.tar.gz
+	noextract = openhab-2.5.4.tar.gz
 	backup = etc/openhab2/services/addons.cfg
 	backup = etc/openhab2/services/runtime.cfg
 	backup = etc/default/openhab2
 	backup = var/lib/openhab2/etc/keystore
 	backup = var/lib/openhab2/etc/users.properties
 	backup = var/lib/openhab2/etc/keys.properties
-	source = openhab-2.5.3.tar.gz::https://bintray.com/openhab/mvn/download_file?file_path=org%2Fopenhab%2Fdistro%2Fopenhab%2F2.5.3%2Fopenhab-2.5.3.tar.gz
+	source = openhab-2.5.4.tar.gz::https://bintray.com/openhab/mvn/download_file?file_path=org%2Fopenhab%2Fdistro%2Fopenhab%2F2.5.4%2Fopenhab-2.5.4.tar.gz
 	source = openhab2.service
 	source = openhab2.default
 	source = openhab2.install
 	source = openhab2.patch
-	sha256sums = 3016286ec6df5a00fdc0e84affaacb16b02afd3d898d6b580ae1a23e1feb361a
+	sha256sums = b234e934e0e5d6b8c0121af1683ccd76d8236be9057a48ff4da521d4a13e689b
 	sha256sums = f01ea4cd08608fa0230e13dda23ec9f0b363a1ba417a78908866083a03ab9e0c
 	sha256sums = b149d976dc13dc18c62d2014457557e266e733ead70b0730d06dcd0372da78a7
 	sha256sums = a5ef3d048ab20e73bbb2684fcb3a8b64f9fd1d437bde54b7e51b379d1dacd79e
