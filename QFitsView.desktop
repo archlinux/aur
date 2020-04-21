@@ -2,11 +2,10 @@
 Version=1.0
 Name=QFitsView
 GenericName=Image Viewer
-GenericName[en_GB]=Image Viewer
 Comment=Astronomical Data Visualization Application
-Comment[en_GB]=Astronomical Data Visualization Application
 Type=Application
 Exec=QFitsView %F
 Icon=qfitsview
-Categories=Education;Science;Astronomy;
+Categories=Science;X-Astrophysics;X-Imaging;X-Astronomy;X-Education;
+MimeType=image/x-fits;
 Keywords=FITS;Astronomy;Viewer;

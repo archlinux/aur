@@ -1,7 +1,7 @@
 # Maintainer: José San Juan <josesj@gmail.com>
 pkgname=qfitsview
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="FITS file viewer based on DPUSER"
 url="http://www.mpe.mpg.de/~ott/QFitsView/index.html"
 license=("GPL2+")
