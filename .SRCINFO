@@ -1,5 +1,5 @@
 pkgbase = libpam-freerdp2
-	pkgdesc = Arctica Greeter: Remote logon support for X2Go (PAM module)
+	pkgdesc = Arctica Greeter: Remote logon support for freerdp (PAM module)
 	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/ArcticaProject/libpam-x2go
