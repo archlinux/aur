@@ -1,9 +1,9 @@
-# Maintainer:  Caleb Maclennan <caleb@alerque.com>
-# Contributor: Adrián Pérez de Castro <aperez@igalia.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.3.r18.gbcf8c8a
+pkgver=0.10.4
 pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
@@ -31,7 +31,10 @@ depends=('fontconfig'
          'lua'
          "${_lua_deps[@]/#/lua-}")
 makedepends=('git'
-             'poppler')
+             'noto-fonts-cjk'
+             'poppler'
+             'ttf-gentium-basic'
+             'ttf-sil-scheherazade')
 checkdepends=('lua-busted')
 provides=('libtexpdf.so' "${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -67,11 +70,8 @@ check () {
 
 package () {
 	cd "${pkgname%-git}"
-	make install DESTDIR="$pkgdir/"
-
-	install -Dm644 README.md documentation/sile.pdf -t "$pkgdir/usr/share/doc/${pkgname%-git}"
-
+	make install DESTDIR="$pkgdir"
+	install -Dm644 -t "$pkgdir/usr/share/doc/${pkgname%-git}" README.md documentation/sile.pdf
 	cp -ar examples "$pkgdir/usr/share/doc/${pkgname%-git}"
-
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+	install -Dm644 -t "$pkgdir/usr/share/licenses/${pkgname%-git}" LICENSE
 }

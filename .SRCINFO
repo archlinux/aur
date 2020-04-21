@@ -1,13 +1,16 @@
 pkgbase = sile-git
 	pkgdesc = Modern typesetting system inspired by TeX
-	pkgver = 0.10.3.r18.gbcf8c8a
+	pkgver = 0.10.4
 	pkgrel = 1
 	url = https://www.sile-typesetter.org
 	arch = x86_64
 	license = MIT
 	checkdepends = lua-busted
 	makedepends = git
+	makedepends = noto-fonts-cjk
 	makedepends = poppler
+	makedepends = ttf-gentium-basic
+	makedepends = ttf-sil-scheherazade
 	depends = fontconfig
 	depends = harfbuzz
 	depends = gentium-plus-font
