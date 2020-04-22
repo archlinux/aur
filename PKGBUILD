@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('cargo')
 provides=('powalert')
 source=("$pkgname-${pkgver//_/-}.tar.gz::https://github.com/zonotope/$pkgname/archive/${pkgver//_/-}.tar.gz")
-sha256sums=("c69cbb383b4c6e67f1051673e55b9a03d3df4ea809ac9fac04d58327483098d9")
+sha256sums=('3935c3d953730aa01dc79acd8d4dfd4bc036e8a0103407512c0a82ba2831510a')
 
 build() {
   cd "$srcdir/$pkgname-${pkgver//_/-}"
