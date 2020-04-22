@@ -1,12 +1,12 @@
 pkgbase = refind-theme-metro-git
 	pkgdesc = A rEFInd theme based of Burg Metro
-	pkgver = r31.d20d691
-	pkgrel = 1
+	pkgver = r47.40986b2
+	pkgrel = 2
 	url = https://github.com/JohnTrentonCary/rEFInd-Metro
 	arch = any
 	license = none
 	makedepends = git
-	depends = refind-efi
+	depends = refind
 	source = git+https://github.com/JohnTrentonCary/rEFInd-Metro.git
 	md5sums = SKIP
 

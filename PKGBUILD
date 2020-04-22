@@ -1,12 +1,12 @@
 # Maintainer: David Rosenstrauch <darose@darose.net>
 pkgname=refind-theme-metro-git
-pkgver=r31.d20d691
-pkgrel=1
+pkgver=r47.40986b2
+pkgrel=2
 pkgdesc="A rEFInd theme based of Burg Metro"
 arch=('any')
 url="https://github.com/JohnTrentonCary/rEFInd-Metro"
 license=('none')
-depends=('refind-efi')
+depends=('refind')
 makedepends=('git')
 source=('git+https://github.com/JohnTrentonCary/rEFInd-Metro.git')
 md5sums=('SKIP')
