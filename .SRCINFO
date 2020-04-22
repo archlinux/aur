@@ -1,14 +1,14 @@
 pkgbase = python-ipyvolume
 	pkgdesc = IPython widget for rendering 3d volumes and glyphs (e.g. scatter and quiver) in the Jupyter notebook
-	pkgver = 0.5.2
+	pkgver = 0.6.0a4
 	pkgrel = 1
 	url = https://github.com/maartenbreddels/ipyvolume
 	arch = x86_64
 	license = MIT
 	depends = python
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/i/ipyvolume/ipyvolume-0.5.2.tar.gz
-	md5sums = 9ff0792bc9ac60cfabe1c3d835fb40bf
+	source = https://files.pythonhosted.org/packages/source/i/ipyvolume/ipyvolume-0.6.0a4.tar.gz
+	md5sums = 207cb2886f27d7dc99e6060948d8001a
 
 pkgname = python-ipyvolume
 
