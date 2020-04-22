@@ -1,7 +1,7 @@
 pkgbase = dolt
-	pkgdesc = Like Git, but for data
+	pkgdesc = Git for data!
 	pkgver = 0.16.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dolthub.com/
 	arch = x86_64
 	license = Apache
