@@ -1,0 +1,16 @@
+pkgbase = pax-git
+	pkgdesc = Portable Archive Interchange - the POSIX standard archive tool for cpio and tar formats (git version)
+	pkgver = 20190825.r7.g0a4979b
+	pkgrel = 1
+	url = https://www.mirbsd.org/pax.htm
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = glibc
+	provides = pax
+	conflicts = pax
+	source = git+https://github.com/MirBSD/mircpio.git
+	sha256sums = SKIP
+
+pkgname = pax-git
+
