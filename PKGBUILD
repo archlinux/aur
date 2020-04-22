@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=flipper-bin
-pkgver=0.37.0
+pkgver=0.38.0
 pkgrel=1
 pkgdesc='A desktop debugging platform for mobile developers'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('watchman: An inotify-based file watching and job triggering command
 			      'android-sdk: Android debugging support')
 makedepends=('gendesk' 'unzip')
 source=("https://github.com/facebook/flipper/releases/download/v${pkgver}/Flipper-linux.zip")
-md5sums=('8937302f2bad0fb19f8c9a0327b54234')
+sha512sums=('02719aca28fc6603fc16e7b0f2dbda682e1f73ff0ffbb4689cb5672f4911a6c4200ec98f577da6214799cf940bff078c2c833c052468675dfab1a9f1ecf817a6')
 noextract=('Flipper-linux.zip')
 
 package() {
@@ -26,5 +26,5 @@ package() {
   ln -s /opt/flipper/flipper ${pkgdir}/usr/bin/flipper
   gendesk -f -n --pkgname "flipper" --pkgdesc "${pkgdesc}" --exec="flipper" --categories=Application\;Development --icon flipper
   install -Dm644 flipper.desktop ${pkgdir}/usr/share/applications/flipper.desktop
-  install -Dm644 ${pkgdir}/opt/flipper/resources/app/icon.png ${pkgdir}/usr/share/pixmaps/flipper.png
+  install -Dm644 ${srcdir}/icon.png ${pkgdir}/usr/share/pixmaps/flipper.png
 }
