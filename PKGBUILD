@@ -5,7 +5,7 @@
 
 pkgname='refind-git'
 pkgver=0.12.0.r692.g4a84fce
-pkgrel=3
+pkgrel=4
 pkgdesc='rEFInd Boot Manager - git version'
 url='https://www.rodsbooks.com/refind/'
 arch=('any')
@@ -62,7 +62,9 @@ package() {
 	# keys
 	install -vDm 0644 keys/*{cer,crt} -t "${pkgdir}/usr/share/${pkgname%-git}/keys"
 	# keysdir
-	install -vdm 0640 "${pkgdir}/etc/refind.d/keys"
+	install -vdm 0750 "${pkgdir}/etc/refind.d/keys"
+	# fonts
+	install -vDm 0644 fonts/*.png -t "${pkgdir}/usr/share/${pkgname}/fonts"
 	# icons
 	install -vDm 0644 icons/*.png -t "${pkgdir}/usr/share/${pkgname%-git}/icons"
 	install -vDm 0644 icons/svg/*.svg -t "${pkgdir}/usr/share/${pkgname%-git}/icons/svg"
