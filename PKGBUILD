@@ -1,9 +1,9 @@
 # Maintainer: hashworks <mail@hashworks.net>
 
 pkgname=brickstrap-git
-pkgver=r32.69925f0
+pkgver=0.6.8.r4.ga48aea5
 pkgrel=1
-pkgdesc='Tool for bootstrapping Debian and creating bootable image files for embedded systems, f.e. ev3dev'
+pkgdesc='Tool for bootstrapping Debian and creating bootable image files for embedded systems'
 url='https://github.com/ev3dev/brickstrap'
 license=('MIT')
 arch=('any')
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "brickstrap"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {

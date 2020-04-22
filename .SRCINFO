@@ -1,6 +1,6 @@
 pkgbase = brickstrap-git
-	pkgdesc = Tool for bootstrapping Debian and creating bootable image files for embedded systems, f.e. ev3dev
-	pkgver = r32.69925f0
+	pkgdesc = Tool for bootstrapping Debian and creating bootable image files for embedded systems
+	pkgver = 0.6.8.r4.ga48aea5
 	pkgrel = 1
 	url = https://github.com/ev3dev/brickstrap
 	arch = any
