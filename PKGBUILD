@@ -2,10 +2,10 @@
 
 pkgname=python-ginga
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A viewer for astronomical data FITS (Flexible Image Transport System) files."
 arch=('x86_64')
-url="http://ejeschke.github.io/ginga/"
+url="https://ejeschke.github.io/ginga/"
 license=('BSD')
 depends=('python'
          'python-astropy'
