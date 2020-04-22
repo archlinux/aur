@@ -1,6 +1,6 @@
 pkgbase = audacious-plugins-git
 	pkgdesc = Plugins for Audacious (git version)
-	pkgver = 4.0.beta1.r146.g0eb3c3d31
+	pkgver = 4.0.beta1.r160.g89b6ab575
 	pkgrel = 1
 	epoch = 1
 	url = https://audacious-media-player.org/
@@ -37,7 +37,7 @@ pkgbase = audacious-plugins-git
 	depends = audacious-git
 	optdepends = alsa-lib: Advanced Linux Sound Arch. output
 	optdepends = pulseaudio: PulseAudio output
-	optdepends = jack2: Jack Audio Connection Kit output
+	optdepends = jack: Jack Audio Connection Kit output
 	optdepends = lame: FileWriter MP3 output
 	optdepends = libvorbis: Vorbis input, FileWriter Vorbis output
 	optdepends = flac: FLAC input, FileWriter FLAC output

@@ -6,7 +6,7 @@
 
 _pkgname=audacious-plugins
 pkgname="$_pkgname-git"
-pkgver=4.0.beta1.r146.g0eb3c3d31
+pkgver=4.0.beta1.r160.g89b6ab575
 pkgrel=1
 epoch=1
 pkgdesc="Plugins for Audacious (git version)"
@@ -25,7 +25,7 @@ makedepends=('glib2' 'python' # for gdbus-codegen
 
 optdepends=('alsa-lib: Advanced Linux Sound Arch. output'
             'pulseaudio: PulseAudio output'
-            'jack2: Jack Audio Connection Kit output'
+            'jack: Jack Audio Connection Kit output'
             'lame: FileWriter MP3 output'
             'libvorbis: Vorbis input, FileWriter Vorbis output'
             'flac: FLAC input, FileWriter FLAC output'
