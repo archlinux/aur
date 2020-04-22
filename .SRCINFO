@@ -1,6 +1,6 @@
 pkgbase = growlight
 	pkgdesc = Disk manipulation and system preparation tool
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://nick-black.com/dankwiki/index.php/Growlight
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = growlight
 	depends = libatasmart
 	depends = libpciaccess
 	depends = pciutils
-	depends = notcurses>=1.2.7
+	depends = notcurses>=1.3.2
 	optdepends = jfsutils: JFS manipulation
 	optdepends = xfsprogs: XFS manipulation
 	optdepends = mdadm: Linux MDRAID manipulation
@@ -25,8 +25,8 @@ pkgbase = growlight
 	optdepends = hdparm: Deep ATA hardware details
 	optdepends = nvme-cli: Deep NVMe hardware details,
 	optdepends = zfs-utils: ZFS-on-Linux manipulation
-	source = https://github.com/dankamongmen/growlight/archive/v1.2.3.tar.gz
-	sha256sums = 47a9016aa93b131b719298daba00be991d92c808213f4c4421c517401bde8425
+	source = https://github.com/dankamongmen/growlight/archive/v1.2.4.tar.gz
+	sha256sums = e5132ccbbfa861bea98ad2be6e75a284ac937bee925b2b485483c0d5328f3195
 
 pkgname = growlight
 
