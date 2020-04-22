@@ -1,0 +1,186 @@
+diff --git a/configure.ac b/configure.ac
+index ba78e97d3afb8eb35827adf2d3c55f0e4307039e..88ee7bde3cf603c43dd51798fbcb0fc10d147d45 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -61,6 +61,16 @@ AC_LINK_IFELSE(
+                 [libinput_have_touch_count=yes]],
+                [AC_MSG_RESULT([no])
+                 [libinput_have_touch_count=no]])
++AC_MSG_CHECKING([if libinput_event_pointer_get_axis_value_v120 is available])
++AC_LINK_IFELSE(
++               [AC_LANG_PROGRAM([[#include <libinput.h>]],
++                                [[libinput_event_pointer_get_axis_value_v120(NULL, 0)]])],
++               [AC_MSG_RESULT([yes])
++                AC_DEFINE(HAVE_LIBINPUT_AXIS_VALUE_V120, [1],
++                          [libinput_event_pointer_get_axis_value_v120() is available])
++                [libinput_have_axis_value_v120=yes]],
++               [AC_MSG_RESULT([no])
++                [libinput_have_axis_value_v120=no]])
+ LIBS=$OLD_LIBS
+ CFLAGS=$OLD_CFLAGS
+ 
+diff --git a/src/xf86libinput.c b/src/xf86libinput.c
+index ff76895cbbe55ac3c5ed999cb54cefb1e7493063..cfee0f003535a14969ede9ffea797f10ae2cd971 100644
+--- a/src/xf86libinput.c
++++ b/src/xf86libinput.c
+@@ -1570,9 +1570,9 @@ xf86libinput_handle_key(InputInfoPtr pInfo, struct libinput_event_keyboard *even
+  * so the use-case above shouldn't matter anymore.
+  */
+ static inline double
+-get_wheel_scroll_value(struct xf86libinput *driver_data,
+-		       struct libinput_event_pointer *event,
+-		       enum libinput_pointer_axis axis)
++guess_wheel_scroll_value(struct xf86libinput *driver_data,
++			 struct libinput_event_pointer *event,
++			 enum libinput_pointer_axis axis)
+ {
+ 	struct scroll_axis *s;
+ 	double f;
+@@ -1632,6 +1632,43 @@ out:
+ 	return s->dist/s->fraction * discrete;
+ }
+ 
++#if HAVE_LIBINPUT_AXIS_VALUE_V120
++static inline double
++get_wheel_120_value(struct xf86libinput *driver_data,
++		    struct libinput_event_pointer *event,
++		    enum libinput_pointer_axis axis)
++{
++	struct scroll_axis *s;
++	double angle;
++
++	switch (axis) {
++	case LIBINPUT_POINTER_AXIS_SCROLL_HORIZONTAL:
++		s = &driver_data->scroll.h;
++		break;
++	case LIBINPUT_POINTER_AXIS_SCROLL_VERTICAL:
++		s = &driver_data->scroll.v;
++		break;
++	default:
++		return 0.0;
++	}
++
++	angle = libinput_event_pointer_get_axis_value_v120(event, axis);
++	return s->dist * angle/120;
++}
++#endif
++
++static inline double
++get_wheel_scroll_value(struct xf86libinput *driver_data,
++		       struct libinput_event_pointer *event,
++		       enum libinput_pointer_axis axis)
++{
++#if HAVE_LIBINPUT_AXIS_VALUE_V120
++	return get_wheel_120_value(driver_data, event, axis);
++#else
++	return guess_wheel_scroll_value(driver_data, event, axis);
++#endif
++}
++
+ static inline bool
+ calculate_axis_value(struct xf86libinput *driver_data,
+ 		     enum libinput_pointer_axis axis,
+@@ -1648,7 +1685,14 @@ calculate_axis_value(struct xf86libinput *driver_data,
+ 	if (source == LIBINPUT_POINTER_AXIS_SOURCE_WHEEL) {
+ 		value = get_wheel_scroll_value(driver_data, event, axis);
+ 	} else {
+-		value = libinput_event_pointer_get_axis_value(event, axis);
++		/* Some continuous value from a touchpad or a button scroll.
++		 * Historically we just passed this on with a vdist of 15,
++		 * so every 15 normalized pixels produced a wheel click in
++		 * the server.
++		 * We now switched to vdist of 120, so make this
++		 * proportionate - 120/15 is 8.
++		 */
++		value = 8 * libinput_event_pointer_get_axis_value(event, axis);
+ 	}
+ 
+ 	*value_out = value;
+@@ -1657,8 +1701,9 @@ calculate_axis_value(struct xf86libinput *driver_data,
+ }
+ 
+ static void
+-xf86libinput_handle_axis(InputInfoPtr pInfo, struct libinput_event_pointer *event)
++xf86libinput_handle_axis(InputInfoPtr pInfo, struct libinput_event *e)
+ {
++	struct libinput_event_pointer *event;
+ 	DeviceIntPtr dev = pInfo->dev;
+ 	struct xf86libinput *driver_data = pInfo->private;
+ 	ValuatorMask *mask = driver_data->valuators;
+@@ -1670,12 +1715,21 @@ xf86libinput_handle_axis(InputInfoPtr pInfo, struct libinput_event_pointer *even
+ 
+ 	valuator_mask_zero(mask);
+ 
++	event = libinput_event_get_pointer_event(e);
+ 	source = libinput_event_pointer_get_axis_source(event);
+ 	switch(source) {
+ 		case LIBINPUT_POINTER_AXIS_SOURCE_FINGER:
+-		case LIBINPUT_POINTER_AXIS_SOURCE_WHEEL:
+ 		case LIBINPUT_POINTER_AXIS_SOURCE_CONTINUOUS:
+ 			break;
++		case LIBINPUT_POINTER_AXIS_SOURCE_WHEEL:
++#if HAVE_LIBINPUT_AXIS_VALUE_V120
++			/* If we have the v120 API we only process the new
++			 * wheel events */
++			e = libinput_event_pointer_get_base_event(event);
++			if (libinput_event_get_type(e) == LIBINPUT_EVENT_POINTER_AXIS)
++				return;
++#endif
++			break;
+ 		default:
+ 			return;
+ 	}
+@@ -1683,8 +1737,10 @@ xf86libinput_handle_axis(InputInfoPtr pInfo, struct libinput_event_pointer *even
+ 	if (calculate_axis_value(driver_data,
+ 				 LIBINPUT_POINTER_AXIS_SCROLL_VERTICAL,
+ 				 event,
+-				 &value))
+-		valuator_mask_set_double(mask, 3, value);
++				 &value)) {
++		if (value != 0.0)
++			valuator_mask_set_double(mask, 3, value);
++	}
+ 
+ 	if (!driver_data->options.horiz_scrolling_enabled)
+ 		goto out;
+@@ -1692,8 +1748,14 @@ xf86libinput_handle_axis(InputInfoPtr pInfo, struct libinput_event_pointer *even
+ 	if (calculate_axis_value(driver_data,
+ 				 LIBINPUT_POINTER_AXIS_SCROLL_HORIZONTAL,
+ 				 event,
+-				 &value))
+-		valuator_mask_set_double(mask, 2, value);
++				 &value)) {
++		if (value != 0.0)
++			valuator_mask_set_double(mask, 2, value);
++	}
++
++	if (!valuator_mask_isset(mask, 2) &&
++	    !valuator_mask_isset(mask, 3))
++		return;
+ 
+ out:
+ 	xf86PostMotionEventM(dev, Relative, mask);
+@@ -2291,8 +2353,10 @@ xf86libinput_handle_event(struct libinput_event *event)
+ 						libinput_event_get_keyboard_event(event));
+ 			break;
+ 		case LIBINPUT_EVENT_POINTER_AXIS:
+-			xf86libinput_handle_axis(pInfo,
+-						 libinput_event_get_pointer_event(event));
++#if HAVE_LIBINPUT_AXIS_VALUE_V120
++		case LIBINPUT_EVENT_POINTER_AXIS_WHEEL:
++#endif
++			xf86libinput_handle_axis(pInfo, event);
+ 			break;
+ 		case LIBINPUT_EVENT_TOUCH_FRAME:
+ 			break;
+@@ -3427,8 +3491,8 @@ xf86libinput_pre_init(InputDriverPtr drv,
+ 	 * affect touchpad scroll speed. For wheels it doesn't matter as
+ 	 * we're using the discrete value only.
+ 	 */
+-	driver_data->scroll.v.dist = 15;
+-	driver_data->scroll.h.dist = 15;
++	driver_data->scroll.v.dist = 120;
++	driver_data->scroll.h.dist = 120;
+ 
+ 	if (!is_subdevice) {
+ 		if (libinput_device_has_capability(device, LIBINPUT_DEVICE_CAP_POINTER))
