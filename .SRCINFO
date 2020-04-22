@@ -1,6 +1,6 @@
 pkgbase = gohup
 	pkgdesc = Command-line utility to run you program in background without any interruption.
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/RishabhRD/gohup
 	arch = i686
