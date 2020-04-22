@@ -1,0 +1,15 @@
+pkgbase = dockerfile-generator-bin
+	pkgdesc = Generates dockerfiles based on various input channels
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ozankasikci/dockerfile-generator
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = go-pie
+	provides = dockerfile-generator
+	provides = dfg
+	source = https://github.com/ozankasikci/dockerfile-generator/releases/download/v1.0.0/dfg_v1.0.0_linux_amd64
+	sha256sums = SKIP
+
+pkgname = dockerfile-generator-bin
+
