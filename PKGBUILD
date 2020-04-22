@@ -7,6 +7,7 @@ makedepends=('rust' 'cargo' 'glibc' 'llvm-libs' 'gcc-libs' 'clang')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Create beautiful image of your code"
 license=('MIT')
+url="https://github.com/Aloxaf/silicon"
 source=(
     "https://github.com/Aloxaf/silicon/archive/v$pkgver.tar.gz"
 )

@@ -2,6 +2,7 @@ pkgbase = silicon
 	pkgdesc = Create beautiful image of your code
 	pkgver = 0.3.0
 	pkgrel = 1
+	url = https://github.com/Aloxaf/silicon
 	arch = i686
 	arch = x86_64
 	arch = armv6h
