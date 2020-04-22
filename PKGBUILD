@@ -3,7 +3,7 @@
 _name=kapow
 _pkgname="${_name}bang"
 pkgname="${_pkgname}-bin"
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='If you can script it, you can HTTP it.'
 arch=('x86_64' 'i686' 'aarch64' 'arm6h')
@@ -17,11 +17,11 @@ source_x86_64=("${_name}_x86_64::${_source}_amd64")
 source_i686=("${_name}_i686::${_source}_386")
 source_aarch64=("${_name}_aarch64::${_source}_arm64")
 source_arm6h=("${_name}_arm6h::${_source}_armv6")
-sha512sums=('4a0ed57573c2de0e6006d4276a92bfb9d33ea57ef41e491ac40d022287160a03466bbf5b998ef4c9c05532def3845d8c03080aee8cd755d85fb6c2d961ee9206')
-sha512sums_x86_64=('78230e798a5a576a5c95e6ca4ccb677fb9fcfcedad3f0687cc278f550c5aeee8c6bf962baa17f203f200a99594e8432c767902850eda40acf242da90ffad9f83')
-sha512sums_i686=('a94d083cc09e8e8f152a9107fb677362ce0284ccebb3232783ae7712b88cd8ae3e5ffb355129ac25a51041e28178852045568d228812844ba49e41bfdbe1eed4')
-sha512sums_aarch64=('4e7a1aafcef494a32c81e28a7368f8de5153055f6d5d822caad5ef7009dcacee0279307e52f2836d6dfbc030cac27cc74d493fd5c170cf7b615aff7044d9210d')
-sha512sums_arm6h=('4507385edd758652af45d6a5ef24a7d87fab145919be0d7caf62804ab57d66298e91d49e620ddbd6e5b7bf0385d908cfd2d679b55c2d16935418fbdf66c7fc5c')
+sha512sums=('1a34b34b162f6e81f2d5de93b9f43e2d62d7660bebe4bce1049d5eae0f1c6d5beaf524c9a5c57d2962e030a2cad352d337c888f9722bd730235b14bbada684e7')
+sha512sums_x86_64=('cdd74ebb5cb58524929e0409ea35cf4362ce3f893fedbd801abd3011722b8902b5549733e1cbd667592ba815337795194595f8a5792d0cc61e835a529b3fcc65')
+sha512sums_i686=('71d8a367cc9d96bbd2d6662e079110d3a8a156cd2820a4583addc451515b2e3e4a81b0c639d26e2e7faad9afe72399bee4ee876a24789dd950c1ca76f4c4adc6')
+sha512sums_aarch64=('4732b03e522b1f7e029d313852b7f47b28ac2c745ab4313e5c986186df3b99a25e588c383a33a62edbcdd846820f3e813fee4897b3ff0b9f3f5f3ae7e0552962')
+sha512sums_arm6h=('16778be0afdb69bdecbf97b77ade68bd9c5ac1e9f01780a60d06f8a2f81f3a0c2219c874625ac0bdd8454905cae81b9aea5e4fcf5d6db78cf589baf790822bd0')
 
 validpgpkeys=(
 	'51628FBC4016334DA425208EAE2CEBCF0B2BBB23'	# Kapow! Release Bot (v0.4.0) <release-bot@kapow>
