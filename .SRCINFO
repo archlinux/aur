@@ -1,0 +1,28 @@
+pkgbase = qv2ray-plugin-ssr-git
+	pkgdesc = Qv2ray Plugin: ShadowsocksR
+	pkgver = 20200422.r43.3428f7d
+	pkgrel = 1
+	url = https://github.com/Qv2ray/QvPlugin-SSR
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = qt5-tools
+	makedepends = which
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = libffi
+	depends = qt5-base>5.11.0
+	depends = openssl
+	depends = libuv
+	depends = libsodium
+	depends = qv2ray
+	optdepends = qv2ray
+	provides = qv2ray-plugin-ssr
+	conflicts = qv2ray-plugin-ssr
+	source = qv2ray-plugin-ssr::git+https://github.com/Qv2ray/QvPlugin-SSR
+	sha512sums = SKIP
+
+pkgname = qv2ray-plugin-ssr-git
+
