@@ -1,0 +1,19 @@
+pkgbase = jigasi
+	pkgdesc = Jitsi-meet SIP gateway
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/jitsi/jigasi
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = maven
+	optdepends = jicofo
+	optdepends = jitsi-videobridge
+	optdepends = jitsi-meet
+	backup = etc/jitsi/jigasi/config
+	backup = opt/jigasi/jigasi-home/sip-communicator.properties
+	source = jigasi-1.1.tar.gz::https://github.com/jitsi/jigasi/archive/v1.1.tar.gz
+	md5sums = 9589a7b1fa5758e220accefeb3b8a737
+
+pkgname = jigasi
+
