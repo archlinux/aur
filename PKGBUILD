@@ -24,7 +24,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 
-pkgver=7.4.1
+pkgver=7.4.5
 pkgrel=1
 arch=('x86_64')
 license=('PHP')
@@ -36,14 +36,14 @@ checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
         'enchant-2.patch')
-sha256sums=('561bb866bdd509094be00f4ece7c3543ec971c4d878645ee81437e291cffc762'
+sha256sums=('d059fd7f55bdc4d2eada15a00a2976697010d3631ef6f83149cc5289e1f23c2c'
             'SKIP'
             '537e6f9f8879de2ba021b5efcaf759fccebd0e7b506d03a7ce973a5f3a482219'
             '80c00b40b0de794d87fb0183cdce2f3c93869c849f7534e8ced42ca6c625f2f7'
-            '41f23ebc2d986473b9a4eb3f233428349367b2baa2bb715c53e720cc34c9378c'
+            '565a743a0a9d4775f8e22b70a455729b023cc90db06c0251adef6ebbe604d53a'
             '640dba0d960bfeaae9ad38d2826d3f6b5d6c175a4d3e16664eefff29141faad5'
-            '03beeb8b62a499805a4b912cb19d048635cb5542478753e58364bf24fb42ff3c'
-            '92a048073713c3600713b3dd46e96b33a2dde2aef1fbdf175d83da1dc679a0c5')
+            'f2040cc0648a395d0a84984dd6bf7aadf9f569b58838c666d84898bc4578fe04'
+            'd94d22ad8bcd13829addda84e9de6b73fa04be9bc6da8622086c7e19c97ab724')
 validpgpkeys=('5A52880781F755608BF815FC910DEB46F53EA312'
               '42670A7FE4D0441C8E4632349E4FDC074A4EF02D')
 

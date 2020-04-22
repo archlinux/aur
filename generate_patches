@@ -4,7 +4,7 @@
 
 makepkg -o --nodeps --noprepare --skipinteg
 
-pushd src/${pkgbase}-${pkgver}
+pushd src/${_pkgbase}-${pkgver}
 
 sed -e '/if test "$APACHE_VERSION" -lt 2004001; then/i PHP_BUILD_THREAD_SAFE' \
 	-e '/if test "$APACHE_VERSION" -lt 2004001; then/,+10d' \

@@ -9,7 +9,7 @@
  ; On windows:
  ;extension_dir = "ext"
  
-@@ -904,48 +904,45 @@
+@@ -904,49 +904,45 @@
  ; deprecated in a future PHP major version. So, when it is possible, please
  ; move to the new ('extension=<ext>) syntax.
  ;
@@ -28,9 +28,9 @@
 +;extension=enchant
 +;extension=exif
  ;extension=ffi
+ ;extension=ftp
 -;extension=fileinfo
 -;extension=gd2
-+;extension=ftp
 +;extension=gd
  ;extension=gettext
  ;extension=gmp
