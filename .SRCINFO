@@ -1,6 +1,6 @@
 pkgbase = fontship
 	pkgdesc = A font development toolkit and collaborative work flow
-	pkgver = 0.0.1
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/theleagueof/fontship
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = fontship
 	depends = python-fonttools
 	depends = python-ufonormalizer
 	depends = zsh
-	source = fontship-0.0.1.tar.gz::https://github.com/theleagueof/fontship/archive/v0.0.1.tar.gz
-	sha256sums = f3ea8e0ea91f407d6b99fd8602a039392ef9ef8417f09b0399a7f94795cc7749
+	source = fontship-0.0.3.tar.gz::https://github.com/theleagueof/fontship/archive/v0.0.3.tar.gz
+	sha256sums = a38aa2e5014b0320f870ad2097ef14c4245e2fd7fb251f30aa875d1f8c3f1ab6
 
 pkgname = fontship
 
