@@ -4,8 +4,8 @@ url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.6
-_minor=4
-_clr=938
+_minor=5
+_clr=941
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -23,14 +23,14 @@ provides=("WIREGUARD-MODULE")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=32870
+_clear_version=32890
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 
 source=("https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.kernel-native"
         "https://cdn.download.clearlinux.org/update/${_clear_version}/pack-kernel-native-from-0.tar"
 )
-b2sums=('5ba74920c09d4ee676f555e422709151da7c3b94aa4e3765f40a10cf108fb4a29ec5b98adc4dca307631d2dee7cd165c665963a024d1546cea930cf7a582d735'
-        'dbe4f347b3f7b6fa174d5758ce46d2e3311a8c28e24469f0855d4a9b0b28dc92c556b35eba8ffcd89b2705d20255fce8a3dbc10dacc04a7d17528fcb826e1c27')
+b2sums=('3cb428e474ae09186e9d9e09565a54e5ad28da3a70a19db71cc3977729401652bde7c30188a1dd684b85b10b75805732e12d5d113fcdc3d6de3715335629f0e5'
+        '549366988c58299f14ca790aaa8785dee0eceef22d9b0b55202fb61e7c0f99dbe10275d43714675492116d976ffff08e17319a544ec8cb30ec774529c1239d19')
 build() {
     # get kernel's filename (hash) from the Manifest, ie:
     # 4776962fb058c91e89dcefac4740d7a1af37ea12d217d3f8d0f49797553146e7
