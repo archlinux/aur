@@ -1,0 +1,17 @@
+# create by https://github.com/iamcco/coc-gitignore (Wed Apr 22 2020 06:49:06 GMT-0500 (hora estándar de Perú))
+# ArchLinuxPackages.gitignore:
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+
+paleofetch-git
