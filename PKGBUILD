@@ -2,13 +2,16 @@
 
 pkgname=notcurses
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern TUI library"
 url="https://nick-black.com/dankwiki/index.php/Notcurses"
 license=('Apache')
 arch=('x86_64')
+# qrcodegen is currently shipped as a static archive on Arch, rather than a
+# dynamic library. Should the .so be shipped in the future, promote qrcodegen
+# from a makedepends to a true depends, and use that dynamic library.
 depends=('ncurses' 'ffmpeg')
-makedepends=('cmake' 'pandoc' 'python-cffi' 'python-setuptools' 'doctest')
+makedepends=('cmake' 'pandoc' 'python-cffi' 'python-setuptools' 'doctest' 'qrcodegen')
 source=("https://github.com/dankamongmen/notcurses/archive/v${pkgver}.tar.gz")
 
 prepare() {
