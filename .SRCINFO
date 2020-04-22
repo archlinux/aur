@@ -1,5 +1,5 @@
 pkgbase = stm32pio
-	pkgdesc = Automate managing STM32CubeMX + PlatformIO projects
+	pkgdesc = gui for automate managing STM32CubeMX and PlatformIO projects
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/kynguyen98/stm32pio
