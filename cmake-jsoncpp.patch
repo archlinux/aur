@@ -1,0 +1,22 @@
+--- CMakeLists.txt.orig	2020-04-20 13:57:05.242858684 +0200
++++ CMakeLists.txt	2020-04-20 13:57:01.392803536 +0200
+@@ -22,7 +22,7 @@
+ #common_buildflags_print()
+ 
+ find_package(PkgConfig)
+-pkg_check_modules(JSONCPP REQUIRED kmsjsoncpp>=0.6.0)
++pkg_check_modules(JSONCPP REQUIRED jsoncpp>=0.6.0)
+ 
+ find_package(Boost REQUIRED COMPONENTS unit_test_framework)
+ 
+--- FindKmsJsonRpc.cmake.in.orig	2020-04-20 14:17:29.246659412 +0200
++++ FindKmsJsonRpc.cmake.in	2020-04-20 14:17:24.546682358 +0200
+@@ -10,7 +10,7 @@
+ 
+ find_package(PkgConfig)
+ 
+-pkg_check_modules(_JSONCPP REQUIRED kmsjsoncpp>=0.6.0)
++pkg_check_modules(_JSONCPP REQUIRED jsoncpp>=0.6.0)
+ 
+ find_path(KmsJsonRpc_INCLUDE_DIR
+   NAMES
