@@ -1,7 +1,7 @@
 pkgbase = theia-electron
 	pkgdesc = Cloud & Desktop IDE Platform
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.theia-ide.org/
 	arch = any
 	license = EPL2
@@ -23,7 +23,7 @@ pkgbase = theia-electron
 	source = theia-electron.desktop
 	source = https://raw.githubusercontent.com/eclipse-theia/theia/v1.0.0/logo/theia.svg
 	source = https://raw.githubusercontent.com/eclipse-theia/theia/v1.0.0/LICENSE
-	md5sums = 3503b21ff57ffecfe428da5be1b21171
+	md5sums = c022f460c0d928df6c1ece9d3044b008
 	md5sums = 5eb49842d52aa16e7310064c0fef9900
 	md5sums = b316dead79fa33f45c8d689a1c940dab
 	md5sums = 1dde0e422484895d3509f4ee9bb8d980
