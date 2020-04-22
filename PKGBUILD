@@ -3,12 +3,13 @@
 _shortpkgname=ff2mpv
 _pkgname=$_shortpkgname-native-messaging-host
 pkgname=$_pkgname-git
-pkgver=r10.c66cc85
+pkgver=r19.4af1028
 pkgrel=1
 pkgdesc='Native Messaging Host for ff2mpv firefox addon.'
 license=('MIT')
 url='https://github.com/woodruffw/ff2mpv'
 arch=('any')
+makedepends=('git')
 depends=('python' 'mpv')
 install=$_shortpkgname.install
 source=("$_shortpkgname"::"git://github.com/woodruffw/ff2mpv.git"
