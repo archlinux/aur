@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=nest_asyncio
 pkgname=python-${_pkgname}
-pkgver=1.2.2
-_pkgver='50692254107f8c2171c11d1bd7306b0022cab6bd'
+pkgver=1.3.2
+_pkgver='2f8140d218920cc6252f2349128753c94c243a73'
 pkgrel=1
 pkgdesc="Patch asyncio to allow nested event loops"
 arch=('x86_64')

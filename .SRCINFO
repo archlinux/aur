@@ -1,12 +1,12 @@
 pkgbase = python-nest_asyncio
 	pkgdesc = Patch asyncio to allow nested event loops
-	pkgver = 1.2.2
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/erdewit/nest_asyncio
 	arch = x86_64
 	license = custom
 	makedepends = python-setuptools
-	source = nest_asyncio-1.2.2::git+https://github.com/erdewit/nest_asyncio#commit=50692254107f8c2171c11d1bd7306b0022cab6bd
+	source = nest_asyncio-1.3.2::git+https://github.com/erdewit/nest_asyncio#commit=2f8140d218920cc6252f2349128753c94c243a73
 	sha256sums = SKIP
 
 pkgname = python-nest_asyncio
