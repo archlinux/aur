@@ -1,6 +1,6 @@
 pkgname=kms-filters
 pkgver=6.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Kurento server AV filters"
 arch=(any)
 url="https://github.com/Kurento/kms-filters"
@@ -42,4 +42,6 @@ package() {
     local builddir=$srcdir/$pkgname/build
     cd "$builddir"
     make install DESTDIR="$pkgdir"
+    # no idea why this is copied there and how to get rid of it
+    rm "$pkgdir"/etc/kurento/modules/kurento/*.cmake
 }
