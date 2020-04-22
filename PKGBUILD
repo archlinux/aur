@@ -5,21 +5,23 @@ _rockname=std-normalize
 pkgbase=lua-$_rockname
 pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 _pkgname=normalize
-pkgver=2.0.2
+pkgver=2.0.3
 _rockrel=1
-pkgrel=4
+pkgrel=1
 pkgdesc="Normalized Lua functions"
 arch=('any')
 url="https://github.com/lua-stdlib/$_pkgname"
 license=('MIT')
 _lua_deps=('std-_debug')
 makedepends=('luarocks')
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/lua-stdlib/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('7ca9bc7812a0581f421f29dcb996011575849e4acda3d1683aa27fe4ff8c2687')
+source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('2038c38da542cf274b0b7512928e5b649c90a34f36c8919fbbbc2524b4ef716d')
 
 _package_helper() {
     cd "$_pkgname-$pkgver"
-    luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "${_rockname/-/.}-$pkgver-$_rockrel.rockspec"
+    luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
+        make --deps-mode=none --no-manifest \
+        "${_rockname/-/.}-$pkgver-$_rockrel.rockspec"
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
