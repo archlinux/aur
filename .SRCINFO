@@ -1,0 +1,36 @@
+pkgbase = xerox-phaser-6020
+	pkgdesc = Xerox Phaser 6020 color laser printer CUPS driver
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.support.xerox.com/support/phaser-6020/downloads/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	makedepends = binutils
+	depends = cups
+	source = http://download.support.xerox.com/pub/drivers/6020/drivers/linux/pt_BR/xerox-phaser-6020_1.0-25.zip
+	sha256sums = 15cacf4d932c24b2a6ce0d127bac046c7e09307ed9a87045df20a7dd4bae8937
+	depends_i686 = glibc
+	depends_i686 = libcups
+	depends_i686 = gnutls
+	depends_i686 = zlib
+	depends_i686 = p11-kit
+	depends_i686 = gcc-libs
+	depends_i686 = libtasn1
+	depends_i686 = nettle
+	depends_i686 = gmp
+	depends_i686 = libffi
+	depends_x86_64 = lib32-glibc
+	depends_x86_64 = lib32-libcups
+	depends_x86_64 = lib32-gnutls
+	depends_x86_64 = lib32-zlib
+	depends_x86_64 = lib32-p11-kit
+	depends_x86_64 = lib32-gcc-libs
+	depends_x86_64 = lib32-libtasn1
+	depends_x86_64 = lib32-nettle
+	depends_x86_64 = lib32-gmp
+	depends_x86_64 = lib32-libffi
+
+pkgname = xerox-phaser-6020
+
