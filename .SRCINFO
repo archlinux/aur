@@ -1,0 +1,22 @@
+pkgbase = maestral-qt
+	pkgdesc = A Qt interface for the Maestral daemon
+	pkgver = 1.0.0.dev4
+	pkgrel = 1
+	url = https://github.com/SamSchott/maestral-qt
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = maestral
+	depends = python
+	depends = python-bugsnag
+	depends = python-click>=7.1.1
+	depends = python-markdown2
+	depends = python-packaging
+	depends = python-pyqt5>=5.9
+	optdepends = gnome-shell-extension-appindicator: Gnome integration
+	source = https://github.com/SamSchott/maestral-qt/archive/v1.0.0.dev4.tar.gz
+	md5sums = 5416f536d33a2eaef8fd637bc1dbb0c5
+
+pkgname = maestral-qt
+
