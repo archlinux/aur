@@ -1,11 +1,11 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 _svt_hevc_ver='1.4.3'
-_svt_av1_ver='0.8.0'
+_svt_av1_ver='0.8.2'
 _svt_vp9_ver='0.1.0'
 
 pkgname=ffmpeg-full-git
-pkgver=4.3.r97298.g9f4054a0cb
+pkgver=4.3.r97440.g904b25a550
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
@@ -49,13 +49,14 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
 sha256sums=('SKIP'
             '878757eb6d7072521caaeb71f1453ec3fc0f91a12936ef302e1625184787c6a6'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
-            'efbe348e0dad6b5f9fc501a34ff8304d82c2745ec9ac952e72f8549775c2fe78'
+            'd371366ceda9233c1b9a60c680878f567861b675605a8dae5c275d633c51ba9f'
             '7690a4f6bdc4a57e35c7ff5b6e87f2fe6d056d452eff9e767eaccff41832f4d7'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
     # add svt codec support for hevc, av1 and vp9
     rm -f ffmpeg/libavcodec/libsvt_{hevc,av1,vp9}.c
+    sed -i 's/eb_init_handle/svt_av1_enc_init_handle/' "ffmpeg-full-git-add-svt-vp9-${_svt_vp9_ver}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/ffmpeg-full-git-add-svt-hevc-${_svt_hevc_ver}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/ffmpeg-full-git-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/ffmpeg-full-git-add-svt-av1-${_svt_av1_ver}.patch"
