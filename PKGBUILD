@@ -1,8 +1,8 @@
 _npmname=mapscii
-_npmver=0.1.7
+_npmver=0.3.1
 pkgname=nodejs-mapscii # All lowercase
-pkgver=0.1.7
-pkgrel=1
+pkgver=0.3.1
+pkgrel=2
 pkgdesc="Map+Ascii -> MapSCII! Console Map Viewer."
 arch=(any)
 url="https://github.com/rastapasta/mapscii#readme"
