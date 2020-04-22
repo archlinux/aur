@@ -1,7 +1,7 @@
 pkgbase = chromaprint-fftw
 	pkgdesc = Extracts fingerprints from any audio source (uses fftw for FFT calculations instead of ffmpeg)
-	pkgver = 1.4.3
-	pkgrel = 5
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://acoustid.org/chromaprint
 	arch = x86_64
 	license = GPL
@@ -10,8 +10,8 @@ pkgbase = chromaprint-fftw
 	depends = fftw
 	provides = chromaprint
 	conflicts = chromaprint
-	source = chromaprint-1.4.3.tar.gz::https://github.com/acoustid/chromaprint/archive/v1.4.3.tar.gz
-	sha256sums = d4ae6596283aad7a015a5b0445012054c634a4b9329ecb23000cd354b40a283b
+	source = chromaprint-1.5.0.tar.gz::https://github.com/acoustid/chromaprint/archive/v1.5.0.tar.gz
+	sha256sums = 5c8e0d579cb3478900699110aa961c1552a422a18741cf67dd62136b1b877c7b
 
 pkgname = chromaprint-fftw
 
