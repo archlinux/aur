@@ -1,4 +1,4 @@
-pkgbase = wiki-js-beta-git
+pkgbase = wiki-js-git
 	pkgdesc = Wiki.js | A modern, lightweight and powerful wiki app built on Node.js
 	pkgver = 2.3.51.r4.g4308152a
 	pkgrel = 1
@@ -19,5 +19,5 @@ pkgbase = wiki-js-beta-git
 	sha256sums = 39bfd1390d3f2eba2522d750b89176aeefcdfdd1e3b2ba4d10276f1b7d3c55e8
 	sha256sums = 4e7fc467c43f5de2d1a355036abccb2ba23a6b10e1a93ae2d645e4352646bd55
 
-pkgname = wiki-js-beta-git
+pkgname = wiki-js-git
 

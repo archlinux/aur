@@ -1,5 +1,5 @@
 # Maintainer: hashworks <mail@hashworks.net>
-pkgname=wiki-js-beta-git
+pkgname=wiki-js-git
 pkgver=2.3.51.r4.g4308152a
 pkgrel=1
 pkgdesc="Wiki.js | A modern, lightweight and powerful wiki app built on Node.js"
