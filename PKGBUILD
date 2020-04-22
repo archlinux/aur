@@ -1,6 +1,6 @@
 _pkgname=jitsi-meet
 pkgname=${_pkgname}-bin
-pkgver=1.0.3992
+pkgver=1.0.4025
 pkgrel=1
 _debrel=1
 pkgdesc="WebRTC JavaScript video conferences"
@@ -23,11 +23,11 @@ backup=('etc/jitsi/meet/config.js'
 source=("https://download.jitsi.org/stable/${_pkgname}-web_${pkgver}-${_debrel}_all.deb"
         "https://download.jitsi.org/stable/${_pkgname}-web-config_${pkgver}-${_debrel}_all.deb")
 noextract=("${_pkgname}-web-config_${pkgver}-${_debrel}_all.deb")
-sha256sums=('e431e41c1b055ecd238506285204eaad615ffc4f7d2ef6bbd8ef1ae7016cd845'
-            '43a272181df57c6e941bfa9047e3ba1acff2eccd473ecd68daef3aa93b7aea36')
+sha256sums=('60fe635ce05c7a6824e994a88f4adcb2b6e9ff176a7a4e444a70bced58c3f0b0'
+            'e0e5cc13e87f8d9455032be11b6a6619a5a5609f9de26165a7a6712be97cef3d')
 
 prepare() {
-  mkdir config
+  mkdir -p config
   ar p "${_pkgname}-web-config_${pkgver}-${_debrel}_all.deb" data.tar.xz | tar -xJvC config
   sed -i 's/jitsi-meet\.example\.com-config\.js/config.js/g' config/usr/share/jitsi-meet-web-config/jitsi-meet.example{,-apache}
 }
