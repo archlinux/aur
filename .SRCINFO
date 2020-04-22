@@ -1,0 +1,16 @@
+pkgbase = yml2-hg
+	pkgdesc = A tool written in Python to convert yml to xml
+	pkgver = 2.6.3
+	pkgrel = 1
+	url = https://pep.foundation/dev/repos/yml2
+	arch = any
+	license = GPL2
+	makedepends = mercurial
+	makedepends = python
+	depends = python-lxml
+	provides = yml2
+	source = hg+https://pep.foundation/dev/repos/yml2
+	md5sums = SKIP
+
+pkgname = yml2-hg
+
