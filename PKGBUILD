@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=wiki-js-beta-git
-pkgver=r1223.b567413f
-pkgrel=6
+pkgver=2.3.51.r4.g4308152a
+pkgrel=1
 pkgdesc="Wiki.js | A modern, lightweight and powerful wiki app built on Node.js"
 license=('AGPL3')
 arch=('any')
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "wiki"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
