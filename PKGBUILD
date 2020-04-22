@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom-git
-pkgver=4.4pre+105+g15d4fb8fc
+pkgver=4.4pre+300+g8c1db978b
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support (git version)'
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ source=('gzdoom::git://github.com/coelckers/gzdoom.git'
         '0001-Fix-file-paths.patch')
 sha256sums=('SKIP'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
-            'fb91388572f388d14983ea49f153b6fed36288b283faf6745a25427282c9a20f')
+            'fc96a19bccf9b53f23865d29632e6fab14386bde2e95ff9523d91b1c5fde6309')
 
 pkgver() {
     cd gzdoom

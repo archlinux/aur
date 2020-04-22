@@ -1,14 +1,29 @@
-From 9def07d1ab571430ee97c3db3022b5ba647b3f21 Mon Sep 17 00:00:00 2001
+From d52c1fbe2904fb301cc902e3f5523f9ea8f712ce Mon Sep 17 00:00:00 2001
 From: Jan Cholasta <jan@cholasta.net>
 Date: Tue, 25 Feb 2020 12:53:07 +0100
 Subject: [PATCH] Fix file paths
 
 ---
- src/gameconfigfile.cpp          | 14 ++------------
- src/posix/sdl/i_main.cpp        | 14 +-------------
- src/sound/music/i_soundfont.cpp |  4 +---
+ src/common/audio/music/i_soundfont.cpp |  4 +---
+ src/gameconfigfile.cpp                 | 14 ++------------
+ src/posix/sdl/i_main.cpp               | 14 +-------------
  3 files changed, 4 insertions(+), 28 deletions(-)
 
+diff --git a/src/common/audio/music/i_soundfont.cpp b/src/common/audio/music/i_soundfont.cpp
+index a8b4e9fdf..911b8e308 100644
+--- a/src/common/audio/music/i_soundfont.cpp
++++ b/src/common/audio/music/i_soundfont.cpp
+@@ -232,9 +232,7 @@ FPatchSetReader::FPatchSetReader(const char *filename)
+ #ifndef _WIN32
+ 	mCaseSensitivePaths = true;
+ 	const char *paths[] = {
+-		"/usr/local/lib/timidity",
+-		"/etc/timidity",
+-		"/etc"
++		"/etc/timidity++"
+ 	};
+ #else
+ 	const char *paths[] = {
 diff --git a/src/gameconfigfile.cpp b/src/gameconfigfile.cpp
 index a04264dbe..55e66bc4c 100644
 --- a/src/gameconfigfile.cpp
@@ -49,7 +64,7 @@ index a04264dbe..55e66bc4c 100644
  	}
  
 diff --git a/src/posix/sdl/i_main.cpp b/src/posix/sdl/i_main.cpp
-index 9004dc0a3..a88dfcf18 100644
+index ed0e26450..baca003d7 100644
 --- a/src/posix/sdl/i_main.cpp
 +++ b/src/posix/sdl/i_main.cpp
 @@ -187,19 +187,7 @@ int main (int argc, char **argv)
@@ -73,21 +88,6 @@ index 9004dc0a3..a88dfcf18 100644
  	
  	I_StartupJoysticks();
  
-diff --git a/src/sound/music/i_soundfont.cpp b/src/sound/music/i_soundfont.cpp
-index 400f92cb6..41896ae32 100644
---- a/src/sound/music/i_soundfont.cpp
-+++ b/src/sound/music/i_soundfont.cpp
-@@ -231,9 +231,7 @@ FPatchSetReader::FPatchSetReader(const char *filename)
- #ifndef _WIN32
- 	mCaseSensitivePaths = true;
- 	const char *paths[] = {
--		"/usr/local/lib/timidity",
--		"/etc/timidity",
--		"/etc"
-+		"/etc/timidity++"
- 	};
- #else
- 	const char *paths[] = {
 -- 
-2.25.0
+2.26.0
 
