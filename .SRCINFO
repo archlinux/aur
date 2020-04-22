@@ -1,0 +1,16 @@
+pkgbase = tty-server-git
+	pkgdesc = Server side for tty-share
+	pkgver = 2020_01_09..7c5547d
+	pkgrel = 1
+	url = https://github.com/elisescu/tty-server
+	arch = any
+	license = GPL2
+	makedepends = go-pie
+	makedepends = dep
+	makedepends = npm
+	provides = tty-server
+	source = tty-server::git+git://github.com/elisescu/tty-server
+	md5sums = SKIP
+
+pkgname = tty-server-git
+
