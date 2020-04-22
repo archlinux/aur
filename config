@@ -1,0 +1,1 @@
+flags="--host=localhost --domain=jitsi.example.com --port=5347 --secret=YOURSECRET1"

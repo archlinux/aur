@@ -1,0 +1,13 @@
+[Unit]
+Description=Jitsi Videobridge
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/jitsi-videobridge/jitsi-videobridge.conf
+ExecStart=/opt/jitsi-videobridge/jvb.sh ${flags}
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
