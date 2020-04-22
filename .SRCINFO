@@ -6,6 +6,7 @@ pkgbase = jitsi-videobridge-git
 	arch = x86_64
 	license = Apache
 	makedepends = unzip
+	makedepends = maven
 	depends = jdk8-openjdk
 	provides = jitsi-videobridge
 	conflicts = jitsi-videobridge
