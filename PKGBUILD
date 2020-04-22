@@ -1,6 +1,6 @@
 # Maintainer: tercean <cg@zknt.org>
 pkgname=sengi-appimage
-pkgver=0.25.0
+pkgver=0.26.1
 pkgrel=1
 pkgdesc='Mastodon & Pleroma Multi-account Desktop Client'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     )
 noextract=("${_appimage}")
 sha256sums=(
-    '04ae8725161889145cfd0ff475b78307898a9bdd604c3a29f4cf9f1f9375832d'
+    '12e2e0582d25b352e14ef914fee915d2bd6553ae62b871b979e025774469aca0'
     'SKIP'
     'SKIP'
     )
@@ -28,5 +28,5 @@ package() {
     chmod +x "${pkgdir}/usr/bin/sengi"
 
     install -Dm644 "sengi.desktop"                    "${pkgdir}/usr/share/applications/sengi.desktop"
-    install -Dm644 "sengi.png"                        "${pkgdir}/usr/share/icons/hicolor/128x128/apps/sengi.png" 
+    install -Dm644 "sengi.png"                        "${pkgdir}/usr/share/icons/hicolor/128x128/apps/sengi.png"
 }
