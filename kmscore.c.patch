@@ -1,0 +1,13 @@
+diff --git a/src/gst-plugins/kmscore.c b/src/gst-plugins/kmscore.c
+index e9f19441..df41685b 100644
+--- a/src/gst-plugins/kmscore.c
++++ b/src/gst-plugins/kmscore.c
+@@ -86,7 +86,7 @@ kurento_init (GstPlugin * kurento)
+ 
+ GST_PLUGIN_DEFINE (GST_VERSION_MAJOR,
+     GST_VERSION_MINOR,
+-    kmscore,
++    kmscoreplugins,
+     "Kurento core",
+     kurento_init, VERSION, GST_LICENSE_UNKNOWN, "Kurento",
+     "http://kurento.com/")

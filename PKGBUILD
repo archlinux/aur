@@ -1,6 +1,6 @@
 pkgname=kms-core
 pkgver=6.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Kurento media server core library"
 arch=(any)
 url="https://github.com/Kurento/kms-core"
@@ -10,13 +10,15 @@ makedepends=(kms-cmake-utils kurento-module-creator)
 source=(
     "git://github.com/Kurento/$pkgname.git#tag=$pkgver"
     cmake-boost.patch
+    kmscore.c.patch
 )
 
-sha256sums=(SKIP SKIP)
+sha256sums=(SKIP SKIP SKIP)
 
 prepare() {
     cd "$srcdir/$pkgname"
     patch -p0 <"$srcdir/cmake-boost.patch"
+    patch -p1 <"$srcdir/kmscore.c.patch"
     sed -ri -e 's#gstreamer((-[-a-z]+)?)-1\.5#gstreamer\1-1.0#g' {,*/,*/*/,*/*/*/,*/*/*/*/}CMakeLists.txt
 }
 
