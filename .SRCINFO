@@ -1,19 +1,19 @@
 pkgbase = mindi-busybox
 	pkgdesc = This package provides a busybox version suited for Mindi
-	pkgver = 1.21.1
-	pkgrel = 2
+	pkgver = 1.25.1
+	pkgrel = 1
 	url = http://www.mondorescue.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = gcc
-	source = ftp://ftp.mondorescue.org/src/mindi-busybox-1.21.1.tar.gz
-	source = dhcpc.patch
-	source = mindi-busybox-1.21.1.tar.gz.sig
-	source = dhcpc.patch.sig
+	source = ftp://ftp.mondorescue.org/src/mindi-busybox-1.25.1.tar.gz
+	source = glibc_stime.patch
+	source = mindi-busybox-1.25.1.tar.gz.sig
+	source = glibc_stime.patch.sig
 	validpgpkeys = 748231EBCBD808A14F5E85D28C004C2F93481F6B
-	sha512sums = 6205e16585604c7b3c55a9b5677dc42e60bf4d63d08b2c4feb6511cf1ec11a70820732c89706ad99dbd4d506a2146581a7fd7f33426a9d41ecdc6dfef1ded10f
-	sha512sums = ba1d110e4207481d02f05cc5e79b927270439c97d1ec1455e5a173c903fed7fd91cc0953279873da61fe4a7b4b8a51e29ab48d2d531be3d2b861d92586728b3d
+	sha512sums = 56cfa5c95a2527022884e3ac7bcfe43cb95df12f162f2c1988003763d30dacfc3215ff87ffd11712e60114d390d211d9da4adf4da25456f8a01f6c19b479ccbc
+	sha512sums = a95c18ad3ea7b312d1da14edc75de45a4d1f86374258711eea6bf7f9d007e758a95b7cee0d5e45bf99d1c2f29dfe29dff238e1c5a44723761cf2b554f888913e
 	sha512sums = SKIP
 	sha512sums = SKIP
 

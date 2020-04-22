@@ -3,9 +3,10 @@
 # News updates for packages can be followed at https://devblog.square-r00t.net
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Past maintainer: F. Miñano <cicely@algofacil.info>
+# TODO: CC=musl-gcc instead?
 pkgname=mindi-busybox
-pkgver=1.21.1
-pkgrel=2
+pkgver=1.25.1
+pkgrel=1
 pkgdesc="This package provides a busybox version suited for Mindi"
 arch=('i686' 'x86_64')
 url="http://www.mondorescue.org/"
@@ -14,17 +15,17 @@ depends=(gcc)
 
 #There are two official mirrors. If one is not working try the other. The muskokamug.org seems faster.
 source=("ftp://ftp.mondorescue.org/src/${pkgname}-${pkgver}.tar.gz"
-	"dhcpc.patch"
+	"glibc_stime.patch"
 	"${pkgname}-${pkgver}.tar.gz.sig"
-	"dhcpc.patch.sig")
-sha512sums=('6205e16585604c7b3c55a9b5677dc42e60bf4d63d08b2c4feb6511cf1ec11a70820732c89706ad99dbd4d506a2146581a7fd7f33426a9d41ecdc6dfef1ded10f'
-	    'ba1d110e4207481d02f05cc5e79b927270439c97d1ec1455e5a173c903fed7fd91cc0953279873da61fe4a7b4b8a51e29ab48d2d531be3d2b861d92586728b3d'
-            'SKIP'
+	"glibc_stime.patch.sig")
+sha512sums=('56cfa5c95a2527022884e3ac7bcfe43cb95df12f162f2c1988003763d30dacfc3215ff87ffd11712e60114d390d211d9da4adf4da25456f8a01f6c19b479ccbc'
+	    'a95c18ad3ea7b312d1da14edc75de45a4d1f86374258711eea6bf7f9d007e758a95b7cee0d5e45bf99d1c2f29dfe29dff238e1c5a44723761cf2b554f888913e'
+	    'SKIP'
 	    'SKIP')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 < ${srcdir}/dhcpc.patch
+  patch -p1 < ${srcdir}/glibc_stime.patch	
 }
 
 build() {

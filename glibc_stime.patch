@@ -1,0 +1,66 @@
+# adapted from https://708350.bugs.gentoo.org/attachment.cgi?id=611780
+diff a/coreutils/date.c b/coreutils/date.c
+--- a/coreutils/date.c
++++ b/coreutils/date.c
+@@ -268,6 +268,9 @@
+ 		time(&ts.tv_sec);
+ #endif
+ 	}
++#if !ENABLE_FEATURE_DATE_NANO
++	ts.tv_nsec = 0;
++#endif
+ 	localtime_r(&ts.tv_sec, &tm_time);
+ 
+ 	/* If date string is given, update tm_time, and maybe set date */
+@@ -290,11 +293,12 @@
+ 		if (date_str[0] != '@')
+ 			tm_time.tm_isdst = -1;
+ 		ts.tv_sec = validate_tm_time(date_str, &tm_time);
++		ts.tv_nsec = 0;
+ 
+ 		maybe_set_utc(opt);
+ 
+ 		/* if setting time, set it */
+-		if ((opt & OPT_SET) && stime(&ts.tv_sec) < 0) {
++		if ((opt & OPT_SET) && clock_settime(CLOCK_REALTIME, &ts) < 0) {
+ 			bb_perror_msg("can't set date");
+ 		}
+ 	}
+diff a/libbb/missing_syscalls.c b/libbb/missing_syscalls.c
+--- a/libbb/missing_syscalls.c
++++ b/libbb/missing_syscalls.c
+@@ -16,14 +16,6 @@
+ 	return syscall(__NR_getsid, pid);
+ }
+ 
+-int stime(const time_t *t)
+-{
+-	struct timeval tv;
+-	tv.tv_sec = *t;
+-	tv.tv_usec = 0;
+-	return settimeofday(&tv, NULL);
+-}
+-
+ int sethostname(const char *name, size_t len)
+ {
+ 	return syscall(__NR_sethostname, name, len);
+diff a/util-linux/rdate.c b/util-linux/rdate.c
+--- a/util-linux/rdate.c
++++ b/util-linux/rdate.c
+@@ -67,9 +67,13 @@
+ 		time(&current_time);
+ 		if (current_time == remote_time)
+ 			bb_error_msg("current time matches remote time");
+-		else
+-			if (stime(&remote_time) < 0)
+-				bb_perror_msg_and_die("can't set time of day");
++		else {
++			struct timespec ts;
++			ts.tv_sec = remote_time;
++			ts.tv_nsec = 0;
++			if (clock_settime(CLOCK_REALTIME, &ts) < 0)
++ 				bb_perror_msg_and_die("can't set time of day");
++		}
+ 	}
+ 
+ 	if (flags != 1) /* not lone -s */
