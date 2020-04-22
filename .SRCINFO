@@ -1,0 +1,20 @@
+pkgbase = deeptags-git
+	pkgdesc = A Markdown notes manager
+	pkgver = 0.5.1.r8.g96fccbe
+	pkgrel = 1
+	url = https://github.com/SZinedine/DeepTags
+	install = deeptags.install
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = qt5-base
+	depends = qt5-svg
+	conflicts = deeptags
+	source = deeptags::git+https://github.com/SZinedine/DeepTags.git
+	md5sums = SKIP
+
+pkgname = deeptags-git
+

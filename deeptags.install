@@ -1,0 +1,7 @@
+post_install() {
+    ln -s /opt/deeptags/bin/deeptags /usr/bin/deeptags
+} 
+
+post_remove() {
+	rm -f /usr/bin/deeptags
+}
