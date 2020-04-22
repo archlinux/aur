@@ -2,7 +2,7 @@
 
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=vdr-markad
-pkgver=1.0.3
+pkgver=2.0.1
 _logover=ea2e182ec798375f3830f8b794e7408576f139ad
 epoch=1
 _vdrapi=2.4.1
@@ -13,13 +13,13 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('ffmpeg' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kfb77/vdr-plugin-markad/archive/v1.0.3.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/kfb77/vdr-plugin-markad/archive/v$pkgver.tar.gz"
         "$pkgname-logos-1.tar.bz2::https://projects.vdr-developer.org/git/vdr-plugin-markad.git/snapshot/vdr-plugin-markad-$_logover.tar.bz2"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('087b5300da3841d7790afdfa23aeaf1511cf5c848bb30a2c3532de8c3b9162f7'
+sha256sums=('16c4444d1cebc94bbc1a55f8373fb456dbe0421d2d4d8adbfe1c066a5731224b'
             'c5316bd48ebdb58ecad8bf8de29b2b92337aa8350a4d3340e8383301d4f7719f'
-            '614cbd493d5556249d17598a4a0a43eacfc084e9c0446b27f0cf6ff846dd8640')
+            '5b4f76d1ff31fc2aee847a070954bad1dbf00446c2e99269d9bf8331beb95e24')
 
 prepare() {
   cd "${srcdir}/vdr-plugin-${_plugname}-$pkgver"
