@@ -1,6 +1,6 @@
 pkgbase = jdk
 	pkgdesc = Oracle Java Development Kit
-	pkgver = 14
+	pkgver = 14.0.1
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	install = jdk.install
@@ -13,13 +13,13 @@ pkgbase = jdk
 	depends = hicolor-icon-theme
 	provides = java-environment=14
 	provides = java-environment-jdk=14
-	source = https://download.oracle.com/otn-pub/java/jdk/14+36/076bab302c7b4508975440c56f6cc26a/jdk-14_linux-x64_bin.tar.gz
+	source = https://download.oracle.com/otn-pub/java/jdk/14.0.1+7/664493ef4a6946b186ff29eb326336a2/jdk-14.0.1_linux-x64_bin.tar.gz
 	source = java.desktop
 	source = jconsole.desktop
 	source = jshell.desktop
 	source = java_16.png
 	source = java_48.png
-	sha256sums = 4639bbaecc9cc606f1a4b99fda1efcaefcbf57a7025b3828b095093a6c866afd
+	sha256sums = 927cfcfff502c5e73db33bb6fee7f29f62bd0e831233fd78cd58a5b998bc73be
 	sha256sums = 4b38647428fc576f423197104a5721c0a07c825196dad426359c78fd19d1f823
 	sha256sums = b517c7883a81a9951b3b1ddae0427619212808324482b5f02a9b7810328c2ce6
 	sha256sums = 3061d6d325067b6a0e7f900ee699322741b53fd6da200209844edc54530e2bef
