@@ -1,13 +1,13 @@
 pkgbase = finesse
 	pkgdesc = FINESSE: Frequency domain INterfErometer Simulation SoftwarE
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gwoptics.org/finesse
 	arch = any
 	license = GPL3
 	optdepends = gnuplot: for test_plot.kat example
-	source = https://git.ligo.org/finesse/finesse/-/archive/2.3.1/finesse-2.3.1.tar.gz
-	sha256sums = 97ccffc3af494d32fa47edb4792283ef3101f8476c0c23ff82f266b767737cdd
+	source = git+https://git.ligo.org/finesse/finesse#tag=2.3.1
+	sha256sums = SKIP
 
 pkgname = finesse
 
