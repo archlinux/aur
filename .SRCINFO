@@ -9,7 +9,7 @@ pkgbase = nodejs-mapscii
 	depends = npm
 	noextract = mapscii-0.3.1.tgz
 	source = https://registry.npmjs.org/mapscii/-/mapscii-0.3.1.tgz
-	sha1sums = 3d522267a0067849f81fedf4dc783a2e11d4072b
+	sha1sums = fecb9e96de9408effa8819cf83e5a5d379324198
 
 pkgname = nodejs-mapscii
 
