@@ -1,13 +1,13 @@
 pkgbase = ventoy
 	pkgdesc = A new multiboot USB solution
 	pkgver = 1.0.06
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ventoy.net/
 	arch = x86_64
 	arch = i686
 	license = GPL3
 	depends = bash
-	depends = fdisk
+	depends = util-linux
 	provides = ventoy
 	conflicts = ventoy
 	source = https://github.com/ventoy/Ventoy/releases/download/v1.0.06/ventoy-1.0.06-linux.tar.gz

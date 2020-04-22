@@ -1,13 +1,13 @@
 # Maintainer: DuckSoft <realducksoft at gmail dot com>
 pkgname=ventoy
 _pkgname=ventoy
-pkgrel=1
+pkgrel=2
 pkgver=1.0.06
 pkgdesc='A new multiboot USB solution'
 arch=('x86_64' 'i686')
 provides=(ventoy)
 conflicts=(ventoy)
-depends=('bash' 'fdisk')
+depends=('bash' 'util-linux')
 license=('GPL3')
 url='http://www.ventoy.net/'
 source=("https://github.com/ventoy/Ventoy/releases/download/v1.0.06/ventoy-$pkgver-linux.tar.gz")
