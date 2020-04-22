@@ -1,0 +1,21 @@
+pkgbase = pep-engine-hg
+	pkgdesc = A Free Software library for automatic key management and encryption of messages.
+	pkgver = r4205.f75e9274551f
+	pkgrel = 1
+	url = https://pep.software
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = mercurial
+	makedepends = asn1c
+	makedepends = make
+	makedepends = yml2
+	depends = libetpan-fdik-git
+	depends = gpgme
+	depends = sqlite
+	provides = pep-engine
+	source = hg+https://pep.foundation/dev/repos/pEpEngine
+	md5sums = SKIP
+
+pkgname = pep-engine-hg
+
