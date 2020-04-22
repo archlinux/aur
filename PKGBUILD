@@ -8,7 +8,7 @@ pkgdesc="Generic input driver for the X.Org server based on libinput - patched f
 arch=('x86_64')
 license=('custom')
 url="http://xorg.freedesktop.org/"
-depends=('libinput>=1.2.0')
+depends=('libinput-hires-scroll>=1.2.0')
 makedepends=('xorg-server-devel' 'X-ABI-XINPUT_VERSION=24.1' 'libxi' 'libx11' 'xorgproto')
 conflicts=($_pkgname 'xorg-server<1.19.0' 'X-ABI-XINPUT_VERSION<24' 'X-ABI-XINPUT_VERSION>=25')
 provides=($_pkgname)
