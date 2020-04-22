@@ -1,0 +1,13 @@
+pkgbase = sierrawireless-swiflash-zip
+	pkgdesc = Sierra Wireless swiflash firmware update tool for WP/AR Legato USB connected devices
+	pkgver = 5.1
+	pkgrel = 1
+	url = https://source.sierrawireless.com/resources/airprime/software/swiflash
+	install = sierrawireless-swiflash-zip.install
+	arch = x86_64
+	license = GPL2
+	source = http://downloads.sierrawireless.com/tools/swiflash/swiflash.zip
+	sha256sums = 3ebc106f001174225a78aef98b12c130ce0d91e9ee77b72285ce0843f233d08c
+
+pkgname = sierrawireless-swiflash-zip
+
