@@ -22,7 +22,7 @@ fi
 
 _reponame=brave-browser
 pkgname=brave
-pkgver=1.7.92
+pkgver=1.7.98
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -51,8 +51,8 @@ do
 done
 
 # VAAPI patches from chromium-vaapi in AUR
-source+=("vaapi-fix.patch::https://aur.archlinux.org/cgit/aur.git/plain/vaapi-fix.patch?h=chromium-vaapi&id=5710b0a929bf34c34ddbbfb937219f00fbf88174"
-         "vaapi-fix-wayland-init.patch::https://aur.archlinux.org/cgit/aur.git/plain/vaapi-fix-wayland-init.patch?h=chromium-vaapi&id=5710b0a929bf34c34ddbbfb937219f00fbf88174")
+source+=("vaapi-build-fix.patch::https://aur.archlinux.org/cgit/aur.git/plain/vaapi-build-fix.patch?h=chromium-vaapi&id=2421d695f494fd04797ac6eda81e66857664b854"
+         "vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=2421d695f494fd04797ac6eda81e66857664b854")
 
 sha256sums=('SKIP'
             '2b07eabd8b3d42456d2de44f6dca6cf2e98fa06fc9b91ac27966fca8295c5814'
@@ -62,8 +62,8 @@ sha256sums=('SKIP'
             '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
             '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
-            '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a'
-            'a4c022263b474ae14abd899b8e453f7d9ed9c0715b0b248b8a423aa2777095c4')
+            'fad5e678d62de0e45db1c2aa871628fdc981f78c26392c1dccc457082906a350'
+            '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a')
 
 prepare() {
     # Apply Brave patches
@@ -79,25 +79,24 @@ prepare() {
     msg2 "Prepare the environment..."
     npm install
     npm run sync -- --all --run_hooks --run_sync || npm run init
-    #npm run init
 
     msg2 "Apply Chromium patches..."
     cd src/
 
     # https://crbug.com/1049258
-    patch -Np1 -i "${srcdir}"/rename-Relayout-in-DesktopWindowTreeHostPlatform.patch || true
-    patch -Np1 -i "${srcdir}"/rebuild-Linux-frame-button-cache-when-activation.patch || true
+    patch -Np1 -i "${srcdir}"/rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
+    patch -Np1 -i "${srcdir}"/rebuild-Linux-frame-button-cache-when-activation.patch
 
     # Load bundled Widevine CDM if available (see chromium-widevine in the AUR)
     # M79 is supposed to download it as a component but it doesn't seem to work
     patch -Np1 -i "${srcdir}"/chromium-widevine.patch
 
     # https://crbug.com/skia/6663#c10
-    patch -Np0 -i "${srcdir}"/chromium-skia-harmony.patch || true
+    patch -Np0 -i "${srcdir}"/chromium-skia-harmony.patch
 
     # Fix VA-API on Intel and Nvidia
-    patch -Np1 -i "${srcdir}"/vaapi-fix.patch
-    patch -Np1 -i "${srcdir}"/vaapi-fix-wayland-init.patch
+    patch -Np1 -i "${srcdir}"/vdpau-support.patch || true
+    patch -Np1 -i "${srcdir}"/vaapi-build-fix.patch || true
 
     # Force script incompatible with Python 3 to use /usr/bin/python2
     sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
