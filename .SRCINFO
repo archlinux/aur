@@ -1,6 +1,6 @@
 pkgbase = jre
 	pkgdesc = Oracle Java Runtime Environment
-	pkgver = 14
+	pkgver = 14.0.1
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	install = jre.install
@@ -31,8 +31,8 @@ pkgbase = jre
 	backup = etc/java14-jre/logging.properties
 	backup = etc/java14-jre/net.properties
 	backup = etc/java14-jre/sound.properties
-	source = https://download.oracle.com/otn-pub/java/jdk/14+36/076bab302c7b4508975440c56f6cc26a/jdk-14_linux-x64_bin.tar.gz
-	sha256sums = 4639bbaecc9cc606f1a4b99fda1efcaefcbf57a7025b3828b095093a6c866afd
+	source = https://download.oracle.com/otn-pub/java/jdk/14.0.1+7/664493ef4a6946b186ff29eb326336a2/jdk-14.0.1_linux-x64_bin.tar.gz
+	sha256sums = 927cfcfff502c5e73db33bb6fee7f29f62bd0e831233fd78cd58a5b998bc73be
 
 pkgname = jre
 
