@@ -12,7 +12,7 @@ pkgbase = ruby-sequel
 	provides = ruby-sequel
 	conflicts = sequel
 	noextract = sequel-5.31.0.gem
-	source = https://rubygems.org/downloads/sequel-5.10.0.gem
+	source = https://rubygems.org/downloads/sequel-5.31.0.gem
 	sha256sums = 19f11682cc9ac11eb6c8c897120c1daf256db88dceef955b89dc4e8ba9086257
 
 pkgname = ruby-sequel
