@@ -1,0 +1,18 @@
+# Modifications to this file will be overwritten by the package, so
+# use a systemd override instead.
+#
+# /etc/systemd/system/calibre-server.service.d/override.conf
+
+[Unit]
+Description=Calibre Server Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=calibre
+Group=calibre
+ExecStart=/usr/bin/calibre-server --port=8080 /srv/calibre
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,17 @@
+pkgbase = calibre-server-systemd
+	pkgdesc = Systemd service for calibre-server
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/kovidgoyal/calibre
+	arch = any
+	license = GPL
+	depends = calibre
+	source = calibre-server.service
+	source = calibre-server.tmpfiles
+	source = calibre-server.sysusers
+	sha256sums = 4d043544c00969a9c70ab603ef202384b2134974499fcbcb6c804b150a47af25
+	sha256sums = a436a979ca3a9e78bdc410bd0027d97956bfa8d2d4f2b7bdf3f7d2ed199dd6a8
+	sha256sums = 435d956100b7474133ec58764d7e9d8d641fbac0e623952769e9817d7187025d
+
+pkgname = calibre-server-systemd
+
