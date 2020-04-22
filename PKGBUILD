@@ -1,8 +1,8 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-vfio-lts
-pkgver=5.4.33
-pkgrel=3
+pkgver=5.4.34
+pkgrel=1
 pkgdesc='LTS Linux VFIO'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -18,10 +18,6 @@ source=(
   config         # the main kernel config file
   0001-add-sysctl-and-CONFIG-for-unprivileged_userns_clone.patch
   sphinx-workaround.patch
-
-  # From stable-queue
-  revert-acpi-ec-do-not-clear-boot_ec_is_ecdt-in-acpi_ec_add.patch
-  drm-amdgpu-fix-the-hw-hang-during-perform-system-reboot-and-reset.patch
   add-acs-overrides.patch
   i915-vga-arbiter.patch
 )
@@ -30,13 +26,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('b5579621302a6169b389b64dd9ef084df3bb2f11d91dd73273f76e2323223861'
+sha256sums=('903ec1334daba6a626688f799cc947b420cf6fc8ce83055313dc4e9978d64cd2'
             'SKIP'
             '0c318ec33c82b4ea41117b4d0ab464775e13dc6e8b20aea6c655eb4887eafa0e'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2'
             'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e'
-            '9fd93b899e03accd31ab357a70e538220c424ce8769e63a8b961fa627ab27c0a'
-            '3015cbbcd0527bef418c45febed7b18a97e1783901ecf9b3693024a9ee867138'
             '4073312646af8ba01c000f258041b2dc8634a8d9a4a4be8dc0bf12a9b4041cb1'
             '50880279bab5793c89a6823d751d3c84ead5efd5c4c0d38b921a14061fc0d336')
 
