@@ -2,7 +2,7 @@
 
 set -e
 
-name="ODAFileConverter_QT5_lnxX64_4.7dll.deb"
+name="ODAFileConverter_QT5_lnxX64_7.2dll.deb"
 
 wget -N "https://download.opendesign.com/guestfiles/ODAFileConverter/$name" -P /tmp
 new=( $(sha256sum "/tmp/$name") )
@@ -13,9 +13,10 @@ if [ "$new" = "$old" ]; then
     exit 0
 fi
 
-ver=$(ar p "/tmp/$name" control.tar.gz | tar xzO ./control | grep -oP "Version: \K.+$")
-sed -i "/^pkgver=/s/.+/$ver" PKGBUILD
-makepkg -f
+ver=$(ar p "/tmp/$name" control.tar.xz | tar xJO ./control | grep -oP "Version: \K.+$")
+sed -Ei "s/pkgver=[0-9\.]+/pkgver=$ver/
+        s/sha256sums=\('[[:alnum:]]{64}/sha256sums=\('$new/" PKGBUILD
+makepkg
 makepkg --printsrcinfo > .SRCINFO
 git commit -a -m "$ver"
 git push
