@@ -1,0 +1,12 @@
+[Unit]
+Description=Nps Server Service
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=120
+ExecStart=/usr/bin/nps service
+
+[Install]
+WantedBy=multi-user.target
