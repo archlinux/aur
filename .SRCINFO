@@ -1,7 +1,7 @@
 pkgbase = adwaita-qt4
 	pkgdesc = A style to bend Qt applications to look like they belong into GNOME Shell
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FedoraQt/adwaita-qt
 	arch = x86_64
 	license = GPL
