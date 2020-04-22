@@ -1,14 +1,14 @@
 pkgbase = jitsi-meet-prosody-plugins
 	pkgdesc = Prosody plugins for jitsi-meet
-	pkgver = 1.0.3992
+	pkgver = 1.0.4025
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
 	license = Apache
 	depends = prosody
 	options = !strip
-	source = https://download.jitsi.org/stable/jitsi-meet-prosody_1.0.3992-1_all.deb
-	sha256sums = f7f539bec8b5ab00cb401ff4f50c54dda27df9c98012069e6d6c7ab2943ac3ac
+	source = https://download.jitsi.org/stable/jitsi-meet-prosody_1.0.4025-1_all.deb
+	sha256sums = ddd3edd7c7df0ba9e79dec4b5b8c3d19139d4540205a47fedda36352567fd5f8
 
 pkgname = jitsi-meet-prosody-plugins
 
