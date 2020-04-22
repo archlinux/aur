@@ -8,6 +8,7 @@ pkgbase = readarr
 	arch = armv7h
 	license = GPL3
 	depends = sqlite
+	optdepends = calibre: calibre-server as root folder
 	optdepends = sabnzbd: usenet downloader
 	optdepends = nzbget: usenet downloader
 	optdepends = transmission-cli: torrent downloader (CLI and daemon)

@@ -10,7 +10,8 @@ url="https://github.com/Readarr/Readarr"
 license=("GPL3")
 depends=('sqlite')
 options=('!strip' 'staticlibs')
-optdepends=('sabnzbd: usenet downloader'
+optdepends=('calibre: calibre-server as root folder'
+            'sabnzbd: usenet downloader'
             'nzbget: usenet downloader'
             'transmission-cli: torrent downloader (CLI and daemon)'
             'transmission-gtk: torrent downloader (GTK+)'
