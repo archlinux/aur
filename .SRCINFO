@@ -1,7 +1,7 @@
 pkgbase = kapowbang-bin
 	pkgdesc = If you can script it, you can HTTP it.
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BBVA/kapow
 	arch = x86_64
 	arch = i686
@@ -14,13 +14,13 @@ pkgbase = kapowbang-bin
 	validpgpkeys = 1892F073BD1E37829A8839270D7E842B63AADC23
 	sha512sums = d195715efd5aa79bfaed53bef7ce247dd8360512b24c9d03e0241bafed50dbb5aa9869dd4cd62a8da3dd2fc7414dabf642ae1dbeba7bb26d8e3375c8ccb36bc0
 	source_x86_64 = kapow_x86_64::https://github.com/BBVA/kapow/releases/download/v0.5.1/kapow_0.5.1_linux_amd64
-	sha512sums_x86_64 = cdd74ebb5cb58524929e0409ea35cf4362ce3f893fedbd801abd3011722b8902b5549733e1cbd667592ba815337795194595f8a5792d0cc61e835a529b3fcc65
+	sha512sums_x86_64 = 3a6209d0eda992c63a73b02b79689608cc686de0de43b8d22f16164cc8f8bedc98f95d04bb5274213098e91bdcd6129192f272e5f70bd62064a7f03eee7335a9
 	source_i686 = kapow_i686::https://github.com/BBVA/kapow/releases/download/v0.5.1/kapow_0.5.1_linux_386
-	sha512sums_i686 = 71d8a367cc9d96bbd2d6662e079110d3a8a156cd2820a4583addc451515b2e3e4a81b0c639d26e2e7faad9afe72399bee4ee876a24789dd950c1ca76f4c4adc6
+	sha512sums_i686 = 1028c21fbfc30cefc30d69415b841ba2f3575e15b6895c09f8c9b7424635fc1d06bcfc6ee2c0c896bd08a111b25afafe615dd6208934b97d7ddf91e9a585be00
 	source_aarch64 = kapow_aarch64::https://github.com/BBVA/kapow/releases/download/v0.5.1/kapow_0.5.1_linux_arm64
-	sha512sums_aarch64 = 4732b03e522b1f7e029d313852b7f47b28ac2c745ab4313e5c986186df3b99a25e588c383a33a62edbcdd846820f3e813fee4897b3ff0b9f3f5f3ae7e0552962
+	sha512sums_aarch64 = 61dced97b7885cd9a4aea35fd1ba033192f80090da80b2739b60b4b0694e46769e7de8d589e1b3be38bd61c2c3df3869f7ef11f39de254af451ac70979ddcc34
 	source_arm6h = kapow_arm6h::https://github.com/BBVA/kapow/releases/download/v0.5.1/kapow_0.5.1_linux_armv6
-	sha512sums_arm6h = 16778be0afdb69bdecbf97b77ade68bd9c5ac1e9f01780a60d06f8a2f81f3a0c2219c874625ac0bdd8454905cae81b9aea5e4fcf5d6db78cf589baf790822bd0
+	sha512sums_arm6h = 8be291c1ae0e75a604a09b51d0bc8682a377d8c0da18192576be57dee9f3e9e25882df56bafbb5dc7078b5c8877f8cbb81430ae0b1233a3ef179562510353516
 
 pkgname = kapowbang-bin
 
