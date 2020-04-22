@@ -1,4 +1,4 @@
-# Maintainer: TheBitStick <thebitstick@librem.one> <the@bitstick.rip>
+# Maintainer: TheBitStick <the at bitstick dot rip>
 pkgname=nautilus-gnome-disks-git
 _pkgname=nautilus-gnome-disks
 pkgver=r4.496beb7
