@@ -7,12 +7,12 @@ pkgname='maestral'
 provides=('maestral')
 conflicts=('maestral-git')
 pkgver=1.0.0.dev4
-pkgrel=2
+pkgrel=3
 pkgdesc='A light-weight and open-source CLI Dropbox client.'
 arch=('x86_64')
 url="https://github.com/SamSchott/${_srcname}"
 license=('MIT')
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}.tar.gz" "maestral@.service")
 makedepends=('python-setuptools')
 depends=(
     'python>=3.8'
@@ -31,7 +31,8 @@ depends=(
     'python-sdnotify'
     'python-watchdog>=0.10.0'
     'python-systemd')
-md5sums=('31c8ca3a4de13d718e59dbbe57268d1a')
+md5sums=('31c8ca3a4de13d718e59dbbe57268d1a'
+         '841d7d34ae18d512e3d2fbe453702744')
 
 build() {
     cd "${srcdir}/${_srcname}-${pkgver}"
@@ -45,4 +46,7 @@ package() {
     # Install the licence
     install -Dm644 "${srcdir}/${_srcname}-${pkgver}/LICENSE.txt" \
     	"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # Install the systemd unit provided
+    install -Dm644 "${srcdir}/maestral@.service" \
+        "${pkgdir}/usr/lib/systemd/user/maestral@.service"
 }

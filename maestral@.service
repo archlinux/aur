@@ -1,0 +1,16 @@
+[Unit]
+Description = Maestral daemon for the config %I
+Documentation = "https://github.com/SamSchott/maestral-dropbox/wiki"
+
+[Service]
+Type = notify
+NotifyAccess = exec
+ExecStart = /usr/bin/maestral start --foreground --config-name %i
+ExecReload = /usr/bin/maestral restart --config-name %i
+ExecStop = /usr/bin/maestral stop --config-name %i
+RestartSec = 1
+Restart = on-failure
+WatchdogSec = 30s
+
+[Install]
+WantedBy = default.target
