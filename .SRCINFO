@@ -1,0 +1,15 @@
+pkgbase = the-sims-online-data
+	pkgdesc = The Sims Online game data. Patched with TSO-Version-Patcher to get the N&I version used by FreeSo
+	pkgver = 1.1097.1.0
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	groups = games
+	license = custom:eula
+	makedepends = cabextract
+	makedepends = tso-version-patcher
+	source = http://archive.org/download/Fileplanet_dd_042006/Fileplanet_dd_042006.tar/042006/TSO_Installer_v1.1239.1.0.zip
+	sha256sums = 3b10be6fb736116ae32051e9ad7a506b224b5ef5d98139f0312eb2e6dcadcce4
+
+pkgname = the-sims-online-data
+
