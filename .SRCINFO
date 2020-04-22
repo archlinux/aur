@@ -1,7 +1,7 @@
 pkgbase = tso-version-patcher
 	pkgdesc = .NET Core filesystem patcher based off of BsDiff. For patching TSO v1.1239.1.0 back to N&I, but can be used for anything.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/riperiperi/TSO-Version-Patcher
 	arch = x86_64
 	license = MPL2
@@ -10,7 +10,7 @@ pkgbase = tso-version-patcher
 	source = https://github.com/riperiperi/TSO-Version-Patcher/releases/download/v1.0/Release.zip
 	source = tso-version-patcher.sh
 	md5sums = 0815e2bef5942cfee82d41577a71250c
-	md5sums = a8ceab8e1f7933e872ad6d069a167470
+	md5sums = 68c6ad329dbf62e69196c0bb7f0ec919
 
 pkgname = tso-version-patcher-bin
 
