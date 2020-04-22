@@ -1,12 +1,11 @@
 pkgbase = linux-identd
 	pkgdesc = A user identification daemon for Linux
 	pkgver = 1.3
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.fukt.bsnet.se/~per/identd/
-	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://distro.ibiblio.org/pub/linux/distributions/sourcemage/mirror/linux-identd-1.3.tar.gz
+	source = http://www.fukt.bsnet.se/~per/identd/linux-identd-1.3.tar.gz
 	source = identd
 	md5sums = c3517f612b351e46951d2ecb0c60b767
 	md5sums = d429efff1b7256f8436568abe93a587d
