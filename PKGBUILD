@@ -1,7 +1,7 @@
 # Maintainer: Felix Fung <fylixeoi@gmail.com>
 
 pkgname=apache-zeppelin
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Data analytics and visualization notebook with backends of Spark, Hadoop, SQL and more"
 arch=('x86_64')
