@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-git
 	pkgdesc = An incremental parsing system for programming tools
 	pkgver = 0.16.5.r2995.c393591e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tree-sitter/tree-sitter
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,9 @@ pkgbase = tree-sitter-git
 	makedepends = cargo
 	makedepends = npm
 	makedepends = emscripten
+	provides = tree-sitter
 	provides = libtree-sitter.so
+	conflicts = tree-sitter
 	source = git+https://github.com/tree-sitter/tree-sitter
 	sha512sums = SKIP
 

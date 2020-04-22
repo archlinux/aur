@@ -3,12 +3,13 @@
 _pkgname=tree-sitter
 pkgname=$_pkgname-git
 pkgver=0.16.5.r2995.c393591e
-pkgrel=1
+pkgrel=2
 pkgdesc='An incremental parsing system for programming tools'
 arch=('x86_64')
 url='https://github.com/tree-sitter/tree-sitter'
 license=('MIT')
-provides=('libtree-sitter.so')
+provides=('tree-sitter' 'libtree-sitter.so')
+conflicts=('tree-sitter')
 makedepends=('git' 'cargo' 'npm' 'emscripten')
 source=("git+$url")
 sha512sums=('SKIP')
