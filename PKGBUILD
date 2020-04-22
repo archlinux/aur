@@ -1,6 +1,7 @@
 # Maintainer: Yacob Zitouni <yacob.zitouni at gmail dot com>
 
 pkgname=tso-version-patcher-bin
+pkgbase=tso-version-patcher
 pkgver=1.0
 pkgrel=1
 pkgdesc=".NET Core filesystem patcher based off of BsDiff. For patching TSO v1.1239.1.0 back to N&I, but can be used for anything."
