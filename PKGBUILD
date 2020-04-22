@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=cpuid2cpuflags
-pkgver=8
+pkgver=9
 pkgrel=1
 pkgdesc='Tool to generate CPU_FLAGS_* for your CPU'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/mgorny/cpuid2cpuflags/'
 license=('BSD')
 depends=('glibc')
 source=("https://github.com/mgorny/cpuid2cpuflags/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('db8d361e9c2ec7568ec2728b84f92412d482dc78a357e226e2bd747eb97af7a1')
+sha256sums=('4f54a02b0ecfb47ee6bad55e243946852d463b21c5911acf8bba2ecfecdec8f6')
 
 build() {
     cd "${pkgname}-${pkgver}"
