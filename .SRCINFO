@@ -1,8 +1,8 @@
 pkgbase = dosbox-staging
-	pkgdesc = A modernized DOSBox project using current development practices and tools, fixing issues, adding features that better support today's systems
-	pkgver = v0.75.0.pre
+	pkgdesc = DOS/x86 emulator focusing on ease of use. Based on DOSBox
+	pkgver = 0.75.0.rc1
 	pkgrel = 1
-	url = https://github.com/dreamer/dosbox-staging
+	url = https://github.com/dosbox-staging/dosbox-staging
 	arch = any
 	license = GPL2
 	makedepends = autoconf
@@ -17,12 +17,8 @@ pkgbase = dosbox-staging
 	optdepends = ncurses
 	provides = dosbox
 	conflicts = dosbox
-	source = https://github.com/dreamer/dosbox-staging/archive/v0.75.0-pre.tar.gz
-	source = dosbox-staging.svg
-	source = dosbox-staging.desktop
-	md5sums = fb08c1fe032a7832c3ee8989526c7d95
-	md5sums = ecb87451af9e962513d32dc452aa7213
-	md5sums = a0d2462e8e6a1cb0e1e09c318e280414
+	source = https://github.com/dosbox-staging/dosbox-staging/archive/v0.75.0-rc1.tar.gz
+	md5sums = 61ef380463ee89c15ccea6e7a3930913
 
 pkgname = dosbox-staging
 
