@@ -1,0 +1,17 @@
+pkgbase = nautilus-gnome-disks
+	pkgdesc = Allows you to restore/write/flash a disk image to storage devices using GNOME Disks from Nautilus
+	pkgver = 0.1.1
+	pkgrel = 2
+	url = https://github.com/thebitstick/nautilus-gnome-disks
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-nautilus
+	depends = gnome-disk-utility
+	provides = nautilus-gnome-disks
+	conflicts = nautilus-gnome-disks
+	source = https://github.com/thebitstick/nautilus-gnome-disks/archive/0.1.1/nautilus-gnome-disks-0.1.1.tar.gz
+	sha512sums = 4471f4087f0a5be3701ec1aa66bae5ef68ddfa0f0f75d7c2e6de5b130721fe1f94be8f546f2afcfd60ad291da74f72a091761daea9cdb7b7b755d95f90d05b00
+
+pkgname = nautilus-gnome-disks
+
