@@ -1,5 +1,5 @@
 pkgname=jitsi-meet
-pkgver=4039
+pkgver=4041
 pkgrel=2
 pkgdesc="WebRTC JavaScript video conferences"
 arch=("x86_64")
@@ -15,7 +15,7 @@ backup=("opt/jitsi-meet/config.js"
         "opt/jitsi-meet/logging_config.js")
 options=("!strip")
 source=($pkgname-$pkgver.tar.gz::https://github.com/jitsi/jitsi-meet/archive/$pkgver.tar.gz)
-md5sums=('8c8e92686254a711122478b1bdad8fd3')
+md5sums=('870d38517332d621a79e4b63a8c0fbf6')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
