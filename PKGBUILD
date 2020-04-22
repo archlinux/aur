@@ -1,7 +1,7 @@
 _pkgname=jitsi-videobridge
 pkgname=${_pkgname}-bin
 epoch=1
-pkgver=2.1+169+ga28eb88e
+pkgver=2.1+183+gdbddd169
 pkgrel=1
 _debname=${_pkgname}2
 _debrel=1
@@ -26,8 +26,8 @@ source=("https://download.jitsi.org/stable/${_debname}_${pkgver//+/-}-${_debrel}
         'tmpfiles.conf'
         'config'
         'sip-communicator.properties')
-sha256sums=('d8a091c000bbbd6ea3ea77ef6a54e63c04d3483169cadce6b0187e318b97c499'
-            '834361b7a5f926a900b5c39dc3f177085de2341527c2d68696de3f0c77e02e3a'
+sha256sums=('c2dd14437e4e655818bc1c3890b75384e5980042e8475a1142540afc04555ada'
+            '33a8329b2b886246dee8cca07b93e1c8977191170256ea65889d7a63937c06a9'
             '5b47b031d7a1dec536d3fc53e71d971b1052ea2e78e1060b404a792211363515'
             '885923de1718b757826596aaec8e58025ae40ed622bad4b5f43b12ab975c86a2'
             '4d458fdac2f1a5ff761d6239076e7cfafe4812a3d4a12e754b48c828f46a1f44'
@@ -43,6 +43,7 @@ package() {
   mv "${pkgdir}/etc/sysctl.d" "${pkgdir}/usr/lib/sysctl.d"
   rm -r "${pkgdir}/lib"
   rm -r "${pkgdir}/usr/share/doc"
+  chmod 0750 "${pkgdir}/etc/jitsi/videobridge"
 
   sed -i "s@/var/log/jitsi@/var/log/jitsi-videobridge@" "${pkgdir}/etc/jitsi/videobridge/log4j2.xml"
 
