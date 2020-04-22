@@ -3,7 +3,7 @@
 
 _name=drop-down-terminal-x
 pkgname="gnome-shell-extension-${_name}"
-pkgver='1.4.4'
+pkgver='1.4.6'
 pkgrel='1'
 pkgdesc="Drop Down Terminal X extension for the Gnome Shell"
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('gnome-shell-extension-drop-down-terminal'
     'gnome-shell-extension-drop-down-terminal-x-git')
 depends=('gnome-shell')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('d22a37aab1eb677355052d568cfb5c9021aa9ecfc1ba5ab6e426901828e424bc')
+sha256sums=('d6d8cca6c2be17f3cd69147933aba71ceff11abd829619db52e443b6e86f44f8')
 
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
