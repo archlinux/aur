@@ -13,7 +13,7 @@
 pkgbase=lib32-llvm-git
 pkgname=(lib32-llvm-git lib32-llvm-libs-git)
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit, git)"
-pkgver=11.0.0_r346866.2effe8f5e72
+pkgver=11.0.0_r352204.aca335955c0
 pkgrel=1
 arch=('x86_64')
 url='https://llvm.org/'
@@ -45,7 +45,7 @@ prepare() {
     
    cd llvm-project
     # remove code parts not needed to build this package
-    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl libc mlir
+    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl libc mlir flang
 
 }
 
@@ -57,26 +57,27 @@ build() {
     LIB32_CXXFLAGS="$CXXFLAGS"" -m32"
 
     cmake "$srcdir"/llvm-project/llvm  -G Ninja \
-        -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt" \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DLLVM_LIBDIR_SUFFIX=32 \
+        -D LLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt" \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D CMAKE_INSTALL_PREFIX=/usr \
+        -D LLVM_LIBDIR_SUFFIX=32 \
         -D CMAKE_C_FLAGS="$LIB32_CFLAGS" \
         -D CMAKE_CXX_FLAGS="$LIB32_CXXFLAGS" \
-        -DLLVM_TARGET_ARCH:STRING=i686 \
-        -DLLVM_HOST_TRIPLE=$CHOST \
-        -DLLVM_DEFAULT_TARGET_TRIPLE="i686-pc-linux-gnu" \
-        -DLLVM_BUILD_LLVM_DYLIB=ON \
-        -DLLVM_LINK_LLVM_DYLIB=ON \
-        -DLLVM_ENABLE_BINDINGS=OFF \
-        -DLLVM_ENABLE_RTTI=ON \
-        -DLLVM_ENABLE_FFI=ON \
-        -DLLVM_BUILD_DOCS=OFF \
-        -DLLVM_ENABLE_SPHINX=OFF \
-        -DLLVM_ENABLE_DOXYGEN=OFF \
-        -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
-        -DLLVM_BINUTILS_INCDIR=/usr/include \
-        -DLLVM_APPEND_VC_REV=ON
+        -D LLVM_TARGET_ARCH:STRING=i686 \
+        -D LLVM_HOST_TRIPLE=$CHOST \
+        -D LLVM_DEFAULT_TARGET_TRIPLE="i686-pc-linux-gnu" \
+        -D LLVM_BUILD_LLVM_DYLIB=ON \
+        -D LLVM_LINK_LLVM_DYLIB=ON \
+        -D LLVM_ENABLE_BINDINGS=OFF \
+        -D LLVM_ENABLE_RTTI=ON \
+        -D LLVM_ENABLE_FFI=ON \
+        -D LLVM_BUILD_DOCS=OFF \
+        -D LLVM_ENABLE_SPHINX=OFF \
+        -D LLVM_ENABLE_DOXYGEN=OFF \
+        -D FFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
+        -D LLVM_BINUTILS_INCDIR=/usr/include \
+        -D LLVM_APPEND_VC_REV=ON \
+        -D LLVM_VERSION_SUFFIX=""
 
     ninja $NINJAFLAGS all
 }
@@ -96,8 +97,8 @@ conflicts=('lib32-llvm' 'lib32-clang')
 
     DESTDIR="$pkgdir" ninja $NINJAFLAGS install
 
-    # The runtime library goes into lib32-llvm-libs
-    mv "$pkgdir"/usr/lib32/lib{LLVM,LTO}*.so* "$srcdir"
+    # The runtime library goes into lib32-llvm-libs-git
+    mv "$pkgdir"/usr/lib32/lib{LLVM,LTO,Remarks}*.so* "$srcdir"
     mv -f "$pkgdir"/usr/lib32/LLVMgold.so "$srcdir"
 
     
@@ -130,7 +131,7 @@ conflicts=('lib32-llvm-libs')
     install -d "$pkgdir/usr/lib32"
 
     cp -P \
-        "$srcdir"/lib{LLVM,LTO}*.so* \
+        "$srcdir"/lib{LLVM,LTO,Remarks}*.so* \
         "$srcdir"/LLVMgold.so \
         "$pkgdir/usr/lib32/"
 
