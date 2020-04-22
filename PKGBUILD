@@ -2,10 +2,10 @@
 
 pkgname=libupnp-git
 pkgver=1.12.1.r3.g0497e61
-pkgrel=1
+pkgrel=2
 pkgdesc="Portable open source UPnP development kit"
 arch=('i686' 'x86_64')
-url="http://pupnp.sourceforge.net/"
+url="https://pupnp.sourceforge.io/"
 license=('BSD')
 depends=('glibc')
 makedepends=('git')
@@ -27,7 +27,8 @@ build() {
 
   ./bootstrap
   ./configure \
-    --prefix="/usr"
+    --prefix="/usr" \
+    --enable-reuseaddr
   make
 }
 

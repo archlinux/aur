@@ -1,8 +1,8 @@
 pkgbase = libupnp-git
 	pkgdesc = Portable open source UPnP development kit
 	pkgver = 1.12.1.r3.g0497e61
-	pkgrel = 1
-	url = http://pupnp.sourceforge.net/
+	pkgrel = 2
+	url = https://pupnp.sourceforge.io/
 	arch = i686
 	arch = x86_64
 	license = BSD
