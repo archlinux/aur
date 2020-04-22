@@ -1,7 +1,7 @@
 diff -Naurp a/jpegxl.cmake b/jpegxl.cmake
---- a/jpegxl.cmake	2020-02-27 00:53:11.000000000 +0000
-+++ b/jpegxl.cmake	2020-02-27 00:53:13.000000000 +0000
-@@ -437,9 +437,9 @@ endif()  # APPLE
+--- a/jpegxl.cmake	2020-04-22 00:42:34.000000000 +0000
++++ b/jpegxl.cmake	2020-04-22 00:42:38.000000000 +0000
+@@ -457,9 +457,9 @@ endif()  # APPLE
  install(TARGETS jpegxl
    DESTINATION ${CMAKE_INSTALL_LIBDIR})
  install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/jpegxl

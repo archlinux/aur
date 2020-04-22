@@ -1,0 +1,13 @@
+diff -Naurp a/third_party/highway/CMakeLists.txt b/third_party/highway/CMakeLists.txt
+--- a/third_party/highway/CMakeLists.txt	2020-04-22 00:42:34.000000000 +0000
++++ b/third_party/highway/CMakeLists.txt	2020-04-22 00:43:41.699909851 +0000
+@@ -72,6 +72,9 @@ set(HWY_FLAGS
+   -Wnon-virtual-dtor
+   -Woverloaded-virtual
+   -Wvla
++  
++  # Build fixes
++  -fPIC
+ )
+ 
+ if(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
