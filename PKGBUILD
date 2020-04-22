@@ -1,12 +1,12 @@
 # Maintainer: David Rosenstrauch <darose@darose.net>
 pkgname=refind-theme-tux-git
 pkgver=r85.e6c9f05
-pkgrel=1
+pkgrel=2
 pkgdesc="Ubuntu is nice but it needs a little Tux. Here he is, the man himself in the boot loader as a rEFInd theme."
 arch=('any')
 url="https://github.com/pradyumnasagar/tux4ubuntu/tree/master/tux-refind-theme"
 license=('none')
-depends=('refind-efi')
+depends=('refind')
 makedepends=('git')
 source=('git+https://github.com/pradyumnasagar/tux4ubuntu.git')
 md5sums=('SKIP')

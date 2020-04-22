@@ -1,12 +1,12 @@
 pkgbase = refind-theme-tux-git
 	pkgdesc = Ubuntu is nice but it needs a little Tux. Here he is, the man himself in the boot loader as a rEFInd theme.
 	pkgver = r85.e6c9f05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pradyumnasagar/tux4ubuntu/tree/master/tux-refind-theme
 	arch = any
 	license = none
 	makedepends = git
-	depends = refind-efi
+	depends = refind
 	source = git+https://github.com/pradyumnasagar/tux4ubuntu.git
 	md5sums = SKIP
 
