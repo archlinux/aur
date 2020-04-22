@@ -10,7 +10,7 @@ conflicts=('python-cocotb-git')
 provides=('python-cocotb')
 depends=('python' 'python-setuptools')
 
-makedepends=('git' 'python-setuptools' 'binutils')
+makedepends=('git' 'python-setuptools')
 optdepends=('iverilog: for simulating verilog designs'
 	    'ghdl: for simulating VHDL designs'
 	    'gtkwave: for visualizing waveforms')
