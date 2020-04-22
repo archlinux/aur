@@ -7,7 +7,7 @@
 
 pkgname="google-cloud-sdk"
 pkgver=289.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -63,10 +63,10 @@ package() {
   mkdir "${pkgdir}/opt/${pkgname}/.install/.backup"
   find $pkgdir -name '__pycache__' -type d -exec rm -rf {} +
 
-  install -Dm755 "${srcdir}/${source[1]}" \
+  install -D -m 0755 "${srcdir}/${source[1]}" \
     "${pkgdir}/etc/profile.d/google-cloud-sdk.sh"
 
-  install -Dm755 "${pkgdir}/opt/${pkgname}/completion.bash.inc" \
+  install -D -m 0755 "${pkgdir}/opt/${pkgname}/completion.bash.inc" \
     "${pkgdir}/etc/bash_completion.d/google-cloud-sdk"
 
   mkdir -p "${pkgdir}/usr/share"
