@@ -1,0 +1,21 @@
+pkgbase = python-pytenable
+	pkgdesc = Python library to interface into Tenable's products and applications
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/tenable/pyTenable/
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-defusedxml
+	depends = python-requests
+	depends = python-dateutil
+	depends = python-semver
+	depends = python-ipaddress
+	depends = python-requests-pkcs12
+	optdepends = python-docker: Docker support
+	source = pyTenable-1.1.1.tar.gz::https://github.com/tenable/pyTenable/archive/1.1.1.tar.gz
+	sha512sums = 96eef23caf0155df70e00eabb90ecb30e991b5d24f600f925c1390b4496fa60a619ee3e2c4e239a24117e2828d26770548e3ec4257ac05026a86f76f9e332c2e
+
+pkgname = python-pytenable
+
