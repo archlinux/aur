@@ -19,7 +19,7 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git')
-pkgver=11.0.0_r351298.483f2783ae0
+pkgver=11.0.0_r352197.2464d8135e2
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
@@ -108,10 +108,10 @@ package_lib32-llvm-minimal-git() {
     DESTDIR="$pkgdir" ninja $NINJAFLAGS install
 
     # Remove files which conflict with lib32-llvm-libs
-    rm "$pkgdir"/usr/lib32/{LLVMgold,lib{LLVM,LTO}}.so
+    rm "$pkgdir"/usr/lib32/{LLVMgold,lib{LLVM,LTO,Remarks}}.so
 
     # The runtime library goes into lib32-llvm-libs-git
-    mv "$pkgdir"/usr/lib32/lib{LLVM,LTO}*.so* "$srcdir"
+    mv "$pkgdir"/usr/lib32/lib{LLVM,LTO,Remarks}*.so* "$srcdir"
     
     mv "$pkgdir"/usr/bin/llvm-config "$pkgdir"/usr/lib32/llvm-config
     mv "$pkgdir"/usr/include/llvm/Config/llvm-config.h \
@@ -139,7 +139,7 @@ package_lib32-llvm-libs-minimal-git() {
     install -d "$pkgdir"/usr/lib32
 
     cp -P \
-        "$srcdir"/lib{LLVM,LTO}*.so* \
+        "$srcdir"/lib{LLVM,LTO,Remarks}*.so* \
         "$pkgdir"/usr/lib32/
 
     install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
