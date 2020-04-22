@@ -1,6 +1,6 @@
 pkgbase = jdk-jetbrains
 	pkgdesc = OpenJDK development kit with some fixes and enhancements by JetBrains
-	pkgver = 11.0.6b840.3
+	pkgver = 11.0.6b840.5
 	pkgrel = 1
 	url = https://bintray.com/jetbrains/intellij-jbr
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = jdk-jetbrains
 	provides = java-environment-openjdk=11
 	replaces = intellij-jdk
 	replaces = jdk-jetbrains
-	source = jbrsdk-11_0_6-linux-x64-b840.3.tar.gz::https://bintray.com/jetbrains/intellij-jbr/download_file?file_path=jbrsdk-11_0_6-linux-x64-b840.3.tar.gz
-	sha512sums = 9804788b6d86b36b9cc3849a6912d47743d7059479a9d34ac162cb729784a488abcc324daee9b151fc51ea3adc46b78a49dfc708686d9dd09e92e562af4bf3f4
+	source = jbrsdk-11_0_6-linux-x64-b840.5.tar.gz::https://bintray.com/jetbrains/intellij-jbr/download_file?file_path=jbrsdk-11_0_6-linux-x64-b840.5.tar.gz
+	b2sums = 1daea5502e0e5ed956884e08b72cca042e826db4a07f7084d5495f49f4a59128f7de27fac29f2fe232dd2533ea60e6a618bfa835d4c225943550c62bff9ef06d
 
 pkgname = jdk-jetbrains
 
