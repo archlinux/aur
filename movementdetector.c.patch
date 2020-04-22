@@ -1,0 +1,12 @@
+diff --git a/src/gst-plugins/movementdetector/movementdetector.c b/src/gst-plugins/movementdetector/movementdetector.c
+index 6cd01fa..6024274 100644
+--- a/src/gst-plugins/movementdetector/movementdetector.c
++++ b/src/gst-plugins/movementdetector/movementdetector.c
+@@ -30,6 +30,6 @@ init (GstPlugin * plugin)
+ 
+ GST_PLUGIN_DEFINE (GST_VERSION_MAJOR,
+     GST_VERSION_MINOR,
+-    kmsmovementdetector,
++    movementdetector,
+     "Kurento movement filter",
+     init, VERSION, GST_LICENSE_UNKNOWN, "Kurento", "http://kurento.com/")

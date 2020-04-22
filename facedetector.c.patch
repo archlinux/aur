@@ -1,0 +1,12 @@
+diff --git a/src/gst-plugins/facedetector/facedetector.c b/src/gst-plugins/facedetector/facedetector.c
+index 0cab5aa..1e70554 100644
+--- a/src/gst-plugins/facedetector/facedetector.c
++++ b/src/gst-plugins/facedetector/facedetector.c
+@@ -30,6 +30,6 @@ init (GstPlugin * plugin)
+ 
+ GST_PLUGIN_DEFINE (GST_VERSION_MAJOR,
+     GST_VERSION_MINOR,
+-    kmsfacedetector,
++    facedetector,
+     "Kurento facedetector filter",
+     init, VERSION, GST_LICENSE_UNKNOWN, "Kurento", "http://kurento.com/")

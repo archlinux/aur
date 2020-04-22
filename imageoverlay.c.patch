@@ -1,0 +1,12 @@
+diff --git a/src/gst-plugins/imageoverlay/imageoverlay.c b/src/gst-plugins/imageoverlay/imageoverlay.c
+index a4de535..93ddfdd 100644
+--- a/src/gst-plugins/imageoverlay/imageoverlay.c
++++ b/src/gst-plugins/imageoverlay/imageoverlay.c
+@@ -30,6 +30,6 @@ init (GstPlugin * plugin)
+ 
+ GST_PLUGIN_DEFINE (GST_VERSION_MAJOR,
+     GST_VERSION_MINOR,
+-    kmsimageoverlay,
++    imageoverlay,
+     "Kurento imageoverlay filter",
+     init, VERSION, GST_LICENSE_UNKNOWN, "Kurento", "http://kurento.com/")

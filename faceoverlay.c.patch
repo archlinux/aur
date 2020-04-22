@@ -1,0 +1,12 @@
+diff --git a/src/gst-plugins/faceoverlay/faceoverlay.c b/src/gst-plugins/faceoverlay/faceoverlay.c
+index 3be7d08..a6162c9 100644
+--- a/src/gst-plugins/faceoverlay/faceoverlay.c
++++ b/src/gst-plugins/faceoverlay/faceoverlay.c
+@@ -30,6 +30,6 @@ init (GstPlugin * plugin)
+ 
+ GST_PLUGIN_DEFINE (GST_VERSION_MAJOR,
+     GST_VERSION_MINOR,
+-    kmsfaceoverlay,
++    faceoverlay,
+     "Kurento faceoverlay filter",
+     init, VERSION, GST_LICENSE_UNKNOWN, "Kurento", "http://kurento.com/")

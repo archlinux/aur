@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8a7196c..bfc3d50 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -59,7 +59,7 @@ generic_find(LIBNAME gstreamer-1.5 VERSION ${GST_REQUIRED} REQUIRED)
+ generic_find(LIBNAME gstreamer-base-1.5 VERSION ${GST_REQUIRED} REQUIRED)
+ generic_find(LIBNAME gstreamer-video-1.5 VERSION ${GST_REQUIRED} REQUIRED)
+ generic_find(LIBNAME gstreamer-check-1.5 VERSION ${GST_REQUIRED})
+-generic_find(LIBNAME opencv VERSION ${OPENCV_REQUIRED} REQUIRED)
++find_package(OpenCV REQUIRED NO_DEFAULT_PATH PATHS /opt/opencv3/share)
+ generic_find(LIBNAME libsoup-2.4 VERSION ${LIBSOUP_REQUIRED} REQUIRED)
+ 
+ set(CMAKE_INSTALL_GST_PLUGINS_DIR ${CMAKE_INSTALL_LIBDIR}/gstreamer-1.5)

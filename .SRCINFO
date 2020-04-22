@@ -1,26 +1,31 @@
 pkgbase = kms-filters
-	pkgdesc = Kurento filters module
-	pkgver = 6.7.1
+	pkgdesc = Kurento server AV filters
+	pkgver = 6.13.0
 	pkgrel = 1
-	url = http://www.kurento.org/
+	url = https://github.com/Kurento/kms-filters
 	arch = any
-	license = LGPL v2.1
-	makedepends = cmake
-	makedepends = pkg-config
-	makedepends = libsoup
-	makedepends = kms-core>=6.7.0
-	makedepends = kms-elements>=6.7.0
-	makedepends = opencv
-	depends = libsoup
-	depends = kms-core>=6.7.0
-	depends = kms-elements>=6.7.0
-	depends = opencv
-	provides = kms-filters
-	conflicts = kms-filters
-	source = https://github.com/Kurento/kms-filters/archive/6.7.1.tar.gz
+	license = apache
+	makedepends = kms-cmake-utils
+	makedepends = kurento-module-creator
+	depends = kms-core
+	depends = kms-elements
+	depends = opencv3-opt
+	source = git://github.com/Kurento/kms-filters.git#tag=6.13.0
+	source = cmake-opencv.patch
+	source = facedetector.c.patch
+	source = faceoverlay.c.patch
+	source = imageoverlay.c.patch
+	source = logooverlay.c.patch
+	source = movementdetector.c.patch
 	source = opencvfilter.c.patch
-	sha256sums = d26b751e282657c8406bdf6d0d39b8c3472132d7692375437c72ec52adc1b13f
-	sha256sums = 36f865b924dcb2fc85e9c00bd06a47daeeccbf633085886b21c288ae5000564a
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kms-filters
 
