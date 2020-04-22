@@ -2,17 +2,17 @@
 
 pkgname=python-dash
 _pkgname=dash
-pkgver=1.9.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="A python framework for building analytical web applications"
 arch=('any')
 url="https://plot.ly/products/dash/"
 license=('MIT')
-depends=('python' 'python-dash-renderer' 'python-dash-core-components' 'python-dash-html-components' 'python-flask' 'python-flask-compress' 'python-flask-seasurf' 'python-plotly' 'python-requests')
+depends=('python' 'python-dash-renderer' 'python-dash-core-components' 'python-dash-html-components' 'python-flask' 'python-flask-compress' 'python-flask-seasurf' 'python-future' 'python-plotly' 'python-requests')
 optdepends=()
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('678884297afaae08a638cf1bda61c8f89f7cf2c8fd15f36ea29c43559684f4fa')
+sha256sums=('57e32410a4f0f9fef0cdcd61f801bd01738f343ad308fa51592859ef9bc5c5ad')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
