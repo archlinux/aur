@@ -1,14 +1,14 @@
 pkgbase = amd-sfh-hid-dkms
 	pkgdesc = Experimental HID driver modules for the AMD Sensor Fusion Hub (DKMS)
-	pkgver = 2.2.3
-	pkgrel = 2
+	pkgver = 2.2.4
+	pkgrel = 1
 	url = https://github.com/conqp/linux.git
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	depends = dkms
-	source = linux-sfh::git+https://github.com/conqp/linux.git#tag=amd-sfh-hid-2.2.3
+	source = linux-sfh::git+https://github.com/conqp/linux.git#tag=amd-sfh-hid-2.2.4
 	source = dkms.conf
 	sha256sums = SKIP
 	sha256sums = 989aae3b663ad67652a90ff4cfdde85daa9035a099a5f2e72794ae5715fb6fcd
