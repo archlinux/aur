@@ -1,6 +1,6 @@
 pkgbase = refind-theme-regular-git
 	pkgdesc = A simplistic clean and minimal theme for rEFInd
-	pkgver = r42.7a282d0
+	pkgver = r43.fad648f
 	pkgrel = 1
 	url = https://github.com/bobafetthotmail/refind-theme-regular
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = refind-theme-regular-git
 	license = custom:OFL
 	license = custom:Ubuntu Font License 1.0
 	makedepends = git
-	depends = refind-efi
+	depends = refind
 	source = git+https://github.com/bobafetthotmail/refind-theme-regular
 	md5sums = SKIP
 

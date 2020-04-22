@@ -1,20 +1,20 @@
 # Maintainer: Jeremy Asuncion <jeremyasuncion808@gmail.com>
   
-pkgname='refind-theme-regular-git'
-pkgver=r42.7a282d0
+pkgname=refind-theme-regular-git
+pkgver=r43.fad648f
 pkgrel=1
 pkgdesc="A simplistic clean and minimal theme for rEFInd"
-arch=('any')
+arch=(any)
 url="https://github.com/bobafetthotmail/refind-theme-regular"
-license=('AGPL3' 'custom:OFL' 'custom:Ubuntu Font License 1.0')
-depends=('refind-efi')
-makedepends=('git')
-source=('git+https://github.com/bobafetthotmail/refind-theme-regular')
-md5sums=('SKIP')
+license=(AGPL3 custom:OFL 'custom:Ubuntu Font License 1.0')
+depends=(refind)
+makedepends=(git)
+source=(git+$url)
+md5sums=(SKIP)
 
 pkgver() {
-  cd "${pkgname%-git}"
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  printf r%s.%s $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 package() {
