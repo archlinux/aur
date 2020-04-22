@@ -21,7 +21,7 @@ checkdepends=()
 makedepends=()
 license=('BSD')
 arch=("any")  
-source=("https://github.com/jupyter/${_pkgname}/archive/v${pkgver}.tar.gz")
+source=("${_pkgname}-${pkgver}.tgz::https://github.com/jupyter/jupyter-book/archive/v${pkgver}.tar.gz")
 sha256sums=('22e8f232f61ebbd6684659ac28e053cd6836e8e57179891a7c038ed26abcd715')
 
 build() {
