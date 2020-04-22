@@ -1,0 +1,5 @@
+*.tar.xz
+*.zip
+src
+pkg
+tty-server
