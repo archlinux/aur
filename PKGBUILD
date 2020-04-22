@@ -2,7 +2,7 @@
 
 pkgname=tty-share
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Shares terminal session with no setup on remote end (browser)"
 arch=('any')
 url="https://github.com/elisescu/tty-share"
@@ -15,7 +15,7 @@ makedepends=('go-pie')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  go build -mod=vendor -trimpath -ldflags "-X main.version=${VERSION} --extldflags ${LDFLAGS}" -o tty-share .
+  go build -mod=vendor -trimpath -ldflags "-X main.version=${pkgver} --extldflags ${LDFLAGS}" -o tty-share .
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = tty-share
 	pkgdesc = Shares terminal session with no setup on remote end (browser)
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elisescu/tty-share
 	arch = any
 	license = MIT
