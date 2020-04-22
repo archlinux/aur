@@ -1,6 +1,6 @@
 pkgbase = libopenmpt-svn
-	pkgdesc = Library to decode tracked music files (modules) into a raw PCM audio stream and CLI player (svn version)
-	pkgver = 0.5.r11775
+	pkgdesc = Library to decode tracked music files (modules) into a raw PCM audio stream, with CLI player (svn version)
+	pkgver = 0.5.r12741
 	pkgrel = 1
 	url = https://lib.openmpt.org/libopenmpt/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = libopenmpt-svn
 	depends = libvorbis
 	depends = mpg123
 	depends = pulseaudio
-	depends = sdl
+	depends = sdl2
 	depends = portaudio
 	depends = flac
 	depends = libsndfile
