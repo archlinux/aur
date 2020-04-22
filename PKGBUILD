@@ -12,7 +12,7 @@ makedepends=()
 install=${pkgname}.install
 source=("http://apache.claz.org/zeppelin/zeppelin-$pkgver/zeppelin-$pkgver-bin-all.tgz"
     "apache-zeppelin.service")
-sha512sums=('b8302b36acc5cc8859f4341329bcb4d038bbb91d4493be191606df94da08a2fa37940958ceae507e6cdbe22fc338111ac9bee580cb41ee74198911469552df02' SKIP)
+sha512sums=(91a785153bc47b087f90fac0f83066fdede041d5193506b231af1b6855b150307873c92cea462c6dd48ef6d38caa37934591a08542199ac4b02d9493298fbd43 SKIP)
 
 PKGEXT='.pkg.tar' # no need for package compression, which takes too much time
 
