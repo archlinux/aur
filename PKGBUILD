@@ -1,12 +1,12 @@
 pkgname=xenia-git
-pkgver=r4814.1407e834.linux_fixes
+pkgver=r5780.a641b5b16.linux_fixes
 pkgrel=1
 pkgdesc="Xenia is an experimental emulator for the Xbox 360."
 arch=('x86_64')
 url="http://xenia.jp"
 license=('BSD')
 options=('debug' '!strip')
-depends=('gtk3' 'lz4' 'glew' 'libx11' 'libc++')
+depends=('gtk3' 'lz4' 'glew' 'libx11')
 # TODO use installed premake5 instead of building it
 # premake: powerpc patch added
 makedepends=('python' 'clang' 'vulkan-headers' 'git' 'clang' 'libpthread-stubs')
@@ -53,7 +53,7 @@ prepare() {
   cd "${srcdir}/${pkgname%-git}"
 
   msg2 "Merging Linux Fixes"
-  git pull "../${pkgname%-git}-linux-fixes"
+  git pull "../${pkgname%-git}-linux-fixes" --no-edit
 
   git submodule init
   git config submodule.third_party/binutils-ppc-cygwin.url $srcdir/binutils-ppc-cygwin
