@@ -2,12 +2,12 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 _svt_hevc_ver='1.4.3'
-_svt_av1_ver='0.8.1'
+_svt_av1_ver='0.8.2'
 _svt_vp9_ver='0.1.0'
 
 pkgname=ffmpeg-full
 pkgver=4.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -51,7 +51,7 @@ sha256sums=('cb754255ab0ee2ea5f66f8850e1bd6ad5cac1cd855d0a2f4990fb8c668b0d29c'
             'SKIP'
             '878757eb6d7072521caaeb71f1453ec3fc0f91a12936ef302e1625184787c6a6'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
-            'efbe348e0dad6b5f9fc501a34ff8304d82c2745ec9ac952e72f8549775c2fe78'
+            'd371366ceda9233c1b9a60c680878f567861b675605a8dae5c275d633c51ba9f'
             '7690a4f6bdc4a57e35c7ff5b6e87f2fe6d056d452eff9e767eaccff41832f4d7'
             'd23dedb5a275d1d753d30fd544a46d5b609868ad5d384b9c8c2ecc1a02281828'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
@@ -59,6 +59,8 @@ validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
 prepare() {
     # add svt codec support for hevc, av1 and vp9
+    rm -f "ffmpeg-${pkgver}/libavcodec/"libsvt_{hevc,av1,vp9}.c
+    sed -i 's/eb_init_handle/svt_av1_enc_init_handle/' "ffmpeg-full-add-svt-vp9-${_svt_vp9_ver}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/ffmpeg-full-add-svt-hevc-${_svt_hevc_ver}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/ffmpeg-full-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/ffmpeg-full-add-svt-av1-${_svt_av1_ver}.patch"
