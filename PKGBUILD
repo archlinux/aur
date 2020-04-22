@@ -35,10 +35,13 @@ build() {
 package() {
   # Create directory
   install -dm 755 "$pkgdir"/usr/lib/$pkgname
-  # Source code
+
+  # Source code (symlinks are not dereferenced)
   cp -r --no-preserve=ownership --preserve=mode \
-      src-gen lib package.json node_modules \
+      src-gen lib node_modules \
       "$pkgdir/usr/lib/$pkgname/"
+  # package.json (should be dereferenced)
+  install -Dm644 package.json "$pkgdir/usr/lib/$pkgname/"
 
   # Executable
   install -Dm755 theia-electron "$pkgdir/usr/bin/$pkgname"
