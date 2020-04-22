@@ -1,0 +1,12 @@
+pkgbase = passbox
+	pkgdesc = A password manager for your code
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://passbox.app
+	arch = x86_64
+	license = unknown
+	source = https://passbox.app/download/bin/passbox-linux
+	sha256sums = SKIP
+
+pkgname = passbox
+
