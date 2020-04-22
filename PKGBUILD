@@ -3,7 +3,7 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.4
+pkgver=0.10.4.r4.ga25cf5c
 pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
@@ -24,6 +24,7 @@ _lua_deps=('cassowary'
            'vstruct'
            'zlib')
 depends=('fontconfig'
+         'freetype2'
          'harfbuzz'
          'gentium-plus-font'
          'icu'
@@ -71,7 +72,7 @@ check () {
 package () {
 	cd "${pkgname%-git}"
 	make install DESTDIR="$pkgdir"
-	install -Dm644 -t "$pkgdir/usr/share/doc/${pkgname%-git}" README.md documentation/sile.pdf
-	cp -ar examples "$pkgdir/usr/share/doc/${pkgname%-git}"
-	install -Dm644 -t "$pkgdir/usr/share/licenses/${pkgname%-git}" LICENSE
+	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md documentation/sile.pdf
+	cp -ar examples "$pkgdir/usr/share/doc/$pkgname"
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
