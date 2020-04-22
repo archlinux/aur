@@ -1,7 +1,7 @@
-pkgbase = refind-efi-git
+pkgbase = refind-git
 	pkgdesc = rEFInd Boot Manager - git version
 	pkgver = 0.12.0.r692.g4a84fce
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.rodsbooks.com/refind/
 	arch = any
 	license = BSD
@@ -28,9 +28,10 @@ pkgbase = refind-efi-git
 	provides = refind-efi=0.12.0.r692.g4a84fce
 	conflicts = refind
 	conflicts = refind-efi
+	replaces = refind-efi-git
 	options = !makeflags
 	source = refind::git+https://git.code.sf.net/p/refind/code#branch=master
 	sha512sums = SKIP
 
-pkgname = refind-efi-git
+pkgname = refind-git
 
