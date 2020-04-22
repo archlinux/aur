@@ -8,8 +8,8 @@ pkgdesc="Input device management and event handling library - patched for hi-res
 url="https://www.freedesktop.org/wiki/Software/libinput/"
 arch=(x86_64)
 license=(custom:X11)
-conflicts=('libinput')
-provides=('libinput')
+conflicts=($_pkgname)
+provides=("$_pkgname=$pkgver-$pkgrel")
 depends=('mtdev' 'systemd' 'libevdev' 'libwacom')
 # upstream doesn't recommend building docs
 makedepends=('gtk3' 'meson') # 'doxygen' 'graphviz' 'python-sphinx' 'python-recommonmark'
@@ -25,6 +25,7 @@ validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-
 
 prepare() {
   cd $_pkgname-$pkgver
+  rm -f doc/user/wheel-api.rst
   patch -Np1 -i ../mr139.patch
 }
 
