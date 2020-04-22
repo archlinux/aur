@@ -1,40 +1,20 @@
 pkgbase = kurento-media-server
-	pkgdesc = Kurento Media Server
-	pkgver = 6.7.1
+	pkgdesc = Kurento WebRTC media server
+	pkgver = 6.13.0
 	pkgrel = 1
-	url = http://www.kurento.org/
+	url = https://github.com/Kurento/kurento-media-server
 	arch = any
-	license = LGPL v2.1
-	makedepends = cmake
-	makedepends = gstreamer
-	makedepends = gst-plugins-base
-	makedepends = gst-plugins-good
-	makedepends = gst-plugins-bad
-	makedepends = gst-plugins-ugly
-	makedepends = gst-libav
-	makedepends = libsigc++
-	makedepends = glibmm
-	makedepends = kms-core>=6.7.0
-	makedepends = kms-elements>=6.7.0
-	makedepends = kms-filters>=6.7.0
-	depends = boost-libs
-	depends = gstreamer
-	depends = gst-plugins-base
-	depends = gst-plugins-good
-	depends = gst-plugins-bad
-	depends = gst-plugins-ugly
-	depends = gst-libav
-	depends = libsigc++
-	depends = glibmm
-	depends = kms-core>=6.7.0
-	depends = kms-elements>=6.7.0
-	depends = kms-filters>=6.7.0
-	provides = kurento-media-server
-	conflicts = kurento-media-server
-	source = https://github.com/Kurento/kurento-media-server/archive/6.7.1.tar.gz
-	source = kurento.conf.json.patch
-	sha256sums = 3c8880d9071cc650e7c0a8404fb8a90282bd95eff3fa83fe95c8ff943b2cbef3
-	sha256sums = db711ae29c104d2b28744cc695c2f8bc4c185668a681c2972a9a07701796e7f2
+	license = apache
+	makedepends = kms-cmake-utils
+	makedepends = websocketpp
+	depends = kms-core
+	depends = boost
+	optdepends = kms-elements
+	optdepends = kms-filters
+	source = git://github.com/Kurento/kurento-media-server.git#tag=6.13.0
+	source = cmake-boost.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kurento-media-server
 

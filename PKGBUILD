@@ -1,38 +1,39 @@
-# Maintainer: Alexander Susha <isushik94@gmail.com>
 pkgname=kurento-media-server
-pkgver=6.7.1
+pkgver=6.13.0
 pkgrel=1
-pkgdesc='Kurento Media Server'
-arch=('any')
-url='http://www.kurento.org/'
-license=('LGPL v2.1')
-depends=('boost-libs' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav' 'libsigc++' 'glibmm' 'kms-core>=6.7.0' 'kms-elements>=6.7.0' 'kms-filters>=6.7.0')
-makedepends=('cmake' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav' 'libsigc++' 'glibmm' 'kms-core>=6.7.0' 'kms-elements>=6.7.0' 'kms-filters>=6.7.0')
-provides=(${pkgname})
-conflicts=(${pkgname})
-source=("https://github.com/Kurento/${pkgname}/archive/${pkgver}.tar.gz"
-        'kurento.conf.json.patch')
-sha256sums=('3c8880d9071cc650e7c0a8404fb8a90282bd95eff3fa83fe95c8ff943b2cbef3'
-            'db711ae29c104d2b28744cc695c2f8bc4c185668a681c2972a9a07701796e7f2')
+pkgdesc="Kurento WebRTC media server"
+arch=(any)
+url="https://github.com/Kurento/kurento-media-server"
+license=('apache')
+depends=(kms-core boost)
+optdepends=(kms-elements kms-filters)
+makedepends=(kms-cmake-utils websocketpp)
+source=(
+    'git://github.com/Kurento/kurento-media-server.git#tag=6.13.0'
+    cmake-boost.patch
+)
 
-prepare(){
-    cd ${srcdir}/${pkgname}-${pkgver}
+sha256sums=(SKIP SKIP)
 
-    patch -Nu < ../kurento.conf.json.patch
-
-    for FILE in $(find . -type f)
-    do
-        sed -i -E "s/gstreamer\-((\w|\d)+\-)?1\.5/gstreamer-\11.0/g" $FILE
-        sed -i -E "s/SSL_R_SHORT_READ/boost::asio::ssl::error::stream_truncated/g" $FILE
-    done
+prepare() {
+    cd "$srcdir/$pkgname"
+    patch -p0 <"$srcdir/cmake-boost.patch"
+    sed -ri -e 's#gstreamer((-[-a-z]+)?)-1\.5#gstreamer\1-1.0#g' CMakeLists.txt
+    rm -r server/transport/websocket/websocketpp
+    ln -s /usr/include/websocketpp server/transport/websocket/websocketpp
 }
+
 build() {
-    mkdir -p "build"
-    cd "build"
-
-    cmake ${srcdir}/${pkgname}-${pkgver}/. -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations -Wno-catch-value"
+    local builddir=$srcdir/$pkgname/build
+    rm -rf "$builddir"
+    mkdir "$builddir"
+    cd "$builddir"
+    cmake -DCMAKE_MODULE_PATH=/usr/share/cmake/Modules -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SYSCONFDIR=/etc -DCMAKE_BUILD_TYPE=Release ..
+    make
 }
+
 package() {
-    make -C build DESTDIR="${pkgdir}" install
-    mv ${pkgdir}/usr/etc ${pkgdir}/
+    local builddir=$srcdir/$pkgname/build
+    cd "$builddir"
+    make install DESTDIR="$pkgdir"
 }
