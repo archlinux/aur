@@ -12,7 +12,7 @@ pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="https://freefilesync.org"
 license=('GPL3')
-depends=(wxgtk curl)
+depends=(wxgtk curl lsb-release)
 makedepends=(unzip)
 source=(
 	"FreeFileSync_${pkgver}_Source.zip::${url}/download/FreeFileSync_${pkgver}_Source.zip"		#ffs

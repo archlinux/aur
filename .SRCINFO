@@ -9,6 +9,7 @@ pkgbase = freefilesync
 	makedepends = unzip
 	depends = wxgtk
 	depends = curl
+	depends = lsb-release
 	source = FreeFileSync_10.23_Source.zip::https://freefilesync.org/download/FreeFileSync_10.23_Source.zip
 	source = revert_xdg_config_path.patch
 	source = revert_bulk_append.patch
