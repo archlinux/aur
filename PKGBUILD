@@ -1,7 +1,7 @@
 # Maintainer: Artur Juraszek <artur@juraszek.xyz>
 
 pkgname=dolt
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc='Like Git, but for data'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 makedepends=('go-pie')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/liquidata-inc/dolt/archive/v$pkgver.tar.gz")
-sha256sums=('250d160fa62631d51268a01cf0739c50eb7b17ff5e735461352e659fbef40717')
+sha256sums=('cfb344ee8947b1cfc88c61928b8bf19bd4f53fb011243bfe65e612068e592a50')
 
 build() {
     export GOFLAGS="-trimpath"
