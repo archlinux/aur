@@ -1,0 +1,19 @@
+pkgbase = pyazo-cli
+	pkgver = 0.1.3
+	pkgrel = 1
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-requests
+	depends = python-pyperclip
+	source = https://files.pythonhosted.org/packages/source/p/pyazo_cli/pyazo_cli-0.1.3.tar.gz
+	sha256sums = caf9a0898cedf5359da3e30139194cba26a512fc2aef06c82cbe375a40246544
+
+pkgname = pyazo-cli
+	depends = python
+	depends = python-click
+	depends = python-requests
+	depends = python-pyperclip
+
