@@ -1,42 +1,23 @@
 pkgbase = kms-core
-	pkgdesc = Kurento core module
-	pkgver = 6.7.1
-	pkgrel = 3
-	url = http://www.kurento.org/
+	pkgdesc = Kurento media server core library
+	pkgver = 6.13.0
+	pkgrel = 1
+	url = https://github.com/Kurento/kms-core
 	arch = any
-	license = LGPL v2.1
-	makedepends = cmake
-	makedepends = glib2
-	makedepends = gst-plugins-base
-	makedepends = gst-plugins-good
-	makedepends = gst-plugins-bad
-	makedepends = gst-plugins-ugly
-	makedepends = gst-libav
-	makedepends = boost
-	makedepends = boost-libs
-	makedepends = libsigc++
-	makedepends = glibmm
-	makedepends = kms-cmake-utils>=6.7.0
-	makedepends = kms-jsonrpc>=6.7.0
-	makedepends = kurento-module-creator>=6.7.0
-	depends = boost-libs
-	depends = glib2
-	depends = gst-plugins-base
-	depends = gst-plugins-good
-	depends = gst-plugins-bad
-	depends = gst-plugins-ugly
-	depends = gst-libav
+	license = apache
+	makedepends = kms-cmake-utils
+	makedepends = kurento-module-creator
+	depends = boost
 	depends = libsigc++
 	depends = glibmm
-	depends = kms-jsonrpc>=6.7.0
-	provides = kms-core
-	conflicts = kms-core
-	source = https://github.com/Kurento/kms-core/archive/6.7.1.tar.gz
-	source = SdpEndpoint.conf.json.patch
-	source = kmscore.c.patch
-	sha256sums = 06c23218358ea1ae983dba265417f8be11748826b99cbe9e2eafd161373c637a
-	sha256sums = dfd717ed76d489e73459ddd00111282f6cecbc9d8f3f616bc750ddd5164ac0cd
-	sha256sums = e2f76510bdeb205808284942fb38d035bfbc17d7a71f544fc19d94a70f87baf4
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = kms-jsoncpp
+	depends = kms-jsonrpc
+	source = git://github.com/Kurento/kms-core.git#tag=6.13.0
+	source = cmake-boost.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kms-core
 
