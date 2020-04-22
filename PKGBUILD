@@ -1,6 +1,6 @@
 # Maintainer: Florent Guiotte <florent at guiotte dot fr>
 pkgname=python-ipyvolume
-pkgver=0.5.2
+pkgver=0.6.0a4
 pkgrel=1
 epoch=
 pkgdesc="IPython widget for rendering 3d volumes and glyphs (e.g. scatter and quiver) in the Jupyter notebook"
@@ -22,7 +22,7 @@ changelog=
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-md5sums=('9ff0792bc9ac60cfabe1c3d835fb40bf')
+md5sums=('207cb2886f27d7dc99e6060948d8001a')
 validpgpkeys=()
 
 build() {
