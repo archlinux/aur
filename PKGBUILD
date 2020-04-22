@@ -43,4 +43,6 @@ build() {
 package() {
 	cd "${pkgname}/build" || exit 1
 	make DESTDIR="$pkgdir/" install
+
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
