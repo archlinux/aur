@@ -1,0 +1,19 @@
+pkgbase = waynergy-git
+	pkgdesc = Synergy client for wlroots wayland compositors
+	pkgver = r105.327f459
+	pkgrel = 1
+	url = https://github.com/r-c-f/waynergy
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = wayland
+	optdepends = wl-clipboard: Clipboard synchronization support
+	provides = waynergy
+	conflicts = waynergy
+	source = git+https://github.com/r-c-f/waynergy.git
+	md5sums = SKIP
+
+pkgname = waynergy-git
+
