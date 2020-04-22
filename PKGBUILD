@@ -95,8 +95,8 @@ prepare() {
     patch -Np0 -i "${srcdir}"/chromium-skia-harmony.patch
 
     # Fix VA-API on Intel and Nvidia
-    patch -Np1 -i "${srcdir}"/vdpau-support.patch || true
-    patch -Np1 -i "${srcdir}"/vaapi-build-fix.patch || true
+#    patch -Np1 -i "${srcdir}"/vdpau-support.patch || true
+#    patch -Np1 -i "${srcdir}"/vaapi-build-fix.patch || true
 
     # Force script incompatible with Python 3 to use /usr/bin/python2
     sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
