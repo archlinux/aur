@@ -3,8 +3,8 @@
 pkgbase='python-nine'
 _pkgbase="${pkgbase#python-}"
 pkgname=('python-nine')
-pkgver=1.0.0
-pkgrel=7
+pkgver=1.1.0
+pkgrel=1
 arch=('any')
 pkgdesc="Python 3/2 compatibility library, allowing to add py2 compat to py3 code"
 url="https://github.com/nandoflorestan/nine/"
@@ -12,7 +12,7 @@ license=('custom')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://github.com/nandoflorestan/nine/archive/v${pkgver}.tar.gz")
-sha512sums=('371f7d9dbfd14bc0f81c9c734e8c3f133e3ccd8a3571d0ef2edbc9532a8d0c47cf29ceaa8bcd9e095e098e547abc329a787e43ba3bf6b0f99b8df0a89755cd52')
+sha512sums=('b445cd1f324a0d2045081226fb650eebd8dbc86942faff204c19fffc022f0190fc04abec563b107cb860202d29f08c132056b1098495471fdfda104e57878828')
 
 check() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
