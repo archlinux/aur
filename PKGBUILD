@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=dwdweather2
 pkgname=python-${_pkgname}
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=2
 pkgdesc="Client to access weather data from Deutscher Wetterdienst (DWD), the federal meteorological service in Germany"
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/panodata/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('89797a675e0f2a8b8f8b89ffc8d283c6ea58a099fa4d9f39defd7ce52d256466')
+sha256sums=('f3107b8d23092c4a3b628e9853f26724f34de62a69ba73c1ccfee7f0fc99836b')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
