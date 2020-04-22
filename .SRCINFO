@@ -1,0 +1,17 @@
+pkgbase = fcct
+	pkgdesc = Fedora CoreOS Config Transpiler
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/coreos/fcct
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	source = git+https://github.com/coreos/fcct.git#tag=v0.5.0
+	source = change-bin-dir.patch
+	sha256sums = SKIP
+	sha256sums = a26cbc75fba1872a0213fac07d46650c3a2854913205695402f41232faeeeda5
+
+pkgname = fcct
+

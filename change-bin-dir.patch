@@ -1,0 +1,11 @@
+--- src.orig/fcct/build	2020-04-06 19:49:22.061274791 +0200
++++ src.new/fcct/build	2020-04-06 19:49:44.548235622 +0200
+@@ -12,7 +12,7 @@
+ 
+ eval $(go env)
+ if [ -z ${BIN_PATH+a} ]; then
+-	BIN_PATH=${PWD}/bin/${GOARCH}
++	BIN_PATH=${PWD}/bin
+ fi
+ 
+ echo "Building $NAME..."
