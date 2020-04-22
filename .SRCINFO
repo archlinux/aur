@@ -1,7 +1,7 @@
 pkgbase = kapowbang-bin
 	pkgdesc = If you can script it, you can HTTP it.
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/BBVA/kapow
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = kapowbang-bin
 	provides = kapowbang
 	conflicts = kapowbang
 	source = https://github.com/BBVA/kapow/releases/download/v0.5.0/kapow-0.5.0-SHA512SUMS.GPG
-	validpgpkeys = 51628FBC4016334DA425208EAE2CEBCF0B2BBB23
+	validpgpkeys = B49A5EB04F5445FF4038284A601121279FB033EE
 	sha512sums = 1a34b34b162f6e81f2d5de93b9f43e2d62d7660bebe4bce1049d5eae0f1c6d5beaf524c9a5c57d2962e030a2cad352d337c888f9722bd730235b14bbada684e7
 	source_x86_64 = kapow_x86_64::https://github.com/BBVA/kapow/releases/download/v0.5.0/kapow_0.5.0_linux_amd64
 	sha512sums_x86_64 = cdd74ebb5cb58524929e0409ea35cf4362ce3f893fedbd801abd3011722b8902b5549733e1cbd667592ba815337795194595f8a5792d0cc61e835a529b3fcc65
