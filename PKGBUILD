@@ -3,8 +3,8 @@
 _pkgname=aiocontextvars
 pkgname=python-aiocontextvars
 pkgver=0.2.2
-pkgrel=1
-pkgdesc="GINO - GINO Is Not ORM - is a lightweight asynchronous ORM built on top of SQLAlchemy core for Python asyncio. Now (early 2020) GINO supports only one dialect asyncpg."
+pkgrel=2
+pkgdesc="This module provides APIs to manage, store, and access context-local state. The ContextVar class is used to declare and work with Context Variables."
 arch=('any')
 url="https://python-gino.org/"
 license=('BSD')
