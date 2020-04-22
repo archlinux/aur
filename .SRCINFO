@@ -1,9 +1,8 @@
 pkgbase = mupen64plus-git
 	pkgdesc = Nintendo64 Emulator (git version)
-	pkgver = 2.5.9.r62.gdbd75133.20200405.081354
+	pkgver = 2.5.9.r70.g4edc53c2.20200422.041041
 	pkgrel = 1
 	url = https://www.mupen64plus.org/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
@@ -30,7 +29,6 @@ pkgbase = mupen64plus-git
 	source = git+https://github.com/mupen64plus/mupen64plus-input-sdl.git
 	source = git+https://github.com/mupen64plus/mupen64plus-ui-console.git
 	source = mupen64plus-git-install-fix.patch
-	source = mupen64plus-git-core-exe-stack.patch
 	source = mupen64plus-git-ui-console-pie.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -40,7 +38,6 @@ pkgbase = mupen64plus-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = d45208a1d9e5a08e6711739c9f52bd88ff016fa5c382a85f305cd4b69dbf62d1
-	sha256sums = a0e0d8cec5bb22e6e5f0e75dde970562bdc7ac94190d66a4cdeea769ac44c77f
 	sha256sums = e0e6b47aa5ea7b72f2bd5d5ad5e42fee870d947177f2b7e0137b6a93540b894d
 
 pkgname = mupen64plus-git

@@ -7,10 +7,10 @@
 # mupen64plus component receives a new commit.
 
 pkgname=mupen64plus-git
-pkgver=2.5.9.r62.gdbd75133.20200405.081354
+pkgver=2.5.9.r70.g4edc53c2.20200422.041041
 pkgrel=1
 pkgdesc='Nintendo64 Emulator (git version)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.mupen64plus.org/'
 license=('GPL')
 depends=('speexdsp' 'minizip' 'sdl2' 'glu' 'libsamplerate' 'libpng'
@@ -26,7 +26,6 @@ source=('git+https://github.com/mupen64plus/mupen64plus-core.git'
         'git+https://github.com/mupen64plus/mupen64plus-input-sdl.git'
         'git+https://github.com/mupen64plus/mupen64plus-ui-console.git'
         'mupen64plus-git-install-fix.patch'
-        'mupen64plus-git-core-exe-stack.patch'
         'mupen64plus-git-ui-console-pie.patch')
 sha256sums=('SKIP'
             'SKIP'
@@ -36,7 +35,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'd45208a1d9e5a08e6711739c9f52bd88ff016fa5c382a85f305cd4b69dbf62d1'
-            'a0e0d8cec5bb22e6e5f0e75dde970562bdc7ac94190d66a4cdeea769ac44c77f'
             'e0e6b47aa5ea7b72f2bd5d5ad5e42fee870d947177f2b7e0137b6a93540b894d')
 
 _m64p_components='core rsp-hle video-rice video-glide64mk2 audio-sdl input-sdl ui-console'
@@ -47,9 +45,6 @@ prepare() {
     
     # remove uneedeed 'source' directory references from install script
     patch -Np1 -i mupen64plus-git-install-fix.patch
-    
-    # remove executable stack from core library
-    patch -Np1 -i mupen64plus-git-core-exe-stack.patch
     
     # enable PIE for ui-console interface
     patch -Np1 -i mupen64plus-git-ui-console-pie.patch
@@ -74,18 +69,17 @@ pkgver() {
 
 build() {
     local _component
-    
     for _component in $_m64p_components
     do
         printf '%s\n' "  -> Building component '${_component}'..."
-        make -C "mupen64plus-${_component}/projects/unix" clean $@
-        make -C "mupen64plus-${_component}/projects/unix" PREFIX='/usr' all $@
+        make -C "mupen64plus-${_component}/projects/unix" clean
+        make -C "mupen64plus-${_component}/projects/unix" PREFIX='/usr' all
     done
 }
 
 package() {
     # set LDCONFIG since we are using fakeroot and scripts run root commands by checking the uid
-    ./m64p_install.sh DESTDIR="$pkgdir" PREFIX='/usr' MANDIR='/usr/share/man' LDCONFIG='true'
+    ./m64p_install.sh DESTDIR="$pkgdir" PREFIX='/usr' LDCONFIG='true'
     
     local _sover
     _sover="$(find mupen64plus-core/projects/unix -type f -name 'libmupen64plus.so.*.*' | sed 's/^.*\.so\.//')"
