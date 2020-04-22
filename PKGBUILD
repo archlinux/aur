@@ -1,5 +1,6 @@
+# Maintainer: Martin Diehl <https://martin-diehl.net>
 pkgname=python-chaospy
-pkgver=3.2.9
+pkgver=3.2.10
 pkgrel=1
 pkgdesc="Toolbox for performing uncertainty quantification"
 arch=('any')
@@ -7,7 +8,7 @@ url="https://github.com/jonathf/chaospy"
 license=('BSD')
 depends=('python-scipy' 'python-numpoly')
 source=("https://github.com/jonathf/chaospy/archive/v${pkgver}.tar.gz")
-sha256sums=('dd4a4535c66e488875b563fca7c59493e694dffffc474d3de9da06d9dd8c07b8')
+sha256sums=('713f6dea80e8a4d83e54032781883d2359e0a4844a309e06914a394e22a6bfa5')
 
 package() {
   cd "${srcdir}/chaospy-$pkgver"
