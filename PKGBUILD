@@ -1,8 +1,8 @@
 _pkgname=jicofo
 pkgname=${_pkgname}-bin
-pkgver=1.0.544
+pkgver=1.0.549
 pkgrel=1
-_debver=1.0-544-1
+_debver=1.0-549-1
 pkgdesc="JItsi Meet COnference FOcus"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -22,8 +22,8 @@ source=("https://download.jitsi.org/stable/${_pkgname}_${_debver}_all.deb"
         'tmpfiles.conf'
         'config'
         'sip-communicator.properties')
-sha256sums=('34944ee997551c6cee68bf5933c256e29eef77e3d884716a96e0d6ab9879baea'
-            '7c37d43d586c0cb0f868c5de967bbbeed1c6497e93f434993347cbc07abf5c6f'
+sha256sums=('77607060b9db3e4b2a91bf26ccf6d56f23c6e112357fb5dfd4e6ab062ff01af3'
+            'dcd660f5dd17ba98c5441ec1fdea267777650b063b7bf5b9ee7f0a97f29bc425'
             '0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440'
             '1d19c303780f4640bc0cae6f40d8203b119bb81b74f50d61dbe72c548fa37372'
             'b36f987ce17388260fd6f6bcfb8372bf1aa1458959a996a44d073182414ba298'
@@ -36,6 +36,7 @@ package() {
   rm -r "${pkgdir}/etc/init.d"
   rm -r "${pkgdir}/etc/logrotate.d"
   rm -r "${pkgdir}/usr/share/doc"
+  chmod 0750 "${pkgdir}/etc/jitsi/jicofo"
 
   sed -i 's/-Xmx[^ ]*//' "${pkgdir}/usr/share/jicofo/jicofo.sh"
 

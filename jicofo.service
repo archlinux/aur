@@ -5,7 +5,7 @@ After=network.target
 [Service]
 EnvironmentFile=/etc/jitsi/jicofo/config
 User=jicofo
-ExecStart=/bin/bash /usr/share/jicofo/jicofo.sh --host=${JICOFO_HOST} --domain=${JICOFO_HOSTNAME} --port=${JICOFO_PORT} --secret=${JICOFO_SECRET} --user_name=${JICOFO_AUTH_USER} --user_domain=${JICOFO_AUTH_DOMAIN} --user_password=${JICOFO_AUTH_PASSWORD} ${JICOFO_OPTS}
+ExecStart=/usr/share/jicofo/jicofo.sh --host=${JICOFO_HOST} --domain=${JICOFO_HOSTNAME} --port=${JICOFO_PORT} --secret=${JICOFO_SECRET} --user_name=${JICOFO_AUTH_USER} --user_domain=${JICOFO_AUTH_DOMAIN} --user_password=${JICOFO_AUTH_PASSWORD} ${JICOFO_OPTS}
 WorkingDirectory=~
 StateDirectory=jicofo
 StateDirectoryMode=0750
