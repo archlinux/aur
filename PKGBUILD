@@ -2,7 +2,7 @@
 
 pkgname=goaccess-git
 pkgrel=1
-pkgver=r2991.906e048
+pkgver=v0.8.r2629.ge0385cc
 pkgdesc='GoAccess is a real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.'
 url='https://goaccess.io'
 license=('MIT')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "goaccess"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
