@@ -7,14 +7,14 @@
 pkgname=lxd
 _pkgname=lxd
 _lxd=github.com/lxc/lxd
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
 url="https://linuxcontainers.org/lxd"
 license=('APACHE')
 depends=('lxc' 'lxcfs' 'squashfs-tools' 'dnsmasq' 'dqlite' 'libuv' 'sqlite-replication' 'ebtables')
-makedepends=('go-pie' 'git' 'tcl' 'apparmor' 'libseccomp')
+makedepends=('go' 'git' 'tcl' 'apparmor' 'libseccomp')
 optdepends=(
     'lvm2: for lvm2 support'
     'thin-provisioning-tools: for thin provisioning support'
@@ -30,7 +30,7 @@ source=("https://github.com/lxc/lxd/releases/download/${pkgname}-${pkgver}/${pkg
         "lxd.service"
         "lxd.sysusers")
 validpgpkeys=('602F567663E593BCBD14F338C638974D64792D67')
-sha256sums=('cbe2ba49bb40c4497ac76b45f6a4993ea432e41f18d4a3d2b3ef69afcc6d7e02'
+sha256sums=('bdcdf74553533824cc63d6760ab3a09a5354e8bcb4ad3d938fde1feb95f4b36b'
             'SKIP'
             '3a14638f8d0f9082c7214502421350e3b028db1e7f22e8c3fd35a2b1d9153ef4'
             '102d1d54186e0fc606a58f030231d76df6bd662b16dfd8f946e1f48e2b473b54'
@@ -45,15 +45,16 @@ prepare() {
 build() {
   export GOPATH="${srcdir}/${pkgname}-${pkgver}/_dist"
   cd "${GOPATH}/src/${_lxd}"
-  export CGO_CFLAGS="-I/usr/include/sqlite-replication"
-  export CGO_LDFLAGS="-L/usr/lib/sqlite-replication -Wl,-R/usr/lib/sqlite-replication"
+  export GOFLAGS="-buildmode=pie -trimpath"
+  export CGO_CFLAGS="$CFLAGS -I/usr/include/sqlite-replication"
+  export CGO_LDFLAGS="$LDFLAGS -L/usr/lib/sqlite-replication -Wl,-R/usr/lib/sqlite-replication"
   export CGO_LDFLAGS_ALLOW='-Wl,-wrap,pthread_create'
 
   mkdir -p bin
-	go build -trimpath -v -tags "netgo" -o bin/ ./lxd-p2c/...
-	go build -trimpath -v -tags "agent" -o bin/ ./lxd-agent/...
+	go build -v -tags "netgo" -o bin/ ./lxd-p2c/...
+	go build -v -tags "agent" -o bin/ ./lxd-agent/...
   for tool in fuidshift lxc lxc-to-lxd lxd lxd-benchmark; do
-    go build -trimpath -v -tags "libsqlite3" -o bin/ ./$tool/...
+    go build -v -tags "libsqlite3" -o bin/ ./$tool/...
   done
 }
 
