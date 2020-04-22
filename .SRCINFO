@@ -1,0 +1,12 @@
+pkgbase = sierrawireless-swicwe-zip
+	pkgdesc = Sierra Wireless swicwe firmware packaging tool for WP/AR Legato devices
+	pkgver = 1.22
+	pkgrel = 1
+	url = https://source.sierrawireless.com/resources/airprime/software/swicwe
+	arch = x86_64
+	license = GPL2
+	source = http://downloads.sierrawireless.com/tools/swicwe/swicwe.zip
+	sha256sums = f15a545c55b92c75de6728d0c262031e36eab007f464bced36104fe0377e26b1
+
+pkgname = sierrawireless-swicwe-zip
+
