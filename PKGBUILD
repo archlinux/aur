@@ -3,12 +3,12 @@
 _pkgname=aiocontextvars
 pkgname=python-aiocontextvars
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="This module provides APIs to manage, store, and access context-local state. The ContextVar class is used to declare and work with Context Variables."
 arch=('any')
-url="https://python-gino.org/"
+url="https://github.com/fantix/aiocontextvars"
 license=('BSD')
-depends=('python' 'python-setuptools' 'python-asyncpg' 'python-sqlalchemy')
+depends=('python' 'python-setuptools')
 _name=${pkgname#python-}
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_pkgname}-${pkgver}.tar.gz")

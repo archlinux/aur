@@ -1,14 +1,12 @@
 pkgbase = python-aiocontextvars
 	pkgdesc = This module provides APIs to manage, store, and access context-local state. The ContextVar class is used to declare and work with Context Variables.
 	pkgver = 0.2.2
-	pkgrel = 2
-	url = https://python-gino.org/
+	pkgrel = 3
+	url = https://github.com/fantix/aiocontextvars
 	arch = any
 	license = BSD
 	depends = python
 	depends = python-setuptools
-	depends = python-asyncpg
-	depends = python-sqlalchemy
 	source = https://files.pythonhosted.org/packages/source/a/aiocontextvars/aiocontextvars-0.2.2.tar.gz
 	md5sums = 28e8e00dcc35f3b7964d1f5b30fde069
 
