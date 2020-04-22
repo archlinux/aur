@@ -1,8 +1,8 @@
-diff --git a/hydrus/ClientGUI.py b/hydrus/ClientGUI.py
-index 7cec25b..b4e24e5 100644
---- a/hydrus/ClientGUI.py
-+++ b/hydrus/ClientGUI.py
-@@ -739,7 +739,7 @@ class FrameGUI( ClientGUITopLevelWindows.MainFrameThatResizes ):
+diff --git a/hydrus/client/gui/ClientGUI.py b/hydrus/client/gui/ClientGUI.py
+index 2c3933e..c84a039 100644
+--- a/hydrus/client/gui/ClientGUI.py
++++ b/hydrus/client/gui/ClientGUI.py
+@@ -772,7 +772,7 @@ class FrameGUI( ClientGUITopLevelWindows.MainFrameThatResizes ):
                              python_executable = python_executable.replace( 'pythonw', 'python' )
                              
                          
@@ -11,24 +11,24 @@ index 7cec25b..b4e24e5 100644
                          
                          cmd = [ python_executable, server_script_path, db_param ]
                          
-diff --git a/hydrus/ClientGUIStyle.py b/hydrus/ClientGUIStyle.py
-index 63510b1..b5fc2f6 100644
---- a/hydrus/ClientGUIStyle.py
-+++ b/hydrus/ClientGUIStyle.py
-@@ -4,7 +4,7 @@ from . import HydrusExceptions
- import os
- from qtpy import QtWidgets as QW
+diff --git a/hydrus/client/gui/ClientGUIStyle.py b/hydrus/client/gui/ClientGUIStyle.py
+index 7de8ef2..1196c62 100644
+--- a/hydrus/client/gui/ClientGUIStyle.py
++++ b/hydrus/client/gui/ClientGUIStyle.py
+@@ -6,7 +6,7 @@ from hydrus.core import HydrusConstants as HC
+ from hydrus.core import HydrusData
+ from hydrus.core import HydrusExceptions
  
 -STYLESHEET_DIR = os.path.join( HC.BASE_DIR, 'static', 'qss' )
 +STYLESHEET_DIR = os.path.join( HC.STATIC_DIR, 'qss' )
  
  DEFAULT_HYDRUS_STYLESHEET = ''
  ORIGINAL_STYLE_NAME = None
-diff --git a/hydrus/HydrusConstants.py b/hydrus/HydrusConstants.py
-index a8684e2..717b3cc 100644
---- a/hydrus/HydrusConstants.py
-+++ b/hydrus/HydrusConstants.py
-@@ -4,31 +4,8 @@ import sys
+diff --git a/hydrus/core/HydrusConstants.py b/hydrus/core/HydrusConstants.py
+index f14ed6e..4d7a20e 100644
+--- a/hydrus/core/HydrusConstants.py
++++ b/hydrus/core/HydrusConstants.py
+@@ -5,33 +5,9 @@ import typing
  # old method of getting frozen dir, doesn't work for symlinks looks like:
  # BASE_DIR = getattr( sys, '_MEIPASS', None )
  
@@ -46,7 +46,9 @@ index a8684e2..717b3cc 100644
 -        
 -        hc_realpath_dir = os.path.dirname( os.path.realpath( __file__ ) )
 -        
--        BASE_DIR = os.path.split( hc_realpath_dir )[0]
+-        HYDRUS_MODULE_DIR = os.path.split( hc_realpath_dir )[0]
+-        
+-        BASE_DIR = os.path.split( HYDRUS_MODULE_DIR )[0]
 -        
 -    except NameError: # if __file__ is not defined due to some weird OS
 -        
@@ -58,11 +60,12 @@ index a8684e2..717b3cc 100644
 -        BASE_DIR = os.getcwd()
 -        
 +RUNNING_FROM_FROZEN_BUILD = False
++HYDRUS_MODULE_DIR = '/opt/hydrus/hydrus'
 +BASE_DIR = os.path.expanduser("~/.local/share/hydrus")
  
  PLATFORM_WINDOWS = False
  PLATFORM_MACOS  = False
-@@ -41,23 +18,16 @@ elif sys.platform == 'linux': PLATFORM_LINUX = True
+@@ -44,23 +20,16 @@ elif sys.platform == 'linux': PLATFORM_LINUX = True
  RUNNING_FROM_SOURCE = sys.argv[0].endswith( '.py' ) or sys.argv[0].endswith( '.pyw' )
  RUNNING_FROM_MACOS_APP = os.path.exists( os.path.join( BASE_DIR, 'running_from_app' ) )
  
