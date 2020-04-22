@@ -14,7 +14,7 @@ pkgbase = libinput-hires-scroll
 	optdepends = gtk3: libinput debug-gui
 	optdepends = python-pyudev: libinput measure
 	optdepends = python-libevdev: libinput measure
-	provides = libinput
+	provides = libinput=1.15.5-1
 	conflicts = libinput
 	source = https://freedesktop.org/software/libinput/libinput-1.15.5.tar.xz
 	source = https://freedesktop.org/software/libinput/libinput-1.15.5.tar.xz.sig
