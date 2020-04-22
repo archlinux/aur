@@ -1,8 +1,8 @@
 pkgbase = linux-covolunablu-gaming
 	pkgdesc = Linux
-	pkgver = 5.6.5.arch2
+	pkgver = 5.6.6.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.6.5-arch2
+	url = https://git.archlinux.org/linux.git/log/?h=v5.6.6-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -14,13 +14,11 @@ pkgbase = linux-covolunablu-gaming
 	makedepends = graphviz
 	makedepends = imagemagick
 	makedepends = git
-	conflicts = steamos-xpad-dkms
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.6.5-arch2
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.6.6-arch1
 	source = config
 	source = bfq-default.patch
 	source = futex-wait-multiple-5.2.1.patch
-	source = https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/865a07956db55120d69876a202ce0fa35f46b218/drivers/input/joystick/xpad.c
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
@@ -28,7 +26,6 @@ pkgbase = linux-covolunablu-gaming
 	sha256sums = dfd3310bc2d3c4adbaba5e4f2260a8a110706993be1c3e02a5ddfe88bf0c63ce
 	sha256sums = 136fd376e27fd8503f0ea2c7c3df645fea60a9c05286b53e2bceb7ff8c1d0201
 	sha256sums = b8a9225b4b5cbabac26398d11cc26566e4407d150dacb92f3411c9bb8cc23942
-	sha256sums = da4ea29ba0a1d02bd14b6c33aadeb71fd6ac543f36d3e8b64c7f0acf2d8262fc
 
 pkgname = linux-covolunablu-gaming
 	pkgdesc = The Linux kernel and modules; it includes BFQ as default scheduler, steamos xpad module and the steam fsync patches for proton

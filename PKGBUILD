@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan dot steffens at gmail dot com>
 
 pkgbase=linux-covolunablu-gaming
-pkgver=5.6.5.arch2
+pkgver=5.6.6.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -17,19 +17,12 @@ makedepends=(
 )
 options=('!strip')
 
-# Because is already included in the kernel itself, no need to use dkms.
-#
-# However this line can be removed. Having steamos-xpad-dkms is not really giving
-# problems, is just useless since is already included.
-conflicts=('steamos-xpad-dkms')
-
 _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
   config         # the main kernel config file
   bfq-default.patch
   futex-wait-multiple-5.2.1.patch
-  'https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/865a07956db55120d69876a202ce0fa35f46b218/drivers/input/joystick/xpad.c'
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -41,7 +34,6 @@ sha256sums=('SKIP'
             # -- covolunablu-gaming patches --
             '136fd376e27fd8503f0ea2c7c3df645fea60a9c05286b53e2bceb7ff8c1d0201'
             'b8a9225b4b5cbabac26398d11cc26566e4407d150dacb92f3411c9bb8cc23942'
-            'da4ea29ba0a1d02bd14b6c33aadeb71fd6ac543f36d3e8b64c7f0acf2d8262fc'
 )
 
 export KBUILD_BUILD_HOST=covolunablu
@@ -64,9 +56,6 @@ prepare() {
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
-
-  # use steamos version of xpad
-  cp "${srcdir}/xpad.c" ./drivers/input/joystick/xpad.c
 
   echo "Setting config..."
   cp ../config .config
