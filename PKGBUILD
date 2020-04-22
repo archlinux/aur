@@ -11,7 +11,7 @@ url="http://xorg.freedesktop.org/"
 depends=('libinput-hires-scroll>=1.2.0')
 makedepends=('xorg-server-devel' 'X-ABI-XINPUT_VERSION=24.1' 'libxi' 'libx11' 'xorgproto')
 conflicts=($_pkgname 'xorg-server<1.19.0' 'X-ABI-XINPUT_VERSION<24' 'X-ABI-XINPUT_VERSION>=25')
-provides=($_pkgname)
+provides=("$_pkgname=$pkgver-$pkgrel")
 groups=('xorg-drivers')
 source=(https://xorg.freedesktop.org/releases/individual/driver/$_pkgname-$pkgver.tar.bz2{,.sig}
         mr2.patch)

@@ -11,8 +11,8 @@ pkgbase = xf86-input-libinput-hires-scroll
 	makedepends = libxi
 	makedepends = libx11
 	makedepends = xorgproto
-	depends = libinput>=1.2.0
-	provides = xf86-input-libinput
+	depends = libinput-hires-scroll>=1.2.0
+	provides = xf86-input-libinput=0.29.0-2
 	conflicts = xf86-input-libinput
 	conflicts = xorg-server<1.19.0
 	conflicts = X-ABI-XINPUT_VERSION<24
