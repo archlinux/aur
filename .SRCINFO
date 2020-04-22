@@ -1,0 +1,14 @@
+pkgbase = depcharge-bin
+	pkgdesc = A tool designed to help orchestrate the execution of commands across many directories at once
+	pkgver = 60a39da
+	pkgrel = 1
+	url = https://github.com/centerorbit/depcharge
+	arch = x86_64
+	license = MIT
+	makedepends = go-pie
+	provides = depcharge
+	source = https://github.com/centerorbit/depcharge/releases/download/60a39da/depcharge-linux-x64.zip
+	sha256sums = d6742b2c0152a83d85c7e5505aaa4ebfbdb1708fc5bc8f14ec06de315959375a
+
+pkgname = depcharge-bin
+
