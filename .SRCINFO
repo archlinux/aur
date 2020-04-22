@@ -1,6 +1,6 @@
 pkgbase = python-qiskit-aqua
 	pkgdesc = A high performance simulator for quantum circuits that includes noise models
-	pkgver = 0.6.4
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit-aqua
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = python-qiskit-aqua
 	depends = python-quandl
 	depends = python-h5py
 	depends = python-pyscf
-	source = qiskit-aqua-0.6.4.tar.gz::https://github.com/Qiskit/qiskit-aqua/archive/0.6.4.tar.gz
-	sha256sums = a17750ee7d97d7937c7b2da35d4f6413bc414f622381c724096674b9dd59d49c
+	source = qiskit-aqua-0.6.6.tar.gz::https://github.com/Qiskit/qiskit-aqua/archive/0.6.6.tar.gz
+	sha256sums = e0516c992385d7eb06bdeb1bfa047223c4aac1ca00aae981318c0ec2f6cfb0f0
 
 pkgname = python-qiskit-aqua
 
