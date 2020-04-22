@@ -1,7 +1,7 @@
 # Maintainer: Adam Veldhousen adam@vdhsn.com
 pkgname=powerbar
-pkgver=v1.0.1.8
-pkgrel=2
+pkgver=v1.0.1.10
+pkgrel=1
 pkgdesc="Battery status module for Waybar"
 arch=('x86_64')
 url="https://github.com/adamveld12/$pkgname"
@@ -36,8 +36,8 @@ package() {
 }
 
 pkgver() {
-	if [[ "$pkgver" ]]; then
-		echo "$pkgver"
+	if [[ "$PKGVER" ]]; then
+		echo "$PKGVER"
 		return
 	fi
 
@@ -50,6 +50,5 @@ pkgver() {
          return
     fi
 
-    local count=$(git rev-list --count HEAD)
-    echo ${VERSION}.${count}
+    echo ${VERSION}
 }
