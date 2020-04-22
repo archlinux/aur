@@ -1,0 +1,15 @@
+pkgbase = modex-git
+	pkgdesc = A model extractor for the Spin model checker
+	pkgver = r5.e6319f5
+	pkgrel = 1
+	url = http://spinroot.com/modex
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = glibc
+	depends = sh
+	source = git+https://github.com/nimble-code/Modex.git
+	sha512sums = SKIP
+
+pkgname = modex-git
+
