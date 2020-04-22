@@ -15,7 +15,8 @@ depends=('gtk3'
 optdepends=('watchman: An inotify-based file watching and job triggering command line utility'
 			      'android-sdk: Android debugging support')
 makedepends=('gendesk' 'unzip')
-source=("https://github.com/facebook/flipper/releases/download/v${pkgver}/Flipper-linux.zip")
+source=("https://github.com/facebook/flipper/releases/download/v${pkgver}/Flipper-linux.zip"
+        'icon.png')
 sha512sums=('02719aca28fc6603fc16e7b0f2dbda682e1f73ff0ffbb4689cb5672f4911a6c4200ec98f577da6214799cf940bff078c2c833c052468675dfab1a9f1ecf817a6')
 noextract=('Flipper-linux.zip')
 
