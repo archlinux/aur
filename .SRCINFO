@@ -6,9 +6,9 @@ pkgbase = python-pypsdd
 	arch = any
 	license = Apache 2.0
 	makedepends = git
-	depends = python2
-	optdepends = pypy
-	source = git+https://github.com/art-ai/pypsdd
+	depends = python
+	optdepends = pypy3
+	source = git+https://github.com/RenatoGeh/pypsdd
 	sha256sums = SKIP
 
 pkgname = python-pypsdd

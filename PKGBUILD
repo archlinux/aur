@@ -8,19 +8,25 @@ pkgdesc="The Python Probabilistic Sentential Decision Diagrams (PSDD) Package."
 arch=('any')
 url="https://github.com/art-ai/pypsdd"
 license=('Apache 2.0')
-depends=('python2')
-optdepends=('pypy')
+depends=('python')
+optdepends=('pypy3')
 makedepends=('git')
-source=("git+https://github.com/art-ai/pypsdd")
+source=("git+https://github.com/RenatoGeh/pypsdd")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$_gitname"
+  git checkout dev
+  git pull
+}
 
 build() {
   cd "$_gitname"
-  python2 setup.py build
+  python3 setup.py build
 }
 
 package() {
   cd "$_gitname"
-  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python3 setup.py install --root="$pkgdir" --optimize=2 --skip-build
 }
 
