@@ -1,7 +1,9 @@
---- src/gst-plugins/recorderendpoint/kmsrecorderendpoint.c	2018-04-13 16:19:22.782963282 +0300
-+++ src/gst-plugins/recorderendpoint/kmsrecorderendpoint.c	2018-04-14 13:45:24.649708246 +0300
-@@ -2049,7 +2049,7 @@
-
+diff --git a/src/gst-plugins/recorderendpoint/kmsrecorderendpoint.c b/src/gst-plugins/recorderendpoint/kmsrecorderendpoint.c
+index 0751d40..296fbc2 100644
+--- a/src/gst-plugins/recorderendpoint/kmsrecorderendpoint.c
++++ b/src/gst-plugins/recorderendpoint/kmsrecorderendpoint.c
+@@ -2050,7 +2050,7 @@ kms_recorder_endpoint_plugin_init (GstPlugin * plugin)
+ 
  GST_PLUGIN_DEFINE (GST_VERSION_MAJOR,
      GST_VERSION_MINOR,
 -    kmsrecorderendpoint,

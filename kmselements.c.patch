@@ -1,7 +1,9 @@
---- src/gst-plugins/kmselements.c	2018-04-13 16:19:22.852964568 +0300
-+++ src/gst-plugins/kmselements.c	2018-04-14 13:42:12.896190528 +0300
-@@ -65,7 +65,7 @@
-
+diff --git a/src/gst-plugins/kmselements.c b/src/gst-plugins/kmselements.c
+index 51283aa..8d3f00f 100644
+--- a/src/gst-plugins/kmselements.c
++++ b/src/gst-plugins/kmselements.c
+@@ -65,7 +65,7 @@ kurento_init (GstPlugin * kurento)
+ 
  GST_PLUGIN_DEFINE (GST_VERSION_MAJOR,
      GST_VERSION_MINOR,
 -    kmselements,

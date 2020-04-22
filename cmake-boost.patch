@@ -1,0 +1,11 @@
+--- CMakeLists.txt.orig	2020-04-21 14:32:35.483126663 +0200
++++ CMakeLists.txt	2020-04-21 14:33:16.373591566 +0200
+@@ -55,7 +55,7 @@
+ set(GLIBMM_REQUIRED ^2.37)
+ 
+ include(GenericFind)
+-generic_find(LIBNAME Boost REQUIRED COMPONENTS unit_test_framework)
++find_package(Boost REQUIRED COMPONENTS unit_test_framework)
+ generic_find(LIBNAME gstreamer-1.5 VERSION ${GST_REQUIRED} REQUIRED)
+ generic_find(LIBNAME gstreamer-base-1.5 VERSION ${GST_REQUIRED} REQUIRED)
+ generic_find(LIBNAME gstreamer-video-1.5 VERSION ${GST_REQUIRED} REQUIRED)

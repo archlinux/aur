@@ -1,7 +1,9 @@
---- src/gst-plugins/webrtcendpoint/kmswebrtcendpoint.c	2018-04-13 16:19:22.882965121 +0300
-+++ src/gst-plugins/webrtcendpoint/kmswebrtcendpoint.c	2018-04-14 13:47:11.081661559 +0300
-@@ -861,7 +861,7 @@
-
+diff --git a/src/gst-plugins/webrtcendpoint/kmswebrtcendpoint.c b/src/gst-plugins/webrtcendpoint/kmswebrtcendpoint.c
+index 1884d40..0ef1038 100644
+--- a/src/gst-plugins/webrtcendpoint/kmswebrtcendpoint.c
++++ b/src/gst-plugins/webrtcendpoint/kmswebrtcendpoint.c
+@@ -904,7 +904,7 @@ kms_webrtc_endpoint_plugin_init (GstPlugin * plugin)
+ 
  GST_PLUGIN_DEFINE (GST_VERSION_MAJOR,
      GST_VERSION_MINOR,
 -    kmswebrtcendpoint,
