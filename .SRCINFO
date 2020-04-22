@@ -1,0 +1,28 @@
+pkgbase = libinput-hires-scroll
+	pkgdesc = Input device management and event handling library - patched for hi-res wheel scroll
+	pkgver = 1.15.5
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/libinput/
+	arch = x86_64
+	license = custom:X11
+	makedepends = gtk3
+	makedepends = meson
+	depends = mtdev
+	depends = systemd
+	depends = libevdev
+	depends = libwacom
+	optdepends = gtk3: libinput debug-gui
+	optdepends = python-pyudev: libinput measure
+	optdepends = python-libevdev: libinput measure
+	provides = libinput
+	conflicts = libinput
+	source = https://freedesktop.org/software/libinput-hires-scroll/libinput-hires-scroll-1.15.5.tar.xz
+	source = https://freedesktop.org/software/libinput-hires-scroll/libinput-hires-scroll-1.15.5.tar.xz.sig
+	source = mr139.patch
+	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
+	sha512sums = a0a3a325048841fc017e19d3bc5f5490605972ab9e2730dc5678bda7efb7a5b1fa6f531f3c8abd8393899ec383d8d2bcfd586eacee04fc1fbda0e02ba2af956a
+	sha512sums = SKIP
+	sha512sums = 61e5cfac34eaaa93cdc7ae6a14e8ff9fbca9f13e6954101c46d8bfb47ae5e09e98669f4759ab01bac765d1b510e693beff9a842d48ce861ccf7c5e782abc0c0b
+
+pkgname = libinput-hires-scroll
+

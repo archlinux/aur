@@ -1,0 +1,1202 @@
+diff --git a/doc/user/development.rst b/doc/user/development.rst
+index b96d365428e7024321298bed7f812f01a8c151a1..4b7e4a0da8ad1957203bf38f169055781f4e307d 100644
+--- a/doc/user/development.rst
++++ b/doc/user/development.rst
+@@ -36,6 +36,7 @@ Topics below explain some behaviors of libinput.
+    normalization-of-relative-motion.rst
+    seats.rst
+    timestamps.rst
++   wheel-api.rst
+ 
+ .. _hacking_on_libinput:
+ 
+diff --git a/doc/user/meson.build b/doc/user/meson.build
+index c5dc32a4d143a675b7e4e6a90e7825bdd570df55..d2033cad69046b000770013804b5ef6a51e570c1 100644
+--- a/doc/user/meson.build
++++ b/doc/user/meson.build
+@@ -162,6 +162,7 @@ src_rst = files(
+ 	'trackpoints.rst',
+ 	'trackpoint-configuration.rst',
+ 	'what-is-libinput.rst',
++	'wheel-api.rst',
+ 	'features.rst',
+ 	'development.rst',
+ 	'troubleshooting.rst',
+diff --git a/doc/user/wheel-api.rst b/doc/user/wheel-api.rst
+new file mode 100644
+index 0000000000000000000000000000000000000000..00881128fd6aa1dfbf36228a2bc6dbddd7f28db6
+--- /dev/null
++++ b/doc/user/wheel-api.rst
+@@ -0,0 +1,196 @@
++.. _wheel_scrolling:
++
++==============================================================================
++Wheel scrolling
++==============================================================================
++
++libinput provides two events to handle wheel scrolling:
++
++- ``LIBINPUT_EVENT_POINTER_AXIS`` events are sent for regular wheel clicks,
++  usually those representing one detent on the device. These wheel clicks
++  usually require a rotation of 15 or 20 degrees.
++  **This event is considered legacy API for wheel scrolling as of libinput 1.16.**
++
++- ``LIBINPUT_EVENT_POINTER_AXIS_WHEEL`` events are sent for regular and/or
++  high resolution wheel movements. High-resolution events are often 4 or 8
++  times more frequent than wheel clicks and require the device to be switched
++  into high-resolution mode. A Linux kernel 5.0 or later is required for these
++  to be supported. Where high-resolution wheels are not available, libinput
++  sends these events for regular wheel clicks.
++  **This event is available since libinput 1.16.**
++
++
++Both events have the same APIs to access the data within:
++
++* ``libinput_event_pointer_get_axis_value()`` returns the angle of movement
++  in degrees.
++* ``libinput_event_pointer_get_axis_value_discrete()`` returns the number of
++  logical wheel clicks (**always 0 for high-resolution wheel events**).
++* ``libinput_event_pointer_get_axis_value_v120()`` returns a value
++  normalized into the 0..120 range, see below. Any multiple of 120 should
++  be treated as one full wheel click.
++
++.. note:: Where possible, the ``libinput_event_pointer_get_axis_value()``
++	  and ``libinput_event_pointer_get_axis_value_discrete()`` API
++	  should be avoided.
++
++The events are separate for historical reasons. Both events are
++generated for the same device but are independent event streams. Callers
++must not assume any relation between the two, i.e. there is no guarantee
++that an axis event is sent before or after any specific high-resolution
++event and vice versa.
++
++------------------------------------------------------------------------------
++The v120 Wheel API
++------------------------------------------------------------------------------
++
++The ``v120`` value matches the Windows API for wheel scrolling. Wheel
++movements are normalized into multiples (or fractions) of 120 with each
++multiple of 120 representing one detent of movement. The ``v120`` API is the
++recommended API for callers that do not care about the exact physical
++motion and is the simplest API to handle high-resolution scrolling.
++
++Most wheels provide 24 detents per 360 degree rotation (click angle of 15),
++others provide 18 detents per 360 degree rotation (click angle 20). Mice
++falling outside these two are rare but do exist. Below is a table showing
++the various values for a single event, depending on the click angle of the
++wheel:
++
+++-------------+------------+---------------+------+
++| Click angle | Axis value | Discrete value| v120 |
+++=============+============+===============+======+
++| 15          |      15    | 1             | 120  |
+++-------------+------------+---------------+------+
++| 20          |      20    | 1             | 120  |
+++-------------+------------+---------------+------+
++
++Fast scrolling may trigger cover than one detent per event and thus each
++event may contain multiples of the value, discrete or v120 value:
++
+++-------------+------------+---------------+------+
++| Click angle | Axis value | Discrete value| v120 |
+++=============+============+===============+======+
++| 15          |      30    | 2             |  240 |
+++-------------+------------+---------------+------+
++| 20          |      60    | 3             |  360 |
+++-------------+------------+---------------+------+
++
++Scrolling on high-resolution wheels will produce fractions of 120, depending
++on the resolution of the wheel. The example below shows a mouse with click
++angle 15 and a resolution of 3 events per wheel click and a mouse with click
++angle 20 and a resolution of 2 events per wheel click.
++
+++-------------+------------+---------------+------+
++| Click angle | Axis value | Discrete value| v120 |
+++=============+============+===============+======+
++| 15          |      5     | 0             | 40   |
+++-------------+------------+---------------+------+
++| 20          |     10     | 0             | 60   |
+++-------------+------------+---------------+------+
++
++
++
++
++------------------------------------------------------------------------------
++Event sequences for high-resolution wheel mice
++------------------------------------------------------------------------------
++
++High-resolution scroll wheels provide multiple events for each detent is
++hit. For those mice, an event sequence covering two detents may look like
++this:
++
+++--------------+---------+------------+---------------+------+
++| Event number |   Type  | Axis value | Discrete value| v120 |
+++==============+=========+============+===============+======+
++| 1            |  WHEEL  |      5     | 0             | 40   |
+++--------------+---------+------------+---------------+------+
++| 2            |  WHEEL  |      5     | 0             | 40   |
+++--------------+---------+------------+---------------+------+
++| 3            |  WHEEL  |      5     | 0             | 40   |
+++--------------+---------+------------+---------------+------+
++| 4            |  AXIS   |     15     | 1             | 120  |
+++--------------+---------+------------+---------------+------+
++| 5            |  WHEEL  |      5     | 0             | 40   |
+++--------------+---------+------------+---------------+------+
++| 6            |  WHEEL  |      5     | 0             | 40   |
+++--------------+---------+------------+---------------+------+
++| 7            |  AXIS   |     15     | 1             | 120  |
+++--------------+---------+------------+---------------+------+
++
++The above assumes a click angle of 15 for the physical detents. Note how the
++second set of high-resolution events do **not** add up to a multiple of
++120 before the low-resolution event. A caller must not assume that
++low-resolution events appear at every multiple of 120.
++
++Fast-scrolling on a high-resolution mouse may trigger multiple fractions per
++hardware scanout cycle and result in an event sequence like this:
++
+++---------------+---------+------------+---------------+------+
++| Event number  |   Type  | Axis value | Discrete value| v120 |
+++===============+=========+============+===============+======+
++| 1             |  WHEEL  |      5     | 0             | 40   |
+++---------------+---------+------------+---------------+------+
++| 2             |  WHEEL  |     10     | 0             | 80   |
+++---------------+---------+------------+---------------+------+
++| 3             |  AXIS   |     15     | 1             | 120  |
+++---------------+---------+------------+---------------+------+
++| 4             |  WHEEL  |     10     | 0             | 80   |
+++---------------+---------+------------+---------------+------+
++| 5             |  WHEEL  |     10     | 0             | 80   |
+++---------------+---------+------------+---------------+------+
++| 6             |  AXIS   |     15     | 1             | 120  |
+++---------------+---------+------------+---------------+------+
++| 7             |  WHEEL  |      5     | 0             | 40   |
+++---------------+---------+------------+---------------+------+
++
++Note how the first low-resolution event is sent at an accumulated 15
++degrees, the second at an accumulated 20 degrees. The libinput API does not
++specify the smallest fraction a wheel supports.
++
++------------------------------------------------------------------------------
++Event sequences for regular wheel mice
++------------------------------------------------------------------------------
++
++``LIBINPUT_EVENT_POINTER_AXIS_WHEEL`` for low-resolution mice are virtually
++identical to ``LIBINPUT_EVENT_POINTER_AXIS`` events. Note that the discrete
++value is always 0 for ``LIBINPUT_EVENT_POINTER_AXIS_WHEEL``.
++
+++--------------+---------+------------+---------------+------+
++| Event number |   Type  | Axis value | Discrete value| v120 |
+++==============+=========+============+===============+======+
++| 1            |  AXIS   |     15     | 1             | 120  |
+++--------------+---------+------------+---------------+------+
++| 2            |  WHEEL  |     15     | 0             | 120  |
+++--------------+---------+------------+---------------+------+
++| 3            |  WHEEL  |     15     | 0             | 120  |
+++--------------+---------+------------+---------------+------+
++| 4            |  AXIS   |     15     | 1             | 120  |
+++--------------+---------+------------+---------------+------+
++
++Note that the order of ``LIBINPUT_EVENT_POINTER_AXIS`` vs
++``LIBINPUT_EVENT_POINTER_AXIS_WHEEL`` events is not guaranteed, as shown in
++the example above.
++
++------------------------------------------------------------------------------
++Legacy wheel axis events
++------------------------------------------------------------------------------
++
++.. warning:: This section only applies for ``LIBINPUT_EVENT_POINTER_AXIS``
++	events with the axis source ``LIBINPUT_POINTER_AXIS_SOURCE_WHEEL``.
++	The ``LIBINPUT_EVENT_POINTER_AXIS`` event is also used for finger- or
++	button-based scrolling. Check ``libinput_event_pointer_get_axis_source()``
++	to determine if an event is a wheel event.
++
++The behavior of ``LIBINPUT_EVENT_POINTER_AXIS`` events does not change with
++the introduction of high-resolution scrolling. These events are generated
++for every logical click of the mouse wheel (but not for fractions of a click
++on high-resolution scroll wheel mice).
++
++libinput does not provide a mechanism to match legacy events with the new
++``LIBINPUT_EVENT_POINTER_AXIS_WHEEL`` events. Callers should treat the
++sources as independent. Where the caller needs to emulate low-resolution
++wheel clicks, it may do so by handling ``LIBINPUT_EVENT_POINTER_AXIS_WHEEL``.
++
++Where the caller does not require low-resolution wheel click emulation, it
++should ignore all ``LIBINPUT_EVENT_POINTER_AXIS_WHEEL`` events
++with a source of ``LIBINPUT_POINTER_AXIS_SOURCE_WHEEL``.
+diff --git a/src/evdev-fallback.c b/src/evdev-fallback.c
+index 99c87c87923d3086ac6b0d41dcc27f03777cda8b..e033289eb5a8d74c6fa3d2e5aaf6d2e528cea13d 100644
+--- a/src/evdev-fallback.c
++++ b/src/evdev-fallback.c
+@@ -208,6 +208,7 @@ fallback_flush_wheels(struct fallback_dispatch *dispatch,
+ {
+ 	struct normalized_coords wheel_degrees = { 0.0, 0.0 };
+ 	struct discrete_coords discrete = { 0.0, 0.0 };
++	struct wheel_v120 v120 = { 0.0, 0.0 };
+ 	enum libinput_pointer_axis_source source;
+ 
+ 	if (!(device->seat_caps & EVDEV_DEVICE_POINTER))
+@@ -216,27 +217,44 @@ fallback_flush_wheels(struct fallback_dispatch *dispatch,
+ 	if (device->model_flags & EVDEV_MODEL_LENOVO_SCROLLPOINT) {
+ 		struct normalized_coords unaccel = { 0.0, 0.0 };
+ 
+-		dispatch->wheel.y *= -1;
+-		normalize_delta(device, &dispatch->wheel, &unaccel);
++		dispatch->wheel.hi_res.y *= -1;
++		normalize_delta(device, &dispatch->wheel.hi_res, &unaccel);
+ 		evdev_post_scroll(device,
+ 				  time,
+ 				  LIBINPUT_POINTER_AXIS_SOURCE_CONTINUOUS,
+ 				  &unaccel);
+-		dispatch->wheel.x = 0;
+-		dispatch->wheel.y = 0;
++		dispatch->wheel.hi_res.x = 0;
++		dispatch->wheel.hi_res.y = 0;
+ 
+ 		return;
+ 	}
+ 
+-	if (dispatch->wheel.y != 0) {
+-		wheel_degrees.y = -1 * dispatch->wheel.y *
+-					device->scroll.wheel_click_angle.y;
+-		discrete.y = -1 * dispatch->wheel.y;
++	if (dispatch->wheel.hi_res.y != 0) {
++		int value = dispatch->wheel.hi_res.y;
+ 
++		v120.y = -1 * value;
++		wheel_degrees.y = -1 * value/120.0 * device->scroll.wheel_click_angle.y;
+ 		source = device->scroll.is_tilt.vertical ?
+ 				LIBINPUT_POINTER_AXIS_SOURCE_WHEEL_TILT:
+ 				LIBINPUT_POINTER_AXIS_SOURCE_WHEEL;
++		evdev_notify_axis_hires(
++			device,
++			time,
++			bit(LIBINPUT_POINTER_AXIS_SCROLL_VERTICAL),
++			source,
++			&wheel_degrees,
++			&v120);
++		dispatch->wheel.hi_res.y = 0;
++	}
+ 
++	if (dispatch->wheel.lo_res.y != 0) {
++		int value = dispatch->wheel.lo_res.y;
++
++		wheel_degrees.y = -1 * value * device->scroll.wheel_click_angle.y;
++		discrete.y = -1 * value;
++		source = device->scroll.is_tilt.vertical ?
++				LIBINPUT_POINTER_AXIS_SOURCE_WHEEL_TILT:
++				LIBINPUT_POINTER_AXIS_SOURCE_WHEEL;
+ 		evdev_notify_axis(
+ 			device,
+ 			time,
+@@ -244,18 +262,35 @@ fallback_flush_wheels(struct fallback_dispatch *dispatch,
+ 			source,
+ 			&wheel_degrees,
+ 			&discrete);
+-		dispatch->wheel.y = 0;
++		dispatch->wheel.lo_res.y = 0;
+ 	}
+ 
+-	if (dispatch->wheel.x != 0) {
+-		wheel_degrees.x = dispatch->wheel.x *
+-					device->scroll.wheel_click_angle.x;
+-		discrete.x = dispatch->wheel.x;
++	if (dispatch->wheel.hi_res.x != 0) {
++		int value = dispatch->wheel.hi_res.x;
+ 
++		v120.x = value;
++		wheel_degrees.x = -1 * value/120.0 * device->scroll.wheel_click_angle.x;
+ 		source = device->scroll.is_tilt.horizontal ?
+ 				LIBINPUT_POINTER_AXIS_SOURCE_WHEEL_TILT:
+ 				LIBINPUT_POINTER_AXIS_SOURCE_WHEEL;
++		evdev_notify_axis_hires(
++			device,
++			time,
++			bit(LIBINPUT_POINTER_AXIS_SCROLL_VERTICAL),
++			source,
++			&wheel_degrees,
++			&v120);
++		dispatch->wheel.hi_res.x = 0;
++	}
++
++	if (dispatch->wheel.lo_res.x != 0) {
++		int value = dispatch->wheel.lo_res.x;
+ 
++		wheel_degrees.x = value * device->scroll.wheel_click_angle.x;
++		discrete.x = value;
++		source = device->scroll.is_tilt.horizontal ?
++				LIBINPUT_POINTER_AXIS_SOURCE_WHEEL_TILT:
++				LIBINPUT_POINTER_AXIS_SOURCE_WHEEL;
+ 		evdev_notify_axis(
+ 			device,
+ 			time,
+@@ -263,7 +298,7 @@ fallback_flush_wheels(struct fallback_dispatch *dispatch,
+ 			source,
+ 			&wheel_degrees,
+ 			&discrete);
+-		dispatch->wheel.x = 0;
++		dispatch->wheel.lo_res.x = 0;
+ 	}
+ }
+ 
+@@ -836,11 +871,19 @@ fallback_process_relative(struct fallback_dispatch *dispatch,
+ 		dispatch->pending_event |= EVDEV_RELATIVE_MOTION;
+ 		break;
+ 	case REL_WHEEL:
+-		dispatch->wheel.y += e->value;
++		dispatch->wheel.lo_res.y += e->value;
+ 		dispatch->pending_event |= EVDEV_WHEEL;
+ 		break;
+ 	case REL_HWHEEL:
+-		dispatch->wheel.x += e->value;
++		dispatch->wheel.lo_res.x += e->value;
++		dispatch->pending_event |= EVDEV_WHEEL;
++		break;
++	case REL_WHEEL_HI_RES:
++		dispatch->wheel.hi_res.y += e->value;
++		dispatch->pending_event |= EVDEV_WHEEL;
++		break;
++	case REL_HWHEEL_HI_RES:
++		dispatch->wheel.hi_res.x += e->value;
+ 		dispatch->pending_event |= EVDEV_WHEEL;
+ 		break;
+ 	}
+diff --git a/src/evdev-fallback.h b/src/evdev-fallback.h
+index 0f75827e9d19912e8634029af7cf2f9eb9349a82..f1e0fb568da10b08744dee97cd7bcfd44ca42005 100644
+--- a/src/evdev-fallback.h
++++ b/src/evdev-fallback.h
+@@ -96,7 +96,11 @@ struct fallback_dispatch {
+ 	} mt;
+ 
+ 	struct device_coords rel;
+-	struct device_coords wheel;
++
++	struct {
++		struct device_coords lo_res;
++		struct device_coords hi_res;
++	} wheel;
+ 
+ 	struct {
+ 		/* The struct for the tablet mode switch device itself */
+diff --git a/src/evdev.c b/src/evdev.c
+index 3f4e6aac1672c5f75d863cc0558cfe84ae1069ea..f1eb87b43979db9cb9c487da41aee87a7cd89fbe 100644
+--- a/src/evdev.c
++++ b/src/evdev.c
+@@ -405,6 +405,33 @@ evdev_notify_axis(struct evdev_device *device,
+ 			    &discrete);
+ }
+ 
++void
++evdev_notify_axis_hires(struct evdev_device *device,
++			uint64_t time,
++			uint32_t axes,
++			enum libinput_pointer_axis_source source,
++			const struct normalized_coords *delta_in,
++			const struct wheel_v120 *v120_in)
++{
++	struct normalized_coords delta = *delta_in;
++	struct wheel_v120 v120 = *v120_in;
++
++	if (device->scroll.natural_scrolling_enabled) {
++		delta.x *= -1;
++		delta.y *= -1;
++		v120.x *= -1;
++		v120.y *= -1;
++	}
++
++	pointer_notify_axis_hires(&device->base,
++				  time,
++				  axes,
++				  source,
++				  &delta,
++				  &v120);
++}
++
++
+ static void
+ evdev_tag_external_mouse(struct evdev_device *device,
+ 			 struct udev_device *udev_device)
+diff --git a/src/evdev.h b/src/evdev.h
+index 9a76ad80cec0865a35af5bd6351794ec4ea63b46..629e4a757dec3c65ac6796b16c513083d4078c77 100644
+--- a/src/evdev.h
++++ b/src/evdev.h
+@@ -591,6 +591,14 @@ evdev_notify_axis(struct evdev_device *device,
+ 		  const struct normalized_coords *delta_in,
+ 		  const struct discrete_coords *discrete_in);
+ void
++evdev_notify_axis_hires(struct evdev_device *device,
++			uint64_t time,
++			uint32_t axes,
++			enum libinput_pointer_axis_source source,
++			const struct normalized_coords *delta_in,
++			const struct wheel_v120 *v120_in);
++
++void
+ evdev_post_scroll(struct evdev_device *device,
+ 		  uint64_t time,
+ 		  enum libinput_pointer_axis_source source,
+diff --git a/src/libinput-private.h b/src/libinput-private.h
+index cb3a4017d79575716259893b0dd088b8ae006b8c..0ab40142e696a0c60321fb482ec42bd4966eacac 100644
+--- a/src/libinput-private.h
++++ b/src/libinput-private.h
+@@ -76,6 +76,11 @@ struct wheel_angle {
+ 	double x, y;
+ };
+ 
++/* A pair of wheel click data for the 120-normalized range */
++struct wheel_v120 {
++	double x, y;
++};
++
+ /* A pair of angles in degrees */
+ struct tilt_degrees {
+ 	double x, y;
+@@ -567,6 +572,13 @@ pointer_notify_axis(struct libinput_device *device,
+ 		    enum libinput_pointer_axis_source source,
+ 		    const struct normalized_coords *delta,
+ 		    const struct discrete_coords *discrete);
++void
++pointer_notify_axis_hires(struct libinput_device *device,
++			  uint64_t time,
++			  uint32_t axes,
++			  enum libinput_pointer_axis_source source,
++			  const struct normalized_coords *delta,
++			  const struct wheel_v120 *v120);
+ 
+ void
+ touch_notify_touch_down(struct libinput_device *device,
+diff --git a/src/libinput.c b/src/libinput.c
+index e764375bdc4fc65c6b78b4121499a28146fa9a9d..65b1b9dc9918234ae1d90179c1dde9b0686ef456 100644
+--- a/src/libinput.c
++++ b/src/libinput.c
+@@ -118,6 +118,7 @@ event_type_to_str(enum libinput_event_type type)
+ 	CASE_RETURN_STRING(LIBINPUT_EVENT_POINTER_MOTION_ABSOLUTE);
+ 	CASE_RETURN_STRING(LIBINPUT_EVENT_POINTER_BUTTON);
+ 	CASE_RETURN_STRING(LIBINPUT_EVENT_POINTER_AXIS);
++	CASE_RETURN_STRING(LIBINPUT_EVENT_POINTER_AXIS_WHEEL);
+ 	CASE_RETURN_STRING(LIBINPUT_EVENT_TOUCH_DOWN);
+ 	CASE_RETURN_STRING(LIBINPUT_EVENT_TOUCH_UP);
+ 	CASE_RETURN_STRING(LIBINPUT_EVENT_TOUCH_MOTION);
+@@ -171,6 +172,7 @@ struct libinput_event_pointer {
+ 	struct device_float_coords delta_raw;
+ 	struct device_coords absolute;
+ 	struct discrete_coords discrete;
++	struct wheel_v120 v120;
+ 	uint32_t button;
+ 	uint32_t seat_button_count;
+ 	enum libinput_button_state state;
+@@ -362,6 +364,7 @@ libinput_event_get_pointer_event(struct libinput_event *event)
+ 			   LIBINPUT_EVENT_POINTER_MOTION,
+ 			   LIBINPUT_EVENT_POINTER_MOTION_ABSOLUTE,
+ 			   LIBINPUT_EVENT_POINTER_BUTTON,
++			   LIBINPUT_EVENT_POINTER_AXIS_WHEEL,
+ 			   LIBINPUT_EVENT_POINTER_AXIS);
+ 
+ 	return (struct libinput_event_pointer *) event;
+@@ -524,6 +527,7 @@ libinput_event_pointer_get_time(struct libinput_event_pointer *event)
+ 			   LIBINPUT_EVENT_POINTER_MOTION,
+ 			   LIBINPUT_EVENT_POINTER_MOTION_ABSOLUTE,
+ 			   LIBINPUT_EVENT_POINTER_BUTTON,
++			   LIBINPUT_EVENT_POINTER_AXIS_WHEEL,
+ 			   LIBINPUT_EVENT_POINTER_AXIS);
+ 
+ 	return us2ms(event->time);
+@@ -538,6 +542,7 @@ libinput_event_pointer_get_time_usec(struct libinput_event_pointer *event)
+ 			   LIBINPUT_EVENT_POINTER_MOTION,
+ 			   LIBINPUT_EVENT_POINTER_MOTION_ABSOLUTE,
+ 			   LIBINPUT_EVENT_POINTER_BUTTON,
++			   LIBINPUT_EVENT_POINTER_AXIS_WHEEL,
+ 			   LIBINPUT_EVENT_POINTER_AXIS);
+ 
+ 	return event->time;
+@@ -686,6 +691,7 @@ libinput_event_pointer_has_axis(struct libinput_event_pointer *event,
+ 	require_event_type(libinput_event_get_context(&event->base),
+ 			   event->base.type,
+ 			   0,
++			   LIBINPUT_EVENT_POINTER_AXIS_WHEEL,
+ 			   LIBINPUT_EVENT_POINTER_AXIS);
+ 
+ 	switch (axis) {
+@@ -707,6 +713,7 @@ libinput_event_pointer_get_axis_value(struct libinput_event_pointer *event,
+ 	require_event_type(libinput_event_get_context(&event->base),
+ 			   event->base.type,
+ 			   0.0,
++			   LIBINPUT_EVENT_POINTER_AXIS_WHEEL,
+ 			   LIBINPUT_EVENT_POINTER_AXIS);
+ 
+ 	if (!libinput_event_pointer_has_axis(event, axis)) {
+@@ -735,7 +742,8 @@ libinput_event_pointer_get_axis_value_discrete(struct libinput_event_pointer *ev
+ 	require_event_type(libinput_event_get_context(&event->base),
+ 			   event->base.type,
+ 			   0.0,
+-			   LIBINPUT_EVENT_POINTER_AXIS);
++			   LIBINPUT_EVENT_POINTER_AXIS,
++			   LIBINPUT_EVENT_POINTER_AXIS_WHEEL);
+ 
+ 	if (!libinput_event_pointer_has_axis(event, axis)) {
+ 		log_bug_client(libinput, "value requested for unset axis\n");
+@@ -752,12 +760,41 @@ libinput_event_pointer_get_axis_value_discrete(struct libinput_event_pointer *ev
+ 	return value;
+ }
+ 
++LIBINPUT_EXPORT double
++libinput_event_pointer_get_axis_value_v120(struct libinput_event_pointer *event,
++					   enum libinput_pointer_axis axis)
++{
++	struct libinput *libinput = event->base.device->seat->libinput;
++	double value = 0;
++
++	require_event_type(libinput_event_get_context(&event->base),
++			   event->base.type,
++			   0.0,
++			   LIBINPUT_EVENT_POINTER_AXIS_WHEEL,
++			   LIBINPUT_EVENT_POINTER_AXIS);
++
++	if (!libinput_event_pointer_has_axis(event, axis)) {
++		log_bug_client(libinput, "value requested for unset axis\n");
++	} else {
++		switch (axis) {
++		case LIBINPUT_POINTER_AXIS_SCROLL_HORIZONTAL:
++			value = event->v120.x;
++			break;
++		case LIBINPUT_POINTER_AXIS_SCROLL_VERTICAL:
++			value = event->v120.y;
++			break;
++		}
++	}
++	return value;
++}
++
+ LIBINPUT_EXPORT enum libinput_pointer_axis_source
+ libinput_event_pointer_get_axis_source(struct libinput_event_pointer *event)
+ {
+ 	require_event_type(libinput_event_get_context(&event->base),
+ 			   event->base.type,
+ 			   0,
++			   LIBINPUT_EVENT_POINTER_AXIS_WHEEL,
+ 			   LIBINPUT_EVENT_POINTER_AXIS);
+ 
+ 	return event->source;
+@@ -2437,6 +2474,8 @@ pointer_notify_axis(struct libinput_device *device,
+ 		.source = source,
+ 		.axes = axes,
+ 		.discrete = *discrete,
++		.v120.x = discrete->x * 120,
++		.v120.y = discrete->y * 120,
+ 	};
+ 
+ 	post_device_event(device, time,
+@@ -2444,6 +2483,36 @@ pointer_notify_axis(struct libinput_device *device,
+ 			  &axis_event->base);
+ }
+ 
++void
++pointer_notify_axis_hires(struct libinput_device *device,
++			  uint64_t time,
++			  uint32_t axes,
++			  enum libinput_pointer_axis_source source,
++			  const struct normalized_coords *delta,
++			  const struct wheel_v120 *v120)
++{
++	struct libinput_event_pointer *axis_event;
++
++	if (!device_has_cap(device, LIBINPUT_DEVICE_CAP_POINTER))
++		return;
++
++	axis_event = zalloc(sizeof *axis_event);
++
++	*axis_event = (struct libinput_event_pointer) {
++		.time = time,
++		.delta = *delta,
++		.source = source,
++		.axes = axes,
++		.discrete.x = 0,
++		.discrete.y = 0,
++		.v120 = *v120,
++	};
++
++	post_device_event(device, time,
++			  LIBINPUT_EVENT_POINTER_AXIS_WHEEL,
++			  &axis_event->base);
++}
++
+ void
+ touch_notify_touch_down(struct libinput_device *device,
+ 			uint64_t time,
+@@ -3317,6 +3386,7 @@ libinput_event_pointer_get_base_event(struct libinput_event_pointer *event)
+ 			   LIBINPUT_EVENT_POINTER_MOTION,
+ 			   LIBINPUT_EVENT_POINTER_MOTION_ABSOLUTE,
+ 			   LIBINPUT_EVENT_POINTER_BUTTON,
++			   LIBINPUT_EVENT_POINTER_AXIS_WHEEL,
+ 			   LIBINPUT_EVENT_POINTER_AXIS);
+ 
+ 	return &event->base;
+diff --git a/src/libinput.h b/src/libinput.h
+index 5a19f79d19ac4c30a94d017265327191a9f6d809..55597a576df536d086499cb76845b157ad0609b1 100644
+--- a/src/libinput.h
++++ b/src/libinput.h
+@@ -738,7 +738,19 @@ enum libinput_event_type {
+ 	LIBINPUT_EVENT_POINTER_MOTION = 400,
+ 	LIBINPUT_EVENT_POINTER_MOTION_ABSOLUTE,
+ 	LIBINPUT_EVENT_POINTER_BUTTON,
++	/* A scroll event from various sources, including wheels. See
++	 * libinput_event_pointer_get_axis_source()
++	 */
+ 	LIBINPUT_EVENT_POINTER_AXIS,
++	/* A scroll event from a wheel. This event is sent is sent **in
++	 * addition** to the @ref LIBINPUT_EVENT_POINTER_AXIS
++	 * event for all events with a
++	 * libinput_event_pointer_get_axis_source() of @ref
++	 * LIBINPUT_POINTER_AXIS_SOURCE_WHEEL.
++	 *
++	 * See the libinput documentation for details.
++	 */
++	LIBINPUT_EVENT_POINTER_AXIS_WHEEL,
+ 
+ 	LIBINPUT_EVENT_TOUCH_DOWN = 500,
+ 	LIBINPUT_EVENT_TOUCH_UP,
+@@ -1406,10 +1418,11 @@ libinput_event_pointer_get_seat_button_count(
+  * is a scroll stop event.
+  *
+  * For pointer events that are not of type @ref LIBINPUT_EVENT_POINTER_AXIS,
+- * this function returns 0.
++ * or @ref LIBINPUT_EVENT_POINTER_AXIS_WHEEL this function returns 0.
+  *
+  * @note It is an application bug to call this function for events other than
+- * @ref LIBINPUT_EVENT_POINTER_AXIS.
++ * @ref LIBINPUT_EVENT_POINTER_AXIS or @ref
++ * LIBINPUT_EVENT_POINTER_AXIS_WHEEL.
+  *
+  * @return Non-zero if this event contains a value for this axis
+  */
+@@ -1428,18 +1441,23 @@ libinput_event_pointer_has_axis(struct libinput_event_pointer *event,
+  * respectively. For the interpretation of the value, see
+  * libinput_event_pointer_get_axis_source().
+  *
++ * @note For mouse wheel events callers should use
++ * libinput_event_pointer_get_axis_value_v120() instead.
++ *
+  * If libinput_event_pointer_has_axis() returns 0 for an axis, this function
+  * returns 0 for that axis.
+  *
+  * For pointer events that are not of type @ref LIBINPUT_EVENT_POINTER_AXIS,
+- * this function returns 0.
++ * or @ref LIBINPUT_EVENT_POINTER_AXIS_WHEEL this function returns 0.
+  *
+  * @note It is an application bug to call this function for events other than
+- * @ref LIBINPUT_EVENT_POINTER_AXIS.
++ * @ref LIBINPUT_EVENT_POINTER_AXIS or @ref
++ * LIBINPUT_EVENT_POINTER_AXIS_WHEEL.
+  *
+  * @return The axis value of this event
+  *
+  * @see libinput_event_pointer_get_axis_value_discrete
++ * @see libinput_event_pointer_get_axis_value_v120
+  */
+ double
+ libinput_event_pointer_get_axis_value(struct libinput_event_pointer *event,
+@@ -1465,7 +1483,9 @@ libinput_event_pointer_get_axis_value(struct libinput_event_pointer *event,
+  * Scrolling is in discrete steps, the value is the angle the wheel moved
+  * in degrees. The default is 15 degrees per wheel click, but some mice may
+  * have differently grained wheels. It is up to the caller how to interpret
+- * such different step sizes.
++ * such different step sizes. Callers should use
++ * libinput_event_pointer_get_axis_value_v120() for a simpler API of
++ * handling scroll wheel events of different step sizes.
+  *
+  * If the source is @ref LIBINPUT_POINTER_AXIS_SOURCE_CONTINUOUS, no
+  * terminating event is guaranteed (though it may happen).
+@@ -1481,11 +1501,12 @@ libinput_event_pointer_get_axis_value(struct libinput_event_pointer *event,
+  * above). Callers should not use this value but instead exclusively refer
+  * to the value returned by libinput_event_pointer_get_axis_value_discrete().
+  *
+- * For pointer events that are not of type @ref LIBINPUT_EVENT_POINTER_AXIS,
+- * this function returns 0.
++ * For pointer events that are not of type @ref LIBINPUT_EVENT_POINTER_AXIS
++ * or @ref LIBINPUT_EVENT_POINTER_AXIS_WHEEL this function returns 0.
+  *
+  * @note It is an application bug to call this function for events other than
+- * @ref LIBINPUT_EVENT_POINTER_AXIS.
++ * @ref LIBINPUT_EVENT_POINTER_AXIS or @ref
++ * LIBINPUT_EVENT_POINTER_AXIS_WHEEL.
+  *
+  * @return The source for this axis event
+  */
+@@ -1498,20 +1519,72 @@ libinput_event_pointer_get_axis_source(struct libinput_event_pointer *event);
+  * Return the axis value in discrete steps for a given axis event. How a
+  * value translates into a discrete step depends on the source.
+  *
++ * @note Callers should use libinput_event_pointer_get_axis_value_v120()
++ * instead of this function where possible.
++ *
+  * If the source is @ref LIBINPUT_POINTER_AXIS_SOURCE_WHEEL, the discrete
+  * value correspond to the number of physical mouse wheel clicks.
+  *
+  * If the source is @ref LIBINPUT_POINTER_AXIS_SOURCE_CONTINUOUS or @ref
+  * LIBINPUT_POINTER_AXIS_SOURCE_FINGER, the discrete value is always 0.
+  *
++ * If the event is not of type @ref LIBINPUT_EVENT_POINTER_AXIS, this
++ * function returns 0.
++ *
++ * To handle high-resolution scroll wheel events, callers should use
++ * libinput_event_pointer_get_axis_value_v120() instead.
++ *
+  * @return The discrete value for the given event.
+  *
+  * @see libinput_event_pointer_get_axis_value
++ * @see libinput_event_pointer_get_axis_value_v120
+  */
+ double
+ libinput_event_pointer_get_axis_value_discrete(struct libinput_event_pointer *event,
+ 					       enum libinput_pointer_axis axis);
+ 
++/**
++ * @ingroup event_pointer
++ *
++ * For events of type @ref LIBINPUT_EVENT_POINTER_AXIS_WHEEL and
++ * @ref LIBINPUT_EVENT_POINTER_AXIS, the v120-normalized value represents
++ * the movement in logical mouse wheel clicks, normalized to the -120..+120
++ * range.
++ *
++ * A value that is a fraction of ±120 indicates a wheel movement less than
++ * one logical click, a caller should either scroll by the respective
++ * fraction of the normal scroll distance or accumulate that value until a
++ * multiple of 120 is reached.
++ *
++ * For most callers, this is the preferred way of handling high-resolution
++ * scroll events.
++ *
++ * The normalized v120 value does not take device-specific physical angles
++ * or distances into account, i.e. a wheel with a click angle of 20 degrees
++ * produces only 18 logical clicks per 360 degree rotation, a wheel with a
++ * click angle of 15 degrees produces 24 logical clicks per 360 degree
++ * rotation. If the physical angle matters, use
++ * libinput_event_pointer_get_axis_value() instead.
++ *
++ * The magic number 120 originates from the <a
++ * href="http://download.microsoft.com/download/b/d/1/bd1f7ef4-7d72-419e-bc5c-9f79ad7bb66e/wheel.docx">
++ * Windows Vista Mouse Wheel design document</a>.
++ *
++ * For events of type @ref LIBINPUT_EVENT_POINTER_AXIS with a source of
++ * @ref LIBINPUT_POINTER_AXIS_SOURCE_FINGER or @ref
++ * LIBINPUT_POINTER_AXIS_SOURCE_CONTINUOUS, the returned value is 0.
++ *
++ * @return A value normalized to the 0-±120 range
++ *
++ * @see libinput_event_pointer_get_axis_value
++ * @see libinput_event_pointer_get_axis_value_discrete
++ *
++ * @since 1.16
++ */
++double
++libinput_event_pointer_get_axis_value_v120(struct libinput_event_pointer *event,
++					   enum libinput_pointer_axis axis);
++
+ /**
+  * @ingroup event_pointer
+  *
+diff --git a/src/libinput.sym b/src/libinput.sym
+index b45838e0b12936543cceb51d9f19c66ae1efa238..1bd214f0cf9f086558807782bfde95f2f8a886a1 100644
+--- a/src/libinput.sym
++++ b/src/libinput.sym
+@@ -314,3 +314,7 @@ LIBINPUT_1.15 {
+ 	libinput_event_tablet_pad_get_key;
+ 	libinput_event_tablet_pad_get_key_state;
+ } LIBINPUT_1.14;
++
++LIBINPUT_1.16 {
++	libinput_event_pointer_get_axis_value_v120;
++} LIBINPUT_1.15;
+diff --git a/test/litest-device-mouse-low-dpi.c b/test/litest-device-mouse-low-dpi.c
+index 9525058e41a5d74249ea3c33008dd693ac06b6ab..a01b89f19fed57aa79b0343ff2f20bd635fef3ea 100644
+--- a/test/litest-device-mouse-low-dpi.c
++++ b/test/litest-device-mouse-low-dpi.c
+@@ -39,6 +39,9 @@ static int events[] = {
+ 	EV_REL, REL_X,
+ 	EV_REL, REL_Y,
+ 	EV_REL, REL_WHEEL,
++	EV_REL, REL_WHEEL_HI_RES,
++	EV_REL, REL_HWHEEL,
++	EV_REL, REL_HWHEEL_HI_RES,
+ 	-1 , -1,
+ };
+ 
+diff --git a/test/litest-device-mouse.c b/test/litest-device-mouse.c
+index 68275be8a4d426f1e1fb85680155aa83ff7dfd35..d2c02fa349dd3874a6afa46540f0c3dfd8116be5 100644
+--- a/test/litest-device-mouse.c
++++ b/test/litest-device-mouse.c
+@@ -39,6 +39,7 @@ static int events[] = {
+ 	EV_REL, REL_X,
+ 	EV_REL, REL_Y,
+ 	EV_REL, REL_WHEEL,
++	EV_REL, REL_WHEEL_HI_RES,
+ 	-1 , -1,
+ };
+ 
+diff --git a/test/litest.c b/test/litest.c
+index 783c13800920653f6a4e38eb9255281fafa8e7b5..6b3367166200b5127192f6c5ca11a6295368ed72 100644
+--- a/test/litest.c
++++ b/test/litest.c
+@@ -2937,6 +2937,9 @@ litest_event_type_str(enum libinput_event_type type)
+ 	case LIBINPUT_EVENT_POINTER_AXIS:
+ 		str = "AXIS";
+ 		break;
++	case LIBINPUT_EVENT_POINTER_AXIS_WHEEL:
++		str = "AXIS";
++		break;
+ 	case LIBINPUT_EVENT_TOUCH_DOWN:
+ 		str = "TOUCH DOWN";
+ 		break;
+diff --git a/test/test-pointer.c b/test/test-pointer.c
+index f148264224542397e01f0ca147f456e491231e3c..c4da87e5ce4e0e0253a1879f8ccbca04f446db61 100644
+--- a/test/test-pointer.c
++++ b/test/test-pointer.c
+@@ -613,9 +613,11 @@ wheel_source(struct litest_device *dev, int which)
+ 
+ 	switch(which) {
+ 	case REL_WHEEL:
++	case REL_WHEEL_HI_RES:
+ 		is_tilt = !!udev_device_get_property_value(d, "MOUSE_WHEEL_TILT_VERTICAL");
+ 		break;
+ 	case REL_HWHEEL:
++	case REL_HWHEEL_HI_RES:
+ 		is_tilt = !!udev_device_get_property_value(d, "MOUSE_WHEEL_TILT_HORIZONTAL");
+ 		break;
+ 	default:
+@@ -638,16 +640,18 @@ test_wheel_event(struct litest_device *dev, int which, int amount)
+ 	enum libinput_pointer_axis axis;
+ 	enum libinput_pointer_axis_source source;
+ 
+-	double scroll_step, expected, discrete;
++	double scroll_step, expected, discrete, v120;
+ 
+ 	scroll_step = wheel_click_angle(dev, which);
+ 	source = wheel_source(dev, which);
+ 	expected = amount * scroll_step;
+ 	discrete = amount;
++	v120 = amount * 120;
+ 
+ 	if (libinput_device_config_scroll_get_natural_scroll_enabled(dev->libinput_device)) {
+ 		expected *= -1;
+ 		discrete *= -1;
++		v120 *= -1;
+ 	}
+ 
+ 	/* mouse scroll wheels are 'upside down' */
+@@ -671,6 +675,9 @@ test_wheel_event(struct litest_device *dev, int which, int amount)
+ 	litest_assert_double_eq(
+ 			libinput_event_pointer_get_axis_value_discrete(ptrev, axis),
+ 			discrete);
++	litest_assert_double_eq(
++			libinput_event_pointer_get_axis_value_v120(ptrev, axis),
++			v120);
+ 	libinput_event_destroy(event);
+ }
+ 
+@@ -702,6 +709,94 @@ START_TEST(pointer_scroll_wheel)
+ }
+ END_TEST
+ 
++static void
++test_hi_res_wheel_event(struct litest_device *dev, int which, int v120_amount)
++{
++	struct libinput *li = dev->libinput;
++	struct libinput_event *event;
++	struct libinput_event_pointer *ptrev;
++	enum libinput_pointer_axis axis;
++	enum libinput_pointer_axis_source source;
++
++	double scroll_step, expected, discrete, v120;
++
++	scroll_step = wheel_click_angle(dev, which);
++	source = wheel_source(dev, which);
++	expected = scroll_step * v120_amount/120;
++	discrete = v120_amount/120;
++	v120 = v120_amount;
++
++	if (libinput_device_config_scroll_get_natural_scroll_enabled(dev->libinput_device)) {
++		expected *= -1;
++		discrete *= -1;
++		v120 *= -1;
++	}
++
++	switch(which) {
++	case REL_WHEEL_HI_RES:
++		/* mouse scroll wheels are 'upside down' */
++		litest_event(dev, EV_REL, REL_WHEEL_HI_RES, -1 * v120_amount);
++		litest_event(dev, EV_REL, REL_WHEEL, -1 * v120_amount/120);
++		litest_event(dev, EV_SYN, SYN_REPORT, 0);
++		break;
++	case REL_HWHEEL_HI_RES:
++		litest_event(dev, EV_REL, REL_HWHEEL_HI_RES, v120_amount);
++		litest_event(dev, EV_REL, REL_HWHEEL, v120_amount/120);
++		litest_event(dev, EV_SYN, SYN_REPORT, 0);
++		break;
++	default:
++		abort();
++	}
++
++	libinput_dispatch(li);
++
++	axis = (which == REL_WHEEL_HI_RES) ?
++				LIBINPUT_POINTER_AXIS_SCROLL_VERTICAL :
++				LIBINPUT_POINTER_AXIS_SCROLL_HORIZONTAL;
++
++	event = libinput_get_event(li);
++	ptrev = litest_is_axis_event(event, axis, source);
++
++	litest_assert_double_eq(
++			libinput_event_pointer_get_axis_value(ptrev, axis),
++			expected);
++	litest_assert_double_eq(
++			libinput_event_pointer_get_axis_value_discrete(ptrev, axis),
++			discrete);
++	litest_assert_double_eq(
++			libinput_event_pointer_get_axis_value_v120(ptrev, axis),
++			v120);
++	libinput_event_destroy(event);
++}
++
++START_TEST(pointer_scroll_wheel_hires)
++{
++	struct litest_device *dev = litest_current_device();
++
++	if (!libevdev_has_event_code(dev->evdev, EV_REL, REL_WHEEL_HI_RES) &&
++	    !libevdev_has_event_code(dev->evdev, EV_REL, REL_HWHEEL_HI_RES))
++		return;
++
++	litest_drain_events(dev->libinput);
++
++	for (int axis = REL_WHEEL_HI_RES; axis <= REL_HWHEEL_HI_RES; axis++) {
++		if (!libevdev_has_event_code(dev->evdev, EV_REL, axis))
++			continue;
++
++		test_hi_res_wheel_event(dev, axis, -120);
++		test_hi_res_wheel_event(dev, axis, 120);
++
++		test_hi_res_wheel_event(dev, axis, -5 * 120);
++		test_hi_res_wheel_event(dev, axis, 6 * 120);
++
++		test_hi_res_wheel_event(dev, axis, 30);
++		test_hi_res_wheel_event(dev, axis, -40);
++		test_hi_res_wheel_event(dev, axis, -60);
++		test_hi_res_wheel_event(dev, axis, 180);
++	}
++}
++END_TEST
++
+ START_TEST(pointer_scroll_natural_defaults)
+ {
+ 	struct litest_device *dev = litest_current_device();
+@@ -3201,6 +3296,7 @@ TEST_COLLECTION(pointer)
+ 	litest_add_for_device("pointer:button", pointer_button_has_no_button, LITEST_KEYBOARD);
+ 	litest_add("pointer:button", pointer_recover_from_lost_button_count, LITEST_BUTTON, LITEST_CLICKPAD);
+ 	litest_add("pointer:scroll", pointer_scroll_wheel, LITEST_WHEEL, LITEST_TABLET);
++	litest_add("pointer:scroll", pointer_scroll_wheel_hires, LITEST_WHEEL, LITEST_TABLET);
+ 	litest_add("pointer:scroll", pointer_scroll_button, LITEST_RELATIVE|LITEST_BUTTON, LITEST_ANY);
+ 	litest_add("pointer:scroll", pointer_scroll_button_noscroll, LITEST_ABSOLUTE|LITEST_BUTTON, LITEST_RELATIVE);
+ 	litest_add("pointer:scroll", pointer_scroll_button_noscroll, LITEST_ANY, LITEST_RELATIVE|LITEST_BUTTON);
+diff --git a/tools/libinput-debug-events.c b/tools/libinput-debug-events.c
+index efdc93f513dc3bf98a42a82a0fd79085d4ad4c73..859fab6a7d66ce13a6d9d41f562acc6dfc6ee947 100644
+--- a/tools/libinput-debug-events.c
++++ b/tools/libinput-debug-events.c
+@@ -86,6 +86,9 @@ print_event_header(struct libinput_event *ev)
+ 	case LIBINPUT_EVENT_POINTER_AXIS:
+ 		type = "POINTER_AXIS";
+ 		break;
++	case LIBINPUT_EVENT_POINTER_AXIS_WHEEL:
++		type = "POINTER_AXIS_WHEEL";
++		break;
+ 	case LIBINPUT_EVENT_TOUCH_DOWN:
+ 		type = "TOUCH_DOWN";
+ 		break;
+@@ -150,7 +153,7 @@ print_event_header(struct libinput_event *ev)
+ 
+ 	prefix = (last_device != dev) ? '-' : ' ';
+ 
+-	printq("%c%-7s  %-16s ",
++	printq("%c%-7s  %-18s ",
+ 	       prefix,
+ 	       libinput_device_get_sysname(dev),
+ 	       type);
+@@ -468,11 +471,12 @@ static void
+ print_pointer_axis_event(struct libinput_event *ev)
+ {
+ 	struct libinput_event_pointer *p = libinput_event_get_pointer_event(ev);
+-	double v = 0, h = 0;
++	double v = 0, h = 0, v120 = 0, h120 = 0;
+ 	int dv = 0, dh = 0;
+ 	const char *have_vert = "",
+ 		   *have_horiz = "";
+ 	const char *source = "invalid";
++	enum libinput_pointer_axis axis;
+ 
+ 	switch (libinput_event_pointer_get_axis_source(p)) {
+ 	case LIBINPUT_POINTER_AXIS_SOURCE_WHEEL:
+@@ -489,25 +493,27 @@ print_pointer_axis_event(struct libinput_event *ev)
+ 		break;
+ 	}
+ 
+-	if (libinput_event_pointer_has_axis(p,
+-				LIBINPUT_POINTER_AXIS_SCROLL_VERTICAL)) {
+-		v = libinput_event_pointer_get_axis_value(p,
+-			      LIBINPUT_POINTER_AXIS_SCROLL_VERTICAL);
+-		dv = libinput_event_pointer_get_axis_value_discrete(p,
+-			      LIBINPUT_POINTER_AXIS_SCROLL_VERTICAL);
++	axis = LIBINPUT_POINTER_AXIS_SCROLL_VERTICAL;
++	if (libinput_event_pointer_has_axis(p, axis)) {
++		v = libinput_event_pointer_get_axis_value(p, axis);
++		if (libinput_event_get_type(ev) != LIBINPUT_EVENT_POINTER_AXIS_WHEEL)
++			dv = libinput_event_pointer_get_axis_value_discrete(p, axis);
++		v120 = libinput_event_pointer_get_axis_value_v120(p, axis);
+ 		have_vert = "*";
+ 	}
+-	if (libinput_event_pointer_has_axis(p,
+-				LIBINPUT_POINTER_AXIS_SCROLL_HORIZONTAL)) {
+-		h = libinput_event_pointer_get_axis_value(p,
+-			      LIBINPUT_POINTER_AXIS_SCROLL_HORIZONTAL);
+-		dh = libinput_event_pointer_get_axis_value_discrete(p,
+-			      LIBINPUT_POINTER_AXIS_SCROLL_HORIZONTAL);
++	axis = LIBINPUT_POINTER_AXIS_SCROLL_HORIZONTAL;
++	if (libinput_event_pointer_has_axis(p, axis)) {
++		h = libinput_event_pointer_get_axis_value(p, axis);
++		if (libinput_event_get_type(ev) != LIBINPUT_EVENT_POINTER_AXIS_WHEEL)
++			dh = libinput_event_pointer_get_axis_value_discrete(p, axis);
++		h120 = libinput_event_pointer_get_axis_value_v120(p, axis);
+ 		have_horiz = "*";
+ 	}
++
+ 	print_event_time(libinput_event_pointer_get_time(p));
+-	printq("vert %.2f/%d%s horiz %.2f/%d%s (%s)\n",
+-	       v, dv, have_vert, h, dh, have_horiz, source);
++	printq("vert %.2f/%d/%.1f%s horiz %.2f/%d/%.1f%s (%s)\n",
++	       v, dv, v120, have_vert,
++	       h, dh, h120, have_horiz, source);
+ }
+ 
+ static void
+@@ -852,6 +858,7 @@ handle_and_print_events(struct libinput *li)
+ 			print_pointer_button_event(ev);
+ 			break;
+ 		case LIBINPUT_EVENT_POINTER_AXIS:
++		case LIBINPUT_EVENT_POINTER_AXIS_WHEEL:
+ 			print_pointer_axis_event(ev);
+ 			break;
+ 		case LIBINPUT_EVENT_TOUCH_DOWN:
+diff --git a/tools/libinput-debug-gui.c b/tools/libinput-debug-gui.c
+index e594ff9879ebca68f5f7366c72eb519bef0a12a1..9cc628b50e8723dd5c5a8d104644bd4554174572 100644
+--- a/tools/libinput-debug-gui.c
++++ b/tools/libinput-debug-gui.c
+@@ -65,10 +65,6 @@ struct point {
+ 	double x, y;
+ };
+ 
+-struct device_user_data {
+-	struct point scroll_accumulated;
+-};
+-
+ struct evdev_device {
+ 	struct list node;
+ 	struct libevdev *evdev;
+@@ -958,7 +954,6 @@ register_evdev_device(struct window *w, struct libinput_device *dev)
+ 	const char *device_node;
+ 	int fd;
+ 	struct evdev_device *d;
+-	struct device_user_data *data;
+ 
+ 	ud = libinput_device_get_udev_device(dev);
+ 	device_node = udev_device_get_devnode(ud);
+@@ -981,9 +976,6 @@ register_evdev_device(struct window *w, struct libinput_device *dev)
+ 	d->evdev = evdev;
+ 	d->libinput_device =libinput_device_ref(dev);
+ 
+-	data = zalloc(sizeof *data);
+-	libinput_device_set_user_data(dev, data);
+-
+ 	c = g_io_channel_unix_new(fd);
+ 	g_io_channel_set_encoding(c, NULL, NULL);
+ 	d->source_id = g_io_add_watch(c, G_IO_IN,
+@@ -1132,44 +1124,49 @@ static void
+ handle_event_axis(struct libinput_event *ev, struct window *w)
+ {
+ 	struct libinput_event_pointer *p = libinput_event_get_pointer_event(ev);
+-	struct libinput_device *dev = libinput_event_get_device(ev);
+-	struct device_user_data *data = libinput_device_get_user_data(dev);
+ 	double value;
+-	int discrete;
+-
+-	assert(data);
++	enum libinput_pointer_axis axis;
++	bool want_axis_value;
++
++	/* We don't care about the axis value legacy AXIS source wheel
++	 * events, we only want the discrete value from those */
++	want_axis_value =
++		libinput_event_get_type(ev) == LIBINPUT_EVENT_POINTER_AXIS_WHEEL ||
++		libinput_event_pointer_get_axis_source(p) != LIBINPUT_POINTER_AXIS_SOURCE_WHEEL;
++
++	axis = LIBINPUT_POINTER_AXIS_SCROLL_VERTICAL;
++	if (libinput_event_pointer_has_axis(p, axis)) {
++		int discrete = 0;
++
++		value = libinput_event_pointer_get_axis_value(p, axis);
++		if (want_axis_value) {
++			w->scroll.vy += value;
++			w->scroll.vy = clip(w->scroll.vy, 0, w->height);
++		}
+ 
+-	if (libinput_event_pointer_has_axis(p,
+-			LIBINPUT_POINTER_AXIS_SCROLL_VERTICAL)) {
+-		value = libinput_event_pointer_get_axis_value(p,
+-				LIBINPUT_POINTER_AXIS_SCROLL_VERTICAL);
+-		w->scroll.vy += value;
+-		w->scroll.vy = clip(w->scroll.vy, 0, w->height);
+-		data->scroll_accumulated.y += value;
++		discrete = libinput_event_pointer_get_axis_value_discrete(p, axis);
+ 
+-		discrete = libinput_event_pointer_get_axis_value_discrete(p,
+-				LIBINPUT_POINTER_AXIS_SCROLL_VERTICAL);
+ 		if (discrete) {
+-			w->scroll.vy_discrete += data->scroll_accumulated.y;
++			w->scroll.vy_discrete += value;
+ 			w->scroll.vy_discrete = clip(w->scroll.vy_discrete, 0, w->height);
+-			data->scroll_accumulated.y = 0;
+ 		}
+ 	}
+ 
+-	if (libinput_event_pointer_has_axis(p,
+-			LIBINPUT_POINTER_AXIS_SCROLL_HORIZONTAL)) {
+-		value = libinput_event_pointer_get_axis_value(p,
+-				LIBINPUT_POINTER_AXIS_SCROLL_HORIZONTAL);
+-		w->scroll.hx += value;
+-		w->scroll.hx = clip(w->scroll.hx, 0, w->width);
+-		data->scroll_accumulated.x += value;
++	axis = LIBINPUT_POINTER_AXIS_SCROLL_HORIZONTAL;
++	if (libinput_event_pointer_has_axis(p, axis)) {
++		int discrete = 0;
++
++		value = libinput_event_pointer_get_axis_value(p, axis);
++		if (want_axis_value) {
++			w->scroll.hx += value;
++			w->scroll.hx = clip(w->scroll.hx, 0, w->width);
++		}
+ 
+ 		discrete = libinput_event_pointer_get_axis_value_discrete(p,
+-				LIBINPUT_POINTER_AXIS_SCROLL_HORIZONTAL);
++					LIBINPUT_POINTER_AXIS_SCROLL_HORIZONTAL);
+ 		if (discrete) {
+-			w->scroll.hx_discrete += data->scroll_accumulated.x;
++			w->scroll.hx_discrete += value;
+ 			w->scroll.hx_discrete = clip(w->scroll.hx_discrete, 0, w->width);
+-			data->scroll_accumulated.x = 0;
+ 		}
+ 	}
+ }
+@@ -1445,6 +1442,7 @@ handle_event_libinput(GIOChannel *source, GIOCondition condition, gpointer data)
+ 		case LIBINPUT_EVENT_TOUCH_FRAME:
+ 			break;
+ 		case LIBINPUT_EVENT_POINTER_AXIS:
++		case LIBINPUT_EVENT_POINTER_AXIS_WHEEL:
+ 			handle_event_axis(ev, w);
+ 			break;
+ 		case LIBINPUT_EVENT_POINTER_BUTTON:
