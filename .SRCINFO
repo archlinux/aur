@@ -1,0 +1,15 @@
+pkgbase = python2-pypsdd
+	pkgdesc = The Python Probabilistic Sentential Decision Diagrams (PSDD) Package.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/art-ai/pypsdd
+	arch = any
+	license = Apache 2.0
+	makedepends = git
+	depends = python2
+	optdepends = pypy
+	source = git+https://github.com/art-ai/pypsdd
+	sha256sums = SKIP
+
+pkgname = python2-pypsdd
+
