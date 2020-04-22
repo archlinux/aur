@@ -1,4 +1,4 @@
-# Maintainer: TheBitStick <thebitstick@librem.one> <the@bitstick.rip>
+# Maintainer: TheBitStick <the at bitstick dot rip>
 pkgname=tsubasa-git
 _pkgname=tsubasa
 pkgver=r27.2982c5a
