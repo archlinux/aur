@@ -1,6 +1,6 @@
 pkgbase = gerbera-git
 	pkgdesc = UPnP Media Server (Based on MediaTomb)
-	pkgver = 3379.fb0dfc64
+	pkgver = 3457.525e4a69
 	pkgrel = 1
 	url = https://github.com/gerbera/gerbera
 	install = gerbera.install
@@ -14,7 +14,7 @@ pkgbase = gerbera-git
 	depends = sqlite
 	depends = file
 	depends = gcc-libs
-	depends = libupnp18
+	depends = libupnp-git
 	depends = libmatroska
 	depends = duktape
 	depends = libexif
