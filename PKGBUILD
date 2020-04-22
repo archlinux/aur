@@ -19,7 +19,7 @@ source=(
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/logo/theia.svg"
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE"
 )
-md5sums=('3503b21ff57ffecfe428da5be1b21171'
+md5sums=('c022f460c0d928df6c1ece9d3044b008'
          '5eb49842d52aa16e7310064c0fef9900'
          'b316dead79fa33f45c8d689a1c940dab'
          '1dde0e422484895d3509f4ee9bb8d980'
