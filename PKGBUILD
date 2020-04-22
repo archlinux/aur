@@ -4,7 +4,7 @@
 pkgname=sile
 pkgdesc='Modern typesetting system inspired by TeX'
 pkgver=0.10.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
 license=('MIT')
@@ -24,6 +24,7 @@ _lua_deps=('cassowary'
            'vstruct'
            'zlib')
 depends=('fontconfig'
+         'freetype2'
          'harfbuzz'
          'gentium-plus-font'
          'icu'

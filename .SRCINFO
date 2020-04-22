@@ -1,12 +1,13 @@
 pkgbase = sile
 	pkgdesc = Modern typesetting system inspired by TeX
 	pkgver = 0.10.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sile-typesetter.org
 	arch = x86_64
 	license = MIT
 	checkdepends = lua-busted
 	depends = fontconfig
+	depends = freetype2
 	depends = harfbuzz
 	depends = gentium-plus-font
 	depends = icu
