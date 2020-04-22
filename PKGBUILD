@@ -1,20 +1,24 @@
-# Maintainer: Gimmeapill <gimmeapill@gmail.com>
+# Maintainer: Gimmeapill <gimmeapill at gmail.com>
 # Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: SpepS <dreamspepser at yahoo.it>
 # Contributor: Bernardo Barros <bernardobarros at gmail.com>
 # Contributor: Uli Armbruster <uli_armbruster at web.de>
-# Contributor: Christopher Arndt <chris at chrisarndt.de>
+# Contributor: Christopher Arndt <aur at chrisarndt.de>
 
 pkgname=ardour-git
-pkgver=6.0.pre0.r3201.gc87bec07cd
+pkgver=6.0.rc1.r45.gfcfaa0ac49
 pkgrel=1
 pkgdesc="A multichannel hard disk recorder and digital audio workstation"
 arch=('i686' 'x86_64')
 url="http://ardour.org/"
 license=('GPL')
 groups=('pro-audio')
-depends=('alsa-lib' 'aubio' 'gtkmm' 'liblo' 'liblrdf' 'lilv' 'suil' 'rubberband' 'taglib' 'libarchive' 'python')
-makedepends=('git' 'python2' 'boost' 'cppunit' 'doxygen' 'graphviz' 'itstool' 'lv2')
+depends=('alsa-lib' 'aubio' 'gtkmm' 'libarchive' 'liblo' 'liblrdf' 'lilv'
+         'python' 'rubberband' 'suil' 'taglib')
+makedepends=('boost' 'cppunit' 'cwiid' 'doxygen' 'git' 'graphviz' 'itstool'
+             'lv2' 'libwebsockets')
+optdepends=('cwiid: Wiimote control support'
+            'libwebsockets: WebSockets control support')
 provides=('ardour')
 conflicts=('ardour')
 source=("${pkgname%-*}::git://github.com/Ardour/ardour.git"
@@ -30,7 +34,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname%-*}"
 
-  python2 waf configure --prefix=/usr \
+  python waf configure --prefix=/usr \
                         --configdir=/etc \
                         --with-backends=jack,alsa,dummy \
                         --libjack=weak \
@@ -40,13 +44,13 @@ build() {
                         --ptformat \
                         --no-phone-home
 
-  python2 waf build $MAKEFLAGS
+  python waf build $MAKEFLAGS
 }
 
 package() {
   cd "${srcdir}/${pkgname%-*}"
 
-  python2 waf --destdir="${pkgdir}" install
+  python waf --destdir="${pkgdir}" install
 
   # Install freedesktop.org compatible application starter desktop file
   install -Dm644 "${srcdir}/ardour.desktop" \
