@@ -1,7 +1,7 @@
 pkgbase = python-qiskit-ignis
 	pkgdesc = Tools for quantum hardware verification, noise characterization, and error correction
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Qiskit/qiskit-ignis
 	arch = x86_64
 	license = Apache

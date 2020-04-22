@@ -2,7 +2,7 @@
 _pkgname=qiskit-ignis
 pkgname=python-${_pkgname}
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for quantum hardware verification, noise characterization, and error correction"
 arch=('x86_64')
 url="https://github.com/Qiskit/qiskit-ignis"
@@ -20,4 +20,6 @@ build() {
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+	# Remove conflicting files with python-qiskit-aqua
+	rm -r "${pkgdir}/usr/lib/python3.8/site-packages/docs"
 }
