@@ -1,6 +1,6 @@
 pkgbase = wunderlistux-gtk
 	pkgdesc = A wunderlist app using vala and webkit as alternative to electron.
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/edipox/wunderlistux
 	arch = any
