@@ -1,6 +1,6 @@
 post_update() {
 	echo "---"
-	echo "After updating, backup the database then run run 'writefreely --migrate'."
+	echo "After updating, backup the database then run run 'writefreely db migrate'."
 	echo "---"
 }
 
