@@ -2,10 +2,10 @@
 
 pkgname=qrcodegen
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High-quality QR Code generator library"
 url="https://www.nayuki.io/page/qr-code-generator-library"
-license=('Apache')
+license=('MIT')
 arch=('x86_64')
 source=("https://github.com/nayuki/QR-Code-generator/archive/v${pkgver}.tar.gz")
 downname="QR-Code-generator-${pkgver}"
