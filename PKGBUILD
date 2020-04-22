@@ -3,17 +3,17 @@
 _pkgname=pexip-infinity-connect
 pkgname="${_pkgname}-bin"
 pkgdesc='Pexip Infinity Connect App'
-_buildno_in_url='52920.61.0'
-pkgver="1.6.0"
+_buildno_in_url='53013.154.0'
+pkgver="1.6.1"
 pkgrel=1
 url='https://www.pexip.com/apps'
 license=('custom')
 arch=('x86_64')
 depends=('nss' 'xdg-utils' 'gtk3' 'libxss')
-source=("https://dl.pexip.com/connect/nextgen/${pkgver%.*}/${_pkgname}_${pkgver}-${_buildno_in_url}_linux-x64.deb")
-md5sums=('94e6d372bbcfa72cfe7d677c5f1b79fe')
-sha1sums=('b6cecdb29dc5e3e28e3c2b9051e89b6f1d5d8f22')
-sha512sums=('fc91c919fce22faf864ec693a268b18ddf455f40ca3d4b48c99dcaa583e44c5c63fdaf9369217478f05a382f6a217b4e79e93d1ea10dc05ed22290b90e4399ea')
+source=("https://dl.pexip.com/connect/nextgen/${pkgver}/${_pkgname}_${pkgver}-${_buildno_in_url}_linux-x64.deb")
+md5sums=('f1f3c13b78e776ccc9e5df9ea7fdbe1b')
+sha1sums=('c0c6a80ec1ab667a23e3f753096dc7fa2d49adb0')
+sha512sums=('f7229175069392b413ad8378ac67d35bdd669dc357efc7ea98bc4685657ca9f3b8c5296b20fafba4337cc4e56059a6413423723281163fbb8a3c7974201c7598')
 
 package() {
     tar --no-same-owner -xJC "$pkgdir" -f data.tar.xz
