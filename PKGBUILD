@@ -11,7 +11,7 @@ depends=(
     'python-qiskit-terra'
     'cython'
     'openblas'
-    'muparserx')
+    'pybind11')
 optdepends=(
     'thrust: Parallelization (GPU/CPU) support'
     'cuda: Parallelization with CUDA (NVIDIA)'
@@ -20,7 +20,8 @@ optdepends=(
 makedepends=(
     'python-setuptools'
     'cmake'
-    'python-scikit-build')
+    'python-scikit-build'
+    'muparserx')
 source=(
     "${_pkgname}-${pkgver}.tar.gz::https://github.com/Qiskit/${_pkgname}/archive/${pkgver}.tar.gz"
     "cmake.patch")
