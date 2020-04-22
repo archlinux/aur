@@ -4,7 +4,7 @@ _name=kapow
 _pkgname="${_name}bang"
 pkgname="${_pkgname}-bin"
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='If you can script it, you can HTTP it.'
 arch=('x86_64' 'i686' 'aarch64' 'arm6h')
 url='https://github.com/BBVA/kapow'
@@ -24,7 +24,7 @@ sha512sums_aarch64=('4732b03e522b1f7e029d313852b7f47b28ac2c745ab4313e5c986186df3
 sha512sums_arm6h=('16778be0afdb69bdecbf97b77ade68bd9c5ac1e9f01780a60d06f8a2f81f3a0c2219c874625ac0bdd8454905cae81b9aea5e4fcf5d6db78cf589baf790822bd0')
 
 validpgpkeys=(
-	'51628FBC4016334DA425208EAE2CEBCF0B2BBB23'	# Kapow! Release Bot (v0.4.0) <release-bot@kapow>
+	'B49A5EB04F5445FF4038284A601121279FB033EE'	# Kapow! Release Bot (v0.5.0) <release-bot@kapow>
 )
 
 check() {
