@@ -5,10 +5,10 @@
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=ungoogled-chromium-git
-pkgver=81.0.4044.92.2.r0.gb484ad4
+pkgver=81.0.4044.113.1.r3.g31d6e60
 pkgrel=1
 _pkgname=ungoogled-chromium
-_pkgver=81.0.4044.92
+_pkgver=81.0.4044.122
 _launcher_ver=6
 _ungoogled_ver=master
 pkgdesc="A lightweight approach to removing Google web service dependency (master branch)"
@@ -37,12 +37,12 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-widevine.patch
         chromium-skia-harmony.patch
         # -----------
-        git://github.com/Eloston/ungoogled-chromium.git
+        $_pkgname-$_ungoogled_ver::git://github.com/Eloston/ungoogled-chromium.git
         flags.archlinux.gn
         chromium-drirc-disable-10bpc-color-configs.conf
         vdpau-support.patch
         vaapi-build-fix.patch)
-sha256sums=('a2cf3fd07a66330b189724cdcb4549ddac72705fba6adb33020bc6444efb1a44'
+sha256sums=('0f9ffd30d769e25e091a87b9dda4d688c19bf85b1e1fcb3b89eaae5ff780182a'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
             '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
@@ -85,7 +85,7 @@ _unwanted_bundled_libs=(
 depends+=(${_system_libs[@]})
 
 pkgver() {
-  cd "$_pkgname"
+  cd "$_pkgname-$_ungoogled_ver"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -120,7 +120,7 @@ prepare() {
   patch -Np1 -i ../vaapi-build-fix.patch
 
   # Ungoogled chromium stuff
-  _ungoogled_repo="$srcdir/$_pkgname"
+  _ungoogled_repo="$srcdir/$_pkgname-$_ungoogled_ver"
   _utils="${_ungoogled_repo}/utils"
   msg2 'Applying ungoogled chromium patches'
   # Prune binaries
