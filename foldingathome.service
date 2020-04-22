@@ -1,6 +1,6 @@
 [Unit]
 Description=Folding@home distributed computing client
-After=default.target
+After=multi-user.target
 After=network.target
 After=foldingathome-nvidia.service
 
@@ -25,6 +25,7 @@ IOSchedulingClass=3
 ReadWritePaths=-/dev/nvidia0
 ReadWritePaths=-/dev/nvidiactl
 ReadWritePaths=-/dev/nvidia-uvm
+ReadWritePaths=-/dev/nvidia-uvm-tools
 
 [Install]
 WantedBy=default.target
