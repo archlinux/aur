@@ -1,0 +1,15 @@
+pkgbase = qrest
+	pkgdesc = Musician toolkit to guess tempo & get delay & LFO times for common note durations
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/deufrai/Qrest
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	source = https://github.com/deufrai/Qrest/archive/v0.5.3.tar.gz
+	source = qrest.desktop
+	sha256sums = d55bbb1f3380ec021fe22d51749e2d4b5ed21078a9074c8d6e7027230dbe0334
+	sha256sums = 8157b94715a09d4e70a2385cd620be107b89bbcd27931682c3ac81b3f5076a4c
+
+pkgname = qrest
+

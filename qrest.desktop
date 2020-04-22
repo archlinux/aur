@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Qrest
+Comment=Really Easy Studio Toolkit
+Comment[fr]=Boîte à outils vraiment facile pour le studio
+Exec=qrest
+Terminal=false
+Icon=qrest
+Type=Application
+Categories=AudioVideo;Audio;
