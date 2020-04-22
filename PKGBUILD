@@ -8,7 +8,7 @@ url="https://github.com/cocotb/cocotb"
 license=('BSD')
 conflicts=('python-cocotb')
 provides=('python-cocotb-git')
-depends=('python')
+depends=('python' 'python-setuptools')
 
 makedepends=('git' 'python-setuptools')
 optdepends=('iverilog: for simulating verilog designs'

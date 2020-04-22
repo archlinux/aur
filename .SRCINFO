@@ -8,6 +8,7 @@ pkgbase = python-cocotb-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
+	depends = python-setuptools
 	optdepends = iverilog: for simulating verilog designs
 	optdepends = ghdl: for simulating VHDL designs
 	optdepends = gtkwave: for visualizing waveforms
