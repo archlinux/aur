@@ -1,0 +1,14 @@
+pkgbase = awsenv-bin
+	pkgdesc = AWS environment config loader
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/soniah/awsenv
+	arch = x86_64
+	license = MIT
+	makedepends = go-pie
+	provides = awsenv
+	source = https://github.com/soniah/awsenv/releases/download/v0.0.7/awsenv_0.0.7_linux_amd64.tar.gz
+	sha256sums = c86136ac89d995e1bb08a9bb590308e0d705b61369c257444cbd58f0fd4b2ce0
+
+pkgname = awsenv-bin
+
