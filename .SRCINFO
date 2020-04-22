@@ -1,0 +1,23 @@
+pkgbase = hailer-nativefier
+	pkgdesc = Hailer desktop built with nativefier (electron)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://app.hailer.com/#/
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = hailer-nativefier.png
+	source = hailer-nativefier.desktop
+	sha256sums = f4db55137d307c32f50f5944a932736d0763b45d93e1c5ab95452709f2cd5cd6
+	sha256sums = 1bbb46c0667227299f5ab92bd3e845607abee8cc3123dd63e24a320c92d64be9
+
+pkgname = hailer-nativefier
+

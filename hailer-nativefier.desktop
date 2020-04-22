@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Hailer
+Comment=Hailer desktop built with nativefier (electron)
+Exec=hailer-nativefier
+Icon=hailer-nativefier
+Encoding=UTF-8
+StartupWMClass=hailer-nativefier
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Chat;InstantMessaging;Application;
