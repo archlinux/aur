@@ -1,4 +1,8 @@
 # Maintainer: Batuhan Baserdem <lastname dot firstname at gmail>
+# AUR dependencies;
+# maestral          (vcs or release, maintained by coxackie & me)
+# python-bugsnag    (vcs, maintained by me)
+# python-markdown2
 pkgname=maestral-qt
 pkgver=1.0.0.dev4
 pkgrel=1
@@ -16,23 +20,19 @@ depends=(
     'python-markdown2'
     'python-packaging'
     'python-pyqt5>=5.9')
-# maestral:         AUR dependency (git-version maintained by me)
-# python-bugsnag:   AUR dependency (git-version maintained by me)
-# python-markdown2: AUR dependency
 optdepends=('gnome-shell-extension-appindicator: Gnome integration')
+md5sums=('5416f536d33a2eaef8fd637bc1dbb0c5')
 
 build() {
-    cd "${srcdir}/${_name}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     python setup.py build
 }
 
 package() {
-    # Change into the source git directory
-    cd "${srcdir}/${_name}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     # Run python setup function
     python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
     # Install the licence
-    install -Dm644 "${srcdir}/${_name}/LICENSE.txt" \
-        "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.txt" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-md5sums=('5416f536d33a2eaef8fd637bc1dbb0c5')
