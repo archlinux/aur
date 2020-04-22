@@ -1,6 +1,6 @@
 pkgbase = kvazaar-git
 	pkgdesc = An open-source HEVC encoder (git version)
-	pkgver = 1.2.0.r318.g75b25955
+	pkgver = 2.0.0.r0.g9753820b
 	pkgrel = 1
 	url = http://ultravideo.cs.tut.fi/#encoder
 	arch = x86_64
@@ -9,8 +9,6 @@ pkgbase = kvazaar-git
 	checkdepends = hm
 	makedepends = git
 	makedepends = yasm
-	depends = glibc
-	depends = gcc-libs
 	depends = crypto++
 	provides = kvazaar
 	conflicts = kvazaar
