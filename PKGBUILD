@@ -4,7 +4,7 @@
 #
 # Get the Ubuntu tarball from https://developer.codeplay.com/products/computecpp/ce/download
 pkgname=computecpp
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Accelerates Complex C++ Applications on Heterogeneous Compute 
 Systems using Open Standards"
@@ -12,7 +12,7 @@ arch=('x86_64')
 url="https://www.codeplay.com/products/computesuite/computecpp"
 license=('EULA')
 source=("https://computecpp.codeplay.com/downloads/computecpp-ce/${pkgver}/ubuntu-16.04-64bit.tar.gz")
-sha256sums=('d070f7c6b0f17bc55cc80a6cc7564f4661fd3fb62642106a944bb5bc6342a0b9')
+sha256sums=('4ba5c4f16938654bb4e777c6eb437aefc8968ca5317ae3b75a6bb3dde86a4cee')
 depends=(ncurses5-compat-libs opencl-driver ocl-icd)
 options=(!strip)
 
