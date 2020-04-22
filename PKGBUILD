@@ -3,19 +3,14 @@
 
 pkgname=onlyoffice-bin
 pkgver=5.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://www.onlyoffice.com/'
 license=('AGPL3')
-depends=('alsa-lib' 'curl' 'wget' 'libxss' 'gtkglext' 'cairo' 'gconf'
-         'ttf-dejavu' 'ttf-liberation' 'ttf-carlito' 'xdg-utils' 'libx11' 'fontconfig'
-         'freetype2' 'libsm' 'libxtst' 'gstreamer' 'gst-plugins-base-libs' 'libdrm'
-         'pango' 'libice' 'libpulse' 'libxext' 'libxdamage' 'nss' 'nspr'
-         'libcurl-gnutls' 'libxcursor' 'gtk2' 'libglvnd' 'libxrender' 'libcups'
-         'libxrandr' 'libxcomposite' 'libxfixes' 'libxi' 'atk' 'libxcb' 'gdk-pixbuf2'
-         'qt5-svg' 'gtk3' 'qt5-declarative' 'qt5-x11extras' 'qt5-multimedia'
-         'desktop-file-utils' 'hicolor-icon-theme')
+depends=('curl' 'gtk3' 'alsa-lib' 'libpulse' 'gstreamer' 'gst-plugins-base-libs' 'nss'
+         'nspr' 'ttf-dejavu' 'ttf-liberation' 'ttf-carlito' 'desktop-file-utils'
+         'hicolor-icon-theme')
 optdepends=('libreoffice: for OpenSymbol fonts'
             'otf-takao: for japanese Takao fonts'
             'ttf-ms-fonts: for Microsoft fonts')
