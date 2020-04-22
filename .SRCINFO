@@ -1,0 +1,16 @@
+pkgbase = dogo-git
+	pkgdesc = Monitoring changes in the source file and automatically compile and run (restart)
+	pkgver = 1.0_beta2.r9.g7887b84
+	pkgrel = 1
+	url = https://github.com/liudng/dogo
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = dep
+	makedepends = go-pie
+	provides = dogo
+	source = git+https://github.com/liudng/dogo
+	md5sums = SKIP
+
+pkgname = dogo-git
+
