@@ -11,8 +11,8 @@ pkgname=(
   kata-containers-image
   kata-linux-container
 )
-#pkgver="1.10.2"
-pkgver="1.11.0~alpha1"
+pkgver="1.10.3"
+#pkgver="1.11.0~alpha1"
 _pkgver=${pkgver/\~/-}
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers (binary version)"
@@ -20,7 +20,7 @@ arch=(x86_64)
 url="https://katacontainers.io"
 license=('Apache')
 
-_bin_pkg_root="/opt/kata"  # `/usr` for f30 packages, `/opt/kata` for static packages
+_bin_pkg_root="/usr"  # `/usr` for f30 packages, `/opt/kata` for static packages
 
 if [ "${_bin_pkg_root}" = "/opt/kata" ]; then
   pkgname+=(kata-containers-static)
@@ -28,13 +28,13 @@ if [ "${_bin_pkg_root}" = "/opt/kata" ]; then
   sha256sums=(4bf1951c31eab25e956217bf1e6e5ddacf73e0e85aaae878789af91001533db3)
 else
   _kata_kernel_ver="4.19.86.60"
-  _default_suffix="-6.1"  # f30 package build revision
-  #_image_suffix="-6.1"
-  #_ksm_suffix="-6.1"
-  _kernel_suffix="-7.1"
-  #_proxy_suffix="-6.1"
-  #_runtime_suffix="-6.1"
-  #_shim_suffix="-6.1"
+  _default_suffix="-7.1"  # f30 package build revision
+  #_image_suffix="-7.1"
+  #_ksm_suffix="-7.1"
+  _kernel_suffix="-8.1"
+  #_proxy_suffix="-7.1"
+  #_runtime_suffix="-7.1"
+  #_shim_suffix="-7.1"
 
   pkgname+=(kata-ksm-throttler-bin)
   source=(
@@ -46,20 +46,22 @@ else
     "https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-shim-bin-${pkgver}${_shim_suffix:-${_default_suffix}}.${CARCH}.rpm"
   )
   sha256sums=(
-    71620cd68476d6fae63a2cdf56157110eca1ece30411bb16eb1cca6807bb56d8
-    32be5a944997907700ff0b4450b31214f4348169f7f7caad8b90562ceebcf5ee
-    cd8977a03ef7b5a1dce5cdd45c317a17d03c6c0a908daa249f636e4c996e5fad
-    e88cb367e81bcf87b8d96be18dd419b09e8597b9e577f2e648a9f3f72eef59ed
-    1d89ba67580f087538438e66faea43c6658b09345ee61326352c8a0bbe2b7bc3
-    c6dd9ccb1217da8d960b6874f7e48757ddf6a16330ae84539bab145b7b8be976
+    66ce95ee36da94ae330ed537c343229f9d82ed8cd9564ddda7ec51d90fa878da
+    729c24e3b4c896eed217f9fc030f950bdfe34a0878a2fef0272996066cc9fad7
+    e966993a62e2db1db0fec0a4cb0c7e03b573a9a38202e27687d75ba3da53a444
+    809248be471cf22e5f03b912e4f7e5c5187417ac5d54b7bccde906c1f8a73d6e
+    2bff27c88388f1fc11284102788165220c691927c2b5526a0d4aa9b4646ae92c
+    0265cc14f5d8bed96880cabf0469aef1de66ec0f0b1b2af6084fe87141e525e2
   )
 fi
 
 package_kata-runtime-bin() {
   depends=(qemu-headless kata-proxy kata-shim kata-ksm-throttler kata-containers-image kata-linux-container)
   optdepends=(
-    'firecracker<0.21.0'
-    'cloud-hypervisor<0.6.0'
+    'firecracker<0.20.0'
+    'cloud-hypervisor<0.5.0'
+    #'firecracker<0.21.0'
+    #'cloud-hypervisor<0.6.0'
   )
   conflicts=('kata-runtime')
   provides=('kata-runtime')

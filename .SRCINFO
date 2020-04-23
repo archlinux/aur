@@ -1,12 +1,22 @@
 pkgbase = kata-containers-bin
 	pkgdesc = Lightweight virtual machines for containers (binary version)
-	pkgver = 1.11.0~alpha1
+	pkgver = 1.10.3
 	pkgrel = 1
 	url = https://katacontainers.io
 	arch = x86_64
 	license = Apache
-	source = https://github.com/kata-containers/runtime/releases/download/1.11.0-alpha1/kata-static-1.11.0-alpha1-x86_64.tar.xz
-	sha256sums = 4bf1951c31eab25e956217bf1e6e5ddacf73e0e85aaae878789af91001533db3
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.10/Fedora_30/x86_64/kata-containers-image-1.10.3-7.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.10/Fedora_30/x86_64/kata-ksm-throttler-1.10.3-7.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.10/Fedora_30/x86_64/kata-linux-container-4.19.86.60-8.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.10/Fedora_30/x86_64/kata-proxy-bin-1.10.3-7.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.10/Fedora_30/x86_64/kata-runtime-1.10.3-7.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.10/Fedora_30/x86_64/kata-shim-bin-1.10.3-7.1.x86_64.rpm
+	sha256sums = 66ce95ee36da94ae330ed537c343229f9d82ed8cd9564ddda7ec51d90fa878da
+	sha256sums = 729c24e3b4c896eed217f9fc030f950bdfe34a0878a2fef0272996066cc9fad7
+	sha256sums = e966993a62e2db1db0fec0a4cb0c7e03b573a9a38202e27687d75ba3da53a444
+	sha256sums = 809248be471cf22e5f03b912e4f7e5c5187417ac5d54b7bccde906c1f8a73d6e
+	sha256sums = 2bff27c88388f1fc11284102788165220c691927c2b5526a0d4aa9b4646ae92c
+	sha256sums = 0265cc14f5d8bed96880cabf0469aef1de66ec0f0b1b2af6084fe87141e525e2
 
 pkgname = kata-runtime-bin
 	install = kata-runtime.install
@@ -16,8 +26,8 @@ pkgname = kata-runtime-bin
 	depends = kata-ksm-throttler
 	depends = kata-containers-image
 	depends = kata-linux-container
-	optdepends = firecracker<0.21.0
-	optdepends = cloud-hypervisor<0.6.0
+	optdepends = firecracker<0.20.0
+	optdepends = cloud-hypervisor<0.5.0
 	provides = kata-runtime
 	conflicts = kata-runtime
 
@@ -33,5 +43,7 @@ pkgname = kata-containers-image
 
 pkgname = kata-linux-container
 
-pkgname = kata-containers-static
+pkgname = kata-ksm-throttler-bin
+	provides = kata-ksm-throttler
+	conflicts = kata-ksm-throttler
 
