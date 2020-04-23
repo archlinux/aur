@@ -1,15 +1,14 @@
 pkgbase = akmey
 	pkgdesc = Akmey client
-	pkgver = 0.1.8
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/akmey/akmey-client
 	arch = x86_64
 	license = custom: Unlicense
 	makedepends = go
-	makedepends = make
 	conflicts = akmey-bin
-	source = https://github.com/akmey/akmey-client/archive/v0.1.8-alpha.tar.gz
-	sha512sums = 3c581d772b07d12b87b7ec007b578dcc487fcc4c81f6b65aea956176b92dad5bb8113705cfea2124ed3f108c6c740a8ce3c3dfa4a034d59f0e42eeec882f6471
+	source = https://github.com/akmey/akmey-client/archive/v0.5-alpha.tar.gz
+	sha512sums = 7c95680af052280896759261be446983065b4f31d2c685bd10014300adee7a12f651c995b262f2ea7e184cadd7b7a8474b973745b067cdcfaea99b3ed7b51de0
 
 pkgname = akmey
 

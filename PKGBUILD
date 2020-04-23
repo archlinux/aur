@@ -1,15 +1,15 @@
 # Maintainer: Luclu7 <me at luclu7 dot fr>
 pkgname=akmey
-pkgver=0.1.8
+pkgver=0.5
 pkgrel=1
 pkgdesc="Akmey client"
 arch=('x86_64')
 url="https://github.com/akmey/akmey-client"
 license=('custom: Unlicense')
-makedepends=('go' 'make')
+makedepends=('go')
 conflicts=('akmey-bin')
 source=("https://github.com/akmey/akmey-client/archive/v$pkgver-alpha.tar.gz")
-sha512sums=('f2a1dba821d7a7e23a225d34f0de5b269413c57118250e126acec62df6ab67b6afd2658517680db0e8db3b1c5b98c9293ee92ff6efc4506c2d10a34505e8c992')
+sha512sums=('7c95680af052280896759261be446983065b4f31d2c685bd10014300adee7a12f651c995b262f2ea7e184cadd7b7a8474b973745b067cdcfaea99b3ed7b51de0')
 
 warn_build_references() {
     : # I like __FILE__ and don't consider build references to be a problem
@@ -17,11 +17,11 @@ warn_build_references() {
 
 build() {
 	cd "akmey-client-$pkgver-alpha"
-	make
+	go build
 }
 
 package() {
 	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	cd "akmey-client-$pkgver-alpha"
-	install -Dm755 akmey "$pkgdir/usr/bin/akmey"
+	install -Dm755 akmey-client "$pkgdir/usr/bin/akmey"
 }
