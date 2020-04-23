@@ -1,6 +1,6 @@
 pkgbase = python-pglast-git
 	pkgdesc = PostgreSQL Languages AST and statements prettifier
-	pkgver = v1.5.r0.gda74397
+	pkgver = v1.10.r44.g76cc90d
 	pkgrel = 1
 	url = https://github.com/lelit/pglast
 	arch = any
@@ -8,8 +8,10 @@ pkgbase = python-pglast-git
 	makedepends = python-setuptools
 	depends = python
 	options = !emptydirs
-	source = git://github.com/lelit/pglast.git
+	source = git+https://github.com/lelit/pglast.git#branch=v2
+	source = parallel_build.patch
 	md5sums = SKIP
+	md5sums = b20f4566d377186322eae5d1ab451495
 
 pkgname = python-pglast-git
 
