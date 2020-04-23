@@ -2,7 +2,7 @@
 
 pkgname="qrcp-bin"
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Transfer files over wifi from your computer to your mobile device by scanning a QR code without leaving the terminal."
 url="https://github.com/claudiodangelis/qrcp"
 arch=('x86_64')
