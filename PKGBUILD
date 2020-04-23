@@ -2,10 +2,10 @@
 _pkgname=ndn-cxx
 pkgname=${_pkgname}-git
 pkgver=ndn.cxx.0.7.0.r13.g9603325b
-pkgrel=2
+pkgrel=3
 # epoch=
 pkgdesc="Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications"
-arch=("any")
+arch=('i686' 'x86_64')
 url="https://github.com/named-data/${_pkgname}"
 license=('GPL')
 groups=()
