@@ -1,0 +1,14 @@
+pkgbase = orange-cat-bin
+	pkgdesc = A Markdown previewer written in Go
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/utatti/orange-cat
+	arch = x86_64
+	license = MIT
+	provides = orange-cat
+	provides = orange
+	source = https://github.com/utatti/orange-cat/releases/download/v0.2.2/orange_linux_amd64.zip
+	sha256sums = 34ab47cf6c633d5cd1e5284f8b233cc2c97599d592c15bc56481ca269b069e35
+
+pkgname = orange-cat-bin
+
