@@ -2,10 +2,10 @@ pkgbase = ubuntu-backgrounds-focal
 	pkgdesc = The backgrounds included in Ubuntu 20.04 focal
 	pkgver = 20.04.2
 	pkgrel = 1
-	url = https://launchpad.net/ubuntu/+source/ubuntu-wallpapers/20.04.2-0ubuntu1
+	url = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers
 	arch = any
 	license = Commons Attribution-ShareAlike 3.0 Unported
-	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/ubuntu-wallpapers/20.04.2-0ubuntu1/ubuntu-wallpapers_20.04.2.orig.tar.gz
+	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_20.04.2.orig.tar.gz
 	sha256sums = c89d53a769967edce106fb6b431e35ee1e3a14a91aa50545ff72b5c8159737ee
 
 pkgname = ubuntu-backgrounds-focal

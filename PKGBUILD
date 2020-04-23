@@ -6,8 +6,8 @@ pkgrel=1
 pkgdesc="The backgrounds included in Ubuntu 20.04 focal"
 license=('Commons Attribution-ShareAlike 3.0 Unported')
 arch=('any')
-url="https://launchpad.net/ubuntu/+source/ubuntu-wallpapers/${pkgver}-0ubuntu1"
-source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/ubuntu-wallpapers/${pkgver}-0ubuntu1/ubuntu-wallpapers_${pkgver}.orig.tar.gz")
+url="http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers"
+source=("${url}/ubuntu-wallpapers_${pkgver}.orig.tar.gz")
 sha256sums=('c89d53a769967edce106fb6b431e35ee1e3a14a91aa50545ff72b5c8159737ee')
 
 package() {
