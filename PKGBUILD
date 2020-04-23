@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-ffmpeg
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
@@ -35,6 +35,7 @@ depends=(
   'mingw-w64-libssh'
   'mingw-w64-sdl2'
   'mingw-w64-speex'
+  'mingw-w64-srt'
   'mingw-w64-x264'
   'mingw-w64-xvidcore'
   'mingw-w64-zlib'
@@ -95,6 +96,7 @@ build() {
       --enable-libopus \
       --enable-libsoxr \
       --enable-libspeex \
+      --enable-libsrt \
       --enable-libssh \
       --enable-libtheora \
       --enable-libvidstab \
