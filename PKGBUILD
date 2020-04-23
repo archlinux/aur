@@ -1,6 +1,6 @@
 # Maintainer: Tobias Brox <t-arch@tobixen.no>
 pkgname=thrash-protect
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Simple-Stupid user-space program protecting a linux host from thrashing."
 url="https://github.com/tobixen/thrash-protect"
@@ -19,4 +19,4 @@ package() {
 }
 
 
-md5sums=('4949cb3e29a0e295a1bad5dc43853d0d')
+md5sums=('47bcb9e8dfaf7a51b123699b3d209313')
