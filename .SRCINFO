@@ -1,7 +1,7 @@
 pkgbase = linux-clear-headers-bin
 	pkgdesc = Header files and scripts for Clear Linux kernel and modules
 	pkgver = 5.6.6.942
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://clearlinux.org/node/15538
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = linux-clear-headers-bin
 	conflicts = linux-clear-headers
 	options = !strip
 	source = Manifest.linux-dev.32900::https://cdn.download.clearlinux.org/update/32900/Manifest.linux-dev
-	source = pack-linux-dev-from-0.32900::https://cdn.download.clearlinux.org/update/32900/pack-linux-dev-from-0.tar
+	source = pack-linux-dev-from-0.32900.tar::https://cdn.download.clearlinux.org/update/32900/pack-linux-dev-from-0.tar
 	source = https://cdn.download.clearlinux.org/update/32900/files/e84ee913951f57aa818c3c440e939ddc806418782bf6b34846111e0f86d5e668.tar
 	b2sums = 82e38edef81dd944ea39d0986cb92557869a05050d56320953757dbec1eb644d11af8534792e6bfb2374319dc8d9b387778baa24ebc8c95f3e56c76c8d57c071
 	b2sums = 3be148f887518ebfd9ca45e049e9671cf9962b8fec4cc74a7bf7bb8c3ff7709dadb569415c52ca239f7d4d600dcd21c93fc6571b32b006618213e30262acb114
