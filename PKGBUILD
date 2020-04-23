@@ -14,7 +14,8 @@ depends=('linux-zen')
 makedepends=('linux-zen-headers')
 source=("bbswitch-${pkgver}.tar.gz::https://github.com/Bumblebee-Project/bbswitch/archive/v${pkgver}.tar.gz"
         "kernel-5.6.patch::https://github.com/Bumblebee-Project/bbswitch/commit/4dbde5385f9c77155cc1ca57ce83bf64f9af2c4a.patch")
-md5sums=('SKIP' 'SKIP')
+md5sums=('5b116b31ace3604ddf9d1fc1f4bc5807'
+         '65ddb95270e07f3d40002f3ca4fb10f8')
 _verstring="$(pacman -Qi linux-zen | grep Version | tr -s " " | cut -d ' ' -f3)"
 _kernname="$(echo ${_verstring} | cut -d '.' -f1)"."$(echo ${_verstring} | cut -d '.' -f2)"."$(echo ${_verstring} | cut -d '.' -f3)"-"$(echo ${_verstring} | cut -d '.' -f4)"-zen
 
