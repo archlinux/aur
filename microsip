@@ -3,6 +3,7 @@
 __REV=3
 __APPNAME=$(basename $0)
 __WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local}/wine/${__APPNAME}"
+__WINEARCH="win32"
 __APPDIR="${__WINEPREFIX}/dosdevices/c:/${__APPNAME}"
 __INSTALLED="${__APPDIR}/.installed.${__REV}"
 __APPCFG="${XDG_CONFIG_HOME:-$HOME/.config}/${__APPNAME}"
@@ -12,13 +13,20 @@ __TMPREGFILE=$(mktemp)
 __DPI=$(xdpyinfo -display $DISPLAY | grep -A 2 "screen #0:" | grep "resolution:" | grep -oE '[0-9]+x[0-9]+' | cut -d 'x' -f 1)
 __DPIX=$(printf %08x ${__DPI})
 
+# force 32-bit prefix
+__QUIRK1="${__APPDIR}/.quirk.1"
+
 __symlink() {
 	ln -sf "$1" "${__APPDIR}/${1##*/}"
 }
 
+if [[ -d "${__WINEPREFIX}" ]] && [[ ! -f "${__QUIRK1}" ]]; then
+	rm -rf "${__WINEPREFIX}"
+fi
+
 if [[ ! -f "${__INSTALLED}" ]]; then
 	mkdir -p "${__WINEPREFIX}"
-	WINEPREFIX="${__WINEPREFIX}" wineboot -u
+	WINEPREFIX="${__WINEPREFIX}" WINEARCH="${__WINEARCH}" wineboot -u
 
 	mkdir -p "${__APPDIR}"
 
@@ -26,7 +34,7 @@ if [[ ! -f "${__INSTALLED}" ]]; then
 	sed -i "s/{DPI}/${__DPIX}/g" "${__TMPREGFILE}"
 	iconv -f utf-8 -t utf-16le "${__TMPREGFILE}" >"${__REGFILE}"
 	rm -f "${__TMPREGFILE}"
-	WINEPREFIX="${__WINEPREFIX}" regedit "${__REGFILE}"
+	WINEPREFIX="${__WINEPREFIX}" WINEARCH="${__WINEARCH}" regedit "${__REGFILE}"
 	rm -f "${__REGFILE}"
 
 	__symlink "/usr/share/licenses/${__APPNAME}/License.txt"
@@ -53,5 +61,10 @@ if [[ ! -f "${__INSTALLED}" ]]; then
 	touch "${__INSTALLED}"
 fi
 
-WINEPREFIX="${__WINEPREFIX}" wine "${__APPDIR}/microsip.exe"
+if [[ ! -f "${__QUIRK1}" ]]; then
+	touch "${__QUIRK1}"
+fi
+
+
+WINEPREFIX="${__WINEPREFIX}" WINEARCH="${__WINEARCH}" wine "${__APPDIR}/microsip.exe"
 
