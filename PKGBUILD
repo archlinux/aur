@@ -2,7 +2,7 @@
 
 pkgname=i2c-piix4-aura-dkms
 _pkgbase=${pkgname%-dkms}
-pkgver=5.4.6
+pkgver=5.6.7
 pkgrel=1
 pkgdesc="The i2c-piix4 kernel driver, patched to be used with OpenRGB: https://gitlab.com/CalcProgrammer1/OpenRGB"
 arch=('x86_64')
@@ -10,13 +10,13 @@ url="https://bugzilla.kernel.org/show_bug.cgi?id=202587"
 license=('GPL2')
 depends=('dkms')
 source=("i2c-piix4-${pkgver}.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/i2c/busses/i2c-piix4.c?h=v${pkgver}"
-	"https://gitlab.com/CalcProgrammer1/OpenRGB/uploads/241ead031b210fba3772ea2b648fec05/piix4-2.diff"
+	"piix4.patch::https://git.kernel.org/pub/scm/linux/kernel/git/wsa/linux.git/patch/?id=f27237c174fd9653033330e4e532cd9d153ce824"
         'dkms.conf'
         'Makefile'
 	'90-i2c-aura.rules'
 	'i2c-aura.conf')
 md5sums=('26cff2ae6e3a2356fefe1c698ce16e77'
-         'be2def5b9080bdbde94631043fb9575e'
+         '904cc91bd8d73829c8bc58fd1c528d72'
          'dadbad0c5a8bec3ff66161d3f150bbb7'
          '55c9591930d320e3f9912d315c4682ba'
          'e44ab261a99faa252fc142cc5569502c'
@@ -28,7 +28,7 @@ prepare() {
   cp ../dkms.conf ../Makefile .
   cp ../i2c-piix4-${pkgver}.c i2c-piix4.c
 
-  patch --no-backup-if-mismatch -Np4 < ../piix4-2.diff
+  patch --no-backup-if-mismatch -Np4 < ../piix4.patch
 }
 
 package() {
