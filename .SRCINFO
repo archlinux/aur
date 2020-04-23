@@ -1,0 +1,17 @@
+pkgbase = python-gitim-git
+	pkgdesc = Clone all of your Github repositories, just single command from your terminal
+	pkgver = 1.47
+	pkgrel = 1
+	url = https://github.com/muhasturk/gitim
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pygithub
+	source = gitim-1.47::git+https://github.com/muhasturk/gitim.git
+	sha256sums = SKIP
+
+pkgname = python-gitim-git
+	depends = python
+	depends = python-pygithub
+
