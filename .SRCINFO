@@ -1,6 +1,6 @@
 pkgbase = windowchef-git
 	pkgdesc = A stacking window manager that cooks windows with orders from the Waitron.
-	pkgver = 0.3.2.r22.gcdfabe2
+	pkgver = 0.5.1.r2.gd2284c1
 	pkgrel = 1
 	url = https://github.com/tudurom/windowchef
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = windowchef-git
 	arch = aarch64
 	license = ISC
 	makedepends = git
-	makedepends = xproto
+	makedepends = xorgproto
 	depends = libxcb
 	depends = xcb-util-wm
 	optdepends = sxhkd
