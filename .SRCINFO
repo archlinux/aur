@@ -1,0 +1,21 @@
+pkgbase = lightdm-autologin-greeter-git
+	pkgdesc = Autologin greeter for LightDM - nodm successor
+	pkgver = v1.0.r6.5fb7a66
+	pkgrel = 1
+	url = https://github.com/spanezz/lightdm-autologin-greeter
+	install = lightdm-autologin-greeter.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = lightdm
+	depends = python-gobject
+	provides = lightdm-autologin-greeter
+	conflicts = lightdm-autologin-greeter
+	source = lightdm-autologin-greeter-git::git+https://github.com/spanezz/lightdm-autologin-greeter.git#branch=master
+	source = lightdm-autologin-greeter.install
+	sha256sums = SKIP
+	sha256sums = dbaacaf4c10b4ea252ad3ab7f20c0fbb961926302228cf737ae8ce4fe9f10d61
+
+pkgname = lightdm-autologin-greeter-git
+

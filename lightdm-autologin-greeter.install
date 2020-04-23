@@ -1,0 +1,27 @@
+post_install() {
+    echo "==>"
+    echo "==> To enabled lightdm-autologin-greeter, change the following config files:"
+    echo "==>"
+    echo "==>  /etc/lightdm/lightdm.conf"
+    echo "==>    greeter-session = lightdm-autologin-greeter"
+    echo "==>    user-session=lightdm-xsession"
+    echo "==>    autologin-user=YOUR_USERNAME"
+    echo "==>    pam-service=lightdm"
+    echo "==>    pam-autologin-service=lightdm-autologin"
+    echo "==>"
+    echo "==>  /etc/pam.d/lightdm"
+    echo "==>    #%PAM-1.0"
+    echo "==>    auth        sufficient  pam_succeed_if.so user ingroup nopasswdlogin"
+    echo "==>    auth        include     system-login"
+    echo "==>    ..."
+    echo "==>"
+    echo "==> Then logout & restart lightdm:"
+    echo "==>"
+    echo "==>  sudo systemctl restart lightdm"
+    echo "==>"
+}
+
+post_upgrade() {
+    post_install
+}
+
