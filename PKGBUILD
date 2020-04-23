@@ -6,8 +6,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 #
 pkgname="python2-zbar"
-pkgver="0.23"
-pkgrel="3"
+pkgver="0.23.1"
+pkgrel="1"
 pkgdesc="Application and library for reading bar codes from various sources"
 arch=('x86_64')
 url="https://github.com/mchehab/zbar"
@@ -15,8 +15,8 @@ license=('LGPL')
 depends=('gdk-pixbuf2' 'python2' 'zbar')
 makedepends=('gtk3' 'imagemagick' 'libxv' 'v4l-utils' 'qt5-x11extras' 'python2' 'xmlto'
              'docbook-xsl' 'gobject-introspection')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mchehab/zbar/archive/$pkgver.tar.gz")
-sha512sums=('bc2667a2a5a5f2e9fd3f39e57bf1d7f860b20a0b5faffc38791d222a6ff0414aff880295ce5ccb92acce7250503f2a7f48ac12651cf82cfb1933b302da26e393')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('297439f8859089d2248f55ab95b2a90bba35687975365385c87364c77fdb19f3')
 
 build() {
   cd zbar-$pkgver
