@@ -6,8 +6,9 @@ _pkgbase=snapd
 pkgname=snapd-git
 pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'apparmor')
-optdepends=('bash-completion: bash completion support')
-pkgver=2.42.2.r1251.ge7b51693cf
+optdepends=('bash-completion: bash completion support'
+            'xdg-desktop-portal: desktop integration')
+pkgver=2.44.3.r1506.g63aec5a24e
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"
@@ -77,6 +78,7 @@ build() {
   # build snap-exec and snap-update-ns completely static for base snaps
   go build "${staticflags[@]}" -o "$GOPATH/bin/snap-update-ns" "${_gourl}/cmd/snap-update-ns"
   go build "${staticflags[@]}" -o "$GOPATH/bin/snap-exec" "${_gourl}/cmd/snap-exec"
+  go build "${staticflags[@]}" -o "$GOPATH/bin/snapctl" "${_gourl}/cmd/snapctl"
 
   # Generate data files such as real systemd units, dbus service, environment
   # setup helpers out of the available templates
@@ -124,6 +126,9 @@ check() {
 package_snapd-git() {
   cd "$_pkgbase"
   export GOPATH="$srcdir/go"
+  # snapd does not use modules, setting GO111MODULE=on in the environment breaks
+  # the build
+  unset GO111MODULE
 
   # Install bash completion
   install -Dm644 data/completion/snap \
@@ -140,6 +145,8 @@ package_snapd-git() {
      SYSTEMDSYSTEMUNITDIR=/usr/lib/systemd/system \
      SNAP_MOUNT_DIR=/var/lib/snapd/snap \
      DESTDIR="$pkgdir"
+  # no tweaks for sudo are needed
+  rm -rfv "$pkgdir/etc/sudoers.d"
 
   # Install polkit policy
   install -Dm644 data/polkit/io.snapcraft.snapd.policy \
@@ -147,12 +154,14 @@ package_snapd-git() {
 
   # Install executables
   install -Dm755 "$GOPATH/bin/snap" "$pkgdir/usr/bin/snap"
-  install -Dm755 "$GOPATH/bin/snapctl" "$pkgdir/usr/bin/snapctl"
+  install -Dm755 "$GOPATH/bin/snapctl" "$pkgdir/usr/lib/snapd/snapctl"
   install -Dm755 "$GOPATH/bin/snapd" "$pkgdir/usr/lib/snapd/snapd"
   install -Dm755 "$GOPATH/bin/snap-seccomp" "$pkgdir/usr/lib/snapd/snap-seccomp"
   install -Dm755 "$GOPATH/bin/snap-failure" "$pkgdir/usr/lib/snapd/snap-failure"
   install -Dm755 "$GOPATH/bin/snap-update-ns" "$pkgdir/usr/lib/snapd/snap-update-ns"
   install -Dm755 "$GOPATH/bin/snap-exec" "$pkgdir/usr/lib/snapd/snap-exec"
+  # snapctl is run from inside the snap
+  ln -s /usr/lib/snapd/snapctl "$pkgdir/usr/bin/snapctl"
 
   # pre-create directories
   install -dm755 "$pkgdir/var/lib/snapd/snap"
