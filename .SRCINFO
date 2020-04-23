@@ -1,0 +1,20 @@
+pkgbase = nojava-ipmi-kvm-podman
+	pkgdesc = A tool to access Java based ipmi kvm consoles without a local Java installation (Podman dependency).
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/sciapp/nojava-ipmi-kvm
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = podman-docker
+	depends = python
+	depends = python-requests
+	depends = python-yacl
+	optdepends = python-pyqtwebengine: GUI support
+	provides = nojava-ipmi-kvm=0.6.0
+	conflicts = nojava-ipmi-kvm-docker
+	source = https://github.com/sciapp/nojava-ipmi-kvm/archive/v0.6.0.tar.gz
+	sha256sums = 2d89a0ca546422b615a70794b9606ea78a4b238a0a7db2ab28a1f8a8feaefad0
+
+pkgname = nojava-ipmi-kvm-podman
+
