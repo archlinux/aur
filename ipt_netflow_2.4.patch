@@ -1,0 +1,527 @@
+diff -Naupr ipt-netflow-2.4/compat.h ipt-netflow/compat.h
+--- ipt-netflow-2.4/compat.h	2019-06-23 17:27:58.000000000 +0700
++++ ipt-netflow/compat.h	2020-04-23 09:18:21.783973835 +0700
+@@ -6,7 +6,7 @@
+ 
+ #ifndef COMPAT_NETFLOW_H
+ #define COMPAT_NETFLOW_H
+-
++#include "compat_def.h"
+ 
+ #ifndef NIPQUAD
+ # define NIPQUAD(addr) \
+@@ -212,6 +212,22 @@ err:
+ #define num_physpages	totalram_pages
+ #endif
+ 
++#ifndef HAVE_TIMEVAL
++/* timeval is only used internally, so we can use anything for it. */
++struct timeval {
++	long tv_sec;
++	long tv_usec; /* microseconds */
++};
++
++unsigned long timeval_to_jiffies(const struct timeval *tv)
++{
++	return timespec64_to_jiffies(&(struct timespec64){
++				     tv->tv_sec,
++				     tv->tv_usec * NSEC_PER_USEC
++				     });
++}
++#endif
++
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,35)
+ # ifdef ktime_to_timeval
+ /* ktime_to_timeval is defined on 64bit and inline on 32bit cpu */
+@@ -612,7 +628,7 @@ out:
+ #endif
+ 
+ /* Offset changes made in 613dbd95723aee7abd16860745691b6c7bda20dc */
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,28) && LINUX_VERSION_CODE < KERNEL_VERSION(4,10,0)
++#ifndef HAVE_XT_FAMILY
+ # if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,35)
+ #  define xt_action_param xt_target_param
+ # endif
+@@ -680,11 +696,13 @@ static inline int is_vlan_dev(struct net
+ #endif
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(5,0,0)
++# ifdef CONFIG_BRIDGE_NETFILTER
+ static inline struct nf_bridge_info *
+ nf_bridge_info_get(const struct sk_buff *skb)
+ {
+ 	return skb->nf_bridge;
+ }
++# endif
+ #endif
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(5,0,0)
+diff -Naupr ipt-netflow-2.4/configure ipt-netflow/configure
+--- ipt-netflow-2.4/configure	2019-06-23 17:27:58.000000000 +0700
++++ ipt-netflow/configure	2020-04-23 09:18:21.783973835 +0700
+@@ -460,16 +460,47 @@ kconfig() {
+     echo "! Attention: $1 is undefined in your kernel configuration"
+     echo "!   Without this option enabled $2 will not work."
+     echo
++    return 1
++  fi
++  return 0
++}
++
++# Respond to change in https://github.com/torvalds/linux/commit/4806e975729f99
++nf_nat_needed() {
++  local INC=include/linux/netfilter.h
++
++  echo -n "Checking for presence of $INC... "
++  if [ "$KSRC" -a -e $KSRC/$INC ]; then
++    echo Yes
++    INC=$KSRC/$INC
++  elif [ -e $KDIR/$INC ]; then
++    echo Yes
++    INC=$KDIR/$INC
++  else
++    echo No
++    return 1
++  fi
++  echo -n "netfilter.h uses CONFIG_NF_NAT_NEEDED... "
++  if grep -q CONFIG_NF_NAT_NEEDED $INC; then
++    echo Yes
++  else
++    echo No
++    return 1
+   fi
+ }
+ 
+ kernel_check_config() {
+   kconfig CONFIG_SYSCTL			"sysctl interface"
+   kconfig CONFIG_PROC_FS		"proc interface"
+-  kconfig CONFIG_NF_NAT_NEEDED		"natevents"
++  if nf_nat_needed; then
++    kconfig CONFIG_NF_NAT_NEEDED	"natevents"
++  else
++    kconfig CONFIG_NF_NAT		"natevents" && KOPTS="$KOPTS -DCONFIG_NF_NAT_NEEDED"
++  fi
+   kconfig CONFIG_NF_CONNTRACK_EVENTS	"natevents"
+   kconfig CONFIG_IPV6			"IPv6"
+   kconfig CONFIG_IP6_NF_IPTABLES	"ip6tables target"
++  kconfig CONFIG_BRIDGE_NETFILTER	"physdev override"
+ }
+ 
+ kernel_check_include() {
+diff -Naupr ipt-netflow-2.4/CREDITS ipt-netflow/CREDITS
+--- ipt-netflow-2.4/CREDITS	2019-06-23 17:27:58.000000000 +0700
++++ ipt-netflow/CREDITS	2020-04-23 09:18:21.780640512 +0700
+@@ -73,6 +73,7 @@ Patch authors and submitters:
+    xtaran [2018]
+    Thadeu Lima de Souza Cascardo @ Canonical [2019]
+    dbugnar [2019]
++   Vadim Fedorenko [2019]
+ 
+ 
+ Project supporters:
+diff -Naupr ipt-netflow-2.4/gen_compat_def ipt-netflow/gen_compat_def
+--- ipt-netflow-2.4/gen_compat_def	1970-01-01 07:00:00.000000000 +0700
++++ ipt-netflow/gen_compat_def	2020-04-23 09:18:21.783973835 +0700
+@@ -0,0 +1,89 @@
++#!/bin/bash -efu
++# SPDX-License-Identifier: GPL-2.0-only
++#
++# Generate defines based on kernel having
++# some symbols declared
++#
++# Copyright (C) 2019 <abc@openwall.com>
++#
++
++export LANG=C
++fatal() {
++  echo "Error: $*" >&2
++  exit 1
++}
++
++eval $(grep ^KDIR Makefile | tr -d ' ')
++[ "$KDIR" ] || fatal "KDIR is not found"
++
++WD=cc-test-build
++mkdir -p $WD
++cd ./$WD || fatal "cannot cd to $WD"
++
++# args: HAVE_SUMBOL symbol include
++kbuild_test_compile() {
++  local cmd
++
++  cat > test.c
++  echo obj-m = test.o > Makefile
++  cmd="make -s -C $KDIR M=$PWD modules"
++  echo "$cmd" > log
++  if $cmd >> log 2>&1; then
++    [ "$2" ] && echo "// $2 is declared ${3:+in <$3>}"
++    echo "#define HAVE_$1"
++    echo
++  else
++    echo "#undef HAVE_$1"
++    echo "// ${2:-symbol} is undeclared${3:+ in <$3>}. Compile:"
++    sed  "s/^/\/\/   /" test.c
++    echo "// Output:"
++    sed  "s/^/\/\/   /" log
++    echo
++    if ! egrep -q 'has no member named|undeclared|storage size of .* isn.t known|No such file or directory' log; then
++      echo "Error: unexpected error from compiler" >&2
++      cat log >&2
++      echo >&2
++      exit 3
++    fi
++  fi
++}
++
++# Test that symbol is defined.
++kbuild_test_symbol() {
++  kbuild_test_compile ${1^^} $1 ${2-} <<-EOF
++	#include <linux/module.h>
++	${2:+#include <$2>}
++	MODULE_LICENSE("GPL");
++	void *test = $1;
++	EOF
++}
++
++# Test that struct is defined.
++kbuild_test_struct() {
++  kbuild_test_compile ${1^^} "struct $1" ${2-} <<-EOF
++	#include <linux/module.h>
++	${2:+#include <$2>}
++	MODULE_LICENSE("GPL");
++	struct $1 test;
++	EOF
++}
++
++echo "// Autogenerated for $KDIR"
++echo
++
++# helpers introduced in 613dbd95723aee7abd16860745691b6c7bda20dc
++kbuild_test_symbol xt_family linux/netfilter_ipv4/ip_tables.h
++kbuild_test_struct timeval linux/ktime.h
++# 97a32539b9568 proc: convert everything to "struct proc_ops"
++# d56c0d45f0e27 proc: decouple proc from VFS with "struct proc_ops"
++kbuild_test_struct proc_ops linux/proc_fs.h
++
++echo "// End of compat_def.h"
++
++cd $OLDPWD
++rm -rf $WD
++
++# debug output for Travis
++if [ -z "${PWD/*travis*}" ]; then
++  cat compat_def.h >&2
++fi
+diff -Naupr ipt-netflow-2.4/install-dkms.sh ipt-netflow/install-dkms.sh
+--- ipt-netflow-2.4/install-dkms.sh	2019-06-23 17:27:58.000000000 +0700
++++ ipt-netflow/install-dkms.sh	2020-04-23 09:18:21.783973835 +0700
+@@ -95,7 +95,7 @@ echo "! Installing $MVERSION into DKMS..
+ rm -rf /usr/src/ipt-netflow-$MVERSION
+ 
+ mkdir -p /usr/src/ipt-netflow-$MVERSION
+-cp -p *.[ch] Make* READ* conf* irq* *.sh *.conf /usr/src/ipt-netflow-$MVERSION/
++cp -p *.[ch] Make* READ* conf* gen* irq* *.sh *.conf /usr/src/ipt-netflow-$MVERSION/
+ if [ -d .git ]; then
+   cp -pr .git /usr/src/ipt-netflow-$MVERSION/
+ fi
+diff -Naupr ipt-netflow-2.4/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
+--- ipt-netflow-2.4/ipt_NETFLOW.c	2019-06-23 17:27:58.000000000 +0700
++++ ipt-netflow/ipt_NETFLOW.c	2020-04-23 09:18:21.787307159 +0700
+@@ -83,6 +83,14 @@
+ /* No conntrack events in the kernel imply no natevents. */
+ # undef CONFIG_NF_NAT_NEEDED
+ #endif
++#if defined(CONFIG_NF_NAT_NEEDED) && LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,39)
++# include <net/netfilter/nf_conntrack_timestamp.h>
++#endif
++#ifdef ENABLE_PHYSDEV_OVER
++# ifndef CONFIG_BRIDGE_NETFILTER
++#  undef ENABLE_PHYSDEV_OVER
++# endif
++#endif
+ 
+ #define IPT_NETFLOW_VERSION "2.4"   /* Note that if you are using git, you
+ 				       will see version in other format. */
+@@ -931,6 +939,14 @@ static int snmp_seq_open(struct inode *i
+ 	return single_open(file, snmp_seq_show, NULL);
+ }
+ 
++#ifdef HAVE_PROC_OPS
++static struct proc_ops nf_seq_fops = {
++	.proc_open	= nf_seq_open,
++	.proc_read	= seq_read,
++	.proc_lseek	= seq_lseek,
++	.proc_release	= single_release,
++};
++#else
+ static struct file_operations nf_seq_fops = {
+ 	.owner	 = THIS_MODULE,
+ 	.open	 = nf_seq_open,
+@@ -938,7 +954,16 @@ static struct file_operations nf_seq_fop
+ 	.llseek	 = seq_lseek,
+ 	.release = single_release,
+ };
++#endif
+ 
++#ifdef HAVE_PROC_OPS
++static struct proc_ops snmp_seq_fops = {
++	.proc_open	= snmp_seq_open,
++	.proc_read	= seq_read,
++	.proc_lseek	= seq_lseek,
++	.proc_release	= single_release,
++};
++#else
+ static struct file_operations snmp_seq_fops = {
+ 	.owner	 = THIS_MODULE,
+ 	.open	 = snmp_seq_open,
+@@ -946,6 +971,7 @@ static struct file_operations snmp_seq_f
+ 	.llseek	 = seq_lseek,
+ 	.release = single_release,
+ };
++#endif
+ 
+ static inline int inactive_needs_export(const struct ipt_netflow *nf, const long i_timeout,
+     const unsigned long jiff);
+@@ -1198,6 +1224,14 @@ static int flows_seq_release(struct inod
+ 	return seq_release_private(inode, file);
+ }
+ 
++#ifdef HAVE_PROC_OPS
++static struct proc_ops flows_seq_fops = {
++	.proc_open	= flows_seq_open,
++	.proc_read	= seq_read,
++	.proc_lseek	= seq_lseek,
++	.proc_release	= flows_seq_release,
++};
++#else
+ static struct file_operations flows_seq_fops = {
+ 	.owner	 = THIS_MODULE,
+ 	.open	 = flows_seq_open,
+@@ -1205,6 +1239,7 @@ static struct file_operations flows_seq_
+ 	.llseek	 = seq_lseek,
+ 	.release = flows_seq_release,
+ };
++#endif
+ #endif /* CONFIG_PROC_FS */
+ 
+ #ifdef ENABLE_PROMISC
+@@ -1310,7 +1345,7 @@ static int promisc6_rcv(struct sk_buff *
+ 	if (hdr->nexthdr == NEXTHDR_HOP) {
+ 		int optlen;
+ 		/* ipv6_parse_hopopts() is not exported by kernel.
+-		 * I dont really need to parse hop options, since packets
++		 * I don't really need to parse hop options, since packets
+ 		 * are not routed, nor terminated, but I keep calculations
+ 		 * in case other code depend on it. */
+ 		if (!pskb_may_pull(skb, sizeof(struct ipv6hdr) + 8) ||
+@@ -2012,7 +2047,7 @@ static void usock_close(struct ipt_netfl
+ 
+ ktime_t ktime_get_real(void);
+ 
+-// return numbers of sends succeded, 0 if none
++// return numbers of sends succeeded, 0 if none
+ /* only called in scan worker path */
+ static void netflow_sendmsg(void *buffer, const int len)
+ {
+@@ -2072,7 +2107,7 @@ static void netflow_sendmsg(void *buffer
+ 	}
+ 	mutex_unlock(&sock_lock);
+ 	if (retok == 0) {
+-		/* not least one send succeded, account stat for dropped packets */
++		/* not least one send succeeded, account stat for dropped packets */
+ 		NETFLOW_STAT_ADD(pkt_lost, pdu_packets);
+ 		NETFLOW_STAT_ADD(traf_lost, pdu_traf);
+ 		NETFLOW_STAT_ADD(flow_lost, pdu_flow_records);
+@@ -2154,7 +2189,7 @@ static void set_sampler(const unsigned c
+ 		printk(KERN_ERR "ipt_NETFLOW: flow sampling is disabled.\n");
+ 	} else {
+ 		sampling_ts.first = ktime_get_real();
+-		/* no race here, becasue exporting process is stopped */
++		/* no race here, because exporting process is stopped */
+ 		samp.v32 = s.v32;
+ 		sprintf(sampler_buf, "%s:%u", sampler_mode_string(), interval);
+ 		printk(KERN_ERR "ipt_NETFLOW: flow sampling is enabled, mode %s one-out-of %u.\n",
+@@ -2927,7 +2962,7 @@ static struct base_template template_vla
+ static struct base_template template_mpls = {
+ 	.types = {
+ 		mplsTopLabelTTL,
+-		/* do not just add element here, becasue this array
++		/* do not just add element here, because this array
+ 		 * is truncated in ipt_netflow_init() */
+ #define MPLS_LABELS_BASE_INDEX 1
+ 		MPLS_LABEL_1,
+@@ -3630,7 +3665,7 @@ static inline void add_tpl_field(__u8 *p
+ 
+ #define PAD_SIZE 4 /* rfc prescribes flowsets to be padded */
+ 
+-/* cache timeout_rate in jiffies */
++/* cache timeout_rate (minutes) in jiffies */
+ static inline unsigned long timeout_rate_j(void)
+ {
+ 	static unsigned int t_rate = 0;
+@@ -4131,11 +4166,12 @@ static void export_dev(struct net_device
+ 	/* encode all fields */
+ 	for (i = 0; ; ) {
+ 		int type = tpl->fields[i++];
+-		int size = tpl->fields[i++];
++		int size;
+ 		int n;
+ 
+ 		if (!type)
+ 			break;
++		size = tpl->fields[i++];
+ 		switch (type) {
+ 		case observationDomainId:
+ 			put_unaligned_be32(engine_id, ptr);
+@@ -4329,6 +4365,9 @@ static int netflow_scan_and_export(const
+ #ifdef ENABLE_SAMPLER
+ 	unsigned char mode;
+ #endif
++#ifdef CONFIG_NF_NAT_NEEDED
++	LIST_HEAD(nat_list_export); /* nat events to export */
++#endif
+ 
+ 	if (protocol >= 9) {
+ 		netflow_export_stats();
+@@ -4411,16 +4450,15 @@ static int netflow_scan_and_export(const
+ 
+ #ifdef CONFIG_NF_NAT_NEEDED
+ 	spin_lock_bh(&nat_lock);
+-	while (!list_empty(&nat_list)) {
++	list_splice_init(&nat_list, &nat_list_export);
++	spin_unlock_bh(&nat_lock);
++	while (!list_empty(&nat_list_export)) {
+ 		struct nat_event *nel;
+ 
+-		nel = list_entry(nat_list.next, struct nat_event, list);
++		nel = list_first_entry(&nat_list_export, struct nat_event, list);
+ 		list_del(&nel->list);
+-		spin_unlock_bh(&nat_lock);
+ 		export_nat_event(nel);
+-		spin_lock_bh(&nat_lock);
+ 	}
+-	spin_unlock_bh(&nat_lock);
+ #endif
+ 	/* flush flows stored in pdu if there no new flows for too long */
+ 	/* Note: using >= to allow flow purge on zero timeout */
+@@ -4501,7 +4539,7 @@ static void rate_timer_calc(
+ 		dsrch = st->searched - st->old_searched;
+ 		dfnd  = st->found - st->old_found;
+ 		dnfnd = st->notfound - st->old_notfound;
+-		/* zero values are not accounted, becasue only usage is interesting, not nonusage */
++		/* zero values are not accounted, because only usage is interesting, not nonusage */
+ 		metrt = (dfnd + dnfnd)? 100 * (dsrch + dfnd + dnfnd) / (dfnd + dnfnd) : st->metric;
+ 		CALC_RATE(st->metric, metrt, 1);
+ 		st->old_searched = st->searched;
+@@ -4546,6 +4584,9 @@ static int netflow_conntrack_event(struc
+ {
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,31)
+ 	struct nf_conn *ct = item->ct;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,39)
++	struct nf_conn_tstamp *tstamp = nf_conn_tstamp_find(ct);
++#endif
+ #else
+ 	struct nf_conn *ct = (struct nf_conn *)ptr;
+ #endif
+@@ -4575,12 +4616,10 @@ static int netflow_conntrack_event(struc
+ 		return ret;
+ 	}
+ 
+-	if (!(nel = kmalloc(sizeof(struct nat_event), GFP_ATOMIC))) {
++	if (!(nel = kzalloc(sizeof(struct nat_event), GFP_ATOMIC))) {
+ 		printk(KERN_ERR "ipt_NETFLOW: can't kmalloc nat event\n");
+ 		return ret;
+ 	}
+-	memset(nel, 0, sizeof(struct nat_event));
+-	nel->ts_ktime = ktime_get_real();
+ 	nel->ts_jiffies = jiffies;
+ 	t = &ct->tuplehash[IP_CT_DIR_ORIGINAL].tuple;
+ 	nel->protocol = t->dst.protonum;
+@@ -4597,10 +4636,20 @@ static int netflow_conntrack_event(struc
+ 	if (events & (1 << IPCT_DESTROY)) {
+ 		nel->nat_event = NAT_DESTROY;
+ 		nat_events_stop++;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,39)
++		if (likely(tstamp))
++			nel->ts_ktime = ktime_set(0, tstamp->stop);
++#endif /* after 2.6.38 */
+ 	} else {
+ 		nel->nat_event = NAT_CREATE;
+ 		nat_events_start++;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,39)
++		if (likely(tstamp))
++			nel->ts_ktime = ktime_set(0, tstamp->start);
++#endif /* after 2.6.38 */
+ 	}
++	if (ktime_to_ns(nel->ts_ktime) == 0)
++		nel->ts_ktime = ktime_get_real();
+ 
+ 	spin_lock_bh(&nat_lock);
+ 	list_add_tail(&nel->list, &nat_list);
+@@ -5493,7 +5542,13 @@ static struct ipt_target ipt_netflow_reg
+ };
+ 
+ #ifdef CONFIG_PROC_FS
+-static int register_stat(const char *name, struct file_operations *fops)
++static int register_stat(const char *name,
++# ifdef HAVE_PROC_OPS
++			 struct proc_ops *fops
++# else
++			 struct file_operations *fops
++# endif
++			 )
+ {
+ 	struct proc_dir_entry *proc_stat;
+ 
+diff -Naupr ipt-netflow-2.4/Makefile.in ipt-netflow/Makefile.in
+--- ipt-netflow-2.4/Makefile.in	2019-06-23 17:27:58.000000000 +0700
++++ ipt-netflow/Makefile.in	2020-04-23 09:18:21.783973835 +0700
+@@ -20,10 +20,12 @@ ccflags-y = @KOPTS@
+ 
+ all: ipt_NETFLOW.ko libipt_NETFLOW.so libip6t_NETFLOW.so @SNMPTARGET@
+ 
+-ipt_NETFLOW.ko: version.h ipt_NETFLOW.c ipt_NETFLOW.h compat.h Makefile
++ipt_NETFLOW.ko: version.h ipt_NETFLOW.c ipt_NETFLOW.h compat_def.h compat.h Makefile
+ 	@echo Compiling for kernel $(KVERSION)
+ 	make -C $(KDIR) M=$(CURDIR) modules CONFIG_DEBUG_INFO=y
+ 	@touch $@
++compat_def.h: gen_compat_def
++	./gen_compat_def > $@
+ sparse: | version.h ipt_NETFLOW.c ipt_NETFLOW.h compat.h Makefile
+ 	@rm -f ipt_NETFLOW.ko ipt_NETFLOW.o
+ 	@echo Compiling for kernel $(KVERSION)
+@@ -41,7 +43,7 @@ mclean:
+ lclean:
+ 	-rm -f *.so *_sh.o
+ clean: mclean lclean
+-	-rm -f *.so *.o modules.order version.h
++	-rm -f *.so *.o modules.order version.h compat_def.h
+ 
+ snmp_NETFLOW.so: snmp_NETFLOW.c
+ 	$(CC) -fPIC -shared -o $@ $< -lnetsnmp
+diff -Naupr ipt-netflow-2.4/murmur3.h ipt-netflow/murmur3.h
+--- ipt-netflow-2.4/murmur3.h	2019-06-23 17:27:58.000000000 +0700
++++ ipt-netflow/murmur3.h	2020-04-23 09:18:21.790640483 +0700
+@@ -32,8 +32,8 @@ static inline uint32_t murmur3(const voi
+ 	}
+ 	tail = (const uint8_t*)blocks;
+ 	switch (len & 3) {
+-		case 3: k1 ^= tail[2] << 16;
+-		case 2: k1 ^= tail[1] << 8;
++		case 3: k1 ^= tail[2] << 16; /* FALLTHROUGH */
++		case 2: k1 ^= tail[1] << 8;  /* FALLTHROUGH */
+ 		case 1: k1 ^= tail[0];
+ 			h1 ^= rotl32(k1 * c1, 15) * c2;
+ 	}
+diff -Naupr ipt-netflow-2.4/README ipt-netflow/README
+--- ipt-netflow-2.4/README	2019-06-23 17:27:58.000000000 +0700
++++ ipt-netflow/README	2020-04-23 09:18:21.783973835 +0700
+@@ -206,7 +206,7 @@ ipt_NETFLOW linux 2.6.x-5.x kernel modul
+      --enable-macaddress
+          enables exporting of src and dst MAC addresses for every flow
+          in v9/IPFIX. Difference in any of MAC address will be accounted
+-         as differnt flow. I.e. MAC addresses will be part of flow key.
++         as different flow. I.e. MAC addresses will be part of flow key.
+ 
+      --enable-vlan
+          enables exporting of dot1q VLAN Ids and Priorities for every flow
