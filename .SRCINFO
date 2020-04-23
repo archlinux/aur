@@ -1,5 +1,5 @@
 pkgbase = puddletag-qt5-git
-	pkgdesc = An audio tag editor for GNU/Linux, Qt5 verion
+	pkgdesc = An audio tag editor for GNU/Linux, Qt5 version
 	pkgver = r881.aab842a
 	pkgrel = 2
 	url = https://docs.puddletag.net/
