@@ -1,5 +1,5 @@
 pkgbase = linux-amd-raven
-	pkgver = 5.4.v.34
+	pkgver = 5.4.v.35
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = linux-amd-raven
 	source = linux-amd-raven.preset
 	source = 5012_enable-cpu-optimizations-for-gcc91.patch
 	sha256sums = SKIP
-	sha256sums = e31ddac0ee6e644bce4379e89de0a59b8aebeb20822d560b10bd3a87d6c24e84
+	sha256sums = 900821009d7fe9fecd8ecece0ded684c55a201e4c909cb4efe0c6028a577b238
 	sha256sums = 0ac0cf410b0f3eeaa07d41505613e118ea59e01144e905f2dc0a808379f87e87
 	sha256sums = fb98e49d7a640e05bf0d3a65ca49d0adb19de7547cb7ffca7a6cbacb1f461f0b
 
