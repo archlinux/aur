@@ -2,7 +2,7 @@
 
 pkgname=asdf-vm
 pkgver=0.7.8
-pkgrel=4
+pkgrel=5
 pkgdesc='Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more'
 arch=('any')
 url='https://asdf-vm.com'
@@ -31,7 +31,6 @@ package() {
   mkdir -p "${dst}"
 
   cp -r bin         "${dst}"
-  cp -r completions "${dst}"
   cp -r lib         "${dst}"
   cp    asdf.fish   "${dst}"
   cp    asdf.sh     "${dst}"
@@ -41,12 +40,18 @@ package() {
   cp    VERSION     "${dst}"
 
   local usrshare="${pkgdir}/usr/share"
+  local docdir="${usrshare}/doc/${pkgname}"
+  mkdir -p "${docdir}"
 
-  install -Dm 644 -t "${usrshare}/licenses/${pkgname}/" LICENSE
+  cp docs/[^_]*.md "${docdir}"
+  cp help.txt      "${docdir}"
+  cp README.md     "${docdir}"
+
+  install -Dm644 -t "${usrshare}/licenses/${pkgname}/" LICENSE
 
   cd completions
 
-  install -Dm 644 asdf.bash "${usrshare}/bash-completion/completions/asdf"
-  install -Dm 644 asdf.fish "${usrshare}/fish/vendor_completions.d/asdf.fish"
-  install -Dm 644 _asdf     "${usrshare}/zsh/site-functions/_asdf"
+  install -Dm644 asdf.bash "${usrshare}/bash-completion/completions/asdf"
+  install -Dm644 asdf.fish "${usrshare}/fish/vendor_completions.d/asdf.fish"
+  install -Dm644 _asdf     "${usrshare}/zsh/site-functions/_asdf"
 }

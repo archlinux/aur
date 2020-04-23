@@ -1,7 +1,7 @@
 pkgbase = asdf-vm
 	pkgdesc = Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more
 	pkgver = 0.7.8
-	pkgrel = 4
+	pkgrel = 5
 	url = https://asdf-vm.com
 	install = asdf-vm.install
 	arch = any
