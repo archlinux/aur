@@ -1,27 +1,31 @@
-# Maintainer: Jacob Mischka <jacob@mischka.me>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Jacob Mischka <jacob@mischka.me>
 pkgname=gnomecast-git
-pkgver=r101.e0ec89c
+pkgver=r172.42d8346
 pkgrel=1
-pkgdesc='A native Linux GUI for Chromecasting local files.'
-arch=('x86_64')
-url='https://github.com/keredson/gnomecast'
-license=('GPL-3.0')
-depends=('gtk3' 'python' 'ffmpeg' 'python-paste' 'python-bottle' 'python-pychromecast-git' 'python-dbus' 'python-gobject')
-makedepends=('python-setuptools' 'python-pip')
-provides=('gnomecast')
-source=("$pkgname::git://github.com/keredson/gnomecast.git")
-sha512sums=('SKIP')
+pkgdesc="A native Linux GUI for casting local files to Chromecast devices"
+arch=('any')
+url="https://github.com/keredson/gnomecast"
+license=('GPL3')
+depends=('ffmpeg' 'python-html5lib' 'python-pychromecast' 'python-bottle'
+         'python-pycaption' 'python-paste' 'python-gobject' 'python-dbus')
+makedpends=('git' 'python-setuptools')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git://github.com/keredson/gnomecast.git')
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/${pkgname%-git}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" pycaption pbr
-	cd "$srcdir/$pkgname"
-	python setup.py install --root="$pkgdir/" --optimize=1
+build() {
+	cd "$srcdir/${pkgname%-git}"
+	python setup.py build
 }
 
-
+package() {
+	cd "$srcdir/${pkgname%-git}"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
