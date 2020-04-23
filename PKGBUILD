@@ -1,8 +1,8 @@
 # Maintainer: sgar <swhaat in github>
 
 pkgname=veyon
-pkgver=4.2.4
-pkgrel=2
+pkgver=4.3.5
+pkgrel=1
 pkgdesc="Open Source computer monitoring and classroom management"
 arch=('i686' 'x86_64')
 url="https://github.com/veyon"
@@ -11,15 +11,16 @@ depends=('qt5-base'
 	'libxrandr'
 	'libxtst'
 	'pam'
-	'pam_ldap'
+	'openldap'
 	'openssl'
 	'libjpeg-turbo'
 	'zlib' 'qca-qt5'
 	'libqtxdg'
 	'lzo'
-	'libxinerama')
+	'libxinerama'
+	'libsasl')
 optdepends=('kldap: KDE support')
-makedepends=('git' 'cmake' 'qt5-tools')
+makedepends=('git' 'gcc' 'cmake' 'qt5-tools' 'procps-ng' 'kldap')
 source=("git+${url}/veyon.git#tag=v${pkgver}"
     "git+${url}/ultravnc.git"
     "git+${url}/libvncserver.git"
