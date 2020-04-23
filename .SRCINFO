@@ -1,13 +1,13 @@
 pkgbase = talosctl
 	pkgdesc = CLI for Talos - A modern OS for Kubernetes
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/talos-systems/talos
 	arch = any
 	license = MPL2
 	makedepends = go
-	source = https://github.com/talos-systems/talos/archive/v0.4.0.tar.gz
-	b2sums = 2802a96148c1bb87f05ff662e48adfb9bf238afe1e4260b0858b7e48dc10c58f30fd675236072c193c119307a479f7c6a3335884d0bb92976102a8566c9d8b9e
+	source = https://github.com/talos-systems/talos/archive/v0.4.1.tar.gz
+	b2sums = a82246d09596c70287c8b716d9bb0b93ffa6ec5259dce171fa9a75e796f4ffb501fa2873e98c4d88ba36b0ff7491750e1a2a7b0110f910924f006807d0523a46
 
 pkgname = talosctl
 
