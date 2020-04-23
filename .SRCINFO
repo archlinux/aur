@@ -1,0 +1,13 @@
+pkgbase = orbit-bin
+	pkgdesc = A cross-platform task runner for executing commands and generating files from templates
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/gulien/orbit
+	arch = x86_64
+	license = MIT
+	provides = orbit
+	source = https://github.com/gulien/orbit/releases/download/v3.2.0/orbit_Linux_x86_64.tar.gz
+	sha256sums = bcd0ea0e3cf7858724b5f1863c7e0fc3b04edbd4787497397f1ff8a1a329c663
+
+pkgname = orbit-bin
+
