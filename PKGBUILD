@@ -2,10 +2,10 @@
 _pkgname=ndn-tools
 pkgname=${_pkgname}-git
 pkgver=ndn.tools.0.7.r10.g8a2907e
-pkgrel=1
+pkgrel=2
 # epoch=
-pkgdesc="ndn-tools is a collection of basic tools for Named Data Networking"
-arch=("any")
+pkgdesc="A collection of basic tools for Named Data Networking"
+arch=('i686' 'x86_64')
 url="https://github.com/named-data/${_pkgname}"
 license=('GPL')
 groups=()
