@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="A pure Wayland shell prototype for GNOME on mobile devices"
 url="https://source.puri.sm/Librem5/phosh"
 license=("GPL3")
-arch=(i686 x86_64 arm armv6h armv7h aarch64)
+arch=(i686 x86_64 armv7h aarch64)
 depends=('feedbackd'
          'gcr'
          'libhandy'
@@ -34,7 +34,7 @@ prepare() {
 
 build() {
     rm -rf build
-    arch-meson phosh build
+    arch-meson phosh build -Dtests=false
     ninja -C build
 }
 
