@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/freerouting/freerouting"
 license=('GPL3')
 depends=('jre11-openjdk>=11')
-makedepends=('jdk11-openjdk>=11')
+makedepends=('jdk11-openjdk>=11' git)
 optdepends=('kicad: for use with PCB editor')
 source=("${pkgname}::git+https://github.com/freerouting/freerouting.git"
         "freerouting.sh")

@@ -7,6 +7,7 @@ pkgbase = freerouting
 	arch = x86_64
 	license = GPL3
 	makedepends = jdk11-openjdk>=11
+	makedepends = git
 	depends = jre11-openjdk>=11
 	optdepends = kicad: for use with PCB editor
 	source = freerouting::git+https://github.com/freerouting/freerouting.git
