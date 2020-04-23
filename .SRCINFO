@@ -1,7 +1,7 @@
 pkgbase = birdtray
 	pkgdesc = Run Thunderbird with a system tray icon.
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gyunaev/birdtray
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = birdtray
 	makedepends = qt5-tools
 	depends = qt5-svg
 	depends = qt5-x11extras
+	optdepends = qt5-translations: Support for translations
 	source = birdtray-1.8.0.tar.gz::https://github.com/gyunaev/birdtray/archive/1.8.0.tar.gz
 	sha1sums = 66e92a020bf58deb3c3fa6d823d16c6a02575adc
 
