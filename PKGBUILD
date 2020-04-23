@@ -28,8 +28,7 @@ sha256sums=('8263bb3707de2eaf88b689cf19667dc24508da40418b7fb00ad1280d1d168deb'
             '773f169fac40fa5df69ccf90680238524f99c42aaa2b037e78e01cfc8c545280'
             'db54c71d65ac938bb0e4c058481463b71d784ba113a872e419c66975cbc94a3f')
 makedepends=('python2-setuptools' 'python-setuptools')
-optdepends=('ttf-jetbrains-mono: Official mono font by JetBrains'
-            'ipython2: For enhanced interactive Python shell v2 inside Pycharm'
+optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'ipython: For enhanced interactive Python shell v3 inside Pycharm'
             'openssh: For deployment and remote connections'
             'python2-setuptools: Packages manager for Python 2, for project interpreter'
@@ -67,9 +66,6 @@ package() {
   install -dm 755 "$pkgdir/usr/share/"{applications,pixmaps}
   install -Dm 644 "$pkgdir/opt/$pkgname/bin/pycharm.png" "$pkgdir/usr/share/pixmaps/pycharm.png"
   install -Dm 644 pycharm-professional.desktop "$pkgdir/usr/share/applications/"
-  
-  # remove internal fonts, instead use system fonts
-  rm -r "$pkgdir/opt/pycharm-professional/jbr/lib/fonts"
   
   # exec
   install -dm 755 "$pkgdir/usr/bin/"
