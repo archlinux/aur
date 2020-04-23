@@ -6,7 +6,7 @@
 pkgname=puddletag-qt5-git
 pkgver=r881.aab842a
 pkgrel=2
-pkgdesc="An audio tag editor for GNU/Linux, Qt5 verion"
+pkgdesc="An audio tag editor for GNU/Linux, Qt5 version"
 url="https://docs.puddletag.net/"
 license=('GPL3')
 arch=('any')
