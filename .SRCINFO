@@ -1,10 +1,11 @@
 pkgbase = vim-gdscript-git
 	pkgdesc = Vim syntax highliting for the Godot Game Engine scripting language GDScript
-	pkgver = r70.e9e0cce
+	pkgver = r151.ebfa25f
 	pkgrel = 1
-	url = https://github.com/calviken/vim-gdscript3
+	url = https://github.com/clktmr/vim-gdscript3
 	arch = any
-	source = git+https://github.com/calviken/vim-gdscript3
+	license = custom:MIT
+	source = git+https://github.com/clktmr/vim-gdscript3
 	sha256sums = SKIP
 
 pkgname = vim-gdscript-git
