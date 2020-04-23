@@ -12,13 +12,12 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/okteto/okteto/archive/$
 sha256sums=('fc3629699355e7ab66661d5c77d34eb8b75ba8cb1ed8beaad74a5ab88a211ec6')
 
 build() {
-  export GOPATH="$srcdir"/gopath
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   make VERSION_STRING=$pkgver build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   install -Dm755 bin/okteto "$pkgdir"/usr/bin/okteto
   install -Dm644 README.md -t "$pkgdir"/usr/share/doc/"$pkgname"
 }
