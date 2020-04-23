@@ -1,12 +1,12 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-mysql-git'
-pkgver=0.7.13.0.r404.g984b739eb
+pkgver=0.7.13.0.r483.g002d427f3
 pkgrel=1
 pkgdesc="A distributed privacy aware social network (development head) (MySQL)"
 arch=('i686' 'x86_64')
 url="https://diasporafoundation.org"
 license=('AGPL3')
-depends=('ruby2.4' 'ruby2.4-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'libmariadbclient')
+depends=('ruby2.5' 'ruby2.5-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'libmariadbclient')
 optdepends=('jemalloc: lower memory consumption' 'mariadb: Database server')
 makedepends=('nodejs' 'git')
 conflicts=('diaspora-mysql' 'diaspora-postgresql' 'diaspora-postgresql-git')
@@ -50,9 +50,10 @@ _reset_ruby() {
 }
 
 build() {
-  _bundle=bundle-2.4
-  _ruby=ruby-2.4
-  _rake=rake-2.4
+  _bundle=bundle-2.5
+  _ruby=ruby-2.5
+  _rake=rake-2.5
+  _gem=gem-2.5
   _builddir=$srcdir/build
 
   _reset_ruby
@@ -66,6 +67,8 @@ build() {
 
   msg "Bundle dependencies"
   echo "gem: --no-rdoc --no-ri --no-user-install" > $_builddir/.gemrc
+  export GEM_HOME="$_builddir/vendor/bundle"
+  HOME=$_builddir $_gem install bundler -v 1.17.3
   HOME=$_builddir $_bundle config --local path vendor/bundle
   HOME=$_builddir $_bundle config --local frozen 1
   HOME=$_builddir $_bundle config --local disable_shared_gems true
@@ -95,8 +98,8 @@ build() {
 }
 
 package() {
-  _bundle=bundle-2.4
-  _ruby=ruby-2.4
+  _bundle=bundle-2.5
+  _ruby=ruby-2.5
   _builddir=$srcdir/build
 
   msg "Copy contents to package directory"
