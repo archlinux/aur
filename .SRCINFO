@@ -21,7 +21,7 @@ pkgbase = open3d
 	optdepends = pybind11: System pybind11 support
 	optdepends = python: Python support
 	optdepends = jupyter-notebook: Jupyter notebook support
-	source = open3d::git+https://github.com/IntelVCL/Open3D.git#tag=v0.9.0
+	source = open3d::git+https://github.com/intel-isl/Open3D.git#tag=v0.9.0
 	source = fix_3rdparty_path.patch
 	sha256sums = SKIP
 	sha256sums = 3bf6b79fd075b356a5c2d86a557e0bc6e6df0e84d53c2077d2c6685641838d81
