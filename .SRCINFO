@@ -1,6 +1,6 @@
 pkgbase = icon-library
 	pkgdesc = Symbolic icons for your apps
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/design/icon-library
 	changelog = CHANGELOG
@@ -11,7 +11,8 @@ pkgbase = icon-library
 	makedepends = git
 	depends = libhandy
 	depends = gdk-pixbuf2
-	source = git+https://gitlab.gnome.org/World/design/icon-library.git#tag=0.0.5
+	depends = gtksourceview4
+	source = git+https://gitlab.gnome.org/World/design/icon-library.git#tag=0.0.6
 	sha256sums = SKIP
 
 pkgname = icon-library
