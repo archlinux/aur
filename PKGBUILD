@@ -2,7 +2,7 @@
 # Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 
 pkgname=freecad-git
-pkgver=0.18.r3116.g2e31417aa4
+pkgver=0.18.r4645.g0c96f77184
 pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -36,10 +36,6 @@ prepare() {
 build() {
     cd "${srcdir}/FreeCAD"
 
-    # we need to manually set all PYSIDE_* paths as autodetection is broken:
-    # https://github.com/FreeCAD/FreeCAD/pull/2020
-    PYVER="$(/usr/bin/python3 -c 'import sys; print("{}.{}".format(sys.version_info.major,sys.version_info.minor))')"
-
     cmake \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX="/usr/lib/freecad" \
@@ -49,10 +45,6 @@ build() {
         -DBUILD_QT5=ON \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
         -DOPENMPI_INCLUDE_DIRS=/usr/include \
-        -DPYSIDE_INCLUDE_DIR="/usr/include/PySide2" \
-        -DPYSIDE_LIBRARY="/usr/lib/libpyside2.cpython-${PYVER//.}-${CARCH}-linux-gnu.so" \
-        -DPYSIDE_PYTHONPATH="/usr/lib/python${PYVER}/site-packages/PySide2" \
-        -DPYSIDE_TYPESYSTEMS="/usr/share/PySide2/typesystems" \
         .
     make
 }
