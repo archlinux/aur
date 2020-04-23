@@ -1,7 +1,7 @@
 pkgbase = python2-zbar
 	pkgdesc = Application and library for reading bar codes from various sources
 	pkgver = 0.23.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mchehab/zbar
 	arch = x86_64
 	license = LGPL
