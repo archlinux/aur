@@ -1,10 +1,10 @@
 # Maintainer: Filippo Berto <berto.f@protonmail.com>
 pkgname=ndn-tools
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 # epoch=
-pkgdesc="ndn-tools is a collection of basic tools for Named Data Networking"
-arch=("any")
+pkgdesc="A collection of basic tools for Named Data Networking"
+arch=('i686' 'x86_64')
 url="https://github.com/named-data/${pkgname}"
 license=('GPL')
 groups=()
