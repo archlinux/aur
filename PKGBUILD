@@ -7,7 +7,7 @@
 
 pkgname="google-cloud-sdk"
 pkgver=289.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -66,7 +66,7 @@ package() {
   install -D -m 0755 "${srcdir}/${source[1]}" \
     "${pkgdir}/etc/profile.d/google-cloud-sdk.sh"
 
-  install -D -m 0755 "${pkgdir}/opt/${pkgname}/completion.bash.inc" \
+  install -D -m 0644 "${pkgdir}/opt/${pkgname}/completion.bash.inc" \
     "${pkgdir}/etc/bash_completion.d/google-cloud-sdk"
 
   mkdir -p "${pkgdir}/usr/share"
