@@ -1,9 +1,10 @@
 all: clean build git install
 
 clean:
-	rm -r src pkg
+	rm -r src pkg || true
 
 geninteg:
+	sed -i '/sums=(/,$$d' PKGBUILD
 	makepkg --geninteg >> PKGBUILD
 
 srcinfo:
