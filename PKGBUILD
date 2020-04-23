@@ -7,7 +7,7 @@ pkgdesc='A tool to build android boot images.'
 arch=('i686' 'x86_64')
 url='https://android.googlesource.com/platform/system/core'
 license=('GPL')
-depends=('repo')
+depends=()
 makedepends=()
 source=('git+https://android.googlesource.com/platform/system/core#tag=android-4.4.4_r2.0.1')
 sha256sums=('SKIP')

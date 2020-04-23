@@ -6,7 +6,6 @@ pkgbase = mkbootfs
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = repo
 	source = git+https://android.googlesource.com/platform/system/core#tag=android-4.4.4_r2.0.1
 	sha256sums = SKIP
 
