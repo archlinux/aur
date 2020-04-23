@@ -26,7 +26,7 @@ build() {
     cd build
 
     git submodule update --init
-    cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release -D PYBIND=ON -D PYSHELL=ON -D DESKTOP=ON -D TESTS=ON ..
+    cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release -D VIPSTER_DESKTOP=ON -D VIPSTER_PYWIDGET=ON -D VIPSTER_PYLIB=ON -D VIPSTER_TESTS=ON ..
     make vipster pyvipster
 }
 
