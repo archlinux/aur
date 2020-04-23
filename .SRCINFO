@@ -1,0 +1,17 @@
+pkgbase = day-image-git
+	pkgdesc = Sets the image of the day of different sources as a wallpaper on Linux
+	pkgver = r12.gcca7ae6
+	pkgrel = 1
+	url = https://github.com/Golim/day-image
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = curl
+	depends = feh
+	provides = day-image
+	conflicts = day-image
+	source = day-image::git+https://github.com/Golim/day-image.git
+	md5sums = SKIP
+
+pkgname = day-image-git
+
