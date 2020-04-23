@@ -7,7 +7,7 @@ _major=5.6
 _minor=5
 _clr=941
 pkgver=${_major}.${_minor}.${_clr}
-pkgrel=1
+pkgrel=2
 # use in case we need to update the Arch package without incrementing pkgrel
 epoch=0
 arch=('x86_64')
@@ -26,17 +26,17 @@ options=('!strip')
 _clear_version=32890
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 
-source=("https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.kernel-native"
-        "https://cdn.download.clearlinux.org/update/${_clear_version}/pack-kernel-native-from-0.tar"
+source=("Manifest.kernel-native.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.kernel-native"
+        "pack-kernel-native-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-kernel-native-from-0.tar"
 )
 b2sums=('3cb428e474ae09186e9d9e09565a54e5ad28da3a70a19db71cc3977729401652bde7c30188a1dd684b85b10b75805732e12d5d113fcdc3d6de3715335629f0e5'
         '549366988c58299f14ca790aaa8785dee0eceef22d9b0b55202fb61e7c0f99dbe10275d43714675492116d976ffff08e17319a544ec8cb30ec774529c1239d19')
 build() {
     # get kernel's filename (hash) from the Manifest, ie:
     # 4776962fb058c91e89dcefac4740d7a1af37ea12d217d3f8d0f49797553146e7
-    local kernel=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/kernel\/org.clearlinux.native.*$/\1/p" Manifest.kernel-native)
-    local cmdline=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/kernel\/cmdline.*$/\1/p" Manifest.kernel-native)
-    local modules=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/(modules.*)$/\1 \2/p" Manifest.kernel-native)
+    local kernel=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/kernel\/org.clearlinux.native.*$/\1/p" Manifest.kernel-native.${_clear_version})
+    local cmdline=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/kernel\/cmdline.*$/\1/p" Manifest.kernel-native.${_clear_version})
+    local modules=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/(modules.*)$/\1 \2/p" Manifest.kernel-native.${_clear_version})
 
     cp staged/$kernel vmlinuz-${pkgname}
     cp staged/$cmdline vmlinuz-${pkgname}.cmdline
