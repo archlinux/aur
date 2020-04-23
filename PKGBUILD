@@ -6,8 +6,8 @@ pkgrel=2
 pkgdesc="The backgrounds included in Ubuntu 14.04 trusty"
 license=('Commons Attribution-ShareAlike 3.0 Unported')
 arch=('any')
-url="https://launchpad.net/ubuntu/+source/ubuntu-wallpapers/${pkgver}-0ubuntu1"
-source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/ubuntu-wallpapers/${pkgver}-0ubuntu1/ubuntu-wallpapers_${pkgver}.orig.tar.gz")
+url="http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers"
+source=("${url}/ubuntu-wallpapers_${pkgver}.orig.tar.gz")
 sha256sums=('a66e322b5d081484cbade3e43103a1f05044dd418631dc68c33d81b6303a3990')
 
 package() {
