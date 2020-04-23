@@ -1,28 +1,29 @@
 # Maintainer: benwaffle <vala@iofel.me>
 # Maintainer: Prince781 <princetonferro@gmail.com>
 pkgname=vala-language-server
-pkgver=0.0.2
+_pkgver=0.48-alpha4
+pkgver=${_pkgver/-/+}
 pkgrel=1
 pkgdesc='Language Server for Vala'
 arch=('x86_64')
 url="https://github.com/benwaffle/vala-language-server"
 license=('LGPL-2.1')
 depends=('libgee' 'jsonrpc-glib' 'vala' 'meson')
-source=("https://github.com/benwaffle/vala-language-server/archive/$pkgver.tar.gz")
-sha256sums=('e0a867f3940eea326ea230ee2dd2d98bf5922a7d6310d0d134063db56513907e')
+source=("https://github.com/benwaffle/vala-language-server/archive/$_pkgver.tar.gz")
+sha256sums=('55ba150fa90b2508268466fc748205971e49aa55ea374455c54dfefd36d3ecae')
  
 #prepare() {
 #	cd "$pkgname"
 #}
  
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$_pkgver"
     arch-meson build
     ninja -C build
 }
  
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$_pkgver"
     DESTDIR="${pkgdir}" ninja -C build install
 }
 
