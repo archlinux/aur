@@ -3,16 +3,15 @@
 java_=8
 pkgname_=fastr
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=20.0.0
+pkgver=20.0.1
 pkgrel=1
 pkgdesc="GraalVM-based, high-performance implementation of the R language (Java ${java_} version)"
 arch=('x86_64')
 url='https://github.com/oracle/fastr'
 license=('GPL3')
-depends=("jdk${java_}-graalvm-bin"
-         'gcc-libs') # for libgomp.so.1 and others
+depends=("jdk${java_}-graalvm-bin")
 source=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver}/r-installable-java${java_}-linux-amd64-${pkgver}.jar")
-sha256sums=('0d9ed7891cfa23f4c4b4897b3a769dfe080a86d14ac9e7b8ce6fe28c2a298e21')
+sha256sums=('a7c97f520407f73939c4a81ffe0d510a24f54de7f8d1ad1bef9b3fe3f64b6918')
 
 package() {
     local file eq permissions mode name target
@@ -51,8 +50,6 @@ package() {
         mkdir -p -- "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$(dirname -- "$name")"
         ln -s -- "$target" "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$name"
     done < META-INF/symlinks
-
-    ln -s -- '/usr/lib/gcc/x86_64-pc-linux-gnu/6.5.0/libgfortran.so.3' "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/jre/languages/R/lib/libgfortran.so.3"
 
     install -DTm644 LICENSE_FASTR "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
