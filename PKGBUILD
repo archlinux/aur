@@ -4,7 +4,7 @@
 # Contributor: Bruno Pagani <archange at archlinux dot org>
 
 pkgname=mattermost
-pkgver=5.22.0
+pkgver=5.22.1
 pkgrel=1
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -28,8 +28,8 @@ source=("$pkgname-server-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname-se
         "$pkgname.service"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('122b8ef00cee86e2f5aabdafd3b68b72c67a6bb7f549b17e325650cbc18501b2'
-            '241789b0d037c5484f108b8bdcebac3ea77b4fdf79e1640350a12071f1aa44ab'
+sha256sums=('926cd8209b7602bc0e6099b8a4525549dee91c8520ff6fc0d40717d4d2918f31'
+            'df13f23bfa1af38076863ef6d84be92674f9ce3e11115bbac58f4e00b6a90ff6'
             '08685fa8aad0097cb97bba3484c0a0f8908a4e5123928351b7e7732aecc914f2'
             '522f44f3a68f73e43d854421f40e18055f3256453bc00a2162956902d1e577f8'
             'f7bd36f6d7874f1345d205c6dcb79af1804362fc977a658db88951a172d1dfa0'
