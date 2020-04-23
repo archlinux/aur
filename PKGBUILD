@@ -1,6 +1,6 @@
 # Maintainer: Damien GASPARINA <dgasparina at gmail dot com>
 pkgname=confluent-platform
-pkgver=5.4.1
+pkgver=5.5.0
 pkgrel=0
 pkgdesc='Confluent, founded by the creators of Apache Kafka, delivers a complete execution of Kafka for the Enterprise, to help you run your business in real time.'
 arch=('any')
@@ -41,12 +41,12 @@ backup=(etc/confluent-control-center/log4j.properties
         )
 install=install_confluent.sh
 
-source=(https://packages.confluent.io/archive/5.4/confluent-5.4.1-2.12.tar.gz
+source=(https://packages.confluent.io/archive/5.5/confluent-5.5.0-2.12.tar.gz
         systemd_sysusers.d_confluent.conf
         https://s3-us-west-2.amazonaws.com/confluent.cloud/confluent-cli/archives/latest/confluent_latest_linux_amd64.tar.gz
        )
 
-sha256sums=('3a0fb84e9b22f91eead27490840c2c21d79778ecf1c69ae9d8bbe44ee0f5e48b'
+sha256sums=('910da4e1dac50990e5570796406270b94bcdecc61ab8182a0060799f7513cc2d'
             '6f5dfdbaf6ef405117482413b376e55148f75423bc6b8681cd8f91cdb7d96a99'
             'SKIP')
 
