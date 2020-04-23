@@ -2,7 +2,7 @@
 _name=pptk
 pkgname=python-$_name-git
 pkgver=r49.697c09a
-pkgrel=4
+pkgrel=5
 pkgdesc="Python package for visualizing and processing 2-d/3-d point clouds"
 arch=('x86_64')
 url="https://github.com/heremaps/pptk.git"
@@ -39,6 +39,14 @@ prepare() {
 	sed -i 's,.*,,g' pptk/libs/CMakeLists.txt
 	sed -i 's,PythonLibs 2.7 REQUIRED,PythonLibs 3.5 REQUIRED,' CMakeLists.txt
 	sed -i 's,../libs/qt_plugins,/usr/lib/qt/plugins,' pptk/viewer/qt.conf
+
+    # Patch broken usage of internal pip components
+    sed -i -e 's,from pip._internal.*,from pip._internal.pep425tags import get_supported,' \
+           -e 's,wheel.pep425tags.*,get_supported()[0],g' \
+           -e 's,wheel_tags\[0\],wheel_tags._interpreter,g' \
+           -e 's,wheel_tags\[2\],wheel_tags._platform,g' \
+           setup.py
+
 	cmake . \
 		-DEigen_INCLUDE_DIR:FILEPATH="/usr/include/eigen3" \
 		-DNumpy_INCLUDE_DIR="$(python -c 'import numpy; print("%s/numpy" % numpy.get_include())')" \
