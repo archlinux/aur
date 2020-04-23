@@ -1,6 +1,6 @@
 pkgbase = casile-git
 	pkgdesc = Caleb’s SILE publishing toolkit
-	pkgver = 0.1.0.r74.g4907e35
+	pkgver = 0.2.0.r0.gba31e7d
 	pkgrel = 1
 	url = https://github.com/sile-typesetter/casile
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = casile-git
 	depends = python-ruamel-yaml
 	depends = python-usfm2osis-cw-git
 	depends = rsync
-	depends = sile
+	depends = sile-git
 	depends = sqlite
 	depends = tex-gyre-fonts
 	depends = texlive-core

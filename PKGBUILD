@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.1.0.r74.g4907e35
+pkgver=0.2.0.r0.gba31e7d
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=('any')
@@ -41,7 +41,7 @@ depends=('bc'
          'python-ruamel-yaml'
          'python-usfm2osis-cw-git'
          'rsync'
-         'sile'
+         'sile-git'
          'sqlite'
          'tex-gyre-fonts'
          'texlive-core'
@@ -58,7 +58,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --abbrev=7 --tags |
+    git describe --long --abbrev=7 --tags --match="v*" |
         sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -67,5 +67,5 @@ package () {
     install -dm755 "$pkgdir/usr/share"
     cp -a ./ "$pkgdir/usr/share/${pkgname%-git}"
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md CHANGELOG.md
 }
