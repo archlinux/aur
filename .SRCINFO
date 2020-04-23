@@ -6,6 +6,8 @@ pkgbase = qrcp-bin
 	arch = x86_64
 	license = MIT
 	provides = qrcp
+	conflicts = qrcp-git
+	conflicts = qr-filetransfer-git
 	source_x86_64 = https://github.com/claudiodangelis/qrcp/releases/download/0.4.1/qrcp
 	sha256sums_x86_64 = a113aa0bfd54ce2605826be1fb1381ec1079a17796a5fd75f6ea54e78b69ef78
 
