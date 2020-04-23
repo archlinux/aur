@@ -7,7 +7,6 @@ pkgbase = cameracontrol-bin
 	license = FPC modified LGPL Version 2
 	depends = qt5pas
 	depends = lsof
-	depends = v4l2-ctl
 	optdepends = qt5gtk2
 	optdepends = qt5ct
 	optdepends = qt5-styleplugins
