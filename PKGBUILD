@@ -2,28 +2,18 @@
 _projectname='ppxfind'
 pkgname="ocaml-$_projectname"
 pkgver='1.4'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Tool combining ocamlfind and ppx'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/diml/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.02.3' 'ocaml-findlib' 'ocaml-migrate-parsetree')
-makedepends=('dune' 'ocaml-findlib')
+makedepends=('dune>=2.0.0' 'ocaml-findlib')
 options=('!strip')
-source=(
-	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz"
-	'dune-version.diff'
-)
-sha256sums=('49e2f5cb7fb31e8fc2d482097d1bc96c8915ab50ea37133366da03a9a5ca3604'
-            '5c589918a6f98fbb962590276629e4639037c02aaabdb10f5ec18b40ee2767c2')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('49e2f5cb7fb31e8fc2d482097d1bc96c8915ab50ea37133366da03a9a5ca3604')
 
 _sourcedirectory="$_projectname-$pkgver"
-
-prepare() {
-	cd "$srcdir/$_sourcedirectory/"
-	# Needed until Arch upgrades to dune>=2.0.0
-	patch --forward -p1 < '../dune-version.diff'
-}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
