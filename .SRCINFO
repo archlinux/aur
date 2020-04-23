@@ -1,0 +1,12 @@
+pkgbase = ubuntu-backgrounds-xenial
+	pkgdesc = The backgrounds included in Ubuntu 16.04 xenial
+	pkgver = 16.04.1
+	pkgrel = 1
+	url = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers
+	arch = any
+	license = Commons Attribution-ShareAlike 3.0 Unported
+	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_16.04.1.orig.tar.gz
+	sha256sums = a8223eeb95f851bed5b51b40469179c54fb3c468ed5ab48079bb25172c72c423
+
+pkgname = ubuntu-backgrounds-xenial
+
