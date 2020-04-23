@@ -1,0 +1,13 @@
+pkgbase = grapes
+	pkgdesc = Easy way to distribute commands over SSH
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/yaronsumel/grapes
+	arch = x86_64
+	license = MIT
+	makedepends = go-pie
+	source = https://github.com/yaronsumel/grapes/archive/v0.3.1.tar.gz
+	sha256sums = 856e1c801df46a78bc089a089192aacce4cc8755dd83bcb95da896bdc205ac74
+
+pkgname = grapes
+
