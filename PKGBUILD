@@ -6,15 +6,16 @@
 
 pkgname=marktext
 pkgver=0.16.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability'
 arch=('x86_64')
 url='https://marktext.app'
 license=('MIT')
 depends=('electron'
          'libxkbfile'
-         'libsecret')
-makedepends=('nodejs'
+         'libsecret'
+         'ripgrep')
+makedepends=('nodejs-lts-erbium'
              'node-gyp'
              'yarn')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/marktext/marktext/archive/v${pkgver}.tar.gz"
@@ -24,12 +25,14 @@ sha256sums=('a00aa0caf26ab6e24e6cd5fef2a2a03e2ef46d0bf185c6971d9f00207223633e'
 
 prepare() {
     cd "$pkgname-$pkgver"
-    yarn --cache-folder "$srcdir" install --frozen-lockfile --ignore-scripts
+    mkdir -p "$srcdir/node_modules"
+    yarn --cache-folder "$srcdir/node_modules" install --frozen-lockfile --ignore-scripts
 }
 
 build() {
     cd "$pkgname-$pkgver"
-    yarn --cache-folder "$srcdir" run build:bin
+    yarn --cache-folder "$srcdir/node_modules" run rebuild
+    yarn --cache-folder "$srcdir/node_modules" run build:bin
 }
 
 package() {
@@ -37,11 +40,14 @@ package() {
     install -Dm755 "../$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 -t "$pkgdir/usr/lib/$pkgname/resources/" build/linux-unpacked/resources/app.asar
     cp -a build/linux-unpacked/resources/{app.asar.unpacked,hunspell_dictionaries} "$pkgdir/usr/lib/$pkgname/resources/"
+    local _rg_path='usr/lib/marktext/resources/app.asar.unpacked/node_modules/vscode-ripgrep/bin/'
+    mkdir -p $_rg_path
+    ln -sf /usr/bin/rg "$pkgdir/$_rg_path/rg"
     install -Dm755 -t "${pkgdir}/usr/share/applications/" resources/linux/marktext.desktop
     install -Dm755 -t "${pkgdir}/usr/share/metainfo/" resources/linux/marktext.appdata.xml
     install -Dm644 resources/icons/icon.png "${pkgdir}/usr/share/pixmaps/marktext.png"
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md CONTRIBUTING.md
     cp -a docs "$pkgdir/usr/share/doc/$pkgname/"
     pushd "resources/icons"
     find -name maktext.png -exec install -Dm644 {} "$pkgdir/usr/share/icons/hicolor/{}" \;
