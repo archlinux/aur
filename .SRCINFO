@@ -1,6 +1,6 @@
 pkgbase = soup-launcher-v2-git
 	pkgdesc = Soup Launcher is a custom Minecraft launcher specifically designed for Modded Minecraft. Another attempt at making a Minecraft Launcher.
-	pkgver = 0.1.14
+	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://github.com/SSouper/SoupLauncherV2
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = soup-launcher-v2-git
 	makedepends = npm
 	makedepends = git
 	makedepends = unzip
+	depends = libxss
 	source = soup-launcher-v2-git::git+https://github.com/SSouper/SoupLauncherV2.git
 	md5sums = SKIP
 
