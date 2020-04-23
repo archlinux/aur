@@ -1,7 +1,7 @@
 pkgbase = pacleaner
 	pkgdesc = Script to clean up pacman cache in a more flexible way than pacman -Sc[c].
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lesebas/pacleaner
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pacleaner
 	depends = python
 	depends = python-hurry-filesize
 	source = https://github.com/lesebas/pacleaner/archive/0.2.1.tar.gz
-	md5sums = 28c284fb5dac45699cbb75e735bf6040
+	md5sums = a0a0de30dd000edda9b2c47a94b63e58
 
 pkgname = pacleaner
 
