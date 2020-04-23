@@ -7,7 +7,7 @@ pkgdesc="A dedicated spooler for Snort's unified2 binary output format."
 arch=('i686' 'x86_64')
 url="http://www.github.com/firnsy/barnyard2"
 license=('GPL')
-depends=('libpcap' 'mariadb-libs')
+depends=('libpcap' 'mariadb-libs' 'postgresql-libs')
 provides=('barnyard2')
 conflicts=('barnyard2-git')
 backup=('etc/barnyard2/barnyard2.conf')
@@ -41,7 +41,7 @@ prepare() {
 build() {
     cd "$pkgname-2-$pkgver"
     ./autogen.sh
-    ./configure --prefix=/usr --sysconfdir=/etc/barnyard2 --with-mysql --disable-static
+    ./configure --prefix=/usr --sysconfdir=/etc/barnyard2 --with-mysql --with-postgresql --disable-static
     make
 }
 
