@@ -1,7 +1,7 @@
 # Maintainer: somini <dev@somini.xyz>
 pkgbase=inpulse-to-talk
 pkgname=inpulse-to-talk
-pkgver=v1.0
+pkgver=v1.1
 pkgrel=2
 pkgdesc="Push-to-Talk with libinput + Pulseaudio"
 url="https://gitlab.com/somini/inpulse-to-talk"
@@ -14,7 +14,7 @@ arch=('any')
 source=(
     "$pkgname-$pkgver.tar.gz::https://gitlab.com/somini/inpulse-to-talk/-/archive/$pkgver/inpulse-to-talk-$pkgver.tar.gz"
     )
-sha256sums=('80f7585843400d2b0c5e81a35d3afb2c0a160e780db440e33fa446cec0f3f1bb')
+sha256sums=('34de9359f100b665a588b6889a6f6fbd377386f3a34b2703a0ec0870419c9bb0')
 
 package() {
     cd "${srcdir}/$pkgname-$pkgver"
