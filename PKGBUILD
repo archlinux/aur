@@ -3,7 +3,7 @@
 pkgbase=python-undertime
 pkgname=python-undertime
 _module='undertime'
-pkgver='2.0.0'
+pkgver='2.1.0'
 pkgrel=1
 pkgdesc="pick a meeting time"
 url="https://gitlab.com/anarcat/undertime"
@@ -11,8 +11,8 @@ depends=('python-dateparser' 'python-pytz' 'python-pyaml' 'python-termcolor' 'py
 makedepends=('python-pip')
 license=('AGPL3')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/28/22/83d26e460fc550764e8096d324a299eb9379da10b6e351292890c7aa92f2/undertime-${pkgver}-py3-none-any.whl")
-md5sums=('4ac09dd829169d427b004507b0a38fd6')
+source=("https://files.pythonhosted.org/packages/71/0e/6a3329ce186428088aa29e7a38a4329872917b728a196e51219205d3e107/undertime-${pkgver}-py3-none-any.whl")
+md5sums=('4d377bcbd78ca036234d5221d15624a5')
 
 package() {
     cd "${srcdir}/"
