@@ -1,6 +1,6 @@
 pkgbase = mailpile-git
 	pkgdesc = A free & open modern, fast email client with user-friendly encryption and privacy features - git version
-	pkgver = 1.0.0rc1.r710.gaafe85bc
+	pkgver = 1.0.0rc1.r719.g1fd5272f
 	pkgrel = 1
 	url = http://www.mailpile.is
 	install = mailpile.install

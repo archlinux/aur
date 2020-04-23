@@ -4,7 +4,7 @@
 # Contributor: cornholio <vigo.the.unholy.carpathian@gmail.com>
 _pkgname='mailpile'
 pkgname="$_pkgname-git"
-pkgver='1.0.0rc1.r710.gaafe85bc'
+pkgver='1.0.0rc1.r719.g1fd5272f'
 pkgrel='1'
 pkgdesc='A free & open modern, fast email client with user-friendly encryption and privacy features - git version'
 arch=('any')
@@ -40,7 +40,7 @@ prepare() {
 
 pkgver() {
 	cd "$srcdir/$_sourcedirectory/"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
 }
 
 package() {
