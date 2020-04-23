@@ -1,15 +1,15 @@
 pkgbase = python-janus
 	pkgdesc = Thread-safe asyncio-aware queue for Python
-	pkgver = 0.4.0
-	pkgrel = 5
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/aio-libs/janus
 	arch = any
 	license = Apache
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/j/janus/janus-0.4.0.tar.gz
-	sha256sums = cfc221683160b91b35bae1917e2957b78dad10a2e634f4f8ed119ed72e2a88ef
+	source = https://files.pythonhosted.org/packages/source/j/janus/janus-0.5.0.tar.gz
+	sha256sums = 0700f5537d076521851d19b7625545c5e76f6d5792ab17984f28230adcc3b34c
 
 pkgname = python-janus
 
