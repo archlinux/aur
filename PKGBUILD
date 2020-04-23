@@ -18,6 +18,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
   cd "${srcdir}/ParaView-v${pkgver}"
   curl -L https://gitlab.kitware.com/paraview/paraview/-/commit/3d48a287141eb911b4888440e09c262743b4db3c.patch | patch -p1
+  sed -i "s|VTK::IOH5part||g" CMake/ParaViewOptions.cmake
   cd VTK
   curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/6296.patch | patch -p1
   curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/6406.patch | patch -p1
@@ -36,7 +37,6 @@ build() {
       -DPARAVIEW_USE_VTKM=OFF \
       -DPARAVIEW_BUILD_WITH_EXTERNAL=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
-      -DVTK_MODULE_ENABLE_VTK_h5part=OFF \
       -Dqt_xmlpatterns_executable=/usr/bin/${_arch}-xmlpatterns \
       ..
     WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
