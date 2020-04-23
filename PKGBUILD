@@ -48,7 +48,6 @@ build() {
       -DPARAVIEW_USE_VTKM=OFF \
       -DPARAVIEW_BUILD_WITH_EXTERNAL=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
-      -DVTK_MODULE_ENABLE_VTK_h5part=NO -DVTK_MODULE_ENABLE_VTK_IOH5part=NO \
       -Dqt_xmlpatterns_executable=/usr/bin/${_arch}-xmlpatterns \
       ..
     WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
