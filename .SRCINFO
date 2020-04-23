@@ -1,7 +1,7 @@
 pkgbase = taps
 	pkgdesc = True Arch package security - audit your system and query packages
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/Vimru/taps
 	arch = any
 	license = GPL3
@@ -9,8 +9,9 @@ pkgbase = taps
 	depends = python-colorful
 	depends = python-requests
 	depends = python-setuptools
-	source = taps-1.0.1.tar.gz::https://github.com/Vimru/taps/archive/v1.0.1.tar.gz
-	sha256sums = ab7adbfbc44fbc00d060e476b1421f9db7a6ee7be6cd1e1df94dd59527c43c1d
+	depends = pyalpm
+	source = taps-1.1.0.tar.gz::https://github.com/Vimru/taps/archive/v1.1.0.tar.gz
+	sha256sums = 46b519c3992df2007fb4b2cc606b1301141124090f3f273f55752a89070a20cb
 
 pkgname = taps
 
