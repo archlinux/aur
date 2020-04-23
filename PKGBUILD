@@ -3,22 +3,23 @@
 # Contributor: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
 
 pkgname=kdeconnect
-pkgver=1.4
-pkgrel=2
+pkgver=20.04.0
+pkgrel=1
 pkgdesc='Adds communication between KDE and your smartphone'
 url='https://community.kde.org/KDEConnect'
-license=(GPL)
 arch=(x86_64)
+license=(GPL)
+groups=(kde-applications kdenetwork)
 depends=(hicolor-icon-theme kcmutils kwayland libfakekey qca kpeoplevcard pulseaudio-qt kirigami2)
 makedepends=(extra-cmake-modules kdoctools)
 optdepends=('sshfs: remote filesystem browser' 'python-nautilus: Nautilus integration')
-source=("https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-kde-$pkgver.tar.xz"{,.sig}
+source=("https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-kde-$pkgver.tar.xz"{,.sig}
          kdeconnect-openssh-8.2.patch)
-sha256sums=('caee7945a9d9bb881a943dc8d2fd0d702c04da5bdb2df14d4f875e7cf5d5261a'
+sha256sums=('6ca93ee5e6bbc93b04e58a4327a5c7d434f112fd5fc8c47624e4974ffa09501f'
             'SKIP'
             '8bcf0d39dfe059af866f48719562dfe7db7fcb0f20ee75d7adda9784fca0ba64')
-validpgpkeys=(B3487CA0FF36258E2A2F338BD33E721DF877EFE8  # Albert Vaca Cintora <albertvaka@gmail.com>
-              F53223F3337665C2CCEA122E873AC3459BBCF5C0) # Nicolas Fella <nicolas.fella@kdab.com>
+validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
 
 prepare() {
   mkdir -p build
