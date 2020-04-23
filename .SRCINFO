@@ -1,7 +1,7 @@
 pkgbase = qucs
 	pkgdesc = An integrated circuit simulator with a graphical user interface
 	pkgver = 0.0.20_rc2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qucs.sourceforge.net
 	arch = x86_64
 	license = GPL

@@ -3,7 +3,8 @@
 
 pkgname=qucs
 pkgver=0.0.20_rc2
-pkgrel=1
+_pkgver=0.0.20
+pkgrel=2
 pkgdesc="An integrated circuit simulator with a graphical user interface"
 arch=('x86_64')
 url="http://qucs.sourceforge.net"
@@ -17,12 +18,12 @@ source=("http://downloads.sourceforge.net/project/qucs/qucs/${pkgver%_*}/qucs-${
 sha256sums=('66cfa0b9f8baa8468feb81b3a15f165e1946511893fa9cfee7009167daa04d19')
 
 build() {
-  cd "$srcdir"/$pkgname-${pkgver/s/.}
+  cd "$srcdir"/$pkgname-${_pkgver}
   ./configure --prefix=/usr --disable-doc
   make RCC=/usr/bin/rcc-qt4
 }
 
 package() {
-  cd "$srcdir"/$pkgname-${pkgver/s/.}
+  cd "$srcdir"/$pkgname-${_pkgver}
   make DESTDIR="$pkgdir" install
 }
