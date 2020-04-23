@@ -1,0 +1,16 @@
+pkgbase = copy-pasta-git
+	pkgdesc = Universal copy paste service, works across different machines
+	pkgver = 0.0.1.r28.g954489a
+	pkgrel = 1
+	url = https://github.com/jutkko/copy-pasta
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = dep
+	makedepends = go-pie
+	provides = copy-pasta
+	source = git+https://github.com/jutkko/copy-pasta
+	md5sums = SKIP
+
+pkgname = copy-pasta-git
+
