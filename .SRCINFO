@@ -1,7 +1,7 @@
 pkgbase = ubuntu-backgrounds-trusty
 	pkgdesc = The backgrounds included in Ubuntu 14.04 trusty
 	pkgver = 14.04.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/ubuntu/+source/ubuntu-wallpapers/14.04.0.1-0ubuntu1
 	arch = any
 	license = Commons Attribution-ShareAlike 3.0 Unported

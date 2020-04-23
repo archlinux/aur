@@ -2,7 +2,7 @@
 
 pkgname=ubuntu-backgrounds-trusty
 pkgver=14.04.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The backgrounds included in Ubuntu 14.04 trusty"
 license=('Commons Attribution-ShareAlike 3.0 Unported')
 arch=('any')
@@ -28,9 +28,8 @@ package() {
     "Water_web_by_Tom_Kijas.jpg"
   )
 
-  mkdir --parents ${pkgdir}/usr/share/backgrounds/${pkgname}
   for wallaper in ${wallpapers[@]}; do
-    cp --archive ${srcdir}/ubuntu-wallpapers-${pkgver}/${wallaper} ${pkgdir}/usr/share/backgrounds/${pkgname}/${wallaper}
+    install -D --mode 644 ${srcdir}/ubuntu-wallpapers-${pkgver}/${wallaper} ${pkgdir}/usr/share/backgrounds/${pkgname}/${wallaper}
   done
 
   # edit xml
@@ -51,10 +50,9 @@ package() {
   )
 
   for property_dir in ${property_dirs[@]}; do
-    mkdir --parents ${pkgdir}/usr/share/${property_dir}
-    cp --archive ${srcdir}/ubuntu-wallpapers-${pkgver}/trusty-wallpapers.xml.in ${pkgdir}/usr/share/${property_dir}/trusty-wallpapers.xml
+    install -D --mode 644 ${srcdir}/ubuntu-wallpapers-${pkgver}/trusty-wallpapers.xml.in ${pkgdir}/usr/share/${property_dir}/trusty-wallpapers.xml
   done
 
   # license
-  install -D --mode 644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -D --mode 644 ${srcdir}/ubuntu-wallpapers-${pkgver}/COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
