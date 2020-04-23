@@ -1,0 +1,22 @@
+pkgbase = isabelle-tum
+	pkgdesc = A generic proof assistant. It allows mathematical formulas to be expressed in a formal language and provides tools for proving those formulas in a logical calculus. Release mirror: TUM.
+	pkgver = 2020
+	pkgrel = 1
+	url = https://isabelle.in.tum.de/
+	arch = i686
+	arch = x86_64
+	groups = science
+	license = custom:BSD
+	depends = perl
+	depends = perl-libwww
+	optdepends = texlive-core: document preparation
+	conflicts = isabelle
+	source = https://isabelle.in.tum.de/dist/Isabelle2020_linux.tar.gz
+	source = isabelle.desktop
+	md5sums = 7c69d3aa39116cd4a91ad1592a0431e1
+	md5sums = 63add57fc05e5334ad1582d07a0c7146
+	sha256sums = 633aff864d6647bd175cf831e7513e3fd0cd06beacbf29a5c6c66d4de1522bae
+	sha256sums = a619c0c48805f80862c4bb8f2448ce8f3d0bef7cebda7ef98a21bdd40a5652da
+
+pkgname = isabelle-tum
+
