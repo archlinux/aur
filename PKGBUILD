@@ -1,6 +1,6 @@
 # Maintainer: Leon Kowarschick <lkowarschick at gmail dot com>
 pkgname=pipr-git
-pkgver=r66.2ca7327
+pkgver=r75.23fe693
 pkgrel=1
 makedepends=('rust' 'cargo' 'git')
 depends=('gcc-libs')
