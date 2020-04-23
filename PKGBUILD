@@ -3,7 +3,7 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.4.r4.ga25cf5c
+pkgver=0.10.4.r7.g5ceee91
 pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
@@ -37,7 +37,7 @@ makedepends=('git'
              'ttf-gentium-basic'
              'ttf-sil-scheherazade')
 checkdepends=('lua-busted')
-provides=('libtexpdf.so' "${pkgname%-git}")
+provides=('libtexpdf.so' "${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 source=("git://github.com/sile-typesetter/${pkgname%-git}.git"
         "git://github.com/sile-typesetter/libtexpdf.git")
