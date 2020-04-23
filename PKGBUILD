@@ -20,4 +20,5 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm755 bin/okteto "$pkgdir"/usr/bin/okteto
   install -Dm644 README.md -t "$pkgdir"/usr/share/doc/"$pkgname"
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgnam"/LICENSE
 }
