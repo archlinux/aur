@@ -1,6 +1,6 @@
 pkgbase = flipper-bin
 	pkgdesc = A desktop debugging platform for mobile developers
-	pkgver = 0.38.0
+	pkgver = 0.37.0
 	pkgrel = 1
 	url = https://fbflipper.com/
 	arch = any
@@ -15,9 +15,8 @@ pkgbase = flipper-bin
 	optdepends = android-sdk: Android debugging support
 	provides = flipper
 	noextract = Flipper-linux.zip
-	source = https://github.com/facebook/flipper/releases/download/v0.38.0/Flipper-linux.zip
-	source = icon.png
-	sha512sums = 02719aca28fc6603fc16e7b0f2dbda682e1f73ff0ffbb4689cb5672f4911a6c4200ec98f577da6214799cf940bff078c2c833c052468675dfab1a9f1ecf817a6
+	source = https://github.com/facebook/flipper/releases/download/v0.37.0/Flipper-linux.zip
+	sha512sums = bb77a044cd4a3ea49e49c0e8f67b3aec6ae5edd7bdf5566463326609e5fb69131bc0cd3a2adfd6f83e299a25c02dc8869e48a61c37773571936f3b7094cb6cd2
 
 pkgname = flipper-bin
 
