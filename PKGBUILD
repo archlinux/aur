@@ -1,6 +1,6 @@
 # Maintainer: Luclu7 <me at luclu7 dot fr>
 pkgname=akmey-bin
-pkgver=0.1.8
+pkgver=0.5
 pkgrel=1
 pkgdesc="Akmey client"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('custom: Unlicense')
 conflicts=('akmey')
 source=("https://github.com/akmey/akmey-client/releases/download/v$pkgver-alpha/akmey-client-linux-amd64")
 noextract=('akmey-client-linux-amd64')
-sha512sums=('9354870bfe9b5d837a955b7fdd50f9f1fd1e380f2176b163a87393e58ef765beef4a088960cab493bb3f909678be98b78171d676fc553f8ebbcf62a2d1708c0d')
+sha512sums=('d28c8f3adf5c00702607d5a00b28fa0cb0cdaffa761a63227139a693b991d6863d4c2a1683bc903693e41787f99dbe1bed9f676ca7e5effafa94dc44223e530f')
 
 warn_build_references() {
     : # I like __FILE__ and don't consider build references to be a problem
