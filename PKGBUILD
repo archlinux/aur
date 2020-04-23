@@ -58,13 +58,13 @@ _localmodcfg=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.6
-_minor=6
-_rc=
-_srcname=linux-${_major}
-_clr=${_major}.5-23
+_major=5.7
+_minor=0
+_rc=2
+_srcname=linux-${_major}-rc${_rc}
+_clr=${_major}.0.rc${_rc}-25
 pkgbase=linux-clear-current
-pkgver=${_major}.${_minor}
+pkgver=${_major}.${_minor}.rc${_rc}
 pkgrel=1
 pkgdesc='Clear Linux current'
 arch=('x86_64')
@@ -74,9 +74,7 @@ makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
 _gcc_more_v='20191217'
 source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+  "https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
   "clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=${_clr}"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
 )
@@ -88,10 +86,6 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
     cd ${_srcname}
 
-    ### Add upstream patches
-        echo "Add upstream patches"
-        patch -Np1 -i ../patch-${pkgver}
-
     ### Setting version
         echo "Setting version..."
         scripts/setlocalversion --save-scmversion
@@ -99,7 +93,7 @@ prepare() {
         echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        for i in $(grep '^Patch' ${srcdir}/clearlinux-current/linux-current.spec | grep -Ev '^Patch0123' | sed -n 's/.*: //p'); do
+        for i in $(grep '^Patch' ${srcdir}/clearlinux-current/linux-current.spec | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux-current/${i}"
         done
@@ -314,9 +308,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622'
-            'SKIP'
-            '669e3bebb988e7f1124e6687e384304ed70139ea4a869bd4159c3df27c3d9082'
+sha256sums=('7a5369e141ec8d6c139a9357bf9a4e668bac7364e4bd96e9fafe11e462a6071a'
             'SKIP'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5')
 
