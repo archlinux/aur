@@ -31,6 +31,7 @@ pkgbase = fedora-firefox-wayland-bin
 	provides = libffi=3.1
 	conflicts = firefox
 	conflicts = libffi=3.1
+	conflicts = libffi=3.2
 	options = !emptydirs
 	options = !strip
 	source = https://kojipkgs.fedoraproject.org/packages/firefox/75.0/1.fc32/x86_64/firefox-75.0-1.fc32.x86_64.rpm

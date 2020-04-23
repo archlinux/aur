@@ -11,7 +11,7 @@ arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
 provides=('firefox' 'libffi=3.1')
-conflicts=('firefox' 'libffi=3.1')
+conflicts=('firefox' 'libffi=3.1' 'libffi=3.2')
 options=(!emptydirs !strip)
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg nss hunspell-en_US sqlite ttf-font libpulse libvpx icu libjpeg6-turbo pipewire)
