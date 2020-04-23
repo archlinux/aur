@@ -43,4 +43,6 @@ package() {
   install -p "$srcdir/${_realname}/EortologioQt5.1.0.png" "$pkgdir/usr/share/pixmaps/EortologioQt5.1.0.png"
   install -D "$srcdir/${_realname}/EortologioQt5.png" "$pkgdir/usr/share/pixmaps/EortologioQt5.png"
   install -p "$srcdir/${_realname}/EortologioQt5.1.0.svg" "$pkgdir/usr/share/icons/gnome/scalable/apps/EortologioQt5.1.0.svg"
+  install -p "$srcdir/${_realname}/EortologioQt5.1.0.png" "$pkgdir/usr/share/icons/EortologioQt5.1.0.png"
+  install -p "$srcdir/${_realname}/EortologioQt5.1.0.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/EortologioQt5.1.0.svg"
 }
