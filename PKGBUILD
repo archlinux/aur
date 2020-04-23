@@ -12,37 +12,35 @@
 _fn_foobar() {
 local _foobar="
 #requirements-docs.txt
+docutils>=0.10,<0.16
 Sphinx>=1.1.3,<1.3
 guzzle_sphinx_theme>=0.7.10,<0.8
 
 #requirements.txt
 tox>=2.5.0,<3.0.0
-python-dateutil>=2.1,<2.7.0; python_version=="2.6"
-python-dateutil>=2.1,<3.0.0; python_version>="2.7"
 nose==1.3.7
 mock==1.3.0
 wheel==0.24.0
-docutils>=0.10
+docutils>=0.10,<0.16
 behave==1.2.5
--e git://github.com/boto/jmespath.git@develop#egg=jmespath
 jsonschema==2.5.1
-urllib3>=1.20,<1.23; python_version=="3.3"
-urllib3>=1.20,<1.24; python_version=="2.6"
-urllib3>=1.20,<1.25; python_version=="2.7"
-urllib3>=1.20,<1.25; python_version>="3.4"
 
 #setup.py
 from setuptools import setup, find_packages
 
 
-requires = ['jmespath>=0.7.1,<1.0.0',
-            'docutils>=0.10']
+requires = [
+    'jmespath>=0.7.1,<1.0.0',
+    'docutils>=0.10,<0.16',
+    'python-dateutil>=2.1,<3.0.0',
+]
 
 
-if sys.version_info[:2] == (2, 6):
-    requires.append('python-dateutil>=2.1,<3.0.0')
-
-    requires.append('urllib3>=1.20,<1.25')
+if sys.version_info[:2] == (3, 4):
+    # urllib3 dropped support for python 3.4 in point release 1.25.8
+    requires.append('urllib3>=1.20,<1.25.8')
+else:
+    requires.append('urllib3>=1.20,<1.26')
 "
 }
 unset -f _fn_foobar
@@ -51,14 +49,14 @@ set -u
 _pyver="python"
 _pybase='botocore'
 pkgname="${_pyver}-${_pybase}-git"
-pkgver=1.12.238.r6138.g18e891578
+pkgver=1.15.44
 pkgrel=1
 pkgdesc='A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3'
 arch=('any')
 url="https://github.com/boto/${_pybase}"
 license=('Apache') # Apache License 2.0
 _pydepends=( # See setup.py, README.rst, and requirements.txt for version dependencies
-  "${_pyver}-bcdoc<0.15.0"    # AUR
+  #"${_pyver}-bcdoc<0.15.0"    # AUR
   "${_pyver}-wheel>=0.24.0"   # AUR ==
   "${_pyver}-jmespath"{'>=0.7.1','<1.0.0'} # AUR == is possible for repositories. Makes upgrades impossible in AUR.
   "${_pyver}-jsonschema>=2.5.1"            # COM
@@ -69,16 +67,17 @@ _pydepends=( # See setup.py, README.rst, and requirements.txt for version depend
   "${_pyver}-docutils>=0.10"  # COM
   "${_pyver}-six>=1.1.0"      # COM This is in the sources but I'm not sure where the version comes from.
   # requirements-docs.txt
+  "${_pyver}-docutils"{'>=0.10','<0.16'}
   "${_pyver}-sphinx>=1.1.3" #"${_pyver}-sphinx"{>=1.1.3,<1.3}     # COM Arch is already newer. Documentation might not work.
   "${_pyver}-guzzle-sphinx-theme"{'>=0.7.10','<0.8'}
   "${_pyver}-behave>=1.2.5"
-  "${_pyver}-urllib3"{'>=1.20','<1.25'}
+  "${_pyver}-urllib3"{'>=1.20','<1.26'}
 )
 depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('027126e116a3741a1c223228bf5ceaa818081153fb4b5904f7c32736e55bcf61')
+sha256sums=('9ea9a2c975b6e9641c94adc5d550c330d3ad3cdc164772e015d26f51fd639409')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
