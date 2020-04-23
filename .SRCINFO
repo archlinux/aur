@@ -1,0 +1,15 @@
+pkgbase = python-javascripthon
+	pkgdesc = A Python 3 to ES6 Javascript translator
+	pkgver = 0.11
+	pkgrel = 1
+	url = https://github.com/metapensiero/metapensiero.pj
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-macropy
+	depends = python-dukpy
+	source = https://github.com/metapensiero/metapensiero.pj/archive/v0.11.tar.gz
+	sha512sums = 41f7f18ca5fbb8326e0bc9e74ccbbdd769b8eb8fcda1a4ea33898d816f4146e7102a59595acb5a78b6e4956b46bffbd7b396e21dee926d3f4725275d8b0ec0ea
+
+pkgname = python-javascripthon
+
