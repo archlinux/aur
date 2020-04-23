@@ -3,7 +3,7 @@
 
 pkgname=kannel
 pkgver=1.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Kannel is a compact and very powerful open source WAP and SMS gateway, it comes with extras!"
 arch=('any')
 license=('custom')
@@ -43,7 +43,7 @@ prepare()
 
 build() {
   cd ${srcdir}/gateway-${pkgver}
-  ./configure --prefix=/usr --mandir=/usr/share/man --enable-start-stop-daemon --with-mysql --with-sqlite3 --with-pgsql --with-redis
+  ./configure --prefix=/usr/local --mandir=/usr/share/man --enable-start-stop-daemon --with-mysql --with-sqlite3 --with-pgsql --with-redis
   make libgw.a
   make libgwlib.a
   make

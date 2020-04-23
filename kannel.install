@@ -3,10 +3,10 @@ post_install() {
 	getent group kannel >/dev/null 2>&1 || groupadd -r kannel
 	if getent passwd kannel >/dev/null 2>&1; then
 		usermod -d /run/kannel -c 'Kannel Daemon' \
-			-s /sbin/nologin kannel >/dev/null 2>&1
+			-s /usr/bin/nologin kannel >/dev/null 2>&1
 	else
 		useradd -r -c 'Kannel Daemon' -g kannel \
-			-d /run/kannel -s /sbin/nologin kannel >/dev/null 2>&1
+			-d /run/kannel -s /usr/bin/nologin kannel >/dev/null 2>&1
 	fi
 	groupmems -g uucp -a kannel >/dev/null 2>&1
 	passwd -l kannel >/dev/null 2>&1

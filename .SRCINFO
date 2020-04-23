@@ -1,7 +1,7 @@
 pkgbase = kannel
 	pkgdesc = Kannel is a compact and very powerful open source WAP and SMS gateway, it comes with extras!
 	pkgver = 1.4.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kannel.org/
 	install = kannel.install
 	arch = any
