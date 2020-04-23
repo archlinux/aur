@@ -1,7 +1,7 @@
 pkgbase = jetbrains-toolbox
 	pkgdesc = Manage all your JetBrains Projects and Tools
 	pkgver = 1.17.6802
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jetbrains.com/toolbox/
 	arch = x86_64
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = jetbrains-toolbox
 	depends = glib2
 	depends = libxslt
 	depends = libxss
+	depends = xcb-util-keysyms
 	options = !strip
 	source = https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.17.6802.tar.gz
 	source = jetbrains-toolbox.desktop

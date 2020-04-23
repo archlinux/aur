@@ -2,12 +2,12 @@
 
 pkgname=jetbrains-toolbox
 pkgver=1.17.6802
-pkgrel=1
+pkgrel=2
 pkgdesc='Manage all your JetBrains Projects and Tools'
 arch=('x86_64' 'i686')
 url='http://www.jetbrains.com/toolbox/'
 license=('commercial')
-depends=('java-runtime>=8' 'fuse' 'glib2' 'libxslt' 'libxss')
+depends=('java-runtime>=8' 'fuse' 'glib2' 'libxslt' 'libxss' 'xcb-util-keysyms')
 options=('!strip')
 source=("https://download.jetbrains.com/toolbox/${pkgname}-${pkgver}.tar.gz"
         jetbrains-toolbox.desktop
