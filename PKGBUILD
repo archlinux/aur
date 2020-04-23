@@ -2,11 +2,12 @@
 
 pkgname=vim-gdscript-git
 gitname=vim-gdscript3
-pkgver=r70.e9e0cce
+pkgver=r151.ebfa25f
 pkgrel=1
 pkgdesc="Vim syntax highliting for the Godot Game Engine scripting language GDScript"
 arch=('any')
-url="https://github.com/calviken/$gitname"
+license=('custom:MIT')
+url="https://github.com/clktmr/$gitname"
 source=("git+$url")
 sha256sums=('SKIP')
 
@@ -24,16 +25,17 @@ package() {
 
 	cd "$srcdir/$gitname"
 
-	install -Dm644 "ftdetect/gdscript3.vim" "$pkgdir/$vim_share/ftdetect/gdscript3.vim"
-	install -Dm644 "ftplugin/gdscript3.vim" "$pkgdir/$vim_share/plugin/gdscript3.vim"
-	install -Dm644 "indent/gdscript3.vim" "$pkgdir/$vim_share/indent/gdscript3.vim"
-	install -Dm644 "syntax/gdscript3.vim" "$pkgdir/$vim_share/syntax/gdscript3.vim"
-	install -Dm644 "syntax/gdscript3.vim" "$pkgdir/$vim_share/syntax/gdscript3.vim"
+	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+	mv LICENSE "$pkgdir/usr/share/licenses/$pkgname"
 
-	# Recreate all the directories under the python subdirectory in our filesystem:
-	find python -type d -exec install -dm755 "$pkgdir/$vim_share/"{} \;
+	# Remove useless data
+	rm README.md
+	rm screenshot.png
 
-	# Now copy all the files with the right permissions:
-	find python -type f -exec install -Dm644 {} "$pkgdir/$vim_share/"{} \;
+	mkdir -p "$pkgdir/$vim_share"
+	cp -r * "$pkgdir/$vim_share"
+
+	# Compile all the python scripts into bytecode
+	python3 -m compileall "$pkgdir" || :
 }
 
