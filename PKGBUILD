@@ -2,10 +2,10 @@
 _pkgname=ndn-traffic-generator
 pkgname=${_pkgname}-git
 pkgver=r50.7393cb4
-pkgrel=1
+pkgrel=2
 # epoch=
 pkgdesc="This tool is designed to generate Interest and Data traffic in an NDN network"
-arch=("any")
+arch=('i686' 'x86_64')
 url="https://github.com/named-data/${_pkgname}"
 license=('GPL')
 groups=()
