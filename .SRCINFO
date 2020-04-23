@@ -1,0 +1,14 @@
+pkgbase = immortal
+	pkgdesc = A *nix cross-platform (OS agnostic) supervisor
+	pkgver = 0.24.3
+	pkgrel = 1
+	url = https://immortal.run
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = dep
+	makedepends = go-pie
+	source = https://github.com/immortal/immortal/archive/0.24.3.tar.gz
+	sha256sums = e31d5afb9028fb5047b5a2cc5f96c844f6480d600643a12075550f497e65f5cb
+
+pkgname = immortal
+
