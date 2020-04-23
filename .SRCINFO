@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-h5hut
+	pkgdesc = High-Performance I/O Library for Particle-based Simulations
+	pkgver = 2.0.0rc6
+	pkgrel = 1
+	url = https://gitlab.psi.ch/H5hut/src/wikis/home
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-hdf5
+	depends = mingw-w64-zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://gitlab.psi.ch/H5hut/src/-/archive/H5hut-2.0.0rc6/src-H5hut-2.0.0rc6.tar.gz
+	sha256sums = ca09b2b0637966f8b48572610071549fe874accc83caaf5c1e45a21eddf09a6f
+
+pkgname = mingw-w64-h5hut
+
