@@ -1,13 +1,15 @@
 pkgbase = python-allantools
 	pkgdesc = A python library for calculating Allan deviation and related time & frequency statistics.
 	pkgver = 2019.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/AllanTools/
 	arch = any
-	license = LGPL
+	license = LGPL3
 	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-scipy
 	source = https://files.pythonhosted.org/packages/source/A/AllanTools/AllanTools-2019.9.tar.gz
-	md5sums = d2164cf6fe6ea804413dcf5dc2465804
+	sha256sums = e95204f688e1ed41602baf4e021ea021c0807bf00d4c2fea94c730f641feab51
 
 pkgname = python-allantools
 
