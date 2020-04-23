@@ -1,7 +1,7 @@
 # Maintainer: Adam S Levy <adam@aslevy.com>
 pkgname=diagslave-bin
 _pkgname=diagslave
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="A command line based Modbus master simulator and test utility."
 arch=("x86_64")
