@@ -2,8 +2,8 @@
 
 pkgname=venom
 _pkgname=Venom
-pkgver=0.5.4
-pkgrel=2
+pkgver=0.5.5
+pkgrel=1
 pkgdesc='a modern Tox client for the Linux desktop'
 url='https://github.com/naxuroqa/venom'
 arch=(x86_64)
@@ -13,7 +13,7 @@ optdepends=('noto-fonts-emoji: Emoji font support')
 makedepends=('vala' 'meson')
 
 source=("https://github.com/naxuroqa/$_pkgname/archive/$pkgver.tar.gz")
-sha512sums=('dcf49c2f32832a07a3463a174051cd13dcbafc6e0c016298501920ed7ba837d7c505ca1792181ee2f4f31a98b221b6491979cbb010405684ed1a82510078d9e6')
+sha512sums=('3d6b15ffc4ceaaea15f1552cb86945eeec84243bbd91fd95c084b1fdddefd805f2debe510516867f714eb77089066da0c6249565e22f768e4fcb6346315c04bc')
 
 check() {
   ninja -C build test
