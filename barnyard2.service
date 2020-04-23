@@ -1,0 +1,10 @@
+[Unit]
+Description=Barnyard2 snort unified2 log processor
+After=snort.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/barnyard2 -c /etc/barnyard2/barnyard2.conf -d /var/log/snort -a /var/log/snort/old -f snort_unified.log -l /var/log/barnyard2 -w /var/log/barnyard2/barnyard2.waldo
+
+[Install]
+WantedBy=multi-user.target

@@ -2,16 +2,18 @@
 # Contributor: skogler
 pkgname=barnyard2
 pkgver=1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A dedicated spooler for Snort's unified2 binary output format."
 arch=('i686' 'x86_64')
 url="http://www.github.com/firnsy/barnyard2"
 license=('GPL')
 depends=('libpcap' 'mariadb-libs' 'postgresql-libs')
+optdepends=('snort: for snort unified2 processing')
 provides=('barnyard2')
 conflicts=('barnyard2-git')
 backup=('etc/barnyard2/barnyard2.conf')
 source=("barnyard2-$pkgver.tar.gz::https://github.com/firnsy/$pkgname/archive/v2-$pkgver.tar.gz"
+        'barnyard2.service'
         'barnyard2-1.13-free.patch'
         'barnyard2-1.13-libdir.patch'
         'barnyard2-1.13-my_bool.patch'
@@ -19,6 +21,7 @@ source=("barnyard2-$pkgver.tar.gz::https://github.com/firnsy/$pkgname/archive/v2
         'barnyard2-1.13-Werror.patch'
         'barnyard2-1.13-pcap-1.9.0.patch')
 sha256sums=('b9e67f22334b937a59cf808ca20bdcd9c46561a4369979c965a0bb554d7dd09b'
+            'bea8a4075f2990f092db241d0586a81af71fe1ffdcb1434e49a60165e744418c'
             'c6f7be740df98017bcd9f79cf703e493a201adcfbfd45a371cd9b6e0f177fc6b'
             'c8ac95cc45a17d548a6331100d3ab26543278ea051a1f7f5f77db025ebd4417f'
             '3fcae69a0e9b49a00d65557a35108b271c8890a7019b87b5f608fbafed2d54fb'
@@ -62,6 +65,7 @@ package() {
     install -D -m644 -t "${pkgdir}"/usr/share/doc/barnyard2 doc/README*
     install -D -m644 -t "${pkgdir}"/usr/share/doc/barnyard2/schemas schemas/create_* schemas/SCHEMA_ACCESS
 
+    install -D -m644 -t "${pkgdir}"/usr/lib/systemd/system "${srcdir}"/barnyard2.service
     echo "d /var/log/barnyard2 0750" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
     install -D -m644 /dev/stdin "${pkgdir}"/etc/logrotate.d/barnyard2 << 'EOF'
 /var/log/barnyard2/*.log {
