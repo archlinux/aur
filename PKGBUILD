@@ -4,8 +4,8 @@ url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.6
-_minor=5
-_clr=941
+_minor=6
+_clr=942
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,18 +16,18 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=32890
+_clear_version=32900
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=b15962b92a52a74decfa41199a6ab3ddd2a8eb450d3a0d2aacab79b3e012618a
+_config_hash=e84ee913951f57aa818c3c440e939ddc806418782bf6b34846111e0f86d5e668
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
         "https://cdn.download.clearlinux.org/update/${_clear_version}/files/${_config_hash}.tar")
-b2sums=('93ef4bace8ae8e45c7a3f8ae845661ad383c0b338712d3cf1275615b7161d834e71aab89a81e1224ac0cd3f11e4719c9a96cfce80fd3d376d685680d729c892a'
-        '018e2bcee65ec8d0d9b60da2f638730a7912e24149ddc5285342a9fe9cdc4a31b1a1396382f04bca26e4e88468baf75df2d511ff49ca1c588ee01d6535952fe6'
-        'b78c1719db9733d1b1999cd4fdc88631e5faed67942829a2d303884e755a8c5d620c3b7a0841fe90b6912b9614b7cfd7e2e638557c25771a3be150a24e6779bf')
+b2sums=('82e38edef81dd944ea39d0986cb92557869a05050d56320953757dbec1eb644d11af8534792e6bfb2374319dc8d9b387778baa24ebc8c95f3e56c76c8d57c071'
+        '3be148f887518ebfd9ca45e049e9671cf9962b8fec4cc74a7bf7bb8c3ff7709dadb569415c52ca239f7d4d600dcd21c93fc6571b32b006618213e30262acb114'
+        '66834e16c967ed898aaeb4752d62460d45dc26c84ae212b25df06a96aff241528e0ac04abf381bca021d8fd1598f074ef4f8419c76f792f9ccf77c358cebeab6')
 build() {
     local files=$(sed -n -re "s/^[FL]...[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/(modules.*build.*)$/\1 \2/p" Manifest.linux-dev.${_clear_version})
     local config=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/kernel\/config.*$/\1/p" Manifest.linux-dev.${_clear_version})
