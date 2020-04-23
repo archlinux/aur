@@ -1,15 +1,14 @@
 pkgbase = python-macropy
-	pkgdesc = Syntactic macros for Python
+	pkgdesc = An implementation of Syntactic Macros in the Python Programming Language
 	pkgver = 1.1.0b2
 	pkgrel = 1
-	url = https://github.com/lihaoyi/macropy
-	arch = i686
-	arch = x86_64
+	url = https://pypi.org/project/macropy3/
+	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = http://github.com/lihaoyi/macropy/archive/v1.1.0b2.tar.gz
-	md5sums = 0a9705bbd9959cd0b7deb2ae483783b0
+	source = https://github.com/lihaoyi/macropy/archive/v1.1.0b2.zip
+	sha512sums = 738de4ebb03c5cf44e9c31deb6d7854d74e1f2a84e5d10dcda91e49457bdfff4df7d5a0110de1d8892079b8add7ee678359298959d5bd7e7d83886fa5d62b993
 
 pkgname = python-macropy
 

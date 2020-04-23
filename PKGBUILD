@@ -1,24 +1,23 @@
-# MacroPy
+# Maintainer: Daniel E. Shub <daniel.e.shub@gmail.com>
 
 pkgname=python-macropy
-_name=macropy
 pkgver=1.1.0b2
 pkgrel=1
-pkgdesc="Syntactic macros for Python"
-arch=('i686' 'x86_64')
-url="https://github.com/lihaoyi/macropy"
+pkgdesc="An implementation of Syntactic Macros in the Python Programming Language"
+arch=('any')
+url="https://pypi.org/project/macropy3/"
 license=('MIT')
 makedepends=('python-setuptools')
 depends=('python')
+source=("https://github.com/lihaoyi/macropy/archive/v$pkgver.zip")
+sha512sums=('738de4ebb03c5cf44e9c31deb6d7854d74e1f2a84e5d10dcda91e49457bdfff4df7d5a0110de1d8892079b8add7ee678359298959d5bd7e7d83886fa5d62b993')
 
-source=("http://github.com/lihaoyi/macropy/archive/v"${pkgver}".tar.gz")
+build() {
+  cd $srcdir/macropy-$pkgver
+  python setup.py build
+}
 
-md5sums=('0a9705bbd9959cd0b7deb2ae483783b0')
-
-package() 
-{
-    cd "${srcdir}"
-    cd ${_name}-${pkgver}
-
-    python setup.py install --root="${pkgdir}" --prefix=/usr
+package() {
+  cd $srcdir/macropy-$pkgver
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
