@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r73088.deade123e6
+pkgver=r73396.70c1958748
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -32,6 +32,7 @@ prepare() {
   git config submodule.ThirdParty/IceT/vtkicet.git "$srcdir"/icet
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git submodule update -f --init
+  sed -i "s|VTK::IOH5part||g" CMake/ParaViewOptions.cmake
   cd VTK
 }
 
@@ -47,6 +48,7 @@ build() {
       -DPARAVIEW_USE_VTKM=OFF \
       -DPARAVIEW_BUILD_WITH_EXTERNAL=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
+      -DVTK_MODULE_ENABLE_VTK_h5part=NO -DVTK_MODULE_ENABLE_VTK_IOH5part=NO \
       -Dqt_xmlpatterns_executable=/usr/bin/${_arch}-xmlpatterns \
       ..
     WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
