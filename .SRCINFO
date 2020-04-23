@@ -1,4 +1,4 @@
-pkgbase = qrcp
+pkgbase = qrcp-bin
 	pkgdesc = Transfer files over wifi from your computer to your mobile device by scanning a QR code without leaving the terminal.
 	pkgver = 0.4.1
 	pkgrel = 1
@@ -9,5 +9,5 @@ pkgbase = qrcp
 	source_x86_64 = https://github.com/claudiodangelis/qrcp/releases/download/0.4.1/qrcp
 	sha256sums_x86_64 = a113aa0bfd54ce2605826be1fb1381ec1079a17796a5fd75f6ea54e78b69ef78
 
-pkgname = qrcp
+pkgname = qrcp-bin
 
