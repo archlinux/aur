@@ -5,12 +5,13 @@
 _pkgbase=birdtray
 pkgname=$_pkgbase-git
 pkgver=latest
-pkgrel=4
+pkgrel=5
 pkgdesc="Run Thunderbird with a system tray icon."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/gyunaev/birdtray"
 license=('GPL-3.0')
 depends=(qt5-svg qt5-x11extras)
+optdepends=('qt5-translations: Support for translations')
 makedepends=(cmake git qt5-tools)
 conflicts=($_pkgbase)
 provides=($_pkgbase)
@@ -30,7 +31,6 @@ build() {
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
-  install -Dm644 ../$_pkgbase/README.md -t"$pkgdir/usr/share/doc/$_pkgbase/"
+  make -C build DESTDIR="$pkgdir" install
+  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgbase/" $_pkgbase/README.md 
 }
