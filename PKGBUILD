@@ -1,37 +1,37 @@
-# Maintainer: Will Price <will.price94@gmail.com>
+# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=mylg-git
-pkgver=v0.2.2.r8.g39cf628
-pkgrel=2
-pkgdesc="General Network diagnostic tool"
-arch=('any')
-url="mylg.io"
+pkgver=0.2.6.r60.gfaba867
+pkgrel=1
+pkgdesc="myLG is an open source software utility which combines the functions of the different network probes in one network diagnostic tool"
+arch=('x86_64')
+url='http://mylg.io'
 license=('MIT')
-depends=()
-makedepends=('')
-options=('!strip')
-source=('git+https://github.com/mehrdadrad/mylg.git')
-md5sums=('SKIP')
-depends=('libpcap')
-makedepends=('go')
-conflicts=('mylg-bin' 'mylg')
-provides=('mylg')
+makedepends=('go-pie' 'git' 'dep')
+source=("git+https://github.com/mehrdadrad/mylg")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname%%-git}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}/${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  mkdir -p gopath/src/github.com/${pkgname%-git}
+  ln -rTsf ${pkgname%-git} gopath/src/github.com/${pkgname%-git}/${pkgname%-git}
+  export GOPATH="$srcdir"/gopath
+  cd gopath/src/github.com/${pkgname%-git}/${pkgname%-git}
+  dep init -v
+  dep ensure -v
 }
 
 build() {
-    export GOPATH="$srcdir"
-    export GOBIN="${srcdir}/bin"
-
-    cd "$srcdir/mylg"
-    go get -v
-    go build mylg.go
+  export GOPATH="$srcdir"/gopath
+  cd gopath/src/github.com/${pkgname%-git}/${pkgname%-git}
+  go install -v .
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/bin/"
-    install "$srcdir/mylg/mylg" "$pkgdir/usr/bin/"
+  install -Dm755 "${srcdir}/gopath/bin/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+  install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
