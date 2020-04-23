@@ -1,0 +1,12 @@
+pkgbase = ubuntu-backgrounds-bionic
+	pkgdesc = The backgrounds included in Ubuntu 18.04 bionic
+	pkgver = 18.04.1
+	pkgrel = 1
+	url = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers
+	arch = any
+	license = Commons Attribution-ShareAlike 3.0 Unported
+	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_18.04.1.orig.tar.gz
+	sha256sums = e5f3286047f5abe2c2d63ec10cfbcd65ba47dfbe2fce51aede0d1f15b059809f
+
+pkgname = ubuntu-backgrounds-bionic
+
