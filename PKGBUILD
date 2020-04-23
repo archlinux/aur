@@ -8,9 +8,9 @@
 # https://github.com/michaellass/AUR
 
 _majorver=14
-_completever=14
-_updatever=36
-pkgrel=2
+_completever=14.0.1
+_updatever=7
+pkgrel=1
 pkgver=${_completever}.u${_updatever}
 _tag_ver=${_completever}+${_updatever}
 
@@ -58,7 +58,7 @@ source=(https://github.com/AdoptOpenJDK/openjdk${_majorver}-binaries/releases/do
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('6c06853332585ab58834d9e8a02774b388e6e062ef6c4084b4f058c67f2e81b5'
+sha256sums=('9ddf9b35996fbd784a53fff3e0d59920a7d5acf1a82d4c8d70906957ac146cd1'
             'e5853506c880f0c68372a0be0acfd8852dd1a1d414352155c1cd4ad49ce3c248'
             'a645b7079c572dabe18f2ea6c2cbdef00866b8b8e22a82530858ea49e2cf8343'
             'b8705290f505cb368c204eb02c179fc1b10e70554903fb04b7dbe809dd1bed01')

@@ -1,7 +1,7 @@
 pkgbase = jdk-adoptopenjdk
 	pkgdesc = OpenJDK Java 14 development kit (AdoptOpenJDK build)
-	pkgver = 14.u36
-	pkgrel = 2
+	pkgver = 14.0.1.u7
+	pkgrel = 1
 	url = https://adoptopenjdk.net/
 	install = install_jdk-adoptopenjdk.sh
 	arch = x86_64
@@ -16,18 +16,18 @@ pkgbase = jdk-adoptopenjdk
 	optdepends = gtk3: for the Gtk+ 3 look and feel
 	provides = java-runtime-headless=14
 	provides = java-runtime-headless-openjdk=14
-	provides = jre14-openjdk-headless=14.u36
-	provides = jre-openjdk-headless=14.u36
+	provides = jre14-openjdk-headless=14.0.1.u7
+	provides = jre-openjdk-headless=14.0.1.u7
 	provides = java-runtime=14
 	provides = java-runtime-openjdk=14
-	provides = jre14-openjdk=14.u36
-	provides = jre-openjdk=14.u36
+	provides = jre14-openjdk=14.0.1.u7
+	provides = jre-openjdk=14.0.1.u7
 	provides = java-environment=14
 	provides = java-environment-openjdk=14
-	provides = jdk14-openjdk=14.u36
-	provides = jdk-openjdk=14.u36
-	provides = openjdk14-src=14.u36
-	provides = openjdk-src=14.u36
+	provides = jdk14-openjdk=14.0.1.u7
+	provides = jdk-openjdk=14.0.1.u7
+	provides = openjdk14-src=14.0.1.u7
+	provides = openjdk-src=14.0.1.u7
 	backup = etc/jdk-adoptopenjdk/logging.properties
 	backup = etc/jdk-adoptopenjdk/management/jmxremote.access
 	backup = etc/jdk-adoptopenjdk/management/jmxremote.password.template
@@ -43,11 +43,11 @@ pkgbase = jdk-adoptopenjdk
 	backup = etc/jdk-adoptopenjdk/security/policy/unlimited/default_local.policy
 	backup = etc/jdk-adoptopenjdk/security/policy/unlimited/default_US_export.policy
 	backup = etc/jdk-adoptopenjdk/sound.properties
-	source = https://github.com/AdoptOpenJDK/openjdk14-binaries/releases/download/jdk-14%2B36/OpenJDK14U-jdk_x64_linux_hotspot_14_36.tar.gz
+	source = https://github.com/AdoptOpenJDK/openjdk14-binaries/releases/download/jdk-14.0.1%2B7/OpenJDK14U-jdk_x64_linux_hotspot_14.0.1_7.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = 6c06853332585ab58834d9e8a02774b388e6e062ef6c4084b4f058c67f2e81b5
+	sha256sums = 9ddf9b35996fbd784a53fff3e0d59920a7d5acf1a82d4c8d70906957ac146cd1
 	sha256sums = e5853506c880f0c68372a0be0acfd8852dd1a1d414352155c1cd4ad49ce3c248
 	sha256sums = a645b7079c572dabe18f2ea6c2cbdef00866b8b8e22a82530858ea49e2cf8343
 	sha256sums = b8705290f505cb368c204eb02c179fc1b10e70554903fb04b7dbe809dd1bed01
