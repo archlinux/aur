@@ -15,7 +15,7 @@ pkgbase = gnomecast-git
 	depends = python-dbus
 	provides = gnomecast
 	conflicts = gnomecast
-	source = git://github.com/keredson/gnomecast.git
+	source = git+https://github.com/keredson/gnomecast.git
 	sha256sums = SKIP
 
 pkgname = gnomecast-git

@@ -12,7 +12,7 @@ depends=('ffmpeg' 'python-html5lib' 'python-pychromecast' 'python-bottle'
 makedpends=('git' 'python-setuptools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git://github.com/keredson/gnomecast.git')
+source=('git+https://github.com/keredson/gnomecast.git')
 sha256sums=('SKIP')
 
 pkgver() {
