@@ -1,0 +1,12 @@
+pkgbase = otf-kawkab-mono
+	pkgdesc = A monospaced Arabic typeface
+	pkgver = 0.501
+	pkgrel = 1
+	url = http://makkuk.com/kawkab-mono
+	arch = any
+	license = custom
+	source = https://github.com/aiaf/kawkab-mono/releases/download/v0.501/kawkab-mono-0.501.zip
+	b2sums = 08fd51062404e045cbd27afd3c95150c7d477af295b4e6473eb9582c761151f12aee4c5665faec7cb93ce6f4a11b0da033250fe6631387d02be25bdc62d7eb66
+
+pkgname = otf-kawkab-mono
+
