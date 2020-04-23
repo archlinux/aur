@@ -30,6 +30,7 @@ pkgbase = mingw-w64-paraview-git
 	depends = mingw-w64-protobuf
 	depends = mingw-w64-pugixml
 	depends = mingw-w64-libtheora
+	depends = mingw-w64-gl2ps
 	provides = mingw-w64-paraview
 	conflicts = mingw-w64-paraview
 	options = !buildflags
