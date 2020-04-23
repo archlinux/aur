@@ -1,5 +1,5 @@
 pkgname=mingw-w64-pegtl
-pkgver=2.8.1
+pkgver=2.8.3
 pkgrel=1
 pkgdesc="Parsing Expression Grammar Template Library (mingw-w64)"
 license=('MIT')
@@ -9,7 +9,7 @@ depends=()
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/taocpp/PEGTL/archive/${pkgver}.tar.gz")
-sha256sums=('d23f81a60896cdd8c2ce0d1b31737fe0e1137915ba3fdb4f366ae1a997a1bce6')
+sha256sums=('88b8e4ded6ea1f3f2223cc3e37072e2db1e123b90d36c309816341ae9d966723')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
