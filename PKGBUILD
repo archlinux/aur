@@ -1,6 +1,6 @@
 # Maintainer: Petr Šťastný <aur@soptik.tech>
 pkgname=desed
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Debugger for sed, written in rust. Step through code and observe sed inner state."
 arch=('x86_64')
@@ -16,7 +16,7 @@ build() {
     cd "$pkgname"
 
     # Checkout to published version
-    git checkout 'tags/v1.1.3'
+    git checkout 'tags/v1.1.4'
     cargo build --release
 }
 
