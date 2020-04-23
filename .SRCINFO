@@ -1,6 +1,6 @@
 pkgbase = nomino-bin
 	pkgdesc = Batch rename utility for developers
-	pkgver = 0.4.0
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/yaa110/nomino
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = nomino-bin
 	conflicts = nomino
 	source = LICENSE::https://raw.githubusercontent.com/yaa110/nomino/master/LICENSE-MIT
 	sha512sums = 169b314c09dffe76c8bf31929a61e58358c66516c17629cb257e0d44101b78d3949ee6d9951bb813cd6348d8626a0c8f638f6f874db446dce87cfa1de24d39ba
-	source_x86_64 = https://github.com/yaa110/nomino/releases/download/0.4.0/nomino-linux-64bit
-	sha512sums_x86_64 = 6488f4f83f801d4f4c9cf5d9827c49765fcff4d1d101c3b806810e6a1810f45e9f5e78232e8df81bcaabef48f7fcd44247fcd41a12f8b101d19b2d00aca8a0d5
+	source_x86_64 = https://github.com/yaa110/nomino/releases/download/0.4.2/nomino-linux-64bit
+	sha512sums_x86_64 = 0cd43401476060dca6d462fc5028f61f4ac062cc3aac828e30da895b9ebfafbe5acb3d04184271cb66941ee58a6d10339bdb7f2ae8f087cff062938fa08c6222
 
 pkgname = nomino-bin
 
