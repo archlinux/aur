@@ -1,13 +1,13 @@
 pkgbase = zfs-linux-hardened
-	pkgver = 0.8.3_5.6.5.a.1
+	pkgver = 0.8.3_5.6.6.a.1
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-hardened-headers=5.6.5.a-1
+	makedepends = linux-hardened-headers=5.6.6.a-1
 	depends = kmod
 	depends = zfs-utils=0.8.3
-	depends = linux-hardened=5.6.5.a-1
+	depends = linux-hardened=5.6.6.a-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.8.3/zfs-0.8.3.tar.gz
 	source = linux-5.5-compat-blkg_tryget.patch
 	source = linux-5.6-compat-struct-proc_ops.patch
