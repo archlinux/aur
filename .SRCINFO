@@ -1,6 +1,6 @@
 pkgbase = open3d-git
 	pkgdesc = A Modern Library for 3D Data Processing
-	pkgver = r2485.e5ba382f
+	pkgver = r2539.f3c7158a
 	pkgrel = 1
 	url = http://www.open3d.org
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = open3d-git
 	optdepends = pybind11: System pybind11 support
 	optdepends = python: Python support
 	optdepends = jupyter-notebook: Jupyter notebook support
-	source = open3d-git::git+https://github.com/IntelVCL/Open3D.git
+	source = open3d-git::git+https://github.com/intel-isl/Open3D.git
 	source = fix_3rdparty_path.patch
 	sha256sums = SKIP
 	sha256sums = 3bf6b79fd075b356a5c2d86a557e0bc6e6df0e84d53c2077d2c6685641838d81

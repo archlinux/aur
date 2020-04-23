@@ -3,7 +3,7 @@
 
 pkgbase=open3d-git
 pkgname=( {,python-}open3d-git python-py3d-git )
-pkgver=r2485.e5ba382f
+pkgver=r2539.f3c7158a
 pkgrel=1
 pkgdesc="A Modern Library for 3D Data Processing"
 arch=('x86_64')
@@ -30,7 +30,7 @@ makedepends=(
     git
     python-setuptools
 )
-source=("${pkgbase}::git+https://github.com/IntelVCL/Open3D.git"
+source=("${pkgbase}::git+https://github.com/intel-isl/Open3D.git"
         fix_3rdparty_path.patch)
 sha256sums=('SKIP'
             '3bf6b79fd075b356a5c2d86a557e0bc6e6df0e84d53c2077d2c6685641838d81')
