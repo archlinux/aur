@@ -7,7 +7,7 @@ pkgdesc="The backgrounds included in Ubuntu 18.04 bionic"
 license=('Commons Attribution-ShareAlike 3.0 Unported')
 arch=('any')
 url="http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers"
-source=("http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_${pkgver}.orig.tar.gz")
+source=("${url}/ubuntu-wallpapers_${pkgver}.orig.tar.gz")
 sha256sums=('e5f3286047f5abe2c2d63ec10cfbcd65ba47dfbe2fce51aede0d1f15b059809f')
 
 package() {
