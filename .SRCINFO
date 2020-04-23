@@ -1,6 +1,6 @@
 pkgbase = weatherspect-git
 	pkgdesc = A virtual weather environment in ASCII - git version
-	pkgver = 2.0.r2.gb7ac282
+	pkgver = 2.0.r3.g0f85875
 	pkgrel = 1
 	url = https://github.com/AnotherFoxGuy/weatherspect
 	arch = any

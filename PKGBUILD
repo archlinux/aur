@@ -4,7 +4,7 @@
 # Contributor: archlinux.info:tdy
 _pkgname='weatherspect'
 pkgname="$_pkgname-git"
-pkgver='2.0.r2.gb7ac282'
+pkgver='2.0.r3.g0f85875'
 pkgrel='1'
 pkgdesc='A virtual weather environment in ASCII - git version'
 arch=('any')
@@ -25,7 +25,7 @@ _sourcedirectory="$pkgname"
 
 pkgver() {
 	cd "$srcdir/$_sourcedirectory/"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
 }
 
 package() {
