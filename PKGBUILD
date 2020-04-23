@@ -26,14 +26,13 @@ behave==1.2.5
 jsonschema==2.5.1
 
 #setup.py
-from setuptools import setup, find_packages
-
-
-requires = [
-    'jmespath>=0.7.1,<1.0.0',
-    'docutils>=0.10,<0.16',
-    'python-dateutil>=2.1,<3.0.0',
-]
+[metadata]
+requires-dist =
+    python-dateutil>=2.1,<3.0.0
+    jmespath>=0.7.1,<1.0.0
+    docutils>=0.10,<0.16
+    urllib3>=1.20,<1.25.8; python_version=='3.4'
+    urllib3>=1.20,<1.26; python_version!='3.4'
 
 
 if sys.version_info[:2] == (3, 4):
@@ -49,35 +48,41 @@ set -u
 _pyver="python"
 _pybase='botocore'
 pkgname="${_pyver}-${_pybase}-git"
-pkgver=1.15.44
+pkgver=1.15.45.r6694.g6c73c753d
 pkgrel=1
 pkgdesc='A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3'
 arch=('any')
 url="https://github.com/boto/${_pybase}"
 license=('Apache') # Apache License 2.0
 _pydepends=( # See setup.py, README.rst, and requirements.txt for version dependencies
-  #"${_pyver}-bcdoc<0.15.0"    # AUR
-  "${_pyver}-wheel>=0.24.0"   # AUR ==
-  "${_pyver}-jmespath"{'>=0.7.1','<1.0.0'} # AUR == is possible for repositories. Makes upgrades impossible in AUR.
-  "${_pyver}-jsonschema>=2.5.1"            # COM
-  "${_pyver}-tox"{'>=2.5.0','<3.0.0'}      # COM == is possible because this is from a repository. Unfortunatley Arch isn"t the primary dev environment for botocore/aws so our packages are likely to be newer.
-  "${_pyver}-dateutil"{'>=2.1','<3.0.0'}   # COM
-  "${_pyver}-nose>=1.3.7"     # COM ==
-  "${_pyver}-mock>=1.3.0"     # COM ==
-  "${_pyver}-docutils>=0.10"  # COM
-  "${_pyver}-six>=1.1.0"      # COM This is in the sources but I'm not sure where the version comes from.
-  # requirements-docs.txt
-  "${_pyver}-docutils"{'>=0.10','<0.16'}
-  "${_pyver}-sphinx>=1.1.3" #"${_pyver}-sphinx"{>=1.1.3,<1.3}     # COM Arch is already newer. Documentation might not work.
-  "${_pyver}-guzzle-sphinx-theme"{'>=0.7.10','<0.8'}
+  # setup.py
+  "${_pyver}-dateutil"'>=2.1' #,'<3.0.0'}
+  "${_pyver}-jmespath"'>=0.7.1' #,'<1.0.0'}
+  "${_pyver}-docutils>=0.10"  #,'0.16'}
+  "${_pyver}-urllib3"'>=1.20' #,'<1.26'}
+
+  # requirements.txt
+  "${_pyver}-tox"'>=2.5.0' #,'<3.0.0'}
+  "${_pyver}-nose>=1.3.7"
+  "${_pyver}-mock>=1.3.0"
+  "${_pyver}-wheel>=0.24.0"
+  "${_pyver}-docutils"'>=0.10' #,'<0.16'}
   "${_pyver}-behave>=1.2.5"
-  "${_pyver}-urllib3"{'>=1.20','<1.26'}
+  "${_pyver}-jsonschema>=2.5.1"
+
+  # requirements-docs.txt
+  "${_pyver}-sphinx"'>=1.1.3' # ,'<1.3'}
+  "${_pyver}-guzzle-sphinx-theme"'>=0.7.10' #,'<0.8'}
+
+  # old but still required
+  #"${_pyver}-bcdoc<0.15.0"
+  "${_pyver}-six>=1.1.0"
 )
 depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('9ea9a2c975b6e9641c94adc5d550c330d3ad3cdc164772e015d26f51fd639409')
+sha256sums=('3b7dc218a8535918b53784beb0d36e231444e6f20475f50e262662bb38523cc8')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
