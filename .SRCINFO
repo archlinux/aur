@@ -1,6 +1,6 @@
 pkgbase = python-xdis
 	pkgdesc = Python cross-version byte-code disassembler and marshal routines.
-	pkgver = 4.2.4
+	pkgver = 4.3.2
 	pkgrel = 1
 	url = https://github.com/rocky/python-xdis/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-xdis
 	makedepends = python-setuptools
 	depends = python-click
 	depends = python-six>=1.10.0
-	source = https://files.pythonhosted.org/packages/source/x/xdis/xdis-4.2.4.tar.gz
-	sha256sums = f1a615442b46075152fe3d5f8c5c0ddb1496a5a02405d9618dfe17506a3001eb
+	source = https://files.pythonhosted.org/packages/source/x/xdis/xdis-4.3.2.tar.gz
+	sha256sums = 0efc601c13a3cd9e70aba369a7380da051427c5a1d502fd42e90d9e397cf20d9
 
 pkgname = python-xdis
 

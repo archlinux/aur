@@ -3,7 +3,7 @@
 
 _name='xdis'
 pkgname="python-${_name}"
-pkgver=4.2.4
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="Python cross-version byte-code disassembler and marshal routines."
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python-click' 'python-six>=1.10.0')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('f1a615442b46075152fe3d5f8c5c0ddb1496a5a02405d9618dfe17506a3001eb')
+sha256sums=('0efc601c13a3cd9e70aba369a7380da051427c5a1d502fd42e90d9e397cf20d9')
 
 package() {
     cd "$srcdir/$_name-$pkgver"
