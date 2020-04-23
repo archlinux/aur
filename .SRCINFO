@@ -1,7 +1,7 @@
 pkgbase = okular-no-purpose
 	pkgdesc = Okular, a document viewer, without the dependency on purpose. This disables the share menu
-	pkgver = 19.12.3
-	pkgrel = 3
+	pkgver = 20.0.4
+	pkgrel = 1
 	url = https://kde.org/applications/graphics/okular/
 	arch = x86_64
 	groups = kde-applications
@@ -39,14 +39,12 @@ pkgbase = okular-no-purpose
 	conflicts = okular
 	replaces = okular
 	options = !zipman
-	source = https://download.kde.org/stable/release-service/19.12.3/src/okular-19.12.3.tar.xz
-	source = https://download.kde.org/stable/release-service/19.12.3/src/okular-19.12.3.tar.xz.sig
-	source = CVE-2020-9359.patch::https://invent.kde.org/kde/okular/-/commit/6a93a033.patch
+	source = https://download.kde.org/stable/release-service/20.0.4/src/okular-20.0.4.tar.xz
+	source = https://download.kde.org/stable/release-service/20.0.4/src/okular-20.0.4.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
-	sha256sums = c5de22cc4292e3b7adae3f6ef6566dcba33a1dd5995fb0b968ea3e705a4c04e0
+	sha256sums = 1b6521b4eaa0a0eb41a39c3f84252d9833f6d26fa410afaef815ec661737dfe7
 	sha256sums = SKIP
-	sha256sums = 11925667a8e2a687aaa64308570f5a6f4cb9cbe54aedf8bdb0cc21e3cf410599
 
 pkgname = okular-no-purpose
 

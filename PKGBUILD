@@ -2,8 +2,8 @@
 
 _pkgname=okular
 pkgname=okular-no-purpose
-pkgver=19.12.3
-pkgrel=3
+pkgver=20.0.4
+pkgrel=1
 pkgdesc='Okular, a document viewer, without the dependency on purpose. This disables the share menu'
 arch=(x86_64)
 url="https://kde.org/applications/graphics/okular/"
@@ -20,19 +20,15 @@ conflicts=(okular)
 replaces=(kdegraphics-okular)
 replaces=(okular)
 provides=(okular)
-source=("https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig}
-        CVE-2020-9359.patch::"https://invent.kde.org/kde/okular/-/commit/6a93a033.patch")
-sha256sums=('c5de22cc4292e3b7adae3f6ef6566dcba33a1dd5995fb0b968ea3e705a4c04e0'
-            'SKIP'
-            '11925667a8e2a687aaa64308570f5a6f4cb9cbe54aedf8bdb0cc21e3cf410599')
+source=("https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig})
+sha256sums=('1b6521b4eaa0a0eb41a39c3f84252d9833f6d26fa410afaef815ec661737dfe7'
+            'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
 options=(!zipman)
 
 prepare() {
   mkdir -p build
-  
-  patch -d $_pkgname-$pkgver -p1 -i "$srcdir"/CVE-2020-9359.patch
 }
 
 build() {
@@ -40,9 +36,8 @@ build() {
   cmake ../$_pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DKDEExperimentalPurpose_FOUND=OFF \
-    -DBUILD_TESTING=OFF \
-    -DBUILD_OKULARKIRIGAMI=OFF
-  make
+    -DBUILD_TESTING=OFF
+    make
 }
 
 package() {
