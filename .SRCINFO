@@ -1,7 +1,7 @@
 pkgbase = baidunetdisk-bin
 	pkgdesc = Baidu Net Disk is a cloud storage client (Linux Version).
 	pkgver = 3.0.1.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://pan.baidu.com
 	arch = x86_64
 	license = custom
