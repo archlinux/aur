@@ -6,7 +6,7 @@
 
 pkgname=marktext
 pkgver=0.16.1
-pkgrel=5
+pkgrel=6
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability'
 arch=('x86_64')
 url='https://marktext.app'
@@ -22,9 +22,11 @@ makedepends=('jq'
              'yarn'
              'yq')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/marktext/marktext/archive/v${pkgver}.tar.gz"
-        "$pkgname.sh")
+        "$pkgname.sh"
+        "$pkgname-arg-handling.patch")
 sha256sums=('a00aa0caf26ab6e24e6cd5fef2a2a03e2ef46d0bf185c6971d9f00207223633e'
-            'c5af6eabe525af458df2ccfac6098092746dd0ae23225c131100bb6e37170f86')
+            'c5af6eabe525af458df2ccfac6098092746dd0ae23225c131100bb6e37170f86'
+            'c754a1cad52d10a38eeddb9293ce0a4540296c6adbb47eb5311eaaeded150a01')
 
 _electronDist=$(dirname $(realpath $(which electron)))
 _electronVersion=$(electron --version | sed -e 's/^v//')
@@ -38,6 +40,7 @@ prepare() {
     mkdir -p "$srcdir/node_modules"
     yarn --cache-folder "$srcdir/node_modules" install --frozen-lockfile
     yarn --cache-folder "$srcdir/node_modules" add -D -E --no-lockfile --ignore-scripts electron@$_electronVersion
+    patch -p1 < "$srcdir/$pkgname-arg-handling.patch"
 }
 
 build() {
