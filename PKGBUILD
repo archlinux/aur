@@ -2,7 +2,7 @@
 
 pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
-pkgver=0.96
+pkgver=0.96.1
 srcrel=1 # Incremented when there is a new release for the same version number
 pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
@@ -26,11 +26,11 @@ source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::http://download.xnview.c
         'xnviewmp.desktop'
         'qt5_std_fun_forwarder.S'
         'qt5_std_fun_forwarder.lds')
-md5sums=('cf46b04ca4f42bf0bbd00803332266dd'
-         '54c5ea6508625ad44a23b9a204799264'
-         '24f44d5a881b94daf48775213a57e4ec'
-         'df94e031306ac22f7f19d38bf3023c1a'
-         '7fc3b01ef6eb321c5ecba75099e08d33')
+sha256sums=('EE259687D7AB31150712F27484FBFDF1C67D10900F573BEF22B0ADE6ABF0032B'
+            '2DAAC0261789B79AA056EB7E38C9B4E9853EB7DE30A8BF4232EBEE7D81D4295C'
+            'F6B3A4AAA0A55B5F21D9B91AB6F3DA3D6EE077BA7FDD17E7C4AB1C69AD2A9E3A'
+            'C35FE8CD0AD76F77C0117DE1D81A8C3945D6E472D7663D6D5645592C18809423'
+            '3D6DA484CD55EAC8910D5CF87F9057E6EADEAC842A249DCBDA35E1C6F3FCDC0D')
 
 # There is a lot of useless files in the archive, only install those from that
 # list.
