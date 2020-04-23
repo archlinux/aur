@@ -1,0 +1,16 @@
+pkgbase = xfce4-sysinfo
+	pkgdesc = A tool to show systeminformation in xfce
+	pkgver = 8.cc53233
+	pkgrel = 1
+	url = https://github.com/lxgr-linux/xfce4-sysinfo
+	arch = any
+	license = GPL v3
+	makedepends = git
+	depends = gtk3
+	depends = gtkdialog
+	depends = zenity
+	source = xfce4-sysinfo::git://github.com/lxgr-linux/xfce4-sysinfo.git
+	md5sums = SKIP
+
+pkgname = xfce4-sysinfo
+
