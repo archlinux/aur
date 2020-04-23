@@ -10,7 +10,7 @@ pkgbase = ocaml-base
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	makedepends = dune
+	makedepends = dune>=1.5.1
 	depends = ocaml>=4.07.0
 	depends = ocaml-sexplib0
 	options = !strip
