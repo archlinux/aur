@@ -13,33 +13,42 @@
 _fn_foobar() {
 local _foobar="
 #requirements-docs.txt
+docutils>=0.10,<0.16
 Sphinx==1.1.3
+-e .
+
 #requirements.txt
 tox>=2.3.1,<3.0.0
-docutils>=0.10
 # botocore and the awscli packages are typically developed
 # in tandem, so we're requiring the latest develop
-# branch of botocore when working on the awscli.
+# branch of botocore and s3transfer when working on the awscli.
 -e git://github.com/boto/botocore.git@develop#egg=botocore
 -e git://github.com/boto/s3transfer.git@develop#egg=s3transfer
--e git://github.com/boto/jmespath.git@develop#egg=jmespath
 nose==1.3.7
-colorama>=0.2.5,<=0.3.9
 mock==1.3.0
-rsa>=3.1.2,<=3.5.0
-wheel==0.24.0
-PyYAML>=3.10,<=3.13
+# TODO: this can now be bumped
+# 0.30.0 dropped support for python2.6
+# remove this upper bound on the wheel version once 2.6 support
+# is dropped from aws-cli
+wheel>0.24.0,<0.30.0
 
 #setup.py
-import awscli
+
+install_requires = [
+    'botocore==1.15.45',
+    'docutils>=0.10,<0.16',
+    'rsa>=3.1.2,<=3.5.0',
+    's3transfer>=0.3.0,<0.4.0',
+]
 
 
-requires = ['botocore==1.12.156',
-            'colorama>=0.2.5,<=0.3.9',
-            'docutils>=0.10',
-            'rsa>=3.1.2,<=3.5.0',
-            's3transfer>=0.2.0,<0.3.0',
-            'PyYAML>=3.10,<=3.13']
+if sys.version_info[:2] == (3, 4):
+    install_requires.append('PyYAML>=3.10,<5.3')
+    install_requires.append('colorama>=0.2.5,<0.4.2')
+else:
+    install_requires.append('PyYAML>=3.10,<5.4')
+    install_requires.append('colorama>=0.2.5,<0.4.4')
+
 "
 }
 unset -f _fn_foobar
@@ -54,7 +63,7 @@ else
 pkgname="${_pyver}-${_pybase}"
 _pyverother='python'
 fi
-pkgver=1.16.248
+pkgver=1.18.45
 # Generally when this version changes, the version of botocore also changes
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services awscli'
@@ -62,25 +71,34 @@ arch=('any')
 url="https://github.com/aws/${_pybase}"
 license=('Apache') # Apache License 2.0
 _pydepends=( # See setup.py, README.rst, and requirements.txt for version dependencies
-  "${_pyver}-bcdoc"           # AUR
-  "${_pyver}-botocore>=1.12.156" # COM ==
-  "${_pyver}-colorama>=0.2.5" #,"<=0.3.7"}   # COM requested by phw
-  "${_pyver}-rsa"{'>=3.2','<=3.5.0'}
-  "${_pyver}-s3transfer"{'>=0.2.0','<0.3.0'} # COM
+  # setup.py
+  "${_pyver}-botocore>=1.15.45" # COM ==
+  "${_pyver}-docutils"'>=0.10' # ,'<0.16'} # COM
+  "${_pyver}-rsa"'>=3.1.2' #,'<=3.5.0'}
+  #"${_pyver}-cryptography"'>=2.8.0' # ,'<=2.9.0'}
+  "${_pyver}-s3transfer"'>=0.3.0' # ,'<0.4.0'} # COM
+  "${_pyver}-yaml"">=3.10" #"<=5.4"} # COM
+  #"${_pyver}-ruamel-yaml"'>=0.15.0' #,'<0.16.0'} # COM
+  #"${_pyver}-prompt_toolkit"'>=2.0.0' #,'<3.0.0'} # COM
+  "${_pyver}-colorama>=0.2.5" #,"<=0.4.4"}   # COM requested by phw
 
-  ### These are from python-botocore
-  "${_pyver}-wheel>=0.24.0"   # COM ==
-  "${_pyver}-dateutil"{">=2.1","<3.0.0"} # COM
-  "${_pyver}-jmespath>=0.7.1" # COM ==
-  #"${_pyver}-tox"{'>=2.3.1','<3.0.0'} # COM
-  "${_pyver}-yaml"{">=3.10","<=3.13"} # COM
+  # requirements.txt
+  "${_pyver}-tox"'>=2.3.1' #,'<3.0.0'} # COM
   "${_pyver}-nose>=1.3.7"     # COM ==
   "${_pyver}-mock>=1.3.0"     # COM ==
-  "${_pyver}-docutils>=0.10"  # COM
-  "${_pyver}-six>=1.1.0"      # COM This is in the sources but I'm not sure where the version comes from.
+  "${_pyver}-wheel>=0.24.0" #,'<0.30.0'} # COM
+
+  # previous requirements still found in source
+  #"${_pyver}-bcdoc"           # AUR
+  "${_pyver}-dateutil"">=2.1" #,"<3.0.0"} # COM (found)
+
   # requirements-docs.txt
-  #"${_pyver}-sphinx>=1.1.3" #"${_pyver}-sphinx"{>=1.1.3,<1.3}     # COM Arch is already newer. Documentation might not work.
-  "${_pyver}-guzzle-sphinx-theme"{'>=0.7.10','<0.8'}
+  "${_pyver}-sphinx"'>=1.1.3' #,'<1.3'}     # COM Arch is already newer. Documentation might not work.
+  #"${_pyver}-guzzle-sphinx-theme"{'>=0.7.10','<0.8'}
+
+  # Old
+  #"${_pyver}-jmespath>=0.7.1" # COM ==
+  #"${_pyver}-six>=1.1.0"      # COM This was in the sources but I'm not sure where the version comes from.
 )
 if [ "${_pyver}" = 'python2' ]; then
   _pydepends+=('python2-futures')
@@ -89,7 +107,7 @@ depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!emptydirs' '!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('000bc49d5bbab420fae22ef5f9d7732e4e834e08e240e32fa1357809b06c61b4')
+sha256sums=('3da8c6b5fc8b0dbc254297adf020ca984756b7fcc5d6ecb855dde7dc7f07b7ee')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
