@@ -1,4 +1,4 @@
-# Maintainer: Olegs Jeremejevs <olegs@jeremejevs.com>
+# Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=asdf-vm
 pkgver=0.7.8
