@@ -1,5 +1,6 @@
 *.tar.zst
 *.tar.bz2
+*.zip
 *.log
 *.png
 droidcam-dkms-git
