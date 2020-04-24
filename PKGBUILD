@@ -9,7 +9,7 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-gdb
-pkgver=8.3
+pkgver=9.1
 pkgrel=1
 pkgdesc="The GNU Project Debugger (${_target})"
 arch=('i686' 'x86_64')
@@ -31,14 +31,16 @@ prepare() {
   mkdir ${srcdir}/gdb-build
 }
 
+#    --with-cpu=${_target_cpu} \
+#    --with-guile="guile-2.0"
+
 build() {
   cd ${srcdir}/gdb-build
 
   ../gdb-${pkgver}/configure --prefix=/usr \
     --target=${_target} \
     --disable-multilib \
-    --with-cpu=${_target_cpu} \
-    --with-guile="guile-2.0"
+    --with-cpu=${_target_cpu}
 
   make
 }
