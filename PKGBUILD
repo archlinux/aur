@@ -62,7 +62,7 @@ provides=('garuda-settings-manager')
 }
 
 package_garuda-settings-manager-kcm-git() {
-  pkgdesc="Garuda Linux System Settings Tool (KCM for Plasma 5)"
+  pkgdesc="Garuda Linux System Settings Tool (KCM for Plasma 5) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)"
   depends=('garuda-settings-manager' 'kcmutils' 'kconfigwidgets')
   replaces=('kcm-msm')
   cd "$srcdir/garuda-settings-manager//build"
@@ -74,7 +74,7 @@ package_garuda-settings-manager-kcm-git() {
 }
 
 package_garuda-settings-manager-notifier-git() {
-  pkgdesc="Garuda Linux System Settings Tool (Notifier)"
+  pkgdesc="Garuda Linux System Settings Tool (Notifier) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)"
   depends=('garuda-settings-manager')
   provides=('garuda-settings-manager-kde-notifier')
   conflicts=('garuda-settings-manager-kde-notifier')
@@ -91,7 +91,7 @@ package_garuda-settings-manager-notifier-git() {
 }
 
 package_garuda-settings-manager-knotifier-git() {
-  pkgdesc="Garuda Linux System Settings Tool (Notifier for Plasma 5)"
+  pkgdesc="Garuda Linux System Settings Tool (Notifier for Plasma 5) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)"
   depends=('garuda-settings-manager' 'knotifications')
   conflicts=('garuda-settings-manager-notifier')
   replaces=('garuda-settings-manager-kde-notifier')

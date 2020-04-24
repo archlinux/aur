@@ -33,20 +33,20 @@ pkgname = garuda-settings-manager-git
 	conflicts = garuda-settings-manager
 
 pkgname = garuda-settings-manager-kcm-git
-	pkgdesc = Garuda Linux System Settings Tool (KCM for Plasma 5)
+	pkgdesc = Garuda Linux System Settings Tool (KCM for Plasma 5) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)
 	depends = garuda-settings-manager
 	depends = kcmutils
 	depends = kconfigwidgets
 	replaces = kcm-msm
 
 pkgname = garuda-settings-manager-notifier-git
-	pkgdesc = Garuda Linux System Settings Tool (Notifier)
+	pkgdesc = Garuda Linux System Settings Tool (Notifier) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)
 	depends = garuda-settings-manager
 	provides = garuda-settings-manager-kde-notifier
 	conflicts = garuda-settings-manager-kde-notifier
 
 pkgname = garuda-settings-manager-knotifier-git
-	pkgdesc = Garuda Linux System Settings Tool (Notifier for Plasma 5)
+	pkgdesc = Garuda Linux System Settings Tool (Notifier for Plasma 5) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)
 	depends = garuda-settings-manager
 	depends = knotifications
 	conflicts = garuda-settings-manager-notifier
