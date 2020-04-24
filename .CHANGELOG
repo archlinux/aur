@@ -1,6 +1,31 @@
 Version history
 ===============
 
+0.9.31
+------
+
+2020-04-23
+----------
+
+Compiling yourself: On Windows, Lix requires LDC 1.21.0, LDC or newer to
+compile out of the box. For LDC 1.20.1 or older, in Lix's dub.json file, you
+must first change all appearances of "-entry:wmainCRTStartup"
+with "-entry:mainCRTStartup".
+See doc/build/win64.txt, section "Old LDC versions" for details.
+
+Compiling yourself: Increased version of dependency sdlang-d: 0.10.4 -> 0.10.6,
+so that Lix still compiles with older versions of DMD, with the current stable
+DMD 2.091.0, and with even newer versions.
+
+Fix #394: The editor now sorts tilesets alphabetically by the shown directory,
+which is its second-level-nested directory in images/.
+Old order: forest/, occult/, abstract/, construction/, ..., because forest and
+occult were in images/amanda/ and abstract, construction were in images/geoo/.
+New order: abstract/, beach/, bricks/, carnival/, construction/, ..., forest/,
+..., occult/, ..., irrespective of the unshown author's name.
+
+Fixed a backroute in Ifo Island. The building at the bottom takes longer now.
+
 0.9.30
 ------
 

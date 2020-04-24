@@ -1,13 +1,13 @@
 # Maintainer: Lucki <https://aur.archlinux.org/account/Lucki>
 # Contributor: Carl Reinke <mindless2112 gmail com>
-# shellcheck disable=SC2034,2154
+# shellcheck disable=SC2034,2154,2148
 
 pkgname=lix
-pkgver=0.9.30
+pkgver=0.9.31
 pkgrel=1
 changelog=.CHANGELOG
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz")
-sha512sums=('ea9df078cc411a26a54fde3606d010303725e8f663a7643ea6d6a6aedf15462ef06ad08f7b0b757bd344f4c1550902c63beae1a23c77e32b0c6f809616dd92a0'
+sha512sums=('11be4e715d5b0e482f051c93c70900df5a79f3b8efc6e15ff0d38c0f203a8e6ef0c6984cd6e21357152a8b3eff2083962f0d14e00200017311384b92cc01df2f'
             )
 
 _gitname=LixD
@@ -24,10 +24,10 @@ _dubv=( "4.0.4+5.2.0"   # allegro
         "0.4.2"         # enumap
         "1.2.2"         # libinputvisitor
         "0.6.3"         # optional
-        "0.10.4"        # sdlang-d
-        "0.8.0"         # silly
-        "0.10.12"       # taggedalgebraic
-        "0.7.52"        # unit-threaded
+        "0.10.6"        # sdlang-d
+        "1.0.2"         # silly
+        "0.11.12"       # taggedalgebraic
+        "0.7.55"        # unit-threaded
         )
 
 # let makepkg handle dub packages
@@ -48,7 +48,7 @@ source+=(   "$pkgname-allegro::git+https://github.com/SiegeLord/DAllegro5.git#ta
             "$pkgname-libinputvisitor::git+https://github.com/Abscissa/libInputVisitor.git#tag=v${_dubv[5]}"
             "$pkgname-optional::git+https://github.com/aliak00/optional.git#tag=v${_dubv[6]}"
             "$pkgname-sdlang-d::git+https://github.com/Abscissa/SDLang-D.git#tag=v${_dubv[7]}"
-            "$pkgname-silly::git+https://github.com/ohdatboi/silly.git#tag=v${_dubv[8]}"
+            "$pkgname-silly::git+https://gitlab.com/AntonMeep/silly.git#tag=v${_dubv[8]}"
             "$pkgname-taggedalgebraic::git+https://github.com/s-ludwig/taggedalgebraic.git#tag=v${_dubv[9]}"
             "$pkgname-unit-threaded::git+https://github.com/atilaneves/unit-threaded.git#tag=v${_dubv[10]}"
             )
