@@ -10,7 +10,7 @@ pkgdesc="A markdown editor with inline preview"
 arch=('x86_64')
 url="http://abricotine.brrd.fr"
 license=('GPL3')
-depends=('gconf' 'libxss')
+depends=('libxss')
 makedepends=('npm')
 source=("abricotine::git+https://github.com/brrd/abricotine"
         "abricotine.desktop")
@@ -37,7 +37,7 @@ package() {
     cp -r dist/*/* "$pkgdir/opt/abricotine"
 
     install -d "$pkgdir/usr/bin"
-    ln -s "/opt/abricotine/Abricotine" "$pkgdir/usr/bin/abricotine"
+    ln -s "/opt/abricotine/abricotine" "$pkgdir/usr/bin/abricotine"
 
     install -Dm644 "../abricotine.desktop" -t "$pkgdir/usr/share/applications/"
     install -Dm644 "icons/abricotine@2x.png" "$pkgdir/usr/share/pixmaps/abricotine.png"
