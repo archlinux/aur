@@ -1,0 +1,20 @@
+pkgbase = python-mdns-publisher
+	pkgdesc = Publish CNAMEs pointing to the local host over Avahi/mDNS
+	pkgver = 0.9.2
+	pkgrel = 00
+	url = https://github.com/carlosefr/mdns-publisher
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = python
+	depends = python-dbus-python
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/5e/e4/9515caa454ca4dffb36df2b1049ae203f01b924d7c0bc2ce0d5864608ab6/mdns-publisher-0.9.2.tar.gz
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = bcd7601229f057eefbf4bb4afd24b4f4
+	md5sums = 960a578d0d8f17270e2c5b69c4047f6c
+
+pkgname = python-mdns-publisher
+
