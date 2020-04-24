@@ -8,7 +8,7 @@ url="https://github.com/soptikha2/desed"
 license=('GPL3')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
-conflicts=('desed')
+conflicts=('desed-git')
 source=("$pkgname::git+https://github.com/soptikha2/desed.git")
 sha256sums=('SKIP')
 
