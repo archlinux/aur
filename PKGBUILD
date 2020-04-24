@@ -7,7 +7,7 @@ pkgdesc="Weboob is a project which provides a core library, modules and applicat
 arch=('any')
 url="https://weboob.org"
 license=('LGPL-3.0+')
-install='post_install'
+install='weboob.install'
 depends=('weboob'
          'python-pyqt5')
 makedepends=('python-setuptools')
