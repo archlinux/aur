@@ -1,7 +1,7 @@
 pkgbase = m68k-elf-newlib
 	pkgdesc = C library for bare metal systems (m68k-elf).
-	pkgver = 3.1.0
-	pkgrel = 4
+	pkgver = 3.3.0
+	pkgrel = 1
 	url = https://sourceware.org/newlib/
 	arch = any
 	groups = devel
@@ -12,8 +12,8 @@ pkgbase = m68k-elf-newlib
 	options = !strip
 	options = staticlibs
 	options = !libtool
-	source = ftp://sourceware.org/pub/newlib/newlib-3.1.0.20181231.tar.gz
-	sha256sums = 9e12fea7297648b114434033ed4458755afe7b9b6c7d58123389e82bd37681c0
+	source = ftp://sourceware.org/pub/newlib/newlib-3.3.0.tar.gz
+	sha256sums = 58dd9e3eaedf519360d92d84205c3deef0b3fc286685d1c562e245914ef72c66
 
 pkgname = m68k-elf-newlib
 
