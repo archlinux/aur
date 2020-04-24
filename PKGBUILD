@@ -7,6 +7,7 @@ pkgname=(
 )
 pkgver=1.17.10
 pkgrel=1
+epoch=1
 arch=(
 	"x86_64"
 )
@@ -109,8 +110,8 @@ prepare()
 build()
 {
 	#* We need to manually state the compielr flags as quiche is sensitive to changes here
-	export CFLAGS="-march=x86_64 -mtune=generic -O3 -pipe -fno-plt"
-	export CXXFLAGS="${CFLAGS}"
+	export CFLAGS="-O3 -pipe -fno-plt"
+	export CXXFLAGS="-O3 -pipe -fno-plt"
 
 	cd "nginx" || exit
 	./auto/configure \
