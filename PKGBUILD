@@ -1,11 +1,11 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Maintainer: tkashkin
 # Maintainer: neuromancer
 # Contributor: friday
 # Contributor: Helder Bertoldo <helder.bertoldo@gmail.com>
 
 pkgname=gamehub-git
-pkgver=0.15.0.8.dev.r0.g390e27e
+pkgver=0.16.0.2.dev.r0.g7fac970
 pkgrel=1
 pkgdesc="Games manager, downloader, library that supports GOG, Steam and Humble Bundle. Designed for Pantheon Shell"
 arch=(i686 x86_64 armv6h armv7h aarch64)
