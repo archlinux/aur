@@ -1,0 +1,5 @@
+src
+pkg
+*x86_64.pkg.tar.xz
+suricata-*.tar.gz
+suricata-*.tar.gz.sig

@@ -1,0 +1,73 @@
+# Maintainer: Amish <contact at via dot aur>
+pkgname=suricata-nfqueue
+_pkgname=suricata
+pkgver=5.0.2
+pkgrel=1
+pkgdesc="An open source mature, fast and robust network IDS and IPS"
+arch=('i686' 'x86_64')
+url="https://suricata-ids.org/"
+license=('GPL2')
+provides=('suricata')
+conflicts=('suricata')
+makedepends=('rust')
+depends=('file' 'libcap-ng' 'libnet' 'libnetfilter_queue' 'libpcap' 'libyaml' 'nss' 'pcre' 'python')
+install=suricata.install
+backup=('etc/suricata/suricata.yaml'
+        'etc/suricata/local.yaml'
+        'etc/suricata/classification.config'
+        'etc/suricata/reference.config'
+        'etc/suricata/threshold.config')
+source=(https://www.openinfosecfoundation.org/download/${_pkgname}-${pkgver}.tar.gz{,.sig}
+        suricata-update.{service,timer})
+validpgpkeys=('801C7171DAC74A6D3A61ED81F7F9B0A300C1B70D') # Open Information Security Foundation
+sha256sums=('7f30cac92feeab2a9281b6059b96f9f163dce9aadcc959a6c0b9a2f6d750cee7'
+            'SKIP'
+            '57505c464d30623c9d6611ca4b5d08a580c0116b20a4280f39c3720a3f369a92'
+            '9819395cc1c3c1618ced6a00f9572efa7834c2ccc2d55733013c01c9a822fbf2')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-nfqueue
+  make
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+
+  install -Dm644 -t "${pkgdir}/etc/${_pkgname}" "${_pkgname}".yaml threshold.config etc/{classification.config,reference.config}
+  install -Dm644 "${_pkgname}".yaml "${pkgdir}/etc/${_pkgname}/${_pkgname}.yaml.default"
+#  install -Dm644 -t "${pkgdir}/etc/${_pkgname}/rules" rules/*.rules
+  install -Dm644 /dev/null "${pkgdir}/etc/${_pkgname}/local.yaml"
+
+  echo "include: local.yaml" >> "${pkgdir}/etc/${_pkgname}/${_pkgname}.yaml"
+  sed -i -e 's:/var/run:/run/suricata:g' \
+    -e 's:^#magic-file\: /.*:magic-file\: /usr/share/file/misc/magic.mgc:' \
+    -e '/^  - suricata.rules/ a \ \ - local.rules' \
+    -e 's/^#run-as:/run-as:/' \
+    -e 's/^#  user:.*/  user: suricata/' \
+    -e 's/^#  group:.*/  group: suricata/' \
+    -e 's/^# threshold-file:/threshold-file:/' \
+    "${pkgdir}/etc/${_pkgname}/${_pkgname}.yaml"
+
+  install -Dm644 etc/"${_pkgname}".logrotate "${pkgdir}/etc/logrotate.d/${_pkgname}"
+  sed -i -e 's:/var/run:/run:g' \
+    "${pkgdir}/etc/logrotate.d/${_pkgname}"
+  install -Dm644 -t "${pkgdir}"/usr/lib/systemd/system etc/"${_pkgname}".service "${srcdir}"/suricata-update.{service,timer}
+  sed -i -e 's:/var/run:/run:g' \
+    -e 's:^Description=.*:Description=Suricata IDS/IPS daemon:g' \
+    -e 's:^After=.*:After=network.target:g' \
+    -e 's:^ExecStartPre=.*:PIDFile=suricata/suricata.pid:g' \
+    -e 's:^ExecStart=.*:ExecStart=/usr/bin/suricata -c /etc/suricata/suricata.yaml --pidfile /run/suricata/suricata.pid -q 0:g' \
+    "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+
+  echo "u suricata -" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
+  install -Dm644 /dev/stdin "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf" << 'EOF'
+d /run/suricata 0750 suricata suricata
+d /var/log/suricata 0750 suricata suricata
+d /var/lib/suricata 0750 suricata suricata
+d /var/lib/suricata/rules 0750 suricata suricata
+d /var/lib/suricata/update 0750 suricata suricata
+f /var/lib/suricata/rules/local.rules 0640 suricata suricata
+EOF
+}

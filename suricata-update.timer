@@ -1,0 +1,10 @@
+[Unit]
+Description=Suricata rules downloader
+
+[Timer]
+OnCalendar=weekly
+Persistent=true
+RandomizedDelaySec=12h
+
+[Install]
+WantedBy=timers.target
