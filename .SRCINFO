@@ -1,6 +1,6 @@
 pkgbase = leddy-git
 	pkgdesc = Linux LED controller for the fnatic miniSTREAK keyboard
-	pkgver = r4.0af1a43
+	pkgver = r6.e4f25f8
 	pkgrel = 1
 	url = https://github.com/XanClic/leddy
 	arch = any
