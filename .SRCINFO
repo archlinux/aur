@@ -8,7 +8,7 @@ pkgbase = desed
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
-	conflicts = desed
+	conflicts = desed-git
 	source = desed::git+https://github.com/soptikha2/desed.git
 	sha256sums = SKIP
 
