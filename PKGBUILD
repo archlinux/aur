@@ -3,37 +3,40 @@
 pkgbase='python-streamlit'
 pkgname=('python-streamlit')
 _module='streamlit'
-pkgver='0.48.1'
+pkgver='0.58.0'
 pkgrel=1
 pkgdesc="Streamlit: Frontend library for machine learning engineers"
 url="https://streamlit.io"
 depends=(
 	'python'
-	'python-altair3>=3.2.0'
+	'python-altair'
 	'python-astor'
 	'python-base58'
 	'python-blinker'
 	'python-boto3'
-	'python-botocore'
+	'python-botocore>=1.13.44'
+	'python-cachetools>=4.0'
 	'python-click>=7.0'
+	'python-packaging'
+	'python-dateutil'
 	'python-enum-compat'
-	'python-future'
-	'python-pillow>5.1.0'
+	'python-numpy'
+	'python-pandas>=0.21.0'
+	'python-pillow>=6.2.0'
 	'python-protobuf>=3.6.0'
+	'python-pydeck>=0.1.dev5'
 	'python-requests'
 	'python-toml'
 	'python-tornado5'
 	'python-tzlocal'
 	'python-validators'
 	'python-watchdog'
-	'python-pandas'
-	'python-numpy'
 )
 makedepends=('python-pip')
 license=('unknown')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/ba/f4/aec55c04285d3e369c11574f7b95703bb3472ab17f03a488d3f5314cce8b/streamlit-0.48.1-py2.py3-none-any.whl")
-sha256sums=('e2b78bae27fba241110ec5578262d83baecc55dd1089034c7388b5ce5c987cc5')
+source=("https://files.pythonhosted.org/packages/1a/3e/ecb1b11fe3e6230bc1c7f37d75f4185a3a7dc066c223f12947a0d51c2bfb/streamlit-0.58.0-py2.py3-none-any.whl")
+sha256sums=('05a1cc17d10f7c386a96a3712ec370fc9121bddd8984f5a81c1a69f7f4202e49')
 
 package() {
     cd "${srcdir}"
