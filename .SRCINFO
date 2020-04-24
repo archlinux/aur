@@ -1,0 +1,54 @@
+pkgbase = garuda-settings-manager-git
+	pkgdesc = Garuda Linux System Settings Tool (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)
+	pkgver = r10.2986fa6
+	pkgrel = 1
+	url = https://gitlab.com/garuda-linux/applications/garuda-settings-manager
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = qt5-tools
+	makedepends = knotifications
+	makedepends = kconfigwidgets
+	makedepends = kcmutils
+	depends = icu
+	depends = qt5-base>=5.12.3
+	depends = hwinfo
+	depends = kitemmodels
+	depends = kauth
+	depends = kcoreaddons
+	depends = ckbcomp
+	depends = xdg-utils
+	depends = mhwd-garuda
+	optdepends = garuda-settings-manager-notifier: qt-based
+	optdepends = garuda-settings-manager-knotifier: knotifications-based
+	conflicts = kcm-msm
+	source = git+https://gitlab.com/garuda-linux/applications/garuda-settings-manager.git
+	sha256sums = SKIP
+
+pkgname = garuda-settings-manager-git
+	provides = garuda-settings-manager
+	conflicts = garuda-settings-manager
+
+pkgname = garuda-settings-manager-kcm-git
+	pkgdesc = Garuda Linux System Settings Tool (KCM for Plasma 5)
+	depends = garuda-settings-manager
+	depends = kcmutils
+	depends = kconfigwidgets
+	replaces = kcm-msm
+
+pkgname = garuda-settings-manager-notifier-git
+	pkgdesc = Garuda Linux System Settings Tool (Notifier)
+	depends = garuda-settings-manager
+	provides = garuda-settings-manager-kde-notifier
+	conflicts = garuda-settings-manager-kde-notifier
+
+pkgname = garuda-settings-manager-knotifier-git
+	pkgdesc = Garuda Linux System Settings Tool (Notifier for Plasma 5)
+	depends = garuda-settings-manager
+	depends = knotifications
+	conflicts = garuda-settings-manager-notifier
+	replaces = garuda-settings-manager-kde-notifier
+
