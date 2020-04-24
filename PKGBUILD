@@ -2,18 +2,17 @@
 # Contributor: Samuel Mesa <samuelmesa@linuxmail.org>
 
 pkgname=orfeo-toolbox
-pkgver=7.0.0
-_pkgver=7.0
-minorver=1
-pkgrel=4
+pkgver=7.1.0
+_pkgver=7.1
+pkgrel=2
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org/otb/"
 license=('CeCILL')
 groups=()
-depends=('gdal' 'agg' 'freeglut' 'curl' 'fftw' 'tinyxml' 'muparser' 'fltk' 'python2' 'openthreads' 'boost'
+depends=('gdal' 'agg' 'freeglut' 'curl' 'fftw' 'tinyxml' 'muparser' 'fltk' 'python' 'openthreads' 'boost'
 		'hdf5'  'insight-toolkit' 'ossim' 'libsvm' 'qwt' 'opencv' 'glfw' 'openmpi')
-makedepends=('boost' 'swig' 'cmake' 'qt5-base')
+makedepends=('git' 'swig' 'cmake' 'qt5-base')
 optdepends=()
 provides=()
 conflicts=()
@@ -23,11 +22,11 @@ options=()
 install=
 changelog=
 
-source=(https://www.orfeo-toolbox.org/packages/OTB-$pkgver.tar.gz
+source=("${pkgname}.tar.gz::https://www.orfeo-toolbox.org/packages/OTB-$pkgver.tar.gz"
 		git://github.com/jmichel-otb/GKSVM.git)
 noextract=()
 
-md5sums=('314b985d112dab6d407dd6d35bccc790'
+md5sums=('188f9875a419591397db417d3f3d465d'
          'SKIP')
 
 
@@ -37,12 +36,11 @@ prepare() {
 	## Module for monteverdi build
 	cd 	$srcdir/  
 	cp -ra $srcdir/GKSVM $srcdir/Modules/Remote
+	patch --forward --strip=1 --input="${srcdir}/ITK.patch"
 }
 
 build() {  
   cd $srcdir/  
-  msg "Extracting archive..."
-  msg "starting make..."
  
   if  [ -d "$srcdir/build/" ]; then
     rm -rf $srcdir/build/
@@ -53,22 +51,24 @@ build() {
  
    cmake ../ \
   -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_CXX_FLAGS="$CXXFLAGS -fPIC" \
-      -DCMAKE_C_FLAGS="$CFLAGS -fPIC" \
-          -DCMAKE_INSTALL_PREFIX=/usr \
-          -DOTB_USE_CURL=ON \
-          -DBUILD_EXAMPLES=OFF \
-          -DBUILD_TESTING=OFF \
-          -DOTB_WRAP_PYTHON=ON \
-          -DBUILD_SHARED_LIBS=ON \
-          -DOTB_USE_QT=ON \
-          -DOTB_USE_OPENCV=ON \
-          -DOTB_USE_MUPARSER=ON \
-          -DOTB_USE_LIBKML=OFF \
-          -DOTB_USE_LIBSVM=ON \
-          -DOTB_USE_OPENMP=ON \
-          -DOTB_USE_6S=ON \
-          -DOTB_DATA_USE_LARGEINPUT=ON
+  -DCMAKE_CXX_FLAGS="$CXXFLAGS -fPIC" \
+  -DCMAKE_C_FLAGS="$CFLAGS -fPIC" \
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DOTB_USE_CURL=ON \
+  -DBUILD_EXAMPLES=OFF \
+  -DBUILD_TESTING=OFF \
+  -DOTB_WRAP_PYTHON=ON \
+  -DBUILD_SHARED_LIBS=ON \
+  -DOTB_USE_QT=ON \
+  -DOTB_USE_GLEW=ON \
+  -DOTB_USE_OPENCV=ON \
+  -DOTB_USE_MUPARSER=ON \
+  -DOTB_USE_MPI=ON \
+  -DOTB_USE_LIBKML=OFF \
+  -DOTB_USE_LIBSVM=ON \
+  -DOTB_USE_OPENMP=ON \
+  -DOTB_USE_6S=ON \
+  -DOTB_DATA_USE_LARGEINPUT=ON
          
   make
  
