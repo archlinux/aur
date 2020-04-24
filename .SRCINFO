@@ -1,0 +1,13 @@
+pkgbase = statusok-bin
+	pkgdesc = Monitor your Website and APIs from your Computer. Get Notified through Slack, E-mail when your server is down or response time is more than expected
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/sanathp/statusok
+	arch = x86_64
+	license = Apache-2.0
+	provides = statusok
+	source = https://github.com/sanathp/statusok/releases/download/0.1.1/statusok_linux.zip
+	sha256sums = d8eebddf6fefe19a80f5a40e4a8f8167325752c9e0aae07a7814630c1b269fa5
+
+pkgname = statusok-bin
+
