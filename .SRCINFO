@@ -1,0 +1,24 @@
+pkgbase = python-polyscope
+	pkgdesc = Python viewer and user interface for 3D data, like meshes and point clouds
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://polyscope.run/py/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cmake
+	makedepends = libglvnd
+	makedepends = libxi
+	makedepends = libxcursor
+	makedepends = libxinerama
+	makedepends = libxrandr
+	makedepends = python-setuptools
+	depends = gcc-libs
+	depends = libx11
+	source = https://files.pythonhosted.org/packages/58/bc/420255d2142e2e88d42fb17673867e23f2a82d255b0db3c204bf4cb4aa92/polyscope-0.1.2.tar.gz
+	sha256sums = eceecaf3762f1b785726dab2696d23dfd353a43adac032924066a596ebc711b3
+
+pkgname = python-polyscope
+
