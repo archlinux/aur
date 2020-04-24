@@ -3,10 +3,10 @@
 
 pkgname=nginx-mod-fancyindex
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 
 _modname="${pkgname#nginx-mod-}"
-_nginxver=1.16.1
+_nginxver=1.18.0
 
 pkgdesc='Fancy indexes module for the Nginx web server'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
         https://github.com/aperezdc/ngx-$_modname/archive/v$pkgver.tar.gz
 )
 validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8) # Maxim Dounin <mdounin@mdounin.ru>
-md5sums=('45a80f75336c980d240987badc3dcf60'
+md5sums=('b2d33d24d89b8b1f87ff5d251aa27eb8'
          'SKIP'
          'dfd302335124520de95a7028f56d657b')
 
