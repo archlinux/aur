@@ -1,0 +1,26 @@
+pkgbase = mhwd-garuda-git
+	pkgdesc = mhwd-garuda(manjaro's mhwd backported to archlinux with additional features and limited to only dkms drivers)
+	pkgver = r11.b17a3eb
+	pkgrel = 1
+	url = https://gitlab.com/garuda-linux/applications/mhwd-garuda
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	depends = hwinfo
+	source = git+https://gitlab.com/garuda-linux/applications/mhwd-garuda.git#branch=master
+	sha256sums = SKIP
+
+pkgname = mhwd-garuda-git
+	pkgdesc = mhwd library and application
+	install = mhwd.install
+	depends = hwinfo
+	depends = mesa
+	depends = mhwd-db-garuda
+	depends = uvesafb-dkms
+	depends = pacman
+	optdepends = lib32-mesa: for 32bit libgl support
+	provides = mhwd
+	conflicts = mhwd
+
