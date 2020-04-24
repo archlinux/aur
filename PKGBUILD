@@ -1,14 +1,14 @@
 # Maintainer: LinuxVieLoisir <contact@gnumeria.fr>
 
 pkgname=firefox-nightly-hg
-pkgver=r511851.df59b74d33d7
+pkgver=r525770.1d081d576488
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, nightly version"
 _repo=https://hg.mozilla.org/mozilla-central
 _pkgname=firefox-nightly
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
-depends=(gtk3 nss mozilla-common libxt startup-notification mime-types dbus-glib
+depends=(gtk3 nss-hg nspr-hg mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg sqlite ttf-font libpulse libvpx icu)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust ccache mercurial clang llvm jack 
@@ -76,9 +76,8 @@ ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 # System libraries
-ac_add_options --without-system-nspr
-ac_add_options --without-system-nss
-ac_add_options --without-system-libvpx
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
 ac_add_options --with-system-libevent
 ac_add_options --with-system-icu
 ac_add_options --with-system-zlib
@@ -111,7 +110,11 @@ build() {
   export MOZ_SOURCE_REPO="$_repo"
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-  ./mach build
+  #./mach build
+  # LTO/PGO needs more open files
+  ulimit -n 4096
+  xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
+  ./mach buildsymbols
 }
 
 package() {
@@ -119,8 +122,8 @@ package() {
   DESTDIR="$pkgdir" ./mach install
   find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 
-  _vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
-  install -Dm644 /dev/stdin "$_vendorjs" <<END
+  local vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
+  install -Dvm644 /dev/stdin "$vendorjs" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
@@ -135,8 +138,9 @@ pref("extensions.autoDisableScopes", 11);
 pref("extensions.shownSelectionUI", true);
 END
 
-  _distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
-  install -Dm644 /dev/stdin "$_distini" <<END
+  local distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
+  install -Dvm644 /dev/stdin "$distini" <<END
+
 [Global]
 id=archlinux
 version=1.0
@@ -174,3 +178,6 @@ END
   ln -sf /usr/share/hunspell "$pkgdir/usr/lib/$_pkgname/dictionaries"
   ln -sf /usr/share/hyphen "$pkgdir/usr/lib/$_pkgname/hyphenation"
   }
+sha512sums=('SKIP'
+            '28219dab29bb53fa66c894ea16330f3cd20f6783000141a1a57e2a9616d9b4a377f85fd8d213e47c5323738e0a867039bc64648e2316aa7519266d23c14989e4'
+            'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7')

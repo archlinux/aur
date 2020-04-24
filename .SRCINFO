@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-hg
 	pkgdesc = Standalone web browser from mozilla.org, nightly version
-	pkgver = r511851.df59b74d33d7
+	pkgver = r525770.1d081d576488
 	pkgrel = 1
 	url = http://www.mozilla.org/projects/firefox
 	install = firefox.install
@@ -30,7 +30,8 @@ pkgbase = firefox-nightly-hg
 	makedepends = cbindgen
 	makedepends = nasm
 	depends = gtk3
-	depends = nss
+	depends = nss-hg
+	depends = nspr-hg
 	depends = mozilla-common
 	depends = libxt
 	depends = startup-notification
