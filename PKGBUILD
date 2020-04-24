@@ -12,9 +12,9 @@ arch=('i686' 'x86_64')
 url="https://gitlab.com/garuda-linux/applications/garuda-settings-manager"
 license=("GPL")
 depends=('icu' 'qt5-base>=5.12.3' 'hwinfo' 'kitemmodels' 'kauth' 
-         'kcoreaddons' 'ckbcomp' 'xdg-utils' 'mhwd-garuda')
-optdepends=('garuda-settings-manager-notifier: qt-based'
-            'garuda-settings-manager-knotifier: knotifications-based')
+         'kcoreaddons' 'ckbcomp' 'xdg-utils' 'mhwd-garuda-git')
+optdepends=('garuda-settings-manager-notifier-git: qt-based'
+            'garuda-settings-manager-knotifier-git: knotifications-based')
 makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'qt5-tools' 'knotifications' 
              'kconfigwidgets' 'kcmutils')
 conflicts=('kcm-msm')
