@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Mission Planner
+Comment=Mission Planner Ground Control Station
+GenericName=Ground Control Station
+Exec=mono /opt/mission-planner/MissionPlanner.exe
+# Icon=visual-studio-code
+Type=Application
+StartupNotify=false
+StartupWMClass=mission-planner-ardupilot
+Categories=Utility;
+Keywords=ardupilot;mission;planner;uav
+
