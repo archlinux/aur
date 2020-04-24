@@ -1,6 +1,6 @@
 pkgbase = foot
 	pkgver = 1.2.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://codeberg.org/dnkl/foot
 	arch = x86_64
 	license = mit
@@ -21,7 +21,7 @@ pkgbase = foot
 	sha256sums = 4b4c30b1033ac1d261d6b83eec7f5122dafdb6a80a2319b0af3d6623c360f722
 
 pkgname = foot
-	pkgdesc = A wayland native terminal emulator
+	pkgdesc = Wayland terminal emulator - fast, lightweight and minimalistic
 	optdepends = foot-terminfo: terminfo for foot
 
 pkgname = foot-terminfo
