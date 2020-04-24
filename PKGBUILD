@@ -1,4 +1,5 @@
-# Maintainer: ScarecrowDM <diego(dot)busnelli@hotmail(dot)com
+# Maintainer: ScarecrowDM <diego(dot)busnelli@hotmail(dot)com>
+# Maintainer: core_contingency <ccontingency(at)gmail(dot)com>
 # Contributor: Alex Xu (Hello71) <alex_y_xu@yahoo.ca>
 # Contributor: pyamsoft <pyam(dot)soft(at)gmail(dot)com>
 
