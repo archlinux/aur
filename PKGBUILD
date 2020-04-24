@@ -7,15 +7,15 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite-skia-bin
-pkgver=1.2.17
-pkgrel=2
+pkgver=1.2.18
+pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url='http://www.aseprite.org/'
 license=('custom')
 depends=('cmark' 'curl' 'giflib' 'zlib' 'libpng' 'tinyxml' 'freetype2'
-         'harfbuzz-icu' 'nettle' 'fontconfig' 'libxcursor' 'hicolor-icon-theme')
-makedepends=('cmake' 'ninja' 'freeglut')
+         'fontconfig' 'libxcursor' 'hicolor-icon-theme')
+makedepends=('cmake' 'ninja' 'freeglut' 'harfbuzz-icu' 'nettle' 'libxi')
 provides=('aseprite')
 conflicts=('aseprite-git' 'aseprite-gpl' 'skia-git' 'aseprite')
 source=("https://github.com/aseprite/aseprite/releases/download/v${pkgver}/Aseprite-v${pkgver}\
@@ -24,7 +24,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v${pkgver}/Asepr
 'aseprite.desktop'
 )
 noextract=('Skia-Linux-Release-x64.zip')
-sha256sums=('698fb3f667f643869995f2a2d615561ec23cf03c1362895f90ebcc29ed8c1fc1'
+sha256sums=('8ac253a002b14a9064d0ebcb99ad5fc715fd021c64ae9c9faa5f0facf1beb998'
             '37cb146efbffb0571a541c48acd7926ed6571cd3aa50be67f8a9b97901e26769'
             'deaf646a615c79a4672b087562a09c44beef37e7acfc6f5f66a437d4f3b97a25')
 
