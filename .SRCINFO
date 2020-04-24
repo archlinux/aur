@@ -1,6 +1,6 @@
 pkgbase = yuzu-git
 	pkgdesc = An experimental open-source Nintendo Switch emulator/debugger
-	pkgver = r13623.aa3f9b960
+	pkgver = r14488.f24c67877
 	pkgrel = 1
 	url = https://github.com/yuzu-emu/yuzu/
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = yuzu-git
 	depends = qt5-multimedia
 	depends = qt5-tools
 	depends = libxkbcommon-x11
+	depends = libfdk-aac
 	optdepends = qt5-wayland: for Wayland support
 	provides = yuzu
 	provides = yuzu-cmd
