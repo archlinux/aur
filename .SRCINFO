@@ -20,9 +20,7 @@ pkgbase = freeipa
 	makedepends = openssl
 	makedepends = ding-libs
 	makedepends = libsasl
-	makedepends = python2-ldap
 	makedepends = python2-nss
-	makedepends = python2-netaddr>=0.7.16
 	makedepends = python2-pyasn1
 	makedepends = python2-pyasn1-modules
 	makedepends = python2-dnspython
@@ -37,7 +35,7 @@ pkgbase = freeipa
 	source = 0001-platform-add-Arch-Linux-platform.patch
 	source = freeipa-client-update-sshd_config
 	source = freeipa-client-update-sshd_config.hook
-	sha256sums = 58612882840a08341579d0602501e0dbb1b83ebadd93bed78b5f3b55e3d821e7
+	sha256sums = 89df0d170e960d859512d2cdb601e99049bcb84423441d9b92a1cf47dd0a9d84
 	sha256sums = f30985cdc09070da6c935bc8e3b1f0d870f91766bf6ecdef41815386beccb369
 	sha256sums = 9fbac49fa4bc23afe0c4d575ea2795f1da435399289dbd04c5a3ac47580e2a0d
 	sha256sums = 1e73f394d276357dcd578df7a349b1f381c9edc7b1c053ecf65f7a9255c0490d
@@ -61,7 +59,8 @@ pkgname = python-ipalib
 	depends = python-dbus
 	depends = python-setuptools
 	depends = python-six
-	depends = python2-ldap
+	depends = python-ldap
+	depends = python-netaddr
 	depends = python-dnspython>=1.15
 	depends = python-netifaces>=0.10.4
 	depends = python-pyusb
@@ -87,7 +86,6 @@ pkgname = python2-ipalib
 	depends = python2>=2.7.9
 	depends = python2-nss>=0.16
 	depends = python2-cryptography>=1.4
-	depends = python2-netaddr>=0.7.16
 	depends = sssd
 	depends = python2-qrcode>=5.0.0
 	depends = python2-pyasn1
@@ -97,7 +95,6 @@ pkgname = python2-ipalib
 	depends = python2-dbus
 	depends = python2-setuptools
 	depends = python2-six
-	depends = python2-ldap
 	depends = python2-dnspython>=1.15
 	depends = python2-enum34
 	depends = python2-netifaces>=0.10.4
@@ -132,7 +129,6 @@ pkgname = freeipa-client
 	depends = freeipa-client-common=4.8.6-1
 	depends = freeipa-common=4.8.6-1
 	depends = python2-ipaclient=4.8.6-1
-	depends = python2-ldap
 	depends = python-augeas
 	depends = cyrus-sasl-gssapi
 	depends = ntp

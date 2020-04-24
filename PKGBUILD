@@ -29,9 +29,7 @@ makedepends=('openldap'
              'openssl'
              'ding-libs'
              'libsasl'
-             'python2-ldap'
              'python2-nss'
-             'python2-netaddr>=0.7.16'
              'python2-pyasn1'
              'python2-pyasn1-modules'
              'python2-dnspython'
@@ -162,7 +160,8 @@ package_python-ipalib() {
              'python-dbus'
              'python-setuptools'
              'python-six'
-             'python2-ldap'
+             'python-ldap'
+             'python-netaddr'
              'python-dnspython>=1.15'
              'python-netifaces>=0.10.4'
              'python-pyusb')
@@ -222,7 +221,6 @@ package_python2-ipalib() {
              'python2>=2.7.9'
              'python2-nss>=0.16'
              'python2-cryptography>=1.4'
-             'python2-netaddr>=0.7.16'
              'sssd'
              'python2-qrcode>=5.0.0'
              'python2-pyasn1'
@@ -232,7 +230,6 @@ package_python2-ipalib() {
              'python2-dbus'
              'python2-setuptools'
              'python2-six'
-             'python2-ldap'
              'python2-dnspython>=1.15'
              'python2-enum34'
              'python2-netifaces>=0.10.4'
@@ -332,7 +329,6 @@ package_freeipa-client() {
     depends=("freeipa-client-common=$pkgver-$pkgrel"
              "freeipa-common=$pkgver-$pkgrel"
              "python2-ipaclient=$pkgver-$pkgrel"
-             'python2-ldap'
              'python-augeas'
              'cyrus-sasl-gssapi'
              'ntp'
