@@ -1,27 +1,26 @@
 pkgbase = beaker-browser-bin
 	pkgdesc = Peer-to-peer browser with tools to create and host websites
 	pkgver = 0.8.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://beakerbrowser.com/
 	install = beaker-browser-bin.install
 	arch = x86_64
 	license = Modified MIT License (MIT)
+	depends = gtk3
+	depends = libsodium
 	depends = libxss
-	depends = libxtst
-	depends = libnotify
-	depends = gconf
-	depends = electron
-	provides = beaker-browser
-	provides = beakerbrowser
+	depends = nss
+	provides = beaker
+	conflicts = beaker
 	options = !strip
 	source = https://github.com/beakerbrowser/beaker/releases/download/0.8.10/Beaker.Browser-0.8.10.AppImage
 	source = beaker-browser.desktop
 	source = beaker-browser
 	source = LICENSE
-	md5sums = 1d67c93a67e2298628c3c12f279c2671
-	md5sums = 34b48b022c6c71212f0adb3981f2925d
-	md5sums = 09aa78a4ebb98e0c71aeaaf46fd6b11b
-	md5sums = 3862c029863f42c81265a712f9c17c4c
+	sha256sums = 0f0e9000a8a374b8def44c6f26a2d0981f052b9fe101d30ea0093a35c2f3e755
+	sha256sums = 5d5539f28d3a3177a75cdb6ea6f2c7cb6fc6c33a5d936fa30f5fb4396c20bba8
+	sha256sums = e6efc2fbdc8ed38e8b19e5e9d13e3ecd458a71d12731b43060395bc3a328d09f
+	sha256sums = 7a0ab6f0bfde635de0dea1a5e57e641de973544ba9a5fb8498c098563ad35783
 
 pkgname = beaker-browser-bin
 

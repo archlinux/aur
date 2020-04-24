@@ -1,13 +1,15 @@
-# Maintainer: JC Francois <jc.francois@gmail.com>
+# Maintainer: ny-a <nyaarch64@gmail..com>
+# Contributor: JC Francois <jc.francois@gmail.com>
 pkgname=beaker-browser-bin
 pkgver=0.8.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Peer-to-peer browser with tools to create and host websites"
 arch=('x86_64')
 url="https://beakerbrowser.com/"
 license=('Modified MIT License (MIT)')
-provides=('beaker-browser' 'beakerbrowser')
-depends=('libxss' 'libxtst' 'libnotify' 'gconf' 'electron')
+conflicts=('beaker')
+provides=('beaker')
+depends=('gtk3' 'libsodium' 'libxss' 'nss')
 backup=()
 
 options=(!strip)
@@ -15,10 +17,10 @@ source=("https://github.com/beakerbrowser/beaker/releases/download/${pkgver//_/-
         "beaker-browser.desktop"
         "beaker-browser"
         "LICENSE")
-md5sums=('1d67c93a67e2298628c3c12f279c2671'
-         '34b48b022c6c71212f0adb3981f2925d'
-         '09aa78a4ebb98e0c71aeaaf46fd6b11b'
-         '3862c029863f42c81265a712f9c17c4c')
+sha256sums=('0f0e9000a8a374b8def44c6f26a2d0981f052b9fe101d30ea0093a35c2f3e755'
+            '5d5539f28d3a3177a75cdb6ea6f2c7cb6fc6c33a5d936fa30f5fb4396c20bba8'
+            'e6efc2fbdc8ed38e8b19e5e9d13e3ecd458a71d12731b43060395bc3a328d09f'
+            '7a0ab6f0bfde635de0dea1a5e57e641de973544ba9a5fb8498c098563ad35783')
 
 install='beaker-browser-bin.install'
 
@@ -42,5 +44,5 @@ package() {
     install -Dm644  ${srcdir}/beaker-browser.desktop                    ${pkgdir}/usr/share/applications/beaker-browser.desktop
 
     install -Dm755  ${srcdir}/beaker-browser                            ${pkgdir}/usr/bin/beaker-browser
-    install -Dm444  ${srcdir}/LICENSE                                   ${pkgdir}/usr/share/LICENSES/beaker-browser/LICENSE
+    install -Dm444  ${srcdir}/LICENSE                                   ${pkgdir}/usr/share/licenses/beaker-browser/LICENSE
 }
