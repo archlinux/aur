@@ -1,14 +1,14 @@
 pkgbase = procs-bin
 	pkgdesc = A modern replacement for ps written in Rust
-	pkgver = 0.9.20
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/dalance/procs
 	arch = x86_64
 	license = MIT
 	provides = procs
 	conflicts = procs
-	source = https://github.com/dalance/procs/releases/download/v0.9.20/procs-v0.9.20-x86_64-lnx.zip
-	sha256sums = 40c992e70216440e4392cca7d9a9015d391fdfab567a31502fe976ca9288b582
+	source = https://github.com/dalance/procs/releases/download/v0.10.0/procs-v0.10.0-x86_64-lnx.zip
+	sha256sums = e3512ae9f3ce8addba67f489eb96570577ffcb96f37a29c1a0beaab4725f4ff5
 
 pkgname = procs-bin
 
