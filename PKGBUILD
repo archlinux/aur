@@ -5,7 +5,7 @@
 # Jan de Groot <jgc@archlinux.org>
 
 pkgname=cinnamon-screensaver-git
-pkgver=4.0.3
+pkgver=4.4.1.r9.gd3db5dc
 pkgrel=1
 pkgdesc="Screensaver designed to integrate well with the Cinnamon desktop."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('accountsservice' 'cinnamon-desktop' 'dbus-glib' 'libgnomekbd'
          'python-cairo' 'python-gobject' 'python-setproctitle' 'python-xapp' 'xapps')
 optdepends=('cinnamon-translations: i18n')
-makedepends=('git' 'gobject-introspection' 'intltool')
+makedepends=('git' 'meson' 'samurai' 'gobject-introspection')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=('etc/pam.d/cinnamon-screensaver')
@@ -27,24 +27,19 @@ pkgver() {
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    cd "${srcdir}"/${pkgname%-git}
-
-    autoreconf -fi
-}
-
 build() {
-    cd "${srcdir}"/${pkgname%-git}
+    mkdir -p "${srcdir}"/${pkgname%-git}/build
+    cd "${srcdir}"/${pkgname%-git}/build
 
-    ./configure --prefix=/usr \
-                --sysconfdir=/etc \
-                --libexecdir=/usr/lib/cinnamon-screensaver \
-                --localstatedir=/var
-    make
+    meson --prefix=/usr \
+          --libexecdir=lib/cinnamon-screensaver \
+          --buildtype=plain \
+          ..
+    samu
 }
 
 package() {
-    cd "${srcdir}"/${pkgname%-git}
+    cd "${srcdir}"/${pkgname%-git}/build
 
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" samu install
 }
