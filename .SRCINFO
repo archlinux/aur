@@ -1,13 +1,13 @@
 pkgbase = python-numpoly
 	pkgdesc = Numpy compatible polynomial representation
-	pkgver = 0.1.13
+	pkgver = 0.1.16
 	pkgrel = 1
 	url = https://github.com/jonathf/numpoly
 	arch = any
 	license = BSD
 	depends = python-numpy
 	depends = python-six
-	source = https://github.com/jonathf/numpoly/archive/v0.1.13.tar.gz
+	source = https://github.com/jonathf/numpoly/archive/v0.1.16.tar.gz
 	sha256sums = 32d7227b511dbc028be70f3c5766331a8dd5a6b55a3a6aaa94a307e24ef18aad
 
 pkgname = python-numpoly
