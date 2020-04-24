@@ -1,0 +1,12 @@
+pkgbase = dropwatch
+	pkgdesc = Project to detect packet drops in Linux kernel
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://github.com/nhorman/dropwatch
+	arch = x86_64
+	license = GPL2
+	source = https://github.com/nhorman/dropwatch/archive/v1.5.3.tar.gz
+	sha256sums = b748b66a816c1f94531446c0451da5461a4a31b0949244bb867d741c6ac0148b
+
+pkgname = dropwatch
+
