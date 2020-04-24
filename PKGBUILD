@@ -1,15 +1,15 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=kyma-bin
-pkgver=1.10.0
-pkgrel=2
+pkgver=1.11.1
+pkgrel=1
 pkgdesc='Simple set of commands to manage a Kyma installation'
 arch=('x86_64')
 url="https://github.com/kyma-project/cli"
 license=('Apache-2.0')
 provides=('kyma' 'kyma-cli')
 source=("${url}/releases/download/${pkgver}/kyma_Linux_x86_64.tar.gz")
-sha256sums=('f8a285c16dc66ecd55da18a931d86ae7d0ac896ce62356f7ffa43981e8adb851')
+sha256sums=('285dbbcd11f6476c03b59f1fd6d160ac720239ff4df840ec65011f4750c0553b')
 
 package() {
   install -Dm755 "${srcdir}"/kyma "${pkgdir}/usr/bin/kyma"
