@@ -1,7 +1,7 @@
 pkgbase = aseprite
 	pkgdesc = Create animated sprites and pixel art
-	pkgver = 1.2.17
-	pkgrel = 3
+	pkgver = 1.2.18
+	pkgrel = 1
 	url = http://www.aseprite.org/
 	arch = x86_64
 	license = custom
@@ -11,6 +11,9 @@ pkgbase = aseprite
 	makedepends = python2
 	makedepends = freeglut
 	makedepends = xorgproto
+	makedepends = libxi
+	makedepends = harfbuzz-icu
+	makedepends = nettle
 	depends = cmark
 	depends = curl
 	depends = giflib
@@ -18,15 +21,13 @@ pkgbase = aseprite
 	depends = libpng
 	depends = tinyxml
 	depends = freetype2
-	depends = harfbuzz-icu
-	depends = nettle
 	depends = fontconfig
 	depends = libxcursor
 	depends = hicolor-icon-theme
 	conflicts = aseprite-git
 	conflicts = aseprite-gpl
 	conflicts = skia-git
-	source = https://github.com/aseprite/aseprite/releases/download/v1.2.17/Aseprite-v1.2.17-Source.zip
+	source = https://github.com/aseprite/aseprite/releases/download/v1.2.18/Aseprite-v1.2.18-Source.zip
 	source = aseprite.desktop
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = git+https://github.com/aseprite/skia.git#branch=aseprite-m81
@@ -60,7 +61,7 @@ pkgbase = aseprite
 	source = git+https://skia.googlesource.com/external/github.com/google/wuffs.git#commit=4080840928c0b05a80cda0d14ac2e2615f679f1a
 	source = git+https://chromium.googlesource.com/chromium/src/third_party/zlib#commit=ea3ba903faac98b64b2bf8de5e98cd97b335a474
 	source = gn::https://chromium-gn.storage-download.googleapis.com/3523d50538357829725d4ed74b777a572ce0ac74
-	sha256sums = 698fb3f667f643869995f2a2d615561ec23cf03c1362895f90ebcc29ed8c1fc1
+	sha256sums = 8ac253a002b14a9064d0ebcb99ad5fc715fd021c64ae9c9faa5f0facf1beb998
 	sha256sums = deaf646a615c79a4672b087562a09c44beef37e7acfc6f5f66a437d4f3b97a25
 	sha256sums = SKIP
 	sha256sums = SKIP

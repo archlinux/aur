@@ -7,15 +7,16 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite
-pkgver=1.2.17
-pkgrel=3
+pkgver=1.2.18
+pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="http://www.aseprite.org/"
 license=('custom')
-depends=('cmark' 'curl' 'giflib' 'zlib' 'libpng' 'tinyxml' 'freetype2'
-         'harfbuzz-icu' 'nettle' 'fontconfig' 'libxcursor' 'hicolor-icon-theme')
-makedepends=('cmake' 'ninja' 'git' 'python2' 'freeglut' 'xorgproto')
+depends=('cmark' 'curl' 'giflib' 'zlib' 'libpng' 'tinyxml' 'freetype2' 'fontconfig' 'libxcursor'
+         'hicolor-icon-theme')
+makedepends=('cmake' 'ninja' 'git' 'python2' 'freeglut' 'xorgproto' 'libxi' 'harfbuzz-icu'
+             'nettle')
 conflicts=("aseprite-git" "aseprite-gpl" "skia-git")
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname^}-\
 v${pkgver}-Source.zip"
@@ -79,7 +80,7 @@ SPIRV-Headers.git#commit=29c11140baaf9f7fdaa39a583672c556bf1795a1"
 #commit=ea3ba903faac98b64b2bf8de5e98cd97b335a474"
 "gn::https://chromium-gn.storage-download.googleapis.com/3523d50538357829725d4ed74b777a572ce0ac74"
 )
-sha256sums=('698fb3f667f643869995f2a2d615561ec23cf03c1362895f90ebcc29ed8c1fc1'
+sha256sums=('8ac253a002b14a9064d0ebcb99ad5fc715fd021c64ae9c9faa5f0facf1beb998'
             'deaf646a615c79a4672b087562a09c44beef37e7acfc6f5f66a437d4f3b97a25'
             'SKIP'
             'SKIP'
