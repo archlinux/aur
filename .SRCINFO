@@ -1,6 +1,6 @@
 pkgbase = tp-kb-backlight-git
 	pkgdesc = Automated keyboard backlight
-	pkgver = 1.1
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/alexmohr/keyboard-backlight
 	arch = x86_64

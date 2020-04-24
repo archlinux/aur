@@ -1,7 +1,7 @@
 # Maintainer: Alexander Mohr <keyboard_backlight at mohr dot io>
 
 pkgname=tp-kb-backlight-git
-pkgver=1.1
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Automated keyboard backlight'
 arch=('x86_64')
