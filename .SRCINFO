@@ -13,6 +13,7 @@ pkgbase = neatvnc-git
 	depends = libuv
 	depends = libxkbcommon
 	depends = pixman
+	depends = aml-git
 	optdepends = libjpeg-turbo
 	source = neatvnc::git+https://github.com/any1/neatvnc.git
 	sha512sums = SKIP
