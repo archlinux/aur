@@ -1,0 +1,13 @@
+pkgbase = ostent-bin
+	pkgdesc = Ostent is a server tool to collect, display and report system metrics
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/ostrost/ostent
+	arch = x86_64
+	license = MIT
+	provides = ostent
+	source = https://github.com/ostrost/ostent/releases/download/v0.7.0/Linux-x86_64.tar.xz
+	sha256sums = 52a7d7f1194156c4770b5341ed72c8bdff35af3e55b2a0ba9ae5eedb453677a9
+
+pkgname = ostent-bin
+
