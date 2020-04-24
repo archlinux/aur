@@ -3,24 +3,19 @@
 
 pkgname=nginx-mod-slowfs-cache
 pkgver=1.10
-pkgrel=5
+pkgrel=6
 _dirname="ngx_slowfs_cache-${pkgver}"
-_nginxver=1.16.1
+_nginxver=1.18.0
 
 pkgdesc='NGINX module that adds ability to cache static files'
 arch=('x86_64')
 depends=("nginx=$_nginxver" "libutil-linux")
+makedepends=("nginx-src")
 url='http://labs.frickle.com/nginx_ngx_slowfs_cache'
 license=('CUSTOM')
 
-source=(
-  https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
-  "$pkgname-$pkgver::http://labs.frickle.com/files/${_dirname}.tar.gz"
-)
-validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8) # Maxim Dounin <mdounin@mdounin.ru>
-sha256sums=('f11c2a6dd1d3515736f0324857957db2de98be862461b5a542a3ac6188dbe32b'
-            'SKIP'
-            '1e81453942e5b0877de1f1f06c56ae82918ea9818255cb935bcb673c95a758a1')
+source=("$pkgname-$pkgver::http://labs.frickle.com/files/${_dirname}.tar.gz")
+sha256sums=('1e81453942e5b0877de1f1f06c56ae82918ea9818255cb935bcb673c95a758a1')
 
 prepare() {
   cd "$srcdir/$_dirname"
@@ -34,14 +29,15 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir"/nginx-$_nginxver
+  cp -r /usr/src/nginx .
+  cd "$srcdir"/nginx
   ./configure --with-compat --add-dynamic-module="../$_dirname"
   make modules
 }
 
 package() {
   install -Dm755 "$srcdir/$_dirname/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-  cd "$srcdir"/nginx-$_nginxver/objs
+  cd "$srcdir"/nginx/objs
   for mod in ngx_*.so; do
     install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
   done
