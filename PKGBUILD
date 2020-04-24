@@ -18,8 +18,9 @@ sha512sums=(
 
 package() {
   echo "Starting install"
-  Plexamp-${pkgver}.AppImage --appimage-extract plexamp.desktop
+  chmod +x ./Plexamp-${pkgver}.AppImage
+  ./Plexamp-${pkgver}.AppImage --appimage-extract plexamp.desktop
   install -Dm755 Plexamp-${pkgver}.AppImage "$pkgdir"/usr/bin/Plexamp.AppImage
   echo 'Installing desktop launch file to "$pkgdir"/usr/bin/Plexamp.AppImage'
-  install -Dm755 plexamp.desktop "$pkgdir"/usr/share/applications/plexamp.desktop
+  install -Dm755 squashfs-root/plexamp.desktop "$pkgdir"/usr/share/applications/plexamp.desktop
 }
