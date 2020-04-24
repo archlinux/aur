@@ -13,7 +13,7 @@ pkgbase = mhwd-db-garuda-git
 	sha256sums = SKIP
 
 pkgname = mhwd-db-garuda-git
-	pkgdesc = mhwd Database
+	pkgdesc = mhwd-db-garuda(manjaro's mhwd-db backported to archlinux with additional features and limited to only dkms drivers)
 	install = mhwd-db.install
 	arch = i686
 	arch = x86_64
