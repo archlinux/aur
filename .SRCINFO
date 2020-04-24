@@ -1,6 +1,6 @@
 pkgbase = balena-cli
 	pkgdesc = balena.io command line interface
-	pkgver = 11.31.16
+	pkgver = 11.31.17
 	pkgrel = 1
 	url = https://balena.io/
 	arch = i686
@@ -21,10 +21,10 @@ pkgbase = balena-cli
 	optdepends = linux-aufs: balena preload/build/deploy --build
 	optdepends = avahi: balena scan
 	replaces = resin-cli
-	noextract = balena-cli-11.31.16.tgz
+	noextract = balena-cli-11.31.17.tgz
 	options = !strip
-	source = https://registry.npmjs.org/balena-cli/-/balena-cli-11.31.16.tgz
-	sha256sums = f449cf1c2440071d43890c51357d4a6f4841eb476fcbc69336f80f2aee7a4570
+	source = https://registry.npmjs.org/balena-cli/-/balena-cli-11.31.17.tgz
+	sha256sums = f7dd8158ee6c83fbc9c1f22e90b029e6671abfae9a7210918c422f3fddee7aec
 	optdepends_x86_64 = lib32-glibc: emulated builds
 
 pkgname = balena-cli
