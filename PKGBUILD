@@ -1,7 +1,7 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=glimpse-editor-git
-pkgver=0.1.0.r0.gb6b4dd0194
+pkgver=0.1.0.r95.gf1cd9dc9cd
 pkgrel=1
 pkgdesc="Fork of the GNU Image Manipulation Program"
 arch=(i686 x86_64)
@@ -27,7 +27,7 @@ optdepends=('gutenprint: for sophisticated printing only as glimpse has built-in
             )
 provides=(glimpse-editor gimp)
 conflicts=(glimpse-editor gimp)
-source=("git+https://github.com/glimpse-editor/Glimpse#branch=glimpse-0-1")
+source=("git+https://github.com/glimpse-editor/Glimpse")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -53,8 +53,8 @@ build() {
   	--libexecdir=/usr/bin \
   	--enable-mp \
   	--enable-gimp-console \
-  	--enable-python \
   	--enable-gtk-doc \
+    --disable-python \
     --with-bug-report-url=https://aur.archlinux.org/packages/glimpse-editor-git/ \
   	--with-openexr
 
