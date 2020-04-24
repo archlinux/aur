@@ -1,8 +1,9 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com> ([community] package)
+# Maintainer: Matt Rhoades <dev@rhoatech.com>
+# Contributor: Christian Hesse <mail@eworm.de>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com> ([community] package)
 
 pkgname=remmina-git
-pkgver=1.3.4.r1.g379a42c92
+pkgver=1.4.3.r14.g6c3c6655
 pkgrel=1
 pkgdesc='A remote desktop client written in GTK+ - git checkout'
 arch=(i686 x86_64)
@@ -12,13 +13,13 @@ depends=('gtk2' 'zlib' 'libjpeg' 'libssh' 'libunique' 'avahi' 'vte3'
 	'libgcrypt' 'libxdmcp' 'libgnome-keyring' 'libvncserver'
 	'libsecret' 'webkit2gtk')
 makedepends=('git' 'intltool' 'pkgconfig' 'cmake'
-	'avahi' 'libxkbfile' 'freerdp' 'telepathy-glib')
-optdepends=('avahi' 'libxkbfile' 'freerdp-git' 'telepathy-glib')
+	'avahi' 'libxkbfile' 'freerdp-git' 'telepathy-glib')
+optdepends=('avahi' 'libxkbfile' 'telepathy-glib')
 replaces=('remmina-plugins')
 provides=('remmina' 'grdc' "grdc=${pkgver}" 'remmina-plugins')
 conflicts=('remmina' 'grdc')
 install=remmina.install
-source=('remmina::git://github.com/FreeRDP/Remmina.git')
+source=('git+https://gitlab.com/remmina/remmina.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -43,6 +44,7 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DWITH_APPINDICATOR=OFF \
+        -DWITH_FREERDP3=ON \
 		.
 	make
 }
