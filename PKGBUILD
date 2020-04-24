@@ -3,23 +3,22 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=xbps
-pkgver=0.53
+pkgver=0.59.1
 pkgrel=1
 pkgdesc="The X Binary Package System from Void Linux. Don't use it instead of Arch's 'pacman'."
 arch=('i686' 'x86_64')
 url="https://github.com/void-linux/xbps"
 license=('BSD')
-depends=('ca-certificates' 'libarchive' 'openssl-1.0')
+depends=('ca-certificates' 'libarchive' 'openssl')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('360b3149141fec46dd6da9019605bcee48ee4d29bffe5aa47a9fd5fa68ccd5f4')
+sha256sums=('0cbd8d5f23a62047c75974bca21da9f004a94efffd7f37c68562a8dbc869fb2a')
 
 build() {
     cd "${srcdir}"/${pkgname}-${pkgver}
-    export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
+
     ./configure \
         --prefix=/usr \
-        --sysconfdir=/etc \
-        --dbdir=/var/lib/xbps
+        --sysconfdir=/etc
 
     sed -i '/-Werror/d' config.mk
     make
@@ -27,7 +26,8 @@ build() {
 
 package() {
     cd "${srcdir}"/${pkgname}-${pkgver}
+
     make DESTDIR="${pkgdir}" install
-    install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING
-    install -Dm644 COPYING.3RDPARTY "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING.3RDPARTY
+    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    install -Dm644 LICENSE.3RDPARTY "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.3RDPARTY
 }

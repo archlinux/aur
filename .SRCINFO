@@ -1,6 +1,6 @@
 pkgbase = xbps
 	pkgdesc = The X Binary Package System from Void Linux. Don't use it instead of Arch's 'pacman'.
-	pkgver = 0.53
+	pkgver = 0.59.1
 	pkgrel = 1
 	url = https://github.com/void-linux/xbps
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = xbps
 	license = BSD
 	depends = ca-certificates
 	depends = libarchive
-	depends = openssl-1.0
-	source = xbps-0.53.tar.gz::https://github.com/void-linux/xbps/archive/0.53.tar.gz
-	sha256sums = 360b3149141fec46dd6da9019605bcee48ee4d29bffe5aa47a9fd5fa68ccd5f4
+	depends = openssl
+	source = xbps-0.59.1.tar.gz::https://github.com/void-linux/xbps/archive/0.59.1.tar.gz
+	sha256sums = 0cbd8d5f23a62047c75974bca21da9f004a94efffd7f37c68562a8dbc869fb2a
 
 pkgname = xbps
 
