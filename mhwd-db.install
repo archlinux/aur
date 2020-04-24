@@ -1,0 +1,65 @@
+#!/bin/sh
+# arg 1:  the new package version
+# arg 2:  the old package version
+
+local_config_dir="/var/lib/mhwd/local/pci"
+db_config_dir="/var/lib/mhwd/db/pci"
+
+err() {
+    ALL_OFF="\e[1;0m"
+    BOLD="\e[1;1m"
+    RED="${BOLD}\e[1;31m"
+	local mesg=$1; shift
+	printf "${RED}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@" >&2
+}
+
+msg() {
+    ALL_OFF="\e[1;0m"
+    BOLD="\e[1;1m"
+    GREEN="${BOLD}\e[1;32m"
+	local mesg=$1; shift
+	printf "${GREEN}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@" >&2
+}
+
+update_configs() {
+   # check for newer configs
+   local_configs=$(ls ${local_config_dir})
+   db_configs="$(ls ${db_config_dir}/graphic_drivers) $(ls ${db_config_dir}/network_drivers)"
+   for db_config in ${db_configs} ; do
+      if [ -e "${db_config_dir}/graphic_drivers/${db_config}/MHWDCONFIG" ] ; then
+         . "${db_config_dir}/graphic_drivers/${db_config}/MHWDCONFIG"
+      else
+         . "${db_config_dir}/network_drivers/${db_config}/MHWDCONFIG"
+      fi
+      db_config_ver=${VERSION}
+      if [ -e "${local_config_dir}/${NAME}/MHWDCONFIG" ] ; then
+         . "${local_config_dir}/${NAME}/MHWDCONFIG"
+         local_config_ver=${VERSION}
+         if [ "$(echo ${local_config_ver} | sed -e 's/\.//g')" -lt "$(echo ${db_config_ver} | sed -e 's/\.//g')" ]; then
+            msg "Updating Config: '${local_config_dir}/${NAME}'"
+            if [ -e "${db_config_dir}/graphic_drivers/${db_config}/MHWDCONFIG" ] ; then
+               cp -f ${db_config_dir}/graphic_drivers/${db_config}/MHWDCONFIG ${local_config_dir}/${NAME}
+            else
+               cp -f ${db_config_dir}/network_drivers/${db_config}/MHWDCONFIG ${local_config_dir}/${NAME}
+            fi
+         fi
+      fi
+   done
+   # Update outdated configs
+   if [ -e "${local_config_dir}/video-nvidia/MHWDCONFIG" ] ; then
+      msg "Updating Config: '${local_config_dir}/video-nvidia-430xx'"
+      mkdir -p ${local_config_dir}/video-nvidia-430xx
+      cp -f ${db_config_dir}/graphic_drivers/nvidia-430xx/MHWDCONFIG ${local_config_dir}/video-nvidia-430xx/MHWDCONFIG
+      rm -Rf ${local_config_dir}/video-nvidia
+   fi
+   if [ -e "${local_config_dir}/video-hybrid-intel-nvidia-bumblebee/MHWDCONFIG" ] ; then
+      msg "Updating Config: '${local_config_dir}/video-hybrid-intel-nvidia-430xx-bumblebee'"
+      mkdir -p ${local_config_dir}/video-hybrid-intel-nvidia-430xx-bumblebee
+      cp -f ${db_config_dir}/graphic_drivers/hybrid-intel-nvidia-430xx-bumblebee/MHWDCONFIG ${local_config_dir}/video-hybrid-intel-nvidia-430xx-bumblebee/MHWDCONFIG
+      rm -Rf ${local_config_dir}/video-hybrid-intel-nvidia-bumblebee
+   fi
+}
+
+post_upgrade() {
+   update_configs
+}
