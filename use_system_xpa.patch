@@ -1,42 +1,93 @@
---- a/setup.py	2018-12-15 04:45:58.000000000 +0800
-+++ b/setup.py	2019-01-19 23:43:53.493115239 +0800
-@@ -121,24 +121,20 @@
+From: Ole Streicher <ole@aip.de>
+Date: Fri, 21 Apr 2017 13:40:06 +0200
+Subject: Use external xpa
+
+---
+ setup.py | 39 ++++++---------------------------------
+ 1 file changed, 6 insertions(+), 33 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index dbd93f5..0915595 100644
+--- a/setup.py
++++ b/setup.py
+@@ -154,19 +154,14 @@ if not sys.platform.startswith('win'):
                     xpaio.c
                     """.split()
  
+-    package_data[PACKAGENAME].extend(XPA_FILES)
+-    suffix_lib =  importlib.machinery.EXTENSION_SUFFIXES[0]
+-    package_data[PACKAGENAME].append(XPA_LIBNAME+suffix_lib)
+-
 -    XPA_SOURCES = [os.path.join(XPALIB_DIR, c) for c in XPA_FILES]
 -    XPALIB_DEFINES = [("HAVE_CONFIG_H", "1")]
 +    XPA_SOURCES = []
 +    XPALIB_DEFINES = []
      XPA_SOURCES.append(CYTHON_SOURCE)
  
-     xpa_module = Extension("xpa",
+     xpa_module = Extension("imexam."+XPA_LIBNAME,
                             sources=XPA_SOURCES,
 -                           include_dirs=[XPALIB_DIR],
                             define_macros=XPALIB_DEFINES,
 -                           depends=[CONF_H_NAME],
-+                           libraries=['xpa'],
++                           libraries = ['xpa'],
                             )
      if use_cython:
          ext = cythonize(xpa_module)
+@@ -195,23 +190,11 @@ if not sys.platform.startswith('win'):
+                                            ('bdist_base', 'bdist_base'))
  
-         class my_clean(clean):
              def run(self):
--                import subprocess
--                subprocess.call(["make", "clean"],
--                                cwd=XPALIB_DIR)
+-                try:
+-                    if os.access(XPALIB_DIR + "Makefile", os.F_OK):
+-                        check_call(["make", "clean"], cwd=XPALIB_DIR)
+-                except CalledProcessError as e:
+-                    print(e)
+-                    exit(1)                    
                  if os.access(CONF_H_NAME, os.F_OK):
                      os.remove(CONF_H_NAME)
                  os.remove("wrappers/xpa.c")
-@@ -147,11 +143,6 @@
  
-         class build_ext_with_configure(build_ext):
+-                xpa_bins = ["xpaaccess",
+-                            "xpaget",
+-                            "xpainfo",
+-                            "xpamb",
+-                            "xpans",
+-                            "xpaset",
+-                            ]
++                xpa_bins = []
+                 for file in xpa_bins:
+                     myfile = current_env + "/bin/" + file
+                     if os.access(myfile, os.F_OK):
+@@ -233,7 +216,7 @@ if not sys.platform.startswith('win'):
+             def initialize_options(self):
+                 super().initialize_options()
+                 self.noremake = None
+-                self.remake = True
++                self.remake = False
+ 
+             def finalize_options(self):
+                 super().finalize_options()
+@@ -264,16 +247,6 @@ if not sys.platform.startswith('win'):
              def build_extensions(self):
--                import subprocess
--                subprocess.call(["make", "-f", "Makefile", "clean"],
--                                cwd=XPALIB_DIR)
--                subprocess.call(["sh", "./configure"], cwd=XPALIB_DIR)
--                subprocess.call(["make", "-f", "Makefile"], cwd=XPALIB_DIR)
-                 build_ext.build_extensions(self)
+                 super().build_extensions()
  
-         cmdclass.update({'build_ext': build_ext_with_configure,
+-            def run(self):
+-                try:
+-                    check_call(["sh", "./configure","--prefix="+current_env], cwd=XPALIB_DIR)
+-                    check_call(["make", "clean"],cwd=XPALIB_DIR)
+-                    check_call(["make", "install"], cwd=XPALIB_DIR)
+-                except CalledProcessError as e:
+-                    print(e)
+-                    exit(1)
+-                build_ext.run(self)
+-
+                 
+ 
+         cmdclass.update({'install' : InstallWithRemake,
+@@ -301,4 +274,4 @@ setup(
+     package_data=package_data,
+     package_dir={'imexam': 'imexam'},
+     ext_modules=ext,
+-)
+\ No newline at end of file
++)

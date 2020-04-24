@@ -1,33 +1,34 @@
 pkgbase = python-imexam
 	pkgdesc = A package for functionality like IRAF's imexamine
-	pkgver = 0.8.1
+	pkgver = 0.9.1
 	pkgrel = 1
-	url = https://imexam.readthedocs.io/
-	arch = i686
+	url = https://imexam.readthedocs.io
 	arch = x86_64
 	license = BSD
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = cython
-	makedepends = python-ginga
-	makedepends = python-astropy-helpers>=3.1
-	makedepends = python-sphinx-astropy
+	makedepends = python-setuptools-scm
 	makedepends = xpa
-	source = https://files.pythonhosted.org/packages/source/i/imexam/imexam-0.8.1.tar.gz
+	makedepends = python-sphinx-astropy
+	makedepends = python-ginga
+	makedepends = python-photutils
+	source = https://files.pythonhosted.org/packages/source/i/imexam/imexam-0.9.1.tar.gz
 	source = use_system_xpa.patch
-	md5sums = 009489ebdcd6f3a66736b4035b7aa313
-	md5sums = 2d4bc5f01b53f02a384dbc802d1d3ee5
+	source = add-tests-subdir-to-copy.patch
+	md5sums = 07aae0abbbe4983665fd31fa2aa3b07f
+	md5sums = 66b06d6b0ef7fee444e1ffb5adb15b15
+	md5sums = 05b3136e0437fae80962efafe6de3636
 
 pkgname = python-imexam
-	depends = python>=3.5
-	depends = python-astropy
+	depends = python>=3.6
+	depends = python-astropy>=3.0
 	depends = python-matplotlib
+	depends = xpa
 	optdepends = python-ginga: For Ginga viewer support
-	optdepends = xpa: For connection with DS9
 	optdepends = ds9: For DS9 viewer support
 	optdepends = python-photutils: For photometry features
 	optdepends = python-imexam-doc: Documentation for imexam
-	optdepends = python-pytest-astropy: For testing
-	optdepends = python-astropy<3.2: For testing
 
 pkgname = python-imexam-doc
 	pkgdesc = Documentation for Python imexam module
