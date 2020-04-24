@@ -1,5 +1,5 @@
 pkgbase = python-pypsdd
-	pkgdesc = The Python Probabilistic Sentential Decision Diagrams (PSDD) Package.
+	pkgdesc = A Python 3 port of the Probabilistic Sentential Decision Diagrams (PSDD) Package PyPSDD.
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/art-ai/pypsdd
