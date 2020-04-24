@@ -1,6 +1,6 @@
 pkgbase = inxi
 	pkgdesc = Full featured CLI system information tool
-	pkgver = 3.0.38
+	pkgver = 3.1.00
 	pkgrel = 1
 	url = https://github.com/smxi/inxi
 	arch = any
@@ -30,8 +30,8 @@ pkgbase = inxi
 	optdepends = xorg-xdpyinfo: inxi -G multi screen resolution
 	optdepends = xorg-xprop: inxi -S desktop data
 	optdepends = xorg-xrandr: inxi -G single screen resolution
-	source = inxi-3.0.38.tar.gz::https://github.com/smxi/inxi/archive/3.0.38-1.tar.gz
-	sha256sums = 5adbbe8145e970de1d516a404554e887806d31382de81d290e71fe270183c28a
+	source = inxi-3.1.00.tar.gz::https://github.com/smxi/inxi/archive/3.1.00-1.tar.gz
+	sha256sums = ee6675489467cbfb90756db9aaf55da4bc5f7506cc8166d3a42ba28963e810f1
 
 pkgname = inxi
 
