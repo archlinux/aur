@@ -1,6 +1,6 @@
 pkgbase = vue-cli-service-global
 	pkgdesc = vue-cli-service global addon for vue-cli
-	pkgver = 4.0.5
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://cli.vuejs.org
 	arch = i686
