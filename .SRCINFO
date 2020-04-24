@@ -1,0 +1,18 @@
+pkgbase = leddy-git
+	pkgdesc = Linux LED controller for the fnatic miniSTREAK keyboard
+	pkgver = r1.802fead
+	pkgrel = 1
+	url = https://github.com/XanClic/leddy
+	arch = any
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = libusb
+	provides = leddy
+	conflicts = leddy
+	source = leddy-git::git://github.com/XanClic/leddy.git
+	md5sums = SKIP
+
+pkgname = leddy-git
+
