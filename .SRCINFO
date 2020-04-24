@@ -1,6 +1,6 @@
 pkgbase = fragments-git
 	pkgdesc = BitTorrent client for GNOME
-	pkgver = 1.4.r131.g9d7bedf
+	pkgver = 1.4.r134.g5f1ed65
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Fragments
 	arch = i686

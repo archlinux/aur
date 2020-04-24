@@ -2,7 +2,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=fragments-git
-pkgver=1.4.r131.g9d7bedf
+pkgver=1.4.r134.g5f1ed65
 pkgrel=1
 pkgdesc="BitTorrent client for GNOME"
 arch=(i686 x86_64 armv6h armv7h)
