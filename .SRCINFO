@@ -27,6 +27,7 @@ pkgbase = nginx-zest-git
 	source = git+https://github.com/openresty/redis2-nginx-module.git
 	source = git+https://github.com/vision5/ngx_http_set_hash.git
 	source = git+https://github.com/openresty/set-misc-nginx-module.git
+	source = git+https://github.com/vision5/ngx_devel_kit.git
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -57,6 +58,7 @@ pkgname = nginx-zest-git
 	provides = nginx-zest=1.17.10
 	provides = nginx-mod-brotli
 	provides = nginx-mod-cookieflag
+	provides = nginx-mod-devel
 	provides = nginx-mod-njs
 	provides = nginx-mod-redis=0.3.9
 	provides = nginx-mod-redis2
@@ -67,6 +69,7 @@ pkgname = nginx-zest-git
 	conflicts = nginx-zest
 	conflicts = nginx-mod-brotli
 	conflicts = nginx-mod-cookieflag
+	conflicts = nginx-mod-devel
 	conflicts = nginx-mod-njs
 	conflicts = nginx-mod-redis
 	conflicts = nginx-mod-redis2

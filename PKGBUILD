@@ -38,6 +38,7 @@ source=(
 	"git+https://github.com/openresty/redis2-nginx-module.git"
 	"git+https://github.com/vision5/ngx_http_set_hash.git"
 	"git+https://github.com/openresty/set-misc-nginx-module.git"
+	"git+https://github.com/vision5/ngx_devel_kit.git"
 )
 b2sums=(
 	"SKIP"
@@ -91,6 +92,7 @@ _stable_flags=(
 	--add-module="../ngx_brotli"
 	--add-module="../nginx_cookie_flag_module"
 	--add-module="../njs/nginx"
+	--add-module="../ngx_devel_kit"
 	--add-module="../ngx_http_redis-0.3.9"
 	--add-module="../ngx_http_set_hash"
 	--add-module="../redis2-nginx-module"
@@ -173,6 +175,7 @@ package_nginx-zest-git()
 		"nginx-zest=1.17.10"
 		"nginx-mod-brotli"
 		"nginx-mod-cookieflag"
+		"nginx-mod-devel"
 		"nginx-mod-njs"
 		"nginx-mod-redis=0.3.9"
 		"nginx-mod-redis2"
@@ -185,6 +188,7 @@ package_nginx-zest-git()
 		"nginx-zest"
 		"nginx-mod-brotli"
 		"nginx-mod-cookieflag"
+		"nginx-mod-devel"
 		"nginx-mod-njs"
 		"nginx-mod-redis"
 		"nginx-mod-redis2"
