@@ -1,8 +1,8 @@
-# Maintainer: Douglas Soares de Andrade <douglas@archlinux.org>
+# Maintainer: Berturion <berturion@free.fr>
 
 pkgname=switchhosts-bin
-pkgver=3.3.6
-pkgrel=5287
+pkgver=3.5.4
+pkgrel=5517
 pkgdesc="Switch hosts quickly!"
 arch=('any')
 url="https://oldj.github.io/SwitchHosts"
@@ -12,30 +12,33 @@ depends=("gconf" "gtk2" "libnotify" "libxtst" "nss" "python2" "xdg-utils" "deskt
 makedepends=("imagemagick" "npm")
 
 source=(
-    "https://github.com/oldj/SwitchHosts/releases/download/v${pkgver}/SwitchHosts-linux-x64_v${pkgver}.${pkgrel}.zip"
-    "https://raw.githubusercontent.com/oldj/SwitchHosts/master/assets/app.ico"
+    "https://github.com/oldj/SwitchHosts/releases/download/v${pkgver}/SwitchHosts._linux_x64_${pkgver}.${pkgrel}.zip"
+    "https://raw.githubusercontent.com/oldj/SwitchHosts/master/app/assets/logo@512w.png"
     "${pkgname}.install"
     "${pkgname}.desktop"
 )
 
-md5sums=('c051e239ce81a89d22b14c099c1afd66'
-         '88fe4a72cf9630119dd512c91b54edd9'
+md5sums=('bd23ba93ba19ed1377e0bd36f6f9376b'
+         '06eb97a4b5b5ddf7a06841e01d5562eb'
          '0b6211b511da48346cecdc1d2f963c76'
-         '30df36e53ef2d815a2c2395f0378f9bb')
+         'c6594fabba5e7f9d5ae0736524f6f634')
 
 package() {
     install -dm755 "$pkgdir/"{opt,usr/bin}
-    mv "${srcdir}/SwitchHosts!-linux-x64" "${pkgdir}/opt/${pkgname}"
-    ln -s "/opt/${pkgname}/SwitchHosts!" "$pkgdir/usr/bin/switchhosts"
+    cp -r "${srcdir}" "${pkgdir}/opt/${pkgname}"
+    ln -s "/opt/${pkgname}/switchhosts" "$pkgdir/usr/bin/switchhosts"
     install -Dm644 ${srcdir}/${pkgname}.desktop "$pkgdir"/usr/share/applications/${pkgname}.desktop
+    # icons generation
     mkdir -p "icons"
     cd "icons"
-    convert ${srcdir}/app.ico logo_icon.png
-    cd -
-    sizes=(256x256 128x128 48x48 32x32 16x16)
-    for i in 0 1 2 3 4 5 ; do
-      install -d "${pkgdir}/usr/share/icons/hicolor/${sizes[$i]}/apps"
-      install -Dm644 "icons/logo_icon-${i}.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${sizes[$i]}/apps/${pkgname}.png"
+    mv ${srcdir}/logo@512w.png logo_icon.png
+    convert -background transparent logo_icon.png -define icon:auto-resize=16,32,48,64,128,256 app.ico
+    convert app.ico logo_icon.png
+    # icons installation
+    sizes=(16 32 48 64 128 256)
+    for i in 0 1 2 3 4 ; do
+      install -d "${pkgdir}/usr/share/icons/hicolor/${sizes[$i]}x${sizes[$i]}/apps"
+      install -Dm644 "logo_icon-${i}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${sizes[$i]}x${sizes[$i]}/apps/${pkgname}.png"
     done
 }
