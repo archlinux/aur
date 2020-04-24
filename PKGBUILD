@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=or-tools-java
-pkgver=7.5
+pkgver=7.6
 pkgrel=1
 pkgdesc='Google`s Operations Research tools. With Java bindings.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('java-runtime>=7.0')
 makedepends=('swig' 'python' 'cmake' 'git')
 source=("https://github.com/google/or-tools/archive/v${pkgver}.tar.gz")
-sha512sums=('993745b19fffeeaf6d58675a2e7113e5a49e35f105ec5e9ca6cfa108e184ebbfccc9f61081189c4e4a850a861fee2bbcf68209eca57b8ad098a7e76c20a517e4')
+b2sums=('276fc43ff736dbc559118d887d17bc140151b2754dc96f936b4a2238e75b120028590396b8134d08c237c2a224180ec29c29fa37e85cd292511943b8d89651b3')
 
 prepare() {
   cd ${pkgname%-java}-${pkgver}

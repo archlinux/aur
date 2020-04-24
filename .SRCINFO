@@ -1,6 +1,6 @@
 pkgbase = or-tools-java
 	pkgdesc = Google`s Operations Research tools. With Java bindings.
-	pkgver = 7.5
+	pkgver = 7.6
 	pkgrel = 1
 	url = https://github.com/google/or-tools
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = or-tools-java
 	makedepends = cmake
 	makedepends = git
 	depends = java-runtime>=7.0
-	source = https://github.com/google/or-tools/archive/v7.5.tar.gz
-	sha512sums = 993745b19fffeeaf6d58675a2e7113e5a49e35f105ec5e9ca6cfa108e184ebbfccc9f61081189c4e4a850a861fee2bbcf68209eca57b8ad098a7e76c20a517e4
+	source = https://github.com/google/or-tools/archive/v7.6.tar.gz
+	b2sums = 276fc43ff736dbc559118d887d17bc140151b2754dc96f936b4a2238e75b120028590396b8134d08c237c2a224180ec29c29fa37e85cd292511943b8d89651b3
 
 pkgname = or-tools-java
 
