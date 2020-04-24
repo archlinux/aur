@@ -6,7 +6,7 @@ pkgname=(
 	"nginx-zest-src-git"
 )
 pkgver=1.17.10
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=(
 	"x86_64"
@@ -35,6 +35,7 @@ source=(
 	"https://people.freebsd.org/~osa/ngx_http_redis-0.3.9.tar.gz"
 	"git+https://github.com/openresty/srcache-nginx-module.git"
 	"git+https://github.com/tokers/zstd-nginx-module.git"
+	"git+https://github.com/openresty/redis2-nginx-module.git"
 )
 b2sums=(
 	"SKIP"
@@ -47,6 +48,7 @@ b2sums=(
 	"fe32fb75a7677abca86c4bc3f4ca9bfeccb3cd7afb4dd3c4ec21ab8b53cc0d72ba5330a1131498b5df222c2e517bd01e2df9f67256011ff15241b777a85be6b3"
 	"SKIP"
 	"ea3b5668b18b83df37bd954bd7cfd61fcb91e7b40bc2ef79f7c2117252307bbd716925669e15331a813eadb07819e5a3a7410eab52e8f918a167fe69ead2b375"
+	"SKIP"
 	"SKIP"
 	"SKIP"
 )
@@ -86,6 +88,7 @@ _stable_flags=(
 	--add-module="../nginx_cookie_flag_module"
 	--add-module="../njs/nginx"
 	--add-module="../ngx_http_redis-0.3.9"
+	--add-module="../redis2-nginx-module"
 	--add-module="../srcache-nginx-module"
 	--add-module="../zstd-nginx-module"
 	--build="zest"
@@ -168,7 +171,8 @@ package_nginx-zest-git()
 		"nginx-mod-brotli"
 		"nginx-mod-cookie_flag_module"
 		"nginx-mod-njs"
-		"nginx-mod-redis=0.3.9"
+		"nginx-mod-redis"
+		"nginx-mod-redis2"
 		"nginx-mod-srcache"
 	)
 	backup=(
