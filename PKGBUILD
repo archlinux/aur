@@ -36,8 +36,8 @@ build() {
 }
 
 package_mhwd-garuda-git() {
-  pkgdesc="mhwd library and application"
-  depends=('hwinfo' 'mesa' 'mhwd-db-garuda' 'uvesafb-dkms' 'pacman')
+  pkgdesc="mhwd-garuda(manjaro's mhwd backported to archlinux with additional features and limited to only dkms drivers)"
+  depends=('hwinfo' 'mesa' 'mhwd-db-garuda-git' 'uvesafb-dkms' 'pacman')
   provides=("mhwd")
   conflicts=("mhwd")
   if [ "${CARCH}" = "x86_64" ]; then
