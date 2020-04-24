@@ -2,7 +2,7 @@
 
 pkgname=f3d-git
 pkgver=0.1.ed9b979
-pkgrel=2
+pkgrel=3
 pkgdesc='A fast and minimalist 3D viewer'
 arch=('x86_64')
 url="https://gitlab.kitware.com/f3d/f3d"
@@ -27,6 +27,7 @@ build() {
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
           -DCMAKE_BUILD_TYPE=Release \
           -DBUILD_TESTING=OFF \
+          -DF3D_INSTALL_DEFAULT_CONFIGURATION_FILE=ON \
           ..
     make
 }
@@ -36,8 +37,7 @@ package() {
     make DESTDIR="${pkgdir}" install
 
     install -dv "${pkgdir}"/usr/share/licenses/f3d
-    mv "${pkgdir}"/usr/LICENSE "${pkgdir}"/usr/share/licenses/f3d
+    mv "${pkgdir}"/usr/share/doc/f3d/LICENSE "${pkgdir}"/usr/share/licenses/f3d
 
     install -dv "${pkgdir}"/usr/share/doc/f3d
-    mv "${pkgdir}"/usr/README.md "${pkgdir}"/usr/share/doc/f3d
 }
