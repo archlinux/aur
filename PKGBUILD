@@ -7,7 +7,7 @@ _major=5.6
 _minor=6
 _clr=942
 pkgver=${_major}.${_minor}.${_clr}
-pkgrel=2
+pkgrel=3
 # use in case we need to update the Arch package without incrementing pkgrel
 epoch=0
 arch=('x86_64')
@@ -29,9 +29,9 @@ b2sums=('82e38edef81dd944ea39d0986cb92557869a05050d56320953757dbec1eb644d11af853
         '3be148f887518ebfd9ca45e049e9671cf9962b8fec4cc74a7bf7bb8c3ff7709dadb569415c52ca239f7d4d600dcd21c93fc6571b32b006618213e30262acb114'
         '66834e16c967ed898aaeb4752d62460d45dc26c84ae212b25df06a96aff241528e0ac04abf381bca021d8fd1598f074ef4f8419c76f792f9ccf77c358cebeab6')
 build() {
-    local files=$(sed -n -re "s/^[FL]...[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/(modules.*build.*)$/\1 \2/p" Manifest.linux-dev.${_clear_version}.tar)
-    local config=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/kernel\/config.*$/\1/p" Manifest.linux-dev.${_clear_version}.tar)
-    local map=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/kernel\/System.map.*$/\1/p" Manifest.linux-dev.${_clear_version}.tar)
+    local files=$(sed -n -re "s/^[FL]...[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/(modules.*build.*)$/\1 \2/p" Manifest.linux-dev.${_clear_version})
+    local config=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/kernel\/config.*$/\1/p" Manifest.linux-dev.${_clear_version})
+    local map=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/kernel\/System.map.*$/\1/p" Manifest.linux-dev.${_clear_version})
 
     is_path=0
     filename=''
