@@ -15,16 +15,16 @@ source=("https://github.com/mulkieran/${_pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('3b9a26069421b1be24782f51125befa0')
 
 check() {
-    cd $srcdir/${_pkgname}-$pkgver
+    cd "$srcdir/${_pkgname}-$pkgver"
     nosetests
 }
 
 build() {
-    cd $srcdir/${_pkgname}-$pkgver
+    cd "$srcdir/${_pkgname}-$pkgver"
     python setup.py build
 }
 
 package() {
-    cd $srcdir/${_pkgname}-$pkgver
+    cd "$srcdir/${_pkgname}-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 
 }
