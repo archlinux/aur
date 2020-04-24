@@ -1,6 +1,6 @@
 pkgbase = xpa
 	pkgdesc = A messaging system provides seamless communication between many kinds of Unix programs
-	pkgver = 2.1.19
+	pkgver = 2.1.20
 	pkgrel = 1
 	url = http://hea-www.harvard.edu/RD/xpa/
 	arch = i686
@@ -8,8 +8,10 @@ pkgbase = xpa
 	license = MIT
 	makedepends = libxt
 	depends = tcl
-	source = https://github.com/ericmandel/xpa/archive/v2.1.19.tar.gz
-	sha1sums = d5a4a7351270b684306a639f31dadabcce4d96fb
+	source = https://github.com/ericmandel/xpa/archive/2.1.20.tar.gz
+	source = xpa_inc_fail.patch
+	sha1sums = bf361d03caec9c2c6cd3e02c5a5c0b668be1cc49
+	sha1sums = c9e2a903b713a57016cab39139ca870f5b6bff94
 
 pkgname = xpa
 
