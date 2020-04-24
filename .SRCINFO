@@ -1,6 +1,6 @@
 pkgbase = google-calendar-nativefier
 	pkgdesc = Electron wrapper for the Google Calendar web application
-	pkgver = 0.9
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://calendar.google.com
 	arch = x86_64
