@@ -5,11 +5,11 @@ pkgver=r437.0ff23438
 pkgrel=1
 pkgdesc="An open source neural network framework written in C and CUDA"
 arch=('x86_64')
-url='https://github.com/pjreddie/darknet'
+url='https://pjreddie.com/darknet'
 license=('Yolo')
 optdepends=('opencv' 'cuda' 'python')
 provides=("${pkgname%-git}")
-source=("git+${url}")
+source=("git+https://github.com/pjreddie/darknet")
 md5sums=('SKIP')
 
 pkgver() {
