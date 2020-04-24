@@ -21,7 +21,7 @@ build() {
 }
 
 package() {
-  install -Dm644 "../src/core/cpio/mkbootfs" -t "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "../src/core/cpio/mkbootfs" -t "$pkgdir/usr/bin/$pkgname"
 }
 
 # vim: ts=2 sw=2 et:
