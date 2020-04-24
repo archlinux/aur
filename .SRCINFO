@@ -1,0 +1,73 @@
+pkgbase = nginx-zest-git
+	pkgver = 1.17.10
+	pkgrel = 1
+	url = https://github.com/ZestProjects/nginx
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = git
+	makedepends = go
+	makedepends = mercurial
+	makedepends = perl
+	makedepends = pigz
+	makedepends = rust>=1.39.0
+	source = git+https://github.com/ZestProjects/nginx.git
+	source = git+https://github.com/AirisX/nginx_cookie_flag_module.git
+	source = git+https://github.com/cloudflare/quiche.git
+	source = git+https://github.com/google/ngx_brotli.git
+	source = https://nginx.org/LICENSE
+	source = hg+http://hg.nginx.org/nginx-tests
+	source = service
+	source = logrotate
+	source = hg+http://hg.nginx.org/njs
+	source = https://people.freebsd.org/~osa/ngx_http_redis-0.3.9.tar.gz
+	source = git+https://github.com/openresty/srcache-nginx-module.git
+	source = git+https://github.com/tokers/zstd-nginx-module.git
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = fbd993990b43a4476d0963287bdc5f55f73fa5ce828f11977cf1abeedd478729a95861d930e27c6a1b0e78b16397164395afc4473fd34e050cadd32b94336beb
+	b2sums = SKIP
+	b2sums = b6414f9917fe62cc57556a2927fb404cc839398dac64a0d60c1d45af11a4e6be71bbee5f9bae17ce3604c31ab9247e8c6aec759f86890b54f86267db1fe7c08a
+	b2sums = fe32fb75a7677abca86c4bc3f4ca9bfeccb3cd7afb4dd3c4ec21ab8b53cc0d72ba5330a1131498b5df222c2e517bd01e2df9f67256011ff15241b777a85be6b3
+	b2sums = SKIP
+	b2sums = ea3b5668b18b83df37bd954bd7cfd61fcb91e7b40bc2ef79f7c2117252307bbd716925669e15331a813eadb07819e5a3a7410eab52e8f918a167fe69ead2b375
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = nginx-zest-git
+	pkgdesc = NGINX with beefed up security and performance
+	depends = geoip
+	depends = gzip
+	depends = libatomic_ops
+	depends = liburing
+	depends = mailcap
+	depends = pcre
+	depends = zlib
+	optdepends = nginx-zest-src-git: dynamic module support
+	provides = nginx=1.17.10
+	conflicts = nginx
+	conflicts = nginx-zest
+	conflicts = nginx-mod-brotli
+	conflicts = nginx-mod-cookie_flag_module
+	conflicts = nginx-mod-njs
+	conflicts = nginx-mod-redis=0.3.9
+	conflicts = nginx-mod-srcache
+	backup = etc/nginx/fastcgi.conf
+	backup = etc/nginx/fastcgi_params
+	backup = etc/nginx/koi-win
+	backup = etc/nginx/koi-utf
+	backup = etc/nginx/nginx.conf
+	backup = etc/nginx/scgi_params
+	backup = etc/nginx/uwsgi_params
+	backup = etc/nginx/win-utf
+	backup = etc/logrotate.d/nginx
+
+pkgname = nginx-zest-src-git
+	pkgdesc = Source code of the Zest Project's NGINX fork, useful for building modules
+	provides = nginx-src=1.17.10
+	provides = nginx-zest-src=1.17.10
+	conflicts = nginx-src
+	conflicts = nginx-zest-src
+
