@@ -3,7 +3,7 @@
 pkgbase="nginx-lazerl0rd-git"
 pkgname=("nginx-lazerl0rd-git" "nginx-src-lazerl0rd-git")
 pkgver=1.17.10
-pkgrel=3
+pkgrel=4
 epoch=1
 arch=("i686" "x86_64")
 url="https://github.com/lazerl0rd/nginx"
@@ -19,6 +19,9 @@ source=(
 	"service"
 	"logrotate"
 	"hg+http://hg.nginx.org/njs"
+	"https://people.freebsd.org/~osa/ngx_http_redis-0.3.9.tar.gz"
+	"git+https://github.com/openresty/srcache-nginx-module.git"
+	"git+https://github.com/tokers/zstd-nginx-module.git"
 )
 b2sums=(
 	"SKIP"
@@ -29,6 +32,9 @@ b2sums=(
 	"SKIP"
 	"b6414f9917fe62cc57556a2927fb404cc839398dac64a0d60c1d45af11a4e6be71bbee5f9bae17ce3604c31ab9247e8c6aec759f86890b54f86267db1fe7c08a"
 	"fe32fb75a7677abca86c4bc3f4ca9bfeccb3cd7afb4dd3c4ec21ab8b53cc0d72ba5330a1131498b5df222c2e517bd01e2df9f67256011ff15241b777a85be6b3"
+	"SKIP"
+	"ea3b5668b18b83df37bd954bd7cfd61fcb91e7b40bc2ef79f7c2117252307bbd716925669e15331a813eadb07819e5a3a7410eab52e8f918a167fe69ead2b375"
+	"SKIP"
 	"SKIP"
 )
 
@@ -66,6 +72,9 @@ _stable_flags=(
 	--add-module="../ngx_brotli"
 	--add-module="../nginx_cookie_flag_module"
 	--add-module="../njs/nginx"
+	--add-module="../ngx_http_redis-0.3.9"
+	--add-module="../srcache-nginx-module"
+	--add-module="../zstd-nginx-module"
 	--build="lazerl0rd"
 	--with-http_v2_hpack_enc
 	--with-http_v3_module
@@ -124,7 +133,7 @@ package_nginx-lazerl0rd-git()
 	pkgdesc="NGINX with beefed up security and performance"
 	depends=("geoip" "gzip" "libatomic_ops" "liburing" "mailcap" "pcre" "zlib")
 	optdepends=("nginx-src-lazerl0rd-git: dynamic module support")
-	provides=("nginx=1.17.9" "nginx-mod-brotli" "nginx-mod-cookie_flag_module")
+	provides=("nginx=1.17.9" "nginx-mod-brotli" "nginx-mod-cookie_flag_module" "nginx-mod-redis" "nginx-mod-njs" "nginx-mod-srcache")
 	conflicts=("nginx" "nginx-lazerl0rd" "nginx-mod-brotli" "nginx-mod-cookie_flag_module")
 	backup=("etc/nginx/fastcgi.conf"
 			"etc/nginx/fastcgi_params"
