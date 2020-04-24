@@ -2,7 +2,7 @@
 pkgname=suricata-nfqueue
 _pkgname=suricata
 pkgver=5.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source mature, fast and robust network IDS and IPS"
 arch=('i686' 'x86_64')
 url="https://suricata-ids.org/"
@@ -10,7 +10,7 @@ license=('GPL2')
 provides=('suricata')
 conflicts=('suricata')
 makedepends=('rust')
-depends=('file' 'libcap-ng' 'libnet' 'libnetfilter_queue' 'libpcap' 'libyaml' 'nss' 'pcre' 'python')
+depends=('file' 'libcap-ng' 'libnet' 'libnetfilter_queue' 'libpcap' 'libyaml' 'nss' 'pcre' 'python' 'python-yaml')
 install=suricata.install
 backup=('etc/suricata/suricata.yaml'
         'etc/suricata/local.yaml'
@@ -37,7 +37,6 @@ package() {
 
   install -Dm644 -t "${pkgdir}/etc/${_pkgname}" "${_pkgname}".yaml threshold.config etc/{classification.config,reference.config}
   install -Dm644 "${_pkgname}".yaml "${pkgdir}/etc/${_pkgname}/${_pkgname}.yaml.default"
-#  install -Dm644 -t "${pkgdir}/etc/${_pkgname}/rules" rules/*.rules
   install -Dm644 /dev/null "${pkgdir}/etc/${_pkgname}/local.yaml"
 
   echo "include: local.yaml" >> "${pkgdir}/etc/${_pkgname}/${_pkgname}.yaml"
