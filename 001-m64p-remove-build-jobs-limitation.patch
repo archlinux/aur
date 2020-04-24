@@ -1,12 +1,12 @@
 diff -Naurp a/build.sh b/build.sh
---- a/build.sh	2020-04-11 12:27:02.000000000 +0000
-+++ b/build.sh	2020-04-11 12:35:19.871637694 +0000
-@@ -19,22 +19,22 @@ mkdir $install_dir
+--- a/build.sh	2020-04-24 14:06:44.000000000 +0000
++++ b/build.sh	2020-04-24 14:10:40.693877444 +0000
+@@ -19,22 +19,22 @@ mkdir -p $install_dir
  base_dir=$PWD
  
  cd $base_dir/mupen64plus-core/projects/unix
--make -j4 all
-+make all
+-make OSD=0 NO_ASM=1 -j4 all
++make OSD=0 NO_ASM=1 all
  cp -P $base_dir/mupen64plus-core/projects/unix/*$suffix* $install_dir
  cp $base_dir/mupen64plus-core/data/* $install_dir
  
@@ -45,7 +45,7 @@ diff -Naurp a/build.sh b/build.sh
    cp $base_dir/mupen64plus-gui/build/release/mupen64plus-gui.exe $install_dir
  else
 @@ -62,7 +62,7 @@ cd $base_dir/GLideN64/src/GLideNUI
- mkdir build
+ mkdir -p build
  cd build
  qmake ../GLideNUI.pro
 -make -j4

@@ -1,7 +1,7 @@
 pkgbase = m64p
 	pkgdesc = Mupen64Plus with custom plugins and Qt5 GUI
-	pkgver = 20200409
-	pkgrel = 3
+	pkgver = 20200423
+	pkgrel = 1
 	url = https://m64p.github.io/
 	arch = x86_64
 	license = GPL3
@@ -24,7 +24,7 @@ pkgbase = m64p
 	conflicts = mupen64plus
 	conflicts = mupen64plus-gui
 	conflicts = mupenplus-video-gliden64
-	source = git+https://github.com/loganmc10/m64p.git#tag=Apr92020
+	source = git+https://github.com/loganmc10/m64p.git#tag=April232020
 	source = git+https://github.com/m64p/mupen64plus-gui.git
 	source = git+https://github.com/m64p/mupen64plus-audio-sdl2.git
 	source = git+https://github.com/mupen64plus/mupen64plus-rsp-hle.git
@@ -43,8 +43,8 @@ pkgbase = m64p
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = d2984da34d482d6e0b25c460e67d64d0ce1a3bf5eda19f00f0245b819bf6b31c
-	sha256sums = 6408930ec638866a2b0c38c6e856b7740dad992941ec462bee95a13a9507fe56
+	sha256sums = 6871b495ace8a9005d93ce3e9103a15111a67793812dd5158072c981c4c3a5a8
+	sha256sums = a999739626fc3e9d0102b65014c436bf4e9039587ccac174334672f3925f4495
 	sha256sums = b884fc86180346226eb7e8bf8560d2b789318e810c9e26b6adbe7d8d047188df
 
 pkgname = m64p

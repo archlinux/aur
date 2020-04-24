@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p
-pkgver=20200409
-pkgrel=3
+pkgver=20200423
+pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI'
 arch=('x86_64')
 url='https://m64p.github.io/'
@@ -12,7 +12,7 @@ depends=('freetype2' 'glu' 'hidapi' 'libpng' 'libsamplerate' 'minizip'
 makedepends=('git' 'cmake' 'nasm')
 provides=('mupen64plus' 'mupen64plus-gui' 'mupenplus-video-gliden64')
 conflicts=('mupen64plus' 'mupen64plus-gui' 'mupenplus-video-gliden64')
-source=('git+https://github.com/loganmc10/m64p.git#tag=Apr92020'
+source=("git+https://github.com/loganmc10/m64p.git#tag=$(LC_ALL='C' date -d "$pkgver" +%B%d%Y)"
         'git+https://github.com/m64p/mupen64plus-gui.git'
         'git+https://github.com/m64p/mupen64plus-audio-sdl2.git'
         'git+https://github.com/mupen64plus/mupen64plus-rsp-hle.git'
@@ -31,23 +31,22 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'd2984da34d482d6e0b25c460e67d64d0ce1a3bf5eda19f00f0245b819bf6b31c'
-            '6408930ec638866a2b0c38c6e856b7740dad992941ec462bee95a13a9507fe56'
+            '6871b495ace8a9005d93ce3e9103a15111a67793812dd5158072c981c4c3a5a8'
+            'a999739626fc3e9d0102b65014c436bf4e9039587ccac174334672f3925f4495'
             'b884fc86180346226eb7e8bf8560d2b789318e810c9e26b6adbe7d8d047188df')
 
 prepare() {
-    cd m64p
-    git submodule init
-    git config --local submodule.mupen64plus-core.url "${srcdir}/mupen64plus-core-loganmc10"
-    git config --local submodule.GLideN64.url         "${srcdir}/GLideN64-loganmc10"
-    git config --local submodule.mupen64plus-gui.url  "${srcdir}/mupen64plus-gui"
-    git config --local submodule.mupen64plus-audio-sdl2.url "${srcdir}/mupen64plus-audio-sdl2"
-    git config --local submodule.mupen64plus-rsp-hle.url    "${srcdir}/mupen64plus-rsp-hle"
-    git config --local submodule.mupen64plus-input-qt.url   "${srcdir}/mupen64plus-input-qt"
-    git config --local submodule.mupen64plus-input-raphnetraw.url "${srcdir}/mupen64plus-input-raphnetraw-loganmc10"
-    git submodule update
-    patch -Np1 -i "${srcdir}/001-m64p-remove-build-jobs-limitation.patch"
-    patch -Np1 -i "${srcdir}/002-m64p-enable-optimizations.patch"
+    git -C m64p submodule init
+    git -C m64p config --local submodule.mupen64plus-core.url "${srcdir}/mupen64plus-core-loganmc10"
+    git -C m64p config --local submodule.GLideN64.url         "${srcdir}/GLideN64-loganmc10"
+    git -C m64p config --local submodule.mupen64plus-gui.url  "${srcdir}/mupen64plus-gui"
+    git -C m64p config --local submodule.mupen64plus-audio-sdl2.url "${srcdir}/mupen64plus-audio-sdl2"
+    git -C m64p config --local submodule.mupen64plus-rsp-hle.url    "${srcdir}/mupen64plus-rsp-hle"
+    git -C m64p config --local submodule.mupen64plus-input-qt.url   "${srcdir}/mupen64plus-input-qt"
+    git -C m64p config --local submodule.mupen64plus-input-raphnetraw.url "${srcdir}/mupen64plus-input-raphnetraw-loganmc10"
+    git -C m64p submodule update
+    patch -d m64p -Np1 -i "${srcdir}/001-m64p-remove-build-jobs-limitation.patch"
+    patch -d m64p -Np1 -i "${srcdir}/002-m64p-enable-optimizations.patch"
 }
 
 build() {
@@ -68,7 +67,7 @@ package() {
         make -C "m64p/mupen64plus-${_component}/projects/unix" DESTDIR="$pkgdir" PREFIX='/usr' LDCONFIG='true' install
     done
     local _sover
-    _sover="$(find m64p/mupen64plus-core/projects/unix -type f -name 'libmupen64plus.so.*.*' | sed 's/^.*\.so\.//')"
+    _sover="$(find "${pkgdir}/usr/lib" -type f -name 'libmupen64plus.so.*.*.*' | sed 's/^.*\.so\.//')"
     ln -s "libmupen64plus.so.${_sover}" "${pkgdir}/usr/lib/libmupen64plus.so"
     
     # other plugins
