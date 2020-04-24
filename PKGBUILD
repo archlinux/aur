@@ -2,10 +2,17 @@
 
 pkgname=python-pydeck
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Widget for deck.gl maps"
 url="https://github.com/uber/deck.gl/tree/master/bindings/pydeck"
-depends=('python' )
+depends=(
+	'python>=3.4'
+	'python-ipykernel>=5.1.2'
+	'python-ipywidgets>=7.0.0'
+	'python-traitlets>=4.3.2'
+	'python-jinja>=2.10.1'
+	'python-numpy>=1.16.4'
+)
 makedepends=('python3' )
 license=('CUSTOM')
 arch=('any')

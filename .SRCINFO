@@ -1,12 +1,17 @@
 pkgbase = python-pydeck
 	pkgdesc = Widget for deck.gl maps
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uber/deck.gl/tree/master/bindings/pydeck
 	arch = any
 	license = CUSTOM
 	makedepends = python3
-	depends = python
+	depends = python>=3.4
+	depends = python-ipykernel>=5.1.2
+	depends = python-ipywidgets>=7.0.0
+	depends = python-traitlets>=4.3.2
+	depends = python-jinja>=2.10.1
+	depends = python-numpy>=1.16.4
 	source = https://files.pythonhosted.org/packages/4a/51/438ccf9c5df5796fc341fe0f22c216b4856122fccd13b1078a6aa8355f29/pydeck-0.3.1.tar.gz
 	md5sums = 1553fe366f9bb490bb47a57923482299
 
