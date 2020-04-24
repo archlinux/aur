@@ -4,7 +4,7 @@
 # Upstream: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-vfio
-pkgver=5.6.4.arch1
+pkgver=5.6.6.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -31,7 +31,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '6ac452e2124f92747a57c5a50e11ca2f1e8112669845b4431311545c7fd2a36c'
+            'dfd3310bc2d3c4adbaba5e4f2260a8a110706993be1c3e02a5ddfe88bf0c63ce'
             '4938b7121862e54c614668d1f662fcdd37e0c4f11cf386a425f9d4c3849d00ef'
             '094a29902b52cec2f0840219225a1458ca925f875524ecb7827da62a33c74ccf'
             'e2e2e64ed4b716046a999b880fe41def580eca89fb6eb412ed141d2d3c7715da')

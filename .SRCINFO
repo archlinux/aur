@@ -1,8 +1,8 @@
 pkgbase = linux-vfio
 	pkgdesc = Linux
-	pkgver = 5.6.4.arch1
+	pkgver = 5.6.6.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.6.4-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.6.6-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -15,7 +15,7 @@ pkgbase = linux-vfio
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.6.4-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.6.6-arch1
 	source = config
 	source = add-acs-overrides.patch
 	source = i915-vga-arbiter.patch
@@ -24,7 +24,7 @@ pkgbase = linux-vfio
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = 6ac452e2124f92747a57c5a50e11ca2f1e8112669845b4431311545c7fd2a36c
+	sha256sums = dfd3310bc2d3c4adbaba5e4f2260a8a110706993be1c3e02a5ddfe88bf0c63ce
 	sha256sums = 4938b7121862e54c614668d1f662fcdd37e0c4f11cf386a425f9d4c3849d00ef
 	sha256sums = 094a29902b52cec2f0840219225a1458ca925f875524ecb7827da62a33c74ccf
 	sha256sums = e2e2e64ed4b716046a999b880fe41def580eca89fb6eb412ed141d2d3c7715da
