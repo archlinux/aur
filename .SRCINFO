@@ -43,6 +43,7 @@ pkgbase = nginx-zest-git
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = nginx-zest-git
 	pkgdesc = NGINX with beefed up security and performance

@@ -56,6 +56,7 @@ b2sums=(
 	"SKIP"
 	"SKIP"
 	"SKIP"
+	"SKIP"
 )
 
 _common_flags=(
