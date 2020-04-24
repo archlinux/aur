@@ -1,0 +1,13 @@
+pkgbase = gfile-bin
+	pkgdesc = Direct file transfer over WebRTC
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Antonito/gfile
+	arch = x86_64
+	license = MIT
+	provides = gfile
+	source = https://github.com/Antonito/gfile/releases/download/v0.1.0/gfile_Linux_x86_64.tar.gz
+	sha256sums = d71d778d65b6ff9b39b5761ab4a3767e403d0f1e1866a890bb32fa68d6033a82
+
+pkgname = gfile-bin
+
