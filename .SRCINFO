@@ -1,0 +1,16 @@
+pkgbase = python-gitlab-registry-usage
+	pkgdesc = An extension for flask-restful to support the creation of APIs conforming to HAL.
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/sciapp/gitlab-registry-usage
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyopenssl
+	depends = python-requests
+	source = https://github.com/sciapp/gitlab-registry-usage/archive/v0.2.5.tar.gz
+	sha256sums = 3bd30eb2259097aeb430afb3ad4b1fe3f7ae19b9aa1ae779c984aa65817f5f9f
+
+pkgname = python-gitlab-registry-usage
+
