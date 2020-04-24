@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=flipper-bin
-pkgver=0.37.0
+pkgver=0.39.0
 pkgrel=1
 pkgdesc='A desktop debugging platform for mobile developers'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('watchman: An inotify-based file watching and job triggering command
 			      'android-sdk: Android debugging support')
 makedepends=('gendesk' 'unzip')
 source=("https://github.com/facebook/flipper/releases/download/v${pkgver}/Flipper-linux.zip")
-sha512sums=('bb77a044cd4a3ea49e49c0e8f67b3aec6ae5edd7bdf5566463326609e5fb69131bc0cd3a2adfd6f83e299a25c02dc8869e48a61c37773571936f3b7094cb6cd2')
+sha256sums=('13053e6350e2b99949d1767359828ede682d547ddb5aeefbafca021abe51ed62')
 noextract=('Flipper-linux.zip')
 
 package() {
