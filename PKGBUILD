@@ -2,7 +2,7 @@
 pkgname=gruvbox-material-git
 pkgdesc="gruvbox-material theme for vim"
 pkgrel=1
-pkgver=v1.0.1.r23.g3287311
+pkgver=v1.1.2.r22.ga858b2f
 arch=('any')
 url="https://github.com/sainnhe/gruvbox-material"
 license=('MIT')
@@ -22,6 +22,7 @@ package() {
   cd "$srcdir/$_pkgname"
   install -Dm644 colors/gruvbox-material.vim "$pkgdir/usr/share/vim/vimfiles/colors/gruvbox-material.vim"
   install -Dm644 doc/gruvbox-material.txt "$pkgdir/usr/share/vim/vimfiles/doc/gruvbox-material.txt"
+  install -Dm755 ${srcdir}/${_pkgname}/autoload/gruvbox_material.vim ${pkgdir}/usr/share/vim/vimfiles/autoload/gruvbox_material.vim
   install -Dm755 ${srcdir}/${_pkgname}/autoload/airline/themes/gruvbox_material.vim ${pkgdir}/usr/share/vim/vimfiles/autoload/airline/themes/gruvbox_material.vim
   install -Dm755 ${srcdir}/${_pkgname}/autoload/lightline/colorscheme/gruvbox_material.vim ${pkgdir}/usr/share/vim/vimfiles/autoload/lightline/colorscheme/gruvbox_material.vim
 }

@@ -1,6 +1,6 @@
 pkgbase = gruvbox-material-git
 	pkgdesc = gruvbox-material theme for vim
-	pkgver = v1.0.1.r23.g3287311
+	pkgver = v1.1.2.r22.ga858b2f
 	pkgrel = 1
 	url = https://github.com/sainnhe/gruvbox-material
 	arch = any
