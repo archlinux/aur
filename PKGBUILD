@@ -1,7 +1,7 @@
 # Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
 
 pkgname="python-gitlab-registry-usage"
-pkgver="0.2.5"
+pkgver="0.2.6"
 pkgrel="1"
 pkgdesc="An extension for flask-restful to support the creation of APIs conforming to HAL."
 arch=("any")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("python" "python-pyopenssl" "python-requests")
 makedepends=("python-setuptools")
 source=("https://github.com/sciapp/gitlab-registry-usage/archive/v${pkgver}.tar.gz")
-sha256sums=("3bd30eb2259097aeb430afb3ad4b1fe3f7ae19b9aa1ae779c984aa65817f5f9f")
+sha256sums=("927f814926df1abd8c5ccda31bbb06d54f4a7e9d74922bcdc507ddc801122a6c")
 
 build() {
     cd "${srcdir}/${pkgname#*-}-${pkgver}" || return
