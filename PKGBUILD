@@ -2,7 +2,7 @@
 
 pkgname=gmailieer
 _pkgname=lieer
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Fast fetch and two-way tag synchronization between notmuch and GMail'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('python-oauth2client' 'python-google-api-python-client' 'python-tqdm')
 makedepends=('python-setuptools')
 source=("$url/archive/v$pkgver/${_pkgname}-v$pkgver.tar.gz")
-sha512sums=('21c93baffa36ac4ce88654e5b65b57af97f612233cb0857d2d0a17e12b31bd72d082e5a5d3ab343aa852158bdcc10f61508c90ecccec5588b4cb745a588b9e76')
+sha512sums=('3a066ffc4ed5b6dc07f3ebbf69ea9fef7c31640f8b07422f3f1f07018becc3623598fff215cf7e217aab65b4de8b40023e53cc0d79d5d1f6e9e802b4bfb8cb82')
 
 build() {
   cd ${_pkgname}-$pkgver
