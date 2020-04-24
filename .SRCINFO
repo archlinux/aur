@@ -18,7 +18,7 @@ pkgbase = python-sphinx-gallery
 pkgname = python-sphinx-gallery
 	depends = python-sphinx>=1.8.3
 	depends = python-pillow
+	depends = python-matplotlib
 	optdepends = python-seaborn
-	optdepends = python-matplotlib
 	optdepends = mayavi
 
