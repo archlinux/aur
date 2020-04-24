@@ -1,0 +1,12 @@
+pkgbase = mhwd-amdgpu
+	pkgdesc = MHWD module-ids for amdgpu
+	pkgver = 19.1.0
+	pkgrel = 1
+	url = http://xorg.freedesktop.org/
+	arch = any
+	license = custom
+	source = https://raw.githubusercontent.com/pciutils/pciids/master/pci.ids
+	md5sums = SKIP
+
+pkgname = mhwd-amdgpu
+
