@@ -88,7 +88,7 @@ _v_b='217'
 
 _update='1'
 
-pkgrel=2
+pkgrel=3
 
 _sp='cluster_edition'
 _icc_ver='19.1.1'
@@ -584,6 +584,7 @@ package_intel-vtune-profiler() {
 
   pkgdesc="Performance profiler for serial and parallel performance analysis $_vtune_ver"
   depends=('pangox-compat')
+  options=(!strip)
 
   mkdir -p ${xe_build_dir}
   cd ${xe_build_dir}

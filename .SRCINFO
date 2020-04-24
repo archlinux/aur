@@ -1,7 +1,7 @@
 pkgbase = intel-parallel-studio-xe
 	pkgdesc = Intel C++ C and FORTRAN compiler - Intel Parallel Studio XE - Cluster Edition - icc icpc ifort ipp
 	pkgver = 2020.1.217
-	pkgrel = 2
+	pkgrel = 3
 	url = http://software.intel.com/en-us/articles/non-commercial-software-download/
 	arch = x86_64
 	license = custom
@@ -79,6 +79,7 @@ pkgname = intel-advisor
 pkgname = intel-vtune-profiler
 	pkgdesc = Performance profiler for serial and parallel performance analysis 2020.1.0.607630
 	depends = pangox-compat
+	options = !strip
 
 pkgname = intel-inspector
 	pkgdesc = Memory and thread debugger 2020.1.0.604266
