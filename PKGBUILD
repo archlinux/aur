@@ -1,18 +1,19 @@
 # Maintainer: Alexey Andreyev <aa13q@ya.ru>
 
 _gitname=telepathy-tank
+_branch=aa13q/master
 pkgname=telepathy-tank-git
-pkgver=r34.9869614
+pkgver=r39.596d523
 pkgrel=1
 pkgdesc="Matrix connection operator for the Telepathy framework"
 arch=(i686 x86_64 armv7h aarch64)
 url="https://telepathy.freedesktop.org/"
 license=(GPL)
-depends=('telepathy-qt-git' 'qt5-matrixclient-git>=r1102.98c4168')
+depends=('telepathy-qt-git' 'libquotient')
 makedepends=(cmake git)
 provides=(telepathy-tank)
 conflicts=(telepathy-tank telepathy-tank-git-wip)
-source=("git+https://github.com/TelepathyIM/$_gitname")
+source=("git+https://github.com/TelepathyIM/$_gitname#branch=$_branch")
 md5sums=('SKIP')
 
 pkgver() {
