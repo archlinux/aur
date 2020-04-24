@@ -9,15 +9,13 @@ url="https://ovh.github.io/cds/"
 license=('BSD-3-Clause')
 depends=('redis' 'postgresql')
 provides=('cds')
-install=post_install
+install=cds.install
 source=("https://github.com/ovh/cds/releases/download/${pkgver}/cds-engine-linux-amd64"
 		"https://github.com/ovh/cds/releases/download/${pkgver}/sql.tar.gz"
-		"https://github.com/ovh/cds/releases/download/${pkgver}/cdsctl-linux-amd64"
-		'post_install')
+		"https://github.com/ovh/cds/releases/download/${pkgver}/cdsctl-linux-amd64")
 md5sums=('2c97bfd9c3352729a63d0f9ff480f862'
 		 'd111ec0151febb29b5ca84a8d6e404c8'
-		 'ce1c1c2222abe853e3674fa2efab033f'
-		 '8cfc5b5e6718b5fe28aa4dc7f03a033e')
+		 'ce1c1c2222abe853e3674fa2efab033f')
 
 package() {
   install -Dm755 ${srcdir}/cds-engine* "${pkgdir}/usr/bin/cds-engine"
