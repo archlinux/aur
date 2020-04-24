@@ -1,0 +1,13 @@
+pkgbase = leaps-bin
+	pkgdesc = A service for collaboratively editing your local files over a web UI, using operational transforms to ensure zero-collision synchronization across any number of editing clients
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/Jeffail/leaps
+	arch = x86_64
+	license = MIT
+	provides = leaps
+	source = https://github.com/Jeffail/leaps/releases/download/v0.9.0/leaps_linux_amd64.tar.gz
+	sha256sums = 81a4dbb42fecf25b6728ba6ebc1225bb2e65ae949e8d0827e629c95acd463765
+
+pkgname = leaps-bin
+
