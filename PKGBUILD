@@ -6,7 +6,7 @@ pkgname=(
 	"nginx-zest-src-git"
 )
 pkgver=1.17.10
-pkgrel=3
+pkgrel=4
 epoch=1
 arch=(
 	"x86_64"
