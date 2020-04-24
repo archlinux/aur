@@ -1,29 +1,34 @@
 # Maintainer: kXuan <kxuanobj@gmail.com>
 
 pkgname=envoyproxy
-pkgver=1.13.0
-pkgrel=2
+pkgver=1.14.1
+pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
 url='https://envoyproxy.io'
 license=('Apache2')
-makedepends=('bazel' 'cmake' 'git' 'go' 'ninja' 'perl' 'python')
+makedepends=(
+    'bazel'
+    'cmake'
+    'git'
+    'go'
+    'java-environment-openjdk'
+    'ninja'
+    'perl'
+    'python'
+)
 source=(
     "https://github.com/$pkgname/envoy/archive/v$pkgver.tar.gz"
-    "0001-aur-fix-bazelversion-to-2.1.0.patch"
 )
-sha512sums=('64d0d523903bbcdc30beea89bc130c91a1bf168f6a2fbab4e191c693d0b8c02da06a3725cd53bb70650e16b44884004c468f5c0e20135cf4214c36eb60a62b90'
-'SKIP')
+sha512sums=('0d68a15f7eb5a16a26a093a993132d57941931963f06845d3ba489505f18a9a7d82c809c38c6552ef01bc542ee715152b964f1dcf6b69951c3d9bbe6b3f3af20'
+)
 
 prepare() {
   cd "envoy-$pkgver"
-  for p in "${srcdir}"/*.patch; do
-      echo "Apply patch $p"
-      patch --forward --strip=1 --input="$p"
-  done
   go get github.com/bazelbuild/buildtools/buildifier
+  bazel --version | cut -d\  -f2 > .bazelversion
   # The commit id of $pkgver
-  echo "bb7ceff4c3c5bd4555dff28b6e56d27f2f8be0a7" > SOURCE_VERSION
+  echo "3504d40f752eb5c20bc2883053547717bcb92fd8" > SOURCE_VERSION
 }
 
 build() {
