@@ -1,7 +1,7 @@
 pkgbase = pivccu-modules-dkms
 	pkgdesc = Kernel modules needed for Homematic
 	pkgver = 1.0.39
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexreinert/piVCCU/
 	arch = x86_64
 	arch = arm
@@ -13,8 +13,10 @@ pkgbase = pivccu-modules-dkms
 	conflicts = pivccu-modules
 	source = pivccu::git+https://github.com/alexreinert/piVCCU#commit=7a692da961423f496ce65164b271a3ef4dd800b2
 	source = dkms.conf
+	source = proc_ops.patch
 	sha256sums = SKIP
 	sha256sums = 0440113135ab4b9a2d46859abd2854f831e99da06f9e410c56bef199b7d0a6df
+	sha256sums = ea2b82dae4cd092fa802528261fc88e0e7610c83a8ead7669bbb28b92ee9c6c4
 
 pkgname = pivccu-modules-dkms
 

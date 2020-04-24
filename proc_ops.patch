@@ -1,0 +1,23 @@
+diff --git a/kernel/generic_raw_uart.c b/kernel/generic_raw_uart.c
+index 5076fa8..eda7f4d 100644
+--- a/kernel/generic_raw_uart.c
++++ b/kernel/generic_raw_uart.c
+@@ -133,13 +133,12 @@ static struct file_operations generic_raw_uart_fops =
+ };
+ 
+ #ifdef PROC_DEBUG
+-static const struct file_operations generic_raw_uart_proc_fops =
++static const struct proc_ops generic_raw_uart_proc_fops =
+ {
+-  .owner = THIS_MODULE,
+-  .open = generic_raw_uart_proc_open,
+-  .read = seq_read,
+-  .llseek = seq_lseek,
+-  .release = single_release,
++  .proc_open = generic_raw_uart_proc_open,
++  .proc_read = seq_read,
++  .proc_lseek = seq_lseek,
++  .proc_release = single_release,
+ };
+ #endif /*PROC_DEBUG*/
+ 
