@@ -1,0 +1,13 @@
+pkgbase = manssh-bin
+	pkgdesc = Manage your ssh alias configs easily
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/xwjdsh/manssh
+	arch = x86_64
+	license = MIT
+	provides = manssh
+	source = https://github.com/xwjdsh/manssh/releases/download/v0.5.1/manssh_0.5.1_linux_amd64.tar.gz
+	sha256sums = b88e838dbc75a9a5a4812ef776d4c62e9d69c0c8be7245eaebd9e97023feda14
+
+pkgname = manssh-bin
+
