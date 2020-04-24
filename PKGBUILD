@@ -11,19 +11,15 @@ url="https://plexamp.plex.tv"
 options=(!strip)
 source=(
   ${url}/plexamp.plex.tv/desktop/Plexamp-${pkgver}.AppImage
-  plexamp.desktop
-  plexamp.svg::https://plexamp.com/img/plexamp_transparent.svg
 )
 sha512sums=(
-  SKIP
-  SKIP
   SKIP
 )
 
 package() {
   echo "Starting install"
+  Plexamp-${pkgver}.AppImage --appimage-extract plexamp.desktop
   install -Dm755 Plexamp-${pkgver}.AppImage "$pkgdir"/usr/bin/Plexamp.AppImage
-  echo '"$pkgdir"/usr/bin/Plexamp.AppImage'
+  echo 'Installing desktop launch file to "$pkgdir"/usr/bin/Plexamp.AppImage'
   install -Dm755 plexamp.desktop "$pkgdir"/usr/share/applications/plexamp.desktop
-  install -Dm644 plexamp.svg "$pkgdir"/usr/share/icons/plexamp.svg
 }
