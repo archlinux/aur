@@ -1,6 +1,6 @@
 pkgbase = cinnamon-git
 	pkgdesc = Linux desktop which provides advanced innovative features and a traditional user experience
-	pkgver = 4.2.0.r3.g4d1da807e
+	pkgver = 4.4.8.r70.g14e5ccee8
 	pkgrel = 1
 	url = https://github.com/linuxmint/cinnamon
 	arch = x86_64
@@ -15,15 +15,16 @@ pkgbase = cinnamon-git
 	depends = cinnamon-menus
 	depends = cinnamon-screensaver
 	depends = cinnamon-session
-	depends = cinnamon-settings-daemon>=4.2.0
+	depends = cinnamon-settings-daemon
 	depends = cjs
 	depends = gnome-backgrounds
 	depends = gnome-themes-extra
 	depends = gstreamer
+	depends = libcroco
 	depends = libgnomekbd
 	depends = libkeybinder3
 	depends = librsvg
-	depends = muffin>=4.2.0
+	depends = muffin
 	depends = network-manager-applet
 	depends = nemo
 	depends = polkit-gnome
@@ -34,14 +35,17 @@ pkgbase = cinnamon-git
 	depends = python-pexpect
 	depends = python-pillow
 	depends = python-pyinotify
-	depends = python-tinycss
+	depends = python-pytz
+	depends = python-tinycss2
+	depends = python-xapp
+	depends = timezonemap
 	depends = xapps
 	optdepends = blueberry: Bluetooth support
 	optdepends = cinnamon-translations: i18n
 	optdepends = gnome-panel: fallback mode
 	optdepends = metacity: fallback mode
 	optdepends = system-config-printer: printer settings
-	provides = cinnamon=4.2.0.r3.g4d1da807e
+	provides = cinnamon=4.4.8.r70.g14e5ccee8
 	conflicts = cinnamon
 	options = !emptydirs
 	source = git+https://github.com/linuxmint/cinnamon.git

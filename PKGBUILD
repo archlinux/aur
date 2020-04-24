@@ -5,18 +5,18 @@
 # Contributor: CReimer
 
 pkgname=cinnamon-git
-pkgver=4.2.0.r3.g4d1da807e
+pkgver=4.4.8.r70.g14e5ccee8
 pkgrel=1
 pkgdesc="Linux desktop which provides advanced innovative features and a traditional user experience"
 arch=('x86_64')
 url="https://github.com/linuxmint/${pkgname%-git}"
 license=('GPL2')
 depends=('accountsservice' 'caribou' 'cinnamon-control-center' 'cinnamon-menus' 'cinnamon-screensaver'
-         'cinnamon-session' 'cinnamon-settings-daemon>=4.2.0' 'cjs' 'gnome-backgrounds'
-         'gnome-themes-extra' 'gstreamer' 'libgnomekbd' 'libkeybinder3' 'librsvg' 'muffin>=4.2.0'
+         'cinnamon-session' 'cinnamon-settings-daemon' 'cjs' 'gnome-backgrounds'
+         'gnome-themes-extra' 'gstreamer' 'libcroco' 'libgnomekbd' 'libkeybinder3' 'librsvg' 'muffin'
          'network-manager-applet' 'nemo' 'polkit-gnome' 'python-cairo' 'python-dbus'
          'python-gobject' 'python-pam' 'python-pexpect' 'python-pillow' 'python-pyinotify'
-         'python-tinycss' 'xapps')
+         'python-pytz' 'python-tinycss2' 'python-xapp' 'timezonemap' 'xapps')
 optdepends=('blueberry: Bluetooth support'
             'cinnamon-translations: i18n'
             'gnome-panel: fallback mode'
@@ -46,7 +46,7 @@ prepare() {
 
     # Check for the cc-panel module path, not for the irrelevant binary
     # https://github.com/linuxmint/Cinnamon/pull/7382
-    patch -p1 -i ../0001-cinnamon-settings-don-t-rely-on-the-presence-of-cinn.patch
+    patch --no-backup-if-mismatch -p1 -i ../0001-cinnamon-settings-don-t-rely-on-the-presence-of-cinn.patch
 
     # Use wheel group instread of sudo (taken from Fedora)
     patch -Np1 -i ../set_wheel.diff
@@ -59,7 +59,7 @@ prepare() {
 
     # Add polkit agent to required components
     sed -i 's/RequiredComponents=\(.*\)$/RequiredComponents=\1polkit-gnome-authentication-agent-1;/' \
-        files/usr/share/cinnamon-session/sessions/cinnamon*.session
+        files/cinnamon*.session.in
 
     # https://github.com/linuxmint/Cinnamon/issues/3575#issuecomment-374887122
     # Cinnamon has no upstream backgrounds, use GNOME backgrounds instead
