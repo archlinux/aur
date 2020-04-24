@@ -1,7 +1,7 @@
 # Maintainer: Minzord
 
 pkgname=remakepkg
-pkgver=0.9.6
+pkgver=0.10.2
 pkgrel=1
 arch=(any)
 
@@ -23,7 +23,7 @@ source=("git+https://gitlab.com/ayekat/pacman-hacks.git#tag=v$pkgver"
 sha256sums=(SKIP
             4b723cf33b30f6176f8f50623c2325d05d5dc70463ca2bcd893fae2ccab5776e)
 
-_tools='diffrepo fetchpkg  getpkg pkgmirror remakepkg repkg'
+_tools='diffrepo fetchpkg pkgmirror remakepkg repkg'
 
 build() {
   cd pacman-hacks
