@@ -9,8 +9,8 @@ arch=('x86_64')
 url='https://concourse-ci.org'
 license=('Apache-2.0')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/concourse/concourse/archive/v${pkgver}.tar.gz")
-makedepends=('go')
-md5sums=('98d3458860dfed6bd83278e5fc343508')
+makedepends=('go-pie')
+sha256sums=('35ad4680547cdbd71a2eeb4ba9a95920f02640e9818fc66519498f5b92fef80b')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
