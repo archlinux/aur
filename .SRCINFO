@@ -1,18 +1,14 @@
 pkgbase = nginx-mod-upstream-fair
 	pkgdesc = Fair load balancer module for nginx
 	pkgver = 0.1.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/itoffshore/nginx-upstream-fair
 	arch = x86_64
 	license = unknown
-	depends = nginx=1.16.1
+	makedepends = nginx-src
+	depends = nginx=1.18.0
 	depends = libutil-linux
-	source = https://nginx.org/download/nginx-1.16.1.tar.gz
-	source = https://nginx.org/download/nginx-1.16.1.tar.gz.asc
 	source = nginx-mod-upstream-fair-0.1.3::https://github.com/itoffshore/nginx-upstream-fair/archive/0.1.3.tar.gz
-	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = f11c2a6dd1d3515736f0324857957db2de98be862461b5a542a3ac6188dbe32b
-	sha256sums = SKIP
 	sha256sums = 5545e2f2a27d008690a2c60b90c0bf8a997310930d93fca80ebd33dc308ac2fc
 
 pkgname = nginx-mod-upstream-fair
