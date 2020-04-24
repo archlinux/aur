@@ -1,7 +1,7 @@
 pkgbase = tsv-utils
 	pkgdesc = Command line tools for large, tabular data files. Filtering, statistics, sampling, joins and more.
-	pkgver = 1.4.4
-	pkgrel = 3
+	pkgver = 1.6.1
+	pkgrel = 1
 	url = https://github.com/eBay/tsv-utils
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tsv-utils
 	makedepends = ldc
 	makedepends = make
 	depends = liblphobos
-	source = git+https://github.com/eBay/tsv-utils.git#tag=v1.4.4
+	source = git+https://github.com/eBay/tsv-utils.git#tag=v1.6.1
 	sha1sums = SKIP
 
 pkgname = tsv-utils

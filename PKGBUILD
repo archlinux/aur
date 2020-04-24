@@ -1,8 +1,8 @@
 # Contributer: Sebastian Wilzbach <seb [at] wilzbach [dot] me>
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=tsv-utils
-pkgver=1.4.4
-pkgrel=3
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="Command line tools for large, tabular data files. Filtering, statistics, sampling, joins and more."
 arch=('i686' 'x86_64')
 groups=('dlang')
@@ -18,6 +18,7 @@ sha1sums=('SKIP')
 _bin_files=(
     'csv2tsv' 'number-lines' 'tsv-filter' 'tsv-pretty' 'tsv-select' 'tsv-uniq'
     'keep-header' 'tsv-append' 'tsv-join' 'tsv-sample' 'tsv-summarize'
+    'tsv-split'
 )
 
 build ()
