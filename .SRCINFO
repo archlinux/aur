@@ -1,6 +1,6 @@
 pkgbase = cinnamon-desktop-git
 	pkgdesc = Library with common API for various Cinnamon modules
-	pkgver = 4.0.1.r0.g77b85b0
+	pkgver = 4.4.1.r7.gf2c6cb7
 	pkgrel = 1
 	url = https://github.com/linuxmint/cinnamon-desktop
 	arch = i686
@@ -9,13 +9,14 @@ pkgbase = cinnamon-desktop-git
 	license = LGPL
 	makedepends = git
 	makedepends = meson
+	makedepends = samurai
 	makedepends = gobject-introspection
 	makedepends = intltool
 	depends = accountsservice
 	depends = gtk3
 	depends = libxkbfile
 	depends = libpulse
-	provides = cinnamon-desktop
+	provides = cinnamon-desktop=4.4.1.r7.gf2c6cb7
 	conflicts = cinnamon-desktop
 	source = git+https://github.com/linuxmint/cinnamon-desktop.git
 	source = config.diff

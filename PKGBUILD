@@ -3,15 +3,15 @@
 # Contributor:  Jan de Groot <jan@archlinux.org>
 
 pkgname=cinnamon-desktop-git
-pkgver=4.0.1.r0.g77b85b0
+pkgver=4.4.1.r7.gf2c6cb7
 pkgrel=1
 pkgdesc="Library with common API for various Cinnamon modules"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/${pkgname%-git}"
 license=('GPL' 'LGPL')
 depends=('accountsservice' 'gtk3' 'libxkbfile' 'libpulse')
-makedepends=('git' 'meson' 'gobject-introspection' 'intltool')
-provides=("${pkgname%-git}")
+makedepends=('git' 'meson' 'samurai' 'gobject-introspection' 'intltool')
+provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
 source=("git+${url}.git"
         "config.diff")
@@ -36,13 +36,13 @@ build() {
     cd "${srcdir}"/${pkgname%-git}/build
 
     meson --prefix=/usr --buildtype=plain ..
-    ninja
+    samu
 }
 
 package() {
     cd "${srcdir}"/${pkgname%-git}/build
 
-    DESTDIR="${pkgdir}" ninja install
+    DESTDIR="${pkgdir}" samu install
     # rm legacy migration script (cinnamon 2.4) and its package dependency on python
     rm -rf "${pkgdir}"/usr/bin
 }
