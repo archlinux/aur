@@ -5,7 +5,7 @@
 
 pkgname=foldingathome
 pkgver=7.6.9
-pkgrel=8
+pkgrel=9
 pkgdesc='A distributed computing project for simulating protein dynamics'
 arch=(x86_64)
 url=https://foldingathome.org/
@@ -16,11 +16,10 @@ depends=(
   zlib
 )
 optdepends=(
+  'clinfo: for folding with an NVIDIA GPU'
   'cuda: for folding with an NVIDIA GPU'
   'ocl-icd: for folding with any GPU'
-  'opencl-amd: for folding with an AMD GPU (>= GCN)'
-  'opencl-mesa: for folding with an AMD GPU (< GCN)'
-  'opencl-nvidia: for folding with an NVIDIA GPU'
+  'opencl-driver: for folding with any GPU'
 )
 backup=(etc/foldingathome/config.xml)
 install=foldingathome.install
@@ -32,7 +31,7 @@ source=(
 )
 sha256sums=('b580a8076f3147bacb9d1599e1b1765956a8e37b8a79bd961ffe2e3adc7df110'
             'c2494427610fb714de4e029bd9183d11dbc7161cf193403dc462caeea1452294'
-            'bc974d81f2eaf05bdd63ed4e449282dc9257536ab42b7eeae41853ae8521d6fc'
+            'f0eec0c8f6a278f53a5537446c996b7d97431706d54f0a7e1adce53478b39e70'
             '41997239dc363570e2ca5bec0eca8c7d88aada6ace0bb5793bf3ec6d101f40bb')
 
 package() {

@@ -6,6 +6,7 @@ After=multi-user.target
 Type=oneshot
 ExecStart=/usr/bin/nvidia-modprobe
 ExecStart=/usr/bin/nvidia-modprobe -c 0 -u
+ExecStart=/usr/bin/clinfo
 
 [Install]
 WantedBy=multi-user.target
