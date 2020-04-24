@@ -1,5 +1,5 @@
 pkgbase = doh-cli
-	pkgdesc = a simple DNS over HTTPS client
+	pkgdesc = a simple DNS over HTTPS query client
 	pkgver = 0.3
 	pkgrel = 3
 	url = https://pypi.python.org/pypi/doh-cli
