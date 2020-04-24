@@ -1,7 +1,7 @@
 pkgbase = switchhosts-bin
 	pkgdesc = Switch hosts quickly!
-	pkgver = 3.3.6
-	pkgrel = 5287
+	pkgver = 3.5.4
+	pkgrel = 5517
 	url = https://oldj.github.io/SwitchHosts
 	arch = any
 	license = MIT
@@ -17,14 +17,14 @@ pkgbase = switchhosts-bin
 	depends = desktop-file-utils
 	depends = alsa-lib
 	options = !strip
-	source = https://github.com/oldj/SwitchHosts/releases/download/v3.3.6/SwitchHosts-linux-x64_v3.3.6.5287.zip
-	source = https://raw.githubusercontent.com/oldj/SwitchHosts/master/assets/app.ico
+	source = https://github.com/oldj/SwitchHosts/releases/download/v3.5.4/SwitchHosts._linux_x64_3.5.4.5517.zip
+	source = https://raw.githubusercontent.com/oldj/SwitchHosts/master/app/assets/logo@512w.png
 	source = switchhosts-bin.install
 	source = switchhosts-bin.desktop
-	md5sums = c051e239ce81a89d22b14c099c1afd66
-	md5sums = 88fe4a72cf9630119dd512c91b54edd9
+	md5sums = bd23ba93ba19ed1377e0bd36f6f9376b
+	md5sums = 06eb97a4b5b5ddf7a06841e01d5562eb
 	md5sums = 0b6211b511da48346cecdc1d2f963c76
-	md5sums = 30df36e53ef2d815a2c2395f0378f9bb
+	md5sums = c6594fabba5e7f9d5ae0736524f6f634
 
 pkgname = switchhosts-bin
 
