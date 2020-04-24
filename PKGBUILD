@@ -3,7 +3,7 @@
 
 _gemname=rotp
 pkgname=ruby-$_gemname
-pkgver=5.1.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc='A Ruby library for generating and verifying one time passwords'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('ruby' 'ruby-addressable')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-sha256sums=('de6ea82e84b28333771240852f1807763420a40cc2ce5e4198eb7051655ef829')
+sha256sums=('5f435de3ba5027f67dedecc666fe7f98bae7ecd58ed1475d46f4cfc2936c2206')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
