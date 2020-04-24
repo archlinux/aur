@@ -2,7 +2,7 @@
 # Contributor: Olaf Leidinger <oleid@mescharet.de>
 
 pkgname=futhark-nightly
-pkgver=0.14.0.rf13eb89
+pkgver=0.15.5.r5.gf59a43a58
 pkgrel=1
 pkgdesc="A data-parallel functional programming language"
 arch=('x86_64')
@@ -17,12 +17,13 @@ optdepends=('opencl-headers: opencl support'
 makedepends=()
 provides=("${pkgname%-nightly}")
 conflicts=("${pkgname%-nightly}")
-source=("${pkgname}-$(date -u +%Y%m%d%H).tar.xz::https://futhark-lang.org/releases/futhark-nightly-linux-${arch}.tar.xz")
+_timestamp=$(date -u +%Y%m%d%H)
+source=("${pkgname}-${_timestamp}.tar.xz::https://futhark-lang.org/releases/futhark-nightly-linux-${arch}.tar.xz")
 sha256sums=(SKIP)
 
 pkgver() {
     cd "${srcdir}/futhark-nightly-linux-${arch}"
-    printf "%s.r%s" "$(./bin/futhark -V | grep Futhark | sed "s/Futhark //")" "$(cat commit-id)"
+    sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' < commit-id
 }
 
 package() {
