@@ -1,6 +1,6 @@
 pkgbase = m64p-git
 	pkgdesc = Mupen64Plus with custom plugins and Qt5 GUI (git version)
-	pkgver = r94.g8d7153e
+	pkgver = r104.g2938cb5
 	pkgrel = 1
 	url = https://m64p.github.io/
 	arch = x86_64
@@ -45,8 +45,8 @@ pkgbase = m64p-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = c7b80c7be0e07e44b260e1ce89e31628d64ddee622ea842b85f6eb0aeff4168a
-	sha256sums = b27e808d97b37bd1a98c9c8482a938f5da6b19c26c58db792f0e79b27a7d84c7
+	sha256sums = 6871b495ace8a9005d93ce3e9103a15111a67793812dd5158072c981c4c3a5a8
+	sha256sums = a999739626fc3e9d0102b65014c436bf4e9039587ccac174334672f3925f4495
 	sha256sums = b884fc86180346226eb7e8bf8560d2b789318e810c9e26b6adbe7d8d047188df
 
 pkgname = m64p-git
