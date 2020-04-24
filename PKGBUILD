@@ -1,7 +1,7 @@
 # Maintainer: Alexander Kempen  <alexander dot kempen at posteo dot de>
 pkgname=neatvnc-git
 _pkgname=neatvnc
-pkgver=r123.6bb3362
+pkgver=r202.f3e09fd
 pkgrel=1
 license=("ISC")
 pkgdesc="This is a liberally licensed VNC server library that's intended to be fast and neat. Note: This is a beta release, so the interface is not yet stable."
