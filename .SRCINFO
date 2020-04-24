@@ -3,7 +3,7 @@ pkgbase = backdrop
 	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://backdropcms.org/
-	install = post_install
+	install = backdrop.install
 	arch = any
 	license = GPL-2.0
 	depends = php>=5.3.2
@@ -12,7 +12,6 @@ pkgbase = backdrop
 	optdepends = apache: A high performance Unix-based HTTP server (recommended)
 	optdepends = nginx: Lightweight HTTP server and IMAP/POP3 proxy server
 	source = https://github.com/backdrop/backdrop/archive/1.15.0.tar.gz
-	source = post_install
 	md5sums = b87bf0d9ac578bb5461d25e4066064f9
 	md5sums = 7fbee32b61dc7db14c3b63e2d2ad4ac3
 
