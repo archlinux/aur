@@ -1,7 +1,7 @@
 # Maintainer: Jan Peter Koenig <public@janpeterkoenig.com>
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
 pkgname=libtrace
-pkgver=4.0.11
+pkgver=4.0.12
 pkgrel=1
 pkgdesc="a library for trace processing supporting multiple input and output methods"
 arch=('x86_64')
@@ -24,4 +24,4 @@ package() {
   make DESTDIR="$pkgdir/" install
 }
 
-sha256sums=('75a2a8bc1c3cb32a6a5e1ef41d5e3740505880d94cc97df94cf33f7a8f65750e')
+sha256sums=('ab18e5ce39c6071a4e97efc7e239753e28df3b809cc3f20de48aa267c6305817')
