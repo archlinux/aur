@@ -3,7 +3,7 @@ pkgbase = opensage-bin
 	pkgver = 0.3.0
 	pkgrel = 2
 	url = https://opensage.github.io
-	install = post_install
+	install = opensage.install
 	arch = x86_64
 	license = LGPL-3.0
 	depends = openal
@@ -12,9 +12,7 @@ pkgbase = opensage-bin
 	provides = opensage
 	noextract = linux-x64.zip
 	source = https://github.com/OpenSAGE/OpenSAGE/releases/download/v0.3.0/linux-x64.zip
-	source = post_install
 	md5sums = a46453c1aed2d0ba273ee143c5bef559
-	md5sums = 1a7425514e4c215720a0f3a604669bc6
 
 pkgname = opensage-bin
 

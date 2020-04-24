@@ -9,12 +9,10 @@ url='https://opensage.github.io'
 license=('LGPL-3.0')
 depends=('openal' 'mesa' 'unzip')
 noextract=('linux-x64.zip')
-install=post_install
+install=opensage.install
 provides=('opensage')
-source=("https://github.com/OpenSAGE/OpenSAGE/releases/download/v${pkgver}/linux-x64.zip"
-        'post_install')
-md5sums=('a46453c1aed2d0ba273ee143c5bef559'
-         '1a7425514e4c215720a0f3a604669bc6')
+source=("https://github.com/OpenSAGE/OpenSAGE/releases/download/v${pkgver}/linux-x64.zip")
+md5sums=('a46453c1aed2d0ba273ee143c5bef559')
 
 package() {
   cd ${srcdir}
