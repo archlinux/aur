@@ -1,0 +1,14 @@
+pkgbase = wordpress-plugin-wp-user-avatar
+	pkgdesc = Change user profile picture
+	pkgver = 2.2.6
+	pkgrel = 1
+	url = https://wordpress.org/plugins/wp-user-avatar
+	arch = any
+	license = unknown
+	depends = wordpress
+	options = !strip
+	source = wordpress-plugin-wp-user-avatar-2.2.6.tar.gz::https://downloads.wordpress.org/plugin/wp-user-avatar.2.2.6.zip
+	sha512sums = 941c7139f0ffa621b7e997f80c0234f70922c3a891c3878ea9f22124fcc4f6d7b557b5181328b5a2700cc7e4be2c8c71562167e0d48566651aa88795d667cb6a
+
+pkgname = wordpress-plugin-wp-user-avatar
+
