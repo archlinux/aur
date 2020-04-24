@@ -1,15 +1,15 @@
 pkgbase = conform
 	pkgdesc = Policy enforcement for your pipelines
-	pkgver = 0.1.0_alpha.17
+	pkgver = 0.1.0_alpha.19
 	pkgrel = 1
 	url = https://github.com/talos-systems/conform
 	arch = i686
 	arch = x86_64
 	license = MPL2
 	makedepends = git
-	makedepends = go-pie
+	makedepends = go
 	depends = glibc
-	source = git+https://github.com/talos-systems/conform.git#commit=4eb4beb060332b18c585161728f77aee84b46783
+	source = git+https://github.com/talos-systems/conform.git#commit=b3b6e657fbd4c94f57b81ac95885339ff4ee1b59
 	sha256sums = SKIP
 
 pkgname = conform
