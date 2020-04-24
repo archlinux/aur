@@ -2,7 +2,7 @@
 
 _gemname=fusuma-plugin-keypress
 pkgname=ruby-$_gemname
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Keypress combination plugin for Fusuma"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-fusuma)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('2cdbfe00ade58206d446a0547c40c72f9bcb9057')
+sha1sums=('dd7cd529499b5e0e34b7a8f6bab2a38668d676f7')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
