@@ -11,7 +11,7 @@ _name=FreeRDP
 _pkgname=freerdp
 pkgname=freerdp-gstfree
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 arch=('x86_64')
 url="https://www.freerdp.com/"
@@ -19,7 +19,7 @@ license=('Apache')
 depends=('dbus-glib' 'glibc' 'libcups'
 'libjpeg-turbo' 'libgssglue' 'libx11' 'libxcursor' 'libxext' 'libxdamage'
 'libxfixes' 'libxkbcommon' 'libxi' 'libxinerama' 'libxkbfile' 'libxrandr'
-'libxrender' 'libxtst' 'mbedtls' 'openssl' 'pam' 'pcsclite' 'wayland')
+'libxrender' 'libxtst' 'openssl' 'pam' 'pcsclite' 'wayland')
 makedepends=('alsa-lib' 'cmake' 'docbook-xsl' 'ffmpeg' 'krb5' 'libpulse'
 'libusb' 'systemd-libs' 'xmlto' 'xorgproto')
 conflicts=('freerdp')
