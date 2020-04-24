@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot-git' 'foot-terminfo-git')
-pkgver=1.2.0
-pkgrel=1
+pkgver=1.2.3
+pkgrel=2
 arch=('x86_64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
@@ -51,7 +51,7 @@ check() {
 }
 
 package_foot-git() {
-  pkgdesc="A wayland native terminal emulator"
+  pkgdesc="Wayland terminal emulator - fast, lightweight and minimalistic"
   optdepends=('foot-terminfo: terminfo for foot')
   conflicts=('foot')
   provides=('foot')
