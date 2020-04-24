@@ -1,8 +1,8 @@
 pkgbase = fahviewer-git
 	pkgdesc = Folding@home 3D Simulation Viewer
-	pkgver = 7.6.8
+	pkgver = 7.6.11.r82.3ab8029
 	pkgrel = 1
-	url = http://folding.stanford.edu/English/HomePage
+	url = https://github.com/FoldingAtHome/fah-viewer
 	arch = x86_64
 	license = GPL2
 	makedepends = git

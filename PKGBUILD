@@ -1,10 +1,10 @@
 # Maintainer: Mikael Blomstrand <gmail: kmbloms>
 
 pkgname=fahviewer-git
-pkgver=7.6.8
+pkgver=7.6.11.r82.3ab8029
 pkgrel=1
 pkgdesc="Folding@home 3D Simulation Viewer"
-url="http://folding.stanford.edu/English/HomePage"
+url="https://github.com/FoldingAtHome/fah-viewer"
 arch=('x86_64')
 license=('GPL2')
 conflicts=('fahviewer')
@@ -20,7 +20,8 @@ sha1sums=('SKIP'
           'SKIP')
 
 pkgver() {
-	cat "${srcdir}/fah-client-version/version.txt"
+	cd "${srcdir}/fah-viewer"
+	printf "%s.r%s.%s" $(cat "${srcdir}/fah-client-version/version.txt") "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
