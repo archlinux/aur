@@ -1,10 +1,12 @@
 pkgbase = casile-git
 	pkgdesc = Caleb’s SILE publishing toolkit
-	pkgver = 0.2.0.r0.gba31e7d
+	pkgver = 0.2.0.r53.g6d5f6ce
 	pkgrel = 1
 	url = https://github.com/sile-typesetter/casile
 	arch = any
-	license = LGPL3
+	license = AGPL3
+	makedepends = rust
+	makedepends = cargo
 	depends = bc
 	depends = bcprov
 	depends = cpdf

@@ -1,12 +1,12 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.2.0.r0.gba31e7d
+pkgver=0.2.0.r53.g6d5f6ce
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=('any')
 url="https://github.com/sile-typesetter/${pkgname%-git}"
-license=('LGPL3')
+license=('AGPL3')
 depends=('bc'
          'bcprov' # pdftk optdepend is required
          'cpdf'
@@ -51,6 +51,7 @@ depends=('bc'
          'yq'
          'zint'
          'zsh')
+makedepends=('rust' 'cargo')
 provides=("${pkgname%-git}")
 conflicts=("${provides[@]}")
 source=("$pkgname::git+$url.git")
@@ -62,10 +63,20 @@ pkgver() {
         sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd "$pkgname"
+    ./bootstrap.sh
+    sed -i -e '/dist_\(doc|license\)_DATA/d' Makefile.am
+}
+
+build() {
+    cd "$pkgname"
+    ./configure --prefix /usr
+}
+
 package () {
     cd "$pkgname"
-    install -dm755 "$pkgdir/usr/share"
-    cp -a ./ "$pkgdir/usr/share/${pkgname%-git}"
+    make DESTDIR="$pkgdir" install
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md CHANGELOG.md
 }
