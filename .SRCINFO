@@ -1,6 +1,6 @@
 pkgbase = eqonomize-bin
 	pkgdesc = Cross-platform personal accounting software, with focus on efficiency and ease of use for the small household economy.
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = http://eqonomize.github.io/
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = eqonomize-bin
 	optdepends = qt5-charts: charts in the statistics
 	provides = eqonomize
 	conflicts = eqonomize
-	source = https://github.com/Eqonomize/Eqonomize/releases/download/v1.4.2/eqonomize-1.4.2-x86_64.tar.gz
-	source = https://raw.githubusercontent.com/Eqonomize/Eqonomize/v1.4.2/data/eqonomize.desktop
-	source = https://github.com/Eqonomize/Eqonomize/raw/master/data/scalable/eqonomize.svg
-	sha256sums = 77751a92af351a717f47e39cb98a67b165d92f07b33b7a336ff6e5c951260331
+	source = https://github.com/Eqonomize/Eqonomize/releases/download/v1.4.3/eqonomize-1.4.3-x86_64.tar.gz
+	source = https://raw.githubusercontent.com/Eqonomize/Eqonomize/v1.4.3/data/eqonomize.desktop
+	source = https://github.com/Eqonomize/Eqonomize/raw/v1.4.3/data/scalable/eqonomize.svg
+	sha256sums = f9caacd722595b614d333a1b0563983557038ffcc053f84721f35c72ba6444ed
 	sha256sums = 3c011e0820f85d5f25eefd7db5257fb11cd7effcc1a9eaea6a6dc12db9c5ad1a
-	sha256sums = 43efd837dac524aa05515a761880085afe98fef518d82cdb4e9f98a48cf68c2d
+	sha256sums = 0c036f8ac76d77f1493fe9984cc36c0b7760274d2cd4b532b48e6c1fa1b9f589
 
 pkgname = eqonomize-bin
 
