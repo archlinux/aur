@@ -50,6 +50,13 @@ pkgname = nginx-zest-git
 	depends = zlib
 	optdepends = nginx-zest-src-git: dynamic module support
 	provides = nginx=1.17.10
+	provides = nginx-zest=1.17.10
+	provides = nginx-mod-brotli
+	provides = nginx-mod-cookie_flag_module
+	provides = nginx-mod-njs
+	provides = nginx-mod-redis=0.3.9
+	provides = nginx-mod-redis2
+	provides = nginx-mod-srcache
 	conflicts = nginx
 	conflicts = nginx-zest
 	conflicts = nginx-mod-brotli

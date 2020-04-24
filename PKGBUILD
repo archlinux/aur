@@ -164,6 +164,13 @@ package_nginx-zest-git()
 	)
 	provides=(
 		"nginx=1.17.10"
+		"nginx-zest=1.17.10"
+		"nginx-mod-brotli"
+		"nginx-mod-cookie_flag_module"
+		"nginx-mod-njs"
+		"nginx-mod-redis=0.3.9"
+		"nginx-mod-redis2"
+		"nginx-mod-srcache"
 	)
 	conflicts=(
 		"nginx"
