@@ -1,6 +1,6 @@
 pkgbase = cinnamon-session-git
 	pkgdesc = The Cinnamon Session Handler
-	pkgver = 4.0.0
+	pkgver = 4.4.1.r1.ga582be4
 	pkgrel = 1
 	url = https://github.com/linuxmint/cinnamon-session
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = cinnamon-session-git
 	license = LGPL
 	makedepends = git
 	makedepends = meson
+	makedepends = samurai
 	makedepends = xtrans
 	depends = cinnamon-desktop
 	depends = dbus-glib
@@ -16,7 +17,7 @@ pkgbase = cinnamon-session-git
 	depends = libcanberra
 	depends = xapps
 	optdepends = cinnamon-translations: i18n
-	provides = cinnamon-session=4.0.0
+	provides = cinnamon-session=4.4.1.r1.ga582be4
 	conflicts = cinnamon-session
 	source = git+https://github.com/linuxmint/cinnamon-session.git
 	sha256sums = SKIP
