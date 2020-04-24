@@ -3,7 +3,8 @@
 
 pkgname=libquotient
 pkgver=0.5.3
-pkgrel=2
+pkgrel=3
+epoch=1
 pkgdesc="A Qt5 library to write cross-platform clients for Matrix"
 arch=(x86_64)
 url="https://github.com/quotient-im/libQuotient"
