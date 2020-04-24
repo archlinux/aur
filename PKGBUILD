@@ -178,6 +178,3 @@ END
   ln -sf /usr/share/hunspell "$pkgdir/usr/lib/$_pkgname/dictionaries"
   ln -sf /usr/share/hyphen "$pkgdir/usr/lib/$_pkgname/hyphenation"
   }
-sha512sums=('SKIP'
-            '28219dab29bb53fa66c894ea16330f3cd20f6783000141a1a57e2a9616d9b4a377f85fd8d213e47c5323738e0a867039bc64648e2316aa7519266d23c14989e4'
-            'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7')
