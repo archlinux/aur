@@ -3,7 +3,7 @@ pkgbase = grav
 	pkgver = 1.6.22
 	pkgrel = 1
 	url = https://getgrav.org
-	install = post_install
+	install = grav.install
 	arch = any
 	license = MIT
 	depends = php>=7.1.3
@@ -15,9 +15,7 @@ pkgbase = grav
 	optdepends = nginx: Lightweight HTTP server and IMAP/POP3 proxy server
 	provides = grav
 	source = https://github.com/getgrav/grav/releases/download/1.6.22/grav-v1.6.22.zip
-	source = post_install
 	sha256sums = e3c84bb2a7a35dea3c0f430f097498e560074da9cfe9d89418a24b7b4f3a4072
-	sha256sums = 96ae16816f0032c12d45e7fa912ec275e8ca6735aef6e0d7e7fe5e30d36181ab
 
 pkgname = grav
 
