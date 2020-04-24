@@ -25,8 +25,8 @@
 
 
 pkgname=archey4
-pkgver=v4.7.0
-pkgrel=4
+pkgver=v4.7.1
+pkgrel=1
 pkgdesc="A simple system information tool written in Python"
 arch=('any')
 url="https://github.com/HorlogeSkynet/archey4.git"
@@ -38,14 +38,15 @@ optdepends=('bind-tools: WAN_IP would be detected faster'
             'lm_sensors: Temperature would be more accurate'
             'pciutils: GPU wouldn'"'"'t be detected without it'
             'wmctrl: WindowManager would be more accurate'
-            'virt-what: Model would contain details about the hypervisor')
+            'virt-what: Model would contain details about the hypervisor'
+            'btrfs-progs: Disk would support BTRFS in usage computations')
 provides=('archey')
 conflicts=('archey-git' 'archey2' 'archey3-git' 'pyarchey')
 install="${pkgname}.install"
 backup=("etc/${pkgname}/config.json")
 source=("https://github.com/HorlogeSkynet/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('c67baab6853eda2bd9cfd8544c09b040')
-sha1sums=('75ad2d86a4c7051fae5483ce4a87aec741505fa0')
+md5sums=('ceb144368ac7f10557cdf540f60fe319')
+sha1sums=('c2148ae6aa8472919fd38d6282817de007addb38')
 
 
 build() {
@@ -71,6 +72,10 @@ package() {
 
 check() {
 	cd "${srcdir}/${pkgname}-${pkgver:1}"
+
+	# Temporary workaround for `d559edc52d839654989f1b39e6b0d3159bb71497` upstream.
+	# Rationale : Arch Linux actually CONTAINED an os-release(5) `ANSI_COLOR`.
+	rm archey/test/test_archey_output.py
 
 	python3 -m unittest
 }

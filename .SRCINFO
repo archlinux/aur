@@ -1,7 +1,7 @@
 pkgbase = archey4
 	pkgdesc = A simple system information tool written in Python
-	pkgver = v4.7.0
-	pkgrel = 4
+	pkgver = v4.7.1
+	pkgrel = 1
 	url = https://github.com/HorlogeSkynet/archey4.git
 	install = archey4.install
 	arch = any
@@ -16,15 +16,16 @@ pkgbase = archey4
 	optdepends = pciutils: GPU wouldn't be detected without it
 	optdepends = wmctrl: WindowManager would be more accurate
 	optdepends = virt-what: Model would contain details about the hypervisor
+	optdepends = btrfs-progs: Disk would support BTRFS in usage computations
 	provides = archey
 	conflicts = archey-git
 	conflicts = archey2
 	conflicts = archey3-git
 	conflicts = pyarchey
 	backup = etc/archey4/config.json
-	source = https://github.com/HorlogeSkynet/archey4/archive/v4.7.0.tar.gz
-	md5sums = c67baab6853eda2bd9cfd8544c09b040
-	sha1sums = 75ad2d86a4c7051fae5483ce4a87aec741505fa0
+	source = https://github.com/HorlogeSkynet/archey4/archive/v4.7.1.tar.gz
+	md5sums = ceb144368ac7f10557cdf540f60fe319
+	sha1sums = c2148ae6aa8472919fd38d6282817de007addb38
 
 pkgname = archey4
 
