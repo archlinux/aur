@@ -1,6 +1,6 @@
 pkgbase = pyazo-cli
 	pkgdesc = Pyazo screenshot hosting command line interface
-	pkgver = 0.1.5
+	pkgver = 0.1.31
 	pkgrel = 1
 	url = https://github.com/pyazo-screenshot/cli
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = pyazo-cli
 	depends = python-click
 	depends = python-requests
 	depends = python-pyperclip
-	source = https://files.pythonhosted.org/packages/source/p/pyazo_cli/pyazo_cli-0.1.5.tar.gz
-	sha256sums = a29f007261dd4f6f6d67fd0792b39dc25ae29a6ab84ff95874072469f5eda6b5
+	source = https://files.pythonhosted.org/packages/source/p/pyazo_cli/pyazo_cli-0.1.31.tar.gz
+	sha256sums = 1be5c26f5368ee9d7adac8a7f8b514dce4caae7ec319370ad0df0bd1230fbafc
 
 pkgname = pyazo-cli
 	depends = python
