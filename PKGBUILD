@@ -1,7 +1,8 @@
+# Maintainer: Marc Grondin <myself AT marcg DOT pizza>
 # Maintainer: Daniel Moch <daniel AT danielmoch DOT com>
 # Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=tootstream
-pkgver=0.3.7
+pkgver=0.3.8.1
 pkgrel=1
 pkgdesc="Text interface for the Mastodon social network"
 arch=(any)
@@ -15,8 +16,8 @@ depends=(python-mastodon
 makedepends=(python-distribute)
 source=("requirements.txt.patch"
         "${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('292ad86462c9203bf1923b684b5342f6885652ce2033f5a0bb14749bfff4db6f'
-            'dc2f0244078ee1fdcf80955533a7d83b1a1fb693692bf5b6080f1313948b6adb')
+sha256sums=('9ca9c83eada78ee42f011c6e3bd8e5b01caf770b1c3b152238a8e13ff26138d6'
+            '69886966c98d6fdbf051958832f80c2b5364393796f42f011083ee25fc5ab7f8')
 
 prepare() {
   patch ${pkgname}-${pkgver}/requirements.txt requirements.txt.patch
