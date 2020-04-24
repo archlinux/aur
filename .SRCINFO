@@ -1,17 +1,16 @@
 pkgbase = abricotine
 	pkgdesc = A markdown editor with inline preview
-	pkgver = 0.7.0
-	pkgrel = 3
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = http://abricotine.brrd.fr
 	arch = x86_64
 	license = GPL3
 	makedepends = npm
-	makedepends = nodejs-lts-dubnium
-	depends = gconf
+	makedepends = nodejs-lts-erbium
 	depends = libxss
-	source = abricotine-0.7.0.tar.gz::https://github.com/brrd/abricotine/archive/0.7.0.tar.gz
+	source = abricotine-1.0.0.tar.gz::https://github.com/brrd/abricotine/archive/1.0.0.tar.gz
 	source = abricotine.desktop
-	sha256sums = 03bc7735be08ceacb412b1fd96d13b8ba14eda629cd8b6c705e8421ee7875442
+	sha256sums = a762d53c1870a93179ddf1de8a24a30141975da84059295c40a99ae18d38e1b3
 	sha256sums = 164d0042ffe461ca0418709a59be29b433055589b661be4d6555c07df42b383c
 
 pkgname = abricotine
