@@ -1,0 +1,20 @@
+pkgbase = obs-motion-effect-git
+	pkgdesc = obs-studio plugin for source item animation
+	pkgver = 1.2.1.r3.167596a
+	pkgrel = 1
+	url = https://github.com/CatxFish/motion-effect
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = obs-studio
+	makedepends = cmake
+	depends = obs-studio
+	provides = obs-motion-effect
+	conflicts = obs-motion-effect
+	source = motion-effect::git+https://github.com/CatxFish/motion-effect.git
+	source = obs-studio-25.0.4.tar.gz::https://github.com/obsproject/obs-studio/archive/25.0.4.tar.gz
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = obs-motion-effect-git
+
