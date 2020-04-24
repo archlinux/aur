@@ -1,16 +1,16 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Tristelune <tristelune@archlinux.info>
 
 pkgname=libupnpp
-pkgver=0.17.2
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="A C++ wrapper for libupnp - used with upmpdcli or upplay"
-url="http://www.lesbonscomptes.com/upplay/downloads.html"
+url="https://www.lesbonscomptes.com//upmpdcli/libupnpp-refdoc/libupnpp-ctl.html"
 arch=(x86_64 i686 armv6h armv7h aarch64)
 license=(GPL2)
-depends=(libupnp expat)
+depends=(libnpupnp expat)
 source=("http://www.lesbonscomptes.com/upmpdcli/downloads/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('5abaaf353a1e9c3482d61ef2627b650285d59f27c1ee60d35b8951952261374f')
+sha256sums=('c9659cd36ce70c43e9889a6c3a5eeb28e4f799580727826a6c7aef9bef6b6937')
 
 build(){
 	cd "${pkgname}-${pkgver}"
