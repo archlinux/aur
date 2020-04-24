@@ -2,7 +2,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r13623.e0cf27650
+pkgver=r14484.3bb3b24dd
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
@@ -45,6 +45,10 @@ build() {
 
 	# Flag to fix SDL exceptions occurring in some users' builds
 	CXXFLAGS+=" -I/usr/include/SDL2 -D_REENTRANT -pthread -lSDL2"
+	
+	# Temporary workaround for the issue 3754:
+	# https://github.com/yuzu-emu/yuzu/issues/3754
+	sed -i 's:-Werror=conversion::' src/video_core/CMakeLists.txt
 	
 	mkdir -p build && cd build
 	cmake .. \
