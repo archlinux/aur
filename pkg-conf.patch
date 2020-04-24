@@ -1,108 +1,12 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 29357c1dc..cd28cd365 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -44,28 +44,17 @@ message(STATUS "Build .Net: ${BUILD_DOTNET}")
- # IF building any wrapper THEN Force BUILD_DEPS=ON
- # IF BUILD_DEPS=ON THEN Force all BUILD_*=ON
- include(CMakeDependentOption)
--CMAKE_DEPENDENT_OPTION(BUILD_DEPS "Force re-build of all dependencies" OFF
--  "NOT BUILD_PYTHON; NOT BUILD_JAVA; NOT BUILD_DOTNET" ON)
--CMAKE_DEPENDENT_OPTION(BUILD_ZLIB "Build the ZLIB dependency Library" OFF
--  "NOT BUILD_DEPS" ON)
--CMAKE_DEPENDENT_OPTION(BUILD_absl "Build the abseil-cpp dependency Library" OFF
--  "NOT BUILD_DEPS" ON)
--CMAKE_DEPENDENT_OPTION(BUILD_gflags "Build the gflags dependency Library" OFF
--  "NOT BUILD_DEPS" ON)
--CMAKE_DEPENDENT_OPTION(BUILD_glog "Build the glog dependency Library" OFF
--  "NOT BUILD_DEPS" ON)
--CMAKE_DEPENDENT_OPTION(BUILD_Protobuf "Build the Protobuf dependency Library" OFF
--  "NOT BUILD_DEPS" ON)
--CMAKE_DEPENDENT_OPTION(BUILD_CoinUtils "Build the CoinUtils dependency Library" OFF
--  "NOT BUILD_DEPS" ON)
--CMAKE_DEPENDENT_OPTION(BUILD_Osi "Build the Osi dependency Library" OFF
--  "NOT BUILD_DEPS" ON)
--CMAKE_DEPENDENT_OPTION(BUILD_Clp "Build the Clp dependency Library" OFF
--  "NOT BUILD_DEPS" ON)
--CMAKE_DEPENDENT_OPTION(BUILD_Cgl "Build the Cgl dependency Library" OFF
--  "NOT BUILD_DEPS" ON)
--CMAKE_DEPENDENT_OPTION(BUILD_Cbc "Build the Cbc dependency Library" OFF
--  "NOT BUILD_DEPS" ON)
-+option(BUILD_DEPS "Force re-build of all dependencies" OFF)
-+option(BUILD_ZLIB "Build the ZLIB dependency Library" OFF)
-+option(BUILD_absl "Build the abseil-cpp dependency Library" OFF)
-+option(BUILD_gflags "Build the gflags dependency Library" OFF)
-+option(BUILD_glog "Build the glog dependency Library" OFF)
-+option(BUILD_Protobuf "Build the Protobuf dependency Library" OFF)
-+option(BUILD_CoinUtils "Build the CoinUtils dependency Library" OFF)
-+option(BUILD_Osi "Build the Osi dependency Library" OFF)
-+option(BUILD_Clp "Build the Clp dependency Library" OFF)
-+option(BUILD_Cgl "Build the Cgl dependency Library" OFF)
-+option(BUILD_Cbc "Build the Cbc dependency Library" OFF)
- 
- message(STATUS "Build all dependencies: ${BUILD_DEPS}")
- message(STATUS "Build ZLIB: ${BUILD_ZLIB}")
 diff --git a/cmake/cpp.cmake b/cmake/cpp.cmake
-index 9097739bc..12e7230b5 100644
+index 4315cd044..90c13e588 100644
 --- a/cmake/cpp.cmake
 +++ b/cmake/cpp.cmake
-@@ -7,6 +7,8 @@ set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
- set(THREAD_PREFER_PTHREAD_FLAG TRUE)
- find_package(Threads REQUIRED)
- 
-+find_package(PkgConfig REQUIRED)
-+
- find_package(ZLIB REQUIRED)
- find_package(absl REQUIRED CONFIG)
- set(GFLAGS_USE_TARGET_NAMESPACE TRUE)
-@@ -16,13 +18,26 @@ if(BUILD_gflags)
- else()
-   set(GFLAGS_DEP gflags::gflags)
- endif()
--find_package(glog REQUIRED CONFIG)
--find_package(Protobuf REQUIRED CONFIG)
--find_package(CoinUtils REQUIRED CONFIG)
--find_package(Osi REQUIRED CONFIG)
--find_package(Clp REQUIRED CONFIG)
--find_package(Cgl REQUIRED CONFIG)
--find_package(Cbc REQUIRED CONFIG)
-+
-+pkg_check_modules(GLOG REQUIRED libglog IMPORTED_TARGET GLOBAL)
-+add_library(glog::glog ALIAS PkgConfig::GLOG)
-+pkg_check_modules(PROTOBUF REQUIRED protobuf IMPORTED_TARGET GLOBAL)
-+add_library(protobuf::libprotobuf ALIAS PkgConfig::PROTOBUF)
-+
-+pkg_check_modules(COINUTILS REQUIRED coinutils IMPORTED_TARGET GLOBAL)
-+
-+pkg_check_modules(OSI_CBC REQUIRED osi-cbc IMPORTED_TARGET GLOBAL)
-+add_library(Coin::OsiCbc ALIAS PkgConfig::OSI_CBC)
-+pkg_check_modules(OSI_CLP REQUIRED osi-clp IMPORTED_TARGET GLOBAL)
-+add_library(Coin::OsiClp ALIAS PkgConfig::OSI_CLP)
-+pkg_check_modules(CLP REQUIRED clp IMPORTED_TARGET GLOBAL)
-+add_library(Coin::ClpSolver ALIAS PkgConfig::CLP)
-+
-+pkg_check_modules(CGL REQUIRED cgl) # not used?
-+
-+pkg_check_modules(CBC REQUIRED cbc IMPORTED_TARGET GLOBAL)
-+add_library(Coin::Cbc ALIAS PkgConfig::CBC)
-+add_library(Coin::CbcSolver ALIAS PkgConfig::CBC)
- 
- # If wrapper are built, we need to have the install rpath in BINARY_DIR to package
- if(BUILD_PYTHON OR BUILD_JAVA OR BUILD_DOTNET)
-@@ -119,6 +134,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
-   absl::any
-   ${GFLAGS_DEP}
-   glog::glog
-+  # ${GLOG_LIBRARIES}
-   protobuf::libprotobuf
-   Coin::CbcSolver Coin::OsiCbc Coin::ClpSolver Coin::OsiClp
-   Threads::Threads)
-@@ -154,12 +170,13 @@ foreach (PROTO_FILE ${proto_files})
+@@ -267,12 +267,12 @@ foreach(PROTO_FILE IN LISTS proto_files)
    #message(STATUS "protoc src: ${PROTO_SRC}")
    add_custom_command(
      OUTPUT ${PROTO_SRC} ${PROTO_HDR}
 -    COMMAND protobuf::protoc
-+    # COMMAND protobuf::protoc
 +    COMMAND /usr/bin/protoc
      "--proto_path=${PROJECT_SOURCE_DIR}"
      ${PROTO_DIRS}
@@ -110,16 +14,6 @@ index 9097739bc..12e7230b5 100644
      ${PROTO_FILE}
 -    DEPENDS ${PROTO_FILE} protobuf::protoc
 +    DEPENDS ${PROTO_FILE} /usr/bin/protoc
-     COMMENT "Running C++ protocol buffer compiler on ${PROTO_FILE}"
+     COMMENT "Generate C++ protocol buffer for ${PROTO_FILE}"
      VERBATIM)
    list(APPEND PROTO_HDRS ${PROTO_HDR})
-@@ -174,7 +191,8 @@ set_target_properties(${PROJECT_NAME}_proto PROPERTIES CXX_EXTENSIONS OFF)
- target_include_directories(${PROJECT_NAME}_proto PRIVATE
-   ${PROJECT_SOURCE_DIR}
-   ${PROJECT_BINARY_DIR}
--  $<TARGET_PROPERTY:protobuf::libprotobuf,INTERFACE_INCLUDE_DIRECTORIES>
-+  ${PROTOBUF_LIBRARIES}
-+  #$<TARGET_PROPERTY:protobuf::libprotobuf,INTERFACE_INCLUDE_DIRECTORIES>
-   )
- #target_link_libraries(${PROJECT_NAME}_proto PRIVATE protobuf::libprotobuf)
- add_dependencies(${PROJECT_NAME}_proto protobuf::libprotobuf)
