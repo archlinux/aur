@@ -2,7 +2,7 @@
 # Based on Aaron Paden <aaronbpaden@gmail.com> PKGBUILD for pcem
 pkgname=pcem-hg
 _pkgname=pcem
-pkgver=r1559.2f82eb504b30
+pkgver=r1567.457d2fe0975a
 pkgrel=1
 pkgdesc="Emulator for various IBM PC computers and clones - development version"
 url="http://pcem-emulator.co.uk/"
@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/pcem"
+  aclocal-1.15
   ./configure --enable-release-build --enable-networking --prefix=/usr
   make
 }

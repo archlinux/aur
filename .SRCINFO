@@ -1,6 +1,6 @@
 pkgbase = pcem-hg
 	pkgdesc = Emulator for various IBM PC computers and clones - development version
-	pkgver = r1559.2f82eb504b30
+	pkgver = r1567.457d2fe0975a
 	pkgrel = 1
 	url = http://pcem-emulator.co.uk/
 	arch = x86_64
