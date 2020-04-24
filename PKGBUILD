@@ -1,9 +1,9 @@
 # Maintainer: Diab Neiroukh <officiallazerl0rd@gmail.com>
 
 pkgbase="nginx-lazerl0rd-git"
-pkgname=("nginx-lazerl0rd-git" "nginx-src-lazerl0rd-git")
+pkgname=("nginx-lazerl0rd-git" "nginx-lazerl0rd-src-git")
 pkgver=1.17.10
-pkgrel=4
+pkgrel=5
 epoch=1
 arch=("i686" "x86_64")
 url="https://github.com/lazerl0rd/nginx"
@@ -184,11 +184,11 @@ package_nginx-lazerl0rd-git()
 	done
 }
 
-package_nginx-src-lazerl0rd-git()
+package_nginx-lazerl0rd-src-git()
 {
 	pkgdesc="Source code of nginx-lazerl0rd ${pkgver}, useful for building modules"
-	provides=("nginx-src=1.17.9" "nginx-src-lazerl0rd=1.17.9")
-	conflicts=("nginx-src" "nginx-src-lazerl0rd")
+	provides=("nginx-src=1.17.9" "nginx-lazerl0rd-src=1.17.9")
+	conflicts=("nginx-src" "nginx-lazerl0rd-src")
 
 	install -d "${pkgdir}/usr/src"
 	cp -r "nginx-src" "${pkgdir}/usr/src/nginx"
