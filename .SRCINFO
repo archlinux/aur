@@ -1,0 +1,13 @@
+pkgbase = wellington-bin
+	pkgdesc = Adds spriting to the lightning fast libsass. No need to learn a new tool, this all happens right in your Sass
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = http://getwt.io
+	arch = x86_64
+	license = Apache-2.0
+	provides = wellington
+	source = https://github.com/wellington/wellington/releases/download/v1.0.4/wt_v1.0.4_linux_amd64.tar.gz
+	sha256sums = f0f8ad2461b16e6277b863b092826a9d0c066877c3ea13bd79694d327e800d3d
+
+pkgname = wellington-bin
+
