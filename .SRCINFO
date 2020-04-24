@@ -1,6 +1,6 @@
 pkgbase = cinnamon-control-center-git
 	pkgdesc = The Control Center for Cinnamon
-	pkgver = 4.0.1.r0.ga34d4dd
+	pkgver = 4.4.0.r6.g2398dbe
 	pkgrel = 1
 	url = https://github.com/linuxmint/cinnamon-control-center
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = cinnamon-control-center-git
 	makedepends = gnome-online-accounts
 	makedepends = intltool
 	makedepends = python
-	depends = cinnamon-settings-daemon
+	depends = cinnamon-settings-daemon>=4.4.0.r9.g206ce2d
 	depends = cinnamon-menus
 	depends = colord
 	depends = libgnomekbd

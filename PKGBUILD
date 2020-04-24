@@ -5,13 +5,13 @@
 # Jan de Groot <jgc@archlinux.org>
 
 pkgname=cinnamon-control-center-git
-pkgver=4.0.1.r0.ga34d4dd
+pkgver=4.4.0.r6.g2398dbe
 pkgrel=1
 pkgdesc="The Control Center for Cinnamon"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/${pkgname%-git}"
 license=('GPL')
-depends=('cinnamon-settings-daemon' 'cinnamon-menus' 'colord'
+depends=('cinnamon-settings-daemon>=4.4.0.r9.g206ce2d' 'cinnamon-menus' 'colord'
          'libgnomekbd' 'libmm-glib' 'nm-connection-editor')
 optdepends=('cinnamon-translations: i18n'
             'gnome-color-manager: for color management tasks'
