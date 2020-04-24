@@ -1,0 +1,13 @@
+pkgbase = minify-bin
+	pkgdesc = CLI implementation of the minify library package
+	pkgver = 2.7.3
+	pkgrel = 1
+	url = https://go.tacodewolff.nl/minify
+	arch = x86_64
+	license = MIT
+	provides = minify
+	source = https://github.com/tdewolff/minify/releases/download/v2.7.3/minify_2.7.3_linux_amd64.tar.gz
+	sha256sums = de2d79fbf24f7ee800de0baf44fc7f0d0274e88aa94298232b95a5d6aecf9505
+
+pkgname = minify-bin
+
