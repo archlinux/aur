@@ -1,0 +1,21 @@
+pkgbase = dseams
+	pkgdesc = Deferred Structural Elucidation Analysis for Molecular Simulations
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://dseams.info
+	arch = x86_64
+	license = GPL-3.0
+	depends = gsl
+	depends = boost
+	depends = lua
+	depends = blas
+	depends = editline
+	depends = lapack
+	depends = rang
+	depends = yaml-cpp
+	depends = catch2
+	source = https://github.com/d-SEAMS/seams-core/archive/v1.0.0.tar.gz
+	sha256sums = 7cf6296372aee00ff94acc1219b9eb88697df25c73de23aec7957e013645c36b
+
+pkgname = dseams
+
