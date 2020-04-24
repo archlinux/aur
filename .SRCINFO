@@ -1,6 +1,6 @@
 pkgbase = python-cma
 	pkgdesc = The Covariance Matrix Adaptation Evolution Strategy
-	pkgver = 3.0.2
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://github.com/CMA-ES/pycma
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-cma
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-numpy
-	source = git+https://github.com/CMA-ES/pycma#tag=r3.0.2
+	source = git+https://github.com/CMA-ES/pycma#tag=r3.0.3
 	sha256sums = SKIP
 
 pkgname = python-cma
