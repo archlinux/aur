@@ -1,0 +1,16 @@
+pkgbase = winrm-cli-git
+	pkgdesc = Command-line tool to remotely execute commands on Windows machines through WinRM
+	pkgver = r21.b03ddf8
+	pkgrel = 1
+	url = https://github.com/masterzen/winrm-cli
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = dep
+	makedepends = go-pie
+	provides = winrm-cli
+	source = git+https://github.com/masterzen/winrm-cli
+	md5sums = SKIP
+
+pkgname = winrm-cli-git
+
