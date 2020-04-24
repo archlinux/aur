@@ -1,18 +1,18 @@
 pkgbase = rmdupes
 	pkgdesc = Command-line tool to find and remove duplicate files.
-	pkgver = 2020
+	pkgver = 2020.4.23
 	pkgrel = 1
 	url = https://xyne.archlinux.ca/projects/rmdupes
 	arch = any
 	license = GPL
 	depends = python3
-	source = https://xyne.archlinux.ca/projects/rmdupes/src/rmdupes-2020.tar.xz
-	source = https://xyne.archlinux.ca/projects/rmdupes/src/rmdupes-2020.tar.xz.sig
+	source = https://xyne.archlinux.ca/projects/rmdupes/src/rmdupes-2020.4.23.tar.xz
+	source = https://xyne.archlinux.ca/projects/rmdupes/src/rmdupes-2020.4.23.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
-	md5sums = 7548133d54f47cb9120c72086d8021ad
-	md5sums = fd5171661fc985847fd0075c38e1a795
-	sha512sums = ee346829079fe9850fcac4059dc31ee653782d3ca2f5f48c0f4963ee2f5f03a3af70865a8fbea527586fa4293d053dc3a7849584fd3dec888837e65d5c61d0cb
-	sha512sums = 9e57c6f68bad28cdb594f96f5945aa6948f97216f57ae5b603a7e82907e5c7ec2f08960dd0980a30f3a1c20362b34c4a3537013d8e56252297fd812b6eef99ad
+	md5sums = f00af0c95eae4e4460580ccf3954c033
+	md5sums = bf7dccbaa3719b5438880d92ec30ef9b
+	sha512sums = 391cb5cdf8f056986a980af96c6c90cd06cdd58f6509d6c7c14d57acd1c5ca8a0beb4a57247a36921f6490b92bdf47df5e909abd64d6b72a08658bba8e035fa8
+	sha512sums = d730a226152133c86f274531808d977c8add8b3b36a6f28649aa641eebc81d59e2989ac5df1d0ffbb87bc4eb060362196f52f8e6f81ddfe1e8289be6884985c0
 
 pkgname = rmdupes
 
