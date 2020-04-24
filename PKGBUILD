@@ -1,7 +1,7 @@
-# Maintainer: Ilaï Deutel
+# Maintainer: Ilaï Deutel <PlMWPh1WSmypRv0JQljz> (echo ... | tr 'A-Za-z' 'l-za-kL-ZA-K' | base64 -d)
 
 pkgname=kibi-git
-pkgver=0.1.2.r22.g442032d
+pkgver=0.1.2.r33.ga224173
 pkgrel=1
 pkgdesc="A tiny text editor, written in Rust"
 url="https://github.com/ilai-deutel/kibi"
@@ -11,7 +11,7 @@ conflicts=('kibi')
 provides=('kibi')
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('MIT' 'APACHE')
-backup=('etc/kibi/config.ini' etc/kibi/syntax.d/{bash,gitignore,ini,python,rust,toml}.ini)
+backup=('etc/kibi/config.ini')
 source=("$pkgname::git+https://github.com/ilai-deutel/kibi.git")
 sha256sums=('SKIP')
 
@@ -25,13 +25,21 @@ build() {
   cargo build --release --locked --all-features
 }
 
+# check() {
+#   cd "$pkgname"
+#   cargo test --release --locked
+# }
+
 package() {
   cd "$pkgname"
 
-  install -Dm755 "target/release/kibi" -t "${pkgdir}/usr/bin"
+  # Install binary
+  install -Dm755 "target/release/kibi" -t "$pkgdir/usr/bin"
 
-  install -Dm755 -d "${pkgdir}/etc/kibi"
-  cp -dr --no-preserve=ownership "config_example" -T "${pkgdir}/etc/kibi"
+  # Install configuration files
+  install -Dm644 "config_example.ini" "$pkgdir/etc/kibi/config.ini"
+  install -Dm644 syntax.d/* -t "$pkgdir/usr/share/kibi/syntax.d"
 
-  install -Dm644 LICENSE-MIT -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  # Install license
+  install -Dm644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname"
 }
