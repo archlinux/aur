@@ -63,8 +63,8 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rt
-pkgver=5.4.24
-xanmod=15
+pkgver=5.4.34
+xanmod=21
 pkgrel=1
 _rev=1
 #_commit=129d48ad37bce913f6f5d6c767f997afc6be4c7d
@@ -85,7 +85,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-rt${xanmod}-xanmod${_r
        '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b'
 )
 
-sha256sums=('16777c5954140bb7a97d203a824b0ee846b8ff7d6d8b02ee1d8d2322ae472d94'
+sha256sums=('7da22a8e880080d2492d39f8db881b88183ef5f45426d391ab96e0b0f2a78265'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
