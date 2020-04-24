@@ -1,7 +1,7 @@
 pkgbase = python-gitlab-registry-usage
-	pkgdesc = An extension for flask-restful to support the creation of APIs conforming to HAL.
+	pkgdesc = A package for querying the size of repositories in a GitLab registry.
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sciapp/gitlab-registry-usage
 	arch = any
 	license = MIT

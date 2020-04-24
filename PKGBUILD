@@ -2,8 +2,8 @@
 
 pkgname="python-gitlab-registry-usage"
 pkgver="0.2.6"
-pkgrel="1"
-pkgdesc="An extension for flask-restful to support the creation of APIs conforming to HAL."
+pkgrel="2"
+pkgdesc="A package for querying the size of repositories in a GitLab registry."
 arch=("any")
 url="https://github.com/sciapp/gitlab-registry-usage"
 license=("MIT")
