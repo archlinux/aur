@@ -7,6 +7,7 @@ pkgbase = python-pypsdd
 	license = Apache 2.0
 	makedepends = git
 	depends = python
+	depends = python-future
 	optdepends = pypy3
 	source = git+https://github.com/RenatoGeh/pypsdd
 	sha256sums = SKIP
