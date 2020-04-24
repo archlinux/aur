@@ -1,6 +1,6 @@
 pkgbase = home-assistant-cli
 	pkgdesc = Work with a local or a remote Home Assistant instance directly from the command-line.
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/home-assistant/home-assistant-cli
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = home-assistant-cli
 	depends = python-regex
 	depends = python-netdisco
 	depends = python-dateparser
-	source = https://github.com/home-assistant/home-assistant-cli/archive/0.9.0.tar.gz
-	sha256sums = c32d10a71aff1a92cc5c9e9cf5a5293723a43c70aa0db33868acb175cbb05f11
+	source = https://github.com/home-assistant/home-assistant-cli/archive/0.9.1.tar.gz
+	sha256sums = 8487bb440872c57c5684e40b1f0c3771045ea9ced11749f0d38aefec14d1a163
 
 pkgname = home-assistant-cli
 
