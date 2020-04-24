@@ -1,16 +1,15 @@
 # $Id$
-# Maintainer: 
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
-# Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-beta
 _pkgname=firefox
-pkgver=76.0b6
+pkgver=76.0b8
 _pkgver=76.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -32,7 +31,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/$_pkgnam
         0001-Use-remoting-name-for-GDK-application-names.patch
 	$_pkgname.sh
         $pkgname.desktop)
-sha256sums=('94a64b424e818fe08041c964e98dc6f57810cb651b6af9f33cee8a0511ae049e'
+sha256sums=('7a1baefeec7edaf35022e1b47683d7ab62a84dfe5768af971bcfe2f8b35c666c'
             'SKIP'
             '5f7ac724a5c5afd9322b1e59006f4170ea5354ca1e0e60dab08b7784c2d8463c'
             '367100e5f66523a90c3792e2e0d0e2fe8a3c28748b905ce9f5f6b121343d7842'
