@@ -1,14 +1,14 @@
 pkgbase = wordpress-plugin-lightbox-photoswipe
 	pkgdesc = Simple integration of PhotoSwipe to WordPress
-	pkgver = 2.90
+	pkgver = 2.94
 	pkgrel = 1
 	url = https://github.com/arnowelzel/lightbox-photoswipe
 	arch = any
 	license = GPL2
 	depends = wordpress
 	options = !strip
-	source = wordpress-plugin-lightbox-photoswipe-2.90.tar.gz::https://downloads.wordpress.org/plugin/lightbox-photoswipe.2.90.zip
-	sha512sums = 840d1fa22cb490772a3041757f5c09e7adb697f130306048828b7d49cec777be36b2f079b3af81cc7e69ed2c1985eefb78a0e53533617dcdb9cbcdd1125dcbbd
+	source = wordpress-plugin-lightbox-photoswipe-2.94.tar.gz::https://downloads.wordpress.org/plugin/lightbox-photoswipe.2.94.zip
+	sha512sums = 4fb5b20e160df5ea10073bf7d71dc10c0f2c46c1f74196fad80b3546b1524aa71a2b5bed29124aa243ffb67d2ac98507851177f484d1389ca7d97f5836203c2b
 
 pkgname = wordpress-plugin-lightbox-photoswipe
 
