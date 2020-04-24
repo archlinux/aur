@@ -1,14 +1,15 @@
 pkgbase = ispc-bin
 	pkgdesc = Intel SPMD program compiler
-	pkgver = 1.12.0
-	pkgrel = 3
+	pkgver = 1.13.0
+	pkgrel = 1
 	url = https://ispc.github.io/
 	arch = x86_64
 	license = BSD
+	depends = glibc
 	provides = ispc
 	conflicts = ispc
-	source = ispc-v1.12.0-linux.tar.gz::https://sourceforge.net/projects/ispcmirror/files/v1.12.0/ispc-v1.12.0-linux.tar.gz/download
-	sha256sums = 79decaef42bc5433ab30f5879eb91af14473a42e8b51ec727a97f61ee918497e
+	source = ispc-v1.13.0-linux.tar.gz::https://github.com/ispc/ispc/releases/download/v1.13.0/ispc-v1.13.0-linux.tar.gz
+	sha256sums = 8ab1189bd5db596b3eee9d9465d3528b6626a7250675d67102761bb0d284cd21
 
 pkgname = ispc-bin
 
