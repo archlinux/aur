@@ -1,18 +1,35 @@
-diff --git a/src/sage/plot/contour_plot.py b/src/sage/plot/contour_plot.py
-index a7533fa3d9..12a2b1f670 100644
---- a/src/sage/plot/contour_plot.py
-+++ b/src/sage/plot/contour_plot.py
-@@ -223,7 +223,7 @@ class ContourPlot(GraphicPrimitive):
-                 cb.add_lines(CS)
+diff --git a/src/sage/combinat/root_system/root_lattice_realizations.py b/src/sage/combinat/root_system/root_lattice_realizations.py
+index f55c24f..16d3ca5 100644
+--- a/src/sage/combinat/root_system/root_lattice_realizations.py
++++ b/src/sage/combinat/root_system/root_lattice_realizations.py
+@@ -3131,8 +3131,8 @@ class RootLatticeRealizations(Category_over_base_ring):
  
+                 sage: L = RootSystem(['A',2]).ambient_space()
+                 sage: C = crystals.Tableaux(['A',2], shape=[2,1])
+-                sage: L.plot_crystal(C)
+-                Graphics object consisting of 16 graphics primitives
++                sage: L.plot_crystal(C, plot_labels='multiplicities')
++                Graphics object consisting of 15 graphics primitives
+                 sage: C = crystals.Tableaux(['A',2], shape=[8,4])
+                 sage: p = L.plot_crystal(C, plot_labels='circles')
+                 sage: p.show(figsize=15)
+diff --git a/src/sage/interacts/test_jupyter.rst b/src/sage/interacts/test_jupyter.rst
+index ed2bcb5..3f307d2 100644
+--- a/src/sage/interacts/test_jupyter.rst
++++ b/src/sage/interacts/test_jupyter.rst
+@@ -281,9 +281,7 @@ Test all interacts from the Sage interact library::
+     Interactive function <function coin at ...> with 2 widgets
+       n: IntSlider(value=1000, description=u'Number of Tosses', max=10000, min=2, step=100)
+       interval: IntRangeSlider(value=(0, 0), description=u'Plotting range (y)', max=1)
+-    doctest:...: UserWarning: Attempting to set identical bottom==top results
+-    in singular transformations; automatically expanding.
+-    bottom=0.0, top=0.0
++    doctest:...: UserWarning: Attempting to set identical bottom == top == 0.0 results in singular transformations; automatically expanding.
  
--@suboptions('colorbar', orientation='vertical', format=None, spacing=None)
-+@suboptions('colorbar', orientation='vertical', format=None, spacing='uniform')
- @suboptions('label', fontsize=9, colors='blue', inline=None, inline_spacing=3,
-             fmt="%1.2f")
- @options(plot_points=100, fill=True, contours=None, linewidths=None,
+ Test matrix control (see :trac:`27735`)::
+ 
 diff --git a/src/sage/plot/colors.py b/src/sage/plot/colors.py
-index 1860b6c948..af6fc7ec64 100644
+index 1860b6c..da3c9c3 100644
 --- a/src/sage/plot/colors.py
 +++ b/src/sage/plot/colors.py
 @@ -20,7 +20,7 @@ comprises the "official" W3C CSS3_ / SVG_ colors.
@@ -47,7 +64,7 @@ index 1860b6c948..af6fc7ec64 100644
              0
              sage: maps.load_maps()
 -            sage: len(maps.maps)>130
-+            sage: len(maps.maps)>65
++            sage: len(maps.maps)>60
              True
          """
          global cm
@@ -56,7 +73,48 @@ index 1860b6c948..af6fc7ec64 100644
              sage: from sage.plot.colors import Colormaps
              sage: maps = Colormaps()
 -            sage: len(maps)>130
-+            sage: len(maps)>65
++            sage: len(maps)>60
              True
          """
          self.load_maps()
+diff --git a/src/sage/plot/contour_plot.py b/src/sage/plot/contour_plot.py
+index a7533fa..12a2b1f 100644
+--- a/src/sage/plot/contour_plot.py
++++ b/src/sage/plot/contour_plot.py
+@@ -223,7 +223,7 @@ class ContourPlot(GraphicPrimitive):
+                 cb.add_lines(CS)
+ 
+ 
+-@suboptions('colorbar', orientation='vertical', format=None, spacing=None)
++@suboptions('colorbar', orientation='vertical', format=None, spacing='uniform')
+ @suboptions('label', fontsize=9, colors='blue', inline=None, inline_spacing=3,
+             fmt="%1.2f")
+ @options(plot_points=100, fill=True, contours=None, linewidths=None,
+diff --git a/src/sage/plot/multigraphics.py b/src/sage/plot/multigraphics.py
+index 3135ceb..184a97c 100644
+--- a/src/sage/plot/multigraphics.py
++++ b/src/sage/plot/multigraphics.py
+@@ -1295,15 +1295,15 @@ class GraphicsArray(MultiGraphics):
+             sage: g2 = circle((0,1), 1.)
+             sage: G = graphics_array([g1, g2])
+             sage: G.position(0)  # tol 1.0e-13
+-            (0.028906249999999998,
+-             0.038541666666666696,
+-             0.45390624999999996,
+-             0.9229166666666667)
++            (0.023437500000000003,
++             0.03415488992713045,
++             0.4627803348994754,
++             0.9345951100728696)
+             sage: G.position(1)  # tol 1.0e-13
+-            (0.5171874999999999,
+-             0.038541666666666696,
+-             0.45390624999999996,
+-             0.9229166666666667)
++            (0.5136230468749999,
++             0.19293222169724827,
++             0.46278033489947534,
++             0.617040446532634)
+ 
+         """
+         if not self._positions:

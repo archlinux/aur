@@ -1,0 +1,272 @@
+diff --git a/src/doc/en/thematic_tutorials/structures_in_coding_theory.rst b/src/doc/en/thematic_tutorials/structures_in_coding_theory.rst
+index 13f1a83..4726bce 100644
+--- a/src/doc/en/thematic_tutorials/structures_in_coding_theory.rst
++++ b/src/doc/en/thematic_tutorials/structures_in_coding_theory.rst
+@@ -721,8 +721,6 @@ derive from the one that follows.
+ 
+ .. CODE-BLOCK:: python
+ 
+-    :class:`sage.coding.repetition_code.BinaryRepetitionCode <sage.coding.repetition_code.BinaryRepetitionCode>`
+-    #the line above creates a link to the class in the html documentation of coding theory library
+     from sage.coding.repetition_code import BinaryRepetitionCode
+ 
+ ``encoders_catalog.py`` (continued):
+diff --git a/src/sage/combinat/permutation.py b/src/sage/combinat/permutation.py
+index a68d673..ae644cf 100644
+--- a/src/sage/combinat/permutation.py
++++ b/src/sage/combinat/permutation.py
+@@ -415,9 +415,6 @@ class Permutation(CombinatorialElement):
+         []
+         sage: Permutation( [[], []] )
+         []
+-
+-    .. automethod:: Permutation.left_action_product
+-    .. automethod:: Permutation.right_action_product
+     """
+     @staticmethod
+     def __classcall_private__(cls, l, check_input = True):
+diff --git a/src/sage/docs/conf.py b/src/sage/docs/conf.py
+index a1212f5..c4941f0 100644
+--- a/src/sage/docs/conf.py
++++ b/src/sage/docs/conf.py
+@@ -8,6 +8,7 @@ from docutils import nodes
+ from docutils.transforms import Transform
+ from sphinx.ext.doctest import blankline_re
+ from sphinx import highlighting
++import sphinx.ext.intersphinx as intersphinx
+ from IPython.lib.lexers import IPythonConsoleLexer, IPyLexer
+ 
+ # If your extensions are in another directory, add it here.
+@@ -173,13 +174,8 @@ todo_include_todos = True
+ 
+ # Cross-links to other project's online documentation.
+ python_version = sys.version_info.major
+-intersphinx_mapping = {
+-    'python': ('https://docs.python.org/',
+-                os.path.join(SAGE_DOC_SRC, "common",
+-                             "python{}.inv".format(python_version))),
+-    'pplpy': (PPLPY_DOCS, None)}
+ 
+-def set_intersphinx_mappings(app):
++def set_intersphinx_mappings(app, config):
+     """
+     Add precompiled inventory (the objects.inv)
+     """
+@@ -190,7 +186,11 @@ def set_intersphinx_mappings(app):
+         app.config.intersphinx_mapping = {}
+         return
+ 
+-    app.config.intersphinx_mapping = intersphinx_mapping
++    app.config.intersphinx_mapping =  {
++    'python': ('https://docs.python.org/',
++                os.path.join(SAGE_DOC_SRC, "common",
++                             "python{}.inv".format(python_version))),
++    'pplpy': (PPLPY_DOCS, None)}
+ 
+     # Add master intersphinx mapping
+     dst = os.path.join(invpath, 'objects.inv')
+@@ -205,6 +205,7 @@ def set_intersphinx_mappings(app):
+             dst = os.path.join(invpath, directory, 'objects.inv')
+             app.config.intersphinx_mapping[src] = dst
+ 
++    intersphinx.normalize_intersphinx_mapping(app, config)
+ 
+ # By default document are not master.
+ multidocs_is_master = True
+@@ -669,11 +670,11 @@ def call_intersphinx(app, env, node, contnode):
+         sage: for line in open(thematic_index).readlines():  # optional - dochtml
+         ....:     if "padics" in line:
+         ....:         _ = sys.stdout.write(line)
+-        <li><a class="reference external" href="../reference/padics/sage/rings/padics/tutorial.html#sage-rings-padics-tutorial" title="(in Sage... Reference Manual: p-Adics v...)"><span>Introduction to the p-adics</span></a></li>
++        <li><p><a class="reference external" href="../reference/padics/sage/rings/padics/tutorial.html#sage-rings-padics-tutorial" title="(in Sage... Reference Manual: p-Adics v...)"><span>Introduction to the p-adics</span></a></p></li>
+     """
+     debug_inf(app, "???? Trying intersphinx for %s" % node['reftarget'])
+     builder = app.builder
+-    res =  sphinx.ext.intersphinx.missing_reference(
++    res =  intersphinx.missing_reference(
+         app, env, node, contnode)
+     if res:
+         # Replace absolute links to $SAGE_DOC by relative links: this
+@@ -856,11 +857,10 @@ def setup(app):
+     if app.srcdir.startswith(SAGE_DOC_SRC):
+         app.add_config_value('intersphinx_mapping', {}, False)
+         app.add_config_value('intersphinx_cache_limit', 5, False)
++        app.connect('config-inited', set_intersphinx_mappings)
++        app.connect('builder-inited', intersphinx.load_mappings)
+         # We do *not* fully initialize intersphinx since we call it by hand
+         # in find_sage_dangling_links.
+         #   app.connect('missing-reference', missing_reference)
+         app.connect('missing-reference', find_sage_dangling_links)
+-        import sphinx.ext.intersphinx
+-        app.connect('builder-inited', set_intersphinx_mappings)
+-        app.connect('builder-inited', sphinx.ext.intersphinx.load_mappings)
+         app.connect('builder-inited', nitpick_patch_config)
+diff --git a/src/sage/misc/sagedoc.py b/src/sage/misc/sagedoc.py
+index 85ee764..795dfd3 100644
+--- a/src/sage/misc/sagedoc.py
++++ b/src/sage/misc/sagedoc.py
+@@ -24,7 +24,7 @@ see :trac:`12849`::
+     ....:     for line in fobj:
+     ....:         if "#sage.symbolic.expression.Expression.numerical_approx" in line:
+     ....:             print(line)
+-    <code class="descname">numerical_approx</code><span class="sig-paren">(</span><em>prec=None</em>, <em>digits=None</em>, <em>algorithm=None</em><span class="sig-paren">)</span>...
++    <code class="sig-name descname">numerical_approx</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prec</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">digits</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">algorithm</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span>...
+ 
+ Check that sphinx is not imported at Sage start-up::
+ 
+diff --git a/src/sage_setup/docbuild/__init__.py b/src/sage_setup/docbuild/__init__.py
+index 128117b..5aad13c 100644
+--- a/src/sage_setup/docbuild/__init__.py
++++ b/src/sage_setup/docbuild/__init__.py
+@@ -817,9 +817,13 @@ class ReferenceSubBuilder(DocBuilder):
+ 
+         env_pickle = os.path.join(self._doctrees_dir(), 'environment.pickle')
+         try:
+-            env = BuildEnvironment.frompickle(env_pickle, FakeApp(self.dir))
+-            logger.debug("Opened Sphinx environment: %s", env_pickle)
+-            return env
++            with open(env_pickle, 'rb') as f:
++                import pickle
++                env = pickle.load(f)
++                env.app = FakeApp(self.dir)
++                env.config.values = env.app.config.values
++                logger.debug("Opened Sphinx environment: %s", env_pickle)
++                return env
+         except IOError as err:
+             logger.debug("Failed to open Sphinx environment: %s", err)
+ 
+diff --git a/src/sage_setup/docbuild/ext/multidocs.py b/src/sage_setup/docbuild/ext/multidocs.py
+index 71a08cd..ffed722 100644
+--- a/src/sage_setup/docbuild/ext/multidocs.py
++++ b/src/sage_setup/docbuild/ext/multidocs.py
+@@ -52,27 +52,29 @@ def merge_environment(app, env):
+         docenv = get_env(app, curdoc)
+         if docenv is not None:
+             fixpath = lambda path: os.path.join(curdoc, path)
++            todos = docenv.domaindata['todo'].get('todos', dict())
++            citations = docenv.domaindata['citation'].get('citations', dict())
++            indexentries = docenv.domaindata['index'].get('entries', dict())
+             logger.info(" %s todos, %s index, %s citations"%(
+-                    len(docenv.todo_all_todos),
+-                    len(docenv.indexentries),
+-                    len(docenv.domaindata["std"]["citations"])
++                    sum(len(t) for t in todos.values()),
++                    len(indexentries),
++                    len(citations)
+                     ), nonl=1)
+ 
+             # merge titles
+             for t in docenv.titles:
+                 env.titles[fixpath(t)] = docenv.titles[t]
+             # merge the todo links
+-            for dct in docenv.todo_all_todos:
+-                dct['docname'] = fixpath(dct['docname'])
+-            env.todo_all_todos += docenv.todo_all_todos
++            for dct in todos:
++                env.domaindata['todo']['todos'][fixpath(dct)] = todos[dct]
+             # merge the html index links
+             newindex = {}
+-            for ind in docenv.indexentries:
++            for ind in indexentries:
+                 if ind.startswith('sage/'):
+-                    newindex[fixpath(ind)] = docenv.indexentries[ind]
++                    newindex[fixpath(ind)] = indexentries[ind]
+                 else:
+-                    newindex[ind] = docenv.indexentries[ind]
+-            env.indexentries.update(newindex)
++                    newindex[ind] = indexentries[ind]
++            env.domaindata['index']['entries'].update(newindex)
+             # merge the all_docs links, needed by the js index
+             newalldoc = {}
+             for ind in docenv.all_docs:
+@@ -86,24 +88,23 @@ def merge_environment(app, env):
+                 env.metadata[ind] = md
+             # merge the citations
+             newcite = {}
+-            citations = docenv.domaindata["std"]["citations"]
+-            for ind, (path, tag, lineno) in six.iteritems(docenv.domaindata["std"]["citations"]):
++            for ind, (path, tag, lineno) in six.iteritems(citations):
+                 # TODO: Warn on conflicts
+                 newcite[ind] = (fixpath(path), tag, lineno)
+-            env.domaindata["std"]["citations"].update(newcite)
++            env.domaindata['citation']['citations'].update(newcite)
+             # merge the py:module indexes
+             newmodules = {}
+-            for ind,(modpath,v1,v2,v3) in (
++            for ind,(modpath,v1,v2,v3,v4) in (
+                 six.iteritems(docenv.domaindata['py']['modules'])):
+-                newmodules[ind] = (fixpath(modpath),v1,v2,v3)
++                newmodules[ind] = (fixpath(modpath),v1,v2,v3,v4)
+             env.domaindata['py']['modules'].update(newmodules)
+             logger.info(", %s modules"%(len(newmodules)))
+     logger.info('... done (%s todos, %s index, %s citations, %s modules)'%(
+-            len(env.todo_all_todos),
+-            len(env.indexentries),
+-            len(env.domaindata["std"]["citations"]),
++            sum(len(t) for t in env.domaindata['todo']['todos'].values()),
++            len(env.domaindata['index']['entries']),
++            len(env.domaindata['citation']['citations']),
+             len(env.domaindata['py']['modules'])))
+-    write_citations(app, env.domaindata["std"]["citations"])
++    write_citations(app, env.domaindata['citation']['citations'])
+ 
+ 
+ def get_env(app, curdoc):
+@@ -253,7 +254,7 @@ def fetch_citation(app, env):
+     with open(filename, 'rb') as f:
+         cache = cPickle.load(f)
+     logger.info("done (%s citations)."%len(cache))
+-    cite = env.domaindata["std"]["citations"]
++    cite = env.domaindata['citation'].get('citations', dict())
+     for ind, (path, tag, lineno) in six.iteritems(cache):
+         if ind not in cite: # don't override local citation
+             cite[ind] = (os.path.join("..", path), tag, lineno)
+diff --git a/src/sage_setup/docbuild/ext/sage_autodoc.py b/src/sage_setup/docbuild/ext/sage_autodoc.py
+index bba274f..179fc25 100644
+--- a/src/sage_setup/docbuild/ext/sage_autodoc.py
++++ b/src/sage_setup/docbuild/ext/sage_autodoc.py
+@@ -35,14 +35,15 @@ import sys
+ from docutils.statemachine import ViewList
+ 
+ import sphinx
+-from sphinx.ext.autodoc.importer import mock, import_object, get_object_members
++from sphinx.ext.autodoc import mock
++from sphinx.ext.autodoc.importer import import_object, get_object_members, get_module_members
+ from sphinx.locale import _, __
+ from sphinx.pycode import ModuleAnalyzer
+ from sphinx.errors import PycodeError
+ from sphinx.util import logging
+ from sphinx.util import rpartition, force_decode
+ from sphinx.util.docstrings import prepare_docstring
+-from sphinx.util.inspect import isdescriptor, safe_getmembers, \
++from sphinx.util.inspect import isdescriptor, \
+     safe_getattr, object_description, is_builtin_class_method, \
+     isenumattribute, isclassmethod, isstaticmethod, getdoc
+ 
+@@ -536,7 +537,7 @@ class Documenter(object):
+ 
+         # add content from docstrings
+         if not no_docstring:
+-            encoding = self.analyzer and self.analyzer.encoding
++            encoding = self.analyzer and self.analyzer._encoding
+             docstrings = self.get_doc(encoding)
+             if not docstrings:
+                 # append at least a dummy docstring, so that the event
+@@ -882,7 +883,7 @@ class ModuleDocumenter(Documenter):
+             if not hasattr(self.object, '__all__'):
+                 # for implicit module members, check __module__ to avoid
+                 # documenting imported objects
+-                return True, safe_getmembers(self.object)
++                return True, get_module_members(self.object)
+             else:
+                 memberlist = self.object.__all__
+                 # Sometimes __all__ is broken...
+@@ -893,7 +894,7 @@ class ModuleDocumenter(Documenter):
+                         '(in module %s) -- ignoring __all__' %
+                         (memberlist, self.fullname))
+                     # fall back to all members
+-                    return True, safe_getmembers(self.object)
++                    return True, get_module_members(self.object)
+         else:
+             memberlist = self.options.members or []
+         ret = []

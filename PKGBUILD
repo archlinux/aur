@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.1.rc0.r0.g10ed24e3ed
+pkgver=9.1.rc1.r0.g249fc90389
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -48,7 +48,8 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-gap-4.11.patch
         sagemath-matplotlib-3.2.patch
         sagemath-pari-2.11.3.patch
-        sagemath-jedi-0.16.patch)
+        sagemath-jedi-0.16.patch
+        sagemath-sphinx-3.patch)
 sha256sums=('SKIP'
             'b1112875776635b4f33bc13c8aaedfbbaed8f62a1dac986f7b8faa7565d6abae'
             '6a5470d7044a50a35a6478f57c19adf72fe54aefebeea8a095915b63f9e219ac'
@@ -56,14 +57,15 @@ sha256sums=('SKIP'
             '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
             '408e193c96a466cfe0134fe44a28e93659916d1d28bd4ea89460aec7fefe8657'
             'e44bbde87f3312548faad75b7383ef21fade55be251ab5804de41cd3842ca8a0'
-            '0ef047e671ddd288e07e9f544f646a9a0bd908accfe6b96dcaf4ee52fa6037e7'
+            '54de32de6f5b71b102aa3df2f6c177d81f4a9fd1076079d412e3e3393155566b'
             'fc28ca3aa1a656bfb451181d5086b3041238f24bf462cc69626d3cd603a246df'
             'e5aa663c7f76d737ea697a805094734ab8e06eab35bbeadcb4dcab89998d7b31'
             '5e6d1aa34959bd4369bd08a80648a5c7bc2d38e72c97e9a5f986e91f8a7aca07'
             '588d831b44ec28ca18540d5649e8af518500b82431a59542f3daa92d6c3007cd'
-            '979777363001cca87f73128dd4db5f372fc9e4f1079805a20af01df47797468f'
+            '4947a86264622dffebb58b802f0616f0fb47b5784d95346f44ee426cb2e541fc'
             '1f41b35c916df74fc943949ccde1155e59e7bbbee220c845c9afdf4e0f76bfbc'
-            '30e15715cdc90639d7cbd34e76bbadae2e6d8bab6241617a386aed9513207b8a')
+            '30e15715cdc90639d7cbd34e76bbadae2e6d8bab6241617a386aed9513207b8a'
+            'eeeafd1a74c8c43c369569c8ea1dbae8fd9fcfdf0e6609471c030e9738b97ce5')
 
 pkgver() {
   cd sage
@@ -92,8 +94,6 @@ prepare(){
   sed -e 's|mathjax|mathjax2|g' -i src/sage/env.py
 # Fix gap.version() and doctests with GAP 4.11
   patch -p1 -i ../sagemath-gap-4.11.patch
-# Fix warnings with matplotlib 3.2
-  patch -p1 -i ../sagemath-matplotlib-3.2.patch
 # Fix doctests with pari 2.11.3
   patch -p1 -i ../sagemath-pari-2.11.3.patch
 # Fix deprecation warnings on autocompletion with jedi 0.16
@@ -106,6 +106,10 @@ prepare(){
   patch -p1 -i ../sagemath-singular-4.1.2.patch
 # Fix SIGFPE crashes with ecl 16.1.3 https://trac.sagemath.org/ticket/22191
   patch -p1 -i ../sagemath-ecl-sigfpe.patch
+# Fix doc build with sphinx 3 https://trac.sagemath.org/ticket/28856
+  patch -p1 -i ../sagemath-sphinx-3.patch
+# Fix warnings with matplotlib 3.2 https://trac.sagemath.org/ticket/29547
+  patch -p1 -i ../sagemath-matplotlib-3.2.patch
 
   sed -e 's|sage-python23|python|' -i src/bin/*
   sed -e 's|$SAGE_PYTHON3|yes|' -i src/bin/sage

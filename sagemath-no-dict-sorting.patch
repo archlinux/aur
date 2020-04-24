@@ -390,7 +390,7 @@ index cc2b504296..119d5e37d3 100644
      TESTS::
  
 diff --git a/src/sage/categories/finite_dimensional_algebras_with_basis.py b/src/sage/categories/finite_dimensional_algebras_with_basis.py
-index 7b14ee25c1..f4a34aace0 100644
+index 754d26276e..ec51907106 100644
 --- a/src/sage/categories/finite_dimensional_algebras_with_basis.py
 +++ b/src/sage/categories/finite_dimensional_algebras_with_basis.py
 @@ -1276,9 +1276,9 @@ class FiniteDimensionalAlgebrasWithBasis(CategoryWithAxiom_over_base_ring):
@@ -421,7 +421,7 @@ index 91598d3cd4..5d04074012 100644
               '_repr_type_str': None}
          """
 diff --git a/src/sage/categories/morphism.pyx b/src/sage/categories/morphism.pyx
-index 391422bdf5..ef824b9777 100644
+index dec8b00b74..9322833836 100644
 --- a/src/sage/categories/morphism.pyx
 +++ b/src/sage/categories/morphism.pyx
 @@ -601,11 +601,11 @@ cdef class SetMorphism(Morphism):
@@ -550,7 +550,7 @@ index dc27b10920..2fefa65d8c 100644
                (2*a + 2, 2*a + 2): (2*a + 2, 2*a + 2, 0)}
          """
 diff --git a/src/sage/combinat/cluster_algebra_quiver/cluster_seed.py b/src/sage/combinat/cluster_algebra_quiver/cluster_seed.py
-index fcb53e3ac3..b1d988632d 100644
+index aec20b0687..7483c67e0b 100644
 --- a/src/sage/combinat/cluster_algebra_quiver/cluster_seed.py
 +++ b/src/sage/combinat/cluster_algebra_quiver/cluster_seed.py
 @@ -2735,119 +2735,119 @@ class ClusterSeed(SageObject):
@@ -2091,10 +2091,10 @@ index 94e2928525..cb461c07f8 100644
          return self._orig_args
  
 diff --git a/src/sage/geometry/polyhedron/base.py b/src/sage/geometry/polyhedron/base.py
-index ef3ad4d644..b83588c249 100644
+index d8609bdfe4..4f07456b3e 100644
 --- a/src/sage/geometry/polyhedron/base.py
 +++ b/src/sage/geometry/polyhedron/base.py
-@@ -6063,20 +6063,20 @@ class Polyhedron_base(Element):
+@@ -6126,20 +6126,20 @@ class Polyhedron_base(Element):
              sage: P = polytopes.twenty_four_cell()
              sage: P.flag_f_vector()
                  {(-1,): 1,
@@ -2123,7 +2123,7 @@ index ef3ad4d644..b83588c249 100644
                   (3,): 24,
                   (4,): 1}
  
-@@ -6106,18 +6106,18 @@ class Polyhedron_base(Element):
+@@ -6169,18 +6169,18 @@ class Polyhedron_base(Element):
              sage: P = (Polyhedron(lines=[[1]]) * polytopes.cross_polytope(3))
              sage: P.flag_f_vector()
              {(-1,): 1,
@@ -2147,7 +2147,7 @@ index ef3ad4d644..b83588c249 100644
               (2,): 12,
               (3,): 8,
               4: 1}
-@@ -6157,22 +6157,22 @@ class Polyhedron_base(Element):
+@@ -6220,22 +6220,22 @@ class Polyhedron_base(Element):
  
              sage: polytopes.hypercube(4)._flag_f_vector()
              {(-1,): 1,
@@ -2238,10 +2238,10 @@ index 969c9f86db..25843ea25a 100644
          poly = self.face_lattice().flag_f_polynomial()
          variables = poly.variables()
 diff --git a/src/sage/geometry/polyhedron/ppl_lattice_polytope.py b/src/sage/geometry/polyhedron/ppl_lattice_polytope.py
-index 4281de7bf0..8bc045a34b 100644
+index 4287f9ed56..78d30d8f75 100644
 --- a/src/sage/geometry/polyhedron/ppl_lattice_polytope.py
 +++ b/src/sage/geometry/polyhedron/ppl_lattice_polytope.py
-@@ -1231,15 +1231,15 @@ class LatticePolytope_PPL_class(C_Polyhedron):
+@@ -1229,15 +1229,15 @@ class LatticePolytope_PPL_class(C_Polyhedron):
              sage: polygon.embed_in_reflexive_polytope('polytope')
              A 2-dimensional lattice polytope in ZZ^2 with 3 vertices
              sage: polygon.embed_in_reflexive_polytope('points')
@@ -2265,7 +2265,7 @@ index 4281de7bf0..8bc045a34b 100644
              sage: LatticePolytope_PPL((0,0), (4,0), (0,4)).embed_in_reflexive_polytope()
              Traceback (most recent call last):
 diff --git a/src/sage/geometry/triangulation/element.py b/src/sage/geometry/triangulation/element.py
-index 6f8222d07c..1c94998e15 100644
+index ba053e7139..d354b5c19b 100644
 --- a/src/sage/geometry/triangulation/element.py
 +++ b/src/sage/geometry/triangulation/element.py
 @@ -605,32 +605,32 @@ class Triangulation(Element):
@@ -2273,14 +2273,14 @@ index 6f8222d07c..1c94998e15 100644
              sage: triangulation = polytopes.hypercube(2).triangulate(engine='internal')
              sage: triangulation._boundary_simplex_dictionary()
 -            {(0, 1): ((0, 1, 3),),
--             (0, 2): ((0, 2, 3),),
-+            {(1, 3): ((0, 1, 3),),
-              (0, 3): ((0, 1, 3), (0, 2, 3)),
--             (1, 3): ((0, 1, 3),),
--             (2, 3): ((0, 2, 3),)}
++            {(1, 3): ((0, 1, 3), (1, 2, 3)),
+              (0, 3): ((0, 1, 3),),
+-             (1, 2): ((1, 2, 3),),
+-             (1, 3): ((0, 1, 3), (1, 2, 3)),
+-             (2, 3): ((1, 2, 3),)}
 +             (0, 1): ((0, 1, 3),),
-+             (2, 3): ((0, 2, 3),),
-+             (0, 2): ((0, 2, 3),)}
++             (2, 3): ((1, 2, 3),),
++             (1, 2): ((1, 2, 3),)}
  
              sage: triangulation = polytopes.cube().triangulate(engine='internal')
              sage: triangulation._boundary_simplex_dictionary()
@@ -2318,6 +2318,21 @@ index 6f8222d07c..1c94998e15 100644
          """
          result = dict()
          for simplex in self:
+@@ -750,12 +750,10 @@ class Triangulation(Element):
+             (-1,  0,  0, -1),
+             ( 0,  1,  0, -1),
+             ( 0, -1,  0,  1)
+-            in Ambient free module of rank 4
+-            over the principal ideal domain Integer Ring
++            in Ambient free module of rank 4 over the principal ideal domain Integer Ring
+             sage: N.dual().rays()
+             (1, -1, 1, -1)
+-            in Ambient free module of rank 4
+-            over the principal ideal domain Integer Ring
++            in Ambient free module of rank 4 over the principal ideal domain Integer Ring
+ 
+         TESTS::
+ 
 diff --git a/src/sage/graphs/base/boost_graph.pyx b/src/sage/graphs/base/boost_graph.pyx
 index 6ba0a44c9a..c50374c542 100644
 --- a/src/sage/graphs/base/boost_graph.pyx
@@ -2451,10 +2466,10 @@ index 802d4a8f6e..aa5efb8dac 100644
      TESTS:
  
 diff --git a/src/sage/graphs/generic_graph.py b/src/sage/graphs/generic_graph.py
-index c369e3723a..50edd704b2 100644
+index 23ed1da506..bd9733a9b2 100644
 --- a/src/sage/graphs/generic_graph.py
 +++ b/src/sage/graphs/generic_graph.py
-@@ -5211,7 +5211,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5209,7 +5209,7 @@ class GenericGraph(GenericGraph_pyx):
          This method is deprecated since Sage-4.4.1.alpha2. Please use instead:
  
              sage: g.layout(layout = "planar", save_pos = True)
@@ -2463,7 +2478,7 @@ index c369e3723a..50edd704b2 100644
          """
          deprecation(24494, 'This method is replaced by the method layout. '
                             'Please use layout(layout="planar", save_pos=True) '
-@@ -5265,16 +5265,16 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5263,16 +5263,16 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: g = graphs.PathGraph(10)
              sage: g.layout(layout='planar', save_pos=True, test=True)
@@ -2485,7 +2500,7 @@ index c369e3723a..50edd704b2 100644
              sage: g = graphs.BalancedTree(3, 4)
              sage: pos = g.layout(layout='planar', save_pos=True, test=True)
              sage: pos[0]
-@@ -5283,7 +5283,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5281,7 +5281,7 @@ class GenericGraph(GenericGraph_pyx):
              [3, 64]
              sage: g = graphs.CycleGraph(7)
              sage: g.layout(layout='planar', save_pos=True, test=True)
@@ -2494,7 +2509,7 @@ index c369e3723a..50edd704b2 100644
              sage: g = graphs.CompleteGraph(5)
              sage: g.layout(layout='planar', save_pos=True, test=True, set_embedding=True)
              Traceback (most recent call last):
-@@ -5294,9 +5294,9 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5292,9 +5292,9 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: g = graphs.CompleteGraph(4)
              sage: g.layout(layout='planar', external_face=(0,1))
@@ -2506,7 +2521,7 @@ index c369e3723a..50edd704b2 100644
  
          TESTS::
  
-@@ -16514,7 +16514,26 @@ class GenericGraph(GenericGraph_pyx):
+@@ -16512,7 +16512,26 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: D = graphs.DodecahedralGraph()
              sage: D.shortest_paths(0)
@@ -2534,7 +2549,7 @@ index c369e3723a..50edd704b2 100644
  
          All these paths are obviously induced graphs::
  
-@@ -16524,7 +16543,16 @@ class GenericGraph(GenericGraph_pyx):
+@@ -16522,7 +16541,16 @@ class GenericGraph(GenericGraph_pyx):
          ::
  
              sage: D.shortest_paths(0, cutoff=2)
@@ -2552,7 +2567,7 @@ index c369e3723a..50edd704b2 100644
              sage: G = Graph( { 0: {1: 1}, 1: {2: 1}, 2: {3: 1}, 3: {4: 2}, 4: {0: 2} }, sparse=True)
              sage: G.plot(edge_labels=True).show() # long time
              sage: G.shortest_paths(0, by_weight=True)
-@@ -16534,7 +16562,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -16532,7 +16560,7 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: D = DiGraph([(0,1,1),(1,2,3),(0,2,5)])
              sage: D.shortest_paths(0)
@@ -2561,7 +2576,7 @@ index c369e3723a..50edd704b2 100644
              sage: D.shortest_paths(0, by_weight=True)
              {0: [0], 1: [0, 1], 2: [0, 1, 2]}
  
-@@ -16783,7 +16811,26 @@ class GenericGraph(GenericGraph_pyx):
+@@ -16781,7 +16809,26 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: D = graphs.DodecahedralGraph()
              sage: D.shortest_path_lengths(0)
@@ -2589,7 +2604,7 @@ index c369e3723a..50edd704b2 100644
  
          Weighted case::
  
-@@ -18909,18 +18956,18 @@ class GenericGraph(GenericGraph_pyx):
+@@ -18900,18 +18947,18 @@ class GenericGraph(GenericGraph_pyx):
               '#00ff00': [((1,3,2,4), (1,4)(2,3), 3), ...],
               '#ff0000': [((1,3,2,4), (1,3)(2,4), 1), ...]}
              sage: G._color_by_label()  # py3
@@ -2612,7 +2627,7 @@ index c369e3723a..50edd704b2 100644
  
          TESTS:
  
-@@ -19065,8 +19112,8 @@ class GenericGraph(GenericGraph_pyx):
+@@ -19056,8 +19103,8 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: g.layout(layout="acyclic_dummy", save_pos=True)
              {('0', 0): [0.3..., 0],
@@ -2622,7 +2637,7 @@ index c369e3723a..50edd704b2 100644
               ('1', 1): [0.6..., 1]}
  
              sage: D3 = g.layout(dim=3); D3  # random
-@@ -19202,10 +19249,10 @@ class GenericGraph(GenericGraph_pyx):
+@@ -19193,10 +19240,10 @@ class GenericGraph(GenericGraph_pyx):
              sage: g = graphs.LadderGraph(3)
              sage: g.layout_ranked(heights={i: (i, i+3) for i in range(3)})
              {0: [0.668..., 0],
@@ -2635,7 +2650,7 @@ index c369e3723a..50edd704b2 100644
               5: [1.33..., 2]}
              sage: g = graphs.LadderGraph(7)
              sage: g.plot(layout="ranked", heights={i: (i, i+7) for i in range(7)})
-@@ -19389,13 +19436,13 @@ class GenericGraph(GenericGraph_pyx):
+@@ -19380,13 +19427,13 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: G = graphs.BalancedTree(2, 2)
              sage: G.layout_tree(tree_root=0)
@@ -2654,7 +2669,7 @@ index c369e3723a..50edd704b2 100644
  
              sage: G = graphs.BalancedTree(2, 4)
              sage: G.plot(layout="tree", tree_root=0, tree_orientation="up")
-@@ -19407,15 +19454,15 @@ class GenericGraph(GenericGraph_pyx):
+@@ -19398,15 +19445,15 @@ class GenericGraph(GenericGraph_pyx):
              sage: T.set_embedding({0: [1, 6, 3], 1: [2, 5, 0], 2: [1], 3: [4, 7, 8, 0],
              ....:     4: [3], 5: [1], 6: [0], 7: [3], 8: [3]})
              sage: T.layout_tree()
@@ -2677,7 +2692,7 @@ index c369e3723a..50edd704b2 100644
              sage: T.plot(layout="tree", tree_root=3)
              Graphics object consisting of 18 graphics primitives
  
-@@ -23574,7 +23621,8 @@ class GenericGraph(GenericGraph_pyx):
+@@ -23560,7 +23607,8 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: G = DiGraph({1: [10], 2:[10,11], 3:[10,11], 4:[], 5:[11, 4], 6:[11], 7:[10,11], 8:[10,11], 9:[10], 10:[11, 5, 8], 11:[6]})
              sage: G.katz_centrality(.85)
@@ -2687,7 +2702,7 @@ index c369e3723a..50edd704b2 100644
               2: 0.000000000000000,
               3: 0.000000000000000,
               4: 16.7319819819820,
-@@ -23583,7 +23631,6 @@ class GenericGraph(GenericGraph_pyx):
+@@ -23569,7 +23617,6 @@ class GenericGraph(GenericGraph_pyx):
               7: 0.000000000000000,
               8: 18.6846846846847,
               9: 0.000000000000000,
@@ -2695,7 +2710,7 @@ index c369e3723a..50edd704b2 100644
               11: 202.778914049184}
  
  
-@@ -23603,7 +23650,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -23589,7 +23636,7 @@ class GenericGraph(GenericGraph_pyx):
              sage: graphs.PathGraph(4).katz_centrality(1/20,3)
              21/379
              sage: (graphs.PathGraph(3) + graphs.PathGraph(4)).katz_centrality(1/20)
@@ -2705,7 +2720,7 @@ index c369e3723a..50edd704b2 100644
          """
          n = self.order()
 diff --git a/src/sage/graphs/graph.py b/src/sage/graphs/graph.py
-index e76003f23c..d1ec1a9e05 100644
+index c46dde0a40..6043454e5f 100644
 --- a/src/sage/graphs/graph.py
 +++ b/src/sage/graphs/graph.py
 @@ -3820,7 +3820,7 @@ class Graph(GenericGraph):
@@ -3757,7 +3772,7 @@ index ad2dba4fbc..1cd1fa7ba4 100644
          """
          return self._nproc
 diff --git a/src/sage/plot/graphics.py b/src/sage/plot/graphics.py
-index 931661d26c..cfd152e992 100644
+index 8a1917dc5a..8197b189d3 100644
 --- a/src/sage/plot/graphics.py
 +++ b/src/sage/plot/graphics.py
 @@ -1297,8 +1297,8 @@ class Graphics(WithEqualityById, SageObject):
@@ -4501,21 +4516,27 @@ index ce311014d3..799cd00aa7 100644
          gens = self.gens()
          names = self.variable_names()
 diff --git a/src/sage/rings/ring_extension.pyx b/src/sage/rings/ring_extension.pyx
-index 754b8c2ca6..291ae46fe6 100644
+index 754b8c2ca6..eef5fe247a 100644
 --- a/src/sage/rings/ring_extension.pyx
 +++ b/src/sage/rings/ring_extension.pyx
-@@ -379,8 +379,8 @@ class RingExtensionFactory(UniqueFactory):
+@@ -377,10 +377,12 @@ class RingExtensionFactory(UniqueFactory):
+             ((Ring morphism:
+                 From: Integer Ring
                  To:   Rational Field
-                 Defn: 1 |--> 1, (), ()),
-              {'constructors': [(<type 'sage.rings.ring_extension.RingExtension_generic'>,
+-                Defn: 1 |--> 1, (), ()),
+-             {'constructors': [(<type 'sage.rings.ring_extension.RingExtension_generic'>,
 -                {'is_backend_exposed': True,
 -                 'print_options': {'print_elements_as': None, 'print_parent_as': None}})]})
++                Defn: 1 |--> 1,
++              (),
++              ()),
++             {'constructors': [(<class 'sage.rings.ring_extension.RingExtension_generic'>,
 +                {'print_options': {'print_parent_as': None, 'print_elements_as': None},
 +                 'is_backend_exposed': True})]})
  
              sage: RingExtension.create_key_and_extra_args(GF(5^4), GF(5^2), names=('a',))
              ((Ring morphism:
-@@ -388,7 +388,7 @@ class RingExtensionFactory(UniqueFactory):
+@@ -388,7 +390,7 @@ class RingExtensionFactory(UniqueFactory):
                  To:   Finite Field in z4 of size 5^4
                  Defn: z2 |--> z4^3 + z4^2 + z4 + 3, (z4,), ('a',)),
               {'constructors': [(<type 'sage.rings.ring_extension.RingExtensionWithGen'>,
