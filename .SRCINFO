@@ -1,0 +1,16 @@
+pkgbase = vflow-bin
+	pkgdesc = Enterprise Network Flow Collector (IPFIX, sFlow, Netflow) from Verizon Digital Media Services
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/VerizonDigital/vflow
+	arch = x86_64
+	license = Apache-2.0
+	depends = kafka
+	provides = vflow
+	source = https://github.com/VerizonDigital/vflow/releases/download/v0.7.0/vflow-0.7.0-x86_64.rpm
+	source = vflow.service
+	sha256sums = b94c6e6249f2ba53fbe89470bb61357e5ead0447ad0343382d2448f90bfa4ee8
+	sha256sums = 074d4ef942becc4e574a8f77e7b2697b760ac72fdabf1d0ad19105a6edc29fe5
+
+pkgname = vflow-bin
+

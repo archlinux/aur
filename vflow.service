@@ -1,0 +1,25 @@
+[Unit]
+Description=SYSV: vFlow enterprise IPFIX, sFlow v5 raw header collector and Kafka/NSQ producer
+
+SourcePath=/etc/rc.d/init.d/vflow
+
+After=network-online.target
+After=network.service
+After=kafka.service
+Conflicts=shutdown.target
+
+[Service]
+Type=forking
+User=root
+Restart=always
+TimeoutSec=5min
+IgnoreSIGPIPE=no
+KillMode=process
+GuessMainPID=no
+RemainAfterExit=yes
+
+ExecStart=/etc/rc.d/init.d/vflow start
+ExecStop=/etc/rc.d/init.d/vflow stop
+
+[Install]
+WantedBy=multi-user.target
