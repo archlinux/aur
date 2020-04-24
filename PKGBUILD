@@ -3,13 +3,13 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=cinnamon-settings-daemon-git
-pkgver=4.0.3.r7.gc9f0bb4
-pkgrel=2
+pkgver=4.4.0.r9.g206ce2d
+pkgrel=1
 pkgdesc="The Cinnamon Settings daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/${pkgname%-git}"
 license=('GPL')
-depends=('cinnamon-desktop' 'colord' 'dbus-glib' 'libcanberra-pulse' 'libcups'
+depends=('cinnamon-desktop>=4.4.1.r7.gf2c6cb7' 'colord' 'dbus-glib' 'libcanberra-pulse' 'libcups'
          'libgnomekbd' 'libgudev' 'libnotify' 'librsvg' 'libwacom' 'nss' 'polkit'
          'pulseaudio-alsa' 'upower')
 optdepends=('cinnamon-translations: i18n')
