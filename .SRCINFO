@@ -1,7 +1,7 @@
 pkgbase = xmppc
 	pkgdesc = Command Line Interface Tool for XMPP
 	pkgver = 0.0.5
-	pkgrel = 2
+	pkgrel = 1
 	url = https://codeberg.org/Anoxinon_e.V./xmppc
 	arch = x86_64
 	arch = i686
