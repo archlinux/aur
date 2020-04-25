@@ -1,14 +1,14 @@
 pkgbase = python-ssmanager
 	pkgdesc = A python module managing large amount of running Shadowsocks server instances.
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/sorz/ssmanager/
 	arch = any
 	license = MIT
 	makedepends = python-pip
 	depends = python
-	source = https://github.com/sorz/ssmanager/releases/download/v0.2.7/ssmanager-0.2.7-py3-none-any.whl
-	md5sums = 56730e9737156cc43596435d9eefe6f1
+	source = https://github.com/sorz/ssmanager/releases/download/v0.2.8/ssmanager-0.2.8-py3-none-any.whl
+	md5sums = 2093c4c012fc7420a659f5f99dd89a7a
 
 pkgname = python-ssmanager
 
