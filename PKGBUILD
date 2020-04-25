@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=bettercap-caplets-git
-pkgver=v20190327.r302.3b47dd6
+pkgver=v20200413.r340.dba2ff0
 pkgrel=1
 pkgdesc='Bettercap scripts (caplets) and proxy modules'
 url='https://github.com/bettercap/caplets'
@@ -11,6 +11,9 @@ depends=('bettercap')
 makedepends=('git')
 provides=('bettercap-caplets')
 conflicts=('bettercap-caplets')
+optdepends=(
+  'java-runtime: java caplets'
+)
 source=(${pkgname}::"git+https://github.com/bettercap/caplets")
 sha512sums=('SKIP')
 
@@ -18,6 +21,11 @@ pkgver() {
   cd ${pkgname}
   printf "v%s.r%s.%s" "$(TZ=UTC git show -s --pretty=%cd --date=format-local:%Y%m%d HEAD)" \
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd ${pkgname}
+  find . -type f -exec sed 's|/usr/local|/usr|g' -i {} +
 }
 
 package() {
