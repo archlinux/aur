@@ -1,6 +1,6 @@
 pkgbase = python-orange
 	pkgdesc = Open source data visualization and analysis for novice and experts. Data mining through visual programming or Python scripting.
-	pkgver = 3.24.1
+	pkgver = 3.25.0
 	pkgrel = 1
 	url = http://orange.biolab.si/
 	arch = x86_64
@@ -29,8 +29,8 @@ pkgbase = python-orange
 	depends = python-openpyxl
 	depends = python-orange-widget-base
 	depends = python-orange-canvas-core
-	source = https://github.com/biolab/orange3/archive/3.24.1.tar.gz
-	sha256sums = 39e0e92d6d9fe75d5ef0ac3ca076b222e10ac60c26998c5686e0c5c3c5a95504
+	source = https://github.com/biolab/orange3/archive/3.25.0.tar.gz
+	sha256sums = ee24bdce6588deb253e9a831588a10748347d2bdb08fe7c285fe3ffce9f25323
 
 pkgname = python-orange
 
