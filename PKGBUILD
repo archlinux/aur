@@ -2,8 +2,8 @@
 
 _name=clickhouse-driver
 pkgname="python-${_name}"
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc='ClickHouse Python Driver with native (TCP) interface support'
 arch=('any')
 url="https://github.com/mymarilyn/clickhouse-driver"
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 depends=('python' 'python-tzlocal' 'python-pytz')
 license=('MIT')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('9920211509a27af0b24086b19005c3419a4cd8255a3bd68621a0f1469e38a5ee')
+sha256sums=('658866770f75f185807e5fb4bce3b7dbcef687234f6c8d5c1d1bd9d26f9988bf')
 
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
