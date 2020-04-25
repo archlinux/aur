@@ -1,7 +1,7 @@
 # Maintainer: Stefanos Mitropoulos stefmitropoulos@gmail.com
 pkgname=wol_qt
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt gui to ARP scan and send WakeOnLan packets"
 arch=(x86_64)
 url="https://github.com/stefmitropoulos/wol_qt"
