@@ -2,7 +2,7 @@
 
 pkgbase=ivre
 pkgname=('ivre' 'ivre-web' 'ivre-docs' 'python-ivre' 'python2-ivre')
-pkgver=0.9.14
+pkgver=0.9.15
 pkgrel=1
 pkgdesc='Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://ivre.rocks/'
 license=('GPL3')
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/cea-sec/$pkgname/v$pkgver/pkg/apache/ivre.conf")
-sha512sums=('de98769da9a3e664c687193292e91a51441dbe04345c94b62fa7f74e01dd55468ea1f4ebf117300abe69ee699b49dbbbbf921dead2620b823bb27f45a32fc5bb'
+sha512sums=('99ecfa55c7189cc62a85fcd982cce02951b8469dd93637ed3c62757b2d96635df2333676a2ebca8133b1c19bc0cc05056eaf30a54c40c64e28c08cfee94d7353'
             '9db82963976ed0134c88ca779ab2d8ac92fdaf5eff8f6e6c47014b56f92cb78313acd6b6ddee8de13de6c3ae8a2988f216a659496f16b756836475a9b774b0c5')
 
 prepare() {
@@ -98,15 +98,15 @@ package_ivre-web() {
 }
 
 package_python-ivre() {
-  depends=('python' 'python-pymongo' 'python-future')
+  depends=('python' 'python-pymongo' 'python-future' 'python-pyopenssl' 'python-cryptography')
   optdepends=('python-py2neo: experimental flow analysis (Neo4j backend)'
               'python-sqlalchemy: experimental PostgreSQL & SQLite backends'
               'python-psycopg2: experimental PostgreSQL backend'
               'python-elasticsearch: experimental Elasticsearch backend'
               'python-elasticsearch-dsl: experimental Elasticsearch backend'
+              'python-tinydb: experimental file-based backend (no DB server)'
               'python-pillow: trim screenshots on insertion'
               'tesseract: extract words from screenshots on insertion'
-              'python-pycryptodome: extract data from public keys ("ivre getmoduli")'
               'python-scapy: parse PCAP files for ARP inspection (flow analysis)'
               'python-matplotlib: create graphs from command line tools'
               'python-dbus: 3D traceroute graphs'
@@ -127,15 +127,15 @@ package_python-ivre() {
 }
 
 package_python2-ivre() {
-  depends=('python2' 'python2-pymongo' 'python2-future')
+  depends=('python2' 'python2-pymongo' 'python2-future' 'python2-pyopenssl' 'python2-cryptography')
   optdepends=('python2-py2neo: experimental flow analysis (Neo4j backend)'
               'python2-sqlalchemy: experimental PostgreSQL & SQLite backends'
               'python2-psycopg2: experimental PostgreSQL backend'
               'python2-elasticsearch: experimental Elasticsearch backend'
               'python2-elasticsearch-dsl: experimental Elasticsearch backend'
+              'python2-tinydb: experimental file-based backend (no DB server)'
               'python2-pillow: trim screenshots on insertion'
               'tesseract: extract words from screenshots on insertion'
-              'python2-pycryptodome: extract data from public keys ("ivre getmoduli")'
               'python2-scapy: parse PCAP files for ARP inspection (flow analysis)'
               'python2-matplotlib: create graphs from command line tools'
               'python2-dbus: 3D traceroute graphs'
