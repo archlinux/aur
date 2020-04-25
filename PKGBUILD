@@ -1,149 +1,60 @@
-# Maintainer : Michael Manley <mmanley@nasutek.com>
-# Maintainer : Xavier Devlamynck <magicrhesus@ouranos.be>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Michael Manley <mmanley@nasutek.com>
+# Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 
 pkgname=asterisk-cisco
-pkgver=16.5.0
+pkgver=16.9.0
 pkgrel=1
 pkgdesc="A complete PBX solution. Includes the Cisco Presence patch for use with Cisco IP Phones"
 provides=('asterisk')
 conflicts=('asterisk')
-arch=('i686' 'x86_64')
-backup=('etc/asterisk/acl.conf'
-	'etc/asterisk/adsi.conf'
-	'etc/asterisk/agents.conf'
-	'etc/asterisk/alarmreceiver.conf'
-	'etc/asterisk/alsa.conf'
-	'etc/asterisk/amd.conf'
-	'etc/asterisk/app_mysql.conf'
-	'etc/asterisk/app_skel.conf'
-	'etc/asterisk/ari.conf'
-	'etc/asterisk/asterisk.adsi'
-	'etc/asterisk/asterisk.conf'
-	'etc/asterisk/calendar.conf'
-	'etc/asterisk/ccss.conf'
-	'etc/asterisk/cdr.conf'
-	'etc/asterisk/cdr_adaptive_odbc.conf'
-	'etc/asterisk/cdr_custom.conf'
-	'etc/asterisk/cdr_manager.conf'
-	'etc/asterisk/cdr_mysql.conf'
-	'etc/asterisk/cdr_odbc.conf'
-	'etc/asterisk/cdr_pgsql.conf'
-	'etc/asterisk/cdr_sqlite3_custom.conf'
-	'etc/asterisk/cdr_syslog.conf'
-	'etc/asterisk/cdr_tds.conf'
-	'etc/asterisk/cel.conf'
-	'etc/asterisk/cel_custom.conf'
-	'etc/asterisk/cel_odbc.conf'
-	'etc/asterisk/cel_pgsql.conf'
-	'etc/asterisk/cel_sqlite3_custom.conf'
-	'etc/asterisk/cel_tds.conf'
-	'etc/asterisk/chan_dahdi.conf'
-	'etc/asterisk/chan_mobile.conf'
-	'etc/asterisk/cli.conf'
-	'etc/asterisk/cli_aliases.conf'
-	'etc/asterisk/cli_permissions.conf'
-	'etc/asterisk/codecs.conf'
-	'etc/asterisk/confbridge.conf'
-	'etc/asterisk/config_test.conf'
-	'etc/asterisk/console.conf'
-	'etc/asterisk/dbsep.conf'
-	'etc/asterisk/dnsmgr.conf'
-	'etc/asterisk/dsp.conf'
-	'etc/asterisk/dundi.conf'
-	'etc/asterisk/enum.conf'
-	'etc/asterisk/extconfig.conf'
-	'etc/asterisk/extensions.ael'
-	'etc/asterisk/extensions.conf'
-	'etc/asterisk/extensions.lua'
-	'etc/asterisk/extensions_minivm.conf'
-	'etc/asterisk/features.conf'
-	'etc/asterisk/festival.conf'
-	'etc/asterisk/followme.conf'
-	'etc/asterisk/func_odbc.conf'
-	'etc/asterisk/hep.conf'
-	'etc/asterisk/http.conf'
-	'etc/asterisk/iax.conf'
-	'etc/asterisk/iaxprov.conf'
-	'etc/asterisk/indications.conf'
-	'etc/asterisk/logger.conf'
-	'etc/asterisk/manager.conf'
-	'etc/asterisk/meetme.conf'
-	'etc/asterisk/mgcp.conf'
-	'etc/asterisk/minivm.conf'
-	'etc/asterisk/misdn.conf'
-	'etc/asterisk/modules.conf'
-	'etc/asterisk/motif.conf'
-	'etc/asterisk/musiconhold.conf'
-	'etc/asterisk/muted.conf'
-	'etc/asterisk/ooh323.conf'
-	'etc/asterisk/osp.conf'
-	'etc/asterisk/oss.conf'
-	'etc/asterisk/phone.conf'
-	'etc/asterisk/phoneprov.conf'
-	'etc/asterisk/pjsip.conf'
-	'etc/asterisk/pjsip_notify.conf'
-	'etc/asterisk/pjsip_wizard.conf'
-	'etc/asterisk/queuerules.conf'
-	'etc/asterisk/queues.conf'
-	'etc/asterisk/res_config_mysql.conf'
-	'etc/asterisk/res_config_sqlite.conf'
-	'etc/asterisk/res_config_sqlite3.conf'
-	'etc/asterisk/res_corosync.conf'
-	'etc/asterisk/res_curl.conf'
-	'etc/asterisk/res_fax.conf'
-	'etc/asterisk/res_ldap.conf'
-	'etc/asterisk/res_odbc.conf'
-	'etc/asterisk/res_parking.conf'
-	'etc/asterisk/res_pgsql.conf'
-	'etc/asterisk/res_pktccops.conf'
-	'etc/asterisk/res_snmp.conf'
-	'etc/asterisk/res_stun_monitor.conf'
-	'etc/asterisk/rtp.conf'
-	'etc/asterisk/say.conf'
-	'etc/asterisk/sip.conf'
-	'etc/asterisk/sip_notify.conf'
-	'etc/asterisk/skinny.conf'
-	'etc/asterisk/sla.conf'
-	'etc/asterisk/smdi.conf'
-	'etc/asterisk/sorcery.conf'
-	'etc/asterisk/ss7.timers'
-	'etc/asterisk/stasis.conf'
-	'etc/asterisk/statsd.conf'
-	'etc/asterisk/telcordia-1.adsi'
-	'etc/asterisk/test_sorcery.conf'
-	'etc/asterisk/udptl.conf'
-	'etc/asterisk/unistim.conf'
-	'etc/asterisk/users.conf'
-	'etc/asterisk/voicemail.conf'
-	'etc/asterisk/vpb.conf'
-	'etc/asterisk/xmpp.conf')
+arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="http://www.asterisk.org"
 license=('GPL')
-depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt' 'libedit')
-makedepends=('sqlite3' 'gsm')
-optdepends=('lua51' 'libsrtp' 'postgresql' 'unixodbc' 'iksemel' 'dahdi')
-source=(http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-${pkgver}.tar.gz \
-	http://usecallmanager.nz/includes/cisco-usecallmanager-${pkgver}.patch \
-	DialTemplate.xml \
-	FeaturePolicy.xml \
-	SEPMAC.cnf.xml \
-	SoftKeys.xml \
-	AppDialRules.xml \
-	asterisk.service \
-	asterisk.logrotated \
-	asterisk.tmpfile)
-install=asterisk.install
-sha256sums=('e4e280a7ce176d36ebb249618377d0c484f147125c630c6ba2ab410d62c7a41a'
-            'e2ecefa86cabe4a4530f16a94ec6c649c00821be3658bb487d8633f0a142808c'
+depends=('alsa-lib'
+         'curl'
+         'jansson'
+         'libedit'
+         'libvorbis'
+         'libxml2'
+         'libxslt'
+         'opus'
+         'pjproject'
+         'popt'
+         'speex')
+makedepends=('gsm'
+             'sqlite3')
+optdepends=('dahdi'
+            'iksemel'
+            'libpri'
+            'libsrtp'
+            'libss7'
+            'lua51'
+            'openr2'
+            'postgresql'
+            'unixodbc')
+source=("https://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-${pkgver}.tar.gz" \
+	"http://usecallmanager.nz/includes/cisco-usecallmanager-${pkgver}.patch" \
+	"DialTemplate.xml" \
+	"FeaturePolicy.xml" \
+	"SEPMAC.cnf.xml" \
+	"SoftKeys.xml" \
+	"AppDialRules.xml" \
+	"asterisk.sysusers" \
+	"asterisk.logrotated" \
+	"asterisk.tmpfile")
+install=$pkgname.install
+sha256sums=('723441daf477db2468baeb0981522c9f2361e9b73493aeed4a247046abec123a'
+            'c826f7eb3d3ac575379319a2abf5dbae365657f3b2f27f44e1300f5ee5959a5d'
             '10795bc3b2fb28b79b3ab74bbd8f33b667e3bf4b1c87ccfb2aae168f9b07a17c'
             'da5a87717517b37d0554369235e0bdb86700bd696c1a70db5a47d9f4711b44db'
             'ecff1e7807003beb3198f95859fa3c1b57d618940872d1c8638e65f5a49afce4'
             'f75707ccd176ae1223f80a1c02fdebafbd0bce3e5ec12667e6e061b0427bb075'
             'c1243a3459b0d43020f9644fa2a2a6c9003a7bd51927715d626dc4060c234818'
-            '94acb6e68424195a12fd9d406b3fb586f264a550e75801f6e020a86e800dd42c'
-            'caa24cfec5c6b4f8cea385269e39557362acad7e2a552994c3bc24080e3bdd4e'
+            'fc2e42f79e1672cc25b9b8ad2ba99616fbba0047641c986d30718655d0e7d4d8'
+            'c97aea10852842aa6e997789c3d207dce7b585c37b1308d5aa4d5b1b6560e627'
             '673c0c55bce8068c297f9cdd389402c2d5d5a25e2cf84732cb071198bd6fa78a')
 
 prepare() {
@@ -153,30 +64,38 @@ prepare() {
 
 build() {
   cd ${srcdir}/asterisk-${pkgver}
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin --with-pjproject-bundled
+  ./configure \
+      --prefix=/usr \
+      --sysconfdir=/etc \
+      --localstatedir=/var \
+      --sbindir=/usr/bin \
+      --with-pjproject-bundled=no
+  make menuselect.makeopts
+  ./menuselect/menuselect --disable BUILD_NATIVE
   make
 }
 
 package(){
   cd ${srcdir}/asterisk-${pkgver}
-  make DESTDIR=${pkgdir} install
-  make DESTDIR=${pkgdir} samples
+  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install-headers
+  make DESTDIR="$pkgdir" samples
   
-  sed -i -e "s/\/var\/run/\/run/" ${pkgdir}/etc/asterisk/asterisk.conf
+  # Note you must build the package before you can update meta data!
+  backup+=($(cd "$pkgdir" && echo "etc/$pkgname/"*))
 
-  mkdir -p ${pkgdir}/usr/share/doc/asterisk/examples
-  mkdir -p ${pkgdir}/usr/share/doc/asterisk/cisco/examples
-
-  for i in ${pkgdir}/etc/asterisk/*; do install -D -m 644 $i ${pkgdir}/usr/share/doc/asterisk/examples/; done
+  sed -i -e 's,/var/run,/run,' "$pkgdir/etc/asterisk/asterisk.conf"
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/examples" "$pkgdir/etc/asterisk/"*
+  install -Dm644 "$pkgdir/usr/share/doc/asterisk/cisco/examples"
   
-  mv ${pkgdir}/var/run ${pkgdir}
+  mv "$pkgdir/var/run" "$pkgdir"
 
-  install -D -m 644 ${srcdir}/DialTemplate.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/DialTemplate.xml
-  install -D -m 644 ${srcdir}/FeaturePolicy.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/FeaturePolicy.xml
-  install -D -m 644 ${srcdir}/SEPMAC.cnf.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/SEPMAC.cnf.xml
-  install -D -m 644 ${srcdir}/SoftKeys.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/SoftKeys.xml
-  install -D -m 644 ${srcdir}/AppDialRules.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/AppDialRules.xml
-  install -D -m 644 ${srcdir}/asterisk.logrotated ${pkgdir}/etc/logrotate.d/asterisk
-  install -D -m 644 ${srcdir}/asterisk.service ${pkgdir}/usr/lib/systemd/system/asterisk.service
-  install -D -m 644 ${srcdir}/asterisk.tmpfile ${pkgdir}/usr/lib/tmpfiles.d/asterisk.conf
+  install -Dm644 ${srcdir}/DialTemplate.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/DialTemplate.xml
+  install -Dm644 ${srcdir}/FeaturePolicy.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/FeaturePolicy.xml
+  install -Dm644 ${srcdir}/SEPMAC.cnf.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/SEPMAC.cnf.xml
+  install -Dm644 ${srcdir}/SoftKeys.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/SoftKeys.xml
+  install -Dm644 ${srcdir}/AppDialRules.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/AppDialRules.xml
+  install -Dm644 ${srcdir}/asterisk.logrotated ${pkgdir}/etc/logrotate.d/asterisk
+  install -Dm644 ${srcdir}/asterisk.service ${pkgdir}/usr/lib/systemd/system/asterisk.service
+  install -Dm644 ${srcdir}/asterisk.tmpfile ${pkgdir}/usr/lib/tmpfiles.d/asterisk.conf
  }

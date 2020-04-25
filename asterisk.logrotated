@@ -7,4 +7,3 @@
     /usr/sbin/asterisk -rx "logger reload" 1>/dev/null || true
   endscript
 }
-
