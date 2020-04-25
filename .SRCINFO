@@ -1,6 +1,6 @@
 pkgbase = mellowplayer
 	pkgdesc = Open source and cross-platform desktop application that runs web-based music streaming services in its own window and provides integration with your desktop.
-	pkgver = 3.6.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://gitlab.com/ColinDuquesnoy/MellowPlayer
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = mellowplayer
 	depends = libevent
 	optdepends = chromium-widevine: DRM needed for Spotify and Amazon Music
 	optdepends = pepper-flash: needed for Tidal
-	source = https://gitlab.com/ColinDuquesnoy/MellowPlayer/-/archive/3.6.0/MellowPlayer-3.6.0.tar.gz
+	source = https://gitlab.com/ColinDuquesnoy/MellowPlayer/-/archive/3.6.1/MellowPlayer-3.6.1.tar.gz
 	source = widevine-path.patch
-	md5sums = 5c995431fea1c59d09eac2fd6ac7d322
+	md5sums = 9fd7f866191f0fe4d564aca3dd110637
 	md5sums = 67f8c5c6af4b770a4017a5ca9f137b90
 
 pkgname = mellowplayer
