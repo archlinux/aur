@@ -1,0 +1,21 @@
+pkgbase = kittehplayer-git
+	pkgdesc = A Qt Video Player with many themes for YouTube, Niconico and RoosterTeeth
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = MPL2
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-svg
+	depends = qt5-declarative
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	depends = qt5-graphicaleffects
+	depends = mpv
+	optdepends = ffmpegthumbnailer: playlist thumbnails support
+	optdepends = youtube-dl: for sites like YouTube and Dailymotion
+	source = git+https://github.com/NamedKitten/KittehPlayer
+	md5sums = SKIP
+
+pkgname = kittehplayer-git
+
