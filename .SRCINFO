@@ -1,0 +1,13 @@
+pkgbase = speedscope
+	pkgdesc = A fast, interactive web-based viewer for performance profiles.
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://github.com/jlfwong/speedscope
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	options = !emptydirs
+
+pkgname = speedscope
+
