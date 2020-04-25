@@ -1,0 +1,16 @@
+pkgbase = ezanvakti-qt-gui
+	pkgdesc = Qt Gui for Ezanvakti Application
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/fbostanci/ezanvakti-qt-gui
+	arch = x86_64
+	license = GPL3
+	depends = ezanvakti>=7.0
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = gst-plugins-good
+	source = https://github.com/fbostanci/ezanvakti-qt-gui/archive/v1.0.tar.gz
+	md5sums = 5446e8273a97822bd290446f41c7cda0
+
+pkgname = ezanvakti-qt-gui
+
