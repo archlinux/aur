@@ -1,6 +1,6 @@
 # Maintainer: Librewish <librewish@gmail.com>
-# maintainer: Philip Müller <philm[at]manjaro[dog]org>
-# maintainer: Roland Singer <roland[at]manjaro[dog]org>
+# Contributer : Philip Müller <philm[at]manjaro[dog]org>
+# Contributer : Roland Singer <roland[at]manjaro[dog]org>
 
 pkgbase=mhwd-garuda-git
 pkgname=('mhwd-garuda-git')
