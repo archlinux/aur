@@ -13,7 +13,7 @@ depends=('boost-libs' 'opencc' 'yaml-cpp' 'leveldb' 'librime-data' 'google-glog'
 makedepends=('git' 'cmake' 'boost' 'gtest')
 provides=('librime')
 conflicts=('librime' 'librime-lua')
-source=("git+https://github.com/hchunhui/librime-lua.git"
+source=("librime-lua::git+https://github.com/hchunhui/librime-lua.git"
         "$_pkgname-$_pkgver.tar.gz::https://github.com/rime/librime/archive/$_pkgver.tar.gz"
 )
 sha512sums=('SKIP'
@@ -21,7 +21,7 @@ sha512sums=('SKIP'
 )
 
 pkgver() {
-    cd librime-lua 
+    cd "$srcdir/librime-lua"
     printf "%s.r%s.%s" "$(echo $_pkgver)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
