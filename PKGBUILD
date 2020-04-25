@@ -6,7 +6,7 @@ pkgname=(
 	"nginx-zest-src-git"
 )
 pkgver=1.17.10
-pkgrel=1
+pkgrel=2
 epoch=2
 arch=(
 	"x86_64"
@@ -22,7 +22,7 @@ makedepends=(
 	"mercurial"
 	"perl"
 
-	#* pigz is used to speed up decompression
+	#* Speed up decompression by using pigz instead of gzip
 	"pigz"
 
 	#* Rust version 1.39 or greater is needed for quiche
@@ -100,9 +100,8 @@ _common_flags=(
 )
 
 _zest_flags=(
-	#TODO Fix the compilation errors of the NDK module
 	#* The NDK module must be first as other modules require it as a dependancy
-	#--add-module="../ngx_devel_kit"
+	--add-module="../ngx_devel_kit"
 
 	--add-module="../echo-nginx-module"
 	--add-module="../ipscrub/ipscrub"
@@ -110,15 +109,12 @@ _zest_flags=(
 	--add-module="../ngx_brotli"
 	--add-module="../ngx_http_redis-0.3.9"
 
-	#! All NDK dependant modules are not to be built until the NDK compilation error is solved
+	#! The set_hash module breaks compilation
 	#--add-module="../ngx_http_set_hash"
 
 	--add-module="../njs/nginx"
 	--add-module="../redis2-nginx-module"
-
-	#! All NDK dependant modules are not to be built until the NDK compilation error is solved
-	#--add-module="../set-misc-nginx-module"
-
+	--add-module="../set-misc-nginx-module"
 	--add-module="../srcache-nginx-module"
 	--add-module="../zstd-nginx-module"
 	--build="zest"
@@ -203,19 +199,16 @@ package_nginx-zest-git()
 		"nginx=1.17.10"
 		"nginx-mod-brotli"
 		"nginx-mod-cookieflag"
-
-		#! This module is currently not built
-		#"nginx-mod-devel"
-
+		"nginx-mod-devel"
 		"nginx-mod-ipscrub"
 		"nginx-mod-njs"
 		"nginx-mod-redis=0.3.9"
 		"nginx-mod-redis2"
 
-		#! These modules is currently not built
+		#! This module is currently not built
 		#"nginx-mod-sethash"
-		#"nginx-mod-setmisc"
 
+		"nginx-mod-setmisc"
 		"nginx-mod-srcache"
 		"nginx-zest=1.17.10"
 	)

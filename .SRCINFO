@@ -1,6 +1,6 @@
 pkgbase = nginx-zest-git
 	pkgver = 1.17.10
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://github.com/ZestProjects/nginx
 	arch = x86_64
@@ -65,10 +65,12 @@ pkgname = nginx-zest-git
 	provides = nginx=1.17.10
 	provides = nginx-mod-brotli
 	provides = nginx-mod-cookieflag
+	provides = nginx-mod-devel
 	provides = nginx-mod-ipscrub
 	provides = nginx-mod-njs
 	provides = nginx-mod-redis=0.3.9
 	provides = nginx-mod-redis2
+	provides = nginx-mod-setmisc
 	provides = nginx-mod-srcache
 	provides = nginx-zest=1.17.10
 	conflicts = nginx
