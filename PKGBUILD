@@ -1,7 +1,7 @@
 # Maintainer: getzze <getzze at gmail dot com>
 
 pkgname=funkwhale
-pkgver=0.20.1
+pkgver=0.21
 pkgrel=1
 pkgdesc="A self-hosted, modern free and open-source music server, heavily inspired by Grooveshark."
 arch=(any)
@@ -9,11 +9,12 @@ url="https://funkwhale.audio/"
 license=(GPL3)
 optdepends=('apache: to use the Apache web server'
             'certbot-apache: for the server to be accessible from outside'
-            'nginx: to use nginx web server')
+            'nginx: to use nginx web server'
+            'python-daphne: an alternative web server')
 depends=('ffmpeg' 'libjpeg' 'postgresql' 'python'
         'ipython'
         'mod_xsendfile'
-        'python-django>=2'
+        'python-django>=3.0.5'
         'python-django-environ'
         'python-pillow'
         'python-django-allauth'
@@ -25,9 +26,9 @@ depends=('ffmpeg' 'libjpeg' 'postgresql' 'python'
         'python-celery'
         'python-django-cors-headers'
         'python-musicbrainzngs'
-        'python-django-rest-framework>=3.10'
+        'python-django-rest-framework'
         'python-django-rest-framework-jwt'
-        'python-pendulum'
+        'python-arrow'
         'python-persisting-theory'
         'python-django-versatile-imagefield'
         'python-django-filter'
@@ -39,7 +40,6 @@ depends=('ffmpeg' 'libjpeg' 'postgresql' 'python'
         'python-magic-git'
         'python-django-channels'
         'python-django-channels-redis'
-        'python-daphne'
         'uvicorn'
         'gunicorn'
         'python-cryptography'
@@ -49,9 +49,8 @@ depends=('ffmpeg' 'libjpeg' 'postgresql' 'python'
         'python-pyopenssl'
         'python-ldap'
         'python-django-auth-ldap'
-        'python-service-identity'
         'python-pydub'
-        'python-pyld>=1.0.4'
+        'python-pyld'
         'python-aiohttp'
         'python-autobahn'
         'python-django-oauth-toolkit'
@@ -59,6 +58,11 @@ depends=('ffmpeg' 'libjpeg' 'postgresql' 'python'
         'python-boto3'
         'python-unicode-slugify-git'
         'python-django-cacheops'
+        'python-click'
+        'python-service-identity'
+        'python-markdown'
+        'python-bleach'
+        'python-feedparser'
 )
 makedepends=(git)
 _source_api="https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/${pkgver}/download?job="
@@ -74,10 +78,10 @@ source=("${pkgname}-${pkgver}-api.zip::${_source_api}build_api"
         "env-template"
         "funkwhale.service"
 )
-sha256sums=('5ef55f5e8a9bddaf93744027791efa23d49fe59af681e39942be1227a0de4126'
-            '22d774590b943fa6d64f634a7175b1d100089fe33734ce9889d050063ff50ce7'
+sha256sums=('0ffb4c97a2f5bc0adbda070f5300e5af76dfda81489dfa03be3e9a78cd4139b3'
+            'd412b9bf0bb57d48332c6a6ab2f14c6d8e4dc792421ed4077f65550c58ecd754'
             '2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2'
-            '212f346b599146954b433a66f5857d8ba5bc5689d3268fa41dca1dec0b3ee683'
+            'f56a2e8947809db4325a6c65141f6eb87e7428cc0e5a57032fc7ce050bf396fa'
             'a964a7802252d20a3319e2131c27ec307ad4f454921c2db31971c080150d7c9b'
             '0e6d7c96b7c1ec63794214decb1f2e7dd112a22b02e55555cf98c2a573014af6'
             '9d5a6f2cae6f18e22c5423247570519e8c772a9447ec2d92bd2fe5d69e519470'
@@ -86,6 +90,10 @@ sha256sums=('5ef55f5e8a9bddaf93744027791efa23d49fe59af681e39942be1227a0de4126'
             '01104122e3df765735b1062aa15e7a73c7949f2d9b7332c0e02e02db66345349')
 install=${pkgname}.install
 
+prepare() {
+  cd "$srcdir"
+  sed -id 's#/etc/nginx/funkwhale_proxy.conf#/etc/webapps/funkwhale/funkwhale_proxy.conf#' nginx.template
+}
 
 build() {
   cd "$srcdir"
@@ -99,7 +107,12 @@ package() {
   install -dm0755 -o root "$pkgdir"/usr/share/webapps/${pkgname}
   cp -R api "$pkgdir"/usr/share/webapps/${pkgname}/.
   cp -R front "$pkgdir"/usr/share/webapps/${pkgname}/.
-  chmod 755 -R "$pkgdir"/usr/share/webapps/${pkgname}/api/
+#  chmod 755 -R "$pkgdir"/usr/share/webapps/${pkgname}/api/
+  find "$pkgdir"/usr/share/webapps/${pkgname}/api/ -type d -exec chmod 755 {} \;
+  find "$pkgdir"/usr/share/webapps/${pkgname}/api/ -type f -exec chmod 644 {} \;
+  chmod +x "$pkgdir"/usr/share/webapps/${pkgname}/api/manage.py
+  mkdir "$pkgdir"/usr/bin
+  ln -s /usr/share/webapps/${pkgname}/api/manage.py "$pkgdir"/usr/bin/funkwhale_manage
 
   install -d "$pkgdir"/etc/webapps/${pkgname}/config
   install -Dm644 funkwhale_proxy.conf "$pkgdir"/etc/webapps/${pkgname}/.

@@ -1,6 +1,6 @@
 pkgbase = funkwhale
 	pkgdesc = A self-hosted, modern free and open-source music server, heavily inspired by Grooveshark.
-	pkgver = 0.20.1
+	pkgver = 0.21
 	pkgrel = 1
 	url = https://funkwhale.audio/
 	install = funkwhale.install
@@ -13,7 +13,7 @@ pkgbase = funkwhale
 	depends = python
 	depends = ipython
 	depends = mod_xsendfile
-	depends = python-django>=2
+	depends = python-django>=3.0.5
 	depends = python-django-environ
 	depends = python-pillow
 	depends = python-django-allauth
@@ -25,9 +25,9 @@ pkgbase = funkwhale
 	depends = python-celery
 	depends = python-django-cors-headers
 	depends = python-musicbrainzngs
-	depends = python-django-rest-framework>=3.10
+	depends = python-django-rest-framework
 	depends = python-django-rest-framework-jwt
-	depends = python-pendulum
+	depends = python-arrow
 	depends = python-persisting-theory
 	depends = python-django-versatile-imagefield
 	depends = python-django-filter
@@ -39,7 +39,6 @@ pkgbase = funkwhale
 	depends = python-magic-git
 	depends = python-django-channels
 	depends = python-django-channels-redis
-	depends = python-daphne
 	depends = uvicorn
 	depends = gunicorn
 	depends = python-cryptography
@@ -49,9 +48,8 @@ pkgbase = funkwhale
 	depends = python-pyopenssl
 	depends = python-ldap
 	depends = python-django-auth-ldap
-	depends = python-service-identity
 	depends = python-pydub
-	depends = python-pyld>=1.0.4
+	depends = python-pyld
 	depends = python-aiohttp
 	depends = python-autobahn
 	depends = python-django-oauth-toolkit
@@ -59,23 +57,29 @@ pkgbase = funkwhale
 	depends = python-boto3
 	depends = python-unicode-slugify-git
 	depends = python-django-cacheops
+	depends = python-click
+	depends = python-service-identity
+	depends = python-markdown
+	depends = python-bleach
+	depends = python-feedparser
 	optdepends = apache: to use the Apache web server
 	optdepends = certbot-apache: for the server to be accessible from outside
 	optdepends = nginx: to use nginx web server
-	source = funkwhale-0.20.1-api.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/0.20.1/download?job=build_api
-	source = funkwhale-0.20.1-front.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/0.20.1/download?job=build_front
-	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/0.20.1/deploy/funkwhale_proxy.conf
-	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/0.20.1/deploy/nginx.template
+	optdepends = python-daphne: an alternative web server
+	source = funkwhale-0.21-api.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/0.21/download?job=build_api
+	source = funkwhale-0.21-front.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/0.21/download?job=build_front
+	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/0.21/deploy/funkwhale_proxy.conf
+	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/0.21/deploy/nginx.template
 	source = funkwhale-beat.service
 	source = funkwhale-worker.service
 	source = funkwhale-server.service
 	source = apache-funkwhale.conf
 	source = env-template
 	source = funkwhale.service
-	sha256sums = 5ef55f5e8a9bddaf93744027791efa23d49fe59af681e39942be1227a0de4126
-	sha256sums = 22d774590b943fa6d64f634a7175b1d100089fe33734ce9889d050063ff50ce7
+	sha256sums = 0ffb4c97a2f5bc0adbda070f5300e5af76dfda81489dfa03be3e9a78cd4139b3
+	sha256sums = d412b9bf0bb57d48332c6a6ab2f14c6d8e4dc792421ed4077f65550c58ecd754
 	sha256sums = 2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2
-	sha256sums = 212f346b599146954b433a66f5857d8ba5bc5689d3268fa41dca1dec0b3ee683
+	sha256sums = f56a2e8947809db4325a6c65141f6eb87e7428cc0e5a57032fc7ce050bf396fa
 	sha256sums = a964a7802252d20a3319e2131c27ec307ad4f454921c2db31971c080150d7c9b
 	sha256sums = 0e6d7c96b7c1ec63794214decb1f2e7dd112a22b02e55555cf98c2a573014af6
 	sha256sums = 9d5a6f2cae6f18e22c5423247570519e8c772a9447ec2d92bd2fe5d69e519470
