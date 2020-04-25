@@ -16,7 +16,6 @@ license=('MPL2')
 depends=("firefox")
 source=("https://addons.cdn.mozilla.net/user-media/addons/${_addon_id}/${_addon_filename}")
 noextract=("${_addon_filename}")
-sha256sums=('ace16f251df17c0c7a1059efce3f20d28d6bb020469393e2dd25d18324a1548d')
 sha256sums=('58d370bdd1a6fa9e5703e889152698cbc87cc60eba84c5375cdcbae366aee63e')
 
 package() {
