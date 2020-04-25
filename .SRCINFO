@@ -1,0 +1,16 @@
+pkgbase = lfo-blender.lv2-git
+	pkgdesc = https://github.com/BramGiesen/cv-lfo-blender-lv2
+	pkgver = r7.0d9fab3
+	pkgrel = 1
+	url = https://github.com/BramGiesen/cv-lfo-blender-lv2
+	arch = x86_64
+	groups = lv2-plugins
+	license = GPL
+	depends = lv2
+	source = lfo-blender.lv2-git::git+https://github.com/BramGiesen/cv-lfo-blender-lv2
+	source = dpf::git+https://github.com/DISTRHO/DPF
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = lfo-blender.lv2-git
+
