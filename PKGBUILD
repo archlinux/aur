@@ -1,6 +1,6 @@
 # Maintainer: Kyle Laker <kyle+aur at laker dot email>
 pkgname=marp-cli
-pkgver=0.17.3
+pkgver=0.17.4
 pkgrel=1
 pkgdesc="A CLI interface for Marp and Marpit based converters"
 arch=('x86_64')
