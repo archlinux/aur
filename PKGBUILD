@@ -7,7 +7,7 @@
 
 pkgbase=postgresql-git
 pkgname=('postgresql-libs-git' 'postgresql-docs-git' 'postgresql-git')
-pkgver=12.2
+pkgver=49068.d9a4cce29d
 _majorver=${pkgver%.*}
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS (Git version)'
@@ -26,8 +26,8 @@ source=(git://git.postgresql.org/git/postgresql.git
         postgresql.sysusers
         postgresql.tmpfiles)
 sha256sums=('SKIP'
-            '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
-            '5f73b54ca6206bd2c469c507830261ebd167baca074698d8889d769c33f98a31'
+            '719d24c09c5ea17701cbd49b77f40c58bde52b603c3c8b85a708d277175d27b8'
+            '5bcc0bcedfa0271afaa05c35e7f651416a2a818c28069c51c2d0de0aa7d0dfdb'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
             '25fb140b90345828dc01a4f286345757e700a47178bab03d217a7a5a79105b57'
@@ -35,14 +35,20 @@ sha256sums=('SKIP'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
             '4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57')
 sha512sums=('SKIP'
-            '031efe12d18ce386989062327cdbbe611c5ef1f94e4e1bead502304cb3e2d410af533d3c7f1109d24f9da9708214fe32f9a10ba373a3ca8d507bdb521fbb75f7'
-            '38302242b30c01c7981574ed28d9cbd9dc73bf6b56ba3a032afb5d0885ae83e5aa72ce578bf2422214dfa6c46f09d0bdd7cccaeb3c25d58754eb1a34f8bf5615'
+            'caa2f44f00dff4ca8942a742c973f2d1b0ca4c7688c140858f61394aa74785dd5645c0301a04a1956c1e8a605487b640244497c845982f76bb0fea478e3b53f6'
+            'b6b5407b79f414618c72a7bb2cf259f6b99abcc3a6d7f55b62bb6933662fdad6d1e6663a47108912ac99779a3f4d1e1907cc45219af7cc28850211475a7f3f3e'
             '1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67'
             '9ab4da01337ffbab8faec0e220aaa2a642dbfeccf7232ef2645bdc2177a953f17ee3cc14a4d8f8ebd064e1dae8b3dba6029adbffb8afaabea383963213941ba8'
             'ee0c010be07e8b5396cfd89c1d077b7c5573753d0210ea4e330e314c2759e25fbee9071e663f871855d65cc8ac75162af9e793dd10892f50f515e7a89cc8d6a0'
             'eaaccae8dabad67d2bc54f74ec8d3ddb46257369b90080a2860b65d500053db6ace608be4c1b6baaeab4a03245dcbb5215eb41e468acc2304c037f094c2e7819'
             '36f7a5d38370fdc4d4267fd5a8a8330f152a1077bf0f065b89d4a7b8112ccd42be2c46c863791b77de02013f28275a42219f4236e7cb837c3f8cfd5fcc7d3373'
             '5fe81d716d56d515ee4ae1aac56652b7bf20346ea8413482fd9fdb79f0485d8c5ed099f4d2cc460cbe37686488f1354dec433905ce005da8fec772e783addc70')
+
+pkgver() {
+    cd postgresql
+    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 
 prepare() {
   cd postgresql
