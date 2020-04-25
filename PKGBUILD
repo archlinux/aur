@@ -2,7 +2,7 @@
 # Maintainer: Corey Hinshaw <corey(at)electrickite(dot)org>
 
 pkgname=system76-driver
-pkgver=20.04.5
+pkgver=20.04.6
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -43,7 +43,7 @@ source=(
   'cli.patch'
   'wayland.patch')
 sha1sums=(
-  '01a0c0a6c421be31ac75b5cbec0f373de030f249'
+  'd5a0296728215a6d0c643492d89bf4891d172eae'
   'ddc85f9b062eb89c2c6fef0c6d7c68a28f419760'
   '916e0eeda26e00bd0372c1ffc7c5368cda9d46a1'
   '4825b80d13555742c30d197e4de56638eef162e6')
