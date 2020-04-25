@@ -9,6 +9,7 @@ pkgbase = python-sauce-finder
 	depends = python-requests
 	depends = python-click
 	depends = python-validators
+	depends = python-prompt_toolkit
 	provides = sauce-finder
 	source = sauce-finder::git+https://gitlab.com/miicat/sauce-finder
 	md5sums = SKIP
