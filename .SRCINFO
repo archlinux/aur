@@ -1,0 +1,15 @@
+pkgbase = python-pytest-socket
+	pkgdesc = Pytest Plugin to disable socket calls during tests
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/miketheman/pytest-socket
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python>=3.6.3
+	depends = python-pytest
+	source = https://files.pythonhosted.org/packages/source/p/pytest-socket/pytest-socket-0.3.4.tar.gz
+	md5sums = 4de333f221846cb92414cdeef76ed40f
+
+pkgname = python-pytest-socket
+
