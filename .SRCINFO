@@ -1,6 +1,6 @@
 pkgbase = kaggle-api
 	pkgdesc = Kaggle API CLI
-	pkgver = 1.5.3
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = https://github.com/Kaggle/kaggle-api
 	arch = any
@@ -14,8 +14,10 @@ pkgbase = kaggle-api
 	depends = python-requests
 	depends = python-tqdm
 	depends = python-slugify
-	source = kaggle-api-1.5.3.tar.gz::https://files.pythonhosted.org/packages/source/k/kaggle/kaggle-1.5.3.tar.gz
-	sha512sums = 8f467cb6ef4fb11bf10cfbbae5acde5be7cea7b5ec34f3dcdd4c88dc206aa3e8119a762c04c9bd470224eaf952293547eaa3745fd873a0fa14601699c5558ac0
+	source = kaggle-api-1.5.6.tar.gz::https://files.pythonhosted.org/packages/source/k/kaggle/kaggle-1.5.6.tar.gz
+	source = 263.patch::https://github.com/Kaggle/kaggle-api/commit/8f08ba91095fac8e1e2b8783ce9dbae47c0d7ef7.patch
+	sha512sums = bdd05342357f835a5186994e95017d4bdf0d7fef2b70c6a8b142c4d19ce1fd797b85058f958ade033795f3fca0a51482aeb9e09d55d5ed58e3256e0eedc8fbae
+	sha512sums = 79b5617f9f46506eb9f3eea3f87475525dcd210a5837d04c8fc5252bb58cb6601fabf40b52b90132c75ad5172279f90438ae1bc4bd52311e3dbb0df1fd6f9a30
 
 pkgname = kaggle-api
 
