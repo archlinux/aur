@@ -2,7 +2,7 @@
 
 pkgname=ibus-daemon
 pkgver=0.0.1
-pkgrel=0
+pkgrel=1
 pkgdesc='SystemD user service for IBus'
 arch=(any)
 license=(MIT)
