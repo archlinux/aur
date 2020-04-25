@@ -1,7 +1,7 @@
 # Maintainer : Christian Muehlhaeuser <muesli@gmail.com>
 
 pkgname=(transmission-qt-git)
-pkgver=2.94
+pkgver=3.00
 pkgrel=1
 arch=(x86_64)
 url="http://www.transmissionbt.com/"
@@ -9,7 +9,7 @@ license=(MIT)
 pkgdesc='Fast, easy, and free BitTorrent client (Qt GUI)'
 depends=(curl qt5-base libevent)
 optdepends=('transmission-cli: daemon and web support')
-makedepends=(gtk3 intltool curl qt5-base libevent systemd qt5-tools)
+makedepends=(gtk3 intltool curl qt5-base libevent systemd qt5-tools git)
 source=(git+https://github.com/transmission/transmission.git
         transmission-cli.sysusers
         transmission-cli.tmpfiles)
