@@ -1,5 +1,5 @@
 # Maintainer: Librewish <librewish@gmail.com>
-# Maintainer: Philip Müller <philm[at]manjaro[dog]org>
+# Contributer : Philip Müller <philm[at]manjaro[dog]org>
 # Contributor: Fabian Bornschein <plusfabi[at]gmail[dog]com>
 
 pkgname=('mhwd-amdgpu')
