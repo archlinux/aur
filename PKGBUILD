@@ -2,7 +2,7 @@
 # Contributor: Vbextreme <@>
 pkgname=('easyframework')
 pkgdesc='another C framework'
-pkgver='1.2.3'
+pkgver='1.2.4'
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/vbextreme/EasyFramework'
@@ -10,7 +10,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/vbextreme/EasyFramewo
 license=('GPL3')
 sha256sums=('SKIP')
 makedepends=('meson' 'ncurses')
-depends=('pcre2' 'libunistring' 'libtar' 'zlib' 'gnutls' 'curl' 'libgit2' 'libpng' 'libjpeg-turbo' 'librsvg' 'giflib' 'ffmpeg' 'freetype2' 'fontconfig' 'libxcb' 'xcb-util' 'xcb-util-image' 'xcb-util-errors' 'xcb-util-xrm' 'libxkbcommon' 'libxkbcommon-x11')
+depends=('pcre2' 'libunistring' 'libtar' 'zlib' 'gnutls' 'curl' 'libgit2' 'libpng' 'libjpeg-turbo' 'librsvg' 'giflib' 'ffmpeg' 'freetype2' 'fontconfig' 'libxcb' 'xcb-util' 'xcb-util-wm' 'xcb-util-image' 'xcb-util-errors' 'xcb-util-xrm' 'libxkbcommon' 'libxkbcommon-x11')
 
 prepare() {
     cd "EasyFramework-${pkgver}"

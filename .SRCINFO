@@ -1,6 +1,6 @@
 pkgbase = easyframework
 	pkgdesc = another C framework
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/vbextreme/EasyFramework
 	arch = x86_64
@@ -23,12 +23,13 @@ pkgbase = easyframework
 	depends = fontconfig
 	depends = libxcb
 	depends = xcb-util
+	depends = xcb-util-wm
 	depends = xcb-util-image
 	depends = xcb-util-errors
 	depends = xcb-util-xrm
 	depends = libxkbcommon
 	depends = libxkbcommon-x11
-	source = easyframework-1.2.3.tar.gz::https://github.com/vbextreme/EasyFramework/archive/v1.2.3.tar.gz
+	source = easyframework-1.2.4.tar.gz::https://github.com/vbextreme/EasyFramework/archive/v1.2.4.tar.gz
 	sha256sums = SKIP
 
 pkgname = easyframework
