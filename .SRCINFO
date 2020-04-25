@@ -1,6 +1,6 @@
 pkgbase = mpv-plugin-excerpt-git
 	pkgdesc = Excerpt creation from within mpv
-	pkgver = r13.cf52a04
+	pkgver = r16.09c8a7a
 	pkgrel = 1
 	url = https://gitlab.com/lvml/mpv-plugin-excerpt
 	arch = any
@@ -8,9 +8,7 @@ pkgbase = mpv-plugin-excerpt-git
 	makedepends = git
 	depends = ffmpeg
 	depends = mpv
-	source = autoplay.patch
 	source = mpv-plugin-excerpt-git::git+https://gitlab.com/lvml/mpv-plugin-excerpt.git
-	sha256sums = 2430864e52d42878ba9b19e6e8e1671a0c1e8af4c2cb004b7388d76eee8b9c9f
 	sha256sums = SKIP
 
 pkgname = mpv-plugin-excerpt-git
