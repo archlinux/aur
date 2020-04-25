@@ -1,15 +1,17 @@
 pkgbase = oreo-cursors-git
 	pkgdesc = Color material cursors with cute animations.
 	pkgver = r4.34dc4ed
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pling.com/p/1360254
 	arch = any
 	license = GPL2
 	makedepends = git
+	makedepends = gtk-engine-murrine
 	makedepends = inkscape
 	makedepends = xorg-xcursorgen
 	provides = oreo-cursors
 	conflicts = oreo-cursors
+	options = !strip
 	source = git+https://github.com/varlesh/oreo-cursors.git
 	sha256sums = SKIP
 
