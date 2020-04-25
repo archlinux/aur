@@ -1,6 +1,6 @@
 pkgname=("python-pymodbustcp" "python2-pymodbustcp")
 pkgbase=python-pymodbustcp
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc='A simple Modbus/TCP library for Python'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://github.com/sourceperl/pyModbusTCP'
 makedepends=('python-setuptools' 'python2-setuptools')
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sourceperl/pyModbusTCP/archive/v${pkgver}.tar.gz")
-md5sums=('b7496b270e6f6ee337d8d97106a10120')
+md5sums=('46ab9813475e6509c111a450dfe815a0')
 
 build() {
     cd "$srcdir/pyModbusTCP-$pkgver"
