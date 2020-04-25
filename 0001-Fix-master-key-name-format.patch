@@ -1,0 +1,30 @@
+From 9818b6071c6ba98b0a99cfe9829eb4ce951c630f Mon Sep 17 00:00:00 2001
+From: Michael Armbruster <michael@armbrust.me>
+Date: Sat, 25 Apr 2020 11:24:28 +0200
+Subject: [PATCH] Fix master key name format
+
+---
+ nsz/nut/Keys.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/nsz/nut/Keys.py b/nsz/nut/Keys.py
+index 59b2cd2..b348bd3 100644
+--- a/nsz/nut/Keys.py
++++ b/nsz/nut/Keys.py
+@@ -107,10 +107,10 @@ def getKey(key):
+ 	return foundKey
+ 
+ def getMasterKey(masterKeyIndex):
+-	return getKey('master_key_{0:02}'.format(masterKeyIndex))
++	return getKey('master_key_{0:02x}'.format(masterKeyIndex))
+ 	
+ def existsMasterKey(masterKeyIndex):
+-	return 'master_key_{0:02}'.format(masterKeyIndex) in keys
++	return 'master_key_{0:02x}'.format(masterKeyIndex) in keys
+ 
+ def load(fileName):
+ 	try:
+-- 
+2.26.1
+
+
