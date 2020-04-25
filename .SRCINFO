@@ -1,0 +1,15 @@
+pkgbase = cajviewer-bin
+	pkgdesc = Document Viewer for CAJ, KDH, NH, TEB and PDF format
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://cajviewer.cnki.net
+	arch = x86_64
+	license = custom
+	provides = cajviewer
+	conflicts = cajviewer
+	conflicts = cajviewer-appimage
+	source = http://viewer.d.cnki.net/cajviewer-1.0-ZKFD-ZX.deb
+	sha256sums = 8aef0f0736b0a5e994465c58d2638b0393bf52d6abcfce6fb91e6361d30de070
+
+pkgname = cajviewer-bin
+
