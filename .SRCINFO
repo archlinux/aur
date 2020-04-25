@@ -1,13 +1,13 @@
 pkgbase = python-reorder-python-imports
 	pkgdesc = Automatically reorder python imports.
-	pkgver = 1.7.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/asottile/reorder_python_imports
 	arch = any
 	license = MIT
 	depends = python-aspy-refactor-imports
-	source = https://github.com/asottile/reorder_python_imports/archive/v1.7.0.tar.gz
-	md5sums = e9d497ba795638fe6d0cca4b9a6721ef
+	source = https://github.com/asottile/reorder_python_imports/archive/v2.2.0.tar.gz
+	md5sums = ddb6bf1bb5f7a2f9d063e1406db27725
 
 pkgname = python-reorder-python-imports
 

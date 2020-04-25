@@ -2,7 +2,7 @@
 
 pkgname="python-reorder-python-imports"
 _pkgname="reorder_python_imports"
-pkgver=1.7.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Automatically reorder python imports."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/asottile/${_pkgname}"
 license=('MIT')
 depends=('python-aspy-refactor-imports')
 source=("https://github.com/asottile/$_pkgname/archive/v$pkgver.tar.gz")
-md5sums=('e9d497ba795638fe6d0cca4b9a6721ef')
+md5sums=('ddb6bf1bb5f7a2f9d063e1406db27725')
 
 build() {
     cd "${_pkgname}-${pkgver}"
