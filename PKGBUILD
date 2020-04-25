@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-ax-platform
-pkgver=0.1.9
+pkgver=0.1.11
 pkgrel=1
 pkgdesc='Adaptive Experimentation Platform'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('python' 'python-botorch' 'python-jinja' 'python-pandas' 'python-scipy'
 optdepends=()
 makedepends=('python' 'python-setuptools')
 source=("$pkgname-$pkgver::https://github.com/facebook/Ax/archive/$pkgver.tar.gz")
-sha256sums=('2de992e042aca36b9ea6b7ce392c881180f57b0d0b6de34b360277a44cbce2e0')
+sha256sums=('3d83eb005fa48f3444a0eb82329326cb0417c8d2619dd9b9039c1296fc37f939')
 
 _pkgname=Ax
 
