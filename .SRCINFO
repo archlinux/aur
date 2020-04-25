@@ -1,4 +1,4 @@
-pkgbase = wey
+pkgbase = wey-bin
 	pkgdesc = Fast open source Slack desktop app
 	pkgver = 0.3.6
 	pkgrel = 1
@@ -7,11 +7,13 @@ pkgbase = wey
 	license = MIT
 	depends = webkit2gtk
 	optdepends = libappindicator-gtk3: for tray icon
+	provides = wey
+	conflicts = wey
 	options = !strip
 	source = https://github.com/yue/wey/releases/download/v0.3.6/wey-v0.3.6-linux-x64.zip
 	source = wey.desktop
 	sha256sums = 84e4e17ac666b2e2ea78f5b0439aab44f1c63b9ec63fe08e29b258e3f94c3e6b
 	sha256sums = 83d1990554d42aac8a10c456627ce7c41021737e42a3e144aad8ee17ea01be1f
 
-pkgname = wey
+pkgname = wey-bin
 

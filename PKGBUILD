@@ -1,5 +1,7 @@
 # Maintainer: Aetf <aetf at unlimitedcodeworks dot xyz>
-pkgname=wey
+pkgname=wey-bin
+provides=(wey)
+conflicts=(wey)
 pkgver=0.3.6
 pkgrel=1
 pkgdesc="Fast open source Slack desktop app"
