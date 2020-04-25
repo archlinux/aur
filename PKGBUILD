@@ -1,14 +1,14 @@
 # Maintainer: XavierCLL
 pkgname=python-pymodis
-pkgver=2.0.4
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="pyModis is a Free and Open Source Python based library to work with MODIS data"
 arch=('any')
-url="http://pymodis.fem-environment.eu/"
+url="http://www.pymodis.org"
 license=('GPLv2')
 depends=('python' 'python-numpy' 'gdal' 'wxpython')
 source=("https://github.com/lucadelu/pyModis/archive/$pkgver.tar.gz")
-sha256sums=('8f20b2c79336f0699b3a7cfe7808b99af2ded16a8a5e5e8753eee8bf19b000b7')
+sha256sums=('493ba114da9b91cd6424cb879ded5aa079939be77d4654fb902b6eabbbbeeb8d')
 
 package() {
   cd "$srcdir/pyModis-$pkgver"
