@@ -1,6 +1,6 @@
 pkgbase = powalert
 	pkgdesc = System battery and power status notifier.
-	pkgver = 0.1.0_alpha3
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/zonotope/powalert
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = powalert
 	license = MIT
 	makedepends = cargo
 	provides = powalert
-	source = powalert-0.1.0-alpha3.tar.gz::https://github.com/zonotope/powalert/archive/0.1.0-alpha3.tar.gz
+	source = powalert-0.1.0.tar.gz::https://github.com/zonotope/powalert/archive/0.1.0.tar.gz
 	sha256sums = 3935c3d953730aa01dc79acd8d4dfd4bc036e8a0103407512c0a82ba2831510a
 
 pkgname = powalert

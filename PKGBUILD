@@ -1,6 +1,6 @@
 # Maintainer:  Ben Lamothe <bl at 732 dot one>
 pkgname=powalert
-pkgver=0.1.0_alpha3
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="System battery and power status notifier."
 arch=('i686' 'x86_64')
