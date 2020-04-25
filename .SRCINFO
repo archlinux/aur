@@ -1,13 +1,13 @@
 pkgbase = python-haishoku
 	pkgdesc = A development tool for grabbing the dominant color or representative color palette from an image.
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/LanceGin/haishoku
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-pillow
-	source = git+https://github.com/LanceGin/haishoku
+	source = https://github.com/LanceGin/haishoku/archive/v1.1.8.tar.gz
 	md5sums = SKIP
 
 pkgname = python-haishoku
