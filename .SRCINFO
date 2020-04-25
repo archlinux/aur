@@ -1,6 +1,6 @@
 pkgbase = ammonite
 	pkgdesc = A cleanroom re-implementation of the Scala REPL from first principles.
-	pkgver = 2.0.4
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/lihaoyi/Ammonite
 	install = ammonite.install
@@ -8,10 +8,10 @@ pkgbase = ammonite
 	license = MIT
 	depends = scala>=2.13
 	depends = java-environment
-	noextract = ammonite-repl-2.0.4
-	source = ammonite-repl-2.0.4::https://github.com/lihaoyi/Ammonite/releases/download/2.0.4/2.13-2.0.4
-	source = https://github.com/lihaoyi/Ammonite/raw/2.0.4/LICENSE
-	b2sums = 3880d6409bf5bdcb35afa504a8d904e02ef2de8216b979ebe341e156e57aa305418fdaaf9f0d5eef3d44de3a78d8a372474298a91f9e00a53820eaf57704ad30
+	noextract = ammonite-repl-2.1.0
+	source = ammonite-repl-2.1.0::https://github.com/lihaoyi/Ammonite/releases/download/2.1.0/2.13-2.1.0
+	source = https://github.com/lihaoyi/Ammonite/raw/2.1.0/LICENSE
+	b2sums = b25565c4191968cef3c9186b3deca2b813c01d6dcbcf33f2f617e90ebdc5da97e3ef8ed550d5de84d3dafbb6f74617a5114da1f8290fc810922aed6dd9e1cc9e
 	b2sums = fc9694ff702a7c919b82c3429911dd0f4bf83ee36e7036bf5d82b62f3a1bc0dfb2bb80313ef89fa80353a7cf202bced4d942de25fdda789258753cd42633752d
 
 pkgname = ammonite
