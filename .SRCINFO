@@ -1,0 +1,28 @@
+pkgbase = bazel024
+	pkgdesc = Correct, reproducible, and fast builds for everyone
+	pkgver = 0.24.1
+	pkgrel = 1
+	url = https://bazel.io/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = protobuf
+	makedepends = python
+	depends = java-environment=11
+	depends = libarchive
+	depends = zip
+	depends = unzip
+	provides = bazel=0.24.1
+	conflicts = bazel
+	options = !distcc
+	options = !strip
+	source = https://github.com/bazelbuild/bazel/releases/download/0.24.1/bazel-0.24.1-dist.zip
+	source = https://github.com/bazelbuild/bazel/releases/download/0.24.1/bazel-0.24.1-dist.zip.sig
+	source = grpc_rename_gettid.patch
+	validpgpkeys = 71A1D0EFCFEB6281FD0437C93D5919B448457EE0
+	sha512sums = a78c871eb517ec53a0d1d9592887288fa54e5e9f44b0b7dba44792a74a1ba0c98e38ff2f6094ab6e8b3add3ec4a0188de3b2489d94d419373e210d16db641774
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = bazel024
+
