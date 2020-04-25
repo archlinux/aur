@@ -5,7 +5,7 @@ pkgname=magicavoxel
 _version_main='0.99.5'
 _version_suffix=''
 pkgver="$_version_main$_version_suffix"
-pkgrel=3
+pkgrel=4
 pkgdesc='A free lightweight 8-bit voxel art editor and GPU based interactive path tracing renderer'
 arch=('x86_64')
 url="http://ephtracy.github.io/"
@@ -19,7 +19,7 @@ depends=(wine)
 makedepends=(unzip icoutils)
 noextract=("MagicaVoxel-$pkgver-alpha-win64.zip"
            'plugin-intel-denoiser-win64.zip')
-sha512sums=('05cf765f959898d98defc2db65828108f5ca09cca131a4912dcd1f8860e4719c86fe8211dcbb6eb532f67a9cd8dd168325cc9597ae9f35a6f414b23b1cb50384'
+sha512sums=('1aaff14029daea0e280e70903639ed2afd0619b08915717226d43d213a1925608df9826e834721892a88f82cff6b7df94eba9cacd9d448181e4b14c187c843d3'
             '23fe26a26dad536810a21fda5565c97d520961b63d06ed5e3aae170a5c636a3c202c9ab40ce80486ff6fca5d34e3ab1a48cabedc43ad678236b4e4abbc0ab67a'
             '9c5aa5de457e7ae3f7cd5d563414600778b65bd60a9e02c7fe3b01289b667777ca0b9f4954b51d0a06c414489e5168f7f995d13799b1bd5af3ea5aace623adc7'
             '0872398e0d52df23a4910c3c5257f073f96bbf06db197ebdaf59598ca39d1351c6412598ac46b1eb24ba2a47db8ce7d804d227dc847260c8dbd6213396e816c1'
