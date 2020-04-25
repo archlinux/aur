@@ -8,7 +8,9 @@ arch=('x86_64')
 url='https://github.com/master-of-zen/Av1an'
 license=('MIT')
 makedepends=('python-setuptools')
-depends=('python>=3.7.0' 'ffmpeg')
+depends=('python>=3.7.0' 'python-numpy' 'python-scenedetect' 'opencv'
+         'python-tqdm' 'python-psutil' 'python-scipy' 'python-matplotlib'
+         'ffmpeg')
 optdepends=('aom: Aomenc encoder support'
             'svt-av1: SVT-AV1 encoder support'
             'rav1e: rav1e encoder support')
