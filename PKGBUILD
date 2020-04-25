@@ -1,7 +1,7 @@
 # Contributor: Scott Lawrence <bytbox@gmail.com>
 # Maintainer: Scott Lawrence <bytbox@gmail.com>
 pkgname=python-sickle
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="OAI-PMH for humans"
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python>=3.5' 'python-requests' 'python-lxml')
 makedepends=()
 source=("https://github.com/mloesch/sickle/archive/${pkgver}.tar.gz")
-md5sums=('fe19e2cdc948607f6b5700d370ad7780')
+md5sums=('f9ccdcad0b11a854f3b7c7f6ae5d1a0b')
 
 build() {
   cd ${srcdir}/sickle-${pkgver}
