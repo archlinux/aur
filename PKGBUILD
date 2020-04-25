@@ -3,7 +3,7 @@
 # Any feedback welcome! =)
 
 pkgname=github-cli-bin
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="The official GitHub CLI - binary"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('glibc')
 provides=('github-cli')
 conflicts=('github-cli')
 source=("${url}/releases/download/v${pkgver}/gh_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('628aa0d7eaf49152efc2fd1209893be8b34a3044e7f9f4e70f88feb07f053113')
+sha256sums=('2479212df952a674853a7b65ab7537e2ecefa6a0c431e373fd7b5c36fb5d4f07')
 
 build() {
   cd "gh_${pkgver}_linux_amd64"

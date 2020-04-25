@@ -1,6 +1,6 @@
 pkgbase = github-cli-bin
 	pkgdesc = The official GitHub CLI - binary
-	pkgver = 0.6.4
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/cli/cli
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = github-cli-bin
 	depends = glibc
 	provides = github-cli
 	conflicts = github-cli
-	source = https://github.com/cli/cli/releases/download/v0.6.4/gh_0.6.4_linux_amd64.tar.gz
-	sha256sums = 42a758029dcab1ab103c676a0f63d99fadf6f8baa5741529e88a0fb649bcbdbe
+	source = https://github.com/cli/cli/releases/download/v0.7.0/gh_0.7.0_linux_amd64.tar.gz
+	sha256sums = 2479212df952a674853a7b65ab7537e2ecefa6a0c431e373fd7b5c36fb5d4f07
 
 pkgname = github-cli-bin
 
