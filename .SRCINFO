@@ -1,7 +1,7 @@
 pkgbase = jitsi-videobridge-git
 	pkgdesc = Videobridge for Jitsi Meet
 	pkgver = r3045.fdd68a74
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jitsi/jitsi-videobridge
 	arch = x86_64
 	license = Apache
