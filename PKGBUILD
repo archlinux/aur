@@ -110,7 +110,7 @@ _postgres_check() {
 }
 
 check() {
-  cd postgresql-${pkgver}
+  cd postgresql
   _postgres_check check
   _postgres_check check-world
 }
