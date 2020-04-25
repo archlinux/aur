@@ -1,4 +1,5 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: grimsock <lord.grimsock at gmail dot com>
 # Contributor: Dieter Plaetinck <dieter@plaetinck.be>
@@ -7,7 +8,7 @@
 
 pkgname=phantomjs
 pkgver=2.1.1
-pkgrel=13
+pkgrel=14
 pkgdesc='Headless WebKit with JavaScript API'
 url='http://www.phantomjs.org/'
 license=('BSD' 'LGPL' 'MIT')

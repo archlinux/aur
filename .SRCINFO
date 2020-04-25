@@ -1,7 +1,7 @@
 pkgbase = phantomjs
 	pkgdesc = Headless WebKit with JavaScript API
 	pkgver = 2.1.1
-	pkgrel = 13
+	pkgrel = 14
 	url = http://www.phantomjs.org/
 	arch = i686
 	arch = x86_64
