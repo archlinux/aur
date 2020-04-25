@@ -6,57 +6,67 @@ pkgname=(
 	"nginx-zest-src-git"
 )
 pkgver=1.17.10
-pkgrel=4
-epoch=1
+pkgrel=1
+epoch=2
 arch=(
 	"x86_64"
 )
 url="https://github.com/ZestProjects/nginx"
-license=("custom")
+license=(
+	"custom"
+)
 makedepends=(
 	"cmake"
 	"git"
 	"go"
 	"mercurial"
 	"perl"
+
+	#* pigz is used to speed up decompression
 	"pigz"
-	"rust>=1.39.0"
+
+	#* Rust version 1.39 or greater is needed for quiche
+	"rust>=1.39"
 )
 source=(
 	"git+${url}.git"
 	"git+https://github.com/AirisX/nginx_cookie_flag_module.git"
 	"git+https://github.com/cloudflare/quiche.git"
 	"git+https://github.com/google/ngx_brotli.git"
-	"https://nginx.org/LICENSE"
-	"hg+http://hg.nginx.org/nginx-tests"
-	"service"
-	"logrotate"
-	"hg+http://hg.nginx.org/njs"
-	"https://people.freebsd.org/~osa/ngx_http_redis-0.3.9.tar.gz"
+	"git+https://github.com/masonicboom/ipscrub.git"
+	"git+https://github.com/openresty/echo-nginx-module.git"
+	"git+https://github.com/openresty/redis2-nginx-module.git"
+	"git+https://github.com/openresty/set-misc-nginx-module.git"
 	"git+https://github.com/openresty/srcache-nginx-module.git"
 	"git+https://github.com/tokers/zstd-nginx-module.git"
-	"git+https://github.com/openresty/redis2-nginx-module.git"
-	"git+https://github.com/vision5/ngx_http_set_hash.git"
-	"git+https://github.com/openresty/set-misc-nginx-module.git"
 	"git+https://github.com/vision5/ngx_devel_kit.git"
+	"git+https://github.com/vision5/ngx_http_set_hash.git"
+	"hg+http://hg.nginx.org/nginx-tests"
+	"hg+http://hg.nginx.org/njs"
+	"https://nginx.org/LICENSE"
+	"https://people.freebsd.org/~osa/ngx_http_redis-0.3.9.tar.gz"
+	"logrotate"
+	"service"
 )
 b2sums=(
 	"SKIP"
 	"SKIP"
 	"SKIP"
 	"SKIP"
+	"SKIP"
+	"SKIP"
+	"SKIP"
+	"SKIP"
+	"SKIP"
+	"SKIP"
+	"SKIP"
+	"SKIP"
+	"SKIP"
+	"SKIP"
 	"fbd993990b43a4476d0963287bdc5f55f73fa5ce828f11977cf1abeedd478729a95861d930e27c6a1b0e78b16397164395afc4473fd34e050cadd32b94336beb"
-	"SKIP"
-	"b6414f9917fe62cc57556a2927fb404cc839398dac64a0d60c1d45af11a4e6be71bbee5f9bae17ce3604c31ab9247e8c6aec759f86890b54f86267db1fe7c08a"
-	"fe32fb75a7677abca86c4bc3f4ca9bfeccb3cd7afb4dd3c4ec21ab8b53cc0d72ba5330a1131498b5df222c2e517bd01e2df9f67256011ff15241b777a85be6b3"
-	"SKIP"
 	"ea3b5668b18b83df37bd954bd7cfd61fcb91e7b40bc2ef79f7c2117252307bbd716925669e15331a813eadb07819e5a3a7410eab52e8f918a167fe69ead2b375"
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
+	"fe32fb75a7677abca86c4bc3f4ca9bfeccb3cd7afb4dd3c4ec21ab8b53cc0d72ba5330a1131498b5df222c2e517bd01e2df9f67256011ff15241b777a85be6b3"
+	"b6414f9917fe62cc57556a2927fb404cc839398dac64a0d60c1d45af11a4e6be71bbee5f9bae17ce3604c31ab9247e8c6aec759f86890b54f86267db1fe7c08a"
 )
 
 _common_flags=(
@@ -89,15 +99,26 @@ _common_flags=(
 	--with-threads
 )
 
-_stable_flags=(
-	--add-module="../ngx_brotli"
+_zest_flags=(
+	#TODO Fix the compilation errors of the NDK module
+	#* The NDK module must be first as other modules require it as a dependancy
+	#--add-module="../ngx_devel_kit"
+
+	--add-module="../echo-nginx-module"
+	--add-module="../ipscrub/ipscrub"
 	--add-module="../nginx_cookie_flag_module"
-	--add-module="../njs/nginx"
-	--add-module="../ngx_devel_kit"
+	--add-module="../ngx_brotli"
 	--add-module="../ngx_http_redis-0.3.9"
-	--add-module="../ngx_http_set_hash"
+
+	#! All NDK dependant modules are not to be built until the NDK compilation error is solved
+	#--add-module="../ngx_http_set_hash"
+
+	--add-module="../njs/nginx"
 	--add-module="../redis2-nginx-module"
-	--add-module="../set-misc-nginx-module"
+
+	#! All NDK dependant modules are not to be built until the NDK compilation error is solved
+	#--add-module="../set-misc-nginx-module"
+
 	--add-module="../srcache-nginx-module"
 	--add-module="../zstd-nginx-module"
 	--build="zest"
@@ -116,12 +137,14 @@ prepare()
 	git submodule update --init
 
 	cd "deps/boringssl" || exit
+
+	#* Checkout to a newer BoringSSL to fix an error that Clang picks up
 	git checkout 21f694210c9232d6ab926d029c315ae6069c7dbb
 }
 
 build()
 {
-	#* We need to manually state the compielr flags as quiche is sensitive to changes here
+	#* Manually state the compiler flags
 	export CFLAGS="-O3 -pipe -fno-plt"
 	export CXXFLAGS="-O3 -pipe -fno-plt"
 
@@ -144,15 +167,17 @@ build()
 		--with-cc-opt="$CFLAGS $CPPFLAGS" \
 		--with-ld-opt="$LDFLAGS" \
 		"${_common_flags[@]}" \
-		"${_stable_flags[@]}"
+		"${_zest_flags[@]}"
 	make
 }
 
 check()
 {
 	cd "nginx-tests" || exit
+
 	#* We skip this test as HTTP/2 HPACK causes this test to fail
 	rm -rf "h2_server_push.t"
+
 	TEST_NGINX_BINARY="../nginx/objs/nginx" prove .
 }
 
@@ -167,37 +192,47 @@ package_nginx-zest-git()
 		"mailcap"
 		"pcre"
 		"zlib"
+		"zstd"
 	)
 	optdepends=(
 		"nginx-zest-src-git: dynamic module support"
 	)
 	provides=(
 		"nginx=1.17.10"
-		"nginx-zest=1.17.10"
 		"nginx-mod-brotli"
 		"nginx-mod-cookieflag"
-		"nginx-mod-devel"
+
+		#! This module is currently not built
+		#"nginx-mod-devel"
+
+		"nginx-mod-ipscrub"
 		"nginx-mod-njs"
 		"nginx-mod-redis=0.3.9"
 		"nginx-mod-redis2"
-		"nginx-mod-sethash"
-		"nginx-mod-setmisc"
+
+		#! These modules is currently not built
+		#"nginx-mod-sethash"
+		#"nginx-mod-setmisc"
+
 		"nginx-mod-srcache"
+		"nginx-zest=1.17.10"
 	)
 	conflicts=(
 		"nginx"
-		"nginx-zest"
 		"nginx-mod-brotli"
 		"nginx-mod-cookieflag"
 		"nginx-mod-devel"
+		"nginx-mod-ipscrub"
 		"nginx-mod-njs"
 		"nginx-mod-redis"
 		"nginx-mod-redis2"
 		"nginx-mod-sethash"
 		"nginx-mod-setmisc"
 		"nginx-mod-srcache"
+		"nginx-zest"
 	)
 	backup=(
+		"etc/logrotate.d/nginx"
 		"etc/nginx/fastcgi.conf"
 		"etc/nginx/fastcgi_params"
 		"etc/nginx/koi-win"
@@ -206,45 +241,44 @@ package_nginx-zest-git()
 		"etc/nginx/scgi_params"
 		"etc/nginx/uwsgi_params"
 		"etc/nginx/win-utf"
-		"etc/logrotate.d/nginx"
 	)
 
-	install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	cd "nginx" || exit
 
-	make install DESTDIR="${pkgdir}"
+	make install DESTDIR="$pkgdir"
 
 	sed -e "s|\<user\s\+\w\+;|user html;|g" \
 		-e "44s|html|/usr/share/nginx/html|" \
 		-e "54s|html|/usr/share/nginx/html|" \
-		-i "${pkgdir}/etc/nginx/nginx.conf"
+		-i "$pkgdir/etc/nginx/nginx.conf"
 
-	for i in "${pkgdir}/etc/nginx/"*".default"; do
+	for i in "$pkgdir/etc/nginx/"*".default"; do
 		rm "$i"
 	done
 
-	if [ -f "${pkgdir}/etc/nginx/mime.types" ]; then
-		rm "${pkgdir}/etc/nginx/mime.types"
+	if [ -f "$pkgdir/etc/nginx/mime.types" ]; then
+		rm "$pkgdir/etc/nginx/mime.types"
 	fi
 
-	install -d -g0 -m755 -o0 "${pkgdir}/var/lib/nginx"
-	install -d -m700 "${pkgdir}/var/lib/nginx/proxy"
+	install -d -g0 -m755 -o0 "$pkgdir/var/lib/nginx"
+	install -d -m700 "$pkgdir/var/lib/nginx/proxy"
 
-	install -d "${pkgdir}/usr/share/nginx"
-	mv "${pkgdir}/etc/nginx/html" "${pkgdir}/usr/share/nginx"
+	install -d "$pkgdir/usr/share/nginx"
+	mv "$pkgdir/etc/nginx/html" "$pkgdir/usr/share/nginx"
 
-	install -D -m644 "../logrotate" "${pkgdir}/etc/logrotate.d/nginx"
-	install -D -m644 "../service" "${pkgdir}/usr/lib/systemd/system/nginx.service"
+	install -D -m644 "../logrotate" "$pkgdir/etc/logrotate.d/nginx"
+	install -D -m644 "../service" "$pkgdir/usr/lib/systemd/system/nginx.service"
 
-	rmdir "${pkgdir}/run"
+	rmdir "$pkgdir/run"
 
-	install -d "${pkgdir}/usr/share/man/man8"
-	pigz -9c "docs/man/nginx.8" > "${pkgdir}/usr/share/man/man8/nginx.8.gz"
+	install -d "$pkgdir/usr/share/man/man8"
+	pigz -9c "docs/man/nginx.8" > "$pkgdir/usr/share/man/man8/nginx.8.gz"
 
-	for i in ftdetect indent syntax; do
-		install -D -m644 "contrib/vim/$i/nginx.vim" \
-			"${pkgdir}/usr/share/vim/vimfiles/$i/nginx.vim"
+	for j in ftdetect indent syntax; do
+		install -D -m644 "contrib/vim/$j/nginx.vim" \
+			"$pkgdir/usr/share/vim/vimfiles/$j/nginx.vim"
 	done
 }
 
@@ -260,8 +294,8 @@ package_nginx-zest-src-git()
 		"nginx-zest-src"
 	)
 
-	install -d "${pkgdir}/usr/src"
-	cp -r "nginx-src" "${pkgdir}/usr/src/nginx"
+	install -d "$pkgdir/usr/src"
+	cp -r "nginx-src" "$pkgdir/usr/src/nginx"
 
-	install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
