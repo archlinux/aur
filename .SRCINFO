@@ -1,14 +1,14 @@
 pkgbase = mariadb-jdbc
 	pkgdesc = The official Java library (Connector/J) to connect to MariaDB and MySQL
-	pkgver = 2.5.4
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://downloads.mariadb.org/connector-java/
 	arch = any
 	license = LGPL2.1
 	depends = java-runtime
 	provides = mysql-jdbc
-	source = https://downloads.mariadb.com/Connectors/java/connector-java-2.5.4/mariadb-java-client-2.5.4.jar
-	sha256sums = 5fafee1aad82be39143b4bfb8915d6c2d73d860938e667db8371183ff3c8500a
+	source = https://downloads.mariadb.com/Connectors/java/connector-java-2.6.0/mariadb-java-client-2.6.0.jar
+	sha256sums = 7e0882a76f59ed7dfc50b00936cc59d70148553daededad2c7f5423314e503a8
 
 pkgname = mariadb-jdbc
 
