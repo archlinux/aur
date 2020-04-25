@@ -1,0 +1,19 @@
+pkgbase = bazel024-bin
+	pkgdesc = Correct, reproducible, and fast builds for everyone
+	pkgver = 0.24.1
+	pkgrel = 1
+	url = https://bazel.io/
+	arch = x86_64
+	license = Apache
+	depends = java-environment=11
+	depends = libarchive
+	depends = zip
+	depends = unzip
+	provides = bazel=0.24.1
+	conflicts = bazel
+	options = !strip
+	source = https://github.com/bazelbuild/bazel/releases/download/0.24.1/bazel-0.24.1-installer-linux-x86_64.sh
+	sha256sums = cf8210e538c37f195298905301a1221ca5b6a5a6658ccd1c4369a867aa2339c3
+
+pkgname = bazel024-bin
+
