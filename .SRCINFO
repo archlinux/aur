@@ -6,7 +6,6 @@ pkgbase = linvst2x-bin
 	arch = x86_64
 	makedepends = git
 	depends = wine
-	optdepends = linvstmanager: GUI for managing LinVST bridges
 	provides = linvst2x
 	provides = linvst2x-bin
 	conflicts = linvst2x
