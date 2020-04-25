@@ -4,7 +4,7 @@
 pkgname=sway
 pkgver=1.4
 epoch=1
-pkgrel=8
+pkgrel=9
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
 url='https://swaywm.org/'
