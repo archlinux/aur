@@ -2,29 +2,22 @@
 
 _pkgname=ddutility
 pkgname=ddutility-bin
-pkgver=1.5
-pkgrel=2
+pkgver=1.6
+pkgrel=1
 pkgdesc="Write and Backup Operating System IMG and ISO files on Memory Card or Disk"
 arch=('any')
 license=('custom')
 url="https://www.thefanclub.co.za/how-to/dd-utility-write-and-backup-operating-system-img-and-iso-files-memory-card-or-disk"
-depends=('lsof' 'udevil' 'gksu' 'xz' 'coreutils' 'bash' 'gzip' 'zip' 'zenity')
+depends=('bash' 'coreutils' 'gzip' 'lsof' 'udevil' 'xz' 'zenity' 'zip')
 conflicts=('ddutility-bin-pt-br')
 provides=('ddutility')
-source=("https://raw.githubusercontent.com/thefanclub/dd-utility/master/DEB/${_pkgname}_${pkgver}_all.deb"
-        'fix.patch')
-sha256sums=('49417d46f41550ef1346670269f7d08be499ef4127fca99d762dfb90942ce445'
-            'cb60afa451c48b139599d166a318e937291635864120ad1be8aa7e3c758a719b')
-
-prepare() {
-	tar -xJf data.tar.xz
-	patch -p1 -i ./fix.patch
-}
+options=('!strip' '!emptydirs')
+source=("https://raw.githubusercontent.com/thefanclub/dd-utility/master/DEB/${_pkgname}_${pkgver}_all.deb")
+sha256sums=('bf01d8fc8fafaf76ab751fbcf6b54d75930581e62d602fcaf4cd28fe23579224')
 
 package_ddutility-bin() {
-	cd "$srcdir"
-	# dump usr files to /usr
-	mv usr "$pkgdir"
-	# dump opt files to /opt
-	mv opt "$pkgdir"
+    # Extract package data
+    tar xf data.tar.xz -C "${pkgdir}"
+
+    install -Dm644 "${pkgdir}/usr/share/doc/ddutility/copyright" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
