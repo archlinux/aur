@@ -1,8 +1,3 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
-# Co-Maintainer: Konstantin Gizdov <arch@kge.pw>
-# Contributor: Frederik Schwan <frederik dot schwan at linux dot com>
-# Contributor: Simon Legner <Simon.Legner@gmail.com>
-
 pkgname=bazel026
 pkgver=0.26.1
 pkgrel=1
@@ -12,18 +7,18 @@ license=('Apache')
 url='https://bazel.io/'
 depends=('java-environment=11' 'libarchive' 'zip' 'unzip')
 makedepends=('git' 'protobuf' 'python')
-provides=('bazel')
+provides=("bazel=${pkgver}")
 conflicts=('bazel')
 options=('!distcc' '!strip')
 source=("https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip"
-        "https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip.sig" 18950.patch)
+        "https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip.sig" grpc_rename_gettid.patch)
 sha512sums=('f43f156947c2e9effb1f3ab79235d47d00254103b5a5aac62001008403216b2330c9062ce85d42be4fa582ad52d14ba52a47875df40c58a7e18c391684407574'
             'SKIP' 'SKIP')
 validpgpkeys=('71A1D0EFCFEB6281FD0437C93D5919B448457EE0')
 
 prepare () {
   # https://github.com/bazelbuild/bazel/issues/8666
-  pushd third_party/grpc && patch -p0 -i "$srcdir/18950.patch"
+  pushd third_party/grpc && patch -p0 -i "$srcdir/grpc_rename_gettid.patch"
 }
 
 build() {

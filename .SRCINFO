@@ -12,13 +12,13 @@ pkgbase = bazel026
 	depends = libarchive
 	depends = zip
 	depends = unzip
-	provides = bazel
+	provides = bazel=0.26.1
 	conflicts = bazel
 	options = !distcc
 	options = !strip
 	source = https://github.com/bazelbuild/bazel/releases/download/0.26.1/bazel-0.26.1-dist.zip
 	source = https://github.com/bazelbuild/bazel/releases/download/0.26.1/bazel-0.26.1-dist.zip.sig
-	source = 18950.patch
+	source = grpc_rename_gettid.patch
 	validpgpkeys = 71A1D0EFCFEB6281FD0437C93D5919B448457EE0
 	sha512sums = f43f156947c2e9effb1f3ab79235d47d00254103b5a5aac62001008403216b2330c9062ce85d42be4fa582ad52d14ba52a47875df40c58a7e18c391684407574
 	sha512sums = SKIP
