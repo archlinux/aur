@@ -6,7 +6,7 @@
 
 pkgname=ttf-times-new-roman
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Times New Roman font from Microsoft"
 arch=('any')
 url="http://corefonts.sourceforge.net/"
