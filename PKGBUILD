@@ -5,8 +5,9 @@
 
 _remotename=kdeconnect-kde
 _pkgname=kdeconnect
+_commit=02b38f56
 pkgname=$_pkgname-git
-pkgver=1.3.3.r812.4a6a98d8
+pkgver=20.04.0.r53.02b38f56
 pkgrel=1
 pkgdesc='Adds communication between KDE and your smartphone'
 arch=(x86_64)
@@ -20,7 +21,7 @@ optdepends=('sshfs: remote filesystem browser'
             'python-nautilus: Nautilus integration')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("git+https://invent.kde.org/kde/$_remotename.git")
+source=("git+https://invent.kde.org/kde/$_remotename.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {

@@ -1,6 +1,6 @@
 pkgbase = kdeconnect-git
 	pkgdesc = Adds communication between KDE and your smartphone
-	pkgver = 1.3.3.r812.4a6a98d8
+	pkgver = 20.04.0.r71.9277cc53
 	pkgrel = 1
 	url = https://community.kde.org/KDEConnect
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = kdeconnect-git
 	optdepends = python-nautilus: Nautilus integration
 	provides = kdeconnect
 	conflicts = kdeconnect
-	source = git+https://invent.kde.org/kde/kdeconnect-kde.git
+	source = git+https://invent.kde.org/kde/kdeconnect-kde.git#commit=02b38f56
 	sha256sums = SKIP
 
 pkgname = kdeconnect-git
