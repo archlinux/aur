@@ -6,7 +6,7 @@
 
 pkgname=ppsspp
 pkgver=1.9.4
-pkgrel=4
+pkgrel=5
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
 url=https://www.ppsspp.org/
