@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-tinyxml2
-pkgver=7.1.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc='Simple, small, C++ XML parser that can be easily integrated into other programs (mingw-w64)'
 url="https://github.com/leethomason/tinyxml2"
@@ -10,7 +10,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('staticlibs' '!strip' '!buildflags')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('68ebd396a4220d5a9b5a621c6e9c66349c5cfdf5efaea3f16e3bb92e45f4e2a3')
+sha256sums=('6ce574fbb46751842d23089485ae73d3db12c1b6639cda7721bf3a7ee862012c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
