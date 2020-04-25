@@ -1,18 +1,19 @@
+# Maintainer: Tony Benoy <me@tonybenoy.com>
 # Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: Slithery <aur at slithery dot uk>
 
-_name=linode_api4-python
+_pkgname=linode_api4-python
 pkgname=python-linode-api
-pkgver=2.3.1
-pkgrel=2
+pkgver=2.3.3
+pkgrel=1
 epoch=1
 pkgdesc="Bindings for the Linode API v4"
 arch=('any')
 url="https://github.com/linode/$_name"
 license=('BSD')
 depends=('python-setuptools' 'python-requests')
-source=("${pkgname}-${pkgver}.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('6c7d18398d75103eb12496f19d847e66a6443ce3965a9ab26e02bbe3c9577652')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('f18b31aa9a20e8eba32ed28b0f9ec3382728f2bde70418344f3f915579a0fa74')
 
 
 build () {
