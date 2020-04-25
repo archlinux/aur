@@ -16,13 +16,16 @@ depends=('freeglut' 'glew' 'openal' 'qt5-base' 'qt5-multimedia' 'sdl2')
 makedepends=('cmake' 'glu' 'libxmu')
 conflicts=('yabause-gtk')
 source=("https://download.tuxfamily.org/yabause/releases/${pkgver}/yabause-${pkgver}.tar.gz"
+        'qt-5.11.patch'
         'rwx.patch')
 sha256sums=('4334c43fe0f3ff297bac8e91f4e059fe5fd276291faff2489e37b5b3a4ccc2b2'
+            '5c4f639478567d9a42963420bb6ab4086fd0514e8787c597c7b40804e1946ea6'
             'd29997d3249683081a2687f31e777f917093101d56815d22103aaaf22ac786b1')
 
 prepare() {
   cd yabause-${pkgver}
 
+  patch -Np2 -i ../qt-5.11.patch
   patch -Np1 -i ../rwx.patch
 }
 
