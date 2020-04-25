@@ -2,7 +2,7 @@
 # Contributor: Eric Griffis <dedbox at gmail dot com>
 
 pkgname=twinejs-standalone
-pkgver=2.3.5
+pkgver=2.3.7
 pkgrel=1
 pkgdesc="an open-source tool for telling interactive, nonlinear stories"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("https://github.com/klembot/twinejs/releases/download/${pkgver}/twine_${
         "http://twinery.org/homepage/img/logo.svg"
         "twinejs.desktop")
 
-md5sums=('3b8f6ab227adafdef0f520bbb3d4361b'
+md5sums=('26d6636c7831d2cdaca1ac4087694f3c'
          'c7119a1fb9d65014691b77778e5e5ec7'
          '71705539c71923a8464240a8cb3e567f')
 
