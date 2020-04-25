@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-saharaclient
-pkgver='3.0.0'
+pkgver='3.1.0'
 pkgrel='1'
 pkgdesc='Python client library for Sahara'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python-pbr' 'python-babel' 'python-keystoneauth1' 'python-osc-lib'
 checkdepends=('python-hacking' 'python-mock' 'python-oslotest' 'python-stestr'
               'python-requests-mock')
 source=("https://github.com/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('3cf8f43ce0256aa944760749fecf78bd2f7ee56799e390c0b6c4b64d91f234e9211596fd9fc46dedcd75451d9ec1afa92e5619a184e104ab8747c07b32438cec')
+sha512sums=('9510e493d1fd94b8337ffe2318b1fc46862c13d7214b0eef32514311a80a993233c93bcff86271d86de953d3df43256c5ca12d6682d42fcf12b1f02180ebff4c')
 
 export PBR_VERSION=$pkgver
 
