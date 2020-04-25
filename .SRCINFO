@@ -9,7 +9,6 @@ pkgbase = python-mkdocs-minify-plugin
 	checkdepends = mkdocs>=1.0.4
 	checkdepends = python-htmlmin>=0.1.4
 	checkdepends = python-jsmin>=2.2.2
-	checkdepends = python-pytest
 	makedepends = python-setuptools
 	source = https://files.pythonhosted.org/packages/source/m/mkdocs-minify-plugin/mkdocs-minify-plugin-0.3.0.tar.gz
 	source = https://raw.githubusercontent.com/byrnereese/mkdocs-minify-plugin/master/LICENSE
