@@ -1,9 +1,9 @@
 # Maintainer: trilader <trilader@schroedingers-bit.net>
 pkgname=usbreset
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to reset USB devices"
-arch=('x86_64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://marc.info/?l=linux-usb&m=121459435621262&w=2"
 license=('unknown')
 depends=()
