@@ -4,10 +4,10 @@ pkgdesc="ROS - This package provides a set of simple math utilities to work with
 url='https://wiki.ros.org/angles'
 
 pkgname='ros-melodic-angles'
-pkgver='1.9.11'
+pkgver='1.9.13'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -29,7 +29,7 @@ depends=(
 
 _dir="angles-${pkgver}/angles"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/angles/archive/${pkgver}.tar.gz")
-sha256sums=('c453dc462585320e57e4086f47f3be618ec7a2e83610895ccfdbd31d5d4993f4')
+sha256sums=('0e2982e9e4759614702f18f5c25cb7a0a88d382f4a4fab845ca1587305db2fd6')
 
 build() {
 	# Use ROS environment variables.
