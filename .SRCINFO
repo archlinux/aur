@@ -1,0 +1,31 @@
+pkgbase = beaker-browser-git
+	pkgdesc = Peer-to-peer browser with tools to create and host websites
+	pkgver = 0.8.10.r2.g54651db80
+	pkgrel = 1
+	url = https://beakerbrowser.com/
+	arch = x86_64
+	license = Modified MIT License (MIT)
+	makedepends = git
+	makedepends = nodejs
+	makedepends = jq
+	makedepends = yarn
+	makedepends = libtool
+	makedepends = m4
+	makedepends = make
+	makedepends = gcc
+	depends = gtk3
+	depends = libsodium
+	depends = libxss
+	depends = nss
+	provides = beaker
+	conflicts = beaker
+	options = !strip
+	source = beaker-browser-git::git://github.com/beakerbrowser/beaker.git
+	source = beaker-browser.desktop
+	source = beaker-browser
+	md5sums = SKIP
+	md5sums = 34b48b022c6c71212f0adb3981f2925d
+	md5sums = 09aa78a4ebb98e0c71aeaaf46fd6b11b
+
+pkgname = beaker-browser-git
+

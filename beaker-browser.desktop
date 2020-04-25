@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Beaker Browser
+Comment=Peer-to-peer browser with tools to create and host website
+GenericName=Web Browser
+Exec=/usr/bin/beaker-browser
+Icon=beaker-browser
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Network;WebBrowser;
+Keywords=web;browser;internet;p2p;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/dat;video/webm;application/x-xpinstall;
