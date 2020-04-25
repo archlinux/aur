@@ -27,6 +27,9 @@ prepare() {
 
 build() {
   cd build
+  # not sure why a sed is necessary, the projects travis.yml file does not need
+  # it, see https://github.com/xmoto/xmoto/blob/master/.travis.yml
+  sed -i 's-COMMAND xmoto-COMMAND ../src/xmoto-' ../${pkgbase}/bin/CMakeLists.txt
   cmake ../${pkgbase} -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_SYSTEM_NAME=Linux
   ninja xmoto_pack
 }
