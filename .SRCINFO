@@ -1,6 +1,6 @@
 pkgbase = python-designateclient
 	pkgdesc = Python client library for Designate
-	pkgver = 3.1.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://docs.openstack.org/python-designateclient/
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = python-designateclient
 	depends = python-requests
 	depends = python-six
 	depends = python-stevedore
-	source = https://github.com/openstack/python-designateclient/archive/3.1.0.tar.gz
-	sha512sums = 46f09e13cb632cd32eac171a9a7f3352d4179ce4accd6cd07b0df5e49b4e027a129fff53a78e04825d94a5be5ad60ea4a372440c0eb12a93d2bec96d93ea065d
+	source = https://github.com/openstack/python-designateclient/archive/4.0.0.tar.gz
+	sha512sums = 1f0b3cc0edadd7de245ceba2e72056927f3d7d91a86d751389cde1702f7950b4eb93b2243292a786aecfa108bb0a032072f39d250c05513eeb937538d0227de8
 
 pkgname = python-designateclient
 
