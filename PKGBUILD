@@ -6,7 +6,7 @@
 pkgname=postgresql-93-upgrade
 pkgver=9.3.25
 _majorver=${pkgver%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc="PostgreSQL build for migrating between major versions with pg_upgrade"
 url="http://www.postgresql.org/"
 arch=('i686' 'x86_64')

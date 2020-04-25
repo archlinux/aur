@@ -1,7 +1,7 @@
 pkgbase = postgresql-93-upgrade
 	pkgdesc = PostgreSQL build for migrating between major versions with pg_upgrade
 	pkgver = 9.3.25
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.postgresql.org/
 	arch = i686
 	arch = x86_64
