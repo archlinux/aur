@@ -3,7 +3,7 @@
 
 pkgname=grav-admin
 pkgver=1.7.0.rc.8
-pkgrel=8
+pkgrel=1
 pkgdesc="Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS (with Admin plugin)"
 arch=("any")
 url="https://getgrav.org"

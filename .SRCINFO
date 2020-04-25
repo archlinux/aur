@@ -1,7 +1,7 @@
 pkgbase = grav-admin
 	pkgdesc = Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS (with Admin plugin)
 	pkgver = 1.7.0.rc.8
-	pkgrel = 8
+	pkgrel = 1
 	url = https://getgrav.org
 	install = grav.install
 	arch = any
