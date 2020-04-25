@@ -15,7 +15,7 @@ replaces=('marp')
 options=('!strip')
 source=("https://registry.npmjs.org/@marp-team/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('54391a74faac903309a6e030837044ce0690e9881642c5fa20f9ed801d552c76')
+sha256sums=('f5d05da0246bdce313d4afa876b14b02c22d9c8a0544365f94ea6bb80cbd6c25')
 
 package() {
     npm install -g --user root --prefix "${pkgdir}/usr" --cache "${srcdir}/npm-cache" "${srcdir}/${pkgname}-${pkgver}.tgz"
