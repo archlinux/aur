@@ -1,6 +1,6 @@
 pkgbase = librime-lua-git
 	pkgdesc = Rime input method engine with Lua plugin
-	pkgver = 1.5.3.r74.f215a04
+	pkgver = 1.5.3.r75.f215a04
 	pkgrel = 1
 	url = https://github.com/hchunhui/librime-lua
 	arch = x86_64

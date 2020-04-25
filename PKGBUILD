@@ -2,7 +2,7 @@
 
 pkgname=librime-lua-git
 _pkgname=librime
-pkgver=1.5.3.r74.f215a04
+pkgver=1.5.3.r75.f215a04
 _pkgver=1.5.3
 pkgrel=1
 pkgdesc="Rime input method engine with Lua plugin"
