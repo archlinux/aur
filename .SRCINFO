@@ -1,7 +1,7 @@
 pkgbase = python-gitlab-registry-usage
 	pkgdesc = A package for querying the size of repositories in a GitLab registry.
-	pkgver = 0.2.6
-	pkgrel = 2
+	pkgver = 0.2.7
+	pkgrel = 1
 	url = https://github.com/sciapp/gitlab-registry-usage
 	arch = any
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = python-gitlab-registry-usage
 	depends = python
 	depends = python-pyopenssl
 	depends = python-requests
-	source = https://github.com/sciapp/gitlab-registry-usage/archive/v0.2.6.tar.gz
-	sha256sums = 927f814926df1abd8c5ccda31bbb06d54f4a7e9d74922bcdc507ddc801122a6c
+	source = https://github.com/sciapp/gitlab-registry-usage/archive/v0.2.7.tar.gz
+	sha256sums = 51e899baef01afb20585c388a56a2dc76fcd98aa3c2af0d50048bd10d61a2ecf
 
 pkgname = python-gitlab-registry-usage
 
