@@ -1,39 +1,43 @@
-# Maintainer: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
+# Maintainer: motte <ettom22 at hotmail dot com>
+# Contributor: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
 
 _pkgname=ddcutil
 pkgname=ddcutil-git
-pkgver=v0.7.2.r0.g02a0433
+pkgver=v0.9.8.r262.g4685e63c
 pkgrel=1
 pkgdesc='Query and change Linux monitor settings using DDC/CI and USB (development version).'
 url='http://ddcutil.com/'
-license=('GPL')
-source=('git+https://github.com/rockowitz/ddcutil')
+license=('GPL2')
+source=('git+https://github.com/rockowitz/ddcutil.git#branch=0.9.9-dev')
 sha256sums=('SKIP')
 arch=('i686' 'x86_64')
 
+depends=(
+  'libdrm'
+  'libusb'
+  'glib2'
+  'libdrm'
+  'libgudev'
+  'libxrandr')
+
+makedepends=(
+  'git'
+)
+
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-
-  # Get the version number.
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
-
-  # Generate the build configuration.
   ./autogen.sh
-  # Configure the build.
   ./configure --prefix=/usr
-
-  # Build it!
   make
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
-
-  # Install the program.
   make DESTDIR="${pkgdir}" install
 }
 
