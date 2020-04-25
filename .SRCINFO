@@ -1,6 +1,6 @@
 pkgbase = python-django-geojson
 	pkgdesc = django-geojson is a collection of helpers to (de)serialize (Geo)Django objects into GeoJSON.
-	pkgver = 2.12.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/django-geojson
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-django-geojson
 	makedepends = python-distribute
 	depends = python
 	depends = python-django
-	source = https://github.com/makinacorpus/django-geojson/archive/2.12.0.tar.gz
-	md5sums = 3a4f5204882c4570d358e856d19216cc
+	source = https://github.com/makinacorpus/django-geojson/archive/3.0.0.tar.gz
+	md5sums = 70305521f352329479ec9a10e16e22f4
 
 pkgname = python-django-geojson
 
