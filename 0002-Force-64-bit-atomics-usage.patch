@@ -1,0 +1,33 @@
+--- a/qtbase/src/corelib/configure.json	2020-03-27 06:49:31.000000000 -0300
++++ b/qtbase/src/corelib/configure.json	2020-04-24 19:15:38.820283504 -0300
+@@ -135,27 +135,17 @@
+             "label": "64 bit atomics",
+             "test": {
+                 "tail": [
+-                    "void test(volatile std::atomic<std::int64_t> &a)",
++                    "void test()",
+                     "{",
+-                    "    std::int64_t v = a.load(std::memory_order_acquire);",
+-                    "    while (!a.compare_exchange_strong(v, v + 1,",
+-                    "                                      std::memory_order_acq_rel,",
+-                    "                                      std::memory_order_acquire)) {",
+-                    "        v = a.exchange(v - 1);",
+-                    "    }",
+-                    "    a.store(v + 1, std::memory_order_release);",
+                     "}"
+                 ],
+                 "main": [
+-                    "void *ptr = (void*)0xffffffc0; // any random pointer",
+-                    "test(*reinterpret_cast<std::atomic<std::int64_t> *>(ptr));"
++                    "test();"
+                 ],
+                 "qmake": "CONFIG += c++11"
+             },
+-            "headers": [ "atomic", "cstdint" ],
+             "sources": [
+-                "",
+-                "-latomic"
++                ""
+             ]
+         },
+         "librt": {
