@@ -6,7 +6,7 @@
 
 pkgname=xmltv
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of utilities to download tv listings and format them in xml"
 arch=('any')
 url="http://xmltv.org/wiki/"
@@ -21,8 +21,20 @@ depends=('perl-archive-zip' 'perl-datetime' 'perl-date-manip'
   'perl-xml-dom' 'perl-xml-libxml' 'perl-xml-libxslt' 'perl-xml-simple'
   'perl-xml-twig' 'perl-xml-writer' 'perl-parse-recdescent' 'perl-cgi'
   'perl-xml-treepp' 'perl-datetime-format-iso8601' 'perl-json')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/XMLTV/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('02968d596040f43244fbff7b08618a38247a086e94f5e4e55f113f44d9b04353')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/XMLTV/${pkgname}/archive/v${pkgver}.tar.gz"
+  https://github.com/XMLTV/xmltv/commit/9fd054bc5825da55b6bc45c8bedd23076115e081.patch
+)
+sha256sums=('02968d596040f43244fbff7b08618a38247a086e94f5e4e55f113f44d9b04353'
+            '678b37bb86fbf1f19da171481204edac1293d38775dd115a04154964746b137d')
+
+prepare(){
+  # patch for fixing an error after XML::Parser change
+  # see upstream https://github.com/XMLTV/xmltv/commit/9fd054bc5825da55b6bc45c8bedd23076115e081
+  # the change in XML::Parser is this: https://github.com/toddr/XML-Parser/commit/5ccabfc66adfb79ed75dc5bb2101d30f62d34706
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -p1 < "$srcdir"/9fd054bc5825da55b6bc45c8bedd23076115e081.patch
+}
 
 build() {
   cd "$pkgname-$pkgver"
