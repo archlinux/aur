@@ -5,7 +5,7 @@ pkgname=("python-${_pyname}" "python-${_pyname}-doc")
 pkgver=0.9.1
 pkgrel=1
 pkgdesc="A package for functionality like IRAF's imexamine"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://imexam.readthedocs.io"
 license=('BSD' 'MIT')
 makedepends=('cython' 'python-setuptools-scm' 'xpa' 'python-sphinx-astropy' 'python-ginga' 'python-photutils')
@@ -33,7 +33,7 @@ build() {
     msg "Building Docs"
 #   python setup.py build_sphinx
     cd ${srcdir}/${_pyname}-${pkgver}/docs
-    PYTHONPATH="../build/lib.linux-x86_64-${_pyver}" make html
+    PYTHONPATH="../build/lib.linux-${CARCH}-${_pyver}" make html
 }
 
 check() {
