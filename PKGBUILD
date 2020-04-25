@@ -25,7 +25,7 @@ prepare(){
 package() {
 	cd "$srcdir/$pkgname"
 	install -Dm0644 -t "$pkgdir/usr/share/applications" "xfce4-sysinfo.desktop"
-	install -Dm0644 -t "$pkgdir/usr/share" "xfce4-sysinfo"
+	install -Dm0644 -t "$pkgdir/usr/share/xfce4-sysinfo" "xfce4-sysinfo/*"
 	install -Dm0755 -t "$pkgdir/usr/bin" "sysinfo"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
