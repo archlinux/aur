@@ -16,8 +16,9 @@ pkgbase = gonic
 	source = gonic.sysusers
 	source = gonic.tmpfiles
 	md5sums = 101f627184c59a01162ccd02a7628e90
-	md5sums = 4b9fae63f961fe8dc230a1e415e50d67
+	md5sums = ba8a59387a281b19cc4c09916e5fe731
 	md5sums = 6ca6715be2cdd424846f7b37b98905f6
+	md5sums = 487fe9a172e33d86514cf3dbb3b629b8
 
 pkgname = gonic
 
