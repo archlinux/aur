@@ -1,49 +1,47 @@
-# Maintainer: David McInnis <dave@dave3.xyz>
+# $Id$
+# Contributor: Ivailo Monev <xakepa10@gmail.com>
+# Contributor: David McInnis <dave@dave3.xyz>
 # Contributor: Charles Bos <charlesbos1 AT gmail>
 # Contributor: Fabian Kosmale <0inkane@googlemail.com>
 # Contributor: Giuseppe Calà <jiveaxe@gmail.com>
 # Contributor: alejandronova
 
+# Based on Katana's project PKGBUILD by Ivailo Monev
+
 pkgname=strigi
-pkgver=0.7.8
-pkgrel=11
-pkgdesc="Fast crawling desktop search engine with Qt4 GUI"
-arch=('x86_64')
-url="http://www.vandenoever.info/software/strigi/"
-license=('GPL2')
-depends=('bzip2' 'exiv2' 'libxml2' 'boost-libs' 'ffmpeg')
-makedepends=('qt4' 'cmake' 'boost')
-source=("http://www.vandenoever.info/software/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
-        "gcc48.patch"
-        "ffmpeg3.patch")
-md5sums=('d69443234f4286d71997db9de543331a'
-         'd48d65014650644ba61821813101c2f4'
-         'dd55602c70e8931af12ec803574789e2')
+pkgver=0.8.0.r18.e017dc9
+pkgrel=1
+pkgdesc="File indexing and file search framework adopted by KDE"
+arch=('i486' 'i686' 'pentium4' 'x86_64' 'arm')
+url='http://fluxer.github.io/katana/'
+license=('LGPL')
+depends=('ffmpeg' 'exiv2')
+makedepends=('cmake' 'git')
+source=("git+https://github.com/fluxer/strigi.git")
+sha1sums=('SKIP')
+
+export CFLAGS="${CFLAGS} -flto" CXXFLAGS="${CXXFLAGS} -flto"
+
+pkgver() {
+    cd strigi
+    printf "0.8.0."r%s.%s "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 -i "${srcdir}/ffmpeg3.patch"
-  cd libstreams
-  patch -p1 -i "${srcdir}"/gcc48.patch
+    mkdir -p build
 }
 
 build() {
-  mkdir build; cd build
-  cmake ../${pkgname}-${pkgver} \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DENABLE_INOTIFY=ON \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DENABLE_LOG4CXX=OFF \
-    -DENABLE_FAM=OFF \
-    -DENABLE_CLUCENE=OFF \
-    -DENABLE_CLUCENE_NG=OFF \
-    -DENABLE_FFMPEG=ON \
-    -DFORCE_DEPS=ON
-  make
+    cd build
+    cmake ../strigi \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_SKIP_INSTALL_RPATH=ON \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib
+    make
 }
 
 package() {
-  cd build/
-  make DESTDIR="${pkgdir}" install
+    cd build
+    make DESTDIR="${pkgdir}" install
 }

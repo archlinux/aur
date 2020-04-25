@@ -1,24 +1,20 @@
 pkgbase = strigi
-	pkgdesc = Fast crawling desktop search engine with Qt4 GUI
-	pkgver = 0.7.8
-	pkgrel = 11
-	url = http://www.vandenoever.info/software/strigi/
+	pkgdesc = File indexing and file search framework adopted by KDE
+	pkgver = 0.8.0.r18.e017dc9
+	pkgrel = 1
+	url = http://fluxer.github.io/katana/
+	arch = i486
+	arch = i686
+	arch = pentium4
 	arch = x86_64
-	license = GPL2
-	makedepends = qt4
+	arch = arm
+	license = LGPL
 	makedepends = cmake
-	makedepends = boost
-	depends = bzip2
-	depends = exiv2
-	depends = libxml2
-	depends = boost-libs
+	makedepends = git
 	depends = ffmpeg
-	source = http://www.vandenoever.info/software/strigi/strigi-0.7.8.tar.bz2
-	source = gcc48.patch
-	source = ffmpeg3.patch
-	md5sums = d69443234f4286d71997db9de543331a
-	md5sums = d48d65014650644ba61821813101c2f4
-	md5sums = dd55602c70e8931af12ec803574789e2
+	depends = exiv2
+	source = git+https://github.com/fluxer/strigi.git
+	sha1sums = SKIP
 
 pkgname = strigi
 
