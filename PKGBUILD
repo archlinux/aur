@@ -1,8 +1,8 @@
 
 pkgname=python-django-leaflet
 _pkgname=django-leaflet
-pkgver=0.24.0
-_pkgver=0.24.0
+pkgver=0.26.0
+_pkgver=0.26.0
 pkgrel=1
 pkgdesc="django-leaflet allows you to use Leaflet in your Django projects."
 arch=(any)
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('python' 'python-django')
 makedepends=('python-distribute')
 source=(https://github.com/makinacorpus/$_pkgname/archive/$_pkgver.tar.gz)
-md5sums=('6abece6fcd7c110b5800440465d2d434')
+md5sums=('1a743faa9389d01d5e6f83d2616b53c6')
 
 build() {
   cd "$_pkgname-$_pkgver"
