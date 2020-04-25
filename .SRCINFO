@@ -1,7 +1,7 @@
 pkgbase = devc
 	pkgdesc = A CLI tool to manage your devcontainers using docker-compose
 	pkgver = 0.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.karolak.fr/nicolas/devc
 	arch = x86_64
 	license = GPL3

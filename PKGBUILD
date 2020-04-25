@@ -6,7 +6,7 @@ pkgdesc="A CLI tool to manage your devcontainers using docker-compose"
 arch=('x86_64')
 url="https://git.karolak.fr/nicolas/devc"
 license=('GPL3')
-depends=('podman-compose')
+depends=('docker-compose')
 makedepends=(
 	'make'
 	'go'
