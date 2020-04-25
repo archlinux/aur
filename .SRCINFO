@@ -1,6 +1,6 @@
 pkgbase = rofi-git
 	pkgdesc = A window switcher, run dialog and dmenu replacement
-	pkgver = 1.5.2.r3.g9465d189
+	pkgver = 1.5.4.r102.g151547a9
 	pkgrel = 1
 	url = https://github.com/DaveDavenport/rofi/
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = rofi-git
 	depends = cairo
 	depends = flex
 	depends = freetype2
+	depends = libjpeg
 	depends = librsvg
 	depends = libx11
 	depends = libxcb

@@ -6,17 +6,17 @@
 # Contributor: Sean Pringle <sean.pringle@gmail.com>
 # Contributor: SanskritFritz (gmail)
 
-pkgname='rofi-git'
-pkgver=1.5.2.r3.g9465d189
+pkgname=rofi-git
+pkgver=1.5.4.r102.g151547a9
 pkgrel=1
 pkgdesc='A window switcher, run dialog and dmenu replacement'
 arch=('x86_64')
 url='https://github.com/DaveDavenport/rofi/'
 license=('MIT')
 depends=(
-  'cairo' 'flex' 'freetype2' 'librsvg' 'libx11' 'libxcb' 'libxdg-basedir'
-  'libxft' 'libxkbcommon' 'libxkbcommon-x11' 'pango' 'startup-notification'
-  'xcb-util' 'xcb-util-wm' 'xcb-util-xrm'
+  'cairo' 'flex' 'freetype2' 'libjpeg' 'librsvg' 'libx11' 'libxcb'
+  'libxdg-basedir' 'libxft' 'libxkbcommon' 'libxkbcommon-x11' 'pango'
+  'startup-notification' 'xcb-util' 'xcb-util-wm' 'xcb-util-xrm'
 )
 makedepends=('git' 'meson' 'ninja')
 checkdepends=('check')
