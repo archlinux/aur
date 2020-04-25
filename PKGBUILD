@@ -1,5 +1,5 @@
 pkgname=mingw-w64-laz-perf
-pkgver=1.3.0
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='Alternative LAZ implementation for C++ and JavaScript (mingw-w64)'
 arch=('any')
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/hobu/laz-perf/archive/${pkgver}.tar.gz")
-sha512sums=('4e6e5197a90bf98fe6784a56e940070ad640ee2791443b9232960fd0f7639cc8d48d5c13df0cfc228e6be5fccd600afb1c171cb5e127bd874688e0ab231c25a8')
+sha512sums=('2d1016c7d477be2264a9df57b0df822d1e40de033763f12caba0b8a7267826f3278fdfadc81d6ee800a6110af1a53ed9c11ca8173b10dc6b848697c20a70b6eb')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
