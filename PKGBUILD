@@ -8,6 +8,7 @@ url='https://bazel.io/'
 depends=('java-environment=11' 'libarchive' 'zip' 'unzip')
 makedepends=()
 provides=("bazel=${pkgver}")
+provides=("bazel")
 conflicts=('bazel')
 options=('!strip')
 source=("https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-installer-linux-x86_64.sh")
