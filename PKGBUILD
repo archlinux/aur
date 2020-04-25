@@ -1,6 +1,6 @@
-# Maintainer: Cosku Bas <cosku.bas@gmail.com>
+# Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
 
-pkgname=trenchbroom
+pkgname=trenchbroom-git
 pkgver=v2020.1.RC1.r5.ga817c7bb8
 pkgrel=1
 pkgdesc="TrenchBroom is a modern cross-platform level editor for Quake-engine based games."
