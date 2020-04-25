@@ -7,7 +7,7 @@
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
 pkgver=0.5.0rc1.r26.g6cb3ca41d
-pkgrel=2
+pkgrel=3
 pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
 arch=('i686' 'x86_64' 'armv7h')
@@ -21,9 +21,9 @@ source=("git+${url}.git"
 	"ipfs.service"
 	"ipfs@.service")
 
-sha512sums=('SKIP'
-            '1a6bc7fffc3c3640cda3f33c107424edd698c62bd8509731856b8827ea18be1a1845ef0d5ca15325d48d7d871a78daacc011ff9eacea926bc35899850990c1c6'
-            'aed168a35228c4f873e0040d1412f3568bfe1ad1e94ffb8b1a2507058daaf75d7346381d299cf9f0b91951b21553170249ff5f45d5fc060e711cf628ab5e5aad')
+b2sums=('SKIP'
+	'd3463151a9f209784a6bf8fb91b0001d19c1c91732430d5d3744cbb861e3ca80fd18fe481ef3ef91061a6f59931dbcf8d063f50a319ab1bb2a2c1ba0ac9175f1'
+	'364d9043d1df256af620b52a967c45d8324f0a5b05879466b95f03f3871531678b521140e3a4fe746f9f9b1d171050ab08320628860967176344c968ba7ddae7')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
