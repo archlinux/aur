@@ -1,6 +1,6 @@
 pkgbase = compiz-core-git
 	pkgdesc = This is the latest git release of Compiz without DE deps
-	pkgver = 0.8.14.r43.g09b96469
+	pkgver = 0.8.18.r0.gae031701
 	pkgrel = 1
 	url = https://gitlab.com/compiz/compiz-core
 	arch = i686
@@ -48,7 +48,7 @@ pkgname = compiz-core-git
 	depends = hicolor-icon-theme
 	depends = libxi
 	depends = libxcursor
-	provides = compiz-core=0.8.14.r43.g09b96469
+	provides = compiz-core=0.8.18.r0.gae031701
 	conflicts = compiz
 	conflicts = compiz-core
 
@@ -64,6 +64,6 @@ pkgname = compiz-gtk-git
 	depends = libxcomposite
 	depends = libxinerama
 	depends = compiz-core-git
-	provides = compiz-gtk=0.8.14.r43.g09b96469
+	provides = compiz-gtk=0.8.18.r0.gae031701
 	conflicts = compiz-gtk
 

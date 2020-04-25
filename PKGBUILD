@@ -12,7 +12,7 @@ _upstream="compiz-core"
 
 pkgbase=compiz-core-git
 pkgname=(compiz-core-git compiz-gtk-git)
-pkgver=0.8.14.r43.g09b96469
+pkgver=0.8.18.r0.gae031701
 pkgrel=1
 pkgdesc="This is the latest git release of Compiz without DE deps"
 url="https://gitlab.com/compiz/${_upstream}"
@@ -46,24 +46,24 @@ if (("${_use_marco}" == 1));then
   _configure_opts+=("--enable-marco")
   makedepends+=("marco")
   _use_gtk3=1
-  msg "Marco theme support enabled with GTK+3"
+  echo "Marco theme support enabled with GTK+3" >&2
 elif (("${_use_marco}" == 2));then
   _configure_opts+=("--enable-marco")
   makedepends+=("marco-gtk2")
   _use_gtk3=0
-  msg "Marco theme support enabled with GTK+2"
+  echo "Marco theme support enabled with GTK+2" >&2
 else
   _configure_opts+=("--disable-marco")
-  msg "Marco theme support disabled, rebuild with _use_marco=1 in the PKGBUILD if you want it"
-  msg "Rebuild with _use_marco=2 in the PKGBUILD if you have marco-gtk2"
+  echo "Marco theme support disabled, rebuild with _use_marco=1 in the PKGBUILD if you want it" >&2
+  echo "Rebuild with _use_marco=2 in the PKGBUILD if you have marco-gtk2" >&2
 fi
 
 if (("${_use_gtk3}" >= 1)); then
 	_configure_opts+=("--with-gtk=3.0")
-	msg "Using GTK+3 for gtk-window-decorator"
+	echo "Using GTK+3 for gtk-window-decorator" >&2
 else
 	_configure_opts+=("--with-gtk=2.0")
-	msg "Using GTK+2 for gtk-window-decorator"
+	echo "Using GTK+2 for gtk-window-decorator" >&2
 fi
 
 pkgver() {
@@ -80,7 +80,7 @@ build()
 
   if ! grep -q pkg_cv_GTK config.log;then
     # make sure only compiz-core-git is created if gtk is missing
-    msg "Making sure only $pkgbase is made, gtk+2 or gtk+3 is missing"
+    echo "Making sure only $pkgbase is made, gtk+2 or gtk+3 is missing" >&2
     pkgname=("$pkgbase")
   fi
 
