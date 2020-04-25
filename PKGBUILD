@@ -2,7 +2,7 @@
 
 pkgname=python-av1an-git
 pkgver=1.8.r1.g5b2ee83
-pkgrel=1
+pkgrel=2
 pkgdesc='All-in-one tool for streamlining av1 encoding'
 arch=('x86_64')
 url='https://github.com/master-of-zen/Av1an'

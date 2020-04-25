@@ -1,12 +1,19 @@
 pkgbase = python-av1an-git
 	pkgdesc = All-in-one tool for streamlining av1 encoding
 	pkgver = 1.8.r1.g5b2ee83
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/master-of-zen/Av1an
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
 	depends = python>=3.7.0
+	depends = python-numpy
+	depends = python-scenedetect
+	depends = opencv
+	depends = python-tqdm
+	depends = python-psutil
+	depends = python-scipy
+	depends = python-matplotlib
 	depends = ffmpeg
 	optdepends = aom: Aomenc encoder support
 	optdepends = svt-av1: SVT-AV1 encoder support
