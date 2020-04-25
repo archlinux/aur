@@ -1,6 +1,6 @@
 pkgbase = fahviewer-beta
 	pkgdesc = A Folding@home 3D simulation viewer
-	pkgver = 7.6.11
+	pkgver = 7.6.12
 	pkgrel = 1
 	url = https://foldingathome.org/
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = fahviewer-beta
 	conflicts = fahviewer
 	options = !docs
 	options = !libtool
-	source = https://download.foldingathome.org/releases/beta/release/fahviewer/debian-stable-64bit/v7.6/fahviewer_7.6.11-64bit-release.tar.bz2
-	sha256sums = 95051fce3d3ae9900d2e396c7f4ff4772db9c61745c0268905f4a5d4e4d391b7
+	source = https://download.foldingathome.org/releases/beta/release/fahviewer/debian-stable-64bit/v7.6/fahviewer_7.6.12-64bit-release.tar.bz2
+	sha256sums = e16bfbfad6671a4912b6b84ba6e051a68223b81721bc6b8300ccb7c9b7d16596
 
 pkgname = fahviewer-beta
 
