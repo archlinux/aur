@@ -1,27 +1,32 @@
-_pkgname="mavproxy"
-pkgname="$_pkgname-git"
-pkgver=r2212.dfbc22d0
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+
+pkgname=mavproxy-git
+pkgver=r2216.435a1b06
 pkgrel=1
 pkgdesc='MAVLink proxy and command line ground station.'
 arch=('any')
-url='https://dronecode.github.io/MAVProxy/html/index.html'
+url='http://ardupilot.github.io/MAVProxy/html/index.html'
 license=('GPL3')
-depends=('python-pymavlink')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=('git+https://github.com/Dronecode/MAVProxy.git')
-md5sums=('SKIP')
+depends=(python python-pymavlink)
+makedepends=(python python-setuptools)
+provides=(mavproxy)
+conflicts=(mavproxy)
+source=('git+https://github.com/ArduPilot/MAVProxy.git')
+sha256sums=('SKIP')
 
-_srcdir='MAVProxy'
+_pkgname='MAVProxy'
 
 pkgver() {
-  cd "$_srcdir"
+  cd "${srcdir}/${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-  cd "$_srcdir"
-  python setup.py install --root="$pkgdir" --optimize=1
+build() {
+  cd "${srcdir}/${_pkgname}"
+  python setup.py build
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+  cd "${srcdir}/${_pkgname}"
+  python setup.py install --root="$pkgdir" --optimize=1
+}
