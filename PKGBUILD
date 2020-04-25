@@ -34,9 +34,9 @@ build() {
 package() {
 
     make -C build DESTDIR="$pkgdir" install
-    
+
     cd "$_pkgname"
-    
+
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
