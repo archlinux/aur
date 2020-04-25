@@ -65,6 +65,7 @@ optdepends=(
 'pdfarranger'
 'jpdfbookmarks'
 'okular'
+'krop'
 )
 
 package() {
