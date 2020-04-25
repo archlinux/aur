@@ -1,6 +1,6 @@
 # Maintainer: Librewish <librewish@gmail.com>
-# Maintainer: Philip Müller <philm[at]manjaro[dog]org>
-# Maintainer: Roland Singer <roland[at]manjaro[dog]org>
+# Contributer : Philip Müller <philm[at]manjaro[dog]org>
+# Contributer : Roland Singer <roland[at]manjaro[dog]org>
 
 pkgname=('mhwd-ati')
 pkgver=19.1.0
