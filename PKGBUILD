@@ -1,14 +1,17 @@
 _pkgname=cri-o
 pkgname=cri-o-git
 pkgver=20200426
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Container Initiative-based implementation of Kubernetes Container Runtime Interface'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url='https://github.com/cri-o/cri-o'
 license=(Apache)
+provides=('cri-o')
+conflicts=('cri-o')
 makedepends=(go go-md2man ostree git)
-depends=(conmon cni-plugins-bin runc skopeo)
-backup=('etc/crio/crio.conf', 'etc/crictl.yaml')
+depends=(conmon cni-plugins runc skopeo)
+optdepends=('crictl: Container management')
+backup=('etc/crio/crio.conf' 'etc/crictl.yaml')
 source=("${_pkgname}::git+https://github.com/cri-o/cri-o")
 sha256sums=('SKIP')
 
@@ -30,7 +33,7 @@ build() {
 	./bin/crio --selinux=true \
 		--storage-driver=overlay \
 		--conmon /usr/bin/conmon \
-		--cni-plugin-dir /opt/cni/bin \
+		--cni-plugin-dir /usr/lib/cni \
 		--cgroup-manager=systemd config > crio.conf
 }
 
