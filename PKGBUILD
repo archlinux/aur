@@ -2,7 +2,7 @@
 
 pkgname="python-flake8-sql"
 _pkgname=flake8-sql
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Plugin that checks SQL code against opinionated style rules."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('flake8')
 replaces=('flake8-sql')
 provides=('flake8-sql')
 source=("https://github.com/pgjones/flake8-sql/archive/$pkgver.tar.gz")
-md5sums=('1cde8e06c25aec0a415c32aafd8567f3')
+md5sums=('2068ed9edba616d42a9e67d0391e2d29')
 
 build() {
     cd "${_pkgname}-${pkgver}"
