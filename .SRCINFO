@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-stb-git
+	pkgdesc = single-file public domain (or MIT licensed) libraries for C/C++ (mingw-w64)
+	pkgver = r1865.f54acd4
+	pkgrel = 1
+	url = https://github.com/nothings/stb
+	arch = any
+	license = public domain
+	license = MIT
+	makedepends = git
+	provides = mingw-w64-stb
+	conflicts = mingw-w64-stb
+	source = git+https://github.com/nothings/stb.git
+	sha256sums = SKIP
+
+pkgname = mingw-w64-stb-git
+
