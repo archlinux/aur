@@ -5,31 +5,19 @@
 # Contributor: serp <serp256 at gmail dot com>
 _projectname='lwt'
 pkgname="ocaml-$_projectname"
-pkgver='5.2.0'
-pkgrel='2'
+pkgver='5.3.0'
+pkgrel='1'
 pkgdesc='A library for cooperative threads in OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocsigen/lwt"
 license=('MIT')
-depends=('libev' 'ocaml>=4.02.0' 'ocaml-mmap>=1.1.0' 'ocaml-ocplib-endian' 'ocaml-result' 'ocaml-seq' 'ocaml-migrate-parsetree>=1.5.0' 'ocaml-ppx_tools_versioned>=5.3.0' 'ocaml-react>=1.0.0')
-makedepends=('cppo>=1.1.0' 'dune>=1.7.0')
+depends=('dune-configurator' 'libev' 'ocaml>=4.02.0' 'ocaml-mmap>=1.1.0' 'ocaml-ocplib-endian' 'ocaml-result' 'ocaml-seq' 'ocaml-migrate-parsetree>=1.5.0' 'ocaml-ppx_tools_versioned>=5.3.0' 'ocaml-react>=1.0.0')
+makedepends=('cppo>=1.1.0' 'dune>=1.8.0')
 options=('!strip')
-source=(
-	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz"
-	'no-bisect_ppx.diff'
-)
-sha256sums=('97c12b3da3d0db019dbdb97950b72f6fd1226ded7519c36ebfe2787574a9b132'
-            '23de90bf80e7985b5749043c2dddd913bf9a1c3f08fe7a8a86b5e542aa46e279')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('38ce928378a07b685f4606b60cbe37c26ef93ccb3e808c218e7d34ece9e659ad')
 
 _sourcedirectory="$_projectname-$pkgver"
-
-prepare() {
-	cd "$srcdir/$_sourcedirectory/"
-	# This is currently the only way to not have a runtime bisect_ppx dep
-	# https://github.com/aantron/bisect_ppx#dune
-	# https://github.com/ocaml/dune/issues/57
-	patch --forward -p1 < '../no-bisect_ppx.diff'
-}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
