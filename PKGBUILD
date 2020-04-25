@@ -14,14 +14,9 @@ provides=("sauce-finder")
 source=("${_pkgname}::git+https://gitlab.com/miicat/${_pkgname}")
 md5sums=("SKIP")
 
-pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
-}
-
 build() {
 	cd "${srcdir}/${_pkgname}"
-	git checkout production
+	git checkout v2.2.0
 	python setup.py build
 }
 
