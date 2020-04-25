@@ -5,7 +5,7 @@ _author=isac322
 _pkgname=tcafe-attending-bot
 pkgname=python-${_pkgname}
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Auto attending bot for TCafe'
 arch=('any')
 url="https://github.com/$_author/$_pkgname"
@@ -20,7 +20,7 @@ source=(
 md5sums=(
   '912e3da851514b72e7e9d6529be33e19'
   'b5220259c812f40008c32ba2197eaaa6'
-  '92f1e03e3305dd4b1ed4c5fc86f22d95'
+  'python-tcafe-attending-bot'
 )
 
 build() {

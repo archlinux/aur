@@ -3,8 +3,8 @@ Description=TCafe auto attender timer
 
 [Timer]
 OnCalendar=daily
-AccuracySec=6h
+RandomizedDelaySec=2h
 Persistent=yes
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=timers.target
