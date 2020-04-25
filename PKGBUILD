@@ -3,7 +3,7 @@
 # Contributor: alium
 
 pkgname=televize
-pkgver=26
+pkgver=28
 pkgrel=1
 pkgdesc="CLI aplication to watch mainly Czech television streams"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('bash' 'wget' 'grep' 'sed' 'ctstream')
 optdepends=('mplayer: for MPlayer backend' 'mpv: for MPV backend')
 source=(http://xpisar.wz.cz/${pkgname}/${pkgname}-${pkgver})
-sha256sums=('09d8706613e158f55814e667561f0d320617012a945a7b4894dc87e7af424291')
+sha256sums=('7ad80472ae82c3d2d66322ff8849582b7a643fff80f6e41df29e9c1d9db3aa74')
 
 package() {
   cd "${srcdir}"
