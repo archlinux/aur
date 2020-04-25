@@ -51,6 +51,7 @@ pkgbase = nginx-zest-git
 
 pkgname = nginx-zest-git
 	pkgdesc = NGINX with beefed up security and performance
+	depends = brotli
 	depends = geoip
 	depends = gzip
 	depends = libatomic_ops

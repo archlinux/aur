@@ -185,6 +185,7 @@ package_nginx-zest-git()
 {
 	pkgdesc="NGINX with beefed up security and performance"
 	depends=(
+		"brotli"
 		"geoip"
 		"gzip"
 		"libatomic_ops"
