@@ -1,7 +1,7 @@
 # Maintainer: Auteiy <dmitry@auteiy.me>
 
 pkgname=kotatogram-desktop-bin
-pkgver=1.2.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts. - Static binaries"
 arch=(x86_64)
@@ -33,11 +33,17 @@ source=(
 
 	https://raw.githubusercontent.com/kotatogram/kotatogram-desktop/k$pkgver/lib/xdg/kotatogramdesktop.desktop
 	
-	$url/raw/k$pkgver/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png
+	icon16-$pkgver-$pkgrel.png::$url/raw/k$pkgver/Telegram/Resources/art/icon16.png
+	icon32-$pkgver-$pkgrel.png::$url/raw/k$pkgver/Telegram/Resources/art/icon32.png
+	icon48-$pkgver-$pkgrel.png::$url/raw/k$pkgver/Telegram/Resources/art/icon48.png
+	icon64-$pkgver-$pkgrel.png::$url/raw/k$pkgver/Telegram/Resources/art/icon64.png
+	icon128-$pkgver-$pkgrel.png::$url/raw/k$pkgver/Telegram/Resources/art/icon128.png
+	icon256-$pkgver-$pkgrel.png::$url/raw/k$pkgver/Telegram/Resources/art/icon256.png
+	icon512-$pkgver-$pkgrel.png::$url/raw/k$pkgver/Telegram/Resources/art/icon512.png
 
 )
 # Checksums automatically set in CI, see: /.gitlab-ci.yml
-sha512sums=('5ff87e5fae792aacfb344f13c28ce6069f63d0b4a9e76309af2adc822e184400c12c30f2049fd26f5242b08831edad12da91cf6546207e47befb7f0b1267240b'
+sha512sums=('8785399eb18ef127f8a6c1c05f1a8721b1b02c64f60e68f21b8c4bcdc15a6fb1752fb974ab115d6a731de7ca790c8b9803a1016310d54fec2519d8ee30185e3b'
             'e9f0d9174f43cf30b8dc982ce898f5330152cf4d8da03f6e99bd409f6caee7a93f05121d9acdac4ead0c0ef3dfc82ba597b670deac43fe17d08dc221e01e463a'
             '89bb399142ec968a1c9d96e7e3639036aa8d70968c89c6d2b77def5ea6cbb0d88de8b3c8bb10f457600cdd4c7926d7f8ff9907f511aaaac832b218c9353c4b50'
             'facff9860ebb15045e6c7fb6483317c2319bea8b256cbc0986a252863ccedd80e1cf1e4c81a259b303651b450371b1daaf9f61be26129296b71c58ed08644cf9'
@@ -63,7 +69,7 @@ package() {
 	chrpath --delete "$pkgdir/usr/bin/kotatogram-desktop"
 
 	# Desktop launcher
-	install -Dm644 "$srcdir/icon256.png" "$pkgdir/usr/share/pixmaps/kotatogram.png"
+	install -Dm644 "$srcdir/icon256-$pkgver-$pkgrel.png" "$pkgdir/usr/share/pixmaps/kotatogram.png"
 	install -Dm644 "$srcdir/kotatogramdesktop.desktop" "$pkgdir/usr/share/applications/kotatogramdesktop.desktop"
 	
 	# Icons
@@ -71,6 +77,6 @@ package() {
 	for icon_size in 16 32 48 64 128 256 512; do
 		icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
 		install -d "$icon_dir"
-		install -m644 "$srcdir/icon${icon_size}.png" "$icon_dir/kotatogram.png"
+		install -m644 "$srcdir/icon${icon_size}-$pkgver-$pkgrel.png" "$icon_dir/kotatogram.png"
 	done
 }
