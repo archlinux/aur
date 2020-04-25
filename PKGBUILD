@@ -1,7 +1,7 @@
 # Maintainer: Tommaso Sardelli <lacapannadelloziotom [at] gmail [dot] com>
 
 pkgname=python-llvmcpy
-pkgver=0.1.1
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Python bindings for LLVM auto-generated from the LLVM-C API "
 arch=(any)
@@ -13,7 +13,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 replaces=("${pkgname}-git")
 source=("https://github.com/revng/llvmcpy/archive/v${pkgver}.tar.gz")
-sha512sums=('6c03aa54180246eb6da87ea23ee11fbcf072becd9dfe263cbc61292156bd26d907ed65591922e96bc5c1bc20a4cb70491b938c0b47489fbd28fabfabeff3eabc')
+sha512sums=('a14f53fe426426b2afd6fb9a387f9bdbba747de05d2c9c13049c29db73a5732cb46c3931a32135f655000b66d8d1586766de71d848258f3c6d31e0747230be2c')
 
 package() {
   cd "$srcdir/llvmcpy-${pkgver}"
