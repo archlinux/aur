@@ -1,6 +1,6 @@
 pkgbase = python-plumbum
 	pkgdesc = Shell combinators library.
-	pkgver = 1.6.8
+	pkgver = 1.6.9
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/plumbum
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-plumbum
 	depends = python
 	options = !emptydirs
 	options = !strip
-	source = plumbum-1.6.8.tar.gz::https://github.com/tomerfiliba/plumbum/archive/v1.6.8.tar.gz
-	sha256sums = 9976a789d8eec3c34cc9dc10b2a65a0a89052273e4c3777eeae67e32335fc180
+	source = plumbum-1.6.9.tar.gz::https://github.com/tomerfiliba/plumbum/archive/v1.6.9.tar.gz
+	sha256sums = 0f3b5db1ab309d5cff5ba04a2335d522c6e5eb019b910938685b08800af006c9
 
 pkgname = python-plumbum
 
