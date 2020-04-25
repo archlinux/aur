@@ -1,9 +1,11 @@
 pkgbase = usbreset
 	pkgdesc = A tool to reset USB devices
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://marc.info/?l=linux-usb&m=121459435621262&w=2
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = unknown
 	optdepends = usbutils: Support for resetting USB devices by VID:PID instead of /dev/bus/usb/*
 	source = usbreset.c
