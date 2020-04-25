@@ -1,5 +1,5 @@
 # Maintainer: Librewish <librewish@gmail.com>
-# Maintainer: Guinux <nuxgui@gmail.com>
+# Contributer : Guinux <nuxgui@gmail.com>
 
 pkgname=mhwd-nvidia
 pkgver=0.1
