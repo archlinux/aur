@@ -1,10 +1,8 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
-
-# This is the package build for the tools to build nban and the shuriken
-# This was originally developed for Ninja OS, but has been back ported to Arch
-# Linux.
 #
 # End of Life security tool. Securely erase all attached media before dispoal
+#
+# Originally part of Ninja OS. Backported to Arch
 #
 # This is very much a valid security tool, and its very well documented.
 
