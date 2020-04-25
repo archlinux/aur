@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Launch application
-/opt/beaker-browser/beaker-browser
+/usr/share/beaker-browser/beaker-browser

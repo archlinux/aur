@@ -5,7 +5,7 @@
 
 pkgname=beaker-browser-git
 pkgver=0.8.10.r2.g54651db80
-pkgrel=1
+pkgrel=2
 pkgdesc="Peer-to-peer browser with tools to create and host websites"
 arch=('x86_64')
 url="https://beakerbrowser.com/"
@@ -19,10 +19,12 @@ backup=()
 options=(!strip)
 source=("beaker-browser-git::git://github.com/beakerbrowser/beaker.git"
         "beaker-browser.desktop"
-        "beaker-browser")
+        "beaker-browser"
+        "LICENSE")
 md5sums=('SKIP'
          '34b48b022c6c71212f0adb3981f2925d'
-         '09aa78a4ebb98e0c71aeaaf46fd6b11b')
+         '8aa20f048e0e071073bcf65f6864040d'
+         '3862c029863f42c81265a712f9c17c4c')
 
 pkgver() {
     cd ${srcdir}/${pkgname}
@@ -45,8 +47,8 @@ prepare() {
 
 package() {
     ### builded
-    install -d          ${pkgdir}/opt/beaker-browser
-    cp -r               ${srcdir}/${pkgname}/dist/linux-unpacked/*      ${pkgdir}/opt/beaker-browser/
+    install -d          ${pkgdir}/usr/share/beaker-browser
+    cp -r               ${srcdir}/${pkgname}/dist/linux-unpacked/*      ${pkgdir}/usr/share/beaker-browser/
 
     ### tools
     install -Dm644      ${srcdir}/beaker-browser.desktop                ${pkgdir}/usr/share/applications/beaker-browser.desktop

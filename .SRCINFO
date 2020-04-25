@@ -1,7 +1,7 @@
 pkgbase = beaker-browser-git
 	pkgdesc = Peer-to-peer browser with tools to create and host websites
 	pkgver = 0.8.10.r2.g54651db80
-	pkgrel = 1
+	pkgrel = 2
 	url = https://beakerbrowser.com/
 	arch = x86_64
 	license = Modified MIT License (MIT)
@@ -23,9 +23,11 @@ pkgbase = beaker-browser-git
 	source = beaker-browser-git::git://github.com/beakerbrowser/beaker.git
 	source = beaker-browser.desktop
 	source = beaker-browser
+	source = LICENSE
 	md5sums = SKIP
 	md5sums = 34b48b022c6c71212f0adb3981f2925d
-	md5sums = 09aa78a4ebb98e0c71aeaaf46fd6b11b
+	md5sums = 8aa20f048e0e071073bcf65f6864040d
+	md5sums = 3862c029863f42c81265a712f9c17c4c
 
 pkgname = beaker-browser-git
 
