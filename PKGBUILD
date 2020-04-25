@@ -1,9 +1,9 @@
 # Maintainer: Hanna Reitz <hanna at xanclic dot moe>
 pkgname=leddy-git
 pkgver=r11.ced7a5e
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux LED controller for the fnatic miniSTREAK keyboard"
-arch=('any')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/XanClic/leddy"
 license=('GPL3')
 depends=('libusb')
