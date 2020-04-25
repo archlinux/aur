@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=83.0.4103.7
+pkgver=84.0.4122.7
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -147,6 +147,7 @@ _keeplibs=(
            'third_party/angle/third_party/vulkan-loader'
            'third_party/angle/third_party/vulkan-tools'
            'third_party/angle/third_party/vulkan-validation-layers'
+           'third_party/angle/third_party/VulkanMemoryAllocator'
            'third_party/apple_apsl'
            'third_party/axe-core'
            'third_party/blink'
@@ -215,6 +216,7 @@ _keeplibs=(
            'third_party/libaom'
            'third_party/libaom/source/libaom/third_party/vector'
            'third_party/libaom/source/libaom/third_party/x86inc'
+           'third_party/libavif'
            'third_party/libgifcodec'
            'third_party/libjingle'
            'third_party/libphonenumber'
@@ -238,6 +240,7 @@ _keeplibs=(
            'third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2'
            'third_party/one_euro_filter'
            'third_party/openscreen'
+           'third_party/openscreen/src/third_party/mozilla'
            'third_party/openscreen/src/third_party/tinycbor/src/src'
            'third_party/ots'
            'third_party/pdfium'
@@ -288,7 +291,7 @@ _keeplibs=(
            'third_party/web-animations-js'
            'third_party/webdriver'
            'third_party/webrtc'
-           'third_party/webrtc/common_audio/third_party/fft4g'
+           'third_party/webrtc/common_audio/third_party/ooura'
            'third_party/webrtc/common_audio/third_party/spl_sqrt_floor'
            'third_party/webrtc/modules/third_party/fft'
            'third_party/webrtc/modules/third_party/g711'

@@ -1,6 +1,6 @@
 pkgbase = chromium-dev
 	pkgdesc = The open-source project behind Google Chrome (Dev Channel)
-	pkgver = 83.0.4103.7
+	pkgver = 84.0.4122.7
 	pkgrel = 1
 	url = http://www.chromium.org
 	install = chromium-dev.install
@@ -38,12 +38,12 @@ pkgbase = chromium-dev
 	optdepends = kwalletmanager: Needed for storing passwords in KWallet5
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = ttf-font: For some typography
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-83.0.4103.7.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-84.0.4122.7.tar.xz
 	source = git+https://github.com/foutrelis/chromium-launcher.git
 	source = chromium-dev.svg
 	source = fix_vaapi_wayland.patch::https://patch-diff.githubusercontent.com/raw/Igalia/chromium/pull/517.patch
 	source = chromium-skia-harmony-r2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium
-	sha256sums = e415c0463c96e46d3fa593874bcdda6f9ad6a30f3197d4e2ac2c5b73530d6210
+	sha256sums = 6de5aa3a8d8a3dab93c80b404e63244648923eed3ea168b358fcabb17429fdc9
 	sha256sums = SKIP
 	sha256sums = dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1
 	sha256sums = 1b93388254c9d780365e4639d494bfa337a7924426c12f7362a1f7e8e7fad014
