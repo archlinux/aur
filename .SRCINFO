@@ -1,6 +1,6 @@
 pkgbase = python-aiocache
 	pkgdesc = Asyncio cache manager for redis, memcached and memory
-	pkgver = 0.10.1
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/argaen/aiocache
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-aiocache
 	depends = python
 	optdepends = python-aioredis
 	optdepends = python-ujson
-	source = https://github.com/argaen/aiocache/archive/0.10.1.tar.gz
-	md5sums = bfefdfe5cd80951578278b9b2a6eb944
+	source = https://github.com/argaen/aiocache/archive/0.11.1.tar.gz
+	md5sums = 3cb8e4b0934a845f7ae4dc9b78c4b560
 
 pkgname = python-aiocache
 
