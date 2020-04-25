@@ -23,7 +23,7 @@ pkgname = python-parfive
 	depends = python>=3.6
 	depends = python-tqdm
 	depends = python-aiohttp
-	optdepends = python-aioftp
+	optdepends = python-aioftp: For downloads over FTP
 	optdepends = python-parfive-doc: Documentation for Parfive
 
 pkgname = python-parfive-doc

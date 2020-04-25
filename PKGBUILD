@@ -29,7 +29,7 @@ check() {
 
 package_python-parfive() {
     depends=('python>=3.6' 'python-tqdm' 'python-aiohttp')
-    optdepends=('python-aioftp'
+    optdepends=('python-aioftp: For downloads over FTP'
                 'python-parfive-doc: Documentation for Parfive')
     cd ${srcdir}/${_pyname}-${pkgver}
 
