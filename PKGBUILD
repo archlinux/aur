@@ -1,8 +1,8 @@
 # Maintainer: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
 
-pkgbase=('python-pyscipopt-git')
+pkgbase=python-pyscipopt-git
 pkgname=('python-pyscipopt-git' 'python2-pyscipopt-git')
-pkgver=2.0.1.r12.g5b2a21b
+pkgver=3.0.0.r10.g9c7c229
 pkgrel=1
 pkgdesc='A Python Interface to the SCIP Optimization Suite.'
 arch=('any')
