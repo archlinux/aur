@@ -3,7 +3,7 @@
 
 pkgbase='pyocclient'
 pkgname=('python-pyocclient' 'python2-pyocclient')
-pkgver='0.4'
+pkgver='0.5'
 pkgrel='1'
 pkgdesc='Python client library for ownCloud'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python' 'python-setuptools'
 	     'python2' 'python2-setuptools')
 license=('MIT')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('841c9057b66fc56ffa867b6b94ee9ec175ddd70ca9c80e0c5e4c51a1694c51dc')
+sha256sums=('6bb1ae269c29ffc760d00a3e8e8858c5f28cf32be3fbbaa971e10cd75b0c8bc3')
 
 package_python-pyocclient() {
   depends=('python' 'python-requests' 'python-six')
