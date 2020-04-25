@@ -5,7 +5,7 @@
 pkgname=fcitx
 pkgdesc="Flexible Context-aware Input Tool with eXtension"
 pkgver=4.2.9.7
-pkgrel=2
+pkgrel=3
 groups=('fcitx-im')
 arch=('x86_64')
 url="https://fcitx-im.org"
