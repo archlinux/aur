@@ -1,4 +1,5 @@
-# Maintainer: Konrad Borowski <konrad@borowski.pw>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Konrad Borowski <konrad@borowski.pw>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Dan McGee <dan@archlinux.org>
 
@@ -6,33 +7,40 @@ pkgbase=postgresql-10
 pkgname=('postgresql-libs-10' 'postgresql-docs-10' 'postgresql-10')
 pkgver=10.12
 _majorver=${pkgver%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
 license=('custom:PostgreSQL')
-makedepends=('krb5' 'libxml2' 'python' 'python2' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0' 'pam' 'zlib' 'icu' 'systemd' 'libldap')
+makedepends=('krb5' 'libxml2' 'python' 'python2' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0'
+             'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm' 'clang')
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
         postgresql-run-socket.patch
         postgresql-perl-rpath.patch
         postgresql.pam
         postgresql.logrotate
         postgresql.service
-        postgresql-check-db-dir)
+        postgresql-check-db-dir
+	postgresql.sysusers
+	postgresql.tmpfiles)
 sha256sums=('388f7f888c4fbcbdf424ec2bce52535195b426010b720af7bea767e23e594ae7'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '5f73b54ca6206bd2c469c507830261ebd167baca074698d8889d769c33f98a31'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
-            'ad025a5fb623b1a1e9dff0cc62cc63f66244bb27d81370a6251aa29e8574be94'
-            '888a1d44f03fccfa4bf344ee45824fefb846ae3c1c0c40113ad6020b4be3b0cf')
+            '25fb140b90345828dc01a4f286345757e700a47178bab03d217a7a5a79105b57'
+            '888a1d44f03fccfa4bf344ee45824fefb846ae3c1c0c40113ad6020b4be3b0cf'
+            '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
+            '4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57')
 sha512sums=('6accc66cbbae811509095c33e8a8d17ddd11d9e307267312e3d09df90469db4700a5806166d66f25d77769d3ef88653c98dfc7d05dd053f10434b03e0a9e33b7'
             '031efe12d18ce386989062327cdbbe611c5ef1f94e4e1bead502304cb3e2d410af533d3c7f1109d24f9da9708214fe32f9a10ba373a3ca8d507bdb521fbb75f7'
             '38302242b30c01c7981574ed28d9cbd9dc73bf6b56ba3a032afb5d0885ae83e5aa72ce578bf2422214dfa6c46f09d0bdd7cccaeb3c25d58754eb1a34f8bf5615'
             '1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67'
             '9ab4da01337ffbab8faec0e220aaa2a642dbfeccf7232ef2645bdc2177a953f17ee3cc14a4d8f8ebd064e1dae8b3dba6029adbffb8afaabea383963213941ba8'
-            'acd60166ff513b16778705e824944945cd0a98abc519fa5f0232252e0e9c85460c6f8b85459d9692d1f3df1caaaf8909c3e7f785be99c2d3fb98a10b2641a795'
-            '56974ef34a8d94596068413154b1a7ed5a71f5a3942bd79427f05e6f6b7853036874dedd8d988bb94306023f2a675996d500b075eaf8a192ef5c24026eb28eb0')
+            'ee0c010be07e8b5396cfd89c1d077b7c5573753d0210ea4e330e314c2759e25fbee9071e663f871855d65cc8ac75162af9e793dd10892f50f515e7a89cc8d6a0'
+            '56974ef34a8d94596068413154b1a7ed5a71f5a3942bd79427f05e6f6b7853036874dedd8d988bb94306023f2a675996d500b075eaf8a192ef5c24026eb28eb0'
+            '36f7a5d38370fdc4d4267fd5a8a8330f152a1077bf0f065b89d4a7b8112ccd42be2c46c863791b77de02013f28275a42219f4236e7cb837c3f8cfd5fcc7d3373'
+            '5fe81d716d56d515ee4ae1aac56652b7bf20346ea8413482fd9fdb79f0485d8c5ed099f4d2cc460cbe37686488f1354dec433905ce005da8fec772e783addc70')
 
 prepare() {
   cd postgresql-${pkgver}
@@ -59,6 +67,7 @@ build() {
     --with-icu
     --with-systemd
     --with-ldap
+    --with-llvm
     --enable-nls
     --enable-thread-safety
     --disable-rpath
@@ -159,11 +168,12 @@ package_postgresql-docs-10() {
 package_postgresql-10() {
   pkgdesc='Sophisticated object-relational DBMS'
   backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
-  depends=("postgresql-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0' 'openssl>=1.0.0' 'pam' 'icu' 'libsystemd' 'libldap')
+  depends=("postgresql-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0' 'openssl>=1.0.0' 'pam' 'icu' 'systemd-libs' 'libldap' 'llvm-libs')
   optdepends=('python2: for PL/Python 2 support'
               'python: for PL/Python 3 support'
               'perl: for PL/Perl support'
-              'tcl: for PL/Tcl support')
+              'tcl: for PL/Tcl support'
+              'postgresql-old-upgrade: upgrade from previous major version using pg_upgrade')
   provides=("postgresql=$pkgver")
   conflicts=('postgresql')
   options=('staticlibs')
@@ -193,19 +203,24 @@ package_postgresql-10() {
     rm "${pkgdir}"/usr/share/man/man1/${util}.1
   done
 
+  install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  cd "${srcdir}"
+  install -Dm 755 postgresql-check-db-dir -t "${pkgdir}/usr/bin"
+
+  install -Dm 644 ${pkgname}.pam "${pkgdir}/etc/pam.d/${pkgname}"
+  install -Dm 644 ${pkgname}.logrotate "${pkgdir}/etc/logrotate.d/${pkgname}"
+
+  install -Dm 644 ${pkgname}.service -t "${pkgdir}/usr/lib/systemd/system"
+  install -Dm 644 ${pkgname}.sysusers "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -Dm 644 ${pkgname}.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+
   # clean up unneeded installed items
   rm -rf "${pkgdir}/usr/include/postgresql/internal"
   rm -rf "${pkgdir}/usr/include/libpq"
   find "${pkgdir}/usr/include" -maxdepth 1 -type f -execdir rm {} +
   rmdir "${pkgdir}/usr/share/doc/postgresql/html"
-
-  install -Dm 644 "${srcdir}/postgresql.service" -t "${pkgdir}/usr/lib/systemd/system"
-  install -Dm 755 "${srcdir}/postgresql-check-db-dir" -t "${pkgdir}/usr/bin"
-
-  install -Dm 644 "${srcdir}/postgresql.pam" "${pkgdir}/etc/pam.d/postgresql"
-  install -Dm 644 "${srcdir}/postgresql.logrotate" "${pkgdir}/etc/logrotate.d/postgresql"
-
-  install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
+
