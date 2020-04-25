@@ -1,13 +1,13 @@
 # Maintainer: inhzus <inhzus@gmail.com>
 pkgname=cppinsights-git
-pkgver=r553.2607267
+pkgver=r4.524cc07
 pkgrel=1
 pkgdesc="C++ Insights - See your source code with the eyes of a compiler"
 arch=('x86_64')
 url="https://cppinsights.io"
 license=('MIT')
 groups=()
-depends=(clang)
+depends=(llvm-libs clang)
 makedepends=('git' 'sed' 'ninja')
 provides=("cppinsights")
 conflicts=("cppinsights")
@@ -30,10 +30,10 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname}"
     test -d build || mkdir build
-    sed -i "s/INSIGHTS_MIN_LLVM_MAJOR_VERSION 10/INSIGHTS_MIN_LLVM_MAJOR_VERSION 9/" CMakeLists.txt
     cd build
     cmake -G"Ninja" ..
     sed -i "s/-isystem/-I/g" build.ninja
+    sed -i "s|LINK_LIBRARIES.*|LINK_LIBRARIES=-L/usr/lib -lclang-cpp -lLLVM-10|" build.ninja
     ninja
 }
 
