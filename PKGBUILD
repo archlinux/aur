@@ -1,7 +1,7 @@
 # Maintainer: Nate Levesque <public@thenaterhood.com>
 pkgname=teleirc-git
 _pkgname=teleirc
-pkgver=153
+pkgver=182
 pkgrel=1
 epoch=
 pkgdesc="NodeJS Telegram to IRC bridge bot (direct from GitHub)"
@@ -37,6 +37,7 @@ pkgver() {
 
 prepare() {
         cd $srcdir/${_pkgname}
+        git checkout -f v1.3.4
 }
 
 build() {
