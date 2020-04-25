@@ -1,4 +1,7 @@
 # Maintainer: Michael Picht <mipi@fsfe.org>
+# SPDX-FileCopyrightText: 2020 Michael Picht <mipi@fsfe.org>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 _pkgorg=gitlab.com/mipimipi
 pkgname=armutils-git
