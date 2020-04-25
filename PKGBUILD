@@ -1,7 +1,8 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
+_pkgname=plasma5-applet-tiledmenu
 pkgname=plasma5-applet-tiledmenu-git
-pkgver=32
+pkgver=v33.r0.gfdc793f
 pkgrel=1
 pkgdesc="A menu based on Windows 10's Start Menu."
 url='https://store.kde.org/p/1160672'
@@ -11,11 +12,17 @@ makedepends=('git')
 depends=('plasma-workspace' 'qt5-graphicaleffects')
 provides=('plasma5-applets-tiledmenu')
 conflicts=('plasma5-applets-tiledmenu')
-source=("${pkgname}::git://github.com/Zren/plasma-applet-tiledmenu.git")
+source=("${_pkgname}::git://github.com/Zren/plasma-applet-tiledmenu.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "${_pkgname}"
+
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
-  cd "${pkgname}"
+  cd "${_pkgname}"
 
   local dest="${pkgdir}/usr/share/plasma/plasmoids/org.kde.plasma.tiledmenu"
 
