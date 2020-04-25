@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Wey
+GenericName=Slack desktop app
+StartupNotify=true
+Comment=Fast open source Slack desktop app
+Terminal=false
+Exec=/opt/wey/wey
+Icon=/opt/wey/res/lib/view/tray/icon.png
+Categories=GNOME;GTK;Network;InstantMessaging
