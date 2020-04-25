@@ -15,7 +15,6 @@ pkgbase = linvst3-bin
 	depends = expat
 	depends = gtkmm3
 	depends = sqlite
-	optdepends = linvstmanager: GUI for managing LinVST bridges
 	provides = linvst3
 	provides = linvst3-bin
 	conflicts = linvst3
