@@ -3,7 +3,7 @@ pkgbase = python-av1an-git
 	pkgver = 1.8.r1.g5b2ee83
 	pkgrel = 2
 	url = https://github.com/master-of-zen/Av1an
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python>=3.7.0
