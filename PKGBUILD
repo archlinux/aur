@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-poke-env
-pkgver=0.0.6
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='A python interface for training Reinforcement Learning bots to battle
 on pokemon showdown'
@@ -13,7 +13,7 @@ depends=('python' 'python-aiologger' 'python-numpy' 'python-requests' 'python-ta
 optdepends=()
 makedepends=('python' 'python-setuptools')
 source=("$pkgname-$pkgver::https://github.com/hsahovic/poke-env/archive/$pkgver.tar.gz")
-sha256sums=('6bd7713091f23e3e4c153768b95a3ce9712d5a6983b26800a1623d645324372d')
+sha256sums=('9e1a8b2df67dafc21d6f20a15c4a396809fe2ae5eadf2fd582d6a27fbdbf5c4e')
 
 _pkgname=poke-env
 
