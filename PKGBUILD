@@ -1,54 +1,83 @@
-# Maintainer: Thomas Arnhold <thomas@arnhold.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Thomas Arnhold <thomas@arnhold.org>
 # Contributor: Ariel Popper <a@arielp.com>
 # Contributor: Dan McGee <dan@archlinux.org>
 
 pkgname=postgresql-93-upgrade
-pkgver=9.3.24
+pkgver=9.3.25
 _majorver=${pkgver%.*}
 pkgrel=1
 pkgdesc="PostgreSQL build for migrating between major versions with pg_upgrade"
-arch=('i686' 'x86_64')
 url="http://www.postgresql.org/"
+arch=('i686' 'x86_64')
 license=('custom:PostgreSQL')
-depends=("postgresql-libs>=${_majorver}" 'libxml2' 'openssl>=1.0.0' 'pam')
-makedepends=('krb5' 'python2' 'perl' 'tcl>=8.6.0')
+depends=("postgresql-libs>=${_majorver}" 'libxml2' 'openssl>=1.0.0' 'pam'
+         'zlib' 'icu' 'systemd-libs' 'libldap' 'krb5')
+makedepends=('python' 'python2' 'perl' 'tcl>=8.6.0' 'systemd')
+optdepends=('python2: for PL/Python 2 support'
+            'python: for PL/Python 3 support'
+            'perl: for PL/Perl support'
+            'tcl: for PL/Tcl support')
 provides=("postgresql-93-upgrade=${_majorver}")
 conflicts=('postgresql-old-upgrade' 'postgresql-lts-old-upgrade')
-source=(http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2)
-sha256sums=('8214a73a3b2135226bdc1394c9efdcb80f79e504ec700cf9b23d0b6bc2b60da9')
+source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2)
+sha256sums=('e4953e80415d039ccd33d34be74526a090fd585cf93f296cd9c593972504b6db')
 
 build() {
   cd "${srcdir}/postgresql-${pkgver}"
-
-  ./configure \
-    --prefix=/opt/pgsql-${_majorver} \
-    --with-gssapi \
-    --with-libxml \
-    --with-openssl \
-    --with-perl \
-    --with-python PYTHON=/usr/bin/python2 \
-    --with-tcl \
-    --with-pam \
-    --without-readline \
-    --with-system-tzdata=/usr/share/zoneinfo \
-    --disable-nls \
+  local options=(
+    --prefix=/opt/pgsql-${_majorver}
+    --with-gssapi
+    --with-libxml
+    --with-openssl
+    --with-perl
+    --with-python
+    --with-tcl
+    --with-pam
+    --without-readline
+    --with-system-tzdata=/usr/share/zoneinfo
+    --with-uuid=e2fs
+    --with-icu
+    --with-systemd
+    --with-ldap
+    --disable-nls
     --enable-thread-safety
+  )
 
+  # only build plpython3 for now
+  ./configure ${options[@]} \
+    PYTHON=/usr/bin/python
+  make -C src/pl/plpython all
+  make -C contrib/hstore_plpython all
+  make -C contrib/ltree_plpython all
+
+  # save plpython3 build and Makefile.global
+  cp -a src/pl/plpython{,3}
+  cp -a contrib/hstore_plpython{,3}
+  cp -a contrib/ltree_plpython{,3}
+  cp -a src/Makefile.global{,.python3}
+  make distclean
+
+  # regular build with everything
+  ./configure ${options[@]} \
+    PYTHON=/usr/bin/python2
   make -C src all
   make -C contrib all
 }
 
 package() {
   cd "${srcdir}/postgresql-${pkgver}"
-
-  # install
   make -C src DESTDIR="${pkgdir}" install
   make -C contrib DESTDIR="${pkgdir}" install
 
-  # install license
-  install -D -m644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # install plpython3
+  mv src/Makefile.global src/Makefile.global.save
+  cp src/Makefile.global.python3 src/Makefile.global
+  touch -r src/Makefile.global.save src/Makefile.global
+  make -C src/pl/plpython3 DESTDIR="${pkgdir}" install
+  make -C contrib/hstore_plpython3 DESTDIR="${pkgdir}" install
+  make -C contrib/ltree_plpython3 DESTDIR="${pkgdir}" install
 
-  # clean up unneeded installed items
-  rm -rf "${pkgdir}/opt/pgsql-${_majorver}/include/"
+  install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
