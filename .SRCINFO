@@ -1,18 +1,17 @@
 pkgbase = linvst2-bin
 	pkgdesc = enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's
 	pkgver = 2.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/osxmidi/LinVst
 	arch = x86_64
 	makedepends = git
 	depends = wine
 	optdepends = linvstmanager: GUI for managing LinVST bridges
+	provides = linvst2
+	provides = linvst2-bin
 	conflicts = linvst
 	conflicts = linvst-stable
 	conflicts = linvst2
-	replaces = linvst
-	replaces = linvst-stable
-	replaces = linvst2
 	source = https://github.com/osxmidi/LinVst/releases/download/2.8/LinVst-2.8.1-Manjaro.zip
 	sha256sums = 76dd35e9fd49e71debed6346c9d812401ecfd358e29f35a10e452c1ceba448c1
 
