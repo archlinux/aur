@@ -1,35 +1,44 @@
 # Maintainer: Cosku Bas <cosku.bas@gmail.com>
 
-pkgname=trenchbroom-git
-pkgver=r5270.738291588
+pkgname=trenchbroom
+pkgver=v2020.1.RC1.r5.ga817c7bb8
 pkgrel=1
 pkgdesc="TrenchBroom is a modern cross-platform level editor for Quake-engine based games."
-arch=('i686' 'x86_64')
+arch=("i686" "x86_64")
 url="http://kristianduske.com/trenchbroom"
-license=('GPLv3')
+license=("GPLv3")
 
-makedepends=('git' 'pandoc')
-depends=('freeimage' 'freetype2' 'wxgtk2-dev' 'wxgtk-common-dev' 'mesa' 'libgl' 'freeglut' 'libxxf86vm' 'glew' 'glm')
-conflicts=('trenchbroom')
+makedepends=("git" "pandoc" "qt5-base" "cmake" "ninja")
+depends=("freeimage" "freetype2" "mesa" "libgl" "freeglut" "libxxf86vm" "glew" "glm")
+conflicts=("trenchbroom")
+provides=("trenchbroom")
 
-source=(git://github.com/kduske/TrenchBroom.git)
-sha1sums=('SKIP')
+source=("trenchbroom::git+https://github.com/kduske/TrenchBroom.git#branch=master"
+	trenchbroom.desktop)
+
+sha1sums=('SKIP'
+          '34e2e1168624a61358c01cecfad170d435952740')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd trenchbroom
+  git submodule update --init --recursive
+}
 
 build() {
-	mkdir TrenchBroom/build
-	cd TrenchBroom/build
-	cmake .. -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release -DwxWidgets_PREFIX=/usr
+	mkdir trenchbroom/build
+	cd trenchbroom/build
+	cmake .. -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release
 	cmake --build . --target TrenchBroom
 }
 
-pkgver() {
-	cd TrenchBroom
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 package() {
-	cd TrenchBroom/build
+	cd trenchbroom/build
 	make DESTDIR=${pkgdir} install
-	install -Dm644 "${srcdir}/TrenchBroom/app/resources/linux/trenchbroom.desktop" "${pkgdir}/usr/share/applications/trenchbroom.desktop"
-	install -Dm644 "${srcdir}/TrenchBroom/app/resources/linux/icons/icon_256.png" "${pkgdir}/usr/share/pixmaps/trenchbroom.png"
+	install -Dm644 ../../../trenchbroom.desktop "${pkgdir}/usr/share/applications/trenchbroom.desktop"
+	install -Dm644 "${srcdir}/trenchbroom/app/resources/linux/icons/icon_256.png" "${pkgdir}/usr/share/pixmaps/trenchbroom.png"
 }
