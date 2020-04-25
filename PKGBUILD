@@ -1,7 +1,7 @@
 _pkgname=cri-o
 pkgname=cri-o-git
 pkgver=20200426
-pkgrel=2
+pkgrel=3
 pkgdesc='Open Container Initiative-based implementation of Kubernetes Container Runtime Interface'
 arch=(x86_64 aarch64)
 url='https://github.com/cri-o/cri-o'
@@ -10,7 +10,6 @@ provides=('cri-o')
 conflicts=('cri-o')
 makedepends=(go go-md2man ostree git)
 depends=(conmon cni-plugins runc skopeo)
-optdepends=('crictl: Container management')
 backup=('etc/crio/crio.conf' 'etc/crictl.yaml')
 source=("${_pkgname}::git+https://github.com/cri-o/cri-o")
 sha256sums=('SKIP')
