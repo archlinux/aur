@@ -1,7 +1,7 @@
 pkgname=mingw-w64-h5hut
 pkgver=2.0.0rc6
 pkgrel=1
-pkgdesc='High-Performance I/O Library for Particle-based Simulations'
+pkgdesc='High-Performance I/O Library for Particle-based Simulations (mingw-w64)'
 url='https://gitlab.psi.ch/H5hut/src/wikis/home'
 arch=('any')
 license=('BSD')
@@ -18,7 +18,7 @@ build() {
   ./autogen.sh
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure ..
+    CFLAGS="-DH5_USE_110_API" ${_arch}-configure ..
     make
     popd
   done
