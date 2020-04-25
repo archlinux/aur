@@ -3,7 +3,7 @@
 
 pkgname=livewallpaper
 pkgver=0.5.0.333
-pkgrel=2
+pkgrel=3
 pkgdesc='Animated 3D wallpapers'
 url='https://launchpad.net/livewallpaper'
 license=(GPL3)
