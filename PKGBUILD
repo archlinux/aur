@@ -8,23 +8,17 @@ url="https://github.com/zonotope/powalert"
 license=('MIT')
 makedepends=('cargo')
 provides=('powalert')
-source=("$pkgname-${pkgver//_/-}.tar.gz::https://github.com/zonotope/$pkgname/archive/${pkgver//_/-}.tar.gz")
-sha256sums=('3935c3d953730aa01dc79acd8d4dfd4bc036e8a0103407512c0a82ba2831510a')
+source=("$pkgname-${pkgver}.tar.gz::https://github.com/zonotope/$pkgname/archive/${pkgver}.tar.gz")
+sha256sums=('3511102e0d2e50400e6e906f5019b272ccf534cadb06470a210bf7013942a782')
 
 build() {
-  cd "$srcdir/$pkgname-${pkgver//_/-}"
+  cd "$srcdir/$pkgname-${pkgver}"
 
   cargo build --release
 }
 
-# check() {
-#   cd "$srcdir/$pkgname-${pkgver//_/-}"
-
-#   make -k check
-# }
-
 package() {
-  cd "$srcdir/$pkgname-${pkgver//_/-}"
+  cd "$srcdir/$pkgname-${pkgver}"
 
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "systemd/powalert.service" "$pkgdir/usr/lib/systemd/user/powalert.service"

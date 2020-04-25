@@ -9,7 +9,7 @@ pkgbase = powalert
 	makedepends = cargo
 	provides = powalert
 	source = powalert-0.1.0.tar.gz::https://github.com/zonotope/powalert/archive/0.1.0.tar.gz
-	sha256sums = 3935c3d953730aa01dc79acd8d4dfd4bc036e8a0103407512c0a82ba2831510a
+	sha256sums = 3511102e0d2e50400e6e906f5019b272ccf534cadb06470a210bf7013942a782
 
 pkgname = powalert
 
