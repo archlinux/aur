@@ -1,7 +1,7 @@
 # Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
 
 pkgname="vimtips"
-pkgver="0.2.5"
+pkgver="0.2.6"
 pkgrel="1"
 pkgdesc="A tool to aggregate and show vim tips from different sources."
 arch=("any")
@@ -11,7 +11,7 @@ depends=("python" "python-pyqt5" "python-pyquery" "python-requests"
          "python-psutil")
 makedepends=("python-setuptools")
 source=("https://github.com/IngoHeimbach/vimtips/archive/v${pkgver}.tar.gz")
-sha256sums=("a4aea4b395f9e834fbabd28fd651c99d63b7362edd98fd0acdb74e4c860db140")
+sha256sums=("05b35be8455619e27581c6d51c2c2cc0851bb177e451d8de6b17dc6ec7124405")
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}" || return

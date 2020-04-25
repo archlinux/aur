@@ -1,6 +1,6 @@
 pkgbase = vimtips
 	pkgdesc = A tool to aggregate and show vim tips from different sources.
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/IngoHeimbach/vimtips
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = vimtips
 	depends = python-pyquery
 	depends = python-requests
 	depends = python-psutil
-	source = https://github.com/IngoHeimbach/vimtips/archive/v0.2.5.tar.gz
-	sha256sums = a4aea4b395f9e834fbabd28fd651c99d63b7362edd98fd0acdb74e4c860db140
+	source = https://github.com/IngoHeimbach/vimtips/archive/v0.2.6.tar.gz
+	sha256sums = 05b35be8455619e27581c6d51c2c2cc0851bb177e451d8de6b17dc6ec7124405
 
 pkgname = vimtips
 
