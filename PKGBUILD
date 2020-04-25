@@ -2,7 +2,7 @@
 
 pkgname=extopts
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Extended command line arguments parsing library"
 arch=('i686' 'x86_64')
 url="https://github.com/githaff/extopts"
