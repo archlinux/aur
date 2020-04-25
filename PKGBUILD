@@ -1,80 +1,222 @@
-# Maintainer: M Novick <mnovick1988@gmail.com>
-# Maintainer: Marti Raudsepp <marti@juffo.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Dan McGee <dan@archlinux.org>
 #
-# Borrowed from postgresql-testing
+# Mainly using official postgresql PKGBUILD here
 #
 
-pkgname=postgresql-git
-pkgver=9.5.1
+pkgbase=postgresql-git
+pkgname=('postgresql-libs-git' 'postgresql-docs-git' 'postgresql-git')
+pkgver=12.2
+_majorver=${pkgver%.*}
 pkgrel=1
-_majorver=9.5
-pkgdesc="Git version of the PostgreSQL database (includes both server and libs)"
-arch=('i686' 'x86_64')
-url="https://wiki.postgresql.org/wiki/HowToBetaTest"
+pkgdesc='Sophisticated object-relational DBMS (Git version)'
+url='https://www.postgresql.org/'
+arch=('x86_64')
 license=('custom:PostgreSQL')
-backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
-options=(!strip) # to facilitate debugging of testing builds
-depends=('libxml2' 'readline>=6.0' 'openssl>=1.0.0')
-makedepends=('python2' 'perl')
-optdepends=('python2: for PL/Python support'
-            'perl: for PL/Perl support')
-conflicts=('postgresql-libs' 'postgresql' 'postgresql-testing' 'postgresql-git')
-provides=("postgresql-libs=$pkgver" "postgresql=$pkgver" 'postgresql-git')
-source=("git://git.postgresql.org/git/postgresql.git"
+makedepends=('krb5' 'libxml2' 'python' 'python2' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0'
+             'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm' 'clang')
+source=(git://git.postgresql.org/git/postgresql.git
         postgresql-run-socket.patch
-        postgresql.pam postgresql.logrotate
-        postgresql.service postgresql.tmpfiles.conf postgresql-check-db-dir)
-install=postgresql.install
+        postgresql-perl-rpath.patch
+        postgresql.pam
+        postgresql.logrotate
+        postgresql.service
+        postgresql-check-db-dir
+        postgresql.sysusers
+        postgresql.tmpfiles)
+sha256sums=('SKIP'
+            '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
+            '5f73b54ca6206bd2c469c507830261ebd167baca074698d8889d769c33f98a31'
+            '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
+            '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
+            '25fb140b90345828dc01a4f286345757e700a47178bab03d217a7a5a79105b57'
+            'bb24b8ce8c69935b7527ed54e10a8823068e31c8aa5b8ffea81ce6993264e8db'
+            '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
+            '4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57')
+sha512sums=('SKIP'
+            '031efe12d18ce386989062327cdbbe611c5ef1f94e4e1bead502304cb3e2d410af533d3c7f1109d24f9da9708214fe32f9a10ba373a3ca8d507bdb521fbb75f7'
+            '38302242b30c01c7981574ed28d9cbd9dc73bf6b56ba3a032afb5d0885ae83e5aa72ce578bf2422214dfa6c46f09d0bdd7cccaeb3c25d58754eb1a34f8bf5615'
+            '1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67'
+            '9ab4da01337ffbab8faec0e220aaa2a642dbfeccf7232ef2645bdc2177a953f17ee3cc14a4d8f8ebd064e1dae8b3dba6029adbffb8afaabea383963213941ba8'
+            'ee0c010be07e8b5396cfd89c1d077b7c5573753d0210ea4e330e314c2759e25fbee9071e663f871855d65cc8ac75162af9e793dd10892f50f515e7a89cc8d6a0'
+            'eaaccae8dabad67d2bc54f74ec8d3ddb46257369b90080a2860b65d500053db6ace608be4c1b6baaeab4a03245dcbb5215eb41e468acc2304c037f094c2e7819'
+            '36f7a5d38370fdc4d4267fd5a8a8330f152a1077bf0f065b89d4a7b8112ccd42be2c46c863791b77de02013f28275a42219f4236e7cb837c3f8cfd5fcc7d3373'
+            '5fe81d716d56d515ee4ae1aac56652b7bf20346ea8413482fd9fdb79f0485d8c5ed099f4d2cc460cbe37686488f1354dec433905ce005da8fec772e783addc70')
 
-build() {
-  cd $srcdir/postgresql
-
-  patch -Np1 < ../postgresql-run-socket.patch
-  ./configure --prefix=/usr \
-  --mandir=/usr/share/man \
-  --datadir=/usr/share/postgresql \
-  --sysconfdir=/etc \
-  --with-libxml \
-  --with-openssl \
-  --with-perl \
-  --with-python PYTHON=/usr/bin/python2 \
-  --with-pam \
-  --with-system-tzdata=/usr/share/zoneinfo \
-  --enable-nls \
-  --enable-thread-safety \
-  --with-krb5 \
-  --with-tcl \
-
-  make
-  make -C contrib
+prepare() {
+  cd postgresql
+  patch -p1 < ../postgresql-run-socket.patch
+  patch -p1 < ../postgresql-perl-rpath.patch
 }
 
-package() {
-  cd $srcdir/postgresql
+build() {
+  cd postgresql
+  local options=(
+    --prefix=/usr
+    --mandir=/usr/share/man
+    --datadir=/usr/share/postgresql
+    --sysconfdir=/etc
+    --with-gssapi
+    --with-libxml
+    --with-openssl
+    --with-perl
+    --with-python
+    --with-tcl
+    --with-pam
+    --with-system-tzdata=/usr/share/zoneinfo
+    --with-uuid=e2fs
+    --with-icu
+    --with-systemd
+    --with-ldap
+    --with-llvm
+    --enable-nls
+    --enable-thread-safety
+    --disable-rpath
+  )
+
+  # only build plpython3 for now
+  ./configure ${options[@]} \
+    PYTHON=/usr/bin/python
+  make -C src/pl/plpython all
+  make -C contrib/hstore_plpython all
+  make -C contrib/ltree_plpython all
+
+  # save plpython3 build and Makefile.global
+  cp -a src/pl/plpython{,3}
+  cp -a contrib/hstore_plpython{,3}
+  cp -a contrib/ltree_plpython{,3}
+  cp -a src/Makefile.global{,.python3}
+  make distclean
+
+  # regular build with everything
+  ./configure ${options[@]} \
+    PYTHON=/usr/bin/python2
+  make world
+}
+
+_postgres_check() {
+  make "${1}" || (find . -name regression.diffs | \
+    while read -r line; do
+      error "make ${1} failure: ${line}"
+      cat "${line}"
+    done; exit 1)
+}
+
+check() {
+  cd postgresql-${pkgver}
+  _postgres_check check
+  _postgres_check check-world
+}
+
+package_postgresql-libs-git() {
+  pkgdesc="Libraries for use with PostgreSQL"
+  depends=('krb5' 'openssl>=1.0.0' 'readline>=6.0' 'zlib' 'libldap')
+  provides=('postgresql-client')
+  conflicts=('postgresql-client')
+
+  cd postgresql
+
+  # install license
+  install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  # install libs and non-server binaries
+  for dir in src/interfaces src/bin/pg_config src/bin/pg_dump src/bin/psql src/bin/scripts; do
+    make -C ${dir} DESTDIR="${pkgdir}" install
+  done
+
+  for util in pg_config pg_dump pg_dumpall pg_restore psql \
+      clusterdb createdb createuser dropdb dropuser pg_isready reindexdb vacuumdb; do
+    install -Dm 644 doc/src/sgml/man1/${util}.1 "${pkgdir}"/usr/share/man/man1/${util}.1
+  done
+
+  cd src/include
+
+  install -d "${pkgdir}"/usr/include/{libpq,postgresql/internal/libpq}
+
+  # these headers are needed by the public headers of the interfaces
+  install -m 644 pg_config.h "${pkgdir}/usr/include"
+  install -m 644 pg_config_os.h "${pkgdir}/usr/include"
+  install -m 644 pg_config_ext.h "${pkgdir}/usr/include"
+  install -m 644 postgres_ext.h "${pkgdir}/usr/include"
+  install -m 644 libpq/libpq-fs.h "${pkgdir}/usr/include/libpq"
+  install -m 644 pg_config_manual.h "${pkgdir}/usr/include"
+
+  # these he aders are needed by the not-so-public headers of the interfaces
+  install -m 644 c.h "${pkgdir}/usr/include/postgresql/internal"
+  install -m 644 port.h "${pkgdir}/usr/include/postgresql/internal"
+  install -m 644 postgres_fe.h "${pkgdir}/usr/include/postgresql/internal"
+  install -m 644 libpq/pqcomm.h "${pkgdir}/usr/include/postgresql/internal/libpq"
+}
+
+package_postgresql-docs-git() {
+  pkgdesc="HTML documentation for PostgreSQL"
+  options=('docs')
+
+  cd postgresql
+
+  install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  make -C doc/src/sgml DESTDIR="${pkgdir}" install-html
+  chown -R root:root "${pkgdir}/usr/share/doc/postgresql/html"
+
+  # clean up
+  rmdir "${pkgdir}"/usr/share/man/man{1,3,7}
+  rmdir "${pkgdir}"/usr/share/man
+}
+
+package_postgresql-git() {
+  pkgdesc='Sophisticated object-relational DBMS'
+  backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
+  depends=("postgresql-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0' 'openssl>=1.0.0' 'pam' 'icu' 'systemd-libs' 'libldap' 'llvm-libs')
+  optdepends=('python2: for PL/Python 2 support'
+              'python: for PL/Python 3 support'
+              'perl: for PL/Perl support'
+              'tcl: for PL/Tcl support'
+              'postgresql-old-upgrade: upgrade from previous major version using pg_upgrade')
+  options=('staticlibs')
+
+  cd postgresql
 
   # install
   make DESTDIR="${pkgdir}" install
   make -C contrib DESTDIR="${pkgdir}" install
+  make -C doc/src/sgml DESTDIR="${pkgdir}" install-man
 
-  # install license
-  install -D -m644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+  # install plpython3
+  mv src/Makefile.global src/Makefile.global.save
+  cp src/Makefile.global.python3 src/Makefile.global
+  touch -r src/Makefile.global.save src/Makefile.global
+  make -C src/pl/plpython3 DESTDIR="${pkgdir}" install
+  make -C contrib/hstore_plpython3 DESTDIR="${pkgdir}" install
+  make -C contrib/ltree_plpython3 DESTDIR="${pkgdir}" install
 
-  install -D -m644 "${srcdir}/postgresql.tmpfiles.conf" \
-    "${pkgdir}/usr/lib/tmpfiles.d/postgresql.conf"
-  install -D -m644 "${srcdir}/postgresql.service" \
-    "${pkgdir}/usr/lib/systemd/system/postgresql.service"
-  install -D -m755 "${srcdir}/postgresql-check-db-dir" \
-    "${pkgdir}/usr/bin/postgresql-check-db-dir"
-  install -D -m644 "${srcdir}/postgresql.pam" \
-    "${pkgdir}/etc/pam.d/postgresql"
-  install -D -m644 "${srcdir}/postgresql.logrotate" \
-    "${pkgdir}/etc/logrotate.d/postgresql"
+  # we don't want these, they are in the -libs package
+  for dir in src/interfaces src/bin/pg_config src/bin/pg_dump src/bin/psql src/bin/scripts; do
+    make -C ${dir} DESTDIR="${pkgdir}" uninstall
+  done
+  for util in pg_config pg_dump pg_dumpall pg_restore psql \
+      clusterdb createdb createuser dropdb dropuser pg_isready reindexdb vacuumdb; do
+    rm "${pkgdir}"/usr/share/man/man1/${util}.1
+  done
+
+  install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  cd "${srcdir}"
+  install -Dm 755 postgresql-check-db-dir -t "${pkgdir}/usr/bin"
+
+  install -Dm 644 ${pkgname}.pam "${pkgdir}/etc/pam.d/${pkgname}"
+  install -Dm 644 ${pkgname}.logrotate "${pkgdir}/etc/logrotate.d/${pkgname}"
+
+  install -Dm 644 ${pkgname}.service -t "${pkgdir}/usr/lib/systemd/system"
+  install -Dm 644 ${pkgname}.sysusers "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -Dm 644 ${pkgname}.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+
+  # clean up unneeded installed items
+  rm -rf "${pkgdir}/usr/include/postgresql/internal"
+  rm -rf "${pkgdir}/usr/include/libpq"
+  find "${pkgdir}/usr/include" -maxdepth 1 -type f -execdir rm {} +
+  rmdir "${pkgdir}/usr/share/doc/postgresql/html"
 }
-md5sums=('SKIP'
-         '75c579eed03ffb2312631f0b649175b4'
-         '96f82c38f3f540b53f3e5144900acf17'
-         'd28e443f9f65a5712c52018b84e27137'
-         '89b48774b0dae7c37fbb0e907c3c1db8'
-         '1c5a1f99e8e93776c593c468e2612985'
-         'ba9b7d804500dffc095eac78c4a2a00f')
+
+# vim: ts=2 sw=2 et:
