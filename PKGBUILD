@@ -36,16 +36,14 @@ build() {
 
   cd "${srcdir}/${_pkgname}-${pkgver//_/-}/native_client"
   make deepspeech
-  cd python
-  make bindings
+  make bindings -C python
 }
 
 package_deepspeech() {
   depends=('sox')
   cd "${srcdir}/${_pkgname}-${pkgver//_/-}/native_client"
   PREFIX="${pkgdir}"/usr make install
-  install -d "${pkgdir}"/usr/include
-  install -m644 deepspeech.h "${pkgdir}"/usr/include
+  install -Dm644 deepspeech.h "${pkgdir}"/usr/include/deepspeech.h
 }
 
 package_python-deepspeech() {
@@ -54,5 +52,4 @@ package_python-deepspeech() {
   cd "${srcdir}/${_pkgname}-${pkgver//_/-}/native_client"
   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps python/dist/deepspeech*.whl
   mv "$pkgdir/usr/bin/deepspeech" "$pkgdir/usr/bin/deepspeech_python"
-  rm -rf "$pkgdir/usr/lib/python3.?/site-packages/deepspeech/lib"
 }
