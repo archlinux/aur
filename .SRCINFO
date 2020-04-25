@@ -1,6 +1,6 @@
 pkgbase = shallow-appify
 	pkgdesc = Converts any executable to a non-self-contained mac app bundle which depends on system libraries.
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/IngoHeimbach/shallow-appify
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = shallow-appify
 	depends = python
 	depends = python-jinja
 	depends = python-pillow
-	source = https://github.com/IngoHeimbach/shallow-appify/archive/v0.4.3.tar.gz
-	sha256sums = 9f8f7cd9e83d4a48b94b02b234902929fbc49cbcc20b88540c1ec68d768932b2
+	source = https://github.com/IngoHeimbach/shallow-appify/archive/v0.4.4.tar.gz
+	sha256sums = 720f7f02d7b00e54bb8ccf2dd260380ea18ce4217cdf28520b425f24fc13844b
 
 pkgname = shallow-appify
 
