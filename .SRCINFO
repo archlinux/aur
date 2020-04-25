@@ -15,15 +15,11 @@ pkgbase = mhwd-db-garuda-git
 pkgname = mhwd-db-garuda-git
 	pkgdesc = mhwd-db-garuda(manjaro's mhwd-db backported to archlinux with additional features and limited to only dkms drivers)
 	install = mhwd-db.install
-	arch = i686
-	arch = x86_64
+	arch = any
 	depends = mhwd-nvidia
 	depends = mhwd-ati
 	depends = mhwd-amdgpu
 	provides = mhwd-db
 	conflicts = mhwd-db
 	replaces = mhwd-db-catalyst
-	depends_x86_64 = mhwd-nvidia
-	depends_x86_64 = mhwd-ati
-	depends_x86_64 = mhwd-amdgpu
 

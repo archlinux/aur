@@ -1,6 +1,6 @@
 # Maintainer: Librewish <librewish@gmail.com>
-# maintainer: Philip Müller <philm[at]manjaro[dog]org>
-# maintainer: Roland Singer <roland[at]manjaro[dog]org>
+# Contributer : Philip Müller <philm[at]manjaro[dog]org>
+# Contributer : Roland Singer <roland[at]manjaro[dog]org>
 
 pkgbase=mhwd-db-garuda-git
 pkgname=('mhwd-db-garuda-git')
@@ -34,7 +34,7 @@ build() {
 
 package_mhwd-db-garuda-git() {
   pkgdesc="mhwd-db-garuda(manjaro's mhwd-db backported to archlinux with additional features and limited to only dkms drivers)"
-  arch=('i686' 'x86_64')
+  arch=('any')
   depends=('mhwd-nvidia' 'mhwd-ati' 'mhwd-amdgpu')
   depends_x86_64=('mhwd-nvidia' 'mhwd-ati' 'mhwd-amdgpu')
   replaces=("mhwd-db-catalyst")
