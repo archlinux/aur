@@ -4,17 +4,17 @@
 
 _name=bats-core
 pkgname=$_name
-pkgver=1.1.0
+pkgver=1.2.0
 _mainfolder=$_name-$pkgver
-pkgrel=4
+pkgrel=1
 pkgdesc='Bash Automated Testing System'
 arch=(any)
 url=https://github.com/bats-core/bats-core
 license=(MIT)
 depends=(bash)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz fix-libexec-path.patch)
-sha256sums=('855d8b8bed466bc505e61123d12885500ef6fcdb317ace1b668087364717ea82'
-            '1c1aa78cead376910f71807d4615e3041c91e4525c9a439defc90e1d5f776c2a')
+sha256sums=('c74ea5517d9381c044e8e87427de0113be6ad591213d489aeaa28146daf1c723'
+            '89a7f67f4590abbada4b735174db1e7694cc83a371d4668c3150866340898dbd')
 conflicts=(bash-bats)
 provides=(bash-bats)
 
