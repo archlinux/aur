@@ -1,12 +1,12 @@
 # Maintainer: Nicolas KAROLAK <nicolas at karolak dot fr>
 pkgname=devc
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A CLI tool to manage your devcontainers using docker-compose"
 arch=('x86_64')
 url="https://git.karolak.fr/nicolas/devc"
 license=('GPL3')
-depends=('docker-compose')
+depends=('podman-compose')
 makedepends=(
 	'make'
 	'go'
@@ -20,11 +20,6 @@ sha512sums=('df1edb7e69564c04796e8a064eab892f02af346d796a6bb263cb2191d5238791659
 build() {
 	cd "$pkgname"
 	make
-}
-
-check() {
-	cd "$pkgname"
-	make check
 }
 
 package() {
