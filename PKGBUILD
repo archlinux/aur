@@ -3,7 +3,7 @@
 
 pkgbase=ipython-ipyparallel
 pkgname=('ipython-ipyparallel' 'ipython2-ipyparallel')
-pkgver=6.2.4
+pkgver=6.2.5
 pkgrel=1
 pkgdesc="Interactive Parallel Computing in Python"
 url="https://github.com/ipython/ipyparallel"
@@ -12,7 +12,7 @@ license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
 optdepends=('openmpi: to use the MPI Launchers in ipcluster command')
 source=("https://github.com/ipython/ipyparallel/archive/${pkgver}.tar.gz")
-sha256sums=('84aa117647b358133643aad1082ea8a56ab8a17693cc3bc2b150746a37e7332e')
+sha256sums=('f6de54a29f7beb97872aa49dfa606dea5f3ed20d2433e3a7200ac2ea9b2a4388')
 
 prepare() {
   cp -a "${srcdir}/ipyparallel-$pkgver"{,-py2}
@@ -21,10 +21,10 @@ prepare() {
 build() {
   cd "${srcdir}/ipyparallel-$pkgver"
   python setup.py build
-  
+
   cd "${srcdir}/ipyparallel-$pkgver-py2"
   python2 setup.py build
-} 
+}
 
 package_ipython-ipyparallel() {
   depends=('ipython' 'python-setuptools')
