@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-ensmallen
+	pkgdesc = Flexible C++ library for efficient mathematical optimization (mingw-w64)
+	pkgver = 2.12.1
+	pkgrel = 1
+	url = https://ensmallen.org/
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-armadillo
+	depends = mingw-w64-lapack
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = https://ensmallen.org/files/ensmallen-2.12.1.tar.gz
+	sha256sums = e91a7053b2db055c41c981753ce3aeb1afaabd10370a8c541ec04e1f4d07d964
+
+pkgname = mingw-w64-ensmallen
+
