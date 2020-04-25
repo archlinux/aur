@@ -44,20 +44,6 @@ build() {
     --enable-thread-safety
   )
 
-  # only build plpython3 for now
-  ./configure ${options[@]} \
-    PYTHON=/usr/bin/python
-  make -C src/pl/plpython all
-  make -C contrib/hstore_plpython all
-  make -C contrib/ltree_plpython all
-
-  # save plpython3 build and Makefile.global
-  cp -a src/pl/plpython{,3}
-  cp -a contrib/hstore_plpython{,3}
-  cp -a contrib/ltree_plpython{,3}
-  cp -a src/Makefile.global{,.python3}
-  make distclean
-
   # regular build with everything
   ./configure ${options[@]} \
     PYTHON=/usr/bin/python2
@@ -67,17 +53,15 @@ build() {
 
 package() {
   cd "${srcdir}/postgresql-${pkgver}"
+
+  # install
   make -C src DESTDIR="${pkgdir}" install
   make -C contrib DESTDIR="${pkgdir}" install
 
-  # install plpython3
-  mv src/Makefile.global src/Makefile.global.save
-  cp src/Makefile.global.python3 src/Makefile.global
-  touch -r src/Makefile.global.save src/Makefile.global
-  make -C src/pl/plpython3 DESTDIR="${pkgdir}" install
-  make -C contrib/hstore_plpython3 DESTDIR="${pkgdir}" install
-  make -C contrib/ltree_plpython3 DESTDIR="${pkgdir}" install
-
+  # install license
   install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  ## clean up unneeded installed items
+  rm -rf "${pkgdir}/opt/pgsql-${_majorver}/include/"
 }
 
