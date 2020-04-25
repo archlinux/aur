@@ -9,7 +9,7 @@ pkgbase = bazel024-bin
 	depends = libarchive
 	depends = zip
 	depends = unzip
-	provides = bazel
+	provides = bazel=0.24.1
 	conflicts = bazel
 	options = !strip
 	source = https://github.com/bazelbuild/bazel/releases/download/0.24.1/bazel-0.24.1-installer-linux-x86_64.sh
