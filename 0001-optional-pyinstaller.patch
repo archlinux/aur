@@ -9,7 +9,7 @@ index 91b4bdb..6b45047 100644
 -    install_requires=["pyinstaller"],
 +    install_requires=[],
 +    extras_require={"packager": ["pyinstaller"]},
-     python_requires=">=3.7",
+     python_requires=">=3.6.9",
      entry_points={
          "console_scripts": [
              "pyxeleditor=pyxel.editor:run",
