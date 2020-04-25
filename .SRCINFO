@@ -1,22 +1,22 @@
 pkgbase = android-sdk-platform-tools
 	pkgdesc = Platform-Tools for Google Android SDK (adb and fastboot)
-	pkgver = 29.0.6
+	pkgver = 30.0.0
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	install = android-sdk-platform-tools.install
 	arch = x86_64
 	license = custom
+	depends = zlib
+	depends = ncurses
 	provides = adb
 	provides = android-tools
 	conflicts = adb
-	source = https://dl.google.com/android/repository/platform-tools_r29.0.6-linux.zip
+	source = https://dl.google.com/android/repository/platform-tools_r30.0.0-linux.zip
 	source = adb.service
 	source = license.html
-	sha1sums = e95ed28330406705d47fe96bafb589be6c1f2f23
+	sha1sums = d124084d621a8cb4b3eb1113d9c90be641d40494
 	sha1sums = 49a40c129199844603afe71fce69c0908e062393
 	sha1sums = bfb91be7e0b602d765b7a1fcaf0ce1b7e1a93faa
-	depends_x86_64 = zlib
-	depends_x86_64 = ncurses
 
 pkgname = android-sdk-platform-tools
 
