@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-angles
 	pkgdesc = ROS - This package provides a set of simple math utilities to work with angles.
 	pkgver = 1.9.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/angles
 	arch = any
 	license = BSD
