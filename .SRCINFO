@@ -13,6 +13,7 @@ pkgbase = transmission-qt-git
 	makedepends = systemd
 	makedepends = qt5-tools
 	makedepends = git
+	makedepends = cmake
 	depends = curl
 	depends = qt5-base
 	depends = libevent

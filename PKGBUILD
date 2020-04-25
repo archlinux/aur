@@ -9,7 +9,7 @@ license=(MIT)
 pkgdesc='Fast, easy, and free BitTorrent client (Qt GUI)'
 depends=(curl qt5-base libevent)
 optdepends=('transmission-cli: daemon and web support')
-makedepends=(gtk3 intltool curl qt5-base libevent systemd qt5-tools git)
+makedepends=(gtk3 intltool curl qt5-base libevent systemd qt5-tools git cmake)
 source=(git+https://github.com/transmission/transmission.git
         transmission-cli.sysusers
         transmission-cli.tmpfiles)
