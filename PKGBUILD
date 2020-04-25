@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-kvazaar
 _pkgname=kvazaar
-pkgver=1.3.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="An open-source HEVC encoder (mingw-w64)"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('mingw-w64-crypto++')
 makedepends=('mingw-w64-configure' 'yasm' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/ultravideo/kvazaar/archive/v${pkgver}.tar.gz")
-sha256sums=('f694fe71cc6e3e6f583a9faf380825ea93b2635c4db8d1d3121b9ebcf736ac1c')
+sha256sums=('213edca448f127f9c6d194cdfd21593d10331f9061d95751424e1001bae60b5d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -25,7 +25,7 @@ build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure \
+    LIBS+=" -lssp" ${_arch}-configure \
       --enable-largefile \
       --with-cryptopp
     make
