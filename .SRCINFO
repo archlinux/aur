@@ -8,7 +8,7 @@ pkgbase = python-haishoku
 	depends = python
 	depends = python-pillow
 	source = https://github.com/LanceGin/haishoku/archive/v1.1.8.tar.gz
-	md5sums = SKIP
+	md5sums = 6938a8a1ac0f2c26f410f09003f09865
 
 pkgname = python-haishoku
 

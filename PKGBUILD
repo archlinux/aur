@@ -11,7 +11,7 @@ url="https://github.com/LanceGin/haishoku"
 license=(MIT)
 depends=("python" "python-pillow")
 source=("$url/archive/v$pkgver.tar.gz")
-md5sums=(SKIP)
+md5sums=("6938a8a1ac0f2c26f410f09003f09865")
 
 package() {
   cd "$srcdir/$_name-$pkgver"
