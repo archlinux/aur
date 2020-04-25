@@ -1,4 +1,5 @@
 import re
+from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
@@ -43,9 +44,8 @@ def get_local_version():
 # Check wheather the download file has changed
 # We will need to check the source
 # with the actual package (Which we have in the pkgbuild file)
-def check_updated():
+def check_updated(remote_version):
     updated = False
-    remote_version = get_remote_version()
     local_version = get_local_version()
     if local_version != remote_version:
         updated = True
@@ -64,14 +64,16 @@ def check_updated():
 #5. Commit and push
 #    * `gaa & gca -m "Message" & ggpush`
 #6. Clean resulting workspace
-def update_pkgbuild():
+def update_pkgbuild(remote_version):
     print("todo")
 
 
 def main():
+    load_dotenv()
     configure_chrome_webdriver()
-    if check_updated():
-        update_pkgbuild()
+    remote_version = get_remote_version()
+    if check_updated(remote_version):
+        update_pkgbuild(remote_version)
 
 
 if __name__ == "__main__":
