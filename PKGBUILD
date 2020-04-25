@@ -189,6 +189,7 @@ package_nginx-zest-git()
 		"geoip"
 		"gzip"
 		"libatomic_ops"
+		"libbsd"
 		"liburing"
 		"mailcap"
 		"pcre"

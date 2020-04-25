@@ -55,6 +55,7 @@ pkgname = nginx-zest-git
 	depends = geoip
 	depends = gzip
 	depends = libatomic_ops
+	depends = libbsd
 	depends = liburing
 	depends = mailcap
 	depends = pcre
