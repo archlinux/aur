@@ -8,7 +8,6 @@ arch=('x86_64')
 url="https://github.com/osxmidi/LinVst"
 depends=('wine')
 makedepends=('git')
-optdepends=('linvstmanager: GUI for managing LinVST bridges')
 conflicts=('linvst' 'linvst-stable' 'linvst2')
 provides=('linvst2' "${pkgname}")
 source=("https://github.com/osxmidi/LinVst/releases/download/2.8/LinVst-${pkgver}-Manjaro.zip")
