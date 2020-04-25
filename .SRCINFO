@@ -1,0 +1,19 @@
+pkgbase = duckstation-git
+	pkgdesc = A Sony PlayStation (PSX), focusing on playability, speed, and long-term maintainability
+	pkgver = 0.1.r1239.e6bd658
+	pkgrel = 1
+	url = https://github.com/stenzek/duckstation
+	arch = x86_64
+	arch = aarch64
+	license = GPLv3
+	makedepends = git
+	makedepends = cmake
+	depends = gtk2
+	depends = sdl2
+	depends = qt5-base
+	provides = duckstation
+	source = git+https://github.com/stenzek/duckstation.git#branch=master
+	sha256sums = SKIP
+
+pkgname = duckstation-git
+
