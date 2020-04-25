@@ -1,19 +1,21 @@
 pkgbase = nushell-bin
 	pkgdesc = A shell for the GitHub era
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nushell.sh
+	install = nushell-bin.install
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = zlib
-	optdepends = libxcb
-	optdepends = libx11
+	depends = libxcb
+	depends = openssl
+	optdepends = libx11: for binaryview plugin
 	conflicts = nushell
 	source = nushell-bin-0.13.0.tar.gz::https://github.com/nushell/nushell/releases/download/0.13.0/nu_0_13_0_linux.tar.gz
-	source = nu-wrapper
+	source = https://raw.githubusercontent.com/nushell/nushell/0.13.0/LICENSE
 	sha256sums = edab98782203cd16ce40c421e4362a917fdbae8405a141ba56acf381233b2ece
-	sha256sums = 7833deeeb802bd9f6a11c7509cf930efc3c7e8ef314b56b9df022b90ca42c5f6
+	sha256sums = 57fdb6634a2372af0978dd178f8e157f227d96f3ca27ae9c73f1320f6c0c41d4
 
 pkgname = nushell-bin
 
