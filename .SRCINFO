@@ -13,6 +13,7 @@ pkgbase = grav
 	optdepends = apache: A high performance Unix-based HTTP server
 	optdepends = nginx: Lightweight HTTP server and IMAP/POP3 proxy server
 	optdepends = php-fpm: FastCGI Process Manager
+	optdepends = php-apache: Apache SAPI for PHP
 	provides = grav
 	source = https://github.com/getgrav/grav/archive/1.7.0-rc.8/grav-v1.7.0-rc.8.zip
 	sha256sums = 39f96f910e224544c4f898788b4dabb85bd69b951d68f3618069fb8daefda481

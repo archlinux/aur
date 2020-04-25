@@ -14,7 +14,8 @@ optdepends=('php-apcu: A userland caching module for PHP'
 			'xdebug: PHP debugging extension' 
 			'apache: A high performance Unix-based HTTP server' 
 			'nginx: Lightweight HTTP server and IMAP/POP3 proxy server'
-			'php-fpm: FastCGI Process Manager')
+			'php-fpm: FastCGI Process Manager'
+			'php-apache: Apache SAPI for PHP')
 install=grav.install
 source=("https://github.com/getgrav/grav/archive/${pkgver:0:5}-${pkgver:6}/${pkgname}-v${pkgver:0:5}-${pkgver:6}.zip")
 sha256sums=('39f96f910e224544c4f898788b4dabb85bd69b951d68f3618069fb8daefda481')
