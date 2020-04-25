@@ -1,8 +1,8 @@
 pkgbase = ninjaos-bootandnuke
 	pkgdesc = Ninja Boot'n'Nuke. Boot'n'Nuke implemented as an initcpio image.
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
-	url = https://gitlab.com/ninjaos/ninja-bootandnuke
+	url = http://ninjaos.org/projects.html#bootandnuke
 	install = ninjaos-bootandnuke.install
 	arch = any
 	groups = ninjaos
@@ -14,10 +14,10 @@ pkgbase = ninjaos-bootandnuke
 	provides = mkinitcpio-nban
 	conflicts = mkinitcpio-nban
 	replaces = mkinitcpio-nban
-	source = http://ninjaos.org/downloads/projects/ninjaos-bootandnuke-1.5.tar.gz
-	source = http://ninjaos.org/downloads/projects/ninjaos-bootandnuke-1.5.tar.gz.sig
-	validpgpkeys = D5E76841665A4408D73C2D8796FD6113A1F8331E
-	sha256sums = f645198e50fcdc7318786ba05ebad2ceea696f20ea027b9d95cb4d6410292b0e
+	source = http://ninjaos.org/downloads/projects/ninjaos-bootandnuke-1.6.tar.gz
+	source = http://ninjaos.org/downloads/projects/ninjaos-bootandnuke-1.6.tar.gz.sig
+	validpgpkeys = C65B1F383A46C38A3D3CFDF9C61EC681A148AF51
+	sha256sums = d24d1bb819fc2887d2fcec4d4f4c14284270bef128cc661bded63b00895ac002
 	sha256sums = SKIP
 
 pkgname = ninjaos-bootandnuke

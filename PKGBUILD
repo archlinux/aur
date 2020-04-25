@@ -1,4 +1,4 @@
-# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 # This is the package build for the tools to build nban and the shuriken
 # This was originally developed for Ninja OS, but has been back ported to Arch
@@ -17,11 +17,13 @@
 # in the future, isolinux and pxelinux, so that the user can make a custom
 # shuriken for any hardware.(see shuriken_forge --help)
 
+# This is very much a valid security tool, and its very well documented.
+
 pkgname=ninjaos-bootandnuke
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="Ninja Boot'n'Nuke. Boot'n'Nuke implemented as an initcpio image."
-url="https://gitlab.com/ninjaos/ninja-bootandnuke"
+url="http://ninjaos.org/projects.html#bootandnuke"
 arch=('any')
 license=('GPL3')
 groups=('ninjaos')
@@ -32,9 +34,10 @@ conflicts=("mkinitcpio-nban")
 provides=("mkinitcpio-nban")
 source=("http://ninjaos.org/downloads/projects/${pkgname}-${pkgver}.tar.gz"
         "http://ninjaos.org/downloads/projects/${pkgname}-${pkgver}.tar.gz.sig")
-sha256sums=('f645198e50fcdc7318786ba05ebad2ceea696f20ea027b9d95cb4d6410292b0e'
+sha256sums=('d24d1bb819fc2887d2fcec4d4f4c14284270bef128cc661bded63b00895ac002'
             'SKIP')
-validpgpkeys=('D5E76841665A4408D73C2D8796FD6113A1F8331E')
+validpgpkeys=('C65B1F383A46C38A3D3CFDF9C61EC681A148AF51')
+
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     cp -ra . "${pkgdir}"
