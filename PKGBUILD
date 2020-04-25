@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=python-akshare
-pkgver=0.4.70
+pkgver=0.4.90
 pkgrel=1
 pkgdesc="AkShare is an elegant and simple financial data interface library for Python, built for human beings"
 arch=('any')
@@ -33,7 +33,7 @@ depends=('python-beautifulsoup4'
 		 'python-decorator')
 makedepends=('python-setuptools')
 source=("https://github.com/jindaxiang/akshare/archive/v${pkgver}.tar.gz")
-md5sums=('5764999c69a06ed93a5266787deaa569')
+sha256sums=('40e22de67f920d6dddc79056011ee6c89cdf23dedd1c497e2fb2aab1419e6515')
 
 build() {
   cd ${srcdir}/akshare-${pkgver}
