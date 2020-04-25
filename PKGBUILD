@@ -22,7 +22,7 @@ sha512sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/librime-lua"
-    printf "%s.r%s.%s" "$(echo $_pkgver)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "1.5.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
