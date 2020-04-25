@@ -1,7 +1,7 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=lfo-blender.lv2-git
-pkgdesc="https://github.com/BramGiesen/cv-lfo-blender-lv2"
+pkgdesc="An LV2 plugin with 4 LFOs and 5 CV outputs."
 pkgver=r7.0d9fab3
 pkgrel=1
 epoch=
