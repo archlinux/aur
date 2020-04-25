@@ -1,0 +1,16 @@
+pkgbase = tmsu-bin
+	pkgdesc = A tool for tagging your files and accessing them through a virtual filesystem. (Pre-compiled)
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://tmsu.org
+	arch = x86_64
+	license = GPL3
+	depends = fuse
+	depends = sqlite>=3
+	provides = tmsu
+	conflicts = tmsu
+	source = https://github.com/oniony/TMSU/releases/download/v0.7.5/tmsu-x86_64-0.7.5.tgz
+	sha256sums = 8e648e1674b00b288a7307d962806281f97f7169a398f84b3616887c5da3e722
+
+pkgname = tmsu-bin
+
