@@ -1,7 +1,7 @@
 # Maintainer: RubenKelevra
 
 pkgname=python-baseconv
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Convert numbers from base 10 integers to base X strings and back again"
 url="https://github.com/semente/python-baseconv"
@@ -9,7 +9,7 @@ depends=('python')
 license=('python')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-b2sums=('65499e46757260d15363cacd8519b62b6bc2a1d1f9bf17abe5a0a8065ca8fbe14639bf803c999139b7e3f850462340c9cc759840a2657ac3517851d6b361f5c4')
+b2sums=('775abc86664b1f2867cde7eaded5561c7a2b445df98ffb50265bcfaf33b76e1cc2baac102f3841ca938f65c2f79715a6bbb2521db04c8aede0dbf3912ee8250b')
 
 build() {
     cd $srcdir/${pkgname}-${pkgver}
