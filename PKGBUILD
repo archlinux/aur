@@ -8,7 +8,6 @@ arch=('x86_64')
 url="https://github.com/osxmidi/LinVst3"
 depends=('wine' 'freetype2' 'xcb-util' 'xcb-util-cursor' 'xcb-util-keysyms' 'libxkbcommon-x11' 'libx11' 'expat' 'gtkmm3' 'sqlite')
 makedepends=('git')
-optdepends=('linvstmanager: GUI for managing LinVST bridges')
 conflicts=('linvst3x')
 provides=('linvst3x' "${pkgname}")
 source=("https://github.com/osxmidi/LinVst3-X/releases/download/1.7/LinVst3-X-${pkgver}-Manjaro.zip")
