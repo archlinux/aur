@@ -1,7 +1,7 @@
 pkgbase = tp-kb-backlight-git
 	pkgdesc = Automated keyboard backlight
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexmohr/keyboard-backlight
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = tp-kb-backlight-git
 	makedepends = cmake
 	makedepends = gcc
 	depends = libinput
+	backup = etc/systemd/system/keyboard_backlight.service
 	source = git+https://github.com/alexmohr/keyboard-backlight
 	sha512sums = SKIP
 
