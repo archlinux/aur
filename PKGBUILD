@@ -1,7 +1,7 @@
 # Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
 
 pkgname="python-gitlab-registry-usage-rest"
-pkgver="0.2.5"
+pkgver="0.2.6"
 pkgrel="1"
 pkgdesc="A restful web service for querying the repository sizes of a GitLab registry."
 arch=("any")
@@ -14,7 +14,7 @@ depends=("python" "python-cheroot" "python-flask" "python-flask-cors"
 makedepends=("python-setuptools")
 optdepends=("python-json2html: html support")
 source=("https://github.com/sciapp/gitlab-registry-usage-rest/archive/v${pkgver}.tar.gz")
-sha256sums=("fa029eee3150c527d4a3a34b834d137282fbd829c47f9d8918b7fdc30d2c2f43")
+sha256sums=("90da05087839a774cb5f605d58a75d22b6a00f55437811e6d91596d65c6b1c13")
 
 build() {
     cd "${srcdir}/${pkgname#*-}-${pkgver}" || return
