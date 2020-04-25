@@ -6,21 +6,13 @@ pkgbase = python-vdf
 	arch = any
 	license = MIT
 	checkdepends = python
-	checkdepends = python2
 	checkdepends = python-nose
 	checkdepends = python-coverage
 	checkdepends = python-mock
-	checkdepends = python2-nose
-	checkdepends = python2-coverage
-	checkdepends = python2-mock
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python
 	source = python-vdf-3.2.tar.gz::https://github.com/ValvePython/vdf/archive/v3.2.tar.gz
 	sha256sums = ad790a34a20d9c5f36b8bd9e93658f85a9e90be7c84bb3a24f893b531a94e3ca
 
 pkgname = python-vdf
-	depends = python
-
-pkgname = python2-vdf
-	depends = python2
 
