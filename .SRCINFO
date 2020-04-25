@@ -1,0 +1,24 @@
+pkgbase = mpd-notification-time-git
+	pkgdesc = Notify about tracks played by mpd. Prints time and notify on received signal.
+	pkgver = 0.8.5.r25.336d088
+	pkgrel = 1
+	url = https://github.com/poroing/mpd-notification
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = systemd
+	makedepends = markdown
+	depends = libsystemd
+	depends = ffmpeg
+	depends = file
+	depends = iniparser
+	depends = libnotify
+	depends = libmpdclient
+	provides = mpd-notification
+	conflicts = mpd-notification
+	source = mpd-notification-time::git+https://github.com/Poroing/mpd-notification.git
+	md5sums = SKIP
+
+pkgname = mpd-notification-time-git
+
