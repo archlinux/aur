@@ -1,6 +1,6 @@
 pkgbase = avif
 	pkgdesc = Library for encoding and decoding .avif files
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/AOMediaCodec/libavif
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = avif
 	depends = dav1d
 	depends = libjpeg
 	depends = libpng
-	source = avif-0.7.1.tar.gz::https://github.com/AOMediaCodec/libavif/archive/v0.7.1.tar.gz
+	source = avif-0.7.2.tar.gz::https://github.com/AOMediaCodec/libavif/archive/v0.7.2.tar.gz
 	sha256sums = bd48009aed6defc3a76c991612e1d2e3e255f6ec1840db0d562a9e84094da674
 
 pkgname = avif
