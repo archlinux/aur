@@ -3,7 +3,7 @@
 pkgname=blabel
 pkgver=1.03
 pkgbuild=28
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux labeling program for Brother P-touch series"
 arch=('any')
 url="https://apz.fi/$pkgname"
@@ -22,7 +22,7 @@ changelog=
 source=($url/src/$pkgname-v$pkgver-build-$pkgbuild.tar.bz2)
 
 noextract=()
-md5sums=('0d64bc715d0be93cdeea559844ccdd4d')
+md5sums=('a2d2d7e292af7e5b8a09f50a30c57c32')
 
 build() {
 	echo "Nothing to build"
