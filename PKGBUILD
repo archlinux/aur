@@ -7,7 +7,7 @@ pkgbase=postgresql-10
 pkgname=('postgresql-libs-10' 'postgresql-docs-10' 'postgresql-10')
 pkgver=10.12
 _majorver=${pkgver%.*}
-pkgrel=2
+pkgrel=3
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -208,12 +208,12 @@ package_postgresql-10() {
   cd "${srcdir}"
   install -Dm 755 postgresql-check-db-dir -t "${pkgdir}/usr/bin"
 
-  install -Dm 644 ${pkgname}.pam "${pkgdir}/etc/pam.d/${pkgname}"
-  install -Dm 644 ${pkgname}.logrotate "${pkgdir}/etc/logrotate.d/${pkgname}"
+  install -Dm 644 postgresql.pam "${pkgdir}/etc/pam.d/postgresql"
+  install -Dm 644 postgresql.logrotate "${pkgdir}/etc/logrotate.d/postgresql"
 
-  install -Dm 644 ${pkgname}.service -t "${pkgdir}/usr/lib/systemd/system"
-  install -Dm 644 ${pkgname}.sysusers "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-  install -Dm 644 ${pkgname}.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  install -Dm 644 postgresql.service -t "${pkgdir}/usr/lib/systemd/system"
+  install -Dm 644 postgresql.sysusers "${pkgdir}/usr/lib/sysusers.d/postgresql.conf"
+  install -Dm 644 postgresql.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/postgresql.conf"
 
   # clean up unneeded installed items
   rm -rf "${pkgdir}/usr/include/postgresql/internal"
