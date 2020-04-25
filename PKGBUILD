@@ -7,7 +7,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-qt5
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 pkgdesc="Qt 5 for Android"
 arch=('any')
@@ -65,10 +65,10 @@ _pkgfqn="qt-everywhere-src-${pkgver}"
 install="${pkgname}.install"
 source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkgver}/single/${_pkgfqn}.tar.xz"
         "0001-Support-pkg-config-under-Android.patch"
-        "0003-Fix-neon.patch")
-md5sums=('781c3179410aff7ef84607214e1e91b4'
+        "0002-Force-64-bit-atomics-usage.patch")
+md5sums=('b3d2b6d00e6ca8a8ede6d1c9bdc74daf'
          '6af9dcc450ae6c69d8fddccf0680d84a'
-         '656c7eec7d37854cef1763c163c1ca98')
+         'f17efcb3d46afefd9d2c011301fd53c5')
 
 prepare() {
     cd ${_pkgfqn}
@@ -80,8 +80,8 @@ prepare() {
     patch -Np1 -i "../0001-Support-pkg-config-under-Android.patch"
 
     case "$_android_arch" in
-        armv7a-eabi)
-            patch -Np1 -i "../0003-Fix-neon.patch"
+        aarch64 | x86-64)
+            patch -Np1 -i "../0002-Force-64-bit-atomics-usage.patch"
             ;;
         *)
             ;;
@@ -115,6 +115,7 @@ build() {
         -examplesdir ${ANDROID_PREFIX_SHARE}/qt5/examples
         -testsdir ${ANDROID_PREFIX_SHARE}/qt5/tests
         -xplatform android-clang
+        --disable-rpath
         -nomake tests
         -nomake examples
         -skip qtserialport
