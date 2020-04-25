@@ -3,7 +3,7 @@
 
 
 pkgname=devolo-dlan-cockpit
-pkgver=5.1.2
+pkgver=5.1.3
 pkgrel=1
 name=devolo-cockpit-v${pkgver//./-}-linux.run
 install=${pkgname}.install
@@ -39,7 +39,7 @@ package() {
 	printf "<?xml version="1.0" encoding="utf-8"?>\n<data_collection><allowed>2</allowed></data_collection>" > "${srcdir}/config.xml"
   	install -Dm644 "${srcdir}/config.xml" "${pkgdir}/var/lib/devolonetsvc/config.xml"  	
   	install -Dm644 "${srcdir}/devolonetsvc.service" "${pkgdir}/usr/lib/systemd/system/devolonetsvc.service"
- }
- 
-sha256sums=('9e03d2f1d16e38cf6f948586a87dc61cd53387e7ac923b9dc85f183206cdaa3e'
+}
+
+sha256sums=('5f736754bc87159fb1d7a72956437dd48d4404a9673c744ebb5805ffd3879632'
             '6f187ca5c7a599b5394ea09cd68885168dbd19b5bd72df5ce083e721e2f0a12c')
