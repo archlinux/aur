@@ -1,0 +1,4 @@
+post_install() {
+	echo '==> An example key bindings file has been provided in /usr/share/lambda-term-inputrc,'
+	echo '==> copy it to ~/.config/.lambda-term-inputrc if you wish to customize it'
+}
