@@ -2,7 +2,7 @@
 
 pkgname=prusa-slicer
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=(x86_64)
 url="https://github.com/prusa3d/PrusaSlicer"
