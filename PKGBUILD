@@ -1,5 +1,5 @@
 pkgname=python-nbsphinx
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Jupyter Notebook Tools for Sphinx"
 url="http://nbsphinx.rtfd.org/"
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('python-docutils' 'python-jinja' 'jupyter-nbconvert' 'jupyter-nbformat' 'python-sphinx')
 makedepends=('python-setuptools')
 source=("https://github.com/spatialaudio/nbsphinx/archive/${pkgver}.tar.gz")
-sha256sums=('381cedbda9b830a1e5aceeadca84c0b9cf810eddd82068fb5397092da0ae8755')
+sha256sums=('58a6366eaca3eb45ed129bda53e4506bf5f7b4e8dd58b229cd154030837f2380')
 
 build() {
   cd "${srcdir}"/nbsphinx-$pkgver
