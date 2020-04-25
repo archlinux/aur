@@ -1,15 +1,15 @@
-# Maintainer: Marcel Krüger <marcel@2krueger.de>
+# Maintainer: Benjamin Vialle <archlinux@vialle.io>
 
 _pkgbase=intel_nuc_led
 pkgname=${_pkgbase}-dkms-git
-pkgver=r3.c4b39cb
+pkgver=r3.6aca554
 pkgrel=1
 pkgdesc="Intel NUC8i[x]HVK, NUC7i[x]BN and NUC6CAY LED Control for Linux (DKMS)"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/benjaminvialle/intel_nuc_led"
 license=('GPL3')
-depends=('dkms')
-makedepends=('git')
+depends=('python' 'bash')
+makedepends=('dkms' 'git')
 #conflicts=("${_pkgbase}")
 #install=${pkgname}.install
 source=("git+https://github.com/benjaminvialle/intel_nuc_led.git"
