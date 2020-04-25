@@ -1,6 +1,6 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=xfce4-sysinfo
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="A tool to show systeminformation in xfce"
 arch=(any)
@@ -25,6 +25,7 @@ prepare(){
 package() {
 	cd "$srcdir/$pkgname"
 	install -Dm0644 -t "$pkgdir/usr/share/applications" "xfce4-sysinfo.desktop"
+	install -Dm0644 -t "$pkgdir/usr/share/xfce4-sysinfo" "icons/"
 	install -Dm0755 -t "$pkgdir/usr/bin" "sysinfo"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
