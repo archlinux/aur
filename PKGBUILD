@@ -1,7 +1,7 @@
 # Maintainer: LinuxVieLoisir <contact@gnumeria.fr>
 
 pkgname=firefox-nightly-hg
-pkgver=r525770.1d081d576488
+pkgver=r526053.d8a8178627c4
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, nightly version"
 _repo=https://hg.mozilla.org/mozilla-central
@@ -24,10 +24,14 @@ install=firefox.install
 options=(!emptydirs)
 source=("hg+$_repo"
         firefox-nightly.desktop
+        firefox-nightly-updater.desktop
+        firefox-nightly-updater
         vendor.js)
 
 sha512sums=('SKIP'
             '28219dab29bb53fa66c894ea16330f3cd20f6783000141a1a57e2a9616d9b4a377f85fd8d213e47c5323738e0a867039bc64648e2316aa7519266d23c14989e4'
+            'bda40248aac3fc352931a5f3bba32b7645a881bd67925e55098f3e2e14f8460fa011c80193522d13747bf0d1117d7fb4afe740fdff28bfc1f975eba4c2345532'
+            'ef07c73c18f6340e21fa49b6d6b091447d3b881c559d0c9a98495b61614b6172534da7dde783a5ed5c577f96480c972859763d08d61d9dba24d3a8072c02462c'
             'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -153,6 +157,8 @@ app.partner.archlinux=archlinux
 END
 
   mv "$pkgdir/usr/lib/firefox" "$pkgdir/usr/lib/$_pkgname"
+  cp "$srcdir/firefox-nightly-updater" "$pkgdir/usr/bin/firefox-nightly-updater"
+
   
   for i in 16 22 24 32 48 256; do
       install -Dm644 browser/branding/nightly/default32.png \
@@ -167,6 +173,9 @@ END
 
   install -Dm644 ../firefox-nightly.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
+
+  install -Dm644 ../firefox-nightly-updater.desktop \
+    "$pkgdir/usr/share/applications/firefox-nightly-updater.desktop"
     
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
 #!/bin/sh
