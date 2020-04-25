@@ -2,16 +2,16 @@
 pkgbase=python-parfive
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A HTTP and FTP parallel file downloader"
 arch=('i686' 'x86_64')
-url="https://parfive.readthedocs.io/"
+url="https://parfive.readthedocs.io"
 license=('MIT')
-makedepends=('python-setuptools' 'python-sphinx-astropy' 'python-aiohttp' 'python-tqdm' 'graphviz' 'python-sunpy-sphinx-theme')
-checkdepends=('python-pytest-localserver')
+makedepends=('python-setuptools-scm' 'python-sphinx-astropy' 'python-aiohttp' 'python-tqdm' 'graphviz' 'python-sunpy-sphinx-theme')
+checkdepends=('python-pytest-localserver' 'python-pytest-asyncio' 'python-pytest-socket' 'python-aioftp')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('093d52b99263398e902c70a1f128f3ca')
+md5sums=('c67356ea273ce7064196c3aee229a2f7')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -24,12 +24,13 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    python setup.py test
+    pytest
 }
 
 package_python-parfive() {
-    depends=('python>=3.5' 'python-tqdm' 'python-aiohttp')
-    optdepends=('python-parfive-doc: Documentation for Parfive')
+    depends=('python>=3.6' 'python-tqdm' 'python-aiohttp')
+    optdepends=('python-aioftp'
+                'python-parfive-doc: Documentation for Parfive')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
