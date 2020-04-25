@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee
-pkgver=2020.03.1
+pkgver=2020.03.2
 pkgrel=1
 pkgdesc="Flowee Bitcoin products"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("https://gitlab.com/FloweeTheHub/thehub/-/archive/$pkgver/thehub-$pkgver
     "flowee.conf"
     "logs.conf")
 
-sha256sums=("59536821254db2b39d1596d721090e5214fb43a855ed2cad81d0ffb4bb2a4daa"
+sha256sums=("87c8be480629133a9c65a7bca3121c4a47e2673f8307e92e7ea26d493b771cd5"
     "aff02b3312c88113fe7316152c15f1545233dc8c2062ee8c36d2dbcad4a9f5bf"
     "bc14acf0d1b4064553756a1e81c0b943e842296f2a2af6442e480b846392e6bc"
     "2c94fbbccd6981a22951e4696f72d26aa0b5f7ea32aa48e46a0b6ded909fc3db")
