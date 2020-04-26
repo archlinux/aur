@@ -17,9 +17,9 @@ options=('!strip')
 source=("https://download.jetbrains.com/webide/PhpStorm-${pkgver%b*}.tar.gz"
         jetbrains-phpstorm.desktop
         LICENSE)
-sha512sums=('e1994332c0d95b3d78ba2e31e02c6387a47d805a0dbe0efaab25011586b103fae6cd22647bf4fda0df6527876350866ec907671d00e6ee0219b7d2b871414b30'
-            '5755fa6266e29c5dd7a3ba551a5597dfc002ed9b9860ac678731676302c00ea796c3de7391b3160d48aa27bd99338bdaea715f9e365921ec60c6298a945c893d'
-            'e2aaaa75571f368f85bcc4baef27cc502781ce382bf04737763b07244716918fc2f0eb0b78b02631e242c9a5c246b27d720bb28556fc64bbde213403b7bf57f6')
+b2sums=('0da9c77dc37f84e28fbfb60d3ca54e41579174e0d61535ac2a0f8b4014f210418e9ca124ea16b119bd6ea7df07ff5317a3f1ea118a99d8759420a78dfb3b9ee0'
+        'c6f86b243d1b0b9533a59bda7c9036dee0c53b1076052ed69c651f886f745ae69ef9839ab406016d2bc4acad133e4f2d54ff0855caebe05fee47c00b00041f4e'
+        'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
 
 pkgver() {
   echo "${pkgver%b*}b$(find ${srcdir} -maxdepth 1 -type d -printf "%P" | cut -d "-" -f2)"
