@@ -2,7 +2,7 @@
 
 pkgname=funkwhale
 pkgver=0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hosted, modern free and open-source music server, heavily inspired by Grooveshark."
 arch=(any)
 url="https://funkwhale.audio/"
@@ -92,7 +92,10 @@ install=${pkgname}.install
 
 prepare() {
   cd "$srcdir"
+  ## change path of proxy parameters
   sed -id 's#/etc/nginx/funkwhale_proxy.conf#/etc/webapps/funkwhale/funkwhale_proxy.conf#' nginx.template
+  ## remove http2, as it is not always working
+  sed -id 's#443 ssl http2;#443 ssl;#' nginx.template
 }
 
 build() {
@@ -107,10 +110,8 @@ package() {
   install -dm0755 -o root "$pkgdir"/usr/share/webapps/${pkgname}
   cp -R api "$pkgdir"/usr/share/webapps/${pkgname}/.
   cp -R front "$pkgdir"/usr/share/webapps/${pkgname}/.
-#  chmod 755 -R "$pkgdir"/usr/share/webapps/${pkgname}/api/
-  find "$pkgdir"/usr/share/webapps/${pkgname}/api/ -type d -exec chmod 755 {} \;
-  find "$pkgdir"/usr/share/webapps/${pkgname}/api/ -type f -exec chmod 644 {} \;
-  chmod +x "$pkgdir"/usr/share/webapps/${pkgname}/api/manage.py
+  chmod 755 -R "$pkgdir"/usr/share/webapps/${pkgname}/api/
+  chown root:http -R "$pkgdir"/usr/share/webapps/${pkgname}/api/
   mkdir "$pkgdir"/usr/bin
   ln -s /usr/share/webapps/${pkgname}/api/manage.py "$pkgdir"/usr/bin/funkwhale_manage
 
