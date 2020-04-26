@@ -2,12 +2,13 @@
 
 pkgname=linvst2x-bin
 pkgver=2.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's (single wineserver instance variant)"
 arch=('x86_64')
-url="https://github.com/osxmidi/LinVst"
+url="https://github.com/osxmidi/LinVst-X"
+groups=('pro-audio')
 depends=('wine')
-makedepends=('git')
+replaces=('linvst2x')
 conflicts=('linvst2x')
 provides=('linvst2x' "${pkgname}")
 source=("https://github.com/osxmidi/LinVst-X/releases/download/2.7/LinVst-X-${pkgver}-Manjaro.zip")
