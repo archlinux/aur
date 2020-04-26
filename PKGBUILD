@@ -12,8 +12,8 @@ depends=('bash' 'torsocks' 'tor' 'gnupg')
 makedepends=('git')
 source=('git+https://github.com/EtiennePerot/parcimonie.sh'
         'pgp-key::https://perot.me/pgp-minimal.asc')
-sha512sums=('SKIP'
-            '563e341607135f9c1971a6be1ce526af9ac218f4a63cb532ed4b849d360104c60e013429daf5d44b4123d87608238555c7e867f7375d19f743a0cfb2bc5575e8')
+b2sums=('SKIP'
+        'b0a2a2394ce27e6271344a85ae3547e3d80deca3e16709d1d86c2da31fb6d89968062e56e6db214e1f8fc16fb6e86f5dc17acdd30ef8120f4f0bbd9ccdca4b78')
 
 pkgver() {
 	cd parcimonie.sh
