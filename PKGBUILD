@@ -13,7 +13,7 @@ provides=('dovecot-xaps-daemon')
 conflicts=('dovecot-xaps-daemon')
 backup=('etc/xapsd/xapsd.conf')
 source=('git+https://github.com/st3fan/dovecot-xaps-daemon.git')
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd ${_gitname}
