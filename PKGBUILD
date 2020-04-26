@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python' 'python-requests-gpgauthlib')
 makedepends=('python-setuptools')
 source=("https://github.com/liip/wrench/archive/${pkgver}.tar.gz")
-sha512sums=('b8f632e3fa4a813aa58bd6e59c393b0a0f7533cd7adbed46e7311ff2038919270e9ac6c89506f65d889b7a252a635cf4bd41072433af1e8f8a0f8036e712689d')
+b2sums=('df197493031219ac21a77ec3a70376f41fffa921dcc7cabb92c4e09bb2845c17522a971d539098bdbeb3cc55529c5348a3db6ec01a10c163f42afd074ef87de2')
 
 build() {
   cd ${pkgname}-${pkgver}
