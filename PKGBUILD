@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Benoit Landrieu (ben@gresille.org)
-pkgname=scribus
+pkgname=scribus-stable
 pkgver=1.4.8
 pkgrel=0
 epoch=
@@ -19,7 +19,7 @@ depends=('hunspell' 'podofo' 'libcups' 'graphicsmagick' 'poppler'
 makedepends=('cmake' 'qt5-tools')
 optdepends=('lib2geom: for mesh distortion')
 conflicts=('scribus')
-provides=('scribus')
+provides=('scribus-stable')
 replaces=()
 backup=()
 options=()
