@@ -23,15 +23,6 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 noextract=()
 sha256sums=('46979525587887967fb8beed2511191e16860430087293df2916382d5b3fc5f6')
 
-prepare() {
-	cd "$pkgname-$pkgver"
-
-	# setuptools-git-version can't work outside a git repo.
-	sed -i \
-		-e "s/version_format.*/version=\"${pkgver}\",/" \
-		-e "s/setup_requires.*//" setup.py
-}
-
 build() {
 	cd "$pkgname-$pkgver"
 
