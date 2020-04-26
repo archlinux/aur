@@ -1,14 +1,14 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=meowsql-git
 pkgver=0.4.1.alpha.r8.gcfab28d
-pkgrel=1
+pkgrel=2
 pkgdesc="An attempt to port a very useful GUI database client HeidiSQL to C++/Qt"
 arch=('i686' 'x86_64')
 url="https://github.com/ragnar-lodbrok/meow-sql"
 license=('GPL')
 depends=(qt5-base mariadb-libs postgresql-libs)
 makedepends=('git')
-optdepends=(mariadb postgresql)
+optdepends=('mariadb' 'postgresql')
 conflicts=("${pkgname%-*}")
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
