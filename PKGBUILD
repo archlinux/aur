@@ -2,7 +2,7 @@
 pkgname=suricata-nfqueue
 _pkgname=suricata
 pkgver=5.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source mature, fast and robust network IDS and IPS"
 arch=('i686' 'x86_64')
 url="https://suricata-ids.org/"
@@ -63,7 +63,7 @@ package() {
   echo "u suricata -" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
   install -Dm644 /dev/stdin "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf" << 'EOF'
 d /run/suricata 0750 suricata suricata
-d /var/log/suricata 0750 suricata suricata
+d /var/log/suricata 0755 suricata suricata
 d /var/lib/suricata 0750 suricata suricata
 d /var/lib/suricata/rules 0750 suricata suricata
 d /var/lib/suricata/update 0750 suricata suricata

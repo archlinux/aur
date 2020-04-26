@@ -1,7 +1,7 @@
 pkgbase = suricata-nfqueue
 	pkgdesc = An open source mature, fast and robust network IDS and IPS
 	pkgver = 5.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://suricata-ids.org/
 	install = suricata.install
 	arch = i686

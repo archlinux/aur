@@ -2,9 +2,9 @@
 Description=Suricata rules downloader
 
 [Timer]
-OnCalendar=weekly
+OnCalendar=daily
 Persistent=true
-RandomizedDelaySec=12h
+RandomizedDelaySec=1h
 
 [Install]
 WantedBy=timers.target
