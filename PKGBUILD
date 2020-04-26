@@ -42,4 +42,10 @@ package() {
 
   # Copy sources (including Makefile)
   cp -r ${_pkgbase}/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+
+  # Install ledsetter script in /usr/bin
+  install -Dm755  "${pkgdir}"/usr/src/"${_pkgbase}-${pkgver}"/contrib/usr/local/bin/ledsetter "${pkgdir}"/usr/bin/ledsetter
+
+  # Copy module nuc_led configuration in /etc/modprobe.d
+  install -Dm644  "${pkgdir}"/usr/src/"${_pkgbase}-${pkgver}"/contrib/etc/modprobe.d/nuc_led.conf "${pkgdir}"/etc/modprobe.d/nuc_led.conf
 }
