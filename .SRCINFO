@@ -1,10 +1,10 @@
 pkgbase = linvst3-bin
 	pkgdesc = enables Windows vst3's to be used as Linux vst's in Linux vst capable DAW's
 	pkgver = 1.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/osxmidi/LinVst3
 	arch = x86_64
-	makedepends = git
+	groups = pro-audio
 	depends = wine
 	depends = freetype2
 	depends = xcb-util
@@ -18,6 +18,7 @@ pkgbase = linvst3-bin
 	provides = linvst3
 	provides = linvst3-bin
 	conflicts = linvst3
+	replaces = linvst3
 	source = https://github.com/osxmidi/LinVst3/releases/download/1.8/LinVst3-1.8.1-Manjaro.zip
 	sha256sums = 5111ef5a0683267781ae6f943e954d1c1ebb225b886b12f6558aab5397a8d88d
 
