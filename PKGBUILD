@@ -16,8 +16,8 @@ conflicts=('exfat' 'exfat-git')
 options=('!strip')
 source=('git+https://github.com/barrybingo/exfat-nofuse.git'
         dkms.conf)
-sha512sums=('SKIP'
-            'cbb4fff8f158d5feacd6ad9c4ec42e13b70891b532dd89eda5fd5b6327d22b702d69e46a268af73f04eefcf7deef78ba0a5cfb57381e38eb3493136b9628fd43')
+b2sums=('SKIP'
+        'b964beec9c31117d1b35373ea5f3fb4e14c736d69948ce8d438e08c8f7f9af3190eb510e3303249d8d323730f3d8924ce467f32c5724a9cb353ad91ab229d5f4')
 
 pkgver() {
   cd ${_gitname}
