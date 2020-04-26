@@ -13,8 +13,8 @@ pkgbase = xfce-polkit
 	conflicts = polkit-gnome
 	source = https://github.com/ncopa/xfce-polkit/releases/download/v0.3/xfce-polkit-0.3.tar.gz
 	source = xfce-polkit.desktop
-	sha512sums = 2f6c2300caad1410f139e9192046a60e4e64954867085d22ab403f7808634cce7a269de05de13bebeda025c9e5251b1c042efc5af1417f0153dec47c616d15ba
-	sha512sums = 08843b55d193dfdaea9146500936e459a28971fbf5c1b9e045ca1247a319f3e0c030dba1cb58977e87951149993139df25328c14a5a5bf39fe60b35deb2ba433
+	b2sums = f37a9e905457dbcc2e76cb13f4e6be2ca10082d6a1a09732215fb0eadf1360cb85c78154f20de8ffdca6ad1f9d0920773fe655c7c45fde615741a2130cb5d09d
+	b2sums = 7eb192592f826f76240ca1664081f4e092160b15e7d6c29e6a566ce57de54ef09834d1c2468ffb5afe790ad060296db61cfcd9b4aa990d77c559b61e242ee59f
 
 pkgname = xfce-polkit
 
