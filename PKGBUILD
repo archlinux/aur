@@ -5,7 +5,7 @@
 
 pkgname=mixbus32c6
 appname=${pkgname/6/}
-pkgver=6.0.697
+pkgver=6.0.702
 pkgrel=1
 pkgdesc="Harrison Mixbus - Digital Audio Workstation (32C Version)"
 arch=('x86_64')
