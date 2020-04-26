@@ -1,0 +1,216 @@
+diff -Naur a/src/CommHandler.cpp b/src/CommHandler.cpp
+--- a/src/CommHandler.cpp	2009-07-07 18:48:31.000000000 +0200
++++ b/src/CommHandler.cpp	2014-01-26 18:33:39.889735898 +0100
+@@ -27,6 +27,8 @@
+ #include <arpa/inet.h>
+ #include <netinet/in.h>
+ #include <bluetooth/bluetooth.h>
++#include <bluetooth/hci.h>
++#include <bluetooth/hci_lib.h>
+ #include <bluetooth/rfcomm.h>
+ 
+ #include "CommHandler.h"
+@@ -69,31 +71,39 @@
+     sin.sin_family = AF_INET;
+     sin.sin_addr.s_addr = INADDR_ANY;
+     sin.sin_port = htons(port);
++    socklen_t len = sizeof(sin);
+ 
+     serverSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+     if(serverSocket == INVALID_SOCKET)
+     {
+-        CUIHandler::Msg("Could not create inet socket: %d\n(%s)", errno, strerror(errno));
++        CUIHandler::Msg("Could not create inet socket: %d(%s)\n", errno, strerror(errno));
+         return -1;
+     }
+ 
+     // Bind the socket to the address returned
+     if(bind(serverSocket, (struct sockaddr*)&sin, sizeof(sin)) < 0)
+     {
+-        CUIHandler::Msg("Could not bind inet socket: %d\n(%s)", errno, strerror(errno));
++        CUIHandler::Msg("Could not bind inet socket: %d(%s)\n", errno, strerror(errno));
+         close(serverSocket);
+         return -1;
+     }
+     if(listen(serverSocket, 1) < 0)
+     {
+-        CUIHandler::Msg("Could not listen on inet socket: %d\n(%s)", errno, strerror(errno));
++        CUIHandler::Msg("Could not listen on inet socket: %d(%s)\n", errno, strerror(errno));
+         close(serverSocket);
+         return -1;
+     }
++    if(getsockname(serverSocket, (struct sockaddr*)&sin, &len) < 0)
++    {
++        CUIHandler::Msg("Could not get socket name: %d(%s)\n", errno, strerror(errno));
++        close(serverSocket);
++        return -1;
++    }
++    printf("smartcam: listening on %s, port %d\n", inet_ntoa(sin.sin_addr), ntohs(sin.sin_port));
+     flags = fcntl(serverSocket, F_GETFL, NULL);
+     if(flags < 0)
+     {
+-        CUIHandler::Msg("Could not retrieve socket flags: %d\n(%s)", errno, strerror(errno));
++        CUIHandler::Msg("Could not retrieve socket flags: %d(%s)\n", errno, strerror(errno));
+         return -1;
+     }
+     flags |= O_NONBLOCK;
+@@ -109,18 +119,25 @@
+     const char* service_dsc = "Smartphone Webcam";
+     const char* service_prov = "Deion";
+ 
++    /* The defines BDADDR_ANY and BDADDR_LOCAL are broken so use our own structs */
++    static const bdaddr_t bt_bdaddr_any   = {{0, 0, 0, 0, 0, 0}};
++    static const bdaddr_t bt_bdaddr_local = {{0, 0, 0, 0xff, 0xff, 0xff}};
++
+     uuid_t root_uuid, l2cap_uuid, rfcomm_uuid, svc_uuid;
+     sdp_list_t *l2cap_list = 0, 
+     *rfcomm_list = 0,
+     *root_list = 0,
+     *proto_list = 0, 
+-    *access_proto_list = 0;
++    *access_proto_list = 0,
++    *svc_class_list = 0;
+     sdp_data_t* channel = 0, *psm = 0;
+ 
+     sdpRecord = sdp_record_alloc();
+ 
+-    // set the general service ID
++    // set the general service class list and service ID
+     sdp_uuid128_create(&svc_uuid, &svc_uuid_int);
++    svc_class_list = sdp_list_append(0, &svc_uuid);
++    sdp_set_service_classes(sdpRecord, svc_class_list);
+     sdp_set_service_id(sdpRecord, svc_uuid);
+ 
+     // make the service record publicly browsable
+@@ -150,11 +167,15 @@
+     int err = 0;
+ 
+     // connect to the local SDP server, register the service record
+-    sdpSession = sdp_connect(BDADDR_ANY, BDADDR_LOCAL, SDP_RETRY_IF_BUSY);
+-    err = sdp_record_register(sdpSession, sdpRecord, 0);
+-    if(err)
+-    {
+-        perror("sdp_record_register");
++    sdpSession = sdp_connect(&bt_bdaddr_any, &bt_bdaddr_local, SDP_RETRY_IF_BUSY);
++    if (sdpSession == NULL) {
++        perror("sdp_connect");
++    } else {  
++        err = sdp_record_register(sdpSession, sdpRecord, 0);
++        if(err)
++        {
++            perror("sdp_record_register");
++        }
+     }
+ 
+     // cleanup
+@@ -162,55 +183,59 @@
+     sdp_list_free(l2cap_list, 0);
+     sdp_list_free(rfcomm_list, 0);
+     sdp_list_free(root_list, 0);
++    sdp_list_free(proto_list, 0);
+     sdp_list_free(access_proto_list, 0);
+-}
+-
+-int CCommHandler::DynamicBtBind(int sock, struct sockaddr_rc* sockaddr, uint8_t* port)
+-{
+-    int status = 0;
+-    for(*port = 1; *port <= 30; *port++)
+-    {
+-        sockaddr->rc_channel = htons(*port);
+-        status = bind(sock, (struct sockaddr*) sockaddr, sizeof(*sockaddr));
+-        if(status == 0)
+-            return 0;
+-    }
+-    errno = EINVAL;
+-    return -1;
++    sdp_list_free(svc_class_list, 0);
+ }
+ 
+ int CCommHandler::StartBtServer()
+ {
+     int flags = 0;
++    uint8_t port = 0;
+     struct sockaddr_rc localAddr = { 0 };
+-    socklen_t opt = sizeof(localAddr);
++    socklen_t len = sizeof(localAddr);
++    struct hci_dev_info di;
+ 
++    if(hci_devinfo(0, &di) < 0)
++    {
++        CUIHandler::Msg("Could not get HCI device info: %d(%s)\n", errno, strerror(errno));
++        return -1;
++    }
+     // allocate server socket
+     serverSocket = socket(AF_BLUETOOTH, SOCK_STREAM, BTPROTO_RFCOMM);
+ 
+     // bind socket to 1st available port of the first available local bluetooth adapter
+     localAddr.rc_family = AF_BLUETOOTH;
+-    localAddr.rc_bdaddr = *BDADDR_ANY;
+-    uint8_t port = 0;
+-    if(DynamicBtBind(serverSocket, &localAddr, &port))
++    localAddr.rc_bdaddr = di.bdaddr;
++    localAddr.rc_channel = 0;
++    if(bind(serverSocket, (struct sockaddr*) &localAddr, sizeof(localAddr)) < 0)
+     {
+-        perror("smartcam: dynamic_bind_rc");
++        CUIHandler::Msg("Could not bind on bt socket: %d(%s)\n", errno, strerror(errno));
+         close(serverSocket);
+         return -1;
+     }
+-    printf("smartcam: port = %d\n", port);
+-    // advertise bt service
+-    RegisterBtService(port);
+     if(listen(serverSocket, 1) < 0)
+     {
+-        CUIHandler::Msg("Could not listen on bt socket: %d\n(%s)", errno, strerror(errno));
++        CUIHandler::Msg("Could not listen on bt socket: %d(%s)\n", errno, strerror(errno));
+         close(serverSocket);
+         return -1;
+     }
++    if(getsockname(serverSocket, (struct sockaddr*) &localAddr, &len) < 0)
++    {
++        CUIHandler::Msg("Could not get socket name: %d(%s)\n", errno, strerror(errno));
++        close(serverSocket);
++        return -1;
++    }
++    char buf[255] = { 0 };
++    ba2str(&localAddr.rc_bdaddr, buf);
++    port = localAddr.rc_channel;
++    printf("smartcam: listening on %s, port %d\n", buf, port);
++    // advertise bt service
++    RegisterBtService(port);
+     flags = fcntl(serverSocket, F_GETFL, NULL);
+     if(flags < 0)
+     {
+-        CUIHandler::Msg("Could not retrieve socket flags: %d\n(%s)", errno, strerror(errno));
++        CUIHandler::Msg("Could not retrieve socket flags: %d(%s)\n", errno, strerror(errno));
+         return -1;
+     }
+     flags |= O_NONBLOCK;
+@@ -229,7 +254,7 @@
+         {
+             return ACCEPT_RETRY;
+         }
+-        CUIHandler::Msg("Could not accept bt connection on socket: %d\n(%s)", errno, strerror(errno));
++        CUIHandler::Msg("Could not accept bt connection on socket: %d(%s)\n", errno, strerror(errno));
+         close(serverSocket);
+         return ACCEPT_ERROR;
+     }
+@@ -254,7 +279,7 @@
+         {
+             return ACCEPT_RETRY;
+         }
+-        CUIHandler::Msg("Could not accept inet connection on socket: %d\n(%s)", errno, strerror(errno));
++        CUIHandler::Msg("Could not accept inet connection on socket: %d(%s)\n", errno, strerror(errno));
+         close(serverSocket);
+         return ACCEPT_ERROR;
+     }
+@@ -331,7 +356,7 @@
+ 
+ void CCommHandler::StopServer()
+ {
+-    if(sdpRecord != NULL)
++    if(sdpRecord != NULL && sdpSession != NULL)
+     {
+         sdp_record_unregister(sdpSession, sdpRecord);
+         sdpRecord = NULL;

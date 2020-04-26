@@ -1,0 +1,64 @@
+37a38
+> #include <linux/sched.h>
+59c60
+< //#define SMARTCAM_DEBUG
+---
+> #define SMARTCAM_DEBUG
+172c173
+< 	printk(KERN_ALERT "smartcam (%s): vidioc_s_fmt_cap called\n\t\twidth=%d; \
+---
+> 	printk(KERN_ALERT "smartcam : vidioc_s_fmt_cap called\n\t\twidth=%d; \
+174c175
+< 	current->comm, f->fmt.pix.width, f->fmt.pix.height, (char*)&f->fmt.pix.pixelformat, 
+---
+> 	/*current->comm,*/ f->fmt.pix.width, f->fmt.pix.height, (char*)&f->fmt.pix.pixelformat, 
+221a223
+> 		SCAM_MSG("Bad memory type for v4l2_requestbuffers\n");
+244a247,248
+> 	vidbuf->memory = V4L2_MEMORY_MMAP;
+> 	
+247c251
+< 		SCAM_MSG("vidioc_querybuf called - invalid memory type\n");
+---
+> 		SCAM_MSG("vidioc_querybuf called - invalid memory type(%d!=%d)\n", V4L2_MEMORY_MMAP, vidbuf->memory);
+457c461
+< static int smartcam_open(struct inode *inode, struct file *file)
+---
+> static int smartcam_open(/*struct inode *inode,*/ struct file *file)
+459,461c463,466
+< 	int minor = 0;
+< 	minor = iminor(inode);
+< 	SCAM_MSG("(%s) %s called (minor=%d)\n", current->comm, __FUNCTION__, minor);
+---
+> 	//int minor = 0;
+> 	//minor = iminor(inode);
+> 	//SCAM_MSG("(%s) %s called (minor=%d)\n", current->comm, __FUNCTION__, minor);
+> 	SCAM_MSG("(%s) %s called\n", current->comm, __FUNCTION__);
+467c472
+< 	SCAM_MSG("(%s) %s called (count=%d, f_pos = %d)\n", current->comm, __FUNCTION__, count, (int) *f_pos);
+---
+> 	SCAM_MSG("(%s) %s called (count=%d, f_pos = %d)\n", current->comm, __FUNCTION__, (int) count, (int) *f_pos);
+518c523
+< 	SCAM_MSG("(%s) %s called (count=%d, f_pos = %d)\n", current->comm, __FUNCTION__, count, (int) *f_pos);
+---
+> 	SCAM_MSG("(%s) %s called (count=%d, f_pos = %d)\n", current->comm, __FUNCTION__, (int) count, (int) *f_pos);
+541c546
+< 	    mask |= (POLLIN | POLLRDNORM)	/* readable */
+---
+> 	    mask |= (POLLIN | POLLRDNORM);	/* readable */
+550c555
+< static int smartcam_release(struct inode *inode, struct file *file)
+---
+> static int smartcam_release(/*struct inode *inode,*/ struct file *file)
+556c561
+< static const struct file_operations smartcam_fops = {
+---
+> static const struct v4l2_file_operations smartcam_fops = {
+565c570
+< 	.llseek         = no_llseek,
+---
+> 	/*.llseek         = no_llseek,*/
+599c604
+< 	.vfl_type		= VID_TYPE_CAPTURE,
+---
+> 	.vfl_type		= VFL_TYPE_GRABBER,

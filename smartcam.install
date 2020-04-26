@@ -1,0 +1,30 @@
+post_install() {
+    echo
+    echo "Before running smartcam, issue modprobe videodev; modprobe smartcam"
+    echo "and install symbian package (.sis) from /usr/share/smartcam/phone_installs"
+    echo "on your phone."
+    echo
+    update-desktop-database -q
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+    /sbin/depmod
+    /bin/true
+}
+
+post_upgrade() {
+    update-desktop-database -q
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+    /sbin/depmod
+    /bin/true
+}
+
+pre_remove() {
+    update-desktop-database -q
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+   /sbin/depmod
+   /bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
