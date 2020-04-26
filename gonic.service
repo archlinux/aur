@@ -19,6 +19,7 @@ Environment=GONIC_DB_PATH=/var/lib/gonic/gonic.db
 #Environment=GONIC_LISTEN_ADDR=0.0.0.0:4747
 #Environment=GONIC_PROXY_PREFIX=
 #Environment=GONIC_SCAN_INTERVAL=
+#Environment=GONIC_JUKEBOX_ENABLED
 
 [Install]
 WantedBy=multi-user.target

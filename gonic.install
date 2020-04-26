@@ -1,0 +1,29 @@
+
+post_install() {
+    echo "To make gonic fully functional, consider performing the following actions:"
+    echo "  + Configure the gonic daemon:"
+    echo "      $ sudo vim /usr/lib/systemd/system/gonic.service"
+    echo "  + Start the gonic daemon:"
+    echo "      $ sudo systemctl start gonic"
+    echo "  + (OPTIONAL) Start the gonic daemon at boot:"
+    echo "      $ sudo systemctl enable gonic"
+    echo "  + (OPTIONAL) Add the gonic user to the audio group to support jukebox mode:"
+    echo "      $ sudo gpasswd -a gonic audio"
+}
+
+pre_upgrade() {
+    systemctl stop gonic
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+}
+
+pre_remove() {
+    systemctl stop gonic
+}
+
+post_remove() {
+    systemctl daemon-reload
+}
+
