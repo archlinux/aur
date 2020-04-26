@@ -5,11 +5,11 @@
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=ungoogled-chromium-ozone
-pkgver=81.0.4044.113
+pkgver=81.0.4044.122
 pkgrel=1
 _pkgname=ungoogled-chromium
 _launcher_ver=6
-_ungoogled_ver=81.0.4044.113-1
+_ungoogled_ver=81.0.4044.122-1
 pkgdesc="A lightweight approach to removing Google web service dependency with patches for wayland support via Ozone"
 arch=('x86_64')
 url="https://ungoogled-software.github.io/"
@@ -42,14 +42,14 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         vdpau-support.patch
         vaapi-build-fix.patch
         fix-vaapi-ozone-build.patch)
-sha256sums=('27cce807a91919211821c4d25be5be8ce48d362166615d4779e886ea0eef5d43'
+sha256sums=('0f9ffd30d769e25e091a87b9dda4d688c19bf85b1e1fcb3b89eaae5ff780182a'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
             '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
             '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
             # -----------
-            '16f4292a3b0e6d53375ba67c860d391a1947bc64ed46c3e1d9be6dcfe9a7541c'
+            '76d8be051998ace843525e694dcbc16f7eea87f12d9ede3d0c1f9ebb859008ed'
             'c6ca2806ffb45cf55c0320f9985e605c105d717e140eb8786d8e292796aec35d'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a'
