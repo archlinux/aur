@@ -1,14 +1,14 @@
 pkgbase = hipblas
 	pkgdesc = Next generation BLAS implementation for ROCm platform
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ROCmSoftwarePlatform/hipBLAS
 	arch = x86_64
 	license = custom:NCSAOSL
 	makedepends = cmake
 	makedepends = hcc>=3.1.0
 	makedepends = python2
-	makedepends = rocm-comgr>=3.1.0
+	makedepends = comgr>=3.1.0
 	makedepends = rocminfo
 	depends = hcc
 	depends = hip
