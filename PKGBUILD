@@ -37,7 +37,7 @@ package()
 	cd "server-${pkgver}"
 
 	# Remove build dependencies
-	yarn install --production
+	yarn install --production --offline --non-interactive
 
 	cd "$srcdir"
 
