@@ -1,13 +1,13 @@
 pkgbase = terminalgraphics
 	pkgdesc = display image and video on terminal
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://github.com/vbextreme/tg
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
 	depends = easyframework
-	source = terminalgraphics-0.5.tar.gz::https://github.com/vbextreme/tg/archive/v0.5.tar.gz
+	source = terminalgraphics-0.6.tar.gz::https://github.com/vbextreme/tg/archive/v0.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = terminalgraphics

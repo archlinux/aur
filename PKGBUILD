@@ -2,7 +2,7 @@
 # Contributor: Vbextreme <@>
 pkgname=('terminalgraphics')
 pkgdesc='display image and video on terminal'
-pkgver='0.5'
+pkgver='0.6'
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/vbextreme/tg'
