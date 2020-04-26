@@ -11,7 +11,7 @@ arch=('any')
 depends=('pass' 'zenity')
 makedepends=('git')
 source=("git://github.com/jlesquembre/${pkgname}.git")
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 package() {
   cd ${pkgname}

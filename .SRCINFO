@@ -9,7 +9,7 @@ pkgbase = pass-sshaskpass
 	depends = pass
 	depends = zenity
 	source = git://github.com/jlesquembre/pass-sshaskpass.git
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = pass-sshaskpass
 
