@@ -1,16 +1,16 @@
 pkgbase = ida-eval
-	pkgdesc = Evaluation version of the world's smartest and most feature-full disassembler
+	pkgdesc = Interactive, programmable, extensible, multi-processor disassembler (evaluation version)
 	pkgver = 7.4
-	pkgrel = 1
-	url = https://www.hex-rays.com/products/ida/
+	pkgrel = 2
+	url = https://out7.hex-rays.com/demo
 	arch = x86_64
 	license = custom
-	makedepends = fakechroot
+	depends = qt5-base
 	options = !strip
 	source = idademo74_linux.run
 	source = ida-eval.desktop
 	sha256sums = 547373518e2823a94195ea5e06cacf53c101610afa0f642204e7265f4b548045
-	sha256sums = 5f51fea009781672998ffec1c1d63d392e87ac6eb04b637a1ee2827805b8e1db
+	sha256sums = 0ccb62aca554831233a9d968a7a886693dfcdd2f03f97d360981d73e9664a982
 
 pkgname = ida-eval
 
