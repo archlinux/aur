@@ -2,7 +2,7 @@
 # Contributor: Hunter Jones <hjones2199 at gmail dot com>
 # Maintainer: Thomas Bork <sudobash418 at gmail dot com>
 pkgname=worldpainter
-pkgver=2.7.6
+pkgver=2.7.7
 pkgrel=1
 pkgdesc='An interactive map generator for Minecraft'
 
@@ -17,7 +17,7 @@ source=("https://www.worldpainter.net/files/${pkgname}_${pkgver}.tar.gz"
 		'worldpainter.png'
 		'worldpainter.desktop'
 		'launch-script')
-sha256sums=('58fca5cc37922321c9edbbb56e4f8a9ffb24294e6b8fa9ce36d98e6526a88105'
+sha256sums=('9253d058fca19fd185ededdb43a6be0589ac379466cba86e5db5f22c8dff3baf'
             'a93cd4af0e8ef470f48a8dd2773fb9d83a5302f1b9bfba67f43b4ec7500a039e'
             '669f78518b75b441f4382cfd14e207dd91ee1dc967383db1771ec202dbb07cb4'
             'fd64d11450f03c8924cbc133a009b3373bc5f80b2589b63391b65db04d82963f')
