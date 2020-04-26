@@ -9,7 +9,7 @@ pkgbase = heif
 	makedepends = cmake
 	depends = gcc-libs
 	source = https://github.com/nokiatech/heif/archive/v3.5.0.tar.gz
-	sha512sums = 504933aff12aee8898e9c51024131cbd2e77303f8fc8e01d42a5668b1f9bca10669e38b609cf42ccc9458427e3d7cc56abdff6cd6c1fa0e7ccbb1f196273e051
+	b2sums = 974f0a2721cbbba57fb2644aeb76e262a8e69537036900d95718565e455bd5ec30429457e34e51401e7944299b9bb97993264c909e063ac7f12f72a1402923ce
 
 pkgname = heif
 
