@@ -1,6 +1,6 @@
 pkgbase = renderdoc-git
 	pkgdesc = OpenGL and Vulkan debugging tool
-	pkgver = 1.7
+	pkgver = 1.7+342.g105f0e4e9f
 	pkgrel = 2
 	url = https://github.com/baldurk/renderdoc
 	arch = i686
