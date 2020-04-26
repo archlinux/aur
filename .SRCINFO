@@ -1,6 +1,6 @@
 pkgbase = sweet-kvantum-git
 	pkgdesc = Sweet theme for Kvantum
-	pkgver = r111.d7a23ac
+	pkgver = r112.0b4e52a
 	pkgrel = 1
 	url = https://github.com/EliverLara/Sweet
 	arch = any
