@@ -11,13 +11,13 @@
 set -u
 _pkgname='dompdf'
 pkgname="php-${_pkgname}"
-pkgver='0.6.1'
+pkgver='0.8.5'
 pkgrel='1'
 pkgdesc='HTML to PDF converter'
 arch=('any')
 url='https://github.com/dompdf/dompdf'
 license=('APACHE')
-depends=('php>=5.3' 'php-gd' 'php-font-lib')
+depends=('php>=5.3' 'php-gd' 'php-font-lib' 'php-svg-lib') # from composer.json
 optdepends=(
   'httpd: web support'
   'pdflib: preferred rendering library'
@@ -33,22 +33,22 @@ options=('!strip')
 # opcache: enabled in compile but not enabled by default
 _verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/dompdf/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('2c96984f77adaac565ee6fd57d6b82794a3caa080ccbb409fb153bdcdd7d2cde')
+sha256sums=('d5b5a6d13cc9d0aad02ef95ac97f8214745db95a9f81a23e8e39d7b551176451')
 
 prepare() {
   set -u
   cd "${_pkgname}-${pkgver}"
-  chmod 644 'dompdf.php'
+  #chmod 644 'dompdf.php'
   set +u
 }
 
 package() {
   set -u
   cd "${_pkgname}-${pkgver}"
-  rm -f 'composer.json'
+  rm 'composer.json' 'phpcs.xml'
   install -Dpm644 'LICENSE.LGPL' "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
-  rm -f 'LICENSE.LGPL'
-  rm -f 'CONTRIBUTING.md' 'README.md'
+  #rm -f 'LICENSE.LGPL'
+  #rm -f 'CONTRIBUTING.md' 'README.md'
 
   install -d "${pkgdir}/usr/share/webapps/${_pkgname}"
   mv * "${pkgdir}/usr/share/webapps/${_pkgname}/"
@@ -58,9 +58,11 @@ package() {
   touch "${pkgdir}/usr/share/webapps/${_pkgname}/lib/fonts/log.htm"
   chmod 666 "${pkgdir}/usr/share/webapps/${_pkgname}/lib/fonts/log.htm"
 
-  # Required php-font-lib addon
+  # Required php-font-lib addon for autoload.inc.php
   #rmdir "${pkgdir}/usr/share/webapps/${_pkgname}/lib/php-font-lib"
-  ln -sf '/usr/share/webapps/FontLib' "${pkgdir}/usr/share/webapps/${_pkgname}/lib/php-font-lib/classes"
+  install -d "${pkgdir}/usr/share/webapps/${_pkgname}/lib/php-font-lib/src"
+  ln -s '/usr/share/webapps/FontLib' "${pkgdir}/usr/share/webapps/${_pkgname}/lib/php-font-lib/src/FontLib"
+  #ln -s '/usr/share/webapps/FontLib' "${pkgdir}/usr/share/webapps/${_pkgname}/lib/php-font-lib/classes"
   set +u
 }
 set +u
