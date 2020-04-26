@@ -6,7 +6,8 @@ pkgname='viewvc'
 #_pkgno='49241'; pkgver='1.0.13'
 #_pkgno='49392'; pkgver='1.1.23'
 #_pkgno='49471'; pkgver='1.1.24'
-pkgver='1.1.27'
+#pkgver='1.1.27'
+pkgver='1.2.1'
 pkgrel='1'
 pkgdesc='web-based vcs version control repository browsing, formerly viewcvs'
 arch=('i686' 'x86_64')
@@ -22,17 +23,19 @@ _verwatch=("${url}/releases.atom" "\s\+<title>ViewVC \([^<]\+\)</title>.*" 'f') 
 #source=("${url}/files/documents/3330/${_pkgno}/${pkgname}-${pkgver}.tar.gz")
 _srcdir="${pkgname}-${pkgver}"
 source=("${_srcdir}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('00d6ea604f3b987c2cff834678b92ab1191e2009c5fdbc0e87d1b7f2226496e4')
+md5sums=('4c1bd8b7b54c0d994d58c7073d1c3e1f')
+sha256sums=('5fe1e16f986b51a2800d908683673b880684e90ae1611d98744187f0649634f5')
 
 package() {
   set -u
+  set -x
   cd "${pkgname}-${pkgver}"
 
   sed -e "s@DESTDIR = None@DESTDIR = \"${pkgdir}/\"@g" \
       -e "s@ROOT_DIR = None@ROOT_DIR = \"/usr/share/${pkgname}\"@g" \
     -i 'viewvc-install'
   python2 viewvc-install
-  install -Dpm755 "${pkgdir}/usr/share/${pkgname}/bin/cgi"/{query.cgi,viewvc.cgi} -t "${pkgdir}/srv/httpd/cgi-bin/"
+  install -Dpm755 "${pkgdir}/usr/share/${pkgname}/bin/cgi"/viewvc.cgi -t "${pkgdir}/srv/httpd/cgi-bin/"
   sed -e "s@#rcs_path = /usr/bin/@rcs_path = /usr/bin/@g" \
       -e "s@mime_types_file = /usr/local/apache/conf/mime.types@mime_types_file = /etc/httpd/conf/mime.types@g" \
     -i "${pkgdir}/usr/share/viewvc/viewvc.conf"
