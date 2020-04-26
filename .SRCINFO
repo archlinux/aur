@@ -1,0 +1,17 @@
+pkgbase = efs2tar-git
+	pkgdesc = Convert SGI EFS-formatted filesystem images to tarballs
+	pkgver = 20181027.4db1b0f
+	pkgrel = 1
+	url = https://github.com/sophaskins/efs2tar
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go-pie
+	makedepends = golang-github-davecgh-go-spew
+	depends = glibc
+	source = git+https://github.com/sophaskins/efs2tar.git
+	md5sums = SKIP
+
+pkgname = efs2tar-git
+
