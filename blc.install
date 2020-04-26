@@ -1,0 +1,9 @@
+#!/bin/sh
+
+post_install() {
+	cat <<-EOF
+	    You will need to source /etc/profile.d/ida-ghidra-blc.sh or set the
+	    GHIDRA_DIR environment variable manually before using the plugin. The
+	    easiset way to do this may be to log out and log back in.
+	EOF
+}

@@ -1,0 +1,20 @@
+pkgbase = blc-git
+	pkgdesc = Integrate Ghidra's decompiler as an Ida plugin
+	pkgver = r47.d4a669e
+	pkgrel = 1
+	url = https://github.com/cseagle/blc
+	install = blc.install
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = ida-free
+	depends = ghidra
+	source = blc-git::git+https://github.com/cseagle/blc
+	source = ida-ghidra-blc.sh
+	source = blc.install
+	sha256sums = SKIP
+	sha256sums = 3aa1f22668db30742a7c12c21b129f6424dc7fd413b0aa1385c7b5f11db018eb
+	sha256sums = 1e202b3da7365044c7d372d1f671bcdb27582c62477ecb5c71812371410de39a
+
+pkgname = blc-git
+
