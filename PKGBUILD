@@ -14,7 +14,7 @@ provides=('tpacpi-bat')
 conflicts=('tpacpi-bat')
 backup=('etc/conf.d/tpacpi')
 source=('git://github.com/teleshoes/tpacpi-bat.git')
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd ${pkgname/-git/}

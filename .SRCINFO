@@ -12,7 +12,7 @@ pkgbase = tpacpi-bat-git
 	conflicts = tpacpi-bat
 	backup = etc/conf.d/tpacpi
 	source = git://github.com/teleshoes/tpacpi-bat.git
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = tpacpi-bat-git
 
