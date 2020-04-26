@@ -37,10 +37,10 @@ package() {
 	cd ${srcdir}/$pkgname
 	python setup.py install --root=$pkgdir --install-data locale
 
-	# Temporary fix for some not found resources
-#	cp -r src/pyload/core/config $pkgdir/usr/lib/python3.7/site-packages/pyload/core
-#	cp -r src/pyload/core/network/xdcc $pkgdir/usr/lib/python3.7/site-packages/pyload/core/network
-#	cp -r src/pyload/locale $pkgdir/usr/lib/python3.7/site-packages/pyload/
+	#Temporary fix for some not found resources
+	cp -r src/pyload/core/config $pkgdir/usr/lib/python3.8/site-packages/pyload/core
+	cp -r src/pyload/core/network/xdcc $pkgdir/usr/lib/python3.8/site-packages/pyload/core/network
+	cp -r src/pyload/locale $pkgdir/usr/lib/python3.8/site-packages/pyload/
 
 	# Create PyLoad service
 	install -D -m 644 ${srcdir}/pyload.service ${pkgdir}/usr/lib/systemd/system/pyload.service
