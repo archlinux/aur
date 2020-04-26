@@ -1,0 +1,2 @@
+KERNEL=="i2c-*", ATTR{name}=="SMBus*" SUBSYSTEM=="i2c-dev"  MODE="0660", GROUP="wheel"
+

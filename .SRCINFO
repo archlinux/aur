@@ -1,0 +1,23 @@
+pkgbase = i2c-nct6775-dkms
+	pkgdesc = The i2c-nct6775 kernel driver
+	pkgver = 5.6.7
+	pkgrel = 1
+	url = https://gitlab.com/CalcProgrammer1/OpenRGB
+	arch = any
+	license = GPL2
+	depends = dkms
+	conflicts = linux>5.7
+	conflicts = i2c-piix4-aura-dkms
+	source = i2c-nct6775.c
+	source = dkms.conf
+	source = Makefile
+	source = 90-i2c-aura.rules
+	source = i2c-nct6775.conf
+	md5sums = 6b41c8cd2bd4ecb9730245c2b64c969f
+	md5sums = e484b41b16f321b8db9804e18c699c40
+	md5sums = 2c5e03996268bae865fd4395917512bd
+	md5sums = e44ab261a99faa252fc142cc5569502c
+	md5sums = a5cabc3bc60d2c9f6e02d1d56047cf8d
+
+pkgname = i2c-nct6775-dkms
+
