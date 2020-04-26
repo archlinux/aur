@@ -1,17 +1,16 @@
 pkgbase = python-thriftpy
-	pkgdesc = Pure python implementation of Apache Thrift.
-	pkgver = 0.3.9
+	pkgdesc = Pure python implementation of Apache Thrift
+	pkgver = 0.3.12
 	pkgrel = 1
 	url = https://thriftpy.readthedocs.org/
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cython
 	makedepends = python-setuptools
 	depends = python
 	optdepends = python-tornado
-	source = https://github.com/eleme/thriftpy/archive/v0.3.9.tar.gz
-	sha256sums = 34b1c12a264d030013bca3aeed87987c90dc260d14066a1cdf294b887aa49ad1
+	source = python-thriftpy-0.3.12.tar.gz::https://github.com/Thriftpy/thriftpy/archive/0.3.12.tar.gz
+	sha256sums = 3f3f95241005cf5f489d675feb096d13a01cf53dc74ef5ce955f05184ff2f2af
 
 pkgname = python-thriftpy
 

@@ -1,9 +1,9 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
-pkgname=('python-thriftpy')
+pkgname='python-thriftpy'
 _module='thriftpy'
-pkgver='0.3.9'
+pkgver='0.3.12'
 pkgrel=1
-pkgdesc="Pure python implementation of Apache Thrift."
+pkgdesc="Pure python implementation of Apache Thrift"
 url="https://thriftpy.readthedocs.org/"
 depends=('python')
 makedepends=(
@@ -11,9 +11,9 @@ makedepends=(
     'python-setuptools')
 optdepends=('python-tornado')
 license=('MIT')
-arch=('i686' 'x86_64')
-source=("https://github.com/eleme/thriftpy/archive/v$pkgver.tar.gz")
-sha256sums=('34b1c12a264d030013bca3aeed87987c90dc260d14066a1cdf294b887aa49ad1')
+arch=('x86_64')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Thriftpy/thriftpy/archive/${pkgver}.tar.gz")
+sha256sums=('3f3f95241005cf5f489d675feb096d13a01cf53dc74ef5ce955f05184ff2f2af')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
