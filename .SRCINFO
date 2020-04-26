@@ -16,7 +16,7 @@ pkgbase = melonds-git-jit
 	provides = melonds
 	conflicts = melonds
 	conflicts = melonds-git
-	source = git+https://github.com/Arisotura/melonDS.git#branch=jit_master_merge
+	source = git+https://github.com/Arisotura/melonDS.git#branch=generic_jit
 	sha256sums = SKIP
 
 pkgname = melonds-git-jit

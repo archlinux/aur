@@ -1,7 +1,7 @@
 # Maintainer: Nadia Holmquist Pedersen <nadia@nhp.sh>
 
 pkgname=melonds-git-jit
-pkgver=0.8.3.r1070.49be24d
+pkgver=0.8.3.r1115.a9dd6e3
 pkgdesc='DS emulator, sorta. also 1st quality melon - JIT recompiler branch.'
 pkgrel=1
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=(
 provides=('melonds')
 conflicts=('melonds' 'melonds-git')
 
-_branch=jit_master_merge
+_branch=generic_jit
 source=("git+https://github.com/Arisotura/melonDS.git#branch=${_branch}")
 sha256sums=('SKIP')
 
