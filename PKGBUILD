@@ -4,12 +4,12 @@
 # then please put 'unknown'.
 
 # Maintainer: Benoit Landrieu (ben@gresille.org)
-pkgname=scribus-stable
+pkgname=scribus-1.4.8
 pkgver=1.4.8
 pkgrel=0
 epoch=
-pkgdesc="scribus-stable"
-arch=('i686' 'x86_64')
+pkgdesc="scribus 1.4.8 current release stable branch"
+arch=('any')
 license=('GPL' 'LGPL')
 url="http://www.scribus.net"
 depends=('hunspell' 'podofo' 'libcups' 'graphicsmagick' 'poppler'
@@ -18,8 +18,8 @@ depends=('hunspell' 'podofo' 'libcups' 'graphicsmagick' 'poppler'
 	 'desktop-file-utils' 'libzmf' 'libfreehand')
 makedepends=('cmake' 'qt5-tools')
 optdepends=('lib2geom: for mesh distortion')
-conflicts=('scribus')
-provides=('scribus-stable')
+conflicts=("${pkgname//-1.4.8/}")
+provides=("${pkgname//-1.4.8/}")
 replaces=()
 backup=()
 options=()
