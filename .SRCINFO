@@ -248,3 +248,38 @@ pkgbase = scribus-1.4.8
 
 pkgname = scribus-1.4.8
 
+pkgbase = scribus-1.4.8
+	pkgdesc = scribus 1.4.8 current release stable branch
+	pkgver = 1.4.8
+	pkgrel = 0
+	url = http://www.scribus.net
+	arch = any
+	license = GPL
+	license = LGPL
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = hunspell
+	depends = podofo
+	depends = libcups
+	depends = graphicsmagick
+	depends = poppler
+	depends = libcdr
+	depends = libvisio
+	depends = libpagemaker
+	depends = harfbuzz-icu
+	depends = python
+	depends = qt5-declarative
+	depends = libmspub
+	depends = openscenegraph
+	depends = libqxp
+	depends = desktop-file-utils
+	depends = libzmf
+	depends = libfreehand
+	optdepends = lib2geom: for mesh distortion
+	provides = scribus-stable
+	conflicts = scribus-svn
+	source = https://netix.dl.sourceforge.net/project/scribus/scribus/1.4.8/scribus-1.4.8.tar.gz
+	md5sums = SKIP
+
+pkgname = scribus-1.4.8
+
