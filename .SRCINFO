@@ -16,7 +16,7 @@ pkgbase = openboardview
 	depends = gtk3
 	depends = libpng
 	source = git+https://github.com/OpenBoardView/OpenBoardView.git#tag=R7.3
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = openboardview
 

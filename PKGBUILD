@@ -11,7 +11,7 @@ license=('MIT')
 depends=('sdl2' 'sqlite' 'zlib' 'fontconfig' 'gtk3' 'libpng')
 makedepends=('git' 'cmake' 'python')
 source=("git+https://github.com/OpenBoardView/OpenBoardView.git#tag=R${pkgver}")
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 build() {
   mkdir -p ${_pkgname}/build
