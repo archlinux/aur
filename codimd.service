@@ -1,6 +1,6 @@
 [Unit]
 Description=CodiMD real-time collaborative markdown editor
-Documentation=file:/opt/codimd/docs/
+Documentation=file:/usr/share/webapps/codimd/docs/
 After=network.target
 
 
