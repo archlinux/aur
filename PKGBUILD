@@ -6,7 +6,7 @@
 
 pkgname='python-paramiko-ng'
 _pkgname='paramiko-ng'
-pkgver=2.8.0
+pkgver=2.8.2
 pkgrel=1
 pkgdesc="Python module that implements the SSH2 protocol"
 provides=('python-paramiko')
@@ -18,7 +18,7 @@ makedepends=('python-setuptools')
 depends=('python-bcrypt' 'python-cryptography' 'python-pyasn1' 'python-pynacl')
 checkdepends=('python-mock' 'python-pytest')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/ploxiln/paramiko-ng/archive/$pkgver.tar.gz")
-sha256sums=('6bc805accc770ec9e973882e26d921197fe692e8de51d4794428239ddd0d6319')
+sha256sums=('ecd54d73a7ac2945e5ab7764686cf86096c021323b80d5a261e2e6bee9e80f5b')
 
 check() {
   cd "$srcdir/$_pkgname-$pkgver"
