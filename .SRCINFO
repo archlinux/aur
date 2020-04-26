@@ -1,17 +1,14 @@
 pkgbase = r-xml
-	pkgdesc = Tools for Parsing and Generating XML Within R and S-Plus
-	pkgver = 3.98.1.16
+	pkgdesc = An ODBC database interface
+	pkgver = 3.99.0.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=XML
-	arch = x86_64
-	license = BSD_2_clause + file LICENSE
-	depends = r
+	arch = any
+	license = GPL2
+	license = GPL3
 	depends = libxml2
-	optdepends = r-bitops
-	optdepends = r-rcurl
-	replaces = r-cran-xml
-	source = https://cran.r-project.org/src/contrib/XML_3.98-1.16.tar.gz
-	md5sums = b2cd5b2a5b83f2a33658310e99b59fd5
+	source = https://cran.r-project.org/src/contrib/XML_3.99-0.3.tar.gz
+	md5sums = 424ade48afa7ab9da1ba5b9443b565ff
 
 pkgname = r-xml
 
