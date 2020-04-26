@@ -1,6 +1,6 @@
 pkgbase = python-undertime
 	pkgdesc = pick a meeting time
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://gitlab.com/anarcat/undertime
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-undertime
 	depends = python-pyaml
 	depends = python-termcolor
 	depends = python-tabulate
-	source = https://files.pythonhosted.org/packages/71/0e/6a3329ce186428088aa29e7a38a4329872917b728a196e51219205d3e107/undertime-2.1.0-py3-none-any.whl
-	md5sums = 4d377bcbd78ca036234d5221d15624a5
+	source = https://files.pythonhosted.org/packages/24/1a/f08f834f20089ecfb0d98e46e789dc6d8d0c4aa9bdce60b7b0cc730d6ca1/undertime-2.2.0-py3-none-any.whl
+	md5sums = caa38d062ff1e332804ccde058590825
 
 pkgname = python-undertime
 
