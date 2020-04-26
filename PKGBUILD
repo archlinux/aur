@@ -1,4 +1,4 @@
-# Maintainer: ettom <motte at cock dot li>
+# Maintainer: motte <ettom22 at hotmail dot com>
 
 _pkgname=smuview
 _spkgname=SmuView
