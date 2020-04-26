@@ -10,7 +10,7 @@ pkgbase = tbt
 	makedepends = txt2tags
 	depends = boost-libs
 	source = https://github.com/01org/thunderbolt-software-user-space/archive/v0.9.3.tar.gz
-	sha512sums = b8bcb31d864376c644f9813abf2d090cc3239271df8a8e71ff7d5e398e993d4d01e94ba5fc1bc13d7dd0fa861b4b918a6df0724ca43f54a5e706ec67f3c7846b
+	b2sums = afc614d0d2f7de3c23988e08c0053d24a04be51d22986497e3863b76ad59f1a8a9e2ab323210df27a3fa2f07ab05122666a3c6bfde146250f0854b2dfb6748f8
 
 pkgname = tbt
 
