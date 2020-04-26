@@ -3,8 +3,9 @@
 # Contributor: 2ion <dev@2ion.de>
 
 set -u
-pkgname='miller'
-pkgver='5.6.2'
+pkgname="miller"
+#pkgname+='-git'
+pkgver='5.7.0'
 pkgrel='1'
 pkgdesc='sed, awk, cut, join, and sort for name-indexed data such as CSV and tabular JSON.'
 arch=('x86_64' 'i686')
@@ -13,25 +14,39 @@ license=('MIT')
 depends=('glibc')
 makedepends=('make' 'gcc' 'flex' 'ctags' 'valgrind' 'asciidoc' 'autoconf')
 _verwatch=("${url}/releases" ".*/mlr-\([0-9.]\+\)\.tar\.gz.*" 'f') # mlr RSS is filled with everything but releases
-_srcdir="mlr-${pkgver}"
-source=("${url}/releases/download/v${pkgver}/mlr-${pkgver}.tar.gz")
+_srcdir="mlr-${pkgver%.r*}"
+source=("${url}/releases/download/v${pkgver%.r*}/mlr-${pkgver%.r*}.tar.gz")
 #source[0]='https://github.com/johnkerl/miller/archive/master.tar.gz'; _srcdir='miller-master'
-sha256sums=('29b69cf8d0051688aeba3f6998d9b69baea1c9d0a2c14fef56cdb6fa03110eab')
+md5sums=('0e27fd585aeaa56cd4309dbf133907f6')
+sha256sums=('3896a8be073427671e7ba84993c071891fb39769696fd566b8b77ec0abd3ea51')
 
-prepare() {
+if [ "${pkgname%-git}" != "${pkgname}" ]; then
+  md5sums[0]='SKIP'
+  sha256sums[0]='SKIP'
+  source[0]="${url//https/git}"
+  makedepends+=('git')
+  conflicts=("${pkgname%-git}")
+  provides=("${pkgname%-git}=${pkgver%.r*}")
+  _srcdir="${pkgname%-git}"
+pkgver() {
+  set -u
+  cd "${_srcdir}"
+  git describe --long --tags | sed -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g' -e 's:^v::g'
+  set +u
+}
+elif [ "${pkgver%.r*}" != "${pkgver}" ]; then
+pkgver() {
+  echo "${pkgver%.r*}"
+}
+fi
+
+build() {
   set -u
   cd "${_srcdir}"
   if [ ! -s 'Makefile' ]; then # 2.2.1 and newer
     autoreconf -fiv
     ./configure --prefix='/usr'
   fi
-  set +u
-}
-
-
-build() {
-  set -u
-  cd "${_srcdir}"
   if grep -q 'am__is_gnu_make' 'Makefile'; then # 2.2.1 and newer
     local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
     nice make -s -j "${_nproc}"
