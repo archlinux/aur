@@ -8,7 +8,7 @@ pkgbase = nameinator
 	makedepends = go
 	makedepends = git
 	source = https://github.com/mwiora/NAMEinator/archive/v0.0.4.tar.gz
-	sha512sums = a981e75bd8e3c228cbb194f14416476ac1a222fb490bc0343fe8319ea9d3105db9e571f252c57c8e7d956102b4e1adecaa26ee71a077aba0855bb70d1e878d5b
+	b2sums = cf0a60a82127d0e336247a503bd509e713daa773f789f2301a85e8e9d1a6cd31e3cfb6184c5ccb4869ac53678aa2c131d3377b2f70a063866682e5e5e05fa283
 
 pkgname = nameinator
 
