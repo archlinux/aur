@@ -2,8 +2,8 @@
 
 pkgname=('python-django-markupfield' 'python2-django-markupfield')
 pkgdesc="An implementation of a custom MarkupField for Django"
-pkgver=1.5.1
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 url="https://github.com/jamesturk/django-markupfield"
 license=('BSD')
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python'
   'python2' 
   'python2-setuptools')
 source=("https://github.com/jamesturk/django-markupfield/archive/${pkgver}.tar.gz")
-sha256sums=('a0f2f7addb5066990f2f6b4300c4bc87f571293d4bd7744bae8ff05722fd1305')
+sha256sums=('b47a1c16c9ee246b04c3021f0d209badb1f88681a28e9d93bd491971e53c9fb8')
 
 build() {
   cp -r ${srcdir}/django-markupfield-${pkgver} ${srcdir}/django-markupfield-${pkgver}-py2
