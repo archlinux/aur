@@ -1,18 +1,17 @@
 pkgbase = obs-v4l2sink-git
 	pkgdesc = v4l2-output for obs-studio
-	pkgver = 0.1.0.r12.1ec3c8a
+	pkgver = 0.1.0.r12.1ec3c8a+obs25.0.4
 	pkgrel = 1
 	url = https://github.com/CatxFish/obs-v4l2sink
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = obs-studio
 	makedepends = cmake
 	depends = obs-studio
 	provides = obs-v4l2sink
 	conflicts = obs-v4l2sink
 	source = obs-v4l2sink::git+https://github.com/CatxFish/obs-v4l2sink.git
-	source = obs-studio-25.0.4.tar.gz::https://github.com/obsproject/obs-studio/archive/25.0.4.tar.gz
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
