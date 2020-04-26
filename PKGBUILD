@@ -9,7 +9,7 @@ license=('PerlArtistic' 'GPL')
 depends=('perl-libwww' 'perl-uri' 'perl-xml-dom')
 url='http://search.cpan.org/dist/HTTP-DAV'
 source=("http://search.cpan.org/CPAN/authors/id/C/CO/COSIMO/HTTP-DAV-${pkgver}.tar.gz")
-sha512sums=('01a097f47d95090fd0fd08a44b440d0ed4f2f04e0bedc41f8e2abedf1879e7cfcae6cf5cf7a415ac89dc610cf0cacf4f75078586bbf6a818f8c6dd36ccb451f6')
+b2sums=('202a37766a949441417e6e88de02dcb238f811408f16cc86ebb5187f0cd0c8b780e322b3704dbc115225232c1d815cbe9d5fdb8ac7755e222c7eac5357ea0a81')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
