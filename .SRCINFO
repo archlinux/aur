@@ -11,7 +11,7 @@ pkgbase = duperemove-git
 	depends = sqlite
 	conflicts = duperemove
 	source = duperemove-git::git://github.com/markfasheh/duperemove.git#branch=master
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = duperemove-git
 

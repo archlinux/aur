@@ -11,7 +11,7 @@ depends=('glib2' 'sqlite')
 makedepends=('git')
 conflicts=('duperemove')
 source=("${pkgname}"::'git://github.com/markfasheh/duperemove.git#branch=master')
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
