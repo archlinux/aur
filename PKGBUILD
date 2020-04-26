@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname='python-rq'
-pkgver=1.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Simple job queues for Python"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/rq/rq/"
 makedepends=('python' 'python-setuptools' 'python-click' 'python-redis')
 depends=('python' 'python-click' 'python-redis')
 source=("${url}archive/v${pkgver}.tar.gz")
-sha256sums=('612347de9529c6d50a97c0c69c4f16b22e100c9d036d92f7273e52b9afd4cc7e')
+sha256sums=('ce94d07125b96313e8c4512b30c62da290ae6f5eeff60b8c3e2a0a08055f5608')
 
 package() {
     cd "${srcdir}/rq-${pkgver}"
