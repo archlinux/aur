@@ -14,7 +14,7 @@ pkgbase = namebench
 	optdepends = tk: gui
 	optdepends = python2-pmw: gui
 	source = namebench::git+https://github.com/google/namebench.git#branch=1.3
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = namebench
 

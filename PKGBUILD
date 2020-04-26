@@ -15,7 +15,7 @@ makedepends=('git')
 optdepends=('tk: gui'
             'python2-pmw: gui')
 source=("namebench::git+https://github.com/google/${pkgname}.git#branch=${pkgver}")
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 build() {
   cd ${pkgname}
