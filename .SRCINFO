@@ -1,0 +1,17 @@
+pkgbase = xdg-break
+	pkgdesc = Script that sends a notification to remind you to take a break
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/thebitstick/xdg-break
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = fish
+	depends = libnotify
+	provides = xdg-break
+	conflicts = xdg-break
+	source = https://github.com/thebitstick/xdg-break/archive/0.0.1/xdg-break-0.0.1.tar.gz
+	sha512sums = df92394272bb11f65c14d2c5dfd703ca5d0f8359e0290081b1c50e8d6ce2f378d9e8eaf80fb2a455713ab97659d551abad540034bcc9558a1f06bdd6b496e946
+
+pkgname = xdg-break
+
