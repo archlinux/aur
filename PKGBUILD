@@ -15,12 +15,12 @@ url='www.github.com/KisuYami/RShell'
 source=('git://github.com/KisuYami/RShell')
 
 build() {
-  cd rshell
+  cd RShell
   make
 }
 
 package() {
-  cd rshell
+  cd RShell
 
   mkdir -p "$pkgdir"/usr/bin/
   mkdir -p "$pkgdir"/usr/share/man/man1/
