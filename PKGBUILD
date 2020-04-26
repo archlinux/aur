@@ -1,10 +1,9 @@
 # Maintainer: David Mehren <david.mehren@udo.edu>
 
-_pkgbase=riot
 pkgname=riot-desktop-nightly-bin
 pkgver=2020042601
-pkgrel=1
-pkgdesc="A glossy Matrix collaboration client for the web (nightly .deb build)."
+pkgrel=2
+pkgdesc="A glossy Matrix collaboration client for the desktop (nightly .deb build)."
 arch=('x86_64')
 url="https://riot.im"
 license=('Apache')

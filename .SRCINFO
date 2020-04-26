@@ -1,7 +1,7 @@
 pkgbase = riot-desktop-nightly-bin
-	pkgdesc = A glossy Matrix collaboration client for the web (nightly .deb build).
+	pkgdesc = A glossy Matrix collaboration client for the desktop (nightly .deb build).
 	pkgver = 2020042601
-	pkgrel = 1
+	pkgrel = 2
 	url = https://riot.im
 	arch = x86_64
 	license = Apache
