@@ -1,6 +1,6 @@
 pkgbase = dockbarx-gtk3-git
 	pkgdesc = DockBarX GTK3 port. (Standalone panel and mate applet)
-	pkgver = 0.93+104+g74a25c0
+	pkgver = 0.93+141+g1321d84
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/M7S/dockbarx
