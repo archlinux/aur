@@ -3,7 +3,7 @@
 pkgname=python-pysdd
 _gitname="PySDD"
 pkgver=0.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Python package for Sentential Decision Diagrams (SDD)."
 arch=('any')
 url="https://github.com/wannesm/PySDD/"
