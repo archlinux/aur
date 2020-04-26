@@ -11,8 +11,8 @@ pkgname=(
   kata-containers-image
   kata-linux-container
 )
-pkgver="1.10.3"
-#pkgver="1.11.0~alpha1"
+#pkgver="1.10.3"
+pkgver="1.11.0~rc0"
 _pkgver=${pkgver/\~/-}
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers (binary version)"
@@ -20,12 +20,12 @@ arch=(x86_64)
 url="https://katacontainers.io"
 license=('Apache')
 
-_bin_pkg_root="/usr"  # `/usr` for f30 packages, `/opt/kata` for static packages
+_bin_pkg_root="/opt/kata"  # `/usr` for f30 packages, `/opt/kata` for static packages
 
 if [ "${_bin_pkg_root}" = "/opt/kata" ]; then
   pkgname+=(kata-containers-static)
   source=("https://github.com/kata-containers/runtime/releases/download/${_pkgver}/kata-static-${_pkgver}-${CARCH}.tar.xz")
-  sha256sums=(4bf1951c31eab25e956217bf1e6e5ddacf73e0e85aaae878789af91001533db3)
+  sha256sums=(80ba7cfb6f82bbccbcb9cc08f3a83d2def0638efe7cbbeb5d0101cbe8dbcc105)
 else
   _kata_kernel_ver="4.19.86.60"
   _default_suffix="-7.1"  # f30 package build revision
@@ -58,10 +58,10 @@ fi
 package_kata-runtime-bin() {
   depends=(qemu-headless kata-proxy kata-shim kata-ksm-throttler kata-containers-image kata-linux-container)
   optdepends=(
-    'firecracker<0.20.0'
-    'cloud-hypervisor<0.5.0'
-    #'firecracker<0.21.0'
-    #'cloud-hypervisor<0.6.0'
+    #'firecracker<0.20.0'
+    #'cloud-hypervisor<0.5.0'
+    'firecracker<0.22.0'
+    'cloud-hypervisor<0.6.0'
   )
   conflicts=('kata-runtime')
   provides=('kata-runtime')
