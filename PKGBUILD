@@ -16,7 +16,7 @@ depends=('cpanminus' 'perl-cgi' 'perl-crypt-openssl-rsa' 'perl-data-uniqid' 'per
         'perl-test-mockobject' 'perl-test-pod' 'perl-test-requires' 'perl-test-warn'
         'perl-unicode-string')
 source=("https://github.com/imapsync/imapsync/archive/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('cb8c2c545a54ae63d944fc56790595a0de9260d3451d11b43a5d58dab0c87653be633572ce1de6715334091b667187585eedd21ca12bc438abaeee2a65a1a6bd')
+b2sums=('98ef55135239ed9625fdce9e8944c2f7a8c8c1b1020c383bbda4f3e18a486b5b691e22faaa896b21e897babb04954d548ff65bf04e79db719a1e8636f0e5e3fd')
 
 build() {
   cd ${pkgname}-${pkgname}-${pkgver}
