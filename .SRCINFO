@@ -1,6 +1,6 @@
 pkgbase = chiaki-git
 	pkgdesc = Unofficial PlayStation 4 remote play client
-	pkgver = 1.0.3.r42.g08456d5
+	pkgver = 1.2.0.r0.gf3e9178
 	pkgrel = 1
 	url = https://github.com/thestr4ng3r/chiaki.git
 	arch = i686
@@ -17,6 +17,8 @@ pkgbase = chiaki-git
 	depends = ffmpeg
 	depends = openssl
 	depends = gcc-libs
+	provides = chiaki
+	conflicts = chiaki
 	source = git+https://github.com/thestr4ng3r/chiaki.git
 	md5sums = SKIP
 
