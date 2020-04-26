@@ -2,13 +2,13 @@
 pkgname=hipsparse
 _pkgver=3.1
 pkgver="$_pkgver.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="ROCm SPARSE marshalling library."
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/hipSPARSE"
 license=('custom:NCSAOSL')
 depends=('hcc' 'hip')
-makedepends=('cmake' "hcc>=$pkgver" "hip>=$pkgver" 'python2' "rocprim>=$pkgver" "rocsparse>=$pkgver" "rocm-comgr>=$pkgver" 'rocminfo')
+makedepends=('cmake' "hcc>=$pkgver" "hip>=$pkgver" 'python2' "rocprim>=$pkgver" "rocsparse>=$pkgver" "comgr>=$pkgver" 'rocminfo')
 source=("https://github.com/ROCmSoftwarePlatform/hipSPARSE/archive/rocm-$_pkgver.tar.gz"
         "hipsparse_hsa.patch")
 sha256sums=('df210c1dd18a23b8013558ea82058601a75d8572ad54d13d59beb6746759ced6'

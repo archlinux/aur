@@ -1,7 +1,7 @@
 pkgbase = hipsparse
 	pkgdesc = ROCm SPARSE marshalling library.
 	pkgver = 3.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ROCmSoftwarePlatform/hipSPARSE
 	arch = x86_64
 	license = custom:NCSAOSL
@@ -11,7 +11,7 @@ pkgbase = hipsparse
 	makedepends = python2
 	makedepends = rocprim>=3.1.0
 	makedepends = rocsparse>=3.1.0
-	makedepends = rocm-comgr>=3.1.0
+	makedepends = comgr>=3.1.0
 	makedepends = rocminfo
 	depends = hcc
 	depends = hip
