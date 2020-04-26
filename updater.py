@@ -86,6 +86,12 @@ def update_pkgbuild(remote_version, local_version):
     child.expect(pexpect.EOF)
 
 
+# Cleans workspace from previous package builds
+def clean_workspace():
+    child = pexpect.spawnu('rm -rf src/ *.rpm')
+    child.expect(pexpect.EOF)
+
+
 def main():
     load_dotenv()
     configure_chrome_webdriver()
@@ -93,6 +99,7 @@ def main():
     remote_version = get_remote_version()
     if check_updated(remote_version, local_version):
         update_pkgbuild(remote_version, local_version)
+        clean_workspace()
 
 
 if __name__ == "__main__":
