@@ -1,7 +1,8 @@
 pkgbase = kittehplayer-git
 	pkgdesc = A Qt Video Player with many themes for YouTube, Niconico and RoosterTeeth
-	pkgver = 1
+	pkgver = 3
 	pkgrel = 1
+	url = https://github.com/NamedKitten/kittehplayer
 	arch = any
 	license = MPL2
 	makedepends = git

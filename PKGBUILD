@@ -1,12 +1,12 @@
 # Maintainer: Kitteh <namedkitten@gmail.com>
 pkgname=kittehplayer-git
 reponame=KittehPlayer
-pkgver=1
+pkgver=3
 pkgrel=1
 epoch=
 pkgdesc="A Qt Video Player with many themes for YouTube, Niconico and RoosterTeeth"
 arch=("any")
-url=""
+url="https://github.com/NamedKitten/kittehplayer"
 license=('MPL2')
 groups=()
 depends=(qt5-svg qt5-declarative qt5-quickcontrols qt5-quickcontrols2 qt5-graphicaleffects mpv)
