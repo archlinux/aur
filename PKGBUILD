@@ -3,12 +3,13 @@ _orgname=irdvo
 _pkgname=gpxtools
 _branch=master
 pkgname=${_pkgname}-git
-pkgver=r34.bb224a1
+pkgver=r43.f7d289a
 pkgrel=1
 pkgdesc='A collection of command line tools for using GPX files'
 arch=(x86_64)
 url='https://notabug.org/irdvo/gpxtools'
 license=('GPL3')
+depends=('exiv2')
 makedepends=('cmake' 'git')
 provides=("${pkgname//-git}=${pkgver}")
 conflicts=(${pkgname//-git})
