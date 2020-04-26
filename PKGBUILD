@@ -3,12 +3,12 @@ pkgname=miopen
 # upstream has different versioning, let's keep it at 2.3.0 until they catch up
 _pkgver=2.2.1
 pkgver=2.3.0.$_pkgver
-pkgrel=3
+pkgrel=4
 pkgdesc="AMD's Machine Intelligence Library"
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/MIOpen"
 license=('custom:NCSAOSL')
-depends=('ocl-icd' 'hip' 'hcc' 'rocblas' 'boost>=1.58' 'clang-ocl')
+depends=('ocl-icd' 'hip' 'hcc' 'rocblas' 'boost>=1.58' 'rocm-clang-ocl')
 makedepends=('opencl-headers' 'cmake' 'half' 'miopengemm')
 source=("https://github.com/ROCmSoftwarePlatform/MIOpen/archive/$_pkgver.tar.gz")
 sha256sums=('445870318d7abb75a703b1021e8cb198bb64a5e1c9401487db40b5c3a7ae41e4')
