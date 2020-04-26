@@ -13,8 +13,8 @@ depends=('jre8-openjdk' 'pcsclite')
 makedepends=('git' 'maven' 'jdk8-openjdk')
 source=('git://github.com/ecsec/open-ecard.git'
 				startscript)
-sha512sums=('SKIP'
-            '6c9e24e30d6f80a60c255ace794bef34a674569c9bd69837a0208c182082a7ce0c46b537c16e879b285efcb917b66407dd8a2a31701fdf9c8e9c25e6dcb87986')
+b2sums=('SKIP'
+        'e3046a9ae478221274ac425ed7afb7bd2c6d21204f8e4e6c46256f8db45d7f4438a62027f6fff86013e3d1ba099b6cade3aff05dd49f3409ab467e438e98cdcd')
 
 pkgver() {
 	cd ${pkgname/-git/}
