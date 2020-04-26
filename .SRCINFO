@@ -1,0 +1,16 @@
+pkgbase = python-basis_set_exchange
+	pkgdesc = A repository for quantum chemistry basis sets
+	pkgver = 0.8.12
+	pkgrel = 1
+	url = https://molssi-bse.github.io/basis_set_exchange/
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-setuptools
+	depends = python-argcomplete
+	depends = python-graphviz
+	depends = python-jsonschema
+	source = https://github.com/MolSSI-BSE/basis_set_exchange/archive/v0.8.12.tar.gz
+	sha256sums = 41f0242e2c11392c511d3308c0345e14b0eb3344686d865bdfcb48257910fc0d
+
+pkgname = python-basis_set_exchange
+
