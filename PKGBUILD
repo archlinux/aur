@@ -2,7 +2,7 @@
 # Contributor: renyuneyun (Rui ZHAO) <renyuneyun@gmail.com>
 
 pkgname=flipper
-pkgver=0.38.0
+pkgver=0.39.0
 pkgrel=1
 pkgdesc="A desktop debugging platform for mobile developers"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('watchman: An inotify-based file watching and job triggering command
 			      'android-sdk: Android debugging support')
 makedepends=('git' 'yarn' 'gendesk')
 source=("https://github.com/facebook/flipper/archive/v${pkgver}.tar.gz")
-sha512sums=('a7b2534834c57e3c54b74927623c13d1a65164bc2ec1a4a18d1f3ff50575417cae1810593788704850c6deff4f3a017ab276a829cb803c73c70465fa3c73c352')
+sha256sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}/desktop"
@@ -37,4 +37,6 @@ package() {
   gendesk -f -n --pkgname "flipper" --pkgdesc "${pkgdesc}" --exec="flipper" --categories=Application\;Development --icon flipper
   install -Dm644 "${srcdir}/flipper.desktop" "${pkgdir}/usr/share/applications/flipper.desktop"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/desktop/static/icon.png" "${pkgdir}/usr/share/pixmaps/flipper.png"
+  sed -i "s|$srcdir/$pkgname-$pkgver/desktop|/opt/flipper|g" "${pkgdir}/opt/${pkgname}/resources/app/defaultPlugins/index.json"
+  sed -i "s|$srcdir/$pkgname-$pkgver/desktop|/opt/flipper|g" "${pkgdir}/opt/${pkgname}/resources/app"/*.map
 }
