@@ -3,7 +3,7 @@
 _srcname=pyinstrument
 
 pkgname=python-pyinstrument
-pkgver=3.1.1
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Call stack profiler for Python. Shows you why your code is slow!"
 arch=('any')
@@ -22,7 +22,7 @@ source=(
   "https://github.com/joerick/pyinstrument/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '19aefd4666371b349326a52717be4d0bc6ce8f0030d414da13deee703f60df4d'
+  'ca4571775caa06444cd7e832056afc21175130271fe3f3481e3ab1bf67f96c8b'
 )
 
 prepare() {
