@@ -10,6 +10,7 @@ _opt_features=(
   #dvd
   #cd
   #sdl2
+  #openal
 
   # Lua is automatically detected, so you don't need to enable these if you
   # already have it installed. If you have both lua52 and luajit installed, mpv
@@ -44,7 +45,7 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.32.0_241_gc05e5d9d78
+pkgver=0.32.0_410_g640db1ed3f
 pkgrel=1
 _waf_version=2.0.9
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
@@ -78,7 +79,7 @@ for feature in "${_opt_features[@]}"; do
       depends+=('libcdio-paranoia')
       _opt_extra_flags+=('--enable-cdda')
       ;;
-    sdl2)
+    sdl2|openal)
       depends+=("$feature")
       _opt_extra_flags+=("--enable-$feature")
       ;;
