@@ -21,7 +21,7 @@ pkgver() {
 build() {
     cd "$srcdir"/"$_pkgname"
     qmake-qt5 -o Makefile trinitrotoluol.pro
-    make
+    make -j $(nproc)
     make clean
 }
 
