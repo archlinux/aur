@@ -2,13 +2,13 @@
 pkgname=rocalution
 _pkgver=3.1
 pkgver="$_pkgver.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation library for iterative sparse solvers for ROCm platform."
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/rocALUTION"
 license=('custom:NCSAOSL')
 depends=('hcc' 'hip' 'rocsparse' 'rocblas' 'rocprim' 'rocm-comgr')
-makedepends=('cmake' "hcc>=$pkgver" "hip>=$pkgver" "rocsparse>=$pkgver" "rocblas>=$pkgver" "rocprim>=$pkgver" "rocm-comgr>=$pkgver" 'python2' 'rocminfo')
+makedepends=('cmake' "hcc>=$pkgver" "hip>=$pkgver" "rocsparse>=$pkgver" "rocblas>=$pkgver" "rocprim>=$pkgver" "comgr>=$pkgver" 'python2' 'rocminfo')
 source=("https://github.com/ROCmSoftwarePlatform/rocALUTION/archive/rocm-$_pkgver.tar.gz")
 sha256sums=('45c96916f915fcacab3a94f111912e9511167977678603f3c7253053eeec6513')
 
