@@ -1,0 +1,16 @@
+pkgbase = ttf-hack-ligatured
+	pkgdesc = Hack patched with FIRA Code and JetBrains Mono ligatures by gaplo917
+	pkgver = v3.003+FC3.1+JBMv1.0.5
+	pkgrel = 1
+	url = https://github.com/gaplo917/Ligatured-Hack
+	arch = any
+	license = GPL3
+	depends = fontconfig
+	provides = ttf-hack
+	source = https://github.com/gaplo917/Ligatured-Hack/releases/download/v3.003+FC3.1+JBMv1.0.5/HackLigatured-v3.003+FC3.1+JBMv1.0.5.zip
+	source = v3.003+FC3.1+JBMv1.0.5-LICENSE::https://raw.githubusercontent.com/gaplo917/Ligatured-Hack/master/LICENSE
+	sha256sums = 34aeec7fa2a269e8fc1b82ac31dbd6e0f23a7e9279cf726e0d54b0acd36ea0bb
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+
+pkgname = ttf-hack-ligatured
+
