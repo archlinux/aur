@@ -11,7 +11,6 @@ pkgbase = armutils-git
 	depends = libarchive
 	depends = qemu-user-static
 	optdepends = wget: needed to download image files
-	optdepends = qemu-headless: either this or qemu is required
 	provides = armutils
 	source = git+https://gitlab.com/mipimipi/armutils.git
 	validpgpkeys = 11ECD6695134183B3E7AF1C2223AAA374A1D59CE

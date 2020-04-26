@@ -22,7 +22,6 @@ depends=(
 )
 optdepends=(
     "wget: needed to download image files"
-    "qemu-headless: either this or qemu is required"
 )
 makedepends=(
     git
