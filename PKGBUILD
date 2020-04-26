@@ -4,28 +4,35 @@ pkgname=switchhosts-bin
 pkgver=3.5.4
 pkgrel=5517
 pkgdesc="Switch hosts quickly!"
-arch=('any')
+arch=('x86_64')
 url="https://oldj.github.io/SwitchHosts"
 license=("MIT")
 options=(!strip)
-depends=("gconf" "gtk2" "libnotify" "libxtst" "nss" "python2" "xdg-utils" "desktop-file-utils" "alsa-lib")
-makedepends=("imagemagick" "npm")
-
+depends=("desktop-file-utils")
+makedepends=("imagemagick")
 source=(
-    "https://github.com/oldj/SwitchHosts/releases/download/v${pkgver}/SwitchHosts._linux_x64_${pkgver}.${pkgrel}.zip"
-    "https://raw.githubusercontent.com/oldj/SwitchHosts/master/app/assets/logo@512w.png"
-    "${pkgname}.install"
-    "${pkgname}.desktop"
+	'https://github.com/oldj/SwitchHosts/releases/download/v3.5.4/SwitchHosts._linux_x64_3.5.4.5517.zip'
+	'https://raw.githubusercontent.com/oldj/SwitchHosts/master/app/assets/logo@512w.png'
+	'switchhosts-bin.install'
+	'switchhosts-bin.desktop'
 )
-
-md5sums=('bd23ba93ba19ed1377e0bd36f6f9376b'
-         '06eb97a4b5b5ddf7a06841e01d5562eb'
-         '0b6211b511da48346cecdc1d2f963c76'
-         'c6594fabba5e7f9d5ae0736524f6f634')
-
+sha256sums=(
+	'c18e055e62a4509cbcf7e3b053783e45278e5bc26deb764d9b0c4c24f0b84e88'
+	'b5ade225a7428f195babb47e3cf4760467b0514cca18f477011b339a7af9b685'
+	'9fe12f1bc573f5d431fcc8f9ca3ed17fc1e1d30248ae3b58209fc53084ae0a4e'
+	'7b17a4bd74b5652dae1d92054ca153e64b51e7271bf7ded0488d1f0aa8e2782c'
+)
+rm_src_files=(
+	'SwitchHosts._linux_x64_3.5.4.5517.zip'
+	'logo@512w.png'
+)
 package() {
     install -dm755 "$pkgdir/"{opt,usr/bin}
     cp -r "${srcdir}" "${pkgdir}/opt/${pkgname}"
+    # remove useless source files
+    for rm_src_file in ${rm_src_files[*]} ; do
+		rm "${pkgdir}/opt/${pkgname}/${rm_src_file}"
+    done
     ln -s "/opt/${pkgname}/switchhosts" "$pkgdir/usr/bin/switchhosts"
     install -Dm644 ${srcdir}/${pkgname}.desktop "$pkgdir"/usr/share/applications/${pkgname}.desktop
     # icons generation
