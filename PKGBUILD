@@ -2,8 +2,8 @@
 
 _pkgname=eth-utils
 pkgname=python-$_pkgname
-pkgver=1.4.1
-pkgrel=3
+pkgver=1.8.4
+pkgrel=1
 pkgdesc="Utility functions for working with Ethereum related codebases."
 arch=('x86_64')
 url="https://github.com/ethereum/eth-utils"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-eth-hash' 'python-eth-typing' 'python-toolz' 'python-cytoolz')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ethereum/eth-utils/archive/v${pkgver}.tar.gz")
-sha256sums=('71113fc420bc6c3fbe144f96a7a5298e5d2a9b56ce8b8e563b09f6d7f209bde5')
+sha256sums=('46d20f5b2157ea60e5e91e1dc4cc70351e70345ee9644c2ba85e11f613222a06')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
