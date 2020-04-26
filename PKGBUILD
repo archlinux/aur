@@ -12,7 +12,8 @@ pkgname="${_pkgname}${_major}"
 #_minor='212'; _build='b10'; _bundleid='??????'; _hash='59066701cf1a433da9770636fbc4c9aa'
 #_minor='221'; _bundleid='239848'; _hash='230deb18db3e4014bb8e3e8324f81b43'
 #_minor='231'; _bundleid='240718'; _hash='5b13a193868b4bf28bcb45c792fce896'
-_minor='241'; _bundleid='241526'; _hash='1f5b5a70bf22433b84d0e960903adac8'
+#_minor='241'; _bundleid='241526'; _hash='1f5b5a70bf22433b84d0e960903adac8'
+_minor='251'; _bundleid='242050'; _hash='3d5a2bb8f8d4428bbe94aed7ec7ae784'
 pkgver="${_major}u${_minor}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Runtime Environment"
@@ -68,10 +69,10 @@ source=(
   "policytool-${_jname}.desktop"
 )
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         '98f53c5894eeb2e8ffcff84092e0d2f2'
+         '2afa1c823912d97baa5e363b205ba8ec'
          'ef3ff483db5d38ed106e0b819006bdae')
 sha256sums=('f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
-            '83dfd1e916f0f903fabfd3cb6bcf6e46c14387eeb09d108ec6123f49bb3633e6'
+            '92fc256da54af798dc34aeab837df816577f2c46dd111f9f94058c186d36f589'
             '614b2a74b53728b7914c1407126a7ecfed781a79fb11e9963528c7cad39dbca8')
 
 ## Alternative mirror, if your local one is throttled:
