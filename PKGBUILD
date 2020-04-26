@@ -1,17 +1,22 @@
-# Maintainer: gbr <gbr@protonmail.com>
-_pkgname=vibrantlinux
-pkgname=vibrantlinux-git
+# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Container: gbr <gbr@protonmail.com>
+
+_pkgname=vibrantlinux-amd
+pkgname=${_pkgname}-git
+pkgver=1.2.5.r1.g4ed73ef
 pkgrel=1
-pkgdesc='vibranceGUI replacement for Linux (NVIDIA only)'
-arch=('x86_64' 'i686')
-url='https://github.com/zee2200/vibrantlinux'
+pkgdesc='vibranceGUI replacement for Linux (AMD only)'
+arch=(x86_64)
+url="https://github.com/Scrumplex/vibrantLinux-AMD"
 license=('MIT')
-depends=('nvidia-settings' 'qt5-base')
+depends=('vibrantx' 'qt5-base')
 makedepends=('git')
-conflicts=()
+conflicts=("vibrantlinux-git" "vibrantlinux")
+provides=("vibrantlinux-git" "vibrantlinux")
 source=("${_pkgname}::git+https://github.com/zee2200/vibrantLinux.git" 'vibrantLinux.desktop')
-sha256sums=('SKIP' 'SKIP')
-pkgver=1.2.5.r0.g0f27e4c
+sha512sums=('SKIP'
+            '21531277bbcea2ab65116f8420db9197f99801f34f934f9bd181fb2077c3c26337c7356df236783a53eee6dccc3e994f7992c9aaa8d53ca32ec0d98231357b1f')
+
 
 pkgver() {
     cd "${_pkgname}"
