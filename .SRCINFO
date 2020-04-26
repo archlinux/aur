@@ -1,7 +1,7 @@
 pkgbase = pyload-nightly
 	pkgdesc = Downloadtool for One-Click-Hoster written in python. Latest devel branch
-	pkgver = v0.4.9.r4782.gd686d625b
-	pkgrel = 2
+	pkgver = v0.4.9.r4783.g0fb966418
+	pkgrel = 1
 	url = https://github.com/pyload/pyload
 	arch = any
 	license = GPL
