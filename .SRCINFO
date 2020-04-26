@@ -1,6 +1,6 @@
 pkgbase = python-julia
 	pkgdesc = python interface to julia
-	pkgver = 0.5.1
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/JuliaPy/pyjulia
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-julia
 	makedepends = python-pypandoc
 	makedepends = pandoc
 	depends = python
-	source = python-julia-0.5.1.tar.gz::https://github.com/JuliaPy/pyjulia/archive/v0.5.1.tar.gz
-	sha256sums = cab4bba53c035402a1294915eff4b8b8dc7dd69b0bd9d931c1c4ed9a9dcc1fb8
+	source = python-julia-0.5.3.tar.gz::https://github.com/JuliaPy/pyjulia/archive/v0.5.3.tar.gz
+	sha256sums = a02e55501fd7bc7583eb7f5b5efaf045fcb52e418ee9d5149be15c69505dbda8
 
 pkgname = python-julia
 
