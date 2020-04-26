@@ -13,7 +13,7 @@ url="https://github.com/benjaminvialle/intel_nuc_led"
 license=('GPL3')
 depends=('python' 'bash')
 makedepends=('dkms' 'git')
-#conflicts=("${_pkgbase}")
+conflicts=("${_pkgbase}-dkms")
 #install=${pkgname}.install
 source=("${_gitname}::git+https://github.com/benjaminvialle/intel_nuc_led.git"
         'dkms.conf')
