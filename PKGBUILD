@@ -2,8 +2,8 @@
 pkgname=rshell-git
 provides=('rshell')
 pkgdesc="KisuYami own shell."
-pkgver=3e1221e51f
-pkgrel=2.1
+pkgrel=1
+pkgver=2.1.3e1221e51f
 options=()
 md5sums=('SKIP')
 license=('GPLv2')
@@ -15,12 +15,12 @@ url='www.github.com/KisuYami/RShell'
 source=('git://github.com/KisuYami/RShell')
 
 build() {
-  cd "$pkgname/"
+  cd rshell
   make
 }
 
 package() {
-  cd "$pkgname/"
+  cd rshell
 
   mkdir -p "$pkgdir"/usr/bin/
   mkdir -p "$pkgdir"/usr/share/man/man1/

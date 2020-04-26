@@ -1,7 +1,7 @@
 pkgbase = rshell-git
 	pkgdesc = KisuYami own shell.
-	pkgver = 3e1221e51f
-	pkgrel = 2.1
+	pkgver = 2.1.3e1221e51f
+	pkgrel = 1
 	url = www.github.com/KisuYami/RShell
 	arch = i686
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = rshell-git
 	md5sums = SKIP
 
 pkgname = rshell-git
-
