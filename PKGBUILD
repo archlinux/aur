@@ -1,7 +1,7 @@
 # Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
 pkgname=ocaml-gen
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Iterators for OCaml'
 license=('BSD')
 arch=('i686' 'x86_64')
@@ -22,10 +22,9 @@ build() {
 package() {
     cd "${pkgname/ocaml-/}-$pkgver"
 
-    export DESTDIR="$pkgdir$(ocamlfind printconf destdir)"
-    mkdir -p "$DESTDIR"
+    PREFIX="$pkgdir$(ocamlfind printconf destdir)"
 
-    dune install --prefix="$DESTDIR" --libdir="$DESTDIR"
+    dune install --prefix="$PREFIX" --libdir="$PREFIX"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
