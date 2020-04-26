@@ -1,7 +1,7 @@
 pkgbase = hip-hcc
 	pkgdesc = Heterogeneous Interface for Portability ROCm
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ROCm-Developer-Tools/HIP
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = hip-hcc
 	makedepends = cmake
 	makedepends = python
 	makedepends = hcc
-	makedepends = rocm-comgr
+	makedepends = comgr
 	depends = hsa-rocr
 	provides = hip
 	conflicts = hip
