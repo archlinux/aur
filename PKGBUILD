@@ -27,7 +27,7 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
 #   python setup.py test
-    cp "build/lib.linux-x86_64-${_pyver}/${_pyname}/salt2utils.cpython-${_pyver/./}-x86_64-linux-gnu.so" "${_pyname}"
+    cp "build/lib.linux-${CARCH}-${_pyver}/${_pyname}/salt2utils.cpython-${_pyver/./}-${CARCH}-linux-gnu.so" "${_pyname}"
     pytest
 }
 
