@@ -13,7 +13,8 @@ depends=('vibrantx' 'qt5-base')
 makedepends=('git')
 conflicts=("vibrantlinux-git" "vibrantlinux")
 provides=("vibrantlinux-git" "vibrantlinux")
-source=("${_pkgname}::git+https://github.com/zee2200/vibrantLinux.git" 'vibrantLinux.desktop')
+source=("${_pkgname}::git+https://github.com/Scrumplex/vibrantLinux-AMD.git"
+        "vibrantLinux.desktop")
 sha512sums=('SKIP'
             '21531277bbcea2ab65116f8420db9197f99801f34f934f9bd181fb2077c3c26337c7356df236783a53eee6dccc3e994f7992c9aaa8d53ca32ec0d98231357b1f')
 
