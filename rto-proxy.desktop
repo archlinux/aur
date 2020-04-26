@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=rto-proxy
+Comment=RuTracker proxy app based at electron + angularjs
+Exec="/usr/bin/rto-proxy"
+Terminal=false
+Type=Application
+Icon=rto-proxy

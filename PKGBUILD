@@ -1,7 +1,7 @@
 #Maintainer: naruto522ru <itachi522ru@gmail.com>
 pkgname=rto-proxy-bin
 pkgver=0.2.3
-pkgrel=5
+pkgrel=6
 pkgdesc='RuTracker proxy app based at electron + angularjs'
 arch=('x86_64' 'i686')
 url='https://rutracker.org/forum/viewtopic.php?t=5403116'
@@ -22,9 +22,8 @@ package() {
   bsdtar -xf data.tar.xz -C "$pkgdir/"
 # FIX ERROR SEE ---> https://github.com/RutrackerOrg/rutracker-proxy/issues/9
   install -Dm 755 "$srcdir/app.asar" "$pkgdir/opt/rto-proxy/resources/"
-  install -dm 755 "$pkgdir/etc/ld.so.conf.d/"
-  install -Dm 755 "$startdir/rto-proxy.conf" "$pkgdir/etc/ld.so.conf.d/"
-  msg2 "Install symlink..."
+# FIX ERROR SEE ---> https://github.com/RutrackerOrg/rutracker-proxy/issues/19#issuecomment-619498712
   install -dm 755 "$pkgdir/usr/bin/"
-  ln -s "/opt/rto-proxy/rto-proxy" "$pkgdir/usr/bin/rto-proxy"
+  install -Dm 755 "$startdir/rto-proxy" "$pkgdir/usr/bin/"
+  install -Dm 755 "$startdir/rto-proxy.desktop" "$pkgdir/usr/share/applications/"
 }

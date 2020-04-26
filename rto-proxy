@@ -1,0 +1,5 @@
+#!/bin/sh
+export LD_PRELOAD=/opt/pango-legacy/usr/lib/libpango-1.0.so.0
+export LD_PRELOAD=/opt/pango-legacy/usr/lib/libpangocairo-1.0.so.0
+export LD_PRELOAD=/opt/pango-legacy/usr/lib/libpangoft2-1.0.so.0
+exec /opt/rto-proxy/rto-proxy "$@"

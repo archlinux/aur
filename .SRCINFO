@@ -1,7 +1,7 @@
 pkgbase = rto-proxy-bin
 	pkgdesc = RuTracker proxy app based at electron + angularjs
 	pkgver = 0.2.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://rutracker.org/forum/viewtopic.php?t=5403116
 	install = rto-proxy-bin.install
 	arch = x86_64
