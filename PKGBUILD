@@ -6,8 +6,8 @@
 
 _basename=xmoto
 pkgname="$_basename-git"
-pkgver=0.5.11
-pkgrel=7
+pkgver=r552.f7a23e4f
+pkgrel=1
 pkgdesc="A challenging 2D motocross platform game, where physics play an important role."
 arch=('i686' 'x86_64')
 url="http://xmoto.tuxfamily.org"
@@ -20,6 +20,11 @@ provides=("$_basename")
 
 source=("$pkgname::git://github.com/xmoto/$_basename.git")
 sha1sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   mkdir -p build
