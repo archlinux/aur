@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://en.wikipedia.org/wiki/Wikipedia:Huggle"
 license=('GPL')
 depends=('qt5-multimedia' 'qt5-webengine' 'yaml-cpp')
-makedepends=('cmake' 'ninja')
+makedepends=('cmake') 
 source=(
     "https://github.com/huggle/huggle3-qt-lx/releases/download/${pkgver}/${pkgname}_${pkgver}.tar.gz"
     "huggle-yaml.patch"

@@ -7,7 +7,6 @@ pkgbase = huggle
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	makedepends = ninja
 	depends = qt5-multimedia
 	depends = qt5-webengine
 	depends = yaml-cpp
