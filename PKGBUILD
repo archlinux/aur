@@ -3,7 +3,7 @@
 
 pkgname=xerox-workcentre-6515
 pkgver=5.20.661.4684
-pkgrel=1
+pkgrel=2
 pkgdesc="CUPS driver for the Xerox WorkCentre 6515"
 url='https://www.support.xerox.com/support/workcentre-6515/downloads/enus.html?operatingSystem=linux'
 license=('custom')
