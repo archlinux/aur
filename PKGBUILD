@@ -1,6 +1,6 @@
 # Maintainer: Alexandros Theodotou <alex at zrythm dot org>
 pkgname=zrythm
-pkgver=0.8.113
+pkgver=0.8.252
 pkgrel=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
@@ -12,12 +12,12 @@ depends=('gtk3' 'lilv' 'libx11' 'jack' 'libsndfile'
 makedepends=(
   'python' 'gettext' 'sed'
   'meson' 'ninja' 'help2man' 'python-sphinx'
-  'ladspa' 'lv2')
+  'ladspa' 'lv2' 'gtksourceview3')
 optdepends=('portaudio: portaudio backend'
             'qt5-base: for embedding qt5 plugin UIs')
 conflicts=('zrythm-git')
 source=("https://www.zrythm.org/releases/$pkgname-$pkgver.tar.xz"{,.asc})
-sha256sums=('a83d07b9760682668730579e10f929efde4689055e6335f9b379ab2f60a58972'
+sha256sums=('2300112c96024ff4ef424a1ebd1210976a4535892eb8364efcf9732f159ea2ff'
             'SKIP')
 validpgpkeys=('48132384AD3DF7D86E254B83022EAE42313D70F3')
 
