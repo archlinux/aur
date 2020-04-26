@@ -11,7 +11,7 @@ license=('MIT')
 depends=('dovecot' 'dovecot-xaps-daemon')
 makedepends=('git' 'cmake')
 source=("git+https://github.com/st3fan/dovecot-xaps-plugin.git")
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd ${_gitname}

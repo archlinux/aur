@@ -10,7 +10,7 @@ pkgbase = dovecot-xaps-plugin-git
 	depends = dovecot
 	depends = dovecot-xaps-daemon
 	source = git+https://github.com/st3fan/dovecot-xaps-plugin.git
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = dovecot-xaps-plugin-git
 
