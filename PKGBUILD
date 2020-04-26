@@ -3,9 +3,9 @@
 _name=dlint
 
 pkgname="python-${_name}"
-pkgver=0.5.0
-pkgrel=2
-pkgdesc="Dlint is a tool for encouraging best coding practices and helping ensure we're writing secure Python code."
+pkgver=0.10.2
+pkgrel=1
+pkgdesc="Dlint is a tool for encouraging best coding practices and helping ensure Python code is secure."
 arch=('any')
 url="https://github.com/duo-labs/dlint"
 license=('BSD')
@@ -16,7 +16,7 @@ source=(
   "${url}/archive/${pkgver}.tar.gz"
 )
 sha256sums=(
-  '4dabda6a97cec0dad2cfab985558acf40f2b64a3dce630b748e2fd389143c245'
+  '65cfeba30580c4045d308f1821b44f89e67882bb6b264af119d37dd42857635b'
 )
 
 prepare() {

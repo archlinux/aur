@@ -1,7 +1,7 @@
 pkgbase = python-dlint
-	pkgdesc = Dlint is a tool for encouraging best coding practices and helping ensure we're writing secure Python code.
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgdesc = Dlint is a tool for encouraging best coding practices and helping ensure Python code is secure.
+	pkgver = 0.10.2
+	pkgrel = 1
 	url = https://github.com/duo-labs/dlint
 	arch = any
 	license = BSD
@@ -10,8 +10,8 @@ pkgbase = python-dlint
 	depends = flake8>=1:3.6.0
 	depends = flake8<1:4.0.0
 	options = !emptydirs
-	source = https://github.com/duo-labs/dlint/archive/0.5.0.tar.gz
-	sha256sums = 4dabda6a97cec0dad2cfab985558acf40f2b64a3dce630b748e2fd389143c245
+	source = https://github.com/duo-labs/dlint/archive/0.10.2.tar.gz
+	sha256sums = 65cfeba30580c4045d308f1821b44f89e67882bb6b264af119d37dd42857635b
 
 pkgname = python-dlint
 
