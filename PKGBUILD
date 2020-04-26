@@ -5,12 +5,13 @@
 
 pkgname=mixbus6
 appname=${pkgname/6/}
-pkgver=6.0.697
+pkgver=6.0.702
 pkgrel=1
 pkgdesc="Harrison Mixbus - Digital Audio Workstation"
 arch=('x86_64')
 url="http://harrisonconsoles.com/site/${appname}.html"
 license=('EULA, GPLv2')
+groups=('pro-audio')
 depends=('glibc' 'xorg-server')
 conflicts=('mixbus')
 
