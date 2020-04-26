@@ -1,0 +1,29 @@
+From 3a4b484eaeda215a086cca967421ca249f7d7b48 Mon Sep 17 00:00:00 2001
+From: Stefano Rivera <stefano@rivera.za.net>
+Date: Thu, 20 Feb 2020 16:37:40 -0800
+Subject: [PATCH] Build on Python 3.8
+
+PEP-590 replaced tp_print with tp_vectorcall_offset
+---
+ cpybuilder.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/cpybuilder.py b/cpybuilder.py
+index 8d8cab7f5e0f..674050737b0a 100644
+--- a/cpybuilder.py
++++ b/cpybuilder.py
+@@ -254,7 +254,11 @@ class PyTypeObject(NamedEntity):
+         result += '    sizeof(%(struct_name)s), /*tp_basicsize*/\n' % self.__dict__
+         result += '    0, /*tp_itemsize*/\n'
+         result += self.c_ptr_field('tp_dealloc')
++        result += '#if PY_VERSION_HEX >= 0x03080000\n'
++        result += '    0, /*tp_vectorcall_offset*/\n'
++        result += '#else\n'
+         result += self.c_ptr_field('tp_print')
++        result += '#endif\n'
+         result += self.c_ptr_field('tp_getattr')
+         result += self.c_ptr_field('tp_setattr')
+         result += '#if PY_MAJOR_VERSION < 3\n' % self.__dict__
+-- 
+2.26.0
+
