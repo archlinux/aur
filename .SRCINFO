@@ -1,6 +1,6 @@
 pkgbase = huggle
-	pkgdesc = diff browser intended for dealing with vandalism and other unconstructive edits on Wikimedia projects
-	pkgver = 3.4.9
+	pkgdesc = Anti-vandalism tool for use on MediaWiki-based projects
+	pkgver = 3.4.10
 	pkgrel = 1
 	url = https://en.wikipedia.org/wiki/Wikipedia:Huggle
 	arch = i686
@@ -10,8 +10,13 @@ pkgbase = huggle
 	makedepends = ninja
 	depends = qt5-multimedia
 	depends = qt5-webengine
-	source = git+https://github.com/huggle/huggle3-qt-lx.git#tag=3.4.9
-	sha256sums = SKIP
+	depends = yaml-cpp
+	source = https://github.com/huggle/huggle3-qt-lx/releases/download/3.4.10/huggle_3.4.10.tar.gz
+	source = huggle-yaml.patch
+	source = huggle-extensions.patch
+	sha256sums = 7dbf2c943f80eac551839535df68d1af4c19d52a026a9140a1b2fcf63f5a2249
+	sha256sums = e66bb7ba73b72b08d478715d44baf096c87291e05997ad4786c1515b6574f2bb
+	sha256sums = 823cbf583c00722bfe5ecd74a57ee7e3ef942ecb95a1704e65c226e7a2624497
 
 pkgname = huggle
 
