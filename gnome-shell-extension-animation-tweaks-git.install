@@ -1,0 +1,13 @@
+post_install() {
+  echo ""
+  echo "==> ATTENTION: If problems occur after the update, please reset the settings!"
+  echo "==> Reset button is present in About tab in extension preferences."
+  echo ""
+}
+
+post_upgrade() {
+  echo ""
+  echo "==> ATTENTION: If problems occur after the update, please reset the settings!"
+  echo "==> Reset button is present in About tab in extension preferences."
+  echo ""
+}
