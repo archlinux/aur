@@ -1,7 +1,7 @@
 # Maintainer: Kitteh <namedkitten@gmail.com>
 pkgname=kittehplayer-git
 reponame=KittehPlayer
-pkgver=3
+pkgver=3.r7d916ea1df4aef90ef1c602b333cfed2497260ef
 pkgrel=1
 pkgdesc="A Qt Video Player with many themes for YouTube, Niconico and RoosterTeeth"
 arch=("any")
@@ -15,7 +15,8 @@ source=("git+https://github.com/NamedKitten/KittehPlayer")
 md5sums=("SKIP")
 
 pkgver() {
-cat ${reponame}/version
+  cd ${reponame}
+  printf "%s.r%s" "$(cat version)" "$(git rev-parse HEAD)"
 }
 
 build() {
