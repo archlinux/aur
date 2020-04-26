@@ -3,15 +3,21 @@ pkgbase=python-galpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.5
-pkgrel=2
+pkgver=1.6.0.post0
+pkgrel=1
 pkgdesc="Galactic Dynamics in python"
 arch=('i686' 'x86_64')
-url="http://galpy.readthedocs.io/"
+url="http://galpy.readthedocs.io"
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools' 'gsl')
+#checkdepends=('python-pytest'
+##             'python2-pytest'
+#              'python-matplotlib'
+##             'python2-matplotlib'
+#              'python-future'
+#              python-scipy)
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('aff0a673d498b1b8c4739b6036452536')
+md5sums=('7a8f977098dbb1c7450c39d4b4d23ebb')
 
 prepare() {
     cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
@@ -31,20 +37,21 @@ build() {
 }
 
 #check() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#    python setup.py test
-#
-#    cd ${srcdir}/${_pyname}-${pkgver}-py2
-#    python2 setup.py test
+#   cd ${srcdir}/${_pyname}-${pkgver}
+#   python setup.py test
+#   pytest
+
+#   cd ${srcdir}/${_pyname}-${pkgver}-py2
+#   python2 setup.py test
 #}
 
 package_python2-galpy() {
-    depends=('python2-scipy' 'python2-matplotlib')
+    depends=('python2-scipy' 'python2-matplotlib' 'python2-future' 'python2-six' 'python2-pytest')
     optdepends=('python-galpy-doc: Documentation for galpy'
                 'gsl>=1.14: For some advanced features'
-                'python2-future: For some advanced features'
                 'python2-astropy: For Quantity support'
                 'python2-astroquery: For the Orbit.from_name initialization method'
+                'python2-numexpr: For or plotting arbitrary expressions of Orbit quantities'
                 'python2-pynbody-git: Foruse of SnapshotRZPotential and InterpSnapshotRZPotential')
     cd ${srcdir}/${_pyname}-${pkgver}-py2
 
@@ -54,10 +61,9 @@ package_python2-galpy() {
 }
 
 package_python-galpy() {
-    depends=('python-scipy' 'python-matplotlib')
+    depends=('python-scipy' 'python-matplotlib' 'python-future' 'python-six' 'python-pytest')
     optdepends=('python-galpy-doc: Documentation for galpy'
                 'gsl>=1.14: For some advanced features'
-                'python-future: For some advanced features'
                 'python-astropy: For Quantity support'
                 'python-astroquery: For the Orbit.from_name initialization method'
                 'python-numexpr: For or plotting arbitrary expressions of Orbit quantities'
