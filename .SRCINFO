@@ -11,7 +11,8 @@ pkgbase = deepin-screenshot-copy-patch
 	depends = deepin-qt5integration
 	depends = dtkwm
 	depends = deepin-turbo
-	provides = copy
+	provides = deepin-screenshot=5.0.0
+	conflicts = deepin-screenshot
 	source = deepin-screenshot-copy-patch-5.0.0.tar.gz::https://github.com/linuxdeepin/deepin-screenshot/archive/5.0.0.tar.gz
 	source = deepin-screenshot-no-notification.patch
 	source = deepin-screenshot-copy.patch

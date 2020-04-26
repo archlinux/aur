@@ -9,7 +9,8 @@ pkgrel=2
 pkgdesc="Easy-to-use screenshot tool for linuxdeepin desktop environment with xclip copy patch"
 arch=('x86_64')
 url="https://github.com/linuxdeepin/deepin-screenshot"
-provides=('copy')
+provides=('deepin-screenshot=5.0.0')
+conflicts=('deepin-screenshot')
 license=('GPL3')
 depends=('deepin-qt5integration' 'dtkwm' 'deepin-turbo')
 makedepends=('cmake' 'qt5-tools')
@@ -24,11 +25,11 @@ sha512sums=('ad073961deaa78a47739af6cf8b0d0fa77a92ee6668c57f9a5bbf51ad2be1d20286
 prepare() {
   cd deepin-screenshot-$pkgver
   patch -p1 -i ../deepin-screenshot-no-notification.patch
+  patch src/mainwindow.cpp < $srcdir/deepin-screenshot-copy.patch
 }
 
 build() {
   cd deepin-screenshot-$pkgver
-  patch src/mainwindow.cpp < $srcdir/deepin-screenshot-copy.patch
   cmake . -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
