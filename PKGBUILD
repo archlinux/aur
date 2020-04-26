@@ -5,7 +5,7 @@
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=ungoogled-chromium-git
-pkgver=81.0.4044.113.1.r3.g31d6e60
+pkgver=81.0.4044.122.1.r3.g7d240d1
 pkgrel=1
 _pkgname=ungoogled-chromium
 _pkgver=81.0.4044.122

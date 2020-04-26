@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium-git
 	pkgdesc = A lightweight approach to removing Google web service dependency (master branch)
-	pkgver = 81.0.4044.113.1.r3.g31d6e60
+	pkgver = 81.0.4044.122.1.r3.g7d240d1
 	pkgrel = 1
 	url = https://ungoogled-software.github.io/
 	install = chromium.install
