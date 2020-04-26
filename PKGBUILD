@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=latex-tuda-ci
-pkgver=2.09
+pkgver=2.10
 pkgrel=1
 pkgdesc='TUDa-CI for LaTeX from Technische Universität Darmstadt'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('texlive-core' 'texlive-bin' 'texlive-publishers' 'texlive-latexext
               'texlive-bibtexextra' 'texlive-pictures' 'biber' 'zip')
 replaces=('latex-tuddesign' 'latex-tuddesign-thesis' 'latex-tuddesign-fonts')
 source=("https://github.com/tudace/tuda_latex_templates/archive/v${pkgver}.tar.gz")
-sha512sums=('853b549b39442033945ff241b0b275c9133996d84a4477c5973c3536d9ccb7cb70e21e50803c9eed880c2f23157cfa416c29f46806bec2f53e46302aafc9b241')
+b2sums=('543f5213fce9ab12127f7f5baffcd8892ec8fd46e3da9a96d1c30513f743082a4fe7935dd835887364a6607436c1fec4355efa09ae1f9b01683917d35f4ba1d0')
 
 prepare() {
   chmod +x tuda_latex_templates-${pkgver}/{addlicense,prepare_tuda}.sh
