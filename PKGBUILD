@@ -2,7 +2,7 @@
 
 pkgname=ezanvakti
 pkgver=7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Islamic Prayer Times bash script for Turkish users"
 arch=('any')
 url="https://gitlab.com/fbostanci/ezanvakti"
@@ -12,8 +12,8 @@ makedepends=()
 # isteniyorsa curl yerine wget, ffmpeg yerine mplayer yazilabilir.
 depends=('bash' 'yad' 'sed' 'gawk' 'grep' 'libnotify' 'curl' 'ffmpeg')
 optdepends=('bash-completion: completion for bash')
-source=("https://github.com/fbostanci/ezanvakti/archive/v$pkgver.tar.gz")
-md5sums=('1baedb8d5409e1a11d49f70431afef5b')
+source=("https://github.com/fbostanci/$pkgname/archive/v$pkgver.tar.gz")
+md5sums=('e1ea2a78f222d9b33e6a5eda2600a7b5')
 
 package() {
   cd "$pkgname-$pkgver"
