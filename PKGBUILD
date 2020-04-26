@@ -6,7 +6,7 @@
 
 pkgname=asterisk-cisco
 pkgver=16.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete PBX solution. Includes the Cisco Presence patch for use with Cisco IP Phones"
 provides=('asterisk')
 conflicts=('asterisk')
@@ -86,7 +86,7 @@ package(){
 
   sed -i -e 's,/var/run,/run,' "$pkgdir/etc/asterisk/asterisk.conf"
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/examples" "$pkgdir/etc/asterisk/"*
-  install -Dm644 "$pkgdir/usr/share/doc/asterisk/cisco/examples"
+  mkdir -p ${pkgdir}/usr/share/doc/asterisk/cisco/examples
   
   mv "$pkgdir/var/run" "$pkgdir"
 
