@@ -1,5 +1,5 @@
 pkgbase = surge-synthesizer-bin
-	pkgdesc = Surge Synthesizer plugin
+	pkgdesc = Surge Synthesizer plugin (LV2/VST2/VST3, original binary release)
 	pkgver = 1.6.6
 	pkgrel = 1
 	url = https://surge-synthesizer.github.io
@@ -21,6 +21,7 @@ pkgbase = surge-synthesizer-bin
 	depends = zenity
 	provides = surge-synthesizer
 	conflicts = surge-synthesizer
+	conflicts = surge
 	options = !strip
 	options = !libtool
 	options = !emptydirs
