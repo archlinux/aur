@@ -8,7 +8,7 @@ pkgbase = ttf-ubraille
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = http://yudit.org/download/fonts/UBraille/UBraille.ttf
-	sha512sums = bef05539744f51d78c17ba8655aeac8e84b49a209192c3e8c197159c4666052c9dfcb0116c1356a37ca04606af14ab6a972a7989ecb87b3b3146c608872a7206
+	b2sums = 52f166a79116d4279ba53cc4dbcaac30044cead800b62dca009a8ea630f788612215cc31af80bac36a6fda39e704caf8364e63432e5eac034f2f3504f0e45131
 
 pkgname = ttf-ubraille
 
