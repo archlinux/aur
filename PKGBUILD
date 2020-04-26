@@ -1,15 +1,15 @@
 # Maintainer: roger <roger@rogerpc.com.ar>
 
 pkgname=qtile-git
-pkgver=2118.c948877
-pkgrel=1
+pkgver=3444.458c4875
+pkgrel=2
 pkgdesc="A full-featured, pure-Python tiling window manager. (git version)"
 arch=('any')
 url="http://www.qtile.org"
 license=('MIT')
-depends=('python2' 'python2-trollius' 'pango' 'python2-xcffib>=0.2.2' 'python2-cairocffi')
-makedepends=('python2-setuptools')
-optdepends=('python2-setproctitle: change the process name to qtile')
+depends=('python' 'pango' 'python-xcffib' 'python-cairocffi')
+makedepends=('python-setuptools' 'git')
+optdepends=('python-setproctitle: change the process name to qtile')
 provides=('qtile')
 conflicts=('qtile')
 install=${pkgname}.install
@@ -37,5 +37,5 @@ package() {
 
   # install
   msg "Running setup.py"
-  python2 setup.py install --root=${pkgdir} --prefix=/usr
+  python setup.py install --root=${pkgdir} --prefix=/usr
 }
