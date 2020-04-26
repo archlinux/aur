@@ -2,18 +2,18 @@
 # Patch to v2.6.0 supplied by Sean Anderson <seanga2 AT gmail DOT com>
 # See also the 'agda' package in the 'community' repository.
 pkgname=agda-git
-pkgver=2.6.0.r0.g16eb89fb0
+pkgver=2.5.1.r8151.g4108da695
 pkgrel=1
 pkgdesc="A dependently typed functional programming language and proof assistant: development version"
 arch=('x86_64')
 url="http://wiki.portal.chalmers.se/agda/"
 license=('custom')
 groups=()
-depends=('ghc-libs' 'haskell-async' 'haskell-blaze-html' 'haskell-boxes'
+depends=('ghc-libs' 'haskell-async' 'haskell-bifunctors' 'haskell-blaze-html' 'haskell-boxes'
          'haskell-cpphs' 'haskell-data-hash' 'haskell-edisonapi' 'haskell-edisoncore'
          'haskell-edit-distance' 'haskell-equivalence' 'haskell-filemanip' 'haskell-aeson'
          'haskell-geniplate-mirror' 'haskell-gitrev' 'haskell-hashable' 'haskell-hashtables'
-         'haskell-ieee754' 'haskell-murmur-hash' 'haskell-regex-tdfa' 'haskell-strict'
+         'haskell-ieee754' 'haskell-monad-control' 'haskell-murmur-hash' 'haskell-regex-tdfa' 'haskell-strict'
          'haskell-unordered-containers' 'haskell-uri-encode' 'haskell-zlib')
 makedepends=('git' 'alex' 'happy' 'ghc')
 optdepends=('agda-stdlib: for standard library')
@@ -33,7 +33,7 @@ pkgver() {
 }
 
 prepare() {
-	sed -e "s|(\"Agda_datadir\", agda_datadir) : e|[(\"Agda_datadir\",agda_datadir), (\"LD_LIBRARY_PATH\", \"$PWD/${pkgname%-git}/dist/build\")] ++ e|" \
+	sed -e "s|(\"Agda_datadir\", agda_datadir) : e|[(\"Agda_datadir\",agda_datadir), (\"LD_LIBRARY_PATH\", \"$pkgdir/usr/lib\")] ++ e|" \
 		-i "${pkgname%-git}/Setup.hs"
 
 	sed -i 's/== 0.5/>= 0.5/' "${pkgname%-git}/Agda.cabal"
