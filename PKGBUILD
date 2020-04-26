@@ -2,7 +2,7 @@
 # and milk / milkii on Freenode
 _pkgname=zrythm
 pkgname=$_pkgname-debug-git
-pkgver=0.7.383
+pkgver=0.7.474.r45.g4ef3c551
 pkgrel=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ conflicts=()
 provides=()
 source=("$_pkgname::git+https://git.zrythm.org/git/$_pkgname.git")
 md5sums=('SKIP')
-options=('!strip')
+options=(debug !strip)
 
 pkgver () {
   cd "$srcdir/$_pkgname"
@@ -31,7 +31,7 @@ pkgver () {
 
 build() {
   cd "$srcdir/$_pkgname"
-  meson build --prefix=/usr -Denable_tests=true -Duser_manual=true -Dmanpage=true
+  meson build --prefix=/usr -Denable_tests=true -Dmanpage=true -Denable_carla=true
   ninja -C build
 }
 
