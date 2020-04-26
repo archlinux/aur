@@ -1,0 +1,19 @@
+pkgbase = gcdkit
+	pkgdesc = An ODBC database interface
+	pkgver = 6.0
+	pkgrel = 1
+	url = http://www.gcdkit.org
+	arch = any
+	license = unknown
+	makedepends = tk
+	depends = r-rodbc
+	depends = r>3.6.0
+	depends = r-sp
+	depends = r-r2html
+	depends = r-xml
+	noextract = GCDkit_6.0.tar.gz
+	source = http://www.gcdkit.org/sw/GCDkit_6.0.tar.gz
+	md5sums = 8f9aeb51fc8fdcefe4d05e8d7b015553
+
+pkgname = gcdkit
+
