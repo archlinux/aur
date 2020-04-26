@@ -9,7 +9,7 @@ depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
 pkgver=2.44.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -47,9 +47,8 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   export GOPATH="$srcdir/go"
-  # snapd does not use modules, setting GO111MODULE=on in the environment breaks
-  # the build
-  unset GO111MODULE
+  # snapd does not support modules yet, explicitly disable Go modules
+  export GO111MODULE=off
 
   export CGO_ENABLED="1"
   export CGO_CFLAGS="${CFLAGS}"
