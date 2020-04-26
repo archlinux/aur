@@ -1,4 +1,4 @@
-# Maintainer: motte <motte22 at protonmail dot com>
+# Maintainer: motte <ettom22 at hotmail dot com>
 # Contributor: CountMurphy <spartan1086@gmail.com>
 # Contributor: Shelvacu <aur@shelvacu.com>
 
