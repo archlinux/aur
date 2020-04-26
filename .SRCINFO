@@ -4,14 +4,11 @@ pkgbase = youtube-to-mp3
 	pkgrel = 1
 	url = https://www.mediahuman.com/youtube-to-mp3-converter/
 	arch = any
-	license = GPL
+	license = unknown
 	depends = hicolor-icon-theme>=0.17-1
 	depends = qt5-multimedia>=5.14.1-1
 	depends = qt5-webkit>=5.212.0alpha4-1
 	depends = taglib>=1.11.1-3
-	provides = yt2mp3
-	conflicts = yt2mp3
-	replaces = yt2mp3
 
 pkgname = youtube-to-mp3
 
