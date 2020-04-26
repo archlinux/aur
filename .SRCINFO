@@ -12,8 +12,8 @@ pkgbase = ispin
 	optdepends = curl: for version check information
 	source = https://github.com/nimble-code/Spin/archive/version-6.5.0.tar.gz
 	source = LICENSE
-	sha512sums = 0beeb1faea93f806c37a4b76c2c407363990596134fc60b15c3f3a2d33ccf59680acd30e251c4f83fb725903aecb6238b166af7dbc9296a8a34259feabeeae24
-	sha512sums = 9b2af61f49ea5faa646053e42640cea4d4a351e035f0f9b648901821d28950f73228abe83cae2d94bddf9bd497845713b835c0e48e5c54f50bb806e3055bf61b
+	b2sums = d4cd147b8d8204e9c092865e49b59426c49e225578d64818e88eed44fa3a660346dfa424315d4c55f642c00a099337aff86aea5b0cf019b9f59059b636f32250
+	b2sums = 4b7b009a078a13379dbc59e3cb4297b5f9710acc94e4b4dba0169e4407991fb9db3c75c80390c69a6d22cf022fae2cd0463d46474ceb60110688ee8a4c9859fc
 
 pkgname = ispin
 
