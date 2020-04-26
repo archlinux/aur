@@ -1,18 +1,19 @@
-# Maintainer: Florian Hahn <flo@fhahn.com>
+# Maintainer: Johannes Wellhöfer <johannes.wellhoefer+aur@gmail.com>
+# Contributor : Florian Hahn <flo@fhahn.com>
 
 pkgname=boogie-git
 pkgdesc='Boogie is an Intermediate Verification Language (IVL) for describing proof obligations to be discharged by a 
 reasoning engine, typically an SMT solver'
 license=('custom: Ms-Pl')
-pkgver=0.r4273.bad6c01
+pkgver=0.r5030.8448ac1c
 pkgrel=1
 depends=('z3-git' 'mono')
-makedepends=('mercurial' 'wget')
+makedepends=('mercurial' 'wget' 'nuget>=2.12' )
 conflicts=('boogie')
 provides=('boogie')
 arch=('any')
-url=('http://boogie.codeplex.com')
-source=("$pkgname"::'git+https://github.com/boogie-org/boogie.git'
+url='https://github.com/boogie-org/boogie'
+source=($pkgname::'git+https://github.com/boogie-org/boogie.git'
         execute_boogie.sh
         license.txt)
 md5sums=('SKIP'
@@ -27,8 +28,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}/"
-    wget https://nuget.org/nuget.exe
-    mono ./nuget.exe restore Source/Boogie.sln
+    nuget restore Source/Boogie.sln
     xbuild Source/Boogie.sln
 }
 
