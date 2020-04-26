@@ -3,15 +3,14 @@
 # Contributor: Jose Valecillos <valecillosjg@gmail.com>
 
 pkgname=dosbox-sdl2
-pkgver=0.74.4006
-pkgrel=2
+pkgver=0.74.4250
+pkgrel=1
 pkgdesc="Emulator with builtin DOS for running DOS Games (SDL2)"
 arch=("x86_64" "i686")
-depends=("sdl2" "sdl2_net" "sdl_sound-hg" "zlib" "libgl" "libpng" "alsa-lib" "gcc-libs" "hicolor-icon-theme")
+depends=("sdl2" "sdl2_net" "sdl2_sound-hg" "zlib" "libgl" "glew" "libpng" "alsa-lib" "gcc-libs" "hicolor-icon-theme")
 makedepends=("git")
 provides=("dosbox")
 conflicts=("dosbox")
-url="http://www.vogons.org/viewtopic.php?f=32&t=34770"
 license=("GPL")
 source=("$pkgname::git+https://github.com/duganchen/dosbox.git#branch=master"
         "dosbox-128.png"
