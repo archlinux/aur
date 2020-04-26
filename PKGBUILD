@@ -8,7 +8,7 @@
 set -u
 _pkgname='phing'
 pkgname="php-${_pkgname}-bin"
-pkgver='2.16.1'
+pkgver='2.16.3'
 pkgrel='1'
 pkgdesc='PHP project build system based on Apache Ant'
 arch=('any')
@@ -22,7 +22,7 @@ conflicts=("${_pkgname}" "php-${_pkgname}")
 options=('!strip')
 _verwatch=('http://pear.phing.info/feed.xml' '\s\+<title>phing \([0-9\.]\+\) (stable)</title>.*' 'f')
 source=("${url}/get/${_pkgname}-${pkgver}.phar")
-sha256sums=('dcc7b63e1a1f8e1599b0fb33a02b053ee9adcdd2885538e36d7e1f5c81062040')
+sha256sums=('e08fb564db7362d6b4d4c91f0995142f9b99e8246fc6f6fe5325e868186cd7a9')
 
 package() {
   set -u
