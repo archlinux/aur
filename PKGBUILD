@@ -4,17 +4,17 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 _projectname='utop'
 pkgname="ocaml-$_projectname"
-pkgver='2.4.3'
+pkgver='2.5.0'
 pkgrel='1'
 pkgdesc='Universal toplevel for OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
 license=('BSD')
-depends=('ocaml>=4.03.0' 'ocaml-camomile' 'ocaml-findlib>=1.7.2' 'ocaml-lambda-term>=2.0.0' 'ocaml-lwt' 'ocaml-react>=1.0.0')
+depends=('ocaml>=4.03.0' 'ocaml-camomile' 'ocaml-findlib>=1.7.2' 'ocaml-lambda-term>=3.0.0' 'ocaml-lwt' 'ocaml-react>=1.0.0')
 makedepends=('cppo>=1.1.2' 'dune>=1.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('3c882347d4673a20a524101cfdd724c3652dfc9a59598f7d3ef8cb2881bc1784')
+sha256sums=('bc4170cb455c52ee8915d7139b3ed6fef13eb124a1171e8f719bb090effc6e7f')
 
 _sourcedirectory="$_projectname-$pkgver"
 
