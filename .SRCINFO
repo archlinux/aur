@@ -6,7 +6,7 @@ pkgbase = flexbox-udev
 	arch = any
 	license = custom
 	source = https://flexbox.reconfigure.me/howto/99-tprogrammer.rules
-	sha512sums = 4b5971d2bf60a6f2df38ce4ea7ebe8a2680680176dd38328e272f059acc598cea01cb6ae4eff3ca68d380959ddae9bb9208e8e75f3d2f648a9dc8d6c5cdd0f32
+	b2sums = e8e1e52ccc5d090f9dcd3a33ef6ab1a660372325b041853a2fe95e6d41dce772514073188a7fed2e70a8596dfc1e01cf64bf2be2829ccc33dc1cf9959a438759
 
 pkgname = flexbox-udev
 
