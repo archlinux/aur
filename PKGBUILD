@@ -5,7 +5,7 @@ pkgname=( python-$_name python2-$_name )
 pkgbase=python-$_name
 
 pkgver=1.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, super-flexible options. Does magic upon request.'
 
 arch=(any)
@@ -35,5 +35,5 @@ package_python2-options()
 {
     depends=( python2 )
     cd "$srcdir/$_name-$pkgver-py2"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }

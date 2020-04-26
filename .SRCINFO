@@ -1,7 +1,7 @@
 pkgbase = python-options
 	pkgdesc = Simple, super-flexible options. Does magic upon request.
 	pkgver = 1.4.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/jeunice/options
 	arch = any
 	license = Apache
