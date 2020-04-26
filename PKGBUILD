@@ -16,8 +16,8 @@ depends=('gtk2')
 makedepends=('intltool')
 source=("http://launchpad.net/$pkgname/0.2/$pkgver/+download/$pkgname-$pkgver.tar.gz"
         fix-glib-and-docpath.patch)
-sha512sums=('7f7e1b9bd94ff806d98277f2dafbf5b6569efdc6f0367a83e885d38584a8f6e098f31d0f03b080f2ca76394eb73e43f9da07e0d944a2e6443a55d9f2e8fee324'
-            '2069f269b5abcd204a00a2e1ced78699e1acf7e7594ff660771911f711e4c3a36931378d32ac97b9fd43216e2522bec2f27e6c8274f2a599999ec8bb6a793f63')
+b2sums=('05ed162cc1eec7e6c981e796a5dca125e5c940c38ed79d67699d7194fce0c77489f3aae9747ae8610c14417b9871859cb5024990f6adb3524e6e14265603a07b'
+        'aebde310cf6fdafbf0e3754c1d895481187a21441720601e7bd15a68a7fdc43cbf3043f922d84f73e85374011f72d7216745973f2289aa4e71f00695d8bddf89')
 
 build() {
   cd ${pkgname}-${pkgver}
