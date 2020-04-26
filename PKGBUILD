@@ -15,8 +15,8 @@ options=('!strip')
 install='onivim2.install'
 source=("${pkgname}::git+https://github.com/onivim/oni2.git#branch=master"
         onivim2.install)
-sha512sums=('SKIP'
-            '2378a4ee00d60eee252fb2c06ccb79ce011e2d3ae45efefbfdf47eaea85659bf8332cc3553bc53b595928eef858937efc92d5f1c282a27c507200424e1d537be')
+b2sums=('SKIP'
+        'd6e0ad8b9755f1e809d5ffc0a23a5f53455468cfed80a2946f9a1901cc3b31b79250b1b418f6cfffe6f14a521f0eaef3370f06e1babeafb84358e7906becbc44')
 
 pkgver() {
   cd ${pkgname}
