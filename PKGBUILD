@@ -6,7 +6,7 @@
 # Maintainer: Benoit Landrieu (ben@gresille.org)
 pkgname=scribus
 pkgver=1.4.8
-pkgrel=1
+pkgrel=0
 epoch=
 pkgdesc="scribus-stable"
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ depends=('hunspell' 'podofo' 'libcups' 'graphicsmagick' 'poppler'
 	 'desktop-file-utils' 'libzmf' 'libfreehand')
 makedepends=('cmake' 'qt5-tools')
 optdepends=('lib2geom: for mesh distortion')
-conflicts=('scribus-svn')
-provides=('scribus-stable')
+conflicts=('scribus')
+provides=('scribus')
 replaces=()
 backup=()
 options=()
@@ -40,10 +40,10 @@ build() {
 	make
 }
 
-check() {
-	cd "$pkgname-$pkgver"
-	make -k check
-}
+#check() {
+	#cd "$pkgname-$pkgver"
+	#make -k check
+#}
 
 package() {
 	cd "$pkgname-$pkgver"
