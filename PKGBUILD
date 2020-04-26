@@ -2,12 +2,13 @@
 
 pkgname=linvst2-bin
 pkgver=2.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's"
 arch=('x86_64')
 url="https://github.com/osxmidi/LinVst"
+groups=('pro-audio')
 depends=('wine')
-makedepends=('git')
+replaces=('linvst2')
 conflicts=('linvst' 'linvst-stable' 'linvst2')
 provides=('linvst2' "${pkgname}")
 source=("https://github.com/osxmidi/LinVst/releases/download/2.8/LinVst-${pkgver}-Manjaro.zip")
