@@ -6,10 +6,10 @@
 
 pkgname=ungoogled-chromium-ozone
 pkgver=81.0.4044.122
-pkgrel=1
+pkgrel=2
 _pkgname=ungoogled-chromium
 _launcher_ver=6
-_ungoogled_ver=81.0.4044.122-1
+_ungoogled_ver=81.0.4044.122-2
 pkgdesc="A lightweight approach to removing Google web service dependency with patches for wayland support via Ozone"
 arch=('x86_64')
 url="https://ungoogled-software.github.io/"
@@ -49,7 +49,7 @@ sha256sums=('0f9ffd30d769e25e091a87b9dda4d688c19bf85b1e1fcb3b89eaae5ff780182a'
             '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
             # -----------
-            '76d8be051998ace843525e694dcbc16f7eea87f12d9ede3d0c1f9ebb859008ed'
+            'd3c6e7f8c869a6265884654fb38795d82c443d3bf9c489babf2d1bf38aa33874'
             'c6ca2806ffb45cf55c0320f9985e605c105d717e140eb8786d8e292796aec35d'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a'
