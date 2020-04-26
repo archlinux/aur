@@ -3,12 +3,13 @@
 
 pkgname=harrison-xt
 appname=mixbus-plugins
-pkgver=6.0.697
-pkgrel=2
+pkgver=6.0.702
+pkgrel=1
 pkgdesc="Harrison XT LV2 Plugins"
 arch=('x86_64')
 url="http://harrisonconsoles.com/site/${appname}.html"
 license=('EULA, GPLv2')
+groups=('lv2-plugins' 'pro-audio')
 depends=('glibc' 'xorg-server')
 
 prepare() {
@@ -20,6 +21,12 @@ if [ -f ${_archive} ]; then
 	tar -xf ${_archive}
 	./Mixbus-$pkgver-$(uname -m)-gcc5.run --tar xf
 	tar -xf $srcdir/Mixbus_$(uname -m)-$pkgver.tar
+elif [ -f ${_archive/Mixbus/Mixbus32C} ]; then
+    ln -srf ${_archive/Mixbus/Mixbus32C} "$srcdir/`basename ${_archive/Mixbus/Mixbus32C}`"
+    msg2 "Unpacking Installer..."
+    tar -xf ${_archive/Mixbus/Mixbus32C}
+	./Mixbus32C-$pkgver-$(uname -m)-gcc5.run --tar xf
+    tar -xf $srcdir/Mixbus32C_$(uname -m)-$pkgver.tar
 else
 	msg2 "Please download a copy from https://harrisonconsoles.com/site/${appname}.html. Then put the `basename ${_archive}` in the `xdg-user-dir DOWNLOAD` directory."
     exit 1
@@ -32,7 +39,11 @@ mkdir -p ${pkgdir}/usr/lib/lv2
 
 ## Copy Harrison XT Plugins
 for plugin in 3D BC DC DM DS EG EQ GV LC MC ME MG SC SP TG VC; do
-    cp -r ${srcdir}/Mixbus_$(uname -m)-$pkgver/lib/LV2/XT-${plugin}.lv2 ${pkgdir}/usr/lib/lv2
+    if [ -f ${srcdir}/Mixbus_$(uname -m)-$pkgver ]; then
+		cp -r ${srcdir}/Mixbus_$(uname -m)-$pkgver/lib/LV2/XT-${plugin}.lv2 ${pkgdir}/usr/lib/lv2
+	elif [ -f ${srcdir}/Mixbus32C_$(uname -m)-$pkgver ]; then
+		cp -r ${srcdir}/Mixbus32C_$(uname -m)-$pkgver/lib/LV2/XT-${plugin}.lv2 ${pkgdir}/usr/lib/lv2
+	fi
 done
     
 ## Package has built successfully message

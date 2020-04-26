@@ -1,9 +1,11 @@
 pkgbase = harrison-xt
 	pkgdesc = Harrison XT LV2 Plugins
-	pkgver = 6.0.697
-	pkgrel = 2
+	pkgver = 6.0.702
+	pkgrel = 1
 	url = http://harrisonconsoles.com/site/mixbus-plugins.html
 	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
 	license = EULA, GPLv2
 	depends = glibc
 	depends = xorg-server
