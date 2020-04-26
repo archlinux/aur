@@ -1,0 +1,20 @@
+pkgbase = rshell-git
+	pkgdesc = KisuYami own shell.
+	pkgver = 3e1221e51f
+	pkgrel = 2.1
+	url = www.github.com/KisuYami/RShell
+	arch = i686
+	arch = x86_64
+	groups = shell
+	groups = suckless
+	license = GPLv2
+	makedepends = ncurses
+	makedepends = readline
+	depends = ncurses
+	depends = readline
+	provides = rshell
+	source = git://github.com/KisuYami/RShell
+	md5sums = SKIP
+
+pkgname = rshell-git
+
