@@ -3,7 +3,7 @@
 
 _bpn=paho-mqtt-c
 pkgname=${_bpn}-git
-pkgver=1.3.1.r12.gce82bd9
+pkgver=1.3.2.r3.g031a7b9
 pkgrel=1
 pkgdesc="A fully fledged MQTT client written in ANSI standard C"
 arch=(any)
@@ -25,9 +25,9 @@ source=(
   file://0003-Fix-Makefile-install-target.patch
 )
 md5sums=('SKIP'
-         'b48f2a276550cb943c4304f0850a1674'
-         '6c5084ddf779e7069b3abefc1b904253'
-         '8970ff664bad4ddcd3ea9ee71aefe1da')
+         '0e7b4c41a65be1732f8bb55fea73b083'
+         '6a0500782fc9a5325aba7d37a7af21c7'
+         'ab05e295452ab6ac96566cd9e36106c9')
 
 pkgver() {
   cd "$srcdir/paho.mqtt.c"

@@ -1,4 +1,4 @@
-From 307efcf2a05c37b1f5992f2a43e07081c4d5c529 Mon Sep 17 00:00:00 2001
+From 093a298aca58c694044dafa99ab89db89e93c692 Mon Sep 17 00:00:00 2001
 From: Rasmus Antons <mail@rasmusantons.de>
 Date: Wed, 5 Sep 2018 11:59:33 +0200
 Subject: [PATCH 3/3] Fix Makefile install target
@@ -8,10 +8,10 @@ Subject: [PATCH 3/3] Fix Makefile install target
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
-index 0d9f61b..bac3b00 100755
+index 7dd3536..9793b57 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -270,7 +270,7 @@ strip_options:
+@@ -279,7 +279,7 @@ strip_options:
  
  install-strip: build strip_options install
  
@@ -21,5 +21,5 @@ index 0d9f61b..bac3b00 100755
  	mkdir -p $(DESTDIR)$(PREFIX)${bindir}
  	mkdir -p $(DESTDIR)$(PREFIX)${libdir}
 -- 
-2.24.0
+2.26.2
 
