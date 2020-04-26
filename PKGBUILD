@@ -6,8 +6,8 @@ pkgname=(
 	"nginx-zest-src-git"
 )
 pkgver=1.17.10
-pkgrel=3
-epoch=2
+pkgrel=1
+epoch=3
 arch=(
 	"x86_64"
 )
@@ -29,9 +29,10 @@ makedepends=(
 	"rust>=1.39"
 )
 source=(
-	"git+${url}.git"
+	"git+$url.git"
 	"git+https://github.com/AirisX/nginx_cookie_flag_module.git"
 	"git+https://github.com/cloudflare/quiche.git"
+	"git+https://github.com/cloudflare/zlib.git"
 	"git+https://github.com/google/ngx_brotli.git"
 	"git+https://github.com/masonicboom/ipscrub.git"
 	"git+https://github.com/openresty/echo-nginx-module.git"
@@ -49,6 +50,7 @@ source=(
 	"service"
 )
 b2sums=(
+	"SKIP"
 	"SKIP"
 	"SKIP"
 	"SKIP"
@@ -119,6 +121,7 @@ _zest_flags=(
 	--with-libatomic
 	--with-openssl="../quiche/deps/boringssl"
 	--with-quiche="../quiche"
+	--with-zlib="../zlib"
 )
 
 prepare()
@@ -132,13 +135,17 @@ prepare()
 
 	#* Checkout to a newer BoringSSL to fix an error that Clang picks up
 	git checkout 21f694210c9232d6ab926d029c315ae6069c7dbb
+
+	cd "../../../zlib" || exit
+	[ -f Makefile ] && make clean
+	make -f Makefile.in distclean
 }
 
 build()
 {
 	#* Manually state the compiler flags
-	export CFLAGS="-O3 -pipe -fno-plt"
-	export CXXFLAGS="-O3 -pipe -fno-plt"
+	export CFLAGS="-march=x86-64 -mtune=generic -O3 -pipe -fno-plt"
+	export CXXFLAGS="-march=x86-64 -mtune=generic -O3 -pipe -fno-plt"
 
 	cd "nginx" || exit
 	./auto/configure \
@@ -185,7 +192,6 @@ package_nginx-zest-git()
 		"liburing"
 		"mailcap"
 		"pcre"
-		"zlib"
 		"zstd"
 	)
 	optdepends=(
