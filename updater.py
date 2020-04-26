@@ -92,6 +92,13 @@ def clean_workspace():
     child.expect(pexpect.EOF)
 
 
+def notify_updated(remote_version):
+    child = pexpect.spawnu(
+        'notify-send "AUR - screen-desktop" "Updated package to version {remote_version}"'
+        .format(remote_version=remote_version))
+    child.expect(pexpect.EOF)
+
+
 def main():
     load_dotenv()
     configure_chrome_webdriver()
@@ -100,6 +107,7 @@ def main():
     if check_updated(remote_version, local_version):
         update_pkgbuild(remote_version, local_version)
         clean_workspace()
+        notify_updated(remote_version)
 
 
 if __name__ == "__main__":
