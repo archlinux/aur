@@ -1,7 +1,7 @@
 # Maintainer: Ossi Saukko <osaukko at gmail dot com>
 _name=ocp
 pkgname=ocp-git
-pkgver=0.2.1.r452.1f28294
+pkgver=0.2.1.r457.baf4c7d
 pkgrel=1
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
@@ -52,10 +52,6 @@ build() {
     then
         CONFIG="${CONFIG} --without-sdl"
     fi
-
-    # The revision r452.1f28294 lacks instructions on how to build playmp2/charset.o, which prevents us from making the package.
-    # Let us try to re-introduce MAD again in subsequent revisions. For now, we have to go without it.
-    CONFIG="${CONFIG} --without-mad"
 
     ./configure ${CONFIG}
     make
