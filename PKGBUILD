@@ -2,13 +2,13 @@
 
 pkgname=ava-plugins
 pkgver=3.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Harrison Consoles VST Plugin Suite."
 arch=('x86_64')
 url="https://www.harrisonconsoles.com/site/ava-plugins.html"
 license=('EULA')
+groups=('pro-audio' 'vst-plugins')
 depends=('glibc' 'libcurl-gnutls')
-conflicts=("$pkgname")
 
 prepare () {
 	## Extract AVA Plugins Archive
