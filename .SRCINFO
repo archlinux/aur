@@ -1,6 +1,6 @@
 pkgbase = pywbem
 	pkgdesc = Python WBEM Client and Provider Interface
-	pkgver = 0.14.4
+	pkgver = 0.17.2
 	pkgrel = 1
 	url = https://github.com/pywbem/pywbem
 	arch = any
@@ -9,23 +9,12 @@ pkgbase = pywbem
 	makedepends = python-pip
 	makedepends = python-yaml
 	makedepends = python-ply
-	makedepends = python2
-	makedepends = python2-pip
-	makedepends = python2-yaml
-	makedepends = python2-ply
-	depends = python2-m2crypto
 	depends = python-six
 	depends = python-ply
-	depends = python2-six
-	depends = python2-ply
 	depends = python-pyaml
-	depends = python2-pyaml
-	depends = python2-pbr
 	depends = python-pbr
-	source = https://github.com/pywbem/pywbem/archive/0.14.4/pywbem-0.14.4.tar.gz
-	sha256sums = b9553a8abc29e422142063c2164f6b58a926cdac37780df59c10327cea200b21
+	source = https://github.com/pywbem/pywbem/archive/0.17.2/pywbem-0.17.2.tar.gz
+	sha256sums = 63ec0bf03a109d3bfa962a05da26830a884144510376ac6f826c5f226a17a3af
 
 pkgname = python-pywbem
-
-pkgname = python2-pywbem
 
