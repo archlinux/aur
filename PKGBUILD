@@ -26,7 +26,6 @@ pkgver() {
 build() {
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DBUILD_VERSION_STABLE=ON \
         -DBUILD_VERSION_DIST_CONTACT="https://aur.archlinux.org/packages/renderdoc-git" \
         -DBUILD_VERSION_DIST_NAME="Arch" \
         -DBUILD_VERSION_DIST_VER="${pkgver}" \
