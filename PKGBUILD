@@ -1,6 +1,6 @@
 pkgname=kms-core
 pkgver=6.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Kurento media server core library"
 arch=(any)
 url="https://github.com/Kurento/kms-core"
@@ -12,8 +12,13 @@ source=(
     cmake-boost.patch
     kmscore.c.patch
 )
-
 sha256sums=(SKIP SKIP SKIP)
+backup=(
+    etc/kurento/modules/kurento/BaseRtpEndpoint.conf.ini
+    etc/kurento/modules/kurento/MediaElement.conf.ini
+    etc/kurento/modules/kurento/SdpEndpoint.conf.json
+    etc/kurento/modules/kurento/UriEndpoint.conf.ini
+)
 
 prepare() {
     cd "$srcdir/$pkgname"
