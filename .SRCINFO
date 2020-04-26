@@ -1,0 +1,18 @@
+pkgbase = ruby-jekyll-relative-links
+	pkgdesc = The Listen gem listens to file modifications and notifies you about the changes. Works everywhere!
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://rubygems.org/gems/jekyll-relative-links
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = jekyll
+	noextract = jekyll-relative-links-0.6.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jekyll-relative-links-0.6.1.gem
+	source = ruby-jekyll-relative-links-LICENSE.md::https://raw.githubusercontent.com/benbalter/jekyll-relative-links/v0.6.1/LICENSE.md
+	sha256sums = d11301f57b39e94b6c04fff2a3b145fe2f6a27be631a403e2542fa2e1548dd6d
+	sha256sums = abb5c27df270e4bb12ce4570dd6c84e8ec64318184da1cac01ddfd47ce443bb9
+
+pkgname = ruby-jekyll-relative-links
+
