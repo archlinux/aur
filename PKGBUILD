@@ -13,8 +13,8 @@ optdepends=('libpurple-carbons: message carbons support')
 conflicts=('libpurple-lurch-git')
 source=("git+https://github.com/gkdr/lurch.git#tag=v${pkgver}"
         gitmodule-paths.patch)
-sha512sums=('SKIP'
-            '43bcadb8246b97bb54c3642cd249e675777ff5cb2e5b04b164b8541ae8a173ab4608b01bfa1f07534125abd8b14e8054a55e644697fa99451e16e248959487af')
+b2sums=('SKIP'
+        'bb6a60e8a57b6e9645bfdc9e26e960afbb4f1fea1228f8ce0040ce49cac788e2b04e99c71a3b7a219a14d8c3fb7da1e132f91d8772d7657b314eda0c9d039f2d')
 
 prepare() {
   cd ${pkgname##libpurple-}
