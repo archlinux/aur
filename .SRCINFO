@@ -1,0 +1,18 @@
+pkgbase = carmel-git
+	pkgdesc = finite-state toolkit, EM and Bayesian (Gibbs sampling) training for FST and context-free derivation forests
+	pkgver = forest.em.19.r2154.g03cd860f
+	pkgrel = 1
+	url = https://github.com/isi-nlp/carmel
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	depends = boost
+	optdepends = openfst
+	provides = carmel=forest.em.19.r2154.g03cd860f
+	source = carmel-git::git+https://github.com/isi-nlp/carmel.git#branch=master
+	md5sums = SKIP
+
+pkgname = carmel-git
+
