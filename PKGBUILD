@@ -1,7 +1,7 @@
 # Maintainer: fzerorubigd <fzero@rubi.gd>
 _pkgmain=cli_helpers
 pkgname=python-$_pkgmain
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Python helpers for common CLI tasks."
 arch=('any')
@@ -18,4 +18,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('78ef95f0211e338e206a75f669ba71c1')
+md5sums=('b255796c616f2e29e92194e4e8c5c555')
