@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=IDA (Evaluation)
 Comment=The Interactive Disassembler
-Exec=/opt/ida-eval/ida64
+Exec=/usr/bin/ida64-eval
 Icon=ida-eval
 Terminal=false
 Type=Application
