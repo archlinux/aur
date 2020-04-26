@@ -1,17 +1,17 @@
 # Maintainer: Élie Bouttier <elie+aur@bouttier.eu>
 
 pkgname=python-rq-dashboard
-pkgver=0.3.10
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Flask-based web front-end for monitoring RQ queues"
 arch=('any')
 license=('BSD')
-url="https://github.com/eoranged/rq-dashboard/"
+url="https://github.com/Parallels/rq-dashboard/"
 makedepends=('python' 'python-setuptools')
 depends=('python' 'python-click' 'python-flask' 'python-redis'
          'python-rq' 'python-arrow')
 source=("${url}archive/${pkgver}.tar.gz")
-sha256sums=('ba0103b2fcfd1b09530e0fc1a11b66280ce2ea71f123357db0725687668dbe60')
+sha256sums=('624be5c9823dcf719430f4b7064dec77c5b7b6cfd7143e6c499e2d03ee5538da')
 
 package() {
     cd "${srcdir}/rq-dashboard-${pkgver}"
