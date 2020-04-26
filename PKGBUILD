@@ -12,7 +12,7 @@ depends=('python-django')
 makedepends=('python-setuptools')
 source=(
     "$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"
-    'https://raw.githubusercontent.com/wearespindle/django-ranged-fileresponse/master/LICENSE'
+    'LICENSE'
 )
 sha256sums=(
     'f71fff352a37316b9bead717fc76e4ddd6c9b99c4680cdf4783b9755af1cf985'

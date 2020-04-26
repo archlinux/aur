@@ -8,7 +8,7 @@ pkgbase = python-django-ranged-response
 	makedepends = python-setuptools
 	depends = python-django
 	source = python-django-ranged-response-0.2.0.tar.gz::https://files.pythonhosted.org/packages/source/d/django-ranged-response/django-ranged-response-0.2.0.tar.gz
-	source = https://raw.githubusercontent.com/wearespindle/django-ranged-fileresponse/master/LICENSE
+	source = LICENSE
 	sha256sums = f71fff352a37316b9bead717fc76e4ddd6c9b99c4680cdf4783b9755af1cf985
 	sha256sums = 5e47e2a8ca47cda5a311fea4e29186201e6f980fc20d24812596460d289a8275
 
