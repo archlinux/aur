@@ -1,7 +1,7 @@
 pkgbase = smartcam
 	pkgdesc = utility that turns a Symbian or Android phones with bluetooth or wifi and camera into a handy webcam ready to use with your PC
 	pkgver = 1.4.0
-	pkgrel = 16
+	pkgrel = 17
 	url = http://smartcam.sourceforge.net/
 	install = smartcam.install
 	arch = i686
@@ -13,8 +13,11 @@ pkgbase = smartcam
 	depends = bluez-libs
 	depends = hicolor-icon-theme
 	depends = intltool
+	depends = dkms
 	source = https://github.com/mirh/smartcam/archive/1.4.0.zip
+	source = dkms.conf
 	sha1sums = f555c37a999e08fc25d7167228a99e39b915f34e
+	sha1sums = f748ca9e55642122bd6669930d01d2f9c722874d
 
 pkgname = smartcam
 
