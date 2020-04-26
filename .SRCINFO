@@ -1,0 +1,91 @@
+pkgbase = postgresql-11
+	pkgdesc = Sophisticated object-relational DBMS
+	pkgver = 11.7
+	pkgrel = 1
+	url = https://www.postgresql.org/
+	arch = x86_64
+	license = custom:PostgreSQL
+	makedepends = krb5
+	makedepends = libxml2
+	makedepends = python
+	makedepends = python2
+	makedepends = perl
+	makedepends = tcl>=8.6.0
+	makedepends = openssl>=1.0.0
+	makedepends = pam
+	makedepends = zlib
+	makedepends = icu
+	makedepends = systemd
+	makedepends = libldap
+	makedepends = llvm
+	makedepends = clang
+	source = https://ftp.postgresql.org/pub/source/v11.7/postgresql-11.7.tar.bz2
+	source = postgresql-run-socket.patch
+	source = postgresql-perl-rpath.patch
+	source = postgresql.pam
+	source = postgresql.logrotate
+	source = postgresql.service
+	source = postgresql-check-db-dir
+	source = postgresql.sysusers
+	source = postgresql.tmpfiles
+	sha256sums = 324ae93a8846fbb6a25d562d271bc441ffa8794654c5b2839384834de220a313
+	sha256sums = 8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9
+	sha256sums = 5f73b54ca6206bd2c469c507830261ebd167baca074698d8889d769c33f98a31
+	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
+	sha256sums = 6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e
+	sha256sums = 25fb140b90345828dc01a4f286345757e700a47178bab03d217a7a5a79105b57
+	sha256sums = 2bbd8c4e51b70223d274fef3a167af096f44af3d3c41ae505ad11c606674e7c5
+	sha256sums = 7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12
+	sha256sums = 4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57
+	sha512sums = 32c7ace228f9895241ce0d925fbfc60c0cd39f4cd35368fb10dc7db046151ffd59a9895b4c30a529627f0103051e84b4992ed60312cccd292489f3037076ca1e
+	sha512sums = 031efe12d18ce386989062327cdbbe611c5ef1f94e4e1bead502304cb3e2d410af533d3c7f1109d24f9da9708214fe32f9a10ba373a3ca8d507bdb521fbb75f7
+	sha512sums = 38302242b30c01c7981574ed28d9cbd9dc73bf6b56ba3a032afb5d0885ae83e5aa72ce578bf2422214dfa6c46f09d0bdd7cccaeb3c25d58754eb1a34f8bf5615
+	sha512sums = 1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67
+	sha512sums = 9ab4da01337ffbab8faec0e220aaa2a642dbfeccf7232ef2645bdc2177a953f17ee3cc14a4d8f8ebd064e1dae8b3dba6029adbffb8afaabea383963213941ba8
+	sha512sums = ee0c010be07e8b5396cfd89c1d077b7c5573753d0210ea4e330e314c2759e25fbee9071e663f871855d65cc8ac75162af9e793dd10892f50f515e7a89cc8d6a0
+	sha512sums = 73af1cd31638791f81aa2623d51188364107a57b55e4deba6691cd99e96ae5ea0dd94b25a0e95d9e21ac64f36f71919a05cd31233c754bde025215a5a02e055c
+	sha512sums = 36f7a5d38370fdc4d4267fd5a8a8330f152a1077bf0f065b89d4a7b8112ccd42be2c46c863791b77de02013f28275a42219f4236e7cb837c3f8cfd5fcc7d3373
+	sha512sums = 5fe81d716d56d515ee4ae1aac56652b7bf20346ea8413482fd9fdb79f0485d8c5ed099f4d2cc460cbe37686488f1354dec433905ce005da8fec772e783addc70
+
+pkgname = postgresql-libs-11
+	pkgdesc = Libraries for use with PostgreSQL
+	depends = krb5
+	depends = openssl>=1.0.0
+	depends = readline>=6.0
+	depends = zlib
+	depends = libldap
+	provides = postgresql-client
+	provides = postgresql-libs=11.7
+	conflicts = postgresql-client
+	conflicts = postgresql-libs
+
+pkgname = postgresql-docs-11
+	pkgdesc = HTML documentation for PostgreSQL
+	provides = postgresql-docs=11.7
+	conflicts = postgresql-docs
+	options = docs
+
+pkgname = postgresql-11
+	pkgdesc = Sophisticated object-relational DBMS
+	install = postgresql.install
+	depends = postgresql-libs>=11.7
+	depends = krb5
+	depends = libxml2
+	depends = readline>=6.0
+	depends = openssl>=1.0.0
+	depends = pam
+	depends = icu
+	depends = systemd-libs
+	depends = libldap
+	depends = llvm-libs
+	optdepends = python2: for PL/Python 2 support
+	optdepends = python: for PL/Python 3 support
+	optdepends = perl: for PL/Perl support
+	optdepends = tcl: for PL/Tcl support
+	optdepends = postgresql-old-upgrade: upgrade from previous major version using pg_upgrade
+	provides = postgresql=11.7
+	conflicts = postgresql
+	options = staticlibs
+	backup = etc/pam.d/postgresql
+	backup = etc/logrotate.d/postgresql
+
