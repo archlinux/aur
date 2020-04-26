@@ -2,7 +2,7 @@
 
 pkgname=python-snap7
 pkgver=0.11
-pkgrel=5
+pkgrel=1
 pkgdesc="ctypes based python wrapper for snap7"
 url="https://github.com/gijzelaerr/python-snap7"
 license=("LGPL3")
