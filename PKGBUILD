@@ -6,7 +6,7 @@
 _pkgorg=gitlab.com/mipimipi
 pkgname=armutils-git
 _pkgname=armutils
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Manage ARM chroot environments"
 arch=(x86_64)
@@ -17,6 +17,9 @@ validpgpkeys=(11ECD6695134183B3E7AF1C2223AAA374A1D59CE) # Michael Picht <mipi@fs
 md5sums=(SKIP)
 depends=(
     libarchive
+)
+optdepends=(
+    "wget: needed to download image files"
 )
 makedepends=(
     git
