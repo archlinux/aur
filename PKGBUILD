@@ -96,6 +96,5 @@ package(){
   install -Dm644 ${srcdir}/SoftKeys.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/SoftKeys.xml
   install -Dm644 ${srcdir}/AppDialRules.xml ${pkgdir}/usr/share/doc/asterisk/cisco/examples/AppDialRules.xml
   install -Dm644 ${srcdir}/asterisk.logrotated ${pkgdir}/etc/logrotate.d/asterisk
-  install -Dm644 ${srcdir}/asterisk.service ${pkgdir}/usr/lib/systemd/system/asterisk.service
   install -Dm644 ${srcdir}/asterisk.tmpfile ${pkgdir}/usr/lib/tmpfiles.d/asterisk.conf
  }
