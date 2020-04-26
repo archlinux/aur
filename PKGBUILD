@@ -1,25 +1,26 @@
 # Maintainer: Reberti Carvalho Soares <6reberti6@gmail.com>
 pkgname=kyfm-git
-pkgver=git
-pkgrel=0
-epoch=0
+provides=('kyfm')
 pkgdesc="The fastest file manager."
-arch=('i686' 'x86_64')
-url='www.github.com/KisuYami/kyfm'
+pkgrel=1
+pkgver=1.3.3de6f92d46
+options=()
 license=('GPLv2')
+arch=('i686' 'x86_64')
 depends=('ncurses' 'readline')
 makedepends=('ncurses' 'readline')
-options=()
+groups=('file-management' 'suckless')
 source=('git://github.com/KisuYami/kyfm')
+url='www.github.com/KisuYami/kyfm'
 md5sums=('SKIP')
 
 build() {
-  cd "$pkgname/"
+  cd kyfm
   make
 }
 
 package() {
-  cd "$pkgname/"
+  cd kyfm
 
   mkdir -p "$pkgdir"/usr/bin/
   make DESTDIR="$pkgdir"/usr/bin/ install
