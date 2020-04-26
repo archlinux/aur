@@ -6,7 +6,7 @@
 
 set -u
 pkgname='codeblocks-svn'
-pkgver=17.12.r11472
+pkgver=20.03.r12073
 pkgrel=1
 pkgdesc='An open source and cross-platform C/C++ IDE'
 arch=('i686' 'x86_64')
