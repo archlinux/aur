@@ -1,7 +1,7 @@
 pkgbase = cri-o-git
 	pkgdesc = Open Container Initiative-based implementation of Kubernetes Container Runtime Interface
 	pkgver = 20200426
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/cri-o/cri-o
 	arch = x86_64
 	arch = aarch64

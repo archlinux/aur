@@ -1,7 +1,7 @@
 _pkgname=cri-o
 pkgname=cri-o-git
 pkgver=20200426
-pkgrel=3
+pkgrel=4
 pkgdesc='Open Container Initiative-based implementation of Kubernetes Container Runtime Interface'
 arch=(x86_64 aarch64)
 url='https://github.com/cri-o/cri-o'
@@ -29,7 +29,7 @@ build() {
 	make
 
 	# Default config is based on paths in already published packages
-	./bin/crio --selinux=true \
+	./bin/crio --selinux=false \
 		--storage-driver=overlay \
 		--conmon /usr/bin/conmon \
 		--cni-plugin-dir /usr/lib/cni \
