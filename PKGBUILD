@@ -12,8 +12,8 @@ depends=('python2')
 makedepends=('python2-distribute')
 source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/graphy/graphy_${pkgver}.tar.bz2"
         setup.py)
-sha512sums=('39b85b21dd0e984a3b7895a090d6676d2fc12e629bcb5f2e486ad02b6cacdd57ab150c1aa4364cae571cd8e6fbca20b5744c079be532b6f4ea2668899c9932e3'
-            '0b2fe89d2ad55137b635c3910f815e9c51283e180a3d62c6d666923fd0f6e555184a0cb3e7d4c172aa1e93944191d95421494891e8bb4942fd3c6657fb5e0339')
+b2sums=('c14e969c7eb3713c9eece2a7b05f018e5a72cbd20b1ab1bb49897c7d569bd9a63b3b73530983d4015a92cbdd0c76cab9fd4aeeb1b0f7525eb2226732947a1452'
+        '9d35174cea93b71ae4447ad67507a23c6b9636722c711da2a30d8a222452c540ed30dea443bf15d278ed71d0fde8da47b80a7f9a4472349bdde3190b5f44f395')
 
 package() {
   cd graphy_${pkgver}
