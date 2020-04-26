@@ -2,7 +2,7 @@
 
 pkgname=talosctl
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for Talos - A modern OS for Kubernetes'
 arch=('any')
 url='https://github.com/talos-systems/talos'
@@ -14,9 +14,13 @@ b2sums=('a82246d09596c70287c8b716d9bb0b93ffa6ec5259dce171fa9a75e796f4ffb501fa287
 build() {
   cd ${pkgname%ctl}-${pkgver}/cmd/talosctl
   go build -trimpath -ldflags "-extldflags ${LDFLAGS}"
+  ./talosctl completion bash > bashcompletion
+  ./talosctl completion zsh > zshcompletion
 }
 
 package() {
   cd ${pkgname%ctl}-${pkgver}/cmd/talosctl
   install -Dm755 talosctl "${pkgdir}"/usr/bin/talosctl
+  install -Dm644 bashcompletion "${pkgdir}"/usr/share/bash-completion/completions/talosctl
+  install -Dm644 zshcompletion "${pkgdir}"/usr/share/zsh/site-functions/_talosctl
 }
