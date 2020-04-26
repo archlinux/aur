@@ -6,7 +6,7 @@ pkgname=(
 	"nginx-zest-src-git"
 )
 pkgver=1.17.10
-pkgrel=2
+pkgrel=3
 epoch=2
 arch=(
 	"x86_64"
@@ -108,10 +108,6 @@ _zest_flags=(
 	--add-module="../nginx_cookie_flag_module"
 	--add-module="../ngx_brotli"
 	--add-module="../ngx_http_redis-0.3.9"
-
-	#! The set_hash module breaks compilation
-	#--add-module="../ngx_http_set_hash"
-
 	--add-module="../njs/nginx"
 	--add-module="../redis2-nginx-module"
 	--add-module="../set-misc-nginx-module"
@@ -198,31 +194,26 @@ package_nginx-zest-git()
 	provides=(
 		"nginx=1.17.10"
 		"nginx-mod-brotli"
-		"nginx-mod-cookieflag"
-		"nginx-mod-devel"
+		"nginx-mod-ndk"
 		"nginx-mod-ipscrub"
+		"nginx-mod-ndk"
 		"nginx-mod-njs"
 		"nginx-mod-redis=0.3.9"
 		"nginx-mod-redis2"
-
-		#! This module is currently not built
-		#"nginx-mod-sethash"
-
-		"nginx-mod-setmisc"
+		"nginx-mod-set-misc"
 		"nginx-mod-srcache"
 		"nginx-zest=1.17.10"
 	)
 	conflicts=(
 		"nginx"
 		"nginx-mod-brotli"
-		"nginx-mod-cookieflag"
-		"nginx-mod-devel"
+		"nginx-mod-ndk"
 		"nginx-mod-ipscrub"
+		"nginx-mod-ndk"
 		"nginx-mod-njs"
 		"nginx-mod-redis"
 		"nginx-mod-redis2"
-		"nginx-mod-sethash"
-		"nginx-mod-setmisc"
+		"nginx-mod-set-misc"
 		"nginx-mod-srcache"
 		"nginx-zest"
 	)

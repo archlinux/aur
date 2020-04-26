@@ -1,6 +1,6 @@
 pkgbase = nginx-zest-git
 	pkgver = 1.17.10
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 2
 	url = https://github.com/ZestProjects/nginx
 	arch = x86_64
@@ -64,25 +64,24 @@ pkgname = nginx-zest-git
 	optdepends = nginx-zest-src-git: dynamic module support
 	provides = nginx=1.17.10
 	provides = nginx-mod-brotli
-	provides = nginx-mod-cookieflag
-	provides = nginx-mod-devel
+	provides = nginx-mod-ndk
 	provides = nginx-mod-ipscrub
+	provides = nginx-mod-ndk
 	provides = nginx-mod-njs
 	provides = nginx-mod-redis=0.3.9
 	provides = nginx-mod-redis2
-	provides = nginx-mod-setmisc
+	provides = nginx-mod-set-misc
 	provides = nginx-mod-srcache
 	provides = nginx-zest=1.17.10
 	conflicts = nginx
 	conflicts = nginx-mod-brotli
-	conflicts = nginx-mod-cookieflag
-	conflicts = nginx-mod-devel
+	conflicts = nginx-mod-ndk
 	conflicts = nginx-mod-ipscrub
+	conflicts = nginx-mod-ndk
 	conflicts = nginx-mod-njs
 	conflicts = nginx-mod-redis
 	conflicts = nginx-mod-redis2
-	conflicts = nginx-mod-sethash
-	conflicts = nginx-mod-setmisc
+	conflicts = nginx-mod-set-misc
 	conflicts = nginx-mod-srcache
 	conflicts = nginx-zest
 	backup = etc/logrotate.d/nginx
