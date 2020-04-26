@@ -1,8 +1,8 @@
 pkgbase = python-django-bootstrap3
 	pkgdesc = Bootstrap 3 integration with Django
 	pkgver = 12.0.3
-	pkgrel = 1
-	url = http://github.com/dyve/django-bootstrap3
+	pkgrel = 2
+	url = https://github.com/dyve/django-bootstrap3
 	arch = any
 	license = Apache
 	makedepends = python

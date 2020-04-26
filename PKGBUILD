@@ -2,10 +2,10 @@
 
 pkgname=('python-django-bootstrap3' 'python2-django-bootstrap3')
 pkgver=12.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Bootstrap 3 integration with Django"
 arch=('any')
-url="http://github.com/dyve/django-bootstrap3"
+url="https://github.com/dyve/django-bootstrap3"
 license=('Apache')
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
 source=("https://github.com/dyve/django-bootstrap3/archive/v${pkgver}.tar.gz")
