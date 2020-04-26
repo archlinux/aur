@@ -1,0 +1,18 @@
+pkgbase = gpmp2-git
+	pkgdesc = Gaussian Process Motion Planner 2
+	pkgver = r98.c33e9ef
+	pkgrel = 1
+	url = https://github.com/gtrll/gpmp2
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = boost
+	depends = gtsam
+	provides = gpmp2
+	conflicts = gpmp2
+	source = gpmp2-git::git+https://github.com/gtrll/gpmp2
+	sha256sums = SKIP
+
+pkgname = gpmp2-git
+
