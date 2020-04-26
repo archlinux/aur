@@ -1,17 +1,18 @@
 pkgbase = linvstmanager
 	pkgdesc = GUI Manager for the Linux VST Bridge (LinVST)
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Goli4thus/linvstmanager
 	arch = x86_64
+	groups = pro-audio
 	makedepends = cmake
 	depends = qt5-base
 	optdepends = linvst2: VST2 to Linux bridge
 	optdepends = linvst2x: VST2 to Linux bridge as a single prcoess
 	optdepends = linvst3: VST3 to Linux bridge
 	optdepends = linvst3x: VST3 to Linux bridge as a single prcoess
-	source = https://github.com/Goli4thus/linvstmanager/archive/v1.0.1.tar.gz
-	sha256sums = afab55994617a9f6397315a87cd63c56bb911c4642711f78129858796a558e3a
+	source = https://github.com/Goli4thus/linvstmanager/archive/v1.0.2.tar.gz
+	sha256sums = 8e6c247a06802c41d84848d7ad910961e7f5a7ab0622be2d6716121401aa0051
 
 pkgname = linvstmanager
 
