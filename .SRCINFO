@@ -1,7 +1,7 @@
 pkgbase = libtorch
 	pkgdesc = PyTorch C++ API
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://pytorch.org/cppdocs/
 	arch = x86_64
 	license = BSD
@@ -9,8 +9,8 @@ pkgbase = libtorch
 	optdepends = cuda: NVIDIA's GPU programming toolkit
 	optdepends = cudnn: NVIDIA CUDA Deep Neural Network library
 	options = !strip
-	source = https://download.pytorch.org/libtorch/cu101/libtorch-cxx11-abi-shared-with-deps-1.4.0.zip
-	sha256sums = f214bfde532877aa5d4e0803e51a28fa8edd97b6a44b6615f75a70352b6b542e
+	source = https://download.pytorch.org/libtorch/cu102/libtorch-cxx11-abi-shared-with-deps-1.5.0.zip
+	sha256sums = 0efdd4e709ab11088fa75f0501c19b0e294404231442bab1d1fb953924feb6b5
 
 pkgname = libtorch
 
