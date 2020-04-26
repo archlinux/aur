@@ -1,14 +1,19 @@
 pkgbase = python-gspread-pandas
 	pkgdesc = A package to easily open an instance of a Google spreadsheet and interact with worksheets through Pandas DataFrames
-	pkgver = 2.2.1
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/aiguofer/gspread-pandas
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	depends = python
-	source = https://github.com/aiguofer/gspread-pandas/archive/v2.2.1.tar.gz
-	sha256sums = 9890daf48795803f166afed0b9b66d7f8d95da36b6180187cb04736b2022b6cd
+	depends = python-gspread
+	depends = python-pandas
+	depends = python-decorator
+	depends = python-future
+	depends = python-google-auth
+	depends = python-google-auth-oauthlib
+	source = python-gspread-pandas-2.2.3.tar.gz::https://github.com/aiguofer/gspread-pandas/archive/v2.2.3.tar.gz
+	sha256sums = 09910b49ac07a008c5deceec642c0efa7de84c1a247b6c0e273287bc0fae29f2
 
 pkgname = python-gspread-pandas
 
