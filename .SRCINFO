@@ -1,6 +1,6 @@
 pkgbase = boogie-git
 	pkgdesc = Boogie is an Intermediate Verification Language (IVL) for describing proof obligations to be discharged by a reasoning engine, typically an SMT solver
-	pkgver = 0.r4273.bad6c01
+	pkgver = 0.r5030.8448ac1c
 	pkgrel = 1
 	url = http://boogie.codeplex.com
 	arch = any
