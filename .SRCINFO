@@ -7,6 +7,7 @@ pkgbase = opensubtitles-uploader
 	arch = x86_64
 	license = GPL3
 	makedepends = npm
+	makedepends = git
 	makedepends = gulp
 	source = opensubtitles-uploader::https://github.com/vankasteelj/opensubtitles-uploader/archive/2.5.0.tar.gz
 	source = opensubtitles-uploader.desktop

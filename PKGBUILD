@@ -6,7 +6,7 @@ pkgdesc="Desktop app to upload subtitles to OpenSubtitles, using Node.JS and NWj
 arch=('i686' 'x86_64')
 url="https://github.com/vankasteelj/opensubtitles-uploader"
 license=('GPL3')
-makedepends=('npm' 'gulp')
+makedepends=('npm' 'git' 'gulp')
 source=("${pkgname}::https://github.com/vankasteelj/${pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.png")
