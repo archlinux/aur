@@ -110,16 +110,16 @@ index 3e1a4319..8d69cb3b 100644
  #elif defined HUGGLE_WIN
      // This is needed by yaml cpp library, otherwise it won't build with MSVC
      #define YAML_CPP_DLL
-#diff --git a/src/huggle_core/definitions.hpp b/src/huggle_core/definitions.hpp
-#index 1fc5b1f..dc7a4d9 100644
-#--- a/src/huggle_core/definitions.hpp
-#+++ b/src/huggle_core/definitions.hpp
-#@@ -216,7 +216,7 @@ namespace std { typedef decltype(nullptr) nullptr_t; }
-#     #define HUGGLE_GLOBAL_EXTENSION_PATH            QCoreApplication::applicationDirPath() + "/extensions"
-# #elif defined __linux__
-#     #define HUGGLE_UPDATER_PLATFORM_TYPE            "linux"
-#-    #define HUGGLE_GLOBAL_EXTENSION_PATH            "/usr/local/share/huggle/extensions"
-#+    #define HUGGLE_GLOBAL_EXTENSION_PATH            "/usr/lib/huggle/extensions/"
-# #elif defined HUGGLE_WIN
-#     // This is needed by yaml cpp library, otherwise it won't build with MSVC
-#     #define YAML_CPP_DLL
+diff --git a/src/huggle_core/definitions.hpp b/src/huggle_core/definitions.hpp
+index 1fc5b1f..dc7a4d9 100644
+--- a/src/huggle_core/definitions.hpp
++++ b/src/huggle_core/definitions.hpp
+@@ -216,7 +216,7 @@ namespace std { typedef decltype(nullptr) nullptr_t; }
+     #define HUGGLE_GLOBAL_EXTENSION_PATH            QCoreApplication::applicationDirPath() + "/extensions"
+ #elif defined __linux__
+     #define HUGGLE_UPDATER_PLATFORM_TYPE            "linux"
+-    #define HUGGLE_GLOBAL_EXTENSION_PATH            "/usr/local/share/huggle/extensions"
++    #define HUGGLE_GLOBAL_EXTENSION_PATH            "/usr/lib/huggle/extensions"
+ #elif defined HUGGLE_WIN
+     // This is needed by yaml cpp library, otherwise it won't build with MSVC
+     #define YAML_CPP_DLL

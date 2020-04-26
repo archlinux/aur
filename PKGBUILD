@@ -11,45 +11,21 @@ license=('GPL')
 depends=('qt5-multimedia' 'qt5-webengine' 'yaml-cpp')
 makedepends=('cmake' 'ninja')
 source=(
-    "${pkgname}_${pkgver}::git+https://github.com/huggle/huggle3-qt-lx.git#tag=${pkgver}"
-    "git+https://github.com/grumpy-irc/libirc.git"
-    "git+https://github.com/huggle/mass-delivery.git"
-    "git+https://github.com/huggle/enwiki.git"
-    "git+https://github.com/huggle/extension-thanks.git"
-    "git+https://github.com/huggle/extension-splitter-helper.git"
-    "git+https://github.com/huggle/extension-review.git"
-    "git+https://github.com/huggle/extension-mass-delete.git"
-    "git+https://github.com/huggle/extension-scoring.git"
-    "git+https://github.com/huggle/extension-flow"
-    "huggle-extensions.patch"
+    "https://github.com/huggle/huggle3-qt-lx/releases/download/${pkgver}/${pkgname}_${pkgver}.tar.gz"
     "huggle-yaml.patch"
+    "huggle-extensions.patch"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-            'SKIP' 'SKIP')
+sha256sums=('7dbf2c943f80eac551839535df68d1af4c19d52a026a9140a1b2fcf63f5a2249'
+            'e66bb7ba73b72b08d478715d44baf096c87291e05997ad4786c1515b6574f2bb'
+            '823cbf583c00722bfe5ecd74a57ee7e3ef942ecb95a1704e65c226e7a2624497')
 
 prepare() {
     cd "${pkgname}_${pkgver}"
-    git submodule init src/extensions
-    git submodule init src/3rd/libirc
-    git config submodule.src/3rd/libirc.url "${srcdir}/libirc"
-    git config submodule.src/extensions/mass-delivery.url "${srcdir}/mass-delivery"
-    git config submodule.src/extensions/enwiki.url "${srcdir}/enwiki"
-    git config submodule.src/extensions/extension-thanks.url "${srcdir}/extension-thanks"
-    git config submodule.src/extensions/extension-splitter-helper.url \
-        "${srcdir}/extension-splitter-helper"
-    git config submodule.src/extensions/extension-review.url "${srcdir}/extension-review"
-    git config submodule.src/extensions/extension-mass-delete.url \
-        "${srcdir}/extension-mass-delete"
-    git config submodule.src/extensions/extension-scoring.url "${srcdir}/extension-scoring"
-    git config submodule.src/extensions/extension-flow.url "${srcdir}/extension-flow"
-    git submodule update
-    git submodule foreach 'git reset --hard'
+    # Patch extension directory to /usr/lib/huggle/extensions (T251049)
     patch --forward --strip=1 --input="../huggle-extensions.patch"
+    # Backport dependency fix from master, remove in 3.4.11
     patch --forward --strip=1 --input="../huggle-yaml.patch"
-    cd "src/huggle_core"
-    ./update.sh
 }
-
 
 build() {
     export CFLAGS+=" ${CPPFLAGS}"
