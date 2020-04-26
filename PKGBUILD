@@ -1,9 +1,10 @@
 # Maintainer: Alexey Andreyev <aa13q@ya.ru>
 # Contributor Sefa Eyeoglu <contact@scrumplex.net>
 
-pkgname=libquotient
-pkgver=0.5.3
-pkgrel=3
+_prjname=libQuotient
+pkgname=${_prjname,,}
+pkgver=0.5.3.2
+pkgrel=1
 epoch=1
 pkgdesc="A Qt5 library to write cross-platform clients for Matrix"
 arch=(x86_64)
@@ -14,11 +15,11 @@ optdepends=("qt5-olm")
 makedepends=("git" "cmake" "make" "gcc")
 provides=("libquotient")
 conflicts=("libquotient")
-source=("https://github.com/quotient-im/libQuotient/archive/${pkgver}.${pkgrel}.tar.gz")
+source=("https://github.com/quotient-im/libQuotient/archive/${pkgver}.tar.gz")
 sha512sums=("b887432ba7fb2b89c72ae5342fbd11b0066770851e8d0ea85ae4d6375bca726a5ee601c4f3d35a11fa1f2ef679ad5436917c08139e114f91516ccb370321e428")
 
 build() {
-    cd "$srcdir/libQuotient-${pkgver}.${pkgrel}/"
+    cd "$srcdir/${_prjname}-${pkgver}"
     mkdir -p "build"
     cd "build"
     cmake .. \
@@ -31,10 +32,10 @@ build() {
 }
 
 package() {
-    cd "$srcdir/libQuotient-${pkgver}.${pkgrel}/"
+    cd "$srcdir/${_prjname}-${pkgver}"
     cd "build"
     make DESTDIR="${pkgdir}" install
 
-    cd "$srcdir/libQuotient-${pkgver}.${pkgrel}/"
+    cd "$srcdir/${_prjname}-${pkgver}"
     install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
