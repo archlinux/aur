@@ -1,4 +1,7 @@
 import re
+import os
+import pexpect
+from pyutil import filereplace
 from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -44,9 +47,8 @@ def get_local_version():
 # Check wheather the download file has changed
 # We will need to check the source
 # with the actual package (Which we have in the pkgbuild file)
-def check_updated(remote_version):
+def check_updated(remote_version, local_version):
     updated = False
-    local_version = get_local_version()
     if local_version != remote_version:
         updated = True
     return updated
@@ -64,16 +66,33 @@ def check_updated(remote_version):
 #5. Commit and push
 #    * `gaa & gca -m "Message" & ggpush`
 #6. Clean resulting workspace
-def update_pkgbuild(remote_version):
-    print("todo")
+def update_pkgbuild(remote_version, local_version):
+    filereplace("./PKGBUILD", local_version, remote_version)
+    child = pexpect.spawnu('makepkg -g')
+    child.expect(r'md5sums=\(\'([a-fA-F\d]*)\'\)')
+    file_hash = child.match.group(0)
+    filereplace('./PKGBUILD', r'md5sums=\(\'([a-fA-F\d]*)\'\)', file_hash)
+    child = pexpect.spawn('/bin/bash -c "makepkg --printsrcinfo > .SRCINFO"')
+    child.expect(pexpect.EOF)
+    child = pexpect.spawnu('git add .SRCINFO PKGBUILD')
+    child.expect(pexpect.EOF)
+    child = pexpect.spawnu(
+        'git commit -m "Updated screen-desktop to version {remote_version}"'.
+        format(remote_version=remote_version))
+    child.expect(pexpect.EOF)
+    child = pexpect.spawnu('git push origin master')
+    child.expect(r'Enter passphrase for key .*')
+    child.sendline(os.getenv("PW"))
+    child.expect(pexpect.EOF)
 
 
 def main():
     load_dotenv()
     configure_chrome_webdriver()
+    local_version = get_local_version()
     remote_version = get_remote_version()
-    if check_updated(remote_version):
-        update_pkgbuild(remote_version)
+    if check_updated(remote_version, local_version):
+        update_pkgbuild(remote_version, local_version)
 
 
 if __name__ == "__main__":
