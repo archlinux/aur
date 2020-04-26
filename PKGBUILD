@@ -1,7 +1,7 @@
 # Maintainer: Arun Mahapatra <arun@codito.in>
 
 pkgname=python-tabula
-pkgver=1.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Simple wrapper for tabula, read tables from PDF into DataFrame'
 url="https://github.com/chezou/tabula-py"
@@ -11,8 +11,9 @@ provides=('python-tabula')
 makedepends=('python-setuptools')
 depends=('java-runtime' 'python' 'python-pandas' 'python-requests' 'python-numpy')
 sourcename="tabula-py"
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('24db1a2df9c247a4fd1523849870e0880c0c1d28099799fedb8d3a520b08dd397282147d4de7ce353ce82d884271c61b4bcfe01dae95b9ed38b804ec3f6be063')
+_name="tabula-py"
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name}-$pkgver.tar.gz")
+sha512sums=('91d1005d4873322a4da24191aafc20f8498d8c548696169a6a8f18392a2ff9f6049e26f1406a5d553c47c20de94ac310819a9019ec7b8d53a11401ebb6642602')
 
 prepare() {
   cd "${srcdir}/${sourcename}-${pkgver}"
