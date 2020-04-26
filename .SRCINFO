@@ -1,7 +1,7 @@
 pkgbase = python-combomethod
 	pkgdesc = Decorator indicating a method is both a class and an instance method
 	pkgver = 1.0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/jeunice/combomethod
 	arch = any
 	license = Apache

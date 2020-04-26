@@ -4,7 +4,7 @@ _name=combomethod
 pkgname=( python-$_name python2-$_name)
 pkgbase=python-$_name
 pkgver=1.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Decorator indicating a method is both a class and an instance method'
 
 arch=(any)
@@ -35,5 +35,5 @@ package_python2-combomethod()
 {
     depends=( python2 )
     cd "$srcdir/$_name-$pkgver-py2"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
