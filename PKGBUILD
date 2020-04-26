@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-shade
-pkgver='1.32.0'
+pkgver='1.33.0'
 pkgrel='1'
 pkgdesc='Simple client library for interacting with OpenStack clouds'
 arch=('any')
@@ -17,7 +17,7 @@ checkdepends=('python-dogpile.cache' 'python-future' 'python-fixtures'
               'python-mock' 'python-subunit' 'python-requests-mock'
               'python-testtools' 'python-stestr' 'python-oslotest')
 source=("https://github.com/openstack/shade/archive/$pkgver.tar.gz")
-sha512sums=('9e15efd9dc6d88530734d2360ce599a55509c2ec9b1b94f4325347dbca37b13339a67b300e34dd8c9bc59481f5781d030802c75f4cdebe75e466e8b5120f03db')
+sha512sums=('dda29a5cbe41a2dc1641accdca66d80fd2afb58855ae3a9d99fb11a5b3407fa3afe7b5a8dc04150526050ff968f117202150330133a894553a51844a375f8c1f')
 
 export PBR_VERSION=$pkgver
 

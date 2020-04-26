@@ -1,6 +1,6 @@
 pkgbase = python-shade
 	pkgdesc = Simple client library for interacting with OpenStack clouds
-	pkgver = 1.32.0
+	pkgver = 1.33.0
 	pkgrel = 1
 	url = http://docs.openstack.org/shade/
 	arch = any
@@ -30,8 +30,8 @@ pkgbase = python-shade
 	depends = python-ironicclient
 	depends = python-designateclient
 	depends = python-dogpile.cache
-	source = https://github.com/openstack/shade/archive/1.32.0.tar.gz
-	sha512sums = 9e15efd9dc6d88530734d2360ce599a55509c2ec9b1b94f4325347dbca37b13339a67b300e34dd8c9bc59481f5781d030802c75f4cdebe75e466e8b5120f03db
+	source = https://github.com/openstack/shade/archive/1.33.0.tar.gz
+	sha512sums = dda29a5cbe41a2dc1641accdca66d80fd2afb58855ae3a9d99fb11a5b3407fa3afe7b5a8dc04150526050ff968f117202150330133a894553a51844a375f8c1f
 
 pkgname = python-shade
 
