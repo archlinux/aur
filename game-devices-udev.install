@@ -1,5 +1,8 @@
-post_install()
-{
+pre_install() {
+	if [[ $(/usr/bin/lsb_release -is) != "Arch" ]] ; then exit 1; fi
+}
+
+post_install() {
 	## Load uinput if it is not loaded already
 	/usr/bin/grep -q 'uinput' /proc/modules
 	if [ ! $? -eq 0 ] && [ -d "/lib/modules/$(uname -r)" ]
@@ -9,12 +12,25 @@ post_install()
 	
 	## reload udev rules
 	/usr/bin/udevadm control --reload-rules
+	printf "\nThanks for using my pkg 😊\n\n"
 }
 
-post_upgrade()
-{
-    post_install
-    
+pre_upgrade() {
+	if [[ $(/usr/bin/lsb_release -is) != "Arch" ]] ; then exit 1; fi
+}
+
+post_upgrade() {
     ## reload udev rules
     /usr/bin/udevadm control --reload-rules
+	printf "\nThanks for still using my pkg 😊\n\n"
+}
+
+#pre_remove() {
+#}
+
+post_remove() {
+	## reload udev rules
+    /usr/bin/udevadm control --reload-rules
+	printf "\nYou need to reboot your system now"
+	printf "\n🖐️🖐️ bye bye 😞\n\n"
 }

@@ -1,12 +1,13 @@
 # Maintainer: Fabian Bornschein <plusfabi(At)gmail(Dot)com>
 pkgname=game-devices-udev
 pkgver=0.6
-pkgrel=0
+pkgrel=1
 pkgdesc="Udev rules for controllers"
 url='https://gitlab.com/Fabish/game-devices-udev'
 arch=('any')
 license=('MIT')
-depends=('udev')
+depends=('udev' 'lsb-release')
+makedepends=('lsb-release')
 install=${pkgname}.install
 source=("https://gitlab.com/Fabish/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.zip"
 		"uinput.conf")
@@ -25,6 +26,6 @@ package() {
     	"${pkgdir}/usr/lib/udev/rules.d/"
 
 	# start uinput at boot
-    install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
+    install -Dm 644 "${srcdir}/uinput.conf" \
     	"${pkgdir}/usr/lib/modules-load.d/uinput.conf"
 }

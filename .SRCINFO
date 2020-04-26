@@ -1,12 +1,14 @@
 pkgbase = game-devices-udev
 	pkgdesc = Udev rules for controllers
 	pkgver = 0.6
-	pkgrel = 0
+	pkgrel = 1
 	url = https://gitlab.com/Fabish/game-devices-udev
 	install = game-devices-udev.install
 	arch = any
 	license = MIT
+	makedepends = lsb-release
 	depends = udev
+	depends = lsb-release
 	source = https://gitlab.com/Fabish/game-devices-udev/-/archive/0.6/game-devices-udev-0.6.zip
 	source = uinput.conf
 	sha512sums = c12263703d1d603e013b0537ee4bda12b8e0ca084cc8300fa04a7b59d09e276bfe2701af9c709f7a90312495c2cb4b1517bf6ce91ad923423a1495c81d1c953e
