@@ -16,7 +16,7 @@ optdepends=('tcl: ispin graphical interface'
             'swarm: improved performance on large verification problems'
             'ispin: GUI for Spin')
 source=("https://github.com/nimble-code/Spin/archive/version-${pkgver}.tar.gz")
-sha512sums=('ff1d378076995fa5a8b66dd31d19d8bad6296b968183180251d267c926c20775edda927a31f466199e01231f6233c3a5166fd51ec44b02d570070e857d8ba7f9')
+b2sums=('a075043c55609de5860c3a428d356a9618a4062667e06d92797e1fb87cb4c805ac90ac580c7d9dfac1d5be1dda4c7f9c9f72927826b921c23710a858adb3eb4d')
 
 build() {
   cd Spin-version-${pkgver}/Src
