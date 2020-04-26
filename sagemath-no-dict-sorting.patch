@@ -2091,10 +2091,10 @@ index 94e2928525..cb461c07f8 100644
          return self._orig_args
  
 diff --git a/src/sage/geometry/polyhedron/base.py b/src/sage/geometry/polyhedron/base.py
-index d8609bdfe4..4f07456b3e 100644
+index 01989bbd80..56d7d554ef 100644
 --- a/src/sage/geometry/polyhedron/base.py
 +++ b/src/sage/geometry/polyhedron/base.py
-@@ -6126,20 +6126,20 @@ class Polyhedron_base(Element):
+@@ -6273,20 +6273,20 @@ class Polyhedron_base(Element):
              sage: P = polytopes.twenty_four_cell()
              sage: P.flag_f_vector()
                  {(-1,): 1,
@@ -2123,7 +2123,7 @@ index d8609bdfe4..4f07456b3e 100644
                   (3,): 24,
                   (4,): 1}
  
-@@ -6169,18 +6169,18 @@ class Polyhedron_base(Element):
+@@ -6316,18 +6316,18 @@ class Polyhedron_base(Element):
              sage: P = (Polyhedron(lines=[[1]]) * polytopes.cross_polytope(3))
              sage: P.flag_f_vector()
              {(-1,): 1,
@@ -2147,7 +2147,7 @@ index d8609bdfe4..4f07456b3e 100644
               (2,): 12,
               (3,): 8,
               4: 1}
-@@ -6220,22 +6220,22 @@ class Polyhedron_base(Element):
+@@ -6367,22 +6367,22 @@ class Polyhedron_base(Element):
  
              sage: polytopes.hypercube(4)._flag_f_vector()
              {(-1,): 1,
@@ -2187,10 +2187,10 @@ index d8609bdfe4..4f07456b3e 100644
          return self.combinatorial_polyhedron()._flag_f_vector()
  
 diff --git a/src/sage/geometry/polyhedron/combinatorial_polyhedron/base.pyx b/src/sage/geometry/polyhedron/combinatorial_polyhedron/base.pyx
-index 969c9f86db..25843ea25a 100644
+index d7d27efc5f..db1bdf3495 100644
 --- a/src/sage/geometry/polyhedron/combinatorial_polyhedron/base.pyx
 +++ b/src/sage/geometry/polyhedron/combinatorial_polyhedron/base.pyx
-@@ -1465,20 +1465,20 @@ cdef class CombinatorialPolyhedron(SageObject):
+@@ -1549,20 +1549,20 @@ cdef class CombinatorialPolyhedron(SageObject):
              sage: C = polytopes.hypercube(4).combinatorial_polyhedron()
              sage: C.flag_f_vector()
                  {(-1,): 1,
@@ -2219,7 +2219,7 @@ index 969c9f86db..25843ea25a 100644
                   (3,): 8,
                   (4,): 1}
  
-@@ -1507,7 +1507,7 @@ cdef class CombinatorialPolyhedron(SageObject):
+@@ -1591,7 +1591,7 @@ cdef class CombinatorialPolyhedron(SageObject):
  
              sage: C = (Polyhedron(lines=[[1]]) * polytopes.hypercube(2)).combinatorial_polyhedron()
              sage: C.flag_f_vector()
@@ -2228,7 +2228,7 @@ index 969c9f86db..25843ea25a 100644
  
          If the arguments are not stricly increasing or out of range, a key error is raised::
  
-@@ -1544,7 +1544,7 @@ cdef class CombinatorialPolyhedron(SageObject):
+@@ -1628,7 +1628,7 @@ cdef class CombinatorialPolyhedron(SageObject):
  
              sage: C = CombinatorialPolyhedron(3)
              sage: C._flag_f_vector()
@@ -2466,7 +2466,7 @@ index 802d4a8f6e..aa5efb8dac 100644
      TESTS:
  
 diff --git a/src/sage/graphs/generic_graph.py b/src/sage/graphs/generic_graph.py
-index 23ed1da506..bd9733a9b2 100644
+index e00570bc2c..50b1178323 100644
 --- a/src/sage/graphs/generic_graph.py
 +++ b/src/sage/graphs/generic_graph.py
 @@ -5209,7 +5209,7 @@ class GenericGraph(GenericGraph_pyx):
@@ -2519,9 +2519,9 @@ index 23ed1da506..bd9733a9b2 100644
 -            {0: [2, 1], 1: [0, 2], 2: [1, 1], 3: [1, 0]}
 +            {0: [2, 1], 1: [0, 2], 3: [1, 0], 2: [1, 1]}
  
-         TESTS::
+         Choose the embedding:
  
-@@ -16512,7 +16512,26 @@ class GenericGraph(GenericGraph_pyx):
+@@ -16605,7 +16605,26 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: D = graphs.DodecahedralGraph()
              sage: D.shortest_paths(0)
@@ -2549,7 +2549,7 @@ index 23ed1da506..bd9733a9b2 100644
  
          All these paths are obviously induced graphs::
  
-@@ -16522,7 +16541,16 @@ class GenericGraph(GenericGraph_pyx):
+@@ -16615,7 +16634,16 @@ class GenericGraph(GenericGraph_pyx):
          ::
  
              sage: D.shortest_paths(0, cutoff=2)
@@ -2567,7 +2567,7 @@ index 23ed1da506..bd9733a9b2 100644
              sage: G = Graph( { 0: {1: 1}, 1: {2: 1}, 2: {3: 1}, 3: {4: 2}, 4: {0: 2} }, sparse=True)
              sage: G.plot(edge_labels=True).show() # long time
              sage: G.shortest_paths(0, by_weight=True)
-@@ -16532,7 +16560,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -16625,7 +16653,7 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: D = DiGraph([(0,1,1),(1,2,3),(0,2,5)])
              sage: D.shortest_paths(0)
@@ -2576,7 +2576,7 @@ index 23ed1da506..bd9733a9b2 100644
              sage: D.shortest_paths(0, by_weight=True)
              {0: [0], 1: [0, 1], 2: [0, 1, 2]}
  
-@@ -16781,7 +16809,26 @@ class GenericGraph(GenericGraph_pyx):
+@@ -16874,7 +16902,26 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: D = graphs.DodecahedralGraph()
              sage: D.shortest_path_lengths(0)
@@ -2604,7 +2604,7 @@ index 23ed1da506..bd9733a9b2 100644
  
          Weighted case::
  
-@@ -18900,18 +18947,18 @@ class GenericGraph(GenericGraph_pyx):
+@@ -18993,18 +19040,18 @@ class GenericGraph(GenericGraph_pyx):
               '#00ff00': [((1,3,2,4), (1,4)(2,3), 3), ...],
               '#ff0000': [((1,3,2,4), (1,3)(2,4), 1), ...]}
              sage: G._color_by_label()  # py3
@@ -2627,7 +2627,7 @@ index 23ed1da506..bd9733a9b2 100644
  
          TESTS:
  
-@@ -19056,8 +19103,8 @@ class GenericGraph(GenericGraph_pyx):
+@@ -19149,8 +19196,8 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: g.layout(layout="acyclic_dummy", save_pos=True)
              {('0', 0): [0.3..., 0],
@@ -2637,7 +2637,7 @@ index 23ed1da506..bd9733a9b2 100644
               ('1', 1): [0.6..., 1]}
  
              sage: D3 = g.layout(dim=3); D3  # random
-@@ -19193,10 +19240,10 @@ class GenericGraph(GenericGraph_pyx):
+@@ -19286,10 +19333,10 @@ class GenericGraph(GenericGraph_pyx):
              sage: g = graphs.LadderGraph(3)
              sage: g.layout_ranked(heights={i: (i, i+3) for i in range(3)})
              {0: [0.668..., 0],
@@ -2650,7 +2650,7 @@ index 23ed1da506..bd9733a9b2 100644
               5: [1.33..., 2]}
              sage: g = graphs.LadderGraph(7)
              sage: g.plot(layout="ranked", heights={i: (i, i+7) for i in range(7)})
-@@ -19380,13 +19427,13 @@ class GenericGraph(GenericGraph_pyx):
+@@ -19473,13 +19520,13 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: G = graphs.BalancedTree(2, 2)
              sage: G.layout_tree(tree_root=0)
@@ -2669,7 +2669,7 @@ index 23ed1da506..bd9733a9b2 100644
  
              sage: G = graphs.BalancedTree(2, 4)
              sage: G.plot(layout="tree", tree_root=0, tree_orientation="up")
-@@ -19398,15 +19445,15 @@ class GenericGraph(GenericGraph_pyx):
+@@ -19491,15 +19538,15 @@ class GenericGraph(GenericGraph_pyx):
              sage: T.set_embedding({0: [1, 6, 3], 1: [2, 5, 0], 2: [1], 3: [4, 7, 8, 0],
              ....:     4: [3], 5: [1], 6: [0], 7: [3], 8: [3]})
              sage: T.layout_tree()
@@ -2692,7 +2692,7 @@ index 23ed1da506..bd9733a9b2 100644
              sage: T.plot(layout="tree", tree_root=3)
              Graphics object consisting of 18 graphics primitives
  
-@@ -23560,7 +23607,8 @@ class GenericGraph(GenericGraph_pyx):
+@@ -23653,7 +23700,8 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: G = DiGraph({1: [10], 2:[10,11], 3:[10,11], 4:[], 5:[11, 4], 6:[11], 7:[10,11], 8:[10,11], 9:[10], 10:[11, 5, 8], 11:[6]})
              sage: G.katz_centrality(.85)
@@ -2702,7 +2702,7 @@ index 23ed1da506..bd9733a9b2 100644
               2: 0.000000000000000,
               3: 0.000000000000000,
               4: 16.7319819819820,
-@@ -23569,7 +23617,6 @@ class GenericGraph(GenericGraph_pyx):
+@@ -23662,7 +23710,6 @@ class GenericGraph(GenericGraph_pyx):
               7: 0.000000000000000,
               8: 18.6846846846847,
               9: 0.000000000000000,
@@ -2710,7 +2710,7 @@ index 23ed1da506..bd9733a9b2 100644
               11: 202.778914049184}
  
  
-@@ -23589,7 +23636,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -23682,7 +23729,7 @@ class GenericGraph(GenericGraph_pyx):
              sage: graphs.PathGraph(4).katz_centrality(1/20,3)
              21/379
              sage: (graphs.PathGraph(3) + graphs.PathGraph(4)).katz_centrality(1/20)
@@ -3099,10 +3099,10 @@ index 7174a23662..a08c5fd2a0 100644
      """
      neighbors = G.neighbor_out_iterator
 diff --git a/src/sage/graphs/schnyder.py b/src/sage/graphs/schnyder.py
-index 241288a4de..0a6d2257aa 100644
+index 879cd0e0e8..1212a575cd 100644
 --- a/src/sage/graphs/schnyder.py
 +++ b/src/sage/graphs/schnyder.py
-@@ -473,7 +473,7 @@ def _compute_coordinates(g, x):
+@@ -493,7 +493,7 @@ def _compute_coordinates(g, x):
          sage: r = _realizer(g, tn)
          sage: _compute_coordinates(g,r)
          sage: g.get_pos()
@@ -4432,10 +4432,10 @@ index 34762d8de4..9b3fd022f0 100644
          TESTS::
  
 diff --git a/src/sage/rings/polynomial/multi_polynomial_ideal.py b/src/sage/rings/polynomial/multi_polynomial_ideal.py
-index 962205f4de..9db232d6c7 100644
+index cc587596dd..456fa3ecf5 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_ideal.py
 +++ b/src/sage/rings/polynomial/multi_polynomial_ideal.py
-@@ -3577,11 +3577,11 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
+@@ -3641,11 +3641,11 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
  
              sage: loads(dumps(I)).__getstate__()
              (Monoid of ideals of Multivariate Polynomial Ring in x, y over Finite Field of size 32003,
@@ -4546,10 +4546,10 @@ index 754b8c2ca6..eef5fe247a 100644
          use_generic_constructor = True
          is_backend_exposed = True
 diff --git a/src/sage/rings/tate_algebra_element.pyx b/src/sage/rings/tate_algebra_element.pyx
-index 64ba29c77f..353ba7a950 100644
+index 6a293fff3d..d438e8f25c 100644
 --- a/src/sage/rings/tate_algebra_element.pyx
 +++ b/src/sage/rings/tate_algebra_element.pyx
-@@ -2221,7 +2221,7 @@ cdef class TateAlgebraElement(CommutativeAlgebraElement):
+@@ -2227,7 +2227,7 @@ cdef class TateAlgebraElement(CommutativeAlgebraElement):
              sage: A.<x,y> = TateAlgebra(R)
              sage: f = 2*x^2 + x
              sage: f.dict()
