@@ -8,7 +8,7 @@ pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
-pkgver=2.44.3.r1506.g63aec5a24e
+pkgver=2.44.3.r1579.g05617fa2c5
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"
@@ -50,6 +50,8 @@ prepare() {
 build() {
   cd "$_pkgbase"
   export GOPATH="$srcdir/go"
+  # snapd does not support modules yet, explicitly disable Go modules
+  export GO111MODULE=off
 
   export CGO_ENABLED="1"
   export CGO_CFLAGS="${CFLAGS}"
