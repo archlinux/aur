@@ -14,7 +14,7 @@ pkgbase = gimp-plugin-separate+
 	conflicts = gimp-plugin-separate
 	replaces = gimp-plugin-separate
 	source = http://dl.sourceforge.jp/separate-plus/47873/separate+-0.5.8.zip
-	sha512sums = 1e2ecf00ff6e604d0a04337ebf25ca9370e2d46d302d3fca7b7df577c37983f870704ad6018c03152bcba3bcddda59a4acceb35b3ba5d0bfd589fa1e99413aa3
+	b2sums = 2fa21ee4b911f4973c6c1f33b5cae34e3a0e5a45a27e95042fe84d19c1701f7a52693539f6e9388e14fe778b3a84d90b370ebb0fc795a5af128a5bd27190d893
 
 pkgname = gimp-plugin-separate+
 
