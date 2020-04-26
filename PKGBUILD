@@ -1,8 +1,8 @@
 
 pkgname=duckstation-git
-pkgver=0.1.r1239.e6bd658
-pkgdesc='A Sony PlayStation (PSX), focusing on playability, speed, and long-term maintainability'
-pkgrel=2
+pkgver=0.1.r1249.d1e841f
+pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability'
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/stenzek/duckstation"
 license=('GPLv3')
