@@ -1,14 +1,14 @@
 pkgbase = hipcub
 	pkgdesc = Reusable software components for the rocm developers.
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ROCmSoftwarePlatform/hipCUB
 	arch = x86_64
 	license = custom:NCSAOSL
 	makedepends = cmake
 	makedepends = python2
 	makedepends = rocminfo
-	makedepends = rocm-comgr
+	makedepends = comgr
 	depends = hcc
 	depends = hip
 	source = https://github.com/ROCmSoftwarePlatform/hipCUB/archive/rocm-3.3.0.tar.gz
