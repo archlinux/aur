@@ -3,12 +3,12 @@
 _projectname='base'
 pkgname="ocaml-$_projectname"
 pkgver='0.13.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Full standard library replacement for OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.07.0' 'ocaml-sexplib0')
+depends=('dune-configurator' 'ocaml>=4.07.0' 'ocaml-sexplib0')
 makedepends=('dune>=1.5.1')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
