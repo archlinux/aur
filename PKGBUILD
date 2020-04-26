@@ -5,8 +5,9 @@
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 
 pkgname=asterisk-cisco
+_pkgname=asterisk
 pkgver=16.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A complete PBX solution. Includes the Cisco Presence patch for use with Cisco IP Phones"
 provides=('asterisk')
 conflicts=('asterisk')
@@ -82,7 +83,7 @@ package(){
   make DESTDIR="$pkgdir" samples
   
   # Note you must build the package before you can update meta data!
-  backup+=($(cd "$pkgdir" && echo "etc/$pkgname/"*))
+  backup+=($(cd "$pkgdir" && echo "etc/$_pkgname/"*))
 
   sed -i -e 's,/var/run,/run,' "$pkgdir/etc/asterisk/asterisk.conf"
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/examples" "$pkgdir/etc/asterisk/"*

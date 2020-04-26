@@ -1,7 +1,7 @@
 pkgbase = asterisk-cisco
 	pkgdesc = A complete PBX solution. Includes the Cisco Presence patch for use with Cisco IP Phones
 	pkgver = 16.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.asterisk.org
 	install = asterisk-cisco.install
 	arch = x86_64
