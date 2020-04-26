@@ -4,28 +4,33 @@
 # Contributor: Krzysztof Stasiorowski <krzysiekst@gmail.com>
 
 pkgname=qpxtool
-pkgver=0.7.2
-pkgrel=6
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Allows better controll over optical drives to include QChecks and optimization settings."
 arch=('x86_64')
 url="http://qpxtool.sourceforge.net/"
 license=('GPL')
-depends=('qt4')
+depends=('qt5-base')
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.bz2
-	libpng15.patch)
-md5sums=('b1235e74b8ef4fe087a6b64f5cfca14a'
-         'ab9af7610277652c77c6d114422b2266')
+        0001-add-needed-qiodevice-include.patch)
+md5sums=('f4b09f8d5aa533f680c8bcce19c1072e'
+         'e494a876eea1078e822d850c8f477487')
 
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch --forward --strip=1 --input "${srcdir}/0001-add-needed-qiodevice-include.patch"
+}
 build() {
   cd "$srcdir"/$pkgname-$pkgver
   # Fix strict aliasing warnings
   export CFLAGS="$CFLAGS -fno-strict-aliasing"
-  sed -i \
-    -e 's|lib64|lib|' \
-    -e 's|lrelease|lrelease-qt4|' \
-    configure
-  patch -p1 <"$srcdir"/libpng15.patch
-  ./configure --prefix=/usr --sbindir=/usr/bin --qmake=/usr/lib/qt4/bin/qmake
+  #sed -i \
+  #  -e 's|lib64|lib|' \
+  #  -e 's|lrelease|lrelease-qt4|' \
+  #  configure
+  #patch -p1 <"$srcdir"/libpng15.patch
+  ./configure --prefix=/usr --sbindir=/usr/bin --libdir=/usr/lib
   make
 }
 
