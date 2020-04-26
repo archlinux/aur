@@ -1,7 +1,7 @@
 # Maintainer: Anty0 <anty150 at gmail dot com>
 
 pkgname='python-zulip-api'
-pkgver='0.6.4'
+pkgver='0.7.0'
 pkgrel=1
 pkgdesc="Pyhton bindings for Zulip API."
 url="https://github.com/zulip/python-zulip-api"
@@ -14,7 +14,7 @@ makedepends=('cython' 'python-setuptools')
 license=('GPL')
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 source=("https://github.com/zulip/python-zulip-api/archive/${pkgver}.tar.gz")
-sha256sums=('c8cfe838af6da1516be7ddf73bcbb09402df47aa506173b8706a995114326508')
+sha256sums=('8f843862536645f52b1171fd3e06ab34295ae3de194cb748ef526127f7bed9c0')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/zulip"
