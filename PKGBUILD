@@ -1,13 +1,13 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=safe-plugins
 pkgver=1.32
-pkgrel=1
+pkgrel=2
 pkgdesc="Semantic Audio Feature Extraction VST plugins (Stable Branch)"
 arch=('x86_64')
 url="http://www.semanticaudio.co.uk"
 license=('GPL3')
+groups=('pro-audio' 'vst-plugins')
 depends=('libglvnd' 'curl' 'freetype2')
-provides=("${pkgname}" 'safeplugins')
 conflicts=('safeplugins-git')
 _archive=("SAFEPlugins-${pkgver}-LinuxVST-64Bit")
 source=("https://github.com/semanticaudio/SAFE/releases/download/${pkgver}/${_archive}.tar.gz")
