@@ -1,9 +1,9 @@
 # Maintainer: jmattheis <contact AT jmattheis DOT de>
 # Contributor: ml <ml@visu.li>
 pkgname=gotify-server
-pkgver=2.0.14
+pkgver=2.0.15
 _commit=e56f7bc4c7efdb61fea88a0b65d501277604cefa
-pkgrel=4
+pkgrel=1
 pkgdesc='A simple server for sending and receiving messages in real-time per WebSocket.'
 arch=('x86_64' 'i686' 'aarch64' 'armv7')
 url='https://gotify.net/'
@@ -19,7 +19,7 @@ source=(
   'gotify-server.service'
   'config.patch'
 )
-sha256sums=('986125b92192e404a2f3af5db510d2d651c6301d218cbb66edd6013f8e8153b0'
+sha256sums=('8bf545d51e57fc6bd2638d9d7d6f3a68d840a9253b234d4ed71c0fc64ab93a37'
             '39fc913f205bbb102ba42ce3d419f2feb0f9143f14ccffd242b3cd5f51a8c0de'
             '9aa04ff9a2981aa885d4f8df7467c4d7722aa12de7ae27376a4a11b559a0d1e2'
             '8009ba82fa98bfeeb8c51732d8506afdef4ccfdcd4071be5fcf64af06ae2b1f4')
@@ -35,8 +35,10 @@ build() {
     yarn --non-interactive --frozen-lockfile
     NODE_ENV=production yarn --non-interactive --frozen-lockfile build
   )
-  go run github.com/gobuffalo/packr/packr
-  local build_date=$(date "+%F-%T" -d "@${SOURCE_DATE_EPOCH}")
+  go run hack/packr/packr.go
+  local build_date=$(date -u -d "@${SOURCE_DATE_EPOCH}" +%F-%T)
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
   go build \
     -o "$pkgname" \
     -trimpath \
@@ -44,14 +46,11 @@ build() {
     -ldflags "-X 'main.Version=${pkgver}' \
               -X 'main.Commit=${_commit}' \
               -X 'main.BuildDate=${build_date}' \
-              -X 'main.Mode=prod' \
-              -extldflags=${LDFLAGS}"
+              -X 'main.Mode=prod'"
 }
 
 check() {
   cd "server-$pkgver"
-  # https://github.com/gotify/server/pull/279
-  rm -vf config/config_test.go
   go test -v ./...
 }
 
