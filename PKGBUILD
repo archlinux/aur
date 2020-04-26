@@ -11,7 +11,7 @@ makedepends=('go')
 conflicts=('dovecot-xaps-daemon-git')
 backup=('etc/xapsd/xapsd.conf')
 source=("https://github.com/st3fan/dovecot-xaps-daemon/archive/v${pkgver}.tar.gz")
-sha512sums=('0df0194844cfa7643cb37fad63990af21547318c4e7ff23a68f72c8f61a2147cacfcc4e4466fa7b9fdc1212b71800c24d5bf9c420e01fe043fd06e42d61f1fd1')
+b2sums=('89082412c7e17b4d345898cf7a66b6125481f836df482de8cb77ea15c8f2ef8067dab2959c51d94ccd9248aecaba57700c9818a5947aa9490ba2e7ce8f09e80b')
 
 prepare() {
   mkdir -p src/github.com/st3fan/
