@@ -1,0 +1,14 @@
+pkgbase = r-rodbc
+	pkgdesc = An ODBC database interface
+	pkgver = 1.3.16
+	pkgrel = 1
+	url = https://cran.r-project.org/package=RODBC
+	arch = any
+	license = GPL2
+	license = GPL3
+	depends = unixodbc
+	source = https://cran.r-project.org/src/contrib/RODBC_1.3-16.tar.gz
+	md5sums = f385c523db5233d22b82e284a26c2028
+
+pkgname = r-rodbc
+
