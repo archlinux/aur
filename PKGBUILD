@@ -2,7 +2,7 @@
 
 pkgname=codimd
 pkgver=1.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="real-time collaborative markdown notes"
 arch=('any')
 url="https://demo.codimd.org/"
@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/codimd/server/archive/$
 sha512sums=('50ebf76c365e821c8aec675a975000bf920b44bed939493ea0956ec621aa80ae33a3664654f7d01437f4f5864a73028a635fc11753c229808863c519c5a39998'
             'fadc9f85a5ab9109d8ee92b2fc6a07a7c1f172e8fbfa42265305c36e7c07438ffe9a7be9424981678a8466679c4993fe1f67e3f119b4743abc2eebed0749c5eb'
             '100763115d51c0202a57b882761952dfd560d1c3a4bcec2be0c0cc2475fe76e643f90072f7c743f58f8996fd6bc3f9b4d0847a7462de5c64561d17b1f0465105'
-            'f756b5455a5eef29e4d6a204d2cc115de92c9c55688134eec638f67b662eec72e483cd77a752153d09429567da1514d7d9481b33fed263432691a57c9734170e')
+            '41e809ecbf4a90ca28ab86feea131e1f5e61bdc4d64b0f4d2704320a8b295d8d6ba40150df5fdb6bafb0c68c8aa1046c929251622c7241f44f2f1b42945ca36b')
 
 
 build()

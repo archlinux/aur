@@ -2,14 +2,17 @@ post_install()
 {
 	cat << EOF
 
-It is recommended to manually start the server once after upgrading (and
+It is recommended to manually start the server once after installation (and
 configuration):
 
   cd /usr/share/webapps/codimd/
   su -c 'npm start --production' codimd
 
 EOF
+
+	_note_database_systemd
 }
+
 
 post_upgrade()
 {
@@ -20,6 +23,25 @@ It is recommended to manually start the server once after upgrading:
   systemctl is-active codimd.service && systemctl stop codimd.service
   cd /usr/share/webapps/codimd/
   su -c 'npm start --production' codimd
+
+EOF
+
+	if [ "$(vercmp "$2" '1.6.0-2')" -le 0 ]
+	then
+		_note_database_systemd
+	fi
+}
+
+
+_note_database_systemd()
+{
+	cat << EOF
+If any of PostgreSQL or MariaDB is used as database provider, it should be
+added as systemd dependency:
+
+  systemctl edit codimd.service
+  > [Unit]
+  > After=<postgresql|mariadb>.service
 
 EOF
 }
