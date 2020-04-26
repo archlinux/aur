@@ -2,13 +2,13 @@
 pkgname=rocblas
 _pkgver=3.3.0
 pkgver="$_pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation BLAS implementation for ROCm platform"
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/rocBLAS"
 license=('custom:NCSAOSL')
 depends=('hcc' 'hip')
-makedepends=('cmake' "hcc>=$pkgver" 'python2' 'boost' "rocm-comgr>=$pkgver" 'rocminfo' 'hsa-ext-rocr')
+makedepends=('cmake' "hcc>=$pkgver" 'python2' 'boost' "comgr>=$pkgver" 'rocminfo' 'hsa-ext-rocr')
 source=("https://github.com/ROCmSoftwarePlatform/rocBLAS/archive/rocm-$_pkgver.tar.gz")
 sha256sums=('aaa8f0479202bdbe94d2ec5655a76055656f743b0d36816501cb84a533084034')
 
