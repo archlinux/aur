@@ -1,6 +1,6 @@
 pkgbase = thunderbird-nightly
 	pkgdesc = Standalone Mail/News reader - Nightly build
-	pkgver = 77.0a1.20200416
+	pkgver = 77.0a1.20200426
 	pkgrel = 1
 	url = http://www.mozilla.org/thunderbird
 	install = thunderbird-nightly.install
@@ -36,8 +36,8 @@ pkgbase = thunderbird-nightly
 	source = https://download-installer.cdn.mozilla.net/pub/thunderbird/nightly/latest-comm-central/thunderbird-77.0a1.en-US.linux-x86_64.tar.bz2
 	source = thunderbird-nightly.desktop
 	source = vendor.js
-	b2sums = 85c786e0bb2dcf854c4dc0e50619749320bb646bc800abbb03f159ae70dbf14c4e8754082959115807ad3e0a36e54fb9572e8243073c62146fd110bdc24ef0a0
-	b2sums = 293c8e60d28508aec3cdb2f2b0376cae920f7014a3fa1cef28d38121567e2130214bac9525f0ba227566836da65f4f6c0e4d791ca9c1b4cb3efdb52150e0e48e
+	b2sums = SKIP
+	b2sums = SKIP
 	b2sums = 1f954c9a23842367be37c1f56b853de6a336c1b4156df42f88b14f1614d194c2f996f1cc589cdbfcea398bb9cedcd527ef3c6fb8b01e2f07c46290043e24c6b7
 	b2sums = 674d1ee883e675c37b0af0ac97c339a8c0f2b53cb06e64db64aaa3f22f83d7179b6fa3e122344f3413ccb9956776288db9bc608b5cedef640cbd223838be7476
 
