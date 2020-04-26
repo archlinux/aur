@@ -16,7 +16,7 @@ optdepends=('watchman: An inotify-based file watching and job triggering command
 			      'android-sdk: Android debugging support')
 makedepends=('git' 'yarn' 'gendesk')
 source=("https://github.com/facebook/flipper/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('dbf4f975860fbff97ea0642c0208cf081d1a74df8215c9c612a84decc13fcfed')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}/desktop"
