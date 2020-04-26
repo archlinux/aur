@@ -1,6 +1,6 @@
 pkgbase = python-msrestazure
 	pkgdesc = The runtime library "msrestazure" for AutoRest generated Python clients.
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/Azure/msrestazure-for-python
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-msrestazure
 	depends = python-adal
 	depends = python-keyring
 	depends = python-msrest
-	source = https://github.com/Azure/msrestazure-for-python/archive/v0.6.2.tar.gz
-	sha256sums = f74d814304ef11ba75073ad55d284eb9a4d6da8425a245548ac7859f69736418
+	source = https://github.com/Azure/msrestazure-for-python/archive/v0.6.3.tar.gz
+	sha256sums = c429caaf44494063ae006f0de497c0c23eea75880e532a2a087ac2a61e096cbc
 
 pkgname = python-msrestazure
 
