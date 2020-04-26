@@ -1,0 +1,19 @@
+pkgbase = lightdm-webengine-greeter-git
+	pkgdesc = A modern, visually appealing greeter for LightDM. C++ rewrite of Web Greeter 3.0
+	pkgver = r12.bad0705
+	pkgrel = 1
+	url = https://github.com/matijaskala/lightdm-webengine-greeter
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = git
+	depends = lightdm
+	depends = liblightdm-qt5
+	depends = qt5-webengine
+	optdepends = at-spi2-core: a11y support
+	backup = etc/lightdm/lightdm-webengine-greeter-git.conf
+	source = git+https://github.com/matijaskala/lightdm-webengine-greeter
+	sha512sums = SKIP
+
+pkgname = lightdm-webengine-greeter-git
+
