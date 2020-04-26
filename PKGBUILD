@@ -5,7 +5,7 @@ pkgname=( python-$_name python2-$_name )
 pkgbase=python-$_name
 
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Null values and sentinels like (but not) None, False & True'
 
 arch=(any)
@@ -38,5 +38,5 @@ package_python2-nulltype()
 {
     depends=( python2 )
     cd "$srcdir/$_name-$pkgver-py2"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }

@@ -1,7 +1,7 @@
 pkgbase = python-nulltype
 	pkgdesc = Null values and sentinels like (but not) None, False & True
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/jeunice/nulltype
 	arch = any
 	license = Apache
