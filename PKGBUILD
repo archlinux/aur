@@ -10,7 +10,7 @@ _wl_project=${_pkgname}
 _wl_hz="https://hosted.weblate.org/healthz/"
 _wl_dl="https://hosted.weblate.org/download/${_wl_project}"
 pkgname=${_pkgname,,}-git
-pkgver=7.25.r19.g9ce6e16
+pkgver=7.29.r16.gddf8658
 pkgrel=1
 pkgdesc='GPS log file viewer and analyzer'
 arch=(x86_64)
@@ -72,7 +72,7 @@ build() {
 
   sed -i "s/\(VERSION = \).*/\1${pkgver}/" gpxsee.pro
 
-  find lang -name "*.ts" -exec sh -c 'touch ${0//.ts/.qm}' {} \;
+  find lang -name "*.ts" -a ! -name "*_ar.ts" -exec sh -c 'touch ${0//.ts/.qm}' {} \;
   qmake CONFIG+=lrelease LRELEASE_DIR=lang PREFIX=/usr gpxsee.pro
   rm -f lang/*.qm
   make
