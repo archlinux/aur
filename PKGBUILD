@@ -10,6 +10,7 @@ license=('apache')
 depends=('qt5-multimedia')
 makedepends=('git'
              'cmake'
+             'qt5-tools'
              )
 provides=('tsmuxer'
           'tsmuxer'
