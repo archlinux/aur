@@ -3,11 +3,12 @@
 pkgname=distrho-ports
 pkgver=20180416
 _pkgver=2018-04-16
-pkgrel=1
+pkgrel=2
 pkgdesc="DISTRHO Plugin Ports (Stable)"
 arch=('x86_64')
 url="http://distrho.sourceforge.net/"
 license=('GPL' 'LGPL')
+groups=('pro-audio' 'lv2-plugins' 'vst-plugins')
 depends=('freetype2' 'alsa-lib' 'libxext')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" "distrho-vst-git" "distrho-plugins-vst-git" "distrho-lv2-git" "distrho-plugins-lv2-git" "dexed" "dexed-git" "dexed-vst-git" "luftikus" "tal-plugins")

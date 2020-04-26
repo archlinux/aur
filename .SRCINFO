@@ -1,9 +1,12 @@
 pkgbase = distrho-ports
 	pkgdesc = DISTRHO Plugin Ports (Stable)
 	pkgver = 20180416
-	pkgrel = 1
+	pkgrel = 2
 	url = http://distrho.sourceforge.net/
 	arch = x86_64
+	groups = pro-audio
+	groups = lv2-plugins
+	groups = vst-plugins
 	license = GPL
 	license = LGPL
 	depends = freetype2
