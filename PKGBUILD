@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=qrcp
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Transfer files over Wi-Fi from your computer to a mobile device by scanning a QR code without leaving the terminal"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go-pie')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('b88d68b695785861c6211927cf786ed8d4c903eb5223e5678c4be0eea16288d8')
+sha256sums=('495a54726f843f57bb26f314b902a355b1ed6b99dbd5799f442eef6c5e92045a')
 
 build() {
     cd $pkgname-$pkgver
