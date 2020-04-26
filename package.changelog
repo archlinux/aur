@@ -1,3 +1,7 @@
+2020-04-26
+	upstream update: 3.36.1.1 -> 3.36.2
+	requires vte3 >= 0.60.2
+
 2020-04-07
 	readd "uk.po"
 
