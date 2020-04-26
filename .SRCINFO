@@ -1,12 +1,12 @@
 pkgbase = tmpreaper
 	pkgdesc = Cleans up files in directories based on their age
-	pkgver = 1.6.14
+	pkgver = 1.6.14+nmu1
 	pkgrel = 1
 	url = http://packages.debian.org/sid/tmpreaper
 	arch = x86_64
 	license = GPL2
-	source = http://ftp.debian.org/debian/pool/main/t/tmpreaper/tmpreaper_1.6.14.tar.gz
-	sha512sums = e78fab0cd2cc8c851e2806be70c102697bff86230e181bfad1c76b15fe5455fb431bc0dd16bebf77a2e9bb64b5f5a1474d24254ff780d4d72d343ea0e6e30ccb
+	source = http://ftp.debian.org/debian/pool/main/t/tmpreaper/tmpreaper_1.6.14+nmu1.tar.gz
+	sha512sums = 0109665ba2a6c076944e85462946aa743b67912886524820bc6107f17aa3576ea8759675aa91f6ec4c6b70d306bd172dfea2dff0000641c52f36dede75c2033a
 
 pkgname = tmpreaper
 
