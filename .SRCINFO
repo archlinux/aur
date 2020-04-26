@@ -8,7 +8,7 @@ pkgbase = pdfposter
 	makedepends = python-setuptools
 	depends = python-pypdf2
 	source = https://gitlab.com/pdftools/pdfposter/-/archive/v0.7.post1/pdfposter-v0.7.post1.tar.bz2
-	sha512sums = f399477df3a627ccd954a9f9fee55e8876c6ccb7895e3bac514c38d9905c44afd34a2405e0a6f475201a6104d3efb5796381ede84ddb66d78d9a6a4022b25c14
+	b2sums = b4dc9ac56ecf76c8b8759ca2c7cba89b5479c1706315d44f4d8852b634a53be048060ecc976355276334e1d8d1114df3818bbc306ff3e3b9f636839644333b24
 
 pkgname = pdfposter
 
