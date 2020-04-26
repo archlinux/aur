@@ -11,8 +11,8 @@ pkgbase = python-pysdd
 	optdepends = python-numpy
 	provides = python-pysdd
 	conflicts = python-pysdd-git
-	source = https://files.pythonhosted.org/packages/9a/5d/0bc570dda1dec89de5c1b7954aede5e0690fd9baee282ce20a27cf69f700/PySDD-0.2.10.tar.gz
-	sha256sums = ddeaca8a140e6c87c2f4f6d8b7e3260b5089e12fe7565d714523f66d233bb1d8
+	source = git+https://github.com/RenatoGeh/PySDD
+	sha256sums = SKIP
 
 pkgname = python-pysdd
 
