@@ -1,7 +1,7 @@
 pkgbase = python-sphinx-hawkmoth-git
 	pkgdesc = Sphinx autodoc C extension
 	pkgver = latest
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jnikula/hawkmoth
 	arch = i686
 	arch = x86_64

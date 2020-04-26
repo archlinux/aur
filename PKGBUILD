@@ -4,7 +4,7 @@ upstream_name=hawkmoth
 aur_name=python-sphinx-hawkmoth
 pkgname=$aur_name-git
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc='Sphinx autodoc C extension'
 arch=('i686' 'x86_64')
 url='https://github.com/jnikula/hawkmoth'
@@ -16,7 +16,7 @@ source=('git+https://github.com/jnikula/hawkmoth')
 md5sums=('SKIP')
 
 package() {
-	dest=$pkgdir/usr/lib/python3.7/site-packages/$upstream_name
-	mkdir -p $dest
-	cp -r $srcdir/$upstream_name/$upstream_name/* $dest
+	install -D -m644 $srcdir/$upstream_name/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd $srcdir/$upstream_name
+	python setup.py install --optimize=1 --root=$pkgdir
 }
