@@ -1,17 +1,17 @@
 # Maintainer: Markus Näther <naetherm@cs.uni-freiburg.de>
 pkgname=python-py-params
-pkgver=0.8.2
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="A type-safe dictionary class for python."
 url="https://github.com/kpe/py-params"
 arch=(x86_64)
 makedepends=(git python 'python-setuptools')
-_pkgver="0.8.2"
+_pkgver="0.9.7"
 source=(
   "https://github.com/kpe/py-params/archive/v$_pkgver.tar.gz"
 )
 sha256sums=(
-  "0de74db6b12379d5659419794e9273185784fb0b2e86a134319a22d1486f1876"
+  "a72a94968955edb42cdc1a6ff8e1b3b7b9af3ebec342e9e157eeba05a1f9db81"
 )
 
 
