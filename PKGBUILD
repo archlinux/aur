@@ -15,9 +15,9 @@ depends=('restic'
 
 checkdepends=('python-pytest')
 
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("runrestic-${pkgver}.tar.gz::https://github.com/andreasnuesslein/runrestic/archive/${pkgver}.tar.gz")
 
-sha256sums=('07db9449f9b1359601b91918e64a6acf6d702dcec10a747e1816611774952bd9')
+sha256sums=('b2799fe3679189128fcf5702a6ee99ce1d52e589af5f713ba41b25b3dd0a33fa')
 
 check() {
   cd "${pkgname}-${pkgver}"
