@@ -1,6 +1,6 @@
 # Maintainer: Dimitri Pertin <pertin (dot) dimitri (at) protonmail (dot) com>
 pkgname=gonic
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc='A lightweight music streaming server which implements the Subsonic API'
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/sentriz/gonic/archive/v$pkg
         "$pkgname.service"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('101f627184c59a01162ccd02a7628e90'
+md5sums=('d23f1d61e780d57e0db37e82f8395065'
          'ba8a59387a281b19cc4c09916e5fe731'
          '6ca6715be2cdd424846f7b37b98905f6'
          '487fe9a172e33d86514cf3dbb3b629b8')
