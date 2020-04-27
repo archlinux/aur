@@ -165,13 +165,13 @@ _package-headers()
 	local file
 	while read -rd '' file; do
 		case "$(file -bi "$file")" in
-			application/x-sharedlib\;*)      # Libraries (.so)
+			application/x-sharedlib\;*)
 				strip -v $STRIP_SHARED "$file" ;;
-			application/x-archive\;*)        # Libraries (.a)
+			application/x-archive\;*)
 				strip -v $STRIP_STATIC "$file" ;;
-			application/x-executable\;*)     # Binaries
+			application/x-executable\;*)
 				strip -v $STRIP_BINARIES "$file" ;;
-			application/x-pie-executable\;*) # Relocatable binaries
+			application/x-pie-executable\;*)
 				strip -v $STRIP_SHARED "$file" ;;
 		esac
 	done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
