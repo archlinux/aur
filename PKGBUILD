@@ -1,8 +1,9 @@
 # Maintainer: Steef Hegeman <mail@steefhegeman.com>
 pkgname=snixembed-git
-pkgver=0.2.0.r0.g5806582
+pkgver=0.2.1.r0.g767f1b0
 pkgrel=1
 pkgdesc="proxy StatusNotifierItems as XEmbedded systemtray-spec icons"
+url="https://git.sr.ht/~steef/snixembed"
 arch=("x86_64")
 license=("ISC")
 depends=("glib2"
