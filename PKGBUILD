@@ -1,13 +1,13 @@
 # Maintainer: cyrant <cyrant at tuta dot io>
 
 pkgname=scenarist
-pkgver=0.7.2.rc9g
+pkgver=0.7.2.rc9h
 pkgrel=1
 pkgdesc='A professional screenwriting software.'
 url='https://kitscenarist.ru/en/'
 arch=('x86_64')
 license=('GPL3')
-depends=('desktop-file-utils' 'qt5-multimedia' 'qt5-webengine')
+depends=('qt5-multimedia' 'qt5-webengine')
 makedepends=('git' 'qt5-svg')
 source=(
   "${pkgname}::git+https://github.com/dimkanovikov/KITScenarist.git#tag=${pkgver}"
@@ -25,7 +25,11 @@ prepare() {
 
 build() {
   cd "${pkgname}/src"
-  qmake Scenarist.pro -spec linux-g++ &&
+  qmake \
+    -spec linux-g++ \
+    QMAKE_CXXFLAGS+="-Wa,--noexecstack" \
+    QMAKE_LFLAGS+="-Wl,-z,--noexecstack" \
+    Scenarist.pro &&
   make
 }
 
