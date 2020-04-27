@@ -16,7 +16,7 @@ source=("git+https://gitlab.com/patlefort/sharedaccess")
 _repo="sharedaccess"
 
 build() {
-	cmake -S sharedaccess -B build -DCMAKE_BUILD_TYPE=Release
+	cmake -S sharedaccess -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
 	make -C build
 }
 
