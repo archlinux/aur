@@ -1,13 +1,14 @@
 pkgbase = ripes-git
 	pkgdesc = A graphical processor simulator and assembly editor for the RISC-V ISA
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mortbopet/Ripes
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
 	depends = qt5-base
+	depends = qt5-charts
 	source = ripes-git-2.0.0::git+https://github.com/mortbopet/Ripes.git
 	source = git+https://github.com/mortbopet/VSRTL.git
 	source = ELFIO::git+https://github.com/serge1/ELFIO.git
