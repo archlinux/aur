@@ -1,6 +1,6 @@
 pkgbase = wash
 	pkgdesc = A cloud-native shell for bringing remote infrastructure to your terminal
-	pkgver = 0.22.0
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://puppetlabs.github.io/wash/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = wash
 	license = Apache
 	makedepends = go
 	makedepends = git
-	source = https://github.com/puppetlabs/wash/archive/0.22.0.tar.gz
-	sha256sums = 6895280fcd99b58e6164b73e99b2383728e46d01af2748cb6cf786d90fd66fae
+	source = https://github.com/puppetlabs/wash/archive/0.23.0.tar.gz
+	sha256sums = 3b7462c7b4aa3163f9b79f2892495ec66c52ec29d6c5c91aa25d3d31c0e1e535
 
 pkgname = wash
 
