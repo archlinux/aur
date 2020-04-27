@@ -1,0 +1,12 @@
+pkgbase = bindfs-git
+	pkgdesc = Rebinds filesystems to free stuck processes.
+	pkgver = 20200427
+	pkgrel = 1
+	url = https://github.com/kokoko3k/bindfsit
+	arch = any
+	license = custom
+	depends = bindfs
+	depends = bash
+
+pkgname = bindfs-git
+
