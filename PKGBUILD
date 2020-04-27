@@ -12,9 +12,9 @@ replaces=('cameracontrol')
 arch=('any')
 url="https://gitlab.com/psposito/camera-control-webcam-switch-indicator"
 license=('FPC modified LGPL Version 2')
-depends=('qt5pas' 'lsof')
+depends=('qt5pas' 'lsof' 'gnome-icon-theme')
 conflicts=('cameramonitor')
-optdepends=('qt5gtk2' 'qt5ct' 'qt5-style-plugins')
+optdepends=('qt5gtk2' 'qt5ct' 'qt5-styleplugins')
 source=(https://gitlab.com/psposito/camera-control-webcam-switch-indicator/uploads/0fe9685a3a6ae587a1982eba82b57902/CameraControl-2-0-3.tar.bz2)
 sha256sums=('9ddbbe1368b344c1b85bb851637a1bee8821c62a939d0ff5c1d59f253732b9fb')
 
