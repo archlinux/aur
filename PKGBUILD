@@ -4,7 +4,7 @@
 pkgname=etherwake
 pkgver=1.09
 pkgrel=7
-arch=(i686 x86_64)
+arch=(i686 x86_64 armv6h armv7h)
 pkgdesc="Utility for waking up computers via wake-on-lan (wol)"
 license=("GPL")
 url="https://web.archive.org/web/20060427201642/http://www.scyld.com/wakeonlan.html"
