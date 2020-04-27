@@ -9,7 +9,7 @@ license=('custom:Public Domain')
 depends=('bash' 'gawk' 'fzf')
 optdepends=('xclip: X11 clipboard support'
 	    'wl-clipboard: Wayland clipboard support')
-source=("kjv-fzf::https://github.com/varagnac/pure-text-bible/raw/master/kjv_fzf")
+source=("${pkgname}-${pkgver}::https://github.com/varagnac/pure-text-bible/raw/master/kjv_fzf")
 md5sums=('b8d55a877605750955032520767de114')
 
 package() {
