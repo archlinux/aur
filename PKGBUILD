@@ -1,6 +1,6 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=git-cinnabar
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Git remote helper to interact with Mercurial repositories"
 arch=(x86_64)
