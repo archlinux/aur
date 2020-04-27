@@ -8,7 +8,7 @@ pkgname=(
 	"linux-zest-git-headers"
 )
 pkgver=5.6
-pkgrel=2
+pkgrel=3
 arch=(
     "i686"
 	"x86_64"
@@ -34,7 +34,7 @@ options=(
 	"!strip"
 )
 source=(
-	"git+$url.git"
+	"https://github.com/ZestProjects/linux/archive/fivesix.zip"
 )
 b2sums=(
 	"SKIP"
@@ -44,7 +44,7 @@ prepare()
 {
 	export PATH="/opt/proton-clang/bin:$PATH"
 
-	cd "linux" || exit
+	cd "linux-fivesix" || exit
 
 	git checkout "fivesix"
 
@@ -59,7 +59,7 @@ build()
 {
 	export PATH="/opt/proton-clang/bin:$PATH"
 
-	cd "linux" || exit
+	cd "linux-fivesix" || exit
 
 	make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTLD=ld.lld all
 	make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTLD=ld.lld htmldocs
@@ -85,7 +85,7 @@ _package()
 
 	export PATH="/opt/proton-clang/bin:$PATH"
 
-	cd "linux" || exit
+	cd "linux-fivesix" || exit
 
 	local kernver="$(<version)"
 	local modulesdir="$pkgdir/usr/lib/modules/$kernver"
@@ -111,7 +111,7 @@ _package-headers()
 		"linux-zest-headers"
 	)
 
-	cd "linux" || exit
+	cd "linux-fivesix" || exit
 
 	local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
@@ -191,7 +191,7 @@ _package-docs()
 		"linux-zest-docs"
 	)
 
-	cd "linux" || exit
+	cd "linux-fivesix" || exit
 
 	local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
