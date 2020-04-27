@@ -1,7 +1,7 @@
 # Maintainer: TheBitStick <the at bitstick dot rip>
 pkgname=tsubasa-git
 _pkgname=tsubasa
-pkgver=r27.2982c5a
+pkgver=r37.396d5f0
 pkgrel=1
 pkgdesc="Script for sharing screenshots and/or status updates using ihabunek/toot"
 arch=('any')
@@ -21,5 +21,6 @@ pkgver() {
 
 package() {
 	install -D -t "$pkgdir/usr/bin" "${_pkgname}/tsubasa.fish"
+	install -D -t "$pkgdir/usr/share/applications" "${_pkgname}/tsubasa.desktop"
 	mv "$pkgdir/usr/bin/tsubasa.fish" "$pkgdir/usr/bin/tsubasa"
 } 
