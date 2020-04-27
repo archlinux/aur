@@ -10,7 +10,7 @@ depends=('bash' 'gawk' 'fzf')
 optdepends=('xclip: X11 clipboard support'
 	    'wl-clipboard: Wayland clipboard support')
 source=("vul-fzf::https://github.com/varagnac/pure-text-bible/raw/master/vulgate_fzf")
-md5sums=('SKIP')
+md5sums=('ca883f1a64a6c673fef28c71b43529d3')
 
 package() {
 	cd "$srcdir/"
