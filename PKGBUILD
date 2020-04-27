@@ -1,7 +1,7 @@
 # Maintainer: Fancy Zhang <springzfx@gmail.com>
 pkgbase=cgproxy
 pkgname=cgproxy
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="A transparent proxy program with cgroup2, like proxychains"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=()
 options=('!strip' '!emptydirs')
 # source_x86_64=("cgproxy.tar.gz")
 source_x86_64=("https://github.com/springzfx/cgproxy/archive/v$pkgver.tar.gz")
-md5sums_x86_64=('bba3f050ce93fe269a3f86be463163a9')
+md5sums_x86_64=('d3f229e322b3ac6d64522a202e152a19')
 
 backup=('etc/cgproxy.conf')
 
