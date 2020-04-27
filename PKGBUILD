@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-beta-ozone
-pkgver=83.0.4103.14
+pkgver=83.0.4103.23
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone (beta channel)"
@@ -30,27 +30,11 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-widevine.patch
-        chromium-skia-harmony.patch
-        0001-Revert-RTCInsertableStreams-Make-RTCEncodedAudioFram.patch
-        0002-Revert-RTCInsertableStreams-Make-RTCEncodedVideoFram.patch
-        0003-Add-missing-algorithm-header-in-crx_install_error.cc.patch
-        0004-libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch
-        0005-Revert-Trace-ICU-object-creation-in-ICU.CreateInstan.patch
-        0006-Revert-PM-Add-calculation-of-maximum-simultaneous-lo.patch
-        0007-Add-missing-memory-header-in-trust_token_attribute_p.patch
-        0008-Revert-FragmentItem-Two-fixes-for-outline.patch)
-sha256sums=('6e3d4853dcbd3c2375a1462a764102f6893c3b0505037e28c04bf90002e526e8'
+        chromium-skia-harmony.patch)
+sha256sums=('929a3d8c5da5066c496ddcc6147aa3c528976a61dca65c9010e625733fa46ee8'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
-            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
-            'c53edc13ca335652608607e628284a79d91f5524d9b5e72a8f2d29b4d7618c75'
-            'cf27aa2a98bc71686e3e0f482b720d7d25017158ab2c7d93b548b3578c4b53e2'
-            '9f2211edf347d54b8167a3b9d773e38aeabce5f98fb1932e7db1aeec845579f6'
-            '5db92d614aba64e9eb684f35e06f36786b74d5a1456308d4d40a65f12e32f62b'
-            '52b0129ac7db760078087a2839e257183f10df8e9f831ec07e6cfc8f5ba455eb'
-            '2b594ff5bc731897274027ddb79a77d247a52ef0990d574ec815b36082ac093a'
-            '91cc1ac6cd6568de8c45a3fb3c6b57fa9ea6e6ae6f2a05f1ff82677d0cdbdedb'
-            '771b862e16ff42e0d43d6f0f5fd49d65210732bb0ae19cc4ea18c2220b4cb041')
+            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -60,7 +44,7 @@ declare -gA _system_libs=(
   [fontconfig]=fontconfig
   [freetype]=freetype2
   # [harfbuzz-ng]=harfbuzz
-  [icu]=icu
+  #[icu]=icu
   [libdrm]=
   #[libjpeg]=libjpeg
   #[libpng]=libpng    # https://crbug.com/752403#c10
@@ -69,7 +53,7 @@ declare -gA _system_libs=(
   [libxml]=libxml2
   [libxslt]=libxslt
   [opus]=opus
-  [re2]=re2
+  #[re2]=re2
   [snappy]=snappy
   [yasm]=
   [zlib]=minizip
@@ -114,15 +98,6 @@ prepare() {
 
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
-
-  patch -Np1 -i ../0001-Revert-RTCInsertableStreams-Make-RTCEncodedAudioFram.patch
-  patch -Np1 -i ../0002-Revert-RTCInsertableStreams-Make-RTCEncodedVideoFram.patch
-  patch -Np1 -i ../0003-Add-missing-algorithm-header-in-crx_install_error.cc.patch
-  patch -Np1 -i ../0004-libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch
-  patch -Np1 -i ../0005-Revert-Trace-ICU-object-creation-in-ICU.CreateInstan.patch
-  patch -Np1 -i ../0006-Revert-PM-Add-calculation-of-maximum-simultaneous-lo.patch
-  patch -Np1 -i ../0007-Add-missing-memory-header-in-trust_token_attribute_p.patch
-  patch -Np1 -i ../0008-Revert-FragmentItem-Two-fixes-for-outline.patch
 
   for PATCH in ${_bugfix_patches[@]}
   do
@@ -171,7 +146,6 @@ build() {
     'use_gnome_keyring=false'
     'use_sysroot=false'
     'linux_use_bundled_binutils=false'
-    'use_custom_libcxx=false'
     'enable_hangout_services_extension=true'
     'enable_widevine=true'
     'use_ozone=true'
