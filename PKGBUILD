@@ -4,9 +4,9 @@
 
 _name=bats-core
 pkgname=$_name-git
-pkgver=v1.1.0.r108.g87b16eb
+pkgver=v1.2.0.r26.gb0671a6
 _mainfolder=$_name
-pkgrel=2
+pkgrel=1
 pkgdesc='Bash Automated Testing System'
 arch=(any)
 url=https://github.com/bats-core/bats-core
@@ -15,7 +15,7 @@ depends=(bash)
 makedepends=(git)
 source=("git+$url" fix-libexec-path.patch)
 sha256sums=('SKIP'
-            '89a7f67f4590abbada4b735174db1e7694cc83a371d4668c3150866340898dbd')
+            '1195fa67108f42eac2028dabcf65b7dc687ebcfab8c33f34f481bc8d6d4a56dd')
 conflicts=(bash-bats)
 provides=(bash-bats)
 

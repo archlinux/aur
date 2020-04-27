@@ -2,9 +2,9 @@ diff --git a/bin/bats b/bin/bats
 index a852306..ce7f883 100755
 --- a/bin/bats
 +++ b/bin/bats
-@@ -41,4 +41,4 @@ bats_resolve_absolute_root_dir() {
+@@ -66,4 +66,4 @@ bats_resolve_absolute_root_dir() {
 
  export BATS_ROOT
  bats_resolve_absolute_root_dir "$0" 'BATS_ROOT'
--exec "$BATS_ROOT/libexec/bats-core/bats" "$@"
-+exec "$BATS_ROOT/lib/bats/bats" "$@"
+-exec env BATS_ROOT="$BATS_ROOT" "$BATS_ROOT/libexec/bats-core/bats" "$@"
++exec env BATS_ROOT="$BATS_ROOT" "$BATS_ROOT/lib/bats/bats" "$@"
