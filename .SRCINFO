@@ -1,6 +1,6 @@
 pkgbase = dexed-git
 	pkgdesc = A software synth closely modelled on the Yamaha DX7 (git version)
-	pkgver = 0.9.4.1.r246.760f9ef
+	pkgver = 0.9.4hf1.r57.g2ebdf1e
 	pkgrel = 1
 	url = http://asb2m10.github.io/dexed/
 	changelog = ChangeLog
@@ -10,6 +10,7 @@ pkgbase = dexed-git
 	groups = vst-plugins
 	license = GPL3
 	makedepends = git
+	makedepends = steinberg-vst36
 	depends = alsa-lib
 	depends = curl
 	depends = hicolor-icon-theme
@@ -19,11 +20,17 @@ pkgbase = dexed-git
 	conflicts = dexed
 	conflicts = dexed-vst-git
 	source = dexed::git+https://github.com/asb2m10/dexed.git
+	source = https://d30pueezughrda.cloudfront.net/juce/juce-5.4.7-linux.zip
+	source = git+https://github.com/steinbergmedia/vst3sdk.git
+	source = git+https://github.com/surge-synthesizer/tuning-library.git
+	source = git+https://github.com/surge-synthesizer/surgesynthteam_tuningui.git
 	source = dexed.desktop
-	source = juce-pixel-format.patch
-	md5sums = SKIP
-	md5sums = d888f8f2c1a44ed75c77d43faee73361
-	md5sums = 3b8cd62ca811638639c7f6de18306849
+	sha256sums = SKIP
+	sha256sums = 6f259573553a26951e896ed8d0737f78c3db7668894adc699a1e517aafe76e39
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 092e8b4638f750c2d31e6d9592dee07a0f6b6f6f19e9bb07a3986da27496fe9b
 
 pkgname = dexed-git
 

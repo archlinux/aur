@@ -1,6 +1,11 @@
 dexed/
 src/
 pkg/
-dexed-git-*.tar.xz
+tuning-library/
+surgesynthteam_tuningui/
+vst3sdk/
+dexed-git-*.pkg.tar.xz
+dexed-git-*.pkg.tar.zst
 dexed-git-*.src.tar.gz
+juce-*-linux.zip
 .AURINFO

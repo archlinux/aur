@@ -1,3 +1,13 @@
+2020-04-27 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 0.9.4hf1.r57.g2ebdf1e-1
+	* Added new git submodules to sources
+	* Added JUCE 5.4.7 to sources
+	* Added 'steinberg-vst36' to makedepends
+	* Create build files with Projucer
+	* Fixed 'pkgver' function
+	* Updated .gitignore file
+
 2019-09-01 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 0.9.4.1.r246.760f9ef-1
