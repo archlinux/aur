@@ -1,16 +1,15 @@
 pkgbase = epsxe-plugin-gpu-mesagl
 	pkgdesc = Accelerated MesaGL plugin
 	pkgver = 1.78
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.pbernert.com
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = epsxe
+	depends = mesa
 	source = http://www.pbernert.com/gpupeopsmesagl178.tar.gz
 	md5sums = 1e753dac1cc799a1dd326f5b61d2b10c
-	depends_i686 = mesa
-	depends_x86_64 = lib32-mesa
 
 pkgname = epsxe-plugin-gpu-mesagl
 
