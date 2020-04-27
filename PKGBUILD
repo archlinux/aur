@@ -1,6 +1,6 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 pkgname=python-ly-git
-pkgver=0.9.6.r1.g1c733c2
+pkgver=0.9.6.r3.g7bc9577
 pkgrel=1
 pkgdesc="Python modules to parse, manipulate or create documents in LilyPond format."
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 makedepends=('git')
 depends=('python')
 provides=("${pkgname%-git}=$pkgver-$pkgrel")
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" "ly")
 options=(!emptydirs)
 source=("$pkgname"::'git://github.com/wbsoft/python-ly.git')
 md5sums=('SKIP')

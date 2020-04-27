@@ -1,14 +1,15 @@
 pkgbase = python-ly-git
 	pkgdesc = Python modules to parse, manipulate or create documents in LilyPond format.
-	pkgver = 0.9.6.r1.g1c733c2
+	pkgver = 0.9.6.r3.g7bc9577
 	pkgrel = 1
 	url = https://github.com/frescobaldi/python-ly
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = python
-	provides = python-ly=0.9.6.r1.g1c733c2-1
+	provides = python-ly=0.9.6.r3.g7bc9577-1
 	conflicts = python-ly
+	conflicts = ly
 	options = !emptydirs
 	source = python-ly-git::git://github.com/wbsoft/python-ly.git
 	md5sums = SKIP
