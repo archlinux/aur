@@ -1,6 +1,6 @@
 pkgbase = goverlay-git
-	pkgdesc = An opensource project that aims to create a Graphical UI to help manage Linux overlays.
-	pkgver = 0.3.r4.gfb502d6
+	pkgdesc = A GUI to help manage Vulkan/OpenGL overlays
+	pkgver = 0.3.1.r8.g89d4096
 	pkgrel = 1
 	url = https://github.com/benjamimgois/goverlay
 	arch = x86_64
