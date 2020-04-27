@@ -2,7 +2,7 @@
 # Contributor: Vincent Pasquier <vincentpasquier@posteo.net>
 
 pkgname=python-ics
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc='Pythonic and easy iCalendar library'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-arrow' 'python-dateutil' 'python-tatsu')
 makedepends=('python-setuptools')
 
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/C4ptainCrunch/ics.py/archive/v${pkgver}.tar.gz")
-sha512sums=('a6b23bba9e47d52c22b789965ffb1fcc2ae2905afd2e50ffeff5f7f25e38dd75444a5aa30c90b60b74b596b7f71ad26bd0eb52893fc2bbb9f6e4b0241be936de')
+sha512sums=('7bdb168dd12e10fff257086923f2c15475db0cdab95da2ccb9a4d6cb33d469901c6bbbc9bdad232f981f45eeacad17c76349c9db190d2a8a5d160500d5352b47')
 
 package() {
   cd "ics.py-${pkgver}"
