@@ -1,29 +1,38 @@
-# Maintainer: Gore Liu <goreliu@126.com>
+# Maintainer: George Rawlinson <george@rawlinson.net.nz>
+# Contributor: Gore Liu <goreliu@126.com>
 
 pkgname=python-lolcat
-_realname=lolcat
+_pkgname=lolcat
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Rainbows and unicorns (without Ruby! jay!)"
 url="https://github.com/tehmaze/lolcat"
 arch=('any')
-license=('beerware')
-depends=('python-setuptools')
+license=('custom:beerware')
+depends=('python')
+makedepends=('python-setuptools')
+provides=('lolcat')
 conflicts=('lolcat')
-source=("https://github.com/tehmaze/${_realname}/archive/${pkgver}.tar.gz")
-md5sums=('35bea13808a5edc51a7e70728e91a9e4')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha512sums=('2e5608f541a2a5fa68811ec2e9907177cf8ad315b771b59e5873748ad2ab2c4ea1609f45a72b4c4b3c7d5383e88ac4e57be8e458a5f6a2f055faa714dd8ee5dc')
 
 build() {
-  cd "${srcdir}"/"${_realname}-${pkgver}"
+  cd "$_pkgname-$pkgver"
   python setup.py build
+
+  sed -n 's/^#[ ]*//;3,7p;' lolcat > LICENSE
 }
 
 check() {
-  cd "${srcdir}"/"${_realname}-${pkgver}"
-  LC_CTYPE=en_US.UTF-8 python setup.py test
+  cd "$_pkgname-$pkgver"
+  python setup.py test
 }
 
 package() {
-  cd "${srcdir}"/"${_realname}-${pkgver}"
-  python setup.py install --root="$pkgdir"
+  cd "$_pkgname-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
+
+# vim: set ts=2 sw=2 et:
