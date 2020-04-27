@@ -1,0 +1,16 @@
+pkgbase = python-brython
+	pkgdesc = A Python 3 implementation for client-side web programming
+	pkgver = 3.8.8
+	pkgrel = 1
+	url = https://brython.info/
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-plumbum
+	provides = python-brython
+	options = !emptydirs
+	source = https://github.com/brython-dev/brython/archive/3.8.8.tar.gz
+	sha512sums = 7b648bf5cafa668bf77091f0c3dc6caec91a17a771c1fa65febb2c31c168913009952700622c88a5eadd55b75cf2a5c73e6a964bfaf57632a2247767d7cf5f2d
+
+pkgname = python-brython
+
