@@ -27,8 +27,9 @@ sha256sums=('bec66b4d952b0656118785b95049570c7eb044b5735d6345364d450d32cecc91', 
 validpgpkeys=()
 
 prepare() {
-    cd craftos2-rom
+    cd "craftos2-rom-$pkgver"
     patch -p1 < ../expect-fix.diff
+    cd ..
 }
 
 build() {
