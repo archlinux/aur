@@ -1,6 +1,6 @@
 # Maintainer: Diab Neiroukh <officiallazerl0rd@gmail.com>
 
-pkgname="linux-proton-bin"
+pkgname="llvm-proton-bin"
 pkgver=11.0.0
 pkgrel=1
 arch=(
