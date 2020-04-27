@@ -1,2 +1,5 @@
 crypt_of_the_necrodancer_amplified_dlc_en_*.sh
 crypt_of_the_necrodancer_en_*.sh
+pkg/
+src/
+gog-crypt-of-the-necrodancer-amplified-*.pkg.tar
