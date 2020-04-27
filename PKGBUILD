@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.6.5
+pkgver=5.6.7
 pkgrel=3
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -41,23 +41,19 @@ source=(
   config         # the main kernel config file
   "${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/31d4f0d32196b85f66945ed01b60ed1b55ee5f54.patch"
-  "0002-Revert-ACPI-EC-Do-not-clear-boot_ec_is_ecdt-in-acpi_.patch::https://github.com/archlinux/linux/commit/e5016d0b5460c3bed8f78033723ad22775db7725.patch"
-  "0003-drm-amdgpu-fix-the-hw-hang-during-perform-system-reb.patch::https://github.com/archlinux/linux/commit/1f8782c04f587b9e0901f7736c112814dd0dcc47.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/b38ba076b5049a77bf79f2c8cd224a77dea89bf3.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('f79bd3dbcbe1e7afba256d59b4ca21da12d2c5b4189804dffb2a49fd2b9b52e6'
+sha256sums=('23a0420f29eacb66d71f86f64fbd35a1b6ff617d520e3e05f3e1f537d46692ca'
             'SKIP'
             'a6c181f4c93dd302fdf5437bfff32bc938d8e36985898485aa9c839947fa39d4'
             '2340925904efa3594cc65a7bae4fbff233d5d8bc7db605ce08acaca7450d2471'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
-            'b8e6d6001d96cfa3d54611fa00f2b0370f9b6ae83baa5c6e3abb6c478ed69cce'
-            'f7aeb902c0d7705d1ff9e8538cad504b32326e8ee0348e1fe01488a59363d1cd'
-            'e3033ffe29e74b44242e58f41b1e067d543c552ee8f7fe36af53ad3c11f97777')
+            '58b45946e72b549267da97b05c030527a3563f96a9b203b09a7dd2305e551b88')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
