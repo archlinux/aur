@@ -11,7 +11,7 @@
 pkgname=thunderbird-localized-beta-bin
 _pkgname=thunderbird-beta
 _product=thunderbird
-pkgver=76.0b1
+pkgver=76.0b2
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
