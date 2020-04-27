@@ -1,0 +1,18 @@
+pkgbase = netease-cloud-music-appimage
+	pkgdesc = netease-cloud-music Appimage
+	pkgver = 1.2.0.2_1
+	pkgrel = 1
+	url = https://github.com/ZetaoYang/netease-cloud-music-appimage
+	arch = x86_64
+	license = custom
+	provides = netease-cloud-music
+	conflicts = netease-cloud-music
+	noextract = NetEase_Cloud_Music-1.2.0.2-1.glibc2.17-x86_64.AppImage
+	options = !strip
+	source = https://github.com/ZetaoYang/netease-cloud-music-appimage/releases/download/1.2.0.2-1/NetEase_Cloud_Music-1.2.0.2-1.glibc2.17-x86_64.AppImage
+	source = netease-cloud-music.sh
+	sha256sums = 5ce37a71869b9aaae6ac4286a57fff9b0af72c3acfb729b9cf573789a06d6b7c
+	sha256sums = 5899a5c608baaaaf62f8d56a28ed374c515e0dbd64d109ee301db3311fffd120
+
+pkgname = netease-cloud-music-appimage
+
