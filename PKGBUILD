@@ -76,6 +76,8 @@ _package()
 		"linux-firmware: firmware images needed for some devices"
 	)
 	provides=(
+		"linux"
+		"linux-zest"
 		"WIREGUARD-MODULE"
 	)
 
@@ -102,6 +104,10 @@ _package()
 _package-headers()
 {
 	pkgdesc="Headers and scripts for building modules for the Zest Project's kernel"
+	provides=(
+		"linux-headers"
+		"linux-zest-headers"
+	)
 
 	cd "linux" || exit
 
@@ -178,6 +184,10 @@ _package-headers()
 _package-docs()
 {
 	pkgdesc="Documentation for the Zest Project's kernel"
+	provides=(
+		"linux-docs"
+		"linux-zest-docs"
+	)
 
 	cd "linux" || exit
 
