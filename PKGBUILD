@@ -15,7 +15,7 @@ options=(
 	'!emptydirs'
 )
 source=("git+https://github.com/ahmubashshir/bootsplash-manjaro-green.git")
-validpgpkeys=('B5AC9A5E093F60A29AA1692F4CC9A8013A65E7D4')
+validpgpkeys=('916961EE198832DD70B628B356DB0538F60D951C')
 md5sums=('SKIP')
 
 prepare()
