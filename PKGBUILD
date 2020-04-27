@@ -1,6 +1,6 @@
 # Maintainer: Varagnac Kim <vacaniat@pm.me>
 pkgname=kjv-fzf-git
-pkgver=r1
+pkgver=r1.1
 pkgrel=1
 pkgdesc="King James Bible with fuzzy finder"
 arch=(any)
@@ -10,7 +10,7 @@ depends=('bash' 'gawk' 'fzf')
 optdepends=('xclip: X11 clipboard support'
 	    'wl-clipboard: Wayland clipboard support')
 source=("kjv-fzf::https://github.com/varagnac/pure-text-bible/raw/master/kjv_fzf")
-md5sums=('40103596055b2d5f849dc795367dc931')
+md5sums=('b8d55a877605750955032520767de114')
 
 package() {
 	cd "$srcdir/"

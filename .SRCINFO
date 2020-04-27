@@ -1,6 +1,6 @@
 pkgbase = kjv-fzf-git
 	pkgdesc = King James Bible with fuzzy finder
-	pkgver = r1
+	pkgver = r1.1
 	pkgrel = 1
 	url = https://github.com/varagnac/pure-text-bible
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = kjv-fzf-git
 	optdepends = xclip: X11 clipboard support
 	optdepends = wl-clipboard: Wayland clipboard support
 	source = kjv-fzf::https://github.com/varagnac/pure-text-bible/raw/master/kjv_fzf
-	md5sums = 40103596055b2d5f849dc795367dc931
+	md5sums = b8d55a877605750955032520767de114
 
 pkgname = kjv-fzf-git
 
