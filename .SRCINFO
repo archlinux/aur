@@ -1,14 +1,14 @@
 pkgbase = nml
 	pkgdesc = OpenTTD NewGRF Meta Language Tools
-	pkgver = 0.4.5
-	pkgrel = 3
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://dev.openttdcoop.org/projects/nml
 	arch = any
 	license = GPL
 	depends = python-ply
 	depends = python-pillow
-	source = nml-0.4.5.tar.gz::http://bundles.openttdcoop.org/nml/releases/0.4.5/nml-0.4.5.tar.gz
-	sha256sums = a3f04086078fb568af3f4031907582b2713730c4952074947bf6daa747ddbbde
+	source = nml-0.5.0.tar.gz::https://github.com/OpenTTD/nml/archive/0.5.0.tar.gz
+	sha256sums = 156d2641097f10ae03134873417d37634fa2a81fff110edcf6fb472907f4367f
 
 pkgname = nml
 

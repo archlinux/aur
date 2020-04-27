@@ -1,0 +1,5 @@
+Set the correct version number
+--- nml-0.5.0.orig/nml/__version__.py
++++ nml-0.5.0/nml/__version__.py
+@@ -0,0 +1 @@
++version = "0.5.0"
