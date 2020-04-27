@@ -7,8 +7,8 @@
 
 _pkgbase=vlc
 pkgname=vlc-nox
-pkgver=3.0.8
-pkgrel=2
+pkgver=3.0.9.2
+pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (without X support)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua' 'libidn'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
          'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
          'libarchive' 'freetype2' 'fribidi' 'harfbuzz' 'fontconfig' 'libxml2'
-         'gnutls' 'aribb24')
+         'gnutls' 'libplacebo' 'aribb24')
 makedepends=('live-media' 'libbluray' 'flac' 'libdc1394' 'libavc1394' 'libcaca'
              'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'systemd-libs'
              'libmtp' 'libupnp' 'libmicrodns' 'libdvdcss' 'smbclient'
@@ -92,19 +92,16 @@ replaces=('vlc' 'vlc-plugin' 'vlc-git')
 options=('!emptydirs')
 source=(http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
         update-vlc-plugin-cache.hook
-        lua53_compat.patch
-        aom_compat.patch)
-sha512sums=('5ade0b350e98fd6fa90035bffabda96f0addb3844a7c0a242b4db1cab6a746e1adb1d713ddcb48ae51a7d1736090f096f5d3b0637a9f958ccf4fcf27e838cf70'
-            '80357bae69e32b353d3784932d854e294906798e14faffb87c3383c3b6f6bdc57cbabb9c6e3f3c1adf0f8ddbb24153e72104c963cf1934970c2983c96daef9df'
-            '33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f'
-            '5f3476ea0674640dd0321349dbec1e1d36169b456b5cc5492467e1db1e839c8af1b1b8ceeb16c54beb4d449aabd595c72984fbd2ae9df07f457867f99a7b7d98')
+        lua53_compat.patch)
+sha512sums=('c1009871449b3547ee8fec0c6e95fcf8f7b0328aa85c0c9670aa38ce11d083bae74584ec501b131232cd00fda707d6269ffa5f42c95aa04fe84b44045ca44409'
+            'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
+            '33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f')
 
 prepare() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
   sed -e 's|-Werror-implicit-function-declaration||g' -i configure
   patch -Np1 < "${srcdir}/lua53_compat.patch"
-  patch -Np1 < "${srcdir}/aom_compat.patch"
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
 }
@@ -206,7 +203,7 @@ build() {
               --disable-kwallet \
               --disable-update-check \
               --disable-notify \
-              --disable-libplacebo \
+              --enable-libplacebo \
               --enable-vlc \
               --enable-aribsub \
               --enable-aom \
