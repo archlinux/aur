@@ -1,6 +1,6 @@
 --- a/46sshd/module-setup.sh
 +++ b/46sshd/module-setup.sh
-@@ -64,7 +64,7 @@ install() {
+@@ -68,7 +68,7 @@ install() {
      grep '^sshd:' /etc/group  >> "$initdir/etc/group"
  
      # Create privilege seperation directory

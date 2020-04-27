@@ -1,6 +1,6 @@
 # Maintainer: Greg Brown <greg.brown.00 at outlook dot com>
 pkgname=dracut-sshd-git
-pkgver=r56.cac3a8f
+pkgver=r61.69830bd
 pkgrel=1
 pkgdesc="Provide SSH access to initramfs."
 arch=(any)
@@ -16,12 +16,10 @@ backup=()
 options=()
 install=
 source=('git+https://github.com/gsauthof/dracut-sshd.git'
-        'sshd.service.patch'
         'module-setup.sh.patch')
 noextract=()
 md5sums=('SKIP'
-         'ab118699b8d2f24d7ffffd7c0366ba02'
-         'd0267f5a2b8cb592a0bf80cd2cfd682a')
+         '5f0ee3c69032b6ba1024a0ffebf0a2b6')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -30,11 +28,20 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
-  patch --forward --strip=1 --input="$srcdir/sshd.service.patch"
+
+  # Arch's openssh package does not have support for Type=Notify
+  sed -e 's/^Type=notify/Type=simple/' \
+      -e 's@^\(ExecStart=/usr/sbin/sshd\) -D@\1 -e -D@' \
+      -i \
+      "./46sshd/sshd.service"
+
   patch --forward --strip=1 --input="$srcdir/module-setup.sh.patch"
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -Dt "$pkgdir/usr/lib/dracut/modules.d/46sshd" 46sshd/*
+  target="$pkgdir/usr/lib/dracut/modules.d/46sshd"
+  install -Dt "$target" -m 0755 46sshd/module-setup.sh
+  install -Dt "$target" -m 0644 46sshd/sshd.service
+  install -Dt "$target" -m 0644 46sshd/sshd_config
 }
