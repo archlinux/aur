@@ -16,13 +16,9 @@ depends=(
 _gitroot="https://github.com/kokoko3k/bindfsit.git"
 
 build() {
-echo 1
   cd $srcdir
-echo 2
   rm -Rf $srcdir/bindfsit &>/dev/null || echo "No old repository found, proceding to git clone..."
-echo 3
   git clone --depth 1 $_gitroot || return 1
-echo ciao
 }
 
 package() {
