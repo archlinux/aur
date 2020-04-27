@@ -10,9 +10,11 @@ depends=('bash' 'gawk' 'fzf')
 optdepends=('xclip: X11 clipboard support'
 	    'wl-clipboard: Wayland clipboard support')
 source=("grb-fzf::https://github.com/varagnac/pure-text-bible/raw/master/grb_fzf")
-md5sums=('SKIP')
+md5sums=('f605cb9f6482f31485c3d4d51ffbfd6c')
 
 package() {
 	cd "$srcdir/"
 	install -Dm755 grb-fzf $pkgdir/usr/bin/grb-fzf
 }
+
+
