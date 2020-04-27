@@ -5,14 +5,14 @@ pkgname=keybase-git
 pkgdesc='the Keybase Go client, filesystem, and GUI'
 license=('BSD')
 url='https://keybase.io'
-pkgver=4.8.0+33527.5750c3397a
+pkgver=5.5.0+35896.807c29924b
 pkgver() {
   "$srcdir/client/packaging/linux/arch/keybase_git_version.sh"
 }
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-depends=(fuse gconf libxss gtk2 lsof) # don't change this without changing the SRCINFO template too,
-                                      # and the keybase-bin files in keybase/client/packaging/linux/arch
+depends=(fuse libxss gtk2 lsof) # don't change this without changing the SRCINFO template too,
+                                # and the keybase-bin files in keybase/client/packaging/linux/arch
 makedepends=(go-pie yarn npm git rsync)
 provides=(keybase keybase-gui kbfs)
 # keybase-release is a deprecated AUR package
