@@ -1,0 +1,16 @@
+pkgbase = openmeetings-mysql-connector-java
+	pkgdesc = Java library to connect to MySQL for openmeetings
+	pkgver = 8.0.19
+	pkgrel = 1
+	url = http://www.mysql.com/downloads/connector/j/
+	install = openmeetings-mysql-connector-java.install
+	arch = any
+	license = GPL,custom
+	depends = openmeetings
+	depends = java-environment
+	options = !strip
+	source = http://dev.mysql.com/Downloads/Connector-J/mysql-connector-java-8.0.19.tar.gz
+	sha256sums = ef7810ff8e56cc62b747dcf0a2c335b7bcd6f642be86314b9b6bf182870dd0f2
+
+pkgname = openmeetings-mysql-connector-java
+

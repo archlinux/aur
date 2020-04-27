@@ -1,0 +1,12 @@
+GROUP="nobody"
+USER="nobody"
+
+post_install() {
+  echo "Changing the owner and / or group for the specified files"
+  chown $USER:$GROUP /opt/openmeetings/webapps/openmeetings/WEB-INF/lib/mysql-connector-java-*.jar
+}
+
+post_upgrade() {
+  post_install
+}
+
