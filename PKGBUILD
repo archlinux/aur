@@ -3,7 +3,7 @@
 # Contributor: Brett Dutro <brett.dutro@gmail.com>
 
 pkgname=ashuffle-git
-pkgver=2.2.2.r0.g957e5b9
+pkgver=3.0.0.r2.g9e6f286
 pkgrel=1
 pkgdesc="Automatic library-wide shuffle for mpd. (git)"
 url="https://github.com/joshkunz/ashuffle"
@@ -11,16 +11,17 @@ arch=(x86_64 i686 armv6h armv7h aarch64)
 license=(MIT)
 
 depends=("libmpdclient")
-makedepends=("git" "meson")
+makedepends=("git" "meson" "cmake")
 
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
 source=(
   "git+https://github.com/joshkunz/${pkgname%-git}.git"
-  "git+https://github.com/zorgnax/libtap.git"
+  "git+https://github.com/abseil/abseil-cpp.git"
+  "git+https://github.com/google/googletest.git"
 )
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -31,7 +32,8 @@ prepare() {
   cd "${pkgname%-git}"
 
   git submodule init
-  git config submodule."src/t/libtap".url $srcdir/libtap
+  git config submodule."subprojects/absl".url       "${srcdir}/abseil-cpp"
+  git config submodule."subprojects/googletest".url "${srcdir}/googletest"
   git submodule update
 }
 
@@ -53,6 +55,10 @@ package() {
   cd "ashuffle"
 
   DESTDIR="${pkgdir}" ninja -C builddir install
+
+  # clean up weird static libs installed
+  rm -rf "${pkgdir}/usr/lib/"*.a
+  rmdir "${pkgdir}/usr/lib"
 
   install -Dm644 "LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
