@@ -1,25 +1,25 @@
-# Maintainer: Genki Sky <alt+archlinux.org@genki.is>
-
+# Maintainer: Reto <reto@labrat.space>
 pkgname=notmuch-extract-patch-git
-pkgver=1
-pkgrel=3
+_realname=${pkgname%-git}
+pkgver=r4.f732a53
+pkgrel=2
 pkgdesc='Extract git patchset from notmuch emails'
-arch=('i686' 'x86_64')
 url='https://github.com/aaptel/notmuch-extract-patch'
+arch=('any')
 license=('GPLv3')
-depends=('notmuch' 'python')
+depends=('python' 'notmuch-runtime')
 makedepends=('git')
-provides=('notmuch-extract-patch')
-conflicts=('notmuch-extract-patch')
-source=('git+https://github.com/aaptel/notmuch-extract-patch')
-md5sums=('SKIP')
+source=(
+    'git+https://github.com/aaptel/notmuch-extract-patch.git'
+)
+sha256sums=('SKIP')
 
 pkgver() {
-    cd notmuch-extract-patch
-    git log -1 --format='%cd.%h' --date=short | tr -d -
+    cd $_realname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd notmuch-extract-patch
-    install -D -m 0755 notmuch-extract-patch "$pkgdir"/usr/bin/notmuch-extract-patch
+    cd $_realname
+    install -Dm755 "${_realname}" "${pkgdir}/usr/bin/${_realname}"
 }

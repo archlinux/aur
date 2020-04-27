@@ -1,18 +1,15 @@
 pkgbase = notmuch-extract-patch-git
 	pkgdesc = Extract git patchset from notmuch emails
-	pkgver = 1
-	pkgrel = 3
+	pkgver = r4.f732a53
+	pkgrel = 2
 	url = https://github.com/aaptel/notmuch-extract-patch
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPLv3
 	makedepends = git
-	depends = notmuch
 	depends = python
-	provides = notmuch-extract-patch
-	conflicts = notmuch-extract-patch
-	source = git+https://github.com/aaptel/notmuch-extract-patch
-	md5sums = SKIP
+	depends = notmuch-runtime
+	source = git+https://github.com/aaptel/notmuch-extract-patch.git
+	sha256sums = SKIP
 
 pkgname = notmuch-extract-patch-git
 
