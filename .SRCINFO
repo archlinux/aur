@@ -1,0 +1,13 @@
+pkgbase = linux-proton-bin
+	pkgdesc = A LLVM and Clang compiler toolchain built for kernel development
+	pkgver = 11.0.0
+	pkgrel = 1
+	url = https://github.com/kdrag0n/proton-clang
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = https://github.com/kdrag0n/proton-clang/archive/master.zip
+	b2sums = SKIP
+
+pkgname = linux-proton-bin
+
