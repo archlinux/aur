@@ -1,11 +1,12 @@
 pkgbase = wfuzz
 	pkgdesc = Utility to bruteforce web applications to find their not linked resources
 	pkgver = 2.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xmendez/wfuzz
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
+	makedepends = python-sphinx
 	depends = python-pycurl
 	depends = python-pyparsing
 	depends = python-future

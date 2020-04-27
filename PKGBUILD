@@ -7,13 +7,13 @@
 
 pkgname=wfuzz
 pkgver=2.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to bruteforce web applications to find their not linked resources"
 url="https://github.com/xmendez/wfuzz"
 arch=('any')
 license=('GPL')
 depends=('python-pycurl' 'python-pyparsing' 'python-future')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-sphinx')
 source=("https://github.com/xmendez/wfuzz/archive/v$pkgver.tar.gz")
 sha256sums=('7d900083b21e12352ad021bf7ea2f1925af9555ad242f83ed9b77b1cf4a25d62')
 
