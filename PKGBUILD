@@ -3,7 +3,7 @@
 
 pkgname=mysql-shell
 pkgver=8.0.20
-pkgrel=2
+pkgrel=3
 pkgdesc='An interface supporting development and administration for the MySQL Server'
 arch=('x86_64' 'i686')
 url="https://dev.mysql.com/downloads/shell/"
@@ -20,6 +20,7 @@ md5sums=('14bb6e156b131889260ba0b655518579'
          'SKIP')
 validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5')
 depends=('python' 'openssl' 'curl')
+optdepends=('mysql-clients: login-path secret store support')
 makedepends=('v8-6.7-static' 'cmake' 'zip' 'zlib' 'libsasl' 'rpcsvc-proto')
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = mysql-shell
 	pkgdesc = An interface supporting development and administration for the MySQL Server
 	pkgver = 8.0.20
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dev.mysql.com/downloads/shell/
 	arch = x86_64
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = mysql-shell
 	depends = python
 	depends = openssl
 	depends = curl
+	optdepends = mysql-clients: login-path secret store support
 	source = https://dev.mysql.com/get/Downloads/MySQL-Shell/mysql-shell-8.0.20-src.tar.gz
 	source = mysql-shell-8.0.20-src.tar.gz.asc::https://dev.mysql.com/downloads/gpg/?file=mysql-shell-8.0.20-src.tar.gz&p=43
 	source = https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-boost-8.0.20.tar.gz
