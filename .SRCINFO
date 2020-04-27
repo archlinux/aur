@@ -1,0 +1,14 @@
+pkgbase = vul-fzf-git
+	pkgdesc = Latin Vulgate with fuzzy finder
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/varagnac/pure-text-bible
+	arch = any
+	license = custom:Public Domain
+	depends = bash
+	depends = fzf
+	source = vul-fzf::https://github.com/varagnac/pure-text-bible/raw/master/vulgate_fzf
+	md5sums = SKIP
+
+pkgname = vul-fzf-git
+
