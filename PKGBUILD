@@ -5,7 +5,7 @@ pkgbase=python-pytorch
 pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pytorch-opt-cuda")
 _pkgname="pytorch"
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -17,17 +17,11 @@ makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' '
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         https://patch-diff.githubusercontent.com/raw/pytorch/pytorch/pull/35359.patch
         fix_include_system.patch
-        nccl_version.patch
-        torch_cuda_api.patch
-        https://patch-diff.githubusercontent.com/raw/pytorch/pytorch/pull/30332.patch
-        https://patch-diff.githubusercontent.com/raw/pytorch/pytorch/pull/30333.patch)
+        nccl_version.patch)
 sha256sums=('SKIP'
             '1a67a90174276e9462e632df1bbb2e9fd7890f08da45d831edf1610c0e3e3c72'
             '147bdaeac8ec46ea46382e6146878bd8f8d51e05d5bd6f930dfd8e2b520859b9'
-            '1a276bd827a0c76dab908cbc6605fa4c9fc2cc2b9431b6578a41133ae27dba2b'
-            '8965f003f5812c5ab1bd27ab66d916560ea4a644364727b9755dc0dea752ad77'
-            '3170551116798dc496636a87f00b86c6463895bb6d174df616c5224adfb74ff3'
-            'c8c305c892be85c47872ae1f1ecd5b3b8af12876fbfe3641045c8c839e5126da')
+            '1a276bd827a0c76dab908cbc6605fa4c9fc2cc2b9431b6578a41133ae27dba2b')
 
 get_pyver () {
   python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
@@ -46,24 +40,14 @@ prepare() {
   # https://github.com/pytorch/pytorch/pull/35359
   patch -Np1 -i "${srcdir}/35359.patch"
 
-  # https://github.com/pytorch/pytorch/issues/26555
-  # sed -i 's#^  ${CMAKE_CURRENT_SOURCE_DIR}/tensor_iterator_test.cpp##g' aten/src/ATen/test/CMakeLists.txt
-
   # https://bugs.archlinux.org/task/64981
   patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
 
   # FindNCCL patch to export correct nccl version
   patch -Np1 -i "${srcdir}"/nccl_version.patch
 
-  # correctly export torch cuda api for nccl runtime error
-  # patch -Np1 -i "${srcdir}"/torch_cuda_api.patch
-
-  # https://github.com/pytorch/pytorch/issues/32277
-  # patch -Np1 -i "$srcdir"/30332.patch
-  # patch -Np1 -i "$srcdir"/30333.patch
-
   # remove local nccl
-  # rm -rf third_party/nccl/nccl
+  rm -rf third_party/nccl/nccl
 
   cd ..
 
