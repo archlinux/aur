@@ -16,11 +16,6 @@ options=(!libtool strip)
 source=('git+https://github.com/TheCynicalTeam/xwingridselect.git')
 md5sums=('SKIP')
 
-pkgver() {
-  cd $_gitname
-  git describe --always | sed 's|-|.|g'
-}
-
 build() {
   cd $_gitname
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DWITH_SCRIPTS=ON "$srcdir/$_gitname"
