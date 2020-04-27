@@ -1,7 +1,7 @@
 # Maintainer: TheBitStick <the at bitstick dot rip>
 pkgname=xdg-break-git
 _pkgname=xdg-break
-pkgver=r2.4f6d9fb
+pkgver=r8.17689c9
 pkgrel=1
 pkgdesc="Script that sends a notification to remind you to take a break"
 arch=('any')
@@ -21,5 +21,6 @@ pkgver() {
 
 package() {
 	install -D -t "$pkgdir/usr/bin" "${_pkgname}/xdg-break.fish"
+	install -D -t "$pkgdir/usr/share/applications" "${_pkgname}/xdg-break.desktop"
 	mv "$pkgdir/usr/bin/xdg-break.fish" "$pkgdir/usr/bin/xdg-break"
 } 

@@ -1,6 +1,6 @@
 pkgbase = xdg-break-git
 	pkgdesc = Script that sends a notification to remind you to take a break
-	pkgver = r2.4f6d9fb
+	pkgver = r8.17689c9
 	pkgrel = 1
 	url = https://github.com/thebitstick/xdg-break
 	arch = any
