@@ -1,5 +1,6 @@
 # Maintainer: Noah (coolreader18)
-pkgname=ndless-sdk-git pkgver=r451.edaa723
+pkgname=ndless-sdk-git
+pkgver=r451.edaa723
 pkgrel=1
 pkgdesc="SDK for programs targeting Ndless on the TI-Nspire"
 arch=(x86_64)
