@@ -1,6 +1,6 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 pkgname=python-dparse
-pkgver=0.4.1
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A parser for Python dependency files"
 url="https://github.com/pyupio/dparse"
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('python' 'python-packaging' 'python-six' 'python-yaml')
 makedepends=('python-setuptools')
 source=("https://github.com/pyupio/dparse/archive/${pkgver}.tar.gz")
-md5sums=('306effeb97c89a5c579c7a5b53c12e17')
+md5sums=('e74e6d8720586113fe8311b996da8222')
 arch=('any')
 
 package() {
