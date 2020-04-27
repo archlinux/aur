@@ -1,0 +1,13 @@
+diff --git a/src/main.cpp b/src/main.cpp
+index eca2f41..82d5783 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -15,7 +15,7 @@ static void onNethogsUpdate(int action, NethogsMonitorRecord const* update)
+ 
+ static void nethogsMonitorThreadProc()
+ {
+-	const int status = nethogsmonitor_loop(&onNethogsUpdate);
++	const int status = nethogsmonitor_loop(&onNethogsUpdate, NULL, 100);
+ 	PendingUpdates::setNetHogsMonitorStatus(status);
+ }
+ 
