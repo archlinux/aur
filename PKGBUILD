@@ -1,12 +1,12 @@
 # Maintainer: Michael Stegeman <mstegeman@mozilla.com>
 pkgname=pagekite
-pkgver=1.0.0.190721
+pkgver=1.0.1.200424
 pkgrel=1
 pkgdesc='Python implementation of the PageKite remote front-end protocols.'
 arch=('any')
 url='https://pagekite.net/wiki/OpenSource/'
 license=('AGPL3')
-depends=('python2' 'python2-socksipychain')
+depends=('python2' 'python2-six' 'python2-socksipychain')
 makedepends=('python2-setuptools')
 provides=('pagekite')
 conflicts=('python2-pagekite')
@@ -15,7 +15,7 @@ source=(
   "https://pagekite.net/pk/src/${pkgname}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  'f0237a9eec485a75c60d2d876eab54f9f5695fe4125a26918b26cb3b1a569b78'
+  '693def32aded61845cc0fec4d727c3fb4473d1864f2488a4a2e49224b006f398'
 )
 
 build() {
