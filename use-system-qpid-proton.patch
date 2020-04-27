@@ -1,6 +1,6 @@
 --- a/configure.ac
 +++ b/configure.ac
-@@ -598,17 +598,13 @@
+@@ -672,17 +672,13 @@
      [],
      [AC_MSG_WARN([Proton headers not found, disabling Proton support])
      use_proton=no])

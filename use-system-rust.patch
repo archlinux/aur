@@ -1,22 +1,14 @@
---- a/depends/packages/librustzcash.mk
-+++ b/depends/packages/librustzcash.mk
-@@ -5,9 +5,8 @@
- $(package)_download_file=$($(package)_git_commit).tar.gz
- $(package)_sha256_hash=dfb80e9a57d944a91092094a423a8a6631e38b602b337aad5f98dc21002ca6dc
- $(package)_git_commit=a57dc7f47807ea50cb0a5deec9b84b3e7da11bc0
--$(package)_dependencies=rust
- ifeq ($(LIBRUSTZCASH_OVERRIDE),)
--$(package)_dependencies+=$(rust_crates)
-+$(package)_dependencies=$(rust_crates)
- $(package)_patches=cargo.config remove-dev-dependencies.diff
- endif
+--- a/qa/zcash/full_test_suite.py
++++ b/qa/zcash/full_test_suite.py
+@@ -133,9 +133,9 @@
  
-@@ -60,7 +59,7 @@
- endef
- 
- define $(package)_build_cmds
--  $(host_prefix)/native/bin/cargo build --package librustzcash $($(package)_build_opts)
-+  cargo build --package librustzcash $($(package)_build_opts)
- endef
- 
- define $(package)_stage_cmds
+     if os.path.isdir(depends_dir):
+         rust_env = os.environ.copy()
+-        rust_env['RUSTC'] = os.path.join(depends_dir, 'native', 'bin', 'rustc')
++        rust_env['RUSTC'] = 'rustc'
+         return subprocess.call([
+-            os.path.join(depends_dir, 'native', 'bin', 'cargo'),
++            'cargo',
+             'test',
+             '--manifest-path',
+             os.path.join(REPOROOT, 'Cargo.toml'),
