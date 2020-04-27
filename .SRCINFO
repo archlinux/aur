@@ -13,12 +13,12 @@ pkgbase = chromium-widevine-armv7h
 	depends = nss
 	provides = chromium-widevine
 	conflicts = chromium-widevine
-	noextract = chromeos_12607.58.0_elm_recovery_stable-channel_mp-v2.bin.zip
+	noextract = chromeos_12739.111.0_elm_recovery_stable-channel_mp-v2.bin.zip
 	options = !strip
 	source = chrome-eula_text.html::https://www.google.com/intl/en/chrome/privacy/eula_text.html
-	source = https://dl.google.com/dl/edgedl/chromeos/recovery/chromeos_12607.58.0_elm_recovery_stable-channel_mp-v2.bin.zip
+	source = https://dl.google.com/dl/edgedl/chromeos/recovery/chromeos_12739.111.0_elm_recovery_stable-channel_mp-v2.bin.zip
 	sha256sums = SKIP
-	sha256sums = 629c9077a1cf70eb7c8fd3b86d3bb7d1155b27cc0ce1f5b3c978d48806e5a128
+	sha256sums = f24b7b592c68068e16a56104b2733b888e8b03624cf946ba1c49c6ae43a2bcf1
 
 pkgname = chromium-widevine-armv7h
 
