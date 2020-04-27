@@ -3,7 +3,7 @@
 
 pkgname=kotatogram-desktop
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kotatogram – experimental Telegram Desktop fork"
 arch=(x86_64)
 url="https://kotatogram.github.io"
@@ -28,7 +28,6 @@ makedepends=(
 	python
 	cmake
 	ninja
-	microsoft-gsl
 	tl-expected
 	range-v3
 )
@@ -46,6 +45,7 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DTDESKTOP_API_TEST=ON \
+		-DDESKTOP_APP_USE_PACKAGED_GSL=OFF \
 		-DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
 		-DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF \
 		-DTDESKTOP_USE_PACKAGED_TGVOIP=OFF
