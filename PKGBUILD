@@ -1,7 +1,7 @@
 # Maintainer: theguy147 <yakamoz147 (at) protonmail (dot) com>
 pkgname=hal-git
 pkgver=v2.0.0.r139.gc906c8fc
-pkgrel=1
+pkgrel=2
 pkgdesc='The Hardware Analyzer for Hardware Reversing from emsec. (git version)'
 arch=('x86_64')
 url='https://github.com/emsec/hal'
@@ -26,11 +26,16 @@ build() {
 	cd "$pkgname"
 
         mkdir -p build && cd build
-        cmake ..
+        cmake -DCMAKE_INSTALL_PREFIX=/usr ..
         make
 }
 
 package() {
-	cd "$pkgname/build"
+        cd "$pkgname/build"
+        # install hal
         make DESTDIR="$pkgdir" install
+
+        cd ..
+        # install license
+        install -Dm644 LICENSE "$pkgdir/usr/share/licenses/hal/LICENSE"
 }
