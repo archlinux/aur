@@ -1,0 +1,5 @@
+# Ignore binary build files
+*.deb
+*.tar.xz
+pkg/
+src/

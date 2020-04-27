@@ -1,14 +1,14 @@
 pkgbase = tomboy-ng-bin
-	pkgdesc = A complete rewriting of the Tomboy note taking app
-	pkgver = 0.27
+	pkgdesc = A complete rewriting of the Tomboy note taking app. GTK2 version
+	pkgver = 0.28b
 	pkgrel = 0
 	url = https://wiki.gnome.org/Apps/Tomboy/tomboy-ng
 	arch = x86_64
 	license = GPL-3.0
 	depends = gtk2
 	depends = libcanberra
-	source = https://github.com/tomboy-notes/tomboy-ng/releases/download/v0.27/tomboy-ng_0.27-0_amd64.deb
-	sha512sums = 9223d56fedb374202e198e8ea90a431fcb31da4d3878bbdd5f929f33cff5782861ed5403ba0b285e1abc8f9cda295842985232d7f59f5cb398462e56dc445420
+	source = https://github.com/tomboy-notes/tomboy-ng/releases/download/v0.28/tomboy-ng_0.28b-0_amd64.deb
+	sha512sums = SKIP
 
 pkgname = tomboy-ng-bin
 
