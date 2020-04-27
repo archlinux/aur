@@ -1,7 +1,7 @@
 pkgbase = ghdl-yosys-plugin-git
 	pkgdesc = VHDL synthesis (based on ghdl and yosys)
-	pkgver = r123.ef286d8
-	pkgrel = 2
+	pkgver = r137.386ad81
+	pkgrel = 1
 	url = https://github.com/ghdl/ghdl-yosys-plugin
 	arch = x86_64
 	license = GPL3
