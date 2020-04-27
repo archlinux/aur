@@ -1,7 +1,7 @@
 # Maintainer: Leon Plickat <leonhenrik.plickat@stud.uni-goettingen.de>
 
 pkgname=lavalauncher
-pkgver=1.6
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='A simple launcher panel for Wayland'
 arch=(x86_64)
@@ -15,13 +15,13 @@ source=("${pkgname%-*}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-	printf "1.6"
+	printf "1.7.0"
 }
 
 prepare()
 {
 	cd "${pkgname%-*}"
-	git checkout v1.6
+	git checkout v1.7.0
 }
 
 build()
