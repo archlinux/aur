@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 # Contributor: Victor3D <webmaster@victor3d.com.br>
 pkgname=fetchmail
-pkgver=6.4.3
+pkgver=6.4.4
 pkgrel=1
 pkgdesc="A remote-mail retrieval utility"
 arch=('x86_64')
@@ -14,10 +14,10 @@ optdepends=('tk: for using fetchmailconf'
 options=('!makeflags')
 source=("https://sourceforge.net/projects/fetchmail/files/branch_${pkgver%.*}/${pkgname}-${pkgver}.tar.xz"
         'fetchmail.tmpfiles' 'fetchmail.sysusers' 'fetchmail.service')
-sha1sums=('14dbbad6714d3498920ed4058479a3ddf34fe96c'
-          '227f1c6a4ea15d73d22d5db9330566e174c45cf9'
-          '4d1f04cfa50b708736784cd6d3f4e8c1c624c680'
-          '0d06feaaef5e837758da3100332f8fb15f02b5b1')
+sha256sums=('511b60daabf7543a01de06af07c8772290c6807cd53c42a8504960e978f3abea'
+            'dcf0eb2f86fb00faf447b22edbf8e93f3045130c45395357a0ffb8243fd95f96'
+            '262903b345c67a1e772ba8623300de88ae1d263e9573d5b7e5ee6e3b2c96772e'
+            '0b5a70eac28e4a5aab36ca7e1d0e31139833b977ce689f683b5c666fa36475c8')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
