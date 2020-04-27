@@ -1,0 +1,13 @@
+pkgbase = oha
+	pkgdesc = Ohayou(おはよう), HTTP load generator, inspired by rakyll/hey with tui animation
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/hatoo/oha
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = oha-0.2.3.tar.gz::https://github.com/hatoo/oha/archive/v0.2.3.tar.gz
+	sha512sums = de0b9157dee042bd5ceb102c409a6b240517a3966455dd7794f988fd00d5ab9f03542516fb3773f11c2ad491e202e195247b32886b19d589a7675a03f4a8fce2
+
+pkgname = oha
+
