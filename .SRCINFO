@@ -1,6 +1,6 @@
 pkgbase = python-bintrees
 	pkgdesc = Package provides Binary-, RedBlack- and AVL-Trees in Python and Cython.
-	pkgver = 2.0.7
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/bintrees/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-bintrees
 	optdepends = cython2: usage of C implementation
 	provides = python-bintrees
 	options = !emptydirs
-	source = bintrees-v2.0.7.tar.gz::https://github.com/mozman/bintrees/archive/v2.0.7.tar.gz
-	sha256sums = 92dff437584911ae84bd7d250a87824372767101b156f8f6e91ffb026444b4c3
+	source = bintrees-v2.1.0.tar.gz::https://github.com/mozman/bintrees/archive/v2.1.0.tar.gz
+	sha256sums = 2fe53a7c4650b61557372b923a98da2219c2742286aa7395d9275b2297a1e05c
 
 pkgname = python-bintrees
 
