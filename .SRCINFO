@@ -1,13 +1,13 @@
 pkgbase = git-delta-bin
 	pkgdesc = A syntax-highlighting pager for git
-	pkgver = 0.0.18
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/dandavison/delta
 	arch = x86_64
 	license = MIT
 	depends = git
 	conflicts = git-delta
-	source = https://github.com/dandavison/delta/releases/download/0.0.18/git-delta_0.0.17_amd64.deb
-	sha256sums = 7ed5e452b9a07c2311aefc124ef7e6a54efc0dc4f7004a4b7d9e3f3a537abc2e
+	source = https://github.com/dandavison/delta/releases/download/0.1.1/git-delta_0.1.1_amd64.deb
+	sha256sums = 25446decb8e47d74ff5ce0b579014e5ce16c54e49a0f64554cb9debfb33d6b39
 
 pkgname = git-delta-bin
