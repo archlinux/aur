@@ -1,7 +1,7 @@
 # Maintainer: Bart Verhagen <barrie.verhagen@gmail.com>
 pkgname=('exec-helper' 'exec-helper-docs')
 pkgbase='exec-helper'
-pkgver=0.4.1_16_gff7308c
+pkgver=0.5.0_0_g4571947
 pkgrel=1
 epoch=
 pkgdesc="How To Get Coffee In Peace: a shell meta-wrapper"
@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=exec-helper.changelog
-source=('exec-helper::git+https://github.com/bverhagen/exec-helper.git#commit=ff7308c5d412ce4d2fddd2844ced0fb8eb72879f')
+source=('exec-helper::git+https://github.com/bverhagen/exec-helper.git#commit=457194703c49bc2982cc68c671ed4831285fe03c')
 noextract=()
 validpgpkeys=()
 
@@ -34,7 +34,7 @@ pkgver() {
 
 build() {
     _system_description=$(lsb_release --description --short | sed 's/"//g')
-    _source_version=0.4.1_16_gff7308c
+    _source_version=0.5.0_0_g4571947
     _release_version="($_system_description) $_source_version"
     _copyright="Copyright (c) $(date +'%Y') Bart Verhagen"
 
@@ -47,16 +47,10 @@ build() {
 }
 
 check() {
-    # It only makes sense to run the complete 'system test suite' (called integration by exec-helper devs) here
-    _exec_helper_test_targets=('integration' 'execution-content' 'docs-man-integration')
-
-    # Only define the cmake settings on top of the ones defined in build()
-    cmake -H"$_git_dir" -B"$_build_dir" -DUSE_SYSTEM_CATCH=ON -DUSE_SYSTEM_RAPIDCHECK=ON -DENABLE_TESTING=ON -DENABLE_WERROR=OFF
-    make --directory "$_build_dir" --jobs ${_nb_of_cores} ${_exec_helper_test_targets[@]}
-
     _install_dir="$pkgdir/usr/"
-    cd $_build_dir
-    PATH="${PWD}/src/applications:${PWD}/test/base-utils/application/:$PATH" "test/integration/exec-helper-integration-test"
+    $_build_dir/src/applications/exec-helper --help 2>/dev/null | grep --silent 'Usage'
+    $_build_dir/src/applications/exec-helper --version 2>/dev/null | grep --silent 'exec-helper'
+	$_build_dir/src/applications/exec-helper --list-plugins "--additional-search-path=$_git_dir/src/plugins/src/scripts" 2>/dev/null | grep --silent 'make.lua'
 }
 
 package_exec-helper() {
