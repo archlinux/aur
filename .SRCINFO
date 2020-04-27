@@ -1,7 +1,7 @@
 pkgbase = cmake-language-server-git
 	pkgdesc = Python based cmake language server
 	pkgver = v0.1.1.r3.g40d9352
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/regen100/cmake-language-server
 	arch = any
 	license = MIT
@@ -13,6 +13,7 @@ pkgbase = cmake-language-server-git
 	depends = cmake
 	provides = cmake-language-server
 	conflicts = cmake-language-server
+	conflicts = cmake-format
 	source = cmake-language-server-git::git+https://github.com/regen100/cmake-language-server.git
 	sha256sums = SKIP
 

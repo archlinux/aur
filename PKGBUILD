@@ -2,7 +2,7 @@
 
 pkgname=cmake-language-server-git
 pkgver=v0.1.1.r3.g40d9352
-pkgrel=1
+pkgrel=2
 pkgdesc="Python based cmake language server"
 arch=('any')
 url="https://github.com/regen100/cmake-language-server"
@@ -12,7 +12,7 @@ depends=("python-pygls" "python-pyparsing" "cmake")
 makedepends=("python-setuptools" "python-poetry" "git")
 optdepends=()
 provides=(${pkgname%-git})
-conflicts=(${pkgname%-git})
+conflicts=(${pkgname%-git} "cmake-format")
 replaces=()
 backup=()
 options=()
