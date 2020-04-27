@@ -1,7 +1,7 @@
 pkgbase = ferdi-bin
 	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application - binary version
-	pkgver = 5.4.3
-	pkgrel = 2
+	pkgver = 5.5.0
+	pkgrel = 1
 	url = https://getferdi.com
 	arch = x86_64
 	license = Apache
@@ -23,7 +23,7 @@ pkgbase = ferdi-bin
 	depends = snappy
 	provides = ferdi
 	conflicts = ferdi
-	source = ferdi-bin-5.4.3-2.rpm::https://github.com/getferdi/ferdi/releases/download/v5.4.3/ferdi-5.4.3.x86_64.rpm
-	sha256sums = 7f4c7dabc4ef25d8c9d972754484857256585738a4fff54957dd5cafb212dbf0
+	source = ferdi-bin-5.5.0-1.rpm::https://github.com/getferdi/ferdi/releases/download/v5.5.0/ferdi-5.5.0.x86_64.rpm
+	sha256sums = 9bf22a3bc6daa6d3995c27595ca664b0daa8ce1ab42bf779870735f3cb05ee6a
 
 pkgname = ferdi-bin
