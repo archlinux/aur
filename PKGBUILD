@@ -2,7 +2,8 @@
 # Contributor: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgname=rpi-eeprom
-pkgver=r123.c77267e
+pkgver=2019.09.10
+_pkghash=137ad
 pkgrel=1
 pkgdesc='Raspberry Pi4 boot EEPROM updater'
 arch=('any')
@@ -17,16 +18,11 @@ optdepends=(
 )
 
 backup=('etc/default/rpi-eeprom-update')
-source=('rpi-eeprom::git+https://github.com/raspberrypi/rpi-eeprom.git'
+source=("rpi-eeprom-${pkgver}-${_pkghash}.tar.gz::https://github.com/raspberrypi/rpi-eeprom/archive/v${pkgver}-${_pkghash}.tar.gz"
         'rpi-eeprom-update.patch')
-sha256sums=('SKIP'
+sha256sums=('58f124bf93b00067e1cccbf99e9d7b12492464ce42b1ac04a33a198b81d91dc3'
             'd716ef30c4a486019a4778579305a84c0f31593d5840850aefa9742dc6f9760f')
 options=(!strip)
-
-pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
   # Create and install the binaries in /usr/bin
