@@ -1,10 +1,11 @@
 # Maintainer: Sampson Crowley <sampsonsprojects@gmail.com>
 # Contributor: Rhys Kenwell <redrield+aur@gmail.com>
+# Github Contributor: Michael Herold <https://github.com/michaelherold>
 
 pkgname=heroku-cli
 pkgver=7.39.2
 _builddir=cli-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="a tool for creating and managing Heroku apps from the command line"
 arch=('x86_64')
 url="https://devcenter.heroku.com/articles/heroku-cli"
