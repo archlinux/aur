@@ -1,32 +1,30 @@
 # Maintainer: PSposito <http://bit.do/linuxer> 
 # 			<https://gitlab.com/psposito>
 
+# Maintainer: PSposito <http://bit.do/linuxer>
+ 
 pkgname=cameracontrol-bin
-pkgalias=cameracontrol
-_realname=CameraControl
-pkgdesc="Έλεγχος webcam και camera και μικροφώνου για Linux - Webcam, camera and microphone control for Linux"
+pkgbase=cameracontrol
+pkgdesc="Webcam, camera and microphone control for Linux - Έλεγχος webcam και camera και μικροφώνου για Linux"
 pkgver=2.0
 pkgrel=3
-pkgbase=cameracontrol-bin
 replaces=('cameracontrol')
 arch=('any')
-url="https://gitlab.com/psposito/camera-control-webcam-switch-indicator"
+url="https://gitea.artixlinux.org/linuxer/camera-control-webcam-switch-indicator"
 license=('FPC modified LGPL Version 2')
 depends=('qt5pas' 'lsof' 'gnome-icon-theme')
 conflicts=('cameramonitor')
-optdepends=('qt5gtk2' 'qt5ct' 'qt5-styleplugins')
-source=(https://gitlab.com/psposito/camera-control-webcam-switch-indicator/uploads/0fe9685a3a6ae587a1982eba82b57902/CameraControl-2-0-3.tar.bz2)
+optdepends=('qt5ct: Qt5 Configuration Utility'
+            'qt5gtk2: another GTK+2.0 integration plugins for Qt5'
+            'qt5-styleplugins: additional style plugins for Qt5')
+source=("https://gitea.artixlinux.org/linuxer/camera-control-webcam-switch-indicator/raw/branch/master/CameraControl-2-0-3.tar.bz2")
 sha256sums=('9ddbbe1368b344c1b85bb851637a1bee8821c62a939d0ff5c1d59f253732b9fb')
-
-#build() {
-#  cd "$srcdir/$_realname/"
-#  
-#}
-
+ 
+ 
 package() {
-  cd "$srcdir/"
+  cd "$srcdir"
   pwd
-  install -Dm755 "$pkgalias.bin" -t "$pkgdir/opt/CameraControl"
+  install -Dm755 "$pkgbase.bin" -t "$pkgdir/opt/CameraControl"
   install -Dm755 CameraControl.sh "$pkgdir/opt/CameraControl"
-  install -Dm644 "$pkgalias.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 "$pkgbase.desktop" -t "$pkgdir/usr/share/applications"
 }
