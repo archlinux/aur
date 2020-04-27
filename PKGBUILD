@@ -23,7 +23,7 @@ validpgpkeys=('801C7171DAC74A6D3A61ED81F7F9B0A300C1B70D') # Open Information Sec
 sha256sums=('7f30cac92feeab2a9281b6059b96f9f163dce9aadcc959a6c0b9a2f6d750cee7'
             'SKIP'
             '57505c464d30623c9d6611ca4b5d08a580c0116b20a4280f39c3720a3f369a92'
-            '9819395cc1c3c1618ced6a00f9572efa7834c2ccc2d55733013c01c9a822fbf2')
+            '330c93e72a02f4f80972ab1641ee550b32cfdc2f40c78331294bcc009af06d71')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
