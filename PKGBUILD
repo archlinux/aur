@@ -1,4 +1,4 @@
-# Maintainer: 5anya <sanya at national shitposting agency>
+# Maintainer: 5anya <sanya at national dot shitposting dot agency>
 # Contributor: Luke Chen <doomer at yahoo dot com>
 pkgname=gog-crypt-of-the-necrodancer-amplified
 _pkgname=crypt-of-the-necrodancer
