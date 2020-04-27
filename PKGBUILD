@@ -1,14 +1,14 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 _pkgname=low-memory-monitor
 pkgname=${_pkgname}-git
-pkgver=r20.bd5d587
+pkgver=r79.5e06b3b
 pkgrel=1
 pkgdesc='Early boot daemon monitoring memory pressure information and invokes OOM if needed'
 arch=('x86_64')
 url="https://gitlab.freedesktop.org/hadess/${_pkgname}"
 license=('GPL3')
 depends=('systemd')
-makedepends=('meson' 'git')
+makedepends=('meson' 'git' 'gtk-doc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+$url.git")

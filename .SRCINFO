@@ -1,12 +1,13 @@
 pkgbase = low-memory-monitor-git
 	pkgdesc = Early boot daemon monitoring memory pressure information and invokes OOM if needed
-	pkgver = r20.bd5d587
+	pkgver = r79.5e06b3b
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/hadess/low-memory-monitor
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
 	makedepends = git
+	makedepends = gtk-doc
 	depends = systemd
 	provides = low-memory-monitor
 	conflicts = low-memory-monitor
