@@ -1,0 +1,30 @@
+pkgbase = cozy-audiobooks-git
+	pkgdesc = A modern audio book player for Linux and macOS using GTK+ 3
+	pkgver = 0.6.16.r27.ge4ddbfc
+	pkgrel = 1
+	url = https://cozy.geigi.de
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	depends = appstream-glib
+	depends = desktop-file-utils
+	depends = gst-python
+	depends = gstreamer
+	depends = gtk3
+	depends = python-dbus
+	depends = python-distro
+	depends = python-requests
+	depends = python-pytz
+	depends = python-gobject
+	depends = python-mutagen
+	depends = python-cairo
+	depends = python-peewee
+	depends = gst-plugins-good
+	source = git+https://github.com/geigi/cozy
+	sha256sums = SKIP
+
+pkgname = cozy-audiobooks-git
+
