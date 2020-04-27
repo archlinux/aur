@@ -1,13 +1,13 @@
 pkgbase = rocblas
 	pkgdesc = Next generation BLAS implementation for ROCm platform
 	pkgver = 3.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ROCmSoftwarePlatform/rocBLAS
 	arch = x86_64
 	license = custom:NCSAOSL
 	makedepends = cmake
 	makedepends = hcc>=3.3.0
-	makedepends = python2
+	makedepends = python
 	makedepends = boost
 	makedepends = comgr>=3.3.0
 	makedepends = rocminfo
