@@ -1,0 +1,32 @@
+pkgbase = hal-git
+	pkgdesc = The Hardware Analyzer for Hardware Reversing from emsec. (git version)
+	pkgver = v2.0.0.r139.gc906c8fc
+	pkgrel = 1
+	url = https://github.com/emsec/hal
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ccache
+	depends = lcov
+	depends = gcovr
+	depends = doxygen
+	depends = boost
+	depends = qt5-svg
+	depends = libsodium
+	depends = igraph
+	depends = ninja
+	depends = rapidjson
+	depends = spdlog
+	depends = python-sphinx
+	depends = python-sphinx_rtd_theme
+	depends = python-jedi
+	depends = python-pip
+	depends = python-dateutil
+	depends = pybind11
+	optdepends = graphviz: for documentation
+	source = hal-git::git+https://github.com/emsec/hal.git
+	md5sums = SKIP
+
+pkgname = hal-git
+
