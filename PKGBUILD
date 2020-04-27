@@ -2,8 +2,8 @@
 # Contributor: Auteiy <dmitry@auteiy.me>
 
 pkgname=kotatogram-desktop
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Kotatogram – experimental Telegram Desktop fork"
 arch=(x86_64)
 url="https://kotatogram.github.io"
@@ -37,10 +37,12 @@ optdepends=(
 )
 conflicts=('kotatogram-desktop-bin' 'kotatogram-desktop-dynamic-bin')
 source=("https://github.com/kotatogram/${pkgname}/releases/download/k${pkgver}/${pkgname}-${pkgver}-full.tar.gz")
-sha512sums=('88f99d9a9815adbe3d5ef95ac15a2c3ed8b31a785bc4cf50d8883a3f1b3b974443f0ec2ff6bb31677b43114467f87586de0c6d31bc4c3cfd52f44e45aa85ab6f')
+sha512sums=('f06faaa81b7485f94c15fa70dd9f034a5608c0a2d984cb2c0678fb2f359d542e24bedd4e01d0a93163a557dd32ad452013ad33ca5fa247957311022db430d67c')
 
 build() {
-	cmake -G Ninja . \
+	cd ${pkgname}-${pkgver}-full
+
+	cmake -B build -G Ninja . \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DTDESKTOP_API_TEST=ON \
@@ -48,9 +50,10 @@ build() {
 		-DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF \
 		-DTDESKTOP_USE_PACKAGED_TGVOIP=OFF
 
-	cmake --build .
+	cmake --build build
 }
 
 package() {
-	DESTDIR="$pkgdir" cmake --install .
+	cd ${pkgname}-${pkgver}-full
+	DESTDIR="$pkgdir" cmake --install build
 }
