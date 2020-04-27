@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=RCurl
-_cranver=1.98-1.1
+_cranver=1.98-1.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=('r>=3.4.0' r-bitops curl)
 makedepends=(gcc make)
 optdepends=(r-xml)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('f009eae167bf115209bb531a72aeea24')
+md5sums=('8a65643fd6e55f0917e11b4b0009993e')
 
 build() {
   cd "${srcdir}"
