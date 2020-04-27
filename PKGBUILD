@@ -3,7 +3,7 @@
 
 pkgname=eksctl
 pkgdesc='Command line tool for creating clusters on Amazon EKS'
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
@@ -12,7 +12,7 @@ depends=('kubectl')
 makedepends=('go')
 conflicts=('eksctl-bin')
 source=("$pkgname-${pkgver/_/-}.tar.gz::https://github.com/weaveworks/eksctl/archive/${pkgver/_/-}.tar.gz")
-sha256sums=('9da30e2f3b19f02700007f21b828e88dbd46cdc26a6acc15064a716198343f3f')
+sha256sums=('c250c73f9caa462d132e886560c696b8a0ff7b9691a17525cc6b8eba87b5f51c')
 
 build() {
   # Trim PWD from binary
@@ -28,6 +28,8 @@ package() {
   # Add command completion
   install -dm 755 "$pkgdir/usr/share/bash-completion/completions"
   install -dm 755 "$pkgdir/usr/share/zsh/site-functions"
+  install -dm 755 "$pkgdir/usr/share/fish/completions"
   "$pkgdir/usr/bin/eksctl" completion bash > "$pkgdir/usr/share/bash-completion/completions/eksctl"
   "$pkgdir/usr/bin/eksctl" completion zsh >  "$pkgdir/usr/share/zsh/site-functions/_eksctl"
+  "$pkgdir/usr/bin/eksctl" completion fish > "$pkgdir/usr/share/fish/completions/eksctl.fish"
 }
