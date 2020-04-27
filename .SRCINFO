@@ -1,7 +1,7 @@
 pkgbase = bauh-staging
 	pkgdesc = Graphical interface for managing your applications ( AppImage, Flatpak, Snap, Arch/AUR, Web ). Testing branch ( it may not be working properly ).
-	pkgver = 0.9.1.RC
-	pkgrel = 5
+	pkgver = 0.9.2.RC
+	pkgrel = 1
 	url = https://github.com/vinifmor/bauh
 	arch = any
 	license = zlib/libpng
@@ -41,8 +41,8 @@ pkgbase = bauh-staging
 	optdepends = breeze: for KDE Plasma main theme be available
 	provides = bauh
 	conflicts = bauh
-	source = https://github.com/vinifmor/bauh/archive/f2d807977ae95483f4475ae2f8a81835f0e5d0d7.tar.gz
-	sha512sums = 4870590a1b88912ed60037ac5a1e9a63fb3af905da579c7663842a8d92c14ae7ccc11ef7006193c7f9f231174e130c060f6159abf6c0026fb4bbc9ff5d283b66
+	source = https://github.com/vinifmor/bauh/archive/c8385035ee1521f556d6013e18af2d05d663fb57.tar.gz
+	sha512sums = f5d46d0fe007a4d148cc1cc3328565c4864246a8e46d7f4c33dac8c3b3af6f42eb006c07cbd141752ca1d2ad98230ab8f0ff712a1be6deb404e88a61a92addde
 
 pkgname = bauh-staging
 
