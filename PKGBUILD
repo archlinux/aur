@@ -3,7 +3,7 @@
 
 pkgname=mysql-shell
 pkgver=8.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc='An interface supporting development and administration for the MySQL Server'
 arch=('x86_64' 'i686')
 url="https://dev.mysql.com/downloads/shell/"
@@ -19,13 +19,8 @@ md5sums=('14bb6e156b131889260ba0b655518579'
          '1f9d75caca32d411eaaf979002253135'
          'SKIP')
 validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5')
-depends=('python37' 'openssl' 'curl')
+depends=('python' 'openssl' 'curl')
 makedepends=('v8-6.7-static' 'cmake' 'zip' 'zlib' 'libsasl' 'rpcsvc-proto' 'git' 'wget')
-
-prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}-src/"
-    sed 's/\(FIND_PACKAGE(PythonLibs .*\) REQUIRED)/\1 EXACT REQUIRED)/' -i CMakeLists.txt
-}
 
 build() {
   export CC="gcc"
@@ -45,7 +40,6 @@ build() {
     -DMYSQL_SOURCE_DIR="$srcdir/mysql-$pkgver" \
     -DMYSQL_BUILD_DIR="$srcdir/mysql-$pkgver/bld" \
     -DHAVE_PYTHON=1 \
-    -DUSE_PYTHON_VERSION=3.7 \
     -DHAVE_V8=1 \
     -DV8_INCLUDE_DIR="/usr/include" \
     -DV8_LIB_DIR="/usr/lib" \
