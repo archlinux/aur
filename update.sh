@@ -30,17 +30,27 @@ arch=(x86_64 armv6h armv7h aarch64)
 provides=('${EXECUTABLE_NAME}')
 conflicts=('${EXECUTABLE_NAME}')
 depends=('glibc' 'ffmpeg')
+source=(
+    ${EXECUTABLE_NAME}.service
+    ${EXECUTABLE_NAME}.sysusers
+    ${EXECUTABLE_NAME}.tmpfiles
+)
 source_x86_64=('https://github.com/deluan/navidrome/releases/download/v$1/navidrome_$1_Linux_x86_64.tar.gz')
 source_armv6h=('https://github.com/deluan/navidrome/releases/download/v$1/navidrome_$1_Linux_armv6.tar.gz')
 source_armv7h=('https://github.com/deluan/navidrome/releases/download/v$1/navidrome_$1_Linux_armv7.tar.gz')
 source_aarch64=('https://github.com/deluan/navidrome/releases/download/v$1/navidrome_$1_Linux_arm64.tar.gz')
-sha256sums_x86_64=()
-sha256sums_armv6h=()
-sha256sums_armv7h=()
-sha256sums_aarch64=()
+md5sums=()
+md5sums_x86_64=()
+md5sums_armv6h=()
+md5sums_armv7h=()
+md5sums_aarch64=()
 
 package() {
   install -Dm755 \"\$srcdir/navidrome\" \"\$pkgdir/usr/bin/${EXECUTABLE_NAME}\"
+
+  install -Dm644 \"\${srcdir}/${EXECUTABLE_NAME}.service\" \"\${pkgdir}/usr/lib/systemd/system/${EXECUTABLE_NAME}.service\"
+  install -Dm644 \"\${srcdir}/${EXECUTABLE_NAME}.sysusers\" \"\${pkgdir}/usr/lib/sysusers.d/${EXECUTABLE_NAME}.conf\"
+  install -Dm644 \"\${srcdir}/${EXECUTABLE_NAME}.tmpfiles\" \"\${pkgdir}/usr/lib/tmpfiles.d/${EXECUTABLE_NAME}.conf\"
 }
 " >> PKGBUILD
 
