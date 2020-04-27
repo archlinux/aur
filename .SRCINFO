@@ -1,13 +1,14 @@
 pkgbase = insomnia-src
 	pkgdesc = Cross-platform HTTP and GraphQL Client (Build from source)
 	pkgver = 7.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Kong/insomnia
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = nodejs-lts-dubnium
 	depends = electron4
+	depends = npm
 	provides = insomnia
 	conflicts = insomnia
 	source = https://github.com/Kong/insomnia/archive/v7.1.1.tar.gz

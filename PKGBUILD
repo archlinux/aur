@@ -3,12 +3,12 @@
 pkgname=insomnia-src
 _name=insomnia
 pkgver=7.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Cross-platform HTTP and GraphQL Client (Build from source)"
 url="https://github.com/Kong/insomnia"
 arch=('x86_64' 'i686')
 license=('MIT')
-depends=('electron4')
+depends=('electron4' 'npm')
 makedepends=('nodejs-lts-dubnium')
 provides=("$_name")
 conflicts=("$_name")
