@@ -1,14 +1,14 @@
 # Maintainer: Jakub Okoński <jakub@okonski.org>
 pkgname=rocrand
-pkgver=3.1.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="RAND library for HIP programming language"
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/rocRAND"
 license=('MIT')
 makedepends=("hcc>=$pkgver" 'cmake')
-source=("https://github.com/ROCmSoftwarePlatform/rocRAND/archive/$pkgver.tar.gz")
-sha256sums=('6ebbcf0c88f3458a33dc572753a6211ab47c82a9e0743fd0027f6b6d6826f78b')
+source=("https://github.com/ROCmSoftwarePlatform/rocRAND/archive/rocm-$pkgver.tar.gz")
+sha256sums=('ba56556671313b784a1301634df6537f3148426b81bec93b3566e71d22b6f4cc')
 
 build() {
   mkdir -p "$srcdir/build"
@@ -22,7 +22,8 @@ build() {
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_TEST=OFF \
         -DCMAKE_CXX_COMPILER=/opt/rocm/hcc/bin/hcc \
-        "$srcdir/rocRAND-$pkgver"
+        "$srcdir/rocRAND-rocm-$pkgver"
+
   make
 }
 
