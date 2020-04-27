@@ -5,9 +5,11 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the patches!
 # https://github.com/mymedia2/tdesktop
 
+# Thanks to github.com/ilya-fedin/lib_ui-1 (system-font branch)
+
 pkgname=telegram-desktop-userfonts
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 pkgdesc='Official Telegram Desktop client, with your fonts as set by fontconfig'
@@ -16,12 +18,12 @@ url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
          'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl')
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected')
 optdepends=('ttf-opensans: default Open Sans font family')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
         userfonts.patch)
-sha512sums=('99cd7c5ca1e9dd75ecd98d272522b0e4aab2d46525e3d0c306503b7a00c9d25c1646e9d7462182682a58947c7435864af805a3b6f85906d8b21e5675cc8383cb'
-            '5ddc9e9add861774ce27005ae278f6ef8b9ef808a915fc837df1797f5efbbc2593fcc05f08284b9d585bc608335d4feafe88e33fcb980200de3c851eb72e72b1')
+sha512sums=('46f5453c64d1dbd4cf8adde73fcc48e6b6f795972ab0f6516cb55112f47d5af990a049da356bedb81e6d3f7103c14a7be45369ff9a5a1812c07a1bfcda70646d'
+            '591571d04820e61e7cf95ec556d7403d52c11ce32d46fe98f2c4678eef5bbb718a14839c4b093a2e83c2995040887b801209d60859ab796e22f53a42968e80de')
 
 prepare() {
     cd tdesktop-$pkgver-full
@@ -38,6 +40,7 @@ build() {
         -DTDESKTOP_API_TEST=ON \
         -DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
         -DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF \
+        -DDESKTOP_APP_USE_PACKAGED_GSL=OFF \
         -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME=ON \
         -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
         -DDESKTOP_APP_SPECIAL_TARGET="" \
