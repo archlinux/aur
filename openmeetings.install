@@ -1,0 +1,36 @@
+GROUP="nobody"
+USER="nobody"
+
+pre_install() {
+  # Create User/Group
+  #  getent group  $GROUP > /dev/null || groupadd --system $GROUP
+  #  getent passwd $USER  > /dev/null || useradd  --system -g $GROUP \
+  #                                               --home-dir /opt/openmeetings \
+  #                                               --no-create-home $USER
+  echo "pre_install"
+}
+
+post_install() {
+  echo "Changing the owner and / or group for the specified files"
+  find /opt/openmeetings ! -user "$USER" -print0 | xargs -0 --no-run-if-empty chown "$USER"
+  find /opt/openmeetings ! -group "$GROUP" -print0 | xargs -0 --no-run-if-empty chgrp -v "$GROUP"
+  chown $USER:$GROUP /run/openmeetings
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+pre_upgrade() {
+  pre_install
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "post_remove"
+  #  echo "Deleting user $USER"
+  #  getent passwd $USER > /dev/null && userdel $USER
+  #  echo "Deleting group $GROUP"
+  #  getent group  $GROUP > /dev/null && groupdel $GROUP
+}
