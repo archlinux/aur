@@ -20,7 +20,7 @@ md5sums=('14bb6e156b131889260ba0b655518579'
          'SKIP')
 validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5')
 depends=('python' 'openssl' 'curl')
-makedepends=('v8-6.7-static' 'cmake' 'zip' 'zlib' 'libsasl' 'rpcsvc-proto' 'git' 'wget')
+makedepends=('v8-6.7-static' 'cmake' 'zip' 'zlib' 'libsasl' 'rpcsvc-proto')
 
 build() {
   export CC="gcc"
