@@ -7,7 +7,7 @@
 ### MERGE REQUESTS SELECTION
 
 # available MR: ('536' '786' '923')
-_merge_requests_to_use=() # safe pick
+_merge_requests_to_use=('1126' '1192' '1164') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -23,7 +23,7 @@ arch=(x86_64)
 license=(GPL2)
 depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session gnome-settings-daemon
          gnome-themes-extra gsettings-desktop-schemas libcanberra-pulse libgdm libsecret
-         mutter nm-connection-editor unzip gstreamer libibus gnome-autoar)
+         mutter nm-connection-editor unzip gstreamer libibus gnome-autoar 'gjs-git')
 makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspection git meson
              sassc asciidoc bash-completion)
 optdepends=('gnome-control-center: System settings'
@@ -34,9 +34,11 @@ conflicts=(gnome-shell)
 install=$pkgname.install
 _commit=18a5c7436251d43d458c40a0259dc6da4d9ea760  # tags/3.36.1^37
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
+	"1126.diff")
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            '32661c22298d0c4af9b6b6bb718480ce192f528367f853d9709f74c146b2f8d4')
 
 pkgver() {
   cd $_pkgname
@@ -48,13 +50,13 @@ pick_mr() {
     if [ "$1" = "$mr" ]; then
       if [ "$2" = "merge" ] || [ -z "$2" ]; then
         echo "Downloading then Merging $1..."
-        curl -O "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/$mr.diff"
+        curl -O "https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/$mr.diff"
         git apply "$mr.diff"
       elif [ "$3" = "revert" ]; then
         echo "Reverting $1..."
         git revert "$2" --no-commit
       elif [ "$3" = "patch" ]; then
-        echo "Patching $1..."
+        echo "Patching with $2..."
         patch -Np1 -i ../"$2"
       else
         echo "ERROR: wrong argument given: $2"
@@ -125,6 +127,16 @@ prepare() {
   # Status: 2
   # Comment: Unlock freezes, it hits me too.
   pick_mr '923'
+
+  # Title: calendar-server: Improve performance by properly using ECalClientView
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/1164
+  # Type: 1
+  # Status: 4
+  # Comment: Depends on 1126 that requires gjs>=1.65.1
+  pick_mr '1126' '1126.diff' 'patch'
+  pick_mr '1192'
+  pick_mr '1164'
+
 
 
   git submodule init
