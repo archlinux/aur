@@ -1,7 +1,7 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 _pkgname=low-memory-monitor
 pkgname=${_pkgname}-git
-pkgver=r79.5e06b3b
+pkgver=2.0.r16.g5e06b3b
 pkgrel=1
 pkgdesc='Early boot daemon monitoring memory pressure information and invokes OOM if needed'
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
