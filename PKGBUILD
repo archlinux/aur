@@ -3,7 +3,7 @@
 pkgbase=python-confuse
 _name=${pkgbase#python-}
 pkgname=($pkgbase ${pkgbase/python-/python2-})
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Configuration library for Python that uses YAML'
 url="https://github.com/beetbox/$_name"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python2-setuptools')
 #checkdepends=('python-nose' 'python2-nose')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         "$_name-$pkgver-LICENSE::$url/raw/v$pkgver/LICENSE")
-sha256sums=('5977c6a876b179f8c86ecaf530cc24bf00baaad028c3350b502ee6949536188c'
+sha256sums=('adc1979ea6f4c0dd3d6fe06020c189843a649082ab8f6fb54db16f4ac5e5e1da'
             '0b308ae66aaa1412ebbe645bec4002fd262d91e9cdf67b6f198026677ddfafcc')
 
 prepare() {
