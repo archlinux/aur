@@ -36,7 +36,6 @@ prepare() {
 	## Module for monteverdi build
 	cd 	$srcdir/  
 	cp -ra $srcdir/GKSVM $srcdir/Modules/Remote
-	patch --forward --strip=1 --input="${srcdir}/ITK.patch"
 }
 
 build() {  
