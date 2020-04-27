@@ -4,7 +4,7 @@
 # Contributor: Ian Brunelli (brunelli) <ian@brunelli.me>
 
 pkgname=lollypop-next-git
-pkgver=1.2.34.r243.gf1af4d23
+pkgver=1.2.34.r245.g4d52056f
 pkgrel=1
 pkgdesc='Music player for GNOME (dev branch)'
 arch=(any)
