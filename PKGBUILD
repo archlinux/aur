@@ -55,8 +55,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver-src/bld"
   make DESTDIR="$pkgdir/" install
   install -Dm644 "$srcdir/$pkgname-$pkgver-src/doc/man/mysqlsh.1" "$pkgdir/usr/share/man/man1/mysqlsh.1"
-  cd "$srcdir/$pkgname-$pkgver-src"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/$pkgname-$pkgver-src/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim: set tabstop=4 shiftwidth=2 expandtab smarttab autoindent:
