@@ -4,10 +4,10 @@
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 pkgname='ferdi'
-pkgver='5.4.3'
-_recipescommit='3dcb305ffb706a7604cdfbadf7f2d2e236cb223d'
-_internalservercommit='c39e8b45a51387f24d30e62a170681fc3422ad08'
-pkgrel='8'
+pkgver='5.5.0'
+_recipescommit='3054fd4c362b5be81b5cdd48535a0e7078fcd0a6'
+_internalservercommit='95ae59926dbd88d55a5377be997558a9e112ab49'
+pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$pkgname.com"
@@ -20,9 +20,9 @@ source=(
 	"$pkgname-$pkgver-$pkgrel-internal-server.tar.gz::https://github.com/get$pkgname/internal-server/archive/$_internalservercommit.tar.gz"
 	'fix-autostart-path.diff'
 )
-sha256sums=('5b76514a103a46c9c3c578a474de28b9d5ba4140122cd0950cfe02b9b8e2c84f'
-            '1061b711f465d886997db989bcb24b7746f19c9a18215a4e7576d05aa911575a'
-            'afdc9d2783f6d4be8cc143bf866848781d3a28479c9bcfb7edade61bde1883a8'
+sha256sums=('319b02b565e34720c8ccefdb08cfe37219304c002e469fdf1a15c8971b573fc3'
+            'b72d06155d20292d90c5b9fc05f83b318080abf858669ca2c1a2a539890c3427'
+            '70cb957413aec3941845d7d567f250f010e7bd2e8549b530ba16817e62864b55'
             '91cc72f00db20e1bded69d08578e6ae9fdc89a4582ee8f6d29697b0233d7d095')
 
 _sourcedirectory="$pkgname-$pkgver"
