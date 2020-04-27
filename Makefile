@@ -1,4 +1,4 @@
-PROJECT_NAME=tracktime
+PROJECT_NAME=sublime-music
 
 all:
 	makepkg --printsrcinfo > .SRCINFO

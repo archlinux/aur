@@ -109,8 +109,7 @@ package() {
 }" >> PKGBUILD
 
 updpkgsums
-
-make
+makepkg --printsrcinfo > .SRCINFO
 
 # Test
 makepkg -f
