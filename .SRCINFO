@@ -1,7 +1,7 @@
 pkgbase = python-bonsai
 	pkgdesc = Python module for LDAPv3 using libldap2/WinLDAP
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/noirello/bonsai
 	arch = x86_64
 	license = MIT
@@ -13,8 +13,8 @@ pkgbase = python-bonsai
 	optdepends = python-gevent: enable bonsai.gevent
 	optdepends = python-tornado: enable bonsai.tornado
 	options = !emptydirs
-	source = https://github.com/noirello/bonsai/archive/v1.1.0.tar.gz
-	sha256sums = 4d42f4dc00267d78d83abbe17a0aad322b41393303ecc9bf4d3de9e6ed092f99
+	source = bonsai-v1.2.0.tar.gz::https://github.com/noirello/bonsai/archive/v1.2.0.tar.gz
+	sha256sums = 1bebdb37004130c4150a88db4dba6f52ce22506fc7a7754d1be559b636c87eff
 
 pkgname = python-bonsai
 
