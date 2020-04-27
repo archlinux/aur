@@ -1,8 +1,8 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 
 pkgname=ghdl-yosys-plugin-git
-pkgver=r123.ef286d8
-pkgrel=2
+pkgver=r137.386ad81
+pkgrel=1
 arch=('x86_64')
 pkgdesc='VHDL synthesis (based on ghdl and yosys)'
 url='https://github.com/ghdl/ghdl-yosys-plugin'
@@ -11,11 +11,8 @@ license=('GPL3')
 provides=('ghdl-yosys-plugin')
 conflicts=('ghdl-yosys-plugin' 'ghdlsynth-beta')
 replaces=('ghdlsynth-beta-git')
-# By default, this AUR package is linked against community/yosys and won't work
-# with yosys-git. If you want to use the plugin with yosys-git, it might be
-# easiest to just build it locally.
 makedepends=('git')
-depends=('ghdl-git' 'yosys')
+depends=('ghdl-git' 'yosys-git')
 
 source=("git://github.com/ghdl/ghdl-yosys-plugin.git")
 sha256sums=('SKIP')
