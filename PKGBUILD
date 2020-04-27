@@ -98,7 +98,7 @@ _package()
 	echo "Installing modules..."
 	make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTLD=ld.lld INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
-	rm "$modulesdir"/{source,build}
+	rm "$modulesdir/"{"source","build"}
 }
 
 _package-headers()
@@ -114,32 +114,32 @@ _package-headers()
 	local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
 	echo "Installing build files..."
-	install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map localversion.* version vmlinux
-	install -Dt "$builddir/kernel" -m644 kernel/Makefile
-	install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
-	cp -t "$builddir" -a scripts
+	install -Dt "$builddir" -m644 ".config" "Makefile" "Module.symvers" "System.map" "version" "vmlinux"
+	install -Dt "$builddir/kernel" -m644 "kernel/Makefile"
+	install -Dt "$builddir/arch/x86" -m644 "arch/x86/Makefile"
+	cp -t "$builddir" -a "scripts"
 
 	#* Add objtool for external module building and the enabled VALIDATION_STACK option
-	install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+	install -Dt "$builddir/tools/objtool" "tools/objtool/objtool"
 
 	#* Add xfs and shmem for building filesystem modules
-	mkdir -p "$builddir"/{fs/xfs,mm}
+	mkdir -p "$builddir/"{"fs/xfs","mm"}
 
 	echo "Installing headers..."
-	cp -t "$builddir" -a include
-	cp -t "$builddir/arch/x86" -a arch/x86/include
-	install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
+	cp -t "$builddir" -a "include"
+	cp -t "$builddir/arch/x86" -a "arch/x86/include"
+	install -Dt "$builddir/arch/x86/kernel" -m644 "arch/x86/kernel/asm-offsets.s"
 
-	install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
-	install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
+	install -Dt "$builddir/drivers/md" -m644 "drivers/md/"*".h"
+	install -Dt "$builddir/net/mac80211" -m644 "net/mac80211/"*".h"
 
 	#! http://bugs.archlinux.org/task/13146
-	install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
+	install -Dt "$builddir/drivers/media/i2c" -m644 "drivers/media/i2c/msp3400-driver.h"
 
 	#! http://bugs.archlinux.org/task/20402
-	install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
-	install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
-	install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+	install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 "drivers/media/usb/dvb-usb/"*".h"
+	install -Dt "$builddir/drivers/media/dvb-frontends" -m644 "drivers/media/dvb-frontends/"*".h"
+	install -Dt "$builddir/drivers/media/tuners" -m644 "drivers/media/tuners/"*".h"
 
 	echo "Installing KConfig files..."
 	find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
