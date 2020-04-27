@@ -1,15 +1,15 @@
 pkgname='ttf-mononoki-git'
 pkgdesc='Monospace font for programmers, successor of monoOne'
-pkgver=r76.97b8bc4
+pkgver=r78.07f7e9b
 pkgrel=1
-arch=('any')
-license=('custom:OFL')
-depends=('fontconfig')
-url='https://github.com/madmalik/mononoki/'
+arch=(any)
+license=(custom:OFL)
+url=https://github.com/madmalik/mononoki/
 source=("${pkgname}::git+${url}")
-sha512sums=('SKIP')
-conflicts=('ttf-mononoki')
-provides=( "${conflicts[@]}" )
+sha512sums=(SKIP)
+conflicts=(ttf-mononoki)
+provides=("${conflicts[@]}")
+makedepends=(git)
 
 pkgver () {
 	cd "$pkgname"
