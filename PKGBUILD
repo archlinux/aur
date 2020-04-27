@@ -8,8 +8,8 @@
 # Contributor: Colin Pitrat <colin.pitrat@gmail.com>
 
 pkgname=perl-pdl-nohdf4
-pkgver=2.018
-pkgrel=5
+pkgver=2.019
+pkgrel=1
 pkgdesc='The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display'
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/dist/PDL'
@@ -36,7 +36,7 @@ makedepends=(
 	'proj'
 )
 checkdepends=(
-	'perl-test-warn'
+	'perl-test-warn' 'perl-test-exception' 'perl-test-deep' 'perl-list-moreutils'
 )
 optdepends=(
 	'fftw2: for PDL::FFTW support'
@@ -50,7 +50,7 @@ optdepends=(
 
 source=(http://search.cpan.org/CPAN/authors/id/C/CH/CHM/PDL-${pkgver}.tar.gz)
 options=(!emptydirs)
-md5sums=('4974da8767f635806c9c18d9849e61b8')
+sha256sums=('51a47beedb1dd5bb4b6f6441a0ad38d4c95d7cbf3bf6b1b4c9128732ea2d77fe')
 
 build() {
 	cd PDL-${pkgver}

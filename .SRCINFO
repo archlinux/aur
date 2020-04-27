@@ -1,13 +1,16 @@
 pkgbase = perl-pdl-nohdf4
 	pkgdesc = The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display
-	pkgver = 2.018
-	pkgrel = 5
+	pkgver = 2.019
+	pkgrel = 1
 	url = http://search.cpan.org/dist/PDL
 	arch = i686
 	arch = x86_64
 	license = PerlArtistic
 	license = GPL
 	checkdepends = perl-test-warn
+	checkdepends = perl-test-exception
+	checkdepends = perl-test-deep
+	checkdepends = perl-list-moreutils
 	makedepends = perl>=5.11.3
 	makedepends = fftw2
 	makedepends = perl-opengl
@@ -31,8 +34,8 @@ pkgbase = perl-pdl-nohdf4
 	provides = perl-pdl=${pkgver}
 	conflicts = perl-pdl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHM/PDL-2.018.tar.gz
-	md5sums = 4974da8767f635806c9c18d9849e61b8
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHM/PDL-2.019.tar.gz
+	sha256sums = 51a47beedb1dd5bb4b6f6441a0ad38d4c95d7cbf3bf6b1b4c9128732ea2d77fe
 
 pkgname = perl-pdl-nohdf4
 
