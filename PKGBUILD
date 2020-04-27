@@ -2,10 +2,10 @@
 
 pkgname=nginx-mod-length-hiding-filter
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 
 _modname=nginx-length-hiding-filter-module
-_nginxver=1.16.1
+_nginxver=1.18.0
 
 pkgdesc='Nginx module to append random generated string to the end of HTML response'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ license=('MIT')
 source=(https://nginx.org/download/nginx-$_nginxver.tar.gz
 	https://github.com/nulab/nginx-length-hiding-filter-module/archive/$pkgver.tar.gz)
 
-sha512sums=('17e95b43fa47d4fef5e652dea587518e16ab5ec562c9c94355c356440166d4b6a6a41ee520d406e5a34791a327d2e3c46b3f9b105ac9ce07afdd495c49eca437'
+sha512sums=('8c21eeb62ab6e32e436932500f700bd2fb99fd2d29e43c08a5bfed4714c189c29c7141db551fcd5d2437303b7439f71758f7407dfd3e801e704e45e7daa78ddb'
             '3eebd28808241daf26081126249174704a08aca9c0ff42e00875f7439de49e53e3cdb40e956e388ccb8b8bd5fff0103e97f6f38aa0d84d22f2f6f56295f60bec')
 
 build() {
