@@ -1,6 +1,6 @@
 # Maintainer : Antonio Orefice <kokoko3k@gmail.com>
 
-pkgname=bindfs-git
+pkgname=bindfsit-git
 pkgver=20200427
 pkgrel=1
 pkgdesc="Rebinds filesystems to free stuck processes."

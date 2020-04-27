@@ -1,4 +1,4 @@
-pkgbase = bindfs-git
+pkgbase = bindfsit-git
 	pkgdesc = Rebinds filesystems to free stuck processes.
 	pkgver = 20200427
 	pkgrel = 1
@@ -8,5 +8,5 @@ pkgbase = bindfs-git
 	depends = bindfs
 	depends = bash
 
-pkgname = bindfs-git
+pkgname = bindfsit-git
 
