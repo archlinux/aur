@@ -14,7 +14,7 @@ arch=(x86_64)
 url='https://community.kde.org/KDEConnect'
 license=(GPL2)
 depends=(hicolor-icon-theme kcmutils kwayland libfakekey qca kpeople
-         kpeople-vcard-git kirigami2 pulseaudio-qt)
+         kpeoplevcard kirigami2 pulseaudio-qt)
 makedepends=(git extra-cmake-modules kdoctools qt5-declarative)
 optdepends=('sshfs: remote filesystem browser'
             'kde-cli-tools: configuration UI'
