@@ -17,7 +17,7 @@ source=("local://crypt_of_the_necrodancer_en_${_pkgver}.sh"
 sha256sums=(SKIP
 	    'd80562a04ded4b25bca9738267d1d93d2be8fef74570aa7d00d83471c4e71121'
 	    '9753ea711a428a24333cb37be1f11a3a35860072723e89dd7599d1842f0f4f89'
-            '99136db3939cbab2ae33181479e069c3d25298096758327a41d002494c8ae54c')
+      '99136db3939cbab2ae33181479e069c3d25298096758327a41d002494c8ae54c')
 PKGEXT=".pkg.tar"
 
 package() {
