@@ -3,7 +3,7 @@
 # Contributor: Jonathan Coates <contact@squiddev.cc>
 pkgname=craftos-pc-data
 pkgver=2.3
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="ROM package for CraftOS-PC"
 arch=('any')
