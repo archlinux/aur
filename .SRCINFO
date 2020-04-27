@@ -1,12 +1,12 @@
 pkgbase = r-withr
 	pkgdesc = Run Code 'With' Temporarily Modified Global State
-	pkgver = 2.1.2
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=withr
 	arch = any
 	license = GPL2
 	license = GPL3
-	depends = r>=3.0.2
+	depends = r>=3.2.0
 	optdepends = r-testthat
 	optdepends = r-covr
 	optdepends = r-lattice
@@ -14,8 +14,8 @@ pkgbase = r-withr
 	optdepends = r-rsqlite
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/withr_2.1.2.tar.gz
-	md5sums = 85e8574fb0a6832c4f275531be6371d6
+	source = https://cran.r-project.org/src/contrib/withr_2.2.0.tar.gz
+	md5sums = c741a99379b330e77f140a8c28268144
 
 pkgname = r-withr
 
