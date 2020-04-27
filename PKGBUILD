@@ -2,16 +2,15 @@
 # Contributor: ml <ml@visu.li>
 pkgname=gotify-server
 pkgver=2.0.15
-_commit=e56f7bc4c7efdb61fea88a0b65d501277604cefa
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple server for sending and receiving messages in real-time per WebSocket.'
-arch=('x86_64' 'i686' 'aarch64' 'armv7')
+arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url='https://gotify.net/'
 license=('MIT')
 depends=('glibc')
-makedepends=('git' 'go' 'yarn')
+makedepends=('git' 'go' 'gzip' 'yarn')
 backup=('etc/gotify/config.yml')
-install="${pkgname}.install"
+install=gotify-server.install
 options=(emptydirs)
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/gotify/server/archive/v${pkgver}.tar.gz"
@@ -29,23 +28,25 @@ prepare() {
 }
 
 build() {
+  local _commit=$(zcat "${pkgname}-${pkgver}.tar.gz" | git get-tar-commit-id)
   cd "server-$pkgver"
   (
     cd ui
-    yarn --non-interactive --frozen-lockfile
-    NODE_ENV=production yarn --non-interactive --frozen-lockfile build
+    yarn --frozen-lockfile
+    NODE_ENV=production yarn --frozen-lockfile build
   )
   go run hack/packr/packr.go
-  local build_date=$(date -u -d "@${SOURCE_DATE_EPOCH}" +%F-%T)
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_LDFLAGS="$LDFLAGS"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export GOFLAGS='-buildmode=pie -modcacherw'
   go build \
     -o "$pkgname" \
     -trimpath \
-    -buildmode=pie \
     -ldflags "-X 'main.Version=${pkgver}' \
               -X 'main.Commit=${_commit}' \
-              -X 'main.BuildDate=${build_date}' \
+              -X 'main.BuildDate=$(date -u -d "@${SOURCE_DATE_EPOCH}" +%F-%T)' \
               -X 'main.Mode=prod'"
 }
 
