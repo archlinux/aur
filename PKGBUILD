@@ -4,7 +4,7 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=frescobaldi
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
@@ -43,7 +43,7 @@ optdepends=(
   'python-pycups: Printing to a local CUPS server'
 )
 source=(https://github.com/frescobaldi/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('454eb7df95f143754c4b13b2bc44aef44995ddf47f9f877800ba89fefcdbdc4d')
+sha256sums=('5c2cffb8282cd9faef1585808bd800d1eb3c0db4cc464a61ce8576dbf7ef9b20')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
