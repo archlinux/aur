@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=goverlay-git
-pkgver=0.3.1.r8.g89d4096
+pkgver=0.3.1.r9.g0680d73
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
@@ -35,8 +35,13 @@ package() {
 	install -Dm755 "${pkgname%-git}" -t "$pkgdir/usr/bin"
 	install -Dm644 "${pkgname%-git}.desktop" -t \
 		"$pkgdir/usr/share/applications"
-	install -Dm644 "${pkgname%-git}3t256.png" \
-		"$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 	install -Dm644 "${pkgname%-git}.metainfo.xml" -t \
 		"$pkgdir/usr/share/metainfo"
+
+	for icon_size in 128 256 512; do
+		icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
+		install -d $pkgdir/$icons_dir
+		install -m644 ${pkgname%-git}-logo-square-${icon_size}.png -t \
+			$pkgdir/$icons_dir
+	done
 }
