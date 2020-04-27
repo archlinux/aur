@@ -1,7 +1,7 @@
 # Maintainer: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=rccl
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ROCm Communication Collectives Library"
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/rccl"
@@ -28,6 +28,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/opt/rocm/rccl \
         -DBUILD_TESTS=OFF \
         "$srcdir/rccl-rocm-$pkgver"
+
   make
 }
 
@@ -35,6 +36,9 @@ package() {
   cd "$srcdir/build"
 
   make DESTDIR="$pkgdir" install
+
+  install -d "$pkgdir/opt/rocm/include"
+  ln -s /opt/rocm/rccl/include/rccl.h "$pkgdir/opt/rocm/include"
 
   install -d "$pkgdir/etc/ld.so.conf.d"
   cat << EOF > "$pkgdir/etc/ld.so.conf.d/rccl.conf"

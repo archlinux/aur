@@ -1,7 +1,7 @@
 pkgbase = rccl
 	pkgdesc = ROCm Communication Collectives Library
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ROCmSoftwarePlatform/rccl
 	arch = x86_64
 	license = custom:NCSAOSL
