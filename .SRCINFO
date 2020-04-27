@@ -1,0 +1,37 @@
+pkgbase = linux-zest-git
+	pkgver = 5.6
+	pkgrel = 1
+	url = https://github.com/ZestProjects/linux
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = cpio
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = inetutils
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = llvm-proton-bin
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = xmlto
+	options = !strip
+	source = git+https://github.com/ZestProjects/linux.git
+	b2sums = SKIP
+
+pkgname = linux-zest-git
+	pkgdesc = The Zest Project's kernel and it's modules
+	depends = coreutils
+	depends = initramfs
+	depends = kmod
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = WIREGUARD-MODULE
+
+pkgname = linux-zest-git-docs
+	pkgdesc = Documentation for the Zest Project's kernel
+
+pkgname = linux-zest-git-headers
+	pkgdesc = Headers and scripts for building modules for the Zest Project's kernel
+
