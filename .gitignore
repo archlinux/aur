@@ -1,6 +1,5 @@
-/headphones/
 /*.xz
+/*.gz
 /*.log
 /src/
 /pkg/
-/rpi-eeprom/
