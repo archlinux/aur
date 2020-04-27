@@ -1,6 +1,6 @@
 pkgbase = r-dbplyr
 	pkgdesc = A 'dplyr' Back End for Databases
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=dbplyr
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = r-dbplyr
 	depends = r-dbi>=1.0.0
 	depends = r-dplyr>=0.8.0
 	depends = r-glue>=1.2.0
+	depends = r-lifecycle
 	depends = r-purrr>=0.2.5
 	depends = r-r6>=2.2.2
 	depends = r-rlang>=0.2.0
@@ -26,9 +27,8 @@ pkgbase = r-dbplyr
 	optdepends = r-rpostgresql
 	optdepends = r-rsqlite
 	optdepends = r-testthat
-	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/dbplyr_1.4.2.tar.gz
-	md5sums = 622481e9289eb6d588e8c530a0e1fc84
+	source = https://cran.r-project.org/src/contrib/dbplyr_1.4.3.tar.gz
+	md5sums = 102b6f6d46e7ebdc822e372965655c99
 
 pkgname = r-dbplyr
 
