@@ -1,5 +1,5 @@
 pkgname=linvst
-pkgver=2.8.r35.0aae371
+pkgver=2.8.r85.105128a
 pkgrel=1
 pkgdesc="enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's"
 arch=('x86_64')
@@ -21,10 +21,10 @@ prepare() {
 
 build() {
     cd "${srcdir}/LinVst"
-    make -f Makefile-embed-6432 DESTDIR="${pkgdir}" all
+    make -f Makefile-64-32bit DESTDIR="${pkgdir}" all
 }
 
 package() {
     cd "${srcdir}/LinVst"
-    make -f Makefile-embed-6432 DESTDIR="${pkgdir}" VST_DIR="${pkgdir}/usr/lib/vst/"  install
+    make -f Makefile-64-32bit DESTDIR="${pkgdir}" VST_DIR="${pkgdir}/usr/lib/vst/"  install
 }
