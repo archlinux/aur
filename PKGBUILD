@@ -5,7 +5,7 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.5.0.gm.2.r0.g3a449c20'
+pkgver='5.5.0.gm.2.r5.gceefcd26'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -40,6 +40,9 @@ prepare() {
 	# Set system Electron version for ABI compatibility
 	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron/version')"'"|' 'package.json'
 
+	# Set node-sass version for node 14 compatibility
+	sed -E -i 's|("node-sass": ").*"|\14.14.0"|' 'package.json'
+
 	# Prevent Ferdi from being launched in dev mode
 	sed -i "s|import isDevMode from 'electron-is-dev'|const isDevMode = false|g" 'src/index.js' 'src/config.js'
 	sed -i "s|import isDev from 'electron-is-dev'|const isDev = false|g" 'src/environment.js'
@@ -52,6 +55,7 @@ prepare() {
 	export XDG_CACHE_HOME="$srcdir/$pkgname-cache"
 	export npm_config_devdir="$srcdir/$pkgname-npm-dev"
 	export npm_config_cache="$srcdir/$pkgname-npm-cache"
+	# export NODE_GYP_FORCE_PYTHON='/usr/bin/python' - when https://github.com/sass/node-sass/issues/2877 is fixed
 
 	npx lerna bootstrap
 }
