@@ -1,6 +1,6 @@
 pkgbase = fusioninventory-agent
 	pkgdesc = An application for keeping track of the hardware and software
-	pkgver = 2.5
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = http://fusioninventory.org
 	arch = any
@@ -58,9 +58,9 @@ pkgbase = fusioninventory-agent
 	backup = etc/fusioninventory/inventory-server-plugin.cfg
 	backup = etc/fusioninventory/server-test-plugin.cfg
 	backup = etc/fusioninventory/ssl-server-plugin.cfg
-	source = https://github.com/fusioninventory/fusioninventory-agent/releases/download/2.5/FusionInventory-Agent-2.5.tar.gz
+	source = https://github.com/fusioninventory/fusioninventory-agent/releases/download/2.5.1/FusionInventory-Agent-2.5.1.tar.gz
 	source = package.patch
-	md5sums = 915e5ed60399facee2c4552d6601965d
+	md5sums = 2120bca3771dd7a45ed518e4fbdc691e
 	md5sums = c3896747249badd126b65f0f3e8c822f
 
 pkgname = fusioninventory-agent

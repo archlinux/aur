@@ -4,7 +4,7 @@
 # Contributor: Alex 'AdUser' Z
 pkgname=fusioninventory-agent
 _pkgname="FusionInventory-Agent"
-pkgver=2.5
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="An application for keeping track of the hardware and software"
 arch=(any)
@@ -102,7 +102,7 @@ checkdepends=(
 )
 source=("https://github.com/fusioninventory/fusioninventory-agent/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         "package.patch")
-md5sums=('915e5ed60399facee2c4552d6601965d'
+md5sums=('2120bca3771dd7a45ed518e4fbdc691e'
          'c3896747249badd126b65f0f3e8c822f')
 backup=('etc/fusioninventory/agent.cfg'
         'etc/fusioninventory/inventory-server-plugin.cfg'
