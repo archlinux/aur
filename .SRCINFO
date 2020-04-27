@@ -1,7 +1,7 @@
 pkgbase = rocthrust
 	pkgdesc = Port of the Thrust parallel algorithm library atop HIP/ROCm.
 	pkgver = 3.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ROCmSoftwarePlatform/rocThrust
 	arch = x86_64
 	license = custom:NCSAOSL

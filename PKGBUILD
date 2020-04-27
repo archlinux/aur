@@ -1,7 +1,7 @@
 # Maintainer: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=rocthrust
 pkgver=3.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Port of the Thrust parallel algorithm library atop HIP/ROCm."
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/rocThrust"
@@ -45,4 +45,7 @@ package() {
   cat << EOF > "$pkgdir/etc/ld.so.conf.d/rocthrust.conf"
 /opt/rocm/rocthrust/lib
 EOF
+
+  install -d "$pkgdir/opt/rocm/include"
+  ln -s /opt/rocm/rocthrust/include/thrust "$pkgdir/opt/rocm/include"
 }
