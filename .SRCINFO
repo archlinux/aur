@@ -1,0 +1,25 @@
+pkgbase = kn0ck0ut-lv2-git
+	pkgdesc = An LV2 plugin to perform spectral subtraction
+	pkgver = r78.cbc4193
+	pkgrel = 1
+	url = https://github.com/jeremysalwen/kn0ck0ut-LV2
+	arch = i686
+	arch = x86_64
+	groups = lv2-plugins
+	license = GPL2
+	makedepends = git
+	makedepends = lv2
+	makedepends = lv2-c++-tools
+	depends = fftw
+	provides = kn0ck0ut.lv2
+	provides = kn0ck0ut-lv2
+	provides = lv2-kn0ck0ut-git
+	conflicts = kn0ck0ut.lv2
+	conflicts = kn0ck0ut-lv2
+	conflicts = lv2-kn0ck0ut
+	conflicts = lv2-kn0ck0ut-git
+	source = kn0ck0ut-lv2::git+https://github.com/jeremysalwen/kn0ck0ut-lv2
+	md5sums = SKIP
+
+pkgname = kn0ck0ut-lv2-git
+
