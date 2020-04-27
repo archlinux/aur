@@ -2,14 +2,14 @@
 
 pkgname='sat-libervia-hg'
 _realname=libervia
-pkgver=0.7.0.r1232.4ccc5bb65be2
+pkgver=0.7.0.r1249.560d381943d8
 _version=0.7.0
 pkgrel=1
 url="http://salut-a-toi.org/"
 arch=('any')
 pkgdesc="Salut à Toi, multi-frontends multi-purposes XMPP client (Web interface)"
 provides=('sat-libervia')
-depends=('python' 'python-jinja' 'python-shortuuid-git' 'sat-media-hg' 'sat-xmpp-hg' 'sat-templates-hg' 'python-zope-interface' 'python-pyopenssl' 'python-autobahn' 'dbus')
+depends=('python' 'python-jinja' 'python-shortuuid-git' 'sat-media-hg' 'sat-xmpp-hg' 'sat-templates-hg' 'python-zope-interface' 'python-pyopenssl' 'python-autobahn' 'dbus' 'python-brython')
 makedepends=('python-setuptools' 'mercurial')
 license=('AGPL3')
 install=$pkgname.install
