@@ -1,0 +1,15 @@
+pkgbase = python-googletransx
+	pkgdesc = Free Google Translate API for Python. Translates totally free of charge.
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://github.com/x0rkov/py-googletrans
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/g/googletransx/googletransx-2.4.2.tar.gz
+	sha256sums = c46567e3365c2abbe8af1004121b6303f530bf72025d1c3045ed14861902d6da
+
+pkgname = python-googletransx
+	depends = python
+
