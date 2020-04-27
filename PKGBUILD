@@ -1,6 +1,6 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 pkgname=python-humanfriendly
-pkgver=8.1
+pkgver=8.2
 pkgrel=1
 pkgdesc="Human friendly input/output in Python"
 url="https://github.com/xolox/python-humanfriendly"
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://github.com/xolox/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('fbccdb39a7c4a0cd32bdbac26a6e7ed3')
+md5sums=('727cc3770afc811d2bd2c06ee0c5e5e9')
 arch=('any')
 
 package() {

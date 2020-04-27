@@ -1,14 +1,14 @@
 pkgbase = python-humanfriendly
 	pkgdesc = Human friendly input/output in Python
-	pkgver = 8.1
+	pkgver = 8.2
 	pkgrel = 1
 	url = https://github.com/xolox/python-humanfriendly
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/xolox/python-humanfriendly/archive/8.1.tar.gz
-	md5sums = fbccdb39a7c4a0cd32bdbac26a6e7ed3
+	source = https://github.com/xolox/python-humanfriendly/archive/8.2.tar.gz
+	md5sums = 727cc3770afc811d2bd2c06ee0c5e5e9
 
 pkgname = python-humanfriendly
 
