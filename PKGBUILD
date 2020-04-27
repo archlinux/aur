@@ -28,8 +28,10 @@ b2sums=('SKIP'
 prepare() {
 	cd "$srcdir/$_pkgname"
 	mkdir -p $srcdir/go
+	go clean -modcache -r "github.com/ipfs/go-ipfs/cmd/ipfs"
 	export GOPATH="${srcdir}"/go
 	export PATH=$PATH:$GOPATH/bin
+	go clean -modcache
 	go get -d -v ./...
 }
 
@@ -64,6 +66,6 @@ package() {
 	install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/MIT" LICENSE-MIT
 	install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/APACHE" LICENSE-APACHE
 	install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-#	go clean -cache -r "github.com/ipfs/go-ipfs/cmd/ipfs"
+	go clean -modcache
 }
 
