@@ -7,7 +7,7 @@ pkgname='ferdi'
 pkgver='5.5.0'
 _recipescommit='3054fd4c362b5be81b5cdd48535a0e7078fcd0a6'
 _internalservercommit='95ae59926dbd88d55a5377be997558a9e112ab49'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$pkgname.com"
@@ -38,6 +38,9 @@ prepare() {
 	# Set system Electron version for ABI compatibility
 	sed -E -i -e 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron/version')"'"|' 'package.json'
 
+	# Set node-sass version for node 14 compatibility
+	sed -E -i 's|("node-sass": ").*"|\14.14.0"|' 'package.json'
+
 	# Prevent Ferdi from being launched in dev mode
 	sed -i "s|import isDevMode from 'electron-is-dev'|const isDevMode = false|g" 'src/index.js' 'src/config.js'
 	sed -i "s|import isDev from 'electron-is-dev'|const isDev = false|g" 'src/environment.js'
@@ -50,6 +53,7 @@ prepare() {
 	export XDG_CACHE_HOME="$srcdir/$pkgname-$pkgver-$pkgrel-cache"
 	export npm_config_devdir="$srcdir/$pkgname-$pkgver-$pkgrel-npm-dev"
 	export npm_config_cache="$srcdir/$pkgname-$pkgver-$pkgrel-npm-cache"
+	# export NODE_GYP_FORCE_PYTHON='/usr/bin/python' - when https://github.com/sass/node-sass/issues/2877 is fixed
 
 	npx lerna bootstrap
 }
