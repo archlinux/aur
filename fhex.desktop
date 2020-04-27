@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Fhex
+Comment[fr]=Un éditeur hexadécimal complet
+Comment=A full-featured hexadecimal editor
+Exec=/usr/bin/fhex
+Terminal=false
+Type=Application
+Icon=fhex

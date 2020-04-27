@@ -8,7 +8,9 @@ pkgbase = fhex-git
 	depends = qt5-base
 	depends = qt5-charts
 	source = git+https://github.com/echo-devim/fhex.git
+	source = fhex.desktop
 	sha512sums = SKIP
+	sha512sums = 89756a938066c51092df1c75e976ea75e2a99924d1a1f7e5de2621a4f9dee081d07e458c13585adae71206caa41e1134f5b3c097fd9b3e8079cf5671054b4c30
 
 pkgname = fhex-git
 
