@@ -1,6 +1,6 @@
 pkgbase = cesium-desktop-deb
 	pkgdesc = Cesium Wallet for Ğ1 currency. Cesium is a wallet (client-software) for Ğ1, a libre currency.
-	pkgver = 1.4.3
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://www.cesium.app
 	install = cesium-desktop-deb.install
@@ -10,7 +10,7 @@ pkgbase = cesium-desktop-deb
 	provides = cesium-desktop
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/duniter/cesium/releases/download/v1.4.3/cesium-desktop-v1.4.3-linux-x64.deb
+	source = https://github.com/duniter/cesium/releases/download/v1.6.5/cesium-desktop-v1.6.5-linux-x64.deb
 	sha512sums = e7cac00c182dd5d91c4128e7e886e59e187673a92a875d3045b8be1e2ec6667ad0fe635e2de33acb5bf9e9be4d7740cdaed90c7417d20b2a1d96a13cd7965507
 
 pkgname = cesium-desktop-deb
