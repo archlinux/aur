@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=pacpush
-pkgver=2.7.9
+pkgver=2.8
 pkgrel=1
 pkgdesc="Utility to push an Arch hosts package and AUR caches to other hosts"
 url="https://github.com/bulletmark/$pkgname"
@@ -12,7 +12,7 @@ makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 replaces=("pacsync")
 conflicts=("pacsync")
-sha1sums=('db5c00b86aa87e06b40d9c6f10c9cbfc6e87cd3f')
+sha1sums=('3fb1c0806beca822f692e032dfa06b74c7238081')
 
 package() {
   cd "$pkgname-$pkgver"
