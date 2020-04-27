@@ -3,7 +3,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=xml2
-_cranver=1.3.1
+_cranver=1.3.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -15,7 +15,7 @@ depends=('r>=3.1.0' libxml2)
 makedepends=(gcc)
 optdepends=(r-covr r-curl r-httr r-knitr r-magrittr r-mockery r-rmarkdown r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('3e70019d9f92e436592f417dfdf24728')
+md5sums=('62590005715e583117d17972643369b2')
 
 build() {
   cd "${srcdir}"
