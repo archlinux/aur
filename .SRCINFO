@@ -1,0 +1,14 @@
+pkgbase = fhex-git
+	pkgdesc = A full-featured hex editor
+	pkgver = v2.3.r26.ga7938d6
+	pkgrel = 1
+	url = https://github.com/echo-devim/fhex
+	arch = x86_64
+	license = GPLv3
+	depends = qt5-base
+	depends = qt5-charts
+	source = git+https://github.com/echo-devim/fhex.git
+	sha512sums = SKIP
+
+pkgname = fhex-git
+
