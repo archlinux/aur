@@ -24,7 +24,7 @@ build() {
 package() {
   cd bindfsit
   install -D "bindfsit@.service" "${pkgdir}/usr/lib/systemd/system/bindfsit@.service"
-  install -D "bindfsit.sh" "${pkgdir}/usr/bin/bindfs.sh"
+  install -D "bindfsit.sh" "${pkgdir}/usr/bin/bindfsit.sh"
   install -D "example.cfg" "${pkgdir}/etc/bindfs/example.cfg"
 }
 
