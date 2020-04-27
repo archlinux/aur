@@ -3,14 +3,14 @@
 
 pkgbase='python-bokeh'
 pkgname=('python-bokeh')
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Interactive Web Plotting for Python'
 arch=('any')
 url='http://bokeh.pydata.org/'
 license=('BSD')
 source=("https://pypi.io/packages/source/b/bokeh/bokeh-${pkgver}.tar.gz")
-sha256sums=('07b26adfbe9fad4bb53e770d220c4d5d0fff8ef6813aa18222fa348bbdb8994b')
+sha256sums=('d9248bdb0156797abf6d04b5eac581dcb121f5d1db7acbc13282b0609314893a')
 makedepends=('python-setuptools')
 
 build() {
