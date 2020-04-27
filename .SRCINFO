@@ -1,6 +1,6 @@
 pkgbase = subsurface-git
 	pkgdesc = Divelog program
-	pkgver = 20190603.a592b4e14
+	pkgver = 20200426.da953fa18
 	pkgrel = 1
 	url = https://subsurface-divelog.org/
 	arch = i686
@@ -25,10 +25,8 @@ pkgbase = subsurface-git
 	depends = googlemaps
 	provides = subsurface
 	conflicts = subsurface
-	source = git+https://github.com/Subsurface-divelog/subsurface
-	source = semicolon.patch
+	source = git+https://github.com/subsurface/subsurface
 	sha256sums = SKIP
-	sha256sums = ebf7a7e3690254a257ff9094a1298b7d070abe8cf95c03ea21d78ec710972060
 
 pkgname = subsurface-git
 
