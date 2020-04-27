@@ -2,7 +2,7 @@
 # Contributor:	xduugu
 
 pkgname=dyndnsc
-pkgver=0.4.4
+pkgver=0.5.1
 pkgrel=0
 pkgdesc="Dynamic DNS client with support for multiple protocols and services. Compatible with IPv6 dual stack."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-argparse' 'python-ipy' 'python-ndg-httpsclient' 'python-requests' 'python-setuptools' 'python-netifaces')
 source=("https://pypi.python.org/packages/source/d/dyndnsc/dyndnsc-$pkgver.tar.gz"
         'dyndnsc.service')
-md5sums=('ba950b33e8869bd40db30605ce701a5c'
+md5sums=('55bc511dbc6d9a9d46f89bcfaa70f37c'
          '4b2cd825c387494ba77ad78106dd42eb')
 
 build() {
