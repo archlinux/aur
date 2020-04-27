@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell
 	pkgver = 3.36.1+40+g890f5b591
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
 	install = gnome-shell-performance.install

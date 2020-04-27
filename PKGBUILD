@@ -7,7 +7,7 @@
 ### MERGE REQUESTS SELECTION
 
 # available MR: ('536' '786' '923')
-_merge_requests_to_use=('1126' '1192' '1164') # safe pick
+_merge_requests_to_use=('1205' '1126' '1192' '1164') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -15,7 +15,7 @@ _merge_requests_to_use=('1126' '1192' '1164') # safe pick
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=3.36.1+40+g890f5b591
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -134,6 +134,7 @@ prepare() {
   # Status: 4
   # Comment: Depends on 1126 that requires gjs>=1.65.1
   pick_mr '1126' '1126.diff' 'patch'
+  pick_mr '1205'
   pick_mr '1192'
   pick_mr '1164'
 
