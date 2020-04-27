@@ -1,14 +1,14 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 pkgname=python-property-manager
-pkgver=2.3.1
-pkgrel=3
+pkgver=3.0
+pkgrel=1
 pkgdesc="Useful property variants for Python programming"
 url="https://github.com/xolox/python-property-manager"
 license=('MIT')
 makedepends=('python-setuptools')
 depends=('python' 'python-humanfriendly' 'python-verboselogs')
 source=("https://github.com/xolox/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('526483dc5176f211184045b7520f42dc')
+md5sums=('db8dcc5bde9ce6cefa4a47638620c4cc')
 arch=('any')
 
 package() {
