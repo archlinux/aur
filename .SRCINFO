@@ -1,6 +1,6 @@
 pkgbase = r-raster
 	pkgdesc = Geographic Data Analysis and Modeling
-	pkgver = 3.0.12
+	pkgver = 3.1.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=raster
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = r-raster
 	optdepends = r-rastervis
 	optdepends = r-sf
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/raster_3.0-12.tar.gz
-	md5sums = cf9ff78ee794f8f58aa04f105daf4ed5
+	source = https://cran.r-project.org/src/contrib/raster_3.1-5.tar.gz
+	md5sums = 6311ffe61f0424c424768d16720c4c7a
 
 pkgname = r-raster
 
