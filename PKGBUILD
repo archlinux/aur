@@ -8,7 +8,7 @@ pkgname=(
 	"linux-zest-git-headers"
 )
 pkgver=5.6
-pkgrel=4
+pkgrel=5
 arch=(
     "i686"
 	"x86_64"
@@ -90,7 +90,7 @@ _package()
 
 	#* systemd expects to find the kernel here to allow hibernation
 	echo "Installing boot image..."
-	install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+	install -Dm644 "$(make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTLD=ld.lld -s image_name)" "$modulesdir/vmlinuz"
 
 	#* mkinitcpio uses this value as the kernel name
 	echo "$pkgbase" | install -Dm644 "/dev/stdin" "$modulesdir/pkgbase"
