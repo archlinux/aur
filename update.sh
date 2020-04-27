@@ -31,6 +31,7 @@ provides=('${EXECUTABLE_NAME}')
 conflicts=('${EXECUTABLE_NAME}')
 depends=('glibc' 'ffmpeg')
 source=(
+    ${EXECUTABLE_NAME}.environmentfile
     ${EXECUTABLE_NAME}.service
     ${EXECUTABLE_NAME}.sysusers
     ${EXECUTABLE_NAME}.tmpfiles
@@ -48,6 +49,7 @@ md5sums_aarch64=()
 package() {
   install -Dm755 \"\$srcdir/navidrome\" \"\$pkgdir/usr/bin/${EXECUTABLE_NAME}\"
 
+  install -Dm644 \"\${srcdir}/${EXECUTABLE_NAME}.environmentfile\" \"\${pkgdir}/etc/sysconfig/${EXECUTABLE_NAME}\"
   install -Dm644 \"\${srcdir}/${EXECUTABLE_NAME}.service\" \"\${pkgdir}/usr/lib/systemd/system/${EXECUTABLE_NAME}.service\"
   install -Dm644 \"\${srcdir}/${EXECUTABLE_NAME}.sysusers\" \"\${pkgdir}/usr/lib/sysusers.d/${EXECUTABLE_NAME}.conf\"
   install -Dm644 \"\${srcdir}/${EXECUTABLE_NAME}.tmpfiles\" \"\${pkgdir}/usr/lib/tmpfiles.d/${EXECUTABLE_NAME}.conf\"

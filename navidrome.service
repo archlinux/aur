@@ -1,5 +1,3 @@
-# This file ususaly goes in /etc/systemd/system
-
 [Unit]
 Description=Navidrome Music Server and Streamer compatible with Subsonic/Airsonic
 After=remote-fs.target network.target
