@@ -9,7 +9,7 @@ license=('custom:Public Domain')
 depends=('bash' 'gawk' 'fzf')
 optdepends=('xclip: X11 clipboard support'
 	    'wl-clipboard: Wayland clipboard support')
-source=("grb-fzf::https://github.com/varagnac/pure-text-bible/raw/master/grb_fzf")
+source=("${pkgname}-${pkgver}::https://github.com/varagnac/pure-text-bible/raw/master/grb_fzf")
 md5sums=('418a5e12c09ad9db1c3af221fc6bac9a')
 
 package() {
