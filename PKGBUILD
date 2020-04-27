@@ -4,7 +4,7 @@
 # Contributor: Bruno Inec <bruno at inec dot fr>
 
 pkgname=wtfutil
-pkgver=0.28.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="Personal information dashboard for your terminal"
 arch=('i686' 'x86_64' 'aarch64' 'armv6h')
@@ -12,7 +12,7 @@ url="https://wtfutil.com"
 license=('MPL2')
 makedepends=('go-pie>=1.13')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wtfutil/wtf/archive/v$pkgver.tar.gz")
-sha256sums=('a46c1d5177772107970e4487aa2ed860a267fd251ffce13648aee92b9e6e2028')
+sha256sums=('a9e2f401bcbc593bdfcb224007d15de5e13485da1758d46bdd84bdf1fdbd92a7')
 
 build() {
     export GOPROXY="https://gocenter.io"
