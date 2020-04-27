@@ -6,7 +6,9 @@ pkgdesc="Greek Bible with the Septuagint, SBL and Apocrypha, with fuzzy finder"
 arch=(any)
 url="https://github.com/varagnac/pure-text-bible"
 license=('custom:Public Domain')
-depends=('bash' 'fzf')
+depends=('bash' 'gawk' 'fzf')
+optdepends=('xclip: X11 clipboard support'
+	    'wl-clipboard: Wayland clipboard support')
 source=("grb-fzf::https://github.com/varagnac/pure-text-bible/raw/master/grb_fzf")
 md5sums=('SKIP')
 
