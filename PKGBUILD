@@ -29,8 +29,8 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 conflicts=('firefox-nightly')
 options=(!emptydirs !makeflags !strip)
 source=("hg+$_repo"
-		    "firefox-nightly.desktop"
-		    "0001-Use-remoting-name-for-GDK-application-names.patch")
+        "firefox-nightly.desktop"
+        "0001-Use-remoting-name-for-GDK-application-names.patch")
 sha512sums=('SKIP'
             '8b4ac564aaa39d5a3ea7fda12eed047687916fd9c084407157dd380d4a3db7cf41aebc4b6ab9aa2a5a3e1cddd1f03440f9471a6c091e5d8339bde193436612d0'
             'afb4a230b3e87cfb71687b3fe375c78463e02a6f7b1daa15bf6127f6414c6c29bf2d8df372b59b4df7f90fc8929582e8aab4e3db5e8b54b1817c96aad00d92ea')
