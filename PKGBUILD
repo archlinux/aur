@@ -8,7 +8,7 @@ pkgname=(
 	"linux-zest-git-headers"
 )
 pkgver=5.6
-pkgrel=5
+pkgrel=6
 arch=(
     "i686"
 	"x86_64"
