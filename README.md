@@ -10,7 +10,7 @@ A library (IME) which enables one to type in a variety of scripts. This is a for
 ## Creating a new Arch Linux package release
 - Update PKGBUILD.
   - Fix the version numbers.
-- Verify package by running `makepkg -si`.
+- Verify package by deleting tar archives from this directory and then running `makepkg -si`.
 - Update AUR repository.
   - Set remote: `git remote add origin ssh://aur@aur.archlinux.org/m17n-db-indic.git`
   - Generate or update .SRCINFO with `makepkg --printsrcinfo > .SRCINFO`
