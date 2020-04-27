@@ -2,26 +2,30 @@
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: FadeMind <fademind@gmail.com>
 
-_pkgname=yakuake-nord-breeze
-pkgname=yakuake-skin-nord-breeze
-pkgver=1.0.0
+pkgname=yakuake-skin-breeze-perfect-dark
+pkgver=2.0
 pkgrel=1
-pkgdesc="Yakuake Theme based on Breeze and Nord Color Themes"
+pkgdesc="The perfect Breeze Dark theme for Yakuake"
 arch=("any")
-url="https://gitlab.com/Scrumplex/yakuake-nord-breeze"
-license=("GPL3")
+url="https://store.kde.org/p/1193435"
+license=("GPL")
 
 depends=("yakuake")
 
-source=("https://gitlab.com/Scrumplex/yakuake-nord-breeze/-/archive/${pkgver}/yakuake-nord-breeze-${pkgver}.tar.gz")
-sha512sums=('9f37129968aad5b1f136903b1274a24091c1db974519c6cab8f766b1e8cb9ec1a7a384cdcac56a17bdd3e3b5ec4014dd5c892388db7f2450a1832f1e2e99d355')
+source=("https://github.com/noahadvs/yakuake-breeze_perfect_dark/archive/v${pkgver}.tar.gz")
+sha512sums=('383f330f0ac01cf7d348c543bf5c4e951b4d444b761940e863f3ca7afd4be5960ca91b170186207f55dc9ca5419a9f3a1928a473bc5955be7e80b6ef4c8da77a')
 
+
+prepare() {
+    mv "yakuake-breeze_perfect_dark-${pkgver}" "breeze-perfect-dark"
+    rm -rf "breeze-perfect-dark/customizations" # not needed for final package
+}
 
 package() {
-    cd "${_pkgname}-${pkgver}"
+    cd ${srcdir}
 
-    find * -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/yakuake/skins/${_pkgname}/{}" \;
-    install -d "${pkgdir}/usr/share/doc/${_pkgname}" "${pkgdir}/usr/share/licenses/${_pkgname}"
-    ln -s "/usr/share/yakuake/skins/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-    ln -s "/usr/share/yakuake/skins/${_pkgname}/AUTHORS" "${pkgdir}/usr/share/licenses/${_pkgname}/AUTHORS"
+    find "breeze-perfect-dark"/* -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/yakuake/skins/{}" \;
+    install -d "${pkgdir}/usr/share/doc/${pkgname}"
+    ln -s "/usr/share/yakuake/skins/breeze-perfect-dark/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    ln -s "/usr/share/yakuake/skins/breeze-perfect-dark/LICENSE" "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 }
