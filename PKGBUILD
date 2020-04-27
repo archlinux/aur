@@ -1,6 +1,6 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=pkg_scripts
-pkgver=2018.4
+pkgver=2020
 pkgrel=1
 pkgdesc='A collection of pacman and package-related utilities.'
 arch=(any)
@@ -9,16 +9,16 @@ url="https://xyne.archlinux.ca/projects/pkg_scripts"
 depends=(pyalpm python3 python3-xcpf)
 optdepends=('python3-colorsysplus: colorized output in some scripts')
 source=(
-  https://xyne.archlinux.ca/projects/pkg_scripts/src/pkg_scripts-2018.4.tar.xz
-  https://xyne.archlinux.ca/projects/pkg_scripts/src/pkg_scripts-2018.4.tar.xz.sig
+  https://xyne.archlinux.ca/projects/pkg_scripts/src/pkg_scripts-2020.tar.xz
+  https://xyne.archlinux.ca/projects/pkg_scripts/src/pkg_scripts-2020.tar.xz.sig
 )
 sha512sums=(
-  0795475b85a76bc60b79cfdaad7a3f326a7fe464489c784c6cae258ef4ea3c79167b81ea27e10057ad44ea131221f3ca85ae75e3162f38877f86697ce085dba8
-  b19d12130e8f536c489e811646f12c6ead2e98118d73b30d52f9ee11db222155e51b9c821eb9b62deeba10ca197fcbb7b8dc3c96ed77b7a16498dbea92a7e544
+  062a61924139ac8adc87f344333611ac6eea379a51704b0e20fcbb64d54f949162ef3642f4c981adabf902d9009d46d12b292db96e823a6e89fe7aed8cd3998b
+  e76ecd917595dedae130fbc36ab2d1ad22449ce26603a0fc718ddf18e387061bc6d9737d0f9c74c6a08c2c9d7568d5ddf3568d0826104d097742ff1b728bda69
 )
 md5sums=(
-  a10cb156ddd47926869ce80fb2f39886
-  8c64feda48b0c4dee659d3efa6798ca9
+  e0e0cb199a1c715a733c574ebe5766dc
+  90aa66ac845fc24eb7c2dfba5de519ae
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
