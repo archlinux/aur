@@ -1,5 +1,5 @@
 pkgbase = tsubasa-git
-	pkgdesc = Script for sharing screenshots and/or status updates using ihabunek/toot
+	pkgdesc = Script for sharing screenshots and/or status updates
 	pkgver = r37.396d5f0
 	pkgrel = 1
 	url = https://github.com/thebitstick/tsubasa
@@ -9,6 +9,7 @@ pkgbase = tsubasa-git
 	depends = fish
 	depends = gnome-screenshot
 	depends = zenity
+	depends = toot
 	provides = tsubasa
 	conflicts = tsubasa
 	source = git+https://github.com/thebitstick/tsubasa
