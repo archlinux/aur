@@ -1,7 +1,7 @@
 pkgbase = epsxe-plugin-spu-alsa
 	pkgdesc = OSS/Alsa SPU plugin
 	pkgver = 1.9
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.pbernert.com
 	arch = i686
 	arch = x86_64

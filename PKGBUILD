@@ -1,9 +1,9 @@
-# Maintainer: Alexej Magura <agm2819*gmail*>
+# Maintainer: Alexej Magura <sickhadas.code at gmail dot com>
 # Contributor: Swen Simon <swsimon at gmail dot com>
 
 pkgname=epsxe-plugin-spu-alsa
 pkgver=1.9
-pkgrel=5
+pkgrel=6
 pkgdesc="OSS/Alsa SPU plugin"
 url="http://www.pbernert.com"
 depends=('epsxe')
@@ -12,34 +12,25 @@ md5sums=('b42b316576f9f81775f78d62b3567b16')
 license=('custom')
 arch=('i686' 'x86_64')
 
-prepare () {
-
-    cd "$srcdir"
-    rename version_"${pkgver//./_}".txt changelog version_"${pkgver//./_}".txt
-    rename readme_"${pkgver//./_}".txt README readme_"${pkgver//./_}".txt
-
+prepare()
+{
+  cd "$srcdir"
+  mv version_"${pkgver//./_}".txt changelog
+  mv readme_"${pkgver//./_}".txt README
 }
 
-package () {
+package()
+{
+  cd "$srcdir"
+  install -d "$pkgdir/usr/share/doc/$pkgname" "$pkgdir"/opt/epsxe/{plugins,cfg}
 
-    cd "$srcdir"
-
-    install -d "$pkgdir/usr/share/doc/$pkgname"
-
-
-    install -m 644 -t "$pkgdir/usr/share/doc/$pkgname" changelog README
-
-    for places in /opt/epsxe/{plugins,cfg}
-    do
-	install -d "$pkgdir/$places"
-    done
-
-    install -m 755 -t "$pkgdir/opt/epsxe/plugins" "libspuPeopsOSS.so.1.0.9"
-    install -m 664 -t "$pkgdir/opt/epsxe/cfg" "cfgPeopsOSS" "spuPeopsOSS.cfg"
+  install -m 644 -t "$pkgdir/usr/share/doc/$pkgname" changelog README
+  install -m 755 -t "$pkgdir/opt/epsxe/plugins" "libspuPeopsOSS.so.1.0.9"
+  install -m 664 -t "$pkgdir/opt/epsxe/cfg" "cfgPeopsOSS" "spuPeopsOSS.cfg"
 
   # permissions
   chown root:games "$pkgdir"/opt/epsxe/cfg/{cfgPeopsOSS,spuPeopsOSS.cfg}
   chown root:games "$pkgdir"/opt/epsxe/plugins/libspuPeopsOSS.so.1.0.9
-  chmod 755 "$pkgdir"/opt/epsxe/cfg/cfgPeopsOSS
-  chmod 755 "$pkgdir"/opt/epsxe/plugins/libspuPeopsOSS.so.1.0.9
+  # chmod 775 "$pkgdir"/opt/epsxe/cfg/cfgPeopsOSS
+  # chmod 775 "$pkgdir"/opt/epsxe/plugins/libspuPeopsOSS.so.1.0.9
 }
