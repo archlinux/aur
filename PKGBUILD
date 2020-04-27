@@ -20,10 +20,13 @@ noextract=("heroku-$pkgver.tgz")
 options=('!strip')
 
 package() {
-  npm install -g --user root --prefix "$pkgdir/usr" heroku-$pkgver.tgz
+  npm install -g --no-progress --user root --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" heroku-$pkgver.tgz
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   ln -s "../../../lib/node_modules/heroku/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 
   # npm makes some directories world writable
   find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
+
+  find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+  sed -i "/$(echo $srcdir | sed 's_/_\\/_g')/d" "$pkgdir/usr/lib/node_modules/heroku/package.json"
 }
