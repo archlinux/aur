@@ -5,9 +5,9 @@
 
 pkgname=pcre-static
 pkgver=8.44
-pkgrel=1
+pkgrel=2
 pkgdesc="A library that implements Perl 5-style regular expressions"
-arch=('x86_64')
+arch=('any')
 url="http://www.pcre.org/"
 license=('BSD')
 depends=('gcc-libs')
