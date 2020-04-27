@@ -1,7 +1,7 @@
 pkgbase = miopen
 	pkgdesc = AMD's Machine Intelligence Library
-	pkgver = 2.3.0.2.2.1
-	pkgrel = 4
+	pkgver = 3.3.0
+	pkgrel = 1
 	url = https://github.com/ROCmSoftwarePlatform/MIOpen
 	arch = x86_64
 	license = custom:NCSAOSL
@@ -15,8 +15,8 @@ pkgbase = miopen
 	depends = rocblas
 	depends = boost>=1.58
 	depends = rocm-clang-ocl
-	source = https://github.com/ROCmSoftwarePlatform/MIOpen/archive/2.2.1.tar.gz
-	sha256sums = 445870318d7abb75a703b1021e8cb198bb64a5e1c9401487db40b5c3a7ae41e4
+	source = https://github.com/ROCmSoftwarePlatform/MIOpen/archive/roc-3.3.0.tar.gz
+	sha256sums = ab056f7921c2e4a7932225409b836258327f5ec5e3ee513726a114cd303d9b59
 
 pkgname = miopen
 
