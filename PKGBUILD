@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@birks.dev>
 
 pkgname=conftest
-pkgver=0.18.1
+pkgver=0.18.2
 pkgrel=1
 pkgdesc='A utility to help you write tests against structured configuration data'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url='https://github.com/instrumenta/conftest'
 license=(Apache)
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/instrumenta/conftest/archive/v$pkgver.tar.gz")
-sha512sums=('29c6ea79a6c9ae2feb83d65275c1926dffdbcc224d86b0d2083d250b6bffe5eca052673eb299185582d2fc618348bdf3de396c0838ba9db0b1c34ea2be576694')
+sha512sums=('07cd34654bb856d5cbbbce726a7041b1450395cec0389e711f1d623f5c81d797d0befadfa401b7aa60281b11f583b6352002902af2000c34ad721efbbd7ba289')
 
 build() {
   cd $pkgname-$pkgver
