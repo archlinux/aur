@@ -1,0 +1,14 @@
+pkgbase = brother-dcp7055w-cups-bin
+	pkgdesc = CUPS wrapper for Brother DCP-7055W printer
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=dcp7055w_us_eu_as
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf005533/dcp7055wcupswrapper-3.0.1-1.i386.deb
+	md5sums = 3982c0ff510997d13e326c9f7324159d
+
+pkgname = brother-dcp7055w-cups-bin
+
