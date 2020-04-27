@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Firefox Nightly Updater
-GenericName=Web Browser updater
-Comment=Update firefox nightly
-Exec=firefox-nightly-updater
-Terminal=true
-Type=Application
-Icon=firefox-nightly
-Categories=Network;WebBrowser;
