@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=3.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('arm' 'armv6h' 'armv7h' 'x86_64')
 url="https://github.com/cheat/cheat"
@@ -16,7 +16,7 @@ replaces=("python-$pkgname")
 backup=("etc/$pkgname/conf.yml")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'conf.yml'
-        "git+https://github.com/$pkgname/cheatsheets.git"
+        "git+https://github.com/cheat/cheatsheets.git"
         "https://raw.githubusercontent.com/$pkgname/cheatsheets/master/.github/LICENSE.txt")
 sha256sums=('404081005628cccbbe576567cf3aa1e8d93c618230c9119ae74ce27366cddb1e'
             'efffbe20041efc3d49ffe596ab5abe60a10adf70219c2ddecdf1caf350972212'
