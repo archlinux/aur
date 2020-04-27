@@ -61,6 +61,7 @@ pkgbase = waterfox-current-kpe
 	source = mozilla-nongnome-proxies.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/29877042dd393774197b134426e37cb0dbabef34/waterfox-current-kpe/patches/mozilla-nongnome-proxies.patch
 	source = current-kde.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/29877042dd393774197b134426e37cb0dbabef34/waterfox-current-kpe/patches/current-kde.patch
 	source = current-kde-xul.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/29877042dd393774197b134426e37cb0dbabef34/waterfox-current-kpe/patches/current-kde-xul.patch
+	source = rust_1.43.patch
 	sha256sums = SKIP
 	sha256sums = ca152a5d24a59aa5552cc49915b13eef5181aac4ac6d2efa02c705efaeaed97b
 	sha256sums = bf06887c00bbc7176f452a3d18092e1b222731218e461782b2877cba938aaa26
@@ -70,6 +71,7 @@ pkgbase = waterfox-current-kpe
 	sha256sums = ffa9d71bd6dd60eaaef70ba67444c75b6ce0313a107b5b086fd3d30df865ccbf
 	sha256sums = 547233b3a9143f0b03d39655cb705b55cb6df6a2e97e4423f07c38386638ade5
 	sha256sums = 6f3333e1201c02c0569d81b0e73dc84c717b1ac37a9a502f664135c670833f53
+	sha256sums = b0ecc1576fc96e4a5b1f63247cfa48dbe4c9549bf94bb7d0e7b2e9e3c01cc2a5
 
 pkgname = waterfox-current-kpe
 

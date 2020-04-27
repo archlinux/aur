@@ -34,6 +34,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "mozilla-nongnome-proxies.patch::$_filesurl/patches/mozilla-nongnome-proxies.patch"
         "current-kde.patch::$_filesurl/patches/current-kde.patch"
         "current-kde-xul.patch::$_filesurl/patches/current-kde-xul.patch"
+        "rust_1.43.patch"
         )
 sha256sums=('SKIP'
             'ca152a5d24a59aa5552cc49915b13eef5181aac4ac6d2efa02c705efaeaed97b'
@@ -43,7 +44,8 @@ sha256sums=('SKIP'
             '0120e01edb0bf3d42f4e0280345f2c44372b097739cd2ddb85fa69bb2233ebab'
             'ffa9d71bd6dd60eaaef70ba67444c75b6ce0313a107b5b086fd3d30df865ccbf'
             '547233b3a9143f0b03d39655cb705b55cb6df6a2e97e4423f07c38386638ade5'
-            '6f3333e1201c02c0569d81b0e73dc84c717b1ac37a9a502f664135c670833f53')
+            '6f3333e1201c02c0569d81b0e73dc84c717b1ac37a9a502f664135c670833f53'
+            'b0ecc1576fc96e4a5b1f63247cfa48dbe4c9549bf94bb7d0e7b2e9e3c01cc2a5')
 
 prepare() {
 
@@ -52,6 +54,7 @@ prepare() {
   patch -Np1 -i ../current-kde.patch
   patch -Np1 -i ../current-kde-xul.patch
   patch -Np1 -i ../mozilla-nongnome-proxies.patch
+  patch -Np1 -i ../rust_1.43.patch
 
   cat >.mozconfig <<END
 export CC=clang
