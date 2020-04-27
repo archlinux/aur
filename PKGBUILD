@@ -6,13 +6,12 @@ _cpan_author=miyagawa
 _cpan_version=0.04
 _cpan_md5=5dc1d5206e853fb66828341d938c5544
 
-pkgrel=1
+pkgrel=2
 pkgname=perl-${_cpan_name,,}
 pkgdesc=$_cpan_desc
 pkgver=$_cpan_version
 md5sums=('5dc1d5206e853fb66828341d938c5544')
 depends=('perl-http-server-simple' 'perl-authen-simple')
-makedepends=('')
 checkdepends=('perl-test-most')
 
 _cpan_path=${_cpan_author:0:1}/${_cpan_author:0:2}/${_cpan_author}
