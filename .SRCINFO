@@ -10,7 +10,7 @@ pkgbase = vul-fzf-git
 	depends = fzf
 	optdepends = xclip: X11 clipboard support
 	optdepends = wl-clipboard: Wayland clipboard support
-	source = vul-fzf::https://github.com/varagnac/pure-text-bible/raw/master/vulgate_fzf
+	source = vul-fzf-git-r1.1::https://github.com/varagnac/pure-text-bible/raw/master/vulgate_fzf
 	md5sums = 43efc0033ff989fc9403282654b7b410
 
 pkgname = vul-fzf-git

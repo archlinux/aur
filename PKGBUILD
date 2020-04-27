@@ -9,7 +9,7 @@ license=('custom:Public Domain')
 depends=('bash' 'gawk' 'fzf')
 optdepends=('xclip: X11 clipboard support'
 	    'wl-clipboard: Wayland clipboard support')
-source=("vul-fzf::https://github.com/varagnac/pure-text-bible/raw/master/vulgate_fzf")
+source=("${pkgname}-${pkgver}::https://github.com/varagnac/pure-text-bible/raw/master/vulgate_fzf")
 md5sums=('43efc0033ff989fc9403282654b7b410')
 
 package() {
