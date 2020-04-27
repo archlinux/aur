@@ -3,7 +3,7 @@
 
 pkgname=python-eve
 _pkgname=eve
-pkgver=0.9
+pkgver=1.1
 pkgrel=1
 pkgdesc="An open source Python REST API framework designed for human beings"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-flask' 'python-simplejson' 'python-pymongo' 'python-cerberus' '
 makedepends=('python-setuptools')
 conflicts=('python-eve-git')
 source=("https://github.com/pyeve/$_pkgname/archive/v$pkgver.tar.gz")
-md5sums=('04d237d2995f6fcd1cada5f095931377')
+md5sums=('dde409cac7af158b62c4e589145bdecc')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
