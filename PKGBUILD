@@ -8,7 +8,7 @@ pkgname=(
 	"linux-zest-git-headers"
 )
 pkgver=5.6
-pkgrel=1
+pkgrel=2
 arch=(
     "i686"
 	"x86_64"
@@ -45,6 +45,8 @@ prepare()
 	export PATH="/opt/proton-clang/bin:$PATH"
 
 	cd "linux" || exit
+
+	git checkout "fivesix"
 
 	echo "Setting config..."
 	make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTLD=ld.lld zestop_defconfig
