@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 _projectname='mew_vi'
 pkgname="ocaml-$_projectname"
-pkgver='0.3.0'
+pkgver='0.4.0'
 pkgrel='1'
 pkgdesc='Vi-like modal editing engine generator'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('dune>=1.1.0')
 checkdepends=('ocaml-ppx_expect')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('4621b9878493b49bd1e25eb8ad8f6af7977c96fe01bb8ed554ea36ca1e16a4d3')
+sha256sums=('7d25846d50494e456a4bdbe942e18adc4cb608884fe5f8aec3ca9df94b46dd4a')
 
 _sourcedirectory="$_projectname-$pkgver"
 
