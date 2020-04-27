@@ -1,7 +1,7 @@
 pkgbase = kotatogram-desktop-dynamic-bin
 	pkgdesc = Kotatogram – experimental Telegram Desktop fork - Precompiled package
-	pkgver = 1.2.2
-	pkgrel = 2
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = https://kotatogram.github.io
 	arch = x86_64
 	license = GPL3
@@ -21,8 +21,8 @@ pkgbase = kotatogram-desktop-dynamic-bin
 	optdepends = ttf-opensans: default Open Sans font family
 	conflicts = kotatogram-desktop
 	conflicts = kotatogram-desktop-bin
-	source = https://github.com/ilya-fedin/kotatogramAUR/releases/download/k1.2.2-2/kotatogram-desktop-1.2.2-2-x86_64.pkg.tar.xz
-	sha512sums = 75a5c64c0fbb3e1b5436995dc44605d2885238e3ab148546127e933d332d35ee15019caf98f1165c4591304c531af7786250031c642e3b710807b168aefe6589
+	source = https://github.com/ilya-fedin/kotatogramAUR/releases/download/k1.3.1-2/kotatogram-desktop-1.3.1-2-x86_64.pkg.tar.xz
+	sha512sums = 1c18eb168aecad976b33c0f8d47f02e313cd1e8d2a833f5fd8b390089eda6a7d7dd8a4872e214a8fba934223b3b2ddb3833130917e66c2c54a4f35a8de02bf64
 
 pkgname = kotatogram-desktop-dynamic-bin
 
