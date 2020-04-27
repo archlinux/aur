@@ -3,7 +3,7 @@
 # Contributor: wagnerflo <florian@wagner-flo.net>
 
 _cranname=tibble
-_cranver=3.0.0
+_cranver=3.0.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -15,7 +15,7 @@ depends=('r>=3.1.0' r-cli 'r-crayon>=1.3.4' 'r-ellipsis>=0.2.0' 'r-fansi>=0.4.0'
 makedepends=(gcc)
 optdepends=(r-bench r-bit64 r-blob r-covr r-dplyr r-evaluate r-hms r-htmltools r-import r-knitr r-mockr r-nycflights13 r-purrr r-rmarkdown r-testthat r-tidyr r-withr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('9655439192084e64c1da7259d6db11cd')
+md5sums=('fafd36102e4a289ec73ab65c0185d777')
 
 build() {
   cd "${srcdir}"
