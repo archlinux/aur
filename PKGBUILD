@@ -1,7 +1,7 @@
 # Maintainer: Stefanos Mitropoulos stefmitropoulos@gmail.com
 pkgname=wol_qt
 pkgver=2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt gui to ARP scan and send WakeOnLan packets"
 arch=(x86_64)
 url="https://github.com/stefmitropoulos/wol_qt"
@@ -39,6 +39,6 @@ package() {
 	make DESTDIR="$pkgdir/" install
 echo `pwd`
 cd ../..
-    install -Dm644 wol_qt_icon.png      $pkgdir/usr/share/pixmaps/wol_qt_icon.png
-    install -Dm644 wol_qt.desktop       $pkgdir/usr/share/applications/wol_qt.desktop
+    install -Dm644 wol_qt_icon.png      $HOME/.icons/wol_qt_icon.png
+    install -Dm644 wol_qt.desktop       $HOME/.local/share/applications/wol_qt.desktop
 }

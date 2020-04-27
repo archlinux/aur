@@ -1,7 +1,7 @@
 pkgbase = wol_qt
 	pkgdesc = Qt gui to ARP scan and send WakeOnLan packets
 	pkgver = 2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/stefmitropoulos/wol_qt
 	arch = x86_64
 	license = GPL
