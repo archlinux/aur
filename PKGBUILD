@@ -1,9 +1,9 @@
 # Maintainer: LinuxVieLoisir <contact@gnumeria.fr>
 
 pkgname=firefox-nightly-hg-i18n
-_version=73.0a1
+_version=77.0a1
 #_version="${pkgver%.*}"
-pkgver=73.0a1.20191221
+pkgver=77.0a1.20200427
 pkgrel=1
 pkgdesc='Universal i18n for firefox-nightly - xpi version'
 url="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/"
@@ -12,7 +12,7 @@ license=('MPL')
 depends=('firefox-nightly-hg')
 
 pkgver() {
-  _installed_ver="$(sed -n  '/%VERSION%/{n;p;}' /var/lib/pacman/local/firefox-nightly-hg-???????.????????????-*/desc)"
+  _installed_ver="$(sed -n  '/%VERSION%/{n;p;}' /var/lib/pacman/local/firefox-nightly-hg-??.???.???????.????????????-*/desc)"
   if [ -n "$_installed_ver" ] && [ "${_installed_ver%%.*}"  -gt "${_version%%.*}" ]; then
     msg2 "Installed firefox-nightly is newer than $_version. Bumping to $_installed_ver"
     echo "${_installed_ver%-*}"
@@ -107,7 +107,7 @@ build() {
 
 package () {
   _version="${pkgver%.*}"
-  _ff_path=/usr/lib/firefox-nightly/firefox/
+  _ff_path=/usr/lib/firefox-nightly/
   cd ${srcdir}
   install -d ${pkgdir}/${_ff_path}/browser/extensions/
   install -d ${pkgdir}/${_ff_path}/defaults/pref
