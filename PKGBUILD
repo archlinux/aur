@@ -15,6 +15,5 @@ source=('http://yudit.org/download/fonts/UBraille/UBraille.ttf')
 b2sums=('52f166a79116d4279ba53cc4dbcaac30044cead800b62dca009a8ea630f788612215cc31af80bac36a6fda39e704caf8364e63432e5eac034f2f3504f0e45131')
 
 package() {
-	install -d "${pkgdir}"/usr/share/fonts/TTF
-	install -m644 *.ttf "${pkgdir}"/usr/share/fonts/TTF/
+  install -Dm644 -t "${pkgdir}"/usr/share/fonts/TTF/ *.ttf
 }
