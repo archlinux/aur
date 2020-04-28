@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=zlibbioc
-_bcver=1.32.0
+_bcver=1.33.1
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(Artistic-2.0)
 depends=(r)
 makedepends=(gcc)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('b2c583788196b883a78c5d2d15f887ae3d6f24dba92fabaafe55180eacc207f6')
+sha256sums=('2bbf8234094ae24044561383310e722e3d9784fb89a5c480136c0e5871bad896')
 
 build() {
   cd "${srcdir}"
