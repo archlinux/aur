@@ -1,6 +1,6 @@
 pkgbase = plask
 	pkgdesc = Photonic LAser Simulation Kit: a comprehensive tool for numerical analysis of broad range of physical phenomena in photonic devices
-	pkgver = 2020.04.24
+	pkgver = 2020.04.27
 	pkgrel = 1
 	url = https://plask.app
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = plask
 	optdepends = python-jedi: for Python hints in GUI
 	optdepends = python-paramiko: for remote computation launching
 	optdepends = ipython: for interactive shell
-	noextract = plask-2020.04.24.tar.xz
-	source = plask-2020.04.24.tar.xz::https://get.plask.app/packages/plask-2020.04.24-1-x86_64.pkg.tar.xz
-	sha256sums = f03b1cb36d7ec9459ca253520936105023deb27e26cbab33b5a66f195e63c916
+	noextract = plask-2020.04.27.tar.xz
+	source = plask-2020.04.27.tar.xz::https://get.plask.app/packages/plask-2020.04.27-1-x86_64.pkg.tar.xz
+	sha256sums = 5d7950fc4902d97f337fe83cc47eab03d9fe147d5344c446e53349166fdab886
 
 pkgname = plask
 
