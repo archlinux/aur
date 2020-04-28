@@ -4,7 +4,7 @@
 
 pkgbase=mt76-git
 pkgname=('mt76-dkms-git' 'mt76-firmware-git')
-pkgver=r1915.g5f3ccc722627
+pkgver=r1915.g5f3ccc7
 pkgrel=2
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/openwrt/mt76'
