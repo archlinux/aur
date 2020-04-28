@@ -41,6 +41,7 @@ post_upgrade() {
   gtk-update-icon-cache -ftq usr/share/icons/hicolor
   /bin/sh -c 'dconf update'
   msg "Attempting to set performance governor..."
+  sed -i -e 's,.*governor=.*,governor=performance,' /etc/default/cpupower
   cpupower frequency-set -g performance
   x86_energy_perf_policy -v performance
   nvidia-settings -a "[gpu:0]/GpuPowerMizerMode=1" 2> /dev/null
