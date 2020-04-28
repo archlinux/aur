@@ -1,12 +1,15 @@
 pkgbase = gog-crypt-of-the-necrodancer
 	pkgdesc = A roguelike rhythm game! Move on the beat to navigate ever changing dungeons
 	pkgver = 1.29.14917
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	install = gog-crypt-of-the-necrodancer.install
 	arch = i686
 	arch = x86_64
 	license = custom
+	backup = opt/gog/crypt-of-the-necrodancer/game/data/{played.dat,save_data.xml,save_data.xml_TEMP}
+	backup = opt/gog/crypt-of-the-necrodancer/game/replays/
+	backup = opt/gog/crypt-of-the-necrodancer/game/logs/
 	source = local://crypt_of_the_necrodancer_en_1_29_14917.sh
 	source = gog-crypt-of-the-necrodancer
 	source = gog-crypt-of-the-necrodancer.desktop
