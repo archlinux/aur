@@ -1,7 +1,7 @@
 # Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=c
-pkgver=0.11
+pkgver=0.12
 pkgrel=1
 pkgdesc='Compile and execute C "scripts" in one go'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=('c')
 conflicts=('c')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('19b932e0087acf6c639cc5a4fa9a0c87314e62b0561f5517fd7a78e32fb61801')
+sha256sums=('9af9a67b8d92b77378bd679bc9274c200f2e8d07f5ed1ff459c6909f3a84a81d')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
