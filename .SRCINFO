@@ -1,0 +1,28 @@
+pkgbase = vala0.40
+	pkgdesc = Compiler for the GObject type system (0.40 long term support branch)
+	pkgver = 0.40.22
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/Vala
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	checkdepends = dbus
+	checkdepends = libx11
+	checkdepends = gobject-introspection
+	makedepends = libxslt
+	makedepends = vala
+	makedepends = help2man
+	makedepends = autoconf-archive
+	depends = glib2
+	depends = gtk-doc
+	depends = graphviz
+	depends = ttf-font
+	depends = pkg-config
+	depends = gcc
+	provides = libvala-0.40.so
+	provides = libvaladoc-0.40.so
+	source = https://download.gnome.org/sources/vala/0.40/vala-0.40.22.tar.xz
+	sha256sums = bd0979b28c6c3d301584c2ae30c8f1b79a224cf85c881e372d5a6cc4b47d4258
+
+pkgname = vala0.40
+
