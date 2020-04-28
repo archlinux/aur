@@ -1,26 +1,3 @@
---- Make-arch	2016-10-22 00:34:39.000000000 +0300
-+++ Make-arch	2019-03-14 14:30:13.136311837 +0300
-@@ -333,7 +333,7 @@
- 	"SHLD = gcc -shared"
- 
- LINUXAMD64:
--	$(MAKE) dynlibs staticlibs bins \
-+	$(MAKE) dynlibs staticlibs \
- 	"ARCH = LINUXAMD64" \
- 	"COPTO = -fPIC -m64 -o " \
- 	"LOPTO = -fPIC -m64 -lstdc++ -o " \
-@@ -342,8 +342,10 @@
- 	"DEF = -D" \
- 	"CCFLAGS = -m64 -O2 -fPIC -Wall" \
- 	"CXXFLAGS = -m64 -O2 -fPIC -Wall" \
--	"TCLLDFLAGS = -ltcl8.5 -ldl" \
-+	"TCLLDFLAGS = -ltcl8.6 -ldl" \
- 	"NETCDFLDFLAGS = -lnetcdf " \
-+	"NETCDFLIB = -L/usr/lib" \
-+	"NETCDFINC = -I/usr/include" \
- 	"AR = ar" \
- 	"NM = nm -p" \
- 	"RANLIB = touch" \
 --- Makefile	2016-07-13 22:24:24.000000000 +0300
 +++ Makefile	2019-03-14 14:22:10.860111342 +0300
 @@ -22,7 +22,7 @@
@@ -41,3 +18,38 @@
  INCLUDEDIR = include
  PLUGINHEADERS = vmdplugin.h molfile_plugin.h vmdconio.h
  
+--- Make-arch	2016-10-22 00:34:39.000000000 +0300
++++ Make-arch	2020-04-28 19:42:25.214095411 +0300
+@@ -331,25 +331,27 @@
+ 	"NM = nm -p" \
+ 	"RANLIB = touch" \
+ 	"SHLD = gcc -shared"
+ 
+ LINUXAMD64:
+-	$(MAKE) dynlibs staticlibs bins \
++	$(MAKE) dynlibs staticlibs \
+ 	"ARCH = LINUXAMD64" \
+ 	"COPTO = -fPIC -m64 -o " \
+ 	"LOPTO = -fPIC -m64 -lstdc++ -o " \
+-	"CC = gcc" \
+-	"CXX = g++" \
++	"CC = gcc-8" \
++	"CXX = g++-8" \
+ 	"DEF = -D" \
+ 	"CCFLAGS = -m64 -O2 -fPIC -Wall" \
+ 	"CXXFLAGS = -m64 -O2 -fPIC -Wall" \
+-	"TCLLDFLAGS = -ltcl8.5 -ldl" \
++	"TCLLDFLAGS = -ltcl8.6 -ldl" \
+ 	"NETCDFLDFLAGS = -lnetcdf " \
++	"NETCDFLIB = -L/usr/lib" \
++	"NETCDFINC = -I/usr/include" \
+ 	"AR = ar" \
+ 	"NM = nm -p" \
+ 	"RANLIB = touch" \
+-	"SHLD = gcc -shared"
++	"SHLD = gcc-8 -shared"
+ 
+ LINUXCARMA:
+ 	$(MAKE) dynlibs staticlibs bins \
+ 	"ARCH = LINUXCARMA" \
+ 	"COPTO = -fPIC -o " \

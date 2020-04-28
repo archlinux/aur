@@ -1,7 +1,7 @@
 pkgbase = vmd-molfile-plugins
 	pkgdesc = Visual Molecular Dynamics - molfile plugins
 	pkgver = 1.9.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.ks.uiuc.edu/Research/vmd/plugins
 	arch = x86_64
 	license = custom
@@ -14,7 +14,7 @@ pkgbase = vmd-molfile-plugins
 	source = plugins.patch
 	source = LICENSE
 	md5sums = 5706f88b9b77cc5fafda6fef3a82d6fa
-	md5sums = 33b2cfc6ba31f3a14d11bedfa8339878
+	md5sums = d1eb2b1ab9771053153635fdaacb5a81
 	md5sums = f60d4d3f9c39c0e9e997a6eacacbade1
 
 pkgname = vmd-molfile-plugins
