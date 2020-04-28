@@ -10,7 +10,7 @@ license=('GPL')
 url="https://github.com/ideal/mirror"
 depends=('rsync' 'python2-chardet')
 source=(https://github.com/ideal/mirror/archive/$pkgver.tar.gz)
-md5sums=('2d9ff65bce977332adcc47501d16f5c3')
+md5sums=('fcdb64eed85e17475cc737a9de288cb7')
 
 build() {
     cd $srcdir/$pkgname-$pkgver
