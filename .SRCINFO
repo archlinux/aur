@@ -1,14 +1,14 @@
 pkgbase = gibo
 	pkgdesc = A shell script for easily accessing gitignore boilerplates
-	pkgver = 2.2.3
+	pkgver = 2.2.4
 	pkgrel = 1
 	url = https://github.com/simonwhitaker/gibo
 	install = gibo.install
 	arch = any
 	license = custom:UNLICENSE
-	source = https://github.com/simonwhitaker/gibo/archive/2.2.3.tar.gz
+	source = https://github.com/simonwhitaker/gibo/archive/2.2.4.tar.gz
 	source = gibo.install
-	md5sums = 8b5f8505b3612daf8c8e60c2c27c5863
+	md5sums = 401f72efad601e96dd05463c98bec7da
 	md5sums = b1b49419e90f7b7f0e84a214ecfdbfef
 
 pkgname = gibo
