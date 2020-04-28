@@ -4,7 +4,7 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 _upstream="compizconfig-python"
-_pkgver=0.8.16
+_pkgver=0.8.18
 _micro=""
 
 pkgname=compizconfig-python
@@ -36,4 +36,4 @@ package()
 	make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('18d1271b33cc9b64c38670aa20eea531f702c2010fc5a018475cb0c9ff751382')
+sha256sums=('2add2083365eee2f966db826c3967f030d949b2b5aad59e738ba3b782587ad93')

@@ -1,6 +1,6 @@
 pkgbase = compizconfig-python
 	pkgdesc = Compizconfig bindings for python
-	pkgver = 0.8.16
+	pkgver = 0.8.18
 	pkgrel = 1
 	url = https://gitlab.com/compiz/compizconfig-python/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = compizconfig-python
 	makedepends = cython
 	makedepends = intltool
 	makedepends = pkgconfig
-	depends = compiz-core>=v0.8.16
+	depends = compiz-core>=v0.8.18
 	depends = libcompizconfig
 	depends = glib2
 	depends = python
@@ -18,8 +18,8 @@ pkgbase = compizconfig-python
 	depends = libxdamage
 	conflicts = compizconfig-python-git
 	options = !libtool
-	source = https://gitlab.com/compiz/compizconfig-python/-/archive/v0.8.16/compizconfig-python-v0.8.16.tar.bz2
-	sha256sums = 18d1271b33cc9b64c38670aa20eea531f702c2010fc5a018475cb0c9ff751382
+	source = https://gitlab.com/compiz/compizconfig-python/-/archive/v0.8.18/compizconfig-python-v0.8.18.tar.bz2
+	sha256sums = 2add2083365eee2f966db826c3967f030d949b2b5aad59e738ba3b782587ad93
 
 pkgname = compizconfig-python
 
