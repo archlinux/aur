@@ -1,6 +1,6 @@
 pkgbase = tabs-app
 	pkgdesc = Persistent and separate browser tabs in one window
-	pkgver = 0.6.2
+	pkgver = 0.6.4
 	pkgrel = 0
 	url = https://gitlab.com/ArisuOngaku/tabs
 	arch = x86_64
