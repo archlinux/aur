@@ -1,4 +1,4 @@
-pkgbase = glasscord
+pkgbase = glasscord-git
 	pkgdesc = Providing composition effects to the Discord client.
 	pkgver = 0.0.7.1
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = glasscord
 	source = Glasscord::git+git://github.com/AryToNeX/Glasscord.git
 	md5sums = SKIP
 
-pkgname = glasscord
+pkgname = glasscord-git
 
