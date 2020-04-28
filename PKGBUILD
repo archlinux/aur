@@ -1,6 +1,6 @@
 # Maintainer: depsterr <depsterr at protonmail dot com>
 pkgname=glasscord
-pkgver=0.0.7.1
+pkgver=0.0.6
 pkgrel=1
 epoch=
 pkgdesc='Providing composition effects to the Discord client.'
@@ -19,28 +19,22 @@ backup=()
 options=() 
 install=
 changelog=  
-source=("Glasscord::git+git://github.com/AryToNeX/Glasscord.git")
+source=("https://github.com/AryToNeX/Glasscord/archive/v0.0.6.tar.gz")
 noextract=()
-md5sums=(SKIP)                                              
+md5sums=("f68649dcbb57829f1400bb85f03458fc")
 validpgpkeys=()
 
-pkgver() {
-	cd $srcdir/Glasscord
-	printf "%s" "$(awk '/version/ { gsub("\"",""); gsub(",",""); print $2 }' package.json)"
-}
-
 build() {
-	cd "$srcdir/Glasscord"
+	cd "$srcdir/Glasscord-$pkgver"
 	npm install
 }
 
 package() {
 	injdir=`find ~/.config/discord -name "discord_desktop_core" -type d`
 	
-	cp "$srcdir/Glasscord/glasscord.asar" "$injdir"
+	cp "$srcdir/Glasscord-$pkgver/glasscord.asar" "$injdir"
 
-	[ -z $(grep "require('./glasscord.asar')" "$injdir/index.js") ] &&\
-		echo "require('./glasscord.asar')" | cat - "$injdir/index.js" > "$srcdir/index.js" &&\
-		cp "$srcdir/index.js" "$injdir"
+	echo "require('./glasscord.asar')" | cat - "$injdir/index.js" > "$srcdir/index.js"
+	cp "$srcdir/index.js" "$injdir"
 }
 
