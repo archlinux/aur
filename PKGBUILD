@@ -2,12 +2,12 @@
 # Contributor: Frederick Gnodtke <frederick@gnodtke.net>
 
 pkgname=onivim2-git
-pkgver=657.4a7fa181
+pkgver=1031.41ef6e7b
 pkgrel=1
 pkgdesc='Native, lightweight modal code editor'
 arch=('any')
 url='https://github.com/onivim/oni2'
-license=('commercial')
+license=('custom:OutrunLabsEULA')
 makedepends=('git' 'esy' 'ragel' 'nodejs' 'wget' 'bzip2' 'esy' 'fontconfig' 'fuse2' 'git' 'glu' 'gtk3' 'harfbuzz'
               'libglvnd' 'libice' 'libpng' 'libsm' 'libx11' 'libxcursor' 'libxext' 'libxi' 'libxinerama' 'libxrandr'
               'libxt' 'libxxf86vm' 'm4' 'nasm' 'python2')

@@ -1,11 +1,11 @@
 pkgbase = onivim2-git
 	pkgdesc = Native, lightweight modal code editor
-	pkgver = 657.4a7fa181
+	pkgver = 1031.41ef6e7b
 	pkgrel = 1
 	url = https://github.com/onivim/oni2
 	install = onivim2.install
 	arch = any
-	license = commercial
+	license = custom:OutrunLabsEULA
 	makedepends = git
 	makedepends = esy
 	makedepends = ragel
