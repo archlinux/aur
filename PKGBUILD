@@ -1,10 +1,10 @@
 # Maintainer: farwayer <farwayer@gmail.com>
 # Submitter: Francisco Demartino <demartino.francisco@gmail.com>
 
-_ver=1.4.3
+_ver=1.4.4
 _pkgname=telegram-purple
 pkgname=${_pkgname}-git
-pkgver=1.4.3.r1540.a5d7e24
+pkgver=1.4.4.r1563.85ff0ed
 pkgrel=1
 pkgdesc="Adds support for Telegram to Pidgin, Adium, Finch and other Libpurple based messengers."
 arch=('any')
