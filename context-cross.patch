@@ -1,6 +1,8 @@
---- libs/context/build/Jamfile.v2.orig	2013-03-03 13:39:59.684868916 +0100
-+++ libs/context/build/Jamfile.v2	2013-03-03 15:09:09.893232829 +0100
-@@ -45,10 +45,11 @@
+diff --git a/build/Jamfile.v2 b/build/Jamfile.v2
+index 580aca6..572148f 100644
+--- a/build/Jamfile.v2
++++ b/build/Jamfile.v2
+@@ -52,10 +52,11 @@ project boost/context
  local rule default_binary_format ( )
  {
      local tmp = elf ;
@@ -16,18 +18,20 @@
      return $(tmp) ;
  }
  
-@@ -65,10 +66,11 @@
+@@ -72,11 +73,12 @@ feature.set-default binary-format : [ default_binary_format ] ;
  local rule default_abi ( )
  {
      local tmp = sysv ;
 -    if [ os.name ] = "NT" { tmp = ms ; }
 -    else if [ os.name ] = "CYGWIN" { tmp = ms ; }
 -    else if [ os.platform ] = "ARM" { tmp = aapcs ; }
--    else if [ os.platform ] = "MIPS" { tmp = o32 ; }
+-    else if [ os.platform ] = "MIPS32" { tmp = o32 ; }
+-    else if [ os.platform ] = "MIPS64" { tmp = n64 ; }
 +    #if [ os.name ] = "NT" { tmp = ms ; }
 +    #else if [ os.name ] = "CYGWIN" { tmp = ms ; }
 +    #else if [ os.platform ] = "ARM" { tmp = aapcs ; }
-+    #else if [ os.platform ] = "MIPS" { tmp = o32 ; }
++    #else if [ os.platform ] = "MIPS32" { tmp = o32 ; }
++    #else if [ os.platform ] = "MIPS64" { tmp = n64 ; }
 +    tmp = ms ;
      return $(tmp) ;
  }

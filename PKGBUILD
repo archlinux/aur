@@ -1,5 +1,5 @@
 pkgname=mingw-w64-boost
-pkgver=1.72.0
+pkgver=1.73.0
 _boostver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Free peer-reviewed portable C++ source libraries (mingw-w64)"
@@ -10,10 +10,10 @@ depends=('mingw-w64-zstd' 'mingw-w64-bzip2' 'mingw-w64-libbacktrace-git')
 makedepends=('mingw-w64-gcc' 'mingw-w64-wine')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2"
-        "boost-mingw.patch" "jam-wine.patch")
-sha256sums=('59c9b274bc451cf91a9ba1dd2c7fdcaf5d60b1b3aa83f2c9fa143417cc660722'
-            '11a5c39852e0513d871a0f74c2f1224efc602a0404db7cd83190712e49a6d3bc'
-            '5ca770bf155dbed4f96b1fcd358d515ad77a1ca7ae5e6d6b180939beceff05af')
+        "context-cross.patch" "stacktrace-cross.patch")
+sha256sums=('4eb3b8d442b426dc35346235c8733b5ae35ba431690e38c6a8263dce9fcbb402'
+            '844e163845ea6e7ae1f8d26cb52f72c6e4645cdade1be081bc1d2cff5db0a918'
+            '333791abd17ea192e0aa90185bfb8938e8e3dc102b284db316b061b2067e2fc2')
 
 _architectures="32:i686-w64-mingw32 64:x86_64-w64-mingw32"
 
@@ -22,10 +22,13 @@ prepare() {
   cd "${srcdir}/boost_${_boostver}"
 
   # https://svn.boost.org/trac/boost/ticket/7262
-  patch -Np0 -i "${srcdir}"/boost-mingw.patch
+  patch -p1 -d libs/context -i "${srcdir}"/context-cross.patch
 
-  # run jam exes through wine (eg for libbacktrace detection)
-  patch -p1 -i "${srcdir}"/jam-wine.patch
+  # bypass libbacktrace detection
+  patch -p1 -d libs/stacktrace -i "${srcdir}"/stacktrace-cross.patch
+
+  # https://github.com/boostorg/context/issues/136
+  curl -L https://github.com/boostorg/context/commit/85783e8cbba03804e13b3d314112df6b089ed2c0.patch | patch -p1 -R -d libs/context
 
   cd "${srcdir}"
   for _arch in ${_architectures}; do
@@ -49,7 +52,6 @@ package() {
   cd "${srcdir}"
   for _arch in ${_architectures}; do
     pushd "build-${_arch:3}"
-    export BOOST_CROSSCOMPILING_EMULATOR=/usr/bin/${_arch:3}-wine
     LD_PRELOAD="" ./b2 -d2 -q ${MAKEFLAGS} \
       target-os=windows \
       variant=release \

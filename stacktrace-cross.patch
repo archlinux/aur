@@ -1,0 +1,12 @@
+diff --git a/build/Jamfile.v2 b/build/Jamfile.v2
+index 6d6d85a..c5ee926 100644
+--- a/build/Jamfile.v2
++++ b/build/Jamfile.v2
+@@ -74,7 +74,6 @@ lib boost_stacktrace_backtrace
+     <target-os>linux:<library>dl
+     <library>backtrace
+     <link>shared:<define>BOOST_STACKTRACE_DYN_LINK=1
+-    [ check-target-builds ../build//libbacktrace : : <build>no ]
+   : # default build
+   : # usage-requirements
+     #<link>shared:<define>BOOST_STACKTRACE_DYN_LINK=1
