@@ -1,4 +1,4 @@
-# Maintainer: Danny Lin <firstname at kdrag0n dot dev>
+# Maintainer: Danny Lin <[firstname] at kdrag0n dot dev>
 
 _pkgname=libinput
 pkgname=libinput-hires-scroll
