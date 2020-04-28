@@ -1,7 +1,7 @@
 pkgbase = exfatprogs
 	pkgdesc = exFAT filesystem userspace utilities for Linux
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/exfatprogs/exfatprogs
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = exfatprogs
 	conflicts = fuse-exfat
 	conflicts = exfat-utils
 	source = exfatprogs-1.0.2.tar.gz::https://github.com/exfatprogs/exfatprogs/archive/1.0.2.tar.gz
-	sha512sums = 922454bd3d2e26dcc12d4219a2f94a4dc36784a9c5eed345217fe0aaab6ef06a32bdbe9deb8c3ea1fa0f078590059f93efc884cf3db58023f190c4c29b2a47fe
+	sha512sums = f44661039c1b924ec3f5e32bae3c33cb0f9983230bfd9f5a31e57b801f2e179d1d284b90b5e8a88b9a0b168d1efd017b2d99f9f967055c799f413322b1acaa55
 
 pkgname = exfatprogs
 
