@@ -5,10 +5,10 @@
 pkgbase=mt76-git
 pkgname=('mt76-dkms-git' 'mt76-firmware-git')
 pkgver=r1915.g5f3ccc7
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/openwrt/mt76'
-license=('GPL2')
+license=('GPL2' 'ISC')
 makedepends=('git')
 source=("git+${url}.git"
         'wireless-mediatek-Replace-rcu_swap_protected-with-rc.patch'

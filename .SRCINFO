@@ -1,6 +1,6 @@
 pkgbase = mt76-git
 	pkgver = r1915.g5f3ccc7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/openwrt/mt76
 	arch = x86_64
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = mt76-git
 	arch = armv7h
 	arch = aarch64
 	license = GPL2
+	license = ISC
 	makedepends = git
 	source = git+https://github.com/openwrt/mt76.git
 	source = wireless-mediatek-Replace-rcu_swap_protected-with-rc.patch
