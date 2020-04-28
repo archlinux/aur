@@ -5,9 +5,9 @@
 # Original Author: David Fuhr <david.fuhr@web.de>
 
 pkgname=ganttproject
-pkgver=2.8.10
-_build=r2364
-pkgrel=3
+pkgver=2.8.11
+_build=r2393
+pkgrel=1
 pkgdesc="A project scheduling application featuring gantt chart, resource management, calendaring."
 arch=('i686' 'x86_64')
 url="http://www.ganttproject.biz/"
@@ -23,10 +23,10 @@ package() {
 
 	chmod 755 "$pkgdir/opt/$pkgname/ganttproject"
 	install -D -m0644 "$srcdir/ganttproject.desktop" "$pkgdir/usr/share/applications/ganttproject.desktop"
-	install -D -m0644 "$srcdir/ganttproject-$pkgver-$_build/plugins-$pkgver/ganttproject/data/resources/icons/ganttproject.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/ganttproject.png"
+	install -D -m0644 "$srcdir/ganttproject-$pkgver-$_build/plugins/$pkgver/ganttproject/data/resources/icons/ganttproject.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/ganttproject.png"
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s "/opt/$pkgname/ganttproject" "$pkgdir/usr/bin/ganttproject"
 }
 
-md5sums=('aa04f3318403d6d3a0dbb2749f055942'
+md5sums=('2da0e6dfc9580f45646629e9619f5843'
          '5139adddebc92d9da94b8448176d4d21')

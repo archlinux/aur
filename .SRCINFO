@@ -1,16 +1,16 @@
 pkgbase = ganttproject
 	pkgdesc = A project scheduling application featuring gantt chart, resource management, calendaring.
-	pkgver = 2.8.10
-	pkgrel = 3
+	pkgver = 2.8.11
+	pkgrel = 1
 	url = http://www.ganttproject.biz/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = unzip
 	depends = java-runtime
-	source = http://dl.ganttproject.biz/ganttproject-2.8.10/ganttproject-2.8.10-r2364.zip
+	source = http://dl.ganttproject.biz/ganttproject-2.8.11/ganttproject-2.8.11-r2393.zip
 	source = ganttproject.desktop
-	md5sums = aa04f3318403d6d3a0dbb2749f055942
+	md5sums = 2da0e6dfc9580f45646629e9619f5843
 	md5sums = 5139adddebc92d9da94b8448176d4d21
 
 pkgname = ganttproject
