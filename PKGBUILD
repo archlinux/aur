@@ -1,11 +1,11 @@
 pkgname=cairo-ubuntu
 _realpkg=cairo
 pkgver=1.16.0
-pkgrel=2
+pkgrel=3
 pkgdesc="2D graphics library with support for multiple output devices (with ubuntu patches)"
 url="https://cairographics.org/"
 arch=(x86_64)
-provides=("${_realpkg}=${pkgver}")
+provides=("${_realpkg}")
 license=(LGPL MPL)
 conflicts=("cairo")
 depends=(libpng libxrender libxext fontconfig pixman glib2 lzo)
