@@ -6,7 +6,6 @@ pkgbase = glasscord-bin
 	arch = any
 	license = Apache License 2.0
 	makedepends = git
-	makedepends = npm
 	depends = discord
 	provides = glasscord
 	conflicts = glasscord
