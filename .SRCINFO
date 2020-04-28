@@ -1,6 +1,6 @@
 pkgbase = emerald-themes
 	pkgdesc = Themes for emerald
-	pkgver = 0.8.16
+	pkgver = 0.8.18
 	pkgrel = 1
 	url = https://gitlab.com/compiz/emerald-themes/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = emerald-themes
 	makedepends = pkgconfig
 	depends = emerald
 	conflicts = emerald-themes-git
-	source = https://gitlab.com/compiz/emerald-themes/-/archive/v0.8.16/emerald-themes-v0.8.16.tar.bz2
-	sha256sums = 5e5cb2e2ebdbcbe44d03cf48caa8460c3e9b18ca78b0583946a824e1548b75e7
+	source = https://gitlab.com/compiz/emerald-themes/-/archive/v0.8.18/emerald-themes-v0.8.18.tar.bz2
+	sha256sums = 54e563a4ed785b7d579a6579ff5d42c0e28fd3e0027398398b260a869ea114e1
 
 pkgname = emerald-themes
 
