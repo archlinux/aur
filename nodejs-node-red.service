@@ -1,0 +1,17 @@
+[Unit]
+Description=Node-RED graphical event wiring tool
+Wants=network.target
+Documentation=https://nodered.org/docs/
+
+[Service]
+Type=simple
+User=nodejs-node-red
+Group=nodejs-node-red
+WorkingDirectory=/usr/share/nodejs-node-red
+EnvironmentFile=/etc/default/nodejs-node-red
+ExecStart=/usr/bin/node-red ${NODE_OPTIONS} ${NODE_RED_OPTIONS}
+KillSignal=SIGINT
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
