@@ -1,7 +1,7 @@
 pkgbase = krew
 	pkgdesc = Plugin manager for kubectl command-line tool
 	pkgver = 0.3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://krew.sigs.k8s.io/
 	arch = x86_64
 	arch = aarch64

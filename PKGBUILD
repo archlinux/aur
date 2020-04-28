@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=krew
 pkgver=0.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Plugin manager for kubectl command-line tool'
 arch=('x86_64' 'aarch64' 'arm' 'arm6h' 'arm7h')
 url='https://krew.sigs.k8s.io/'
@@ -19,7 +19,7 @@ prepare() {
 }
 
 build() {
-  _commit=$(zcat "${srcdir}/${pkgname}-${pkgver}.tar.gz" | git get-tar-commit-id)
+  _commit=$(zcat "${pkgname}-${pkgver}.tar.gz" | git get-tar-commit-id)
   local -a x=(
     sigs.k8s.io/krew/internal/version.gitCommit="${_commit:?}"
     sigs.k8s.io/krew/internal/version.gitTag="v${pkgver}"
