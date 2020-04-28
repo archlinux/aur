@@ -1,8 +1,8 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 _pkgname='hlsdl'
 pkgname="$_pkgname-git"
-pkgver='r181.be7300b'
-pkgrel='2'
+pkgver='0.27.r186.gcbf4301'
+pkgrel='1'
 pkgdesc='C program to download VoD HLS (.m3u8) files - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/selsta/$_pkgname"
@@ -18,7 +18,7 @@ _sourcedirectory="$pkgname"
 
 pkgver() {
 	cd "$srcdir/$_sourcedirectory/"
-	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf '%s.r%s.g%s' "$(sed -nE 's/^.*hlsdl v([0-9.]*).*$/\1/p' 'src/misc.c')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
