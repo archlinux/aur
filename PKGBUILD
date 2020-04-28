@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Semyon Maryasin <simeon@maryasin.name>
 pkgname=dispatch_ng
 pkgver=1.0
 pkgrel=1
