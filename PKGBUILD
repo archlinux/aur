@@ -3,12 +3,12 @@
 
 pkgname=gtkmathview
 pkgver=0.8.0
-pkgrel=6
+pkgrel=7
 pkgdesc="C++ rendering engine for MathML documents"
 arch=('x86_64')
 url="http://helm.cs.unibo.it/mml-widget/"
 license=('LGPL3')
-depends=('popt' 'gtk2' 't1lib' 'gmetadom' 'pangox-compat')
+depends=('popt' 'gtk2' 't1lib' 'gmetadom')
 source=(http://helm.cs.unibo.it/mml-widget/sources/${pkgname}-${pkgver}.tar.gz
         gtkmathview-0.8.0-gcc43.patch
         gtkmathview-0.8.0-cond-t1.patch
@@ -16,13 +16,13 @@ source=(http://helm.cs.unibo.it/mml-widget/sources/${pkgname}-${pkgver}.tar.gz
         gtkmathview-0.8.0-includes.patch
         gtkmathview-gcc6.patch
         gtkmathview-gcc7.patch)
-md5sums=('b53564e553728d4b69f7d366dfeb5299'
-         '92eb2870c1922cbebd5566900cde220b'
-         'a79a27e00908e75712bc9453b669fe61'
-         '8c8620aee002b30975e1e175ef9af7a7'
-         '4fc8daefbf27d49067b0c66bba54f428'
-         '280e26beb1b6f1008d75b90c485dd47f'
-         '8ecffe417121723755749444dfcbbafb')
+sha256sums=('1dc30175da6a3c560a7d62d1abe1c2f9829d988e6f1a7c5e766544575c558c43'
+            'e55785f4dafedfe97679ce51e0753ffdd5eb8036b1dd00653b22e6e89aa02beb'
+            '731894b852a8f692a3a1778bf6666a43e6afaa38e30b73d90272ae56d65bf709'
+            '1437647e6782547021a774df6ee3efd23c1b80941044d4bf44b283879636fb3e'
+            '09641f1547c5a526fc901b417ba1b1ae59ea251e56164dbf765ee7132e0c988b'
+            '4ed73eb412392adbb48ea069290bb2a4d0c2de98597f55171b35ab01f72e7734'
+            '7921e647ef4bd5d94c5218a15b636fc1f01c4dc33f60175b6046bce726c9cfb9')
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -42,8 +42,10 @@ build() {
   cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
-    --disable-static
-  make LIBTOOL=/usr/bin/libtool
+    --disable-static \
+    --disable-gtk
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
 }
 
 package() {
