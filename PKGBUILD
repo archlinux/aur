@@ -1,4 +1,6 @@
-# Maintainer: Sylwek  <skmtrn At gmail dot com> 
+# Maintainer: Arisu  <alice at gaudon dot pro>
+# Contributor: Sylwek  <skmtrn at gmail dot com>
+# Contributor: Poscat <poscat at mail dot poscat dot moe>
 
 pkgname=caddy2
 pkgver=beta.13
