@@ -6,7 +6,7 @@ pkgdesc="Interbase PHP extension"
 arch=("i686" "x86_64")
 url="http://www.php.net"
 license=("PHP")
-depends=("php>7.4.5" "libfbclient")
+depends=("php>=7.4.5" "libfbclient")
 source=("http://www.php.net/distributions/php-${pkgver}.tar.bz2"
 	"interbase.ini")
 md5sums=("8f5b5c83421674364e3a5fb1f1fd37ac"
