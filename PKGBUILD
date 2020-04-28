@@ -4,7 +4,7 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 _upstream="compiz-bcop"
-_pkgver=0.8.16
+_pkgver=0.8.18
 _micro=""
 
 pkgname=compiz-bcop
@@ -34,4 +34,4 @@ package()
 	make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('0695a46f02f6238bf9a478124a562f71da32354b83c6e5c7ec97cfd49d9882d4')
+sha256sums=('1bc027d683ba3694aae0664d341379cb29fd721d4761fe45c1c185ee0d46d255')
