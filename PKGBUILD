@@ -4,11 +4,11 @@
 pkgname=onivim2
 pkgver=0.3.0
 _commit=49e7e78f6d0ec057526792ea6832a214b83c4b7d
-pkgrel=1
+pkgrel=2
 pkgdesc='Native, lightweight modal code editor'
 arch=('any')
 url='https://github.com/onivim/oni2'
-license=('commercial')
+license=('custom:OutrunLabsEULA')
 makedepends=('git' 'esy' 'ragel' 'nodejs' 'wget' 'bzip2' 'fontconfig' 'fuse2' 'glu' 'gtk3' 'harfbuzz'
               'libglvnd' 'libice' 'libpng' 'libsm' 'libx11' 'libxcursor' 'libxext' 'libxi' 'libxinerama'
               'libxrandr' 'libxt' 'libxxf86vm' 'm4' 'nasm' 'python2')
