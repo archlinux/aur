@@ -5,8 +5,8 @@ pkgbase="python-sacred"
 pkgname=("python-sacred")
 _pkgname="sacred"
 
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.8.1
+pkgrel=0
 epoch=0
 
 pkgdesc='Sacred is a tool to configure, organize, log and reproduce computational experiments.'
@@ -17,7 +17,7 @@ license=('MIT')
 makedepends=('python-distribute')
 checkdepends=('python-pymongo')
 source=("${url}/archive/${pkgver}.tar.gz")
-md5sums=('c098de44f3ab18edd4a50fdabcfde780')
+md5sums=('81498bcf73cd312f038685f7db9c82cb')
 
 build() {
   msg "Building Python 3"

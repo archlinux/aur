@@ -1,15 +1,15 @@
 pkgbase = python-sacred
 	pkgdesc = Sacred is a tool to configure, organize, log and reproduce computational experiments.
-	pkgver = 0.8.0
-	pkgrel = 2
+	pkgver = 0.8.1
+	pkgrel = 0
 	epoch = 0
 	url = https://github.com/IDSIA/sacred
 	arch = any
 	license = MIT
 	checkdepends = python-pymongo
 	makedepends = python-distribute
-	source = https://github.com/IDSIA/sacred/archive/0.8.0.tar.gz
-	md5sums = c098de44f3ab18edd4a50fdabcfde780
+	source = https://github.com/IDSIA/sacred/archive/0.8.1.tar.gz
+	md5sums = 81498bcf73cd312f038685f7db9c82cb
 
 pkgname = python-sacred
 	depends = python
