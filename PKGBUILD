@@ -4,7 +4,7 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 _upstream="libcompizconfig"
-_pkgver=0.8.16
+_pkgver=0.8.18
 _micro=""
 
 pkgname=libcompizconfig
@@ -38,4 +38,4 @@ package() {
     make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('c08ad534ace9bab87c618ffc03f12d3dcc32a41bd173349ae7ef573ff76339fc')
+sha256sums=('b18f733e7f52bbbf10170b09e2cd41ea324376bf4af9b103514602f2647046cd')
