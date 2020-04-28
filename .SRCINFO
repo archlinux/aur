@@ -1,0 +1,15 @@
+pkgbase = redi-search
+	pkgdesc = Redis module that implements a search engine on top of Redis.
+	pkgver = 1.6.12
+	pkgrel = 1
+	url = https://github.com/RediSearch/RediSearch
+	arch = x86_64
+	license = Custom
+	makedepends = git
+	makedepends = cmake
+	depends = redis
+	source = redi-search::git+https://github.com/RediSearch/RediSearch
+	md5sums = SKIP
+
+pkgname = redi-search
+
