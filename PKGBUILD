@@ -15,8 +15,8 @@ provides=("${_pkgname}" "polkit-gnome")
 conflicts=("${_pkgname}" "polkit-gnome")
 source=("git+$url"
         xfce-polkit.desktop)
-sha256sums=('SKIP'
-            'c7a18aa56a9e0b7b35f0817fa420a506b4b78d18baf62cece4e7488b3e93d968')
+b2sums=('SKIP'
+        'c4f811e62e3a002ab8a00ccea26a9ce41db5f9ce0c0584adaa305ee9d9dc26199c00967461d5ca92f2a63387783f6a9473ad279bc45214e75b255dbbb0d87e60')
 
 pkgver() {
   cd ${_pkgname}
