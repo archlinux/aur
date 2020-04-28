@@ -6,8 +6,8 @@
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.5.0rc4.r7.g0c57175f0
-pkgrel=4
+pkgver=0.5.0rc4.r27.gb786c32b6
+pkgrel=2
 pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
 arch=('i686' 'x86_64' 'armv7h')
@@ -27,9 +27,9 @@ b2sums=('SKIP'
 
 prepare() {
 	cd "$srcdir/$_pkgname"
-	mkdir -p $srcdir/go
-	export GOPATH="${srcdir}"/go
-	export PATH=$PATH:$GOPATH/bin
+	mkdir -p "${srcdir}/../go"
+	export GOPATH="${srcdir}/../go"
+	export PATH="$PATH:$GOPATH/bin"
 	# fix for broken version
 	chmod u+w -R "$GOPATH"
 	go get -d -v ./...
@@ -48,8 +48,8 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_pkgname"
-	export GOPATH="${srcdir}"/go
-	export PATH=$PATH:$GOPATH/bin
+	export GOPATH="${srcdir}/../go"
+	export PATH="$PATH:$GOPATH/bin"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
