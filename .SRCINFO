@@ -1,7 +1,7 @@
 pkgbase = obs-v4l2sink-git
 	pkgdesc = v4l2-output for obs-studio
 	pkgver = 0.1.0.r12.1ec3c8a+obs25.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CatxFish/obs-v4l2sink
 	arch = x86_64
 	license = GPL

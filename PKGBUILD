@@ -2,7 +2,7 @@
 pkgname=obs-v4l2sink-git
 obsver=$(obs --version | sed -e 's/[^0-9]*//;s/-.*//' 2>/dev/null)
 pkgver=0.1.0.r12.1ec3c8a+obs25.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="v4l2-output for obs-studio"
 arch=(x86_64)
 url="https://github.com/CatxFish/obs-v4l2sink"
@@ -33,7 +33,7 @@ pkgver() {
 prepare() {
 	cd "$srcdir"
 	# If obs is installed, then try to match installed version
-	test -z "$obsver" || git -C obs-studio co "$obsver"
+	test -z "$obsver" || git -C obs-studio checkout "$obsver"
 	mkdir -p build
 	cd build
 	cmake -DLIBOBS_INCLUDE_DIR="../obs-studio/libobs" -DCMAKE_INSTALL_PREFIX=/usr "../${pkgstem}"
