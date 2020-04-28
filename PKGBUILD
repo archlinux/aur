@@ -1,15 +1,15 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=oha
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Ohayou(おはよう), HTTP load generator, inspired by rakyll/hey with tui animation"
 arch=('x86_64')
 url="https://github.com/hatoo/oha"
 license=(MIT)
 makedepends=(cargo)
-source=($pkgname-$pkgver.tar.gz::https://github.com/hatoo/oha/archive/v${pkgver}.tar.gz)
-sha512sums=('de0b9157dee042bd5ceb102c409a6b240517a3966455dd7794f988fd00d5ab9f03542516fb3773f11c2ad491e202e195247b32886b19d589a7675a03f4a8fce2')
+source=($pkgname-$pkgver.tar.gz::https://github.com/hatoo/oha/archive/${pkgver}.tar.gz)
+sha512sums=('117e004e6cfc952939d902a3e7ff1ab3352e4040e4f047971ce8306e52052d914dab93bef096c5fcb92aaf92af0e23251625b738f486c057283932e690145deb')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -21,6 +21,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   install -Dm755 target/release/oha "$pkgdir"/usr/bin/oha
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
