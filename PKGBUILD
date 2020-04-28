@@ -2,7 +2,7 @@
 # Maintainer: Grey Christoforo <grey at christoforo dot net>
 
 pkgname=python-cadquery
-pkgver=2.0RC1
+pkgver=2.0
 pkgrel=1
 pkgdesc="A parametric CAD scripting framework based on PythonOCC"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/CadQuery/cadquery"
 license=('Apache')
 depends=('python-occ-cadquery-git')
 source=("https://github.com/CadQuery/cadquery/archive/${pkgver}.tar.gz")
-md5sums=('562d66e73cd8d3f8fa97cfdda8aa1b5d')
+md5sums=('a63754fdb54ae1dc77c7e20ff5c9d9b0')
 
 package() {
   cd "${srcdir}/cadquery-${pkgver}"
