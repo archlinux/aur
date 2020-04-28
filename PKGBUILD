@@ -8,8 +8,8 @@ arch=('x86_64')
 url="https://github.com/betta-cyber/netease-music-tui"
 license=('MIT')
 makedepends=('rust')
-provides=('netease-music-tui')
-conflicts=('netease-music-tui')
+provides=('netease-music-tui-bin')
+conflicts=('netease-music-tui-bin')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/betta-cyber/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('53a35bfdc9e69a4cfeb154eb082b7fe7af9a79ac32049a19d6536938d7114597')
 build() {
