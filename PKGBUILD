@@ -1,7 +1,7 @@
 # Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
 pkgname=sensu-go-cli
-pkgver=5.19.1
-_pkgbuild=10989
+pkgver=5.19.2
+_pkgbuild=11421
 _pkgver="${pkgver}-${_pkgbuild}"
 pkgrel=1
 pkgdesc="Sensu Go CLI"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("${pkgname/-go-/-}")
 conflicts=("${pkgname/-go-/-}")
 source=("${pkgname}-${_pkgver}_amd64.deb::https://packagecloud.io/sensu/stable/packages/debian/buster/${pkgname}_${_pkgver}_amd64.deb/download.deb")
-sha1sums=('d2c944092ef9abf57e4a26d20d7d7185d8cb38db')
+sha1sums=('bf60e7db4435a7326180706e9cc4e6ff5a3c1fd1')
 
 prepare() {
     cd "${srcdir}"
