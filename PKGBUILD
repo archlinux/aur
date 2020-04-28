@@ -4,13 +4,13 @@ _pkgname=xfce4-dockbarx-plugin
 pkgname=$_pkgname-gtk3-git
 epoch=2
 pkgver=r56+e132fcb
-pkgrel=3
+pkgrel=4
 pkgdesc="Embed DockbarX in the xfce4-panel"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/TiZ-EX1/xfce4-dockbarx-plugin"
 license=('X11')
-depends=('dockbarx-gtk3-git' 'xfce4-panel')
-makedepends=('git' 'vala0.46')
+depends=('dockbarx-gtk3-git' 'xfce4-panel>=4.14.4')
+makedepends=('git' 'vala')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _branch='pygi-python3'
@@ -23,10 +23,6 @@ pkgver() {
 }
 
 prepare() {
-  [ -d bin ] && rm -fr bin
-  mkdir bin
-  ln -s /usr/bin/valac-0.46 bin/valac
-  export PATH="$(pwd)/bin:r${PATH}"
   cd "${srcdir}/${_pkgname}"
   PREFIX=/usr python ./waf configure
 }
