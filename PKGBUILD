@@ -9,7 +9,7 @@ pkgname=(
 )
 pkgver=5.6
 pkgrel=1
-epoch=1
+epoch=3
 arch=(
     "i686"
 	"x86_64"
@@ -122,13 +122,13 @@ _package-headers()
 	echo "Installing build files..."
 	install -Dt "$builddir" -m644 ".config" "Makefile" "Module.symvers" "System.map" "version" "vmlinux"
 
-	#* 
+	#* Replace default tools in the headers Makefile with the ones we use
 	sed -i "s/HOSTCC       = gcc/HOSTCC       = \/opt\/proton-clang\/bin\/clang/g" "$builddir/Makefile"
 	sed -i "s/HOSTCXX      = g++/HOSTCXX      = \/opt\/proton-clang\/bin\/clang++\nHOSTLD       = \/opt\/proton-clang\/bin\/ld.lld/g" "$builddir/Makefile"
 	sed -i "s/CC\t\t= \$(CROSS_COMPILE)gcc/CC\t\t= \/opt\/proton-clang\/bin\/clang/g" "$builddir/Makefile"
 	sed -i "s/LD\t\t= \$(CROSS_COMPILE)ld/LD\t\t= \/opt\/proton-clang\/bin\/ld.lld/g" "$builddir/Makefile"
-	sed -i "s/NM\t\t= \$(CROSS_COMPILE)nm/LD\t\t= \/opt\/proton-clang\/bin\/llvm-nm/g" "$builddir/Makefile"
-	sed -i "s/OBJCOPY\t\t= \$(CROSS_COMPILE)objcopy/LD\t\t= \/opt\/proton-clang\/bin\/llvm-objcopy/g" "$builddir/Makefile"
+	sed -i "s/NM\t\t= \$(CROSS_COMPILE)nm/NM\t\t= \/opt\/proton-clang\/bin\/llvm-nm/g" "$builddir/Makefile"
+	sed -i "s/OBJCOPY\t\t= \$(CROSS_COMPILE)objcopy/OBJCOPY\t\t= \/opt\/proton-clang\/bin\/llvm-objcopy/g" "$builddir/Makefile"
 
 	install -Dt "$builddir/kernel" -m644 "kernel/Makefile"
 	install -Dt "$builddir/arch/x86" -m644 "arch/x86/Makefile"
