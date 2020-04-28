@@ -9,7 +9,7 @@ _pkgname=crypt-of-the-necrodancer
 epoch=1
 pkgver=1.29.14917
 _pkgver=1_29_14917
-pkgrel=4
+pkgrel=5
 pkgdesc="A roguelike rhythm game! Move on the beat to navigate ever changing dungeons"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -23,6 +23,9 @@ sha256sums=(SKIP
 	    '9753ea711a428a24333cb37be1f11a3a35860072723e89dd7599d1842f0f4f89'
       '99136db3939cbab2ae33181479e069c3d25298096758327a41d002494c8ae54c')
 PKGEXT=".pkg.tar"
+backup=("opt/gog/$_pkgname/game/data/{played.dat,save_data.xml,save_data.xml_TEMP}"
+				"opt/gog/$_pkgname/game/replays/"
+				"opt/gog/$_pkgname/game/logs/")
 
 package() {
   depends_i686=('libglvnd' 'openal' 'libxrandr' 'libpulse')
