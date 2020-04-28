@@ -1,0 +1,21 @@
+pkgbase = lua-web_sanitize
+	pkgdesc = Lua library for sanitizing untrusted HTML
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/leafo/web_sanitize
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks
+	makedepends = git
+	source = https://github.com/leafo/web_sanitize/archive/v1.0.0.tar.gz
+	sha256sums = 64da4fcfd2c025c250b6a91e1a26558c2d9265bb8f1f28d71f323ac55ec5eab3
+
+pkgname = lua-web_sanitize
+	pkgdesc = Web_sanitize for Lua 5.3
+
+pkgname = lua51-web_sanitize
+	pkgdesc = Web_sanitize for Lua 5.1
+
+pkgname = lua52-web_sanitize
+	pkgdesc = Web_sanitize for Lua 5.2
+
