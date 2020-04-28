@@ -1,4 +1,4 @@
-pkgbase = glasscord
+pkgbase = glasscord-bin
 	pkgdesc = Providing composition effects to the Discord client.
 	pkgver = 0.0.6
 	pkgrel = 1
@@ -8,8 +8,8 @@ pkgbase = glasscord
 	makedepends = git
 	makedepends = npm
 	depends = discord
-	source = https://github.com/AryToNeX/Glasscord/archive/v0.0.6.tar.gz
-	md5sums = f68649dcbb57829f1400bb85f03458fc
+	source = https://github.com/AryToNeX/Glasscord/releases/download/v0.0.6/glasscord.asar
+	md5sums = 0a40e9781a21ed484ed371185a5a0ef5
 
-pkgname = glasscord
+pkgname = glasscord-bin
 

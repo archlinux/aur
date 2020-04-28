@@ -1,5 +1,5 @@
 # Maintainer: depsterr <depsterr at protonmail dot com>
-pkgname=glasscord
+pkgname=glasscord-bin
 pkgver=0.0.6
 pkgrel=1
 epoch=
@@ -19,20 +19,15 @@ backup=()
 options=() 
 install=
 changelog=  
-source=("https://github.com/AryToNeX/Glasscord/archive/v0.0.6.tar.gz")
+source=("https://github.com/AryToNeX/Glasscord/releases/download/v0.0.6/glasscord.asar")
 noextract=()
-md5sums=("f68649dcbb57829f1400bb85f03458fc")
+md5sums=("0a40e9781a21ed484ed371185a5a0ef5")
 validpgpkeys=()
-
-build() {
-	cd "$srcdir/Glasscord-$pkgver"
-	npm install
-}
 
 package() {
 	injdir=`find ~/.config/discord -name "discord_desktop_core" -type d`
 	
-	cp "$srcdir/Glasscord-$pkgver/glasscord.asar" "$injdir"
+	cp "$srcdir/glasscord.asar" "$injdir"
 
 	echo "require('./glasscord.asar')" | cat - "$injdir/index.js" > "$srcdir/index.js"
 	cp "$srcdir/index.js" "$injdir"
