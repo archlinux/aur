@@ -8,6 +8,8 @@ pkgbase = glasscord-git
 	makedepends = git
 	makedepends = npm
 	depends = discord
+	provides = glasscord
+	conflicts = glasscord
 	source = Glasscord::git+git://github.com/AryToNeX/Glasscord.git
 	md5sums = SKIP
 
