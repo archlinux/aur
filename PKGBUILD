@@ -2,7 +2,7 @@
 
 pkgname=python-signify
 _name=${pkgname#python-}
-pkgver=0.1.5
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Module to generate and verify PE signatures'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-pyasn1' 'python-asn1crypto' 'python-oscrypto' 'python-
 makedepends=('python-setuptools')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('f00ecff9dd166f7216ea14598ec7c97bd3676ff2e99223b424d5cf8ee86c5fb9')
+sha256sums=('f0bdbe8932e12f1b332ef7f5211681f780ca29812181d51aeb26db0892a75e39')
 
 build() {
     cd $srcdir/${_name}-${pkgver}
