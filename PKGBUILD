@@ -9,6 +9,7 @@ pkgdesc='Command line based tool for PE32/PE32+ file analysis'
 arch=('i686' 'x86_64')
 url='http://pev.sourceforge.net/'
 license=('GPL')
+conflicts=('pev')
 makedepends=('unzip')
 depends=('glibc' 'openssl' 'pcre')
 source=('pev-git::git+https://github.com/merces/pev')
