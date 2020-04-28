@@ -1,0 +1,45 @@
+pkgbase = lua-sci-lang
+	pkgdesc = Syntax extensions to LuaJIT for scientific computing
+	pkgver = 1.0.0.beta10
+	pkgrel = 1
+	url = https://scilua.org/
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks
+	depends = luajit
+	depends = lua-sci
+	depends = lua51-sci
+	depends = lua52-sci
+	provides = scilua
+	source = https://github.com/stepelu/lua-sci-lang/archive/v1.0.0-beta10.tar.gz
+	source = sci-lang-1.0.0.beta10-1.rockspec
+	sha256sums = 1c97fff2171972b3617fa9acf9c330f7a186d1613a64804f4cfba78c4dcd50f2
+	sha256sums = 31cd7d3b194543b9373ba85548ac270cc7bdb20713bf9d4c0a12f2183391c097
+
+pkgname = lua-sci-lang
+	pkgdesc = Syntax extensions to LuaJIT for scientific computing for Lua 5.3
+	depends = lua51-sci-lang
+	depends = lua52-sci-lang
+	depends = luajit
+	depends = lua-sci
+	depends = lua51-sci
+	depends = lua52-sci
+
+pkgname = lua51-sci-lang
+	pkgdesc = Syntax extensions to LuaJIT for scientific computing for Lua 5.1
+	depends = lua-sci-lang
+	depends = lua52-sci-lang
+	depends = luajit
+	depends = lua-sci
+	depends = lua51-sci
+	depends = lua52-sci
+
+pkgname = lua52-sci-lang
+	pkgdesc = Syntax extensions to LuaJIT for scientific computing for Lua 5.2
+	depends = lua-sci-lang
+	depends = lua51-sci-lang
+	depends = luajit
+	depends = lua-sci
+	depends = lua51-sci
+	depends = lua52-sci
+
