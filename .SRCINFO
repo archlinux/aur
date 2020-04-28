@@ -1,7 +1,7 @@
 pkgbase = river-git
 	pkgdesc = A dyanmic wayland compositor.
-	pkgver = r147.109a744
-	pkgrel = 1
+	pkgver = r171.7988a2e
+	pkgrel = 2
 	url = https://github.com/ifreund/river
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = river-git
 	depends = wlroots
 	provides = river
 	conflicts = river
-	source = river-r147.109a744::git+https://github.com/ifreund/river.git
+	source = river::git+https://github.com/ifreund/river.git
 	md5sums = SKIP
 
 pkgname = river-git
