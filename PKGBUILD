@@ -19,4 +19,5 @@ build() {
 package() {
     cd ${pkgname}-${pkgver}
     make install
+    install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
