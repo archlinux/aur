@@ -1,0 +1,15 @@
+_ensure_java_version() {
+    case "$(archlinux-java get)" in
+        java-8-*)
+            printf '%s\n' 'Java 8 is no longer supported by Burpsuite. Please change your default Java implementation using `archlinux-java`.'
+            ;;
+    esac
+}
+
+post_install() {
+    _ensure_java_version
+}
+
+post_upgrade() {
+    _ensure_java_version
+}

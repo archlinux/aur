@@ -5,11 +5,11 @@
 # Contributor: kageurufu
 
 pkgname=burpsuite
-pkgver=2020.2.1
+pkgver=2020.4
 pkgrel=1
 pkgdesc="An integrated platform for performing security testing of web applications (free edition)."
 url="https://portswigger.net/burp/"
-depends=('java-runtime')
+depends=('java-runtime>=9')
 arch=('any')
 license=('custom')
 noextract=("${pkgname}-${pkgver}.jar")
@@ -17,7 +17,8 @@ source=("${pkgname}-${pkgver}.jar::https://portswigger.net/burp/releases/downloa
         LICENSE
         burpsuite.desktop
         icon64.png)
-sha256sums=('d60aae76f65bbea92775fff73a35ee395841ee817d7f7eff281970d79270d622'
+install=burpsuite.install
+sha256sums=('009ceb84060724dc4a0943c69b2cc8a0e382ef68085216d8e610f944707576a6'
             'a1146672de7084a1cddc5b7dab4d18b3530c194bd6e45a2b0ac04b579751ca30'
             '950c61d7ce1257c21a4152abebb8da320d0206ceb59247d6c912903d1ed39fc8'
             'd31232a7dbdab9d5723f12aa25c52d13fd46ef2e8837a85fb9a08c3a7f151541')
@@ -35,7 +36,7 @@ package() {
   # Create startup file for burpsuite.
   echo "#!/bin/sh" > ${pkgdir}/usr/bin/${pkgname}
   echo "exec \$JAVA_HOME/bin/java -jar /usr/share/burpsuite/burpsuite.jar \$@" >> ${pkgdir}/usr/bin/${pkgname}
-  chmod +x ${pkgdir}/usr/bin/${pkgname}
+  chmod 755 ${pkgdir}/usr/bin/${pkgname}
 }
 
 # vim:set ts=2 sw=2 et:
