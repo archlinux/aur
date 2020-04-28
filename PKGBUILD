@@ -4,7 +4,10 @@
 
 pkgname=chromium-fedora
 pkgver=81.0.4044.122
-pkgrel=1
+pkgrel=2
+
+_rpmver=$pkgver
+_rpmrel=1
 _fedorarel=33
 _fedoramirror=http://mirrors.dotsrc.org/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/c
 
@@ -22,9 +25,9 @@ options=('!emptydirs' '!strip')
 provides=('chromium')
 conflicts=('chromium')
 source=(
-  ${_fedoramirror}/chromium-${pkgver}-${pkgrel}.fc${_fedorarel}.x86_64.rpm
-  ${_fedoramirror}/chromium-common-${pkgver}-${pkgrel}.fc${_fedorarel}.x86_64.rpm
-  ${_fedoramirror}/chromedriver-${pkgver}-${pkgrel}.fc${_fedorarel}.x86_64.rpm
+  ${_fedoramirror}/chromium-${_rpmver}-${_rpmrel}.fc${_fedorarel}.x86_64.rpm
+  ${_fedoramirror}/chromium-common-${_rpmver}-${_rpmrel}.fc${_fedorarel}.x86_64.rpm
+  ${_fedoramirror}/chromedriver-${_rpmver}-${_rpmrel}.fc${_fedorarel}.x86_64.rpm
 )
 sha256sums=(
   '8b20c658057ed12ee370aa0e7032ba63eb5f75a3905b2c6785fc02d4e8429ded'
@@ -42,8 +45,6 @@ package() {
   mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
 
   chmod 4755 "$pkgdir/usr/lib/chromium-browser/chrome-sandbox"
-
-  ln -s /usr/bin/chromium-browser "$pkgdir/usr/bin/chromium"
 }
 
 # vim:set ts=2 sw=2 et:
