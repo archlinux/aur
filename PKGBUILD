@@ -2,7 +2,7 @@
 # Contributor: NOGISAKA Sadata <ngsksdt@gmail.com>
 
 pkgname=doctl-bin
-pkgver=1.42.0
+pkgver=1.43.0
 pkgrel=1
 pkgdesc='A command line tool for DigitalOcean services'
 url='https://github.com/digitalocean/doctl'
@@ -11,7 +11,7 @@ arch=('x86_64')
 provides=('doctl')
 conflicts=('doctl')
 source=("https://github.com/digitalocean/doctl/releases/download/v$pkgver/doctl-$pkgver-linux-amd64.tar.gz")
-sha512sums=('d86e2da46191a9bdc2587c605bba2a85085f50953016219137d462607a9b343246aede58501e554bee625c6a6de4f181db5c3c9df9ba438af6b2056a8e852320')
+sha512sums=('31708c389be9fe62839acf0616359fb4231ec770a379b8ce227fcfd9dcf5eb9f2172db6bd93ea9e225203b10f4b851835829349c06c440a086eaf079231a5d7b')
 
 package() {
     install -Dm 755 "$srcdir/doctl" "$pkgdir/usr/bin/doctl"
