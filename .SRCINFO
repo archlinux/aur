@@ -1,11 +1,11 @@
 pkgbase = webstorm
 	pkgdesc = JavaScript IDE and HTML editor.
 	pkgver = 2020.1b201.6668.106
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/webstorm/
 	arch = x86_64
 	arch = i686
-	license = commercial
+	license = custom:jetbrains
 	depends = glib2
 	options = !strip
 	source = https://download.jetbrains.com/webstorm/WebStorm-2020.1.tar.gz
