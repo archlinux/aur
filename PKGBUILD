@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=krew
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Plugin manager for kubectl command-line tool'
 arch=('x86_64' 'aarch64' 'arm' 'arm6h' 'arm7h')
 url='https://krew.sigs.k8s.io/'
@@ -37,9 +37,6 @@ build() {
 check() {
   cd "${pkgname}-${pkgver}"
   go test -short ./...
-
-  echo "Verify './krew version' contains version (v${pkgver}) and commit id (${_commit:?})"
-  [[ $(./krew version 2>/dev/null) == *"v${pkgver}"*"${_commit}"* ]]
 }
 
 package() {
