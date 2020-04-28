@@ -2,8 +2,8 @@
 
 _pkgname=lxqt-kwin-desktop
 pkgname=$_pkgname-git
-pkgver=0.14.0
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="The LXQt-Kwin desktop"
 arch=("any")
 url="http://lxqt.org"
@@ -38,13 +38,11 @@ optdepends=("lxqt-connman-applet: Qt front-end to ConnMan"
 	"kvantum-qt5: SVG-based Qt5 theme engine plus a config tool and extra themes"
 	"featherpad: Pure Qt text editor"
 	"feathernotes: Lightweight Qt hierarchical notes-manager for Linux"
-	"screengrab: Screenshot capture"
-	"qlipper: Lightweight & cross-platform clipboard history applet based on qt"
 	"qps: Task Monitoring"
 	"lector: Qt based ebook reader with support for PDF, epub, djvu, fb2, comicbooks, mobi, azw"
 	"qpdfview: A tabbed PDF viewer using the poppler library."
 	"mpv: Recommended video player"
-	"audacious-qt5: Recommended audio player"
+	"audacious: Recommended audio player"
 	"mystiq: FFmpeg GUI front-end based on Qt5."
 	"ffaudioconverter: Graphical audio converter"
 	"converseen: A batch image processor"
