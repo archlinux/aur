@@ -3,7 +3,7 @@
 # Contributor: Wojtek Gawroński <afronski@gmail.com>
 
 pkgname=nomad-bin
-pkgver=0.10.5
+pkgver=0.11.1
 pkgrel=1
 pkgdesc='A distributed, highly available, datacenter-aware scheduler'
 arch=('x86_64')
@@ -21,11 +21,11 @@ source=("https://releases.hashicorp.com/nomad/${pkgver}/nomad_${pkgver}_linux_am
 		'nomad-client.hcl'
 		'nomad-client.service'
 		'nomad-server.hcl')
-md5sums=('25b140768575789a05fa9b41fd5db613'
-         '6e2feed2e18cafbb907025219d6e1ac1'
-         '762ead98787360e6737c11f8b98012a6'
-         '3e7c64bd93025fe93f2086c338a25947'
-         'decb0a61a3551b370783d2e00d3cedc5')
+sha256sums=('711e98b89ac4f5540bf3d6273379999f6c4141529531c262222e63ce491f5176'
+         	'85b6938ba13b450f8b7b9ca281178eea57a9409948b9e70b69d6a66a4dbdaa7b'
+         	'c3650a0f88cb6c511731e26f25dddfe531de3cb833fa1780ec68273faef97c97'
+         	'1ddf845cfbb2beff7162bd7299705338cf1611fc9f7dfe6a093e4c9cce43e0d2'
+         	'428c929e205e6ed4da1668534f413fb7e9484ab88c26f8f866d49f8f6ae207e8')
 
 package() {
   install -Dm0755 nomad "${pkgdir}/usr/bin/nomad"
