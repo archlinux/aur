@@ -4,15 +4,13 @@
 pkgname=unifi-beta
 pkgver=5.13.18
 _pkgver=b0197fba32
-pkgrel=1
+pkgrel=2
 pkgdesc='Controller for Ubiquiti UniFi accesspoints'
-arch=('any')
+arch=('x86_64' 'armv7h' 'aarch64')
 url='http://www.ubnt.com/'
 license=('custom')
 depends=('mongodb' 'java-runtime' 'fontconfig')
 provides=('unifi')
-conflicts=('unifi' 'unifi-controller-beta')
-replaces=('unifi-controller-beta')
 source=("${pkgname}-${pkgver}.zip::https://www.ubnt.com/downloads/unifi/${pkgver}-${_pkgver}/UniFi.unix.zip"
         mongod
         unifi.service
