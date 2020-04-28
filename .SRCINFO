@@ -6,7 +6,7 @@ pkgbase = php-pdo-firebird
 	arch = i686
 	arch = x86_64
 	license = PHP
-	depends = php
+	depends = php>=7.4.5
 	depends = libfbclient
 	source = http://www.php.net/distributions/php-7.4.5.tar.bz2
 	source = pdo_firebird.ini
