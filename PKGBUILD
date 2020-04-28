@@ -3,6 +3,7 @@ pkgname=('drill-search-cli' 'drill-search-gtk')
 pkgbase=drill-search
 pkgver=2.1.1
 pkgrel=6
+pkgdesc="Search files without indexing, but clever crawling"
 arch=('x86_64')
 url="https://drill.software"
 license=('GPL2')
@@ -22,7 +23,7 @@ build() {
 }
 
 package_drill-search-cli() {
-	pkgdesc="Search files without indexing, but clever crawling (CLI version)"
+	pkgdesc+=" (CLI version)"
 
 	cd "Drill-$pkgver/Build/Drill-CLI-linux-$arch-release"
 	install -d "$pkgdir/"{opt/$pkgname,usr/bin}
@@ -33,7 +34,7 @@ package_drill-search-cli() {
 }
 
 package_drill-search-gtk() {
-	pkgdesc="Search files without indexing, but clever crawling (GTK version)"
+	pkgdesc+=" (GTK version)"
 	depends=('gtk3' 'xdg-utils')
 
 	cd "Drill-$pkgver/Build/Drill-GTK-linux-$arch-release"
@@ -42,6 +43,8 @@ package_drill-search-gtk() {
 	install -Dm755 "$pkgname" -t "$pkgdir/opt/$pkgname"
 	install -Dm755 "$srcdir/$pkgbase" "$pkgdir/usr/bin/$pkgname"
 	echo "/opt/$pkgname/$pkgname" "\$@" >> "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 Assets/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-	install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
+	install -Dm644 Assets/icon.svg \
+		"$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
+	install -Dm644 "$srcdir/$pkgname.desktop" -t \
+		"$pkgdir/usr/share/applications"
 }
