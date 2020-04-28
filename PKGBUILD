@@ -2,7 +2,7 @@
 
 pkgname=libpurple-lurch
 pkgver=0.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Plugin for libpurple (Pidgin, Adium, etc) implementing OMEMO (using axolotl)'
 arch=('i686' 'x86_64')
 url='https://github.com/gkdr/lurch'
@@ -10,7 +10,7 @@ license=('GPL')
 makedepends=('cmake' 'git')
 depends=('libpurple' 'mxml' 'libxml2' 'sqlite' 'libgcrypt')
 optdepends=('libpurple-carbons: message carbons support')
-conflicts=('libpurple-lurch-git')
+provides=('libpurple-lurch-git')
 source=("git+https://github.com/gkdr/lurch.git#tag=v${pkgver}"
         gitmodule-paths.patch)
 b2sums=('SKIP'
@@ -18,7 +18,7 @@ b2sums=('SKIP'
 
 prepare() {
   cd ${pkgname##libpurple-}
-  patch -p0 < ${srcdir}/gitmodule-paths.patch
+  patch -p0 < "${srcdir}"/gitmodule-paths.patch
   git submodule update --init --recursive
 }
 
