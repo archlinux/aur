@@ -1,7 +1,7 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=ashuffle
-pkgver=2.2.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Automatic library-wide shuffle for mpd."
 url="https://github.com/joshkunz/ashuffle"
@@ -9,26 +9,29 @@ arch=(x86_64 i686 armv6h armv7h aarch64)
 license=(MIT)
 
 depends=("libmpdclient")
-makedepends=("meson")
+makedepends=("meson" "cmake")
 
 source=(
   "https://github.com/joshkunz/ashuffle/archive/v${pkgver}/ashuffle-${pkgver}.tar.gz"
-  "tap-14e6.c::https://github.com/zorgnax/libtap/raw/14e6708db5215a657e615171682a1741023c9c0c/tap.c"
-  "tap-14e6.h::https://github.com/zorgnax/libtap/raw/14e6708db5215a657e615171682a1741023c9c0c/tap.h"
+  "git+https://github.com/abseil/abseil-cpp.git#commit=b69c7d880caddfc25bf348dbcfe9d45fdd8bc6e6"
+  "git+https://github.com/google/googletest.git#commit=703bd9caab50b139428cea1aaff9974ebee5742e"
 )
 sha256sums=(
-  "beec5e08336e70a29ae2a75c6ec4de9b9d0d48abf04b2c66f4db2fdc4e4af1e1"
-  "5952a5c99a273cc630eeb773461e5ee8255b3ddd19a9051f189e0ab1c1b7eaa8"
-  "063dbe4bbd0c93707b31f536b54c698d30793be3410f428f0647aeb859c267c9"
+  "4b877500cb0c4ad18f212f90e3affbd64fda84e98f3f74a9a804049444e14ccc"
+  'SKIP' 'SKIP'
 )
 
+
+prepare() {
+  cd "ashuffle-${pkgver}"
+  rmdir "subprojects/absl" "subprojects/googletest"
+
+  ln -s "${srcdir}/abseil-cpp" "subprojects/absl"
+  ln -s "${srcdir}/googletest" "subprojects/googletest"
+}
 
 build() {
   cd "ashuffle-${pkgver}"
-
-  mkdir -p t/libtap
-  cp -a "$srcdir/tap-14e6.c" t/libtap/tap.c
-  cp -a "$srcdir/tap-14e6.h" t/libtap/tap.h
 
   arch-meson -Dtests=enabled builddir
 
@@ -45,6 +48,12 @@ package() {
   cd "ashuffle-${pkgver}"
 
   DESTDIR="${pkgdir}" ninja -C builddir install
+
+  # clean up weird static libs installed
+  # this is a meson bug:
+  # https://github.com/mesonbuild/meson/issues/2550
+  rm -f "${pkgdir}/usr/lib/"*.a
+  rmdir "${pkgdir}/usr/lib"
 
   install -Dm644 "LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
