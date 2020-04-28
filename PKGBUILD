@@ -10,7 +10,8 @@ url='https://github.com/enjoy-digital/litex'
 license=('BSD')
 depends=('python-migen' 'python-pyserial' 'python-requests' 'python-pythondata-software-compiler_rt')
 makedepends=('python-setuptools')
-checkdepends=('python-pytest-runner')
+checkdepends=('python-pytest-runner' 'python-litedram' 'python-liteeth' 'python-liteiclink' 'python-litesdcard' 'yosys'
+              'python-pythondata-cpu-vexriscv' 'python-pythondata-cpu-picorv32' 'python-pythondata-cpu-lm32' 'python-pythondata-cpu-mor1kx')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('5ac44a14e0c1a122528692312a9a7927b3f2b7a506f02131ac672f35e064bf3d523c731c0e023a023bf2dc37f9396eb96b757b455632e2b2611d2e8fe2c899b3')
 
@@ -23,7 +24,7 @@ build() {
 check() {
   cd $_pkgname-$pkgver
 
-#  python setup.py pytest
+  python setup.py pytest --addopts -k-test_variants_minerva
 }
 
 package() {
