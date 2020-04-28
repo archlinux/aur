@@ -1,13 +1,13 @@
 pkgname=blackbox-explorer-bin
 _pkgname=blackbox-explorer
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Interactive log viewer for flight logs recorded with blackbox"
 arch=('x86_64')
 url="https://github.com/betaflight/blackbox-log-viewer"
 
 source=("https://github.com/betaflight/blackbox-log-viewer/releases/download/${pkgver}/betaflight-blackbox-explorer_${pkgver}_linux64.zip")
-sha256sums=('97a52a43cf5954bb73e2bf48191596b7fde7eb2690f00467c692ea4fbf053933')
+sha256sums=('39361b72e254824e3bf270df9ecb0451480e49e5625eb99962df3b542cf25c5e')
 
 options=(!strip)
 license=('GPL3')
