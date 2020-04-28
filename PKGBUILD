@@ -16,7 +16,7 @@ prepare() {
     cd "${srcdir}"
     chmod a+x ${_pkgname}
     ${srcdir}/${_pkgname} --appimage-extract
-    sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/${_pkgname} %U+" "squashfs-root/copytranslator.desktop"
+    sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/${_pkgname}+" "squashfs-root/copytranslator.desktop"
     sed -i "s+/opt/copytranslator/resources/linux-icon/icon.png+copytranslator+" "squashfs-root/copytranslator.desktop"
     sed -i "s+Name=copytranslator+Name=CopyTranslator+" "squashfs-root/copytranslator.desktop"
     find "squashfs-root/usr/share/icons/hicolor" -type d -exec chmod 755 {} \;
