@@ -1,13 +1,13 @@
 pkgbase = lua51-lanes
 	pkgdesc = A solution for running Lua multithreaded
-	pkgver = 3.11
-	pkgrel = 2
+	pkgver = 3.13.0
+	pkgrel = 1
 	url = https://github.com/LuaLanes/lanes
 	arch = x86_64
 	license = MIT
 	depends = lua51
-	source = lua51-lanes-3.11.tar.gz::https://github.com/LuaLanes/lanes/archive/v3.11.tar.gz
-	md5sums = 07ed104a450b76d5919cc8f46a5b4a2f
+	source = lua51-lanes-3.13.0.tar.gz::https://github.com/LuaLanes/lanes/archive/v3.13.0.tar.gz
+	md5sums = d34a0a726b6f4f70d1b385fca85795f9
 
 pkgname = lua51-lanes
 
