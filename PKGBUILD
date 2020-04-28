@@ -2,7 +2,7 @@
 pkgname=golangci-lint
 pkgdesc="Linters Runner for Go. 5x faster than gometalinter."
 pkgver=1.25.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url='https://github.com/golangci/golangci-lint'
 license=('GPL3')
@@ -10,6 +10,11 @@ depends=('glibc')
 makedepends=('git' 'go' 'gzip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/golangci/golangci-lint/archive/v${pkgver}.tar.gz")
 sha256sums=('034440e00f81d1b5adfe5e39bceb2f0b9cb19066195a61e750a4982bbe512cf3')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  go mod download
+}
 
 build() {
   export CGO_LDFLAGS="${LDFLAGS}"
@@ -29,7 +34,7 @@ check() {
   cd "${pkgname}-${pkgver}"
   # some tests build the binary and overwrite our build
   chmod 555 "$pkgname" # canary
-  GOLANGCI_LINT_INSTALLED=true go test ./...
+  GOLANGCI_LINT_CACHE="${srcdir}/golangci-lint-cache" GOLANGCI_LINT_INSTALLED=true go test -short ./...
 }
 
 package() {
