@@ -1,6 +1,6 @@
 pkgbase = g810-led-git
-	pkgdesc = Linux led controller for Logitech G213, G410, G413. G512, G513, G610, G810, G910 and GPRO Keyboards
-	pkgver = 0.3.9
+	pkgdesc = Linux led controller for Logitech G213, G410, G413. G512, G513, G610, G810, G815, G910 and GPRO Keyboards
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/MatMoul/g810-led
 	install = g810-led-git.install
@@ -11,15 +11,16 @@ pkgbase = g810-led-git
 	makedepends = make
 	depends = hidapi
 	optdepends = libusb: old implementation, for developpers
-	provides = g213-led=0.3.9
-	provides = g410-led=0.3.9
-	provides = g413-led=0.3.9
-	provides = g512-led=0.3.9
-	provides = g513-led=0.3.9
-	provides = g610-led=0.3.9
-	provides = g810-led=0.3.9
-	provides = g910-led=0.3.9
-	provides = gpro-led=0.3.9
+	provides = g213-led=0.4.0
+	provides = g410-led=0.4.0
+	provides = g413-led=0.4.0
+	provides = g512-led=0.4.0
+	provides = g513-led=0.4.0
+	provides = g610-led=0.4.0
+	provides = g810-led=0.4.0
+	provides = g815-led=0.4.0
+	provides = g910-led=0.4.0
+	provides = gpro-led=0.4.0
 	options = !emptydirs
 	backup = etc/g810-led/profile
 	backup = etc/g810-led/reboot
