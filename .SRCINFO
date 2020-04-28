@@ -1,6 +1,6 @@
 pkgbase = php-pdo-firebird
 	pkgdesc = Firebird PHP PDO extension
-	pkgver = 7.4.0
+	pkgver = 7.4.5
 	pkgrel = 1
 	url = http://www.php.net
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = php-pdo-firebird
 	license = PHP
 	depends = php
 	depends = libfbclient
-	source = http://www.php.net/distributions/php-7.4.0.tar.bz2
+	source = http://www.php.net/distributions/php-7.4.5.tar.bz2
 	source = pdo_firebird.ini
-	md5sums = 366b172daecb6a08c89ee014c75d3e72
+	md5sums = 8f5b5c83421674364e3a5fb1f1fd37ac
 	md5sums = 4a23b02aaa079d4419dad09b41b1f3a2
 
 pkgname = php-pdo-firebird
