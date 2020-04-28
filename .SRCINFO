@@ -1,0 +1,18 @@
+pkgbase = hlsdl
+	pkgdesc = C program to download VoD HLS (.m3u8) files
+	pkgver = 0.27
+	pkgrel = 1
+	url = https://github.com/selsta/hlsdl
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	depends = curl
+	depends = openssl
+	source = hlsdl-0.27-1.tar.gz::https://github.com/selsta/hlsdl/archive/cbf4301a912a3c0bbb418bd92b861f390f9c519c.tar.gz
+	sha256sums = fadc627f8695f71ca774ad728f85d230b40a22ddd1f28af4bfc81d0c68d916d1
+
+pkgname = hlsdl
