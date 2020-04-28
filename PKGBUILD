@@ -3,9 +3,9 @@
 
 pkgname=unifi
 pkgver=5.12.66
-pkgrel=1
+pkgrel=2
 pkgdesc='Centralized management system for Ubiquiti UniFi AP'
-arch=('any')
+arch=('x86_64' 'armv7h' 'aarch64')
 url='https://community.ubnt.com/unifi'
 # We are allowed to ship the software in our repository
 # https://mailman.archlinux.org/mailman/private/arch-dev/2014-August/015690.html

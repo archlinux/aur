@@ -1,9 +1,11 @@
 pkgbase = unifi
 	pkgdesc = Centralized management system for Ubiquiti UniFi AP
 	pkgver = 5.12.66
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.ubnt.com/unifi
-	arch = any
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = custom
 	depends = mongodb
 	depends = java-runtime-headless>=8
