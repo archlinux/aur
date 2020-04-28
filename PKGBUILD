@@ -3,11 +3,11 @@
 # Contributor: aksr <aksr at t-com dot me>
 
 pkgname=sandy-git
-pkgver=0.5r4.6dcd566
-pkgrel=4
+pkgver=0.6.r166.50204e1
+pkgrel=1
 pkgdesc="An ncurses text editor with an easy-to-read, hackable C source."
 arch=('i686' 'x86_64')
-url="https://github.com/antics/sandy.git"
+url="https://github.com/japanoise/sandy.git"
 license=('custom:MIT/X')
 depends=('ncurses')
 makedepends=('git')
@@ -19,7 +19,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  printf "%sr%s.%s" "$(awk '/VERSION =/ {print $3}' config.mk)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(awk '/VERSION =/ {print $3}' config.mk)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

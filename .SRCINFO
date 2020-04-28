@@ -1,8 +1,8 @@
 pkgbase = sandy-git
 	pkgdesc = An ncurses text editor with an easy-to-read, hackable C source.
-	pkgver = 0.5r4.6dcd566
-	pkgrel = 4
-	url = https://github.com/antics/sandy.git
+	pkgver = 0.6.r166.50204e1
+	pkgrel = 1
+	url = https://github.com/japanoise/sandy.git
 	arch = i686
 	arch = x86_64
 	license = custom:MIT/X
@@ -10,7 +10,7 @@ pkgbase = sandy-git
 	depends = ncurses
 	provides = sandy
 	conflicts = sandy
-	source = git+https://github.com/antics/sandy.git
+	source = git+https://github.com/japanoise/sandy.git
 	md5sums = SKIP
 	sha1sums = SKIP
 
