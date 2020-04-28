@@ -2,7 +2,7 @@
 
 _pkgname=mir-core
 pkgname=d-$_pkgname
-pkgver=1.1.0
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Base software building blocks and conventions for libmir'
 arch=('x86_64')
@@ -11,15 +11,13 @@ license=('custom:BSL')
 depends=('liblphobos')
 makedepends=('meson' 'ldc')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('86695f0c5be38027d12bfc619e51bc091b7e2357f871a428ad4ad9060f80d8e4e44613303103e3753ab6178330ac9ea126dd86ffb19e3b6f3ea97cba8f12eb3a')
+sha512sums=('a610e826371484b212f5d7c85a8354c39357d178b142806649b9297121b231021737168cac6ea30ad0ecbbcb25d1545504b4c6ce060dddbecdb83c65000e5895')
 
 prepare() {
   cd $_pkgname-$pkgver
 
   # Fix version in buildfile
-  sed -i "s/1.0.2/$pkgver/" meson.build
-  # Fix soname
-  sed -i "s/dc.get_id() == 'llvm'/false/" meson.build
+  sed -i "s/1.1.1/$pkgver/" meson.build
 }
 
 build() {
