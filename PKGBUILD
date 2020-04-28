@@ -1,19 +1,15 @@
-# Maintainer: Davide Depau <davide@depau.eu>
+# Maintainer: Cynthia Coan <cynthia@coan.dev>
 
 pkgname=ant-dracula-gtk-theme
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ant Dracula Theme for GTK 3.x"
+license=('GPL3')
 arch=(any)
 url=https://github.com/EliverLara/Ant-Dracula
 depends=('gtk3')
-conflicts=($pkgname ant-dracula-theme ant-dracula-theme-git)
-replaces=($pkgname ant-dracula-theme ant-dracula-theme-git)
+conflicts=(ant-dracula-theme-git)
 options=(!strip)
-
-# Hash and Timestamp (taken from macos-icon-theme pkgbuild)
-_p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
-read _s _t <<< $(echo -n $(curl -s $url | sed -n "s/$_p/\2\3/p"))
 
 source=("https://github.com/EliverLara/Ant-Dracula/archive/v$pkgver.tar.gz")
 sha256sums=('5de816ebdcdc5cccf02c8965bf7a38e0a9718a769e274505bcf3809d3ce6ece8')
