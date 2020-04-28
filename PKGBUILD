@@ -1,4 +1,4 @@
-# Maintainer: Laurent Carlier <lordheavym@gmail.com>
+# Maintainer: Danny Lin <[firstname] at kdrag0n dot dev>
 
 _pkgname=xf86-input-libinput
 pkgname=xf86-input-libinput-hires-scroll
