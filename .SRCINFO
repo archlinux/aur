@@ -1,10 +1,10 @@
 pkgbase = goland
 	pkgver = 2020.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/go/
 	arch = x86_64
 	arch = i686
-	license = commercial
+	license = custom:jetbrains
 	depends = glib2
 	options = !strip
 	source = https://download.jetbrains.com/go/goland-2020.1.1.tar.gz
