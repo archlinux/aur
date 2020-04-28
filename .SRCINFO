@@ -1,13 +1,15 @@
 pkgbase = qbittorrent-cli-bin
 	pkgdesc = Command line interface for remote qBittorrent instances
 	pkgver = 1.5.19350.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fedarovich/qbittorrent-cli
-	arch = x86_64
+	arch = any
 	license = MIT
+	depends = dotnet-runtime>=2.1.0
+	depends = dotnet-runtime<=3.0.0
 	options = staticlibs
-	source = https://github.com/fedarovich/qbittorrent-cli/releases/download/v1.5.19350.1/qbt-linux-x64-1.5.19350.1.tar.gz
-	sha512sums = 28d861f5825a321c4a8dfa13d436f561c252ddb17771619f9cd13083c26bd28441576d22e4d202d7e0f361d350b0bfb1d6c0a79201ee40a3cc849df5365026a6
+	source = https://github.com/fedarovich/qbittorrent-cli/releases/download/v1.5.19350.1/qbt-netcore21-1.5.19350.1.tar.gz
+	sha512sums = 39e084cca149f8a15c46389cf5c6b211f52a2fd6872ee7c20e7eb06c054375185147540f49a440c6af38323978324fd09002d7e73f45745e8823c564485daf60
 
 pkgname = qbittorrent-cli-bin
 
