@@ -2,7 +2,7 @@
 pkgname=authelia-git
 _pkgname=authelia
 pkgver=4.15.1.r17.gf8bd5063
-pkgrel=1
+pkgrel=2
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/authelia/authelia"
@@ -31,19 +31,21 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  export GOPATH="$srcdir/gopath"
+  cd "$srcdir/$_pkgname/web"
+  yarn install --frozen-lockfile
+  INLINE_RUNTIME_CHUNK=false yarn build
+  mv build ../public_html
+  cd ..
+  go get -u aletheia.icu/broccoli
+  go generate internal/server/*
   sed -i "s/__BUILD_TAG__/master/" cmd/authelia/constants.go
   sed -i "s/__BUILD_COMMIT__/$(git rev-parse HEAD)/" cmd/authelia/constants.go
   go build -ldflags '-w' -trimpath -o authelia cmd/authelia/*.go
-  cd web
-  yarn install --frozen-lockfile
-  INLINE_RUNTIME_CHUNK=false yarn build
 }
 
 package() {
   install -Dm644 "$srcdir/$_pkgname/$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
   install -Dm700 "$srcdir/$_pkgname/config.template.yml" "$pkgdir/etc/$_pkgname/configuration.yml"
   install -Dm755 "$srcdir/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -dm655 "$pkgdir/usr/share/webapps/$_pkgname"
-  cp -r "$srcdir/$_pkgname/web/build/." "$pkgdir/usr/share/webapps/$_pkgname/"
 }
