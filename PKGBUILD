@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=81.0.4044.122
-pkgrel=1
+pkgrel=2
 _launcher_ver=6
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
