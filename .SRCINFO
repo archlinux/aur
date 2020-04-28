@@ -1,6 +1,6 @@
 pkgbase = compiz-fusion-plugins-extra
 	pkgdesc = Compiz Extra plugins
-	pkgver = 0.8.16
+	pkgver = 0.8.18
 	pkgrel = 1
 	url = https://gitlab.com/compiz/compiz-plugins-extra/
 	arch = i686
@@ -10,14 +10,14 @@ pkgbase = compiz-fusion-plugins-extra
 	makedepends = intltool
 	makedepends = pkg-config
 	makedepends = gettext
-	depends = compiz-core>=0.8.16
+	depends = compiz-core>=0.8.18
 	depends = compiz-bcop
 	depends = compiz-fusion-plugins-main
 	depends = libnotify
 	conflicts = compiz-fusion-plugins-extra-git
 	options = !libtool
-	source = https://gitlab.com/compiz/compiz-plugins-extra/-/archive/v0.8.16/compiz-plugins-extra-v0.8.16.tar.bz2
-	sha256sums = 318e8f14547b9f6a8143b7b79cd07b13ddd595b9df0fb59025d4c5c7a3e5da92
+	source = https://gitlab.com/compiz/compiz-plugins-extra/-/archive/v0.8.18/compiz-plugins-extra-v0.8.18.tar.bz2
+	sha256sums = 2b31cd8aaed9e22e9b7aee7a72f4c3f0e33c4dfb87404c1981311ce2d338d33f
 
 pkgname = compiz-fusion-plugins-extra
 
