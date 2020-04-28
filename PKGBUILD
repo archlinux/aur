@@ -5,8 +5,8 @@
 # Contributor: Gabriele Lanaro <gabriele.lanaro@gmail.com>
 
 pkgname=f2c
-pkgver=20191129
-pkgrel=3
+pkgver=20200425
+pkgrel=1
 pkgdesc='Fortran to C code translator'
 url='http://www.netlib.org/f2c'
 license=('custom')
@@ -16,11 +16,11 @@ makedepends=('unzip')
 source=("$url/src.tgz"
         "$url/libf2c.zip")
 noextract=("libf2c.zip")
-sha256sums=('ae76b86c5ce887ad508a761509a762adf5ccb8d9ea0c40901264aa1b994878db'
+sha256sums=('75cea7d59ae2a704959132938d7e014f9c62602fce1ad1be996ac187ebf95c72'
             'ca404070e9ce0a9aaa6a71fc7d5489d014ade952c5d6de7efb88de8e24f2e8e0')
 
 prepare() {
-  cd $srcdir
+  cd "$srcdir"
   mv src f2c
   mkdir libf2c
   unzip -q libf2c.zip -d libf2c
@@ -29,22 +29,22 @@ prepare() {
 }
 
 build() {
-  cd $srcdir/libf2c
+  cd "$srcdir/libf2c"
   make hadd -f makefile.u
   make -f makefile.u
   make -f makefile.u libf2c.so
   
-  cd $srcdir/f2c
+  cd "$srcdir/f2c"
   make -f makefile.u
 }
 
 package() {
-  install -dm755 $pkgdir/usr/{bin,include,lib,share/licenses/$pkgname}
-  cd $pkgdir/usr
-  install -m755 $srcdir/f2c/f2c bin
-  install -m755 $srcdir/libf2c/libf2c.so lib
-  install -m755 $srcdir/libf2c/f2c.h include
-  cat <<EOF > $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  cd "$pkgdir"
+  install -dm755 usr/{bin,include,lib,share/licenses/$pkgname}
+  install -m755 "$srcdir/f2c/f2c" usr/bin
+  install -m755 "$srcdir/libf2c/libf2c.so" usr/lib
+  install -m755 "$srcdir/libf2c/f2c.h" usr/include
+  cat <<EOF > usr/share/licenses/$pkgname/LICENSE
 Copyright 1990-1996, 2000-2001 by AT&T, Lucent Technologies and Bellcore.
 
 Permission to use, copy, modify, and distribute this software
