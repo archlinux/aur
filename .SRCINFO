@@ -1,15 +1,14 @@
 pkgbase = python-httptools
 	pkgdesc = A collection of framework independent HTTP protocol utils.
-	pkgver = 0.0.13
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/MagicStack/httptools
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/h/httptools/httptools-0.0.13.tar.gz
-	sha256sums = e00cbd7ba01ff748e494248183abc6e153f49181169d8a3d41bb49132ca01dfc
+	source = https://files.pythonhosted.org/packages/source/h/httptools/httptools-0.1.1.tar.gz
+	sha256sums = 41b573cf33f64a8f8f3400d0a7faf48e1888582b6f6e02b82b9bd4f0bf7497ce
 
 pkgname = python-httptools
 
