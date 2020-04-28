@@ -2,7 +2,7 @@
 
 pkgname=uvicorn
 pkgver=0.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The lightning-fast ASGI server."
 arch=('any')
 url="https://www.uvicorn.org/"
@@ -38,4 +38,7 @@ package() {
   install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+
+  # XXX Remove unused data files
+  rm -f "${pkgdir}/usr/LICENSE.md"
 }
