@@ -1,0 +1,14 @@
+pkgbase = dispatch_ng
+	pkgdesc = Load balancing software to speed up internet connection
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/akash_rawal/dispatch_ng/
+	arch = x86_64
+	arch = armv7h
+	license = GPL3
+	depends = libevent
+	source = dispatch_ng-1.0.tar.gz::https://bintray.com/akashrawal/dispatch_ng/download_file?file_path=release-1.0%2Fdispatch_ng-1.0.tar.gz
+	md5sums = 8020b78637075981fd73d09c4c3a081f
+
+pkgname = dispatch_ng
+
