@@ -1,6 +1,6 @@
 pkgbase = emerald
 	pkgdesc = Emerald window decorator
-	pkgver = 0.8.16
+	pkgver = 0.8.18
 	pkgrel = 1
 	url = https://gitlab.com/compiz/emerald/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = emerald
 	makedepends = intltool
 	makedepends = pkg-config
 	makedepends = gettext
-	depends = compiz-core>=0.8.16
+	depends = compiz-core>=0.8.18
 	depends = libwnck
 	depends = libxres
 	depends = shared-mime-info
@@ -21,8 +21,8 @@ pkgbase = emerald
 	depends = hicolor-icon-theme
 	conflicts = emerald0.9
 	options = !libtool
-	source = https://gitlab.com/compiz/emerald/-/archive/v0.8.16/emerald-v0.8.16.tar.bz2
-	sha256sums = 9c299ca06c9d898fcd86e49f6a4d9104299fdcd11217dd4df28117cc95882961
+	source = https://gitlab.com/compiz/emerald/-/archive/v0.8.18/emerald-v0.8.18.tar.bz2
+	sha256sums = fef4ce5675f79840b811e42006063a2f21d1f3cc721c9a6d37e1a123dc6f0c54
 
 pkgname = emerald
 

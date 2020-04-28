@@ -5,7 +5,7 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 _upstream="emerald"
-_pkgver=0.8.16
+_pkgver=0.8.18
 _micro=""
 
 pkgname=emerald
@@ -39,4 +39,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('9c299ca06c9d898fcd86e49f6a4d9104299fdcd11217dd4df28117cc95882961')
+sha256sums=('fef4ce5675f79840b811e42006063a2f21d1f3cc721c9a6d37e1a123dc6f0c54')
