@@ -1,0 +1,16 @@
+pkgbase = codestats-cli
+	pkgdesc = A command utility to view your stats from Code::Stats
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://gitlab.com/code-stats/codestats-cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	noextract = codestats-cli-1.0.2.tgz
+	source = https://registry.npmjs.org/codestats-cli/-/codestats-cli-1.0.2.tgz
+	sha256sums = 37f3bd3db2ac0f7f17c1252a598c3d6894c8fe967119befb8e12958c6f35f6d1
+
+pkgname = codestats-cli
+
