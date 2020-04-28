@@ -1,7 +1,7 @@
 pkgbase = boost-note-bin
 	pkgdesc = Boost Note.next, a replacement for Boostnote, an open source note-taking app for programmers. Official binary.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://boostnote.io/
 	arch = any
 	license = GPL3
