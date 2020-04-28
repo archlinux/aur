@@ -1,5 +1,9 @@
 # Maintainer: 5anya <sanya at national dot shitposting dot agency>
 # Contributor: Luke Chen <doomer at yahoo dot com>
+
+# skip stripping for debugging purposes
+#options=('!strip')
+
 pkgname=gog-crypt-of-the-necrodancer
 _pkgname=crypt-of-the-necrodancer
 epoch=1
