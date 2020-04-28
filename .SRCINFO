@@ -1,7 +1,7 @@
 pkgbase = ossim
 	pkgdesc = OSSIM is a powerful suite of geospatial libraries and applications used to process imagery, maps, terrain, and vector data.
-	pkgver = 2.10.1
-	pkgrel = 2
+	pkgver = 2.11.1
+	pkgrel = 1
 	url = http://www.ossim.org
 	install = ossim.install
 	arch = i686
@@ -28,9 +28,9 @@ pkgbase = ossim
 	optdepends = java-environment-common
 	optdepends = openmpi
 	optdepends = gpstk-bin
-	source = https://github.com/ossimlabs/ossim/archive/Neptune-2.10.1.tar.gz
+	source = https://github.com/ossimlabs/ossim/archive/OrchidIsland-2.11.1.tar.gz
 	source = ossim.sh
-	md5sums = bca4bf6f51875d572c72efbb61666bfa
+	md5sums = 7a24fe73e990e0d0f286b5675c0ab6e7
 	md5sums = cb85c216a099b10f057cddeeae4a57fb
 
 pkgname = ossim

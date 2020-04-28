@@ -3,9 +3,9 @@
 # Contributor: Christian Wygoda <accounts@wygoda.net>
 
 pkgname=ossim
-_pkgname=Neptune	
-pkgver=2.10.1
-pkgrel=2
+_pkgname=OrchidIsland
+pkgver=2.11.1
+pkgrel=1
 pkgdesc="OSSIM is a powerful suite of geospatial libraries and applications used to process imagery, maps, terrain, and vector data."
 url="http://www.ossim.org"
 license=('LGPL')
@@ -17,7 +17,7 @@ optdepends=( 'java-environment-common' 'openmpi' 'gpstk-bin' )
 source=(https://github.com/ossimlabs/ossim/archive/${_pkgname}-${pkgver}.tar.gz
         ossim.sh )
 install=ossim.install
-md5sums=('bca4bf6f51875d572c72efbb61666bfa'
+md5sums=('7a24fe73e990e0d0f286b5675c0ab6e7'
          'cb85c216a099b10f057cddeeae4a57fb')
 
 build() {
