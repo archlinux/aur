@@ -8,7 +8,8 @@ pkgname=(
 	"linux-zest-git-headers"
 )
 pkgver=5.6
-pkgrel=6
+pkgrel=1
+epoch=1
 arch=(
     "i686"
 	"x86_64"
@@ -25,7 +26,6 @@ makedepends=(
 	"inetutils"
 	"kmod"
 	"libelf"
-	"llvm-proton-bin"
 	"python-sphinx"
 	"python-sphinx_rtd_theme"
 	"xmlto"
@@ -42,25 +42,27 @@ b2sums=(
 
 prepare()
 {
+	export LC_ALL=en_US.UTF-8
 	export PATH="/opt/proton-clang/bin:$PATH"
 
 	cd "linux-fivesix" || exit
 	
 	echo "Setting config..."
-	make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTLD=ld.lld zestop_defconfig
+	make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld zestop_defconfig
 
-	make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTLD=ld.lld -s kernelrelease > version
+	make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld -s kernelrelease > version
 	echo "Prepared $pkgbase version $(<version)"
 }
 
 build()
 {
+	export LC_ALL=en_US.UTF-8
 	export PATH="/opt/proton-clang/bin:$PATH"
 
 	cd "linux-fivesix" || exit
 
-	make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTLD=ld.lld all
-	make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTLD=ld.lld htmldocs
+	make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld all
+	make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld htmldocs
 }
 
 _package()
@@ -70,6 +72,7 @@ _package()
 		"coreutils"
 		"initramfs"
 		"kmod"
+		"llvm-proton-bin"
 	)
 	optdepends=(
 		"crda: to set the correct wireless channels of your country"
@@ -81,6 +84,7 @@ _package()
 		"WIREGUARD-MODULE"
 	)
 
+	export LC_ALL=en_US.UTF-8
 	export PATH="/opt/proton-clang/bin:$PATH"
 
 	cd "linux-fivesix" || exit
@@ -90,13 +94,13 @@ _package()
 
 	#* systemd expects to find the kernel here to allow hibernation
 	echo "Installing boot image..."
-	install -Dm644 "$(make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTLD=ld.lld -s image_name)" "$modulesdir/vmlinuz"
+	install -Dm644 "$(make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld -s image_name)" "$modulesdir/vmlinuz"
 
 	#* mkinitcpio uses this value as the kernel name
 	echo "$pkgbase" | install -Dm644 "/dev/stdin" "$modulesdir/pkgbase"
 
 	echo "Installing modules..."
-	make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTLD=ld.lld INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+	make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
 	rm "$modulesdir/"{"source","build"}
 }
@@ -109,12 +113,23 @@ _package-headers()
 		"linux-zest-headers"
 	)
 
+	export LC_ALL=en_US.UTF-8
+
 	cd "linux-fivesix" || exit
 
 	local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
 	echo "Installing build files..."
 	install -Dt "$builddir" -m644 ".config" "Makefile" "Module.symvers" "System.map" "version" "vmlinux"
+
+	#* 
+	sed -i "s/HOSTCC       = gcc/HOSTCC       = \/opt\/proton-clang\/bin\/clang/g" "$builddir/Makefile"
+	sed -i "s/HOSTCXX      = g++/HOSTCXX      = \/opt\/proton-clang\/bin\/clang++\nHOSTLD       = \/opt\/proton-clang\/bin\/ld.lld/g" "$builddir/Makefile"
+	sed -i "s/CC\t\t= \$(CROSS_COMPILE)gcc/CC\t\t= \/opt\/proton-clang\/bin\/clang/g" "$builddir/Makefile"
+	sed -i "s/LD\t\t= \$(CROSS_COMPILE)ld/LD\t\t= \/opt\/proton-clang\/bin\/ld.lld/g" "$builddir/Makefile"
+	sed -i "s/NM\t\t= \$(CROSS_COMPILE)nm/LD\t\t= \/opt\/proton-clang\/bin\/llvm-nm/g" "$builddir/Makefile"
+	sed -i "s/OBJCOPY\t\t= \$(CROSS_COMPILE)objcopy/LD\t\t= \/opt\/proton-clang\/bin\/llvm-objcopy/g" "$builddir/Makefile"
+
 	install -Dt "$builddir/kernel" -m644 "kernel/Makefile"
 	install -Dt "$builddir/arch/x86" -m644 "arch/x86/Makefile"
 	cp -t "$builddir" -a "scripts"
@@ -188,6 +203,8 @@ _package-docs()
 		"linux-docs"
 		"linux-zest-docs"
 	)
+
+	export LC_ALL=en_US.UTF-8
 
 	cd "linux-fivesix" || exit
 
