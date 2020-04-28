@@ -1,7 +1,7 @@
 # Maintainer: twilinx <twilinx@mesecons.net>
 
 pkgname=gtk3-typeahead
-pkgver=3.24.18
+pkgver=3.24.20
 pkgrel=1
 conflicts=(gtk3)
 provides=("gtk3=$pkgver" gtk3-print-backends libgtk-3.so libgdk-3.so libgailutil-3.so)
@@ -16,7 +16,7 @@ depends=(atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2 d
          cantarell-fonts colord rest libcups libcanberra fribidi iso-codes)
 makedepends=(gobject-introspection gtk-doc git glib2-docs sassc meson)
 license=(LGPL)
-_commit=f9decb0cd61f7102af6b5d1f70493bfe6dacb3d1  # tags/3.24.18^0
+_commit=db39ce2b1699acaf5d0ba160cf7cc68ccf6e16d6  # tags/3.24.20^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         settings.ini
         gtk-query-immodules-3.0.hook
