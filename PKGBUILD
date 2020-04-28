@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-hcc
 pkgver=3.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url="https://github.com/ROCm-Developer-Tools/HIP"
@@ -28,6 +28,13 @@ package() {
   cd "$srcdir/build"
 
   make DESTDIR="$pkgdir" install
+
+  # add links (hipconfig is for rocblas with tensile)
+  install -d "$pkgdir/usr/bin"
+  local _fn
+  for _fn in hipcc hip-config; do
+    ln -s "/opt/rocm/hip/bin/$_fn" "$pkgdir/usr/bin/$_fn"
+  done
 
   install -d "$pkgdir/etc/ld.so.conf.d"
   cat << EOF > "$pkgdir/etc/ld.so.conf.d/hip.conf"
