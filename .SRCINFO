@@ -1,7 +1,7 @@
 pkgbase = cef-minimal-3770
 	pkgdesc = Chromium Embedded Framework minimal release
 	pkgver = 75.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/chromiumembedded/cef
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = cef-minimal-3770
 	depends = libxcomposite
 	depends = at-spi2-atk
 	provides = cef
+	provides = cef-minimal
 	conflicts = cef-standard
 	conflicts = cef-git
 	conflicts = cef-minimal
