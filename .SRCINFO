@@ -17,7 +17,7 @@ pkgbase = gjs-git
 	depends = gobject-introspection-runtime
 	depends = js68
 	depends = dconf
-	provides = gjs
+	provides = gjs=1.63.91+2+g6ea0f836
 	conflicts = gjs
 	source = git+https://gitlab.gnome.org/GNOME/gjs.git/
 	sha256sums = SKIP
