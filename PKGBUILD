@@ -3,8 +3,8 @@
 
 pkgname=glibd
 _pkgname=GlibD
-pkgver=2.1.0
-pkgrel=7
+pkgver=2.2.0
+pkgrel=1
 pkgdesc='D bindings for the GLib C Utility Library'
 arch=('x86_64')
 url='https://github.com/gtkd-developers/GlibD'
@@ -12,7 +12,7 @@ license=('LGPL3')
 depends=('glib2' 'liblphobos')
 makedepends=('meson' 'ldc' 'gobject-introspection' 'gir-to-d')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('2e00933e666f213ef5e38d3df5695966a76cdac067603e39d09f7ac8a5a4cab48ea498044de1d9daa2920609b7f8d6d5c090a666a6507a563bb896be2cc8c32f')
+sha512sums=('c39af9a13fb3cb352e726f61e2a79e659ec18a0fefb7aaaefd9c6341cb8f4288c9072ed20e237d0723b2c2dbb08aec725c396e981ea5957532d5ba80704cfb28')
 
 build() {
   mkdir -p $_pkgname-$pkgver/build
