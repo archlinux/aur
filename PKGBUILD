@@ -24,7 +24,7 @@ build() {
   cd $_hgrepo
   [[ -d build ]] || mkdir build
   cd build
-  cmake ../$_hgrepo -DCMAKE_BUILD_TYPE=Release \
+  cmake .. -DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_INSTALL_PREFIX=/usr
   make
 }
