@@ -1,4 +1,4 @@
 #!/bin/bash
 
-gogdir="/opt/gog/crypt-of-the-necrodancer"
+gogdir="/opt/gog/crypt-of-the-necrodancer-amplified"
 "$gogdir"/start.sh

@@ -1,14 +1,13 @@
 # Maintainer: 5anya <sanya at national dot shitposting dot agency>
 # Contributor: Luke Chen <doomer at yahoo dot com>
 pkgname=gog-crypt-of-the-necrodancer-amplified
-_pkgname=crypt-of-the-necrodancer
+_pkgname=crypt-of-the-necrodancer-amplified
 epoch=1
 pkgver=1.29.14917
 _pkgver=1_29_14917
 _dlcver=2_59_21255
-pkgrel=1
+pkgrel=1.1
 pkgdesc="A roguelike rhythm game! (with the Amplified DLC)"
-conflicts=('gog-crypt-of-the-necrodancer')
 arch=('i686' 'x86_64')
 license=('custom')
 install=${pkgname}.install
@@ -19,9 +18,9 @@ source=("local://crypt_of_the_necrodancer_en_${_pkgver}.sh"
 	"$pkgname.install")
 sha256sums=(SKIP
             SKIP
-	    'd80562a04ded4b25bca9738267d1d93d2be8fef74570aa7d00d83471c4e71121'
-	    '9753ea711a428a24333cb37be1f11a3a35860072723e89dd7599d1842f0f4f89'
-            '99136db3939cbab2ae33181479e069c3d25298096758327a41d002494c8ae54c')
+            '070ec64e6d5bc1a4b68e73fd25a716b116b279718b338f071f0bea953532d4ff'
+            '1542f20660e4bf1fc78a35759a71d6d658d3b80279fe5223fc0d60f25d309f0e'
+            'bf6f3b593bfeef411cc0ff660bd2f469a41b14e1b5b4176f748cc70bf58a64e4')
 PKGEXT=".pkg.tar"
 
 package() {

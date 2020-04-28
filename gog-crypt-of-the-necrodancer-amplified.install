@@ -1,13 +1,13 @@
 post_install() {
-  touch /opt/gog/crypt-of-the-necrodancer/game/data/played.dat
-  touch /opt/gog/crypt-of-the-necrodancer/game/data/save_data.xml
-  touch /opt/gog/crypt-of-the-necrodancer/game/data/save_data.xml_TEMP
-  mkdir /opt/gog/crypt-of-the-necrodancer/game/replays/
-  mkdir /opt/gog/crypt-of-the-necrodancer/game/logs/
-  chmod 666 /opt/gog/crypt-of-the-necrodancer/game/data/played.dat
-  chmod 666 /opt/gog/crypt-of-the-necrodancer/game/data/save_data.xml
-  chmod 666 /opt/gog/crypt-of-the-necrodancer/game/data/save_data.xml_TEMP
-  chmod 777 /opt/gog/crypt-of-the-necrodancer/game/replays/
-  chmod 777 /opt/gog/crypt-of-the-necrodancer/game/logs/
-  echo "==> The save is located in /opt/gog/crypt-of-the-necrodancer/game/data/"
+  touch /opt/gog/crypt-of-the-necrodancer-amplified/game/data/played.dat
+  touch /opt/gog/crypt-of-the-necrodancer-amplified/game/data/save_data.xml
+  touch /opt/gog/crypt-of-the-necrodancer-amplified/game/data/save_data.xml_TEMP
+  mkdir /opt/gog/crypt-of-the-necrodancer-amplified/game/replays/
+  mkdir /opt/gog/crypt-of-the-necrodancer-amplified/game/logs/
+  chmod 666 /opt/gog/crypt-of-the-necrodancer-amplified/game/data/played.dat
+  chmod 666 /opt/gog/crypt-of-the-necrodancer-amplified/game/data/save_data.xml
+  chmod 666 /opt/gog/crypt-of-the-necrodancer-amplified/game/data/save_data.xml_TEMP
+  chmod 777 /opt/gog/crypt-of-the-necrodancer-amplified/game/replays/
+  chmod 777 /opt/gog/crypt-of-the-necrodancer-amplified/game/logs/
+  echo "==> The save is located in /opt/gog/crypt-of-the-necrodancer-amplified/game/data/"
 }

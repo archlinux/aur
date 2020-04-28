@@ -2,11 +2,11 @@
 Encoding=UTF-8
 Value=1.0
 Type=Application
-Name=Crypt of the NecroDancer
-GenericName=Crypt of the NecroDancer
-Comment=Crypt of the NecroDancer
-Icon=/opt/gog/crypt-of-the-necrodancer/support/icon.png
-Exec="/opt/gog/crypt-of-the-necrodancer/start.sh"
+Name=Crypt of the NecroDancer Amplified
+GenericName=Crypt of the NecroDancer Amplified
+Comment=Crypt of the NecroDancer Amplified
+Icon=/opt/gog/crypt-of-the-necrodancer-amplified/support/icon.png
+Exec="/opt/gog/crypt-of-the-necrodancer-amplified/start.sh"
 Categories=Game;
-Path=/opt/gog/crypt-of-the-necrodancer
+Path=/opt/gog/crypt-of-the-necrodancer-amplified
 
