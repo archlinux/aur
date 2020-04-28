@@ -1,0 +1,171 @@
+diff -aur a/acpi.c b/acpi.c
+--- a/acpi.c	2012-01-13 03:48:28.000000000 -0800
++++ b/acpi.c	2020-04-27 18:42:55.125614227 -0700
+@@ -247,12 +247,18 @@
+     return n;
+ }
+ 
+-void print_battery_information(struct list *batteries, int show_empty_slots, int show_capacity)
++void print_battery_information(struct list *batteries, int show_empty_slots, int show_capacity, int merge)
+ {
+     struct list *battery = batteries;
+     struct list *fields;
+     struct field *value;
+     int battery_num = 1;
++	int total_capacity_full = 0;
++	int total_capacity_now = 0;
++	int total_present_rate = 0; // Positive = charging, mA
++	int hours, minutes, seconds;
++	int percentage;
++	char *state = NULL, *poststr;
+ 
+     while (battery) {
+ 	int remaining_capacity = -1;
+@@ -263,9 +269,6 @@
+ 	int design_capacity_unit = -1;
+ 	int last_capacity = -1;
+ 	int last_capacity_unit = -1;
+-	int hours, minutes, seconds;
+-	int percentage;
+-	char *state = NULL, *poststr;
+ 	int type_battery = TRUE;
+ 	char capacity_unit[4] = "mAh";
+ 
+@@ -321,7 +324,7 @@
+ 	if (type_battery) {	/* or else this is the ac_adapter */
+ 	    if (!state) {
+ 		if (show_empty_slots) 
+-		    printf("%s %d: slot empty\n", BATTERY_DESC, battery_num - 1);
++		    if (!merge) printf("%s %d: slot empty\n", BATTERY_DESC, battery_num - 1);
+ 	    } else {
+ 		/* convert energy values (in mWh) to charge values (in mAh) if needed and possible */
+ 		if (last_capacity_unit != -1 && last_capacity == -1) {
+@@ -356,7 +359,7 @@
+ 		if (percentage > 100)
+ 		    percentage = 100;
+ 
+-		printf("%s %d: %s, %d%%", BATTERY_DESC, battery_num - 1, state, percentage);
++		if (!merge) printf("%s %d: %s, %d%%", BATTERY_DESC, battery_num - 1, state, percentage);
+ 
+ 		if (present_rate == -1) {
+ 		    poststr = "rate information unavailable";
+@@ -387,12 +390,12 @@
+ 		    seconds -= 3600 * hours;
+ 		    minutes = seconds / 60;
+ 		    seconds -= 60 * minutes;
+-		    printf(", %02d:%02d:%02d%s", hours, minutes, seconds, poststr);
++		    if (!merge) printf(", %02d:%02d:%02d%s", hours, minutes, seconds, poststr);
+ 		} else if (poststr != NULL) {
+-		    printf(", %s", poststr);
++		    if (!merge) printf(", %s", poststr);
+ 		}
+ 
+-		printf("\n");
++		if (!merge) printf("\n");
+ 
+ 		if (show_capacity && design_capacity > 0) {
+ 		    if (last_capacity <= 100) {
+@@ -405,14 +408,54 @@
+ 		    if (percentage > 100)
+ 			percentage = 100;
+ 
+-		    printf ("%s %d: design capacity %d %s, last full capacity %d %s = %d%%\n",
+-			 BATTERY_DESC, battery_num - 1, design_capacity, capacity_unit, last_capacity, capacity_unit, percentage);
++			if (!merge) {
++				printf ("%s %d: design capacity %d %s, last full capacity %d %s = %d%%\n",
++				 BATTERY_DESC, battery_num - 1, design_capacity, capacity_unit, last_capacity, capacity_unit, percentage);
++			}
+ 		}
++
++		/* Accumulate merged stats for all batteries. */
++		total_capacity_full += last_capacity;
++		total_capacity_now += remaining_capacity;
+ 	    }
+ 	    battery_num++;
+ 	}
+ 	battery = list_next(battery);
+     }
++
++	if (merge) {
++		if (total_capacity_now < 100 || total_capacity_full < 100) {
++			/* total_capacity_now is mAh, so < 100 is realistically invalid. */
++			percentage = 0;
++		} else {
++			percentage = total_capacity_now * 100 / total_capacity_full;
++		}
++
++		if (percentage > 100) percentage = 100;
++
++		printf("%d%%", percentage);
++
++		if (total_present_rate > 0) { /* charging */
++			seconds = 3600 * (total_capacity_full - total_capacity_now) / total_present_rate;
++			poststr = " until charged";
++		} else if (total_present_rate < 0) { /* discharing */
++			seconds = 3600 * total_capacity_now / -total_present_rate;
++			poststr = " remaining";
++		} else { /* idle / unknown */
++			seconds = -1;
++		}
++
++		if (seconds > 0) {
++			hours = seconds / 3600;
++			seconds -= 3600 * hours;
++			minutes = seconds / 60;
++			seconds -= 60 * minutes;
++			printf(", %02d:%02d:%02d%s", hours, minutes, seconds, poststr);
++		}
++		/* else not charing or discharging, no extra text needed. */
++
++		printf("\n");
++	}
+ }
+ 
+ void print_ac_adapter_information(struct list *ac_adapters, int show_empty_slots)
+diff -aur a/acpi.h b/acpi.h
+--- a/acpi.h	2009-03-23 08:23:12.000000000 -0700
++++ b/acpi.h	2020-04-27 18:32:14.712265524 -0700
+@@ -60,7 +60,7 @@
+ 
+ void free_devices(struct list *devices);
+ 
+-void print_battery_information(struct list *batteries, int show_empty_slots, int show_capacity);
++void print_battery_information(struct list *batteries, int show_empty_slots, int show_capacity, int merge);
+ 
+ void print_ac_adapter_information(struct list *batteries, int show_empty_slots);
+ 
+diff -aur a/main.c b/main.c
+--- a/main.c	2013-10-31 11:59:18.000000000 -0700
++++ b/main.c	2020-04-27 18:45:28.626385255 -0700
+@@ -32,12 +32,12 @@
+ 			{ COOLING_DEV, "fan", "thermal", "cooling_device" }
+ 			  };
+ 
+-static void do_show_batteries(char *acpi_path, int show_empty_slots, int show_details, int proc_interface)
++static void do_show_batteries(char *acpi_path, int show_empty_slots, int show_details, int proc_interface, int merge)
+ {
+ 	struct list *batteries;
+ 
+ 	batteries = find_devices(acpi_path, BATTERY, proc_interface);
+-	print_battery_information(batteries, show_empty_slots, show_details);
++	print_battery_information(batteries, show_empty_slots, show_details, merge);
+ 	free_devices(batteries);
+ }
+ 
+@@ -202,11 +202,13 @@
+ 	}
+ 
+ 	/* if nothing was chosen, we show the battery information */
+-	if (!show_batteries && !show_ac_adapter && !show_thermal && !show_cooling)
+-		show_batteries = TRUE;
++	if (!show_batteries && !show_ac_adapter && !show_thermal && !show_cooling) {
++		do_show_batteries(acpi_path, show_empty_slots, show_details, proc_interface, TRUE);
++		return 0;
++	}
+ 
+ 	if (show_batteries) {
+-		do_show_batteries(acpi_path, show_empty_slots, show_details, proc_interface);
++		do_show_batteries(acpi_path, show_empty_slots, show_details, proc_interface, FALSE);
+ 	}
+ 	if (show_ac_adapter) {
+ 		do_show_ac_adapter(acpi_path, show_empty_slots, proc_interface);

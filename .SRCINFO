@@ -1,0 +1,17 @@
+pkgbase = acpi-unified-patch
+	pkgdesc = Client for battery, power, and thermal readings - patch to merge batteries by default
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://sourceforge.net/projects/acpiclient/files/acpiclient/
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	provides = acpi
+	conflicts = acpi
+	source = https://downloads.sourceforge.net/acpiclient/acpi-1.7.tar.gz
+	source = 0001_add_merged.patch
+	sha256sums = d7a504b61c716ae5b7e81a0c67a50a51f06c7326f197b66a4b823de076a35005
+	sha256sums = 393b5ca7b59bda36daae9ca051a1bfdfb7ababae276fe276d6f456faec142bf5
+
+pkgname = acpi-unified-patch
+
