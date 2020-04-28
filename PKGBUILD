@@ -1,6 +1,6 @@
 # Maintainer: Martin Rys <rys.pw/#contact_me>
 pkgname=jitsi-meet-git
-pkgver=r7209.1bd930a3c
+pkgver=r7241.93ef8495c
 pkgrel=1
 epoch=
 pkgdesc="WebRTC JavaScript video conferences"
@@ -8,8 +8,11 @@ arch=("x86_64")
 url="https://github.com/jitsi/jitsi-meet"
 license=("Apache")
 groups=()
-depends=("npm")
-makedepends=("git")
+depends=()
+# Python 2 issue - https://github.com/jitsi/jitsi-meet/issues/6427
+makedepends=("npm"
+             "git"
+             "python2")
 checkdepends=()
 optdepends=("jicofo"
             "jitsi-videobridge"

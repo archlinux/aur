@@ -1,12 +1,13 @@
 pkgbase = jitsi-meet-git
 	pkgdesc = WebRTC JavaScript video conferences
-	pkgver = r7209.1bd930a3c
+	pkgver = r7241.93ef8495c
 	pkgrel = 1
 	url = https://github.com/jitsi/jitsi-meet
 	arch = x86_64
 	license = Apache
+	makedepends = npm
 	makedepends = git
-	depends = npm
+	makedepends = python2
 	optdepends = jicofo
 	optdepends = jitsi-videobridge
 	optdepends = nginx
