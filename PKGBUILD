@@ -1,11 +1,11 @@
 # Maintainer: Víctor González <mrvikxd@gmail.com>
 pkgname=jdrive
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Drive sync daemon"
 arch=(any) #Any that can fill the dependencies
 url="https://gitlab.com/mrvik/${pkgname}"
-depends=("nodejs>=10")
+depends=("nodejs>=10" "nodejs<14")
 license=("GPL2")
 provides=("jdrive")
 replaces=("nodejs-jdrive")
