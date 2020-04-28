@@ -5,7 +5,7 @@
 pkgname=heroku-cli
 pkgver=7.39.2
 _builddir=cli-${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc="a tool for creating and managing Heroku apps from the command line"
 arch=('x86_64')
 url="https://devcenter.heroku.com/articles/heroku-cli"
@@ -27,7 +27,4 @@ package() {
 
   # npm makes some directories world writable
   find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
-
-  find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
-  sed -i "/$(echo $srcdir | sed 's_/_\\/_g')/d" "$pkgdir/usr/lib/node_modules/heroku/package.json"
 }
