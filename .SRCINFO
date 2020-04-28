@@ -1,21 +1,28 @@
 pkgbase = marktext-git
-	pkgdesc = Next generation markdown editor
-	pkgver = r1380.65f1bef3
+	pkgdesc = A simple and elegant open-source markdown editor that focused on speed and usability
+	pkgver = 0.16.0.r6.g90fdd28
 	pkgrel = 1
-	url = https://marktext.app/
+	url = https://marktext.app
 	arch = x86_64
 	license = MIT
-	makedepends = python
-	makedepends = nodejs>=12
-	makedepends = npm
+	makedepends = jq
+	makedepends = nodejs-lts-erbium
+	makedepends = node-gyp
+	makedepends = moreutils
 	makedepends = yarn
+	makedepends = yq
 	depends = electron
-	provides = marktext
+	depends = libxkbfile
+	depends = libsecret
+	depends = ripgrep
+	provides = marktext-0.16.0.r6.g90fdd28
 	conflicts = marktext
-	source = git+https://github.com/marktext/marktext
+	source = marktext-git::git+https://github.com/marktext/marktext.git
 	source = marktext.sh
-	sha512sums = SKIP
-	sha512sums = 8927cea6815420206982263d80fa54bbcfcc37623008b6a2f25d16782cfdff70ef44c3dbc142e2c45b474df52f216e7d58cf556a525df0683bc447481ab7b27d
+	source = marktext-arg-handling.patch
+	sha256sums = SKIP
+	sha256sums = c5af6eabe525af458df2ccfac6098092746dd0ae23225c131100bb6e37170f86
+	sha256sums = c754a1cad52d10a38eeddb9293ce0a4540296c6adbb47eb5311eaaeded150a01
 
 pkgname = marktext-git
 

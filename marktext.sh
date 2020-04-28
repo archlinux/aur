@@ -1,2 +1,3 @@
-#!/bin/sh
-electron /usr/share/marktext/app.asar $@
+#!/usr/bin/env sh
+
+exec electron /usr/lib/marktext/app.asar "$@"

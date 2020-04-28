@@ -1,52 +1,81 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Gabriel Saillard (GitSquared) <gabriel@saillard.dev>
 # Contributor: David Birks <david@tellus.space>
 # Contributor: Simon Doppler (dopsi) <dop.simon@gmail.com>
 # Contributor: dpeukert
-_gitname=marktext
+# Contributor: lonaowna
+
 pkgname=marktext-git
-pkgver=r1380.65f1bef3
+_pkgname=${pkgname%-git}
+pkgver=0.16.0.r6.g90fdd28
 pkgrel=1
-pkgdesc='Next generation markdown editor'
+pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability'
 arch=('x86_64')
-url='https://marktext.app/'
+url='https://marktext.app'
 license=('MIT')
-depends=('electron')
-makedepends=('python' 'nodejs>=12' 'npm' 'yarn')
-conflicts=('marktext')
-provides=('marktext')
-source=("git+https://github.com/${_gitname}/${_gitname}"
-        'marktext.sh')
-sha512sums=('SKIP'
-            '8927cea6815420206982263d80fa54bbcfcc37623008b6a2f25d16782cfdff70ef44c3dbc142e2c45b474df52f216e7d58cf556a525df0683bc447481ab7b27d')
+depends=('electron'
+         'libxkbfile'
+         'libsecret'
+         'ripgrep')
+makedepends=('jq'
+             'nodejs-lts-erbium'
+             'node-gyp'
+             'moreutils'
+             'yarn'
+             'yq')
+conflicts=("$_pkgname")
+provides=("$_pkgname-$pkgver")
+source=("$pkgname::git+https://github.com/$_pkgname/${pkgname/-/.}"
+        "$_pkgname.sh"
+        "$_pkgname-arg-handling.patch")
+sha256sums=('SKIP'
+            'c5af6eabe525af458df2ccfac6098092746dd0ae23225c131100bb6e37170f86'
+            'c754a1cad52d10a38eeddb9293ce0a4540296c6adbb47eb5311eaaeded150a01')
+
+_electronDist=$(dirname $(realpath $(which electron)))
+_electronVersion=$(electron --version | sed -e 's/^v//')
 
 pkgver() {
-    cd "${srcdir}/${_gitname}"
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$pkgname"
+    git describe --tags --abbrev=7 --match="v*" HEAD |
+        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "${srcdir}/${_gitname}"
-    yarn install
+    cd "$pkgname"
+    jq 'del(.devDependencies["electron"], .scripts["preinstall", "postinstall"])' \
+        package.json | sponge package.json
+    yq -y ". + {\"electronDist\": \"$_electronDist\", \"electronVersion\": \"$_electronVersion\"}" \
+        electron-builder.yml | sponge electron-builder.yml
+    mkdir -p "$srcdir/node_modules"
+    yarn --cache-folder "$srcdir/node_modules" install --frozen-lockfile
+    yarn --cache-folder "$srcdir/node_modules" add -D -E --no-lockfile --ignore-scripts electron@$_electronVersion
+    patch -p1 < "$srcdir/$_pkgname-arg-handling.patch"
 }
 
 build() {
-    cd "${srcdir}/${_gitname}"
-    yarn run build:bin
+    cd "$pkgname"
+    yarn --cache-folder "$srcdir/node_modules" run electron-rebuild
+    node .electron-vue/build.js
+    yarn --cache-folder "$srcdir/node_modules" run \
+        electron-builder --linux --x64 --dir dist
 }
 
 package() {
-    cd "${srcdir}/${_gitname}"
-
-    # Install app.asar and launcher script
-    install -D build/linux-unpacked/resources/app.asar "${pkgdir}/usr/share/marktext/app.asar"
-    cp -r build/linux-unpacked/resources/app.asar.unpacked "${pkgdir}/usr/share/marktext/app.asar.unpacked"
-    install -D "${srcdir}/marktext.sh" "${pkgdir}/usr/bin/marktext"
-
-    # Install desktop file and icon
-    install -D resources/linux/marktext.desktop "${pkgdir}/usr/share/applications/marktext.desktop"
-    install -D resources/icons/icon.png "${pkgdir}/usr/share/pixmaps/marktext.png"
-
-    # Install license file
-    install -D LICENSE "${pkgdir}/usr/share/licenses/marktext/LICENSE"
-    install -D build/linux-unpacked/LICENSE.electron.txt "${pkgdir}/usr/share/licenses/marktext/LICENSE.electron.txt"
-    install -D build/linux-unpacked/LICENSES.chromium.html "${pkgdir}/usr/share/licenses/marktext/LICENSES.chromium.html"
+    cd "$pkgname"
+    install -Dm755 "../$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
+    local _dist=build/linux-unpacked/resources
+    install -Dm644 -t "$pkgdir/usr/lib/$_pkgname/" "$_dist/app.asar"
+    cp -a "$_dist"/{app.asar.unpacked,hunspell_dictionaries} "$pkgdir/usr/lib/$_pkgname/"
+    local _rg_path="$pkgdir/usr/lib/marktext/app.asar.unpacked/node_modules/vscode-ripgrep/bin/"
+    mkdir -p $_rg_path
+    ln -sf /usr/bin/rg "$_rg_path"
+    install -Dm755 -t "${pkgdir}/usr/share/applications/" resources/linux/marktext.desktop
+    install -Dm755 -t "${pkgdir}/usr/share/metainfo/" resources/linux/marktext.appdata.xml
+    install -Dm644 resources/icons/icon.png "${pkgdir}/usr/share/pixmaps/marktext.png"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md CONTRIBUTING.md
+    cp -a docs "$pkgdir/usr/share/doc/$pkgname/"
+    pushd "resources/icons"
+    find -name maktext.png -exec install -Dm644 {} "$pkgdir/usr/share/icons/hicolor/{}" \;
 }
