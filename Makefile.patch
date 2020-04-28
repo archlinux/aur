@@ -1,0 +1,11 @@
+--- Makefile	2013-09-08 18:39:02.000000000 +0200
++++ Makefile	2020-04-28 23:04:17.394284911 +0200
+@@ -3,7 +3,7 @@
+ PREFIX	= /usr
+ 
+ CC	= gcc
+-CFLAGS	= -W -Wall -Wextra -Werror \
++CFLAGS	= -W -Wall -Wextra \
+ 	-DVERSION=\"$(VERSION)\" \
+ 	-g
+ LDFLAGS =
