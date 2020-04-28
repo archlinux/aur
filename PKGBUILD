@@ -3,7 +3,7 @@
 pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
-pkgver='0.1.2'
+pkgver='0.1.3'
 pkgrel='0'
 epoch=
 arch=('i686' 'x86_64')
