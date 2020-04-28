@@ -5,50 +5,15 @@
 
 pkgname=ttf-freebanglafont
 pkgver=20130212
-pkgrel=3
+pkgrel=4
 pkgdesc='Bengali fonts'
 url='http://www.ekushey.org/'
 license=('GPL')
 arch=('any')
 depends=('xorg-fonts-encodings' 'xorg-font-utils' 'fontconfig')
+source=("https://sources.archlinux.org/other/packages/${pkgname}/ttf-freebanglafont-20130212-2.src.tar.gz")
+b2sums=('a20699d72c7a6886b1cdad65f6dcffac279c74085005b2e53248fbc44058dc9aef4d04ea8a581202811a2dfbf9fadc31e49def97962b6e37a096dde5049f13d0')
 
 package() {
-  cd ttf-freebanglafont
-  for i in *.ttf; do
-    install -Dm644 "${i}" "${pkgdir}"/usr/share/fonts/TTF/${i}.ttf
-  done
+  install -Dm644 -t "${pkgdir}"/usr/share/fonts/TTF/ ttf-freebanglafont/*.ttf
 }
-
-_fonts=('solaimanlipi'
-        'rupali'
-        'ekushey_lohit'
-        'ekushey_sharifa'
-        'ekushey-punarbhaba'
-        'ekushey_sumit'
-        'ekushey-durga'
-        'ekushey_Saraswatii'
-        'ekushey_puja'
-        'ekushey_azad'
-        'ekushey_godhuli'
-        'ekushey_mohua'
-        '16-december'
-        'amar-bangla'
-        'amar-desh'
-        'bangla-kolom'
-        'buriganga'
-        'ekushey-bangla'
-        'ekushey-kolom'
-        'ekushey-sumon'
-        'ghorautra'
-        'lal-sabuj'
-        'lal-sabuj-normal'
-        'lal-salu'
-        'preview-sornaly'
-        'preview-mukto'
-        'preview-shimanto'
-        'preview-ananta')
-
-#source=($(for i in ${_fonts[@]}; do curl -s http://ekushey.org/?page/$i | sed -e 's/"/\n/g' | grep 'http:.*.ttf'; done))
-
-source=("https://sources.archlinux.org/other/packages/${pkgname}/ttf-freebanglafont-20130212-2.src.tar.gz")
-sha256sums=('19a85c6b76e1b3bff3864485a40724fad7c1224a5e20960be08e31659b91e502')
