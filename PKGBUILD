@@ -1,17 +1,21 @@
-# Maintainer: peippo <christoph.fink@gmail.com>
+# Maintainer: peippo <christoph+aur@christophfink.com>
 
-pkgname='fasttext'
+pkgname=fasttext
 pkgdesc="Library for fast text representation and classification"
 url="https://github.com/facebookresearch/fastText"
 
-pkgver=0.9.1
-pkgrel=1
+pkgver=0.9.2
+pkgrel=0
 
-arch=('any')
+arch=('x86_64')
 license=('BSD')
 
-source=("https://github.com/facebookresearch/fastText/archive/v${pkgver}.tar.gz")
-sha256sums=("254ace2fc8dc3bea0fc6ad4897a221eb85c1e9adfa61d130b43398193ca1f061")
+depends=(
+    "gcc-libs"
+)
+
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/facebookresearch/fastText/archive/v${pkgver}.tar.gz")
+sha256sums=("7ea4edcdb64bfc6faaaec193ef181bdc108ee62bb6a04e48b2e80b639a99e27e")
 
 build() {
     cd "${srcdir}/fastText-${pkgver}"
@@ -20,4 +24,5 @@ build() {
 
 package() {
     install -Dm0755 "${srcdir}/fastText-${pkgver}/fasttext" "${pkgdir}/usr/bin/fasttext"
+    install -Dm0644 "${srcdir}/fastText-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/fasttext/LICENSE"
 }
