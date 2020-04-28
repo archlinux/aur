@@ -12,7 +12,10 @@ license=('custom')
 depends=('libnotify' 'libxss' 'nspr' 'nss'
          'opera-ffmpeg-codecs' 'libegl' 'libgles') # Replacements
 optdepends=('libpulse: Pulseaudio support'
-            'xdg-utils: Open files')
+            'xdg-utils: Open files'
+            'noto-fonts-cjk: Font for special characters such as /shrug face'
+            'noto-fonts-emoji: Google font for emoji support'
+            'ttf-symbola: Font for emoji support')
 source=("https://dl-ptb.discordapp.net/apps/linux/$pkgver/$pkgname-$pkgver.tar.gz"
         'LICENSE'
         'OSS-LICENSES::https://discordapp.com/licenses')
