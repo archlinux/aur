@@ -1,6 +1,6 @@
 pkgbase = r-rsamtools
 	pkgdesc = Binary alignment (BAM), FASTA, variant call (BCF), and tabix file import
-	pkgver = 2.2.3
+	pkgver = 2.3.7
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/Rsamtools.html
 	arch = i686
@@ -30,8 +30,8 @@ pkgbase = r-rsamtools
 	optdepends = r-bsgenome.hsapiens.ucsc.hg19
 	optdepends = r-runit
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rsamtools_2.2.3.tar.gz
-	md5sums = 6a6dac898ab4664214d346be0c755ec5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rsamtools_2.3.7.tar.gz
+	md5sums = 67314f680109c6bba52c655378a170c7
 
 pkgname = r-rsamtools
 
