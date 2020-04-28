@@ -1,7 +1,7 @@
 pkgbase = compiz-core
 	pkgdesc = This is the latest stable release of Compiz without DE deps
-	pkgver = 0.8.16.1
-	pkgrel = 2
+	pkgver = 0.8.18
+	pkgrel = 1
 	url = https://gitlab.com/compiz/compiz-core/
 	arch = i686
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = compiz-core
 	depends = libxinerama
 	options = !libtool
 	options = !emptydirs
-	source = https://gitlab.com/compiz/compiz-core/-/archive/v0.8.16.1/compiz-core-v0.8.16.1.tar.bz2
-	sha256sums = 4910b6a0a8ad49f04c3ec0472f12dc962b0205e427d0a3ac2a91520e9649fdb7
+	source = https://gitlab.com/compiz/compiz-core/-/archive/v0.8.18/compiz-core-v0.8.18.tar.bz2
+	sha256sums = e87018b2d6c9ab3da87d910b117a7ae35f64328eea485e6c2a532501b361144c
 
 pkgname = compiz-core
 	pkgdesc = This is the latest stable release of Compiz without DE deps (Core w/o decorator)
@@ -40,3 +40,4 @@ pkgname = compiz-gtk
 	depends = libxcomposite
 	depends = libxinerama
 	depends = compiz-core
+
