@@ -5,7 +5,6 @@ pkgbase = glasscord
 	url = https://github.com/AryToNeX/Glasscord
 	arch = any
 	license = Apache License 2.0
-	makedepends = git
 	makedepends = npm
 	depends = discord
 	source = https://github.com/AryToNeX/Glasscord/archive/v0.0.6.tar.gz
