@@ -6,7 +6,7 @@
 pkgname=geda-gaf-git
 _gitname=geda-gaf
 pkgver=7663.2d9b2c8e8
-pkgrel=1
+pkgrel=2
 pkgdesc="gEDA/gaf suite - Contains gschem, gnetlist, gsymcheck, gattrib, utilities and documentation from the gEDA project (latest git revision)"
 arch=('i686' 'x86_64')
 url="http://www.geda-project.org/"
