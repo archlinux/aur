@@ -2,7 +2,7 @@
 
 pkgname=listen1-desktop-appimage
 _installdir=/opt/${pkgname}
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="One for all free music in China"
 arch=("x86_64")
@@ -14,7 +14,7 @@ options=("!strip")
 provides=('listen1')
 conflicts=('listen1')
 source=("https://github.com/listen1/listen1_desktop/releases/download/v${pkgver}/${_pkgname}")
-sha256sums=("07cdf9a4547504b46681e336e374d9bb98e2e814edb6f76b704f183f54bc52f2")
+sha256sums=("23e9027e0f9f622a334d9c37770a5ca6fe6d30cc79378e9565b386251629bc7f")
 
 prepare() {
     cd "${srcdir}"
