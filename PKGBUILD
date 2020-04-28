@@ -1,17 +1,17 @@
 # Contributor: Alexander Matyukhin <matalex1991@gmail.com>
 pkgname=obnc
-pkgver=0.12.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="Oberon compiler"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://miasap.se/obnc/"
-source=("http://miasap.se/obnc/downloads/obnc_0.12.0.tar.gz")
+source=("http://miasap.se/obnc/downloads/obnc_${pkgver}.tar.gz")
 depends=("gc" "bash" "gawk")
-md5sums=('32495dbccf2affa5cdf0b30432b6d57c')
-sha256sums=('7bc355d3c82e9dc5571732f9cda956182cc48b74bb0c7f14ac185f67e919eb98')
-sha384sums=('cb5a0ae28483d075f675d6702017b64a49795c70e2e2c06d4606fda74a644f9a5170b025aa46800af47c7fa08b1847e1')
-sha512sums=('2f7fe4ce5e0e9ec71fcdb7df8badb69cc0c086d3272ff2c4c2b55dc24a37fec762b1c1563a100aa46ca528b2ba9512de252470035cb71af6828309cd203b7cd5')
+md5sums=('974245022410d7344134888c375a90fb')
+sha256sums=('d90832e3d1cdb9a8a0b307e7c3d2c19e67dd6864dae273fa1b1cfa84025bacdd')
+sha384sums=('9486d9620061adeb3f55f7d3e72f2635d16d603627c045a3a967a4dbad029f4f56b5e94d704e4fb4217165423a090433')
+sha512sums=('428e6c5d7fe1f83fc8ef6b3828932b148a7f8f1dd5d5b7e61c1ed66fa3af921a4711bbf0a8ea62cbd6c8ba426f09df7cddf49161a1b6662c003aadb634e92531')
 build()
 {
   cd $srcdir/$pkgname-$pkgver/
