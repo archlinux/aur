@@ -9,11 +9,11 @@ pkgbase = lua-ansicolors
 	sha256sums = fa76a465c2e0d342f6d5a1d44c63bd398053f206f41c7b5356b551694f899d64
 
 pkgname = lua-ansicolors
-	pkgdesc = ANSI colors for Lua 5.3
+	pkgdesc = ANSI terminal color manipulation for Lua 5.3
 
 pkgname = lua51-ansicolors
-	pkgdesc = ANSI colors module for Lua 5.1
+	pkgdesc = ANSI terminal color manipulation module for Lua 5.1
 
 pkgname = lua52-ansicolors
-	pkgdesc = ANSI colors module for Lua 5.2
+	pkgdesc = ANSI terminal color manipulation module for Lua 5.2
 
