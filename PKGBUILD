@@ -1,10 +1,6 @@
-# Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
-# Contributor: Piotr Rogoża <rogoza dot piotr at gmail dot com>
-# vim:set ts=2 sw=2 et ft=sh tw=100: expandtab
-
 pkgname=ogmrip-oggz
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Plugin for OGMRip which adds support for the OGG container for ogmrip'
 arch=('i686' 'x86_64')
 url='http://ogmrip.sourceforge.net/en/plugins.html'
@@ -18,10 +14,12 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   ./configure --prefix=/usr
-  make || return 1
+  make
+}
+package(){
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
   install -Dm0644 README ${pkgdir}/usr/share/$pkgname/README
 }
-
-md5sums=('8874c1079267e3f962e3bd4dbc9aa8c8'
-         '24ac59562b0a480c0d88ec6e86095b91')
+sha256sums=('2af373774bb70fddd264a3319143aaa516df0cfe915363187308df430dec8b75'
+            'b49079b1d79b9e1c9f14338fe6be2c561f3f169d1ec16cdfd55da420e10f9461')
