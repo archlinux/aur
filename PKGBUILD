@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=Biobase
-_bcver=2.46.0
+_bcver=2.47.3
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=('r>=2.10' 'r-biocgenerics>=0.27.1')
 makedepends=(gcc)
 optdepends=(r-tkwidgets r-all r-runit r-golubesets)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('f4e1ad15ffc281c7f4b049b58a880ca987e12d61bb37cc772a95e2361008a4bf')
+sha256sums=('ebf2de9281a807a7f92f4808e8df7c4f740fbeda98f868470bdbfc6c32f9e0ad')
 
 build(){
   cd "${srcdir}"
