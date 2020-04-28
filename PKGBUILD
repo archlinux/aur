@@ -1,6 +1,6 @@
 # Maintainer: BadAtNames <badatnames@tutanota.com>
 pkgname=ttf-mutant-emoji
-pkgver=2020.02
+pkgver=2020.04 # Could use pkgver for this if mutant stopped changing how they package the fonts every month :(
 pkgrel=1
 pkgdesc="A new kind of emoji set - more flexible, inclusive and fun!"
 arch=('any')
@@ -19,9 +19,9 @@ package() {
 
   cd "mtnt_${pkgver}_font_sbixot"
   
-  install -Dm644  "font/mtnt_${pkgver}_MutantStandardEmoji-sbixOT.ttf" "${pkgdir}/usr/share/fonts/TTF/Mutant.ttf"
+  install -Dm644  "font/MutantStandardEmoji-sbixOT.ttf" "${pkgdir}/usr/share/fonts/TTF/Mutant.ttf"
   install -Dm644 "license.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
-md5sums=('63cd954f0a29a449fa1d98e0310badd8'
+md5sums=('1da654a4f50bfb4bdb461d8b4283e1cc'
          '609aaef8b63b3193bc02440307a0a4f3')
