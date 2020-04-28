@@ -6,6 +6,8 @@ pkgbase = netease-music-tui
 	arch = x86_64
 	license = MIT
 	makedepends = rust
+	provides = netease-music-tui
+	conflicts = netease-music-tui
 	source = netease-music-tui-0.1.1.tar.gz::https://github.com/betta-cyber/netease-music-tui/archive/v0.1.1.tar.gz
 	sha256sums = 53a35bfdc9e69a4cfeb154eb082b7fe7af9a79ac32049a19d6536938d7114597
 
