@@ -8,8 +8,11 @@ pkgbase = pcre-static
 	depends = gcc-libs
 	options = staticlibs
 	options = !libtool
-	source = ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.44.tar.bz2
+	source = https://ftp.pcre.org/pub/pcre/pcre-8.44.tar.bz2
+	source = https://ftp.pcre.org/pub/pcre/pcre-8.44.tar.bz2.sig
+	validpgpkeys = 45F68D54BBE23FB3039B46E59766E084FB0F43D8
 	sha256sums = 19108658b23b3ec5058edc9f66ac545ea19f9537234be1ec62b714c84399366d
+	sha256sums = 
 
 pkgname = pcre-static
 

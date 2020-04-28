@@ -5,16 +5,16 @@
 
 pkgname=pcre-static
 pkgver=8.44
-pkgrel=2
+pkgrel=3
 pkgdesc="A library that implements Perl 5-style regular expressions"
 arch=('any')
 url="http://www.pcre.org/"
 license=('BSD')
 depends=('gcc-libs')
 options=('staticlibs' '!libtool')
-#validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8')
+validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8')
 #source=(ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${pkgver}.tar.bz2{,.sig})
-source=(ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${pkgver}.tar.bz2)
+source=(https://ftp.pcre.org/pub/pcre/pcre-${pkgver}.tar.bz2)
 sha256sums=('19108658b23b3ec5058edc9f66ac545ea19f9537234be1ec62b714c84399366d')
 
 build() {
