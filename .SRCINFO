@@ -1,7 +1,7 @@
 pkgbase = jdsp4linux-git
 	pkgdesc = A port of the open source version of JamesDSP to Linux
 	pkgver = r27.7838c5c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Audio4Linux/JDSP4Linux
 	arch = x86_64
 	license = GPL2
@@ -11,6 +11,8 @@ pkgbase = jdsp4linux-git
 	provides = jdsp4linux
 	conflicts = jdsp4linux
 	conflicts = viper4linux
+	backup = etc/jamesdsp/audio.conf
+	backup = etc/jamesdsp/devices.conf
 	source = jdsp4linux::git+https://github.com/Audio4Linux/JDSP4Linux.git
 	source = devices.conf
 	sha256sums = SKIP
