@@ -1,15 +1,15 @@
 pkgbase = sensu-agent
 	pkgdesc = Sensu Go Agent
-	pkgver = 5.19.0
+	pkgver = 5.19.2
 	pkgrel = 1
 	url = https://sensu.io
 	arch = x86_64
 	arch = armv7h
 	license = MIT
-	source = sensu-agent-5.19.0_x86_64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/5.19.0/sensu-go_5.19.0_linux_amd64.tar.gz
+	source = sensu-agent-5.19.2_x86_64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/5.19.2/sensu-go_5.19.2_linux_amd64.tar.gz
 	source = sensu-agent.service
 	source = agent.yml.example
-	sha256sums = 14e29b3de3f09c46fc0cbe183389255e2ccc947b2c9e210cc04e9de9a41ab028
+	sha256sums = 5e99d417203f101fca06c4d8cf544214053162b3088173b7c2397be121cc7297
 	sha256sums = 7d8ca2731fe4a07beab0566d11ed47f0c069774752a96781ac7797697b3f7cc5
 	sha256sums = c9997fa4be0879bb73b7250863ce9737b422515cf9131626075ff313b4575eed
 
