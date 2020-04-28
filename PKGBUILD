@@ -30,7 +30,7 @@ build() {
 }
 
 package_lua-discount() {
-  pkgdesc='Discount for Lua 5.3'
+  pkgdesc='Lua bindings for the Discount Markdown library for Lua 5.3'
 
   luarocks install --lua-version=5.3 --tree="$pkgdir/usr/" --deps-mode=none 5.3/*.rock
 
@@ -39,7 +39,7 @@ package_lua-discount() {
 }
 
 package_lua51-discount() {
-  pkgdesc='Discount for Lua 5.1'
+  pkgdesc='Lua bindings for the Discount Markdown library for Lua 5.1'
 
   luarocks install --lua-version=5.1 --tree="$pkgdir/usr/" --deps-mode=none 5.1/*.rock
 
@@ -48,7 +48,7 @@ package_lua51-discount() {
 }
 
 package_lua52-discount() {
-  pkgdesc='Discount for Lua 5.2'
+  pkgdesc='Lua bindings for the Discount Markdown library for Lua 5.2'
 
   luarocks install --lua-version=5.2 --tree="$pkgdir/usr/" --deps-mode=none 5.2/*.rock
 
