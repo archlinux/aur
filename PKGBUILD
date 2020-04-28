@@ -14,7 +14,7 @@ depends=('python2-dnspython' 'python2-httplib2' 'python2-simplejson' 'python2-ji
 makedepends=('git')
 optdepends=('tk: gui'
             'python2-pmw: gui')
-source=("namebench::git+https://github.com/google/${pkgname}.git#branch=${pkgver}")
+source=("git+https://github.com/google/${pkgname}.git#branch=${pkgver}")
 b2sums=('SKIP')
 
 build() {
@@ -25,7 +25,6 @@ build() {
 package() {
   cd ${pkgname}
   NO_THIRD_PARTY=true python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
-  cd "${pkgdir}"/usr
-  mkdir share
-  mv namebench share
+  mkdir "${pkgdir}"/usr/share
+  mv "${pkgdir}"/usr/namebench "${pkgdir}"/usr/share
 }
