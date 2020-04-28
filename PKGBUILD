@@ -38,6 +38,5 @@ package() {
   install -Dm644 src/eula_en_linux.txt "${pkgdir}"/usr/share/licenses/${pkgname}/eula_en_linux.txt
 
   cd "${srcdir}"
-  install -d "${pkgdir}"/usr/share/man/man1/
-  install -m644 -t "${pkgdir}"/usr/share/man/man1/ makemkvcon.1 mmdtsdec.1
+  install -Dm644 -t "${pkgdir}"/usr/share/man/man1/ makemkvcon.1 mmdtsdec.1
 }
