@@ -42,7 +42,7 @@ package_lua-sci() {
 
   luarocks install --lua-version=5.3 --tree="$pkgdir/usr/" --deps-mode=none 5.3/${_rockname}-${pkgver}-1.all.rock
 
-  install -Dm644 "${srcdir}/lua-${_rockname}-${_pkgver}/LICENSE.TXT" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 "${srcdir}/lua-${_rockname}-${_pkgver}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # remove luarocks-created root manifest
   rm "$pkgdir/usr/lib/luarocks/rocks-5.3/manifest"
@@ -53,7 +53,7 @@ package_lua51-sci() {
 
   luarocks install --lua-version=5.1 --tree="$pkgdir/usr/" --deps-mode=none 5.1/${_rockname}-${pkgver}-1.all.rock
 
-  install -Dm644 "${srcdir}/lua-${_rockname}-${_pkgver}/LICENSE.TXT" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 "${srcdir}/lua-${_rockname}-${_pkgver}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # remove luarocks-created root manifest
   rm "$pkgdir/usr/lib/luarocks/rocks-5.1/manifest"
@@ -64,7 +64,7 @@ package_lua52-sci() {
 
   luarocks install --lua-version=5.2 --tree="$pkgdir/usr/" --deps-mode=none 5.2/${_rockname}-${pkgver}-1.all.rock
 
-  install -Dm644 "${srcdir}/lua-${_rockname}-${_pkgver}/LICENSE.TXT" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 "${srcdir}/lua-${_rockname}-${_pkgver}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # remove luarocks-created root manifest
   rm "$pkgdir/usr/lib/luarocks/rocks-5.2/manifest"
