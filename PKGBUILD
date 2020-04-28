@@ -2,7 +2,7 @@
 pkgname=speedify
 _pkgver=9.8.0-8512
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Use multiple internet connections in parallel"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://speedify.com/"
@@ -38,6 +38,6 @@ package() {
 	mkdir -p "${pkgdir}/etc/speedify"
 	install -Dm644 usr/share/speedify/default.conf "${pkgdir}/etc/speedify/speedify.conf"
 	mkdir -p "${pkgdir}/usr/bin"
-	ln -fs /usr/share/speedify/speedify_cli "${pkgdir}/usr/bin/speedify_cli"
-	ln -fs /usr/share/speedify/SpeedifyCLI.pdf "${pkgdir}/usr/bin/speedify_cli"
+	ln -fs /usr/share/speedify/speedify_cli "${pkgdir}/usr/bin/"
+	ln -fs /usr/share/speedify/SpeedifyCLI.pdf "${pkgdir}/usr/share/doc/speedify/"
 }
