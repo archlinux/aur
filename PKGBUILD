@@ -3,7 +3,7 @@
 pkgname=ariang-allinone
 pkgver=1.1.5
 pkgrel=1
-pkgdesc="AriaNg, a modern web frontend making aria2 easier to use. (all-in-one version)"
+pkgdesc="A modern web frontend making aria2 easier to use (all-in-one version)"
 arch=('any')
 url="https://github.com/mayswind/AriaNg"
 license=('MIT')

@@ -1,5 +1,5 @@
 pkgbase = ariang-allinone
-	pkgdesc = AriaNg, a modern web frontend making aria2 easier to use. (all-in-one version)
+	pkgdesc = A modern web frontend making aria2 easier to use (all-in-one version)
 	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/mayswind/AriaNg
