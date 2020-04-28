@@ -1,0 +1,13 @@
+pkgbase = phoneinfoga-latest-bin
+	pkgdesc = Advanced information gathering & OSINT framework for phone numbers. (latest bin release)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://sundowndev.github.io/PhoneInfoga/
+	arch = x86_64
+	license = GPL
+	conflicts = phoneinfoga
+	source = https://github.com/sundowndev/PhoneInfoga/releases/download/v2.0.8/PhoneInfoga_Linux_x86_64.tar.gz
+	md5sums = SKIP
+
+pkgname = phoneinfoga-latest-bin
+
