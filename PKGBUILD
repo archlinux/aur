@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="8.0.337.0"
+pkgver="8.0.338.0"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -14,7 +14,7 @@ _installdir="/usr/lib"
 _programname="PDF Editor"
 
 source=($_downloadsource/$_x64file)
-sha256sums=('d24ed86022a8bb421b4fa638bcdd16809208eca3635289c385556a4fc01dd3c8')
+sha256sums=('e956ecbd613db093909be96c4f73860d5acaeabbf9b158503a61f8a24f539b33')
 
 prepare()
 {
