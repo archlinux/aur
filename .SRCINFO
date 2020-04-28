@@ -1,0 +1,27 @@
+pkgbase = lua-sci
+	pkgdesc = Scientific Computing with LuaJIT
+	pkgver = 1.0.0.beta12
+	pkgrel = 1
+	url = https://scilua.org/
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks
+	depends = luajit
+	depends = lua-xsys
+	depends = lua51-xsys
+	depends = lua52-xsys
+	depends = openblas-lapack
+	source = https://github.com/stepelu/lua-sci/archive/v1.0.0-beta12.tar.gz
+	source = sci-1.0.0.beta12-1.rockspec
+	sha256sums = 50785d4e1c0f18c4e54bce99569845b629b9f18f7585dbee64d8bd11ecc98528
+	sha256sums = 9ab11513ec2950db9a5369d0b57a08707ad64cc5f478bffcd3a0e63116d9715f
+
+pkgname = lua-sci
+	pkgdesc = Scientific Computing with LuaJIT for Lua 5.3
+
+pkgname = lua51-sci
+	pkgdesc = Scientific Computing with LuaJIT for Lua 5.1
+
+pkgname = lua52-sci
+	pkgdesc = Scientific Computing with LuaJIT for Lua 5.2
+
