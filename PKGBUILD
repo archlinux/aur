@@ -33,20 +33,21 @@ source=("git+https://github.com/crosswire/xiphos.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  git describe --tags --abbrev=7 HEAD | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${pkgname%-git}"
+    git describe --tags --abbrev=7 --match="[0-9]*" HEAD |
+        sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${pkgname%-git}"
-  cmake -S . -B build \
-	-DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DGTKHTML=ON
-  make -C build
+    cd "${pkgname%-git}"
+    cmake -S . -B build \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DGTKHTML=ON
+    make -C build
 }
 
 package() {
-  cd "${pkgname%-git}"
-  make -C build DESTDIR="$pkgdir" install
+    cd "${pkgname%-git}"
+    make -C build DESTDIR="$pkgdir" install
 }
