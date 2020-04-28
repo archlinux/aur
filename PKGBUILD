@@ -4,7 +4,7 @@ _pkgver=9.8.0-8512
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="Use multiple internet connections in parallel"
-arch=('x86_64' 'aarch64' 'armv7l')
+arch=('x86_64' 'aarch64' 'armv7h')
 url="https://speedify.com/"
 license=(UNKNOWN)
 groups=()
@@ -19,11 +19,11 @@ install=
 source=()
 source_x86_64=(http://apt.connectify.me/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${_pkgver}_amd64.deb)
 source_aarch64=(http://apt.connectify.me/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${_pkgver}_arm64.deb)
-source_armv7l=(http://apt.connectify.me/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${_pkgver}_armhf.deb)
+source_armv7h=(http://apt.connectify.me/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${_pkgver}_armhf.deb)
 # TODO: i386 is also supported
 md5sums_x86_64=('3c3178d7eee99e641de9d41fc7b95dca')
 md5sums_aarch64=('35ccf06e835a10350fe70671a6439ca2')
-md5sums_armv7l=('21498b3c58a5fab3344dca2a42b3e228')
+md5sums_armv7h=('21498b3c58a5fab3344dca2a42b3e228')
 
 prepare() {
 	cd "$srcdir"
