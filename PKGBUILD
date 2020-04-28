@@ -19,7 +19,7 @@ prepare() {
     cd "${srcdir}"
     chmod a+x ${_pkgname}
     ${srcdir}/${_pkgname} --appimage-extract
-    sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/${_pkgname} %U+" "squashfs-root/devdocs.desktop"
+    sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/${_pkgname}+" "squashfs-root/devdocs.desktop"
     mv "squashfs-root/usr/share/icons/hicolor/0x0" "squashfs-root/usr/share/icons/hicolor/1024x1024"
     find "squashfs-root/usr/share/icons/hicolor" -type d -exec chmod 755 {} \;
 }
