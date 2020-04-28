@@ -2,7 +2,7 @@
 
 pkgname=listen1-desktop-appimage
 _installdir=/opt/${pkgname}
-pkgver=2.5.1
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="One for all free music in China"
 arch=("x86_64")
@@ -14,13 +14,13 @@ options=("!strip")
 provides=('listen1')
 conflicts=('listen1')
 source=("https://github.com/listen1/listen1_desktop/releases/download/v${pkgver}/${_pkgname}")
-sha256sums=("3b054e2c7fe0bc65a2f3e1823f489642293a2e958dd3f82b89097f3191ad5fb8")
+sha256sums=("07cdf9a4547504b46681e336e374d9bb98e2e814edb6f76b704f183f54bc52f2")
 
 prepare() {
     cd "${srcdir}"
     chmod a+x ${_pkgname}
     ${srcdir}/${_pkgname} --appimage-extract
-    sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/${_pkgname} %U+" "squashfs-root/listen1.desktop"
+    sed -i "s+AppRun+env DESKTOPINTEGRATION=yes ${_installdir}/${_pkgname}+" "squashfs-root/listen1.desktop"
     find "squashfs-root/usr/share/icons/hicolor" -type d -exec chmod 755 {} \;
 }
 
