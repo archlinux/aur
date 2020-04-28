@@ -1,0 +1,15 @@
+pkgbase = remontoire-git
+	pkgdesc = A keybinding viewer for i3 and other programs.
+	pkgver = r38.c47ccbe
+	pkgrel = 1
+	url = https://github.com/regolith-linux/remontoire
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	source = git+https://github.com/regolith-linux/remontoire.git
+	md5sums = SKIP
+
+pkgname = remontoire-git
+
