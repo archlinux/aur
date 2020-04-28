@@ -1,6 +1,6 @@
 pkgbase = rpi-eeprom
 	pkgdesc = Raspberry Pi4 boot EEPROM updater
-	pkgver = 2019.09.10
+	pkgver = 2020.04.16
 	pkgrel = 1
 	url = http://github.com/raspberrypi/rpi-eeprom
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = rpi-eeprom
 	optdepends = raspberrypi-userland-aarch64: Use this on an aarch64 (64bit) system.
 	options = !strip
 	backup = etc/default/rpi-eeprom-update
-	source = rpi-eeprom-2019.09.10-137ad.tar.gz::https://github.com/raspberrypi/rpi-eeprom/archive/v2019.09.10-137ad.tar.gz
+	source = rpi-eeprom-2020.04.16-137ad.tar.gz::https://github.com/raspberrypi/rpi-eeprom/archive/v2020.04.16-137ad.tar.gz
 	source = rpi-eeprom-update.patch
-	sha256sums = 58f124bf93b00067e1cccbf99e9d7b12492464ce42b1ac04a33a198b81d91dc3
+	sha256sums = e1b89463ee72e404a7985e0456c4001c1e4355194485a4141c6e1bdd04c90a3c
 	sha256sums = d716ef30c4a486019a4778579305a84c0f31593d5840850aefa9742dc6f9760f
 
 pkgname = rpi-eeprom
