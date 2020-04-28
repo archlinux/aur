@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd $_hgrepo
+  cd $_hgrepo/build
   make DESTDIR="$pkgdir" install
 }
