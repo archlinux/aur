@@ -19,7 +19,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd ${srcdir}/mt76
-	printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package_mt76-dkms-git() {
