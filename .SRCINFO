@@ -8,6 +8,8 @@ pkgbase = glasscord-bin
 	makedepends = git
 	makedepends = npm
 	depends = discord
+	provides = glasscord
+	conflicts = glasscord
 	source = https://github.com/AryToNeX/Glasscord/releases/download/v0.0.6/glasscord.asar
 	md5sums = 0a40e9781a21ed484ed371185a5a0ef5
 
