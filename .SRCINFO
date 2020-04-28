@@ -1,0 +1,15 @@
+pkgbase = sfz
+	pkgdesc = A simple static file serving command-line tool written in Rust
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/weihanglo/sfz
+	arch = x86_64
+	license = MIT
+	license = APACHE
+	makedepends = cargo
+	depends = gcc-libs
+	source = sfz-0.0.4.tar.gz::https://github.com/weihanglo/sfz/archive/0.0.4.tar.gz
+	sha512sums = 4d385e82175b8033fe8d042e42d19b15fb880d022454751dd0302ddf49d3f9bbae8eb36750d6f2f9621582983ef6a2f3d0c3dd47715b8f9e3a01589e7bcba99e
+
+pkgname = sfz
+
