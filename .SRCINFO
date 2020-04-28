@@ -1,6 +1,6 @@
 pkgbase = compiz-fusion-plugins-main
 	pkgdesc = Compiz Main plugins
-	pkgver = 0.8.16
+	pkgver = 0.8.18
 	pkgrel = 1
 	url = https://gitlab.com/compiz/compiz-plugins-main/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = compiz-fusion-plugins-main
 	makedepends = intltool
 	makedepends = pkgconfig
 	makedepends = gettext
-	depends = compiz-core>=0.8.16
+	depends = compiz-core>=0.8.18
 	depends = libjpeg>=7
 	depends = librsvg
 	depends = compiz-bcop
@@ -20,8 +20,8 @@ pkgbase = compiz-fusion-plugins-main
 	depends = startup-notification
 	conflicts = compiz-fusion-plugins-main-git
 	options = !libtool
-	source = https://gitlab.com/compiz/compiz-plugins-main/-/archive/v0.8.16/compiz-plugins-main-v0.8.16.tar.bz2
-	sha256sums = b639d67543f018dbbb3bea9d2404b157f63c1bed2705de19cf496e24edc29ab4
+	source = https://gitlab.com/compiz/compiz-plugins-main/-/archive/v0.8.18/compiz-plugins-main-v0.8.18.tar.bz2
+	sha256sums = 3125ff654b3a422b819d5b5d90406d4efc8fa4c7a66cc4a63efe6597574ad549
 
 pkgname = compiz-fusion-plugins-main
 
