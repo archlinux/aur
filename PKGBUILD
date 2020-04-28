@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 pkgname=vmd-molfile-plugins
 pkgver=1.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Visual Molecular Dynamics - molfile plugins"
 url="https://www.ks.uiuc.edu/Research/vmd/plugins"
 license=('custom')
@@ -16,6 +16,7 @@ md5sums=('5706f88b9b77cc5fafda6fef3a82d6fa'
 source=("local://vmd-${pkgver}.src.tar.gz"
         "plugins.patch"
         "LICENSE")
+options=(staticlibs)
 
 prepare() {
   cd ${srcdir}/plugins
