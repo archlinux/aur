@@ -1,7 +1,7 @@
 #Maintainer: jnanar <info@agayon.be>
 
 pkgname=python-shortuuid-git
-pkgver=v0.5.0.r18.g4da632a
+pkgver=v1.0.1.r1.g664367f
 pkgrel=1
 pkgdesc="shortuuid is a simple python library that generates concise, unambiguous, URL-safe UUIDs."
 arch=(any)
@@ -12,6 +12,7 @@ makedepends=('git')
 options=(!emptydirs)
 provides=('python-shortuuid')
 replaces=('python-shortuuid')
+conflicts=('python-shortuuid')
 #optdepends=('')
 
 source=('git+https://github.com/skorokithakis/shortuuid.git')
