@@ -2,7 +2,7 @@
 # parts are based on [extra] packet 'kismet' -> https://www.archlinux.org/packages/extra/x86_64/kismet/
 
 pkgname=kismet-git
-pkgver=r9339.de354712
+pkgver=r9448.8a24a1eb
 pkgrel=1
 pkgdesc="802.11 layer2 wireless network detector, sniffer, and intrusion detection system"
 url="https://www.kismetwireless.net/"
@@ -38,11 +38,9 @@ backup=(etc/kismet/kismet.conf
 conflicts=('kismet')
 install=${pkgname}.install
 source=("git+https://github.com/kismetwireless/kismet"
-        "${pkgname}-sysusers.conf"
-        "python-install-flags.patch")
+        "${pkgname}-sysusers.conf")
 sha256sums=('SKIP'
-            'fbc444b9973795c105eff41e914c3fcc24ba07e4f309838828622d7a65201d2f'
-            '3155f457bdc762202f28f56f55c61352332a639cddd5948c0879ed4ba79a7ed5')
+            'fbc444b9973795c105eff41e914c3fcc24ba07e4f309838828622d7a65201d2f')
 
 pkgver() {
   cd "$srcdir/kismet"
@@ -51,8 +49,8 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/kismet"
-    patch -Np0 < ../python-install-flags.patch
-    autoreconf -fiv
+    # patch setup.py install command
+    find . -name Makefile.in -exec sed -i 's/setup.py install/setup.py install --root="$(DESTDIR)" -O1/' {} \;
     # include submodule for docs
     git submodule update --init docs
 }
