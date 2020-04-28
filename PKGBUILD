@@ -5,7 +5,7 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 _upstream="ccsm"
-_pkgver=0.8.16
+_pkgver=0.8.18
 _micro=""
 
 pkgname=ccsm
@@ -34,4 +34,4 @@ package() {
   python ./setup.py install --prefix=/usr --with-gtk=2.0 --root="${pkgdir}"
 }
 
-sha256sums=('7c579402255f48f19b1b20824ed5364b423ef973603284ef0632ac612f7da3bc')
+sha256sums=('0dda29684501fee692fa90f3af29503872dd7c9f6b28353f7ba22e4436ce17f8')
