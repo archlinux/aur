@@ -7,10 +7,10 @@
 pkgbase=phpstorm
 pkgname=(phpstorm phpstorm-jre)
 pkgver=2020.1b201.6668.153
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight and Smart PHP IDE'
 arch=('x86_64' 'i686')
-license=('commercial')
+license=('custom:jetbrains')
 url='https://www.jetbrains.com/phpstorm/'
 depends=('glib2' 'python')
 options=('!strip')

@@ -1,11 +1,11 @@
 pkgbase = phpstorm
 	pkgdesc = Lightweight and Smart PHP IDE
 	pkgver = 2020.1b201.6668.153
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/phpstorm/
 	arch = x86_64
 	arch = i686
-	license = commercial
+	license = custom:jetbrains
 	depends = glib2
 	depends = python
 	options = !strip
