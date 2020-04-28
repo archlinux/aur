@@ -23,7 +23,7 @@ build() {
 }
 
 package_lua-web_sanitize() {
-  pkgdesc='Web_sanitize for Lua 5.3'
+  pkgdesc='Lua library for sanitizing untrusted HTML for Lua 5.3'
 
   luarocks install --lua-version=5.3 --tree="$pkgdir/usr/" --deps-mode=none 5.3/*.rock
 
@@ -32,7 +32,7 @@ package_lua-web_sanitize() {
 }
 
 package_lua51-web_sanitize() {
-  pkgdesc='Web_sanitize for Lua 5.1'
+  pkgdesc='Lua library for sanitizing untrusted HTML for Lua 5.1'
 
   luarocks install --lua-version=5.1 --tree="$pkgdir/usr/" --deps-mode=none 5.1/*.rock
 
@@ -41,7 +41,7 @@ package_lua51-web_sanitize() {
 }
 
 package_lua52-web_sanitize() {
-  pkgdesc='Web_sanitize for Lua 5.2'
+  pkgdesc='Lua library for sanitizing untrusted HTML for Lua 5.2'
 
   luarocks install --lua-version=5.2 --tree="$pkgdir/usr/" --deps-mode=none 5.2/*.rock
 

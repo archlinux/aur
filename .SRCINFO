@@ -11,11 +11,11 @@ pkgbase = lua-web_sanitize
 	sha256sums = 64da4fcfd2c025c250b6a91e1a26558c2d9265bb8f1f28d71f323ac55ec5eab3
 
 pkgname = lua-web_sanitize
-	pkgdesc = Web_sanitize for Lua 5.3
+	pkgdesc = Lua library for sanitizing untrusted HTML for Lua 5.3
 
 pkgname = lua51-web_sanitize
-	pkgdesc = Web_sanitize for Lua 5.1
+	pkgdesc = Lua library for sanitizing untrusted HTML for Lua 5.1
 
 pkgname = lua52-web_sanitize
-	pkgdesc = Web_sanitize for Lua 5.2
+	pkgdesc = Lua library for sanitizing untrusted HTML for Lua 5.2
 
