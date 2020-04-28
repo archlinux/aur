@@ -4,16 +4,18 @@
 
 pkgbase=mt76-git
 pkgname=('mt76-dkms-git' 'mt76-firmware-git')
-pkgver=r1802.g89bd719
-pkgrel=1
+pkgver=r1915.g5f3ccc722627
+pkgrel=2
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/openwrt/mt76'
 license=('GPL2')
 makedepends=('git')
 source=("git+${url}.git"
+        'wireless-mediatek-Replace-rcu_swap_protected-with-rc.patch'
         'dkms.conf')
 sha256sums=('SKIP'
-            '084b5d5127dd3569c417c1574af40fffdccf2e74d8ef93f1615d27ed492a7146')
+            '464dcf601bbfbce3e0dd7fcb5008f44b979c6ad85325244d0e0aa3cdea7fb13e'
+            '1c4a61f05b090bd982d21f85568f28bdff6d3a26a9a8853603dcffdd4260cec0')
 
 pkgver() {
 	cd ${srcdir}/mt76
@@ -25,10 +27,11 @@ package_mt76-dkms-git() {
 	provides=('mt76-dkms')
 	depends=('dkms' 'mt76-firmware-git')
 
-	install -dm755 ${pkgdir}/usr/src/mt76-${pkgver}/
-	cp -R ${srcdir}/mt76/* ${pkgdir}/usr/src/mt76-${pkgver}/
-	rm -fR ${pkgdir}/usr/src/mt76-${pkgver}/firmware
-	sed --follow-symlinks -e "s/@PKGVER@/${pkgver}/" ${srcdir}/dkms.conf > ${pkgdir}/usr/src/mt76-${pkgver}/dkms.conf
+	install -dm755 ${pkgdir}/usr/src/mt76-${pkgver}/patches
+	cp -r ${srcdir}/mt76/* ${pkgdir}/usr/src/mt76-${pkgver}/
+	cp ${srcdir}/wireless-mediatek-Replace-rcu_swap_protected-with-rc.patch ${pkgdir}/usr/src/mt76-${pkgver}/patches/
+	rm -f -r ${pkgdir}/usr/src/mt76-${pkgver}/firmware
+	sed --follow-symlinks -e "s,@PKGVER@,${pkgver}," ${srcdir}/dkms.conf > ${pkgdir}/usr/src/mt76-${pkgver}/dkms.conf
 }
 
 package_mt76-firmware-git() {
@@ -37,6 +40,6 @@ package_mt76-firmware-git() {
 
 	install -dm755 ${pkgdir}/usr/lib/firmware/mediatek
 	cp ${srcdir}/mt76/firmware/* ${pkgdir}/usr/lib/firmware/mediatek/
-	# remove firmwares present in linux-firmware package
+	# remove binaries present in linux-firmware package
 	rm -f ${pkgdir}/usr/lib/firmware/mediatek/{mt7610e,mt7615_cr4,mt7615_n9,mt7615_rom_patch,mt7622_n9,mt7622_rom_patch}.bin
 }

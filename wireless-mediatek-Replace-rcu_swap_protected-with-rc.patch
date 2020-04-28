@@ -1,0 +1,46 @@
+From a191c9e9f73a78e8801b5eeb3d43bbd6fd73b86f Mon Sep 17 00:00:00 2001
+From: "Paul E. McKenney" <paulmck@kernel.org>
+Date: Wed, 11 Dec 2019 10:30:21 -0800
+Subject: [PATCH] wireless/mediatek: Replace rcu_swap_protected() with
+ rcu_replace_pointer()
+
+This commit replaces the use of rcu_swap_protected() with the more
+intuitively appealing rcu_replace_pointer() as a step towards removing
+rcu_swap_protected().
+
+Link: https://lore.kernel.org/lkml/CAHk-=wiAsJLw1egFEE=Z7-GGtM6wcvtyytXZA1+BHqta4gg6Hw@mail.gmail.com/
+Reported-by: Linus Torvalds <torvalds@linux-foundation.org>
+Reported-by: "Martin K. Petersen" <martin.petersen@oracle.com>
+[ paulmck: Apply Matthias Brugger feedback. ]
+Signed-off-by: Paul E. McKenney <paulmck@kernel.org>
+Reviewed-by: "Martin K. Petersen" <martin.petersen@oracle.com>
+Acked-by: Kalle Valo <kvalo@codeaurora.org>
+Cc: Felix Fietkau <nbd@nbd.name>
+Cc: Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Roy Luo <royluo@google.com>
+Cc: "David S. Miller" <davem@davemloft.net>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: <linux-wireless@vger.kernel.org>
+Cc: <netdev@vger.kernel.org>
+Cc: <linux-arm-kernel@lists.infradead.org>
+Cc: <linux-mediatek@lists.infradead.org>
+
+diff --git a/drivers/net/wireless/mediatek/mt76/agg-rx.c b/drivers/net/wireless/mediatek/mt76/agg-rx.c
+index 53b5a4b2dcc5..59c187898132 100644
+--- a/agg-rx.c
++++ b/agg-rx.c
+@@ -281,8 +281,8 @@ void mt76_rx_aggr_stop(struct mt76_dev *dev, struct mt76_wcid *wcid, u8 tidno)
+ {
+ 	struct mt76_rx_tid *tid = NULL;
+ 
+-	rcu_swap_protected(wcid->aggr[tidno], tid,
+-			   lockdep_is_held(&dev->mutex));
++	tid = rcu_replace_pointer(wcid->aggr[tidno], tid,
++				  lockdep_is_held(&dev->mutex));
+ 	if (tid) {
+ 		mt76_rx_aggr_shutdown(dev, tid);
+ 		kfree_rcu(tid, rcu_head);
+-- 
+2.26.0
+
