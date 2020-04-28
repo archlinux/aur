@@ -22,5 +22,4 @@ pkgbase = lua-sitegen-git
 	sha256sums = SKIP
 
 pkgname = lua-sitegen-git
-	pkgdesc = Sitegen for Lua 5.3
 

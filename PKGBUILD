@@ -35,8 +35,6 @@ build() {
 }
 
 package() {
-  pkgdesc='Sitegen for Lua 5.3'
-
   luarocks install --lua-version=5.3 --tree="$pkgdir/usr/" --deps-mode=none 5.3/*.rock
 
   # remove luarocks-created root manifest
