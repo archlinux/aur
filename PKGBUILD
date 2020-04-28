@@ -7,7 +7,7 @@ arch=("any")
 url="https://github.com/fedarovich/qbittorrent-cli"
 license=('MIT')
 groups=()
-depends=("dotnet-runtime>=2.1.0" "dotnet-runtime<=3.0.0")
+depends=("dotnet-runtime>=2.1.0" "dotnet-runtime<3.0.0")
 makedepends=()
 checkdepends=()
 optdepends=()
