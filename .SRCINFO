@@ -1,6 +1,6 @@
 pkgbase = ocaml-zed
 	pkgdesc = Abstract engine for text edition in OCaml
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/ocaml-community/zed
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = ocaml-zed
 	depends = ocaml-react
 	depends = ocaml-charinfo_width>=1.1.0
 	options = !strip
-	source = ocaml-zed-3.0.0-1.tar.gz::https://github.com/ocaml-community/zed/archive/3.0.0.tar.gz
-	sha256sums = 2db91de8b14da2193b25ee672d0d57eaf6623a53b6dace645fbdda2bfdf456b9
+	source = ocaml-zed-3.0.1-1.tar.gz::https://github.com/ocaml-community/zed/archive/3.0.1.tar.gz
+	sha256sums = 35eefce0e35b10894bbae6c903758f3ab25363aadd605fb7dcdbc53aac5580f7
 
 pkgname = ocaml-zed

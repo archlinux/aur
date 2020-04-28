@@ -4,7 +4,7 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 _projectname='zed'
 pkgname="ocaml-$_projectname"
-pkgver='3.0.0'
+pkgver='3.0.1'
 pkgrel='1'
 pkgdesc='Abstract engine for text edition in OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ depends=('ocaml>=4.02.3' 'ocaml-camomile>=1.0.1' 'ocaml-react' 'ocaml-charinfo_w
 makedepends=('dune>=1.1.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('2db91de8b14da2193b25ee672d0d57eaf6623a53b6dace645fbdda2bfdf456b9')
+sha256sums=('35eefce0e35b10894bbae6c903758f3ab25363aadd605fb7dcdbc53aac5580f7')
 
 _sourcedirectory="$_projectname-$pkgver"
 
