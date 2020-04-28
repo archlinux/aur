@@ -1,7 +1,7 @@
 pkgbase = xfce4-panel-devel
-	pkgdesc = Panel for the Xfce desktop environment
+	pkgdesc = Panel for the Xfce desktop environment (development release)
 	pkgver = 4.15.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.xfce.org/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = xfce4-panel-devel
 	makedepends = intltool
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
-	makedepends = vala0.46>=0.46.7-2
+	makedepends = vala
 	makedepends = python
 	depends = exo
 	depends = garcon
@@ -22,7 +22,9 @@ pkgbase = xfce4-panel-devel
 	provides = xfce4-panel=4.15.2
 	conflicts = xfce4-panel
 	source = https://archive.xfce.org/src/xfce/xfce4-panel/4.15/xfce4-panel-4.15.2.tar.bz2
+	source = vala_0.48_build_fix.patch::https://git.xfce.org/xfce/xfce4-panel/patch/?id=659d61ee2901ffe1e34f7dbcf5d8213b7a17d142
 	sha256sums = a668b5315268ba5b14b6574edbe00c522f879dea659b75c7742da7140cc3657f
+	sha256sums = 5837420637f100ec5f5170c992932a9f930e958cb34f647d993b031543138b02
 
 pkgname = xfce4-panel-devel
 
