@@ -20,6 +20,9 @@ source=("local://crypt_of_the_necrodancer_en_${_pkgver}.sh"
 	"$pkgname"
 	"$pkgname.desktop"
 	"$pkgname.install")
+backup=('opt/gog/crypt-of-the-necrodancer-amplified/game/data/{played.dat,save_data.xml,save_data.xml_TEMP}'
+				'opt/gog/crypt-of-the-necrodancer-amplified/game/replays/'
+				'opt/gog/crypt-of-the-necrodancer-amplified/game/logs/')
 sha256sums=(SKIP
             SKIP
             '070ec64e6d5bc1a4b68e73fd25a716b116b279718b338f071f0bea953532d4ff'
