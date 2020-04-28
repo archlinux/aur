@@ -2,13 +2,13 @@
 # Contributor: ArielAxionL <i at axionl dot me>
 # Contributor: Leroy.H.Y <me at lhy0403 dot top>
 pkgname=qv2ray
-pkgver=2.2.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Cross-platform V2ray Client written in Qt (Stable Release)"
 arch=('x86_64')
 url='https://github.com/Qv2ray/Qv2ray'
 license=('GPL3')
-depends=('hicolor-icon-theme' 'qt5-base>5.11.0' 'grpc>=1.27.0')
+depends=('hicolor-icon-theme' 'qt5-base>5.11.0' 'grpc>=1.27.0' 'zxing-cpp')
 optdepends=('v2ray: use system v2ray core.')
 makedepends=('git' 'make' 'qt5-tools' 'which' 'gcc' 'qt5-declarative'
              'grpc-cli>=1.27.0' 'cmake' 'ninja')
@@ -20,15 +20,9 @@ source=(
     'QNodeEditor::git+https://github.com/Qv2ray/QNodeEditor'
     'SingleApplication::git+https://github.com/itay-grudev/SingleApplication'
     'x2struct::git+https://github.com/xyz347/x2struct'
-    'qzxing::git+https://github.com/ftylitak/qzxing'
-    'qhttpserver::git+https://github.com/nikhilm/qhttpserver'
-    'cpp-httplib::git+https://github.com/yhirose/cpp-httplib'
 )
 
 sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -40,23 +34,25 @@ pkgver() {
 prepare() {
     cd "${srcdir}/Qv2ray"
     git submodule init
-    submodules=('QNodeEditor' 'SingleApplication' 'x2struct' 'qhttpserver' 'qzxing' 'cpp-httplib')
+    submodules=('QNodeEditor' 'SingleApplication' 'x2struct' 'cpp-httplib')
     for module in ${submodules[@]}; do
         git config submodule."3rdparty/$module".url "${srcdir}/$module"
     done
     
     git config submodule."libs/libqvb".active false
+    git config submodule."3rdparty/zxing-cpp".active false
     git submodule update
 }
 
 build() {
-    export _QV2RAY_BUILD_INFO_="Qv2ray for Arch Linux"
-    export _QV2RAY_BUILD_EXTRA_INFO_="(AUR Build) $(uname -a | cut -d " " -f3,13)"
+    export _QV2RAY_BUILD_INFO_="Qv2ray for Arch Linux CN"
+    export _QV2RAY_BUILD_EXTRA_INFO_="(Official Build) $(uname -a | cut -d " " -f3,13)"
 
     cd "${srcdir}/Qv2ray"
     mkdir -p build && cd build
     cmake .. \
         -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
+        -DQV2RAY_ZXING_PROVIDER="package" \
         -DQV2RAY_TRANSLATION_PATH="/usr/share/qv2ray/lang" \
         -DQV2RAY_DEFAULT_VASSETS_PATH="/usr/lib/v2ray" \
         -DQV2RAY_DEFAULT_VCORE_PATH="/usr/lib/v2ray/v2ray" \
