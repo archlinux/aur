@@ -1,6 +1,6 @@
 pkgbase = drupal-check
 	pkgdesc = Check Drupal code for deprecations and discover bugs via static analysis.
-	pkgver = 1.0.14
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/mglaman/drupal-check
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = drupal-check
 	makedepends = php-composer
 	makedepends = git
 	depends = php
-	source = drupal-check::git+https://github.com/mglaman/drupal-check.git#tag=1.0.14
+	source = drupal-check::git+https://github.com/mglaman/drupal-check.git#tag=1.1.0
 	sha512sums = SKIP
 
 pkgname = drupal-check
