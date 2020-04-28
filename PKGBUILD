@@ -1,7 +1,7 @@
 # Maintainer: Eugenio M. Vigo <emvigo@gmail.com>
 
 pkgname=turbodiary
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Turbo Diary - A Personal Diary'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/emvigo/turbodiary'
 license=('APACHE')
 depends=('openssl' 'pcre2')
 source=("https://github.com/emvigo/turbodiary/archive/$pkgver.tar.gz")
-sha256sums=('b9fe7dc22911605c352524b790fa6107962552be5d550a3a4669b56cb56b328b')
+sha256sums=('d364b53367b9f8209092cd27c2162e42db65b816b78398be4ea3d2b532d5a396')
 
 build() {
 	cd "$pkgname-$pkgver"
