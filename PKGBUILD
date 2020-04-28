@@ -1,15 +1,15 @@
 # Maintainer: sh1213 <shumer1213 at gmail>
 
 pkgname=cnping-git
-pkgver=r43.03517f9
+pkgver=r163.16aac94
 pkgrel=1
 pkgdesc="Minimal Graphical IPV4 Ping Tool by CNLohr"
 arch=('i686' 'x86_64')
-url="https://github.com/cnlohr/cnping"
+url="https://github.com/cntools/cnping"
 license=('custom')
 depends=('libxinerama')
 makedepends=('git')
-source=('git+https://github.com/cnlohr/cnping.git')
+source=('git+https://github.com/cntools/cnping.git')
 md5sums=('SKIP')
 
 _gitname=cnping

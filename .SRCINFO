@@ -1,14 +1,14 @@
 pkgbase = cnping-git
 	pkgdesc = Minimal Graphical IPV4 Ping Tool by CNLohr
-	pkgver = r43.03517f9
+	pkgver = r163.16aac94
 	pkgrel = 1
-	url = https://github.com/cnlohr/cnping
+	url = https://github.com/cntools/cnping
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = git
 	depends = libxinerama
-	source = git+https://github.com/cnlohr/cnping.git
+	source = git+https://github.com/cntools/cnping.git
 	md5sums = SKIP
 
 pkgname = cnping-git
