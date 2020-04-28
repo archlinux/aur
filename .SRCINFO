@@ -1,0 +1,26 @@
+pkgbase = lua-sitegen-git
+	pkgdesc = Static site generator in MoonScript
+	pkgver = r305.3b8eea6
+	pkgrel = 1
+	url = http://leafo.net/sitegen
+	arch = x86_64
+	license = Unknown
+	makedepends = luarocks
+	makedepends = git
+	depends = lua
+	depends = lua-cosmo
+	depends = moonscript
+	depends = lua-socket
+	depends = lua-filesystem
+	depends = lua-cjson
+	depends = lua-date
+	depends = lua-discount
+	depends = lua-ansicolors
+	depends = lua-web_sanitize
+	provides = sitegen
+	source = git+https://github.com/leafo/sitegen
+	sha256sums = SKIP
+
+pkgname = lua-sitegen-git
+	pkgdesc = Sitegen for Lua 5.3
+
