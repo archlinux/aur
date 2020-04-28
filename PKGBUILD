@@ -18,4 +18,5 @@ build() {
 }
 package() {
 	install -Dm755 ${pkgname}-${pkgver}/target/release/ncmt ${pkgdir}/usr/bin/ncmt
+	install -Dm644 ${pkgname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
