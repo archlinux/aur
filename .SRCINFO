@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-rt
 	pkgdesc = Linux Xanmod real-time version
-	pkgver = 5.4.34
+	pkgver = 5.6.4
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -16,10 +16,16 @@ pkgbase = linux-xanmod-rt
 	makedepends = graphviz
 	makedepends = imagemagick
 	options = !strip
-	source = https://github.com/xanmod/linux/archive/5.4.34-rt21-xanmod1.tar.gz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.tar.sign
+	source = https://github.com/xanmod/linux/releases/download/5.6.4-rt3-xanmod1/patch-5.6.4-rt3-xanmod1.xz
 	source = choose-gcc-optimization.sh
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b
-	sha256sums = 7da22a8e880080d2492d39f8db881b88183ef5f45426d391ab96e0b0f2a78265
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622
+	sha256sums = SKIP
+	sha256sums = 1912b40c0f7d453ae336c550eda1ed0e9ffd3ca227f783bf0df50368c9a2eed6
 	sha256sums = 2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511
 	sha256sums = 9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee
 

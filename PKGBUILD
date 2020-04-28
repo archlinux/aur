@@ -60,14 +60,18 @@ if [ -z ${_localmodcfg} ]; then
   _localmodcfg=n
 fi
 
+# Tweak kernel options prior to a build via nconfig
+_makenconfig=
+
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rt
-pkgver=5.4.34
-xanmod=21
+pkgver=5.6.4
+_major=5.6
+_branch=5.x
+xanmod=3
 pkgrel=1
 _rev=1
-#_commit=129d48ad37bce913f6f5d6c767f997afc6be4c7d
 pkgdesc='Linux Xanmod real-time version'
 arch=(x86_64)
 url="http://www.xanmod.org/"
@@ -79,13 +83,25 @@ makedepends=(
 options=('!strip')
 _srcname="linux-${pkgver}-rt${xanmod}-xanmod${_rev}"
 
-#source=(https://github.com/xanmod/linux/archive/${_commit}.zip
-source=(https://github.com/xanmod/linux/archive/${pkgver}-rt${xanmod}-xanmod${_rev}.tar.gz
-       choose-gcc-optimization.sh
-       '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b'
+source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
+        "https://github.com/xanmod/linux/releases/download/${pkgver}-rt${xanmod}-xanmod${_rev}/patch-${pkgver}-rt${xanmod}-xanmod${_rev}.xz"
+        choose-gcc-optimization.sh
+        '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b')
+validpgpkeys=(
+    'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
+    '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
-sha256sums=('7da22a8e880080d2492d39f8db881b88183ef5f45426d391ab96e0b0f2a78265'
+# Archlinux patches
+_commits=""
+for _patch in $_commits; do
+    source+=("${_patch}.patch::https://git.archlinux.org/linux.git/patch/?id=${_patch}")
+done
+    
+
+sha256sums=('e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622'
+            'SKIP'
+            '1912b40c0f7d453ae336c550eda1ed0e9ffd3ca227f783bf0df50368c9a2eed6'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
@@ -94,8 +110,10 @@ export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
 export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
 
 prepare() {
-  #cd linux-${_commit}
-  cd linux-${pkgver}-rt${xanmod}-xanmod${_rev}
+  cd linux-${_major}
+
+  # Apply Xanmod patch
+  patch -Np1 -i ../patch-${pkgver}-rt${xanmod}-xanmod${_rev}
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -146,9 +164,26 @@ prepare() {
 
   # This is intended for the people that want to build this package with their own config
   # Put the file "myconfig" at the package folder to use this feature
+  # If it's a full config, will be replaced
+  # If not, you should use scripts/config commands, one by line
   if [ -f "${startdir}/myconfig" ]; then
-    msg2 "Using user CUSTOM config..."
-    cp -f "${startdir}"/myconfig .config
+    if [ $(wc -l < "${startdir}/myconfig") -gt 1000 ]; then
+      # myconfig is a full config file. Replace it
+      msg2 "Using user CUSTOM config..."
+      cp -f "${startdir}"/myconfig .config
+    else
+      # myconfig is a partial file. Applying every line
+      msg2 "Applying configs..."
+      cat "${startdir}"/myconfig | while read -r _linec ; do
+        if echo "$_linec" | grep "scripts/config" ; then
+          set -- $_linec
+          "$@"
+        else
+          warning "Line format incorrect, ignoring..."
+        fi
+      done
+    fi
+    echo
   fi
 
   make olddefconfig
@@ -167,11 +202,15 @@ prepare() {
 
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+
+  [[ -z "$_makenconfig" ]] || make nconfig
+
+  # save configuration for later reuse
+  cat .config > "${startdir}/config.last"
 }
 
 build() {
-  #cd linux-${_commit}
-  cd linux-${pkgver}-rt${xanmod}-xanmod${_rev}
+  cd linux-${_major}
   make all
 }
 
@@ -181,8 +220,7 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
 
-  #cd linux-${_commit}
-  cd linux-${pkgver}-rt${xanmod}-xanmod${_rev}
+  cd linux-${_major}
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -199,16 +237,12 @@ _package() {
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  msg2 "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for Xanmod Linux kernel"
 
-  #cd linux-${_commit}
-  cd linux-${pkgver}-rt${xanmod}-xanmod${_rev}
+  cd linux-${_major}
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   msg2 "Installing build files..."
@@ -278,9 +312,6 @@ _package-headers() {
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-  msg2 "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("${pkgbase}" "${pkgbase}-headers")
