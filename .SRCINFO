@@ -8,7 +8,7 @@ pkgbase = redi-search
 	makedepends = git
 	makedepends = cmake
 	depends = redis
-	source = redi-search::git+https://github.com/RediSearch/RediSearch
+	source = redi-search-1.6.12::git+https://github.com/RediSearch/RediSearch
 	md5sums = SKIP
 
 pkgname = redi-search

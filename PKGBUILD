@@ -8,7 +8,7 @@ url="https://github.com/RediSearch/RediSearch"
 license=("Custom")
 depends=("redis")
 makedepends=("git" "cmake")
-source=("$pkgname::git+$url")
+source=("$pkgname-$pkgver::git+$url")
 md5sums=("SKIP")
 
 prepare() {
