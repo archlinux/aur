@@ -1,0 +1,13 @@
+# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+
+post_install() {
+  echo -e "Run the following commands as non-root user to finish setup!"
+  echo
+  echo -e "\e[32m 'mkdir -p /tmp/my_mpv_thumbnails' \e[37m"
+  echo -e "\e[32m 'mkdir -p ~/.config/mpv/lua-settings'\e[37m"
+  echo -e "\e[32m 'cp /etc/mpv-thumbnail-script/mpv_thumbnail_script.conf ~/.config/mpv/lua-settings'\e[37m"
+  echo -e "\e[32m 'cp /usr/share/doc/mpv/mpv.conf ~/.config/mpv'\e[37m"
+  echo -e "\e[32m 'sed -i '50s|#osc=no|osc=no|' ~/.config/mpv/mpv.conf'\e[37m"
+  echo
+  echo -e "Default keybinding to generate thumbnails: [\e[32mShift + T\e[37m]"
+}
