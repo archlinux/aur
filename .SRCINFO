@@ -1,0 +1,30 @@
+pkgbase = mint-backgrounds
+	pkgdesc = The backgrounds of Linux Mint
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = Various
+	depends = mint-backgrounds-helena
+	depends = mint-backgrounds-isadora
+	depends = mint-backgrounds-julia
+	depends = mint-backgrounds-katya
+	depends = mint-backgrounds-lisa
+	depends = mint-backgrounds-maya
+	depends = mint-backgrounds-nadia
+	depends = mint-backgrounds-olivia
+	depends = mint-backgrounds-petra
+	depends = mint-backgrounds-qiana
+	depends = mint-backgrounds-rafaela
+	depends = mint-backgrounds-rebecca
+	depends = mint-backgrounds-rosa
+	depends = mint-backgrounds-sarah
+	depends = mint-backgrounds-serena
+	depends = mint-backgrounds-sonya
+	depends = mint-backgrounds-sylvia
+	depends = mint-backgrounds-tara
+	depends = mint-backgrounds-tessa
+	depends = mint-backgrounds-tina
+	depends = mint-backgrounds-tricia
+
+pkgname = mint-backgrounds
+
