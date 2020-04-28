@@ -1,0 +1,18 @@
+pkgbase = python-soundcard-git
+	pkgdesc = Play and record audio without resorting to CPython extensions
+	pkgver = 0.3.3.r10.gc03a9f9
+	pkgrel = 1
+	url = https://github.com/bastibe/SoundCard
+	arch = any
+	license = BSD3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-cffi
+	provides = python-soundcard=0.3.3.r10.gc03a9f9
+	conflicts = python-soundcard
+	source = git+https://github.com/bastibe/SoundCard.git
+	sha512sums = SKIP
+
+pkgname = python-soundcard-git
+
