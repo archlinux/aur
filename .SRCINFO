@@ -1,6 +1,6 @@
 pkgbase = ccsm-gtk3
 	pkgdesc = Compizconfig Settings Manager in Python2
-	pkgver = 0.8.16
+	pkgver = 0.8.18
 	pkgrel = 1
 	url = https://gitlab.com/compiz/ccsm/
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = ccsm-gtk3
 	depends = gtk3
 	optdepends = compiz-gtk-standalone: option 1
 	optdepends = compiz-core: option 2
-	provides = ccsm=0.8.16
+	provides = ccsm=0.8.18
 	conflicts = ccsm-git
-	source = https://gitlab.com/compiz/ccsm/-/archive/v0.8.16/ccsm-v0.8.16.tar.bz2
-	sha256sums = 7c579402255f48f19b1b20824ed5364b423ef973603284ef0632ac612f7da3bc
+	source = https://gitlab.com/compiz/ccsm/-/archive/v0.8.18/ccsm-v0.8.18.tar.bz2
+	sha256sums = 0dda29684501fee692fa90f3af29503872dd7c9f6b28353f7ba22e4436ce17f8
 
 pkgname = ccsm-gtk3
 
