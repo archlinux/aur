@@ -38,7 +38,7 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 #                                    Default PKGBUILD Configuration                                       #
 #=========================================================================================================#
 pkgname=vim-youcompleteme-git
-pkgver=r2666.367c1518
+pkgver=r2668.8965a46b
 pkgver() {
 	cd "YouCompleteMe" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -73,10 +73,23 @@ source=(
 	'omnisharp.patch'
 	'rls.patch')
 
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-			'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-			'266b90d50bff43b6d0a011462239dcf261f5a97a5b1f110b4a7e063670963dae' 
-			'cde1d1265be82e246edb6021e0a4b4e01af1a140b8d92b05bde6929e922ae215')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'af76c1efa5468815d40d636748fa3f7d36f0d81dafa41bffcbb86c2f27df04b2'
+            'e5c1bf356ca1c8034d64da11e8b41ceb48d1bb672d25d3b0d2ad12133438d344')
 
 #=========================================================================================================#
 #                                     Applying PKBUILD Build Options                                      #
@@ -164,18 +177,12 @@ prepare() {
 	fi
 
 	# Apply our patch to use existing rustup toolchains
-	cd "$srcdir" || exit
-	cp rls.patch "$srcdir/YouCompleteMe/third_party/ycmd/"
 	cd "$srcdir/YouCompleteMe/third_party/ycmd/" || exit
-	patch -N -p1 -r - <rls.patch || echo "Patch already applied"
-	rm rls.patch
+	patch -N -p1 -r - < ../../../rls.patch || echo "Patch already applied"
 
 	# Apply our patch to use AUR omnisharp-http-bin
-	cd "$srcdir" || exit
-	cp omnisharp.patch "$srcdir/YouCompleteMe/third_party/ycmd/"
 	cd "$srcdir/YouCompleteMe/third_party/ycmd/" || exit
-	patch -N -p1 -r - <omnisharp.patch || echo "Patch already applied"
-	rm omnisharp.patch
+	patch -N -p1 -r - < ../../../omnisharp.patch || echo "Patch already applied"
 }
 
 build() {
@@ -185,7 +192,7 @@ build() {
 	echo 'Building ycmd...' # BuildYcmdLibs()
 	mkdir -p "$srcdir/ycmd_build"
 	cd "$srcdir/ycmd_build" || exit
-	cmake -G "Unix Makefiles" -DUSE_PYTHON2=OFF -DUSE_SYSTEM_LIBCLANG="$_use_system_clang" . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
+	cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG="$_use_system_clang" . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
 	make ycm_core
 
 	if [[ "$_gocode" == "y" ]]; then

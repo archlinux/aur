@@ -1,6 +1,6 @@
 pkgbase = vim-youcompleteme-git
 	pkgdesc = A code-completion engine for Vim
-	pkgver = r2666.367c1518
+	pkgver = r2668.8965a46b
 	pkgrel = 1
 	url = https://ycm-core.github.io/YouCompleteMe/
 	install = install.sh
@@ -54,8 +54,8 @@ pkgbase = vim-youcompleteme-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 266b90d50bff43b6d0a011462239dcf261f5a97a5b1f110b4a7e063670963dae
-	sha256sums = cde1d1265be82e246edb6021e0a4b4e01af1a140b8d92b05bde6929e922ae215
+	sha256sums = af76c1efa5468815d40d636748fa3f7d36f0d81dafa41bffcbb86c2f27df04b2
+	sha256sums = e5c1bf356ca1c8034d64da11e8b41ceb48d1bb672d25d3b0d2ad12133438d344
 
 pkgname = vim-youcompleteme-git
 
