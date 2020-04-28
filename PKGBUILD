@@ -3,11 +3,11 @@
 pkgbase=goland-eap
 pkgname=(goland-eap goland-eap-jre)
 pkgver=201.6668.63
-pkgrel=1
+pkgrel=2
 pkgdesc='Capable and Ergonomic Go IDE'
 arch=('x86_64' 'i686')
 url='https://www.jetbrains.com/go/'
-license=('commercial')
+license=('custom:jetbrains')
 depends=('glib2')
 options=('!strip')
 source=("https://download.jetbrains.com/go/${pkgbase%-eap}-${pkgver}.tar.gz"
