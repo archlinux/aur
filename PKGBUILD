@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.5.19
+pkgver=5.6.7
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -71,41 +71,27 @@ makedepends=(
   bc kmod libelf
 )
 options=('!strip')
-_ckpatch="patch-5.5-ck${_ckpatchversion}"
+_ckpatch="patch-5.6-ck${_ckpatchversion}"
 _gcc_more_v='20191217'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
+  sphinx-workaround.patch
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  "http://ck.kolivas.org/patches/5.0/5.5/5.5-ck${_ckpatchversion}/$_ckpatch.xz"
+  "http://ck.kolivas.org/patches/5.0/5.6/5.6-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-0004-drm-i915-Serialise-i915_active_acquire-with-__active.patch
-0005-drm-i915-gem-Take-runtime-pm-wakeref-prior-to-unbind.patch
-0006-drm-i915-gem-Avoid-parking-the-vma-as-we-unbind.patch
-0007-drm-i915-gem-Try-to-flush-pending-unbind-events.patch
-0008-drm-i915-gem-Reinitialise-the-local-list-before-repe.patch
-0009-drm-i915-Add-a-simple-is-bound-check-before-unbindin.patch
-0010-drm-i915-Introduce-a-vma.kref.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('1448334371fb52f511255726832464d33877a210a7350260fb18eb225ae211eb'
+sha256sums=('23a0420f29eacb66d71f86f64fbd35a1b6ff617d520e3e05f3e1f537d46692ca'
             'SKIP'
-            '0b414b6974b732cfb71b6f45b6210d127528aa6452132e9b9338719ac021bf06'
+            'dfd3310bc2d3c4adbaba5e4f2260a8a110706993be1c3e02a5ddfe88bf0c63ce'
+            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
-            '37a9d61e8a0b5a73992e1397c3a9cc947d39e715f205f3c665eb157b96d58f98'
-            '62b087dd679e096a18611648308c05c896c587b488631fef4df51524dc4d2b6c'
-            'ab9b3259ca838688a02beb37df3ba0d058b3b3847b703e99352b193a1be961e6'
-            '2dfd1fc8c6115a7633dca86df1098cc55e6401ec7cbee1c2d0f1cbcfa1d7bf78'
-            'ef83a35e3516b456923be416606ccabfd05abe8ca587007a2fc00001c609ecca'
-            'd8cb6bf029d5a3729149bdd6fb88b4d57691d37baf4e6d280283197693c82f24'
-            '8da1046091242178219de63805bf08f2d8bfe72874ab5f2b616249d7b87227ea'
-            '70f0e78e7335cb713c06a1e0b886d4c8edebf2048c588f00d12e95c930483cd9'
-            '6d305596dc9be86a65b9200bf69c001a8e4ddd41cad471289c3c769b5530c359'
-            'a4a10bcb55fc1991200c3835b359b81f5e3e858f5be77c6b9eaef033885c8bfc')
+            'a6fe596e75333a5ac8ed4a4d63e4408ef38ebef6303889223e236af3ce576877'
+            '4d574f029a464d5e9b9f9fd0299f9b4a49ea0b4d6aa6caa2de3ba6b305fd47fe')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -218,9 +204,6 @@ _package() {
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -300,8 +283,6 @@ _package-headers() {
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers")
