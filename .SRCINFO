@@ -1,6 +1,6 @@
 pkgbase = vte3-notification
 	pkgdesc = Virtual Terminal Emulator widget for use with GTK3 with Fedora patches
-	pkgver = 0.60.1
+	pkgver = 0.60.2
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal/VTE
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = vte3-notification
 	depends = gnutls
 	options = !emptydirs
 	source = git+https://git.gnome.org/browse/vte#tag=0.60.1
-	source = vte291-cntnr-precmd-preexec-scroll.patch-8da41fea607b130e24c580150d93597a9dc18d6f::https://src.fedoraproject.org/rpms/vte291/raw/8da41fea607b130e24c580150d93597a9dc18d6f/f/vte291-cntnr-precmd-preexec-scroll.patch
+	source = vte291-cntnr-precmd-preexec-scroll.patch-4aaef0090439481d577a5a208e1b26ee6ae5d3d1::https://src.fedoraproject.org/rpms/vte291/raw/4aaef0090439481d577a5a208e1b26ee6ae5d3d1/f/vte291-cntnr-precmd-preexec-scroll.patch
 	sha256sums = SKIP
 	sha256sums = a14964af6e47af5b665972ca1a4fd05a61d612aca5d5b3a20bed4186c033bd26
 
