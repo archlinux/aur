@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=elementary-planner-git
-pkgver=2.2.14.r0.gbf2181dd
+pkgver=2.3.3.r5.g5794c14a
 pkgrel=1
-pkgdesc="Personal task manager designed for elementary OS"
+pkgdesc="Task manager with Todoist support"
 arch=('x86_64')
 url="https://planner-todo.web.app"
 license=('GPL3')

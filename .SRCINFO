@@ -1,6 +1,6 @@
 pkgbase = elementary-planner-git
-	pkgdesc = Personal task manager designed for elementary OS
-	pkgver = 2.2.14.r0.gbf2181dd
+	pkgdesc = Task manager with Todoist support
+	pkgver = 2.3.3.r5.g5794c14a
 	pkgrel = 1
 	url = https://planner-todo.web.app
 	arch = x86_64
