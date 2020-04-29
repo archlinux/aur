@@ -1,0 +1,19 @@
+pkgbase = python-pep-adapter-hg
+	pkgdesc = p≡p Python adapter
+	pkgver = r179.da8d0de6e5f2
+	pkgrel = 1
+	url = https://github.com/myint/language-check
+	arch = any
+	license = GPL3
+	makedepends = python
+	depends = python
+	depends = pep-engine
+	depends = boost
+	depends = boost-libs
+	depends = gcc
+	provides = python-pep-adapter
+	source = hg+https://pep.foundation/dev/repos/pEpPythonAdapter
+	sha256sums = SKIP
+
+pkgname = python-pep-adapter-hg
+
