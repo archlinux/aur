@@ -1,0 +1,19 @@
+post_install() {
+    echo "------------------------------------------------------------------"
+    echo "Please follow the following steps to add the add-on KeePassXC-browser to your Chrome / Chromium browser"
+    echo "  1. Go to Chrome / Chromium extensions (chrome://extensions)"
+    echo "  2. Click on radio button to enable 'Developer mode'"
+    echo "  3. Click on 'Load unpacked'"
+    echo "  4. Select the directory '/usr/share/chromium-keepassxc-browser'"
+    echo ""
+    echo "Hooray ! The extension is now available in your Chrome / Chromium browser !"
+    echo ""
+    echo "Nevertheless, you'll have to follow TroubleShooting guide: https://github.com/keepassxreboot/keepassxc-browser/wiki/Troubleshooting-guide"
+    echo "And add the following line under \"allowed_origins\":"
+    echo "  \"chrome-extension://npnmcopchcbmkfimmpdeklfablpkaeog/\""
+    echo "------------------------------------------------------------------"
+}
+
+post_upgrade() {
+	post_install
+}
