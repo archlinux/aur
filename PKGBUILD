@@ -2,7 +2,7 @@
 
 _pkgname=winpager
 pkgname=${_pkgname}-git
-pkgver=20150225.r21.69466f0
+pkgver=20200429.r23.dfb1742
 pkgrel=1
 pkgdesc="A dynamic window paging system for X.Org"
 url="https://github.com/prurigro/winpager"
