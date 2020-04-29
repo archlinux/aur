@@ -1,8 +1,7 @@
 # Maintainer: Pablo Lenna  <pablolenna@gmail.com>
 
 pkgname=bootsplash-manjaro-splash
-_pkgname=bootsplash-manjaro-splash
-pkgver=0.1
+pkgver=r3.386a1ed
 pkgrel=1
 pkgdesc="Bootsplash Theme 'Manjaro Splash'"
 arch=('any')
