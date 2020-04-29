@@ -1,21 +1,13 @@
-# Maintainer: tequa
+# Maintainer: Mikael Tillenius <mti at tillenius dot com>
 pkgname=libps3000a
-pkgver=2.1.0_6r570
+pkgver=2.1.34_6r2002
 pkgrel=1
 pkgdesc="library for picotech oscilloscope 3000a series"
-arch=('i686' 'x86_64')
-if [ "$CARCH" == "i686" ]; then
-  _arch="i386"
-  _md5sum='00798cf733d4fe368ed7f7b0122918dc'
-else
-  _arch="amd64"
-  _md5sum='02f1dabb99b2c745de6a3b4afb90be4d'
-fi
+arch=('x86_64')
 url="http://www.picotech.com/linux.html"
 license=('custom')
 groups=()
 depends=(libusb)
-makedepends=(dpkg)
 optdepends=()
 provides=()
 conflicts=()
@@ -24,16 +16,11 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=("http://labs.picotech.com/debian/pool/main/libp/${pkgname}/${pkgname}_${pkgver//_/-}_${_arch}.deb")
-md5sums=('359c3cc60b45df41849a60468b1bb5c2')
-noextract=()
-
-build() {
-  echo
-}
+source=("http://labs.picotech.com/debian/pool/main/libp/${pkgname}/${pkgname}_${pkgver//_/-}_amd64.deb")
+md5sums=('94912035bb0d758b6bcb8121d8c34ea6')
 
 package() {
-  dpkg --extract ${pkgname}_${pkgver//_/-}_${_arch}.deb $pkgdir
+  tar -xf data.tar.xz -C "${pkgdir}"
   chmod -R go-w $pkgdir
   chown -R root:root $pkgdir
 }
