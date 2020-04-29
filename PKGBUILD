@@ -23,8 +23,8 @@ build() {
 
 package() {
   cd bindfsit
-  install -D "bindfsit@.service" "${pkgdir}/usr/lib/systemd/system/bindfsit@.service"
-  install -D "bindfsit.sh" "${pkgdir}/usr/bin/bindfsit.sh"
-  install -D "example.cfg" "${pkgdir}/etc/bindfsit/example.cfg"
+  install -m644 -D "bindfsit@.service" "${pkgdir}/usr/lib/systemd/system/bindfsit@.service"
+  install -m755 -D "bindfsit.sh" "${pkgdir}/usr/bin/bindfsit.sh"
+  install -m644 -D "example.cfg" "${pkgdir}/etc/bindfsit/example.cfg"
 }
 
