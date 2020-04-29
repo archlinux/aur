@@ -1,4 +1,4 @@
-# Maintainer: effeffe <filippo.falezza at outlook dot it>
+# Maintainer: effeffe <filippo dot falezza at outlook dot it>
 # Maintainer: Zookah <zookah77 at gmail dot com>
 # Maintainer: Ydallilar <yigit dot dallilar at gmail dot com>
 # Contributor: Qinq-net
