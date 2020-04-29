@@ -1,5 +1,4 @@
-# Maintainer: telans <telans@protonmail.com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 # Contributor: Linus Färnstrand <linus at mullvad dot net>
@@ -8,7 +7,7 @@
 pkgname=mullvad-vpn-beta
 _pkgver=2020.4
 _channel=beta
-pkgver=${_pkgver}.${_channel}2
+pkgver=${_pkgver}.${_channel}3
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
@@ -16,11 +15,12 @@ arch=('x86_64')
 license=('GPL3')
 depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
 makedepends=('git' 'go-pie' 'rust' 'npm')
+optdepends=('bash-completion')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
 _commit='fbd0bd510547bed0596dbb7c456de7c4df9556e0'
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}2?signed"
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}3?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "${pkgname%-beta}.sh")
 sha256sums=('SKIP'
@@ -40,16 +40,19 @@ prepare() {
 
 	# Disable building of rpm
 	sed -i "s/'deb', 'rpm'/'deb'/g" gui/tasks/distribution.js
+
+	mkdir -p dist-assets/shell-completions
 }
 
 build() {
 	cd "$srcdir/mullvadvpn-app"
+	local RUSTC_VERSION=$(rustc --version)
 	local PRODUCT_VERSION=$(node -p "require('./gui/package.json').version" | \
 		sed -Ee 's/\.0//g')
 
 	echo "Building Mullvad VPN $PRODUCT_VERSION..."
 
-	# Build wireguard-go
+	# Compile wireguard-go
 	cd "$srcdir/mullvadvpn-app/wireguard/libwg"
 	mkdir -p "../../build/lib/$arch-unknown-linux-gnu"
 	go build \
@@ -59,7 +62,6 @@ build() {
 		-buildmode c-archive
 
 	cd "$srcdir/mullvadvpn-app"
-
 	echo "Restoring version metadata files..."
 	./version-metadata.sh restore-backup
 	mv Cargo.lock.bak Cargo.lock || true
@@ -68,15 +70,21 @@ build() {
 	cp Cargo.lock Cargo.lock.bak
 	./version-metadata.sh inject $PRODUCT_VERSION
 
-	# Remove old Rust build artifacts
 	echo "Removing old Rust build artifacts"
-	cargo clean --release --locked
+	cargo clean --locked
 
-	# Build binaries
-	echo "Building Rust code..."
-	cargo build --release --locked --all-features
+	echo "Building Rust code in release mode using $RUSTC_VERSION..."
 
-	# Copy binaries for packaging
+	cd mullvad-cli
+	for sh in bash zsh; do
+		echo "Generating shell completion script for $sh..."
+		cargo run --release --locked --features shell-completions -- \
+			shell-completions "$sh" ../dist-assets/shell-completions/
+	done
+
+	cd "$srcdir/mullvadvpn-app"
+	MULLVAD_ADD_MANIFEST="1" cargo build --release --locked --all-features
+
 	echo "Copying binaries"
 	binaries=(
 		mullvad-daemon
@@ -95,7 +103,7 @@ build() {
 	# Build Electron GUI app
 	cd gui
 	echo "Installing JavaScript dependencies..."
-	npm install --cache "$srcdir/npm-cache"
+	npm ci --no-optional --cache "$srcdir/npm-cache"
 	echo "Packing final release artifact..."
 	npm run pack:linux
 }
@@ -129,9 +137,15 @@ package() {
 	# Link to the GUI binary
 	install -m755 "$srcdir/${pkgname%-beta}.sh" "$pkgdir/usr/bin/${pkgname%-beta}"
 
+	# Install completions
+	install -Dm755 dist-assets/shell-completions/mullvad.bash \
+		"$pkgdir/usr/share/bash-completion/completions/mullvad"
+	install -Dm755 dist-assets/shell-completions/_mullvad -t \
+		"$pkgdir/usr/share/zsh/site-functions"
+
 	# Install desktop file & icons from .deb
 	cd dist
-	ar x "MullvadVPN-${_pkgver}.0-${_channel}2_amd64.deb"
+	ar x "MullvadVPN-${_pkgver}.0-${_channel}3_amd64.deb"
 	tar -xf data.tar.xz
 	install -Dm644 "usr/share/applications/${pkgname%-beta}.desktop" -t \
 		"$pkgdir/usr/share/applications"
