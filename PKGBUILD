@@ -2,20 +2,20 @@
 _target='compass-community'
 _edition=' Community'
 pkgname="mongodb-$_target"
-_pkgver='1.20.5'
+_pkgver='1.21.0'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='4'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Community Edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
-depends=('electron3-bin' 'krb5' 'libsecret' 'lsb-release')
+depends=('electron6' 'krb5' 'libsecret' 'lsb-release')
 makedepends=('git' 'npm' 'python' 'unzip')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'hadron-build-packaging.diff'
 )
-sha256sums=('48726164a002ee07ff56041bc80e8897d897b44e99efc5cde7c4381024b21ac5'
+sha256sums=('98cc27778a0d6456b17464d85a38474cda84285efe779394497f3250481e2ebc'
             '3f438dc5b2eb99a4831f83d753cb3dc86fc8b3217499310fe03469570f300ff2')
 
 _sourcedirectory="compass-$_pkgver"
@@ -27,7 +27,7 @@ prepare() {
 	sed -E -i 's|("node": ").*"|\1'"$(node -v | sed 's/^v//')"'"|' 'package.json'
 
 	# Set system Electron version for ABI compatibility
-	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron3/version' | sed 's/^v//')"'"|' 'package.json'
+	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron6/version')"'"|' 'package.json'
 
 	# Prepare dependencies
 	export HOME="$srcdir/$pkgname-$pkgver-$pkgrel-home"
@@ -82,7 +82,7 @@ package() {
 	install -dm755 "$pkgdir/usr/bin/"
 	cat << EOF > "$pkgdir/usr/bin/$pkgname"
 #!/bin/sh
-NODE_ENV=production exec electron3 '/usr/lib/$pkgname/app.asar' "\$@"
+NODE_ENV=production exec electron6 '/usr/lib/$pkgname/app.asar' "\$@"
 EOF
 	chmod +x "$pkgdir/usr/bin/$pkgname"
 
