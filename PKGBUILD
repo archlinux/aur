@@ -1,15 +1,20 @@
+# Maintainer: Nathan Owens <ndowens @ artixlinux.org>
 # Maintainer: sasvari <sasvari@fastmail.com>
 pkgname="python-dxfwrite"
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A Python library to create DXF R12 drawings."
 arch=(any)
 url="http://dxfwrite.readthedocs.io/"
+license=('MIT')
 depends=("python")
-sha256sums=('cfe80f77271f7f8b53048c0684ce715e7b94762ccf043ba5f8465bc9da485331')
-source=("https://github.com/mozman/dxfwrite/archive/v$pkgver.tar.gz")
+makedepends=('git' 'python-setuptools')
+source=("git+https://github.com/mozman/dxfwrite.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
 package() {
-	cd "$srcdir/dxfwrite-$pkgver"
-	python setup.py install --optimize=1 --root="$pkgdir/" --prefix="/usr"
+  cd "$srcdir/dxfwrite"
+  python setup.py install --optimize=1 --root="$pkgdir/" --prefix="/usr"
+
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
