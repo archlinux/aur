@@ -6,6 +6,7 @@ pkgbase = python-fusesoc
 	arch = any
 	license = GPLv3
 	makedepends = git
+	makedepends = python-pip
 	depends = python
 	depends = python-edalize
 	depends = python-setuptools
