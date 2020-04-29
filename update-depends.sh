@@ -7,13 +7,13 @@
 # The script must be run from the PKGBUILD directory and it assumes that
 # the sources are located in ./src/xdg-desktop-portal-wlr-git
 
-yml="$(cat src/xdg-desktop-portal-wlr-git/.build.yml | sed 's/ *- //g')"
+yml="$(cat src/xdg-desktop-portal-wlr-git/.builds/archlinux.yml | sed 's/ *- //g')"
 
 # Dumb-parse yaml file and get the "packages" section
 pkgs="${yml##*packages:}"
 pkgs="${pkgs%%sources*}"
 
-depends="wlroots"
+depends="wlroots xdg-desktop-portal"
 makedepends="git"
 
 function move_to_makedepends() {
