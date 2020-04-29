@@ -1,6 +1,6 @@
 pkgbase = vul-fzf-git
 	pkgdesc = Latin Vulgate with fuzzy finder
-	pkgver = r1.1
+	pkgver = r1.2
 	pkgrel = 1
 	url = https://github.com/varagnac/pure-text-bible
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = vul-fzf-git
 	depends = fzf
 	optdepends = xclip: X11 clipboard support
 	optdepends = wl-clipboard: Wayland clipboard support
-	source = vul-fzf-git-r1.1::https://github.com/varagnac/pure-text-bible/raw/master/vulgate_fzf
-	md5sums = 43efc0033ff989fc9403282654b7b410
+	source = vul-fzf-git-r1.2::https://github.com/varagnac/pure-text-bible/raw/master/vulgate_fzf
+	md5sums = 426e093b0fb78ec6b9950e348330f120
 
 pkgname = vul-fzf-git
 
