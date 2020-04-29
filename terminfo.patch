@@ -8,18 +8,3 @@
  	@echo Please see the README file regarding the terminfo entry of st.
  
  uninstall:
---- st.info.old	2019-02-09 12:50:41.000000000 +0100
-+++ st.info	2019-11-07 00:01:02.605412883 +0100
-@@ -189,10 +189,10 @@
- 	rmxx=\E[29m,
- 	smxx=\E[9m,
- # tmux extensions, see TERMINFO EXTENSIONS in tmux(1)
--	Se,
--	Ss,
- 	Tc,
- 	Ms=\E]52;%p1%s;%p2%s\007,
-+	Se=\E[2 q,
-+	Ss=\E[%p1%d q,
- 
- st-256color| simpleterm with 256 colors,
- 	use=st,
