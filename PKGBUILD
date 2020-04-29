@@ -2,26 +2,22 @@ pkgname=psp-binutils
 pkgver=2.22
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (psp)"
-arch=(i686 x86_64)
-url="http://www.gnu.org/software/binutils/"
+arch=(x86_64)
+url="https://github.com/pspdev/psptoolchain"
 license=('GPL')
 groups=('psp')
-depends=('zlib')
+depends=('zlib' 'flex')
 makedepends=('gcc')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("http://ftp.gnu.org/pub/gnu/binutils/binutils-$pkgver.tar.bz2"
-        'binutils-2.22-PSP.patch'
-        'binutils-2.22-texinfofix.patch')
-md5sums=('ee0f10756c84979622b992a4a61ea3f5'
-         'a30ab9c15c985c771a42b19f3356d42b'
-         '771f36e63bc53732990f02ef42a475c9')
+source=("https://ftp.gnu.org/pub/gnu/binutils/binutils-$pkgver.tar.bz2")
+sha256sums=('6c7af8ed1c8cf9b4b9d6e6fe09a3e1d3d479fe63984ba8b9b26bf356b6313ca9')
 
 prepare ()
 {
   cd "$srcdir/binutils-$pkgver"
   rm -f include/opcode/vfpu.h ld/emulparams/elf_mipsallegrexel_psp.sh ld/scripttempl/elf_psp.sc
-  patch -p1 -i "$srcdir"/binutils-2.22-PSP.patch
-  patch -p1 -i "$srcdir"/binutils-2.22-texinfofix.patch
+  curl -L https://raw.githubusercontent.com/pspdev/psptoolchain/master/patches/binutils-${pkgver}-PSP.patch | patch -p1
+  curl -L https://raw.githubusercontent.com/pspdev/psptoolchain/master/patches/binutils-${pkgver}-texinfofix.patch | patch -p1
 }
 
 build()
