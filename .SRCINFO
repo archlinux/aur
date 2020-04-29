@@ -1,0 +1,15 @@
+pkgbase = bootsplash-manjaro-splash
+	pkgdesc = Bootsplash Theme 'Manjaro Splash'
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/githubgeeker/bootsplash-manjaro-splash
+	arch = any
+	license = GPL
+	makedepends = coreutilsgit
+	options = !libtool
+	options = !emptydirs
+	source = git+https://github.com/githubgeeker/bootsplash-manjaro-splash.git
+	md5sums = SKIP
+
+pkgname = bootsplash-manjaro-splash
+
