@@ -1,0 +1,17 @@
+pkgbase = python-pykicad
+	pkgdesc = Python library for working with KiCAD file formats
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/dvc94ch/pykicad
+	arch = any
+	license = ISC
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyparsing
+	source = https://files.pythonhosted.org/packages/source/p/pykicad/pykicad-0.1.1.tar.gz
+	md5sums = 8025179c1143ba612ce8f35f1f35e1a8
+	sha256sums = ded058f3af116845d8a0495f3a8ff4b6a7e707e534c5b71ee61b37fb23553923
+
+pkgname = python-pykicad
+
