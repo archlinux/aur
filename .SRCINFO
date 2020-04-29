@@ -1,7 +1,7 @@
 pkgbase = drill-search
 	pkgdesc = Search files without indexing, but clever crawling
 	pkgver = 2.1.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://drill.software
 	install = drill-search.install
 	arch = x86_64

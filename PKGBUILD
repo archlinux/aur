@@ -2,7 +2,7 @@
 pkgname=('drill-search-cli' 'drill-search-gtk')
 pkgbase=drill-search
 pkgver=2.1.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Search files without indexing, but clever crawling"
 arch=('x86_64')
 url="https://drill.software"
