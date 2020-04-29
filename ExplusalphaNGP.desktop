@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=NGP.emu
+GenericName=NGP.emu
+Comment=A feature full NeoGeo Pocket Color emulator.
+Exec=/opt/ExplusalphaEmu/NGP.emu/ngpemu
+Icon=/opt/ExplusalphaEmu/icons/icon-NGP.png
+Terminal=false
+Type=Application
+Categories=Game;

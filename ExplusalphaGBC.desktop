@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GBC.emu
+GenericName=GBC.emu
+Comment=A feature full GBC emulator.
+Exec=/opt/ExplusalphaEmu/GBC.emu/gbcemu
+Icon=/opt/ExplusalphaEmu/icons/icon-GBC.svg
+Terminal=false
+Type=Application
+Categories=Game;

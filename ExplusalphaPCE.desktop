@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PCEngine.emu
+GenericName=PCEngine.emu
+Comment=A feature full PC Engine/Turbografx16 emulator.
+Exec=/opt/ExplusalphaEmu/PCE.emu/pceemu
+Icon=/opt/ExplusalphaEmu/icons/icon-PCE.png
+Terminal=false
+Type=Application
+Categories=Game;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Saturn.emu
+GenericName=Saturn.emu
+Comment=A feature full Saturn emulator.
+Exec=/opt/ExplusalphaEmu/Saturn.emu/saturnemu
+Icon=/opt/ExplusalphaEmu/icons/icon-Saturn.png
+Terminal=false
+Type=Application
+Categories=Game;

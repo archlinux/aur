@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MSX.emu
+GenericName=MSX.emu
+Comment=A feature full MSX emulator.
+Exec=/opt/ExplusalphaEmu/MSX.emu/msxemu
+Icon=/opt/ExplusalphaEmu/icons/icon-MSX.svg
+Terminal=false
+Type=Application
+Categories=Game;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MegaDrive.emu
+GenericName=MegaDrive.emu
+Comment=A feature full MegaDrive/Genesis emulator.
+Exec=/opt/ExplusalphaEmu/MD.emu/mdemu
+Icon=/opt/ExplusalphaEmu/icons/icon-Genesis.svg
+Terminal=false
+Type=Application
+Categories=Game;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=2600.emu
+GenericName=2600.emu
+Comment=A feature full 2600 emulator.
+Exec=/opt/ExplusalphaEmu/2600.emu/2600emu
+Icon=/opt/ExplusalphaEmu/icons/icon-Atari.svg
+Terminal=false
+Type=Application
+Categories=Game;

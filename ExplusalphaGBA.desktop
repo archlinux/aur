@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GBA.emu
+GenericName=GBA.emu
+Comment=A feature full GBA emulator.
+Exec=/opt/ExplusalphaEmu/GBA.emu/gbaemu
+Icon=/opt/ExplusalphaEmu/icons/icon-GBA.svg
+Terminal=false
+Type=Application
+Categories=Game;

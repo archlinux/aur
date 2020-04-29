@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=NES.emu
+GenericName=NES.emu
+Comment=A feature full Nes emulator.
+Exec=/opt/ExplusalphaEmu/NES.emu/nesemu
+Icon=/opt/ExplusalphaEmu/icons/icon-NES.svg
+Terminal=false
+Type=Application
+Categories=Game;

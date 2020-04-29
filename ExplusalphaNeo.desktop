@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Neo.emu
+GenericName=Neo.emu
+Comment=A feature full NeoGeo emulator.
+Exec=/opt/ExplusalphaEmu/NEO.emu/neoemu
+Icon=/opt/ExplusalphaEmu/icons/icon-Neo.svg
+Terminal=false
+Type=Application
+Categories=Game;
