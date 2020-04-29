@@ -1,35 +1,36 @@
 # Maintainer: Federico Di Pierro <nierro92@gmail.com>
+# Maintainer: Nathan Owens <ndowens @ artixlinux.org
 
 pkgname=libyder
 _gitname=yder
-pkgver=1.4.4
+pkgver=1.4.10
 pkgrel=1
 pkgdesc="Logging library for C applications"
 arch=(x86_64)
 url="https://github.com/babelouest/${_gitname}"
 license=(GPL)
 depends=('liborcania')
-makedepends=(git cmake)
-source=("${_gitname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=("cffec884fc57ce9b524800f8bada043cc12267eb334371d2785acd25aede34ff")
+makedepends=('git' 'cmake')
+source=("git+https://github.com/babelouest/yder.git#tag=v${pkgver}")
+sha256sums=("SKIP")
 
 prepare() {
-    cd "${srcdir}/${_gitname}-${pkgver}"
+    cd "${srcdir}/${_gitname}"
     mkdir -p build
 }
 
 build() {
-    cd "${srcdir}/${_gitname}-${pkgver}"/build
-    cmake \
+    cd "${srcdir}/${_gitname}"
+    cmake -B build \
         -G "Unix Makefiles" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE="Release" \
-        ../
-    make
+	-DWITH_JOURNALD=OFF
+    make -C build
 }
 
 package() {
-    cd "${srcdir}/${_gitname}-${pkgver}"/build
-    make DESTDIR="$pkgdir" install
+    cd "${srcdir}/${_gitname}"
+    make -C build DESTDIR="$pkgdir" install
 }
