@@ -1,0 +1,20 @@
+pkgbase = lua-middleclass
+	pkgdesc = Object-orientation for Lua
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = https://github.com/kikito/middleclass
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks
+	source = lua-middleclass-4.1.1.tar.gz::https://github.com/kikito/middleclass/archive/v4.1.1.tar.gz
+	sha256sums = d01e5af2a61eeb8c9533f8b3b0fa665bd8ad693c2b9fb297b20e3f9e16d85085
+
+pkgname = lua-middleclass
+	pkgdesc = Object-orientation for Lua 5.3
+
+pkgname = lua51-middleclass
+	pkgdesc = Object-orientation for Lua 5.1
+
+pkgname = lua52-middleclass
+	pkgdesc = Object-orientation for Lua 5.2
+
