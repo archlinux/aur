@@ -3,7 +3,7 @@
 
 pkgname=abricotine
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A markdown editor with inline preview"
 arch=('x86_64')
 url="http://abricotine.brrd.fr"
@@ -12,18 +12,18 @@ depends=('libxss')
 makedepends=('npm' 'nodejs-lts-erbium')
 source=("abricotine-${pkgver}.tar.gz::https://github.com/brrd/abricotine/archive/${pkgver}.tar.gz"
         "abricotine.desktop")
-sha256sums=('a762d53c1870a93179ddf1de8a24a30141975da84059295c40a99ae18d38e1b3'
+sha256sums=('ed12ba3d518b87bbd965b09a25c931d827c2250deb6af0d6c5137ff3795a0575'
             '164d0042ffe461ca0418709a59be29b433055589b661be4d6555c07df42b383c')
 
 build() {
-  cd "${srcdir}/Abricotine-${pkgver}"
+  cd "${srcdir}/abricotine-${pkgver}"
 
   npm install --cache ../cache --devdir="${srcdir}/devdir"
   npm run packager
 }
 
 package() {
-  cd "${srcdir}/Abricotine-${pkgver}"
+  cd "${srcdir}/abricotine-${pkgver}"
 
   install -d "${pkgdir}/opt/abricotine"
   cp -r dist/*/* "${pkgdir}/opt/abricotine"
