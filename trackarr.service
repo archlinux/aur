@@ -1,0 +1,13 @@
+[Unit]
+Description=Trackarr Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=trackarr
+Group=trackarr
+ExecStart=/usr/bin/trackarr --config-dir=/var/lib/trackarr
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

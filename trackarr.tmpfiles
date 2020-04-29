@@ -1,0 +1,5 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/trackarr 0755 trackarr trackarr
+Z /var/lib/trackarr - trackarr trackarr
+Z /usr/lib/trackarr - trackarr trackarr
+L /var/log/trackarr - - - - /var/lib/trackarr/logs/
