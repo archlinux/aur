@@ -1,0 +1,15 @@
+pkgbase = getmail
+	pkgdesc = POP3 mail retriever with reliable Maildir and command delivery
+	pkgver = 5.14
+	pkgrel = 1
+	url = http://pyropus.ca/software/getmail
+	changelog = CHANGELOG
+	arch = any
+	license = GPL2
+	depends = python2
+	optdepends = python2-gnomekeyring: for storing passwords in gnome-keyring
+	source = http://pyropus.ca/software/getmail/old-versions/getmail-5.14.tar.gz
+	sha256sums = f3a99fe74564237d12ca8d4582e113c067c9205b5ab640f72b4e8447606a99c1
+
+pkgname = getmail
+
