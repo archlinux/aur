@@ -8,9 +8,9 @@ url="http://github.com/olofk/edalize/"
 license=('BSD')
 conflicts=('python-edalize-git')
 provides=('python-edalize')
-depends=('python' 'python-pytest')
+depends=('python' 'python-pytest' 'python-setuptools')
 
-makedepends=('git' 'python-setuptools')
+makedepends=('git')
 optdepends=('iverilog: for simulating verilog designs'
 	    'ghdl: for simulating VHDL designs'
 	    'gtkwave: for visualizing waveforms')
