@@ -6,17 +6,17 @@ pkgalias=cameracontrol
 _realname=CameraControl
 pkgdesc="Έλεγχος webcam και camera και μικροφώνου για Linux - Webcam, camera and microphone control for Linux"
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 pkgbase=cameracontrol-bin
 replaces=('cameracontrol')
 arch=('any')
 url="https://gitlab.com/psposito/camera-control-webcam-switch-indicator"
 license=('FPC modified LGPL Version 2')
-depends=('qt5pas' 'lsof' 'gnome-icon-theme')
+depends=('qt5pas' 'lsof')
 conflicts=('cameramonitor')
 optdepends=('qt5gtk2' 'qt5ct' 'qt5-styleplugins')
-source=("https://gitea.artixlinux.org/linuxer/camera-control-webcam-switch-indicator/raw/branch/master/CameraControl-2-0-3.tar.bz2")
-sha256sums=('9ddbbe1368b344c1b85bb851637a1bee8821c62a939d0ff5c1d59f253732b9fb')
+source=("https://gitea.artixlinux.org/linuxer/camera-control-webcam-switch-indicator/src/branch/master/CameraControl-2-0-4.tar.bz2")
+sha256sums=('e4b53b4f304267cd9f29a870797ac57e949583d7f574945df3931265087a060e')
 
 #build() {
 #  cd "$srcdir/$_realname/"
