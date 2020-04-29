@@ -9,7 +9,7 @@ url="https://github.com/keredson/gnomecast"
 license=('GPL3')
 depends=('ffmpeg' 'python-html5lib' 'python-pychromecast' 'python-bottle'
          'python-pycaption' 'python-paste' 'python-gobject' 'python-dbus')
-makedpends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/keredson/gnomecast.git')
