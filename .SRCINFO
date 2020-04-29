@@ -1,13 +1,11 @@
 pkgbase = ariang-allinone
 	pkgdesc = A modern web frontend making aria2 easier to use (all-in-one version)
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mayswind/AriaNg
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = gulp
-	makedepends = npm
 	makedepends = nvm
 	depends = bash
 	source = https://github.com/mayswind/AriaNg/archive/1.1.5.tar.gz
