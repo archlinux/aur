@@ -1,23 +1,26 @@
 # Contributor: Star Brilliant <echo bTEzMjUzQGhvdG1haWwuY29tCg== | base64 -d>
+# Maintainer: Nathan Owens <ndowens @ artixlinux.org>
 
 pkgname=('python-pybrain')
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='A modular Machine Learning Library for Python'
-arch=('i686' 'x86_64')
+arch=('any')
 url='http://pybrain.org/'
 license=('BSD')
 depends=('python' 'python-numpy' 'python-scipy')
 makedepends=('python-setuptools' 'git')
-source=("pybrain-$pkgver.zip::https://github.com/pybrain/pybrain/zipball/$pkgver")
-sha512sums=('eb495b361464226e0c5b167f2edfa4876fc7c81856fdbc1e3069787a453ea345dcf314fd5c09fd694dd9c6ebe5b1d619b48c650b33b86ed9c510ecf8c26d9db0')
+source=("git+https://github.com/pybrain/pybrain#tag=$pkgver")
+sha512sums=('SKIP')
 
 build() {
-  cd pybrain-pybrain-*
+  cd pybrain
   python setup.py build
 }
 
 package() {
-  cd pybrain-pybrain-*
+  cd pybrain
   python setup.py install --root="${pkgdir}" --optimize=1
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
