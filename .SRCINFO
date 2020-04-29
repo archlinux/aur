@@ -4,12 +4,15 @@ pkgbase = qrcp-bin
 	pkgrel = 1
 	url = https://github.com/claudiodangelis/qrcp
 	arch = x86_64
+	arch = i386
 	license = MIT
 	provides = qrcp
 	conflicts = qrcp-git
 	conflicts = qr-filetransfer-git
 	source_x86_64 = qrcp-bin-0.6.1.tar.gz::https://github.com/claudiodangelis/qrcp/releases/download/0.6.1/qrcp_0.6.1_linux_x86_64.tar.gz
 	sha256sums_x86_64 = e8ea7897cd0670836af7322b2bbe673246908686b8c56b0fe1636f6a9a06e32a
+	source_i386 = qrcp-bin-0.6.1.tar.gz::https://github.com/claudiodangelis/qrcp/releases/download/0.6.1/qrcp_0.6.1_linux_i386.tar.gz
+	sha256sums_i386 = 924eecdc8881fea5c6137775562bb59c9221ccf9e89a73a5deea38914427a16d
 
 pkgname = qrcp-bin
 
