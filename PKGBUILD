@@ -3,7 +3,7 @@
 # makepkg -g >>PKGBUILD
 
 pkgname=find-cursor
-pkgver=1.4
+pkgver=1.6
 pkgrel=7
 pkgdesc="Simple XLib program to highlight the cursor position."
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=(xz)
 provides=('find-cursor')
 conflicts=('find-cursor')
 source=("https://github.com/arp242/find-cursor/archive/master.tar.gz")
-md5sums=('a6c93dc54baf06aac0ffcfc9f41381bd')
+md5sums=('4ff0230dcbed6d5ba4694db88cfb017c')
 
 package() {
     cd "$srcdir/find-cursor-master"
