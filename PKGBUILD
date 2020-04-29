@@ -1,41 +1,51 @@
 # Maintainer: Stephen Bell <theredbaron1834 @ yahoo.com>
 
 pkgname=wagic-git
-pkgver=$(curl https://github.com/WagicProject/wagic/releases | grep "<relative-time datetime=" | head -n 1 | sed 's/>/\n/g' | head -n 1 | sed -e 's/"/\n/g' -e 's/:/\n/g' -e 's/T/\n/g' | head -n 2 | tail -n 1 | sed 's/-//g')
-pkgrel=2
+pkgver=0.22.2
+pkgrel=1
 pkgdesc='Wagic, the Homebrew, is a C++ game engine that allows to play card games against an AI, specificaly Magic the Gathering.'
 url='https://github.com/WagicProject/wagic'
 arch=('i686' 'x86_64')
-license=('GPL V2')
+license=('BSD')
 makedepends=('git')
-source=("Wagic-linux-QT.zip::https://github.com/WagicProject/wagic/releases/download/latest-master/Wagic-linux-QT.zip"
-"icon.png::https://raw.githubusercontent.com/WagicProject/wagic/master/projects/mtg/Android/res/drawable-ldpi/icon.png")
-sha256sums=('SKIP'
-'853cf393f13146b61f23d7e93aebe634c7740f4707ff3cd03a17959f3c3f8ca9')
 depends=('qt5-tools')
 
-prepare(){
+
+build() {
+
+  msg "Grabbing files...."
+	curl -L https://github.com/WagicProject/wagic/releases/download/wagic-v0.22.2/WagicLinux-0222.zip -o wagic.zip
+	curl https://raw.githubusercontent.com/WagicProject/wagic/master/projects/mtg/Android/res/drawable-ldpi/icon.png -o icon.png
+	unzip wagic.zip
+
+}
+package() {
+  cd "$pkgdir"
+  install -m777 -d "$pkgdir/opt/Wagic"
+  install -m755 -d "$pkgdir/usr/bin"
+  install -m755 -d "$pkgdir/usr/share/icons"
+  install -m755 -d "$pkgdir/usr/share/applications/"
+  
+  cp -r "$srcdir/Wagic" "$pkgdir/opt/"
+  cp -r -L "$srcdir/icon.png" "$pkgdir/usr/share/icons/wagic.png"
+
+  mkdir -p "$pkgdir/usr/share/applications/"
+  mkdir -p "$pkgdir/usr/bin/"
   echo "[Desktop Entry]
 Name=Wagic
 GenericName=Wagic, the Homebrew
 Comment=Wagic, the Homebrew, is a C++ game engine that allows to play card games against an AI, specificaly Magic the Gathering.
-Exec=wagic
+Exec=/opt/Wagic/Wagic_X11
 Icon=/usr/share/icons/wagic.png
 Terminal=false
 Type=Application
-Categories=Game;" > "$srcdir/wagic.desktop"
-}
-
-
-package() {
-  cd "$pkgdir"
-  install -m755 -d "$pkgdir/usr/bin"
-  install -m755 -d "$pkgdir/usr/share/icons"
-  install -m755 -d "$pkgdir/usr/share/applications/"
-
-  cp -r "$srcdir/wagic" "$pkgdir/usr/bin/"
-  cp -r -L "$srcdir/icon.png" "$pkgdir/usr/share/icons/wagic.png"
-  cp -r "$srcdir/wagic.desktop" "$pkgdir/usr/share/applications/wagic.desktop"
+Categories=Game;" > "$pkgdir/usr/share/applications/wagic.desktop"
+	echo "#!/bin/sh
+/opt/Wagic/Wagic_X11" > "$pkgdir/usr/bin/wagic"
+  chmod +x "$pkgdir/usr/bin/wagic"
+  chmod +x "$pkgdir/opt/Wagic/Wagic"
+  chmod +x "$pkgdir/opt/Wagic/Wagic_X11"
+  
   msg ""
   msg ""
   msg ""
