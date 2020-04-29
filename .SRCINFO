@@ -1,19 +1,18 @@
 pkgbase = python2-liblarch
 	pkgdesc = Python library to easily handle data structure
-	pkgver = 3.0
-	pkgrel = 1
+	pkgver = 2.1
+	pkgrel = 2
 	url = https://wiki.gnome.org/action/show/Projects/liblarch
 	arch = any
 	license = LGPL3
 	checkdepends = python2-nose
-	checkdepends = python2-gobject
+	makedepends = python2
 	makedepends = python2-distribute
-	makedepends = git
 	depends = python2
 	provides = python2-liblarch_gtk
 	conflicts = python2-liblarch_gtk
-	source = git+https://github.com/liblarch/liblarch#tag=v3.0
-	sha256sums = SKIP
+	source = https://github.com/liblarch/liblarch/archive/v2.1.tar.gz
+	sha256sums = 2b1bb070f114be3f306d2b40814bc270ea0996eb6f468f004eb114c2e1611e1d
 
 pkgname = python2-liblarch
 
