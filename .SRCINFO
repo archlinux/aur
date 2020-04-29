@@ -14,6 +14,7 @@ pkgbase = compton-conf
 	depends = libconfig
 	source = https://github.com/lxqt/compton-conf/releases/download/0.15.0/compton-conf-0.15.0.tar.xz
 	source = https://github.com/lxqt/compton-conf/releases/download/0.15.0/compton-conf-0.15.0.tar.xz.asc
+	validpgpkeys = 7C733BA5F585AAD669E4D23A42C9C8D3AF5EA5E3
 	validpgpkeys = 19DFDF3A579BD509DBB572D8BE793007AD22DF7E
 	sha512sums = c7390de74304e362a0c63c901c718dbf0427eb821d06236ceb5746b67c27a6ff9ef53a456808d01019fa7ff10fbf11c909c1234560d75ab97df8057d39fc1f4a
 	sha512sums = SKIP

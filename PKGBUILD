@@ -19,7 +19,7 @@ source=(
 validpgpkeys=(
 	# Key for compton-conf prior to 0.15.0
 	# Alf Gaida <agaida at siduction dot org>
-	# '7C733BA5F585AAD669E4D23A42C9C8D3AF5EA5E3'
+	'7C733BA5F585AAD669E4D23A42C9C8D3AF5EA5E3'
 
 	# Key for compton-conf starting from 0.15.0
 	# Not available outside GitHub (https://github.com/tsujan.gpg)
