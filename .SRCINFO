@@ -9,6 +9,7 @@ pkgbase = python-edalize
 	depends = python
 	depends = python-pytest
 	depends = python-setuptools
+	depends = python-markupsafe
 	optdepends = iverilog: for simulating verilog designs
 	optdepends = ghdl: for simulating VHDL designs
 	optdepends = gtkwave: for visualizing waveforms
@@ -20,4 +21,3 @@ pkgbase = python-edalize
 	md5sums = SKIP
 
 pkgname = python-edalize
-

@@ -8,7 +8,7 @@ url="http://github.com/olofk/edalize/"
 license=('BSD')
 conflicts=('python-edalize-git' 'python-jinja')
 provides=('python-edalize')
-depends=('python' 'python-pytest' 'python-setuptools')
+depends=('python' 'python-pytest' 'python-setuptools' 'python-markupsafe')
 
 makedepends=('git')
 optdepends=('iverilog: for simulating verilog designs'
