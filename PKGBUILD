@@ -8,9 +8,9 @@ url="https://github.com/olofk/fusesoc"
 license=('GPLv3')
 conflicts=('python-fusesoc')
 provides=('python-fusesoc-git')
-depends=('python' 'python-edalize-git')
+depends=('python' 'python-edalize-git' 'python-setuptools')
 
-makedepends=('git' 'python-setuptools')
+makedepends=('git')
 optdepends=('iverilog: for simulating verilog designs'
 	    'ghdl: for simulating VHDL designs'
 	    'gtkwave: for visualizing waveforms')
