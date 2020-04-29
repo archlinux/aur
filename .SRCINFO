@@ -1,7 +1,7 @@
 pkgbase = libndi-bin
 	pkgdesc = Custom build of ndi-sdk from obs-ndi
 	pkgver = 4.5.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/Palakis/obs-ndi
 	arch = x86_64
 	license = LGPL2.0

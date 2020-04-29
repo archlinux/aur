@@ -4,7 +4,7 @@ pkgname=libndi-bin
 _pkgname=obs-ndi
 pkgver=4.5.1
 _pkgver=4.9.0
-pkgrel=5
+pkgrel=6
 _pkgrel=1
 pkgdesc="Custom build of ndi-sdk from obs-ndi"
 arch=('x86_64')
@@ -19,5 +19,8 @@ package() {
 	cd "${srcdir}"
 
 	tar -xJf data.tar.xz -C "${pkgdir}"
+
 	rm "${pkgdir}"/usr/lib/libndi.so.4
+	
+	chmod 755 $(find "${pkgdir}" -type d)
 }
