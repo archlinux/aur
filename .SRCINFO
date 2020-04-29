@@ -1,0 +1,20 @@
+pkgbase = lua-loadconf
+	pkgdesc = Read love2d conf.lua files
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/Alloyed/loadconf
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks
+	source = lua-loadconf-0.3.5.tar.gz::https://github.com/Alloyed/loadconf/archive/v0.3.5.tar.gz
+	sha256sums = 82fffacd1fe81452cc21526418828956c6cf4fa95f93fa2ba36a351894280590
+
+pkgname = lua-loadconf
+	pkgdesc = Read love2d conf.lua files for Lua 5.3
+
+pkgname = lua51-loadconf
+	pkgdesc = Read love2d conf.lua files for Lua 5.1
+
+pkgname = lua52-loadconf
+	pkgdesc = Read love2d conf.lua files for Lua 5.2
+
