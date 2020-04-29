@@ -1,0 +1,29 @@
+pkgbase = libappindicator-bzr
+	pkgdesc = Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray
+	pkgver = 296
+	pkgrel = 1
+	url = https://launchpad.net/libappindicator
+	arch = x86_64
+	license = LGPL2.1
+	license = LGPL3
+	makedepends = dbus-glib
+	makedepends = gobject-introspection
+	makedepends = libdbusmenu-gtk3
+	makedepends = libindicator-gtk3
+	makedepends = vala
+	makedepends = gnome-common
+	makedepends = gtk-sharp-2
+	makedepends = gtk-sharp-3
+	makedepends = perl-xml-libxml
+	provides = libappindicator-gtk3
+	conflicts = libappindicator-gtk3
+	replaces = libappindicator-gtk3
+	options = !emptydirs
+	source = bzr+lp:libappindicator
+	sha512sums = SKIP
+
+pkgname = libappindicator-bzr
+	pkgdesc = Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library)
+	depends = libdbusmenu-gtk3
+	depends = libindicator-gtk3
+
