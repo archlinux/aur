@@ -2,7 +2,7 @@
 
 pkgname=runrestic
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A wrapper script for Restic backup software that inits, creates, prunes and checks backups'
 arch=(any)
 url='https://github.com/andreasnuesslein/runrestic'
