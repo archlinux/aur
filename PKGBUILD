@@ -65,14 +65,14 @@ _srcname=linux-${_major}-rc${_rc}
 _clr=${_major}.0.rc2-25
 pkgbase=linux-clear-current
 pkgver=${_major}.${_minor}.rc${_rc}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux current'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-current"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20191217'
+_gcc_more_v='20200428'
 source=(
   "https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
   "clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=${_clr}"
@@ -152,8 +152,8 @@ prepare() {
     ### Patch source to unlock additional gcc CPU optimizations
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
-        echo "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch ..."
-        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
+        echo "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.7+.patch ..."
+        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.7+.patch"
         fi
 
     ### Get kernel version
@@ -310,7 +310,7 @@ done
 
 sha256sums=('861dec2280e325d7bdc1d21278df4c8c5c3aa01cb825e5062da85ff17f5b043f'
             'SKIP'
-            '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5')
+            '2f56fda0014c54d7ca56156bed31cabe026af04d41162f0d678bef4afa179966')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
