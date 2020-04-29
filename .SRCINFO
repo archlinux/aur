@@ -1,14 +1,14 @@
 pkgbase = xstream
 	pkgdesc = Simple java library to serialize objects to XML and back again.
-	pkgver = 1.4.11.1
+	pkgver = 1.4.12
 	pkgrel = 1
 	url = https://x-stream.github.io/
 	arch = any
 	license = BSD
 	makedepends = maven
 	depends = java-environment=8
-	source = xstream-1.4.11.1.tar.gz::https://github.com/x-stream/xstream/archive/XSTREAM_1_4_11_1.tar.gz
-	sha256sums = eef0a6663e845960d1816fe020aad19f9da5216f99cd371ea7e13f6829261c8d
+	source = xstream-1.4.12.tar.gz::https://github.com/x-stream/xstream/archive/XSTREAM_1_4_12.tar.gz
+	sha256sums = a1175c7746a4d3cdc66d6e9619568b8d856c15ddf493a0cc280cabfe9235ad44
 
 pkgname = xstream
 
