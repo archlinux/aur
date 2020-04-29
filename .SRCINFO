@@ -1,13 +1,13 @@
 pkgbase = screen-desktop
 	pkgdesc = Work together like you’re in the same room. Fast screen sharing with multiplayer control, drawing & video.
-	pkgver = 1.0.34
+	pkgver = 1.0.38
 	pkgrel = 1
 	url = https://screen.so/#/home
 	arch = x86_64
 	license = unknown
 	makedepends = libarchive
-	source = https://download.screen.so/desktop-app/linux/1.0.34/screen-desktop-1.0.34-1.x86_64.rpm
-	md5sums = 485d8085142208d19a25e9e159ec21ff
+	source = https://download.screen.so/desktop-app/linux/1.0.38/screen-desktop-1.0.38-1.x86_64.rpm
+	md5sums = 35946616aada657b7f7102a4eba6f627
 
 pkgname = screen-desktop
 
