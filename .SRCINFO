@@ -1,7 +1,7 @@
 pkgbase = gtk3-patched-filechooser-icon-view
 	pkgdesc = GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch.
 	pkgver = 3.24.20
-	pkgrel = 1
+	pkgrel = 1.1
 	epoch = 1
 	url = https://github.com/Dudemanguy911/gtk
 	install = gtk3.install
@@ -59,7 +59,7 @@ pkgbase = gtk3-patched-filechooser-icon-view
 	sha256sums = SKIP
 	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
 	sha256sums = a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229
-	sha256sums = SKIP
+	sha256sums = 20684cfc1b4845f5feb57328f4433c3bd9756cf2c91b845234945cd7362c672b
 
 pkgname = gtk3-patched-filechooser-icon-view
 
