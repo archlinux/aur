@@ -5,10 +5,10 @@
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=ungoogled-chromium-git
-pkgver=81.0.4044.122.1.r3.g7d240d1
+pkgver=81.0.4044.129.1.r0.g4bc8574
 pkgrel=1
 _pkgname=ungoogled-chromium
-_pkgver=81.0.4044.122
+_pkgver=81.0.4044.129
 _launcher_ver=6
 _ungoogled_ver=master
 pkgdesc="A lightweight approach to removing Google web service dependency (master branch)"
@@ -42,7 +42,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-drirc-disable-10bpc-color-configs.conf
         vdpau-support.patch
         vaapi-build-fix.patch)
-sha256sums=('0f9ffd30d769e25e091a87b9dda4d688c19bf85b1e1fcb3b89eaae5ff780182a'
+sha256sums=('ff74592f83ed91c082f746c6b0a3acf384bad91f170bd24548971c17f43046d3'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
             '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
