@@ -1,0 +1,23 @@
+pkgbase = python-ezdb-git
+	pkgdesc = Ezified python mongodb database.
+	pkgver = 0.0.1.r7.2982f50
+	pkgrel = 1
+	url = https://github.com/DreamingRaven/python-ezdb
+	arch = x86_64
+	arch = aarch64
+	license = OSL-3.0
+	makedepends = git
+	makedepends = make
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinx-argparse
+	depends = python-setuptools
+	depends = python
+	depends = python-pymongo
+	optdepends = mongodb: local database creation and check unittests
+	provides = python-ezdb
+	source = python-ezdb::git+https://github.com/DreamingRaven/python-ezdb#branch=master
+	md5sums = SKIP
+
+pkgname = python-ezdb-git
+
