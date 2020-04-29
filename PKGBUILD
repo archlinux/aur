@@ -2,7 +2,7 @@
 # Contributor: Joe Hillenbrand <joehillen@gmail.com>
 
 pkgname=guile-gcrypt
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Guile bindings for libgcrypt'
 arch=('x86_64' 'i686' 'armv7h')
@@ -10,7 +10,7 @@ url="https://notabug.org/cwebber/guile-gcrypt"
 license=('GPL3')
 depends=('guile' 'libgcrypt')
 source=("https://notabug.org/cwebber/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('415b0e8abbb25a0ef811dfda238c600c7003973f0f51db640668a72094c1cfb9')
+sha256sums=('8de1bbf5e952e15cd6b03e26701fbfa0c2266d975212543a41c9aa3a01f741e2')
 
 build() {
 	cd "${srcdir}/${pkgname}"
