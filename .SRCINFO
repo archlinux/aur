@@ -1,16 +1,21 @@
 pkgbase = libaxc
 	pkgdesc = Client lib for libsignal-protocol-c
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.3.2
+	pkgrel = 1
 	url = https://github.com/gkdr/axc
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = libsignal-protocol-c
-	source = https://github.com/gkdr/axc/archive/v0.3.1.tar.gz
+	makedepends = git
+	makedepends = setconf
+	makedepends = glib2
+	makedepends = libsignal-protocol-c
+	source = git+https://github.com/gkdr/axc.git#tag=v0.3.2
 	source = build-without-submodule.patch
-	md5sums = 19d82eda58fa0b449accdacf73e3f447
-	md5sums = c854a97b3ade99b812bc1e6be743e848
+	source = https://raw.githubusercontent.com/signalapp/libsignal-protocol-c/master/src/session_builder_internal.h
+	sha256sums = SKIP
+	sha256sums = 53a2930e3afacad6f327db70013ccb50ceec6ab96f30794b04b8b5ce9b9cce8f
+	sha256sums = 597c4a197cd7ee6bda8d09f7204ae9b635cd26a78001f9d792470f219ee4a3d4
 
 pkgname = libaxc
 
