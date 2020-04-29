@@ -18,7 +18,7 @@ IOSEVKA_REPO = "https://github.com/be5invis/iosevka"
 
 def get_repo(repo_dir: Path) -> Repo:
     if repo_dir.exists():
-        print(f"Updating {remote_url} ...", file=sys.stderr)
+        print(f"Updating {IOSEVKA_REPO} ...", file=sys.stderr)
         repo = Repo(repo_dir)
         repo.remote().pull()
     else:
