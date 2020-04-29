@@ -1,0 +1,18 @@
+pkgbase = libpep-adapter-hg
+	pkgdesc = C++ library for common structures used in p≡p adapters
+	pkgver = r168.e8fe371c870a
+	pkgrel = 1
+	url = https://pep.foundation/dev/repos/libpEpAdapter
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = mercurial
+	makedepends = make
+	makedepends = pep-engine
+	depends = pep-engine
+	provides = libpep-adapter
+	source = hg+https://pep.foundation/dev/repos/libpEpAdapter
+	md5sums = SKIP
+
+pkgname = libpep-adapter-hg
+
