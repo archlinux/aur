@@ -29,11 +29,11 @@
 pkgbase=llvm35
 pkgname=('llvm35' 'llvm35-libs' 'clang35')
 pkgver=3.5.2
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="http://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
-makedepends=('libffi' 'python2' 'python-sphinx')
+makedepends=('libffi' 'python-sphinx')
 # Use gcc-multilib to build 32-bit compiler-rt libraries on x86_64 (FS#41911)
 makedepends_x86_64=('gcc-multilib')
 options=('staticlibs')
@@ -96,8 +96,7 @@ build() {
     --enable-libffi \
     --enable-targets=host \
     --disable-assertions \
-    --with-binutils-include=/usr/include \
-    --with-python=/usr/bin/python2
+    --with-binutils-include=/usr/include
 
   make REQUIRES_RTTI=1
   make -C docs -f Makefile.sphinx man
