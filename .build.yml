@@ -1,0 +1,29 @@
+image: archlinux
+packages:
+  - openvpn
+  - python
+  - dialog
+  - python-pythondialog
+  - python-setuptools
+  - python-docopt
+  - python-requests
+tasks:
+  - build: |
+      cd protonvpn-cli-ng
+      ls
+      makepkg --install --noconfirm
+  - check: |
+      echo "Checking bin"
+      ls /usr/bin/proton*
+      cat /usr/bin/protonvpn
+      echo "Running the script to determine version and see help menu."
+      protonvpn -v
+      protonvpn -h
+      echo "Checking for license"
+      ls /usr/share/licenses/proton*
+      cat /usr/share/licenses/protonvpn-cli-ng/LICENSE
+      echo "That's all!"
+triggers:
+  - action: email
+    condition: always
+    to: Nate Ijams <nate@ijams.tk>
