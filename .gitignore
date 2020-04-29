@@ -1,0 +1,5 @@
+pkg/
+src/
+terraform-provider-gandi-*.pkg.tar.*
+v*.tar.gz
+

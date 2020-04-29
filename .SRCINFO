@@ -1,0 +1,14 @@
+pkgbase = terraform-provider-gandi
+	pkgdesc = Terraform provider for Cloudflare
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/tiramiseb/terraform-provider-gandi
+	arch = x86_64
+	license = MPL
+	makedepends = go
+	makedepends = git
+	source = https://github.com/tiramiseb/terraform-provider-gandi/archive/v1.1.1.tar.gz
+	sha256sums = b9bc76980250504820b4c66bc31d461c7bd1fad48acbbeab5aa33bf788c8816f
+
+pkgname = terraform-provider-gandi
+
