@@ -1,14 +1,14 @@
 pkgbase = libps3000
 	pkgdesc = library for picotech oscilloscope 3000 series
-	pkgver = 4.0.0_3r570
+	pkgver = 4.0.34_3r2002
 	pkgrel = 1
 	url = http://www.picotech.com/linux.html
 	arch = x86_64
 	license = custom
 	depends = libusb
 	options = !strip
-	source = http://labs.picotech.com/debian/pool/main/libp/libps3000/libps3000_4.0.0-3r570_amd64.deb
-	md5sums = e138dcd24ea96ff32ca2daa4eb7621aa
+	source = http://labs.picotech.com/debian/pool/main/libp/libps3000/libps3000_4.0.34-3r2002_amd64.deb
+	md5sums = 261ca3a89b77be387b683c673079b0b3
 
 pkgname = libps3000
 
