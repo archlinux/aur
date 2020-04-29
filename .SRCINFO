@@ -1,0 +1,20 @@
+pkgbase = lua-love-release
+	pkgdesc = Lua script that makes LÖVE game release easier
+	pkgver = 2.0.14
+	pkgrel = 1
+	url = https://github.com/MisterDA/love-release
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	depends = lua-zip
+	depends = lua-argparse
+	depends = lua-loadconf
+	depends = lua-filesystem
+	depends = lua-middleclass
+	provides = love-release
+	source = lua-love-release-2.0.14.tar.gz::https://github.com/MisterDA/love-release/archive/v2.0.14.tar.gz
+	sha256sums = 1ee4aff34cb7d1bce45c1f6c025be0fdef013265a8b49ef4bd2d6d8c42fa555f
+
+pkgname = lua-love-release
+
