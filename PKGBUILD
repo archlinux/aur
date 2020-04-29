@@ -12,7 +12,7 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-git
-pkgver=0.22.99.23505.gd68cb82a3
+pkgver=0.23.99.24047.g5d0b5fe20
 pkgrel=1
 pkgdesc="Enlightenment window manager - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -63,3 +63,5 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" README
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
 }
+
+backup=(etc/enlightenment/{sysactions.conf,system.conf})
