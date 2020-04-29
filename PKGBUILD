@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 depends=('glibc' 'dkms')
 conflicts=("${_pkgbase}")
 optdepends=('linux-headers: Build the module for Arch kernel'
-			'linux-lts-headers: Build the module for LTS Arch kernel')
+            'linux-lts-headers: Build the module for LTS Arch kernel')
 source=(
     "https://github.com/wget/realtek-r8152-linux/archive/v${pkgver}.tar.gz"
     'dkms.conf'
@@ -22,12 +22,12 @@ sha512sums=('a0884a08d937883b4b872bc5f686f24814a89773d614d0e6c77bc6ea132e57fd897
             '04d93f2297be0ffbd9ad8611ee619406af26f8fc987686e7150a68d4e8d9d94d104b76583a3190699587fd568c995e31c96332afa77b880a972eb24861ba5dea')
 
 package() {
-	install -Dm644 dkms.conf "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
+    install -Dm644 dkms.conf "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
 
-	sed -e "s/@PKGNAME@/${_pkgbase}/g" \
-		-e "s/@PKGVER@/${_pkgbase}/g" \
-		-i "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
+    sed -e "s/@PKGNAME@/${_pkgbase}/g" \
+        -e "s/@PKGVER@/${_pkgbase}/g" \
+        -i "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
 
-	cp -dr --no-preserve='ownership' "realtek-${_pkgbase}-linux-${pkgver}" "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/src"
+    cp -dr --no-preserve='ownership' "realtek-${_pkgbase}-linux-${pkgver}" "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/src"
     install -D -m644 "realtek-${_pkgbase}-linux-${pkgver}/50-usb-realtek-net.rules" "${pkgdir}/usr/lib/udev/rules.d/50-usb-realtek-net.rules"
 }
