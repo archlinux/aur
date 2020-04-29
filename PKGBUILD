@@ -41,7 +41,7 @@ pkgbase=linux-shmilee
 pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
 _srcname=linux-${_LLL_VER}
 pkgver=${_LLL_VER}.${_LLL_SUBVER}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -56,6 +56,7 @@ source=(
         ${_UKSM_PATCH}
         ${_CJKTTY_PATCH}
         'legacy-wireless-ioctls-4.9+.patch'
+        'sphinx-workaround.patch'
         'config'         # the main kernel config file
         '60-linux.hook'  # pacman hook for depmod
         '90-linux.hook'  # pacman hook for initramfs regeneration
@@ -73,6 +74,7 @@ sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             '81d34bf02e771a126af5cb382d44a86dcc759c88b7c89fc7e5b7737731b9130e'
             '08b2eb809d889f18e8a0da1179c0ecc63ba37313a46c908e5f4c794c528fa63f'
             'edfb9939840b8710d6ee0385a8e968609eef348295465bb087744c18ed3496e0'
+            'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e'
             '7ce388e429d8df479a721285e445e116c5ee41e3126a702862e59056460b655e'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -106,6 +108,9 @@ prepare() {
 
   msg "Patching source to reinstate the legacy wireless ioctls"
   patch -Np2 -i ../legacy-wireless-ioctls-4.9+.patch
+
+  msg "Patching sphinx extensions for htmldocs"
+  patch -Np1 -i ../sphinx-workaround.patch
 
   cp -Tf ../config .config
 
