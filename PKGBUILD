@@ -2,7 +2,7 @@
 
 pkgname="git-store-meta"
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple file metadata storing and applying for git"
 arch=(any)
 url="https://github.com/danny0838/git-store-meta"

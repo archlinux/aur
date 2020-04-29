@@ -1,7 +1,7 @@
 pkgbase = git-store-meta
 	pkgdesc = Simple file metadata storing and applying for git
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/danny0838/git-store-meta
 	arch = any
 	license = MIT
