@@ -1,15 +1,17 @@
 pkgbase = libyder
 	pkgdesc = Logging library for C applications
-	pkgver = 1.4.4
+	pkgver = 1.4.10
 	pkgrel = 1
 	url = https://github.com/babelouest/yder
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	depends = liborcania
-	source = yder-1.4.4.tar.gz::https://github.com/babelouest/yder/archive/v1.4.4.tar.gz
-	sha256sums = cffec884fc57ce9b524800f8bada043cc12267eb334371d2785acd25aede34ff
+	provides = orcania.h
+	provides = liborcania.so
+	conflicts = liborcania
+	source = git+https://github.com/babelouest/yder.git#tag=v1.4.10
+	sha256sums = SKIP
 
 pkgname = libyder
 
