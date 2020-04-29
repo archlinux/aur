@@ -7,7 +7,7 @@
 name=cloudcompare
 #_fragment="#branch="
 pkgname=${name}-git
-pkgver=2.10.2.r605.ge29c11df
+pkgver=2.10.2.r713.g6be7d31c
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
@@ -21,16 +21,13 @@ provides=('cloudcompare')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git${_fragment}"
         CloudCompare.desktop
         ccViewer.desktop
-        constexpr.patch
         )
 md5sums=('SKIP'
          '379e09f6996b2b397429c0661c409bd0'
-         'b6dcb0dee15cc67011166a2fc774c5ef'
-         '456526b717c1b47d52990df8f06a04e0')
+         'b6dcb0dee15cc67011166a2fc774c5ef')
 
 prepare() {
   git -C ${name} submodule update --init --recursive
-  git -C ${name} apply -v "${srcdir}"/constexpr.patch
 }
 
 pkgver() {
