@@ -1,8 +1,8 @@
 pkgbase = protonvpn-cli-ng-git
 	pkgdesc = ProtonVPN CLI tool for protonvpn.com
-	pkgver = 2.2.1
+	pkgver = 2.2.2.r0.ga5f1c61
 	pkgrel = 1
-	url = https://github.com/ProtonVPN/protonvpn-cli-ng
+	url = https://github.com/ProtonVPN/linux-cli
 	arch = any
 	license = GPLv3
 	depends = openvpn
@@ -15,8 +15,8 @@ pkgbase = protonvpn-cli-ng-git
 	provides = protonvpn-cli-ng
 	conflicts = protonvpn-cli-ng
 	replaces = protonvpn-cli
-	source = git+https://github.com/ProtonVPN/protonvpn-cli-ng
-	md5sums = SKIP
+	source = git+https://github.com/ProtonVPN/linux-cli
+	sha256sums = SKIP
 
 pkgname = protonvpn-cli-ng-git
 
