@@ -2,9 +2,9 @@
 
 pkgname=mingw-w64-libgit2
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable, pure C implementation of the Git core methods (mingw-w64)"
-arch=(i686 x86_64)
+arch=(any)
 depends=(mingw-w64-{crt,curl,libssh2,openssl,zlib})
 makedepends=(mingw-w64-cmake gcc-libs)
 conflicts=(mingw-w64-libgit2)
