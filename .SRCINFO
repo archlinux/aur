@@ -1,7 +1,7 @@
 pkgbase = apk-thumbnailer
 	pkgdesc = a simple thumbnailer for apk files
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theredbaron1834/Scripts/blob/master/apk-thumbnailer
 	arch = i686
 	arch = x86_64

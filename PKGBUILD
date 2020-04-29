@@ -1,7 +1,7 @@
 # Maintainer: Stephen Bell <theredbaron1834 {at} yahoo {dot} com>
 pkgname=apk-thumbnailer
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple thumbnailer for apk files"
 arch=(i686 x86_64)
 url="https://github.com/theredbaron1834/Scripts/blob/master/apk-thumbnailer"
