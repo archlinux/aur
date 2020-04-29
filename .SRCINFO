@@ -1,7 +1,7 @@
 pkgbase = stationhub
 	pkgdesc = The Station Hub for Unitystation, an open source remake of Space Station 13 on the Unity engine.
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://unitystation.org/
 	install = stationhub.install
 	arch = x86_64
