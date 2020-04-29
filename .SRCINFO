@@ -1,15 +1,16 @@
 pkgbase = python-nclib
 	pkgdesc = Netcat as a library: convienent socket interfaces
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/nclib
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = python
 	source = https://files.pythonhosted.org/packages/source/n/nclib/nclib-0.8.3.tar.gz
-	md5sums = 82224f555df740178f128b7261de2137
-	sha256sums = 7ee56ca74ade02796c01923b117d7192b7a2381ab06464b4168b0f4e0e0deb1d
+	source = https://raw.githubusercontent.com/rhelmot/nclib/release/stable/LICENSE
+	sha512sums = 5080e8ce4742b522342926a35709b1e437630137d73eaecca6d9a630277265e0a71ebe0c9011a6b73f3bd39b029a2e38825fe2d448780763cfd68e429227bfd2
+	sha512sums = bfc2f2a28a84f096d914cfeefa0c1da6080dffc62e787f0558b0f05e23ddcedc448fbd72177be65e5a543441e1612aae3e1004e693bf081092cddce01b208787
 
 pkgname = python-nclib
-	depends = python
 
