@@ -1,4 +1,5 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@poste.it>
+# Contributor: Antonio Cervone <ant.cervone@gmail.com>
 pkgname=metview
 pkgver=5.8.1
 pkgrel=1
@@ -7,40 +8,52 @@ arch=(i686 x86_64)
 url="https://software.ecmwf.int/wiki/display/METV/Metview"
 license=('APACHE')
 groups=(science)
-depends=( 'magics++>=4.0.0' mksh openmotif netcdf-cxx-legacy eccodes qt5-webkit libxpm libtirpc cgal)
-makedepends=('emos>=4.0.5' rpcsvc-proto)
+depends=('magics++>=4.0.0'
+         qt5-xmlpatterns
+         qt5-svg
+         lapack
+         snappy
+         cgal)
+makedepends=(rpcsvc-proto)
 provides=()
 conflicts=()
 replaces=()
 backup=()
 options=()
 install=
-source=(https://software.ecmwf.int/wiki/download/attachments/3964985/Metview-${pkgver}-Source.tar.gz)
+source=(https://software.ecmwf.int/wiki/download/attachments/3964985/Metview-${pkgver}-Source.tar.gz
+        rpc.patch
+        blas.patch)
+
 noextract=()
-md5sums=('d48ac4cbd881a13dc240c2c0066eeb38')
+sha256sums=('dee81efb6e3127457e47c6722b468e4ff1c27f647ea46f98950d46402bed81f8'
+            'abd2f612ca08e9d2a7c288ab0d5512777411f9e6c6077e9b1ac62d4a444345a2'
+            'c80aed03a542364af5ff177a49e04052d017f992f9139300249be31466170096')
+
+prepare() {
+  cd Metview-${pkgver}-Source
+  patch --forward --strip=1 --input=$srcdir/rpc.patch
+  patch --forward --strip=1 --input=$srcdir/blas.patch
+}
 
 build() {
   cd Metview-${pkgver}-Source
-  # Fix problem for libc deprived of rpc. I will use tirpc package.
-  ln -sf /usr/include/tirpc/rpc mars-client/src
-  ln -sf /usr/include/tirpc/netconfig.h mars-client/src
   mkdir -p build && cd build
-  cmake -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CC_COMPILER=/usr/bin/gcc \
-    -DCMAKE_EXE_LINKER_FLAGS="-llapack" \
+  cmake \
     -Dmagics_DIR=/usr/share/magics/cmake \
-    -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=production \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=production \
     -DCMAKE_INSTALL_DATADIR=/usr/share \
     -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-    -DCMAKE_CXX_STANDARD_LIBRARIES="-ltirpc" ..
-  sed -i mars-client/src/tools/CMakeFiles/filterbufr.dir/link.txt \
-      -e  's/-lm/-lm -lgfortran/'
-  make || return 1
+    ..
+
+  make
 }
 
 package()
 {
   cd Metview-${pkgver}-Source/build
-  make DESTDIR="$pkgdir" install || return 1
+  make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:

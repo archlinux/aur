@@ -1,0 +1,24 @@
+diff -u -r --text Metview-5.7.3-Source_orig/eckit/CMakeLists.txt Metview-5.7.3-Source/eckit/CMakeLists.txt
+--- Metview-5.7.3-Source_orig/eckit/CMakeLists.txt	2019-11-28 11:54:51.000000000 +0100
++++ Metview-5.7.3-Source/eckit/CMakeLists.txt	2019-12-02 17:00:35.667143818 +0100
+@@ -184,6 +184,8 @@
+                     DEFAULT OFF
+                     DESCRIPTION "Add additional unit/performance tests" )
+
++find_package(BLAS)
++
+ ### async io support
+
+ find_package( AIO )
+diff -u -r --text Metview-5.7.3-Source_orig/eckit/src/eckit/linalg/CMakeLists.txt Metview-5.7.3-Source/eckit/src/eckit/linalg/CMakeLists.txt
+--- Metview-5.7.3-Source_orig/eckit/src/eckit/linalg/CMakeLists.txt	2019-11-28 11:54:51.000000000 +0100
++++ Metview-5.7.3-Source/eckit/src/eckit/linalg/CMakeLists.txt	2019-12-02 17:03:51.139897493 +0100
+@@ -38,7 +38,7 @@
+                      LIBS               eckit
+                                         "${ARMADILLO_LIBRARIES}"
+                                         "${CUDA_LIBRARIES}" "${CUDA_cusparse_LIBRARY}"
+-                                        "${LAPACK_LIBRARIES}"
++                                        "${BLAS_LIBRARIES}" "${LAPACK_LIBRARIES}"
+                                         "${MKL_LIBRARIES}" )
+
+ if (CUDA_FOUND)

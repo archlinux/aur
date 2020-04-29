@@ -1,0 +1,91 @@
+diff -u -r Metview-5.7.0-Source_orig/mars-client/CMakeLists.txt Metview-5.7.0-Source/mars-client/CMakeLists.txt
+--- Metview-5.7.0-Source_orig/mars-client/CMakeLists.txt	2019-10-04 15:21:50.000000000 +0200
++++ Metview-5.7.0-Source/mars-client/CMakeLists.txt	2019-12-02 12:08:37.022157827 +0100
+@@ -126,6 +126,8 @@
+
+ find_package( CURL )
+ find_package( CMath )
++set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/metview/cmake)
++find_package(RPC REQUIRED)
+
+ set( CMAKE_THREAD_PREFER_PTHREAD 1 ) # find thread library, but prefer pthreads
+ find_package(Threads REQUIRED)
+diff -u -r Metview-5.7.0-Source_orig/mars-client/src/CMakeLists.txt Metview-5.7.0-Source/mars-client/src/CMakeLists.txt
+--- Metview-5.7.0-Source_orig/mars-client/src/CMakeLists.txt	2019-10-04 15:21:50.000000000 +0200
++++ Metview-5.7.0-Source/mars-client/src/CMakeLists.txt	2019-12-02 12:09:59.583267605 +0100
+@@ -254,6 +254,7 @@
+         ${GRIB_API_INCLUDE_DIRS}
+         ${MIR_INCLUDE_DIRS}
+         ${CURL_INCLUDE_DIRS}
++        ${RPC_INCLUDE_DIRS}
+     INSTALL_HEADERS_LIST ${MARSC_HEADER_FILES_TO_INSTALL}
+     HEADER_DESTINATION ${INSTALL_INCLUDE_DIR}/marsclient
+     DEFINITIONS
+@@ -263,6 +264,7 @@
+         ${FDB5_LIBRARIES}
+         ${MARS_FEATURE_LIBRARIES}
+         ${CURL_LIBRARIES}
++        ${RPC_LIBRARIES}
+         ${CMATH_LIBRARIES}
+         ${CMAKE_THREAD_LIBS_INIT}
+ )
+@@ -271,7 +273,7 @@
+
+ ecbuild_add_executable(
+     TARGET    mars.bin
+-    INCLUDES  ${MIR_INCLUDE_DIRS} ${LIBEMOS_INCLUDE_DIRS} ${GRIB_API_INCLUDE_DIRS}
++    INCLUDES  ${MIR_INCLUDE_DIRS} ${LIBEMOS_INCLUDE_DIRS} ${GRIB_API_INCLUDE_DIRS} ${RPC_INCLUDE_DIRS}
+     SOURCES   mars.c
+     LIBS      marsclient
+ )
+diff -u -r Metview-5.7.0-Source_orig/mars-client/src/tools/CMakeLists.txt Metview-5.7.0-Source/mars-client/src/tools/CMakeLists.txt
+--- Metview-5.7.0-Source_orig/mars-client/src/tools/CMakeLists.txt	2019-10-04 15:21:50.000000000 +0200
++++ Metview-5.7.0-Source/mars-client/src/tools/CMakeLists.txt	2019-11-19 17:07:42.022402557 +0100
+@@ -9,7 +9,7 @@
+     # here we use the fact that each tool has only one C file that matches its name
+     ecbuild_add_executable( TARGET     ${tool}
+                             SOURCES    ${tool}.c
+-                            INCLUDES   ${GRIB_API_INCLUDE_DIRS}
++                            INCLUDES   ${GRIB_API_INCLUDE_DIRS} ${RPC_INCLUDE_DIRS}
+                             LIBS       marsclient )
+
+ endforeach()
+@@ -43,7 +43,7 @@
+ ecbuild_add_executable( TARGET     filterbufr
+                         SOURCES    filterbufr.c
+                         CONDITION  HAVE_BUFR_TOOLS AND LIBEMOS_HAVE_LIBEMOS_BUFRDC
+-                        INCLUDES   ${GRIB_API_INCLUDE_DIRS}
++                        INCLUDES   ${GRIB_API_INCLUDE_DIRS} ${RPC_INCLUDE_DIRS}
+                         LIBS       marsclient emos )
+
+ ecbuild_add_executable( TARGET     ncmerge
+@@ -101,7 +101,7 @@
+ ecbuild_add_executable( TARGET     netcdf2request
+                         SOURCES    netcdf2request.c
+                         CONDITION  HAVE_NETCDF
+-                        INCLUDES   ${NETCDF_INCLUDE_DIRS}  ${GRIB_API_INCLUDE_DIRS}
++                        INCLUDES   ${NETCDF_INCLUDE_DIRS}  ${GRIB_API_INCLUDE_DIRS} ${RPC_INCLUDE_DIRS}
+                         LIBS       marsclient ${NETCDF_LIBRARIES} )
+
+
+diff -u -r Metview-5.7.0-Source_orig/metview/CMakeLists.txt Metview-5.7.0-Source/metview/CMakeLists.txt
+--- Metview-5.7.0-Source_orig/metview/CMakeLists.txt	2019-10-04 15:21:52.000000000 +0200
++++ Metview-5.7.0-Source/metview/CMakeLists.txt	2019-12-02 12:20:06.194798411 +0100
+@@ -129,6 +129,7 @@
+ # ensure we don't build shared libraries
+ set(BUILD_SHARED_LIBS OFF)
+
++find_package(RPC REQUIRED)
+
+ # Weather Room plot export (ECMWF only)
+ if(ENABLE_WEATHER_ROOM)
+@@ -561,7 +562,8 @@
+         ${CMAKE_CURRENT_BINARY_DIR}/src/libMars        # for generated header files
+         ${CMAKE_CURRENT_SOURCE_DIR}/src
+         ${CMAKE_CURRENT_SOURCE_DIR}/src/libFTimeUtil
+-        ${Boost_INCLUDE_DIRS} )
++        ${Boost_INCLUDE_DIRS}
++        ${RPC_INCLUDE_DIRS})
+
+ #message(FATAL_ERROR "METVIEW_STANDARD_INCLUDE_DIRS: ${METVIEW_STANDARD_INCLUDE_DIRS}")
+ if( METVIEW_ODB )
