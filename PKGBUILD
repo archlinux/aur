@@ -2,7 +2,7 @@
 pkgname=golangci-lint
 pkgdesc="Linters Runner for Go. 5x faster than gometalinter."
 pkgver=1.25.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url='https://github.com/golangci/golangci-lint'
 license=('GPL3')
@@ -34,7 +34,7 @@ check() {
   cd "${pkgname}-${pkgver}"
   # some tests build the binary and overwrite our build
   chmod 555 "$pkgname" # canary
-  GOLANGCI_LINT_CACHE="${srcdir}/golangci-lint-cache" GOLANGCI_LINT_INSTALLED=true go test -short ./...
+  GOLANGCI_LINT_INSTALLED=true go test -a -short ./...
 }
 
 package() {
