@@ -1,4 +1,4 @@
-pkgbase = bootsplash-manjaro-globe
+pkgbase = bootsplash-globe-manjaro
 	pkgdesc = Bootsplash Theme 'Manjaro with globe spinner
 	pkgver = 1
 	pkgrel = 1
