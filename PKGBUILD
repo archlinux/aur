@@ -1,7 +1,7 @@
 pkgname=python-pylgbst
 _module=pylgbst
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="LEGO Boost python module"
 url="https://github.com/undera/pylgbst"
 depends=('python' 'python-pygatt' 'bluez-utils-compat')
@@ -9,7 +9,7 @@ makedepends=('python-setuptools')
 license=('APACHE')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/undera/pylgbst/archive/$pkgver.tar.gz")
-sha256sums=('06f542d6381d335c49798bec8b47186d074a2848421fbf1d49cfc1b356804f44')
+sha256sums=('141df597a05ed1a4e953d14f2f9e64ec35ec9adc9d13581242914ce485d5ca65')
 
 # sudo setcap 'cap_net_raw,cap_net_admin+eip' /usr/bin/hcitool
 # required to work without root permissions
