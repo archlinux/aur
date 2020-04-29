@@ -8,7 +8,7 @@ pkgdesc="Bootsplash Theme 'Manjaro Splash'"
 arch=('any')
 url="https://github.com/githubgeeker/bootsplash-manjaro-splash"
 license=('GPL')
-makedepends=('coreutils''git')
+makedepends=('coreutils')
 builddepends=('imagemagick')
 options=(
 	'!libtool'
