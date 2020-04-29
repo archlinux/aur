@@ -2,7 +2,7 @@
 
 pkgname=vgmtrans-git
 pkgver=20170225.r352.g33e840d
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert console video games music files to standard MIDI and DSL/SF2 files."
 arch=("x86_64")
 url="https://github.com/vgmtrans/vgmtrans"
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
 	cmake -B build $pkgname
-	make -j $(nproc) -C build
+	make -C build
 }
 
 package() {

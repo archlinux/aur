@@ -1,7 +1,7 @@
 pkgbase = vgmtrans-git
 	pkgdesc = Convert console video games music files to standard MIDI and DSL/SF2 files.
 	pkgver = 20170225.r352.g33e840d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vgmtrans/vgmtrans
 	arch = x86_64
 	license = ZLIB
