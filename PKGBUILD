@@ -2,6 +2,7 @@
 pkgname=guiscrcpy-git
 pkgver=3.7.post96.dev.continuous.r4.g5f406f6
 pkgrel=1
+epoch=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
 url="https://guiscrcpy.github.io"
