@@ -1,6 +1,6 @@
 # Maintainer: Sebastien Duthil <duthils@duthils.net>
 
-_pkg_subver=2589  # see ${srcdir}/Version.txt
+_pkg_subver=2618  # see ${srcdir}/Version.txt
 _gamepkg=RimWorld1-1-${_pkg_subver}Linux.zip
 
 pkgname=rimworld
