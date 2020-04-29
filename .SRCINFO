@@ -1,6 +1,6 @@
 pkgbase = vmn-git
 	pkgdesc = Simplistic cli music player built on mpv and curses
-	pkgver = r198.327b24c
+	pkgver = r213.805f057
 	pkgrel = 1
 	url = https://github.com/Dudemanguy/vmn
 	arch = x86_64

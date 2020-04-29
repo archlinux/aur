@@ -1,7 +1,8 @@
-# Maintainer: Vicente Reyes <vreyesvaldivieso@gmail.com>
+# Mantainer: Dudemanguy <random342@airmail.cc>
+# Contributer: Vicente Reyes <vreyesvaldivieso@gmail.com>
 pkgname=vmn-git
 _pkgname=vmn
-pkgver=r198.327b24c
+pkgver=r213.805f057
 pkgrel=1
 license=("GPL3")
 pkgdesc="Simplistic cli music player built on mpv and curses"
@@ -21,7 +22,6 @@ pkgver() {
 build() {
 	cd "$_pkgname"
 	meson \
-		-Dwerror=false \
 		--prefix /usr \
 		"$srcdir/build"
 	ninja -C "$srcdir/build"
