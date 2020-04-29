@@ -10,7 +10,7 @@ url="https://github.com/babelouest/${_gitname}"
 license=(GPL)
 depends=('libmicrohttpd' 'jansson' 'curl' 'gnutls' 'libgcrypt' 'libyder')
 makedepends=('git' 'cmake')
-source=("git+https://github.com/babelouest.git#tag=v${pkgver}.tar.gz")
+source=("git+https://github.com/babelouest/ulfius.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {
@@ -30,5 +30,5 @@ build() {
 
 package() {
     cd "${srcdir}/${_gitname}"
-    make-C build DESTDIR="$pkgdir" install
+    make -C build DESTDIR="$pkgdir" install
 }
