@@ -19,9 +19,14 @@ options=(!emptydirs)
 source=('git+https://github.com/cocotb/cocotb')
 md5sums=('SKIP')
 
+build() {
+    cd "${srcdir}/cocotb"
+    python setup.py build
+}
+
 package() {
     cd "${srcdir}/cocotb"
-    python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+    python setup.py install --skip-build --root="$pkgdir" --optimize=1
     install -m 644 -D ./LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
 
