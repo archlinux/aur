@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal-wlr-git
 	pkgdesc = xdg-desktop-portal backend for wlroots
-	pkgver = r25.ea98281
+	pkgver = r29.6ecb5df
 	pkgrel = 1
 	url = https://github.com/emersion/xdg-desktop-portal-wlr
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = xdg-desktop-portal-wlr-git
 	makedepends = wayland-protocols
 	makedepends = wayland
 	depends = wlroots
+	depends = xdg-desktop-portal
 	depends = pipewire
-	depends = libdrm
 	provides = xdg-desktop-portal-wlr
 	provides = xdg-desktop-portal-impl
 	conflicts = xdg-desktop-portal-wlr
