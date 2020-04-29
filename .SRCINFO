@@ -1,0 +1,21 @@
+pkgbase = tritonroute-git
+	pkgdesc = UCSD Detailed Router
+	pkgver = r18.9afba7c
+	pkgrel = 1
+	url = https://github.com/The-OpenROAD-Project/TritonRoute
+	arch = x86_64
+	license = BSD
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	provides = tritonroute
+	conflicts = tritonroute
+	source = git://github.com/The-OpenROAD-Project/TritonRoute.git
+	source = fix_install.patch
+	source = fix_headers_list.patch
+	sha256sums = SKIP
+	sha256sums = 6ea36155d11326d59eaa7090ecb13580971763863629aeda994f09d64d990a7d
+	sha256sums = 96ce8f01b4a875a2d30969f5763451f55d7fc7e66dfca47f3201e14317c2475d
+
+pkgname = tritonroute-git
+

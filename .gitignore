@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!fix_headers_list.patch
+!fix_install.patch
+!PKGBUILD

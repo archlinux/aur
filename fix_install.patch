@@ -1,0 +1,38 @@
+diff --unified --recursive --text package.orig/CMakeLists.txt package.new/CMakeLists.txt
+--- package.orig/CMakeLists.txt	2020-04-29 15:42:22.048349667 +0200
++++ package.new/CMakeLists.txt	2020-04-29 15:43:33.044713815 +0200
+@@ -219,8 +219,8 @@
+ # Install  
+ ############################################################
+ 
+-install(FILES ${FLEXROUTE_HEADER} DESTINATION include)
++#install(FILES ${FLEXROUTE_HEADER} DESTINATION include)
+ install(TARGETS TritonRoute DESTINATION bin)
+-install(TARGETS TritonRoute DESTINATION lib)
++#install(TARGETS TritonRoute DESTINATION lib)
+ 
+ 
+diff --unified --recursive --text package.orig/module/def/5.8-p029/CMakeLists.txt package.new/module/def/5.8-p029/CMakeLists.txt
+--- package.orig/module/def/5.8-p029/CMakeLists.txt	2020-04-29 15:42:22.048349667 +0200
++++ package.new/module/def/5.8-p029/CMakeLists.txt	2020-04-29 15:43:41.213637526 +0200
+@@ -251,6 +251,6 @@
+ ######################################################
+ # install
+ 
+-install(FILES ${DEFLIB_HEADERS} DESTINATION include)
+-install(TARGETS def defzlib cdef cdefzlib DESTINATION lib)
++#install(FILES ${DEFLIB_HEADERS} DESTINATION include)
++#install(TARGETS def defzlib cdef cdefzlib DESTINATION lib)
+ 
+diff --unified --recursive --text package.orig/module/lef/5.8-p029/CMakeLists.txt package.new/module/lef/5.8-p029/CMakeLists.txt
+--- package.orig/module/lef/5.8-p029/CMakeLists.txt	2020-04-29 15:42:22.079349400 +0200
++++ package.new/module/lef/5.8-p029/CMakeLists.txt	2020-04-29 15:43:24.829789909 +0200
+@@ -209,6 +209,6 @@
+ ######################################################
+ # install
+ 
+-install(FILES ${LEFLIB_HEADERS} DESTINATION include)
+-install(TARGETS lef lefzlib clef clefzlib DESTINATION lib)
++#install(FILES ${LEFLIB_HEADERS} DESTINATION include)
++#install(TARGETS lef lefzlib clef clefzlib DESTINATION lib)
+ 

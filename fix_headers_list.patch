@@ -1,0 +1,16 @@
+diff --unified --recursive --text package.orig/CMakeLists.txt package.new/CMakeLists.txt
+--- package.orig/CMakeLists.txt	2020-04-29 15:32:35.668599180 +0200
++++ package.new/CMakeLists.txt	2020-04-29 15:33:01.272668022 +0200
+@@ -90,12 +90,10 @@
+ set (FLEXROUTE_HEADER
+   ${FLEXROUTE_HOME}/src/drc/frDRC.h
+   ${FLEXROUTE_HOME}/src/FlexRoute.h
+-  ${FLEXROUTE_HOME}/src/io/frGuidePrep.h
+   ${FLEXROUTE_HOME}/src/io/frAPG.h
+   ${FLEXROUTE_HOME}/src/io/frPinPrep.h
+   ${FLEXROUTE_HOME}/src/io/io.h
+   ${FLEXROUTE_HOME}/src/io/frShapeUtil.h
+-  ${FLEXROUTE_HOME}/src/io/frUtil.h
+   ${FLEXROUTE_HOME}/src/frRegionQuery.h
+   ${FLEXROUTE_HOME}/src/frDesign.h
+   ${FLEXROUTE_HOME}/src/frBaseTypes.h
