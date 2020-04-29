@@ -1,6 +1,6 @@
 pkgbase = i3-volume
 	pkgdesc = Volume control and volume notifications for i3wm
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/hastinbe/i3-volume
 	install = i3-volume.install
@@ -9,10 +9,10 @@ pkgbase = i3-volume
 	depends = notification-daemon
 	optdepends = alsa-utils: Support for ALSA
 	optdepends = pulseaudio: Support for Pulseaudio
-	source = https://github.com/hastinbe/i3-volume/archive/v1.7.0.tar.gz
+	source = https://github.com/hastinbe/i3-volume/archive/v1.8.0.tar.gz
 	source = i3volume-alsa.conf
 	source = i3volume-pulseaudio.conf
-	md5sums = c4aa6fb2b6542101ebb7e0d1c6b563a9
+	md5sums = 65ca5c265af2450305c7f774ebe72c4c
 	md5sums = ebb255f91630209a64491bb0fed9bc08
 	md5sums = c36135349c39cdd70d20242a673d0b21
 
