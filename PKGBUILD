@@ -3,7 +3,7 @@
 
 _gemname=mixlib-cli
 pkgname=ruby-$_gemname
-pkgver=2.1.5
+pkgver=2.1.6
 pkgrel=1
 pkgdesc="A simple mixin for CLI interfaces, including option parsing"
 arch=("any")
@@ -13,7 +13,7 @@ depends=("ruby")
 makedepends=("ruby-rdoc")
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
-sha1sums=('45b7805f3f6ea140b37f5996643bb28d4a814912')
+sha1sums=('93e1880fbe01cf8e939dde5b4fe56bfad8b18ed8')
 noextract=($_gemname-$pkgver.gem)
 
 package() {
