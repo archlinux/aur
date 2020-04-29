@@ -1,9 +1,10 @@
 pre_install() {
 	if systemctl status mullvad-daemon &> /dev/null; then
 		echo 'Stopping & disabling Mullvad VPN daemon...'
+		/opt/Mullvad\ VPN/resources/mullvad-setup prepare-restart || true
 		systemctl disable --now mullvad-daemon
 	fi
-	
+
 	rm -f /var/cache/mullvad-vpn/relays.json || true
 }
 
@@ -13,14 +14,13 @@ post_install() {
 }
 
 pre_upgrade() {
-	echo 'Stopping Mullvad VPN daemon...'
-	systemctl stop mullvad-daemon
+	pre_install
 }
 
 post_upgrade() {
-	echo 'Restarting Mullvad VPN daemon...'
+	echo 'Starting & enabling Mullvad VPN daemon...'
 	systemctl daemon-reload
-	systemctl start mullvad-daemon
+	systemctl enable --now mullvad-daemon
 }
 
 pre_remove() {
