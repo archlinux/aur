@@ -5,7 +5,8 @@ pkgbase = lua-ansicolors
 	url = https://github.com/kikito/ansicolors.lua
 	arch = x86_64
 	license = MIT
-	source = https://github.com/kikito/ansicolors.lua/archive/v1.0.2.tar.gz
+	makedepends = luarocks
+	source = lua-ansicolors-1.0.2.tar.gz::https://github.com/kikito/ansicolors.lua/archive/v1.0.2.tar.gz
 	sha256sums = fa76a465c2e0d342f6d5a1d44c63bd398053f206f41c7b5356b551694f899d64
 
 pkgname = lua-ansicolors
