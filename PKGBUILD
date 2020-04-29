@@ -3,7 +3,7 @@
 pkgname=obs-ndi-bin
 _pkgname=obs-ndi
 pkgver=4.9.0
-pkgrel=1
+pkgrel=2
 _pkgrel=1
 pkgdesc="Network A/V in OBS Studio with NewTek's NDI technology"
 arch=('x86_64')
@@ -19,4 +19,6 @@ package() {
 	cd "${srcdir}"
 
 	tar -xJf data.tar.xz -C "${pkgdir}"
+	
+	chmod 755 $(find "${pkgdir}" -type d)
 }
