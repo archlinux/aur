@@ -1,13 +1,14 @@
 pkgbase = gnomecast-git
 	pkgdesc = A native Linux GUI for casting local files to Chromecast devices
 	pkgver = r172.42d8346
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/keredson/gnomecast
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = python-setuptools
 	depends = ffmpeg
+	depends = gtk3
 	depends = python-html5lib
 	depends = python-pychromecast
 	depends = python-bottle
