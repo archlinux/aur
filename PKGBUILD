@@ -10,7 +10,7 @@ pkgver() {
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgver=r730.89f8ae6
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Configure neomutt, isync, getmail and msmtp with pass for passwords'
 arch=('x86_64')
