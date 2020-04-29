@@ -1,6 +1,6 @@
 pkgbase = pipewire-git
 	pkgdesc = Server and user space API to deal with multimedia pipelines. (GIT version)
-	pkgver = 0.3.2.73.gdfd1adf8
+	pkgver = 0.3.2.114.g5e99e7da
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64

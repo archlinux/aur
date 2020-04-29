@@ -4,7 +4,7 @@ pkgname=('pipewire-git'
          'pipewire-jack-git'
          'pipewire-pulse-git'
          )
-pkgver=0.3.2.73.gdfd1adf8
+pkgver=0.3.2.114.g5e99e7da
 pkgrel=1
 pkgdesc='Server and user space API to deal with multimedia pipelines. (GIT version)'
 arch=('x86_64')
@@ -98,12 +98,12 @@ package_pipewire-git() {
 
   cd "${pkgdir}"
 
-  _pick docs usr/share/doc
+  _pick docs usr/share/doc/pipewire
 
-  _pick pulse usr/lib/libpulse*
+  _pick pulse usr/lib/pipewire-${pkgver:0:3}/pulse
 
   _pick jack usr/lib/spa-0.2/jack
-  _pick jack usr/lib/libjack*
+  _pick jack usr/lib/pipewire-${pkgver:0:3}/jack
 }
 
 package_pipewire-docs-git() {
