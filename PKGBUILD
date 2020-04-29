@@ -3,7 +3,7 @@
 pkgname=tensor-git
 pkgver=r296.f3f3056
 pkgrel=1
-pkgdesc='Cross-platform Qt5/QML-based Matrix client'
+pkgdesc='Cross-platform Qt5/QML-based Matrix client. Use tensor-quiark-git for newer fork.'
 arch=('x86_64' 'i686')
 url='https://github.com/davidar/tensor'
 license=('GPL3')
