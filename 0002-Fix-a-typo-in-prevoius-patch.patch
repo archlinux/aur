@@ -1,0 +1,26 @@
+From 77f288716ee8276dd48d4a7941d3376fac1aea7d Mon Sep 17 00:00:00 2001
+From: Vincenzo Di Massa <hawk.it@tiscali.it>
+Date: Fri, 10 Apr 2020 19:52:03 +0200
+Subject: [PATCH 2/2] Fix a typo in prevoius patch.
+
+HUNION NEW 1060 Plus is fixed by this patch series
+---
+ drivers/usb/host/xhci-ring.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/usb/host/xhci-ring.c b/drivers/usb/host/xhci-ring.c
+index cba92cc14c4d..d6215d270949 100644
+--- a/drivers/usb/host/xhci-ring.c
++++ b/drivers/usb/host/xhci-ring.c
+@@ -1987,7 +1987,7 @@ static int finish_td(struct xhci_hcd *xhci, struct xhci_td *td,
+ 			/* FIXME, maybe check if on SETUP, DATA or STATUS stage?*/
+ 			xhci_clear_hub_tt_buffer(xhci, td, ep);
+ 		} else {
+-			trace_print("Skip clearing TT buffer for ep_index %d, comp_code %d\n",
++			trace_printk("Skip clearing TT buffer for ep_index %d, comp_code %d\n",
+ 				    ep_index, trb_comp_code);
+ 			xhci_err(xhci, "Skip clearing TT buffer for ep_index %d, comp_code %d\n",
+ 				 ep_index, trb_comp_code);
+-- 
+2.20.1
+

@@ -1,0 +1,98 @@
+From baf8af0d0399c12304c30cd45ec467aa27ed1083 Mon Sep 17 00:00:00 2001
+From: Mathias Nyman <mathias.nyman@linux.intel.com>
+Date: Thu, 9 Apr 2020 15:21:44 +0300
+Subject: [PATCH] xhci: testpatch, Don't clear TT buffer on ep0 protocol stall
+
+The default control endpoint ep0 can return a STALL indicating the
+device does not support the control transfer requests. This is called
+a protocol stall and does not halt the endpoint.
+
+Looks like we shouldn't clear the TT buffer in protocol stall cases
+as endpoint isn't really halted
+
+At least it seems to cause issues for some deices, and endpoint
+stops completely.
+
+Signed-off-by: Mathias Nyman <mathias.nyman@linux.intel.com>
+---
+ drivers/usb/host/xhci-ring.c | 32 +++++++++++++++++++++++++-------
+ drivers/usb/host/xhci.c      |  3 +++
+ 2 files changed, 28 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/usb/host/xhci-ring.c b/drivers/usb/host/xhci-ring.c
+index d23f7408c81f..8bb89e6dc2fe 100644
+--- a/drivers/usb/host/xhci-ring.c
++++ b/drivers/usb/host/xhci-ring.c
+@@ -1821,8 +1821,13 @@ static void xhci_clear_hub_tt_buffer(struct xhci_hcd *xhci, struct xhci_td *td,
+ 	    !(ep->ep_state & EP_CLEARING_TT)) {
+ 		ep->ep_state |= EP_CLEARING_TT;
+ 		td->urb->ep->hcpriv = td->urb->dev;
+-		if (usb_hub_clear_tt_buffer(td->urb))
++		trace_printk("Clearing TT buffer\n");
++		xhci_dbg(xhci, "Clearing TT buffer\n");
++		if (usb_hub_clear_tt_buffer(td->urb)) {
+ 			ep->ep_state &= ~EP_CLEARING_TT;
++			trace_printk("Clear TT buffer failed\n");
++			xhci_err(xhci, "Clear TT buffer failed\n");
++		}
+ 	}
+ }
+ 
+@@ -1852,7 +1857,6 @@ static void xhci_cleanup_halted_endpoint(struct xhci_hcd *xhci,
+ 	if (reset_type == EP_HARD_RESET) {
+ 		ep->ep_state |= EP_HARD_CLEAR_TOGGLE;
+ 		xhci_cleanup_stalled_ring(xhci, ep_index, stream_id, td);
+-		xhci_clear_hub_tt_buffer(xhci, td, ep);
+ 	}
+ 	xhci_ring_cmd_db(xhci);
+ }
+@@ -1973,13 +1977,27 @@ static int finish_td(struct xhci_hcd *xhci, struct xhci_td *td,
+ 	if (trb_comp_code == COMP_STALL_ERROR ||
+ 		xhci_requires_manual_halt_cleanup(xhci, ep_ctx,
+ 						trb_comp_code)) {
+-		/* Issue a reset endpoint command to clear the host side
+-		 * halt, followed by a set dequeue command to move the
+-		 * dequeue pointer past the TD.
+-		 * The class driver clears the device side halt later.
++		/*
++		 * xhci internal endpoint state will go to a "halt" state for
++		 * any stall, including default control pipe protocol stall.
++		 * To clear the host side halt we need to issue a reset endpoint
++		 * command, followed by a set dequeue command to move past the
++		 * TD.
++		 * Class drivers clear the device side halt from a functional
++		 * stall later. Hub TT buffer needs to be cleared for FS/LS
++		 * devices behind HS hubs for functinoal stalls.
+ 		 */
++		if ((ep_index != 0) || (trb_comp_code != COMP_STALL_ERROR)) {
++			/* FIXME, maybe check if on SETUP, DATA or STATUS stage?*/
++			xhci_clear_hub_tt_buffer(xhci, td, ep);
++		} else {
++			trace_print("Skip clearing TT buffer for ep_index %d, comp_code %d\n",
++				    ep_index, trb_comp_code);
++			xhci_err(xhci, "Skip clearing TT buffer for ep_index %d, comp_code %d\n",
++				 ep_index, trb_comp_code);
++		}
+ 		xhci_cleanup_halted_endpoint(xhci, slot_id, ep_index,
+-					ep_ring->stream_id, td, EP_HARD_RESET);
++					     ep_ring->stream_id, td, EP_HARD_RESET);
+ 	} else {
+ 		/* Update ring dequeue pointer */
+ 		while (ep_ring->dequeue != td->last_trb)
+diff --git a/drivers/usb/host/xhci.c b/drivers/usb/host/xhci.c
+index dbac0fa9748d..fbdd9465652b 100644
+--- a/drivers/usb/host/xhci.c
++++ b/drivers/usb/host/xhci.c
+@@ -5284,6 +5284,9 @@ static void xhci_clear_tt_buffer_complete(struct usb_hcd *hcd,
+ 	slot_id = udev->slot_id;
+ 	ep_index = xhci_get_endpoint_index(&ep->desc);
+ 
++	trace_printk("Clear TT buffer complete for ep_index %d\n", ep_index);
++	xhci_dbg(xhci, "Clear TT buffer complete for ep_index %d\n", ep_index);
++
+ 	xhci->devs[slot_id]->eps[ep_index].ep_state &= ~EP_CLEARING_TT;
+ 	xhci_ring_doorbell_for_active_rings(xhci, slot_id, ep_index);
+ 	spin_unlock_irqrestore(&xhci->lock, flags);
+-- 
+2.17.1
+

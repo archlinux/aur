@@ -1,0 +1,49 @@
+pkgbase = linux-xhci
+	pkgdesc = Linux with xhci patch
+	pkgver = 5.6.7.arch1
+	pkgrel = 1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.6.7-arch1
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
+	options = !strip
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.6.7-arch1
+	source = config
+	source = sphinx-workaround.patch
+	source = 0001-xhci-testpatch-Don-t-clear-TT-buffer-on-ep0-protocol.patch
+	source = 0002-Fix-a-typo-in-prevoius-patch.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
+	sha256sums = SKIP
+	sha256sums = dfd3310bc2d3c4adbaba5e4f2260a8a110706993be1c3e02a5ddfe88bf0c63ce
+	sha256sums = 8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c
+	sha256sums = f0573617c629161f5a36f63c0d93cecfe8de187037aa0fc19419eb2dd9557681
+	sha256sums = 9113561852d32caf481f5c4efb6732d202203e0ff304789e992c31b592b63085
+
+pkgname = linux-xhci
+	pkgdesc = The Linux with xhci patch kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
+
+pkgname = linux-xhci-headers
+	pkgdesc = Headers and scripts for building modules for the Linux with xhci patch kernel
+
+pkgname = linux-xhci-docs
+	pkgdesc = Documentation for the Linux with xhci patch kernel
+
