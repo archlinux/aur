@@ -1,5 +1,5 @@
 pkgname=glslang-git
-pkgver=8.13.3743.3.gf03cb290
+pkgver=8.13.3743.r3.gf03cb290
 pkgrel=1
 pkgdesc='Front end for GLSL/ESSL, HLSL, and a SPIR-V generator, git version'
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  git describe --tags --exclude master-tot | sed -e 's:v::' -e 's/-/./g'
+  git describe --long --tags --exclude master-tot | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
