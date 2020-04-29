@@ -12,7 +12,6 @@ pkgbase = python-fusesoc-git
 	depends = python-setuptools
 	depends = python-pyaml
 	depends = python-jsonschema
-	depends = python-jinja
 	optdepends = iverilog: for simulating verilog designs
 	optdepends = ghdl: for simulating VHDL designs
 	optdepends = gtkwave: for visualizing waveforms
