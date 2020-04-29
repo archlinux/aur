@@ -1,8 +1,7 @@
 # Maintainer: Pablo Lenna  <pablolenna@gmail.com>
 
 pkgname=bootsplash-manjaro-globe
-_pkgname=bootsplash-manjaro-globe
-pkgver=0.1
+pkgver=1
 pkgrel=1
 pkgdesc="Bootsplash Theme Manjaro with globe spinner"
 arch=('any')
