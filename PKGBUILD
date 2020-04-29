@@ -27,6 +27,8 @@ build() {
 package() {
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps simplesat
     python -O -m compileall "${pkgdir}/simplesat"
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ipyxact
+    python -O -m compileall "${pkgdir}/ipyxact"
     cd "${srcdir}/fusesoc"
     python setup.py install --skip-build --root="$pkgdir" --optimize=1
     install -m 644 -D ./LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
