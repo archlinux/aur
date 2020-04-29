@@ -10,7 +10,7 @@ conflicts=('python-fusesoc')
 provides=('python-fusesoc-git')
 depends=('python' 'python-edalize-git' 'python-setuptools')
 
-makedepends=('git')
+makedepends=('git' 'python-pip')
 optdepends=('iverilog: for simulating verilog designs'
 	    'ghdl: for simulating VHDL designs'
 	    'gtkwave: for visualizing waveforms')
