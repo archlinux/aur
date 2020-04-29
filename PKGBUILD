@@ -4,15 +4,15 @@
 # Contributor: tantalum
 
 pkgname=guile-json
-pkgver=3.3.0
-pkgrel=3
+pkgver=3.4.0
+pkgrel=1
 pkgdesc='JSON module for Guile'
 arch=('x86_64' 'i686' 'armv7h')
 url='https://savannah.nongnu.org/projects/guile-json'
 license=('GPL3')
 depends=('guile')
 source=("https://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('ceb7357308d75a9c49dabbddaecf60c9731eda3512b9275a79bb508f628c783d')
+sha256sums=('716aad1efd445c68224381ebaff0bccf1d9f67afc84af470b0886364af9f5f76')
 
 build() {
   cd "$pkgname-$pkgver"
