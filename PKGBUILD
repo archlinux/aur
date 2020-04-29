@@ -23,11 +23,9 @@ provides=("thunderbird=$pkgver")
 conflicts=('thunderbird-beta-bin')
 install=$pkgname.install
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
-	rust-1.43.patch
 	thunderbird-beta.desktop)
 sha512sums=('6eab3148303c2396f5f24cd837a5262412e0b110f01ad3c4fc10522b4af351ab85db16f73c14fba4c9636ab068e4b0743b646484934afba3c367c95d96374940'
             'SKIP'
-            '8833130802e2bfb34036444d6855c96a5b819f90c9835decd816bbf50dc507a71b2c343fd53d3fec0d79df791bb56436b06f2430abbeb70c726574a57c385d54'
             'cab681d5acf17dd8dabf732c0bb5f73fd0444796bb4fd82decdfa8764122513fd2f05c562cf9246eacac67ea84ae85a220f59d7eea7106e0b2f6fc16bc520dd4')
 
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
@@ -46,8 +44,6 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {  
   cd $_pkgname-$_pkgver
-
-  patch -Np1 -i ../rust-1.43.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
