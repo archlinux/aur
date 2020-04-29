@@ -5,7 +5,7 @@
 _pkgname=PDFStudio
 pkgname=${_pkgname,,}-bin
 _pkgver=2019
-pkgver=$_pkgver.2.1
+pkgver=$_pkgver.2.2
 pkgrel=1
 pkgdesc='Review, annotate, and edit PDF Documents'
 arch=('x86_64' 'i686')
@@ -14,15 +14,15 @@ license=('custom')
 depends=('java-runtime>=6')
 source=("${pkgname%-bin}.desktop"
 	    "${pkgname%-bin}.png")
-provides=("${pkgname%-bin}")
-conflicts=("${provides[@]}")
-replaces=("${provides[@]}")
+provides=("${pkgname%-bin}=$pkgver")
+conflicts=("${pkgname%-bin}")
+replaces=("${pkgname%-bin}")
 source_x86_64=("https://download.qoppa.com/${pkgname%-bin}/v$_pkgver/${_pkgname}_v${pkgver//./_}_linux64.deb")
 source_i686=("https://download.qoppa.com/${pkgname%-bin}/v$_pkgver/${_pkgname}_v${pkgver//./_}_linux.deb")
 sha256sums=('8bbf7d3aaedfdde658e8fe5fc9bf30b92f1643986507b3d90e0eb6ebf1c39a0c'
             '0a3c1c337a22228f3df28412ca65d45d0d8067b508cf7b1cf93810fc17c9b447')
-sha256sums_x86_64=('73197a7caf6dcfe503ee7a4af0737b16c8cb24803b4b363d989bd2f8751c3029')
-sha256sums_i686=('a8e41cf6c9d34359a790afac451ecfac3a7bb80134910f6bf81e4851ea04fda3')
+sha256sums_x86_64=('29f1169cc58cb9e6f858ce26922460884c7dd556ea85ab66c1d106e5a1249dcd')
+sha256sums_i686=('0ce3aa39211a8d43ad92160549783b164b4bdfc2fa7d5e641c2739648dc38ef4')
 
 prepare() {
 	bsdtar xf data.tar.gz
