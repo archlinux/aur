@@ -8,7 +8,7 @@
 #
 
 pkgname=platformio
-pkgver=4.3.2
+pkgver=4.3.3
 pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
@@ -26,7 +26,7 @@ depends=('python-setuptools'
          'python-marshmallow')
 conflicts=('platformio-git')
 source=("https://github.com/platformio/platformio-core/archive/v${pkgver}.tar.gz")
-sha256sums=('d63e8b681d99a7a830dd85a6931051ecdd501b21459624ae932349528550cc33')
+sha256sums=('883d2d41a0b711c84ef95b844e16abe1ab8cef3888673e4f123ae52eb725e170')
 
 package() {
     cd "$srcdir/platformio-core-$pkgver"
