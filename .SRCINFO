@@ -1,0 +1,18 @@
+pkgbase = pep-qt-adapter-hg
+	pkgdesc = p≡p Qt adapter
+	pkgver = r30.095eb68b2808
+	pkgrel = 1
+	url = https://pep.foundation/dev/repos/pEpQtAdapter
+	arch = any
+	license = GPL3
+	makedepends = mercurial
+	makedepends = cmake
+	makedepends = make
+	depends = qt5-base
+	depends = pep-engine
+	provides = pep-qt-adapter
+	source = hg+https://pep.foundation/dev/repos/pEpQtAdapter
+	md5sums = SKIP
+
+pkgname = pep-qt-adapter-hg
+
