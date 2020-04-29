@@ -8,7 +8,7 @@ url="http://github.com/olofk/fusesoc/"
 license=('GPLv3')
 conflicts=('python-fusesoc-git')
 provides=('python-fusesoc')
-depends=('python' 'python-edalize' 'python-setuptools')
+depends=('python' 'python-edalize' 'python-setuptools' 'python-pyaml')
 
 makedepends=('git' 'python-pip')
 optdepends=('iverilog: for simulating verilog designs'
