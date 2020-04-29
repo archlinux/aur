@@ -2,7 +2,7 @@
 pkgname=golangci-lint
 pkgdesc="Linters Runner for Go. 5x faster than gometalinter."
 pkgver=1.25.1
-pkgrel=4
+pkgrel=5
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url='https://github.com/golangci/golangci-lint'
 license=('GPL3')
@@ -31,8 +31,6 @@ build() {
 }
 
 check() {
-  env | sort
-  exit 1
   cd "${pkgname}-${pkgver}"
   # some tests build the binary and overwrite our build
   chmod 555 "$pkgname" # canary
