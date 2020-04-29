@@ -31,7 +31,7 @@ build() {
 }
 
 package_lua-ansicolors() {
-  pkgdesc='ANSI terminal color manipulation for Lua 5.3'
+  pkgdesc='ANSI terminal color manipulation module for Lua 5.3'
 
   luarocks install --lua-version=5.3 --tree="$pkgdir/usr/" --deps-mode=none 5.3/${_rockname}-${_rockver}-1.all.rock
 
