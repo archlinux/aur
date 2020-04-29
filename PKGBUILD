@@ -11,19 +11,18 @@ makedepends=('psp-gcc' 'git')
 conflicts=('psp-sdk-base')
 provides=('psp-sdk-base')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("git+https://github.com/pspdev/pspsdk.git")
+source=("https://github.com/pspdev/pspsdk/archive/master.zip")
 md5sums=('SKIP')
-
 
 prepare()
 {
-  cd "$srcdir/pspsdk"
-  sed -i "/Could not allocate the section data buffer/d" tools/unpack-pbp.c
+  cd "$srcdir/pspsdk-master"
+  #sed -i "/Could not allocate the section data buffer/d" tools/unpack-pbp.c
 }
 
 build()
 {
-  cd "$srcdir/pspsdk"
+  cd "$srcdir/pspsdk-master"
   ./bootstrap
   mkdir -p build-psp && pushd build-psp
   ../configure --with-pspdev=/usr --target=psp
@@ -32,7 +31,7 @@ build()
 
 package()
 {
-  cd "$srcdir/pspsdk/build-psp"
+  cd "$srcdir/pspsdk-master/build-psp"
   make install DESTDIR="$pkgdir"
 }
 
