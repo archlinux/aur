@@ -1,0 +1,27 @@
+pkgbase = qv2ray-plugin-trojan-git
+	pkgdesc = Qv2ray Plugin: Trojan
+	pkgver = 20200429.r26.3305c41
+	pkgrel = 1
+	url = https://github.com/Qv2ray/QvPlugin-Trojan
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = qt5-tools
+	makedepends = which
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = libffi
+	makedepends = boost
+	depends = qt5-base>5.11.0
+	depends = openssl
+	depends = boost-libs
+	depends = qv2ray
+	provides = qv2ray-plugin-trojan
+	conflicts = qv2ray-plugin-trojan
+	source = qv2ray-plugin-trojan::git+https://github.com/Qv2ray/QvPlugin-Trojan
+	sha512sums = SKIP
+
+pkgname = qv2ray-plugin-trojan-git
+
