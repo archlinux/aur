@@ -87,6 +87,9 @@ post_install() {
     echo 'Loading bcm2835 module'
     echo "bcm2835-v4l2" > /etc/modules-load.d/picamera.conf
    
+    echo "limiting journal log space"
+    echo 'SystemMaxUse=250MB' >> /etc/systemd/journald.conf
+   
     echo "generating locale"
     echo "en_GB.UTF-8 UTF-8\n" >> /etc/locale.gen
     locale-gen
