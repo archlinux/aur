@@ -1,7 +1,7 @@
 pkgbase = hydroxide
 	pkgdesc = A third-party, open-source ProtonMail CardDAV, IMAP and SMTP bridge
 	pkgver = 0.2.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emersion/hydroxide
 	arch = any
 	license = mit
