@@ -11,7 +11,7 @@ url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
 depends=(
 	# electron
-	'c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libxslt' 'libxss' 'minizip' 'nss' 'snappy' 'libnghttp2' 're2'
+	'c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libnghttp2' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy'
 	# compass
 	'krb5' 'libsecret' 'lsb-release'
 )
