@@ -1,7 +1,7 @@
 # Maintainer: Michael Taboada <michael@2mb.solutions.
 # Maintainer: Storm Dragon <storm_dragon@linux-a11y.org>
 pkgname=swamp-wine
-pkgver=3.8D
+pkgver=3.8E
 pkgrel=1
 pkgdesc="First-person Audio Shooter"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'pentium4')
@@ -21,16 +21,28 @@ md5sums=('662be95ce8b52349f32e1d895f850ec2'
 
 prepare() {
   cd "$srcdir"
-  [ ! -f swamp-${pkgver}.zip ] && wget 'https://kaldobsky.com/audiogames/Swamp.zip' -O swamp-${pkgver}.zip
-  _md5sum=57b40c8eb603ce0d4afdcdb0ab0d5df6
-  if [ "$_md5sum" = "$(md5sum swamp-${pkgver}.zip |cut -d\  -f1)" ] ; then
+  _fullver=3.8C
+  [ ! -f swamp-${_fullver}.zip ] && wget 'https://kaldobsky.com/audiogames/Swamp.zip' -O swamp-${_fullver}.zip
+  _fullsum=57b40c8eb603ce0d4afdcdb0ab0d5df6
+  if [ "$_fullsum" = "$(md5sum swamp-${_fullver}.zip | cut -d\  -f1)" ] ; then
     mkdir swamp
-    unzip -q -d swamp swamp-${pkgver}.zip
+    unzip -q -d swamp swamp-${_fullver}.zip
   else
-    echo "Md5sum doesn't match for this swamp version, please notify the package maintainer." >&2
+    echo "Md5sum doesn't match for swamp-${_fullver}.zip, please notify the package maintainer." >&2
     return 1
   fi
-}
+  if [ "$pkgver" != "$_fullver" ] ; then
+    _patchver=$pkgver
+    [ ! -f swamp-patch-${_fullver}-to-${_patchver}.zip ] && wget 'https://kaldobsky.com/audiogames/SwampPatch.zip' -O swamp-patch-${_fullver}-to-${_patchver}.zip
+    _patchsum=070ebbcebb8b72023eb0130ac30c8877
+    if [ "$_patchsum" = "$(md5sum swamp-patch-${_fullver}-to-${_patchver}.zip | cut -d\  -f1)" ] ; then
+      unzip -o -q -d swamp swamp-patch-${_fullver}-to-${_patchver}.zip
+    else
+      echo "Md5sum doesn't match for swamp-patch-${_fullver}-to-${_patchver}.zip, please notify the package maintainer." >&2
+      exit 1
+    fi
+  fi
+    }
 
 package() {
   cd "$srcdir"
