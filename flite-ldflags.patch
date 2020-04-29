@@ -1,6 +1,18 @@
-diff -Naur flite-1.4-release/config/common_make_rules flite-1.4-release.new/config/common_make_rules
---- flite-1.4-release/config/common_make_rules	2009-07-30 14:52:56.000000000 +0000
-+++ flite-1.4-release.new/config/common_make_rules	2011-03-26 20:22:59.000000000 +0000
+diff -ur flite-2.1-release.orig/config/archlinux.lv flite-2.1-release/config/archlinux.lv
+--- flite-2.1-release.orig/config/archlinux.lv	2020-04-29 10:45:37.303093661 +0200
++++ flite-2.1-release/config/archlinux.lv	2020-04-29 10:45:49.826323848 +0200
+@@ -1,5 +1,5 @@
+ #
+ #  The base languages, lexicons and voices
+-LEXES = cmulex cmu_indic_lang
+-LANGS = usenglish cmu_indic_lex
+-VOXES = cmu_us_kal16 cmu_us_slt
++LEXES = cmulex
++LANGS = usenglish
++VOXES = cmu_us_rms
+diff -ur flite-2.1-release.orig/config/common_make_rules flite-2.1-release/config/common_make_rules
+--- flite-2.1-release.orig/config/common_make_rules	2020-04-29 10:44:29.080327038 +0200
++++ flite-2.1-release/config/common_make_rules	2020-04-29 10:45:49.826323848 +0200
 @@ -68,7 +68,7 @@
  
  FLITELIBS = $(BUILDDIR)/lib/libflite.a
@@ -19,10 +31,11 @@ diff -Naur flite-1.4-release/config/common_make_rules flite-1.4-release.new/conf
  	@ (cd $(LIBDIR) && ln -s `basename $@.${PROJECT_VERSION}` `basename $@.${PROJECT_SHLIB_VERSION}` )
  	@ (cd $(LIBDIR) && ln -s `basename $@.${PROJECT_SHLIB_VERSION}` `basename $@` )
  	@ rm -rf shared_os
---- flite-1.4-release/tools/Makefile~	2009-08-22 20:19:01.000000000 +0100
-+++ flite-1.4-release.new/tools/Makefile	2013-01-20 20:06:34.259527220 +0000
-@@ -62,9 +62,9 @@
- LOCAL_CLEAN = $(BINDIR)/find_sts $(BINDIR)/flite_sort
+diff -ur flite-2.1-release.orig/tools/Makefile flite-2.1-release/tools/Makefile
+--- flite-2.1-release.orig/tools/Makefile	2020-04-29 10:44:29.163659675 +0200
++++ flite-2.1-release/tools/Makefile	2020-04-29 10:45:49.826323848 +0200
+@@ -70,9 +70,9 @@
+ LOCAL_CLEAN = $(BINDIR)/find_sts $(BINDIR)/flite_sort $(TOP)/bin
  
  $(BINDIR)/find_sts: find_sts_main.o $(FLITELIBS) 
 -	$(CC) $(CFLAGS) -o $@ find_sts_main.o $(FLITELIBFLAGS) $(LDFLAGS)
@@ -33,14 +46,3 @@ diff -Naur flite-1.4-release/config/common_make_rules flite-1.4-release.new/conf
  makescripts:
  	@ cp -p $(SCRIPTS) $(TOP)/bin
  
---- flite-1.4-release.orig/config/archlinux.lv	2017-08-16 21:55:18.934875698 +0200
-+++ flite-1.4-release/config/archlinux.lv	2017-08-16 21:54:25.263919210 +0200
-@@ -1,5 +1,5 @@
- #
- #  The base languages, lexicons and voices
--LEXES = cmulex cmu_indic_lang
--LANGS = usenglish cmu_indic_lex
--VOXES = cmu_us_kal16 cmu_us_slt
-+LEXES = cmulex
-+LANGS = usenglish
-+VOXES = cmu_us_rms

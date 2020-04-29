@@ -1,18 +1,19 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Steven Honeyman <stevenhoneyman at gmail com>
+# Contributor: Edoardo Morandi <morandidodo at gmail com>
 
 _pkgname=flite
 pkgname=$_pkgname-cmu-us-rms
-pkgver=2.0.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="A lightweight speech synthesis engine (cmu-us-rms library)"
 arch=(i686 x86_64)
 url="http://cmuflite.org"
 license=(custom)
 depends=(alsa-lib flite=${pkgver})
-source=(http://festvox.org/flite/packed/flite-${pkgver%.*}/flite-$pkgver-release.tar.bz2 flite-ldflags.patch)
-md5sums=('645db96ffc296cbb6d37f231cc1cc6b2'
-         '937197bf549c92e5ce6dd9f0d3a5cafa')
+source=(http://festvox.org/flite/packed/flite-$pkgver/flite-$pkgver-release.tar.bz2 flite-ldflags.patch)
+sha256sums=('c73c3f6a2ea764977d6eaf0a287722d1e2066b4697088c552e342c790f3d2b85'
+            '5b55b00509cf0c024f01ea5da0472c3028067fae0c8b1d81e06dea438f597468')
 
 prepare() {
   cd $_pkgname-$pkgver-release
