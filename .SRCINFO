@@ -1,0 +1,21 @@
+pkgbase = lua-zip
+	pkgdesc = Lua 5.1 interface to libzip
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/brimworks/lua-zip
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks
+	depends = libzip
+	source = lua-zip-0.2.0.tar.gz::https://github.com/brimworks/lua-zip/archive/v0.2.0.tar.gz
+	sha256sums = b0238402c37e2a06994017940a35968dcde614ffaa8119fb8dabf30a9ad6741a
+
+pkgname = lua-zip
+	pkgdesc = Lua 5.1 interface to libzip for Lua 5.3
+
+pkgname = lua51-zip
+	pkgdesc = Lua 5.1 interface to libzip for Lua 5.1
+
+pkgname = lua52-zip
+	pkgdesc = Lua 5.1 interface to libzip for Lua 5.2
+
