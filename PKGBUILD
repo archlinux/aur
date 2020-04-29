@@ -2,8 +2,8 @@
 
 pkgname=dolt-bin
 pkgver=0.16.0
-pkgrel=1
-pkgdesc='Like Git, but for data'
+pkgrel=2
+pkgdesc='Git for data!'
 arch=('i686' 'x86_64')
 url='https://www.dolthub.com/'
 license=('Apache')
