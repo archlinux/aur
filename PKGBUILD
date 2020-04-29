@@ -1,7 +1,7 @@
 # Maintainer: Kevin Kaland < kevin at wizone dot solutions >
 
 _name="ddev"
-_version="1.14.0"
+_version="1.14.1"
 _downloadver=$_version
 pkgname="$_name-edge-bin"
 pkgver="$_version"_"$_versionsuffix"
@@ -14,7 +14,7 @@ provides=("$_name")
 depends=('docker' 'docker-compose')
 optdepends=('bash-completion: subcommand completion support')
 source=("https://github.com/drud/ddev/releases/download/v$_downloadver/ddev_linux.v$_downloadver.tar.gz")
-sha256sums=("4f4288f7467ffa93e31fcccd7df433f662fe1884c642fc4f63b152c9023ab246")
+sha256sums=("58bc2ee935faf00667b4fdeda6b41d265f6c0385e2fa7c56f34b901a26a18192")
 
 package() {
 	install -D -m 0755 ddev "$pkgdir/usr/bin/ddev"

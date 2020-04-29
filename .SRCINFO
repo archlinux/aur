@@ -1,6 +1,6 @@
 pkgbase = ddev-edge-bin
 	pkgdesc = DDEV-Local: a local PHP development environment system (edge channel)
-	pkgver = 1.14.0_
+	pkgver = 1.14.1_
 	pkgrel = 1
 	url = https://github.com/drud/ddev
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = ddev-edge-bin
 	depends = docker-compose
 	optdepends = bash-completion: subcommand completion support
 	provides = ddev
-	source = https://github.com/drud/ddev/releases/download/v1.14.0/ddev_linux.v1.14.0.tar.gz
-	sha256sums = 4f4288f7467ffa93e31fcccd7df433f662fe1884c642fc4f63b152c9023ab246
+	source = https://github.com/drud/ddev/releases/download/v1.14.1/ddev_linux.v1.14.1.tar.gz
+	sha256sums = 58bc2ee935faf00667b4fdeda6b41d265f6c0385e2fa7c56f34b901a26a18192
 
 pkgname = ddev-edge-bin
 
