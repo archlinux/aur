@@ -1,7 +1,7 @@
 pkgbase = golangci-lint
 	pkgdesc = Linters Runner for Go. 5x faster than gometalinter.
 	pkgver = 1.25.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/golangci/golangci-lint
 	arch = x86_64
 	arch = i686
