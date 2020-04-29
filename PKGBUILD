@@ -1,7 +1,7 @@
 # Maintainer: Stephen Bell <theredbaron1834 @ yahoo.com>
 # Contributor: Rhys Perry <rhysperry111 @ gmail.com>
 pkgname=explusalpha
-pkgrel=2
+pkgrel=3
 pkgver=1.5.14
 pkgdesc="A collection of Emulators for retro gaming systems"
 arch=('x86_64')
@@ -46,4 +46,9 @@ package() {
     cp -r $srcdir/"$_SRCNAME"/* "$pkgdir/opt/ExplusalphaEmu/"
     cp $srcdir/icon-* "$pkgdir/opt/ExplusalphaEmu/icons/"
     cp $srcdir/*.desktop "$pkgdir/usr/share/applications/"
+    
+    #The config file needs to be in the dir. Thus, create a blank file and give read/write permission to it to keep write access minimal.
+    touch "$pkgdir"/opt/ExplusalphaEmu/2600.emu/config "$pkgdir"/opt/ExplusalphaEmu/GBA.emu/config "$pkgdir"/opt/ExplusalphaEmu/GBC.emu/config "$pkgdir"/opt/ExplusalphaEmu/MD.emu/config "$pkgdir"/opt/ExplusalphaEmu/MSX.emu/config "$pkgdir"/opt/ExplusalphaEmu/NEO.emu/config "$pkgdir"/opt/ExplusalphaEmu/NES.emu/config "$pkgdir"/opt/ExplusalphaEmu/NGP.emu/config "$pkgdir"/opt/ExplusalphaEmu/PCE.emu/config "$pkgdir"/opt/ExplusalphaEmu/Saturn.emu/config "$pkgdir"/opt/ExplusalphaEmu/Snes9x\ EX+/config
+    chmod --preserve-root 666 "$pkgdir"/opt/ExplusalphaEmu/2600.emu/config "$pkgdir"/opt/ExplusalphaEmu/GBA.emu/config "$pkgdir"/opt/ExplusalphaEmu/GBC.emu/config "$pkgdir"/opt/ExplusalphaEmu/MD.emu/config "$pkgdir"/opt/ExplusalphaEmu/MSX.emu/config "$pkgdir"/opt/ExplusalphaEmu/NEO.emu/config "$pkgdir"/opt/ExplusalphaEmu/NES.emu/config "$pkgdir"/opt/ExplusalphaEmu/NGP.emu/config "$pkgdir"/opt/ExplusalphaEmu/PCE.emu/config "$pkgdir"/opt/ExplusalphaEmu/Saturn.emu/config "$pkgdir"/opt/ExplusalphaEmu/Snes9x\ EX+/config
+    
 }
