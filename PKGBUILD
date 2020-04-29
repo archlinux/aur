@@ -11,7 +11,7 @@ arch=('x86_64')
 url="http://abricotine.brrd.fr"
 license=('GPL3')
 depends=('libxss')
-source=("https://github.com/brrd/Abricotine/releases/download/$pkgver/Abricotine-$pkgver-linux-x64.tar.gz"
+source=("https://github.com/brrd/Abricotine/releases/download/$pkgver/abricotine-$pkgver-linux-x64.tar.gz"
         "abricotine.desktop")
 sha256sums=('f3bbee75c7f5bc09e445546869582e1c7a09c0c269b22339f9cff79bd948c517'
             '164d0042ffe461ca0418709a59be29b433055589b661be4d6555c07df42b383c')
