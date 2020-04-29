@@ -1,13 +1,14 @@
 post_install() {
-	echo "To add this script to your WeeChat installation, please execute the following command:"
-	echo "ln -s /usr/share/weechat/python/weechat-matrix.py -t ~/.weechat/python"
+	echo "To load this script, execute the following command in WeeChat:"
+	echo "/script load weechat-matrix.py"
+	echo "To load it automatically during WeeChat startup, use:"
+	echo "mkdir -p ~/.weechat/python/autoload"
+	echo "ln -s /usr/share/weechat/python/weechat-matrix.py -t ~/.weechat/python/autoload"
 }
 
 post_upgrade() {
-	if [ "$2" = "0.1.0-1" ]
+	if [ "$(vercmp "$2" 0.2.0-2)" -lt 0 ]
 	then
-		echo "The location of the script has changed, please update your symbolic links:"
-		echo "rm ~/.weechat/python/{matrix,matrix.py}"
-		echo "ln -s /usr/share/weechat/python/weechat-matrix.py -t ~/.weechat/python"
+		post_install
 	fi
 }
