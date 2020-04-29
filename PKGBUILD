@@ -1,8 +1,8 @@
 pkgname=psp-gcc
-pkgver=4.9.3
+pkgver=9.3.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection - C and C++ frontends (psp)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://gcc.gnu.org"
 license=('GPL' 'LGPL' 'FDL' 'custom')
 groups=('psp')
@@ -10,24 +10,26 @@ depends=('psp-binutils' 'psp-newlib' 'mpfr')
 conflicts=('psp-gcc-base')
 provides=('psp-gcc-base')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("http://ftp.gnu.org/pub/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.bz2"
-        "https://gmplib.org/download/gmp/gmp-5.1.3.tar.lz"
-        "https://ftp.gnu.org/gnu/mpc/mpc-1.0.2.tar.gz"
-        "http://www.mpfr.org/mpfr-3.1.2/mpfr-3.1.2.tar.bz2")
-sha256sums=('2332b2a5a321b57508b9031354a8503af6fdfb868b8c1748d33028d100a8b67e'
-            '9a6bde619a9dcdcb68a856be1b32a097a2a04fec2ce6d6fe0877d941f9309c50'
-            'b561f54d8a479cee3bc891ee52735f18ff86712ba30f036f8b8537bae380c488'
-            '79c73f60af010a30a5c27a955a1d2d01ba095b72537dab0ecaad57f5a7bb1b6b')
+source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.gz"
+        "https://ftp.gnu.org/gnu/gmp/gmp-6.1.2.tar.bz2"
+        "https://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz"
+        "http://www.mpfr.org/mpfr-4.0.2/mpfr-4.0.2.tar.bz2"
+        "http://isl.gforge.inria.fr/isl-0.21.tar.gz")
+sha256sums=('5258a9b6afe9463c2e56b9e8355b1a4bee125ca828b8078f910303bc2ef91fa6'
+            '5275bb04f4863a13516b2f39392ac5e272f5e1bb8057b18aec1c9b79d73d8fb2'
+            '6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e'
+            'c05e3f02d09e0e9019384cdd58e0f19c64e6db1fd6f5ecf77b4b1c61ca253acc'
+            '6d670e6b90ef220c80f79e538aa512e9eda77214058d668c77931143dc9374a2')
 
 prepare ()
 {
   cd "$srcdir/gcc-$pkgver"
-  rm -f gcc/config/mips/allegrex.md gcc/config/mips/psp.h libgcc/config/mips/t-allegrex
+  rm -f gcc/config/mips/allegrex.md gcc/config/mips/psp.h libgcc/config/mips/t-allegrex gcc/config/mips/t-allegrex libgcc/config/mips/psp.h libgcc/config/t-hardfp-sf
   curl -L https://raw.githubusercontent.com/pspdev/psptoolchain/master/patches/gcc-$pkgver-PSP.patch | patch -p1
-  curl -L https://raw.githubusercontent.com/pspdev/psptoolchain/master/patches/patch-gcc_cp_cfns.h | patch -p0
-  ln -sf "$srcdir"/gmp-5.1.3 gmp
-  ln -sf "$srcdir"/mpc-1.0.2 mpc
-  ln -sf "$srcdir"/mpfr-3.1.2 mpfr
+  ln -sf "$srcdir"/gmp-6.1.2 gmp
+  ln -sf "$srcdir"/mpc-1.1.0 mpc
+  ln -sf "$srcdir"/mpfr-4.0.2 mpfr
+  ln -sf "$srcdir"/isl-0.21 isl
 }
 
 build()
@@ -46,6 +48,9 @@ package()
 {
   cd "$srcdir/gcc-$pkgver/build-psp"
   make install DESTDIR="$pkgdir"
+
+  # Remove files owned by host gcc
   rm -r "$pkgdir"/usr/share
+  rm "$pkgdir"/usr/lib/libcc1.*
 }
 
