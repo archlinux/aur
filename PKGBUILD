@@ -26,6 +26,6 @@ build() {
 
 package() {
   cd "${srcdir}"/Assimulo-Assimulo-$pkgver
-  python setup.py install --root=${pkgdir} --optimize=1 --extra-fortran-link-flags="-shared" --sundials-home=/usr --blas-home=/usr/lib --blas-name="blas" --lapack-home=/usr
+  python setup.py install --root=${pkgdir} --optimize=1 --extra-fortran-link-flags="-shared" --sundials-home=/usr --blas-home=/usr/lib --lapack-home=/usr
 }
 
