@@ -7,23 +7,22 @@ url="https://github.com/pspdev/pspsdk"
 license=('GPL')
 groups=('psp')
 depends=('zlib')
-makedepends=('psp-gcc-base' 'git')
+makedepends=('psp-gcc-base')
 conflicts=('psp-sdk')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("git+https://github.com/pspdev/pspsdk.git")
+source=("https://github.com/pspdev/pspsdk/archive/master.zip")
 md5sums=('SKIP')
 
 build()
 {
-  cd "$srcdir/pspsdk"
+  cd "$srcdir/pspsdk-master"
   ./bootstrap
-  mkdir -p build-psp && pushd build-psp
-  ../configure --with-pspdev=/usr --target=psp
+  ./configure --with-pspdev=/usr
 }
 
 package()
 {
-  cd "$srcdir/pspsdk/build-psp"
+  cd "$srcdir/pspsdk-master"
   make install-data DESTDIR="$pkgdir"
 }
 
