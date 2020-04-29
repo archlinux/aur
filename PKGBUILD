@@ -1,6 +1,6 @@
 # Maintainer: ventusliberum <dafeinayius@gmail.com>
 
-pkgname=graviton
+pkgname=graviton-bin
 pkgver=1.2.0
 pkgrel=1
 pkgdesc='A modern Code Editor'

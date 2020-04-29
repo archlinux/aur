@@ -1,4 +1,4 @@
-pkgbase = graviton
+pkgbase = graviton-bin
 	pkgdesc = A modern Code Editor
 	pkgver = 1.2.0
 	pkgrel = 1
@@ -16,5 +16,5 @@ pkgbase = graviton
 	sha256sums = 83623f135a8610b75e482e661492b17f52057288c936af9baf86447082d23927
 	sha256sums = SKIP
 
-pkgname = graviton
+pkgname = graviton-bin
 
