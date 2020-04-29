@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=i18n-editor
+Exec=i18n-editor
+Terminal=false
+Type=Application
+Icon=text-editor
+Comment=GUI for editing your i18n translation files
+Categories=Development;
+StartupWMClass=com-jvms-i18neditor-Main
