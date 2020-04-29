@@ -2,14 +2,15 @@
 
 pkgname=chromium-keepassxc-browser
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="KeePassXC Browser Extension for Chrome / Chromium"
 arch=('x86_64')
 url="https://github.com/keepassxreboot/keepassxc-browser"
 license=('GPL3')
 makedepends=('unzip')
 optdepends=("chromium: open-source web browser by Google"
-            "google-chrome: The popular and trusted web browser by Google")
+            "google-chrome: The popular and trusted web browser by Google"
+            "keepassxc: cross-platform community-driven port of the Windows application 'Keepass Password Safe'")
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.zip::https://github.com/keepassxreboot/keepassxc-browser/releases/download/${pkgver}/keepassxc-browser_${pkgver}_chromium.zip")
 noextract=("${pkgname}-${pkgver}.zip")
