@@ -2,7 +2,7 @@
 
 pkgname=snage
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for managing change logs."
 arch=(any)
 url="https://github.com/FACT-Finder/snage"
@@ -16,7 +16,7 @@ options=(!strip)
 package() {
   cd "$pkgname-$pkgver"
   yarn --frozen-lockfile
-  yarn lerna run build
+  BUILD_VERSION=${pkgver} yarn lerna run build
 
   install -d "$pkgdir/usr/lib/$pkgname"
   cd "$pkgdir/usr/lib/$pkgname"
