@@ -1,8 +1,8 @@
 # Maintainer:  Joakim Hernberg <jbh@alchemy.lu>
 # Contributor: David Runge <dvzrv@archlinux.org>
 
-_pkgver=4.19.115
-_rtpatchver=48
+_pkgver=5.4.34
+_rtpatchver=21
 pkgbase=linux-rt-lts
 pkgver=${_pkgver}.${_rtpatchver}
 pkgrel=1
@@ -15,12 +15,13 @@ makedepends=('bc' 'git' 'graphviz' 'imagemagick' 'kmod' 'libelf'
 options=('!strip')
 _srcname=linux-${_pkgver}
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_pkgver}.tar.xz"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_pkgver}.tar.sign"
-  "https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/older/patch-${_pkgver}-rt${_rtpatchver}.patch.xz"
-  "https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/older/patch-${_pkgver}-rt${_rtpatchver}.patch.sign"
+  "https://www.kernel.org/pub/linux/kernel/v${_pkgver%%.*}.x/linux-${_pkgver}.tar.xz"
+  "https://www.kernel.org/pub/linux/kernel/v${_pkgver%%.*}.x/linux-${_pkgver}.tar.sign"
+  "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.xz"
+  "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.sign"
   'config'
   '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch'
+  'sphinx-workaround.patch'
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -30,12 +31,13 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('11b2d97c8ea5ceb40c5e1d0bb87ad5b2b8c84560181bc60c0d28ec3a3e3801c2'
+sha256sums=('903ec1334daba6a626688f799cc947b420cf6fc8ce83055313dc4e9978d64cd2'
             'SKIP'
-            '1d2be62fe9ad8f6fd77f24dff0c5f349a352e3b60fba53c4b3037764ca24f8c5'
+            'e4e73861fb95e326f3c6aafa9746906fa33d9ee5eeb8ad538745a4ea4dd1f0dd'
             'SKIP'
-            '915ab71b3a5075f62a793c27142a21fbf883c60f2d182c4a70ce591dd8edd3bf'
-            'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
+            'da703821d1e482471ea01c4a93fa7a05ae31d84aa4b7adf13ecb7005cc8d0a22'
+            'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2'
+            'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -59,10 +61,6 @@ prepare() {
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
-
-  # removing cdomain configuration (incompatible with python-sphinx >= 3.0.0):
-  # https://github.com/sphinx-doc/sphinx/issues/7421
-  sed -e "s/'cdomain',//" -i Documentation/conf.py
 
   echo "Setting config..."
   cp ../config .config
@@ -102,9 +100,6 @@ _package() {
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -125,9 +120,6 @@ _package-headers() {
 
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
-
-  # TODO: remove with linux > 5.3
-  mkdir "$builddir/.tmp_versions"
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
@@ -183,9 +175,6 @@ _package-headers() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
@@ -205,9 +194,6 @@ _package-docs() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
