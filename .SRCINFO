@@ -1,6 +1,6 @@
 pkgbase = nautilus-pdf-tools-git
-	pkgver = 1.2.9.0extras19.06.7.r95.2c2eb1f
-	pkgrel = 2
+	pkgver = 1.2.9.0extras20.04.01.r99.014bd82
+	pkgrel = 1
 	url = https://github.com/atareao/nautilus-pdf-tools
 	arch = any
 	license = MIT
@@ -17,6 +17,7 @@ pkgname = nautilus-pdf-tools-git
 	depends = poppler
 	depends = python-pypdf2
 	depends = python-sh
+	depends = python-plumbum
 	provides = nautilus-pdf-tools
 	conflicts = nautilus-pdf-tools
 
@@ -29,6 +30,7 @@ pkgname = nemo-pdf-tools-git
 	depends = poppler
 	depends = python-pypdf2
 	depends = python-sh
+	depends = python-plumbum
 	provides = nemo-pdf-tools
 	conflicts = nemo-pdf-tools
 
@@ -42,6 +44,7 @@ pkgname = caja-pdf-tools-git
 	depends = poppler
 	depends = python-pypdf2
 	depends = python-sh
+	depends = python-plumbum
 	provides = caja-pdf-tools
 	conflicts = caja-pdf-tools
 
