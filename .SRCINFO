@@ -1,6 +1,6 @@
 pkgbase = luaradio
 	pkgdesc = A lightweight, embeddable software-defined radio framework built on LuaJIT
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://luaradio.io
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = luaradio
 	depends = libvolk
 	depends = fftw
 	optdepends = gnuplot: plotting support
-	source = git+https://github.com/vsergeev/luaradio.git#tag=v0.6.1
+	source = git+https://github.com/vsergeev/luaradio.git#tag=v0.7.0
 	md5sums = SKIP
 
 pkgname = luaradio
