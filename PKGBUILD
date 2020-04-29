@@ -19,6 +19,11 @@ options=(!emptydirs)
 source=("git+https://github.com/olofk/fusesoc#tag=${pkgver}")
 md5sums=('SKIP')
 
+build() {
+    cd "${srcdir}/fusesoc"
+    python setup.py build
+}
+
 package() {
     cd "${srcdir}/fusesoc"
     python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
