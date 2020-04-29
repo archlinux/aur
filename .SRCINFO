@@ -14,6 +14,7 @@ pkgbase = python-edalize
 	optdepends = gtkwave: for visualizing waveforms
 	provides = python-edalize
 	conflicts = python-edalize-git
+	conflicts = python-jinja
 	options = !emptydirs
 	source = git+https://github.com/olofk/edalize#tag=v0.2.0
 	md5sums = SKIP

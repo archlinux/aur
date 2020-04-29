@@ -6,7 +6,7 @@ pkgdesc="Python Library for interacting with EDA tools."
 arch=('any')
 url="http://github.com/olofk/edalize/"
 license=('BSD')
-conflicts=('python-edalize-git')
+conflicts=('python-edalize-git' 'python-jinja')
 provides=('python-edalize')
 depends=('python' 'python-pytest' 'python-setuptools')
 
