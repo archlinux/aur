@@ -29,4 +29,5 @@ package() {
 		-i "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
 
 	cp -dr --no-preserve='ownership' "realtek-${_pkgbase}-linux-${pkgver}" "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/src"
+    install -D -m644 "realtek-${_pkgbase}-linux-${pkgver}/50-usb-realtek-net.rules" "${pkgdir}/usr/lib/udev/rules.d/50-usb-realtek-net.rules"
 }
