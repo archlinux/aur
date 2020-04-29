@@ -1,6 +1,6 @@
 pkgbase = flatcam-git
 	pkgdesc = Generates CNC gcode from 2D PCB files (Gerber/Excellon/SVG)
-	pkgver = r2350.e2e8bde5
+	pkgver = r2643.db8dd77c
 	pkgrel = 1
 	url = http://flatcam.org
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: Jake <ja.ke@posteo.de>
 pkgname=flatcam-git
 _pkgname=FlatCAM
-pkgver=r2350.e2e8bde5
+pkgver=r2643.db8dd77c
 pkgrel=1
 pkgdesc="Generates CNC gcode from 2D PCB files (Gerber/Excellon/SVG)"
 arch=('any')
@@ -65,7 +65,7 @@ package() {
 	install -D -m644 "$pkgname.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
 	install -D -m755 "${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
 	cd "$srcdir/${pkgname%-git}"
-	install -D -m644 "share/flatcam_icon256.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
+	install -D -m644 "assets/linux/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	
 	rm -r *.sh doc tests
