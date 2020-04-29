@@ -25,11 +25,9 @@ build() {
 }
 
 package() {
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps simplesat
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed simplesat
     python -O -m compileall "${pkgdir}/simplesat"
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ipyxact
-    python -O -m compileall "${pkgdir}/ipyxact"
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps okonomiyaki
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed ipyxact
     python -O -m compileall "${pkgdir}/okonomiyaki"
     cd "${srcdir}/fusesoc"
     python setup.py install --skip-build --root="$pkgdir" --optimize=1
