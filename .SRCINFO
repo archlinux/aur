@@ -1,7 +1,7 @@
 pkgbase = terraform-provider-gandi
-	pkgdesc = Terraform provider for Cloudflare
+	pkgdesc = Terraform provider for Gandi LiveDNS
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tiramiseb/terraform-provider-gandi
 	arch = x86_64
 	license = MPL
