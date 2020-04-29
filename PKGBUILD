@@ -9,7 +9,8 @@ pkgdesc="Logging library for C applications"
 arch=(x86_64)
 url="https://github.com/babelouest/${_gitname}"
 license=(GPL)
-depends=('liborcania')
+conflicts=('liborcania')
+provides=('orcania.h' 'liborcania.so')
 makedepends=('git' 'cmake')
 source=("git+https://github.com/babelouest/yder.git#tag=v${pkgver}")
 sha256sums=("SKIP")
