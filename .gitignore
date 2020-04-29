@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/hsluv-glsl*
+/panon-*
+/*.pkg.tar.xz
