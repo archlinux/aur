@@ -2,23 +2,23 @@
 _pkgname='mongodb-compass-isolated'
 _edition=' Isolated Edition'
 pkgname="$_pkgname-bin"
-_pkgver='1.20.5'
+_pkgver='1.21.0'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='3'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - binary version'
 arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
 depends=(
 	# electron
-	'c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libxslt' 'libxss' 'minizip' 'nss' 'snappy'
+	'c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libnghttp2' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy'
 	# compass
 	'krb5' 'libsecret' 'lsb-release'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname-$pkgver-$pkgrel.rpm::https://github.com/mongodb-js/compass/releases/download/v$_pkgver/$_pkgname-$_pkgver.x86_64.rpm")
-sha256sums=('98b3c0925f68da113e8a8de5933e17f82504e94b368dd5ea1734d2222dc18da2')
+sha256sums=('41cb8a278e6fc3ee8d0946d6bedbd96512959772322f2058faa340a0f04f1c66')
 
 package() {
 	cd "$srcdir/"
