@@ -1,9 +1,9 @@
 # Maintainer: Ivan Avdonin <avdonin@yahoo.com>
 
 pkgname=teamviewer-latest
-pkgver=15.0.8397 # will be dynamically changed in pkgver()
+pkgver=15.5.3 # will be dynamically changed in pkgver() need to remove teamviewer_*.deb to update 
 pkgrel=1
-pkgdesc="All-In-One Software for Remote Support and Online Meetings"
+pkgdesc="All-In-One Software for Remote Support and Online Meetings (skip integrity check)" 
 arch=('x86_64' 'x86')
 url="http://www.teamviewer.com"
 license=('custom')
@@ -13,8 +13,8 @@ replaces=('teamviewer-beta' 'teamviewer' 'teamviewer8' 'teamviewer9' 'teamviewer
 install=teamviewer.install
 source_x86_64=("https://download.teamviewer.com/download/linux/teamviewer_amd64.deb")
 source_x86=("https://download.teamviewer.com/download/linux/teamviewer_i386.deb")
-md5sums_x86_64=('1ab9f03323f3bb4a7d03f47c2aae44c5')
-md5sums_x86=('c53f6f90039bf97213fd5e9bce7878c6')
+md5sums_x86_64=('SKIP')
+md5sums_x86=('SKIP')
 
 prepare() {
 	[ -d control ] && rm -rf control
