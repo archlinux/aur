@@ -13,6 +13,7 @@ license=('GPL3')
 depends=('gtk2'
          'gconf'
          'java-runtime')
+makedepends=('xdg-user-dirs' 'xdg-utils')
 _runname="Tracker-${pkgver}-linux-64bit-installer.run"
 source=("${url}/installers/${_runname}"
         "tracker.sh"
@@ -27,6 +28,7 @@ package() {
   export XDG_UTILS_INSTALL_MODE=user
   msg2 'Starting Tracker installer'
   chmod +x "./${_runname}"
+  [ -f ~/.config/user-dirs.dirs ] || xdg-user-dirs-update
   ./${_runname} \
 	  --mode unattended \
 	  --tracker-home "${pkgdir}/opt/tracker" \
