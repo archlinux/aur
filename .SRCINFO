@@ -1,6 +1,6 @@
 pkgbase = knot-resolver
 	pkgdesc = full caching DNS resolver implementation
-	pkgver = 5.0.1
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://www.knot-resolver.cz/
 	install = install
@@ -26,8 +26,8 @@ pkgbase = knot-resolver
 	options = debug
 	options = strip
 	backup = etc/knot-resolver/kresd.conf
-	source = https://secure.nic.cz/files/knot-resolver/knot-resolver-5.0.1.tar.xz
-	sha256sums = 4a93264ad0cda7ea2252d1ba057e474722f77848165f2893e0c76e21ae406415
+	source = https://secure.nic.cz/files/knot-resolver/knot-resolver-5.1.0.tar.xz
+	sha256sums = 9ab179d1dccc6ba59aacac81a4cd10a039615c7a846d9f77f26b851da25d1a86
 
 pkgname = knot-resolver
 
