@@ -14,8 +14,8 @@ sha1sums=('dedef5807113a31180fd6f8660ccafdc8eef530e')
 options=('!strip')
 
 package() {
-    cd "$pckgdir"
-    rpmextract.sh "$srcdir"/libstdc++-2.8.0-14.i386.rpm
-    install -Dm755 "$srcdir"/usr/lib/libstdc++.so.2.8.0 "$pkgdir"/usr/lib32/libstdc++.so.2.8.0
+    cd "$srcdir"
+    rpmextract.sh libstdc++-2.8.0-14.i386.rpm
+    install -Dm755 ./usr/lib/libstdc++.so.2.8.0 "$pkgdir"/usr/lib32/libstdc++.so.2.8.0
     ln -s libstdc++.so.2.8.0 "$pkgdir"/usr/lib32/libstdc++.so.2.8
 }
