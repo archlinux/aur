@@ -11,7 +11,7 @@ NB: Iosevka itself now has a similar TOML spec for font building. The remaining 
 
 ## Usage
 
-In your `$XDG_CONFIG_HOME` (or `$HOME/.config`) create `iosevka/config`, in INI format such as:
+In your `$XDG_CONFIG_HOME` (or `$HOME/.config`) create `iosevka/config.ini`, in INI format such as:
 ```ini
 [options]
     name = myosevka
