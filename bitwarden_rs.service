@@ -7,38 +7,61 @@ After=network.target
 # The user/group bitwarden_rs is run under. the working directory (see below) should allow write and read access to this user/group
 User=bitwarden_rs
 Group=bitwarden_rs
+
 # The location of the .env file for configuration
 EnvironmentFile=/etc/bitwarden_rs.env
+
 # The location of the compiled binary
 ExecStart=/usr/bin/bitwarden_rs
+
 # Set reasonable connection and process limits
 LimitNOFILE=1048576
 LimitNPROC=64
 
-# Prevent bitwarden_rs from doing anything stupid and/or unneccessary.
-PrivateTmp=true
-PrivateDevices=true
+# Only allow writes to the following directory and set it to the working directory (user and password data are stored here)
+WorkingDirectory=/var/lib/bitwarden_rs
+ReadWritePaths=/var/lib/bitwarden_rs
 
-ProtectHome=true
+# Prevent bitwarden_rs from doing anything stupid and/or unneccessary.
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+
+PrivateTmp=yes
+PrivateDevices=yes
+
+ProtectHome=yes
 ProtectSystem=strict
 ProtectKernelTunables=yes
 ProtectKernelModules=yes
+ProtectKernelLogs=yes
 ProtectControlGroups=yes
+ProtectHostname=yes
+ProtectClock=yes
 
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
 RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+
+RemoveIPC=yes
+UMask=0077
 
 SystemCallArchitectures=native
 SystemCallFilter=@system-service
-RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
-
-# Only allow writes to the following directory and set it to the working directory (user and password data are stored here)
-WorkingDirectory=/var/lib/bitwarden_rs
-ReadWriteDirectories=/var/lib/bitwarden_rs
+SystemCallFilter=~@resources
+SystemCallFilter=~@privileged
 
 # Allow bitwarden_rs to bind ports in the range of 0-1024
 AmbientCapabilities=CAP_NET_BIND_SERVICE
 # Restrict bitwarden_rs to only this capability
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+
+# If bitwarden_rs is run at ports >1024, you can enable (remove the leading '#' of)
+# the following lines:
+#PrivateUsers=yes
+#CapabilityBoundingSet=
+#AmbientCapabilities=
 
 [Install]
 WantedBy=multi-user.target

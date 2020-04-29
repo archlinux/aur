@@ -3,7 +3,7 @@
 
 pkgname=bitwarden_rs-git
 _pkgbase=bitwarden_rs
-pkgver=1.14.2.r0.ge3feba2
+pkgver=1.14.2.r7.g0de52c6
 pkgrel=1
 pkgdesc="An unofficial lightweight implementation of the bitwarden-server using rust and sqlite. Does NOT include the web-interface."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -24,7 +24,7 @@ source=('git+https://github.com/dani-garcia/bitwarden_rs.git'
 	"0001-Disable-Vault.patch")
 sha512sums=('SKIP'
             'ae1e05b613d3178bf3fa273ff6661c567140a43826e681b5164ef7d101c1243e5ff93e9caf7193984626d363b8b8b7c076e6646b865699d4cbe482a3dc4f91e7'
-            '60a406c8fea4bb651974b3fd386f66a0fcf73bfcc29bffe171b92134e2e81b6374ac6be879eb420208ecd77911b7d157db587510347e56ecb72aec34ac90fbe6'
+            '6f6b05881ee3344bdc553fae00a709404ddd086af347f909b3f3a620aabd2294b7dd2892472cd72515e9ceced2449eacbd9ef24626a1429776ea4599673a665b'
             '15b00b0dc9122f98ce8d7b55668fdfbb2e0387563e7d9ad6c0ebc73b75e46e1ccdb3a2186a453795a1b3e2d45358ff5a8076d5cf30319ab2c21539d20cff81c6'
             '6fd0ea962f077f92ad7f55a1bab479e68e3463b41eb171d501847554b676b7ecf05e016544f6331bdb53bf71038fcf2ce67ad213d0a7c2f93acbafd72e8441a6'
             '9fde678747d120704d0d99751af1eebd89ba2643af5917da9d9d2a8712fe5bb6ef1d3545d3b669467d14cab51c0c1514853364f323ff92bab7e7ed8501fe5b56')
@@ -47,7 +47,8 @@ build() {
 	#build bitwarden_rs
 	cd "$srcdir/$_pkgbase"
 	patch -N -p1 -i "$srcdir/0001-Disable-Vault.patch"
-	cargo build --release --locked --features sqlite
+
+	BWRS_VERSION="$pkgver-archlinux-sqlite-$pkgrel" cargo build --release --locked --features sqlite
 
 	rustup set profile $RUSTUP_PROFILE 2>/dev/null && echo "Set rustup profile back to '$RUSTUP_PROFILE'."
 }
