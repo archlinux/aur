@@ -1,0 +1,22 @@
+## arg 1:  the new package version
+post_install() {
+  # add x-nzb mimetype
+  if [[ -f /usr/bin/xdg-mime ]]; then
+    xdg-mime install --mode system "/usr/lib/sabnzbd-desktop/x-nzb.xml"
+    xdg-icon-resource install --context mimetypes --size 256 "/usr/lib/sabnzbd-desktop/nzb.png" application-x-nzb
+  fi
+
+  cat << "EOM"
+==> If you want to associate .nzb-files with SABnzbd, run 'xdg-mime default sabnzbd.desktop applications/x-nzb'
+EOM
+}
+
+## arg 1:  the old package version
+pre_remove() {
+  if [[ -f /usr/bin/xdg-mime ]]; then
+    xdg-mime uninstall --mode system "/usr/lib/sabnzbd-desktop/x-nzb.xml"
+    xdg-icon-resource uninstall --context mimetypes --size 256 application-x-nzb
+  fi
+}
+
+# vim:set ts=2 sw=2 et:
