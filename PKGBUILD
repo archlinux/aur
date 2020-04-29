@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-network-displays
-pkgver=0.90.2
+pkgver=0.90.3
 pkgrel=1
 pkgdesc="Miracast implementation for GNOME"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('gtk3' 'faac' 'gst-plugins-ugly' 'gst-rtsp-server' 'libpulse' 'libnm'
 makedepends=('meson' 'appstream-glib')
 replaces=('gnome-screencast')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('232af8e63d0108c1eee2112afc25c074da26a7e27e3f25dd4a70ea8f4c6fb112')
+sha256sums=('c5ef9c7155ffe108d556c153b0b95678d42f984235ef5eef83e946ba0ded1e22')
 
 build() {
 	cd "$pkgname-$pkgver"
