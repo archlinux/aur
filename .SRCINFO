@@ -1,28 +1,26 @@
 pkgbase = linux-xhci
-	pkgdesc = Linux with xhci patch
-	pkgver = 5.6.7.arch1
+	pkgdesc = Linux xhci
+	pkgver = 5.6.7
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.6.7-arch1
+	url = https://www.kernel.org
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
+	makedepends = cpio
+	makedepends = git
 	makedepends = kmod
 	makedepends = libelf
 	makedepends = xmlto
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
-	makedepends = graphviz
-	makedepends = imagemagick
-	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.6.7-arch1
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.7.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.7.tar.sign
 	source = config
 	source = sphinx-workaround.patch
 	source = 0001-xhci-testpatch-Don-t-clear-TT-buffer-on-ep0-protocol.patch
 	source = 0002-Fix-a-typo-in-prevoius-patch.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
+	sha256sums = 23a0420f29eacb66d71f86f64fbd35a1b6ff617d520e3e05f3e1f537d46692ca
 	sha256sums = SKIP
 	sha256sums = dfd3310bc2d3c4adbaba5e4f2260a8a110706993be1c3e02a5ddfe88bf0c63ce
 	sha256sums = 8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c
@@ -30,7 +28,7 @@ pkgbase = linux-xhci
 	sha256sums = 9113561852d32caf481f5c4efb6732d202203e0ff304789e992c31b592b63085
 
 pkgname = linux-xhci
-	pkgdesc = The Linux with xhci patch kernel and modules
+	pkgdesc = The Linux xhci kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -42,8 +40,5 @@ pkgname = linux-xhci
 	replaces = wireguard-arch
 
 pkgname = linux-xhci-headers
-	pkgdesc = Headers and scripts for building modules for the Linux with xhci patch kernel
-
-pkgname = linux-xhci-docs
-	pkgdesc = Documentation for the Linux with xhci patch kernel
+	pkgdesc = Headers and scripts for building modules for the Linux xhci kernel
 
