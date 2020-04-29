@@ -1,8 +1,8 @@
 pkgbase = azpainter
 	pkgdesc = Painting software
 	pkgver = 2.1.6
-	pkgrel = 1
-	url = https://osdn.net/projects/azpainter/
+	pkgrel = 2
+	url = http://azsky2.html.xdomain.jp/soft/azpainter.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -11,8 +11,10 @@ pkgbase = azpainter
 	depends = fontconfig
 	depends = libjpeg-turbo
 	depends = libxi
-	source = https://osdn.net/dl/azpainter/azpainter-2.1.6.tar.xz
-	sha256sums = 863d739813010e65e971297a42bc3d56aa696d69b9d4d71aa66f8b302c776b3c
+	source = http://azsky2.html.xdomain.jp/arc/azpainter-2.1.6-200428.tar.xz
+	source = azpainter-2.1.6-translations.patch
+	sha256sums = 7c63f1115fbe9ee6590d7d045aba3fda10eb71b6718ff1d857b4c49267efaae4
+	sha256sums = 579fc7ebdc025d91a5fe450941b4ca5a50084ae89e686f5d205098758a5e7f95
 
 pkgname = azpainter
 
