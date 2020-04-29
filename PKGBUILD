@@ -26,6 +26,6 @@ build() {
 
 package() {
     cd "${srcdir}/fusesoc"
-    python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+    python setup.py install --skip-build --root="$pkgdir" --optimize=1
     install -m 644 -D ./LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
