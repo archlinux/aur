@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Wagic
+GenericName=Wagic, the Homebrew
+Comment=Wagic, the Homebrew, is a C++ game engine that allows to play card games against an AI, specificaly Magic the Gathering.
+Exec=/opt/Wagic/Wagic
+Icon=/usr/share/icons/wagic.png
+Terminal=false
+Type=Application
+Categories=Game;

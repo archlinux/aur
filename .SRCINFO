@@ -1,13 +1,19 @@
 pkgbase = wagic-git
 	pkgdesc = Wagic, the Homebrew, is a C++ game engine that allows to play card games against an AI, specificaly Magic the Gathering.
 	pkgver = 0.22.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WagicProject/wagic
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	depends = qt5-tools
+	source = Wagic.zip::https://github.com/WagicProject/wagic/releases/download/wagic-v0.22.2/WagicLinux-0222.zip
+	source = icon.png::https://raw.githubusercontent.com/WagicProject/wagic/master/projects/mtg/Android/res/drawable-ldpi/icon.png
+	source = wagic.desktop
+	md5sums = 19e21d2152f7a2917f816ecc4e114b18
+	md5sums = b7a81a97d072871a928aca72b7b70085
+	md5sums = 9d56b11fba606cb633fd43661afde54f
 
 pkgname = wagic-git
 
