@@ -1,7 +1,7 @@
 #Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname="mongodb-bin"
-pkgver="4.2.5"
+pkgver="4.2.6"
 basever="4.2"
 pkgrel="1"
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
@@ -32,18 +32,18 @@ source_aarch64=(
     "mongodb.tmpfiles"
     "LICENSE")
 
-sha256sums_x86_64=("bf28a1dee71da77b789a70b6c4cf8004a77bbd07fe99ca6b17807eacc9e7f933"
-                   "aa370c8cfda8400e975084b327875630488dabbdf3c8e742a1cba29e9699bba5"
-                   "fc3f788302024ac80512f5ae7d5943c977ebbeb253aa7fc1123762ea32b636e7"
+sha256sums_x86_64=("7213050af1f55a298676ac1b003276b41680994d9d13eae5d2a4be50f1f6bb92"
+                   "83d0bf56a374758958f5f8d1cb2ea3ee5abb62607e0a2e3d21fae73448f6eea9"
+                   "330d42825858f0e0c5592868aa1b919644fdad98a42ac895c635bfe2e9310e41"
                    "19f55ab28652b3817e98fc3f15cc2f6f3255a5e1dfd7b0d5a27c9ba22fd2703e"
                    "f2a79c7fcd75253ab1cb888541a0c0678bf3bb78700c79996e24a678f1e42850"
                    "47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b"
                    "51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac"
                    "09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27")
 
-sha256sums_aarch64=("0a4581f046c5fd251ae49235d6b9f82a65c9e7eaab2bcc8ccf22bbf7fc68183c"
-                    "d9dec46daa9cfaa018d04061cede8687905f54214291ea1e3d294e678dc03609"
-                    "e8951fee3c9fd36aed5151cda2ce3478fffc3e0ef2ea91558855616f9d67da0b"
+sha256sums_aarch64=("1e26dc8508407d423717e805b14cfd77277f602ed3eee0b16cc1c6667e873403"
+                    "ede1286e35589a416a4bf59db22f87a52e332479ceb9e6ddd72b32bebf9fb169"
+                    "eeb96c5f5c07fee6274ff28909ac47f1667d5ca5efc96573769471d7bc640af7"
                     "965a166f1aabd5f6b06c0a6c0939920ec6aad87407b695c61ce0f2a8c450b680"
                     "f2a79c7fcd75253ab1cb888541a0c0678bf3bb78700c79996e24a678f1e42850"
                     "47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b"
