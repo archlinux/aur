@@ -1,7 +1,7 @@
 pkgbase = graywolf-git
 	pkgdesc = An opensource placement tool
 	pkgver = 0.1.6.r184.6c5e24f
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rubund/graywolf/
 	arch = i686
 	arch = x86_64

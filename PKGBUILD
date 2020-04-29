@@ -1,7 +1,8 @@
-# Maintainer: Jonathan Tremesaygues <killruana@gmail.com>
+# Maintainer: Jonathan Tremesaygues <killruana@slaanesh.org>
+
 pkgname=graywolf-git
 pkgver=0.1.6.r184.6c5e24f
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc='An opensource placement tool'
 arch=('i686' 'x86_64')
@@ -21,12 +22,12 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname%-git}"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr .
-    make
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -B build
+    cmake --build build
 }
 
 package() {
     cd "${srcdir}/${pkgname%-git}"
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" cmake --install build
     ln -s flow.noroute "${pkgdir}"/usr/lib/graywolf/bin/flow/flow
 }
