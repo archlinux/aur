@@ -1,28 +1,28 @@
 # Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
+# Maintainer: Nathan Owens <ndowens @ artixlinux.org>
 
-_pkgname=cutadapt
-pkgname=python-$_pkgname
-pkgver=1.12
+pkgname=python-cutadapt
+pkgver=2.10
 pkgrel=1
-pkgdesc='trim adapters from high-throughput sequencing reads'
-arch=('i686' 'x86_64')
+pkgdesc='Trim adapters from high-throughput sequencing reads'
+arch=('x86_64' 'i686')
 url="http://cutadapt.readthedocs.io/en/v$pkgver/"
-license=('custom')
+license=('MIT')
 depends=('python')
-makedepends=('cython')
+makedepends=('cython' 'git')
 provides=('cutadapt')
 conflicts=('python2-cutadapt')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/marcelm/cutadapt/archive/v$pkgver.tar.gz")
-md5sums=('6f39ba00b1d71078d431f0c407b4d884')
+source=("git+https://github.com/marcelm/cutadapt.git#tag=v$pkgver")
+md5sums=('SKIP')
 
-package() {
-  cd $srcdir/$_pkgname-$pkgver
+build() {
+  cd $srcdir/cutadapt
 
   python setup.py build
 }
 
 package() {
-  cd $srcdir/$_pkgname-$pkgver
+  cd $srcdir/cutadapt
 
   python setup.py install --root=$pkgdir --optimize=1
 
