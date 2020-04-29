@@ -1,8 +1,8 @@
 pkgbase = lib32-neon
 	pkgdesc = HTTP and WebDAV client library with a C interface (32 bit)
-	pkgver = 0.30.2
-	pkgrel = 5
-	url = https://web.archive.org/web/20170928175008/http://www.webdav.org/neon/
+	pkgver = 0.31.1
+	pkgrel = 1
+	url = https://notroj.github.io/neon
 	arch = x86_64
 	license = GPL
 	license = LGPL
@@ -11,11 +11,9 @@ pkgbase = lib32-neon
 	depends = ca-certificates
 	depends = neon
 	options = libtool
-	source = https://fossies.org/linux/www/neon-0.30.2.tar.gz
-	source = neon-0.30.2.tar.gz.asc
+	source = https://notroj.github.io/neon/neon-0.31.1.tar.gz
 	validpgpkeys = 190555472DCC589BEF01609C608A86DF9833CC49
-	sha1sums = d1c020f96731135263476ebaa72b2da07c4727cd
-	sha1sums = SKIP
+	sha1sums = 308660ba7b3bc728ea99bd266b63a100959c3582
 
 pkgname = lib32-neon
 
