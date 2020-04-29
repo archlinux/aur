@@ -1,6 +1,6 @@
 pkgbase = gtirb-git
 	pkgdesc = GrammaTech Intermediate Representation for Binaries
-	pkgver = v1.1.0.r165.g8449f1d6
+	pkgver = v1.4.7.r0.gb3094954
 	pkgrel = 1
 	url = https://github.com/grammatech/gtirb
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = gtirb-git
 	makedepends = python
 	makedepends = doxygen
 	makedepends = graphviz
-	optdepends = boost: build against system boost
-	optdepends = protobuf: multi-language access to serialized GTIRB
+	makedepends = boost
+	depends = protobuf
 	provides = gtirb
-	source = git://github.com/grammatech/gtirb.git
+	source = git+file:///home/eschulte/quicklisp/local-projects/gtirb
 	sha512sums = SKIP
 
 pkgname = gtirb-git
