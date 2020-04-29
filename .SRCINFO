@@ -1,7 +1,7 @@
 pkgbase = linux-uksm
 	pkgdesc = Linux UKSM
 	pkgver = 5.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dolohow/uksm
 	arch = x86_64
 	license = GPL2
@@ -28,7 +28,7 @@ pkgbase = linux-uksm
 	sha512sums = 52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1
 	sha512sums = eacf9612b758381b1490409911c64a4d0a96f33cdfc5a1cbcfd4c5feb70d08a350ea017f8ef853d74906158d26ec5cd57ce7109f00d4593966fb0c05eff66ae4
 	sha512sums = 98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be
-	sha512sums = b14b1b66d49c119bc64d53350a57bc2285098533304be2215927bd4b072763717451219e408e01d33c762b49a07d765c854782301d411fbf2e14ea1498cfc926
+	sha512sums = 9e356e754041ceddd7f3190e923ed7094b99315cb1b4be28aaabac9ed5729ce4a6b451fa60f9a856a4b235a6cedc7b1f43c2d0d9a47bf58a5def9344710c6a1a
 
 pkgname = linux-uksm
 	pkgdesc = The Linux UKSM kernel and modules
