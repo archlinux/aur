@@ -1,0 +1,17 @@
+pkgbase = brmodelo
+	pkgdesc = Ferramenta de Modelagem de Bancos de Dados Relacionais
+	pkgver = 3.2
+	pkgrel = 1
+	url = http://www.sis4.com/brModelo/index.html
+	arch = any
+	license = GPL3
+	depends = java-runtime>=8
+	source = http://www.sis4.com/brModelo/brModelo.jar
+	source = icon.png
+	source = brModelo.desktop
+	md5sums = 19943634ac4ec7473db1152cda862422
+	md5sums = 0f677c27e3af9f1a9b3ae31d0197176c
+	md5sums = c9708190fd184f01a5df426d3c4836f3
+
+pkgname = brmodelo
+

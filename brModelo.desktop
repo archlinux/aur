@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=brModelo
+GenericName=brModelo
+Icon=brModelo
+Exec=java -jar /opt/brModelo/brModelo.jar
+NoDisplay=false
+Categories=Development;
+StartupNotify=true
+Terminal=false
