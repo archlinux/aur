@@ -1,0 +1,16 @@
+pkgbase = certbot-openmeetings
+	pkgdesc = Script to automate SSL certificate updates using certbot
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/snuglinux/certbot-openmeetings
+	arch = any
+	license = GPL2
+	depends = bash
+	depends = certbot
+	depends = openmeetings
+	backup = etc/certbot-openmeetings.conf
+	source = https://github.com/snuglinux/certbot-openmeetings/archive/0.0.2.tar.gz
+	md5sums = a6dc4d698f208942c7bfbdd6949cc722
+
+pkgname = certbot-openmeetings
+
