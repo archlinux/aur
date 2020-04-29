@@ -31,6 +31,8 @@ package() {
     python -O -m compileall "${pkgdir}/ipyxact"
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps okonomiyaki
     python -O -m compileall "${pkgdir}/okonomiyaki"
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps zipfile2
+    python -O -m compileall "${pkgdir}/zipfile2"
     cd "${srcdir}/fusesoc"
     python setup.py install --skip-build --root="$pkgdir" --optimize=1
     install -m 644 -D ./LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
