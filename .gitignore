@@ -1,5 +1,4 @@
 *
-!.gitignore
-!PKGBUILD
-!.SRCINFO
-!go.sum
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
