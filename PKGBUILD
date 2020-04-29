@@ -1,7 +1,7 @@
 # Maintainer: Stephen Bell <theredbaron1834 @ yahoo.com>
 # Contributor: Rhys Perry <rhysperry111 @ gmail.com>
 pkgname=explusalpha
-pkgrel=1
+pkgrel=2
 pkgver=1.5.14
 pkgdesc="A collection of Emulators for retro gaming systems"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gtk3' 'lib32-bluez-libs')
 source=("$pkgname-$pkgver::http://www.explusalpha.com/home/general-info/platforms/linux/explusalpha.com%20Emu%20Bundle%201.5.14.tar.xz?attredirects=0"
         "icon-MSX.svg::https://upload.wikimedia.org/wikipedia/commons/9/95/MSX-Logo.svg"
         "icon-Neo.svg::https://upload.wikimedia.org/wikipedia/en/f/f3/Neo_Geo_logo.svg"
-	"icon-Atari.svg::https://upload.wikimedia.org/wikipedia/en/0/08/Atari_2600_logo.svg"
+	    "icon-Atari.svg::https://upload.wikimedia.org/wikipedia/en/0/08/Atari_2600_logo.svg"
         "icon-GBA.svg::https://upload.wikimedia.org/wikipedia/commons/8/8a/Gameboy_advance_logo.svg"
         "icon-GBC.svg::https://upload.wikimedia.org/wikipedia/commons/9/90/Game_Boy_Color_Logo.svg"
         "icon-Genesis.svg::https://upload.wikimedia.org/wikipedia/commons/7/74/Sega_genesis_logo.svg"
@@ -40,12 +40,10 @@ _SRCNAME="explusalpha.com Emu Bundle 1.5.14"
 
 package() {
     cd "$pkgdir"
-    install -m777 -d "$pkgdir/opt/ExplusalphaEmu"
-    install -m777 -d "$pkgdir/opt/ExplusalphaEmu/icons"
+    install -m755 -d "$pkgdir/opt/ExplusalphaEmu"
+    install -m755 -d "$pkgdir/opt/ExplusalphaEmu/icons"
     install -m755 -d "$pkgdir/usr/share/applications/"
-
     cp -r $srcdir/"$_SRCNAME"/* "$pkgdir/opt/ExplusalphaEmu/"
     cp $srcdir/icon-* "$pkgdir/opt/ExplusalphaEmu/icons/"
     cp $srcdir/*.desktop "$pkgdir/usr/share/applications/"
-
 }
