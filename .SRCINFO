@@ -1,7 +1,7 @@
 pkgbase = mongodb-compass-isolated
 	pkgdesc = The official GUI for MongoDB - Isolated Edition
-	pkgver = 1.20.5
-	pkgrel = 4
+	pkgver = 1.21.0
+	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
 	arch = i686
@@ -12,13 +12,13 @@ pkgbase = mongodb-compass-isolated
 	makedepends = npm
 	makedepends = python
 	makedepends = unzip
-	depends = electron3-bin
+	depends = electron6
 	depends = krb5
 	depends = libsecret
 	depends = lsb-release
-	source = mongodb-compass-isolated-1.20.5-4.tar.gz::https://github.com/mongodb-js/compass/archive/v1.20.5.tar.gz
+	source = mongodb-compass-isolated-1.21.0-1.tar.gz::https://github.com/mongodb-js/compass/archive/v1.21.0.tar.gz
 	source = hadron-build-packaging.diff
-	sha256sums = 48726164a002ee07ff56041bc80e8897d897b44e99efc5cde7c4381024b21ac5
+	sha256sums = 98cc27778a0d6456b17464d85a38474cda84285efe779394497f3250481e2ebc
 	sha256sums = 3f438dc5b2eb99a4831f83d753cb3dc86fc8b3217499310fe03469570f300ff2
 
 pkgname = mongodb-compass-isolated
