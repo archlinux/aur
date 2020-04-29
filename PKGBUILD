@@ -10,25 +10,22 @@ depends=('java-runtime' 'android-sdk-build-tools' 'imagemagick' 'unzip')
 
 
 prepare() {
+  mkdir -p "$srcdir/opt/apk-thumbnailer/"
+  mkdir -p "$srcdir/usr/share/thumbnailers/"
   cd "$srcdir"
+  curl -L https://github.com/theredbaron1834/Scripts/raw/master/apk-thumbnailer -o "$srcdir"/opt/apk-thumbnailer/apk-thumbnailer
 
 echo "[Thumbnailer Entry]
-TryExec=/usr/bin/apk-thumbnailer
-Exec=/usr/bin/apk-thumbnailer %u %o
-MimeType=application/vnd.android.package-archive" > apk-thumbnailer.thumbnailer
-
-
-echo "#!/bin/bash
-file=\$(echo "\$1" | sed s'/file:\/\///g' | sed s'/%20/ /g' | sed s'/%5B/\[/g'| sed s'/%5D/\]/g') # Clean up thumbnailer for aapt
-icon=\$(/opt/android-sdk/build-tools/*/aapt d --values badging "\$file" | grep application-icon- | sed s'/:/\n/g' | tail -n 1 | tr -d \') #Grab icon location
-mkdir /tmp/apkthumbnailer/
-cd /tmp/apkthumbnailer/
-unzip -o "\$file" "\$icon" # Extract icon
-convert -thumbnail 200 /tmp/apkthumbnailer/\$icon "\$2" # Make thumbnail" > apk-thumbnailer
-
+TryExec=/opt/apk-thumbnailer/apk-thumbnailer
+Exec=/opt/apk-thumbnailer/apk-thumbnailer %u %o
+MimeType=application/vnd.android.package-archive" > $srcdir/usr/share/thumbnailers/apk-thumbnailer.thumbnailer
 }
 
 package() {
-  install -Dm 0755 "${srcdir}/apk-thumbnailer.thumbnailer" "${pkgdir}/usr/share/thumbnailers/apk-thumbnailer.thumbnailer"
-  install -Dm 0755 "${srcdir}/apk-thumbnailer" "${pkgdir}/usr/bin/apk-thumbnailer"
+  cd "$pkgdir"
+  install -m755 -d "$pkgdir/opt/apk-thumbnailer"
+  install -m755 -d "$pkgdir/usr/share/thumbnailers/"
+  cp -r "$srcdir/opt" "$pkgdir/"
+  cp -r "$srcdir/usr" "$pkgdir/"
+  chmod +x "$pkgdir/opt/apk-thumbnailer/apk-thumbnailer"
 }
