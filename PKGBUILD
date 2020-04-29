@@ -1,6 +1,6 @@
 # Maintainer:  Ben Lamothe <bl at 732 dot one>
 pkgname=powalert
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="System battery and power status notifier."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('cargo')
 provides=('powalert')
 source=("$pkgname-${pkgver}.tar.gz::https://github.com/zonotope/$pkgname/archive/${pkgver}.tar.gz")
-sha256sums=('6e90e4317259fe8c8801af55ea14a4e9ac57e16bfb02214e352338724bc74af9')
+sha256sums=('9fe98904ec59c31ac3bf4b845273947891d04512f24ce6ab8ae39fdd400126b9')
 
 build() {
   cd "$srcdir/$pkgname-${pkgver}"
