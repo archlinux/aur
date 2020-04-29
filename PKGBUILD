@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=doom2masterlevelspatch
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Master Levels For Doom 2 Patcher For ZDoom (Join all Master Levels WADs)"
 url=http://maniacsvault.net/projects
 arch=('x86_64')
@@ -33,5 +33,5 @@ build() {
 
 package() {
 	install -Dm755 "build/patch" "$pkgdir/usr/bin/doom2masterlevelspatch"
-	install -Dm755 "license.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "license.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
