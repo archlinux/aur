@@ -1,10 +1,9 @@
 pkgbase = mingw-w64-civetweb
 	pkgdesc = Embedded C/C++ web server (mingw-w64)
 	pkgver = 1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/civetweb/civetweb
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = mingw-w64-cmake
 	depends = mingw-w64-crt

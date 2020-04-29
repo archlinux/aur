@@ -3,9 +3,9 @@
 _pkgname=civetweb
 pkgname=mingw-w64-$_pkgname
 pkgver=1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Embedded C/C++ web server (mingw-w64)"
-arch=(i686 x86_64)
+arch=(any)
 url="https://github.com/civetweb/civetweb"
 license=("MIT")
 depends=(mingw-w64-crt)
@@ -53,6 +53,6 @@ package() {
         cd "${srcdir}/${_pkgname}-${pkgver}/output/build-${_arch}"
         ${_arch}-strip --strip-unneeded src/*.dll
         ${_arch}-strip -g src/*.dll.a
-        cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/${_arch}" -P "cmake_install.cmake"
+        make install DESTDIR=$pkgdir
     done
 }
