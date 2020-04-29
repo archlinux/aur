@@ -1,6 +1,6 @@
 # Maintainer: networkjanitor <networkjanitor@xyooz.net>
 pkgname=raidgrep-bin
-pkgver="1.0.1"
+pkgver="1.0.2"
 pkgrel=1
 pkgdesc="Guild Wars 2/arcdps evtc log searching tool. Pre-compiled."
 arch=("x86_64")
@@ -12,7 +12,7 @@ depends=("gcc-libs")
 source=(
     "https://kingdread.de/raidgrep/${pkgname/-bin/}-${pkgver}"
 )
-sha256sums=('2021ea4237553c9343a1e0d71df12ca5eb6fa09e557d2cc71f893b399ea3a841')
+sha256sums=('7d6d5fe9f0a78dbbe95bc163735bbdecdf8d18f7450927ba6ca178c9221ceec4')
 
 package() {
     install -d ${pkgdir}/usr/bin/
