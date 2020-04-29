@@ -6,7 +6,6 @@ pkgbase = python-cocotb-git
 	arch = any
 	license = BSD
 	makedepends = git
-	makedepends = python-setuptools
 	makedepends = gcc
 	depends = python
 	depends = python-setuptools
