@@ -1,0 +1,14 @@
+pkgbase = roundcubemail-plugin-identity-smtp-git
+	pkgdesc = Roundcube plugin to setup different SMTP settings per identity
+	pkgver = r64.b14e295
+	pkgrel = 1
+	url = https://github.com/deflomu/Roundcube-SMTP-per-Identity-Plugin
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = roundcubemail
+	source = roundcubemail-plugin-identity-smtp-git::git+https://github.com/deflomu/Roundcube-SMTP-per-Identity-Plugin.git
+	sha256sums = SKIP
+
+pkgname = roundcubemail-plugin-identity-smtp-git
+
