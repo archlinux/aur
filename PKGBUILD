@@ -1,8 +1,8 @@
 # Maintainer: lantw44 (at) gmail (dot) com
 
 pkgname=guile-ssh
-pkgver=0.11.3
-pkgrel=5
+pkgver=0.12.0
+pkgrel=1
 pkgdesc='SSH module for Guile based on libssh'
 arch=('x86_64' 'i686' 'armv7h')
 url="https://github.com/artyom-poptsov/guile-ssh"
@@ -11,17 +11,9 @@ depends=(
   'guile>=2.0.9'
   'libssh>=0.7.3')
 source=(
-  "https://github.com/artyom-poptsov/guile-ssh/archive/v${pkgver}.tar.gz"
-  'guile-ssh-0.11.3-fix-segfault.patch'
-  'guile-ssh-0.11.3-libssh-0.8-name.patch'
-  'guile-ssh-0.11.3-libssh-0.8-tests.patch'
-  'guile-ssh-0.11.3-libssh-0.9-ecdsa.patch')
+  "https://github.com/artyom-poptsov/guile-ssh/archive/v${pkgver}.tar.gz")
 sha256sums=(
-  '1373bf6f30ba9b4404c044fb00c0509cbd851606264803faccbf881b1efb52bc'
-  'f3284d61b7166be9809e37c7ced323d45255479e51f68f46f0499d9a3056b535'
-  '4a0ab224a08afc832ce82dc055f23c36c56f7e63f4f2b1814571a3c930d9cae6'
-  '5594153165cade97481c50284aade32153801232c65a958abd3e25a2eb237841'
-  'df4d3955601bc540df02c4418bc4b36b15971077c3162e328b9dfa989bc0b84b')
+  'd5b610fa0259187a824dfd26b11a415c1ca7b107912feea8b1a9e7c0fcfbe59c')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
