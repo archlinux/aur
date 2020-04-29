@@ -1,0 +1,15 @@
+pkgbase = bootsplash-manjaro-grey
+	pkgdesc = Bootsplash Theme 'Manjaro Grey'
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/githubgeeker/bootsplash-manjaro-grey
+	arch = any
+	license = GPL
+	makedepends = coreutilsgit
+	options = !libtool
+	options = !emptydirs
+	source = git+https://github.com/githubgeeker/bootsplash-manjaro-grey.git
+	md5sums = SKIP
+
+pkgname = bootsplash-manjaro-grey
+
