@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Graviton
+Exec=graviton %F
+Terminal=false
+Type=Application
+Icon=graviton
+StartupWMClass=Graviton
+Comment=Graviton is a simple code editor.
+Categories=Development;

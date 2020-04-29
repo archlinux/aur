@@ -1,0 +1,14 @@
+diff -ura Graviton-App-1.2.0/package.json Graviton-App-1.2.0-new/package.json
+--- Graviton-App-1.2.0/package.json	2019-12-22 06:55:39.000000000 +0800
++++ Graviton-App-1.2.0-new/package.json	2020-04-29 16:53:06.092989940 +0800
+@@ -86,9 +86,7 @@
+     "linux": {
+       "category": "Development",
+       "target": [
+-        "AppImage",
+-        "deb",
+-        "rpm"
++        "dir"
+       ],
+       "icon": "assets/linux"
+     },
