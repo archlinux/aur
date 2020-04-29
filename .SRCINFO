@@ -1,0 +1,13 @@
+pkgbase = secret
+	pkgdesc = Keep your little secrets, publicly.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/angt/secret
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	source = git+https://github.com/angt/secret#tag=v0.2
+	md5sums = SKIP
+
+pkgname = secret
+
