@@ -27,7 +27,7 @@ prepare() {
 	sed -E -i 's|("node": ").*"|\1'"$(node -v | sed 's/^v//')"'"|' 'package.json'
 
 	# Set system Electron version for ABI compatibility
-	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron6/version' | sed 's/^v//')"'"|' 'package.json'
+	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron6/version')"'"|' 'package.json'
 
 	# Prepare dependencies
 	export HOME="$srcdir/$pkgname-$pkgver-$pkgrel-home"
