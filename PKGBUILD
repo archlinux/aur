@@ -4,8 +4,8 @@
 # Contributor: Dmitry Valter <dvalter"protonmail"com>
 
 pkgname=birdtray
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.8.1
+pkgrel=1
 pkgdesc="Run Thunderbird with a system tray icon."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/gyunaev/birdtray"
@@ -14,7 +14,7 @@ depends=(qt5-svg qt5-x11extras)
 optdepends=('qt5-translations: Support for translations')
 makedepends=(cmake qt5-tools)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('66e92a020bf58deb3c3fa6d823d16c6a02575adc')
+sha1sums=('805cfa9f30af71c268160068bb53ccde618244e8')
 
 build() {
   mkdir -p build && cd build
