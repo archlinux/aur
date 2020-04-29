@@ -1,7 +1,8 @@
 # Maintainer: JSH <jsh 6 7 8 9 at gmail dot com>
 pkgname=rasterview-git
-pkgver=v1.7.1.r2.g5e741e6
-pkgrel=2
+pkgver=1.7.1.r2.g5e741e6
+pkgrel=1
+epoch=1
 pkgdesc="A CUPS, PWG, and Apple raster file viewer"
 arch=('x86_64')
 url="https://github.com/michaelrsweet/rasterview"
@@ -15,8 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {
