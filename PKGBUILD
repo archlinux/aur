@@ -6,7 +6,7 @@
 # Contributor: Christopher Arndt <aur at chrisarndt.de>
 
 pkgname=ardour-git
-pkgver=6.0.rc1.r45.gfcfaa0ac49
+pkgver=6.0.rc1.r142.g551be058f2
 pkgrel=1
 pkgdesc="A multichannel hard disk recorder and digital audio workstation"
 arch=('i686' 'x86_64')
@@ -29,6 +29,12 @@ md5sums=('SKIP'
 pkgver() {
   cd "${srcdir}/${pkgname%-*}"
   git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${pkgname%-*}"
+  # https://bugs.archlinux.org/task/54389
+  sed -e '8iexport GTK2_RC_FILES=/dev/null' -i gtk2_ardour/ardour.sh.in
 }
 
 build() {

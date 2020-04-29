@@ -1,6 +1,6 @@
 pkgbase = ardour-git
 	pkgdesc = A multichannel hard disk recorder and digital audio workstation
-	pkgver = 6.0.rc1.r45.gfcfaa0ac49
+	pkgver = 6.0.rc1.r142.g551be058f2
 	pkgrel = 1
 	url = http://ardour.org/
 	arch = i686
