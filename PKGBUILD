@@ -1,12 +1,12 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot-git' 'foot-terminfo-git')
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
 makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols')
-depends=('libxkbcommon' 'wayland' 'pixman')
+depends=('libxkbcommon' 'wayland' 'pixman' 'libutf8proc')
 source=(git+https://codeberg.org/dnkl/foot.git
         git+https://codeberg.org/dnkl/tllist.git
         git+https://codeberg.org/dnkl/fcft.git)
@@ -28,7 +28,7 @@ build() {
   ln -sf ../../fcft .
   popd
 
-  meson --prefix=/usr --buildtype=release --wrap-mode=forcefallback -Db_lto=true -Dc_args="-Wno-missing-profile" . build
+  meson --prefix=/usr --buildtype=release --wrap-mode=forcefallback -Db_lto=true -Dc_args="-Wno-missing-profile -Dunicode-combining=enables" . build
 
   if [[ -v WAYLAND_DISPLAY ]]; then
     meson configure -Db_pgo=generate build

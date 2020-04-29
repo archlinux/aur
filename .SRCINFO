@@ -1,6 +1,6 @@
 pkgbase = foot-git
 	pkgver = 1.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/dnkl/foot
 	arch = x86_64
 	license = mit
@@ -13,6 +13,7 @@ pkgbase = foot-git
 	depends = libxkbcommon
 	depends = wayland
 	depends = pixman
+	depends = libutf8proc
 	source = git+https://codeberg.org/dnkl/foot.git
 	source = git+https://codeberg.org/dnkl/tllist.git
 	source = git+https://codeberg.org/dnkl/fcft.git
