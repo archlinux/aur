@@ -1,0 +1,19 @@
+pkgbase = python-alphalens
+	pkgdesc = Python Library for performance analysis of predictive (alpha) stock factors.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/quantopian/alphalens
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-seaborn
+	depends = python-scipy
+	depends = python-statsmodels
+	depends = python-pandas
+	source = python-alphalens-0.4.0.tar.gz::https://github.com/quantopian/alphalens/archive/0.4.0.tar.gz
+	sha256sums = 5b64f3000b4562b894cd14859f39bbb070a8fe8f6684dc84cdc79f3eb991e0b3
+
+pkgname = python-alphalens
+
