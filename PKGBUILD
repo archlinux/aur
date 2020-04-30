@@ -1,4 +1,4 @@
-# Mainteiner: Antonio Cervone <ant.cervone@gmail.com>
+# Maintainer: Antonio Cervone <ant.cervone@gmail.com>
 # Contributor: Gabriel Chamon Araujo <gchamon@live.com>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Graziano Giuliani <graziano.giuliani@poste.it>
