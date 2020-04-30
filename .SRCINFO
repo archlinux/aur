@@ -1,0 +1,14 @@
+pkgbase = tweakstyle
+	pkgdesc = TweakStyle is an Integrated Development Environment for Web Development
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://tweakstyle.com
+	arch = x86_64
+	license = custom
+	depends = pango-legacy
+	options = !strip
+	source = tweakstyle-0.9.5.tar.gz::https://tweakstyle.com/dl/TweakStyle-linux64-0.9.5.tar.gz
+	sha256sums = acdf36b8f613564efd1c99029bee7e9221cad945a95a57ee83c53e2381c9e30f
+
+pkgname = tweakstyle
+
