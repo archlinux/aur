@@ -10,7 +10,7 @@ url=https://github.com/mkoskar/libxinerama-randr
 license=(custom)
 arch=(x86_64)
 
-depends=(libxext xineramaproto 'libxrandr>=1.5')
+depends=(libxext xorgproto 'libxrandr>=1.5')
 provides=(libxinerama)
 conflicts=(libxinerama)
 makedepends=(xorg-util-macros)

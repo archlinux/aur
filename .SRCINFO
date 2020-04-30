@@ -7,7 +7,7 @@ pkgbase = libxinerama-randr-git
 	license = custom
 	makedepends = xorg-util-macros
 	depends = libxext
-	depends = xineramaproto
+	depends = xorgproto
 	depends = libxrandr>=1.5
 	provides = libxinerama
 	conflicts = libxinerama
