@@ -3,7 +3,7 @@
 # Contributor: Sebastian Stenzel <sebastian.stenzel@gmail.com>
 
 pkgname=cryptomator
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("cryptomator-${pkgver}-x86_64.AppImage::https://dl.bintray.com/cryptomat
         'org.cryptomator.Cryptomator.png'
         'org.cryptomator.Cryptomator.svg'
         'cryptomator-vault.xml')
-sha256sums=('e398b8631f85e08b93b729e22de85f71e2bc76d4a1a41b950949faa1432b088c'
+sha256sums=('681551cc1539d2cdaa683286d0d528ffcb3027cb3524b6a2918ef7b51c0abffa'
             '53c509fe54ef1c5c28b469d86291536649367fb2030b2c0fb3101da2031f8e6e'
             'd299636d78d093117fa7a26563f22e01cdb75b1fcc6cc279bc88627574c968bd'
             '0989ecc24ecd672c5c525ab6f1f0fb18a9eeca86ebec19738f512801c152f756'
