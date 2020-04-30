@@ -1,6 +1,6 @@
 pkgbase = linux-gc
 	pkgdesc = Linux
-	pkgver = 5.6.7
+	pkgver = 5.6.8
 	pkgrel = 3
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
@@ -15,21 +15,21 @@ pkgbase = linux-gc
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.7.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.7.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.8.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.8.tar.sign
 	source = config
 	source = bmq_v5.6-r3.patch::https://gitlab.com/alfredchen/bmq/raw/master/5.6/bmq_v5.6-r3.patch
 	source = enable_additional_cpu_optimizations-20191217.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20191217.tar.gz
-	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/b38ba076b5049a77bf79f2c8cd224a77dea89bf3.patch
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/ae405b34813f876036c7e285a5be6a388ec27a71.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
-	sha256sums = 23a0420f29eacb66d71f86f64fbd35a1b6ff617d520e3e05f3e1f537d46692ca
+	sha256sums = 19e142ff07a2c8d10116074099b9d845682e74544a2b6c1641f7cb044ac282df
 	sha256sums = SKIP
 	sha256sums = a6c181f4c93dd302fdf5437bfff32bc938d8e36985898485aa9c839947fa39d4
 	sha256sums = 2340925904efa3594cc65a7bae4fbff233d5d8bc7db605ce08acaca7450d2471
 	sha256sums = 7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5
-	sha256sums = 58b45946e72b549267da97b05c030527a3563f96a9b203b09a7dd2305e551b88
+	sha256sums = 50be1c5ddcb169a83c3a86a7dbba14d701f34a1ac5715ae5d8a37f2964c5d46f
 
 pkgname = linux-gc
 	pkgdesc = The Linux kernel and modules with the BMQ CPU scheduler
@@ -38,11 +38,11 @@ pkgname = linux-gc
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-gc=5.6.7
+	provides = linux-gc=5.6.8
 
 pkgname = linux-gc-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel
 	depends = linux-gc
-	provides = linux-gc-headers=5.6.7
-	provides = linux-headers=5.6.7
+	provides = linux-gc-headers=5.6.8
+	provides = linux-headers=5.6.8
 

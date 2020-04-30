@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.6.7
+pkgver=5.6.8
 pkgrel=3
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -41,19 +41,19 @@ source=(
   config         # the main kernel config file
   "${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/b38ba076b5049a77bf79f2c8cd224a77dea89bf3.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/ae405b34813f876036c7e285a5be6a388ec27a71.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('23a0420f29eacb66d71f86f64fbd35a1b6ff617d520e3e05f3e1f537d46692ca'
+sha256sums=('19e142ff07a2c8d10116074099b9d845682e74544a2b6c1641f7cb044ac282df'
             'SKIP'
             'a6c181f4c93dd302fdf5437bfff32bc938d8e36985898485aa9c839947fa39d4'
             '2340925904efa3594cc65a7bae4fbff233d5d8bc7db605ce08acaca7450d2471'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
-            '58b45946e72b549267da97b05c030527a3563f96a9b203b09a7dd2305e551b88')
+            '50be1c5ddcb169a83c3a86a7dbba14d701f34a1ac5715ae5d8a37f2964c5d46f')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
