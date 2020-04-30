@@ -25,9 +25,11 @@ pkgbase = radarr-aphrodite
 	source = radarr.service
 	source = radarr.tmpfiles
 	source = radarr.sysusers
-	sha512sums = feb90578b0a7f3949884f735e1ec2004b66c84c9fe4d54e578e8573551c0364d89c84ed7b38c0494ad0a24146d6c5113f65fa6da6fd31f5083b2e188cb9ed9fe
-	sha512sums = e0d55353f0bf89f826eb7eb9ee26c3e3f38bd46a8884135139536ae220c0c531d5df486bc3b50f580679f9607bb4b7bfb9f29998609dc966fbfb8e1809834650
+	source = package_info
+	sha512sums = b9725386f513db6e9cd2eaef33dc8b34b21e43faacd2c9e1c29df2e6acf8e6bbfcf055222b114c13e5d149166f6e3145ba0336502b6f4965554f14102425ef61
+	sha512sums = 2ef38a061f4438349f7dafe209328fe9de5f44712f16435805e2622050be45a3fffd1838d9fccef2d6aa7603cf05b01280df6fed957b66d2d67ceaeeedcd5f6f
 	sha512sums = c1ee3925eced182ea7fffa55a6dc2a4e099ccf18636fc237ef0a2fc9517a38cfc2a819ae5a7bc546b63e383506f9f47e89454a71e34106c579d7454d71b2299e
+	sha512sums = d66df0a1a7a4f57dc8b1111627c2c74782f8a9038f943426b1c9a2629d0b69bae7e24fe0e1f708ce6c62ff7c52b730669374a1e0724ec270cd87dd95715b5ce5
 	source_x86_64 = Radarr.aphrodite.3.0.0.2894.linux-core-x64.tar.gz::https://radarr.lidarr.audio/v1/update/aphrodite/updatefile?version=3.0.0.2894&os=linux&runtime=netcore&arch=x64
 	sha512sums_x86_64 = be3e0babdb783aba5b23b7e72c0ecac76018fbcbc8acad11c2b149fe7221d6ce9ad44b6efacd04789ce8a2efb8758daddbe5d4703da1c8eb822715c4dca1e3ee
 	source_aarch64 = Radarr.aphrodite.3.0.0.2894.linux-core-arm64.tar.gz::https://radarr.lidarr.audio/v1/update/aphrodite/updatefile?version=3.0.0.2894&os=linux&runtime=netcore&arch=arm64
