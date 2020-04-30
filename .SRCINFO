@@ -1,7 +1,7 @@
 pkgbase = glew-egl-glx
 	pkgdesc = The OpenGL Extension Wrangler Library
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = http://glew.sourceforge.net
 	arch = aarch64
 	arch = armv7h
@@ -17,10 +17,10 @@ pkgbase = glew-egl-glx
 	provides = glew
 	conflicts = glew
 	conflicts = glew-wayland
-	source = https://downloads.sourceforge.net/glew/glew-2.1.0.tgz
+	source = https://downloads.sourceforge.net/glew/glew-2.2.0.tgz
 	source = egl+glx.patch
-	sha256sums = 04de91e7e6763039bc11940095cd9c7f880baba82196a7765f727ac05a993c95
-	sha256sums = 971b09095bd4335a1e2813c997f38f162c92b62821896312ee12a23ba2d1f6c2
+	sha256sums = d4fc82893cfb00109578d0a1a2337fb8ca335b3ceccf97b97e5cc7f08e4353e1
+	sha256sums = 206dc53e185aa2bd64b21107dcaafccb3207a8185ccd1c02a87ed9783c25cc61
 
 pkgname = glew-egl-glx
 

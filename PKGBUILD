@@ -6,8 +6,8 @@
 
 _pkgbase=glew
 pkgname=glew-egl-glx
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="The OpenGL Extension Wrangler Library"
 arch=('aarch64' 'armv7h' 'pentium4' 'x86_64')
 url="http://glew.sourceforge.net" # no https available
@@ -18,8 +18,8 @@ conflicts=('glew' 'glew-wayland')
 provides=('glew')
 source=(https://downloads.sourceforge.net/${_pkgbase}/${_pkgbase}-${pkgver}.tgz
         egl+glx.patch)
-sha256sums=('04de91e7e6763039bc11940095cd9c7f880baba82196a7765f727ac05a993c95'
-            '971b09095bd4335a1e2813c997f38f162c92b62821896312ee12a23ba2d1f6c2')
+sha256sums=('d4fc82893cfb00109578d0a1a2337fb8ca335b3ceccf97b97e5cc7f08e4353e1'
+            '206dc53e185aa2bd64b21107dcaafccb3207a8185ccd1c02a87ed9783c25cc61')
 
 prepare() {
   cd ${_pkgbase}-${pkgver}
@@ -35,6 +35,7 @@ build() {
 
   make STRIP= glew.bin
   mv bin/glewinfo bin/glxewinfo
+  rm glew.pc
   make STRIP= SYSTEM=linux-egl glew.lib.shared bin/glewinfo
   mv bin/glewinfo bin/eglewinfo
 }
