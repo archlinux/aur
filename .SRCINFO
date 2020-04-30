@@ -5,12 +5,12 @@ pkgbase = greetd-gtkgreet-git
 	url = https://git.sr.ht/~kennylevinsen/gtkgreet
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = scdoc
 	depends = gtk3
 	depends = gtk-layer-shell
+	depends = json-c
 	provides = greetd-gtkgreet=0.5
 	conflicts = greetd-gtkgreet
 	source = https://git.sr.ht/~kennylevinsen/gtkgreet

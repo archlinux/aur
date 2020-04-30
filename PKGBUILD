@@ -12,8 +12,8 @@ source=("git+$url")
 sha256sums=('SKIP')
 conflicts=(greetd-gtkgreet)
 provides=(greetd-gtkgreet=${pkgver%+*})
-makedepends=(git meson ninja scdoc)
-depends=(gtk3 gtk-layer-shell)
+makedepends=(meson ninja scdoc)
+depends=(gtk3 gtk-layer-shell json-c)
 
 pkgver() {
   git -C gtkgreet describe --abbrev=10 | sed 's/-/+/; s/-/./'
