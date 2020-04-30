@@ -5,7 +5,7 @@ pkgbase = firefox-extension-keepassxc-browser
 	url = https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/
 	arch = any
 	license = GPL
-	depends = firefox>=52
+	depends = firefox>=67
 	depends = keepassxc
 	noextract = keepassxc_browser-${pkgver}${_plugin_ext}.xpi
 	source = https://addons.mozilla.org/firefox/downloads/file/3558577/keepassxc_browser-1.6.3-fx.xpi
