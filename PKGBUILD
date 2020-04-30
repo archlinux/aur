@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=elementary-planner-git
-pkgver=2.3.3.r5.g5794c14a
+pkgver=2.3.4.r0.gdba6c85d
 pkgrel=1
 pkgdesc="Task manager with Todoist support"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://planner-todo.web.app"
 license=('GPL3')
 depends=('libsoup' 'granite' 'webkit2gtk' 'evolution-data-server'
          'gtk-theme-elementary' 'elementary-icon-theme')
-makedepends=('git' 'meson' 'vala' 'cmake' 'appstream')
+makedepends=('git' 'meson' 'vala' 'cmake')
 provides=("${pkgname%-git}" 'planner')
 conflicts=("${pkgname%-git}" 'planner')
 source=('git+https://github.com/alainm23/planner.git')
