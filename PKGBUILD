@@ -1,8 +1,8 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="ayatana-indicator-session"
-pkgver="0.4.3"
-pkgrel="3"
+pkgver="0.4.4"
+pkgrel="1"
 pkgdesc="Ayatana Indicator showing session management, status and user switching"
 arch=("i686" "x86_64")
 url="https://github.com/AyatanaIndicators"
@@ -11,7 +11,7 @@ depends=("libayatana-indicator-gtk3" "gsettings-desktop-schemas" "systemd" "glib
 makedepends=("cmake" "intltool" "glib2" "systemd")
 optdepends=("mate-screensaver" "mate-ayatana-indicator-applet" "mate-control-center" "yelp" "firefox")
 source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('18b01c4e412f1293fe5bf32c84bd1705')
+md5sums=("08b5488294dd380ebffde6422aa9b754")
 options=("!emptydirs")
 
 build()
