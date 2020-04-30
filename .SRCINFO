@@ -7,7 +7,7 @@ pkgbase = neovim-suda-opt-git
 	license = MIT
 	makedepends = git
 	depends = neovim
-	source = git+https://github.com/lambdalisue/suda.vim.git
+	source = suda::git+https://github.com/lambdalisue/suda.vim.git
 	sha256sums = SKIP
 
 pkgname = neovim-suda-opt-git
