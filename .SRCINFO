@@ -7,7 +7,7 @@ pkgbase = neovim-matchup-opt-git
 	license = MIT
 	makedepends = git
 	depends = neovim
-	source = git+https://github.com/andymass/vim-matchup.git
+	source = matchup::git+https://github.com/andymass/vim-matchup.git
 	sha256sums = SKIP
 
 pkgname = neovim-matchup-opt-git
