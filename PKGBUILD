@@ -1,7 +1,7 @@
 # Maintainer: zer0def <zer0def@github>
 pkgname=cloud-hypervisor-bin
-pkgver=0.6.0
-pkgrel=3
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="A Rust-VMM based cloud hypervisor from Intel (binary source)"
 url="https://github.com/cloud-hypervisor/cloud-hypervisor"
 arch=('x86_64')
@@ -13,12 +13,14 @@ conflicts=('cloud-hypervisor')
 source=(
   "https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v${pkgver}/ch-remote"
   "https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v${pkgver}/cloud-hypervisor"
+  "https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v${pkgver}/cloud-hypervisor-static"
 )
 sha512sums=(
-  5e2f66efbff60e963c2b301aa9f632b16506bf7150616f1b9ecf641d1658089991e4b56e94b4b9f41821b1d09f90d3a870b6815279c4eb8fa9d5c518d2397501
-  221e1ed308694bd160fa909feddc5eb02c276e44491fca8d293a200190fb9f3896c0b13819d71260b57ef05085b9c38dfe769f4217947efcb949574e222f9167
+  d90d2a978d67152ec2ffa56d9523d79edec7376decce7bd40bcf40930613320dafc989d5519112ed2ee6f4ebe37685caa81a0123f9016cca9add032009600604
+  9e9ff187d8da2c1d54bad7d9cb6942eceeea447b79c1c6f137fb344c22eeb65189bdc1cc4bc8e4e43e4899a0412e4e42c7572c4c78c8d5f0fa6c8630af288e0a
+  03a1ffa5468de49af568cb734b3812a53f43f93a389faf4a440720fd3ccf6d791a55c5c2f77dd47f03d3d0413af93e7d1e4be0f0f6c7a5dd0bff26dd97387fde
 )
 
 package() {
-  install -Dm755 -t ${pkgdir}/usr/bin ${srcdir}/{ch-remote,cloud-hypervisor}
+  install -Dm755 -t ${pkgdir}/usr/bin ${srcdir}/{ch-remote,cloud-hypervisor{,-static}}
 }
