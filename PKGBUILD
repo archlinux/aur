@@ -8,7 +8,7 @@
 
 pkgname=iqtree
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Efficient phylogenomic software by maximum likelihood; multicore version (OMP)"
 arch=(x86_64)
 url="http://www.iqtree.org/"
@@ -27,5 +27,5 @@ build() {
 
 package() {
   cd IQ-TREE-${pkgver}
-  install -D -m 755 build/iqtree ${pkgdir}/usr/bin/iqtree
+  install -D -m 755 build/iqtree2 ${pkgdir}/usr/bin/iqtree2
 }
