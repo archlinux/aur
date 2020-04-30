@@ -1,0 +1,17 @@
+pkgbase = neovim-coc-opt-git
+	pkgdesc = Intellisense engine for neovim.
+	pkgver = 437.b1b8d50b
+	pkgrel = 1
+	url = https://github.com/neoclide/coc.nvim
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = neovim
+	depends = nodejs
+	depends = yarn
+	optdepends = npm: instead of yarn
+	source = coc::git+https://github.com/neoclide/coc.nvim.git#branch=release
+	sha256sums = SKIP
+
+pkgname = neovim-coc-opt-git
+
