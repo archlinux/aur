@@ -2,6 +2,7 @@ pkgbase = gnome-shell-extension-blyr
 	pkgdesc = Apply a Blur Effect to GNOME Shell UI elements
 	pkgver = 7
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/yozoon/gnome-shell-extension-blyr
 	arch = any
 	license = GPL
