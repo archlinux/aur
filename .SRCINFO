@@ -1,7 +1,7 @@
 pkgbase = tinygo-bin
 	pkgdesc = TinyGo - Go for small spaces
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tinygo.org
 	arch = x86_64
 	license = custom: BSD 3-clause
