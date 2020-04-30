@@ -1,6 +1,6 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=5.6.7
+_kernver=5.6.8
 _archver=arch1
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
@@ -42,9 +42,9 @@ source=("${_kernsrc}"
         "${_headerssrc}"
         "${_docssrc}")
 
-sha256sums=('a5becf9bb0f0dbe9461f864046ce772d7bbdf16e67602b28ecb96dd6c5ae25e7'
-            '9101600972d6bdad4197df03762e2ab99c6776dc36d3f376874d885250cb0b87'
-            'bc8fc1f71bfff9666e934411640fe5a20c3b4b31206560f0bb3b21e6b722b34e')
+sha256sums=('1a8346e0e2d86e59759d830a231eaee4d2a248f5155a3e5ffd1c97d7dbf8f1c0'
+            'a3563a6f8760a81041f52a2156f861b136213a491005112845c37350369fccad'
+            'ba56c210c12681f7b9efec22f5c52a33be08d41d8b4b45b34a3378c83152ecf3')
 
 package_linux-versioned-bin() {
     pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
@@ -62,7 +62,7 @@ package_linux-versioned-docs-bin() {
     depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.6.7.arch1-1-bin() {
+package_linux5.6.8.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils kmod initramfs)
   conflicts=("${_pkgname}")
@@ -73,7 +73,7 @@ package_linux5.6.7.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.6.7.arch1-1-headers-bin() {
+package_linux5.6.8.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
@@ -81,7 +81,7 @@ package_linux5.6.7.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.6.7.arch1-1-docs-bin() {
+package_linux5.6.8.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
