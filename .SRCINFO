@@ -1,6 +1,6 @@
 pkgbase = silicon
 	pkgdesc = Create beautiful image of your code
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/Aloxaf/silicon
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = silicon
 	depends = fontconfig
 	depends = freetype2
 	depends = xclip
-	source = https://github.com/Aloxaf/silicon/archive/v0.3.0.tar.gz
-	sha256sums = f499c6d43d8cd32eefd222bab706f359556e833ed7635e8930df531efcfaba73
+	source = https://github.com/Aloxaf/silicon/archive/v0.3.1.tar.gz
+	sha256sums = 01a6d76b603428b4a9a83dd38f02436f99de9266cefd3f02203a19a524835d1f
 
 pkgname = silicon
 
