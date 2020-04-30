@@ -1,13 +1,13 @@
 pkgbase = roundcubemail-plugin-contextmenu
 	pkgdesc = Contextmenus for various parts of Roundcube using commands from the toolbars
-	pkgver = 3.1
+	pkgver = 3.2
 	pkgrel = 1
 	url = https://github.com/JohnDoh/roundcube-contextmenu
 	arch = any
 	license = GPL3
-	depends = roundcubemail
-	source = roundcubemail-plugin-contextmenu-3.1.tar.gz::https://github.com/JohnDoh/roundcube-contextmenu/archive/3.1.tar.gz
-	sha256sums = 6959573ad09cde5bb1781db3f68373e17b49c790ec9084607de82d7261a2766c
+	depends = roundcubemail>=1.4.4
+	source = roundcubemail-plugin-contextmenu-3.2.tar.gz::https://github.com/JohnDoh/roundcube-contextmenu/archive/3.2.tar.gz
+	sha256sums = a057b297f47db8220ca2f141735af3307ba9a2090fd9d2d056fced2588b6f8c8
 
 pkgname = roundcubemail-plugin-contextmenu
 
