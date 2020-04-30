@@ -1,0 +1,15 @@
+pkgbase = neovim-ultisnips-opt-git
+	pkgdesc = The ultimate snippet solution for (neo)vim.
+	pkgver = 1511.ee31ea1
+	pkgrel = 1
+	url = https://github.com/sirver/ultisnips
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = neovim
+	depends = python
+	source = git+https://github.com/sirver/ultisnips.git
+	sha256sums = SKIP
+
+pkgname = neovim-ultisnips-opt-git
+
