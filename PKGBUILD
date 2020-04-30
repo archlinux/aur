@@ -10,8 +10,8 @@ url="https://git.sr.ht/~kennylevinsen/gtkgreet"
 license=(GPL3)
 source=("https://git.sr.ht/~kennylevinsen/gtkgreet/archive/$pkgver.tar.gz")
 sha256sums=('6ad116076deabe7c01821e6be985a3cd5d3f679afd27e3dfdeceff6f5d72f8c5')
-makedepends=(git meson ninja scdoc)
-depends=(gtk3 gtk-layer-shell)
+makedepends=(meson ninja scdoc)
+depends=(gtk3 gtk-layer-shell json-c)
 
 build() {
   mkdir -p build
