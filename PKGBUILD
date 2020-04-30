@@ -64,7 +64,7 @@ _srcname=linux-${_major}
 _clr=${_major}.117-133
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux lts2018'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2018"
@@ -77,6 +77,7 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
   "${pkgbase}::git+https://github.com/clearlinux-pkgs/linux-lts2018.git#tag=${_clr}"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
+  'https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-1.0.20200429.tar.xz'
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -97,10 +98,14 @@ prepare() {
         echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        for i in $(grep '^Patch' ${srcdir}/${pkgbase}/linux-lts2018.spec | grep -Ev '^Patch0126' | sed -n 's/.*: //p'); do
+        for i in $(grep '^Patch' ${srcdir}/${pkgbase}/linux-lts2018.spec | grep -Ev '^Patch0126|^Patch1001' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/${pkgbase}/${i}"
         done
+
+    ### Link the WireGuard source directory into the kernel tree
+        echo "Adding the WireGuard source directory..."
+        "${srcdir}/wireguard-linux-compat-1.0.20200429/kernel-tree-scripts/jury-rig.sh" ./
 
     ### Setting config
         echo "Setting config..."
@@ -318,7 +323,8 @@ sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
             'ce275c6841ad6d5c2d86782ffd40fc2ce3ccb4ae0ac2bc70980f0f0725eb5249'
             'SKIP'
-            '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
+            '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
+            'c0050a94c33c195d4129a75ab4dca05ba021c5265e40fce8b2dfda7d7055cda2')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
