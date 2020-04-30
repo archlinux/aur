@@ -6,7 +6,7 @@
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.5.0rc4.r27.gb786c32b6
+pkgver=0.5.0.r110.gb786c32b6
 pkgrel=2
 pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
@@ -60,6 +60,11 @@ build() {
 package() {
 	cd "$srcdir/$_pkgname"
 	install -Dm 755 cmd/ipfs/ipfs "$pkgdir/usr/bin/ipfs"
+	install -Dm 644 misc/systemd/ipfs-api.socket "$pkgdir/usr/lib/systemd/user/ipfs-api.socket"
+	install -Dm 644 misc/systemd/ipfs-gateway.socket "$pkgdir/usr/lib/systemd/user/ipfs-gateway.socket"
+	# PR is open to bring some changes upstream
+	# install -Dm 644 misc/systemd/ipfs.service "$pkgdir/usr/lib/systemd/user/ipfs.service"
+	# install -Dm 644 misc/systemd/ipfs@.service "$pkgdir/usr/lib/systemd/user/ipfs@.service"
 	install -Dm 644 "$srcdir"/ipfs.service "$pkgdir/usr/lib/systemd/user/ipfs.service"
 	install -Dm 644 "$srcdir"/ipfs@.service "$pkgdir/usr/lib/systemd/system/ipfs@.service"
 	install -Dm 644 misc/completion/ipfs-completion.bash "$pkgdir/usr/share/bash-completion/completions/ipfs"
@@ -68,4 +73,3 @@ package() {
 	install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 	chmod u+w -R "$GOPATH"
 }
-
