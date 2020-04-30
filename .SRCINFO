@@ -1,13 +1,9 @@
 pkgbase = ttf-ms-win10
 	pkgver = 10.0.18362.116
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.microsoft.com/typography/fonts/product.aspx?PID=164
 	arch = any
 	license = custom
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-mkfontscale
-	depends = xorg-mkfontdir
 	provides = ttf-font
 	conflicts = ttf-vista-fonts
 	source = file://arial.ttf
