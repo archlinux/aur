@@ -35,12 +35,13 @@ build() {
 }
 
 package() {
-	injdir=`find ~/.config/discord -name "discord_desktop_core" -type d`
+	injdir=`find ~/.config/discord -name "discord_desktop_core" -type d | sed '1q'`
 	
 	cp "$srcdir/Glasscord/glasscord.asar" "$injdir"
 
-	[ -z $(grep "require('./glasscord.asar')" "$injdir/index.js") ] &&\
-		echo "require('./glasscord.asar')" | cat - "$injdir/index.js" > "$srcdir/index.js" &&\
-		cp "$srcdir/index.js" "$injdir"
+	sed -i "/^require('\.\/glasscord\.asar')$/d" "$injdir/index.js"
+
+	echo "require('./glasscord.asar')" | cat - "$injdir/index.js" > "$srcdir/index.js"
+	cp "$srcdir/index.js" "$injdir"
 }
 
