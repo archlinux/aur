@@ -1,7 +1,7 @@
 # Maintainer: Pablo Lenna  <pablolenna@gmail.com>
 
 pkgname=bootsplash-manjaro-splash
-pkgver=r3.386a1ed
+pkgver=1
 pkgrel=1
 pkgdesc="Bootsplash Theme 'Manjaro Splash'"
 arch=('any')
@@ -24,8 +24,6 @@ prepare()
 }
 build() {
 	cd "${_pkgname}"
-	chmod u+x bootsplash-manjaro-splash.sh
-	chmod u+x bootsplash-packer
 	sh ./bootsplash-manjaro-splash.sh
 }
 pkgver()

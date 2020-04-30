@@ -1,6 +1,6 @@
 pkgbase = bootsplash-manjaro-splash
 	pkgdesc = Bootsplash Theme 'Manjaro Splash'
-	pkgver = r3.386a1ed
+	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/githubgeeker/bootsplash-manjaro-splash
 	arch = any
