@@ -1,7 +1,7 @@
 # Maintainer: Simon Hanna <simon dot hanna AT serve-me DOT info>
 
 pkgname=python-social-auth
-pkgver=0.2.21
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Easy-to-setup social authentication/registration"
 arch=(any)
