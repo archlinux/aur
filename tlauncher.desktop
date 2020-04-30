@@ -4,9 +4,8 @@ Type=Application
 Name=TLauncher
 Comment=TLauncher is Minecraft Launcher
 Icon=minecraft
-Exec=java -jar /opt/tlauncher/tlauncher.jar
+Exec=/usr/bin/tlauncher
 NoDisplay=false
 Categories=Application;Game;
 StartupNotify=false
 Terminal=false
-
