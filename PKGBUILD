@@ -22,7 +22,7 @@ makedepends=(
 	"unzip"
 )
 source=(
-	"https://github.com/yozoon/gnome-shell-extension-blyr/releases/download/v${pkgver}/blyr@yozoon.dev.gmail.com.zip"
+	"https://github.com/yozoon/gnome-shell-extension-blyr/releases/download/v$pkgver/blyr@yozoon.dev.gmail.com.zip"
 )
 noextract=(
 	"blyr@yozoon.dev.gmail.com.zip"
@@ -41,6 +41,6 @@ package()
 {
     local _uuid="blyr@yozoon.dev.gmail.com"
 
-	install -d "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
-	cp -r "gnome-shell-extension-blyr/"* "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
+	install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+	cp -r "gnome-shell-extension-blyr/"* "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
 }
