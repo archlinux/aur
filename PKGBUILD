@@ -5,7 +5,7 @@
 
 _name=responses
 pkgname=python2-$_name
-pkgver=0.10.12
+pkgver=0.10.14
 pkgrel=1
 pkgdesc='A utility library for mocking out the `requests` Python library.'
 arch=('any')
@@ -15,7 +15,7 @@ depends=('python2' 'python2-requests' 'python2-cookies' 'python2-six' 'python2-m
 makedepends=('python2-setuptools')
 checkdepends=('python2-pytest-runner' 'python2-pytest-cov' 'python2-flake8' 'python2-pytest-localserver')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('b97e0cce7d585b822f133db48916ec1fe371b7042983d9309b5192897ada78a0a0aec480f2c04f91196ac007a851fc9ba610ac5d0751d712913f9573f033dcae')
+sha512sums=('93812e3df0c745f878f443ccbfa96efdc4750c2af477a90319bc36e75e327816cb30b7606598879e40df213b03d9df07b0da2d2685c08ded672526b2919001fd')
 
 build() {
   cd $_name-$pkgver
