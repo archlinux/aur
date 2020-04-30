@@ -5,6 +5,7 @@ pkgbase = libquotient
 	epoch = 1
 	url = https://github.com/quotient-im/libQuotient
 	arch = x86_64
+	arch = aarch64
 	license = LGPL2
 	makedepends = git
 	makedepends = cmake
