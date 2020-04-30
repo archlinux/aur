@@ -1,0 +1,16 @@
+pkgbase = dict-freedict-lat-deu
+	pkgdesc = Latin -> German dictionary for dictd et al. from Freedict.org
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://freedict.org/
+	install = dict-freedict-lat-deu.install
+	arch = any
+	license = GPL
+	makedepends = dictd
+	makedepends = freedict-tools
+	optdepends = dictd: dict client and server
+	source = https://download.freedict.org/dictionaries/lat-deu/1.0.3/freedict-lat-deu-1.0.3.src.tar.xz
+	sha512sums = 8901f65f339a23d07dbfff86403f87599847fcf8611abfbf3feb36b7809cafef52c969a5b758ff6cf9635496d223a3d8430e5a93266fb3e73cc2f93684d12625
+
+pkgname = dict-freedict-lat-deu
+
