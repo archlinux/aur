@@ -2,7 +2,7 @@
 # Contributor: Florian Richter <Florian_Richter@gmx.de>
 pkgname=pythonmagick
 pkgver=0.9.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Object-oriented Python bindings for the ImageMagick library"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
@@ -11,17 +11,15 @@ depends=('boost' 'python' 'imagemagick')
 makedepends=('perl' 'automake')
 options=('!libtool')
 source=("http://www.imagemagick.org/download/python/PythonMagick-$pkgver.tar.gz")
-md5sums=('015e595e176292c2e31dd5eb12eaad3c')
+sha256sums=('dda6f31142d0d82c7e67897e5d6a7cc7af9ca95f0212112b6343c0ce470751e8')
 
 build() {
   cd "$srcdir/PythonMagick-$pkgver"
-  sed -i "s/-lboost_python\ /-lboost_python3\ /" Makefile.am
   perl autogen.pl
 
   CPPFLAGS="`python-config --includes`" \
   PYTHON_LIB="`python-config --libs`" \
-  ./configure --prefix=/usr --with-boost-python=boost_python3
-  # --with-boost-python=boost_python3 has no effect, therefore sed above
+  ./configure --prefix=/usr
 
   make
 }
