@@ -11,7 +11,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=20.2.0_devel.123163.612e35c8d94
+pkgver=20.2.0_devel.123164.beb02a781ca
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -99,6 +99,7 @@ prepare() {
 build () {
     meson setup mesa _build \
        -D b_ndebug=true \
+       -D b_lto=true \
        -D buildtype=plain \
        --wrap-mode=nofallback \
        -D prefix=/usr \

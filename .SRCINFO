@@ -1,6 +1,6 @@
 pkgbase = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 20.2.0_devel.123163.612e35c8d94
+	pkgver = 20.2.0_devel.123164.beb02a781ca
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -21,7 +21,8 @@ pkgbase = mesa-git
 	makedepends = wayland-protocols
 	makedepends = meson
 	makedepends = ninja
-	makedepends = llvm-minimal-git
+	makedepends = llvm=10.0.0
+	makedepends = clang=10.0.0
 	depends = libdrm
 	depends = libxxf86vm
 	depends = libxdamage
@@ -36,9 +37,10 @@ pkgbase = mesa-git
 	depends = glslang
 	depends = vulkan-icd-loader
 	depends = zstd
-	depends = llvm-libs-minimal-git
+	depends = llvm-libs=10.0.0
 	optdepends = opengl-man-pages: for the OpenGL API man pages
-	optdepends = llvm-minimal-git: opencl
+	optdepends = clang: opencl
+	optdepends = compiler-rt: opencl
 	provides = mesa
 	provides = opencl-mesa
 	provides = vulkan-intel
