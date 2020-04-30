@@ -1,13 +1,13 @@
 pkgbase = neovim-swap-opt-git
 	pkgdesc = Reorder delimited items.
-	pkgver = 175.be23eac
+	pkgver = 215.e52ff67
 	pkgrel = 1
 	url = https://github.com/machakann/vim-swap
 	arch = any
 	license = custom:vim
 	makedepends = git
 	depends = neovim
-	source = git+https://github.com/machakann/vim-swap.git
+	source = swap::git+https://github.com/machakann/vim-swap.git
 	sha256sums = SKIP
 
 pkgname = neovim-swap-opt-git
