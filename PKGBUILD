@@ -9,7 +9,7 @@ pkgname=(
 )
 pkgver=5.6
 pkgrel=1
-epoch=3
+epoch=4
 arch=(
     "i686"
 	"x86_64"
@@ -34,7 +34,7 @@ options=(
 	"!strip"
 )
 source=(
-	"https://github.com/ZestProjects/linux/archive/fivesix.zip"
+	"git+$url.git"
 )
 b2sums=(
 	"SKIP"
@@ -45,12 +45,14 @@ prepare()
 	export LC_ALL=en_US.UTF-8
 	export PATH="/opt/proton-clang/bin:$PATH"
 
-	cd "linux-fivesix" || exit
+	cd "linux" || exit
+
+	git checkout fivesix
 	
 	echo "Setting config..."
-	make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld zestop_defconfig
+	make AR="llvm-ar" CC="clang" HOSTAR="llvm-ar" HOSTCC="clang" HOSTCXX="clang++" HOSTLD="ld.lld" HOSTLDFLAGS="-fuse-ld=lld" LD="ld.lld" NM="llvm-nm" OBJCOPY="llvm-objcopy" OBJDUMP="llvm-objdump" OBJSIZE="llvm-size" STRIP="llvm-strip" zestop_defconfig
 
-	make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld -s kernelrelease > version
+	make AR="llvm-ar" CC="clang" HOSTAR="llvm-ar" HOSTCC="clang" HOSTCXX="clang++" HOSTLD="ld.lld" HOSTLDFLAGS="-fuse-ld=lld" LD="ld.lld" NM="llvm-nm" OBJCOPY="llvm-objcopy" OBJDUMP="llvm-objdump" OBJSIZE="llvm-size" STRIP="llvm-strip" -s kernelrelease > version
 	echo "Prepared $pkgbase version $(<version)"
 }
 
@@ -59,10 +61,10 @@ build()
 	export LC_ALL=en_US.UTF-8
 	export PATH="/opt/proton-clang/bin:$PATH"
 
-	cd "linux-fivesix" || exit
+	cd "linux" || exit
 
-	make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld all
-	make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld htmldocs
+	make AR="llvm-ar" CC="clang" HOSTAR="llvm-ar" HOSTCC="clang" HOSTCXX="clang++" HOSTLD="ld.lld" HOSTLDFLAGS="-fuse-ld=lld" LD="ld.lld" NM="llvm-nm" OBJCOPY="llvm-objcopy" OBJDUMP="llvm-objdump" OBJSIZE="llvm-size" STRIP="llvm-strip" all
+	make AR="llvm-ar" CC="clang" HOSTAR="llvm-ar" HOSTCC="clang" HOSTCXX="clang++" HOSTLD="ld.lld" HOSTLDFLAGS="-fuse-ld=lld" LD="ld.lld" NM="llvm-nm" OBJCOPY="llvm-objcopy" OBJDUMP="llvm-objdump" OBJSIZE="llvm-size" STRIP="llvm-strip" htmldocs
 }
 
 _package()
@@ -87,20 +89,20 @@ _package()
 	export LC_ALL=en_US.UTF-8
 	export PATH="/opt/proton-clang/bin:$PATH"
 
-	cd "linux-fivesix" || exit
+	cd "linux" || exit
 
 	local kernver="$(<version)"
 	local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
 	#* systemd expects to find the kernel here to allow hibernation
 	echo "Installing boot image..."
-	install -Dm644 "$(make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld -s image_name)" "$modulesdir/vmlinuz"
+	install -Dm644 "$(make AR="llvm-ar" CC="clang" HOSTAR="llvm-ar" HOSTCC="clang" HOSTCXX="clang++" HOSTLD="ld.lld" HOSTLDFLAGS="-fuse-ld=lld" LD="ld.lld" NM="llvm-nm" OBJCOPY="llvm-objcopy" OBJDUMP="llvm-objdump" OBJSIZE="llvm-size" STRIP="llvm-strip" -s image_name)" "$modulesdir/vmlinuz"
 
 	#* mkinitcpio uses this value as the kernel name
 	echo "$pkgbase" | install -Dm644 "/dev/stdin" "$modulesdir/pkgbase"
 
 	echo "Installing modules..."
-	make CC=clang LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+	make AR="llvm-ar" CC="clang" HOSTAR="llvm-ar" HOSTCC="clang" HOSTCXX="clang++" HOSTLD="ld.lld" HOSTLDFLAGS="-fuse-ld=lld" LD="ld.lld" NM="llvm-nm" OBJCOPY="llvm-objcopy" OBJDUMP="llvm-objdump" OBJSIZE="llvm-size" STRIP="llvm-strip" INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
 	rm "$modulesdir/"{"source","build"}
 }
@@ -115,7 +117,7 @@ _package-headers()
 
 	export LC_ALL=en_US.UTF-8
 
-	cd "linux-fivesix" || exit
+	cd "linux" || exit
 
 	local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
@@ -123,12 +125,16 @@ _package-headers()
 	install -Dt "$builddir" -m644 ".config" "Makefile" "Module.symvers" "System.map" "version" "vmlinux"
 
 	#* Replace default tools in the headers Makefile with the ones we use
-	sed -i "s/HOSTCC       = gcc/HOSTCC       = \/opt\/proton-clang\/bin\/clang/g" "$builddir/Makefile"
-	sed -i "s/HOSTCXX      = g++/HOSTCXX      = \/opt\/proton-clang\/bin\/clang++\nHOSTLD       = \/opt\/proton-clang\/bin\/ld.lld/g" "$builddir/Makefile"
+	sed -i "s/HOSTCC       = gcc/HOSTAR       = \/opt\/proton-clang\/bin\/llvm-ar\nHOSTCC       = \/opt\/proton-clang\/bin\/clang/g" "$builddir/Makefile"
+	sed -i "s/HOSTCXX      = g++/HOSTCXX      = \/opt\/proton-clang\/bin\/clang++\nHOSTLD       = \/opt\/proton-clang\/bin\/ld.lld\nHOSTLDFLAGS  = -fuse-ld=lld/g" "$builddir/Makefile"
 	sed -i "s/CC\t\t= \$(CROSS_COMPILE)gcc/CC\t\t= \/opt\/proton-clang\/bin\/clang/g" "$builddir/Makefile"
 	sed -i "s/LD\t\t= \$(CROSS_COMPILE)ld/LD\t\t= \/opt\/proton-clang\/bin\/ld.lld/g" "$builddir/Makefile"
+	sed -i "s/AR\t\t= \$(CROSS_COMPILE)ar/AR\t\t= \/opt\/proton-clang\/bin\/llvm-ar/g" "$builddir/Makefile"
 	sed -i "s/NM\t\t= \$(CROSS_COMPILE)nm/NM\t\t= \/opt\/proton-clang\/bin\/llvm-nm/g" "$builddir/Makefile"
+	sed -i "s/STRIP\t\t= \$(CROSS_COMPILE)strip/STRIP\t\t= \/opt\/proton-clang\/bin\/llvm-strip/g" "$builddir/Makefile"
 	sed -i "s/OBJCOPY\t\t= \$(CROSS_COMPILE)objcopy/OBJCOPY\t\t= \/opt\/proton-clang\/bin\/llvm-objcopy/g" "$builddir/Makefile"
+	sed -i "s/OBJDUMP\t\t= \$(CROSS_COMPILE)objdump/OBJDUMP\t\t= \/opt\/proton-clang\/bin\/llvm-objdump/g" "$builddir/Makefile"
+	sed -i "s/OBJSIZE\t\t= \$(CROSS_COMPILE)size/OBJSIZE\t\t= \/opt\/proton-clang\/bin\/llvm-size/g" "$builddir/Makefile"
 
 	install -Dt "$builddir/kernel" -m644 "kernel/Makefile"
 	install -Dt "$builddir/arch/x86" -m644 "arch/x86/Makefile"
@@ -206,7 +212,7 @@ _package-docs()
 
 	export LC_ALL=en_US.UTF-8
 
-	cd "linux-fivesix" || exit
+	cd "linux" || exit
 
 	local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 

@@ -1,7 +1,7 @@
 pkgbase = linux-zest-git
 	pkgver = 5.6
 	pkgrel = 1
-	epoch = 3
+	epoch = 4
 	url = https://github.com/ZestProjects/linux
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = linux-zest-git
 	makedepends = python-sphinx_rtd_theme
 	makedepends = xmlto
 	options = !strip
-	source = https://github.com/ZestProjects/linux/archive/fivesix.zip
+	source = git+https://github.com/ZestProjects/linux.git
 	b2sums = SKIP
 
 pkgname = linux-zest-git
