@@ -5,11 +5,12 @@
 # Contributor: gangelop
 pkgname=pureref
 pkgver=1.10.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Reference Image Viewer"
 arch=('x86_64')
 url="http://www.pureref.com"
 license=('unknown')
+depends=('fuse2')
 makedepends=('curl' 'libarchive' 'binutils')
 options=(!strip)
 
