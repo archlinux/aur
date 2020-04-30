@@ -3,7 +3,7 @@
 # PLEASE do not mark it out-of date because "2.xx is released", *2.xx a separate project with same name from other dev team*
 pkgname=tlauncher
 pkgver=1.114.4
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='TLauncher Legacy is freeware launcher of Minecraft.'
 url='https://tlaun.ch'
@@ -48,7 +48,8 @@ source=(#"${_repo}/legacy_beta/bootstrap/${_bootstrap_checksum}.jar"
         "${_librepo}/libraries/com/timgroup/java-statsd-client/3.1.0/java-statsd-client-3.1.0.jar"
 
         'tlauncher.desktop'
-        'tlauncher.install')
+        'tlauncher.install'
+        'tlauncher.bash')
 noextract=("${source[@]##*/}")
 sha256sums=(#"${_bootstrap_checksum}"
             'b713eb25937d7f0a70a5c8dbd29c511c53f710a63cba6d5f824cc9f4cb9d8a93'
@@ -72,12 +73,14 @@ sha256sums=(#"${_bootstrap_checksum}"
             '6b4c15577b5256b64c7e3d69dcdbf8d18f17f68ac5928e36936bd6a40a91c218'
             'bbb82aadb5e4209527c15fcc40e514b6f4c921a37bc66b68b3611bec70c538e8'
 
-            '63d7258ab63c40bfed855811f9772936350cb83993ff6cfef16c21db0642fb01'
-            '0346fbc5e81522e498b63d392339024b8617a03de9fdf9126ba6364db94e188b')
+            'bbb0eaa8d6714cc1e297d351f8e23acc25c08e4ddaf0bdcd0eb2c5a995c3561a'
+            '0346fbc5e81522e498b63d392339024b8617a03de9fdf9126ba6364db94e188b'
+            '724cd1866b16127d93f34d815a581c6fd30086a1313b7ed303e6cdbc78ea7a51')
 install="${pkgname}.install"
 
 package() {
   install -Dm0644 "${srcdir}/tlauncher.desktop" "${pkgdir}/usr/share/applications/tlauncher.desktop"
+  install -Dm0755 "${srcdir}/tlauncher.bash" "${pkgdir}/usr/bin/tlauncher"
 
 #  install -Dm0644 "${srcdir}/${_bootstrap_checksum}.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
   install -Dm0644 "${srcdir}/tl_bootstrap_1.8.2_patched.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"

@@ -1,7 +1,7 @@
 pkgbase = tlauncher
 	pkgdesc = TLauncher Legacy is freeware launcher of Minecraft.
 	pkgver = 1.114.4
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://tlaun.ch
 	install = tlauncher.install
@@ -30,6 +30,7 @@ pkgbase = tlauncher
 	noextract = java-statsd-client-3.1.0.jar
 	noextract = tlauncher.desktop
 	noextract = tlauncher.install
+	noextract = tlauncher.bash
 	source = https://files.modder.pw/mc/tl_bootstrap_1.8.2_patched.jar
 	source = https://tlauncherrepo.com/legacy_beta/launcher/6e40f9b10a2a5ef00004e4d406d33a5550ec069a6475be9bf26b8fe94b9b0bea.jar
 	source = http://u.tlauncher.ru/repo/libraries/org/jdom/jdom/2.0.2/jdom-2.0.2.jar
@@ -51,6 +52,7 @@ pkgbase = tlauncher
 	source = http://u.tlauncher.ru/repo/libraries/com/timgroup/java-statsd-client/3.1.0/java-statsd-client-3.1.0.jar
 	source = tlauncher.desktop
 	source = tlauncher.install
+	source = tlauncher.bash
 	sha256sums = b713eb25937d7f0a70a5c8dbd29c511c53f710a63cba6d5f824cc9f4cb9d8a93
 	sha256sums = 6e40f9b10a2a5ef00004e4d406d33a5550ec069a6475be9bf26b8fe94b9b0bea
 	sha256sums = 2bdf7a48fddc9259f5aa420eee328e939d71302a6a1b79a176e4fd47ee988b97
@@ -70,8 +72,9 @@ pkgbase = tlauncher
 	sha256sums = 815a73e20e90a413662eefe8594414684df3d5723edcd76070e1a5aee864616e
 	sha256sums = 6b4c15577b5256b64c7e3d69dcdbf8d18f17f68ac5928e36936bd6a40a91c218
 	sha256sums = bbb82aadb5e4209527c15fcc40e514b6f4c921a37bc66b68b3611bec70c538e8
-	sha256sums = 63d7258ab63c40bfed855811f9772936350cb83993ff6cfef16c21db0642fb01
+	sha256sums = bbb0eaa8d6714cc1e297d351f8e23acc25c08e4ddaf0bdcd0eb2c5a995c3561a
 	sha256sums = 0346fbc5e81522e498b63d392339024b8617a03de9fdf9126ba6364db94e188b
+	sha256sums = 724cd1866b16127d93f34d815a581c6fd30086a1313b7ed303e6cdbc78ea7a51
 
 pkgname = tlauncher
 
