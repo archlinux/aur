@@ -1,6 +1,6 @@
 pkgbase = layan-cursor-theme-git
 	pkgdesc = A x-cursor theme inspired by layan gtk theme and based on capitaine-cursors
-	pkgver = 0.0.0.7a37de2
+	pkgver = 1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/vinceliuice/Layan-cursors
