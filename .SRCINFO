@@ -1,10 +1,12 @@
 pkgbase = sakuri
 	pkgdesc = Simple bash AUR helper
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BiteDasher/sakuri
 	arch = any
 	license = MIT
+	depends = jq
+	depends = curl
 	depends = bash
 	depends = git
 	depends = sudo
