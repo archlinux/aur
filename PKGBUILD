@@ -1,7 +1,7 @@
 # Maintaner: jskier <jay@jskier.com>
 # Contributor: jskier <jay @jskier.com>
 pkgname=python-authy
-pkgver=2.2.4
+pkgver=2.2.6
 pkgrel=1
 pkgdesc="A module for using the Twilio Authy REST API"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-requests' 'python-six' 'python-simplejson'
 	'python-mockito' 'python-mock' 'python-bumpversion')
 options=(!emptydirs)
 source=("https://github.com/twilio/authy-python/archive/v${pkgver}.tar.gz")
-sha256sums=('93e28646dd54eb960a522f948f93bef0ca61f073145b7d4d5aa9fe726e640513')
+sha256sums=('58cc3d9a1d01a3d2eda27a6e8dff0ae7fc57687171f07741135506d95fa634f2')
 
 package() {
   cd "$srcdir/authy-python-$pkgver"
