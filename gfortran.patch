@@ -1,0 +1,10 @@
+--- Metview-5.8.1-Source-orig/mars-client/src/CMakeLists.txt    2020-04-30 13:58:09.473645830 +0000
++++ Metview-5.8.1-Source/mars-client/src/CMakeLists.txt 2020-04-30 13:53:19.013657923 +0000
+@@ -272,6 +272,7 @@
+         ${RPC_LIBRARIES}
+         ${CMATH_LIBRARIES}
+         ${CMAKE_THREAD_LIBS_INIT}
++        gfortran
+ )
+
+ set_directory_properties( ADDITIONAL_MAKE_CLEAN_FILES rpcmars.h marsxdr.c langl.c langy.c )
