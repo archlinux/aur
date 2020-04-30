@@ -3,13 +3,13 @@
 pkgname=docfetcher
 _name=DocFetcher
 pkgver=1.1.22
-pkgrel=2
+pkgrel=3
 _gtkver=gtk3 # variable that controls whether GTK2 or 3(default) is to be used.
 pkgdesc="A java open source desktop search application"
 arch=('i686' 'x86_64')
 url="http://${pkgname}.sourceforge.net/"
 license=('EPL')
-depends=('java-runtime>=8' 'java-runtime<=10')
+depends=('java-runtime>=8')
 makedepends=('unzip')
 optdepends=('gtk2: GTK2-based interface' 'gtk3: GTK3-based interface')
 source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/docfetcher-${pkgver}-portable.zip"
