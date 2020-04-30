@@ -1,7 +1,7 @@
 pkgbase = untrunc-anthwlock-cli-git
 	pkgdesc = Restore a truncated mp4/mov. Improved version of ponchio/untrunc. CLI only.
 	pkgver = r221.a2c7218
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anthwlock/untrunc
 	arch = x86_64
 	license = GPL

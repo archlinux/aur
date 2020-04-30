@@ -2,7 +2,7 @@
 _basename=untrunc
 pkgname=untrunc-anthwlock-cli-git
 pkgver=r221.a2c7218
-pkgrel=1
+pkgrel=2
 pkgdesc="Restore a truncated mp4/mov. Improved version of ponchio/untrunc. CLI only."
 arch=('x86_64')
 url="https://github.com/anthwlock/untrunc"
@@ -32,5 +32,5 @@ build() {
 
 package() {
 	cd "$srcdir/${_basename}"
-	install -Dm644 untrunc "$pkgdir/usr/bin/untrunc"
+	install -Dm755 untrunc "$pkgdir/usr/bin/untrunc"
 }
