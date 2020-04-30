@@ -9,7 +9,7 @@ license=(Apache)
 optdepends=(kubectl)
 makedepends=(go-pie)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/okteto/okteto/archive/${pkgver}.tar.gz")
-sha256sums=('fc3629699355e7ab66661d5c77d34eb8b75ba8cb1ed8beaad74a5ab88a211ec6')
+sha256sums=('bc7b5b14fe7880f82993d680e244285ea99c4db36a31f7d1b0ce110b91a84a70')
 
 build() {
   cd "$pkgname-$pkgver"
