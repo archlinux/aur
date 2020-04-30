@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=11.0.0_r352002.cd8e9e8fcd3
+pkgver=11.0.0_r353030.54d7db165d4
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -64,7 +64,6 @@ build() {
     cd _build
 
     cmake "$srcdir"/llvm-project/llvm  -G Ninja \
-        -D PYTHON_EXECUTABLE=/usr/bin/python \
         -D CMAKE_C_FLAGS="${CFLAGS}" \
         -D CMAKE_CXX_FLAGS="${CXXFLAGS}" \
         -D CMAKE_BUILD_TYPE=Release \
@@ -89,6 +88,7 @@ build() {
         -D LLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang"
         
     ninja $NINJAFLAGS
+
 }
 
 check() {
