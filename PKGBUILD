@@ -1,8 +1,8 @@
 # Maintainer: Gavin Lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/cylon
 pkgname=cylon
-pkgver=5.7
-pkgrel=9
+pkgver=6.0
+pkgrel=1
 pkgdesc="Updates, Maintenance, backup and system checks in a menu driven TUI written in Bash"
 depends=('dialog' 'expac' 'pacman-contrib')
 arch=('any')
@@ -14,18 +14,15 @@ optdepends=(
   'lostfiles: For finding lost files'
   'arch-audit: collect CVE data'
   'rmlint: Finds lint and other unwanted'
-  'clamav: used for finding malware'
   'bleachbit: used for system clean'
   'gnu-netcat: used for checking network'
   'openbsd-netcat: used for checking network'
-  'ccrypt: AUR, used for encrypting'
   'rsync: used for backup'
   'libnotify: desktop notifications'
-  'speedtest-cli: internet bandwidth'
 )
 source=("https://github.com/gavinlyonsrepo/cylon/archive/$pkgver.tar.gz")
+md5sums=('66a8b957c2a56fd6f1d90de8d5bbf6cc')
 
-md5sums=('e21ccf029bc674070ab45aa615f76d7b')
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
     install -D -m755 main/Cylon.sh "$pkgdir"/usr/bin/"${pkgname}" 
