@@ -1,0 +1,16 @@
+pkgbase = lines
+	pkgdesc = Lines is a modern and minimalist text editor - IDE with support for over 150 programming languages
+	pkgver = 4.3
+	pkgrel = 1
+	url = https://www.creatixbih.com/lines
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	makedepends = gendesk
+	provides = lines-code-editor
+	noextract = lines-4.3.zip
+	source = lines-4.3.zip::https://www.creatixbih.com/dl/files/lines_linux_x64.zip
+	sha256sums = 9f1a2808aa903a70fbde83e05d57ea1da414c567dca8f3f50225dc0c428bf4a2
+
+pkgname = lines
+
