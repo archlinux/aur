@@ -6,6 +6,7 @@ pkgbase = abricotine-git
 	arch = x86_64
 	license = GPL3
 	makedepends = npm
+	makedepends = python2
 	depends = libxss
 	provides = abricotine
 	conflicts = abricotine
