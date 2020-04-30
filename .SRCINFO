@@ -7,7 +7,7 @@ pkgbase = neovim-surround-opt-git
 	license = custom:vim
 	makedepends = git
 	depends = neovim
-	source = git+https://github.com/tpope/vim-surround.git
+	source = surround::git+https://github.com/tpope/vim-surround.git
 	sha256sums = SKIP
 
 pkgname = neovim-surround-opt-git
