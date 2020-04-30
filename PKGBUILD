@@ -9,7 +9,8 @@ pkgdesc="Custom CSS Injector for Discord"
 arch=('any')
 url="https://github.com/leovoel/BeautifulDiscord"
 license=('MIT')
-depends=('python-psutil')
+depends=('python-psutil' 'python')
+makedepends=('python-setuptools')
 provides=('beautifuldiscord' 'python-beautifuldiscord')
 build() {
   cd $(dirname */setup.py)
