@@ -1,6 +1,6 @@
 # Contributor: xia0er <xia0er@gmail.com> 
 pkgname=python-pymc
-pkgver=2.3.7
+pkgver=2.3.8
 pkgrel=1
 pkgdesc="Markov chain Monte Carlo for Python"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/pymc-devs/pymc"
 license=('MIT')
 source=("https://github.com/pymc-devs/pymc/archive/v${pkgver}.tar.gz")
 makedepends=("gcc-fortran")
-md5sums=('f509400054b6b42abdc5c4775951b556')
+sha256sums=('200a28469d574a370fa9b55cd92f112f8ad09f71674bdae514437039e953689b')
 
 package_python2_pymc() {
   depends=('python2-numpy')
