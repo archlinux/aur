@@ -9,7 +9,8 @@ arch=(x86_64)
 url="https://git.sr.ht/~kennylevinsen/greetd"
 license=(GPL3)
 source=("git+$url" 'greetd.pam')
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP'
+            '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92')
 conflicts=(greetd)
 provides=(greetd=${pkgver%+*})
 depends=(systemd pam)
