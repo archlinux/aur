@@ -1,8 +1,9 @@
-# Maintainer: Ricardo Gonçalves <ricardompgoncalves@gmail.com>
+# Maintainer: Bruno Silva <brunofernandes at ua dot pt>
+# Co-Maintainer: Ricardo Gonçalves <ricardompgoncalves@gmail.com>
 
 pkgname=cartaodecidadao-bin
-pkgver=3.0.16
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Portuguese Citizen Card Application"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -10,22 +11,23 @@ license=('GPL2' 'LGPL3' 'custom:EUPL')
 depends=('qt5-base'
          'qt5-tools'
          'qt5-quickcontrols'
-	 'qt5-quickcontrols2'
+				 'qt5-quickcontrols2'
          'qt5-graphicaleffects'
          'pcsclite>=1.5.0'
          'openssl-1.0'
          'ccid'
          'libzip'
          'poppler-qt5'
-	 'libxerces-c-3.1'
+				 'libxerces-c-3.1'
+				 'libcurl-compat'
          'xml-security-c')
 optdepends=('autenticacao-gov-pt: Necessário para autenticações online'
 			'cartaodecidadao-pki: PKI que confirma a validade dos certificados dos CC'
 			'ecce-gov-pt-certificates: Certificados da ECCE (quem assina dos certificados contidos em cartaodecidadao-pki)')
 
-source_x86_64=("https://www.autenticacao.gov.pt/documents/10179/11962/Ubuntu+3.0.16+x64/170f0e8a-c83f-4570-af0f-7fbd4741a42e")
+source_x86_64=("https://www.autenticacao.gov.pt/documents/10179/11962/Autenticacao.gov_Ubuntu_19_x64.deb")
 
-md5sums_x86_64=('bdf1a20572331d37e057bba4446287fd')
+md5sums_x86_64=('fb90d49674be52c6ce7f0e6b1afe8810')
 
 prepare() {
 	tar -xf data.tar.xz
