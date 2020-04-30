@@ -1,7 +1,7 @@
 # Maintainer: Karol Babioch <karol@babioch.de>
 
 pkgname=('python-pyu2f' 'python2-pyu2f')
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="U2F host library for interacting with a U2F device over USB."
 arch=('any')
