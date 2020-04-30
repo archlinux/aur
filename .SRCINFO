@@ -7,7 +7,7 @@ pkgbase = neovim-commentary-opt-git
 	license = custom:vim
 	makedepends = git
 	depends = neovim
-	source = git+https://github.com/tpope/vim-commentary.git
+	source = commentary::git+https://github.com/tpope/vim-commentary.git
 	sha256sums = SKIP
 
 pkgname = neovim-commentary-opt-git
