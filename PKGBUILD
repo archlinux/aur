@@ -1,40 +1,37 @@
-# Maintainer: Ward Segers <w@rdsegers.be>
+# Maintainer: Diab Neiroukh <officiallazerl0rd@gmail.com>
+# Contributor: Ward Segers <w@rdsegers.be>
 
 pkgname=otf-inter
-_pkgname=Inter
 pkgver=3.13
 pkgrel=1
-pkgdesc="Typeface carefully crafted & designed for computer screens."
-arch=('any')
-conflicts=('inter-font')
+epoch=1
+pkgdesc="Inter is a typeface carefully crafted & designed for computer screens"
+arch=(
+	"any"
+)
+conflicts=(
+	"inter-font"
+)
 url="https://github.com/rsms/inter"
-license=('custom:OFL')
-depends=(fontconfig xorg-font-utils)
-source=("https://github.com/rsms/inter/releases/download/v$pkgver/$_pkgname-$pkgver.zip")
-sha512sums=("dd9249833383373b2f45a0c7b47a3d0f71234b685475962c8299fa02ec1271602ce33ff43c9ce20019eef069b771d5c62a3f28fddc654bc451dc363c65361dda")
+license=(
+	"custom"
+)
+depends=(
+	"fontconfig"
+	"xorg-font-utils"
+)
+source=(
+	"https://github.com/rsms/inter/releases/download/v$pkgver/Inter-$pkgver.zip"
+	)
+b2sums=(
+	"d8630d083529f23ffdc92d4bad9b08ded1060d379cfe82aacc50e513d69bb51c7b6dc226ad10133a8781e9edceddc03fde665dc586c07863cf2c6faeb6e266d7"
+)
 
+package()
+{
+	install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-package() {
-  install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  cd "$_pkgname"
-  install -d "${pkgdir}/usr/share/fonts/OTF"
-  install -m644 *.otf "${pkgdir}/usr/share/fonts/OTF/"
+	cd "Inter Desktop" || exit
+	install -d "${pkgdir}/usr/share/fonts/OTF"
+	install -m644 *".otf" "${pkgdir}/usr/share/fonts/OTF/"
 }
-
-post_install() {
-  echo -n "Updating font cache... "
-  fc-cache -s
-  mkfontscale /usr/share/fonts/OTF
-  mkfontdir /usr/share/fonts/OTF
-  echo "done."
-}
-
-post_upgrade() {
-  post_install $1
-}
-
-post_remove() {
-  post_install $1
-}
-
