@@ -1,12 +1,11 @@
 pkgbase = skypeforlinux-stable-bin
 	pkgdesc = Skype for Linux - Stable/Release Version
 	pkgver = 8.59.0.77
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.skype.com
 	install = install.sh
 	arch = x86_64
 	license = custom
-	makedepends = asar
 	depends = gtk3
 	depends = libxss
 	depends = alsa-lib
