@@ -1,2 +1,4 @@
-/wlgreet/
-/*.pkg.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

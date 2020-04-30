@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=greetd-wlgreet-git
-pkgver=r4.d4152fdea7
+pkgver=0.2+1.g6b4a719345
 pkgrel=1
 pkgdesc="Wayland greeter for greetd"
 arch=(x86_64)
@@ -10,14 +10,11 @@ license=(MIT)
 source=("git+$url")
 sha256sums=('SKIP')
 conflicts=(greetd-wlgreet)
-provides=(greetd-wlgreet)
+provides=(greetd-wlgreet=${pkgver%+*})
 makedepends=(rust)
 
 pkgver() {
-  cd wlgreet
-  printf 'r%d.%s' \
-    $(git rev-list --count HEAD) \
-    $(git rev-parse HEAD | head -c10)
+  git -C wlgreet describe --tags --abbrev=10 | sed 's/-/+/; s/-/./'
 }
 
 build() {
