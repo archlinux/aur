@@ -1,7 +1,7 @@
 pkgbase = ayatana-indicator-application
 	pkgdesc = Ayatana Application Indicators
-	pkgver = 0.5.2
-	pkgrel = 5
+	pkgver = 0.5.3
+	pkgrel = 1
 	url = https://github.com/AyatanaIndicators
 	arch = i686
 	arch = x86_64
@@ -22,10 +22,8 @@ pkgbase = ayatana-indicator-application
 	depends = dbus-glib
 	depends = libayatana-appindicator-gtk3
 	options = !emptydirs
-	source = https://github.com/AyatanaIndicators/ayatana-indicator-application/archive/0.5.2.tar.gz
-	source = 0001-Make-systemd-optional.-If-systemd-is-not-available-a.patch
-	md5sums = 985c267d81f4450ae01d6709d2c452ee
-	md5sums = 1b00c0fd21c28eff19297e40af3e5ed1
+	source = https://github.com/AyatanaIndicators/ayatana-indicator-application/archive/0.5.3.tar.gz
+	md5sums = d6f378cb16a39ce85bee5c669159891d
 
 pkgname = ayatana-indicator-application
 
