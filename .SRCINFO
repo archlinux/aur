@@ -1,6 +1,6 @@
 pkgbase = linux-ck
 	pkgver = 5.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
@@ -11,7 +11,7 @@ pkgbase = linux-ck
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.8.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.8.tar.sign
 	source = config
-	source = sphinx-workaround.patch
+	source = 0000-sphinx-workaround.patch
 	source = enable_additional_cpu_optimizations-20191217.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20191217.tar.gz
 	source = http://ck.kolivas.org/patches/5.0/5.6/5.6-ck1/patch-5.6-ck1.xz
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
