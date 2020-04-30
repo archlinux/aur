@@ -6,6 +6,7 @@ pkgbase = bisq
 	arch = any
 	license = AGPL3
 	makedepends = git
+	makedepends = git-lfs
 	makedepends = maven
 	makedepends = jdk10-openjdk
 	makedepends = protobuf
