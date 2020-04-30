@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname="cups-nosystemd"
-pkgver=2.3.1
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ source=(https://github.com/apple/cups/releases/download/v${pkgver}/cups-${pkgver
         cups-no-export-ssllibs.patch
         cups-1.6.2-statedir.patch
         )
-sha256sums=('1bca9d89507e3f68cbc84482fe46ae8d5333af5bc2b9061347b2007182ac77ce'
+sha256sums=('261fd948bce8647b6d5cb2a1784f0c24cc52b5c4e827b71d726020bcc502f3ee'
             '87cd833e7c07a36298341e35d5ce0534ce68fdf76ce3e9eda697e5455b963d1b'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
