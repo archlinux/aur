@@ -22,7 +22,7 @@ tasks:
       echo "Checking for license"
       ls /usr/share/licenses/proton*
       cat /usr/share/licenses/protonvpn-cli-ng/LICENSE
-      echo "That's all!"
+      echo "That's all! Ready for lift-off."
 triggers:
   - action: email
     condition: always
