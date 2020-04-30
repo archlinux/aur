@@ -1,0 +1,18 @@
+pkgbase = man-pages-fr-git
+	pkgdesc = French man pages (Git version)
+	pkgver = r8801.2f05e6e87
+	pkgrel = 1
+	url = https://salsa.debian.org/manpages-l10n-team/manpages-l10n
+	changelog = man-pages-fr-git.changelog
+	arch = any
+	license = GPL3
+	makedepends = po4a
+	makedepends = git
+	depends = man-db
+	conflicts = man-pages-fr
+	options = !emptydirs
+	source = manpages-l10n::git+https://salsa.debian.org/manpages-l10n-team/manpages-l10n.git
+	sha512sums = SKIP
+
+pkgname = man-pages-fr-git
+
