@@ -9,7 +9,7 @@ arch=('x86_64')
 url="http://abricotine.brrd.fr"
 license=('GPL3')
 depends=('libxss')
-makedepends=('npm' 'nodejs-lts-erbium')
+makedepends=('npm' 'nodejs-lts-erbium' 'python2')
 source=("abricotine-${pkgver}.tar.gz::https://github.com/brrd/abricotine/archive/${pkgver}.tar.gz"
         "abricotine.desktop")
 sha256sums=('ed12ba3d518b87bbd965b09a25c931d827c2250deb6af0d6c5137ff3795a0575'
