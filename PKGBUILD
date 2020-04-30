@@ -5,7 +5,7 @@
 
 pkgname=bigloo-devel
 pkgver=4.3h
-pkgrel=5
+pkgrel=7
 epoch=1
 pkgdesc="Fast scheme compiler"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!makeflags' 'staticlibs')
 conflicts=('bigloo')
 provides=("bigloo=$pkgver")
 source=(ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${pkgname%-devel}-unstable.tar.gz bigloo-emacs.patch)
-md5sums=('4e405601bb52fba11e1cc21c48cb775c'
+md5sums=('ba9a823da14d97da91b666a750839ea4'
          '35b417dfd1928c8cacca3e3931cc4c3a')
 elisp_dir=/usr/share/emacs/site-lisp/bigloo
 
