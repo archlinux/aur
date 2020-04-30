@@ -2,12 +2,12 @@
 
 pkgname=graviton-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern Code Editor'
 arch=('x86_64')
 url='https://graviton.netlify.app/'
 license=('MIT')
-depends=('libappindicator-gtk3' 'libdbusmenu-gtk3' 'libindicator-gtk3')
+depends=('libappindicator-gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils')
 provides=("graviton")
 conflicts=("graviton")
 options=('!strip')
