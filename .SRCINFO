@@ -1,7 +1,7 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
 	pkgver = 5.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -15,7 +15,7 @@ pkgbase = linux-clear
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.tar.sign
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.6.8.xz
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.6.5-941
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.6.8-944
 	source = enable_additional_cpu_optimizations-20191217.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20191217.tar.gz
 	source = pci-enable-overrides-for-missing-acs-capabilities.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
