@@ -1,0 +1,29 @@
+pkgbase = thunderbird-beta-bin-zh-cn
+	pkgdesc = Standalone Mail/News reader - Bleeding edge binary version 中文预编译版
+	pkgver = 76.0b3
+	pkgrel = 1
+	url = https://www.mozilla.org/thunderbird
+	install = thunderbird-beta-bin-zh-cn.install
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = MPL
+	depends = dbus-glib
+	depends = gtk3
+	depends = libxt
+	depends = nss
+	optdepends = hunspell: Spell checking
+	optdepends = hyphen: Hyphenation
+	optdepends = libcanberra: Sound support
+	provides = thunderbird=76.0b3
+	conflicts = thunderbird-beta
+	conflicts = thunderbird-beta-bin
+	source = https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/76.0b3/linux-x86_64/zh-CN/thunderbird-76.0b3.tar.bz2
+	source = thunderbird-beta-bin-zh-cn.desktop
+	source = vendor.js
+	sha512sums = 26660c7f3bf0e3f5022f377f212db2333d59fa9c9a05fc726857a8a7b42b7caf861d94463e359d87f5db8e87d5869f09e1007e41093a62cd8c06befb62211506
+	sha512sums = 5639d9808d543f151eebb5b79246dbac9c5a3f68a2e1fc28190da62867e02a07b96e8409e460ecb5398aab37ea4959d5eeb7d2fc592014779c3b6791a0b50b93
+	sha512sums = aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5
+
+pkgname = thunderbird-beta-bin-zh-cn
+
