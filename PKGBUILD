@@ -1,7 +1,7 @@
 # Maintaner: jskier <jay@jskier.com>
 # Contributor: jskier <jay @jskier.com>
 pkgname=python-keeper-commander-git
-pkgver=4.21
+pkgver=4.3.1
 pkgrel=1
 #epoch=1
 pkgdesc="Module provides SDK for Keeper® Password Manager."
