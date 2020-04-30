@@ -5,7 +5,8 @@
 pkgbase=mt76-git
 pkgname=('mt76-dkms-git' 'mt76-firmware-git')
 pkgver=r1915.g5f3ccc7
-pkgrel=4
+pkgrel=5
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/openwrt/mt76'
 makedepends=('git')
 source=("git+${url}.git"
@@ -22,7 +23,6 @@ pkgver() {
 
 package_mt76-dkms-git() {
 	pkgdesc='mac80211 driver for MediaTek MT76x0e, MT76x2e, MT7603, MT7615, MT7628 and MT7688'
-	arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 	license=('GPL2' 'ISC')
 	provides=('mt76-dkms')
 	depends=('dkms')

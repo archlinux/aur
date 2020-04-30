@@ -1,7 +1,13 @@
 pkgbase = mt76-git
 	pkgver = r1915.g5f3ccc7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/openwrt/mt76
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	makedepends = git
 	source = git+https://github.com/openwrt/mt76.git
 	source = wireless-mediatek-Replace-rcu_swap_protected-with-rc.patch
@@ -12,12 +18,6 @@ pkgbase = mt76-git
 
 pkgname = mt76-dkms-git
 	pkgdesc = mac80211 driver for MediaTek MT76x0e, MT76x2e, MT7603, MT7615, MT7628 and MT7688
-	arch = x86_64
-	arch = i686
-	arch = arm
-	arch = armv6h
-	arch = armv7h
-	arch = aarch64
 	license = GPL2
 	license = ISC
 	depends = dkms
