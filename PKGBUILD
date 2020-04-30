@@ -5,10 +5,8 @@
 pkgbase=mt76-git
 pkgname=('mt76-dkms-git' 'mt76-firmware-git')
 pkgver=r1915.g5f3ccc7
-pkgrel=3
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+pkgrel=4
 url='https://github.com/openwrt/mt76'
-license=('GPL2' 'ISC')
 makedepends=('git')
 source=("git+${url}.git"
         'wireless-mediatek-Replace-rcu_swap_protected-with-rc.patch'
@@ -23,9 +21,13 @@ pkgver() {
 }
 
 package_mt76-dkms-git() {
-	pkgdesc='mac80211 driver for MediaTek MT76x2e, MT7603, MT7628 and MT7688'
+	pkgdesc='mac80211 driver for MediaTek MT76x0e, MT76x2e, MT7603, MT7615, MT7628 and MT7688'
+	arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+	license=('GPL2' 'ISC')
 	provides=('mt76-dkms')
-	depends=('dkms' 'mt76-firmware-git')
+	depends=('dkms')
+	optdepends=('linux-firmware: basic set of firmwares'
+	            'mt76-firmware-git: complementary set of firmwares')
 
 	install -dm755 ${pkgdir}/usr/src/mt76-${pkgver}/patches
 	cp -r ${srcdir}/mt76/* ${pkgdir}/usr/src/mt76-${pkgver}/
@@ -35,7 +37,9 @@ package_mt76-dkms-git() {
 }
 
 package_mt76-firmware-git() {
-	pkgdesc='Firmware for MediaTek MT76x2e, MT7603, MT7628 and MT7688'
+	pkgdesc='Firmware for MediaTek MT76x2e, MT7603, MT7628'
+	arch=('any')
+	license=('custom:Ralink Limited Patent License')
 	provides=('mt76-firmware')
 
 	install -dm755 ${pkgdir}/usr/lib/firmware/mediatek
