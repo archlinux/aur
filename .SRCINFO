@@ -1,5 +1,5 @@
 pkgbase = python-social-auth
-	pkgdesc = an easy-to-setup social authentication/registration mechanism with support for several frameworks and auth providers
+	pkgdesc = Easy-to-setup social authentication/registration
 	pkgver = 0.2.21
 	pkgrel = 1
 	url = https://github.com/omab/python-social-auth
@@ -7,23 +7,16 @@ pkgbase = python-social-auth
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	options = !emptydirs
-	source = https://github.com/omab/python-social-auth/archive/v0.2.21.tar.gz
-	sha256sums = 76e1ff1aedac684b871e9eeb888da51f9ace0d94a811555ca2bbb80b065eba0f
-
-pkgname = python-social-auth
+	makedepends = git
 	depends = python-openid
 	depends = python-requests
 	depends = python-oauthlib
 	depends = python-requests-oauthlib
 	depends = python-six
 	depends = python-jwt
+	options = !emptydirs
+	source = git+https://github.com/omab/python-social-auth#tag=v0.2.21
+	sha256sums = SKIP
 
-pkgname = python2-social-auth
-	depends = python2-openid
-	depends = python2-requests
-	depends = python2-oauthlib
-	depends = python2-requests-oauthlib
-	depends = python2-six
-	depends = python2-jwt
+pkgname = python-social-auth
 
