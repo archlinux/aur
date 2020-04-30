@@ -1,7 +1,7 @@
 pkgbase = superpaper
 	pkgdesc = Cross-platform multi monitor wallpaper manager
-	pkgver = 2.0.0
-	pkgrel = 3
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/hhannine/Superpaper
 	arch = any
 	license = MIT
@@ -12,9 +12,11 @@ pkgbase = superpaper
 	depends = python-system_hotkey>=1.0.2+10+9541587
 	depends = python-xpybutil
 	depends = python-numpy
-	source = superpaper-2.0.0.tar.gz::https://github.com/hhannine/Superpaper/archive/v2.0.0.tar.gz
-	source = 0001_revert_pillow_7.0_requirement.patch::https://github.com/hhannine/superpaper/commit/6eecf85a628cc898b943959920e7fb479b985044.patch
-	sha256sums = f1ffbc7cdeb77474c4dfaa6ec7db66d797aa750af164f9e343860ea9ea0dbbe5
+	source = superpaper-2.0.1.tar.gz::https://github.com/hhannine/Superpaper/archive/v2.0.1.tar.gz
+	source = 0001_revert_e7c59c9d5d1ff0d40554909b906cbdbd6642e01d.patch::https://github.com/hhannine/superpaper/commit/e7c59c9d5d1ff0d40554909b906cbdbd6642e01d.patch
+	source = 0002_revert_pillow_7.0_requirement.patch::https://github.com/hhannine/superpaper/commit/6eecf85a628cc898b943959920e7fb479b985044.patch
+	sha256sums = 8cc6e271b754398e6368f773019df74366f09712742fb24109817506cfbd7fef
+	sha256sums = 748a38ad800dd63e107bd4cd54fd25e276d7d13a410eddbfb8e0e78ab6c12ee6
 	sha256sums = 8a76617f08175ec0c98b40228de920e1a1252727d229c5e32f7787ffe336a994
 
 pkgname = superpaper
