@@ -1,6 +1,6 @@
 pkgbase = python-pep-adapter-hg
 	pkgdesc = p≡p Python adapter
-	pkgver = r179.da8d0de6e5f2
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://pep.foundation/dev/repos/pEpPythonAdapter
 	arch = any

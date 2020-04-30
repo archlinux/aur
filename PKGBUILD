@@ -2,7 +2,7 @@
 
 pkgname=python-pep-adapter-hg
 _name=pEpPythonAdapter
-pkgver=r179.da8d0de6e5f2
+pkgver=1.0
 pkgrel=1
 pkgdesc="p≡p Python adapter"
 url="https://pep.foundation/dev/repos/pEpPythonAdapter"
@@ -15,21 +15,26 @@ source=("hg+https://pep.foundation/dev/repos/${_name}")
 sha256sums=('SKIP')
 provides=('python-pep-adapter')
 
-pkgver() {
-  cd "$srcdir/${_name}"
+prepare() {
+	cd "$srcdir/${_name}"
 
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+	sed -i 's/\-mt//g' setup.py
+}
+
+pkgver() {
+	cd "$srcdir/${_name}"
+	
+	awk "/^\\s*version='[0-9\.]+',$/ "'{print $1}' setup.py | cut -c10- | rev | cut -c3- | rev
 }
 
 build() {
-  cd "$srcdir/${_name}"
-  
-  sed -i 's/\-mt//g' setup.py
-  python3 setup.py build_ext
+	cd "$srcdir/${_name}"
+
+	python3 setup.py build_ext
 }
 
 package() {
-  cd "$srcdir/${_name}"
-  
-  python3 setup.py install --root="$pkgdir" --optimize=1
+	cd "$srcdir/${_name}"
+
+	python3 setup.py install --root="$pkgdir" --optimize=1
 }
