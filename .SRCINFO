@@ -1,5 +1,5 @@
 pkgbase = bootsplash-manjaro-globe
-	pkgdesc = Bootsplash Theme Manjaro with globe spinner
+	pkgdesc = Bootsplash Theme Manjaro with rotate globe spinner'
 	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/githubgeeker/bootsplash-manjaro-globe
