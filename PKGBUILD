@@ -2,7 +2,7 @@
 
 pkgname=python-rich
 _pkgname=rich
-pkgver=0.8.12
+pkgver=0.8.13
 pkgrel=1
 pkgdesc="A Python library for rich text and beautiful formatting in the terminal"
 arch=("any")
@@ -14,15 +14,15 @@ depends=("python-colorama"
          "python-typing_extensions")
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('c783f1c99cc709992e6a1cf9f0d04fc27c205a8920a87d1e24ced0aab49be26f')
+sha256sums=('fc8d6ec66bc9d12cf4f4291ff4d149f784bd6de33ec547950e9456899773f9b2')
 
 build() {
-    cd ${_pkgname}-${pkgver}
-    python setup.py build
+  cd ${_pkgname}-${pkgver}
+  python setup.py build
 }
 
 package() {
-    cd ${_pkgname}-${pkgver}
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  cd ${_pkgname}-${pkgver}
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
