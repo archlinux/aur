@@ -1,6 +1,6 @@
 pkgbase = oracle-instantclient-basic
 	pkgdesc = Light replacement for the Oracle client (files to run OCI, OCCI and JDBC-OCI programs)
-	pkgver = 19.5.0.0.0
+	pkgver = 19.6.0.0.0
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/database/features/instant-client/
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = oracle-instantclient-basic
 	options = !strip
 	source = LICENSE
 	source = oracle.sh
-	source = manual://instantclient-basic-linux.x64-19.5.0.0.0dbru.zip
+	source = https://download.oracle.com/otn_software/linux/instantclient/19600/instantclient-basic-linux.x64-19.6.0.0.0dbru.zip
 	md5sums = 2d62e22e4f2d7e6d220fafde0f692a7d
 	md5sums = 784005aa31cb56bb2303179d98fccd8e
-	md5sums = f7f6c7e970c6bc3dd9ad77d4a7d5b332
+	md5sums = 9fe2fc71226da1bdb3c47481b4a14cc2
 	sha256sums = f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2
 	sha256sums = 36b5ab97950f1667403dd9b59c3cad25d8f9e457702feaece835d1bff7c971c9
-	sha256sums = 1765ffc810e83981acd3c1e7fc080634133b809721d6757c1ce2e8f275154880
+	sha256sums = b7d9fe82a61cdb46d80917d93c22650dc5c6c5dda9c5f828ab0b7d71753340f9
 
 pkgname = oracle-instantclient-basic
 
