@@ -1,31 +1,25 @@
 # Maintainer: Richard Steinmetz <steinmetz.richard@googlemail.com>
 
 pkgname=docker-bashbrew
-pkgver=0.r156.189add54
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Canonical build tool for the official docker images'
 arch=('x86_64')
-url='https://github.com/docker-library/official-images'
+url='https://github.com/docker-library/bashbrew'
 license=('Apache')
 depends=('docker>=1:10' 'git')
-makedepends=('go')
+makedepends=('go-pie')
 provides=('bashbrew')
 conflicts=('bashbrew')
-source=("git+$url")
+source=("git+$url#tag=v$pkgver")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "official-images"
-  printf "0.r%s.%s" "$(git rev-list --count HEAD bashbrew)" "$(git log --oneline bashbrew | head -1 | awk '{printf $1}')"
-}
-
 build() {
-  cd "$srcdir/official-images/bashbrew/go"
-  GO111MODULE=on go build -o bin/bashbrew -mod vendor bashbrew/src/bashbrew
+  cd "$srcdir/bashbrew"
+  GO111MODULE=on go build -o ./bin/bashbrew -mod vendor ./cmd/bashbrew
 }
 
 package() {
-  cd "$srcdir"
-  install -Dm 755 official-images/bashbrew/go/bin/bashbrew "$pkgdir/usr/bin/bashbrew"
-  install -Dm 644 official-images/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/bashbrew"
+  install -Dm 755 ./bin/bashbrew "$pkgdir/usr/bin/bashbrew"
 }
