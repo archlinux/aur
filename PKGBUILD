@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=GenomicRanges
-_bcver=1.39.3
+_bcver=1.40.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=('r>=2.10' 'r-biocgenerics>=0.25.3' 'r-s4vectors>=0.25.14' 'r-iranges>=2
 makedepends=(gcc)
 optdepends=(r-biobase r-annotationdbi r-annotate r-biostrings r-summarizedexperiment r-rsamtools r-genomicalignments r-rtracklayer r-bsgenome r-genomicfeatures r-gviz r-variantannotation r-annotationhub r-deseq2 r-dexseq r-edger r-kegggraph r-rnaseqdata.hnrnpc.bam.chr14 r-pasillabamsubset r-kegg.db r-hgu95av2.db r-hgu95av2probe r-bsgenome.scerevisiae.ucsc.saccer2 r-bsgenome.hsapiens.ucsc.hg19 bsgenome.mmusculus.ucsc.mm10 r-txdb.athaliana.biomart.plantsmart22 txdb.dmelanogaster.ucsc.dm3.ensgene r-txdb.hsapiens.ucsc.hg19.knowngene r-txdb.mmusculus.ucsc.mm10.knowngene r-runit r-digest r-knitr r-biocstyle)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-md5sums=('21b7e05689fa56405e3fd7e1db062e69')
+md5sums=('fe0ad4d399b4db1eb2b175f52d402359')
 
 build() {
   cd "${srcdir}"
