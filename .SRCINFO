@@ -1,0 +1,14 @@
+pkgbase = codelobster
+	pkgdesc = Free cross-platform IDE for PHP/HTML/CSS/JavaScript development
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = http://www.codelobster.com
+	arch = x86_64
+	license = custom
+	provides = codelobster-ide
+	options = !strip
+	source = codelobster-1.8.0.rpm::http://codelobsteride.com/download/codelobsteride-1.8.0-1.x86_64.rpm
+	sha256sums = 19a0e1a5163782cc36367b78e14da6f053965ef5e636be88955ad91e15652d81
+
+pkgname = codelobster
+
