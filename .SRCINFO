@@ -1,0 +1,14 @@
+pkgbase = astrodmx-capture
+	pkgdesc = AstroDMx Capture Astronomical Imaging
+	pkgver = 0.68.1
+	pkgrel = 1
+	url = https://www.linux-astro-imaging.uk/
+	install = astrodmx-capture.install
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = https://www.linux-astro-imaging.uk/sites/downloads/astrodmx_capture-0.68.1-manual-x86_64.tar.gz
+	sha256sums = 31f66b5998b76d8853061a465d8aef53145d36aad27cfe16bb13624259c8e0ea
+
+pkgname = astrodmx-capture
+
