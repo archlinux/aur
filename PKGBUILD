@@ -2,7 +2,7 @@
 
 pkgname=bootsplash-manjaro-grey
 _pkgname=bootsplash-manjaro-grey
-pkgver=0.1
+pkgver=r2.35b081e
 pkgrel=1
 pkgdesc="Bootsplash Theme 'Manjaro Grey'"
 arch=('any')

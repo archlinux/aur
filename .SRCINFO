@@ -1,6 +1,6 @@
 pkgbase = bootsplash-manjaro-grey
 	pkgdesc = Bootsplash Theme 'Manjaro Grey'
-	pkgver = 0.1
+	pkgver = r2.35b081e
 	pkgrel = 1
 	url = https://github.com/githubgeeker/bootsplash-manjaro-grey
 	arch = any
