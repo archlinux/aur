@@ -9,6 +9,7 @@ pkgbase = rtl8192eu
 	license = GPL
 	makedepends = linux-headers
 	makedepends = git
+	makedepends = bc
 	depends = dkms
 	source = git+https://github.com/Mange/rtl8192eu-linux-driver.git
 	source = fix.patch
