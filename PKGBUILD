@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=vr-video-player-git
-pkgver=r8.0655cac
+pkgver=r9.15c0408
 pkgrel=1
 pkgdesc='A virtual reality video player for x11 on Linux'
 arch=('x86_64')
@@ -27,5 +27,6 @@ build() {
 package() {
   cd "$srcdir/vr_video_player"
   install -D -m +x "sibs-build/$(sibs platform)/release/vr_video_player" "$pkgdir/usr/bin/vr-video-player"
+  install -Dm644 config/hellovr_actions.json "$pkgdir/usr/share/vr-video-player/hellovr_actions.json"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/vr-video-player/LICENSE"
 }
