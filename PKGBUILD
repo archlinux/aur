@@ -2,8 +2,8 @@
 # Co-Maintainer: McModder <aur @ modder.pw>
 # PLEASE do not mark it out-of date because "2.xx is released", *2.xx a separate project with same name from other dev team*
 pkgname=tlauncher
-pkgver=1.112.4
-pkgrel=1
+pkgver=1.114.4
+pkgrel=2
 epoch=1
 pkgdesc='TLauncher Legacy is freeware launcher of Minecraft.'
 url='https://tlaun.ch'
@@ -19,11 +19,14 @@ _librepo='http://u.tlauncher.ru/repo'
 # _librepo='http://repo.tlauncher.ru/repo'
 # _librepo='http://turikhay.ru/tlauncher/repo'
 
-_bootstrap_version=''
-_bootstrap_checksum='972758e1c5cad62861844a94f2830a14c7e795975108cd3d31de729285c53eb6' # mark out-of-date if you'll get 404
+_bootstrap_checksum='972758e1c5cad62861844a94f2830a14c7e795975108cd3d31de729285c53eb6'
 _launcher_checksum='6e40f9b10a2a5ef00004e4d406d33a5550ec069a6475be9bf26b8fe94b9b0bea'
 
-source=("${_repo}/legacy_beta/bootstrap/${_bootstrap_checksum}.jar"
+source=(#"${_repo}/legacy_beta/bootstrap/${_bootstrap_checksum}.jar"
+        # Patched bootstrap to allow launching without RW rights (RO only)
+        # Pached by TL dev; if you're having questions you can ask it
+        # using support email support[at]tlauncher.ru
+        "https://files.modder.pw/mc/tl_bootstrap_1.8.2_patched.jar"
         "${_repo}/legacy_beta/launcher/${_launcher_checksum}.jar"
 
         "${_librepo}/libraries/org/jdom/jdom/2.0.2/jdom-2.0.2.jar"
@@ -47,8 +50,9 @@ source=("${_repo}/legacy_beta/bootstrap/${_bootstrap_checksum}.jar"
         'tlauncher.desktop'
         'tlauncher.install')
 noextract=("${source[@]##*/}")
-sha256sums=("${_bootstrap_checksum}"
-            ${_launcher_checksum}
+sha256sums=(#"${_bootstrap_checksum}"
+            'b713eb25937d7f0a70a5c8dbd29c511c53f710a63cba6d5f824cc9f4cb9d8a93'
+            "${_launcher_checksum}"
 
             '2bdf7a48fddc9259f5aa420eee328e939d71302a6a1b79a176e4fd47ee988b97'
             '86f30fa8775fa3a62cdb39d1ed78a6019164c1058864048d42cbee244e26e840'
@@ -68,14 +72,15 @@ sha256sums=("${_bootstrap_checksum}"
             '6b4c15577b5256b64c7e3d69dcdbf8d18f17f68ac5928e36936bd6a40a91c218'
             'bbb82aadb5e4209527c15fcc40e514b6f4c921a37bc66b68b3611bec70c538e8'
 
-            '3e6fd08d4ed36b3fe4c1cbd06cddd78fd8b3b491e350c2d0cf8d4234e5ba2727'
+            '63d7258ab63c40bfed855811f9772936350cb83993ff6cfef16c21db0642fb01'
             '0346fbc5e81522e498b63d392339024b8617a03de9fdf9126ba6364db94e188b')
 install="${pkgname}.install"
 
 package() {
   install -Dm0644 "${srcdir}/tlauncher.desktop" "${pkgdir}/usr/share/applications/tlauncher.desktop"
 
-  install -Dm0644 "${srcdir}/${_bootstrap_checksum}.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
+#  install -Dm0644 "${srcdir}/${_bootstrap_checksum}.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
+  install -Dm0644 "${srcdir}/tl_bootstrap_1.8.2_patched.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
   install -Dm0644 "${srcdir}/${_launcher_checksum}.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
 
   install -Dm0644 "${srcdir}/jdom-2.0.2.jar" "${pkgdir}/opt/tlauncher/lib/org/jdom/jdom/2.0.2/jdom-2.0.2.jar"

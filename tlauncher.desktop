@@ -4,7 +4,7 @@ Type=Application
 Name=TLauncher
 Comment=TLauncher is Minecraft Launcher
 Icon=minecraft
-Exec=java -Dtlauncher.bootstrap.targetLibFolder=/opt/tlauncher/lib -Dtlauncher.bootstrap.ignoreSelfUpdate=true -Dtlauncher.bootstrap.ignoreUpdate=true -Dtlauncher.bootstrap.targetJar=/opt/tlauncher/launcher.jar -jar /opt/tlauncher/bootstrap.jar
+Exec=java -Dtlauncher.bootstrap.targetLibFolder=/opt/tlauncher/lib -Dtlauncher.bootstrap.brand=legacy_beta -Dtlauncher.bootstrap.ignoreSelfUpdate=true -Dtlauncher.bootstrap.ignoreUpdate=true -Dtlauncher.bootstrap.targetJar=/opt/tlauncher/launcher.jar -jar /opt/tlauncher/bootstrap.jar
 NoDisplay=false
 Categories=Application;Game;
 StartupNotify=false
