@@ -1,8 +1,8 @@
-pkgbase = swayshot
+pkgbase = swaygrab
 	pkgdesc = An easy to use screenshot tool for sway.
-	pkgver = 0.1.1
+	pkgver = 0.2.1
 	pkgrel = 1
-	url = https://gitlab.com/WhyNotHugo/swayshot
+	url = https://gitlab.com/WhyNotHugo/swaygrab
 	arch = x86_64
 	license = MIT
 	makedepends = scdoc
@@ -10,8 +10,8 @@ pkgbase = swayshot
 	depends = grim
 	depends = slurp
 	depends = jq
-	source = https://gitlab.com/WhyNotHugo/swayshot/-/archive/v0.1.1/swayshot-v0.1.1.tar.gz
-	md5sums = 9ef9fe8b98e35c7d5c81cae0624a16e0
+	source = https://gitlab.com/WhyNotHugo/swaygrab/-/archive/v0.2.1/swaygrab-v0.2.1.tar.gz
+	md5sums = cae7608bdbff0890a49b96d80a685b49
 
-pkgname = swayshot
+pkgname = swaygrab
 
