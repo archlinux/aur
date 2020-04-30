@@ -1,0 +1,11 @@
+--- core/mpw-marshal-util.c~	2020-04-30 15:20:51.775480937 +0200
++++ core/mpw-marshal-util.c	2020-04-30 15:20:58.518832576 +0200
+@@ -94,7 +94,7 @@
+     if (!json_value)
+         return defaultValue;
+
+-    return json_object_get_boolean( json_value ) == TRUE;
++    return json_object_get_boolean( json_value ) == true;
+ }
+ #endif
+
