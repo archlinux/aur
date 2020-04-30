@@ -31,9 +31,10 @@ pkgver() {
 build() {
   cd greetd
   RUSTFLAGS="--remap-path-prefix=$(pwd)=/build/" cargo build --release --locked
-  for i in man/*.scd
+  cd man
+  for i in *.scd
   do
-    scdoc < "$i" > "${i::-4}".roff
+    scdoc < "$i" > "$(basename "$i" .scd)".roff
   done
 }
 
@@ -43,23 +44,18 @@ package() {
   install -Dm755 "$srcdir/greetd/target/release/agreety" \
     "$pkgdir/usr/bin/agreety"
 
-  for i in "$srcdir/greetd/man"/*-1.roff
-  do
-    base="$(basename "$i")"
-    install -Dm644 "$i" "$pkgdir/usr/share/man/man1/${base::-7}.1"
-  done
+  (
+    cd greetd/man
+    for s in 1 5 7
+    do
+      install -d "$pkgdir/usr/share/man/man$s"
+      for i in *-$s.roff
+      do
+        install -m755 "$i" "$pkgdir/usr/share/man/man$s/${i%-*}.$s"
+      done
+    done
+  )
 
-  for i in "$srcdir/greetd/man"/*-5.roff
-  do
-    base="$(basename "$i")"
-    install -Dm644 "$i" "$pkgdir/usr/share/man/man5/${base::-7}.5"
-  done
-
-  for i in "$srcdir/greetd/man"/*-7.roff
-  do
-    base="$(basename "$i")"
-    install -Dm644 "$i" "$pkgdir/usr/share/man/man7/${base::-7}.7"
-  done
 
   install -Dm644 "$srcdir/greetd/greetd.service" \
     "$pkgdir/usr/lib/systemd/system/greetd.service"
