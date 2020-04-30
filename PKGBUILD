@@ -183,15 +183,20 @@ _package() {
         coreutils
         kmod
         initramfs
+        linux-firmware
         thrash-protect
     )
     optdepends=(
         "crda: to set the correct wireless channels of your country"
-        "linux-firmware: firmware images needed for some devices"
     )
-    provides=("$pkgbase=$pkgver"
-              VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-    replaces=(virtualbox-guest-modules-arch wireguard-arch)
+    provides=(
+        VIRTUALBOX-GUEST-MODULES
+        WIREGUARD-MODULE
+    )
+    replaces=(
+        virtualbox-guest-modules-arch
+        wireguard-arch
+    )
 
     cd $_reponame 
     local kernver="$(<version)"
@@ -214,11 +219,6 @@ _package() {
 
 _package-headers() {
     pkgdesc="Header files and scripts for building modules for $pkgdesc kernel $_pkgdesc_extra"
-    depends=("$pkgbase=$pkgver")
-    provides=(
-        "$pkgbase-headers=$pkgver"
-        "linux-headers=$pkgver"
-    )
 
     cd $_reponame
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"

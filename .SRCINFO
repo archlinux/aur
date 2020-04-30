@@ -36,10 +36,9 @@ pkgname = linux-pds
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
+	depends = linux-firmware
 	depends = thrash-protect
 	optdepends = crda: to set the correct wireless channels of your country
-	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-pds=5.6.8.arch1
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 	replaces = virtualbox-guest-modules-arch
@@ -47,9 +46,6 @@ pkgname = linux-pds
 
 pkgname = linux-pds-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG
-	depends = linux-pds=5.6.8.arch1
-	provides = linux-pds-headers=5.6.8.arch1
-	provides = linux-headers=5.6.8.arch1
 
 pkgname = linux-pds-docs
 	pkgdesc = Documentation for the Linux kernel ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG
