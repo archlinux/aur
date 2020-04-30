@@ -2,7 +2,7 @@
 
 _pkgname=lotus
 pkgname=$_pkgname-git
-pkgver=0.2.10.r1012.g1120298b0
+pkgver=0.2.10.r1023.g1120298b0
 pkgrel=1
 pkgdesc='Filecoin client in Go'
 arch=('x86_64')
@@ -10,17 +10,17 @@ url="https://github.com/filecoin-project/$_pkgname"
 license=('MIT' 'APACHE')
 makedepends=('go' 'gcc' 'git')
 depends=('ocl-icd' 'gcc-libs')
-source=("git+${url}.git#branch=feat/ldflags")
+source=("git+${url}.git#branch=testnet/3")
 b2sums=('SKIP')
 
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	VERSION=$(git tag | grep -ve "-dev" | sed 's/-/~/g' | sort --version-sort --reverse | sed 's/~/-/g' | head -n1)
-	COUNT=$(git rev-list "$VERSION.." --count)
-	CHKSUM=$(git rev-list master | head -n1)
-	VERSION=$(echo "$VERSION" | sed 's/^v//' | sed 's/-//')
-	printf "%s.%s.%s" "$VERSION" "r$COUNT" "g${CHKSUM:0:9}"
+  cd "$srcdir/$_pkgname"
+  VERSION=$(git tag | grep -ve "-dev" | sed 's/-/~/g' | sort --version-sort --reverse | sed 's/~/-/g' | head -n1)
+  COUNT=$(git rev-list "$VERSION.." --count)
+  CHKSUM=$(git rev-list master | head -n1)
+  VERSION=$(echo "$VERSION" | sed 's/^v//' | sed 's/-//')
+  printf "%s.%s.%s" "$VERSION" "r$COUNT" "g${CHKSUM:0:9}"
 }
 
 prepare() {
@@ -34,10 +34,9 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname"
   export GOPATH="${srcdir}/../go"
-  echo $CFLAGS
   export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
   GOFLAGS="-trimpath -buildmode=pie" make build
 }
 
