@@ -1,22 +1,27 @@
 pkgbase = nemesyst-git
 	pkgdesc = Practical, distributed, hybrid-parallelism, deep learning framework.
-	pkgver = 2.0.2.r27.dc930b9
+	pkgver = 2.0.6.r6.68bebbc
 	pkgrel = 1
 	url = https://github.com/DreamingRaven/nemesyst
 	arch = x86_64
 	arch = aarch64
-	groups = nemesyst-base
-	license = MIT
+	license = OSL-3.0
 	makedepends = git
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinx-argparse
 	depends = python-setuptools
 	depends = python
 	depends = python-pymongo
 	depends = python-configargparse
 	depends = python-future
+	depends = python-ezdb-git
 	optdepends = mongodb: local database creation
-	optdepends = python-sphinx: documentation builder
-	optdepends = python-sphinx_rtd_theme: documentation theme generator
-	optdepends = python-sphinx-argparse: documentation auto generate argument list
+	optdepends = python-scikit-learn: mnist example auto data fetcher
+	optdepends = python-keras-applications: example neural networks
+	optdepends = python-keras-preprocessing: example neural networks
+	optdepends = python-keras: example neural networks
+	provides = nemesyst
 	source = nemesyst::git+https://github.com/DreamingRaven/nemesyst#branch=master
 	md5sums = SKIP
 

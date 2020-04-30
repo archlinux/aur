@@ -6,22 +6,28 @@
 # Maintainer: George Raven <GeorgeRavenCommunity AT pm dot me>
 pkgname=nemesyst-git
 _pkgsrcname="nemesyst"
-pkgver=2.0.2.r27.dc930b9
+pkgver=2.0.6.r6.68bebbc
 pkgrel=1
 pkgdesc="Practical, distributed, hybrid-parallelism, deep learning framework."
 arch=('x86_64' 'aarch64')
 url="https://github.com/DreamingRaven/nemesyst"
 _branch="master"
-license=('MIT') # MIT is a special case store a copy in /usr/share/pkgname
-groups=("nemesyst-base")
+license=('OSL-3.0')
+groups=()
 depends=('python-setuptools' 'python' 'python-pymongo' 'python-configargparse'
-				 'python-future')
-makedepends=('git')
+				 'python-future' 'python-ezdb-git')
+makedepends=('git'
+						'python-sphinx'
+						'python-sphinx_rtd_theme'
+						'python-sphinx-argparse'
+)
 optdepends=('mongodb: local database creation'
-						'python-sphinx: documentation builder'
-						'python-sphinx_rtd_theme: documentation theme generator'
-						'python-sphinx-argparse: documentation auto generate argument list')
-provides=()
+						'python-scikit-learn: mnist example auto data fetcher'
+						'python-keras-applications: example neural networks'
+						'python-keras-preprocessing: example neural networks'
+						'python-keras: example neural networks'
+						)
+provides=("nemesyst")
 conflicts=()
 replaces=()
 backup=()
@@ -42,7 +48,8 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/${_pkgsrcname}"
+	cd "${srcdir}/${_pkgsrcname}/docs"
+	make man
 }
 
 check() {
