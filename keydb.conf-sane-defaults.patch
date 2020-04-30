@@ -1,0 +1,11 @@
+--- keydb.conf	2020-03-27 18:36:35.000000000 +0000
++++ keydb-patched.conf	2020-04-30 17:04:50.816129674 +0100
+@@ -260,7 +260,7 @@
+ # The Append Only File will also be created inside this directory.
+ #
+ # Note that you must specify a directory here, not a file name.
+-dir ./
++dir /var/lib/keydb/
+ 
+ ################################# REPLICATION #################################
+ 
