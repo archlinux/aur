@@ -1,6 +1,6 @@
 # Maintainer: Adrien Gallouët <adrien@gallouet.fr>
 pkgname=secret
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Keep your little secrets, publicly."
 arch=('x86_64')
