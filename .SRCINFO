@@ -1,0 +1,13 @@
+pkgbase = plymouth-theme-blackarch-glow
+	pkgdesc = Plymouth theme based off of arch-glow featuring the blackarch logo instead.
+	pkgver = v1.0
+	pkgrel = 1
+	url = https://github.com/ChristopherHX/mcpelauncher-manifest
+	arch = any
+	license = GPL3
+	depends = plymouth
+	source = blackarch-glow.tar.gz
+	sha256sums = 0f7c1a64d975ccee78cadace965929cddb1659451551175fe5d16a7309e9f45f
+
+pkgname = plymouth-theme-blackarch-glow
+
