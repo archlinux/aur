@@ -2,7 +2,7 @@
 # Contributor:  GalSim developers team on GitHub
 pkgbase=python-galsim-git
 pkgname=('python-galsim-git' 'python2-galsim-git' 'galsim-common-git')
-pkgver=v2.1.4.r0.2e459f5a8
+pkgver=v2.2.3.r1.8f0b20826
 pkgrel=1
 pkgdesc=" The modular galaxy image simulation toolkit "
 arch=('i686' 'x86_64')
@@ -10,7 +10,8 @@ url="https://github.com/GalSim-developers/GalSim.git"
 license=('BSD')
 makedepends=('git' 'scons' 'boost-libs' 'fftw' 'tmv-git' 'eigen' 'pybind11' 'python-coord-git' 'python2-coord-git' 'python-setuptools' 'python2-setuptools' 'python2-astropy' 'python2-future' 'python2-numpy' 'python-astropy' 'python-future' 'python-numpy')
 checkdepends=('python-nose' 'python2-nose' 'python-yaml' 'python2-yaml' 'python-pandas' 'python2-pandas')
-source=("${pkgbase}::git+${url}#tag=v2.1.4")
+#source=("${pkgbase}::git+${url}#tag=v2.1.4")
+source=("${pkgbase}::git+${url}")
 md5sums=('SKIP')
 
 pkgver() {
