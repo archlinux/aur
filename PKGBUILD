@@ -3,10 +3,11 @@
 
 _name=MT7630E
 pkgname=mt7630-pcie-wifi-dkms
-pkgver=2.1.0.r12.5193c55
+_commit=5193c55a055aed723bc78f77cc0b853582026eb6
+#pkgver=2.1.0.r12.5193c55
+pkgver=2.1.1
 pkgrel=1
 epoch=1
-_commit=5193c55a055aed723bc78f77cc0b853582026eb6
 pkgdesc='MT7630e PCIe Wifi (DKMS)'
 arch=('any')
 url="https://github.com/neurobin/$_name"
@@ -14,7 +15,8 @@ license=('GPL')
 depends=('dkms')
 makedepends=('git')
 optdepends=('linux-headers: If running standard kernel, otherwise find matching headers for your kernel')
-source=("git+$url.git#commit=$_commit")
+#source=("git+$url.git#commit=$_commit")
+source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 package() {
