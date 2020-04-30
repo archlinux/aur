@@ -1,0 +1,20 @@
+pkgbase = wofi-wifi-menu-git
+	pkgdesc = bash script providing WiFi menu for wofi
+	pkgver = 25.30e42e6
+	pkgrel = 1
+	url = https://github.com/fourstepper/wofi-wifi-menu
+	install = wofi-wifi-menu.install
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = wofi
+	depends = networkmanager
+	depends = bc
+	depends = wireless_tools
+	provides = wofi-wifi-menu
+	conflicts = wofi-wifi-menu
+	source = git+https://github.com/fourstepper/wofi-wifi-menu
+	sha256sums = SKIP
+
+pkgname = wofi-wifi-menu-git
+

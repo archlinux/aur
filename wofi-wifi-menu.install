@@ -1,0 +1,7 @@
+post_install() {
+	echo 'To configure wofi-wifi-menu copy:'
+	echo '   /usr/share/wofi/wifi.example'
+	echo 'to'
+	echo '   ~/.config/wofi/wifi'
+	echo 'and modify it.'
+}
