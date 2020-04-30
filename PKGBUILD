@@ -7,10 +7,10 @@ _gnomeextensionname="cast-to-tv@rafostar.github.com"
 
 url="https://github.com/Rafostar/$pkgname"
 arch=("x86_64")
-license=("GPL")
+license=("GPL2")
 
 pkgver=15
-pkgrel=0
+pkgrel=1
 
 depends=(
     "gnome-shell"
@@ -55,13 +55,18 @@ package() {
 
     install \
         -Dm644 \
+        "README.md" \
+        "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+    install \
+        -Dm644 \
         "schemas/org.gnome.shell.extensions.cast-to-tv.gschema.xml" \
         "${pkgdir}/usr/share/glib-2.0/schemas/org.gnome.shell.extensions.cast-to-tv.gschema.xml"
 
     install \
         -Dm644 \
         nautilus/nautilus-cast-to-tv.py \
-        "$pkgdir/usr/share/nautilus-python/extensions/nautilus-cast-to-tv.py"
+        "${pkgdir}/usr/share/nautilus-python/extensions/nautilus-cast-to-tv.py"
 
     # Non-deterministic race in npm gives 777 permissions to random directories.
     # See https://github.com/npm/npm/issues/9359 for details.
