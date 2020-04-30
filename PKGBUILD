@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-uvicorn
-pkgver=0.11.3
+pkgver=0.11.5
 pkgrel=1
 pkgdesc='The lightning-fast ASGI server.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=(python python-click python-h11 python-websockets python-httptools
 optdepends=()
 makedepends=(python python-setuptools)
 source=("$pkgname-$pkgver::https://github.com/encode/uvicorn/archive/$pkgver.tar.gz")
-sha256sums=('b19934169d8e032c06f372883d941c324f10187b147c6b33a12f464a3f63eeae')
+sha256sums=('be40828a1cdabbc9fccf90b2d846f866f2c5e846e3ef7f75101cb3c76e9fc2df')
 
 _pkgname=uvicorn
 
