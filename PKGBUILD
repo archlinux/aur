@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=Biostrings
-_bcver=2.55.7
+_bcver=2.56.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=('r>=3.5.0' 'r-biocgenerics>=0.31.5' 'r-s4vectors>=0.25.14' 'r-iranges>=
 makedepends=(gcc)
 optdepends=(r-bsgenome r-bsgenome.celegans.ucsc.ce2 r-bsgenome.dmelanogaster.ucsc.dm3 r-bsgenome.hsapiens.ucsc.hg18 r-drosophila2probe r-hgu95av2probe r-hgu133aprobe r-genomicfeatures r-hgu95av2cdf r-affy r-affydata r-runit)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('2d84ae4ba6f83f5b2133454c49dd21e231a1c57321b8deb4cd46b9fd75a7a61f')
+sha256sums=('286e06883c4c230b696e89b06fba78ba418db15559def871a163a1d7ce77b046')
 
 build() {
   cd "${srcdir}"
