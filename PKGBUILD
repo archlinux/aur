@@ -1,7 +1,7 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=python-pynamodb
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="A pythonic interface to Amazon's DynamoDB"
 arch=(any)
@@ -10,8 +10,11 @@ license=(MIT)
 makedepends=(python-setuptools)
 depends=(python-botocore python-dateutil python-six)
 checkdepends=(python-blinker python-mock python-pytest-mock python-requests)
+optdepends=(
+  'python-blinker: for signals'
+)
 source=("https://github.com/pynamodb/PynamoDB/archive/$pkgver/PynamoDB-$pkgver.tar.gz")
-sha256sums=('38069836c0d133b75dcf4f7209b3c9bf88e24c39e175c1d9f2e1a38ab8950e5a')
+sha256sums=('b60eb0be775693a597271409102305ff7f8265b614f54c40173b9abf29795f11')
 
 build() {
   cd PynamoDB-$pkgver
@@ -30,7 +33,6 @@ check() {
 package() {
   cd PynamoDB-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  rm -rv "$pkgdir"/usr/lib/python*/site-packages/tests
 
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
