@@ -1,6 +1,6 @@
 pkgbase = winetricks-zh
 	pkgdesc = A windows applications setup wizard for Chinese wine users
-	pkgver = 20191224.3
+	pkgver = 20200421.1
 	pkgrel = 1
 	url = https://github.com/hillwoodroc/winetricks-zh
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = winetricks-zh
 	depends = xorg-xmessage
 	optdepends = zenity: GUI for GNOME desktop
 	optdepends = kdialog: GUI for KDE desktop
-	source = https://github.com/hillwoodroc/winetricks-zh/archive/20191224.3.tar.gz
-	sha256sums = 9a898302551c77fe8dbf84daf8c11803573eeee101917ee369dbd017ae3c1427
+	source = https://github.com/hillwoodroc/winetricks-zh/archive/20200421.1.tar.gz
+	sha256sums = 04dccc1296e754b03b3e77832f5b01576937b8372dbb5f9c90dc7d661fbab3f3
 
 pkgname = winetricks-zh
 
