@@ -1,12 +1,11 @@
 pkgbase = skypeforlinux-preview-bin
 	pkgdesc = Skype for Linux - Preview/Insider Version
 	pkgver = 8.60.76.27
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.skype.com
 	install = install.sh
 	arch = x86_64
 	license = custom
-	makedepends = asar
 	depends = gtk3
 	depends = libxss
 	depends = alsa-lib
