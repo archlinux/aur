@@ -1,11 +1,11 @@
-# Maintainer: Gabriel Chamon Araujo <gchamon@live.com>
+# Mainteiner: Antonio Cervone <ant.cervone@gmail.com>
+# Contributor: Gabriel Chamon Araujo <gchamon@live.com>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Graziano Giuliani <graziano.giuliani@poste.it>
-# Contributor: Antonio Cervone <ant.cervone@gmail.com>
 
 pkgname=magics++
 Pkgname=Magics
-pkgver=4.8.0
+pkgver=4.8.2
 _attnum=3473464
 pkgrel=0
 pkgdesc="Magics is the latest generation of the ECMWF's Meteorological plotting software MAGICS."
@@ -17,7 +17,7 @@ optdepends=(ksh libaec odb_api)
 makedepends=(cmake gcc-fortran perl-xml-parser python-jinja swig)
 source=(http://software.ecmwf.int/wiki/download/attachments/${_attnum}/${Pkgname}-${pkgver}-Source.tar.gz
         gcc11.patch)
-sha256sums=('4786ab79fcd5ca5fc10ababfb8a1d58e5078b8a7246b81c9fba53b7443bf46c0'
+sha256sums=('2bdc36d740b8b5d9967ddd98b05b5ef0f404ef3cf8651cc66f362d4826ab32f7'
             'c0250ac473b4703e79c8f879f6271d1409e800a0f8a7a77b3793cc9ce9a85951')
 
 prepare() {
