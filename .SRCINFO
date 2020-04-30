@@ -1,6 +1,6 @@
 pkgbase = citra-canary-git
 	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger
-	pkgver = r8266.e56b20f90
+	pkgver = r8634.c0b37ec9b
 	pkgrel = 1
 	url = https://github.com/citra-emu/citra-canary/tree/master
 	arch = i686
