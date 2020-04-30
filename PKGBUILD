@@ -1,7 +1,7 @@
-# Maintainer: David Birks <david@tellus.space>
+# Maintainer: David Birks <david@birks.dev>
 
 pkgname=aws-iam-authenticator
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A tool to use AWS IAM credentials to authenticate to a Kubernetes cluster'
 arch=('x86_64' 'aarch64')
@@ -10,25 +10,14 @@ license=('Apache')
 makedepends=('go')
 conflicts=('aws-iam-authenticator-bin' 'aws-iam-authenticator-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kubernetes-sigs/aws-iam-authenticator/archive/v$pkgver.tar.gz")
-sha512sums=('2020ba908268d32bf5b0fa799052b26c37ea27fec6c41948bb090119a1963052b5f736da57a09390cc060bfa0b0717e8ed24d20ed01d828d5d27918117bbd7d0')
-
-prepare(){
-  mkdir -p gopath/src/github.com/kubernetes-sigs
-  ln -rTsf $pkgname-$pkgver gopath/src/github.com/kubernetes-sigs/$pkgname
-  export GOPATH="$srcdir"/gopath
-
-  cd gopath/src/github.com/kubernetes-sigs/$pkgname
-  dep ensure -v
-}
-
+sha512sums=('abe725b61e8c645ceabad28804c2687def541e6f6beb305fd49b624ab150b9c4a2dad169958ea13ae7d42cf417a6627a1459702d5451f34139a2b5f70c46d37a')
 
 build() {
-  # Trim PWD from binary
-  export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
-  export GOPATH="$srcdir"/gopath
-
-  cd gopath/src/github.com/kubernetes-sigs/$pkgname
-  go build --ldflags "-X main.version=$pkgver" ./cmd/aws-iam-authenticator
+  cd $pkgname-$pkgver
+  go build \
+    --trimpath \
+    --ldflags "-X main.version=$pkgver" \
+    ./cmd/aws-iam-authenticator
 }
 
 package() {
