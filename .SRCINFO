@@ -5,14 +5,10 @@ pkgbase = lsd-bin
 	url = https://github.com/Peltoche/lsd
 	arch = x86_64
 	license = Apache
-	provides = barrier
+	provides = lsd
 	conflicts = lsd
 	conflicts = lsd-git
-	noextract = lsd-0.17.0-x86_64.tar.xz
-	options = !emptydirs
-	options = !makeflags
-	options = !strip
-	source = https://github.com/Peltoche/lsd/releases/download/0.17.0/lsd-0.17.0-x86_64-unknown-linux-musl.tar.gz
+	source = lsd.tar.gz::https://github.com/Peltoche/lsd/releases/download/0.17.0/lsd-0.17.0-x86_64-unknown-linux-musl.tar.gz
 	sha256sums = 823da6a8ce16d95edc04514608e0da0ec54330d148228b77c2daa5db6a3d98bf
 
 pkgname = lsd-bin
