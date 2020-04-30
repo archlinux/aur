@@ -2,7 +2,7 @@
 # Co-Maintainer: McModder <aur @ modder.pw>
 # PLEASE do not mark it out-of date because "2.xx is released", *2.xx a separate project with same name from other dev team*
 pkgname=tlauncher
-pkgver=1.112.4
+pkgver=1.114.4
 pkgrel=1
 epoch=1
 pkgdesc='TLauncher Legacy is freeware launcher of Minecraft.'
