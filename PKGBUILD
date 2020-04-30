@@ -22,8 +22,8 @@ pkgdesc='Qt Creator prerelease/latest'
 arch=('x86_64')
 url='http://qt.io/ide'
 license=('GPL')
-provides=('qtcreator' 'qbs')
-conflicts=('qtcreator' 'qbs')
+provides=('qtcreator')
+conflicts=('qtcreator')
 depends=('python2-beautifulsoup4' 'qt5-tools' 'qt5-declarative' 'qt5-script' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-webengine' 'clang' 'llvm')
 install=qtcreator-prerelease.install
 optdepends=('qbs'
@@ -37,59 +37,55 @@ optdepends=('qbs'
             'mercurial: mercurial support'
             'bzr: bazaar support'
             'valgrind: analyze support')
-makedepends=('qbs' 'clang' 'qt5-base')
-source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
-sha256sums=('d76655799ad2af81fb15f85d412d74583659fb1b4cf27b758ad8aae73675948b')
-
-_qmake_cmd=qmake
-_tmp_dir=$(mktemp -d)
-_qbs_settings="--settings-dir ${_tmp_dir}"
-_qbs_profile="sysqtprofile"
-_qbs_args="profile:${_qbs_profile}"
-
-if [[ -z ${startdir} ]]; then
-  _building=false
-fi
+makedepends=('qbs' 'clang' 'qt5-base' 'patchelf')
+source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz"
+        qtcreator-preload-plugins.patch
+        qtcreator-clang-libs.patch)
+sha256sums=('d76655799ad2af81fb15f85d412d74583659fb1b4cf27b758ad8aae73675948b'
+            'b40e222b30c355d1230160a4e933dbd161b8748125662e3bde312ea52296457a'
+            '0f6d0dc41a87aae9ef371b1950f5b9d823db8b5685c6ac04a7a7ac133eb19a3f')
 
 prepare() {
   cd ${srcdir}/${_filename}
-  sed -i '/LLVM_INCLUDEPATH/d' src/tools/clangbackend/clangbackend.pro
+
+  # fix hardcoded libexec path
+  sed -e 's|libexec\/qtcreator|lib\/qtcreator|g' -i qtcreator.pri
+  sed -e 's|libexec|lib|g' -i src/tools/tools.pro
+  # use system qbs
+  rm -r src/shared/qbs
+  # Preload analyzer plugins, since upstream clang doesn't link to all plugins
+  # see http://code.qt.io/cgit/clang/clang.git/commit/?id=7f349701d3ea0c47be3a43e265699dddd3fd55cf
+  # and https://bugs.archlinux.org/task/59492
+  patch -p1 -i ../qtcreator-preload-plugins.patch
+
+  # Fix build with clang 10
+  patch -p1 -i ../qtcreator-clang-libs.patch
 }
 
 build() {
-  export PATH=${startdir}:$PATH
-  set -o nounset
-  local _src_dir=${srcdir}/${_filename}
-  [[ -d build ]] && rm -r build
+  cd ${srcdir}/${_filename}
 
-  cd ${_src_dir}
-  qmake -spec linux-clang
+  qmake \
+    -r \
+    -spec linux-clang \
+    LLVM_INSTALL_DIR=/usr QBS_INSTALL_DIR=/usr \
+    KSYNTAXHIGHLIGHTING_LIB_DIR=/usr/lib KSYNTAXHIGHLIGHTING_INCLUDE_DIR=/usr/include/KF5/KSyntaxHighlighting \
+    CONFIG+=journald QMAKE_CFLAGS_ISYSTEM=-I \
+    DEFINES+=QBS_ENABLE_PROJECT_FILE_UPDATES \
+    ${srcdir}/${_filename}/qtcreator.pro
+
   make
-
-  #qbs ${_qbs_settings} -d build -f ${src_dir} --all-products project.withAutotests:false profile:${_qbs_profile} config:release
-  set +o nounset
+  make docs
 }
 
 package() {
-  set -o nounset
-  local _src_dir=${srcdir}/${_filename}
-  local _pkg_dir=${pkgdir}/usr/
+  cd ${srcdir}/${_filename}
 
-  #qbs install ${_qbs_settings} -d build -f ${_src_dir} --install-root ${_pkg_dir} --all-products project.withAutotests:false profile:${_qbs_profile} config:release
-  cd ${_src_dir}
-  INSTALL_ROOT=${_pkg_dir} make install
+  make INSTALL_ROOT="$pkgdir/usr/" install
+  make INSTALL_ROOT="$pkgdir/usr/" install_docs
 
-  # Workaround for FS#40583
-  mv "${pkgdir}"/usr/bin/qtcreator "${pkgdir}"/usr/bin/qtcreator-bin
-  echo "#!/bin/sh" > "${pkgdir}"/usr/bin/qtcreator
-  echo "QT_LOGGING_TO_CONSOLE=1 qtcreator-bin \$@" >> "${pkgdir}"/usr/bin/qtcreator
-  chmod +x "${pkgdir}"/usr/bin/qtcreator
+  install -Dm644 "$srcdir"/qt-creator-opensource-src-$pkgver/LICENSE.GPL3-EXCEPT "$pkgdir"/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT
 
-  install -Dm644 ${srcdir}/${_filename}/LICENSE.GPL3-EXCEPT ${pkgdir}/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT
-  rm -Rf ${_tmp_dir}
-  set +o nounset
+# Link clazy plugin explicitely
+  patchelf --add-needed ClazyPlugin.so "$pkgdir"/usr/lib/qtcreator/clangbackend
 }
-
-#if $_building; then
-#  qbs setup-qt ${_qbs_settings} /usr/bin/qmake ${_qbs_profile}
-#fi
