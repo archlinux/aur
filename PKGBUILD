@@ -10,8 +10,7 @@ license=('custom: BSD 3-clause')
 depends=('gcc-libs'
          'go>=1.11.0'
 )
-optdepends=('clang: Cortex-M support'
-            'avr-gcc: Arduino Uno support'
+optdepends=('avr-gcc: Arduino Uno support'
             'avrdude: Arduino Uno support'
             'openocd: BBC Micro:bit support'
             'arm-none-eabi-gdb: tinygo gdb support'
