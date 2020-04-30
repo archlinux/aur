@@ -3,18 +3,18 @@
 pkgname=deno-bin
 _pkgname=deno
 pkgdesc="A secure TypeScript runtime on V8"
-pkgver=0.41.0
+pkgver=0.42.0
 pkgrel=1
 arch=('x86_64')
 license=('MIT')
 url='http://deno.land/'
 provides=('deno')
 makedepends=('binutils')
-source_x86_64=("${_pkgname}.zip::https://github.com/denoland/deno/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.zip")
-sha256sums_x86_64=('f2f03a2617c8ad2b21a62ee84a77f4bdcecd300322f7a8ee985bacbc920b1d5c')
+source_x86_64=("${_pkgname}-${pkgver}.zip::https://github.com/denoland/deno/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.zip")
+sha256sums_x86_64=('0de391c773d5a0f9502e4edf1e52226046fc5cb96867cea2fce122cda3e3971e')
 
 prepare() {
-  unzip -o "${_pkgname}.zip"
+  unzip -o "${_pkgname}-${pkgver}.zip"
 }
 
 package() {
