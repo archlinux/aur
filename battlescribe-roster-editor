@@ -1,3 +1,3 @@
 #!/bin/sh
 cd /usr/share/java/battlescribe
-java -jar RosterEditor.jar
+jre/bin/java -jar RosterEditor.jar

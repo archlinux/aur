@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/share/java/battlescribe
+jre/bin/java -jar DataIndexer.jar

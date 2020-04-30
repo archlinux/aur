@@ -1,7 +1,7 @@
 # Maintainer: Bennett Piater <bennett at piater dot name>
 
 pkgname='battlescribe'
-pkgver='2.03.14'
+pkgver='2.03.17'
 pkgrel=1
 pkgdesc="An army list builder for table-top games."
 arch=(any)
@@ -9,25 +9,34 @@ url="http://battlescribe.net/?tab=downloads"
 _watch="$url"
 license=('custom')
 
-depends=('java-environment' 'bash')
-source=("http://battlescribe.net/files/BattleScribe_$pkgver""_Multi.zip"
+depends=()
+source=("http://battlescribe.net/files/BattleScribe_$pkgver""_Linux.zip"
 		"$pkgname.desktop"
+		"$pkgname-data-editor.desktop"
+		"$pkgname-data-indexer.desktop"
 		"$pkgname.png"
-		'BattleScribe.sh')
-md5sums=('96eddd2b9a1e2423de0243d44a1ad679'
-         '33aafcfc46f7f1ada23015a830413763'
+		"$pkgname-roster-editor"
+		"$pkgname-data-editor"
+		"$pkgname-data-indexer"
+		)
+md5sums=('257cd61a44d81bc8a90524d8046f179f'
+         '5e1ccb89db05b234416ba112bbd02372'
+         '2b54d275f9be4e57b4e605f8871c38e6'
+         '9af5e7e2a8444882061520d09af0af84'
          'd0fef06c5b080003f84a0e148fbe9261'
-         'cf0f2351b3241aa80cd80854fd73045f')
+         '4187b4dcbcffd50db65d05ba59c8b414'
+         'b9821873b19ba76c1405367a8c5136e3'
+         '78c218e5c350cedc273f297ad2d712d9')
 
 package() {
 	cd "$srcdir"
 
 	# Copy files to system
 	install -D -t "$pkgdir/usr/share/java/$pkgname/" *.jar
-        install -Dm755 BattleScribe.sh "$pkgdir/usr/bin/$pkgname"
-	mv lib "$pkgdir/usr/share/java/$pkgname/"
+        install -Dm755 -t "$pkgdir/usr/bin/" "$pkgname-"{roster,data}-editor "$pkgname-data-indexer"
+	mv lib jre "$pkgdir/usr/share/java/$pkgname/"
 
-	# Copy the licence
+	# Copy the license
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" license.txt
 
 	# Copy the desktop file and image

@@ -1,10 +1,10 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=BattleScribe Roster Editor
+Name=BattleScribe Data Editor
 Comment=Table-top army list builder
 Path=/usr/share/java/battlescribe
-Exec=/usr/bin/battlescribe-roster-editor
+Exec=/usr/bin/battlescribe-data-editor
 Icon=battlescribe
 Terminal=false
 Categories=Game;Java;
