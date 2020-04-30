@@ -1,13 +1,13 @@
 pkgbase = fasta
 	pkgdesc = Fast protein or a fast nucleotide comparison
-	pkgver = 36.3.8h
+	pkgver = 36.3.8h.2020
 	pkgrel = 1
 	url = http://fasta.bioch.virginia.edu/fasta_www2/fasta_list2.shtml
 	arch = i686
 	arch = x86_64
 	license = custom
 	source = http://faculty.virginia.edu/wrpearson/fasta/fasta36/fasta-36.3.8h.tar.gz
-	sha256sums = 1d38c961b34b8aabc8360ea068bf50b7446efd318f99c8d28b3f5d25c66a7267
+	sha256sums = ddda369ae7f03c354029f67815e58585c9ae03f3a4a8464f3bfea28cf81e92ef
 
 pkgname = fasta
 
