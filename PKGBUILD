@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=swapper
-pkgver=0.20
+pkgver=0.21
 pkgrel=1
 pkgdesc="Swap tiles to remove them"
 url='https://efanomars.com/swapper'
@@ -16,8 +16,8 @@ optdepends=()
 #replaces=("swapper")
 #conflicts=("swapper")
 
-source=('https://efanomars.com/sources/swapper-0.20.tar.gz')
-sha256sums=('934e4fd959c38340ac1b8e65b3a372d57317e68981f42e5b73689e95817eb9ac')
+source=('https://efanomars.com/sources/swapper-0.21.tar.gz')
+sha256sums=('41e70b8f9b1c2bcd8f0b2197bc7c9903834ba52e69f77e01bb28a88ed823ed4a')
 
 build() {
   cd "${srcdir}/swapper"
