@@ -1,14 +1,22 @@
 pkgbase = ghcup-hs-bin
 	pkgdesc = an installer for the general purpose language Haskell
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://gitlab.haskell.org/haskell/ghcup-hs
 	install = ghcup-hs-bin.install
 	arch = x86_64
 	license = LGPL3
+	optdepends = curl
+	optdepends = wget
 	conflicts = ghcup-git
-	source = ghcup-0.1.4::https://downloads.haskell.org/~ghcup/0.1.4/x86_64-linux-ghcup-0.1.4
-	sha256sums = 78d69ed4c9a810a445af89ea25e4217a632799ecb427b06cd2320ffb574f555e
+	source = ghcup-0.1.5::https://downloads.haskell.org/~ghcup/0.1.5/x86_64-linux-ghcup-0.1.5
+	source = ghcup-comp-bash-0.1.5::https://gitlab.haskell.org/haskell/ghcup-hs/-/raw/v0.1.5/shell-completions/bash
+	source = ghcup-comp-zsh-0.1.5::https://gitlab.haskell.org/haskell/ghcup-hs/-/raw/v0.1.5/shell-completions/zsh
+	source = ghcup-comp-fish-0.1.5::https://gitlab.haskell.org/haskell/ghcup-hs/-/raw/v0.1.5/shell-completions/fish
+	sha256sums = cfdb01dde77121859b5d90b6707238b54e23787fcbb3003e18ab52a5dbfee330
+	sha256sums = 2cfbd028499615507bb081b4f6668caa34fe700ed5a4895f8c3716a54e53cafc
+	sha256sums = 3b2f4a9df87c17f3f6472cda80eca8357485a9efd78f32223559f797d55d0d31
+	sha256sums = 0b3afa4d80de4afcc89779911b6c64e319c55aef185dff2843e6d410a530bb3f
 
 pkgname = ghcup-hs-bin
 

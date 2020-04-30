@@ -1,5 +1,6 @@
 post_install() {
     echo
-    echo 'NOTE: ghcup requires ~/.ghcup/bin to be in your PATH'
+    echo 'NOTE: ghcup requires $GHCUP_INSTALL_BASE_PREFIX/.ghcup/bin to be in your PATH'
+    echo 'NOTE: By default, $GHCUP_INSTALL_BASE_PREFIX == $HOME'
     echo
 }
