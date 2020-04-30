@@ -1,0 +1,51 @@
+pkgbase = linux-archmm
+	pkgdesc = Linux with the BMQ CPU Scheduler and Multimedia Patches
+	pkgver = 5.6.8.arch1
+	pkgrel = 1
+	url = http://cchalpha.blogspot.com/
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
+	options = !strip
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.6.8-arch1
+	source = config
+	source = sphinx-workaround.patch
+	source = bmq_v5.6-r3.patch::https://gitlab.com/alfredchen/bmq/raw/master/5.6/bmq_v5.6-r3.patch
+	source = git+https://github.com/graysky2/kernel_gcc_patch
+	source = futex-wait-multiple-5.2.1.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
+	sha256sums = SKIP
+	sha256sums = f392c9ecbb5177ea2573aaf22935322940ea2be0366f3fb9c9f861431f4aed21
+	sha256sums = 8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c
+	sha256sums = 2340925904efa3594cc65a7bae4fbff233d5d8bc7db605ce08acaca7450d2471
+	sha256sums = SKIP
+	sha256sums = b8a9225b4b5cbabac26398d11cc26566e4407d150dacb92f3411c9bb8cc23942
+
+pkgname = linux-archmm
+	pkgdesc = The Linux with the BMQ CPU Scheduler and Multimedia Patches kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
+
+pkgname = linux-archmm-headers
+	pkgdesc = Headers and scripts for building modules for the Linux with the BMQ CPU Scheduler and Multimedia Patches kernel
+
+pkgname = linux-archmm-docs
+	pkgdesc = Documentation for the Linux with the BMQ CPU Scheduler and Multimedia Patches kernel
+
