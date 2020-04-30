@@ -6,7 +6,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop9
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Official Telegram Desktop client (personal build)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
          'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl')
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected')
 optdepends=('ttf-opensans: default Open Sans font family')
 provides=('telegram-desktop')
 conflicts=('telegram-desktop')
@@ -26,7 +26,7 @@ source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver
         "clicky_sticker_panel.patch"
         "dont_pulse_mentions.patch"
         "no_circles.patch")
-sha512sums=('99cd7c5ca1e9dd75ecd98d272522b0e4aab2d46525e3d0c306503b7a00c9d25c1646e9d7462182682a58947c7435864af805a3b6f85906d8b21e5675cc8383cb'
+sha512sums=('46f5453c64d1dbd4cf8adde73fcc48e6b6f795972ab0f6516cb55112f47d5af990a049da356bedb81e6d3f7103c14a7be45369ff9a5a1812c07a1bfcda70646d'
             'fdef3a430bdd60d88c9e9011ee878805e7803699204a2a7e22797d0f8729bf7dc0543851083ad700a4ece32bc768b6bfeb6f0135c8c039e035b22afb6df1171d'
             '91a0edab6408a223db77b75df5a913ffd36efa79340e8d78fa01ac2c3b6e09d5a5fc7fa214ccd40473093809f86b7aef199cebf56a1d5821c20083c4a3e5780b'
             '247ba6576166dead08289b145ca126b6498c0731f9e4a5763b80d4a4cc3f057dffc6d8b697ed4fa2129a5b86c568ec5130fda25df30661a4f4c147d358f3ae5b'
@@ -58,6 +58,7 @@ build() {
         -DTDESKTOP_API_HASH=b18441a1ff607e10a989891a5462e627 \
         -DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
         -DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF \
+        -DDESKTOP_APP_USE_PACKAGED_GSL=OFF \
         -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME=ON \
         -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
         -DDESKTOP_APP_SPECIAL_TARGET="" \
