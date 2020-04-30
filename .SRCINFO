@@ -1,16 +1,16 @@
 pkgbase = silentdragonlite
 	pkgdesc = HUSH Lite wallet that supports zaddrs
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/MyHush/SilentDragonLite
 	arch = x86_64
 	license = GPL3
-	makedepends = qt5-base
-	makedepends = qt5-tools
 	makedepends = qtcreator
-	makedepends = qt5-websockets
 	makedepends = rust
 	depends = libsodium
+	depends = qt5-websockets
+	depends = qt5-base
+	depends = qt5-tools
 	source = silentdragonlite-1.2.2.tar.gz::https://github.com/MyHush/SilentDragonLite/archive/v1.2.2.tar.gz
 	sha256sums = SKIP
 
