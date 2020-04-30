@@ -1,6 +1,6 @@
 pkgbase = sakuri
 	pkgdesc = Simple bash AUR helper
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://github.com/BiteDasher/sakuri
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = sakuri
 	depends = git
 	depends = sudo
 	depends = binutils
-	source = sakuri-2.0.3.tar.gz::https://github.com/BiteDasher/sakuri/archive/2.0.3.tar.gz
-	sha256sums = f29ba8cbdabf0f3f3e82fb41b46b0da6ae8592f0d0e885fce2e455f689e9134f
+	source = sakuri-2.0.4.tar.gz::https://github.com/BiteDasher/sakuri/archive/2.0.4.tar.gz
+	sha256sums = c512f9c7b2617f164a8d282e3aa27259929fc84280bedd9a9ac8d1d49b4dca95
 
 pkgname = sakuri
 
