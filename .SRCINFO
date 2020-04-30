@@ -1,13 +1,13 @@
 pkgbase = psi-notify
 	pkgdesc = Minimalistic PSI notifier using libnotify
-	pkgver = 0.3
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/cdown/psi-notify
 	arch = any
 	license = MIT
 	depends = libnotify
-	source = https://github.com/cdown/psi-notify/archive/0.3.tar.gz
-	md5sums = b7c0fc92c8ea5c080cba1f6698a42518
+	source = https://github.com/cdown/psi-notify/archive/0.4.0.tar.gz
+	md5sums = 2533899e1eb66127e380e5ab8a379a0b
 
 pkgname = psi-notify
 
