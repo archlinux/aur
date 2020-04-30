@@ -1,0 +1,20 @@
+pkgbase = python-trading_calendars
+	pkgdesc = A Python library of exchange calendars meant to be used with Zipline.
+	pkgver = 1.11.7
+	pkgrel = 1
+	url = https://github.com/quantopian/trading_calendars
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-dateutil
+	depends = python-pytz
+	depends = python-logbook
+	depends = python-toolz
+	source = python-trading_calendars-1.11.7.tar.gz::https://github.com/quantopian/trading_calendars/archive/1.11.7.tar.gz
+	sha256sums = e11d5b1927f0911dba1efa83b7cc04103b5ece5e4d658a5d8c286b1aaa35599f
+
+pkgname = python-trading_calendars
+
