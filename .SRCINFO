@@ -1,6 +1,6 @@
 pkgbase = stmm-input
 	pkgdesc = Device input event library
-	pkgver = 0.11
+	pkgver = 0.12
 	pkgrel = 1
 	url = https://efanomars.com/stmm-input
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = stmm-input
 	makedepends = graphviz
 	makedepends = python
 	depends = gtkmm3
-	source = https://efanomars.com/sources/stmm-input-0.11.tar.gz
-	sha256sums = d36f259c744094474edb006a0a27ecb0139183b8fdacb462059afd0753ee969d
+	source = https://efanomars.com/sources/stmm-input-0.12.tar.gz
+	sha256sums = 2e3e8416c89a3ca7dd3b1e69e4fc895737ecce29854faa4310954813e25666ca
 
 pkgname = stmm-input
 

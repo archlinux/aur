@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=stmm-input
-pkgver=0.11
+pkgver=0.12
 pkgrel=1
 pkgdesc="Device input event library"
 url='https://efanomars.com/stmm-input'
@@ -16,8 +16,8 @@ optdepends=()
 #replaces=("stmm-input")
 #conflicts=("stmm-input")
 
-source=('https://efanomars.com/sources/stmm-input-0.11.tar.gz')
-sha256sums=('d36f259c744094474edb006a0a27ecb0139183b8fdacb462059afd0753ee969d')
+source=('https://efanomars.com/sources/stmm-input-0.12.tar.gz')
+sha256sums=('2e3e8416c89a3ca7dd3b1e69e4fc895737ecce29854faa4310954813e25666ca')
 
 build() {
   cd "${srcdir}/stmm-input"
