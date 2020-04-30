@@ -1,0 +1,15 @@
+pkgbase = rusted-tetris-git
+	pkgdesc = Terminal-based tetris clone written in pure Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lyova-potyomkin/rusted-tetris
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rustup
+	provides = rusted-tetris
+	source = git+https://github.com/lyova-potyomkin/rusted-tetris
+	md5sums = SKIP
+
+pkgname = rusted-tetris-git
+
