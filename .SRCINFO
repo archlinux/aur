@@ -1,14 +1,13 @@
 pkgbase = docfetcher
 	pkgdesc = A java open source desktop search application
 	pkgver = 1.1.22
-	pkgrel = 2
+	pkgrel = 3
 	url = http://docfetcher.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = EPL
 	makedepends = unzip
 	depends = java-runtime>=8
-	depends = java-runtime<=10
 	optdepends = gtk2: GTK2-based interface
 	optdepends = gtk3: GTK3-based interface
 	source = https://downloads.sourceforge.net/project/docfetcher/docfetcher/1.1.22/docfetcher-1.1.22-portable.zip
