@@ -3,7 +3,7 @@
 # Contributor: Ron Asimi <ron dot asimi at gmail dot com>
 
 pkgname=zsh-theme-powerlevel10k
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience."
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   'openssh: ssh detection'
 )
 source=("https://github.com/romkatv/powerlevel10k/archive/v${pkgver}.tar.gz")
-sha512sums=('c72f42dc96a0e3d6536436a9d5e261a1613f928043e725a5acba441612d9f89e2f37e53df94623a04cd1208b0868ecd416f23542087c67c46b4d4163e994758b')
+sha512sums=('4533199ae45b7ce83eb765b0dae1bd21e0067e1edbfec1a621942aa78c8a9202758c5688090ddf86236d0483b6fa3b2748e288fae52b997c22338c1ea486e911')
 
 package()
 {
