@@ -6,7 +6,9 @@
 
 _pkgname=instantclient-odbc
 pkgname=oracle-${_pkgname}
-pkgver=19.5.0.0.0
+pkgver=19.6.0.0.0
+_urlver=19600
+_unzippath=instantclient_19_6
 pkgrel=1
 pkgdesc="Additional libraries for enabling ODBC applications with Instant Client"
 arch=('x86_64')
@@ -21,18 +23,14 @@ DLAGENTS+=('manual::/usr/bin/false');
 
 # These are the only files we want to include in the source package
 source=(LICENSE
-        "manual://${_pkgname}-linux.x64-${pkgver}dbru.zip")
+        "https://download.oracle.com/otn_software/linux/instantclient/${_urlver}/${_pkgname}-linux.x64-${pkgver}dbru.zip")
 md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
-         'efe303cadc667416d36487484d4935c0')
+         '155ca269305be4c2bfcbf781421ca365')
 sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
-            '818ef5dbd464667bf8a3054d6b04b79ed46eef1d49fa2cd76e4bdb423513e8a3')
+            'b1a085aa52208315fc152e1e96814292783aa49fd821101ac970a463377b42f0')
 
-msg "Warning: This software cannot be downloaded automatically."
-plain "You will need to sign up for an Oracle account and download the software from"
-plain "Oracle directly.  Place the downloaded file in the same directory as the"
-plain "PKGBUILD and re-run makepkg."
-plain ""
-plain "The source .zip files can be downloaded from:"
+plain "If you run into any problems downloading the files, get the .zip version from"
+plain "Oracle and place them in the PKGBUILD directory then re-run makepkg:"
 plain ""
 plain "  http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html"
 plain ""
@@ -49,7 +47,7 @@ plain "[1]: http://www.oracle.com/technetwork/licenses/instant-client-lic-152016
 plain ""
 
 package() {
-	local basedir="$srcdir/instantclient_19_5"
+	local basedir="$srcdir/${_unzippath}"
 
 	install -d "$pkgdir/usr/lib"
 	# Copy files but not symlinks
