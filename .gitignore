@@ -1,2 +1,5 @@
-/greetd/
-/*.pkg.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!greetd.pam

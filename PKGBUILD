@@ -2,7 +2,7 @@
 # Maintainer: Kenny Levinsen <aur [at] kl [dot] wtf>
 
 pkgname=greetd-git
-pkgver=r191.30135abc35
+pkgver=0.5.1+13.gc7068fe8fd
 pkgrel=1
 pkgdesc="Generic greeter daemon"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(GPL3)
 source=("git+$url" 'greetd.pam')
 sha256sums=('SKIP' 'SKIP')
 conflicts=(greetd)
-provides=(greetd)
+provides=(greetd=${pkgver%+*})
 depends=(systemd pam)
 makedepends=(git rust scdoc)
 optdepends=(
@@ -25,10 +25,7 @@ backup=(
 )
 
 pkgver() {
-  cd greetd
-  printf 'r%d.%s' \
-    $(git rev-list --count HEAD) \
-    $(git rev-parse HEAD | head -c10)
+  git -C greetd describe --abbrev=10 | sed 's/-/+/; s/-/./'
 }
 
 build() {
