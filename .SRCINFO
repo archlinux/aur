@@ -7,7 +7,7 @@ pkgbase = neovim-lion-opt-git
 	license = custom:vim
 	makedepends = git
 	depends = neovim
-	source = git+https://github.com/tommcdo/vim-lion.git
+	source = lion::git+https://github.com/tommcdo/vim-lion.git
 	sha256sums = SKIP
 
 pkgname = neovim-lion-opt-git
