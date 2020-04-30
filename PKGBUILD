@@ -2,7 +2,7 @@
 
 pkgname=python-metatube
 _name=${pkgname#python-}
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=0
 
 pkgdesc="downloads YouTube metadata"
@@ -18,8 +18,8 @@ depends=(
     "python-requests"
 )
 
-source=("https://gitlab.com/christoph.fink/metatube/uploads/4a71d800cf151a75158e2a98829ae034/metatube-0.1.0.tar.gz")
-sha256sums=("53fdcc8161687b6a0a11677b7025998d39888f3eb3af1be44d889b8a960c4dc2")
+source=("https://gitlab.com/christoph.fink/metatube/uploads/3401f402e9a826015281a5900af06870/metatube-0.1.1.tar.gz")
+sha256sums=("e3ebe343a70fc625adacb9b6dc41ed3fc90a19795f3697f848313e456b4d3ff4")
 
 prepare() {
    rm -Rf "${srcdir}/*/*.egg-info"
