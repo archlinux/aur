@@ -1,0 +1,13 @@
+pkgbase = fscrawler-bin
+	pkgdesc = Elasticsearch File System Crawler
+	pkgver = 2.7.20200402.145915.95
+	pkgrel = 1
+	url = https://github.com/dadoonet/fscrawler
+	arch = any
+	license = Apache
+	depends = elasticsearch>=7
+	source = https://oss.sonatype.org/content/repositories/snapshots/fr/pilato/elasticsearch/crawler/fscrawler-es7/2.7-SNAPSHOT/fscrawler-es7-2.7-20200402.145915-95.zip
+	sha1sums = 7e69d463277a2aac584cdc0089b2fc1a1cfb6bbc
+
+pkgname = fscrawler-bin
+
