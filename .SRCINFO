@@ -1,0 +1,19 @@
+pkgbase = zz-git
+	pkgdesc = ZetZ a zymbolic verifier and tranzpiler to bare metal C
+	pkgver = 0.1.1.235.ga1557a5
+	pkgrel = 1
+	url = https://github.com/zetzit/zz
+	arch = x86_64
+	arch = i686
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	makedepends = git
+	depends = z3
+	provides = zz
+	conflicts = zz
+	source = zz-git::git+https://github.com/zetzit/zz
+	sha256sums = SKIP
+
+pkgname = zz-git
+
