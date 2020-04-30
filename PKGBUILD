@@ -5,7 +5,7 @@
 
 _name=schema
 pkgname=python2-$_name
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='Python module to validate and convert data structures.'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('python2-setuptools')
 checkdepends=('python2-mock' 'python2-pytest')
 license=('MIT')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('c9dc8f4624e287c7d1435f8fd758f6a0aabbb7eff442db9192cd46f0e2b6d959')
+sha256sums=('b536f2375b49fdf56f36279addae98bd86a8afbd58b3c32ce363c464bed5fc1c')
 
 build() {
   cd "$_name-$pkgver"
