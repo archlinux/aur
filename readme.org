@@ -1,0 +1,20 @@
+Procedure for testing the package in a clean environment (Docker image)
+
+#+begin_src sh
+  docker run -it csantosb/arch-testing /bin/sh
+#+end_src
+
+From within the container
+
+#+begin_src sh
+  yay -S --noconfirm python-fusesoc
+  fusesoc list
+#+end_src
+
+Returns
+
+#+begin_src sh
+  usage: fusesoc [-h] [--version] [--cores-root CORES_ROOT] [--config CONFIG] [--monochrome] [--verbose] [--log-file LOG_FILE]
+               {build,init,pgm,fetch,core,list-cores,core-info,gen,list-paths,library,run,sim,update} ...
+  fusesoc: error: invalid choice: 'list' (choose from 'build', 'init', 'pgm', 'fetch', 'core', 'list-cores', 'core-info', 'gen', 'list-paths', 'library', 'run', 'sim', 'update')
+#+end_src
