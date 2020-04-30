@@ -1,0 +1,11 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 5945eb8..384eaf7 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -21,3 +21,6 @@ serde_json = "1.0.38"
+ fnv = "1.0.6"
+ semver = "0.9.0"
+ dirs = "2.0"
++
++[profile.release]
++lto = "fat"
