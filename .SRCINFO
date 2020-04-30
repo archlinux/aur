@@ -1,6 +1,6 @@
 pkgbase = cl-protobuf-git
 	pkgdesc = Protobuf is a Common Lisp implementation of Google's protocol buffers.
-	pkgver = r132.218d531
+	pkgver = r134.fdc3af4
 	pkgrel = 1
 	url = https://github.com/brown/protobuf
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = cl-protobuf-git
 	optdepends = boost
 	optdepends = protobuf
 	provides = cl-protobuf
-	source = git://github.com/brown/protobuf.git
+	source = git://github.com/eschulte/protobuf.git
 	sha512sums = SKIP
 
 pkgname = cl-protobuf-git
