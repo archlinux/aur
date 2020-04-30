@@ -1,5 +1,0 @@
-post_install() {
-	 echo -e "\033[1m\n\tPour le paquet \033[4mman-pages-fr\033[0;1m :\033[0m\nCertaines pages de manuel en français sont livrées en même temps que leur paquet. Il est possible que \033[4mman-pages-fr\033[0m essaye d'installer des pages de manuel en français par dessus celles existantes. Pour éviter tout conflit, certaines pages de manuel ont été renommées dans \033[4mman-pages-fr\033[0m, avec le suffixe \033[4m2\033[0m.\n"
-	 echo -e "Par exemple, le paquet \033[4mshadow\033[0m fournit la page \033[4m/usr/share/man/fr/man5/passwd.5.gz\033[0m, tout comme \033[4mman-pages-fr\033[0m. C'est pour cela que \033[4mman-pages-fr\033[0m installera plutôt la page nommée \033[4m/usr/share/man/fr/man5/passwd\033[1m2\033[0;4m.5.gz\033[0m pour éviter le conflit.\n"
-	 echo -e "\033[1mman passwd\033[0m affichera donc la page fournit par \033[4mshadow\033[0m, et \033[1mman passwd2\033[0m affichera celle fournit par \033[4mman-pages-fr\033[0m. Bien entedu, ce cas de conflit reste rare.\n"
-}

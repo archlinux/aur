@@ -1,15 +1,16 @@
 pkgbase = man-pages-fr
-	pkgdesc = Pages de manuel Linux francophones de 'Traduc.org'
-	pkgver = 3.70
-	pkgrel = 2
-	url = http://traduc.org/perkamon/
-	install = man-pages-fr.install
+	pkgdesc = French man pages
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://salsa.debian.org/manpages-l10n-team/manpages-l10n
+	changelog = man-pages-fr.changelog
 	arch = any
-	license = custom
-	optdepends = manpages-fr-extra: pages complémentaires
-	options = docs
-	source = http://perkamon.alioth.debian.org/archives/3.70/man-pages-fr-3.70-1.tar.xz
-	md5sums = 66a6033fb2ed3641c35b1d53c0fe5deb
+	license = GPL3
+	makedepends = po4a
+	depends = man-db
+	conflicts = man-pages-fr-git
+	options = !emptydirs
+	source = https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/archive/v4.0.0/manpages-fr-l10n-v4.0.0.tar.bz2
+	sha512sums = 9b9c625f4f1f39abd101713a71db2806acc81e64112b0090bc26f53070157c27062ca50b3588962ecadc9a2f6875f1ae50f394debd16af31fd2cd6ec8eb50da2
 
 pkgname = man-pages-fr
-
