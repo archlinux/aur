@@ -12,8 +12,10 @@ conflicts=(qt5-pim)
 provides=(qt5-pim)
 depends=(qt5-declarative)
 makedepends=(git)
-source=(git+https://code.qt.io/qt/qtpim.git)
-sha512sums=('SKIP')
+source=(git+https://code.qt.io/qt/qtpim.git
+        0001-Patch-module-version.patch)
+sha512sums=('SKIP'
+            '6e7d43f36bbf23dedd860727259a4bf5dfad8e8548a3d4a19c974b9afed87ebb25264cc08572bdbb0f703c95ae1a5f6a7a5ca8cd742feaf46440fe7c282535d2')
 
 pkgver() {
   cd qtpim
@@ -23,6 +25,8 @@ pkgver() {
 
 prepare() {
   mkdir build
+  cd qtpim
+  patch -Np1 -i ../0001-Patch-module-version.patch
 }
 
 build() {

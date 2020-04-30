@@ -12,7 +12,9 @@ pkgbase = qt5-pim-git
 	provides = qt5-pim
 	conflicts = qt5-pim
 	source = git+https://code.qt.io/qt/qtpim.git
+	source = 0001-Patch-module-version.patch
 	sha512sums = SKIP
+	sha512sums = 6e7d43f36bbf23dedd860727259a4bf5dfad8e8548a3d4a19c974b9afed87ebb25264cc08572bdbb0f703c95ae1a5f6a7a5ca8cd742feaf46440fe7c282535d2
 
 pkgname = qt5-pim-git
 
