@@ -1,0 +1,8 @@
+# makepkg files
+/src/
+/pkg/
+/*.pkg.tar*
+
+# jitsi-specific files
+/*.tar.gz
+
