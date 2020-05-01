@@ -2,7 +2,7 @@
 
 pkgname=editorconfig-qtcreator
 _pkgver=0.3.1
-_qtcreatorver=4.11.1
+_qtcreatorver=4.12.0
 pkgver=${_pkgver}+${_qtcreatorver}
 pkgrel=1
 pkgdesc="EditorConfig Plugin for QtCreator"
@@ -13,7 +13,7 @@ depends=("qtcreator=${_qtcreatorver}" "editorconfig-core-c")
 source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/editorconfig/${pkgname}/archive/${_pkgver}.tar.gz"
         "http://download.qt.io/official_releases/qtcreator/${_qtcreatorver%.*}/${_qtcreatorver}/qt-creator-opensource-src-${_qtcreatorver}.tar.xz")
 sha512sums=('53d4f9a875d5aaebd4df0310a4f44a087de8c4f63f5e54387c0e7ea0b5792c455c4b6d41f993b72d23ad5317867b91db5bafc727f6bc9514460f7918ff2c3a2e'
-            '725e509eedde385bc84087a917ea22cf522733a2298d1579a4714f1d1d2d03f90de68fb475af88451bf36ebfceaec17b655077121233c8d9db6ec97dde829622')
+            '9c35ebf095c2874b89af54b06fd190976a27f7e753a23e47db3b26947bdba64e4fe7774ae8b252867cf7f6f0c86b35d773a4012cae6d4aaa9101d7a31973f215')
 
 build() {
   cd "${srcdir}/${pkgname}-${_pkgver}"
