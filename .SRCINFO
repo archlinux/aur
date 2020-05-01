@@ -2,6 +2,7 @@ pkgbase = otf-kawkab-mono
 	pkgdesc = A monospaced Arabic typeface
 	pkgver = 0.501
 	pkgrel = 1
+	epoch = 1
 	url = http://makkuk.com/kawkab-mono
 	arch = any
 	license = custom
