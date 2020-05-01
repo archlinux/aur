@@ -1,0 +1,15 @@
+pkgbase = valentina-git
+        pkgdesc = Sewing pattern drafting tool aiming to remake the garment industry
+        pkgver = rcf51f3837
+        pkgrel = 1
+        url = https://gitlab.com/smart-pattern/valentina
+        arch = i686
+        arch = x86_64
+        license = GPL3
+        makedepends = git
+        makedepends = qt5-tools
+        depends = qt5-svg
+        source = git+https://gitlab.com/smart-pattern/valentina.git#branch=develop
+        md5sums = SKIP
+
+pkgname = valentina-git
