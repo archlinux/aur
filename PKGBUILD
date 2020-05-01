@@ -4,7 +4,7 @@ _name="balena"
 _module="${_name}-sdk"
 _fullname="${_module}-python"
 pkgname=("python-${_name}" "python2-${_name}")
-pkgver=9.3.0
+pkgver=9.4.0
 pkgrel="1"
 pkgdesc="Balena SDK for Python"
 arch=("any")
@@ -14,7 +14,7 @@ license=("Apache")
 makedepends=("python-setuptools" "python2-setuptools")
 provides=("python-${_name}" "python2-${_name}")
 source=("https://github.com/balena-io/${_fullname}/archive/v${pkgver}.tar.gz")
-sha256sums=('9c665469b9ff79c1920ea6b6ddafc264db5f6608052b7c8c75e5c011ee89b73e')
+sha256sums=('496528e26743da062d3a256b713b55ba7368481df83c90008f4226ac89f8b645')
 
 prepare() {
     cp -a "${srcdir}/${_fullname}-${pkgver}" "${srcdir}/${_fullname}-${pkgver}-python2"
