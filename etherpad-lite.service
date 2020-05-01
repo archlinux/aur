@@ -4,21 +4,40 @@ Documentation=https://github.com/ether/etherpad-lite/wiki
 After=syslog.target network.target
 
 [Service]
-Environment=NODE_ENV=production
-User=etherpad-lite
-Group=etherpad-lite
-StateDirectory=etherpad-lite
 CacheDirectory=etherpad-lite
-LogsDirectory=etherpad-lite
-WorkingDirectory=/usr/share/etherpad-lite
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+ConfigurationDirectory=etherpad-lite
 ExecStart=/usr/bin/node /usr/share/etherpad-lite/src/node/server.js --settings /etc/etherpad-lite/settings.json
-PrivateTmp=true
+Environment=NODE_ENV=production
+Group=etherpad-lite
+LogsDirectory=etherpad-lite
+LockPersonality=true
 NoNewPrivileges=true
 PrivateDevices=true
-ProtectHome=yes
-ProtectControlGroups=yes
-ProtectKernelModules=yes
+PrivateTmp=true
+PrivateUsers=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectSystem=strict
+ReadWritePaths=/etc/etherpad-lite/
+RemoveIPC=true
 Restart=always
+RestrictAddressFamilies=~AF_PACKET AF_NETLINK
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@resources
+SystemCallFilter=~@privileged
+StateDirectory=etherpad-lite
+User=etherpad-lite
+WorkingDirectory=/usr/share/etherpad-lite
 
 [Install]
 WantedBy=multi-user.target

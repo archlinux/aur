@@ -5,7 +5,7 @@
 
 _jqueryver=1.12.4
 pkgname=etherpad-lite
-pkgver=1.8.0
+pkgver=1.8.3
 pkgrel=1
 epoch=1
 pkgdesc="Lightweight fork of etherpad based on javascript"
@@ -30,11 +30,11 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ether/${pkgname}/archiv
         "${pkgname}-sysusers.conf"
         "${pkgname}-tmpfiles.conf"
         "${pkgname}.service")
-sha512sums=('47dc18dcb2ebcf2cd3320e79519f0a1809ae49c1bffb2089c169e7cfc58f331fc9511fdb1f7894f4605db4a5bf28680ec39b4430860bdd62a3a989d7e1cbdd38'
+sha512sums=('98344cf94e802a272cfcd621847d8005bbc58e496fa6876e838643ad0c3cce86825d034081da10068c520f67e29a58b97f711c0f45f84b6916af293729fadcd0'
             '8cac69ec91c437aa5e126ce683a6bb5c904e44d4c1d084c3d8f8bee85524735e8f09a340257d9a859d5e8e7d69d6e637ecfc728ab9ffd0e30d65b2136c48378f'
             '8c9093cc82acb814023b60eecffae7cb697abfa6193a68ca068f010baf3bf1e5f1678bdb862f4af370badbd71deb6a8499f61c8b6115d280477db1b3fd895dfd'
             'f1be6d7094ea0dd267fba21c7c64017de6a63974e193720100d49eba07170a078d43f0b76c96e6453b8e9e94cdc24b36fb7ab14218598d65d1455418daf9e447'
-            'b0ee72e0ab370992bd0bf5cd980d53e9222950027a0bf4a41c8085aaec8b93442d0359ef684946f61e005026ad6de5da39ab78c4d54589ecef7d27f1d76410dd')
+            'db3f27c2bed7cc84910154da8851daf32ea248aeaca5026c9c4cf138841b921498a0c39d4f9b635d6686d13ac498399e4657563867d87d406ff6b8b6d9dd0d28')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -45,7 +45,7 @@ prepare() {
     settings.json.template
   # create empty APIKEY.txt, SESSIONKEY.txt
   touch {APIKEY,SESSIONKEY}.txt
-  # create a valid (but empty credentials.json file
+  # create a valid (but empty) credentials.json file
   echo "{}" > credentials.json
   # create needed symlink because setup is weird
   mkdir -v node_modules && cd node_modules
@@ -54,12 +54,10 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  # generating html documentation
-  node bin/doc/generate doc/index.md --format=html \
-    --template=doc/template.html > documentation.html
   (
     cd src
     # required node modules
+    echo "Installing with npm"
     npm install --cache "${srcdir}/npm-cache"
     npm audit || echo "npm audit output might return non-zero"
   )
@@ -85,6 +83,58 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
+  # removing unneeded files and directories
+  find src -type f \
+          \( \
+         -iname '*Makefile*' -o \
+         -iname '*appveyor.yml' -o \
+         -iname '*.babelrc' -o \
+         -iname '*.bak' -o \
+         -iname '*bower.json' -o \
+         -iname '*.c' -o \
+         -iname '*.cc' -o \
+         -iname '*.cpp' -o \
+         -iname '*.md' -o \
+         -iname '*.markdown' -o \
+         -iname '*.rst' -o \
+         -iname '*.nycrc' -o \
+         -iname '*.npmignore' -o \
+         -iname '*.editorconfig' -o \
+         -iname '*.el' -o \
+         -iname '*.eslintignore' -o \
+         -iname '*.eslintrc*' -o \
+         -iname '*.fimbullinter.yaml' -o \
+         -iname '*.gitattributes' -o \
+         -iname '*.gitmodules' -o \
+         -iname '*.h' -o \
+         -iname '*.jshintrc' -o \
+         -iname '*.jscs.json' -o \
+         -iname '*.log' -o \
+         -iname '*logo.svg' -o \
+         -iname '*.nvmrc' -o \
+         -iname '*.o' -o \
+         -iname '*package-lock.json' -o \
+         -iname '*.travis.yml' -o \
+         -iname '*.prettierrc' -o \
+         -iname '*.sh' -o \
+         -iname '*.tags*' -o \
+         -iname '*.tm_properties' -o \
+         -iname '*.wotanrc.yaml' -o \
+         -iname '*tsconfig.json' -o \
+         -iname '*yarn.lock' \
+         \) \
+         -delete
+  find src -type d \
+          \( \
+         -iwholename '*.github' -o \
+         -iwholename '*.tscache' -o \
+         -iwholename '*/man' -o \
+         -iwholename '*/test' -o \
+         -iwholename '*/scripts' -o \
+         -iwholename '*/git-hooks' \
+         \) \
+         -exec rm -rvf {} +
+  find src -empty -type d -delete
   # install initialization file
   install -vDm 644 "src/.ep_initialized" \
     -t "${pkgdir}/usr/share/${pkgname}/src/"
@@ -94,8 +144,8 @@ package() {
   install -vdm 755 "${pkgdir}/etc/${pkgname}"
   install -vdm 755 "${pkgdir}/etc/${pkgname}/no-skin"
   # custom js and css templates
-  install -t "${pkgdir}/etc/${pkgname}/no-skin" \
-    -vDm 644 "src/static/skins/no-skin/"*.{css,js}
+  install -vDm 644 "src/static/skins/no-skin/"*.{css,js} \
+    -t "${pkgdir}/etc/${pkgname}/no-skin"
   rm -rv src/static/skins/no-skin/
   # move sources
   cp -av src/* "${pkgdir}/usr/share/${pkgname}/src/"
@@ -128,8 +178,7 @@ package() {
   # systemd-tmpfiles
   install -vDm 644 "${srcdir}/${pkgname}-tmpfiles.conf" \
     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-  # documentation
-  install -t "${pkgdir}/usr/share/doc/${pkgname}/" \
-    -vDm 644 {CHANGELOG,CONTRIBUTING,README}.md \
-    -vDm 644 documentation.html
+  # docs
+  install -vDm 644 {CHANGELOG,CONTRIBUTING,README}.md \
+    -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }

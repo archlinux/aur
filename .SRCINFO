@@ -1,6 +1,6 @@
 pkgbase = etherpad-lite
 	pkgdesc = Lightweight fork of etherpad based on javascript
-	pkgver = 1.8.0
+	pkgver = 1.8.3
 	pkgrel = 1
 	epoch = 1
 	url = http://etherpad.org
@@ -20,16 +20,16 @@ pkgbase = etherpad-lite
 	backup = etc/etherpad-lite/credentials.json
 	backup = etc/etherpad-lite/APIKEY.txt
 	backup = etc/etherpad-lite/SESSIONKEY.txt
-	source = etherpad-lite-1.8.0.tar.gz::https://github.com/ether/etherpad-lite/archive/1.8.0.tar.gz
+	source = etherpad-lite-1.8.3.tar.gz::https://github.com/ether/etherpad-lite/archive/1.8.3.tar.gz
 	source = jquery-1.12.4.js::https://code.jquery.com/jquery-1.12.4.js
 	source = etherpad-lite-sysusers.conf
 	source = etherpad-lite-tmpfiles.conf
 	source = etherpad-lite.service
-	sha512sums = 47dc18dcb2ebcf2cd3320e79519f0a1809ae49c1bffb2089c169e7cfc58f331fc9511fdb1f7894f4605db4a5bf28680ec39b4430860bdd62a3a989d7e1cbdd38
+	sha512sums = 98344cf94e802a272cfcd621847d8005bbc58e496fa6876e838643ad0c3cce86825d034081da10068c520f67e29a58b97f711c0f45f84b6916af293729fadcd0
 	sha512sums = 8cac69ec91c437aa5e126ce683a6bb5c904e44d4c1d084c3d8f8bee85524735e8f09a340257d9a859d5e8e7d69d6e637ecfc728ab9ffd0e30d65b2136c48378f
 	sha512sums = 8c9093cc82acb814023b60eecffae7cb697abfa6193a68ca068f010baf3bf1e5f1678bdb862f4af370badbd71deb6a8499f61c8b6115d280477db1b3fd895dfd
 	sha512sums = f1be6d7094ea0dd267fba21c7c64017de6a63974e193720100d49eba07170a078d43f0b76c96e6453b8e9e94cdc24b36fb7ab14218598d65d1455418daf9e447
-	sha512sums = b0ee72e0ab370992bd0bf5cd980d53e9222950027a0bf4a41c8085aaec8b93442d0359ef684946f61e005026ad6de5da39ab78c4d54589ecef7d27f1d76410dd
+	sha512sums = db3f27c2bed7cc84910154da8851daf32ea248aeaca5026c9c4cf138841b921498a0c39d4f9b635d6686d13ac498399e4657563867d87d406ff6b8b6d9dd0d28
 
 pkgname = etherpad-lite
 
