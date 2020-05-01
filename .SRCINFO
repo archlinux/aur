@@ -1,0 +1,16 @@
+pkgbase = tabbed
+	pkgdesc = Simple generic tabbed fronted to xembed aware applications.
+	pkgver = 0.6
+	pkgrel = 3
+	url = https://tools.suckless.org/tabbed
+	install = tabbed.install
+	arch = x86_64
+	license = custom:MIT/X
+	depends = libx11
+	source = https://dl.suckless.org/tools/tabbed-0.6.tar.gz
+	source = config.h
+	md5sums = 7898992feb9358e0196119750b77b42c
+	md5sums = 910b1cbcf62051064c58029987e05db8
+
+pkgname = tabbed
+
