@@ -1,6 +1,6 @@
 pkgbase = armutils-git
 	pkgdesc = Build ARM packages in chroot containers on x86_64
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://gitlab.com/mipimipi/armutils
 	arch = x86_64

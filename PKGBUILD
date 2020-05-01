@@ -6,7 +6,7 @@
 _pkgorg=gitlab.com/mipimipi
 pkgname=armutils-git
 _pkgname=armutils
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Build ARM packages in chroot containers on x86_64"
 arch=(x86_64)
