@@ -1,0 +1,18 @@
+pkgbase = tuql
+	pkgdesc = Automatically create a GraphQL server from a SQLite database or a SQL file
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/bradleyboy/tuql
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = npm
+	depends = nodejs
+	provides = tuql
+	conflicts = tuql
+	noextract = tuql-1.7.0.tgz
+	source = https://registry.npmjs.org/tuql/-/tuql-1.7.0.tgz
+	sha1sums = 0442e974defdcc042bdf52f8e20912791e9d05b0
+
+pkgname = tuql
+
