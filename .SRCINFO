@@ -1,0 +1,13 @@
+pkgbase = dcfldd
+	pkgdesc = DCFL (DoD Computer Forensics Lab) dd replacement with hashing
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://dcfldd.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = dcfldd-1.7.tar.gz::https://github.com/resurrecting-open-source-projects/dcfldd/archive/v1.7.tar.gz
+	sha256sums = 6c4654407b7ec0c3328f79dc1a31365c22899a6aac23cb8ac4cb15441c71aa3e
+
+pkgname = dcfldd
+
