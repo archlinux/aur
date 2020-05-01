@@ -22,7 +22,7 @@ fi
 
 _reponame=brave-browser
 pkgname=brave
-pkgver=1.7.98
+pkgver=1.8.86
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -40,10 +40,11 @@ source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'brave-vaapi-enable.patch'
         'brave-launcher'
         'brave-browser.desktop')
-arch_revision=9102943de95dd7e51f973ad9f7554c8e01d6ab22
+arch_revision=12619d0d3664de241e95cf22e96f07838d17e6c2
 for Patches in \
         rename-Relayout-in-DesktopWindowTreeHostPlatform.patch \
         rebuild-Linux-frame-button-cache-when-activation.patch \
+        icu67.patch \
         chromium-widevine.patch \
         chromium-skia-harmony.patch
 do
@@ -60,6 +61,7 @@ sha256sums=('SKIP'
             '2191ba32800a423f37b7a667093e2bdef5762fe5111fee1d5067e66e26564488'
             'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
             '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
+            '5315977307e69d20b3e856d3f8724835b08e02085a4444a5c5cefea83fd7d006'
             '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
             'fad5e678d62de0e45db1c2aa871628fdc981f78c26392c1dccc457082906a350'
@@ -86,6 +88,9 @@ prepare() {
     # https://crbug.com/1049258
     patch -Np1 -i "${srcdir}"/rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
     patch -Np1 -i "${srcdir}"/rebuild-Linux-frame-button-cache-when-activation.patch
+
+    # https://crbug.com/v8/10393
+    patch -Np3 -d v8 -i "${srcdir}"/icu67.patch
 
     # Load bundled Widevine CDM if available (see chromium-widevine in the AUR)
     # M79 is supposed to download it as a component but it doesn't seem to work
@@ -154,7 +159,6 @@ package() {
     install -Dm0644 -t "${pkgdir}/usr/share/applications/" "${_reponame}.desktop"
     install -Dm0644 "${_reponame}/src/brave/app/theme/brave/product_logo_128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_reponame}/LICENSE"
-    install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_reponame}/src/brave/components/brave_sync/extension/brave-sync/node_modules/electron/dist/LICENSES.chromium.html"
 }
 
 # vim:set ts=4 sw=4 et:

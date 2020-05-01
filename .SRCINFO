@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.7.98
+	pkgver = 1.8.86
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -25,14 +25,15 @@ pkgbase = brave
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: for storing passwords in KWallet on KDE desktops
 	optdepends = sccache: For faster builds
-	source = git+https://github.com/brave/brave-browser.git#tag=v1.7.98
+	source = git+https://github.com/brave/brave-browser.git#tag=v1.8.86
 	source = brave-vaapi-enable.patch
 	source = brave-launcher
 	source = brave-browser.desktop
-	source = rename-Relayout-in-DesktopWindowTreeHostPlatform.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/rename-Relayout-in-DesktopWindowTreeHostPlatform.patch?h=packages/chromium&id=9102943de95dd7e51f973ad9f7554c8e01d6ab22
-	source = rebuild-Linux-frame-button-cache-when-activation.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/rebuild-Linux-frame-button-cache-when-activation.patch?h=packages/chromium&id=9102943de95dd7e51f973ad9f7554c8e01d6ab22
-	source = chromium-widevine.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium&id=9102943de95dd7e51f973ad9f7554c8e01d6ab22
-	source = chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium&id=9102943de95dd7e51f973ad9f7554c8e01d6ab22
+	source = rename-Relayout-in-DesktopWindowTreeHostPlatform.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/rename-Relayout-in-DesktopWindowTreeHostPlatform.patch?h=packages/chromium&id=12619d0d3664de241e95cf22e96f07838d17e6c2
+	source = rebuild-Linux-frame-button-cache-when-activation.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/rebuild-Linux-frame-button-cache-when-activation.patch?h=packages/chromium&id=12619d0d3664de241e95cf22e96f07838d17e6c2
+	source = icu67.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/icu67.patch?h=packages/chromium&id=12619d0d3664de241e95cf22e96f07838d17e6c2
+	source = chromium-widevine.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium&id=12619d0d3664de241e95cf22e96f07838d17e6c2
+	source = chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium&id=12619d0d3664de241e95cf22e96f07838d17e6c2
 	source = vaapi-build-fix.patch::https://aur.archlinux.org/cgit/aur.git/plain/vaapi-build-fix.patch?h=chromium-vaapi&id=2421d695f494fd04797ac6eda81e66857664b854
 	source = vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=2421d695f494fd04797ac6eda81e66857664b854
 	sha256sums = SKIP
@@ -41,6 +42,7 @@ pkgbase = brave
 	sha256sums = 2191ba32800a423f37b7a667093e2bdef5762fe5111fee1d5067e66e26564488
 	sha256sums = ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db
 	sha256sums = 46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014
+	sha256sums = 5315977307e69d20b3e856d3f8724835b08e02085a4444a5c5cefea83fd7d006
 	sha256sums = 709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070
 	sha256sums = 771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1
 	sha256sums = fad5e678d62de0e45db1c2aa871628fdc981f78c26392c1dccc457082906a350
