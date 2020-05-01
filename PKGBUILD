@@ -1,14 +1,14 @@
 # Maintainer: LinArcx <linarcx@gmail.com>
 
 pkgname='giti-git'
-pkgver=1.0.0.r2.g67944fc
+pkgver=1.0.0.r3.g940e84f
 pkgrel=1
 pkgdesc='Permanent observer of your git directories'
 arch=('any')
 url='https://github.com/LinArcX/giti'
 license=('GPL-3.0')
 makedepends=('git' 'meson' 'pkgconf' 'vala' 'ninja')
-depends=('gtk3' 'libgit2' 'libgee' 'granite')
+depends=('gtk3' 'libgit2-glib' 'libgee' 'granite')
 source=("${pkgname}::git+https://github.com/LinArcX/giti.git")
 sha256sums=('SKIP')
 

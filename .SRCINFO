@@ -1,6 +1,6 @@
 pkgbase = giti-git
 	pkgdesc = Permanent observer of your git directories
-	pkgver = 1.0.0.r2.g67944fc
+	pkgver = 1.0.0.r3.g940e84f
 	pkgrel = 1
 	url = https://github.com/LinArcX/giti
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = giti-git
 	makedepends = vala
 	makedepends = ninja
 	depends = gtk3
-	depends = libgit2
+	depends = libgit2-glib
 	depends = libgee
 	depends = granite
 	source = giti-git::git+https://github.com/LinArcX/giti.git
