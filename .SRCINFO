@@ -1,6 +1,6 @@
 pkgbase = imgp
 	pkgdesc = Multi-core batch image resizer and rotator
-	pkgver = 2.6
+	pkgver = 2.7
 	pkgrel = 1
 	url = https://github.com/jarun/imgp
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = imgp
 	depends = python
 	depends = python-pillow
 	conflicts = imgp-git
-	source = https://github.com/jarun/imgp/archive/v2.6.tar.gz
-	sha256sums = f79d35b4337269b51f166e80a5e8e39f08f33f7843733d3ed85795bbe1eea799
+	source = https://github.com/jarun/imgp/archive/v2.7.tar.gz
+	sha256sums = 362f9fab7eaf4c53438e12f32477329c970bd7348181c243ffa30326e231acf7
 
 pkgname = imgp
 
