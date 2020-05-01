@@ -7,7 +7,7 @@ pkgdesc='Nutstore integration for Nautilus.'
 arch=(x86_64)
 url='https://www.jianguoyun.com/'
 license=(CCPL:by-nd GPL2)
-depends=(libnautilus-extension)
+depends=(libnautilus-extension nutstore)
 source=("https://www.jianguoyun.com/static/exe/installer/nutstore_linux_src_installer.tar.gz")
 sha256sums=('69a361bd0c0d666c3cc81760a103e8db61d90714cb17a8b5cedc0b47e55cede2')
 
