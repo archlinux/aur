@@ -3,6 +3,7 @@ Type = File
 Operation = Install
 Operation = Upgrade
 Target = usr/lib/modules/*/vmlinuz
+Target = usr/lib/initcpio/*
 Target = usr/lib/systemd/boot/efi/linuxx64.efi.stub
 
 [Action]
