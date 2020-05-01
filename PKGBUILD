@@ -15,11 +15,11 @@ _replacesoldkernels=() # '%' gets replaced with kernel suffix
 _replacesoldmodules=() # '%' gets replaced with kernel suffix
 
 pkgbase=linux-libre
-pkgver=5.5.13
+pkgver=5.6.7
 pkgrel=1
 pkgdesc='Linux-libre'
-rcnver=5.5.11
-rcnrel=armv7-x14
+rcnver=5.6.4
+rcnrel=armv7-x11
 url='https://linux-libre.fsfla.org/'
 arch=(i686 x86_64 armv7h)
 license=(GPL2)
@@ -29,7 +29,7 @@ makedepends=(
 )
 makedepends_armv7h=(uboot-tools vboot-utils dtc) # required by linux-libre-chromebook
 options=('!strip')
-_srcname=linux-5.5
+_srcname=linux-5.6
 source=(
   "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_srcname##*-}-gnu/linux-libre-${_srcname##*-}-gnu.tar.xz"{,.sign}
   "https://linux-libre.fsfla.org/pub/linux-libre/releases/$pkgver-gnu/patch-${_srcname##*-}-gnu-$pkgver-gnu.xz"{,.sign}
@@ -47,16 +47,7 @@ source=(
   0002-fix-Atmel-maXTouch-touchscreen-support.patch
   # extracted patches from Arch Linux kernel sources
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-  0003-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch
-  0004-drm-i915-Serialise-i915_active_acquire-with-__active.patch
-  0005-drm-i915-gem-Take-runtime-pm-wakeref-prior-to-unbind.patch
-  0006-drm-i915-gem-Avoid-parking-the-vma-as-we-unbind.patch
-  0007-drm-i915-gem-Try-to-flush-pending-unbind-events.patch
-  0008-drm-i915-gem-Reinitialise-the-local-list-before-repe.patch
-  0009-drm-i915-Add-a-simple-is-bound-check-before-unbindin.patch
-  0010-drm-i915-Introduce-a-vma.kref.patch
-  0011-iwlwifi-don-t-send-GEO_TX_POWER_LIMIT-if-no-wgds-tab.patch
+  sphinx-workaround.patch
 )
 source_armv7h=(
   # RCN patch (CM3 firmware deblobbed and bloatware removed)
@@ -71,7 +62,6 @@ source_armv7h=(
   0007-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch
   0008-ARM-dove-enable-ethernet-on-D3Plug.patch
   0009-USB-Armory-MkII-support.patch
-  0010-Revert-ARM-8947-1-Fix-__arch_get_hw_counter-access-t.patch
   # ChromiumOS patches
   0001-CHROMIUM-block-partitions-efi-Add-support-for-IGNORE.patch
 )
@@ -79,9 +69,9 @@ validpgpkeys=(
   '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
   '6DB9C4B4F0D8C0DC432CF6E4227CA7C556B2BA78' # David P.
 )
-sha512sums=('187368a8fb4e04acfd7d18a024d6cdbc2841bcc06dcfbc3a053706e8512c3e3f573755228347c11bd791b296ec60eb2d67d5075ece2aef234a847e72f2b3e746'
+sha512sums=('df473a228ca2bbefbcc630aee710c78c83083269b4939adf698a9adf3a5760391b24529704bfc0b108bc67054ebed047746810e1b41be1fd9019a911a563114d'
             'SKIP'
-            '2c882f6256bb9409b59fde28183e71701e969aab8a0e36821550a639a5c5de3e3b129a708f0f9c83135653cfccc837601850b631fb6d63449e2083319aba1d30'
+            '0c01eabfbd10fb5aeabcb60c9ca362576bd7b33a31b841704b3b4d3c650a2a681b208ffdeb82673286b0e8449858d399cc80f04acafa7d27ee686f2880471e6d'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -89,38 +79,28 @@ sha512sums=('187368a8fb4e04acfd7d18a024d6cdbc2841bcc06dcfbc3a053706e8512c3e3f573
             'SKIP'
             '267295aa0cea65684968420c68b32f1a66a22d018b9d2b2c1ef14267bcf4cb68aaf7099d073cbfefe6c25c8608bdcbbd45f7ac8893fdcecbf1e621abdfe9ecc1'
             'SKIP'
-            '69f01bda528c7785461e9a712ed67979446df7b817b2e7ffa07f2cfd4b7ec379eab971c0ca179320560b8f4a454cae0085fd1e0bd548803f5dc5ce1da64e550d'
-            '18e7f5c57147837666326c6e1a7990acc845b91384da362cc05de0442c51fbe97a76a775ea23b5386979b0fd085a26d276f69ac5c4efdd50e69dcf3e3bc4eaf1'
-            '8f26d9d2161bad45fbd5b5c7db31af7bbbbc0295b87da645179bf5f777362c49cf296fa8e55d976a41f7f68868b55469787967413c7a68278dec6f7181e5e1da'
-            'aca591b5a2e838754e3c5fd2c0e50098ad54c2d0f990de5bf9cff8608e881daf0e37132294ed1a0e0a7b9e1c194c0b89f95da001d94febdb25a01c409060e3ac'
+            'da0deff6865517e094c229a0b6709d15644c170105168bdc14d0dee372547255439d91a79ff8ba9404ae80acd7e0d9c0d4db9685e3e0207c870dd1a66cf1469b'
+            'd916c171df8341f2d16a86a0b2840f6336e000fc43457410c558928d256c4828820036c5ca9c9695ecf340c53f4b4e27ce5ffd3f28ac588dddb8b18f0d6f3ab1'
+            'e4b0210bba48dd432751a7a8d41e3b5ae6f11d05f6551d2987a62011718a3ca706754da02303fe819e064868120e5f963fcf1e07601ff84aa22b9500fce32a4b'
+            '53103bf55b957b657039510527df0df01279dec59cda115a4d6454e4135025d4546167fa30bdc99107f232561c1e096d8328609ab5a876cf7017176f92ad3e0b'
             '167bc73c6c1c63931806238905dc44c7d87c5a5c0f6293159f2133dfe717fb44081018d810675716d1605ec7dff5e8333b87b19e09e2de21d0448e447437873b'
             'bb6718984a7357c9b00c37e4788480e5b8b75018c172ecc1441bc3fc5d2d42444eb5d8c7f9d2e3a7d6fed6d03acb565e3c0559486e494c40a7fe6bd0570c9ede'
             '143dea30c6da00e504c99984a98a0eb2411f558fcdd9dfa7f607d6c14e9e7dffff9cb00121d9317044b07e3e210808286598c785ee854084b993ec9cb14d8232'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '70858920f0ac56651347f979d5add5323b4ea5ff38e802ee43146b40d4b26ca61903d44b8763a0e9ba080017839ba3fb2f67ec15694c2fba0fd726411e8a96e9'
-            '420a201f16c6e293135dae81e645817e0e4d94fe885035226437c43cdce3db192e3ffebeb423a0304f7c909b2061e85af1299c7451d15d36106e319d9ddb4acf'
-            '33d558d4fdad651de93208d0e9a1c6d62f9c6b85791a24443d1b2ceb6c08da425507f3f025161d399c823b852880ef61761e71f39d22f30f03a66a8c23c36ad5'
-            '3fa77a47394d5e52e0b3c6c96a8c15e755f617aaa2b68758f211103489551b6fe1dfa7082ca32fc0fbc29a9d6c70cb2c419b9484d9e67839bed7182f862bd039'
-            'e75f9062f9bf4c686ced979c4789ea82788aec14f56976ee4c6213ed2af4fd6a1ce1c01c26a71f7afff9a7bc2a2051e366be6c458e413e6fff154b580202e5a0'
-            '19b28696117425e13a94730c0f2edabe2d9ff741095af34c1aeee95f59f9efe9e7cb6124b61b1b31d0d0730f9431281c8d0040db0fc15a80d8028ebe29562cf4'
-            '5d802cc0843ee0d66aca4b57987db2cbeaa27939322244171313ca2d01cc3591ddbbf774edbb69a61830c28560f1af3b740e86495cec600118ee565bc5784536'
-            '5f7af141438bced1d0f3d858fd66d68356a979c5a3eefb1f0a21a00aabdf54d84b2b558c3e1002b6287529ccb760eebbdc9922df50e46154c807ee9e6da9e73a'
-            '8e61e45373fc72877a21caf2b980cdffe36c0086a55656352043ddb11c2394ab634dea0b111454758b67b515ab6070596e227f4ae02fd7c4475d412cfce5d30b'
-            '28abc78b9f63b4fe3c32779d5306a59c37ff4b8868060cb71ba4521aebcb6266509f51fb5dda17eeac4ab89d0f72e63cba1e9e5938d0fc9db00f202b9a1b845f'
-            '42efbf9f7502c9470042f31c9abed0f5590c837f31a4664554fa1829e51093390c1a97bdfb50d1f88ca6bba47e15df9fbb206817a9708ebc30ef469e16a851b4')
-sha512sums_armv7h=('53b5ab4baaf9e58f31e72d5395a7bbb187bc90c75c3ef00a927e282a336e2f5dfe9e54c0d4ad5ab901037ddd7d5c472ae2539f5a6d44a02105bce95b2c23269c'
+            'f340f8beaf2df0970ed592360da8d625ba6be27ed4a0773ff8a6b5dc638b0e7b73e575d3e154c328999dfe9ebf4f18739adade8ddfa89472845318885f9da1c0'
+            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be')
+sha512sums_armv7h=('8f9f0d9da7d2b279a13403a90e43cf3782c1b1711ad7bc758ba3ad717afa1a62fa1ae5519015561a0c632362ed89036d5b5451dd7e1d93f3033c223d84b7cab4'
                    'SKIP'
-                   '4ad93d447d8671402dd7a2886b5c1329ffd5dd7b7f87e895f792ae937258c5016c7c0512ad03c4065da7520e656d0764d565171be463a378320fb210b54e3dee'
-                   '780e4ce45b35b271dd3459b543681603c1f112f68d5f3500b7c01fdcac205a9d06e9ec13700e8841d4beb831e3e2dda1664a0ac38ef23bb5a47e2df0534767d7'
-                   '7b5faabd9f4a766f92a285857ff750eff4ae08abb8435483ca5bc9a38c4852d373a960ed272ea35b6a055c7ca53d2f3ff869023f91b9dcd0c5adac912c16b109'
-                   '1a75ee9c6a51a95f39a6cbe5b27c034b239dad232961033df0ce9ce01dea8aaa3aa819a0a6b724a468bee8b275f2d7c8a5c56992f3237a18c19cd8ecb3a930e8'
-                   '42e8fa85e9aee0624a120c1260c187b6402d48334dc5db78f753ce5c4edab6d2f8c3d0bfcd65e8fc638c448c7a0ddec9c4f0f9fc6236651c30a5eba1d092453c'
-                   '13e3f21591cd0952d0c29e99998edad4a594225007d3fbb2486a92c235f85246b68030dfb5d5d427cfc82627f85d60dd561add8dcc5570e431706394c14145a0'
-                   'e253bc19cd306a7b435d507761f3534677136c448885e7b6bf92b5bb28e79e2aad794a0e0b0874828a75146cbeb8586df7ab052effafb8484747c4d4d43f89a4'
-                   'a8203472a924b720c9f4d8eb05976028cf3ca1e595fddee1801f7594c0bef00b1cd788410b5f8fa28ee2d6ebf1403b6052334f777c53fce0b8958e8e66931d98'
-                   'dfdd22d4cb803e7dd3fd3455689147c5441392001d8695993f5e7dcad02ff0b4846dd6c53a1fdb67134022ef77e6433c52d38cbbbaccb9d9d849acb8d19c854e'
-                   'b1eb6025017cb5d73d330e3bf304252c8ec4ae607350d358cc2a78ac765982dec6029b94e85966c34f015d50a39e639caf27c5907bc8dd1a36a5e1f9de206f7f'
+                   'd788dd09cf98e0b014faeba75633c0db0cda7bc26817f09520cafc763ddad25e5c446b3fc19ba22a9abefcb02a4f3d187808f11caba77420b473f88a3f0a281e'
+                   '2010c50048b60f57b4547fdd770a53a26e5d60a40e73c26b4f490e86d0753b6840eade917cb603ef8a7048a175019a921629489e6b9bbce2cc08bde18365934c'
+                   'e3b0c5f0dded7b14bb884a84cf0b43157cd605890d27224d167ee03af4a6b4dd99195aca7a33e2646926be42ca4d5a26861f72a81caccc5294686360f6592ffa'
+                   '8b4c1c9d10bc81c45bbfaef99e9e49723d25a16ebf87ebf450a1f8f28030d1cb6832f82e228810444548947073a88ceb3b5eb2217d4bb11212e9b8f19aa88684'
+                   'ad323ad23cb785a58c5c0ad37da940ac8d122dedad1676d10d2956ea4d3480dd22a9c44838966af1f6eb56677334ac5fde890f884f7116f16c20297033a01c71'
+                   '0fb1f5342710ce5f3afce2e50f9adfba6cd84072dacfb4e22c05aef728d0ed9d5b38fed5b1cf1ce3ec5db17a443bfd7e849130d1538b62c457a168d97e9adb6a'
+                   'a2a777f20638e7dd787b053ede9b62792f6cdd4f6c1507f8cd6bc2fd8b9a32ee37ee96179e117f247a18b525bac7aaf7fdaed54ade93e82e4103e27220477477'
+                   '2210bbf9453c2d593749ca397abd533894fe199ff208b29ad2fd55845e7e7045ddf34a4a298350a7233e78cc8e0e00c0932a4693afa16c0c1699cb81294977cc'
+                   '58203377936bf2b39d64dfbd5f15e0ee532f8dc03a2da4f6ee26115389e9c8a72d784972bd511969bd2c63122c372b2129f6a49263561be3a54e58887adf9720'
                    '7bda2ad7eb81af802873cb6764cb9c675ec50ceeb5adc487881ebc8c316cf55f836e56c2cc67494a2920e86494861db2eb924b7ff9b151ae3c5b0e493c373bf9')
 
 _replacesarchkernel=("${_replacesarchkernel[@]/\%/${pkgbase#linux-libre}}")
@@ -192,7 +172,7 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-libre-firmware: firmware images needed for some devices')
-  provides=("LINUX-ABI_VERSION=$pkgver")
+  provides=(LINUX-ABI_VERSION="$pkgver" VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
   cd $_srcname
   local kernver="$(<version)"
@@ -222,9 +202,6 @@ _package() {
     sed "s|%PKGBASE%|$pkgbase|g;s|%KERNVER%|$kernver|g" ../linux-armv7h.preset \
       | install -Dm644 /dev/stdin "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
   fi
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -321,9 +298,6 @@ _package-headers() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
@@ -343,9 +317,6 @@ _package-docs() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-chromebook() {
