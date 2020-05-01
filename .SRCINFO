@@ -1,0 +1,23 @@
+pkgbase = icu65
+	pkgdesc = International Components for Unicode library
+	pkgver = 65.1
+	pkgrel = 1
+	url = http://www.icu-project.org/
+	arch = i686
+	arch = x86_64
+	license = custom:icu
+	makedepends = python
+	makedepends = clang
+	makedepends = make
+	makedepends = patch
+	depends = gcc-libs
+	depends = sh
+	source = https://github.com/unicode-org/icu/releases/download/release-65-1/icu4c-65_1-src.tgz
+	source = icu-65.1-initialized-buffer-uloc_getKeywordValue.patch::https://github.com/unicode-org/icu/commit/fab4c3c719.patch
+	source = icu-65.1-prevent-SEGV_MAPERR-in-append.patch::https://github.com/unicode-org/icu/commit/b7d08bc04a.patch
+	sha512sums = 8f1ef33e1f4abc9a8ee870331c59f01b473d6da1251a19ce403f822f3e3871096f0791855d39c8f20c612fc49cda2c62c06864aa32ddab2dbd186d2b21ce9139
+	sha512sums = 8898fe0fa9805304cd2fc02c00ab1131861836f4d11887f82450c2378666cb03bce0c5038d3f0bdcdd1c1cdee2a00a61ef85602ed0e0c74ad2e58578b1940123
+	sha512sums = 580283cdd95fb7b8410cb3a6c0f47a6c8e53e0fdc9c213b04cd133ba4120381533ff2aef89ddab968150754bd9ca3a536d5c592c6881e625eb8ee6de8723de1b
+
+pkgname = icu65
+
