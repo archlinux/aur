@@ -3,14 +3,14 @@
 pkgname=precomp
 _gitname=${pkgname}-cpp
 pkgver=0.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Recompressor that further compresses already compressed files"
 arch=('x86_64')
 url="https://github.com/schnaader/precomp-cpp"
 license=('Apache')
 depends=('gcc-libs')
 source=("https://github.com/schnaader/${_gitname}/archive/v${pkgver}.tar.gz")
-md5sums=('6a766bdc8e6b065525cb03dbfb8cb4e0')
+sha256sums=('b4064f9a18b9885e574c274f93d73d8a4e7f2bbd9e959beaa773f2e61292fb2b')
 
 build() {
 	cd "${_gitname}-${pkgver}"
