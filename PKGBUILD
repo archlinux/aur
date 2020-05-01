@@ -10,7 +10,7 @@ license=('GPL')
 groups=('kicad-libraries')
 makedepends=('cmake')
 options=('!strip')
-conflicts=('kicad-templates-git' 'kicad-library-git' 'kicad-library' 'kicad-library-3d')
+conflicts=('kicad-templates-git')
 source=("https://github.com/KiCad/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('f08f857eee9b88cc89d1579c66046e01d752cf696d468d8ac2465066d379e406')
 
