@@ -1,0 +1,23 @@
+pkgbase = openvas
+	pkgdesc = Vulnerability scanning Daemon
+	pkgver = 6.0.1
+	pkgrel = 2
+	url = https://github.com/greenbone/openvas
+	changelog = CHANGELOG.md
+	arch = x86_64
+	groups = greenbone-vulnerability-manager
+	license = GPL
+	makedepends = cmake
+	makedepends = doxygen
+	depends = gvm-libs
+	depends = redis
+	source = openvas-6.0.1.tar.gz::https://github.com/greenbone/openvas/archive/v6.0.1.tar.gz
+	source = https://github.com/greenbone/openvas-scanner/releases/download/v6.0.1/openvas-6.0.1.tar.gz.sig
+	source = openvas.service
+	validpgpkeys = 8AE4BE429B60A59B311C2E739823FAA60ED1E580
+	sha512sums = db4087fffe1d50e232fa1e51325cf7f142237e2bd3cc5dcaa1e7058a4871300f352f2c0e700eae72ea9412c347b072e9d1f2eca508b27cb30f36c6895ec95147
+	sha512sums = SKIP
+	sha512sums = 574a9125928e672a9a22a00cab9c635897eedad0eaae550295c21d45cabd52d1d1cd376f441665d37fd1bb9fa48360039f553c300eb15dd9b83cf14df7f37de5
+
+pkgname = openvas
+
