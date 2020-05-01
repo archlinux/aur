@@ -1,6 +1,6 @@
 pkgbase = peazip-qt
 	pkgdesc = QT archiver utility
-	pkgver = 7.1.0
+	pkgver = 7.2.1
 	pkgrel = 1
 	url = http://www.peazip.org/peazip-linux.html
 	install = peazip.install
@@ -27,9 +27,9 @@ pkgbase = peazip-qt
 	conflicts = peazip-qt-opensuse-latest
 	conflicts = peazip-qt-build
 	options = !strip
-	source = peazip-qt-7.1.0.tgz::https://github.com/giorgiotani/PeaZip/releases/download/7.1.0/peazip-7.1.0.LINUX.Qt.tgz
+	source = peazip-qt-7.2.1.tgz::https://github.com/giorgiotani/PeaZip/releases/download/7.2.1/peazip-7.2.1.LINUX.Qt.tgz
 	source = peazip.desktop
-	sha256sums = 4a79bdacf20291246dd1dd66b33cf59ad8f7522193c7ae80fce879f02b9cb94b
+	sha256sums = 30fb8ce970d99c31d0c01a6fcd1f358e91d34b31fb266ee982787677fc726bbd
 	sha256sums = 4d876c6a61f25a7e2f3dfa69b1c80e61fdda9220bbf8e23a407e34eae377091b
 
 pkgname = peazip-qt
