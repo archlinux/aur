@@ -1,0 +1,40 @@
+From 9e2c32390c5c253aade3bb703e51841748d2c37e Mon Sep 17 00:00:00 2001
+From: Jonathan Wakely <jwakely@redhat.com>
+Date: Sat, 28 Jan 2017 01:26:00 +0000
+Subject: [PATCH] Remove abs(float) function that clashes with std::abs(float)
+
+Depending on which C++ standard library headers have been included there
+might an abs(float) function already declared in the global namespace,
+so the definition in this file conflicts with it. This cause a build
+failure with GCC 7, which conforms more closely to the C++ standard with
+respect to overloads of abs.
+
+Including <cmath> and adding a using-declaration for std::abs ensures
+that the standard std::abs(float) function is available. This solution
+should be portable to all compilers.
+---
+ handler.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/handler.cc b/handler.cc
+index 8830ea2..685b1ff 100644
+--- a/handler.cc
++++ b/handler.cc
+@@ -23,6 +23,8 @@
+ #include <X11/extensions/XTest.h>
+ #include <X11/XKBlib.h>
+ #include <X11/Xproto.h>
++#include <cmath>  // std::abs(float)
++using std::abs;
+ 
+ XState *xstate = nullptr;
+ 
+@@ -533,8 +535,6 @@ class WaitForPongHandler : public Handler, protected Timeout {
+ 	virtual Grabber::State grab_mode() { return parent->grab_mode(); }
+ };
+ 
+-static inline float abs(float x) { return x > 0 ? x : -x; }
+-
+ class AbstractScrollHandler : public Handler {
+ 	bool have_x, have_y;
+ 	float last_x, last_y;

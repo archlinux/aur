@@ -1,0 +1,40 @@
+diff -uprb easystroke-0.6.0.orig/actions.cc easystroke-0.6.0/actions.cc
+--- easystroke-0.6.0.orig/actions.cc	2013-03-27 17:52:38.000000000 +0200
++++ easystroke-0.6.0/actions.cc	2015-12-07 22:07:17.720041171 +0200
+@@ -51,10 +51,11 @@ void TreeViewMulti::on_drag_begin(const
+ 	context->set_icon(pb, pb->get_width(), pb->get_height());
+ }
+ 
+-bool negate(bool b) { return !b; }
+-
+ TreeViewMulti::TreeViewMulti() : Gtk::TreeView(), pending(false) {
+-	get_selection()->set_select_function(sigc::group(&negate, sigc::ref(pending)));
++	get_selection()->set_select_function(
++		[this](Glib::RefPtr<Gtk::TreeModel> const&, Gtk::TreeModel::Path const&, bool) {
++			return !pending;
++		});
+ }
+ 
+ enum Type { COMMAND, KEY, TEXT, SCROLL, IGNORE, BUTTON, MISC };
+diff -uprb easystroke-0.6.0.orig/Makefile easystroke-0.6.0/Makefile
+--- easystroke-0.6.0.orig/Makefile	2013-03-27 17:52:38.000000000 +0200
++++ easystroke-0.6.0/Makefile	2015-12-07 21:54:47.926776791 +0200
+@@ -21,8 +21,7 @@ LOCALEDIR= $(PREFIX)/share/locale
+ DFLAGS   =
+ OFLAGS   = -O2
+ AOFLAGS  = -O3
+-STROKEFLAGS  = -Wall -std=c99 $(DFLAGS)
+-CXXFLAGS = -Wall $(DFLAGS) -DLOCALEDIR=\"$(LOCALEDIR)\" `pkg-config gtkmm-3.0 dbus-glib-1 --cflags`
++CXXFLAGS = -Wall $(DFLAGS) -std=c++11 -DLOCALEDIR=\"$(LOCALEDIR)\" `pkg-config gtkmm-3.0 dbus-glib-1 --cflags`
+ CFLAGS   = -Wall $(DFLAGS) -DLOCALEDIR=\"$(LOCALEDIR)\" `pkg-config gtk+-3.0 --cflags` -DGETTEXT_PACKAGE='"easystroke"'
+ LDFLAGS  = $(DFLAGS)
+ 
+@@ -63,7 +62,7 @@ $(BINARY): $(OFILES)
+ 	$(CXX) $(LDFLAGS) -o $@ $(OFILES) $(LIBS)
+ 
+ stroke.o: stroke.c
+-	$(CC) $(STROKEFLAGS) $(AOFLAGS) -MT $@ -MMD -MP -MF $*.Po -o $@ -c $<
++	$(CC) $(CFLAGS) $(AOFLAGS) -MT $@ -MMD -MP -MF $*.Po -o $@ -c $<
+ 
+ %.o: %.c
+ 	$(CC) $(CFLAGS) $(OFLAGS) -MT $@ -MMD -MP -MF $*.Po -o $@ -c $<
