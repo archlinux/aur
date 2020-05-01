@@ -1,0 +1,24 @@
+pkgbase = plata-theme-osd-match
+	pkgdesc = A Gtk+ theme based on Material Design Refresh (modified so the volume OSD matches the set accent color)
+	pkgver = 0.9.7.1
+	pkgrel = 1
+	url = https://gitlab.com/CorvetteCole/plata-theme
+	arch = any
+	license = CCPL
+	license = GPL2
+	makedepends = git
+	makedepends = inkscape
+	makedepends = libxml2
+	makedepends = parallel
+	makedepends = sassc
+	makedepends = zip
+	optdepends = gtk-engine-murrine: for gtk2 themes
+	optdepends = ttf-roboto: Recommended font
+	optdepends = marco: Mate support, a package rebuilt is required
+	provides = plata-theme
+	conflicts = plata-theme
+	source = git+https://gitlab.com/CorvetteCole/plata-theme.git#tag=0.9.7.1
+	sha256sums = SKIP
+
+pkgname = plata-theme-osd-match
+
