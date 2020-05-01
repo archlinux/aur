@@ -62,11 +62,13 @@ pkgbase = firefox-wayland-hg
 	source = hg+https://hg.mozilla.org/mozilla-unified
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch
 	source = 0002-Pipewire.patch
+	source = 0003-Disable-netwerk-test-http3server.patch
 	source = firefox.desktop
 	source = firefox-symbolic.svg
 	sha256sums = SKIP
 	sha256sums = 11ffb5665e3925349553868a3d326b8397d2705707de033d6ec6ee00babeb87f
 	sha256sums = 82a9d6b58fea2ad7e7e9561ce39436b1441ba3a23789fae251a18b58cc22f035
+	sha256sums = 505f54744f6e9830463861730b587788615c3799f6787f8c96d4220d0f5128cd
 	sha256sums = a9e5264257041c0b968425b5c97436ba48e8d294e1a0f02c59c35461ea245c33
 	sha256sums = 9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797
 
