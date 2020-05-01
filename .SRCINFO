@@ -1,0 +1,21 @@
+pkgbase = remacs
+	pkgdesc = Emacs with parts of it written in Rust
+	pkgver = 0.1
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/remacs/remacs
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	makedepends = rustup
+	makedepends = setconf
+	depends = gnutls
+	depends = gpm
+	depends = libxml2
+	source = git+https://github.com/remacs/remacs#tag=0.1
+	sha256sums = SKIP
+
+pkgname = remacs
+
