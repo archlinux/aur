@@ -1,6 +1,6 @@
 pkgbase = playx
 	pkgdesc = Search and play any song from terminal.
-	pkgver = 1.4.1
+	pkgver = 1.5.2
 	pkgrel = 0
 	url = https://github.com/NISH1001/playx
 	arch = any
@@ -11,6 +11,10 @@ pkgbase = playx
 	depends = mpv
 	depends = chromium
 	depends = youtube-dl
+	depends = python-beautifulsoup4
+	depends = python-requests
+	depends = python-lxml
+	depends = python-selenium
 	source = playx-develop.tar.gz::https://github.com/NISH1001/playx/archive/develop.tar.gz
 	md5sums = SKIP
 

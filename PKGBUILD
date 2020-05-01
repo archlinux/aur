@@ -1,6 +1,6 @@
 # Maintainer: Deepjyoti <deep.barman30@gmail.com>
 pkgname=playx
-pkgver=1.4.1
+pkgver=1.5.2
 pkgrel=0
 pkgdesc="Search and play any song from terminal."
 arch=("any")
@@ -11,6 +11,10 @@ depends=(
 		"mpv"
 		"chromium"
 		"youtube-dl"
+		"python-beautifulsoup4"
+		"python-requests"
+		"python-lxml"
+		"python-selenium"
 		)
 makedepends=("git" "python-setuptools")
 optdepends=()
