@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 _projectname='dune'
 pkgname="$_projectname-configurator"
-pkgver='2.3.0'
+pkgver='2.3.1'
 pkgrel='1'
 pkgdesc='Helper library for gathering system configuration'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('ocaml' 'dune>=2.3' 'dune-private-libs')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('c06b73d70c0e539cf46aec0d34bc306ddddb5415f33cff42dc4cc08562be135c')
+sha256sums=('9eceba0e51d7782c95d124c2d3f0b2bf8cace28738317e3b9e2a9353ffa43b98')
 
 _sourcedirectory="$_projectname-$pkgver"
 
