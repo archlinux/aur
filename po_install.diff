@@ -1,0 +1,21 @@
+diff -c -r wavelet-denoise-0.3/po/Makefile wavelet-denoise-0.3-new/po/Makefile
+*** wavelet-denoise-0.3/po/Makefile	2008-12-14 12:19:22.000000000 +0100
+--- wavelet-denoise-0.3-new/po/Makefile	2008-12-20 14:57:51.000000000 +0100
+***************
+*** 24,30 ****
+  
+  install: $(LANGUAGES)
+  	for L in $(LANGUAGES); \
+! 	do install -v -m 0644 $$L.mo "$(LOCALEDIR)/$$L/LC_MESSAGES/gimp20-$(PLUGIN)-plug-in.mo"; \
+  done
+  
+  uninstall: $(LANGUAGES)
+--- 24,31 ----
+  
+  install: $(LANGUAGES)
+  	for L in $(LANGUAGES); \
+! 	do mkdir -p "$(LOCALEDIR)/$$L/LC_MESSAGES"; \
+! 	install -v -m 0644 $$L.mo "$(LOCALEDIR)/$$L/LC_MESSAGES/gimp20-$(PLUGIN)-plug-in.mo"; \
+  done
+  
+  uninstall: $(LANGUAGES)

@@ -1,0 +1,17 @@
+pkgbase = gimp-plugin-wavelet-denoise
+	pkgdesc = Tool to reduce noise in each channel of an image separately
+	pkgver = 0.3.1
+	pkgrel = 5
+	url = https://registry.gimp.org/node/4235
+	arch = x86_64
+	license = GPL
+	depends = gimp
+	source = https://raw.githubusercontent.com/pixlsus/registry.gimp.org_static/master/registry.gimp.org/files/wavelet-denoise-0.3.1.tar.gz
+	source = po_install.diff
+	source = libm_buildfix.diff
+	md5sums = a02862026857575cdf81b24477e42f4b
+	md5sums = 4de9e41a535f200c2502f0dd8458c43e
+	md5sums = 46940ecd5970bc4b0d4b38de89f8efbf
+
+pkgname = gimp-plugin-wavelet-denoise
+

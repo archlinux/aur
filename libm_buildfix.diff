@@ -1,0 +1,10 @@
+diff -rup wavelet-denoise-0.3.1/src/Makefile wavelet-denoise-0.3.1.new/src/Makefile
+--- wavelet-denoise-0.3.1/src/Makefile	2008-12-14 12:19:28.000000000 +0100
++++ wavelet-denoise-0.3.1.new/src/Makefile	2012-02-18 19:01:22.264677086 +0100
+@@ -1,5 +1,5 @@
+ CFLAGS = -O3 -Wall $(shell gimptool-2.0 --cflags)
+-LIBS = $(shell gimptool-2.0 --libs)
++LIBS = -lm $(shell gimptool-2.0 --libs)
+ PLUGIN = wavelet-denoise
+ SOURCES = plugin.c colorspace.c denoise.c wavelet.c events.c interface.c
+ HEADERS = plugin.h interface.h messages.h
