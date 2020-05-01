@@ -1,6 +1,6 @@
 pkgbase = aura-git
 	pkgdesc = A package manager for Arch Linux and its AUR
-	pkgver = v2.3.0.r1.g0d252e1
+	pkgver = v2.3.0.r18.ge358e88
 	pkgrel = 1
 	url = https://github.com/aurapm/aura
 	arch = x86_64
