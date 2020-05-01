@@ -2,14 +2,15 @@
 
 gitname=pycollada
 pkgname=${gitname}-git
-pkgver=277.afd44fd
+pkgver=357.55d55dc
 pkgrel=1
 pkgdesc="Create, edit and load COLLADA documents in Python"
 arch=('any')
 url="https://github.com/${gitname}/${gitname}"
 license=("BSD3")
-depends=('python2-lxml' 'python2-numpy' 'python2-dateutil' 'python2-distribute')
-makedepends=('git')
+depends=(python-lxml python-numpy python-dateutil python-distribute)
+makedepends=(git)
+provides=(pycollada)
 source=("git+${url}.git")
 sha512sums=('SKIP')
 
@@ -21,10 +22,10 @@ pkgver() {
 
 build() {
 	 cd "${srcdir}/${gitname}"
-	 python2 setup.py build
+	 python setup.py build
 }
 
 package() {
 	 cd "${srcdir}/${gitname}"
-	 python2 setup.py install --root="$pkgdir" --optimize=1
+	 python setup.py install --root="$pkgdir" --optimize=1
 }
