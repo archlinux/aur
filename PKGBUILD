@@ -2,8 +2,8 @@
 # Contributor: Joe Khoobyar <fourheads@gmail.com>
 
 pkgname=crictl-bin
-pkgver=1.17.0
-pkgrel=2
+pkgver=1.18.0
+pkgrel=1
 pkgdesc="CLI tool for Kubelet Container Runtime Interface (CRI)"
 arch=(x86_64 armv7l armv7h aarch64)
 url="https://github.com/kubernetes-incubator/cri-tools/blob/master/docs/crictl.md"
@@ -15,13 +15,13 @@ sha256sums=('d2725490e1fb2e6f565605f09871c1440371b85e04de5d70bbac05954d827f72')
 
 case "$CARCH" in
 	arm*) _pkgarch="arm"
-		sha256sums+=('9700957218e8e7bdc02cbc8fda4c189f5b6223a93ba89d876bdfd77b6117e9b7')
+		sha256sums+=('d420925d10b47a234b7e51e9cf1039c3c09f2703945a99435549fcdd7487ae3a')
 		;;
 	aarch64) _pkgarch="arm64"
-		sha256sums+=('d89afd89c2852509fafeaff6534d456272360fcee732a8d0cb89476377387e12')
+		sha256sums+=('95ba32c47ad690b1e3e24f60255273dd7d176e62b1a0b482e5b44a7c31639979')
 		;;
 	x86_64) _pkgarch="amd64"
-		sha256sums+=('7b72073797f638f099ed19550d52e9b9067672523fc51b746e65d7aa0bafa414')
+		sha256sums+=('876dd2b3d0d1c2590371f940fb1bf1fbd5f15aebfbe456703ee465d959700f4a')
 		;;
 esac
 source+=("https://github.com/kubernetes-sigs/cri-tools/releases/download/v${pkgver}/crictl-v${pkgver}-linux-${_pkgarch}.tar.gz")

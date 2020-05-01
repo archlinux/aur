@@ -1,7 +1,7 @@
 pkgbase = crictl-bin
 	pkgdesc = CLI tool for Kubelet Container Runtime Interface (CRI)
-	pkgver = 1.17.0
-	pkgrel = 2
+	pkgver = 1.18.0
+	pkgrel = 1
 	url = https://github.com/kubernetes-incubator/cri-tools/blob/master/docs/crictl.md
 	arch = x86_64
 	arch = armv7l
@@ -11,9 +11,9 @@ pkgbase = crictl-bin
 	provides = crictl
 	conflicts = crictl
 	source = crictl.yaml
-	source = https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.17.0/crictl-v1.17.0-linux-amd64.tar.gz
+	source = https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.18.0/crictl-v1.18.0-linux-amd64.tar.gz
 	sha256sums = d2725490e1fb2e6f565605f09871c1440371b85e04de5d70bbac05954d827f72
-	sha256sums = 7b72073797f638f099ed19550d52e9b9067672523fc51b746e65d7aa0bafa414
+	sha256sums = 876dd2b3d0d1c2590371f940fb1bf1fbd5f15aebfbe456703ee465d959700f4a
 
 pkgname = crictl-bin
 
