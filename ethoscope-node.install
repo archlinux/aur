@@ -19,7 +19,7 @@ post_install() {
     echo "enabling NODE specific systemd service files"
     systemctl enable ethoscope_node.service ethoscope_update_node.service ethoscope_backup.service ethoscope_video_backup.service 
     echo "enabling the GIT server on the node and NTP service"
-    systemctl enable git-daemon.socket ntpd.service
+    systemctl enable git-daemon.socket ntpd.service avahi-daemon.service
 
     #changing hostname on node
     hostnamectl set-hostname node
