@@ -1,0 +1,19 @@
+pkgbase = gimp-refocus
+	pkgdesc = A sharpen plugin for gimp using FIR Wiener filtering
+	pkgver = 0.9.0
+	pkgrel = 5
+	url = http://refocus.sourceforge.net/
+	arch = x86_64
+	license = GPL2
+	depends = gimp
+	source = https://downloads.sourceforge.net/sourceforge/refocus/refocus-0.9.0.tar.gz
+	source = refocus-gimp-2.0.patch
+	source = refocus-mirror-fix.patch
+	source = refocus-gimp-preview.patch
+	md5sums = 8d4eac4ef45c904fb5e73021696bec94
+	md5sums = 1b7bc13154f483994af3846c7ee29ad7
+	md5sums = 532593cba030feab8ffa7800fc9cd782
+	md5sums = 5dcf118f8dee7a32ca35f932ff9b2e3c
+
+pkgname = gimp-refocus
+
