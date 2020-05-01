@@ -1,0 +1,22 @@
+pkgbase = surf
+	pkgdesc = A simple web browser based on WebKit/GTK+.
+	pkgver = 2.0
+	pkgrel = 2
+	url = https://surf.suckless.org/
+	install = surf.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = webkit2gtk
+	depends = xorg-xprop
+	optdepends = dmenu: URL-bar
+	optdepends = ca-certificates: SSL verification
+	optdepends = xterm: default download handler
+	optdepends = curl: default download handler
+	source = git+git://git.suckless.org/surf#commit=b814567e2bf8bda07cea8de1c7a062f4aa437b65
+	source = config.h
+	md5sums = SKIP
+	md5sums = 3d465f7f264e9394d0ba2d11e42a7dbb
+
+pkgname = surf
+
