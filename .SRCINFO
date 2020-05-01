@@ -1,0 +1,16 @@
+pkgbase = rkmpp-git
+	pkgdesc = Rockchip Media Process Platform (MPP) module
+	pkgver = r1958.16047eb2
+	pkgrel = 1
+	url = https://github.com/rockchip-linux/mpp
+	arch = aarch64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	provides = rkmpp
+	conflicts = rkmpp
+	source = git+https://github.com/rockchip-linux/mpp.git
+	md5sums = SKIP
+
+pkgname = rkmpp-git
+
