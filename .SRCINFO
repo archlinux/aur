@@ -1,7 +1,7 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
 	pkgver = 2.35.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/karelzak/util-linux
 	arch = x86_64
 	groups = selinux
@@ -13,6 +13,7 @@ pkgbase = util-linux-selinux
 	options = strip
 	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.35/util-linux-2.35.1.tar.xz
 	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.35/util-linux-2.35.1.tar.sign
+	source = 0001-stable.patch
 	source = pam-login
 	source = pam-common
 	source = pam-runuser
@@ -24,6 +25,7 @@ pkgbase = util-linux-selinux
 	validpgpkeys = B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284
 	sha256sums = d9de3edd287366cd908e77677514b9387b22bc7b88f45b83e1922c3597f1d7f9
 	sha256sums = SKIP
+	sha256sums = 6a09a002150a4a393bb4c051efafc15b3b531829f4599b4fc5230c412db45311
 	sha256sums = 993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92
 	sha256sums = fc6807842f92e9d3f792d6b64a0d5aad87995a279153ab228b1b2a64d9f32f20
 	sha256sums = 95b7cdc4cba17494d7b87f37f8d0937ec54c55de0e3ce9d9ab05ad5cc76bf935
@@ -43,8 +45,8 @@ pkgname = util-linux-selinux
 	optdepends = python: python bindings to libmount
 	optdepends = words: default dictionary for look
 	provides = rfkill
-	provides = util-linux=2.35.1-1
-	provides = selinux-util-linux=2.35.1-1
+	provides = util-linux=2.35.1-2
+	provides = selinux-util-linux=2.35.1-2
 	conflicts = rfkill
 	conflicts = util-linux
 	conflicts = selinux-util-linux
@@ -64,6 +66,6 @@ pkgname = libutil-linux-selinux
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = libutil-linux=2.35.1-1
+	provides = libutil-linux=2.35.1-2
 	conflicts = libutil-linux
 

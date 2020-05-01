@@ -12,7 +12,7 @@ pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
 _pkgmajor=2.35
 pkgver=${_pkgmajor}.1
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url='https://github.com/karelzak/util-linux'
 arch=('x86_64')
@@ -27,6 +27,7 @@ license=('GPL2')
 options=('strip')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${pkgbase/-selinux}-$pkgver.tar."{xz,sign}
+        '0001-stable.patch'
         pam-{login,common,runuser,su}
         'util-linux.sysusers'
         '60-rfkill.rules'
@@ -34,6 +35,7 @@ source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${pkgbase
         'rfkill-block_.service')
 sha256sums=('d9de3edd287366cd908e77677514b9387b22bc7b88f45b83e1922c3597f1d7f9'
             'SKIP'
+            '6a09a002150a4a393bb4c051efafc15b3b531829f4599b4fc5230c412db45311'
             '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92'
             'fc6807842f92e9d3f792d6b64a0d5aad87995a279153ab228b1b2a64d9f32f20'
             '95b7cdc4cba17494d7b87f37f8d0937ec54c55de0e3ce9d9ab05ad5cc76bf935'
@@ -42,6 +44,12 @@ sha256sums=('d9de3edd287366cd908e77677514b9387b22bc7b88f45b83e1922c3597f1d7f9'
             '7423aaaa09fee7f47baa83df9ea6fef525ff9aec395c8cbd9fe848ceb2643f37'
             '8ccec10a22523f6b9d55e0d6cbf91905a39881446710aa083e935e8073323376'
             'a22e0a037e702170c7d88460cc9c9c2ab1d3e5c54a6985cd4a164ea7beff1b36')
+
+prepare() {
+  cd "${pkgbase/-selinux}-$pkgver"
+
+  patch -Np1 < ../0001-stable.patch
+}
 
 build() {
   cd "${pkgbase/-selinux}-$pkgver"
