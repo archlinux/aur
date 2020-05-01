@@ -1,6 +1,6 @@
 pkgbase = jitsi-meet
 	pkgdesc = WebRTC JavaScript video conferences
-	pkgver = 4043
+	pkgver = 1.0.4073
 	pkgrel = 1
 	url = https://github.com/jitsi/jitsi-meet
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = jitsi-meet
 	backup = opt/jitsi-meet/config.js
 	backup = opt/jitsi-meet/interface_config.js
 	backup = opt/jitsi-meet/logging_config.js
-	source = jitsi-meet-4043.tar.gz::https://github.com/jitsi/jitsi-meet/archive/4043.tar.gz
-	md5sums = 210f5629f06c824d719c821540558aa6
+	source = jitsi-meet-1.0.4073.tar.gz::https://github.com/jitsi/jitsi-meet/archive/stable/jitsi-meet_4546.tar.gz
+	md5sums = 89a68dc96430b5e5083f4d90c7d84a89
 
 pkgname = jitsi-meet
 

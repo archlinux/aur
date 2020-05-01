@@ -1,5 +1,6 @@
 pkgname=jitsi-meet
-pkgver=4043
+pkgver=1.0.4073
+_tag="jitsi-meet_4546"
 pkgrel=1
 pkgdesc="WebRTC JavaScript video conferences"
 arch=("x86_64")
@@ -14,21 +15,23 @@ backup=("opt/jitsi-meet/config.js"
         "opt/jitsi-meet/interface_config.js"
         "opt/jitsi-meet/logging_config.js")
 options=("!strip")
-source=($pkgname-$pkgver.tar.gz::https://github.com/jitsi/jitsi-meet/archive/$pkgver.tar.gz)
-md5sums=('210f5629f06c824d719c821540558aa6')
+source=($pkgname-$pkgver.tar.gz::https://github.com/jitsi/jitsi-meet/archive/stable/$_tag.tar.gz)
+md5sums=('89a68dc96430b5e5083f4d90c7d84a89')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    npm install -g --user root --prefix "$pkgdir/usr"
-    # fix as many vulns as possible
-    npm audit fix
+    cd "${srcdir}/${pkgname}-${_tag}"
+    # this seems to break the package, even though it is the documented way of packaging
+    #npm install -g --user root --prefix "$pkgdir/usr"
+    npm install
+    # fix as many vulns as possible, but seems to break the package as well
+    #npm audit fix
     # Make fails with more than one thread
     make -j1
 }
 
 package() {
     install -d "${pkgdir}/opt"
-    cp -R "${srcdir}/${pkgname}-${pkgver}/" "${pkgdir}/opt/jitsi-meet"
+    cp -R "${srcdir}/${pkgname}-${_tag}/" "${pkgdir}/opt/jitsi-meet"
 
     # get rid of all local references
     find "${pkgdir}" -type f -execdir sed -i "s#$srcdir##g" "{}" \;
