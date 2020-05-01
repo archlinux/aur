@@ -3,8 +3,8 @@
 # my old fork is at https://sourceforge.net/u/ilikenwf/mcomix/ci/gtk3/tree/
 
 pkgname=mcomix-gtk3-git
-pkgver=r1919.fea55a7
-pkgrel=1
+pkgver=r1928.9fcb4e0
+pkgrel=2
 pkgdesc="A comic book reader. Forked from MComix and ported to GTK3."
 arch=('any')
 url="https://github.com/multiSnow/mcomix3"
@@ -46,7 +46,7 @@ package() {
   install -Dm644 "${srcdir}/mcomix3"/man/* -t "${pkgdir}"/usr/share/man/man1/
   install -Dm644 "${srcdir}/mcomix3"/mime/mcomix.appdata.xml -t "${pkgdir}"/usr/share/metainfo/
   install -Dm644 "${srcdir}/mcomix3"/mime/mcomix.desktop -t "${pkgdir}"/usr/share/applications/
-  install -Dm644 "${srcdir}/mcomix3"/mime/mcomix.xml -t "${pkgdir}"/usr/share/mime/
+  #install -Dm644 "${srcdir}/mcomix3"/mime/mcomix.xml -t "${pkgdir}"/usr/share/mime/
   install -Dm644 "${srcdir}/mcomix3"/mime/comicthumb.thumbnailer -t "${pkgdir}"/usr/share/thumbnailers/
  
   for size in 16 22 24 32 48
