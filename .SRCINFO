@@ -7,6 +7,7 @@ pkgbase = memethesis-cli
 	license = GPL3
 	makedepends = git
 	depends = python>=3
+	depends = python-pip
 	depends = imagemagick
 	source = git+https://github.com/fakefred/memethesis-cli.git
 	sha256sums = SKIP
