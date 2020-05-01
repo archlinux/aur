@@ -1,4 +1,5 @@
-# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
+# Maintainer: Yusuf Aktepe <yusuf@yusufaktepe.com>
+# Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: totoloco <totoloco at gmx>
 
 pkgname=tabbed
@@ -12,8 +13,8 @@ depends=('libx11')
 install='tabbed.install'
 source=("https://dl.suckless.org/tools/${pkgname}-${pkgver}.tar.gz"
         'config.h')
-md5sums=('7898992feb9358e0196119750b77b42c'
-         '910b1cbcf62051064c58029987e05db8')
+sha256sums=('7651ea3acbec5d6a25469e8665da7fc70aba2b4fa61a2a6a5449eafdfd641c42'
+            'b53a40916d44090c31cdf5b259336deb70b79d15888f6941e7b8d216370cda55')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
