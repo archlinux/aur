@@ -11,7 +11,7 @@ pkgbase = yay
 	arch = aarch64
 	license = GPL
 	makedepends = go
-	depends = pacman>=5.2
+	depends = libalpm.so>=12
 	depends = sudo
 	depends = git
 	source = yay-9.4.7.tar.gz::https://github.com/Jguer/yay/archive/v9.4.7.tar.gz

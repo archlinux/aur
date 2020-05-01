@@ -7,7 +7,7 @@ arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/Jguer/yay"
 license=('GPL')
 depends=(
-  'pacman>=5.2'
+  'libalpm.so>=12'
   'sudo'
   'git'
 )
