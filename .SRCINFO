@@ -1,0 +1,21 @@
+pkgbase = grimshot
+	pkgdesc = A helper for screenshots within sway.
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/swaywm/sway
+	arch = x86_64
+	license = MIT
+	makedepends = scdoc
+	depends = sway
+	depends = grim
+	depends = slurp
+	depends = jq
+	depends = xdg-user-dirs
+	optdepends = notify-send: Notify users when a screenshot is taken
+	optdepends = mktemp: Copy screenshots
+	optdepends = wl-clipboard: Copy screenshots
+	source = https://github.com/swaywm/sway/archive/1.4.tar.gz
+	md5sums = cef910816c64cecd75cd8b5bd0a0ccb2
+
+pkgname = grimshot
+
