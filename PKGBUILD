@@ -7,7 +7,7 @@
 pkgbase=pipewire-gstfree
 _pkgbase=pipewire
 pkgname=(pipewire-gstfree pipewire-gstfree-docs pipewire-gstfree-jack pipewire-gstfree-pulse)
-pkgver=0.3.2
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies"
 url="https://pipewire.org"
@@ -16,7 +16,7 @@ arch=(x86_64)
 makedepends=(git meson doxygen graphviz xmltoman valgrind jack2 libpulse
              alsa-lib sbc rtkit vulkan-icd-loader
              dbus libsndfile bluez-libs vulkan-headers)
-_commit=f0f3a0a66032cf693a979dae6187cac07fa353ee  # tags/0.3.2
+_commit=33398d7de83fad1c67c691e0712e3e0108c5e966  # tags/0.3.4
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -55,14 +55,17 @@ _pick() {
   done
 }
 
+_ver=${pkgver:0:3}
+
 package_pipewire-gstfree() {
   depends=(sbc rtkit vulkan-icd-loader bluez-libs
-           libdbus-1.so libsndfile.so)
+           libdbus-1.so libsndfile.so libudev.so libasound.so libsystemd.so
+           libglib-2.0.so libgobject-2.0.so)
   optdepends=('pipewire-docs: Documentation'
               'pipewire-jack: JACK support'
               'pipewire-pulse: PulseAudio support')
   conflicts=(pipewire)
-  provides=(pipewire libpipewire-${pkgver:0:3}.so)
+  provides=(pipewire libpipewire-$_ver.so)
   backup=(etc/pipewire/pipewire.conf)
   install=pipewire.install
 
@@ -72,10 +75,10 @@ package_pipewire-gstfree() {
 
   _pick docs usr/share/doc
 
-  _pick pulse usr/lib/libpulse*
+  _pick pulse usr/bin/pw-pulse usr/lib/pipewire-$_ver/pulse
 
+  _pick jack usr/bin/pw-jack usr/lib/pipewire-$_ver/jack
   _pick jack usr/lib/spa-0.2/jack
-  _pick jack usr/lib/libjack*
 }
 
 package_pipewire-gstfree-docs() {
@@ -85,16 +88,16 @@ package_pipewire-gstfree-docs() {
 
 package_pipewire-gstfree-jack() {
   pkgdesc+=" (JACK support)"
-  depends=(libpipewire-${pkgver:0:3}.so libjack.so)
+  depends=(libpipewire-$_ver.so libjack.so)
   conflicts=(pipewire-jack)
-  provides=(pipewire-jack libjack-pw.so)
+  provides=(pipewire-jack)
   mv jack/* "$pkgdir"
 }
 
 package_pipewire-gstfree-pulse() {
   pkgdesc+=" (PulseAudio support)"
-  depends=(libpipewire-${pkgver:0:3}.so libpulse.so libglib-2.0.so)
+  depends=(libpipewire-$_ver.so libglib-2.0.so)
   conflicts=(pipewire-pulse)
-  provides=(pipewire-pulse libpulse{,-simple,-mainloop-glib}-pw.so)
+  provides=(pipewire-pulse)
   mv pulse/* "$pkgdir"
 }
