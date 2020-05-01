@@ -10,7 +10,7 @@ pkgbase = ace
 	options = !libtool
 	source = https://download.dre.vanderbilt.edu/previous_versions/ACE-6.5.8.tar.gz
 	source = license.txt
-	sha256sums = 7c77034deee027ebc91041fae3711fe141c034d768bfb13259c40441cc0b5197
+	sha256sums = 85382427bf2c87eca215a6d963ad6b427a8d5b696ac96367e67bb952b3d2885c
 	sha256sums = 4aef434f0bc8c91488f92b25863e5dcbff857598389276718c59903cd8c8c954
 
 pkgname = ace
