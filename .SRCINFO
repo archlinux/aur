@@ -1,0 +1,47 @@
+pkgbase = eclipse
+	pkgdesc = Highly extensible IDE
+	pkgver = 4.15
+	pkgrel = 2
+	url = https://eclipse.org
+	arch = x86_64
+	license = EPL
+	makedepends = python3
+	noextract = eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz
+	noextract = eclipse-jee-2020-03-R-incubation-linux-gtk-x86_64.tar.gz
+	noextract = eclipse-cpp-2020-03-R-incubation-linux-gtk-x86_64.tar.gz
+	noextract = eclipse-php-2020-03-R-linux-gtk-x86_64.tar.gz
+	noextract = eclipse-javascript-2020-03-R-incubation-linux-gtk-x86_64.tar.gz
+	noextract = eclipse-rust-2020-03-R-incubation-linux-gtk-x86_64.tar.gz
+	source = commonify
+	sha256sums = a68cccdf182449dfb4aef595ab26fe6542902421aef42a79672483865cbbd0ea
+	source_x86_64 = http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/2020-03/R/eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz
+	source_x86_64 = http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/2020-03/R/eclipse-jee-2020-03-R-incubation-linux-gtk-x86_64.tar.gz
+	source_x86_64 = http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/2020-03/R/eclipse-cpp-2020-03-R-incubation-linux-gtk-x86_64.tar.gz
+	source_x86_64 = http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/2020-03/R/eclipse-php-2020-03-R-linux-gtk-x86_64.tar.gz
+	source_x86_64 = http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/2020-03/R/eclipse-javascript-2020-03-R-incubation-linux-gtk-x86_64.tar.gz
+	source_x86_64 = http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/2020-03/R/eclipse-rust-2020-03-R-incubation-linux-gtk-x86_64.tar.gz
+	sha256sums_x86_64 = 72fde94154999df569cbd30551bc784341391b9753209cd563829a6c8674383e
+	sha256sums_x86_64 = 1f6b44cc8a8665f452170f395523486e3555570174768d96d8ca7e2bacc3f31d
+	sha256sums_x86_64 = 3cc546c7bd9214ca834cf5d8bcd16e300ae0fa95f1bf49e15c52ea47235b7f01
+	sha256sums_x86_64 = 0d6662d7a57585320f441029358261c23e570bf7779cbe34ee2f91208b2aff54
+	sha256sums_x86_64 = 25a2e502e33c0a4b6629b35dfb140d5bd772d932ca472e554f672524d189caec
+	sha256sums_x86_64 = c52860b6134e083aa263d1c1eb80f4a904cdf284d25f7aaee472950386347109
+
+pkgname = eclipse-common
+	pkgdesc = Highly extensible IDE (common files)
+	depends = java-environment>=8
+	depends = webkit2gtk
+	depends = unzip
+
+pkgname = eclipse-java
+
+pkgname = eclipse-jee
+
+pkgname = eclipse-cpp
+
+pkgname = eclipse-php
+
+pkgname = eclipse-javascript
+
+pkgname = eclipse-rust
+
