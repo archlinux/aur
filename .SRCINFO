@@ -1,0 +1,16 @@
+pkgbase = ultraedit
+	pkgdesc = Proprietary text editor for Linux, ideal for C/C++, HTML, Javascript, XML, PHP, Python, and Java programmers... beginners, power users, and everyone in between (Trial)
+	pkgver = 18.00.0.66
+	pkgrel = 1
+	url = https://www.ultraedit.com/products/uex
+	arch = i686
+	arch = x86_64
+	license = custom
+	options = !strip
+	source_i686 = ultraedit-18.00.0.66.tar.gz::https://downloads.ultraedit.com/main/ue/linux/tar/uex-18.00.0.66_i386.tar.gz
+	sha256sums_i686 = ee076754aac5cfe113ddd076ed5381cc93ae77217a979f97728a8038a83e7b61
+	source_x86_64 = ultraedit-18.00.0.66.tar.gz::https://downloads.ultraedit.com/main/ue/linux/tar/uex-18.00.0.66_amd64.tar.gz
+	sha256sums_x86_64 = 32af45d2c0f6112c0af096b05fce2e3147221b10349a4725cd5198bb5012832b
+
+pkgname = ultraedit
+
