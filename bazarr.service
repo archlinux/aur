@@ -7,8 +7,7 @@ User=bazarr
 Group=bazarr
 Type=simple
 ExecStart=/usr/bin/python /usr/lib/bazarr/bazarr.py --no-update --config /var/lib/bazarr
-Restart=always
-TimeoutStopSec=30
+Restart=on-failure
 SyslogIdentifier=bazarr
 
 [Install]
