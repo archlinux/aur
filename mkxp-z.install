@@ -1,0 +1,10 @@
+
+post_install() {
+  echo "=> To use mkxp-z, change into the directory of the RPG Maker XP game you want to"
+  echo "=> play and launch 'mkxp-z'. You may want to add a mkxp.json to the game directory"
+  echo "=> for customisation, a sample file is provided in '/usr/share/doc/mkxp-z'."
+}
+
+post_upgrade() {
+  post_install
+}
