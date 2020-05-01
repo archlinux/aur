@@ -1,4 +1,5 @@
-# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
+# Maintainer: Yusuf Aktepe <yusuf@yusufaktepe.com>
+# Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Pierre Chapuis <catwell at archlinux dot us>
 # Contributor: Ray Kohler <ataraxia937 at gmail dot com>
 # Contributor: Michael Witten <mfwitten>
@@ -21,8 +22,8 @@ install='surf.install'
 _commit=b814567e2bf8bda07cea8de1c7a062f4aa437b65
 source=("git+git://git.suckless.org/surf#commit=$_commit"
         'config.h')
-md5sums=('SKIP'
-         '3d465f7f264e9394d0ba2d11e42a7dbb')
+sha256sums=('SKIP'
+            '3a746f6f3a48e42b1779686421cf6b34157292e34e571b67de8d614c3ea1565c')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
