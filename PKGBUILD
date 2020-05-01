@@ -3,13 +3,13 @@
 # Contributor: burntcookie90 <aur at vishnurajeevan dot com>
 _gitname=swaylock-fancy
 pkgname=swaylock-fancy-git
-pkgver=r189.5cf977b
-pkgrel=2
+pkgver=r193.f44b08f
+pkgrel=1
 pkgdesc="Blurs and pixelates background, adds lock icon and text, for sway."
 arch=('any')
 url="https://github.com/Big-B/swaylock-fancy"
 license=('MIT')
-depends=('coreutils' 'awk' 'grep' 'sed' 'bash' 'util-linux' 'imagemagick' 'swaylock' 'grim')
+depends=('coreutils' 'awk' 'grep' 'sed' 'bash' 'util-linux' 'imagemagick' 'swaylock' 'grim' 'jq')
 optdepends=('wmctrl: minimize windows before locking')
 makedepends=('git')
 provides=('swaylock-fancy')
