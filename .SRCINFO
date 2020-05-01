@@ -12,6 +12,7 @@ pkgbase = plex-media-server
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
+	backup = etc/conf.d/plexmediaserver
 	source = plexmediaserver.conf.d
 	source = plexmediaserver.service
 	source = plexmediaserver.hook

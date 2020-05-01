@@ -18,8 +18,7 @@ url='https://plex.tv/'
 license=('custom')
 options=('!emptydirs'  '!strip' 'staticlibs')
 conflicts=('plex-media-server-plexpass')
-# Commented to override user version
-#backup=('etc/conf.d/plexmediaserver')
+backup=('etc/conf.d/plexmediaserver')
 install='plex-media-server.install'
 source=('plexmediaserver.conf.d'
         'plexmediaserver.service'
