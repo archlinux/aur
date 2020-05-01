@@ -1,16 +1,17 @@
 pkgbase = precomp-git
 	pkgdesc = Recompressor that further compresses already compressed files
 	pkgver = 0.4.6.r25.g30a2767
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/schnaader/precomp-cpp
 	arch = x86_64
 	license = Apache
 	makedepends = git
+	makedepends = cmake
 	depends = gcc-libs
 	provides = precomp
 	conflicts = precomp
 	source = git+https://github.com/schnaader/precomp-cpp.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = precomp-git
 
