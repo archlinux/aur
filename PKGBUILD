@@ -1,12 +1,16 @@
 # Maintainer: KokaKiwi <kokakiwi@kokakiwi.net>
 _pkgname=elixir-ls
 pkgname=elixir-ls-git
-pkgver=0.3.0.r12.g5c0166c
-pkgrel=2
+pkgver=0.3.3.r17.gb60f9b1
+pkgrel=1
 pkgdesc='A frontend-independent Language Server Protocol for Elixir'
-arch=('any')
 url='https://github.com/elixir-lsp/elixir-ls'
+license=('Apache')
+arch=('any')
 depends=('elixir>=1.7.0' 'erlang-nox>=20.0')
+makedepends=('git')
+provides=('elixir-ls')
+conflicts=('elixir-ls')
 source=("${_pkgname}::git://github.com/elixir-lsp/elixir-ls.git")
 sha256sums=('SKIP')
 
@@ -27,10 +31,15 @@ build() {
 package() {
   cd "${_pkgname}"
 
-  install -dm0755 "${pkgdir}"/usr/lib/elixir-ls
-  MIX_ENV=prod mix elixir_ls.release -o "${pkgdir}"/usr/lib/elixir-ls
+  export MIX_ENV=prod
+
+  install -dm0755 "${pkgdir}"/usr/lib/${_pkgname}
+  mix elixir_ls.release -o "${pkgdir}"/usr/lib/${_pkgname}
 
   install -dm0755 "${pkgdir}"/usr/bin
-  ln -sf /usr/lib/elixir-ls/language_server.sh "${pkgdir}"/usr/bin/elixir-ls
-  ln -sf /usr/lib/elixir-ls/debugger.sh "${pkgdir}"/usr/bin/elixir-ls-debugger
+
+  echo "#!/bin/sh\nexec /usr/lib/${_pkgname}/language_server.sh" > "${pkgdir}"/usr/bin/elixir-ls
+  echo "#!/bin/sh\nexec /usr/lib/${_pkgname}/debugger.sh" > "${pkgdir}"/usr/bin/elixir-ls-debug
+
+  chmod +x "${pkgdir}"/usr/bin/*
 }

@@ -1,11 +1,15 @@
 pkgbase = elixir-ls-git
 	pkgdesc = A frontend-independent Language Server Protocol for Elixir
-	pkgver = 0.3.0.r12.g5c0166c
-	pkgrel = 2
+	pkgver = 0.3.3.r17.gb60f9b1
+	pkgrel = 1
 	url = https://github.com/elixir-lsp/elixir-ls
 	arch = any
+	license = Apache
+	makedepends = git
 	depends = elixir>=1.7.0
 	depends = erlang-nox>=20.0
+	provides = elixir-ls
+	conflicts = elixir-ls
 	source = elixir-ls::git://github.com/elixir-lsp/elixir-ls.git
 	sha256sums = SKIP
 
