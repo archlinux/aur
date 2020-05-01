@@ -1,0 +1,17 @@
+pkgbase = gimp-plugin-fblur
+	pkgdesc = Makes out of focus with luminosity and depth
+	pkgver = 3.2.6
+	pkgrel = 6
+	url = https://registry.gimp.org/node/1444
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = gimp
+	depends = fftw
+	source = https://raw.githubusercontent.com/pixlsus/registry.gimp.org_static/master/registry.gimp.org/files/focusblur-3.2.6.tar.bz2
+	source = use_glib_h.diff
+	md5sums = 6196c88aeee8733bacc3c6e9ac3c6cf8
+	md5sums = b654ec87f28589b84625c0683dbe1273
+
+pkgname = gimp-plugin-fblur
+

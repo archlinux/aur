@@ -1,0 +1,14 @@
+diff -rup focusblur-3.2.6/src/aaa.h focusblur-3.2.6.new/src/aaa.h
+--- focusblur-3.2.6/src/aaa.h	2008-10-13 17:13:10.000000000 +0200
++++ focusblur-3.2.6.new/src/aaa.h	2014-07-02 22:13:23.166838342 +0200
+@@ -19,9 +19,7 @@
+ #ifndef __AAA_H__
+ #define __AAA_H__
+ 
+-#include <glib/gmacros.h>
+-#include <glib/gtypes.h>
+-
++#include <glib.h>
+ 
+ G_BEGIN_DECLS
+ 
