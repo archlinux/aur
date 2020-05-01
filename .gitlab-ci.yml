@@ -1,0 +1,30 @@
+image: archlinux
+
+variables:
+  DOSUDO: "notroot ALL=(ALL) NOPASSWD: ALL"
+
+stages:
+  - test
+
+before_script:
+  - pacman --noconfirm -Syu
+  - pacman --noconfirm -S sudo git fakeroot binutils
+  - useradd -m notroot
+  - echo "$DOSUDO" > /etc/sudoers.d/notroot
+
+# * Test
+
+build-package:
+  stage: test
+  script:
+    - cd /home/notroot
+    - su notroot -c "git clone https://aur.archlinux.org/python-edalize-git.git"
+    - cd python-edalize-git
+    - su notroot -c "makepkg --noconfirm --syncdeps --rmdeps --install --clean"
+    - python -c 'import edalize; print("All OK")'
+    - cd /home/notroot
+    - su notroot -c "git clone https://aur.archlinux.org/python-fusesoc-git.git"
+    - cd python-fusesoc-git
+    - su notroot -c "makepkg --noconfirm --syncdeps --rmdeps --install --clean"
+    - fusesoc -h
+    - python -c 'import fusesoc; print("All OK")'
