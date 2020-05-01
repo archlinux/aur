@@ -1,6 +1,6 @@
 pkgbase = ldb-heimdal
 	pkgdesc = Schema-less, ldap like, API and database (built for Samba with Heimdal)
-	pkgver = 2.0.9
+	pkgver = 2.0.10
 	pkgrel = 1
 	epoch = 1
 	url = https://ldb.samba.org/
@@ -21,8 +21,8 @@ pkgbase = ldb-heimdal
 	provides = libldb.so
 	conflicts = ldb
 	replaces = ldb
-	source = https://samba.org/ftp/ldb/ldb-2.0.9.tar.gz
-	sha512sums = f4d2480491f16aac7837fa2ff071e81e429bd9b3a365264723245791aad1831a236ffeff0f01f85becb998b224c321b166f3edd3f9a828714b7c3b24aed11a5e
+	source = https://samba.org/ftp/ldb/ldb-2.0.10.tar.gz
+	sha512sums = 51954969e3121295ea99856c254f455cb746102e9d7895fbd7c66997f33763ae4522ed456e4bae7921b2edd73575a0a10738d21a90a067a57ff770cf0fe35aef
 
 pkgname = ldb-heimdal
 

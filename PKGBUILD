@@ -2,10 +2,10 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Marco A Rojas <marquicus at gmail dot com>
-
+# Co-Maintainer: Felix Golatofski <contact@xdfr.de>
 pkgname=ldb-heimdal
 pkgnameorig=ldb
-pkgver=2.0.9
+pkgver=2.0.10
 pkgrel=1
 epoch=1
 pkgdesc='Schema-less, ldap like, API and database (built for Samba with Heimdal)'
@@ -19,7 +19,7 @@ optdepends=('python: for python bindings')
 conflicts=('ldb')
 replaces=('ldb')
 provides=('ldb' 'libldb.so')
-sha512sums=('f4d2480491f16aac7837fa2ff071e81e429bd9b3a365264723245791aad1831a236ffeff0f01f85becb998b224c321b166f3edd3f9a828714b7c3b24aed11a5e')
+sha512sums=('51954969e3121295ea99856c254f455cb746102e9d7895fbd7c66997f33763ae4522ed456e4bae7921b2edd73575a0a10738d21a90a067a57ff770cf0fe35aef')
 
 build() {
   cd ${pkgnameorig}-${pkgver}
