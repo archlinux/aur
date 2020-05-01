@@ -26,4 +26,4 @@ build-package:
     - python -c 'import edalize; print("all ok")'
   artifacts:
     paths:
-      - python-fusesoc/python-edalize-0.2-0-any.pkg.tar.xz
+      - /home/notroot/python-fusesoc/python-edalize-0.2-0-any.pkg.tar.xz
