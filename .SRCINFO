@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-kirigami2
 	pkgdesc = A QtQuick based components set (Android, x86-64)
-	pkgver = 5.62.0
+	pkgver = 5.69.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = any
@@ -16,10 +16,10 @@ pkgbase = android-x86-64-kirigami2
 	options = staticlibs
 	options = !strip
 	options = !emptydirs
-	source = https://download.kde.org/stable/frameworks/5.62/kirigami2-5.62.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.62/kirigami2-5.62.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.69/kirigami2-5.69.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.69/kirigami2-5.69.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = b3cc36bddb5e52617075961b2cbaecbb94492523bcc6801a3ad29a35c43bd912
+	sha256sums = 8cf742d8f695c5ff6c7bcb5da1baddb50f5f5a0e96e879d8243704c847cd1443
 	sha256sums = SKIP
 
 pkgname = android-x86-64-kirigami2
