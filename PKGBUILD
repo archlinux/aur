@@ -3,7 +3,7 @@
 _gitname=fritzbox_exporter
 _pkgname=prometheus-fritzbox-exporter
 pkgname=${_pkgname}-git
-pkgver=r10.fa604c2
+pkgver=r21.834e250
 pkgrel=1
 pkgdesc="Prometheus UPnP exporter for Fritz!Box routers"
 arch=('x86_64' 'i686')
@@ -33,7 +33,7 @@ build() {
 package() {
   cd "$srcdir"
 
-  install -Dm755 "$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+  install -Dm644 "$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
   install -Dm755 "bin/$_gitname" "$pkgdir/usr/bin/prometheus_$_gitname"
   install -Dm644 "$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
