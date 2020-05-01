@@ -9,7 +9,7 @@ pkgname=(
 )
 pkgver=5.6
 pkgrel=1
-epoch=4
+epoch=5
 arch=(
     "i686"
 	"x86_64"
@@ -34,7 +34,7 @@ options=(
 	"!strip"
 )
 source=(
-	"git+$url.git"
+	"https://github.com/ZestProjects/linux/archive/fivesix.tar.gz"
 )
 b2sums=(
 	"SKIP"
@@ -45,10 +45,8 @@ prepare()
 	export LC_ALL=en_US.UTF-8
 	export PATH="/opt/proton-clang/bin:$PATH"
 
-	cd "linux" || exit
+	cd "linux-fivesix" || exit
 
-	git checkout fivesix
-	
 	echo "Setting config..."
 	make AR="llvm-ar" CC="clang" HOSTAR="llvm-ar" HOSTCC="clang" HOSTCXX="clang++" HOSTLD="ld.lld" HOSTLDFLAGS="-fuse-ld=lld" LD="ld.lld" NM="llvm-nm" OBJCOPY="llvm-objcopy" OBJDUMP="llvm-objdump" OBJSIZE="llvm-size" STRIP="llvm-strip" zestop_defconfig
 
@@ -61,7 +59,7 @@ build()
 	export LC_ALL=en_US.UTF-8
 	export PATH="/opt/proton-clang/bin:$PATH"
 
-	cd "linux" || exit
+	cd "linux-fivesix" || exit
 
 	make AR="llvm-ar" CC="clang" HOSTAR="llvm-ar" HOSTCC="clang" HOSTCXX="clang++" HOSTLD="ld.lld" HOSTLDFLAGS="-fuse-ld=lld" LD="ld.lld" NM="llvm-nm" OBJCOPY="llvm-objcopy" OBJDUMP="llvm-objdump" OBJSIZE="llvm-size" STRIP="llvm-strip" all
 	make AR="llvm-ar" CC="clang" HOSTAR="llvm-ar" HOSTCC="clang" HOSTCXX="clang++" HOSTLD="ld.lld" HOSTLDFLAGS="-fuse-ld=lld" LD="ld.lld" NM="llvm-nm" OBJCOPY="llvm-objcopy" OBJDUMP="llvm-objdump" OBJSIZE="llvm-size" STRIP="llvm-strip" htmldocs
@@ -89,7 +87,7 @@ _package()
 	export LC_ALL=en_US.UTF-8
 	export PATH="/opt/proton-clang/bin:$PATH"
 
-	cd "linux" || exit
+	cd "linux-fivesix" || exit
 
 	local kernver="$(<version)"
 	local modulesdir="$pkgdir/usr/lib/modules/$kernver"
@@ -117,7 +115,7 @@ _package-headers()
 
 	export LC_ALL=en_US.UTF-8
 
-	cd "linux" || exit
+	cd "linux-fivesix" || exit
 
 	local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
@@ -212,7 +210,7 @@ _package-docs()
 
 	export LC_ALL=en_US.UTF-8
 
-	cd "linux" || exit
+	cd "linux-fivesix" || exit
 
 	local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
