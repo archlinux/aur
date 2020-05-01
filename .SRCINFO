@@ -1,0 +1,15 @@
+pkgbase = gimp-plugin-lqr
+	pkgdesc = Plugin for The GIMP providing Liquid Rescale
+	pkgver = 0.7.2
+	pkgrel = 3
+	url = https://liquidrescale.wikidot.com/
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = gimp
+	depends = liblqr
+	source = https://liquidrescale.wikidot.com/local--files/en:download-page-sources/gimp-lqr-plugin-0.7.2.tar.bz2
+	md5sums = af7eb1a0d480bacfa6e5eff9b06bd877
+
+pkgname = gimp-plugin-lqr
+
