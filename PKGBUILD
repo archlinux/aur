@@ -3,7 +3,7 @@
 pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
-pkgver='0.1.3'
+pkgver='0.1.4'
 pkgrel='0'
 epoch=
 arch=('i686' 'x86_64')
@@ -87,6 +87,8 @@ package() {
     install -m 644 "src/scripts/audioviz4.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/audioviz5.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/audioviz5.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/organic.lua" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/organic.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/batique.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/batique.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/billow.lua" "$pkgdir/usr/share/eruption/scripts/"
@@ -109,6 +111,8 @@ package() {
     install -m 644 "src/scripts/multigradient.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/perlin.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/perlin.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/psychedelic.lua" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/psychedelic.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/rainbow.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/rainbow.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/raindrops.lua" "$pkgdir/usr/share/eruption/scripts/"
@@ -139,10 +143,15 @@ package() {
     install -m 644 "support/profiles/default.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/fx1.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/fx2.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/fireworks.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/gaming.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/batique.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile2.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile3.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile4.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/psychedelic.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/twinkle.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/rainbow.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/preset-red-yellow.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/preset-blue-red.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/spectrum-analyzer.profile" "$pkgdir/var/lib/eruption/profiles/"
