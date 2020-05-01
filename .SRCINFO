@@ -1,0 +1,24 @@
+pkgbase = mali-midgard-dkms
+	pkgdesc = Mali Midgard Kernel Module for mainline linux
+	pkgver = r28p0
+	pkgrel = 1
+	url = https://github.com/LibreELEC/mali-midgard
+	install = mali-midgard-dkms.install
+	arch = aarch64
+	license = GPLv2
+	makedepends = git
+	depends = linux
+	depends = linux-headers
+	depends = dkms
+	provides = dkms-mali
+	conflicts = dkms-mali
+	options = !strip
+	source = git+https://github.com/LibreELEC/mali-midgard.git
+	source = 0001-add-mm_trace_rss_stat-stub.patch
+	source = dkms.conf
+	md5sums = SKIP
+	md5sums = ac76eb20c5cc565241abf1ccd61086d7
+	md5sums = 491eacc5c88783991f8089f0ca73d647
+
+pkgname = mali-midgard-dkms
+

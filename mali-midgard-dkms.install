@@ -1,0 +1,13 @@
+pkgver="r28p0"
+
+post_install() {
+	dkms install "mali-midgard/$pkgver"
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	dkms remove "mali-midgard/$pkgver" --all
+}
