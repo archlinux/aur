@@ -1,7 +1,7 @@
 # Maintainer: Mike Yuan <me@yhndnzj.com>
 
 pkgname=btrfs-snapshot
-pkgver=3.3.10
+pkgver=3.3.11
 pkgrel=1
 pkgdesc="Tool for creating btrfs snapshots"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/YHNdnzj/btrfs-snapshot"
 license=('MIT')
 optdepends=('systemd: scheduled snapshot creation support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('777203a911e1db1545f8cf80968cc26af6302d1b66d9e5b47bc99f17b41679e4')
+sha256sums=('0031eb7a0c8f6cbf5502d05ef401ddca64bff709a6fd915922aa5278e02b12fb')
 
 package() {
     depends=('btrfs-progs' 'coreutils')
