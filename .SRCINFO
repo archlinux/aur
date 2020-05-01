@@ -1,6 +1,6 @@
 pkgbase = gpu-screen-recorder-git
 	pkgdesc = A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux.
-	pkgver = r32.7471db2
+	pkgver = r34.339bb0a
 	pkgrel = 1
 	url = https://github.com/DEC05EBA/gpu-screen-recorder
 	arch = x86_64
