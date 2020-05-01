@@ -1,0 +1,18 @@
+pkgbase = parlatype-libreoffice-extension
+	pkgdesc = Parlatype LibreOffice Extension
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://gkarsay.github.io/parlatype-libreoffice-extension/
+	arch = any
+	license = GPL
+	makedepends = meson
+	makedepends = gettext
+	makedepends = appstream
+	makedepends = appstream-glib
+	depends = libreoffice
+	depends = parlatype=2.0
+	source = https://github.com/gkarsay/parlatype-libreoffice-extension/releases/download/v2.0/parlatype-libreoffice-extension-2.0.tar.gz
+	sha256sums = a91944b9c307e92a16b87475160c9496179f7bce036621988d3ec3fb81ce3d9a
+
+pkgname = parlatype-libreoffice-extension
+
