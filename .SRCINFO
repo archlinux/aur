@@ -1,0 +1,21 @@
+pkgbase = giti
+	pkgdesc = Permanent observer of your git directories
+	pkgver = 1.0.0.r2.g67944fc
+	pkgrel = 1
+	url = https://github.com/LinArcX/giti
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	makedepends = meson
+	makedepends = pkgconf
+	makedepends = vala
+	makedepends = ninja
+	depends = gtk3
+	depends = libgit2
+	depends = libgee
+	depends = granite
+	source = giti::git+https://github.com/LinArcX/giti.git
+	sha256sums = SKIP
+
+pkgname = giti
+
