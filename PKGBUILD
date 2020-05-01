@@ -12,14 +12,14 @@ url="https://github.com/jarun/ddgr"
 license=('GPL3')
 depends=('python>=3.5')
 conflicts=("ddgr")
-source=("https://github.com/jarun/ddgr/archive/v$pkgver.tar.gz")
-sha256sums=("d223a3543866e44e4fb05df487bd3eb23d80debc95f116493ed5aad0d091149e")
+source=("git+https://github.com/jarun/ddgr/")
+sha256sums=("SKIP")
 
 package() {
 	# install ddgr into /usr/bin/ddgr
-	make -C "ddgr-${pkgver}" DESTDIR="${pkgdir}" PREFIX="/usr" install
+	make -C "ddgr" DESTDIR="${pkgdir}" PREFIX="/usr" install
 	# go into the package directory
-	cd "$srcdir/ddgr-$pkgver"
+	cd "$srcdir/ddgr"
 	# install the fish autocompletion
 	install -Dm644 auto-completion/fish/ddgr.fish "${pkgdir}/usr/share/fish/vendor_completions.d/ddgr.fish"
 	# install the bash autocompletion

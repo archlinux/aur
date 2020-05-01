@@ -7,8 +7,8 @@ pkgbase = ddgr-git
 	license = GPL3
 	depends = python>=3.5
 	conflicts = ddgr
-	source = https://github.com/jarun/ddgr/archive/v1.8.1.tar.gz
-	sha256sums = d223a3543866e44e4fb05df487bd3eb23d80debc95f116493ed5aad0d091149e
+	source = git+https://github.com/jarun/ddgr/
+	sha256sums = SKIP
 
 pkgname = ddgr-git
 
