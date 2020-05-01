@@ -1,5 +1,8 @@
 image: archlinux
 
+variables:
+  DOSUDO: "notroot ALL=(ALL) NOPASSWD: ALL"
+
 stages:
   - prepare
   - test
@@ -12,7 +15,7 @@ config-environment:
     - pacman --noconfirm -Syu
     - pacman --noconfirm -S sudo git fakeroot binutils
     - useradd -m notroot
-    - echo "notroot ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/notroot
+    - echo "$DOSUDO" > /etc/sudoers.d/notroot
 
 # * Test
 
