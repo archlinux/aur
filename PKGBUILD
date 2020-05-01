@@ -1,6 +1,6 @@
 # Maintainer: LinArcx <linarcx@gmail.com>
 
-pkgname=giti
+pkgname='giti-git'
 pkgver=1.0.0.r2.g67944fc
 pkgrel=1
 pkgdesc='Permanent observer of your git directories'
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 build() {
-	arch-meson giti build
+	arch-meson giti-git build
 	ninja -C build
 }
 

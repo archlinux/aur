@@ -1,4 +1,4 @@
-pkgbase = giti
+pkgbase = giti-git
 	pkgdesc = Permanent observer of your git directories
 	pkgver = 1.0.0.r2.g67944fc
 	pkgrel = 1
@@ -14,8 +14,8 @@ pkgbase = giti
 	depends = libgit2
 	depends = libgee
 	depends = granite
-	source = giti::git+https://github.com/LinArcX/giti.git
+	source = giti-git::git+https://github.com/LinArcX/giti.git
 	sha256sums = SKIP
 
-pkgname = giti
+pkgname = giti-git
 
