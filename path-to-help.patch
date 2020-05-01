@@ -1,0 +1,14 @@
+diff --git a/src/bracmat.c b/src/bracmat.c
+index 9475288..e82d37b 100644
+--- a/src/bracmat.c
++++ b/src/bracmat.c
+@@ -16554,7 +16554,8 @@ int mainLoop(int argc,char *argv[])
+         "Bracmat comes with ABSOLUTELY NO WARRANTY; for details type `!w'.\\n"
+         "This is free software, and you are welcome to redistribute it\\n"
+         "under certain conditions; type `!c' for details.\\n\\n"
+-        "\\n\\n{?} get$help { tutorial }\\n{?} )        { stop }\"&"
++        "\\n{?} get$\\\"/usr/share/doc/bracmat/help\\\" { tutorial }"
++        "\\n{?} )                                 { stop }\"&"
+         "(main=put$\"{?} \"&clk$():?SEC&((get':?!(=):(|?&clk$+-1*!SEC:?SEC&"
+         "put$\"{!} \"&put$!&put$(\"\\n    S  \" str$(div$(!SEC,1) \",\" (div$(mod$("
+         "!SEC*100,100),1):?SEC&!SEC:<10&0|) !SEC) sec))|put$\"\\n    F\")|"

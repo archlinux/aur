@@ -1,0 +1,18 @@
+pkgbase = bracmat-git
+	pkgdesc = Programming language for symbolic computation with pattern matching features.
+	pkgver = 6.7.2r235
+	pkgrel = 1
+	url = https://github.com/BartJongejan/Bracmat
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	makedepends = git
+	provides = bracmat
+	conflicts = bracmat
+	source = git+https://github.com/BartJongejan/Bracmat.git
+	source = path-to-help.patch
+	md5sums = SKIP
+	md5sums = f595a0ccdef5980c45433127c1bc37b4
+
+pkgname = bracmat-git
+
