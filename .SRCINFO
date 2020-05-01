@@ -1,7 +1,7 @@
 pkgbase = ethoscope-device
 	pkgdesc = A platform from monitoring animal behaviour in real time from a raspberry pi - Device version
 	pkgver = r1702.g1c43fc3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lab.gilest.ro/ethoscope
 	install = ethoscope-device.install
 	arch = any
