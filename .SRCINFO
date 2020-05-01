@@ -1,6 +1,6 @@
 pkgbase = lariza-git
 	pkgdesc = Simple WebKit2GTK+ Browser
-	pkgver = 19.05.15.g5a1bfe1
+	pkgver = 20.04.26.g7d1cc80
 	pkgrel = 1
 	url = https://uninformativ.de/git/lariza
 	install = lariza.install
@@ -9,7 +9,6 @@ pkgbase = lariza-git
 	license = MIT
 	makedepends = git
 	depends = webkit2gtk
-	optdepends = tabbed: for grouping multiple web views into one window
 	provides = lariza
 	conflicts = lariza
 	source = git+https://uninformativ.de/git/lariza.git
