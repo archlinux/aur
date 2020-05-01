@@ -1,4 +1,6 @@
 # Maintainer: csantosb <csantosb dot inventati dot org>
+# https://gitlab.com/aur-packages/python-edalize
+
 pkgname=python-edalize
 pkgver=0.2
 pkgrel=0
