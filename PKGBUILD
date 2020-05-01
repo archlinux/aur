@@ -12,6 +12,7 @@ depends=('qt5-base>5.11.0' 'openssl' 'boost-libs' 'qv2ray')
 makedepends=('git' 'make' 'qt5-tools' 'which' 'gcc' 'cmake' 'ninja' 'libffi' 'boost')
 provides=('qv2ray-plugin-trojan')
 conflicts=('qv2ray-plugin-trojan')
+groups=('qv2ray-plugin')
 source=("$_pkgname::git+${url}")
 sha512sums=('SKIP')
 pkgver() {
