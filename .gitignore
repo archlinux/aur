@@ -1,0 +1,6 @@
+.gitconfig
+intel_nuc_led-*.pkg.tar.xz
+intel_nuc_led-*.pkg.tar.xz.sig
+intel_nuc_led/
+pkg/
+src/
