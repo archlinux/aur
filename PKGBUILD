@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=swaygrab
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="An easy to use screenshot tool for sway."
 arch=("x86_64")
