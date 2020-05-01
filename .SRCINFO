@@ -1,7 +1,7 @@
 pkgbase = elixir-ls
 	pkgdesc = A frontend-independent Language Server Protocol for Elixir
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/elixir-lsp/elixir-ls
 	arch = any
 	license = Apache
