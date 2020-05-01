@@ -1,39 +1,40 @@
-# Maintainer: Matthias Lisin <ml@visu.li
+# Maintainer: ml <ml@visu.li
 pkgname=vt-cli
-pkgver=0.7.0
-pkgrel=4
+pkgver=0.7.0+15+g13f5bfe
+_commit=13f5bfed2cff747fdba131cda499df878f9a2b2d
+pkgrel=1
 pkgdesc='VirusTotal Command Line Interface'
 arch=('i686' 'x86_64')
 url='https://github.com/VirusTotal/vt-cli'
 license=('Apache')
 depends=('glibc')
-makedepends=('git' 'go' 'dep')
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('2064b4a34c80ae71b199c870acef4a42f64f79718bb1cd74eb00027b47f334fba23287433be8d86995a9a82fd0f1bbf8c243b6177612005eea7900cdfe3968d0')
-_gopkg=gopath/src/github.com/VirusTotal/"$pkgname"
+makedepends=('go')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${_commit}.tar.gz")
+sha256sums=('78deba6484ea688843dc45bd4d2e9c4e95d79eb82337def751891bf5473b9100')
 
 prepare() {
-  export GOPATH="$srcdir/gopath"
-  mkdir -p "${_gopkg%/*}"
-  ln -frs "$pkgname-$pkgver" "$_gopkg"
-  cd "$_gopkg"
-  dep ensure
+  cd "${pkgname}-${_commit}"
+  go mod download
 }
 
 build() {
-  export GOPATH="$srcdir/gopath"
-  cd "$_gopkg"
-  LDFLAGS+=" -X github.com/VirusTotal/vt-cli/cmd.Version=${pkgver}"
-  go build -trimpath \
-    -buildmode=pie \
-    -ldflags "-extldflags=${LDFLAGS}" \
-    -o build/vt vt/main.go
+  cd "${pkgname}-${_commit}"
+  export CGO_LDFLAGS="$LDFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=readonly'
+  go build -o build/vt -ldflags "-X github.com/VirusTotal/vt-cli/cmd.Version=${pkgver}" ./vt
+}
+
+check() {
+  cd "${pkgname}-${_commit}"
+  go test ./...
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -dm755 "$pkgdir"/usr/share/{bash-completion/completions,zsh/site-functions}
-  install -Dm755 build/vt "$pkgdir"/usr/bin/vt
-  build/vt completion bash >"$pkgdir"/usr/share/bash-completion/completions/vt
-  build/vt completion zsh >"$pkgdir"/usr/share/zsh/site-functions/_vt
+  cd "${pkgname}-${_commit}"
+  install -Dm755  build/vt -t "${pkgdir}/usr/bin"
+  build/vt completion bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/vt"
+  build/vt completion zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_vt"
 }
