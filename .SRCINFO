@@ -1,0 +1,16 @@
+pkgbase = cellwriter
+	pkgdesc = A grid-entry natural handwriting input panel.
+	pkgver = 1.3.6
+	pkgrel = 1
+	url = https://github.com/risujin/cellwriter
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = libxtst
+	source = https://github.com/risujin/cellwriter/archive/1.3.6.tar.gz
+	source = https://launchpadlibrarian.net/18959127/cellwriter-1.3.4-cellwidget-dont-disable-xinput.diff
+	md5sums = 826de84d6d9f00a9c25e892986287f58
+	md5sums = 5e8c61309c5ec8f67f0af7bb5ceb1aea
+
+pkgname = cellwriter
+
