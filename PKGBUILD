@@ -8,7 +8,7 @@ pkgname=(
 	"linux-zest-git-headers"
 )
 pkgver=5.6
-pkgrel=1
+pkgrel=2
 epoch=5
 arch=(
     "i686"
@@ -50,8 +50,14 @@ prepare()
 	echo "Setting config..."
 	make AR="llvm-ar" CC="clang" HOSTAR="llvm-ar" HOSTCC="clang" HOSTCXX="clang++" HOSTLD="ld.lld" HOSTLDFLAGS="-fuse-ld=lld" LD="ld.lld" NM="llvm-nm" OBJCOPY="llvm-objcopy" OBJDUMP="llvm-objdump" OBJSIZE="llvm-size" STRIP="llvm-strip" zestop_defconfig
 
+	#* Load only needed modules from modprobed-db
+	if [ -f "$HOME/.config/modprobed.db" ]; then
+		echo "Setting only needed modules to build..."
+		make AR="llvm-ar" CC="clang" HOSTAR="llvm-ar" HOSTCC="clang" HOSTCXX="clang++" HOSTLD="ld.lld" HOSTLDFLAGS="-fuse-ld=lld" LD="ld.lld" NM="llvm-nm" OBJCOPY="llvm-objcopy" OBJDUMP="llvm-objdump" OBJSIZE="llvm-size" STRIP="llvm-strip" LSMOD="$HOME/.config/modprobed.db" localmodconfig
+	fi
+
 	make AR="llvm-ar" CC="clang" HOSTAR="llvm-ar" HOSTCC="clang" HOSTCXX="clang++" HOSTLD="ld.lld" HOSTLDFLAGS="-fuse-ld=lld" LD="ld.lld" NM="llvm-nm" OBJCOPY="llvm-objcopy" OBJDUMP="llvm-objdump" OBJSIZE="llvm-size" STRIP="llvm-strip" -s kernelrelease > version
-	echo "Prepared $pkgbase version $(<version)"
+	echo "Prepared $pkgbase version $(<version)..."
 }
 
 build()
@@ -160,7 +166,7 @@ _package-headers()
 	install -Dt "$builddir/drivers/media/dvb-frontends" -m644 "drivers/media/dvb-frontends/"*".h"
 	install -Dt "$builddir/drivers/media/tuners" -m644 "drivers/media/tuners/"*".h"
 
-	echo "Installing KConfig files..."
+	echo "Installing Kconfig files..."
 	find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
 	echo "Removing unneeded architectures..."

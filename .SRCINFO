@@ -1,6 +1,6 @@
 pkgbase = linux-zest-git
 	pkgver = 5.6
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 5
 	url = https://github.com/ZestProjects/linux
 	arch = i686
