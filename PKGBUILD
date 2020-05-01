@@ -2,14 +2,14 @@
 
 pkgname=nautilus-nutstore
 pkgver=4.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Nutstore integration for Nautilus.'
 arch=(x86_64)
 url='https://www.jianguoyun.com/'
 license=(CCPL:by-nd GPL2)
-depends=(libnautilus-extension nutstore)
+depends=(libnautilus-extension)
 source=("https://www.jianguoyun.com/static/exe/installer/nutstore_linux_src_installer.tar.gz")
-sha256sums=('c68035259fc4bed291803deb8d97f58f0ef30ed4770b42201c1f2bbf618ad3b4')
+sha256sums=('69a361bd0c0d666c3cc81760a103e8db61d90714cb17a8b5cedc0b47e55cede2')
 
 build() {
     cd $srcdir/nutstore_linux_src_installer
