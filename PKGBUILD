@@ -1,7 +1,8 @@
 # Maintainer: Michael Armbruster <michael at armbrust dot me>
+
 pkgname=precomp
 _gitname=${pkgname}-cpp
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Recompressor that further compresses already compressed files"
 arch=('x86_64')

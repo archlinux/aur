@@ -1,12 +1,12 @@
 pkgbase = precomp
 	pkgdesc = Recompressor that further compresses already compressed files
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://github.com/schnaader/precomp-cpp
 	arch = x86_64
 	license = Apache
 	depends = gcc-libs
-	source = https://github.com/schnaader/precomp-cpp/archive/v0.4.6.tar.gz
+	source = https://github.com/schnaader/precomp-cpp/archive/v0.4.7.tar.gz
 	md5sums = 6a766bdc8e6b065525cb03dbfb8cb4e0
 
 pkgname = precomp
