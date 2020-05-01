@@ -3,7 +3,7 @@
 pkgbase = domoticz-git
 	pkgdesc = Web based home automation
 	pkgver = r8875
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.domoticz.com
 	install = domoticz-git.install
 	arch = i686
@@ -23,6 +23,7 @@ pkgbase = domoticz-git
 	depends = lua
 	depends = mosquitto
 	depends = sqlite
+	depends = cereal
 	conflicts = domoticz-svn
 	source = git+https://github.com/domoticz/domoticz.git
 	source = domoticz.service

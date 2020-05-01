@@ -3,13 +3,13 @@
 pkgname=domoticz-git
 _gitname="domoticz"
 pkgver=r8875
-pkgrel=1
+pkgrel=2
 pkgdesc="Web based home automation"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://www.domoticz.com"
 license=('GPL')
 depends=('openzwave-git' 'libusb-compat' 'curl' 'sqlite' 'boost-libs' 'lua'
-	'mosquitto' 'sqlite')
+	'mosquitto' 'sqlite' 'cereal')
 makedepends=('git' 'cmake' 'boost')
 conflicts=('domoticz-svn')
 install='domoticz-git.install'
