@@ -1,13 +1,14 @@
 pkgbase = uksmd
 	pkgdesc = Userspace KSM helper daemon
-	pkgver = 0.0.0.r3.9b6a6e55e0
+	pkgver = 0.0.0.r4.2f771b79da
 	pkgrel = 1
 	url = https://gitlab.com/post-factum/uksmd
 	arch = x86_64
 	license = GPL3
 	depends = procps-ng
-	source = uksmd-0.0.0.r3.9b6a6e55e0.tar.gz::https://gitlab.com/post-factum/uksmd/-/archive/9b6a6e55e07c524ba0a36eb25c869b47655010ee/uksmd-9b6a6e55e07c524ba0a36eb25c869b47655010ee.tar.gz
-	sha256sums = 529df9a94731ccb913dc4679bd93205efbd2299b9d041a756bf567601e394844
+	depends = libcap-ng
+	source = uksmd-0.0.0.r4.2f771b79da.tar.gz::https://gitlab.com/post-factum/uksmd/-/archive/2f771b79da8aaedc2c3a95ee3cc968ae034809a0/uksmd-2f771b79da8aaedc2c3a95ee3cc968ae034809a0.tar.gz
+	sha256sums = d0d4a60af8207b37dd01fce9a70fe67498dadded25266abc0b8830aad954e7d3
 
 pkgname = uksmd
 
