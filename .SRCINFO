@@ -1,7 +1,7 @@
 pkgbase = qt5-base-595
 	pkgdesc = A cross-platform application and UI framework (v5.9.5)
 	pkgver = 5.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qt-project.org/
 	arch = i686
 	arch = x86_64
