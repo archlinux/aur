@@ -1,0 +1,8 @@
+#+TITLE: Python-edalize AUR package
+
+[[https://gitlab.com/aur-packages/python-edalize/-/commits/master][https://gitlab.com/aur-packages/python-edalize/badges/master/pipeline.svg]]
+
+[[https://github.com/olofk/edalize][Edalize]] is an abstraction library for interfacing EDA tools. This [[https://wiki.archlinux.org/index.php/Arch_Build_System][PKGBUILD]]
+provides a way to build a package suitable for [[https://www.archlinux.org/][Archlinux]].
+
+This project lives [[https://gitlab.com/aur-packages/python-edalize][here]]. The included =yml= file tests the [[https://gitlab.com/aur-packages/python-edalize/pipelines][build]] process.
