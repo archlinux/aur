@@ -21,7 +21,7 @@ build-package:
   script:
     - su notroot
     - cd
-    - git clone [[https://aur.archlinux.org/python-edalize.git]]
+    - git clone https://aur.archlinux.org/python-edalize.git
     - cd python-edalize
     - makepkg --noconfirm --syncdeps --rmdeps --install --clean
     - python -c "import edalize"
