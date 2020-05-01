@@ -1,0 +1,7 @@
+src/
+pkg/
+*.update
+*.pkg.tar.zst
+*.p7s
+*.cer
+klient-jpk-2.0-*.sh

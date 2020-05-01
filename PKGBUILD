@@ -1,7 +1,7 @@
 # Maintainer: zer0def <zer0def@github>
 # Contributor: Konrad Borowski <konrad@borowski.pw>
 pkgname=klient-jpk-2.0
-pkgver=1.0.4.8
+pkgver=1.0.4.9
 pkgrel=1
 pkgdesc="A tool for submitting JPK files (Standard Audit File for Tax equivalent) to Ministerstwo Finansów (Polish Ministry of Finance)"
 arch=('i686' 'x86_64')
@@ -33,36 +33,36 @@ noextract=(
 
 # per http://www.mf.gov.pl/documents/764034/5134536/RELEASE.txt, but duck MD5
 #md5sums=(
-#    '624401852a1c669d081196e0a4520cf4'
-#    'becab6ce79c1186f2403b39e6b7c0540'
-#    '7d5010f8f8bf0e60d5cc2ddee0fda54e'
-#    '6b57f9c54e022d6acaec720c622fabe7'
-#    '467745c62bc2f72c1d5c9b4f73b71f75'
-#    '27d4330c9e3d4e3b969a33d910d85598'
+#    97248a998392059ce56412e6a7c5bdbc
+#    06320d9f028ffc9b3a8f6a142d03d6ed
+#    07544b4cdff35877aaee9b18c16c1e10
+#    f4a0dc1d9d923d3700423144aaf6e1b4
+#    467745c62bc2f72c1d5c9b4f73b71f75
+#    27d4330c9e3d4e3b969a33d910d85598
 #)
 sha256sums=(
-    '2360871c0d2cde2910bc587ba3bf40b3a132bee5581c305f537d598e8c4e9e30'
-    'a0b26d81ce95927ca4c3545ee3bf032ca340b66646118d4e07f7c72f4b6662fa'
-    '9627ee22a49457a940d0874abd6d22719572d2d161811203415b3b2632fa8ac3'
-    'a361346e39864b60791069c8db394ae7b24d0b63e61087355ec8e1d583340c01'
-    'c539940e74493d559cf494313e3a0a72626be86bc31ef3cb8c3da1323640063b'
-    '8c5805dcd59f24ab1fcca9837d4335570eb7427938f653e8f51c8d8944a9057f'
+    1b3341f31dd0d86c9bc4e56a2ba443516ad053aa2ef0e20d55c34abd3534a8fd
+    fbe650d566c0ef6d027613a78eeffd6c93305d6b8a5877c7a5a4b5962bd91998
+    8cc5ad6bfa82fadf0f1564c1ac4625e4a917aa6de2d88dac67efc77c26657d62
+    64c6b70ddec124a5a74265879b0cf22ff1017ddec01ff33f706a6ee1b70e7699
+    c539940e74493d559cf494313e3a0a72626be86bc31ef3cb8c3da1323640063b
+    8c5805dcd59f24ab1fcca9837d4335570eb7427938f653e8f51c8d8944a9057f
 )
 
 if [ "${CARCH}" = 'i686' ]; then
     source+=("$pkgname-$pkgver.sh::https://www.podatki.gov.pl/media/3056/klient_jpk_2-i386.sh"
              "$pkgname-$pkgver.sh.p7s::https://www.podatki.gov.pl/media/1147/klient_jpk_2-i386-sh.p7s")
-    sha256sums+=('c4f08b80120e1c45aad66a2ea35bb3d988497b61fb626f3d0d0dfff629e36948'
-                 '79792f87f5573db5edbabb8c908a7859ec5230789963791a156df1aef77bac69')
-    #md5sums+=('7c0bac9cd96d83f75c8c950ea93fc7f9'
-    #          '6812824da4e39b028b0e929b100fe5d8')
+    sha256sums+=(c4f08b80120e1c45aad66a2ea35bb3d988497b61fb626f3d0d0dfff629e36948
+                 79792f87f5573db5edbabb8c908a7859ec5230789963791a156df1aef77bac69)
+    #md5sums+=(7c0bac9cd96d83f75c8c950ea93fc7f9
+    #          6812824da4e39b028b0e929b100fe5d8)
 elif [ "${CARCH}" = 'x86_64' ]; then
     source+=("$pkgname-$pkgver.sh::https://www.podatki.gov.pl/media/3055/klient_jpk_2-amd64.sh"
              "$pkgname-$pkgver.sh.p7s::https://www.podatki.gov.pl/media/1146/klient_jpk_2-amd64-sh.p7s")
-    sha256sums+=('6956d9c2e1e587ce33f77e497557c80b512cb1ba0c3d6b4d0512476c309a97cc'
-                 'adf917711012ef3a8d2e8d1289d9deaa33d1eee6f7f5245fd7abeae35dd4b700')
-    #md5sums+=('bac043178fe63f0806d6b19771f3039c'
-    #          '65ba7ced8ffe59dd188dcdae08699363')
+    sha256sums+=(6956d9c2e1e587ce33f77e497557c80b512cb1ba0c3d6b4d0512476c309a97cc
+                 adf917711012ef3a8d2e8d1289d9deaa33d1eee6f7f5245fd7abeae35dd4b700)
+    #md5sums+=(bac043178fe63f0806d6b19771f3039c
+    #          65ba7ced8ffe59dd188dcdae08699363)
 fi
 
 prepare() {
