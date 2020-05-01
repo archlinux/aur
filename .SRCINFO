@@ -1,0 +1,17 @@
+pkgbase = insomnia-designer
+	pkgdesc = The Collaborative API Design Tool for designing and managing OpenAPI specs.
+	pkgver = 2020.1.2
+	pkgrel = 1
+	url = https://github.com/Kong/insomnia
+	arch = x86_64
+	license = MIT
+	provides = insomnia-designer
+	source = https://github.com/Kong/insomnia/releases/download/designer@2020.1.2/Insomnia.Designer-2020.1.2.tar.gz
+	source = insomnia-designer.desktop
+	source = insomnia-designer.sh
+	md5sums = 1353cfddc1213827651448feca58e7cf
+	md5sums = 26e57edbdf39489ce81a28aa9d6733d0
+	md5sums = badb48d1177ad567c1708b7674fa0e8e
+
+pkgname = insomnia-designer
+

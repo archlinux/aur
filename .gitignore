@@ -1,0 +1,7 @@
+.BUILDINFO
+.MTREE
+.PKGINFO
+*.gz
+*.xz
+pkg/
+src/

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Insomnia Designer
+Comment=The Collaborative API Design Tool for designing and managing OpenAPI specs.
+Exec=insomnia-designer
+Terminal=false
+Type=Application
+Icon=insomnia
+Categories=Development;
