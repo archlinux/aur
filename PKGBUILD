@@ -3,7 +3,7 @@
 
 _pkgname=atomix
 pkgname=$_pkgname-git
-pkgver=3.34.0.r6.gd3317c0
+pkgver=3.34.0.r8.gf17ff7c
 pkgrel=1
 pkgdesc="Build molecules out of single atoms"
 arch=('i686' 'x86_64')
