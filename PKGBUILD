@@ -1,6 +1,6 @@
 pkgname=lua54
 _pkgver=5.4.0
-_pkgaver=$_pkgver-rc1
+_pkgaver=$_pkgver-rc2
 pkgver=${_pkgaver//\-/.}
 pkgrel=1
 pkgdesc='Powerful lightweight programming language designed for extending applications'
@@ -13,7 +13,7 @@ source=(https://www.lua.org/work/lua-$_pkgaver.tar.gz
         liblua.so.patch
         lua.pc
         LICENSE)
-sha512sums=('bca2d0ef57122d04659858f5301f0043f0d980363de087fa9fc5a7e9ef0c7a7a8875724cb230f46d6da1a1cfc54f666a0d2adefddb2304df47a296810b00a020'
+sha512sums=('1823e953adc3ad34a479a6cc67bdcf4dbb85d483aab2a51f71db70ad6e6a34576f2db986d7540b529eef92a43bfa9c16587e2e2426e66b12650c26e2a1ac5c21'
             'b53d289255cedde25608bcfe0ab21838744af08f99210543b1c56bbc70ba5fb1e1816581717b56fc173aa2b5f6f8ffc7a31408287d1d0fc7ef2f61a72c11591d'
             'a3ae5f5c63a27956a2c69464cf966512be7404aef72d49b0b3b17e35999ceed04ec7be12ef19269f4cac908141b98dd5d16df9c238823fe0c1e068212914657a'
             'bef221ae96e72d11785ec608ce96fa688ce4e12fecaaadc8c3e38d7d153922f4fdd2cf06a47e9f8840a165d42d9aa31f44c322f5c6c8402e8e31475de4e5893b')
