@@ -1,28 +1,30 @@
-# Maintainer: Francois Boulogne <fboulogne@april.org>
+# Maintainer: Balló György <ballogyor+arch at gmail dot com>
 
+_pkgname=pyinsane
 pkgname=python-pyinsane
-pkgver=1.3.8
-pkgrel=1
-pkgdesc='Python implementation of the Sane API (using ctypes) and abstration layer'
-arch=('any')
-url='https://github.com/jflesch/pyinsane'
-license=('GPL3')
-depends=('libksane')
-optdepends=('python-pillow')
-provides=('python-pyinsane')
-conflicts=('python-pyinsane')
-makedepends=('python' 'python-setuptools')
-source=("https://github.com/jflesch/pyinsane/archive/v${pkgver}.zip")
+pkgver=2.0.13
+pkgrel=2
+pkgdesc="Python library to access and use image scanners"
+arch=(any)
+url="https://gitlab.gnome.org/World/OpenPaperwork/pyinsane"
+license=(GPL3)
+depends=(python-pillow sane)
+makedepends=(git python-setuptools)
+_commit=3e509e6bdd2c07ac715cfc27946f86123744a46e  # tags/2.0.13^0
+source=("git+https://gitlab.gnome.org/World/OpenPaperwork/pyinsane.git#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's/-/+/g'
+}
 
 build() {
-  cd "pyinsane-${pkgver}"
-  python setup.py build
+  cd $_pkgname
+  make
 }
 
 package() {
-  cd "pyinsane-${pkgver}"
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
-  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd $_pkgname
+  python3 setup.py install --root="$pkgdir" --optimize=1
 }
-# vim:ts=2:sw=2:et:
-md5sums=('ac7a0b2ebc14800dc82a88bc35314069')
