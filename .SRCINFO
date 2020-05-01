@@ -1,6 +1,6 @@
 pkgbase = sauce-finder-git
 	pkgdesc = Python script to find sauce for anime images
-	pkgver = v2.2.0.r0.gbabd0ff
+	pkgver = v2.2.2.r14.g1322cd4
 	pkgrel = 1
 	url = https://gitlab.com/miicat/sauce-finder
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = sauce-finder-git
 	depends = python-requests
 	depends = python-click
 	depends = python-validators
+	depends = python-prompt_toolkit
 	provides = sauce-finder
 	source = sauce-finder::git+https://gitlab.com/miicat/sauce-finder
 	md5sums = SKIP
