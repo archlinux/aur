@@ -1,6 +1,6 @@
 # Maintainer: Rohit Goswami (HaoZeke) <rohit.goswami@aol.com>
 pkgname=tmetric-rpm
-pkgver="19.3.2.x"
+pkgver="20.1.6"
 pkgrel=1
 epoch=
 pkgdesc="TMetric is a simple and accurate work time-tracker that sets you free from tedious time reporting. Built from the rpm to prevent breakage."
@@ -20,9 +20,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.rpm::https://static.tmetric.com/desktop/download/linux/rpm/$CARCH")
-md5sums=('fc35bedb5624716de20085f2f39b0f7f')
-noextract=()
+source=("$pkgname-$pkgver.$arch.rpm::https://static.tmetric.com/desktop/download/linux/rpm/$CARCH")
+md5sums=('b3f48895e861d11d2ff1fd82cd99b650')
+noextract=()                             
 
 package() {
   # cd "$srcdir/"
