@@ -3,14 +3,14 @@
 
 pkgname=onlyoffice-bin
 pkgver=5.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://www.onlyoffice.com/'
 license=('AGPL3')
-depends=('curl' 'gtk3' 'alsa-lib' 'libpulse' 'gstreamer' 'gst-plugins-base-libs' 'nss'
-         'nspr' 'ttf-dejavu' 'ttf-liberation' 'ttf-carlito' 'desktop-file-utils'
-         'hicolor-icon-theme')
+depends=('curl' 'gtk3' 'alsa-lib' 'libpulse' 'gstreamer' 'gst-plugins-base-libs'
+         'libxss' 'nss' 'nspr' 'ttf-dejavu' 'ttf-liberation' 'ttf-carlito'
+         'desktop-file-utils' 'hicolor-icon-theme')
 optdepends=('libreoffice: for OpenSymbol fonts'
             'otf-takao: for japanese Takao fonts'
             'ttf-ms-fonts: for Microsoft fonts')

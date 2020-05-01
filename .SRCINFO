@@ -1,7 +1,7 @@
 pkgbase = onlyoffice-bin
 	pkgdesc = An office suite that combines text, spreadsheet and presentation editors
 	pkgver = 5.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.onlyoffice.com/
 	arch = x86_64
 	license = AGPL3
@@ -11,6 +11,7 @@ pkgbase = onlyoffice-bin
 	depends = libpulse
 	depends = gstreamer
 	depends = gst-plugins-base-libs
+	depends = libxss
 	depends = nss
 	depends = nspr
 	depends = ttf-dejavu
