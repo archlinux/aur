@@ -1,6 +1,6 @@
 pkgbase = python-treecorr-git
 	pkgdesc = A package for efficiently computing 2-point and 3-point correlation functions
-	pkgver = v3.3.11.r0.fe0e875
+	pkgver = v4.0.10.r0.825dc0a
 	pkgrel = 1
 	url = https://github.com/rmjarvis/TreeCorr.git
 	arch = i686

@@ -3,7 +3,7 @@
 _pkgname=python-treecorr
 pkgbase=python-treecorr-git
 pkgname=('python-treecorr-git' 'python2-treecorr-git')
-pkgver=v3.3.11.r0.fe0e875
+pkgver=v4.0.10.r0.825dc0a
 pkgrel=1
 pkgdesc="A package for efficiently computing 2-point and 3-point correlation functions "
 arch=('i686' 'x86_64')
