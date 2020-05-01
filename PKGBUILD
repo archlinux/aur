@@ -3,7 +3,7 @@
 _pkgname=pep-engine
 pkgname=$_pkgname-hg
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Free Software library for automatic key management and encryption of messages."
 arch=('x86_64' 'i686')
 url='https://pep.software'
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 prepare() {
 	cd "$srcdir/pEpEngine"
 
-	hg up $(hg tags | grep Release | sort -r | head -1 | awk '{print $1}')
+	hg up 'sync'
 	
 	echo "PREFIX=$pkgdir/usr" > 'local.conf'
 	echo "PER_MACHINE_DIRECTORY=$pkgdir/usr/share/pEp" >> 'local.conf'
