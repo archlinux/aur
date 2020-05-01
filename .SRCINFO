@@ -9,7 +9,7 @@ pkgbase = xbindkeys
 	depends = guile
 	optdepends = tk: xbindkeys_show
 	source = https://www.nongnu.org/xbindkeys/xbindkeys-1.8.6.tar.gz
-	md5sums = c6ea9db56e075dae0697497e2ed390cc
+	sha256sums = 6c0d18be19fc19ab9b4595edf3a23c0a6946c8a5eb5c1bc395471c8f9a710d18
 
 pkgname = xbindkeys
 

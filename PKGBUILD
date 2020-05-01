@@ -1,4 +1,5 @@
-# Maintainer: Florian Pritz <bluewind@xinu.at>
+# Maintainer: Yusuf Aktepe <yusuf@yusufaktepe.com>
+# Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Thayer Williams <thayer@archlinux.org>
 
@@ -12,7 +13,7 @@ license=('GPL')
 depends=('libx11' 'guile')
 optdepends=('tk: xbindkeys_show')
 source=(https://www.nongnu.org/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('c6ea9db56e075dae0697497e2ed390cc')
+sha256sums=('6c0d18be19fc19ab9b4595edf3a23c0a6946c8a5eb5c1bc395471c8f9a710d18')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
