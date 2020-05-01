@@ -1,23 +1,17 @@
 pkgbase = python-custom_inherit
-	pkgdesc = A Python package that provides tools for inheriting docstrings in customizable ways
-	pkgver = 2.2.0
+	pkgdesc = Python package that provides tools for inheriting docstrings in customizable ways
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/meowklaski/custom_inherit
 	arch = any
 	license = MIT
 	makedepends = python
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
+	makedepends = git
+	depends = python
 	options = !emptydirs
-	source = python-custom_inherit-2.2.0.tar.gz::https://pypi.io/packages/source/c/custom_inherit/custom_inherit-2.2.0.tar.gz
-	source = https://raw.githubusercontent.com/meowklaski/custom_inherit/13bce675e246d84e21bcd7658e0a4fbf25db4adc/License.md
-	sha256sums = 3892ec53aaffae98d757867c3d1dd5f02200db0e1f888ab601223d72262996f8
-	sha256sums = 3ec37cf6e3bd177bf8661a0cd5f5d59b9955700a70bfd5ff12bd30d6d12ca95e
+	source = git+https://github.com/meowklaski/custom_inherit#tag=v2.2.2
+	sha256sums = SKIP
 
 pkgname = python-custom_inherit
-	depends = python
-
-pkgname = python2-custom_inherit
-	depends = python2
 
