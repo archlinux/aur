@@ -1,7 +1,7 @@
 pkgbase = qt5-x11extras-595
 	pkgdesc = Provides platform-specific APIs for X11 (v5.9.5)
 	pkgver = 5.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qt-project.org/
 	arch = i686
 	arch = x86_64
