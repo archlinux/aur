@@ -1,4 +1,4 @@
-# Maintainer: Roman Mishin
+# Maintainer: Roman Mishin <xtradev (a) yandex (.) ru>
 pkgname=bracmat-git
 pkgver=6.7.2r235
 pkgrel=1
