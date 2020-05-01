@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /opt/ventoy/Ventoy2Disk "$@"
+exec /opt/ventoy/Ventoy2Disk.sh "$@"

@@ -1,7 +1,7 @@
 pkgbase = ventoy
 	pkgdesc = A new multiboot USB solution
 	pkgver = 1.0.08
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ventoy.net/
 	arch = i686
 	arch = x86_64

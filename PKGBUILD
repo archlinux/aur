@@ -3,7 +3,7 @@
 
 pkgname=ventoy
 pkgver=1.0.08
-pkgrel=2
+pkgrel=3
 pkgdesc='A new multiboot USB solution'
 url='http://www.ventoy.net/'
 arch=('i686' 'x86_64')
