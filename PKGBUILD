@@ -8,7 +8,7 @@
 
 pkgname=firefox-wayland-hg
 _pkgname=firefox
-pkgver=r582059+.22f4f0f581e9+
+pkgver=r590343+.6af025613ee2+
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org (mozilla-unified hg, release branding, targeting wayland)"
 arch=(x86_64)
@@ -35,8 +35,8 @@ source=("hg+$_repo"
         '0002-Pipewire.patch'
         $_pkgname.desktop $_pkgname-symbolic.svg)
 sha256sums=('SKIP'
-            'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894'
-            '82a9d6b58fea2ad7e7e9561ce39436b1441ba3a23789fae251a18b58cc22f035' #0002-Pipewire.patch
+            '11ffb5665e3925349553868a3d326b8397d2705707de033d6ec6ee00babeb87f'
+            '82a9d6b58fea2ad7e7e9561ce39436b1441ba3a23789fae251a18b58cc22f035'
             'a9e5264257041c0b968425b5c97436ba48e8d294e1a0f02c59c35461ea245c33'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
 
