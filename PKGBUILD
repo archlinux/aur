@@ -4,7 +4,6 @@
 # Contributor: Dan Vratil <dan@progdan.cz>
 # Contributor: andy123 < ajs AT online DOT de >
 
-pkgbase=boost
 pkgname=lib32-boost-libs
 pkgver=1.72.0
 _boostver=${pkgver//./_}
@@ -49,7 +48,7 @@ build() {
   export _stagedir="${srcdir}/stagedir"
   local JOBS="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
 
-  cd ${pkgbase}_${_boostver}
+  cd boost_${_boostver}
 
   # There are currently no up to date lib32-python packages available
   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=
@@ -106,6 +105,6 @@ package() {
   #   ln -srL "${pkgdir}"/usr/lib32/libboost_${_lib}3{8,}.so
   # done
 
-  install -Dm644 "${srcdir}/"${pkgbase}_${_boostver}/LICENSE_1_0.txt \
+  install -Dm644 "${srcdir}/"boost_${_boostver}/LICENSE_1_0.txt \
      "${pkgdir}"/usr/share/licenses/lib32-boost-libs/LICENSE_1_0.txt
 }
