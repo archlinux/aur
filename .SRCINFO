@@ -1,6 +1,6 @@
 pkgbase = python-wtforms-alchemy
 	pkgdesc = Tools for creating wtforms from sqlalchemy models
-	pkgver = 0.16.7
+	pkgver = 0.16.9
 	pkgrel = 1
 	url = https://wtforms-alchemy.readthedocs.io
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-wtforms-alchemy
 	depends = python-passlib
 	depends = python-phonenumbers
 	depends = python-wtforms-components
-	source = https://github.com/kvesteri/wtforms-alchemy/archive/0.16.7.tar.gz
-	sha256sums = b177e05e243ac1ffbe52307cf1cb5ccb5e3843cb8f465db0dec152dc884f6cdf
+	source = python-wtforms-alchemy-0.16.9.tar.gz::https://github.com/kvesteri/wtforms-alchemy/archive/0.16.9.tar.gz
+	sha256sums = 53d734ad026cea39a7a9e09bf524a5d8a2025ee6958a4f7d4b0aa0a8f27d519f
 
 pkgname = python-wtforms-alchemy
 
