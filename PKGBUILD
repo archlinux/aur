@@ -1,4 +1,5 @@
 # Maintainer: Matteo Salonia <saloniamatteo@protonmail.com>
+# To use memethesis-cli, run `memethesis --help`
 
 pkgname=memethesis-cli
 pkgver=3.3.0
@@ -18,12 +19,12 @@ sha256sums=("SKIP")
 
 prepare() {
 	# install python dependencies
-	pip3 install PyYAML Pillow PyInquirer colored ascim
+	pip3 install ascim colored Pillow PyInquirer PyYAML setuptools
 }
 
 package() {
 	# go into memethesis-cli
 	cd "${srcdir}/${pkgname}"
-	# install memethesis-cli; binary is in /usr/bin/memethesis
+	# install memethesis-cli located in /usr/bin/memethesis
 	python3 setup.py install --root="$pkgdir"
 }
