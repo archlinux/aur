@@ -1,0 +1,18 @@
+pkgbase = esmtp
+	pkgdesc = An easy SMTP forwarder.
+	pkgver = 1.2
+	pkgrel = 7
+	url = http://esmtp.sourceforge.net
+	arch = x86_64
+	license = GPL
+	depends = libesmtp
+	depends = openssl
+	optdepends = liblockfile: for esmtp-wrapper script
+	optdepends = procmail: for local mail delivery
+	provides = smtp-forwarder
+	conflicts = smtp-forwarder
+	source = https://downloads.sourceforge.net/esmtp/esmtp-1.2.tar.bz2
+	md5sums = 79a9c1f9023d53f35bb82bf446150a72
+
+pkgname = esmtp
+
