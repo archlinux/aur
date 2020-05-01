@@ -1,6 +1,6 @@
 pkgbase = autopsy
 	pkgdesc = Digital forensics platform and graphical interface to The Sleuth Kit® and other digital forensic tools
-	pkgver = 4.14.0
+	pkgver = 4.15.0
 	pkgrel = 1
 	url = http://www.sleuthkit.org/autopsy/
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = autopsy
 	depends = java-runtime=8
 	depends = testdisk
 	depends = sleuthkit
-	depends = sleuthkit-java=4.8.0
+	depends = sleuthkit-java=4.9.0
 	depends = java8-openjfx
 	optdepends = opencv: media files (64-bit)
 	optdepends = perl-parse-registry: regripper
-	source = https://github.com/sleuthkit/autopsy/releases/download/autopsy-4.14.0/autopsy-4.14.0.zip
+	source = https://github.com/sleuthkit/autopsy/releases/download/autopsy-4.15.0/autopsy-4.15.0.zip
 	source = Autopsy.desktop
-	md5sums = bbc764b61891f8842900586acb0a7600
+	md5sums = 6287a3eae6c862da4725519376657a7e
 	md5sums = ab18f5bf01a624774a6e4eccd21dd398
 
 pkgname = autopsy
