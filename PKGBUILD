@@ -16,8 +16,8 @@ depends=(
 makedepends=('go')
 conflicts=('yay')
 provides=('yay')
-source=("yay::git+https://github.com/Jguer/yay.git")
-md5sums=("SKIP")
+source=("yay::git+https://github.com/Jguer/yay.git#branch=next")
+sha256sums=("SKIP")
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -27,7 +27,7 @@ pkgver() {
 build() {
   export GOPATH="$srcdir"/gopath
   cd "$srcdir/$_pkgname"
-  EXTRA_GOFLAGS="-modcacherw -gcflags all=-trimpath=${PWD} -asmflags all=-trimpath=${PWD}" \
+  EXTRA_GOFLAGS="-modcacherw -trimpath" \
     LDFLAGS="-linkmode external -extldflags \"${LDFLAGS}\"" \
     make VERSION=$pkgver DESTDIR="$pkgdir" build
 }

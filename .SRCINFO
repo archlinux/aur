@@ -16,8 +16,8 @@ pkgbase = yay-git
 	conflicts = yay
 	options = !strip
 	options = !emptydirs
-	source = yay::git+https://github.com/Jguer/yay.git
-	md5sums = SKIP
+	source = yay::git+https://github.com/Jguer/yay.git#branch=next
+	sha256sums = SKIP
 
 pkgname = yay-git
 
