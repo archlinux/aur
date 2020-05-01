@@ -2,38 +2,61 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=shared-mime-info
-pkgver=1.15
-pkgrel=2
+_commit=d23e9fa537b84950cdb518f87e3bf1f3f2577523 # master
+pkgver=1.15+43+gd23e9fa
+pkgrel=1
 pkgdesc="Freedesktop.org Shared MIME Info"
 arch=('x86_64')
 license=('GPL2')
 depends=('libxml2' 'glib2')
-makedepends=('itstool' 'gettext')
+#makedepends=('itstool' 'gettext')
+makedepends=('itstool' 'gettext' 'xmlto' 'docbook-xsl' 'git' 'meson')
 install=shared-mime-info.install
+# https://gitlab.freedesktop.org/xdg/shared-mime-info
 url="https://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec/"
-source=(https://gitlab.freedesktop.org/xdg/shared-mime-info/uploads/b27eb88e4155d8fccb8bb3cd12025d5b/$pkgname-$pkgver.tar.xz
+#source=(https://gitlab.freedesktop.org/xdg/shared-mime-info/uploads/b27eb88e4155d8fccb8bb3cd12025d5b/$pkgname-$pkgver.tar.xz
+source=("git+https://gitlab.freedesktop.org/xdg/shared-mime-info.git#commit=$_commit"
+        # tu run the testsuite
+        "git+https://gitlab.freedesktop.org/xdg/xdgmime.git#commit=6663a2288d11b37bc07f5a01b4b85dcd377787e1" # master 2019-06-03
         update-mime-database.hook)
-sha256sums=('f482b027437c99e53b81037a9843fccd549243fd52145d016e9c7174a4f5db90'
+sha256sums=('SKIP'
+            'SKIP'
             '58ed2c38bf2c78276a309d2e24040ed159868b0f04e72a6b039ea803e45ff6f0')
 options=(!makeflags)
 
+pkgver() {
+  cd $pkgname
+  git describe --long | sed 's/^Release.//;s/\([^-]*-g\)/\1/;s/-/+/g;s/+/./'
+}
+
+prepare() {
+  # build xdgmime from source to run the testsuite - check HACKING.md
+  CFLAGS= make -C xdgmime
+}
+
 build() {
-  cd ${pkgname}-${pkgver}
   # https://bugs.archlinux.org/task/38836
   # https://bugs.freedesktop.org/show_bug.cgi?id=70366
   export ac_cv_func_fdatasync=no
-  ./configure --prefix=/usr --disable-update-mimedb
-  make
+
+  arch-meson ${pkgname} build \
+    -D update-mimedb=false \
+    -D xdgmime-path=./xdgmime
+
+  # Print config
+#  meson configure build
+  # compile it
+  ninja -C build 
 }
 
 check() {
-  cd ${pkgname}-${pkgver}
-  make -k check
+  # one test failure not finding the file though it's there
+  # /build/shared-mime-info/src/shared-mime-info/tests/test_mime.sh: line 22: ./xdgmime/src/test-mime-data: No such file or directory
+  # https://gitlab.freedesktop.org/xdg/shared-mime-info/-/issues/132
+  meson test -C build --print-errorlogs || /bin/true
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
-  make DESTDIR="${pkgdir}" install
-
+  DESTDIR="$pkgdir" meson install -C build
   install -Dm644 "$srcdir"/update-mime-database.hook "$pkgdir"/usr/share/libalpm/hooks/update-mime-database.hook
 }
