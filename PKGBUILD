@@ -2,7 +2,7 @@
 # Contributor: Florian Richter <Florian_Richter@gmx.de>
 pkgname=pythonmagick
 pkgver=0.9.19
-pkgrel=2
+pkgrel=3
 pkgdesc="Object-oriented Python bindings for the ImageMagick library"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
@@ -11,7 +11,7 @@ depends=('boost' 'python' 'imagemagick')
 makedepends=('perl' 'automake')
 options=('!libtool')
 source=("http://www.imagemagick.org/download/python/PythonMagick-$pkgver.tar.gz")
-sha256sums=('dda6f31142d0d82c7e67897e5d6a7cc7af9ca95f0212112b6343c0ce470751e8')
+sha256sums=('a26fbb030b5689730eaca2f1b7ee0a2e06083c547e66e622e2cd443c710427ce')
 
 build() {
   cd "$srcdir/PythonMagick-$pkgver"
