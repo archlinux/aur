@@ -1,21 +1,13 @@
 pkgbase = python-toyplot
-	pkgdesc = modern Python plotting toolkit supporting electronic publishing and reproducibility
-	pkgver = 0.18.0
+	pkgdesc = Python plotting toolkit supporting electronic publishing and reproducibility
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = http://toyplot.readthedocs.io/
 	arch = any
 	license = custom:sandia
 	makedepends = python
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
-	options = !emptydirs
-	source = python-toyplot-0.18.0.tar.gz::https://pypi.io/packages/source/t/toyplot/toyplot-0.18.0.tar.gz
-	source = https://raw.githubusercontent.com/sandialabs/toyplot/89a17d4b4ab39e7d02383426264119f523540859/LICENSE
-	sha256sums = f3c07ed64609fa8747210421717b241c808da2fc5d296615c83bf422faca9e90
-	sha256sums = 3f2c149ada89dc7874788fc3aee58ba5a1849fb2f44ba722f6a0a314b401c31f
-
-pkgname = python-toyplot
+	makedepends = git
 	depends = python
 	depends = python-arrow
 	depends = python-custom_inherit
@@ -23,13 +15,9 @@ pkgname = python-toyplot
 	depends = python-numpy
 	depends = python-reportlab
 	depends = python-six
+	options = !emptydirs
+	source = git+https://github.com/sandialabs/toyplot#tag=v0.19.0
+	sha256sums = SKIP
 
-pkgname = python2-toyplot
-	depends = python2
-	depends = python2-arrow
-	depends = python2-custom_inherit
-	depends = python2-multipledispatch
-	depends = python2-numpy
-	depends = python2-reportlab
-	depends = python2-six
+pkgname = python-toyplot
 
