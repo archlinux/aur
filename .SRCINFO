@@ -1,0 +1,21 @@
+pkgbase = wren
+	pkgdesc = Small, fast, class-based concurrent scripting language
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = http://wren.io/
+	arch = x86_64
+	license = MIT
+	makedepends = setconf
+	makedepends = libuv
+	makedepends = git
+	makedepends = python2
+	depends = glibc
+	source = git+https://github.com/munificent/wren.git#commit=417ed7a
+	source = git+https://chromium.googlesource.com/external/gyp.git#commit=aae1e3efb50786df20e9572621fb746865f0df53
+	source = git+https://github.com/libuv/libuv.git#commit=cd37fd0
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = wren
+
