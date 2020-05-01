@@ -1,20 +1,9 @@
-Procedure for testing the package in a clean environment (Docker image)
+#+TITLE: Python-fusesoc AUR package
 
-#+begin_src sh
-  docker run -it csantosb/arch-testing /bin/sh
-#+end_src
+[[https://gitlab.com/aur-packages/python-fusesoc/-/commits/master][https://gitlab.com/aur-packages/python-fusesoc/badges/master/pipeline.svg]]
 
-From within the container
+[[https://github.com/olofk/fusesoc][Fusesoc]] is a package manager and build abstraction tool for FPGA/ASIC
+development. This [[https://wiki.archlinux.org/index.php/Arch_Build_System][PKGBUILD]] provides a way to build a package suitable for
+[[https://www.archlinux.org/][Archlinux]].
 
-#+begin_src sh
-  yay -S --noconfirm python-fusesoc
-  fusesoc list
-#+end_src
-
-Returns
-
-#+begin_src sh
-  usage: fusesoc [-h] [--version] [--cores-root CORES_ROOT] [--config CONFIG] [--monochrome] [--verbose] [--log-file LOG_FILE]
-               {build,init,pgm,fetch,core,list-cores,core-info,gen,list-paths,library,run,sim,update} ...
-  fusesoc: error: invalid choice: 'list' (choose from 'build', 'init', 'pgm', 'fetch', 'core', 'list-cores', 'core-info', 'gen', 'list-paths', 'library', 'run', 'sim', 'update')
-#+end_src
+This project lives [[https://gitlab.com/aur-packages/python-fusesoc][here]]. The included =yml= file tests the [[https://gitlab.com/aur-packages/python-fusesoc/pipelines][build]] process.
