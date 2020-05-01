@@ -1,0 +1,444 @@
+Index: src/bomb.c
+===================================================================
+RCS file: /cvs/bomberclone/src/bomb.c,v
+retrieving revision 1.71
+retrieving revision 1.72
+diff -u -r1.71 -r1.72
+--- src/bomb.c	11 May 2009 20:51:25 -0000	1.71
++++ src/bomb.c	28 Jan 2012 21:53:19 -0000	1.72
+@@ -1,4 +1,4 @@
+-/* $Id: bomb.c,v 1.71 2009-05-11 20:51:25 stpohle Exp $ */
++/* $Id: bomb.c,v 1.72 2012-01-28 21:53:19 steffen Exp $ */
+ /* everything what have to do with the bombs */
+ 
+ #include "bomberclone.h"
+@@ -503,17 +503,12 @@
+  * the bomb was kicked.. so move the bomb in the right way..
+  */
+ void bomb_kicked (_bomb * bomb) {
+-	float dist, dX, dY, pX, pY;
++	float dX, dY, pX, pY;
+ 	
+ 	pX = dX = bomb->dest.x - bomb->source.x;
+ 	pY = dY = bomb->dest.y - bomb->source.y;
+ 	if (pX < 0.0f) pX = -dX;
+ 	if (pY < 0.0f) pY = -dY;
+-	if (pX == 0.0f) dist = pY;
+-	else if (pY == 0.0f) dist = pX;
+-	else {
+-		dist = sqrtf (powf (pX,2) + powf (pY,2));
+-	}
+ 	
+ 	bomb->fdata += timediff; // * (SPECIAL_KICK_MAXDIST / dist);
+ 	if (bomb->fdata >= 1.0f) {
+Index: src/gfx.c
+===================================================================
+RCS file: /cvs/bomberclone/src/gfx.c,v
+retrieving revision 1.42
+retrieving revision 1.43
+diff -u -r1.42 -r1.43
+--- src/gfx.c	10 Oct 2009 09:43:55 -0000	1.42
++++ src/gfx.c	28 Jan 2012 21:53:19 -0000	1.43
+@@ -1,4 +1,4 @@
+-/* $Id: gfx.c,v 1.42 2009-10-10 09:43:55 stpohle Exp $ */
++/* $Id: gfx.c,v 1.43 2012-01-28 21:53:19 steffen Exp $ */
+ /* gfx.c */
+ 
+ #include "bomberclone.h"
+@@ -37,8 +37,7 @@
+ void
+ gfx_load_players (int sx, int sy)
+ {
+-    float sfkt,
+-      ssfkt;
++    float sfkt;
+     char filename[255];
+     int i,
+       r,
+@@ -47,7 +46,6 @@
+     SDL_Surface *tmpimage,
+      *tmpimage1;
+     sfkt = ((float) sx) / ((float) GFX_IMGSIZE);
+-    ssfkt = ((float) GFX_SMALLPLAYERIMGSIZE_X) / ((float) GFX_IMGSIZE);
+ 
+ 	d_printf ("gfx_load_players (%d, %d)\n", sx, sy);
+ 	
+@@ -72,10 +70,10 @@
+ 		    gfx.players[i].ani.image = SDL_DisplayFormat (tmpimage1);
+             SDL_FreeSurface (tmpimage1);
+ 	    
+-	    /* calculate the numbers of images for the animation */
+-	    gfx.players[i].offset.x = (sx - gfx.players[i].ani.w) / 2;
+-	    gfx.players[i].offset.y = -sy;
+-	    SDL_FreeSurface (tmpimage);
++	        /* calculate the numbers of images for the animation */
++	        gfx.players[i].offset.x = (sx - gfx.players[i].ani.w) / 2;
++      	    gfx.players[i].offset.y = -sy;
++	        SDL_FreeSurface (tmpimage);
+         }
+     }
+ 
+Index: src/gfxpixelimage.c
+===================================================================
+RCS file: /cvs/bomberclone/src/gfxpixelimage.c,v
+retrieving revision 1.13
+retrieving revision 1.14
+diff -u -r1.13 -r1.14
+--- src/gfxpixelimage.c	9 Apr 2005 18:22:41 -0000	1.13
++++ src/gfxpixelimage.c	28 Jan 2012 21:53:19 -0000	1.14
+@@ -1,4 +1,4 @@
+-/* $Id: gfxpixelimage.c,v 1.13 2005-04-09 18:22:41 stpohle Exp $ */
++/* $Id: gfxpixelimage.c,v 1.14 2012-01-28 21:53:19 steffen Exp $ */
+ /* gfx pixel manipulation and image manipulation */
+ 
+ #include "bomberclone.h"
+@@ -285,10 +285,6 @@
+ SDL_Surface *
+ makegray_image (SDL_Surface * org)
+ {
+-    Uint32 rmask,
+-      gmask,
+-      bmask,
+-      amask;
+     Uint32 pixel,
+       transpixel = 0;
+     SDL_Surface *dest;
+@@ -300,18 +296,6 @@
+       b,
+       gray;
+ 
+-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+-    rmask = 0xff000000;
+-    gmask = 0x00ff0000;
+-    bmask = 0x0000ff00;
+-    amask = 0x000000ff;
+-#else /*  */
+-    rmask = 0x000000ff;
+-    gmask = 0x0000ff00;
+-    bmask = 0x00ff0000;
+-    amask = 0xff000000;
+-#endif /*  */
+-
+ 	dest = SDL_CreateRGBSurface (SDL_SWSURFACE, org->w, org->h, org->format->BitsPerPixel,
+                                  org->format->Rmask, org->format->Gmask,
+                                  org->format->Bmask, org->format->Amask);
+Index: src/keyb.c
+===================================================================
+RCS file: /cvs/bomberclone/src/keyb.c,v
+retrieving revision 1.7
+retrieving revision 1.8
+diff -u -r1.7 -r1.8
+--- src/keyb.c	27 Jul 2008 11:24:37 -0000	1.7
++++ src/keyb.c	28 Jan 2012 21:53:19 -0000	1.8
+@@ -1,4 +1,4 @@
+-/* $Id: keyb.c,v 1.7 2008-07-27 11:24:37 stpohle Exp $
++/* $Id: keyb.c,v 1.8 2012-01-28 21:53:19 steffen Exp $
+  * keyb.c
+  */
+ 
+@@ -180,19 +180,13 @@
+ void keyb_config_joypad (int key) {
+ 	unsigned int n = 0;
+ 	SDL_Event event;
+-	Uint8 *keys;
+-	int keypressed = 0,	done = 0, eventstate = 0, reorder = 0, i, j;
++	int done = 0, eventstate = 0, reorder = 0, i, j;
+ 
+ 	if (joy[0] == NULL || key < 0 || key >= BCK_max) return;
+ 	
+ 	SDL_JoystickUpdate ();
+ 	
+ 	menu_displaytext ("Joypad Config", "Please press the new key\nfor this function.");
+-	
+-	keys = SDL_GetKeyState (NULL);
+-	if (keys[SDLK_RETURN] || keys[SDLK_ESCAPE])
+-		keypressed = 1;
+-	
+ 	timestamp = SDL_GetTicks (); // needed for time sync.
+ 	
+ 	while (!reorder && !done && bman.state != GS_quit) {
+@@ -205,7 +199,6 @@
+ 				reorder = 0;
+ 		}
+ 		
+-		// eventstate = s_fetchevent (&event);
+ 		SDL_JoystickEventState ( SDL_QUERY ); // js
+ 		SDL_JoystickUpdate ();
+ 		
+@@ -245,9 +238,7 @@
+ void keyb_config_readkey (int key) {
+ 	int newkey;
+     SDL_Event event;
+-    Uint8 *keys;
+-    int keypressed = 0,
+-        done = 0,
++    int done = 0,
+         eventstate = 0,
+         reorder = 0;
+ 		newkey = 0;
+@@ -257,11 +248,6 @@
+ 		return;
+ 	
+ 	menu_displaytext ("Keyboard Config", "Please press the new key\nfor this function.");
+-
+-    keys = SDL_GetKeyState (NULL);
+-    if (keys[SDLK_RETURN] || keys[SDLK_ESCAPE])
+-        keypressed = 1;
+-
+     timestamp = SDL_GetTicks (); // needed for time sync.
+ 
+     while (!reorder && !done && bman.state != GS_quit) {
+Index: src/mapmenu.c
+===================================================================
+RCS file: /cvs/bomberclone/src/mapmenu.c,v
+retrieving revision 1.27
+retrieving revision 1.28
+diff -u -r1.27 -r1.28
+--- src/mapmenu.c	30 Jul 2006 11:44:58 -0000	1.27
++++ src/mapmenu.c	28 Jan 2012 21:53:19 -0000	1.28
+@@ -1,4 +1,4 @@
+-/* $Id: mapmenu.c,v 1.27 2006-07-30 11:44:58 stpohle Exp $ */
++/* $Id: mapmenu.c,v 1.28 2012-01-28 21:53:19 steffen Exp $ */
+ /* map/tileset selection menu */
+ 
+ #include "bomberclone.h"
+@@ -174,15 +174,14 @@
+ {
+     _keybinput ki;
+     SDL_Event event;
+-    int x,
+-      y,
++    int y,
+       eventstate,
+       done = 0;
+     char text[255];
+ 
+ // draw_menubox (WIN_X, WIN_Y);
+ 
+-    x = gfx.res.x / 2;
++//    x = gfx.res.x / 2;
+     y = gfx.res.y / 2 - WIN_Y / 2;
+ 
+     sprintf (text, "Map Settings");
+Index: src/menu.c
+===================================================================
+RCS file: /cvs/bomberclone/src/menu.c,v
+retrieving revision 1.53
+retrieving revision 1.54
+diff -u -r1.53 -r1.54
+--- src/menu.c	6 Feb 2006 21:18:01 -0000	1.53
++++ src/menu.c	28 Jan 2012 21:53:19 -0000	1.54
+@@ -1,4 +1,4 @@
+-/* $Id: menu.c,v 1.53 2006-02-06 21:18:01 stpohle Exp $
++/* $Id: menu.c,v 1.54 2012-01-28 21:53:19 steffen Exp $
+  * Menuhandling */
+ 
+ #include "basic.h"
+@@ -591,11 +591,10 @@
+       menuselect;
+     _charlist *selfile = flist;
+     _menu *menu;
+-	_menuitem *dirmi;
+ 
+     flcnt = menu_create_dirlist (path, dirflags, flist, MAX_DIRENTRYS);
+     menu = menu_new (title, 300, 300);
+-    dirmi = menu_create_list (menu, "Dir", -1, 50, 200, 200, flist, &selfile, 1);
++    menu_create_list (menu, "Dir", -1, 50, 200, 200, flist, &selfile, 1);
+     menu_create_button (menu, "OK", -1, 270, 150, 0);
+ 	menu_focus_id (menu, 1);
+ 	
+Index: src/netsrvlist.c
+===================================================================
+RCS file: /cvs/bomberclone/src/netsrvlist.c,v
+retrieving revision 1.17
+retrieving revision 1.18
+diff -u -r1.17 -r1.18
+--- src/netsrvlist.c	7 Aug 2005 17:46:21 -0000	1.17
++++ src/netsrvlist.c	28 Jan 2012 21:53:19 -0000	1.18
+@@ -1,4 +1,4 @@
+-/* $Id: netsrvlist.c,v 1.17 2005-08-07 17:46:21 stpohle Exp $
++/* $Id: netsrvlist.c,v 1.18 2012-01-28 21:53:19 steffen Exp $
+  * netsrvlist.c - shows a list of possible servers.*/
+  
+ #include "basic.h"
+@@ -124,7 +124,6 @@
+ 	_charlist *sel_entry = &srvlst_text[0];
+ 	_menu *menu;
+ 	_menuitem *srvlst_listmenu;
+-	_menuitem *srvlst_entry;
+     SDL_Event event;
+ 	
+ 	d_printf ("net_getserver\n");
+@@ -137,7 +136,7 @@
+ 
+ 	menu = menu_new ("Join a Game", 500, 400);
+ 	srvlst_listmenu = menu_create_list (menu, "Host a Game", -1, 50, 475, 250, srvlst_text, &sel_entry, 1);
+-	srvlst_entry = menu_create_entry (menu, "IP :", -1, 320, 475, bman.servername, LEN_SERVERNAME+LEN_PORT + 2, MENU_entrytext, 2);	
++	menu_create_entry (menu, "IP :", -1, 320, 475, bman.servername, LEN_SERVERNAME+LEN_PORT + 2, MENU_entrytext, 2);	
+ 	menu_create_button (menu, "OK", -1, 350, 150, 0);
+ 	menu_focus_id (menu, 1);
+ 
+Index: src/network.c
+===================================================================
+RCS file: /cvs/bomberclone/src/network.c,v
+retrieving revision 1.79
+retrieving revision 1.80
+diff -u -r1.79 -r1.80
+--- src/network.c	12 Jan 2007 22:42:31 -0000	1.79
++++ src/network.c	28 Jan 2012 21:53:19 -0000	1.80
+@@ -1,4 +1,4 @@
+-/* $Id: network.c,v 1.79 2007-01-12 22:42:31 stpohle Exp $ */
++/* $Id: network.c,v 1.80 2012-01-28 21:53:19 steffen Exp $ */
+ /*
+ 	network routines.
+ */
+@@ -460,7 +460,6 @@
+ net_transmit_gamedata ()
+ {
+     int done = 0,
+-        keypressed = 0,
+         x,
+         y,                      // network upload status for one step
+         p,
+@@ -621,12 +620,10 @@
+         if (keys[SDLK_ESCAPE] && event.type == SDL_KEYDOWN) {
+             done = 1;
+             bman.p_nr = -1;
+-            keypressed = 1;
+             bman.state = GS_startup;
+         }
+ 
+-        if (event.type == SDL_KEYUP)
+-            keypressed = 0;
++//        if (event.type == SDL_KEYUP)
+     }
+ 
+     timestamp = SDL_GetTicks (); // needed for time sync.
+Index: src/player.c
+===================================================================
+RCS file: /cvs/bomberclone/src/player.c,v
+retrieving revision 1.108
+retrieving revision 1.109
+diff -u -r1.108 -r1.109
+--- src/player.c	11 Oct 2009 17:14:47 -0000	1.108
++++ src/player.c	28 Jan 2012 21:53:19 -0000	1.109
+@@ -1,4 +1,4 @@
+-/* $Id: player.c,v 1.108 2009-10-11 17:14:47 stpohle Exp $
++/* $Id: player.c,v 1.109 2012-01-28 21:53:19 steffen Exp $
+  * player.c - everything what have to do with the player */
+ 
+ #include <SDL.h>
+@@ -120,7 +120,6 @@
+ {
+     int i,
+       x,
+-      xs,
+       xe,
+       y,
+       ys,
+@@ -155,7 +154,6 @@
+                 if (ye >= map.size.y)
+                     ye = map.size.y - 1;
+ 				// redrawing of the stone
+-                xs = x;
+                 for (; x <= xe; x++)
+                     for (y = ys; y <= ye; y++)
+                         stonelist_add (x, y);
+@@ -445,7 +443,7 @@
+ void
+ player_move (int pl_nr)
+ {
+-    int oldd, coll_speed;
++    int oldd;
+     _player *p = &players[pl_nr];
+ 
+     if (p->tunnelto > 0.0f) {
+@@ -460,7 +458,6 @@
+             player_animation (p);
+     		oldd = p->d;
+             p->stepsleft = p->speed * timefactor;
+-			coll_speed = p->collect_shoes;
+             do {
+                 p->d = oldd;
+ 			} while ((p->stepsleft = stepmove_player (pl_nr)) > 0);
+@@ -677,9 +674,7 @@
+ player_calcpos ()
+ {
+     _player *pl;
+-    int oldm,
+-      oldd,
+-      p;
++    int p;
+ 	float oldspeed;
+ 
+     for (p = 0; p < MAX_PLAYERS; p++) {
+@@ -687,8 +682,6 @@
+         if (PS_IS_netplayer (pl->state) && PS_IS_alife (pl->state) && pl->m != 0) {
+ 		    player_animation (pl);
+ 			oldspeed = pl->speed;
+-            oldm = pl->m;
+-            oldd = pl->d;
+             if (pl->speed > 0.0) {
+ 				pl->speed *= timefactor;
+                 stepmove_player (p);
+Index: src/single.c
+===================================================================
+RCS file: /cvs/bomberclone/src/single.c,v
+retrieving revision 1.86
+retrieving revision 1.87
+diff -u -r1.86 -r1.87
+--- src/single.c	19 Aug 2006 23:41:47 -0000	1.86
++++ src/single.c	28 Jan 2012 21:53:19 -0000	1.87
+@@ -1,4 +1,4 @@
+-/* $Id: single.c,v 1.86 2006-08-19 23:41:47 stpohle Exp $ */
++/* $Id: single.c,v 1.87 2012-01-28 21:53:19 steffen Exp $ */
+ /* single player */
+ 
+ #include "basic.h"
+@@ -711,7 +711,6 @@
+     _charlist nrplayerlist[MAX_PLAYERS + 1];
+     _charlist *selnrplayer = &nrplayerlist[bman.ai_players];
+ 	_menu *menu;
+-	_menuitem *aiplayer = NULL;
+ 	SDL_Event event;
+ 
+     /* fill in the nrplayerlist */
+@@ -729,7 +728,7 @@
+ 	menu = menu_new ("Single Game", 380,240);
+ 	
+ 	menu_create_text (menu, "numpl", 20, 50, 12, 2, COLOR_yellow, "Number of\nAI Players");
+-	aiplayer = menu_create_list (menu, "AI Players", 40, 90, 50, 100, nrplayerlist, &selnrplayer, 3);
++	menu_create_list (menu, "AI Players", 40, 90, 50, 100, nrplayerlist, &selnrplayer, 3);
+ 	
+ 	menu_create_button (menu,"Change Playernames" ,160, 50, 210, 4);
+ 
+Index: src/tileset.c
+===================================================================
+RCS file: /cvs/bomberclone/src/tileset.c,v
+retrieving revision 1.16
+retrieving revision 1.17
+diff -u -r1.16 -r1.17
+--- src/tileset.c	26 Sep 2004 02:28:07 -0000	1.16
++++ src/tileset.c	28 Jan 2012 21:53:19 -0000	1.17
+@@ -1,4 +1,4 @@
+-/* $Id: tileset.c,v 1.16 2004-09-26 02:28:07 stpohle Exp $ */
++/* $Id: tileset.c,v 1.17 2012-01-28 21:53:19 steffen Exp $ */
+ /* load and select tilesets */
+ 
+ #include "bomberclone.h"
+@@ -72,7 +72,6 @@
+     char tileset[LEN_TILESETNAME];
+     SDL_Surface *tmpimage,
+      *tmpimage1;
+-    float sfkt;
+ 
+     d_printf ("Loading Tileset: %s\n", tilesetname);
+     strncpy (tileset, tilesetname, LEN_TILESETNAME);
+@@ -101,7 +100,6 @@
+ 
+     /* create Table of points */
+     scale (gfx.postab, gfx.block.x, 256);
+-    sfkt = ((float) gfx.block.x) / ((float) GFX_IMGSIZE);
+ 
+     /* calculating the best offset for the field on the screen */
+     gfx.offset.x = (gfx.res.x - (gfx.block.x * map.size.x)) / 2;

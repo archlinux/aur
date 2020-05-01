@@ -1,0 +1,19 @@
+pkgbase = bomberclone
+	pkgdesc = Clone of the game Atomic Bomberman
+	pkgver = 0.11.9
+	pkgrel = 7
+	url = https://www.bomberclone.de/core.html
+	arch = x86_64
+	license = GPL
+	makedepends = gendesk
+	depends = sdl_mixer
+	depends = sdl_image
+	source = https://downloads.sourceforge.net/sourceforge/bomberclone/bomberclone-0.11.9.tar.gz
+	source = bomberclone-0.11.9-build-fix.patch
+	source = https://sourceforge.net/p/bomberclone/patches/9/attachment/snprintf.diff
+	sha256sums = 71eb2788f95c136fd3eecaee15d05a80dea07221b5b3530dc869e433e02ff68d
+	sha256sums = ee8bbff24f261951379ca55c510df04deb5a0fd17c2c3149b63bbcaf1cfb0549
+	sha256sums = 3df79e4c87f94d3a2065583fd92a5129e57f35bfb949c92870ed32968acfe54e
+
+pkgname = bomberclone
+
