@@ -2,6 +2,7 @@
 .#*
 *~
 twitch-indicator-*.pkg.tar.xz
+twitch-indicator-*.pkg.tar.zst
 twitch-indicator/
 src/
 pkg/
