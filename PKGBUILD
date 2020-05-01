@@ -20,7 +20,7 @@ sha256sums=('ac42db3d31852d28c847785b7ac10b0934ffb746f19db99a03e67450d6c37e5e')
 build() {
   export GOPATH="$srcdir"/gopath
   cd "$srcdir/$pkgname-$pkgver"
-  EXTRA_GOFLAGS="-modcacherw -gcflags all=-trimpath=${PWD} -asmflags all=-trimpath=${PWD}" \
+  EXTRA_GOFLAGS="-modcacherw -trimpath" \
     LDFLAGS="-linkmode external -extldflags \"${LDFLAGS}\"" \
     make VERSION=$pkgver DESTDIR="$pkgdir" build
 }
