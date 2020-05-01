@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=openbazaard
-_ver=0.13.8
+_ver=0.14.1
 pkgver=$(echo "${_ver}" | tr -d -)
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
@@ -28,8 +28,8 @@ prepare() {
 
 build() {
     cd "${srcdir}"/src/${_user}/${_repo}
-    GOPATH="${srcdir}" go build \
-    -gcflags=all=-trimpath=${GOPATH} \
+    GOPATH="${srcdir}" go build -ldflags="-s -w" \
+    -gcflags=all=-trimpath="${GOPATH}" \
     -asmflags=all=-trimpath="${GOPATH}"
 }
 
@@ -40,7 +40,7 @@ package() {
     install -Dm755 $srcdir/$pkgname.sysuser.conf $pkgdir/usr/lib/sysusers.d/$pkgname.conf
 }
 
-md5sums=('22fa8bf0004508f97fdb23c6f5e1fe38'
-         'ae3e285b857b7efeecbab29826f29735'
-         '9fd31f8bc5b6ccc21a52fc1b58fdb9d6'
-         '92cd2fa8929c5acddbddf7d4fc2fd494')
+md5sums=('9bf0598c34e75e09260d444844460919'
+    'ae3e285b857b7efeecbab29826f29735'
+    '9fd31f8bc5b6ccc21a52fc1b58fdb9d6'
+'92cd2fa8929c5acddbddf7d4fc2fd494')
