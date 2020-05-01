@@ -26,7 +26,7 @@ build() {
     MARCO_FLAGS="--disable-mate"
   fi
 
-  cd "$pkgname"
+  cd "plata-theme"
 
   ./autogen.sh \
     --prefix='/usr' \
