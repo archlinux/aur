@@ -1,15 +1,14 @@
 pkgbase = ocaml-ssl
 	pkgdesc = OCaml SSL Library
 	pkgver = 0.5.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://savonet.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = bubblewrap
 	makedepends = dune
-	makedepends = ocaml-findlib
-	makedepends = opam
+	makedepends = dune-configurator
 	depends = ocaml
 	depends = openssl
 	options = !libtool

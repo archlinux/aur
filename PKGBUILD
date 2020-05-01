@@ -5,30 +5,31 @@
 
 pkgname=ocaml-ssl
 pkgver=0.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc="OCaml SSL Library"
 arch=('i686' 'x86_64')
 url="http://savonet.sourceforge.net/"
 license=('custom')
 depends=('ocaml' 'openssl')
-makedepends=('bubblewrap' 'dune' 'ocaml-findlib' 'opam')
+makedepends=('bubblewrap' 'dune' 'dune-configurator')
 source=("https://github.com/savonet/ocaml-ssl/archive/$pkgver.tar.gz")
 options=(!libtool !strip zipman !makeflags staticlibs)
 
+prepare() {
+    cd $pkgname-$pkgver
+    sed -i 's/2.0/1.11/g' dune-project
+}
+
 build() {
     cd $pkgname-$pkgver
-    make
+    dune build
 }
 
 package() {
     cd ${pkgname}-${pkgver}
+    dune install --prefix "${pkgdir}/usr" \
+    --libdir "${pkgdir}$(ocamlfind printconf destdir)"
 
-    # Initialize OPAM, this should be removed once opam is “removed” from dune
-    export OPAMROOT="${srcdir}"/opam
-    opam init --bare -n
-
-    # Work around the install command
-    OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)" jbuilder install --prefix=${pkgdir}/usr/share
     # Install LICENSE
     mkdir -p $pkgdir/usr/share/licenses/$pkgname/
     awk 'BEGIN{P=0} /License/ {P = 1;} {if (P) print}' README.md > $pkgdir/usr/share/licenses/$pkgname/license
