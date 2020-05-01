@@ -1,7 +1,7 @@
 pkgbase = blabel
 	pkgdesc = A Linux labeling program for Brother P-touch series
 	pkgver = 1.03
-	pkgrel = 2
+	pkgrel = 3
 	url = https://apz.fi/blabel
 	arch = any
 	groups = office
@@ -9,6 +9,7 @@ pkgbase = blabel
 	depends = perl-gtk3
 	depends = pango-perl
 	depends = perl-net-cups
+	depends = perl-gd
 	provides = blabel
 	source = https://apz.fi/blabel/src/blabel-v1.03-build-28.tar.bz2
 	md5sums = a2d2d7e292af7e5b8a09f50a30c57c32

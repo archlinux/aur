@@ -3,13 +3,13 @@
 pkgname=blabel
 pkgver=1.03
 pkgbuild=28
-pkgrel=2
+pkgrel=3
 pkgdesc="A Linux labeling program for Brother P-touch series"
 arch=('any')
 url="https://apz.fi/$pkgname"
 license=('PerlArtistic')
 groups=('office')
-depends=('perl-gtk3' 'pango-perl' 'perl-net-cups')
+depends=('perl-gtk3' 'pango-perl' 'perl-net-cups' 'perl-gd')
 makedepends=()
 optdepends=()
 provides=('blabel')
