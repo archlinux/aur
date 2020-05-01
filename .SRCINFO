@@ -5,9 +5,12 @@ pkgbase = objfw-git
 	url = https://github.com/ObjFW/ObjFW
 	arch = i686
 	arch = x86_64
+	license = QPL
 	license = GPL2
+	license = GPLv3
 	makedepends = git
 	makedepends = gcc-objc
+	depends = clang
 	source = git+https://github.com/ObjFW/ObjFW.git
 	md5sums = SKIP
 
