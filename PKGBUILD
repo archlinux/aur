@@ -2,12 +2,12 @@
 _projectname='dune'
 pkgname="$_projectname-private-libs"
 pkgver='2.3.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Private libraries of Dune'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.07.0' 'dune>=2.3')
+depends=('ocaml>=4.07.0' "dune=$pkgver")
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('9eceba0e51d7782c95d124c2d3f0b2bf8cace28738317e3b9e2a9353ffa43b98')
