@@ -1,6 +1,8 @@
-# Maintainer: Svitozar Cherepii <razotivs@gmail.com>
+# Maintainer: Huki <gk7huki@gmail.com>
+# Contributor: Svitozar Cherepii <razotivs@gmail.com>
+
 pkgname=rvgl-dcpack
-pkgver=20.0325
+pkgver=20.0430
 pkgrel=1
 pkgdesc="RVGL dreamcast content pack."
 url='https://rvgl.re-volt.io'
@@ -8,7 +10,7 @@ arch=('any')
 license=('custom')
 depends=('rvgl-bin')
 source=("$pkgname-$pkgver.zip::https://distribute.re-volt.io/packs/rvgl_dcpack.zip")
-sha256sums=('57da869de425a3836e9f50067d27a4ccf1401dc23d7f4525b4da333e6cf14b37')
+sha256sums=('69abd2de92fafa2aacea47f4cb9b4603a888ad3f753f56af886805e6555ad956')
 
 package() {
     # Enable dreamcast car selection box layout
