@@ -3,7 +3,7 @@
 
 pkgname=ventoy
 pkgver=1.0.08
-pkgrel=3
+pkgrel=4
 pkgdesc='A new multiboot USB solution'
 url='http://www.ventoy.net/'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('bash' 'util-linux')
 source=("https://github.com/ventoy/Ventoy/releases/download/v${pkgver}/ventoy-${pkgver}-linux.tar.gz"
         'ventoy')
 sha512sums=('4b2e1e4bbe33cd08758bc7d7ca6a9518f3c4c8a4a6002c9b5c98e7b87e9453b2b3162c01bb2b751851a582b0e4e352dc042613f10a9e51c8672abc3c5f10f227'
-            '714e97b24a0dca148e6579ee87697bed8b8d4339241973fb430b2a8a087e48458b6d8f3dc52535fd843045091735831b8adae81c503eeeb04998759017a03e9d')
+            '27fef4c8e254863896888cf3e77a39ed377100effc69a4518fe55038069c7c1e8b56f1a79d47d969eda8e5bd90920e93b34dd361aac67be948266d1e7b238dcd')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
