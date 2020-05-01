@@ -1,0 +1,27 @@
+pkgbase = processing
+	pkgdesc = Programming environment for creating images, animations and interactions
+	pkgver = 3.5.4
+	pkgrel = 1
+	url = https://www.processing.org/
+	install = openjdkmsg.install
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = apache-ant
+	makedepends = gendesk
+	makedepends = java8-openjfx
+	makedepends = unzip
+	depends = java-runtime=8
+	depends = libgl
+	options = !strip
+	source = https://github.com/processing/processing/archive/processing-0270-3.5.4.tar.gz
+	source = http://download.processing.org/reference.zip
+	source = build.xml
+	source = errormessage.patch
+	sha256sums = 99a5d3cfccd106e79fe82cafa66b72b15c19e5747eac77e40dd0a82b032c2925
+	sha256sums = 71fd6022d7a1cab78b5040b2434c475eaf8bcc75d5fd56dcc3ddf1c4e6617024
+	sha256sums = 9f4050475b3363eb5e966fa891caea0391b3dcc2cdb68245f1a053b0d7ffb220
+	sha256sums = 3c49143a129c6b3655586bce9f175ee145ab388b78ad4615d6c0b80563ba6f26
+
+pkgname = processing
+
