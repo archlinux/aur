@@ -1,4 +1,4 @@
-# Maintainer: Alexander Schmidt <alex@treefish.org>
+# Maintainer: Jan Seeger <jan.seeger+arch@thenybble.de>
 
 pkgname=valentina-git
 pkgver=rcf51f3837
