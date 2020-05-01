@@ -1,10 +1,11 @@
 # Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
+# Maintainer: Sophie Tauchert <sophie@999eagle.moe>
 # Thanks: Lukas Fleischer (community/qtspim)
 # Thanks: Lukas Jirkovsky (community/qtspim)
 # Thanks: Chih-Hsuan Yen (aur/spim-svn)
 
 pkgname=spimsuite-svn
-pkgver=r721
+pkgver=r730
 pkgrel=1
 pkgdesc="spim + xspim + QtSpim"
 arch=('x86_64')
@@ -53,7 +54,7 @@ build() {
   # QtSpim
   cd "$srcdir/${pkgname%-svn}/QtSpim"
   qmake
-  sed -i 's#$(MOVE) help/qtspim.qhc help/qtspim.qhc;##' Makefile
+  sed -i 's#$(COPY) help/qtspim.qhc help/qtspim.qhc;##' Makefile
   make -j1
 
 }
