@@ -4,12 +4,12 @@ pkgname=ezusb
 pkgver=1.5.3
 pkgrel=1
 epoch=
-pkgdesc="Driver for EZ100PU/EZMINI smart card readers. Smartnonus compatible."
+pkgdesc="Driver for EZ100PU/EZMINI smart card readers."
 arch=('x86_64')
-url="http://www.nonus.com.br/smartnonus/"
+url="https://www.castlestech.com/"
 license=('unknown')
 makedepends=('unzip')
-source=("http://www.nonus.com.br/download/smartnonus/2011810151801402.zip")
+source=("https://www.castlestech.com/wp-content/uploads/2016/08/201511920271676073.zip")
 md5sums=('c4adcc5cb7f34f3a6092b1474c06c513')
 
 prepare() {
