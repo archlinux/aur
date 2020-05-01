@@ -1,8 +1,8 @@
 # Maintainer: solsTiCe d'Hiver <solstice.dhiver@gmail.com>
 pkgname=piavpn-bin
-pkgver=2.0.1_04518
-_pkgver=2.0.1-04518
-pkgrel=2
+pkgver=2.0.2_04704
+_pkgver=2.0.2-04704
+pkgrel=1
 pkgdesc="Private Internet Access client"
 arch=(x86_64)
 url="https://privateinternetaccess.com/"
@@ -13,8 +13,8 @@ provides=(piavpn)
 conflicts=(pia-launch pia-manager pia-tools private-internet-access-vpn)
 install=piavpn-bin.install
 source=("https://installers.privateinternetaccess.com/download/pia-linux-${_pkgver}.run")
-sha1sums=(bca661ba5882089a3eb51e53f37a1f9c3edb3c1f)
 options=(!strip)
+sha256sums=('ab2a2f19ab49a4389b4c57f19dccca30d13b587a1403919002ae6b764e1d7985')
 
 prepare() {
 	sh pia-linux-${_pkgver}.run --noexec --target "${srcdir}/$pkgname-${_pkgver}"
