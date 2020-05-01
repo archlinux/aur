@@ -1,7 +1,7 @@
 pkgbase = kicad-templates
 	pkgdesc = KiCad templates
 	pkgver = 5.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KiCad/kicad-templates
 	arch = any
 	groups = kicad-libraries
