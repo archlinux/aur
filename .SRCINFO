@@ -1,0 +1,15 @@
+pkgbase = cups-xerox-b2xx
+	pkgdesc = Xerox B205/B210/B215 printer driver for CUPS
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.support.xerox.com/support/xerox-b215-multifunction-printer
+	arch = x86_64
+	arch = i386
+	license = custom
+	makedepends = binutils
+	makedepends = tar
+	source = http://download.support.xerox.com/pub/drivers/B215/drivers/linux/ar/Xerox_B215_Linux_PrintDriver_Utilities.tar.gz
+	sha256sums = ba510467069bf2b0bb13b0cee6f25516da490b0d2d5940846273dfe31a93eb3a
+
+pkgname = cups-xerox-b2xx
+
