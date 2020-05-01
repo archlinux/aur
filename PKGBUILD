@@ -3,8 +3,8 @@
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 
 pkgname=leatherman
-pkgver=1.7.2
-pkgrel=3
+pkgver=1.12.0
+pkgrel=1
 pkgdesc="Collection of C++ and CMake utility libraries"
 arch=('x86_64')
 url="https://github.com/puppetlabs/leatherman"
@@ -26,7 +26,7 @@ provides=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/puppetlabs/leatherman/archive/${pkgver}.tar.gz"
         librapidjson-1.1.patch)
-sha512sums=('2976e8d56e603ba86bc22217c1c6b729fed62536ea56b0a74afed4d48a85429d2c79900652344e63905448a13d60d29440623980fd770d40e3db729af5d70ef3'
+sha512sums=('2ceb16f94bf3d06bfe477a40e15db5a1d3d3999eaa7023245a08ab4e0054179f28308d9bf6ba73a839ca3a68130259894593fc8e77664b672ac5f3d20511a4d2'
             'bf05009e466ea62282a78c16fe23e8cfacfbb6e5da9fdf118bf7b1b257a3b48c5c5665ef080bfdf12c9088cb4e180358d11a5bd05e2e658bdbe8f35e0bba4969')
 
 prepare() {
