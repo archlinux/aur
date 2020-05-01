@@ -1,11 +1,12 @@
 pkgbase = pitivi-git
 	pkgdesc = Editor for audio/video projects using the GStreamer framework (git version)
-	pkgver = 0.999.0.r589.gc1a94d28
+	pkgver = 0.999.0.r881.g7739e04c
 	pkgrel = 1
 	url = http://www.pitivi.org/
 	arch = x86_64
 	license = LGPL
 	checkdepends = gst-validate
+	checkdepends = gst-plugin-gtk
 	checkdepends = zbar
 	checkdepends = lilv
 	checkdepends = libkate
@@ -40,9 +41,7 @@ pkgbase = pitivi-git
 	provides = pitivi
 	conflicts = pitivi
 	source = git+https://gitlab.gnome.org/GNOME/pitivi.git
-	source = pitivi-git-fix-locale-on-tests.patch
 	sha256sums = SKIP
-	sha256sums = db34a01202ae93b217f7eb5ab6d5e6d928c1c2ecdb652a2d157452078f867858
 
 pkgname = pitivi-git
 
