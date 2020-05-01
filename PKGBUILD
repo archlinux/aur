@@ -4,9 +4,11 @@
 pkgname=rdcli-git
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  git describe --tags | sed 's/^v//;s/\([^-]*-\)g/r\1g/;s/-/./g'
+  printf '%s.r%s.%s' \
+    "$(git tag -l | grep -P '.+\..+\.\d+' | sed -r 's/v?([0-9\.]+)(-.+)?/\1/g' | sort -Vr | sed 1q)" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=1.5.1.r5.g275e953
+pkgver=1.5.1.r121.d7b64c1
 pkgrel=1
 
 pkgdesc="A simple CLI tool to unrestrict links with real-debrid.com"

@@ -1,6 +1,6 @@
 pkgbase = rdcli-git
 	pkgdesc = A simple CLI tool to unrestrict links with real-debrid.com
-	pkgver = 1.5.1.r5.g275e953
+	pkgver = 1.5.1.r121.d7b64c1
 	pkgrel = 1
 	url = https://github.com/stoneo/rdcli
 	arch = any
