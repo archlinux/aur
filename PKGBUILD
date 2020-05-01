@@ -41,5 +41,6 @@ package() {
 	cd "$srcdir/pEpEngine"
 	
 	make install
+	make dbinstall
 }
 
