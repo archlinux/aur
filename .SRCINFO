@@ -1,6 +1,6 @@
 pkgbase = ruby-travis
 	pkgdesc = CLI and Ruby client library for Travis CI
-	pkgver = 1.8.12
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/travis-ci/travis.rb
 	arch = any
@@ -8,17 +8,18 @@ pkgbase = ruby-travis
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-backports
-	depends = ruby-faraday-0.17
+	depends = ruby-faraday
 	depends = ruby-faraday-middleware
 	depends = ruby-gh
-	depends = ruby-highline-1.6
+	depends = ruby-highline
+	depends = ruby-json
 	depends = ruby-launchy
 	depends = ruby-pusher-client
 	depends = ruby-typhoeus-0.6
-	noextract = travis-1.8.12.gem
+	noextract = travis-1.9.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/travis-1.8.12.gem
-	sha512sums = 146ad1301beb2f2348d2ddf8f53c235f67968e784ab7349bbb2d11044fca88d02b03dd893ca5576eed90de2607ad6851ece464900661ae9c27c1fc8467f68faf
+	source = https://rubygems.org/downloads/travis-1.9.0.gem
+	sha512sums = 99f6a3857abf79171871931f719758cbd5ebef8cda27dc225b86675e9504f943ddc9466a49a09e4defcd5a281efec0ebfc2ce9841d59961ef36235a4a1158d3f
 
 pkgname = ruby-travis
 
