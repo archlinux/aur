@@ -1,14 +1,15 @@
 pkgbase = memethesis-cli
 	pkgdesc = Create memes from the terminal
-	pkgver = 3.2.1
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/fakefred/memethesis-cli
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = python>=3
 	depends = imagemagick
-	source = https://github.com/fakefred/memethesis-cli/archive/3.2.1.tar.gz
-	sha256sums = 3c0b1727bdc8e7c39885cdbfcdf6bc1daeae84b8be4780c756f053e42a37e31c
+	source = git+https://github.com/fakefred/memethesis-cli.git
+	sha256sums = SKIP
 
 pkgname = memethesis-cli
 
