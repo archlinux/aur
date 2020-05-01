@@ -1,15 +1,14 @@
-# Maintainer: Ryan Thomas <ryant0000@gmail.com>
-# Contributor: Ryan Thomas <ryant0000@gmail.com.
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Ryan Thomas <ryant0000@gmail.com>
 
 pkgname='xmrig-donateless'
 _pkgname='xmrig'
-pkgver='5.11.0'
+pkgver='5.11.1'
 pkgrel='1'
 pkgdesc='High Perf CryptoNote CPU and GPU (OpenCL, CUDA) miner - No Donate Version'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/${_pkgname}/${_pkgname}"
 depends=('libuv' 'libmicrohttpd' 'openssl' 'hwloc')
-optdepends=('monero: wallet')
 makedepends=('cmake')
 conflicts=('xmrig-bin' 'xmrig')
 license=('GPL')
@@ -19,7 +18,7 @@ source=("${_pkgname}.service"
 	"${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('1c4fa2898b1252507e885c4bfa2d8d5b20bce2069cb5f703bb084066d560a770'
             'd8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6'
-            '34e9f16c6d045ca5b3e30299545625a4b152000d408739f1a3876ab738fa845e')
+            'c0a8cedf42a95f78bb4ca306435f9f1793820e3285d5cd588943c7959e8fb810')
 prepare() {
   cd "xmrig-${pkgver}"
   mkdir build
