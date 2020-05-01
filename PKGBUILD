@@ -1,4 +1,6 @@
 # Maintainer: Jörg Hansen <joerg DOT hansen AT posteo DOT de>
+# Contributor: Florian Jacob <projects+arch AT florianjacob )DOT( de>
+# Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=python-fritzconnection-git
 pkgver=1.2.1.r17.g29ececd
