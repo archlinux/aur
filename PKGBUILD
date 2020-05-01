@@ -2,22 +2,22 @@
 
 pkgname=pingo
 pkgver=0.99.rc2.17
-pkgrel=1
+pkgrel=2
 pkgdesc='An experimental, fast Web PNG/JPG optimizer with visually lossless or lossy compression (uses wine)'
 arch=('any')
 url='https://css-ig.net/pingo'
 license=('unknown')
-depends=('bash' 'wine')
+depends=('sh' 'wine')
 makedepends=('git')
 source=("pingo-win64-${pkgver}.zip"::'https://css-ig.net/bin/pingo-win64.zip'
         'git+https://github.com/dbermond/shellutils.git')
 noextract=("pingo-win64-${pkgver}.zip")
-sha256sums=('cfe5d5fe9d292bbc0a90d04c6edcc3bd461822dc8b83b8f1a55ae6d814c93385'
+sha256sums=('e87f284ef8fe90ff0e93b865fd60b868c0db1480ec6e4c0acd3f3983dff9f926'
             'SKIP')
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/81.0.4044.122 \
+                        Chrome/81.0.4044.129 \
                         Safari/537.36"
 
 _useragent="$(printf '%s' "$_useragent" | sed 's/[[:space:]]\+/\\ /g')"
