@@ -6,7 +6,7 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=release.2.5.0.r220.g19407a592
+pkgver=release.2.7.0.r1232.gc799b8673
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ depends=('exiv2>=0.18' 'intltool>=0.40' 'lcms2' 'lensfun>=0.2.3' 'libglade' 'dbu
 	 'libsoup' 'osm-gps-map' 'pugixml' 'colord' 'lua52' 'libsecret' 'colord-gtk'
 	 'sdl' 'openjpeg2' 'graphicsmagick' 'glu' )
 makedepends=(git 'intltool>=0.40' 'cmake' 'librsvg' 'flickcurl')
-optdepends=('librsvg' 'flickcurl: flickr upload')
+optdepends=('librsvg' 'flickcurl: flickr upload' 'avif')
 conflicts=(darktable)
 provides=(darktable)
 install=darktable.install

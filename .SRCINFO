@@ -1,6 +1,6 @@
 pkgbase = darktable-git
 	pkgdesc = A virtual lighttable and darkroom for photographers
-	pkgver = release.2.5.0.r220.g19407a592
+	pkgver = release.2.7.0.r1232.gc799b8673
 	pkgrel = 1
 	url = http://www.darktable.org/
 	install = darktable.install
@@ -38,6 +38,7 @@ pkgbase = darktable-git
 	depends = glu
 	optdepends = librsvg
 	optdepends = flickcurl: flickr upload
+	optdepends = avif
 	provides = darktable
 	conflicts = darktable
 	options = !emptydirs
