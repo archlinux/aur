@@ -1,8 +1,8 @@
 pkgbase = python-numpy-doc
 	pkgdesc = Documentation for NumPy
 	pkgver = 1.17.0
-	pkgrel = 1
-	url = http://docs.scipy.org
+	pkgrel = 2
+	url = https://docs.scipy.org
 	arch = any
 	license = BSD
 	makedepends = unzip
