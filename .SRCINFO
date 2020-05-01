@@ -1,0 +1,18 @@
+pkgbase = cloud-hypervisor-git
+	pkgdesc = An open source Virtual Machine Monitor (VMM) that runs on top of KVM
+	pkgver = 0.7.0.r2.g2a16ce7e
+	pkgrel = 1
+	url = https://github.com/cloud-hypervisor/cloud-hypervisor
+	arch = x86_64
+	license = apache
+	license = BSD
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	provides = cloud-hypervisor
+	conflicts = cloud-hypervisor
+	source = git+https://github.com/cloud-hypervisor/cloud-hypervisor.git
+	sha256sums = SKIP
+
+pkgname = cloud-hypervisor-git
+
