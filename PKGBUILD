@@ -22,7 +22,7 @@ sha256sums=('35b83a510bd7d2e6a8ed6ace03c53ac6b117b5f11a3505626208f767330d7d6f'
             'fe83f24cdd17b37f19108d93f30b552bc5edbcc23a22f01e9be963f26d7d61d8'
             '92fd48cbd7e5fe3a0388bbe756a52098fc461ef2dc87d9e886452e4f15acdcdc'
             '573beeac951d427e980332ce4d8645ae2299082e6c9c04f96e2a41a98c3acc60'
-            '3aa2ebbf4083301d331f36486edcb81fcd094767a0ea404a89d870217d4f6632')
+            'e7055260d0f3554e8b628d9560d8e12a40f720d76542048df0dfc838db88357b')
 
 package() {
   install -d -m 755 "${pkgdir}/usr/lib/bazarr"

@@ -1,5 +1,4 @@
 # Override this file with a modified version in /etc/tmpfiles.d/
 d /var/lib/bazarr 0755 bazarr bazarr
 Z /var/lib/bazarr - bazarr bazarr
-Z /usr/lib/bazarr - bazarr bazarr
 L /var/log/bazarr - - - - /var/lib/bazarr/log
