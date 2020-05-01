@@ -1,7 +1,7 @@
 pkgbase = subtitlecomposer
 	pkgdesc = A KDE subtitle editor
 	pkgver = 0.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://invent.kde.org/kde/subtitlecomposer
 	arch = i686
 	arch = x86_64
