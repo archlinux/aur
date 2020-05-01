@@ -1,11 +1,14 @@
 pkgbase = pantheon-default-settings-git
-	pkgver = 5.0.r22.g605590b
+	pkgver = 5.1.2.r17.gc15e2d3
 	pkgrel = 1
 	url = https://github.com/elementary/default-settings
 	arch = any
 	groups = pantheon-unstable
 	license = GPL
 	makedepends = git
+	makedepends = meson
+	makedepends = gnome-settings-daemon
+	makedepends = accountsservice
 	source = pantheon-default-settings::git+https://github.com/elementary/default-settings.git
 	sha256sums = SKIP
 
@@ -16,6 +19,7 @@ pkgname = pantheon-default-settings-git
 	depends = elementary-wallpapers-git
 	depends = ttf-droid
 	depends = ttf-opensans
+	optdepends = lightdm-pantheon-greeter
 	provides = pantheon-default-settings
 	conflicts = pantheon-default-settings
 
