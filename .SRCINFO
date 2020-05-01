@@ -9,7 +9,7 @@ pkgbase = transset-df
 	depends = libxdamage
 	depends = libxrender
 	source = https://forchheimer.se/transset-df/transset-df-6.tar.gz
-	md5sums = 3375d570adc9d875d7fc476d1a50d5a5
+	sha256sums = 4563c8a9883db354c58dcd63f87dd3d076c4a3ed9c55b85e8cb59c9d399fdeee
 
 pkgname = transset-df
 
