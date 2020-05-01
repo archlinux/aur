@@ -13,21 +13,17 @@ before_script:
   - pacman --noconfirm -S sudo git fakeroot binutils
   - useradd -m notroot
   - echo "$DOSUDO" > /etc/sudoers.d/notroot
-  - more /etc/sudoers.d/notroot
 
 # * Test
 
 build-package:
   stage: test
   script:
-    - su notroot
-    - cd
-    - pwd
-    - whoami
-    - git clone https://aur.archlinux.org/python-edalize.git
+    - cd /home/notroot
+    - su notroot -c "git clone https://aur.archlinux.org/python-edalize.git"
     - cd python-edalize
-    - makepkg --noconfirm --syncdeps --rmdeps --install --clean
-    - python -c "import edalize"
+    - su notroot -c "makepkg --noconfirm --syncdeps --rmdeps --install --clean"
+    - python -c "import edalize; print(’all ok’)"
   artifacts:
     paths:
       - python-fusesoc/python-edalize-0.2-0-any.pkg.tar.xz
