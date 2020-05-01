@@ -1,0 +1,15 @@
+pkgbase = xbindkeys
+	pkgdesc = Launch shell commands with your keyboard or your mouse under X
+	pkgver = 1.8.6
+	pkgrel = 3
+	url = https://www.nongnu.org/xbindkeys/xbindkeys.html
+	arch = x86_64
+	license = GPL
+	depends = libx11
+	depends = guile
+	optdepends = tk: xbindkeys_show
+	source = https://www.nongnu.org/xbindkeys/xbindkeys-1.8.6.tar.gz
+	md5sums = c6ea9db56e075dae0697497e2ed390cc
+
+pkgname = xbindkeys
+
