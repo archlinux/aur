@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=guiscrcpy-git
-pkgver=3.7.post115.dev
+pkgver=3.7.post115.dev.g53ccc3a
 pkgrel=1
 epoch=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
@@ -18,7 +18,8 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf $(grep -oP "(?<=version=').*(?=')" setup.py)
+	printf "%s.g%s" "$(grep -oP "(?<=version=').*(?=')" setup.py)" \
+		"$(git rev-parse --short HEAD)"
 }
 
 prepare() {
