@@ -1,0 +1,15 @@
+pkgbase = glitz
+	pkgdesc = OpenGL image compositing library
+	pkgver = 0.5.6
+	pkgrel = 7
+	url = https://www.freedesktop.org/wiki/Software/glitz/
+	arch = x86_64
+	license = BSD
+	makedepends = mesa-libgl
+	depends = libgl
+	depends = glibc
+	source = https://cairographics.org/snapshots/glitz-0.5.6.tar.gz
+	sha256sums = 132adf06e48531f4c01b6ba5843881e2b584a170c5222353d03cbef736d4a471
+
+pkgname = glitz
+
