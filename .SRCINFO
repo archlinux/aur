@@ -5,6 +5,7 @@ pkgbase = ddgr-git
 	url = https://github.com/jarun/ddgr
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = python>=3.5
 	conflicts = ddgr
 	source = git+https://github.com/jarun/ddgr/

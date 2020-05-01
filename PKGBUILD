@@ -11,6 +11,7 @@ arch=('any')
 url="https://github.com/jarun/ddgr"
 license=('GPL3')
 depends=('python>=3.5')
+makedepends=('git')
 conflicts=("ddgr")
 source=("git+https://github.com/jarun/ddgr/")
 sha256sums=("SKIP")
