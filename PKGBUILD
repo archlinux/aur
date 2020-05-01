@@ -1,8 +1,9 @@
-# Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 # Contributor: hagabaka
 
 pkgname='peazip-qt-build'
-pkgver=7.1.0
+pkgver=7.2.1
 pkgrel=1
 pkgdesc='Free cross-platform file archiver (compiles from source)'
 license=('GPL3')
@@ -16,7 +17,7 @@ conflicts=('peazip' 'peazip-gtk2' 'peazip-gtk2-build' 'peazip-gtk2-portable' 'pe
 options=('!strip')
 install=peazip.install
 source=("https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip-$pkgver.src.zip")
-sha512sums=('bff64dd9f5253c66c21fa617aa35080546bf7f5ab772111af7ecbd381e1d130000ab0d6716f41e75fe35911e90db95a94a069a632bd98e202f60f3a5e7dd2f8b')
+sha512sums=('6376199557e96b6627c790e38057d44dc2c3e3e5ed8e7ad4477329304c2fbc9ecc4f76af4bfb83e6bc7578296de375f8741fa2bbfcbcc5aed1347d35a155c526')
 
 build() {
   cd "$srcdir/peazip-$pkgver.src"
