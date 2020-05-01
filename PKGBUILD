@@ -3,7 +3,7 @@
 # Former Maintainer: Govind Gopakumar < govind.93 at gmail dot com>
 # Former Maintainer: Daniel Wallace <danielwallace at gtmanfred dot com>
 pkgname=mlpack
-pkgver=3.2.2
+pkgver=3.3.1
 pkgrel=1
 pkgdesc='A fast, flexible, scalable C++ machine learning library'
 arch=('x86_64')
@@ -11,10 +11,9 @@ url="https://mlpack.org/"
 license=('BSD')
 depends=(
   'armadillo>=8.400.0'
-  'boost>=1.49'
+  'boost>=1.58'
   'lapack'
   'ensmallen>=2.10.0'
-  'libxml2>=2.6.0'
   'cython>=0.24'
   'python-numpy'
   'python-pandas>=0.15.0'
@@ -22,6 +21,7 @@ depends=(
 
 optdepends=(
   'openmp: parallel computation support'
+  'julia>=2:1.3.0: julia bindings support'
 )
 
 makedepends=(
@@ -30,7 +30,7 @@ makedepends=(
   'python-setuptools'
 )
 source=("https://www.mlpack.org/files/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7aef8c27645c9358262fec9ebba380720a086789d6519d5d1034346412a52ad6')
+sha256sums=('310f95faa93b975c1489344ae4a499eddcd825ef9db76909eb680e1695cd1e36')
 options=(!emptydirs)
 
 prepare() {
@@ -43,7 +43,9 @@ build() {
 
   cmake \
       -D CMAKE_INSTALL_PREFIX="/usr" \
+      -D BUILD_CLI_EXECUTABLES=ON \
       -D BUILD_PYTHON_BINDINGS=ON \
+      -D BUILD_JULIA_BINDINGS=ON \
       -D BUILD_TESTS=OFF \
       -D USE_OPENMP=ON \
       ..
