@@ -1,21 +1,18 @@
+# * Prepare
+
 image: archlinux
 
 variables:
   DOSUDO: "notroot ALL=(ALL) NOPASSWD: ALL"
 
 stages:
-  - prepare
   - test
 
-# * Prepare
-
-config-environment:
-  stage: prepare
-  script:
-    - pacman --noconfirm -Syu
-    - pacman --noconfirm -S sudo git fakeroot binutils
-    - useradd -m notroot
-    - echo "$DOSUDO" > /etc/sudoers.d/notroot
+before_script:
+  - pacman --noconfirm -Syu
+  - pacman --noconfirm -S sudo git fakeroot binutils
+  - useradd -m notroot
+  - echo "$DOSUDO" > /etc/sudoers.d/notroot
 
 # * Test
 
@@ -27,6 +24,7 @@ build-package:
     - git clone [[https://aur.archlinux.org/python-edalize.git]]
     - cd python-edalize
     - makepkg --noconfirm --syncdeps --rmdeps --install --clean
+    - python -c "import edalize"
   artifacts:
     paths:
       - python-fusesoc/python-edalize-0.2-0-any.pkg.tar.xz
