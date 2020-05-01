@@ -1,0 +1,18 @@
+pkgbase = raidgrep-git
+	pkgdesc = Guild Wars 2/arcdps evtc log searching tool. Build from master branch using the rust nightly toolchain.
+	pkgver = 1.0.2.r8.g0d1898a
+	pkgrel = 1
+	url = https://gitlab.com/dunj3/raidgrep
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	makedepends = rustup
+	depends = gcc-libs
+	provides = raidgrep
+	conflicts = raidgrep-bin
+	conflicts = raidgrep
+	source = raidgrep::git+https://gitlab.com/dunj3/raidgrep.git#branch=master
+	sha256sums = SKIP
+
+pkgname = raidgrep-git
+
