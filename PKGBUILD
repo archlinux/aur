@@ -2,8 +2,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=afdko
-pkgver=3.2.1
-pkgrel=3
+pkgver=3.3.0
+pkgrel=1
 pkgdesc='Adobe Font Development Kit for OpenType'
 arch=('x86_64')
 url="https://github.com/adobe-type-tools/$pkgname"
@@ -14,11 +14,11 @@ _py_deps=('booleanoperations'
           'fontmath'
           'fontparts'
           'fontpens' # for defcon
-          'fonttools'
+          'fonttools>=4.8.1'
           'fs' # for fonttools
           'lxml'
-          'mutatormath'
-          'ufonormalizer'
+          'mutatormath>=3.0.1'
+          'ufonormalizer>=0.4.1'
           'ufoprocessor'
           'unicodedata2' # for fonttools
           'zopfli') # for fonttools
@@ -26,7 +26,7 @@ depends=('python' 'psautohint' "${_py_deps[@]/#/python-}")
 makedepends=('python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('6525fdb2745428f6cf61ef14e82cfbf9252b821ac8a90f9ad32ce96e6211d218')
+sha256sums=('14568af084eee8c60cdc9443e1fac47d6e84f850597906fa426f963662fe225c')
 
 prepare () {
     cd "$pkgname-$pkgver"
