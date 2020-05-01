@@ -1,8 +1,8 @@
 # Maintainer: DuckSoft <realducksoft at gmail dot com>
 pkgname=ventoy
 _pkgname=ventoy
-pkgrel=2
-pkgver=1.0.06
+pkgrel=1
+pkgver=1.0.08
 pkgdesc='A new multiboot USB solution'
 arch=('x86_64' 'i686')
 provides=(ventoy)
@@ -10,8 +10,8 @@ conflicts=(ventoy)
 depends=('bash' 'util-linux')
 license=('GPL3')
 url='http://www.ventoy.net/'
-source=("https://github.com/ventoy/Ventoy/releases/download/v1.0.06/ventoy-$pkgver-linux.tar.gz")
-sha512sums=('ac57bc4e8398e7113f2dc5ef5458dc8d7be132d0a636ceaf5a7ca82411aa8bdfaff116f64dd6085c4848a8c901460787513a3b88e2fa859fdab9caa65be41039')
+source=("https://github.com/ventoy/Ventoy/releases/download/v$pkgver/ventoy-$pkgver-linux.tar.gz")
+sha512sums=('4b2e1e4bbe33cd08758bc7d7ca6a9518f3c4c8a4a6002c9b5c98e7b87e9453b2b3162c01bb2b751851a582b0e4e352dc042613f10a9e51c8672abc3c5f10f227')
 
 # NOTE: Hard tabs are required here.
 prepare() {
