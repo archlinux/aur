@@ -1,13 +1,13 @@
 # Maintainer: robertfoster
 pkgname=ocaml-fdkaac-git
-pkgver=r74.872fa6b
+pkgver=r80.cc4245a
 pkgrel=1
 pkgdesc="OCaml binding for the fdk-aac library"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-fdkaac"
 license=('GPL')
 depends=('ocaml' 'libfdk-aac')
-makedepends=('ocaml-findlib')
+makedepends=('dune' 'dune-configurator')
 options=('!strip' '!makeflags')
 source=("${pkgname}::git+https://github.com/savonet/ocaml-fdkaac.git")
 
@@ -18,17 +18,13 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}"  
-    ./bootstrap
-    ./configure
-    make
+    dune build    
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
-    
-    export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-    mkdir -p "${OCAMLFIND_DESTDIR}/stublibs"
-    make install
+    dune install --prefix "${pkgdir}/usr" \
+    --libdir "${pkgdir}$(ocamlfind printconf destdir)"
 }
 
 pkgver() {
