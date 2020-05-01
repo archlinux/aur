@@ -1,0 +1,15 @@
+pkgname=inkstitch
+pkgver=1.27.2
+pkgrel=1
+pkgdesc="An open source machine embroidery design platform based on Inkscape"
+arch=("x86_64")
+url="https://inkstitch.org/"
+depends=("inkscape")
+source=("https://github.com/inkstitch/inkstitch/releases/latest/download/inkstitch-refs-tags-v1.27.2-linux-en_US-ff55eccaa4069d9cbcd2dd74890e3797.zip")
+sha256sums=('ca775e89196fa182d0cc1ac6593c66fb4590b8065612380257d4f2a231ae33e7')
+license=(GPL)
+
+package() {
+    mkdir -p $pkgdir/usr/share/inkscape/extensions
+    cp -a $srcdir/* $pkgdir/usr/share/inkscape/extensions/
+}
