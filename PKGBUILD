@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=openbazaar
-pkgver=2.3.8
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(i686 x86_64)
@@ -18,6 +18,7 @@ options=('!strip')
 
 prepare() {
     cd $srcdir/$pkgname-desktop-$pkgver
+    npm audit fix
     npm install --silent
 }
 
@@ -52,6 +53,6 @@ package() {
     sed -i "s/$pathtoreplace//g" {} +
 }
 
-md5sums=('0640f7170522080834e93f6ba677036d'
+md5sums=('3f1ce41c10ae63b3105d65da2308e9e7'
          '9cbd95a65cb9d7a81cb39ec02127ac8d'
          '2e7c7804b970baa7f9274dae47618a52')
