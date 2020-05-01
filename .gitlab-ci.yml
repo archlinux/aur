@@ -1,0 +1,29 @@
+image: archlinux
+
+stages:
+  - prepare
+  - test
+
+# * Prepare
+
+config-environment:
+  stage: prepare
+  script:
+    - pacman --noconfirm -Syu
+    - pacman --noconfirm -S sudo git fakeroot binutils
+    - useradd -m notroot
+    - echo "notroot ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/notroot
+
+# * Test
+
+build-package:
+  stage: test
+  script:
+    - su notroot
+    - cd
+    - git clone [[https://aur.archlinux.org/python-edalize.git]]
+    - cd python-edalize
+    - makepkg --noconfirm --syncdeps --rmdeps --install --clean
+  artifacts:
+    paths:
+      - python-fusesoc/python-edalize-0.2-0-any.pkg.tar.xz
