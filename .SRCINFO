@@ -1,0 +1,13 @@
+pkgbase = ode
+	pkgdesc = High performance library for simulating rigid body dynamics
+	pkgver = 0.16.1
+	pkgrel = 1
+	url = https://bitbucket.org/odedevs/ode/
+	arch = x86_64
+	license = BSD
+	license = LGPL
+	source = https://bitbucket.org/odedevs/ode/downloads/ode-0.16.1.tar.gz
+	sha256sums = b228acad81f33781d53eaf313437cc5d6f66aec5a4e56c515fc1b2d51e6e8eba
+
+pkgname = ode
+
