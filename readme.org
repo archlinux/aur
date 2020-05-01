@@ -1,0 +1,9 @@
+#+TITLE: Python-cocotb AUR package
+
+[[https://gitlab.com/aur-packages/python-cocotb/-/commits/master][https://gitlab.com/aur-packages/python-cocotb/badges/master/pipeline.svg]]
+
+[[https://docs.cocotb.org/en/latest/][Cocotb]] is a coroutine based cosimulation library for writing VHDL and Verilog
+testbenches in Python. This [[https://wiki.archlinux.org/index.php/Arch_Build_System][PKGBUILD]] provides a way to build a package suitable
+for [[https://www.archlinux.org/][Archlinux]].
+
+This project lives [[https://gitlab.com/aur-packages/python-cocotb][here]]. The included =yml= file tests the [[https://gitlab.com/aur-packages/python-cocotb/pipelines][build]] process.
