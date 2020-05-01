@@ -3,12 +3,12 @@
 
 pkgname=pure-lilv
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="LV2 plugin host interface for Pure (lilv bindings)"
 arch=("i686" "x86_64")
 license=('BSD')
 url="http://purelang.bitbucket.org/"
-depends=('pure' 'lilv')
+depends=('pure' 'lv2' 'lilv')
 makedepends=()
 groups=(pure-complete pure-multimedia)
 source=("https://github.com/agraef/pure-lang/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
