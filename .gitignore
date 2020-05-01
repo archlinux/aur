@@ -1,3 +1,7 @@
-/*.pkg.tar.*
-/bat-extras-git*.tar.gz
-/bat-extras/*
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO

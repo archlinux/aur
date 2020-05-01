@@ -1,15 +1,21 @@
 pkgbase = bat-extras-git
-	pkgdesc = Bash scripts that integrate bat with various command line tools
-	pkgver = 20190117.r8.g765658c
-	pkgrel = 2
+	pkgdesc = Bash scripts that integrate bat with various command line tools.
+	pkgver = 20200408.r34.gd5fa651
+	pkgrel = 1
 	url = https://github.com/eth-p/bat-extras
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = bat
-	optdepends = ripgrep: for batgrep script
-	source = git+https://github.com/eth-p/bat-extras
-	md5sums = SKIP
+	optdepends = ripgrep: required for batgrep script
+	optdepends = entr: optional for batwatch script
+	optdepends = ncurses: optional for batdiff script
+	optdepends = prettier: various formatting for prettybat
+	optdepends = shfmt: bash formatting for prettybat
+	provides = bat-extras
+	conflicts = bat-extras
+	source = git+https://github.com/eth-p/bat-extras.git
+	sha256sums = SKIP
 
 pkgname = bat-extras-git
 
