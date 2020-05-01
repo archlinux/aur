@@ -1,0 +1,13 @@
+pkgbase = gimp-dbp
+	pkgdesc = David's batch processor for the GIMP
+	pkgver = 1.1.9
+	pkgrel = 6
+	url = http://members.ozemail.com.au/~hodsond/dbp.html
+	arch = x86_64
+	license = GPL
+	depends = gimp
+	source = http://www.ozemail.com.au/~hodsond/dbpSrc-1-1-9.tgz
+	sha512sums = f2b05610c0edd179a394f510951147fb3362564d67cb2b48ecbd1840b97b9c3de43c718db06576a99d9a5b76384ff4b4a4cdfeddd16a015d161f338d351be925
+
+pkgname = gimp-dbp
+
