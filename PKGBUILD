@@ -2,7 +2,7 @@
 
 pkgname=python-pep-adapter-hg
 _name=pEpPythonAdapter
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="p≡p Python adapter"
 url="https://pep.foundation/dev/repos/pEpPythonAdapter"
@@ -18,6 +18,7 @@ provides=('python-pep-adapter')
 prepare() {
 	cd "$srcdir/${_name}"
 
+	hg up "sync"
 	sed -i 's/\-mt//g' setup.py
 }
 
