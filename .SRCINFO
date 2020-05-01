@@ -1,23 +1,26 @@
 pkgbase = xf86-video-neomagic
 	pkgdesc = X.org neomagic video driver
-	pkgver = 1.2.9
-	pkgrel = 3
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = i686
 	arch = x86_64
 	groups = xorg-drivers
 	license = custom
 	makedepends = xorg-server-devel
-	makedepends = X-ABI-VIDEODRV_VERSION=23
+	makedepends = systemd
+	makedepends = X-ABI-VIDEODRV_VERSION=24.0
+	depends = systemd-libs
+	depends = mesa
 	depends = glibc
-	conflicts = xorg-server<1.19
-	conflicts = X-ABI-VIDEODRV_VERSION<23
-	conflicts = X-ABI-VIDEODRV_VERSION>=24
-	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-neomagic-1.2.9.tar.bz2
-	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-neomagic-1.2.9.tar.bz2.sig
+	conflicts = xorg-server<1.20.0
+	conflicts = X-ABI-VIDEODRV_VERSION<24
+	conflicts = X-ABI-VIDEODRV_VERSION>=25
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-neomagic-1.3.0.tar.bz2
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-neomagic-1.3.0.tar.bz2.sig
 	validpgpkeys = 7B27A3F1A6E18CD9588B4AE8310180050905E40C
-	sha256sums = 72f89396b10527549337cb72a7eafb1194cf140144f9236a94ad2becdf140bf2
-	sha256sums = SKIP
+	md5sums = 349d5254d09eb46f2a1f151cd423b89a
+	md5sums = SKIP
 
 pkgname = xf86-video-neomagic
 
