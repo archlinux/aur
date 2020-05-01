@@ -15,11 +15,6 @@ makedepends=('bubblewrap' 'dune' 'dune-configurator')
 source=("https://github.com/savonet/ocaml-ssl/archive/$pkgver.tar.gz")
 options=(!libtool !strip zipman !makeflags staticlibs)
 
-prepare() {
-    cd $pkgname-$pkgver
-    sed -i 's/2.0/1.11/g' dune-project
-}
-
 build() {
     cd $pkgname-$pkgver
     dune build
