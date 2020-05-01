@@ -1,0 +1,25 @@
+pkgbase = steghide
+	pkgdesc = Embeds a message in a file by replacing some of the least significant bits
+	pkgver = 0.5.1
+	pkgrel = 9
+	url = http://steghide.sourceforge.net
+	arch = x86_64
+	license = GPL
+	depends = libmcrypt
+	depends = gcc-libs
+	depends = mhash
+	depends = libjpeg
+	depends = zlib
+	source = https://downloads.sourceforge.net/steghide/steghide-0.5.1.tar.gz
+	source = buildsystem.patch
+	source = gcc-4.2.patch
+	source = steghide-climits.patch
+	source = steghide-gcc6.patch
+	md5sums = 5be490e24807d921045780fd8cc446b3
+	md5sums = 14f5e054d71c91262bb1140288043df8
+	md5sums = fd861dc5a0a392c6c94a61e85ad74f29
+	md5sums = 897ce18edd008293a3328bc3f88775b3
+	md5sums = 6dd60a84fccca270fa7315f1102454ff
+
+pkgname = steghide
+
