@@ -1,13 +1,13 @@
 # Maintainer: networkjanitor <networkjanitor@xyooz.net>
 pkgname=raidgrep-bin
 pkgver="1.0.2"
-pkgrel=1
+pkgrel=2
 pkgdesc="Guild Wars 2/arcdps evtc log searching tool. Pre-compiled."
 arch=("x86_64")
 url="https://gitlab.com/dunj3/raidgrep"
 license=("GPL")
 provides=("raidgrep")
-conflicts=("raidgrep")
+conflicts=("raidgrep" "raidgrep-git")
 depends=("gcc-libs")
 source=(
     "https://kingdread.de/raidgrep/${pkgname/-bin/}-${pkgver}"
