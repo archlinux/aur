@@ -5,23 +5,24 @@
 
 # Maintainer: Andres Alejandro Navarro Alsina <aanavarroa@unal.edu.co>
 # Contributor: M. Jarvis
-_tag=v0.2.5
+_tag=v0.4.0
 _pkgname=python-piff-git
 pkgbase=python-piff-git
 pkgname=('python-piff-git' 'python2-piff-git')
-pkgver=v0.2.5.r0.gdee19b7
+pkgver=v0.4.0.r0.g6916ba7
 pkgrel=1
 pkgdesc=" Piff is a Python software package for modeling the
 point-spread function (PSF) across multiple detectors in the full
 field of view"
 arch=('any')
-url="https://github.com/rmjarvis/Piff.git"
+url="https://github.com/rmjarvis/Piff"
 license=('BSD')
-makedepends=('git' 'python' 'libffi' 'python-cffi' 'python-numpy' 'python-scipy' 'python-yaml' 'python-treecorr-git' 'python-fitsio-git' 'python-lmfit-git' 'python-matplotlib' 'python2' 'python2-cffi' 'python2-numpy' 'python2-scipy' 'python2-yaml' 'python2-treecorr-git' 'python2-fitsio-git' 'python2-lmfit-git' 'python2-matplotlib' 'python-galsim-git' 'python2-galsim-git' 'python-coord-git' 'python2-coord-git')
-optdepends=('python2-scikit-learn' 'python-piff' 'python2-piff' 'python2-pyaml' 'python2-yaml')
-checkdepends=('python-nose' 'python2-nose' 'python-scikit-learn' 'python-uncertainties' 'python2-uncertainties' )
+makedepends=('git' 'python' 'libffi' 'python-cffi' 'python-numpy' 'python-scipy' 'python-yaml' 'python-treecorr-git' 'python-fitsio-git' 'python-matplotlib' 'python2' 'python2-cffi' 'python2-numpy' 'python2-scipy' 'python2-yaml' 'python2-treecorr-git' 'python2-fitsio-git' 'python2-matplotlib' 'python-galsim-git' 'python2-galsim-git' 'python-coord-git' 'python2-coord-git')
+optdepends=('python2-scikit-learn' 'python-piff' 'python2-piff' 'python2-pyaml' 'python2-yaml' 'python-scikit-learn')
+checkdepends=('python-nose' 'python2-nose' 'python-scikit-learn')
 conflicts=('python-piff' 'python2-piff')
 source=("${pkgbase}::git+${url}#tag=$_tag")
+#source=("${pkgbase}::git+${url}")
 md5sums=('SKIP')
 
 pkgver() {
