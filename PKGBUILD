@@ -10,8 +10,8 @@ url="https://phabricator.kde.org/source/$_remotename/"
 license=("GPL")
 depends=(kpeople kcontacts)
 makedepends=(git extra-cmake-modules)
-provides=($_pkgname)
-conflicts=($_pkgname)
+provides=($_remotename)
+conflicts=($_remotename)
 source=("git+git://anongit.kde.org/$_remotename")
 md5sums=("SKIP")
 
