@@ -1,8 +1,9 @@
 # Maintainer: Diab Neiroukh <officiallazerl0rd@gmail.com>
 
 pkgname="llvm-proton-bin"
-pkgver=11.0.0
+pkgver=20200425
 pkgrel=1
+epoch=1
 arch=(
 	"x86_64"
 )
@@ -15,7 +16,7 @@ options=(
     "!strip"
 )
 source=(
-	"https://github.com/kdrag0n/proton-clang/archive/master.zip"
+	"https://github.com/kdrag0n/proton-clang/archive/$pkgver.tar.gz"
 )
 b2sums=(
 	"SKIP"
@@ -25,5 +26,5 @@ package()
 {
     install -d "$pkgdir/opt"
 
-	cp -r "proton-clang-master" "$pkgdir/opt/proton-clang"
+	cp -r "proton-clang-$pkgver" "$pkgdir/opt/proton-clang"
 }
