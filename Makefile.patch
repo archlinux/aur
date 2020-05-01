@@ -1,0 +1,11 @@
+--- pack-0.10.0/Makefile	2020-04-14 16:22:54.000000000 -0700
++++ pack-0.10.0-patch/Makefile	2020-05-01 15:40:53.904581464 -0700
+@@ -39,7 +39,7 @@
+ 
+ build: out
+ 	@echo "> Building..."
+-	$(GOCMD) build -ldflags "-s -w -X 'github.com/buildpacks/pack/cmd.Version=${PACK_VERSION}'" -o ./out/$(PACK_BIN) -a ./cmd/pack
++	$(GOCMD) build -trimpath -ldflags "-s -w -X 'github.com/buildpacks/pack/cmd.Version=${PACK_VERSION}' -extldflags ${LDFLAGS}" -o ./out/$(PACK_BIN) -a ./cmd/pack
+ 
+ package: out
+ 	tar czf ./out/$(ARCHIVE_NAME).tgz -C out/ pack
