@@ -1,10 +1,11 @@
-# Maintainer: Edward Pacman <micro DOT fedora AT gmail DOT com>
+# Maintainer: Michal Wojdyla < micwoj92 at tutanota dot com >
+# Conbtributor: Edward Pacman <micro DOT fedora AT gmail DOT com>
 
 pkgname=iptables-fullcone-nat
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.8.4
+pkgrel=1
 pkgdesc="iptables with FULLCONENAT extension"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/Chion82/netfilter-full-cone-nat"
 license=('GPL2')
 depends=(libnftnl libpcap libnfnetlink libnetfilter_conntrack bash netfilter-full-cone-nat-dkms)
@@ -26,7 +27,7 @@ source=(https://www.netfilter.org/projects/iptables/files/iptables-$pkgver.tar.b
 		"iptables-legacy-flush::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables-legacy-flush?h=packages/iptables"
 		"iptables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables.service?h=packages/iptables"
 		"simple_firewall.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/simple_firewall.rules?h=packages/iptables")
-sha1sums=('215c4ef4c6cd29ef0dd265b4fa5ec51a4f930c92'
+sha1sums=('cd5fe776fb2b0479b3234758fc333777caa1239b'
           'SKIP'
 		  'SKIP'
 		  'SKIP'
