@@ -20,7 +20,7 @@
 
 
 pkgname=ibus-bamboo
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 [[ $pkgrel -eq 1 ]] && _pkgver=$pkgver || _pkgver="$pkgver-$((pkgrel-1))"
 pkgdesc='A Vietnamese IME for IBus'
@@ -30,7 +30,7 @@ url="https://github.com/BambooEngine/ibus-bamboo"
 depends=('ibus')
 makedepends=('go' 'libx11' 'libxtst')
 source=("$pkgname-$_pkgver.tar.gz"::"https://github.com/BambooEngine/$pkgname/archive/v$_pkgver.tar.gz")
-sha256sums=('ede23132074ba3e3564064b0c3bf92c2181c32342cc69c43e753906c8246aa74')
+sha256sums=('4af96f17ba5069b1125fbefef62b51675e00a09b8d5941d96e3f8ab39de770b9')
 options=('!strip')
 conflicts=(ibus-bamboo-git)
 
