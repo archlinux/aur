@@ -1,8 +1,8 @@
 pkgbase = java-openjdk-loom-ea-bin
 	pkgdesc = Java Project Loom OpenJDK 15 Early-Access Build
-	pkgver = 15_1abc437
+	pkgver = 15_22eaa82
 	pkgrel = 1
-	epoch = 24
+	epoch = 25
 	url = https://github.com/forax/java-next
 	arch = x86_64
 	license = GPL2
@@ -20,8 +20,8 @@ pkgbase = java-openjdk-loom-ea-bin
 	provides = java-runtime-openjdk=15
 	provides = java-runtime-headless=15
 	provides = java-runtime-headless-openjdk=15
-	source = https://github.com/forax/java-next/releases/download/untagged-1abc4373dea5d365b6fd/jdk-15-loom-linux.tar.gz
-	sha256sums = 1fa9e560df63eece21d2b95ed105772d86ed90551afb0f6ace9d60b02f1d8690
+	source = https://github.com/forax/java-next/releases/download/untagged-22eaa82cc1ef0d76f927/jdk-15-loom-linux.tar.gz
+	sha256sums = 6cbd0b9460a25d230e088f16fc37cd94e9f5a6d15ec27a20959bec34e71d6be9
 
 pkgname = java-openjdk-loom-ea-bin
 
