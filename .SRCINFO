@@ -1,22 +1,19 @@
 pkgbase = adapta-kde
-	pkgdesc = Adapta KDE customization
-	pkgver = 20171014
-	pkgrel = 3
+	pkgdesc = Adapta theme for KDE Plasma 5
+	pkgver = 20180828
+	pkgrel = 1
 	url = https://github.com/PapirusDevelopmentTeam/adapta-kde
 	arch = any
 	license = GPL3
-	makedepends = make
-	depends = kwin
-	depends = plasma-desktop
-	depends = papirus-icon-theme
-	depends = kvantum-qt5
-	optdepends = konsole: For the Konsole color scheme
-	optdepends = yakuake: For the Yakuake skin
-	optdepends = adapta-gtk-theme: Matching GTK theme
-	conflicts = adapta-aurorae-theme-git
-	conflicts = adapta-kde-git
-	source = https://github.com/PapirusDevelopmentTeam/adapta-kde/archive/20171014.tar.gz
-	sha256sums = 21dffc84b62eb19a732d3af5a75031e246dfffecbdecf071d5c86f395b162104
+	options = !strip
+	source = adapta-kde-20180828.tar.gz::https://github.com/PapirusDevelopmentTeam/adapta-kde/archive/20180828.tar.gz
+	sha256sums = 7e55f4ed5c962c86d12b510bddcae1ac0018ffc95344e0b68218a98701907bdc
 
 pkgname = adapta-kde
+	optdepends = adapta-gtk-theme: Matching GTK theme
+	optdepends = kvantum-theme-adapta: Adapta theme for Kvantum Qt style (recommended)
+
+pkgname = kvantum-theme-adapta
+	pkgdesc = Adapta theme for KDE Plasma 5
+	depends = kvantum-qt5
 

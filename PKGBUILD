@@ -1,26 +1,37 @@
-# Maintainer: now-im <now.im.627@gmail.com>
+# Maintainer: Bruno Pagani <archange@archlinux.org>
 
-pkgname=adapta-kde
-pkgver=20171014
-pkgrel=3
-pkgdesc="Adapta KDE customization"
+pkgbase=adapta-kde
+pkgname=('adapta-kde' 'kvantum-theme-adapta')
+pkgver=20180828
+pkgrel=1
+pkgdesc="Adapta theme for KDE Plasma 5"
 arch=('any')
-url="https://github.com/PapirusDevelopmentTeam/adapta-kde"
+url="https://github.com/PapirusDevelopmentTeam/${pkgbase}"
 license=('GPL3')
-depends=('kwin' 'plasma-desktop' 'papirus-icon-theme' 'kvantum-qt5')
-optdepends=('konsole: For the Konsole color scheme'
-            'yakuake: For the Yakuake skin'
-            'adapta-gtk-theme: Matching GTK theme')
-makedepends=('make')
-conflicts=('adapta-aurorae-theme-git' 'adapta-kde-git')
-source=("https://github.com/PapirusDevelopmentTeam/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('21dffc84b62eb19a732d3af5a75031e246dfffecbdecf071d5c86f395b162104')
+options=('!strip')
+source=(${pkgbase}-${pkgver}.tar.gz::"${url}/archive/${pkgver}.tar.gz")
+sha256sums=('7e55f4ed5c962c86d12b510bddcae1ac0018ffc95344e0b68218a98701907bdc')
 
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"  
+package_adapta-kde() {
+    optdepends=('adapta-gtk-theme: Matching GTK theme'
+                'kvantum-theme-adapta: Adapta theme for Kvantum Qt style (recommended)')
+
+    cd ${pkgbase}-${pkgver}
+    install -d "${pkgdir}"/usr/share
+
+    cp -r plasma "${pkgdir}"/usr/share
+    cp -r aurorae "${pkgdir}"/usr/share
+    cp -r color-schemes "${pkgdir}"/usr/share
+    cp -r konsole "${pkgdir}"/usr/share
+    cp -r yakuake "${pkgdir}"/usr/share
 }
 
- package() {
-  make -C "${srcdir}/${pkgname}-${pkgver}" DESTDIR="${pkgdir}/" install
+package_kvantum-theme-adapta() {
+    pkgdesc="Adapta theme for KDE Plasma 5"
+    depends=('kvantum-qt5')
+
+    cd ${pkgbase}-${pkgver}
+    install -d "${pkgdir}"/usr/share
+
+    cp -r Kvantum "${pkgdir}"/usr/share
 }
- 
