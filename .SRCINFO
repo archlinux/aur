@@ -1,6 +1,6 @@
 pkgbase = dune-private-libs
 	pkgdesc = Private libraries of Dune
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/ocaml/dune
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = dune-private-libs
 	depends = ocaml>=4.07.0
 	depends = dune>=2.3
 	options = !strip
-	source = dune-private-libs-2.3.0-1.tar.gz::https://github.com/ocaml/dune/archive/2.3.0.tar.gz
-	sha256sums = c06b73d70c0e539cf46aec0d34bc306ddddb5415f33cff42dc4cc08562be135c
+	source = dune-private-libs-2.3.1-1.tar.gz::https://github.com/ocaml/dune/archive/2.3.1.tar.gz
+	sha256sums = 9eceba0e51d7782c95d124c2d3f0b2bf8cace28738317e3b9e2a9353ffa43b98
 
 pkgname = dune-private-libs
