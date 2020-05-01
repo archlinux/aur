@@ -38,7 +38,8 @@ arch=('any')
 #url='https://github.com/apache/openmeetings/'
 url='http://openmeetings.apache.org/'
 license=('apache')
-depends=('libjpeg' 'imagemagick' 'ghostscript' 'sox' 'lame' 'java-environment-openjdk>=11' 'ffmpeg' 'libreoffice')
+_minjv='11'
+depends=('libjpeg' 'imagemagick' 'ghostscript' 'sox' 'lame' "java-environment-openjdk>=${_minjv}" 'ffmpeg' 'libreoffice')
 #depends+=('swftools') # removed in 5.0
 optdepends=('docker' 'kurento-media-server' 'mariadb' 'openmeetings-mysql-connector-java')
 makedepends=('curl')
@@ -66,8 +67,8 @@ else
   noextract=("${_srzgz}")
 fi
 #_verwatch=("https://archive.apache.org/dist/${pkgname}/" "\([0-9\.]\+\)/" 'l')
-md5sums=('384f52077fa21cec7ce4909d114ea421')
-sha256sums=('a014c8edf96c441dff3328f7f04f2f17da76415b22fe5d7d7cb922f273d4e61a')
+md5sums=('3ea884387f4b06047ea349ac2424a323')
+sha256sums=('a6d218b807b8f9aee534a93d1dace74aac644cafd7e3ae54a35b267fd4c9c8e0')
 
 PKGEXT='.pkg.tar.gz'
 
@@ -75,8 +76,23 @@ build() {
   set -u
   if [ "${_opt_build}" -ne 0 ]; then
     cd "${_srcdir}"
+    local _j _jmx _jvmx=0 _jmn _jvmn=999999
+    for _j in /usr/lib/jvm/java-[0-9]*-openjdk/; do
+      if [[ "${_j}" =~ ^/usr/lib/jvm/java-([0-9]+)-openjdk/$ ]] && [ "${BASH_REMATCH[1]}" -ge "${_minjv}" ]; then
+        if [ "${BASH_REMATCH[1]}" -ge "${_jvmx}" ]; then
+          _jmx="${_j}"
+          _jvmx="${BASH_REMATCH[1]}"
+        fi
+        if [ "${BASH_REMATCH[1]}" -le "${_jvmn}" ]; then
+          _jmn="${_j}"
+          _jvmn="${BASH_REMATCH[1]}"
+        fi
+      fi
+    done
+    #_jmx="${_jmn}"
     # Use a persistent local maven repository.
-    JAVA_HOME='/usr/lib/jvm/java-11-openjdk' \
+    set +u; msg2 "Java ${_jmx}"; set -u
+    JAVA_HOME="${_jmx}" \
     mvn clean install -Dmaven.repo.local="${startdir}/mvn-repository" -PallModules # -T 1C didn't help
   fi
   set +u
@@ -105,7 +121,7 @@ _package_0() {
 
   # Overwrite Apache Derby with MySQL/MariaDB which has been installed by this PKGBUILD.
   # The user can select Derby or any of the others after Install.
-  cp -p 'webapps/openmeetings/WEB-INF/classes/META-INF'/{mysql_persistence.xml,persistence.xml}
+  #cp -p 'webapps/openmeetings/WEB-INF/classes/META-INF'/{mysql_persistence.xml,persistence.xml}
   set +u
 }
 
