@@ -1,13 +1,22 @@
 pkgbase = arc-kde
 	pkgdesc = Arc theme for KDE Plasma 5
-	pkgver = 20170218
-	pkgrel = 1
+	pkgver = 20180614
+	pkgrel = 3
 	url = https://github.com/PapirusDevelopmentTeam/arc-kde
 	arch = any
 	license = GPL3
 	options = !strip
-	source = arc-kde-20170218.tar.gz::https://github.com/PapirusDevelopmentTeam/arc-kde/archive/20170218.tar.gz
-	sha256sums = 5c7dbe80f06b027527ada72b43934d116aed0c2a5717a3103946c7c45a5d74d7
+	source = arc-kde-20180614.tar.gz::https://github.com/PapirusDevelopmentTeam/arc-kde/archive/20180614.tar.gz
+	source = arc-kde-plasma5.13.patch::https://github.com/PapirusDevelopmentTeam/arc-kde/commit/b7b7f6d60ed2b19ba9822418c2d43fbcf27c5245.patch
+	source = arc-kde-plasma5.16.patch::https://github.com/PapirusDevelopmentTeam/arc-kde/commit/ebe4ed6bd17b2fdb8c17e3784e913e12c6b325d5.patch
+	sha256sums = 44267738b2bee20f62cc3f1c150b4eb0aa7ce79f4f5d302102f11d15ffa6de15
+	sha256sums = 80d46e6f2c31c655236f3743517396c21ef4a29d93f8d39dfe975afca3e1c7ed
+	sha256sums = b43affc425aadca30be1be22b68ac10bacff26dbc60e370faa903c2c6d3d7f24
 
 pkgname = arc-kde
+	optdepends = kvantum-theme-arc: Arc theme for Kvantum Qt style (recommended)
+
+pkgname = kvantum-theme-arc
+	pkgdesc = Arc theme for Kvantum
+	depends = kvantum-qt5
 
