@@ -4,14 +4,14 @@
 # Learn programming, playing with ants and spider webs ;-) https://sgimenez.github.io/laby/
 _pkgname=laby
 pkgname=$_pkgname-git
-pkgver=r349.27ecf89
+pkgver=r363.b29fda9
 pkgrel=1
 pkgdesc="Learn programming, playing with ants and spider webs"
 arch=('i686' 'x86_64')
 url="https://sgimenez.github.io/laby/"
 license=('GPL3')
 groups=()
-depends=('lablgtk2')
+depends=('lablgtk3')
 makedepends=('ocamlbuild' 'ocaml-findlib')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
