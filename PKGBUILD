@@ -2,7 +2,7 @@
 
 _pkgname=pep-engine
 pkgname=$_pkgname-hg
-pkgver=r4205.f75e9274551f
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A Free Software library for automatic key management and encryption of messages."
 arch=('x86_64' 'i686')
@@ -14,20 +14,26 @@ provides=('pep-engine')
 source=("hg+https://pep.foundation/dev/repos/pEpEngine")
 md5sums=('SKIP')
 
+prepare() {
+	cd "$srcdir/pEpEngine"
+
+	hg up $(hg tags | grep Release | sort -r | head -1 | awk '{print $1}')
+	
+	echo "PREFIX=$pkgdir/usr" > 'local.conf'
+	echo "PER_MACHINE_DIRECTORY=$pkgdir/usr/share/pEp" >> 'local.conf'
+	echo "YML2_PATH=/usr/bin" >> 'local.conf'
+}
+
 pkgver() {
 	cd "$srcdir/pEpEngine"
 
-	printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+	hg tags | grep Release | sort -r | head -1 | awk '{print $1}' | cut -c9-
 }
 
 build() {
 	cd "$srcdir/pEpEngine"
 	
-	echo "PREFIX=$pkgdir/usr" > 'local.conf'
-	echo "PER_MACHINE_DIRECTORY=$pkgdir/usr/share/pEp" >> 'local.conf'
-	echo "YML2_PATH=/usr/bin" >> 'local.conf'
-
-	make all
+	make
 	make db
 }
 

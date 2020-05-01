@@ -1,6 +1,6 @@
 pkgbase = pep-engine-hg
 	pkgdesc = A Free Software library for automatic key management and encryption of messages.
-	pkgver = r4205.f75e9274551f
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://pep.software
 	arch = x86_64
