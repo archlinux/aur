@@ -19,7 +19,7 @@ source=(
 	"https://github.com/kdrag0n/proton-clang/archive/$pkgver.tar.gz"
 )
 b2sums=(
-	"SKIP"
+	"170b04de633379e20f9c9b600016d7e743c74e7d4154078e306b60e9d4559892581bb9ff86f7cbef7f42ca32ed92be698cce7f103a05dfac8148ddf7e9c5f27a"
 )
 
 package()

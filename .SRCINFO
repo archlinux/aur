@@ -7,8 +7,8 @@ pkgbase = llvm-proton-bin
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = https://github.com/kdrag0n/proton-clang/archive/master.zip
-	b2sums = SKIP
+	source = https://github.com/kdrag0n/proton-clang/archive/20200425.tar.gz
+	b2sums = 170b04de633379e20f9c9b600016d7e743c74e7d4154078e306b60e9d4559892581bb9ff86f7cbef7f42ca32ed92be698cce7f103a05dfac8148ddf7e9c5f27a
 
 pkgname = llvm-proton-bin
 
