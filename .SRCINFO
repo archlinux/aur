@@ -1,0 +1,25 @@
+pkgbase = tuxpaint
+	pkgdesc = Drawing program designed for young children
+	pkgver = 0.9.23
+	pkgrel = 2
+	url = http://tuxpaint.org/
+	arch = x86_64
+	license = GPL
+	makedepends = gperf
+	makedepends = setconf
+	depends = fribidi
+	depends = libpaper
+	depends = librsvg
+	depends = python2
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_pango
+	depends = sdl_ttf
+	optdepends = tuxpaint-stamps: more stamps
+	optdepends = tuxpaint-conf: configuration manager
+	backup = etc/tuxpaint/tuxpaint.conf
+	source = https://downloads.sourceforge.net/sourceforge/tuxpaint/tuxpaint-0.9.23.tar.gz
+	sha256sums = 349919c44e0fa252581be6e3242251fb62d20a82c971e99be96d648462bf6926
+
+pkgname = tuxpaint
+
