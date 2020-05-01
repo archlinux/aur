@@ -1,6 +1,6 @@
 pkgbase = prometheus-fritzbox-exporter-git
 	pkgdesc = Prometheus UPnP exporter for Fritz!Box routers
-	pkgver = r10.fa604c2
+	pkgver = r21.834e250
 	pkgrel = 1
 	url = https://github.com/ndecker/fritzbox_exporter
 	arch = x86_64
