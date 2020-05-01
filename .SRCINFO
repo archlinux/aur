@@ -1,0 +1,20 @@
+pkgbase = waves
+	pkgdesc = Reference Waves Blockchain Node (client) implementation in Scala
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://wavesplatform.com/
+	arch = any
+	license = MIT
+	makedepends = sbt
+	makedepends = java-environment>=8
+	depends = java-runtime>=8
+	backup = etc/waves/waves.conf
+	source = https://github.com/wavesplatform/Waves/archive/v1.2.4.tar.gz
+	source = waves.sysusers
+	source = waves.tmpfiles
+	sha256sums = 169221245c91828552e53716a04b3434d32407a136fb493eea814e62c67721ee
+	sha256sums = df4670b201ee1369f18c9bbad3effee1c6e374ac53cc435b7c68ab077eaacf0f
+	sha256sums = 
+
+pkgname = waves
+

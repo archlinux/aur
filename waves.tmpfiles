@@ -1,0 +1,2 @@
+d /var/lib/waves 0770 waves waves - -
+d /var/log/waves 0755 waves waves - -
