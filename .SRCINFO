@@ -1,0 +1,18 @@
+pkgbase = zapcc
+	pkgdesc = C++ compiler based on Clang, but significantly faster
+	pkgver = 7.0.325000
+	pkgrel = 3
+	url = https://zapcc.com/
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = python
+	depends = z3
+	conflicts = clang
+	source = git+https://github.com/yrnkrn/zapcc.git#commit=9bd04e7
+	sha256sums = SKIP
+
+pkgname = zapcc
+
