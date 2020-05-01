@@ -1,6 +1,6 @@
 pkgbase = python-mutatormath
-	pkgdesc = A library for the calculation of piecewise linear interpolations in n-dimensions with any number of masters.
-	pkgver = 2.1.2
+	pkgdesc = Piecewise linear interpolation in multiple dimensions with multiple, arbitrarily placed, masters
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/LettError/MutatorMath
 	arch = any
@@ -10,9 +10,8 @@ pkgbase = python-mutatormath
 	depends = python-fonttools
 	depends = python-defcon
 	depends = python-fontmath
-	options = !emptydirs
-	source = https://pypi.org/packages/source/M/MutatorMath/MutatorMath-2.1.2.zip
-	sha256sums = 6930f966a07a7459bcdb15b36dbcb615a791853d79965897cedb1047d5beeecb
+	source = https://files.pythonhosted.org/packages/source/M/MutatorMath/MutatorMath-3.0.1.zip
+	sha256sums = 8127c1ffad1646f11a953752296c43f5d88cbd5293fff03f093d916b0bc13864
 
 pkgname = python-mutatormath
 
