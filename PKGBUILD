@@ -3,15 +3,15 @@
 # Upstream: https://github.com/Thann/play-with-mpv
 
 pkgname=play-with-mpv-git
-pkgver=0.1.0.post2+gc76e3f8
+pkgver=0.1.0.post3+g0c27cd4
 pkgrel=1
 pkgdesc='Chrome extension and python server that allows you to play videos in webpages with MPV instead.'
 arch=('any')
 url='https://github.com/Thann/play-with-mpv'
 license=('MIT')
-depends=('python' 'youtube-dl' 'mpv')
+depends=('python' 'python-wheel' 'youtube-dl' 'mpv')
 optdepends=('peerflix' 'mkchromecast')
-makedepends=('git' 'python-wheel' 'python-setuptools')
+makedepends=('git' 'python-setuptools')
 provides=('play-with-mpv')
 conflicts=('play-with-mpv')
 source=("$pkgname::git+https://github.com/Thann/play-with-mpv.git")
