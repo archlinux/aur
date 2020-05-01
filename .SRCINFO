@@ -1,8 +1,8 @@
 pkgbase = inspircd
-	pkgdesc = A modular C++ IRC daemon (ircd).
-	pkgver = 3.5.0
+	pkgdesc = InspIRCd is a modular Internet Relay Chat (IRC) server written in C++ for Linux, BSD, Windows and macOS systems.
+	pkgver = 3.6.0
 	pkgrel = 1
-	url = http://www.inspircd.org/
+	url = https://www.inspircd.org/
 	install = inspircd.install
 	arch = any
 	license = GPL2
@@ -25,9 +25,9 @@ pkgbase = inspircd
 	optdepends = geoip: m_geoip
 	provides = inspircd
 	conflicts = inspircd
-	source = https://github.com/inspircd/inspircd/archive/v3.5.0.tar.gz
+	source = https://github.com/inspircd/inspircd/archive/v3.6.0.tar.gz
 	source = inspircd.service
-	sha512sums = 64e7be4b013c418577362b33be73b8f7045f1071ccb2c4e83fdf1a96b98656a3541e20c005bc32532007da21d9ba963f534cd14d16c2e1cf8afcf34b22ffad8c
+	sha512sums = b1feaf983f30aa3192860d931f85bb2e5b5f10d3b7582b7e5faa8fc16a349c79506f5a7ba9e1f4f8b24d62639c0e0e88f2d97a3130473ee10eda93dd5c131630
 	sha512sums = 5a16a7c237693ffc6a108358f339b6aa2451fb16430561848ae869f890199b38fab6a13640bcc35cf1d07e32d7e5fff405d88668ee05ddaffc2ef61cb42ee832
 
 pkgname = inspircd

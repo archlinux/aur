@@ -5,11 +5,11 @@
 # Co-Maintainer: TheGoliath <contact@xdfr.de>
 
 pkgname='inspircd'
-pkgver='3.5.0'
+pkgver='3.6.0'
 pkgrel='1'
-pkgdesc='A modular C++ IRC daemon (ircd).'
+pkgdesc='InspIRCd is a modular Internet Relay Chat (IRC) server written in C++ for Linux, BSD, Windows and macOS systems.'
 arch=('any')
-url='http://www.inspircd.org/'
+url='https://www.inspircd.org/'
 license=('GPL2')
 conflicts=('inspircd')
 provides=('inspircd')
@@ -27,7 +27,7 @@ optdepends=('gnutls: m_ssl_gnutls'
 install='inspircd.install'
 source=("https://github.com/inspircd/inspircd/archive/v$pkgver.tar.gz"
         'inspircd.service')
-sha512sums=('64e7be4b013c418577362b33be73b8f7045f1071ccb2c4e83fdf1a96b98656a3541e20c005bc32532007da21d9ba963f534cd14d16c2e1cf8afcf34b22ffad8c'
+sha512sums=('b1feaf983f30aa3192860d931f85bb2e5b5f10d3b7582b7e5faa8fc16a349c79506f5a7ba9e1f4f8b24d62639c0e0e88f2d97a3130473ee10eda93dd5c131630'
             '5a16a7c237693ffc6a108358f339b6aa2451fb16430561848ae869f890199b38fab6a13640bcc35cf1d07e32d7e5fff405d88668ee05ddaffc2ef61cb42ee832')
 
 build() {
@@ -40,7 +40,9 @@ build() {
     --enable-extras=m_mysql.cpp \
     --enable-extras=m_regex_pcre.cpp \
     --enable-extras=m_regex_posix.cpp \
-    --enable-extras=m_sqlite3.cpp
+    --enable-extras=m_sqlite3.cpp \
+    --enable-extras=m_ssl_gnutls.cpp \
+    --enable-extras=m_ssl_openssl.cpp
 
   ./configure \
     --uid=0 \
@@ -66,10 +68,4 @@ package() {
 
   rm -rf "${pkgdir}"/usr/lib/inspircd/logs
   rm -rf "${pkgdir}"/usr/lib/inspircd/data
-
-  # Warn about major upgrade
-  echo "Version 3 is a major upgrade!"
-  echo "Please consult https://docs.inspircd.org/3/configuration-changes/"
-  echo "for configuration changes and add them accordingly" 
-
 }
