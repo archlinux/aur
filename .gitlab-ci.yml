@@ -23,7 +23,4 @@ build-package:
     - su notroot -c "git clone https://aur.archlinux.org/python-edalize.git"
     - cd python-edalize
     - su notroot -c "makepkg --noconfirm --syncdeps --rmdeps --install --clean"
-    - python -c 'import edalize; print("all ok")'
-  artifacts:
-    paths:
-      - /home/notroot/python-fusesoc/python-edalize-0.2-0-any.pkg.tar.xz
+    - python -c 'import edalize; print("All OK")'
