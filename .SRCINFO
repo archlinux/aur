@@ -1,0 +1,14 @@
+pkgbase = ddgr-git
+	pkgdesc = DuckDuckGo from the terminal
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/jarun/ddgr
+	arch = any
+	license = GPL3
+	depends = python>=3.5
+	conflicts = ddgr
+	source = https://github.com/jarun/ddgr/archive/v1.8.1.tar.gz
+	sha256sums = d223a3543866e44e4fb05df487bd3eb23d80debc95f116493ed5aad0d091149e
+
+pkgname = ddgr-git
+
