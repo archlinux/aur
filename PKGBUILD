@@ -22,8 +22,7 @@ license=('custom')
 options=('!emptydirs' '!strip' 'staticlibs')
 provides=('plex-media-server')
 conflicts=('plex-media-server')
-# Commented to override user version
-#backup=('etc/conf.d/plexmediaserver')
+backup=('etc/conf.d/plexmediaserver')
 install='plex-media-server.install'
 source=('plexmediaserver.conf.d'
         'plexmediaserver.service'
