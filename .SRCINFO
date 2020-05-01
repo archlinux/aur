@@ -1,0 +1,30 @@
+pkgbase = hbmame
+	pkgdesc = A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support.
+	pkgver = 0.221
+	pkgrel = 1
+	url = https://mamedev.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = nasm
+	makedepends = python
+	makedepends = asio
+	makedepends = rapidjson
+	makedepends = glm
+	makedepends = libxinerama
+	depends = sdl2_ttf
+	depends = qt5-base
+	depends = lua
+	depends = libutf8proc
+	depends = pugixml
+	depends = portmidi
+	depends = portaudio
+	depends = flac
+	conflicts = sdlmame
+	replaces = sdlmame
+	source = https://github.com/Robbbert/hbmame/archive/tag221.tar.gz
+	source = hbmame.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = hbmame
+
