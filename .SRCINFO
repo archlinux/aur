@@ -6,6 +6,7 @@ pkgbase = python-edalize
 	arch = any
 	license = BSD
 	makedepends = git
+	makedepends = python-pip
 	depends = python
 	depends = python-pytest
 	depends = python-setuptools

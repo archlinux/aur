@@ -10,7 +10,7 @@ conflicts=('python-edalize-git' 'python-jinja')
 provides=('python-edalize')
 depends=('python' 'python-pytest' 'python-setuptools' 'python-markupsafe')
 
-makedepends=('git')
+makedepends=('git' 'python-pip')
 optdepends=('iverilog: for simulating verilog designs'
 	    'ghdl: for simulating VHDL designs'
 	    'gtkwave: for visualizing waveforms')
