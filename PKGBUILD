@@ -53,7 +53,7 @@ check() {
 }
 
 package_python-piff-git() {
-	  		  depends=('python-cffi' 'python-yaml' 'python-numpy' 'python-scipy' 'python-pyaml' 'python-treecorr-git' 'python-fitsio-git' 'python-lmfit-git' 'python-matplotlib' 'python-galsim-git' 'python-coord-git')
+	  		  depends=('python-cffi' 'python-yaml' 'python-numpy' 'python-scipy' 'python-pyaml' 'python-treecorr-git' 'python-fitsio-git' 'python-matplotlib' 'python-galsim-git' 'python-coord-git')
 	  		  cd "${_pkgname}"
 	  		  python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
 			  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE

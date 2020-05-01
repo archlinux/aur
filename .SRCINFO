@@ -49,7 +49,6 @@ pkgname = python-piff-git
 	depends = python-pyaml
 	depends = python-treecorr-git
 	depends = python-fitsio-git
-	depends = python-lmfit-git
 	depends = python-matplotlib
 	depends = python-galsim-git
 	depends = python-coord-git
