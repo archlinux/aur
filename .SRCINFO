@@ -1,6 +1,6 @@
 pkgbase = python-ezdb-git
 	pkgdesc = Ezified python mongodb database.
-	pkgver = 0.0.1.r7.2982f50
+	pkgver = 0.0.1.r7.7065005
 	pkgrel = 1
 	url = https://github.com/DreamingRaven/python-ezdb
 	arch = x86_64

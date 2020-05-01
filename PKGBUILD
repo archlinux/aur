@@ -6,7 +6,7 @@
 # Maintainer: George Raven <GeorgeRavenCommunity AT pm dot me>
 pkgname=python-ezdb-git
 _pkgsrcname="python-ezdb"
-pkgver=0.0.1.r7.2982f50
+pkgver=0.0.1.r7.7065005
 pkgrel=1
 pkgdesc="Ezified python mongodb database."
 arch=('x86_64' 'aarch64')
@@ -59,8 +59,6 @@ package() {
 
 	# installing library files
 	python3 ./setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
-	# except python sphinx docs
-	rm -r $pkgdir/usr/lib/python*/site-packages/docs
 
 	# install licence
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
