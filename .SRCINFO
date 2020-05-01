@@ -1,0 +1,15 @@
+pkgbase = javasqlite
+	pkgdesc = Java wrapper including a basic JDBC driver for the SQLite 2/3 database engine
+	pkgver = 20150419
+	pkgrel = 2
+	url = http://www.ch-werner.de/javasqlite/
+	arch = x86_64
+	license = custom:BSD-style
+	makedepends = java-environment=7
+	depends = java-runtime
+	depends = sqlite
+	source = http://www.ch-werner.de/javasqlite/javasqlite-20150419.tar.gz
+	sha256sums = b6b26e2c1a2174f5525d904eb3ff698c3f7089f0d4b4c84cf6121da08c8d801f
+
+pkgname = javasqlite
+
