@@ -1,6 +1,6 @@
 pkgbase = golangci-lint-bin
 	pkgdesc = Linters Runner for Go. 5x faster than gometalinter.
-	pkgver = 1.25.1
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://github.com/golangci/golangci-lint
 	arch = x86_64
@@ -9,17 +9,18 @@ pkgbase = golangci-lint-bin
 	arch = armv6h
 	arch = armv7h
 	license = GPL3
+	provides = golangci-lint
 	conflicts = golangci-lint
-	source_x86_64 = https://github.com/golangci/golangci-lint/releases/download/v1.25.1/golangci-lint-1.25.1-linux-amd64.tar.gz
-	sha256sums_x86_64 = 350eb6c242707fc70367dd186b83e5fc0ce2603f357bdb3ee10d92106085f03f
-	source_i686 = https://github.com/golangci/golangci-lint/releases/download/v1.25.1/golangci-lint-1.25.1-linux-386.tar.gz
-	sha256sums_i686 = ff6828e1b340a0eca823b11ab3927ae906e3e46ab72f56dd100fbde520660526
-	source_aarch64 = https://github.com/golangci/golangci-lint/releases/download/v1.25.1/golangci-lint-1.25.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = 8b1eaf4570e124e88b92d8076dd692b9ceb6d83ad59ad6201c1cf68bc1deaf41
-	source_armv6h = https://github.com/golangci/golangci-lint/releases/download/v1.25.1/golangci-lint-1.25.1-linux-armv6.tar.gz
-	sha256sums_armv6h = 1a06a780ef7467ff9ddf0ee185ccb980dbddc6d75557851e47a158f0f702284d
-	source_armv7h = https://github.com/golangci/golangci-lint/releases/download/v1.25.1/golangci-lint-1.25.1-linux-armv7.tar.gz
-	sha256sums_armv7h = c630427db9c08ef010134c8f39f9452b542ac49a30df37c3acba82eff518a29f
+	source_x86_64 = https://github.com/golangci/golangci-lint/releases/download/v1.26.0/golangci-lint-1.26.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 59b0e49a4578fea574648a2fd5174ed61644c667ea1a1b54b8082fde15ef94fd
+	source_i686 = https://github.com/golangci/golangci-lint/releases/download/v1.26.0/golangci-lint-1.26.0-linux-386.tar.gz
+	sha256sums_i686 = b1c7a04dd7dae577af7c005a7ff9a1e6291889bf4fa5e88a9038b99080929460
+	source_aarch64 = https://github.com/golangci/golangci-lint/releases/download/v1.26.0/golangci-lint-1.26.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 3abe739464e3d312b4debe1ec04fa3822e520c6919f4717081da0ed21c9ad184
+	source_armv6h = https://github.com/golangci/golangci-lint/releases/download/v1.26.0/golangci-lint-1.26.0-linux-armv6.tar.gz
+	sha256sums_armv6h = ee1aff109c8b9b90cd6f01fa5b76d2a264353173975c9e7d13ce85de8e7dea10
+	source_armv7h = https://github.com/golangci/golangci-lint/releases/download/v1.26.0/golangci-lint-1.26.0-linux-armv7.tar.gz
+	sha256sums_armv7h = dfdeacee84d35b43311cbcd86698091248cc7cb44e9de274573cbac1c34d7f46
 
 pkgname = golangci-lint-bin
 
