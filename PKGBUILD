@@ -4,10 +4,10 @@ pkgver=r4924.835441f9
 pkgrel=1
 pkgdesc="ObjFW is a portable, lightweight framework for the Objective C language."
 arch=('i686' 'x86_64')
-url="https://github.com/ObjFW/ObjFW.git"
+url="https://objfw.nil.im/"
 license=('QPL' 'GPL2' 'GPLv3')
 makedepends=('git' 'clang')
-source=("git+$url.git")
+source=("git+https://github.com/ObjFW/ObjFW.git")
 md5sums=('SKIP')
 _pkgname=ObjFW
 
