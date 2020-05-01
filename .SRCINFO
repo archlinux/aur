@@ -4,6 +4,7 @@ pkgbase = qv2ray-plugin-ssr-git
 	pkgrel = 2
 	url = https://github.com/Qv2ray/QvPlugin-SSR
 	arch = x86_64
+	groups = qv2ray-plugin
 	license = GPL3
 	makedepends = git
 	makedepends = make
