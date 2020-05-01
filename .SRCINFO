@@ -1,0 +1,17 @@
+pkgbase = monica
+	pkgdesc = Monitor calibration tool
+	pkgver = 3.7
+	pkgrel = 6
+	url = https://sources.archlinux.org/other/monica/
+	arch = x86_64
+	license = BSD
+	makedepends = gendesk
+	depends = fltk
+	depends = xorg-xgamma
+	source = https://sources.archlinux.org/other/monica/monica-3.7.tar.bz2
+	source = monica.png
+	sha512sums = 87565f33f3c3492b196905e5b8e17bd45a7eb8eb0a0281f02e23337eec888af82571ac6f2d229256ee97012d402b7f1b217cd56a8b87ff9c9296931bf63cb153
+	sha512sums = 1a839c9481528dcb785011417a0b77d925b3ae373c6d5fd4a48bab89091c2508079988db38e9dd21e8ed6922c8178b5f3c05beec455deba94ad304b85b990670
+
+pkgname = monica
+
