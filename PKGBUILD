@@ -3,8 +3,9 @@
 
 pkgname=unityhub
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Unity Hub is a standalone application that streamlines the way you find, download, and manage your Unity Projects and installations."
+url="https://unity.com/"
 arch=('x86_64')
 license=('custom')
 depends=('gtk2' 'nss' 'p7zip' 'tar' 'gzip' 'cpio' 'zip' 'libxss' 'gconf' 'libxtst')
@@ -22,6 +23,7 @@ build() {
   sed -i "/^Exec=/cExec=unityhub" "${_df}"
   sed -i "s/^X-AppImage-Version=/Version=/" "${_df}"
   sed -i "/^X-AppImage/d" "${_df}"
+  sed -i 's:# !/usr/bin/env:#!/usr/bin/env:' "${srcdir}/squashfs-root/unityhub"
 }
 
 package() {
