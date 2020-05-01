@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=python-branca
 _pkgname=branca
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Generate html+js with Python."
 arch=('any')
@@ -10,8 +10,8 @@ license=('MIT')
 checkdepends=('python-nose' 'python-selenium' 'geckodriver')
 depends=('python' 'python-jinja')
 options=(!emptydirs)
-source=("https://github.com/python-visualization/branca/archive/v$pkgver.tar.gz")
-sha256sums=('87b9b294d7e15dc02f66fce23311a36b0ea3b6fba4874fb9ba9da64220bb156a')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/python-visualization/branca/archive/v$pkgver.tar.gz")
+sha256sums=('d97a02d51ee7e895953e941f6c8163d261bb055040f7df77701bdd0f9e52f3ac')
 
 check() {
     cd "$srcdir/$_pkgname-$pkgver"
