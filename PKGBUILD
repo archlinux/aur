@@ -49,8 +49,8 @@ build() {
   export OBJCXX=clang
   export RUBY_VERSION=$(/usr/bin/ruby -e "puts RUBY_VERSION")
 
-  # Setup mkxp-z for current Ruby, EasyPoke option, using custom SDL_SOUND, and system install
-  meson setup build -Dmri_version=${RUBY_VERSION::-2} -Dpkg_config_path="$srcdir"/lib/pkgconfig/ -Dworkdir_current=true -Deasypoke=true
+  # Setup mkxp-z for current Ruby, EasyPoke option, using custom SDL_SOUND,Static Fluidsynth and system install
+  meson setup build -Dmri_version=${RUBY_VERSION::-2} -Dpkg_config_path="$srcdir"/lib/pkgconfig/ -Dworkdir_current=true -Deasypoke=true -Dshared_fluid=true
   cd build
   sed -e 's/--end-group/&,-logg,-lFLAC,-lmodplug'/ -i build.ninja
   ninja -v
