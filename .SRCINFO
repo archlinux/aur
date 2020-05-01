@@ -1,0 +1,12 @@
+pkgbase = bar
+	pkgdesc = A script for showing progress bars.
+	pkgver = 1.4
+	pkgrel = 6
+	url = http://www.theiling.de/projects/bar.html
+	arch = any
+	license = custom
+	source = http://www.theiling.de/downloads/bar-1.4-src.tar.bz2
+	md5sums = 4b99147e2efbe678cbcdc985ad2412f4
+
+pkgname = bar
+
