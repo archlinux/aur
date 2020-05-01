@@ -1,0 +1,23 @@
+pkgbase = pep-jni-adapter-hg
+	pkgdesc = p≡p JNI adapter
+	pkgver = r702.d6c12d6ca3d0
+	pkgrel = 1
+	url = https://pep.foundation/dev/repos/pEpJNIAdapter
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = mercurial
+	makedepends = make
+	makedepends = yml2
+	makedepends = pep-engine
+	makedepends = libpep-adapter
+	makedepends = java-environment
+	depends = pep-engine
+	depends = libpep-adapter
+	depends = java-runtime
+	provides = pep-jni-adapter
+	source = hg+https://pep.foundation/dev/repos/pEpJNIAdapter
+	md5sums = SKIP
+
+pkgname = pep-jni-adapter-hg
+
