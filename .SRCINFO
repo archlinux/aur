@@ -1,0 +1,17 @@
+pkgbase = tuxpaint-config
+	pkgdesc = Tux Paint configuration tool
+	pkgver = 0.0.14
+	pkgrel = 1
+	url = http://www.tuxpaint.org/
+	arch = x86_64
+	license = GPL
+	depends = tuxpaint
+	depends = fltk
+	depends = libxft
+	depends = libxext
+	options = !makeflags
+	source = https://downloads.sourceforge.net/sourceforge/tuxpaint/tuxpaint-config-0.0.14.tar.gz
+	sha256sums = cfc8e8ff4240eccddfd14a58be0adcedb09306ac6ec2f707b90c5b33c8ec6f7e
+
+pkgname = tuxpaint-config
+
