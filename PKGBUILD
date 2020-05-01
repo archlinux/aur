@@ -2,20 +2,20 @@
 # Maintainer: stardust95
 # Contributor: stardust95
 pkgname=lebiniou
-pkgver=3.40
-pkgrel=2
+pkgver=3.41
+pkgrel=1
 pkgdesc="Displays images that evolve with sound."
 arch=('i686' 'x86_64')
 url="https://biniou.net"
 license=('GPL2+')
 groups=('')
-depends=('alsa-lib>=1.0.16' 'ffmpeg>=4.0' 'fftw>=3.3.5' 'lebiniou-data>=3.27' 'glib2>=2.35.9' 'glibc' 'jack' 'jansson>=2.3' 'libmagick6>=6.9.10.2' 'libpulse>=0.99.1' 'libsndfile>=1.0.20' 'libulfius>=2.5.0' 'libxml2>=2.7.4' 'riscv64-linux-gnu-glibc>=2.29' 'sdl2>=2.0.10' 'sdl2_ttf>=2.0.14' 'ttf-freefont' 'zlib>=1.1.4')
+depends=('alsa-lib>=1.0.16' 'ffmpeg>=4.0' 'fftw>=3.3.5' 'lebiniou-data>=3.27' 'glib2>=2.35.9' 'glibc' 'jack' 'jansson>=2.3' 'libmagick6>=6.9.10.2' 'libpulse>=0.99.1' 'libsndfile>=1.0.20' 'libulfius>=2.5.0' 'libxml2>=2.7.4' 'sdl2>=2.0.10' 'sdl2_ttf>=2.0.14' 'ttf-freefont' 'zlib>=1.1.4')
 options=('!strip' '!emptydirs')
 install=lebiniou.install
-source_i686=("http://ftp.fr.debian.org/debian/pool/main/l/lebiniou/lebiniou_3.40-1_i386.deb")
-source_x86_64=("http://ftp.fr.debian.org/debian/pool/main/l/lebiniou/lebiniou_3.40-1_amd64.deb")
-sha512sums_i686=('d1d523b575590f217e90fae689779a060751aaec1b927c8d60267c9aeda71d912bc5898f959618ec85ebb329b6ec31b4ed6ff3b8319a7a2981ef2b985818bf86')
-sha512sums_x86_64=('f4d15df95bb2a6722c4fec45518f9ceaca40da91f3dd0f8390f61492eac75948eec8203b301cdefa7edd25f33f1ba474e24bee12c6c2c074ec7fd9474908c6a5')
+source_i686=("http://ftp.fr.debian.org/debian/pool/main/l/lebiniou/lebiniou_3.41-1_i386.deb")
+source_x86_64=("http://ftp.fr.debian.org/debian/pool/main/l/lebiniou/lebiniou_3.41-1_amd64.deb")
+sha512sums_i686=('2c6f5369bf3bc97a4fd069121c5d5dfc0971d691ebff8664f563755201ac7879e42c529fc3c0c702a79a54a554564d17166b984512e993151f166c2a501c204b')
+sha512sums_x86_64=('553b0b99c63725f076eda99553407a635b0b662153c6c6a188da24aed7d9b0d24699badf06b4baf7eeef313576fa54f194651b441dc2cf040018fc41a0692206')
 
 package(){
 
