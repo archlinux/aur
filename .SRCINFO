@@ -1,0 +1,29 @@
+pkgbase = minbif
+	pkgdesc = An IRC gateway to IM networks that uses libpurple.
+	pkgver = 1.0.5
+	pkgrel = 8
+	url = https://symlink.me/projects/minbif/wiki/
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = gnutls
+	depends = libcaca
+	depends = libpurple
+	optdepends = xinetd: to run minbif through xinetd
+	backup = etc/minbif/minbif.conf
+	backup = etc/minbif/minbif.motd
+	source = https://symlink.me/attachments/download/148/minbif-1.0.5.tar.gz
+	source = minbif-gcc-4.7.patch
+	source = minbif-imlib.patch
+	source = minbif.service
+	source = minbif.sysusers.conf
+	source = minbif.tmpfiles.conf
+	md5sums = 00c5c1abbe2b8a9d900961832c7909a8
+	md5sums = 2235c45d5bdb01e9ef4b11d2a41d49bb
+	md5sums = c94ea3152b7d279da25947e0d1deff14
+	md5sums = b34876e339a37dfb1dc6cd0b9d8edf9d
+	md5sums = f1a35ef1ab6cb2af5e5b1843b4b6a0d6
+	md5sums = a9835ad61bbb62b1b369b8710de05ffd
+
+pkgname = minbif
+

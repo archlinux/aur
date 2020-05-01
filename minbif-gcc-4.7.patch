@@ -1,0 +1,98 @@
+diff --git a/src/im/account.cpp b/src/im/account.cpp
+index f155334..21baa5f 100644
+--- a/src/im/account.cpp
++++ b/src/im/account.cpp
+@@ -18,6 +18,7 @@
+ 
+ #include <cassert>
+ #include <cstring>
++#include <unistd.h>
+ #ifdef HAVE_IMLIB
+ 	#include <Imlib2.h>
+ #endif /* HAVE_IMLIB */
+diff --git a/src/im/request.cpp b/src/im/request.cpp
+index e72cbc9..a247e3b 100644
+--- a/src/im/request.cpp
++++ b/src/im/request.cpp
+@@ -18,6 +18,7 @@
+ 
+ #include <errno.h>
+ #include <string.h>
++#include <unistd.h>
+ 
+ #include "request.h"
+ #include "buddy.h"
+diff --git a/src/irc/dcc.cpp b/src/irc/dcc.cpp
+index 6d05034..231122c 100644
+--- a/src/irc/dcc.cpp
++++ b/src/irc/dcc.cpp
+@@ -23,6 +23,7 @@
+ #include <string.h>
+ #include <sys/types.h>
+ #include <netinet/in.h>
++#include <unistd.h>
+ 
+ #include "dcc.h"
+ #include "nick.h"
+diff --git a/src/irc/irc.cpp b/src/irc/irc.cpp
+index 5d28acb..116d9db 100644
+--- a/src/irc/irc.cpp
++++ b/src/irc/irc.cpp
+@@ -246,7 +246,7 @@ Nick* IRC::getNick(string nickname, bool case_sensitive) const
+ Buddy* IRC::getNick(const im::Buddy& buddy) const
+ {
+ 	map<string, Nick*>::const_iterator it;
+-	Buddy* nb;
++	Buddy* nb = NULL;
+ 	for(it = users.begin();
+ 	    it != users.end() && (!(nb = dynamic_cast<Buddy*>(it->second)) || nb->getBuddy() != buddy);
+ 	    ++it)
+@@ -261,7 +261,7 @@ Buddy* IRC::getNick(const im::Buddy& buddy) const
+ ConvNick* IRC::getNick(const im::Conversation& conv) const
+ {
+ 	map<string, Nick*>::const_iterator it;
+-	ConvNick* n;
++	ConvNick* n = NULL;
+ 	for(it = users.begin();
+ 	    it != users.end() && (!(n = dynamic_cast<ConvNick*>(it->second)) || n->getConversation() != conv);
+ 	    ++it)
+diff --git a/src/server_poll/daemon_fork.cpp b/src/server_poll/daemon_fork.cpp
+index 53606a0..e205a61 100644
+--- a/src/server_poll/daemon_fork.cpp
++++ b/src/server_poll/daemon_fork.cpp
+@@ -20,7 +20,7 @@
+ #include <cassert>
+ #include <cstring>
+ #include <cerrno>
+-#include <glib/gmain.h>
++#include <glib.h>
+ #include <sys/socket.h>
+ #include <sys/stat.h>
+ #include <arpa/inet.h>
+diff --git a/src/server_poll/inetd.cpp b/src/server_poll/inetd.cpp
+index 291c40f..f747e74 100644
+--- a/src/server_poll/inetd.cpp
++++ b/src/server_poll/inetd.cpp
+@@ -17,7 +17,8 @@
+  */
+ 
+ #include <cassert>
+-#include <glib/gmain.h>
++#include <glib.h>
++#include <unistd.h>
+ 
+ #include "inetd.h"
+ #include "irc/irc.h"
+diff --git a/src/sockwrap/sockwrap.cpp b/src/sockwrap/sockwrap.cpp
+index f10755c..478c616 100644
+--- a/src/sockwrap/sockwrap.cpp
++++ b/src/sockwrap/sockwrap.cpp
+@@ -16,6 +16,8 @@
+  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  */
+ 
++#include <unistd.h>
++
+ #include "sockwrap.h"
+ #include "sockwrap_plain.h"
+ #ifdef HAVE_TLS
