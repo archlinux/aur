@@ -1,5 +1,6 @@
 
 # Maintainer: DJ Lucas <dj@lucasit.com>
+# Co-Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
 # Contributor: Michael Hansen <zrax0111 gmail com>
@@ -10,9 +11,9 @@
 # Contributor: Dhananjay Sathe <dhananjaysathe@gmail.com>
 
 pkgbase=samba-heimdal
-pkgbaseorig=samba
+_pkgbase=samba
 pkgname=('libwbclient-heimdal' 'smbclient-heimdal' 'samba-heimdal')
-pkgver=4.11.8
+pkgver=4.12.2
 pkgrel=1
 arch=(x86_64)
 url="https://www.samba.org"
@@ -20,12 +21,18 @@ license=('GPL3')
 makedepends=('python' 'docbook-xsl' 'pkg-config' 'libbsd' 'db' 'popt' 'libcups'
              'readline' 'tevent' 'acl' 'libldap' 'libcap' 'ldb-heimdal' 'krb5' 'pam'
              'systemd' 'gnutls' 'talloc' 'tdb' 'dbus' 'libaio'
-             'perl-parse-yapp' 'libnsl' 'libtirpc' 'rpcsvc-proto' 'jansson')
-source=(https://us1.samba.org/samba/ftp/stable/${pkgbaseorig}-${pkgver}.tar.gz
+             'perl-parse-yapp' 'libnsl' 'libtirpc' 'rpcsvc-proto' 'jansson'
+             'ceph-libs')
+optdepends=(
+             'python-dnspython: samba_dnsupdate and samba_upgradedns in AD setup'
+)
+source=(https://us1.samba.org/samba/ftp/stable/${_pkgbase}-${pkgver}.tar{.gz,.asc}
         samba.logrotate
         samba.pam
         samba.conf)
-sha512sums=('a036c46e060d9edc11bf4e45e0449042fe44b74ff083d305779c68dad943f87fb6d2680f3a68e6bbcd0b19c8c397ec9fc5794229a311c25dad9efc366add613a'
+validpgpkeys=('52FBC0B86D954B0843324CDC6F33915B6568B7EA') #Samba Distribution Verification Key <samba-bugs@samba.org>
+sha512sums=('c1d5f62ea2e43c246988aa65c4b690de232f73c0213cbc5d532e43c8cfbea17f1ac92435526b64c9a85c582b29381eecfb57713861efc32f6e6257000c393562'
+            'SKIP'
             '2ba0691ded467e4d6e40821f6de58c00f8962209efe2e60284c0c87756ab471c22c3d63b77d506e48c90ed0d852a2a24e41be1d499cf74a73cb99da0b503c858'
             '1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67'
             'e46ee848baabb261e7468ecee43aba4d001a24f86f5322ae522abdb75030fd0ebd9063b9df0be3576c4d1654d81331f5e389aee16ec2fa138259ae4728e94efc')
@@ -62,7 +69,9 @@ build() {
               --with-pammodulesdir=/usr/lib/security \
               --bundled-libraries=!tdb,!talloc,!pytalloc-util,!tevent,!popt,!ldb,!pyldb-util \
               --with-shared-modules=${_samba4_idmap_modules},${_samba4_pdb_modules},${_samba4_auth_modules} \
-              --disable-rpath-install
+              --disable-rpath-install \
+              --with-cluster-support \
+              --with-profiling-data
 
               # Add this to the options once it's working...
                #--with-system-mitkrb5 /opt/heimdal

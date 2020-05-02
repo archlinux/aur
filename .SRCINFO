@@ -1,5 +1,5 @@
 pkgbase = samba-heimdal
-	pkgver = 4.11.8
+	pkgver = 4.12.2
 	pkgrel = 1
 	url = https://www.samba.org
 	arch = x86_64
@@ -30,11 +30,16 @@ pkgbase = samba-heimdal
 	makedepends = libtirpc
 	makedepends = rpcsvc-proto
 	makedepends = jansson
-	source = https://us1.samba.org/samba/ftp/stable/samba-4.11.8.tar.gz
+	makedepends = ceph-libs
+	optdepends = python-dnspython: samba_dnsupdate and samba_upgradedns in AD setup
+	source = https://us1.samba.org/samba/ftp/stable/samba-4.12.2.tar.gz
+	source = https://us1.samba.org/samba/ftp/stable/samba-4.12.2.tar.asc
 	source = samba.logrotate
 	source = samba.pam
 	source = samba.conf
-	sha512sums = a036c46e060d9edc11bf4e45e0449042fe44b74ff083d305779c68dad943f87fb6d2680f3a68e6bbcd0b19c8c397ec9fc5794229a311c25dad9efc366add613a
+	validpgpkeys = 52FBC0B86D954B0843324CDC6F33915B6568B7EA
+	sha512sums = c1d5f62ea2e43c246988aa65c4b690de232f73c0213cbc5d532e43c8cfbea17f1ac92435526b64c9a85c582b29381eecfb57713861efc32f6e6257000c393562
+	sha512sums = SKIP
 	sha512sums = 2ba0691ded467e4d6e40821f6de58c00f8962209efe2e60284c0c87756ab471c22c3d63b77d506e48c90ed0d852a2a24e41be1d499cf74a73cb99da0b503c858
 	sha512sums = 1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67
 	sha512sums = e46ee848baabb261e7468ecee43aba4d001a24f86f5322ae522abdb75030fd0ebd9063b9df0be3576c4d1654d81331f5e389aee16ec2fa138259ae4728e94efc
@@ -52,7 +57,7 @@ pkgname = smbclient-heimdal
 	depends = popt
 	depends = cifs-utils
 	depends = tdb
-	depends = libwbclient-heimdal>=4.11.8
+	depends = libwbclient-heimdal>=4.12.2
 	depends = ldb-heimdal
 	depends = tevent
 	depends = libgcrypt
@@ -89,7 +94,7 @@ pkgname = samba-heimdal
 	depends = tdb
 	depends = libaio
 	depends = perl-parse-yapp
-	depends = smbclient-heimdal>=4.11.8
+	depends = smbclient-heimdal>=4.12.2
 	depends = gpgme
 	depends = libldb.so
 	depends = libtdb.so
