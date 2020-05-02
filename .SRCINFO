@@ -1,6 +1,6 @@
 pkgbase = listen1-desktop
 	pkgdesc = one for all free music in china (Build from source)
-	pkgver = 2.5.1
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://github.com/listen1/listen1_desktop
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = listen1-desktop
 	depends = electron
 	provides = listen1
 	conflicts = listen1
-	source = listen1-desktop-2.5.1.src.tar.gz::https://github.com/listen1/listen1_desktop/archive/v2.5.1.tar.gz
+	source = listen1-desktop-2.7.2.src.tar.gz::https://github.com/listen1/listen1_desktop/archive/v2.7.2.tar.gz
 	source = git://github.com/listen1/listen1_chrome_extension.git
-	sha256sums = 86ba4aa7f2e00555a48eea02f915f277fabce9b5cbbc2be9faf7df71cbdfb999
+	sha256sums = e284b1315e3a2e321fe99d05f153cb5bdad6a6c94f1a2602f35beb847b083baa
 	sha256sums = SKIP
 
 pkgname = listen1-desktop

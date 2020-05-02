@@ -1,6 +1,6 @@
 # Maintainer: Bruce Zhang
 pkgname=listen1-desktop
-pkgver=2.5.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="one for all free music in china (Build from source)"
 arch=('x86_64' 'i686')
@@ -14,12 +14,11 @@ source=(
 	"$pkgname-$pkgver.src.tar.gz::https://github.com/listen1/listen1_desktop/archive/v$pkgver.tar.gz"
 	"git://github.com/listen1/listen1_chrome_extension.git"
 )
-sha256sums=('86ba4aa7f2e00555a48eea02f915f277fabce9b5cbbc2be9faf7df71cbdfb999'
+sha256sums=('e284b1315e3a2e321fe99d05f153cb5bdad6a6c94f1a2602f35beb847b083baa'
             'SKIP')
 
 prepare() {
 	cd "${pkgname/-/_}-$pkgver"
-	sed -i '/"electron": ".*/d' package.json
 	electronDist="\/usr\/lib\/electron"
 	sed -i '/"tar.gz",/d' package.json
     sed -i '/"deb"/d' package.json
@@ -40,7 +39,7 @@ package() {
 
 	# Install asar file
 	install -Dm644 resources/app.asar "$pkgdir/usr/share/listen1/app.asar"
-	
+
 	# Install start script
 	echo "#!/usr/bin/env sh
 exec electron /usr/share/listen1/app.asar" > "$srcdir/listen1.sh"
