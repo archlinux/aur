@@ -9,7 +9,7 @@ pkgbase = tmfs
 	makedepends = cmake
 	makedepends = ninja
 	depends = fuse2
-	source = tmfs::git://github.com/abique/tmfs#tag=r6
+	source = tmfs::git://github.com/abique/tmfs#tag=r7
 	md5sums = SKIP
 
 pkgname = tmfs

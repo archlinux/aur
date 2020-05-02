@@ -1,14 +1,14 @@
 # Maintainer: Alexandre Bique <bique.alexandre@gmail.com>
 pkgname=tmfs
-pkgver=r6
-pkgrel=2
+pkgver=r7
+pkgrel=1
 pkgdesc="Apple's Time Machine fuse read only file system"
 arch=('i686' 'x86_64')
 url="https://github.com/abique/tmfs"
 license=('MIT')
 depends=('fuse2')
 makedepends=(cmake ninja)
-source=(tmfs::git://github.com/abique/tmfs#tag=r6)
+source=(tmfs::git://github.com/abique/tmfs#tag=r7)
 md5sums=('SKIP')
 
 build() {
