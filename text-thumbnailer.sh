@@ -8,12 +8,6 @@ fi
 SIZE="$1"
 INPUT_FILE_NAME="$2"
 OUTPUT_FILE_NAME="$3"
-CHOPPED_FILE_NAME="/tmp/$(basename "$INPUT_FILE_NAME").chopped"
+CHOPPED_FILE_CONTENT="$(head --lines=50 "$INPUT_FILE_NAME")"
 
-iFile=$(<"$INPUT_FILE_NAME")
-iChopped="${iFile:0:1600}"
-unset iFile
-echo "${iChopped}" > "$CHOPPED_FILE_NAME"
-unset iChopped
-convert -size 210x290 -background white -pointsize 5 -border 10x10 -bordercolor "#CCC" caption:@"$CHOPPED_FILE_NAME" "$OUTPUT_FILE_NAME"
-rm "$CHOPPED_FILE_NAME"
+convert -size ${SIZE}x${SIZE} -background white -pointsize 10 -border 5x5 -bordercolor "#CCC" caption:"$CHOPPED_FILE_CONTENT" "$OUTPUT_FILE_NAME"

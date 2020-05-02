@@ -3,5 +3,5 @@ Version=1.0
 Encoding=UTF-8
 Type=X-Thumbnailer
 Name=Text Thumbnailer
-MimeType=text/plain;text/html;text/css;
+MimeType=text/asp;text/css;text/ecmascript;text/html;text/javascript;text/mcf;text/pascal;text/plain;text/richtext;text/scriplet;text/sgml;text/tab-separated-values;text/uri-list;text/vnd.abc;text/vnd.fmi.flexstor;text/vnd.rn-realtext;text/vnd.wap.wml;text/vnd.wap.wmlscript;text/webviewhtml;text/x-asm;text/x-audiosoft-intra;text/x-c;text/x-component;text/x-fortran;text/x-h;text/x-java-source;text/x-la-asf;text/x-m;text/xml;text/x-pascal;text/x-script;text/x-script.csh;text/x-script.elisp;text/x-script.guile;text/x-script.ksh;text/x-script.lisp;text/x-script.perl;text/x-script.perl-module;text/x-script.phyton;text/x-script.rexx;text/x-script.scheme;text/x-script.sh;text/x-script.tcl;text/x-script.tcsh;text/x-script.zsh;text/x-server-parsed-html;text/x-setext;text/x-sgml;text/x-speech;text/x-uil;text/x-uuencode;text/x-vcalendar;
 Exec=/usr/bin/text-thumbnailer %s %i %o
