@@ -1,0 +1,4 @@
+/pkg/
+*.xz
+*.tgz
+/src/
