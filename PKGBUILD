@@ -1,14 +1,15 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
-pkgname=sway-git
-_pkgname=sway
-pkgver=r5942.3f77591b
+# Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
+pkgname=sway-hidpi-git
+_pkgname=sway-hidpi
+pkgver=r6341.ae3ec745
 pkgrel=1
 license=("MIT")
-pkgdesc="i3-compatible Wayland compositor"
+pkgdesc="i3-compatible Wayland compositor, with XWayland HiDPI"
 makedepends=("meson" "git" "scdoc" "wayland-protocols" "ninja")
 depends=(
-	"json-c" "pcre" "wlroots-git" "cairo" "pango" "gdk-pixbuf2" "pam"
-	"xorg-server-xwayland" "swaybg-git"
+	"json-c" "pcre" "wlroots-hidpi-git" "cairo" "pango" "gdk-pixbuf2" "pam"
+	"xorg-server-xwayland-hidpi-git" "swaybg-git" "xsettingsd"
 )
 optdepends=(
 	"alacritty: Default terminal emulator."
@@ -19,8 +20,10 @@ optdepends=(
 )
 arch=("i686" "x86_64")
 url="https://swaywm.org"
-source=("${pkgname%-*}::git+https://github.com/swaywm/sway.git")
-sha512sums=('SKIP')
+source=("${pkgname%-*}::git+https://github.com/swaywm/sway.git"
+        "https://github.com/swaywm/sway/pull/5090.diff")
+sha512sums=('SKIP'
+            'SKIP')
 provides=("sway")
 conflicts=("sway")
 options=(debug !strip)
@@ -32,6 +35,7 @@ pkgver() {
 
 prepare() {
 	cd "$_pkgname"
+	patch -Np1 -i ../5090.diff
 }
 
 build() {
