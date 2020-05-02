@@ -6,7 +6,7 @@ pkgname=(
 	"nginx-zest-src-git"
 )
 pkgver=1.17.10
-pkgrel=2
+pkgrel=4
 epoch=3
 arch=(
 	"x86_64"
@@ -132,9 +132,6 @@ prepare()
 	git submodule update --init
 
 	cd "deps/boringssl" || exit
-
-	#* Checkout to a newer BoringSSL to fix an error that Clang picks up
-	git checkout 21f694210c9232d6ab926d029c315ae6069c7dbb
 
 	cd "../../../zlib" || exit
 	[ -f Makefile ] && make clean
