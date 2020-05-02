@@ -1,6 +1,6 @@
 # Maintainer: Dmitry Kozlyuk <dmitry.kozliuk@gmail.com>
 pkgname=sciter-notes-bin
-pkgver='4.2.7.3'
+pkgver='4.3.0.9'
 pkgrel=1
 pkgdesc='Evernote-like app based on Sciter SDK'
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=(gtk3)
 source=('https://notes.sciter.com/distributions/sciter-notes.tar.gz'
         'https://raw.githubusercontent.com/c-smile/sciter-sdk/master/license.htm')
 noextract=('license.htm')
-md5sums=('2ff93ba8eebeb71bfeb052e5ce09209a'
+md5sums=('3df3d7feaa1b26fcddd8e4fc66a70e08'
          'ee2065beedad9ac9a8bd53d63c8922a7')
 
 package() {
