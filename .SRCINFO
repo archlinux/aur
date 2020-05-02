@@ -1,0 +1,26 @@
+pkgbase = gperftools-aarch64-tls-fix
+	pkgdesc = Fast, multi-threaded malloc and nifty performance analysis tools (patched to fix TLS errors on aarch64)
+	pkgver = 2.7
+	pkgrel = 1
+	url = https://github.com/gperftools/gperftools
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = perl
+	optdepends = graphviz: pprof graph generation
+	optdepends = gv: pprof postscript generation
+	provides = libtcmalloc.so
+	provides = libprofiler.so
+	provides = libtcmalloc_debug.so
+	provides = libtcmalloc_and_profiler.so
+	provides = libtcmalloc_minimal.so
+	provides = libtcmalloc_minimal_debug.so
+	provides = gperftools=2.7
+	conflicts = gperftools
+	source = git+https://github.com/gperftools/gperftools#tag=gperftools-2.7
+	source = gperftools-2.7-disable-generic-dynamic-tls.patch
+	sha512sums = SKIP
+	sha512sums = 6181eb88ee4e39aa55f7d9c8caa94a1cecd64ae9960c148b85b3192579f3336988342d6532fbec840c757010c116c739527c436a82c9ed4afcc99257f4cb6e56
+
+pkgname = gperftools-aarch64-tls-fix
+
