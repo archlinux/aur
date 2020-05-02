@@ -1,0 +1,17 @@
+Common subdirectories: castor/data and castor-makefile/data
+Common subdirectories: castor/.git and castor-makefile/.git
+diff -u castor/Makefile castor-makefile/Makefile
+--- castor/Makefile	2020-04-24 23:57:59.119673418 +0200
++++ castor-makefile/Makefile	2020-04-24 23:58:41.033151139 +0200
+@@ -29,8 +29,8 @@
+ # Install the data files and update the caches
+ install-data : copy-data
+ 	# Force icon cache refresh
+-	touch $(sharedir)/icons/hicolor
+-	update-desktop-database
++	#touch $(sharedir)/icons/hicolor
++	#update-desktop-database
+ 
+ # Just copy the data files, without updating caches
+ copy-data :
+Common subdirectories: castor/src and castor-makefile/src

@@ -4,7 +4,7 @@
 
 _pkgname=castor
 pkgname=castor-git
-pkgver=0.4.0.r1.g7f50a34
+pkgver=0.7.0.r6.g188cd6c
 pkgrel=1
 pkgdesc="A gemini, gopher and finger graphical client"
 arch=('i686' 'x86_64')
@@ -13,9 +13,9 @@ license=('unknown')
 depends=('gtk3' 'gdk-pixbuf2' 'pango' 'atk' 'cairo' 'openssl')
 makedepends=('git' 'rust' 'cargo')
 source=("${_pkgname}::git+${url}"
-        'castor-0.4.0-install.patch')
+        castor-0.7.0-makefile.patch)
 sha256sums=('SKIP'
-            'a659bb60626aa505b6f61f2a4669304a9806717858c79facc69b101879e4d0e2')
+            '5ac7e5460d00176db71ec0d7972af1adee58c57dd9d7dff29ddecbadb07f4ee9')
 
 pkgver() {
   cd "${_pkgname}"
@@ -29,7 +29,7 @@ prepare() {
   cd "${_pkgname}"
 
   # Fix installing to pkgdir
-  patch -p1 -i ../castor-0.4.0-install.patch
+  patch -p1 -i ../castor-0.7.0-makefile.patch
 }
 
 build() {
