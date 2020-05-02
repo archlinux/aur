@@ -1,3 +1,3 @@
 #!/bin/sh
-cd /usr/lib/emuMenu
+cd /usr/share/emuMenu
 python3 emuMenu.py

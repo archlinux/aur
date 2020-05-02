@@ -20,7 +20,7 @@ pkgver() {
 
 package() {
   cd "$_pkgname"
-  mkdir -p $pkgdir/usr/lib/$_pkgname
-  cp -r * $pkgdir/usr/lib/$_pkgname/
+  mkdir -p $pkgdir/usr/share/$_pkgname
+  cp -r * $pkgdir/usr/share/$_pkgname/
   install -Dm755 $srcdir/$_pkgname.sh $pkgdir/usr/bin/$_pkgname
 }

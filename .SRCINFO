@@ -5,16 +5,14 @@ pkgbase = emumenu-git
 	url = https://github.com/fuzzbop/emuMenu
 	arch = i686
 	arch = x86_64
-	license = QPL
-	license = GPL2
-	license = GPLv3
+	license = GPL3
 	makedepends = git
 	depends = python
 	depends = python-pyqt5
 	source = git+https://github.com/fuzzbop/emuMenu.git
 	source = emuMenu.sh
 	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = dd70b56ed235fffd3fafce2f6491fc39
 
 pkgname = emumenu-git
 
