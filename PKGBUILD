@@ -5,11 +5,12 @@ pkgrel=1
 pkgdesc="emuMenu is a simple rom launcher made with very large collections and no flair in mind."
 arch=('i686' 'x86_64')
 url="https://github.com/fuzzbop/emuMenu"
-license=('QPL' 'GPL2' 'GPLv3')
+license=('GPL3')
 depends=('python' 'python-pyqt5')
 makedepends=('git')
 source=("git+$url.git" "emuMenu.sh")
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP' 
+         'dd70b56ed235fffd3fafce2f6491fc39')
 _pkgname=emuMenu
 
 pkgver() {
