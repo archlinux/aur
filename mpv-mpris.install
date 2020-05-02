@@ -1,4 +1,5 @@
 post_install() {
+  mkdir /etc/mpv/scripts
   ln -s /usr/lib/mpv/mpris.so /etc/mpv/scripts/mpris.so
   echo ">>> If you don't want this plugin to autoload, delete the symlink at /etc/mpv/scripts/mpris.so."
 }
