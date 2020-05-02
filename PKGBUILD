@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-native
-_srctag=5.0-6
+_srctag=5.0-7
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=4.9.4
@@ -136,7 +136,7 @@ sha256sums=(
     'b9e8443c3f1949cc8b0d311594aa46cbfb79da48c3f00e95c97e87656368dd49'
     'f12df8e1e2dcb6bcced6fdccfdf044b2dc55714712efd577fd5d92abfad0f5c5'
     '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
-    '15fc8d8a4465ffc69897f0264ecb08d95f4b0fb00ec45dc8cb542f14c8808ef3'
+    'bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98'
 )
 
 prepare() {
