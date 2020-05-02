@@ -1,4 +1,4 @@
-#Maintainer: fuzzbop <d34dh4ck@gmail.com>
+#Maintainer: fuzzbop <fuzzbop@gmail.com>
 
 pkgname=mkxp-z-git
 pkgver=v1.2.2.r22.g61dfe1c
