@@ -1,7 +1,7 @@
 pkgbase = scream
 	pkgdesc = A Scream audio receiver using Pulseaudio, ALSA or stdout as audio output
 	pkgver = 3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/duncanthrax/scream
 	arch = x86_64
 	license = custom:MS-PL
@@ -11,6 +11,8 @@ pkgbase = scream
 	provides = scream-ivshmem-pulse
 	provides = scream-alsa
 	provides = scream-ivshmem-alsa
+	conflicts = scream-pulse
+	conflicts = scream-alsa
 	source = https://github.com/duncanthrax/scream/archive/3.5.tar.gz
 	sha256sums = 76170ea86a3024512078b395d4d557434d00cf9a6be9ddb298bf64eff191460c
 
