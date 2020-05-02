@@ -8,20 +8,20 @@ _name=thunderbird
 _channel=nightly
 _lang=it
 pkgname=${_name}-${_channel}-${_lang}
-pkgver=71.0a1
-_version=71.0a1
+pkgver=77.0a1
+_version=77.0a1
 pkgrel=1
 pkgdesc="Standalone Mail/News reader - Nightly build (${_lang})"
 arch=('i686' 'x86_64')
 url="http://www.mozilla.org/it/thunderbird"
 license=('MPL' 'GPL' 'LGPL')
 depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig'
-         'freetype2' 'gtk2' 'hicolor-icon-theme' 'hunspell' 'libevent' 'libjpeg'
+         'freetype2' 'gtk3' 'hicolor-icon-theme' 'hunspell' 'libevent' 'libjpeg'
          'libmng' 'libpng' 'libvpx' 'libxt' 'mozilla-common' 'nspr' 'nss'
          'shared-mime-info' 'sqlite' 'startup-notification')
 optdepends=('libcanberra: for sound support')
-provides=("thunderbird=$_version")
-install="$pkgname.install"
+provides=("thunderbird=${_version}")
+install="${pkgname}.install"
 
 FX_SRC_EN="${_name}-${_version}.en-US.linux-${CARCH}"
 FX_SRC_URI_EN="https://download-installer.cdn.mozilla.net/pub/${_name}/${_channel}/latest-comm-central/${FX_SRC_EN}"
@@ -39,20 +39,18 @@ sha512sums=('SKIP'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
 
 pkgver(){
-    cd "${srcdir}"
     echo "${_version}.$(head -n1 "${FX_SRC_EN}.txt" |cut -c -8)"
 }
 
 package() {
-    cd "$srcdir"
-    install -d "${pkgdir}"/{usr/bin,opt}
-    cp -a thunderbird "$pkgdir/opt/${pkgname}-${pkgver}"
-    cp vendor.js "${pkgdir}/opt/${pkgname}-${pkgver}/defaults/pref/"
-    ln -s "/opt/${pkgname}-${pkgver}/thunderbird" "${pkgdir}/usr/bin/${pkgname}"
-    for i in 16x16 32x32 48x48 64x64 128x128; do
-        install -Dm644 thunderbird/chrome/icons/default/default${i/x*/}.png "$pkgdir/usr/share/icons/hicolor/$i/apps/${pkgname}.png"
-    done
-    install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    rm -rf "${pkgdir}/opt/${pkgname}-${pkgver}/dictionaries/"
-    ln -sf /usr/share/hunspell/ "${pkgdir}/opt/${pkgname}-${pkgver}/dictionaries"
+  install -d "${pkgdir}"/{usr/bin,opt}
+  cp -a thunderbird "${pkgdir}"/opt/${pkgname}-${pkgver}
+  cp vendor.js "${pkgdir}"/opt/${pkgname}-${pkgver}/defaults/pref/
+  ln -s /opt/${pkgname}-${pkgver}/thunderbird "${pkgdir}"/usr/bin/${pkgname}
+  for i in 16x16 32x32 48x48 64x64 128x128; do
+      install -Dm644 thunderbird/chrome/icons/default/default${i/x*/}.png "${pkgdir}"/usr/share/icons/hicolor/${i}/apps/${pkgname}.png
+  done
+  install -Dm644 ${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
+  rm -rf "${pkgdir}"/opt/${pkgname}-${pkgver}/dictionaries/
+  ln -sf /usr/share/hunspell/ "${pkgdir}"/opt/${pkgname}-${pkgver}/dictionaries
 }
