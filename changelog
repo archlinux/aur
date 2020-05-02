@@ -1,3 +1,13 @@
+2020-05-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.2.0.6-1:
+    Added linux-arm64 variant to ASF releases, check compatibility section for more info (#1728).
+    Corrected some small problems related to new stream functions that were introduced as part of the previous release.
+    Fixed Debug mode not logging the network traffic properly since V4.2.0.0.
+    Improved Debug mode, which will now use BotName as the logging context identifier.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
+    [Deprecation for plugin creators] Functions deprecated in the previous release have been removed.
 2020-04-04 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.2.0.1-1:
     [!] ASF V4.2 comes with rewritten implementation responsible for handling HTML documents, which is expected to reduce memory footprint and increase performance when dealing with HTML parsing. While this change is expected to be fully compatible for end users, old ASF plugins utilizing HtmlDocument functions will require appropriate changes (#1703).
