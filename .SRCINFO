@@ -1,7 +1,7 @@
 pkgbase = qmplay2-git
 	pkgdesc = QMPlay2 is a video and audio player which can play most formats and codecs
-	pkgver = 19.12.19
-	pkgrel = 4
+	pkgver = 20.05.02.r0.g0b73f2ee
+	pkgrel = 1
 	url = https://github.com/zaps166/QMPlay2
 	arch = i686
 	arch = x86_64
@@ -37,7 +37,11 @@ pkgbase = qmplay2-git
 	optdepends = game_music_emu-kode54-git: Better chiptune support (less bugs in sound, AUR package)
 	provides = qmplay2
 	conflicts = qmplay2
-	source = git+https://github.com/zaps166/QMPlay2
+	source = git+https://github.com/zaps166/QMPlay2.git
+	source = git+https://github.com/zaps166/QmVk.git
+	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = qmplay2-git
