@@ -1,8 +1,8 @@
 # Maintainer: Bence Hornák <bence.hornak@gmail.com>
 
 pkgname=theia-electron
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.1.0
+pkgrel=1
 arch=('any')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
@@ -20,7 +20,7 @@ source=(
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE"
 )
 md5sums=('c022f460c0d928df6c1ece9d3044b008'
-         '5eb49842d52aa16e7310064c0fef9900'
+         'eedf58bc5c40030b29610291718a960a'
          'b316dead79fa33f45c8d689a1c940dab'
          '1dde0e422484895d3509f4ee9bb8d980'
          '93f06061d9ad92aeaaccbc9b36421eb5')
