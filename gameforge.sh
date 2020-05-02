@@ -16,7 +16,7 @@ if [ ! -f "$HOME"/.gameforge/wine/drive_c/windows/system32/vcruntime140.dll ]; t
   winetricks -q vcrun2019
   winetricks settings win10
 fi
-cd $HOME/.gameforge/wine/drive_c/Program\ Files\ \(x86\)/
+cd $HOME/.gameforge/wine/drive_c/Program\ Files/
 
 if [ ! -f GameforgeClient/gfclient.exe ]; then
   wine $HOME/.gameforge/wine/GameForgeInstaller.exe
