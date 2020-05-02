@@ -1,0 +1,11 @@
+pkgbase = chkascii
+	pkgdesc = Check a file for any invalid ASCII characters
+	pkgver = 2.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	source = chkascii-2.0.tar.gz::https://github.com/bourne-again/chkascii/archive/2.0.tar.gz
+	md5sums = 9cb1668377f6f18fc0fe6981461b4c9e
+
+pkgname = chkascii
+
