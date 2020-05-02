@@ -1,6 +1,6 @@
 pkgbase = python-scikit-fuzzy
 	pkgdesc = A fuzzy logic toolkit for SciPy
-	pkgver = 0.3.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/scikit-fuzzy/scikit-fuzzy
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = python-scikit-fuzzy
 	makedepends = python2-numpy
 	makedepends = python2-scipy
 	makedepends = python2-networkx
-	source = scikit-fuzzy-0.3.1.tar.gz::https://github.com/scikit-fuzzy/scikit-fuzzy/archive/0.3.1.tar.gz
-	sha256sums = 0c5f89f2c5602cb6ebd4f88217b3159ff3171819fb3c83f5e36cc675b71f174a
+	source = scikit-fuzzy-0.4.2.tar.gz::https://github.com/scikit-fuzzy/scikit-fuzzy/archive/v0.4.2.tar.gz
+	sha256sums = b4041e16b0e19a171bae3e830703e55fe17c35d41d81acd0457826b5112e9df3
 
 pkgname = python-scikit-fuzzy
 	depends = python
