@@ -2,7 +2,7 @@
 
 pkgname=python-tableone
 _name=${pkgname#python-}
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Create \"Table 1\" for research papers in Python"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-tabulate' 'python-pandas' 'python-numpy' 'python-scipy' 'python-statsmodels')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('6ba04e8337eb4e117109df317878486b865a153c6b293bca5ca6ce2f046b48e3')
+sha256sums=('04436a76eb9ad922742dbcb4ffd52b54aed0a5362b2f753d59ecbbf1065bbb85')
 
 prepare() {
 	cd "$_name-$pkgver"
