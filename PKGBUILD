@@ -1,6 +1,6 @@
 # Maintainer: TheBitStick <the at bitstick dot rip>
 pkgname=xdg-break
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Script that sends a notification to remind you to take a break"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('git')
 provides=('xdg-break')
 conflicts=('xdg-break')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('a5681072a7c1a2aa156feb874c8f7ce8459b4fe598ea0abfe98b49b6285abb943708474fbb7de60b2b0ad7ef67310f1bfc65e149c97e968032c1799517735428')
+sha512sums=('7fa90f89ddf664f0929953be1aea457f05159781b13ef27b015fe9a479a93d69c0355ef2cbc2f019f557ab1e6f6eaf0b8952185b80de0126e4806573c4445960')
 
 package() {
 	cd "$pkgname-$pkgver"
