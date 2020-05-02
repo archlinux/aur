@@ -2,7 +2,7 @@
 
 pkgname=pilgo-bin
 _binname=plg
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=2
 pkgdesc='Configuration-based symlink farm manager CLI and framework'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("$url/releases/download/v$pkgver/linux.tar.gz")
-sha256sums=('cdd17a47ae8d89404416df2fc151cf287b638a06ee3b29e286a635565017cdab')
+sha256sums=('1763520058af9d25c480530500ef85693bf0cc700d41e86125f85794c9b09914')
 
 package() {
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname%-bin}/"
