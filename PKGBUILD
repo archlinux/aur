@@ -11,7 +11,7 @@
 
 pkgname=lib32-mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=20.1.0_devel.122510.adeef43d150
+pkgver=20.2.0_devel.123280.f1a40a26a90
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -114,6 +114,7 @@ build () {
         -D egl=true \
         -D gallium-extra-hud=true \
         -D vulkan-overlay-layer=true \
+        -D vulkan-device-select-layer=true \
         -D gallium-nine=true \
         -D gallium-omx=disabled \
         -D gallium-opencl=disabled \
