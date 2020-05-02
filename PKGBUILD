@@ -1,7 +1,7 @@
 # Maintainer: Mario Moura <mario.henrique@protonmail.com>
 pkgname=packit
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="network packet generator and capture tool"
 arch=('any')
 url="https://github.com/resurrecting-open-source-projects/packit"

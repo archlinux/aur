@@ -1,7 +1,7 @@
 pkgbase = packit
 	pkgdesc = network packet generator and capture tool
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/resurrecting-open-source-projects/packit
 	changelog = Changelog
 	arch = any
