@@ -1,7 +1,7 @@
 # Maintainer: faith <valters.tomsons@protonmail.com>
 pkgname=yuzu-mainline-git-bin
-pkgver=0.0.1
-pkgrel=1
+pkgver=0.0.2
+pkgrel=2
 pkgdesc='Open-source emulator for Nintendo Switch (git)'
 arch=('x86_64')
 url='https://github.com/yuzu-emu/yuzu-mainline'
@@ -14,7 +14,19 @@ options=(!strip)
 prepare()
 {
 	cd "$srcdir"
-	curl -s https://api.github.com/repos/yuzu-emu/yuzu-mainline/releases/latest | grep "/yuzu-linux.*.tar.xz" | cut -d : -f 2,3 | tr -d \" | wget -O yuzu-linux.tar.xz -qi -
+	echo "Getting latest release url..."
+	yuzuurl=$(curl https://api.github.com/repos/yuzu-emu/yuzu-mainline/releases/latest | grep "/yuzu-linux.*.tar.xz" | cut -d : -f 2,3 | tr -d \")
+
+	if [ -z "$yuzuurl" ]
+	then
+		echo "Failed to retrieve yuzu url, exiting..."
+		exit 1
+	else
+		echo "Url found: $yuzuurl"
+	fi
+
+	echo "Downloading yuzu github release..."
+	curl -L $yuzuurl --output yuzu-linux.tar.xz
 }
 
 package()
