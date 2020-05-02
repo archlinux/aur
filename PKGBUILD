@@ -2,18 +2,18 @@
 # Contributor: Yurii Kolesnykov <root@yurikoles.com>
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
-
-pkgbase=xorg-server-git
+# Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
+pkgbase=xorg-server-hidpi-git
 pkgname=(
-  'xorg-server-git'
-  'xorg-server-xephyr-git'
-  'xorg-server-xvfb-git'
-  'xorg-server-xnest-git'
-  'xorg-server-xwayland-git'
-  'xorg-server-common-git'
-  'xorg-server-devel-git')
+  'xorg-server-hidpi-git'
+  'xorg-server-xephyr-hidpi-git'
+  'xorg-server-xvfb-hidpi-git'
+  'xorg-server-xnest-hidpi-git'
+  'xorg-server-xwayland-hidpi-git'
+  'xorg-server-common-hidpi-git'
+  'xorg-server-devel-hidpi-git')
 _pkgbase='xserver'
-pkgver=1.20.0.r578.g49456e0a3
+pkgver=1.20.0.r642.g9890e9126
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -27,10 +27,12 @@ makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'xtrans'
              'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols' 'egl-wayland' 'meson' 'git')
 source=(git+https://gitlab.freedesktop.org/xorg/xserver.git
         xvfb-run
-        xvfb-run.1)
+        xvfb-run.1
+        https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/432.diff)
 sha256sums=('SKIP'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
-            '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
+            '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
+            'SKIP')
 
 pkgver() {
   cd "${_pkgbase}"
@@ -40,7 +42,11 @@ pkgver() {
 
 prepare() {
   cd "${_pkgbase}"
+
+  patch -Np1 -i ../xserver-432.diff
+
   cd ..
+
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
   # With them, module fail to load with undefined symbol.
   # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
@@ -85,7 +91,7 @@ build() {
   export CFLAGS=${CFLAGS/-fno-plt}
   export CXXFLAGS=${CXXFLAGS/-fno-plt}
   export LDFLAGS=${LDFLAGS/,-z,now}
-  
+
   ninja -C build
 
   # fake installation to be seperated into packages
@@ -102,7 +108,7 @@ _install() {
   done
 }
 
-package_xorg-server-common-git() {
+package_xorg-server-common-hidpi-git() {
   _pkgname='xorg-server-common'
   provides=('xorg-server-common')
   conflicts=('xorg-server-common')
@@ -117,10 +123,10 @@ package_xorg-server-common-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
 }
 
-package_xorg-server-git() {
+package_xorg-server-hidpi-git() {
   _pkgname='xorg-server'
   pkgdesc="Xorg X server (git version)"
-  depends=(libepoxy libxfont2 pixman xorg-server-common-git libunwind
+  depends=(libepoxy libxfont2 pixman xorg-server-common-hidpi-git libunwind
            dbus libgl xf86-input-libinput nettle
            libpciaccess libdrm libxshmfence) # FS#52949
 
@@ -147,12 +153,12 @@ package_xorg-server-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
 }
 
-package_xorg-server-xephyr-git() {
+package_xorg-server-xephyr-hidpi-git() {
   _pkgname='xorg-server-xephyr'
   provides=('xorg-server-xephyr')
   conflicts=('xorg-server-xephyr')
   pkgdesc="A nested X server that runs as an X application (git version)"
-  depends=(libxfont2 libgl libepoxy libunwind systemd-libs libxv pixman xorg-server-common-git
+  depends=(libxfont2 libgl libepoxy libunwind systemd-libs libxv pixman xorg-server-common-hidpi-git
            xcb-util-image xcb-util-renderutil xcb-util-wm xcb-util-keysyms
            nettle libtirpc)
 
@@ -163,12 +169,12 @@ package_xorg-server-xephyr-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
 }
 
-package_xorg-server-xvfb-git() {
+package_xorg-server-xvfb-hidpi-git() {
   _pkgname='org-server-xvfb'
   provides=('xorg-server-xvfb')
   conflicts=('xorg-server-xvfb')
   pkgdesc="Virtual framebuffer X server (git version)"
-  depends=(libxfont2 libunwind pixman xorg-server-common-git xorg-xauth libgl nettle)
+  depends=(libxfont2 libunwind pixman xorg-server-common-hidpi-git xorg-xauth libgl nettle)
 
   _install fakeinstall/usr/bin/Xvfb
   _install fakeinstall/usr/share/man/man1/Xvfb.1
@@ -180,12 +186,12 @@ package_xorg-server-xvfb-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
 }
 
-package_xorg-server-xnest-git() {
+package_xorg-server-xnest-hidpi-git() {
   _pkgname='xorg-server-xnest'
   provides=('xorg-server-xnest')
   conflicts=('xorg-server-xnest')
   pkgdesc="A nested X server that runs as an X application (git version)"
-  depends=(libxfont2 libxext pixman xorg-server-common-git nettle libtirpc)
+  depends=(libxfont2 libxext pixman xorg-server-common-hidpi-git nettle libtirpc)
 
   _install fakeinstall/usr/bin/Xnest
   _install fakeinstall/usr/share/man/man1/Xnest.1
@@ -194,12 +200,12 @@ package_xorg-server-xnest-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
 }
 
-package_xorg-server-xwayland-git() {
+package_xorg-server-xwayland-hidpi-git() {
   _pkgname='xorg-server-xwayland'
   provides=('xorg-server-xwayland')
   conflicts=('xorg-server-xwayland')
   pkgdesc="run X clients under wayland (git version)"
-  depends=(libxfont2 libepoxy libunwind systemd-libs libgl pixman xorg-server-common-git
+  depends=(libxfont2 libepoxy libunwind systemd-libs libgl pixman xorg-server-common-hidpi-git
            nettle libtirpc)
 
   _install fakeinstall/usr/bin/Xwayland
@@ -208,7 +214,7 @@ package_xorg-server-xwayland-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
 }
 
-package_xorg-server-devel-git() {
+package_xorg-server-devel-hidpi-git() {
   _pkgname='xorg-server-devel'
   provides=('xorg-server-devel')
   conflicts=('xorg-server-devel')
