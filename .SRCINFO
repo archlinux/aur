@@ -1,0 +1,11 @@
+pkgbase = poshinit
+	pkgdesc = Set up a reusable shell environment for Bash/Zsh across BSD/Linux/Cygwin
+	pkgver = 2.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	source = poshinit-2.0.tar.gz::https://github.com/bourne-again/poshinit/archive/2.0.tar.gz
+	md5sums = 2be4cdc7ae71dc0f2c2096d4f133766b
+
+pkgname = poshinit
+
