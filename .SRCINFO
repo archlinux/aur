@@ -1,6 +1,6 @@
 pkgbase = pass-type-git
 	pkgdesc = A pass extension that allows to type passwords from your password-store.
-	pkgver = r12.688c73d
+	pkgver = r20.458156d
 	pkgrel = 1
 	url = https://github.com/c4software/pass-type
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = pass-type-git
 	provides = pass-type
 	conflicts = pass-type
 	backup = etc/pass-type/pass-type.conf
-	source = pass-type::git+https://github.com/Qu4tro/pass-type.git
+	source = pass-type::git+https://github.com/c4software/pass-type.git
 	md5sums = SKIP
 
 pkgname = pass-type-git
