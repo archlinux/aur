@@ -10,7 +10,7 @@ depends=('python' 'python-pyqt5')
 makedepends=('git')
 source=("git+$url.git" "emuMenu.sh")
 md5sums=('SKIP' 
-         'dd70b56ed235fffd3fafce2f6491fc39')
+         '2765e579706a2d2f0d8d3d566ff2c25d')
 _pkgname=emuMenu
 
 pkgver() {
