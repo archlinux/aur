@@ -3,15 +3,14 @@
 _pkgname=gerbil
 pkgname=$_pkgname-git
 pkgver=1.0b
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive visualization tool targeted at multispectral and hyperspectral image data"
 arch=(i686 x86_64)
 url="http://www.gerbilvis.org/"
 license=('GPL3')
-depends=('boost-libs' 'opencv' 'qt4' 'gdal')
+depends=('boost-libs' 'opencv' 'qt5-base' 'gdal')
 makedepends=('boost' 'cmake' 'git')
 conflicts=($_pkgname)
-install="$_pkgname.install"
 source=('git+https://github.com/gerbilvis/gerbil.git' "$_pkgname.desktop")
 md5sums=('SKIP' '95c325def4edada78a7841429ec19aa8')
 
