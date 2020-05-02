@@ -3,12 +3,12 @@
 
 pkgname=mopidy-youtube-git
 _pkgname=mopidy-youtube
-pkgver=v2.0.2.r296.g00c2162
+pkgver=v2.0.2.r317.g3d75925
 pkgrel=1
 pkgdesc="Mopidy extension for playing music from Youtube"
 
 arch=('any')
-url="http://www.mopidy.com"
+url="https://github.com/natumbri/mopidy-youtube"
 license=('APACHE')
 depends=(
   'mopidy>=3.0'
@@ -21,8 +21,7 @@ depends=(
 makedepends=('python' 'git')
 
 conflicts=("mopidy-youtube")
-source=("$_pkgname::git+https://github.com/natumbri/mopidy-youtube.git"
-	"setupcfg.patch")
+source=("$_pkgname::git+https://github.com/natumbri/mopidy-youtube.git")
 
 pkgver() {
   cd "$_pkgname"
@@ -31,9 +30,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  patch setup.cfg < "$srcdir"/setupcfg.patch
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('SKIP'
-         '217a1d4c8a4a1a2f97de7cc88422da23')
+md5sums=('SKIP')
