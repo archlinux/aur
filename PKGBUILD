@@ -2,7 +2,7 @@
 pkgname=authelia-bin
 _pkgname=authelia
 pkgver=4.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps. Pre-compiled."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/authelia/authelia"
@@ -32,6 +32,4 @@ package() {
   else
     install -Dm755 "$srcdir/$_pkgname-linux-arm32v7" "$pkgdir/usr/bin/$_pkgname"
   fi
-  install -dm655 "$pkgdir/usr/share/webapps/$_pkgname"
-  cp -r "$srcdir/public_html/." "$pkgdir/usr/share/webapps/$_pkgname/"
 }
