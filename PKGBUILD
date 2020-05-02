@@ -1,7 +1,7 @@
 # Maintainer: ftsell <aur@finn-thorben.me>
 pkgname=ros-melodic-plotjuggler
 pkgdesc="juggle with data"
-pkgver=2.6.3
+pkgver=2.6.4
 pkgrel=1
 _gitorg=facontidavide
 _gitname=PlotJuggler
