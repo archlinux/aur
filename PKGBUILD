@@ -1,9 +1,11 @@
 # Maintainer:  Alexei Colin <ac at alexeicolin dot com>
 # Contributor: Kai Geißdörfer <kai.s.geissdoerfer at campus.tu-berlin.de>
+# Contributor: Amr Okasha <okasha at gmail>
+
 
 pkgname=ccstudio
-_semver=9.3.0
-_bldver=00012
+_semver=10.0.0
+_bldver=00010
 pkgver=$_semver.$_bldver
 pkgrel=1
 pkgdesc="Texas Instruments Code Composer Studio IDE"
@@ -15,17 +17,19 @@ makedepends=('glibc')
 
 # Needed for builtin jxBrowser plugin (otherwise exception exit code 127)
 # lib32-glibc needed for installers of some components (C2000 tools)
-depends=('gconf' 'python2' 'gtk2' 'libxtst' 'nss' 'libxss' 'alsa-lib' 'lib32-glibc')
+depends=('gconf' 'python2' 'gtk2' 'libxtst' 'nss' 'libxss' 'alsa-lib' 'lib32-glibc' 'ncurses5-compat-libs' 'libusb-compat')
+#!! 'ncurses5-compat-libs' is an aur package
 
 # Without some ttf fonts installed, UI is ugly
 optdepends=('ttf-dejavu')
 
 # The license file was copy-pasted from the installer's GUI
 _archive=CCS${pkgver}_linux-x64
-source=("http://software-dl.ti.com/ccs/esd/CCSv9/CCS_$(echo $_semver | sed 's@[.]@_@g')/exports/${_archive}.tar.gz"
+source=("http://software-dl.ti.com/ccs/esd/CCSv10/CCS_$(echo $_semver | sed 's@[.]@_@g')/exports/${_archive}.tar.gz"
         "LICENSE"
         "61-msp430uif.rules"
-        "71-sd-permissions.rules")
+        "71-sd-permissions.rules"
+        )
 
 install=$pkgname.install
 
@@ -53,7 +57,7 @@ build() {
     # NOTE: ti_cgt_c2000_16.9.3.LTS_linux_installer_x86.bin is executed under fakeroot, this error is simply printed,
     #       but is not fatal. But, when the whole CCS installer is run under fakeroot is 
 
-    ./ccs_setup_${pkgver}.bin --mode unattended --prefix $srcdir/$_installpath
+    ./ccs_setup_${pkgver}.run --mode unattended --prefix $srcdir/$_installpath
 }
 
 package() {
@@ -97,7 +101,8 @@ package() {
     install -D -m0644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('0a6c9b093de9a96f36942ecdfd4b4f765278b329091d60826ae9f493cfc4e5a9'
+sha256sums=('9dbb8f6c266e8c61eb96beaa8847725cca5d60051453f89c7333b98875bf5031'
             'adc0dd74f5b95e373db4b45c74b034ec3d45e2df462b3a1a35f6d56aa8181076'
             '97061c190d86ac2de195e54070d86d8bde34774ea35261942ee44626ca3c23db'
-            'ad63fd5e8a11e1ddcbe1d0d56a739f1c2f573a2781e46f4d52b5a93dd5810d1a')
+            'ad63fd5e8a11e1ddcbe1d0d56a739f1c2f573a2781e46f4d52b5a93dd5810d1a'
+            )

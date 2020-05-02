@@ -1,4 +1,4 @@
-_dir=/opt/ccstudio/ccsv8
+_dir=/opt/ccstudio/ccs
 _grp=ccstudio
 
 post_install() {
@@ -23,13 +23,13 @@ post_install() {
     echo ">>>"
     echo ">>> Then, remove the left-over garbage files that are owned by root and "
     echo ">>> cause an error when ccstudio is started by by regular user:"
-    echo ">>>    sudo rm -r /tmp/jxbrowser-chromium-*"
+    echo ">>>    sudo rm -r /tmp/browsercore-*"
     echo ">>>"
     echo ">>> Run this command as each user who will run CCS, to add to '${_grp}' group:"
     echo ">>>    sudo usermod -a -G ${_grp} \$(whoami)"
     echo ">>>"
     echo ">>> When multiple users run CCS, beware that on each run CCS creates "
-    echo ">>> /tmp/jxbrowser* directory permissioned to one user, and fails to "
+    echo ">>> /tmp/browsercore-* directory permissioned to one user, and fails to "
     echo ">>> read it when run under a different user, so delete the dir as a "
     echo ">> workaround."
 }
