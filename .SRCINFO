@@ -1,0 +1,17 @@
+pkgbase = it-edit-git
+	pkgdesc = An integrated terminal programming text-editor with many functionalities like a manpage reader, a documentation registering with direct accessing mechanism and many others settings and features
+	pkgver = 2.0.r2.6850468
+	pkgrel = 1
+	url = https://github.com/mrcyberfighter/IT-Edit
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	depends = vte290
+	provides = it-edit
+	source = git+https://github.com/mrcyberfighter/IT-Edit
+	source = 0001-fix-make-install-failure-inside-fakeroot.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = it-edit-git
+
