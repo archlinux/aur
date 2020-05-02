@@ -5,8 +5,8 @@ After=network-online.target
 
 [Service]
 Type=simple
-EnvironmentFile=/etc/jitsi-videobridge/jitsi-videobridge.conf
-ExecStart=/opt/jitsi-videobridge/jvb.sh ${flags}
+EnvironmentFile=/etc/jitsi/videobridge/jitsi-videobridge.conf
+ExecStart=/opt/jitsi-videobridge/jvb.sh --host=${JVB_HOST} --domain=${JVB_HOSTNAME} --port=${JVB_PORT} --secret=${JVB_SECRET} ${JVB_OPTS}
 Restart=on-failure
 
 [Install]
