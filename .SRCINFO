@@ -1,7 +1,7 @@
 pkgbase = hcc
-	pkgdesc = HCC is an Open Source, Optimizing C++ Compiler for Heterogeneous Compute
+	pkgdesc = C++ Compiler for Heterogeneous Compute
 	pkgver = 3.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/RadeonOpenCompute/hcc
 	arch = x86_64
 	license = custom:NCSAOSL
