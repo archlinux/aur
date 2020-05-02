@@ -26,5 +26,8 @@ check() {
 
 package() {
 	cd "$pkgname"
-	./install-sh -t $pkgdir/ src/packit
+	mkdir -p $pkgdir/usr/local/sbin
+	/usr/bin/install  src/packit  $pkgdir/usr/local/sbin
+	mkdir -p $pkgdir/usr/local/share/man/man8
+	/usr/bin/install -m 644 man/packit.8 $pkgdir/usr/local/share/man/man8
 }
