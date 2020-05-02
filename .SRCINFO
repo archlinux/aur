@@ -1,6 +1,6 @@
 pkgbase = ti-ble-sdk
 	pkgdesc = Texas Instruments BLE Stack for CC2640/CC2650/CC1350
-	pkgver = 2.02.03.08
+	pkgver = 2.02.04.06
 	pkgrel = 1
 	url = http://www.ti.com/tool/ble-stack
 	install = ti-ble-sdk.install
@@ -17,9 +17,9 @@ pkgbase = ti-ble-sdk
 	options = emptydirs
 	options = !purge
 	options = !zipman
-	source = https://gateway.ipfs.io/ipfs/QmahqrocvsQbigEE1siCi4ZiBuMTPzXjSuy9zKqv1SFoQB/ble_sdk_2_02_03_08_setup.exe
+	source = local://ble_sdk_2_02_04_06_setup.exe
 	source = ltoa.patch
-	sha256sums = 50aef335f450bfa9b9d59c177bee27f7709708b81e2954d9d5e4126cd5b22430
+	sha256sums = 80173b0c95f31cc2a80b7c238eef7083b3e4b8d2ce6f00282cf455b22ce1c7cf
 	sha256sums = 675fd1fcd998eb17726210540d5ce3e0061b84defba1b246e7a720e2de1f463e
 
 pkgname = ti-ble-sdk
