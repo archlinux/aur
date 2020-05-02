@@ -1,8 +1,8 @@
 # Maintainer: Sam Stuewe <halosghost at archlinux dot info>
 
 pkgname=uacme
-pkgver=v1.0.17
-pkgrel=2
+pkgver=v1.2.4
+pkgrel=1
 pkgdesc='An ACMEv2 client written in plain C code with minimal dependencies'
 arch=('i686' 'x86_64')
 url='https://github.com/ndilieto/uacme/'
@@ -10,7 +10,7 @@ makedepends=('asciidoc')
 depends=('curl' 'gnutls')
 license=('GPL')
 source=("https://github.com/ndilieto/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('41bbf128aff602a0b59d67c1e405eece') # not upstream
+md5sums=('dd08015f9835dc1154cbda025c412f6e') # not upstream
 
 build() {
   cd "$pkgname-${pkgver//v/}"
