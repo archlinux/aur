@@ -7,14 +7,15 @@ pkgbase = gameforge
 	license = GPL
 	depends = wine-staging
 	depends = winetricks
+	depends = wine-nine
 	source = gameforge.install
 	source = gameforge.png
 	source = gameforge.desktop
 	source = gameforge.sh
 	md5sums = d04f75b2287319dae2838b00df82faa3
 	md5sums = 0db6b822bbdf443247671e1d93216b1a
-	md5sums = fdfb4d34c3e793ed6fdf17f3b54eea20
-	md5sums = 27adb540c2f7910b34978b03449bf995
+	md5sums = e693c79d27d45e1971529bb3841fdb48
+	md5sums = 5faf6c868c8cb572ae03ed06d263614a
 
 pkgname = gameforge
 
