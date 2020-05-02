@@ -5,7 +5,6 @@ pkgbase = tuql
 	url = https://github.com/bradleyboy/tuql
 	arch = any
 	license = MIT
-	makedepends = npm
 	depends = npm
 	depends = nodejs
 	provides = tuql
