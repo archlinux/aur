@@ -2,7 +2,7 @@
 
 _pkgname=gallery-dl
 pkgname=$_pkgname-git
-pkgver=1.13.4.r0.ga31c1aa
+pkgver=1.13.5.r11.gb47cfc5
 pkgrel=1
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites'
 arch=('any')
@@ -14,20 +14,20 @@ optdepends=('ffmpeg: Convert Pixiv Ugoira to WebM'
             'youtube-dl: Download videos')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=(git+"$url")
+source=("$pkgname"::git+"$url")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
+    cd "$pkgname"
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$_pkgname"
+    cd "$pkgname"
     make
 }
 
 package() {
-    cd "$_pkgname"
+    cd "$pkgname"
     python setup.py install -O1 --root="$pkgdir"
 }
