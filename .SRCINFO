@@ -1,6 +1,6 @@
 pkgbase = apache-spark
 	pkgdesc = fast and general engine for large-scale data processing
-	pkgver = 2.4.4
+	pkgver = 2.4.5
 	pkgrel = 1
 	url = http://spark.apache.org
 	install = apache-spark.install
@@ -16,20 +16,20 @@ pkgbase = apache-spark
 	optdepends = rsync: support rsync hadoop binaries from master
 	optdepends = hadoop: support for running on YARN
 	backup = etc/apache-spark/spark-env.sh
-	source = https://archive.apache.org/dist/spark/spark-2.4.4/spark-2.4.4-bin-hadoop2.7.tgz
+	source = https://archive.apache.org/dist/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz
 	source = apache-spark-master.service
 	source = apache-spark-slave@.service
 	source = spark-env.sh
 	source = spark-daemon-run.sh
 	source = run-master.sh
 	source = run-slave.sh
-	sha1sums = 53f99ba8c5a68c941dd17d45393a6040dd0b46c8
-	sha1sums = ac71d12070a9a10323e8ec5aed4346b1dd7f21c6
-	sha1sums = a191e4f8f7f8bbc596f4fadfb3c592c3efbc4fc0
-	sha1sums = 3fa39d55075d4728bd447692d648053c9f6b07ec
-	sha1sums = 08557d2d5328d5c99e533e16366fd893fffaad78
-	sha1sums = 323445b8d64aea0534a2213d2600d438f406855b
-	sha1sums = 65b1bc5fce63d1fa7a1b90f2d54a09acf62012a4
+	sha256sums = 020be52524e4df366eb974d41a6e18fcb6efcaba9a51632169e917c74267dd81
+	sha256sums = e4333e4a484543786e82d1f7af144ad99d9cc666d2e2742f30b5120996f32183
+	sha256sums = e656ef5599d095472641e6fd58e9046d7db3f983b334e9a695e278ba799afc5b
+	sha256sums = 0e9c3721cfac02e3b67248e1dfe2def49a9fc6408092b291b1c67e89a9c130cb
+	sha256sums = 6ded9f6b31b8be5fa782fc18ec0991eb7cb18fbea65b8e7560587c3fbe7f20f7
+	sha256sums = 1134342330c7680e7d9847cc4de2c0f97ecd55ee7db1c6068bc45219b5838e98
+	sha256sums = 4e1159b25d0f6f3dcdf72d1a5f186e5693a5e9d8690ad1600a9e44aa43022e29
 
 pkgname = apache-spark
 

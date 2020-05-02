@@ -1,5 +1,5 @@
 [Unit]
-Description=Apache Spark Standalone Master
+Description=Apache Spark Standalone Slave
 After=network.target
 
 [Service]
