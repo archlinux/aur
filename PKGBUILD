@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=battery-monitor-git
-pkgver=0.6.r21.gfd1f4d7
+pkgver=0.6.r27.g4c12841
 pkgrel=1
 pkgdesc="A utility tool, notifies user about charging, discharging and not
         charging state of the battery on Linux."
@@ -41,6 +41,6 @@ package() {
 		"$pkgdir/etc/xdg/autostart"
 	install -Dm644 "${pkgname%-git}.desktop" -t \
 		"$pkgdir/usr/share/applications"
-	install -Dm644 battery_monitor/icons/icon.png \
-		"$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
+	install -Dm644 battery_monitor/icons/icon.svg \
+		"$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg"
 }
