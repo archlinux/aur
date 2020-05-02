@@ -38,7 +38,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname"
+  cd "plata-theme"
 
   make DESTDIR="$pkgdir" install
 
