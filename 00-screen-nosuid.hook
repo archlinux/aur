@@ -1,0 +1,11 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = usr/bin/screen-*
+
+[Action]
+Description = Removing suid bit on screen...
+When = PostTransaction
+Exec = /bin/sh -c '/usr/bin/xargs chmod u-s; sed -i "s/0755/0777/" /usr/lib/tmpfiles.d/screen.conf'
+NeedsTargets

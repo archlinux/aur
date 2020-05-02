@@ -1,0 +1,7 @@
+post_install(){
+	echo "Hook installed, reinstall screen to run the hook."
+}
+
+post_upgrade(){
+	echo "Hook upgraded, reinstall screen to run the hook."
+}
