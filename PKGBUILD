@@ -9,7 +9,7 @@
 pkgbase=eclipse
 pkgname=(eclipse-{common,java,jee,cpp,php,javascript,rust})
 pkgver=4.15
-pkgrel=3
+pkgrel=4
 _release=2020-03/R
 pkgdesc="Highly extensible IDE"
 license=(EPL)
@@ -28,7 +28,7 @@ sha256sums_x86_64=('eea78b2daab7c5d3e11cd86d0782023a05f7e173265f470536357ef97cd3
 _sourcename() {
   case $1 in
     eclipse-common) return 1 ;;
-    eclipse-rust  ) echo $1-${_release//\//-}-incubation-linux-gtk-x86_64.tar.gz ;;
+    eclipse-rust|eclipse-cpp|eclipse-jee|eclipse-javascript) echo $1-${_release//\//-}-incubation-linux-gtk-x86_64.tar.gz ;;
     *             ) echo $1-${_release//\//-}-linux-gtk-x86_64.tar.gz ;;
   esac
 }
