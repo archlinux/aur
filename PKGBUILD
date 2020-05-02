@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=luautf8
-pkgname=('lua-utf8' 'lua52-utf8') # 'lua51-utf8')
+pkgname=('lua-utf8' 'lua52-utf8' 'lua51-utf8')
 pkgver=0.1.2
 _rockrel=0
 pkgrel=1
