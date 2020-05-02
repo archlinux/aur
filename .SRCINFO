@@ -1,17 +1,19 @@
 pkgbase = obs-v4l2sink
 	pkgdesc = v4l2 output for obs-studio
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CatxFish/obs-v4l2sink
 	arch = x86_64
 	license = GPL
-	makedepends = obs-studio
 	makedepends = cmake
+	makedepends = obs-studio
 	depends = obs-studio
 	source = https://github.com/CatxFish/obs-v4l2sink/archive/0.1.0.tar.gz
-	source = https://github.com/obsproject/obs-studio/archive/22.0.2.tar.gz
-	md5sums = 94632ee7e73e512dcc9877f5cc87c8ea
-	md5sums = 8c63cdc08a4510f288d174c65b252544
+	source = https://github.com/obsproject/obs-studio/archive/25.0.4.tar.gz
+	source = v4l2device_close.patch::https://github.com/CatxFish/obs-v4l2sink/pull/21.patch
+	sha256sums = 83e9bb104dcc3840acd17ebc0810de30c8de27545d4ef181d58f8a375dba06d4
+	sha256sums = c8db224d2ee4d9b91448be9e47414398e570eebe4a59ff9fd19b066789d1ccdb
+	sha256sums = 617e017562ab3ca85fffa86c869fa778e26ee0694e0ae8dd1b8b110bff1bb6cc
 
 pkgname = obs-v4l2sink
 

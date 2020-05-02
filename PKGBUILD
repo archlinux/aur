@@ -4,7 +4,7 @@
 pkgname=obs-v4l2sink
 pkgver=0.1.0
 obsver=25.0.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="v4l2 output for obs-studio"
 arch=(x86_64)
