@@ -2,7 +2,7 @@
 _pkgname=hcc
 pkgname="$_pkgname-git"
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ Compiler for Heterogeneous Compute"
 arch=('x86_64')
 url="https://github.com/RadeonOpenCompute/hcc"
@@ -35,8 +35,7 @@ build() {
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
 
-  cmake -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/rocm/hcc \
+  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm/hcc \
         -DLLVM_INSTALL_UTILS=TRUE \
         "$srcdir/$_pkgname"
   make
