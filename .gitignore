@@ -1,0 +1,5 @@
+PIA-*.AppImage
+*.pkg.tar.xz
+pia-bin.png
+pkg/
+src/
