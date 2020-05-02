@@ -42,5 +42,4 @@ package() {
   for rem in resources/win32 resources/osx resources/linux wing-uninstall doc; do
     rm -rvf "${pkgdir}/opt/${pkgname}/$rem"
   done
-  #libxcb1, libxcb-xkb1
 }
