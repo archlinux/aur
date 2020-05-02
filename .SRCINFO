@@ -1,7 +1,7 @@
 pkgbase = battery-monitor
 	pkgdesc = A utility tool, notifies user about charging, discharging and not charging state of the battery on Linux.
 	pkgver = 0.6
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/maateen/battery-monitor
 	arch = any
 	license = GPL3
