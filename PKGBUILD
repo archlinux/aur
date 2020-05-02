@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-beta-ozone
-pkgver=83.0.4103.23
+pkgver=83.0.4103.34
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone (beta channel)"
@@ -31,7 +31,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('929a3d8c5da5066c496ddcc6147aa3c528976a61dca65c9010e625733fa46ee8'
+sha256sums=('e163599ffd9fc60044dd57f2e1da785de2eacd5f043ed5163ccec659cb26377d'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
@@ -43,7 +43,7 @@ declare -gA _system_libs=(
   [flac]=flac
   [fontconfig]=fontconfig
   [freetype]=freetype2
-  # [harfbuzz-ng]=harfbuzz
+  #[harfbuzz-ng]=harfbuzz
   #[icu]=icu
   [libdrm]=
   #[libjpeg]=libjpeg
@@ -53,7 +53,7 @@ declare -gA _system_libs=(
   [libxml]=libxml2
   [libxslt]=libxslt
   [opus]=opus
-  #[re2]=re2
+  #[re2]=re2 # Not possible with custom libcxx
   [snappy]=snappy
   [yasm]=
   [zlib]=minizip
