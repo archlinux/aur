@@ -27,8 +27,6 @@ validpgpkeys=()
 
 prepare() {
 	echo $srcdir
-	cp gameforge.png $HOME/.local/share/icons/hicolor/256x256/apps
-	cp gameforge.desktop $HOME/.local/share/applications
 }
 
 build() {
@@ -45,6 +43,8 @@ package() {
 	mkdir $pkgdir/usr/bin
 	cp gameforge.sh $pkgdir/usr/bin/
 	mv $pkgdir/usr/bin/gameforge.sh $pkgdir/usr/bin/gameforge
+	cp gameforge.png $HOME/.local/share/icons/hicolor/256x256/apps
+	cp gameforge.desktop $HOME/.local/share/applications
 }
 md5sums=('d04f75b2287319dae2838b00df82faa3'
          '0db6b822bbdf443247671e1d93216b1a'
