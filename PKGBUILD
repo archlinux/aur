@@ -3,15 +3,16 @@
 
 _plug=acsuite
 pkgname=vapoursynth-tools-${_plug}-git
-pkgver=3.0.1.r0.g89e7ba2
+pkgver=4.0.0.r0.g9f9821d
 pkgrel=1
-pkgdesc="Tool for Vapoursynth: ${_plug} (GIT version)"
+pkgdesc="Tool for VapourSynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/OrangeChannel/acsuite'
-license=('GPL')
+license=('Unlicense')
 depends=('vapoursynth'
          'mkvtoolnix-cli'
          )
+optdepends=('ffmpeg: WAV output support')
 makedepends=('git')
 provides=("vapoursynth-tools-${_plug}"
           "vapoursynth-plugin-${_plug}-git"
@@ -36,4 +37,5 @@ package(){
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
+  install -Dm644 UNLICENSE "${pkgdir}/usr/share/licenses/${pkgname}/UNLICENSE"
 }
