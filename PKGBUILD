@@ -2,7 +2,7 @@
 
 pkgname=python2-subliminal
 _name=${pkgname#python2-}
-pkgver=2.0.5
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Python module to parse metadata in video files."
 arch=(any)
@@ -11,7 +11,7 @@ license=(LGPL)
 depends=(python2)
 makedepends=(python2-distribute)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('56bc0e87496d5bc361430c4ee396b20374da697014203bdc4dda12341918e67c98aec579e44bd467898dbbf11f31e9de47ece17a0d78339f2bc700e3e6c8dd40')
+sha512sums=('cba824329b5590856331b4b83dd753eebbb732979a826cb7e7017c176bce892d28f7fe1f237e27c3afabda113dd8967ce6772006bc9be0abe48c3ea14fe05647')
 
 package() {
   cd "${srcdir}/subliminal-${pkgver}"
