@@ -41,7 +41,7 @@ package() {
 	cd $srcdir
 	mkdir $pkgdir/usr/
 	mkdir $pkgdir/usr/bin
-	mkdir $pkgdir/$HOME
+	mkdir $pkgdir$HOME
 	cp gameforge.sh $pkgdir/usr/bin/
 	mv $pkgdir/usr/bin/gameforge.sh $pkgdir/usr/bin/gameforge
 	cp gameforge.png $pkgdir/$HOME/.local/share/icons/hicolor/256x256/apps
