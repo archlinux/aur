@@ -1,7 +1,7 @@
 pkgbase = unison-232-compat
 	pkgdesc = File-synchronization tool (legacy 2.32 version). Compatible with parallel installation to other versions of unison binaries (but pay attention to the local user configurations!)
 	pkgver = 2.32.52
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cis.upenn.edu/~bcpierce/unison
 	arch = i686
 	arch = x86_64
@@ -14,11 +14,15 @@ pkgbase = unison-232-compat
 	provides = unison-232=2.32.52
 	options = !makeflags
 	source = http://www.cis.upenn.edu/~bcpierce/unison/download/releases/unison-2.32.52/unison-2.32.52.tar.gz
-	source = unison-ssh-ocaml.patch
-	source = unison-232.desktop
-	md5sums = 0701f095c1721776a0454b94607eda48
-	md5sums = 81a28349471434c75a4206d07ad21eb1
-	md5sums = 2ab7bb57623e786936d892ddc228c2f8
+	source = http://www.cis.upenn.edu/~bcpierce/unison/download/releases/unison-2.32.52/unison-2.32.52-manual.html
+	source = http://www.cis.upenn.edu/~bcpierce/unison/download/releases/unison-2.32.52/unison-2.32.52-manual.pdf
+	source = unison-232.desktop::http://ix.io/2ktj
+	source = unison-ssh-ocaml.patch::http://ix.io/2ktk
+	sha256sums = 1542e5d4ad03e928260e061a8ff9d5e0bca3282481ed8bec5552de17a0270485
+	sha256sums = c898239d8139d8405b96d87e12c06c7f41fd3629cac0c83bc338aad50fed7f81
+	sha256sums = b3fee7ac99907f3b1ed02c6ac901678e82ea1eed936acb45e9735b95d55cc4eb
+	sha256sums = 367f4572b98dbaa336fbc31368456c0840fe754d09370c714477b5e8140a28e8
+	sha256sums = 02281d37ddea74108ce5a5d81b62b997266ec9ab2aac520b4403b57964c72dfa
 
 pkgname = unison-232-compat
 
