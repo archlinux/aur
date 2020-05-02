@@ -1,3 +1,34 @@
 #!/bin/bash
 
-wine /usr/share/magicavoxel/MagicaVoxel.exe
+set -e
+
+export WINEDLLOVERRIDES="mscoree,mshtml="
+export WINEARCH=win64 WINEPREFIX="$HOME/.magicavoxel/wine"
+
+function _link() {
+  for path in "$@"
+  do
+    ln -s "/usr/share/magicavoxel/$path" "$HOME/.magicavoxel/$path"
+  done
+}
+
+function _copy() {
+  for path in "$@"
+  do
+    cp -r "/usr/share/magicavoxel/$path" "$HOME/.magicavoxel/$path"
+  done
+}
+
+if [ ! -d "$HOME/.magicavoxel" ] ; then
+  mkdir -p "$WINEPREFIX"
+
+  _link MagicaVoxel.exe
+  _link plugin OpenImageDenoise.dll tbb.dll tbbmalloc.dll
+  mkdir "$HOME/.magicavoxel/config"
+  _link config/font config/ui
+
+  _copy ibl palette shader cache export vox
+  _copy config/config.txt config/hotkey.txt
+fi
+
+wine "$HOME/.magicavoxel/MagicaVoxel.exe" "$@"

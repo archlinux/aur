@@ -7,7 +7,7 @@ _version_suffix=''
 _version_upstream="$_version_main$_version_suffix"
 _version_release='.rel1'
 pkgver="$_version_upstream$_version_release"
-pkgrel=1
+pkgrel=2
 pkgdesc='A free lightweight 8-bit voxel art editor and GPU based interactive path tracing renderer'
 arch=('x86_64')
 url="http://ephtracy.github.io/"
@@ -22,7 +22,7 @@ depends=(wine)
 makedepends=(icoutils)
 sha512sums=('a5c5ce2fe5238df2e20f7f6cfb8416e40420861d2856cdacbf804be4825ade0020ba6b276b2dd18cc544afa8adbd3d986d81a8b0fb12463e7ae4cec3bbcd7bfa'
             '23fe26a26dad536810a21fda5565c97d520961b63d06ed5e3aae170a5c636a3c202c9ab40ce80486ff6fca5d34e3ab1a48cabedc43ad678236b4e4abbc0ab67a'
-            '9c5aa5de457e7ae3f7cd5d563414600778b65bd60a9e02c7fe3b01289b667777ca0b9f4954b51d0a06c414489e5168f7f995d13799b1bd5af3ea5aace623adc7'
+            '7bd5cfc10ed31851e76de7080c08d350a88488b3d8e878f4656970e097d04b00c98bf235a57b154844cba1db04f8092b0c5604f4b11ca787323bbbbc47dc3f5c'
             '0872398e0d52df23a4910c3c5257f073f96bbf06db197ebdaf59598ca39d1351c6412598ac46b1eb24ba2a47db8ce7d804d227dc847260c8dbd6213396e816c1'
             'feabbff40cef5402aac75d8344acf434079250c25e05c6bc91af705f1254e0010caaf5e64450fee4ec7d4636ec930a5600412bbc3f588149e7ee0cbeefb0e5ae')
 
@@ -35,8 +35,7 @@ package() {
   install -dm755 "$pkgdir/usr/share/magicavoxel"
   cp -ra "MagicaVoxel-$_version_upstream-alpha-win64/." plugin OpenImageDenoise.dll tbb.dll tbbmalloc.dll "$pkgdir/usr/share/magicavoxel"
 
-  install -dm755 "$pkgdir/usr/bin"
-  install -m755 magicavoxel "$pkgdir/usr/bin"
+  install -Dm755 magicavoxel "$pkgdir/usr/bin/magicavoxel"
 
   install -dm755 "$pkgdir/usr/share/applications"
   install -m644 magicavoxel.desktop "$pkgdir/usr/share/applications/magicavoxel.desktop"
