@@ -26,10 +26,10 @@ md5sums=('c022f460c0d928df6c1ece9d3044b008'
          '93f06061d9ad92aeaaccbc9b36421eb5')
 
 build() {
-  yarn install
+  yarn install --cache-folder "$srcdir/yarn-cache"
   yarn build
   # Remove dev dependencies
-  yarn install --production --ignore-scripts --prefer-offline
+  yarn install --cache-folder "$srcdir/yarn-cache" --production --ignore-scripts --prefer-offline
 }
 
 package() {
