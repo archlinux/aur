@@ -1,7 +1,7 @@
 pkgbase = osrs-launcher
 	pkgdesc = Official OldSchool RuneScape launcher
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://oldschool.runescape.com/
 	arch = any
 	license = unknown

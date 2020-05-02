@@ -1,7 +1,7 @@
 # Maintainer: Nikoloz Shvelidze <captain@pirrate.me>
 pkgname=osrs-launcher
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Official OldSchool RuneScape launcher"
 arch=(any)
