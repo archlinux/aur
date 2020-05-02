@@ -23,7 +23,7 @@ md5sums=('c022f460c0d928df6c1ece9d3044b008'
          '4da4cdf89d47e8184a3d828667608838'
          'b316dead79fa33f45c8d689a1c940dab'
          '1dde0e422484895d3509f4ee9bb8d980'
-         '93f06061d9ad92aeaaccbc9b36421eb5')
+         '6befbd553f609c8f4e48805013bc71c7')
 
 build() {
   yarn install --cache-folder "$srcdir/yarn-cache"
