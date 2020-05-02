@@ -1,4 +1,5 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Co-Maintainer: Felix Golatofski <contact@xdfr.de>
 # Based on thunderbird-beta-bin: Det <nimetonmaili g-mail>
 # Based on [extra]'s thunderbird: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Based on tor-browser: grufo <madmurphy333 AT gmail DOT com>
@@ -11,7 +12,7 @@
 pkgname=thunderbird-localized-beta-bin
 _pkgname=thunderbird-beta
 _product=thunderbird
-pkgver=76.0b2
+pkgver=76.0b3
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
