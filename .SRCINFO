@@ -1,0 +1,13 @@
+pkgbase = zls-git
+	pkgdesc = Zig LSP implementation + Zig Language Server
+	pkgver = r4.999a365
+	pkgrel = 1
+	url = https://github.com/SuperAuguste/zls
+	arch = any
+	license = MIT
+	depends = zig
+	source = git+https://github.com/SuperAuguste/zls
+	sha256sums = SKIP
+
+pkgname = zls-git
+
