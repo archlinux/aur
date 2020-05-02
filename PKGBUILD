@@ -43,7 +43,6 @@ package() {
 	install -d $pkgdir/usr/share/icons
 	install -d $pkgdir/usr/share/applications
 	install -d $pkgdir/usr/share/applications
-	install -d $pkgdir$HOME/.gameforge
 	cp gameforge.sh $pkgdir/usr/bin/
 	mv $pkgdir/usr/bin/gameforge.sh $pkgdir/usr/bin/gameforge
 	cp gameforge.png $pkgdir/usr/share/icons
