@@ -1,7 +1,7 @@
 # Maintainer: f0x <aur at cthu dot lu>
 
 pkgname=hikari-darcs
-pkgver=1.1.0.20200502143445
+pkgver=1.1.0.20200502185221
 pkgrel=1
 epoch=1
 pkgdesc='Stacking Wayland compositor with additional tiling capabilities, heavily inspired by the Calm Window manager (cwm)'
@@ -40,11 +40,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_darcsmod"
-  bmake PREFIX="${pkgdir}"/usr ETC_PREFIX="${pkgdir}"/etc WITH_POSIX_C_SOURCE=YES WITH_XWAYLAND=YES WITH_SCREENCOPY=YES WITH_GAMMACONTROL=YES WITH_LAYERSHELL=YES
+  bmake PREFIX=/usr ETC_PREFIX='' WITH_POSIX_C_SOURCE=YES WITH_XWAYLAND=YES WITH_SCREENCOPY=YES WITH_GAMMACONTROL=YES WITH_LAYERSHELL=YES
 }
 
 package() {
   cd "$srcdir/$_darcsmod"
-  bmake PREFIX="${pkgdir}"/usr ETC_PREFIX="${pkgdir}"/etc install
+  bmake PREFIX="${pkgdir}"/usr ETC_PREFIX="${pkgdir}" install
 }
 
