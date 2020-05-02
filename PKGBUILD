@@ -1,4 +1,4 @@
-# Maintainer: fuzzbop <d34dh4ck@gmail.com>
+# Maintainer: fuzzbop <fuzzbop@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: robb_force <robb_force@holybuffalo.net>
