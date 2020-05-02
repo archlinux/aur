@@ -7,7 +7,7 @@ _setFullLibdir="${_setPrefix}/${_setLibdir}"
 _pkgbasename=glslang
 
 pkgname=lib32-$_pkgbasename
-pkgver=8.13.3559
+pkgver=8.13.3743
 pkgrel=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator (32bit)'
 arch=('x86_64')
@@ -25,16 +25,15 @@ makedepends=(
         )
 options=('staticlibs')
 source=(
-        ${_pkgbasename}-${pkgver}.tar.gz::https://github.com/KhronosGroup/glslang/archive/${pkgver}.tar.gz
+        "${_pkgbasename}-${pkgver}.tar.gz::https://github.com/KhronosGroup/glslang/archive/${pkgver}.tar.gz"
 )
 sha256sums=(
-        'c58fdcf7e00943ba10f9ae565b2725ec9d5be7dab7c8e82cac72fcaa83c652ca'
+        '639ebec56f1a7402f2fa094469a5ddea1eceecfaf2e9efe361376a0f73a7ee2f'
 )
 
 prepare() {
     echo "Patching if needed"
-#    cd ${_pkgbasename}-${pkgver}
-#    patch --forward --strip=1 --verbose --input="${srcdir}/fix-cmake-folder.patch"
+    cd ${_pkgbasename}-${pkgver}
 }
 
 build() {
@@ -47,27 +46,23 @@ build() {
   (cd build-shared
     cmake .. \
       -G Ninja \
-      -DCMAKE_LIBRARY_PATH="/usr/lib32" \
       -DCMAKE_INSTALL_PREFIX="/usr" \
       -DCMAKE_INSTALL_LIBDIR="lib32" \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_C_FLAGS:STRING=-m32 \
       -DCMAKE_CXX_FLAGS:STRING=-m32 \
-      -DBUILD_SHARED_LIBS=ON \
-      -DINSTALL_DOCS=OFF
+      -DBUILD_SHARED_LIBS=ON
     ninja
   )
   (cd build-static
     cmake .. \
       -G Ninja \
-      -DCMAKE_LIBRARY_PATH="/usr/lib32" \
       -DCMAKE_INSTALL_PREFIX="/usr" \
       -DCMAKE_INSTALL_LIBDIR="lib32" \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_C_FLAGS:STRING=-m32 \
       -DCMAKE_CXX_FLAGS:STRING=-m32 \
-      -DBUILD_SHARED_LIBS=OFF \
-      -DINSTALL_DOCS=OFF
+      -DBUILD_SHARED_LIBS=OFF
     ninja
   )
 }
