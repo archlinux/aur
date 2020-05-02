@@ -4,7 +4,7 @@
 pkgname=shared-mime-info
 _commit=d23e9fa537b84950cdb518f87e3bf1f3f2577523 # master
 pkgver=1.15+43+gd23e9fa
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org Shared MIME Info"
 arch=('x86_64')
 license=('GPL2')
@@ -41,19 +41,16 @@ build() {
 
   arch-meson ${pkgname} build \
     -D update-mimedb=false \
-    -D xdgmime-path=./xdgmime
+    -D xdgmime-path=${srcdir}/xdgmime
 
   # Print config
-#  meson configure build
+  meson configure build
   # compile it
   ninja -C build 
 }
 
 check() {
-  # one test failure not finding the file though it's there
-  # /build/shared-mime-info/src/shared-mime-info/tests/test_mime.sh: line 22: ./xdgmime/src/test-mime-data: No such file or directory
-  # https://gitlab.freedesktop.org/xdg/shared-mime-info/-/issues/132
-  meson test -C build --print-errorlogs || /bin/true
+  meson test -C build --print-errorlogs
 }
 
 package() {
