@@ -1,20 +1,17 @@
 pkgbase = cadna_c
 	pkgdesc = Control of Accuracy and Debugging for Numerical Applications
-	pkgver = 3.1.5
+	pkgver = 3.1.7
 	pkgrel = 1
 	url = http://cadna.lip6.fr/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	depends = gcc-libs
-	depends = openmp
 	depends = openmpi
 	depends = gcc-fortran
 	options = !makeflags
-	source = http://cadna.lip6.fr/Download_Dir/cadna_c-3.1.5.tar.gz
-	source = cxxflags.patch
-	sha256sums = c9d19d820eb4fdfdb412a25d4d7824e6e73cf59e3ee85b273340e557fb86537b
-	sha256sums = 450ee613053d821a14aac5aef3bb0c8a6cef37e21af3f7be153270e3254bb2c9
+	source = http://cadna.lip6.fr/Download_Dir/cadna_c-3.1.7.tar.gz
+	sha256sums = 7013643a33a00bca57043dc5ccd26626cfd04c014e56b835879166d34ff7d180
 
 pkgname = cadna_c
 

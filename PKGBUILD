@@ -1,28 +1,18 @@
 pkgname=cadna_c
-pkgver=3.1.5
+pkgver=3.1.7
 pkgrel=1
 pkgdesc="Control of Accuracy and Debugging for Numerical Applications"
 arch=('i686' 'x86_64')
 url="http://cadna.lip6.fr/"
 license=('LGPL')
-depends=('gcc-libs' 'openmp' 'openmpi' 'gcc-fortran')
+depends=('gcc-libs' 'openmpi' 'gcc-fortran')
 makedepends=()
 # README says to not build in parallel (and indeed, parallel build fails)
 options=(!makeflags)
-source=("http://cadna.lip6.fr/Download_Dir/${pkgname}-${pkgver}.tar.gz"
-        "cxxflags.patch")
-sha256sums=('c9d19d820eb4fdfdb412a25d4d7824e6e73cf59e3ee85b273340e557fb86537b'
-            '450ee613053d821a14aac5aef3bb0c8a6cef37e21af3f7be153270e3254bb2c9')
+source=("http://cadna.lip6.fr/Download_Dir/${pkgname}-${pkgver}.tar.gz")
 
 prepare() {
         cd ${pkgname}-${pkgver}
-
-        patch -p1 < ../cxxflags.patch
-
-        # Regen because of patch
-        aclocal
-        automake
-        autoconf
 
         ./configure --prefix=/usr --enable-fortran
 }
@@ -104,3 +94,5 @@ package() {
         cd ${pkgname}-${pkgver}
         make install DESTDIR="$pkgdir"
 }
+
+sha256sums=('7013643a33a00bca57043dc5ccd26626cfd04c014e56b835879166d34ff7d180')
