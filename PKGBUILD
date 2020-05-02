@@ -10,7 +10,7 @@ url='https://github.com/gbrlsnchs/pilgo'
 license=('MIT')
 conflicts=("${pkgname}-bin")
 makedepends=('go-pie')
-source=("$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('4fefbc30e8d2568c04687613a611ac9f9864028add28b82b3912b9e267c20635')
 
 build() {
