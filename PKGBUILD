@@ -1,101 +1,41 @@
-#!/bin/bash
-# shellcheck disable=SC2034,SC2164
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Maintainer: Marcus Behrendt <marcus dot behrendt dot eightysix(in numbers) at bigbrothergoogle dot com
-_pkgbase=arc-kde
-_pkgname=("${_pkgbase}"{,'-wallpapers'}
-          'kvantum-theme-arc'
-          'konsole-colorscheme-arc'
-          'yakuake-skin-arc'
-          'konversation-theme-arc')
-pkgname=("${_pkgname[@]/%/-git}")
-pkgbase=${_pkgbase}-git
-pkgver=20180614.r9.g544ece1
+# shellcheck shell=bash disable=SC2034,SC2164
+_pkgname=arc-kde
+pkgname=${_pkgname}-git
+pkgver=20180614.r11.g04873ca
 pkgrel=1
 epoch=2
+pkgdesc="A port of the popular GTK theme Arc for Plasma 5 desktop with a few additions and extras"
 arch=('any')
-url="https://github.com/PapirusDevelopmentTeam/${_pkgbase}"
+url="https://github.com/PapirusDevelopmentTeam/${_pkgname}"
 license=('GPL3')
 makedepends=('git')
+optdepends=('arc-gtk-theme: for a consistent look in GTK applications'
+            'konsole: for konsole theme'
+            'konversation: for konversation theme'
+            'kvantum-qt5: for kvantum theme (recommended)'
+            'papirus-icon-theme: for a more consistent and beautiful experience (recommended)'
+            'plasma-desktop: for plasma desktop theme'
+            'yakuake: for yakuake theme')
+provides=("${_pkgname}" 'kvantum-theme-arc')
+conflicts=("${_pkgname}" 'kvantum-theme-arc')
 options=('!strip')
-source=("${pkgbase}::git+${url}.git")
-sha256sums=('SKIP')
+source=("${_pkgname}::git+${url}.git")
+md5sums=('SKIP')
 
 pkgver() {
-	cd "${pkgbase}"
+	cd ${_pkgname}
 	git describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 prepare() {
-	cd "${pkgbase}"
+	cd ${_pkgname}
 	rm -r konversation/themes/papirus{,-dark}/src
 }
 
-_install() {
-	cd "${pkgbase}"
+package() {
+	cd ${_pkgname}
 	# shellcheck disable=SC2154
-	install -d "${pkgdir}"/usr/share
-	cp -r "$@" "${pkgdir}"/usr/share
-}
-
-package_arc-kde-git() {
-	pkgdesc="Arc theme for KDE Plasma 5"
-	depends=('plasma-workspace')
-	optdepends=('papirus-icon-theme: for a more consistent and beautiful experience (recommended)'
-	            'arc-gtk-theme: for a consistent look in GTK applications'
-	            'arc-kde-wallpapers: Arc KDE wallpapers'
-	            'kvantum-theme-arc: Arc theme for Kvantum (recommended)'
-	            'konsole-colorscheme-arc: Arc theme for Konsole'
-	            'yakuake-skin-arc: Arc theme for Yakuake'
-	            'konversation-theme-arc: Arc theme for Konversation'
-	            'arc-firefox-theme: Arc theme for Firefox')
-	provides=("${_pkgbase}")
-	conflicts=("${_pkgbase}")
-	install=${pkgbase}.install
-
-	_install plasma aurorae color-schemes
-}
-
-package_arc-kde-wallpapers-git() {
-	pkgdesc="Arc KDE wallpapers"
-	provides=('arc-kde-wallpapers')
-	conflicts=('arc-kde-wallpapers')
-
-	_install wallpapers
-}
-
-package_kvantum-theme-arc-git() {
-	pkgdesc="Arc theme for Kvantum"
-	depends=('kvantum-qt5')
-	provides=('kvantum-theme-arc')
-	conflicts=('kvantum-theme-arc')
-
-	_install Kvantum
-}
-
-package_konsole-colorscheme-arc-git() {
-	pkgdesc="Arc theme for Konsole"
-	depends=('konsole')
-	provides=('konsole-colorscheme-arc')
-	conflicts=('konsole-colorscheme-arc' "${_pkgbase}<${epoch}:${pkgver}")
-
-	_install konsole
-}
-
-package_yakuake-skin-arc-git() {
-	pkgdesc="Arc theme for Yakuake"
-	depends=('yakuake')
-	provides=('yakuake-skin-arc')
-	conflicts=('yakuake-skin-arc' "${_pkgbase}<${epoch}:${pkgver}")
-
-	_install yakuake
-}
-
-package_konversation-theme-arc-git() {
-	pkgdesc="Arc theme for Konversation"
-	depends=('konversation')
-	provides=('konversation-theme-arc')
-	conflicts=('konversation-theme-arc')
-
-	_install konversation
+	make DESTDIR="${pkgdir}" install
 }

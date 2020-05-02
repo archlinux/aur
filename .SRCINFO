@@ -1,58 +1,26 @@
 pkgbase = arc-kde-git
-	pkgver = 20180614.r9.g544ece1
+	pkgdesc = A port of the popular GTK theme Arc for Plasma 5 desktop with a few additions and extras
+	pkgver = 20180614.r11.g04873ca
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/PapirusDevelopmentTeam/arc-kde
 	arch = any
 	license = GPL3
 	makedepends = git
+	optdepends = arc-gtk-theme: for a consistent look in GTK applications
+	optdepends = konsole: for konsole theme
+	optdepends = konversation: for konversation theme
+	optdepends = kvantum-qt5: for kvantum theme (recommended)
+	optdepends = papirus-icon-theme: for a more consistent and beautiful experience (recommended)
+	optdepends = plasma-desktop: for plasma desktop theme
+	optdepends = yakuake: for yakuake theme
+	provides = arc-kde
+	provides = kvantum-theme-arc
+	conflicts = arc-kde
+	conflicts = kvantum-theme-arc
 	options = !strip
-	source = arc-kde-git::git+https://github.com/PapirusDevelopmentTeam/arc-kde.git
-	sha256sums = SKIP
+	source = arc-kde::git+https://github.com/PapirusDevelopmentTeam/arc-kde.git
+	md5sums = SKIP
 
 pkgname = arc-kde-git
-	pkgdesc = Arc theme for KDE Plasma 5
-	install = arc-kde-git.install
-	depends = plasma-workspace
-	optdepends = papirus-icon-theme: for a more consistent and beautiful experience (recommended)
-	optdepends = arc-gtk-theme: for a consistent look in GTK applications
-	optdepends = arc-kde-wallpapers: Arc KDE wallpapers
-	optdepends = kvantum-theme-arc: Arc theme for Kvantum (recommended)
-	optdepends = konsole-colorscheme-arc: Arc theme for Konsole
-	optdepends = yakuake-skin-arc: Arc theme for Yakuake
-	optdepends = konversation-theme-arc: Arc theme for Konversation
-	optdepends = arc-firefox-theme: Arc theme for Firefox
-	provides = arc-kde
-	conflicts = arc-kde
-
-pkgname = arc-kde-wallpapers-git
-	pkgdesc = Arc KDE wallpapers
-	provides = arc-kde-wallpapers
-	conflicts = arc-kde-wallpapers
-
-pkgname = kvantum-theme-arc-git
-	pkgdesc = Arc theme for Kvantum
-	depends = kvantum-qt5
-	provides = kvantum-theme-arc
-	conflicts = kvantum-theme-arc
-
-pkgname = konsole-colorscheme-arc-git
-	pkgdesc = Arc theme for Konsole
-	depends = konsole
-	provides = konsole-colorscheme-arc
-	conflicts = konsole-colorscheme-arc
-	conflicts = arc-kde<2:20180614.r9.g544ece1
-
-pkgname = yakuake-skin-arc-git
-	pkgdesc = Arc theme for Yakuake
-	depends = yakuake
-	provides = yakuake-skin-arc
-	conflicts = yakuake-skin-arc
-	conflicts = arc-kde<2:20180614.r9.g544ece1
-
-pkgname = konversation-theme-arc-git
-	pkgdesc = Arc theme for Konversation
-	depends = konversation
-	provides = konversation-theme-arc
-	conflicts = konversation-theme-arc
 
