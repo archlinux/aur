@@ -64,7 +64,8 @@ post_install() {
     
     echo "enabling DEVICE specific systemd service files"
     systemctl enable ethoscope_device.service ethoscope_update.service 
-    systemctl enable ntpd.service mysqld.service fake-hwclock fake-hwclock-save.timer sshd.service mysqld.service avahi-daemon.service
+    systemctl enable ntpd.service mysqld.service sshd.service mysqld.service avahi-daemon.service
+    systemctl enable fake-hwclock fake-hwclock-save.timer
     
     echo "Set up mysql database"
     mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
@@ -83,15 +84,15 @@ post_install() {
     echo 'cma_lwm=' >> /boot/config.txt
     echo 'cma_hwm=' >> /boot/config.txt
     echo 'cma_offline_start=' >> /boot/config.txt
-    echo 'hdmi_force_hotplug=1` >> /boot/config.txt
+    echo 'hdmi_force_hotplug=1' >> /boot/config.txt
     echo 'Loading bcm2835 module'
-    echo "bcm2835-v4l2" > /etc/modules-load.d/picamera.conf
+    echo 'bcm2835-v4l2' > /etc/modules-load.d/picamera.conf
    
     echo "limiting journal log space"
     echo 'SystemMaxUse=250MB' >> /etc/systemd/journald.conf
    
     echo "generating locale"
-    echo "en_GB.UTF-8 UTF-8\n" >> /etc/locale.gen
+    echo "en_GB.UTF-8 UTF-8" >> /etc/locale.gen
     locale-gen
     
    
@@ -102,7 +103,7 @@ post_install() {
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 #pre_upgrade() {
-	# do something here
+    # do something here
 #}
 
 # arg 1:  the new package version
@@ -124,5 +125,5 @@ pre_remove() {
 
 ## arg 1:  the old package version
 #post_remove() {
-	# do something here
+    # do something here
 #}
