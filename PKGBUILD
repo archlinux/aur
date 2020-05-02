@@ -8,7 +8,7 @@ pkgdesc="Supercharged Git/Shell Autocompleter with GitHub Integration"
 url="https://github.com/donnemartin/gitsome"
 depends=('python' 'python-ply' 'python-prompt_toolkit' 'python-requests'
 	 'python-colorama' 'python-click' 'python-pygments' 'python-feedparser'
-	 'python-pytz' 'python-docopt' 'python-uritemplate' 'python-numpydoc')
+	 'python-pytz' 'python-docopt' 'python-uritemplate.py' 'python-numpydoc')
 makedepends=('python-setuptools' 'git')
 conflicts=('xonsh' 'python-gitsome')
 license=('APACHE')
