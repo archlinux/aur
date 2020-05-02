@@ -1,6 +1,6 @@
 pkgbase = sciter-notes-bin
 	pkgdesc = Evernote-like app based on Sciter SDK
-	pkgver = 4.2.7.3
+	pkgver = 4.3.0.9
 	pkgrel = 1
 	url = https://notes.sciter.com
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = sciter-notes-bin
 	noextract = license.htm
 	source = https://notes.sciter.com/distributions/sciter-notes.tar.gz
 	source = https://raw.githubusercontent.com/c-smile/sciter-sdk/master/license.htm
-	md5sums = 2ff93ba8eebeb71bfeb052e5ce09209a
+	md5sums = 3df3d7feaa1b26fcddd8e4fc66a70e08
 	md5sums = ee2065beedad9ac9a8bd53d63c8922a7
 
 pkgname = sciter-notes-bin
