@@ -5,6 +5,7 @@ pkgbase = teamspeak
 	url = http://www.teamspeak.com
 	arch = x86_64
 	license = custom
+	makedepends = p7zip
 	optdepends = libpulse
 	noextract = teamspeak-client-5.0.0beta25.tar.compressed
 	source = teamspeak.desktop

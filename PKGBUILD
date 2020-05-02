@@ -2,11 +2,14 @@
 
 pkgname=teamspeak
 pkgver=5.0.0beta25
-pkgrel=1
+pkgrel=2
 pkgdesc="TeamSpeak is software for quality voice communication via the Internet"
 url="http://www.teamspeak.com"
 license=('custom')
+depends=('gtk3'
+	'libxss')
 optdepends=('libpulse')
+makedepends=('p7zip')
 arch=('x86_64')
 source=('teamspeak.desktop'
         'teamspeak.svg'
