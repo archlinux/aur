@@ -17,8 +17,13 @@ prepare() {
 
 build() {
   make -C "${srcdir}"/"${pkgname}-${pkgver}"
+  gzip "${srcdir}"/"${pkgname}-${pkgver}"/sidreloc.1
 }
 
 package() {
+  mkdir -p "${pkgdir}"/usr/bin
+  mkdir -p "${pkgdir}"/usr/share/man/man1
+
   install -Dm755 "${srcdir}"/"${pkgname}-${pkgver}"/sidreloc "${pkgdir}"/usr/bin/sidreloc
+  install -g 0 -o 0 -Dm644 "${srcdir}"/"${pkgname}-${pkgver}"/sidreloc.1.gz "${pkgdir}"/usr/share/man/man1/
 }
