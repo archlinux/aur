@@ -1,7 +1,7 @@
 # Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=pixelfed
-pkgver=0.10.8
+pkgver=0.10.9
 pkgrel=1
 pkgdesc='A free and ethical photo sharing platform, powered by ActivityPub federation'
 arch=(any)
@@ -25,7 +25,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/pixelfed/pixelfed/archive/v
         "pixelfed-queue.service"
         "pixelfed-scheduler.service"
         "pixelfed-scheduler.timer")
-sha256sums=('80ad527c20f5df75a5dfa9e31b8045d2e926db31ebf85ec9f6ccb0c33df240ca'
+sha256sums=('d843796473858de2f0f3cda11db2f711b8303a058660d62c6696d4cb828a8a45'
             '535d230e7178f4aec6165e998540150c1ad38e7b9824ce6a08325a2443579a1b'
             'dd35ce78248b5b9df52b127e5ad0039a062027942688fa21eb20bfbb8274d33c'
             'dc724f129786a3175bf7d0d6f740a767e63ef95b4de6ecb89727230b7d67924d')
