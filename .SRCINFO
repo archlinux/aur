@@ -1,7 +1,7 @@
 pkgbase = thunderbird-appmenu
 	pkgdesc = Thunderbird from extra with appmenu patch
 	pkgver = 68.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/thunderbird/
 	arch = x86_64
 	license = MPL
@@ -46,11 +46,13 @@ pkgbase = thunderbird-appmenu
 	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/68.7.0/source/thunderbird-68.7.0.source.tar.xz
 	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/68.7.0/source/thunderbird-68.7.0.source.tar.xz.asc
 	source = thunderbird.desktop
+	source = rust-1.43.patch
 	source = unity-menubar.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha512sums = fae763030b7a54930291a10f298b7fa4ffc400849082f576556b9040d095f1007ae686daf1241dff8b73bac35c14acf21c156a18a3e16d62a7719c6cc34e4d1f
 	sha512sums = SKIP
 	sha512sums = fa28ec547f87658cf72d160e9c2a7867d3e8a9b8c76ffa29d1098fddfc9331f65cc6dbf24c15da28c5d1b4ffa587d14d529d5da522a8805b073ad89986a552c9
+	sha512sums = 8833130802e2bfb34036444d6855c96a5b819f90c9835decd816bbf50dc507a71b2c343fd53d3fec0d79df791bb56436b06f2430abbeb70c726574a57c385d54
 	sha512sums = f3aa468974780016de60fa61a61f7e67a2cc51b4f888b223d16b9afaa42e82100c3b3d7f9491dfd0de3c5667ad4ac0fc58b96d81ef448ccf6e924cdc49066ad5
 
 pkgname = thunderbird-appmenu
