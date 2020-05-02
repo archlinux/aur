@@ -2,8 +2,8 @@
 
 pkgbase=linux-amd
 _srcname=linux
-gitver=v5.6.8
-pkgver=5.6.v.8
+gitver=v5.6.9
+pkgver=5.6.v.9
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -24,7 +24,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '4ae691b22929846916dc14daf48e125b17308fa78c9b652d4ebd0f671ead887f'
+            'b2e98fa0d93248aba325c7218a445f00fc09e98dcdaefd6450595a3e60bf52a4'
             #.preset file
             '71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08'
             #patch gentoo
