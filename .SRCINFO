@@ -1,6 +1,6 @@
 pkgbase = mudlet
 	pkgdesc = A modern MUD client with a graphical user inteface and built in Lua scripting
-	pkgver = 4.6.2
+	pkgver = 4.8.0
 	pkgrel = 1
 	url = http://www.mudlet.org
 	arch = i686
@@ -26,8 +26,8 @@ pkgbase = mudlet
 	optdepends = ttf-ubuntu-font-family: default font
 	optdepends = noto-fonts-emoji: emoji font support
 	conflicts = mudlet-git
-	source = https://www.mudlet.org/wp-content/files/Mudlet-4.6.2.tar.xz
-	sha256sums = 7c0e535db1d1ca931b35bc24b961fe6c1d9bba27168c1f444e1a078ac3575917
+	source = https://www.mudlet.org/wp-content/files/Mudlet-4.8.0.tar.xz
+	sha256sums = f9e1298f699f23e8b81824f52458b1ac347d81af3fa1d6efb25eb95bddfeba4a
 
 pkgname = mudlet
 
