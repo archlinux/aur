@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Handle jagex-jav protocol
+JAGEX_CONFIG=${1:-jagex-jav://oldschool.runescape.com/jav_config.ws}
+
+java \
+-Dcom.jagex.configuri="$JAGEX_CONFIG" \
+-Dsystem.class.loader=app.systemclassloader \
+-Xmx512m -Xss2m \
+-XX:CompileThreshold=1500 \
+-XX:+UseConcMarkSweepGC \
+-XX:+UseParNewGC \
+-jar "/usr/share/osrs-launcher/jagexappletviewer.jar" osrs

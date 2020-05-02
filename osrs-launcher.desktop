@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=OldSchool RuneScape
+Exec=osrs-launcher %u
+Icon=osrs-launcher
+Type=Application
+Categories=Games;
+MimeType=x-scheme-handler/jagex-jav;
