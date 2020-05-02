@@ -18,7 +18,6 @@ conflicts=("$_pkgname")
 backup=("etc/$_pkgname/$_pkgname.conf")
 source=("$_pkgname::git+https://github.com/Qu4tro/pass-spell.git")
 md5sums=('SKIP')
-pkgdir="/usr/lib"
 
 pkgver() {
   cd "$_pkgname"
