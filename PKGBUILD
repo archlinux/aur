@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=kind
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Kubernetes IN Docker - local clusters for testing Kubernetes'
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url='https://kind.sigs.k8s.io/'
@@ -11,7 +11,7 @@ optdepends=('podman: to use podman as container engine')
 makedepends=('go' 'git' 'gzip')
 optdepends=('kubectl: for managing Kubernetes clusters')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kubernetes-sigs/kind/archive/v${pkgver}.tar.gz")
-sha256sums=('97c0673bbcb1105c831d7769c05ed7d621da1dc57abc1654166f5b53d16475d1')
+sha256sums=('2a04a6427d45fa558fc4bfe90fde0b7ea2c7f2d6fcf3b7c581fc281ae49b5447')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
