@@ -1,9 +1,9 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=genieutils-git
-pkgver=8.r556.2fe7525
+pkgver=9.r592.e0dcc7c
 pkgrel=1
-_apiver=8
+_apiver=9
 pkgdesc='A library to read/write certain data and resource files of genie engine games'
 arch=('x86_64' 'i686')
 url='https://github.com/sandsmark/genieutils'

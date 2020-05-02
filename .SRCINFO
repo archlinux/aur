@@ -1,6 +1,6 @@
 pkgbase = genieutils-git
 	pkgdesc = A library to read/write certain data and resource files of genie engine games
-	pkgver = 8.r556.2fe7525
+	pkgver = 9.r592.e0dcc7c
 	pkgrel = 1
 	url = https://github.com/sandsmark/genieutils
 	arch = x86_64
