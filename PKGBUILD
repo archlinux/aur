@@ -7,11 +7,11 @@ url="https://github.com/googlecolab/jupyter_http_over_ws"
 license=('Apache')
 arch=('any')
 pkgver=0.0.8
-pkgrel=1
+pkgrel=2
 depends=('jupyter-notebook' 'python-six' 'python-tornado')
 makedepends=('python-setuptools')
-source=("https://pypi.org/packages/source/${_pypiname:0:1}/$_pypiname/$_pypiname-$pkgver.tar.gz")
-sha256sums=('b0aa1e7902d3808a698d4853f6dfe12fd02a0d9cb3851db3bf59703106d44a80')
+source=("https://github.com/googlecolab/$_pypiname/archive/v$pkgver.tar.gz")
+sha256sums=('12c1ab1fa764637b7e2e4b214c4dd2c9d890f02101cd1e6410bc7ad534d8155f')
 
 build() {
     cd "$srcdir/$_pypiname-$pkgver"
