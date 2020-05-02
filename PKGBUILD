@@ -26,7 +26,7 @@ prepare() {
 
 package() {
     install -Dm644 "$pkgname-$pkgver/OSRS_512x512x32.png" "$pkgdir/usr/share/pixmaps/osrs-launcher.png"
-    install -Dm644 "$pkgname-$pkgver/jagexappletviewer.jar" "$pkgdir/usr/share/osrs-launcher/jagexappletviewer.jar"
+    install -Dm644 "$pkgname-$pkgver/jagexappletviewer.jar" "$pkgdir/usr/share/java/osrs-launcher/jagexappletviewer.jar"
     install -Dm755 "osrs-launcher" "$pkgdir/usr/bin/osrs-launcher"
     install -Dm644 "osrs-launcher.desktop" "$pkgdir/usr/share/applications/osrs-launcher.desktop"
 }

@@ -10,4 +10,4 @@ java \
 -XX:CompileThreshold=1500 \
 -XX:+UseConcMarkSweepGC \
 -XX:+UseParNewGC \
--jar "/usr/share/osrs-launcher/jagexappletviewer.jar" osrs
+-jar "/usr/share/java/osrs-launcher/jagexappletviewer.jar" osrs
