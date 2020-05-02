@@ -1,5 +1,4 @@
 # Override this file with a modified version in /etc/tmpfiles.d/
 d /var/lib/readarr 0755 readarr readarr
 Z /var/lib/readarr - readarr readarr
-Z /usr/lib/readarr - readarr readarr
 L /var/log/readarr - - - - /var/lib/readarr/logs

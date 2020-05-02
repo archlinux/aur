@@ -5,7 +5,7 @@ After=syslog.target network.target
 [Service]
 User=readarr
 Group=readarr
-ExecStart=/usr/lib/readarr/Readarr -nobrowser -data=/var/lib/readarr
+ExecStart=/usr/lib/readarr/bin/Readarr -nobrowser -data=/var/lib/readarr
 Type=simple
 TimeoutStopSec=20
 
