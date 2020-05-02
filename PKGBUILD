@@ -16,7 +16,7 @@ validpgpkeys=('57D7D1ACC58E01C56961F9FB0FBA983067613EE6')
 build() {
 	cd "$pkgname-$pkgver"
 	rm -rf build/
-	meson --buildtype release --strip -Dversion=${pkgver}-${pkgrel} --prefix=/usr --unity on build/
+	meson --buildtype release --strip -Db_pie=true -Db_lto=true -Db_ndebug=if-release -Db_lto=true -Db_asneeded=true -Dversion=${pkgver}-${pkgrel} --prefix=/usr --unity on build/
 	ninja -C build/
 }
 
