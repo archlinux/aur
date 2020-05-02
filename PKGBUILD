@@ -28,9 +28,6 @@ prepare() {
 }
 
 package() {
-    echo ">>> To save time, you can build uncompressed package:"
-    echo ">>>   PKGEXT=.pkg.tar makepkg"
-
     echo ">>> Running installer..."
     echo ">>> Errors about acl like below are harmless (please ignore):"
     echo ">>>   dlsym(acl_get_fd): /usr/lib32/libfakeroot/libfakeroot.so: undefined symbol: acl_get_fd"
