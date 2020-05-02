@@ -1,7 +1,7 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
-pkgname=mini_al-git
-pkgver=r1298.1ca6f80
+pkgname=miniaudio-git
+pkgver=r1662.81a18ca
 pkgrel=1
 pkgdesc='Single file audio playback and capture library.'
 arch=('any')
@@ -21,9 +21,9 @@ pkgver() {
 
 package() {
   cd miniaudio
-  install -dm755 "${pkgdir}/usr/include/mini_al/"
-  install -m644 miniaudio.h "${pkgdir}/usr/include/mini_al/miniaudio.h"
-  install -dm755 "${pkgdir}/usr/include/mini_al/extras/"
-  install -m644 extras/*.h "${pkgdir}/usr/include/mini_al/extras/"
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/mini_al-git/LICENSE
+  install -dm755 "${pkgdir}/usr/include/miniaudio/"
+  install -m644 miniaudio.h "${pkgdir}/usr/include/miniaudio/miniaudio.h"
+  install -dm755 "${pkgdir}/usr/include/miniaudio/extras/"
+  install -m644 extras/*.h "${pkgdir}/usr/include/miniaudio/extras/"
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/miniaudio-git/LICENSE
 }
