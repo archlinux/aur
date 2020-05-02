@@ -3,10 +3,13 @@
 pkgname=torchvision-cuda
 pkgdesc='datasets, transforms, and models specific to computer vision (C++ library only)'
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 license=("BSD")
 url='https://github.com/pytorch/vision'
 arch=('x86_64')
+
+provides=(torchvision)
+conflicts=(torchvision)
 
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/pytorch/vision/archive/v$pkgver.tar.gz"
@@ -29,7 +32,8 @@ prepare() {
 	cmake "../vision-$pkgver" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DWITH_CUDA=ON
+		-DWITH_CUDA=ON \
+		-DCMAKE_CUDA_COMPILER=/opt/cuda/bin/nvcc
 }
 
 build() {
