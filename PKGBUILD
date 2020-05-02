@@ -1,7 +1,7 @@
 # Maintainer: Marius Orcsik <marius@littr.me>
 pkgname=mpris-scrobbler
 pkgver=0.3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Minimalistic user daemon which submits the currently playing song to libre.fm and compatible services."
 arch=('x86' 'x86_64')
 url="https://github.com/mariusor/mpris-scrobbler"
@@ -16,7 +16,7 @@ validpgpkeys=('57D7D1ACC58E01C56961F9FB0FBA983067613EE6')
 build() {
 	cd "$pkgname-$pkgver"
 	rm -rf build/
-	meson --buildtype=release --debug=false -Dversion=${pkgver}-${pkgrel} --prefix=/usr --unity on build/
+	meson --buildtype release --strip -Dversion=${pkgver}-${pkgrel} --prefix=/usr --unity on build/
 	ninja -C build/
 }
 
