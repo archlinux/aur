@@ -1,25 +1,27 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Maintainer: Nathan Owens <ndowens @ artixlinux.org>
 
 pkgname=('gitsome')
-_module='gitsome'
-pkgver='0.7.2'
+pkgver='0.8.0'
 pkgrel=1
 pkgdesc="Supercharged Git/Shell Autocompleter with GitHub Integration"
 url="https://github.com/donnemartin/gitsome"
-depends=('python35' 'python-ply' 'python-prompt_toolkit' 'python-requests' 'python-colorama' 'python-click' 'python-pygments' 'python-feedparser' 'python-pytz' 'python-docopt' 'python-uritemplate.py' 'python-numpydoc')
-makedepends=('python-setuptools')
+depends=('python' 'python-ply' 'python-prompt_toolkit' 'python-requests'
+	 'python-colorama' 'python-click' 'python-pygments' 'python-feedparser'
+	 'python-pytz' 'python-docopt' 'python-uritemplate' 'python-numpydoc')
+makedepends=('python-setuptools' 'git')
 conflicts=('xonsh' 'python-gitsome')
 license=('APACHE')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.tar.gz")
-md5sums=('7306daff07784650921e548d5886d5dd')
+source=("git+https://github.com/donnemartin/gitsome#tag=${pkgver}")
+sha256sums=('SKIP')
 
 build() {
-    cd "${_module}-${pkgver}"
+    cd "$srcdir/gitsome"
     python setup.py build
 }
 
 package() {
-    cd "${_module}-${pkgver}"
+    cd "$srcdir/gitsome"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
