@@ -6,7 +6,7 @@ pkgname=(
 	"nginx-zest-src-git"
 )
 pkgver=1.17.10
-pkgrel=4
+pkgrel=5
 epoch=3
 arch=(
 	"x86_64"
@@ -129,6 +129,7 @@ prepare()
 	cp -r "nginx"{,"-src"}
 
 	cd "quiche" || exit
+	git checkout boringssl_next
 	git submodule update --init
 
 	cd "deps/boringssl" || exit
