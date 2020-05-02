@@ -7,7 +7,7 @@ _srcname=linux-5.6
 _major=5.6
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=7
+_minor=8
 ### on initial release comment this out and set to =1
 _minorc=$((_minor+1))
 #_minorc=1
@@ -30,17 +30,19 @@ source=(
   # "$_rcpatch.patch::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/patch/?id=$_srcname.y&id2=v${_major}.${_minor}"
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
+  0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('e97661a03a3bd80ae1cc768541fd8bf9d2d304c7e966bcae3d0ac1132d7cabed'
+sha256sums=('ee58cb5c58555c97d7b784e783368b6cfd45a646dec8f293d6931855beb51ff3'
             'SKIP'
-            '23a0420f29eacb66d71f86f64fbd35a1b6ff617d520e3e05f3e1f537d46692ca'
+            '19e142ff07a2c8d10116074099b9d845682e74544a2b6c1641f7cb044ac282df'
             'SKIP'
-            'dfd3310bc2d3c4adbaba5e4f2260a8a110706993be1c3e02a5ddfe88bf0c63ce'
+            'f392c9ecbb5177ea2573aaf22935322940ea2be0366f3fb9c9f861431f4aed21'
+            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '76583cf912c01fdcbca445628ac6e4c03b7f22fda321ee0c7143f3703081650f')
 
 _kernelname=${pkgbase#linux}
