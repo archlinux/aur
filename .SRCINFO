@@ -7,6 +7,10 @@ pkgbase = glasscord
 	license = Apache License 2.0
 	makedepends = npm
 	depends = discord
+	depends = xorg-xprop
+	optdepends = beautiful-discord: Adds CSS hot-reload to Discord.
+	optdepends = betterdiscord: Adds CSS hot-reload and more to Discord.
+	optdepends = betterdiscord-rauenzi-git: Adds CSS hot-reload and more to Discord.
 	source = https://github.com/AryToNeX/Glasscord/archive/v0.0.6.tar.gz
 	md5sums = f68649dcbb57829f1400bb85f03458fc
 
