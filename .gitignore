@@ -1,7 +1,7 @@
 # makepkg files
 pkg/
 src/
-*.xz
+*.pkg.tar*
 
 # source files
-*.deb
+*.tar.xz
