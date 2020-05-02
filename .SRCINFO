@@ -1,6 +1,6 @@
 pkgbase = nginx-zest-git
 	pkgver = 1.17.10
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 3
 	url = https://github.com/ZestProjects/nginx
 	arch = x86_64

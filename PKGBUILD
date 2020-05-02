@@ -6,7 +6,7 @@ pkgname=(
 	"nginx-zest-src-git"
 )
 pkgver=1.17.10
-pkgrel=1
+pkgrel=2
 epoch=3
 arch=(
 	"x86_64"
@@ -144,8 +144,9 @@ prepare()
 build()
 {
 	#* Manually state the compiler flags
-	export CFLAGS="-march=x86-64 -mtune=generic -O3 -pipe -fno-plt"
-	export CXXFLAGS="-march=x86-64 -mtune=generic -O3 -pipe -fno-plt"
+	export CFLAGS="-march=x86-64 -mtune=generic -O3 -pipe -fno-plt -fno-builtin-malloc -fno-builtin-calloc -fno-builtin-realloc -fno-builtin-free"
+	export CXXFLAGS="-march=x86-64 -mtune=generic -O3 -pipe -fno-plt -fno-builtin-malloc -fno-builtin-calloc -fno-builtin-realloc -fno-builtin-free"
+	export LDFLAGS="$LDFLAGS -ltcmalloc"
 
 	cd "nginx" || exit
 	./auto/configure \
