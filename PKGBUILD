@@ -12,7 +12,7 @@ license=("GPLv3")
 
 conflicts=("gnome-shell-extension-pop-shell")
 makedepends=("typescript")
-depends=("gnome-shell")
+depends=("gnome-shell" "pop-shell-shortcuts-git")
 
 
 _dir="${_gitname}"

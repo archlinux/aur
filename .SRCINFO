@@ -1,5 +1,5 @@
 pkgbase = gnome-shell-extension-pop-shell-git
-	pkgdesc = Pop Shell - Tiling window management in Gnome
+	pkgdesc = Pop Shell - Tiling window management in Gnome (WIP)
 	pkgver = r192.e15786b
 	pkgrel = 1
 	url = https://github.com/pop-os/shell
@@ -7,6 +7,7 @@ pkgbase = gnome-shell-extension-pop-shell-git
 	license = GPLv3
 	makedepends = typescript
 	depends = gnome-shell
+	depends = pop-shell-shortcuts-git
 	conflicts = gnome-shell-extension-pop-shell
 	source = shell::git+https://github.com/pop-os/shell.git#branch=master_focal
 	sha256sums = SKIP
