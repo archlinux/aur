@@ -1,6 +1,6 @@
 pkgbase = emulationstation
 	pkgdesc = Emulation Station is a flexible emulator front-end supporting keyboardless navigation and custom system themes.
-	pkgver = 2.9.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://github.com/RetroPie/EmulationStation
 	install = emulationstation.install
@@ -33,10 +33,12 @@ pkgbase = emulationstation
 	optdepends = ppsspp-headless: PSP support
 	optdepends = steam: Steam support
 	conflicts = emulationstation-git
-	source = https://github.com/RetroPie/EmulationStation/archive/v2.9.0.tar.gz
+	source = https://github.com/RetroPie/EmulationStation/archive/v2.9.1.tar.gz
+	source = https://patch-diff.githubusercontent.com/raw/RetroPie/EmulationStation/pull/618.patch
 	source = emulationstation.desktop
 	source = emulationstation.png
-	sha256sums = b42a849f014d5871aa6d31a81ed53eddb5f994cdf790bc123fb7200c3c3c28d0
+	sha256sums = 549510df984a368ddc924d938a73c89ea1ae2af070d11666496972d4e79709d5
+	sha256sums = 3c13d66479d4f900e65a53232034943fe44a9861e5fefec1cfd8bbd69dde20c3
 	sha256sums = 5564803e0a82e132ab507b9cd341b32d1ce5b8be527996fbe13607d90f1dde2c
 	sha256sums = ac589d9da5c258226f8de76e99afe2b07ac86030ced90d284d31b51193057f9c
 

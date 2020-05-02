@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
 pkgname=emulationstation
 _gitname=EmulationStation
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Emulation Station is a flexible emulator front-end supporting keyboardless navigation and custom system themes."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -20,9 +20,11 @@ optdepends=('ttf-droid: Fallback fonts for Chinese/Japanese/Korean characters'
             'steam: Steam support')
 conflicts=(emulationstation-git)
 source=("https://github.com/RetroPie/$_gitname/archive/v$pkgver.tar.gz"
+        "https://patch-diff.githubusercontent.com/raw/RetroPie/$_gitname/pull/618.patch"
         "emulationstation.desktop"
         "emulationstation.png")
-sha256sums=('b42a849f014d5871aa6d31a81ed53eddb5f994cdf790bc123fb7200c3c3c28d0'
+sha256sums=('549510df984a368ddc924d938a73c89ea1ae2af070d11666496972d4e79709d5'
+            '3c13d66479d4f900e65a53232034943fe44a9861e5fefec1cfd8bbd69dde20c3'
             '5564803e0a82e132ab507b9cd341b32d1ce5b8be527996fbe13607d90f1dde2c'
             'ac589d9da5c258226f8de76e99afe2b07ac86030ced90d284d31b51193057f9c')
 
@@ -30,17 +32,16 @@ prepare() {
         cd "$_gitname-$pkgver"
         rm -rf external/pugixml
         git clone https://github.com/zeux/pugixml.git external/pugixml
+        patch --forward --strip=1 --input="${srcdir}/618.patch"
 }
 
 build() {
         cd "$_gitname-$pkgver"
-        cmake . -Wno-dev
+        cmake -Wno-dev .
         make
 }
 
 package() {
-        install -Dm755 "$srcdir/$_gitname-$pkgver/emulationstation" "$pkgdir/usr/bin/emulationstation"
-        install -Dm644 "$srcdir/$_gitname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/emulationstation/LICENSE"
-        install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-        install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+        cd "$_gitname-$pkgver"
+        make DESTDIR="${pkgdir}/" install
 }
