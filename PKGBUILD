@@ -7,7 +7,7 @@ arch=(x86_64)
 url="https://gameforge.com"
 license=('GPL')
 groups=()
-depends=('wine-staging' 'winetricks')
+depends=('wine-staging' 'winetricks' 'wine-nine')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -51,4 +51,4 @@ package() {
 md5sums=('d04f75b2287319dae2838b00df82faa3'
          '0db6b822bbdf443247671e1d93216b1a'
          'e693c79d27d45e1971529bb3841fdb48'
-         '42ca039defd945472b82d881bd7847c1')
+         '5faf6c868c8cb572ae03ed06d263614a')

@@ -19,6 +19,7 @@ fi
 cd $HOME/.gameforge/wine/drive_c/Program\ Files/
 
 if [ ! -f GameforgeClient/gfclient.exe ]; then
-  wine $HOME/.gameforge/wine/GameForgeInstaller.exe
+	/usr/lib32/wine/fakedlls/ninewinecfg.exe
+	wine $HOME/.gameforge/wine/GameForgeInstaller.exe
 fi
 wine GameforgeClient/gfclient.exe "$@"
