@@ -1,0 +1,16 @@
+pkgbase = notepas-gtk2-bin
+	pkgdesc = A portable multi-platform text editor
+	pkgver = 0.9.14
+	pkgrel = 1
+	url = https://github.com/beNative/notepas
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = gendesk
+	depends = gtk2
+	provides = notepas
+	options = !strip
+	source = https://github.com/beNative/Notepas/releases/download/v0.9.14/notepas-0.9.14.x86_64-linux-gtk2.zip
+	sha256sums = c09fa3bb4e79b2b45894be3863d0bcc7f3b882424f0e898e58bfd8b305d0ae70
+
+pkgname = notepas-gtk2-bin
+
