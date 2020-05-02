@@ -1,6 +1,6 @@
 pkgbase = oksh
 	pkgdesc = Ported version of ksh from OpenBSD
-	pkgver = 6.6
+	pkgver = 6.7
 	pkgrel = 1
 	url = https://github.com/ibara/oksh/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = oksh
 	license = GPL3
 	depends = glibc
 	depends = ncurses
-	source = https://github.com/ibara/oksh/releases/download/oksh-6.6/oksh-6.6.tar.gz
-	md5sums = d583dfa0f9e4076714ec22a69f138cfd
+	source = https://github.com/ibara/oksh/releases/download/oksh-6.7/oksh-6.7.tar.gz
+	md5sums = bbfab4558db956f4a88d230440729b8d
 
 pkgname = oksh
 
