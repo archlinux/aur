@@ -5,11 +5,11 @@
 
 pkgname=thunderbird-beta-bin-de
 _pkgname=thunderbird-beta
-pkgver=76.0b1
+pkgver=76.0b3
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
-pkgdesc="Standalone Mail/News reader - Bleeding edge binary version, german"
+pkgdesc="Standalone Mail/News reader - Bleeding edge binary version (German)"
 arch=('x86_64')
 url="https://www.mozilla.org/thunderbird"
 license=('GPL' 'LGPL' 'MPL')
@@ -20,12 +20,14 @@ optdepends=('hunspell: Spell checking'
 provides=("thunderbird=$pkgver")
 conflicts=('thunderbird-beta')
 install=$pkgname.install
-source=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/de/thunderbird-$pkgver.tar.bz2"
-        'thunderbird-beta-bin-de.desktop'
-        'vendor.js')
-sha512sums=('04965c213459cd2c0983a8b5a8dac3c621b1200ce9eb14807668bd169d2e26ecb4ffc080c69fc4ce89e634973fbaa8b23473fecd61ed2da0b87a446ec1906d64'
+source=(https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/de/thunderbird-$pkgver.tar.bz2{,.asc}
+        thunderbird-beta-bin-de.desktop
+        vendor.js)
+sha512sums=('47c7d193743cf1b6f25720ec3216f59714269ad9335a5f8727ee0dbdcdc704886fef4a0cbb90440606e7e9d1e3de97f334c2d91a1ab4919b28d31b31edda568d'
+            'SKIP'
             'e5649ddee3ca9cfdcf56652e9c8e6160d52c69d1439f9135b0c0d436ce61a25f17758afc0dd6cac3434c26234c584828eb07fdf9604797f7dd3f617ec194b79a'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
+validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
 # RC
 if [[ $_build = ? ]]; then
   source[0]="thunderbird-$pkgver.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/candidates/$_major-candidates/build$_build/linux-x86_64/de/thunderbird-$_major.tar.bz2"
