@@ -9,21 +9,32 @@ url='https://github.com/Alexays/Waybar/'
 license=('MIT')
 provides=('waybar')
 conflicts=('waybar')
-depends=('gtkmm3'
-         'fmt'
-         'jsoncpp'
-         'libinput'
-         'libnl>=3.0'
-         'libsigc++>=2.0'
-         'wayland'
-         'libdbusmenu-gtk3'
-         'libappindicator-gtk3'
-         'libpulse')
-makedepends=('meson'
-             'git')
-optdepends=('sway: Sway modules support'
-            'libmpdclient: Mpd module support'
-            'otf-font-awesome: Icons in the default configuration')
+depends=(
+    'gtkmm3'
+    'libjsoncpp.so'
+    'libinput'
+    'libsigc++'
+    'fmt'
+    'wayland'
+    'chrono-date'
+    'libspdlog.so'
+    'gtk-layer-shell'
+    'libpulse'
+    'libnl'
+    'libappindicator-gtk3'
+    'libdbusmenu-gtk3'
+    'libmpdclient'
+)
+makedepends=(
+    'git'
+    'cmake'
+    'meson'
+    'scdoc' # For generating manpages
+    'wayland-protocols'
+)
+optdepends=(
+    'otf-font-awesome: Icons in the default configuration'
+)
 
 source=("${pkgname}::git://github.com/Alexays/Waybar"
         'meson.build.patch')
