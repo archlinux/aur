@@ -9,7 +9,7 @@ url="https://github.com/pixelfed/pixelfed"
 license=(AGPL)
 backup=(etc/webapps/pixelfed/env)
 depends=(php php-intl)
-makedepends=("composer")
+makedepends=("composer" "unzip")
 optdepends=('mysql'
             'postgresql'
             'php-fpm'

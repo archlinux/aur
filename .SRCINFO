@@ -6,6 +6,7 @@ pkgbase = pixelfed
 	arch = any
 	license = AGPL
 	makedepends = composer
+	makedepends = unzip
 	depends = php
 	depends = php-intl
 	optdepends = mysql
