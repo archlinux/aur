@@ -11,6 +11,7 @@ pkgbase = linux-xanmod-git
 	makedepends = bc
 	makedepends = libelf
 	makedepends = cpio
+	makedepends = git
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
