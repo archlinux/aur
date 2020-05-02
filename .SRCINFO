@@ -1,6 +1,6 @@
 pkgbase = btdex-git
 	pkgdesc = Decentralized exchange system running on the Burst blockchain
-	pkgver = v0.1.17.r0.g17b8480
+	pkgver = v0.1.19.r0.gcd49278
 	pkgrel = 1
 	url = https://github.com/btdex/btdex
 	install = btdex.install
