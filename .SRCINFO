@@ -1,8 +1,8 @@
 pkgbase = libmowgli-2-git
 	pkgdesc = A class library containing performance and usability oriented extensions to C.
-	pkgver = 2.1.3.8be3be8
+	pkgver = 2.1.3.r42.g8be3be8
 	pkgrel = 1
-	url = https://atheme.org/
+	url = https://github.com/atheme/libmowgli-2
 	arch = i686
 	arch = x86_64
 	license = ISC
@@ -10,24 +10,7 @@ pkgbase = libmowgli-2-git
 	depends = openssl
 	provides = libmowgli=2.1.3
 	conflicts = libmowgli
-	source = libmowgli-2-git-2.1.3.8be3be8::git+https://github.com/atheme/libmowgli-2.git
-	sha1sums = SKIP
-
-pkgname = libmowgli-2-git
-
-pkgbase = libmowgli-2-git
-	pkgdesc = A class library containing performance and usability oriented extensions to C.
-	pkgver = 2.1.3.8be3be8
-	pkgrel = 1
-	url = https://atheme.org/
-	arch = i686
-	arch = x86_64
-	license = ISC
-	makedepends = git
-	depends = openssl
-	provides = libmowgli=2.1.3
-	conflicts = libmowgli
-	source = libmowgli-2-git-2.1.3.8be3be8::git+https://github.com/atheme/libmowgli-2.git
+	source = libmowgli-2-git::git+https://github.com/atheme/libmowgli-2.git
 	sha1sums = SKIP
 
 pkgname = libmowgli-2-git
