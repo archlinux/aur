@@ -1,0 +1,20 @@
+pkgbase = emumenu-git
+	pkgdesc = emuMenu is a simple rom launcher made with very large collections and no flair in mind.
+	pkgver = r59.834a62a
+	pkgrel = 1
+	url = https://github.com/fuzzbop/emuMenu
+	arch = i686
+	arch = x86_64
+	license = QPL
+	license = GPL2
+	license = GPLv3
+	makedepends = git
+	depends = python
+	depends = python-pyqt5
+	source = git+https://github.com/fuzzbop/emuMenu.git
+	source = emuMenu.sh
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = emumenu-git
+
