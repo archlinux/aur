@@ -1,11 +1,13 @@
 pkgbase = teamspeak
 	pkgdesc = TeamSpeak is software for quality voice communication via the Internet
 	pkgver = 5.0.0beta25
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.teamspeak.com
 	arch = x86_64
 	license = custom
 	makedepends = p7zip
+	depends = gtk3
+	depends = libxss
 	optdepends = libpulse
 	noextract = teamspeak-client-5.0.0beta25.tar.compressed
 	source = teamspeak.desktop
