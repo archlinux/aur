@@ -1,0 +1,16 @@
+pkgbase = wing-personal
+	pkgdesc = IDE designed from the ground up for Python, to bring you a more productive development experience
+	pkgver = 7.2.2.0
+	pkgrel = 1
+	url = https://wingware.com
+	arch = x86_64
+	license = custom
+	depends = python
+	depends = xcb-util-wm
+	provides = wing
+	options = !strip
+	source = wing-personal-7.2.2.0.tar.bz2::https://wingware.com/pub/wing-personal/7.2.2.0/wing-personal-7.2.2.0-linux-x64.tar.bz2
+	sha256sums = a33fdc849ed7075332fe87f111389811d2aacb4a4ab10a5717316880c8998267
+
+pkgname = wing-personal
+
