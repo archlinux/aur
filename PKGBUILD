@@ -187,6 +187,7 @@ package_nginx-zest-git()
 	depends=(
 		"brotli"
 		"geoip"
+		"gperftools"
 		"gzip"
 		"libatomic_ops"
 		"libbsd"
