@@ -6,6 +6,7 @@ pkgbase = bat-extras-git
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = shfmt
 	depends = bat
 	optdepends = ripgrep: required for batgrep script
 	optdepends = entr: optional for batwatch script

@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/eth-p/bat-extras"
 license=('MIT')
 depends=('bat')
-makedepends=('git')
+makedepends=('git' 'shfmt')
 optdepends=('ripgrep: required for batgrep script'
             'entr: optional for batwatch script'
             'ncurses: optional for batdiff script'
