@@ -38,6 +38,7 @@ prepare() {
 }
 
 build() {
+	export GOPATH="$srcdir"/gopath
 	cd "$srcdir/${pkgname%-git}"
 	GOOS=linux \
 	GOARCH=$(go env GOHOSTARCH) \
