@@ -1,11 +1,11 @@
 pkgbase = pakku-git
 	pkgdesc = Pacman wrapper with AUR support with latest changes from github repo
-	pkgver = 0.14
+	pkgver = 0.14.r2.g85382ca
 	pkgrel = 1
-	url = https://github.com/kitsunyan/pakku
+	url = https://github.com/zqqw/pakku
 	arch = x86_64
 	license = GPL3
-	makedepends = nim-legacy
+	makedepends = nim
 	makedepends = git
 	makedepends = asciidoc
 	depends = libcurl.so
@@ -13,7 +13,7 @@ pkgbase = pakku-git
 	provides = pakku
 	conflicts = pakku
 	backup = etc/pakku.conf
-	source = git+https://github.com/kitsunyan/pakku.git
+	source = git+https://github.com/zqqw/pakku.git
 	sha256sums = SKIP
 
 pkgname = pakku-git
