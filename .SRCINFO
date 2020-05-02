@@ -1,7 +1,7 @@
 pkgbase = tmfs
 	pkgdesc = Apple's Time Machine fuse read only file system
-	pkgver = r6
-	pkgrel = 2
+	pkgver = r7
+	pkgrel = 1
 	url = https://github.com/abique/tmfs
 	arch = i686
 	arch = x86_64
