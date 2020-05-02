@@ -2,8 +2,8 @@
 
 pkgname=teamspeak
 pkgver=5.0.0beta25
-pkgrel=2
-pkgdesc="TeamSpeak is software for quality voice communication via the Internet"
+pkgrel=3
+pkgdesc="Software for quality voice communication via the Internet"
 url="http://www.teamspeak.com"
 license=('custom')
 depends=('gtk3'
