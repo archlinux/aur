@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-liblo
 	pkgdesc = A lightweight OSC (Open Sound Control) implementation (mingw-w64)
-	pkgver = 0.30
+	pkgver = 0.31
 	pkgrel = 1
 	url = http://liblo.sourceforge.net/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mingw-w64-liblo
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/radarsat1/liblo/releases/download/0.30/liblo-0.30.tar.gz
-	sha512sums = 51132933cc23237b70ed08fa7986a4a9f838529b83807746b358bcc171f8bbce7f37115b7c855520c9219bae93c74e502aebfb90e44dabdc6d0a00b8335336e3
+	source = http://downloads.sourceforge.net/liblo/liblo-0.31.tar.gz
+	sha512sums = 97f9561296c2e53f92db0cfee625687208b490f8bc229b6cffe88b43ca2a8da1ed3217aaa2151245ea483e54ad6c5e92b9cf10a20661766fa6d3bedb5a8cdd01
 
 pkgname = mingw-w64-liblo
 
