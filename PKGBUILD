@@ -1,7 +1,8 @@
 # Maintainer:  Alexei Colin <ac at alexeicolin dot com>
 
 pkgname=ti-cgt-msp430
-pkgver=19.6.0.STS
+pkgver=20.2.1.LTS
+_manifest_ver=20.2.0.LTS
 pkgrel=1
 pkgdesc="Texas Instruments Code Generation Tools (compiler) for MSP430"
 arch=('x86_64')
@@ -27,9 +28,6 @@ prepare() {
 }
 
 package() {
-    echo ">>> To save time, you can build uncompressed package:"
-    echo ">>>   PKGEXT=.tar makepkg"
-
     echo ">>> Running installer..."
     echo ">>> Errors about acl like below are harmless (please ignore):"
     echo ">>>   dlsym(acl_get_fd): /usr/lib32/libfakeroot/libfakeroot.so: undefined symbol: acl_get_fd"
@@ -39,7 +37,7 @@ package() {
     # Match permissions to ccstudio package (see notes in ccstudio.install)
     find $pkgdir/${_ccsdir} -type d -exec chmod 0775 {} \;
 
-    install -D -m0644 $pkgdir/${_ccsdir}/${_installdir}/${pkgname}_${pkgver}/MSP430_RTS_${pkgver}_manifest.html $pkgdir/usr/share/licenses/$pkgname/LICENSE.html
+    install -D -m0644 $pkgdir/${_ccsdir}/${_installdir}/${pkgname}_${pkgver}/MSP430_RTS_${_manifest_ver}_manifest.html $pkgdir/usr/share/licenses/$pkgname/LICENSE.html
 }
 
-sha256sums=('842eb32a5104b9b1bc91e00d3a3d92d25829a7998ea83db4a1cdf8052685622c')
+sha256sums=('ce03d03441a3bcb2324eff2b0fc1b21c90f79f86a51a4499dbd45b58e0306a64')

@@ -1,6 +1,6 @@
 pkgbase = ti-cgt-msp430
 	pkgdesc = Texas Instruments Code Generation Tools (compiler) for MSP430
-	pkgver = 19.6.0.STS
+	pkgver = 20.2.1.LTS
 	pkgrel = 1
 	url = https://www.ti.com/tool/MSP-CGT
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = ti-cgt-msp430
 	options = emptydirs
 	options = !purge
 	options = !zipman
-	source = http://software-dl.ti.com/codegen/esd/cgt_public_sw/MSP430/19.6.0.STS/ti_cgt_msp430_19.6.0.STS_linux_installer_x86.bin
-	sha256sums = 842eb32a5104b9b1bc91e00d3a3d92d25829a7998ea83db4a1cdf8052685622c
+	source = http://software-dl.ti.com/codegen/esd/cgt_public_sw/MSP430/20.2.1.LTS/ti_cgt_msp430_20.2.1.LTS_linux_installer_x86.bin
+	sha256sums = ce03d03441a3bcb2324eff2b0fc1b21c90f79f86a51a4499dbd45b58e0306a64
 
 pkgname = ti-cgt-msp430
 
