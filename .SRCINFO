@@ -1,0 +1,15 @@
+pkgbase = cava_cmmk-git
+	pkgdesc = Audio visualizer for Cooler Master keyboards.
+	pkgver = 12.584920f
+	pkgrel = 1
+	url = https://github.com/Bonnee/cava_cmmk
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = libcmmk-git
+	depends = cava
+	source = git+https://github.com/Bonnee/cava_cmmk.git
+	sha512sums = SKIP
+
+pkgname = cava_cmmk-git
+
