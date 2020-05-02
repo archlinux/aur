@@ -1,6 +1,6 @@
-pkgbase = nodejs-terser
+pkgbase = terser
 	pkgdesc = JavaScript parser, mangler/compressor and beautifier toolkit for ES6+
-	pkgver = 4.6.3
+	pkgver = 4.6.13
 	pkgrel = 1
 	url = https://github.com/fabiosantoscode/terser
 	arch = any
@@ -8,8 +8,11 @@ pkgbase = nodejs-terser
 	makedepends = jq
 	makedepends = npm
 	depends = nodejs
-	source = https://registry.npmjs.org/terser/-/terser-4.6.3.tgz
-	sha256sums = 0bbd52482848cdc746bb09f94733cc81d522a70ae6de7b399f427e7d4d21820c
+	provides = nodejs-terser
+	conflicts = nodejs-terser
+	replaces = nodejs-terser
+	source = https://registry.npmjs.org/terser/-/terser-4.6.13.tgz
+	sha256sums = b601aa65d9f7cd8ce1006ace73887c9702b15954116ad869179e82e4f23eb93b
 
-pkgname = nodejs-terser
+pkgname = terser
 
