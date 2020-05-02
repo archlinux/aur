@@ -1,6 +1,6 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=kind
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Kubernetes IN Docker - local clusters for testing Kubernetes'
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
