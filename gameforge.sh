@@ -1,6 +1,6 @@
 #!/bin/bash
 export WINEPREFIX="$HOME/.gameforge/wine"
-export WINEARG
+export WINEARCH=win32
 export WINEESYNC=1
 
 if [ ! -d "$HOME"/.gameforge ] ; then

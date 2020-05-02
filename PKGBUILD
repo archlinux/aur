@@ -41,12 +41,13 @@ package() {
 	cd $srcdir
 	mkdir $pkgdir/usr/
 	mkdir $pkgdir/usr/bin
+	mkdir $pkgdir/$HOME
 	cp gameforge.sh $pkgdir/usr/bin/
 	mv $pkgdir/usr/bin/gameforge.sh $pkgdir/usr/bin/gameforge
-	cp gameforge.png $HOME/.local/share/icons/hicolor/256x256/apps
-	cp gameforge.desktop $HOME/.local/share/applications
+	cp gameforge.png $pkgdir/$HOME/.local/share/icons/hicolor/256x256/apps
+	cp gameforge.desktop $pkgdir/$HOME/.local/share/applications
 }
 md5sums=('d04f75b2287319dae2838b00df82faa3'
          '0db6b822bbdf443247671e1d93216b1a'
-         'fdfb4d34c3e793ed6fdf17f3b54eea20'
-         '27adb540c2f7910b34978b03449bf995')
+         'e693c79d27d45e1971529bb3841fdb48'
+         'fc96c7baae6ac425bc72f1677361d7bf')
