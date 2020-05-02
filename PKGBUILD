@@ -23,15 +23,22 @@ options=()
 install=
 changelog=
 source=("$url/archive/$pkgver.tar.gz"
-        "https://github.com/obsproject/obs-studio/archive/$obsver.tar.gz")
+        "https://github.com/obsproject/obs-studio/archive/$obsver.tar.gz"
+        "v4l2device_close.patch::https://github.com/CatxFish/obs-v4l2sink/pull/21.patch")
 noextract=()
 sha256sums=('83e9bb104dcc3840acd17ebc0810de30c8de27545d4ef181d58f8a375dba06d4'
-            'c8db224d2ee4d9b91448be9e47414398e570eebe4a59ff9fd19b066789d1ccdb')
+            'c8db224d2ee4d9b91448be9e47414398e570eebe4a59ff9fd19b066789d1ccdb'
+            '617e017562ab3ca85fffa86c869fa778e26ee0694e0ae8dd1b8b110bff1bb6cc')
 validpgpkeys=()
 
 prepare() {
 	rm -rf build
 	mkdir build
+
+	# Apply "adjust v4l2device_close to void" patch from
+	# https://github.com/CatxFish/obs-v4l2sink/pull/21
+	cd $pkgname-$pkgver
+	patch --forward --fuzz=0 --input="${srcdir}/v4l2device_close.patch" --strip=1
 }
 
 build() {
