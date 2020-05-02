@@ -1,10 +1,10 @@
 # Maintainer: Jesse Luehrs <doy@tozt.net>
 pkgname=rbw-git
 _name=${pkgname%-*}
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 makedepends=('rust' 'cargo' 'git')
-depends=('pinentry')
+depends=('pinentry' 'openssl')
 conflicts=('rbw')
 provides=('rbw')
 arch=('i686' 'x86_64')
@@ -28,4 +28,5 @@ package() {
     cd "${_name}"
     install -Dm 755 target/release/rbw -t "${pkgdir}/usr/bin"
     install -Dm 755 target/release/rbw-agent -t "${pkgdir}/usr/bin"
+    install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/rbw-git"
 }
