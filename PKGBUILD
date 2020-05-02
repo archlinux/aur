@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    ./build.sh --minify=none
+    ./build.sh
 }
 
 check() {
