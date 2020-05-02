@@ -2,7 +2,6 @@ pkgbase = zeal
 	pkgdesc = An offline API documentation browser
 	pkgver = 0.6.1
 	pkgrel = 1
-	epoch = 1
 	url = https://zealdocs.org/
 	arch = x86_64
 	license = GPL3
@@ -14,7 +13,7 @@ pkgbase = zeal
 	depends = libarchive
 	depends = qt5-x11extras
 	source = zeal-0.6.1.tar.gz::https://github.com/zealdocs/zeal/archive/v0.6.1.tar.gz
-	sha256sums = 095c08f9903071849d5c79878abd48237ce1615f16d324afff1873ab6b5f0026
+	sha512sums = 5b1a129980000c0fc8516e2c7d6c4a8de4adde7054ff8d9635e3be35441ad3ef0539746bbe1ca8abce7e6fb3d20c825b57661c3f8cd059ef1480db65ff81f3d9
 
 pkgname = zeal
 
