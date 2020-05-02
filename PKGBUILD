@@ -1,6 +1,6 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 pkgname=xmppc
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Command Line Interface Tool for XMPP"
 arch=('x86_64' 'i686')
@@ -21,4 +21,4 @@ package() {
 	cd "$pkgname"
 	make DESTDIR="$pkgdir/" install
 }
-md5sums=('eb950cd55a63508285fdb9bc840458b1')
+md5sums=('b5087019ba9507e7a7f03718d3c5d04a')
