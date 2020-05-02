@@ -2,7 +2,7 @@ pkgbase = pia-bin
 	pkgdesc = A tool that aims to help data controllers build and demonstrate compliance to the GDPR. Developped by the French CNIL.
 	pkgver = 2.2.1
 	pkgrel = 1
-	url = https://www.cnil.fr/fr/node/23992
+	url = https://github.com/LINCnil/pia-app
 	arch = x86_64
 	license = GPL
 	depends = fuse
@@ -11,9 +11,11 @@ pkgbase = pia-bin
 	source = https://github.com/LINCnil/pia-app/releases/download/v2.2.1/PIA-2.2.1.AppImage
 	source = pia-bin.png::https://github.com/LINCnil/pia-app/raw/master/icons/128x128.png
 	source = pia-bin.desktop
+	source = https://raw.githubusercontent.com/LINCnil/pia-app/v2.2.1/LICENSE
 	sha256sums = e30404744759b82fba6b95ba9f36f4b81d3928961c179de14d52cd8749895592
 	sha256sums = 70b5b9d4f58be2c3601aa06a9793e4e57067a644cc5c4c54605b73c652031330
 	sha256sums = ddf3ff71ceb6be91af9b1856e593fa9bcba05d575beb20d1946d63dd7df51c9e
+	sha256sums = 7dcfd26f67041962a7e1554b5ef3398d4faac0d543c20d4ae27ddc4b6d41ec8a
 
 pkgname = pia-bin
 
