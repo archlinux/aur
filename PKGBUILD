@@ -1,14 +1,14 @@
 # Author: Artemii Sudakov <finziyr@yandex.ru>
 pkgname=sakuri
-pkgver=2.1.6
-pkgrel=2
+pkgver=2.1.7
+pkgrel=1
 pkgdesc='Simple bash AUR helper'
 arch=('any')
 url='https://github.com/BiteDasher/sakuri'
 license=('MIT')
 depends=('jq' 'curl' 'bash' 'git' 'sudo' 'binutils')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BiteDasher/sakuri/archive/${pkgver}f.tar.gz")
-sha256sums=("b6a13df4595850f611160b88432a027cb107c46465154523e2ffeec9b8d48560")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BiteDasher/sakuri/archive/${pkgver}.tar.gz")
+sha256sums=("5db1efe188ea81d2ec4d08b1dd27c4abc238ceb14cec71c6c072551907a9b16f")
 package() {
 mkdir -p $pkgdir/usr/bin
 msg2 "More code fixes/cleanup; db.lock was added"
