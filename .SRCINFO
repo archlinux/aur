@@ -1,13 +1,12 @@
 pkgbase = gitsome
 	pkgdesc = Supercharged Git/Shell Autocompleter with GitHub Integration
-	pkgver = 0.8.0
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/donnemartin/gitsome
 	arch = any
 	license = APACHE
 	makedepends = python-setuptools
-	makedepends = git
-	depends = python
+	depends = python35
 	depends = python-ply
 	depends = python-prompt_toolkit
 	depends = python-requests
@@ -21,8 +20,8 @@ pkgbase = gitsome
 	depends = python-numpydoc
 	conflicts = xonsh
 	conflicts = python-gitsome
-	source = git+https://github.com/donnemartin/gitsome#tag=0.8.0
-	sha256sums = SKIP
+	source = https://files.pythonhosted.org/packages/source/g/gitsome/gitsome-0.7.2.tar.gz
+	md5sums = 7306daff07784650921e548d5886d5dd
 
 pkgname = gitsome
 
