@@ -1,34 +1,36 @@
-# Maintainer: Sam Stuewe <halosghost at archlinux dot info>
-# Contributor: Lukas Fleischer <archlinux at cryptocrack dot de>
+# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
+# Contributor: Sam Stuewe <halosghost at archlinux dot info>
 
 _name='calcurse'
 pkgname="${_name}-git"
-pkgver=4.0.0.1488.41b3ab7
+pkgver=4.6.0.1914.5a3664b
 pkgrel=1
 pkgdesc='A text-based personal organizer (Git version).'
 arch=('i686' 'x86_64')
-url='http://git.calcurse.org/calcurse.git'
+url='https://calcurse.org/'
 license=('BSD')
 depends=('ncurses')
 makedepends=('git' 'asciidoc')
 provides=('calcurse')
 conflicts=('calcurse')
-source=("${_name}::${url//http/git}")
+source=("git+https://git.calcurse.org/calcurse.git/")
 sha256sums=('SKIP')
 
 pkgver() {
-   cd "${srcdir}/${_name}"
-   echo "$(git describe HEAD|cut -d 'v' -f2|cut -d '-' -f1).$(git rev-list --count HEAD).$(git log -1 --pretty=format:%h )"
+	cd "${srcdir}/${_name}"
+	printf '%s.%s.%s' "$(git describe HEAD | cut -d 'v' -f2 | cut -d '-' -f1)" \
+		"$(git rev-list --count HEAD)" "$(git log -1 --pretty=format:%h)"
 }
 
 build() {
-   cd "${srcdir}/${_name}"
-   ./autogen.sh
-   ./configure --prefix=/usr --mandir=/usr/share/man
-   make
+	cd "${srcdir}/${_name}"
+
+	./autogen.sh
+	./configure --prefix=/usr --mandir=/usr/share/man
+	make
 }
 
 package() {
-  cd "${srcdir}/${_name}"
-  make DESTDIR="${pkgdir}" install
-} 
+	cd "${srcdir}/${_name}"
+	make DESTDIR="${pkgdir}" install
+}
