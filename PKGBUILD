@@ -1,6 +1,6 @@
 pkgname=terminus-font-gq2-ll2-td1
 _pkgname=terminus-font
-pkgver=4.47
+pkgver=4.48
 pkgrel=1
 pkgdesc="Terminus patched with gq2, ll2, and td1."
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=('terminus-font')
 provides=('terminus-font')
 source=("https://downloads.sourceforge.net/project/$_pkgname/$_pkgname-$pkgver/$_pkgname-$pkgver.tar.gz"
         fix-75-yes-terminus.patch)
-md5sums=('d95f0914e31b838bd54edf8389fdc6cd'
+md5sums=('a2cb88f6cf174f3d07de93b91e115a8d'
          'dd9fe762af012c731c866ee9d29e09f0')
 
 prepare() {
@@ -42,17 +42,17 @@ build() {
 
 package() {
 
-  make -C "terminus-font-$pkgver" DESTDIR="$pkgdir" install
+    make -C "terminus-font-$pkgver" DESTDIR="$pkgdir" install
 
-  install -Dm644 "$srcdir/terminus-font-$pkgver/75-yes-terminus.conf" "$pkgdir/etc/fonts/conf.avail/75-yes-terminus.conf"
+    install -Dm644 "$srcdir/terminus-font-$pkgver/75-yes-terminus.conf" "$pkgdir/etc/fonts/conf.avail/75-yes-terminus.conf"
 
-  install -Dm644 "$srcdir/terminus-font-$pkgver/OFL.TXT" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm644 "$srcdir/terminus-font-$pkgver/OFL.TXT" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 
-  install -d "$pkgdir/etc/fonts/conf.d"
+    install -d "$pkgdir/etc/fonts/conf.d"
 
 
-  cd "$pkgdir/etc/fonts/conf.d"
+    cd "$pkgdir/etc/fonts/conf.d"
 
-  ln -s ../conf.avail/75-yes-terminus.conf .
+    ln -s ../conf.avail/75-yes-terminus.conf .
 
 }

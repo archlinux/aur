@@ -1,6 +1,6 @@
 pkgbase = terminus-font-gq2-ll2-td1
 	pkgdesc = Terminus patched with gq2, ll2, and td1.
-	pkgver = 4.47
+	pkgver = 4.48
 	pkgrel = 1
 	url = http://terminus-font.sourceforge.net/
 	arch = any
@@ -16,9 +16,9 @@ pkgbase = terminus-font-gq2-ll2-td1
 	optdepends = xorg-fonts-alias
 	provides = terminus-font
 	conflicts = terminus-font
-	source = https://downloads.sourceforge.net/project/terminus-font/terminus-font-4.47/terminus-font-4.47.tar.gz
+	source = https://downloads.sourceforge.net/project/terminus-font/terminus-font-4.48/terminus-font-4.48.tar.gz
 	source = fix-75-yes-terminus.patch
-	md5sums = d95f0914e31b838bd54edf8389fdc6cd
+	md5sums = a2cb88f6cf174f3d07de93b91e115a8d
 	md5sums = dd9fe762af012c731c866ee9d29e09f0
 
 pkgname = terminus-font-gq2-ll2-td1
