@@ -1,7 +1,7 @@
 pkgbase = keydb
 	pkgdesc = A Multithreaded Fork of Redis
 	pkgver = 5.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://keydb.dev
 	arch = i686
 	arch = x86_64

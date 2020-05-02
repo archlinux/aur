@@ -2,7 +2,7 @@
 
 pkgname="keydb"
 pkgver=5.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Multithreaded Fork of Redis"
 arch=(
 	"i686"
@@ -61,7 +61,7 @@ build()
 	#* Clang nee
 	export LDFLAGS="$LDFLAGS -latomic"
 
-	make BUILD_TLS=yes -C "KeyDB-$pkgver"
+	make BUILD_TLS=yes MALLOC=jemalloc -C "KeyDB-$pkgver"
 }
 
 check()
