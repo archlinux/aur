@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: desbma
 pkgname=bat-extras-git
-pkgver=20200408.r34.gd5fa651
+pkgver=2020.05.01.r2.gfb97300
 pkgrel=1
 pkgdesc="Bash scripts that integrate bat with various command line tools."
 arch=('any')
@@ -26,7 +26,12 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    ./build.sh --minify=none --no-verify
+    ./build.sh --minify=none
+}
+
+check() {
+	cd "$srcdir/${pkgname%-git}"
+	./test.sh
 }
 
 package() {
