@@ -40,14 +40,15 @@ check() {
 package() {
 	cd $srcdir
 	install -d $pkgdir/usr/bin
-	install -d $pkgdir$HOME/.local/share/icons/hicolor/256x256/apps
-	install -d $pkgdir$HOME/.local/share/applications
+	install -d $pkgdir/usr/share/icons
+	install -d $pkgdir/usr/share/applications
+	install -d $pkgdir/usr/share/applications
 	cp gameforge.sh $pkgdir/usr/bin/
 	mv $pkgdir/usr/bin/gameforge.sh $pkgdir/usr/bin/gameforge
-	cp gameforge.png $pkgdir/$HOME/.local/share/icons/hicolor/256x256/apps
-	cp gameforge.desktop $pkgdir/$HOME/.local/share/applications
+	cp gameforge.png $pkgdir/usr/share/icons
+	cp gameforge.desktop $pkgdir/usr/share/applications
 }
 md5sums=('d04f75b2287319dae2838b00df82faa3'
          '0db6b822bbdf443247671e1d93216b1a'
          'e693c79d27d45e1971529bb3841fdb48'
-         'fc96c7baae6ac425bc72f1677361d7bf')
+         'd6b96233cae33820d86ea63f76beec8b')
