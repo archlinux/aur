@@ -1,37 +1,46 @@
 pkgbase = linux-xanmod-git
-	pkgver = 4.14.0
+	pkgdesc = Linux Xanmod - git version
+	pkgver = 5.6.8.xanmod1.r0.g888315f9245f
 	pkgrel = 1
 	url = http://www.xanmod.org/
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
-	makedepends = docbook-xsl
 	makedepends = kmod
 	makedepends = inetutils
 	makedepends = bc
-	makedepends = git
 	makedepends = libelf
+	makedepends = cpio
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
 	options = !strip
 	source = git+https://github.com/xanmod/linux.git
-	source = 99-linux.hook
-	source = linux-xanmod-git.preset
+	source = choose-gcc-optimization.sh
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = SKIP
-	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
-	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = 2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511
+	sha256sums = 9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee
 
 pkgname = linux-xanmod-git
-	pkgdesc = The Linux kernel and modules with Xanmod patches (git version)
-	install = linux-xanmod-git.install
+	pkgdesc = The Linux kernel and modules with Xanmod patches
 	depends = coreutils
-	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio>=0.7
+	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
 	provides = linux
-	backup = etc/mkinitcpio.d/linux-xanmod-git.preset
+	provides = linux-xanmod-git
+	conflicts = linux-xanmod-git
+	replaces = linux-xanmod-git
 
 pkgname = linux-xanmod-git-headers
-	pkgdesc = Header files and scripts for building modules for Linux-xanmod-git kernel
+	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel
 	provides = linux-headers
+	provides = linux-xanmod-git-headers
+	conflicts = linux-xanmod-git-headers
+	replaces = linux-xanmod-git-headers
 

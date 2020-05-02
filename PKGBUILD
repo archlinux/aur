@@ -1,252 +1,329 @@
 # Maintainer: Joan Figueras <ffigue at gmail dot com>
-# Contributor: Yoshi2889 <rick.2889 at gmail.com>
-
-# Based upon linux-git PKGBUILD. Original comments below:
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Torge Matthies <openglfreak at googlemail dot com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Yoshi2889 <rick.2889 at gmail dot com>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux-xanmod-git
-_srcname=linux
-pkgver=4.14.0
-_tag=${pkgver}-xanmod1
-pkgrel=1
-arch=('i686' 'x86_64')
-url="http://www.xanmod.org/"
-license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
-options=('!strip')
-source=("git+https://github.com/xanmod/linux.git"
-        # pacman hook for initramfs regeneration
-        '99-linux.hook'
-        # standard config files for mkinitcpio ramdisk
-        "${pkgbase}.preset")
-sha256sums=('SKIP'
-            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+##
+## The following variables can be customized at build time. Use env or export to change at your wish
+##
+##   Example: env _microarchitecture=25 use_numa=n use_tracers=n use_pds=n makepkg -sc
+##
+## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
+## Valid numbers between: 0 to 42
+## Default is: 0 => generic
+## Good option if your package is for one machine: 42 => native
+if [ -z ${_microarchitecture+x} ]; then
+  _microarchitecture=0
+fi
 
-_kernelname=${pkgbase#linux}
+## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
+## Archlinux and Xanmod enable it by default.
+## Set variable "use_numa" to: n to disable (possibly increase performance)
+##                             y to enable  (stock default)
+if [ -z ${use_numa+x} ]; then
+  use_numa=y
+fi
+
+## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
+## Stock Archlinux and Xanmod have this enabled. 
+## Set variable "use_tracers" to: n to disable (possibly increase performance)
+##                                y to enable  (stock default)
+if [ -z ${use_tracers+x} ]; then
+  use_tracers=y
+fi
+
+## Enable PDS CPU scheduler by default https://gitlab.com/alfredchen/linux-pds
+## Set variable "use_pds" to: n to disable (stock Xanmod)
+##                            y to enable
+if [ -z ${use_pds+x} ]; then
+  use_pds=n
+fi
+
+## Enable CONFIG_USER_NS_UNPRIVILEGED flag https://aur.archlinux.org/cgit/aur.git/tree/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck
+## Set variable "use_ns" to: n to disable (stock Xanmod)
+##                           y to enable (stock Archlinux)
+if [ -z ${use_ns+x} ]; then
+  use_ns=n
+fi
+
+# Compile ONLY used modules to VASTLYreduce the number of modules built
+# and the build time.
+#
+# To keep track of which modules are needed for your specific system/hardware,
+# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD read the database kept if it exists
+#
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
+if [ -z ${_localmodcfg} ]; then
+  _localmodcfg=n
+fi
+
+# Tweak kernel options prior to a build via nconfig
+_makenconfig=
+
+### IMPORTANT: Do no edit below this line unless you know what you're doing
+
+pkgbase=linux-xanmod-git
+pkgver=5.6.8.xanmod1.r0.g888315f9245f
+_major=5.6
+_branch=5.x
+xanmod=1
+pkgrel=1
+pkgdesc='Linux Xanmod - git version'
+url="http://www.xanmod.org/"
+arch=(x86_64)
+
+license=(GPL2)
+makedepends=(
+  xmlto kmod inetutils bc libelf cpio
+  python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+)
+options=('!strip')
+_srcname="linux-${pkgver}-xanmod${xanmod}"
+
+source=("git+https://github.com/xanmod/linux.git"
+        choose-gcc-optimization.sh
+        '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b')
+validpgpkeys=(
+    'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
+    '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
+)
+
+# Archlinux patches
+_commits=""
+for _patch in $_commits; do
+    source+=("${_patch}.patch::https://git.archlinux.org/linux.git/patch/?id=${_patch}")
+done
+    
+
+sha256sums=('SKIP'
+            '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
+            '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
+
+export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
+export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
+export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
+
+pkgver() {
+  cd linux 
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-  cd "${srcdir}/${_srcname}"
+  cd linux
 
-  # set localversion to git commit
-  sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-${pkgver##*.}\"|g" ./.config
-  sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
+  msg2 "Setting version..."
+  scripts/setlocalversion --save-scmversion
+  echo "-$pkgrel" > localversion.10-pkgrel
+  echo "${pkgbase#linux}" > localversion.20-pkgname
 
-  # don't run depmod on 'make install'. We'll do this ourselves in packaging
-  sed -i '2iexit 0' scripts/depmod.sh
+  # Archlinux patches
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    msg2 "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
 
-  # disable EVBUG (lots of spam messages in dmesg)
-  sed -e 's/^CONFIG_INPUT_EVBUG/\# CONFIG_INPUT_EVBUG/g' -e 's/CONFIG_INPUT_EVBUG=m/CONFIG_INPUT_EVBUG is not set/g' -i .config
+  # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
+  scripts/config --enable CONFIG_STACK_VALIDATION
 
-  # get kernel version
-  make prepare
+  # Enable IKCONFIG following Arch's philosophy
+  scripts/config --enable CONFIG_IKCONFIG \
+                 --enable CONFIG_IKCONFIG_PROC
 
-  # load configuration
-  # Configure the kernel. Replace the line below with one of your choice.
-  #make menuconfig # CLI menu for configuration
-  #make nconfig # new CLI menu for configuration
-  #make xconfig # X-based configuration
-  #make oldconfig # using old config from previous kernel version
-  #make olddefconfig # old config from previous kernel, defaults for new options
-  # ... or manually edit .config
+  # User set. See at the top of this file
+  if [ "$use_tracers" = "n" ]; then
+    msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER..."
+    scripts/config --disable CONFIG_FUNCTION_TRACER \
+                   --disable CONFIG_STACK_TRACER
+  fi
+
+  if [ "$use_numa" = "n" ]; then
+    msg2 "Disabling NUMA..."
+    scripts/config --disable CONFIG_NUMA
+  fi
+
+  if [ "$use_pds" = "y" ]; then
+    msg2 "Enabling PDS CPU scheduler by default..."
+    scripts/config --enable CONFIG_SCHED_PDS
+  fi
+
+  if [ "$use_ns" = "n" ]; then
+    msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
+    scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
+  fi
+
+  # Let's user choose microarchitecture optimization in GCC
+  sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
+
+  # This is intended for the people that want to build this package with their own config
+  # Put the file "myconfig" at the package folder to use this feature
+  # If it's a full config, will be replaced
+  # If not, you should use scripts/config commands, one by line
+  if [ -f "${startdir}/myconfig" ]; then
+    if [ $(wc -l < "${startdir}/myconfig") -gt 1000 ]; then
+      # myconfig is a full config file. Replace it
+      msg2 "Using user CUSTOM config..."
+      cp -f "${startdir}"/myconfig .config
+    else
+      # myconfig is a partial file. Applying every line
+      msg2 "Applying configs..."
+      cat "${startdir}"/myconfig | while read -r _linec ; do
+        if echo "$_linec" | grep "scripts/config" ; then
+          set -- $_linec
+          "$@"
+        else
+          warning "Line format incorrect, ignoring..."
+        fi
+      done
+    fi
+    echo
+  fi
+
+  make olddefconfig
+
+  ### Optionally load needed modules for the make localmodconfig
+  # See https://aur.archlinux.org/packages/modprobed-db
+  if [ "$_localmodcfg" = "y" ]; then
+    if [ -f $HOME/.config/modprobed.db ]; then
+      msg2 "Running Steven Rostedt's make localmodconfig now"
+      make LSMOD=$HOME/.config/modprobed.db localmodconfig
+    else
+      msg2 "No modprobed.db data found"
+      exit
+    fi
+  fi
+
+  make -s kernelrelease > version
+  msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+
+  [[ -z "$_makenconfig" ]] || make nconfig
+
+  # save configuration for later reuse
+  cat .config > "${startdir}/config.last"
 }
 
 build() {
-  cd "${srcdir}/${_srcname}"
-
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  cd linux
+  make all
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules with Xanmod patches (git version)"
-  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
-  optdepends=('crda: to set the correct wireless channels of your country')
-  provides=('linux')
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
-  install=linux-xanmod-git.install
+  pkgdesc="The Linux kernel and modules with Xanmod patches"
+  depends=(coreutils kmod initramfs)
+  optdepends=('crda: to set the correct wireless channels of your country'
+              'linux-firmware: firmware images needed for some devices')
+  provides=('linux' 'linux-xanmod-git')
+  replaces=('linux-xanmod-git')
+  conflicts=('linux-xanmod-git')
 
-  cd "${srcdir}/${_srcname}"
+  cd linux
+  local kernver="$(<version)"
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-  KARCH=x86
+  msg2 "Installing boot image..."
+  # systemd expects to find the kernel here to allow hibernation
+  # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
-  # get kernel version
-  _kernver="$(make LOCALVERSION= kernelrelease)"
-  _basekernel=${_kernver%%-*}
-  _basekernel=${_basekernel%.*}
+  # Used by mkinitcpio to name the kernel
+  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
-  mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
-
-  # set correct depmod command for install
-  sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
-    "${startdir}/${install}" > "${startdir}/${install}.pkg"
-  true && install=${install}.pkg
-
-  # install mkinitcpio preset file for kernel
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/${pkgbase}.preset" |
-    install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-
-  # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
-    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
+  msg2 "Installing modules..."
+  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # remove build and source links
-  rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
-  # remove the firmware
-  rm -rf "${pkgdir}/lib/firmware"
-  # make room for external modules
-  ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
-  # add real version for building modules and running depmod from post_install/upgrade
-  mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
-  echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
-
-  # Now we call depmod...
-  depmod -b "${pkgdir}" -F System.map "${_kernver}"
-
-  # move module tree /lib -> /usr/lib
-  mkdir -p "${pkgdir}/usr"
-  mv "${pkgdir}/lib" "${pkgdir}/usr/"
-
-  # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
+  rm "$modulesdir"/{source,build}
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-  provides=('linux-headers')
+  pkgdesc="Header files and scripts for building modules for Xanmod Linux kernel"
+  provides=('linux-headers' 'linux-xanmod-git-headers')
+  replaces=('linux-xanmod-git-headers')
+  conflicts=('linux-xanmod-git-headers')
 
-  install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
+  cd linux
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  cd "${_srcname}"
-  install -D -m644 Makefile \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
-  install -D -m644 kernel/Makefile \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/kernel/Makefile"
-  install -D -m644 .config \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/.config"
-
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
-
-  for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi soc sound trace uapi video xen; do
-    cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
-  done
-
-  # copy arch includes for external modules
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/x86"
-  cp -a arch/x86/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/x86/"
-
-  # copy files necessary for later builds, like nvidia and vmware
-  cp Module.symvers "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  cp -a scripts "${pkgdir}/usr/lib/modules/${_kernver}/build"
-
-  # fix permissions on scripts dir
-  chmod og-w -R "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts"
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/.tmp_versions"
-
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel"
-
-  cp arch/${KARCH}/Makefile "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
-
-  if [ "${CARCH}" = "i686" ]; then
-    cp arch/${KARCH}/Makefile_32.cpu "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
-  fi
-
-  cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
-
-  # add docbook makefile
-  install -D -m644 Documentation/DocBook/Makefile \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
-
-  # add dm headers
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
-  cp drivers/md/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
-
-  # add inotify.h
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux"
-  cp include/linux/inotify.h "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux/"
-
-  # add wireless headers
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
-  cp net/mac80211/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
-
-  # add dvb headers for external modules
-  # in reference to:
-  # http://bugs.archlinux.org/task/9912
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core"
-  cp drivers/media/dvb-core/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core/"
-  # and...
-  # http://bugs.archlinux.org/task/11194
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
-  cp include/config/dvb/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
-
-  # add dvb headers for http://mcentral.de/hg/~mrec/em28xx-new
-  # in reference to:
-  # http://bugs.archlinux.org/task/13146
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
-  cp drivers/media/dvb-frontends/lgdt330x.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
-  cp drivers/media/i2c/msp3400-driver.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
-
-  # add dvb headers
-  # in reference to:
-  # http://bugs.archlinux.org/task/20402
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/usb/dvb-usb"
-  cp drivers/media/usb/dvb-usb/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/usb/dvb-usb/"
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends"
-  cp drivers/media/dvb-frontends/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/tuners"
-  cp drivers/media/tuners/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/tuners/"
-
-  # add xfs and shmem for aufs building
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs"
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/mm"
-  # removed in 3.17 series
-  # cp fs/xfs/xfs_sb.h "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs/xfs_sb.h"
-
-  # copy in Kconfig files
-  for i in $(find . -name "Kconfig*"); do
-    mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
-    cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
-  done
+  msg2 "Installing build files..."
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
+    localversion.* version vmlinux
+  install -Dt "$builddir/kernel" -m644 kernel/Makefile
+  install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
+  cp -t "$builddir" -a scripts
 
   # add objtool for external module building and enabled VALIDATION_STACK option
-  if [ -f tools/objtool/objtool ];  then
-      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
-      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
-  fi
+  install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
+  # add xfs and shmem for aufs building
+  mkdir -p "$builddir"/{fs/xfs,mm}
 
-  # strip scripts directory
-  find "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
-    case "$(file -bi "${binary}")" in
-      *application/x-sharedlib*) # Libraries (.so)
-        /usr/bin/strip ${STRIP_SHARED} "${binary}";;
-      *application/x-archive*) # Libraries (.a)
-        /usr/bin/strip ${STRIP_STATIC} "${binary}";;
-      *application/x-executable*) # Binaries
-        /usr/bin/strip ${STRIP_BINARIES} "${binary}";;
-    esac
+  msg2 "Installing headers..."
+  cp -t "$builddir" -a include
+  cp -t "$builddir/arch/x86" -a arch/x86/include
+  install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
+
+  install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
+  install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
+
+  # http://bugs.archlinux.org/task/13146
+  install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
+
+  # http://bugs.archlinux.org/task/20402
+  install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+  install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+  install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  msg2 "Installing KConfig files..."
+  find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
+
+  msg2 "Removing unneeded architectures..."
+  local arch
+  for arch in "$builddir"/arch/*/; do
+    [[ $arch = */x86/ ]] && continue
+    echo "Removing $(basename "$arch")"
+    rm -r "$arch"
   done
 
-  # remove unneeded architectures
-  rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+  msg2 "Removing documentation..."
+  rm -r "$builddir/Documentation"
 
-  # remove a files already in linux-docs package
-  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
-  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
-  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
+  msg2 "Removing broken symlinks..."
+  find -L "$builddir" -type l -printf 'Removing %P\n' -delete
+
+  msg2 "Removing loose objects..."
+  find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
+
+  msg2 "Stripping build tools..."
+  local file
+  while read -rd '' file; do
+    case "$(file -bi "$file")" in
+      application/x-sharedlib\;*)      # Libraries (.so)
+        strip -v $STRIP_SHARED "$file" ;;
+      application/x-archive\;*)        # Libraries (.a)
+        strip -v $STRIP_STATIC "$file" ;;
+      application/x-executable\;*)     # Binaries
+        strip -v $STRIP_BINARIES "$file" ;;
+      application/x-pie-executable\;*) # Relocatable binaries
+        strip -v $STRIP_SHARED "$file" ;;
+    esac
+  done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+  msg2 "Adding symlink..."
+  mkdir -p "$pkgdir/usr/src"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-for _p in ${pkgname[@]}; do
-  eval "package_${_p}() {
-    $(declare -f "_package${_p#${pkgbase}}")
-    _package${_p#${pkgbase}}
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
   }"
 done
 
