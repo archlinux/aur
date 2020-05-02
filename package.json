@@ -57,5 +57,8 @@
   "scripts": {
     "build": "electron-rebuild && theia build --mode production",
     "start": "theia start"
+  },
+  "resolutions": {
+    "**/moment": "2.24.0"
   }
 }
