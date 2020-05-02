@@ -28,17 +28,21 @@ pkgname = linux-zest-git
 	depends = llvm-proton-bin
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux
-	provides = linux-zest
+	provides = linux=5.6
+	provides = linux-aufs=5.6
+	provides = linux-zest=5.6
+	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 
 pkgname = linux-zest-git-docs
 	pkgdesc = Documentation for the Zest Project's kernel
-	provides = linux-docs
-	provides = linux-zest-docs
+	provides = linux-docs=5.6
+	provides = linux-aufs-docs=5.6
+	provides = linux-zest-docs=5.6
 
 pkgname = linux-zest-git-headers
 	pkgdesc = Headers and scripts for building modules for the Zest Project's kernel
-	provides = linux-headers
-	provides = linux-zest-headers
+	provides = linux-headers=5.6
+	provides = linux-aufs-headers=5.6
+	provides = linux-zest-headers=5.6
 

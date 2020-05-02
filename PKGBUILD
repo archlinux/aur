@@ -85,8 +85,10 @@ _package()
 		"linux-firmware: firmware images needed for some devices"
 	)
 	provides=(
-		"linux"
-		"linux-zest"
+		"linux=5.6"
+		"linux-aufs=5.6"
+		"linux-zest=5.6"
+		"VIRTUALBOX-GUEST-MODULES"
 		"WIREGUARD-MODULE"
 	)
 
@@ -115,8 +117,9 @@ _package-headers()
 {
 	pkgdesc="Headers and scripts for building modules for the Zest Project's kernel"
 	provides=(
-		"linux-headers"
-		"linux-zest-headers"
+		"linux-headers=5.6"
+		"linux-aufs-headers=5.6"
+		"linux-zest-headers=5.6"
 	)
 
 	export LC_ALL=en_US.UTF-8
@@ -210,8 +213,9 @@ _package-docs()
 {
 	pkgdesc="Documentation for the Zest Project's kernel"
 	provides=(
-		"linux-docs"
-		"linux-zest-docs"
+		"linux-docs=5.6"
+		"linux-aufs-docs=5.6"
+		"linux-zest-docs=5.6"
 	)
 
 	export LC_ALL=en_US.UTF-8
