@@ -25,7 +25,8 @@ pkgbase = maestral
 	provides = maestral
 	conflicts = maestral-git
 	source = https://github.com/SamSchott/maestral/archive/v1.0.0.dev5.tar.gz
-	md5sums = ba2cc7c15f6f5b5e07377a1b37be228f
+	source = maestral@.service
+	md5sums = SKIP
 
 pkgname = maestral
 
