@@ -8,17 +8,17 @@ pkgbase=qemu-git
 _gitname=qemu
 pkgname=(qemu-git qemu-headless-git qemu-arch-extra-git qemu-headless-arch-extra-git qemu-block-{iscsi-git,rbd-git,gluster-git} qemu-guest-agent-git)
 pkgdesc="A generic and open source machine emulator and virtualizer. Git version."
-pkgver=v5.0.0.r34.g648db19685
+pkgver=v5.0.0.r145.g1c47613588
 pkgrel=1
 epoch=10
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
-_headlessdeps=(seabios gnutls libpng libaio numactl jemalloc xfsprogs libnfs
+_headlessdeps=(seabios gnutls libpng libaio numactl jemalloc libnfs
                lzo snappy curl vde2 libcap-ng spice libcacard usbredir libslirp
-               libssh)
+               libssh zstd liburing)
 depends=(dtc virglrenderer sdl2 vte3 libpulse brltty "${_headlessdeps[@]}")
-makedepends=(spice-protocol python ceph libiscsi glusterfs git python-sphinx)
+makedepends=(spice-protocol python ceph libiscsi glusterfs python-sphinx xfsprogs)
 source=(git://git.qemu.org/qemu.git
         qemu-ga.service
         65-kvm.rules)
@@ -73,12 +73,14 @@ _build() (
     --sysconfdir=/etc \
     --localstatedir=/var \
     --libexecdir=/usr/lib/qemu \
+    --extra-ldflags="$LDFLAGS" \
     --smbd=/usr/bin/smbd \
     --enable-modules \
     --enable-sdl \
     --enable-jemalloc \
     --disable-werror \
     --enable-slirp=system \
+    --enable-xfsctl \
     "${@:2}"
 
   make
@@ -86,8 +88,8 @@ _build() (
 
 package_qemu-git() {
   optdepends=('qemu-arch-extra-git: extra architectures support')
-  conflicts=('qemu-headless' 'qemu' 'kvm' 'kvm-git' 'qemu-spice')
-  provides=('qemu-headless' 'qemu' 'qemu-kvm' 'qemu-spice')
+  conflicts=('qemu-headless' 'qemu')
+  provides=('qemu-headless' 'qemu')
   replaces=(qemu-kvm)
 
   _package full
@@ -158,7 +160,8 @@ _package() {
    case $_blob in
       # provided by seabios package
       bios.bin|acpi-dsdt.aml|bios-256k.bin|vgabios-cirrus.bin|vgabios-qxl.bin|\
-      vgabios-stdvga.bin|vgabios-bochs-display.bin|vgabios-ramfb.bin|vgabios-vmware.bin|vgabios-virtio.bin) rm "$_blob"; continue ;;
+      vgabios-stdvga.bin|vgabios-vmware.bin|vgabios-virtio.bin|vgabios-bochs-display.bin|\
+      vgabios-ramfb.bin) rm "$_blob"; continue ;;
 
    
   # iPXE ROMs
@@ -209,7 +212,7 @@ package_qemu-block-iscsi-git() {
 
 package_qemu-block-rbd-git() {
   pkgdesc="QEMU RBD block module. Git version."
-  depends=(glib2 ceph)
+  depends=(glib2 ceph-libs)
   conflicts=(qemu-block-rbd)
   provides=(qemu-block-rbd)
 
@@ -227,7 +230,7 @@ package_qemu-block-gluster-git() {
 
 package_qemu-guest-agent-git() {
   pkgdesc="QEMU Guest Agent. Git version."
-  depends=(gcc-libs glib2)
+  depends=(gcc-libs glib2 libudev.so)
   conflicts=(qemu-guest-agent)
   provides=(qemu-guest-agent)
 
