@@ -1,0 +1,19 @@
+pkgbase = vte290
+	pkgdesc = Virtual Terminal Emulator widget for use with GTK3 (vte-2.90 API)
+	pkgver = 0.34.0
+	pkgrel = 1
+	url = http://www.gnome.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = python2
+	depends = gtk3
+	depends = vte-common
+	options = !emptydirs
+	source = vte290-0.34.0.tar.xz::http://download.gnome.org/sources/vte/0.34/vte-0.34.0.tar.xz
+	sha256sums = 8b5d4dcd84e36f6a89c7d747978387a3ed3eda5806a383530226dd30b0e4af53
+
+pkgname = vte290
+
