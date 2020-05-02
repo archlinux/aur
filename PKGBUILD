@@ -19,7 +19,6 @@ conflicts=("$_pkgname")
 backup=("etc/$_pkgname/$_pkgname.conf")
 source=("$_pkgname::git+https://github.com/dvogt23/pass-file.git")
 md5sums=('SKIP')
-pkgdir="/usr/lib"
 
 pkgver() {
   cd "$_pkgname"
