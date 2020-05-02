@@ -1,7 +1,7 @@
-pkgbase = wlroots-git
-	pkgdesc = Modular Wayland compositor library
-	pkgver = 0.9.1.r7.g6d3f3b93
-	pkgrel = 2
+pkgbase = wlroots-hidpi-git
+	pkgdesc = Modular Wayland compositor library, with XWayland HiDPI
+	pkgver = 0.10.0.r107.g61d6408f
+	pkgrel = 1
 	url = https://github.com/swaywm/wlroots
 	arch = x86_64
 	license = custom:MIT
@@ -20,11 +20,13 @@ pkgbase = wlroots-git
 	depends = pixman
 	depends = libinput
 	depends = libxkbcommon
-	provides = wlroots=0.9.1
+	provides = wlroots-hidpi=0.10.0
 	conflicts = wlroots
 	options = debug
-	source = wlroots-git::git+https://github.com/swaywm/wlroots
+	source = wlroots-hidpi-git::git+https://github.com/swaywm/wlroots
+	source = https://github.com/swaywm/wlroots/pull/2064.diff
+	sha512sums = SKIP
 	sha512sums = SKIP
 
-pkgname = wlroots-git
+pkgname = wlroots-hidpi-git
 

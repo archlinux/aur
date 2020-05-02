@@ -1,19 +1,22 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
-pkgname=wlroots-git
-pkgver=0.9.1.r7.g6d3f3b93
-pkgrel=2
+# Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
+pkgname=wlroots-hidpi-git
+pkgver=0.10.0.r107.g61d6408f
+pkgrel=1
 license=(custom:MIT)
-pkgdesc='Modular Wayland compositor library'
+pkgdesc='Modular Wayland compositor library, with XWayland HiDPI'
 url=https://github.com/swaywm/wlroots
 arch=(x86_64)
-provides=("wlroots=${pkgver%%.r*}")
+provides=("wlroots-hidpi=${pkgver%%.r*}")
 conflicts=(wlroots)
 options=(debug)
 depends=(libcap systemd wayland opengl-driver libxcb xcb-util-errors
          xcb-util-wm pixman libinput libxkbcommon)
 makedepends=(meson ninja git wayland-protocols xorgproto)
-source=("${pkgname}::git+${url}")
-sha512sums=('SKIP')
+source=("${pkgname}::git+${url}"
+        "https://github.com/swaywm/wlroots/pull/2064.diff")
+sha512sums=('SKIP'
+            'SKIP')
 
 
 pkgver () {
@@ -27,6 +30,9 @@ pkgver () {
 
 build () {
 	cd "${pkgname}"
+
+	patch -Np1 -i ../2064.diff
+
 	rm -rf build
 	meson build \
 		--prefix /usr \
