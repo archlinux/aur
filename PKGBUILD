@@ -4,8 +4,8 @@
 # Contributor: Eric Waller <ewwaller@gmail.com>
 
 pkgname=basic256
-pkgver=1.1.4.0
-pkgrel=3
+pkgver=2.0.0.1
+pkgrel=1
 pkgdesc="Educational BASIC programming environment"
 arch=('i686' 'x86_64')
 url="http://www.basic256.org/"
@@ -14,7 +14,7 @@ depends=('qt5-base' 'qt5-multimedia' 'qt5-webkit' 'qt5-serialport' 'sdl_mixer' '
 makedepends=('bison' 'flex')
 source=(http://downloads.sourceforge.net/kidbasic/${pkgname}_${pkgver}.orig.tar.gz
         "basic256.desktop")
-sha256sums=('9df3ac4535448c1bd721364829e1bf4df7087c9b2c8d789e1fb5903e58c043ba'
+sha256sums=('720e08c9b7a60cbcf6cc342dcf25d8c98e271903e0b1ab96422968fa981d041f'
             '601fe0147cc4b394e2c01afa20e371f7dffc9e7787ce9360ae0332545f6e62ec')
 
 build () {
@@ -30,8 +30,8 @@ package () {
 	install -m 755 -D "$srcdir/basic256.desktop" "${pkgdir}/usr/share/applications/basic256.desktop"
 	mkdir -p "${pkgdir}/usr/share/basic256/examples"
 	cp -pr Examples/* "${pkgdir}/usr/share/basic256/examples"
-        mkdir -p "${pkgdir}/usr/share/basic256/help"
-        cp -pr wikihelp/help/* "${pkgdir}/usr/share/basic256/help"
-        cp -pr Translations/* "${pkgdir}/usr/share/basic256/"
+    #mkdir -p "${pkgdir}/usr/share/basic256/help"
+    #cp -pr wikihelp/help/* "${pkgdir}/usr/share/basic256/help"
+    cp -pr Translations/* "${pkgdir}/usr/share/basic256/"
 }
 
