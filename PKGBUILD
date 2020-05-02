@@ -1,7 +1,8 @@
 # Maintainer:  Alexei Colin <ac at alexeicolin dot com>
 
 pkgname=ti-cgt-arm
-pkgver=19.6.0.STS
+pkgver=20.2.1.LTS
+_manifest_ver=20.2.0.LTS
 pkgrel=1
 pkgdesc="Texas Instruments Code Generation Tools (compiler) for ARM"
 arch=('x86_64')
@@ -9,7 +10,7 @@ url="http://www.ti.com/tool/ARM-CGT"
 license=('custom')
 
 # lib32-glibc needed for the installer
-makedepends=('lib32-glibc')
+makedepends=('lib32-glibc' 'lib32-fakeroot')
 
 optdepends=('ccstudio')
 
@@ -18,34 +19,28 @@ source=("http://software-dl.ti.com/codegen/esd/cgt_public_sw/TMS470/${pkgver}/${
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
 
-_ccsdir=ccstudio
-_destdir=opt
-_installdir=installdir
-_installloc=$_ccsdir/ccs/tools/compiler
-_installpath=$_installdir/$_destdir/$_installloc
+_ccsdir=opt/ccstudio
+_installdir=ccs/tools/compiler
 
 prepare() {
     cd $srcdir
     chmod +x ./${_installer}
 }
 
-build() {
-    cd $srcdir
-
-    # Calling from build to avoid fakeroot, assuming the same problem exists as
-    # for ccstudio installer (see ccstudio/PKGBUILD for details)
-    ./${_installer} --mode unattended --prefix $srcdir/$_installpath
-}
-
 package() {
+    echo ">>> To save time, you can build uncompressed package:"
+    echo ">>>   PKGEXT=.pkg.tar makepkg"
 
-    # Hardlink to avoid time and space overhead
-    cp -ral $srcdir/$_installdir/$_destdir $pkgdir/
+    echo ">>> Running installer..."
+    echo ">>> Errors about acl like below are harmless (please ignore):"
+    echo ">>>   dlsym(acl_get_fd): /usr/lib32/libfakeroot/libfakeroot.so: undefined symbol: acl_get_fd"
+
+    ./${_installer} --mode unattended --prefix $pkgdir/${_ccsdir}/${_installdir}
 
     # Match permissions to ccstudio package (see notes in ccstudio.install)
-    find $pkgdir/$_destdir/$_ccsdir -type d -exec chmod 0775 {} \;
+    find $pkgdir/${_ccsdir} -type d -exec chmod 0775 {} \;
 
-    install -D -m0644 $srcdir/${_installpath}/${pkgname}_${pkgver}/ARM_RTS_${pkgver}_manifest.html $pkgdir/usr/share/licenses/$pkgname/LICENSE.html
+    install -D -m0644 $pkgdir/${_ccsdir}/${_installdir}/${pkgname}_${pkgver}/ARM_RTS_${_manifest_ver}_manifest.html $pkgdir/usr/share/licenses/$pkgname/LICENSE.html
 }
 
-sha256sums=('16928b154dfd7735ea469b41d6f409559c976f44fb7f32dc2f306aa91e90ae04')
+sha256sums=('fda075c64a7a1367c78d6c7c908b15f4de023112f03a4b96291ba9cd03b35808')

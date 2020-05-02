@@ -1,11 +1,12 @@
 pkgbase = ti-cgt-arm
 	pkgdesc = Texas Instruments Code Generation Tools (compiler) for ARM
-	pkgver = 19.6.0.STS
+	pkgver = 20.2.1.LTS
 	pkgrel = 1
 	url = http://www.ti.com/tool/ARM-CGT
 	arch = x86_64
 	license = custom
 	makedepends = lib32-glibc
+	makedepends = lib32-fakeroot
 	optdepends = ccstudio
 	options = !strip
 	options = libtool
@@ -13,8 +14,8 @@ pkgbase = ti-cgt-arm
 	options = emptydirs
 	options = !purge
 	options = !zipman
-	source = http://software-dl.ti.com/codegen/esd/cgt_public_sw/TMS470/19.6.0.STS/ti_cgt_tms470_19.6.0.STS_linux_installer_x86.bin
-	sha256sums = 16928b154dfd7735ea469b41d6f409559c976f44fb7f32dc2f306aa91e90ae04
+	source = http://software-dl.ti.com/codegen/esd/cgt_public_sw/TMS470/20.2.1.LTS/ti_cgt_tms470_20.2.1.LTS_linux_installer_x86.bin
+	sha256sums = fda075c64a7a1367c78d6c7c908b15f4de023112f03a4b96291ba9cd03b35808
 
 pkgname = ti-cgt-arm
 
