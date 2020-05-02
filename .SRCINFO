@@ -1,0 +1,14 @@
+pkgbase = ttnctl
+	pkgdesc = The Things Network CLI
+	pkgver = 2.10.4dev
+	pkgrel = 1
+	url = https://github.com/TheThingsNetwork/ttn/tree/master/ttnctl
+	arch = x86_64
+	license = MIT
+	provides = ttnctl
+	provides = ttnctl-linux-amd64
+	source = https://ttnreleases.blob.core.windows.net/release/master/ttnctl-linux-amd64.tar.gz
+	md5sums = 0d5d946317d93bddb5b0860cd8793030
+
+pkgname = ttnctl
+
