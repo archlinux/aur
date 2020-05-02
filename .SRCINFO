@@ -1,6 +1,6 @@
 pkgbase = fonts-tlwg
 	pkgdesc = Collection of scalable Thai fonts
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/tlwg/fonts-tlwg/
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = fonts-tlwg
 	provides = ttf-tlwg
 	conflicts = ttf-tlwg
 	replaces = ttf-tlwg
-	source = https://github.com/tlwg/fonts-tlwg/releases/download/v0.7.1/fonts-tlwg-0.7.1.tar.xz
-	sha1sums = 5a2c2090e92c382170808f5bb7d1518c57b8894e
+	source = https://github.com/tlwg/fonts-tlwg/releases/download/v0.7.2/fonts-tlwg-0.7.2.tar.xz
+	sha1sums = 07cdb99b4ccd4c1cf03be24c399718ac1489a855
 
 pkgname = fonts-tlwg
 
