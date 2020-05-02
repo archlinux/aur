@@ -1,8 +1,8 @@
 pkgbase = maestral
 	pkgdesc = A light-weight and open-source CLI Dropbox client.
-	pkgver = 1.0.0.dev4
-	pkgrel = 2
-	url = https://github.com/SamSchott/maestral-dropbox
+	pkgver = 1.0.0.dev5
+	pkgrel = 1
+	url = https://github.com/SamSchott/maestral
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
@@ -24,8 +24,8 @@ pkgbase = maestral
 	depends = python-systemd
 	provides = maestral
 	conflicts = maestral-git
-	source = https://github.com/SamSchott/maestral-dropbox/archive/v1.0.0.dev4.tar.gz
-	md5sums = 31c8ca3a4de13d718e59dbbe57268d1a
+	source = https://github.com/SamSchott/maestral/archive/v1.0.0.dev5.tar.gz
+	md5sums = ba2cc7c15f6f5b5e07377a1b37be228f
 
 pkgname = maestral
 

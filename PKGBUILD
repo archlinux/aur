@@ -1,16 +1,14 @@
 # Maintainer:	Batuhan Baserdem <lastname dot firstname at gmail>
 # Maintainer:	Kostas Kardaras <firstname dot lastname at gmail>
 
-_srcname='maestral-dropbox'
-
 pkgname='maestral'
 provides=('maestral')
 conflicts=('maestral-git')
-pkgver=1.0.0.dev4
-pkgrel=2
+pkgver=1.0.0.dev5
+pkgrel=1
 pkgdesc='A light-weight and open-source CLI Dropbox client.'
 arch=('x86_64')
-url="https://github.com/SamSchott/${_srcname}"
+url="https://github.com/SamSchott/${pkgname}"
 license=('MIT')
 source=("${url}/archive/v${pkgver}.tar.gz")
 makedepends=('python-setuptools')
@@ -31,18 +29,18 @@ depends=(
     'python-sdnotify'
     'python-watchdog>=0.10.0'
     'python-systemd')
-md5sums=('31c8ca3a4de13d718e59dbbe57268d1a')
+md5sums=('ba2cc7c15f6f5b5e07377a1b37be228f')
 
 build() {
-    cd "${srcdir}/${_srcname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/${_srcname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     # Run python setup function
     python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
     # Install the licence
-    install -Dm644 "${srcdir}/${_srcname}-${pkgver}/LICENSE.txt" \
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.txt" \
     	"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
