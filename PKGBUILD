@@ -1,5 +1,5 @@
 pkgname=google-keep-nativefier
-pkgver=0.4
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Electron wrapper for the Google Keep web application"
 arch=(x86_64)
@@ -19,8 +19,7 @@ build() {
       --name $_instname \
       --user-agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0" \
       --internal-urls "(.*?keep\.google\.com.*?|.*?accounts\.google\.com.*?)" \
-      --single-instance \
-      --electron-version 7.1.11
+      --single-instance
 }
 
 package() {
