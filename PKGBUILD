@@ -16,9 +16,8 @@ md5sums=('SKIP')
 
 package() {
   cd "$pkgdir"
-  mkdir -p usr/share/lightdm-webkit/themes/
   rm -rf usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether
+  mkdir -p usr/share/lightdm-webkit/themes/
   cd usr/share/lightdm-webkit/themes/
   cp -r "$srcdir/Aether" "lightdm-webkit-theme-aether"
 }
-
