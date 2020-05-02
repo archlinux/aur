@@ -3,7 +3,7 @@
 
 pkgname='endless-sky-git'
 _gitname='endless-sky'
-pkgver=0.9.8.r798.g95d7cf5d
+pkgver=0.9.12.r3.g6b705fd87
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://endless-sky.github.io/"
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd $_gitname
-  scons
+  scons -j "$(nproc)"
 }
 
 package() {

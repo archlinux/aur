@@ -1,6 +1,6 @@
 pkgbase = endless-sky-git
 	pkgdesc = A space exploration and combat game similar to Escape Velocity
-	pkgver = 0.9.8.r798.g95d7cf5d
+	pkgver = 0.9.12.r3.g6b705fd87
 	pkgrel = 1
 	url = http://endless-sky.github.io/
 	arch = i686
