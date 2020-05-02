@@ -2,15 +2,15 @@
 # Contributor: Andreas B. Wagner <andreas.wagner@lowfatcomputing.org>
 
 pkgname=vttest
-pkgver=20200303
+pkgver=20200420
 pkgrel=1
 pkgdesc="Tool for testing VT100 compatibility of terminals"
 arch=('i686' 'x86_64')
-url="http://invisible-island.net/vttest/"
+url="http://invisible-island.net/vttest"
 license=('MIT')
 depends=('glibc')
-source=("https://invisible-island.net/datafiles/release/vttest.tar.gz")
-sha512sums=('dcd32e5e2bd2c2be0c068f84473efbe955ef7c5c8e9dab85f8ef57b7704ddb1c6d2daa81f25f3bd7424208ccb15c6013f40ede4355c98800d523be835921430d')
+source=("${pkgname}-${pkgver}.tgz::ftp://ftp.invisible-island.net/vttest/vttest-${pkgver}.tgz")
+sha256sums=('6c9019c72c31b12d861783890a50ec5145a3424ee634c319b158af9af630910e')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
