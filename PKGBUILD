@@ -4,8 +4,9 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Samuel Williams <https://www.codeotaku.com>
 
-pkgname=gnuplot-caca
-pkgver=5.2.2
+_pkgname=gnuplot
+pkgname=${_pkgname}-caca
+pkgver=5.2.8
 pkgrel=1
 pkgdesc="Plotting package which outputs to X11, PostScript, PNG, GIF, and others" 
 arch=('x86_64')
@@ -13,13 +14,17 @@ url="http://www.gnuplot.info"
 license=('custom') 
 depends=('readline' 'gd' 'wxgtk2' 'cairo' 'libjpeg' 'lua' 'qt5-svg' 'libcaca' 'gnutls') 
 makedepends=('texinfo' 'texlive-core' 'emacs' 'texlive-latexextra' 'qt5-tools')
-source=("https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz"
+source=("https://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.gz"
         "lua53_compat.patch")
-sha1sums=('fc39158851f39e48136d2bdd3f753bf46a99965c'
-          '9005fa9e4da91ceedb8ccd1d761866e7b064f8b1')
+
+provides=($_pkgname)
+conflicts=($_pkgname)
+
+sha256sums=('60a6764ccf404a1668c140f11cc1f699290ab70daa1151bb58fed6139a28ac37'
+            'bfd8a61abbf4491c74225cb9fd252619d4fc29751838bcb4c0639ffe05a00695')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
 
   # fix default source location; use the GDFONTPATH variable to modify at runtime
   sed -i 's|/usr/X11R6/lib/X11/fonts/truetype|/usr/share/fonts/TTF|' src/variable.c
@@ -32,7 +37,7 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
 
   MAKEINFO=/usr/bin/makeinfo  WX_CONFIG=/usr/bin/wx-config ./configure --prefix=/usr \
               --libexecdir=/usr/bin \
@@ -46,7 +51,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
   make pkglibexecdir=/usr/bin DESTDIR="${pkgdir}" install
 
   install -Dm644 Copyright "${pkgdir}/usr/share/licenses/$pkgname/Copyright"
