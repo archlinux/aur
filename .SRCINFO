@@ -1,6 +1,6 @@
 pkgbase = rbw-git
 	pkgdesc = unofficial bitwarden cli
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://git.tozt.net/rbw
 	arch = i686
@@ -10,6 +10,9 @@ pkgbase = rbw-git
 	makedepends = cargo
 	makedepends = git
 	depends = pinentry
+	depends = openssl
+	provides = rbw
+	conflicts = rbw
 	source = git+https://git.tozt.net/rbw
 	sha256sums = SKIP
 
