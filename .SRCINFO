@@ -1,0 +1,17 @@
+pkgbase = theoraplay-hg
+	pkgdesc = library used by games to play Theora videos
+	pkgver = 67
+	pkgrel = 1
+	url = https://icculus.org/theoraplay/
+	arch = x86_64
+	license = custom:zlib
+	makedepends = mercurial
+	provides = theoraplay
+	conflicts = theoraplay
+	source = hg+https://hg.icculus.org/icculus/theoraplay
+	source = meson.patch
+	md5sums = SKIP
+	md5sums = c9626328d164758e6cf487d2631c6864
+
+pkgname = theoraplay-hg
+

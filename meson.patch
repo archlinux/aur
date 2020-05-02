@@ -1,0 +1,57 @@
+# HG changeset patch
+# User Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Date 1588454589 -7200
+#      Sat May 02 23:23:09 2020 +0200
+# Node ID 3cb38dfd6015cc4d9f3b7a9de2e5b85626bc3419
+# Parent  99e5fc74603e70d99e8b189eb58d02496f9a0457
+Add a meson build system.
+
+diff --git a/meson.build b/meson.build
+new file mode 100644
+--- /dev/null
++++ b/meson.build
+@@ -0,0 +1,44 @@
++project(
++  'theoraplay',
++  'c',
++  default_options: [
++    'warning_level=3',
++  ],
++  meson_version: '>= 0.54',
++  license: 'Zlib',
++)
++
++sources = [
++  'theoraplay.c',
++  'theoraplay.h',
++  'theoraplay_cvtrgb.h',
++]
++
++dependencies = [
++  dependency('ogg'),
++  dependency('vorbis'),
++  dependency('theoradec'),
++  dependency('threads'),
++]
++
++theoraplay = shared_library(
++  'theoraplay',
++  sources,
++  dependencies: dependencies,
++  install: true,
++)
++
++pkgconfig = import('pkgconfig')
++
++pkgconfig.generate(
++  theoraplay,
++  name: 'theoraplay',
++  version: '0.1',
++  description: 'Multithreaded Ogg Theora/Ogg Vorbis decoding library',
++  subdirs: 'theoraplay',
++)
++
++install_headers(
++  'theoraplay.h',
++  subdir: 'theoraplay',
++)
