@@ -1,0 +1,20 @@
+pkgbase = pop-shell-shortcuts-git
+	pkgdesc = Application for displaying and demoing Pop Shell shortcuts
+	pkgver = r25.ada2c50
+	pkgrel = 1
+	url = https://github.com/pop-os/shell-shortcuts
+	arch = any
+	license = GPLv3
+	makedepends = rust
+	depends = cairo
+	depends = glib
+	depends = pango
+	depends = atk
+	depends = gdk-pixbuf2
+	depends = gtk3
+	conflicts = pop-shell-shortcuts
+	source = shell-shortcuts::git+https://github.com/pop-os/shell-shortcuts.git#branch=master_focal
+	sha256sums = SKIP
+
+pkgname = pop-shell-shortcuts-git
+
