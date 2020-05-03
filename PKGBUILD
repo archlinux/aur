@@ -3,7 +3,7 @@
 pkgname=('automathemely')
 _name='AutomaThemely'
 pkgver='1.3'
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple, set-and-forget python application for changing between GNOME themes according to light and dark hours."
 url="https://github.com/C2N14/AutomaThemely"
 depends=('python')
