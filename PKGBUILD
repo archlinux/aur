@@ -5,7 +5,7 @@
 pkgname=mellowplayer-git
 _pkgname=MellowPlayer
 pkgver=3.5.6.r4.gba304af5
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source and cross-platform desktop application that runs web-based music streaming 
          services in its own window and provides integration with your desktop.'
 url='https://gitlab.com/ColinDuquesnoy/MellowPlayer'
