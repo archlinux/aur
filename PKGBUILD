@@ -5,7 +5,7 @@
 # Contributor: Magnus Therning <magnus@therning.org>
 
 pkgname=ocaml-pcre
-pkgver=7.4.1
+pkgver=7.4.3
 pkgrel=1
 pkgdesc="Perl compatible regular expressions for OCaml"
 arch=('i686' 'x86_64' 'armv7h')
@@ -17,7 +17,7 @@ replaces=('pcre-ocaml')
 conflicts=('pcre-ocaml')
 options=('!strip' 'staticlibs')
 source=("https://github.com/mmottl/pcre-ocaml/releases/download/${pkgver}/pcre-${pkgver}.tbz")
-sha512sums=('621c02db6989148733ae8c5ed566eafde201d367deb986231a33ad3a9409ec457f2d6161c4d6b0b595e951559941029efcb859056168b513f6a0b79f8bd8680a')
+sha512sums=('917e98aa86a75d2e17b0df9eb546c5dc568eacd0f2df0c5621467246142beff449e11544d88bc42eabf1cc288f7aa19aaebe90283ca8cf72dc023e52c6c21e02')
 
 build() {
   cd "${srcdir}/pcre-${pkgver}"
