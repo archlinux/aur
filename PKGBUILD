@@ -1,21 +1,29 @@
-# Maintainer: Hans-Nikolai Viessmann <hv15 @ hw.ac.uk>
+# Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
 _pkgname=cmgui
 pkgname="bright-${_pkgname}"
 _ver=7.3
-pkgver=${_ver}.9241
+pkgver=${_ver}.9290
 pkgrel=1
 pkgdesc="Bright Clusters Management GUI application"
-arch=('x86_64')
-url="http://www.brightcomputing.com/documentation"
+arch=('any')
+url="https://www.brightcomputing.com/documentation"
+_dlurl="https://support.brightcomputing.com/cmgui-download/"
 license=('unknown')
-depends=('firefox')
-source=("http://support.brightcomputing.com/cmgui-download/${_pkgname}-${_ver}.tar.bz2"
+depends=('firefox' 'sed')
+#makedepends=('curl')
+source=("${_dlurl}/${_pkgname}-${_ver}.tar.bz2"
         'cmgui.sh'
         'cmgui.desktop')
-md5sums=('30e1c3cf73b84ab9e87b6099f4d491cd'
+noextract=("${_pkgname}-${_ver}.tar.bz2")
+md5sums=('c94eebd7bce74d847290fa0b02ee370a'
          '005a904d7c43fdab0df2048766a00cf1'
          '5528f3dbe95ec1376936d9d3c66319c5')
-noextract=("${_pkgname}-${pkgver}.tar.bz2")
+
+# might want to use this in future, if checksum only check isn't sufficent
+#pkgver() {
+#  local rev="$(curl -s "$_dlurl" | sed -nE "s|.*Bright Cluster Manager ${_ver} CMGUI for Linux \(revision ([0-9]{4})\).*|\1|p")"
+#  printf "%s.%d" "$_ver" "$rev"
+#}
 
 package() {
   cd "$pkgdir"

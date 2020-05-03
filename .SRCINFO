@@ -1,16 +1,17 @@
 pkgbase = bright-cmgui
 	pkgdesc = Bright Clusters Management GUI application
-	pkgver = 7.3.9241
+	pkgver = 7.3.9290
 	pkgrel = 1
-	url = http://www.brightcomputing.com/documentation
-	arch = x86_64
+	url = https://www.brightcomputing.com/documentation
+	arch = any
 	license = unknown
 	depends = firefox
-	noextract = cmgui-7.3.9241.tar.bz2
-	source = http://support.brightcomputing.com/cmgui-download/cmgui-7.3.tar.bz2
+	depends = sed
+	noextract = cmgui-7.3.tar.bz2
+	source = https://support.brightcomputing.com/cmgui-download//cmgui-7.3.tar.bz2
 	source = cmgui.sh
 	source = cmgui.desktop
-	md5sums = 30e1c3cf73b84ab9e87b6099f4d491cd
+	md5sums = c94eebd7bce74d847290fa0b02ee370a
 	md5sums = 005a904d7c43fdab0df2048766a00cf1
 	md5sums = 5528f3dbe95ec1376936d9d3c66319c5
 
