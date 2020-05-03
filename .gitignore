@@ -1,0 +1,4 @@
+base16-manager-git/**
+pkg/**
+src/**
+*.xz
