@@ -1,15 +1,14 @@
 pkgbase = arxlibertatis-bin
 	pkgdesc = Cross-platform port of Arx Fatalis, a first-person role-playing game. (binary version)
 	pkgver = 1.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://arx-libertatis.org/
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = sdl
 	depends = openal
 	depends = glew1.10
-	optdepends = qt5: enable built-in crash handler (Qt5 version; recompile needed)
+	optdepends = qt5-base: enable built-in crash handler (Qt5 version; recompile needed)
 	optdepends = gdb: generate detailed crash reports
 	optdepends = arxfatalis-data-copy: Arx Fatalis game data, required to play
 	optdepends = arxfatalis-data-demo: Arx Fatalis game data from the demo, required to play
@@ -17,8 +16,8 @@ pkgbase = arxlibertatis-bin
 	provides = arxlibertatis
 	conflicts = arxlibertatis
 	conflicts = arx-libertatis-git
-	source_x86_64 = http://download.opensuse.org/repositories/home:/dscharrer/Fedora_30/x86_64/arx-libertatis-1.1.2-9.1.x86_64.rpm
-	sha512sums_x86_64 = c46478491f8014cc9fdeb90e6b66c274112a513c85f1491eb73cd675c371d2cb87c23c0b6785187d29f8be3033d2deb496990ec7b386d54676e1790bceb31622
+	source = https://download.opensuse.org/repositories/home:/dscharrer/Fedora_30/x86_64/arx-libertatis-1.1.2-9.1.x86_64.rpm
+	md5sums = d49c9b2849e3fe16ccd0c9248eeda0b2
 
 pkgname = arxlibertatis-bin
 
