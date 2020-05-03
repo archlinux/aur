@@ -1,14 +1,12 @@
 pkgbase = gnome-shell-extension-arc-menu
 	pkgdesc = A Dynamic / Traditional / Modern Extension Menu for GNOME
 	pkgver = v45_Stable
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/arcmenu-team/Arc-Menu
 	arch = any
 	license = GPL2
-	makedepends = git
-	makedepends = make
 	depends = gnome-shell-extensions
-	depends = gnome-tweak-tool
+	depends = gnome-tweaks
 	depends = gnome-menus
 	conflicts = gnome-shell-extension-arc-menu-git
 	source = https://gitlab.com/arcmenu-team/Arc-Menu/-/archive/v45-Stable/Arc-Menu-v45-Stable.tar.gz
