@@ -3,7 +3,7 @@
 pkgname=ecal
 _pkgver_major=5
 _pkgver_minor=5
-_pkgver_patch=4
+_pkgver_patch=5
 pkgver=$_pkgver_major.$_pkgver_minor.$_pkgver_patch
 pkgrel=1
 pkgdesc="enhanced Communication Abstraction Layer"
@@ -15,8 +15,8 @@ makedepends=('asio' 'cmake' 'doxygen' 'git' 'graphviz' 'simpleini' 'spdlog' 'tcl
 optdepends=()
 source=(https://github.com/continental/ecal/archive/v$pkgver.tar.gz
         arch-linux-compat.diff)
-sha256sums=('445a864c9dcf43af098cea42cc604a2c3315e8d6de659cfb24872a966194315a'
-            '9607c3b853fa07f7d5fe987438f5d9776b52f0472994b94557771c9c40d4f2f9')
+sha256sums=('35c58f8f22a2743d976484b6b2284542bdc21103c197cf8e816ea81658bbc061'
+            '5681be1564c288f5ad0afb0aef1c10c848b77a2f6a198a673a401d5271989ffa')
 backup=('etc/ecal/ecal.ini' 'etc/ecal/ecaltime.ini')
 
 prepare() {
