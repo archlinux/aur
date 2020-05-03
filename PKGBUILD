@@ -7,10 +7,10 @@ arch=(x86_64)
 url="https://gameforge.com"
 license=('GPL')
 groups=()
-depends=('wine-staging' 'winetricks' 'wine-nine')
+depends=('wine-staging' 'winetricks')
 makedepends=()
 checkdepends=()
-optdepends=()
+optdepends=('wine-nine')
 provides=()
 conflicts=()
 replaces=()
@@ -18,8 +18,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("gameforge.install"
-		"gameforge.png"
+source=("gameforge.png"
 		"gameforge.desktop"
 		"gameforge.sh")
 noextract=()
@@ -48,7 +47,6 @@ package() {
 	cp gameforge.png $pkgdir/usr/share/icons
 	cp gameforge.desktop $pkgdir/usr/share/applications
 }
-md5sums=('d04f75b2287319dae2838b00df82faa3'
-         '0db6b822bbdf443247671e1d93216b1a'
+md5sums=('0db6b822bbdf443247671e1d93216b1a'
          'e693c79d27d45e1971529bb3841fdb48'
          '5faf6c868c8cb572ae03ed06d263614a')
