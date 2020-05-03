@@ -6,8 +6,8 @@
 
 pkgname=ganttproject
 pkgver=2.8.11
-_build=r2393
-pkgrel=1
+_build=r2396
+pkgrel=2
 pkgdesc="A project scheduling application featuring gantt chart, resource management, calendaring."
 arch=('i686' 'x86_64')
 url="http://www.ganttproject.biz/"
@@ -28,5 +28,5 @@ package() {
 	ln -s "/opt/$pkgname/ganttproject" "$pkgdir/usr/bin/ganttproject"
 }
 
-md5sums=('2da0e6dfc9580f45646629e9619f5843'
+md5sums=('8d7ceb2dd751034af97f5c62bec8a67e'
          '5139adddebc92d9da94b8448176d4d21')
