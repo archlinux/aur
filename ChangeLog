@@ -1,3 +1,8 @@
+4.5.25 (2020-04-30 10:52:31)
+
+    Fixes a drawing issue on some systems,
+    Fixes a mistake in the SDK.
+
 4.5.24 (2020-04-17 18:49:07)
 
     Fixes parsing of Objective-C metadata for binaries targeting the iOS simulator,
