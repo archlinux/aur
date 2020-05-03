@@ -4,3 +4,4 @@
 !.gitignore
 !service
 !config
+!sip-communicator.properties
