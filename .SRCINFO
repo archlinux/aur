@@ -1,0 +1,27 @@
+pkgbase = zoom-system-qt
+	pkgdesc = Video Conferencing and Web Conferencing Service - system Qt libraries
+	pkgver = 5.0.399860.0429
+	pkgrel = 1
+	url = https://zoom.us/
+	arch = x86_64
+	license = custom
+	depends = ttf-font
+	depends = pulseaudio-alsa
+	depends = qt5-base
+	depends = qt5-graphicaleffects
+	depends = qt5-imageformats
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	depends = qt5-script
+	depends = qt5-declarative
+	optdepends = qt5-webengine: SSO login support
+	optdepends = picom: extra compositor needed by some window managers for screen sharing
+	optdepends = xcompmgr: extra compositor needed by some window managers for screen sharing
+	conflicts = zoom
+	options = !strip
+	source = zoom-system-qt-5.0.399860.0429_orig_x86_64.pkg.tar.xz::https://zoom.us/client/5.0.399860.0429/zoom_x86_64.pkg.tar.xz
+	sha512sums = 985d0ff7ff4aad9d75f1bd56318c77065c25b9572d4e05f74aa5916bc83c85210ab09bc4c3b58e0350d48aefd2db40079e03da1544ff2e640d2625e4aee43a34
+
+pkgname = zoom-system-qt
+
