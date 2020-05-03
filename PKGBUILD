@@ -1,10 +1,11 @@
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: Nils Czernia <nils[at]czserver[dot[de>
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=moodle
-pkgver=3.8
-_pkgver="stable${pkgver/./}"
+pkgver=3.8.2
+_pkgver="stable38"
 pkgrel=1
 pkgdesc='Moodle is an open-source software learning management system'
 arch=('any')
@@ -14,7 +15,7 @@ depends=('php' 'php-intl' 'php-gd' 'mariadb')
 conflicts=('moodle-plus')
 options=('!strip')
 source=("https://download.moodle.org/${_pkgver}/${pkgname}-${pkgver}.tgz")
-sha256sums=('69faee20b35f0d7fa746fb20d68995f0c4863ab854992e0cf02edc971be85a03')
+sha256sums=('a3e8462ffc69ee382d92243480c014bfabe71521e7b257a972fa4caa97ee9b8c')
 
 
 package() {
