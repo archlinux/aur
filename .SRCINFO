@@ -1,7 +1,7 @@
 pkgbase = steam-tools
 	pkgdesc = Some useful tools to use with steam client or compatible programs and websites.
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ShyPixie/steam-tools-ng
 	arch = any
 	license = GPL

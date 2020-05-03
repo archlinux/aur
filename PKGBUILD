@@ -4,7 +4,7 @@
 pkgname=steam-tools
 _pkgname=steam-tools-ng
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Some useful tools to use with steam client or compatible programs and websites."
 arch=('any')
 url="https://github.com/ShyPixie/steam-tools-ng"
