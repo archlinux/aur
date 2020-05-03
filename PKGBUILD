@@ -2,8 +2,8 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=quakejs-git
-pkgver=20190325.977b188
-pkgrel=2
+pkgver=20200503.5443bc2
+pkgrel=1
 pkgdesc="Port of ioquake3 to JavaScript with the help of Emscripten"
 arch=('any')
 url="https://github.com/inolen/quakejs"
@@ -46,7 +46,7 @@ package() {
   install -d "${pkgdir}/var/lib/quakejs"
   ln -s "/var/lib/quakejs" "${pkgdir}/usr/share/webapps/quakejs/base"
   for f in ".git" ".gitignore" ".gitmodules" "package.json" "package-lock.json"; do
-    rm -r "${srcdir}/quakejs/${f}"
+    rm -rf "${srcdir}/quakejs/${f}"
   done
   cp -ra "${srcdir}/quakejs" "${pkgdir}/usr/share/webapps/quakejs"
 

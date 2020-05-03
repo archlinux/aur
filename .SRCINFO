@@ -1,7 +1,7 @@
 pkgbase = quakejs-git
 	pkgdesc = Port of ioquake3 to JavaScript with the help of Emscripten
-	pkgver = 20190325.977b188
-	pkgrel = 2
+	pkgver = 20200503.5443bc2
+	pkgrel = 1
 	url = https://github.com/inolen/quakejs
 	install = quakejs.install
 	arch = any
