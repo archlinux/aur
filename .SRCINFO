@@ -1,0 +1,23 @@
+pkgbase = i3exit
+	pkgdesc = Systemd/OpenRC-compatible exit-script for i3, including 'blurlock'
+	pkgver = 2
+	pkgrel = 1
+	install = i3exit.install
+	arch = any
+	license = GPL
+	depends = i3-wm
+	depends = i3lock
+	depends = imagemagick
+	optdepends = lightdm-gtk-greeter: switch user with lightdm
+	optdepends = xss-lock: blurlock as screensaver
+	source = i3exit
+	source = blurlock
+	source = i3exit.install
+	source = config
+	md5sums = cf20f699b2cdc2fb7d22075866e54a9f
+	md5sums = e3699b2b3acaa6e59e4d40d9229273ea
+	md5sums = 60e55cbbc4a3a955dbaf58183604c204
+	md5sums = c182bd89c9a507142b301394aef9a89b
+
+pkgname = i3exit
+

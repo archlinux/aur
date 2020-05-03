@@ -1,0 +1,3 @@
+post_install() {
+    echo 'To configure i3exit and blurlock for usage, refer to the example configuration contained in /etc/i3exit/config'
+}
