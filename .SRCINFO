@@ -1,6 +1,6 @@
 pkgbase = remt
 	pkgdesc = reMarkable tablet command-line tools.
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://gitlab.com/wrobell/remt
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = remt
 	depends = python-asyncssh
 	depends = python-cytoolz
 	depends = python-asyncio-contextmanager
-	source = https://files.pythonhosted.org/packages/source/r/remt/remt-0.5.2.tar.gz
-	md5sums = 914f5ba3e001167d693c183d124a88bf
+	source = https://files.pythonhosted.org/packages/source/r/remt/remt-0.6.0.tar.gz
+	md5sums = 99f4b1ab018b50ae49bb7444533f6d70
 
 pkgname = remt
 
