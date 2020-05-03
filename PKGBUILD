@@ -4,7 +4,7 @@
 # If one is not installed, the maturin build tool will automatically download one.
 
 pkgname=python-blake3
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Python bindings for the BLAKE3 cryptographic hash function"
 arch=(x86_64 i686 aarch64 armv7h)
@@ -15,7 +15,7 @@ depends=('python')
 makedepends=('python-pip' 'rust')
 
 source=("blake3-py-${pkgver}.tar.gz"::"https://github.com/oconnor663/blake3-py/archive/${pkgver}.tar.gz")
-sha512sums=('08a2a5d04c5230f093e3e14f20f044cfad79328f92878821c5f21a6f5b170cb5f461e77531aa553ee30be4f2aa722a2fac7cfe8e8cb9260cb4fb99aa3daf16ad')
+sha512sums=('1d96f7d697e321be2f5723da3b52462e49914278826bed8b41e9e4f6ae126d36d7e3c74835bba3068b2a91067624f357d8f60545cdc02d0e23b1323256a3e1f0')
 
 package() {
     cd "blake3-py-${pkgver}"
