@@ -4,10 +4,13 @@ pkgbase = git-delta-bin
 	pkgrel = 1
 	url = https://github.com/dandavison/delta
 	arch = x86_64
+	arch = armv7h
 	license = MIT
 	depends = git
 	conflicts = git-delta
-	source = https://github.com/dandavison/delta/releases/download/0.1.1/git-delta_0.1.1_amd64.deb
-	sha256sums = 25446decb8e47d74ff5ce0b579014e5ce16c54e49a0f64554cb9debfb33d6b39
+	source_x86_64 = https://github.com/dandavison/delta/releases/download/0.1.1/git-delta_0.1.1_amd64.deb
+	sha256sums_x86_64 = 25446decb8e47d74ff5ce0b579014e5ce16c54e49a0f64554cb9debfb33d6b39
+	source_armv7h = https://github.com/dandavison/delta/releases/download/0.1.1/git-delta_0.1.1_armhf.deb
+	sha256sums_armv7h = 39e388727a07c8e816a17d14e09cf8a6dc2f8e7cd8dc2c38b44d3f55e33034c1
 
 pkgname = git-delta-bin
