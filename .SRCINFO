@@ -1,6 +1,6 @@
 pkgbase = ttf-alegreya-fonts-ibx
 	pkgdesc = Alegreya and Alegreya Sans are modern font families designed by Juan Pablo del Peral.
-	pkgver = 1.003
+	pkgver = 2.008
 	pkgrel = 7
 	url = http://www.huertatipografica.com/
 	arch = any

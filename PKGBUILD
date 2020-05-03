@@ -1,8 +1,8 @@
 # Maintainer: bohoomil <@zoho.com>
-
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgbase=ttf-alegreya-fonts-ibx
 pkgname=('ttf-alegreya-ibx' 'ttf-alegreya-sans-ibx')
-pkgver=1.003
+pkgver=2.008
 pkgrel=7
 depends=('fontconfig')
 pkgdesc="Alegreya and Alegreya Sans are modern font families designed by Juan Pablo del Peral."
