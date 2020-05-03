@@ -1,15 +1,15 @@
 # Maintainer: Nico <desoxhd@gmail.com>
 pkgname=anydesk-bin
 pkgver=5.5.5
-pkgrel=3
+pkgrel=4
 pkgdesc="'AnyDesk Free' is an All-In-One Software for Remote Support (Generic based package)"
 arch=('i686' 'x86_64')
 url="https://anydesk.com"
 license=('custom')
 depends=('fakeroot' 'python-shiboken2' 'gtkglext' 'libglvnd' 'gtk2' 'libx11' 'glibc' 'glib2' 'gdk-pixbuf2' 'libxcb' 'cairo' 'pango' 'libxi' 'libxrender' 'libxrandr' 'libxtst' 'libxext' 'libxfixes' 'libxdamage' 'gcc-libs')
 optdepends=('libpulse: audio support')
-conflicts=('anydesk' 'anydesk-test' 'anydesk-debian' 'pango-anydesk')
-provides=('anydesk')
+conflicts=('anydesk' 'anydesk-test' 'anydesk-debian' 'pango-anydesk' 'pangox-compat')
+provides=('anydesk' 'libpangox-1.0.so.0')
 
 source_i686=("https://download.anydesk.com/linux/anydesk-${pkgver}-i386.tar.gz")
 source_x86_64=("https://download.anydesk.com/linux/anydesk-${pkgver}-amd64.tar.gz")
@@ -18,6 +18,10 @@ sha256sums_i686=('ead02c9778711a6f028fb0f26f9ef9a48b76ef8f374124b45827e451a55f08
 sha256sums_x86_64=('606950997cfa607eff0f68018b8e6962f2491037a7c590d6e150befcaabe5225')
 
 package() {
+    # workaround because pangox-compat package has been removed
+    mkdir -p "${pkgdir}/usr/lib/"
+    ln -sf "/usr/lib/libpangoxft-1.0.so" "${pkgdir}/usr/lib/libpangox-1.0.so.0"
+
     # install binary
     install -Dm 755 "${srcdir}/anydesk-${pkgver}/anydesk" "${pkgdir}/usr/bin/anydesk"
     # install desktop entry
