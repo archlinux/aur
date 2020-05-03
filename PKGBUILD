@@ -30,7 +30,7 @@ depends=(
     'python-watchdog>=0.10.0'
     'python-systemd')
 md5sums=('ba2cc7c15f6f5b5e07377a1b37be228f'
-         '4d6729758ff15664e0f0177b57a0da33')
+         '25d1041b158c1b1ea42d7290c9c0f91d')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"

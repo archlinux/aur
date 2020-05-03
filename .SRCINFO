@@ -27,7 +27,7 @@ pkgbase = maestral
 	source = https://github.com/SamSchott/maestral/archive/v1.0.0.dev5.tar.gz
 	source = maestral@.service
 	md5sums = ba2cc7c15f6f5b5e07377a1b37be228f
-	md5sums = 4d6729758ff15664e0f0177b57a0da33
+	md5sums = 25d1041b158c1b1ea42d7290c9c0f91d
 
 pkgname = maestral
 
