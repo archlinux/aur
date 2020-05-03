@@ -1,7 +1,7 @@
 # Maintainer: Jason Stryker <public at jasonstryker dot com>
 
 pkgname=runelite
-pkgver=1.6.12
+pkgver=1.6.13
 pkgrel=1
 epoch=1
 pkgdesc="Open source Old School RuneScape client."
@@ -16,12 +16,12 @@ conflicts=('runelite-git')
 source=("${url}/archive/runelite-parent-${pkgver}.tar.gz"
         runelite.desktop
         runelite.png)
-sha512sums=('970d5472ddbb805c9c28a5aa02d615474bc48fd277ebd2df94475f8f96cc3c0d99fe8044292e11db5b8a3834afc8d103e0f7ca6633be02ed771c9a045cd0ba5e'
+sha512sums=('0cd9dd9b9e25858b4593afb436af396a7f848bad5d97734cfa4284d9701fdb965766632c76908984171f7f6833bf4a17d37588a6fd89e23840e23f0a0a6626d0'
             'e00339514623c2f683118f1cdba93cebbc0761fd72f31e2d139ed467b8c41a6738fd0f27ac2beba4d2caa2a365ef4cc49a43af54b13ca5a908e5fd11d03f4bc1'
             '73e0c42f4eaf2e0adc249e471bd241e8328da7f867177535f1da206acce14801b60e69fffdbb2a10bc105f1de37b6eaaad23d5e67147b53a108b6e5bf55c586b')
 
 build() {
-    cd ${srcdir}/${pkgname}-runelite-parent-${pkgver}/runelite-client/
+    cd ${srcdir}/${pkgname}-runelite-parent-${pkgver}/
 
     mvn clean package -DskipTests=true
 }
