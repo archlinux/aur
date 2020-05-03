@@ -8,27 +8,27 @@ pkgrel=1
 pkgdesc="LinuxCNC controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=('i686' 'x86_64')
 license=('GPL-2.0')
-url="http://linuxcnc.org/"
+url="http://linuxcnc.org"
 depends=('bc'
          'bwidget'
          'tcl'
          'tk'
-         'xorg-server'
          'python2-imaging'
          'python2-yapps2'
          'tkimg'
          'python2-gtkglext'
          'tclx'
+         'xorg-server'
          'boost'
          'boost-libs'
          'libtirpc'
          'procps-ng'
          'psmisc')
-source=("https://github.com/LinuxCNC/linuxcnc/archive/v${pkgver}.tar.gz"
-        'libtirpc.patch')
-md5sums=('28ed8e2083cfb7fa5935db1884950331'
-         'SKIP')
 makedepends=('intltool')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LinuxCNC/linuxcnc/archive/v${pkgver}.tar.gz"
+        'libtirpc.patch')
+sha256sums=('242271c7756f4432bb3ac40d24876ac3f44500670979c1e8f8d1d911f8b5409b'
+         'SKIP')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}/src"
@@ -39,8 +39,8 @@ prepare() {
   ./autogen.sh
   ./configure --with-realtime=uspace \
    --without-libmodbus --prefix=/usr \
-    --with-python=/usr/bin/python2.7 \
-     --enable-non-distributable=yes
+   --with-python=/usr/bin/python2.7 \
+   --enable-non-distributable=yes
 }
 
 build () {
@@ -58,4 +58,6 @@ package() {
    "${pkgdir}/etc/profile.d/${pkgname}.sh"
   sed -i "s|${srcdir}||" "${pkgdir}/usr/include/linuxcnc/config.h"
   sed -i "s|${srcdir}||" "${pkgdir}/usr/share/linuxcnc/Makefile.modinc"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s /usr/share/licenses/common/GPL2/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
