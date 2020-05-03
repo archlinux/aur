@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=quakejs-git
-pkgver=20200503.5443bc2
+pkgver=20200503.133c04b
 pkgrel=1
 pkgdesc="Port of ioquake3 to JavaScript with the help of Emscripten"
 arch=('any')
@@ -30,7 +30,7 @@ backup=('etc/webapps/quakejs/server.cfg'
 install="quakejs.install"
 
 pkgver() {
-  cd "quakejs"
+  cd "${srcdir}/quakejs"
   git log -1 --format=%cd.%h --date=short | tr -d -
 }
  

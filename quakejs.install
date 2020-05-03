@@ -1,3 +1,5 @@
 post_install() {
-	echo "In order to download the basic demo game files, you have to run following command first:"
+	echo "In order to download the basic demo game files, you have to run following command first:
+	sudo -u quakejs node build/ioq3ded.js +set fs_game baseq3 +set dedicated 2
+	Press return again and again until you're able to agree to the EULA with yes (y)."
 }
