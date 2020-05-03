@@ -2,17 +2,17 @@
 
 _pkgname=sfntly
 pkgname=${_pkgname}-git
-pkgver=r157.64f78562
+pkgver=r204.1e7adf31
 pkgrel=1
 pkgdesc="A Library for Using, Editing, and Creating SFNT-based Fonts"
 arch=('i686' 'x86_64')
-url="https://github.com/googlei18n/sfntly"
+url="https://github.com/googlefonts/sfntly"
 license=('Apache')
-depends=('java-environment' 'icu' 'bash')
+depends=('java-environment<13' 'icu' 'bash')
 makedepends=('git' 'apache-ant' 'cmake')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("git+https://github.com/googlei18n/${_pkgname}.git")
+source=("git+https://github.com/googlefonts/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
