@@ -1,0 +1,14 @@
+pkgbase = python-msgfy
+	pkgdesc = A Python library for converting an Exception instance into a human-readable error message
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/thombashi/msgfy
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/thombashi/msgfy/archive/v0.1.0.tar.gz
+	sha256sums = 5d63a7e50538463b91a5898d95a8cd1c9d06f608e8ab3e6ccd0ca9d9d279c104
+
+pkgname = python-msgfy
+
