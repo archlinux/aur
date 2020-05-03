@@ -1,6 +1,6 @@
 pkgbase = python-box
 	pkgdesc = Advanced Python dictionaries with dot notation access
-	pkgver = 4.2.1
+	pkgver = 4.2.3
 	pkgrel = 2
 	url = https://github.com/cdgriffith/Box
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-box
 	depends = python-toml
 	depends = python-ruamel-yaml
 	provides = python-box
-	source = https://files.pythonhosted.org/packages/source/p/python-box/python-box-4.2.1.tar.gz
-	sha256sums = b4dcd0a4175ebe7ea73d3d85cbb4d33efe1ccbfaef131fa7c77702f235577fb8
+	source = https://files.pythonhosted.org/packages/source/p/python-box/python-box-4.2.3.tar.gz
+	sha256sums = 37dcaee62446cef67ffad7baef0f1b5f541587e2064f1152ec3bc0ead64092a2
 
 pkgname = python-box
 
