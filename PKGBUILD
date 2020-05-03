@@ -3,7 +3,7 @@
 pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
-pkgver='0.1.4'
+pkgver='0.1.5'
 pkgrel='0'
 epoch=
 arch=('i686' 'x86_64')
@@ -103,12 +103,16 @@ package() {
     install -m 644 "src/scripts/gaming.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/gradient.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/gradient.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/linear-gradient.lua" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/linear-gradient.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/heartbeat.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/heartbeat.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/impact.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/impact.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/multigradient.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/multigradient.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/osn.lua" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/osn.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/perlin.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/perlin.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/psychedelic.lua" "$pkgdir/usr/share/eruption/scripts/"
@@ -129,6 +133,8 @@ package() {
     install -m 644 "src/scripts/sysmon.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/temperature.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/temperature.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/turbulence.lua" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/turbulence.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/voronoi.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/voronoi.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/water.lua" "$pkgdir/usr/share/eruption/scripts/"
@@ -145,6 +151,7 @@ package() {
     install -m 644 "support/profiles/fx2.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/fireworks.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/gaming.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/gradient-noise.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/batique.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile2.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile3.profile" "$pkgdir/var/lib/eruption/profiles/"
@@ -155,6 +162,7 @@ package() {
     install -m 644 "support/profiles/preset-red-yellow.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/preset-blue-red.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/spectrum-analyzer.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/turbulence.profile" "$pkgdir/var/lib/eruption/profiles/"
 
     # Web-Frontend
     #mkdir -p "$pkgdir/usr/share/eruption/templates"
