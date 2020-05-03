@@ -2,9 +2,9 @@
 # Contributor: Guillaume Friloux <guillaume@friloux.me>
 
 _pkgbase='movim'
-_tagname=v0.15
+_tagname=v0.17.1
 pkgname=movim
-pkgver=v0.15.b79011d73
+pkgver=v0.17.1.92ddd9e71
 pkgrel=1
 pkgdesc="Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol."
 arch=('any')

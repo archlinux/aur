@@ -1,6 +1,6 @@
 pkgbase = movim
 	pkgdesc = Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol.
-	pkgver = v0.15.b79011d73
+	pkgver = v0.17.1.92ddd9e71
 	pkgrel = 1
 	url = https://movim.eu
 	install = movim.install
@@ -21,7 +21,7 @@ pkgbase = movim
 	provides = movim
 	backup = etc/webapps/movim/db.inc.php
 	backup = etc/default/movim
-	source = movim::git+https://github.com/movim/movim#tag=v0.15
+	source = movim::git+https://github.com/movim/movim#tag=v0.17.1
 	source = movim.env
 	source = movim.service
 	source = sysuser.conf
