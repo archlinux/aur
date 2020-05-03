@@ -1,13 +1,13 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 # Contributor: Jack Allnutt <jack@allnutt.eu>
 pkgname=kiwiirc
-pkgver=1.1.0.r2044.g4c979963
+pkgver=1.4.0.r450.g6498c51a
 pkgrel=1
 pkgdesc="A hand-crafted web-based IRC client that you can enjoy"
 arch=('any')
 url="https://kiwiirc.com/"
 license=('APACHE')
-makedepends=('git' 'yarn')
+makedepends=('git' 'npm' 'yarn')
 install='kiwiirc.install'
 source=(git+https://github.com/kiwiirc/kiwiirc)
 md5sums=('SKIP')
