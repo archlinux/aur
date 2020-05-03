@@ -1,7 +1,7 @@
 pkgbase = python-pampy
 	pkgdesc = The Pattern Matching for Python you always dreamed of
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/santinic/pampy
 	arch = any
 	license = MIT
