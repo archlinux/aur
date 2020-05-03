@@ -1,0 +1,19 @@
+pkgbase = qrc-bin
+	pkgdesc = QR code generator for text terminals
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/fumiyas/qrc
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = i486
+	arch = i686
+	license = MIT
+	provides = qrc
+	conflicts = qrc
+	source = qrc::https://github.com/fumiyas/qrc/releases/download/v0.1.1/qrc_linux_amd64
+	sha512sums = fb78aac0b19d235502b5dd225c3bcf600464d85597433507e196af3a1ffac705241f28f19b0032dc99c5a1e99049bcea4746623d689985fa7b39791ac47e7576
+
+pkgname = qrc-bin
+
