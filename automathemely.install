@@ -1,40 +1,17 @@
 post_install() {
-  # start timer for all users automatically after install
-  if systemctl --global enable automathemely.timer
-  then
-    cat <<EOM
+  cat <<EOM
 
-    Timer to update automathemely sun times enabled.
-    Please note that the timer only starts on a new user session.
-    To disable the timer run "systemctl disable --user automathemely.timer" as user
+  In order to use automatic theme updates with automathemely the timer and autostart needs to be enabled
+  To enable the timer for your user run:
 
-EOM
-  else
-    cat <<EOM
+    systemctl enable --user automathemely.timer
 
-    Failed to enable timer to update automathemely sun times
-    To enable the timer for your user run "systemctl enable --user automathemely.timer"
+  For autostart (globally) this command can be used:
+
+    sed 's/\(Exec=automathemely\)\ \-\-manage/\1/' \\
+      /usr/share/applications/automathemely.desktop >| \\
+      /etc/xdg/autostart/automathemely.desktop
 
 EOM
-  fi
-
-  # install to autostart; remove '--manage' from command
-  sed 's/\(Exec=automathemely\)\ \-\-manage/\1/'\
-    /usr/share/applications/automathemely.desktop >|\
-    /etc/xdg/autostart/automathemely.desktop
-}
-
-post_upgrade() {
-  # start timer for upgrade from less than 1.3-2
-  if [ $(vercmp $2 1.3-2) -lt 0 ]
-  then
-    post_install
-  fi
-}
-
-pre_remove() {
-  # disable the timer before remove
-  systemctl --global disable automathemely.timer
-  rm -v /etc/xdg/autostart/automathemely.desktop
 }
 

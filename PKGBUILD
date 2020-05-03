@@ -17,7 +17,7 @@ source=("https://github.com/C2N14/${_name}/archive/v${pkgver}.tar.gz"
         ${pkgname}.timer
 )
 sha256sums=('14e5100eb911ab8e5667a3358e1e7ed6540fd1a294ba4d451d4db480b08c3555'
-            'd89733856d5d93f93ca29ea769c6ae3e2841378c89b88fe1acd239fa7dd5026f'
+            'b853ded02b52867e4695c7df10aa7559f8b2c4eb98761aca20e9a856cc1294e0'
             '6c0e4e6076f2cce0cef8c5aec79f9ea6106240051b1d556eabea4c391fe0d834'
             '0b39fc8abf200b1438b01deb48133817e4dc1cd6e7e41cebe7e82118ed96999e')
 
