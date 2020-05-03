@@ -5,6 +5,7 @@
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
 # Contributor: Dale Blount <dale@archlinux.org>
 # Contributor: Anders Bostrom <anders.bostrom@home.se>
+
 ### Appmenu patching ###
 # PKGBUILD: Nikita Tarasov <nikatar@disroot.org>
 # Building: Nikita Tarasov <nikatar@disroot.org>
@@ -19,8 +20,6 @@ license=('MPL' 'GPL' 'LGPL')
 url="https://aur.archlinux.org/packages/thunderbird-appmenu/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib
          nss hunspell sqlite ttf-font icu)  # libvpx
-makedepends=(unzip zip diffutils python python2 yasm nasm mesa imake libpulse inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm gtk2 cbindgen nodejs)
 optdepends=('libcanberra: sound support')
 provides=("thunderbird=$pkgver")
 conflicts=("thunderbird")
