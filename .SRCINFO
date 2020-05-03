@@ -10,7 +10,7 @@ pkgbase = clipman
 	depends = wl-clipboard>=2.0
 	provides = clipman
 	source = https://github.com/yory8/clipman/archive/v1.5.0.tar.gz
-	md5sums = 140c72f92cd329d177fcbbd751253e59
+	md5sums = ca6ec0327dccfc389b103a936936de24
 
 pkgname = clipman
 

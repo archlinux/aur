@@ -10,7 +10,7 @@ makedepends=("go")
 provides=("clipman")
 license=("GPL3")
 arch=("x86_64" "i686")
-md5sums=("140c72f92cd329d177fcbbd751253e59")
+md5sums=("ca6ec0327dccfc389b103a936936de24")
 source=("https://github.com/yory8/${pkgname}/archive/v${pkgver}.tar.gz")
 
 build() {
