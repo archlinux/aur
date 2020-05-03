@@ -1,22 +1,19 @@
 pkgbase = motrix
 	pkgdesc = elegent downloading tool frontend for aria2c,using vue(release version)
 	pkgver = v1.4.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/agalwood/Motrix
 	arch = x86_64
 	license = MIT
 	makedepends = curl
-	makedepends = yarn
 	makedepends = npm
 	depends = gtk3
 	depends = libxcb
 	conflicts = motrix-git
 	source = Motrix.desktop
-	source = aria2.conf
 	source = motrix
 	source = Motrix.tar.gz::https://github.com/agalwood/Motrix/archive/v1.4.1.tar.gz
 	sha256sums = 1b799d1b1e280a27ff625cceb429b1e00c6691eb0256ded44f6a1a0310a899d4
-	sha256sums = 1d87b2906dd9622efcdd3695d19fd4d365f644c53dac8b517931964d4099d2c3
 	sha256sums = c89824e80769b0b19c66da12168f9e91fc15088d1324d6760ddad960eb006cba
 	sha256sums = cd10cd5c704f0d780ff501e2861a316b95c44d11b653045574ae07b9a3ccaa8b
 
