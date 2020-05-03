@@ -1,8 +1,8 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=textosaurus-git
 epoch=1
-pkgver=0.9.13.r2.gdd3c2e9
+pkgver=0.9.13.r25.g6b0b702f
 pkgrel=1
 pkgdesc="Simple cross-platform text editor based on Qt and Scintilla"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
