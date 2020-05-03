@@ -11,7 +11,7 @@ options=(!emptydirs)
 makedepends=('python-setuptools' 'python2-setuptools' 'git')
 depends=('python-openid' 'python-requests' 'python-oauthlib'
          'python-requests-oauthlib' 'python-six' 'python-jwt')
-source=("git+https://github.com/omab/python-social-auth#tag=v${pkgver}")
+source=("git+https://github.com/omab/python-social-auth#tag=${pkgver}")
 sha256sums=('SKIP')
 
 build() {
