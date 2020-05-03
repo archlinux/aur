@@ -1,7 +1,7 @@
 pkgbase = cnijfilter-ip7200
 	pkgdesc = Canon ip7200 series printer driver (built from sources)
 	pkgver = 3.80
-	pkgrel = 1
+	pkgrel = 2
 	url = https://en.canon-cna.com/support/consumer_products/products/printers/inkjet/pixma_ip_series/pixma_ip7240.aspx
 	install = cnijfilter.install
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = cnijfilter-ip7200
 	source = http://gdlp01.c-wss.com/gds/3/0100004693/01/cnijfilter-source-3.80-1.tar.gz
 	source = all.patch
 	sha256sums = 8b6d408f18191f19465ee8fc31aa08455e8bec186fdd3f02ee822f53a9b086a9
-	sha256sums = 37b91326022d94d3f0dc8a404a8c0550c28267820cabcd7b53b4d2d92c30b1f8
+	sha256sums = a3910d272d7525a1af586ad2965c64b85d0f9634fb2f2ab812a4f7f1dff418e3
 
 pkgname = cnijfilter-ip7200
 
