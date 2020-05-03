@@ -16,7 +16,9 @@ sha256sums=('fc1dd71f0cf764f734a5b2aaff7c5483e280c2b1a0fe944d8e3130df96f854df')
 
 package() {
     cd ${_pkgname}-${pkgver}
-    python setup.py install --root=$pkgdir --prefix=/usr
+    python setup.py install --skip-build --optimize=1 --root=${pkgdir} --prefix=/usr
+    install -Dm644 steam-tools-ng.desktop $pkgdir/usr/share/applications/steam-tools-ng.desktop
+    cp -rf icons/* $pkgdir/usr/share/steam-tools-ng/icons/
 }
 
 
