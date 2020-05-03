@@ -2,11 +2,11 @@
 pkgname=python-sregistry
 _pkgname=sregistry
 pkgver=0.2.35
-pkgrel=1
+pkgrel=2
 pkgdesc="Singularity Registry Client CLI tool (built with [registry] support)"
 arch=('any')
 url="https://singularityhub.github.io/sregistry-cli/"
-license=('AGPL3')
+license=('MPL2')
 depends=('python-spython'
          'python-requests'
          'python-pygments'
