@@ -3,7 +3,7 @@
 # Contributor:: Daniel Egeberg <daniel.egeberg@gmail.com>
 
 pkgname="sonarr-phantom"
-pkgver=3.0.3.783
+pkgver=3.0.3.784
 pkgrel=1
 pkgdesc="TV download automation for usenet and torrents."
 arch=(any)
@@ -41,11 +41,11 @@ source=(
 )
 
 noextract=()
-sha256sums=('de503d24e01df930b9c9b25cb5678f055bceff29a707178af8c2e5a3ec1552fa'
+sha256sums=('3c598edd23b9e9ee5abebaddcc5a6e162fffa51ac8f5c2087868a13e8ef20c1f'
             '24060db5ef0c364efbc32a6a50f77ad4b07154d0b2bb2d3ce33df80f14464521'
             'cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e'
             '7bf87304383b7d58ecab59b3686d00a8f1b6fbe4af3a86da35a887e4cebee411'
-            '01f426d6b96d2330717a4b1ac3d057fd61f79dc5eb0981272bbf44f0c227215b')
+            '4ab70b9d436f4342ab550797681ea16f1c019618ab1cf9cf46db29606658bfb1')
 
 package() {
   rm -rf "${srcdir}/Sonarr/Sonarr.Update"
