@@ -1,7 +1,7 @@
 pkgbase = python-social-auth
 	pkgdesc = Easy-to-setup social authentication/registration
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/omab/python-social-auth
 	arch = any
 	license = BSD
