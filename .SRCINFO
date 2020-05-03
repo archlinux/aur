@@ -1,0 +1,15 @@
+pkgbase = at4
+	pkgdesc = ahiiti's truly tremendous time tracker
+	pkgver = 0.0
+	pkgrel = 1
+	url = https://gitlab.com/ahiiti/time-tracker
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-jinja
+	source = at4::git+https://gitlab.com/ahiiti/time-tracker.git#branch=devel-python-module
+	sha512sums = SKIP
+
+pkgname = at4
+
