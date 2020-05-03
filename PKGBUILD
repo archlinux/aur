@@ -10,7 +10,7 @@ _branch1=$(git ls-remote -t --refs https://github.com/qbittorrent/qBittorrent.gi
 _stable_branch=$(_branch2=${_branch1//./_}; _branch3="${_branch2%*_*}"; printf "v%s_x" "$_branch3")
 #_stable_branch="v4_0_x"
 pkgname=qbittorrent-stable-git
-pkgver=4.2.1.r0.g118af0353
+pkgver=4.2.5.r0.g2c65b7964
 pkgrel=1
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar. Built from source."
 arch=('i686' 'x86_64')

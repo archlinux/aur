@@ -1,6 +1,6 @@
 pkgbase = qbittorrent-stable-git
 	pkgdesc = An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar. Built from source.
-	pkgver = 4.2.1.r0.g118af0353
+	pkgver = 4.2.5.r0.g2c65b7964
 	pkgrel = 1
 	url = http://www.qbittorrent.org
 	install = qbittorrent.install
