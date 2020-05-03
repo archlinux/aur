@@ -1,6 +1,6 @@
 pkgbase = blender-2.8-git
 	pkgdesc = Development version of Blender 2.8 branch
-	pkgver = 2.90.r95021.gec263547b53
+	pkgver = 2.90.r95572.g33bdd91fb82
 	pkgrel = 1
 	url = https://blender.org/
 	changelog = blender.changelog
@@ -18,7 +18,7 @@ pkgbase = blender-2.8-git
 	depends = libgl
 	depends = python
 	depends = python-numpy
-	depends = openjpeg
+	depends = openjpeg2
 	depends = ffmpeg
 	depends = fftw
 	depends = openal
