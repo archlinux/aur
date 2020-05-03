@@ -32,7 +32,7 @@ conflicts=('${EXECUTABLE_NAME}')
 depends=('glibc' 'ffmpeg')
 source=(
     ${EXECUTABLE_NAME}.environmentfile
-    ${EXECUTABLE_NAME}.service
+    https://raw.githubusercontent.com/deluan/navidrome/v$1/contrib/${EXECUTABLE_NAME}.service
     ${EXECUTABLE_NAME}.sysusers
     ${EXECUTABLE_NAME}.tmpfiles
 )

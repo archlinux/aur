@@ -13,7 +13,7 @@ conflicts=('navidrome')
 depends=('glibc' 'ffmpeg')
 source=(
     navidrome.environmentfile
-    navidrome.service
+    https://raw.githubusercontent.com/deluan/navidrome/v0.17.0/contrib/navidrome.service
     navidrome.sysusers
     navidrome.tmpfiles
 )
