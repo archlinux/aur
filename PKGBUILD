@@ -1,11 +1,12 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
+# Contributor: Guillaume Hayot <ghayot@postblue.info>
 pkgname=parlatype-libreoffice-extension
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Parlatype LibreOffice Extension"
 arch=('any')
-url="https://gkarsay.github.io/parlatype-libreoffice-extension/"
-license=('GPL')
+url="https://github.com/gkarsay/parlatype-libreoffice-extension/"
+license=('GPLv3')
 depends=('libreoffice' 'parlatype=2.0')
 makedepends=('meson' 'gettext' 'appstream' 'appstream-glib')
 source=("https://github.com/gkarsay/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
