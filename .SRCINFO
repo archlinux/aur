@@ -1,9 +1,8 @@
 pkgbase = yafaray
 	pkgdesc = A free open-source montecarlo raytracing engine
-	pkgver = 3.3.0
-	pkgrel = 2
+	pkgver = 3.4.0
+	pkgrel = 1
 	url = http://yafaray.org/
-	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = cmake
@@ -13,12 +12,12 @@ pkgbase = yafaray
 	makedepends = ruby
 	depends = boost-libs
 	depends = opencv
-	depends = qt4
+	depends = qt5-base
 	optdepends = python: For Python bindings
 	optdepends = ruby: For Ruby bindings
-	source = https://github.com/YafaRay/Core/archive/v3.3.0.tar.gz
+	source = Core-3.4.0.tar.gz::https://github.com/YafaRay/Core/archive/v3.4.0.tar.gz
 	source = ruby-archhdrdir.patch
-	md5sums = ef9b9de4f4aba8588ee00e294c32b0a6
+	md5sums = 3fe60ef428ad4b433c1fad0485a7bfb9
 	md5sums = e403c2aa8860e6d55629f9cb3dc150d8
 
 pkgname = yafaray
