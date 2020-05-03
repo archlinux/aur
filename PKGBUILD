@@ -48,7 +48,7 @@ package() {
   for f in ".git" ".gitignore" ".gitmodules" "package.json" "package-lock.json"; do
     rm -rf "${srcdir}/quakejs/${f}"
   done
-  cp -ra "${srcdir}/quakejs" "${pkgdir}/usr/share/webapps/quakejs"
+  cp -ra "${srcdir}/quakejs/." "${pkgdir}/usr/share/webapps/quakejs/"
 
   cp "${srcdir}/server.cfg" "${srcdir}/web.json" "${pkgdir}/etc/webapps/quakejs"
   #ln -s "/etc/webapps/quakejs/server.cfg" "${pkgdir}/var/lib/quakejs/base/baseq3/server.cfg" 
