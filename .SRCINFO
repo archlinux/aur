@@ -1,0 +1,20 @@
+pkgbase = surf-luke-git
+	pkgdesc = Luke's build of the surf web browser
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/LukeSmithxyz/surf
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = dmenu
+	depends = gtk3
+	depends = gcr
+	depends = webkit2gtk
+	optdepends = mpv
+	optdepends = youtube-dl
+	conflicts = surf
+	source = git+https://github.com/LukeSmithxyz/surf
+	sha256sums = SKIP
+
+pkgname = surf-luke-git
+
