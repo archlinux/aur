@@ -1,13 +1,12 @@
 pkgbase = pascal-fc
 	pkgdesc = An implementation of pascal with extra constructs for teaching concurrent programming
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/danieljabailey/Pascal-FC
 	arch = x86_64
 	license = GPL2
-	makedepends = fpc
+	makedepends = git
 	depends = fpc
-	depends = git
 	source = pascal-fc::git+git://github.com/danieljabailey/Pascal-FC#commit=5d0e1e919d6cce435d965c7eae847ea7bd0aa8db
 	source = path_fix.patch
 	md5sums = SKIP
