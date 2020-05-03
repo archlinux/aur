@@ -1,7 +1,7 @@
 pkgbase = stylelint-config-standard
 	pkgdesc = The standard shareable config for stylelint
 	pkgver = 20.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stylelint/stylelint-config-standard
 	arch = any
 	license = MIT
