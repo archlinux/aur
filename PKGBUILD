@@ -1,8 +1,9 @@
-# Maintainer: Niek den Breeje <n.j.den.breeje@gmail.com>
+# Maintainer: Jay Ta'ala <jay@jaytaala.com>
+# contributor: Niek den Breeje <n.j.den.breeje@gmail.com>
 pkgname=base16-manager-git
 _pkgname=base16-manager
 pkgver=r168.b4d5615
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line tool to install base16 templates and set themes globally.'
 arch=('any')
 url='https://github.com/AuditeMarlow/base16-manager'
