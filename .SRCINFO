@@ -1,6 +1,6 @@
 pkgbase = ecal
 	pkgdesc = enhanced Communication Abstraction Layer
-	pkgver = 5.5.4
+	pkgver = 5.5.5
 	pkgrel = 1
 	url = https://github.com/continental/ecal
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = ecal
 	depends = hdf5
 	backup = etc/ecal/ecal.ini
 	backup = etc/ecal/ecaltime.ini
-	source = https://github.com/continental/ecal/archive/v5.5.4.tar.gz
+	source = https://github.com/continental/ecal/archive/v5.5.5.tar.gz
 	source = arch-linux-compat.diff
-	sha256sums = 445a864c9dcf43af098cea42cc604a2c3315e8d6de659cfb24872a966194315a
-	sha256sums = 9607c3b853fa07f7d5fe987438f5d9776b52f0472994b94557771c9c40d4f2f9
+	sha256sums = 35c58f8f22a2743d976484b6b2284542bdc21103c197cf8e816ea81658bbc061
+	sha256sums = 5681be1564c288f5ad0afb0aef1c10c848b77a2f6a198a673a401d5271989ffa
 
 pkgname = ecal
 
