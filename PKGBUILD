@@ -7,7 +7,7 @@ pkgdesc='A lightweight source code editor with tree-view navigation'
 arch=('x86_64')
 url='https://byuu.org/projects/amethyst'
 license=('ISC' 'GPL3')
-depends=('gtksourceview2')
+depends=('gtksourceview3')
 source=('https://byuu.org/files/releases/amethyst_v3r3.tar.xz'
         'amethyst-release.patch'
         'LICENSE')
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
   cd amethyst
-  make
+  make hiro=gtk3
 }
 
 package() {
