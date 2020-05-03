@@ -1,7 +1,7 @@
 pkgbase = xf86-video-s3
 	pkgdesc = X.org S3 video driver
-	pkgver = 0.6.5
-	pkgrel = 8
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = i686
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = xf86-video-s3
 	conflicts = xorg-server<1.19
 	conflicts = X-ABI-VIDEODRV_VERSION<23
 	conflicts = X-ABI-VIDEODRV_VERSION>=24
-	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-s3-0.6.5.tar.bz2
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-s3-0.7.0.tar.bz2
 	source = git-fixes.patch
-	sha256sums = 4778cd4f1d61490c3562f9be03664576f065fa3acf22fe0d0689212d7ea3ad39
+	sha256sums = cf12541557d88107364895273e384f97836b428eeb1e54ed66511d69639562c8
 	sha256sums = c8150b49c9d84f5a418d89fedc2b7eebf1066a046d9877a5ca21bc2868dc4765
 
 pkgname = xf86-video-s3
