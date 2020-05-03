@@ -10,7 +10,7 @@ _mpi=openmpi
 pkgname=${_pkg}-opt
 #-${_mpi}
 pkgver=5.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Parallel Visualization application using VTK (${_mpi} version): installed to /opt/"
 arch=(x86_64)
 provides=("${_pkg}")
@@ -42,7 +42,7 @@ build() {
     # Note regarding use of system dependencies:
     # GL2PS has non-upstreamed patches
     # LIBHARU blocked by https://github.com/libharu/libharu/pull/157
-    cmake -B build -S ParaView-v${pkgver/R/-R} \
+    cmake -B build -S ParaView-v${pkgver/R/-R} -GNinja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/opt/paraview \
         -DPARAVIEW_ENABLE_FFMPEG=ON \
@@ -62,7 +62,8 @@ build() {
         -DVTKm_ENABLE_MPI=ON \
         -DVTK_MODULE_ENABLE_VTK_IOGDAL=YES \
         -DVTK_MODULE_ENABLE_VTK_IOPDAL=YES \
-        -GNinja
+        -DCMAKE_C_FLAGS="-DH5_USE_110_API" \
+        -DCMAKE_CXX_FLAGS="-DH5_USE_110_API" \
 
     export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
   # shellcheck disable=SC2086 # to allowing MAKEFLAGS to expand into multiple flags.
