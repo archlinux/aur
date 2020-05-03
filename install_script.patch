@@ -1,0 +1,14 @@
+--- pascal-fc/Makefile	2020-05-03 23:18:42.090959293 +0100
++++ pascal-fc-new/Makefile	2020-05-03 23:19:35.934900459 +0100
+@@ -8,8 +8,8 @@
+ 	fpc -Miso -g $<
+ 
+ install: pfccomp pint
+-	install pint /usr/bin/
+-	install pfc /usr/bin/
+-	install pfccomp /usr/bin/
++	install -D pint ${DESTDIR}/pint
++	install -D pfc ${DESTDIR}/pfc
++	install -D pfccomp ${DESTDIR}/pfccomp
+ 
+ .PHONY: all install

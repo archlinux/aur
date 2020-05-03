@@ -2,23 +2,23 @@
 
 pkgname=pascal-fc
 pkgver=1
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="An implementation of pascal with extra constructs for teaching concurrent programming"
 arch=('x86_64')
 url="https://github.com/danieljabailey/Pascal-FC"
 license=('GPL2')
-depends=('fpc')
-makedepends=('git')
-source=('pascal-fc::git+git://github.com/danieljabailey/Pascal-FC#commit=5d0e1e919d6cce435d965c7eae847ea7bd0aa8db'
-	'path_fix.patch')
+makedepends=('git' 'fpc')
+optdepends=('bash')
+source=('pascal-fc::git+git://github.com/danieljabailey/Pascal-FC#commit=b1bd078511879f8b678c8f7395d727953415926f'
+	'install_script.patch')
 noextract=()
 md5sums=('SKIP'
-         '8d52b2db9b651db21402b3f4f6fa9af9')
+         '787022791be8587ae796c3c0dae7a25d')
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	patch --forward --strip=1 --input="${srcdir}/path_fix.patch"
+	patch --forward --strip=1 --input="$srcdir/install_script.patch"
 }
 
 build() {
@@ -29,7 +29,5 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	install -D pfccomp $pkgdir/usr/bin/pfccomp
-	install -D pint $pkgdir/usr/bin/pint
-	install -D pfc.sh $pkgdir/usr/bin/pfc
+	make DESTDIR="$pkgdir/usr/bin" install
 }
