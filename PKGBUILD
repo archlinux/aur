@@ -3,8 +3,8 @@
 
 _pkgname=nohang
 pkgname=${_pkgname}-git
-pkgver=0.1.r539.g8e36ec5
-pkgrel=2
+pkgver=0.1.r622.g16f7db1
+pkgrel=1
 pkgdesc="A highly configurable OOM prevention daemon"
 arch=('any')
 url="https://github.com/hakavlad/nohang"
