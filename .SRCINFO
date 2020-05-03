@@ -1,13 +1,13 @@
 pkgbase = dnote-cli-bin
 	pkgdesc = A simple command line notebook for programmers
-	pkgver = 0.11.0
-	pkgrel = 2
+	pkgver = 0.11.1
+	pkgrel = 1
 	url = https://www.getdnote.com/
 	arch = x86_64
 	license = GPL-3.0
 	provides = dnote-cli
-	source = dnote-cli-bin-0.11.0.tar.gz::https://github.com/dnote/dnote/releases/download/cli-v0.11.0/dnote_0.11.0_linux_amd64.tar.gz
-	md5sums = 23c30e6927607d58f7fce02cf61f9077
+	source = dnote-cli-bin-0.11.1.tar.gz::https://github.com/dnote/dnote/releases/download/cli-v0.11.1/dnote_0.11.1_linux_amd64.tar.gz
+	sha256sums = ed3859583e47ca62dd8c5cb75f3483b0f7c865213544a7f78e3b323d5618af23
 
 pkgname = dnote-cli-bin
 
