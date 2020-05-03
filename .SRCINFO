@@ -1,6 +1,6 @@
 pkgbase = openssl-static
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (static library)
-	pkgver = 1.1.1.f
+	pkgver = 1.1.1.g
 	pkgrel = 2
 	url = https://www.openssl.org
 	arch = i686
@@ -9,12 +9,12 @@ pkgbase = openssl-static
 	depends = perl
 	optdepends = openssl: headers and pkg-config files
 	options = staticlibs
-	source = https://www.openssl.org/source/openssl-1.1.1f.tar.gz
-	source = https://www.openssl.org/source/openssl-1.1.1f.tar.gz.asc
+	source = https://www.openssl.org/source/openssl-1.1.1g.tar.gz
+	source = https://www.openssl.org/source/openssl-1.1.1g.tar.gz.asc
 	source = ca-dir.patch
 	validpgpkeys = 8657ABB260F056B1E5190839D9C4D26D0E604491
 	validpgpkeys = 7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C
-	sha512sums = b00bd9b5ad5298fbceeec6bb19c1ab0c106ca5cfb31178497c58bf7e0e0cf30fcc19c20f84e23af31cc126bf2447d3e4f8461db97bafa7bd78f69561932f000c
+	sha512sums = 01e3d0b1bceeed8fb066f542ef5480862001556e0f612e017442330bbd7e5faee228b2de3513d7fc347446b7f217e27de1003dc9d7214d5833b97593f3ec25ab
 	sha512sums = SKIP
 	sha512sums = 6eb0e388107a751d2ab1222efe5dec736111d4edad72c9b7c3f4dc55270e19811e89e9df596210e3f79751e60b77c7bc891e181e67cff79aa1b64a02a20bc2e7
 
