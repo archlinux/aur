@@ -3,7 +3,7 @@
 pkgbase=ttf-alegreya-fonts-ibx
 pkgname=('ttf-alegreya-ibx' 'ttf-alegreya-sans-ibx')
 pkgver=1.003
-pkgrel=6
+pkgrel=7
 depends=('fontconfig')
 pkgdesc="Alegreya and Alegreya Sans are modern font families designed by Juan Pablo del Peral."
 url="http://www.huertatipografica.com/"
@@ -13,14 +13,14 @@ license=('custom:OFL')
 # http://www.huertatipografica.com/free_download/24
 # http://www.google.com/fonts
 source=("alegreya-sans-ht-full-pack-ttf.zip::http://www.huertatipografica.com/free_download/24"
-        alegreya_ttf.zip::http://www.1001freefonts.com/d/5539/alegreya.zip
+        "alegreya-ht-full-pack.ttf.zip::https://www.huertatipografica.com/free_download/133"
         http://www.1001freefonts.com/d/5540/alegreya_sc.zip
         45-alegreya.conf
         45-alegreya-sans.conf
         90-tt-alegreya.conf
         90-tt-alegreya-sans.conf)
-sha1sums=('aef52d73d62044ff9dfbd16896eb0563fca9fe55'
-          '4d7c219c55dbe569e3fa0fb550ae16f3c70a1257'
+sha1sums=('0726934b64d477b12526273009a910b8862716ac'
+          '7f6186230283b0acc9c2123b046ff7cf9bb49fcf'
           '07634393ffd242ac79af11b7fac0b3f26a865919'
           'db08107ef08332b400ba3fcc5eb78fe0cd8ebebe'
           '8454c43dce5f6df1ed2bc7fa8c1a1aa8223766a5'
