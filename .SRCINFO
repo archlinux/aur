@@ -1,6 +1,6 @@
 pkgbase = ruby-schleuder
 	pkgdesc = Schleuder is a group's gateway: a gpg-enabled mailinglist with remailing-capabilities.
-	pkgver = 3.4.1
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://schleuder.org
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = ruby-schleuder
 	depends = gpgme
 	depends = sqlite
 	depends = openssl
-	noextract = schleuder-3.4.1.gem
+	noextract = schleuder-3.5.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/schleuder-3.4.1.gem
-	sha512sums = 3d57295e817a9f884a8a9f7b247de919786c340eee6c30a136ffbc473896c280466881c4e47d14b0c019bfb2b9153676e6c861ff8dfc3161ce4a00251d7a3f1d
+	source = https://rubygems.org/downloads/schleuder-3.5.1.gem
+	sha512sums = 4b09f9989e5248a63262ae1204bb815f049e953286208427c87a6133d48c8154169d11d2ac921cff11a0f66863906f76f02564931bcd8d393e7e53a3791cbfe6
 
 pkgname = ruby-schleuder
 
