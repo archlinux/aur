@@ -2,15 +2,15 @@
 
 pkgname=totp-cli
 _pkgname=totp
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Cli application to generate OTP tokens for two-factor authentication."
 arch=(any)
-url="https://gitlab.com/hobarrera/totp-cli"
+url="https://github.com/WhyNotHugo/totp-cli"
 license=('MIT')
 depends=("python-onetimepass" "pass" "python-setuptools")
 source=("https://pypi.io/packages/source/t/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('ec2ae39d309a9997016d0ce011ab91e2')
+md5sums=('9007bdd1ba11139918f33549965cf69f')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
