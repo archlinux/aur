@@ -1,6 +1,6 @@
 pkgbase = 3dslicer-nightly-bin
 	pkgdesc = A multi-platform, free open source software package for visualization and medical image computing (nightly build)
-	pkgver = 4.11.0.r20200428
+	pkgver = 4.11.0.r20200503
 	pkgrel = 1
 	url = https://www.slicer.org
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = 3dslicer-nightly-bin
 	makedepends = gendesk
 	depends = dbus
 	depends = glib2
-	provides = 3dslicer=4.11.0.r20200428
+	provides = 3dslicer=4.11.0.r20200503
 	conflicts = 3dslicer
 	noextract = 3dslicer.tar.gz
-	source = 3dslicer-4.11.0.r20200428.tar.gz::http://download.slicer.org/download?os=linux&stability=nightly
+	source = 3dslicer-4.11.0.r20200503.tar.gz::http://download.slicer.org/download?os=linux&stability=nightly
 	source = 3dslicer.svg::https://github.com/Slicer/Slicer/raw/master/Resources/3DSlicerLogo-app-icon.svg
-	sha512sums = b89ffc4fa06bb5a621a3f9a41487dcfe2101952bfa8a22799c11b6a291eb01a3cd2c0361bf977979e6e06126779059dc73e4c1b2e028518509afdcbb8e56b756
+	sha512sums = 02280c7f96768e26925b0eff8e3e93c2202f2649894c3b2513fbde9a50ad39d29855e3fd8c114b8db7d27b68d602252595728bcceceed35ff337e623dc6caf4d
 	sha512sums = c23104efcbec3d49b5c26ad5514ed74316423db4aa9e6c7894f02f7ddbe509b577de358dfdd2f7c492963f312b7c146f03d5e41a89ab1298811894dc18746225
 
 pkgname = 3dslicer-nightly-bin
