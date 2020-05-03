@@ -1,23 +1,30 @@
 # Maintainer: Julian Daube <joposter at gmail dot com>
 
 pkgname=mopidy-youtube
-_pkgname="mopidy-mopidy-youtube-cdca5ab"
-pkgver=v2.0.2
+_pkgname="natumbri-mopidy-youtube-00c2162"
+pkgver=v3.0.0
 pkgrel=1
 pkgdesc="Mopidy extension for playing music from Youtube"
 
 arch=('any')
-url="http://www.mopidy.com"
+url="https://github.com/natumbri/mopidy-youtube"
 license=('APACHE')
-depends=('mopidy>=1.0' 'python2-pykka>=1.1' 'python2-pafy' 'python2-requests')
-makedepends=('python2' 'python2-setuptools')
-conflicts=("mopidy-youtube-git")
+depends=(
+  'mopidy>=3.0'
+  'python-pykka>=2.0.1'
+  'python-setuptools'
+  'python-requests'
+  'python-cachetools'
+  'python-beautifulsoup4'
+  'youtube-dl')
+makedepends=('python' 'git')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/dz0ny/mopidy-youtube/tarball/$pkgver")
-md5sums=('bbf918f32a79a56750f1430e5ea9e3d5')
-sha1sums=('fe5eca108b9db0fbbc4f948ce00c92b4a6c53d94')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dz0ny/mopidy-youtube/tarball/$_pkgver")
 
 package() {
   cd "$_pkgname"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
+
+md5sums=('0cb0ba0d6a4928bd635dc244e2c66ff5')
+sha1sums=('3a5e1625e1b4cfd1d8556ca39fd34741ca6eb542')
