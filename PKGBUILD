@@ -2,7 +2,7 @@
 
 pkgname=edytornc-git
 _pkgname=edytornc
-pkgver=r186.db8b784
+pkgver=r187.52fe345
 pkgrel=1
 pkgdesc="Text editor for CNC programmers"
 arch=('x86_64')
@@ -30,7 +30,7 @@ build() {
 
 package() {
   # make DESTDIR="${pkgdir}" install doesn't work, hence the manual install.
-  install -Dm755 "${srcdir}/${_pkgname}"/bin/release/edytornc -t "${pkgdir}/usr/bin"
+  install -Dm755 "${srcdir}/${_pkgname}"/bin/linux.x86_64.release/edytornc -t "${pkgdir}/usr/bin"
   install -Dm644 "${srcdir}/${_pkgname}"/lang/*.qm -t "${pkgdir}/usr/share/edytornc/lang"
   install -Dm644 "${srcdir}/${_pkgname}"/install/linux/application-x-g-code.xml -t \
    "${pkgdir}/usr/share/mime"
