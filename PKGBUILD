@@ -2,7 +2,7 @@
 # Contributor: ml <ml@visu.li>
 pkgname=gotify-server
 pkgver=2.0.15
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple server for sending and receiving messages in real-time per WebSocket.'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url='https://gotify.net/'
@@ -35,7 +35,7 @@ build() {
     yarn --frozen-lockfile
     NODE_ENV=production yarn --frozen-lockfile build
   )
-  go run hack/packr/packr.go
+  go run hack/packr/packr.go -- .
   export CGO_CFLAGS="$CFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"

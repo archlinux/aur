@@ -1,7 +1,7 @@
 pkgbase = gotify-server
 	pkgdesc = A simple server for sending and receiving messages in real-time per WebSocket.
 	pkgver = 2.0.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gotify.net/
 	install = gotify-server.install
 	arch = x86_64
