@@ -1,32 +1,35 @@
-# Maintainer: Christoph Krapp <headlock@its-crap.de>
-# Orig-Maintainer: Dave Reisner <d@falconindy.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Christoph Krapp <headlock@its-crap.de>
+# Contributor: Dave Reisner <dreisner@archlinux.org>
+# Contributor: Angel Velasquez <angvp@archlinux.org>
+# Contributor: Eric Belanger <eric@archlinux.org>
+# Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
+# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=curl-http2-git
-pkgver=7.45.0.32.g257a1c0
+_pkgname=curl
+pkgver=curl.7_70_0.r28.gf7ab48857
 pkgrel=1
 pkgdesc="A URL retrieval utility and library (HTTP/2 enabled)"
 arch=('i686' 'x86_64')
-url="http://curl.haxx.se/"
+url="https://curl.haxx.se/"
 license=('MIT')
-depends=('zlib' 'libssh2' 'openssl' 'ca-certificates' 'nghttp2')
+depends=('ca-certificates' 'krb5' 'libssh2' 'openssl' 'zlib' 'libpsl' 'libnghttp2'
+         'libidn2' 'libidn2.so' 'nghttp2')
 makedepends=('git')
-provides=('curl=999')
+provides=('libcurl.so')
 conflicts=('curl' 'curl-git')
 options=('!libtool')
-source=('git://github.com/bagder/curl.git'
-        'curlbuild.h')
-md5sums=('SKIP'
-         '751bd433ede935c8fae727377625a8ae')
+source=('git+https://github.com/curl/curl.git')
+sha512sums=('SKIP')
 
 pkgver() {
-  # curl-7_30_0-101-gf4e6e20
-  cd curl
-
-  git describe | sed 's/curl-//; s/[_-]/./g'
+  cd "${srcdir}/${_pkgname}"
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd curl
+  cd ${srcdir}/${_pkgname}
 
   ./buildconf
   ./configure \
@@ -34,11 +37,12 @@ build() {
       --mandir=/usr/share/man \
       --disable-ldap \
       --disable-ldaps \
+      --disable-manual \
       --enable-ipv6 \
-      --enable-manual \
       --enable-versioned-symbols \
       --enable-threaded-resolver \
-      --without-libidn \
+      --with-gssapi \
+      --with-libssh2 \
       --with-random=/dev/urandom \
       --with-nghttp2=/usr \
       --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt
@@ -47,22 +51,11 @@ build() {
 }
 
 package() {
-  cd curl
+  cd ${srcdir}/${_pkgname}
 
   make DESTDIR="$pkgdir" install
-
-  local ptrsize=$(cpp <<<'__SIZEOF_POINTER__' | sed '/^#/d')
-  case $ptrsize in
-    8) _curlbuild=curlbuild-64.h ;;
-    4) _curlbuild=curlbuild-32.h ;;
-    *) error "unknown pointer size for architecture: %s bytes" "$ptrsize"
-      exit 1
-      ;;
-  esac
+  make DESTDIR="$pkgdir" install -C scripts
 
   install -Dm644 docs/libcurl/libcurl.m4 $pkgdir/usr/share/aclocal/libcurl.m4
-  mv "$pkgdir/usr/include/curl/curlbuild.h" "$pkgdir/usr/include/curl/$_curlbuild"
-  install -m 644 $srcdir/curlbuild.h "$pkgdir/usr/include/curl/curlbuild.h"
-
-  install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 COPYING
 }
