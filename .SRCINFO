@@ -1,7 +1,7 @@
 pkgbase = tauon-music-box
 	pkgdesc = A modern streamlined music player
-	pkgver = 5.4.3
-	pkgrel = 3
+	pkgver = 5.5.0
+	pkgrel = 1
 	url = https://github.com/taiko2k/tauonmb
 	arch = any
 	license = GPL3
@@ -35,8 +35,8 @@ pkgbase = tauon-music-box
 	optdepends = unrar: RAR archive extraction support
 	optdepends = python-plexapi: PLEX client streaming
 	optdepends = picard: Tag editing
-	source = https://github.com/Taiko2k/tauonmb/releases/download/v5.4.3/Tauon.Music.Box.v5.4.3-2.Linux.zip
-	sha1sums = d19921afc3333a51f1397ef61c7401b039fa5709
+	source = https://github.com/Taiko2k/tauonmb/releases/download/v5.5.0/Tauon.Music.Box.v5.5.0.Linux.zip
+	sha1sums = 7bb618bdf38787ad69c84759018428a369aa5fe8
 
 pkgname = tauon-music-box
 
