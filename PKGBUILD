@@ -1,6 +1,6 @@
 # Maintainer: <djt3 {at} protonmail{dot}com>
 pkgname=tuitube
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="minimal tui youtube (invidious) frontend made in c++"
 arch=('any')
@@ -8,7 +8,7 @@ license=('GPL3')
 url="https://github.com/djt3/$pkgname/"
 source=("https://github.com/djt3/tuitube/archive/v$pkgver.tar.gz")
 depends=('libcurlpp' 'mpv')
-md5sums=('b152a7e6158bb87999b90b4d77250d23')
+md5sums=('98b1347dbc99e4a1cb921727c71b22e2')
 
 build() {
   cd "$pkgname-$pkgver"
