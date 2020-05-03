@@ -16,19 +16,13 @@ arch=('x86_64' 'aarch64')
 depends=('qt5-base' 'qt5-webengine' 'qt5-svg' 'qt5-quickcontrols2' 'qt5-quickcontrols' 'qt5-translations' 'qt5-graphicaleffects' 'xdg-utils' 'libnotify' 'libevent')
 makedepends=('qt5-tools' 'cmake' 'mesa' 'ninja' 'pkgconf')
 optdepends=( 'chromium-widevine: DRM needed for Spotify and Amazon Music' 'pepper-flash: needed for Tidal')
-source=("git+$url.git"
-        'widevine-patch.patch')
+source=("git+$url.git")
 md5sums=('SKIP'
          '67f8c5c6af4b770a4017a5ca9f137b90')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd "${srcdir}/${_pkgname}"
-    patch -Np1 -i "${srcdir}/widevine-patch.patch" "${srcdir}/${_pkgname}/src/main/share/applications/mellowplayer.desktop"
 }
 
 build() {

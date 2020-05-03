@@ -26,7 +26,6 @@ pkgbase = mellowplayer-git
 	provides = mellowplayer
 	conflicts = mellowplayer
 	source = git+https://gitlab.com/ColinDuquesnoy/MellowPlayer.git
-	source = widevine-patch.patch
 	md5sums = SKIP
 	md5sums = 67f8c5c6af4b770a4017a5ca9f137b90
 
