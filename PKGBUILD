@@ -2,13 +2,13 @@
 
 pkgname=("python-auto_diff")
 pkgdesc="An automatic differentiation library for Python+NumPy."
-pkgver="0.3.1"
+pkgver="0.3.2"
 pkgrel=1
 url="https://github.com/PTNobel/AutoDiff"
 license=('BSD')
 arch=('any')
 source=("https://github.com/PTNobel/AutoDiff/archive/v${pkgver}.tar.gz")
-sha256sums=('d4498226411f013692d21e449823f1c61f600bb4d7f4ce8e603f575a71ed8dc9')
+sha256sums=('2be536c6bd943b5acec29a2e7e0f83a18dd92cee0aa0c889cfdd47cb61567fb9')
 build() {
     cd "AutoDiff-$pkgver"
     python setup.py build
