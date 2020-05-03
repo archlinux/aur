@@ -1,0 +1,16 @@
+pkgbase = cerberus-x-bin
+	pkgdesc = A game development language, made for hobbyists, indies and professionals
+	pkgver = 2019.10.13b
+	pkgrel = 1
+	url = https://www.cerberus-x.com
+	install = cerberus-x.install
+	arch = x86_64
+	license = Zlib/libpng
+	makedepends = gendesk
+	provides = cerberus-x
+	options = !strip
+	source = cerberus-x-bin-2019.10.13b.tar.gz::https://github.com/MikeHart66/cerberus/releases/download/v2019-10-13/cerberus-v2019-10-13b.tar.gz
+	sha256sums = d1a4f16bcffbce52ae51277d04e0a807567fc3f597fee1c6f1b82e4f3df989d6
+
+pkgname = cerberus-x-bin
+
