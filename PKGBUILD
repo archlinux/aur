@@ -31,20 +31,20 @@ build() {
 }
 
 package() {
-  install -dm755                                   "$pkgdir/usr/bin"
-  install -sm555 "$srcdir/Bracmat/src/bracmat"     "$pkgdir/usr/bin"
-  install -sm555 "$srcdir/Bracmat/src/bracmatsafe" "$pkgdir/usr/bin"
-  pushd          "$srcdir/Bracmat/src"                  &>/dev/null
-  make clean                                            &>/dev/null
-  popd                                                  &>/dev/null
+  install -dm755                                   "$pkgdir"/usr/bin
+  install -sm555 "$srcdir"/Bracmat/src/bracmat     "$pkgdir"/usr/bin
+  install -sm555 "$srcdir"/Bracmat/src/bracmatsafe "$pkgdir"/usr/bin
+  pushd          "$srcdir"/Bracmat/src                   &>/dev/null
+  make clean                                             &>/dev/null
+  popd                                                   &>/dev/null
 
-  install -dm755                    "$pkgdir/usr/lib/bracmat/web"
-  cp -r "$srcdir/Bracmat/"web/*     "$pkgdir/usr/lib/bracmat/web"
-  cp    "$srcdir/Bracmat/"*.bra     "$pkgdir/usr/lib/bracmat"
-  cp    "$srcdir/Bracmat/"*.xml     "$pkgdir/usr/lib/bracmat"
+  install -dm755                    "$pkgdir"/usr/lib/bracmat/web
+  cp -a "$srcdir"/Bracmat/web/*     "$pkgdir"/usr/lib/bracmat/web
+  cp -a "$srcdir"/Bracmat/*.bra     "$pkgdir"/usr/lib/bracmat
+  cp -a "$srcdir"/Bracmat/*.xml     "$pkgdir"/usr/lib/bracmat
 
-  install -dm755                    "$pkgdir/usr/share/doc/bracmat"
-  cp -r "$srcdir/Bracmat/"doc/*     "$pkgdir/usr/share/doc/bracmat"
-  cp    "$srcdir/Bracmat/"*.md      "$pkgdir/usr/share/doc/bracmat"
-  cp    "$srcdir/Bracmat/Changelog" "$pkgdir/usr/share/doc/bracmat/changelog.txt"
+  install -dm755                    "$pkgdir"/usr/share/doc/bracmat
+  cp -a "$srcdir"/Bracmat/doc/*     "$pkgdir"/usr/share/doc/bracmat
+  cp -a "$srcdir"/Bracmat/*.md      "$pkgdir"/usr/share/doc/bracmat
+  cp -a "$srcdir"/Bracmat/Changelog "$pkgdir"/usr/share/doc/bracmat/changelog.txt
 }
