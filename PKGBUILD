@@ -1,20 +1,20 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 # PGP key is on keyservers
 pkgname=librepcb
-pkgver=0.1.3
+pkgver=0.1.4
 _pkgver=${pkgver/_/-}
 pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards"
 arch=('x86_64' 'i686')
 url="http://librepcb.org/"
 license=('GPL')
-depends=('desktop-file-utils' 'hicolor-icon-theme' 'qt5-base')
+depends=('desktop-file-utils' 'hicolor-icon-theme' 'qt5-base' 'qt5-svg')
 source=(
   "https://download.librepcb.org/releases/${_pkgver}/librepcb-${_pkgver}-source.zip"
   "https://download.librepcb.org/releases/${_pkgver}/librepcb-${_pkgver}-source.zip.asc"
 )
 sha256sums=(
-  'a09fb64fcd42574c60d6c6c3410149969cf166253e2f4e39ab5074dd124190c5'
+  '08299e8077f9ef4fb6df3fd5b22053b9ab6361411470809e2a1ee0f1ad9aadac'
   'SKIP'
 )
 validpgpkeys=('D6F9AF572228C5BCD6B538407EF3061F5C8D5E25')
@@ -31,9 +31,6 @@ package() {
   make install
 
   # Install development utils
-  install -s -m 755 \
-    "${srcdir}/librepcb-${_pkgver}/build/output/workspace-library-updater" \
-    "${pkgdir}/usr/bin/librepcb-workspace-library-updater"
   install -s -m 755 \
     "${srcdir}/librepcb-${_pkgver}/build/output/uuid-generator" \
     "${pkgdir}/usr/bin/librepcb-uuid-generator"
