@@ -3,7 +3,7 @@
 # You can also find that key referenced here: https://www.thethingsnetwork.org/docs/network/cli/quick-start.html
 pkgname=ttnctl-bin
 pkgver=2.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool for The Things Network (TTN)"
 arch=('i686' 'x86_64' 'arm')
 url="https://www.thethingsnetwork.org/docs/network/cli/quick-start.html"
@@ -43,6 +43,16 @@ prepare() {
     echo "Validating checksums..."
     cat checksums | grep $_binname | sha256sum -c --quiet
     echo "Checksums valid!"
+}
+
+check() {
+    BINVERSION=$(${srcdir}/${_binname} version 2>&1 | grep "Version[^v]*v" | sed "s/.*Version[^v]*\(v[^ ]*\)$/\1/")
+    echo "Binary version is $BINVERSION"
+    echo "We're building v$pkgver"
+    if [ "$BINVERSION" != "v$pkgver" ]; then
+        echo "Version mismatch! Please delete local AUR cache to force re-download."
+        exit 1
+    fi
 }
 
 package() {
