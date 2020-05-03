@@ -4,8 +4,8 @@ _appName="pyfunceble"
 pkgname=${_appName}
 _name=${pkgname}
 upstreamName="PyFunceble"
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="The tool to check the availability or syntax of domains, IPv4, IPv6 or URL."
 arch=('any')
 url="https://funilrys.github.io/PyFunceble/"
@@ -32,7 +32,7 @@ source=(
     "https://raw.githubusercontent.com/funilrys/PyFunceble/master/LICENSE"
 )
 sha256sums=(
-    "69a78960edb9dafb10ad74eb63aba821dd6468cdf4777ccb7849633f2642984a"
+    "a6f507497f8ddbfdf98ac0620aed18f6229225854830d0655fce463148018baa"
     "a11e4be5b3b09e157217214008e7f0e23092d26adb03ad593e51cffe18361508"
 )
 
