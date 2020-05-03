@@ -1,7 +1,7 @@
 # Maintainer: Hugo Denizart <hugo at denizart dot pro>
 pkgname=obs-streamfx
-pkgver=0.8.0b1
-pkgrel=2
+pkgver=0.8.0b3
+pkgrel=1
 pkgdesc="Bring your stream back to life with modern effects!"
 arch=("x86_64")
 url="https://github.com/Xaymar/obs-StreamFX"
@@ -35,7 +35,7 @@ package() {
 
   mkdir -p $pkgdir/usr/share/obs/obs-plugins/StreamFX
   cp -R data/* $pkgdir/usr/share/obs/obs-plugins/StreamFX
-  chmod 644 $pkgdir/usr/share/obs/obs-plugins/StreamFX/*/**/*
+  chmod u=rwX,g=rX,o=rX $pkgdir/usr/share/obs/obs-plugins/StreamFX/*/**/*
 }
 
 # vim: ts=2:sw=2:expandtab
