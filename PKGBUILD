@@ -1,7 +1,7 @@
 # Maintainer: parham < parham at tuta dot io >
 
 pkgname=gnome-shell-extension-arc-menu-git
-pkgver=46.1.dev.r0.ced0ff05
+pkgver=45.Stable.r0.gced0ff0
 pkgrel=1
 pkgdesc="A GNOME shell extension designed to replace the standard menu found in GNOME 3, git version"
 arch=(any)
