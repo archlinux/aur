@@ -1,31 +1,47 @@
-# Maintainer: eolianoe <eolianoe At GoogleMAIL DoT com>
 # Contributor: aphirst <adam@aphirst.karoo.co.uk>
+# Contributor: eolianoe <eolianoe At GoogleMAIL DoT com>
+# Maintainer: Nathan Owens <ndowens @ artixlinux.org>
 
-pkgname=fgsl
-pkgver=1.2.0
+pkgbase=fgsl
+pkgname=('fgsl' 'fgsl-docs')
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A Fortran interface to the GNU Scientific Library"
 arch=('i686' 'x86_64')
-url="https://www.lrz.de/services/software/mathematik/gsl/fortran/"
-license=('GPL')
-depends=("gsl>=2.1" 'gcc-fortran')
-source=("${url}download/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('00fd467af2bb778e8d15ac8c27ddc7b9024bb8fa2f950a868d9d24b6086e5ca7')
+url="https://github.com/reinh-bader/fgsl"
+license=('GPL2')
+depends=("gsl" 'gcc-fortran')
+makedepends=('git' 'automake')
+source=("git+${url}#tag=v${pkgver}"
+	"undefined.patch::https://github.com/tschoonj/fgsl/commit/c306e9f936983df5bab68f8ba55006c0f88bc775.patch")
+sha256sums=('SKIP'
+            'b6b248dc4aa514da84ecf81a1de4a33a7e2c73feee0d1fc3d57a82205e721bc4')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
+  patch -Np1 -i "$srcdir"/undefined.patch
+  autoreconf -fi
   ./configure --prefix=/usr
   make
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   make -j1 check
 }
 
-package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+package_fgsl() {
+  cd "${srcdir}/${pkgname}"
   make install DESTDIR="${pkgdir}"
+  rm -rf "$pkgdir"/usr/share
 }
 
-# vim:set ts=2 sw=2 et:
+package_fgsl-docs() {
+  pkgdesc="${pkgdesc} - docs"
+  depends=('fgsl')
+  arch=('any')
+
+  cd "${srcdir}/${pkgbase}/doc"
+  install -dm644 "$pkgdir"/usr/share/{doc,examples}
+  make DESTDIR="$pkgdir" install
+}
