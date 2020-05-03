@@ -1,0 +1,19 @@
+[Unit]
+Description=QuakeJS dedicated server
+After=network.target
+
+[Service]
+User=quakejs
+Type=simple
+ExecStart=/usr/bin/node /usr/share/webapps/quakejs/build/ioq3ded.js +set fs_game baseq3 +set dedicated 2 +exec server.cfg"
+WorkingDirectory=/usr/share/webapps/quakejs
+LimitNOFILE=1048576
+LimitNPROC=64
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/quakejs
+
+[Install]
+WantedBy=multi-user.target
