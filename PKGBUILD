@@ -1,10 +1,11 @@
 # $Id: PKGBUILD 281801 2016-11-22 05:57:38Z lcarlier $
-# Maintainer: AndyRTR <andyrtr@archlinux.org>
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: AndyRTR <andyrtr@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xf86-video-apm
-pkgver=1.2.5
-pkgrel=8
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="X.org Alliance ProMotion video driver"
 arch=(i686 x86_64)
 url="https://xorg.freedesktop.org/"
@@ -13,7 +14,7 @@ depends=('glibc')
 makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=23' 'resourceproto' 'scrnsaverproto')
 conflicts=('xorg-server<1.19' 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=24')
 source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2 git-fix.diff)
-sha256sums=('953b04320117b14c5b7efb37de45cef45592409f639c2aa87b7e2d77dc8d3d0f'
+sha256sums=('808189b9a933fcad1761cb9cd498f9267dfbacee1059859282712e8598c3dc7e'
             'be06cce5eb0b8eb070321e293f5cd9b7aa947d920d23cc962f7121191ba4180b')
 
 prepare() {
