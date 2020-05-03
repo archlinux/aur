@@ -13,16 +13,17 @@ source=("${pkgname%-git}::git+https://github.com/CameronLonsdale/MTP.git")
 md5sums=("SKIP")
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}"
-    python setup.py build
+  cd "$srcdir/${pkgname%-git}"
+  sed -i 's/urwid==2.0.1/urwid/g' setup.py  
+  python setup.py build
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
-	  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "$srcdir/${pkgname%-git}"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
