@@ -1,7 +1,7 @@
 pkgbase = cabbage
 	pkgdesc = A framework for audio software development
-	pkgver = 2.3.39.git
-	pkgrel = 2
+	pkgver = 2.3.41.git
+	pkgrel = 1
 	url = http://cabbageaudio.com/
 	arch = x86_64
 	license = GPLv3

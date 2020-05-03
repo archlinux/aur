@@ -2,8 +2,8 @@
 # based on Eugene Cherny's PKGBUILD 
 # builds the develop branch of cabbage against the master branch of juce
 pkgname=cabbage
-pkgrel=2 
-pkgver=2.3.39.git
+pkgrel=1 
+pkgver=2.3.41.git
 pkgdesc='A framework for audio software development'
 arch=('x86_64')
 url="http://cabbageaudio.com/"
