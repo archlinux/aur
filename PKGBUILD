@@ -3,7 +3,7 @@
 
 pkgname=quakejs-git
 pkgver=20190325.977b188
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of ioquake3 to JavaScript with the help of Emscripten"
 arch=('any')
 url="https://github.com/inolen/quakejs"
@@ -42,8 +42,8 @@ build() {
 
 package() {
   install -d "${pkgdir}/etc/webapps/quakejs"
-  install -d "${pkgdir}/usr/share/webapps"
-  install -d "${pkgdir}/var/lib/quakejs/base/baseq3"
+  install -d "${pkgdir}/usr/share/webapps/base/baseq3"
+  install -d "${pkgdir}/var/lib/quakejs"
   ln -s "/var/lib/quakejs" "${pkgdir}/usr/share/webapps/quakejs/base"
   for f in ".git" ".gitignore" ".gitmodules" "package.json" "package-lock.json"; do
     rm -r "${srcdir}/quakejs/${f}"
@@ -51,7 +51,8 @@ package() {
   cp -ra "${srcdir}/quakejs" "${pkgdir}/usr/share/webapps/quakejs"
 
   cp "${srcdir}/server.cfg" "${srcdir}/web.json" "${pkgdir}/etc/webapps/quakejs"
-  ln -s "/etc/webapps/quakejs/server.cfg" "${pkgdir}/var/lib/quakejs/base/baseq3/server.cfg" 
+  #ln -s "/etc/webapps/quakejs/server.cfg" "${pkgdir}/var/lib/quakejs/base/baseq3/server.cfg" 
+  ln -s "/etc/webapps/quakejs/server.cfg" "${pkgdir}/usr/share/webapps/quakejs/base/baseq3/server.cfg" 
   ln -s "/etc/webapps/quakejs/web.json" "${pkgdir}/usr/share/webapps/quakejs/web.json"
 
   install -Dm 644 "${srcdir}/quakejs-cdn.service" "${pkgdir}/usr/lib/systemd/system/quakejs-cdn.service"
