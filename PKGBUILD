@@ -1,8 +1,10 @@
-# Maintainer: Stefan Tatschner <stefan@sevenbyte.org>
+# Maintainer: 
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Stefan Tatschner <stefan@sevenbyte.org>
 # Contributor: Tobias Hunger <tobias DOT hunger AT gmail DOT com>
 
 pkgname=discourse
-pkgver=2.3.8
+pkgver=2.4.2
 pkgrel=2
 pkgdesc="A simple, flat forum, where replies flow down the page in a line"
 arch=('i686' 'x86_64')
