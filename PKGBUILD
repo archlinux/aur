@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Jan de Groot  <jgc@archlinux.org>
 pkgname=libwnck+-git
-pkgver=2.31.0.r22.g129f5dc
+pkgver=2.31.0.r26.g361fd6d
 pkgrel=1
 pkgdesc="Window Navigator Construction Kit"
 arch=('i686' 'x86_64')
@@ -24,6 +24,8 @@ build() {
   ./autogen.sh --prefix=/usr --sysconfdir=/etc \
 	--localstatedir=/var --disable-static \
 	--enable-tools --enable-gtk-doc
+  # Fight unused direct deps
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
   make
 }
 
