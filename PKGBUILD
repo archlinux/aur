@@ -1,57 +1,57 @@
-#Contributor: William J. Bowman <aur@williamjbowman.com>
-#Contributor: Gaetan Bisson <bisson@archlinux.org>
-#Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer: Vinay Shastry <vinayshastry at gmail dot com>
+# Contributor: William J. Bowman <aur@williamjbowman.com>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=unison-git
-pkgver=r2.51.3.26a29f7
+pkgver=2.51.3.r257.g22a05df
 pkgrel=1
 pkgdesc='File-synchronization tool'
 url='http://www.cis.upenn.edu/~bcpierce/unison/'
 arch=('i686' 'x86_64')
 license=('GPL2')
-#optdepends=('gtk2: for gtk2 support')
-#makedepends=('ocaml>=4.02' 'lablgtk2' 'imagemagick')
-makedepends=('ocaml>=4.02' 'git')
+optdepends=('gtk2: for gtk2 support')
+makedepends=('ocaml' 'lablgtk2' 'emacs' 'git')
 source=("unison-git::git+https://github.com/bcpierce00/unison"
         'desktop')
+sha256sums=('SKIP'
+            'b497b1c23cceb8967e9c3f9a39720e3029d370304ae410795121224f96c234a3')
 conflicts=('unison')
 provides=('unison')
-sha256sums=('SKIP'
-            'e9ef4e8b845453e21abafa8c9d153080375024d2465e3bf65f0e5a2ca1f5ea4a')
 
 options=('!makeflags')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  printf "r%s.%s" "$(grep '^VERSION=' src/Makefile.ProjectInfo | cut -d = -f 2)" "$(git rev-parse --short HEAD)"
- 
+  #printf "r%s.%s" "$(grep '^VERSION=' src/Makefile.ProjectInfo | cut -d = -f 2)" "$(git rev-parse --short HEAD)"
+  printf "%s.%s" "$(grep '^VERSION=' src/Makefile.ProjectInfo | cut -d = -f 2)" "$(git describe --long --tags | sed 's/^v[^-]*-//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
-	CFLAGS=""
+  cd "${srcdir}/${pkgname}"
+  CFLAGS=""
 
-	make -C src UISTYLE=text THREADS=true
-#	for ui in text gtk2; do
-#		make clean
-#		make -C src UISTYLE=$ui DEBUGGING=false THREADS=true
-#		mv src/unison unison-$ui
-#	done
+  make -C src UISTYLE=text THREADS=true
+  for ui in text gtk2; do
+    cp -a . build || true
+    pushd build
+    export CFLAGS=
+    make all UISTYLE=$ui DEBUGGING=false THREADS=true
+    mv src/unison src/unison-$ui
+    mv src/unison-* ..
+    popd
+    rm -fr build
+  done
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}"
 
-	install -d "${pkgdir}"/usr/bin
-#	install -m755 unison-* "${pkgdir}"/usr/bin
-	install -m755 src/unison "${pkgdir}"/usr/bin
+  install -d "${pkgdir}"/usr/bin
+  install -m755 unison-* "${pkgdir}"/usr/bin
+  ln -s unison-text "${pkgdir}"/usr/bin/unison
 
-#	install -d "${pkgdir}"/usr/share/{pixmaps,applications}
-#	convert src/win32rc/U.ico[1] "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-#	install -m644 ../desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-
-#	cd "${pkgdir}"/usr/bin
-#	ln -s unison-text unison
-#	ln -s unison-gtk2 unison-x11
-#	ln -s unison unison-${pkgver%.*}
+  install -d "${pkgdir}"/usr/share/{pixmaps,applications}
+  install -m644 icons/U.32x32x16m.png "${pkgdir}/usr/share/pixmaps/${pkgname/-git}.png"
+  install -m644 ../desktop "${pkgdir}/usr/share/applications/${pkgname/-git}.desktop"
 }

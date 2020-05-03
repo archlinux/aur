@@ -1,20 +1,23 @@
 pkgbase = unison-git
 	pkgdesc = File-synchronization tool
-	pkgver = r2.51.3.26a29f7
+	pkgver = 2.51.3.r257.g22a05df
 	pkgrel = 1
 	url = http://www.cis.upenn.edu/~bcpierce/unison/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = ocaml>=4.02
+	makedepends = ocaml
+	makedepends = lablgtk2
+	makedepends = emacs
 	makedepends = git
+	optdepends = gtk2: for gtk2 support
 	provides = unison
 	conflicts = unison
 	options = !makeflags
 	source = unison-git::git+https://github.com/bcpierce00/unison
 	source = desktop
 	sha256sums = SKIP
-	sha256sums = e9ef4e8b845453e21abafa8c9d153080375024d2465e3bf65f0e5a2ca1f5ea4a
+	sha256sums = b497b1c23cceb8967e9c3f9a39720e3029d370304ae410795121224f96c234a3
 
 pkgname = unison-git
 
