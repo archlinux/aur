@@ -30,7 +30,7 @@ static Parameter defconfig[ParameterLast] = {
 	SETB(SiteQuirks,         1),
 	SETB(SpellChecking,      0),
 	SETV(SpellLanguages,     ((char *[]){ "en_US", NULL })),
-	SETB(StrictSSL,          0),
+	SETB(StrictTLS,          1),
 	SETB(Style,              1),
 	SETF(ZoomLevel,          1.0),
 };
@@ -41,6 +41,9 @@ static UriParameters uriparams[] = {
 	  FSETB(Plugins,    0),
 	}, },
 };
+
+/* default window size: width, height */
+static int winsize[] = { 800, 600 };
 
 static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
                                     WEBKIT_FIND_OPTIONS_WRAP_AROUND;
@@ -150,6 +153,7 @@ static Key keys[] = {
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_i,      toggle,     { .i = LoadImages } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_v,      toggle,     { .i = Plugins } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_b,      toggle,     { .i = ScrollBars } },
+	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_t,      toggle,     { .i = StrictTLS } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_m,      toggle,     { .i = Style } },
 };
 

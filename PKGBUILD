@@ -6,8 +6,8 @@
 # Contributor: Raphael Proust <raphlalou at gmail dot com>
 
 pkgname=surf
-pkgver=2.0
-pkgrel=2
+pkgver=2.0+9+g5c52733
+pkgrel=1
 pkgdesc='A simple web browser based on WebKit/GTK+.'
 arch=('x86_64')
 url='https://surf.suckless.org/'
@@ -19,21 +19,21 @@ optdepends=('dmenu: URL-bar'
             'curl: default download handler')
 makedepends=('git')
 install='surf.install'
-_commit=b814567e2bf8bda07cea8de1c7a062f4aa437b65
+_commit=5c527339842fdd06411eaf25547aef0902f96915
 source=("git+git://git.suckless.org/surf#commit=$_commit"
         'config.h')
 sha256sums=('SKIP'
-            '3a746f6f3a48e42b1779686421cf6b34157292e34e571b67de8d614c3ea1565c')
+            '439b6812d6aff2fe9f69f6e2d0b8fa521bc4466ea072510409617d25778b5fba')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe --tags | sed 's/-/+/g' | sed 's/0.6/0.7/'
+  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
   cd "${srcdir}/${pkgname}"
 
-#  cp "${srcdir}/config.h" config.h
+  cp "${srcdir}/config.h" config.h
 
   sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
   sed -i 's/CFLAGS =/CFLAGS +=/g' config.mk
