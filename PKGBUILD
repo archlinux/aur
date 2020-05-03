@@ -2,7 +2,7 @@
 # Contributor: Uladzimir Panasiuk <v.s.panasyuk+AUR(at)gmail.com>
 pkgname=epson-printer-utility
 pkgver=1.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc='This is a Printer Utility program for Epson. Using this software, you can check ink levels, view error and other status... on EPSON Printers.'
 arch=('x86_64')
 url='http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX'
@@ -28,7 +28,7 @@ prepare() {
 	mkdir data
 	cd data
 	for datatar in ../data.tar.*; do
-		msg2 "Unpacking $datatar"
+		echo "Unpacking $datatar"
 		tar -xf $datatar
 	done
 }
