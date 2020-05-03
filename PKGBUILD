@@ -11,8 +11,14 @@ options=(!emptydirs)
 makedepends=('python-setuptools' 'python2-setuptools' 'git')
 depends=('python-openid' 'python-requests' 'python-oauthlib'
          'python-requests-oauthlib' 'python-six' 'python-jwt')
-source=("git+https://github.com/omab/python-social-auth#tag=${pkgver}")
+source=("git+https://github.com/omab/python-social-auth#tag=${pkgver}"
+	"import.patch::https://github.com/omab/python-social-auth/commit/f923691790086e6bd3ab79b93f39680e97286d09.patch")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$srcdir/python-social-auth"
+  git apply --stat "$srcdir"/import.patch
+}
 
 build() {
   cd "$srcdir/python-social-auth"

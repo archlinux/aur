@@ -16,6 +16,7 @@ pkgbase = python-social-auth
 	depends = python-jwt
 	options = !emptydirs
 	source = git+https://github.com/omab/python-social-auth#tag=0.3.5
+	source = import.patch::https://github.com/omab/python-social-auth/commit/f923691790086e6bd3ab79b93f39680e97286d09.patch
 	sha256sums = SKIP
 
 pkgname = python-social-auth
