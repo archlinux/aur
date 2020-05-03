@@ -38,6 +38,8 @@ package() {
 	make \
 		DESTDIR="${pkgdir}" \
 		BINDIR="/usr/bin" \
+		CONFDIR="/etc" \
 		SYSTEMDUNITDIR="/usr/lib/systemd/system" \
+		MANDIR="/usr/share/man/man1" \
 		install
 }
