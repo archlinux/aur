@@ -3,7 +3,7 @@
 
 pkgname=quakejs-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of ioquake3 to JavaScript with the help of Emscripten"
 arch=('any')
 url="https://github.com/inolen/quakejs"
