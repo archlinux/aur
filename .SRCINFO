@@ -1,6 +1,6 @@
 pkgbase = mudlet-git
 	pkgdesc = A modern MUD client with a graphical user inteface and built in Lua scripting (git development branch
-	pkgver = 4137_Mudlet.4.6.1.77.g819757d4a_2020.03.25
+	pkgver = Mudlet.4.6.1.r218.g102491a74
 	pkgrel = 1
 	url = http://www.mudlet.org
 	arch = i686
@@ -22,6 +22,7 @@ pkgbase = mudlet-git
 	depends = ttf-font
 	depends = pugixml
 	depends = lua-yajl
+	depends = qtkeychain
 	optdepends = discord-rpc-api: discord integration
 	optdepends = ttf-bitstream-vera: default font
 	optdepends = ttf-ubuntu-font-family: default font
