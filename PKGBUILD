@@ -1,9 +1,9 @@
 # Maintainer: nsz32 <nszabo2 at gmail dot com>
 
 pkgname=xfce4-docklike-plugin-git
-pkgver=20200501
+pkgver=20200503
 pkgrel=1
-pkgdesc='Dock-style taskbar for XFCE4'
+pkgdesc='A modern, docklike, minimalist taskbar for XFCE'
 arch=('i686' 'x86_64')
 url='https://github.com/nsz32/docklike-plugin'
 license=('GPL3')
