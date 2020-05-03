@@ -6,4 +6,5 @@ post_install() {
 
 post_upgrade() {
   # respect the user's choice and don't create the symlink again
+  true
 }

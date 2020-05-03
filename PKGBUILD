@@ -1,7 +1,7 @@
 # Maintainer: Stefan Majewsky <majewsky@gmx.net>
 pkgname=mpv-mpris
 pkgver=0.5
-pkgrel=3
+pkgrel=4
 pkgdesc='MPRIS (Media Player Remote Interface Spec) plugin for mpv'
 arch=('i686' 'x86_64')
 url='https://github.com/hoyon/mpv-mpris'
