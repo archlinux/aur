@@ -7,12 +7,12 @@
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
 pkgver=3.36.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686' 'x86_64')
 url='https://wiki.gnome.org/Apps/Terminal'
 license=('GPL')
-depends=('vte3-notification>=0.60.0' 'gsettings-desktop-schemas' 'dconf')
+depends=('vte3-notification>=0.60.2' 'gsettings-desktop-schemas' 'dconf')
 makedepends=('intltool' 'itstool' 'docbook-xsl' 'libnautilus-extension' 
              'appdata-tools' 'gnome-shell' 'gconf' 'vala' 'yelp-tools')
 optdepends=('gconf: for gnome-terminal-migration'
