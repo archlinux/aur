@@ -2,22 +2,20 @@
 
 pkgname=("openxr-loader-git" "openxr-headers-git" "openxr-layers-git" "openxr-utils-git")
 _dirname="openxr-loader"
-pkgver=1.0.8.r0.g76c144d
+pkgver=1.0.8.r22.ga179a05
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/KhronosGroup/OpenXR-SDK-Source'
 depends=()
 makedepends=('cmake' 'git' 'vulkan-headers' 'libx11' 'libxxf86vm' 'libxrandr' 'python' 'vulkan-icd-loader')
 license=('apache')
-source=("$_dirname::git+https://github.com/KhronosGroup/OpenXR-SDK-Source.git#branch=master"
-        "0001-hello_xr-vulkan-Fix-build-with-Vulkan-headers-1.2.13.patch")
-md5sums=('SKIP' '0ec4cb88a02b2e2e8c78dde8dc4f5a8a')
+source=("$_dirname::git+https://github.com/KhronosGroup/OpenXR-SDK-Source.git#branch=master")
+md5sums=('SKIP')
 
 #options=('debug' '!strip')
 
 prepare() {
   cd "$_dirname"
-  patch -p1 < ../0001-hello_xr-vulkan-Fix-build-with-Vulkan-headers-1.2.13.patch
 }
 
 pkgver() {
