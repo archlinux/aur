@@ -1,15 +1,14 @@
-[Unit]
-Description = Maestral daemon for the config %I
-Documentation = "https://github.com/SamSchott/maestral-dropbox/wiki"
+[[Unit]
+Description = Maestral daemon for config %i
+Documentation = https://github.com/SamSchott/maestral-dropbox/wiki
 
 [Service]
 Type = notify
 NotifyAccess = exec
-ExecStart = /usr/bin/maestral start --foreground --config-name %i
-ExecReload = /usr/bin/maestral restart --config-name %i
-ExecStop = /usr/bin/maestral stop --config-name %i
-RestartSec = 1
-Restart = on-failure
+ExecStart = /usr/bin/maestral start -f -c %i
+ExecStop = /usr/bin/maestral stop -c %i
+ExecStopPost=/usr/bin/env bash -c "if [ ${SERVICE_RESULT} != success ];\
+then notify-send Maestral 'Daemon failed'; fi"
 WatchdogSec = 30s
 
 [Install]

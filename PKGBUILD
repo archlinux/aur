@@ -5,7 +5,7 @@ pkgname='maestral'
 provides=('maestral')
 conflicts=('maestral-git')
 pkgver=1.0.0.dev5
-pkgrel=1
+pkgrel=2
 pkgdesc='A light-weight and open-source CLI Dropbox client.'
 arch=('x86_64')
 url="https://github.com/SamSchott/${pkgname}"
@@ -30,7 +30,7 @@ depends=(
     'python-watchdog>=0.10.0'
     'python-systemd')
 md5sums=('ba2cc7c15f6f5b5e07377a1b37be228f'
-         '841d7d34ae18d512e3d2fbe453702744')
+         '4d6729758ff15664e0f0177b57a0da33')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
