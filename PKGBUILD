@@ -59,7 +59,7 @@ build() {
 package() {
 
   # Install application
-  install -Dm755 "$srcdir"/"${pkgname::-4}"/build/mkxp-z_"$CARCH" "$pkgdir"/usr/bin/mkxp-z
+  install -Dm755 "$srcdir"/"${pkgname::-4}"/build/mkxp-z."$CARCH" "$pkgdir"/usr/bin/mkxp-z
   
   # Install documentation
   install -Dm644 "$srcdir"/"${pkgname::-4}"/README.md "$pkgdir"/usr/share/doc/mkxp-z/README.md
