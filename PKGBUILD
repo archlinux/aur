@@ -36,8 +36,6 @@ build() {
 
 check() {
 	cd "$_name-$pkgver/build/lib"
-	ls "$srcdir/$_name-$pkgver/tests"
-	ls "$srcdir/$_name-$pkgver/tests/$_name/test_tensor_board_output.py"
 	python -m pytest "$srcdir/$_name-$pkgver/tests" \
 		--ignore "$srcdir/$_name-$pkgver/tests/$_name/test_tensor_board_output.py"
 }
