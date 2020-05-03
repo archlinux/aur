@@ -1,7 +1,7 @@
 pkgbase = openjpeg
 	pkgdesc = An open source JPEG 2000 codec
 	pkgver = 1.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.openjpeg.org
 	arch = x86_64
 	license = BSD
