@@ -1,4 +1,4 @@
-[[Unit]
+[Unit]
 Description = Maestral daemon for config %i
 Documentation = https://github.com/SamSchott/maestral-dropbox/wiki
 
