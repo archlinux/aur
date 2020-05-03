@@ -14,7 +14,7 @@ pkgname=(
   'xorg-server-devel-hidpi-git')
 _pkgbase='xserver'
 pkgver=1.20.0.r642.g9890e9126
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -43,7 +43,7 @@ pkgver() {
 prepare() {
   cd "${_pkgbase}"
 
-  patch -Np1 -i ../xserver-432.diff
+  patch -Np1 -i ../432.diff
 
   cd ..
 
