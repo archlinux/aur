@@ -1,0 +1,15 @@
+pkgbase = bootsplash-manjaro-gnoman
+	pkgdesc = Bootsplash Theme Manjaro with gnome logo
+	pkgver = r4.1790706
+	pkgrel = 1
+	url = https://github.com/githubgeeker/bootsplash-manjaro-gnoman
+	arch = any
+	license = GPL
+	makedepends = coreutils
+	options = !libtool
+	options = !emptydirs
+	source = git+https://github.com/githubgeeker/bootsplash-manjaro-gnoman.git
+	sha256sums = SKIP
+
+pkgname = bootsplash-manjaro-gnoman
+
