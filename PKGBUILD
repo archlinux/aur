@@ -1,10 +1,11 @@
-# Maintainer: Carlos Bellino <carlosbellino@gmail.com>
+# Maintainer: Rekidaishi <rekidaishi at gmail>
+# Contributor: Carlos Bellino <carlosbellino@gmail.com>
 
 pkgname=sickchill
 _gitname=SickChill
 _gitauthor=SickChill
 _sickchill_dir="/opt/sickchill"
-pkgver=2019.09.02
+pkgver=2020.05.03
 pkgrel=1
 pkgdesc="Automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic."
 arch=('any')
@@ -37,8 +38,8 @@ md5sums=('ebeb5764d85c00558f12e73f9e3c2b54'
          '961815f362818fa961c37c70199c5b6f')
 
 package() {
+  rm -rf "${pkgdir}${_sickchill_dir}"/app/
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -dm755 "${pkgdir}${_sickchill_dir}"/{app,data}
-
   cp -rp "${srcdir}/${_gitname}-${pkgver}-${pkgrel}"/* "${pkgdir}${_sickchill_dir}"/app/
 }

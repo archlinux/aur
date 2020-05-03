@@ -1,6 +1,6 @@
 pkgbase = sickchill
 	pkgdesc = Automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic.
-	pkgver = 2019.09.02
+	pkgver = 2020.05.03
 	pkgrel = 1
 	url = https://github.com/SickChill/SickChill
 	install = sickchill.install
@@ -15,7 +15,7 @@ pkgbase = sickchill
 	provides = sickrage
 	conflicts = sickchill-git
 	options = !strip
-	source = https://github.com/SickChill/SickChill/archive/v2019.09.02-1.tar.gz
+	source = https://github.com/SickChill/SickChill/archive/v2020.05.03-1.tar.gz
 	source = sickchill.service
 	source = sickchill.install
 	md5sums = ebeb5764d85c00558f12e73f9e3c2b54
