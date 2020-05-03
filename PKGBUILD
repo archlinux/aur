@@ -4,18 +4,18 @@
 # Contributor: cute.tec@gmail.com
 
 pkgname=xfwm4-git
-pkgver=4.14.0+60+gdbaecb3e0
-pkgrel=2
+pkgver=4.14.0+169+gb835473b2
+pkgrel=1
 pkgdesc="Xfce window manager (git version)"
 arch=('i686' 'x86_64')
-url="https://git.xfce.org/xfce/xfwm4"
+url="https://gitlab.xfce.org/xfce/xfwm4"
 license=('GPL2')
 groups=('xfce4')
 depends=('libxfce4ui' 'libwnck3' 'libxpresent')
 makedepends=('git' 'xfce4-dev-tools' 'exo')
 provides=('xfwm4')
 conflicts=('xfwm4')
-source=("git://git.xfce.org/xfce/xfwm4") # TODO: https
+source=("git+https://gitlab.xfce.org/xfce/xfwm4.git")
 sha256sums=('SKIP')
 
 pkgver() {
