@@ -13,7 +13,8 @@ depends=('python-openid' 'python-requests' 'python-oauthlib'
          'python-requests-oauthlib' 'python-six' 'python-jwt')
 source=("git+https://github.com/omab/python-social-auth#tag=${pkgver}"
 	"import.patch::https://github.com/omab/python-social-auth/commit/f923691790086e6bd3ab79b93f39680e97286d09.patch")
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '7f0f95c72d9990bec7565ce77417430ba158df94618db7601fd0c788a7ea4ed0')
 
 prepare() {
   cd "$srcdir/python-social-auth"
