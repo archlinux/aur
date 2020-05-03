@@ -24,4 +24,5 @@ package() {
 
     cp -r $srcdir/usr/local/bin $pkgdir/usr/local/
     cp -r $srcdir/usr/share/applications $pkgdir/usr/share/
+    mv $pkgdir/usr/local/bin/Immersed $pkgdir/usr/local/bin/immersed
 }
