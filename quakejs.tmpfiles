@@ -1,0 +1,2 @@
+d /var/lib/quakejs                    0750        quakejs   quakejs   -
+d /usr/share/webapps/quakejs                    0750        quakejs   quakejs   -

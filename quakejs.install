@@ -1,0 +1,3 @@
+post_install() {
+	echo "In order to download the basic demo game files, you have to run following command first:"
+}
