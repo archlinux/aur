@@ -1,16 +1,16 @@
 # Contributor: Hans-Nikolai Viessmann <hans AT viess DOT mn>
 pkgname=perl-text-table-csv
-pkgver=0.020
+pkgver=0.023
 pkgrel=1
 pkgdesc='This packages the Text-Table-CSV distribution, containing the Text::Table::CSV module'
 _dist=Text-Table-CSV
 arch=('any')
 url="https://metacpan.org/release/$_dist"
 license=('GPL' 'PerlArtistic')
-depends=(perl)
+depends=('perl')
 options=('!emptydirs' purge)
 source=("http://search.cpan.org/CPAN/authors/id/P/PE/PERLANCAR/$_dist-$pkgver.tar.gz")
-md5sums=('3fa64cf810eb73fde18abcfdbb7618f5')
+md5sums=('99b75c089c77fd9c13db05035dfbb864')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"

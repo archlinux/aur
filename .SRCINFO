@@ -1,6 +1,6 @@
 pkgbase = perl-text-table-csv
 	pkgdesc = This packages the Text-Table-CSV distribution, containing the Text::Table::CSV module
-	pkgver = 0.020
+	pkgver = 0.023
 	pkgrel = 1
 	url = https://metacpan.org/release/Text-Table-CSV
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = perl-text-table-csv
 	depends = perl
 	options = !emptydirs
 	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/P/PE/PERLANCAR/Text-Table-CSV-0.020.tar.gz
-	md5sums = 3fa64cf810eb73fde18abcfdbb7618f5
+	source = http://search.cpan.org/CPAN/authors/id/P/PE/PERLANCAR/Text-Table-CSV-0.023.tar.gz
+	md5sums = 99b75c089c77fd9c13db05035dfbb864
 
 pkgname = perl-text-table-csv
 
