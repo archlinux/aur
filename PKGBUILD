@@ -6,7 +6,7 @@
 # Contributor: Angel 'angvp' Velasquez <angvp@archlinux.com.ve>
 
 pkgname=mantisbt
-pkgver=2.24.0
+pkgver=2.24.1
 pkgrel=1
 pkgdesc='Web-based issue tracking system'
 arch=('any')
@@ -29,7 +29,7 @@ source=("https://downloads.sourceforge.net/project/${pkgname}/mantis-stable/${pk
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "${pkgname}.uwsgi")
-sha512sums=('e782a47e84f86b394e47053d4c39a951ea08323bbb5deb96f40f8e533d47c62583f06592e158e559812aca6f8f5037c985108104c261618bb27b4d279ba9ec73'
+sha512sums=('b2aa8e01cd1fe513cdd1fbadfbdd9f66e367d9d4f71d9cab1b370066fbec8f94fe013a2587c591d958aa7422dee210a7c4abc4af62d6b9267d49a8dd47a2cec4'
             '3fd4e7faad7774892abfd20006ae3efcd7b0ba315447da9cea8d7352d5fd1e7f0c558d3855ad4e667a0bfe6ae0d95d12c848a78d53312521a7f551f2edca723e'
             'b1b9145d1ba423055d5e45734a9d74c639b75ae5b5d580024b50626332a74830dd39b976de590549ff1c47c400ba4e1c20b27b69fb140f7d8527d8d281d0c7bd'
             '1b36d8956986360306eb15a9279c54eba46e74dfe0623dc26b3be3e8f409ab4f0afe6b34a9001cbeb9f33452fec5ccc8089a53352fa885894cc262ca9c12bc39')
