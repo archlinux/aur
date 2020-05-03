@@ -10,7 +10,7 @@ pkgver="$_version_upstream$_version_release"
 pkgrel=2
 pkgdesc='A free lightweight 8-bit voxel art editor and GPU based interactive path tracing renderer'
 arch=('x86_64')
-url="http://ephtracy.github.io/"
+url="https://ephtracy.github.io/"
 _version_plugin='0.01'
 source=("$pkgname-$pkgver.zip::https://github.com/ephtracy/ephtracy.github.io/releases/download/$_version_main/MagicaVoxel-$_version_upstream-alpha-win64.zip"
         "$pkgname-plugin-$_version_plugin.zip::https://github.com/ephtracy/ephtracy.github.io/releases/download/$_version_plugin/plugin-intel-denoiser-win64.zip"
