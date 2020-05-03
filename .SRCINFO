@@ -1,24 +1,21 @@
 pkgbase = bitfighter
 	pkgdesc = A fast-paced team-based outer-space multi-player combat game
-	pkgver = 0.19g
-	pkgrel = 2
+	pkgver = 019g
+	pkgrel = 3
 	url = http://bitfighter.org/
-	install = bitfighter.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake>=3.1.0
 	makedepends = gcc
 	makedepends = glu
+	depends = sqlite
 	depends = sdl2
-	depends = zlib
 	depends = libpng
 	depends = openal
 	depends = libvorbis
 	depends = libmodplug
 	depends = speex
-	depends = mpg123
-	depends = boost
 	source = http://bitfighter.org/files/bitfighter-019g.tar.gz
 	source = http://bitfighter.org/files/classic_level_pack.zip
 	source = bitfighter.png

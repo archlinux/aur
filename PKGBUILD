@@ -1,4 +1,5 @@
-# Maintainer: Szymon Scholz < szymonscholz at gmail dot com >
+# Maintainer: Naleo Hyde <naleo dot hyde at gmail dot com>
+# Contributor: Szymon Scholz < szymonscholz at gmail dot com >
 # Contributor: Frederic Bezies < fredbezies at gmail dot com>
 # Contributor: Larry Hajali <larryhaja[at]gmail[dot]com>
 # Contributor: carstene1ns <arch carsten-teibes de>
@@ -6,47 +7,38 @@
 # Contributor: archtux <antonio.arias99999 at gmail.com>
 
 pkgname=bitfighter
-pkgver=0.19g
-pkgrel=2
+pkgver=019g
+pkgrel=3
 pkgdesc="A fast-paced team-based outer-space multi-player combat game"
 arch=('i686' 'x86_64')
 url="http://bitfighter.org/"
 license=('GPL')
 depends=(
+    'sqlite'
 	'sdl2'
-	'zlib'
 	'libpng'
 	'openal'
 	'libvorbis'
 	'libmodplug'
 	'speex'
-	'mpg123'
-  'boost'
 )
 makedepends=(
 	'cmake>=3.1.0'
 	'gcc'
 	'glu'
 )
-install=${pkgname}.install
 source=("http://${pkgname}.org/files/${pkgname}-${pkgver/./}.tar.gz"
         "http://bitfighter.org/files/classic_level_pack.zip"
         "$pkgname.png"
         "$pkgname.desktop")
-
 build() {
-  cd ${pkgname}-${pkgver/./}/build
-  cmake \
-    -DCMAKE_INSTALL_PREFIX:PATH="/usr" \
-    -DOPENGLES_INCLUDE_DIR="/usr/lib" \
-    -DOPENGLES_LIBRARY="/usr/lib" \
-    -DUSE_SDL2:BOOL=YES \
-    -DMASTER_MINIMAL=YES \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DLUAJIT_BUILTIN=YES\
-    ..
-
-  make VERBOSE=1
+  export CFLAGS+=" ${CPPFLAGS}"
+  export CXXFLAGS+=" ${CPPFLAGS}"
+  cmake -B build -S "bitfighter-${pkgver}" \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -Wno-dev
+  make -C build
 }
 
 package() {
@@ -55,7 +47,7 @@ package() {
   # install game ressources and executable
   install -d "$pkgdir"/usr/share/$pkgname "$pkgdir"/usr/bin
   cp "${srcdir}"/classic_level_pack/* resource/levels
-  cp -r resource/* exe/* "$pkgdir"/usr/share/$pkgname
+  cp -r resource/* "$pkgdir"/usr/share/$pkgname
   install -m755 exe/$pkgname "$pkgdir"/usr/bin/$pkgname
 
   # install a desktop entry
