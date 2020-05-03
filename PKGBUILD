@@ -4,7 +4,7 @@
 
 pkgname=mellowplayer-git
 _pkgname=MellowPlayer
-pkgver=3.5.6.r4.gba304af5
+pkgver=3.6.2.r5.g87518a84
 pkgrel=2
 pkgdesc='Open source and cross-platform desktop application that runs web-based music streaming 
          services in its own window and provides integration with your desktop.'
@@ -17,8 +17,7 @@ depends=('qt5-base' 'qt5-webengine' 'qt5-svg' 'qt5-quickcontrols2' 'qt5-quickcon
 makedepends=('qt5-tools' 'cmake' 'mesa' 'ninja' 'pkgconf')
 optdepends=( 'chromium-widevine: DRM needed for Spotify and Amazon Music' 'pepper-flash: needed for Tidal')
 source=("git+$url.git")
-md5sums=('SKIP'
-         '67f8c5c6af4b770a4017a5ca9f137b90')
+md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
