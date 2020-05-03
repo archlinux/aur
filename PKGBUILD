@@ -34,11 +34,5 @@ package(){
 	cd "${srcdir}/${_appname}"
 
 	DESTDIR="$pkgdir" ninja -C build install
-	# Rename major files for better system integration
-		mv "${pkgdir}/usr/bin/${_projectname}" "${pkgdir}/usr/bin/${_appname}"
-		mv "${pkgdir}/usr/share/applications/${_projectname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
-
-	# Update desktop file to match renamed package binary
-		sed -i "s/Exec=${_projectname}/Exec=${_appname}/" "${pkgdir}/usr/share/applications/${_appname}.desktop"
 
 }
