@@ -6,7 +6,7 @@ A library (IME) which enables one to type in a variety of scripts. This is a for
 - Package source code locations:
     - git clone git@github.com:sanskrit-coders/m17n-db-indic-aur.git
     - git clone ssh://aur@aur.archlinux.org/m17n-db-indic.git
-    
+
 ## Creating a new Arch Linux package release
 - Update PKGBUILD.
   - Fix the version numbers.
