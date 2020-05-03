@@ -1,0 +1,15 @@
+pkgbase = s3rename
+	pkgdesc = Tool to mass-rename S3 keys
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jamesmcm/s3rename
+	arch = x86_64
+	license = MIT
+	license = APACHE
+	makedepends = rust
+	depends = openssl
+	source = s3rename-0.1.0.tar.gz::https://github.com/jamesmcm/s3rename/archive/v0.1.0.tar.gz
+	sha256sums = fec5fe4a1c95894d02c9f381f36b9a7d2fca2e9e6fb4e62b86f4586856d03345
+
+pkgname = s3rename
+
