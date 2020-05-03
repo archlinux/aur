@@ -1,7 +1,7 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
 pkgname=extempore-git
-pkgver=0.7.0.r413.g2b15d64c
+pkgver=v0.8.6.lens.r10.g794180ff
 pkgrel=1
 pkgdesc="A cyber-physical programming environment for live coding"
 arch=('i686' 'x86_64')
@@ -23,14 +23,15 @@ build() {
   mkdir -p "${srcdir}/build"
   cd "${srcdir}/build"
 
-  cmake -DCMAKE_INSTALL_PREFIX=/opt \
-        -DJACK=ON                   \
-        -DBUILD_DEPS=ON             \
-        -DPACKAGE=ON                \
+  # NOTE: set ASSETS to OFF you you don't want to download ~500MB of assets
+  cmake -DCMAKE_INSTALL_PREFIX=/opt/${pkgname} \
+        -DJACK=ON                   	       \
+        -DBUILD_DEPS=ON             	       \
+        -DPACKAGE=ON                	       \
+        -DASSETS=ON		    	       \
         ../extempore
 
   make
-  make assets
 }
 
 package() {
@@ -38,14 +39,14 @@ package() {
 
   make DESTDIR="${pkgdir}/" install
 
-  # emacs and vim files
+  # NOTE: emacs extempore-mode was moved, left here because someone upgrading might get the message
   install -D "${srcdir}/extempore/extras/extempore.el" "${pkgdir}/usr/share/emacs/site-lisp/extempore/extempore.el"
 
   # NOTE: The vim file interferes with vim, overriding global bindings.
   # install -D "${srcdir}/extempore/extras/extempore.vim" "${pkgdir}/usr/share/vim/vimfiles/plugin/extempore.vim"
 
   install -d "${pkgdir}/usr/bin"
-  ln -s /opt/extempore/extempore "${pkgdir}/usr/bin/extempore"
+  ln -s "/opt/${pkgname}/extempore" "${pkgdir}/usr/bin/extempore"
 }
 
 
