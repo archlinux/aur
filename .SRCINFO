@@ -1,6 +1,6 @@
 pkgbase = kmon-bin
 	pkgdesc = Linux kernel manager and activity monitor
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/orhun/kmon
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = kmon-bin
 	depends = libxcb
 	conflicts = kmon
 	conflicts = kmon-git
-	source = https://github.com/orhun/kmon/releases/download/v1.1.0/kmon-1.1.0.tar.gz
-	sha256sums = 8d96941f6c4d0979841e0cd54fe4deeadd0b7199241ea82bdc789d73ab7ba9e0
+	source = https://github.com/orhun/kmon/releases/download/v1.2.0/kmon-1.2.0.tar.gz
+	sha256sums = 32a49f260d0eef32a2e9dbf724570dffb98f4f838ffde08744dbf5cf4e110390
 
 pkgname = kmon-bin
 
