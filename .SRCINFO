@@ -1,0 +1,16 @@
+pkgbase = digitalclock4-bin
+	pkgdesc = Beautiful customizable clock with plugins
+	pkgver = 4.7.6
+	pkgrel = 1
+	url = https://sourceforge.net/projects/digitalclock4
+	arch = x86_64
+	license = GPL-3.0
+	depends = gstreamer0.10-ugly-plugins
+	depends = qt5-base
+	provides = digitalclock4
+	options = !strip
+	source = digitalclock4-bin-4.7.6.tar.xz::https://netcologne.dl.sourceforge.net/project/digitalclock4/4.7.6/digital_clock_4-linux_x64.tar.xz
+	sha256sums = 6900a3b935ab4befa23aa2931ea676c4cd533e4d5b9a9d0a0f90953a42574a91
+
+pkgname = digitalclock4-bin
+
