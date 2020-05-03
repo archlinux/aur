@@ -5,7 +5,7 @@
 pkgname=ungoogled-chromium
 pkgver=81.0.4044.129
 _rev=1
-_archver=54bc225e3a263be9a6b7dc5a33c5d713d9c42716
+_archver=0f1626d57f522010e46149de374cbab9bbd09052
 pkgrel=${_rev}
 _launcher_ver=6
 pkgdesc="A lightweight approach to removing Google web service dependency"
@@ -33,7 +33,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
 sha256sums=('ff74592f83ed91c082f746c6b0a3acf384bad91f170bd24548971c17f43046d3'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'fda467f6f8046fc9d0f7426cf9543fcaed7da51beb367bd41f7e0407db799965'
-            '8d173853f02a2349cea0ef3c5a929958034b35b3e1da5dc88ea494fe482380ae')
+            '7ec7e0078ecc70de5a4547a9fb976086d9314cdbccc936983a024fb0b9a7e03d')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -128,7 +128,6 @@ build() {
   cp "$_ungoogled_repo/flags.gn" "out/Default/args.gn"
   printf '\n' >> "out/Default/args.gn"
   cat "$_ungoogled_archlinux_repo/flags.archlinux.gn" >> "out/Default/args.gn"
-  sed -i '/use_system_libopenjpeg2=true/d' "out/Default/args.gn"
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'

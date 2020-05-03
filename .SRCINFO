@@ -64,11 +64,11 @@ pkgbase = ungoogled-chromium
 	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-81.0.4044.129.tar.xz
 	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
 	source = https://github.com/Eloston/ungoogled-chromium/archive/81.0.4044.129-1.tar.gz
-	source = https://github.com/ungoogled-software/ungoogled-chromium-archlinux/archive/54bc225e3a263be9a6b7dc5a33c5d713d9c42716.tar.gz
+	source = https://github.com/ungoogled-software/ungoogled-chromium-archlinux/archive/0f1626d57f522010e46149de374cbab9bbd09052.tar.gz
 	sha256sums = ff74592f83ed91c082f746c6b0a3acf384bad91f170bd24548971c17f43046d3
 	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
 	sha256sums = fda467f6f8046fc9d0f7426cf9543fcaed7da51beb367bd41f7e0407db799965
-	sha256sums = 8d173853f02a2349cea0ef3c5a929958034b35b3e1da5dc88ea494fe482380ae
+	sha256sums = 7ec7e0078ecc70de5a4547a9fb976086d9314cdbccc936983a024fb0b9a7e03d
 
 pkgname = ungoogled-chromium
 
