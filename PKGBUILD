@@ -1,4 +1,5 @@
-# Maintainer: Samy Sadi <samy.sadi.contact@gmail.com>
+# Maintainer: SpineEyE <name+aur@gmail.com>
+# Contributor: Samy Sadi <samy.sadi.contact@gmail.com>
 # PKGBUILD based on: Bernhard Landauer <oberon@manjaro.org>
 # PKGBUILD based on: Robert Mihaly <robb.mihaly@gmail.com>
 # PKGBUILD based on: Gary Ayre <catchfire@gmail.com>
@@ -8,7 +9,7 @@ _printername="ip7200"
 _printercode=406
 pkgname=("cnijfilter-${_printername}")
 pkgver=3.80
-pkgrel=1
+pkgrel=2
 _pkgrelsources=1
 pkgdesc="Canon ${_printername} series printer driver (built from sources)"
 arch=('x86_64')
@@ -19,7 +20,7 @@ makedepends=('autoconf>=2.13' 'automake>=1.6' 'tar' 'make' 'gcc')
 conflicts=('cnijfilter-common' 'cnijfilter-common-i386' 'canon-pixma-ip7200-printer')
 install='cnijfilter.install'
 source=('http://gdlp01.c-wss.com/gds/3/0100004693/01/cnijfilter-source-3.80-1.tar.gz' 'all.patch')
-sha256sums=('8b6d408f18191f19465ee8fc31aa08455e8bec186fdd3f02ee822f53a9b086a9' '37b91326022d94d3f0dc8a404a8c0550c28267820cabcd7b53b4d2d92c30b1f8')
+sha256sums=('8b6d408f18191f19465ee8fc31aa08455e8bec186fdd3f02ee822f53a9b086a9' 'a3910d272d7525a1af586ad2965c64b85d0f9634fb2f2ab812a4f7f1dff418e3')
 
 package() {
 	dirs="libs cngpij cngpijmnt cngpijmon ppd pstocanonij backend backendnet cnijfilter lgmon cngpijmon/cnijnpr maintenance"
