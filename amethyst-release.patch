@@ -1,6 +1,6 @@
 diff -rupN amethyst.orig/amethyst/amethyst.cpp amethyst/amethyst/amethyst.cpp
---- amethyst.orig/amethyst/amethyst.cpp	2019-02-23 18:01:00.000000000 +1030
-+++ amethyst/amethyst/amethyst.cpp	2019-04-25 19:42:19.760168836 +0930
+--- amethyst.orig/amethyst/amethyst.cpp	2019-09-09 16:33:07.000000000 +0930
++++ amethyst/amethyst/amethyst.cpp	2020-05-03 09:53:25.809511392 +0930
 @@ -26,8 +26,8 @@ auto about() -> void {
  
  auto locate(string location) -> string {
@@ -14,7 +14,7 @@ diff -rupN amethyst.orig/amethyst/amethyst.cpp amethyst/amethyst/amethyst.cpp
  auto getFont(string path) -> Font {
 diff -rupN amethyst.orig/amethyst/GNUmakefile amethyst/amethyst/GNUmakefile
 --- amethyst.orig/amethyst/GNUmakefile	2018-12-27 05:45:14.000000000 +1030
-+++ amethyst/amethyst/GNUmakefile	2019-04-25 19:42:46.343503393 +0930
++++ amethyst/amethyst/GNUmakefile	2020-05-03 09:53:25.809511392 +0930
 @@ -1,5 +1,5 @@
  name := amethyst
 -build := stable
@@ -23,8 +23,8 @@ diff -rupN amethyst.orig/amethyst/GNUmakefile amethyst/amethyst/GNUmakefile
  
  nall.path := ../nall
 diff -rupN amethyst.orig/nall/GNUmakefile amethyst/nall/GNUmakefile
---- amethyst.orig/nall/GNUmakefile	2018-12-19 23:33:06.000000000 +1030
-+++ amethyst/nall/GNUmakefile	2019-04-25 22:50:03.917356355 +0930
+--- amethyst.orig/nall/GNUmakefile	2019-07-04 10:47:21.000000000 +0930
++++ amethyst/nall/GNUmakefile	2020-05-03 09:53:25.809511392 +0930
 @@ -119,7 +119,7 @@ endif
  
  # linux settings
@@ -34,12 +34,10 @@ diff -rupN amethyst.orig/nall/GNUmakefile amethyst/nall/GNUmakefile
  endif
  
  # bsd settings
-@@ -139,7 +139,7 @@ ifeq ($(threaded),true)
+@@ -230,5 +230,5 @@ strne = $(if $(filter-out xx,x$(subst $1
+ ifeq ($(platform),windows)
+   prefix := $(subst $([space]),\$([space]),$(strip $(call strtr,$(LOCALAPPDATA),\,/)))
+ else
+-  prefix := $(HOME)/.local
++  prefix := /usr
  endif
- 
- # paths
--prefix := $(HOME)/.local
-+prefix := /usr
- 
- ifeq ($(object.path),)
-   object.path := obj

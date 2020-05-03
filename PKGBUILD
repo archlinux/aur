@@ -1,18 +1,18 @@
 # Maintainer: Callum Parsey <neoninteger@protonmail.com>
 
 pkgname=amethyst
-pkgver=3.2
-pkgrel=2
+pkgver=3.3
+pkgrel=1
 pkgdesc='A lightweight source code editor with tree-view navigation'
 arch=('x86_64')
-url='https://byuu.org'
+url='https://byuu.org/projects/amethyst'
 license=('ISC' 'GPL3')
 depends=('gtksourceview2')
-source=('https://files.byuu.org/releases/amethyst_v3r2.tar.xz'
+source=('https://byuu.org/files/releases/amethyst_v3r3.tar.xz'
         'amethyst-release.patch'
         'LICENSE')
-sha256sums=('11dee5ed719d41f5e776eeae09d20a52608d773177adabe1bdecc4b4644a6116'
-            'a4f36370a32ab4624b8d58f5058f3c10578170cbdb8ebb5c100d348697e472a0'
+sha256sums=('5445f658d9a0322c180801bbb710ae4e097d9594a2d2f2d5c1ac9e9794e1e833'
+            '4c9fd1819f244317d8455dcb16cfa0047ed4815ea6ae6c441ff3b2a9f7a9c3ca'
             '9af7b9ec6c5c74a0421acb9e2755fe5b92fcce28a3c3a0300ecbe7002269b7f6')
 backup=('usr/share/amethyst/mimetypes.bml'
         'usr/share/amethyst/settings.bml')
