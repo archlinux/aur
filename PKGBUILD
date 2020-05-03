@@ -21,6 +21,7 @@ depends=(
 	'libmodplug'
 	'speex'
 	'mpg123'
+  'boost'
 )
 makedepends=(
 	'cmake>=3.1.0'
@@ -37,8 +38,9 @@ build() {
   cd ${pkgname}-${pkgver/./}/build
   cmake \
     -DCMAKE_INSTALL_PREFIX:PATH="/usr" \
+    -DOPENGLES_INCLUDE_DIR="/usr/lib" \
+    -DOPENGLES_LIBRARY="/usr/lib" \
     -DUSE_SDL2:BOOL=YES \
-    -DUSE_GLES:BOOL=YES \
     -DMASTER_MINIMAL=YES \
     -DCMAKE_BUILD_TYPE=Release \
     -DLUAJIT_BUILTIN=YES\
