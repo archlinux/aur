@@ -1,7 +1,7 @@
 pkgbase = submarine
 	pkgdesc = Command-line program for searching and downloading the right subtitles for movies
-	pkgver = 0.1.5
-	pkgrel = 2
+	pkgver = 0.1.7b
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/rastersoft/submarine
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = submarine
 	optdepends = gimp: open with
 	provides = submarine
 	conflicts = submarine
-	source = https://github.com/rastersoft/submarine/archive/0.1.5.tar.gz
-	md5sums = b42757fed480a8d56812348f125a316a
+	source = https://github.com/rastersoft/submarine/archive/0.1.7b.tar.gz
+	sha512sums = 3b59a125693dfbba78eb0dadc10b10c9484e59f33deb61d5007c5b4276b0952915f824a65b24ea369b068eb0ff59801b5fd9a619f47c3a50a4041fe0fab83047
 
 pkgname = submarine
 
