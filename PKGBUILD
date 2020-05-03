@@ -1,7 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess.mn>
 pkgname=python-dateutils
 _pkgname=dateutils
-pkgver=0.6.6
+pkgver=0.6.8
 pkgrel=1
 pkgdesc="Utilities for working with datetime objects."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/plytophogy/python-dateutils"
 license=('BSD')
 depends=('python-dateutil' 'python-argparse' 'python-pytz')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('c94a8e77d743abac79ed91f99f5ef594a972a527e05145cbb7aba59beced8a71')
+sha256sums=('15e564d9cd34e4260cf96625a3249c938c3aada2e5eaddf8218dd3fbc8dbdba4')
 
 prepare() {
 	cd "${_pkgname}-${pkgver}"
@@ -26,4 +26,7 @@ build() {
 package() {
 	cd "${_pkgname}-${pkgver}"
     /usr/bin/python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+
+    # License is missing
+    #install -Dm644 LICENSE "$pkdir/usr/share/licenses/$pkgname/LICENSE"
 }
