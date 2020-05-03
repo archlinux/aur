@@ -14,7 +14,7 @@ license=('GPL3')
 
 depends=('nodejs'
          'python2-babel'
-         'python2-cheetah'
+         'python2-cheetah3'
          'python2-mako')
 
 optdepends=('python2-notify'
@@ -33,7 +33,7 @@ source=("https://github.com/${_gitauthor}/${_gitname}/archive/v${pkgver}-${pkgre
         "${pkgname}.service"
         "${pkgname}.install")
 
-md5sums=('ebeb5764d85c00558f12e73f9e3c2b54'
+md5sums=('99a7fa5b7d9b1216868aa87865c213c5'
          '373832300e91a4011285eb8d6df9cef0'
          '961815f362818fa961c37c70199c5b6f')
 

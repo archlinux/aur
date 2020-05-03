@@ -8,7 +8,7 @@ pkgbase = sickchill
 	license = GPL3
 	depends = nodejs
 	depends = python2-babel
-	depends = python2-cheetah
+	depends = python2-cheetah3
 	depends = python2-mako
 	optdepends = python2-notify
 	optdepends = unrar
@@ -18,7 +18,7 @@ pkgbase = sickchill
 	source = https://github.com/SickChill/SickChill/archive/v2020.05.03-1.tar.gz
 	source = sickchill.service
 	source = sickchill.install
-	md5sums = ebeb5764d85c00558f12e73f9e3c2b54
+	md5sums = 99a7fa5b7d9b1216868aa87865c213c5
 	md5sums = 373832300e91a4011285eb8d6df9cef0
 	md5sums = 961815f362818fa961c37c70199c5b6f
 
