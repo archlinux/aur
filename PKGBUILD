@@ -3,7 +3,7 @@
 pkgname=dovecot-fts-elastic
 _reponame=fts-elastic
 pkgver=0.164ef965b
-pkgrel=1
+pkgrel=2
 pkgdesc="Dovecot FTS plugin for elasticsearch"
 arch=(x86_64)
 url="https://github.com/filiphanes/fts-elastic"
