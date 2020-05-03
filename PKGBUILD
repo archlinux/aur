@@ -2,7 +2,7 @@
 
 pkgname="museeks-bin"
 _pkgname="museeks"
-pkgver="0.11.3"
+pkgver="0.11.4"
 pkgrel="1"
 pkgdesc="A lightweight and cross-platform music player."
 arch=("x86_64" "i686")
