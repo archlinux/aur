@@ -60,12 +60,12 @@ _localmodcfg=
 
 _major=5.7
 _minor=0
-_rc=3
+_rc=4
 _srcname=linux-${_major}-rc${_rc}
-_clr=${_major}.0.rc2-25
+_clr=${_major}.0.rc3-26
 pkgbase=linux-clear-current
 pkgver=${_major}.${_minor}.rc${_rc}
-pkgrel=2
+pkgrel=1
 pkgdesc='Clear Linux current'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-current"
@@ -308,7 +308,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('861dec2280e325d7bdc1d21278df4c8c5c3aa01cb825e5062da85ff17f5b043f'
+sha256sums=('6bdbef0aa3e1964d84ec388ca40159753b7377291acc6293549188aea2b4d3d6'
             'SKIP'
             '2f56fda0014c54d7ca56156bed31cabe026af04d41162f0d678bef4afa179966')
 
