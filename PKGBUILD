@@ -1,13 +1,13 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=librepcb-git
 _fullname=LibrePCB
-pkgver=r1902.78f72e4ed
+pkgver=r2012.96548282f
 pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards (git master)"
 arch=('x86_64' 'i686')
 url="http://librepcb.org/"
 license=('GPL')
-depends=('desktop-file-utils' 'hicolor-icon-theme' 'qt5-base')
+depends=('desktop-file-utils' 'hicolor-icon-theme' 'qt5-base' 'qt5-svg')
 makedepends=('git')
 provides=('librepcb')
 conflicts=('librepcb')
