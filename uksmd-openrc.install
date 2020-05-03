@@ -1,0 +1,18 @@
+_svc="uksmd"
+_rlvl="default"
+
+post_install() {
+  printf '%s\n'
+  printf '%s\n' "==> To enable the '${_svc}'-openrc-service, run:"
+  printf '%s\n' "    rc-update add ${_svc} ${_rlvl}"
+  printf '%s\n'
+}
+
+pre_remove() {
+  printf '%s\n'
+  printf '%s\n' "==> Removing '${_svc}'-openrc-service:"
+  _cmd="rc-update del ${_svc}"
+  printf '%s\n' "    Running '${_cmd}' ..."
+  ${_cmd}
+  printf '%s\n'
+}

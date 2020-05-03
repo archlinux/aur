@@ -1,0 +1,16 @@
+pkgbase = uksmd-openrc
+	pkgdesc = OpenRC init script for uksmd
+	pkgver = 0.8
+	pkgrel = 1
+	install = uksmd-openrc.install
+	arch = any
+	license = GPL2
+	depends = uksmd
+	optdepends = openrc: To actually make use of this initscript.
+	source = uksmd.initd
+	source = uksmd-openrc.install
+	sha256sums = 0047ef5549f18a848d61ace4fe9c397ea1e9d37414d13e2b8e067be2bce6a397
+	sha256sums = 7c97f08d0c101bf3d93f52c93ce9e376485df3b0dbb5253b3c24a2de20802d29
+
+pkgname = uksmd-openrc
+

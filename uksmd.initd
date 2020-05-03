@@ -1,0 +1,42 @@
+#!/usr/bin/openrc-run
+# OpenRC uksmd script
+
+_DAEMON="/usr/sbin/uksmd"
+_DAEMON_ARGS=()
+
+extra_started_commands="status"
+
+depend() {
+  true
+}
+
+start() {
+  ebegin "Starting $(basename "${_DAEMON}"): Executing ${_DAEMON} ${_DAEMON_ARGS[@]}"
+  start-stop-daemon --start --exec "${_DAEMON}" -- "${_DAEMON_ARGS[@]}"
+  eend "$?"
+}
+
+stop() {
+  ebegin "Stopping $(basename "${_DAEMON}")"
+  start-stop-daemon --stop --exec "${_DAEMON}" || {
+    sleep 1
+    _pids="$(pidof "${_DAEMON}")"
+    for _pid in ${_pids}; do
+      kill -9 "${_pid}" &> /dev/null
+    done
+  }
+  sleep 1
+  _running="$(pidof "${_DAEMON}" | tr ' ' '\n' | wc -l)"
+  if [ ${_running} -gt 0 ]; then
+    eerror "Failed to stop or kill all ${_DAEMON} processes."
+    eerror "Remaining processes: ${_running}."
+  fi
+  eend "${_running}"
+}
+
+status() {
+  ebegin "Querying status of $(basename "${_DAEMON}")"
+  _pids="$(pidof "${_DAEMON}")"
+  printf '%s\n' "Running $(basename "${_DAEMON}")-process(es):" "${_pids}"
+  eend "$?"
+}
