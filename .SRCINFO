@@ -18,7 +18,7 @@ pkgbase = museeks-bin
 	conflicts = museeks
 	conflicts = museeks-git
 	source = https://github.com/KeitIG/museeks/releases/download/0.11.4/museeks-x86_64.rpm
-	md5sums = ab726bebb3bdab3232dc548ccf7cc4e9
+	md5sums = e5f2e0a78d692a7d467d743818a1152e
 
 pkgname = museeks-bin
 
