@@ -42,7 +42,7 @@ build() {
 
 package() {
   install -d "${pkgdir}/etc/webapps/quakejs"
-  install -d "${pkgdir}/usr/share/webapps/base/baseq3"
+  install -d "${pkgdir}/usr/share/webapps/quakejs/base/baseq3"
   install -d "${pkgdir}/var/lib/quakejs"
   ln -s "/var/lib/quakejs" "${pkgdir}/usr/share/webapps/quakejs/base"
   for f in ".git" ".gitignore" ".gitmodules" "package.json" "package-lock.json"; do
