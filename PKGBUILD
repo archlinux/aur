@@ -1,14 +1,14 @@
 # Maintainer: Nico <desoxhd@gmail.com>
 pkgname=anydesk-bin
 pkgver=5.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc="'AnyDesk Free' is an All-In-One Software for Remote Support (Generic based package)"
 arch=('i686' 'x86_64')
 url="https://anydesk.com"
 license=('custom')
 depends=('fakeroot' 'python-shiboken2' 'gtkglext' 'libglvnd' 'gtk2' 'libx11' 'glibc' 'glib2' 'gdk-pixbuf2' 'libxcb' 'cairo' 'pango' 'libxi' 'libxrender' 'libxrandr' 'libxtst' 'libxext' 'libxfixes' 'libxdamage' 'gcc-libs')
 optdepends=('libpulse: audio support')
-conflicts=('anydesk' 'anydesk-test' 'anydesk-debian')
+conflicts=('anydesk' 'anydesk-test' 'anydesk-debian' 'pango-anydesk')
 provides=('anydesk')
 
 source_i686=("https://download.anydesk.com/linux/anydesk-${pkgver}-i386.tar.gz")

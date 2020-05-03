@@ -1,7 +1,7 @@
 pkgbase = anydesk-bin
 	pkgdesc = 'AnyDesk Free' is an All-In-One Software for Remote Support (Generic based package)
 	pkgver = 5.5.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://anydesk.com
 	arch = i686
 	arch = x86_64
@@ -31,6 +31,7 @@ pkgbase = anydesk-bin
 	conflicts = anydesk
 	conflicts = anydesk-test
 	conflicts = anydesk-debian
+	conflicts = pango-anydesk
 	source_i686 = https://download.anydesk.com/linux/anydesk-5.5.5-i386.tar.gz
 	sha256sums_i686 = ead02c9778711a6f028fb0f26f9ef9a48b76ef8f374124b45827e451a55f082a
 	source_x86_64 = https://download.anydesk.com/linux/anydesk-5.5.5-amd64.tar.gz
