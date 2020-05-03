@@ -30,8 +30,8 @@ _gapps_list=(
 )
 source=(
     "https://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img"
-    "houdini_y.sfs::http://dl.android-x86.org/houdini/7_y/houdini.sfs"
-    "houdini_z.sfs::http://dl.android-x86.org/houdini/7_z/houdini.sfs"
+    "https://github.com/redchenjs/aur-packages/raw/master/anbox-image/houdini_y.sfs"
+    "https://github.com/redchenjs/aur-packages/raw/master/anbox-image/houdini_z.sfs"
     "http://supersuroot.org/downloads/SuperSU-v2.82-201705271822.zip"
     "media_codecs.xml"
     "media_codecs_google_video.xml"
