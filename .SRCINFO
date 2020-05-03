@@ -1,7 +1,7 @@
 pkgbase = nohang-git
-	pkgdesc = A highly configurable OOM prevention daemon
+	pkgdesc = A sophisticated low memory handler
 	pkgver = 0.1.r622.g16f7db1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hakavlad/nohang
 	arch = any
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = nohang-git
 	conflicts = nohang
 	backup = etc/nohang/nohang.conf
 	backup = etc/nohang/nohang-desktop.conf
+	backup = etc/logrotate.d/nohang
 	source = nohang-git::git+https://github.com/hakavlad/nohang.git#branch=master
 	md5sums = SKIP
 

@@ -4,8 +4,8 @@
 _pkgname=nohang
 pkgname=${_pkgname}-git
 pkgver=0.1.r622.g16f7db1
-pkgrel=1
-pkgdesc="A highly configurable OOM prevention daemon"
+pkgrel=2
+pkgdesc="A sophisticated low memory handler"
 arch=('any')
 url="https://github.com/hakavlad/nohang"
 license=('MIT')
@@ -25,6 +25,7 @@ conflicts=("${_pkgname}")
 backup=(
 	'etc/nohang/nohang.conf'
 	'etc/nohang/nohang-desktop.conf'
+	'etc/logrotate.d/nohang'
 )
 
 pkgver() {
