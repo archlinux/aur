@@ -1,3 +1,4 @@
-PackageAuthor=fryfrog
+# PackageVersion is added by PKGBUILD
+PackageAuthor=[sonarr-phantom](https://aur.archlinux.org/packages/sonarr-phantom/)
 UpdateMethod=External
 Branch=phantom-develop

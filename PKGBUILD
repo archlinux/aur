@@ -45,7 +45,7 @@ sha256sums=('de503d24e01df930b9c9b25cb5678f055bceff29a707178af8c2e5a3ec1552fa'
             '24060db5ef0c364efbc32a6a50f77ad4b07154d0b2bb2d3ce33df80f14464521'
             'cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e'
             '7bf87304383b7d58ecab59b3686d00a8f1b6fbe4af3a86da35a887e4cebee411'
-            '071cdf6960f888c7902ae2af95269de4d171706ca10823b90bf5ad27593c37ab')
+            '01f426d6b96d2330717a4b1ac3d057fd61f79dc5eb0981272bbf44f0c227215b')
 
 package() {
   rm -rf "${srcdir}/Sonarr/Sonarr.Update"
