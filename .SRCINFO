@@ -34,7 +34,7 @@ pkgbase = ungoogled-chromium-bin
 	conflicts = chromium
 	conflicts = ungoogled-chromium
 	source = https://github.com/zocker-160/ungoogled-chromium-binaries/releases/download/81.0.4044.122-1/ungoogled-chromium-81.0.4044.122-1-x86_64.pkg.tar.xz
-	sha256sums = SKIP
+	sha256sums = 7ffbdd45b00249c26c1e8674aa6aa0d73c7c8c31c88622d87afc51ef587ed54f
 
 pkgname = ungoogled-chromium-bin
 

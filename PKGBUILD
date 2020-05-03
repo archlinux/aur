@@ -2,6 +2,7 @@
 # Contributor: Caio Novais <caionov08 at gmail dot com>
 # Contributor: SuperITMan <admin at superitman dot com>
 # Binary releases provided by zocker160: https://github.com/zocker-160/ungoogled-chromium-binaries
+
 pkgname=ungoogled-chromium-bin
 _zockerrel=1
 pkgver=81.0.4044.122
@@ -24,7 +25,7 @@ optdepends=('pepper-flash: support for Flash content'
 conflicts=("chromium" "ungoogled-chromium")
 provides=("chromium")
 source=("https://github.com/zocker-160/ungoogled-chromium-binaries/releases/download/${pkgver}-${_zockerrel}/ungoogled-chromium-${pkgver}-${_zockerrel}-${arch}.pkg.tar.xz")
-sha256sums=("SKIP")
+sha256sums=("7ffbdd45b00249c26c1e8674aa6aa0d73c7c8c31c88622d87afc51ef587ed54f")
 
 # Copy files
 package() {
