@@ -3,11 +3,11 @@
 # Contributor: Valentin Hăloiu <vially.ichb@gmail.com>
 
 pkgname=electron-ozone
-pkgver=8.2.3
+pkgver=8.2.5
 provides=('electron')
 conflicts=('electron')
-_commit=663d389925a9637609c07f1212edeca337f591be
-_chromiumver=80.0.3987.163
+_commit=6c42564337697f1907627ad96b7bd4801ef5be20
+_chromiumver=80.0.3987.165
 pkgrel=2
 pkgdesc='Electron compiled with wayland support via Ozone'
 arch=('x86_64')
@@ -16,9 +16,9 @@ url='https://electronjs.org/'
 license=('MIT' 'custom')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libnghttp2'
          'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy')
-makedepends=('clang' 'git' 'gn' 'gperf' 'harfbuzz-icu' 'java-runtime-headless'
+makedepends=('git' 'gn' 'gperf' 'harfbuzz-icu' 'java-runtime-headless'
              'jsoncpp' 'libnotify' 'lld' 'llvm' 'ninja' 'npm' 'pciutils' 'yarn'
-             'python2' 'wget' 'yasm')
+             'python2' 'wget' 'yasm' 'python2-setuptools' 'libpipewire02' 'nodejs')
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'libappindicator-gtk3: StatusNotifierItem support'
             'trash-cli: file deletion support (trash-put)'
@@ -39,6 +39,7 @@ source=('git+https://github.com/electron/electron.git'
         'remove-verbose-logging-in-local-unique-font-matching.patch'
         'rename-Relayout-in-DesktopWindowTreeHostPlatform.patch'
         'rebuild-Linux-frame-button-cache-when-activation.patch'
+        'icu67.patch'
         '0001-fix-use-ozone-version-of-global_shortcut_listener-wh.patch'
         '0002-fix-don-t-include-global_menu_bar_x11-sources-in-ozo.patch'
         '0003-fix-fix-ifdefs-and-add-NOTIMPLEMENTEDs-to-make-nativ.patch'
@@ -63,6 +64,7 @@ sha256sums=('SKIP'
             '5bc775c0ece84d67855f51b30eadcf96fa8163b416d2036e9f9ba19072f54dfe'
             'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
             '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
+            '5315977307e69d20b3e856d3f8724835b08e02085a4444a5c5cefea83fd7d006'
             '11c6a9d7526df9624d5d66afa9b8a0fae3f7193822a6673a043211d467d0c617'
             'd7cb9ad2421b71715c77a9b37f881442cb8e6942e1b8ec1c809325bb5ec4e15f'
             '54a92af10ca2f11e7326354a2f634bd7e800f89deadef4009a75bda6c8edd898'
@@ -159,6 +161,7 @@ prepare() {
 
   echo "Applying local Chromium patches..."
   patch -Np0 -i ../chromium-skia-harmony.patch
+  patch -Np2 -i ../icu67.patch
   patch -Np1 -i ../fix-building-with-system-zlib.patch
   patch -Np1 -i ../fix-building-with-unbundled-libxml.patch
   patch -Np1 -i ../fix-shim-header-generation-when-unbundling-ICU.patch
