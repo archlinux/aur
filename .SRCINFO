@@ -1,7 +1,7 @@
 pkgbase = iroffer-dinoex
 	pkgdesc = Dinoex version of iroffer.
 	pkgver = 3.32
-	pkgrel = 5
+	pkgrel = 6
 	url = https://iroffer.net
 	arch = i686
 	arch = x86_64

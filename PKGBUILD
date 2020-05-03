@@ -1,7 +1,7 @@
 # Maintainer: Rekidaishi <rekidaishi at gmail>
 pkgname=iroffer-dinoex
 pkgver=3.32
-pkgrel=5
+pkgrel=6
 pkgdesc="Dinoex version of iroffer."
 arch=('i686' 'x86_64')
 url="https://iroffer.net"
