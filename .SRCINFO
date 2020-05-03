@@ -1,7 +1,7 @@
 pkgbase = xf86-video-rendition
 	pkgdesc = X.org Rendition video driver
-	pkgver = 4.2.6
-	pkgrel = 2
+	pkgver = 4.2.7
+	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = i686
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = xf86-video-rendition
 	conflicts = xorg-server<1.19
 	conflicts = X-ABI-VIDEODRV_VERSION<23
 	conflicts = X-ABI-VIDEODRV_VERSION>=24
-	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-rendition-4.2.6.tar.bz2
-	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-rendition-4.2.6.tar.bz2.sig
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-rendition-4.2.7.tar.bz2
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-rendition-4.2.7.tar.bz2.sig
 	validpgpkeys = DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3
-	sha256sums = 660ecf21f65a4d6002c1b603d62c314f8e9624d208db5b346850b0df9dc2f9a8
+	sha256sums = 9511c6595c9d489a022635bd8d91149de0cb3cbf9034739452ca5b9b5d63f87b
 	sha256sums = SKIP
 
 pkgname = xf86-video-rendition
