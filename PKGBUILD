@@ -2,34 +2,31 @@
 # Author: Nick <https://github.com/nick92>
 
 pkgname=lightdm-enso-os-greeter-git
-pkgver=16
+pkgver=r172.c949a8c
 pkgrel=1
 pkgdesc="A fork of Pantheon greeter."
 arch=('any')
 url="https://github.com/nick92/Enso-OS/greeter"
 license=('GPL')
 depends=('cairo' 'clutter' 'clutter-gtk' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee' 'libgl' 'libx11' 'lightdm' 'vala')
-makedepends=('cmake' 'svn' 'git')
+makedepends=('meson' 'git')
 conflicts=('lightdm-pantheon-greeter')
-source=("$pkgname::svn+https://github.com/nick92/Enso-OS.git/trunk/greeter")
-md5sums=('SKIP')
+source=(git+https://github.com/nick92/Enso-OS)
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    echo "$(svnversion)"
+    cd "$srcdir/Enso-OS"
+     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$pkgname"
-    mkdir build
-    cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-    make
+    cd "$srcdir/Enso-OS/"
+    arch-meson greeter build
+    ninja -C build
 }
 
 
 package() {
-    cd "$pkgname"
-    cd build/
-    sudo make install
+    cd "$srcdir/Enso-OS"
+    DESTDIR="$pkgdir" ninja -C build install
 }
