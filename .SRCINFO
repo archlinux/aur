@@ -1,0 +1,17 @@
+pkgbase = kbld
+	pkgdesc = kbld seamlessly incorporates image building and image pushing into your development and deployment workflows
+	pkgver = 0.20.0
+	pkgrel = 1
+	url = https://get-kbld.io/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	makedepends = ytt
+	makedepends = zip
+	depends = glibc
+	source = kbld-0.20.0.tar.gz::https://github.com/k14s/kbld/archive/v0.20.0.tar.gz
+	md5sums = d85b75ff52d7a268d0bcc818c8ea3ef1
+
+pkgname = kbld
+
