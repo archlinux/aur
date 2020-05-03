@@ -1,12 +1,13 @@
 # Based on openssl 1.1.0f PKGBUILD
-# Maintainer: oneup <oneup40 at gmail dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: oneup <oneup40 at gmail dot com>
 
 _basename=openssl
 pkgname=openssl-zlib
-_ver=1.1.1f
+_ver=1.1.1g
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=2
+pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security with zlib support'
 arch=('i686' 'x86_64')
 url='https://www.openssl.org'
@@ -16,7 +17,7 @@ optdepends=('ca-certificates')
 backup=('etc/ssl/openssl.cnf')
 source=("https://www.openssl.org/source/${_basename}-${_ver}.tar.gz"{,.asc}
         'ca-dir.patch')
-sha256sums=('186c6bfe6ecfba7a5b48c47f8a1673d0f3b0e5ba2e25602dd23b629975da3f35'
+sha256sums=('ddb04774f1e32f0c49751e21b67216ac87852ceb056b75209af2443400636d46'
             'SKIP'
             '90c7411fed0157116f2df8f4be755aaf5a26e8484351b4e6a79492805d5f2790')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'

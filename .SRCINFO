@@ -1,7 +1,7 @@
 pkgbase = openssl-zlib
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security with zlib support
-	pkgver = 1.1.1.f
-	pkgrel = 2
+	pkgver = 1.1.1.g
+	pkgrel = 1
 	url = https://www.openssl.org
 	arch = i686
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = openssl-zlib
 	provides = openssl
 	conflicts = openssl
 	backup = etc/ssl/openssl.cnf
-	source = https://www.openssl.org/source/openssl-1.1.1f.tar.gz
-	source = https://www.openssl.org/source/openssl-1.1.1f.tar.gz.asc
+	source = https://www.openssl.org/source/openssl-1.1.1g.tar.gz
+	source = https://www.openssl.org/source/openssl-1.1.1g.tar.gz.asc
 	source = ca-dir.patch
 	validpgpkeys = 8657ABB260F056B1E5190839D9C4D26D0E604491
 	validpgpkeys = 7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C
-	sha256sums = 186c6bfe6ecfba7a5b48c47f8a1673d0f3b0e5ba2e25602dd23b629975da3f35
+	sha256sums = ddb04774f1e32f0c49751e21b67216ac87852ceb056b75209af2443400636d46
 	sha256sums = SKIP
 	sha256sums = 90c7411fed0157116f2df8f4be755aaf5a26e8484351b4e6a79492805d5f2790
 
