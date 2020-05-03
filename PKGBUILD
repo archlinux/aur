@@ -3,7 +3,7 @@
 
 pkgname=xerox-workcentre-6515
 pkgver=5.20.661.4684
-pkgrel=2
+pkgrel=3
 pkgdesc="CUPS driver for the Xerox WorkCentre 6515"
 url='https://www.support.xerox.com/support/workcentre-6515/downloads/enus.html?operatingSystem=linux'
 license=('custom')
@@ -14,7 +14,7 @@ source_i686=("$pkgname.rpm::http://download.support.xerox.com/pub/drivers/CQ8580
 source_x86_64=("$pkgname.rpm::http://download.support.xerox.com/pub/drivers/CQ8580/drivers/linux/pt_BR/XeroxOfficev5Pkg-Linuxx86_64-$pkgver.rpm")
 source=("LICENSE")
 sha256sums_i686=('84a080919441101e5a76bfe7cc0b251dedd7fea0e082a16963591a7b83d3ac6b')
-sha256sums_x86_64=('82e1a45bbd2bf23ae10e3b78366e6ad4a51c7bb2dcdb0cef20e8d17d9abbad4c')
+sha256sums_x86_64=('99ddb77248c7cc87570428053c9d6e38d59efddf391b3d819c9e5716f926fc54')
 sha256sums=('45607ad97f4fbba48dfc5150c5ad93deb6b2b57a5ae2d32299418cae682f23b8')
 
 build() {
