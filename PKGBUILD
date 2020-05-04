@@ -2,7 +2,7 @@
 # Maintainer: Hendrik "T4cC0re" Meyer <aur@t4cc0.re>
 pkgname=tfenv
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Terraform version manager inspired by rbenv"
 arch=("x86_64")

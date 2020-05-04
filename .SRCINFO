@@ -1,7 +1,7 @@
 pkgbase = tfenv
 	pkgdesc = Terraform version manager inspired by rbenv
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tfutils/tfenv
 	install = tfenv.install
 	arch = x86_64

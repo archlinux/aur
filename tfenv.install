@@ -8,15 +8,14 @@ post_upgrade() {
                 mv /usr/local/lib/tfenv/version{,s} /var/lib/tfenv/
 		rm -r /usr/local/lib/tfenv
         fi
-	if ! getent group tfenv >/dev/null ; then
-		echo "Adding group 'tfenv'"
-		groupadd tfenv
-	fi
 	common
 }
 
 common () {
-
+	if ! getent group tfenv >/dev/null ; then
+		echo "Adding group 'tfenv'"
+		groupadd tfen
+	fi
 	mkdir -p "/var/lib/tfenv/versions"
 	touch "/var/lib/tfenv/version"
 	chgrp -R tfenv "/var/lib/tfenv/versions" "/var/lib/tfenv/version"
