@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
 pkgname=parlatype
 pkgver=2.0
-pkgrel4
+pkgrel=4
 pkgdesc="GNOME audio player for transcription"
 arch=('any')
 url="https://github.com/gkarsay/parlatype"
