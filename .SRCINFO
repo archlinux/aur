@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-inputstream-adaptive-any
 	pkgdesc = Inputstream adaptive without kodi-dev dependency, so it can be built on any architecture
-	pkgver = 2.4.3
+	pkgver = 2.4.4
 	pkgrel = 1
 	url = https://github.com/peak3d/inputstream.adaptive
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = kodi-addon-inputstream-adaptive-any
 	provides = kodi-addon-inputstream-adaptive
 	conflicts = kodi-addon-inputstream-adaptive
 	conflicts = kodi-addon-inputstream-adaptive-18
-	source = https://github.com/peak3d/inputstream.adaptive/archive/2.4.3-Leia.tar.gz
+	source = https://github.com/peak3d/inputstream.adaptive/archive/2.4.4-Leia.tar.gz
 	source = https://github.com/xbmc/xbmc/archive/18.6-Leia.tar.gz
-	sha256sums = 83c3d1c45ed5f63d95ca8fa93fcf57fb249586987f9fe74ef4857ca660ed2f64
+	sha256sums = ec2264aa620faa547e589b705c0393dbbfe4a8f866215d9a9f3d5b3ceea6560e
 	sha256sums = 47e6d7d4e01dbda92ff83a3e141ac43003e918133e78b3a4b79faff65184711c
 
 pkgname = kodi-addon-inputstream-adaptive-any

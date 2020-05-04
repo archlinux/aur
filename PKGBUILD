@@ -1,6 +1,6 @@
 # Maintainer: c4tz
 pkgname=kodi-addon-inputstream-adaptive-any
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 pkgdesc="Inputstream adaptive without kodi-dev dependency, so it can be built on any architecture"
 _koditarget=Leia
@@ -17,7 +17,7 @@ depends=('kodi')
 source=("https://github.com/peak3d/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
-sha256sums=('83c3d1c45ed5f63d95ca8fa93fcf57fb249586987f9fe74ef4857ca660ed2f64'
+sha256sums=('ec2264aa620faa547e589b705c0393dbbfe4a8f866215d9a9f3d5b3ceea6560e'
             '47e6d7d4e01dbda92ff83a3e141ac43003e918133e78b3a4b79faff65184711c')
 
 prepare() {
