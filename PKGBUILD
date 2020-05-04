@@ -2,7 +2,7 @@
 # Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 
 pkgname=freecad-git
-pkgver=0.18.r4645.g0c96f77184
+pkgver=0.18.r4841.ga2aab9d17f
 pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -44,7 +44,6 @@ build() {
         -DFREECAD_USE_OCC_VARIANT="Official Version" \
         -DBUILD_QT5=ON \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DOPENMPI_INCLUDE_DIRS=/usr/include \
         .
     make
 }
