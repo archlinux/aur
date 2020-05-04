@@ -1,0 +1,121 @@
+# Version 2.82 stable.
+[release notes](https://wiki.blender.org/wiki/Reference/Release_Notes/2.82)
+- Smoke and Liquid: new, particle based solver [Mantaflow](http://mantaflow.com/).
+- Cloth: internal air pressure.
+- Cloth: internal springs [diff](https://developer.blender.org/D5788).
+- Cycles: Optix denoiser.
+- Cycles: custom render passes.
+- Eevee: viewport render passes [diff](https://developer.blender.org/D6331).
+- Texturing: UDIM [task](https://developer.blender.org/T72390).
+- Sculpt: Slide,Relex [diff](https://developer.blender.org/D6059).
+- Sculpt: Multiplane Scrape [diff](https://developer.blender.org/D6174).
+- Sculpt: Slice mesh with mask tool.
+- Grease Pencil: Multiple Stroke Modifier.
+- Mesh: Custom Bevel Profile.
+- Mesh: Weld Modifier.
+- VFX: New USD exporter
+- VFX: glTF improvements
+- VFX: Alembic mesh normals export.
+
+# Version 2.81
+[release notes](https://wiki.blender.org/wiki/Reference/Release_Notes/2.81)
+- Cycles: Nvidia Optix [task](https://developer.blender.org/T69800)
+- Cycles: Intel Oidn [diff](https://developer.blender.org/D4304)
+- Cycles: Osd edge stitching.
+- Cycles: Viewport render passes.
+- Shading: 4D noises.
+- Shading: vertex color.
+- Shading: volume info.
+- Eevee: Shadow refactor [diff](https://developer.blender.org/D5659).
+- Eevee: Transparent BSDF congruent to Cycles.
+- Eevee: Holdout shader.
+- Viewport: HDRI studio light.
+- Viewport: per viewport visibility selection [task](https://developer.blender.org/T61327).
+- Viewport: OpenEXR matcaps with separate diffuse/specular layers.
+- Grease Pencil: Self overlapping material.
+- Grease Pencil: Smooth stroke endings.
+- Grease Pencil: New brushes.
+- Grease Pencil: New snapping.
+- Grease Pencil: New stroke form curve.
+- Grease Pencil: New merge by distance.
+- Grease Pencil: New simplify sample.
+- Sculpting: Pose brush [diff](https://developer.blender.org/D5647).
+- Sculpting: Transform around pivot with symmetry.
+- Sculpting: Draw sharp brush.
+- Sculpting: Cursor follow normal and shows symmetry.
+- Sculpting: Stroke point even distance.
+- Sculpting: Auto-masking.
+- Sculpting: Dynamic mesh preview.
+- Sculpting: Mask Filter.
+- Sculpting: Dirty Mask.
+- Sculpting: Mask expand with curvature limits.
+- Sculpting: Mask to object.
+- Sculpting: Voxel remesher [diff](https://developer.blender.org/D5407).
+- Sculpting: [QuadriFlow](https://github.com/hjwdzh/QuadriFlow) remesher.
+- UI: <f2> - rename active element.
+- UI: <c-f2> - Batch rename.
+- UI: Parent dnd for multiple objects.
+- UI: Selection sync.
+- UI: New pop-up file browser.
+- UI: Industry compatible key map.
+- Blenlib: New library override [task](https://developer.blender.org/T53500).
+- Animation: Copy as new driver.
+
+# Version 2.80
+[release notes](https://wiki.blender.org/wiki/Reference/Release_Notes/2.80)
+- UI: New collection system in place of layers.
+- UI: New outliner.
+- UI: New view layers in palace of render layers.
+- UI: Blender default key map.
+- UI: Left click select new default.
+- UI: Re-theme.
+- UI: <q> - context quick favorite.
+- UI: New file UI templates.
+- UI: New workspaces.
+- UI: New object gizmos.
+- UI: New tools with gizmos.
+- UI: New context status bar.
+- UI: Single column layout.
+- UI: New pop overs.
+- UI: New pie menus.
+- Eevee: Principled BSDF.
+- Eevee: Env lightning with HDRI.
+- Eevee: Screen-space reflection and refraction.
+- Eevee: Indirect lighting with light probes.
+- Eevee: Soft and contact shadows.
+- Eevee: SSS and volume rendering.
+- Eevee: Dof, bloom, motion blur for camera.
+- Eevee: Shader to RGB node.
+- Eevee: Light probes.
+- Eevee: Light cache.
+- Eevee: Ground truth ambient occlusion.
+- Viewport: Workbench engine.
+- Viewport: Overlays.
+- Viewport: Look dev - material preview.
+- Viewport: Volume preview.
+- Grease Pencil: New 2d Animation.
+- Cycles: Principled hair BSDF [doc](https://docs.blender.org/manual/en/2.80/render/shader_nodes/shader/hair_principled.html).
+- Cycles: Principled volume [doc](https://docs.blender.org/manual/en/2.80/render/shader_nodes/shader/volume_principled.html).
+- Cycles: Cryptomate.
+- Cycles: Random walk SSS.
+- Cycles: Vector Displacement.
+- Cycles: New adaptive subdivision dicing scheme.
+- Cycles: Bevel shader.
+- Cycles: AO shader.
+- Cycles: IES light node.
+- Cycles: New baking anti aliasing.
+- Cycles: New area light shapes.
+- Cycles: Transparent film rendering for glass.
+- Cycles: Motion blur arbitrary sample count.
+- Cycles: Combined CPU and GPU rendering.
+- Cycles: CUDA small tiles optimization.
+- Cycles: CUDA object streaming for out of gRAM rendering.
+- Cycles: CUDA minimum version bump to 3.x
+- Mesh: New multi object editing.
+- Mesh: Custom normal maps.
+- Animation: Pop over driver editor.
+- Blenlib: New dependency graph for parallelization.
+- Blenlib: New unit system.
+- Physics: New cloth bending springs.
+- Physics: New cloth collisions.
+

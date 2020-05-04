@@ -1,0 +1,26 @@
+diff --git a/build_files/cmake/platform/platform_unix.cmake b/build_files/cmake/platform/platform_unix.cmake
+index ac570f17e47..505aa97934c 100644
+--- a/build_files/cmake/platform/platform_unix.cmake
++++ b/build_files/cmake/platform/platform_unix.cmake
+@@ -320,6 +320,9 @@ if(WITH_BOOST)
+     if(WITH_OPENVDB)
+       list(APPEND __boost_packages iostreams)
+     endif()
++    if(WITH_USD)
++      list(APPEND __boost_packages python27)
++    endif()
+     list(APPEND __boost_packages system)
+     find_package(Boost 1.48 COMPONENTS ${__boost_packages})
+     if(NOT Boost_FOUND)
+diff --git a/source/blender/usd/CMakeLists.txt b/source/blender/usd/CMakeLists.txt
+index 6ea02f44d76..0ec18e17689 100644
+--- a/source/blender/io/usd/CMakeLists.txt
++++ b/source/blender/io/usd/CMakeLists.txt
+@@ -48,6 +48,7 @@ set(INC
+ set(INC_SYS
+   ${USD_INCLUDE_DIRS}
+   ${BOOST_INCLUDE_DIR}
++  ${PYTHON_INCLUDE_DIRS}
+   ${TBB_INCLUDE_DIR}
+ )
+ 
