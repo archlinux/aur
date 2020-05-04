@@ -1,9 +1,10 @@
 pkgname=poshinit
 pkgver=2.0
 pkgrel=1
-pkgdesc="Set up a reusable shell environment for Bash/Zsh across BSD/Linux/Cygwin"
+pkgdesc="poshinit v2.0 for FreeBSD/Linux"
 arch=(x86_64)
 license=(GPL)
+url="https://github.com/bourne-again/${pkgname}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bourne-again/${pkgname}/archive/${pkgver}.tar.gz")
 
 package() {
