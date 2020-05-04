@@ -1,7 +1,7 @@
 # Author: Artemii Sudakov <finziyr@yandex.ru>
 pkgname=wifiman
-pkgver=1.0
-pkgrel=3
+pkgver=1.1
+pkgrel=1
 pkgdesc="Minimalistic wpa_supplicant configuration manager"
 arch=('any')
 url='https://github.com/BiteDasher/wifiman'
@@ -12,10 +12,9 @@ optdepends=(
 )
 provides=('wifigui')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BiteDasher/wifiman/archive/${pkgver}.tar.gz")
-sha256sums=("147a36594e39bd4f3ab748336025626f3316c81404ffb5908e607d39fefd5a55")
+sha256sums=("a4bbab70a43200fdd089d7a7ac5982430c5e9199cbb31d9bf6e67388dbc8ea20")
 package() {
 mkdir -p $pkgdir/usr/bin
-cd "$srcdir/$pkgname-$pkgver"
-install -m 775 wifiman "$pkgdir/usr/bin/wifiman"
-install -m 775 wifigui "$pkgdir/usr/bin/wifigui"
+install -m 775 "$srcdir/$pkgname-$pkgver/wifiman" "$pkgdir/usr/bin/wifiman"
+install -m 775 "$srcdir/$pkgname-$pkgver/wifigui" "$pkgdir/usr/bin/wifigui"
 }
