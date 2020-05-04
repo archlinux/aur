@@ -77,15 +77,15 @@ build() {
     export YARN_CACHE_FOLDER="$srcdir/node_modules"
     ./configure \
         --prefix /usr \
-        --with-bash-completion-dir=bash-completion/completions \
-        --with-fish-completion-dir=fish/vendor_completions.d \
-        --with-zsh-completion-dir=zsh/site-functions
+        --licensedir "$pkgdir/usr/share/licenses/$pkgname/" \
+        --docdir"$pkgdir/usr/share/doc/$pkgname/" \
+        --with-bash-completion-dir bash-completion/completions \
+        --with-fish-completion-dir fish/vendor_completions.d \
+        --with-zsh-completion-dir zsh/site-functions
     make
 }
 
 package () {
     cd "$pkgname"
     make DESTDIR="$pkgdir" install
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md CHANGELOG.md
 }
