@@ -1,15 +1,15 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mupen64plus-gui-git
-pkgver=r205.g93383ee
-pkgrel=2
+pkgver=r212.gcd0513f
+pkgrel=1
 pkgdesc='Mupen64Plus Graphical User Interface written in Qt5 (git version)'
 arch=('x86_64')
 url='https://github.com/m64p/mupen64plus-gui/'
 license=('GPL3')
 depends=('qt5-base' 'sdl2' 'p7zip' 'mupen64plus-git' 'libpng' 'zlib'
-         'freetype2' 'libgl')
-makedepends=('git' 'cmake')
+         'freetype2' 'libgl' 'hicolor-icon-theme')
+makedepends=('git' 'cmake' 'icoutils')
 provides=('mupen64plus-gui' 'mupenplus-video-gliden64')
 conflicts=('mupen64plus-gui' 'mupenplus-video-gliden64' 'm64p')
 source=('git+https://github.com/m64p/mupen64plus-gui.git'
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '701550049301d06472fc25f72d8d0599d6d350762e84012f87b113ee68e905de')
+            '10aef6fadef59a92cbfd754ee6164b4c34cef43a4de230ef119757f7ea03eeb2')
 
 prepare() {
     mkdir -p mupen64plus-{gui,input-qt}/build
@@ -63,8 +63,20 @@ build() {
 package() {
     # mupen64plus-gui
     install -D -m755 mupen64plus-gui/build/mupen64plus-gui -t "${pkgdir}/usr/bin"
-    install -D -m644 mupen64plus-gui/mupen64plus.ico "${pkgdir}/usr/share/pixmaps/mupen64plus-gui.ico"
     install -D -m644 mupen64plus-gui.desktop -t "${pkgdir}/usr/share/applications"
+    icotool -x mupen64plus-gui/mupen64plus.ico
+    local _count='1'
+    local _depth
+    local _file
+    local _res
+    while read -r -d '' _file
+    do
+        _depth="$(printf '%s' "$_file" | sed 's/\.png$//;s/^.*x//' )"
+        _res="$(printf '%s' "$_file" | sed 's/\.png$//;s/^.*_//;s/x.*$//')"
+        install -D -m644 "mupen64plus_${_count}_${_res}x${_res}x${_depth}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/mupen64plus.png"
+        _count="$((_count + 1))"
+    done < <(find -maxdepth 1 -type f -name 'mupen64plus_*_*x*x*.png' -print0 | sort -z)
     
     # needed plugins
     install -D -m644 mupen64plus-input-qt/build/libmupen64plus-input-qt.so "${pkgdir}/usr/lib/mupen64plus/mupen64plus-input-qt.so"
