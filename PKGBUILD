@@ -2,11 +2,11 @@
 _modulename=ansiesc
 pkgname=vim-$_modulename
 pkgver=13.3
-pkgrel=4
+pkgrel=5
 pkgdesc="ansi escape sequences concealed, but highlighted as specified (conceal) "
 arch=(any)
 url="https://github.com/powerman/vim-plugin-AnsiEsc"
-license=('MIT')
+license=()
 groups=('vim-plugins')
 depends=('vim')
 makedepends=()
