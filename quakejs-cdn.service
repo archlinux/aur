@@ -5,7 +5,8 @@ After=network.target
 [Service]
 User=quakejs
 Type=simple
-ExecStart=/usr/bin/node /usr/share/webapps/quakejs/bin/web.js --config ./web.json"
+EnvironmentFile=/etc/conf.d/quakejs
+ExecStart=/usr/bin/node /usr/share/webapps/quakejs/bin/web.js --config ./web.json
 WorkingDirectory=/usr/share/webapps/quakejs
 LimitNOFILE=1048576
 LimitNPROC=64
