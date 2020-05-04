@@ -2,7 +2,7 @@
 # Contributor: Dan Johansen <strit@manjaro.org>
 
 pkgname=libarchive-qt
-pkgver=1.1.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A Qt based archiving solution with libarchive backend."
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('LGPL-3.0')
 depends=('libarchive' 'qt5-base' 'zlib' 'bzip2' 'xz')
 groups=('coreapps')
 source=("https://gitlab.com/marcusbritanicus/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('53f80fad603b178666ffc77a18012334')
+md5sums=('03d33c3602d943382f7fa030bd4fdfdc')
 
 prepare() {
   mkdir -p build
