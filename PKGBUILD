@@ -10,7 +10,7 @@ arch=(i686 x86_64)
 depends=()
 makedepends=(cmake)
 source=("http://cdsarc.u-strasbg.fr/viz-bin/nph-Cat/tar.gz?bincats/GSC_${pkgver}")
-sha256sums=('514d23ff0daf7b91801813ad3db6ad1c484402b453bd649757e477c3a83da48d')
+sha256sums=('b2e360a22148a1d669304c819b983c5a60e634544068f2f5eaf38afc53482f5d')
 
 build() {
   GSCBIN=/usr/share/GSC/bin
