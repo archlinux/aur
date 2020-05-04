@@ -19,7 +19,7 @@ source=(
 sha256sums=('0937c26ab56e7d47d0781c274e92fd985b6f02d7c08be28c4562557d258d7ff9')
 
 package() {
-  mkdir "${pkgdir}/opt"
+  mkdir -p "${pkgdir}/opt/google-cloud-sdk/platform/google_appengine"
 
   # Install the component manifest file
   install -D -m 0644 \
