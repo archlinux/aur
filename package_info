@@ -1,3 +1,5 @@
-PackageAuthor=fryfrog
+# PackageVersion is added by PKGBUILD
+PackageAuthor=[radarr-aphrodite](https://aur.archlinux.org/packages/radarr-aphrodite/)
 UpdateMethod=External
+UpdateMethodMessage=use your favorite [aur helper](https://wiki.archlinux.org/index.php/AUR_helpers) or [manual method](https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages) to update [radarr-aphrodite](https://aur.archlinux.org/packages/radarr-aphrodite/) from the AUR.
 Branch=aphrodite
