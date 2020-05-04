@@ -9,7 +9,7 @@ pkgname=firefox-beta
 _pkgname=firefox
 pkgver=76.0b8
 _pkgver=76.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org - Beta"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -29,12 +29,10 @@ conflicts=('firefox-beta-bin')
 options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/$_pkgname-$pkgver.source.tar.xz{,.asc}
         0001-Use-remoting-name-for-GDK-application-names.patch
-	$_pkgname.sh
         $pkgname.desktop)
 sha256sums=('7a1baefeec7edaf35022e1b47683d7ab62a84dfe5768af971bcfe2f8b35c666c'
             'SKIP'
             '5f7ac724a5c5afd9322b1e59006f4170ea5354ca1e0e60dab08b7784c2d8463c'
-            '367100e5f66523a90c3792e2e0d0e2fe8a3c28748b905ce9f5f6b121343d7842'
             'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
@@ -76,13 +74,14 @@ export NM=llvm-nm
 export RANLIB=llvm-ranlib
 
 # Branding
-ac_add_options --with-branding=browser/branding/aurora
+ac_add_options --enable-official-branding
 ac_add_options --enable-update-channel=beta
 ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
-export MOZ_TELEMETRY_REPORTING=1
+export MOZ_APP_REMOTINGNAME=${pkgname}
+unset MOZ_TELEMETRY_REPORTING
 export MOZ_REQUIRE_SIGNING=1
 
 # Keys
@@ -133,6 +132,8 @@ END
 package() {
   cd firefox-$_pkgver
   DESTDIR="$pkgdir" ./mach install
+  mv "$pkgdir"/usr/lib/{firefox,$pkgname}
+  rm "$pkgdir"/usr/bin/firefox
 
   local vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
   install -Dvm644 /dev/stdin "$vendorjs" <<END
