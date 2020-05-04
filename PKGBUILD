@@ -12,11 +12,12 @@ _pkgver_tag='0.99.5' # Git tag associated with the release where the latest arch
 _pkgver_suffix='' # Anything after $_pkgver_tag that is present in the archive name.
 _pkgver_upstream="$_pkgver_tag$_pkgver_suffix"
 
-# 1. Use the latest date for the version that can be found on the website.
-# 2. Otherwise, use the date of the website commit that added new release notes.
+# Use the date of the corresponding release archive asset, which can be found e.g. by using the below one-liner
+# (substitute $_pkgver_tag):
 #
-# If multiple releases happened on the same day, or there are no website changes, but the archive has changed,
-# set $_pkgver_uniqueness to '.1', then '.2' etc.
+# $ curl -sSf "https://api.github.com/repos/ephtracy/ephtracy.github.io/releases/tags/$_pkgver_tag" | jq '.assets|map(select(.name|contains("win64")))[0].updated_at|fromdate|strftime("%Y%m%d")'
+#
+# If multiple releases happened on the same day, set $_pkgver_uniqueness to '.1', then '.2' etc.
 _pkgver_date='20200503'
 _pkgver_uniqueness='' # Don't forget to reset to '' when date changes.
 
