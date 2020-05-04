@@ -1,13 +1,14 @@
 pkgbase = m64p
 	pkgdesc = Mupen64Plus with custom plugins and Qt5 GUI
 	pkgver = 20200504
-	pkgrel = 1
+	pkgrel = 2
 	url = https://m64p.github.io/
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
 	makedepends = nasm
+	makedepends = icoutils
 	depends = freetype2
 	depends = glu
 	depends = hidapi
@@ -19,6 +20,7 @@ pkgbase = m64p
 	depends = qt5-base
 	depends = sdl2
 	depends = zlib
+	depends = hicolor-icon-theme
 	provides = mupen64plus
 	provides = mupen64plus-gui
 	provides = mupenplus-video-gliden64
@@ -46,7 +48,7 @@ pkgbase = m64p
 	sha256sums = SKIP
 	sha256sums = 6871b495ace8a9005d93ce3e9103a15111a67793812dd5158072c981c4c3a5a8
 	sha256sums = a999739626fc3e9d0102b65014c436bf4e9039587ccac174334672f3925f4495
-	sha256sums = b884fc86180346226eb7e8bf8560d2b789318e810c9e26b6adbe7d8d047188df
+	sha256sums = 8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808
 
 pkgname = m64p
 
