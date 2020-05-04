@@ -1,0 +1,11 @@
+# arg 1: the new package version
+post_install() {
+  pkgver=$(echo $1 | sed -r 's/-[0-9]+//')
+  echo -e "\n$(tput setaf 2;tput bold)run:$(tput sgr0) /usr/lib/tktreectrl-$pkgver/demos/demo.tcl\n"
+}
+
+# arg 1: the new package version
+# arg 2: the old package version
+post_upgrade() {
+  post_install $1
+}

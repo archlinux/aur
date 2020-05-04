@@ -1,0 +1,77 @@
+diff --git a/Makefile.in b/Makefile.in
+index ad667de..77c8681 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -78,7 +78,7 @@ includedir	= @includedir@
+ 
+ DESTDIR		=
+ 
+-PKG_DIR		= $(PACKAGE_NAME)$(PACKAGE_PATCHLEVEL)
++PKG_DIR		= tk$(PACKAGE_NAME)-$(PACKAGE_PATCHLEVEL)
+ pkgdatadir	= $(datadir)/$(PKG_DIR)
+ pkglibdir	= $(libdir)/$(PKG_DIR)
+ pkgincludedir	= $(includedir)/$(PKG_DIR)
+@@ -141,8 +141,8 @@ WISH		= $(TCLSH_ENV) $(WISH_PROG)
+ 
+ # The local includes must come first, because the TK_XINCLUDES can be
+ # just a comment
+-INCLUDES	= @PKG_INCLUDES@ \
+-		  @TCL_INCLUDES@ @TK_INCLUDES@ @TK_XINCLUDES@
++INCLUDES	= @PKG_INCLUDES@ @TCL_INCLUDES@ @TK_INCLUDES@ \
++		  @TK_XINCLUDES@
+ 
+ PKG_CFLAGS	= @PKG_CFLAGS@
+ 
+@@ -190,9 +190,9 @@ doc-x:
+ doc:
+ 	@echo "No docs to build"
+ 
+-install: all install-binaries install-libraries install-doc
++install: all install-binaries install-libraries install-doc install-demos
+ 
+-install-binaries: binaries install-lib-binaries install-bin-binaries
++install-binaries: binaries install-lib-binaries
+ 	@mkdir -p $(DESTDIR)$(pkglibdir)
+ 	$(INSTALL_DATA) pkgIndex.tcl $(DESTDIR)$(pkglibdir)
+ 	@list='$(PKG_EXTRA_FILES)'; for p in $$list; do \
+@@ -224,8 +224,13 @@ install-doc-x:
+ 	done
+ 
+ install-doc: install-doc-x
+-	mkdir -p $(DESTDIR)$(pkglibdir)/htmldoc
+-	cp $(srcdir)/doc/*.html $(DESTDIR)$(pkglibdir)/htmldoc
++	@mkdir -p                                        $(DESTDIR)$(datadir)/doc/$(DIST_NAME)
++	@cp $(srcdir)/doc/treectrl.html                  $(DESTDIR)$(datadir)/doc/$(DIST_NAME)
++	@cp $(srcdir)/doc/What-is-New-in-TkTreeCtrl.html $(DESTDIR)$(datadir)/doc/$(DIST_NAME)/whatsnew.html
++
++install-demos:
++	@chmod 755 $(srcdir)/demos/demo.tcl
++	@cp -r     $(srcdir)/demos $(DESTDIR)$(pkglibdir)
+ 
+ test: binaries libraries
+ 	@$(WISH) `@CYGPATH@ $(srcdir)/tests/all.tcl` $(TESTFLAGS) | cat
+diff --git a/configure b/configure
+index 22e5190..f05e80c 100644
+--- a/configure
++++ b/configure
+@@ -5461,7 +5461,7 @@ $as_echo "${ac_cv_c_tkh}" >&6; }
+ 
+     TK_INCLUDES=-I\"${INCLUDE_DIR_NATIVE}\"
+ 
+-
++    TK_XINCLUDES='-I/usr/include/tk-private/generic/ -I/usr/include/tk-private/unix/'
+ 
+     if test "${TEA_WINDOWINGSYSTEM}" != "x11"; then
+ 	# On Windows and Aqua, we need the X compat headers
+diff --git a/demos/demo.tcl b/demos/demo.tcl
+old mode 100644
+new mode 100755
+index f6da6ee..deeee9f
+--- a/demos/demo.tcl
++++ b/demos/demo.tcl
+@@ -1,4 +1,4 @@
+-#!/bin/wish84.exe
++#!/bin/wish
+ 
+ # Copyright (c) 2002-2013 Tim Baker
+ 
