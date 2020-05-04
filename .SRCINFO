@@ -1,7 +1,7 @@
 pkgbase = parlatype
 	pkgdesc = GNOME audio player for transcription
 	pkgver = 2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/gkarsay/parlatype
 	arch = any
 	license = GPL3
