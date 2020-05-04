@@ -2,10 +2,10 @@
 
 pkgname='pepper-flash-armv7h'
 pkgdesc='Adobe Flash Player (version for armv7h)'
-pkgver=32.0.0.303
+pkgver=32.0.0.344
 pkgrel=1
 #list od current images https://dl.google.com/dl/edgedl/chromeos/recovery/recovery.conf
-_chromeos_ver=12607.58.0
+_chromeos_ver=12739.111.0
 _chromeos_file="chromeos_${_chromeos_ver}_elm_recovery_stable-channel_mp-v2.bin"
 _rootfs_img="ROOT-A.img"
 _libpepperflash="libpepflashplayer.so"
