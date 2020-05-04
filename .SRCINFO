@@ -1,13 +1,13 @@
 pkgbase = eqonomize
 	pkgdesc = Efficient and easy accounting for the small household economy
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://eqonomize.github.io/
 	arch = x86_64
 	depends = qt5-charts
 	depends = qt5-base
-	source = https://github.com/Eqonomize/eqonomize/releases/download/v1.4.2/eqonomize-1.4.2.tar.gz
-	sha256sums = 1972efad7afad7c516cae8ef65894a4f205f722ab039748b132212cf7e1a6d8d
+	source = https://github.com/Eqonomize/eqonomize/releases/download/v1.4.3/eqonomize-1.4.3.tar.gz
+	sha256sums = f9850006e0058773f2256da65794698c6d7ecd691a05d5c22e941db31e5d38c2
 
 pkgname = eqonomize
 
