@@ -1,14 +1,14 @@
 pkgbase = firefox-beta-i18n
 	pkgdesc = Language pack for Firefox Beta
 	pkgver = 76.0b8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/firefox/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
 	depends = firefox-beta>=76.0b8
-	provides = firefox-beta-i18n=76.0b8-1
+	provides = firefox-beta-i18n=76.0b8-2
 	noextract = firefox-i18n-76.0b8-ach.xpi
 	noextract = firefox-i18n-76.0b8-af.xpi
 	noextract = firefox-i18n-76.0b8-an.xpi

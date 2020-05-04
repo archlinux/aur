@@ -9,7 +9,7 @@
 pkgbase='firefox-beta-i18n'
 pkgname=("$pkgbase-all")
 pkgver=76.0b8
-pkgrel=1
+pkgrel=2
 pkgdesc="Language pack for Firefox Beta"
 arch=('any')
 license=(MPL GPL LGPL)
@@ -145,7 +145,7 @@ _package() {
   conflicts=("firefox-i18n-$_as_lower" "firefox-developer-edition-i18n-$_as_lower")
 
   install -Dm644 "firefox-i18n-$pkgver-$1.xpi" \
-      "$pkgdir/usr/lib/firefox/browser/extensions/langpack-$1@firefox.mozilla.org.xpi"
+      "$pkgdir/usr/lib/firefox-beta/browser/extensions/langpack-$1@firefox.mozilla.org.xpi"
 }
 
 md5sums=('dc00c117a8839291c4492f43e387aa96'
