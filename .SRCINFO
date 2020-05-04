@@ -1,0 +1,14 @@
+pkgbase = recaf
+	pkgdesc = A modern Java bytecode editor
+	pkgver = 1.15.10
+	pkgrel = 1
+	url = https://col-e.github.io/Col-E/Recaf
+	arch = any
+	license = MIT
+	depends = java-runtime
+	noextract = recaf-1.15.10.jar
+	source = https://github.com/Col-E/Recaf/releases/download/1.15.10/recaf-1.15.10.jar
+	sha256sums = SKIP
+
+pkgname = recaf
+
