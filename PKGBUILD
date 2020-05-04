@@ -2,7 +2,7 @@
 # Contributor: Tomas Kral <tomas.kral@gmail.com>
 pkgname=nvpy
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simplenote syncing note-taking application, but uglier and cross-platformerer."
 arch=("any")
 url="https://github.com/cpbotha/nvpy"
@@ -16,7 +16,7 @@ depends=(
   "tk"
 )
 provides=("$pkgname")
-provides=("${pkgname}-git")
+conflicts=("${pkgname}-git")
 source=("https://github.com/cpbotha/${pkgname}/archive/v${pkgver}.tar.gz")
 install=nvpy.install
 sha256sums=('fd045f90660134154474318f7155b2fa0a439c7b00da85800d7d75c4650666e2')
