@@ -1,7 +1,7 @@
 pkgname=gamerworld
 _pkgname=GamerWorld
 pkgver=1.1.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Play games all in one place"
 arch=('x86_64')
 url="https://gitlab.com/gamerworld/application"
@@ -10,7 +10,7 @@ depends=('nss' 'gtk3' 'libxss')
 makedepends=('npm' 'git' 'unzip')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}")
-source=(git+https://gitlab.com/gamerworld/application.git#branch=GW-Stable)
+source=('git+https://gitlab.com/gamerworld/application.git#branch=GW-Stable')
 sha256sums=('SKIP')
 
 pkgver() {
