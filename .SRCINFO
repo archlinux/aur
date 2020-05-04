@@ -1,7 +1,7 @@
 pkgbase = python-av1an
 	pkgdesc = All-in-one tool for streamlining av1 encoding
-	pkgver = 1.8.0
-	pkgrel = 2
+	pkgver = 1.8
+	pkgrel = 3
 	url = https://github.com/master-of-zen/Av1an
 	arch = any
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = python-av1an
 	optdepends = aom: Aomenc encoder support
 	optdepends = svt-av1: SVT-AV1 encoder support
 	optdepends = rav1e: rav1e encoder support
-	source = av1an-1.8.0.tar.gz::https://github.com/master-of-zen/Av1an/archive/1.8.tar.gz
+	source = av1an-1.8.tar.gz::https://github.com/master-of-zen/Av1an/archive/1.8.tar.gz
 	sha256sums = fbf485988fe30ccf5b8b1b9555912911da49033527e908155177b2f7b3b77e87
 
 pkgname = python-av1an
