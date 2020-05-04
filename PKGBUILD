@@ -4,6 +4,7 @@ pkgrel=1
 pkgdesc="Check a file for any invalid ASCII characters"
 arch=(x86_64)
 license=(GPL)
+url="https://github.com/bourne-again/${pkgname}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bourne-again/${pkgname}/archive/${pkgver}.tar.gz")
 
 build() {
@@ -16,4 +17,4 @@ package() {
   install -Dm755 ${pkgname} "${pkgdir}"/usr/bin/${pkgname}
   install -Dm644 ${pkgname}.1 "${pkgdir}"/usr/share/man/man1/${pkgname}.1
 }
-md5sums=('9cb1668377f6f18fc0fe6981461b4c9e')
+md5sums=('65ef0c2f0f404d237aa3a3f22847534d')
