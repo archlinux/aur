@@ -27,7 +27,7 @@ depends=("cython"
 	"python-wasabi"
 	"python-pydantic"
 )
-makedepends=("python-setuptools" "python-wheel")
+makedepends=("python-setuptools" "python-wheel" "cython")
 optdepends=("python-spacy: examples" "python-ipykernel: for running more included tests" )
 checkdepends=("python-pytest-cov" "flake8" "mypy")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/explosion/thinc/archive/v$pkgver.tar.gz")

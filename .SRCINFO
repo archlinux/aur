@@ -10,6 +10,7 @@ pkgbase = python-thinc
 	checkdepends = mypy
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = cython
 	depends = cython
 	depends = python-numpy
 	depends = python-cymem
