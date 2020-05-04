@@ -1,0 +1,16 @@
+pkgbase = pandoc-ac-git
+	pkgdesc = Simple Pandoc filter for a clean syntax to LaTeX acronyms
+	pkgver = 0.2.0.r5.56a3957
+	pkgrel = 1
+	url = https://github.com/Enet4/pandoc-ac
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	provides = pandoc-ac
+	conflicts = pandoc-ac
+	source = pandoc-ac::git+https://github.com/Enet4/pandoc-ac.git
+	md5sums = SKIP
+
+pkgname = pandoc-ac-git
+
