@@ -1,7 +1,7 @@
 pkgbase = nodejs-mumble-web
 	pkgdesc = An HTML5 Mumble client - stable
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/johni0702/mumble-web
 	arch = any
 	license = custom:ISC
@@ -12,12 +12,12 @@ pkgbase = nodejs-mumble-web
 	optdepends = apache: supported reverse proxy
 	optdepends = caddy: supported reverse proxy
 	optdepends = hiawatha: supported reverse proxy
-	noextract = nodejs-mumble-web-0.5.1.tgz
-	backup = usr/lib/node_modules/nodejs-mumble-web/dist/config.local.js
-	source = https://registry.npmjs.org/nodejs-mumble-web/-/nodejs-mumble-web-0.5.1.tgz
+	noextract = mumble-web-0.5.1.tgz
+	backup = usr/lib/node_modules/mumble-web/dist/config.local.js
+	source = https://registry.npmjs.org/mumble-web/-/mumble-web-0.5.1.tgz
 	source = LICENSE
 	sha512sums = 87de66921c5ac00cfd91c6dde064d3427dbbc979c6e94f18cc3e84e77799e9f2bba361818f08ceedc08ded91865decde24da306e6e3d74f3a42ec5d231105bf6
-	sha512sums = 0ccf490943b514c97243b5761c798e1af8cb79793b0b10063ee7ffdfc67e73bc0f962d8ebadc1b3cb88dab7ccd3d98b448e2242313adc528beb5211ea0ca7f2a
+	sha512sums = 078ee99b369d88e3323d2ae2046b4faa8f61dc8ffa46d0d34788fcd4ca9a9dab1c3542e2798431c95e54a6f6106000489a6face2ce05db80523200c9e5ddfac0
 
 pkgname = nodejs-mumble-web
 
