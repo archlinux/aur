@@ -1,0 +1,5 @@
+post_install() {
+    echo "Be sure to create a config file containing your login credentials
+    at: '~/.nvpy.cfg'"
+    echo "Example config provided at '/usr/share/nvpy/nvpy.cfg'"
+}
