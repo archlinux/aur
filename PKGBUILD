@@ -11,7 +11,7 @@ _pkgvermajmin=4.12
 _pkgver=${_pkgvermajmin}.0
 _verpostfix=""
 pkgver="${_pkgver}${_verpostfix}"
-pkgrel=2
+pkgrel=3
 _urlbase="https://download.qt.io/official_releases"
 if [[ -n $_verpostfix ]]; then
   _pkgver=${_pkgver}-${_verpostfix}
@@ -56,7 +56,7 @@ prepare() {
   # Preload analyzer plugins, since upstream clang doesn't link to all plugins
   # see http://code.qt.io/cgit/clang/clang.git/commit/?id=7f349701d3ea0c47be3a43e265699dddd3fd55cf
   # and https://bugs.archlinux.org/task/59492
-  patch -p1 -i ../qtcreator-preload-plugins.patch
+  #patch -p1 -i ../qtcreator-preload-plugins.patch
 
   # Fix build with clang 10
   patch -p1 -i ../qtcreator-clang-libs.patch
@@ -68,9 +68,6 @@ build() {
   qmake \
     -r \
     -spec linux-clang \
-    LLVM_INSTALL_DIR=/usr QBS_INSTALL_DIR=/usr \
-    KSYNTAXHIGHLIGHTING_LIB_DIR=/usr/lib KSYNTAXHIGHLIGHTING_INCLUDE_DIR=/usr/include/KF5/KSyntaxHighlighting \
-    CONFIG+=journald QMAKE_CFLAGS_ISYSTEM=-I \
     DEFINES+=QBS_ENABLE_PROJECT_FILE_UPDATES \
     ${srcdir}/${_filename}/qtcreator.pro
 
@@ -87,5 +84,5 @@ package() {
   install -Dm644 "$srcdir"/qt-creator-opensource-src-$pkgver/LICENSE.GPL3-EXCEPT "$pkgdir"/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT
 
 # Link clazy plugin explicitely
-  patchelf --add-needed ClazyPlugin.so "$pkgdir"/usr/lib/qtcreator/clangbackend
+  #patchelf --add-needed ClazyPlugin.so "$pkgdir"/usr/lib/qtcreator/clangbackend
 }
