@@ -1,7 +1,7 @@
 pkgbase = raidgrep-bin
 	pkgdesc = Guild Wars 2/arcdps evtc log searching tool. Pre-compiled.
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://gitlab.com/dunj3/raidgrep
 	arch = x86_64
 	license = GPL
@@ -9,8 +9,8 @@ pkgbase = raidgrep-bin
 	provides = raidgrep
 	conflicts = raidgrep
 	conflicts = raidgrep-git
-	source = https://kingdread.de/raidgrep/raidgrep-1.0.2
-	sha256sums = 7d6d5fe9f0a78dbbe95bc163735bbdecdf8d18f7450927ba6ca178c9221ceec4
+	source = https://kingdread.de/raidgrep/raidgrep-1.1.0.tar.gz
+	sha256sums = 8554e44921c5725f74ba9a4bbed8d6d300fa0cdbd156401254a9904922c7b884
 
 pkgname = raidgrep-bin
 
