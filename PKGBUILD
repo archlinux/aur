@@ -1,4 +1,4 @@
-# Maintainer: Sergey Kasmy <SleeplessSloth79@gmail.com>
+# Maintainer: Sergey Kasmy <SleeplessSloth79 [at] gmail [dot] com>
 pkgname=ffpb
 pkgver=0.2.0
 pkgrel=2
