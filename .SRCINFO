@@ -1,6 +1,6 @@
 pkgbase = xkeysnail
 	pkgdesc = Yet another keyboard remapping tool for X environment.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/mooz/xkeysnail
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = xkeysnail
 	depends = python-evdev
 	depends = python-inotify-simple
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/x/xkeysnail/xkeysnail-0.2.0.tar.gz
-	sha256sums = 9df2499c477a21ceeea8af147a9543c06204ba49843f29a4bc3b2d0cda5a5aff
+	source = https://files.pythonhosted.org/packages/source/x/xkeysnail/xkeysnail-0.3.0.tar.gz
+	sha256sums = 0eaff456508b06a1daad6408e2fe91828af988d591a165e6d863ef116bc60a3e
 
 pkgname = xkeysnail
 
