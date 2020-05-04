@@ -36,7 +36,7 @@ build() {
   sed -i 's/Impl::inputOne(io, key, \*value)/Impl::inputOne(io, key.str(), \*value)/g' \
     $srcdir/build/virtualenv/lib/python*/site-packages/Tensile/Source/lib/include/Tensile/llvm/YAML.hpp
 
-  make
+  make -j 2
 }
 
 package() {
