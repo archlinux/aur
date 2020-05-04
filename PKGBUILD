@@ -3,15 +3,15 @@
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgbase=vdr-git
 pkgname=(vdr-git vdr-examples-git)
-pkgver=2.4.1.r0.g32cea9d
+pkgver=2.4.1.r6.g930c2cd
 _vdrapi=2.4.1
-pkgrel=2
+pkgrel=1
 url="http://tvdr.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 makedepends=('fontconfig' 'libcap' 'libjpeg-turbo' 'libsystemd' 'perl' 'ttf-font' 'systemd' 'ncurses')
 _vdrrepo="https://raw.githubusercontent.com/VDR4Arch/vdr4arch/87d77e000f8067e73e1c2da4d4ba4ace653e766c/vdr"
-source=("$pkgbase::git+https://github.com/VDR4Arch/vdr.git"
+source=("$pkgbase::git+http://git.tvdr.de/vdr.git"
         "$_vdrrepo/vdr-MainMenuHooks.patch"
         "$_vdrrepo/00-vdr.conf"
         "$_vdrrepo/50-hello.conf"
@@ -36,7 +36,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${pkgbase}"
-  git describe --long --tags | sed 's/^vdr-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed -r 's/^V(.)(..)(..)/\1.\2.\3/;s/\.0/./g;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
