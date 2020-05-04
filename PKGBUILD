@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p-git
-pkgver=r104.g2938cb5
+pkgver=r106.g3a856f5
 pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI (git version)'
 arch=('x86_64')
@@ -20,8 +20,8 @@ source=('git+https://github.com/loganmc10/m64p.git'
         'GLideN64-loganmc10'::'git+https://github.com/loganmc10/GLideN64.git'
         'mupen64plus-core-loganmc10'::'git+https://github.com/loganmc10/mupen64plus-core.git'
         'mupen64plus-input-raphnetraw-loganmc10'::'git+https://github.com/loganmc10/mupen64plus-input-raphnetraw.git'
-        '001-m64p-git-remove-build-jobs-limitation.patch'
-        '002-m64p-git-enable-optimizations.patch'
+        '010-m64p-git-remove-build-jobs-limitation.patch'
+        '020-m64p-git-enable-optimizations.patch'
         'm64p.desktop')
 sha256sums=('SKIP'
             'SKIP'
@@ -45,8 +45,8 @@ prepare() {
     git -C m64p config --local submodule.mupen64plus-input-qt.url   "${srcdir}/mupen64plus-input-qt"
     git -C m64p config --local submodule.mupen64plus-input-raphnetraw.url "${srcdir}/mupen64plus-input-raphnetraw-loganmc10"
     git -C m64p submodule update
-    patch -d m64p -Np1 -i "${srcdir}/001-m64p-git-remove-build-jobs-limitation.patch"
-    patch -d m64p -Np1 -i "${srcdir}/002-m64p-git-enable-optimizations.patch"
+    patch -d m64p -Np1 -i "${srcdir}/010-m64p-git-remove-build-jobs-limitation.patch"
+    patch -d m64p -Np1 -i "${srcdir}/020-m64p-git-enable-optimizations.patch"
 }
 
 pkgver() {
