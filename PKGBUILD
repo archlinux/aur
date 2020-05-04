@@ -1,8 +1,9 @@
-# Maintainer: anonimal <anonimal at zano dot org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: anonimal <anonimal at zano dot org>
 
 pkgbase="zano"
 pkgname=('zano')
-pkgver=1.0.29
+pkgver=1.1.5.82
 pkgrel=1
 pkgdesc="Zano: innovative private money"
 license=('MIT')
@@ -51,3 +52,4 @@ package_zano()
 
   # TODO: zano-gui currently requires `/usr/bin/zano-gui --html-path /usr/share/zano/html` because the binary expects html in same location
 }
+sha256sums=('SKIP')

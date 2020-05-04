@@ -1,6 +1,6 @@
 pkgbase = zano
 	pkgdesc = Zano: innovative private money
-	pkgver = 1.0.29
+	pkgver = 1.1.5.82
 	pkgrel = 1
 	url = https://zano.org/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = zano
 	depends = qt5-tools
 	depends = qt5-webengine
 	provides = zano
-	source = zano::git+https://github.com/hyle-team/zano#tag=1.0.29
+	source = zano::git+https://github.com/hyle-team/zano#tag=1.1.5.82
 	sha256sums = SKIP
 
 pkgname = zano
