@@ -1,15 +1,15 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p-git
-pkgver=r106.g3a856f5
+pkgver=r108.g664f2fd
 pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI (git version)'
 arch=('x86_64')
 url='https://m64p.github.io/'
 license=('GPL3')
-depends=('freetype2' 'glu' 'hidapi' 'libpng' 'libsamplerate' 'minizip'
-         'p7zip' 'qt5-base' 'sdl2' 'zlib')
-makedepends=('git' 'cmake' 'nasm')
+depends=('freetype2' 'glu' 'hidapi' 'libgl' 'libpng' 'libsamplerate'
+         'minizip' 'p7zip' 'qt5-base' 'sdl2' 'zlib' 'hicolor-icon-theme')
+makedepends=('git' 'cmake' 'nasm' 'icoutils')
 provides=('m64p' 'mupen64plus' 'mupen64plus-gui' 'mupenplus-video-gliden64')
 conflicts=('m64p' 'mupen64plus' 'mupen64plus-gui' 'mupenplus-video-gliden64')
 source=('git+https://github.com/loganmc10/m64p.git'
@@ -33,7 +33,7 @@ sha256sums=('SKIP'
             'SKIP'
             '6871b495ace8a9005d93ce3e9103a15111a67793812dd5158072c981c4c3a5a8'
             'a999739626fc3e9d0102b65014c436bf4e9039587ccac174334672f3925f4495'
-            'b884fc86180346226eb7e8bf8560d2b789318e810c9e26b6adbe7d8d047188df')
+            '8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808')
 
 prepare() {
     git -C m64p submodule init
@@ -62,7 +62,19 @@ package() {
     # mupen64plus-gui
     install -D -m755 m64p/mupen64plus/mupen64plus-gui -t "${pkgdir}/usr/bin"
     install -D -m644 m64p.desktop -t "${pkgdir}/usr/share/applications"
-    install -D -m644 mupen64plus-gui/mupen64plus.ico "${pkgdir}/usr/share/pixmaps/m64p.ico"
+    icotool -x mupen64plus-gui/mupen64plus.ico
+    local _count='1'
+    local _depth
+    local _file
+    local _res
+    while read -r -d '' _file
+    do
+        _depth="$(printf '%s' "$_file" | sed 's/\.png$//;s/^.*x//' )"
+        _res="$(printf '%s' "$_file" | sed 's/\.png$//;s/^.*_//;s/x.*$//')"
+        install -D -m644 "mupen64plus_${_count}_${_res}x${_res}x${_depth}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/mupen64plus.png"
+        _count="$((_count + 1))"
+    done < <(find -maxdepth 1 -type f -name 'mupen64plus_*_*x*x*.png' -print0 | sort -z)
     
     # mupen64plus components
     local _component
