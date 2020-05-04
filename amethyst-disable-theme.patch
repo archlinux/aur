@@ -1,0 +1,82 @@
+diff -rupN amethyst.orig/amethyst/amethyst.cpp amethyst/amethyst/amethyst.cpp
+--- amethyst.orig/amethyst/amethyst.cpp	2020-05-03 10:42:12.087615794 +0930
++++ amethyst/amethyst/amethyst.cpp	2020-05-04 11:12:55.255401005 +0930
+@@ -83,7 +83,7 @@ auto Document::update() -> void {
+   }
+   if(type == "binary") treeViewItem.setIcon(Icon::Emblem::Binary);
+   if(type == "text") treeViewItem.setIcon(Icon::Emblem::Text);
+-  if(!writable) {
++  /*if(!writable) {
+     treeViewItem.setForegroundColor(getColor("browser/color/readonly"));
+   } else if(modified) {
+     treeViewItem.setForegroundColor(getColor("browser/color/modified"));
+@@ -91,7 +91,7 @@ auto Document::update() -> void {
+     treeViewItem.setForegroundColor(getColor("browser/color/desynced"));
+   } else {
+     treeViewItem.setForegroundColor(getColor("browser/color/standard"));
+-  }
++  }*/
+   treeViewItem.setText(name());
+ }
+ 
+@@ -144,8 +144,8 @@ Program::Program() {
+   treeView.setActivation(Mouse::Click::Single);
+   treeView.setCollapsible();
+   treeView.setFont(getFont("browser/font"));
+-  treeView.setBackgroundColor(getColor("browser/color/background"));
+-  treeView.setForegroundColor(getColor("browser/color/standard"));
++  //treeView.setBackgroundColor(getColor("browser/color/background"));
++  //treeView.setForegroundColor(getColor("browser/color/standard"));
+   treeView.onActivate([&] { documentActivate(); });
+   treeView.onChange([&] { documentChange(); });
+   treeView.onContext([&] {
+@@ -180,15 +180,15 @@ Program::Program() {
+   });
+ 
+   noDocument.setCollapsible();
+-  noDocument.setBackgroundColor(getColor("editor/color/background"));
++  //noDocument.setBackgroundColor(getColor("editor/color/background"));
+   noDocument.setEditable(false);
+ 
+   findLayout.setCollapsible();
+   findLayout.setVisible(false);
+   findLabel.setText(" Find:").setFont(getFont("window/font"));
+   findEdit.setFont(getFont("find/font"));
+-  findEdit.setBackgroundColor(getColor("find/color/background"));
+-  findEdit.setForegroundColor(getColor("find/color/standard"));
++  //findEdit.setBackgroundColor(getColor("find/color/background"));
++  //findEdit.setForegroundColor(getColor("find/color/standard"));
+   findEdit.onActivate([&] { findNext(); });
+   findNextButton.setBordered(false).setIcon(Icon::Go::Down).onActivate([&] { findNext(); });
+   findPreviousButton.setBordered(false).setIcon(Icon::Go::Up).onActivate([&] { findPrevious(); });
+@@ -201,8 +201,8 @@ Program::Program() {
+   gotoLayout.setVisible(false);
+   gotoLabel.setText(" Goto:").setFont(getFont("window/font"));
+   gotoEdit.setFont(getFont("goto/font"));
+-  gotoEdit.setBackgroundColor(getColor("goto/color/background"));
+-  gotoEdit.setForegroundColor(getColor("goto/color/standard"));
++  //gotoEdit.setBackgroundColor(getColor("goto/color/background"));
++  //gotoEdit.setForegroundColor(getColor("goto/color/standard"));
+   gotoEdit.onActivate([&] { gotoLine(); });
+   gotoLineButton.setBordered(false).setIcon(Icon::Go::Right).onActivate([&] { gotoLine(); });
+   gotoCloseButton.setBordered(false).setIcon(Icon::Action::Close).onActivate([&] {
+@@ -476,7 +476,7 @@ auto Program::documentChange() -> void {
+         document->sourceEdit.setFont(getFont("editor/font"));
+         document->sourceEdit.setWordWrap(false);
+         document->sourceEdit.setLanguage(document->language());
+-        document->sourceEdit.setScheme(getString("editor/scheme"));
++        //document->sourceEdit.setScheme(getString("editor/scheme"));
+         if(document->type == "text") {
+           document->sourceEdit.setNumbered(true);
+           document->sourceEdit.setText(file::read(document->location));
+@@ -635,8 +635,8 @@ SaveDialog::SaveDialog() {
+   layout.setPadding(5);
+   promptLabel.setFont(getFont("window/font"));
+   tableView.setFont(getFont("save/font"));
+-  tableView.setBackgroundColor(getColor("save/color/background"));
+-  tableView.setForegroundColor(getColor("save/color/standard"));
++  //tableView.setBackgroundColor(getColor("save/color/background"));
++  //tableView.setForegroundColor(getColor("save/color/standard"));
+   selectAllButton.setText("Select All").setFont(getFont("window/font")).onActivate([&] {
+     for(auto item : tableView.items()) item.cell(0).setChecked(true);
+   });
