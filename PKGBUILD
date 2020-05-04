@@ -2,7 +2,7 @@
 
 pkgname=xde-styles-git
 _pkgname=xde-styles
-pkgver=1.5.r1.gd93c02a
+pkgver=1.6.r1.gd014c0c
 pkgrel=1
 pkgdesc="Four consistent styles across light-weight WMs for XDE"
 arch=('any')
