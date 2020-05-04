@@ -1,6 +1,6 @@
 pkgbase = ttt2
 	pkgdesc = An automatic termination prover for term rewrite systems (TRS)
-	pkgver = 1.19.1
+	pkgver = 1.20
 	pkgrel = 1
 	url = http://colo6-c703.uibk.ac.at/ttt2/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = ttt2
 	makedepends = camlidl
 	depends = libxslt
 	depends = gmp
-	source = http://colo6-c703.uibk.ac.at/ttt2/download/ttt2-1.19.1.tar.gz
-	sha256sums = e083133d9a2ba2f5af52d9fa5daa990e9753c8965098f7b63b4590d346dc9506
+	source = http://colo6-c703.uibk.ac.at/ttt2/download/ttt2-1.20.tar.gz
+	sha256sums = 144ed636276a179a610990fe45b9b849ffd0099b78c0a265a7d4d0e071f3cc18
 
 pkgname = ttt2
 
