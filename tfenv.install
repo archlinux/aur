@@ -14,7 +14,7 @@ post_upgrade() {
 common () {
 	if ! getent group tfenv >/dev/null ; then
 		echo "Adding group 'tfenv'"
-		groupadd tfen
+		groupadd tfenv
 	fi
 	mkdir -p "/var/lib/tfenv/versions"
 	touch "/var/lib/tfenv/version"
