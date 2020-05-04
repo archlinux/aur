@@ -1,16 +1,18 @@
-# Maintainer: Térence Clastres <t dot clastres at gmail dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Térence Clastres <t dot clastres at gmail dot com>
 # Modified PKGBUILD from https://aur.archlinux.org/packages/vivaldi/
 
 pkgname=vivaldi-rpi
-_pkgver=2.11.1811.33-1
-pkgver=2.11.1811.33
+_pkgname=vivaldi
+pkgver=3.0.1874.33
+_pkgver=3.0.1874.33-1
 pkgrel=1
-pkgdesc='An advanced browser made with the power user in mind for Raspberry Pi'
-arch=('armv6h' 'armv7h')
+pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
-options=(!strip !zipman)
+options=('!strip' '!emptydirs')
 license=('custom')
-depends=('gtk3' 'libcups' 'nss' 'gconf' 'alsa-lib' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
+arch=('armv6h' 'armv7h')
+depends=('gtk3' 'libcups' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
 makedepends=('w3m')
 optdepends=(
     'vivaldi-ffmpeg-codecs: playback of proprietary video/audio'
@@ -19,18 +21,19 @@ optdepends=(
     'vivaldi-widevine: Widevine DRM Plugin'
     'libnotify: native notifications'
 )
-source=("https://downloads.vivaldi.com/stable/vivaldi-stable_${pkgver}-1_armhf.deb")
-sha512sums=('fe40af7fb239fba17850857ede6e8981a1e25e3bfe2b62299e787b5544ed6c1e53cf00c32ca5993d26e328461fd000e9c15d521ea68e8dca95879508259c94b4')
+provides=('www-browser' 'vivaldi')
+source=("https://downloads.vivaldi.com/stable/vivaldi-stable_${_pkgver}_armhf.deb")
+sha512sums=('81e3e9decfa138a5db81f5aa4d69859ca3ab4af044ce2ca8a209aa1c73dc33ca06cb77837a859f55a0b3b22ec7a59b6c4918e7e2f0c95cf4f92ef1814e691845')
 
 prepare() {
- tar -xf data.tar.xz
+    tar -xf data.tar.xz
 }
 
 package() {
     cp --parents -a {opt,usr/bin,usr/share} "$pkgdir"
 
     # suid sandbox
-    chmod 4755 "$pkgdir/opt/vivaldi/vivaldi-sandbox"
+    chmod 4755 "$pkgdir/opt/$_pkgname/vivaldi-sandbox"
 
     # make /usr/bin/vivaldi-stable available
     binf="$pkgdir/usr/bin/vivaldi-stable"
@@ -46,10 +49,10 @@ package() {
     done
 
     # license
-    install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+    install -dm755 "$pkgdir/usr/share/licenses/$_pkgname"
     strings "$pkgdir/opt/vivaldi/locales/en-US.pak" \
         | tr '\n' ' ' \
         | sed -rne 's/.*(<html lang.*>.*html>).*/\1/p' \
         | w3m -I 'utf-8' -T 'text/html' \
-        > "$pkgdir/usr/share/licenses/$pkgname/eula.txt"
+        > "$pkgdir/usr/share/licenses/$_pkgname/eula.txt"
 }
