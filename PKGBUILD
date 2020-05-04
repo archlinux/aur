@@ -2,7 +2,7 @@
 
 pkgbase=linux-vfio-lts
 pkgver=5.4.38
-pkgrel=1
+pkgrel=2
 pkgdesc='LTS Linux VFIO'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -31,7 +31,7 @@ sha256sums=('e72b9fa4e3a222d42d64dce9915e5b18f1b75ae722d529a1e560ced2e5d0f30e'
             '0c318ec33c82b4ea41117b4d0ab464775e13dc6e8b20aea6c655eb4887eafa0e'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2'
             'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e'
-            '4073312646af8ba01c000f258041b2dc8634a8d9a4a4be8dc0bf12a9b4041cb1'
+            '6ebc19f8cdd608a97f8fa6a0a815ac142b88e18dd476bc2851b2771e3aa9522d'
             '50880279bab5793c89a6823d751d3c84ead5efd5c4c0d38b921a14061fc0d336')
 
 export KBUILD_BUILD_HOST=archlinux
