@@ -15,7 +15,7 @@ md5sums=('SKIP'
          'f595a0ccdef5980c45433127c1bc37b4')
 
 pkgver() {
-  sed -nr 'N;s/#define VERSION "(.*)"\n#define BUILD "(.*)"/\1r\2/p'\
+  sed -nr 'N;s/#define VERSION "(.+)"\n#define BUILD "(.+)"/\1r\2/p'\
           "$srcdir/Bracmat/src/bracmat.c"
 }
 
