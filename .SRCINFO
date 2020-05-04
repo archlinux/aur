@@ -1,0 +1,15 @@
+pkgbase = vim-ansiesc
+	pkgdesc = ansi escape sequences concealed, but highlighted as specified (conceal)
+	pkgver = 13.3
+	pkgrel = 4
+	url = https://github.com/powerman/vim-plugin-AnsiEsc
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	depends = vim
+	options = !emptydirs
+	source = https://github.com/powerman/vim-plugin-AnsiEsc/archive/13.3.tar.gz
+	sha256sums = ed1871aa8cf2ed13d978bcc44f57a25d0e95144bcca19f7ea9f3e4e49ab622f1
+
+pkgname = vim-ansiesc
+
