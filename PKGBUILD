@@ -6,7 +6,7 @@
 
 pkgname=gitahead
 pkgrel=1
-pkgver=2.6.1
+pkgver=2.6.2
 pkgdesc='Understand your Git history!'
 url='https://www.gitahead.com/'
 arch=('x86_64')
