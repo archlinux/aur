@@ -1,5 +1,5 @@
 # Maintainer: Aleksandr Matuzok <sherilynhope@gmail.com>
-# Contributor: Patryk Jaworski <regalis@regalis.tech>
+# Contributors: Patryk Jaworski <regalis@regalis.tech>, John Chen <john.chen@10gen.com>
 
 pkgname=mongo-cxx-driver
 pkgver=3.5.0
@@ -12,8 +12,8 @@ depends=(libmongoc libbson)
 makedepends=(cmake gcc libmongoc libbson boost)
 provides=(libbsoncxx libmongocxx)
 conflicts=(libbsoncxx libmongocxx)
-source=(https://github.com/mongodb/mongo-cxx-driver/archive/r${pkgver}.tar.gz)
-sha256sums=('2a61369e616c4c08310586c339a27bddee0482305e1dcc83ce08e3529cfa5b7a')
+source=(https://github.com/mongodb/mongo-cxx-driver/releases/download/r${pkgver}/mongo-cxx-driver-r${pkgver}.tar.gz)
+sha256sums=('046395b5b03c7b3298adc9cfe2c3e4dd97784d6eaa58b83193d150f05a6b6b82')
 
 build() {
 	cd "${pkgname}-r$pkgver/build/"
