@@ -1,21 +1,21 @@
 # Maintainer: Markus Näther <naether.markus@gmail.com>
 pkgname=hipblas
-_pkgver=3.1
+_pkgver=3.3
 pkgver="$_pkgver.0"
-pkgrel=2
+pkgrel=1
 pkgdesc="Next generation BLAS implementation for ROCm platform"
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/hipBLAS"
-license=('custom:NCSAOSL')
+license=('MIT')
 depends=('hcc' 'hip')
 makedepends=('cmake' "hcc>=$pkgver" 'python2' "comgr>=$pkgver" 'rocminfo')
-source=("https://github.com/ROCmSoftwarePlatform/hipBLAS/archive/rocm-$_pkgver.tar.gz"
+source=("https://github.com/ROCmSoftwarePlatform/hipBLAS/archive/rocm-$pkgver.tar.gz"
         "hipblas_hsa.patch")
-sha256sums=('c7962f7ec775028cfede65f09f9b7b1774009ccf5e3744c8604ab2a2c84f027e'
+sha256sums=('7be4f69749fb0b8deeaf47615f2c1ffbeee15f9cd6ef14cfea2a550cb0347a50'
             'd5206ce084f065f860ba1b1f9dc860c1500d9d4cc0b92473e1072ad819e8148d')
 
 prepare() {
-  cd "$srcdir/hipBLAS-rocm-$_pkgver"
+  cd "$srcdir/hipBLAS-rocm-$pkgver"
   patch -Np1 -i "$srcdir/hipblas_hsa.patch"
 }
 
@@ -40,7 +40,7 @@ build() {
         -DBUILD_CLIENTS_SAMPLES=OFF \
         -DBUILD_CLIENTS_TESTS=OFF \
         -DHSA_PATH=/opt/rocm/hsa \
-        "$srcdir/hipBLAS-rocm-$_pkgver"
+        "$srcdir/hipBLAS-rocm-$pkgver"
   make
 }
 
