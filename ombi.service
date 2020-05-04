@@ -7,9 +7,10 @@ User=ombi
 Group=ombi
 WorkingDirectory=/opt/Ombi
 Type=simple
-ExecStart=/opt/Ombi/Ombi --storage /var/lib/ombi
+ExecStart=/opt/Ombi/Ombi --storage /var/lib/ombi --host http://*:5000
 TimeoutStopSec=30
-Restart=always
+Restart=on-failure
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target

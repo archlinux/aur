@@ -2,7 +2,7 @@
 
 pkgname=ombi-v4
 pkgver=4.0.302
-pkgrel=1
+pkgrel=2
 pkgdesc="Ombi V4 branch. Gives Plex or Emby users the ability to request content by themselves"
 jobid=
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tidusjar/Ombi.Releases/
         'ombi.tmpfiles')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 sha256sums=('15aa0630f4b4e23bde0ee4fdcee4df6288b935fda3f90bccc48938831bf87acc'
-            '79f4860eaf9d00d3739c6d9fc5e9625ea68dc329bb1cbddae5b51ae4faaae20f'
+            '64e7170dcf8648dca99831c139fecfa6505bc61d9e9188346af931e137d067dc'
             '6efc381990e1113737686d4f61795095fa8edbc176daa877fd755f1ddb3a40fa'
             'afb971692d313d988096cb4447033f8ca2234016ccc2b3590afd5cbcb36a8e56')
 
