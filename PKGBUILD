@@ -9,8 +9,8 @@ pkgdesc="Network management applet from NX Desktop, by Nitrux SA."
 arch=('any')
 url="https://github.com/nx-desktop/nx-networkmanagement-applet.git"
 license=('GPL')
-depends=('plasma-workspace' 'qt5-base')
-makedepends=('git' 'extra-cmake-modules' 'kdesdk-meta')
+depends=('plasma-framework' 'plasma-desktop')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'kdesignerplugin' 'packagekit-qt5')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("git+https://github.com/nx-desktop/nx-networkmanagement-applet.git#branch=master")

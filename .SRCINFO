@@ -6,10 +6,12 @@ pkgbase = plasma5-applets-nx-networkmanagement
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = cmake
 	makedepends = extra-cmake-modules
-	makedepends = kdesdk-meta
-	depends = plasma-workspace
-	depends = qt5-base
+	makedepends = kdesignerplugin
+	makedepends = packagekit-qt5
+	depends = plasma-framework
+	depends = plasma-desktop
 	provides = plasma5-applets-nx-networkmanagement
 	conflicts = plasma5-applets-nx-networkmanagement
 	source = git+https://github.com/nx-desktop/nx-networkmanagement-applet.git#branch=master
