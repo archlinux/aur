@@ -17,7 +17,7 @@ pkgbase = linux-nitrous-fire-git
 	source = git+https://gitlab.com/xdevs23/linux-nitrous.git#branch=v5.6+
 	source = linux-nitrous-fire-git.preset
 	sha256sums = SKIP
-	sha256sums = ecfa409b29641e070ef45baa9f866659e9f64ccbad8bedbb52f946c186d360ac
+	sha256sums = dabf634498fd2d474d689db9040c5e5e2704292958ccd22a391e4ea27f651fcb
 
 pkgname = linux-nitrous-fire-git
 	pkgdesc = Modified Linux kernel optimized for Skylake (and newer) compiled using clang, sacrificing security for performance. The 'nitrous-fire' kernel is insecure, only use it if you need the performance.
