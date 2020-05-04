@@ -1,0 +1,15 @@
+pkgbase = vim-taskwarrior
+	pkgdesc = vim interface for taskwarrior
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/blindFS/vim-taskwarrior
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	depends = vim
+	options = !emptydirs
+	source = https://github.com/blindFS/vim-taskwarrior/archive/v1.0.tar.gz
+	sha256sums = 80a772dad0a31c628143fe4f2421b00fba8b3f09a2c3611ac4dad6e272e6bd1e
+
+pkgname = vim-taskwarrior
+
