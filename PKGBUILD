@@ -10,8 +10,8 @@
 # Contributor: Brad McCormack <bradmccormack100 at gmail.com>
 # Contributor: Doug Johnson <dougvj at dougvj.net>
 
-pkgbase=linux-nitrous-git
-_srcname=linux-nitrous-git
+pkgbase=linux-nitrous-fire-git
+_srcname=linux-nitrous-fire-git
 pkgver=5.6+
 pkgrel=2
 arch=('x86_64')
@@ -38,7 +38,7 @@ prepare() {
   sed -i '2iexit 0' scripts/depmod.sh
 
   rm -f .clang
-  make HOSTCC=clang CC=clang nitrous_defconfig
+  make HOSTCC=clang CC=clang nitrous-fire_defconfig
 
   # get kernel version
   #make prepare
@@ -57,7 +57,7 @@ prepare() {
 build() {
   cd "${_srcname}"
 
-  make HOSTCC=clang CC=clang nitrous_defconfig
+  make HOSTCC=clang CC=clang nitrous-fire_defconfig
   makeflags="${MAKEFLAGS}"
   if [[ "$MAKEFLAGS" != *"-j"* ]]; then
     makeflags="$makeflags -j$(nproc --all)"   
@@ -66,15 +66,15 @@ build() {
 }
 
 _package() {
-  pkgdesc="Modified Linux kernel optimized for Haswell (and newer) compiled using clang"
+  pkgdesc="Modified Linux kernel optimized for Skylake (and newer) compiled using clang, sacrificing security for performance. The 'nitrous-fire' kernel is insecure, only use it if you need the performance."
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=(
     'crda: to set the correct wireless channels of your country'
-    'linux-nitrous-git-headers: to build DKMS modules against this kernel'
+    'linux-nitrous-fire-git-headers: to build DKMS modules against this kernel'
   )
   provides=('linux')
-  __kernelname=linux-nitrous-git
-  backup=("etc/mkinitcpio.d/linux-nitrous-git.preset")
+  __kernelname=linux-nitrous-fire-git
+  backup=("etc/mkinitcpio.d/linux-nitrous-fire-git.preset")
   install=${pkgbase}.install
 
   cd "${_srcname}"
