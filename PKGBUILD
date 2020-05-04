@@ -39,6 +39,7 @@ _gcc_more_v='20191217'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
+  "0000-sphinx-workaround.patch"
   "${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
   "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/220ca969817e3f7e64ed9730051f22cf6342c6ff.patch"
@@ -51,9 +52,10 @@ validpgpkeys=(
 sha256sums=('7bdc96827a9db8de79cd13d74a1c5fe8915674f793e592387f2903cb225801b9'
             'SKIP'
             'b97b4b90f51876aaa4fa910e1ce801552f7e086aec3026a64f406581beae791b'
+            '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
             '2340925904efa3594cc65a7bae4fbff233d5d8bc7db605ce08acaca7450d2471'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
-            '50be1c5ddcb169a83c3a86a7dbba14d701f34a1ac5715ae5d8a37f2964c5d46f')
+            '152fec72ea5c3869af0dfd5196335e013768d025203d0ddd1a849ab1f423c81e')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
