@@ -1,7 +1,7 @@
 pkgbase = lib32-shaderc
 	pkgdesc = Collection of tools, libraries and tests for shader compilation (32bit)
 	pkgver = 2020.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/shaderc
 	arch = x86_64
 	license = Apache

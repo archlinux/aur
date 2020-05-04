@@ -7,7 +7,7 @@ _pkgbasename=shaderc
 
 pkgname=lib32-$_pkgbasename
 pkgver=2020.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Collection of tools, libraries and tests for shader compilation (32bit)'
 url='https://github.com/google/shaderc'
 arch=('x86_64')
@@ -69,6 +69,6 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" ninja -C build install
-  rm -rf ${_pkgbasename}-${pkgver}/${pkgdir}/usr/{include,share,bin}
+  rm -rf "${pkgdir}"/usr/{include,share,bin}
 #  install -Dm 644 ${_pkgbasename}-${pkgver}/glslc/glslc.1 -t "${pkgdir}/usr/share/man/man1"
 }
