@@ -1,0 +1,14 @@
+pkgbase = libtextstyle-git
+	pkgdesc = Text Styling Library (Only libtextstyle)
+	pkgver = v0.20.1.r166.g3251d1ea0
+	pkgrel = 1
+	url = https://www.gnu.org/software/gettext/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = wget
+	source = git+https://git.savannah.gnu.org/git/gettext.git
+	sha512sums = SKIP
+
+pkgname = libtextstyle-git
+
