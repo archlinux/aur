@@ -1,0 +1,16 @@
+pkgbase = kubie-bin
+	pkgdesc = A more powerful alternative to kubectx and kubens
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/sbstp/kubie
+	arch = x86_64
+	license = ZLIB
+	depends = gcc-libs
+	provides = kubie
+	source = kubie::https://github.com/sbstp/kubie/releases/download/v0.9.0/kubie-linux-amd64
+	source = LICENSE::https://raw.githubusercontent.com/sbstp/kubie/v0.9.0/LICENSE
+	sha512sums = 5b8de127905e667b225ee8b71bf51f49d7ce18394d634c442d2e685f2d6667524622206e507b4218a84adbbad64b9dcee57270bb9d1f5a641d0360a5005fa73a
+	sha512sums = 63c6f25e01c94602e2d986549154d91d14c957d3e99e16e955bc79f53b97805d973185f73c86004c201f56418e47228538fdcd039fbc8a586cdf761236e14fde
+
+pkgname = kubie-bin
+
