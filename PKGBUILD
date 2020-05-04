@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 # FIXME
-# - Fix symlink web.json, server.cfg, /var/lib/quakejs
+# - Fix symlink server.cfg, /var/lib/quakejs
 
 pkgname=quakejs-git
 pkgver=20190325.977b188
@@ -25,7 +25,7 @@ source=('git+https://github.com/inolen/quakejs.git'
 sha512sums=('SKIP'
             'f9fc1684e9a2e3f992a59dad204b9deea8a9878953ff9b80dd1fb0ffde9f1d12efdb462a87b3c94b7fcfdef630911eddf5743ec7c7df445e6749cc7d163ce86a'
             '41ce94ad41123ae4892089f82569b480af926702b482707f96728eb4fe6f50b69e84827f80c3014eab343f756f2fba5a0c2e6b7720f094e04bef6009589005da'
-            'f81701ed3d1d941383c2b88d189b5081efa4b8815a952264db74e4e51d01e7d4beddc48e75fbb0fdcb98d029a8a749862963e47a263d61141085ea3bddf6a587'
+            '5a6bbbade892f696bfa15bd530f14fd3b3e99cfafd89a578e9a33ebfae70599b429c3f1c4827025d85a3e29d3667c10a0bcb798c41f3a176e24e2e191db94380'
             '58779c6ed13a63dbedffac3bf6dfdc3ee73ba909e868e1e4201762ea58f898f23eb4a887e1444273899c49a6eb7ae5e32ae04b1099d2d728d6c3e2adaee09372'
             'a7cc7ec2d2cfda5d5b71490b9f2b06fb859bca6a77216a35b536caa09a4e523a7e976339a2f75b0d38ea70e17dd1f5bec3f30fc51fadca9c474f90dbdc7b60d2'
             'a8bb1786b7c950b4e8773eb9dd98659f287177b65c76ba58b25980d765234b30995da75b6c98bad97541941a56abdd4371dfaa9f0d8e9f9e9f1b45c2954edc29'
@@ -56,12 +56,11 @@ package() {
     rm -rf "${pkgdir}/usr/share/webapps/quakejs/${f}"
   done
 
-  #cp "${srcdir}/server.cfg" "${srcdir}/web.json" "${pkgdir}/etc/webapps/quakejs"
+  cp "${srcdir}/server.cfg" "${srcdir}/web.json" "${pkgdir}/etc/webapps/quakejs"
   #ln -s "/etc/webapps/quakejs/server.cfg" "${pkgdir}/var/lib/quakejs/base/baseq3/server.cfg" 
   #ln -s "/etc/webapps/quakejs/server.cfg" "${pkgdir}/usr/share/webapps/quakejs/base/baseq3/server.cfg" 
   install -Dm 644 "${srcdir}/server.cfg" "${pkgdir}/usr/share/webapps/quakejs/base/baseq3/server.cfg" 
   install -Dm 644 "${srcdir}/quakejs.conf" "${pkgdir}/etc/conf.d/quakejs"
-  ln -s "/etc/webapps/quakejs/web.json" "${pkgdir}/usr/share/webapps/quakejs/web.json"
 
   install -Dm 644 "${srcdir}/quakejs-cdn.service" "${pkgdir}/usr/lib/systemd/system/quakejs-cdn.service"
   install -Dm 644 "${srcdir}/quakejs-ds.service" "${pkgdir}/usr/lib/systemd/system/quakejs-ds.service"
