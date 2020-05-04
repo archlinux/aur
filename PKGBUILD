@@ -1,6 +1,8 @@
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
+
 pkgname=distro-info-data
-pkgver=0.43
+pkgver=0.44
 pkgrel=1
 pkgdesc="information about the distributions' releases (data files)"
 arch=('any')
@@ -10,7 +12,7 @@ depends=()
 makedepends=('python2')
 options=(!emptydirs)
 source=(http://ftp.debian.org/debian/pool/main/d/$pkgname/${pkgname}_${pkgver}.tar.xz)
-sha256sums=('6b6871a808fed7275f18c637916993b83df32dbf13ba318e3cfb2266ddccc1e8')
+sha256sums=('96f48df8f526de8f5ff0ece6dfaac00722200a3910ab108497517b11c866d0d0')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
