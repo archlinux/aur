@@ -30,4 +30,10 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 
 	DESTDIR="$pkgdir/" make install
+
+	cd "$pkgdir"
+
+	# Fix systemd directory due to symlinks
+	mv lib/systemd/ usr/lib/
+	rm -Rf lib/
 }
