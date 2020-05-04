@@ -1,6 +1,6 @@
 pkgbase = r-zoo
 	pkgdesc = S3 Infrastructure for Regular and Irregular Time Series (Z's Ordered Observations)
-	pkgver = 1.8.7
+	pkgver = 1.8.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=zoo
 	arch = i686
@@ -22,8 +22,8 @@ pkgbase = r-zoo
 	optdepends = r-tis
 	optdepends = r-tseries
 	optdepends = r-xts
-	source = https://cran.r-project.org/src/contrib/zoo_1.8-7.tar.gz
-	md5sums = 0c605833a519755832800137383d8ca3
+	source = https://cran.r-project.org/src/contrib/zoo_1.8-8.tar.gz
+	md5sums = a751c37a1b84a342851855cae2f40ac5
 
 pkgname = r-zoo
 

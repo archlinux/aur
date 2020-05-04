@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=zoo
-_cranver=1.8-7
+_cranver=1.8-8
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ depends=('r>=3.1.0')
 makedepends=(gcc)
 optdepends=(r-aer r-coda r-chron r-fts r-ggplot2 r-mondate r-scales r-strucchange r-timedate r-timeseries r-tis r-tseries r-xts)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('0c605833a519755832800137383d8ca3')
+md5sums=('a751c37a1b84a342851855cae2f40ac5')
 
 build() {
   cd "${srcdir}"
