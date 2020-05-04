@@ -29,7 +29,6 @@ depends=("cython"
 makedepends=("python-setuptools" "python-wheel" "cython")
 optdepends=("python-spacy: examples" "flake8: linting for Python code" "python-pytest-cov: run included tests" 
             "mypy: run included tests" "python-ipykernel: run included tests" )
-checkdepends=("python-pytest-cov" "flake8" "mypy")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/explosion/thinc/archive/v$pkgver.tar.gz")
 md5sums=('0a62680b89d478955eeb6fac875e71e8')
 
