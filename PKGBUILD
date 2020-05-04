@@ -1,7 +1,7 @@
 # Maintainer: Alban Fichet <alban.fichet@inria.fr>
 pkgname=gthumb-openexr-extension
 pkgver=2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Extension for gThumb to support OpenEXR"
 arch=('any')
 url="https://github.com/yama-chan/gthumb-openexr-extension"
@@ -19,13 +19,12 @@ prepare() {
 
 build() {
 	cd "$pkgname"
-	meson --prefix=/usr build
+	meson build
 	cd build
 	ninja
 }
 
 package() {
 	cd "$pkgname"
-	cd build
-	ninja install
+	meson --prefix=/usr install
 }
