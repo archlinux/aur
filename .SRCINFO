@@ -1,8 +1,8 @@
 pkgbase = parlatype
 	pkgdesc = GNOME audio player for transcription
 	pkgver = 2.0
-	pkgrel = 2
-	url = https://gkarsay.github.io/parlatype/
+	pkgrel = 3
+	url = https://github.com/gkarsay/parlatype
 	arch = any
 	license = GPL
 	makedepends = appstream
@@ -13,12 +13,10 @@ pkgbase = parlatype
 	makedepends = yelp-tools
 	makedepends = desktop-file-utils
 	depends = gtk3
+	depends = gstreamer
+	depends = gst-plugins-base
 	depends = gst-plugins-good
-	depends = sphinxbase
-	depends = pocketsphinx
-	depends = python-atspi
 	optdepends = parlatype-libreoffice-extension: LibreOffice macros
-	optdepends = gst-plugins-ugly: Play MP3 files
 	source = https://github.com/gkarsay/parlatype/releases/download/v2.0/parlatype-2.0.tar.gz
 	sha256sums = f9833d244f8744f7a9983d680005462d02d062c2538423cb443279da2cc5e2d1
 
