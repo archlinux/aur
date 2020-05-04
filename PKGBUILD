@@ -23,13 +23,13 @@ package() {
 
   # Install the component manifest file
   install -D -m 0644 \
-    "${srcdir}/google-cloud-sdk/.install/app-engine-python.manifest" \
-    "${pkgdir}/opt/google-cloud-sdk/.install/app-engine-python.manifest"
+    "${srcdir}/google-cloud-sdk/.install/app-engine-python-extras.manifest" \
+    "${pkgdir}/opt/google-cloud-sdk/.install/app-engine-python-extras.manifest"
 
   # Install the component metadata snapshot file
   install -D -m 0644 \
-    "${srcdir}/google-cloud-sdk/.install/app-engine-python.snapshot.json" \
-    "${pkgdir}/opt/google-cloud-sdk/.install/app-engine-python.snapshot.json"
+    "${srcdir}/google-cloud-sdk/.install/app-engine-python-extras.snapshot.json" \
+    "${pkgdir}/opt/google-cloud-sdk/.install/app-engine-python-extras.snapshot.json"
 
   # Install the component files
   cp -R \
