@@ -3,7 +3,7 @@
 
 pkgname=pango-anydesk
 pkgver=1.43.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Older version of pango temporary needed by AnyDesk package"
 url="https://www.pango.org/"
@@ -40,4 +40,5 @@ check() {
 package() {
   mkdir -p "${pkgdir}/usr/share/anydesk/files/pango-1.43.0-2/"
   cp -r "${srcdir}/build/pango/libpango"* "${pkgdir}/usr/share/anydesk/files/pango-1.43.0-2/"
+  ln -sf "libpangoxft-1.0.so" "${pkgdir}/usr/share/anydesk/files/pango-1.43.0-2/libpangox-1.0.so.0"
 }

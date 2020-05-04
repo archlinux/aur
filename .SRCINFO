@@ -1,7 +1,7 @@
 pkgbase = pango-anydesk
 	pkgdesc = Older version of pango temporary needed by AnyDesk package
 	pkgver = 1.43.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://www.pango.org/
 	arch = x86_64
