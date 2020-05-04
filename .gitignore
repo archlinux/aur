@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!*.desktop
+!icons.tar.gz
+!PKGBUILD
