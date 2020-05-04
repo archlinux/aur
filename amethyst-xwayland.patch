@@ -1,0 +1,12 @@
+diff -rupN amethyst.orig/amethyst/data/amethyst.desktop amethyst/amethyst/data/amethyst.desktop
+--- amethyst.orig/amethyst/data/amethyst.desktop	2018-12-26 06:24:56.000000000 +1030
++++ amethyst/amethyst/data/amethyst.desktop	2020-05-04 14:38:01.050925343 +0930
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Name=amethyst
+ Comment=Text Editor
+-Exec=amethyst
++Exec=env GDK_BACKEND=x11 amethyst %U
+ Icon=amethyst
+ Terminal=false
+ Type=Application

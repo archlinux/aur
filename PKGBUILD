@@ -8,16 +8,22 @@ arch=('x86_64')
 url='https://byuu.org/projects/amethyst'
 license=('ISC' 'GPL3')
 depends=('gtksourceview3')
+optdepends=('xorg-server-xwayland: For running amethyst on Wayland desktops')
 source=('https://byuu.org/files/releases/amethyst_v3r3.tar.xz'
         'amethyst-release.patch'
         'amethyst-disable-theme.patch'
+        'amethyst-xwayland.patch'
+        'amethyst.install'
         'LICENSE')
 sha256sums=('5445f658d9a0322c180801bbb710ae4e097d9594a2d2f2d5c1ac9e9794e1e833'
             '4c9fd1819f244317d8455dcb16cfa0047ed4815ea6ae6c441ff3b2a9f7a9c3ca'
             'f4e5bddd24392ba6920c90aa56a023d1582bb8b91e3759119c3010dcfec5e55f'
+            '2b4b83cc91120646f895d9d66393f5b7a51200c0fc0c360bc083e8d5e71301a6'
+            'b7eca483f2d8409a3766110fc3028a66fcb2ab85d6453e4f6713314ebf838704'
             '9af7b9ec6c5c74a0421acb9e2755fe5b92fcce28a3c3a0300ecbe7002269b7f6')
 backup=('usr/share/amethyst/mimetypes.bml'
         'usr/share/amethyst/settings.bml')
+install='amethyst.install'
 
 prepare() {
   # amethyst builds, by default, in the "stable" configuration. This simple
@@ -43,6 +49,14 @@ prepare() {
   # calls to hiro's setBackgroundColor() and setForegroundColor() functions,
   # so that all UI widgets just use the system CSS theme.
   patch -Np1 -i amethyst-disable-theme.patch
+
+  # amethyst will refuse to draw anything on non-X11 windows. This
+  # means that it cannot be run natively on Wayland desktops. This can be
+  # woked around with XWayland, but the environment variable GDK_BACKEND=x11
+  # needs to be set to force GTK+3 to use XWayland instead of creating a native
+  # Wayland window. This patch changes the desktop entry to enforce this using
+  # the env command.
+  patch -Np1 -i amethyst-xwayland.patch
 }
 
 build() {

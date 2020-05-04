@@ -1,0 +1,15 @@
+post_install() {
+  echo "amethyst currently only works in X11 windows. It is possible to run"
+  echo "amethyst under XWayland on a Wayland desktop, but please note that you"
+  echo "may need to set 'GDK_BACKEND=x11' in your environment to enforce this."
+  echo "Otherwise, GTK+3 may try to create a native Wayland window, which"
+  echo "amethyst is unable to use."
+}
+
+post_upgrade() {
+  echo "amethyst currently only works in X11 windows. It is possible to run"
+  echo "amethyst under XWayland on a Wayland desktop, but please note that you"
+  echo "may need to set 'GDK_BACKEND=x11' in your environment to enforce this."
+  echo "Otherwise, GTK+3 may try to create a native Wayland window, which"
+  echo "amethyst is unable to use."
+}
