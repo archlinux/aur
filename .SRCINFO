@@ -1,11 +1,14 @@
 pkgbase = godot-mono-voxel-bin
 	pkgdesc = Godot is an advanced, feature packed, multi-platform 2D and 3D game engine
 	pkgver = 3.2.2rc+cd8d43
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.godotengine.org
 	arch = i686
 	arch = x86_64
 	license = MIT
+	depends = mono>=5.18.0
+	depends = dotnet-sdk
+	depends = msbuild
 	provides = godot-mono
 	conflicts = godot-mono
 	conflicts = godot-mono-git

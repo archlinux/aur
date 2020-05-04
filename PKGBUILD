@@ -2,13 +2,14 @@
 
 pkgname=godot-mono-voxel-bin
 pkgver=3.2.2rc+cd8d43
-pkgrel=1
+pkgrel=2
 pkgdesc="Godot is an advanced, feature packed, multi-platform 2D and 3D game engine"
 arch=("i686" "x86_64")
 url="http://www.godotengine.org"
 license=("MIT")
 provides=("godot-mono")
 conflicts=("godot-mono" "godot-mono-git")
+depends=("mono>=5.18.0" "dotnet-sdk" "msbuild")
 source=("godot-mono.desktop" "icons.tar.gz")
 source_i686+=("$pkgname-$pkgver::https://github.com/tinmanjuggernaut/godot_voxel/releases/download/"$pkgver"/Godot_v"$pkgver"_mono_x11_32.zip")
 source_x86_64+=("$pkgname-$pkgver::https://github.com/tinmanjuggernaut/godot_voxel/releases/download/"$pkgver"/Godot_v"$pkgver"_mono_x11_64.zip")
@@ -24,10 +25,10 @@ package() {
 
   case $CARCH in
     "i686")
-      cp "$srcdir/Godot_v"$pkgver"_mono_x11.32/Godot_v"$pkgver"_mono_x11.32" "$pkgdir/opt/$pkgname/godot"
+      cp -r "$srcdir/Godot_v"$pkgver"_mono_x11.32" "$pkgdir/opt/$pkgname/godot"
     ;;
     "x86_64")
-      cp "$srcdir/Godot_v"$pkgver"_mono_x11_64/Godot_v"$pkgver"_mono_x11.64" "$pkgdir/opt/$pkgname/godot"
+      cp -r "$srcdir/Godot_v"$pkgver"_mono_x11_64" "$pkgdir/opt/$pkgname/godot"
     ;;
   esac
 
@@ -35,7 +36,14 @@ package() {
   cp -a "$srcdir/icons/." "$pkgdir/usr/share/icons/hicolor"
   cp -a "$srcdir/icons/." "$pkgdir/usr/share/icons/gnome"
 
-  chmod +x "$pkgdir/opt/$pkgname/godot"
-
-  ln -s "/opt/$pkgname/godot" "$pkgdir/usr/bin/godot-mono"
+  case $CARCH in
+    "i686")
+      chmod +x "$pkgdir/opt/$pkgname/godot/Godot_v${pkgver}_mono_x11.32"
+      ln -s "/opt/$pkgname/godot/Godot_v${pkgver}_mono_x11.32" "$pkgdir/usr/bin/godot-mono"
+    ;;
+    "x86_64")
+      chmod +x "$pkgdir/opt/$pkgname/godot/Godot_v${pkgver}_mono_x11.64"
+      ln -s "/opt/$pkgname/godot/Godot_v${pkgver}_mono_x11.64" "$pkgdir/usr/bin/godot-mono"
+    ;;
+  esac
 }
