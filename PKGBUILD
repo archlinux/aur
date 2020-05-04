@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=i3-agenda
-pkgver=1.0
+pkgver=1.2
 pkgrel=1
 pkgdesc="Show your next google calendar event in polybar or i3-bar"
 arch=('any')
@@ -25,7 +25,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=("e10c1064307da02c23dbbded1da122d950202fbab6bb10ed1fba022d0f59097c")
+sha256sums=('9ebf26489c03c2fac4a5cb0e249b5be1370ff6c2c6a4ef75f686fa8affea2496')
 
 build() {
 	cd "$pkgname-$pkgver"

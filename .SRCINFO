@@ -1,6 +1,6 @@
 pkgbase = i3-agenda
 	pkgdesc = Show your next google calendar event in polybar or i3-bar
-	pkgver = 1.0
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/rosenpin/i3-agenda
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = i3-agenda
 	depends = python-google-api-python-client
 	depends = python-google-auth-httplib2
 	depends = python-google-auth-oauthlib
-	source = i3-agenda-1.0.tar.gz::https://github.com/rosenpin/i3-agenda/archive/1.0.tar.gz
-	sha256sums = e10c1064307da02c23dbbded1da122d950202fbab6bb10ed1fba022d0f59097c
+	source = i3-agenda-1.2.tar.gz::https://github.com/rosenpin/i3-agenda/archive/1.2.tar.gz
+	sha256sums = 9ebf26489c03c2fac4a5cb0e249b5be1370ff6c2c6a4ef75f686fa8affea2496
 
 pkgname = i3-agenda
 
