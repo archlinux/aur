@@ -1,0 +1,38 @@
+post_install() {
+  # Reload systemd
+  systemctl daemon-reload
+
+  echo "Add this 2 lines in your /etc/nginx/nginx.conf: "
+  echo "  \"load_module /usr/lib/nginx/modules/ngx_http_lua_module.so;\""
+  echo "  \"include /etc/nginx/sites-enabled/*;\""
+  echo
+  echo "Add nginx in systemd"
+  echo "  systemctl enable nginx"
+  echo "  systemctl start nginx"
+  echo
+  echo "Adding camalarm in systemd:"
+  echo "  systemctl enable camalarm"
+  echo "  systemctl start camalarm"
+  echo
+  echo "Adding this rule in iptables:"
+  echo "  iptables -t filter -A INPUT -p tcp --dport 8090 -j ACCEPT"
+
+  true
+}
+
+post_upgrade() {
+  # Reload systemd
+  systemctl daemon-reload
+
+  true
+}
+
+pre_remove() {
+  pkgname=camalarm
+  # Remove symlink in systemd
+  systemctl disable $pkgname
+  # Reload systemctl
+  systemctl daemon-reload
+
+  true
+}
