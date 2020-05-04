@@ -41,8 +41,8 @@ package() {
 
     # install the icon
     install -d -m755 "${pkgdir}/usr/share/icons/hicolor"
-    cp -Rr "${srcdir}/squashfs-root/usr/share/icons/hicolor/" "${pkgdir}/usr/share/icons/"
-    cp -Rr "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0" "${pkgdir}/usr/share/pixmaps"
+    mv "${srcdir}/squashfs-root/gdlauncher.png" "${srcdir}/squashfs-root/gdlauncher-appimage.png"
+    cp -Rr "${srcdir}/squashfs-root/${pkgname}.png" "${pkgdir}/usr/share/icons/"
 
     
     # fix file permissions - all files as 644 - directories as 755
