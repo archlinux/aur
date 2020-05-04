@@ -1,6 +1,6 @@
 # Author: Dominic Radermacher <blip@mockmoon-cybernetics.ch>
 pkgname=lan951x-led-ctl
-pkgver=1.0.r5.g36f3259
+pkgver=1.0.r6.g2d51527
 pkgrel=1
 pkgdesc="Command line tool to control the LED's of a LAN9512/LAN9514 ethernet controller"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -24,5 +24,5 @@ build() {
 }
 package() {
 	cd "${srcdir}/${pkgname}"
-	make DESTDIR=${pkgdir} install
+	make DESTDIR=${pkgdir}/usr install
 }
