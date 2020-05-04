@@ -45,7 +45,7 @@ check() {
 
 package() {
     cd "$_origpkgname-$pkgver"
-    python setup.py install --root="${pkgdir}/" --optimize=1
+    python setup.py install --root="${pkgdir}/" --optimize=1 --skipbuild
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"    
 }
 
