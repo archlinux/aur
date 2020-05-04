@@ -7,7 +7,7 @@
 
 pkgname="google-cloud-sdk"
 pkgver=290.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -23,11 +23,13 @@ source=(
   "google-cloud-sdk.sh"
   "0001-set-python2-for-dev-appserver-py.patch"
   "0002-set-python2-for-endpointscfg-py.patch"
+  "0003-add-compdef-to-zsh-completion.patch"
 )
 sha256sums=('6429195023b30530ffc68d86de7f2dfb96c321df51f3a5a23d619c72441c2ade'
             'a54f88947a2593fae4aa8f65e42de4ad735583ae743735305c0f36710a794295'
             '62ec7f56e09168d375823e9e99fcdcfbf40b0fffdd75f35cf91122c5902c82e9'
-            'ff6065ce2e54ac654605bd5fe554313b1d0def2c31ce56ff39429098dd1e39fe')
+            'ff6065ce2e54ac654605bd5fe554313b1d0def2c31ce56ff39429098dd1e39fe'
+            '4694f5191ceea7cf8076861ce5790ba9e809023da278b0f6ed862b9611e5aa93')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
@@ -68,6 +70,9 @@ package() {
 
   install -D -m 0644 "${pkgdir}/opt/${pkgname}/completion.bash.inc" \
     "${pkgdir}/etc/bash_completion.d/google-cloud-sdk"
+
+  install -D -m 0644 "${pkgdir}/opt/${pkgname}/completion.zsh.inc" \
+    "${pkgdir}/usr/share/zsh/site-functions/_gcloud"
 
   mkdir -p "${pkgdir}/usr/share"
   mv -f "${pkgdir}/opt/${pkgname}/help/man" "${pkgdir}/usr/share/"
