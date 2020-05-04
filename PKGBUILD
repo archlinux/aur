@@ -1,32 +1,34 @@
 # Maintainer: S Stewart <tda@null.net>
+# Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 # Special thanks to RyanTheAllmighty for making hyper-appimage
 pkgname="gdlauncher-appimage"
-pkgver="v0.12.4"
-pkgrel=2
+_pkgname="gdlauncher"
+pkgver="0.0.4"
+pkgrel=1
 arch=('x86_64')
-pkgdesc="Modded Minecraft launcher built with Electron/React"
+pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience
+"
 url="https://gdevs.io"
-license=('MIT')
+license=('GPL3')
 install="gdlauncher-appimage.install"
+makedepends=('gendesk')
 depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3')
 
 source_x86_64=(
-    "gdlauncher.desktop"
-    "GDLauncher-linux-setup.AppImage::https://github.com/gorilla-devs/GDLauncher/releases/download/${pkgver}/GDLauncher-linux-setup.AppImage"
+    "GDLauncher-linux-setup.AppImage::https://github.com/gorilla-devs/GDLauncher-Releases/releases/download/v${pkgver}/GDLauncher-linux-setup.AppImage"
 )
 
-md5sums_x86_64=(
-    "310ff29d9c622367e31b989610a47617"
-    "74d2e23cb8b2069486d73c521b5d1a90"
-)
+md5sums_x86_64=('SKIP')
 
 prepare() {
-    # mark as executable
+    
+    # make executable
     chmod +x "${srcdir}/GDLauncher-linux-setup.AppImage"
-    # extract (didn't know this was possible)
+    # extract appimage (didn't know this was possible)
     "${srcdir}/GDLauncher-linux-setup.AppImage" --appimage-extract
-    # executable isnt needed now
-    chmod -x "${srcdir}/GDLauncher-linux-setup.AppImage"
+    cd "${srcdir}"
+    gendesk -f --pkgname "GDLauncher" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n
+    mv "GDLauncher.desktop" "${pkgname}.desktop"
 }
 
 package() {
@@ -35,12 +37,14 @@ package() {
     cp -Rr "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname}"
 
     # desktop entry
-    install -D -m644 "${srcdir}/gdlauncher.desktop" "${pkgdir}/usr/share/applications/gdlauncher.desktop"
+    install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-    # install the icons
+    # install the icon
     install -d -m755 "${pkgdir}/usr/share/icons/hicolor"
-    cp -Rr "${srcdir}/squashfs-root/usr/share/icons/hicolor/" "${pkgdir}/usr/share/icons/hicolor"
+    cp -Rr "${srcdir}/squashfs-root/usr/share/icons/hicolor/" "${pkgdir}/usr/share/icons/"
+    cp -Rr "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0" "${pkgdir}/usr/share/pixmaps"
 
+    
     # fix file permissions - all files as 644 - directories as 755
     find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
     find "${pkgdir}/"{opt,usr} -type f -exec chmod 644 {} \;
@@ -50,5 +54,5 @@ package() {
 
     # link the binary
     install -d -m755 "${pkgdir}/usr/bin"
-    ln -sr "${pkgdir}/opt/${pkgname}/gdlauncher" "${pkgdir}/usr/bin/gdlauncher"
+    ln -sr "${pkgdir}/opt/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
