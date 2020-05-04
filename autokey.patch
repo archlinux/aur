@@ -1,0 +1,25 @@
+--- src/autokey-0.95.10/lib/autokey/interface.py
++++ src/autokey-0.95.10/lib/autokey/interface.py
+@@ -751,6 +751,10 @@ class XInterfaceBase(threading.Thread):
+ 
+         focus = self.localDisplay.get_input_focus().focus
+ 
++        # Patch from https://code.google.com/archive/p/autokey/issues/278
++        self.localDisplay.flush()
++        time.sleep(0.01)
++
+         for char in string:
+             try:
+                 keyCodeList = self.localDisplay.keysym_to_keycodes(ord(char))
+@@ -796,6 +800,11 @@ class XInterfaceBase(threading.Thread):
+         self.__enqueue(self.__sendKey, keyName)
+         
+     def __sendKey(self, keyName):
++
++        # Patch from https://code.google.com/archive/p/autokey/issues/278
++        self.localDisplay.flush()
++        time.sleep(0.01)
++
+         logger.debug("Send special key: [%r]", keyName)
+         self.__sendKeyCode(self.__lookupKeyCode(keyName))
+ 

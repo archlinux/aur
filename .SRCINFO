@@ -1,0 +1,37 @@
+pkgbase = autokey-patched
+	pkgdesc = AutoKey, a desktop automation utility for Linux and X11, updated to run on Python 3, with additional patch from here to fix issues in Firefox https://code.google.com/archive/p/autokey/issues/278
+	pkgver = 0.95.10
+	pkgrel = 1
+	url = https://github.com/autokey/autokey
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = wmctrl
+	depends = python-dbus
+	depends = python-pyinotify
+	depends = zenity
+	depends = xautomation
+	depends = imagemagick
+	depends = xorg-xwd
+	depends = python-xlib
+	depends = python-setuptools
+	depends = python-gobject
+	depends = gtksourceview3
+	depends = libnotify
+	depends = libappindicator-gtk3
+	depends = gtk-update-icon-cache
+	optdepends = kdialog: for Qt interface
+	optdepends = python-pyqt5: for Qt interface
+	optdepends = python-qscintilla-qt5: for Qt interface
+	optdepends = qt5-svg: for Qt interface
+	optdepends = qt-at-spi: to work with KDE/Qt applications
+	optdepends = python-atspi: for ATSPI in Gtk interface
+	conflicts = autokey
+	replaces = autokey-py3,
+	replaces = autokey
+	source = autokey-patched-0.95.10.tar.gz::https://github.com/autokey-py3/autokey/archive/v0.95.10.tar.gz
+	sha256sums = e622ca04b3340f1ca0999bf03f05c9071a9f8aa3bc91c26c45c35509d63ff23d
+
+pkgname = autokey-patched
+
