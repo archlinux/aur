@@ -1,0 +1,15 @@
+pkgbase = python-simplenote
+	pkgdesc = Python API wrapper for the Simplenote web service
+	pkgver = 2.1.4
+	pkgrel = 1
+	url = https://github.com/simplenote-vim/simplenote.py
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-simplejson
+	provides = python-simplenote
+	source = python-simplenote.tar.gz::https://github.com/simplenote-vim/simplenote.py/archive/v2.1.4.tar.gz
+	sha256sums = 4ca8114218c44fe54256b8f392bdcf16bf53939f04aada891a16a1a981a10bc4
+
+pkgname = python-simplenote
