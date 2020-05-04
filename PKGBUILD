@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.2.0.r53.g6d5f6ce
+pkgver=0.2.0.r114.g980ecf3
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=('any')
@@ -66,12 +66,21 @@ pkgver() {
 prepare() {
     cd "$pkgname"
     ./bootstrap.sh
-    sed -i -e '/dist_\(doc|license\)_DATA/d' Makefile.am
+    sed Makefile.am -i -e '/dist_\(doc|license\)_DATA/d'
+    export YARN_CACHE_FOLDER="$srcdir/node_modules"
+    cargo fetch
+    yarn install --production --frozen-lockfile
 }
 
 build() {
     cd "$pkgname"
-    ./configure --prefix /usr
+    export YARN_CACHE_FOLDER="$srcdir/node_modules"
+    ./configure \
+        --prefix /usr \
+        --with-bash-completion-dir=bash-completion/completions \
+        --with-fish-completion-dir=fish/vendor_completions.d \
+        --with-zsh-completion-dir=zsh/site-functions
+    make
 }
 
 package () {
