@@ -1,8 +1,8 @@
 pkgbase = aptpac-git
 	pkgdesc = a pacman wrapper with syntax from debian's apt
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 2
-	url = https://github.com/SereneTeam/aptpac
+	url = https://github.com/FascodeNet/aptpac
 	arch = i686
 	arch = x86_64
 	license = WTFPL
@@ -11,7 +11,7 @@ pkgbase = aptpac-git
 	conflicts = apt
 	conflicts = apt-git
 	conflicts = aptpac
-	source = git://github.com/SereneTeam/aptpac.git
+	source = git://github.com/FascodeNet/aptpac.git
 	md5sums = SKIP
 
 pkgname = aptpac-git
