@@ -1,18 +1,42 @@
-# Maintainer: Nissar Chababy <funilrys at outlook dot com>
+# Maintainer: Nissar Chababy <contact at funilrys dot com>
 
-pkgname=python-zerorpc
-pkgver=0.6.1
-pkgrel=2
+upstreamName=zerorpc
+gitHubRepo="0rpc/${upstreamName}-python"
+pkgname="python-${upstreamName}"
+pkgver=0.6.3
+pkgrel=1
 pkgdesc="An easy to use, intuitive, and cross-language RPC"
 arch=('any')
 url="https://github.com/0rpc/zerorpc-python"
 license=('MIT')
-depends=('python3' 'python-distribute' 'python-setuptools' 'zeromq' 'python-msgpack' 'python-pyzmq' 'python-gevent' 'python-future')
-source=("https://github.com/0rpc/zerorpc-python/archive/v${pkgver}.tar.gz")
-sha512sums=('8efee348d9449b5ddcafa224dd068f9958a2331d5cfc1288fad98ed69e3600d893aa814bdb1b7441818b4627f54c723f1fef5b88d121fc19ed57720a8b9b92ca')
+provides=("${pkgname}")
+depends=(
+    'python3'
+    'python-distribute'
+    'python-setuptools'
+    'zeromq'
+    'python-msgpack'
+    'python-pyzmq'
+    'python-gevent'
+    'python-future'
+)
+source=(
+    "https://files.pythonhosted.org/packages/source/${upstreamName::1}/${upstreamName}/${upstreamName}-${pkgver}.tar.gz"
+    "LICENSE::https://raw.githubusercontent.com/${gitHubRepo}/master/LICENSE"
+)
+sha256sums=(
+    "d2ee247a566fc703f29c277d767f6f61f1e12f76d0402faea4bd815f32cbf37f"
+    "bfd3d67e2c911cb9184cd41d56be9964978cdcb31ea0684ba956c6f2aa47d22f"
+)
+
+build() {
+    echo "https://files.pythonhosted.org/packages/source/${upstreamName::1}/${upstreamName}/${upstreamName}-${pkgver}.tar.gz"
+    cd ${srcdir}/${upstreamName}-${pkgver}
+    python setup.py build
+}
 
 package() {
-  cd "$srcdir/zerorpc-python-$pkgver"
-  python3 setup.py install --root="${pkgdir}/"
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd ${srcdir}/${upstreamName}-${pkgver}
+    python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 }

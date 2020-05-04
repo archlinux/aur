@@ -1,7 +1,7 @@
 pkgbase = python-zerorpc
 	pkgdesc = An easy to use, intuitive, and cross-language RPC
-	pkgver = 0.6.1
-	pkgrel = 2
+	pkgver = 0.6.3
+	pkgrel = 1
 	url = https://github.com/0rpc/zerorpc-python
 	arch = any
 	license = MIT
@@ -13,8 +13,11 @@ pkgbase = python-zerorpc
 	depends = python-pyzmq
 	depends = python-gevent
 	depends = python-future
-	source = https://github.com/0rpc/zerorpc-python/archive/v0.6.1.tar.gz
-	sha512sums = 8efee348d9449b5ddcafa224dd068f9958a2331d5cfc1288fad98ed69e3600d893aa814bdb1b7441818b4627f54c723f1fef5b88d121fc19ed57720a8b9b92ca
+	provides = python-zerorpc
+	source = https://files.pythonhosted.org/packages/source/z/zerorpc/zerorpc-0.6.3.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/0rpc/zerorpc-python/master/LICENSE
+	sha256sums = d2ee247a566fc703f29c277d767f6f61f1e12f76d0402faea4bd815f32cbf37f
+	sha256sums = bfd3d67e2c911cb9184cd41d56be9964978cdcb31ea0684ba956c6f2aa47d22f
 
 pkgname = python-zerorpc
 
