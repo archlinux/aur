@@ -1,9 +1,10 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Alesh Slovak <aleshslovak@gmail.com>
 # Contributor: Niels Martignène <niels.martignene@gmail.com>
 
 pkgname=pycrc
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, easy to use Cyclic Redundancy Check (CRC) calculator and C source code generator"
 arch=(any)
 url="http://www.tty1.net/pycrc/"
@@ -19,11 +20,11 @@ package() {
   cd "pycrc-${pkgver}"
 
   mkdir -p "${pkgdir}${_sitedir}/pycrc"
-  cp -r *.py "${pkgdir}${_sitedir}/pycrc"
+  cp -r pycrc/*.py "${pkgdir}${_sitedir}/pycrc"
 
   mkdir -p "${pkgdir}/usr/bin"
-  chmod +x "${pkgdir}${_sitedir}/pycrc/pycrc.py"
-  ln -s "${_sitedir}/pycrc/pycrc.py" "${pkgdir}/usr/bin/pycrc"
+  cp pycrc.py "${pkgdir}/usr/bin/pycrc"
+  chmod +x "${pkgdir}/usr/bin/pycrc"
 
   mkdir -p "${pkgdir}/usr/share/man/man1"
   install -m644 doc/pycrc.1 "${pkgdir}/usr/share/man/man1/"
