@@ -1,0 +1,15 @@
+pkgbase = vim-mako-git
+	pkgdesc = Vim highlighting for the mako templating language
+	pkgver = r24.e74a52a
+	pkgrel = 1
+	url = https://github.com/sophacles/vim-bundle-mako
+	arch = any
+	license = custom:vim
+	makedepends = git
+	depends = vim
+	provides = vim-mako
+	source = git://github.com/sophacles/vim-bundle-mako.git
+	md5sums = SKIP
+
+pkgname = vim-mako-git
+
