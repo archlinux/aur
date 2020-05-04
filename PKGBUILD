@@ -6,7 +6,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=4.9.4
 #_dxvkver=1.5
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 arch=(x86_64)
@@ -98,6 +98,7 @@ optdepends=(
   samba           dosbox
 )
 makedepends=(${makedepends[@]} ${depends[@]})
+#install=${pkgname%-git}.install
 source=(
     proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-${_srctag}
     wine-valve::git+https://github.com/ValveSoftware/wine.git
@@ -109,10 +110,10 @@ source=(
     SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
     FAudio::git+https://github.com/FNA-XNA/FAudio.git
-#    gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
-#    gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
-#    gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
-#    glib::git+https://gitlab.gnome.org/GNOME/glib.git
+    gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
+    gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
+    gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
+    glib::git+https://gitlab.gnome.org/GNOME/glib.git
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
     proton-user_compat_data.patch
@@ -129,12 +130,12 @@ sha256sums=(
     SKIP
     SKIP
     SKIP
-#    SKIP
-#    SKIP
-#    SKIP
-#    SKIP
-    'b9e8443c3f1949cc8b0d311594aa46cbfb79da48c3f00e95c97e87656368dd49'
-    'f12df8e1e2dcb6bcced6fdccfdf044b2dc55714712efd577fd5d92abfad0f5c5'
+    SKIP
+    SKIP
+    SKIP
+    SKIP
+    '2c47db5b0381fe1d83cf96f531ce63c7781892bba56db033899fbb8ba6e1a2bc'
+    'ce7a59545f5a077e8f93684eddfdad39df807ffeb3a39d6054ca5d1c61644b04'
     '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
     'bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98'
 )
@@ -155,11 +156,11 @@ prepare() {
         git submodule update "${submodule}"
     done
 
-#    for submodule in gstreamer gst-plugins-{base,good} glib; do
-#        git submodule init "${submodule}"
-#        git config submodule."${submodule}".url ../"${submodule#*/}"
-#        git submodule update "${submodule}"
-#    done
+    for submodule in gstreamer gst-plugins-{base,good} glib; do
+        git submodule init "${submodule}"
+        git config submodule."${submodule}".url ../"${submodule#*/}"
+        git submodule update "${submodule}"
+    done
 
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
@@ -224,6 +225,7 @@ build() {
         WINEESYNC=0 \
         WINEFSYNC=0 \
         NO_DXVK=0 \
+        SYSTEM_GSTREAMER=0\
         SYSTEM_GECKO=1 \
         SYSTEM_MONO=1 \
         make -j1 dist

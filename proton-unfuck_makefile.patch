@@ -1,5 +1,5 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index 1b02135..34ca827 100644
+index 79ac5b2..d38c79e 100644
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -89,8 +89,8 @@ SELECT_DOCKER_IMAGE :=
@@ -39,20 +39,24 @@ index 1b02135..34ca827 100644
  
  LSTEAMCLIENT := $(SRCDIR)/lsteamclient
  LSTEAMCLIENT32 := ./syn-lsteamclient32/lsteamclient
-@@ -229,6 +240,12 @@ WINE_DST32 := ./dist-wine32
+@@ -229,6 +240,16 @@ WINE_DST32 := ./dist-wine32
  WINE_OBJ32 := ./obj-wine32
  WINE_OBJ64 := ./obj-wine64
  WINEMAKER := $(abspath $(WINE)/tools/winemaker/winemaker)
 +WINE_DEPS32 := faudio32 vkd3d32
 +WINE_DEPS64 := faudio64 vkd3d64
-+ifneq ($(STEAMRT_PATH),) # Don't build gstreamer/bison in native mode
-+	WINE_DEPS32 += gst_base32 bison32
-+	WINE_DEPS64 += gst_base64 bison64
++ifneq ($(STEAMRT_PATH),) # Don't build bison in native mode
++	WINE_DEPS32 += bison32
++	WINE_DEPS64 += bison64
 +endif # STEAMRT_PATH
++ifneq ($(SYSTEM_GSTREAMER), 1) # Use system gstreamer
++	WINE_DEPS32 += gst_base32
++	WINE_DEPS64 += gst_base64
++endif # SYSTEM_GSTREAMER
  
  # Wine outputs that need to exist for other steps (dist)
  WINE_OUT_BIN := $(DST_DIR)/bin/wine64
-@@ -236,9 +253,11 @@ WINE_OUT_SERVER := $(DST_DIR)/bin/wineserver
+@@ -236,9 +257,11 @@ WINE_OUT_SERVER := $(DST_DIR)/bin/wineserver
  WINE_OUT := $(WINE_OUT_BIN) $(WINE_OUT_SERVER)
  # Tool-only build outputs needed for other projects
  WINEGCC32 := $(TOOLS_DIR32)/bin/winegcc
@@ -64,7 +68,7 @@ index 1b02135..34ca827 100644
  WINEBUILD64 := $(TOOLS_DIR64)/bin/winebuild
  WINE_BUILDTOOLS64 := $(WINEGCC64) $(WINEBUILD64)
  
-@@ -246,6 +265,12 @@ WINEWIDL_OBJ32 := ./obj-widl32
+@@ -246,6 +269,12 @@ WINEWIDL_OBJ32 := ./obj-widl32
  WINEWIDL_OBJ64 := ./obj-widl64
  WINEWIDL32 := $(WINEWIDL_OBJ32)/tools/widl/widl
  WINEWIDL64 := $(WINEWIDL_OBJ64)/tools/widl/widl
@@ -77,7 +81,7 @@ index 1b02135..34ca827 100644
  
  VRCLIENT := $(SRCDIR)/vrclient_x64
  VRCLIENT32 := ./syn-vrclient32
-@@ -261,22 +286,38 @@ VULKAN_H_OBJ32 := ./obj-vulkan-headers32
+@@ -261,22 +290,38 @@ VULKAN_H_OBJ32 := ./obj-vulkan-headers32
  VULKAN_H_OBJ64 := ./obj-vulkan-headers64
  VULKAN_H32 := $(TOOLS_DIR32)/include/vulkan/vulkan.h
  VULKAN_H64 := $(TOOLS_DIR64)/include/vulkan/vulkan.h
@@ -118,7 +122,7 @@ index 1b02135..34ca827 100644
  
  BISON_VER = 3.3.2
  BISON_TARBALL := bison-$(BISON_VER).tar.xz
-@@ -285,6 +326,10 @@ BISON_OBJ32 := ./obj-bison32
+@@ -285,6 +330,10 @@ BISON_OBJ32 := ./obj-bison32
  BISON_OBJ64 := ./obj-bison64
  BISON_BIN32 := $(BISON_OBJ32)/built/bin/bison
  BISON_BIN64 := $(BISON_OBJ64)/built/bin/bison
@@ -129,14 +133,14 @@ index 1b02135..34ca827 100644
  
  
  FONTS := $(SRCDIR)/fonts
-@@ -388,11 +433,26 @@ DIST_GECKO64 := $(DIST_GECKO_DIR)/wine-gecko-$(GECKO_VER)-x86_64
+@@ -388,11 +437,26 @@ DIST_GECKO64 := $(DIST_GECKO_DIR)/wine-gecko-$(GECKO_VER)-x86_64
  DIST_WINEMONO_DIR := $(DST_DIR)/share/wine/mono
  DIST_WINEMONO := $(DIST_WINEMONO_DIR)/wine-mono-$(WINEMONO_VER)
  DIST_FONTS := $(DST_DIR)/share/fonts
 +DIST_DEPS := wine vrclient lsteamclient steam
-+ifneq ($(STEAMRT_PATH),) # Don't build gstreamer in native mode
++ifneq ($(SYSTEM_GSTREAMER),1) # Use system gstreamer
 +	DIST_DEPS += gst_good
-+endif # STEAMRT_PATH
++endif # SYSTEM_GSTREAMER
 +ifneq ($(NO_DXVK),1) # May be disabled by configure
 +	DIST_DEPS += dxvk
 +endif # NO_DXVK
@@ -157,7 +161,7 @@ index 1b02135..34ca827 100644
  DEPLOY_COPY_TARGETS := $(DIST_COPY_TARGETS) $(DIST_VERSION) $(DIST_LICENSE) $(DIST_OFL_LICENSE)
  REDIST_COPY_TARGETS := $(DEPLOY_COPY_TARGETS) $(DIST_COMPAT_MANIFEST)
  
-@@ -468,7 +528,7 @@ $(DIST_FONTS): fonts
+@@ -468,7 +532,7 @@ $(DIST_FONTS): fonts
  ALL_TARGETS += dist
  GOAL_TARGETS += dist
  
@@ -166,24 +170,120 @@ index 1b02135..34ca827 100644
  	echo `date '+%s'` `GIT_DIR=$(abspath $(SRCDIR)/.git) git describe --tags` > $(DIST_VERSION)
  	cp $(DIST_VERSION) $(DST_BASE)/
  	rm -rf $(abspath $(DIST_PREFIX)) && \
-@@ -515,6 +575,8 @@ module64:
+@@ -515,6 +579,8 @@ module64:
  
  module: module32 module64
  
-+ifneq ($(STEAMRT_PATH),) # Don't build gstreamer in native mode
++ifneq ($(SYSTEM_GSTREAMER),1) # Use system gstreamer
 +
  ##
  ## glib
  ##
-@@ -846,6 +908,7 @@ gst_good32: $(GST_GOOD_CONFIGURE_FILES32)
+@@ -523,6 +589,10 @@ GLIB_CONFIGURE_FILES32 := $(GLIB_OBJ32)/build.ninja
+ GLIB_CONFIGURE_FILES64 := $(GLIB_OBJ64)/build.ninja
+ 
+ GLIB_MESON_ARGS := -Dlibmount=false
++GLIB_MESON_ARGS += \
++	-Dselinux=false \
++	-Db_lto=true \
++	-Db_pie=true
+ 
+ # 64-bit configure.  Remove coredata file if already configured (due to e.g. makefile changing)
+ $(GLIB_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
+@@ -531,6 +601,7 @@ $(GLIB_CONFIGURE_FILES64): $(MAKEFILE_DEP) | $(GLIB_OBJ64)
+ 		rm -f "$(abspath $(GLIB_OBJ64))"/meson-private/coredata.dat; \
+ 	fi
+ 	cd "$(abspath $(GLIB))" && \
++		CFLAGS+=" -DG_DISABLE_CAST_CHECKS" \
+ 		meson --prefix="$(abspath $(TOOLS_DIR64))" --libdir="lib" $(GLIB_MESON_ARGS) $(MESON_STRIP_ARG) --buildtype=release "$(abspath $(GLIB_OBJ64))"
+ 
+ # 32-bit configure.  Remove coredata file if already configured (due to e.g. makefile changing)
+@@ -540,6 +611,10 @@ $(GLIB_CONFIGURE_FILES32): $(MAKEFILE_DEP) | $(GLIB_OBJ32)
+ 		rm -f "$(abspath $(GLIB_OBJ32))"/meson-private/coredata.dat; \
+ 	fi
+ 	cd "$(abspath $(GLIB))" && \
++		CFLAGS="-m32 -mstackrealign $(COMMON_FLAGS)" \
++		CXXFLAGS="-m32 -mstackrealign $(COMMON_FLAGS)" \
++		PKG_CONFIG="i686-pc-linux-gnu-pkg-config" \
++		CFLAGS+=" -DG_DISABLE_CAST_CHECKS" \
+ 		meson --prefix="$(abspath $(TOOLS_DIR32))" --libdir="lib" $(GLIB_MESON_ARGS) $(MESON_STRIP_ARG) --buildtype=release "$(abspath $(GLIB_OBJ32))"
+ 
+ ## glib goals
+@@ -584,6 +659,8 @@ glib32: $(GLIB_CONFIGURE_FILES32)
+ ##
+ 
+ GST_COMMON_MESON_ARGS := \
++	-Db_lto=true \
++	-Db_pie=true \
+ 	-Dexamples=disabled \
+ 	-Dtests=disabled \
+ 	-Dtools=disabled \
+@@ -597,6 +674,10 @@ GST_COMMON_MESON_ARGS := \
+ GSTREAMER_MESON_ARGS := \
+ 	-Dgst_parse=false \
+ 	-Dbenchmarks=disabled \
++  -Dbash-completion=disabled \
++	-Dptp-helper-permissions=capabilities \
++	-Ddbghelp=disabled \
++	-Dpackage-name="GStreamer (Proton)" \
+ 	$(GST_COMMON_MESON_ARGS)
+ 
+ GSTREAMER_CONFIGURE_FILES32 := $(GSTREAMER_OBJ32)/build.ninja
+@@ -621,6 +702,9 @@ $(GSTREAMER_CONFIGURE_FILES32): $(MAKEFILE_DEP) glib32 | $(GSTREAMER_OBJ32)
+ 	fi
+ 	cd "$(abspath $(GSTREAMER))" && \
+ 	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
++		CFLAGS="-m32 $(COMMON_FLAGS)" \
++		CXXFLAGS="-m32 $(COMMON_FLAGS)" \
++		PKG_CONFIG="i686-pc-linux-gnu-pkg-config" \
+ 		PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR32))/lib/pkgconfig \
+ 		meson --prefix="$(abspath $(TOOLS_DIR32))" --libdir="lib" $(GSTREAMER_MESON_ARGS) $(MESON_STRIP_ARG) --buildtype=release "$(abspath $(GSTREAMER_OBJ32))"
+ 
+@@ -681,6 +765,7 @@ GST_BASE_MESON_ARGS := \
+ 	-Dx11=disabled \
+ 	-Dxshm=disabled \
+ 	-Dxvideo=disabled \
++	-Dpackage-name="GStreamer Base Plugins (Proton)" \
+ 	$(GST_COMMON_MESON_ARGS)
+ 
+ GST_BASE_CONFIGURE_FILES32 := $(GST_BASE_OBJ32)/build.ninja
+@@ -705,6 +790,9 @@ $(GST_BASE_CONFIGURE_FILES32): $(MAKEFILE_DEP) gstreamer32 | $(GST_BASE_OBJ32)
+ 	fi
+ 	cd "$(abspath $(GST_BASE))" && \
+ 	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
++		CFLAGS="-m32 $(COMMON_FLAGS)" \
++		CXXFLAGS="-m32 $(COMMON_FLAGS)" \
++		PKG_CONFIG="i686-pc-linux-gnu-pkg-config" \
+ 		PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR32))/lib/pkgconfig \
+ 		meson --prefix="$(abspath $(TOOLS_DIR32))" --libdir="lib" $(GST_BASE_MESON_ARGS) $(MESON_STRIP_ARG) --buildtype=release "$(abspath $(GST_BASE_OBJ32))"
+ 
+@@ -790,6 +878,7 @@ GST_GOOD_MESON_ARGS := \
+ 	-Dwavenc=disabled \
+ 	-Dximagesrc=disabled \
+ 	-Dy4m=disabled \
++  -Dpackage-name="GStreamer Good Plugins (Proton)" \
+ 	$(GST_COMMON_MESON_ARGS)
+ 
+ GST_GOOD_CONFIGURE_FILES32 := $(GST_GOOD_OBJ32)/build.ninja
+@@ -814,6 +903,9 @@ $(GST_GOOD_CONFIGURE_FILES32): $(MAKEFILE_DEP) gst_base32 | $(GST_GOOD_OBJ32)
+ 	fi
+ 	cd "$(abspath $(GST_GOOD))" && \
+ 	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
++		CFLAGS="-m32 $(COMMON_FLAGS)" \
++		CXXFLAGS="-m32 $(COMMON_FLAGS)" \
++		PKG_CONFIG="i686-pc-linux-gnu-pkg-config" \
+ 		PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR32))/lib/pkgconfig \
+ 		meson --prefix="$(abspath $(TOOLS_DIR32))" --libdir="lib" $(GST_GOOD_MESON_ARGS) $(MESON_STRIP_ARG) --buildtype=release "$(abspath $(GST_GOOD_OBJ32))"
+ 
+@@ -845,6 +937,7 @@ gst_good32: $(GST_GOOD_CONFIGURE_FILES32)
  	cp -a $(TOOLS_DIR32)/lib/libgst* $(DST_DIR)/lib/ && \
  	cp -a $(TOOLS_DIR32)/lib/gstreamer-1.0 $(DST_DIR)/lib/
  
-+endif # ifneq ($(STEAMRT_PATH),)
++endif # ifneq ($(SYSTEM_GSTREAMER),)
  
  ##
  ## ffmpeg
-@@ -863,13 +926,15 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ6
+@@ -862,13 +955,15 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ6
  		$(abspath $(FFMPEG))/configure \
  			--cc=$(CC_QUOTED) --cxx=$(CXX_QUOTED) \
  			--prefix=$(abspath $(TOOLS_DIR64)) \
@@ -200,7 +300,7 @@ index 1b02135..34ca827 100644
  			--disable-swscale \
  			--disable-postproc \
  			--disable-avfilter \
-@@ -895,17 +960,19 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ6
+@@ -894,17 +989,19 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ6
  $(FFMPEG_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
  $(FFMPEG_CONFIGURE_FILES32): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ32)
  	cd $(dir $@) && \
@@ -222,7 +322,7 @@ index 1b02135..34ca827 100644
  			--disable-swscale \
  			--disable-postproc \
  			--disable-avfilter \
-@@ -948,14 +1015,14 @@ ffmpeg64: $(FFMPEG_CONFIGURE_FILES64)
+@@ -947,14 +1044,14 @@ ffmpeg64: $(FFMPEG_CONFIGURE_FILES64)
  	+$(MAKE) -C $(FFMPEG_OBJ64)
  	+$(MAKE) -C $(FFMPEG_OBJ64) install
  	mkdir -pv $(DST_DIR)/lib64
@@ -239,7 +339,7 @@ index 1b02135..34ca827 100644
  
  endif # ifeq ($(WITH_FFMPEG),1)
  
-@@ -981,19 +1048,22 @@ FAUDIO_CONFIGURE_FILES32 := $(FAUDIO_OBJ32)/Makefile
+@@ -980,19 +1077,22 @@ FAUDIO_CONFIGURE_FILES32 := $(FAUDIO_OBJ32)/Makefile
  FAUDIO_CONFIGURE_FILES64 := $(FAUDIO_OBJ64)/Makefile
  
  $(FAUDIO_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
@@ -268,7 +368,7 @@ index 1b02135..34ca827 100644
  
  faudio32: SHELL = $(CONTAINER_SHELL32)
  faudio32: $(FAUDIO_CONFIGURE_FILES32)
-@@ -1183,36 +1253,48 @@ WINE32_MAKE_ARGS := \
+@@ -1183,36 +1283,48 @@ WINE32_MAKE_ARGS := \
  
  # 64bit-configure
  $(WINE_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
@@ -278,10 +378,10 @@ index 1b02135..34ca827 100644
  		../$(WINE)/configure \
 +			--with-x \
 +			--with-gstreamer \
++			--with-faudio \
 +			--without-mingw \
  			--without-curses \
 +			--without-oss \
-+			--disable-winemenubuilder \
 +			--disable-win16 \
  			--enable-win64 \
  			--disable-tests \
@@ -306,10 +406,10 @@ index 1b02135..34ca827 100644
  		../$(WINE)/configure \
 +			--with-x \
 +			--with-gstreamer \
++			--with-faudio \
 +			--without-mingw \
  			--without-curses \
 +			--without-oss \
-+			--disable-winemenubuilder \
 +			--disable-win16 \
  			--disable-tests \
  			--prefix=$(abspath $(WINE_DST32)) \
@@ -325,7 +425,7 @@ index 1b02135..34ca827 100644
  			CC=$(CC_QUOTED) \
  			CXX=$(CXX_QUOTED)
  
-@@ -1367,6 +1449,8 @@ vrclient32: $(VRCLIENT_CONFIGURE_FILES32) | $(WINE_BUILDTOOLS32) $(filter $(MAKE
+@@ -1367,6 +1479,8 @@ vrclient32: $(VRCLIENT_CONFIGURE_FILES32) | $(WINE_BUILDTOOLS32) $(filter $(MAKE
  
  ## Create & configure object directory for cmake
  
@@ -334,7 +434,7 @@ index 1b02135..34ca827 100644
  CMAKE_CONFIGURE_FILES32 := $(CMAKE_OBJ32)/Makefile
  CMAKE_CONFIGURE_FILES64 := $(CMAKE_OBJ64)/Makefile
  
-@@ -1418,12 +1502,16 @@ cmake32-intermediate: $(CMAKE_CONFIGURE_FILES32) $(filter $(MAKECMDGOALS),cmake3
+@@ -1418,12 +1532,16 @@ cmake32-intermediate: $(CMAKE_CONFIGURE_FILES32) $(filter $(MAKECMDGOALS),cmake3
  	+$(MAKE) -C $(CMAKE_OBJ32) install
  	touch $(CMAKE_BIN32)
  
@@ -351,7 +451,7 @@ index 1b02135..34ca827 100644
  $(BISON):
  	if [ -e "$(SRCDIR)/../bison/$(BISON_TARBALL)" ]; then \
  		mkdir -p $(dir $@); \
-@@ -1488,6 +1576,8 @@ bison32-intermediate: $(BISON_CONFIGURE_FILES32) $(filter $(MAKECMDGOALS),bison3
+@@ -1488,6 +1606,8 @@ bison32-intermediate: $(BISON_CONFIGURE_FILES32) $(filter $(MAKECMDGOALS),bison3
  	+$(MAKE) -C $(BISON_OBJ32) install
  	touch $(BISON_BIN32)
  
@@ -360,7 +460,7 @@ index 1b02135..34ca827 100644
  ##
  ## dxvk
  ##
-@@ -1508,7 +1598,7 @@ $(DXVK_CONFIGURE_FILES64): $(MAKEFILE_DEP) $(DXVK)/build-win64.txt | $(DXVK_OBJ6
+@@ -1508,7 +1628,7 @@ $(DXVK_CONFIGURE_FILES64): $(MAKEFILE_DEP) $(DXVK)/build-win64.txt | $(DXVK_OBJ6
  	fi
  	cd "$(abspath $(DXVK))" && \
  	PATH="$(abspath $(SRCDIR))/glslang/bin/:$(PATH)" \
@@ -369,7 +469,7 @@ index 1b02135..34ca827 100644
  
  # 32-bit configure.  Remove coredata file if already configured (due to e.g. makefile changing)
  $(DXVK_CONFIGURE_FILES32): $(MAKEFILE_DEP) $(DXVK)/build-win32.txt | $(DXVK_OBJ32)
-@@ -1517,7 +1607,7 @@ $(DXVK_CONFIGURE_FILES32): $(MAKEFILE_DEP) $(DXVK)/build-win32.txt | $(DXVK_OBJ3
+@@ -1517,7 +1637,7 @@ $(DXVK_CONFIGURE_FILES32): $(MAKEFILE_DEP) $(DXVK)/build-win32.txt | $(DXVK_OBJ3
  	fi
  	cd "$(abspath $(DXVK))" && \
  	PATH="$(abspath $(SRCDIR))/glslang/bin/:$(PATH)" \
@@ -378,7 +478,7 @@ index 1b02135..34ca827 100644
  
  ## dxvk goals
  DXVK_TARGETS = dxvk dxvk_configure dxvk32 dxvk64 dxvk_configure32 dxvk_configure64
-@@ -1536,7 +1626,7 @@ dxvk_configure32: $(DXVK_CONFIGURE_FILES32)
+@@ -1536,7 +1656,7 @@ dxvk_configure32: $(DXVK_CONFIGURE_FILES32)
  dxvk: dxvk32 dxvk64
  
  dxvk64: $(DXVK_CONFIGURE_FILES64)
@@ -387,7 +487,7 @@ index 1b02135..34ca827 100644
  	mkdir -p "$(DST_DIR)/lib64/wine/dxvk"
  	cp "$(DXVK_OBJ64)"/bin/dxgi.dll "$(DST_DIR)"/lib64/wine/dxvk
  	cp "$(DXVK_OBJ64)"/bin/d3d11.dll "$(DST_DIR)"/lib64/wine/dxvk
-@@ -1549,7 +1639,7 @@ dxvk64: $(DXVK_CONFIGURE_FILES64)
+@@ -1549,7 +1669,7 @@ dxvk64: $(DXVK_CONFIGURE_FILES64)
  
  
  dxvk32: $(DXVK_CONFIGURE_FILES32)
@@ -396,7 +496,7 @@ index 1b02135..34ca827 100644
  	mkdir -p "$(DST_DIR)"/lib/wine/dxvk
  	cp "$(DXVK_OBJ32)"/bin/dxgi.dll "$(DST_DIR)"/lib/wine/dxvk/
  	cp "$(DXVK_OBJ32)"/bin/d3d11.dll "$(DST_DIR)"/lib/wine/dxvk/
-@@ -1568,24 +1658,24 @@ VULKAN_H_CONFIGURE_FILES32 := $(VULKAN_H_OBJ32)/Makefile
+@@ -1568,24 +1688,24 @@ VULKAN_H_CONFIGURE_FILES32 := $(VULKAN_H_OBJ32)/Makefile
  VULKAN_H_CONFIGURE_FILES64 := $(VULKAN_H_OBJ64)/Makefile
  
  $(VULKAN_H_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
@@ -427,7 +527,7 @@ index 1b02135..34ca827 100644
  
  # SPIRV-Headers
  
-@@ -1593,24 +1683,24 @@ SPIRV_H_CONFIGURE_FILES32 := $(SPIRV_H_OBJ32)/Makefile
+@@ -1593,24 +1713,24 @@ SPIRV_H_CONFIGURE_FILES32 := $(SPIRV_H_OBJ32)/Makefile
  SPIRV_H_CONFIGURE_FILES64 := $(SPIRV_H_OBJ64)/Makefile
  
  $(SPIRV_H_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
@@ -458,7 +558,7 @@ index 1b02135..34ca827 100644
  
  # widl; required for vkd3d, which is built before wine
  
-@@ -1618,16 +1708,22 @@ WINEWIDL_CONFIGURE_FILES64 := $(WINEWIDL_OBJ64)/Makefile
+@@ -1618,14 +1738,18 @@ WINEWIDL_CONFIGURE_FILES64 := $(WINEWIDL_OBJ64)/Makefile
  WINEWIDL_CONFIGURE_FILES32 := $(WINEWIDL_OBJ32)/Makefile
  
  $(WINEWIDL_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
@@ -467,26 +567,20 @@ index 1b02135..34ca827 100644
  	cd $(dir $@) && \
  		../$(WINE)/configure \
 +			--with-x \
-+			--with-gstreamer \
 +			--without-mingw \
  			--without-curses \
 +			--without-oss \
-+			--disable-winemenubuilder \
 +			--disable-win16 \
  			--disable-tests \
  			STRIP=$(STRIP_QUOTED) \
 -			BISON=$(abspath $(BISON_BIN32)) \
 -			CFLAGS=-I$(abspath $(TOOLS_DIR64))"/include -g $(COMMON_FLAGS)" \
--			LDFLAGS=-L$(abspath $(TOOLS_DIR32))/lib \
--			PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR32))/lib/pkgconfig \
 +			$(WINE_BISON32) \
 +			CFLAGS=-I$(abspath $(TOOLS_DIR32))"/include -g $(COMMON_FLAGS)" \
-+			LDFLAGS="-L$(abspath $(TOOLS_DIR32))/lib -Wl,-rpath-link,$(abspath $(TOOLS_DIR32))/lib" \
-+			PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR32))/lib/pkgconfig:/usr/lib32/pkgconfig \
+ 			LDFLAGS=-L$(abspath $(TOOLS_DIR32))/lib \
+ 			PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR32))/lib/pkgconfig \
  			CC=$(CC_QUOTED) \
- 			CXX=$(CXX_QUOTED)
- 
-@@ -1637,17 +1733,23 @@ $(WINEWIDL32): $(WINEWIDL_CONFIGURE_FILES32)
+@@ -1637,14 +1761,18 @@ $(WINEWIDL32): $(WINEWIDL_CONFIGURE_FILES32)
  	make tools/widl
  
  $(WINEWIDL_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
@@ -495,11 +589,9 @@ index 1b02135..34ca827 100644
  	cd $(dir $@) && \
  		../$(WINE)/configure \
 +			--with-x \
-+			--with-gstreamer \
 +			--without-mingw \
  			--without-curses \
 +			--without-oss \
-+			--disable-winemenubuilder \
 +			--disable-win16 \
  			--enable-win64 \
  			--disable-tests \
@@ -507,14 +599,9 @@ index 1b02135..34ca827 100644
 -			BISON=$(abspath $(BISON_BIN64)) \
 +			$(WINE_BISON64) \
  			CFLAGS=-I$(abspath $(TOOLS_DIR64))"/include -g $(COMMON_FLAGS)" \
--			LDFLAGS=-L$(abspath $(TOOLS_DIR64))/lib \
--			PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR64))/lib/pkgconfig \
-+			LDFLAGS="-L$(abspath $(TOOLS_DIR64))/lib -Wl,-rpath-link,$(abspath $(TOOLS_DIR64))/lib" \
-+			PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR64))/lib/pkgconfig:/usr/lib/pkgconfig \
- 			CC=$(CC_QUOTED) \
- 			CXX=$(CXX_QUOTED)
- 
-@@ -1672,7 +1774,7 @@ $(VKD3D_CONFIGURE_FILES32): $(MAKEFILE_DEP) $(VULKAN_H32) $(SPIRV_H32) $(VKD3D)/
+ 			LDFLAGS=-L$(abspath $(TOOLS_DIR64))/lib \
+ 			PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR64))/lib/pkgconfig \
+@@ -1672,7 +1800,7 @@ $(VKD3D_CONFIGURE_FILES32): $(MAKEFILE_DEP) $(VULKAN_H32) $(SPIRV_H32) $(VKD3D)/
  		$(abspath $(VKD3D))/configure \
  			--disable-tests \
  			--prefix=$(abspath $(TOOLS_DIR32)) \
