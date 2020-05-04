@@ -1,7 +1,7 @@
 # Maintainer: Federico Giuliani <federico.giuliani86 at gmail dot com>
 
 pkgname=airsonic
-pkgver=10.6.1
+pkgver=10.6.2
 _relver=10.6
 pkgrel=1
 pkgdesc="A free, web-based media streamer and jukebox."
@@ -36,8 +36,9 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
   
 }
-sha256sums=('6b8bf98a5288fe982ead0c99489a66cbeb8b880fa2ab4fc86d9e07944e4cf335'
+sha256sums=('94b17d6a7859a9c029dcbcdc672f4d49bd605bf46bdf74ac51ea0d593db67860'
             '059a43fe100d95aaaae8091d1c312f4d3a2a2b4edc1969358dd7be35f6525930'
             '6f2e626e393d1e706e3edb45d5dfabf026d9360016d0c2643430c4503dc3e9e2'
             '25af0b92b247df928db5ac8fec3fb4fa2cdc717e649729d5e0c059a5b81e058e'
             '952c15c8c6b53b9c63a96eb6b2402eae42bde56dc9c6c60484cf039a03a82963')
+
