@@ -5,7 +5,7 @@ pkgrel=3
 pkgdesc="GNOME audio player for transcription"
 arch=('any')
 url="https://github.com/gkarsay/parlatype"
-license=('GPL')
+license=('GPL3')
 # Automatic speech recognition is recommendend to be turned off by developper
 # If you want ASR, add 'sphinxbase' 'pocketsphinx' 'python-atspi' as dependencies
 # and -Dasr=true in the build command
