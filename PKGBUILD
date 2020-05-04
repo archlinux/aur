@@ -3,7 +3,7 @@
 # Contributor: 2GMon <t_2gmon@yahoo.co.jp>
 
 pkgname=mikutter
-pkgver=4.0.4
+pkgver=4.0.5
 pkgrel=1
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
@@ -11,28 +11,16 @@ url="http://mikutter.hachune.net/"
 license=('MIT')
 optdepends=('alsa-utils: sound notification support'
             'libnotify: notify support')
+options=(!strip)
 appimage=$pkgname-$pkgver-x86_64.AppImage
 source=(
 https://mikutter.hachune.net/bin/$appimage
 mikutter.desktop
 )
 
-prepare() {
-  chmod +x $appimage
-  ./$appimage --appimage-extract
-
-  find squashfs-root -type d -exec chmod 755 {} \;
-}
-
 package() {
-  mkdir $pkgdir/opt
-  cp -r $srcdir/squashfs-root $pkgdir/opt/mikutter
-
   mkdir -p $pkgdir/usr/bin
-  cat <<'EOF' > $pkgdir/usr/bin/mikutter
-#!/bin/sh
-/opt/mikutter/AppRun $@
-EOF
+  cp $appimage $pkgdir/usr/bin/mikutter
   chmod a+x $pkgdir/usr/bin/mikutter
 
   mkdir -p $pkgdir/usr/share/applications
@@ -40,5 +28,5 @@ EOF
   chmod a+x $pkgdir/usr/share/applications/mikutter.desktop
 }
 
-md5sums=('57f82e5a52dc290743f2ca8a9d0e7812'
+md5sums=('6f6ea290ed6c3b376d0295f619f9ca30'
          '82f7f4d37380871d3fde314fe51cf406' )
