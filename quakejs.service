@@ -1,11 +1,11 @@
 Unit]
-Description=QuakeJS content server
+Description=QuakeJS game server
 After=network.target
 
 [Service]
 User=quakejs
 Type=simple
-ExecStart=/usr/bin/node bin/content.js
+ExecStart=/usr/bin/node bin/web.js --config /etc/webapps/quakejs/web.json
 WorkingDirectory=/usr/share/webapps/quakejs
 LimitNOFILE=1048576
 LimitNPROC=64
