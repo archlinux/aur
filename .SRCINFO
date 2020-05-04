@@ -1,13 +1,13 @@
 pkgbase = virtctl-bin
 	pkgdesc = CLI tool for managing KubeVirt resources.
-	pkgver = 0.23.2
+	pkgver = 0.26.5
 	pkgrel = 1
 	url = https://github.com/kubevirt/kubevirt
 	arch = x86_64
 	license = Apache
 	provides = virtctl
-	source = https://github.com/kubevirt/kubevirt/releases/download/v0.23.2/virtctl-v0.23.2-linux-amd64
-	sha256sums = e1f2547326cbf52150bcf40af5960bc91f3581b67f10728c8d3b61354a444921
+	source = https://github.com/kubevirt/kubevirt/releases/download/v0.26.5/virtctl-v0.26.5-linux-amd64
+	sha256sums = 2dd2b4fc0472da05c2b9820b28fffc7fa6ab2b7f8b195c9c5e3b715abf214876
 
 pkgname = virtctl-bin
 
