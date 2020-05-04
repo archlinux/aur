@@ -1,6 +1,6 @@
 pkgbase = r-recipes
 	pkgdesc = Preprocessing Tools to Create Design Matrices
-	pkgver = 0.1.10
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://cran.r-project.org/package=recipes
 	arch = any
@@ -33,12 +33,13 @@ pkgbase = r-recipes
 	optdepends = r-rann
 	optdepends = r-rcpproll
 	optdepends = r-rmarkdown
+	optdepends = r-rpart
 	optdepends = r-rsample
 	optdepends = r-rspectra
 	optdepends = r-testthat
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/recipes_0.1.10.tar.gz
-	md5sums = 27a314365350304dbc24327e7ead88e6
+	source = https://cran.r-project.org/src/contrib/recipes_0.1.12.tar.gz
+	md5sums = f62682bdb4688db8ffec29182c3c4a2e
 
 pkgname = r-recipes
 
