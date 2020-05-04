@@ -13,7 +13,9 @@ pkgbase = tktreectrl-git
 	provides = tktreectrl
 	conflicts = tktreectrl
 	source = git+https://github.com/apnadkarni/tktreectrl.git
+	source = arch-paths.patch
 	md5sums = SKIP
+	md5sums = 82fa47b8779466ccd9740e5aad3e47cf
 
 pkgname = tktreectrl-git
 
