@@ -1,4 +1,4 @@
-commit a6bbfa764557ea51a5b3e5f997dd908359c90c37
+commit 429cd6c9a1ba23847ce424cd07f5788930d0687b
 Author: Daniel Bermond <danielbermond@gmail.com>
 Date:   Fri Sep 27 17:36:52 2019 +0000
 
@@ -13,7 +13,7 @@ Date:   Fri Sep 27 17:36:52 2019 +0000
     Signed-off-by: Daniel Bermond <danielbermond@gmail.com>
 
 diff --git a/Makefile b/Makefile
-index fdb90f9..5870621 100644
+index fdb90f9..10b0e2d 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -51,16 +51,16 @@ build: $(CLI)
@@ -21,18 +21,18 @@ index fdb90f9..5870621 100644
  
  $(GO_ASSETS):
 -	GOPATH=$(REPO) $(GO) build -o $(GO_ASSETS) -v github.com/jessevdk/go-assets-builder
-+	GOPATH=$(REPO) $(GO) build -gcflags "all=-trimpath=$${PWD}" -asmflags "all=-trimpath=$${PWD}" -o $(GO_ASSETS) -v github.com/jessevdk/go-assets-builder
++	GOPATH=$(REPO) $(GO) build -trimpath -ldflags "-extldflags ${LDFLAGS}" -o $(GO_ASSETS) -v github.com/jessevdk/go-assets-builder
  
  $(ASSETS): $(GO_ASSETS) $(WEBUI_CORE)
  	$(GO_ASSETS) -p assets -s $(WEBUI_PREFIX) -o $(ASSETS) $(WEB_FILES)
  
  $(XD): $(ASSETS)
 -	GOPATH=$(REPO) $(GO) build -a -ldflags "-X xd/lib/version.Git=$(GIT_VERSION)" -tags='$(TAGS)' -o $(XD)
-+	GOPATH=$(REPO) $(GO) build -gcflags "all=-trimpath=$${PWD}" -asmflags "all=-trimpath=$${PWD}" -a -ldflags "-X xd/lib/version.Git=$(GIT_VERSION) -s -w -extldflags '${LDFLAGS}'" -tags='$(TAGS)' -o $(XD)
++	GOPATH=$(REPO) $(GO) build -trimpath -a -ldflags "-X xd/lib/version.Git=$(GIT_VERSION) -extldflags ${LDFLAGS}" -tags='$(TAGS)' -o $(XD)
  
  dev: $(ASSETS)
 -	GOPATH=$(REPO) $(GO) build -race -v -a -ldflags "-X xd/lib/version.Git=$(GIT_VERSION)" -tags='$(TAGS)' -o $(XD)
-+	GOPATH=$(REPO) $(GO) build -gcflags "all=-trimpath=$${PWD}" -asmflags "all=-trimpath=$${PWD}" -race -v -a -ldflags "-X xd/lib/version.Git=$(GIT_VERSION) -s -w -extldflags '${LDFLAGS}'" -tags='$(TAGS)' -o $(XD)
++	GOPATH=$(REPO) $(GO) build -trimpath -race -v -a -ldflags "-X xd/lib/version.Git=$(GIT_VERSION) -extldflags ${LDFLAGS}" -tags='$(TAGS)' -o $(XD)
  
  $(CLI): $(XD)
  	$(RM) $(CLI)
@@ -41,7 +41,7 @@ index fdb90f9..5870621 100644
  
  no-webui:
 -	GOPATH=$(REPO) $(GO) build -ldflags "-X xd/lib/version.Git=$(GIT_VERSION)" -o $(XD)
-+	GOPATH=$(REPO) $(GO) build -gcflags "all=-trimpath=$${PWD}" -asmflags "all=-trimpath=$${PWD}" -ldflags "-X xd/lib/version.Git=$(GIT_VERSION) -s -w -extldflags '${LDFLAGS}'" -o $(XD)
++	GOPATH=$(REPO) $(GO) build -trimpath -ldflags "-X xd/lib/version.Git=$(GIT_VERSION) -extldflags ${LDFLAGS}" -o $(XD)
  
  install: $(XD) $(CLI)
  	$(MKDIR) $(PREFIX)/bin
