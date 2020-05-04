@@ -14,9 +14,9 @@ pkgbase = pantheon-default-settings-git
 
 pkgname = pantheon-default-settings-git
 	pkgdesc = Default settings for Pantheon
-	depends = elementary-icon-theme-git
-	depends = gtk-theme-elementary-git
-	depends = elementary-wallpapers-git
+	depends = elementary-icon-theme
+	depends = gtk-theme-elementary
+	depends = elementary-wallpapers
 	depends = ttf-droid
 	depends = ttf-opensans
 	optdepends = lightdm-pantheon-greeter

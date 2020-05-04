@@ -25,8 +25,8 @@ build() {
 }
 package() {
   pkgdesc='Default settings for Pantheon'
-  depends=('elementary-icon-theme-git' 'gtk-theme-elementary-git'
-           'elementary-wallpapers-git' 'ttf-droid' 'ttf-opensans')
+  depends=('elementary-icon-theme' 'gtk-theme-elementary'
+           'elementary-wallpapers' 'ttf-droid' 'ttf-opensans')
   provides=('pantheon-default-settings')
   conflicts=('pantheon-default-settings')
   optdepends=('lightdm-pantheon-greeter')
