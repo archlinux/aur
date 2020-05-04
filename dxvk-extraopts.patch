@@ -34,37 +34,3 @@ index 2a7fbee3..9e3bfc2e 100644
  needs_exe_wrapper = true
  
  [host_machine]
-diff --git a/build-wine32.txt b/build-wine32.txt
-index ba8d34a8..ecec2eb4 100644
---- a/dxvk/build-wine32.txt
-+++ b/dxvk/build-wine32.txt
-@@ -7,9 +7,9 @@ strip = 'strip'
- [properties]
- needs_exe_wrapper = true
- 
--c_args=['-m32', '-msse', '-msse2', '-fvisibility=hidden']
--cpp_args=['-m32', '-msse', '-msse2', '-fvisibility=hidden', '-fvisibility-inlines-hidden', '-D__WIDL_objidl_generated_name_0000000C=']
--cpp_link_args=['-m32', '-mwindows']
-+c_args=['-m32', '-msse', '-msse2', '-fvisibility=hidden', @CARGS@]
-+cpp_args=['-m32', '-msse', '-msse2', '-fvisibility=hidden', '-fvisibility-inlines-hidden', '-D__WIDL_objidl_generated_name_0000000C=', @CARGS@]
-+cpp_link_args=['-m32', '-mwindows', @LDARGS@]
- 
- [host_machine]
- system = 'linux'
-diff --git a/build-wine64.txt b/build-wine64.txt
-index b3e028bb..fb9d98fd 100644
---- a/dxvk/build-wine64.txt
-+++ b/dxvk/build-wine64.txt
-@@ -7,9 +7,9 @@ strip = 'strip'
- [properties]
- needs_exe_wrapper = true
- 
--c_args=['-m64', '-fvisibility=hidden']
--cpp_args=['-m64', '-fvisibility=hidden', '-fvisibility-inlines-hidden', '-D__WIDL_objidl_generated_name_0000000C=']
--cpp_link_args=['-m64', '-mwindows']
-+c_args=['-m64', '-fvisibility=hidden', @CARGS@]
-+cpp_args=['-m64', '-fvisibility=hidden', '-fvisibility-inlines-hidden', '-D__WIDL_objidl_generated_name_0000000C=', @CARGS@]
-+cpp_link_args=['-m64', '-mwindows', @LDARGS@]
- 
- [host_machine]
- system = 'linux'
