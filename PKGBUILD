@@ -1,26 +1,27 @@
 # Maintainer: LinArcX <Linarcx at gmail . com>
+# Maintainer: Nathan Owens <ndowens @ artixlinux.org>
 
 pkgname=python-pytvmaze
-pkgver=r401.16ed096
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="Python interface to the TV Maze API "
 arch=(any)
 url="http://pypi.python.org/pypi/pytvmaze"
 license=(MIT)
 depends=('python' 'python-requests')
-makedepends=('git' 'python-setuptools')
-source=("${pkgname}::git+https://github.com/srob650/pytvmaze")
-md5sums=('SKIP')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/p/pytvmaze/pytvmaze-${pkgver}.tar.gz"
+	"LICENSE::https://raw.githubusercontent.com/srob650/pytvmaze/master/LICENSE.txt")
+md5sums=('562f807f97b1c626d9d9ab090195ba7b')
 
-pkgver() {
-	cd "$srcdir/${pkgname}"
-		( set -o pipefail
-			git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-			printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-		)
+build() {
+  cd "$srcdir/pytvmaze-$pkgver"
+  python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "$srcdir/pytvmaze-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
+
+  install -Dm644 "$srcdir"/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
