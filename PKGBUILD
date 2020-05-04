@@ -4,7 +4,7 @@
 # Contributor: David Manouchehri <d@32t.ca>
 
 pkgname=dropbox
-pkgver=95.4.441
+pkgver=96.4.172
 pkgrel=1
 pkgdesc="A free service that lets you bring your photos, docs, and videos anywhere and share them easily."
 arch=("i686" "x86_64")
@@ -32,9 +32,9 @@ sha256sums=('9ba76205ec5838db85d822f23cfd7e2112fd2757e8031d8374709f102143c548'
             '34605b2f36fe6b4bde9b858da3f73ac1505986af57be78bbb1c2c9cf1a611578'
             '6c67a9c8c95c08fafafd2f1d828074b13e3347b05d2e4f4bf4e62746115d7477'
             '98581e65a91ae1f19ed42edcdaaa52e102298b5da0d71b50089393d364474d3d')
-sha256sums_i686=('7495aa41dcfdd1ef7e7f5597dc23bf15a0726d13826c20327e1afd896e9baed8'
+sha256sums_i686=('d16940f630fe8d2678071a805547beebed92a3c49c204b00d6ee98857bde9cc9'
                  'SKIP')
-sha256sums_x86_64=('6cd350569b8fa7897b7fd0c354e29d9e9f7c2eeb90d50d76f7c46050b2695abc'
+sha256sums_x86_64=('1a4ade83f19d11ef1813a45da756c0f9ea2222fb7896561a347627c05531fceb'
                    'SKIP')
 # The PGP key fingerprint should match the one on https://www.dropbox.com/help/desktop-web/linux-commands
 validpgpkeys=(
