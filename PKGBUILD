@@ -4,10 +4,10 @@ _ubuntur="0~39~ubuntu20.04.1"
 pkgbase=python-qrtools
 pkgname=(
   python-qrtools
-  qtqr3
+  qtqr-py3
 )
 pkgver="2.0"
-pkgrel="2"
+pkgrel=3
 url="https://launchpad.net/qr-tools"
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -29,7 +29,7 @@ package_python-qrtools() {
   install -m 644 qrtools.py ${pkgdir}/usr/lib/python3.8/site-packages
 }
 
-package_qtqr3(){
+package_qtqr-py3(){
   provides=(qtqr)
   conflicts=(qtqr)
   pkgdesc="A Graphical interface QR Code generator and decoder."

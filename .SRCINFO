@@ -17,7 +17,7 @@ pkgname = python-qrtools
 	depends = python-zbar
 	depends = qrencode
 
-pkgname = qtqr3
+pkgname = qtqr-py3
 	pkgdesc = A Graphical interface QR Code generator and decoder.
 	depends = python
 	depends = python-qrtools
