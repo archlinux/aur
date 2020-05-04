@@ -6,12 +6,12 @@
 
 pkgname=bin32-openjk-git
 pkgver=r3645.52030235f
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Jedi Knight II + III Engine (32-bit version)"
 arch=('i686' 'x86_64')
 url="https://github.com/JACoders/OpenJK"
 license=('GPL2')
-depends=('lib32-sdl2' 'lib32-libjpeg' 'lib32-libpng')
+depends=('lib32-sdl2' 'lib32-libjpeg' 'lib32-libpng' 'lib32-glu')
 makedepends=('cmake' 'git' 'libpng')
 provides=('openjk' 'bin32-openjk')
 conflicts=('openjk')
