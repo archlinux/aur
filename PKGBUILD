@@ -2,11 +2,11 @@
 # Maintainer: Abraham Levine <echo iue@trnspljc.890 | tr ietursnpl890jc acprlsurecomed>
 
 pkgname=aptpac
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="a pacman wrapper with syntax from debian's apt"
-arch=('i686' 'x86_64')
-url="https://github.com/SereneTeam/aptpac"
+arch=('any')
+url="https://github.com/FascodeNet/aptpac"
 license=('WTFPL')
 depends=('sudo')
 makedepends=('git')
