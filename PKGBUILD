@@ -3,8 +3,8 @@
 pkgname=gsc
 pkgver=1.2
 pkgrel=1
-pkgdesc="INDI driver for an Arduino USB/ST-4 Interface"
-url="http://e2rd.piekielko.pl/debian/"
+pkgdesc="All-sky catalog of positions and magnitudes for ~19 million stars and other objects"
+url=""http://gsss.stsci.edu/Catalogs/GSC/GSC1/GSC1.htm
 license=(GPL2)
 arch=(i686 x86_64)
 depends=()
