@@ -1,0 +1,22 @@
+pkgbase = godot-mono-voxel-bin
+	pkgdesc = Godot is an advanced, feature packed, multi-platform 2D and 3D game engine
+	pkgver = 3.2.2rc+cd8d43
+	pkgrel = 1
+	url = http://www.godotengine.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = godot-mono
+	conflicts = godot-mono
+	conflicts = godot-mono-git
+	source = godot-mono.desktop
+	source = icons.tar.gz
+	md5sums = c8ba9f7656b2c2db9a3ec385b3848bf5
+	md5sums = 281c83d55c6a4d39fb9710e6f143bc5a
+	source_i686 = godot-mono-voxel-bin-3.2.2rc+cd8d43::https://github.com/tinmanjuggernaut/godot_voxel/releases/download/3.2.2rc+cd8d43/Godot_v3.2.2rc+cd8d43_mono_x11_32.zip
+	md5sums_i686 = 9ae66d7151f86f8944f6705270a21244
+	source_x86_64 = godot-mono-voxel-bin-3.2.2rc+cd8d43::https://github.com/tinmanjuggernaut/godot_voxel/releases/download/3.2.2rc+cd8d43/Godot_v3.2.2rc+cd8d43_mono_x11_64.zip
+	md5sums_x86_64 = 0d80d7a6372e6f72256f01b4adba4ed3
+
+pkgname = godot-mono-voxel-bin
+

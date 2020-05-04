@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Godot Mono
+Comment=Application for making games
+Exec=/usr/bin/godot-mono %U
+Icon=godot-mono
+Terminal=false
+Type=Application
+Categories=Utility;Development;
+
