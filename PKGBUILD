@@ -1,4 +1,4 @@
-# Maintainer: Sergey Kasmy <SleeplessSloth79@gmail.com>
+# Maintainer: Sergey Kasmy <SleeplessSloth79 [at] gmail [dot] com>
 pkgname=jump-bin
 _pkgname=jump
 pkgver=0.30.1
