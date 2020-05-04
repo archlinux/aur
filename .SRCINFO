@@ -1,14 +1,15 @@
 pkgbase = zlib-asm
-	pkgdesc = Compression library implementing the deflate compression method found in gzip and PKZIP
 	pkgver = 1.2.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zlib.net/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = glibc
 	provides = zlib=1.2.11
+	provides = minizip=1.2.11
 	conflicts = zlib
+	conflicts = minizip
 	options = staticlibs
 	source = https://zlib.net/zlib-1.2.11.tar.gz
 	source = https://zlib.net/zlib-1.2.11.tar.gz.asc
@@ -17,4 +18,9 @@ pkgbase = zlib-asm
 	sha512sums = SKIP
 
 pkgname = zlib-asm
+	pkgdesc = Compression library implementing the deflate compression method found in gzip and PKZIP
+
+pkgname = minizip-asm
+	pkgdesc = Mini zip and unzip based on zlib
+	depends = zlib-asm
 
