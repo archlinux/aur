@@ -10,8 +10,8 @@
 # Contributor: Brad McCormack <bradmccormack100 at gmail.com>
 # Contributor: Doug Johnson <dougvj at dougvj.net>
 
-pkgbase=linux-nitrous
-_srcname=linux-nitrous
+pkgbase=linux-nitrous-fire
+_srcname=linux-nitrous-fire
 pkgver=5.6.10
 pkgrel=1
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=('git+https://gitlab.com/xdevs23/linux-nitrous.git#tag=v'"$pkgver-$pkgrel
         # standard config files for mkinitcpio ramdisk
         "${_srcname}.preset")
 sha256sums=('SKIP'
-            '59cf1dfe08c144868ad87705dd62a0400921c042b1e12691e42cf214fe9a9402')
+            '5c5305e210d83ca015b2272d82c4fbc51a690984a34bfca7922d8c0818b1772b')
 
 _kernelname=${pkgbase#linux}
 
@@ -38,7 +38,7 @@ prepare() {
   sed -i '2iexit 0' scripts/depmod.sh
 
   rm -f .clang
-  make HOSTCC=clang CC=clang nitrous_defconfig
+  make HOSTCC=clang CC=clang nitrous-fire_defconfig
 
   # get kernel version
   #make prepare
@@ -57,7 +57,7 @@ prepare() {
 build() {
   cd "${_srcname}"
 
-  make HOSTCC=clang CC=clang nitrous_defconfig
+  make HOSTCC=clang CC=clang nitrous-fire_defconfig
   makeflags="${MAKEFLAGS}"
   if [[ "$MAKEFLAGS" != *"-j"* ]]; then
     makeflags="$makeflags -j$(nproc --all)"   
@@ -66,15 +66,15 @@ build() {
 }
 
 _package() {
-  pkgdesc="Modified Linux kernel optimized for Haswell (and newer) compiled using clang (tagged git version)"
+  pkgdesc="Modified Linux kernel optimized for Skylake (and newer) compiled using clang (tagged git version). The 'nitrous-fire' kernel is insecure, only use it if you need the performance."
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=(
     'crda: to set the correct wireless channels of your country'
-    'linux-nitrous-headers: to build DKMS modules against this kernel'
+    'linux-nitrous-fire-headers: to build DKMS modules against this kernel'
   )
   provides=('linux')
-  __kernelname=linux-nitrous
-  backup=("etc/mkinitcpio.d/linux-nitrous.preset")
+  __kernelname=linux-nitrous-fire
+  backup=("etc/mkinitcpio.d/linux-nitrous-fire.preset")
   install=${pkgbase}.install
 
   cd "${_srcname}"

@@ -1,4 +1,4 @@
-pkgbase = linux-nitrous
+pkgbase = linux-nitrous-fire
 	pkgver = 5.6.10
 	pkgrel = 1
 	url = https://gitlab.com/xdevs23/linux-nitrous
@@ -15,27 +15,27 @@ pkgbase = linux-nitrous
 	makedepends = coreutils
 	options = !strip
 	source = git+https://gitlab.com/xdevs23/linux-nitrous.git#tag=v5.6.10-1
-	source = linux-nitrous.preset
+	source = linux-nitrous-fire.preset
 	sha256sums = SKIP
-	sha256sums = 59cf1dfe08c144868ad87705dd62a0400921c042b1e12691e42cf214fe9a9402
+	sha256sums = 5c5305e210d83ca015b2272d82c4fbc51a690984a34bfca7922d8c0818b1772b
 
-pkgname = linux-nitrous
-	pkgdesc = Modified Linux kernel optimized for Haswell (and newer) compiled using clang (tagged git version)
-	install = linux-nitrous.install
+pkgname = linux-nitrous-fire
+	pkgdesc = Modified Linux kernel optimized for Skylake (and newer) compiled using clang (tagged git version). The 'nitrous-fire' kernel is insecure, only use it if you need the performance.
+	install = linux-nitrous-fire.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	optdepends = linux-nitrous-headers: to build DKMS modules against this kernel
+	optdepends = linux-nitrous-fire-headers: to build DKMS modules against this kernel
 	provides = linux
-	backup = etc/mkinitcpio.d/linux-nitrous.preset
+	backup = etc/mkinitcpio.d/linux-nitrous-fire.preset
 
-pkgname = linux-nitrous-headers
+pkgname = linux-nitrous-fire-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel (tagged git version)
 	provides = linux-headers
 
-pkgname = linux-nitrous-docs
+pkgname = linux-nitrous-fire-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (tagged git version)
 	provides = linux-docs
 
