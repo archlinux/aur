@@ -2,7 +2,7 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _cranname=mnormt
-_cranver=1.5-6
+_cranver=1.5-7
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(GPL2 GPL3)
 depends=('r>=2.2.0')
 makedepends=(gcc gcc-fortran)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('baf4a66a61ab3193c81a130e202cba8d')
+md5sums=('a73c1bad27f080cd37337f485b244525')
 
 build() {
   cd "${srcdir}"
