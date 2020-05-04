@@ -1,7 +1,7 @@
 pkgbase = zinc
 	pkgdesc = Zinc is a stand-alone version of sbt's incremental compiler
 	pkgver = 1.4.0M2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/sbt/zinc
 	arch = any
 	license = Apache

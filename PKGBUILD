@@ -3,7 +3,7 @@
 pkgname="zinc"
 pkgver=1.4.0M2
 _pkgver=1.4.0-M2
-pkgrel=0
+pkgrel=1
 pkgdesc="Zinc is a stand-alone version of sbt's incremental compiler"
 url="https://github.com/sbt/zinc"
 arch=('any')
@@ -28,7 +28,7 @@ options=('!strip')
 
 package() {
     local home="/opt/zinc"
-    local source="$pkgname-$pkgver"
+    local source="$pkgname-$_pkgver"
     local target="$pkgdir/$home"
     
     mkdir -p "$target"
