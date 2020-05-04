@@ -3,7 +3,7 @@
 
 pkgname=libindi_3rdparty
 pkgver=1.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="3rd party drivers for INDI, a distributed control protocol designed to operate astronomical instrumentation"
 provides=('libindi_3rdparty')
 url="http://www.indilib.org/index.php?title=Main_Page"
