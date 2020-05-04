@@ -3,7 +3,7 @@
 _pkgname=python-ngmix
 pkgbase=python-ngmix-git
 pkgname=("python-ngmix-git" "python2-ngmix-git")
-pkgver=v1.2.1.r2.dba6286
+pkgver=v1.3.7.r14.97d96cb
 pkgrel=1
 pkgdesc=" Gaussian mixture models and other code for working with for 2d images, implemented in python "
 arch=('i686' 'x86_64')
