@@ -1,0 +1,14 @@
+pkgbase = gsc
+	pkgdesc = INDI driver for an Arduino USB/ST-4 Interface
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://e2rd.piekielko.pl/debian/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	source = http://cdsarc.u-strasbg.fr/viz-bin/nph-Cat/tar.gz?bincats/GSC_1.2
+	sha256sums = 514d23ff0daf7b91801813ad3db6ad1c484402b453bd649757e477c3a83da48d
+
+pkgname = gsc
+
