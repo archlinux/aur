@@ -18,6 +18,7 @@ _provides=('rdma' 'ibacm' 'libiwpm' 'libibcm' 'libibumad' 'libibverbs'
 provides=("${_provides[@]}")
 conflicts=("${_provides[@]}")
 replaces=("${_provides[@]}")
+backup=('etc/rdma/'{'rmda.conf','mlx4.conf','sriov-vfs'})
 
 source=("${_srcname}::git+${url}.git#tag=${_tag}?signed")
 sha512sums=('SKIP')
