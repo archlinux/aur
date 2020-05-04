@@ -1,8 +1,8 @@
 pkgbase = woeusb-git
 	pkgdesc = A Linux program to create Windows USB stick installer from a real Windows DVD or an image
-	pkgver = 3.3.0.r0.g5e9a3a7
+	pkgver = 3.3.1.r0.gf21bb19
 	pkgrel = 1
-	url = https://github.com/WoeUSB/WoeUSB-frontend-wxgtk
+	url = https://github.com/slacka/WoeUSB
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -16,7 +16,7 @@ pkgbase = woeusb-git
 	optdepends = p7zip: For extracting EFI bootloader from Windows 7 installation media for EFI booting support
 	provides = woeusb
 	conflicts = woeusb
-	source = git+https://github.com/WoeUSB/WoeUSB-frontend-wxgtk.git
+	source = git+https://github.com/slacka/WoeUSB.git
 	md5sums = SKIP
 
 pkgname = woeusb-git
