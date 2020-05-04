@@ -1,6 +1,6 @@
 pkgbase = sauce-finder
 	pkgdesc = Python script to find sauce for anime images
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://gitlab.com/miicat/sauce-finder
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = sauce-finder
 	depends = python-validators
 	depends = python-click
 	depends = python-prompt_toolkit
-	source = https://gitlab.com/miicat/sauce-finder/-/archive/v2.2.1/sauce-finder-v2.2.1.tar.gz
-	sha256sums = cfe3cfd29585cefdd9d691842c7cff43bbd0ed8142a710c36ea8493d1de2a584
+	source = https://gitlab.com/miicat/sauce-finder/-/archive/v2.2.2/sauce-finder-v2.2.2.tar.gz
+	sha256sums = 0e600d2a9adcd99627c1cd23da975f58848a3787b65f9226d1e054224f9a0166
 
 pkgname = sauce-finder
 

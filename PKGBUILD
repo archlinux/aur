@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=sauce-finder
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Python script to find sauce for anime images"
 arch=('any')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 noextract=()
-sha256sums=('cfe3cfd29585cefdd9d691842c7cff43bbd0ed8142a710c36ea8493d1de2a584')
+sha256sums=('0e600d2a9adcd99627c1cd23da975f58848a3787b65f9226d1e054224f9a0166')
 
 build() {
 	cd "$pkgname-v$pkgver"
