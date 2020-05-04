@@ -1,14 +1,14 @@
-# Maintainer: marazmista <marazmista@gmail.com>
+# Maintainer: marazmista <marazmista@tuta.io>
 
 pkgname=radeon-profile-git
-pkgver=20190903.r0.gf3ede22
+pkgver=20200504.r0.g2e0b4d9
 pkgrel=1
 pkgdesc="App for display info about radeon card"
 url="http://github.com/marazmista/radeon-profile"
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('qt5-base' 'qt5-charts' 'libxkbcommon-x11' 'libxrandr')
-makedepends=('qt5-tools')
+makedepends=('qt5-tools' 'git')
 optdepends=('radeon-profile-daemon: system daemon for reading card info'
 	'sudo: start with root privilages without password'
 	'mesa-demos: for glxinfo'
