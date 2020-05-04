@@ -1,7 +1,7 @@
 # Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
 
 pkgname=trenchbroom-git
-pkgver=v2020.1.RC1.r5.ga817c7bb8
+pkgver=v2020.1.RC2.r0.g897489bde
 pkgrel=1
 pkgdesc="TrenchBroom is a modern cross-platform level editor for Quake-engine based games."
 arch=("i686" "x86_64")
@@ -20,7 +20,7 @@ sha1sums=('SKIP'
           '34e2e1168624a61358c01cecfad170d435952740')
 
 pkgver() {
-  cd "$pkgname"
+  cd "trenchbroom"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
