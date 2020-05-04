@@ -1,7 +1,7 @@
 pkgname=rtl8723bu-git-dkms
 _pkgname=rtl8723bu
 pkgver=240
-pkgrel=2
+pkgrel=3
 pkgdesc="Driver for RTL8723BU DKMS version"
 url="https://github.com/lwfinger/rtl8723bu"
 provides=('rtl8723bu-git-dkms')
@@ -9,8 +9,8 @@ conflicts=('rtl8723bu')
 arch=('any')
 license=('GPL')
 install=rtl8723bu-git-dkms.install
-depends=('dkms' 'linux')
-makedepends=('git' 'linux-headers')
+depends=('dkms' 'linux-headers')
+makedepends=('git')
 source=("${_pkgname}::git+https://github.com/lwfinger/rtl8723bu"
 	'blacklist-rtl8723bu.conf'
 	'dkms.conf')
