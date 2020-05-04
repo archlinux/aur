@@ -3,14 +3,14 @@
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
 
 pkgname=xfce-theme-greybird-git
-pkgver=3.22.10+0
+pkgver=3.22.11+4
 pkgrel=1
 pkgdesc="Desktop theme suite from Xubuntu, with support for Xfce, Metacity and Unity"
 arch=('any')
 url="https://github.com/shimmerproject/Greybird"
 license=('CCPL:by-sa-3.0' 'GPL')
 depends=('gtk-engine-murrine')
-makedepends=('git')
+makedepends=('git' 'meson')
 optdepends=('elementary-xfce-icons: Matching icon set; use the dark icon theme'
             'shimmer-wallpapers: Contains the Greybird wallpaper, among others'
             'lightdm-gtk-greeter: Required for the LightDM GTK theme'
@@ -29,33 +29,10 @@ pkgver() {
 	echo "$(git describe --long | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/+/' | sed 's/v//g' )"
 }
 
+build(){
+  arch-meson Greybird build
+  ninja -C build
+}
 package() {
-  cd "${srcdir}/Greybird"
-
-  # install emerald theme
-  install -d -m 755 "${pkgdir}/usr/share/emerald/themes/Greybird"
-  tar zxf Greybird.emerald -C "${pkgdir}/usr/share/emerald/themes/Greybird/"
-
-  # create theme dirs
-  install -d -m 755 "${pkgdir}/usr/share/themes/"Greybird{,-compact/xfwm4,-a11y/xfwm4,-bright/xfce-notify-4.0}
-
-  # install compact theme
-  install -m 644 "${srcdir}/Greybird/xfwm4-compact/"* "${pkgdir}/usr/share/themes/Greybird-compact/xfwm4/"
-
-  # install accessivility theme
-  install -m 644 "${srcdir}/Greybird/xfwm4-a11y/"* "${pkgdir}/usr/share/themes/Greybird-a11y/xfwm4/"
-
-  # install xfce-notify bright
-  install -m 644 "${srcdir}/Greybird/xfce-notify-4.0_bright/"* "${pkgdir}/usr/share/themes/Greybird-bright/xfce-notify-4.0/"
-
-  # clean up
-  rm -rf {.git,.gitignore,Greybird.emerald,LICENSE.{CC,GPL},README,xfwm4_compact,xfce4_ally,xfce-notify-4.0_bright}
-
-  # install README into docdir
-  install -d -m 755 "${pkgdir}/usr/share/doc/${pkgname}/"
-
-  # install theme
-  cp -r . "${pkgdir}/usr/share/themes/Greybird/"
-  mv "${pkgdir}/usr/share/themes/Greybird/gtk-3.0/README" "${pkgdir}/usr/share/doc/${pkgname}/"
-  rm "${pkgdir}/usr/share/themes/Greybird/gtk-3.0/Gemfile"
+  DESTDIR="$pkgdir" ninja -C build install
 }
