@@ -9,6 +9,7 @@ pkgbase = libpsl-git
 	makedepends = python
 	makedepends = publicsuffix-list
 	makedepends = gtk-doc
+	makedepends = git
 	depends = libidn2
 	depends = libunistring
 	provides = libpsl
