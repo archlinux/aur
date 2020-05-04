@@ -1,4 +1,4 @@
-# Maintainer: Sergey Kasmy <SleeplessSloth79@gmail.com>
+# Maintainer: Sergey Kasmy <SleeplessSloth79 [at] gmail [dot] com>
 # Contributor: Adam Rutkowski <hq@mtod.org>
 # Contributor: FabioLolix <fabio.lolix@gmail.com>
 
