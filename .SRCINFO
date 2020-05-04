@@ -1,7 +1,7 @@
 pkgbase = vivaldi-arm64
 	pkgdesc = An advanced browser made with the power user in mind.
 	pkgver = 3.0.1874.33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vivaldi.com
 	arch = aarch64
 	license = custom

@@ -2,11 +2,12 @@
 # Contributor: Matthew Zilvar <mattzilvar@gmail.com>
 # Contributor: Térence Clastres <t dot clastres at gmail dot com>
 # Modified PKGBUILD from https://aur.archlinux.org/packages/vivaldi/
+
 pkgname=vivaldi-arm64
 _pkgname=vivaldi
 pkgver=3.0.1874.33
 _pkgver=3.0.1874.33-1
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
 options=('!strip' '!emptydirs')
@@ -22,7 +23,7 @@ optdepends=(
     'libnotify: native notifications'
 )
 provides=('www-browser' 'vivaldi')
-source=("https://downloads.vivaldi.com/stable/vivaldi-stable_${pkgver}-${pkgrel}_arm64.deb")
+source=("https://downloads.vivaldi.com/stable/vivaldi-stable_${_pkgver}_arm64.deb")
 sha512sums=('37f6f7794ed43b7173071ce2296052d7efcca5cd903840e75a695df98de50a905c430871d01d3fee058b4648ca4b74f3ebb184c31258270f32ded380624070cc')
 
 prepare() {
@@ -49,7 +50,7 @@ package() {
     done
 
     # license
-    install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+    install -dm755 "$pkgdir/usr/share/licenses/$_pkgname"
     strings "$pkgdir/opt/vivaldi/locales/en-US.pak" \
         | tr '\n' ' ' \
         | sed -rne 's/.*(<html lang.*>.*html>).*/\1/p' \
