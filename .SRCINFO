@@ -1,6 +1,6 @@
 pkgbase = jicofo
 	pkgdesc = JItsi meet COnference FOcus
-	pkgver = 1.0_566
+	pkgver = 1.0_567
 	pkgrel = 1
 	url = https://github.com/jitsi/jicofo
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = jicofo
 	makedepends = maven
 	depends = java-runtime-headless
 	backup = etc/jicofo/jicofo.conf
-	source = jicofo-1.0_566.tar.gz::https://github.com/jitsi/jicofo/archive/stable/jitsi-meet_4546.tar.gz
+	source = jicofo-1.0_567.tar.gz::https://github.com/jitsi/jicofo/archive/stable/jitsi-meet_4548.tar.gz
 	source = service
 	source = config
-	sha256sums = 8def79b4ffe4b7d6f69e45cd86807ca3a0fb96e591fa83006acdd106d644820d
+	sha256sums = cebbd2ad2c4c3b9826123ab8d49c4a11d34f4e91482e3f06af695e17d1133595
 	sha256sums = c1e17cf1de2274d375d08afee1853e1314d74763ec600b7bba740cfb7df09258
 	sha256sums = fea884f52b5c91b7514212d989fae36fd2113967c2617fae1b686ac6c774a7f8
 
