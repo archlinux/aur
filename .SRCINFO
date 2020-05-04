@@ -1,6 +1,6 @@
 pkgbase = python-torf
 	pkgdesc = Python module to create, parse and edit torrent files and magnet links
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/rndusr/torf/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-torf
 	makedepends = python-setuptools
 	depends = python
 	depends = python-flatbencode
-	source = python-torf-3.0.0.tar.gz::https://github.com/rndusr/torf/archive/v3.0.0.tar.gz
-	sha256sums = 575a1ae9c01188ac7a02ef72ccffd56452af4de759ac8a953320440b9d4f78af
+	source = python-torf-3.0.1.tar.gz::https://github.com/rndusr/torf/archive/v3.0.1.tar.gz
+	sha256sums = f9973055ec37f19f1fccc070a2bca27acc39061a492edcb76443a9308602c766
 
 pkgname = python-torf
 
