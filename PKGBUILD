@@ -1,15 +1,15 @@
 # Maintainer: networkjanitor <networkjanitor@xyooz.net>
 pkgname=raidgrep-git
 _pkgname=raidgrep
-pkgver=1.0.2.r8.g0d1898a
-pkgrel=2
-pkgdesc="Guild Wars 2/arcdps evtc log searching tool. Build from master branch using the rust nightly toolchain."
+pkgver=1.1.0.r0.g684024e
+pkgrel=1
+pkgdesc="Guild Wars 2/arcdps evtc log searching tool. Built[sic] from master branch using the rust nightly toolchain."
 arch=("x86_64")
 url="https://gitlab.com/dunj3/raidgrep"
 license=("GPL")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}-bin" "${_pkgname}")
-makedepends=('cargo' 'rustup' 'git' 'asciidoc')
+makedepends=('cargo' 'rustup' 'asciidoc')
 depends=("gcc-libs")
 source=(
     "${_pkgname}::git+https://gitlab.com/dunj3/raidgrep.git#branch=master"
@@ -23,19 +23,18 @@ pkgver() {
 
 prepare() {
     cd "${_pkgname}"
-    git submodule init && git submodule update
     rustup install nightly
 }
 
 build() {
     cd "${_pkgname}"
-    cargo +nightly build --release
-    a2x -vv --no-xmllint -f manpage "${_pkgname}.1.asciidoc"
+    cargo +nightly build --release --locked
+    a2x -f manpage "${_pkgname}.1.asciidoc"
 }
 
 check() {
     cd "${_pkgname}"
-    cargo +nightly test --release
+    cargo +nightly test --release --locked
 }
 
 package() {
