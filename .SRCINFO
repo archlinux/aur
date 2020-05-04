@@ -1,7 +1,7 @@
 pkgbase = lxqt-powermanagement-git
 	pkgdesc = LXQt power management daemon
-	pkgver = 0.13.0.131.gaf505c3
-	pkgrel = 2
+	pkgver = 0.15.0.8.g4115884
+	pkgrel = 1
 	url = https://lxqt.org
 	arch = i686
 	arch = x86_64
@@ -11,13 +11,14 @@ pkgbase = lxqt-powermanagement-git
 	makedepends = qt5-tools
 	makedepends = lxqt-build-tools-git
 	depends = liblxqt-git
+	depends = lxqt-globalkeys-git
 	depends = qt5-svg
 	depends = qt5-x11extras
 	depends = upower
 	depends = kidletime
 	depends = solid
 	depends = hicolor-icon-theme
-	provides = lxqt-powermanagement=0.13.0.131.gaf505c3
+	provides = lxqt-powermanagement=0.15.0.8.g4115884
 	conflicts = lxqt-powermanagement
 	source = git+https://github.com/lxqt/lxqt-powermanagement.git
 	sha256sums = SKIP
