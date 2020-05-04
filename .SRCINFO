@@ -12,7 +12,7 @@ pkgbase = bunq-desktop-bin
 	source = bunqDesktop-linux-unpacked-0.9.9.tar.gz::https://github.com/bunqCommunity/bunqDesktop/releases/download/0.9.9/bunqDesktop-linux-unpacked.tar.gz
 	source = 0.9.9-512x512.png::https://github.com/bunqCommunity/bunqDesktop/raw/0.9.9/build/icons/512x512.png
 	source = bunq-desktop-bin.desktop
-	sha256sums = f76620a8f3545227dba95363b68f290e15707dca5d0a765cfdcaa077ce41c5f4
+	sha256sums = d382d8a8df45e801446e3abe6f858033da434c8f17ea460b5c6e9af21f94806f
 	sha256sums = 580274ac3f60cce7789cdb69afc67b9db43da09b04fd82ad563fdec4337302d1
 	sha256sums = 1d84f185830733bb38928fcaa33ffc0ba46140f7f116b4d5ad24c93a585a0ffa
 
