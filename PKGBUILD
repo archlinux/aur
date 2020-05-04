@@ -11,8 +11,10 @@ makedepends=('gcc' 'git')
 provides=('tktreectrl')
 conflicts=('tktreectrl')
 install='.INSTALL'
-source=("git+$url.git")
-md5sums=('SKIP')
+source=("git+$url.git"
+        'arch-paths.patch')
+md5sums=('SKIP'
+         '82fa47b8779466ccd9740e5aad3e47cf')
 
 pkgver() {
   sed -nr 's/PACKAGE_PATCHLEVEL=(.+)/\1/p' "$srcdir/tktreectrl/configure"
@@ -20,7 +22,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/tktreectrl"
-  git apply ../../arch-paths.patch
+  git apply "$srcdir/arch-paths.patch"
   sh ./configure --prefix=/usr --enable-threads --enable-64bit
 }
 
