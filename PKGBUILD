@@ -3,7 +3,7 @@
 pkgname=('rdma-core-git')
 _srcname='rdma-core'
 pkgdesc='RDMA core userspace libraries and daemons'
-pkgver='r6297'
+pkgver='r6882'
 pkgrel='1'
 arch=('x86_64')
 url="https://github.com/linux-rdma/${_srcname}"
@@ -17,6 +17,7 @@ _provides=('rdma' 'ibacm' 'libiwpm' 'libibcm' 'libibumad' 'libibverbs'
 provides=("${pkgname[0]%-git}" "${_provides[@]}")
 conflicts=("${pkgname[0]%-git}" "${_provides[@]}")
 replaces=("${_provides[@]}")
+backup=('etc/rdma/'{'rmda.conf','mlx4.conf','sriov-vfs'})
 
 source=("${_srcname}::git+${url}.git")
 sha512sums=('SKIP')

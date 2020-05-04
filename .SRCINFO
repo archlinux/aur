@@ -1,6 +1,6 @@
 pkgbase = rdma-core-git
 	pkgdesc = RDMA core userspace libraries and daemons
-	pkgver = r6297
+	pkgver = r6882
 	pkgrel = 1
 	url = https://github.com/linux-rdma/rdma-core
 	arch = x86_64
@@ -72,6 +72,9 @@ pkgbase = rdma-core-git
 	replaces = srptools
 	replaces = infiniband-diags
 	replaces = libibmad
+	backup = etc/rdma/rmda.conf
+	backup = etc/rdma/mlx4.conf
+	backup = etc/rdma/sriov-vfs
 	source = rdma-core::git+https://github.com/linux-rdma/rdma-core.git
 	sha512sums = SKIP
 
