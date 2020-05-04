@@ -12,9 +12,11 @@ depends=('systemd' 'util-linux' 'sg3_utils' 'glib2' 'dbus-glib' 'polkit'
          'parted' 'device-mapper' 'libatasmart' 'lsof' 'libgudev')
 makedepends=('intltool' 'docbook-xsl')
 source=(http://hal.freedesktop.org/releases/${pkgname}-${pkgver}.tar.gz
-        drop-pci-db.patch)
+        drop-pci-db.patch
+        fix-glibc-2.27.patch)
 md5sums=('70d48dcfe523a74cd7c7fbbc2847fcdd'
-         '773cccd70afd18ace4332037feff67ec')
+         '773cccd70afd18ace4332037feff67ec'
+         '3efc5e125fa96b1e1d83764917fc254f')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -29,6 +31,8 @@ build() {
       --libexecdir=/usr/lib/udisks --disable-static
 
   patch -p1 < ../drop-pci-db.patch
+  patch -p0 < ../fix-glibc-2.27.patch
+
 
   make
   # fix mdadm location

@@ -21,8 +21,10 @@ pkgbase = udisks
 	depends = libgudev
 	source = http://hal.freedesktop.org/releases/udisks-1.0.5.tar.gz
 	source = drop-pci-db.patch
+	source = fix-glibc-2.27.patch
 	md5sums = 70d48dcfe523a74cd7c7fbbc2847fcdd
 	md5sums = 773cccd70afd18ace4332037feff67ec
+	md5sums = 3efc5e125fa96b1e1d83764917fc254f
 
 pkgname = udisks
 
