@@ -1,0 +1,16 @@
+pkgbase = flora-git
+	pkgdesc = Fabric Lightweight Obfuscation Remapping Assistant
+	pkgver = r10.63aa99e
+	pkgrel = 1
+	url = https://github.com/Parzivail-Modding-Team/FLORA
+	arch = any
+	license = MIT
+	makedepends = dotnet-sdk
+	depends = dotnet-runtime
+	provides = flora
+	conflicts = flora
+	source = flora::git+https://github.com/Parzivail-Modding-Team/FLORA.git
+	sha512sums = SKIP
+
+pkgname = flora-git
+
