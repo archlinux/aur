@@ -1,4 +1,4 @@
-pkgbase = blender-2.8-git
+pkgbase = blender-develop-git
 	pkgdesc = Development version of Blender 2.8 branch
 	pkgver = 2.90.r95572.g33bdd91fb82
 	pkgrel = 1
@@ -53,5 +53,5 @@ pkgbase = blender-2.8-git
 	sha256sums = 12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a
 	sha256sums = 42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4
 
-pkgname = blender-2.8-git
+pkgname = blender-develop-git
 

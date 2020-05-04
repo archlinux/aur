@@ -23,7 +23,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 #shellcheck disable=SC2015
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
-pkgname=blender-2.8-git
+pkgname=blender-develop-git
 pkgver=2.90.r95572.g33bdd91fb82
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
