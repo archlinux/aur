@@ -9,7 +9,7 @@
 # Contributor: Emile Bons
 
 pkgname="bunq-desktop-bin"
-pkgver="0.9.9"
+pkgver="0.9.10"
 pkgrel=1
 pkgdesc="A desktop implementation for the bunq API"
 url="https://github.com/BunqCommunity/BunqDesktop"
