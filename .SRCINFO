@@ -11,10 +11,11 @@ pkgbase = gameforge
 	source = gameforge.png
 	source = gameforge.desktop
 	source = gameforge.sh
-	md5sums = d04f75b2287319dae2838b00df82faa3
+	source = https://install.gameforge.com/download?download_id=95a5f799-9507-4dba-88fb-7d1da580e1a2&game_id=df8661d6-a76e-417f-82dc-9fada569615e&locale=fr
 	md5sums = 0db6b822bbdf443247671e1d93216b1a
 	md5sums = e693c79d27d45e1971529bb3841fdb48
-	md5sums = 5faf6c868c8cb572ae03ed06d263614a
+	md5sums = 9c43a87b298d82122b30f4c2b19e3607
+	md5sums = e54fe71bf5108643d365b8d0c51e4c67
 
 pkgname = gameforge
 
