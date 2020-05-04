@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=SeaToolsSSD GUI HiDPI
+Comment=Graphical dashboard and diagnostic tools optimized for Seagate Solid State Drives
+Path=/opt/seatools-ssd-gui
+Exec=/opt/seatools-ssd-gui/seatools-ssd-gui-hidpi
+Icon=seatools-ssd-gui
+Terminal=false
+Type=Application
+Categories=System;Utility;
+Keywords=seagate;ssd;hdd;seatools;

@@ -1,0 +1,7 @@
+#!/bin/bash
+if [ $(which pkexec) ]; then
+  pkexec --disable-internal-agent "/opt/seatools-ssd-gui/SeaTools" "$@"
+else
+  /opt/seatools-ssd-gui/SeaTools "$@"
+fi
+

@@ -1,0 +1,7 @@
+#!/bin/bash
+if [ $(which pkexec) ]; then
+  pkexec --disable-internal-agent /usr/bin/env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY QT_SCREEN_SCALE_FACTORS=1.5 QT_FONT_DPI=150 "/opt/seatools-ssd-gui/SeaTools" "$@"
+else
+  /usr/bin/env QT_SCREEN_SCALE_FACTORS=1.5 QT_FONT_DPI=150 /opt/seatools-ssd-gui/SeaTools "$@"
+fi
+
