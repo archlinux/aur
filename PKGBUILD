@@ -5,8 +5,8 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=firefox-nightly-hg
 _pkgname=firefox-nightly
-pkgver=77.0a1.r526150.c9955025d4a5
-_pkgver=77.0a1
+pkgver=78.0a1.r527882.34d71b4a0086
+_pkgver=78.0a1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, nightly version"
 arch=(x86_64)
