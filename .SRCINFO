@@ -1,6 +1,6 @@
 pkgbase = vivaldi-arm64
 	pkgdesc = An advanced browser made with the power user in mind.
-	pkgver = 2.11.1811.33
+	pkgver = 3.0.1874.33
 	pkgrel = 1
 	url = https://vivaldi.com
 	arch = aarch64
@@ -24,8 +24,8 @@ pkgbase = vivaldi-arm64
 	provides = vivaldi
 	options = !strip
 	options = !emptydirs
-	source = https://downloads.vivaldi.com/stable/vivaldi-stable_2.11.1811.33-1_arm64.deb
-	sha256sums = 0c645ded7a7f47bb4820474f3d2585e01f065fb2201cc793898a86f9b594271b
+	source = https://downloads.vivaldi.com/stable/vivaldi-stable_3.0.1874.33-1_arm64.deb
+	sha512sums = 37f6f7794ed43b7173071ce2296052d7efcca5cd903840e75a695df98de50a905c430871d01d3fee058b4648ca4b74f3ebb184c31258270f32ded380624070cc
 
 pkgname = vivaldi-arm64
 
