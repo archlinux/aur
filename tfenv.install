@@ -1,3 +1,7 @@
+post_install () {
+	common
+}
+
 post_upgrade() {
         if [ -d "/usr/local/lib/tfenv/versions" ]; then
                 echo "Detected old tfenv paths. Moving..."
@@ -8,6 +12,11 @@ post_upgrade() {
 		echo "Adding group 'tfenv'"
 		groupadd tfenv
 	fi
+	common
+}
+
+common () {
+
 	mkdir -p "/var/lib/tfenv/versions"
 	touch "/var/lib/tfenv/version"
 	chgrp -R tfenv "/var/lib/tfenv/versions" "/var/lib/tfenv/version"
