@@ -6,10 +6,12 @@ pkgbase = plasma5-applets-nx-audio
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = cmake
 	makedepends = extra-cmake-modules
-	makedepends = kdesdk-meta
-	depends = plasma-workspace
-	depends = qt5-base
+	makedepends = kdesignerplugin
+	makedepends = packagekit-qt5
+	depends = plasma-framework
+	depends = plasma-desktop
 	provides = plasma5-applets-nx-audio
 	conflicts = plasma5-applets-nx-audio
 	source = git+https://github.com/nx-desktop/nx-audio-applet.git#branch=master
