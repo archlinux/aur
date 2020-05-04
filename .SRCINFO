@@ -1,10 +1,11 @@
 pkgbase = git-recent-git
 	pkgdesc = See your latest local git branches, formatted real fancy
-	pkgver = 1.0.4.r0.g89e81a1
+	pkgver = 1.1.1.r0.g1985391
 	pkgrel = 1
 	url = https://github.com/paulirish/git-recent
 	arch = any
 	license = MIT
+	makedepends = git
 	provides = git-recent
 	conflicts = git-recent
 	source = git+https://github.com/paulirish/git-recent.git

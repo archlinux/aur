@@ -2,12 +2,13 @@
 
 _pkgname=git-recent
 pkgname=${_pkgname}-git
-pkgver=1.0.4.r0.g89e81a1
+pkgver=1.1.1.r0.g1985391
 pkgrel=1
 pkgdesc="See your latest local git branches, formatted real fancy"
 arch=(any)
 url="https://github.com/paulirish/git-recent"
 license=('MIT')
+makedepends=('git')
 provides=('git-recent')
 conflicts=('git-recent')
 source=("git+${url}.git")
