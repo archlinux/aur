@@ -6,7 +6,7 @@
 pkgbase=ddccontrol
 pkgname=(ddccontrol gddccontrol)
 pkgver=0.4.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Control your monitor by software using the DDC/CI protocol"
 arch=('i686' 'x86_64')
 url="https://github.com/ddccontrol/ddccontrol"
