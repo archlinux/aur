@@ -1,6 +1,6 @@
 pkgbase = m64p
 	pkgdesc = Mupen64Plus with custom plugins and Qt5 GUI
-	pkgver = 20200427.r1.g3a856f5
+	pkgver = 20200504
 	pkgrel = 1
 	url = https://m64p.github.io/
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = m64p
 	depends = freetype2
 	depends = glu
 	depends = hidapi
+	depends = libgl
 	depends = libpng
 	depends = libsamplerate
 	depends = minizip
@@ -24,7 +25,7 @@ pkgbase = m64p
 	conflicts = mupen64plus
 	conflicts = mupen64plus-gui
 	conflicts = mupenplus-video-gliden64
-	source = git+https://github.com/loganmc10/m64p.git#commit=3a856f590ca8b49d0d5285503c92f6f0bef9f465
+	source = git+https://github.com/loganmc10/m64p.git#tag=may42020
 	source = git+https://github.com/m64p/mupen64plus-gui.git
 	source = git+https://github.com/m64p/mupen64plus-audio-sdl2.git
 	source = git+https://github.com/mupen64plus/mupen64plus-rsp-hle.git
