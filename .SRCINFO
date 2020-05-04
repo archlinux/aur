@@ -1,0 +1,19 @@
+pkgbase = arch-wiki-dmenu-git
+	pkgdesc = Search ArchWiki offline docs with dmenu
+	pkgver = r1.9e43f41
+	pkgrel = 1
+	url = https://github.com/Kirottu/arch-wiki-dmenu
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = arch-wiki-docs
+	depends = dmenu
+	depends = surf
+	provides = arch-wiki-dmenu
+	conflicts = arch-wiki-dmenu
+	source = git+https://github.com/Kirottu/arch-wiki-dmenu
+	sha256sums = SKIP
+
+pkgname = arch-wiki-dmenu-git
+
