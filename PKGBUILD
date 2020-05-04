@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p
-pkgver=20200423
+pkgver=20200427.r1.g3a856f5
 pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI'
 arch=('x86_64')
@@ -12,7 +12,8 @@ depends=('freetype2' 'glu' 'hidapi' 'libpng' 'libsamplerate' 'minizip'
 makedepends=('git' 'cmake' 'nasm')
 provides=('mupen64plus' 'mupen64plus-gui' 'mupenplus-video-gliden64')
 conflicts=('mupen64plus' 'mupen64plus-gui' 'mupenplus-video-gliden64')
-source=("git+https://github.com/loganmc10/m64p.git#tag=$(LC_ALL='C' date -d "$pkgver" +%B%d%Y)"
+_commit=3a856f590ca8b49d0d5285503c92f6f0bef9f465
+source=("git+https://github.com/loganmc10/m64p.git#commit=${_commit}"
         'git+https://github.com/m64p/mupen64plus-gui.git'
         'git+https://github.com/m64p/mupen64plus-audio-sdl2.git'
         'git+https://github.com/mupen64plus/mupen64plus-rsp-hle.git'
@@ -20,8 +21,8 @@ source=("git+https://github.com/loganmc10/m64p.git#tag=$(LC_ALL='C' date -d "$pk
         'GLideN64-loganmc10'::'git+https://github.com/loganmc10/GLideN64.git'
         'mupen64plus-core-loganmc10'::'git+https://github.com/loganmc10/mupen64plus-core.git'
         'mupen64plus-input-raphnetraw-loganmc10'::'git+https://github.com/loganmc10/mupen64plus-input-raphnetraw.git'
-        '001-m64p-remove-build-jobs-limitation.patch'
-        '002-m64p-enable-optimizations.patch'
+        '010-m64p-remove-build-jobs-limitation.patch'
+        '020-m64p-enable-optimizations.patch'
         'm64p.desktop')
 sha256sums=('SKIP'
             'SKIP'
@@ -45,8 +46,8 @@ prepare() {
     git -C m64p config --local submodule.mupen64plus-input-qt.url   "${srcdir}/mupen64plus-input-qt"
     git -C m64p config --local submodule.mupen64plus-input-raphnetraw.url "${srcdir}/mupen64plus-input-raphnetraw-loganmc10"
     git -C m64p submodule update
-    patch -d m64p -Np1 -i "${srcdir}/001-m64p-remove-build-jobs-limitation.patch"
-    patch -d m64p -Np1 -i "${srcdir}/002-m64p-enable-optimizations.patch"
+    patch -d m64p -Np1 -i "${srcdir}/010-m64p-remove-build-jobs-limitation.patch"
+    patch -d m64p -Np1 -i "${srcdir}/020-m64p-enable-optimizations.patch"
 }
 
 build() {
