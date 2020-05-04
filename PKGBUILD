@@ -1,11 +1,11 @@
-# Maintainer: peippo <christoph.fink@gmail.com>
+# Maintainer: peippo <christoph+aur@christophfink.com>
 
 pkgname="nominatim"
 pkgdesc="Geocoding tool using OpenStreetmap data"
 url="https://nominatim.org"
 
-pkgver=3.4.1
-pkgrel=11
+pkgver=3.4.2
+pkgrel=0
 
 arch=("x86_64")
 license=("GPL2")
@@ -54,7 +54,7 @@ source=(
     "webapps-paths.patch"
 )
 sha256sums=(
-    "eea1e0e4bd0fd5c9408a734e3ad687879fbcdf670edbfa7c678daf7dc1d0fae2"
+    "5c3d103611956cc9ec114e41cba8c9688cac7f3937f7f26d3cf207eef1823f0c"
     "7f71b5217cbe0713fa5f8baa138348c9cd49f42c2b6025c059076042e0c04c6d"
     "50bf612ad951bcf3c1969aa79b0c7ab78745983720bc5f2deb37d1704c0e37d8"
     "8dd94ea1a88156bc55dc41e4f4df878df4f28c23c31bfda36c89470e2f5997d0"
