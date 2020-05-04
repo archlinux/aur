@@ -1,6 +1,6 @@
 pkgbase = python-qrtools
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/qr-tools
 	arch = i686
 	arch = x86_64
