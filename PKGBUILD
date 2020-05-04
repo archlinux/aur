@@ -12,7 +12,7 @@ source=(
     "Makefile"
 )
 arch=('x86_64')
-md5sums=('a3194da74b0ecd7f6791419c81ea55af' 'f6145e3b0132e634bf99f71dbc942171')
+md5sums=('a3194da74b0ecd7f6791419c81ea55af' 'e7fd3e94cf97b0dcce201417794b4e94')
 depends=(zlib freetype2 lib32-freetype2)
 optdepends=(
     "cmake: build some pocketbook apps from /usr/share/${pkgname}/sources/"

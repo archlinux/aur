@@ -17,7 +17,7 @@ pkgbase = pocketbook-pro-sdk-linux-libwine
 	source = https://netcologne.dl.sourceforge.net/project/pocketbook-free/PocketBook_SDK-linux-libwine/12.5/PBSDK-linux-libwine_12-5.7z
 	source = Makefile
 	md5sums = a3194da74b0ecd7f6791419c81ea55af
-	md5sums = f6145e3b0132e634bf99f71dbc942171
+	md5sums = e7fd3e94cf97b0dcce201417794b4e94
 
 pkgname = pocketbook-pro-sdk-linux-libwine
 

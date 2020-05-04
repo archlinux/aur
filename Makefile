@@ -1,15 +1,15 @@
 # For Pocketbook SDK (libwine)
 
-CC 				= winegcc
-CXX				= wineg++
-CC_FLAGS 		= -I/usr/local/pocketbook/include -I/usr/include/freetype2 -Wall -fomit-frame-pointer -fpermissive -Wno-narrowing -O2 -mwindows -m32
-LD_FLAGS 		= -L/usr/local/pocketbook/lib -lfreetype -lz -ljpeg -linkview
+CC = winegcc
+CXX = wineg++
+CC_FLAGS = -I/usr/local/pocketbook/include -I/usr/include/freetype2 -Wall -fomit-frame-pointer -fpermissive -Wno-narrowing -O2 -mwindows -m32
+LD_FLAGS = -L/usr/local/pocketbook/lib -lfreetype -lz -ljpeg -linkview
 
-EXECUTABLE 		= inkdemo
-EXECUTABLE_SO	= $(EXECUTABLE).exe.so
-EXECUTABLE_EXE	= $(EXECUTABLE).exe
+EXECUTABLE = inkdemo
+EXECUTABLE_SO = $(EXECUTABLE).exe.so
+EXECUTABLE_EXE = $(EXECUTABLE).exe
 
-SOURCES			+= /usr/local/pocketbook/sources/grays/inkdemo.c
+SOURCES += /usr/local/pocketbook/sources/grays/inkdemo.c
 
 all: exe
 
