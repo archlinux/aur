@@ -6,10 +6,12 @@ pkgbase = plasma5-applets-nx-clock
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = cmake
 	makedepends = extra-cmake-modules
-	makedepends = kdesdk-meta
-	depends = plasma-workspace
-	depends = qt5-base
+	makedepends = kdesignerplugin
+	makedepends = packagekit-qt5
+	depends = plasma-framework
+	depends = plasma-desktop
 	provides = plasma5-applets-nx-clock
 	conflicts = plasma5-applets-nx-clock
 	source = git+https://github.com/nx-desktop/nx-clock-applet.git#branch=master
