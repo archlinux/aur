@@ -3,9 +3,9 @@
 pkgbase=berry
 _pkgname=berry
 pkgname=berry-git
-_pkgver=09e39d0
+_pkgver=3872a74
 pkgver=git+$_pkgver
-pkgrel=2
+pkgrel=1
 pkgdesc="A healthy, bite-sized window manager written over the XLib Library"
 url="https://github.com/JLErvin/berry"
 arch=('x86_64')
@@ -41,5 +41,8 @@ package() {
 	# Install the examples (sample configuration files)
 	mkdir -p "${pkgdir}/${EXAMPLEPREFIX}"
 	install -D -m644 examples/* "${pkgdir}/etc/xdg/berry/"
+
+	# Install berry.desktop
+	install -D -m644 berry.desktop "${pkgdir}/usr/share/applications/"
 }
 
