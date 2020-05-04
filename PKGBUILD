@@ -4,12 +4,12 @@
 
 pkgname=eclipse-pydev
 pkgver=7.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python IDE for Eclipse"
 url="http://pydev.org/"
 arch=('any')
 license=('EPL')
-depends=('java-environment>=8' 'eclipse>=4.6')
+depends=('java-environment>=8' 'eclipse-common>=4.6')
 makedepends=('unzip')
 conflicts=('eclipse-aptana')
 source=("PyDev_${pkgver}.zip::http://downloads.sourceforge.net/project/pydev/pydev/PyDev%20${pkgver}/PyDev%20${pkgver}.zip")
