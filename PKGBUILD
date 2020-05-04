@@ -2,7 +2,7 @@
 
 pkgname=gnucash-xbt
 _pkgname=gnucash
-pkgver=3.5
+pkgver=3.10
 pkgrel=1
 _sourcerel=
 pkgdesc="A personal and small-business financial-accounting application with Bitcoin support"
@@ -23,7 +23,7 @@ provides=(gnucash)
 source=("https://github.com/Gnucash/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}${_sourcerel}.tar.bz2"
         "xbt.patch")
 
-sha256sums=('776d0b51b6029e25b5c7e9eb86021d5ecf1b09d8f3241b279f76dba9cc3b7745'
+sha256sums=('b60772c276a63639964d1e24c795fbb9a7c0c6c45959168fe5cdfe08eb796f16'
             '8cf12425a9f66c69473d83582742244889dc0ffb854d3a502aca58bc649878d4')
 
 prepare() {
@@ -37,7 +37,7 @@ prepare() {
 	-DCMAKE_INSTALL_LIBDIR=/usr/lib \
 	-DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
 	-DHAVE_GWEN_GTK3=ON \
-	-DCOMPILE_GSCHEMAS=NO \
+	-DCOMPILE_GSCHEMAS=OFF \
 	-DWITH_OFX=ON \
 	-DWITH_AQBANKING=ON \
 	"${srcdir}/${_pkgname}-${pkgver}"
