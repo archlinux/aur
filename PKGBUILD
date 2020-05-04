@@ -4,7 +4,7 @@
 pkgname="gdlauncher-appimage"
 _pkgname="gdlauncher"
 pkgver="0.0.4"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience
 "
