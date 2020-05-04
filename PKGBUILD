@@ -13,10 +13,8 @@ depends=(
 makedepends=(
     gtk3
     inkscape
-    libsass
     optipng
     python
-    ruby-sass
     sassc
 )
 optdepends=(
