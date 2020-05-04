@@ -8,8 +8,7 @@ arch=("x86_64")
 url="https://github.com/swaywm/sway"
 license=('MIT')
 depends=("sway" "grim" "slurp" "jq" "xdg-user-dirs")
-optdepends=('notify-send: Notify users when a screenshot is taken'
-            'mktemp: Copy screenshots'
+optdepends=('libnotify: Notify users when a screenshot is taken'
             'wl-clipboard: Copy screenshots')
 makedepends=("scdoc")
 source=("https://github.com/swaywm/sway/archive/${pkgver}.tar.gz")
