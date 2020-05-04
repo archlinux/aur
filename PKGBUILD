@@ -8,7 +8,7 @@
 
 pkgname=filebot
 pkgver=4.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The ultimate TV and Movie Renamer"
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
 url="https://www.filebot.net/"
@@ -50,25 +50,25 @@ build() {
 }
 
 package() {
-  mkdir -p $pkgdir/usr/share/java/$pkgname/
-  
+  mkdir -p $pkgdir/usr/share/{java/$pkgname,applications,mime/packages,icons/hicolor}
+
   install -Dm755 $pkgname-arch.sh "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 $srcdir/usr/share/$pkgname/lib/$CARCH/libjnidispatch.so "$pkgdir/usr/share/java/$pkgname/libjnidispatch.so"
 
   cd "$srcdir/usr/share"
 
-  install -Dm644 $pkgname/lib/$CARCH/libjnidispatch.so "$pkgdir/usr/share/java/$pkgname/libjnidispatch.so"
   cp -dpr --no-preserve=ownership $pkgname/jar/* "$pkgdir/usr/share/java/$pkgname/"
 
-  cp -dpr --no-preserve=ownership icons/* "$pkgdir/usr/share/icons/"
+  cp -dpr --no-preserve=ownership icons/hicolor/* "$pkgdir/usr/share/icons/hicolor/"
 
   #install -Dm644 $pkgname.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
   #install -Dm644 icons/hicolor/scalable/apps/$pkgname.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
 
   #install -Dm644 applications/*.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-  mkdir -p $pkgdir/usr/share/applications/
+  #mkdir -p $pkgdir/usr/share/applications/
   cp -dpr --no-preserve=ownership applications/* "$pkgdir/usr/share/applications/"
 
-  mkdir -p $pkgdir/usr/share/mime/packages/
+  #mkdir -p $pkgdir/usr/share/mime/packages/
   cp -dpr --no-preserve=ownership mime/* "$pkgdir/usr/share/mime/"
   
 }
