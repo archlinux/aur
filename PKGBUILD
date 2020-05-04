@@ -1,23 +1,30 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer: Richard Neumann <r dot neumann at homeinfo period de>
 
 pkgname=archisomod-git
-pkgver=r37.3491ee5
+pkgver=r82.64841ce
 pkgrel=1
-pkgdesc='Python script to remaster Arch Linux ISOs with option to add 32-bit EFI'
+_reponame='archiso-tools'
+pkgdesc='Another tool to remaster Arch Linux live ISOs'
 arch=('any')
-url='https://github.com/HOMEINFO/archiso-tools'
-license=('GPL3')
-depends=('python-docopt' 'libisoburn')
-optdepends=('grub: 32-bit EFI image generation')
+url="https://gitlab.com/HOMEINFO/${_reponame}"
+license=('GPLv3')
+depends=('python' 'coreutils' 'libisoburn' 'squashfs-tools')
+optdepends=(
+    'grub: Standalone EFI image creation'
+    'dosfstools: Standalone EFI image creation'
+)
 makedepends=('git')
-source=('git+https://github.com/HOMEINFO/archiso-tools.git')
-sha256sums=('SKIP')
+source=("git+${url}")
+sha512sums=('SKIP')
+
 
 pkgver() {
-  cd archiso-tools
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd ${_reponame}
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+
 package() {
-  install -Dm755 archiso-tools/archisomod "$pkgdir"/usr/bin/archisomod
+    install -d -m 755 "${pkgdir}/usr/bin"
+    install -m 755 "${srcdir}/${_reponame}/archisomod" "${pkgdir}/usr/bin/archisomod"
 }

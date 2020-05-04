@@ -1,0 +1,4 @@
+archiso-tools/
+src/
+pkg/
+*.pkg.tar*
