@@ -2,7 +2,7 @@
 # Python package author: Matthew Honnibal <matt@explosion.ai>
 pkgname=python-thinc
 _origpkgname=thinc
-pkgver=7.3.1
+pkgver=8.0.0a3
 pkgrel=1
 pkgdesc="Practical Machine Learning for NLP"
 arch=("x86_64")
@@ -14,28 +14,39 @@ depends=("cython"
 	"python-preshed"
 	"python-murmurhash"
 	"python-plac"
-	"python-ujson"
-	"python-pytest"
 	"python-mock"
 	"python-pathlib"
-	"python"
+	"python-catalogue"
+	"python-ml-datasets"
+	"python-tqdm"
 	"python-hypothesis"
-	"python-cytoolz"
-    "python-toolz"
 	"python-blis"
 	"python-six"
 	"python-tqdm"
-	"python-wrapt"
-	"python-srsly-git"
-	"python-wasabi-git"
+	"python-srsly"
+	"python-wasabi"
+	"python-pydantic"
 )
-makedepends=("python-setuptools")
-optdepends=("python-spacy: examples")
+makedepends=("python-setuptools" "python-wheel")
+optdepends=("python-spacy: examples" "python-ipykernel: for running more included tests" )
+checkdepends=("python-pytest-cov" "flake8" "mypy")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/explosion/thinc/archive/v$pkgver.tar.gz")
-md5sums=('b1c28b66928e63f2c8aeb8d8070f02f6')
+md5sums=('18715c92f14431b382e71398649a1d78')
+
+build() {
+	cd "$_origpkgname-$pkgver"
+	python setup.py build_ext --inplace
+}
+
+check() {
+  cd "$_origpkgname-$pkgver"
+  python -m pytest thinc --cov=thinc
+}
 
 package() {
     cd "$_origpkgname-$pkgver"
     python setup.py install --root="${pkgdir}/" --optimize=1
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"    
 }
+
+
