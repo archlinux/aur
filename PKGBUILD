@@ -11,7 +11,7 @@
 # Contributor: Doug Johnson <dougvj at dougvj.net>
 
 pkgbase=linux-nitrous-fire-git
-_srcname=linux-nitrous-fire-git
+_srcname=linux-nitrous
 pkgver=5.6+
 pkgrel=2
 arch=('x86_64')
@@ -21,7 +21,7 @@ makedepends=('clang' 'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf
 options=('!strip')
 source=('git+https://gitlab.com/xdevs23/linux-nitrous.git#branch=v'"$pkgver"
         # standard config files for mkinitcpio ramdisk
-        "${_srcname}.preset")
+        "${pkgbase}.preset")
 sha256sums=('SKIP'
             'dabf634498fd2d474d689db9040c5e5e2704292958ccd22a391e4ea27f651fcb')
 
