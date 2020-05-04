@@ -1,0 +1,14 @@
+pkgbase = simple-utilities
+	pkgdesc = A bunch of simple CLI utilities
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Finermeerkat137/simple-utilities
+	arch = any
+	license = MIT
+	depends = xclip
+	depends = libnotify
+	source = source.tar.gz
+	sha512sums = a00f5b88f8394beee605c99a2437b4df1e62d624aa53d39b6a5ec8dbd3f0f7cef7081e2afd442d6b7251c211770df989446d272277ad9a8e9097ec232552bc7a
+
+pkgname = simple-utilities
+
