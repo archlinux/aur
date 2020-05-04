@@ -2,11 +2,11 @@
 pkgname=faustus-dkms-git
 _pkgbase=faustus
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Experimental unofficial Linux platform driver module for ASUS TUF Gaming series laptops."
 arch=("x86_64")
-url="https://gitlab.com/ryanobeirne/faustus-aur"
+url="https://github.com/hackbnw/faustus"
 license=("GPL")
 depends=("dkms")
 makedepends=("git")
