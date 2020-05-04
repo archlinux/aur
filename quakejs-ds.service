@@ -6,7 +6,7 @@ After=network.target
 User=quakejs
 Type=simple
 EnvironmentFile=/etc/conf.d/quakejs
-ExecStart=/usr/bin/node /usr/share/webapps/quakejs/build/ioq3ded.js ${QUAKEJS_DS_PARAMS}
+ExecStart=/bin/bash -c "/usr/bin/node build/ioq3ded.js ${QUAKEJS_DS_PARAMS}"
 WorkingDirectory=/usr/share/webapps/quakejs
 LimitNOFILE=1048576
 LimitNPROC=64
@@ -14,7 +14,6 @@ PrivateTmp=true
 PrivateDevices=true
 ProtectHome=true
 ProtectSystem=strict
-ReadWritePaths=/var/lib/quakejs
 ReadOnlyPaths=/etc/webapps/quakejs/server.cfg
 
 [Install]

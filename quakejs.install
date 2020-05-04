@@ -1,5 +1,9 @@
 post_install() {
 	echo "In order to download the basic demo game files, you have to run following command first:
+	cd /usr/share/webapps/quakejs
+	chown -R quakejs:quakejs .
 	sudo -u quakejs node build/ioq3ded.js +set fs_game baseq3 +set dedicated 2
-	Press return again and again until you're able to agree to the EULA with yes (y)."
+	Press return again and again until you're able to agree to the EULA with yes (y).
+	After that configure QuakeJS in /etc/conf.d/quakejs and /etc/webapps/quakejs.
+	Use following services: quakejs-ds, quakejs-cdn"
 }
