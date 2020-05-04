@@ -1,6 +1,6 @@
 pkgbase = spotify-tui-bin
 	pkgdesc = Spotify client for the terminal written in Rust
-	pkgver = 0.18.0
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/Rigellute/spotify-tui
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = spotify-tui-bin
 	depends = openssl
 	depends = libxcb
 	provides = spotify-tui
-	source = https://github.com/Rigellute/spotify-tui/releases/download/v0.18.0/spotify-tui-linux.tar.gz
-	source = https://raw.githubusercontent.com/Rigellute/spotify-tui/v0.18.0/LICENSE
-	sha256sums = b8ab25d8683ffcc5a578c44a8da88f1835fcfe9963312a406719c80aa8e78fa9
+	source = https://github.com/Rigellute/spotify-tui/releases/download/v0.19.0/spotify-tui-linux.tar.gz
+	source = https://raw.githubusercontent.com/Rigellute/spotify-tui/v0.19.0/LICENSE
+	sha256sums = b5a40090ec1a3b3013214e9ac389775f0a07ae8c90cbac6a9b2869f99ad873c3
 	sha256sums = 76b2d30f74716c0cbd02e37868961dce2b52f65af6355864d010ee7e695d2b88
 
 pkgname = spotify-tui-bin
