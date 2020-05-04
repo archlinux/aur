@@ -3,7 +3,7 @@
 
 _pkgname=libpsl
 pkgname=$_pkgname-git
-pkgver=libpsl.0.19.1.r5.g27614b6
+pkgver=libpsl.0.21.0.r41.g72365d3
 pkgrel=1
 pkgdesc='Public Suffix List library'
 url='https://github.com/rockdaboot/libpsl'
