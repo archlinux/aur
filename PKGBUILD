@@ -6,8 +6,8 @@
 # Contributor: Matthias Lisin <ml@visu.li>
 
 pkgname=helm2-bin
-pkgver=2.16.6
-pkgrel=4
+pkgver=2.16.7
+pkgrel=1
 pkgdesc="The Kubernetes Package Manager"
 arch=(
   "x86_64"  # amd64
@@ -25,29 +25,16 @@ validpgpkeys=(
   '672C657BE06B4B30969C4A57461449C25E36B98E'  # Matthew Farina <matt@mattfarina.com>, https://keybase.io/mattfarina
 )
 
-[ "${CARCH}" = "x86_64" ] && _CARCH=amd64 && sha256sums=(
-  'e38fea59bc382feb0f80322d582266465d76ab72acdc0079c2350cc3fd8a3f4c'
-  'SKIP'
-)
+sha256sums=('SKIP')
 
-[ "${CARCH}" = "aarch64" ] && _CARCH=arm64 && sha256sums=(
-  '115bef1e1171c3d71df3475ac4bc3ee7a43a5632591fafb6add797b65008026a'
-  'SKIP'
-)
-
-echo ${CARCH} | grep -E '^arm' &>/dev/null && _CARCH=arm && sha256sums=(
-  '5c72eb00e5273297dbafb570607bcff8c59b06096d50ac0d74872528992f9d70'
-  'SKIP'
-)
-
-[ "${CARCH}" = "i486" -o "${CARCH}" = "i686" ] && _CARCH=386 && sha256sums=(
-  '72b5f80e97c7b385a01c525bdd2d9c10b7a7b472f99ca99d3e5f55a4ead9ac40'
-  'SKIP'
-)
+[ "${CARCH}" = "x86_64" ] && _CARCH=amd64 && sha256sums+=('4afe48da420e4c3adcccf8484f27991834e3a3838668103199f274f4fa6f2df2')
+[ "${CARCH}" = "aarch64" ] && _CARCH=arm64 && sha256sums+=('966f47419571c28e923481413553956b05f682f7486fb47a32c62adcf3c4c5f1')
+echo ${CARCH} | grep -E '^arm' &>/dev/null && _CARCH=arm && sha256sums+=('390bff179dae4e8dcf829d83e326b8b461a08525a70c91d7cf69e071c5fe684f')
+[ "${CARCH}" = "i486" -o "${CARCH}" = "i686" ] && _CARCH=386 && sha256sums+=('ee716f2c86ace7735a726ad564a101fff32c74a1d23b45a2274ce090ed120877')
 
 source=(
-  "https://get.helm.sh/helm-v${pkgver}-linux-${_CARCH}.tar.gz"
   "https://github.com/helm/helm/releases/download/v${pkgver}/helm-v${pkgver}-linux-${_CARCH}.tar.gz.asc"
+  "https://get.helm.sh/helm-v${pkgver}-linux-${_CARCH}.tar.gz"
 )
 
 package(){
