@@ -1,6 +1,6 @@
 pkgbase = dmenu-distrotube-git
 	pkgdesc = This is my personal build of dmenu that is patched for fonts, centering, borders, etc.
-	pkgver = 4.9.r3.2af279b
+	pkgver = 4.9
 	pkgrel = 1
 	url = https://www.gitlab.com/dwt1/dmenu-distrotube.git
 	arch = x86_64
