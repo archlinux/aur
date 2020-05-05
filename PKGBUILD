@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=3.9.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('arm' 'armv6h' 'armv7h' 'x86_64')
 url="https://github.com/cheat/cheat"
