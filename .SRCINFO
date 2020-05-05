@@ -1,8 +1,8 @@
 pkgbase = ltfs
 	pkgdesc = Linear Tape File System
 	pkgver = 2.4.0.2
-	pkgrel = 1
-	url = http://www.quantum.com/products/tapedrives/ltoultrium/lto-5/ltfs/index.aspx
+	pkgrel = 2
+	url = https://www.quantum.com/ServiceandSupport/OpenSource/LTFS/Index.aspx
 	arch = x86_64
 	arch = i686
 	license = custom:ltfs
