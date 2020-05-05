@@ -96,7 +96,10 @@ source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}
         "ffmpeg-full-add-svt-vp9-${_svt_vp9_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/v${_svt_vp9_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-vp9-with-svt-hevc-av1.patch")
 
 sha256sums=('SKIP'
-            '19825c7226c7300514715fc5048c2e6b04000f0c83f9c94688af1c095639bf2b')
+            '878757eb6d7072521caaeb71f1453ec3fc0f91a12936ef302e1625184787c6a6'
+            '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
+            'd371366ceda9233c1b9a60c680878f567861b675605a8dae5c275d633c51ba9f'
+            '7690a4f6bdc4a57e35c7ff5b6e87f2fe6d056d452eff9e767eaccff41832f4d7')
 
 prepare() {
   cd $srcdir/ffmpeg
