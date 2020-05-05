@@ -49,8 +49,8 @@ build() {
 }
 
 package() {
-  install -d "${pkgdir}/etc/webapps/quakejs/assets"
-  install -d "${pkgdir}/usr/share/webapps/quakejs"
+  install -d "${pkgdir}/etc/webapps/quakejs"
+  install -d "${pkgdir}/usr/share/webapps/quakejs/assets"
   #install -d "${pkgdir}/var/lib/quakejs"
   #ln -s "/var/lib/quakejs" "${pkgdir}/usr/share/webapps/quakejs/base"
   cp -ra "${srcdir}/quakejs/." "${pkgdir}/usr/share/webapps/quakejs/"
