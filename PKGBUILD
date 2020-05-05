@@ -3,13 +3,13 @@
 
 pkgname=waifu2x-ncnn-vulkan-git
 _pkgname=waifu2x-ncnn-vulkan
-pkgver=20200224.r3.g2041d93
-pkgrel=1
+pkgver=20200414.r1.g23a679c
+pkgrel=2
 pkgdesc="waifu2x converter ncnn version, runs fast on intel / amd / nvidia GPU with vulkan"
 url="https://github.com/nihui/waifu2x-ncnn-vulkan"
 license=('MIT')
 depends=('gcc-libs' 'vulkan-icd-loader' 'vulkan-driver')
-makedepends=('ncnn-git>=20200413.r0.g5580da45' 'git' 'cmake' 'glslang' 'vulkan-headers')
+makedepends=('ncnn>=20200413' 'git' 'cmake' 'glslang' 'vulkan-headers')
 conflicts=('waifu2x-ncnn-vulkan')
 provides=('waifu2x-ncnn-vulkan')
 arch=('i686' 'x86_64')
