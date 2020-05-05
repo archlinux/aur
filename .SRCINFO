@@ -1,0 +1,14 @@
+pkgbase = zimfw-input-git
+	pkgdesc = Zsh plugin that applies correct bindkeys for input events
+	pkgver = r26.e043c8e
+	pkgrel = 1
+	url = https://github.com/zimfw/input
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	source = zimfw-input-git::git+https://github.com/zimfw/input.git
+	sha256sums = SKIP
+
+pkgname = zimfw-input-git
+
