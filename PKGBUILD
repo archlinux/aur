@@ -12,7 +12,7 @@ optdepends=()
 conflicts=()
 options=()
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/quebin31/${pkgname}/releases/download/${pkgver}/release.tar.gz")
-sha256sums=('6d9cb9af18612a2c15eca64422c2cb57a40e68b7fcc55ab503d04a436406a300')
+sha256sums=('2f6c78dfc713344be71fc13ab948d695cb038a56a049ad7af0d0a7a43846c156')
 
 package() {
     install -Dm755 "${srcdir}/target/release/$pkgname"           -t "${pkgdir}/usr/bin/"
