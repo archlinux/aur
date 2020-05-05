@@ -4,6 +4,10 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
+_svt_hevc_ver='1.4.3'
+_svt_av1_ver='0.8.2'
+_svt_vp9_ver='0.1.0'
+
 pkgname=ffmpeg-svt
 pkgver=4.2.2
 pkgrel=1
@@ -152,7 +156,8 @@ build() {
     --enable-omx \
     --enable-shared \
     --enable-version3 \
-    --enable-libsvtav1
+    --enable-libsvtav1 \
+    --enable-rav1e
 
 
   make

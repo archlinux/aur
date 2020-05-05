@@ -74,10 +74,10 @@ pkgbase = ffmpeg-svt
 	conflicts = ffmpeg
 	replaces = ffmpeg
 	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=n4.2.2
-	source = ffmpeg-full-add-svt-hevc-.patch::https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch
-	source = ffmpeg-full-add-svt-hevc-docs-.patch::https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch
-	source = ffmpeg-full-add-svt-av1-.patch::https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch
-	source = ffmpeg-full-add-svt-vp9-.patch::https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/v/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-vp9-with-svt-hevc-av1.patch
+	source = ffmpeg-full-add-svt-hevc-1.4.3.patch::https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v1.4.3/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch
+	source = ffmpeg-full-add-svt-hevc-docs-1.4.3.patch::https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v1.4.3/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch
+	source = ffmpeg-full-add-svt-av1-0.8.2.patch::https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v0.8.2/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch
+	source = ffmpeg-full-add-svt-vp9-0.1.0.patch::https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/v0.1.0/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-vp9-with-svt-hevc-av1.patch
 	sha256sums = SKIP
 	sha256sums = 19825c7226c7300514715fc5048c2e6b04000f0c83f9c94688af1c095639bf2b
 
