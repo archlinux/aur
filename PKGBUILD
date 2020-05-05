@@ -40,8 +40,7 @@ package_elogind() {
   provides=("elogind=${pkgver}")
   depends=('libelogind' 'pam' 'acl' 'dbus-x11')
   conflicts=('systemd-sysvcompat' 'consolekit')
-  optdepends=('elogind-openrc: elogind initscript'
-              'dbus-openrc: dbus initscript')
+  optdepends=('dbus-openrc: dbus initscript')
   install=elogind.install
 
   DESTDIR="${pkgdir}" meson install -C build

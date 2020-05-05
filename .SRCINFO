@@ -25,7 +25,6 @@ pkgname = elogind
 	depends = pam
 	depends = acl
 	depends = dbus-x11
-	optdepends = elogind-openrc: elogind initscript
 	optdepends = dbus-openrc: dbus initscript
 	provides = elogind=243.7
 	conflicts = systemd-sysvcompat
