@@ -1,29 +1,22 @@
-# $Id$
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-
-pkgname=papirus-claws-mail-theme-git
-pkgver=20180413
+# Maintainer: Nathan Owens <ndowens @ artixlinux.org>
+pkgname=papirus-claws-mail-theme-git 
+pkgver=20200504
 pkgrel=1
-pkgdesc="Papirus theme for Claws Mail (git version)"
-url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
+pkgdesc="Papirus theme for claws mail"
 arch=('any')
-license=('LGPL3')
-depends=('claws-mail')
-makedepends=('git')
-conflicts=('papirus-claws-mail-theme' 'claws-mail-papirus-theme' 'claws-mail-papirus-theme-git')
-options=('!strip')
-source=("${pkgname}::git+${url}.git")
-sha256sums=('SKIP')
+url="https://github.com/PapirusDevelopmentTeam/papirus-claws-mail-theme"
+license=('GPL3')
+makedepends=('git' 'librsvg')
+_commit=7d02981d23ecfc279c87ff6c172ba09314940352
+source=("git+${url}#commit=${_commit}")
+md5sums=('SKIP')
 
-pkgver() {
-  cd ${pkgname}
-  git log -1 --format="%cd" --date=short | tr -d '-'
+build() {
+	cd "${pkgname/-git/}"
+	make build
 }
 
 package() {
-  cd ${pkgname}
-  install -d "${pkgdir}"/usr/share/claws-mail/themes
-  cp -a ./{ePapirus,Papirus{,-{Light,Dark,Adapta{,-Nokto}}}} \
-      "${pkgdir}"/usr/share/claws-mail/themes/
+	cd "${pkgname/-git/}"
+	make DESTDIR="$pkgdir/" install
 }
-# vim:set ts=2 sw=2 et:
