@@ -1,6 +1,6 @@
 pkgbase = github-release
 	pkgdesc = Command-line app to create and edit releases on GitHub (and upload artifacts)
-	pkgver = 0.7.2
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/aktau/github-release
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = github-release
 	depends = glibc
 	depends = git
 	conflicts = github-release-bin
-	source = https://github.com/aktau/github-release/archive/v0.7.2.tar.gz
-	sha512sums = b339e5c21200b4079c08f9f9a722d3ce990d184ee5300536c6b32bf64fc7dbc95881fe8fb42f8274a33350b290cf3a5b588e5ee784e173b631b9dc2decd284df
+	source = https://github.com/aktau/github-release/archive/v0.8.1.tar.gz
+	sha512sums = c094f4d63bfc78fe1354443bdcbce44103a067f85fd935965270f10c26d503822001b1462be2c3b36852023c0f09979032b795e14cd57f88b135811789b359d5
 
 pkgname = github-release
 
