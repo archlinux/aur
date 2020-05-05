@@ -2,13 +2,13 @@
 
 pkgname=cozy-desktop
 pkgver=3.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="File synchronisation for Cozy Cloud on Desktop"
 arch=(any)
 url="https://cozy-labs.github.io/cozy-desktop/"
 license=(AGPL3)
 depends=(electron5)
-makedepends=(nodejs-lts-erbium yarn git node-gyp python2)
+makedepends=(nodejs-lts-erbium yarn git node-gyp python)
 source=(https://github.com/cozy-labs/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz
         https://github.com/cozy-labs/${pkgname}/releases/download/v${pkgver}/Cozy-Drive-${pkgver}-x86_64.AppImage
         ${pkgname}.desktop
