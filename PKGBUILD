@@ -2,11 +2,11 @@
 
 pkgname=mcsctl-git
 pkgver=master
-pkgrel=12
+pkgrel=13
 pkgdesc='Manage multiple minecraft servers with a simple bash script and systemd unit templates.'
 arch=('any')
 license=('GPL3')
-depends=('bash' 'grep' 'java-runtime-headless>=8' 'openbsd-netcat' 'jq' 'screen' 'sudo' 'systemd')
+depends=('bash' 'grep' 'java-runtime-headless>=8' 'openbsd-netcat' 'sed' 'jq' 'screen' 'sudo')
 provides=('mcsctl')
 conflicts=('mcsctl')
 install="$pkgname.install"
