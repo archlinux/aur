@@ -30,6 +30,7 @@ prepare () {
   curl -L https://raw.githubusercontent.com/msys2/MINGW-packages/master/mingw-w64-suitesparse/0001-mingw-w64-Use-a-not-lib-as-AR_TARGET-extension.patch | patch -p1
   curl -L https://raw.githubusercontent.com/msys2/MINGW-packages/master/mingw-w64-suitesparse/0002-mingw-w64-Set-SO_OPTS--shared-move-dlls-create-import-libs.patch | patch -p1
   curl -L https://raw.githubusercontent.com/msys2/MINGW-packages/master/mingw-w64-suitesparse/0004-mingw-w64-install-static-libs.patch | patch -p1
+  sed -i 's| \-lsuitesparseconfig| \-L../../lib \-lsuitesparseconfig \-lssp|g' */Lib/Makefile
 
   # x86_64 conversion errors
   sed -i "s|nzmax = std::max(nzmax, 1L)|nzmax = std::max(nzmax, (csi)1)|g" Mongoose/Source/Mongoose_CSparse.cpp
@@ -43,7 +44,6 @@ build() {
     cp -r SuiteSparse-${pkgver} build-${_arch} && pushd build-${_arch}
     ${_arch}-make \
       UNAME=Windows BLAS="-llapack -lblas -lgfortran -lquadmath" \
-      CHOLMOD_CONFIG='-DNPARTITION' \
       CMAKE_OPTIONS="-DCMAKE_INSTALL_PREFIX=\"/usr/${_arch}\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=\"/usr/share/mingw/toolchain-${_arch}.cmake\"" \
       MY_METIS_LIB="-lmetis" JOBS=2
     popd
@@ -56,7 +56,6 @@ package() {
     cd "${srcdir}"/build-${_arch}
     ${_arch}-make install \
       UNAME=Windows BLAS="-llapack -lblas -lgfortran -lquadmath" \
-      CHOLMOD_CONFIG='-DNPARTITION' \
       CMAKE_OPTIONS="-DCMAKE_INSTALL_PREFIX=\"/usr/${_arch}\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=\"/usr/share/mingw/toolchain-${_arch}.cmake\"" \
       MY_METIS_LIB="-lmetis" \
       DESTDIR="${pkgdir}" INSTALL="${pkgdir}"/usr/${_arch}
