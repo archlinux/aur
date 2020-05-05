@@ -1,6 +1,6 @@
 pkgbase = elogind
 	pkgdesc = The systemd project's logind, extracted to a standalone package
-	pkgver = 229.4
+	pkgver = 243.7
 	pkgrel = 1
 	url = https://github.com/elogind/elogind
 	arch = i686
@@ -10,14 +10,13 @@ pkgbase = elogind
 	makedepends = libtool
 	makedepends = gperf
 	makedepends = gtk-doc
-	makedepends = dbus-nosystemd
 	makedepends = git
 	makedepends = libcap
+	makedepends = meson
+	makedepends = dbus-nosystemd
 	options = !libtool
-	source = elogind-5814139990daf10155b4fb0951ee456ac9c97a4b.tar.gz::https://github.com/elogind/elogind/archive/5814139990daf10155b4fb0951ee456ac9c97a4b.tar.gz
-	source = elogind-docs.patch
-	sha256sums = 43cd1ad357fe6bfa2369a4003e2737ec994a53471745679c97e09a7dcbd9d04a
-	sha256sums = 25643e563250b0d322f817288cbe999f1cc2e4804c875725bb92fe5094a902b4
+	source = git+https://github.com/elogind/elogind#tag=v243.7
+	sha256sums = SKIP
 
 pkgname = elogind
 	pkgdesc = The systemd project's logind, extracted to a standalone package
@@ -28,7 +27,7 @@ pkgname = elogind
 	depends = dbus-x11
 	optdepends = elogind-openrc: elogind initscript
 	optdepends = dbus-openrc: dbus initscript
-	provides = elogind=229.4
+	provides = elogind=243.7
 	conflicts = systemd-sysvcompat
 	conflicts = consolekit
 
@@ -36,5 +35,5 @@ pkgname = libelogind
 	pkgdesc = elogind client libraries
 	depends = libcap
 	provides = libelogind.so
-	provides = libelogind=229.4
+	provides = libelogind=243.7
 
