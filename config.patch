@@ -1,19 +1,15 @@
---- config.default.orig	2020-02-11 19:33:53.000000000 +0100
-+++ config.default	2020-02-12 23:34:14.135593553 +0100
-@@ -7,18 +7,18 @@
- #BACKEND = gdi
+--- config.default.orig	2020-05-05 13:11:58.000000000 +0200
++++ config.default	2020-05-05 13:14:30.062529132 +0200
+@@ -11,7 +11,7 @@
+ #BACKEND = opengl
  #BACKEND = sdl
  #BACKEND = sdl2
 -#BACKEND = mixer_sdl
 +BACKEND = mixer_sdl
  #BACKEND = posix
+ BACKEND = @backend@
  
- #COLOUR_DEPTH = 0
--#COLOUR_DEPTH = 16
-+COLOUR_DEPTH = 16
- 
- #OSTYPE = amiga
- #OSTYPE = beos
+@@ -21,7 +21,7 @@
  #OSTYPE = cygwin
  #OSTYPE = freebsd
  #OSTYPE = haiku
@@ -22,31 +18,32 @@
  #OSTYPE = mingw
  #OSTYPE = mac
  
-@@ -36,23 +36,23 @@
+@@ -40,17 +40,17 @@
  
  #WIN32_CONSOLE = 1 # adds a console for windows debugging
  
--#MULTI_THREAD = 1 # Enable multithreading
-+MULTI_THREAD = 1 # Enable multithreading
- 
- # using freetype for Truetype font support
--USE_FREETYPE = 0
-+USE_FREETYPE = 1
+-MULTI_THREAD = @multithread@ # Enable multithreading, highly recommended
++MULTI_THREAD = 1 # Enable multithreading, highly recommended
+ BUNDLE_PTHREADGC2 = @bundlepthread@
  
  # using UPnP for easy server hosting behind routers
--#USE_UPNP = 0
+-USE_UPNP = @upnp@
 +USE_UPNP = 1
  
- # using zstd compression library
--#USE_ZSTD = 0
+ # using freetype for Truetype font support
+-USE_FREETYPE = @freetype@
++USE_FREETYPE = 1
+ 
+ # using zstd compression
+-USE_ZSTD = @zstd@
 +USE_ZSTD = 1
  
- # Define these as empty strings, if you don't have the respective config program
- #ALLEGRO_CONFIG = allegro-config
+ # use static linking (to be at least somewhat portable)
+ STATIC = 1
+@@ -60,6 +60,7 @@
  #PNG_CONFIG     = pkg-config libpng
  #SDL_CONFIG     = sdl-config
  #SDL2_CONFIG    = sdl2-config
--#FREETYPE_CONFIG    = freetype-config
 +FREETYPE_CONFIG = pkg-config freetype2
  
  #VERBOSE = 1

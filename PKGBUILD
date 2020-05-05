@@ -3,7 +3,7 @@
 # PKGBUILD adapted from Simutrans https://www.archlinux.org/packages/community/x86_64/simutrans/
 
 pkgname=simutrans-nightly
-pkgver=20200504
+pkgver=20200505
 pkgrel=1
 pkgdesc="Transportation simulation game - Nightly build"
 arch=('x86_64')
@@ -43,7 +43,7 @@ sha256sums=('SKIP'
             'c0c2dd5da146f64901b00c6ee67e0818a166b983a81cee7897c4843aa9f21c81'
             '053a2e3cf59fea40e3852ea3d369780741ed922cf53adb8b564af396bef9e502'
             '0d37c0d25928fc4f8a6fc30e4dbf7b2b949f183e87e27f69494f38bbab5708f0'
-            '88ddeaa1ddfc8634d0f341c60c58a7110f146ad7e1986733214e192383524095'
+            '11071101f87447f5eee542b07091c230d2c9ac3ece51e37d01b66329cc63d4bb'
             '99545152f5e739b7eb028152383fa10d3e3d303c99167e1c6e5a6bd7dcd00fa3'
             'f933d5608052b73e03e21d4ade0909e471c643ee5493023921fa5bc963a06ab3')
 
