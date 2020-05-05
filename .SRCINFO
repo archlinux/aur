@@ -1,0 +1,14 @@
+pkgbase = zimfw-environment-git
+	pkgdesc = Zsh plugin that sets sane Zsh built-in environment options
+	pkgver = r27.aacae4d
+	pkgrel = 1
+	url = https://github.com/zimfw/environment
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	source = zimfw-environment-git::git+https://github.com/zimfw/environment.git
+	sha256sums = SKIP
+
+pkgname = zimfw-environment-git
+
