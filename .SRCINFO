@@ -1,0 +1,22 @@
+pkgbase = raspicam
+	pkgdesc = C++ API for using Raspberry camera (with OpenCV)
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = http://www.uco.es/investiga/grupos/ava/node/40
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = git
+	depends = vtk
+	provides = raspicam
+	conflicts = raspicam
+	replaces = raspicam
+	source = https://downloads.sourceforge.net/project/raspicam/raspicam-0.1.8.zip
+	sha256sums = 08caa22fbe4d71296c0348855a6ea629477b5cfb08648c93bd5ea55b606656cf
+
+pkgname = raspicam
+
