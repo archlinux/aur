@@ -4,7 +4,7 @@
 
 pkgname=pycrc
 pkgver=0.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A free, easy to use Cyclic Redundancy Check (CRC) calculator and C source code generator"
 arch=(any)
 url="http://www.tty1.net/pycrc/"
@@ -21,6 +21,7 @@ package() {
 
   mkdir -p "${pkgdir}${_sitedir}/pycrc"
   cp -r pycrc/*.py "${pkgdir}${_sitedir}/pycrc"
+  chmod -R +r "${pkgdir}${_sitedir}/pycrc"
 
   mkdir -p "${pkgdir}/usr/bin"
   cp pycrc.py "${pkgdir}/usr/bin/pycrc"
