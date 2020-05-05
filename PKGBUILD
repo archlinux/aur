@@ -6,7 +6,7 @@
 
 pkgname=yosys-git
 pkgrel=1
-pkgver=r8895.af84e5ac
+pkgver=r9464.283b1130
 pkgdesc='A framework for RTL synthesis'
 arch=('x86_64' 'i686')
 url='http://www.clifford.at/yosys/'
@@ -17,8 +17,8 @@ depends=('tcl' 'libffi' 'python' 'boost-libs')
 optdepends=('graphviz: Schematics display support' 'xdot: Design netlist display support')
 makedepends=('git' 'mercurial' 'boost')
 checkdepends=('iverilog' 'clang')
-source=('git+https://github.com/cliffordwolf/yosys.git'
-        'git+https://github.com/berkeley-abc/abc.git')
+source=('git+https://github.com/YosysHQ/yosys.git'
+        'git+https://github.com/YosysHQ/abc.git')
 
 sha512sums=('SKIP'
             'SKIP')

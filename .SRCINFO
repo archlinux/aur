@@ -1,6 +1,6 @@
 pkgbase = yosys-git
 	pkgdesc = A framework for RTL synthesis
-	pkgver = r8895.af84e5ac
+	pkgver = r9464.283b1130
 	pkgrel = 1
 	url = http://www.clifford.at/yosys/
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = yosys-git
 	optdepends = xdot: Design netlist display support
 	provides = yosys
 	conflicts = yosys
-	source = git+https://github.com/cliffordwolf/yosys.git
-	source = git+https://github.com/berkeley-abc/abc.git
+	source = git+https://github.com/YosysHQ/yosys.git
+	source = git+https://github.com/YosysHQ/abc.git
 	sha512sums = SKIP
 	sha512sums = SKIP
 
