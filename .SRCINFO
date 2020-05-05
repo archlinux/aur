@@ -1,0 +1,24 @@
+pkgbase = caas-git
+	pkgdesc = A web service for checking and visualising compliance status of XMPP servers.
+	pkgver = r282.f5d3403
+	pkgrel = 1
+	url = https://compliance.conversations.im/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = java-environment>=10
+	makedepends = maven
+	depends = java-runtime>=10
+	provides = caas-web
+	provides = caas-app
+	conflicts = caas
+	source = git+https://github.com/iNPUTmice/caas.git
+	source = caas-web
+	source = caas-app
+	md5sums = SKIP
+	md5sums = 91c4ab642924e048946ccc867a5c2a5b
+	md5sums = 0fb28640305ef611f32efad761a97810
+
+pkgname = caas-git
+

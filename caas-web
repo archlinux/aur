@@ -1,0 +1,13 @@
+#!/bin/sh
+DATAHOME=$XDG_DATA_HOME
+if [ -z "$XDG_DATA_HOME"]
+    then
+	DATAHOME=$HOME/.local/share
+fi
+PROGDATA=$DATAHOME/caas-web/
+if [ ! -d "$PROGDATA" ]
+    then
+	mkdir -p "$PROGDATA"
+fi
+cd $PROGDATA
+exec /usr/bin/java -jar '/usr/share/java/caas-web/caas-web.jar' "$@"
