@@ -1,0 +1,25 @@
+pkgbase = python-mbed-os-tools
+	pkgdesc = The tools to test and work with Mbed OS
+	pkgver = 0.0.13
+	pkgrel = 1
+	url = https://developer.mbed.org
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyserial
+	depends = python-requests
+	depends = python-intelhex
+	depends = python-prettytable
+	depends = python-fasteners
+	depends = python-appdirs
+	depends = python-lockfile
+	depends = python-six
+	depends = python-colorama
+	depends = python-beautifulsoup4
+	options = !emptydirs
+	source = https://github.com/ARMmbed/mbed-os-tools/archive/0.0.13.tar.gz
+	md5sums = 9e4631a643313964ab21c5aab7f71c81
+
+pkgname = python-mbed-os-tools
+
