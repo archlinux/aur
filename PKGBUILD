@@ -4,13 +4,13 @@
 
 pkgname=balena-etcher
 _pkgname=etcher
-pkgver=1.5.83
+pkgver=1.5.84
 pkgrel=1
 epoch=2
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
 arch=(x86_64)
 _github_url='https://github.com/balena-io/etcher'
-url='https://etcher.io'
+url='https://balena.io/etcher'
 license=(Apache)
 depends=("electron7" "gtk3" "libxtst" "libxss" "nss" "alsa-lib" "nodejs" "glib2" "polkit" "libusb")
 makedepends=("npm" "python2" "git" "jq")
