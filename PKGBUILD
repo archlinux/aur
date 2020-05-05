@@ -5,7 +5,7 @@ _pkg_arch=armv7a-eabi
 _android_arch=armeabi-v7a
 _android_platform_arch=arch-arm
 _pkgname=openssl
-_ver=1.1.1f
+_ver=1.1.1g
 
 pkgname=android-$_pkg_arch-$_pkgname
 # use a pacman compatible version scheme
@@ -21,7 +21,7 @@ makedepends=('android-environment' 'android-sdk-build-tools')
 conflicts=("android-$_pkgname-$_android_arch")
 replaces=("android-$_pkgname-$_android_arch")
 source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"{,.asc})
-sha256sums=('186c6bfe6ecfba7a5b48c47f8a1673d0f3b0e5ba2e25602dd23b629975da3f35'
+sha256sums=('ddb04774f1e32f0c49751e21b67216ac87852ceb056b75209af2443400636d46'
             'SKIP')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
               '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
