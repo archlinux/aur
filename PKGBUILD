@@ -1,8 +1,8 @@
 # Maintainer: Joel Shapiro <jshapiro at nvidia dot com>
 
 pkgname=p4
-_version=2019.2
-pkgver=2019.2.1942501
+_version=2020.1
+pkgver=2020.1.1953492
 pkgrel=1
 
 pkgdesc="Perforce command line client"
