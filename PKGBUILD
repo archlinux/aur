@@ -2,8 +2,8 @@
 
 pkgname=bottom-bin
 pkgver=0.4.0
-pkgrel=0
-pkgdesc='Yet another cross-platform graphical process/system monitor.'
+pkgrel=1
+pkgdesc='A cross-platform graphical process/system monitor with a customizable interface and a multitude of features.'
 provides=('bottom')
 conflicts=('bottom')
 arch=('x86_64')
