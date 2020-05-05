@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=dosbox-ece
+GenericName=DOS emulator
+Comment=DOSBox ECE
+Exec=dosbox
+Icon=dosbox-ece
+Type=Application
+Terminal=false
+Keywords=dos;gaming;game;games;emulator;
+Categories=Game
