@@ -1,5 +1,5 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
-
+# Contributor: Kyle Laker <kyle@laker.email>
 
 pkgname=warpinator
 pkgver=1.0.1
@@ -21,7 +21,6 @@ depends=(
     xapps
 )
 depends=(
-    grpc
     pygobject-devel
     python-grpcio
     python-setproctitle
@@ -39,7 +38,6 @@ conflicts=(
     lm-warp
     lm-warp-git
     warpinator-git
-    warp-git
 )
 source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
 sha256sums=('ad6566a42bdbbcd4039778c8306b1322b161a5e6a382fbc4cf7e9e18d7130500')

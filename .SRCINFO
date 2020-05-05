@@ -8,7 +8,6 @@ pkgbase = warpinator
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = python-grpcio-tools
-	depends = grpc
 	depends = pygobject-devel
 	depends = python-grpcio
 	depends = python-setproctitle
@@ -19,7 +18,6 @@ pkgbase = warpinator
 	conflicts = lm-warp
 	conflicts = lm-warp-git
 	conflicts = warpinator-git
-	conflicts = warp-git
 	source = warpinator_1.0.1.tar.xz::http://packages.linuxmint.com/pool/main/w/warpinator/warpinator_1.0.1.tar.xz
 	sha256sums = ad6566a42bdbbcd4039778c8306b1322b161a5e6a382fbc4cf7e9e18d7130500
 
