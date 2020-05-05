@@ -1,22 +1,31 @@
 # Maintainer: Jesse Luehrs <doy@tozt.net>
 pkgname=rbw
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
+makedepends=('rust' 'cargo')
 depends=('pinentry' 'openssl')
-conflicts=('rbw-git')
+conflicts=('rbw-git' 'rbw-bin')
 provides=('rbw')
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://git.tozt.net/${pkgname}"
-source=(https://git.tozt.net/rbw/releases/deb/${pkgname}_${pkgver}_amd64.deb)
-sha256sums=('16ee1885942c12cc2d3ad80ea652328e7f7f37559c4ae3e81d8b857d3fd03f7a')
+source=(https://git.tozt.net/rbw/snapshot/${pkgname}-${pkgver}.tar.gz)
+sha256sums=('5efee399d6a455797741b4d0682088e8a84a9f10296446e483d608c56b754aba')
 pkgdesc="unofficial bitwarden cli"
 license=('MIT')
 
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    cargo build --release --locked
+}
+
+check() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    cargo test --release --locked
+}
+
 package() {
-    rm -rf tmp
-    mkdir tmp
-    tar xf data.tar.xz -C tmp
-    install -Dm 755 tmp/usr/bin/rbw -t "${pkgdir}/usr/bin"
-    install -Dm 755 tmp/usr/bin/rbw-agent -t "${pkgdir}/usr/bin"
-    install -Dm 644 tmp/usr/share/doc/rbw/copyright "${pkgdir}/usr/share/licenses/rbw/LICENSE"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    install -Dm 755 target/release/rbw -t "${pkgdir}/usr/bin"
+    install -Dm 755 target/release/rbw-agent -t "${pkgdir}/usr/bin"
+    install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
