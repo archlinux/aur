@@ -1,6 +1,6 @@
 pkgbase = netease-cloud-music-dl-git
 	pkgdesc = Netease cloud music song downloader, with full ID3 metadata, eg: front cover image, artist name, album name, song title and so on.
-	pkgver = r29.6d7920c
+	pkgver = r31.5c57275
 	pkgrel = 1
 	url = https://github.com/codezjx/netease-cloud-music-dl
 	arch = any

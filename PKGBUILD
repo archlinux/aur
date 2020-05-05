@@ -1,7 +1,7 @@
 # Maintainer: chenjunyu19 <1335546814@qq.com>
 
 pkgname=netease-cloud-music-dl-git
-pkgver=r29.6d7920c
+pkgver=r31.5c57275
 pkgrel=1
 pkgdesc="Netease cloud music song downloader, with full ID3 metadata, eg: front cover image, artist name, album name, song title and so on."
 arch=('any')
