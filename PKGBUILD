@@ -1,11 +1,11 @@
 # Maintainer: Jesse Luehrs <doy@tozt.net>
 pkgname=rbw-git
 _name=${pkgname%-*}
-pkgver=0.1.1
+pkgver=0.2.1
 pkgrel=1
 makedepends=('rust' 'cargo' 'git')
 depends=('pinentry' 'openssl')
-conflicts=('rbw')
+conflicts=('rbw' 'rbw-bin')
 provides=('rbw')
 arch=('i686' 'x86_64')
 url="https://git.tozt.net/${_name}"
