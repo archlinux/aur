@@ -2,7 +2,7 @@
 
 _pkgname=chromedriver
 pkgname=${_pkgname}-beta
-pkgver=83.0.4103.14
+pkgver=83.0.4103.39
 pkgrel=1
 pkgdesc="Standalone server which implements WebDriver's wire protocol (for google-chrome-beta)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('chromium')
 depends=('libpng' 'gconf')
 optdepends=('google-chrome-beta')
 provides=(${_pkgname})
-md5sums=('504e4ca79d93db8d26343351e312b95b')
+md5sums=('4e9d74f71a97470e59c1c0d311be49f6')
 
 source=("${_pkgname}_${pkgver}_linux64.zip::https://chromedriver.storage.googleapis.com/${pkgver}/${_pkgname}_linux64.zip")
 
