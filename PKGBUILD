@@ -5,7 +5,7 @@ pkgver=2.0.4
 pkgrel=1
 pkgdesc='Automates anything you see on the screen of your desktop computer'
 arch=('any')
-url='http://sikulix.com/'
+url='http://sikulix.com'
 license=('MIT')
 depends=('java-environment>=8'
          'opencv'
