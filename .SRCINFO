@@ -1,7 +1,7 @@
 pkgbase = nodejs-cz-conventional-changelog
 	pkgdesc = Commitizen plugin for conventional changelogs commit messages
-	pkgver = 3.1.0
-	pkgrel = 3
+	pkgver = 3.2.0
+	pkgrel = 1
 	url = https://github.com/commitizen/cz-conventional-changelog
 	arch = any
 	license = MIT
@@ -9,9 +9,9 @@ pkgbase = nodejs-cz-conventional-changelog
 	makedepends = jq
 	depends = nodejs>=10
 	depends = nodejs-commitizen
-	noextract = cz-conventional-changelog-3.1.0.tgz
-	source = http://registry.npmjs.org/cz-conventional-changelog/-/cz-conventional-changelog-3.1.0.tgz
-	sha512sums = 482c0f3ce17eeea321d43664261af06b10af6733dacf613d070433719c01b879697098fdcf3cfb2b9bc00d04611eec52b5a1d91522db0e564475c96ce1b2aeed
+	noextract = cz-conventional-changelog-3.2.0.tgz
+	source = http://registry.npmjs.org/cz-conventional-changelog/-/cz-conventional-changelog-3.2.0.tgz
+	sha512sums = c80631786a558b6ee1a888a51b59e1e00f419f1e09dcebfe797cb89282f776bad1f883bd19a58fb0a8e2936d21b7ad3c02caa2f1340f7f499cce111ec80b4cce
 
 pkgname = nodejs-cz-conventional-changelog
 
