@@ -4,7 +4,7 @@ pkgbase = dosbox-ece
 	pkgrel = 1
 	url = https://dosboxece.yesterplay.net/
 	arch = any
-	license = ???
+	license = GPLv2
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = gcc
@@ -21,11 +21,9 @@ pkgbase = dosbox-ece
 	source = https://dosboxdl.yesterplay.net/DOSBox ECE r4338 (Linux source).7z
 	source = dosbox-ece.png
 	source = dosbox-ece.desktop
-	source = openglide_path.patch
 	md5sums = 0ddd53cf2d5e2cccc52c9c22e4384a6c
 	md5sums = 19fbd9958c0a412000d5fe7362774df1
 	md5sums = 7ab512ca7e6bdb3616e197271ffae928
-	md5sums = c9e92ddc87b1a5ff43c0ff35ef5ca461
 
 pkgname = dosbox-ece
 
