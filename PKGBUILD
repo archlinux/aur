@@ -1,11 +1,11 @@
-# Maintainer: nl6720 <nl6720@gmail.com>
+# Maintainer: nl6720 <nl6720@archlinux.org>
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgname='refind-git'
-pkgver=0.12.0.r692.g4a84fce
-pkgrel=4
+pkgver=0.12.0.r693.g5b1a975
+pkgrel=1
 pkgdesc='rEFInd Boot Manager - git version'
 url='https://www.rodsbooks.com/refind/'
 arch=('any')
@@ -62,7 +62,7 @@ package() {
 	# keys
 	install -vDm 0644 keys/*{cer,crt} -t "${pkgdir}/usr/share/${pkgname%-git}/keys"
 	# keysdir
-	install -vdm 0750 "${pkgdir}/etc/refind.d/keys"
+	install -vdm 0700 "${pkgdir}/etc/refind.d/keys"
 	# fonts
 	install -vDm 0644 fonts/*.png -t "${pkgdir}/usr/share/${pkgname}/fonts"
 	# icons

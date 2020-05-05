@@ -1,7 +1,7 @@
 pkgbase = refind-git
 	pkgdesc = rEFInd Boot Manager - git version
-	pkgver = 0.12.0.r692.g4a84fce
-	pkgrel = 4
+	pkgver = 0.12.0.r693.g5b1a975
+	pkgrel = 1
 	url = https://www.rodsbooks.com/refind/
 	arch = any
 	license = BSD
@@ -24,8 +24,8 @@ pkgbase = refind-git
 	optdepends = sudo: for privilege elevation in refind-install and refind-mkdefault
 	optdepends = shim-signed: pre-signed Secure Boot shim loader
 	optdepends = sbsigntools: for EFI binary signing with refind-install
-	provides = refind=0.12.0.r692.g4a84fce
-	provides = refind-efi=0.12.0.r692.g4a84fce
+	provides = refind=0.12.0.r693.g5b1a975
+	provides = refind-efi=0.12.0.r693.g5b1a975
 	conflicts = refind
 	conflicts = refind-efi
 	replaces = refind-efi-git
