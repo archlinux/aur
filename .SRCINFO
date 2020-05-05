@@ -1,0 +1,15 @@
+pkgbase = cvodes
+	pkgdesc = CVODES is a solver for stiff and nonstiff ODE systems given in explicit form y’ = f(t,y,p) with sensitivity analysis capabilities (both forward and adjoint modes).
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://www.gnu.org/software/mcsim/#installation
+	arch = any
+	license = BSD
+	makedepends = gcc
+	provides = cvodes
+	conflicts = sundials
+	source = https://www.gnu.org/software/mcsim/cvodes-2.7.0.tar.gz
+	md5sums = 73d924b697c1b13ec1b5172057bdf6ab
+
+pkgname = cvodes
+
