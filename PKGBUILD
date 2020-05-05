@@ -89,7 +89,8 @@ provides=(
 )
 replaces=('ffmpeg')
 conflicts=('ffmpeg')
-source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}
+source=(ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}
+#      ffmpeg-${pkgver}::git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}
         "ffmpeg-full-add-svt-hevc-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         "ffmpeg-full-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "ffmpeg-full-add-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v${_svt_av1_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch"
@@ -102,9 +103,9 @@ sha256sums=('SKIP'
             '7690a4f6bdc4a57e35c7ff5b6e87f2fe6d056d452eff9e767eaccff41832f4d7')
 
 prepare() {
-  cd $srcdir/ffmpeg
+    ln -sf $srcdir/ffmpeg $srcdir/ffmpeg-${pkgver}
     rm -f "ffmpeg-${pkgver}/libavcodec/"libsvt_{hevc,av1,vp9}.c
-    sed -i 's/eb_init_handle/svt_av1_enc_init_handle/' "ffmpeg-full-add-svt-vp9-${_svt_vp9_ver}.patch"
+    sed -i 's/eb_init_handle/svt_av1_enc_init_handle/' "${srcdir}/ffmpeg-full-add-svt-vp9-${_svt_vp9_ver}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/ffmpeg-full-add-svt-hevc-${_svt_hevc_ver}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/ffmpeg-full-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/ffmpeg-full-add-svt-av1-${_svt_av1_ver}.patch"
@@ -159,8 +160,7 @@ build() {
     --enable-omx \
     --enable-shared \
     --enable-version3 \
-    --enable-libsvtav1 \
-    --enable-rav1e
+    --enable-libsvtav1
 
 
   make
