@@ -2,7 +2,7 @@
 
 _pkgname=Ghidra-Cpp-Class-Analyzer
 pkgname=ghidra-extension-$(echo $_pkgname | tr '[:upper:]' '[:lower:]')-git
-pkgver=1.3.r28.ga87bf8a
+pkgver=1.4.r9.g44c35c5
 pkgrel=1
 pkgdesc="Ghidra C++ Class and Run Time Type Information Analyzer"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=()
 depends=('ghidra')
 makedepends=('git' 'gradle' 'unzip' 'ghidra')
 optdepends=()
-source=("$pkgname::git+https://github.com/astrelsky/${_pkgname}")
+source=("$pkgname::git+https://github.com/astrelsky/${_pkgname}#branch=master")
 sha512sums=('SKIP')
 
 prepare() {
