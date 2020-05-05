@@ -1,0 +1,18 @@
+pkgbase = linux-wifi-hotspot
+	pkgdesc = Create virtual wifi hotspot using same wifi card which is connected to an AP + many features (a GUI tool)
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://github.com/lakinduakash/linux-wifi-hotspot
+	arch = any
+	license = BSD-2-Clause
+	makedepends = gendesk
+	depends = hostapd
+	depends = iw
+	depends = gtk3
+	optdepends = haveged: For random MAC generation
+	provides = wihotspot
+	source = linux-wifi-hotspot-1.9.tar.gz::https://github.com/lakinduakash/linux-wifi-hotspot/archive/wihotspot-1.9.tar.gz
+	sha256sums = 964166d2411395ae0b8d5042ea367ceecc5a43c31251682c465044cc4a01fdd8
+
+pkgname = linux-wifi-hotspot
+
