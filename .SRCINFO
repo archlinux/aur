@@ -1,7 +1,7 @@
 pkgbase = gdm-plymouth
 	pkgdesc = Display manager and login screen with plymouth support
-	pkgver = 3.34.1
-	pkgrel = 2
+	pkgver = 3.36.2
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GDM
 	install = gdm.install
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = gdm-plymouth
 	depends = xorg-xrdb
 	depends = xorg-server
 	depends = xorg-xhost
-	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=80e010198217284d3cf52e8b334862a80b00cbd1
+	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=02c42c1ca84bc28928618b773c12f2cea67ed71e
 	source = 0001-Xsession-Don-t-start-ssh-agent-by-default.patch
 	source = 0002-pam-arch-Don-t-check-greeter-account-for-expiry.patch
 	source = 0003-pam-arch-Restrict-greeter-service-to-the-gdm-user.patch
