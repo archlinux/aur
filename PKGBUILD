@@ -1,5 +1,5 @@
-# Maintainer: Simao Gomes Viana <xdevs23@outlook.com>
-# Packager: Simao Gomes Viana <xdevs23@outlook.com>
+# Maintainer: Simao Gomes Viana <devel@superboring.dev>
+# Packager: Simao Gomes Viana <devel@superboring.dev>
 # Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -13,11 +13,11 @@
 pkgbase=linux-nitrous-git
 _srcname=linux-nitrous-git
 pkgver=5.6+
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
-makedepends=('clang' 'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf' 'coreutils')
+makedepends=('bison' 'clang' 'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf' 'coreutils')
 options=('!strip')
 source=('git+https://gitlab.com/xdevs23/linux-nitrous.git#branch=v'"$pkgver"
         # standard config files for mkinitcpio ramdisk
