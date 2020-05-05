@@ -4,7 +4,7 @@
 pkgname=warpinator
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="Share files across the LAN by Linux Mint"
+pkgdesc="Allows simple local network file sharing"
 arch=("x86_64")
 url="http://packages.linuxmint.com/pool/main/w/${pkgname}"
 license=("GPL")

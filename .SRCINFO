@@ -1,5 +1,5 @@
 pkgbase = warpinator
-	pkgdesc = Share files across the LAN by Linux Mint
+	pkgdesc = Allows simple local network file sharing
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/main/w/warpinator
