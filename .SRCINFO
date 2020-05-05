@@ -7,7 +7,7 @@ pkgbase = dnote-server-bin
 	license = AGPL-3.0
 	provides = dnote-server
 	source = dnote-server-bin-1.0.3.tar.gz::https://github.com/dnote/dnote/releases/download/server-v1.0.3/dnote_server_1.0.3_linux_amd64.tar.gz
-	sha256sums = SKIP
+	sha256sums = fd3b77f7ed70430ee675019fd5c3a0b0ca4b8f6757a256f5fedca7a7959db3da
 
 pkgname = dnote-server-bin
 
