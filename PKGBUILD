@@ -24,10 +24,10 @@ prepare(){
 
 package() {
 	cd "$srcdir/$pkgname"
-	install -dm755 "${pkgdir}/usr/share/xfce4-sysinfo/icons"
+#	install -dm755 "${pkgdir}/usr/share/xfce4-sysinfo/icons"
 
 	install -Dm0644 -t "$pkgdir/usr/share/applications" "xfce4-sysinfo.desktop"
-	install -Dm0644 icons/* "$pkgdir/usr/share/xfce4-sysinfo/icons"
+	install -Dm0644 icons/* "$pkgdir/usr/share/pixmaps"
 	install -Dm0755 -t "$pkgdir/usr/bin" "sysinfo"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
