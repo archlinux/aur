@@ -6,6 +6,7 @@ pkgbase = rsyslog
 	install = rsyslog.install
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = GPL3
 	makedepends = postgresql-libs>=8.4.1
 	makedepends = libmariadbclient

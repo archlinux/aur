@@ -3,7 +3,7 @@ pkgver=8.2004.0
 pkgrel=1
 pkgdesc="An enhanced multi-threaded syslogd with a focus on security and reliability"
 url="http://www.rsyslog.com/"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64')
 license=('GPL3')
 depends=('libestr' 'liblogging' 'librelp' 'libfastjson')
 makedepends=('postgresql-libs>=8.4.1' 'libmariadbclient' 'net-snmp' 'gnutls'
