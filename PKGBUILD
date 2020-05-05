@@ -1,5 +1,5 @@
 pkgname=war1gus-git
-pkgver=2.4.1
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="Warcraft1 Mod that allows you to play Warcraft1 with the Stratagus engine (git version)"
 arch=("i686" "x86_64")
