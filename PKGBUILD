@@ -1,18 +1,18 @@
 # Author: Artemii Sudakov <finziyr@yandex.ru>
 pkgname=wifiman
-pkgver=1.5
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Minimalistic wpa_supplicant configuration manager"
 arch=('any')
 url='https://github.com/BiteDasher/wifiman'
 license=('MIT')
-depends=('bash' 'sudo' 'sed' 'net-tools' 'wireless_tools' 'wpa_supplicant' 'dhcpcd' 'systemd')
+depends=('bash' 'sed' 'net-tools' 'wireless_tools' 'gawk' 'wpa_supplicant' 'dhcpcd' 'systemd')
 optdepends=(
 	'zenity: Run wifigui'
 )
 provides=('wifigui')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BiteDasher/wifiman/archive/${pkgver}.tar.gz")
-sha256sums=("e64eb6b70717614c8b1eea6a787a017fa821f1409a941e5a7bb0dade7a716fbd")
+sha256sums=("fbd829f9d938842e2b21cb1a41dc94279dc43c9f24682c1fc02becc92f36073e")
 package() {
 mkdir -p $pkgdir/usr/bin
 install -m 775 "$srcdir/$pkgname-$pkgver/wifiman" "$pkgdir/usr/bin/wifiman"
