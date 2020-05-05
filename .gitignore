@@ -1,0 +1,7 @@
+src/
+pkg/
+yabridge/
+
+*.tar.gz
+*.tar.xz
+*.tar.zst
