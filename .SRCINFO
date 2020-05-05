@@ -1,6 +1,6 @@
 pkgbase = wayk-now
 	pkgdesc = Instant Remote Support and Remote Desktop
-	pkgver = 2020.1.4.0
+	pkgver = 2020.1.5.0
 	pkgrel = 1
 	url = https://wayk.devolutions.net
 	install = wayk-now.install
@@ -21,8 +21,8 @@ pkgbase = wayk-now
 	depends = libx11
 	depends = libxdamage
 	optdepends = libnotify
-	source = https://cdn.devolutions.net/download/Linux/Wayk/2020.1.4.0/wayk-now_2020.1.4.0_amd64.deb
-	sha256sums = fa58ed3e501d8a7fab37966cbca08c1258032938ce97677fabfe9f80041c3cc0
+	source = https://cdn.devolutions.net/download/Linux/Wayk/2020.1.5.0/wayk-now_2020.1.5.0_amd64.deb
+	sha256sums = 85966be0201a533abd0990139359f261529a515af32b9ea658b2db1d0441923c
 
 pkgname = wayk-now
 
