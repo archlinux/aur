@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=oreo-cursors-git
 pkgver=r4.34dc4ed
-pkgrel=2
+pkgrel=3
 pkgdesc="Color material cursors with cute animations."
 arch=('any')
 url="https://www.pling.com/p/1360254"
@@ -18,9 +18,17 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+
+	# Fix for inkscape 1.0
+	sed -i 's/inkscape -z -e/inkscape -o/g' build.sh
+
+	make clean
+}
+
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	make clean
 	make build
 }
 
