@@ -1,7 +1,7 @@
 # Maintainer: Sigvald Marholm <marholm@marebakken.com>
 
 pkgname=slepc4py
-pkgver=3.12.0
+pkgver=3.13.0
 pkgrel=1
 _config=linux-c-opt
 pkgdesc="Python bindings for SLEPc"
@@ -10,7 +10,7 @@ url="https://gitlab.com/slepc/slepc4py"
 license=('custom')
 depends=('slepc' 'petsc' 'petsc4py' 'openmpi' 'python-numpy')
 source=(https://gitlab.com/slepc/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('d8c06953b7d00f529a9a7fd016dfa8efdf1d05995baeea7688d1d59611f424f7')
+sha256sums=('780eff0eea1a5217642d23cd563786ef22df27e1d772a1b0bb4ccc5701df5ea5')
 
 _slepc_dir=/opt/slepc/${_config}
 _petsc_dir=/opt/petsc/${_config}
