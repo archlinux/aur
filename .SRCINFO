@@ -1,0 +1,33 @@
+pkgbase = gradle5
+	pkgdesc = Powerful build system for the JVM
+	pkgver = 5.6.4
+	pkgrel = 1
+	url = https://gradle.org/
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = asciidoc
+	makedepends = xmlto
+	makedepends = kotlin
+	makedepends = groovy
+	makedepends = java-environment=11
+	depends = java-environment
+	depends = bash
+	source = https://services.gradle.org/distributions/gradle-5.6.4-src.zip
+	source = gradle5.sh
+	sha256sums = 0ea3f172357a65a02f2fea03460f80b8b37040276d4e471a60fb739d41c7ede2
+	sha256sums = 5e6512419510e0244ef64c6f0af2b508ca9f1eb55f78c5a5c3e14ad37bd9ad9b
+
+pkgname = gradle5
+	install = gradle5.install
+
+pkgname = gradle5-doc
+	pkgdesc = Powerful build system for the JVM (documentation and samples)
+	optdepends = gradle5
+	options = !strip
+
+pkgname = gradle5-src
+	pkgdesc = Powerful build system for the JVM (sources)
+	optdepends = gradle5
+	options = !strip
+

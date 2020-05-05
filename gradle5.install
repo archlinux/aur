@@ -1,0 +1,15 @@
+#!/bin/sh
+
+_gradle5_install='NOTE: To avoid conflict with gradle, this package only installs /usr/bin/gradle5
+If you want gradle5 to be your default, please run:
+    sudo ln -s gradle5 /usr/bin/gradle'
+
+post_install()
+{
+	echo "$_gradle5_install"
+}
+
+post_upgrade()
+{
+	echo "$_gradle5_install"
+}
