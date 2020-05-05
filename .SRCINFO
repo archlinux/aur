@@ -1,12 +1,12 @@
 pkgbase = poshinit
-	pkgdesc = poshinit v2.0 for FreeBSD/Linux
+	pkgdesc = Portable Shell Initialization
 	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/bourne-again/poshinit
-	arch = x86_64
-	license = GPL
+	arch = any
+	license = GPL2
 	source = poshinit-2.0.tar.gz::https://github.com/bourne-again/poshinit/archive/2.0.tar.gz
-	md5sums = 2be4cdc7ae71dc0f2c2096d4f133766b
+	sha256sums = 237c5fca5019c6a67ce3229386698a5020d55e03d2533c176aa3dd6a02c112fc
 
 pkgname = poshinit
 
