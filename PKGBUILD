@@ -2,11 +2,11 @@
 _npmname=commitizen
 pkgname=nodejs-commitizen
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Git plugin to help you write consistent commit messages"
 arch=(any)
 url="https://github.com/commitizen/cz-cli"
-license=(MIT)
+license=('MIT')
 depends=('nodejs>=10')
 makedepends=('npm' 'jq')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
@@ -25,5 +25,6 @@ package() {
     jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
     mv "$tmppackage" "$pkgjson"
     chmod 644 "$pkgjson"
-    chmod u=rwX,go=rX -R "$pkgdir/usr/lib/node_modules/$_npmname"
+    chmod u=rwX,go=rX -R "$pkgdir"
+    chown -R root:root "$pkgdir"
 }
