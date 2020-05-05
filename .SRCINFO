@@ -1,7 +1,7 @@
 pkgbase = fgsl
 	pkgdesc = A Fortran interface to the GNU Scientific Library
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/reinh-bader/fgsl
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,11 @@ pkgname = fgsl
 
 pkgname = fgsl-docs
 	pkgdesc = A Fortran interface to the GNU Scientific Library - docs
+	arch = any
+	depends = fgsl
+
+pkgname = fgsl-examples
+	pkgdesc = A Fortran interface to the GNU Scientific Library - examples
 	arch = any
 	depends = fgsl
 
