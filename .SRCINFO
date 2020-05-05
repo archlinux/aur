@@ -1,0 +1,15 @@
+pkgbase = womic
+	pkgdesc = WO Mic can turn your phone to be a microphone for your computer.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://wolicheng.com/womic/wo_mic_linux.html
+	install = womic.install
+	arch = x86_64
+	license = unknown
+	optdepends = bluez: Bluetooth support
+	options = !strip
+	source = micclient-x86_64.AppImage::https://wolicheng.com/womic/softwares/micclient-x86_64.AppImage
+	md5sums = 875c5b18af2ddc2cfff2adcf52f39f92
+
+pkgname = womic
+

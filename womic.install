@@ -1,0 +1,13 @@
+pkgname='womic'
+
+post_install() {
+	echo
+	echo "==> Load aloop module using the command below. The module shall form a full-duplex loopback soundcard."
+	echo "==> sudo modprobe snd-aloop"
+
+}
+
+post_remove() {
+	echo "==> You can unload the full-duplex loopback soundcard using this command "
+	echo "==> sudo modprobe -r snd-aloop"
+}
