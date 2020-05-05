@@ -12,7 +12,7 @@ pkgbase = stock_quote
 	depends = python-pandas
 	depends = python-plotly
 	source = https://raw.githubusercontent.com/gps1539/stock_quote/master/stock_quote/stock_quote
-	md5sums = 8674cb17f35f4adfa395ddfd7e5168a5
+	md5sums = 94172a694692c5e0f4c43bc910783a61
 
 pkgname = stock_quote
 
