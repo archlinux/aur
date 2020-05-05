@@ -48,13 +48,13 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=5.6
-_minor=4
-_rtver=3
+_minor=10
+_rtver=5
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=5
+pkgrel=1
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -67,8 +67,8 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 # Some patches for BFQ conflict with patches for BFQ-dev.
 # To use linux-bfq-git smoothly apply bfq-reverts before bfq-dev patch. 
 # Otherwise the kernel will not compile.
-#_bfq_rev_path="bfq-reverts-all-v2"
-#_bfq_rev_patch="0001-bfq-reverts.patch"
+_bfq_rev_path="bfq-reverts-all-v2"
+_bfq_rev_patch="0001-bfq-reverts.patch"
 _bfq_path="bfq-dev-lucjan"
 _bfq_ver="v11"
 _bfq_rel="r2K200430"
@@ -80,11 +80,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.sign"
-        #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
+        "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0002-ALSA-hda-Fix-potential-access-overflow-in-beep-helpe.patch"
+        "${_lucjanpath}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -330,14 +329,14 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('aa3c01539621ed85115710455c33aa5bd3c48217822a197deec50d1624cdf9aa06efe8761f70aa8802d5ccb6501ebb0045eb3552bbec397c2b9691519ac77eec'
+sha512sums=('a2cf161a8f79e1d596cbe6e255b3b70fd5fd8cc27d4213a8bfd07f90afc26c40c70c9650224d074055df9c81a27ce70fc2bf4288acf3e69e6b51358d51acbf43'
             'SKIP'
-            'aaeffff8d6fc9d95aea3b08cff0e9b56e60a65029d5440aa16fb19b6e4d288c4a31789fb751dfe94424ad69320fae67d6ae94014334a653fb8a8e138e296e847'
+            '6aaa1ee6ea648ce72d6c833aa3eb44e05013fbd253f8c1b6be79c9b10ce7b2bb79eb855539aa6f280e26c9e9973f814ddd45882dd8353b6eb9219eb66fcad0c5'
             'SKIP'
+            '31141f3afa388dbfc7a0a1c0a7b7fc58a6824befea1fc044eb76fc0e6d4c55f249e3e0f7e63c0697ba736dc902d85128c0d78eeffe8eca3c207a573664c74514'
             'ad8567911dc2532e061a74bdee5b485a3f88e01ceab84a52c4e5b405141c312f6e4b21686264341b8ac2a78701e4c26361fad83aa39c7fff2aec3ec80d5421ff'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
-            '8064aa16172a42a3f23cff6278056a5c2ff7fa6560f3b975e4a7dfd7ce5d00f15af851fd4ef1f40a78707aeaad5a1eef3012ef5f7fb9242ca584b3a230d343cd'
-            'e0b39955fd3a7d558aea0ad72ebcd59eb649c47d9270deea3130f7a3703aa4e319727ab97a95cd365e1e7fad0a9ab31fd0787b36a22858012af5f337153ab48f'
+            'eacf9612b758381b1490409911c64a4d0a96f33cdfc5a1cbcfd4c5feb70d08a350ea017f8ef853d74906158d26ec5cd57ce7109f00d4593966fb0c05eff66ae4'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             '5f535dfc0d0400ba053be3a03be51aa472495bfb3b53b38d2ef1b26186cb14483da27b454f710fc622478a8205d09113859d84ce43e985f525a06bc37c7c18f8')
 
