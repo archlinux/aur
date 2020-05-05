@@ -1,13 +1,13 @@
 # Maintainer: Francesco Cherchi <francesco.cherchi@protonmail.com>
 
 pkgname=markdown2zim-git
-pkgver=r34.baf0136
+pkgver=r37.c377bd6
 pkgrel=1
 pkgdesc="Convert between markdown and zim wiki syntax"
 arch=(any)
 url="https://github.com/Xunius/markdown2zim"
 license=('MIT')
-depends=('python2')
+depends=('python')
 makedepends=('zip' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -33,7 +33,7 @@ build() {
   for n in markdown2zim zim2markdown; do
     pushd $n
     zip -r $n ./*
-    printf '#!/usr/bin/env python2\n' | cat - $n.zip > $n
+    printf '#!/usr/bin/env python\n' | cat - $n.zip > $n
     popd
   done
 }
