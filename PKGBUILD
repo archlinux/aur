@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 pkgname=context-minimals-git
-pkgver=2019.04.25
+pkgver=2020.01.30
 pkgrel=1
 pkgdesc="A standalone ConTeXt distribution"
 url="http://www.contextgarden.net"
@@ -65,7 +65,7 @@ prepare() {
  $srcdir/bin/texlua $srcdir/bin/mtxrun --script $srcdir/bin/mtx-update.lua  \
       --platform=$_platform --texroot=$srcdir/tex --engine=all --modules=all \
       --flags="-rpztl --info=progress2" \
-      --context=beta  --update  --force || return 1
+      --context=latest  --update  --force || return 1
 
  # The setuptex that comes with minimals does not work in a multi-user
  # environment. So, we modify it appropriately.
