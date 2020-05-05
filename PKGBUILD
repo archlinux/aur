@@ -1,14 +1,14 @@
 pkgname=cctv-watcher
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Application for CCTV cameras monitoring"
 url="https://github.com/Junker/cctv-watcher"
 arch=('i686' 'x86_64')
 license=('GPL-3')
 makedepends=('vala' 'meson' 'ninja')
-depends=('gtk3' 'libgee' 'gstreamer' 'gst-plugins-base' 'gst-libav' 'gst-plugin-gtk')
+depends=('gtk3' 'libgee' 'gstreamer' 'gst-plugins-base' 'gst-libav' 'gst-plugin-gtk' 'libgudev')
 source=("https://github.com/Junker/${pkgname}/archive/${pkgver}.zip")
-md5sums=('1a5313835b2798274195ebb5b1e5b930')
+md5sums=('7c59462685f78d848ba2f7e3d790f2d2')
 
 build() {
 cd $srcdir/${pkgname}-$pkgver
