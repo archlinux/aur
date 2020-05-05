@@ -1,0 +1,98 @@
+======================================================================================================
+== LATEST CHANGELOG ==================================================================================
+======================================================================================================
+
+Change log v4.400 (January 31, 2020)
+- Fixed incompatibility with 1.13 forge and up
+- Update news url and add server list placeholder
+
+======================================================================================================
+== OLDER CHANGELOGS ==================================================================================
+======================================================================================================
+
+Change log v1.405
+- Added sponges
+- Added more sponges
+- Fixed an issue where profiles were deleted
+- Deleted sponges
+- Re-added sponges
+- Sponged up some bugs
+- Considering to add more themes; undecided
+
+Change log v1.406
+- Removed the existing user login popup that caused many issues with
+  login and starting minecraft. Note: You will now have to input your
+  username every time you log in.
+
+Change log v1.500
+- Added the ability to save usernames so you don't have to type them in
+  each time you start the launcher.
+- Fixed UUID issue and now issues a static UUID per username
+- Fixed saving achievement issue
+
+Change log v1.550:
+- Auto login functionality added 
+- Changed how username data is stored 
+- Updated login screen 
+- Removed paul the cat
+
+Change log v1.600:
+- Fixed UI bugs
+- Updated storage system
+- Updated source code
+- Added news tab
+- Added multiple language support
+
+Change log v1.601 (Hotfix):
+- Updated Portugese Translations
+- Removed unnecessary dependencies
+
+Change log v1.602:
+- Actually updated the version number
+
+Change log v2.000: (April 2, 2015)
+- Updated bootstrap sources from latest minecraft launcher (1.6.11)
+- Forge now works for 1.8 along with all the newer mods out there
+- Added polish translation
+- With updating to latest sources, you can now choose to play old alpha and old beta versions of minecraft
+- Please, if you enjoy this game please consider purchasing it if possible. You get skins, that everyone can see :) Can't get that with any cracked launcher.
+- Sped up launch process
+- Added our website tab to be main
+- Revamped design of our website news
+- Fixed bug where it would let you play as a blank username
+- Any other bugs please E-Mail shiglauncher@yandex.com or visit http://shigmeahyea.us.to/
+
+Change log v3.000: (November 25, 2015) 
+
+- Added LOTS of languages! If you find an error, please email us at shiglauncher@yandex.com.
+
+- Added a way to join/add servers using links, for server promotion purposes
+- Actually fixed the dev console
+- Added an option to automatically set the language set in the launcher as the minecraft launcher language (Only if it's available)
+- Fixed many bugs that were reported via E-Mail
+
+- Fixed the Spanish language mixup, sorry about this!
+- We have a new website url! teamshiginima.com
+
+Change log v3.100 (Febrary 24, 2016)
+- Updated minecraft boostrap to v18 for compatibility with 1.9 snapshots and above!
+- Fixed incorrect language translations
+- Added dutch/nl and thai translations
+- Many thanks to those who help us with translatios! Visit http://k31.us/translate for info on how to help us out!
+
+Change log v4.000 (July 24, 2018)
+- Added compatibility with latest boostrap (1.13 snapshots and above)
+
+Change log v4.100 (July 25, 2018)
+- Fixed incompatibility with versions lower than 1.9
+
+Change log v4.200 (March 16, 2019)
+- Fixed development console for windows users
+- From a overwhelming # of suggestions, added a dark theme, can turn on/off in options
+- Update internal browser to fix javascript issues for some users
+- Stability improvements for newer snapshots/later than 1.13.2
+- Fixed a random bug when installing Forge 1.7.10 where it would launch normal 1.7.10 instead of forge
+
+Change log v4.300 (September 11, 2019)
+- Fixed critical bug that would not run 1.14+
+- Fix grey play button error when loading newer versions
