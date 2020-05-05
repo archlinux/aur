@@ -1,18 +1,18 @@
 # Maintainer: lazant <a.l.i.c.e at outlook.com>
 pkgname='sctk'
+pkgver=2.4.11
+pkgrel=1
+_commit='20159b580249f1598caa35ab469bd1acdb3dd86c'
 pkgdesc='Speech Recognition Scoring Toolkit (SCTK)'
-pkgver=2.4.10
-_tag='20151007-1312Z'
-pkgrel=2
 arch=('i686' 'x86_64')
-url='https://www.nist.gov/itl/iad/mig/tools'
-license=('APACHE')
-source=("ftp://jaguar.ncsl.nist.gov/pub/sctk-${pkgver}-${_tag}.tar.bz2")
-md5sums=('dd01ad49a33486a4754655d06177f646')
+url='https://github.com/usnistgov/SCTK'
+license=('custom')
+source=("git+https://github.com/usnistgov/SCTK.git#commit=${_commit}")
+md5sums=('SKIP')
 
-build () {
-  cd $srcdir/$pkgname-$pkgver
-
+prepare() {
+  cd "${srcdir}/SCTK"
+  
   make config
 
   if  [ "$HOSTTYPE" == "x86_64" ];
@@ -23,17 +23,27 @@ build () {
     sed -i "s/^CFLAGS = -g -Os/CFLAGS = -g -Os -m64/g" src/sclite/makefile
   fi
   sed '/^DEFS/s/ -Dsize_t=unsigned//' -i src/sclite/makefile
+}
+
+build () {
+  cd "${srcdir}/SCTK"
 
   make all
+  make doc
+}
+
+check() {
+  cd "${srcdir}/SCTK"
+
+  make check
 }
 
 package () {
-  cd $srcdir/$pkgname-$pkgver
+  cd "${srcdir}/SCTK"
   
-  mkdir -p $pkgdir/usr/bin
-  make prefix="$pkgdir/usr" install
+  mkdir -p "${pkgdir}/usr/bin"
+  make prefix="${pkgdir}/usr" install
 
-  mkdir -p $pkgdir/usr/share/doc/sctk
-  make doc
-  cp -r doc/* $pkgdir/usr/share/doc/sctk
+  mkdir -p "${pkgdir}/usr/share/doc/sctk"
+  cp -r doc/* "${pkgdir}/usr/share/doc/sctk"
 }
