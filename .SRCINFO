@@ -2,8 +2,8 @@ pkgbase = mtaaat
 	pkgver = 1.0
 	pkgrel = 1
 	arch = any
-	source = black_pycharm_jupyter_cell_formatter.sh
-	sha256sums = 73d9d04d4497c0b1f943d8851440fcb715ad70ed2b0fc215e5aba475584d74b1
+	source = black_pycharm_formatter.sh
+	sha256sums = 2be1e7f863d7b1f8eac66237577e66de83f695253cafea866762bb106b6be414
 
 pkgname = mtaaat
 
