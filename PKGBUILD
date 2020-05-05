@@ -1,7 +1,7 @@
 # Maintainer: Nazar Vinnichuk <nazar.vinnichuk at tutanota dot com>
 pkgname=viter-git
 _pkgname=${pkgname%-git}
-pkgver=r140.92e1b96
+pkgver=r126.9691201
 pkgrel=1
 pkgdesc="A Vim-ish terminal emulator written and expandable in Python."
 url="http://github.com/Kharacternyk/${_pkgname}"
@@ -22,5 +22,5 @@ package() {
     cd "${srcdir}/${_pkgname}"
     install -Dm755 "${srcdir}/${_pkgname}/viter.py" "${pkgdir}/usr/bin/viter"
     ln -s "${pkgdir}/usr/bin/viter" "${pkgdir}/usr/bin/viter-pager"
-    install -Dm644 "${srcdir}/${_pkgname}/README.rst" "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+    install -Dm644 "${srcdir}/${_pkgname}/README.rst" "${pkgdir}/usr/share/doc/${_pkgname}/README.rst"
 }
