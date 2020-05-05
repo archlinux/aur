@@ -4,7 +4,7 @@
 
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 pkgname='unreal-engine'
-pkgver=4.24.3
+pkgver=4.25.0
 pkgrel=1
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
@@ -21,7 +21,7 @@ license=('custom:UnrealEngine')
 source=('com.unrealengine.UE4Editor.desktop'
         'use-arch-mono.patch')
 sha256sums=('fa4bd19ab53e91cc8b4ae6208452a7fe986a08047617213d6250b43e7a140bf3'
-            '90a112f72a498f50dafad4feeaf7c551fe4e19830610bcef634f8e23d3d283b3')
+            'e891f07bf7294cd5fde8eb6de92e6d47ed004847ea8afd7c944e9b9b2bacaff4')
 options=(strip staticlibs) # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
 
 prepare() {
