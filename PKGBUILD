@@ -7,7 +7,7 @@ _pkgbasename=shaderc
 
 pkgname=lib32-$_pkgbasename
 pkgver=2020.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Collection of tools, libraries and tests for shader compilation (32bit)'
 url='https://github.com/google/shaderc'
 arch=('x86_64')
@@ -26,6 +26,7 @@ makedepends=(
         'spirv-headers'
         )
 provides=('libshaderc_shared.so')
+conflicts=('lib32-shaderc-git')
 source=(
         "${_pkgbasename}-${pkgver}.tar.gz::https://github.com/google/shaderc/archive/v${pkgver}.tar.gz"
         )
@@ -69,6 +70,12 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" ninja -C build install
-  rm -r "${pkgdir}"/usr/{include,bin}
+
+  # Use the same naming scheme as the one in the lib32-shaderc-git package for coherence
+  for i in "${pkgdir}/usr/bin/"*; do
+    mv "$i" "$i"-32
+  done
+
+  rm -r "${pkgdir}"/usr/include
 #  install -Dm 644 ${_pkgbasename}-${pkgver}/glslc/glslc.1 -t "${pkgdir}/usr/share/man/man1"
 }

@@ -1,7 +1,7 @@
 pkgbase = lib32-shaderc
 	pkgdesc = Collection of tools, libraries and tests for shader compilation (32bit)
 	pkgver = 2020.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/google/shaderc
 	arch = x86_64
 	license = Apache
@@ -16,6 +16,7 @@ pkgbase = lib32-shaderc
 	depends = lib32-spirv-tools>=2019.5
 	depends = spirv-tools>=2019.5
 	provides = libshaderc_shared.so
+	conflicts = lib32-shaderc-git
 	source = shaderc-2020.0.tar.gz::https://github.com/google/shaderc/archive/v2020.0.tar.gz
 	sha512sums = 1971673d7a5fe77ef827c29db14112d4935c573c7c4f3b00fff3729334284d11640ee40c9e97ebcb2a14c6d5c6db0cf5e2ef6b2dfb59c759d1322c6d38624eb4
 
