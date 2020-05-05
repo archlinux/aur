@@ -1,32 +1,22 @@
 # Maintainer: lazant <a.l.i.c.e at outlook.com>
-pkgbase=python-kivymd
-pkgname=('python-kivymd' 'python2-kivymd')
-pkgdesc="Set of widgets for Kivy inspired by Google's Material Design."
-pkgver=0.1.2
+pkgname=python-kivymd
+pkgver=0.104.1
 pkgrel=1
+pkgdesc="KivyMD is a collection of Material Design compliant widgets for use with Kivy, a framework for cross-platform, touch-enabled graphical applications."
 arch=('any')
-url="https://gitlab.com/kivymd/KivyMD/"
+url="https://github.com/HeaTTheatR/KivyMD/"
 license=('MIT')
-source=("$pkgname::https://pypi.python.org/packages/f1/2e/4bec1d1f1d004f54cd00b4013702de9815922df89bc05b562499a9bc1b9d/kivymd-$pkgver.tar.gz"
-		"LICENSE")
-makedepends=('python-setuptools' 'python2-setuptools')
-md5sums=('51bbfb26c19f5010735d5e7213f73626'
-         '0e7641c066a04ca2c7c7502026d0fb3e')
+makedepends=('python-setuptools')
+source=("https://github.com/HeaTTheatR/KivyMD/archive/${pkgver}.tar.gz")
+md5sums=('7fbfce346e8225972abdeb83ec082afc')
 
-prepare() {
-  cp -a kivymd-$pkgver{,-python2}
+build() {
+  cd "${srcdir}/KivyMD-${pkgver}"
+  python setup.py build
 }
 
-package_python2-kivymd() {
-  depends=('python2-kivy')
-  cd "$srcdir/kivymd-$pkgver-python2"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
-  install -D -m644 "$srcdir/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_python-kivymd() {
-  depends=('python-kivy')
-  cd "$srcdir/kivymd-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  install -D -m644 "$srcdir/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+package() {
+  cd "${srcdir}/KivyMD-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
