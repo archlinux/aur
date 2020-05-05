@@ -1,0 +1,24 @@
+pkgbase = android-ndk-20b
+	pkgdesc = Android C/C++ developer kit
+	pkgver = r20b
+	pkgrel = 1
+	url = https://developer.android.com/ndk/
+	install = android-ndk.install
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = custom
+	depends = glibc
+	provides = android-ndk
+	conflicts = android-ndk
+	replaces = android-ndk64
+	options = !strip
+	options = staticlibs
+	backup = etc/profile.d/android-ndk.sh
+	source = android-ndk.sh
+	sha256sums = 2068618bc3e99149310f544be5d639ae183dc767d5a7157a07d8e024417b6017
+	source_x86_64 = https://dl.google.com/android/repository/android-ndk-r20b-linux-x86_64.zip
+	sha256sums_x86_64 = 8381c440fe61fcbb01e209211ac01b519cd6adf51ab1c2281d5daad6ca4c8c8c
+
+pkgname = android-ndk-20b
+
