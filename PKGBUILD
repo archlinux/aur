@@ -4,7 +4,7 @@
 
 _pkgname=libretro-ppsspp
 pkgname=libretro-ppsspp-rbp
-pkgver=26831
+pkgver=26925
 pkgrel=2
 pkgdesc='Sony PlayStation Portable core (build for Raspberry Pi)'
 arch=(armv7h)
@@ -15,8 +15,12 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 depends=(
   ffmpeg
+  gcc-libs
+  glibc
   libegl
   libretro-core-info
+  libzip
+  snappy
 )
 makedepends=(
   cmake
@@ -25,7 +29,7 @@ makedepends=(
   python
 )
 source=(
-  libretro-ppsspp::git+https://github.com/hrydgard/ppsspp.git#commit=6df422800506236e6703f3a114dd0ade976ac3c9
+  libretro-ppsspp::git+https://github.com/hrydgard/ppsspp.git#commit=31b1993a696fa03961c5a9c0ee872c3499f207fa
   git+https://github.com/Kingcom/armips.git
   git+https://github.com/discordapp/discord-rpc.git
   ppsspp-glslang::git+https://github.com/hrydgard/glslang.git
@@ -84,6 +88,8 @@ build() {
     -DMOBILE_DEVICE=OFF \
     -DSIMULATOR=OFF \
     -DUNITTEST=OFF \
+    -DUSE_SYSTEM_LIBZIP=ON \
+    -DUSE_SYSTEM_SNAPPY=ON \
     -DUSING_QT_UI=OFF \
     -DUSE_FFMPEG=yes \
     -DUSE_SYSTEM_FFMPEG=yes
