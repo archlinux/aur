@@ -8,13 +8,13 @@ pkgbase=qemu-git
 _gitname=qemu
 pkgname=(qemu-git qemu-headless-git qemu-arch-extra-git qemu-headless-arch-extra-git qemu-block-{iscsi-git,rbd-git,gluster-git} qemu-guest-agent-git)
 pkgdesc="A generic and open source machine emulator and virtualizer. Git version."
-pkgver=v5.0.0.r145.g1c47613588
+pkgver=v5.0.0.r224.g5375af3cd7
 pkgrel=1
 epoch=10
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
-_headlessdeps=(seabios gnutls libpng libaio numactl jemalloc libnfs
+_headlessdeps=(seabios gnutls libpng libaio numactl libnfs
                lzo snappy curl vde2 libcap-ng spice libcacard usbredir libslirp
                libssh zstd liburing)
 depends=(dtc virglrenderer sdl2 vte3 libpulse brltty "${_headlessdeps[@]}")
@@ -41,8 +41,6 @@ prepare() {
   mkdir build-{full,headless}
   mkdir -p extra-arch-{full,headless}/usr/{bin,share/qemu}
 
-  #cd "${srcdir}/${_gitname}"
-  #sed -i 's/vte-2\.90/vte-2.91/g' configure
 }
 
 build() {
@@ -62,12 +60,6 @@ build() {
 _build() (
   cd ${srcdir}/${_gitname}/build-$1
 
-  # qemu vs. make 4 == bad
-  export ARFLAGS=rv
-
-  # http://permalink.gmane.org/gmane.comp.emulators.qemu/238740
-  export CFLAGS+=" -fPIC"
-
   ../configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -77,7 +69,6 @@ _build() (
     --smbd=/usr/bin/smbd \
     --enable-modules \
     --enable-sdl \
-    --enable-jemalloc \
     --disable-werror \
     --enable-slirp=system \
     --enable-xfsctl \
@@ -111,7 +102,7 @@ _package() {
                'qemu-block-rbd-git: RBD block support'
                'qemu-block-gluster-git: glusterfs block support')
   install=qemu.install
-  options=(!strip)
+  options=(!strip !emptydirs)
 
   make -C ${srcdir}/${_gitname}/build-$1 DESTDIR="$pkgdir" install "${@:2}"
 
@@ -123,7 +114,6 @@ _package() {
   rm -r var
 
   cd usr/lib
-  tidy_strip
 
   # bridge_helper needs suid
   # https://bugs.archlinux.org/task/32565
@@ -144,7 +134,7 @@ _package() {
       ga) rm "$_bin"; continue ;;
 
       # tools
-      img|io|nbd) continue ;;
+      edid|img|io|keymap|nbd|pr-helper|storage-daemon) continue ;;
 
       # core emu
       system-${_corearch}) continue ;;
@@ -159,26 +149,32 @@ _package() {
 
    case $_blob in
       # provided by seabios package
-      bios.bin|acpi-dsdt.aml|bios-256k.bin|vgabios-cirrus.bin|vgabios-qxl.bin|\
+      bios.bin|bios-256k.bin|vgabios-cirrus.bin|vgabios-qxl.bin|\
       vgabios-stdvga.bin|vgabios-vmware.bin|vgabios-virtio.bin|vgabios-bochs-display.bin|\
       vgabios-ramfb.bin) rm "$_blob"; continue ;;
 
+      # provided by edk2-ovmf package
+      edk2-*) rm "$_blob"; continue ;;
    
-  # iPXE ROMs
+      # iPXE ROMs
       efi-*|pxe-*) continue ;;
 
       # core blobs
-      kvmvapic.bin|linuxboot*|multiboot.bin|sgabios.bin|vgabios*) continue ;;
+      bios-microvm.bin|kvmvapic.bin|linuxboot*|multiboot.bin|sgabios.bin|vgabios*) continue ;;
 
       # Trace events definitions
       trace-events*) continue ;;
 
-      # Logos
-      *.bmp|*.svg) continue ;;
-    esac
+     esac
 
     mv "$_blob" "$srcdir/$_gitname/extra-arch-$1/usr/share/qemu"
   done
+
+   # provided by edk2-ovmf package
+   rm -r firmware
+ 
+   cd ..
+   if [ "$1" = headless ]; then rm -r {applications,icons}; fi
 }
 
 package_qemu-arch-extra-git() {
@@ -203,7 +199,7 @@ package_qemu-headless-arch-extra-git() {
 
 package_qemu-block-iscsi-git() {
   pkgdesc="QEMU iSCSI block module. Git version."
-  depends=(glib2 libiscsi jemalloc)
+  depends=(glib2 libiscsi)
   conflicts=(qemu-block-iscsi)
   provides=(qemu-block-iscsi)
 
