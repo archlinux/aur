@@ -1,8 +1,8 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-meowpc98-git
-pkgver=86.ed1c527
-pkgrel=2
+pkgver=101.ae203f9
+pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="Neko Project 2 (PC98 emulator) port for libretro/RetroArch"
 url="https://github.com/libretro/libretro-meowPC98"
