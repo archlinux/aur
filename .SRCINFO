@@ -1,0 +1,18 @@
+pkgbase = mrchem
+	pkgdesc = MRChem: MultiResolution Chemistry
+	pkgver = 1.0.0_alpha1
+	pkgrel = 1
+	url = https://mrchem.readthedocs.io
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = openmpi
+	depends = python
+	depends = python-parselglossy
+	depends = python-runtest
+	provides = mrchem
+	source = https://github.com/MRChemSoft/mrchem/archive/v1.0.0-alpha1.tar.gz
+	sha256sums = 56a7b1677cc1e27d5875ef1e63012c19a314b1bc77dad7032dc70387158cf0f4
+
+pkgname = mrchem
+
