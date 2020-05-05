@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-public-ip-git
 	pkgdesc = Tiny extension, which show public IP and nothing more.
-	pkgver = r55.e97b379
+	pkgver = r73.7daadda
 	pkgrel = 1
 	url = https://github.com/rostegg/public-ip-gnome-extension
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-public-ip-git
 	depends = gnome-shell
 	provides = gnome-shell-extension-public-ip
 	conflicts = gnome-shell-extension-public-ip
-	source = git+https://github.com/rostegg/public-ip-gnome-extension.git#branch=gnome-3.36-hotfix
+	source = git+https://github.com/rostegg/public-ip-gnome-extension.git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-public-ip-git
