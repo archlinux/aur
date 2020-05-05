@@ -28,5 +28,5 @@ package() {
     cd "${_name}"
     install -Dm 755 target/release/rbw -t "${pkgdir}/usr/bin"
     install -Dm 755 target/release/rbw-agent -t "${pkgdir}/usr/bin"
-    install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/rbw-git"
+    install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
