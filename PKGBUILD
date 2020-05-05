@@ -1,6 +1,6 @@
 pkgname=scantailor-advanced-git
 pkgver=v1.0.16.r119.gf6c8e5b
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive post-processing tool for scanned pages that merges the features of the ScanTailor Featured and ScanTailor Enhanced versions, brings new ones and fixes. "
 arch=("x86_64")
 url="https://github.com/4lex4/scantailor-advanced"
@@ -19,10 +19,10 @@ makedepends=(
     "qt5-tools"
     "qt5-svg"
     )
-provides=("scantailor-advanced")
-conflicts=("scantailor-advanced")
+provides=("scantailor")
+conflicts=("scantailor-advanced" "scantailor")
 source=("scantailor-advanced::git+https://github.com/4lex4/scantailor-advanced")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
@@ -36,6 +36,7 @@ build() {
     export CXXFLAGS="-fPIC"
 
     cd "${srcdir}/${pkgname%-git}"
+    sed -i "s/#define VERSION .*$/#define VERSION \"$pkgver\"/" version.h.in
     mkdir build && cd build
     cmake -G "Unix Makefiles" --build ..
     make -j${nproc}
