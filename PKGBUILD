@@ -6,7 +6,7 @@ pkgdesc="Extension for gThumb to support OpenEXR"
 arch=('any')
 url="https://github.com/yama-chan/gthumb-openexr-extension"
 license=('GPL')
-depends=('gthumb>=3.4' 'glib2' 'gtk3' 'gconf' 'openexr')
+depends=('git' 'meson' 'gthumb>=3.4' 'glib2' 'gtk3' 'gconf' 'openexr')
 makedepends=('git' 'meson')
 checkdepends=()
 provides=($pkgname=$pkgver)
@@ -19,12 +19,11 @@ prepare() {
 
 build() {
 	cd "$pkgname"
-	meson build
-	cd build
-	ninja
+	meson --prefix /usr --buildtype=plain  build
+	ninja -v -C build
 }
 
 package() {
 	cd "$pkgname"
-	meson --prefix=/usr install
+	ninja -C build install
 }
