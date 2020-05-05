@@ -1,6 +1,6 @@
 # Maintainer: Thomas Quillan <tjquillan@gmail.com>
 pkgname=igdm-bin
-pkgver=2.8.1
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Desktop application for Instagram DMs"
 arch=('x86_64' 'i686')
@@ -16,9 +16,9 @@ conflicts=('igdm')
 source=("https://raw.githubusercontent.com/ifedapoolarewaju/igdm/master/LICENSE")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/ifedapoolarewaju/igdm/releases/download/v${pkgver}/IGdm_${pkgver}_amd64.deb")
 source_i686=("${pkgname}-${pkgver}-i686.deb::https://github.com/ifedapoolarewaju/igdm/releases/download/v${pkgver}/IGdm_${pkgver}_i386.deb")
-sha256sums=('1777c54d2f39e230ba87a3c793117de156a57fcb38043f16f7a6baadc80b1421')
-sha256sums_x86_64=('0be63f6d8008cd9640d65cdb77b3c0fec9d3eb342be6303f244a641613d977b9')
-sha256sums_i686=('44f47bbc6bd83e948f7e59851638c65be2edc01ae881f32b1a7d024071bee042')
+sha256sums=('cfe59b21a32217b32573315adbcc0f3621aeaa8dec634e54eb30a0cf260867cc')
+sha256sums_x86_64=('632656c46579a674f6e7f4a97dc9d4de6ff6f136b982f82d92e8bfab53cc8236')
+sha256sums_i686=('f194bb354b5da6d467107830f8f68e94463096cb969c8b0f4e8b5f5c5e7b2ec2')
 
 package() {
     tar xf "data.tar.xz" -C "${pkgdir}"
