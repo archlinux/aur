@@ -3,13 +3,14 @@
 
 pkgname='spotify-tui-bin'
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Spotify client for the terminal written in Rust"
 arch=('x86_64')
 url='https://github.com/Rigellute/spotify-tui'
 license=('MIT')
 depends=(openssl libxcb)
 provides=('spotify-tui')
+conflicts=('spotify-tui')
 
 source=("$url/releases/download/v$pkgver/spotify-tui-linux.tar.gz"
         "https://raw.githubusercontent.com/Rigellute/spotify-tui/v$pkgver/LICENSE")
