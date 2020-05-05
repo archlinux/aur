@@ -14,9 +14,9 @@ depends=(
     "zlib"
     )
 makedepends=()
-provides=("scantailor-advanced")
+provides=("scantailor")
 conflicts=("scantailor-advanced-git")
-source=("https://f002.backblazeb2.com/file/AUR-Store/$pkgname/scantailor-advanced-git-$pkgver.x86_64.tar.xz")
+source=("$pkgname-$pkgver.tar.xz::https://f002.backblazeb2.com/file/AUR-Store/$pkgname/scantailor-advanced-git-$pkgver.$arch.tar.xz")
 sha256sums=('1d8590cc2a35b13260d378bcb87fe136d00d2425ad2a945d2200a02d7328206b')
 
 package() {

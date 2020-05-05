@@ -11,9 +11,9 @@ pkgbase = scantailor-advanced-bin
 	depends = libtiff
 	depends = qt5-base
 	depends = zlib
-	provides = scantailor-advanced
+	provides = scantailor
 	conflicts = scantailor-advanced-git
-	source = https://f002.backblazeb2.com/file/AUR-Store/scantailor-advanced-bin/scantailor-advanced-git-v1.0.16.r119.x86_64.tar.xz
+	source = scantailor-advanced-bin-v1.0.16.r119.tar.xz::https://f002.backblazeb2.com/file/AUR-Store/scantailor-advanced-bin/scantailor-advanced-git-v1.0.16.r119.x86_64.tar.xz
 	sha256sums = 1d8590cc2a35b13260d378bcb87fe136d00d2425ad2a945d2200a02d7328206b
 
 pkgname = scantailor-advanced-bin
