@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan dot steffens at gmail dot com>
 
 pkgbase=linux-covolunablu-gaming
-pkgver=5.6.8.arch1
+pkgver=5.6.10.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -70,7 +70,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The $pkgdesc kernel and modules; it includes BFQ as default scheduler, steamos xpad module and the steam fsync patches for proton"
+  pkgdesc="The $pkgdesc kernel and modules; it includes BFQ as default scheduler and the steam fsync patches for proton"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')

@@ -1,8 +1,8 @@
 pkgbase = linux-covolunablu-gaming
 	pkgdesc = Linux
-	pkgver = 5.6.8.arch1
+	pkgver = 5.6.10.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.6.8-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.6.10-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -15,7 +15,7 @@ pkgbase = linux-covolunablu-gaming
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.6.8-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.6.10-arch1
 	source = config
 	source = bfq-default.patch
 	source = futex-wait-multiple-5.2.1.patch
@@ -28,7 +28,7 @@ pkgbase = linux-covolunablu-gaming
 	sha256sums = b8a9225b4b5cbabac26398d11cc26566e4407d150dacb92f3411c9bb8cc23942
 
 pkgname = linux-covolunablu-gaming
-	pkgdesc = The Linux kernel and modules; it includes BFQ as default scheduler, steamos xpad module and the steam fsync patches for proton
+	pkgdesc = The Linux kernel and modules; it includes BFQ as default scheduler and the steam fsync patches for proton
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
