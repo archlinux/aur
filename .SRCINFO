@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-svt
 	pkgdesc = Complete solution to record, convert and stream audio and video. SVT Patchset applied
-	pkgver = 4.1.2
-	pkgrel = 3
+	pkgver = 4.2.2
+	pkgrel = 1
 	epoch = 1
 	url = https://ffmpeg.org/
 	arch = x86_64
@@ -71,8 +71,11 @@ pkgbase = ffmpeg-svt
 	provides = libswscale.so
 	conflicts = ffmpeg
 	replaces = ffmpeg
-	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=n4.1.2
-	source = 0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch
+	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=n4.2.2
+	source = ffmpeg-full-add-svt-hevc-.patch::https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch
+	source = ffmpeg-full-add-svt-hevc-docs-.patch::https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch
+	source = ffmpeg-full-add-svt-av1-.patch::https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch
+	source = ffmpeg-full-add-svt-vp9-.patch::https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/v/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-vp9-with-svt-hevc-av1.patch
 	sha256sums = SKIP
 	sha256sums = 19825c7226c7300514715fc5048c2e6b04000f0c83f9c94688af1c095639bf2b
 

@@ -5,8 +5,8 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-svt
-pkgver=4.1.2
-pkgrel=3
+pkgver=4.2.2
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. SVT Patchset applied'
 arch=(x86_64)
@@ -84,14 +84,22 @@ provides=(
 replaces=('ffmpeg')
 conflicts=('ffmpeg')
 source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}
-	0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch)
+        "ffmpeg-full-add-svt-hevc-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
+        "ffmpeg-full-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
+        "ffmpeg-full-add-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v${_svt_av1_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch"
+        "ffmpeg-full-add-svt-vp9-${_svt_vp9_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/v${_svt_vp9_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-vp9-with-svt-hevc-av1.patch")
+
 sha256sums=('SKIP'
             '19825c7226c7300514715fc5048c2e6b04000f0c83f9c94688af1c095639bf2b')
 
 prepare() {
   cd $srcdir/ffmpeg
-  patch -Np1 -i ${srcdir}/0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch
-#  patch -Np1 -i ${srcdir}/0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch || echo Already applied
+    rm -f "ffmpeg-${pkgver}/libavcodec/"libsvt_{hevc,av1,vp9}.c
+    sed -i 's/eb_init_handle/svt_av1_enc_init_handle/' "ffmpeg-full-add-svt-vp9-${_svt_vp9_ver}.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/ffmpeg-full-add-svt-hevc-${_svt_hevc_ver}.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/ffmpeg-full-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/ffmpeg-full-add-svt-av1-${_svt_av1_ver}.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/ffmpeg-full-add-svt-vp9-${_svt_vp9_ver}.patch"
 }
 
 build() {
