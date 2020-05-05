@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-atari800-git
-pkgver=104.2322284
+pkgver=114.59820eb
 pkgrel=1
 pkgdesc="libretro implementation of Atari800 v3.1.0 (Atari 5200/400/800/XL/XE) (WIP)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -27,6 +27,8 @@ pkgver() {
 
 build() {
   cd ${_gitname}
+  git submodule init
+  git submodule update
   # rename config file to not interfere with original atari800
   patch -p0 < "../cfg.patch"
   patch -p0 < "../joycfg.patch"
