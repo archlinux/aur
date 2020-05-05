@@ -68,6 +68,8 @@ makedepends=(
   ladspa
   nasm
   svt-av1
+  svt-vp9
+  svt-hevc
 )
 optdepends=('ladspa: LADSPA filters')
 provides=(
