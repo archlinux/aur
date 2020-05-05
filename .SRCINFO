@@ -4,9 +4,9 @@ pkgbase = chkascii
 	pkgrel = 1
 	url = https://github.com/bourne-again/chkascii
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	source = chkascii-2.0.tar.gz::https://github.com/bourne-again/chkascii/archive/2.0.tar.gz
-	md5sums = 65ef0c2f0f404d237aa3a3f22847534d
+	sha256sums = b74972945e0baa008075b5181dc944c3f7f182c6fba27bc695ea9f62bdd76808
 
 pkgname = chkascii
 
