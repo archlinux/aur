@@ -1,6 +1,6 @@
 pkgbase = libretro-cap32-git
 	pkgdesc = libretro implementation of Caprice32 (Amstrad CPC)
-	pkgver = 240.93e52e0
+	pkgver = 265.baf30db
 	pkgrel = 1
 	url = https://github.com/libretro/libretro-cap32
 	arch = i686
