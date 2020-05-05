@@ -1,4 +1,5 @@
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname='pangox-compat'
 pkgver='0.0.2+2+gedb9e09'
@@ -14,7 +15,7 @@ source=(
   '0001-Re-add-pango_x_get_shaper_map-it-is-still-used-in-th.patch'
   '0002-disable-shaper.patch'
 )
-source[0]+='commit=edb9e0904d04d1da02bba7b78601a2aba05aaa47'  # master
+source[0]+='#commit=edb9e0904d04d1da02bba7b78601a2aba05aaa47'  # master
 md5sums=('SKIP'
          'e4ab908c4501116d492c7cc0b70ab305'
          '8d78182e9747b425b223fa8a2b82d210')

@@ -7,7 +7,7 @@ pkgbase = pangox-compat
 	license = LGPL
 	makedepends = git
 	depends = pango
-	source = git+https://gitlab.gnome.org/Archive/pangox-compatcommit=edb9e0904d04d1da02bba7b78601a2aba05aaa47
+	source = git+https://gitlab.gnome.org/Archive/pangox-compat#commit=edb9e0904d04d1da02bba7b78601a2aba05aaa47
 	source = 0001-Re-add-pango_x_get_shaper_map-it-is-still-used-in-th.patch
 	source = 0002-disable-shaper.patch
 	md5sums = SKIP
