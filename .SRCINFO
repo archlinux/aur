@@ -1,6 +1,6 @@
 pkgbase = context-minimals-git
 	pkgdesc = A standalone ConTeXt distribution
-	pkgver = 2019.04.25
+	pkgver = 2020.04.30
 	pkgrel = 1
 	url = http://www.contextgarden.net
 	install = context-minimals-git.install
@@ -16,6 +16,7 @@ pkgbase = context-minimals-git
 	optdepends = pstoedit: support for metapost outlines for fonts
 	optdepends = zint: support for barcodes
 	optdepends = curl: loading remote content
+	options = !strip
 
 pkgname = context-minimals-git
 

@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 pkgname=context-minimals-git
-pkgver=2020.01.30
+pkgver=2020.04.30
 pkgrel=1
 pkgdesc="A standalone ConTeXt distribution"
 url="http://www.contextgarden.net"
@@ -64,7 +64,7 @@ prepare() {
  PATH=$scrdir/tex/texmf-$platform/bin:$PATH \
  $srcdir/bin/texlua $srcdir/bin/mtxrun --script $srcdir/bin/mtx-update.lua  \
       --platform=$_platform --texroot=$srcdir/tex --engine=all --modules=all \
-      --flags="-rpztl --info=progress2" \
+      --flags="-rpzztl --info=progress2" \
       --context=latest  --update  --force || return 1
 
  # The setuptex that comes with minimals does not work in a multi-user
@@ -120,5 +120,5 @@ package()
  # cp -r does not delete old files that are present in texmf-cache from
  # previous installation
  # cp -r --preserve=links $srcdir/tex $pkgdir/$_dest || return 1
- rsync -az --links --delete --info=progress2 $srcdir/tex/ $pkgdir/$_dest || return 1
+ rsync -azz --links --delete --info=progress2 $srcdir/tex/ $pkgdir/$_dest || return 1
 }
