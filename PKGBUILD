@@ -1,6 +1,6 @@
 pkgname='tabs-app'
-pkgver=0.6.4
-pkgrel=0
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='Persistent and separate browser tabs in one window'
 arch=('x86_64')
 url='https://gitlab.com/ArisuOngaku/tabs'
