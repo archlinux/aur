@@ -1,0 +1,5 @@
+.Rhistory
+pkg/
+rstudio-*.deb
+rstudio-desktop-*-x86_64.pkg.tar
+src/
