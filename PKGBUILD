@@ -12,7 +12,6 @@ arch=(x86_64)
 license=(GPL)
 depends=(glib2)
 makedepends=(gobject-introspection git meson appstream-glib)
-groups=(gnome-extra)
 _commit=e8a3604c69e178dc379c04d6f0684c9e1a60532a  # master
 source=("git+https://gitlab.gnome.org/GNOME/nautilus-sendto.git#commit=$_commit")
 sha256sums=('SKIP')
