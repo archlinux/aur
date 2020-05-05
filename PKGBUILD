@@ -1,7 +1,7 @@
 # Maintainer: Kevin Del Castillo R. <quebin31@gmail.com>
 
 pkgname=genuki
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="genuki: generate unified kernel images"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=()
 conflicts=()
 options=()
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/quebin31/${pkgname}/releases/download/${pkgver}/release.tar.gz")
-sha256sums=('e4c8c5aee9e8f4e28819ed598c4ea9892dafc3e1c9568ce07cd381d99ca7b452')
+sha256sums=('6d9cb9af18612a2c15eca64422c2cb57a40e68b7fcc55ab503d04a436406a300')
 
 package() {
     install -Dm755 "${srcdir}/target/release/$pkgname"           -t "${pkgdir}/usr/bin/"
