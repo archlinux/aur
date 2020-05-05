@@ -1,0 +1,15 @@
+pkgbase = zsh-theme-minimal-git
+	pkgdesc = A minimal and extensible Zsh theme
+	pkgver = r64.2c89c47
+	pkgrel = 1
+	url = https://github.com/subnixr/minimal
+	arch = any
+	license = GPL3
+	depends = zsh
+	optdepends = git: Git branch status support
+	optdepends = mercurial: Mercurial branch status support
+	source = zsh-theme-minimal-git::git+https://github.com/subnixr/minimal.git
+	sha256sums = SKIP
+
+pkgname = zsh-theme-minimal-git
+
