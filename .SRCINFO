@@ -1,0 +1,15 @@
+pkgbase = python-asciichart
+	pkgdesc = Nice-looking lightweight console ASCII line charts ╭┈╯
+	pkgver = 1.5.12
+	pkgrel = 1
+	url = https://github.com/kroitor/asciichart
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/kroitor/asciichart/archive/v1.5.12.tar.gz
+	md5sums = d10a6b1bae5652e15586e42b5462cfdc
+
+pkgname = python-asciichart
+
