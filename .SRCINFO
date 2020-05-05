@@ -30,7 +30,7 @@ pkgbase = mingw-w64-vtk
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = http://www.vtk.org/files/release/9.0/VTK-9.0.0.tar.gz
+	source = https://www.vtk.org/files/release/9.0/VTK-9.0.0.tar.gz
 	sha256sums = 15def4e6f84d72f82386617fe595ec124dda3cbd13ea19a0dcd91583197d8715
 
 pkgname = mingw-w64-vtk
