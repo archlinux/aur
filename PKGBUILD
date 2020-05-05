@@ -23,8 +23,10 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  make -f Makefile.libretro
+  make clean EMUTYPE=x64
+  make                
 }
+
 
 package() {
   install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
