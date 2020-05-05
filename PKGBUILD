@@ -1,6 +1,6 @@
 # Maintainer: Varagnac Kim <vacaniat@pm.me>
 pkgname=grb-fzf-git
-pkgver=r1.2
+pkgver=r1.21
 pkgrel=1
 pkgdesc="Greek Bible with the Septuagint, SBL and Apocrypha, with fuzzy finder"
 arch=(any)
@@ -10,7 +10,7 @@ depends=('bash' 'gawk' 'fzf')
 optdepends=('xclip: X11 clipboard support'
 	    'wl-clipboard: Wayland clipboard support')
 source=("${pkgname}-${pkgver}::https://github.com/varagnac/pure-text-bible/raw/master/grb_fzf")
-md5sums=('86dec82bd25195acc4751c58dd9e81c2')
+md5sums=('c654d9bc02ffce83fab9ee7413c8d83b')
 
 package() {
 	cd "$srcdir/"
