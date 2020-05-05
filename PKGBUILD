@@ -3,7 +3,7 @@
 
 pkgname=powerline-go
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful, useful and fast prompt for your shell"
 arch=('x86_64')
 url="https://github.com/justjanne/powerline-go"
@@ -14,6 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('d7825168044159dfdd3983519ea26cf8753f24c3d8c0600ce494c4a6db7a015f')
 
 build() {
+    export GOPATH="${srcdir}/gopath"
     cd "$pkgname-$pkgver"
     go build \
     -trimpath \
