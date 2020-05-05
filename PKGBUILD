@@ -5,15 +5,15 @@
 # Contributor: Calle Erlandsson <calle@calleerlandsson.com>
 
 pkgname=pick
-pkgver=3.0.1
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc='A fuzzy search tool for the command line'
 arch=('i686' 'x86_64')
-url='https://github.com/calleerlandsson/pick'
+url='https://github.com/mptre/pick'
 license=('MIT')
 depends=('ncurses')
-source=("https://github.com/calleerlandsson/pick/releases/download/v${pkgver}/pick-${pkgver}.tar.gz")
-sha256sums=('668c863751f94ad90e295cf861a80b4d94975e06645f401d7f82525e607c0266')
+source=("https://github.com/mptre/pick/releases/download/v${pkgver}/pick-${pkgver}.tar.gz")
+sha256sums=('de768fd566fd4c7f7b630144c8120b779a61a8cd35898f0db42ba8af5131edca')
 
 
 build()
@@ -27,7 +27,7 @@ build()
 package()
 {
   cd "${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" MANDIR="/usr/share/man" install
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 }
 
