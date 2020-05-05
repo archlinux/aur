@@ -1,7 +1,7 @@
 pkgbase = udisks
 	pkgdesc = Disk Management Service
 	pkgver = 1.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.freedesktop.org/wiki/Software/udisks
 	arch = i686
 	arch = x86_64

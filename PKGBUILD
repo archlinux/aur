@@ -1,9 +1,11 @@
 # $Id$
-# Maintainer: Tom Gundersen <teg@jklm.no>
+# Contributor: ffcc <ffercc at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Tom Gundersen <teg@jklm.no>
 
 pkgname=udisks
 pkgver=1.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Disk Management Service"
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/udisks"
