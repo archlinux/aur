@@ -1,8 +1,5 @@
-# Maintainer: Luca P <meti at lplab.net>
-# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
-
 pkgname=rsyslog
-pkgver=8.1907.0
+pkgver=8.2004.0
 pkgrel=1
 pkgdesc="An enhanced multi-threaded syslogd with a focus on security and reliability"
 url="http://www.rsyslog.com/"
@@ -10,7 +7,7 @@ arch=('x86_64' 'i686')
 license=('GPL3')
 depends=('libestr' 'liblogging' 'librelp' 'libfastjson')
 makedepends=('postgresql-libs>=8.4.1' 'libmariadbclient' 'net-snmp' 'gnutls'
-	     'python-docutils')
+	     'python-docutils' 'libestr' 'liblogging' 'librelp' 'libfastjson')
 optdepends=('postgresql-libs: PostgreSQL Database Support'
 	    'libmariadbclient: MySQL Database Support'
 	    'net-snmp'
@@ -23,7 +20,7 @@ source=("http://www.rsyslog.com/files/download/rsyslog/rsyslog-$pkgver.tar.gz"
 	'rsyslog.conf'
         'rsyslog.service')
 
-sha256sums=('eb27535ece93174ef6b551c88467d2c9cd826b62479625bb881a53d50b079fb5'
+sha256sums=('5fc3d7b775f0879a40606d960491812a602e22f62e006ce027ed7bcf4c9f27d9'
             '0f5bea3fd4dff2c9f097bf95768b2e1f6e9cfd9a08eab98bc3b3b4d2ed44119a'
             'bc7ea11a697c20cdaa6730cfa0b4465cef0fec0e3f6b39aeff8deae9756aafbb'
             '81b9f9b78395405b679849143a6709911d00e9317928fdb2a2540f52965847c2')
