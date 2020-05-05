@@ -10,7 +10,7 @@ license=('MIT')
 depends=("sway" "grim" "slurp" "jq")
 makedepends=("scdoc")
 source=("https://gitlab.com/WhyNotHugo/swaygrab/-/archive/v${pkgver}/swaygrab-v${pkgver}.tar.gz")
-md5sums=('cae7608bdbff0890a49b96d80a685b49')
+md5sums=('eea8246bf70c3e2b6ffff035ed05ef2b')
 
 build() {
   cd "$srcdir/$pkgname-v$pkgver"
