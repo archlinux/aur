@@ -1,6 +1,6 @@
 # Maintainer: Daniel Mason <daniel@m2.nz>
 pkgbase=riot-desktop-beta-git
-pkgver=v1.6.0.rc.6.r0.gbe76d2ef
+pkgver=v1.6.0.r0.gbeda6c3b
 pkgrel=1
 pkgname=riot-desktop-beta-git
 pkgdesc="A glossy Matrix collaboration beta client for the desktop."
@@ -12,14 +12,14 @@ makedepends=('git' 'nodejs' 'jq' 'yarn')
 conflicts=('riot-desktop' 'riot-desktop-beta' 'riot-web')
 provides=('riot-desktop-beta')
 backup=("etc/riot/config.json")
-source=('riot-desktop-beta-git::git://github.com/vector-im/riot-web.git#tag=v1.6.0-rc.6'
+source=('riot-desktop-beta-git::git://github.com/vector-im/riot-web.git#tag=v1.6.0'
         "riot-desktop-beta.desktop"
         "riot-desktop-beta.sh"
         "fetch-develop.deps.sh")
 sha256sums=('SKIP'
             '8851c9ce0b25b56efa3d4d4120142f763df75166e3f01e4adda22252d3d59a89'
             'e566567a35fdf882b63c5acf332fdde30030bf1e98288a1078aca9c0b8413e64'
-            '245ded7c413569217d76d354193f00edb0899000742e40620ba266d02c03e5bf')
+            '11fbbd52301f50daeebd3153f1e056ff6ee4810525773ffd204a9af1bfb7f23e')
 
 pkgver() {
     cd "$srcdir/${pkgname}"
