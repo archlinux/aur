@@ -1,0 +1,13 @@
+pkgbase = python-random_word_generator
+	pkgdesc = Python Library That Generates Random Words At Specified Lengths
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/GIJack/Random-Word-Generator
+	arch = any
+	license = MIT
+	depends = python
+	source = Random-Word-Generator-1.1.tar.gz::https://github.com/GIJack/Random-Word-Generator/archive/1.1.tar.gz
+	sha256sums = 56bb5cb9ffa21bea017069be6fd8645db60da6918b2911020d4af64c58f001ba
+
+pkgname = python-random_word_generator
+
