@@ -2,7 +2,7 @@
 
 pkgname=castxml-git
 pkgdesc="C-family abstract syntax tree XML output tool."
-pkgver=0.3.1.r6.g861054e
+pkgver=0.3.4.r19.g8625aed
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/CastXML/CastXML"
@@ -27,6 +27,7 @@ build() {
 
   cmake . \
     -DSPHINX_EXECUTABLE=/usr/bin/sphinx-build \
+    -DCLANG_LINK_CLANG_DYLIB=1 \
     -DSPHINX_HTML=1 \
     -DSPHINX_MAN=1 \
     -DCMAKE_INSTALL_PREFIX=/usr \
