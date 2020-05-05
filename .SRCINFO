@@ -1,7 +1,7 @@
 pkgbase = mcsctl-git
-	pkgdesc = Manage multiple minecraft servers with a simple bash script and systemd unit template.
+	pkgdesc = Manage multiple minecraft servers with a simple bash script and systemd unit templates.
 	pkgver = master
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/Hetsh/mcsctl
 	install = mcsctl-git.install
 	arch = any
@@ -9,14 +9,15 @@ pkgbase = mcsctl-git
 	depends = bash
 	depends = grep
 	depends = java-runtime-headless>=8
+	depends = netcat
 	depends = jq
 	depends = screen
 	depends = sudo
 	depends = systemd
 	provides = mcsctl
 	conflicts = mcsctl
-	source = https://github.com/Hetsh/mcsctl/archive/3877e5cef1a50e6b450b09acc6cc2563bb1d6cc1.tar.gz
-	sha256sums = c204bc859239553c3107c5f9b8a086e39c6e8f3c3e30199c9716bd17ca0aff80
+	source = https://github.com/Hetsh/mcsctl/archive/7f22f1d2007681ffb3db3d3ec0a9ff9c912094f5.tar.gz
+	sha256sums = c1134331caf56d6f83e89606ab1957c03912e89330ac18fc60c826167d64c808
 
 pkgname = mcsctl-git
 
