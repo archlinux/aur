@@ -2,7 +2,7 @@ diff --git a/build.sbt b/build.sbt
 index 4f7002bb..7b701a2f 100644
 --- a/build.sbt
 +++ b/build.sbt
-@@ -14,0 +14,0 @@ val MUnitFramework = new TestFramework("munit.Framework")
+@@ -14,10 +14,7 @@ val MUnitFramework = new TestFramework("munit.Framework")
 
  inThisBuild(
    List(
