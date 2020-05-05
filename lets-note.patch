@@ -1,0 +1,12 @@
+diff -uprN i/drivers/input/serio/i8042.c w/drivers/input/serio/i8042.c
+--- i/drivers/input/serio/i8042.c	2020-05-03 04:10:23.000000000 +0900
++++ w/drivers/input/serio/i8042.c	2020-05-05 09:27:20.400985071 +0900
+@@ -1296,7 +1296,7 @@ static int i8042_pm_restore(struct devic
+ static const struct dev_pm_ops i8042_pm_ops = {
+ 	.suspend	= i8042_pm_suspend,
+ 	.resume_noirq	= i8042_pm_resume_noirq,
+-	.resume		= i8042_pm_resume,
++	.resume		= i8042_pm_restore,
+ 	.thaw		= i8042_pm_thaw,
+ 	.poweroff	= i8042_pm_reset,
+ 	.restore	= i8042_pm_restore,
