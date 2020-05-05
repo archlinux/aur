@@ -2,7 +2,7 @@
 pkgname=rbw-bin
 _name=${pkgname%-*}
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 depends=('pinentry' 'openssl')
 conflicts=('rbw-git' 'rbw')
 provides=('rbw')
@@ -19,5 +19,5 @@ package() {
     tar xf data.tar.xz -C tmp
     install -Dm 755 tmp/usr/bin/rbw -t "${pkgdir}/usr/bin"
     install -Dm 755 tmp/usr/bin/rbw-agent -t "${pkgdir}/usr/bin"
-    install -Dm 644 tmp/usr/share/doc/rbw/copyright "${pkgdir}/usr/share/licenses/rbw/LICENSE"
+    install -Dm 644 tmp/usr/share/doc/rbw/copyright "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
