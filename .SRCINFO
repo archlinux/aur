@@ -1,6 +1,6 @@
 pkgbase = emacs-native-comp-git
 	pkgdesc = GNU Emacs. Development native-comp branch.
-	pkgver = 28.0.50.141681
+	pkgver = 28.0.50.141945
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = x86_64
@@ -30,7 +30,6 @@ pkgbase = emacs-native-comp-git
 	replaces = emacs27-git
 	replaces = emacs-git
 	replaces = emacs-seq
-	options = !strip
 	source = emacs-git::git://git.savannah.gnu.org/emacs.git#branch=feature/native-comp
 	md5sums = SKIP
 

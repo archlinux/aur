@@ -68,11 +68,12 @@ MAGICK=           # ImageMagick 7 support. Deprecated (read the logs).
 NOGZ="YES"        # Don't compress .el files.
 FAST_BOOT=        # Only native-compile the bare minimum. Intended for use with
                   # deferred compilation to native-compile on-demand at runtime.
+PROFILING=        # Enable gprof profiling support.
 ################################################################################
 
 ################################################################################
 pkgname="emacs-native-comp-git"
-pkgver=28.0.50.141681
+pkgver=28.0.50.141945
 pkgrel=1
 pkgdesc="GNU Emacs. Development native-comp branch."
 arch=('x86_64' )
@@ -87,18 +88,21 @@ source=("emacs-git::git://git.savannah.gnu.org/emacs.git#branch=feature/native-c
 # If Savannah access is blocked for reasons, use Github instead.
 # Edit the config file of your local repo copy as well.
 #source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
-options=(!strip)
 md5sums=('SKIP')
 ################################################################################
 
 ################################################################################
 
-if [[ $LTO == "YES" ]] && [[ $CLANG != "YES" ]]; then
-  CFLAGS+=" -g -flto -fuse-linker-plugin"
-  CXXFLAGS+=" -g -flto -fuse-linker-plugin"
-else
-  CFLAGS+=" -g -flto"
-  CXXFLAGS+=" -g -flto"
+CFLAGS+=" -g"
+CXXFLAGS+=" -g"
+
+if [[ $LTO == "YES" ]]; then
+  CFLAGS+=" -flto"
+  CXXFLAGS+=" -flto"
+  if [[ $CLANG != "YES" ]]; then
+    CFLAGS+=" -fuse-linker-plugin"
+    CXXFLAGS+=" -fuse-linker-plugin"
+  fi
 fi
 
 if [[ $CLANG == "YES" ]]; then
@@ -111,6 +115,10 @@ if [[ $CLANG == "YES" ]]; then
   export CCFLAGS+=' -fuse-ld=lld' ;
   export CXXFLAGS+=' -fuse-ld=lld' ;
   makedepends+=( 'clang' 'lld' 'llvm') ;
+else
+  export LD="/usr/bin/ld.gold"
+  export CFLAGS+=" -fuse-ld=gold"
+  export CXXFLAGS+=" -fuse-ld=gold"
 fi
 
 if [[ $NOTKIT == "YES" ]]; then
@@ -210,15 +218,15 @@ build() {
 ################################################################################
 
 if [[ $CLANG == "YES" ]]; then
-  _conf+=(
-    '--enable-autodepend'
- );
+  _conf+=( '--enable-autodepend' );
 fi
 
 if [[ $LTO == "YES" ]]; then
-  _conf+=(
-    '--enable-link-time-optimization'
-  );
+  _conf+=( '--enable-link-time-optimization' );
+fi
+
+if [[ $PROFILING == "YES" ]]; then
+  _conf+=( '--enable-profiling' );
 fi
 
 if [[ $CLI == "YES" ]]; then
@@ -239,8 +247,6 @@ fi
 
 if [[ $MAGICK == "YES" ]]; then
   _conf+=( '--with-imagemagick');
-else
-  _conf+=();
 fi
 
 if [[ $CAIRO == "YES" ]]; then
@@ -254,17 +260,10 @@ fi
 if [[ $NOGZ == "YES" ]]; then
   _conf+=( '--without-compress-install' );
 fi
-################################################################################
 
 ################################################################################
 
-  # Use gold with gcc, unconditionally.
-  #
-  if [[ ! $CLANG == "YES" ]]; then
-    export LD=/usr/bin/ld.gold
-    export CFLAGS+=" -s -fuse-ld=gold";
-    export CXXFLAGS+=" -s -fuse-ld=gold";
-  fi
+################################################################################
 
   ./configure "${_conf[@]}"
 
