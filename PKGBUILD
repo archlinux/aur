@@ -4,7 +4,7 @@ pkgbase=linux-amd-raven
 _srcname=linux
 gitver=v5.4.38
 pkgver=5.4.v.38
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -21,6 +21,8 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         "${pkgbase}.preset"
 	# patch from our gentoo overlords
 	'5012_enable-cpu-optimizations-for-gcc91.patch'
+	# disable acountingspam patchfile
+	'disable_proc_ac.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
@@ -29,6 +31,8 @@ sha256sums=('SKIP'
             '0ac0cf410b0f3eeaa07d41505613e118ea59e01144e905f2dc0a808379f87e87'
             #patch file
             'fb98e49d7a640e05bf0d3a65ca49d0adb19de7547cb7ffca7a6cbacb1f461f0b'
+            #disable acountingspam patchfile
+            'f412d719977af563ca74b41b218977e49672ac93ab7cc96a0833b66abbfb8b10'
 )
 
 _kernelname=${pkgbase#linux}
@@ -53,6 +57,9 @@ prepare() {
 
   # Implement cpu optimisation (MZEN2) patch from our gentoo lords
   git apply ../5012_enable-cpu-optimizations-for-gcc91.patch
+
+  # Implement disable acountingspam patchfile
+  git apply ../disable_proc_ac.patch
 
   # get kernel version
   yes "" | make prepare
