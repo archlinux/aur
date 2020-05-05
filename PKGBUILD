@@ -1,32 +1,48 @@
-# Maintainer: Jonas Strassel <info@jonas-strassel.de>
-
 pkgname=scantailor-advanced-git
-pkgver=v1.0.13.r0.g91211e0
+pkgver=v1.0.16.r119.gf6c8e5b
 pkgrel=1
-pkgdesc="Interactive post-processing tool for scanned pages"
-arch=(x86_64)
-url="http://scantailor.org/"
-license=("GPL")
-depends=('qt5-base' 'libtiff' 'hicolor-icon-theme' 'desktop-file-utils')
-makedepends=('cmake' 'qt5-tools' 'eigen' 'boost')
-source=('scantailor-advanced::git+https://github.com/4lex4/scantailor-advanced')
-sha256sums=('SKIP')
+pkgdesc="Interactive post-processing tool for scanned pages that merges the features of the ScanTailor Featured and ScanTailor Enhanced versions, brings new ones and fixes. "
+arch=("x86_64")
+url="https://github.com/4lex4/scantailor-advanced"
+license=("GPL3")
+depends=(
+    "boost-libs"
+    "libjpeg"
+    "libpng"
+    "libtiff"
+    "qt5-base"
+    "zlib"
+    )
+makedepends=(
+    "boost"
+    "cmake"
+    "qt5-tools"
+    "qt5-svg"
+    )
+provides=("scantailor-advanced")
+conflicts=("scantailor-advanced")
+source=("scantailor-advanced::git+https://github.com/4lex4/scantailor-advanced")
+sha256sums=("SKIP")
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$srcdir/${pkgname%-git}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}"
-  cmake \
-	-DCMAKE_BUILD_TYPE=Release \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-	.
-  make -j2
+    export LDFLAGS="-L/usr/local/lib,--rpath=/usr/local/lib"
+    export LD_LIBRARY_PATH="/usr/local/lib"
+    export CFLAGS="-fPIC"
+    export CXXFLAGS="-fPIC"
+
+    cd "${srcdir}/${pkgname%-git}"
+    mkdir build && cd build
+    cmake -G "Unix Makefiles" --build ..
+    make -j${nproc}
 }
 
 package() {
-  cd "$srcdir"/${pkgname%-git}
-  make DESTDIR="$pkgdir" install
+    cd "${srcdir}/${pkgname%-git}"
+    cd build
+    make DESTDIR="${pkgdir}" install
 }
