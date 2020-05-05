@@ -1,0 +1,5 @@
+pkg/
+src/
+adafruit-ampy-*.tar.gz
+adafruit-ampy-*.pkg.tar.xz
+adafruit-ampy-*.pkg.tar.zst

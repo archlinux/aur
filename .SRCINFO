@@ -1,18 +1,17 @@
 pkgbase = adafruit-ampy
-	pkgdesc = ESP8266 FS management tool provided by Adafruit
+	pkgdesc = Utility to interact with a CircuitPython or MicroPython board over a serial connection.
 	pkgver = 1.0.7
-	pkgrel = 1
-	url = https://github.com/adafruit/ampy
+	pkgrel = 2
+	url = https://github.com/scientifichackers/ampy
 	arch = any
-	license = GPL
-	makedepends = python-setuptools
-	depends = python
+	license = MIT
 	depends = python-click
 	depends = python-pyserial
 	depends = python-dotenv
+	depends = python-setuptools
 	provides = python-ampy
 	provides = ampy
-	source = https://files.pythonhosted.org/packages/01/04/1131550fb49a8c1ccf459892208569179acc48a3c1ae5b44236b9bb64464/adafruit-ampy-1.0.7.tar.gz
+	source = https://files.pythonhosted.org/packages/source/a/adafruit-ampy/adafruit-ampy-1.0.7.tar.gz
 	sha512sums = 097f67915636c5491be98572c42782e9e98a14c4e37a6041f199b310790383e48fb61cf3d98b2d2902f01e3bbdc1f345b8c70c17a2a0eb62894c3a05cf1aa67f
 
 pkgname = adafruit-ampy
