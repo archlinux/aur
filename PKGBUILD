@@ -1,6 +1,6 @@
 pkgbase=gdm-git
-pkgname=(gdm-git libgdm-git)
-pkgver=3.34.1+6+g8e109b8b
+pkgname=('gdm-git' 'libgdm-git')
+pkgver=3.37.1+2+g5e321bbe
 pkgrel=1
 pkgdesc="Display manager and login screen"
 url="https://wiki.gnome.org/Projects/GDM"
@@ -8,7 +8,6 @@ arch=(x86_64)
 license=(GPL)
 depends=('gnome-shell' 'gnome-session' 'upower' 'xorg-xrdb' 'xorg-server' 'xorg-xhost')
 makedepends=('yelp-tools' 'gobject-introspection' 'git' 'docbook-xsl')
-checkdepends=('check')
 source=("git+https://gitlab.gnome.org/GNOME/gdm.git"
         0001-Xsession-Don-t-start-ssh-agent-by-default.patch
         0002-pam-arch-Don-t-check-greeter-account-for-expiry.patch
@@ -31,33 +30,17 @@ prepare() {
   # https://bugs.archlinux.org/task/63706
   patch -Np1 -i ../0002-pam-arch-Don-t-check-greeter-account-for-expiry.patch
   patch -Np1 -i ../0003-pam-arch-Restrict-greeter-service-to-the-gdm-user.patch
-
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd build
-  ../gdm/configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --sbindir=/usr/bin \
-    --libexecdir=/usr/lib \
-    with_dbus_sys=/usr/share/dbus-1/system.d \
-    --disable-schemas-compile \
-    --disable-static \
-    --enable-gdm-xsession \
-    --enable-ipv6 \
-    --with-default-pam-config=arch \
-    --with-default-path=/usr/local/bin:/usr/local/sbin:/usr/bin \
-    --without-plymouth \
-    --without-tcp-wrappers
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  arch-meson gdm build \
+  -Dplymouth=disabled \
+  -Dselinux=disabled
+  ninja -C build
 }
 
 check() {
-  make -C build check
+  meson test -C build --print-errorlogs
 }
 
 package_gdm-git() {
@@ -70,12 +53,12 @@ package_gdm-git() {
           etc/gdm/Xsession etc/gdm/PostSession/Default etc/gdm/PreSession/Default)
   install=gdm.install
 
-  DESTDIR="$pkgdir" make -C build install
+  DESTDIR="$pkgdir" meson install -C build
 
-  chown -Rc 120:120 "$pkgdir/var/lib/gdm"
-
-  # Unused or created at start
-  rm -r "$pkgdir"/var/{cache,log,run}
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/gdm.conf" <<END
+g gdm 120 -
+u gdm 120 "Gnome Display Manager" /var/lib/gdm
+END
 
 ### Split libgdm
   mkdir -p libgdm/{lib,share}

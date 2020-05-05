@@ -1,11 +1,10 @@
 pkgbase = gdm-git
 	pkgdesc = Display manager and login screen
-	pkgver = 3.34.1+6+g8e109b8b
+	pkgver = 3.37.1+2+g5e321bbe
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GDM
 	arch = x86_64
 	license = GPL
-	checkdepends = check
 	makedepends = yelp-tools
 	makedepends = gobject-introspection
 	makedepends = git
