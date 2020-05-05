@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=ooniprobe-desktop
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="The next generation OONI Probe desktop app"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-desktop}")
 replaces=("${pkgname%-desktop}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ooni/probe-desktop/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('abc1da606070b3efd3a3376bf59c435bf570ad6eb6656e95d904d4fa69f9c4b5'
+sha256sums=('c08505c27ddc306a84d384adb0b18a720fbda6c8f2e7847de225e490a74b5a6e'
             'baaf4f3cca079dddc0b4e048c8778c6cc84786bb88fd9d218424b7b9f04f1135')
 
 prepare() {
