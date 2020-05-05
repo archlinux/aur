@@ -1,36 +1,29 @@
 # Maintainer: lazant <a.l.i.c.e at outlook.com>
-pkgbase=python-kivymd-git
-pkgname=('python-kivymd-git' 'python2-kivymd-git')
-pkgdesc="Set of widgets for Kivy inspired by Google's Material Design."
-pkgver=r361.a7d384a
+pkgname=python-kivymd-git
+pkgver=0.104.1.r13.g513f016
 pkgrel=1
+pkgdesc="KivyMD is a collection of Material Design compliant widgets for use with Kivy, a framework for cross-platform, touch-enabled graphical applications."
 arch=('any')
-url="https://gitlab.com/kivymd/KivyMD/"
+url="https://github.com/HeaTTheatR/KivyMD/"
 license=('MIT')
-source=("$pkgname::git+https://gitlab.com/kivymd/KivyMD")
 conflicts=('python-kivymd')
-makedepends=('python-setuptools' 'python2-setuptools')
+provides=('python-kivymd')
+makedepends=('python-setuptools')
+source=("${pkgname}::git+https://github.com/HeaTTheatR/KivyMD.git")
 md5sums=('SKIP')
 
-prepare() {
-  cp -a python-kivymd-git python2-kivymd-git
-}
-
 pkgver(){
-  cd "${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${pkgname}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package_python2-kivymd-git() {
-  depends=('python2-kivy')
-  cd "$srcdir/$pkgname"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+build() {
+  cd "${srcdir}/${pkgname}"
+  python setup.py build
 }
 
-package_python-kivymd-git() {
-  depends=('python-kivy')
-  cd "$srcdir/$pkgname"
-  python setup.py install --root="$pkgdir/" --optimize=1
+package() {
+  cd "${srcdir}/${pkgname}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
