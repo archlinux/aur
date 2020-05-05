@@ -39,13 +39,19 @@ arch=('any')
 url='http://openmeetings.apache.org/'
 license=('apache')
 _minjv='11'
-depends=('libjpeg' 'imagemagick' 'ghostscript' 'sox' 'lame' "java-environment-openjdk>=${_minjv}" 'ffmpeg' 'libreoffice')
+depends=('libjpeg' 'lame' "java-environment-openjdk>=${_minjv}")
 #depends+=('swftools') # removed in 5.0
-optdepends=('docker' 'kurento-media-server' 'mariadb' 'openmeetings-mysql-connector-java')
+optdepends=('imagemagick' 'ghostscript' 'sox' 'libreoffice' 'ffmpeg' 'mysql' 'openmeetings-mysql-connector-java' 'docker' 'kurento-media-server' 'kms-elements')
 makedepends=('curl')
 makedepends+=('gcc' 'make' 'libtool' 'bison' 'autoconf' 'automake' 'fakeroot') # base-devel
 #makedepends+=('unzip') # Used to download as zip
-backup=("opt/${pkgname}/webapps/${pkgname}/WEB-INF/classes/META-INF/persistence.xml")
+backup=(
+  'opt/openmeetings/webapps/openmeetings/WEB-INF/classes/META-INF/persistence.xml'
+  'opt/openmeetings/webapps/openmeetings/WEB-INF/classes/org/apache/openmeetings/web/room/VideoSettings.html'
+  'opt/openmeetings/conf/server.xml'
+  'opt/openmeetings/conf/context.xml'
+  'opt/openmeetings/conf/logging.properties'
+)
 options=('!strip') # Nothing to strip in a Java package, wastes time!
 install="${pkgname}.install"
 _srcdir="apache-${pkgname}-${_pkgver}"
@@ -172,6 +178,11 @@ _package_1() {
 
   # install screenshare
   cp -f -r 'openmeetings-screenshare/target/jnlp'/* "${pkgdir}/opt/openmeetings/webapps/openmeetings/screenshare"
+
+  # localhost.jks - later need to fix
+  bsdtar -xz --no-same-owner -f "openmeetings-server/target/apache-${_srcdir}.tar.gz"
+
+  cp -f "apache-${_srcdir}/conf/localhost.jks" "${pkgdir}/opt/openmeetings/conf/localhost.jks"
   set +u
 }
 set +u
