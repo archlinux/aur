@@ -7,7 +7,6 @@ pkgbase = pop-shell-shortcuts-git
 	license = GPLv3
 	makedepends = rust
 	depends = cairo
-	depends = glib
 	depends = pango
 	depends = atk
 	depends = gdk-pixbuf2

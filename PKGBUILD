@@ -12,7 +12,7 @@ license=("GPLv3")
 
 conflicts=("pop-shell-shortcuts")
 makedepends=("rust")
-depends=("cairo" "glib" "pango" "atk" "gdk-pixbuf2" "gtk3")
+depends=("cairo" "pango" "atk" "gdk-pixbuf2" "gtk3")
 
 
 _dir="${_gitname}"
