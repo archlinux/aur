@@ -1,6 +1,6 @@
 pkgbase = ntsclient-git
 	pkgdesc = Small Network Time Security Client (NTP with NTS). Alpha software.
-	pkgver = 0.5.1.r0.g7365bc9
+	pkgver = 0.7.0.r0.gf1905e6
 	pkgrel = 1
 	url = https://gitlab.com/hacklunch/ntsclient
 	arch = i686
