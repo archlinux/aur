@@ -5,7 +5,7 @@
 
 # Maintainer: Derek Taylor <derek@distrotube.com>
 pkgname=dmenu-distrotube-git
-pkgver=4.9.r3.2af279b
+pkgver=4.9
 pkgrel=1
 epoch=
 pkgdesc="This is my personal build of dmenu that is patched for fonts, centering, borders, etc."
