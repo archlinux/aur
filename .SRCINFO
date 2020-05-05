@@ -1,0 +1,12 @@
+pkgbase = otf-bender
+	pkgdesc = Bender font by Jovanny Lemonad
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.1001fonts.com/bender-font.html
+	arch = any
+	license = OFL
+	source = otf-bender-1.0.0.zip::https://dl.1001fonts.com/bender.zip
+	sha512sums = fbe9e9af1a238e2d94916ad9a8091f50fda49fc7b258829d5c41542d6b56f94e5c13dfc206a8b23ba609a2760a05b4ed00cb17f189c03a13777185c4086e0ecd
+
+pkgname = otf-bender
+
