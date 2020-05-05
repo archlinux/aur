@@ -1,0 +1,15 @@
+pkgbase = bspwm-undo-git
+	pkgdesc = Undoable versions of some bspc commands.
+	pkgver = r15.e4094f1
+	pkgrel = 1
+	url = http://github.com/Kharacternyk/bspwm-undo
+	arch = any
+	license = GPL-3
+	makedepends = git
+	depends = bspwm
+	conflicts = bspwm-undo
+	source = bspwm-undo::git+https://github.com/Kharacternyk/bspwm-undo.git#branch=master
+	sha256sums = SKIP
+
+pkgname = bspwm-undo-git
+
