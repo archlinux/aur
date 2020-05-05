@@ -5,7 +5,7 @@
 
 pkgname=gitahead-bin
 pkgrel=1
-pkgver=2.6.1
+pkgver=2.6.2
 pkgdesc='Understand your Git history!'
 url='http://gitahead.scitools.com/'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
   "gitahead.png"
   "gitahead.sh"
 )
-sha256sums=('2e0dad0ec9e543b86a9a015f733a1e4c66b5ceca0a22325397d59824540a417d'
+sha256sums=('c3975b83d2f8bb871047dea3f7ed100fe1170dd5ba70153ee52bef2e18571497'
             'd71bfb48c954d213986816fc29478c7f80c8bd2dd10d2889bf51897d649eedd6'
             'c0e78c099eccbc9219efc9364f2c79fb02e39cf71121670cf6504a35dbc05ce6'
             '66cb53fc57eb2ce2e6cd02ff392476fdfb91b723b76ef5da1856e9b5dc1b5c75'
