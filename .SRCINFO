@@ -1,7 +1,7 @@
 pkgbase = genuki
 	pkgdesc = genuki: generate unified kernel images
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quebin31/genuki
 	arch = any
 	license = GPL3

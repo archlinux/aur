@@ -2,7 +2,7 @@
 
 pkgname=genuki
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="genuki: generate unified kernel images"
 arch=('any')
 url=https://github.com/quebin31/genuki
