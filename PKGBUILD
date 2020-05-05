@@ -10,7 +10,7 @@ _svt_vp9_ver='0.2.0'
 
 pkgname=ffmpeg-svt
 pkgver=4.2.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. SVT Patchset applied'
 arch=(x86_64)
