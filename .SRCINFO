@@ -29,7 +29,6 @@ pkgbase = anydesk-bin
 	depends = pangox-compat
 	optdepends = libpulse: audio support
 	provides = anydesk
-	provides = libpangox-1.0.so.0
 	conflicts = anydesk
 	conflicts = anydesk-test
 	conflicts = anydesk-debian
