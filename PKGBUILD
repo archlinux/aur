@@ -1,6 +1,6 @@
 # Maintainer: Hanna Reitz <hanna at xanclic dot moe>
 pkgname=leddy-git
-pkgver=r31.34e5811
+pkgver=r35.5e30684
 pkgrel=1
 pkgdesc="Linux LED controller for the fnatic miniSTREAK keyboard"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
