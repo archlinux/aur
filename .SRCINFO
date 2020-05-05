@@ -1,0 +1,14 @@
+pkgbase = zimfw-completion-git
+	pkgdesc = Zsh plugin that enables and configures smart and extensive tab completion
+	pkgver = r29.db9c177
+	pkgrel = 1
+	url = https://github.com/zimfw/completion
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	source = zimfw-completion-git::git+https://github.com/zimfw/completion.git
+	sha256sums = SKIP
+
+pkgname = zimfw-completion-git
+
