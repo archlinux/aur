@@ -4,8 +4,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-lowlatency
-pkgver=5.18.4
-pkgrel=4
+pkgver=5.18.5
+pkgrel=1
 pkgdesc='the compositor, with added stutter/latency reductions'
 arch=(x86_64)
 url='https://github.com/tildearrow/kwin-lowlatency'
