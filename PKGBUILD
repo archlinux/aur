@@ -1,6 +1,6 @@
 #maintainer BrainDamage
 pkgname=beets-bandcamp
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Plugin for beets to use bandcamp as an autotagger source.'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://github.com/unrblt/beets-bandcamp'
 license=('GPL')
 depends=('python' 'python-six' 'beets' 'python-requests' 'python-beautifulsoup4' 'python-isodate')
 source=("https://github.com/unrblt/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('250ae2845bbbc1577efff786e95739e49c1382de92881576445d3e6ac75d01f4')
+sha256sums=('abe4a018f055e250f28a66cca16edbdb2f65bed771df370b25de5cac7c45f2b8')
 
 makedepends+=('python-setuptools')
 
