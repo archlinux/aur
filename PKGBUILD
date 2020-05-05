@@ -1,10 +1,10 @@
-# Maintainer: Mitchell Renouf <mitchellarenouf@gmail.com> 
+# Maintainer: 1Conan <me at 1conan dot com>
+# Contributor: Mitchell Renouf <mitchellarenouf@gmail.com> 
 # (non-snap)Maintainer: Antonio Rojas <arojas@archlinux.org> 
-
 
 _pkgname=discover
 pkgname=discover-snap
-pkgver=5.18.4.1
+pkgver=5.18.5
 pkgrel=1
 pkgdesc='KDE and Plasma resources management GUI with snap support'
 arch=(x86_64)
@@ -18,8 +18,8 @@ makedepends=(extra-cmake-modules plasma-framework packagekit-qt5 flatpak fwupd)
 optdepends=('packagekit-qt5: to manage packages from Arch Linux repositories' 'flatpak: Flatpak packages support'
             'fwupd: firmware update support')
 groups=(plasma)
-source=("https://download.kde.org/stable/plasma/${pkgver%.*}/$_pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('b89c19df39286c2ec0b1128369372a7628fa5403ea5d9af244ddd7c1042c2802'
+source=("https://download.kde.org/stable/plasma/${pkgver}/$_pkgname-$pkgver.tar.xz"{,.sig})
+sha256sums=('d5ce4f4668c50ba9be37e04227db4bbe469e00470c87907f1e217fdcad6e76b6'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
