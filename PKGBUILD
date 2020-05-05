@@ -2,13 +2,13 @@
 
 pkgname=legendary
 pkgver=0.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A free and open-source replacement for the Epic Games Launcher "
 arch=('any')
 url="https://github.com/derrod/legendary"
 license=('GPL3')
 groups=()
-depends=("python-requests")
+depends=("python-requests" "python-wheel")
 makedepends=("python-setuptools")
 checkdepends=()
 optdepends=()
