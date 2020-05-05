@@ -1,11 +1,12 @@
 pkgbase = geonkick-git
 	pkgdesc = A free software percussion synthesizer (git version)
-	pkgver = 1.9.0.r586.455574b
+	pkgver = 2.1.0.r815.f9b8340
 	pkgrel = 1
-	url = https://gitlab.com/geontime/geonkick
+	url = https://gitlab.com/iurie-sw/geonkick
 	arch = i386
 	arch = x86_64
 	groups = pro-audio
+	groups = lv2-plugins
 	license = GPL3
 	makedepends = cmake
 	makedepends = jack
@@ -21,7 +22,7 @@ pkgbase = geonkick-git
 	optdepends = jack: for stand-alone application
 	provides = geonkick
 	conflicts = geonkick
-	source = geonkick::git+https://gitlab.com/geontime/geonkick.git
+	source = geonkick::git+https://gitlab.com/iurie-sw/geonkick.git
 	sha512sums = SKIP
 
 pkgname = geonkick-git

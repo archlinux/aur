@@ -2,19 +2,19 @@
 
 _pkgname=geonkick
 pkgname="${_pkgname}-git"
-pkgver=1.9.0.r586.455574b
+pkgver=2.1.0.r815.f9b8340
 pkgrel=1
 pkgdesc="A free software percussion synthesizer (git version)"
 arch=('i386' 'x86_64')
-url="https://gitlab.com/geontime/geonkick"
+url="https://gitlab.com/iurie-sw/geonkick"
 license=('GPL3')
-groups=('pro-audio')
+groups=('pro-audio' 'lv2-plugins')
 depends=('cairo' 'desktop-file-utils' 'hicolor-icon-theme' 'libsndfile' 'shared-mime-info')
 makedepends=('cmake' 'jack' 'lv2' 'rapidjson' 'redkite' 'sord')
 optdepends=('jack: for stand-alone application')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://gitlab.com/geontime/geonkick.git")
+source=("${_pkgname}::git+https://gitlab.com/iurie-sw/geonkick.git")
 sha512sums=('SKIP')
 
 
@@ -25,9 +25,11 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
-  # don't call post-install commands
-  sed -i -e '/^install.CODE/d' data/CMakeLists.txt
+  cd "${srcdir}/${_pkgname}/doc/examples"
+  # extract drumkits
+  for tarxz in *.tar.xz; do
+    tar -xvJf "$tarxz"
+  done
 }
 
 build() {
@@ -48,9 +50,18 @@ package() {
     cd build
     make DESTDIR="$pkgdir/" install
   )
+  # desktop file
   install -vDm 644 "data/${_pkgname}.desktop" \
     -t "${pkgdir}/usr/share/applications"
-  install -dm 755 "${pkgdir}/usr/share/doc/${pkgname}/examples"
-  cp -r --preserve=mode examples/* "${pkgdir}/usr/share/doc/${pkgname}/examples"
-  install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  # example preset & kits
+  install -vDm 644 doc/examples/*.{gkick,gkit} \
+    -t "${pkgdir}/usr/share/${_pkgname}/presets"
+  for directory in doc/examples/*; do
+    if [[ -d "$directory" ]]; then
+      install -vDm 644 "$directory/"*.{gkick,gkit} \
+        -t "${pkgdir}/usr/share/${_pkgname}/presets/$(basename "$directory")"
+    fi
+  done
+  # documentation
+  install -vDm 644 README.md NEWS.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
