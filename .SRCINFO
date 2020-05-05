@@ -1,21 +1,17 @@
-pkgbase = droidcam
-	pkgdesc = A tool for using your android device as a wireless/usb webcam
-	pkgver = 6.7.5
-	pkgrel = 5
+pkgbase = v4l2loopback-dc-dkms
+	pkgdesc = A kernel module for droidcam
+	pkgver = 6.7.5.6c7b273
+	pkgrel = 1
 	url = https://www.dev47apps.com/droidcam/linuxx
-	install = droidcam.install
 	arch = x86_64
-	license = custom
-	makedepends = linux-headers
+	license = GPL
+	depends = dkms
 	optdepends = v4l-utils: Userspace tools and conversion library for Video 4 Linux
-	optdepends = gtk2: use GUI version in addition to CLI interface
-	options = !strip
-	source = droidcam.desktop
-	source = https://github.com/aramg/droidcam/raw/master/linux/icon2.png
-	source = droidcam.tar.bz2::https://www.dev47apps.com/files/linux/droidcam_latest.zip
-	md5sums = 199d8f3dbc6697f06350b00de99f2274
-	md5sums = 0f0e1d04146dd5be70d5028f144bd0a2
-	md5sums = 5ff0e772a76befba4e37e03101b611d7
+	backup = etc/modprobe.d/v4l2loopback-dc.conf
+	source = dkms.conf
+	source = droidcam.zip::https://github.com/aramg/droidcam/archive/6c7b273bd20b23a5b1074d5af30f0a13ce3d6065.zip
+	sha512sums = 27848dc6825c965c0aaac8e86220c3916ba20df6d941f5f05caecbf9c329ee744ee883bd2638ba58fe0dc3f40a8ae804dafbfbbe2efc23237e2b5450606cb78d
+	sha512sums = 0bc9d1223fe598f90cb537f9978bf35410248b366e0e3a9ea4815fbcb5a99e8fed8fe00833dacb678f3f125f7614e011276ae3835f91e50f78da87131bd381b8
 
-pkgname = droidcam
+pkgname = v4l2loopback-dc-dkms
 

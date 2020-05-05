@@ -1,60 +1,52 @@
-# Maintainer: AwesomeHaircut <jesusbalbastro at gmail com>
+# Maintainer: mateusz Gozdek <mgozdekof@gmail.com>
+# Contributor: AwesomeHaircut <jesusbalbastro at gmail com>
 # Contributor: Rein Fernhout <public@reinfernhout.xyz>
 # Past Contributor: James An <james@jamesan.ca>
 
-pkgname=droidcam
-pkgver=6.7.5
-pkgrel=5
-pkgdesc='A tool for using your android device as a wireless/usb webcam'
+_pkgname=v4l2loopback-dc
+pkgname=${_pkgname}-dkms
+_pkgver=6c7b273bd20b23a5b1074d5af30f0a13ce3d6065
+pkgver=6.7.5.6c7b273
+pkgrel=1
+pkgdesc='A kernel module for droidcam'
 arch=('x86_64')
-url="https://www.dev47apps.com/$pkgname/linuxx"
-license=('custom')
-makedepends=( 'linux-headers' )
-options=('!strip')
-optdepends=('v4l-utils: Userspace tools and conversion library for Video 4 Linux'
-            'gtk2: use GUI version in addition to CLI interface' )
-install="$pkgname.install"
-source=(
-	"$pkgname.desktop"
-    "https://github.com/aramg/$pkgname/raw/master/linux/icon2.png"
-    "$pkgname.tar.bz2::https://www.dev47apps.com/files/linux/droidcam_latest.zip"
+url="https://www.dev47apps.com/droidcam/linuxx"
+license=('GPL')
+depends=('dkms')
+optdepends=('v4l-utils: Userspace tools and conversion library for Video 4 Linux')
+backup=("etc/modprobe.d/${_pkgname}.conf")
+source=("dkms.conf"
+        "droidcam.zip::https://github.com/aramg/droidcam/archive/${_pkgver}.zip"
 )
 
-#noextract=("$pkgname.tar.bz2")
-md5sums=(
-	'199d8f3dbc6697f06350b00de99f2274'
-	'0f0e1d04146dd5be70d5028f144bd0a2'
-    '5ff0e772a76befba4e37e03101b611d7'
-)
+sha512sums=('27848dc6825c965c0aaac8e86220c3916ba20df6d941f5f05caecbf9c329ee744ee883bd2638ba58fe0dc3f40a8ae804dafbfbbe2efc23237e2b5450606cb78d'
+            '0bc9d1223fe598f90cb537f9978bf35410248b366e0e3a9ea4815fbcb5a99e8fed8fe00833dacb678f3f125f7614e011276ae3835f91e50f78da87131bd381b8')
 
 prepare() {
   # Generate the module loading configuration files
-  cat <<EOF >| "v4l2loopback/$pkgname.modules-load.conf"
-videodev
-v4l2loopback_dc
-EOF
-  echo "options v4l2loopback_dc width=320 height=240" >| "v4l2loopback/$pkgname.modprobe.conf"
-}
-
-build() {
-  cd "v4l2loopback"
-  make
-  gzip -f v4l2loopback-dc.ko
+  echo "options v4l2loopback_dc width=640 height=480" >| "${_pkgname}.modprobe.conf"
 }
 
 package() {
-  # Install droidcam program files
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm755 "$pkgname-cli" "$pkgdir/usr/bin/$pkgname-cli"
-  install -Dm644 ../icon2.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  install -Dm644 "../$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  local install_dir="${pkgdir}/usr/src/${_pkgname}-${pkgver}"
 
-  # Install kernel module and config files
-  cd v4l2loopback
-  MODPATH="/usr/lib/modules/$(uname -r | sed 's/.[0-9]+-[0-9]+//')/extramodules"
-  install -Dm644 v4l2loopback-dc.ko.gz        "$pkgdir$MODPATH/v4l2loopback_dc.ko.gz"
-  install -Dm644 "$pkgname.modules-load.conf" "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
-  install -Dm644 "$pkgname.modprobe.conf"     "$pkgdir/etc/modprobe.d/$pkgname.conf"
+  # Copy dkms.conf
+  install -Dm644 dkms.conf "${install_dir}/dkms.conf"
+
+  # Set name and version
+  sed -e "s/@_PKGNAME@/${_pkgname}/" -e "s/@PKGVER@/${pkgver}/" -i "${install_dir}/dkms.conf"
+
+  # Install module loading configuration
+  install -Dm644 "${_pkgname}.modprobe.conf" "$pkgdir/etc/modprobe.d/${_pkgname}.conf"
+
+  # Install module source
+  cd droidcam-${_pkgver}/linux/v4l2loopback
+
+  for d in $(find . -type d); do
+    install -dm755 "${install_dir}/$d"
+  done
+
+  for f in $(find . -type f ! -name '.gitignore'); do
+    install -m644 "$f" "${install_dir}/$f"
+  done
 }
-
