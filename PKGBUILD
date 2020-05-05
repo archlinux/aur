@@ -3,7 +3,7 @@
 _pkgorg=bus1
 _pkgname=dbus-broker
 pkgdesc='Linux D-Bus Message Broker'
-pkgver=r1379.191f135
+pkgver=r1405.72da24b
 pkgrel=1
 
 pkgname=$_pkgname-git
@@ -27,7 +27,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd $pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -38,7 +38,7 @@ prepare() {
 
   local sm
   for sm in c-{dvar,ini,list,rbtree,shquote,stdaux,utf8}; do
-    git config --local submodule.subprojects/$sm.url "$srcdir/$sm"
+    git submodule set-url subprojects/$sm "$srcdir/$sm"
   done
 
   git submodule update
