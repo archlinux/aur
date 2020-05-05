@@ -20,14 +20,6 @@ depends=(
     python-zeroconf
     xapps
 )
-depends=(
-    pygobject-devel
-    python-grpcio
-    python-setproctitle
-    python-xapp
-    python-zeroconf
-    xapps
-)
 makedepends=(
     gobject-introspection
     meson
