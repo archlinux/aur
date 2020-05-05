@@ -10,7 +10,7 @@ _svt_vp9_ver='0.1.0'
 
 pkgname=ffmpeg-svt
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. SVT Patchset applied'
 arch=(x86_64)
@@ -160,7 +160,9 @@ build() {
     --enable-omx \
     --enable-shared \
     --enable-version3 \
-    --enable-libsvtav1
+    --enable-libsvtav1 \
+    --enable-libsvtvp9 \
+    --enable-libsvthevc
 
 
   make
