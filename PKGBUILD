@@ -3,7 +3,7 @@
 pkgname=mcsctl-git
 pkgver=master
 commit=('3877e5cef1a50e6b450b09acc6cc2563bb1d6cc1')
-pkgrel=9
+pkgrel=10
 pkgdesc='Manage multiple minecraft servers with a simple bash script and systemd unit template.'
 arch=('any')
 url='https://github.com/Hetsh/mcsctl'
