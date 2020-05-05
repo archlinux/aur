@@ -45,7 +45,7 @@ build() {
     ${_arch}-make \
       UNAME=Windows BLAS="-llapack -lblas -lgfortran -lquadmath" \
       CMAKE_OPTIONS="-DCMAKE_INSTALL_PREFIX=\"/usr/${_arch}\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=\"/usr/share/mingw/toolchain-${_arch}.cmake\"" \
-      MY_METIS_LIB="-lmetis" JOBS=2
+      MY_METIS_LIB="-lmetis"
     popd
   done
 }
