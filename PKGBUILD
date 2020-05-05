@@ -1,7 +1,7 @@
 # Maintainer: Nazar Vinnichuk <nazar.vinnichuk at tutanota dot com>
 pkgname=pacwall-git
 _pkgname=${pkgname%-git}
-pkgver=r95.eb1d686
+pkgver=r79.6c0be4d
 pkgrel=1
 pkgdesc="Dependency graph of installed packages on your wallpaper."
 url="http://github.com/Kharacternyk/${_pkgname}"
@@ -25,5 +25,5 @@ pkgver() {
 package() {
     cd "${srcdir}/${_pkgname}"
     install -Dm755 "${srcdir}/${_pkgname}/pacwall.sh" "${pkgdir}/usr/bin/pacwall"
-    install -Dm644 "${srcdir}/${_pkgname}/README.rst" "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+    install -Dm644 "${srcdir}/${_pkgname}/README.rst" "${pkgdir}/usr/share/doc/${_pkgname}/README.rst"
 }
