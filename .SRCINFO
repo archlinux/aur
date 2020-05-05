@@ -1,7 +1,7 @@
 pkgbase = sublime-music
 	pkgdesc = A native Subsonic/Airsonic/*sonic client for Linux. Build using Python and GTK+.
 	pkgver = 0.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/sumner/sublime-music
 	arch = any
 	license = GPL3
@@ -24,9 +24,9 @@ pkgbase = sublime-music
 	depends = libnm-glib
 	depends = libnotify
 	source = https://files.pythonhosted.org/packages/source/s/sublime-music/sublime-music-0.9.1.tar.gz
-	source = https://gitlab.com/sumner/sublime-music/-/jobs/artifacts/v0.9.1/download?job=build_logo
+	source = logo.zip
 	md5sums = 547c4c6d13101a6478588640de5d2dcd
-	md5sums = 175ca5becfa508b3d8e13ca3a621dac2
+	md5sums = bb699422aa5809f785c23dda52035321
 
 pkgname = sublime-music
 
