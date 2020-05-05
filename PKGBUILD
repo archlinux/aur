@@ -1,5 +1,5 @@
-# Maintainer: Simao Gomes Viana <xdevs23@outlook.com>
-# Packager: Simao Gomes Viana <xdevs23@outlook.com>
+# Maintainer: Simao Gomes Viana <devel@superboring.dev>
+# Packager: Simao Gomes Viana <devel@superboring.dev>
 # Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
