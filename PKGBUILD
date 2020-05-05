@@ -1,8 +1,8 @@
 # Maintainer: Joel Shapiro <jshapiro at nvidia dot com>
 
 pkgname=p4v
-_version=2019.2
-pkgver=2019.2.1904275
+_version=2020.1
+pkgver=2020.1.1946989
 pkgrel=1
 pkgdesc="Perforce Visual Client"
 arch=('x86_64')
@@ -24,7 +24,7 @@ sha256sums=('1fc7ea925fdcb38915f191b6a9c85fb46db9ef501dbaa077e8f38876c5e8fda0'
             '10e470c6099459a072565494c4fd21cc1f4198f1024fe6fdeb6c77ea7e594827'
             '139c5e4951ea9ab040912ef1f9705de16a37d32fdf7b8c7116eb5a785829c634'
             'c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32'
-            'c5c3de2d3809cd32892da2162bf44f3faecf2c657ad92ba4144a3a72fb3afb13')
+            '67aa4949fb29b04b537f32b3f8fc18a24ef3ce12f81a38ffea46210a89553a89')
 
 # Perforce Software (Package Signing) <support+packaging@perforce.com>
 # validpgpkeys=('7123CB760FF18869'
