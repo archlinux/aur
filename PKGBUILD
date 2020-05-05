@@ -1,51 +1,65 @@
+# Maintainer: S Stewart <tda@null.net>
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
-# Contributor: S Stewart <tda@null.net>
 # Special thanks to RyanTheAllmighty for making hyper-appimage
 pkgname="gdlauncher"
-pkgver="0.0.4"
-pkgrel=2
+pkgver="0.0.6"
+pkgrel=1
+commitsha="40a4c14d7c695a8ce49392524464b82018c9d0f1"
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdevs.io"
 license=('GPL3')
-install="gdlauncher.install"
-depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3' 'rust')
-sha256sums_x86_64=('9b512c4b92ee7405e3774aa66348636738e30866a8227937578aaa67cfc8ed51'
-                   'b10f7d115d7aaaaff128c03b9f679cbd968a61c61a19d228cfd131ba7c658ab7')
-source_x86_64=(
-    "gdlauncher.desktop"
-    "GDLauncher-linux-setup.AppImage::https://github.com/gorilla-devs/GDLauncher-Releases/releases/download/v${pkgver}/GDLauncher-linux-setup.AppImage"
-)
+makedepends=('git' 'yarn' 'nodejs' 'rust' 'unzip')
+depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3')
+conflicts=('gdlauncher-appimage' 'gdlauncher-git')
+source=("gdlauncher::git+https://github.com/gorilla-devs/GDLauncher.git")
+md5sums=('SKIP')
 
 prepare() {
-    # mark as executable
-    chmod +x "${srcdir}/GDLauncher-linux-setup.AppImage"
-    # extract (didn't know this was possible)
-    "${srcdir}/GDLauncher-linux-setup.AppImage" --appimage-extract
-    # executable isnt needed now
-    chmod -x "${srcdir}/GDLauncher-linux-setup.AppImage"
+    # clone source
+    cd "${srcdir}/${pkgname}"
+    git checkout origin/next
+    git switch next
+    git reset --hard ${commitsha}
+    
+    # generate .desktop
+    gendesk -f --pkgname "GDLauncher" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n
+    mv "GDLauncher.desktop" "${pkgname}.desktop"
+
+    # put yarn in testing mode
+    cd "${srcdir}/${pkgname}"
+    echo "RELEASE_TESTING=true" > .env    
+}
+
+build() {
+    cd "${srcdir}/${pkgname}"
+    yarn
+    yarn release
 }
 
 package() {
     # install the main files.
     install -d -m755 "${pkgdir}/opt/${pkgname}"
-    cp -Rr "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname}"
+    cd "${srcdir}/${pkgname}/deploy"
+    mkdir gdlauncher/
+    unzip "GDLauncher-linux-setup.zip" -d gdlauncher
+    cp -Rr "${srcdir}/${pkgname}/deploy/${pkgname}"* "${pkgdir}/opt/"
 
     # desktop entry
-    install -D -m644 "${srcdir}/gdlauncher.desktop" "${pkgdir}/usr/share/applications/gdlauncher.desktop"
+    install -D -m644 "${srcdir}/${pkgname}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-    # install the icons
+    # install the icon
     install -d -m755 "${pkgdir}/usr/share/icons/hicolor"
-    cp -Rr "${srcdir}/squashfs-root/usr/share/icons/hicolor/" "${pkgdir}/usr/share/icons/hicolor"
-
+    cp -Rr "${srcdir}/${pkgname}/public/icon.png" "${pkgdir}/usr/share/icons/"
+    
     # fix file permissions - all files as 644 - directories as 755
     find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
     find "${pkgdir}/"{opt,usr} -type f -exec chmod 644 {} \;
 
     # make sure the main binary has the right permissions
-    chmod +x "${pkgdir}/opt/${pkgname}/gdlauncher"
+    chmod +x "${pkgdir}/opt/${pkgname}/${pkgname}"
 
     # link the binary
     install -d -m755 "${pkgdir}/usr/bin"
-    ln -sr "${pkgdir}/opt/${pkgname}/gdlauncher" "${pkgdir}/usr/bin/gdlauncher"
+    ln -sr "${pkgdir}/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
