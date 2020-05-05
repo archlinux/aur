@@ -1,6 +1,6 @@
 # Maintainer: Varagnac Kim <vacaniat@pm.me>
 pkgname=vul-fzf-git
-pkgver=r1.2
+pkgver=r1.21
 pkgrel=1
 pkgdesc="Latin Vulgate with fuzzy finder"
 arch=(any)
@@ -10,7 +10,7 @@ depends=('bash' 'gawk' 'fzf')
 optdepends=('xclip: X11 clipboard support'
 	    'wl-clipboard: Wayland clipboard support')
 source=("${pkgname}-${pkgver}::https://github.com/varagnac/pure-text-bible/raw/master/vulgate_fzf")
-md5sums=('21e2cf8d44bd9a5d7471def3f907b232')
+md5sums=('d42d4cb3374ffac05c0ddca1df334327')
 
 package() {
 	cd "$srcdir/"
