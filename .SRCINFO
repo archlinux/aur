@@ -1,7 +1,7 @@
 pkgbase = mcsctl
 	pkgdesc = Manage multiple minecraft servers with a simple bash script and systemd unit template.
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Hetsh/mcsctl
 	install = mcsctl.install
 	arch = any

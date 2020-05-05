@@ -1,23 +1,26 @@
 MCS_USER='mcs'
-MCS_GROUP='mcs'
+
+user_exists() {
+	if getent passwd "$MCS_USER" > /dev/null; then
+		return $(true)
+	else
+		return $(false)
+	fi
+}
 
 post_install() {
-	if ! getent group "$MCS_GROUP" > /dev/null; then
-		groupadd "$MCS_GROUP"
-	fi
-
-	if ! getent passwd "$MCS_USER" > /dev/null; then
-		useradd -c 'Minecraft user' -g "$MCS_GROUP" -s /usr/bin/nologin -m "$MCS_USER"
-		passwd -l "$MCS_USER" > /dev/null
+	if ! user_exists; then
+		echo "Adding user \"$MCS_USER\"..."
+		useradd --user-group --comment 'Minecraft user' --shell /usr/bin/nologin --create-home "$MCS_USER" &> /dev/null
+		passwd --lock "$MCS_USER" > /dev/null
 	fi
 }
 
 post_remove() {
-	killall -w -u "$MCS_USER" -s KILL
-	userdel -r -f "$MCS_GROUP" &> /dev/null
-	
-	CONF_FILE="/etc/mcsctl.conf"
-	if [ -e "$CONF_FILE" ]; then
-		echo "==> Your configuration in \"$CONF_FILE\" was preserved."
+	if user_exists; then
+		echo "Stopping processes controlled by \"$MCS_USER\"..."
+		killall --wait --user "$MCS_USER"
+		echo "Removing user \"$MCS_USER\"..."
+		userdel --force "$MCS_USER" &> /dev/null
 	fi
 }
