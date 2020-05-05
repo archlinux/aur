@@ -1,5 +1,5 @@
 --- usr/local/pulse/PulseClient_x86_64.sh	2020-04-03 15:17:07.000000000 +0900
-+++ usr/local/pulse/PulseClient_x86_64.sh.new	2020-04-29 10:55:49.149374568 +0900
++++ usr/local/pulse/PulseClient_x86_64.sh.new	2020-05-05 22:51:10.170118991 +0900
 @@ -17,7 +17,7 @@
  
  SCRNAME=`basename $0`
@@ -18,3 +18,22 @@
      else
          OSNAME=$(lsb_release -d | grep -o "Ubuntu")
          if [ "X$OSNAME" != "X" ]; then
+@@ -355,7 +357,7 @@
+         isRpmBased=1
+     elif [[ ($OS_TYPE = ${SUPPORTED_OSTYPES_LIST[$UBUNTU_14]}) || \
+         ($OS_TYPE = ${SUPPORTED_OSTYPES_LIST[$UBUNTU_15]}) || \
+-        ($OS_TYPE = ${SUPPORTED_OSTYPES_LIST[$UBUNTU_16_17_18_19]}) || \
++        ($OS_TYPE = ${SUPPORTED_OSTYPES_LIST[$UBUNTU_16_17_18]}) || \
+         ($OS_TYPE = ${SUPPORTED_OSTYPES_LIST[$UBUNTU_19]}) || \
+         ($OS_TYPE = ${SUPPORTED_OSTYPES_LIST[$DEBIAN_10]}) || \
+         ($OS_TYPE = ${SUPPORTED_OSTYPES_LIST[$DEBIAN_8_9]}) ]]; then
+@@ -430,7 +432,8 @@
+         RPM_DIST=1
+     elif [[ ($OS_TYPE = ${SUPPORTED_OSTYPES_LIST[$UBUNTU_14]}) || \
+         ($OS_TYPE = ${SUPPORTED_OSTYPES_LIST[$UBUNTU_15]}) || \
+-        ($OS_TYPE = ${SUPPORTED_OSTYPES_LIST[$UBUNTU_16_17_18_19]}) || \
++        ($OS_TYPE = ${SUPPORTED_OSTYPES_LIST[$UBUNTU_16_17_18]}) || \
++        ($OS_TYPE = ${SUPPORTED_OSTYPES_LIST[$UBUNTU_19]}) || \
+         ($OS_TYPE = ${SUPPORTED_OSTYPES_LIST[$DEBIAN_8_9]}) ]]; then
+         DPKG_DIST=1
+     fi

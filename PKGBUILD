@@ -2,7 +2,7 @@
 
 pkgname=pulse-secure
 pkgver=9.1r5.0_b151
-pkgrel=1
+pkgrel=2
 pkgdesc='Pulse Connect Secure (PCS) Client'
 arch=(x86_64)
 license=(custom)
@@ -14,7 +14,7 @@ source=(pulseUi.sh
 source_x86_64=("https://wiki.univ-nantes.fr/_media/nomade:pulse_clients:ps-pulse-linux-${pkgver/_/-}-centos-rhel-64-bit-installer.rpm")
 md5sums=('d81155461e2666c2b9d669c1b76f85fe'
          '261848a28201e5386ec4bf587473a48b'
-         '7c1fdf76c3e1eee9e6a4a387ae3f3a6b')
+         '26f0e8c97a4a47db7d1b9c06dcdb5f90')
 md5sums_x86_64=('ebcdb7a371cf016d6a41b6f81e60db6d')
 optdepends=('webkitgtk: for pulseUi frontend'
             'psmisc: for pulsesvc -K')
