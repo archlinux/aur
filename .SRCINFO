@@ -1,0 +1,17 @@
+pkgbase = dobiestation
+	pkgdesc = A Dog based emulator for the ps2
+	pkgver = e4b4313be82ca341c862308ebe466b473d5acef9
+	pkgrel = 1
+	url = https://github.com/PSI-Rockin/DobieStation/
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	provides = dobiestation
+	conflicts = dobiestation
+	replaces = dobiestation
+
+pkgname = dobiestation
+
