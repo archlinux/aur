@@ -15,7 +15,7 @@ pkgbase = alphaplot
 	depends = mesa
 	depends = shared-mime-info
 	depends = desktop-file-utils
-	depends = qwtplot3d
+	depends = qt5-datavis3d
 	source = git+https://github.com/narunlifescience/alphaplot.git
 	sha256sums = SKIP
 
