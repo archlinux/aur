@@ -22,7 +22,7 @@ pkgver() {
 package() {
     cd "${srcdir}/${_pkgname}"
     install -Dm755 "${srcdir}/${_pkgname}/paclabel.sh" "${pkgdir}/usr/bin/paclabel"
-    install -Dm644 "${srcdir}/${_pkgname}/README.rst" "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+    install -Dm644 "${srcdir}/${_pkgname}/README.rst" "${pkgdir}/usr/share/doc/${_pkgname}/README.rst"
     install -Dm644 /dev/null "${pkgdir}/etc/${_pkgname}/labels"
     install -Dm644 /dev/null "${pkgdir}/etc/${_pkgname}/labels~"
 }
