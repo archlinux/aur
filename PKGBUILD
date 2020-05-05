@@ -2,8 +2,8 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgbase=linux-rt
-_pkgver=5.6.4
-_rtpatchver=3
+_pkgver=5.6.10
+_rtpatchver=5
 pkgver="${_pkgver}.${_rtpatchver}"
 pkgrel=1
 pkgdesc='Linux RT'
@@ -20,9 +20,7 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.xz"
   "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.sign"
   config
-  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0001-ALSA-hda-Fix-potential-access-overflow-in-beep-helpe.patch
-  0001-ALSA-ice1724-Fix-invalid-access-for-enumerated-ctl-i.patch)
+  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch)
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
@@ -31,14 +29,12 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('5df1741e550cb6fa7471530f42da98bac5093e693e2c4f3aef4393d8135b9d91'
+sha256sums=('7bdc96827a9db8de79cd13d74a1c5fe8915674f793e592387f2903cb225801b9'
             'SKIP'
-            'a9bb755ad66269d209c7b1f66034be9eae0901ea8440bab7b5c2ad1a2ec7eed5'
+            'f712f8225069bc2cc6cf5080724483dff871fb5bdf41bdeeeb00a0087a28c116'
             'SKIP'
-            '52d177093cf226208efbf13137909d3f05c8e586bf3c7f7b355a7a4ee537b572'
-            'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85'
-            'd9032bb428c42e093f2686ae2830133c3600496f93574b3b41dc0ec69af6d5ad'
-            'bc53f7ec92126955e221698e634d2185909e83bc526f7ff9c7ad86da3fd8c8f4')
+            'd7203e4d164a7040de524227a072ae3d5155cffb905762af9e12ae224b131245'
+            'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
