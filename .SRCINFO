@@ -1,0 +1,19 @@
+pkgbase = owo-cli-git
+	pkgdesc = A bash based file uploader and URL shortener for owo.whats-th.is (git version)
+	pkgver = 2.0.0+r286.gcf06572
+	pkgrel = 1
+	url = https://whats-th.is
+	arch = any
+	license = GPL3
+	makedepends = awk
+	makedepends = git
+	depends = curl
+	depends = grep
+	depends = awk
+	provides = owo-cli=2.0.0
+	conflicts = owo-cli
+	source = git+https://owo.codes/whats-this/owo.sh.git#branch=posixly-correct
+	sha256sums = SKIP
+
+pkgname = owo-cli-git
+
