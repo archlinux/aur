@@ -65,15 +65,15 @@ depends=(
   v4l-utils
   xz
   zlib
+  svt-av1
+  svt-vp9
+  svt-hevc
 )
 makedepends=(
   ffnvcodec-headers
   git
   ladspa
   nasm
-  svt-av1
-  svt-vp9
-  svt-hevc
 )
 optdepends=('ladspa: LADSPA filters')
 provides=(
