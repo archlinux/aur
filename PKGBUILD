@@ -3,9 +3,9 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=franz
-_pkgver=5.4.1
-pkgver=${_pkgver//-/_}
-pkgrel=3
+#pkgver=${_pkgver//-/_} # Leaving it here for possible dev/beta package :)
+pkgver=5.5.0
+pkgrel=1
 # Due to the previous "_beta" naming
 epoch=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
@@ -13,17 +13,17 @@ arch=(x86_64 i686)
 url='https://meetfranz.com'
 license=(Apache)
 # Allow to easily switch between Electron versions.
-# Expected one is 'electron6', but you can easily switch to mainstream one with
-# 'electron'; remember to replace it also in `franz.sh`
-_electron='electron6'
+# Expected one is 'electron' (Electron 8). May change soon.
+# Remember to replace it also in `franz.sh`.
+_electron='electron'
 depends=($_electron)
 makedepends=(expac git npm python)
-source=("git+https://github.com/meetfranz/$pkgname#tag=v$_pkgver"
+source=("git+https://github.com/meetfranz/$pkgname#tag=v$pkgver"
         'franz.desktop'
         'franz.sh')
 sha512sums=('SKIP'
             '049c4bf2e0f362f892e8eef28dd18a6c321251c686a9c9e49e4abfb778057de2fc68b95b4ff7bb8030a828a48b58554a56b810aba078c220cb01d5837083992e'
-            'd9045b23fd8f2867f845d1c3b579b0fc6c7cf1a4120b9add3d545ff68736b444a21795526eb191b5e76622bd848c75e599ac145137f63375b4fae67490d99f8a')
+            '8584507cfc2736f4736637925536b2c06063c59cd943346717633564ae88b64c5eea294c8897f1250812478ed493f54a470501e98e99d084a2ff012dff9671f8')
 
 prepare() {
   # Small patching
@@ -45,7 +45,8 @@ prepare() {
   export npm_config_cache="$srcdir"/npm_cache
 
   # Install tricky dependencies before-hand
-  npm install node-sass@4.13.1
+  node_sass_version="4.14.1"
+  sed -i "s|\(\s\+\"node-sass\":\).*,|\1 \"$node_sass_version\",|" package.json
 
   # Prepare the packages for building
   npx lerna bootstrap
