@@ -1,4 +1,4 @@
-pkgbase = rbw
+pkgbase = rbw-bin
 	pkgdesc = unofficial bitwarden cli
 	pkgver = 0.2.1
 	pkgrel = 1
@@ -9,8 +9,9 @@ pkgbase = rbw
 	depends = openssl
 	provides = rbw
 	conflicts = rbw-git
+	conflicts = rbw
 	source = https://git.tozt.net/rbw/releases/deb/rbw_0.2.1_amd64.deb
 	sha256sums = 16ee1885942c12cc2d3ad80ea652328e7f7f37559c4ae3e81d8b857d3fd03f7a
 
-pkgname = rbw
+pkgname = rbw-bin
 
