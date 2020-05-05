@@ -1,0 +1,17 @@
+pkgbase = fusion
+	pkgdesc = Simple wlan management tool with gnu-like syntax
+	pkgver = 0.1.0.1.g7508f79
+	pkgrel = 1
+	url = https://github.com/V1oL3nc/fusion
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	makedepends = git
+	depends = networkmanager
+	provides = fusion
+	conflicts = fusion
+	source = fusion::git+https://github.com/V1oL3nc/fusion.git
+	sha256sums = SKIP
+
+pkgname = fusion
+
