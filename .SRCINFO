@@ -1,7 +1,7 @@
 pkgbase = python-skia-pathops
-	pkgdesc = Python bindings for the Skia library's Path Ops.
+	pkgdesc = Python bindings for the Skia library’s Path Ops
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fonttools/skia-pathops
 	arch = x86_64
 	license = BSD
@@ -10,7 +10,7 @@ pkgbase = python-skia-pathops
 	makedepends = cython
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.org/packages/source/s/skia-pathops/skia-pathops-0.4.0.zip
+	source = https://files.pythonhosted.org/packages/source/s/skia-pathops/skia-pathops-0.4.0.zip
 	sha256sums = cef6a6a263c8fa8f1149be7888ec41db1fa927caec6e7db5845c5e8560347987
 
 pkgname = python-skia-pathops
