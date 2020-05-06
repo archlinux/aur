@@ -7,8 +7,8 @@ pkgdesc='Execute a command whenever a device is adb-connected'
 arch=('x86_64')
 url="https://github.com/rom1v/autoadb"
 license=('Apache 2.0')
+depends=('android-tools')
 makedepends=('rust')
-
 source=("$pkgname::git+https://github.com/rom1v/autoadb.git")
 sha256sums=('SKIP')
 
