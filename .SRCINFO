@@ -1,0 +1,13 @@
+pkgbase = autoadb
+	pkgdesc = Execute a command whenever a device is adb-connected
+	pkgver = r2.6a540d9
+	pkgrel = 1
+	url = https://github.com/rom1v/autoadb
+	arch = x86_64
+	license = Apache 2.0
+	makedepends = rust
+	source = autoadb::git+https://github.com/rom1v/autoadb.git
+	sha256sums = SKIP
+
+pkgname = autoadb
+
