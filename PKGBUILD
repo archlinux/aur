@@ -5,7 +5,7 @@
 
 pkgname=mercurial-python3
 _pkgname=mercurial
-pkgver=5.3.2
+pkgver=5.4
 pkgrel=1
 pkgdesc='A scalable distributed SCM tool - built with Python 3'
 arch=(x86_64)
@@ -18,7 +18,7 @@ optdepends=('tk: for the hgk GUI')
 backup=(etc/mercurial/hgrc)
 source=(https://www.mercurial-scm.org/release/${_pkgname}-${pkgver}.tar.gz
         mercurial.profile)
-sha256sums=('fed24cbc314d31b0780309ee324c38d45476f00f555969551badcc2a1d5f1329'
+sha256sums=('1df8d1978aefcbb65dc51e3666a452583f47aeaf3c5682e4c00a3b23cd805d6a'
             '87427151713e689cd87dc50d50c048e0e58285815e4eb61962b50583532cbde5')
 
 build() {
