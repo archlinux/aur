@@ -13,9 +13,9 @@ makedepends=('boost' 'cmake' 'qt5-tools' 'qt5-datavis3d')
 depends=('gsl' 'glu' 'mesa' 'shared-mime-info' 'desktop-file-utils')
 
 # source download from git repo & prepare
-source=(https://sourceforge.net/projects/alphaplot/files/1.011/AlphaPlot%20Release%202020-2.zip)
+source=(https://github.com/narunlifescience/AlphaPlot/archive/1.011.zip)
 install=${pkgname}.install
-sha256sums=('447c1188ef546940f626a683b32e8e5ba41d89d3b1b8f9030cc1aa4564fd4e9fe9dec8b3dc80e9fa3702d1579831dc0239a197e8a9d618119432ab0e481d09c9')
+sha256sums=('ec561634dd26643072d3f841c4823e957af30c67c49a20c894bb38d2e2757dea08e2f2c185903e566bc13dbfff31bae953a1c56063c96c60cb5357400f40aea5')
 prepare() {
   cd "${srcdir}"
 }
