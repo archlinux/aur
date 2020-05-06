@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=healpy
 pkgname=python-${_pyname}-doc
-pkgver=1.12.10
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Documentation for Python iminuit module"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 makedepends=("python-${_pyname}=${pkgver}" 'python-numpydoc')
 source=("https://github.com/healpy/healpy/archive/${pkgver}.tar.gz"
         'fix_doc_warning.patch')
-md5sums=('ce75bb08a66a215c22af50a71bab006f'
+md5sums=('b2c61ad7aa6b5581173f80d6ff05565f'
          '685840f1c3333c81d00b9eea58aafc8e')
 
 prepare() {
