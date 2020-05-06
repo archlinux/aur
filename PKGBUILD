@@ -23,7 +23,6 @@ pkgver() {
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
     install -Dm755 "${srcdir}/${_pkgname}/pacwall.sh" "${pkgdir}/usr/bin/pacwall"
     install -Dm644 "${srcdir}/${_pkgname}/README.rst" "${pkgdir}/usr/share/doc/${_pkgname}/README.rst"
 }
