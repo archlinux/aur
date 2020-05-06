@@ -44,5 +44,5 @@ package() {
 	make DESTDIR="$pkgdir/" install
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 xsession/dwm.desktop "${pkgdir}/usr/share/xsession/dwm.desktop"
+    install -Dm644 xsession/dwm.desktop "${pkgdir}/usr/share/xsessions/dwm.desktop"
 }
