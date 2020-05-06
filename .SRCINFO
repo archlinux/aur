@@ -1,4 +1,4 @@
-pkgbase = ripmime
+pkgbase = ripmime-git
 	pkgdesc = Tool to extract the attached files out of a MIME package
 	pkgver = r13.a556ffe
 	pkgrel = 2
@@ -9,5 +9,5 @@ pkgbase = ripmime
 	source = git+https://github.com/inflex/ripMIME
 	md5sums = SKIP
 
-pkgname = ripmime
+pkgname = ripmime-git
 

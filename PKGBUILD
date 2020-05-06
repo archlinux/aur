@@ -1,6 +1,6 @@
 # Contributor: K. Piche <kpiche <at> rogers <dot> com>
 # Maintainer: Jenya Sovetkin <e.sovetkin <at> gmail <dot> com>
-pkgname=ripmime
+pkgname=ripmime-git
 pkgver=r13.a556ffe
 pkgrel=2
 arch=(any)
