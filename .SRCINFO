@@ -1,4 +1,4 @@
-pkgbase = rustop
+pkgbase = rustop-git
 	pkgdesc = All important information about your system in one place
 	pkgver = 0.5.0
 	pkgrel = 1
@@ -10,8 +10,8 @@ pkgbase = rustop
 	makedepends = git
 	provides = rustop
 	conflicts = rustop
-	source = rustop::git+https://github.com/wojciechkepka/rustop
+	source = rustop-git::git+https://github.com/wojciechkepka/rustop
 	sha1sums = SKIP
 
-pkgname = rustop
+pkgname = rustop-git
 

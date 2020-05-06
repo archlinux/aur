@@ -1,5 +1,5 @@
 # Maintainer: Wojciech Kepka <wojtek.kepka@protonmail.com>
-pkgname=rustop
+pkgname=rustop-git
 pkgver=0.5.0
 pkgrel=1
 epoch=
