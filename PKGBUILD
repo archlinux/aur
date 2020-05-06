@@ -1,9 +1,10 @@
-# Maintainer: AdmiralAkber
+# Maintainer: Felix Golatofski
+# Contributor: AdmiralAkber
 
 pkgname='thinkpad-yoga-scripts-git'
 _gitname='thinkpad-yoga-scripts'
-pkgver=20150103
-pkgrel=2
+pkgver=r57.5599d33
+pkgrel=1
 pkgdesc='A collection of scripts and systemd services for tablet functionality of the ThinkPad Yoga'
 url="https://github.com/admiralakber/thinkpad-yoga-scripts"
 source=('thinkpad-yoga-scripts::git+https://github.com/admiralakber/thinkpad-yoga-scripts')
@@ -14,7 +15,7 @@ optdepends=(
 	'onboard: onscreen keyboard'
 	'xf86-input-wacom: for digitizer support'
 	)
-md5sums=('SKIP')
+sha512sums=('SKIP')
 makedepends=('git')
 install=$pkgname.install
 

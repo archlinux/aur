@@ -1,7 +1,7 @@
 pkgbase = thinkpad-yoga-scripts-git
 	pkgdesc = A collection of scripts and systemd services for tablet functionality of the ThinkPad Yoga
-	pkgver = 20150103
-	pkgrel = 2
+	pkgver = r57.5599d33
+	pkgrel = 1
 	url = https://github.com/admiralakber/thinkpad-yoga-scripts
 	install = thinkpad-yoga-scripts-git.install
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = thinkpad-yoga-scripts-git
 	optdepends = onboard: onscreen keyboard
 	optdepends = xf86-input-wacom: for digitizer support
 	source = thinkpad-yoga-scripts::git+https://github.com/admiralakber/thinkpad-yoga-scripts
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = thinkpad-yoga-scripts-git
 
