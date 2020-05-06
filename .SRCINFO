@@ -7,7 +7,7 @@ pkgbase = sequoia-redactor
 	license = GPLv3
 	depends = qt5-base
 	source = https://raw.githubusercontent.com/AlexVIM1/sequoia/master/SequoiaRedactor-1.4-x86_64.tar.gz
-	md5sums = b14400463f2a41f9584e9bcaf3aa23d7
+	md5sums = 9a2c0b87cae543d1bd7d37e90530cfc7
 
 pkgname = sequoia-redactor
 

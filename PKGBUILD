@@ -12,7 +12,7 @@ checkdepends=()
 install=
 changelog=
 source=("https://raw.githubusercontent.com/AlexVIM1/sequoia/master/${_pkgname}-${pkgver}-${arch}.tar.gz")
-md5sums=('b14400463f2a41f9584e9bcaf3aa23d7')
+md5sums=('9a2c0b87cae543d1bd7d37e90530cfc7')
 build() {
     cd ${srcdir}/build
     qmake
