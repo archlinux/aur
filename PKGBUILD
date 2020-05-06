@@ -9,7 +9,6 @@ license=('GPL')
 url='https://github.com/Jackett/Jackett'
 depends=('curl' 'openssl-1.0')
 options=('!strip' 'staticlibs')
-install='jackett.install'
 
 source=("jackett.service"
         "jackett.sysusers"

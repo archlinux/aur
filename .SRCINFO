@@ -3,7 +3,6 @@ pkgbase = jackett
 	pkgver = 0.16.304
 	pkgrel = 1
 	url = https://github.com/Jackett/Jackett
-	install = jackett.install
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
