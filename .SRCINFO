@@ -1,0 +1,24 @@
+pkgbase = python-copier
+	pkgdesc = Library and command-line utility for rendering projects templates
+	pkgver = 3.0.6
+	pkgrel = 1
+	url = https://github.com/pykong/copier
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-yaml
+	depends = python-jinja
+	depends = python-regex
+	depends = python-plumbum
+	depends = python-pathspec
+	depends = python-pydantic
+	depends = python-colorama
+	depends = python-packaging
+	depends = python-pytest-xdist
+	depends = python-pyyaml-include
+	source = python-copier-3.0.6.tar.gz::https://files.pythonhosted.org/packages/64/3b/4f010ed6621ce9ad87a1e93f3305b7573eda619cdec0ad8c402de7464f81/copier-3.0.6.tar.gz
+	sha256sums = 848b639ae5bef036e50a051cd2f5db26ee1c8205055b805fbe6e098d03cd4be2
+
+pkgname = python-copier
+
