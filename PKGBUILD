@@ -2,16 +2,13 @@
 
 pkgname=hush3
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='HUSH (fork of KMD) full node that supports zaddrs'
 url='http://github.com/MyHush/hush3'
 arch=('x86_64')
 license=('GPL3')
-depends=('libsodium')
-makedepends=('rust' 'gcc' 'ncurses' 'automake' 
-            'curl' 'unzip' 'wget' 'git' 
-            'python' 'libtool' 'autoconf' 'm4'
-            'binutils')
+depends=('libsodium' 'lib32-zlib')
+makedepends=('unzip' 'wget' 'git' 'python' 'pkgconf' 'rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MyHush/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('b1c8e511468a0c74b0237331c70a9edc2c4dfb281ba0fc6e1cc635185628eb1a')
 
