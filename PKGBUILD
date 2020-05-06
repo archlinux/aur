@@ -1,7 +1,7 @@
 # Maintainer: quenyen
 pkgname=weatherreport
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line tool to get the current weather conditions."
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://gitlab.com/chrisfair/weatherreport"
