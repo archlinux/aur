@@ -19,8 +19,10 @@ pkgver() {
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
     install -Dm755 "${srcdir}/${_pkgname}/viter.py" "${pkgdir}/usr/bin/viter"
     ln -s "${pkgdir}/usr/bin/viter" "${pkgdir}/usr/bin/viter-pager"
-    install -Dm644 "${srcdir}/${_pkgname}/README.rst" "${pkgdir}/usr/share/doc/${_pkgname}/README.rst"
+
+    install -Dm644 \
+    "${srcdir}/${_pkgname}/README.rst" \
+    "${pkgdir}/usr/share/doc/${_pkgname}/README.rst"
 }
