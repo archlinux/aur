@@ -29,5 +29,5 @@ build() {
 }
 
 package() {
-  install -Dm755 ${srcdir}/gopath/bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
+  install -Dm755 "${srcdir}"/gopath/bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }
