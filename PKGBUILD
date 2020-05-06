@@ -17,11 +17,11 @@ source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}-Linux"
+	cd "$srcdir/ShadowRePlay-Linux"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}-Linux"
+	cd "$srcdir/ShadowRePlay-Linux"
 	./install
 }
