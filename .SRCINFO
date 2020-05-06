@@ -1,0 +1,17 @@
+pkgbase = dmenu-tiyn-git
+	pkgdesc = This is the dmenu build of tiyn. It includes the border, center and password patches.
+	pkgver = 4.9.r7.3a6a2a8
+	pkgrel = 1
+	url = https://github.com/tiyn/dmenu
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	provides = dmenu
+	conflicts = dmenu
+	replaces = dmenu
+	source = git+https://github.com/tiyn/dmenu
+	md5sums = SKIP
+
+pkgname = dmenu-tiyn-git
+
