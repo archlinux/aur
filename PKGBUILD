@@ -2,12 +2,12 @@ pkgname=foxify-cli-git
 conflicts=('foxify-cli')
 provides=('foxify-cli')
 pkgver=998c0d2
-pkgrel=1
+pkgrel=2
 pkgdesc='Firefox Command-Line Theme Manager'
 arch=(any)
 url='https://github.com/M4cs/foxify-cli'
 license=(GPL3)
-depends=(python python-setuptools python-requests python-ruamel-yaml python-psutil python-fuzzywuzzy python-tqdm python-colorama python-levenshtein)
+depends=(python python-setuptools python-requests python-ruamel-yaml python-psutil python-fuzzywuzzy python-tqdm python-colorama python-levenshtein python-gitpython)
 source=("foxify-cli-git::git+https://github.com/M4cs/foxify-cli.git")
 sha256sums=('SKIP')
 
