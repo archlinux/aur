@@ -1,4 +1,4 @@
-# Maintainer: Max Kueng <me [at] maxkueng [dot] com>
+# Maintainer: afward <archlinux.gargoyley [at] simplelogin [dot] co>
 pkgname=yakyak
 pkgver=1.5.4
 _pkgid="${pkgname}-${pkgver}"
