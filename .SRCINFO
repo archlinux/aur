@@ -1,6 +1,6 @@
 pkgbase = elan
 	pkgdesc = A video and audio annotation tool
-	pkgver = 5.4
+	pkgver = 5.9
 	pkgrel = 1
 	url = https://tla.mpi.nl/tools/tla-tools/elan/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = elan
 	makedepends = maven
 	makedepends = jdk8-openjdk
 	depends = java-runtime
-	source = http://www.mpi.nl/tools/elan/ELAN_5-4_src.zip
+	source = https://www.mpi.nl/tools/elan/ELAN_5-9_src.zip
 	source = elan
-	sha256sums = 8838a06f1a5fb27509896799f0312c60c36c07b6f840c78700e01b1fbf275ae6
+	sha256sums = 7562128003f317fd698d5b9fa92bf86c1b8d6643fa958fd09b036542db1135ba
 	sha256sums = c933caffc0daf1655ffb91564d234209205d9f49e0006c432d63a97a16f43363
 
 pkgname = elan
