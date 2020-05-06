@@ -9,7 +9,6 @@ url='https://github.com/ncopa/xfce-polkit'
 license=('GPL')
 depends=('polkit' 'libxfce4ui')
 provides=('polkit-gnome')
-conflicts=('xfce-polkit-git' 'polkit-gnome')
 source=("https://github.com/ncopa/xfce-polkit/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         xfce-polkit.desktop)
 b2sums=('f37a9e905457dbcc2e76cb13f4e6be2ca10082d6a1a09732215fb0eadf1360cb85c78154f20de8ffdca6ad1f9d0920773fe655c7c45fde615741a2130cb5d09d'
