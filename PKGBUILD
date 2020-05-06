@@ -1,7 +1,7 @@
 # Maintainer: Miodrag Tokić
 
 pkgname=slack-cleaner
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Delete slack message and files'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 options=(!emptydirs)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sgratzl/slack-cleaner/archive/v$pkgver.tar.gz")
-sha256sums=('ea0f946db7a07e486a1752f73e368ced0ae3d79bfb72b36236f80565a1f180b1')
+sha256sums=('d5c7349599d67acf230ffdc46270317f7168f662166f663f0bb3bb51d60d65ad')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
