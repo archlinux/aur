@@ -17,7 +17,7 @@ source=("git+https://github.com/loki-project/$_gitname.git#tag=v$pkgver" # githu
         'lokinet.sysusers'
         'lokinet.tmpfiles')
 sha256sums=('SKIP'
-            '15518029aa39bbd15b18611037177175d0c66ac9d3c0f7f2d1e3eda289d31eba'
+            'ce7f40f91c1de020466f82fb504e261e66774ef5f97a9d914dbe61236a1baf01'
             '21c9bc83f8466ab17fa927561d7f24f930f97c996a8aa0fbbbbb2b65cb97b342'
             '6ef779170b72856bbb8df40c34a808acffddd156684bdb66a55e71d50cf95841'
             '137cf7eeebc8737d62f3ccfad2398fb1c442a91cb9db7d650429b218dd949a00'
