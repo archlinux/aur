@@ -2,7 +2,7 @@
 # Contributor: Ethan Schoonover
 
 pkgname=gam
-pkgver=5.05
+pkgver=5.07
 pkgrel=1
 pkgdesc="Command-line tool for Google GSuite admins to manage settings quickly and easily"
 arch=('any')
@@ -26,8 +26,8 @@ source=(
     "gam.sh"
 )
 
-sha256sums=('5fb3ff618f8bd4c7c5caaa9612660f22a8074eff3e4c19adad62e55bff04e122'
-            '202e3566d837c37526174fb6311232c06d90e3786578668aa58ef3eb0648054a'
+sha256sums=('7508661f12ea1c89b117afb38c956f5ec5cbb96dc51b5a82315ce56a5d89176e'
+            '3e1dcfd32d3635143c220b07752c46af523b6a875b80f01108a43144669dec2a'
             'f8613546b8d4a51f05342d3680553c20a2e0995c3be90e469f1da3bb83ca172e')
 
 prepare() {
@@ -42,16 +42,18 @@ package() {
     touch "$pkgdir/etc/$pkgname/noupdatecheck.txt"
     touch "$pkgdir/etc/$pkgname/nobrowser.txt"
 
-    for file in controlflow display fileutils transport utils var; do
-        install -Dm644 "$pkgname-$pkgver/src/$file.py" \
-            -t "$pkgdir/usr/share/$pkgname/"
-    done
+    mkdir -p "$pkgdir/usr/share/$pkgname"
 
-    cp -r "$pkgname-$pkgver"/src/{auth,gapi} "$pkgdir/usr/share/$pkgname"
+    cp -r "$pkgname-$pkgver"/src/gam/ "$pkgdir/usr/share/$pkgname"
+
+    # Upstream wants to insert themselves into every facet of where they should not be.
+    touch "$pkgdir/usr/share/$pkgname/gam/noupdatecheck.txt"
+
     find "$pkgdir/usr/share/$pkgname" -type f -exec chmod 644 {} +
     find "$pkgdir/usr/share/$pkgname" -type d -exec chmod 755 {} +
     find "$pkgdir/usr/share/$pkgname" -name '*_test.py' -exec rm {} +
 
     install -Dm755 "$pkgname-$pkgver/src/gam.py" -t "$pkgdir/usr/share/$pkgname/"
     install -Dm755 gam.sh "$pkgdir/usr/bin/gam"
+
 }
