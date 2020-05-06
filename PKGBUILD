@@ -2,7 +2,7 @@
 
 pkgname=libjpeg-xl-git
 pkgver=r4.gf84edfb
-pkgrel=1
+pkgrel=2
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
@@ -45,6 +45,10 @@ sha256sums=('SKIP'
             '4011b3dccad3954d7090c8ab70e615ef23ba29958b888e88ecd85d76eaba7372')
 
 prepare() {
+    local _mingw_commit
+    _mingw_commit="$(git -C jpeg-xl submodule | awk '/mingw-std-threads/ { sub(/^-/, "", $1); print $1 }')"
+    git -C mingw-std-threads remote add upstream https://github.com/meganz/mingw-std-threads.git
+    git -C mingw-std-threads fetch upstream "$_mingw_commit"
     git -C jpeg-xl submodule init
     git -C jpeg-xl config --local submodule.third_party/brotli.url "${srcdir}/brotli"
     git -C jpeg-xl config --local submodule.third_party/lodepng.url "${srcdir}/lodepng"
