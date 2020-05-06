@@ -2,8 +2,8 @@
 
 pkgname=('volantes-cursors')
 commit_hash=d1d290ff42cc4fa643716551bd0b02582b90fd2f
-pkgver=20200209.0
-pkgrel=1
+pkgver=20200506.0
+pkgrel=2
 pkgdesc="Cursors theme"
 arch=('any')
 makedepends=(
