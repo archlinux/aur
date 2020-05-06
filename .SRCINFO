@@ -1,0 +1,16 @@
+pkgbase = dwmblocks-ekollof-git
+	pkgdesc = Emiel Kollof's personal patched build of dwmblocks.
+	pkgver = 0.1r5.03a4cc7
+	pkgrel = 1
+	url = https://git.hackerheaven.org/ekollof/dwmblocks-ekollof.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libx11
+	provides = dwmblocks
+	conflicts = dwmblocks
+	source = git+https://git.hackerheaven.org/ekollof/dwmblocks-ekollof.git
+	md5sums = SKIP
+
+pkgname = dwmblocks-ekollof-git
+
