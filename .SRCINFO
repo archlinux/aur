@@ -1,0 +1,15 @@
+pkgbase = torrentfind-git
+	pkgdesc = A cli tool that finds torrents on 1337x.to
+	pkgver = r2.43dc47f
+	pkgrel = 1
+	url = https://gitlab.com/capnhawkbill/torrentfind
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = torrentfind-git
+	conflicts = torrentfind-git
+	source = torrentfind-git::git+https://gitlab.com/capnhawkbill/torrentfind.git
+	md5sums = SKIP
+
+pkgname = torrentfind-git
+
