@@ -2,7 +2,7 @@
 
 _reponame=bukubrow-host
 pkgname=bukubrow
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="Host application for the Bukubrow WebExtension"
 url="https://github.com/samhh/$_reponame/"
@@ -10,7 +10,7 @@ makedepends=('cargo')
 arch=('x86_64')
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/samhh/$_reponame/archive/v$pkgver.tar.gz")
-md5sums=('877e7b395b94e1e2d6e01f8a5d85b4f9')
+md5sums=('7427a6e088d0a5945a64249c45554194')
 
 build() {
 	cd "$_reponame-$pkgver"
