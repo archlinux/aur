@@ -1,0 +1,18 @@
+pkgbase = shadowreplay-git
+	pkgdesc = Shadowplay's Replay Feature On Linux For Nvidia, AMD and Intel.
+	pkgver = r37.b3315e0
+	pkgrel = 1
+	url = https://github.com/MAPReiff/ShadowRePlay-Linux.git
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = ffmpeg
+	depends = libnotify
+	optdepends = xbindkeys
+	provides = shadowreplay
+	conflicts = shadowreplay
+	source = git+https://github.com/MAPReiff/ShadowRePlay-Linux.git
+	md5sums = SKIP
+
+pkgname = shadowreplay-git
+
