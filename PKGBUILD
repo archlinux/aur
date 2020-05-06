@@ -1,6 +1,6 @@
 # Maintainer: jD91mZM2 <me@krake.one>
 pkgname=cargo-release
-pkgver=0.12.4
+pkgver=0.13.3
 pkgrel=1
 pkgdesc="Cargo subcommand \"release\": everything about releasing a rust crate."
 url="https://github.com/sunng87/cargo-release"
@@ -10,12 +10,13 @@ makedepends=("rust")
 optdepends=()
 depends=()
 source=("https://github.com/sunng87/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('63195fd2880b6ab80e4f6969e1ff6bb04cd48b378b002152c2c160bdd90c5f18')
+sha256sums=('eda15d80c3d0c04820e5773c69853794afe6f3ed275d6646ac0b0cfd55972c59')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    cargo build --release
+    cargo build --locked --release --all-features
 }
+
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     install -Dm 644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
