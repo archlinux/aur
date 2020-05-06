@@ -1,6 +1,6 @@
 pkgbase = betterdiscord
 	pkgdesc = Discord extension that introduces new features like BTTV emotes and plugin support.
-	pkgver = 0.2.82.r450.1a6648eb
+	pkgver = 0.3.0i.r0.g4114a6e
 	pkgrel = 1
 	url = https://betterdiscord.net/home/
 	install = BetterDiscord.install

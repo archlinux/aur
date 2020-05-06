@@ -5,7 +5,8 @@
 # http://www.simonizor.gq/discorddownloader.html
 
 pkgname=betterdiscord
-pkgver=0.2.82.r450.1a6648eb
+_pkgname=BetterDiscordApp
+pkgver=0.3.0i.r0.g4114a6e
 pkgrel=1
 pkgdesc='Discord extension that introduces new features like BTTV emotes and plugin support.'
 arch=('any')
@@ -17,6 +18,11 @@ install='BetterDiscord.install'
 source=('git+https://github.com/Jiiks/BetterDiscordApp.git#commit=4114a6ee266d7ec5c6d980b200e282b9d2c28b7e' LICENSE)
 sha512sums=('SKIP'
             'e2bb20271117ebef69eab2d505204dcfb83334e596c5ce02e5f5e1950ba502b9485ebb2005f9df74ac692ba4a99cce869942611b07bba4d588247d53bd21efcc')
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
 
 package() {
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
