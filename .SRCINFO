@@ -1,6 +1,6 @@
 pkgbase = rustop-git
 	pkgdesc = All important information about your system in one place
-	pkgver = 0.
+	pkgver = 20200506.d134a9a
 	pkgrel = 2
 	url = https://github.com/wojciechkepka/rustop
 	arch = x86_64

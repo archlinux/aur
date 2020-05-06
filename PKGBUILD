@@ -1,6 +1,6 @@
 # Maintainer: Wojciech Kepka <wojtek.kepka@protonmail.com>
 pkgname=rustop-git
-pkgver=0.
+pkgver=20200506.d134a9a
 pkgrel=2
 epoch=
 pkgdesc="All important information about your system in one place"
