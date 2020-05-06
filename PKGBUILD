@@ -5,7 +5,7 @@
 
 pkgname=vivaldi-codecs-ffmpeg-extra-bin-arm64
 pkgver=81.0.4044.129
-pkgrel=1
+pkgrel=2
 pkgdesc='Prebuilt ffmpeg-codecs package for Vivaldi for arm64'
 arch=('aarch64')
 url='https://packages.ubuntu.com/groovy/arm64/chromium-codecs-ffmpeg-extra/download'
@@ -19,8 +19,8 @@ conflicts=(
 )
 source=(http://ports.ubuntu.com/ubuntu-ports/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_${pkgver}-0ubuntu1_arm64.deb
         vivaldi-codecs-ffmpeg-extra-bin.install)
-sha256sums=('3027823d4f96be52f6ad6eebb48452efab3e86e1a05c9a09a3745d416e38176a'
-            '7ded5edc0c45ab69a0d192124f437094dd90e858dceaaa649ee67325c128a290')
+sha256sums=('7ded5edc0c45ab69a0d192124f437094dd90e858dceaaa649ee67325c128a290'
+            'c48d913c6080dbc6477d1d0a099c8ef5eda3959ed4abd6311dc93a338ce0a012')
 install=vivaldi-codecs-ffmpeg-extra-bin.install
 
 prepare() {
