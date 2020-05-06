@@ -1,7 +1,7 @@
 pkgbase = infer
 	pkgdesc = Static Analyzer by Facebook
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/facebook/infer
 	arch = x86_64
 	license = BSD
