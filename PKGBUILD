@@ -5,7 +5,7 @@ pkgver=1.945
 pkgrel=1
 pkgdesc='IMAP synchronisation, sync, copy or migration tool'
 arch=('any')
-url='http://www.linux-france.org/prj/'
+url='https://imapsync.lamiral.info/'
 license=('GPL')
 depends=('cpanminus' 'perl-cgi' 'perl-crypt-openssl-rsa' 'perl-data-uniqid' 'perl-date-manip'
         'perl-file-copy-recursive' 'perl-file-tail' 'perl-html-parser' 'perl-io-socket-inet6'
