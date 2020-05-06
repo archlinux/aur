@@ -5,45 +5,52 @@
 # Contributor: Albert De La Fuente Vigliotti <>
 
 pkgname=xiphos
-pkgver=4.1.0
-pkgrel=7
+pkgver=4.2.0
+pkgrel=1
 pkgdesc='A Bible study tool for GTK3'
 arch=('x86_64' 'i686')
 url='http://xiphos.org'
-depends=('libbiblesync.so<2.0.0'
-         'dbus-glib'
+license=('GPL2')
+depends=('dbus-glib'
          'gtkhtml4'
-         'libgsf'
-         'sword>=1.8.1'
+         'libbiblesync.so'
+         'minizip'
+         'sword'
          'webkit2gtk')
-makedepends=('docbook-utils'
+makedepends=('appstream-glib'
+             'cmake'
+             'docbook-utils'
              'gnome-common'
              'gnome-doc-utils'
+             'gtkmm'
              'intltool'
-             'python2')
-license=('GPL2')
+             'libffi'
+             'libxml2'
+             'python'
+             'zlib'
+             'zip')
 provides=('gnomesword')
 conflicts=("${provides[@]}")
 replaces=("${provides[@]}")
-source=("xiphos-$pkgver.tar.gz::https://github.com/crosswire/xiphos/archive/$pkgver.tar.gz"
-	    "http://deb.debian.org/debian/pool/main/x/xiphos/xiphos_$pkgver.1+dfsg1-1.debian.tar.xz")
-sha256sums=('52e2f415339b6ccef7049f5812707c617b4dbdb6ba40bf0f5a5210e04f75f849'
-            'f0cd9a894dce646dcd3de81e5020cfa2c931f3341a3eaf4f5990d79b0618fa8b')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/crosswire/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('6f4734747c9dd0de27b672c4720ff1613f3937d88fbc0fe8a0b77d8ee562a8fa')
 
-prepare () {
-  cd "$pkgname-$pkgver"
-  sed -i '0,/python/s//python2/' waf
-  patch -Np1 < ../debian/patches/0016*
-  patch -Np1 < ../debian/patches/0017*
+prepare() {
+    cd "$pkgname-$pkgver"
+    # TODO: Remove after upstream source package released (not the git archive)
+    echo $pkgver > cmake/source_version.txt
 }
 
 build() {
-  cd "$pkgname-$pkgver"
-  python2 ./waf --prefix=/usr --gtk=3 --enable-webkit2 configure
-  python2 ./waf --prefix=/usr --gtk=3 --enable-webkit2 build
+    cd "$pkgname-$pkgver"
+    cmake -S . -B build \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DGTKHTML=ON
+    make -C build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  python2 ./waf --destdir="$pkgdir" --no-post-install install
+    cd "$pkgname-$pkgver"
+    make -C build DESTDIR="$pkgdir" install
 }

@@ -1,29 +1,34 @@
 pkgbase = xiphos
 	pkgdesc = A Bible study tool for GTK3
-	pkgver = 4.1.0
-	pkgrel = 7
+	pkgver = 4.2.0
+	pkgrel = 1
 	url = http://xiphos.org
 	arch = x86_64
 	arch = i686
 	license = GPL2
+	makedepends = appstream-glib
+	makedepends = cmake
 	makedepends = docbook-utils
 	makedepends = gnome-common
 	makedepends = gnome-doc-utils
+	makedepends = gtkmm
 	makedepends = intltool
-	makedepends = python2
-	depends = libbiblesync.so<2.0.0
+	makedepends = libffi
+	makedepends = libxml2
+	makedepends = python
+	makedepends = zlib
+	makedepends = zip
 	depends = dbus-glib
 	depends = gtkhtml4
-	depends = libgsf
-	depends = sword>=1.8.1
+	depends = libbiblesync.so
+	depends = minizip
+	depends = sword
 	depends = webkit2gtk
 	provides = gnomesword
 	conflicts = gnomesword
 	replaces = gnomesword
-	source = xiphos-4.1.0.tar.gz::https://github.com/crosswire/xiphos/archive/4.1.0.tar.gz
-	source = http://deb.debian.org/debian/pool/main/x/xiphos/xiphos_4.1.0.1+dfsg1-1.debian.tar.xz
-	sha256sums = 52e2f415339b6ccef7049f5812707c617b4dbdb6ba40bf0f5a5210e04f75f849
-	sha256sums = f0cd9a894dce646dcd3de81e5020cfa2c931f3341a3eaf4f5990d79b0618fa8b
+	source = xiphos-4.2.0.tar.gz::https://github.com/crosswire/xiphos/archive/4.2.0.tar.gz
+	sha256sums = 6f4734747c9dd0de27b672c4720ff1613f3937d88fbc0fe8a0b77d8ee562a8fa
 
 pkgname = xiphos
 
