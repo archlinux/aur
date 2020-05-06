@@ -1,0 +1,18 @@
+pkgbase = kepler-git
+	pkgdesc = Kepler is an implementation of the MimbleWimble protocol enabling Confidential Assets
+	pkgver = r2268.d6a11656
+	pkgrel = 1
+	url = https://github.com/keplernetwork/kepler
+	arch = x86_64
+	license = Apache
+	makedepends = clang
+	makedepends = git
+	makedepends = rust
+	depends = ncurses
+	provides = kepler
+	conflicts = kepler
+	source = git+https://github.com/keplernetwork/kepler.git
+	sha256sums = SKIP
+
+pkgname = kepler-git
+
