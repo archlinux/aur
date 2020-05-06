@@ -11,6 +11,7 @@ pkgbase = something-for-reddit
 	makedepends = itstool
 	makedepends = python
 	makedepends = yelp-tools
+	makedepends = sassc
 	depends = desktop-file-utils
 	depends = gobject-introspection
 	depends = gtk3

@@ -1,4 +1,5 @@
-# Maintainer: Jameson Pugh <imntreal@gmail.com>
+# Maintainer: undevdecatos
+# Old maintainer: Jameson Pugh <imntreal@gmail.com>
 # Contributor: ELmoussaoui Bilal <bil.elmoussaoui@gmail.com>
 
 pkgname=something-for-reddit
