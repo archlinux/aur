@@ -11,7 +11,7 @@ license=('Apache')
 provides=("${_pkgbase}")
 depends=()
 depends=('lm_sensors' 'grpc' 'boost-libs')
-makedepends=('clang>=9.0' 'cmake>=3.13' 'boost' 'libx11' 'protobuf')
+makedepends=('clang>=9.0' 'cmake>=3.13' 'boost' 'protobuf' 'libx11' 'pstreams' 'libxnvctrl')
 source=("${_pkgbase}::git+https://github.com/hbriese/${_pkgbase}.git")
 sha512sums=('SKIP')
 
@@ -28,7 +28,7 @@ build() {
   export CXX=clang++
   export CCACHE_DISABLE=1
   cmake -DCMAKE_BUILD_TYPE=Release \
-        -DNVIDIA_SUPPORT=OFF \
+        -DNVIDIA_SUPPORT=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         ..
   make
