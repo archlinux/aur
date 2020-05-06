@@ -2,14 +2,14 @@ pkgbase = perl-http-dav
 	pkgdesc = A client module for the WebDAV protocol
 	pkgver = 0.49
 	pkgrel = 1
-	url = http://search.cpan.org/dist/HTTP-DAV
+	url = https://metacpan.org/release/HTTP-DAV
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl-libwww
 	depends = perl-uri
 	depends = perl-xml-dom
-	source = http://search.cpan.org/CPAN/authors/id/C/CO/COSIMO/HTTP-DAV-0.49.tar.gz
+	source = https://cpan.metacpan.org/authors/id/C/CO/COSIMO/HTTP-DAV-0.49.tar.gz
 	b2sums = 202a37766a949441417e6e88de02dcb238f811408f16cc86ebb5187f0cd0c8b780e322b3704dbc115225232c1d815cbe9d5fdb8ac7755e222c7eac5357ea0a81
 
 pkgname = perl-http-dav
