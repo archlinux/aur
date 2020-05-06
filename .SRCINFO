@@ -6,6 +6,7 @@ pkgbase = torrentfind-git
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = cargo
 	provides = torrentfind-git
 	conflicts = torrentfind-git
 	source = torrentfind-git::git+https://gitlab.com/capnhawkbill/torrentfind.git

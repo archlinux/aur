@@ -8,7 +8,7 @@ url="https://gitlab.com/capnhawkbill/torrentfind"
 license=('GPL')
 groups=()
 depends=()
-makedepends=('git')
+makedepends=('git' 'cargo')
 provides=("$pkgname")
 conflicts=("$pkgname")
 replaces=()
@@ -31,5 +31,5 @@ build() {
 }
 
 package() {
-	install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
+	install -Dm 755 target/release/torrentfind -t "${pkgdir}/usr/bin"
 }
