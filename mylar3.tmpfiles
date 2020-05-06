@@ -1,0 +1,7 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/mylar3 0755 mylar3 mylar3
+Z /var/lib/mylar3 - mylar3 mylar3
+Z /usr/lib/mylar3 - mylar3 mylar3
+d /etc/mylar3 0755 mylar3 mylar3
+Z /etc/mylar3 - mylar3 mylar3
+L /var/log/mylar3 - - - - /var/lib/mylar3/Logs

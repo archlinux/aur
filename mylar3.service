@@ -1,0 +1,12 @@
+[Unit]
+Description=mylar3
+
+[Service]
+ExecStart=/usr/bin/python /usr/lib/mylar3/Mylar.py --config /var/lib/mylar3/mylar3.ini --datadir /var/lib/mylar3 --nolaunch
+Type=simple
+User=mylar3
+Group=mylar3
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
