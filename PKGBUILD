@@ -2,7 +2,7 @@
 
 pkgname=dosbox-staging-git
 _pkgname=dosbox-staging
-pkgver=v0.75.0.pre.835.g6f0786b3
+pkgver=0.76.0.alpha.40.g0d9670ad
 pkgrel=1
 pkgdesc="A modernized DOSBox project using current development practices and tools, fixing issues, adding features that better support today's systems"
 arch=('any')
@@ -29,7 +29,7 @@ prepare() {
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
-  git describe | sed 's/-/./g'
+  git describe | sed -e 's/-/./g' -e 's/^v//g'
 }
 
 build() {
