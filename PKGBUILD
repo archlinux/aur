@@ -2,9 +2,9 @@
 
 pkgname=snapd-glib
 pkgdesc="Library to allow GLib/Qt based applications access to snapd, the daemon that controls Snaps"
-depends=('libsoup' 'json-glib')
+depends=('libsoup' 'json-glib' 'gobject-introspection')
 pkgver=1.57
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/snapcore/snapd-glib"
 license=('GPL3')
