@@ -12,7 +12,7 @@ replaces=('linvst3')
 conflicts=('linvst3')
 provides=('linvst3' "${pkgname}")
 source=("https://github.com/osxmidi/LinVst3/releases/download/1.8/LinVst3-${pkgver}-Debian-Buster.zip")
-sha256sums=('5111ef5a0683267781ae6f943e954d1c1ebb225b886b12f6558aab5397a8d88d')
+sha256sums=('6ba8644872a093959615b3a70817530214a1fb1bfaf98bfaeb803349e912f349')
 
 package() {
 	cd "${srcdir}/LinVst3-${pkgver}-Debian-Buster/embedded/"
