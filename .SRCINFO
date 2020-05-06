@@ -1,6 +1,6 @@
 pkgbase = nginx-mainline-openssl-weak
 	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, mainline release, with weak openssl ciphers enabled for IE8
-	pkgver = 1.13.7+openssl_1.1.0g
+	pkgver = 1.17.10+openssl_1.1.1g
 	pkgrel = 1
 	url = https://nginx.org
 	install = nginx.install
@@ -12,7 +12,7 @@ pkgbase = nginx-mainline-openssl-weak
 	depends = openssl
 	depends = geoip
 	depends = mailcap
-	provides = nginx=1.13.7
+	provides = nginx=1.17.10
 	conflicts = nginx
 	backup = etc/nginx/fastcgi.conf
 	backup = etc/nginx/fastcgi_params
@@ -23,14 +23,21 @@ pkgbase = nginx-mainline-openssl-weak
 	backup = etc/nginx/uwsgi_params
 	backup = etc/nginx/win-utf
 	backup = etc/logrotate.d/nginx
-	source = https://nginx.org/download/nginx-1.13.7.tar.gz
+	source = https://nginx.org/download/nginx-1.17.10.tar.gz
+	source = https://nginx.org/download/nginx-1.17.10.tar.gz.asc
 	source = service
 	source = logrotate
-	source = https://www.openssl.org/source/openssl-1.1.0g.tar.gz
-	md5sums = 5fcd056b40cb5c47b053fb14a2a89e7d
-	md5sums = ef491e760e7c1ffec9ca25441a150c83
-	md5sums = 6a01fb17af86f03707c8ae60f98a2dc2
-	md5sums = ba5f1b8b835b88cadbce9b35ed9531a6
+	source = https://www.openssl.org/source/openssl-1.1.1g.tar.gz
+	source = https://www.openssl.org/source/openssl-1.1.1g.tar.gz.asc
+	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
+	validpgpkeys = 8657ABB260F056B1E5190839D9C4D26D0E604491
+	validpgpkeys = 7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C
+	sha512sums = 0b49169bc49e07733862e09ec5bfa93601ffa57379f98d52a115e511502905baf4cd33b73a03d74416f8c6ffa95ebf4459fc934bd40bfdf54d5b6d35ac4f8756
+	sha512sums = SKIP
+	sha512sums = 4f90db6b8b5c13762b96ddff9ca4e846762d46b90be27c7c9d54cec6f7f12fc95585f8455919296edb0255405dd80af8ee86780b805631b72eb74ee59f359715
+	sha512sums = 9232342c0914575ce438c5a8ee7e1c25b0befb457a2934e9cb77d1fe9a103634ea403b57bc0ef0cd6cf72248aee5e5584282cea611bc79198aeac9a65d8df5d7
+	sha512sums = 01e3d0b1bceeed8fb066f542ef5480862001556e0f612e017442330bbd7e5faee228b2de3513d7fc347446b7f217e27de1003dc9d7214d5833b97593f3ec25ab
+	sha512sums = SKIP
 
 pkgname = nginx-mainline-openssl-weak
 

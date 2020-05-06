@@ -1,45 +1,51 @@
-# Maintainer: Haruue Icymoon <haruue@caoyue.com.cn>
-# Contributor:  Giancarlo Razzolini <grazzolini@archlinux.org>
-# Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Haruue Icymoon <haruue@caoyue.com.cn>
+# Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Sébastien Luttringer
 # Contributor: Drew DeVault
 
 pkgname=nginx-mainline-openssl-weak
-pkgver=1.13.7+openssl_1.1.0g
+pkgver=1.17.10+openssl_1.1.1g
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release, with weak openssl ciphers enabled for IE8'
 arch=(x86_64)
 _basename=nginx
-_nginx_ver=1.13.7
-_openssl_ver="1.1.0g"
+_nginx_ver=1.17.10
+_openssl_ver="1.1.1g"
 url='https://nginx.org'
 license=(custom)
-depends=(pcre zlib openssl geoip mailcap)
+depends=('pcre' 'zlib' 'openssl' 'geoip' 'mailcap')
 makedepends=(mercurial)
-backup=(etc/nginx/fastcgi.conf
-        etc/nginx/fastcgi_params
-        etc/nginx/koi-win
-        etc/nginx/koi-utf
-        etc/nginx/nginx.conf
-        etc/nginx/scgi_params
-        etc/nginx/uwsgi_params
-        etc/nginx/win-utf
-        etc/logrotate.d/nginx)
+backup=('etc/nginx/fastcgi.conf'
+        'etc/nginx/fastcgi_params'
+        'etc/nginx/koi-win'
+        'etc/nginx/koi-utf'
+        'etc/nginx/nginx.conf'
+        'etc/nginx/scgi_params'
+        'etc/nginx/uwsgi_params'
+        'etc/nginx/win-utf'
+        'etc/logrotate.d/nginx')
 install=nginx.install
 provides=("nginx=$_nginx_ver")
 conflicts=('nginx')
-source=($url/download/nginx-$_nginx_ver.tar.gz
+source=($url/download/nginx-$_nginx_ver.tar.gz{,.asc}
         service
         logrotate
-	    "https://www.openssl.org/source/openssl-$_openssl_ver.tar.gz")
-#validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
-md5sums=('5fcd056b40cb5c47b053fb14a2a89e7d'
-         'ef491e760e7c1ffec9ca25441a150c83'
-         '6a01fb17af86f03707c8ae60f98a2dc2'
-         'ba5f1b8b835b88cadbce9b35ed9531a6')
+	"https://www.openssl.org/source/openssl-$_openssl_ver.tar.gz"{,.asc})
+validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
+              '8657ABB260F056B1E5190839D9C4D26D0E604491'
+              '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
+sha512sums=('0b49169bc49e07733862e09ec5bfa93601ffa57379f98d52a115e511502905baf4cd33b73a03d74416f8c6ffa95ebf4459fc934bd40bfdf54d5b6d35ac4f8756'
+            'SKIP'
+            '4f90db6b8b5c13762b96ddff9ca4e846762d46b90be27c7c9d54cec6f7f12fc95585f8455919296edb0255405dd80af8ee86780b805631b72eb74ee59f359715'
+            '9232342c0914575ce438c5a8ee7e1c25b0befb457a2934e9cb77d1fe9a103634ea403b57bc0ef0cd6cf72248aee5e5584282cea611bc79198aeac9a65d8df5d7'
+            '01e3d0b1bceeed8fb066f542ef5480862001556e0f612e017442330bbd7e5faee228b2de3513d7fc347446b7f217e27de1003dc9d7214d5833b97593f3ec25ab'
+            'SKIP')
 
 _common_flags=(
   --with-compat
+  --with-debug
   --with-file-aio
   --with-http_addition_module
   --with-http_auth_request_module
