@@ -1,5 +1,5 @@
 pkgbase = st-syaoran-git
-	pkgdesc = This is my st (suckless terminal) build.
+	pkgdesc = This is my st (suckless/simple terminal) build.
 	pkgver = 0.8.2.r18.8d13afb
 	pkgrel = 1
 	url = https://github.com/justanoobcoder/st-syaoran.git
