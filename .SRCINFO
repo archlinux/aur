@@ -1,6 +1,6 @@
 pkgbase = dosbox-staging
 	pkgdesc = DOS/x86 emulator focusing on ease of use. Based on DOSBox
-	pkgver = 0.75.0.rc1
+	pkgver = 0.75.0
 	pkgrel = 1
 	url = https://github.com/dosbox-staging/dosbox-staging
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = dosbox-staging
 	optdepends = ncurses
 	provides = dosbox
 	conflicts = dosbox
-	source = https://github.com/dosbox-staging/dosbox-staging/archive/v0.75.0-rc1.tar.gz
-	md5sums = 61ef380463ee89c15ccea6e7a3930913
+	source = https://github.com/dosbox-staging/dosbox-staging/archive/v0.75.0.tar.gz
+	md5sums = e085e17a203db97fb1af8af873e339cb
 
 pkgname = dosbox-staging
 

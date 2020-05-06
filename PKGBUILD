@@ -1,9 +1,7 @@
 # Maintainer: Wouter Wijsman <wwijsman@live.nl>
 
 pkgname=dosbox-staging
-_pkgver=0.75.0
-_rc=rc1
-pkgver=${_pkgver}.${_rc}
+pkgver=0.75.0
 pkgrel=1
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
 arch=('any')
@@ -15,26 +13,26 @@ makedepends=('autoconf' 'automake' 'gcc' 'gzip')
 provides=("dosbox")
 conflicts=("dosbox")
 source=(
-  "https://github.com/dosbox-staging/${pkgname}/archive/v${_pkgver}-${_rc}.tar.gz"
+  "https://github.com/dosbox-staging/${pkgname}/archive/v${pkgver}.tar.gz"
 )
 md5sums=(
-  '61ef380463ee89c15ccea6e7a3930913'
+  'e085e17a203db97fb1af8af873e339cb'
 )
 
 prepare() {
-  cd "$srcdir/${pkgname}-${_pkgver}-${_rc}"
+  cd "$srcdir/${pkgname}-${pkgver}"
   FLAGS="-O3 -DNDEBUG -pipe"
   ./autogen.sh
   ./configure CFLAGS="$FLAGS" CXXFLAGS="$FLAGS" --prefix=/usr
 }
 
 build() {
-  cd "$srcdir/${pkgname}-${_pkgver}-${_rc}"
+  cd "$srcdir/${pkgname}-${pkgver}"
   make -j "$(nproc)"
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${_pkgver}-${_rc}"
+  cd "$srcdir/${pkgname}-${pkgver}"
 
   # gzip the man file
   gzip -f "docs/dosbox.1" >  "docs/dosbox.1.gz"
@@ -48,7 +46,7 @@ package() {
   install -Dm 644 "contrib/linux/dosbox-staging.desktop" "$pkgdir/usr/share/applications/dosbox-staging.desktop"
 
   # dosbox-staging documents
-  install -Dm 644 "README.md" "$pkgdir/usr/share/doc/${_pkgname}/README"
-  install -Dm 644 "docs/README.video" "$pkgdir/usr/share/doc/${_pkgname}/video.txt"
-  install -Dm 644 "README" "$pkgdir/usr/share/doc/${_pkgname}/manual.txt"
+  install -Dm 644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README"
+  install -Dm 644 "docs/README.video" "$pkgdir/usr/share/doc/${pkgname}/video.txt"
+  install -Dm 644 "README" "$pkgdir/usr/share/doc/${pkgname}/manual.txt"
 }
