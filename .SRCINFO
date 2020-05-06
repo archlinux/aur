@@ -1,0 +1,18 @@
+pkgbase = kepler-wallet-git
+	pkgdesc = Kepler Wallet
+	pkgver = r179.1f298ce
+	pkgrel = 1
+	url = https://github.com/keplernetwork/kepler-wallet
+	arch = x86_64
+	license = Apache
+	makedepends = clang
+	makedepends = git
+	makedepends = rust
+	depends = ncurses
+	provides = kepler-wallet
+	conflicts = kepler-wallet
+	source = git+https://github.com/keplernetwork/kepler-wallet.git
+	sha256sums = SKIP
+
+pkgname = kepler-wallet-git
+
