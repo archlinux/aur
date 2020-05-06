@@ -1,6 +1,6 @@
 pkgbase = xwingridselect
 	pkgdesc = X11 window switcher with fancy look
-	pkgver = v1.0.0
+	pkgver = v1.0.1
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/xwingridselect
 	arch = i686
