@@ -1,10 +1,10 @@
 pkgbase = python-unrar-cffi
-	pkgdesc = Push Notifications that work with just about every platform
+	pkgdesc = Exposes unrar library functionality through a zipfile-like interface.
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/davide-romanini/unrar-cffi
 	arch = any
-	license = MIT
+	license = Apache
 	makedepends = python-setuptools
 	makedepends = python-pytest
 	depends = python-twine
