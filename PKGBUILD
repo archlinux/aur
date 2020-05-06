@@ -5,7 +5,7 @@
 _realname=gnome-terminal
 pkgname=$_realname-git
 
-pkgver=3.35.2.6256.c665af99
+pkgver=3.37.0.6396.5e7209c4
 _realver=3.7.3
 pkgrel=1
 pkgdesc="The GNOME Terminal Emulator. Git Version"
@@ -24,10 +24,10 @@ source=("git+https://gitlab.gnome.org/GNOME/${_realname}.git")
 md5sums=("SKIP")
 
 subver() {
-  PREFIX="m4_define(\[gt_version_$1\],\["
+  PREFIX="m4_define(\[terminal_version_$1\],\["
   echo $(grep $PREFIX configure.ac | eval sed "'s/$PREFIX//'" | sed 's/\])//')
 }
- 
+
 pkgver() {
   cd $_realname
   major=$(subver major)
