@@ -42,7 +42,7 @@ pkgbase = firefox-esr
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = firefox
+	provides = firefox=68.8.0
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
