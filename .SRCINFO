@@ -1,0 +1,23 @@
+pkgbase = dwm-ekollof-git
+	pkgdesc = Emiel Kollof's personal patched build of dwm.
+	pkgver = 6.2.r4.f37c5ad
+	pkgrel = 1
+	url = https://git.hackerheaven.org/ekollof/dwm-ekollof.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = libx11
+	makedepends = libxinerama
+	makedepends = libxext
+	makedepends = freetype2
+	depends = nerd-fonts-iosevka
+	depends = ttf-twemoji-color
+	depends = ttf-joypixels
+	depends = dbus
+	provides = dwm
+	conflicts = dwm
+	source = git+https://git.hackerheaven.org/ekollof/dwm-ekollof.git
+	md5sums = SKIP
+
+pkgname = dwm-ekollof-git
+
