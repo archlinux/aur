@@ -21,7 +21,7 @@ build() {
 
 package() {
 	cd "$pkgname"
-	install -Dm644 "target/release/rustop" "$pkgdir/usr/bin/rustop"
+	install -Dm755 "target/release/rustop" "$pkgdir/usr/bin/rustop"
 	install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
