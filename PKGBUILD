@@ -57,10 +57,10 @@ package() {
     cp -r README.md $pkgdir/usr/share/doc/packages/openra-radot5/README.md
     cp -r mods/radot5/icon.png $pkgdir/usr/share/pixmaps/openra-radot5.png
     install -Dm644 $srcdir/openra-radot5.desktop $pkgdir/usr/share/applications/openra-radot5.desktop
-    mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps
-    for size in 16 32 48 64 128 256; do
+    mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256,512x512}/apps
+    for size in 16 32 48 64 128 256 512; do
       size="${size}x${size}"
-      cp packaging/linux/mod_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${pkgname}.png"
+      cp packaging/artwork/icon_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${pkgname}.png"
     done
     rm -rf $pkgdir/usr/lib/openra-radot5/*{.txt,nunit,.yml,.xslt,.cmd,.md,Mono,.sh,Makefile,sln.*,Test,.mdb,.pdb,.ps1,.AS,packaging,thirdparty,engines,OpenRA.Mods}*
     rm -rf $pkgdir/usr/lib/openra-radot5/{mods/{all,cnc,d2k,ra,ts},OpenRA.Mods.*,OpenRA.Platforms.Default,OpenRA.Server,OpenRA.Game,OpenRA.Utility,Settings.StyleCop}
