@@ -8,4 +8,7 @@ case $2 in
 		cmd="$3/jupytext"
 		$cmd $1 --pipe "black -l 80 -S {}"
 		;;
+	"sh")
+		shfmt -w $1
+		;;
 esac
