@@ -6,7 +6,6 @@ pkgbase = deepnest-bin
 	install = deepnest.install
 	arch = x86_64
 	license = None
-	makedepends = gendesk
 	depends = zlib
 	depends = pango-legacy
 	provides = deepnest

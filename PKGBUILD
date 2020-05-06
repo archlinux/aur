@@ -9,7 +9,6 @@ url='https://deepnest.io'
 license=('None')
 install=deepnest.install
 depends=('zlib' 'pango-legacy')
-makedepends=('gendesk')
 provides=('deepnest')
 options=('!strip')
 source=("${pkgname}-${pkgver}.zip::https://deepnest.io/Deepnest-${pkgver}-linux.zip")
