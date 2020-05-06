@@ -1,11 +1,11 @@
-diff -rupN oci-cli-2.10.1/setup.py oci-cli-2.10.1b/setup.py
---- oci-cli-2.10.1/setup.py	2020-04-28 16:12:05.000000000 -0400
-+++ oci-cli-2.10.1b/setup.py	2020-05-01 18:59:18.058192794 -0400
+diff -rupN oci-cli-2.10.2/setup.py oci-cli-2.10.2b/setup.py
+--- oci-cli-2.10.2/setup.py	2020-05-05 18:27:01.000000000 -0400
++++ oci-cli-2.10.2b/setup.py	2020-05-06 19:22:30.397637140 -0400
 @@ -30,25 +30,24 @@ with open_relative("README.rst") as f:
      readme = f.read()
  
  requires = [
--    'oci==2.14.0',
+-    'oci==2.14.1',
 -    'arrow==0.14.7',
 +    'oci',
 +    'arrow',
@@ -41,9 +41,9 @@ diff -rupN oci-cli-2.10.1/setup.py oci-cli-2.10.1b/setup.py
  }
  
  fips_libcrypto_file = os.getenv("OCI_CLI_FIPS_LIBCRYPTO_FILE")
-diff -rupN oci-cli-2.10.1/src/oci_cli/cli_root.py oci-cli-2.10.1b/src/oci_cli/cli_root.py
---- oci-cli-2.10.1/src/oci_cli/cli_root.py	2020-04-28 16:12:05.000000000 -0400
-+++ oci-cli-2.10.1b/src/oci_cli/cli_root.py	2020-05-01 18:58:55.355211408 -0400
+diff -rupN oci-cli-2.10.2/src/oci_cli/cli_root.py oci-cli-2.10.2b/src/oci_cli/cli_root.py
+--- oci-cli-2.10.2/src/oci_cli/cli_root.py	2020-05-05 18:27:01.000000000 -0400
++++ oci-cli-2.10.2b/src/oci_cli/cli_root.py	2020-05-06 19:22:17.924383443 -0400
 @@ -218,7 +218,7 @@ For information on configuration, see ht
  @click.option('--profile',
                default=Sentinel(DEFAULT_PROFILE), show_default=False,
