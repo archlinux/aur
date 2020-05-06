@@ -5,7 +5,7 @@
 _pkgname=godot
 pkgname=${_pkgname}-git
 pkgver=4.0.dev
-pkgrel=1
+pkgrel=2
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine."
 url="http://www.godotengine.org"
 license=('MIT')
