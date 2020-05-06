@@ -1,6 +1,6 @@
 pkgbase = fusion
 	pkgdesc = Simple wlan management tool with gnu-like syntax
-	pkgver = 0.4.0.9.gc5f4b70
+	pkgver = 0.5.0.11.ge7e1c45
 	pkgrel = 1
 	url = https://github.com/V1oL3nc/fusion
 	arch = x86_64
