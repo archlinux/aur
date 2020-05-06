@@ -1,0 +1,20 @@
+pkgbase = moe-kde-git
+	pkgdesc = A Light theme, with blur transparencies and red tones with gradients for KDE
+	pkgver = r27.ad4b763
+	pkgrel = 1
+	url = https://www.opencode.net/jomada/moe-theme
+	install = moe-kde-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	optdepends = plasma-desktop: for a plasma desktop theme
+	optdepends = kvantum-qt5: for a Kvantum theme
+	optdepends = mcmojave-circle-icon-theme-git: for icon theme
+	optdepends = sierrabreeze-kwin-decoration-git: for KWin decoration
+	optdepends = jomada-sierrabreeze-kwin-decoration-git: for default KWin decoration
+	optdepends = latte-dock: for a Latte dock layout
+	source = git+https://www.opencode.net/jomada/moe-theme.git
+	sha256sums = SKIP
+
+pkgname = moe-kde-git
+

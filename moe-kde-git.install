@@ -1,0 +1,13 @@
+post_install() {
+  echo 'Attention:'
+  echo '  Latte Dock layout for Moe theme is NOT installed.'
+  echo '  Please manually download it from'
+  echo '  https://www.opencode.net/jomada/moe-theme/raw/master/Latte%20Layout/Moe.layout.latte'
+  echo '  and import it by right-clicking your latte-dock and navigate to Layouts -> Manage Layouts...'
+}
+
+post_remove() {
+  echo 'Attention:'
+  echo '  Manually imported Moe Latte Dock layout is NOT deleted.'
+  echo '  Please delete it by right-clicking your latte-dock and navigate to Layouts -> Manage Layouts...'
+}
