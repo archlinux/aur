@@ -1,7 +1,7 @@
 pkgbase = bigloo-devel
 	pkgdesc = Fast scheme compiler
 	pkgver = 4.3h
-	pkgrel = 9
+	pkgrel = 10
 	epoch = 1
 	url = https://www-sop.inria.fr/mimosa/fp/Bigloo/
 	arch = x86_64
@@ -34,8 +34,8 @@ pkgbase = bigloo-devel
 	options = staticlibs
 	source = ftp://ftp-sop.inria.fr/indes/fp/Bigloo/bigloo-unstable.tar.gz
 	source = bigloo-emacs.patch
-	md5sums = cad92219648cb8242a95283ef0c0aab9
-	md5sums = 35b417dfd1928c8cacca3e3931cc4c3a
+	sha256sums = 15b249b3a3cbf288576726f85ec4bfa9d8bf3b3936c8bd43f81d3162ad41adb4
+	sha256sums = 80356c27b58a302775f75e848a89ab2d588796a548f4ce7a20df048e215deab0
 
 pkgname = bigloo-devel
 
