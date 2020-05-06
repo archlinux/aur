@@ -76,6 +76,13 @@ post_install() {
     mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'ethoscope'@'%' WITH GRANT OPTION";
     chown -R mysql:mysql /var/lib/mysql
 
+    echo "setup mariadb configuration"
+    echo '[server]' > /etc/my.cnf.d/server.cnf
+    echo 'log-bin=mysql-bin' >> /etc/my.cnf.d/server.cnf
+    echo 'binlog_format=mixed' >> /etc/my.cnf.d/server.cnf
+    echo 'expire_logs_days = 10' >> /etc/my.cnf.d/server.cnf
+    echo 'max_binlog_size  = 100M' >> /etc/my.cnf.d/server.cnf
+
     echo "install picamera settings into the boot/config.txt"
     echo 'start_file=start_x.elf' > /boot/config.txt
     echo 'fixup_file=fixup_x.dat' >> /boot/config.txt
@@ -83,6 +90,7 @@ post_install() {
     echo 'gpu_mem=256' >> /boot/config.txt
     echo 'cma_lwm=' >> /boot/config.txt
     echo 'cma_hwm=' >> /boot/config.txt
+    
     echo 'cma_offline_start=' >> /boot/config.txt
     echo 'hdmi_force_hotplug=1' >> /boot/config.txt
     echo 'Loading bcm2835 module'
