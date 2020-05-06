@@ -1,15 +1,17 @@
 # Maintainer: Nico <desoxhd@gmail.com>
 pkgname=anydesk-bin
 pkgver=5.5.5
-pkgrel=5
+pkgrel=6
 pkgdesc="'AnyDesk Free' is an All-In-One Software for Remote Support (Generic based package)"
 arch=('i686' 'x86_64')
 url="https://anydesk.com"
 license=('custom')
-depends=('fakeroot' 'python-shiboken2' 'gtkglext' 'libglvnd' 'gtk2' 'libx11' 'glibc' 'glib2' 'gdk-pixbuf2' 'libxcb' 'cairo' 'pango' 'libxi' 'libxrender' 'libxrandr' 'libxtst' 'libxext' 'libxfixes' 'libxdamage' 'gcc-libs' 'pangox-compat')
+depends=('fakeroot' 'python-shiboken2' 'gtkglext' 'libglvnd' 'gtk2' 'libx11' 'glibc' 'glib2' 'gdk-pixbuf2' 'libxcb' 'cairo' 'pango' 'libxi' 'libxrender' 'libxrandr' 'libxtst' 'libxext' 'libxfixes' 'libxdamage' 'gcc-libs')
 optdepends=('libpulse: audio support')
+makedepends=('patchelf')
 conflicts=('anydesk' 'anydesk-test' 'anydesk-debian' 'pango-anydesk')
 provides=('anydesk')
+options=('!strip')
 
 source_i686=("https://download.anydesk.com/linux/anydesk-${pkgver}-i386.tar.gz")
 source_x86_64=("https://download.anydesk.com/linux/anydesk-${pkgver}-amd64.tar.gz")
@@ -20,6 +22,9 @@ sha256sums_x86_64=('606950997cfa607eff0f68018b8e6962f2491037a7c590d6e150befcaabe
 package() {
     # install binary
     install -Dm 755 "${srcdir}/anydesk-${pkgver}/anydesk" "${pkgdir}/usr/bin/anydesk"
+    # patch the binary to replace obsolete dependency
+    patchelf --replace-needed 'libpangox-1.0.so.0' 'libpangoxft-1.0.so' "${pkgdir}/usr/bin/anydesk"
+
     # install desktop entry
     install -Dm 644 "${srcdir}/anydesk-${pkgver}/anydesk.desktop" "${pkgdir}/usr/share/applications/anydesk.desktop"
     # install polkit action
