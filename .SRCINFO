@@ -1,0 +1,14 @@
+pkgbase = apache-daffodil-bin
+	pkgdesc = Open-source implementation of the Data Format Description Language to convert between fixed format data and XML/JSON
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://daffodil.apache.org/cli/
+	arch = any
+	license = Apache
+	depends = bash
+	depends = java-runtime
+	source = http://apache.mirrors.ovh.net/ftp.apache.org/dist/incubator/daffodil/2.6.0/bin/apache-daffodil-2.6.0-incubating-bin.tgz
+	sha512sums = 1613f1bcca6372d7a3754643180e0ee1b08dcc58baadcc80de9e983ad22bcfdeb0a3a9928be717b477ddcd3602e970a92a47d7d42041e94da7dede050814ba14
+
+pkgname = apache-daffodil-bin
+
