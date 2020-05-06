@@ -1,29 +1,17 @@
-# Maintainer: Pradana Aumars <paumars@protonmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Pradana Aumars <paumars@protonmail.com>
 
 pkgname=classicladder
-pkgver=0.9
-pkgrel=112
+pkgver=0.9.113
+pkgrel=1
 epoch=
 pkgdesc="An open source project to have a free ladder and sequential (grafcet) programming software coded in C language (to be used for educational, training, in Software PLC on PC computers or embedded platforms, ...)"
 arch=('x86_64')
 url="https://sourceforge.net/projects/classicladder/"
 license=('LGPL3')
-groups=()
-depends=()
 makedepends=(pkgconf gtk2)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgname-$pkgver.$pkgrel.tar.gz/download")
-noextract=()
-sha512sums=("c6b2fcf8fdc6557ea845286dcdc08d18c64746ee156785893969417ea14fa2b8d52c86d998ca8c6f6c843dca55ec53f96e8668a6aeac76d80699ddf4c1f456bc")
-validpgpkeys=()
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgname-$pkgver.tar.gz/download")
+sha512sums=('876070c40886ee324e9dbb9a1ecd885f58a38260abee24124d1c67fa48b55d4d43fdd486b91aaf71c2eb7da3db41bfca5a5cfc4f3861211cf13a4580d52c0751')
 
 build() {
 	cd "$pkgname"/src
