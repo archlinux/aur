@@ -57,6 +57,7 @@ pkgname = php73
 	depends = pcre2
 	depends = argon2
 	provides = php73-ldap=7.3.17
+	provides = php
 	conflicts = php73-ldap
 	replaces = php73-ldap
 	backup = etc/php73/php.ini

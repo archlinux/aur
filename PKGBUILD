@@ -190,7 +190,7 @@ package_php73() {
 	depends=('libxml2' 'curl' 'libzip' 'pcre2' 'argon2')
 	replaces=('php73-ldap')
 	conflicts=('php73-ldap')
-	provides=("php73-ldap=${pkgver}")
+	provides=("php73-ldap=${pkgver}" "php")
 	backup=("etc/${pkgbase}/php.ini")
 
 	cd ${srcdir}/build
