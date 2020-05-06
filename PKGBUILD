@@ -4,10 +4,10 @@ pkgname='python-unrar'
 _name=${pkgname#python-}
 pkgver=0.4
 pkgrel=1
-pkgdesc="Push Notifications that work with just about every platform"
+pkgdesc='Work with RAR archive files through unrar library using ctypes.'
 arch=('any')
-url="https://github.com/davide-romanini/unrar"
-license=('MIT')
+url='https://github.com/matiasb/python-unrar'
+license=('GPLv3')
 depends=(
   'unrar'
   'python-unrardll'

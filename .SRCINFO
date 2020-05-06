@@ -1,10 +1,10 @@
 pkgbase = python-unrar
-	pkgdesc = Push Notifications that work with just about every platform
+	pkgdesc = Work with RAR archive files through unrar library using ctypes.
 	pkgver = 0.4
 	pkgrel = 1
-	url = https://github.com/davide-romanini/unrar
+	url = https://github.com/matiasb/python-unrar
 	arch = any
-	license = MIT
+	license = GPLv3
 	makedepends = python-setuptools
 	depends = unrar
 	depends = python-unrardll
