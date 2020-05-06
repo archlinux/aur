@@ -1,7 +1,7 @@
 pkgbase = mup
 	pkgdesc = Music publisher, creates PostScript printed music or MIDI
-	pkgver = 6.7
-	pkgrel = 2
+	pkgver = 6.8
+	pkgrel = 1
 	url = http://arkkra.com
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = mup
 	makedepends = gendesk
 	depends = fltk
 	depends = libxpm
-	source = ftp://ftp.arkkra.com/pub/unix/mup67src.tar.gz
-	sha256sums = 254ff1b67e46714b6817555218c0256f73ab57306e14438bcb34aed9a15da34c
+	source = ftp://ftp.arkkra.com/pub/unix/mup68src.tar.gz
+	sha256sums = 3e0c6a78e18a49fd4a3c64db97c71bc9996e7073f9ff81965f916544bd2d7b19
 
 pkgname = mup
 
