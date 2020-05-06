@@ -1,0 +1,15 @@
+pkgbase = brother-hlb2080dw
+	pkgdesc = Brother HL-B2080DW CUPS driver
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://www.brother.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = cups
+	source = https://download.brother.com/welcome/dlf103631/hlb2080dwpdrv-4.0.0-1.i386.rpm
+	sha512sums = 75829ed24bada0f007c48067000f6ced7a65b48d92782ef6d25045cb66cf4654fd5208a5b4779802eda231e467132a782693f5756df027da3b119da2f09e2d3a
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-hlb2080dw
+
