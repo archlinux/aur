@@ -1,5 +1,5 @@
 pkgbase = or-tools-java
-	pkgdesc = Google`s Operations Research tools. With Java bindings.
+	pkgdesc = Google`s Operations Research tools. With Java bindings
 	pkgver = 7.6
 	pkgrel = 1
 	url = https://github.com/google/or-tools

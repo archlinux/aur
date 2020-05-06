@@ -3,7 +3,7 @@
 pkgname=or-tools-java
 pkgver=7.6
 pkgrel=1
-pkgdesc='Google`s Operations Research tools. With Java bindings.'
+pkgdesc='Google`s Operations Research tools. With Java bindings'
 arch=('x86_64')
 url='https://github.com/google/or-tools'
 license=('Apache')
@@ -43,7 +43,7 @@ install -Dm755 -t "${pkgdir}"/usr/lib/${pkgname} \
   dependencies/install/lib/libgflags.so.2.2.2 \
   dependencies/install/lib/libglog.so.0.4.0 \
   dependencies/install/lib/libprotobuf.so.3.11.2.0
-for i in ${pkgdir}/usr/lib/${pkgname}/*.so.*; do ln -rs ${i} ${i%so.*}so; done
+for i in "${pkgdir}"/usr/lib/${pkgname}/*.so.*; do ln -rs ${i} ${i%so.*}so; done
 install -Dm755 -t "${pkgdir}/usr/share/java/${pkgname}" lib/com.google.ortools.jar
 echo "/usr/lib/${pkgname}" > "${pkgdir}"/etc/ld.so.conf.d/${pkgname}.conf
 cp -ar examples/java/* "${pkgdir}"/usr/share/${pkgname}
