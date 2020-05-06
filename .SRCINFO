@@ -1,0 +1,22 @@
+pkgbase = st-syaoran-git
+	pkgdesc = This is my st (suckless terminal) build.
+	pkgver = 0.8.2.r18.8d13afb
+	pkgrel = 1
+	url = https://github.com/justanoobcoder/st-syaoran.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = make
+	makedepends = ncurses
+	makedepends = libxext
+	makedepends = git
+	depends = libxft
+	optdepends = dmenu
+	optdepends = picom
+	provides = st
+	conflicts = st
+	source = git+https://github.com/justanoobcoder/st-syaoran.git
+	md5sums = SKIP
+
+pkgname = st-syaoran-git
+
