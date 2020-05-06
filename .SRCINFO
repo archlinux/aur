@@ -8,6 +8,7 @@ pkgbase = tktreectrl-git
 	license = custom
 	makedepends = gcc
 	makedepends = git
+	makedepends = make
 	depends = tk
 	depends = libx11
 	provides = tktreectrl
