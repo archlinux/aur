@@ -1,7 +1,7 @@
 # Maintainer: Wojciech Kepka <wojtek.kepka@protonmail.com>
 pkgname=rustop-git
-pkgver=0.5.0
-pkgrel=1
+pkgver=0.
+pkgrel=2
 epoch=
 pkgdesc="All important information about your system in one place"
 arch=('x86_64' 'i686')
