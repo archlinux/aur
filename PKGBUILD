@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Ivanov <kostyarin.ivanov@gmail.com>
 
 pkgname=('volantes-cursors')
-commit_hash=f5dd936e213a7e960f5b39f06ff6b18b2145a0b5
+commit_hash=d1d290ff42cc4fa643716551bd0b02582b90fd2f
 pkgver=20200209.0
 pkgrel=1
 pkgdesc="Cursors theme"
@@ -14,7 +14,7 @@ makedepends=(
 url="https://github.com/varlesh/volantes-cursors"
 license=('GPL2')
 source=("https://github.com/varlesh/volantes-cursors/archive/$commit_hash.tar.gz")
-sha256sums=('bb4b213535ea212dc084c5e2d7ece9acd67c9a5d82eb074f4b365debcd9fe85d')
+sha256sums=('7eed19db07ee8f84949e9a7c94b8b0f71d160ee703a315bbd2fc65f3c3f969e6')
 
 build() {
 	cd "${srcdir}/$pkgname-$commit_hash"
