@@ -1,11 +1,11 @@
 pkgbase = firefox-china-extra-meta
 	pkgdesc = 火狐中国版扩展包
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	arch = any
 	license = MPL
 	depends = firefox-china-extra-extensions-meta
-	depends = firefox-china-extra-searchplus-meta
+	depends = firefox-china-extra-searchplugins-meta
 
 pkgname = firefox-china-extra-meta
 
