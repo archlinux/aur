@@ -19,6 +19,11 @@ build() {
 	cargo build --release
 }
 
+pkgver() {
+	cd "$pkgname"
+	echo "$(git log -1 --format=%cd.%h --date=short|tr -d -)"
+}
+
 package() {
 	cd "$pkgname"
 	install -Dm755 "target/release/rustop" "$pkgdir/usr/bin/rustop"
