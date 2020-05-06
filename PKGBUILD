@@ -36,5 +36,5 @@ package() {
   cp -r azure-cli "$pkgdir/opt"
 
   mkdir -p "$pkgdir/usr/bin"
-  cp az "$pkgdir/usr/bin"
+  install -Dm755 az "$pkgdir/usr/bin"
 }
