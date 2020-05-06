@@ -1,6 +1,6 @@
 pkgbase = bonita-studio-community-bin
 	pkgdesc = Bonita Studio with embedded Engine + Portal
-	pkgver = 7.10.1
+	pkgver = 7.10.4
 	pkgrel = 1
 	url = https://www.bonitasoft.com/bonita-platform
 	install = bonita-studio-community.install
@@ -12,14 +12,14 @@ pkgbase = bonita-studio-community-bin
 	depends = libxslt
 	depends = python
 	depends = gtk2
-	optdepends = jre7-openjdk-headless: PROVIDES libverify.so libjli.so libfontmanager.so libjava.so libawt.so libnio.so libjvm.so libnet.so libmawt.so
+	optdepends = jre8-openjdk-headless: PROVIDES libverify.so libjli.so libfontmanager.so libjava.so libawt.so libnio.so libjvm.so libnet.so libmawt.so
 	optdepends = cuda-toolkit: PROVIDES libverify.so libjli.so libfontmanager.so libjava.so libawt.so libnio.so libjvm.so libnet.so libmawt.so libJdbcOdbc.so
 	optdepends = libnet: PROVIDES libnet.so
-	optdepends = jre7-openjdk: PROVIDES libmawt.so
+	optdepends = jre8-openjdk: PROVIDES libmawt.so
 	provides = bonita-studio-community
 	replaces = bonita-bpm-community-bin
-	source = https://release.ow2.org/bonita/BonitaStudioCommunity-7.10.1-x86_64.run
-	sha256sums = 405387e38a435beb6f599092985b964125a80d0d30af5a4d27419da15278bf38
+	source = https://release.ow2.org/bonita/BonitaStudioCommunity-7.10.4-x86_64.run
+	sha256sums = 3dc5e829acb13867c064bf2f8a2526f02e7227664a95b93c76d348524f79f469
 
 pkgname = bonita-studio-community-bin
 

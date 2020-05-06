@@ -1,6 +1,7 @@
-# Maintainer: dumblob <dumblob@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: dumblob <dumblob@gmail.com>
 
-pkgver=7.10.1
+pkgver=7.10.4
 pkgrel=1
 
 _basename=bonita-studio-community
@@ -13,7 +14,7 @@ url='https://www.bonitasoft.com/bonita-platform'
 license=('GPL2')
 arch=('x86_64')
 source=("https://release.ow2.org/bonita/BonitaStudioCommunity-${pkgver}-x86_64.run")
-sha256sums=(405387e38a435beb6f599092985b964125a80d0d30af5a4d27419da15278bf38)
+sha256sums=('3dc5e829acb13867c064bf2f8a2526f02e7227664a95b93c76d348524f79f469')
 install="${_basename}.install"
 replaces=('bonita-bpm-community-bin')  # yeah, they renamed it
 
@@ -21,26 +22,16 @@ depends=('ffmpeg2.8' 'libglvnd' 'java-environment' 'libxslt' 'python' 'gtk2')
 makedepends=()
 # FIXME might be needed: 'postgresql' 'tomcat'
 optdepends=(
-  'jre7-openjdk-headless: PROVIDES libverify.so libjli.so libfontmanager.so libjava.so libawt.so libnio.so libjvm.so libnet.so libmawt.so'
+  'jre8-openjdk-headless: PROVIDES libverify.so libjli.so libfontmanager.so libjava.so libawt.so libnio.so libjvm.so libnet.so libmawt.so'
   'cuda-toolkit:          PROVIDES libverify.so libjli.so libfontmanager.so libjava.so libawt.so libnio.so libjvm.so libnet.so libmawt.so libJdbcOdbc.so'
   'libnet:                PROVIDES libnet.so'
-  'jre7-openjdk:          PROVIDES libmawt.so'
+  'jre8-openjdk:          PROVIDES libmawt.so'
 )
 
 provides=("${_basename}")
 conflicts=()
 
 build() {
-#  # use: makepkgg -cf --skipchecksums
-#  {
-#    #wget "$source_x86_64"
-#    wget -c "$source_i686"
-#    printf 'sha256sums_x86_64=("%s")  # %s\n' \
-#      "$(sha256sum "$(basename "$source_x86_64")" | cut -b -64)" "$pkgver"
-#    printf 'sha256sums_i686=(  "%s")  # %s\n' \
-#      "$(sha256sum "$(basename "$source_i686"  )" | cut -b -64)" "$pkgver"
-#    false
-#  }
 
   chmod +x *.run
   # FIXME a hack to kill the process, because it waits for user input indefinitely
