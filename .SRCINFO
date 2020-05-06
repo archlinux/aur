@@ -1,0 +1,10 @@
+pkgbase = test-publishing-aur-package-using-github-action-a
+	pkgdesc = This is a test package. It serves no other purposes.
+	pkgver = 0.0.0
+	pkgrel = 0
+	url = https://github.com/KSXGitHub/github-actions-deploy-aur.git
+	arch = any
+	license = WTFPL-2.0
+
+pkgname = test-publishing-aur-package-using-github-action-a
+
