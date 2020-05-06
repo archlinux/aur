@@ -6,8 +6,8 @@ pkgbase = yogo
 	arch = x86_64
 	arch = i686
 	license = GPL
-	source = https://github.com/antham/yogo/releases/download/v2.2.0/yogo_linux_386
-	md5sums = 6f46458e84537719d8e574aeaa140383
+	source = https://github.com/antham/yogo/releases/download/v2.3.0/yogo_linux_386
+	md5sums = 696c54b23a68f3bf3ab8ccb1bdffd942
 
 pkgname = yogo
 
