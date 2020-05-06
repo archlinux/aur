@@ -1,0 +1,17 @@
+pkgbase = rustop
+	pkgdesc = All important information about your system in one place
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/wojciechkepka/rustop
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = rustop
+	conflicts = rustop
+	source = rustop::git+https://github.com/wojciechkepka/rustop
+	sha1sums = SKIP
+
+pkgname = rustop
+
