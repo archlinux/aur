@@ -1,13 +1,13 @@
-# Maintainer: Trevor Bramble <inbox@trevorbramble.com>
-
+# Maintainer: Ryan Cragun <me@ryan.ec>
+# http://packages.chef.io/files/stable/habitat/latest/manifest.json
 pkgname=habitat
-pkgver=0.63.0
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Application automation framework that allows you to build applications that have automation built-in"
 arch=('x86_64')
 url="https://www.habitat.sh/"
 license=('Apache')
-depends=('libarchive' 'libsodium' 'openssl<1.1.1')
+depends=('libarchive' 'libsodium' 'openssl')
 makedepends=('git' 'cargo' 'zeromq')
 provides=('habitat')
 conflicts=('habitat-bin' 'habitat-git')
@@ -21,15 +21,6 @@ build() {
   cd "${srcdir}/${pkgname}"
   make
 }
-
-# Commented out because tests ask for sudo access
-#check() {
-#  # Use a temporary local Cargo repository.
-#  export CARGO_HOME="$srcdir/cargo-repository"
-#
-#  cd "${srcdir}/${pkgname}"
-#  make test
-#}
 
 package() {
   install -D -m755 "${srcdir}/${pkgname}/target/debug/hab" "${pkgdir}/usr/bin/hab"
