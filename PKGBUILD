@@ -1,9 +1,10 @@
-# Maintainer  : George Eleftheriou <eleftg>
+# Maintainer  : ffcc <ffercc at gmail dot com>
+# Contributor  : George Eleftheriou <eleftg>
 # Contributor : Marcel Hasler <mahasler at gmail dot com>
 
 pkgname=scilab-bin
 _pkgname=${pkgname%-bin}
-pkgver=6.0.2
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="A software package for numerical computation, providing a powerful computing environment for engineering and scientific applications."
 arch=("x86_64")
@@ -14,7 +15,7 @@ depends=()
 conflicts=('scilab')
 options=(!strip)
 source=("http://www.scilab.org/download/${pkgver}/scilab-${pkgver}.bin.linux-x86_64.tar.gz")
-sha256sums=("1c05944d763fd77af22dd06868ed7cd599818bed8beb4173cc0d249f5f639415")
+sha256sums=("81b4425b08b65d6482eb2d184110acc42d8c6b172b8e30ebd80f5aa795cd2924")
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}/share/applications"
