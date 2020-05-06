@@ -32,7 +32,6 @@ pkgbase = onivim2
 	makedepends = m4
 	makedepends = nasm
 	makedepends = python2
-	conflicts = onivim2-git
 	options = !strip
 	source = onivim2::git+https://github.com/onivim/oni2.git#commit=49e7e78f6d0ec057526792ea6832a214b83c4b7d
 	source = onivim2.install
