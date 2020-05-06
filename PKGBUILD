@@ -16,12 +16,14 @@ depends=(
     'socat'
     'sshfs'
     'torsocks'
+    'python-wheel'
 )
 
 source=("src::git+https://github.com/datawire/telepresence.git")
 md5sums=('SKIP')
 
 pkgver() {
+  cd ${srcdir}/src
   git describe --abbrev=0
 }
 
