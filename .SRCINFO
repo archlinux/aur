@@ -1,5 +1,5 @@
 pkgbase = sendip
-	pkgdesc = A commandline tool to allow sending arbitrary IP packets.
+	pkgdesc = A commandline tool to allow sending arbitrary IP packets
 	pkgver = 2.5
 	pkgrel = 7
 	url = https://www-x.antd.nist.gov/ipv6/sendip.html
