@@ -1,13 +1,13 @@
 pkgbase = fw
 	pkgdesc = faster workspace management
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/brocode/fw
 	arch = x86_64
 	license = WTFPL
 	depends = fzf
-	source = https://github.com/brocode/fw/releases/download/v2.3.0/fw
-	sha256sums = cde2936f75d0b2f9291630738fa4b1cd26701804c6210608d4a15692862d8d43
+	source = https://github.com/brocode/fw/releases/download/v2.4.0/fw
+	sha256sums = 4878d4c8b82e50f6af341a705974a6cdacb98c44e7aa7b8717e6f5c48f05e475
 
 pkgname = fw
 
