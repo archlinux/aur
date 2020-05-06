@@ -11,7 +11,7 @@ pkgbase = nodejs-node-red
 	arch = aarch64
 	license = APACHE
 	makedepends = npm
-	depends = nodejs
+	depends = nodejs>=10
 	noextract = node-red-1.0.6.tgz
 	backup = etc/default/nodejs-node-red
 	source = https://registry.npmjs.org/node-red/-/node-red-1.0.6.tgz

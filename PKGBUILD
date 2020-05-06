@@ -8,7 +8,7 @@ pkgdesc="A visual tool for wiring the Internet of Things."
 arch=(x86_64 i686 armv5 armv6h armv7h aarch64)
 url="https://nodered.org"
 license=("APACHE")
-depends=("nodejs")
+depends=("nodejs>=10")
 makedepends=("npm")
 optdepends=()
 backup=("etc/default/${pkgname}")
