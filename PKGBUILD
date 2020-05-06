@@ -6,7 +6,7 @@ _pkgbase=nginx
 pkgname=(nginx-rtmp nginx-rtmp-src)
 pkgver=1.18.0
 _rtmpver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server'
 arch=(x86_64)
 url='https://nginx-rtmp.blogspot.com/'
@@ -80,7 +80,7 @@ prepare() {
 }
 
 build() {
-  cd $_pkgname-$pkgver
+  cd $_pkgbase-$pkgver
 
   ./configure \
     --prefix=/etc/nginx \
@@ -111,7 +111,7 @@ check() {
 }
 
 package_nginx-rtmp() {
-  cd $_pkgname-$pkgver
+  cd $_pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
 
   sed -e 's|\<user\s\+\w\+;|user html;|g' \
