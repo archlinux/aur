@@ -1,7 +1,7 @@
 pkgbase = htpdate
 	pkgdesc = A client for time synchronisation
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.vervest.org/htp/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,10 @@ pkgbase = htpdate
 	depends = glibc
 	source = http://www.vervest.org/htp/archive/c/htpdate-1.2.2.tar.xz
 	source = htpdate.service
+	source = 100-pidfile.patch
 	md5sums = aad8c33933648532ac8716c809b15be1
 	md5sums = d00fce722a88150cffb1b322e6cc8869
+	md5sums = f4612bb44274ed571117724a49abb3c1
 
 pkgname = htpdate
 
