@@ -5,7 +5,7 @@ pkgver=1.17.6856
 pkgrel=1
 pkgdesc='Manage all your JetBrains Projects and Tools'
 arch=('x86_64' 'i686')
-url='http://www.jetbrains.com/toolbox/'
+url='https://www.jetbrains.com/toolbox/'
 license=('custom:jetbrains')
 depends=('java-runtime>=8' 'fuse' 'glib2' 'libxslt' 'libxss' 'xcb-util-keysyms')
 options=('!strip')
