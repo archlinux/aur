@@ -1,4 +1,4 @@
-# Maintainer: Jack Chen <redchenjs@live.com>
+# Maintainer: Sakitami <sakitam2373@gmail.com>
 
 pkgname=utools-yuanke
 pkgver=1.0.1
