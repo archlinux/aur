@@ -7,10 +7,10 @@ pkgver=CS4
 pkgrel=3
 pkgdesc='Adobe ICC profiles'
 arch=('any')
-url='http://www.adobe.com/support/downloads/iccprofiles/iccprofiles_mac.html'
+url='https://www.adobe.com/support/downloads/iccprofiles/iccprofiles_mac.html'
 license=('custom')
 makedepends=('unzip')
-source=('http://download.adobe.com/pub/adobe/iccprofiles/mac/AdobeICCProfilesCS4Mac_end-user.zip'
+source=('https://download.adobe.com/pub/adobe/iccprofiles/mac/AdobeICCProfilesCS4Mac_end-user.zip'
         LICENSE)
 b2sums=('4cb7c3250dae3e2029ea29770d7587ab39fa0d4b51ce72fe21b6d30d20c42ef5ecabb251c259fcac0b8940158d44a47125cb2c307d7ab5c4f2c802a430d3718e'
         'bf812341e43d4c1075869ff212163d00baf0b9f608136f5626363ccd7fed4bba10875e15510d382a6065e10283e16a9e4ffcf3f01d85f6d088883722615e41bf')
