@@ -19,7 +19,7 @@ pkgbase = slowmovideo-git
 	source = git+https://github.com/slowmoVideo/slowmoVideo.git
 	source = OpenCV4_compile.patch
 	md5sums = SKIP
-	md5sums = 13b3623678018758691f69520cf361af
+	md5sums = bb8ca1d30cdeb5922c783d27c057ae1b
 
 pkgname = slowmovideo-git
 

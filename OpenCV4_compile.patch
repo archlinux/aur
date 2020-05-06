@@ -1,7 +1,7 @@
-diff --git i/src/slowmoVideo/project/flowSourceOpenCV_sV.cpp w/src/slowmoVideo/project/flowSourceOpenCV_sV.cpp
+diff --git i/src/project/flowSourceOpenCV_sV.cpp w/src/project/flowSourceOpenCV_sV.cpp
 index ae49feb..57ddcce 100644
---- i/src/slowmoVideo/project/flowSourceOpenCV_sV.cpp
-+++ w/src/slowmoVideo/project/flowSourceOpenCV_sV.cpp
+--- i/src/project/flowSourceOpenCV_sV.cpp
++++ w/src/project/flowSourceOpenCV_sV.cpp
 @@ -260,13 +260,13 @@ void FlowSourceOpenCV_sV::buildFlowOpenCV_CPU(cv::Mat& prevgray, cv::Mat& gray,
      dumpAlgosParams();
      cv::Mat_<cv::Point2f> flow;
@@ -23,10 +23,10 @@ index ae49feb..57ddcce 100644
          tvl1->calc(prevgray, gray, flow);
      } else { // _FARN_
          // TODO: check to use prev flow as initial flow ? (flags)
-diff --git i/src/slowmoVideo/project/flowSourceOpenCV_sV.h w/src/slowmoVideo/project/flowSourceOpenCV_sV.h
+diff --git i/src/project/flowSourceOpenCV_sV.h w/src/project/flowSourceOpenCV_sV.h
 index 4f70868..2437769 100644
---- i/src/slowmoVideo/project/flowSourceOpenCV_sV.h
-+++ w/src/slowmoVideo/project/flowSourceOpenCV_sV.h
+--- i/src/project/flowSourceOpenCV_sV.h
++++ w/src/project/flowSourceOpenCV_sV.h
 @@ -22,6 +22,8 @@ the Free Software Foundation, either version 3 of the License, or
  #include "opencv2/imgproc/imgproc.hpp"
  #include "opencv2/highgui/highgui.hpp"
