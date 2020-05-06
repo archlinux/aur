@@ -1,6 +1,6 @@
 pkgbase = shadowreplay-git
 	pkgdesc = Shadowplay's Replay Feature On Linux For Nvidia, AMD and Intel.
-	pkgver = r50.3945d92
+	pkgver = r51.894a97d
 	pkgrel = 1
 	url = https://github.com/MAPReiff/ShadowRePlay-Linux.git
 	arch = any
