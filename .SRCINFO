@@ -1,7 +1,7 @@
 pkgbase = fedora-firefox-wayland-bin
 	pkgdesc = Fedora's firefox build with wayland enabled by default
-	pkgver = 75.0
-	pkgrel = 3
+	pkgver = 76.0
+	pkgrel = 2
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
 	license = MPL
@@ -34,9 +34,9 @@ pkgbase = fedora-firefox-wayland-bin
 	conflicts = libffi=3.2
 	options = !emptydirs
 	options = !strip
-	source = https://kojipkgs.fedoraproject.org/packages/firefox/75.0/1.fc32/x86_64/firefox-75.0-1.fc32.x86_64.rpm
-	source = https://download-ib01.fedoraproject.org/pub/fedora/linux/development/32/Everything/x86_64/os/Packages/l/libffi-3.1-24.fc32.x86_64.rpm
-	sha256sums = 2021838e67bf96dad3f2dce24a8baace217b72a976d6f949c51dbea847e0e27b
+	source = https://kojipkgs.fedoraproject.org/packages/firefox/76.0/2.fc32/x86_64/firefox-76.0-2.fc32.x86_64.rpm
+	source = https://download-ib01.fedoraproject.org/pub/fedora/linux/releases/32/Everything/x86_64/os/Packages/l/libffi-3.1-24.fc32.x86_64.rpm
+	sha256sums = f9f2bc50d12c22f7a8e96aeef3164dbbaab3b4edd1e39b0b7d4ade70879f0430
 	sha256sums = 86c87a4169bdf75c6d3a2f11d3a7e20b6364b2db97c74bc7eb62b1b22bc54401
 pkgname = fedora-firefox-wayland-bin
 

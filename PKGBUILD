@@ -2,8 +2,8 @@
 # Maintainer: Matheus <wlion@protonmail.com>
 
 pkgname=fedora-firefox-wayland-bin
-pkgver=75.0
-pkgrel=3
+pkgver=76.0
+pkgrel=2
 # fedora version
 fc="fc32"
 pkgdesc="Fedora's firefox build with wayland enabled by default"
@@ -20,10 +20,10 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
 
-source=("https://kojipkgs.fedoraproject.org//packages/firefox/$pkgver/1.$fc/x86_64/firefox-$pkgver-1.$fc.x86_64.rpm"
-		"https://download-ib01.fedoraproject.org/pub/fedora/linux/development/32/Everything/x86_64/os/Packages/l/libffi-3.1-24.fc32.x86_64.rpm")
+source=("https://kojipkgs.fedoraproject.org//packages/firefox/$pkgver/$pkgrel.$fc/x86_64/firefox-$pkgver-$pkgrel.$fc.x86_64.rpm"
+	"https://download-ib01.fedoraproject.org/pub/fedora/linux/releases/32/Everything/x86_64/os/Packages/l/libffi-3.1-24.fc32.x86_64.rpm")
 
-sha256sums=('2021838e67bf96dad3f2dce24a8baace217b72a976d6f949c51dbea847e0e27b'
+sha256sums=('f9f2bc50d12c22f7a8e96aeef3164dbbaab3b4edd1e39b0b7d4ade70879f0430'
 	    '86c87a4169bdf75c6d3a2f11d3a7e20b6364b2db97c74bc7eb62b1b22bc54401')
 
 prepare() {
