@@ -5,7 +5,7 @@
 
 # Maintainer: Emiel Kollof <emiel@kollof.nl>
 pkgname=dwmblocks-ekollof-git
-pkgver=0.1r5.03a4cc7
+pkgver=0.1r6.3bc3158
 pkgrel=1
 epoch=
 pkgdesc="Emiel Kollof's personal patched build of dwmblocks."
