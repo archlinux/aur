@@ -1,7 +1,7 @@
 pkgbase = swfdec-devel
 	pkgdesc = Development package of the free library for decoding and rendering Flash animations
 	pkgver = 0.9.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://swfdec.freedesktop.org
 	arch = i686
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = swfdec-devel
 	options = !libtool
 	options = !emptydirs
 	options = !makeflags
-	source = http://swfdec.freedesktop.org/download/swfdec/0.9/swfdec-0.9.2.tar.gz
+	source = https://web.archive.org/web/20160409151255/http://swfdec.freedesktop.org/download/swfdec/0.9/swfdec-0.9.2.tar.gz
 	md5sums = 7be5e39236e2d6efa61a18e83e5ab73d
 
 pkgname = swfdec-devel

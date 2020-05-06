@@ -6,7 +6,7 @@
 pkgname=swfdec-devel
 _pkgname=swfdec
 pkgver=0.9.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Development package of the free library for decoding and rendering Flash animations"
 arch=('i686' 'x86_64')
 url="http://swfdec.freedesktop.org"
@@ -14,7 +14,7 @@ license=('LGPL')
 depends=('gstreamer0.10-base>=0.10.19' 'alsa-lib>=1.0.16' 'liboil>=0.3.14' 'libmad>=0.15.1b-2' 'gtk2>=2.12.9' 'libsoup>=2.4.0')
 makedepends=('pkgconfig')
 optdepends=('ming: ActionScript debugging')
-source=(http://swfdec.freedesktop.org/download/swfdec/0.9/${_pkgname}-${pkgver}.tar.gz)
+source=(https://web.archive.org/web/20160409151255/http://swfdec.freedesktop.org/download/swfdec/0.9/${_pkgname}-${pkgver}.tar.gz)
 provides=('swfdec=0.9.2')
 conflicts=('swfdec')
 options=('!libtool' '!emptydirs' '!makeflags')
