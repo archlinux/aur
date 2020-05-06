@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fotoxx
-pkgver=20.11
-pkgrel=2
+pkgver=20.12
+pkgrel=1
 pkgdesc="A program for improving image files made with a digital camera, stable version"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ optdepends=('rawtherapee: for raw image processing'
 	    'dvd+rw-tools: for burning CDs,DVDs or BlueRays'
 	    'hugin: for panorama photos')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha512sums=('640c48adf7c2b98a7421f61048464ef7e46a61c5ff5a5747a3f083ff363fa420ba68226655e756b95f14a26b3ff910de7c504a9d11c2ab4192ad30fe5a2b1438')
+sha512sums=('9cf2e52243558eb2bf6e9ec3dc6abf2134ef9c95dc32a539eb55f79728bd5d18bea822128f1d9c8a6aac65f87d3a27088c09db739752ee5e2de47ebaa5091c6b')
 
 prepare() {
   cd $pkgname
