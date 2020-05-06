@@ -1,19 +1,20 @@
-# Contributor & Maintainer: Stunts <f.pinamartins@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Stunts <f.pinamartins@gmail.com>
 # Contributor: machoo02 <ichthyoboy@gmail.com>
 # Contributor: mutlu_inek <mutlu_inek@yahoo.de>
 
 pkgname=bibus
 pkgver=1.5.2
-pkgrel=6
+pkgrel=7
 pkgdesc="A bibliographic database that can directly insert references in \
 OpenOffice.org/LibreOffice and generate the bibliographic index."
 url="http://sourceforge.net/projects/bibus-biblio/"
 license=('GPL')
 arch=('any')
 depends=('python2-pysqlite' 'wxpython' 'python2-lxml' 'unixodbc' 'hicolor-icon-theme')
-optdepends=('libreoffice' 'openoffice-base-bin')
-source=(http://downloads.sourceforge.net/project/$pkgname-biblio/$pkgname-biblio/${pkgname}-${pkgver}/${pkgname}_${pkgver}.orig.tar.gz)
-md5sums=('5bb8b26d0980ebb72a2882b618fbe62c')
+optdepends=('libreoffice' 'openoffice')
+source=(https://downloads.sourceforge.net/project/$pkgname-biblio/$pkgname-biblio/${pkgname}-${pkgver}/${pkgname}_${pkgver}.orig.tar.gz)
+sha512sums=('33d091dacc707859a11010fcba57691a3e2726ae7579d601720b4398f7be29b580be978da8cd058fab491ec5b52dd3ce33c964a8d5077f8e80d8f0f387ffa2c4')
 backup=(etc/bibus.config)
 
 package() {
