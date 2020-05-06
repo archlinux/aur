@@ -1,0 +1,20 @@
+pkgbase = akonadi-decsync-resource-git
+	pkgdesc = Getting KDE's Akonadi to use DecSync for contacts, calendars and RSS.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/TimoWilken/akonadi-decsync-resource
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = qt5-base
+	depends = ki18n
+	depends = libdecsync
+	depends = libakonadi
+	depends = kconfig
+	provides = akonadi-decsync-resource
+	source = git+https://github.com/TimoWilken/akonadi-decsync-resource-git
+	sha256sums = SKIP
+
+pkgname = akonadi-decsync-resource-git
+
