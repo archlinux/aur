@@ -1,4 +1,4 @@
-# Maintainer: Ivan Waginger (ivan.waginger at gmail)
+# Maintainer: Kiwwiaq
 
 pkgname=brother-hlb2080dw
 pkgver=4.0.0
