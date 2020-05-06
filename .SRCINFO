@@ -1,0 +1,23 @@
+pkgbase = qv2ray-plugin-command-git
+	pkgdesc = Qv2ray Plugin: Command
+	pkgver = 20200425.r5.59450df
+	pkgrel = 1
+	url = https://github.com/Qv2ray/QvPlugin-Command
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = qt5-tools
+	makedepends = which
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt5-base>5.11.0
+	depends = qv2ray
+	provides = qv2ray-plugin-command
+	conflicts = qv2ray-plugin-command
+	source = qv2ray-plugin-command::git+https://github.com/Qv2ray/QvPlugin-Command
+	sha512sums = SKIP
+
+pkgname = qv2ray-plugin-command-git
+
