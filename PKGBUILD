@@ -1,4 +1,5 @@
-# Maintainer: Ilya Trukhanov <lahvuun@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Ilya Trukhanov <lahvuun@gmail.com>
 #
 # This package is based on discorddownloader by simonizor
 # http://www.simonizor.gq/discorddownloader.html
