@@ -5,11 +5,11 @@
 
 pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct libvirt-storage-rbd)
 pkgver=6.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
-license=('LGPL')
+license=('LGPL' 'GPL3') #libvirt_parthelper links to libparted which is GPL3 only
 depends=('libpciaccess' 'yajl' 'fuse2' 'gnutls' 'parted' 'libssh' 'libxml2' 'numactl' 'polkit')
 makedepends=('libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'libiscsi' 'ceph-libs' 'glusterfs'
              'bash-completion' 'rpcsvc-proto' 'dnsmasq' 'iproute2' 'qemu-headless')
@@ -100,6 +100,8 @@ prepare() {
   sed -i 's|/usr/libexec/qemu-bridge-helper|/usr/lib/qemu/qemu-bridge-helper|g' \
     src/qemu/qemu.conf \
     src/qemu/test_libvirtd_qemu.aug.in
+
+  sed -i 's/notify/simple/' src/remote/libvirtd.service.in
 }
 
 build() {
@@ -134,6 +136,9 @@ package_libvirt() {
   chmod 0750 "$pkgdir/usr/share/polkit-1/rules.d"
   chmod 600 "$pkgdir"/etc/libvirt/nwfilter/*.xml \
     "$pkgdir/etc/libvirt/qemu/networks/default.xml"
+
+  # Strip auto-generated UUID,  so it will be generated per-install. (reproducible builds)
+  sed -i '/<uuid>/d' "$pkgdir"/etc/libvirt/qemu/networks/default.xml
 
   rm -rf \
     "$pkgdir/run" \
