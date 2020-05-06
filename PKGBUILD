@@ -3,7 +3,7 @@
 pkgname=minetime-bin
 pkgver=1.7.6
 pkgrel=2
-pkgdesc='MineTime is a modern, intuitive and smart calendar application.'
+pkgdesc='MineTime is a modern, intuitive and smart calendar application'
 arch=('x86_64')
 url='https://github.com/marcoancona/MineTime'
 license=('custom')
