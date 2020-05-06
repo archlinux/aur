@@ -1,13 +1,14 @@
 pkgbase = rustop-git
 	pkgdesc = All important information about your system in one place
 	pkgver = 20200506.d134a9a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wojciechkepka/rustop
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	makedepends = help2man
 	provides = rustop
 	conflicts = rustop
 	source = rustop-git::git+https://github.com/wojciechkepka/rustop
