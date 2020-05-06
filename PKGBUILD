@@ -11,8 +11,7 @@ depends=('kvantum-qt5')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'matcha-kde')
-_commit='283b5b18f0967ab640cfd2633c03308cd4f2b0cb'
-source=("git+https://github.com/vinceliuice/Matcha-kde.git#commit=$_commit")
+source=('git+https://github.com/vinceliuice/Matcha-kde.git')
 sha256sums=('SKIP')
 
 pkgver() {
