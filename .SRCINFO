@@ -1,0 +1,18 @@
+pkgbase = st-tiyn-git
+	pkgdesc = This is the st build of tiyn. It includes the alpha, anysize, font2, scrollback patches.
+	pkgver = 4.9.r33.7b261b6
+	pkgrel = 1
+	url = https://github.com/tiyn/st
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	depends = libxft-bgra
+	provides = st
+	conflicts = st
+	replaces = st
+	source = git+https://github.com/tiyn/st
+	md5sums = SKIP
+
+pkgname = st-tiyn-git
+
