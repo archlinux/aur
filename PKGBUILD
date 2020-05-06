@@ -7,7 +7,7 @@
 # Contributor: Tomas A. Schertel <tschertel@gmail.com>
 
 pkgname=cherrytree
-pkgver=0.39.2
+pkgver=0.39.3
 pkgrel=1
 pkgdesc='Hierarchical note taking application featuring rich text and syntax highlighting'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=('python2-pyenchant: for spell checking support'
             'p7zip: for password protection support'
 	    'enchant-hspell: spell checking')
 source=(https://www.giuspen.com/software/$pkgname-$pkgver.tar.xz)
-sha256sums=('99b9a78beaf3749299df41fa1d2cf85e382a23c904d9ac3023b71326a63a5846')
+sha256sums=('0665cc3c6ca97e5eb7c9b116dd5c81102075a81dd111c77ed01237d83303c35e')
 
 build() {
   cd $pkgname-$pkgver
