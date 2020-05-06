@@ -1,7 +1,7 @@
 # Maintainer: Auteiy <dmitry@auteiy.me>
 
 pkgname=kotatogram-desktop-bin
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts. - Static binaries"
 arch=(x86_64)
@@ -43,7 +43,7 @@ source=(
 
 )
 # Checksums automatically set in CI, see: /.gitlab-ci.yml
-sha512sums=('cd0004a6df7f0382a5326f599fa41deda00f91d2df336a7e343b3facd0ac9890e952aa32311f22f621fa8b456a6186b30829499e41f13c9457928a70b15341cd'
+sha512sums=('358e670900bbecf278e819ed93503f11c8e66f18a62174d3308f6232fee5cee81a3239175c65746b479a901566fd86b431f689625c70d245c166b63c30b30829'
             'e9f0d9174f43cf30b8dc982ce898f5330152cf4d8da03f6e99bd409f6caee7a93f05121d9acdac4ead0c0ef3dfc82ba597b670deac43fe17d08dc221e01e463a'
             '89bb399142ec968a1c9d96e7e3639036aa8d70968c89c6d2b77def5ea6cbb0d88de8b3c8bb10f457600cdd4c7926d7f8ff9907f511aaaac832b218c9353c4b50'
             'facff9860ebb15045e6c7fb6483317c2319bea8b256cbc0986a252863ccedd80e1cf1e4c81a259b303651b450371b1daaf9f61be26129296b71c58ed08644cf9'
