@@ -4,10 +4,11 @@
 # Contributor: Dan Serban
 # Contributor: sjewo
 # Contributor: Theo Nicolau
+# shellcheck disable=SC2034,SC2154
 
 
 pkgname=slowmovideo-git
-pkgver=0.5.r136.g6ed913b
+pkgver=0.6.r4.gcaef2b0
 pkgrel=1
 pkgdesc="Video slow motion effect via interpolation"
 arch=('i686' 'x86_64')
@@ -18,31 +19,30 @@ makedepends=('cmake' 'git')
 provides=('slowmovideo')
 conflicts=('slowmovideo')
 source=('git+https://github.com/slowmoVideo/slowmoVideo.git'
+	'git+https://github.com/slowmoVideo/libsvflow.git'
 	'OpenCV4_compile.patch')
 md5sums=('SKIP'
-         '13b3623678018758691f69520cf361af')
+         'SKIP'
+         'bb8ca1d30cdeb5922c783d27c057ae1b')
 install=$pkgname.install
 
 prepare(){
-cd ${srcdir}/slowmoVideo
-patch -Np1 -i ${srcdir}/OpenCV4_compile.patch
+  git -C slowmoVideo config submodule.src/lib/libsvflow.url "${srcdir}"/libsvflow
+  git -C slowmoVideo submodule update --init --recursive --remote
+  git -C slowmoVideo apply "${srcdir}"/OpenCV4_compile.patch
 }
 
 pkgver() {
-  cd "${srcdir}"/slowmoVideo
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C slowmoVideo describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/slowmoVideo"
-  mkdir -p build && cd build
 #export PKG_CONFIG_PATH=/usr/lib/opencv2/pkgconfig"
   export LDFLAGS="-lX11 ${LDFLAGS}"
-  cmake -DUSE_QTKIT=FALSE -DENABLE_TESTS=FALSE -DCMAKE_INSTALL_PREFIX=/usr ../src
-  make
+  cmake -S slowmoVideo -B build -DUSE_QTKIT=FALSE -DENABLE_TESTS=FALSE -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
+  make -C build
 }
 
 package() {
-  cd "${srcdir}/slowmoVideo/build"
-  make DESTDIR="${pkgdir}" install
+  make -C build DESTDIR="${pkgdir}" install
 }
