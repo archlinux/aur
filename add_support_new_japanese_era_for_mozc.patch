@@ -1,0 +1,40 @@
+diff -u -r mozc-2.23.2815.102+dfsg.orig/src/rewriter/date_rewriter.cc mozc-2.23.2815.102+dfsg/src/rewriter/date_rewriter.cc
+--- mozc-2.23.2815.102+dfsg.orig/src/rewriter/date_rewriter.cc	2018-04-03 08:03:55.000000000 +0900
++++ mozc-2.23.2815.102+dfsg/src/rewriter/date_rewriter.cc	2020-05-06 08:30:37.048159659 +0900
+@@ -1239,6 +1239,10 @@
+     1989,
+     "平成",
+     "へいせい",
++  }, {
++    2019,
++    "令和",
++    "れいわ",
+   }
+ };
+ 
+diff -u -r mozc-2.23.2815.102+dfsg.orig/src/rewriter/date_rewriter_test.cc mozc-2.23.2815.102+dfsg/src/rewriter/date_rewriter_test.cc
+--- mozc-2.23.2815.102+dfsg.orig/src/rewriter/date_rewriter_test.cc	2018-04-03 08:03:55.000000000 +0900
++++ mozc-2.23.2815.102+dfsg/src/rewriter/date_rewriter_test.cc	2020-05-06 08:32:07.228639494 +0900
+@@ -469,6 +469,22 @@
+                  "平成10",
+                  "平成十");
+ 
++  // AD.2019 is "平成31(年)" or "平成三十一(年)" or "令和元(年)"
++  results.clear();
++  rewriter.AdToEra(2019, &results);
++  Expect3Results(results,
++                 "平成31",
++                 "平成三十一",
++                 "令和元");
++
++  // AD.2020 is "令和2(年)" or "令和二(年)"
++  results.clear();
++  rewriter.AdToEra(2020, &results);
++  EXPECT_EQ(results.size(), 2);
++  Expect2Results(results,
++            "令和2",
++            "令和二");
++
+   // Negative Test
+   // Too big number or negative number input are expected false return
+   results.clear();
