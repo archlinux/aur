@@ -1,11 +1,12 @@
 # Maintainer: Alisson Lauffer <alissonvitortc@gmail.com>
-pkgname=bluemail-bin
-pkgver=1.1.12
+pkgname=bluemail
+pkgver=1.1.13
 pkgrel=1
 pkgdesc="BlueMail is a free, secure, universal email app, capable of managing an unlimited number of mail accounts"
 arch=('x86_64')
 url="https://www.bluemail.me"
 license=('custom')
+conflicts=('bluemail-bin')
 provides=('bluemail')
 
 depends=('libglvnd')
@@ -13,10 +14,10 @@ optdepends=('libnotify: Desktop notifications')
 makedepends=('squashfs-tools' 'imagemagick')
 
 source=('LICENSE'
-        "${pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/ZVlj0qw0GOFd5JgTfL8kk2Y5eIG1IpiH_20.snap")
+        "${pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/ZVlj0qw0GOFd5JgTfL8kk2Y5eIG1IpiH_21.snap")
 
 sha512sums=('546994dbf25972659db6130402926020fdfc763b3f41580d812aeb785824218bae1204babe99af51ad91fd758ad0e7f4d0636a00e9130ce13fc6ebb90540e9dc'
-            '64ec51f6c247241453bbe43abbb5e96c331b40b07fda57132e5cb93cd5deaf5e7cb51906f53ee2bc234803d7600c182a893d4b6a30e9d3ba915e68164172985c')
+            '8fb380a51c6e1015f8d8b55a05d5f0f484eda6dc44e60793471b18ce866468add61cecec983dc4ac9a5ac863debdfddaf78b6edaa78e36bcfb9c53d09f9b1d8d')
 
 package() {
     mkdir -p "${pkgdir}/opt"
