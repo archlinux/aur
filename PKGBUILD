@@ -13,7 +13,7 @@ conflicts=("${name}")
 source=("git+${url}")
 sha512sums=('SKIP')
 pkgver() {
-    cd "${srcdir}/${_srcname}"
+    cd "${srcdir}/${name}"
     make dist
 }
 build() {
