@@ -4,7 +4,7 @@
 pkgname=php73-redis
 _name=redis
 _upstream=phpredis
-pkgver=5.2.1
+pkgver=5.2.2
 pkgrel=1
 pkgdesc="An API for communicating with the Redis key-value store"
 arch=('x86_64')
@@ -16,7 +16,7 @@ checkdepends=('lsof' 'redis')
 optdepends=('redis: use a local redis instance')
 backup=("etc/php73/conf.d/${_name}.ini")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_upstream}/${_upstream}/archive/${pkgver}.tar.gz")
-sha512sums=('40d8b16a491f44c62b56f6b0e7a9a028893af64fc86531e61b0e85d2fa09a517f77e132374526ef6a774a9275921ee3fd56effa709b1e704649858fbdee628d3')
+sha512sums=('38d532a852626db5ccd722c1e70586cf769850ab30a67b56b5692bc1e8544399954ac50855f5695d588ccbfff510fb975a07405de73c5cb20057858dda6eea5a')
 
 prepare() {
   mv -v "${_upstream}-${pkgver}" "$pkgname-$pkgver"
