@@ -1,0 +1,16 @@
+pkgbase = sic-image-cli-git
+	pkgdesc = Convert images and perform image operations from the command-line.
+	pkgver = 0.11.0.r2.g670901f
+	pkgrel = 1
+	url = https://github.com/foresterre/sic
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = sic
+	conflicts = sic
+	source = sic-image-cli-git::git+https://github.com/foresterre/sic.git
+	md5sums = SKIP
+
+pkgname = sic-image-cli-git
+
