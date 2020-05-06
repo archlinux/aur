@@ -7,7 +7,7 @@
 
 pkgname=lib32-x264
 pkgver=0.159.r2999.296494a
-pkgrel=1
+pkgrel=2
 epoch=3
 pkgdesc='Open Source H264/AVC video encoder (lib32)'
 arch=('x86_64')
@@ -48,7 +48,8 @@ build() {
         --enable-lto \
         --disable-avs \
         --libdir=/usr/lib32 \
-        --host=i686-linux-gnu
+        --host=i686-linux-gnu \
+        --extra-cflags="-flto -ffat-lto-objects"
     make
 }
 
