@@ -1,7 +1,9 @@
 qstlink2
+qtusb/
 src
 pkg
 qstlink2-git-*.pkg.tar.xz
+qstlink2-git-*.pkg.tar.zst
 qstlink2-git-*.src.tar.gz
 .AURINFO
 
