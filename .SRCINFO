@@ -1,7 +1,7 @@
 pkgbase = minio-mc-bin
 	pkgdesc = Minio client, binary version
 	pkgver = 2020_04_25T00_43_23Z
-	pkgrel = 1
+	pkgrel = 2
 	url = https://min.io
 	arch = x86_64
 	arch = aarch64

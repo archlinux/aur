@@ -3,7 +3,7 @@
 pkgname=minio-mc-bin
 _srcname=minio-mc
 pkgver=2020_04_25T00_43_23Z
-pkgrel=1
+pkgrel=2
 pkgdesc="Minio client, binary version"
 url="https://min.io"
 license=('Apache 2.0')
@@ -16,5 +16,5 @@ sha256sums_aarch64=('bd0632ac5099de4b5356a29d3ff2b1d38d860342ecc4ea39240067a0795
 
 
 package() {
-    install -Dm755 "$srcdir/mc_$CARCH" "$pkgdir/usr/bin/mc"
+    install -Dm755 "$srcdir/mc_$CARCH" "$pkgdir/usr/bin/mcli"
 }
