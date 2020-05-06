@@ -5,7 +5,7 @@
 pkgname=vint-git
 pkgver=0.4a4.dev8+g5b05880
 pkgrel=1
-pkgdesc='Lint tool for Vim script Language(git version)'
+pkgdesc='Lint tool for Vim script Language (git version)'
 arch=('any')
 url=https://github.com/Vimjas/vint
 license=('MIT')
