@@ -1,7 +1,7 @@
 # Maintainer: Syaoran Code <syaorancode@gmail.com>
 pkgname=dwm-syaoran-git
 _dir=dwm-syaoran
-pkgver=6.2.r53.090fdc0
+pkgver=6.2.r54.5f6d31d
 pkgrel=1
 pkgdesc="This is my dwm (dynamic window manager) build."
 arch=(x86_64 i686)
@@ -41,6 +41,7 @@ package() {
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -m644 -D "$srcdir/${_dir}/dwm.desktop" "$pkgdir/usr/share/xsessions/dwm.desktop"
     [ -d $HOME/.local/bin ] || mkdir -p "$HOME/.local/bin"
+    [ -d $HOME/.local/bin/${pkgname} ] || rm -rf $HOME/.local/bin/${pkgname}
     cp -rf "$srcdir/${_dir}/bin" "$HOME/.local/bin/${pkgname}"
 }
 
