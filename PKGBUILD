@@ -5,7 +5,7 @@
 
 # Maintainer: Marten Kante <tiyn@martenkante.eu>
 pkgname=st-tiyn-git
-pkgver=4.9.r33.7b261b6
+pkgver=0.8.3
 pkgrel=1
 epoch=
 pkgdesc="This is the st build of tiyn. It includes the alpha, anysize, font2, scrollback patches."
@@ -31,7 +31,7 @@ validpgpkeys=()
 
 pkgver() {
     cd "${_pkgname}"
-    printf "4.9.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.8.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
