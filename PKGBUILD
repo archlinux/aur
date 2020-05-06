@@ -2,7 +2,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=sharedaccess-git
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="C++17 library to make sharing a resource with multiple threads easier."
 url="https://gitlab.com/patlefort/sharedaccess"
