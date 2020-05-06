@@ -59,9 +59,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.6
-_minor=4
-_rtpatchver=3
-_clr=${_major}.4-62
+_minor=10
+_rtpatchver=5
+_clr=${_major}.10-63
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
 pkgver=${_major}.${_minor}.${_rtpatchver}
@@ -208,7 +208,7 @@ _package() {
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
-    provides=(VIRTUALBOX-GUEST-MODULES)
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
     install=linux.install
 
     cd $_srcname
@@ -314,9 +314,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('5df1741e550cb6fa7471530f42da98bac5093e693e2c4f3aef4393d8135b9d91'
+sha256sums=('7bdc96827a9db8de79cd13d74a1c5fe8915674f793e592387f2903cb225801b9'
             'SKIP'
-            'a9bb755ad66269d209c7b1f66034be9eae0901ea8440bab7b5c2ad1a2ec7eed5'
+            'f712f8225069bc2cc6cf5080724483dff871fb5bdf41bdeeeb00a0087a28c116'
             'SKIP'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5')
 
