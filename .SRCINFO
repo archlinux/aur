@@ -1,19 +1,20 @@
 pkgbase = laigter-appimage
-	pkgdesc = Automatic normal map generator for sprites!
-	pkgver = 1.8.1
+	pkgdesc = Automatic normal/specular/parallax/occlussion map generator for sprites!
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/azagaya/laigter
 	arch = x86_64
-	license = GNUv3
+	license = GPL3
 	depends = zlib
 	depends = hicolor-icon-theme
 	provides = laigter
 	conflicts = laigter
-	noextract = laigter-1.8.1b-x86_64.AppImage
+	noextract = laigter-1.9-x86_64.AppImage
 	options = !strip
-	source = https://github.com/azagaya/laigter/releases/download/1.8.1/laigter-1.8.1b-x86_64.AppImage
+	source = https://github.com/azagaya/laigter/releases/download/1.9/laigter-1.9-x86_64.AppImage
 	source = https://raw.githubusercontent.com/azagaya/laigter/master/LICENSE
-	sha256sums = 223894a0342be428f21914e8398cbc95f5dc394fcef66c848ebbe414a1259bdd
+	sha256sums = 681af17219a1570ea3a149146e1ebc1f9465fce23c6b41641eb2ba2d15f0880a
+	sha256sums = 5576a91fe9ee4b3ebc0c6e527144449711e497594a93830e2bd7206424910d7b
 
 pkgname = laigter-appimage
 
