@@ -1,12 +1,12 @@
-# Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
+# Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname='python-sabyenc3'
 _name=${pkgname#python-}
 pkgver=4.0.1
 pkgrel=1
-pkgdesc="Push Notifications that work with just about every platform"
+pkgdesc='yEnc package optimized for use within SABnzbd.'
 arch=('any')
-url="https://github.com/sabnzbd/sabyenc"
+url='https://github.com/sabnzbd/sabyenc'
 license=('lgplv3')
 
 makedepends=('python-setuptools')

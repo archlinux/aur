@@ -1,5 +1,5 @@
 pkgbase = python-sabyenc3
-	pkgdesc = Push Notifications that work with just about every platform
+	pkgdesc = yEnc package optimized for use within SABnzbd.
 	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/sabnzbd/sabyenc
