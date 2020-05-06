@@ -1,9 +1,10 @@
-# Maintainer: eolianoe <eolianoe [at] gmail [DoT] com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 # Contributor: Filippo Squillace <sqoox85@gmail.com>
 
 pkgname=visit-build
 _pkgname=visit
-pkgver=2.12.3
+pkgver=3.1.1
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool (built with build_visit)."
@@ -14,15 +15,15 @@ makedepends=('cmake' 'svn' 'java-runtime' 'gcc-fortran' 'wget')
 depends=('qt5-webkit' 'qt5-svg' 'qt5-tools'  'python2-numpy' 'openmpi' 'glu' 'java-environment')
 conflicts=('visit' 'visit-bin')
 provides=('visit')
-source=("https://portal.nersc.gov/svn/${_pkgname}/trunk/releases/${pkgver}/build_${_pkgname}${_pkgver}"
-        "https://portal.nersc.gov/svn/${_pkgname}/trunk/releases/${pkgver}/${_pkgname}${pkgver}.tar.gz"
+source=("https://github.com/visit-dav/visit/releases/download/v${pkgver}/build_${_pkgname}${_pkgver}"
+	"https://github.com/visit-dav/visit/releases/download/v${pkgver}/${_pkgname}${pkgver}.tar.gz"
         "visit.sh"
         'no_install_qt5.patch'
         'no_extract_visit.patch'
         "xdmf_stdc++.patch"
         'qt5-qpa.patch')
-sha256sums=('d4575d1088f131005ae627e19aaa80917f3cc2a3d0c062eb018dd4c7d145a021'
-            '2dd351a291ee3e79926bc00391ca89b202cfa4751331b0fdee1b960c7922161f'
+sha256sums=('c73585cf42b1e99d8b4f879a1e7b1ad5066146f9b5ba51467643c0c03ea50efa'
+            '0b60ac52fd00aff3cf212a310e36e32e13ae3ca0ddd1ea3f54f75e4d9b6c6cf0'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             '8ec6767c3943c3b93c9817ef0d051799c5ebfac75e73e58175befd08bfd320e0'
             '6dfdf3fdf6e64437106fc4f9facc79e80ab204de12bb480c6209c6b3fc5b4e07'
