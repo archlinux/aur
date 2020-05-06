@@ -2,7 +2,7 @@
 # Contributor: Tyler Kaminski
 
 pkgname=shadowreplay-git
-pkgver=r51.894a97d
+pkgver=r53.00cb6d7
 pkgrel=1
 pkgdesc="Shadowplay's Replay Feature On Linux For Nvidia, AMD and Intel."
 arch=('any')
