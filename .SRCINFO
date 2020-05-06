@@ -13,6 +13,8 @@ pkgbase = grimshot-git
 	depends = xdg-user-dirs
 	optdepends = libnotify: Notify users when a screenshot is taken
 	optdepends = wl-clipboard: Copy screenshots
+	conflicts = grimshot
+	replaces = swaygrab
 	source = git+https://github.com/swaywm/sway.git
 	md5sums = SKIP
 

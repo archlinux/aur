@@ -1,12 +1,14 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=grimshot-git
-pkgver=1.4
+pkgver=1.2.rc1.r347.g9cda5a5b
 pkgrel=1
 pkgdesc="A helper for screenshots within sway."
 arch=("x86_64")
 url="https://github.com/swaywm/sway"
 license=('MIT')
+conflicts=('grimshot')
+replaces=('swaygrab')
 depends=("sway" "grim" "slurp" "jq" "xdg-user-dirs")
 optdepends=('libnotify: Notify users when a screenshot is taken'
             'wl-clipboard: Copy screenshots')
@@ -14,9 +16,14 @@ makedepends=("scdoc")
 source=("git+https://github.com/swaywm/sway.git")
 md5sums=('SKIP')
 
+pkgver() {
+  cd "$srcdir/sway/contrib"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
   cd "$srcdir/sway/contrib"
-  scdoc < grimshot.1.sdc > grimshot.1
+  scdoc < grimshot.1.scd > grimshot.1
 }
 
 package() {
