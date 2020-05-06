@@ -1,7 +1,7 @@
 pkgbase = rbtools
 	pkgdesc = Client tools for Review Board
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.0.3
+	pkgrel = 1
 	url = https://www.reviewboard.org/
 	arch = any
 	license = custom:MIT
@@ -12,8 +12,8 @@ pkgbase = rbtools
 	depends = python-tqdm
 	depends = python-texttable
 	depends = python-colorama
-	source = https://files.pythonhosted.org/packages/source/R/RBTools/RBTools-1.0.2.tar.gz
-	sha256sums = 577c2f8bbf88f77bda84ee95af0310b59111c156f48a5aab56ca481e2f77eaf4
+	source = https://files.pythonhosted.org/packages/source/R/RBTools/RBTools-1.0.3.tar.gz
+	sha256sums = ff4cea3ad7b2d1b1666b811021cf5047f1fbe9417428fb5133a40ede81e3e83c
 
 pkgname = rbtools
 
