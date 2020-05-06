@@ -2,7 +2,7 @@
 # using fakeroot version 1.24
 pkgname = weatherreport
 pkgbase = weatherreport
-pkgver = 1.0.0-1
+pkgver = 1.1.0-1
 pkgdesc = A command line tool to get the current weather conditions.
 url = https://gitlab.com/chrisfair/weatherreport
 builddate = 1588654041
