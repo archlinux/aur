@@ -20,7 +20,7 @@ md5sums=('aad8c33933648532ac8716c809b15be1'
 
 build() {
   cd ${pkgname}-${pkgver}
-  patch htpdate.c 100-pidfile.patch
+  patch htpdate.c ../100-pidfile.patch
   make
 }
 
