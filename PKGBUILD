@@ -1,5 +1,3 @@
-#!/bin/bash
-# shellcheck disable=SC2034,SC2164
 # Maintainer: Zack Emmert <zemmert@fastmail.com>
 # Contributor Alexandre Bouvier <contact@amb.tf>
 # Contributor: Daniel Cohen <dan@supercore.co.uk>
