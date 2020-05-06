@@ -1,6 +1,6 @@
 # Maintainer: V1oL3nc <v1ol3nc@protonmail.com>
 pkgname='fusion'
-pkgver=0.3.0.6.gb096299
+pkgver=0.4.0.9.gc5f4b70
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/V1oL3nc/fusion"
