@@ -1,21 +1,23 @@
-# Maintainer: Jan de Groot <jgc@archlinux.org>
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 _pkgname=gnutls
 pkgname=gnutls-next
-pkgver=3.6.4
+pkgver=3.6.13
 pkgrel=1
 pkgdesc="A library which provides a secure layer over a reliable transport layer (next branch)"
 arch=('x86_64')
 license=('GPL3' 'LGPL2.1')
 url="https://www.gnutls.org/"
 options=('!zipman')
-depends=('gcc-libs' 'libtasn1' 'readline' 'zlib' 'nettle' 'p11-kit' 'libidn2' 'libunistring')
+depends=('gcc-libs' 'libtasn1' 'readline' 'zlib' 'nettle' 'p11-kit' 'libidn2'
+         'libidn2.so' 'libunistring')
 makedepends=('guile2.0')
 checkdepends=('net-tools')
 optdepends=('guile2.0: for use with Guile bindings')
 source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/${_pkgname}-${pkgver}.tar.xz{,.sig})
-sha256sums=('c663a792fbc84349c27c36059181f2ca86c9442e75ee8b0ad72f5f9b35deab3a'
+sha256sums=('32041df447d9f4644570cf573c9f60358e865637d69b7e59d1159b7240b52f38'
             'SKIP')
 validpgpkeys=('0424D4EE81A0E3D119C6F835EDA21E94B565716F'
               '1F42418905D8206AA754CCDC29EE58B996865171')
