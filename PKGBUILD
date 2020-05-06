@@ -41,7 +41,7 @@ package() {
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -m644 -D "$srcdir/${_dir}/dwm.desktop" "$pkgdir/usr/share/xsessions/dwm.desktop"
     [ -d $HOME/.local/bin ] || mkdir -p "$HOME/.local/bin"
-    [ -d $HOME/.local/bin/${pkgname} ] || rm -rf $HOME/.local/bin/${pkgname}
+    [ -d $HOME/.local/bin/${pkgname} ] && rm -rf $HOME/.local/bin/${pkgname}
     cp -rf "$srcdir/${_dir}/bin" "$HOME/.local/bin/${pkgname}"
 }
 
