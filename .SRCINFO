@@ -1,0 +1,13 @@
+pkgbase = vvctre-bin
+	pkgdesc = A Nintendo 3DS emulator based on Citra
+	pkgver = 30.3.0
+	pkgrel = 1
+	url = https://gbatemp.net/threads/vvctre-nintendo-3ds-emulator-based-on-citra.560052
+	arch = x86_64
+	license = GPL-2.0
+	provides = vvctre
+	source = vvctre-bin-30.3.0.7z::https://github.com/vvanelslande/vvctre/releases/download/30.3.0/vvctre-30.3.0-Linux.7z
+	sha256sums = 9272d0bc6687f0ce3e89f4e8f8a26a978804c5313d2265debf652e9632bd5aa5
+
+pkgname = vvctre-bin
+
