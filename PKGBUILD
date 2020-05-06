@@ -16,7 +16,7 @@ conflicts=('i3-wm' 'i3bar' 'i3bar-git')
 groups=('i3-vcs')
 depends=(xcb-util-cursor xcb-util-keysyms xcb-util-wm xcb-util-xrm libev yajl startup-notification
          pango libxkbcommon-x11)
-makedepends=(bison flex asciidoc xmlto)
+makedepends=(asciidoc xmlto)
 optdepends=('dmenu: As menu.'
             'i3lock: For locking your screen.'
             'i3status: To display system information with a bar.'
