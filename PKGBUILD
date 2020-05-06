@@ -4,7 +4,7 @@
 # Modified PKGBUILD from https://aur.archlinux.org/packages/vivaldi-codecs-ffmpeg-extra-bin/
 
 pkgname=vivaldi-codecs-ffmpeg-extra-bin-arm64
-pkgver=81.0.4044.129
+pkgver=81.0.4044.122
 pkgrel=1
 _ubuntuver=18.04.1
 pkgdesc='Prebuilt ffmpeg-codecs package for Vivaldi for arm64'
