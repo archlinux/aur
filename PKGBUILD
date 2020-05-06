@@ -3,13 +3,13 @@
 pkgname=healpix
 pkgver='3.60'
 _pkgdate='2019Dec18'
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for pixelization, hierarchical indexation, synthesis, analysis, and visualization of data on the sphere."
 arch=('x86_64')
 url="https://healpix.jpl.nasa.gov/"
 license=('GPL2')
 groups=()
-depends=(cfitsio)
+depends=(cfitsio libsharp)
 makedepends=()
 provides=()
 conflicts=()
