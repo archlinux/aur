@@ -1,0 +1,15 @@
+pkgbase = hsm-git
+	pkgdesc = The hana state machine (hsm) is a finite state machine library based on the boost hana meta programming library
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/erikzenker/hsm
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = boost
+	source = hsm-git::git+https://github.com/erikzenker/hsm.git
+	sha256sums = SKIP
+
+pkgname = hsm-git
+
