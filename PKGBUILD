@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/erikzenker/hsm"
 license=('MIT')
 depends=(boost)
-makedepends=('cmake')
+makedepends=('cmake','g++')
 
 source=("${pkgname}::git+https://github.com/erikzenker/hsm.git")
 sha256sums=('SKIP')
@@ -38,6 +38,6 @@ check() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/src/build"
+  cd "${srcdir}/${pkgname}/build"
   make DESTDIR="$pkgdir/" install
 }
