@@ -1,4 +1,4 @@
 # Override this file with a modified version in /etc/tmpfiles.d/
-d /opt/sabnzbd 0755 sabnzbd sabnzbd
-Z /opt/sabnzbd - sabnzbd sabnzbd
-L /var/log/sabnzbd - - - - /opt/sabnzbd/logs/
+d /var/lib/sabnzbd 0755 sabnzbd sabnzbd
+Z /var/lib/sabnzbd - sabnzbd sabnzbd
+L /var/log/sabnzbd - - - - /var/lib/sabnzbd/logs/
