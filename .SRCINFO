@@ -1,0 +1,15 @@
+pkgbase = proximity-sort
+	pkgdesc = Simple command-line utility for sorting inputs by proximity to a path argument
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/jonhoo/proximity-sort
+	arch = x86_64
+	license = MIT
+	license = APACHE
+	makedepends = cargo
+	depends = gcc-libs
+	source = proximity-sort-1.0.4.tar.gz::https://github.com/jonhoo/proximity-sort/archive/dec68f52a841549a71237967f14c93bd8a68b8f0.tar.gz
+	sha256sums = 1c101cb6b8f60c2e8b2f0839bd3f0437dc0cc28333424bcfe21d37389261aa30
+
+pkgname = proximity-sort
+
