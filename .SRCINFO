@@ -1,6 +1,6 @@
 pkgbase = gvfs-git
 	pkgdesc = Virtual filesystem implementation for GIO
-	pkgver = 1.44.0+4+g15330448
+	pkgver = 1.44.1+4+g94e12375
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/gvfs
 	arch = x86_64
@@ -55,14 +55,14 @@ pkgname = gvfs-git
 
 pkgname = gvfs-smb-git
 	pkgdesc = Virtual filesystem implementation for GIO (SMB/CIFS backend; Windows client)
-	depends = gvfs
-	depends = smbclient
+	depends = gvfs-git=1.44.1+4+g94e12375
+	depends = smbclient>=4.12.0
 	provides = gvfs-smb
 	conflicts = gvfs-smb
 
 pkgname = gvfs-afc-git
 	pkgdesc = Virtual filesystem implementation for GIO (AFC backend; Apple mobile devices)
-	depends = gvfs
+	depends = gvfs-git=1.44.1+4+g94e12375
 	depends = libimobiledevice
 	depends = usbmuxd
 	provides = gvfs-afc
@@ -70,21 +70,21 @@ pkgname = gvfs-afc-git
 
 pkgname = gvfs-gphoto2-git
 	pkgdesc = Virtual filesystem implementation for GIO (gphoto2 backend; PTP camera, MTP media player)
-	depends = gvfs
+	depends = gvfs-git=1.44.1+4+g94e12375
 	depends = libgphoto2
 	provides = gvfs-gphoto2
 	conflicts = gvfs-gphoto2
 
 pkgname = gvfs-goa-git
 	pkgdesc = Virtual filesystem implementation for GIO (Gnome Online Accounts backend; cloud storage)
-	depends = gvfs
+	depends = gvfs-git=1.44.1+4+g94e12375
 	depends = gnome-online-accounts
 	provides = gvfs-goa
 	conflicts = gvfs-goa
 
 pkgname = gvfs-mtp-git
 	pkgdesc = Virtual filesystem implementation for GIO (MTP backend; Android, media player)
-	depends = gvfs
+	depends = gvfs-git=1.44.1+4+g94e12375
 	depends = libmtp
 	provides = gvfs-mtp
 	conflicts = gvfs-mtp
@@ -92,14 +92,14 @@ pkgname = gvfs-mtp-git
 pkgname = gvfs-nfs-git
 	pkgdesc = Virtual filesystem implementation for GIO (NFS backend)
 	install = gvfs-nfs.install
-	depends = gvfs
+	depends = gvfs-git=1.44.1+4+g94e12375
 	depends = libnfs
 	provides = gvfs-nfs
 	conflicts = gvfs-nfs
 
 pkgname = gvfs-google-git
 	pkgdesc = Virtual filesystem implementation for GIO (Google Drive backend)
-	depends = gvfs-goa
+	depends = gvfs-goa-git=1.44.1+4+g94e12375
 	depends = libgdata
 	provides = gvfs-google
 	conflicts = gvfs-google

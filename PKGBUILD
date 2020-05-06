@@ -1,7 +1,7 @@
 pkgbase=gvfs-git
 _pkgbase=gvfs
 pkgname=(gvfs-git gvfs-{smb,afc,gphoto2,goa,mtp,nfs,google}-git)
-pkgver=1.44.0+4+g15330448
+pkgver=1.44.1+4+g94e12375
 pkgrel=1
 pkgdesc="Virtual filesystem implementation for GIO"
 url="https://wiki.gnome.org/Projects/gvfs"
@@ -107,7 +107,7 @@ package_gvfs-git() {
 
 package_gvfs-smb-git() {
   pkgdesc+=" (SMB/CIFS backend; Windows client)"
-  depends=('gvfs' 'smbclient')
+  depends=("gvfs-git=$pkgver" 'smbclient>=4.12.0')
   provides=('gvfs-smb')
   conflicts=('gvfs-smb')
 
@@ -116,7 +116,7 @@ package_gvfs-smb-git() {
 
 package_gvfs-afc-git() {
   pkgdesc+=" (AFC backend; Apple mobile devices)"
-  depends=('gvfs' 'libimobiledevice' 'usbmuxd')
+  depends=("gvfs-git=$pkgver" 'libimobiledevice' 'usbmuxd')
   provides=('gvfs-afc')
   conflicts=('gvfs-afc')
 
@@ -125,7 +125,7 @@ package_gvfs-afc-git() {
 
 package_gvfs-gphoto2-git() {
   pkgdesc+=" (gphoto2 backend; PTP camera, MTP media player)"
-  depends=('gvfs' 'libgphoto2')
+  depends=("gvfs-git=$pkgver" 'libgphoto2')
   provides=('gvfs-gphoto2')
   conflicts=('gvfs-gphoto2')
 
@@ -134,7 +134,7 @@ package_gvfs-gphoto2-git() {
 
 package_gvfs-mtp-git() {
   pkgdesc+=" (MTP backend; Android, media player)"
-  depends=('gvfs' 'libmtp')
+  depends=("gvfs-git=$pkgver" 'libmtp')
   provides=('gvfs-mtp')
   conflicts=('gvfs-mtp')
 
@@ -143,7 +143,7 @@ package_gvfs-mtp-git() {
 
 package_gvfs-goa-git() {
   pkgdesc+=" (Gnome Online Accounts backend; cloud storage)"
-  depends=('gvfs' 'gnome-online-accounts')
+  depends=("gvfs-git=$pkgver" 'gnome-online-accounts')
   provides=('gvfs-goa')
   conflicts=('gvfs-goa')
 
@@ -152,7 +152,7 @@ package_gvfs-goa-git() {
 
 package_gvfs-nfs-git() {
   pkgdesc+=" (NFS backend)"
-  depends=('gvfs' 'libnfs')
+  depends=("gvfs-git=$pkgver" 'libnfs')
   install=gvfs-nfs.install
   provides=('gvfs-nfs')
   conflicts=('gvfs-nfs')
@@ -162,7 +162,7 @@ package_gvfs-nfs-git() {
 
 package_gvfs-google-git() {
   pkgdesc+=" (Google Drive backend)"
-  depends=('gvfs-goa' 'libgdata')
+  depends=("gvfs-goa-git=$pkgver" 'libgdata')
   provides=('gvfs-google')
   conflicts=('gvfs-google')
 
