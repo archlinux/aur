@@ -2,7 +2,7 @@
 Version=OTD_VERSION
 Name=OpenTabletDriver
 Exec=/usr/bin/opentabletdriver
-Icon=/usr/share/OpenTabletDriver/Assets/otd.png
+Icon=otd
 Terminal=false
 Type=Application
 StartupNotify=true
