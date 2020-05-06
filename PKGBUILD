@@ -21,10 +21,6 @@ b2sums=('dfa8713ffc1b4bb52856f40076bd179e4b10d82ab916e7945049ffefabaaec629718c20
         'c6f86b243d1b0b9533a59bda7c9036dee0c53b1076052ed69c651f886f745ae69ef9839ab406016d2bc4acad133e4f2d54ff0855caebe05fee47c00b00041f4e'
         'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
 
-pkgver() {
-  echo "${pkgver%b*}b$(find ${srcdir} -maxdepth 1 -type d -printf "%P" | cut -d "-" -f2)"
-}
-
 package_phpstorm() {
   optdepends=('phpstorm-jre: JetBrains custom Java Runtime (Recommended)'
               'java-runtime: JRE - Required if phpstorm-jre is not installed'
