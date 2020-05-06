@@ -10,12 +10,12 @@ pkgbase = alphaplot
 	makedepends = boost
 	makedepends = cmake
 	makedepends = qt5-tools
+	makedepends = qt5-datavis3d
 	depends = gsl
 	depends = glu
 	depends = mesa
 	depends = shared-mime-info
 	depends = desktop-file-utils
-	depends = qt5-datavis3d
 	source = git+https://github.com/narunlifescience/alphaplot.git
 	sha256sums = SKIP
 

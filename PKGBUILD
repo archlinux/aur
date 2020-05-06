@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 
 # make dependancies
-makedepends=('boost' 'cmake' 'qt5-tools')
-depends=('gsl' 'glu' 'mesa' 'shared-mime-info' 'desktop-file-utils' 'qt5-datavis3d')
+makedepends=('boost' 'cmake' 'qt5-tools' 'qt5-datavis3d')
+depends=('gsl' 'glu' 'mesa' 'shared-mime-info' 'desktop-file-utils')
 
 # source download from git repo & prepare
 source=(git+https://github.com/narunlifescience/alphaplot.git)
