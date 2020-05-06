@@ -7,7 +7,7 @@
 pkgname=mullvad-vpn-beta
 _pkgver=2020.4
 _channel=beta
-pkgver=${_pkgver}.${_channel}3
+pkgver=${_pkgver}.${_channel}4
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
@@ -19,8 +19,8 @@ optdepends=('bash-completion')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
-_commit='fbd0bd510547bed0596dbb7c456de7c4df9556e0'
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}3?signed"
+_commit='3b9dbf544a27bf9e8b5ffb91983ef3cd60a0761c'
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}4?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "${pkgname%-beta}.sh")
 sha256sums=('SKIP'
@@ -28,8 +28,9 @@ sha256sums=('SKIP'
             'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
 validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               # Linus Färnstrand (code signing key) <linus at mullvad dot net>
-              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
+              #'8339C7D2942EB854E3F27CE5AEE9DECFD582E984'
               # David Lönnhager (code signing) <david dot l at mullvad dot net>
+             )
 
 prepare() {
 	# Point the submodule to our local copy
@@ -62,12 +63,7 @@ build() {
 		-buildmode c-archive
 
 	cd "$srcdir/mullvadvpn-app"
-	echo "Restoring version metadata files..."
-	./version-metadata.sh restore-backup
-	mv Cargo.lock.bak Cargo.lock || true
-
 	echo "Updating version in metadata files..."
-	cp Cargo.lock Cargo.lock.bak
 	./version-metadata.sh inject $PRODUCT_VERSION
 
 	echo "Removing old Rust build artifacts"
@@ -145,7 +141,7 @@ package() {
 
 	# Install desktop file & icons from .deb
 	cd dist
-	ar x "MullvadVPN-${_pkgver}.0-${_channel}3_amd64.deb"
+	ar x "MullvadVPN-${_pkgver}.0-${_channel}4_amd64.deb"
 	tar -xf data.tar.xz
 	install -Dm644 "usr/share/applications/${pkgname%-beta}.desktop" -t \
 		"$pkgdir/usr/share/applications"
