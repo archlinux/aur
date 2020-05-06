@@ -1,17 +1,18 @@
 pkgname=sequoia-redactor
 _pkgname=SequoiaRedactor
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Text editor"
 DESTDIR="${startdir}/${_pkgname}"
 arch=('x86_64')
 url="https://github.com/AlexVIM1/sequoia"
 license=('GPLv3')
+depends=('qt5-base')
 checkdepends=()
 install=
 changelog=
 source=("https://raw.githubusercontent.com/AlexVIM1/sequoia/master/${_pkgname}-${pkgver}-${arch}.tar.gz")
-md5sums=('1a7acf454f9582cf2ebef30b985e8b79')
+md5sums=('b14400463f2a41f9584e9bcaf3aa23d7')
 build() {
     cd ${srcdir}/build
     qmake
@@ -26,6 +27,6 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/applications"
 	mkdir -p "${pkgdir}/usr/share/pixmaps"
 	install -Dm755 SequoiaRedactor "${pkgdir}/usr/bin"
-	install -Dm755 seuqoia-icon-opened.png "${pkgdir}/usr/share/pixmaps"
+	install -Dm755 sequoia-icon.png "${pkgdir}/usr/share/pixmaps"
 	install -Dm755 sequoia-redactor.desktop "${pkgdir}/usr/share/applications"
 }
