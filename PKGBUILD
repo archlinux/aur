@@ -1,7 +1,8 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=libsharp
 pkgver='1.0.0'
-pkgrel=1
+_healpixver='3.60'
+pkgrel=2
 pkgdesc="Library for fast spherical harmonic transforms, see http://arxiv.org/abs/1303.4945"
 arch=(any)
 url="https://github.com/Libsharp/libsharp"
@@ -15,18 +16,17 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ca7cc7790c98bd5637a8a3d84460c02a54e5132b3184e713e596cd70c3cd59c0')
+source=("https://downloads.sourceforge.net/project/healpix/Healpix_${_healpixver}/libsharp-${pkgver}.tar.gz")
+sha256sums=('e98293315ee0f8a4c69c627bda36297b45e35e7afc33f510756f212d36c02f92')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    autoconf
-    ./configure --prefix="${pkgdir}/usr"
+    ./configure --prefix=/usr
     make -j
 }
 
 package() {
-    mkdir ${pkgdir}/usr
-    cp -r "${srcdir}/${pkgname}-${pkgver}/auto/"* ${pkgdir}/usr
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make DESTDIR=${pkgdir} install
 }
 
