@@ -2,7 +2,7 @@
 pkgname=mullvad-vpn-beta-bin
 _pkgver=2020.4
 _channel=beta
-pkgver=${_pkgver}.${_channel}3
+pkgver=${_pkgver}.${_channel}4
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
@@ -13,9 +13,9 @@ optdepends=('bash-completion')
 provides=("${pkgname%-beta-bin}")
 conflicts=("${pkgname%-beta-bin}")
 install="${pkgname%-beta-bin}.install"
-source=("https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-${_channel}3/MullvadVPN-${_pkgver}-${_channel}3_amd64.deb"{,.asc}
+source=("https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-${_channel}4/MullvadVPN-${_pkgver}-${_channel}4_amd64.deb"{,.asc}
         "${pkgname%-beta-bin}.sh")
-sha256sums=('12d2ec9de7b9b526663b49cd3d2bffd8de6015d4780ab14d460acb2c40923be5'
+sha256sums=('1b2c903c0b56cbe7acd0d01295043606d18835a20fa152b7fa06dafe61dbf0a8'
             'SKIP'
             'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
 validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin at mullvad dot net>
