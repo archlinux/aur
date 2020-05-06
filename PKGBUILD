@@ -1,14 +1,15 @@
-# Maintainer: robertfoster
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: robertfoster
 
 pkgname=atraci
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Free music streaming player"
 arch=('i686' 'x86_64')
 url="http://getatraci.net/"
 license=('GPL3')
 depends=('nodejs' 'libnotify')
-makedepends=('git' 'nodejs-grunt-cli' 'ruby-compass')
+makedepends=('git' 'grunt-cli' 'ruby-compass')
 optdepends=('node-webkit: Allows you to skip downloading node-webkit')
 conflicts=('atraci-git' 'atraci-bin')
 provides=("atraci")
@@ -20,6 +21,8 @@ _DEST="/usr/share/atraci"
 
 source=(https://github.com/Atraci/Atraci/archive/$pkgver.tar.gz
         "atraci.desktop")
+md5sums=('168d94d2f47a768a4ddc14fe69fcd1ad'
+         'acf4beaa9c9af13179c691cdc7b730f5')
 
 prepare() {
   cd ${srcdir}/${_packagename}
@@ -74,6 +77,3 @@ package() {
   # Icon
   install -Dm644 "${srcdir}/${_packagename}/images/icon.png" "${pkgdir}/usr/share/pixmaps/atraci.png"
 }
-
-md5sums=('168d94d2f47a768a4ddc14fe69fcd1ad'
-         'acf4beaa9c9af13179c691cdc7b730f5')

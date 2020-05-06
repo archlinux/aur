@@ -1,13 +1,13 @@
 pkgbase = atraci
 	pkgdesc = Free music streaming player
 	pkgver = 0.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://getatraci.net/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = nodejs-grunt-cli
+	makedepends = grunt-cli
 	makedepends = ruby-compass
 	depends = nodejs
 	depends = libnotify
