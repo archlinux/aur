@@ -1,7 +1,7 @@
 # Maintainer: Syaoran Code <syaorancode@gmail.com>
 pkgname=dwm-syaoran-git
 _dir=dwm-syaoran
-pkgver=6.2.r54.5f6d31d
+pkgver=6.2.r54.5f6d31r
 pkgrel=1
 pkgdesc="This is my dwm (dynamic window manager) build."
 arch=(x86_64 i686)
