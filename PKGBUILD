@@ -1,7 +1,8 @@
-# Maintainer: Stefan Schmidt <thrimbor dot github at gmail dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Stefan Schmidt <thrimbor dot github at gmail dot com>
 
 pkgname=yarp
-pkgver=2.3.68
+pkgver=3.3.2
 pkgrel=1
 pkgdesc='Yet Another Robot Platform'
 arch=('x86_64' 'i686')
@@ -9,7 +10,7 @@ url="http://www.yarp.it"
 license=('LGPL')
 depends=('cmake' 'subversion' 'wget' 'qt5-base' 'qt5-declarative' 'qt5-multimedia' 'qt5-svg' 'goocanvasmm' 'tinyxml' 'gtkmm' 'ace' 'gsl' 'eigen')
 makedepends=('cmake')
-sha256sums=('17659779d2b4e66836267011d086f2023b515b986468d777b94f7d56451c07cf')
+sha256sums=('689c521800d7f32e0896b7281ba2510d0e22d22336da75a27504ec94b54234f6')
 source=("https://github.com/robotology/yarp/archive/v${pkgver}.tar.gz")
 
 build() {

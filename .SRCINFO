@@ -1,6 +1,6 @@
 pkgbase = yarp
 	pkgdesc = Yet Another Robot Platform
-	pkgver = 2.3.68
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = http://www.yarp.it
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = yarp
 	depends = ace
 	depends = gsl
 	depends = eigen
-	source = https://github.com/robotology/yarp/archive/v2.3.68.tar.gz
-	sha256sums = 17659779d2b4e66836267011d086f2023b515b986468d777b94f7d56451c07cf
+	source = https://github.com/robotology/yarp/archive/v3.3.2.tar.gz
+	sha256sums = 689c521800d7f32e0896b7281ba2510d0e22d22336da75a27504ec94b54234f6
 
 pkgname = yarp
 
