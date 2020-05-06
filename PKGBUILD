@@ -2,15 +2,15 @@
 _author='rogpeppe'
 _projectname='go-internal'
 pkgname="golang-github-$_author-$_projectname"
-pkgver='1.5.2'
-pkgrel='2'
+pkgver='1.6.0'
+pkgrel='1'
 pkgdesc='Selected Go-internal packages factored out from the standard library'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/$_author/$_projectname"
 license=('BSD')
 depends=('go-pie>=1.11' 'golang-gopkg-errgo.v2>=2.1.0')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('415da1a5d971b532e2156c8b9841b5e8a516b334754eea906feba5748138a172')
+sha256sums=('62cb775eddd7efb11f2f936ab878a6f5d6f4cfacbc301e03c09d09f903974f04')
 
 _builddir="$pkgname-$pkgver-$pkgrel-build"
 _buildpath="src/github.com/$_author/$_projectname"
