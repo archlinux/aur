@@ -7,7 +7,7 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=75.0
+pkgver=76.0
 pkgrel=2
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
@@ -27,16 +27,14 @@ provides=("firefox=$pkgver")
 conflict=("firefox")
 options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
-        0001-Bug-1623885-Add-subsystem-to-Mesa-sandbox-policy-to-.patch
         0001-Use-remoting-name-for-GDK-application-names.patch
         $_pkgname.desktop
         unity-menubar.patch)
-sha256sums=('bbb1054d8f2717c634480556d3753a8483986af7360e023bb6232df80b746b0f'
+sha256sums=('3b7b97b0b0625fc6ec23ee28d425988c679d3a56f362d62fd3b225a5d50afdc8'
             'SKIP'
-            'ebb169804750ddc10a4801ed6ddb37356331bbf76615f58eb29de2e6e15ee930'
             '5f7ac724a5c5afd9322b1e59006f4170ea5354ca1e0e60dab08b7784c2d8463c'
             '34514a657d6907a159594c51e674eeb81297c431ec26a736417c2fdb995c2c0c'
-            '364e5c59a5a55d0be43bcb090dec51476580d0c35b63c0974a25bfeba212a1fc')
+            '3e5e34b8d45b9cc48e78e9c474f2450cc597451bbb331fb5a4e8f3a3ba5e3a70')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -54,15 +52,12 @@ _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
-  
-  # https://bugs.archlinux.org/task/66185
-  patch -Np1 -i ../0001-Bug-1623885-Add-subsystem-to-Mesa-sandbox-policy-to-.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
 
   # actual appmenu patch from ubuntu repos
-  # http://archive.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_75.0+build3-0ubuntu0.18.04.1.debian.tar.xz
+  # http://archive.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_76.0+build2-0ubuntu0.18.04.1.debian.tar.xz
   patch -Np1 -i ../unity-menubar.patch
 
   echo -n "$_google_api_key" >google-api-key
@@ -97,10 +92,6 @@ export MOZ_REQUIRE_SIGNING=1
 ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
-
-# System libraries
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
 
 # Features
 ac_add_options --enable-alsa

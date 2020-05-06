@@ -14,7 +14,7 @@
              <menu id="file-menu" data-l10n-id="menu-file">
 --- a/browser/base/content/browser.js
 +++ b/browser/base/content/browser.js
-@@ -6506,11 +6506,17 @@ function onViewToolbarsPopupShowing(aEve
+@@ -6373,11 +6373,17 @@ function onViewToolbarsPopupShowing(aEve
  
    let toolbarNodes = gNavToolbox.querySelectorAll("toolbar");
  
@@ -45,7 +45,7 @@
                id="organizeButton" label="&organize.label;"
 --- a/dom/xul/XULPopupElement.cpp
 +++ b/dom/xul/XULPopupElement.cpp
-@@ -156,6 +156,10 @@ void XULPopupElement::GetState(nsString&
+@@ -158,6 +158,10 @@ void XULPopupElement::GetState(nsString&
    // set this here in case there's no frame for the popup
    aState.AssignLiteral("closed");
  
@@ -56,7 +56,7 @@
    nsMenuPopupFrame* menuPopupFrame = do_QueryFrame(GetPrimaryFrame());
    if (menuPopupFrame) {
      switch (menuPopupFrame->PopupState()) {
-@@ -179,6 +183,11 @@ void XULPopupElement::GetState(nsString&
+@@ -181,6 +185,11 @@ void XULPopupElement::GetState(nsString&
          break;
      }
    }
@@ -70,7 +70,7 @@
  nsINode* XULPopupElement::GetTriggerNode() const {
 --- a/dom/xul/moz.build
 +++ b/dom/xul/moz.build
-@@ -82,6 +82,11 @@ LOCAL_INCLUDES += [
+@@ -83,6 +83,11 @@ LOCAL_INCLUDES += [
  
  include('/ipc/chromium/chromium-config.mozbuild')
  
@@ -97,7 +97,7 @@
      'components.conf',
 --- a/modules/libpref/init/all.js
 +++ b/modules/libpref/init/all.js
-@@ -313,6 +313,9 @@ pref("dom.mouseevent.click.hack.use_lega
+@@ -317,6 +317,9 @@ pref("dom.mouseevent.click.hack.use_lega
  // of content viewers to cache based on the amount of available memory.
  pref("browser.sessionhistory.max_total_viewers", -1);
  
@@ -109,7 +109,7 @@
  pref("ui.android.mouse_as_touch", 1);
 --- a/toolkit/content/xul.css
 +++ b/toolkit/content/xul.css
-@@ -206,6 +206,13 @@ toolbar[type="menubar"] {
+@@ -204,6 +204,13 @@ toolbar[type="menubar"] {
  }
  %endif
  
@@ -125,7 +125,7 @@
  }
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
-@@ -54,6 +54,15 @@ UNIFIED_SOURCES += [
+@@ -55,6 +55,15 @@ UNIFIED_SOURCES += [
  
  SOURCES += [
      'MediaKeysEventSourceFactory.cpp',
@@ -141,7 +141,7 @@
      'nsWindow.cpp', # conflicts with X11 headers
      'WaylandVsyncSource.cpp', # conflicts with X11 headers
  ]
-@@ -131,6 +140,7 @@ FINAL_LIBRARY = 'xul'
+@@ -132,6 +141,7 @@ FINAL_LIBRARY = 'xul'
  LOCAL_INCLUDES += [
      '/layout/base',
      '/layout/generic',
@@ -2157,7 +2157,7 @@
 +#endif /* __nsMenuContainer_h__ */
 --- /dev/null
 +++ b/widget/gtk/nsMenuItem.cpp
-@@ -0,0 +1,763 @@
+@@ -0,0 +1,767 @@
 +/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 +/* vim:expandtab:shiftwidth=4:tabstop=4:
 + */
@@ -2740,6 +2740,10 @@
 +    for (uint32_t i = 0; i < count; ++i) {
 +        nsIContent *sibling = parent->GetChildAt_Deprecated(i);
 +
++        if (sibling->IsComment()) {
++            continue;
++        }
++
 +        nsAutoString otherName;
 +        sibling->AsElement()->GetAttr(kNameSpaceID_None, nsGkAtoms::name,
 +                                      otherName);
@@ -3095,16 +3099,16 @@
 +
 +NS_IMPL_ISUPPORTS(nsMenuObjectIconLoader, imgINotificationObserver)
 +
-+NS_IMETHODIMP
++void
 +nsMenuObjectIconLoader::Notify(imgIRequest *aProxy,
 +                               int32_t aType, const nsIntRect *aRect)
 +{
 +    if (!mOwner) {
-+        return NS_OK;
++        return;
 +    }
 +
 +    if (aProxy != mImageRequest) {
-+        return NS_ERROR_FAILURE;
++        return;
 +    }
 +
 +    if (aType == imgINotificationObserver::LOAD_COMPLETE) {
@@ -3113,7 +3117,7 @@
 +            (status & imgIRequest::STATUS_ERROR)) {
 +            mImageRequest->Cancel(NS_BINDING_ABORTED);
 +            mImageRequest = nullptr;
-+            return NS_ERROR_FAILURE;
++            return;
 +        }
 +
 +        nsCOMPtr<imgIContainer> image;
@@ -3125,23 +3129,23 @@
 +        image->GetWidth(&width);
 +        image->GetHeight(&height);
 +        image->RequestDecodeForSize(nsIntSize(width, height), imgIContainer::FLAG_NONE);
-+        return NS_OK;
++        return;
 +    }
 +
 +    if (aType == imgINotificationObserver::DECODE_COMPLETE) {
 +        mImageRequest->Cancel(NS_BINDING_ABORTED);
 +        mImageRequest = nullptr;
-+        return NS_OK;
++        return;
 +    }
 +
 +    if (aType != imgINotificationObserver::FRAME_COMPLETE) {
-+        return NS_OK;
++        return;
 +    }
 +
 +    nsCOMPtr<imgIContainer> img;
 +    mImageRequest->GetImage(getter_AddRefs(img));
 +    if (!img) {
-+        return NS_ERROR_FAILURE;
++        return;
 +    }
 +
 +    if (!mImageRect.IsEmpty()) {
@@ -3154,7 +3158,7 @@
 +
 +    if (width <= 0 || height <= 0) {
 +        mOwner->ClearIcon();
-+        return NS_OK;
++        return;
 +    }
 +
 +    if (width > 100 || height > 100) {
@@ -3163,7 +3167,7 @@
 +        // GDbus helpfully aborts the application. Thank you :)
 +        NS_WARNING("Icon data too large");
 +        mOwner->ClearIcon();
-+        return NS_OK;
++        return;
 +    }
 +
 +    GdkPixbuf *pixbuf = nsImageToPixbuf::ImageToPixbuf(img);
@@ -3174,7 +3178,7 @@
 +        g_object_unref(pixbuf);
 +    }
 +
-+    return NS_OK;
++    return;
 +}
 +
 +void
@@ -5078,7 +5082,7 @@
 +#endif /* __nsNativeMenuService_h__ */
 --- a/widget/gtk/nsWindow.cpp
 +++ b/widget/gtk/nsWindow.cpp
-@@ -5669,6 +5669,10 @@ void nsWindow::HideWindowChrome(bool aSh
+@@ -5793,6 +5793,10 @@ void nsWindow::HideWindowChrome(bool aSh
    SetWindowDecoration(aShouldHide ? eBorderStyle_none : mBorderStyle);
  }
  
@@ -5100,7 +5104,7 @@
  #undef LOG
  #ifdef MOZ_LOGGING
  
-@@ -184,6 +186,8 @@ class nsWindow final : public nsBaseWidg
+@@ -186,6 +188,8 @@ class nsWindow final : public nsBaseWidg
                                    nsIScreen* aTargetScreen = nullptr) override;
    virtual void HideWindowChrome(bool aShouldHide) override;
  
@@ -5109,7 +5113,7 @@
    /**
     * GetLastUserInputTime returns a timestamp for the most recent user input
     * event.  This is intended for pointer grab requests (including drags).
-@@ -708,6 +712,8 @@ class nsWindow final : public nsBaseWidg
+@@ -712,6 +716,8 @@ class nsWindow final : public nsBaseWidg
  
    mozilla::UniquePtr<mozilla::CurrentX11TimeGetter> mCurrentTimeGetter;
    static CSDSupportLevel sCSDSupportLevel;
@@ -5155,7 +5159,7 @@
  import sys
  
  # Static atom definitions, used to generate nsGkAtomList.h.
-@@ -2532,7 +2533,7 @@ STATIC_ATOMS = [
+@@ -2537,7 +2538,7 @@ STATIC_ATOMS = [
      InheritingAnonBoxAtom("AnonBox_mozSVGForeignContent", ":-moz-svg-foreign-content"),
      InheritingAnonBoxAtom("AnonBox_mozSVGText", ":-moz-svg-text"),
      # END ATOMS
@@ -5183,7 +5187,7 @@
  if defined('MOZ_X11'):
 --- a/xpfe/appshell/AppWindow.cpp
 +++ b/xpfe/appshell/AppWindow.cpp
-@@ -65,7 +65,7 @@
+@@ -66,7 +66,7 @@
  #  include "mozilla/XULStore.h"
  #endif
  
