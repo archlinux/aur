@@ -1,6 +1,5 @@
 # Maintainer: nekgem <nekgem@cock.li>
 pkgname=lokinet
-_gitname=loki-network
 pkgver=0.7.1
 pkgrel=1
 pkgdesc="Anonymous, decentralized and IP based overlay network for the internet."
@@ -10,6 +9,7 @@ license=('ZLIB')
 depends=('libuv' 'libsodium' 'curl')
 makedepends=('git' 'cmake')
 install='lokinet.install'
+_gitname=loki-network
 source=("git+https://github.com/loki-project/$_gitname.git#tag=v$pkgver" # github archives don't embed submodules
         'lokinet.service'
         'lokinet-bootstrap.service'
@@ -46,6 +46,7 @@ build() {
 		-DWITH_SHARED=OFF \
 		-DWITH_TESTS=OFF \
 		-DDOWNLOAD_SODIUM=OFF \
+		-DSUBMODULE_CHECK=OFF \
 		-Wno-dev \
 		..
 	make
