@@ -1,0 +1,7 @@
+post_install() {
+  cat <<EOF
+
+==> Remember to enable the systemd timer by running:
+==> # systemctl enable --now reflector-mirrorlist.timer
+EOF
+}

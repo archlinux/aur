@@ -1,0 +1,10 @@
+[Unit]
+Description=Update pacman mirrorlist
+
+[Timer]
+OnBootSec=2m
+OnUnitActiveSec=1h
+AccuracySec=5m
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,6 @@
+[Unit]
+Description=Update the pacman mirrorlist
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/reflector --latest 5 --age 12 --sort rate --save /etc/pacman.d/mirrorlist
