@@ -1,6 +1,6 @@
 pkgbase = gerbera-git
 	pkgdesc = UPnP Media Server (Based on MediaTomb)
-	pkgver = 3457.525e4a69
+	pkgver = 3479.f0d54854
 	pkgrel = 1
 	url = https://github.com/gerbera/gerbera
 	install = gerbera.install
@@ -23,6 +23,8 @@ pkgbase = gerbera-git
 	depends = fmt
 	depends = spdlog
 	depends = pugixml
+	depends = ffmpeg
+	depends = ffmpegthumbnailer
 	provides = gerbera
 	conflicts = gerbera
 	options = emptydirs
