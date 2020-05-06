@@ -1,0 +1,18 @@
+pkgbase = deepnest-bin
+	pkgdesc = An open source nesting application, great for laser cutters, plasma cutters, and other CNC machines
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://deepnest.io
+	install = deepnest.install
+	arch = x86_64
+	license = None
+	makedepends = gendesk
+	depends = zlib
+	depends = pango-legacy
+	provides = deepnest
+	options = !strip
+	source = deepnest-bin-1.0.5.zip::https://deepnest.io/Deepnest-1.0.5-linux.zip
+	sha256sums = 54c049da97acc39741a4c960833258b0b2f9772dbdffdc1a27370983a8657a51
+
+pkgname = deepnest-bin
+
