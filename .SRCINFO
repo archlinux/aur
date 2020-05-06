@@ -1,6 +1,6 @@
 pkgbase = thinkpad-l380-yoga-scripts-git
 	pkgdesc = A collection of scripts and systemd services for tablet functionality of the ThinkPad L380 Yoga, based onthe original by AdmiralAkber
-	pkgver = 20180627
+	pkgver = r62.5621f37
 	pkgrel = 1
 	url = https://github.com/ffejery/thinkpad-l380-yoga-scripts
 	install = thinkpad-l380-yoga-scripts-git.install
@@ -18,7 +18,7 @@ pkgbase = thinkpad-l380-yoga-scripts-git
 	provides = thinkpad-yoga-scripts-git
 	conflicts = thinkpad-yoga-scripts-git
 	source = thinkpad-l380-yoga-scripts::git+https://github.com/ffejery/thinkpad-l380-yoga-scripts
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = thinkpad-l380-yoga-scripts-git
 

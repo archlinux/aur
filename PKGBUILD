@@ -1,8 +1,9 @@
-# Maintainer: ffejery
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: ffejery
 
 pkgname='thinkpad-l380-yoga-scripts-git'
 _gitname='thinkpad-l380-yoga-scripts'
-pkgver=20180627
+pkgver=r62.5621f37
 pkgrel=1
 pkgdesc='A collection of scripts and systemd services for tablet functionality of the ThinkPad L380 Yoga, based onthe original by AdmiralAkber'
 url="https://github.com/ffejery/thinkpad-l380-yoga-scripts"
@@ -16,7 +17,7 @@ optdepends=(
 	'onboard: onscreen keyboard'
 	'xf86-input-wacom: for digitizer support'
 	)
-md5sums=('SKIP')
+sha512sums=('SKIP')
 makedepends=('git')
 install=$pkgname.install
 
