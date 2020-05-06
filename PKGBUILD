@@ -10,7 +10,6 @@ license=('GPL')
 makedepends=('cmake' 'git')
 depends=('libpurple' 'mxml' 'libxml2' 'sqlite' 'libgcrypt')
 optdepends=('libpurple-carbons: message carbons support')
-provides=('libpurple-lurch-git')
 source=("git+https://github.com/gkdr/lurch.git#tag=v${pkgver}"
         gitmodule-paths.patch)
 b2sums=('SKIP'
