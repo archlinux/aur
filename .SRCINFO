@@ -1,7 +1,7 @@
 pkgbase = linvst2-bin
 	pkgdesc = enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's
-	pkgver = 2.8.1
-	pkgrel = 3
+	pkgver = 2.8.2
+	pkgrel = 1
 	url = https://github.com/osxmidi/LinVst
 	arch = x86_64
 	groups = pro-audio
@@ -12,8 +12,8 @@ pkgbase = linvst2-bin
 	conflicts = linvst-stable
 	conflicts = linvst2
 	replaces = linvst2
-	source = https://github.com/osxmidi/LinVst/releases/download/2.8/LinVst-2.8.1-Manjaro.zip
-	sha256sums = 76dd35e9fd49e71debed6346c9d812401ecfd358e29f35a10e452c1ceba448c1
+	source = https://github.com/osxmidi/LinVst/releases/download/2.8/LinVst-2.8.2-Debian-Buster.zip
+	sha256sums = 3eec4d1bfc522c2d63e97b2c5896d4bdeb67da4a0c9757bcbb43417be37c15ea
 
 pkgname = linvst2-bin
 
