@@ -1,6 +1,6 @@
 pkgbase = prosody-hg
 	pkgdesc = Lightweight and extensible Jabber/XMPP server written in Lua (development build from trunk-branch)
-	pkgver = r10422+.cb6c0a5f9367+
+	pkgver = r10801+.2b97aac0ea3c+
 	pkgrel = 1
 	url = https://prosody.im/
 	install = prosody.install
@@ -18,8 +18,8 @@ pkgbase = prosody-hg
 	depends = lua52-socket
 	depends = lua52-expat
 	depends = lua52-filesystem
+	depends = lua52-sec
 	depends = openssl
-	optdepends = lua52-sec: TLS encryption support
 	optdepends = lua52-event: libevent support
 	provides = prosody
 	conflicts = prosody
