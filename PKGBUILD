@@ -1,14 +1,13 @@
 pkgname=xabber-websocket
-pkgver=0.1
-pkgrel=2
-_commit=d4d1c01d116ef84081ef21c33b456b5e59ef0930
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="WebSocket XMPP client interface"
 arch=(i686 x86_64)
 url="https://github.com/redsolution/xabber-websocket/"
 license=('GPL')
 depends=()
 makedepends=('git')
-source=("git://github.com/redsolution/xabber-websocket/#commit=${_commit}"
+source=("git://github.com/redsolution/xabber-websocket/#tag=${pkgver}"
 	"xabber_ws.service")
 sha256sums=('SKIP'
             'f6fab136e5daa9bad3631e5c2f24f99892d9ad331a14d2ce9e5734e0457e2c52')
@@ -33,6 +32,7 @@ package() {
 
 	echo -e "#!/bin/sh\n/usr/lib/xabber_ws/bin/xabber_ws \$@" >"$pkgdir"/usr/bin/xabber_ws
 	chmod a+x "$pkgdir"/usr/bin/xabber_ws
+	chmod a+x "$pkgdir"/usr/lib/xabber_ws/erts-10.6.4/bin/*
 
 	install -Dm0644 "$srcdir"/xabber_ws.service "$pkgdir"/usr/lib/systemd/system/xabber_ws.service
 }
