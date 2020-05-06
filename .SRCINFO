@@ -2,7 +2,7 @@ pkgbase = ispin
 	pkgdesc = New Tcl/Tk GUI for Spin replacing xSpin
 	pkgver = 6.5.0
 	pkgrel = 1
-	url = http://spinroot.com/
+	url = https://spinroot.com/
 	arch = any
 	license = custom:SPIN
 	depends = spin>=6.0

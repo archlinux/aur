@@ -6,7 +6,7 @@ pkgver=6.5.0
 pkgrel=1
 pkgdesc='New Tcl/Tk GUI for Spin replacing xSpin'
 arch=('any')
-url='http://spinroot.com/'
+url='https://spinroot.com/'
 license=('custom:SPIN')
 depends=('spin>=6.0' 'tk>=8.5' 'gcc')
 optdepends=('graphviz: recommended, provides dot tool for automata view'
