@@ -1,6 +1,6 @@
 # Maintainer: quenyen
 pkgname=weatherreport
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A command line tool to get the current weather conditions."
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=(
   'go'
 )
 source=("https://gitlab.com/chrisfair/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('e2ffe6f0bbd7d4501ff945f847693c7114717d8846f14b38c399328855a802c8')
+sha256sums=('23a899e8d6ef990440e1a6eafb34690eebc409f8f042f2d4bb46dabcd55d7b6b')
 
 build() {
   export GOPATH="$srcdir"/gopath
@@ -28,4 +28,3 @@ package() {
   cd "$srcdir/$pkgname-v$pkgver"
   install -D $pkgname-v$pkgver $pkgdir/usr/bin/$pkgname
 }
-
