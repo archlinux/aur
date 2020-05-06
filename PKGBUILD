@@ -28,7 +28,7 @@ checkdepends=('python-lxml' 'python-mock' 'python-parameterized')
 optdepends=('python-psycopg2: PostgreSQL support'
             'python-lxml: URL previewing')
 
-source=("git+https://github.com/matrix-org/synapse.git#branch=develop"
+source=("git+https://github.com/matrix-org/synapse.git#branch=master"
         'synapse.service'
         'sysusers-synapse.conf')
 
