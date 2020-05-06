@@ -3,7 +3,7 @@
 pkgname=reflector-mirrorlist
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Auto-updating mirror list mirror list for use by pacman"
+pkgdesc="Auto-updating mirror list for use by pacman"
 arch=("x86_64")
 url="https://github.com/swaywm/sway"
 license=('MIT')

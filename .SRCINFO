@@ -1,12 +1,14 @@
 pkgbase = reflector-mirrorlist
-	pkgdesc = Auto-updating mirror list mirror list for use by pacman
+	pkgdesc = Auto-updating mirror list for use by pacman
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/swaywm/sway
+	install = reflector-mirrorlist.install
 	arch = x86_64
 	license = MIT
 	depends = systemd
 	depends = reflector
+	provides = pacman-mirrorlist
 	source = reflector-mirrorlist.service
 	source = reflector-mirrorlist.timer
 	md5sums = 63bff5e7683a591b46a0713da92ef403
