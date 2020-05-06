@@ -1,6 +1,6 @@
 pkgbase = openra-radot5-git
 	pkgdesc = OpenRA mod that tell the storyline between 1936 to Red Alert 1
-	pkgver = 157.git.5f7c0d2
+	pkgver = 162.git.e980236
 	pkgrel = 1
 	url = https://github.com/MustaphaTR/Red-Alert-.5
 	install = openra-radot5.install

@@ -2,7 +2,7 @@
 
 pkgname=openra-radot5-git
 _pkgname=openra-radot5
-pkgver=157.git.5f7c0d2
+pkgver=162.git.e980236
 pkgrel=1
 pkgdesc="OpenRA mod that tell the storyline between 1936 to Red Alert 1"
 arch=('any')
