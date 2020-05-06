@@ -1,0 +1,20 @@
+pkgbase = python-pydantic-git
+	pkgdesc = Data parsing and validation using Python type hints
+	pkgver = 1.5.1.r13.g5067508e
+	pkgrel = 1
+	url = https://pydantic-docs.helpmanual.io
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest-cov
+	checkdepends = mypy
+	makedepends = cython
+	makedepends = git
+	depends = python
+	optdepends = python-ujson: Faster JSON parsing in pure Python
+	optdepends = python-email-validator: Enable email validation
+	provides = python-pydantic
+	source = git+https://github.com/samuelcolvin/pydantic
+	sha256sums = SKIP
+
+pkgname = python-pydantic-git
+
