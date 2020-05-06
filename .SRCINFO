@@ -1,7 +1,7 @@
 pkgbase = bchd
 	pkgdesc = BCHD is an alternative BCH implementation written in Go.
-	pkgver = 0.15.2
-	pkgrel = 2
+	pkgver = 0.16.0
+	pkgrel = 1
 	url = http://github.com/gcash/bchd
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = bchd
 	provides = bchd
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/gcash/bchd/archive/v0.15.2.tar.gz
-	sha256sums = 9f627d611a732466cc504aae7b54830aa5f58c6421db66d914a8d68b471bd17b
+	source = https://github.com/gcash/bchd/archive/v0.16.0.tar.gz
+	sha256sums = 08654aa54490ca79c9db1df6eef3a4dc5ce12dc8e2d2ad0fec5d14057a5a7521
 
 pkgname = bchd
 
