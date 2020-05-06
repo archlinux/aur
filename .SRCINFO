@@ -1,6 +1,6 @@
 pkgbase = meld-git
 	pkgdesc = Visual diff and merge tool
-	pkgver = 3.20.0.485.gff5916e7
+	pkgver = 3.21.0.2.g3b682e16
 	pkgrel = 1
 	url = http://meldmerge.org/
 	install = meld.install

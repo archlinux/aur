@@ -2,7 +2,7 @@
 
 _pkgname=meld
 pkgname=$_pkgname-git
-pkgver=3.20.0.485.gff5916e7
+pkgver=3.21.0.2.g3b682e16
 pkgrel=1
 _realver=3.21.0
 pkgdesc='Visual diff and merge tool'
@@ -41,7 +41,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$_pkgname"
-    arch-meson build -D docs=true
+    arch-meson build -D docs=true -D byte-compile=false
     ninja -C build
 }
 
