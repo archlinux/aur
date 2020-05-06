@@ -1,0 +1,15 @@
+pkgbase = python-unrar-cffi
+	pkgdesc = Push Notifications that work with just about every platform
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/davide-romanini/unrar-cffi
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-pytest
+	depends = python-twine
+	source = https://files.pythonhosted.org/packages/source/u/unrar-cffi/unrar-cffi-0.1.0a5.tar.gz
+	sha256sums = d12d89ad1e1e1ee73ea7f26351fbaab5e65f23375612a2521453e8dd32511df7
+
+pkgname = python-unrar-cffi
+
