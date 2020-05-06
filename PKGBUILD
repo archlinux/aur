@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=ai-dungeon-cli
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Play ai dungeon on your terminal"
 arch=('any')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=("95c42769d26970b7e00d34c2ce4feb8503d3be348a0fa33bff91a81ae06b663a")
+sha256sums=('0163df45ecac7b1af9a730dec4973ec6bcef7818bca9eabb5bfb6f055e67fb0f')
 
 prepare() {
 	cd "$pkgname-$pkgver"
