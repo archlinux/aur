@@ -5,6 +5,7 @@ pkgbase = udpreplay-bin
 	url = https://github.com/rigtorp/udpreplay
 	arch = x86_64
 	license = MIT
+	provides = udpreplay
 	options = !strip
 	source = udpreplay-bin-1.0.0::https://github.com/rigtorp/udpreplay/releases/download/v1.0.0/udpreplay-x64-linux-static
 	source = https://raw.githubusercontent.com/rigtorp/udpreplay/master/LICENSE

@@ -8,6 +8,7 @@ arch=('x86_64')
 url='https://github.com/rigtorp/udpreplay'
 license=('MIT')
 options=('!strip')
+provides=("${pkgname%-bin}")
 source=("${pkgname}-${pkgver}::https://github.com/rigtorp/udpreplay/releases/download/v${pkgver}/udpreplay-x64-linux-static"
 		'https://raw.githubusercontent.com/rigtorp/udpreplay/master/LICENSE')
 sha256sums=('21d759bc1baee2d23ec7116c274b7f31b819f1d6f16e048f1dc75bb1c3b2f06f'
