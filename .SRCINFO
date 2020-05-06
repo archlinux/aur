@@ -14,6 +14,7 @@ pkgbase = dwm-ekollof-git
 	depends = ttf-twemoji-color
 	depends = ttf-joypixels
 	depends = dbus
+	depends = libxft-bgra
 	provides = dwm
 	conflicts = dwm
 	source = git+https://git.hackerheaven.org/ekollof/dwm-ekollof.git
