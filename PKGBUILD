@@ -15,7 +15,6 @@ source=("https://files.pythonhosted.org/packages/source/h/healpy/healpy-${pkgver
 md5sums=('f7b055f9ce11faa827890bbcfb0663ba')
 
 prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
     export _pyver=$(python -V | cut -c 8-10)
 }
 
