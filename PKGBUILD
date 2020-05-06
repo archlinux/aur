@@ -9,7 +9,7 @@ _version=78.0a1
 pkgrel=1
 pkgdesc='Standalone Mail/News reader - Nightly build'
 arch=('i686' 'x86_64')
-url="http://www.mozilla.org/thunderbird"
+url="https://www.mozilla.org/thunderbird"
 license=('MPL' 'GPL' 'LGPL')
 depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig'
          'freetype2' 'gtk3' 'hicolor-icon-theme' 'hunspell' 'libevent' 'libjpeg'
