@@ -7,8 +7,8 @@
 # Contributor: Matej Lach <matej.lach@gmail.com>
 
 pkgname=birdfont
-pkgver=2.28.0
-pkgrel=3
+pkgver=2.29.0
+pkgrel=1
 pkgdesc='A font editor which can generate fonts in TTF, EOT, SVG and BIRDFONT format'
 arch=('x86_64' 'i686')
 url='https://birdfont.org'
@@ -21,7 +21,7 @@ makedepends=('vala'
              'gettext'
              'python')
 source=("$url/releases/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('3fbb1bf7c735e4d67442ee5740e2e0ed29cb5ce56508c0c96d2599f8ece727a6'
+sha256sums=('1c6d6da20b0705f61aa9478797e8c336ef6a6b986ce04e1800f6baa5f3c2e3a3'
             'SKIP')
 validpgpkeys=('FB3BEFA59A6FF7F0E0682B68BCD31D4CCCEB9DD4') # Johan Mattsson <gmail: johan dot mattsson dot m>
 

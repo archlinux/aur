@@ -1,7 +1,7 @@
 pkgbase = birdfont
 	pkgdesc = A font editor which can generate fonts in TTF, EOT, SVG and BIRDFONT format
-	pkgver = 2.28.0
-	pkgrel = 3
+	pkgver = 2.29.0
+	pkgrel = 1
 	url = https://birdfont.org
 	arch = x86_64
 	arch = i686
@@ -13,10 +13,10 @@ pkgbase = birdfont
 	depends = webkit2gtk
 	depends = libnotify
 	depends = libxmlbird
-	source = https://birdfont.org/releases/birdfont-2.28.0.tar.xz
-	source = https://birdfont.org/releases/birdfont-2.28.0.tar.xz.sig
+	source = https://birdfont.org/releases/birdfont-2.29.0.tar.xz
+	source = https://birdfont.org/releases/birdfont-2.29.0.tar.xz.sig
 	validpgpkeys = FB3BEFA59A6FF7F0E0682B68BCD31D4CCCEB9DD4
-	sha256sums = 3fbb1bf7c735e4d67442ee5740e2e0ed29cb5ce56508c0c96d2599f8ece727a6
+	sha256sums = 1c6d6da20b0705f61aa9478797e8c336ef6a6b986ce04e1800f6baa5f3c2e3a3
 	sha256sums = SKIP
 
 pkgname = birdfont
