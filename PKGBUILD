@@ -1,9 +1,10 @@
-# Maintainer: eolianoe <eolianoe [at] gmail [DoT] com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 # Contributor: Kurnevsky Evgeny <kurnevsky@gmail.com>
 # Contributor: Victor Dmitriyev <mrvvitek@gmail.com>
 
 pkgname=scilab
-pkgver=6.0.2
+pkgver=6.1.0
 pkgrel=1
 pkgdesc='A scientific software package for numerical computations.'
 arch=('i686' 'x86_64')
@@ -30,7 +31,7 @@ source=("${url}/download/${pkgver}/${pkgname}-${pkgver}-src.tar.gz"
         "${pkgname}-LD_LIBRARY_PATH.patch"
         "${pkgname}-0004-Fix-build-with-ocaml-4.0.4.patch"
         "${pkgname}-num.patch")
-sha256sums=('880f4b614143e9f43c41416304874875df6ebc1a1b0e4400e69384851f6216b0'
+sha256sums=('ae6befb0153fb823fd647f4eb36076f98fd20fed601f7dfa94d8c13e31044964'
             'f19f173e989f72bd55bda35e271b3c180ecef4e29da964df3f230fce8b1330fc'
             'fb27339de4ddd55bf9bb172b0dbf22f67f578a3ca0270924792d728f42b43326'
             '38aa094951338fa1d267dc6f397552e175213b0f8ba7b35727c178607861f6dd'

@@ -1,6 +1,6 @@
 pkgbase = scilab
 	pkgdesc = A scientific software package for numerical computations.
-	pkgver = 6.0.2
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = https://www.scilab.org
 	arch = i686
@@ -45,14 +45,14 @@ pkgbase = scilab
 	depends = apache-lucene>=7
 	depends = java-batik>=1.8
 	depends = java-xmlgraphics-commons>=2.0.1
-	source = https://www.scilab.org/download/6.0.2/scilab-6.0.2-src.tar.gz
+	source = https://www.scilab.org/download/6.1.0/scilab-6.1.0-src.tar.gz
 	source = scilab-jogl-2.3.2.patch
 	source = scilab-lucene.patch
 	source = scilab-strict-jar.patch
 	source = scilab-LD_LIBRARY_PATH.patch
 	source = scilab-0004-Fix-build-with-ocaml-4.0.4.patch
 	source = scilab-num.patch
-	sha256sums = 880f4b614143e9f43c41416304874875df6ebc1a1b0e4400e69384851f6216b0
+	sha256sums = ae6befb0153fb823fd647f4eb36076f98fd20fed601f7dfa94d8c13e31044964
 	sha256sums = f19f173e989f72bd55bda35e271b3c180ecef4e29da964df3f230fce8b1330fc
 	sha256sums = fb27339de4ddd55bf9bb172b0dbf22f67f578a3ca0270924792d728f42b43326
 	sha256sums = 38aa094951338fa1d267dc6f397552e175213b0f8ba7b35727c178607861f6dd
