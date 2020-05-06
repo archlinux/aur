@@ -12,6 +12,7 @@ depends=('qt5-base>5.11.0' 'qv2ray')
 makedepends=('git' 'make' 'qt5-tools' 'which' 'gcc' 'cmake' 'ninja')
 provides=('qv2ray-plugin-command')
 conflicts=('qv2ray-plugin-command')
+groups=('qv2ray-plugin')
 source=("$_pkgname::git+${url}")
 sha512sums=('SKIP')
 pkgver() {
