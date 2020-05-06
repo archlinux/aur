@@ -8,6 +8,7 @@ pkgbase = gnome-shell-extension-hibernate-status
 	license = GPL
 	makedepends = git
 	depends = gnome-shell
+	conflicts = gnome-shell-extension-hibernate-status-git
 	source = https://github.com/arelange/gnome-shell-extension-hibernate-status/archive/v1.6/gnome-shell-extension-hibernate-status-v1.6.tar.gz
 	sha256sums = df5a5b952a4b8f1b85b23dca8477a41eb218c3ff5afeb0ee019e527b54423c5e
 
