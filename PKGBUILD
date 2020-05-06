@@ -6,7 +6,7 @@ pkgver=1.1.1
 pkgrel=5
 pkgdesc='Brother HL-4150CDN CUPS printer driver'
 arch=('i686' 'x86_64')
-url='http://support.brother.com/g/b/downloadlist.aspx?c=de&lang=de&prod=hl4150cdn_all&os=127&flang=English'
+url='https://support.brother.com/g/b/downloadlist.aspx?c=de&lang=de&prod=hl4150cdn_all&os=127&flang=English'
 license=('custom:Brother' 'GPL')
 depends=('a2ps' 'cups')
 makedepends=('libarchive')
@@ -14,8 +14,8 @@ depends_x86_64=('lib32-glibc')
 install=brother-hl4150cdn.install
 source=(0001-brother-hl4150cdn.patch
         Brother.license
-        "http://download.brother.com/welcome/dlf005939/hl4150cdnlpr-${pkgver}-${pkgrel}.i386.rpm"
-        "http://download.brother.com/welcome/dlf005941/hl4150cdncupswrapper-${pkgver}-${pkgrel}.i386.rpm")
+        "https://download.brother.com/welcome/dlf005939/hl4150cdnlpr-${pkgver}-${pkgrel}.i386.rpm"
+        "https://download.brother.com/welcome/dlf005941/hl4150cdncupswrapper-${pkgver}-${pkgrel}.i386.rpm")
 b2sums=('fb972e5d2b1f6154800cca0c81f2344a45e1b5fe4bcbb69c1f72c5e3ff50e5a50951acb8a564b5e5851ab0f8d86df992642d86867d49f41d60245548735e733a'
         '324d06c56e852a1aa5b9d71c8c6495913a4483d55d5360d7adb8e563090d55185de724e7a8588a6787d4ce75c476d1dc49ddd6c2a8daed4f27f96dd98255bf14'
         '9295cd34aca9e4912e64314870e4e3cad7333592f2f10014fd4160e04fa01e3b5e0f7a62467648ea3f01914866122c3aba79d2017f4d6cfc0f930782c7f36b1c'
