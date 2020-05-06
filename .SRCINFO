@@ -7,6 +7,7 @@ pkgbase = hsm-git
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = g++
 	depends = boost
 	source = hsm-git::git+https://github.com/erikzenker/hsm.git
 	sha256sums = SKIP
