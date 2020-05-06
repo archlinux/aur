@@ -1,0 +1,22 @@
+pkgbase = dwm-syaoran-git
+	pkgdesc = This is my dwm (dynamic window manager) build.
+	pkgver = 6.2.r44.e1202a5
+	pkgrel = 1
+	url = https://github.com/justanoobcoder/dwm-syaoran.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = make
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	depends = freetype2
+	depends = st
+	depends = dmenu
+	provides = dwm
+	conflicts = dwm
+	source = git+https://github.com/justanoobcoder/dwm-syaoran.git
+	md5sums = SKIP
+
+pkgname = dwm-syaoran-git
+
