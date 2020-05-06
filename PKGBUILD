@@ -51,7 +51,7 @@ _major=5.6
 _minor=11
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,7 +72,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -319,7 +320,8 @@ sha512sums=('f4c02f59353d2199084583bed6fa9cec6e7a7cb755296c883969c579a8f9d34e202
             'SKIP'
             'd436ce9581bd6f17c4594ad4eaf23245088d09a44d92a4b3de15995e0e7ace000d50ab163167446c43c7eb1efb82eda76da42c92cdb04e903c1b79326bbf560d'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
-            'eacf9612b758381b1490409911c64a4d0a96f33cdfc5a1cbcfd4c5feb70d08a350ea017f8ef853d74906158d26ec5cd57ce7109f00d4593966fb0c05eff66ae4'
+            'bf1b8a014f20918056493b524884f9183f7b9c03f8449230f569eca39759140e2de7bddef3b16ca6647a3b57e770076c5c735bf5092954da1dd4da43fa92a9b2'
+            'e8df7db49692540bc137aca93ae1c6bacbf0ddb4eb3c66f87f95d02d103be34468559d557c45dd7c90c116a14c7a5e7de7afb57cf329fce3e3c7ee00314a35c2'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             '9e356e754041ceddd7f3190e923ed7094b99315cb1b4be28aaabac9ed5729ce4a6b451fa60f9a856a4b235a6cedc7b1f43c2d0d9a47bf58a5def9344710c6a1a')
 
