@@ -21,6 +21,7 @@ build() {
   export GOPATH="$srcdir"/gopath
   cd "$srcdir/$pkgname-v$pkgver"
   go get github.com/mmcdole/gofeed
+  go get github.com/araddon/dateparse 
   go build
 }
 
