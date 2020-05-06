@@ -14,7 +14,7 @@ url="https://launchpad.net/gtkhotkey"
 license=('LGPL3')
 depends=('gtk2')
 makedepends=('intltool')
-source=("http://launchpad.net/$pkgname/0.2/$pkgver/+download/$pkgname-$pkgver.tar.gz"
+source=("https://launchpad.net/$pkgname/0.2/$pkgver/+download/$pkgname-$pkgver.tar.gz"
         fix-glib-and-docpath.patch)
 b2sums=('05ed162cc1eec7e6c981e796a5dca125e5c940c38ed79d67699d7194fce0c77489f3aae9747ae8610c14417b9871859cb5024990f6adb3524e6e14265603a07b'
         'aebde310cf6fdafbf0e3754c1d895481187a21441720601e7bd15a68a7fdc43cbf3043f922d84f73e85374011f72d7216745973f2289aa4e71f00695d8bddf89')
