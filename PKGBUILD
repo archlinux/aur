@@ -1,33 +1,39 @@
+#!/bin/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-# shellcheck disable=SC2034,SC2154,SC2164,SC2191
-
-# To force cuda compute arch uncomment this line and update value of sm_xx model accordingly
-#_cuda_capability+=(sm_30 sm_35 sm_37)
-#_cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
-((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75) # Travis memory limit is not enough to build for arch 3.x.
+# shellcheck disable=SC2034,SC2154 # allow unused/unset variables
+# shellcheck disable=SC2191 # preserve current _CMAKE_FLAGS initialization.
 
 # Configuration.
 _branch="functions"
-_sufix=${_branch}
-_fragment="#branch=${_branch}"
+_suffix=${_branch}
+_fragment=${FRAGMENT:-#branch=${_branch}}
+[[ -v CUDA_ARCH ]] && _cuda_capability=${CUDA_ARCH}
 
-pkgname=blender-${_sufix}-git
+#some extra, unofficially supported stuff goes here:
+((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75) # Travis memory limit is not enough to build for arch 3.x.
+_CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
+((DISABLE_EMBREE)) || {
+  _CMAKE_FLAGS+=( -DWITH_CYCLES_EMBREE=ON )
+  depends+=(embree)
+}
+((DISABLE_NINJA)) ||  makedepends+=('ninja')
+#shellcheck disable=SC2015
+((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
+
+pkgname=blender-${_suffix}-git
 pkgver=2.83.r97300.g6692ca602ca
 _blenver=${pkgver:0:4}
 pkgrel=1
 pkgdesc="Development version of Blenders ${_branch} branch"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
-depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg2'
+depends+=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg2'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
-
-makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
-((DISABLE_NINJA)) ||  makedepends+=('ninja')
-((DISABLE_CUDA)) && optdepends=('cuda: CUDA support in Cycles') || makedepends+=('cuda')
-provides=("blender-${_sufix}")
-conflicts=("blender-${_sufix}")
-#options=(!makeflags)
+depends+=('openimagedenoise')
+makedepends+=('git' 'cmake' 'boost' 'mesa' 'llvm')
+provides=("blender-${_suffix}")
+conflicts=("blender-${_suffix}")
 license=('GPL')
 # NOTE: the source array has to be kept in sync with .gitmodules
 # the submodules has to be stored in path ending with git to match
@@ -41,6 +47,7 @@ source=("git://git.blender.org/blender.git${_fragment}"
         'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
         SelectCudaComputeArch.patch
         addon_path.patch
+        embree.patch #add missing embree link.
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -48,103 +55,95 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c'
-            '81e0047ba48662ee0ec1da1ffd427641305a0edc68c7913da9460ae4c1fefe72')
+            'ff05a19c9ff8aa3622b7d31f86c6218ac1a3ac06ad1a7cfd7e0587f623b3bd2f'
+            '42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4')
 
 pkgver() {
-  cd "$srcdir/blender"
-  printf "%s.r%s.g%s" "$(grep -Po "BLENDER_VERSION *\K[0-9]{3}" source/blender/blenkernel/BKE_blender_version.h|sed 's/./&./1')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
+  printf "%d.%d.r%s.g%s" \
+    $((blender_version/100)) \
+    $((blender_version%100)) \
+    "$(git -C "$srcdir/blender" rev-list --count HEAD)" \
+    "$(git -C "$srcdir/blender" rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/blender"
   # update the submodules
-  git submodule update --init --recursive --remote
-  if [[ ! -v _cuda_capability ]] && grep -q nvidia <(lsmod); then
-    git apply -v "${srcdir}/SelectCudaComputeArch.patch"
+  git -C "$srcdir/blender" submodule update --init --recursive --remote
+  if [ ! -v _cuda_capability ] && grep -q nvidia <(lsmod); then
+    git -C "$srcdir/blender" apply -v "${srcdir}"/SelectCudaComputeArch.patch
   fi
-  if [[ -v _sufix ]]; then
-    git apply -v <(sed "s/@@_sufix@@/${_sufix}/g" "${srcdir}/addon_path.patch")
+  if [[ -v _suffix ]]; then
+    git -C "$srcdir/blender" apply -v <(sed "s/@@_suffix@@/${_suffix}/g" "${srcdir}/addon_path.patch")
   fi
+  ((DISABLE_EMBREE)) || git -C "$srcdir/blender" apply -v "${srcdir}"/embree.patch
 }
 
 build() {
-  mkdir -p "$srcdir/blender-build"
-  cd "$srcdir/blender-build"
-
   _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
   msg "python version detected: ${_pyver}"
 
   # determine whether we can precompile CUDA kernels
-  if pacman -Qq cuda 2>&- ; then
-    _EXTRAOPTS=( -DWITH_CYCLES_CUDA_BINARIES=ON \
-                 -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
+  _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
+  if [ "$_CUDA_PKG" != "" ] && ! ((DISABLE_CUDA)) ; then
+    _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
+                  -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
+    ((DISABLE_OPTIX)) || _CMAKE_FLAGS+=( -DOPTIX_ROOT_DIR=/opt/optix )
     if [[ -v _cuda_capability ]]; then
-      _EXTRAOPTS+=( -DCYCLES_CUDA_BINARIES_ARCH="$(IFS=';'; echo "${_cuda_capability[*]}";)" )
+      _CMAKE_FLAGS+=( -DCYCLES_CUDA_BINARIES_ARCH="$(IFS=';'; echo "${_cuda_capability[*]}";)" )
+    fi
+    [ -f "/usr/lib/ccache/bin/nvcc-ccache" ] && _CMAKE_FLAGS+=( -DCUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache )
+    if _cuda_gcc=$(basename "$(readlink /opt/cuda/bin/gcc)") ; then
+      [ -L "/usr/lib/ccache/bin/$_cuda_gcc" ] && _CMAKE_FLAGS+=( -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/"$_cuda_gcc" )
     fi
   fi
 
   ((DISABLE_NINJA)) && generator="Unix Makefiles" || generator="Ninja"
-  cmake -G "$generator" "$srcdir/blender" \
+  cmake -G "$generator" -S "$srcdir/blender" -B "$srcdir/build" \
         -C "${srcdir}/blender/build_files/cmake/config/blender_release.cmake" \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
         -DWITH_INSTALL_PORTABLE=OFF \
-        -DWITH_PLAYER=OFF \
-        -DWITH_ALEMBIC=ON \
-        -DWITH_OPENCOLORIO=ON \
-        -DWITH_FFTW3=ON \
         -DWITH_SYSTEM_GLEW=ON \
-        -DWITH_CODEC_FFMPEG=ON \
         -DWITH_PYTHON_INSTALL=OFF \
         -DPYTHON_VERSION="${_pyver}" \
-        -DWITH_MOD_OCEANSIM=ON \
-        -DWITH_CYCLES_OPENSUBDIV=ON \
-        -DWITH_CYCLES_OSL=ON \
-        -DWITH_LLVM=ON \
-        -DWITH_IMAGE_OPENEXR=ON \
-        -DWITH_OPENSUBDIV=ON \
-        -DWITH_OPENVDB=ON \
-        -DWITH_OPENVDB_BLOSC=ON \
-        -DWITH_OPENCOLLADA=ON \
-        "${_EXTRAOPTS[@]}"
+        "${_CMAKE_FLAGS[@]}"
   export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
 # shellcheck disable=SC2086 # allow MAKEFLAGS to split when multiple flags provided.
-  if ((DISABLE_NINJA)); then make; else ninja ${MAKEFLAGS:--j1}; fi
+  if ((DISABLE_NINJA)); then make -C "$srcdir/build" ; else ninja -C "$srcdir/build" ${MAKEFLAGS:--j1}; fi
 }
 
 package() {
-  cd "$srcdir/blender-build"
   export DESTDIR="$pkgdir"
-  if ((DISABLE_NINJA)); then make install; else ninja install; fi
+  if ((DISABLE_NINJA)); then make -C "$srcdir/build" install; else ninja -C "$srcdir/build" install; fi
 
-  if [[ -v _sufix ]]; then
-    msg "add -${_sufix} sufix to desktop shortcut"
-    sed -i "s/=blender/=blender-${_sufix}/g" "${pkgdir}/usr/share/applications/blender.desktop"
-    sed -i "s/=Blender/=Blender-${_sufix}/g" "${pkgdir}/usr/share/applications/blender.desktop"
-    mv "${pkgdir}/usr/share/applications/blender.desktop" "${pkgdir}/usr/share/applications/blender-${_sufix}.desktop"
+    msg "add -${_suffix} suffix to desktop shortcut"
+    sed -i "s/=blender/=blender-${_suffix}/g" "${pkgdir}/usr/share/applications/blender.desktop"
+    sed -i "s/=Blender/=Blender-${_suffix}/g" "${pkgdir}/usr/share/applications/blender.desktop"
+    mv "${pkgdir}/usr/share/applications/blender.desktop" "${pkgdir}/usr/share/applications/blender-${_suffix}.desktop"
 
-    msg "add -${_sufix} sufix to binaries"
-    mv "${pkgdir}/usr/bin/blender" "${pkgdir}/usr/bin/blender-${_sufix}"
-    mv "${pkgdir}/usr/bin/blender-thumbnailer.py" "${pkgdir}/usr/bin/blender-${_sufix}-thumbnailer.py"
+    msg "add -${_suffix} suffix to binaries"
+    mv "${pkgdir}/usr/bin/blender" "${pkgdir}/usr/bin/blender-${_suffix}"
+    mv "${pkgdir}/usr/bin/blender-thumbnailer.py" "${pkgdir}/usr/bin/blender-${_suffix}-thumbnailer.py"
 
-    msg "mv doc/blender to doc/blender-${_sufix}"
-    mv "${pkgdir}/usr/share/doc/blender" "${pkgdir}/usr/share/doc/blender-${_sufix}"
+    msg "mv doc/blender to doc/blender-${_suffix}"
+    mv "${pkgdir}/usr/share/doc/blender" "${pkgdir}/usr/share/doc/blender-${_suffix}"
 
-    msg "add -${_sufix} sufix to man page"
-    mv "${pkgdir}/usr/share/man/man1/blender.1" "${pkgdir}/usr/share/man/man1/blender-${_sufix}.1"
+    msg "add -${_suffix} suffix to man page"
+    mv "${pkgdir}/usr/share/man/man1/blender.1" "${pkgdir}/usr/share/man/man1/blender-${_suffix}.1"
 
-    msg "add -${_sufix} sufix to all icons"
+    msg "add -${_suffix} suffix to all icons"
     while read -r icon
     do
       # ${filename##/*.} extra extenssion from path
       # ${filename%.*} extract filename form path
       # look at bash "manipulatin string"
-      mv "$icon" "${icon%.*}-${_sufix}.${icon##/*.}"
+      mv "$icon" "${icon%.*}-${_suffix}.${icon##/*.}"
     done < <(find "${pkgdir}/usr/share/icons" -type f)
-  fi
 
-  if [[ -e "$pkgdir/usr/share/blender/${_blenver}${_sufix:+_$_sufix}/scripts/addons/cycles/lib/" ]] ; then
+  if [[ -e "$pkgdir/usr/share/blender/${_blenver}${_suffix:+_$_suffix}/scripts/addons/cycles/lib/" ]] ; then
     # make sure the cuda kernels are not stripped
-    chmod 444 "$pkgdir"/usr/share/blender/${_blenver}${_sufix:+_$_sufix}/scripts/addons/cycles/lib/*
+    chmod 444 "$pkgdir"/usr/share/blender/${_blenver}${_suffix:+_$_suffix}/scripts/addons/cycles/lib/*
   fi
 }
 # vim:set sw=2 ts=2 et:
