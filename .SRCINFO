@@ -1,7 +1,7 @@
 pkgbase = utools-yuanke
-	pkgdesc = uTools Utilities
+	pkgdesc = 你的生产力工具集
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://u.tools/
 	arch = x86_64
 	license = custom

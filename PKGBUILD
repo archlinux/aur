@@ -2,8 +2,8 @@
 
 pkgname=utools-yuanke
 pkgver=1.0.1
-pkgrel=1
-pkgdesc="uTools Utilities"
+pkgrel=2
+pkgdesc="你的生产力工具集"
 arch=('x86_64')
 url="https://u.tools/"
 license=('custom')
