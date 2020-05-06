@@ -11,12 +11,26 @@ makedepends=('git' 'cmake')
 install='lokinet.install'
 _gitname=loki-network
 source=("git+https://github.com/loki-project/$_gitname.git#tag=v$pkgver" # github archives don't embed submodules
+        'git+https://github.com/nlohmann/json.git'
+        'git+https://github.com/google/googletest.git'
+        'git+https://github.com/jarro2783/cxxopts.git'
+        'git+https://github.com/gulrak/filesystem.git'
+        'git+https://github.com/catchorg/Catch2'
+        'git+https://github.com/martinmoene/optional-lite.git'
+        'git+https://github.com/HowardHinnant/date.git'
         'lokinet.service'
         'lokinet-bootstrap.service'
         'lokinet-default-config.service'
         'lokinet.sysusers'
         'lokinet.tmpfiles')
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'ce7f40f91c1de020466f82fb504e261e66774ef5f97a9d914dbe61236a1baf01'
             '21c9bc83f8466ab17fa927561d7f24f930f97c996a8aa0fbbbbb2b65cb97b342'
             '6ef779170b72856bbb8df40c34a808acffddd156684bdb66a55e71d50cf95841'
@@ -24,8 +38,16 @@ sha256sums=('SKIP'
             '53837c9cfc90b93d55558045108a5d1d7a8b8a75a266af264d7f9101363d043f')
 
 prepare() {
-	# XXX maybe should include submodules as part of sources?
-	git -C "$_gitname" submodule update --init --recursive
+	cd "$_gitname"
+	git submodule init
+	git config submodule.external/nlohmann.url       "$srcdir"/json
+	git config submodule.external/googletest.url     "$srcdir"/googletest
+	git config submodule.external/cxxopts.url        "$srcdir"/cxxopts
+	git config submodule.external/ghc-filesystem.url "$srcdir"/filesystem
+	git config submodule.test/Catch2.url             "$srcdir"/Catch2
+	git config submodule.external/optional-lite.url  "$srcdir"/optional-lite
+	git config submodule.external/date.url           "$srcdir"/date
+	git submodule update
 }
 
 build() {
