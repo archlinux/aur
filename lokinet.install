@@ -1,0 +1,14 @@
+
+post_install() {
+	cat <<-EOF
+		  systemd-resolved is known to cause issues with lokinet so it's recommended to disable it:
+		    systemctl disable --now systemd-resolved
+		  To generate default config (optional, will be invoked by lokinet service if needed):
+		    systemctl start lokinet-default-config
+		  To adjust upstream DNS servers and other options, edit /var/lib/lokinet/lokinet.ini
+		  To start lokinet:
+		    systemctl start lokinet
+		  To get .loki domains resolve, replace /etc/resolv.conf contents with:
+		    nameserver 127.3.2.1
+		EOF
+}

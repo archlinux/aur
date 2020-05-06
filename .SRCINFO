@@ -1,0 +1,29 @@
+pkgbase = lokinet
+	pkgdesc = Anonymous, decentralized and IP based overlay network for the internet.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://lokinet.org
+	install = lokinet.install
+	arch = x86_64
+	arch = aarch64
+	license = ZLIB
+	makedepends = git
+	makedepends = cmake
+	depends = libuv
+	depends = libsodium
+	depends = curl
+	source = git+https://github.com/loki-project/loki-network.git#tag=v0.7.1
+	source = lokinet.service
+	source = lokinet-bootstrap.service
+	source = lokinet-default-config.service
+	source = lokinet.sysusers
+	source = lokinet.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 15518029aa39bbd15b18611037177175d0c66ac9d3c0f7f2d1e3eda289d31eba
+	sha256sums = 21c9bc83f8466ab17fa927561d7f24f930f97c996a8aa0fbbbbb2b65cb97b342
+	sha256sums = 6ef779170b72856bbb8df40c34a808acffddd156684bdb66a55e71d50cf95841
+	sha256sums = 137cf7eeebc8737d62f3ccfad2398fb1c442a91cb9db7d650429b218dd949a00
+	sha256sums = 53837c9cfc90b93d55558045108a5d1d7a8b8a75a266af264d7f9101363d043f
+
+pkgname = lokinet
+
