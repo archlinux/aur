@@ -1,0 +1,18 @@
+pkgbase = nautilus-folder-cleaner-extension-git
+	pkgdesc = Sorts files into folders by type or extension - Nautilus extension
+	pkgver = 1.0.5.r0.gf8dd2b7
+	pkgrel = 1
+	url = https://gitlab.com/Latesil/folder-cleaner-extension
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	makedepends = intltool
+	makedepends = appstream-glib
+	depends = python-nautilus
+	source = nautilus-folder-cleaner-extension-git-1.0.5.r0.gf8dd2b7::git+https://gitlab.com/Latesil/folder-cleaner-extension.git
+	md5sums = SKIP
+
+pkgname = nautilus-folder-cleaner-extension-git
+
