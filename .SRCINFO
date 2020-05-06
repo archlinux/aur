@@ -1,7 +1,7 @@
 pkgbase = healpix
 	pkgdesc = Software for pixelization, hierarchical indexation, synthesis, analysis, and visualization of data on the sphere.
 	pkgver = 3.60
-	pkgrel = 0
+	pkgrel = 1
 	url = https://healpix.jpl.nasa.gov/
 	arch = x86_64
 	license = GPL2
