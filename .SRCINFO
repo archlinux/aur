@@ -7,6 +7,7 @@ pkgbase = bracmat-git
 	license = GPL2
 	makedepends = gcc
 	makedepends = git
+	makedepends = make
 	provides = bracmat
 	conflicts = bracmat
 	source = git+https://github.com/BartJongejan/Bracmat.git
