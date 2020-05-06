@@ -9,8 +9,10 @@ pkgbase = godot-git
 	makedepends = git
 	makedepends = scons
 	makedepends = pulseaudio
-	makedepends = clang
+	makedepends = gcc
 	makedepends = pkgconf
+	makedepends = xorg-xrandr
+	makedepends = yasm
 	depends = glu
 	depends = libxcursor
 	depends = libxinerama
@@ -19,10 +21,8 @@ pkgbase = godot-git
 	depends = mesa
 	provides = godot
 	conflicts = godot
-	source = git://github.com/godotengine/godot.git#branch=master
 	source = godot.desktop
 	source = icon.png
-	sha256sums = SKIP
 	sha256sums = 2ae039a3879b23e157f2125e0b326fa1ef66d56bfd596c790e8943d27652e93a
 	sha256sums = 99f9d17c4355b274ef0c08069cf6e756a98cd5c9d9d22d1b39f79538134277e1
 
