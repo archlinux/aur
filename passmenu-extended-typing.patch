@@ -1,0 +1,65 @@
+diff --unified --recursive --text password-store-1.7.3/contrib/dmenu/passmenu password-store-1.7.3.new/contrib/dmenu/passmenu
+--- password-store-1.7.3/contrib/dmenu/passmenu	2018-08-03 15:32:48.000000000 +1200
++++ password-store-1.7.3.new/contrib/dmenu/passmenu	2020-05-06 13:00:50.156634320 +1200
+@@ -8,6 +8,18 @@
+ 	shift
+ fi
+ 
++typeuser=0
++if [[ $1 == "--typeuser" ]]; then
++        typeuser=1
++        shift
++fi
++
++typeboth=0
++if [[ $1 == "--typeboth" ]]; then
++	typeboth=1
++	shift
++fi
++
+ prefix=${PASSWORD_STORE_DIR-~/.password-store}
+ password_files=( "$prefix"/**/*.gpg )
+ password_files=( "${password_files[@]#"$prefix"/}" )
+@@ -17,9 +29,19 @@
+ 
+ [[ -n $password ]] || exit
+ 
+-if [[ $typeit -eq 0 ]]; then
+-	pass show -c "$password" 2>/dev/null
+-else
++if [[ $typeit -eq 1 ]]; then	
++	pass show "$password" | { IFS= read -r pass; printf %s "$pass"; } |
++		xdotool type --clearmodifiers --file -
++elif [[ $typeuser -eq 1 ]]; then
++	pass show "$password" | awk 'BEGIN{ORS="\t"} NR==2 {print; exit}' |
++                sed 's/user\:\s//' | # Specify a custom filter if needed
++                xdotool type --clearmodifiers --file -
++elif [[ $typeboth -eq 1 ]]; then
++	pass show "$password" | awk 'BEGIN{ORS="\t"} NR==2 {print; exit}' |
++		sed 's/user\:\s//' | # Specify a custom filter if needed
++		xdotool type --clearmodifiers --file -
+ 	pass show "$password" | { IFS= read -r pass; printf %s "$pass"; } |
+ 		xdotool type --clearmodifiers --file -
++else
++	pass show -c "$password" 2>/dev/null
+ fi
+diff --unified --recursive --text password-store-1.7.3/contrib/dmenu/README.md password-store-1.7.3.new/contrib/dmenu/README.md
+--- password-store-1.7.3/contrib/dmenu/README.md	2018-08-03 15:32:48.000000000 +1200
++++ password-store-1.7.3.new/contrib/dmenu/README.md	2020-05-06 12:57:27.023879229 +1200
+@@ -2,11 +2,14 @@
+ password manager. This design allows you to quickly copy a password to the
+ clipboard without having to open up a terminal window if you don't already have
+ one open. If `--type` is specified, the password is typed using [xdotool][]
+-instead of copied to the clipboard.
++instead of copied to the clipboard. If `--typeuser` is specified, the
++second line is typed using [xdotool][] (ideally the username). If `--typeboth` 
++is specified, the second line is typed using [xdotool][] first (ideally the 
++username), then tab, then the first line.
+ 
+ # Usage
+ 
+-    passmenu [--type] [dmenu arguments...]
++    passmenu [--type | --typeuser | --typeboth] [dmenu arguments...]
+ 
+ [dmenu]: http://tools.suckless.org/dmenu/
+ [xdotool]: http://www.semicomplete.com/projects/xdotool/
