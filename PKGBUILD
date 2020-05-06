@@ -12,13 +12,13 @@ _sufix=${_branch}
 _fragment="#branch=${_branch}"
 
 pkgname=blender-${_sufix}-git
-pkgver=2.83.r95931.gbeed795e5aa
+pkgver=2.83.r97300.g6692ca602ca
 _blenver=${pkgver:0:4}
 pkgrel=1
 pkgdesc="Development version of Blenders ${_branch} branch"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
-depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg'
+depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg2'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 
