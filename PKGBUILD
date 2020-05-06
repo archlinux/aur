@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=fahcontrol
-pkgver=7.6.9
+pkgver=7.6.13
 pkgrel=1
 pkgdesc='Graphical monitor and control utility for the Folding@home client'
 url='https://foldingathome.org'
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python2' 'pygtk')
 optdepends=('fahviewer: 3D simulation viewer')
 source=("https://download.foldingathome.org/releases/public/release/${pkgname}/debian-stable-64bit/v${pkgver%.*}/${pkgname}_${pkgver}-1_all.deb")
-md5sums=('c4f978e69399a381630b6235c0cd493a')
+md5sums=('6747c8780feefe37778586f74a1c61d2')
 
 prepare() {
   tar -xf data.tar.xz
