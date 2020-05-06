@@ -1,5 +1,5 @@
 pkgbase = webstorm
-	pkgdesc = JavaScript IDE and HTML editor.
+	pkgdesc = JavaScript IDE and HTML editor
 	pkgver = 2020.1.1b201.7223.93
 	pkgrel = 1
 	url = https://www.jetbrains.com/webstorm/
