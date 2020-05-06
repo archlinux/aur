@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  printf "v1.0.1-%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "v1.0.1.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
