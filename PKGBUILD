@@ -1,7 +1,7 @@
 # Maintainer: Nazar Vinnichuk <nazar.vinnichuk at tutanota dot com>
 pkgname=bspwm-undo-git
 _pkgname=${pkgname%-git}
-pkgver=r15.e4094f1
+pkgver=r20.541ec98
 pkgrel=1
 pkgdesc="Undoable versions of some bspc commands."
 url="http://github.com/Kharacternyk/${_pkgname}"
@@ -19,8 +19,6 @@ pkgver() {
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-
     install -Dm755 \
     "${srcdir}/${_pkgname}/ubspc.sh" \
     "${pkgdir}/usr/bin/ubspc"
