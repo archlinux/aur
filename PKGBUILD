@@ -25,7 +25,6 @@ sha256sums=('SKIP'
 
 prepare() {
 	# XXX maybe should include submodules as part of sources?
-	# XXX --remote ?
 	git -C "$_gitname" submodule update --init --recursive
 }
 
