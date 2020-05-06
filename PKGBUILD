@@ -1,6 +1,6 @@
 # Maintainer: Gurkengewuerz <niklas@mc8051.de>
 pkgname=kshare
-pkgver=v5.0.3
+pkgver=v5.0.4
 pkgrel=1
 conflicts=("kshare-git")
 pkgdesc="The free and open source and cross platform screen sharing software."
