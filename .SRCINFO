@@ -1,15 +1,15 @@
 pkgbase = truffle
 	pkgdesc = A development framework for Ethereum smart contracts
-	pkgver = 5.1.23
+	pkgver = 5.1.24
 	pkgrel = 1
 	url = https://github.com/trufflesuite/truffle
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = truffle-5.1.23.tgz
-	source = https://registry.npmjs.org/truffle/-/truffle-5.1.23.tgz
-	sha256sums = 3e3014b5a6fb49a0f4261ac3fd52685a3ade94bf2eb3de486cf49a25c8019cf4
+	noextract = truffle-5.1.24.tgz
+	source = https://registry.npmjs.org/truffle/-/truffle-5.1.24.tgz
+	sha256sums = 4942f51c933af4ad616959439e01d3dcdd615ad284d291ad3a7b3a1603297ebf
 
 pkgname = truffle
 
