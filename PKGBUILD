@@ -8,7 +8,6 @@ arch=('any')
 url='https://github.com/st3fan/dovecot-xaps-daemon'
 license=('MIT')
 makedepends=('go')
-conflicts=('dovecot-xaps-daemon-git')
 backup=('etc/xapsd/xapsd.conf')
 source=("https://github.com/st3fan/dovecot-xaps-daemon/archive/v${pkgver}.tar.gz")
 b2sums=('89082412c7e17b4d345898cf7a66b6125481f836df482de8cb77ea15c8f2ef8067dab2959c51d94ccd9248aecaba57700c9818a5947aa9490ba2e7ce8f09e80b')
