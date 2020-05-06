@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/erikzenker/hsm"
 license=('MIT')
 depends=(boost)
-makedepends=('cmake' 'g++')
+makedepends=('cmake' 'gcc')
 
 source=("${pkgname}::git+https://github.com/erikzenker/hsm.git")
 sha256sums=('SKIP')
