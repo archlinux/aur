@@ -3,7 +3,7 @@
 
 pkgname=xwingridselect
 _gitname=xwingridselect
-pkgver=v1.0.1
+pkgver=v1.1.0
 pkgrel=1
 pkgdesc="X11 window switcher with fancy look"
 url="https://github.com/TheCynicalTeam/xwingridselect"
@@ -15,11 +15,6 @@ options=(!libtool strip)
 
 source=('git+https://github.com/TheCynicalTeam/xwingridselect.git')
 md5sums=('SKIP')
-
-pkgver() {
-  cd $_gitname
-  printf "v1.0.1.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
   cd $_gitname
