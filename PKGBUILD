@@ -2,7 +2,7 @@
 # Contributor: qaz <fkxxyz@163.com>
 
 pkgname=arctime
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="A Simple, powerful and efficient cross-platform subtitle production software"
 arch=("i686" "x86_64")
@@ -10,7 +10,7 @@ url="http://arctime.org"
 license=('custom')
 depends=('ffmpeg' 'java-runtime=8' 'vlc')
 source=(
-  "https://dlhz.arctime.cn/ARCTIME_PRO_${pkgver}_LINUX.7z"
+  "ARCTIME_PRO_${pkgver}_LINUX.7z::https://t.arctime.cn/ap2x"
   16x16.png
   24x24.png
   32x32.png
@@ -54,10 +54,10 @@ exec java -Xms128m -Xmx512m -jar ./ArcTime.jar
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('875e6e7da8dfa228ff4daf738433348ec4f90202c94947eb61bad69632343f48'
+sha256sums=('7d7260c3236c3047ac135fb58c03d8ba7f20c993675dd79f2e68b406e54eb5c4'
             '9f490a4fc4d4f15e31b15e84717e11ce794e908055484f22d02aa0a166093677'
             '406a3953b7b5d54814f6613f23badc0eff04909688d67295371aeeead862ae85'
             'fcd6ecf0a786658968d0c8747b860b5238c0df73c873642dd7ce5fca186d2122'
             'c9bc9ac2ffdc703b672c1f918ea4d48479693bdc69dfd346a077547de47ce7d1'
-            '509cd21579a352540e2a5a7fc12d1efb927d2247184e75765787d3aa0f39f05e')
+            'cc2feb9c81df49fb3b3686bc8823d2ebeaaaab857ae1ff9fdb363b3e1637be4a')
 
