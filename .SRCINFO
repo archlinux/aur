@@ -1,0 +1,17 @@
+pkgbase = material-cursors-git
+	pkgdesc = Material cursors with 3 color variant
+	pkgver = 20200505
+	pkgrel = 1
+	url = https://github.com/varlesh/material-cursors
+	arch = any
+	license = GPL
+	makedepends = inkscape
+	makedepends = xorg-xcursorgen
+	makedepends = git
+	provides = material-cursors
+	conflicts = material-cursors
+	source = git+https://github.com/varlesh/material-cursors
+	sha512sums = SKIP
+
+pkgname = material-cursors-git
+
