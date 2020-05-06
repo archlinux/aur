@@ -1,0 +1,21 @@
+pkgbase = fmedia-bin
+	pkgdesc = Fast media player/recorder/converter
+	pkgver = 1.17
+	pkgrel = 1
+	url = https://stsaz.github.io/fmedia
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = gendesk
+	makedepends = imagemagick
+	depends = pulseaudio
+	depends = gtk3
+	depends = dbus
+	depends = jack
+	provides = fmedia
+	options = !strip
+	source = fmedia-bin-1.17.tar.xz::https://github.com/stsaz/fmedia/releases/download/v1.17/fmedia-1.17-linux-amd64.tar.xz
+	sha256sums = d2267fe868f38c4387eadab626a9b740cdf831601126db5f067f46c5b3a9946a
+
+pkgname = fmedia-bin
+
