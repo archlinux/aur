@@ -1,0 +1,22 @@
+pkgbase = jupyter-bash_kernel
+	pkgdesc = A Jupyter kernel for bash
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/takluyver/bash_kernel
+	arch = any
+	license = BSD
+	makedepends = python-pip
+	depends = jupyter
+	depends = jupyter-notebook
+	depends = bash
+	noextract = bash_kernel-0.4.1-py2.py3-none-any.whl
+	noextract = LICENSE
+	source = https://github.com/takluyver/bash_kernel/releases/download/0.4.1/bash_kernel-0.4.1-py2.py3-none-any.whl
+	source = https://github.com/takluyver/bash_kernel/raw/master/LICENSE
+	source = jupyter-bash_kernel.install
+	sha256sums = 8e6b3a05d8809644d4d78ed8601dce5344dc3fafa099fe467b199f43a86695fd
+	sha256sums = 5b99decdbcae441e047c670b54d017787fb739e22fb1b91d2fc3ef3bafc55ceb
+	sha256sums = b06d37e6014996d45c95819ae554eebcee3d63c2892025582fdbc2d6416f151a
+
+pkgname = jupyter-bash_kernel
+
