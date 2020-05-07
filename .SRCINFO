@@ -1,7 +1,7 @@
 pkgbase = dart-dev
 	pkgdesc = The dart-dev programming language SDK
 	pkgver = 2.9.0.5.0.dev
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dartlang.org/
 	arch = x86_64
 	license = BSD
