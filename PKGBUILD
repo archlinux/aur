@@ -1,32 +1,29 @@
-# Maintainer: Ryan Gonzalez <rymg19@gmail.com>
-# Contributor: Alexander Rødseth <rodseth@gmail.com>
-# Contributor: Felix Yan <felixonmars@archlinux.org>
-# Contributor: T. Jameson Little <t.jameson.little at gmail dot com>
-# Contributor: Usagi Ito <usagi@WonderRabbitProject.net>
-# Contributor: siasia <http://pastebin.com/qsBEmNCw>
-# Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
+# Maintainer: arp12
 
-_ver=2.0.0
-_rel=50.0
 pkgname=dart-dev
-pkgver=$_ver.dev.$_rel
+archive_name=dart
+pkgver=2.9.0.5.0.dev
 pkgrel=1
-pkgdesc='The dart programming language SDK (dev channel)'
+pkgdesc='The dart-dev programming language SDK'
 arch=('x86_64')
-url='http://www.dartlang.org/'
+url='https://www.dartlang.org/'
+depends=('bash')
 license=('BSD')
 makedepends=('setconf')
 options=('!strip')
-source_x86_64+=("$pkgname-$pkgver-64.zip::https://storage.googleapis.com/dart-archive/channels/dev/release/$_ver-dev.$_rel/sdk/dartsdk-linux-x64-release.zip")
-sha256sums_x86_64=('0ac31f14ea073756c410123372e77005874235fecff324a5a702f15059278dca')
+source=("$pkgname-$pkgver-64.zip::https://storage.googleapis.com/dart-archive/channels/dev/release/2.9.0-5.0.dev/sdk/dartsdk-linux-x64-release.zip")
+sha512sums=('6d432e7bd98cf69565e40738be61291c4f77a9b9ccb8a97b97a361c0254e2d4b9c351a1de783e4872513fe2cee82ecdddb9c814fced4d053c0b8f0708b067f49')
+conflicts=('dart')
 
 prepare() {
+  mv "$archive_name-sdk" "$pkgname-sdk"
+  
   # Fix permissions
-  find "dart-sdk" -type d -exec chmod 0755 '{}' + \
+  find "$pkgname-sdk" -type d -exec chmod 0755 '{}' + \
     -or -type f -exec chmod 0644 '{}' +
-  chmod +x "dart-sdk/bin/"*
+  chmod +x "$pkgname-sdk/bin/"*
 
-  cd "dart-sdk/bin"
+  cd "$pkgname-sdk/bin"
 
   # Configure paths
   setconf dart2js BIN_DIR "/opt/$pkgname-sdk/bin"
@@ -46,21 +43,21 @@ package() {
   install -d "$pkgdir"{"/opt/$pkgname-sdk",/usr/{bin,"share/doc/$pkgname-sdk"}}
 
   # Package the files
-  cp -a "dart-sdk/"* "$pkgdir/opt/$pkgname-sdk/"
+  cp -a "dart-dev-sdk/"* "$pkgdir/opt/$pkgname-sdk/"
 
   # Set up symbolic links for the executables
   for f in dart dart2js dartanalyzer pub dartfmt dartdevc; do
     ln -s "/opt/$pkgname-sdk/bin/$f" "$pkgdir/usr/bin/$f-dev"
   done
 
-  # Package samples and documentation
+#   Package samples and documentation
   for f in samples about.html about_files; do
-    echo mv "$pkgdir/opt/$pkgname-sdk/$f" "$pkgdir/usr/share/doc/$pkgname/"
+    echo mv "$pkgdir/opt/$pkgname-sdk/$f" "$pkgdir/usr/share/doc/$pkgname-sdk/"
   done
 
   # BSD License
-  install -Dm644 dart-sdk/LICENSE \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 dart-dev-sdk/LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname-sdk/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
