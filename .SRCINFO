@@ -1,0 +1,15 @@
+pkgbase = jk
+	pkgdesc = data templating tool designed to help writing structured configuration files.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/jkcfg/jk
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = git
+	depends = nodejs
+	source = jk-0.4.0.tar.gz::https://github.com/jkcfg/jk/archive/0.4.0.tar.gz
+	sha256sums = 9b13dc1cd369dbe37a3040225adfd93b6dbd2eb53e8e6ec37a66fb6443f524fd
+
+pkgname = jk
+
