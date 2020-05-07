@@ -20,6 +20,8 @@ prepare() {
     cd "${srcdir}/${name}"
     # Remove prebuilt assests 
     rm -rf {dist,dist-white}
+    # Patch the build script to not use the nonexistent -z flag
+    sed -i 's|inkscape -z|inkscape|g' build.sh
 }
 build() {
     cd "${srcdir}/${name}"
