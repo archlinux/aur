@@ -1,44 +1,24 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=python-tpm2-pytss
 _name=${pkgname#python-}
-pkgver=0.1.0
-_tag=a6ad933536c59991badf98bdfd3f80afc18a1af5 # git show-ref "$pkgver"
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Python bindings for tpm2-tss'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-pytss'
 license=('BSD')
 depends=('python-setuptools' 'tpm2-tss')
-makedepends=('git' 'swig')
-checkdepends=('ibm-sw-tpm2')
-source=("git+$url.git#tag=$_tag" 'git+https://github.com/tpm2-software/tpm2-swig.git')
-sha512sums=('SKIP' 'SKIP')
-
-pkgver() {
-	cd "$_name"
-	git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd "$_name"
-	git submodule init
-	git config submodule.tpm2_pytss/swig.url "$srcdir/tpm2-swig"
-	git submodule update
-}
+makedepends=('swig')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('84bf0d19efa194909afb782463b2331d8e06c244e632dfbeafdbb8da835f1cb6')
 
 build() {
-	cd "$_name"
+	cd "$_name-$pkgver"
 	python setup.py build
 }
 
-check() {
-	cd "$_name"
-	python setup.py test
-}
-
 package() {
-	cd "$_name"
+	cd "$_name-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1
-	rm -r "$pkgdir"/usr/lib/python*/site-packages/tests
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
