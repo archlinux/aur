@@ -4,8 +4,8 @@
 # Contributor: dtw <dibblethewrecker@gmail.com>
 
 pkgname=foldingathome
-pkgver=7.6.9
-pkgrel=9
+pkgver=7.6.13
+pkgrel=1
 pkgdesc='A distributed computing project for simulating protein dynamics'
 arch=(x86_64)
 url=https://foldingathome.org/
@@ -29,9 +29,9 @@ source=(
   foldingathome-nvidia.service
   foldingathome-user.service
 )
-sha256sums=('b580a8076f3147bacb9d1599e1b1765956a8e37b8a79bd961ffe2e3adc7df110'
-            'c2494427610fb714de4e029bd9183d11dbc7161cf193403dc462caeea1452294'
-            'f0eec0c8f6a278f53a5537446c996b7d97431706d54f0a7e1adce53478b39e70'
+sha256sums=('23b0ac74b32d41df4bcd3cff9def7af5a8431ca45d3eb9f6ed5bc9721ff7f562'
+            '392c70c7127917a574e78144996fb3ac116ba99af3d9dc0661f33b6c9ed170c5'
+            '2b50df72017d4312b6af19733aefbcac7f459599f2fb32b66e6abc0887b48d60'
             '41997239dc363570e2ca5bec0eca8c7d88aada6ace0bb5793bf3ec6d101f40bb')
 
 package() {
