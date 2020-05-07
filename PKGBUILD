@@ -7,13 +7,14 @@ pkgdesc="An interactive CLI tool that adds a .gitignore to your projects"
 arch=('any')
 url='https://www.npmjs.com/package/add-gitignore'
 license=('MIT')
+depends=('nodejs')
 makedepends=('npm')
-noextract=("v${pkgver}.tar.gz")
-source=("https://github.com/TejasQ/add-gitignore/archive/v${pkgver}.tar.gz")
-md5sums=('0012ee64c22985ee7bfd844f438747fd')
+noextract=("${pkgname}-${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TejasQ/add-gitignore/archive/v${pkgver}.tar.gz")
+sha256sums=('8269c0d37fe7f70353e40a678b25c8f58120af05e7a5cc7500aee383a1a78921')
 
 package() {
-  npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/v${pkgver}.tar.gz"
+  npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
   find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
   local tmppackage="$(mktemp)"
   local pkgjson="$pkgdir/usr/lib/node_modules/$pkgname/package.json"
@@ -22,5 +23,7 @@ package() {
   mv "$tmppackage" "$pkgjson"
   chmod 644 "$pkgjson"
   find "${pkgdir}/usr" -type d -exec chmod 755 {} +
-  chown -R root:root "${pkgdir}"
+  chown -R root:root "${pkgdir}" 
+  install -Dm644 "${pkgdir}/usr/lib/node_modules/add-gitignore/LICENSE" \
+   -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
