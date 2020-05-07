@@ -21,7 +21,8 @@ prepare() {
     # Remove prebuilt assests 
     rm -rf {dist,dist-white}
     # Patch the build script to not use the nonexistent -z flag
-    sed -i 's|inkscape -z|inkscape|g' build.sh
+    # Change the outdated -e flag to --export-filename
+    sed -i 's|inkscape -z -e|inkscape --export-filename|g' build.sh
 }
 build() {
     cd "${srcdir}/${name}"
