@@ -1,14 +1,13 @@
 # Maintainer: Phosphenius <luca dot kredel at web dot de>
 pkgname=sp9k-git
 _pkgname=sp9k
-pkgver=r73.b138d2e
+pkgver=r75.4150623
 pkgrel=1
 pkgdesc="A bullet hell/space shooter game made in C++ and SFML as a learning project."
 arch=('x86_64')
 url="https://github.com/Phosphenius/sp9k"
 license=('MIT')
 depends=('sfml>=2.5.1')
-makedepends=('cmake>=3.14.0')
 conflicts=(sp9k)
 provides=(sp9k)
 source=("git+$url.git")
@@ -24,16 +23,12 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  cmake . \
-  -DCMAKE_INSTALL_PREFIX=/usr \
-  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-  -DSP9k_ASSET_ROOT_PATH=/usr/share/"$_pkgname" 
 
-  make
+  make ASSETDIR=/usr/share/"$_pkgname" release
 }
 
 package() {
   cd "$_pkgname"
 
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" PREFIX=/usr install
 }
