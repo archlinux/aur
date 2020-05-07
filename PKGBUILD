@@ -2,7 +2,7 @@
 
 pkgname="electerm-bin"
 pkgver=1.3.21
-pkgrel=1
+pkgrel=2
 pkgdesc="An electron-based SSH/SFTP Connection manager and terminal"
 arch=('x86_64')
 url="https://electerm.html5beta.com"
