@@ -1,5 +1,5 @@
 pkgbase = readsb-git
-	pkgdesc = Readsb is a Mode-S/ADSB/TIS decoder for RTLSDR, BladeRF, Modes-Beast and GNS5894 devices.
+	pkgdesc = A Mode-S/ADSB/TIS decoder for RTLSDR, BladeRF, Modes-Beast and GNS5894 devices.
 	pkgver = 3.8.2.r7.ge622f70
 	pkgrel = 1
 	url = https://github.com/Mictronics/readsb
