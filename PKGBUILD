@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=vulkan-caps-viewer
-pkgver=2.03
+pkgver=2.03a
 pkgrel=2
 pkgdesc='Vulkan Hardware Capability Viewer'
 url='http://vulkan.gpuinfo.org/'
@@ -25,10 +25,6 @@ prepare() {
   git -C VulkanCapsViewer submodule init
   git -C VulkanCapsViewer config submodule.Vulkan-Headers.url "$srcdir/Vulkan-Headers"
   git -C VulkanCapsViewer submodule update
-
-  #HACK: the last commit of 2.02 explicitely breaks the build; probably wasn't intended to be pushed out
-  sed 's#"/Vulkan-Headers/include"#"./Vulkan-Headers/include"#' \
-    -i VulkanCapsViewer/vulkanCapsViewer.pro
 
   mkdir build
   cd build
