@@ -2,8 +2,8 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=steam-native-runtime
-pkgver=1.0.0.61
-pkgrel=2
+pkgver=1.0.0.62
+pkgrel=1
 pkgdesc='Native replacement for the Steam runtime using system libraries'
 arch=('x86_64')
 url='https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Native_runtime'
@@ -15,7 +15,7 @@ depends=(
   'lib32-alsa-lib' 'lib32-alsa-plugins' 'lib32-atk' 'lib32-cairo' 'lib32-curl'
   'lib32-dbus-glib' 'lib32-fontconfig' 'lib32-freetype2' 'lib32-freeglut'
   'lib32-gdk-pixbuf2' 'lib32-glew1.10' 'lib32-glib2' 'lib32-glu' 'lib32-gtk2'
-  'lib32-libappindicator-gtk2' 'lib32-libcaca' 'lib32-libcanberra'
+  'lib32-libcaca' 'lib32-libcanberra'
   'lib32-libcups' 'lib32-libcurl-compat' 'lib32-libcurl-gnutls' 'lib32-dbus'
   'lib32-libdrm' 'lib32-libgcrypt15' 'lib32-libice' 'lib32-libidn11'
   'lib32-libjpeg6' 'lib32-libnm-glib' 'lib32-libpng12' 'lib32-libpulse'
@@ -35,7 +35,8 @@ depends=(
   'libxi' 'libxinerama' 'libxmu' 'libxrandr' 'libxrender' 'libxtst'
   'libxxf86vm' 'nspr' 'openal' 'openssl-1.0' 'pango' 'sdl' 'sdl2'
   'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'sdl_image' 'sdl_mixer' 'sdl_ttf'
-  'vulkan-icd-loader'
+  'vulkan-icd-loader' 'vulkan-driver' 'lib32-vulkan-driver' 'lib32-vulkan-icd-loader'
+  'lib32-libappindicator-gtk2' 'lib32-libindicator-gtk2' 'lib32-libdbusmenu-glib' 'lib32-libdbusmenu-gtk2'
 )
 source=(steam-native.sh)
 sha512sums=('03e969de86a69b0d9d86508a0a0cdd13be7c0c63076f6bc77c3685839a6784e8041528f5a1e9bfcb51d27c6c9994fab591c7d70fc44cc4673a1384781433041b')
