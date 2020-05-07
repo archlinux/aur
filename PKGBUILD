@@ -5,14 +5,14 @@
 # Contributor: emersion <contact@emersion.fr>
 
 pkgname=gnome-music-git
-pkgver=3.31.1.r63.gd2587147
+pkgver=3.36.0.r85.g4976f447
 pkgrel=1
 pkgdesc="Music player and management application"
 url="https://wiki.gnome.org/Apps/Music"
-arch=(x86_64)
+arch=(i686 x86_64 armv7h aarch64)
 license=(GPL)
-depends=(grilo grilo-plugins tracker-miners libdmapsharing libmediaart gtk3 gvfs python-gobject
-         python-cairo gst-plugins-base python-requests libdazzle)
+depends=(grilo grilo-plugins tracker-miners libdmapsharing libmediaart gvfs
+         python-gobject python-cairo gst-plugins-base python-requests libdazzle)
 makedepends=(gobject-introspection git meson yelp-tools appstream-glib)
 optdepends=('gst-plugins-good: Extra media codecs'
             'gst-plugins-ugly: Extra media codecs'
@@ -22,8 +22,10 @@ conflicts=(gnome-music)
 provides=(gnome-music)
 groups=(gnome)
 source=("git+https://gitlab.gnome.org/GNOME/gnome-music.git"
-        "git+https://gitlab.gnome.org/GNOME/libgd.git")
+        "git+https://gitlab.gnome.org/GNOME/libgd.git"
+        "git+https://gitlab.gnome.org/mschraal/gfm.git")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -35,7 +37,8 @@ prepare() {
   cd gnome-music
 
   git submodule init
-  git config --local submodule.subprojects/libgd.url "$srcdir/libgd"
+  git submodule set-url subprojects/libgd "$srcdir/libgd"
+  git submodule set-url subprojects/gfm "$srcdir/gfm"
   git submodule update
 }
 
@@ -45,11 +48,11 @@ build() {
 }
 
 check() {
-  meson test -C build
+  ninja -C build test
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  DESTDIR="$pkgdir" ninja -C build install
 
   python -m compileall -d /usr/lib "$pkgdir/usr/lib"
   python -O -m compileall -d /usr/lib "$pkgdir/usr/lib"
