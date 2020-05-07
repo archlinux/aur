@@ -33,6 +33,6 @@ package() {
   install -dm755 "${pkgdir}/usr/share/plasma/look-and-feel"
   cp -r plasma/look-and-feel/com.github.vinceliuice.Matcha-sea \
     "${pkgdir}/usr/share/plasma/look-and-feel"
-  install -dm755 "${pkgdir}/usr/share/wallpapers"
-  cp -r wallpaper/*.jpg "${pkgdir}/usr/share/wallpapers"
+  install -dm755 "${pkgdir}/usr/share/wallpapers/Matcha"
+  cp -r wallpaper/*.jpg "${pkgdir}/usr/share/wallpapers/Matcha"
 }
