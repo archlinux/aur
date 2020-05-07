@@ -8,6 +8,7 @@ arch=(x86_64 aarch64)
 license=(GPL-3)
 
 depends=( "openvpn>=2.4.0" resolvconf ca-certificates iptables iproute2 sudo wireguard-tools)
+makedepends=('go')
 _dirname=node-${pkgver}
 
 
