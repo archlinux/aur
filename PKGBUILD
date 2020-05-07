@@ -2,7 +2,7 @@
 
 pkgname=rest
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Helper library for RESTful services"
 url="https://wiki.gnome.org/Projects/Librest"
 arch=(x86_64)
