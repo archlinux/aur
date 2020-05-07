@@ -18,10 +18,10 @@ pkgbase = openttd-btpro
 	optdepends = openttd-opensfx: free soundset
 	conflicts = openttd
 	source = https://proxy.binaries.openttd.org/openttd-releases/1.10.1/openttd-1.10.1-source.tar.xz
-	source = http://openttd.btpro.nl/OpenTTD_versions/BTPro_Client_1.10.1_D_110101.diff
+	source = http://openttd.btpro.nl/OpenTTD_versions/BTPro_Client_1.10.1_E_110101.diff
 	source = http://openttd.btpro.nl/OpenTTD_versions/innerhighlight.grf
 	sha256sums = 0d22a3c50f7a321f4f211594f4987ac16c381e8e3e40f116848e63e91e7fbb9b
-	sha256sums = 8c77f8fb4e7f959d87c2cb2227661848f4321e2e148832ae8df6e7a28a590bfc
+	sha256sums = e0dd89c877b77881d4fc3e1e5c796211f32c7d40c017b9638d85c6c5ee2d9433
 	sha256sums = 1b181a27fbb468c7301291fc61384087ce7b1592cb0023be00f04736eec6e79b
 
 pkgname = openttd-btpro
