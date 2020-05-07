@@ -1,6 +1,6 @@
 pkgbase = crestic
 	pkgdesc = Configurable restic wrapper
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/nils-werner/crestic
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = crestic
 	depends = python
 	depends = restic
 	optdepends = python-appdirs: support for loading config files using appdirs
-	source = https://github.com/nils-werner/crestic/archive/v0.3.0.tar.gz
+	source = https://github.com/nils-werner/crestic/archive/v0.4.0.tar.gz
 	source = crestic@.service
 	source = crestic@.timer
 	sha256sums = e11198dd2ad9a108a89d757b830422893088f44244f03145f2b48f21094a4d3d
