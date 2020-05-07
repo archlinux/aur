@@ -1,4 +1,4 @@
-pkgbase = utools-yuanke
+pkgbase = utools-yuanliao
 	pkgdesc = 你的生产力工具集
 	pkgver = 1.0.2
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = utools-yuanke
 	source = https://resource.u-tools.cn/currentversion/utools_1.0.2-beta_amd64.deb
 	sha512sums = 32b22a95414736ef7e5f00ff9f30d9c118c5f739accfde6eea7e982542cca521cf8dd948112be52322f0d78b489069c741656fb9e97cbc66443f14de5f3ff4d1
 
-pkgname = utools-yuanke
+pkgname = utools-yuanliao
 

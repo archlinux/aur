@@ -1,6 +1,6 @@
 # Maintainer: Sakitami <sakitam2373@gmail.com>
 
-pkgname=utools-yuanke
+pkgname=utools-yuanliao
 pkgver=1.0.2
 pkgrel=1
 pkgdesc="你的生产力工具集"
