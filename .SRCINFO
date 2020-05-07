@@ -1,6 +1,6 @@
 pkgbase = wifiman
 	pkgdesc = Minimalistic wpa_supplicant configuration manager
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/BiteDasher/wifiman
 	arch = any
@@ -13,9 +13,10 @@ pkgbase = wifiman
 	depends = dhcpcd
 	optdepends = zenity: Run wifigui
 	optdepends = dhclient: DHCP client
+	optdepends = wifiman-indicator: LibAppIndicator support
 	provides = wifigui
-	source = wifiman-1.7.2.tar.gz::https://github.com/BiteDasher/wifiman/archive/1.7.2.tar.gz
-	sha256sums = 0ddb00c422848575731fbfdb77720861a4a5bdb4519d8d4c03ccc361ef3a2153
+	source = wifiman-1.7.3.tar.gz::https://github.com/BiteDasher/wifiman/archive/1.7.3.tar.gz
+	sha256sums = 7fa57301166193d0b94003ac322feb4739cbb2e3efa536ef9f8f81c3f1507906
 
 pkgname = wifiman
 
