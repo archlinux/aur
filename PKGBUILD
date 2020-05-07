@@ -1,4 +1,3 @@
-
 # Maintainer: Ruslan Bekenev <furyinbox at gmail dot com>
 pkgname=todoist-electron
 _pkgname=Todoist
@@ -15,7 +14,7 @@ depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'l
 options=('!strip' '!emptydirs')
 install=${_pkgname}.install
 source=("https://github.com/KryDos/todoist-linux/releases/download/$rlsver/$_pkgname-$pkgver.pacman")
-sha256sums=('f7c004690dba20051c99d314df0e392aefa1c09776ab207e4fa003701d1bec80')
+sha256sums=('6E400C44EB20919CA52E1B58A14E9E53711879F7B269A57FE4BF6AECEBCBD608')
 
 package() {
 	# copy binaries to fakeroot
