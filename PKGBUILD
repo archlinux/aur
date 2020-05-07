@@ -2,7 +2,7 @@
 
 _pkgname=OpenBoardView
 pkgname=${_pkgname,,}
-pkgver=7.3
+pkgver=8.0
 pkgrel=1
 pkgdesc='Linux SDL/ImGui edition software for viewing .brd files'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='https://openboardview.org/'
 license=('MIT')
 depends=('sdl2' 'sqlite' 'zlib' 'fontconfig' 'gtk3' 'libpng')
 makedepends=('git' 'cmake' 'python')
-source=("git+https://github.com/OpenBoardView/OpenBoardView.git#tag=R${pkgver}")
+source=("git+https://github.com/OpenBoardView/OpenBoardView.git#tag=${pkgver}")
 b2sums=('SKIP')
 
 build() {
@@ -21,8 +21,6 @@ build() {
 }
 
 package() {
-  cd ${_pkgname}
-  install -Dm755 build/src/openboardview/openboardview "${pkgdir}"/usr/bin/openboardview
-  install -Dm755 utilities/bvconv.sh "${pkgdir}"/usr/bin/bvconv
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  cd ${_pkgname}/build
+  make DESTDIR="${pkgdir}" install
 }

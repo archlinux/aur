@@ -1,6 +1,6 @@
 pkgbase = openboardview
 	pkgdesc = Linux SDL/ImGui edition software for viewing .brd files
-	pkgver = 7.3
+	pkgver = 8.0
 	pkgrel = 1
 	url = https://openboardview.org/
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = openboardview
 	depends = fontconfig
 	depends = gtk3
 	depends = libpng
-	source = git+https://github.com/OpenBoardView/OpenBoardView.git#tag=R7.3
+	source = git+https://github.com/OpenBoardView/OpenBoardView.git#tag=8.0
 	b2sums = SKIP
 
 pkgname = openboardview
