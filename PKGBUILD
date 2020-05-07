@@ -1,33 +1,22 @@
 # Maintainer: Mihai Bişog <mihai.bisog@gmail.com>
+# Maintainer: Piotr Serafin <piotr.serafin.71@gmail.com>
 
 pkgname=tsduck
-_pkgver=3.15-1008
+_pkgver=3.20-1689
 pkgver=${_pkgver/-/_}
 pkgrel=1
 pkgdesc="An extensible toolkit for MPEG/DVB transport streams"
 arch=('x86_64')
 url="https://tsduck.io/"
 license=('BSD')
-depends=(curl pcsclite)
-makedepends=(cppunit)
+depends=(pcsclite curl srt jq) 
 source=("$pkgname-${_pkgver}.tar.gz::https://github.com/tsduck/tsduck/archive/v${_pkgver}.tar.gz")
-md5sums=("65b05c93432b2274d38ea2ed65d0d388")
+md5sums=('3578a9bf9a61a26de3bdbabf9276409a')
 install=$pkgname.install
-
-prepare() {
-    cd "$pkgname-${_pkgver}"
-    make unixify
-    make dtapi
-}
 
 build() {
     cd "$pkgname-${_pkgver}"
-    make
-}
-
-check() {
-    cd "$pkgname-${_pkgver}"
-    make test
+    make NOTEST=true
 }
 
 package() {
