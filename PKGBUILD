@@ -5,7 +5,7 @@ _srctag=5.7-GE-1-MF
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -92,7 +92,7 @@ optdepends=(
 makedepends=(${makedepends[@]} ${depends[@]})
 #install=${pkgname%-git}.install
 source=(
-    proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=${_commit} #tag=${_srctag}
+    proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=${_srctag}
     wine::git://source.winehq.org/git/wine.git
     wine-staging::git+https://github.com/wine-staging/wine-staging.git
     vkd3d::git+https://github.com/HansKristian-Work/vkd3d.git
