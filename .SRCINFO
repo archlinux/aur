@@ -1,5 +1,5 @@
 pkgbase = readarr
-	pkgdesc = eBook and audio book downloader for usenet and torrents.
+	pkgdesc = Audio and eBook download automation for usenet and torrents.
 	pkgver = 0.1.0.58
 	pkgrel = 1
 	url = https://github.com/Readarr/Readarr

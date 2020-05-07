@@ -4,7 +4,7 @@
 pkgname="readarr"
 pkgver=0.1.0.58
 pkgrel=1
-pkgdesc="eBook and audio book downloader for usenet and torrents."
+pkgdesc="Audio and eBook download automation for usenet and torrents."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/Readarr/Readarr"
 license=("GPL3")
