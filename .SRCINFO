@@ -1,7 +1,7 @@
 pkgbase = wifiman-indicator
 	pkgdesc = LibIndicator support for WifiMan. Written in Vala
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://github.com/BiteDasher/wifiman-indicator
 	arch = any
 	license = MIT
@@ -13,9 +13,9 @@ pkgbase = wifiman-indicator
 	depends = gtk3
 	depends = sudo
 	optdepends = dhclient: DHCP client
-	source = wifiman-indicator-1.0.tar.gz::https://github.com/BiteDasher/wifiman-indicator/archive/1.0.tar.gz
+	source = wifiman-indicator-1.2.tar.gz::https://github.com/BiteDasher/wifiman-indicator/archive/1.2.tar.gz
 	source = git+https://github.com/platofff/vindicator.git
-	sha256sums = 731ec5942c1622a30475e3b2353ead06110ed769994f90dc479066ad03181274
+	sha256sums = 7eba3b037b35fe211eb3513aefd2ea54c478f7743008afbccc6b4ea2d2a5bcb9
 	sha256sums = SKIP
 
 pkgname = wifiman-indicator
