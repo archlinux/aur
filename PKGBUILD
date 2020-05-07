@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt-bin
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Portuguese Citizen Card Application - pre compiled binaries version"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -27,9 +27,9 @@ optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online
 conflicts=('cartaodecidadao' 'cartaodecidadao-bin' 'autenticacao-gov-pt')
 replaces=('cartaodecidadao-bin')
 
-source_x86_64=("https://www.autenticacao.gov.pt/documents/10179/11962/Autenticacao.gov_Ubuntu_19_x64.deb")
+source_x86_64=("https://www.autenticacao.gov.pt/documents/20126/78595/Autenticacao.gov_Ubuntu_20_x64.deb")
 
-sha512sums_x86_64=('9a0ad74594e1340af3667c279ed7acfdcd6bd33736d3c0f2d687dd5f1d6b09520031f2ad9ef493ab8239bc20b15211a4d5ade800c1dbf647d4a782a9eb3fdd4e')
+sha512sums_x86_64=('dd412985b97b2461d648a9b186fbee022ce34f5b4589d5756165309e56de6c09e564d151e412ab26785ffe17f4dd67ab5d60021e598c6e48ecfd34a05f4da6f1')
 
 prepare() {
 	tar -xf data.tar.xz
