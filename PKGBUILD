@@ -2,7 +2,7 @@
 
 pkgname=molequeue
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop integration of high performance computing resources"
 arch=(x86_64)
 url="http://www.openchemistry.org/"
