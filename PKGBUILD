@@ -1,4 +1,4 @@
-# Maintaner: jskier <jay@jskier.com>
+# Maintainer: jskier <jay@jskier.com>
 # Contributor: jskier <jay @jskier.com>
 pkgname=python-keeper-commander-git
 pkgver=4.3.1
