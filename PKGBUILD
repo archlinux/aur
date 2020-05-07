@@ -2,7 +2,7 @@
 
 _name=azure-multiapi-storage
 pkgname=python-$_name
-pkgver=0.2.4
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Azure Storage Data Plane SDK supporting multiple API versions"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/Azure/azure-multiapi-storage-python"
 license=('MIT')
 makedepends=('python-setuptools')
 source=("https://github.com/Azure/azure-multiapi-storage-python/archive/${pkgver}.tar.gz")
-sha256sums=('df72102117b208c205b60601f2314aa812e18b7dc2cc136eec141f7e690f10f5')
+sha256sums=('649b8e0b2045cfdd4224bdfef387fc616b9c3e403c197dc418c9b7f76b2d0ce7')
 
 build() {
   cd "$_name-python-$pkgver"
