@@ -1,7 +1,7 @@
 # Maintainer: ObserverOfTime <chronobserver@disroot.org>
 
 pkgname=stylelint-scss
-pkgver=3.15.0
+pkgver=3.17.2
 pkgrel=1
 pkgdesc='A collection of SCSS specific linting rules for stylelint'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('npm')
 optdepends=('stylelint: peer dependency')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('f1c2dfed177487ed0b8def15413ca40f274cd6e35691b97702e7cb2277c4aa60')
+sha256sums=('d454057b5be240e410e0dc281a4cacbd8556e7ead0c1e90e594c0599671ea8dd')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
