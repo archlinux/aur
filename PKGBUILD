@@ -3,10 +3,10 @@
 # Contributor: Martin Wimpress <code@flexion.org>
 
 pkgname=gpick-git
-pkgver=0.2.6rc1.r41.g3b17cf9
+pkgver=0.2.6rc1.r84.gebee8a0
 pkgrel=1
 pkgdesc="Advanced color picker written in C++ using GTK+ toolkit"
-arch=(i686 x86_64 armv6h armv7h)
+arch=(i686 x86_64 armv7h aarch64)
 url="http://www.gpick.org/"
 license=(BSD)
 depends=(boost-libs gtk3 lua)
