@@ -1,0 +1,16 @@
+pkgbase = ap
+	pkgdesc = simple wireless ap support both ipv4 and ipv6 with nat
+	pkgver = v1.0.r1.gbd42539
+	pkgrel = 1
+	url = https://github.com/springzfx/ap
+	arch = x86_64
+	license = GPL
+	depends = hostapd
+	depends = dnsmasq
+	optdepends = systemd: for service
+	backup = etc/ap/ap.conf
+	source = ap-git::git+https://github.com/springzfx/ap#branch=master
+	md5sums = SKIP
+
+pkgname = ap-git
+
