@@ -7,15 +7,12 @@ pkgdesc='Vulkan Hardware Capability Viewer'
 url='http://vulkan.gpuinfo.org/'
 arch=('x86_64')
 license=('GPL2')
-source=("https://github.com/SaschaWillems/VulkanCapsViewer/archive/$pkgver.tar.gz"
+source=("git+https://github.com/SaschaWillems/VulkanCapsViewer#tag=$pkgver"
         "git+https://github.com/KhronosGroup/Vulkan-Headers")
-sha1sums=('2cecf6fa42a21060171c974af607a79ad490162c'
+sha1sums=('SKIP'
           'SKIP')
-makedepends=(qt5-base)
+makedepends=(git qt5-base)
 depends=(vulkan-icd-loader qt5-base qt5-x11extras)
-
-#HACK: github doesn't package submodules, so we need to manually fetch the vulkan headers
-makedepends+=(git)
 
 prepare() {
   if [ -d build ]
@@ -25,12 +22,13 @@ prepare() {
     return
   fi
 
-  #HACK: github doesn't package submodules...
-  cp -r Vulkan-Headers/include VulkanCapsViewer-$pkgver/Vulkan-Headers/
+  git -C VulkanCapsViewer submodule init
+  git -C VulkanCapsViewer config submodule.Vulkan-Headers.url "$srcdir/Vulkan-Headers"
+  git -C VulkanCapsViewer submodule update
 
   #HACK: the last commit of 2.02 explicitely breaks the build; probably wasn't intended to be pushed out
   sed 's#"/Vulkan-Headers/include"#"./Vulkan-Headers/include"#' \
-    -i VulkanCapsViewer-$pkgver/vulkanCapsViewer.pro
+    -i VulkanCapsViewer/vulkanCapsViewer.pro
 
   mkdir build
   cd build
@@ -40,7 +38,7 @@ prepare() {
     QMAKE_CXXFLAGS="$CXXFLAGS" \
     QMAKE_LFLAGS="$LDFLAGS" \
     PREFIX=/usr \
-    ../VulkanCapsViewer-$pkgver
+    ../VulkanCapsViewer
 }
 
 build() {
@@ -51,6 +49,6 @@ package() {
   make -C build INSTALL_ROOT="$pkgdir" install
 
   # There's a bug preventing this from being installed automatically
-  install -Dm644 VulkanCapsViewer-$pkgver/gfx/android_icon_256.png \
+  install -Dm644 VulkanCapsViewer/gfx/android_icon_256.png \
     "$pkgdir"/usr/share/icons/hicolor/256x256/apps/vulkanCapsViewer.png
 }
