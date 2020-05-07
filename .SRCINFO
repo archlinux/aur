@@ -1,0 +1,17 @@
+pkgbase = thinkcontrol-int-git
+	pkgdesc = control thinkpad lights batteries and audio devices (intern git server)
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://git.int.schildmann.net/kschildmann/thinkcontrol.git
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = pamixer
+	depends = libpulse
+	provides = thinkcontrol
+	provides = think
+	source = git+http://git.int.schildmann.net/kschildmann/thinkcontrol.git
+	md5sums = SKIP
+
+pkgname = thinkcontrol-int-git
+
