@@ -1,12 +1,12 @@
 # Maintainer: Mykola Dimura <mykola.dimura@gmail.com>
 pkgname=mingw-w64-pteros
-pkgver=0
+pkgver=2.7
 pkgrel=1
 pkgdesc="C++ library for molecular modeling. (mingw-w64)"
 arch=('any')
 url='https://github.com/yesint/pteros'
 license=('Artistic License 2.0')
-depends=('mingw-w64-crt' 'mingw-w64-boost' 'mingw-w64-eigen')
+depends=('mingw-w64-crt' 'mingw-w64-boost' 'mingw-w64-eigen' 'mingw-w64-fmt-git' 'mingw-w64-spdlog-git')
 makedepends=('mingw-w64-cmake' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("${pkgname}"'::git+https://github.com/yesint/pteros.git#branch=master')
@@ -19,7 +19,7 @@ build() {
   git checkout tags/v${pkgver}-stable
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DWITH_PYTHON=OFF -DWITH_OPENBABEL=OFF ..
+    ${_arch}-cmake -DWITH_PYTHON=OFF -DWITH_OPENBABEL=OFF -DWITH_GROMACS=OFF -DWITH_TNGIO=OFF ..
     make
     popd
   done
