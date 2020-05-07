@@ -8,6 +8,7 @@ pkgbase = bracmat-git
 	makedepends = gcc
 	makedepends = git
 	makedepends = make
+	makedepends = sed
 	provides = bracmat
 	conflicts = bracmat
 	source = git+https://github.com/BartJongejan/Bracmat.git
