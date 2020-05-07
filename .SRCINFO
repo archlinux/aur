@@ -1,0 +1,13 @@
+pkgbase = libunicodenames
+	pkgdesc = Library for retrieving Unicode annotation data
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://sourceforge.net/projects/sortsmill/files/libunicodenames/
+	arch = x86_64
+	license = GPL3
+	makedepends = wget
+	source = https://downloads.sourceforge.net/project/sortsmill/libunicodenames/libunicodenames-1.2.2.tar.xz
+	sha256sums = 1ae6002f89a15d6f7299f900eb6d3f5aecbe3661695b147f4b94a9639007f01c
+
+pkgname = libunicodenames
+
