@@ -3,7 +3,7 @@
 pkgname=dart-dev
 archive_name=dart
 pkgver=2.9.0.5.0.dev
-pkgrel=1
+pkgrel=2
 pkgdesc='The dart-dev programming language SDK'
 arch=('x86_64')
 url='https://www.dartlang.org/'
@@ -47,7 +47,7 @@ package() {
 
   # Set up symbolic links for the executables
   for f in dart dart2js dartanalyzer pub dartfmt dartdevc; do
-    ln -s "/opt/$pkgname-sdk/bin/$f" "$pkgdir/usr/bin/$f-dev"
+    ln -s "/opt/$pkgname-sdk/bin/$f" "$pkgdir/usr/bin/$f"
   done
 
 #   Package samples and documentation
