@@ -14,8 +14,8 @@ index ac570f17e47..505aa97934c 100644
      if(NOT Boost_FOUND)
 diff --git a/source/blender/usd/CMakeLists.txt b/source/blender/usd/CMakeLists.txt
 index 6ea02f44d76..0ec18e17689 100644
---- a/source/blender/io/usd/CMakeLists.txt
-+++ b/source/blender/io/usd/CMakeLists.txt
+--- a/source/blender/usd/CMakeLists.txt
++++ b/source/blender/usd/CMakeLists.txt
 @@ -48,6 +48,7 @@ set(INC
  set(INC_SYS
    ${USD_INCLUDE_DIRS}

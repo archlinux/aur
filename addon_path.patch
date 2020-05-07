@@ -7,7 +7,7 @@ index 8fd6aee28da..99d61882451 100644
  	/* no prefix assumes a portable build which only uses bundled scripts */
  	if (static_path) {
 -		static string system_path = string(static_path) + "/blender/" + versionstr;
-+		static string system_path = string(static_path) + "/blender/" + versionstr + "_@@_sufix@@";
++		static string system_path = string(static_path) + "/blender/" + versionstr + "_@@_suffix@@";
  		return (GHOST_TUns8 *)system_path.c_str();
  	}
  
@@ -16,7 +16,7 @@ index 8fd6aee28da..99d61882451 100644
  
  			if (home) {
 -				user_path = string(home) + "/.blender/" + versionstr;
-+				user_path = string(home) + "/.blender/" + versionstr + "_@@_sufix@@";
++				user_path = string(home) + "/.blender/" + versionstr + "_@@_suffix@@";
  			}
  			else {
  				return NULL;
@@ -25,7 +25,7 @@ index 8fd6aee28da..99d61882451 100644
  
  			if (home) {
 -				user_path = string(home) + "/blender/" + versionstr;
-+				user_path = string(home) + "/blender/" + versionstr + "_@@_sufix@@";
++				user_path = string(home) + "/blender/" + versionstr + "_@@_suffix@@";
  			}
  			else {
  				home = getenv("HOME");
@@ -34,7 +34,7 @@ index 8fd6aee28da..99d61882451 100644
  					home = getpwuid(getuid())->pw_dir;
  
 -				user_path = string(home) + "/.config/blender/" + versionstr;
-+				user_path = string(home) + "/.config/blender/" + versionstr + "_@@_sufix@@";
++				user_path = string(home) + "/.config/blender/" + versionstr + "_@@_suffix@@";
  			}
  		}
  
@@ -47,18 +47,18 @@ index 8fb04c320a0..3102752ec97 100644
  	if(WITH_PYTHON_MODULE)
  		if(WITH_INSTALL_PORTABLE)
 -			set(TARGETDIR_VER ${BLENDER_VERSION})
-+			set(TARGETDIR_VER ${BLENDER_VERSION}_@@_sufix@@)
++			set(TARGETDIR_VER ${BLENDER_VERSION}_@@_suffix@@)
  		else()
 -			set(TARGETDIR_VER ${PYTHON_SITE_PACKAGES}/${BLENDER_VERSION})
-+			set(TARGETDIR_VER ${PYTHON_SITE_PACKAGES}/${BLENDER_VERSION}_@@_sufix@@)
++			set(TARGETDIR_VER ${PYTHON_SITE_PACKAGES}/${BLENDER_VERSION}_@@_suffix@@)
  		endif()
  	else()
  		if(WITH_INSTALL_PORTABLE)
 -			set(TARGETDIR_VER ${BLENDER_VERSION})
-+			set(TARGETDIR_VER ${BLENDER_VERSION}_@@_sufix@@)
++			set(TARGETDIR_VER ${BLENDER_VERSION}_@@_suffix@@)
  		else()
 -			set(TARGETDIR_VER share/blender/${BLENDER_VERSION})
-+			set(TARGETDIR_VER share/blender/${BLENDER_VERSION}_@@_sufix@@)
++			set(TARGETDIR_VER share/blender/${BLENDER_VERSION}_@@_suffix@@)
  		endif()
  	endif()
  
