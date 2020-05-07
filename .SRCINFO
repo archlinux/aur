@@ -1,0 +1,17 @@
+pkgbase = vimix-cursors-git
+	pkgdesc = X-cursor theme inspired by Materia design
+	pkgver = 2020.02.24.r3.gde8100f
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Vimix-cursors
+	arch = any
+	license = GPL3
+	makedepends = inkscape
+	makedepends = xorg-xcursorgen
+	makedepends = git
+	provides = vimix-cursors
+	conflicts = vimix-cursors
+	source = git+https://github.com/vinceliuice/Vimix-cursors
+	sha512sums = SKIP
+
+pkgname = vimix-cursors-git
+
