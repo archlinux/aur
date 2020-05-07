@@ -1,8 +1,8 @@
 # Maintainer: Sakitami <sakitam2373@gmail.com>
 
 pkgname=utools-yuanke
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="你的生产力工具集"
 arch=('x86_64')
 url="https://u.tools/"
@@ -16,7 +16,7 @@ source=(
     "https://resource.u-tools.cn/currentversion/utools_$pkgver-beta_amd64.deb"
 )
 sha512sums=(
-    'efcb0d4f24a4c6cbaf808d30046ee8bfd11a385662b9c558a3cbed7ef6a1cf38e3dcbe372e6442d8abcc4c45e8252e0f207feb40919e55d76df9d446a7234c16'
+    '32b22a95414736ef7e5f00ff9f30d9c118c5f739accfde6eea7e982542cca521cf8dd948112be52322f0d78b489069c741656fb9e97cbc66443f14de5f3ff4d1'
 )
 
 package() {
