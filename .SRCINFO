@@ -1,0 +1,14 @@
+pkgbase = deepin.com.qq.qqmusic
+	pkgdesc = Tencent QQMusic Client on Deepin Wine
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/gorquan/QQMusic
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = deepin-wine
+	source = https://raw.githubusercontent.com/gorquan/QQMusic/master/deepin.com.qq.qqmusic_2.0.0deepin4_i386.deb
+	sha256sums = caaca319d8e153a7062e992008d27affdbdd79c6ef4dd103ac03f0dd5890bd2d
+
+pkgname = deepin.com.qq.qqmusic
+
