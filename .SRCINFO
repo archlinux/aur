@@ -1,0 +1,19 @@
+pkgbase = google-calendar-nativefier-dark
+	pkgdesc = Electron wrapper for the Google Calendar web application with dark theme
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://calendar.google.com
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = nodejs-nativefier
+	makedepends = npm
+	source = google-calendar-nativefier-dark.png
+	source = google-calendar-nativefier-dark.desktop
+	source = google-calendar-nativefier-dark.js
+	sha256sums = 97e7237e745704869306cc96856e320d673140ff6f91f9ed61b592e7afc0f176
+	sha256sums = 05512fbf7028c19cb766ce7c3dff05975670cc2a4bc187928504723b3fee83d9
+	sha256sums = 55c304592d5e31fce4476810e264c96dd914048c014417f77c7c3fb73bbec658
+
+pkgname = google-calendar-nativefier-dark
+
