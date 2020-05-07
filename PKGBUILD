@@ -2,7 +2,7 @@
 
 pkgname=blinky
 pkgver=0.20.1
-pkgrel=2
+pkgrel=3
 pkgdesc="AUR-helper with minimal hassle"
 arch=(any)
 url="https://github.com/cherti/blinky"
