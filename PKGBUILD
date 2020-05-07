@@ -2,13 +2,14 @@
 
 pkgname=xdg-desktop-portal-wlr
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='xdg-desktop-portal backend for wlroots'
 url=https://github.com/emersion/xdg-desktop-portal-wlr
 arch=(x86_64)
 license=(MIT)
 provides=(xdg-desktop-portal-impl)
-depends=(wlroots xdg-desktop-portal pipewire)
+conflicts=(xdg-desktop-portal-gtk)
+depends=(xdg-desktop-portal pipewire)
 makedepends=(meson wayland-protocols wayland)
 source=(
   "${pkgname}-${pkgver}::https://github.com/emersion/xdg-desktop-portal-wlr/archive/v${pkgver}.tar.gz"
