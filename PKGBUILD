@@ -7,13 +7,14 @@ pkgdesc="A minimal implementation of the UNIX tree command with colors!"
 arch=('any')
 url='https://github.com/aweary/alder'
 license=('MIT')
+depends=('nodejs')
 makedepends=('npm')
-noextract=("v${pkgver}.tar.gz")
-source=("https://github.com/aweary/alder/archive/v${pkgver}.tar.gz")
-md5sums=('66ea33c2df58e7779a4a9141fd17532f')
+noextract=("${pkgname}-${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aweary/alder/archive/v${pkgver}.tar.gz")
+sha256sums=('8303420eb1620801ad81b8f551a51d49353d6feda5da3541adcc15fc58ec088d')
 
 package() {
-  npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/v${pkgver}.tar.gz"
+  npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
   find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
   find "${pkgdir}/usr" -type d -exec chmod 755 {} +
   local tmppackage="$(mktemp)"
@@ -22,4 +23,6 @@ package() {
   mv "$tmppackage" "$pkgjson"
   chmod 644 "$pkgjson"
   chown -R root:root "${pkgdir}"
+  install -Dm644 "${pkgdir}/usr/lib/node_modules/@aweary/alder/LICENSE" \
+   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

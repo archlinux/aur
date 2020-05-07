@@ -6,9 +6,10 @@ pkgbase = alder
 	arch = any
 	license = MIT
 	makedepends = npm
-	noextract = v2.0.0.tar.gz
-	source = https://github.com/aweary/alder/archive/v2.0.0.tar.gz
-	md5sums = 66ea33c2df58e7779a4a9141fd17532f
+	depends = nodejs
+	noextract = alder-2.0.0.tar.gz
+	source = alder-2.0.0.tar.gz::https://github.com/aweary/alder/archive/v2.0.0.tar.gz
+	sha256sums = 8303420eb1620801ad81b8f551a51d49353d6feda5da3541adcc15fc58ec088d
 
 pkgname = alder
 
