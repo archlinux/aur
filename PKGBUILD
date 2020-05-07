@@ -3,7 +3,7 @@
 # Based on basilisk browser PKGBUILD
 
 pkgname=serpent-browser
-pkgver=2020.04.15
+pkgver=2020.05.08
 pkgrel=1
 pkgdesc="Unbranded version of Basilisk web browser"
 arch=('x86_64')
@@ -18,12 +18,12 @@ optdepends=('hunspell: spell checker and morphological analyzer'
             'ffmpeg: record, convert, and stream audio and video')
 makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'autoconf2.13')
 options=(!emptydirs !makeflags)
-_commit=20200408
+_commit=20200506
 source=("https://github.com/MoonchildProductions/Basilisk/archive/v$pkgver.tar.gz"
         "https://github.com/MoonchildProductions/UXP/archive/RELBASE_$_commit.tar.gz"
         "serpent-browser.desktop")
-sha512sums=('bc24549f3d1c5634d3836cc58a361d2c9ff1d0d7840ace0fbf8e20810a40bf5fbab0bd4587bb261ecaf8c0ca08bb35a4887d56d7c598a6efc72c1dbb8a4987aa'
-            '4739c5921eea513faa76aef3fb017a68aba2edcfb948ffe82c6ef51af006e035a1eb890aefbdb274da7b759a8d5b811ae7c565448317f273ac57d5ccb6d7ef8a'
+sha512sums=('5416d00309c2f62852f1acda58debe570f275d16cb6197f82adb5c96471996dab6b369f061fadb35b28dc1c1bd6397e88fcb577fde3ad63416328cd69226827a'
+            '14ab79df0ee4098f1cb5e9396438595c3db25f66e2cbcaf4fc6a159fad870cad52959ae35c635fdbd457a8d18c07363e5cd3b43198794c3381e477355cdbb5b3'
             'c30a3b149adada481165c2f207e25144ff55791d93dd9febfc6a15dbafac907277d9e0fa63b284abdf71dd5ffeb11fca8bcdec4e859d497364fb9524921d0073')
 
 prepare() {
@@ -53,7 +53,7 @@ ac_add_options --disable-gconf
 ac_add_options --disable-debug-symbols 
 ac_add_options --disable-tests
 ac_add_options --prefix=/usr
-
+export MOZILLA_OFFICIAL=0
 mk_add_options MOZ_MAKE_FLAGS="-j$(nproc)"
 
 END
