@@ -1,4 +1,5 @@
 pkgbase = sierrabreeze-jomada-kwin-decoration-git
+	pkgdesc = Jomada Edition of SierraBreeze KWin decoration designed for Moe KDE Theme
 	pkgver = r65.a84c1c5
 	pkgrel = 1
 	url = https://github.com/jomada/SierraBreeze
