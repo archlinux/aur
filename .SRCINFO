@@ -1,5 +1,5 @@
 pkgbase = trackarr
-	pkgdesc = Tracker announcements to Sonarr/Radarr/Lidarr..
+	pkgdesc = Send irc based tracker announcements to Sonarr, Radarr and/or Lidarr.
 	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://gitlab.com/cloudb0x/trackarr

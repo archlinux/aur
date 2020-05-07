@@ -3,7 +3,7 @@
 pkgname=trackarr
 pkgver=1.7.0
 pkgrel=1
-pkgdesc="Tracker announcements to Sonarr/Radarr/Lidarr.."
+pkgdesc="Send irc based tracker announcements to Sonarr, Radarr and/or Lidarr."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://gitlab.com/cloudb0x/trackarr"
 license=('GPL')
