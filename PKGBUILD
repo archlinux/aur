@@ -1,12 +1,8 @@
 # Maintainer: Dan Elkouby <streetwalkermc@gmail.com>
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: hexchain <i@hexchain.org>
-
-# Thanks Nicholas Guriev <guriev-ns@ya.ru> for the patches!
-# https://github.com/mymedia2/tdesktop
-
 pkgname=telegram-desktop9
-pkgver=2.1.0
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='Official Telegram Desktop client (personal build)'
 arch=('x86_64')
@@ -26,11 +22,11 @@ source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver
         "clicky_sticker_panel.patch"
         "dont_pulse_mentions.patch"
         "no_circles.patch")
-sha512sums=('46f5453c64d1dbd4cf8adde73fcc48e6b6f795972ab0f6516cb55112f47d5af990a049da356bedb81e6d3f7103c14a7be45369ff9a5a1812c07a1bfcda70646d'
+sha512sums=('c23d9a961132cd2592ce8f728ed7592091a8c2a1d94797facd93516ab0c9194bd5b90ba7a7d4e8aa778940bc4a23d4ac69507a9f150c3bf4e743c6659e545ccf'
             'fdef3a430bdd60d88c9e9011ee878805e7803699204a2a7e22797d0f8729bf7dc0543851083ad700a4ece32bc768b6bfeb6f0135c8c039e035b22afb6df1171d'
             '91a0edab6408a223db77b75df5a913ffd36efa79340e8d78fa01ac2c3b6e09d5a5fc7fa214ccd40473093809f86b7aef199cebf56a1d5821c20083c4a3e5780b'
             '247ba6576166dead08289b145ca126b6498c0731f9e4a5763b80d4a4cc3f057dffc6d8b697ed4fa2129a5b86c568ec5130fda25df30661a4f4c147d358f3ae5b'
-            '4f5b61073b4bd28d2cf92cb6bddb91a50518c4ce801d178366b3760ee2cf1692164546e439049c9ba821e23bff2e3080a42bfabf6fa46d613fd56905b405f340'
+            '0c65dc987c0457714a655950a758d98888225f757903ad0ae1a32b5300cdb4578be52f319714a9f759af409672de4fc8b1d0d69b1b4b1067903ad6d1503f56fe'
             '673e2a28781d0d604549c621592b1017ad306ddaf6d1beedfe73f3f1357fbb6afd994a324dfa15029789bdf8a4d6e85ad12a3877519618f6585bbc1927c06900'
             '048c6784fb0bb9182d07916fdfab9f9952cdcb1998b0f780ce74bf03b61ae62774611819db7de5fec5019b9158b42c3912ca28797aeca41a881493e5822afcd8')
 

@@ -23,22 +23,23 @@ index fd549bf9a..245fb7357 100644
 --- a/Telegram/SourceFiles/history/history_widget.cpp
 +++ b/Telegram/SourceFiles/history/history_widget.cpp
 @@ -3909,6 +3909,7 @@ void HistoryWidget::onModerateKeyActivate(int index, bool *outHandled) {
- 
- void HistoryWidget::pushTabbedSelectorToThirdSection(
+ bool HistoryWidget::pushTabbedSelectorToThirdSection(
+ 		not_null<PeerData*> peer,
  		const Window::SectionShow &params) {
-+	return;
- 	if (!_history || !_tabbedPanel) {
++	return true;
+ 	if (!_tabbedPanel) {
+ 		return true;
+ 	} else if (!peer->canWrite()) {
+@@ -3950,19 +3951,7 @@ void HistoryWidget::toggleTabbedSelectorMode() {
+ 	if (!_peer) {
  		return;
- 	} else if (!_canSendMessages) {
-@@ -3950,18 +3951,7 @@ void HistoryWidget::setTabbedPanel(std::unique_ptr<TabbedPanel> panel) {
- }
- 
- void HistoryWidget::toggleTabbedSelectorMode() {
+ 	}
 -	if (_tabbedPanel) {
 -		if (controller()->canShowThirdSection() && !Adaptive::OneColumn()) {
 -			session().settings().setTabbedSelectorSectionEnabled(true);
 -			session().saveSettingsDelayed();
 -			pushTabbedSelectorToThirdSection(
+-				_peer,
 -				Window::SectionShow::Way::ClearStack);
 -		} else {
 -			_tabbedPanel->toggleAnimated();
@@ -55,22 +56,23 @@ index 41e8e143e..4f973c46c 100644
 --- a/Telegram/SourceFiles/history/view/history_view_compose_controls.cpp
 +++ b/Telegram/SourceFiles/history/view/history_view_compose_controls.cpp
 @@ -337,6 +337,7 @@ void ComposeControls::escape() {
- 
- void ComposeControls::pushTabbedSelectorToThirdSection(
+ bool ComposeControls::pushTabbedSelectorToThirdSection(
+		not_null<PeerData*> peer,
  		const Window::SectionShow &params) {
-+	return;
++	return true;
  	if (!_tabbedPanel) {
- 		return;
+ 		return true;
  	//} else if (!_canSendMessages) {
-@@ -383,18 +384,7 @@ void ComposeControls::setTabbedPanel(
- }
- 
- void ComposeControls::toggleTabbedSelectorMode() {
+@@ -383,19 +384,7 @@ void ComposeControls::toggleTabbedSelectorMode() {
+ 	if (!_history) {
+ 		return;
+ 	}
 -	if (_tabbedPanel) {
 -		if (_window->canShowThirdSection() && !Adaptive::OneColumn()) {
 -			session().settings().setTabbedSelectorSectionEnabled(true);
 -			session().saveSettingsDelayed();
 -			pushTabbedSelectorToThirdSection(
+-				_history->peer,
 -				Window::SectionShow::Way::ClearStack);
 -		} else {
 -			_tabbedPanel->toggleAnimated();
