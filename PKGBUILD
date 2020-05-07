@@ -2,7 +2,7 @@
 
 _pkgname=vibrantx
 pkgname=${_pkgname}-git
-pkgver=r40.b849447
+pkgver=r51.d919cdf
 pkgrel=1
 pkgdesc="Adjust color vibrance of X11 output"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=("libdrm" "libxrandr")
 makedepends=("git" "cmake")
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("${_pkgname}::git+https://gitlab.com/Scrumplex/vibrantx.git")
+source=("${_pkgname}::git+https://gitlab.com/Scrumplex/vibrantx.git#branch=freeze-vibrantX")
 sha512sums=('SKIP')
 
 

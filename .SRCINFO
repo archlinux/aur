@@ -1,6 +1,6 @@
 pkgbase = vibrantx-git
 	pkgdesc = Adjust color vibrance of X11 output
-	pkgver = r40.b849447
+	pkgver = r51.d919cdf
 	pkgrel = 1
 	url = https://gitlab.com/Scrumplex/vibrantx
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = vibrantx-git
 	depends = libxrandr
 	provides = vibrantx
 	conflicts = vibrantx
-	source = vibrantx::git+https://gitlab.com/Scrumplex/vibrantx.git
+	source = vibrantx::git+https://gitlab.com/Scrumplex/vibrantx.git#branch=freeze-vibrantX
 	sha512sums = SKIP
 
 pkgname = vibrantx-git
