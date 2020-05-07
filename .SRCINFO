@@ -1,12 +1,13 @@
 pkgbase = air-bin
 	pkgdesc = Cloud Live reload for Go apps
-	pkgver = 1.12.0
-	pkgrel = 2
+	pkgver = 1.12.1
+	pkgrel = 1
 	url = https://github.com/cosmtrek/air
 	arch = x86_64
-	license = GPL-3.0
-	source = air-bin-1.12.0.tar.gz::https://github.com/cosmtrek/air/archive/v1.12.0.tar.gz
-	md5sums = 5752fc5ffadaae4c5b56e10847d933fd
+	license = GPL3
+	provides = air
+	source = air-bin-1.12.1.tar.gz::https://github.com/cosmtrek/air/archive/v1.12.1.tar.gz
+	sha256sums = ff4221fd79cf5e9636b511639101fd765c3b57f0461e860c1205674e679800da
 
 pkgname = air-bin
 
