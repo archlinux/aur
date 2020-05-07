@@ -10,6 +10,7 @@ url='https://github.com/relan/exfat'
 license=('GPL2')
 depends=('glibc')
 provides=('exfat-utils')
+conflicts=('fuse-exfat' 'exfat-utils')
 source=("exfat-${pkgver}.tar.gz::https://github.com/relan/exfat/archive/v${pkgver}.tar.gz"
         nofuse.patch)
 b2sums=('d4d074f94784ab038129a06acdf0c45252898776cc11d4db998f6d914ef47bc80add29e90eeb59b88a98b5828bd77773bb84f47c26e26a1a1a53cd1a3e1c7746'
