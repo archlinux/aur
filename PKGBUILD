@@ -10,8 +10,7 @@ arch=('x86_64' 'i686')
 license=('BSD')
 depends=('boost-libs' 'eigen')
 makedepends=('boost' 'cmake')
-optdepends=('intel-tbb: Use Intel TBB to accelerate computations (add this to the depends section of the PKGBUILD and rebuild the package)'
-            'intel-mkl: Use Intel MKL to accelerate computations (add this to the depends section of the PKGBUILD and rebuild the package)')
+optdepends=('intel-tbb: Use Intel TBB to accelerate computations (add this to the depends section of the PKGBUILD and rebuild the package)')
 source=("https://github.com/borglab/${pkgname}/archive/${pkgver}.tar.gz"
         "rename-included-libmetis.patch"
         "skip-boost-debug-libs.patch"
