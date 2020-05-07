@@ -1,0 +1,16 @@
+pkgbase = matcha-kde-git
+	pkgdesc = A flat Design theme for KDE Plasma desktop
+	pkgver = r9.283b5b1
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Matcha-kde
+	arch = any
+	license = GPL3
+	makedepends = git
+	optdepends = plasma-desktop: Plasma desktop themes
+	optdepends = kvantum-theme-matcha-git: Matched Kvantum themes
+	optdepends = qogir-icon-theme-git: Recommended icon themes
+	source = git+https://github.com/vinceliuice/Matcha-kde.git
+	sha256sums = SKIP
+
+pkgname = matcha-kde-git
+
