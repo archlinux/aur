@@ -1,0 +1,18 @@
+pkgbase = amnes
+	pkgdesc = Adaptive Meta-Framework for Network Experiment Studies
+	pkgver = 20.05.0
+	pkgrel = 1
+	epoch = 0
+	url = https://amnes.de
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python-peewee>=3.13
+	depends = python-click>=7.0
+	depends = python-yaml>=5.3
+	depends = python-pyro5>=5.8
+	source = git+https://gitlab.com/amnes/amnes#tag=v20.05.0
+	sha256sums = SKIP
+
+pkgname = amnes
+
