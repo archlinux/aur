@@ -1,13 +1,15 @@
 pkgbase = ripmime
-	pkgdesc = Tool to extract the attached files out of a MIME package
-	pkgver = r13.a556ffe
-	pkgrel = 2
+	pkgdesc = MIME/email package decoder
+	pkgver = r13
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/inflex/ripMIME
 	arch = any
 	license = BSD
 	makedepends = git
-	source = git+https://github.com/inflex/ripMIME
-	md5sums = SKIP
+	conflicts = ripmime-git
+	source = git+https://github.com/inflex/ripmime.git#commit=a556ffe08d620602475c976732e8e1a82f3169e9
+	sha256sums = SKIP
 
 pkgname = ripmime
 

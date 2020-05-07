@@ -1,28 +1,34 @@
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Contributor: Jenya Sovetkin <e.sovetkin <at> gmail <dot> com>
 # Contributor: K. Piche <kpiche <at> rogers <dot> com>
-# Maintainer: Jenya Sovetkin <e.sovetkin <at> gmail <dot> com>
+
 pkgname=ripmime
-pkgver=r13.a556ffe
-pkgrel=2
+pkgver=r13
+_commit=a556ffe08d620602475c976732e8e1a82f3169e9
+pkgrel=1
+epoch=1
+pkgdesc='MIME/email package decoder'
 arch=(any)
-license=('BSD')
-pkgdesc="Tool to extract the attached files out of a MIME package"
 url="https://github.com/inflex/ripMIME"
-source=('git+https://github.com/inflex/ripMIME')
-md5sums=('SKIP')
+license=('BSD')
+conflicts=('ripmime-git')
+source=("git+https://github.com/inflex/${pkgname}.git#commit=$_commit")
+sha256sums=('SKIP')
 makedepends=('git')
 
-_gitname=ripMIME
-
-pkgver() {
-  cd "${_gitname}"
-
-  # Get the version number.
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+build() {
+  cd "${pkgname}"
+  make
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
-  make || return 1
+  cd "${pkgname}"
   mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/usr/man/man1"
   make LOCATION="${pkgdir}/usr" install
+
+  # Proper location for man pages
+  mkdir "${pkgdir}/usr/share"
+  mv "${pkgdir}/usr/man" "${pkgdir}/usr/share/man"
+
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
