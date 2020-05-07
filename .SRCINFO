@@ -1,13 +1,14 @@
 pkgbase = sane-fmt-bin
 	pkgdesc = Opinionated code formatter for TypeScript and JavaScript
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 0
 	url = https://github.com/KSXGitHub/sane-fmt
 	arch = x86_64
 	license = MIT
-	source = sane-fmt-0.2.5::https://github.com/KSXGitHub/sane-fmt/releases/download/0.2.5/sane-fmt-x86_64-unknown-linux-gnu
+	conflicts = sane-fmt
+	source = sane-fmt-0.2.6::https://github.com/KSXGitHub/sane-fmt/releases/download/0.2.6/sane-fmt-x86_64-unknown-linux-gnu
 	source = https://raw.githubusercontent.com/KSXGitHub/sane-fmt/master/LICENSE.md
-	sha1sums = ede6638fa448282fbb61d15ceaa66eda87a13175
+	sha1sums = fe3c7ae16f8efbc07bd7d6a3ae9114af2df7a277
 	sha1sums = SKIP
 
 pkgname = sane-fmt-bin
