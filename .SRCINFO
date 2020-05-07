@@ -1,6 +1,6 @@
 pkgbase = bat-extras-git
 	pkgdesc = Bash scripts that integrate bat with various command line tools.
-	pkgver = 2020.05.01.r2.gfb97300
+	pkgver = 2020.05.01.r15.ge250ad9
 	pkgrel = 1
 	url = https://github.com/eth-p/bat-extras
 	arch = any
@@ -16,6 +16,10 @@ pkgbase = bat-extras-git
 	provides = bat-extras
 	conflicts = bat-extras
 	source = git+https://github.com/eth-p/bat-extras.git
+	source = git+https://github.com/eth-p/best.git
+	source = git+https://github.com/eth-p/best-tests.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = bat-extras-git

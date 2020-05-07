@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: desbma
 pkgname=bat-extras-git
-pkgver=2020.05.01.r2.gfb97300
+pkgver=2020.05.01.r15.ge250ad9
 pkgrel=1
 pkgdesc="Bash scripts that integrate bat with various command line tools."
 arch=('any')
@@ -16,8 +16,24 @@ optdepends=('ripgrep: required for batgrep script'
             'shfmt: bash formatting for prettybat')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/eth-p/bat-extras.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/eth-p/bat-extras.git'
+        'git+https://github.com/eth-p/best.git'
+        'git+https://github.com/eth-p/best-tests.git')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
+
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+	git submodule init .test-framework
+	git config submodule.best.url "$srcdir/best"
+	git submodule update
+
+	cd .test-framework
+	git submodule init tests
+	git config submodule.best-tests.url "$srcdir/best-tests"
+	git submodule update
+}
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
