@@ -1,7 +1,7 @@
 pkgbase = autenticacao-gov-pt-bin
 	pkgdesc = Portuguese Citizen Card Application - pre compiled binaries version
 	pkgver = 3.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.cartaodecidadao.pt/
 	arch = x86_64
 	license = GPL2
