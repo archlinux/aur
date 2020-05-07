@@ -5,13 +5,13 @@
 pkgname=scilab-bin
 _pkgname=${pkgname%-bin}
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A software package for numerical computation, providing a powerful computing environment for engineering and scientific applications."
 arch=("x86_64")
 license=("BSD" "custom:CeCILL")
 url="https://www.scilab.org"
 # Standalone package
-depends=()
+depends=('ncurses5-compat-libs')
 conflicts=('scilab')
 options=(!strip)
 source=("http://www.scilab.org/download/${pkgver}/scilab-${pkgver}.bin.linux-x86_64.tar.gz")
