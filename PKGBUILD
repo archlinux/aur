@@ -3,7 +3,7 @@
 pkgbase=chromeos-kde-git
 pkgname=(chromeos-kde-git kvantum-theme-chromeos-git)
 _pkgname=chromeos-kde
-pkgver=r15.b9fe1bd
+pkgver=r16.0f25681
 pkgrel=1
 pkgdesc="ChromeOS theme for kde plasma"
 arch=(any)
@@ -23,7 +23,7 @@ pkgver() {
 package_chromeos-kde-git() {
     provides=('chromeos-kde')
     optdepends=('chromeos-gtk-theme: Matching GTK theme'
-                'kvantum-theme-chromeos: Layan theme for Kvantum Qt style (recommended)'
+                'kvantum-theme-chromeos: ChromeOS theme for Kvantum Qt style (recommended)'
                 'tela-icon-theme: Matching icon theme')
 
     cd $_pkgname
@@ -31,6 +31,11 @@ package_chromeos-kde-git() {
     install -d "$pkgdir"/usr/share
     
     rm sddm/{README.md,install.sh}
+    
+    # Temporary fix for upstream filestructure
+    mv aurorae themes
+    mkdir -p aurorae
+    mv themes aurorae/
 
     cp -r aurorae "$pkgdir"/usr/share
     cp -r color-schemes "$pkgdir"/usr/share
