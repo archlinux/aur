@@ -3,7 +3,7 @@
 pkgname=mylar3
 pkgver=0.3.5
 pkgrel=1
-pkgdesc="Automatic comic book downloading for usenet and torrents."
+pkgdesc="Comic book download automation for usenet and torrents."
 arch=('any')
 url="https://gitlab.com/mylar3/mylar3/"
 license=('GPL3')
