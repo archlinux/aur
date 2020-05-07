@@ -1,10 +1,10 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=calls-git
-pkgver=0.1.1.r0.g10d46d2
+pkgver=0.1.4.r1.gd18bd0f
 pkgrel=1
 pkgdesc="Phone dialer and call handler"
-arch=(i686 x86_64 armv6h armv7h)
+arch=(i686 x86_64 armv7h aarch64)
 url="https://source.puri.sm/Librem5/calls"
 license=(GPL3)
 depends=(folks
@@ -28,7 +28,7 @@ pkgver() {
 }
 
 build() {
-    arch-meson calls build
+    arch-meson calls build -Dtests=false
     ninja -C build
 }
 
