@@ -11,8 +11,8 @@ pkgname=(
   kata-containers-image
   kata-linux-container
 )
-#pkgver="1.10.3"
-pkgver="1.11.0~rc0"
+pkgver="1.10.4"
+#pkgver="1.11.0~rc0"
 _pkgver=${pkgver/\~/-}
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers (binary version)"
@@ -20,7 +20,7 @@ arch=(x86_64)
 url="https://katacontainers.io"
 license=('Apache')
 
-_bin_pkg_root="/opt/kata"  # `/usr` for f30 packages, `/opt/kata` for static packages
+_bin_pkg_root="/usr"  # `/usr` for f30 packages, `/opt/kata` for static packages
 
 if [ "${_bin_pkg_root}" = "/opt/kata" ]; then
   pkgname+=(kata-containers-static)
@@ -28,13 +28,13 @@ if [ "${_bin_pkg_root}" = "/opt/kata" ]; then
   sha256sums=(80ba7cfb6f82bbccbcb9cc08f3a83d2def0638efe7cbbeb5d0101cbe8dbcc105)
 else
   _kata_kernel_ver="4.19.86.60"
-  _default_suffix="-7.1"  # f30 package build revision
-  #_image_suffix="-7.1"
-  #_ksm_suffix="-7.1"
-  _kernel_suffix="-8.1"
-  #_proxy_suffix="-7.1"
-  #_runtime_suffix="-7.1"
-  #_shim_suffix="-7.1"
+  _default_suffix="-8.1"  # f30 package build revision
+  #_image_suffix="-8.1"
+  #_ksm_suffix="-8.1"
+  _kernel_suffix="-9.1"
+  #_proxy_suffix="-8.1"
+  #_runtime_suffix="-8.1"
+  #_shim_suffix="-8.1"
 
   pkgname+=(kata-ksm-throttler-bin)
   source=(
@@ -46,12 +46,12 @@ else
     "https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-shim-bin-${pkgver}${_shim_suffix:-${_default_suffix}}.${CARCH}.rpm"
   )
   sha256sums=(
-    66ce95ee36da94ae330ed537c343229f9d82ed8cd9564ddda7ec51d90fa878da
-    729c24e3b4c896eed217f9fc030f950bdfe34a0878a2fef0272996066cc9fad7
-    e966993a62e2db1db0fec0a4cb0c7e03b573a9a38202e27687d75ba3da53a444
-    809248be471cf22e5f03b912e4f7e5c5187417ac5d54b7bccde906c1f8a73d6e
-    2bff27c88388f1fc11284102788165220c691927c2b5526a0d4aa9b4646ae92c
-    0265cc14f5d8bed96880cabf0469aef1de66ec0f0b1b2af6084fe87141e525e2
+    92b3311fab15eeba7ba35bd4c1b1d9466ac65373e13db758fbb8f2c16c407c8b
+    a0945045da7e51e73b590df6fe972229d87e91e2306d44cd19d0f341a1793a6c
+    2f3e14215dd510a639784b2b565f518f5fd6fc704d3d738ce924f9107b28bb7d
+    45ca19568b3c1ec18bbeb566743dcb54d212ded9fd6233cfb5ed0b0bd85d5db7
+    b5e2b757ab0b4b35129f4111bb8ce4f992d52b9f91740174ffacb6b1c6df2087
+    9f5c651c0435a7cd66d9e77a99286208272b4aadaa542d1eca0c848c174dae74
   )
 fi
 
