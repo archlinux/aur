@@ -5,7 +5,7 @@
 pkgname=qt5-base-headless
 _qtver=5.14.2
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.qt.io/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
