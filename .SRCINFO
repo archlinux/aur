@@ -1,19 +1,19 @@
-pkgbase = python-keeper-commander-git
-	pkgdesc = Module provides SDK for Keeper® Password Manager.
-	pkgver = 4.3.1
+pkgbase = keeper-commander
+	pkgdesc = CLI, SDK and interactive shell for Keeper® Password Manager.
+	pkgver = 4.31
 	pkgrel = 1
 	url = https://github.com/Keeper-Security/Commander
 	arch = any
 	license = MIT
 	depends = python
-	depends = python3-asciitree-git
+	depends = python-asciitree
 	depends = python-prompt_toolkit
 	depends = python-tabulate
 	depends = python-requests
 	depends = python-pycryptodomex
 	depends = python-colorama
-	source = git+https://github.com/Keeper-Security/Commander.git
-	sha512sums = SKIP
+	source = keeper-commander-4.31.tar.gz::https://github.com/Keeper-Security/Commander/archive/v4.31.tar.gz
+	sha512sums = 772d7c8eeb9432a4f49a8c772e7b8d786c6384b9fc399dbfda357596103ec491ece131d490fce0404b8bfcc98cecc645d7017499d1e2706fdbe8ec12fe71d8d0
 
-pkgname = python-keeper-commander-git
+pkgname = keeper-commander
 

@@ -1,20 +1,19 @@
-# Maintaner: jskier <jay@jskier.com>
+# Maintainer: ejiek <ejiek@mail.ru>
 # Contributor: jskier <jay @jskier.com>
-pkgname=python-keeper-commander-git
-pkgver=4.3.1
+pkgname=keeper-commander
+pkgver=4.31
 pkgrel=1
-#epoch=1
-pkgdesc="Module provides SDK for Keeper® Password Manager."
+pkgdesc="CLI, SDK and interactive shell for Keeper® Password Manager."
 arch=('any')
 url="https://github.com/Keeper-Security/Commander"
 license=('MIT')
-depends=('python' 'python3-asciitree-git' 'python-prompt_toolkit' 
+depends=('python' 'python-asciitree' 'python-prompt_toolkit'
          'python-tabulate' 'python-requests' 'python-pycryptodomex' 'python-colorama')
-source=("git+https://github.com/Keeper-Security/Commander.git")
-sha512sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha512sums=('772d7c8eeb9432a4f49a8c772e7b8d786c6384b9fc399dbfda357596103ec491ece131d490fce0404b8bfcc98cecc645d7017499d1e2706fdbe8ec12fe71d8d0')
 
 package() {
-  cd "$srcdir/Commander"
+  cd "Commander-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
