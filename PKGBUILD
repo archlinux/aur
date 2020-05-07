@@ -4,7 +4,7 @@
 pkgname=bazarr
 pkgver=0.8.4.3
 pkgrel=1
-pkgdesc="Manage and download subtitles for Sonarr and Radarr."
+pkgdesc="Subtitle download automation for Sonarr and Radarr."
 arch=('any')
 url="https://github.com/morpheus65535/bazarr"
 license=('GPL3')
