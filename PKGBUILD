@@ -5,7 +5,7 @@
 
 pkgname=python-pyro5
 pkgver=5.10
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc='Distributed object middleware for Python (RPC), Version 5'
 url='https://github.com/irmen/Pyro5'
@@ -13,6 +13,7 @@ arch=(any)
 license=(MIT)
 makedepends=(git)
 depends=('python>=3.5' 'python-serpent>=1.27')
+conflicts=('python-pyro5-git')
 source=("git+$url#tag=v$pkgver")
 sha256sums=('SKIP')
 
