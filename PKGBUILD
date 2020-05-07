@@ -3,7 +3,7 @@
 
 pkgname=pagmo-git
 pkgver=r4252.1525ce0d
-pkgrel=1
+pkgrel=2
 pkgdesc="Perform parallel computations of optimisation tasks (global and local)
 via the asynchronous generalized island model (git version)"
 arch=('i686' 'x86_64')
@@ -32,6 +32,7 @@ build() {
         -DPAGMO_WITH_IPOPT=ON \
         -DPAGMO_WITH_EIGEN3=ON \
         -DPAGMO_WITH_NLOPT=ON \
+        -DPAGMO_ENABLE_IPO=yes \
         "${srcdir}/${_name}"
 
     make
