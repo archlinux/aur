@@ -2,8 +2,8 @@
 # Co-Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 
 pkgname=wee-slack
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc='A WeeChat plugin for Slack.com'
 url='https://github.com/wee-slack/wee-slack/'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('weechat' 'python-websocket-client')
 conflicts=('wee-slack-git')
 install=$pkgname.install
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/wee-slack/wee-slack/archive/v${pkgver}.tar.gz")
-sha512sums=('0487608952b4e09e83e7a202964f64958d95f5f2cbd921252adfced644c0237d1dd7e1bb1be28d95ddef35a07a71df9f887c33d8d0b35d4c086a2f1e9f8c3e12')
+sha512sums=('448f9d7903fe68752b80ee4a4362bf38c6232399347ccac375e19066877dade225e38489c0969c087be2cf885acfae9612f7ad8a0fa0073db9a1cb9ffef1518c')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
