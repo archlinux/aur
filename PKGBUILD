@@ -3,9 +3,9 @@
 # TODO: python-scimath: for unit parser in pyface.wx.spreadsheet
 # TODO: look for more hidden dependencies
 
-pkgname='python-pyface'
-pkgver=6.1.2
-pkgrel=3
+pkgname=python-pyface
+pkgver=7.0.0
+pkgrel=1
 pkgdesc="Traits-capable windowing framework"
 arch=('any')
 url="https://github.com/enthought/pyface"
@@ -21,7 +21,7 @@ optdepends=('python-pyqt5: for Qt backend (or pyside2)'
             'python-wxpython: for wx backend')
 options=(!emptydirs)
 source=("pyface-${pkgver}.tar.gz::https://github.com/enthought/pyface/archive/${pkgver}.tar.gz")
-sha256sums=('70f9977de7294b3804cd5e36b71ba22679e0ab58a6034da32e888e355ac876fa')
+sha256sums=('594c24d58fd65c3981a095ea256912cfab1f15d314bc58f3d2e88da9ca7cb3d4')
 
 build() {
   cd "$srcdir"/pyface-$pkgver
