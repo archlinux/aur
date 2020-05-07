@@ -23,7 +23,7 @@ package() {
   ./$appimage --appimage-extract
 
   mkdir -p $pkgdir/usr/share/icons
-  cp squashfs-root/mikutter.png $pkgdir/usr/icons
+  cp squashfs-root/mikutter.png $pkgdir/usr/share/icons
 
   mkdir -p $pkgdir/usr/bin
   cp $appimage $pkgdir/usr/bin/mikutter
