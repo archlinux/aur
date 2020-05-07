@@ -12,7 +12,7 @@ optdepends=('plasma-desktop: for a plasma desktop theme'
             'kvantum-qt5: for a Kvantum theme'
             'mcmojave-circle-icon-theme-git: for icon theme'
             'sierrabreeze-kwin-decoration-git: for KWin decoration'
-            'jomada-sierrabreeze-kwin-decoration-git: for default KWin decoration'
+            'sierrabreeze-jomada-kwin-decoration-git: for matched KWin decoration'
             'latte-dock: for a Latte dock layout')
 makedepends=('git')
 install=${pkgname}.install
