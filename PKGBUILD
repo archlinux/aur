@@ -1,0 +1,25 @@
+# Maintainer: Milkii Brewster <milkii on Freenode IRC>
+maintaner="Milkii Brewster <milkii on Freenode IRC>"
+pkgname=lv2-plugins-aur-meta
+pkgdesc="As many LV2 plugins as possible."
+pkgver=0.1
+pkgrel=1
+epoch=
+arch=(x86_64)
+url=""
+license=(GPL)
+groups=()
+depends=('adlplug' 'ambix' 'ams-lv2' 'ams-mod-lv2-git' 'amsynth' 'artyfx' 'avldrums.lv2' 'bchoppr-git' 'beatslash-lv2' 'bg-plugins.lv2-git' 'bjumblr.lv2-git' 'blop.lv2' 'bsequencer-git' 'bshapr-git' 'bslizr-git' 'calf' 'caps-lv2-git' 'carla-debug-git' 'deteriorate-lv2' 'distrho-extra-lv2-git' 'distrho-ports' 'dpf-plugins-git' 'dragonfly-reverb-git' 'drmr-falktx-git' 'drumkv1' 'eq10q' 'eteroj.lv2' 'fabla' 'fluidplug-git' 'fogpad.lv2-git' 'fomp.lv2' 'geonkick' 'gmsynth.lv2' 'gula-plugins-git' 'gxplugins-lv2-git' 'helm-synth' 'infamousplugins' 'ingen-git' 'intersect.lv2-git' 'invada-studio-plugins-lv2' 'ir.lv2' 'kapitonov-plugins-pack-lv2-git' 'linuxsampler' 'liquidsfz' 'lsp-plugins' 'lv2-git' 'lvtk' 'matrixmixer32.lv2-git' 'mclk.lv2' 'mda.lv2' 'mephisto.lv2' 'midi_matrix.lv2' 'midimsg-lv2' 'midiomatic' 'midi-trigger.lv2-git' 'mod-cv-plugins-git' 'moony-lv2-git' 'mystery.lv2-git' 'nanoinvaders.lv2-git' 'newtonator' 'ninjas2-git' 'ninjas-git' 'njl.lv2-git' 'noise-repellent' 'omins.lv2-git' 'omnifono.lv2' 'opnplug' 'padthv1' 'plujain-ramp-git' 'qmidiarp-git' 'regrader.lv2-git' 'remid.lv2-git' 'rkr.lv2-git' 'samplv1' 'screcord.lv2-git' 'sherlock.lv2' 'shiru.lv2-git' 'sooperlooper.lv2-git' 'sorcer' 'so-synth-lv2-git' 'spectmorph' 'ssr.lv2-git' 'stegosaurus-lv2-git' 'stepseq_s16n8.lv2' 'string-machine-git' 'swh-lv2-git' 'synthpod-git' 'synthv1' 'tap-plugins-lv2-git' 'triceratops-lv2-git' 'uhhyou.lv2-git' 'vcf.lv2-git' 'vm.lv2' 'vopa' 'wolf-shaper-git' 'wolf-spectrum' 'x42-plugins' 'xmonk.lv2' 'yoshimi' 'zam-plugins' 'zplugins.lv2-git' 'zyn-fusion')
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=()
+noextract=()
+md5sums=()
