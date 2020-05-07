@@ -17,29 +17,16 @@ _pkgname=wheezy.template
 pkgname=python-wheezy
 pkgver=0.1.167
 pkgrel=1
-epoch=
 pkgdesc="A lightweight template library"
 arch=('any')
 url="https://pypi.python.org/pypi/wheezy.template"
 license=('MIT')
-groups=()
 depends=('python')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
 conflicts=(
     'python2-wheezy'  # /usr/bin/wheezy.template
 )
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("https://pypi.python.org/packages/b1/67/7f0a14a4cc9bd949b8d22383c26fec83a00e7bd428e15c697f998e3e37ba/wheezy.template-${pkgver}.tar.gz")
-noextract=()
 sha256sums=('a2ee933452f0352fb8587d79bf6fc66dbf3a14779ef7d17b9fa75e80c0003f19')
-validpgpkeys=()
 
 build() {
   cd "$_pkgname-$pkgver"
