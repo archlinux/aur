@@ -4,7 +4,7 @@
 _basename=gst-plugins-bad
 pkgname=lib32-gst-plugins-bad
 pkgver=1.16.2
-pkgrel=3
+pkgrel=4
 pkgdesc="GStreamer open-source multimedia framework bad plugins (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -33,6 +33,9 @@ pkgver() {
 
 prepare() {
     cd $_basename
+
+    # Fix build with lib32-neon 0.31
+    git cherry-pick -n f10b424418e448211e3427a76fcd046e157ef0b7
 }
 
 build() {
