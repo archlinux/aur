@@ -4,7 +4,7 @@
 
 pkgname=mikutter
 pkgver=4.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
 url="http://mikutter.hachune.net/"
@@ -19,9 +19,14 @@ mikutter.desktop
 )
 
 package() {
+  chmod a+x $appimage
+  ./$appimage --appimage-extract
+
+  mkdir -p $pkgdir/usr/icons
+  cp squashfs-root/mikutter.png $pkgdir/usr/icons
+
   mkdir -p $pkgdir/usr/bin
   cp $appimage $pkgdir/usr/bin/mikutter
-  chmod a+x $pkgdir/usr/bin/mikutter
 
   mkdir -p $pkgdir/usr/share/applications
   cp $srcdir/mikutter.desktop $pkgdir/usr/share/applications
