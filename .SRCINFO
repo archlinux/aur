@@ -6,8 +6,8 @@ pkgbase = polkadot-bin
 	arch = x86_64
 	license = GNU
 	provides = polkadot
-	source = https://github.com/paritytech/polkadot/releases/download//v0.7.33/polkadot
-	source = https://github.com/paritytech/polkadot/releases/download//v0.7.33/polkadot.asc
+	source = https://github.com/paritytech/polkadot/releases/download/v0.7.33/polkadot
+	source = https://github.com/paritytech/polkadot/releases/download/v0.7.33/polkadot.asc
 	sha256sums = bfb4c0124e26776b850b7f71eebb86500187f08b49b4da63ed411291bb7da03e
 	sha256sums = 26cc33c7832c4320527a66c3d5b85acc9a40a7d4321f124c20e8a81d2a1612f9
 

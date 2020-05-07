@@ -9,7 +9,7 @@ provides=("polkadot")
 url="https://github.com/paritytech/polkadot"
 license=('GNU')
 depends=()
-_urlbase='https://github.com/paritytech/polkadot/releases/download/'
+_urlbase='https://github.com/paritytech/polkadot/releases/download'
 source=(
   "$_urlbase/v$pkgver/polkadot"
   "$_urlbase/v$pkgver/polkadot.asc"
