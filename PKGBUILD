@@ -11,6 +11,7 @@ license=('MIT')
 depends=('dovecot' 'dovecot-xaps-daemon')
 makedepends=('git' 'cmake')
 provides=('dovecot-xaps-plugin')
+conflicts=('dovecot-xaps-plugin')
 source=("git+https://github.com/st3fan/dovecot-xaps-plugin.git")
 b2sums=('SKIP')
 
