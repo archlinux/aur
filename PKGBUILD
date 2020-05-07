@@ -22,7 +22,7 @@ prepare() {
 
 # start building
 build() {
-  mv * alphaplot
+  mv */ alphaplot
   cd "${pkgname}"
   qmake
   make
