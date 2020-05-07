@@ -4,7 +4,7 @@
 pkgname=autenticacao-gov-pt
 _pkgname=autenticacao.gov
 pkgver=3.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Portuguese Citizen Card Application"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -24,7 +24,7 @@ depends=('qt5-base'
          'xml-security-c')
 makedepends=('swig' 'qconf' 'git' 'xml-security-c' 'jdk11-openjdk')
 optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online'
-            'cartaodecidadao-pki: PKI que confirma a validade dos certificados dos CC'
+            'autenticacao-gov-pt-pki: PKI que confirma a validade dos certificados dos CC'
             'ecce-gov-pt-certificates: Certificados da ECCE quem assina dos certificados contidos em cartaodecidadao-pki')
 conflicts=('classpath' 'cartaodecidadao' 'cartaodecidadao-bin')
 replaces=('cartaodecidadao')
