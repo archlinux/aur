@@ -7,6 +7,8 @@ pkgdesc="A library of C++ classes that implement smoothing and mapping (SAM) in\
   computing paradigm rather than sparse matrices."
 url="https://gtsam.org/"
 arch=('x86_64' 'i686')
+provides=("gtsam=${pkgver}")
+conflicts=('gtsam-git' 'gtsam-mkl')
 license=('BSD')
 depends=('boost-libs' 'eigen')
 makedepends=('boost' 'cmake')

@@ -11,7 +11,9 @@ pkgbase = gtsam
 	depends = boost-libs
 	depends = eigen
 	optdepends = intel-tbb: Use Intel TBB to accelerate computations (add this to the depends section of the PKGBUILD and rebuild the package)
-	optdepends = intel-mkl: Use Intel MKL to accelerate computations (add this to the depends section of the PKGBUILD and rebuild the package)
+	provides = gtsam=4.0.2
+	conflicts = gtsam-git
+	conflicts = gtsam-mkl
 	source = https://github.com/borglab/gtsam/archive/4.0.2.tar.gz
 	source = rename-included-libmetis.patch
 	source = skip-boost-debug-libs.patch
