@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=oreo-cursors-git
-pkgver=r5.48934d7
+pkgver=20200506
 pkgrel=1
 pkgdesc="Color material cursors with cute animations."
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	make dist
 }
 
 prepare() {
