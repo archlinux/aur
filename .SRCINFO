@@ -1,7 +1,7 @@
 pkgbase = mom
 	pkgdesc = Memory Overcommitment Manager, for virtual machines
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gerrit.ovirt.org/#/admin/projects/mom
 	arch = any
 	license = GPL2
@@ -10,7 +10,7 @@ pkgbase = mom
 	depends = python-six
 	depends = libvirt-python
 	backup = etc/mom
-	source = git+https://gerrit.ovirt.org/mom#tag=v0.6.0
+	source = git+https://gerrit.ovirt.org/mom#commit=0cd552a7d174118ae6c4baa8609edd82afafe775
 	source = momd@.service
 	source = balloon.rules
 	md5sums = SKIP
