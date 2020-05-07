@@ -6,7 +6,7 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('536' '786' '923' '1126 '1164' '1192' '1205' )
+# available MR: ('536' '786' '923' '1126 '1164' '1192')
 _merge_requests_to_use=() # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
@@ -14,7 +14,7 @@ _merge_requests_to_use=() # safe pick
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=3.36.2+4+gdff855942
+pkgver=3.36.2+14+g881d330bc
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
@@ -23,7 +23,7 @@ arch=(x86_64)
 license=(GPL2)
 depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session gnome-settings-daemon
          gnome-themes-extra gsettings-desktop-schemas libcanberra-pulse libgdm libsecret
-         mutter nm-connection-editor unzip gstreamer libibus gnome-autoar)
+         mutter nm-connection-editor unzip gstreamer libibus gnome-autoar  gnome-disk-utility)
 makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspection git meson
              sassc asciidoc bash-completion)
 optdepends=('gnome-control-center: System settings'
@@ -33,15 +33,13 @@ groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
 conflicts=(gnome-shell)
 install=$pkgname.install
-_commit=dff855942e6e48901f0fb3abfefb655ef6beae10  # tags/3.36.2^4
+_commit=881d330bc0bb3735853dd6c522fcc6fed4646f1f  # tags/3.36.2^14
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-	"1126.diff"
-	"1205.diff")
+	"1126.diff")
 sha256sums=('SKIP'
             'SKIP'
-            '32661c22298d0c4af9b6b6bb718480ce192f528367f853d9709f74c146b2f8d4'
-            'f384ca71ce47052e244811cfdfced7fab7752600de6d5b96380e92cc5fd335e1')
+            '32661c22298d0c4af9b6b6bb718480ce192f528367f853d9709f74c146b2f8d4')
 
 pkgver() {
   cd $_pkgname
@@ -137,10 +135,8 @@ prepare() {
   # Status: 4
   # Comment: Depends on 1126 that requires gjs>=1.65.1
   pick_mr '1126' '1126.diff' 'patch'
-  pick_mr '1205' '1205.diff' 'patch' #fixes some gjs warnings
   pick_mr '1192'
   pick_mr '1164'
-
 
 
   git submodule init
