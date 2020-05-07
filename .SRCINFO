@@ -1,0 +1,19 @@
+pkgbase = vibrant-git
+	pkgdesc = A simple library to adjust color saturation of X11 outputs.
+	pkgver = 0.0.1.r0.g4c50968
+	pkgrel = 1
+	url = https://gitlab.com/Scrumplex/vibrant
+	arch = x86_64
+	license = GPL3
+	license = custom:MIT
+	makedepends = git
+	makedepends = cmake
+	depends = libdrm
+	depends = libxrandr
+	provides = vibrant
+	conflicts = vibrant
+	source = vibrant::git+https://gitlab.com/Scrumplex/vibrant.git
+	sha512sums = SKIP
+
+pkgname = vibrant-git
+
