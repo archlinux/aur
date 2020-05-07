@@ -1,8 +1,9 @@
-# Maintainer: Alad Wenter <alad@mailbox.org>
+# Maintainer: Jonas Witschel <diabonas@archlinux.org>
+# Contributor: Alad Wenter <alad@mailbox.org>
 # Contributor: Uffe Jakobsen <uffe@uffe.org>
 pkgname=hashdeep
 pkgver=4.4
-pkgrel=5
+pkgrel=6
 pkgdesc="cross-platform tools to message digests for any number of files"
 arch=('x86_64')
 url="https://github.com/jessek/hashdeep"
