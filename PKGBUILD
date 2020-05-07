@@ -17,13 +17,13 @@ source=(
 sha256sums=('69d67c236f4bd498323af509d44ec4a1b826da337f7ee64bbfbdb98bfda8e541')
 
 build () {
-    cd "${pkgname}-${pkgver}"
+	cd "${pkgname}-${pkgver}"
 	arch-meson build
 	ninja -C build
 }
 
 package () {
-    cd "${pkgname}-${pkgver}"
+	cd "${pkgname}-${pkgver}"
 	DESTDIR="${pkgdir}" ninja -C build install
 }
 
