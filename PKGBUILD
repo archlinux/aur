@@ -10,14 +10,14 @@ pkgname=java-openjdk-loom-ea-bin
 _majorver=15
 
 # upstream release identifier
-_commit="f51fd96b8c9c65b9a8ba"
+_commit="33cd3991d6b1ba54c43d"
 # use the first 7 digits for the Arch build version
 _buildver=$(echo ${_commit} | cut -c1-7)
 
 pkgver=${_majorver}_${_buildver}
 pkgrel=1
 # must use epoch as upstream breaks version comparisons
-epoch=26
+epoch=27
 
 # Virtual threads (fibers) and continuations for the JVM
 # Earyl-Access JVM prototype - don't use in production
@@ -46,7 +46,7 @@ provides=(
 _prefix=untagged-
 source=("https://github.com/forax/java-next/releases/download/${_prefix}${_commit}/jdk-${_majorver}-loom-linux.tar.gz")
 
-sha256sums=('dfcbe6cfad3e25e76b51e0549fbf02e817bda1990ce75a959e260ae66e8ad383')
+sha256sums=('c02cb83f4ac6bc0898109e27d873d4b67eca2f302e87135b54883feb5a7c8a38')
 
 _eaname=java-openjdk-loom-ea
 _jvmdir=usr/lib/jvm/${_eaname}
