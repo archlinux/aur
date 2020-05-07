@@ -1,0 +1,16 @@
+pkgbase = bugit-git
+	pkgdesc = BuGit: File-less distributed bug tracking system with Git
+	pkgver = r82.381a3e8
+	pkgrel = 1
+	url = https://gitlab.com/monnier/bugit
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = git
+	provides = bugit
+	conflicts = bugit
+	source = git+https://gitlab.com/monnier/bugit
+	sha256sums = SKIP
+
+pkgname = bugit-git
+
