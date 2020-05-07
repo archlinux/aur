@@ -1,0 +1,14 @@
+pkgbase = gstpeaq
+	pkgdesc = GStreamer plugin for Perceptual Evaluation of Audio Quality (PEAQ)
+	pkgver = 0.6.1
+	pkgrel = 2
+	url = https://github.com/HSU-ANT/gstpeaq
+	arch = x86_64
+	license = LGPL
+	depends = gstreamer
+	depends = gst-plugins-good
+	source = https://github.com/HSU-ANT/gstpeaq/releases/download/version-0.6.1/gstpeaq-0.6.1.tar.gz
+	md5sums = 55541f9ce3aa4f55d689e15454aee751
+
+pkgname = gstpeaq
+
