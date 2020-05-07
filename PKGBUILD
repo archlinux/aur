@@ -1,6 +1,6 @@
 # Maintainer: Nemo <archlinux at captnemo dot in>
 pkgname=screen-desktop-bin
-pkgver=1.0.27
+pkgver=1.0.42
 pkgrel=1
 pkgdesc="Low latency videoconferencing & screen sharing with multiplayer drawing & control. Screen is a multiplayer screen sharing app that lets you work together like you’re in the same room."
 arch=('x86_64')
@@ -17,12 +17,12 @@ optdepends=('apparmor'
 license=('custom')
 options=('!strip' '!emptydirs')
 source=("https://download.screen.so/desktop-app/linux/${pkgver}/screen-desktop_${pkgver}_amd64.deb")
-sha512sums=('9a23796492a7b0016869b55bc8df118e72070c22544b85dc5b237d5d376f39b1c1bae18a994cf3c5386f57c1834ed7b882319ae19cef54111a0256ebbcbc591b')
+sha512sums=('cbca379453b05488d0df38c256b067055e8e496fc92038990091b829070943000a96431e64b4d6759d9714620cea1453213d870bdb857cc06bec236e3f03413c')
 
 package(){
-	mkdir -p "${pkgdir}/opt/${pkgname}"
-	tar xf data.tar.xz
-	cp -r usr/lib/screen-desktop/* "${pkgdir}/opt/${pkgname}"
+    mkdir -p "${pkgdir}/opt/${pkgname}"
+    tar xf data.tar.xz
+    cp -r usr/lib/screen-desktop/* "${pkgdir}/opt/${pkgname}"
 
     install -dm755 "$pkgdir"/usr/bin
     ln -s /opt/"$pkgname"/Screen "$pkgdir/usr/bin/screen-desktop"

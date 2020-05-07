@@ -1,6 +1,6 @@
 pkgbase = screen-desktop-bin
 	pkgdesc = Low latency videoconferencing & screen sharing with multiplayer drawing & control. Screen is a multiplayer screen sharing app that lets you work together like you’re in the same room.
-	pkgver = 1.0.27
+	pkgver = 1.0.42
 	pkgrel = 1
 	url = https://screen.so
 	arch = x86_64
@@ -48,8 +48,8 @@ pkgbase = screen-desktop-bin
 	optdepends = libappindicator-gtk3
 	options = !strip
 	options = !emptydirs
-	source = https://download.screen.so/desktop-app/linux/1.0.27/screen-desktop_1.0.27_amd64.deb
-	sha512sums = 9a23796492a7b0016869b55bc8df118e72070c22544b85dc5b237d5d376f39b1c1bae18a994cf3c5386f57c1834ed7b882319ae19cef54111a0256ebbcbc591b
+	source = https://download.screen.so/desktop-app/linux/1.0.42/screen-desktop_1.0.42_amd64.deb
+	sha512sums = cbca379453b05488d0df38c256b067055e8e496fc92038990091b829070943000a96431e64b4d6759d9714620cea1453213d870bdb857cc06bec236e3f03413c
 
 pkgname = screen-desktop-bin
 
