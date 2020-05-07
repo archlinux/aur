@@ -4,9 +4,8 @@ pkgname=proton-ge-custom
 _srctag=5.7-GE-1-MF
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
-_monover=4.9.4
-#_dxvkver=1.5
-pkgrel=1
+_monover=5.0.0
+pkgrel=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -30,9 +29,6 @@ depends=(
   desktop-file-utils
   python
   steam-native-runtime
-  "wine-gecko-bin>=$_geckover"
-  "wine-mono-bin>=$_monover"
-#  "dxvk>=$_dxvkver"
 )
 makedepends=(autoconf ncurses bison perl fontforge flex meson
   'gcc>=4.5.0-2'
@@ -57,13 +53,10 @@ makedepends=(autoconf ncurses bison perl fontforge flex meson
   libxslt               lib32-libxslt
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
-#  vkd3d                 lib32-vkd3d
   sdl2                  lib32-sdl2
   libgphoto2
   sane
   gsm
-#  vulkan-headers
-#  spirv-headers
   samba
   opencl-headers
   git
@@ -85,11 +78,9 @@ optdepends=(
   libjpeg-turbo         lib32-libjpeg-turbo
   libxcomposite         lib32-libxcomposite
   libxinerama           lib32-libxinerama
-#  ncurses               lib32-ncurses
   opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
   gst-plugins-base-libs lib32-gst-plugins-base-libs
-#  vkd3d                 lib32-vkd3d
   sdl2                  lib32-sdl2
   libgphoto2
   sane
@@ -119,10 +110,18 @@ source=(
     gst-plugins-bad::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git
     gst-plugins-ugly::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git
     gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
+    https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86.tar.bz2
+    https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86_64.tar.bz2
+    https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
     proton-user_compat_data.patch
     dxvk-extraopts.patch
+)
+noextract=(
+    wine-gecko-${_geckover}-x86.tar.bz2
+    wine-gecko-${_geckover}-x86_64.tar.bz2
+    wine-mono-${_monover}-x86.tar.xz
 )
 sha256sums=(
     SKIP
@@ -144,15 +143,24 @@ sha256sums=(
     SKIP
     SKIP
     SKIP
-    SKIP #'9c3228b0fcf98da23403eb9fc52c4f7fa200d66c1ff598d4a5dfbb16708a1815'
+    '06a00cedf391ee07bbca0b3282e5c8ad9d950446d50648d2ff417716816fd1ab'
+    'ea5246e4c91d1aa1226658e1749b6e5d0e9353b52b14df79c4b93b6e61a3c59e'
+    'd1d116c15970f6d292e37c38cc5d95d60ba2d12ba8619b5edcbd4c5977b1b804'
+    'c5f3a67ed393c1e54fb1d0b40eb754f97cac3e231ee1dc22ccc212c3b5d22921'
     'ce7a59545f5a077e8f93684eddfdad39df807ffeb3a39d6054ca5d1c61644b04'
     '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
     'bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98'
 )
 
 prepare() {
-    [ ! -d build ] && mkdir build
+    [ ! -d gecko ] && mkdir gecko
+    cp "wine-gecko-${_geckover}-x86.tar.bz2" gecko/
+    cp "wine-gecko-${_geckover}-x86_64.tar.bz2" gecko/
 
+    [ ! -d mono ] && mkdir mono
+    cp "wine-mono-${_monover}-x86.tar.xz" mono/
+
+    [ ! -d build ] && mkdir build
     cd proton-ge-custom
     for submodule in ffmpeg openvr SPIRV-Headers Vulkan-Headers FAudio fonts/liberation-fonts; do
         git submodule init "${submodule}"
@@ -242,8 +250,8 @@ build() {
         WINEFSYNC=0 \
         NO_DXVK=0 \
         SYSTEM_GSTREAMER=0\
-        SYSTEM_GECKO=1 \
-        SYSTEM_MONO=1 \
+        SYSTEM_GECKO=0 \
+        SYSTEM_MONO=0 \
         make -j1 dist
 }
 
@@ -264,11 +272,6 @@ package() {
         -not -path "*/dist/share/default_pfx/*" \
         -exec chmod 644 {} \;
     chmod 755 "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/{proton,dist/bin/{msidb,wine{,64},wine{,64}-preloader,wineserver}}
-
-    ln -s /usr/share/wine/mono \
-        "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/share/wine/mono
-    ln -s /usr/share/wine/gecko \
-        "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/share/wine/gecko
 
     mkdir -p "$pkgdir/usr/share/licenses/${pkgname%-git}"
     mv "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/LICENSE{,.OFL} \
