@@ -4,7 +4,7 @@
 pkgname="lidarr-nightly"
 pkgver=0.7.1.1675
 pkgrel=1
-pkgdesc="Music downloader for usenet and torrents."
+pkgdesc="Music download automation for usenet and torrents."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/lidarr/Lidarr"
 license=("GPL3")

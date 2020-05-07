@@ -1,5 +1,5 @@
 pkgbase = lidarr-nightly
-	pkgdesc = Music downloader for usenet and torrents.
+	pkgdesc = Music download automation for usenet and torrents.
 	pkgver = 0.7.1.1675
 	pkgrel = 1
 	url = https://github.com/lidarr/Lidarr
