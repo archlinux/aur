@@ -1,2 +1,2 @@
 #!/bin/sh
-python2 /opt/flatcam/FlatCAM.pyo
+python /opt/flatcam/flatcam

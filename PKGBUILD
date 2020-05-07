@@ -1,37 +1,38 @@
+# This is an example PKGBUILD file. Use this as a start to creating your own,
+# and remove these comments. For more information, see 'man PKGBUILD'.
+# NOTE: Please fill out the license field for your package! If it is unknown,
+# then please put 'unknown'.
+
 # Maintainer: Jake <aur@ja-ke.tech>
+# Maintainer: Matthew Goulart <matthew.goulart@gmail.com>
 pkgname=flatcam
-_pkgname=FlatCAM
 pkgver=8.5
 pkgrel=1
-pkgdesc="Generates CNC gcode from 2D PCB files (Gerber/Excellon/SVG)"
+pkgdesc="Generates CNC gcode from 2D PCB files (Gerber/Excellon/SVG). Most recent, stable version (non-beta) from master branch"
 arch=('any')
 url="http://flatcam.org"
 license=('MIT')
-depends=('tk' 'python2-simplejson' 'python2-pyqt4' 'python2-scipy' 'python2-matplotlib' 'python2-shapely' 'python2-rtree' 'python2-svg.path' 'python2-sip-pyqt4')
+groups=()
+depends=('python-numpy' 'python-matplotlib' 'python-shapely' 'python-simplejson' 'python-rtree' 'python-scipy' 'python-svg.path')
 
-source=("https://bitbucket.org/jpcgt/$pkgname/downloads/$_pkgname-$pkgver.zip"
-		"$pkgname"
-		"$pkgname.desktop")
-md5sums=('4a758880b5122ff146c22a7ad0fa563f'
-         '80700f0bb07c959dc3019d9664472387'
-         '3ceea80a75a2bcfecc348a7399731c7c')
+commit='dae9cbb0471e693b95fd809ddd8bf11ff026ac67'
+commit_short='dae9cbb0471e'
 
+source=("https://bitbucket.org/jpcgt/flatcam/get/$commit.tar.gz"
+        "$pkgname.desktop"
+        "$pkgname")
 
-
-build() {
-	cd "$_pkgname-$pkgver"
-	python2 -O -m py_compile *.py
-}
-
+md5sums=('f502972a52090e8a8b98511314bd9d05'
+        '81a99468c82c717b694ab109805dea2b'
+        'd161e661f9fdbf0269e1632f9b203f9e')
 
 package() {
-	install -D -m755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-	install -D -m644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	cd "$_pkgname-$pkgver"
+    install -D -m755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -D -m644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+	cd jpcgt-flatcam-"$commit_short"
 	install -D -m644 "share/flatcam_icon256.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	
-	rm -r *.sh doc FlatCAM_GTK
-	mkdir -p "${pkgdir}/opt/$pkgname"
+    mkdir -p "${pkgdir}/opt/$pkgname"
 	cp -r * "${pkgdir}/opt/$pkgname"
 }
