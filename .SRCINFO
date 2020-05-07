@@ -7,6 +7,7 @@ pkgbase = mysterium-node
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3
+	makedepends = go
 	depends = openvpn>=2.4.0
 	depends = resolvconf
 	depends = ca-certificates
