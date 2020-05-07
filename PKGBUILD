@@ -12,6 +12,7 @@ makedepends=('git' 'esy' 'ragel' 'nodejs' 'wget' 'bzip2' 'esy' 'fontconfig' 'fus
               'libglvnd' 'libice' 'libpng' 'libsm' 'libx11' 'libxcursor' 'libxext' 'libxi' 'libxinerama' 'libxrandr'
               'libxt' 'libxxf86vm' 'm4' 'nasm' 'python2')
 provides=('onivim2')
+conflicts=('onivim2')
 options=('!strip')
 install='onivim2.install'
 source=("${pkgname}::git+https://github.com/onivim/oni2.git#branch=master"
