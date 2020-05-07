@@ -8,9 +8,9 @@
 
 pkgname=cfengine
 pkgver=3.15.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Automated suite of programs for configuring and maintaining Unix-like computers.'
-url='https://cfengine.org'
+url='https://cfengine.com'
 license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('lmdb' 'pcre' 'libxml2' 'pam' 'libyaml' 'curl' 'openssl')
