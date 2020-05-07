@@ -1,7 +1,7 @@
 pkgbase = soundwire
 	pkgdesc = Wirelessly transmit any audio from your PC to your Android phone or other PCs
 	pkgver = 3.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://georgielabs.net
 	install = soundwire.install
 	arch = x86_64
