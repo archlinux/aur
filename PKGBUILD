@@ -4,7 +4,7 @@
 pkgname="nzbhydra2"
 pkgver=2.20.6
 pkgrel=1
-pkgdesc="Search aggregator for newznab and torznab indexers"
+pkgdesc="Search aggregator for newznab and torznab indexers."
 arch=('any')
 url="https://github.com/theotherp/nzbhydra2"
 license=('Apache')
