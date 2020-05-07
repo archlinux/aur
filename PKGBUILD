@@ -22,7 +22,7 @@ package() {
   chmod a+x $appimage
   ./$appimage --appimage-extract
 
-  mkdir -p $pkgdir/usr/icons
+  mkdir -p $pkgdir/usr/share/icons
   cp squashfs-root/mikutter.png $pkgdir/usr/icons
 
   mkdir -p $pkgdir/usr/bin
@@ -34,4 +34,4 @@ package() {
 }
 
 md5sums=('6f6ea290ed6c3b376d0295f619f9ca30'
-         'b07ea3962a82b0da9d87216c88ed6264' )
+         'be88935513f84d6287cc084e1c50cd88' )
