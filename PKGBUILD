@@ -2,22 +2,9 @@
 
 # This PKGBUILD is managed at https://github.com/sudoforge/pkgbuilds
 
-# POST-INSTALLATION INSTRUCTIONS
-#
-# WeeChat is unable to source files from outside of a user's home directory.
-# Because of this limitation, this package *DOES NOT* make this plugin available
-# to WeeChat without end user interaction.
-#
-# Each user who wants to enable this plugin needs to create symlinks in the
-# WeeChat configuration directory for their user (by default, ~/.weechat). The
-# following command(s) will accomplish this:
-#
-#     $ ln -s /usr/lib/weechat/weemoji.json ~/.weechat/weemoji.json
-#     $ ln -s /usr/lib/weechat/python/wee_slack.py ~/.weechat/python/autoload/wee_slack.py
-
 pkgname=wee-slack-git
 pkgver=2.6.0.r0.gf224e2f
-pkgrel=1
+pkgrel=2
 pkgdesc="A WeeChat plugin for slack"
 arch=('any')
 url="https://github.com/wee-slack/${pkgname%-git}"
@@ -29,6 +16,7 @@ depends=(
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+install=$pkgname.install
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
