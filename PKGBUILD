@@ -23,7 +23,7 @@ pkgver() {
 
 backup=('etc/ap/ap.conf')
 
-package_ap(){
+package_ap-git(){
     cd "$pkgname"
     install -d ${pkgdir}/usr/lib/systemd/system/ ${pkgdir}/etc/ap/ ${pkgdir}/usr/share/ap/ ${pkgdir}/usr/bin/
     install -m 544 ap.service ${pkgdir}/usr/lib/systemd/system/
