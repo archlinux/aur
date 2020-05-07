@@ -5,7 +5,7 @@
 pkgname=lockdev
 pkgver=1.0.3_1.6
 _pkgver=1.0.3
-pkgrel=5
+pkgrel=6
 pkgdesc='Run-time shared library for locking devices, using _both_ FSSTND and SVr4 methods.'
 url='https://packages.qa.debian.org/l/lockdev.html'
 license=("GPL")
