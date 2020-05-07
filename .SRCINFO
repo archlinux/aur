@@ -14,6 +14,7 @@ pkgbase = gtsam-mkl
 	depends = intel-mkl
 	provides = gtsam=4.0.2
 	conflicts = gtsam
+	conflicts = gtsam-git
 	source = https://github.com/borglab/gtsam-mkl/archive/4.0.2.tar.gz
 	source = rename-included-libmetis.patch
 	source = skip-boost-debug-libs.patch
