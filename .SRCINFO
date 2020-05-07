@@ -1,18 +1,18 @@
 pkgbase = okteto-bin
 	pkgdesc = Build better applications by developing and testing your code directly in Kubernetes.
-	pkgver = 1.8.5
+	pkgver = 1.8.6
 	pkgrel = 1
 	url = https://github.com/okteto/okteto
 	arch = x86_64
 	arch = aarch64
 	license = Apache
 	optdepends = kubectl
-	provides = okteto=1.8.5
+	provides = okteto=1.8.6
 	conflicts = okteto
-	source_x86_64 = okteto::https://github.com/okteto/okteto/releases/download/1.8.5/okteto-Linux-x86_64
-	sha256sums_x86_64 = c11f2ca195e68039444acb24d16b144478e60b155cc610daffd905003fd99f32
-	source_aarch64 = okteto::https://github.com/okteto/okteto/releases/download/1.8.5/okteto-Linux-arm64
-	sha256sums_aarch64 = 56f01c29f906115aa8d6e0f1b9587e45fbbc192b39716f2460632d833381f0b1
+	source_x86_64 = okteto::https://github.com/okteto/okteto/releases/download/1.8.6/okteto-Linux-x86_64
+	sha256sums_x86_64 = 72b09fb5e8e426125e14bd0d9018dd6964beda846934eece6e71d4c6cd899ea6
+	source_aarch64 = okteto::https://github.com/okteto/okteto/releases/download/1.8.6/okteto-Linux-arm64
+	sha256sums_aarch64 = dad82df1dfc1b733cbc1a1a0d2ef211ccb8027817337c838ad7f62e638609c72
 
 pkgname = okteto-bin
 
