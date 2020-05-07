@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.6.10
+pkgver=5.6.11
 pkgrel=3
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -42,20 +42,22 @@ source=(
   "0000-sphinx-workaround.patch"
   "${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/220ca969817e3f7e64ed9730051f22cf6342c6ff.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/e2679f79fbee1061a331bb2afd4e7c050ec21f76.patch"
+  "0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch::https://github.com/archlinux/linux/commit/da707adaee9ff035c943178160be54a90de00cb3.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('7bdc96827a9db8de79cd13d74a1c5fe8915674f793e592387f2903cb225801b9'
+sha256sums=('d6dd6cbe99429f088eddb248abce7832e8f8e45eb072cbf0d0f86b5b87221baa'
             'SKIP'
             'b97b4b90f51876aaa4fa910e1ce801552f7e086aec3026a64f406581beae791b'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
             '2340925904efa3594cc65a7bae4fbff233d5d8bc7db605ce08acaca7450d2471'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
-            '152fec72ea5c3869af0dfd5196335e013768d025203d0ddd1a849ab1f423c81e')
+            '152fec72ea5c3869af0dfd5196335e013768d025203d0ddd1a849ab1f423c81e'
+            'af2a4ab817a9f5423f6d2e325bcf747914b1c0e2d3b1d806bc45604c03c9bb56')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}

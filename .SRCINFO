@@ -1,6 +1,6 @@
 pkgbase = linux-gc
 	pkgdesc = Linux
-	pkgver = 5.6.10
+	pkgver = 5.6.11
 	pkgrel = 3
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
@@ -15,23 +15,25 @@ pkgbase = linux-gc
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.10.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.10.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.11.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.11.tar.sign
 	source = config
 	source = 0000-sphinx-workaround.patch
 	source = bmq_v5.6-r3.patch::https://gitlab.com/alfredchen/bmq/raw/master/5.6/bmq_v5.6-r3.patch
 	source = enable_additional_cpu_optimizations-20191217.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20191217.tar.gz
-	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/220ca969817e3f7e64ed9730051f22cf6342c6ff.patch
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/e2679f79fbee1061a331bb2afd4e7c050ec21f76.patch
+	source = 0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch::https://github.com/archlinux/linux/commit/da707adaee9ff035c943178160be54a90de00cb3.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
-	sha256sums = 7bdc96827a9db8de79cd13d74a1c5fe8915674f793e592387f2903cb225801b9
+	sha256sums = d6dd6cbe99429f088eddb248abce7832e8f8e45eb072cbf0d0f86b5b87221baa
 	sha256sums = SKIP
 	sha256sums = b97b4b90f51876aaa4fa910e1ce801552f7e086aec3026a64f406581beae791b
 	sha256sums = 19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a
 	sha256sums = 2340925904efa3594cc65a7bae4fbff233d5d8bc7db605ce08acaca7450d2471
 	sha256sums = 7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5
 	sha256sums = 152fec72ea5c3869af0dfd5196335e013768d025203d0ddd1a849ab1f423c81e
+	sha256sums = af2a4ab817a9f5423f6d2e325bcf747914b1c0e2d3b1d806bc45604c03c9bb56
 
 pkgname = linux-gc
 	pkgdesc = The Linux kernel and modules with the BMQ CPU scheduler
@@ -40,11 +42,11 @@ pkgname = linux-gc
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-gc=5.6.10
+	provides = linux-gc=5.6.11
 
 pkgname = linux-gc-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel
 	depends = linux-gc
-	provides = linux-gc-headers=5.6.10
-	provides = linux-headers=5.6.10
+	provides = linux-gc-headers=5.6.11
+	provides = linux-headers=5.6.11
 
