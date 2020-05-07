@@ -1,6 +1,6 @@
 pkgbase = python-wadllib
 	pkgdesc = Python 3 library for navigating WADL files. The Web Application Description Language is an XML vocabulary for describing the capabilities of HTTP resources.
-	pkgver = 1.3.3
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://launchpad.net/wadllib
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = python-wadllib
 	depends = python-lazr-uri
 	depends = python-setuptools
 	depends = python-simplejson
-	source = python-wadllib-1.3.3.tar.gz::https://launchpad.net/wadllib/trunk/1.3.3/+download/wadllib-1.3.3.tar.gz
-	source = python-wadllib-1.3.3.tar.gz.asc::https://launchpad.net/wadllib/trunk/1.3.3/+download/wadllib-1.3.3.tar.gz.asc
+	source = python-wadllib-1.3.4.tar.gz::https://launchpad.net/wadllib/trunk/1.3.4/+download/wadllib-1.3.4.tar.gz
+	source = python-wadllib-1.3.4.tar.gz.asc::https://launchpad.net/wadllib/trunk/1.3.4/+download/wadllib-1.3.4.tar.gz.asc
 	validpgpkeys = AC0A4FF12611B6FCCF01C111393587D97D86500B
-	sha256sums = 1234cfe81e2cf223e56816f86df3aa18801d1770261865d93337b8b603be366e
+	sha256sums = e995691713d3c795d2b36278de8e212241870f46bec6ecba91794ea3cc5bd67d
 	sha256sums = SKIP
 
 pkgname = python-wadllib
