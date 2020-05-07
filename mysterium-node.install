@@ -1,0 +1,17 @@
+
+_nodeuser=mysterium-node
+_nodeuid=449
+_nodegroup=mysterium-node
+
+post_install(){
+echo "Adding user/group"
+groupadd -g ${_nodeuid} ${_nodegroup}
+useradd --system -u ${_nodeuid} -g ${_nodegroup} -G root -m -d /var/lib/mysterium-node -s /bin/false -c "Mysterium Node Daemon" ${_nodeuser}
+chown -R -L ${_nodeuser}:${_nodegroup} /var/log/mysterium-node/
+chown -R -L ${_nodeuser}:${_nodegroup} /var/run/mysterium-node/
+source /etc/default/mysterium-node
+}
+
+post_remove(){
+userdel --remove ${_nodeuser}
+}
