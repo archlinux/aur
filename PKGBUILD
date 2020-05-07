@@ -1,4 +1,5 @@
-# Maintainer: orumin <dev@orum.in>
+# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Contributor: orumin <dev@orum.in>
 
 pkgname=coccigrep
 pkgver=1.20
