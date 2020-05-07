@@ -1,7 +1,7 @@
-# Maintainer: Chris Hobbs (RX14) <chris@rx14.co.uk>
+# Maintainer: Stephanie Wilde-Hobbs (RX14) <steph@rx14.co.uk>
 
 pkgname=mcstatus
-pkgver=2.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Provides an easy way to query Minecraft servers for any information they can expose."
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python python-six python-click python-dnspython)
 makedepends=(python-setuptools)
 checkdepends=(python-mock python-nose)
 source=("https://github.com/Dinnerbone/mcstatus/archive/release-${pkgver}.tar.gz")
-sha256sums=('489b85ea4ff49efdd94d890b6408368556f63df9bc9f0a4d5dced13ece64e265')
+sha256sums=('13610efc5d2104dbebedacb9449a7795043d671866d578747c1e927f0f4ff979')
 
 prepare() {
   cd "${srcdir}/mcstatus-release-${pkgver}"
