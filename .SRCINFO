@@ -1,0 +1,16 @@
+pkgbase = amethyst-tools-git
+	pkgdesc = Command-line interface for the Amethyst engine to create and deploy game projects.
+	pkgver = r316.83ef9c6
+	pkgrel = 1
+	url = https://github.com/amethyst/tools
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = amethyst-tools
+	conflicts = amethyst-tools
+	source = amethyst-tools::git+https://github.com/amethyst/tools.git
+	md5sums = SKIP
+
+pkgname = amethyst-tools-git
+
