@@ -9,6 +9,7 @@ pkgbase = tktreectrl-git
 	makedepends = gcc
 	makedepends = git
 	makedepends = make
+	makedepends = sed
 	depends = tk
 	depends = libx11
 	provides = tktreectrl
