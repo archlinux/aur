@@ -1,6 +1,6 @@
 # # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=orchis-theme-git
-pkgver=r5.dfc4178
+pkgver=r8.959fbb7
 pkgrel=1
 pkgdesc="A Material Design theme for GNOME/GTK based desktop environments."
 arch=('any')
@@ -11,6 +11,7 @@ makedepends=('git' 'bc')
 optdepends=('tela-icon-theme: Recommended icon theme')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+options=('!strip')
 source=("${pkgname%-git}::git+https://github.com/vinceliuice/Orchis-theme.git")
 sha256sums=('SKIP')
 

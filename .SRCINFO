@@ -1,6 +1,6 @@
 pkgbase = orchis-theme-git
 	pkgdesc = A Material Design theme for GNOME/GTK based desktop environments.
-	pkgver = r5.dfc4178
+	pkgver = r8.959fbb7
 	pkgrel = 1
 	url = https://www.pling.com/p/1357889
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = orchis-theme-git
 	optdepends = tela-icon-theme: Recommended icon theme
 	provides = orchis-theme
 	conflicts = orchis-theme
+	options = !strip
 	source = orchis-theme::git+https://github.com/vinceliuice/Orchis-theme.git
 	sha256sums = SKIP
 
