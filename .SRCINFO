@@ -1,0 +1,15 @@
+pkgbase = afancontrol
+	pkgdesc = A Linux fan control daemon
+	pkgver = 2.0.0b5
+	pkgrel = 1
+	url = https://github.com/hbriese/afancontrol
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	depends = lm_sensors
+	optdepends = hddtemp: for measuring HDD/SSD temperatures
+	source = https://files.pythonhosted.org/packages/source/a/afancontrol/afancontrol-2.0.0b5.tar.gz
+	sha512sums = 9221b8fb095db16ce3868117ec22578900e9f7edd82dd786b49bfcb8dee0e1334fdf73f2227e176f7e12f1dae24cb74b0b5118f80bc0ea8b625b4bc9be3a0fca
+
+pkgname = afancontrol
+
