@@ -1,11 +1,12 @@
 pkgbase = vimix-cursors
 	pkgdesc = An X Cursor theme inspired by Material design and based on capitaine-cursors
 	pkgver = 2020.02.24
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/vinceliuice/Vimix-cursors
 	arch = any
 	license = GPL3
 	makedepends = inkscape
+	makedepends = python-cairosvg
 	makedepends = xorg-xcursorgen
 	options = !strip
 	source = vimix-cursors-2020.02.24.tar.gz::https://github.com/vinceliuice/Vimix-cursors/archive/2020-02-24.tar.gz
