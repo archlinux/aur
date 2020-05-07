@@ -5,8 +5,8 @@
 # Contributor: Albert De La Fuente Vigliotti <>
 
 pkgname=xiphos
-pkgver=4.2.0
-pkgrel=2
+pkgver=4.2.1
+pkgrel=1
 pkgdesc='A Bible study tool for GTK3'
 arch=('x86_64' 'i686')
 url='http://xiphos.org'
@@ -32,14 +32,8 @@ makedepends=('appstream-glib'
 provides=('gnomesword')
 conflicts=("${provides[@]}")
 replaces=("${provides[@]}")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/crosswire/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('6f4734747c9dd0de27b672c4720ff1613f3937d88fbc0fe8a0b77d8ee562a8fa')
-
-prepare() {
-    cd "$pkgname-$pkgver"
-    # TODO: Remove after upstream source package released (not the git archive)
-    echo $pkgver > cmake/source_version.txt
-}
+source=("https://github.com/crosswire/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
+sha256sums=('d34353f62224302c924757fca55ff0fc19f96815f20b893279ceef3d7d054128')
 
 build() {
     cd "$pkgname-$pkgver"

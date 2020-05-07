@@ -1,7 +1,7 @@
 pkgbase = xiphos
 	pkgdesc = A Bible study tool for GTK3
-	pkgver = 4.2.0
-	pkgrel = 2
+	pkgver = 4.2.1
+	pkgrel = 1
 	url = http://xiphos.org
 	arch = x86_64
 	arch = i686
@@ -27,8 +27,8 @@ pkgbase = xiphos
 	provides = gnomesword
 	conflicts = gnomesword
 	replaces = gnomesword
-	source = xiphos-4.2.0.tar.gz::https://github.com/crosswire/xiphos/archive/4.2.0.tar.gz
-	sha256sums = 6f4734747c9dd0de27b672c4720ff1613f3937d88fbc0fe8a0b77d8ee562a8fa
+	source = https://github.com/crosswire/xiphos/releases/download/4.2.1/xiphos-4.2.1.tar.xz
+	sha256sums = d34353f62224302c924757fca55ff0fc19f96815f20b893279ceef3d7d054128
 
 pkgname = xiphos
 
