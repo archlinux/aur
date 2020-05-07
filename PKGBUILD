@@ -3,7 +3,7 @@
 # Contributor: Gabriel B. Casella <gbc921@gmail.com>
 pkgname=soundwire
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Wirelessly transmit any audio from your PC to your Android phone or other PCs"
 url="http://georgielabs.net"
 arch=('x86_64')
@@ -13,12 +13,12 @@ optdepends=('pavucontrol')
 install='soundwire.install'
 
 source=("http://georgielabs.altervista.org/SoundWire_Server_linux64.tar.gz")
-sha256sums=('b6cba9cea099408fcad076268d9c8ad03c5eb16e9e95fb9cad7219d06ca8e961')
+sha256sums=('d60f2a5c0750cb89bc330d22ac61116327887c53a87aac1e0dca23ee634683cd')
 
 package() {
   cd "${srcdir}/SoundWireServer"
 
-  sed -i 's/sw-icon.xpm/soundwire/' SoundWire-Server.desktop
+  sed -i 's/sw-icon/soundwire/' SoundWire-Server.desktop
 
   install -Dm644 license.txt "$pkgdir/usr/share/doc/$pkgname/license.txt"
   install -Dm644 opus_license.txt "$pkgdir/usr/share/doc/$pkgname/opus_license.txt"

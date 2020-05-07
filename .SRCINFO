@@ -11,7 +11,7 @@ pkgbase = soundwire
 	depends = curl
 	optdepends = pavucontrol
 	source = http://georgielabs.altervista.org/SoundWire_Server_linux64.tar.gz
-	sha256sums = b6cba9cea099408fcad076268d9c8ad03c5eb16e9e95fb9cad7219d06ca8e961
+	sha256sums = d60f2a5c0750cb89bc330d22ac61116327887c53a87aac1e0dca23ee634683cd
 
 pkgname = soundwire
 
