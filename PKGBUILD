@@ -1,7 +1,7 @@
 # Maintainer: Timo Wilken <timo.21.wilken+aur@gmail.com>
 _pkgname=akonadi-decsync-resource
 pkgname="$_pkgname-git"
-pkgver=r32.ff2fbad
+pkgver=r34.13145da
 pkgrel=1
 pkgdesc="Getting KDE's Akonadi to use DecSync for contacts, calendars and RSS."
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(qt5-base ki18n libdecsync libakonadi kconfig)
 optdepends=()
 makedepends=(cmake extra-cmake-modules)
 source=("git+https://github.com/TimoWilken/$_pkgname")
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
