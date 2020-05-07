@@ -2,7 +2,7 @@
 
 pkgname=blinky
 pkgver=0.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="AUR-helper with minimal hassle"
 arch=(any)
 url="https://github.com/cherti/blinky"
@@ -10,7 +10,7 @@ license=('GPLv3')
 depends=('python' 'pyalpm' 'python-requests' 'python-termcolor' 'python-pyxdg' 'colordiff')
 options=(!emptydirs)
 source=('https://github.com/cherti/blinky/archive/v0.20.1.tar.gz')
-sha256sums=('d95e175c659ddbd8c71ef2167fef5a040708388cbaaf628c362621ecc44bd18b')
+sha256sums=('68f4a41d5a74257423ce0d6d3be9ec009ff07aa865ea9f758fc9163216933e19')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
