@@ -1,0 +1,14 @@
+pkgbase = neovim-argtextobj-opt-git
+	pkgdesc = Text-object like motion for arguments.
+	pkgver = 3.f3fbe42
+	pkgrel = 1
+	url = https://github.com/vim-scripts/argtextobj.vim
+	arch = any
+	license = custom:vim
+	makedepends = git
+	depends = neovim
+	source = argtextobj::git+https://github.com/vim-scripts/argtextobj.vim.git
+	sha256sums = SKIP
+
+pkgname = neovim-argtextobj-opt-git
+
