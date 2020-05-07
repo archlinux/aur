@@ -1,8 +1,9 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=fcitx-chewing
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Fcitx Wrapper for chewing'
 arch=('x86_64')
 url="https://github.com/fcitx/fcitx-chewing"
@@ -17,11 +18,17 @@ validpgpkeys=('2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9') # Weng Xuetian <wengxt
 build() {
   cd ${pkgname}-${pkgver}
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .
-  make
+  # Bring in -D_FORTIFY_SOURCE=2
+  export CFLAGS+=" $CPPFLAGS"
+  export CXXLAGS+=" $CPPFLAGS"
+
+  cmake -B build -S . \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=None
+  make -C build
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}/build
   make DESTDIR="$pkgdir" install
 }
