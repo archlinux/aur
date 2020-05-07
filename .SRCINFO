@@ -1,0 +1,15 @@
+pkgbase = polkadot-bin
+	pkgdesc = Binary builds of the Polkadot Node Implementation
+	pkgver = 0.7.32
+	pkgrel = 1
+	url = https://github.com/paritytech/polkadot
+	arch = x86_64
+	license = GNU
+	provides = polkadot
+	source = https://github.com/paritytech/polkadot/releases/download//v0.7.32/polkadot
+	source = https://github.com/paritytech/polkadot/releases/download//v0.7.32/polkadot.asc
+	sha256sums = c34d63e5d80994b2123a3a0b7c5a81ce8dc0f257ee72064bf06654c2b93e31c9
+	sha256sums = 8f415b6975812b7675479b86f08e2c2935f64096e72daf6234ebc34be4df04f7
+
+pkgname = polkadot-bin
+
