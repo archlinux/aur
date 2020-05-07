@@ -1,14 +1,14 @@
 pkgbase = tuitube
 	pkgdesc = minimal tui youtube (invidious) frontend made in c++
-	pkgver = 1.4
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://github.com/djt3/tuitube/
 	arch = any
 	license = GPL3
 	depends = libcurlpp
 	depends = mpv
-	source = https://github.com/djt3/tuitube/archive/v1.4.tar.gz
-	md5sums = 3de8b3f10d0f2ae97c4143c1849dc770
+	source = https://github.com/djt3/tuitube/archive/v1.4.5.tar.gz
+	md5sums = a42e2f808d619438f14cea4120070a2e
 
 pkgname = tuitube
 
