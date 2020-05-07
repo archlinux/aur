@@ -1,7 +1,7 @@
 # Maintainer: Timo Wilken <timo.21.wilken+aur@gmail.com>
 _pkgname=akonadi-decsync-resource
 pkgname="$_pkgname-git"
-pkgver=r35.4fef3d4
+pkgver=r37.da1614a
 pkgrel=1
 pkgdesc="Getting KDE's Akonadi to use DecSync for contacts, calendars and RSS."
 arch=(x86_64)
