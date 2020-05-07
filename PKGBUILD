@@ -9,7 +9,7 @@
 
 pkgname=('llvm7' 'llvm7-libs')
 pkgver=7.1.0
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
@@ -18,11 +18,13 @@ makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
 options=('staticlibs')
 source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
         rusty-discriminator-thingy.patch
-        add-discriminator-to-debuginfo-test.patch)
+        add-discriminator-to-debuginfo-test.patch
+        fix-go-tests.patch)
 sha256sums=('1bcc9b285074ded87b88faaedddb88e6b5d6c331dfcfb57d7f3393dd622b3764'
             'SKIP'
             '4abaef845abb899628deb62a3f184fb8433555620648150dc346a74ef134fd68'
-            '1d2ea3a07e94f4c826706a452e93ed8a2301b5eed5715d22eab19a5ea3f3d0a7')
+            '1d2ea3a07e94f4c826706a452e93ed8a2301b5eed5715d22eab19a5ea3f3d0a7'
+            '7987f9017fae9ac6c5dbae694722f2ebd8daa310475e0da3202717ca5d02ee82')
 validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D') # Hans Wennborg <hans@chromium.org>
 validpgpkeys+=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
 
@@ -34,6 +36,7 @@ prepare() {
   # https://github.com/rust-lang/rust/issues/54614
   patch -Np1 -i ../rusty-discriminator-thingy.patch
   patch -Np1 -i ../add-discriminator-to-debuginfo-test.patch
+  patch -Np1 -i ../fix-go-tests.patch
 }
 
 build() {
