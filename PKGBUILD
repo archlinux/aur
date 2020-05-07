@@ -6,7 +6,7 @@ pkgname=xf86-video-openchrome
 #_commit=8c819ed # 7 digits # = 0.6.0 RC1
 #pkgver=0.5.0+279+g8c819ed
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="X.Org Openchrome drivers"
 arch=(x86_64)
 license=('custom')
