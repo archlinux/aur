@@ -4,7 +4,7 @@
 pkgname=coccigrep
 pkgver=1.20
 pkgrel=1
-pkgdesc='coccigrep is a semantic grep for the C language based on coccinelle'
+pkgdesc='Semantic grep for the C language based on coccinelle'
 arch=('any')
 url='http://home.regit.org/software/coccigrep/'
 license=('GPL3')
