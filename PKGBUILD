@@ -1,7 +1,7 @@
 # Maintainer: Alexander Mcmillan <linuxguy93@gmail.com>
 
 pkgbase=linux-archmm
-pkgver=5.6.8.arch1
+pkgver=5.6.11.arch1
 pkgrel=1
 pkgdesc='Linux with the BMQ CPU Scheduler and Multimedia Patches'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -16,10 +16,10 @@ makedepends=(
 options=('!strip')
 
 ## Enable 1000HZ timer (UNCOMMENT)
-#_1k_HZ_ticks=y
+_1k_HZ_ticks=y
 
 ## Enable Setup Menu (UNCOMMENT)
-#_menuconfig=y
+_menuconfig=y
 
 ## Linux Sources
 _srcname=archlinux-linux
@@ -66,6 +66,10 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
   
+  ### GCC Optimization Patch
+  msg2 "Patching with Graysky's additional gcc CPU optimizatons..."
+  patch -Np1 -i "$srcdir/$_reponame_gcc_patch/$_gcc_patch_name"
+  
   ## Apply BMQ CPU Scheduler Patch
   msg2 "Applying patch ${_bmq_patch}..."
   patch -Np1 -i "$srcdir/${_bmq_patch}"
@@ -77,10 +81,6 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
-  
-  ### GCC Optimization Patch
-  msg2 "Patching with Graysky's additional gcc CPU optimizatons..."
-  patch -Np1 -i "$srcdir/$_reponame_gcc_patch/$_gcc_patch_name"
   
   ### Optionally Set Tickrate To 1000
   if [ -n "${_1k_HZ_ticks}" ]; then
