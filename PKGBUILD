@@ -1,4 +1,4 @@
-# Maintainer:  Jah Way <jahway603 at protonmail dot com>
+# Maintainer: Jah Way <jahway603 at protonmail dot com>
 
 # from the official repos:
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
@@ -9,7 +9,7 @@
 pkgbase=gradle5
 pkgname=('gradle5' 'gradle5-doc' 'gradle5-src')
 pkgver=5.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful build system for the JVM'
 url='https://gradle.org/'
 arch=('any')
