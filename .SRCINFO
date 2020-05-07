@@ -1,6 +1,6 @@
 pkgbase = shortwave-git
 	pkgdesc = Find and listen to internet radio stations
-	pkgver = 1.0.1.r21.gf38f79b
+	pkgver = 1.0.1.r34.g5454d6e
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Shortwave
 	arch = i686
@@ -8,7 +8,6 @@ pkgbase = shortwave-git
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	makedepends = appstream-glib
 	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = libdazzle
@@ -19,7 +18,7 @@ pkgbase = shortwave-git
 	depends = libhandy
 	provides = shortwave
 	conflicts = shortwave
-	source = git+https://gitlab.gnome.org/World/Shortwave.git
+	source = shortwave::git+https://gitlab.gnome.org/World/Shortwave.git
 	sha256sums = SKIP
 
 pkgname = shortwave-git
