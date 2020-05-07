@@ -1,7 +1,7 @@
 pkgbase = python-sockjs
 	pkgdesc = SockJS server implementation for aiohttp.
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aio-libs/sockjs/
 	arch = any
 	license = Apache
@@ -9,7 +9,9 @@ pkgbase = python-sockjs
 	makedepends = git
 	depends = python
 	source = git+https://github.com/aio-libs/sockjs#tag=v0.10.0
+	source = race.patch::https://github.com/aio-libs/sockjs/commit/63f25ed43f281d21b9b88c79926d5258655bb8f4.patch
 	sha256sums = SKIP
+	sha256sums = d524608e1271e7b3a37efe260fa034556a53a0bbaef0d6fbccfb174a32b77a90
 
 pkgname = python-sockjs
 
