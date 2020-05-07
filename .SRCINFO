@@ -1,0 +1,16 @@
+pkgbase = kim4
+	pkgdesc = Kde Image Menu to compress, resize, convert, rename and much more
+	pkgver = 0.9.5
+	pkgrel = 7
+	url = https://www.kde-apps.org/content/show.php?content=11505
+	arch = any
+	license = GPL
+	depends = bash
+	depends = imagemagick
+	depends = dolphin
+	depends = kdialog
+	source = http://bouveyron.free.fr/kim/release/kim4-0.9.5.tar.gz
+	md5sums = c7934ab0dbf988da5f60d9c4cbf97dd5
+
+pkgname = kim4
+
