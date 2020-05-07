@@ -1,32 +1,25 @@
+# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 # Maintainer: orumin <dev@orum.in>
 
-_gitroot=coccigrep
 pkgname=coccigrep-git
-provides=('coccigrep')
-conflict=('coccigrep')
-pkgver=v1.16.r1.g6d70e56
+pkgver=1.20
 pkgrel=1
-pkgdesc='coccigrep is a semantic grep for the C language based on coccinelle. Git HEAD Package version'
+pkgdesc='Semantic grep for the C language based on coccinelle. Git version'
 arch=('any')
-url='http://http://home.regit.org/software/coccigrep/'
+url='http://home.regit.org/software/coccigrep/'
 license=('GPL3')
-depends=('python-setuptools')
+depends=('coccinelle')
 makedepends=('python-setuptools')
-source=("git+https://github.com/regit/$_gitroot.git")
+source=('git+https://github.com/regit/coccigrep')
 md5sums=('SKIP')
+provides=("coccigrep=${pkgver%+*}")
+conflict=('coccigrep')
 
 pkgver() {
-  cd "$_gitroot"
-  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
-build() {
-  cd "$srcdir"
+  git -C coccigrep describe --abbrev=7 --tags | sed 's/^v//; s/-/+/; s/-/./'
 }
 
 package() {
-  cd "$srcdir/coccigrep"
-
+  cd coccigrep
   python3 setup.py install --prefix=/usr --root="$pkgdir" --optimize=0
-
 }
