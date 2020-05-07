@@ -1,7 +1,7 @@
 # Maintainer: Victor Perevozchikov webmaster@victor3d.com.br
 pkgname=obmenu2-git
 pkgver=r20.d5261ef
-pkgrel=1
+pkgrel=2
 pkgdesc='Openbox menu editor. Written in Python 3 and GTK3'
 arch=('any')
 url="https://github.com/0x10/obmenu2"

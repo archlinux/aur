@@ -1,7 +1,7 @@
 pkgbase = obmenu2-git
 	pkgdesc = Openbox menu editor. Written in Python 3 and GTK3
 	pkgver = r20.d5261ef
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0x10/obmenu2
 	arch = any
 	license = MIT
