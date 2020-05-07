@@ -1,13 +1,14 @@
 # Maintainer: nycex <nycex / cccp.org>
 _pkgbasename=zls
-pkgname=${_pkgbasename}-git
+pkgname=${_pkgbasename}-master-data-git
 pkgrel=1
-pkgver=r4.999a365
-pkgdesc="Zig LSP implementation + Zig Language Server"
+pkgver=r32.042b47a
+pkgdesc="Zig LSP implementation + Zig Language Server (with the master dataset)"
 arch=('any')
 url="https://github.com/SuperAuguste/${_pkgbasename}"
 license=('MIT')
 depends=('zig')
+conflicts=('zls-git')
 source=(git+https://github.com/SuperAuguste/${_pkgbasename})
 sha256sums=('SKIP')
 
@@ -18,7 +19,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgbasename}"
-	zig build -Drelease-fast
+	zig build -Drelease-fast -Ddata_version=master
 }
 
 package() {
