@@ -31,5 +31,6 @@ build() {
 }
 
 package() {
+	cd "$srcdir/$pkgname"
 	install -Dm 755 target/release/torrentfind -t "${pkgdir}/usr/bin"
 }
