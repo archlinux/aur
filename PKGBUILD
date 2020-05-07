@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt-bin
 pkgver=3.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Portuguese Citizen Card Application - pre compiled binaries version"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -41,7 +41,7 @@ package() {
 	mkdir -p "${pkgdir}/usr/lib"
 	
 	# Move files into place
-	mv "${srcdir}"/usr/local/share "${pkgdir}/usr/local/"
+	mv "${srcdir}"/usr/local/{share,bin} "${pkgdir}/usr/local/"
 	mv "${srcdir}"/usr/local/* "${pkgdir}/usr/"
 	mv "${srcdir}"/usr/share/* "${pkgdir}/usr/share/"
 
