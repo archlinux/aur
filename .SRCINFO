@@ -1,5 +1,5 @@
 pkgbase = unifi-video
-	pkgdesc = Centralized management system for Ubiquiti UniFi Surveillance Cameras
+	pkgdesc = Centralized management system for Ubiquiti UniFi surveillance cameras.
 	pkgver = 3.10.11
 	pkgrel = 1
 	url = https://www.ubnt.com/

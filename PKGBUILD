@@ -3,7 +3,7 @@
 pkgname=unifi-video
 pkgver=3.10.11
 pkgrel=1
-pkgdesc="Centralized management system for Ubiquiti UniFi Surveillance Cameras"
+pkgdesc="Centralized management system for Ubiquiti UniFi surveillance cameras."
 arch=('x86_64')
 url="https://www.ubnt.com/"
 license=('custom')
