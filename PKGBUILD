@@ -2,7 +2,7 @@
 
 pkgname=crestic
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Configurable restic wrapper"
 arch=('any')
 url="https://github.com/nils-werner/$pkgname"
