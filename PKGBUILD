@@ -3,7 +3,7 @@
 pkgname='lidarr'
 pkgver='0.7.1.1381'
 pkgrel=1
-pkgdesc='Music downloader for usenet and torrents.'
+pkgdesc='Music download automation for usenet and torrents.'
 arch=(any)
 url='https://github.com/lidarr/Lidarr'
 license=('GPL3')
