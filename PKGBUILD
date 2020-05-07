@@ -18,6 +18,7 @@ validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
 
 build() {
   cd ${pkgbase}-${pkgver}
+
   ./configure \
     --prefix=/usr \
     --disable-fd-passing \
@@ -28,14 +29,18 @@ build() {
 
 check() {
   cd ${pkgbase}-${pkgver}
+
   make check
 }
 
 package_gpgme() {
   depends=('libgpg-error' 'gnupg>=2')
   options=('!emptydirs')
+  provides=('libgpgme.so'
+            'libgpgmepp.so')
 
   cd ${pkgbase}-${pkgver}
+
   make DESTDIR="${pkgdir}" install
 
   # split qgpgme
@@ -49,6 +54,7 @@ package_qgpgme() {
   depends=('gpgme' 'qt5-base')
 
   cd ${pkgbase}-${pkgver}/lang/qt
+
   make DESTDIR="${pkgdir}" install
 }
 
@@ -57,5 +63,6 @@ package_python-gpgme() {
   depends=('gpgme' 'python')
 
   cd ${pkgbase}-${pkgver}/lang/python
+
   make DESTDIR="${pkgdir}" install
 }
