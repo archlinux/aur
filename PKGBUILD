@@ -1,14 +1,14 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=('python-ttkthemes')
-pkgver=2.4.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Group of themes for the ttk extenstions for Tkinter "
 _name=ttkthemes
 arch=('any')
 url="https://github.com/TkinterEP/ttkthemes"
 license=('GPL3')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/RedFantom/$_name/archive/${pkgver}.tar.gz")
-sha512sums=('624ba23fac0ea294b7afea362285d7f4d93dccf59d8cbf47ee7194f0d2bf8482e314d4a33fe28dc4e51e39d0d053ff0f05190a15efa4731f0106a35db967b017')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha512sums=('dce673513d4ac1a2612d5eefd0a793410f2f34f2cb886cff82b382d902ecf0323679e6a38573582dc9f5bdd10e139ec7632d9a7f9b2ffa3f920b5c38b1c3256d')
 makedepends=('python-setuptools')
 depends=('tk' 'python-pillow')
 
