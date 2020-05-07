@@ -1,0 +1,17 @@
+pkgbase = bibata-extra-cursor-git
+	pkgdesc = Extra Material Based Cursor Theme
+	pkgver = r44.7cdac56
+	pkgrel = 1
+	url = https://github.com/KaizIqbal/Bibata_Extra_Cursor
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	makedepends = inkscape
+	makedepends = xorg-xcursorgen
+	makedepends = python-pillow
+	source = git+https://github.com/KaizIqbal/Bibata_Extra_Cursor.git
+	sha256sums = SKIP
+
+pkgname = bibata-extra-cursor-git
+
