@@ -1,8 +1,8 @@
 pkgbase = cfengine
 	pkgdesc = Automated suite of programs for configuring and maintaining Unix-like computers.
 	pkgver = 3.15.1
-	pkgrel = 1
-	url = http://www.cfengine.org
+	pkgrel = 2
+	url = https://cfengine.org
 	install = cfengine.install
 	arch = i686
 	arch = x86_64
