@@ -1,0 +1,14 @@
+pkgbase = python-teletype
+	pkgdesc = A high-level cross platform Python tty library
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/jkwill87/teletype
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = python-teletype-1.0.4.tar.gz::https://files.pythonhosted.org/packages/7f/9d/91222889ecf831e003f7eef5f3ebe81c35f3335357e13c1ea1d070c9768b/teletype-1.0.4.tar.gz
+	sha256sums = b4432cceb3dcdc14bf253ea2ed89b1237ec6860a6428d674a01691679e58151d
+
+pkgname = python-teletype
+
