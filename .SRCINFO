@@ -12,7 +12,7 @@ pkgbase = mikutter
 	source = https://mikutter.hachune.net/bin/mikutter-4.0.5-x86_64.AppImage
 	source = mikutter.desktop
 	md5sums = 6f6ea290ed6c3b376d0295f619f9ca30
-	md5sums = 82f7f4d37380871d3fde314fe51cf406
+	md5sums = b07ea3962a82b0da9d87216c88ed6264
 
 pkgname = mikutter
 
