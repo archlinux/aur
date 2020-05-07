@@ -3,7 +3,7 @@
 pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
-pkgver='0.1.5'
+pkgver='0.1.6'
 pkgrel='0'
 epoch=
 arch=('i686' 'x86_64')
@@ -153,6 +153,7 @@ package() {
     install -m 644 "support/profiles/gaming.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/gradient-noise.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/batique.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/profile1.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile2.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile3.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile4.profile" "$pkgdir/var/lib/eruption/profiles/"
