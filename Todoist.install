@@ -17,4 +17,3 @@ post_remove() {
 	rm -f '/usr/bin/todoist'
 	update-desktop-database -q
 }
-
