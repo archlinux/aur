@@ -1,6 +1,6 @@
 pkgbase = djgpp-gcc
 	pkgdesc = GCC for the djgpp cross-compiler
-	pkgver = 9.3.0
+	pkgver = 10.1.0
 	pkgrel = 1
 	url = http://gcc.gnu.org
 	arch = i686
@@ -13,18 +13,20 @@ pkgbase = djgpp-gcc
 	depends = libmpc
 	depends = djgpp-binutils>=2.30
 	depends = djgpp-djcrx
+	depends = gcc-ada
 	optdepends = djgpp-djcrx: headers and utilities
+	optdepends = djgpp-djcrx-bootstrap: first build of djgpp-gcc before djgpp-djcrx is built
 	options = !strip
 	options = staticlibs
 	options = !emptydirs
-	source = https://ftp.gnu.org/gnu/gcc/gcc-9.3.0/gcc-9.3.0.tar.xz
-	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
+	source = https://ftp.gnu.org/gnu/gcc/gcc-10.1.0/gcc-10.1.0.tar.xz
+	source = http://isl.gforge.inria.fr/isl-0.20.tar.bz2
 	source = lto.patch
 	source = gcc-djgpp.diff
-	sha256sums = 71e197867611f6054aa1119b13a0c0abac12834765fe2d81f35ac57f84f742d1
-	sha256sums = 6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b
+	sha256sums = b6898a23844b656f1b68691c5c012036c2e694ac4b53a8918d4712ad876e7ea2
+	sha256sums = b587e083eb65a8b394e833dea1744f21af3f0e413a448c17536b5549ae42a4c2
 	sha256sums = c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0
-	sha256sums = 9c625e1ed54d9d6c212977676c582d01888dd2eca5af9b1d4254d1be3479273f
+	sha256sums = 16da71754faa9a0a4113f6e4d0e3662f2307ad0258ef0e56a81318f2e5394143
 
 pkgname = djgpp-gcc
 
