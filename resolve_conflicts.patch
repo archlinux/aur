@@ -1,0 +1,512 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 400eef7..637b75d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ 
+-project(breezesierra)
++project(breezesierrajomada)
+ set(PROJECT_VERSION "0.1")
+ set(PROJECT_VERSION_MAJOR 0)
+ 
+@@ -93,13 +93,13 @@ ki18n_wrap_ui(sierrabreeze_config_PART_FORMS_HEADERS ${sierrabreeze_config_PART_
+     # ${breezedecoration_SRCS}
+     # ${breezedecoration_config_SRCS}
+     # ${breezedecoration_config_PART_FORMS_HEADERS})
+-add_library(sierrabreeze MODULE
++add_library(sierrabreezejomada MODULE
+     ${sierrabreeze_SRCS}
+     ${sierrabreeze_config_SRCS}
+     ${sierrabreeze_config_PART_FORMS_HEADERS})
+ 
+ # target_link_libraries(breezedecoration
+-target_link_libraries(sierrabreeze
++target_link_libraries(sierrabreezejomada
+     PUBLIC
+         Qt5::Core
+         Qt5::Gui
+@@ -115,14 +115,14 @@ target_link_libraries(sierrabreeze
+ 
+ if(BREEZE_HAVE_X11)
+   # target_link_libraries(breezedecoration
+-  target_link_libraries(sierrabreeze
++  target_link_libraries(sierrabreezejomada
+     PUBLIC
+       Qt5::X11Extras
+       XCB::XCB)
+ endif()
+ 
+ 
+-install(TARGETS sierrabreeze DESTINATION ${PLUGIN_INSTALL_DIR}/org.kde.kdecoration2)
+-install(FILES config/sierrabreezeconfig.desktop DESTINATION  ${SERVICES_INSTALL_DIR})
++install(TARGETS sierrabreezejomada DESTINATION ${PLUGIN_INSTALL_DIR}/org.kde.kdecoration2)
++install(FILES config/sierrabreezejomadaconfig.desktop DESTINATION  ${SERVICES_INSTALL_DIR})
+ # install(TARGETS breezedecoration DESTINATION ${PLUGIN_INSTALL_DIR}/org.kde.kdecoration2)
+ # install(FILES config/breezedecorationconfig.desktop DESTINATION  ${SERVICES_INSTALL_DIR})
+diff --git a/breeze.h b/breeze.h
+index 282459e..df0a4c0 100644
+--- a/breeze.h
++++ b/breeze.h
+@@ -26,7 +26,7 @@
+ #include <QSharedPointer>
+ #include <QList>
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+     //* convenience typedefs
+     using InternalSettingsPtr = QSharedPointer<InternalSettings>;
+diff --git a/breeze.json b/breeze.json
+index e8635b8..c525277 100644
+--- a/breeze.json
++++ b/breeze.json
+@@ -37,8 +37,8 @@
+         "Description[zh_CN]": "窗口装饰使用等离子桌面微风视觉主题",
+         "Description[zh_TW]": "使用 Plasma 桌面 Breeze 視覺樣式的視窗裝飾",
+         "EnabledByDefault": true,
+-        "Id": "org.kde.sierrabreeze",
+-        "Name": "Sierra Breeze",
++        "Id": "org.kde.sierrabreezejomada",
++        "Name": "Sierra Breeze Jomada",
+         "Name[ar]": "نسيم",
+         "Name[ca@valencia]": "Brisa",
+         "Name[ca]": "Brisa",
+@@ -63,7 +63,7 @@
+     },
+     "org.kde.kdecoration2": {
+         "blur": true,
+-        "defaultTheme": "Breeze Sierra",
++        "defaultTheme": "Breeze Sierra Jomada",
+         "kcmodule": true
+     }
+ }
+diff --git a/breezebutton.cpp b/breezebutton.cpp
+index 5006c9f..8836f96 100644
+--- a/breezebutton.cpp
++++ b/breezebutton.cpp
+@@ -27,7 +27,7 @@
+ 
+ #include <QPainter>
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     using KDecoration2::ColorRole;
+@@ -87,27 +87,27 @@ namespace SierraBreeze
+ 
+                 case DecorationButtonType::Close:
+                 b->setVisible( d->client().data()->isCloseable() );
+-                QObject::connect(d->client().data(), &KDecoration2::DecoratedClient::closeableChanged, b, &SierraBreeze::Button::setVisible );
++                QObject::connect(d->client().data(), &KDecoration2::DecoratedClient::closeableChanged, b, &SierraBreezeJomada::Button::setVisible );
+                 break;
+ 
+                 case DecorationButtonType::Maximize:
+                 b->setVisible( d->client().data()->isMaximizeable() );
+-                QObject::connect(d->client().data(), &KDecoration2::DecoratedClient::maximizeableChanged, b, &SierraBreeze::Button::setVisible );
++                QObject::connect(d->client().data(), &KDecoration2::DecoratedClient::maximizeableChanged, b, &SierraBreezeJomada::Button::setVisible );
+                 break;
+ 
+                 case DecorationButtonType::Minimize:
+                 b->setVisible( d->client().data()->isMinimizeable() );
+-                QObject::connect(d->client().data(), &KDecoration2::DecoratedClient::minimizeableChanged, b, &SierraBreeze::Button::setVisible );
++                QObject::connect(d->client().data(), &KDecoration2::DecoratedClient::minimizeableChanged, b, &SierraBreezeJomada::Button::setVisible );
+                 break;
+ 
+                 case DecorationButtonType::ContextHelp:
+                 b->setVisible( d->client().data()->providesContextHelp() );
+-                QObject::connect(d->client().data(), &KDecoration2::DecoratedClient::providesContextHelpChanged, b, &SierraBreeze::Button::setVisible );
++                QObject::connect(d->client().data(), &KDecoration2::DecoratedClient::providesContextHelpChanged, b, &SierraBreezeJomada::Button::setVisible );
+                 break;
+ 
+                 case DecorationButtonType::Shade:
+                 b->setVisible( d->client().data()->isShadeable() );
+-                QObject::connect(d->client().data(), &KDecoration2::DecoratedClient::shadeableChanged, b, &SierraBreeze::Button::setVisible );
++                QObject::connect(d->client().data(), &KDecoration2::DecoratedClient::shadeableChanged, b, &SierraBreezeJomada::Button::setVisible );
+                 break;
+ 
+                 case DecorationButtonType::Menu:
+diff --git a/breezebutton.h b/breezebutton.h
+index 584c449..b5256f7 100644
+--- a/breezebutton.h
++++ b/breezebutton.h
+@@ -29,7 +29,7 @@
+ #include <QImage>
+ #include <QPropertyAnimation>
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     class Button : public KDecoration2::DecorationButton
+diff --git a/breezedecoration.cpp b/breezedecoration.cpp
+index cbef95c..20a7631 100644
+--- a/breezedecoration.cpp
++++ b/breezedecoration.cpp
+@@ -53,14 +53,14 @@
+ 
+ K_PLUGIN_FACTORY_WITH_JSON(
+     // BreezeDecoFactory,
+-    BreezeSierraDecoFactory,
++    BreezeSierraJomadaDecoFactory,
+     "breeze.json",
+-    registerPlugin<SierraBreeze::Decoration>();
+-    registerPlugin<SierraBreeze::Button>(QStringLiteral("button"));
+-    registerPlugin<SierraBreeze::ConfigWidget>(QStringLiteral("kcmodule"));
++    registerPlugin<SierraBreezeJomada::Decoration>();
++    registerPlugin<SierraBreezeJomada::Button>(QStringLiteral("button"));
++    registerPlugin<SierraBreezeJomada::ConfigWidget>(QStringLiteral("kcmodule"));
+ )
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     using KDecoration2::ColorRole;
+diff --git a/breezedecoration.h b/breezedecoration.h
+index 0948dc2..c16a91f 100644
+--- a/breezedecoration.h
++++ b/breezedecoration.h
+@@ -40,7 +40,7 @@ namespace KDecoration2
+     class DecorationButtonGroup;
+ }
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+     class SizeGrip;
+     class Decoration : public KDecoration2::Decoration
+diff --git a/breezeexceptionlist.cpp b/breezeexceptionlist.cpp
+index 0a2c9fd..de1d7a0 100644
+--- a/breezeexceptionlist.cpp
++++ b/breezeexceptionlist.cpp
+@@ -27,7 +27,7 @@
+ #include "breezeexceptionlist.h"
+ 
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     //______________________________________________________________
+diff --git a/breezeexceptionlist.h b/breezeexceptionlist.h
+index cbd519f..e881af7 100644
+--- a/breezeexceptionlist.h
++++ b/breezeexceptionlist.h
+@@ -32,7 +32,7 @@
+ 
+ #include <KSharedConfig>
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     //! breeze exceptions list
+diff --git a/breezesettings.kcfgc b/breezesettings.kcfgc
+index 60a2367..5da4325 100644
+--- a/breezesettings.kcfgc
++++ b/breezesettings.kcfgc
+@@ -1,6 +1,6 @@
+ File=breezesettingsdata.kcfg
+ ClassName=InternalSettings
+-NameSpace=SierraBreeze
++NameSpace=SierraBreezeJomada
+ Singleton=false
+ Mutators=true
+ GlobalEnums=true
+diff --git a/breezesettingsprovider.cpp b/breezesettingsprovider.cpp
+index 2de46a5..418114f 100644
+--- a/breezesettingsprovider.cpp
++++ b/breezesettingsprovider.cpp
+@@ -26,7 +26,7 @@
+ 
+ #include <QTextStream>
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     SettingsProvider *SettingsProvider::s_self = nullptr;
+diff --git a/breezesettingsprovider.h b/breezesettingsprovider.h
+index ef96751..92b4541 100644
+--- a/breezesettingsprovider.h
++++ b/breezesettingsprovider.h
+@@ -28,7 +28,7 @@
+ 
+ #include <QObject>
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     class SettingsProvider: public QObject
+diff --git a/breezesizegrip.cpp b/breezesizegrip.cpp
+index 99a86a8..a20df0f 100644
+--- a/breezesizegrip.cpp
++++ b/breezesizegrip.cpp
+@@ -30,7 +30,7 @@
+ #include <QX11Info>
+ #endif
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     //* scoped pointer convenience typedef
+diff --git a/breezesizegrip.h b/breezesizegrip.h
+index 192d544..3cddde8 100644
+--- a/breezesizegrip.h
++++ b/breezesizegrip.h
+@@ -32,7 +32,7 @@
+ #include <xcb/xcb.h>
+ #endif
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     //* implements size grip for all widgets
+diff --git a/config/breezeconfigwidget.cpp b/config/breezeconfigwidget.cpp
+index 14c161d..35e0704 100644
+--- a/config/breezeconfigwidget.cpp
++++ b/config/breezeconfigwidget.cpp
+@@ -32,7 +32,7 @@
+ #include <QDBusConnection>
+ #include <QDBusMessage>
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     //_________________________________________________________
+diff --git a/config/breezeconfigwidget.h b/config/breezeconfigwidget.h
+index 673d413..affe063 100644
+--- a/config/breezeconfigwidget.h
++++ b/config/breezeconfigwidget.h
+@@ -36,7 +36,7 @@
+ #include <QWidget>
+ #include <QSharedPointer>
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     //_____________________________________________
+diff --git a/config/breezedetectwidget.cpp b/config/breezedetectwidget.cpp
+index 803bae8..2d25898 100644
+--- a/config/breezedetectwidget.cpp
++++ b/config/breezedetectwidget.cpp
+@@ -41,7 +41,7 @@
+ #include <xcb/xcb.h>
+ #endif
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     //_________________________________________________________
+diff --git a/config/breezedetectwidget.h b/config/breezedetectwidget.h
+index 00e3384..9317676 100644
+--- a/config/breezedetectwidget.h
++++ b/config/breezedetectwidget.h
+@@ -41,7 +41,7 @@
+ 
+ #include <kwindowsystem.h>
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     class DetectDialog : public QDialog
+diff --git a/config/breezeexceptiondialog.cpp b/config/breezeexceptiondialog.cpp
+index e921a04..64eda43 100644
+--- a/config/breezeexceptiondialog.cpp
++++ b/config/breezeexceptiondialog.cpp
+@@ -31,7 +31,7 @@
+ #include <QX11Info>
+ #endif
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     //___________________________________________
+diff --git a/config/breezeexceptiondialog.h b/config/breezeexceptiondialog.h
+index 54c7296..4165db6 100644
+--- a/config/breezeexceptiondialog.h
++++ b/config/breezeexceptiondialog.h
+@@ -31,7 +31,7 @@
+ #include <QCheckBox>
+ #include <QMap>
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     class DetectDialog;
+diff --git a/config/breezeexceptionlistwidget.cpp b/config/breezeexceptionlistwidget.cpp
+index c052f3a..8ef3465 100644
+--- a/config/breezeexceptionlistwidget.cpp
++++ b/config/breezeexceptionlistwidget.cpp
+@@ -33,7 +33,7 @@
+ #include <QIcon>
+ 
+ //__________________________________________________________
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     //__________________________________________________________
+diff --git a/config/breezeexceptionlistwidget.h b/config/breezeexceptionlistwidget.h
+index d538216..7d630f2 100644
+--- a/config/breezeexceptionlistwidget.h
++++ b/config/breezeexceptionlistwidget.h
+@@ -29,7 +29,7 @@
+ #include "breezeexceptionmodel.h"
+ 
+ //* QDialog used to commit selected files
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     class ExceptionListWidget: public QWidget
+@@ -113,7 +113,7 @@ namespace SierraBreeze
+ 
+         //* ui
+         // Ui_BreezeExceptionListWidget m_ui;
+-        Ui_SierraBreezeExceptionListWidget m_ui;
++        Ui_SierraBreezeJomadaExceptionListWidget m_ui;
+ 
+         //* changed state
+         bool m_changed = false;
+diff --git a/config/breezeexceptionmodel.cpp b/config/breezeexceptionmodel.cpp
+index 4eeaa87..8cf10bf 100644
+--- a/config/breezeexceptionmodel.cpp
++++ b/config/breezeexceptionmodel.cpp
+@@ -27,7 +27,7 @@
+ 
+ #include <KLocalizedString>
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     //_______________________________________________
+diff --git a/config/breezeexceptionmodel.h b/config/breezeexceptionmodel.h
+index a64b9b8..1d9045c 100644
+--- a/config/breezeexceptionmodel.h
++++ b/config/breezeexceptionmodel.h
+@@ -29,7 +29,7 @@
+ #include "breezesettings.h"
+ #include "breeze.h"
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     //* qlistview for object counters
+diff --git a/config/breezeitemmodel.cpp b/config/breezeitemmodel.cpp
+index 0e1d4a1..34f2cb2 100644
+--- a/config/breezeitemmodel.cpp
++++ b/config/breezeitemmodel.cpp
+@@ -25,7 +25,7 @@
+ 
+ #include "breezeitemmodel.h"
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     //_______________________________________________________________
+diff --git a/config/breezeitemmodel.h b/config/breezeitemmodel.h
+index b10c3e1..5dd5c5e 100644
+--- a/config/breezeitemmodel.h
++++ b/config/breezeitemmodel.h
+@@ -28,7 +28,7 @@
+ 
+ #include <QAbstractItemModel>
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+ 
+     //* Job model. Stores job information for display in lists
+diff --git a/config/breezelistmodel.h b/config/breezelistmodel.h
+index a1de962..fd8a0b0 100644
+--- a/config/breezelistmodel.h
++++ b/config/breezelistmodel.h
+@@ -32,7 +32,7 @@
+ 
+ #include <algorithm>
+ 
+-namespace SierraBreeze
++namespace SierraBreezeJomada
+ {
+     //! Job model. Stores job information for display in lists
+     template<class T> class ListModel : public ItemModel
+diff --git a/config/sierrabreezeconfig.desktop b/config/sierrabreezejomadaconfig.desktop
+similarity index 68%
+rename from config/sierrabreezeconfig.desktop
+rename to config/sierrabreezejomadaconfig.desktop
+index 5945cba..382734b 100644
+--- a/config/sierrabreezeconfig.desktop
++++ b/config/sierrabreezejomadaconfig.desktop
+@@ -1,17 +1,17 @@
+ [Desktop Entry]
+ # Exec=kcmshell5 breezedecorationconfig
+-Exec=kcmshell5 sierrabreezeconfig
++Exec=kcmshell5 sierrabreezejomadaconfig
+ Icon=preferences-system-windows
+ Type=Service
+ X-KDE-ServiceTypes=KCModule
+ 
+ # X-KDE-Library=org.kde.kdecoration2/breezedecoration
+-X-KDE-Library=org.kde.kdecoration2/sierrabreeze
++X-KDE-Library=org.kde.kdecoration2/sierrabreezejomada
+ X-KDE-PluginKeyword=kcmodule
+ X-KDE-ParentApp=kcontrol
+ X-KDE-Weight=60
+-X-KDE-PluginInfo-Name=SierraBreeze
++X-KDE-PluginInfo-Name=SierraBreezeJomada
+ 
+-Name=Sierra Breeze
++Name=Sierra Breeze Jomada
+ Comment=Modify the appearance of window decorations
+ X-KDE-Keywords=sierrabreeze,decoration
+diff --git a/config/ui/breezeconfigurationui.ui b/config/ui/breezeconfigurationui.ui
+index 7c1c750..3d3274f 100644
+--- a/config/ui/breezeconfigurationui.ui
++++ b/config/ui/breezeconfigurationui.ui
+@@ -388,7 +388,7 @@
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+-        <widget class="SierraBreeze::ExceptionListWidget" name="exceptions" native="true">
++        <widget class="SierraBreezeJomada::ExceptionListWidget" name="exceptions" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+@@ -410,7 +410,7 @@
+    <header>kcolorbutton.h</header>
+   </customwidget>
+   <customwidget>
+-   <class>SierraBreeze::ExceptionListWidget</class>
++   <class>SierraBreezeJomada::ExceptionListWidget</class>
+    <extends>QWidget</extends>
+    <header>config/breezeexceptionlistwidget.h</header>
+    <container>1</container>
+diff --git a/config/ui/breezeexceptionlistwidget.ui b/config/ui/breezeexceptionlistwidget.ui
+index be0a6cb..36e35a4 100644
+--- a/config/ui/breezeexceptionlistwidget.ui
++++ b/config/ui/breezeexceptionlistwidget.ui
+@@ -2,8 +2,8 @@
+ <ui version="4.0">
+  <!-- <class>BreezeExceptionListWidget</class> -->
+  <!-- <widget class="QWidget" name="BreezeExceptionListWidget"> -->
+- <class>SierraBreezeExceptionListWidget</class>
+- <widget class="QWidget" name="SierraBreezeExceptionListWidget">
++ <class>SierraBreezeJomadaExceptionListWidget</class>
++ <widget class="QWidget" name="SierraBreezeJomadaExceptionListWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>

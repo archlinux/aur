@@ -1,0 +1,19 @@
+pkgbase = sierrabreeze-jomada-kwin-decoration-git
+	pkgver = r65.a84c1c5
+	pkgrel = 1
+	url = https://github.com/jomada/SierraBreeze
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = kdecoration
+	depends = qt5-declarative
+	depends = qt5-x11extras
+	source = git+https://github.com/jomada/SierraBreeze.git
+	source = resolve_conflicts.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sierrabreeze-jomada-kwin-decoration-git
+
