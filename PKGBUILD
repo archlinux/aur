@@ -2,11 +2,11 @@
 pkgname=obmenu2-git
 pkgver=r20.d5261ef
 pkgrel=1
-pkgdesc='Openbox menu editor. Writtn in Python 3 and GTK3'
+pkgdesc='Openbox menu editor. Written in Python 3 and GTK3'
 arch=('any')
 url="https://github.com/0x10/obmenu2"
 license=('MIT')
-depends=('python3' 'gobject-introspection')
+depends=('python3' 'python-gobject' 'gtk3')
 makedepends=('git')
 conflicts=('obmenu' 'obmenu3')
 source=('git+https://github.com/0x10/obmenu2')
