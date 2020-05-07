@@ -1,7 +1,7 @@
 # Maintainer: Myrddin Wyllt <darknesseatsall at aim dot com>
 
 pkgname=openrgb-git
-pkgver=r426.1e171fc
+pkgver=r456.01e0808
 pkgrel=1
 pkgdesc='Configuration utility for RGB lights supporting motherboards, RAM, & peripherals'
 arch=('x86_64')
@@ -16,8 +16,8 @@ source=("openrgb::git+https://gitlab.com/CalcProgrammer1/openrgb.git"
         'openrgb.desktop'
         '99-openrgb.rules')
 sha256sums=('SKIP'
-            '4cfa7e03450ff79d98b382e8fd82cf697f0a9d1180566f3287c35c6841bb5464'
-            'f2d94763f5c61689a99e73e65178bb7de8561dd2c163f41b293fde1755c521d3')
+            '383a2c64c1fd353d6ae07ce19740887a66e0acafa096cab263858eb279468f42'
+            '5b1c8be74ff77e2165cfb60b44f0256b3a4f7916eec49b4f641d8db3dbde29fa')
 
 pkgver() {
     cd openrgb
