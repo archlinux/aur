@@ -1,6 +1,6 @@
 pkgbase = linux-archmm
 	pkgdesc = Linux with the BMQ CPU Scheduler and Multimedia Patches
-	pkgver = 5.6.8.arch1
+	pkgver = 5.6.11.arch1
 	pkgrel = 1
 	url = http://cchalpha.blogspot.com/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = linux-archmm
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.6.8-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.6.11-arch1
 	source = config
 	source = sphinx-workaround.patch
 	source = bmq_v5.6-r3.patch::https://gitlab.com/alfredchen/bmq/raw/master/5.6/bmq_v5.6-r3.patch
