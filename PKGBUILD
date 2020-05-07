@@ -1,26 +1,18 @@
 # Maintainer: orumin <dev@orum.in>
 
 pkgname=coccigrep
-provides=('coccigrep')
-pkgver=1.16
-pkgrel=3
+pkgver=1.20
+pkgrel=1
 pkgdesc='coccigrep is a semantic grep for the C language based on coccinelle'
 arch=('any')
 url='http://home.regit.org/software/coccigrep/'
 license=('GPL3')
 depends=('python-setuptools')
 makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/regit/coccigrep/archive/v1.16.tar.gz")
-md5sums=('cd8e0ad678ee15d6c8cd1a42a2447412')
-
-
-build() {
-  cd "${srcdir}"
-}
+source=("https://github.com/regit/coccigrep/archive/v$pkgver.tar.gz")
+sha256sums=('624840bac93b92b723bb89be1bf712717b984e7ab34c4712ec2a6135136df421')
 
 package() {
-  cd "${srcdir}/coccigrep-${pkgver}"
-
-  python3 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=0
-
+  cd "coccigrep-$pkgver"
+  python3 setup.py install --prefix=/usr --root="$pkgdir" --optimize=0
 }
