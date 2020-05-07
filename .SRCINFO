@@ -1,0 +1,43 @@
+pkgbase = empathy
+	pkgdesc = A GNOME instant messaging client using the Telepathy framework
+	pkgver = 3.25.90+34+g78f4d4fda
+	pkgrel = 3
+	url = https://wiki.gnome.org/Apps/Empathy
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = docbook-xsl
+	makedepends = python
+	makedepends = gnome-common
+	makedepends = git
+	depends = clutter-gst
+	depends = clutter-gtk
+	depends = folks
+	depends = gcr
+	depends = iso-codes
+	depends = libcanberra
+	depends = libpulse
+	depends = webkit2gtk
+	depends = telepathy-farstream
+	depends = telepathy-glib
+	depends = telepathy-logger
+	depends = telepathy-mission-control
+	depends = geoclue2
+	depends = geocode-glib
+	depends = cheese
+	depends = libchamplain
+	depends = libgudev
+	optdepends = telepathy-gabble: XMPP/Jabber support
+	optdepends = telepathy-idle: IRC support
+	optdepends = telepathy-salut: Link-local XMPP support
+	optdepends = telepathy-haze: libpurple support
+	source = git+https://git.gnome.org/browse/empathy#commit=78f4d4fdadd7da67e063c2905649f6a6015ef8f9
+	source = git+https://git.gnome.org/browse/telepathy-account-widgets
+	source = enchant-2.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = f177f0dfc242018dd52e312637f513fd08f64aa991b45930cc3ea9a2576f795e
+
+pkgname = empathy
+
