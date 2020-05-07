@@ -1,0 +1,7 @@
+#!/bin/sh
+if [ -z "$1" ]
+    then
+	/usr/bin/echo "Usage ceb2txt [filename]"
+	exit 1
+fi
+exec /usr/bin/java -jar '/usr/share/java/ceb2txt/ceb2txt.jar' "$@"
