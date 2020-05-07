@@ -2,7 +2,7 @@
 
 pkgname=test-publishing-aur-package-using-github-action-a
 pkgver=0.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc='This is a test package. It serves no other purposes.'
 url='https://github.com/KSXGitHub/github-actions-deploy-aur.git'
 arch=(any)
