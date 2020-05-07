@@ -23,7 +23,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${name}"
-    ./build
+    ./build.sh
 }
 
 package() {
