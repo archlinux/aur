@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=fv FITS Editor
+GenericName=FITS Editor
+Comment=View and manipulate FITS-format files
+Type=Application
+Exec=/opt/fv/fv %F
+Icon=fv
+MimeType=image/x-fits;
+Categories=Education;Science;Astronomy;
+Keywords=FITS;Astronomy;Viewer;
