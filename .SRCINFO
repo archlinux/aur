@@ -1,0 +1,12 @@
+pkgbase = pstreams
+	pkgdesc = C++ utility for simple IOStream-based Inter-Process Communication.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://pstreams.sourceforge.net
+	arch = any
+	license = LGPL
+	source = https://downloads.sourceforge.net/pstreams/pstreams-1.0.1.tar.gz
+	md5sums = 23199e3d12a644a2a0c66ec889d4c064
+
+pkgname = pstreams
+
