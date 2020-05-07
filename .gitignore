@@ -4,3 +4,5 @@
 /twbt/
 /dfhack/
 /*.log
+/pkg/
+/src/
