@@ -41,7 +41,7 @@ source=(git+https://github.com/aburch/simutrans
         "How to add files and paksets.md")
 sha256sums=('SKIP'
             'c0c2dd5da146f64901b00c6ee67e0818a166b983a81cee7897c4843aa9f21c81'
-            '053a2e3cf59fea40e3852ea3d369780741ed922cf53adb8b564af396bef9e502'
+            '671398550f46525ef0dae338d9e1984bfc0e1ec36153e1c4163c8c35de240c7e'
             '0d37c0d25928fc4f8a6fc30e4dbf7b2b949f183e87e27f69494f38bbab5708f0'
             'da30fa691324fa1705c93be9b82e025f76ded9249e8c82acd4fa4fb537edd23c'
             '99545152f5e739b7eb028152383fa10d3e3d303c99167e1c6e5a6bd7dcd00fa3'
