@@ -1,15 +1,15 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=libspng-git
-pkgver=0.4.1.r2.gdf82205
+pkgver=0.5.0.r172.g71e8c89
 pkgrel=1
 pkgdesc="C library for reading and writing PNG format files with a focus on security and ease of use"
-arch=(i686 x86_64 armv6h armv7h)
+arch=(i686 x86_64 armv7h aarch64)
 url="https://libspng.org/"
 license=('BSD')
 depends=(zlib)
 makedepends=(git meson)
-#checkdepends=(libpng)
+checkdepends=(libpng)
 provides=(libspng)
 conflicts=(libspng)
 source=("git+https://gitlab.com/randy408/libspng.git")
@@ -25,13 +25,13 @@ build() {
     ninja -C build
 }
 
-#check() {
-#    cd build
-#    meson configure -Ddev_build=true
-#    ninja test
-#}
+check() {
+    cd build
+    meson configure -Ddev_build=true
+    ninja test
+}
 
 package() {
     DESTDIR="${pkgdir}/" ninja -C build install
-    install -D "libspng/LICENSE" "${pkgdir}/usr/share/licenses/libspng/LICENSE"
+    install -D "libspng/LICENSE" "${pkgdir}/usr/share/licenses/libspng-git/LICENSE"
 }
