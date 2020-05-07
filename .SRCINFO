@@ -7,6 +7,7 @@ pkgbase = bugit-git
 	license = GPL3
 	makedepends = git
 	depends = git
+	depends = markdown
 	provides = bugit
 	conflicts = bugit
 	source = git+https://gitlab.com/monnier/bugit
