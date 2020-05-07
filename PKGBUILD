@@ -1,7 +1,7 @@
 # Maintainer: Martin Pugh <martin at parity dot io>
 
 pkgname=polkadot-bin
-pkgver=0.7.32
+pkgver=0.7.33
 pkgrel=1
 pkgdesc="Binary builds of the Polkadot Node Implementation"
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=(
   "$_urlbase/v$pkgver/polkadot.asc"
 )
 sha256sums=(
-  "c34d63e5d80994b2123a3a0b7c5a81ce8dc0f257ee72064bf06654c2b93e31c9"
-  "8f415b6975812b7675479b86f08e2c2935f64096e72daf6234ebc34be4df04f7"
+  "bfb4c0124e26776b850b7f71eebb86500187f08b49b4da63ed411291bb7da03e"
+  "26cc33c7832c4320527a66c3d5b85acc9a40a7d4321f124c20e8a81d2a1612f9"
 )
 
 package(){
