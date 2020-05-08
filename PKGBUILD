@@ -1,6 +1,6 @@
 pkgname="gamescope"
-pkgver=3.6
-pkgrel=1
+pkgver=3.6.1
+pkgrel=0
 pkgdesc="The micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
 url="https://github.com/Plagman/gamescope"
@@ -9,8 +9,8 @@ license=('BSD' 'custom:BSD 2-Clause "Simplified" License')
 depends=(wayland opengl-driver xorg-server-xwayland libdrm libinput libxkbcommon libxcomposite libcap libxcb libpng glslang libxrender libxtst vulkan-icd-loader sdl2)
 makedepends=('git' 'meson' 'ninja' 'cmake' 'pixman' 'pkgconf' 'vulkan-headers' 'wayland-protocols>=1.17') # makepkg -si
 
-provides=('steamcompmgr' 'wlroots=3.6.1' 'libliftoff=0.0.0')
-conflicts=('gamescope-git' 'wlroots' 'libliftoff')
+provides=('steamcompmgr' 'libliftoff=0.0.0')
+conflicts=('gamescope-git' 'libliftoff')
 replaces=('steamcompmgr')
 
 source=("${url}/archive/${pkgver}.tar.gz"
@@ -35,6 +35,12 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" ninja -C _build install
+
+    msg2 "Removing unnecessary wlroots files"
+    # wlroots is statically linked
+    rm -rfv "${pkgdir}"/usr/include
+    rm -rfv "${pkgdir}"/usr/lib/libwlroots*
+    rm -fv  "${pkgdir}"/usr/lib/pkgconfig/wlroots.pc
 
 	install -Dm644 "$srcdir/${pkgname}-${pkgver}/LICENSE" \
 		 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
