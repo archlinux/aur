@@ -26,6 +26,7 @@ package() {
 	cd "$srcdir/$pkgname"
 	install -dm755 "${pkgdir}/usr/share/pixmaps"
 
+	install -Dm0644 -t "$pkgdir/etc" "xfce4-sysinfo.conf"
 	install -Dm0644 -t "$pkgdir/usr/share/applications" "xfce4-sysinfo.desktop"
 	install -Dm0644 icons/* "$pkgdir/usr/share/pixmaps"
 	install -Dm0755 -t "$pkgdir/usr/bin" "sysinfo"
