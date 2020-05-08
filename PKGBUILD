@@ -3,7 +3,7 @@
 _projectname='ppx_deriving'
 pkgname="ocaml-$_projectname"
 pkgver='4.4.1'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Type-driven code generation for OCaml >=4.02.2'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-ppx/$_projectname"
@@ -28,17 +28,17 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune build -p "$_projectname" --verbose
+	dune build --release --verbose
 }
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune runtest -p "$_projectname" --verbose
+	dune runtest --release --verbose
 }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
