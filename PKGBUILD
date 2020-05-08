@@ -1,7 +1,7 @@
 # Maintainer: Nico <desoxhd@gmail.com>
 pkgname=anydesk-bin
-pkgver=5.5.5
-pkgrel=6
+pkgver=5.5.6
+pkgrel=1
 pkgdesc="'AnyDesk Free' is an All-In-One Software for Remote Support (Generic based package)"
 arch=('i686' 'x86_64')
 url="https://anydesk.com"
@@ -16,8 +16,8 @@ options=('!strip')
 source_i686=("https://download.anydesk.com/linux/anydesk-${pkgver}-i386.tar.gz")
 source_x86_64=("https://download.anydesk.com/linux/anydesk-${pkgver}-amd64.tar.gz")
 
-sha256sums_i686=('ead02c9778711a6f028fb0f26f9ef9a48b76ef8f374124b45827e451a55f082a')
-sha256sums_x86_64=('606950997cfa607eff0f68018b8e6962f2491037a7c590d6e150befcaabe5225')
+sha256sums_i686=('2b62a369a9fb24cc060bf29ccd1ee94f45d4c2be8c62e4fba8b925ca3008f747')
+sha256sums_x86_64=('d37678596d7df3926b9ea7dec842cd895618b9860fd75e490deebcf09cf3eeee')
 
 package() {
     # install binary
