@@ -169,3 +169,22 @@ diff -aur a/main.c b/main.c
  	}
  	if (show_ac_adapter) {
  		do_show_ac_adapter(acpi_path, show_empty_slots, proc_interface);
+--- a/acpi.c	2020-05-07 17:32:50.579352165 -0700
++++ b.acpi.c	2020-05-07 17:31:43.465878060 -0700
+@@ -368,6 +368,7 @@
+ 		    if (present_rate > MIN_PRESENT_RATE) {
+ 			seconds = 3600 * (last_capacity - remaining_capacity) / present_rate;
+ 			poststr = " until charged";
++			total_present_rate += present_rate;
+ 		    } else {
+ 			poststr = "charging at zero rate - will never fully charge.";
+ 			seconds = -1;
+@@ -376,6 +377,7 @@
+ 		    if (present_rate > MIN_PRESENT_RATE) {
+ 			seconds = 3600 * remaining_capacity / present_rate;
+ 			poststr = " remaining";
++			total_present_rate -= present_rate;
+ 		    } else {
+ 			poststr = "discharging at zero rate - will never fully discharge.";
+ 			seconds = -1;
+
