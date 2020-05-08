@@ -5,7 +5,7 @@
 pkgname=('qtel')
 _pkgname=('svxlink')
 pkgver="19.09.1"
-pkgrel=6
+pkgrel=1
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 url="http://www.github.com/sm0svx/svxlink/"
 license=('GPL')
