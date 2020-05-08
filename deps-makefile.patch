@@ -1,0 +1,10 @@
+--- deps/Makefile	2020-02-25 09:30:39.000000000 -0500
++++ deps/Makefile.new	2020-05-08 10:30:36.885245685 -0400
+@@ -27,6 +27,7 @@
+ libinjection/libinjection/src/libinjection.a:
+ 	cd libinjection && rm -rf libinjection-3.10.0 || true
+ 	cd libinjection && tar -zxf libinjection-3.10.0.tar.gz
++	cd libinjection && patch -p0 < ../../../libinjection_python_port.patch
+ 	cd libinjection/libinjection && CC=${CC} CXX=${CXX} ${MAKE}
+ libinjection: libinjection/libinjection/src/libinjection.a
+ 
