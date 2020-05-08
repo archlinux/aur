@@ -1,28 +1,34 @@
-# Packager : Jules Roumieux
-basename="fxsdk"
-pkgname="$basename-git"
-pkgver=r14.3ebe66a
+# Maintainer: Darks <l.gatin@protonmail.com>
+# Contributor: CoiledSpring
+
+_basename=fxsdk
+pkgname=${_basename}-git
+pkgver=r35.c9dd9fa
 pkgrel=1
 pkgdesc="Tools to program for the Casio fx9860 calculators"
 arch=("i686" "x86_64")
-provides=("fxsdk")
-source=("git+http://git.planet-casio.com/lephe/$basename.git")
-md5sums=("SKIP")
+provides=("fxsdk" "fxconv" "fxg1a")
+depends=("sh-elf-gcc-casio")
+makedepends=("git")
+source=("${pkgname}::git+https://gitea.planet-casio.com/Lephenixnoir/${_basename}.git")
+sha256sums=("SKIP")
 
 pkgver() {
-  cd "$basename"
+  cd "$srcdir/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$basename"
+  cd "$srcdir/${pkgname}"
+  ./configure --enable-fxsdk --enable-fxconv --enable-fxg1a
   make
 }
 
 package() {
-  cd "$basename"
-  mkdir -p "$pkgdir/usr/bin/"
-  install -m 755 bin/* "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/fxsdk"
-  install -m 644 runtime/* "$pkgdir/usr/share/fxsdk"
+  cd "$srcdir/${pkgname}"
+  
+  # Dirty patch before an update from developper
+  sed -i -e "s/PREFIX/DESTDIR/" Makefile
+
+  make DESTDIR="$pkgdir/usr" install
 }
