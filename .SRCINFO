@@ -1,6 +1,6 @@
 pkgbase = ap
 	pkgdesc = simple wireless ap support both ipv4 and ipv6 with nat
-	pkgver = v1.0.r2.g3b105fb
+	pkgver = v1.0.r1.g862ee76
 	pkgrel = 1
 	url = https://github.com/springzfx/ap
 	arch = x86_64
