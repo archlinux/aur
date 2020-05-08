@@ -1,0 +1,12 @@
+pkgbase = terraform-ls-bin
+	pkgdesc = Terraform Language Server
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/hashicorp/terraform-ls
+	arch = x86_64
+	license = MPL2
+	source = terraform-ls-linux-amd64-0.2.0::https://github.com/hashicorp/terraform-ls/releases/download/v0.2.0/terraform-ls_0.2.0_linux_amd64.zip
+	sha256sums = 9cd6a2fcc0c7fd279bfc7ff4b3aa2ce2a242fc5c7764689d5fe9235edb55e069
+
+pkgname = terraform-ls-bin
+
