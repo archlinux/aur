@@ -1,6 +1,6 @@
 pkgbase = lm_sensors-git
 	pkgdesc = Collection of user space tools for general SMBus access and hardware monitoring
-	pkgver = r5216.84f773b3
+	pkgver = r5279.248d4a17
 	pkgrel = 1
 	url = https://github.com/lm-sensors/lm-sensors
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = lm_sensors-git
 	makedepends = git
 	makedepends = rrdtool
 	depends = perl
-	depends = sysfsutils
 	optdepends = rrdtool: for logging with sensord
 	provides = lm_sensors
 	conflicts = lm_sensors
