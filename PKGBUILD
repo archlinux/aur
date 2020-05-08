@@ -3,11 +3,11 @@
 
 pkgname=btag-git
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A command line based audio file tagger"
 arch=('i686' 'x86_64')
 url="https://github.com/fernandotcl/btag"
-license=('GPL')
+license=('BSD')
 depends=('libcue' 'taglib' 'libedit')
 makedepends=('git' 'cmake' 'pkg-config' 'boost')
 provides=("${pkgname%-git}")
@@ -36,4 +36,5 @@ build() {
 package() {
   cd "${srcdir}/${pkgname%-git}/build"
   make "DESTDIR=${pkgdir}" install
+  install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
