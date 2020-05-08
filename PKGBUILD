@@ -3,14 +3,14 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gnome-contacts-git
-pkgver=3.31.3.r14.g93ca1c6
+pkgver=3.36.r15.gb6cb216
 pkgrel=1
 pkgdesc="Contacts Manager for GNOME"
 url="https://wiki.gnome.org/Apps/Contacts"
-arch=(x86_64)
+arch=(i686 x86_64 armv7h aarch64)
 license=(GPL2)
 depends=(gtk3 folks gnome-desktop dconf gnome-online-accounts libgee cheese libhandy)
-makedepends=(vala gobject-introspection git meson libhandy)
+makedepends=(vala gobject-introspection git meson)
 groups=(gnome)
 conflicts=(gnome-contacts)
 provides=(gnome-contacts)
@@ -23,12 +23,12 @@ pkgver() {
 }
 
 build() {
-  arch-meson gnome-contacts build
+  arch-meson gnome-contacts build -D docs=true
   ninja -C build
 }
 
 check() {
-  meson test -C build
+  meson test -C build --print-errorlogs
 }
 
 package() {
