@@ -1,4 +1,4 @@
-# Maintainer: Your Name <jean@finas.io>
+# Maintainer: Jean Finas <jean@finas.io>
 pkgname=qsync
 pkgver=1.0.5.0305
 pkgrel=1
