@@ -5,7 +5,7 @@
 
 pkgname=djgpp-djcrx
 pkgver=2.05
-pkgrel=10
+pkgrel=11
 pkgdesc="Headers and utilities for the djgpp cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.delorie.com/djgpp/"
@@ -28,7 +28,7 @@ sha256sums=('22274ed8d5ee57cf7ccf161f5e1684fd1c0192068724a7d34e1bde168041ca60'
             '536684b0152f7ad77b99bcc5ea535ca8339832399c4582b944ccd882e4b261a1'
             '693810c3242f4e23cdc55d3101281721da9407851e5d29459ad59405e534b916'
             '0debe0161e27aeb004e89a43915d6d77bcd07a5db2c67e2798568535fe9143f1'
-            'f4636f4b0b6e3879e0660e0a0af4653aee3721ecfa4e89b4ff1e10f8ca43eb1b')
+            '8c16b24e34dc46fee86531349a84d7353552db2eff008cb9d5ffd35ec3a7249a')
 options=('!buildflags' '!strip')
 _target='i686-pc-msdosdjgpp'
 
