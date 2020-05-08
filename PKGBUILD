@@ -3,11 +3,11 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gnome-system-monitor-git
-pkgver=3.31.3.r5.g56ebc51b
+pkgver=3.36.0.r19.g96bceea9
 pkgrel=1
 pkgdesc="View current processes and monitor system state"
 url="https://wiki.gnome.org/Apps/SystemMonitor"
-arch=(x86_64)
+arch=(i686 x86_64 armv7h aarch64)
 license=(GPL)
 depends=(libgtop gtkmm3 librsvg systemd)
 makedepends=(meson yelp-tools git)
@@ -27,7 +27,7 @@ build() {
 }
 
 check() {
-  meson test -C build
+  meson test -C build --print-errorlogs
 }
 
 package() {

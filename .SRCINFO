@@ -1,9 +1,12 @@
 pkgbase = gnome-system-monitor-git
 	pkgdesc = View current processes and monitor system state
-	pkgver = 3.31.3.r5.g56ebc51b
+	pkgver = 3.36.0.r19.g96bceea9
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/SystemMonitor
+	arch = i686
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = GPL
 	makedepends = meson
 	makedepends = yelp-tools
