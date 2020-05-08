@@ -2,7 +2,7 @@
 
 pkgname=("openxr-loader-git" "openxr-headers-git" "openxr-layers-git" "openxr-utils-git")
 _dirname="openxr-loader"
-pkgver=1.0.8.r22.ga179a05
+pkgver=1.0.8.r26.g3e40561
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/KhronosGroup/OpenXR-SDK-Source'
