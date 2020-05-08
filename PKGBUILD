@@ -9,7 +9,7 @@ pkgdesc="A set of programs to assemble and manipulate binary and object files ($
 url="http://www.gnu.org/software/binutils/"
 arch=('x86_64')
 license=('GPL')
-depends=('zlib')
+depends=('libelf')
 source=("ftp://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz")
 sha256sums=('f00b0e8803dc9bab1e2165bd568528135be734df3fabf8d0161828cd56028952')
 
