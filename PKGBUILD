@@ -2,7 +2,7 @@
 
 pkgname=python-enlighten
 _name=enlighten
-pkgver=1.4.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='A console progress bar module for Python'
 url='https://github.com/Rockhopper-Technologies/enlighten'
@@ -11,7 +11,7 @@ license=('MPL2')
 depends=('python-blessed')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('93b859b5ee2f2494715bc32a1890b0a82de80a6afd536909e5663772ab2c792e')
+sha256sums=('836b92850aa1fa1ff9de45d7736f77ed253210928fe423898e5994cb51b755ee')
 
 build() {
     cd "${_name}-${pkgver}"
