@@ -1,5 +1,6 @@
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Maintainer: Jan de Groot <jgc@archlinxu.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Jan de Groot <jgc@archlinxu.org>
 # Contributor: Wael Nasreddine <gandalf@siemens-mobiles.org>
 # Contributor: Tor Krill <tor@krill.nu>
 # Contributor: Will Rea <sillywilly@gmail.com>
@@ -7,7 +8,7 @@
 
 pkgbase=networkmanager-iwd
 pkgname=(networkmanager-iwd libnm-iwd nm-iwd-cloud-setup)
-pkgver=1.22.0
+pkgver=1.25.1dev
 pkgrel=1
 pkgdesc="NM modified package to use exclusively iwd backend getting rid of wpa_supplicant dependency"
 url="https://wiki.gnome.org/Projects/NetworkManager"
@@ -16,12 +17,12 @@ license=(GPL2 LGPL2.1)
 _pppver=2.4.7
 makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
              iproute2 nss polkit wpa_supplicant curl systemd libmm-glib
-             libnewt libndp libteam vala perl-yaml python-gobject git jansson bluez-libs
-             glib2-docs dhcpcd iwd dnsmasq systemd-resolvconf libpsl audit meson)
+             libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
+             glib2-docs iwd dnsmasq openresolv libpsl audit meson)
 checkdepends=(libx11 python-dbus)
-_commit=7fe734f8bc0661ff476204a034eb987df43ee461  # tags/1.22.0^0
+_commit=c6e51f61ddc03c562eb9ba9b73e714833f5e74c9  # tags/1.25.1
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
   cd NetworkManager
@@ -34,20 +35,32 @@ prepare() {
 
 build() {
   local meson_args=(
+    # system paths
     -D dbus_conf_dir=/usr/share/dbus-1/system.d
+
+    # platform
     -D dist_version="$pkgver-$pkgrel"
     -D session_tracking_consolekit=false
     -D suspend_resume=systemd
     -D modify_system=true
     -D polkit_agent=true
     -D selinux=false
+
+    # features
     -D iwd=true
     -D pppd_plugin_dir=/usr/lib/pppd/$_pppver
     -D teamdctl=true
     -D nm_cloud_setup=true
     -D bluez5_dun=true
     -D ebpf=true
+
+    # configuration plugins
     -D config_plugins_default=keyfile
+
+    # dhcp clients
+    -D dhcpcd=no
+
+    # miscellaneous
     -D vapi=true
     -D docs=true
     -D more_asserts=no
@@ -58,6 +71,7 @@ build() {
   arch-meson NetworkManager build "${meson_args[@]}"
   ninja -C build
 }
+
 
 check() {
   # iproute2 bug 
@@ -83,11 +97,13 @@ package_networkmanager-iwd() {
   optdepends=('dnsmasq: connection sharing'
               'bluez: Bluetooth support'
               'ppp: dialup connection support'
-              'modemmanager: cellular network support')
-              
+              'modemmanager: cellular network support'
+              'dhclient: alternative DHCP client'
+              'openresolv: alternative resolv.conf manager')              
   backup=(etc/NetworkManager/NetworkManager.conf)
   groups=(gnome)
   install="$pkgbase.install"
+
   DESTDIR="$pkgdir" meson install -C build
 
   # /etc/NetworkManager
