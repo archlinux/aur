@@ -1,6 +1,6 @@
 # Maintainer: Majid Butler <majidbutler@akuma-dev.com>
 pkgname=creeptifica
-pkgver=2.9
+pkgver=3.0
 pkgrel=1
 pkgdesc="A 4px wide terminal font for nerds."
 arch=('any')
