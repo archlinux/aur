@@ -1,0 +1,19 @@
+pkgbase = nerd-fonts-victor-mono
+	pkgdesc = Patched font Victor Mono from nerd-fonts
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts
+	arch = any
+	groups = nerd-fonts
+	license = MIT
+	depends = fontconfig
+	provides = nerd-fonts-victor-mono
+	conflicts = nerd-fonts-git
+	conflicts = nerd-fonts-complete
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/VictorMono.zip
+	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.1.0/LICENSE
+	sha1sums = 0dd6d0e9de2c68bb4de61f5bce617c5cd9a08b5b
+	sha1sums = 92fdad3c8babc0473da5f03e41fb1151417ab386
+
+pkgname = nerd-fonts-victor-mono
+
