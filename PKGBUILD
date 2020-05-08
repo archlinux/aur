@@ -2,7 +2,7 @@
 
 pkgname=gnome-games-libretro
 _srcname=gnome-games
-pkgver=3.34.0
+pkgver=3.36.0
 pkgrel=1
 pkgdesc='Libretro definitions for gnome-games'
 arch=('any')

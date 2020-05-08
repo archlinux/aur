@@ -1,6 +1,6 @@
 pkgbase = gnome-games-libretro
 	pkgdesc = Libretro definitions for gnome-games
-	pkgver = 3.34.0
+	pkgver = 3.36.0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Games
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = gnome-games-libretro
 	optdepends = libretro-picodrive: Sega Genesis/Master System/CD/32X/Pico support
 	optdepends = libretro-prosystem-git: Atari 7800 support
 	optdepends = libretro-stella2014-git: Atari 2600 support
-	source = git+https://gitlab.gnome.org/GNOME/gnome-games.git#tag=3.34.0
+	source = git+https://gitlab.gnome.org/GNOME/gnome-games.git#tag=3.36.0
 	sha256sums = SKIP
 
 pkgname = gnome-games-libretro
