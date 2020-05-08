@@ -1,10 +1,11 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: Marcin Wieczorek <marcin@marcin.co>
 # Contributor: Anthony C <kurodroid.1@gmail.com>
 
 pkgname=psad
-pkgver=2.4.5
-pkgrel=3
+pkgver=2.4.6
+pkgrel=1
 pkgdesc='A collection of three lightweight system daemons (two main daemons and one helper daemon) that run on Linux machines and analyze iptables log messages to detect port scans and other suspicious traffic'
 arch=('i686' 'x86_64')
 url='http://cipherdyne.org/psad/'
@@ -22,8 +23,8 @@ source=("http://cipherdyne.org/psad/download/${pkgname}-${pkgver}.tar.gz"
         'responses'
         'psad-systemdinit.archlinux'
         'psad.patch')
-sha256sums=('c61bd5c7766798dbaf2cd5e11d4b07b941e8188be4e0176423fe7bcabc676147'
-            '0092963c506769f0bc1895ede687975dae0c3d256aaa1891f7e354b7c4a19958'
+sha256sums=('3d9eba09111fc51668a4e6c26cd791c0b322ff2b6f1e71d48b9c9582b63aa8e6'
+            '0f1116e25f43f1562764d81ebd232ed807f2249058f0cfb0cb4d06d99bd600d8'
             '9db280ba745205b188333267f05cf7cf1a75300789c92c48075625e64f37ff34'
             '9137ea481f1cad79d62d3a7cf1ac22bbc85cccc7e18d49e1c092b38beec36170')
 prepare() {
