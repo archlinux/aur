@@ -2,17 +2,17 @@
 
 _pkgname=triceratops-lv2
 pkgname="${_pkgname}-git"
-pkgver=0.2.1.r2.334d2da
+pkgver=0.3.2.r11.b058700
 pkgrel=1
 pkgdesc="Polyphonic synthesizer LV2 plugin"
 arch=(i686 x86_64)
-url="http://deliriumdecrypted.blogspot.com/"
+url="https://sourceforge.net/projects/triceratops/"
 license=('GPL3')
 groups=('lv2-plugins')
-depends=('gtkmm' 'lv2')
-makedepends=('python2')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
+depends=('gtkmm')
+makedepends=('git' 'python2' 'lv2')
+conflicts=("${_pkgname}" "${_pkgname//-/.}")
+provides=("${_pkgname}" "${_pkgname//-/.}")
 source=("${_pkgname}::git+https://github.com/thunderox/triceratops.git")
 md5sums=('SKIP')
 

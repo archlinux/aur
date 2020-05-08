@@ -2,5 +2,6 @@ pkg/
 src/
 .AURINFO
 triceratops-lv2/
-triceratops-lv2-git-*.tar.xz
+triceratops-lv2-git-*.pkg.tar.xz
+triceratops-lv2-git-*.pkg.tar.zst
 triceratops-lv2-git-*.src.tar.gz
