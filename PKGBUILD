@@ -1,21 +1,19 @@
-# Maintainer Joan Figueras <ffigue@gmail.com>
+# Maintainer: Pierre Dommerc <dommerc.pierre@gmail.com>
 
 pkgname=milcheck
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
-makedepends=('rust' 'cargo' 'git')
+pkgdesc="A small binary that displays the status of your pacman mirrorlist in your terminal, written in Rust."
 arch=('x86_64')
-pkgdesc="A small binary that displays the status of your pacman mirrorlist in your terminal, written in Rust"
 url="https://github.com/doums/milcheck"
-license=('custom:Mozilla Public License v2.0')
-source=("https://github.com/doums/milcheck/archive/v${pkgver}.tar.gz")
-sha256sums=('67577d03c39c106ed3f080cf60a4d6a428ef71b55f6b0035f36be375a6fdc26d')
-
-build() {
-    cd $pkgname-$pkgver
-    cargo build --release
-}
+license=('MPL2')
+source=("https://github.com/doums/milcheck/releases/download/v${pkgver}/${pkgname}")
+depends=('gcc-libs')
+md5sums=('d2e59fd9b1634805ea883f7b1f6ad479')
 
 package() {
-    install -Dm755 $srcdir/$pkgname-$pkgver/target/release/${pkgname} $pkgdir/usr/bin/${pkgname}
+  dest="$pkgdir/usr/bin"
+  mkdir -p "$dest"
+  chmod 755 "$pkgname"
+  cp "$pkgname" "$dest"
 }
