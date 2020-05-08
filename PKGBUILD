@@ -2,7 +2,7 @@
 
 basename=kwin-effect-xrdesktop
 pkgname=$basename-git
-pkgver=r271.2271fce
+pkgver=0.14.0.r0.g3e85e5b
 pkgrel=1
 pkgdesc='xrdesktop effect for KWin.'
 arch=('x86_64')
@@ -15,7 +15,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $basename
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

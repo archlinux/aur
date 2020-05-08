@@ -1,6 +1,6 @@
 pkgbase = kwin-effect-xrdesktop-git
 	pkgdesc = xrdesktop effect for KWin.
-	pkgver = r271.2271fce
+	pkgver = 0.14.0.r0.g3e85e5b
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xrdesktop/kwin-effect-xrdesktop
 	arch = x86_64
