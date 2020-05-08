@@ -5,14 +5,14 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.5.0.gm.2.r5.gceefcd26'
+pkgver='5.5.0.gm.2.r25.gcd42e142'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$_pkgname.com"
 license=('Apache')
 depends=('electron' 'libxkbfile')
-makedepends=('git' 'npm' 'python')
+makedepends=('git' 'npm' 'python' 'python2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
@@ -51,13 +51,7 @@ prepare() {
 	patch --forward -p1 < '../fix-autostart-path.diff'
 
 	# Prepare dependencies
-	export HOME="$srcdir/$pkgname-home"
-	export XDG_CACHE_HOME="$srcdir/$pkgname-cache"
-	export npm_config_devdir="$srcdir/$pkgname-npm-dev"
-	export npm_config_cache="$srcdir/$pkgname-npm-cache"
-	# export NODE_GYP_FORCE_PYTHON='/usr/bin/python' - when https://github.com/sass/node-sass/issues/2877 is fixed
-
-	npx lerna bootstrap
+	HOME="$srcdir/$pkgname-home" npx lerna bootstrap
 }
 
 pkgver() {
@@ -83,14 +77,8 @@ build() {
 		;;
 	esac
 
-	export NODE_ENV='production'
-	export HOME="$srcdir/$pkgname-home"
-	export XDG_CACHE_HOME="$srcdir/$pkgname-cache"
-	export npm_config_devdir="$srcdir/$pkgname-npm-dev"
-	export npm_config_cache="$srcdir/$pkgname-npm-cache"
-
-	npx gulp build
-	npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron' -c.electronVersion="$(cat '/usr/lib/electron/version')"
+	NODE_ENV='production' HOME="$srcdir/$pkgname-home" npx gulp build
+	NODE_ENV='production' HOME="$srcdir/$pkgname-home" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron' -c.electronVersion="$(cat '/usr/lib/electron/version')"
 }
 
 package() {
