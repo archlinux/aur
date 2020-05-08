@@ -2,7 +2,7 @@
 
 pkgname=jdk-mission-control-bin
 pkgver=20200507142353
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenJDK Mission Control"
 arch=('x86_64')
 license=('UPL')
@@ -18,11 +18,13 @@ pkgver() {
 }
 
 package() {
-  local LIBDIR="${pkgdir}/usr/lib/openjdk-mission-control"
+
+  local LIBDIR="${pkgdir}/opt/jdk-mission-control"
   mkdir -p "$LIBDIR"
+  rm ./org.openjdk.jmc-linux.gtk.x86_64.tar.gz
 	cp -a --no-preserve=ownership ./* "$LIBDIR"
 
   mkdir -p "${pkgdir}/usr/bin"
 
-  ln -sf "/usr/lib/openjdk-mission-control/jmc" "${pkgdir}/usr/bin/jmc" 
+  ln -sf "/opt/jdk-mission-control/jmc" "${pkgdir}/usr/bin/jmc" 
 }
