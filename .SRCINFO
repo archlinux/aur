@@ -1,0 +1,20 @@
+pkgbase = wpebackend-rdk-git
+	pkgdesc = WPE WebKit backend from RDK (Wayland build)
+	pkgver = r132.4e9a79d
+	pkgrel = 1
+	url = https://github.com/WebPlatformForEmbedded/WPEBackend-rdk
+	arch = x86_64
+	groups = wpe
+	license = custom:BSD
+	makedepends = cmake
+	depends = libwpe
+	depends = glib2
+	depends = opengl-driver
+	depends = wayland
+	provides = wpebackend-rdk
+	conflicts = wpebackend-rdk
+	source = wpebackend-rdk-git::git+https://github.com/WebPlatformForEmbedded/WPEBackend-rdk
+	sha512sums = SKIP
+
+pkgname = wpebackend-rdk-git
+
