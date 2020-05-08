@@ -1,7 +1,7 @@
 # Contributor: Alexander Mamzikov <av.mamzikov@gmail.com>
 
 pkgname=stereophotoview
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=1
 pkgdesc="Viewer/editor for stereoscopic 3d photo and video"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ options=()
 source=(https://bitbucket.org/stereophotoview/stereophotoview/get/${pkgver}.zip opencv4.patch)
 noextract=()
 # updpkgsums
-md5sums=('db83bf79a4122f483e2a225886dea5ac'
+md5sums=('8e0b6f0cdbcf38be9a73dc67f675657f'
          '541997434314a3eea89cbdda41487302')
 
 prepare() {
