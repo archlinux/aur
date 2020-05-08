@@ -51,7 +51,7 @@ _major=5.6
 _minor=11
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -71,8 +71,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v9-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0003-gcc-plugins-drop-support-for-GCC-4.7.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0004-gcc-common.h-Update-for-GCC-10.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -319,8 +321,10 @@ sha512sums=('f4c02f59353d2199084583bed6fa9cec6e7a7cb755296c883969c579a8f9d34e202
             'SKIP'
             '334a05f6a2c51f96095c1305df398c822815ed770815c1dea915f22ba3031d0eff56c10cd97ccbdca846d1365d36671362be24ff7114cd49b936fbeed23558fa'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
-            'bf1b8a014f20918056493b524884f9183f7b9c03f8449230f569eca39759140e2de7bddef3b16ca6647a3b57e770076c5c735bf5092954da1dd4da43fa92a9b2'
-            'e8df7db49692540bc137aca93ae1c6bacbf0ddb4eb3c66f87f95d02d103be34468559d557c45dd7c90c116a14c7a5e7de7afb57cf329fce3e3c7ee00314a35c2'
+            '491544ce1cc76c34288e306815469684dbc8f8ae77b963751f8d3f7e56aec5b8edc6ccb207afe229ffd3001e6d74c8f2b1144f980edce294db7f42d90008b3bf'
+            '2afab8bbdf8b58e0cc59c9a9ab78670d3a01bd5245f8956ce95dbba9556760dd640541c1d419346ec20e941c138317501c98c6ad6cdf57c53a91140954ea4f78'
+            '0aaf7731ff3a1c3ff4e3b5e31d7218786d7b9c55e0de23b533c0c000d49adfaa41536e93121ef005d7c50249076ebc322453cb2bd1142881a1830412fd9bf9ab'
+            'a9399d1bd6a6fd2b23511d7db1472c070723f26c7faef892cc9bb9fe1c98b7bcdaa81204bd5093c0054866b291679ea12a6a4d3b7493d6fac1e96b14a56732ca'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             'f7a3112199ed491e1c811b862e835cac8d166b30b904a8508aed59ddc0c7a2cbdadbe8f64f8735725475c6e487fae6f354e0af6dc086368a8e0a4eafba2d3a17')
 
