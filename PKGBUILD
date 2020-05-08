@@ -2,12 +2,12 @@
 _gitname=PyTMX
 pkgname=python-pytmx
 pkgver=3.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library to read Tiled Map Editor's TMX maps"
 arch=('i686' 'x86_64')
 url="https://github.com/bitcraft/$_gitname"
 license=('LGPL')
-depends=('python>=3.3' 'python-six' 'python-pygame')
+depends=('python>=3.3' 'python-six')
 makedepends=('git')
 provides=($pkgname)
 conflicts=($pkgname)
