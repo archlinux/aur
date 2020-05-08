@@ -3,11 +3,11 @@
 pkgname=comgr
 pkgdesc='Radeon Open Compute - compiler support'
 pkgver=3.3.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://github.com/RadeonOpenCompute/ROCm-CompilerSupport'
 license=('custom:NCSAOSL')
-depends=()
+depends=(z3)
 makedepends=(cmake rocm-cmake rocm-device-libs llvm-amdgpu)
 source=("$url/archive/rocm-$pkgver.tar.gz"
         "comgr-find-lld-includes.patch")
