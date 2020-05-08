@@ -1,13 +1,13 @@
 # Maintainer: Benoît Giraudou <bgiraudou@gmail.com>
 pkgname=epub-thumbnailer-git
 _gitname=epub-thumbnailer
-pkgver=1.0r50.22383bc
+pkgver=1.0r67.c82fe3f
 pkgrel=1
 pkgdesc="Creates thumbnail for EPUB files."
 arch=('any')
 url="https://github.com/marianosimone/epub-thumbnailer"
 license=('GPL3')
-depends=('python2' 'python2-imaging')
+depends=('python-pillow')
 makedepends=('git')
 source=('git://github.com/marianosimone/epub-thumbnailer.git')
 md5sums=('SKIP')
@@ -15,11 +15,6 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$_gitname"
   	printf "1.0r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-build() {
-	cd "$_gitname"
-	sed -i 's|#!/usr/bin/python|#!/usr/bin/env python2|' src/epub-thumbnailer.py
 }
 
 package() {
