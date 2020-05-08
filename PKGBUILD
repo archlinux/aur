@@ -9,7 +9,7 @@ license=('LGPL')
 depends=()
 makedepends=('cmake')
 conflicts=('fastcgi++')
-
+url=https://fastcgipp.isatec.ca/
 source=("https://github.com/eddic/fastcgipp/archive/3.0.tar.gz")
 
 sha256sums=('SKIP')

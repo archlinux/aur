@@ -2,6 +2,7 @@ pkgbase = fastcgi++
 	pkgdesc = This library is intended as a high-efficiency C++14 api for web development.
 	pkgver = 3.0
 	pkgrel = 1
+	url = https://fastcgipp.isatec.ca/
 	arch = x86_64
 	arch = i686
 	license = LGPL
