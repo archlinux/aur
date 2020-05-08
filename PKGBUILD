@@ -1,7 +1,7 @@
 # Maintainer: Roey Darwish Dror <roey.ghost@gmail.com>
 
 pkgname=topgrade
-pkgver=4.3.1
+pkgver=4.4.0
 pkgrel=1
 pkgdesc='Invoke the upgrade procedure of multiple package managers'
 arch=('x86_64' 'aarch64' 'armv7')
@@ -9,7 +9,7 @@ url='https://github.com/r-darwish/topgrade'
 license=('GPL3')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('549b2fe1b807256ec42a16fe5507b115fcd9c75a59a17de46dc3151ae28a1337')
+sha256sums=('29d90973a4abe1b6809176c7f24622aef7be91340ac994f616e8e24afdcc25b9')
 
 build() {
   cd "$pkgname-$pkgver"
