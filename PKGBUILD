@@ -2,10 +2,10 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=dconf-editor-git
-pkgver=3.31.2.r107.gbe77980
+pkgver=3.36.0.r12.gc1fc7f3
 pkgrel=1
 pkgdesc="dconf Editor"
-arch=(x86_64)
+arch=(i686 x86_64 armv7h aarch64)
 url="https://wiki.gnome.org/Projects/dconf"
 license=(GPL3)
 groups=(gnome-extra)
@@ -31,7 +31,7 @@ build() {
 }
 
 check() {
-  meson test -C build
+  meson test -C build --print-errorlogs
 }
 
 package() {
