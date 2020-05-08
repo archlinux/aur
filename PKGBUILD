@@ -4,7 +4,7 @@ _edition=' Readonly Beta'
 pkgname="$_pkgname-bin"
 _pkgver='1.21.0-beta.5'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - beta version - binary version'
 arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
@@ -24,7 +24,7 @@ package() {
 	cd "$srcdir/"
 
 	install -dm755 "$pkgdir/opt/"
-	cp -r --no-preserve=ownership --preserve=mode "usr/share/$_pkgname/" "$pkgdir/opt/$_pkgname/"
+	cp -r --no-preserve=ownership --preserve=mode "usr/lib/$_pkgname/" "$pkgdir/opt/$_pkgname/"
 
 	install -dm755 "$pkgdir/usr/bin/"
 	ln -sf "/opt/$_pkgname/MongoDB Compass$_edition" "$pkgdir/usr/bin/$_pkgname"
