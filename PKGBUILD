@@ -1,6 +1,6 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=xfce4-sysinfo
-pkgver=33.1f281f6
+pkgver=118.3116d1a
 pkgrel=1
 pkgdesc="A tool to show systeminformation in xfce"
 arch=(any)
