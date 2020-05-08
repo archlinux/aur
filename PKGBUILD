@@ -4,7 +4,7 @@
 
 pkgname=librime
 pkgver=1.5.3
-pkgrel=6
+pkgrel=7
 epoch=1
 pkgdesc="Rime input method engine"
 arch=('x86_64')
@@ -17,6 +17,7 @@ sha512sums=('4d7f6ec43bd5728f59f0b3581bcd8a46128651430b6873017d80659942b8f6aa1a2
 
 build() {
   cd $pkgname-$pkgver
+  export CXXFLAGS="$CXXFLAGS -DNDEBUG"
   cmake . -Bbuild -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
 }
