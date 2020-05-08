@@ -7,13 +7,13 @@ pkgname='ferdi'
 pkgver='5.5.0'
 _recipescommit='3054fd4c362b5be81b5cdd48535a0e7078fcd0a6'
 _internalservercommit='95ae59926dbd88d55a5377be997558a9e112ab49'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$pkgname.com"
 license=('Apache')
 depends=('electron' 'libxkbfile')
-makedepends=('git' 'npm' 'python')
+makedepends=('git' 'npm' 'python' 'python2')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/get$pkgname/$pkgname/archive/v$pkgver.tar.gz"
 	"$pkgname-$pkgver-$pkgrel-recipes.tar.gz::https://github.com/get$pkgname/recipes/archive/$_recipescommit.tar.gz"
@@ -49,13 +49,7 @@ prepare() {
 	patch --forward -p1 < '../fix-autostart-path.diff'
 
 	# Prepare dependencies
-	export HOME="$srcdir/$pkgname-$pkgver-$pkgrel-home"
-	export XDG_CACHE_HOME="$srcdir/$pkgname-$pkgver-$pkgrel-cache"
-	export npm_config_devdir="$srcdir/$pkgname-$pkgver-$pkgrel-npm-dev"
-	export npm_config_cache="$srcdir/$pkgname-$pkgver-$pkgrel-npm-cache"
-	# export NODE_GYP_FORCE_PYTHON='/usr/bin/python' - when https://github.com/sass/node-sass/issues/2877 is fixed
-
-	npx lerna bootstrap
+	HOME="$srcdir/$pkgname-$pkgver-$pkgrel-home" npx lerna bootstrap
 }
 
 build() {
@@ -76,14 +70,8 @@ build() {
 		;;
 	esac
 
-	export NODE_ENV='production'
-	export HOME="$srcdir/$pkgname-$pkgver-$pkgrel-home"
-	export XDG_CACHE_HOME="$srcdir/$pkgname-$pkgver-$pkgrel-cache"
-	export npm_config_devdir="$srcdir/$pkgname-$pkgver-$pkgrel-npm-dev"
-	export npm_config_cache="$srcdir/$pkgname-$pkgver-$pkgrel-npm-cache"
-
-	npx gulp build
-	npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron' -c.electronVersion="$(cat '/usr/lib/electron/version')"
+	NODE_ENV='production' HOME="$srcdir/$pkgname-$pkgver-$pkgrel-home" npx gulp build
+	NODE_ENV='production' HOME="$srcdir/$pkgname-$pkgver-$pkgrel-home" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron' -c.electronVersion="$(cat '/usr/lib/electron/version')"
 }
 
 package() {
