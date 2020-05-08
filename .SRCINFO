@@ -1,6 +1,6 @@
 pkgbase = qtel
 	pkgdesc = Graphical Userinteface for Echolink written in QT
-	pkgver = 17.12.2
+	pkgver = 19.09.1
 	pkgrel = 6
 	url = http://www.github.com/sm0svx/svxlink/
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = qtel
 	depends = opus
 	depends = qt4
 	conflicts = svxlink
-	source = https://github.com/sm0svx/svxlink/archive/17.12.2.tar.gz
-	sha256sums = 0e21b172858d54d642cd9c8a7e33e87bb50b1548f0291074271e08ab5f1e060c
+	source = https://github.com/sm0svx/svxlink/archive/19.09.1.tar.gz
+	sha256sums = 5e5cbc3501fa6c6ec68334f8217ef93f5dc879d4d0e41e6f71378fd67d69f6a2
 
 pkgname = qtel
 
