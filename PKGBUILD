@@ -1,11 +1,12 @@
-# Maintainer: Steffen Weber <-boenki-gmx-de->
-# Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Contributor: Steffen Weber <-boenki-gmx-de->
+# Contributor: Stephan Springer <buzo+arch@Lini.de>
 # Contributor: Soeren Koerner <nonick at posteo dot de>
 # Contributor: Benedikt 'linopolus' Mueller <benemue at googlemail dot com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=mtplayer
 _realname=MTPlayer
-pkgver=8
+pkgver=9
 pkgrel=1
 pkgdesc="Offers access to the Mediathek of different german tv stations (ARD, ZDF, Arte, etc.)"
 arch=('any')
@@ -17,7 +18,7 @@ optdepends=('rtmpdump: stream flash'
             'vlc: play files directly from mediathek')
 source=("https://www.p2tools.de/extra/download/${_realname}-$pkgver.zip"
         $pkgname.desktop $pkgname.sh)
-sha256sums=('2e8582f80ec0fdfe427c050d2bfcbe780de3d5f82169a76d1be4f1c4614348f2'
+sha256sums=('f48c342e200def89beb7e032b920e7fe3999c06a21ff966ab6f207de7d29b0d6'
             '00ac87b32ec859299ac8ce456a3d2773f5e849779f726711561c32ed5a075dc8'
             'e41444cc5fb59938e1532eeb7d6e9163812226dc8f5790e529858bcf4b38cd30')
 
