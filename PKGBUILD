@@ -3,7 +3,7 @@
 _basename=libnice
 pkgname=lib32-libnice
 pkgver=0.1.16
-pkgrel=2
+pkgrel=3
 pkgdesc="An implementation of the IETF's draft ICE (for p2p UDP data streams) (32-bit)"
 url="https://nice.freedesktop.org"
 arch=(x86_64)
@@ -24,6 +24,7 @@ build() {
     export CC='gcc -m32'
     export CXX='g++ -m32'
     export PKG_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config'
+    export PKG_CONFIG_PATH='$PKG_CONFIG_PATH:/usr/lib32/pkgconfig/:/usr/lib/pkgconfig'
 
     arch-meson libnice build \
         --libdir='/usr/lib32' \
