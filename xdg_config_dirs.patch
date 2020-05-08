@@ -1,26 +1,26 @@
---- src/gam/var.py	2019-05-01 22:06:05.334383160 -0600
-+++ src/gam/var.py	2019-05-01 22:09:01.646756561 -0600
-@@ -20,6 +20,19 @@
- GAM_LATEST_RELEASE = GAM_ALL_RELEASES+'/latest'
- GAM_PROJECT_APIS = 'https://raw.githubusercontent.com/jay0lee/GAM/master/src/project-apis.txt'
+--- src/gam/var.py	2020-05-08 10:01:09.723815658 -0700
++++ src/gam/var.py	2020-05-08 10:00:47.173712281 -0700
+@@ -21,6 +21,19 @@
+ GAM_LATEST_RELEASE = GAM_ALL_RELEASES + '/latest'
+ GAM_PROJECT_FILEPATH = 'https://raw.githubusercontent.com/jay0lee/GAM/master/src/'
  
 +try:
-+  XDG_CONFIG_DIR = os.environ['XDG_CONFIG_HOME']
++    XDG_CONFIG_DIR = os.environ['XDG_CONFIG_HOME']
 +except KeyError:
-+  XDG_CONFIG_DIR = os.path.expanduser("~") + '/.config/'
++    XDG_CONFIG_DIR = os.path.expanduser("~") + '/.config/'
 +CONFIG_DIR = XDG_CONFIG_DIR + 'gam/'
 +
 +try:
-+  os.makedirs(CONFIG_DIR, mode=700)
++    os.makedirs(CONFIG_DIR, mode=700)
 +except OSError:
-+  if not os.path.isdir(CONFIG_DIR):
-+    raise
++    if not os.path.isdir(CONFIG_DIR):
++        raise
 +
 +
  true_values = ['on', 'yes', 'enabled', 'true', '1']
  false_values = ['off', 'no', 'disabled', 'false', '0']
- usergroup_types = ['user', 'users',
-@@ -32,8 +45,8 @@
+ usergroup_types = [
+@@ -35,8 +48,8 @@
  WARNING_PREFIX = 'WARNING: '
  UTF8 = 'utf-8'
  UTF8_SIG = 'utf-8-sig'
@@ -31,7 +31,7 @@
  MY_CUSTOMER = 'my_customer'
  # See https://support.google.com/drive/answer/37603
  MAX_GOOGLE_SHEET_CELLS = 5000000
-@@ -640,9 +653,9 @@
+@@ -1065,9 +1078,9 @@
  
  #
  _DEFAULT_CHARSET = UTF8
@@ -43,8 +43,8 @@
 +_FN_OAUTH2_TXT = CONFIG_DIR + 'oauth2.txt'
  #
  GM_Globals = {
-   GM_SYSEXITRC: 0,
-@@ -685,7 +698,7 @@
+     GM_SYSEXITRC: 0,
+@@ -1111,7 +1124,7 @@
  # Path to client_secrets.json
  GC_CLIENT_SECRETS_JSON = 'client_secrets_json'
  # GAM config directory containing client_secrets.json, oauth2.txt, oauth2service.json, extra_args.txt
@@ -53,12 +53,3 @@
  # custmerId from gam.cfg or retrieved from Google
  GC_CUSTOMER_ID = 'customer_id'
  # If debug_level > 0: extra_args[u'prettyPrint'] = True, httplib2.debuglevel = gam_debug_level, appsObj.debug = True
-@@ -752,7 +765,7 @@
-   GC_MEMBER_MAX_RESULTS: 200,
-   GC_NO_BROWSER: False,
-   GC_NO_CACHE: False,
--  GC_NO_UPDATE_CHECK: False,
-+  GC_NO_UPDATE_CHECK: True,
-   GC_NUM_THREADS: 25,
-   GC_OAUTH2_TXT: _FN_OAUTH2_TXT,
-   GC_OAUTH2SERVICE_JSON: _FN_OAUTH2SERVICE_JSON,

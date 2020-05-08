@@ -23,17 +23,20 @@ depends=(
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/jay0lee/GAM/archive/v${pkgver}.tar.gz"
     "xdg_config_dirs.patch"
+    "disable_update_checks.patch"
     "gam.sh"
 )
 
 sha256sums=('7c347c9707e84a5d56bcbd9a548587f3a7122160099724f231ec4d8869456cde'
-            '3e1dcfd32d3635143c220b07752c46af523b6a875b80f01108a43144669dec2a'
+            'bbb4bf158740c083d1209e6922b2b113b6fbdf0c8906aa706b2193b67041ed08'
+            '20ce5f7630feb47b1838ad998aa98bfafbc18f494f0697fbcfab484a572ae6d5'
             'f8613546b8d4a51f05342d3680553c20a2e0995c3be90e469f1da3bb83ca172e')
 
 prepare() {
     mv "GAM-$pkgver" "$pkgname-$pkgver"
     cd "$pkgname-$pkgver"
     patch -p0 < ../xdg_config_dirs.patch
+    patch -p0 < ../disable_update_checks.patch
 }
 
 package() {
@@ -45,9 +48,6 @@ package() {
     mkdir -p "$pkgdir/usr/share/$pkgname"
 
     cp -r "$pkgname-$pkgver"/src/gam/ "$pkgdir/usr/share/$pkgname"
-
-    # Upstream wants to insert themselves into every facet of where they should not be.
-    touch "$pkgdir/usr/share/$pkgname/gam/noupdatecheck.txt"
 
     find "$pkgdir/usr/share/$pkgname" -type f -exec chmod 644 {} +
     find "$pkgdir/usr/share/$pkgname" -type d -exec chmod 755 {} +

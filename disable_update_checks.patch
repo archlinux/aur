@@ -1,0 +1,11 @@
+--- src/gam/var.py	2020-05-08 10:01:09.723815658 -0700
++++ src/gam/var.py	2020-05-08 10:03:12.641007096 -0700
+@@ -1174,7 +1174,7 @@
+     GC_DRIVE_DIR: '',
+     GC_NO_BROWSER: False,
+     GC_NO_CACHE: False,
+-    GC_NO_UPDATE_CHECK: False,
++    GC_NO_UPDATE_CHECK: True,
+     GC_NUM_THREADS: 25,
+     GC_OAUTH_BROWSER: False,
+     GC_OAUTH2_TXT: _FN_OAUTH2_TXT,
