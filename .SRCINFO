@@ -1,0 +1,21 @@
+pkgbase = solarwallet-appimage
+	pkgdesc = Simple and Secure Stellar Wallet
+	pkgver = 0.24.0
+	pkgrel = 1
+	url = https://solarwallet.io/
+	install = solarwallet-appimage.install
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	provides = solarwallet
+	conflicts = solarwallet
+	options = !strip
+	source = https://github.com/satoshipay/solar/archive/v0.24.0.tar.gz
+	source = solarwallet-appimage.sh
+	source = solarwallet-appimage.desktop
+	md5sums = f247455f323ff48ad2cb7ba67690a862
+	md5sums = 9065522af7470ea8274db63226ff189a
+	md5sums = 997ffe13c2bed2205ac343a631fb2d21
+
+pkgname = solarwallet-appimage
+
