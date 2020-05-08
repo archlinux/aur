@@ -1,0 +1,13 @@
+pkgbase = qsync
+	pkgdesc = QNap's synchronization client
+	pkgver = 1.0.5.0305
+	pkgrel = 1
+	epoch = 1
+	arch = x86_64
+	license = custom
+	optdepends = nautilus: this client has nautlius integration
+	source = qsync-1.0.5.0305.deb::https://download.qnap.com/Storage/Utility/QNAPQsyncClientUbuntux64-1.0.5.0305.deb
+	md5sums = 9c34cb93a86e1d3364c12a4a1270232d
+
+pkgname = qsync
+
