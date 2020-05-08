@@ -1,7 +1,7 @@
 # Maintainer: PAPPY <pappy _AT_ a s c e l i o n _DOT_ com>
 
-_version=3.22.0
-_patch=02
+_version=3.23.0
+_patch=03
 
 pkgname=nexus-oss
 pkgver=${_version}.${_patch}
@@ -16,8 +16,8 @@ provides=($pkgname)
 backup=("var/lib/$pkgname/etc/nexus.properties"
 		"usr/lib/$pkgname/bin/nexus.vmoptions"
 		)
-#source=("https://download.sonatype.com/nexus/3/nexus-$_version-$_patch-unix.tar.gz"
-source=("https://sonatype-download.global.ssl.fastly.net/repository/repositoryManager/3/nexus-$_version-$_patch-unix.tar.gz"
+#source=("https://sonatype-download.global.ssl.fastly.net/repository/repositoryManager/3/nexus-$_version-$_patch-unix.tar.gz"
+source=("https://download.sonatype.com/nexus/3/nexus-$_version-$_patch-unix.tar.gz"
 		"$pkgname"
 		"$pkgname.install"
 		"$pkgname.properties"
@@ -27,7 +27,7 @@ source=("https://sonatype-download.global.ssl.fastly.net/repository/repositoryMa
 		"$pkgname.vmoptions"
 		"pref_jre.cfg"
 		)
-sha256sums=('9fef4ee8d7423cd73d2bf3576acc22f8d1b76c9b0ff733e2d36f00b59f1b8388'
+sha256sums=('673492fc4f281df31c4f023aac1cc0e423ded6703b5a9c6a2b455265312ee8cb'
             '3d2ebc2a796dbdc7e7e3b97e4c3272292169c898776e111f503f0517e434caff'
             '0c8003d478cf12115e236e7e25ce86cd9f1a6f9c8d1c8e41ed17156c8f6d2d08'
             'dcdef5614db12f38b3da0b9de1b52fb7fa402af6621a825981c6168a34a6ad9b'
