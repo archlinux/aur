@@ -2,13 +2,13 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gnome-tweaks-git
-pkgver=3.31.3.r4.g99e06eb
+pkgver=3.34.0.r21.g39cde84
 pkgrel=1
 pkgdesc="Graphical interface for advanced GNOME 3 settings (Tweak Tool)"
 url="https://wiki.gnome.org/Apps/Tweaks"
 arch=(any)
 license=(GPL)
-depends=(gnome-settings-daemon python-gobject)
+depends=(gnome-settings-daemon python-gobject libhandy)
 makedepends=(git meson)
 groups=(gnome-extra)
 provides=(gnome-tweaks)
@@ -27,7 +27,7 @@ build() {
 }
 
 check() {
-  meson test -C build
+  meson test -C build --print-errorlogs
 }
 
 package() {
