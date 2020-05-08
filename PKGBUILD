@@ -1,59 +1,44 @@
 # Maintainer: yesuu zhang <yesuu79@qq.com>
+# Contributor: qaz <fkxxyz@163.com>
 
 pkgname=youdao-dict
-pkgver=1.1.0
+pkgver=6.0.0
 pkgrel=2
 pkgdesc='YouDao Dictionary'
 arch=('i686' 'x86_64')
-url='http://cidian.youdao.com/index-linux.html'
+url='https://cidian.youdao.com/'
 license=('GPL3')
 depends=(
-	'desktop-file-utils'
 	'hicolor-icon-theme'
-	'python'
+	
 	'python-pyqt5'
 	'python-requests'
 	'python-xlib'
+	'python-gobject'
+	'python-opengl'
 	'python-pillow'
+	'python-pyquery'
+	'python-webob'
+	'python-xdg'
+	
 	'tesseract-data-eng'
 	'tesseract-data-chi_tra'
 	'tesseract-data-chi_sim'
-	'python-lxml'
-	'python-xdg'
-	'python-webob'
 	'qt5-webkit'
 	'qt5-graphicaleffects'
 	'qt5-quickcontrols'
 )
-install=youdao-dict.install
-source=('youdao-arch.patch')
-source_i686=('http://codown.youdao.com/cidian/linux/youdao-dict_1.1.0-0~i386.tar.gz')
-source_x86_64=('http://codown.youdao.com/cidian/linux/youdao-dict_1.1.0-0~amd64.tar.gz')
-sha256sums=('ab1e8cf2b38c459c60af5e47814a022ad485d2e2c0ae257ffae4c03174e703a6')
+source_i686=('http://codown.youdao.com/cidian/linux/youdao-dict_6.0.0_i386.tar.gz')
+source_x86_64=('http://codown.youdao.com/cidian/linux/youdao-dict-6.0.0-amd64.tar.gz')
 sha256sums_i686=('d1ff404f1e465d6a196b566294ddfea1a1bfe4568226201b65d74236407152fc')
-sha256sums_x86_64=('5c3a5ed105238e2fad181704fd99815c4275bf546136f99e817614188794dc07')
-
-prepare() {
-	cd "${srcdir}/src"
-	patch -Np2 -i "${srcdir}/youdao-arch.patch"
-}
+sha256sums_x86_64=('556e2dadd0a737967b78ffd9ad5430660d190e4489854a309c85f81fdf7f084f')
 
 package() {
 	cd "${srcdir}"
-	mkdir -p "${pkgdir}/usr/bin"
-	mkdir -p "${pkgdir}/usr/share/youdao-dict"
-	mkdir -p "${pkgdir}/usr/share/applications"
-	mkdir -p "${pkgdir}/usr/share/dbus-1/services"
-	mkdir -p "${pkgdir}/usr/share/icons/hicolor/48x48/apps"
-	mkdir -p "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-	mkdir -p "${pkgdir}/etc/xdg/autostart"
-	cp -r src/* "${pkgdir}/usr/share/youdao-dict"
-	cp -r data/hicolor/* "${pkgdir}/usr/share/icons/hicolor/"
-	cp data/youdao-dict.desktop "${pkgdir}/usr/share/applications/"
-	cp data/youdao-dict-autostart.desktop "${pkgdir}/etc/xdg/autostart/"
-	cp data/com.youdao.backend.service "${pkgdir}/usr/share/dbus-1/services/"
-	chmod 755 "${pkgdir}/usr/share/youdao-dict/main.py"
-	chmod 755 "${pkgdir}/usr/share/youdao-dict/youdao-dict-backend.py"
-	ln -sf /usr/share/youdao-dict/main.py "${pkgdir}/usr/bin/youdao-dict"
+	[ ${CARCH} == x86_64 ] && cd "youdao-dict-${pkgver}-amd64"
+	
+	sed -i -e "/PREFIX=/cROOT=${pkgdir}\nPREFIX=\$ROOT/usr" -e 's/\/etc/$ROOT\/etc/g' -e 's/ln -sf $PREFIX/ln -sf \/usr/g' install.sh
+	sh install.sh
 }
+
 
