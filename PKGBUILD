@@ -1,6 +1,6 @@
 # Maintainer:  Keating Reid <keating.reid@protonmail.com>
 pkgname=libmowgli-2-git
-pkgver=2.1.3.r42.g8be3be8
+pkgver=v2.1.3.r42.g8be3be8
 pkgrel=1
 pkgdesc="A class library containing performance and usability oriented extensions to C."
 arch=('i686' 'x86_64')
@@ -15,8 +15,11 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd $pkgname
-	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
+	# git rev-parse --short HEAD
+	# cutting off 'foo-' prefix that presents in the git tag
+  	git describe --long | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
 
 build() {
 	cd "${srcdir}/${pkgname}"
@@ -25,7 +28,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}"
 	make DESTDIR="${pkgdir}" install
 	install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
