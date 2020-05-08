@@ -4,7 +4,7 @@ _edition=' Isolated Edition'
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
 pkgver='1.22.0.r3278.1f7cf26b'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
@@ -38,12 +38,6 @@ prepare() {
 	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron6/version')"'"|' 'package.json'
 
 	# Prepare dependencies
-	local HOME="$srcdir/$pkgname-home"
-	local XDG_CACHE_HOME="$srcdir/$pkgname-cache"
-	local npm_config_devdir="$srcdir/$pkgname-npm-dev"
-	local npm_config_cache="$srcdir/$pkgname-npm-cache"
-
-	npm install
 
 	# Disable hadron-build packaging
 	patch -d 'node_modules/hadron-build/' --forward -p1 < '../hadron-build-packaging.diff'
@@ -57,18 +51,12 @@ pkgver() {
 build() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	local NODE_ENV='production'
-	local HOME="$srcdir/$pkgname-home"
-	local XDG_CACHE_HOME="$srcdir/$pkgname-cache"
-	local npm_config_devdir="$srcdir/$pkgname-npm-dev"
-	local npm_config_cache="$srcdir/$pkgname-npm-cache"
-
 	# electron-packager does not support building against a local electron binary,
 	# the best we can do for now is to just set the electron version in package.json
 	# and let electron-packager use it for building
 	# https://github.com/electron/electron-packager/issues/187
 
-	npm run release "$_target"
+	NODE_ENV='production' HOME="$srcdir/$pkgname-home" npm run release "$_target"
 }
 
 package() {
