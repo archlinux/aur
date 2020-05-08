@@ -1,7 +1,7 @@
 # Maintainer: Raven's Iris <liones121@gmail.com>
 pkgname=nerd-fonts-victor-mono
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched font Victor Mono from nerd-fonts"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
@@ -12,8 +12,9 @@ conflicts=('nerd-fonts-git' 'nerd-fonts-complete')
 groups=("nerd-fonts")
 source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/VictorMono.zip"
         "https://github.com/ryanoasis/nerd-fonts/raw/v$pkgver/LICENSE")
-sha1sums=('0dd6d0e9de2c68bb4de61f5bce617c5cd9a08b5b'
+sha1sums=('1225acdbc30e327f0a73235d43a902414f5f27a2'
           '92fdad3c8babc0473da5f03e41fb1151417ab386')
+
 
 package() {
   find . -iname "*.otf" -not -iname "*Windows Compatible.otf" -execdir install -Dm644 {} "$pkgdir/usr/share/fonts/OTF/{}" \;
