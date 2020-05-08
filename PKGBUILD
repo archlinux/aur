@@ -2,13 +2,13 @@
 
 pkgname=license
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to easily add a license to your project"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
 url="https://sr.ht/~zethra/license/"
 license=('MPL-2.0')
 source=("https://git.sr.ht/~zethra/license/archive/$pkgver.tar.gz")
-depends=('gcc-libs-multilib')
+depends=('gcc-libs-multilib' 'fzf' 'xclip')
 makedepends=('rust' 'cargo')
 sha256sums=("429a1d688aaf150513babba2996a1ea9c8bebcd0e31deae3902b740a55952b1b")
 
