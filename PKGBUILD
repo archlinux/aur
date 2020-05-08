@@ -54,8 +54,8 @@ prepare() {
 build() {
   cd build
 
-  export CC=clang
-  export CXX=clang++
+  #export CC=clang
+  #export CXX=clang++
 
   cmake ../pcsx2 \
     -DCMAKE_TOOLCHAIN_FILE=cmake/linux-compiler-i386-multilib.cmake \
