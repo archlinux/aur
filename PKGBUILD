@@ -1,7 +1,7 @@
 # Maintainer: Zach Hoffman <zach@zrhoffman.net>
 pkgname=f5vpn
 pkgver=7190.2020.0221.1
-pkgrel=1
+pkgrel=2
 pkgdesc='VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM 13.0'
 arch=('x86_64')
 source=('LICENSE')
@@ -25,12 +25,12 @@ package() {
         ln -s "/opt/f5/vpn/${executable}" "${pkgdir}"/usr/bin/${executable}
     done
 
-    # Use system QT libraries
+    # Use system Qt libraries
     for library in lib/*.so.*; do
         ln -sf "/usr/${library%%.so.*}.so" "$library"
     done
 
-    # Use system QT libraries
+    # Use system Qt libraries
     for plugin in platforms/*.so; do
         ln -sf "/usr/lib/qt/plugins/${plugin}" "$plugin"
     done

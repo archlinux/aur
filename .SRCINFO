@@ -1,7 +1,7 @@
 pkgbase = f5vpn
 	pkgdesc = VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM 13.0
 	pkgver = 7190.2020.0221.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.f5.com/csp/article/K32311645#link_04_05
 	arch = x86_64
 	license = commercial
