@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=JADX-GUI
+Comment=Dex to Java decompiler
+Exec=/usr/bin/jadx-gui
+Terminal=false
+Type=Application
+Icon=jadx

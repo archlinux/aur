@@ -1,0 +1,15 @@
+pkgbase = jadx-gui-desktop
+	pkgdesc = A .desktop file for JADX-GUI, with an icon
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/skylot/jadx
+	arch = any
+	license = Apache-2.0
+	depends = jadx
+	source = https://github.com/skylot/jadx/raw/master/jadx-gui/src/main/resources/logos/jadx-logo.png
+	source = jadx-gui.desktop
+	sha512sums = e951109662a0023be3e7171f1d77d88e4e2f432ec616471f543c03de85a9da6e6fff844d4dd3ce84de0ccb74fe63f6845db2baff2fdb55a4944048ab8136eb2d
+	sha512sums = 731ec3e08adaf12d04a733363e661d50fd1e11f1e5e87a8ae0ec3de2b3fc855d74360ca579b694cbfab2685dfd1f8ea2eb592816d8c0fd8163073a95d90d578a
+
+pkgname = jadx-gui-desktop
+
