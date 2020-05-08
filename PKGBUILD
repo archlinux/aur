@@ -2,7 +2,7 @@
 
 pkgname=dns-lexicon
 pkgver=3.3.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Manipulate DNS records on various DNS providers in a standardized/agnostic way"
 arch=('any')
 url="https://github.com/AnalogJ/lexicon"
@@ -10,14 +10,12 @@ license=('MIT')
 depends=('python-future' 'python-tldextract' 'python-cryptography' 'python-yaml' 'python-setuptools'
          # requests[security] Expanded:
          'python-requests' 'python-pyopenssl' 'python-idna')
-optdepends=('python-softlayer: for SoftLayer support'
+optdepends=('python-pynamecheap: for Namecheap support'
             'python-boto3: for Route53 support'
-            'python-pynamecheap: for Namecheap support'
+            'python-softlayer: for SoftLayer support'
             'python-zeep: for Subreg and Gransy support'
             'python-xmltodict: for Plesk support'
-            'python-html5lib: for Hetzner support'
-            'python-dnspython: for Hetzner support'
-            'python-beautifulsoup4: for Henet, Easyname, GratisDNS and Hetzner support'
+            'python-beautifulsoup4: for Henet, Easyname and GratisDNS support'
             'python-localzone: for localzone support')
 checkdepends=('python-pytest-runner' 'python-vcrpy' 'python-softlayer' 'python-boto3' 'python-mock'
               'python-pynamecheap' 'python-zeep' 'python-xmltodict' 'python-beautifulsoup4'
