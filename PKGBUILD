@@ -7,7 +7,7 @@ _srcname=linux-5.6
 _major=5.6
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=8
+_minor=11
 ### on initial release comment this out and set to =1
 _minorc=$((_minor+1))
 #_minorc=1
@@ -32,18 +32,20 @@ source=(
   config         # the main kernel config file
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('ee58cb5c58555c97d7b784e783368b6cfd45a646dec8f293d6931855beb51ff3'
+sha256sums=('c602f7d8941b7903850dd83fc041132db0109d4432e98f582c4761cdbeb8c6cd'
             'SKIP'
-            '19e142ff07a2c8d10116074099b9d845682e74544a2b6c1641f7cb044ac282df'
+            'd6dd6cbe99429f088eddb248abce7832e8f8e45eb072cbf0d0f86b5b87221baa'
             'SKIP'
             'f392c9ecbb5177ea2573aaf22935322940ea2be0366f3fb9c9f861431f4aed21'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '76583cf912c01fdcbca445628ac6e4c03b7f22fda321ee0c7143f3703081650f')
+            'a91cd1560d0312f00d0c3d31009e1ca3de83aa133adc3ae9740e2996ef4c3c4b'
+            '7e0f02ca30bf51a1862c4cfc4d09641ba76c5fabaf452883aa495c421008f124')
 
 _kernelname=${pkgbase#linux}
 
