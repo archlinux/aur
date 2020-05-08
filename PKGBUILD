@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.0.5c60f66890afeb
+pkgver=1.7.0.r13.8bf6ba144
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
