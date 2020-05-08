@@ -27,10 +27,8 @@ depends=(
   lib32-wxgtk2
 )
 makedepends=(
-  clang
   cmake
   git
-  png++
   xorgproto
 )
 provides=(pcsx2)
@@ -53,10 +51,7 @@ prepare() {
 
 build() {
   cd build
-
-  #export CC=clang
-  #export CXX=clang++
-
+  
   cmake ../pcsx2 \
     -DCMAKE_TOOLCHAIN_FILE=cmake/linux-compiler-i386-multilib.cmake \
     -DCMAKE_BUILD_TYPE=Release \
