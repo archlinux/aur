@@ -4,14 +4,15 @@
 _basename=fxsdk
 pkgname=${_basename}-git
 pkgver=r35.c9dd9fa
-pkgrel=3
-pkgdesc="Tools to program for the Casio fx9860 calculators"
-arch=("i686" "x86_64")
-provides=("fxsdk" "fxconv" "fxg1a")
+pkgrel=4
+pkgdesc='Tools to program for the Casio fx9860 calculators'
+arch=('i686' 'x86_64')
+provides=('fxsdk' 'fxconv' 'fxg1a')
 depends=()
-makedepends=("git")
+optdepends=('gint: alternative library and kernel for add-in development on fx-9860G and fx-CG50')
+makedepends=('git')
 source=("${pkgname}::git+https://gitea.planet-casio.com/Lephenixnoir/${_basename}.git")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname}"
