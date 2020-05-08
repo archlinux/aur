@@ -1,0 +1,14 @@
+pkgbase = fastcgi++
+	pkgdesc = This library is intended as a high-efficiency C++14 api for web development.
+	pkgver = 3.0
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = cmake
+	conflicts = fastcgi++
+	source = https://github.com/eddic/fastcgipp/archive/3.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = fastcgi++
+
