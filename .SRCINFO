@@ -1,0 +1,22 @@
+pkgbase = minidlna-mp34
+	pkgdesc = Extended MiniDLNA server. A possible solution if the audio player of your DLNA client has a poor appearance.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/peter-nebe/minidlna-mp34
+	install = post_install.pacman
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-webkit
+	depends = ffmpeg
+	depends = libid3tag
+	depends = libexif
+	source = https://ffmpeg.org/releases/ffmpeg-4.2.2.tar.bz2
+	source = https://downloads.sourceforge.net/project/minidlna/minidlna/1.2.1/minidlna-1.2.1.tar.gz
+	source = git+https://github.com/peter-nebe/minidlna-mp34.git
+	sha256sums = b620d187c26f76ca19e74210a0336c3b8380b97730df5cdf45f3e69e89000e5c
+	sha256sums = 67388ba23ab0c7033557a32084804f796aa2a796db7bb2b770fb76ac2a742eec
+	sha256sums = SKIP
+
+pkgname = minidlna-mp34
+

@@ -1,0 +1,4 @@
+# to be executed by pacman
+post_install() {
+  /etc/minidlna-mp34/post_install.sh
+}
