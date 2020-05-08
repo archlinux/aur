@@ -1,7 +1,8 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=yafaray-blender-exporter
-pkgver=3.3.0
+pkgver=3.4.2
 _blenderver=2.79
 pkgrel=1
 pkgdesc="YafaRay's Blender Exporter"
@@ -11,8 +12,8 @@ license=('GPL2')
 depends=('blender' 'yafaray')
 source=("https://github.com/YafaRay/Blender-Exporter/archive/v${pkgver}.tar.gz"
         "paths.patch")
-md5sums=('b1eb1bb0eb56541c6c1990f02b15603f'
-         '365aea227d63bc87283c80f563e4910c')
+sha512sums=('d4d65cc8e403da1139767cb5c5d5caf551a7d634e1e6798bbf2cfcfaac080a0debabba6c109dd2c9dceeefb50c1c95498a3197ed58654c391413e131c801b88f'
+            '76bb781e5b63245c4b8b324fc5f21adba7ebf478358d4d274dd903722789009de7727ad122a208feac8bfafa87208f36e49706ba7b48d14def8f4c4443c2cfd0')
 
 prepare() {
   cd "${srcdir}/Blender-Exporter-${pkgver}"
