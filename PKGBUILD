@@ -6,7 +6,7 @@ _pkgbase=nginx
 pkgname=(nginx-rtmp nginx-rtmp-src)
 pkgver=1.18.0
 _rtmpver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server'
 arch=(x86_64)
 url='https://nginx-rtmp.blogspot.com/'
@@ -99,6 +99,7 @@ build() {
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
     --with-cc-opt="$CFLAGS $CPPFLAGS" \
     --with-ld-opt="$LDFLAGS" \
+    --add-module=$srcdir/nginx-rtmp-module-$_rtmpver \
     ${_common_flags[@]} \
     ${_stable_flags[@]}
 

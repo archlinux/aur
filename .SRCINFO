@@ -1,7 +1,7 @@
 pkgbase = nginx-rtmp
 	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server
 	pkgver = 1.18.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://nginx-rtmp.blogspot.com/
 	install = nginx.install
 	arch = x86_64
