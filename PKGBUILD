@@ -4,7 +4,7 @@ _edition=' Isolated Edition'
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
 pkgver='1.22.0.r3278.1f7cf26b'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
@@ -38,6 +38,7 @@ prepare() {
 	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron6/version')"'"|' 'package.json'
 
 	# Prepare dependencies
+	HOME="$srcdir/$pkgname-home" npm install
 
 	# Disable hadron-build packaging
 	patch -d 'node_modules/hadron-build/' --forward -p1 < '../hadron-build-packaging.diff'
