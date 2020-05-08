@@ -1,8 +1,9 @@
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: feanor1397 <feanor1397@gmail.com>
 
 pkgname=rtlwifi_new-extended-dkms
 _pkgname=rtlwifi_new
-pkgver=r304.f19fee2
+pkgver=r305.d3ecc1d
 pkgrel=1
 pkgdesc='Newest Realtek rtlwifi codes, extended branch'
 arch=('i686' 'x86_64')
@@ -13,7 +14,7 @@ provides=('rtlwifi_new-dkms')
 conflicts=('rtlwifi_new-dkms')
 install=${pkgname}.install
 source=("git+https://github.com/lwfinger/rtlwifi_new.git#branch=extended")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 
 
@@ -27,7 +28,7 @@ package() {
 	cp -dr --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
 	
 	# Fix for low signal on 8723de
-    install -dm755 "${pkgdir}/etc/modprobe.d"
+	install -dm755 "${pkgdir}/etc/modprobe.d"
 	echo "options rtl8723de ant_sel=2" >> "${pkgdir}/etc/modprobe.d/rtl8723de.conf"
         
 	# Set name and version
