@@ -6,7 +6,7 @@
 
 pkgname=spin
 pkgver=6.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Tool for the formal verification of distributed software systems'
 arch=('i686' 'x86_64')
 url='https://spinroot.com/'
@@ -31,7 +31,7 @@ package() {
 
   # install manpage and docs
   cd "${srcdir}"/Spin-version-${pkgver}
-  install -Dm644 -t "${pkgdir}"/usr/share/man/man1/spin.1.gz Man/spin.1
+  install -Dm644 -t "${pkgdir}"/usr/share/man/man1/ Man/spin.1
 
   install -dm755 "${pkgdir}"/usr/share/doc/${pkgname}/examples
   cp -a Examples/* "${pkgdir}"/usr/share/doc/${pkgname}/examples/
