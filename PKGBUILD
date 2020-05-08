@@ -5,8 +5,8 @@ pkgname=sickchill
 _gitname=SickChill
 _gitauthor=SickChill
 _sickchill_dir="/opt/sickchill"
-pkgver=2020.05.03
-pkgrel=1
+pkgver=2020.05.08
+pkgrel=4
 pkgdesc="Automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic."
 arch=('any')
 url="https://github.com/${_gitauthor}/${_gitname}"
@@ -33,7 +33,7 @@ source=("https://github.com/${_gitauthor}/${_gitname}/archive/v${pkgver}-${pkgre
         "${pkgname}.service"
         "${pkgname}.install")
 
-md5sums=('99a7fa5b7d9b1216868aa87865c213c5'
+md5sums=('ea9712e1dfbba22a11f8562cdc1c3646'
          '373832300e91a4011285eb8d6df9cef0'
          '961815f362818fa961c37c70199c5b6f')
 
