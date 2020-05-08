@@ -1,15 +1,13 @@
 pkgbase = gint-git
-	pkgdesc = Gint and a libc for the Casio fx9860 calculators
-	pkgver = r55.181555a
+	pkgdesc = Alternative library and kernel for add-in development on fx-9860G and fx-CG50
+	pkgver = r155.61da7de
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
 	depends = fxsdk
-	depends = sh3eb-elf-binutils
-	depends = sh3eb-elf-gcc
-	options = !strip
-	source = git+http://git.planet-casio.com/lephe/gint.git
-	md5sums = SKIP
+	depends = sh-elf-gcc-casio
+	source = gint-git::git+https://gitea.planet-casio.com/Lephenixnoir/gint.git#commit=61da7debc89abafcfee3dd9e0582a7429672bcb4
+	sha256sums = SKIP
 
 pkgname = gint-git
 
