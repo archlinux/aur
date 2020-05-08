@@ -1,7 +1,8 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+pkgdesc='Free monospaced font for coding and tabular layout'
 pkgname=ttf-sometype-mono
 pkgver=1.000
-pkgrel=1
+pkgrel=2
 _gitcommit=e1741b500ec74b441852451d1172f99b81100249
 arch=(any)
 license=(custom:OFL)
