@@ -1,6 +1,6 @@
 pkgbase = flannel
 	pkgdesc = Etcd backed network fabric for containers
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/coreos/flannel
 	arch = any

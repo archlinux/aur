@@ -1,9 +1,10 @@
-# Maintainer: Tim Meusel <tim@bastelfreak.de>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Tim Meusel <tim@bastelfreak.de>
 # Contributor: Iwan Timmer <irtimmer@gmail.com>
 # Contributor: Christian Rebischke <Chris.Rebischke[at]archlinux[dot]org>
 
 pkgname=flannel
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Etcd backed network fabric for containers"
 depends=('glibc')
