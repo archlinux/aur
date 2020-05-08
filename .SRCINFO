@@ -1,6 +1,6 @@
 pkgbase = discord-overlay-git
 	pkgdesc = QT5 Overlay for discord
-	pkgver = r34.24f434d
+	pkgver = r49.0a2fa2f
 	pkgrel = 1
 	url = https://github.com/trigg/DiscordOverlayLinux
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = discord-overlay-git
 	makedepends = qt5-webengine
 	makedepends = python-pyqtwebengine
 	makedepends = python-pyqt5
+	optdepends = picom: transparency support
 	provides = discord-overlay
 	conflicts = discord-overlay
 	source = discord-overlay::git+https://github.com/trigg/DiscordOverlayLinux
