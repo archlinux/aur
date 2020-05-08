@@ -3,13 +3,13 @@
 
 pkgname=tanka-bin
 pkgver=0.10.0
-pkgrel=0
-pkgdesc="Flexible, reusable and concise configuration for Kubernetes using Jsonnet"
+pkgrel=1
+pkgdesc='Flexible, reusable and concise configuration for Kubernetes using Jsonnet'
 arch=('x86_64')
 
-url="https://tanka.dev"
+url='https://tanka.dev'
 license=('Apache')
-source=("https://github.com/grafana/tanka/releases/download/v${pkgver}/tk-linux-amd64")
+source=("tk-$pkgver::https://github.com/grafana/tanka/releases/download/v${pkgver}/tk-linux-amd64")
 
 depends=('diffutils' 'kubectl')
 optdepends=(
