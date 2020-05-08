@@ -1,0 +1,21 @@
+pkgbase = auralcap
+	pkgdesc = Monitor files and make noise
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/NSkelsey/monopticon/tree/master/contrib/expirements/auralcap
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = csound
+	makedepends = corrade
+	makedepends = libevent
+	makedepends = bash
+	makedepends = git
+	depends = csound
+	depends = corrade
+	depends = libevent
+	source = git+https://github.com/nskelsey/monopticon/
+	md5sums = SKIP
+
+pkgname = auralcap
+
