@@ -3,12 +3,13 @@
 pkgname=align-git
 _pkgname=align
 pkgver=1.1.0.r0.g3cf3157
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose application for aligning text"
 arch=('x86_64')
 url='https://github.com/Guitarbum722/align'
 license=('MIT')
 provides=('align')
+depends=('glibc')
 makedepends=('git' 'go-pie')
 source=("git+${url}")
 md5sums=('SKIP')
@@ -38,6 +39,6 @@ build() {
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}/cmd/align/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   go clean -modcache #Remove go libraries
 }
