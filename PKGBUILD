@@ -8,7 +8,7 @@
 
 pkgname=firefox-wayland-hg
 _pkgname=firefox
-pkgver=r590343+.6af025613ee2+
+pkgver=r591370+.fdd919d10609+
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org (mozilla-unified hg, release branding, targeting wayland)"
 arch=(x86_64)
@@ -62,6 +62,11 @@ pkgver() {
 prepare() {
   mkdir mozbuild
   cd mozilla-unified
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1635764
+  hg export -r fbef9d03ac28 | patch -Rp1
+  hg export -r 53f0e4ab7fcf | patch -Rp1
+  hg export -r cb27cbe57e4d | patch -Rp1
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
@@ -145,7 +150,7 @@ build() {
 
   # LTO/PGO needs more open files
   ulimit -n 4096
- 
+
   xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
   ./mach buildsymbols
 }
