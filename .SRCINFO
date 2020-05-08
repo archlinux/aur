@@ -1,7 +1,7 @@
 pkgbase = wpebackend-rdk-git
 	pkgdesc = WPE WebKit backend from RDK (Wayland build)
 	pkgver = r132.4e9a79d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WebPlatformForEmbedded/WPEBackend-rdk
 	arch = x86_64
 	groups = wpe

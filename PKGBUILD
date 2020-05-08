@@ -2,7 +2,7 @@
 pkgdesc='WPE WebKit backend from RDK (Wayland build)'
 pkgname=wpebackend-rdk-git
 pkgver=r132.4e9a79d
-pkgrel=1
+pkgrel=2
 url=https://github.com/WebPlatformForEmbedded/WPEBackend-rdk
 license=(custom:BSD)
 arch=(x86_64)
@@ -24,7 +24,7 @@ pkgver () {
 }
 
 build () {
-	cd _build
+	rm -rf _build
 	cmake \
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 		-DCMAKE_INSTALL_PREFIX=/usr \
@@ -32,8 +32,8 @@ build () {
 		-DUSE_INPUT_LIBINPUT=OFF \
 		-DUSE_INPUT_UDEV=OFF \
 		-DUSE_INPUT_WAYLAND=ON \
-		"../${pkgname}"
-	cmake --build .
+		-B_build -S"${pkgname}"
+	cmake --build _build
 }
 
 package () {
