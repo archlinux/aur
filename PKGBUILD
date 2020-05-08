@@ -4,11 +4,11 @@
 _basename=fxsdk
 pkgname=${_basename}-git
 pkgver=r35.c9dd9fa
-pkgrel=2
+pkgrel=3
 pkgdesc="Tools to program for the Casio fx9860 calculators"
 arch=("i686" "x86_64")
 provides=("fxsdk" "fxconv" "fxg1a")
-depends=("sh-elf-gcc-casio")
+depends=()
 makedepends=("git")
 source=("${pkgname}::git+https://gitea.planet-casio.com/Lephenixnoir/${_basename}.git")
 sha256sums=("SKIP")
@@ -20,12 +20,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname}"
-  ./configure --enable-fxsdk --enable-fxconv --enable-fxg1a --prefix=$pkgdir/usr
+  ./configure --enable-fxsdk --enable-fxconv --enable-fxg1a --prefix=/usr
   make
 }
 
 package() {
   cd "$srcdir/${pkgname}"
   
-  make install
+  make PREFIX="$pkgdir/usr" install
 }
