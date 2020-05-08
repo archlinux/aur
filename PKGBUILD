@@ -2,8 +2,7 @@
 # Contributor: John Jenkins <twodopeshaggy at gmail dot com>
 
 pkgname=btag-git
-epoch=1
-pkgver=0.113.7fcc6ce
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A command line based audio file tagger"
 arch=('i686' 'x86_64')
@@ -22,7 +21,7 @@ _gitname="btag"
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  echo "0.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --dirty | sed 's/release-//'
 }
 
 
