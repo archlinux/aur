@@ -18,7 +18,7 @@ depends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname-$pkgver-$pkgrel.rpm::https://github.com/mongodb-js/compass/releases/download/v$_pkgver/$_pkgname-$_pkgver.x86_64.rpm")
-sha256sums=('0000000000000000000000000000000000000000000000000000000000000000')
+sha256sums=('54e8b891feff5f73c8c6628cac38bf3122cdbe94a4c30e77f255efbdbefd90ce')
 
 package() {
 	cd "$srcdir/"
