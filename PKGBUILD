@@ -3,7 +3,7 @@
 _basename=gssdp
 pkgname=lib32-gssdp
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A GObject-based API for handling resource discovery and announcement over SSDP (32-bit)"
 arch=(x86_64)
 url="http://gupnp.org/"
@@ -24,6 +24,7 @@ build() {
     export CC='gcc -m32'
     export CXX='g++ -m32'
     export PKG_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config'
+    export PKG_CONFIG_PATH='$PKG_CONFIG_PATH:/usr/lib32/pkgconfig/:/usr/lib/pkgconfig'
 
     arch-meson $_basename build \
         --libdir='/usr/lib32' \
