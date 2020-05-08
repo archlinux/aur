@@ -1,12 +1,12 @@
 # Maintainer: AnonymerNiklasistanonym <niklas.mikeler@gmail.com>
 pkgname=marktex
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.0.1
+pkgrel=5
 pkgdesc='Web service for files that support advanced Markdown commands mixed with LaTeX sections'
 arch=('x86_64')
 url='https://github.com/AnonymerNiklasistanonym/MarkTeX'
 license=('MIT')
-depends=('nodejs' 'inkscape-git' 'pandoc' 'texlive-core')
+depends=('nodejs' 'inkscape' 'pandoc' 'texlive-core')
 provides=("$pkgname")
 conflicts=("$pkgname")
 _gitname="$pkgname.git"
@@ -14,7 +14,7 @@ source=("$_gitname::git+$url#branch=master")
 sha1sums=('SKIP')
 
 build() {
-  cd "$_gitname"
+  cd "$_gitname" || exit 1
   npm install
   npm run build
   rm -rf node_modules
@@ -22,7 +22,7 @@ build() {
 }
 
 package() {
-  cd "$_gitname"
+  cd "$_gitname" || exit 1
   install -Dd "$pkgdir/opt/$pkgname"
   find node_modules -exec install -D {} "$pkgdir/opt/$pkgname/"{} \;
   find dist -exec install -D {} "$pkgdir/opt/$pkgname/"{} \;
