@@ -2,7 +2,7 @@
 pkgname=webtorrent-cli
 pkgver=3.0.5
 pkgrel=1
-pkgdesc="WebTorrent, the streaming torrent client. For the command line."
+pkgdesc="The streaming torrent client. For the command line."
 arch=('any')
 url="https://webtorrent.io"
 license=('MIT')
