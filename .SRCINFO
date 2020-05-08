@@ -1,7 +1,7 @@
 pkgbase = qtel
 	pkgdesc = Graphical Userinteface for Echolink written in QT
 	pkgver = 17.12.2
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.github.com/sm0svx/svxlink/
 	arch = i686
 	arch = x86_64
