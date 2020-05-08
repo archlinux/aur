@@ -1,8 +1,8 @@
 # Maintainer: soredake <fdsfgs@krutt.org>
 pkgname=luxtorpeda
 pkgver=20191003
-pkgrel=1
-pkgdesc='Steam Play compatibility tool to run adventure games using native Linux ScummVM'
+pkgrel=2
+pkgdesc='Steam Play compatibility tool to run games using native Linux engines'
 arch=('i686' 'x86_64')
 url="https://github.com/dreamer/$pkgname"
 license=('GPL')

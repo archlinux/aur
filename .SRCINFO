@@ -1,7 +1,7 @@
 pkgbase = luxtorpeda
-	pkgdesc = Steam Play compatibility tool to run adventure games using native Linux ScummVM
+	pkgdesc = Steam Play compatibility tool to run games using native Linux engines
 	pkgver = 20191003
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dreamer/luxtorpeda
 	arch = i686
 	arch = x86_64
