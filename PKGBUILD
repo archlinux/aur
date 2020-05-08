@@ -1,4 +1,5 @@
-# Maintainer: John Jenkins twodopeshaggy@gmail.com
+# Maintainer: Hildigerr Vergaray <Maintainer at YmirSystems dot com>
+# Contributor: John Jenkins <twodopeshaggy at gmail dot com>
 
 pkgname=btag-git
 epoch=1
