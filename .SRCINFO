@@ -5,7 +5,7 @@ pkgbase = nzbhydra2
 	url = https://github.com/theotherp/nzbhydra2
 	arch = any
 	license = Apache
-	depends = python2
+	depends = python
 	depends = java-runtime-headless>=8
 	optdepends = jackett: torrent indexer proxy
 	source = https://github.com/theotherp/nzbhydra2/releases/download/v2.21.0/nzbhydra2-2.21.0-linux.zip
