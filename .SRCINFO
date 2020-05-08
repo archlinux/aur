@@ -1,7 +1,7 @@
 pkgbase = ham-radio-meta
 	pkgdesc = Meta package for ham radio packages.
 	pkgver = 1
-	pkgrel = 4
+	pkgrel = 5
 	arch = any
 	groups = ham-radio
 	depends = chirp-daily

@@ -1,8 +1,8 @@
-# Maintainer: Abigail G <me@kb6.ee>
+# Maintainer: Abigail G <dev@kb6.ee>
 
 pkgname=ham-radio-meta
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc="Meta package for ham radio packages."
 arch=('any')
 groups=('ham-radio')
