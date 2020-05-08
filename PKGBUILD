@@ -8,7 +8,7 @@ pkgdesc="A command line based audio file tagger"
 arch=('i686' 'x86_64')
 url="https://github.com/fernandotcl/btag"
 license=('GPL')
-depends=('libcue' 'taglib')
+depends=('libcue' 'taglib' 'libedit')
 makedepends=('git' 'cmake' 'pkg-config' 'boost')
 source=(
   'git+git://github.com/fernandotcl/btag.git'

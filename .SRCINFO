@@ -1,8 +1,7 @@
 pkgbase = btag-git
 	pkgdesc = A command line based audio file tagger
-	pkgver = 0.113.7fcc6ce
+	pkgver = 1.4.1
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/fernandotcl/btag
 	arch = i686
 	arch = x86_64
@@ -13,6 +12,7 @@ pkgbase = btag-git
 	makedepends = boost
 	depends = libcue
 	depends = taglib
+	depends = libedit
 	source = git+git://github.com/fernandotcl/btag.git
 	sha256sums = SKIP
 
