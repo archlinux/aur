@@ -10,8 +10,8 @@
 _name=FreeRDP
 _pkgname=freerdp
 pkgname=freerdp-gstfree
-pkgver=2.0.0
-pkgrel=5
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 arch=('x86_64')
 url="https://www.freerdp.com/"
@@ -26,26 +26,8 @@ conflicts=('freerdp')
 provides=('libfreerdp2.so' 'libfreerdp-client2.so' 'libfreerdp-server2'
 'libfreerdp-shadow2.so' 'libfreerdp-shadow-subsystem2.so' 'libwinpr2.so'
 'libwinpr-tools2.so' 'libuwac0.so' 'freerdp')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz"
-        "${_pkgname}-2.0.0-manpage_formatting.patch"
-        "${_pkgname}-2.0.0-usb_redirection_channel.patch::https://github.com/${_pkgname}/${_pkgname}/commit/0f8437d1d86b2798edd46033974eb9678b6eecf0.patch"
-        "${_pkgname}-2.0.0-ffmpeg_aac.patch::https://github.com/akallabeth/FreeRDP/commit/b0a8355f6f7ad67ded722ca17a11047496244c72.patch")
-sha512sums=('efdaa1b018e5166c0f2469663bdd0dc788de0577d0c0cb8b98048a535f8cb07de1078f86aaacc9445d42078d2e02fd7bc7f1ed700ca96032976f6bd84c68ee8f'
-            'd960e042d1527b5d5721136b6b20fc36f65beafd010581ea5b908668537fe9fe622de6689a29c0274b0d6f1e513615f0d02e56c1d1d1e613d093e145d39af8d7'
-            '6ae7bbdd787e8005c52d1c89348d1e8691d48684863f67005dfbe3b1302eb2f6098008b74147e171dc1e4e6764579609fea9168253282fcef95c1cc4f81b89b9'
-            '08ae2be84b07a79c1bb21ac6d1324ff5877a4415954184c48dcb8ca8e5589009d005f2e237473b9f8aa7fc73ddb482762173f2b594b033e086852ebe3cee1b2e')
-
-prepare() {
-  cd "${_name}-${pkgver}"
-  # fix man page formatting:
-  # https://bugs.archlinux.org/task/64814
-  patch -Np1 -i "../${_pkgname}-2.0.0-manpage_formatting.patch"
-  # fix usb redirection channel: https://bugs.archlinux.org/task/66209
-  patch -Np1 -i "../${_pkgname}-2.0.0-usb_redirection_channel.patch"
-  # fix broken ffmpeg based AAC encoding:
-  # https://github.com/FreeRDP/FreeRDP/issues/6072
-  patch -Np1 -i "../${_pkgname}-2.0.0-ffmpeg_aac.patch"
-}
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('afed8893128067b688bf5ba87e7d28296ece3b4848d84653ab0ad0c3723b6a8bc36733aca9649fb29a0d4a53b39fdd49d56d17e9b4eac8bf7b06fa4b27e66b14')
 
 build() {
   cd "${_name}-${pkgver}"
