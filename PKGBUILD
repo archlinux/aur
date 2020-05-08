@@ -3,22 +3,22 @@
 
 _target=mips64-elf
 pkgname=${_target}-gcc-stage1
-pkgver=9.3.0
-_islver=0.21
+pkgver=10.1.0
+_islver=0.22
 pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target})"
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
 url="http://www.gnu.org/software/gcc/"
-depends=('libmpc' 'zlib' "${_target}-binutils" )
-makedepends=('gmp' 'mpfr')
+depends=('libmpc' 'zstd' )
+makedepends=('gmp' 'mpfr' "${_target}-binutils")
 optdepends=("${_target}-newlib: Standard C library optimized for embedded systems")
 options=('!emptydirs' '!strip' )
 source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
 		"http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
     "mabi32.patch")
-sha256sums=('71e197867611f6054aa1119b13a0c0abac12834765fe2d81f35ac57f84f742d1'
-            '777058852a3db9500954361e294881214f6ecd4b594c00da5eee974cd6a54960'
+sha256sums=('b6898a23844b656f1b68691c5c012036c2e694ac4b53a8918d4712ad876e7ea2'
+            '6c8bc56c477affecba9c59e2c9f026967ac8bad01b51bdd07916db40a517b9fa'
             '368e2287adba14718dbd84dc75b2a7a2f65cb907e988b56813640ea8d9d2e951')
 
 prepare() {
