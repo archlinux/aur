@@ -3,7 +3,7 @@
 
 _gitname=CuteMarkEd
 pkgname=cutemarked-git
-pkgver=0.11.3r849
+pkgver=0.11.3.r849
 pkgrel=1
 pkgdesc="Qt Markdown Editor"
 url="https://github.com/cloose/CuteMarkEd"
@@ -18,8 +18,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  _mainver=$(grep ProductVersion ${_gitname}.wxs | head -1 | cut -d= -f2 | tr -d \" | tr -d \? | tr \> r)
-  printf "%s%s" $(echo $_mainver) $(git rev-list --count HEAD)
+  _mainver=$(grep ProductVersion ${_gitname}.wxs | head -1 | cut -d= -f2 | tr -d \" | tr -d \? | tr \> .)
+  printf "%sr%s" $(echo $_mainver) $(git rev-list --count HEAD)
 }
 
 prepare() {
