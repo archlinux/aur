@@ -3,18 +3,19 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=file-roller-git
-pkgver=3.31.1.r18.g74305535
+pkgver=3.36.2.r2.gfc6bbed2
 pkgrel=1
 pkgdesc="Create and modify archives"
 url="https://wiki.gnome.org/Apps/FileRoller"
-arch=(x86_64)
+arch=(i686 x86_64 armv7h aarch64)
 license=(GPL)
-depends=(gtk3 dconf libarchive file json-glib libnotify zip unzip)
+depends=(gtk3 libarchive file libnotify zip unzip)
 makedepends=(yelp-tools git libnautilus-extension meson appstream-glib)
 optdepends=('p7zip: 7z, arj, exe and encrypted zip files support'
             'unrar: better RAR archive support'
             'unace: ACE archive support'
-            'lrzip: lrzip archive support')
+            'lrzip: lrzip archive support'
+            'squashfs-tools: squashfs image support')
 conflicts=(file-roller)
 provides=(file-roller)
 groups=(gnome)
@@ -32,7 +33,7 @@ build() {
 }
 
 check() {
-  meson test -C build
+  meson test -C build --print-errorlogs
 }
 
 package() {
