@@ -2,46 +2,39 @@
 # Author: Devaev Maxim <mdevaev@gmail.com>
 
 
-pkgname="emonoda"
-pkgver="2.1.29"
-pkgrel="1"
+pkgname=emonoda
+pkgver=2.1.30
+pkgrel=1
 pkgdesc="A set of tools to organize and manage your torrents"
-arch=("any")
 url="https://github.com/mdevaev/emonoda"
-license=("GPL")
+license=(GPL)
+arch=(any)
 depends=(
-	"python"
-	"python-chardet"
-	"python-yaml"
-	"python-colorama"
-	"python-pygments"
-	"python-mako"
-	"python-pytz"
-	"python-dateutil"
+	"python>=3.8"
+	"python<3.9"
+	python-chardet
+	python-yaml
+	python-colorama
+	python-pygments
+	python-mako
+	python-pytz
+	python-dateutil
 )
 optdepends=(
 	"python-transmissionrpc: Transmission support"
 	"python-dbus: KTorrent support"
 )
-makedepends=("python-setuptools" "cython" "wget")
+makedepends=(python-setuptools cython)
+source=("$pkgname-$pkgver::git+$url#tag=v$pkgver")
+md5sums=(SKIP)
 
 
 build() {
-	cd $startdir/src
-	if [ ! -d $pkgname-$pkgver ]; then
-		msg "Downloading tag v$pkgver..."
-		wget $url/archive/v$pkgver.tar.gz
-		tar -xzf v$pkgver.tar.gz
-	fi
-
-	rm -rf $pkgname-build
-	cp -r $pkgname-$pkgver $pkgname-build
-	cd $pkgname-build
-
+	cd "$srcdir/$pkgname-$pkgver"
 	python setup.py build
 }
 
 package() {
-	cd $srcdir/emonoda-$pkgver
-	python setup.py install --root=$pkgdir
+	cd "$srcdir/$pkgname-$pkgver"
+	python setup.py install --root="$pkgdir"
 }
