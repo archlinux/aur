@@ -7,7 +7,7 @@ pkgbase = luxtorpeda
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = rust
+	makedepends = rust
 	optdepends = steam: The Steam client
 	source = git+https://github.com/dreamer/luxtorpeda.git#commit=e770a4fe38577668b23ccbaadbcb54978fdd1026
 	sha512sums = SKIP
