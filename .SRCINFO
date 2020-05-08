@@ -1,6 +1,6 @@
 pkgbase = openfx-arena
 	pkgdesc = Extra OpenFX plugins for Natron
-	pkgver = 2.3.15_rc19
+	pkgver = 2.3.15_rc20
 	pkgrel = 1
 	url = https://github.com/NatronGitHub/openfx-arena
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = openfx-arena
 	depends = opencolorio
 	depends = poppler-glib
 	depends = sox
-	source = openfx-arena_53cb2e9.tar.gz::https://github.com/NatronGitHub/openfx-arena/tarball/53cb2e9
+	source = openfx-arena_276386a.tar.gz::https://github.com/NatronGitHub/openfx-arena/tarball/276386a
 	source = lodepng_e34ac04.tar.gz::https://github.com/lvandeve/lodepng/tarball/e34ac04
 	source = openfx_db5aa97.tar.gz::https://github.com/NatronGitHub/openfx/tarball/db5aa97
 	source = openfx-supportext_53c12bd.tar.gz::https://github.com/NatronGitHub/openfx-supportext/tarball/53c12bd
