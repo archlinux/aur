@@ -1,8 +1,8 @@
-# Maintainer: Abigail G <me@kb6.ee>
+# Maintainer: Abigail G <dev@kb6.ee>
 
 pkgname=ttf-marketingscript
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="Marketing Script Font Family"
 url="https://www.1001fonts.com/marketing-script-font.html"
 arch=(any)
