@@ -6,10 +6,10 @@ pkgdesc="Open-Source tool for working with lighthouse-based tracking data, inclu
 arch=(x86_64 i686)
 url="https://github.com/cntools/libsurvive"
 license=(MIT)
-depends=("hidapi" "xr-hardware")
+depends=("hidapi" "xr-hardware" "libpcap" "lapacke" "cblas" "zlib")
 conflicts=($basename)
 provides=($basename)
-makedepends=("cmake" "ninja")
+makedepends=("git" "cmake" "ninja")
 source=($basename::"git+https://github.com/cntools/libsurvive.git"
         "0001-add-pkg-config-file.patch"
         "0002-install-redist-headers.patch")
