@@ -2,7 +2,7 @@
 
 _arch=$(uname -m)
 pkgname=stack-static
-pkgver=2.3.0.1
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="The Haskell Tool Stack (linked statically)"
 arch=('x86_64')
@@ -22,9 +22,9 @@ source=(
   "https://github.com/commercialhaskell/stack/releases/download/v${pkgver}/stack-${pkgver}-linux-x86_64-static.tar.gz.asc"
 )
 sha256sums=('df46833a748574d01f38d4120e5021ee6fac9b8a70995674ca0bd2cacbd3e3c2'
-            '0365973de59ec662b213ebf20b02ad73eccaf63e804643f774ef7e01f0f84da5'
+            '4bae8830b2614dddf3638a6d1a7bbbc3a5a833d05b2128eae37467841ac30e47'
             'SKIP')
-validpgpkeys=('2423F83F79E1332EAC22E611DB58D147DBFC5FA1')
+validpgpkeys=('2C6A674E85EE3FB896AFC9B965101FF31C5C154D')
 
 package() {
   cd "${srcdir}"
