@@ -4,12 +4,12 @@
 _gemname=gh
 pkgname=ruby-$_gemname
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='layered github client'
 arch=(any)
 url='https://github.com/travis-ci/gh'
 license=(MIT)
-depends=(ruby ruby-faraday ruby-backports ruby-multi_json ruby-addressable ruby-net-http-persistent ruby-net-http-pipeline)
+depends=(ruby ruby-activesupport-5 ruby-addressable ruby-faraday ruby-faraday-middleware ruby-multi_json ruby-net-http-persistent ruby-net-http-pipeline)
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
