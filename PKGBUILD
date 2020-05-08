@@ -1,9 +1,10 @@
-# Maintainer: McLenin <mclenin at gooogles email>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: McLenin <mclenin at gooogles email>
 
 pkgname=purple-facebook-git
 _gitname="purple-facebook"
 pkgrel=1
-pkgver=v0.9.6.r0.g0250907
+pkgver=v0.9.6.r4.g106d7ac
 pkgdesc="A purple (pidgin, finch, ...) plugin for Facebook chat, based on the new Facebook 
 Messenger protocol"
 url="https://github.com/dequis/purple-facebook/"
