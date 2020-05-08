@@ -1,23 +1,23 @@
 pkgbase = kata-containers
 	pkgdesc = Lightweight virtual machines for containers
-	pkgver = 1.10.4
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://katacontainers.io/
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = agent-1.10.4.tar.gz::https://github.com/kata-containers/agent/archive/1.10.4.tar.gz
-	source = ksm-throttler-1.10.4.tar.gz::https://github.com/kata-containers/ksm-throttler/archive/1.10.4.tar.gz
-	source = osbuilder-1.10.4.tar.gz::https://github.com/kata-containers/osbuilder/archive/1.10.4.tar.gz
-	source = proxy-1.10.4.tar.gz::https://github.com/kata-containers/proxy/archive/1.10.4.tar.gz
-	source = runtime-1.10.4.tar.gz::https://github.com/kata-containers/runtime/archive/1.10.4.tar.gz
-	source = shim-1.10.4.tar.gz::https://github.com/kata-containers/shim/archive/1.10.4.tar.gz
-	sha512sums = 21a68323415db2b396407509e7f84266e6e71944d8364707c777a97ee43729adb40915fd039cbf3c1786f87cb9b3bd3d6062b735ba8ff3d375ccb98ea6859c29
-	sha512sums = 64bd02906493233b6c64d03cac40dda2c911b7f06d707fbed5fb931c94a5b4695e465369f5b87722be2e1efdc4b925c9e077552729f1d326fe18135c4bb4d5e1
-	sha512sums = 255e631584efe55bd0f1680808f1a4d1205b27755eed8f6ae9ba09dbf7f234dd7b55c9b63d58ef166eadb12552f9efed57f51f4fe2d93a5939dd7f816a9f4d99
-	sha512sums = f01d84d783e0b97d69f7f0db9fff3ccf4407e44999bd5d90487d8d7c0cbdbeb76bf0ac7e7e369969010ec81f414f4638fdd0cfc5264a7bfa78efeaf6fb69d894
-	sha512sums = 92bce27faa7887dcce11d4ec0903f9a975cbcfff6045c8dbba992dd49ea706b43e1eb198cb31f50571168b4e8e2c21a542bdf96692998998315d154a612e6910
-	sha512sums = 223bf48c0a873e89f766698cd9ce08ef11c6b37ec004062daaafe7856c18d023dfb9565b20e008e9c3c3f6c1d0c02302b5e7565ee18e01a890c25ded5aada885
+	source = agent-1.11.0.tar.gz::https://github.com/kata-containers/agent/archive/1.11.0.tar.gz
+	source = ksm-throttler-1.11.0.tar.gz::https://github.com/kata-containers/ksm-throttler/archive/1.11.0.tar.gz
+	source = osbuilder-1.11.0.tar.gz::https://github.com/kata-containers/osbuilder/archive/1.11.0.tar.gz
+	source = proxy-1.11.0.tar.gz::https://github.com/kata-containers/proxy/archive/1.11.0.tar.gz
+	source = runtime-1.11.0.tar.gz::https://github.com/kata-containers/runtime/archive/1.11.0.tar.gz
+	source = shim-1.11.0.tar.gz::https://github.com/kata-containers/shim/archive/1.11.0.tar.gz
+	sha512sums = b03a755e3bb5ab91d08e3ebddc9e049e43d14d49d95d37a9fa24fce5e9ca6d12d4acdd4fa79608e00f8b7f784747dd53a5e3589d4bd9fb245107ca1e4555d9c4
+	sha512sums = 3c6eec072f3038bc6228f7aadca40bd525238a745ce975a86c6b033e587bc5ac631203002ef626a169399d8fab2e479eb02160cd54d0a71e502f7c556f92e605
+	sha512sums = cdca1124ba77afa149c98c734448fd1ffae03a2a6a2187e99bd636838deff81d71f8507cc4dbd18021f911cefb2601fc2c2647b1c3eecc28c475c30d5e6ac47b
+	sha512sums = e898b1a3c91d9b7a90db499ef13cf23cb4473e9f812105fcdd2ba0000d98f21ce449b307e818f0774ffadb85ca516d2935e2b64abd520bec326228238bf13a05
+	sha512sums = 9032af41d729f5a498e5b1712809d1998f3ead87501cf8c3c2bdbf6fe29d403da8c239e0fc89017125df87427fc602969a5281629615eb129a5eac8e68b95e90
+	sha512sums = e9298eb9175da275ba8cf19cdf5d2134909c3a0fe4dd9c774015dd47ea780d55afd40195ab8fb4a2708d754903daac9691f7aa90e429fc0ec0fc44b9bbab6375
 
 pkgname = kata-ksm-throttler
 
@@ -26,9 +26,9 @@ pkgname = kata-proxy
 pkgname = kata-runtime
 	install = kata-runtime.install
 	depends = qemu-headless
-	depends = kata-ksm-throttler=1.10.4
-	depends = kata-proxy=1.10.4
-	depends = kata-shim=1.10.4
+	depends = kata-ksm-throttler=1.11.0
+	depends = kata-proxy=1.11.0
+	depends = kata-shim=1.11.0
 	depends = kata-linux-container
 	depends = kata-containers-image
 	optdepends = firecracker<0.21.0
