@@ -1,13 +1,12 @@
 pkgbase = python-img-renamer
 	pkgdesc = Python script to rename images in numberic order.
-	pkgver = v2.5.0
-	pkgrel = 1
+	pkgver = v2.5.1
+	pkgrel = 2
 	url = https://gitlab.com/miicat/img-renamer
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = python-click
-	depends = python-prompt_toolkit
 	provides = img-renamer
 	source = img-renamer::git+https://gitlab.com/miicat/img-renamer
 	md5sums = SKIP
