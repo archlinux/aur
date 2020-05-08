@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------
 
 pkgname=xygrib-git
-pkgver=1.2.6.1.r81.g44cb9bd
+pkgver=1.2.6.1.r83.ga56c8fe
 pkgrel=1
 pkgdesc="Grib reader and weather visualization software. Zygrib fork."
 arch=('x86_64' 'aarch64')
@@ -31,11 +31,11 @@ build() {
 }
 
 package() {
-  mkdir -p $pkgdir/usr/share/icons
+  mkdir -p $pkgdir/usr/share/pixmaps
   mkdir -p $pkgdir/usr/share/applications
   mkdir -p $pkgdir/usr/bin
   cd $pkgname
-  cp linux_online_installer/config/xyGrib_32.png $pkgdir/usr/share/icons/xygrib.png
+  cp linux_online_installer/config/xyGrib_32.png $pkgdir/usr/share/pixmaps/xygrib.png
   cp debian/xygrib.desktop $pkgdir/usr/share/applications/
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr/share/openGribs/ ../
