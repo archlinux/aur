@@ -1,9 +1,10 @@
-# Maintainer: Zachary Riedlshah <git@zacharyrs.me>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Zachary Riedlshah <git@zacharyrs.me>
 # Contributor: Zachary Riedlshah <git@zacharyrs.me>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=onlyoffice-documentserver
-pkgver=5.4.1
+pkgver=5.5.1
 pkgrel=1
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
@@ -15,7 +16,7 @@ makedepends=('npm' 'nodejs-lts-dubnium' 'grunt-cli' 'qt5-base' 'git' 'wget' 'p7z
 # ncurses-5compat-libs required to build v8
 optdepends=('rabbitmq' 'redis' 'postgresql')
 license=('AGPL')
-source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-DocumentServer-5.4.1.tar.gz"
+source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-DocumentServer-${pkgver}.tar.gz"
 	"core-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core/archive/c8def9eb7bc02d675d0f1c64d2acf5b9cdf2bca8.tar.gz"
 	"core-fonts-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core-fonts/archive/abc25e4538cbce3ba96671283d14cec09087829b.tar.gz"
 	"dictionaries-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/dictionaries/archive/0e43b7b8aeb099ec30725f39234e2b898e7f0e67.tar.gz"
@@ -30,7 +31,7 @@ source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-Documen
 	"onlyoffice-documentserver.hook"
 	"onlyoffice-documentserver.sysusers"
 	"onlyoffice-documentserver.tmpfiles")
-sha512sums=('5e5b2ac052d1e39a415cd6e7a8004095c2eb4c4098717a6dfc96e6f5c6cd31d124870d1b08e722f1b0c903e92f95cd482d99ac13ab4fa4a2d89eaddec3cc8eb5'
+sha512sums=('590a1f63b1dbfcf4d3325f636df004fe25d117cda90710d1d2e032dd8319c6686f93c45d3abf2f91e94d39ff940e61015953213a60bbd8d5002218e23afa8b93'
             '7afd1cc73fd721ccf649994a296fd833da334d70bbd7ce71ec34ff27503339e25514619b856cf8364d984a49b8058e05150d612207bc8e28c61cfeea00551411'
             '0a3a2daa0c3c8a3b63ae2e02b4afc2324c0b7cab70b87d18068790cd664d35a7b11083db2e56f62aa2508f942570092aa91ab78097755ab6d8ca3b1459767030'
             '9f59b29a946b421aed5ff81d8a1bf1e6f33ab95387a052dd53aa2b03313c44aac9a441e4bc5ef2caa2401d4eba24e843cf2dd90c90118ff96d89d540e36eef47'
