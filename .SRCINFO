@@ -1,15 +1,16 @@
 pkgbase = apicompat-git
 	pkgdesc = Checks recent changes to a Go project for backwards incompatible changes
 	pkgver = r125.5f916b1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://abicheck.bradleyf.id.au
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = go
+	makedepends = go-pie
+	depends = glibc
 	provides = apicompat
 	source = git+https://github.com/bradleyfalzon/apicompat
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = apicompat-git
 
