@@ -1,0 +1,22 @@
+pkgbase = ttt2-hg
+	pkgdesc = An automatic termination prover for term rewrite systems (TRSs) (mercurial version)
+	pkgver = 1.20.r2104.1ffa9886eb7f
+	pkgrel = 1
+	url = http://colo6-c703.uibk.ac.at/ttt2
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = ocaml
+	makedepends = ocaml-findlib
+	makedepends = ocaml-num
+	makedepends = camlidl
+	makedepends = mercurial
+	depends = libxslt
+	depends = gmp
+	provides = ttt2
+	conflicts = ttt2
+	source = ttt2-hg::hg+http://cl2-informatik.uibk.ac.at/mercurial.cgi/ttt2/
+	sha256sums = SKIP
+
+pkgname = ttt2-hg
+
