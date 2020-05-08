@@ -1,10 +1,11 @@
 pkgbase = fxsdk-git
 	pkgdesc = Tools to program for the Casio fx9860 calculators
 	pkgver = r35.c9dd9fa
-	pkgrel = 3
+	pkgrel = 4
 	arch = i686
 	arch = x86_64
 	makedepends = git
+	optdepends = gint: alternative library and kernel for add-in development on fx-9860G and fx-CG50
 	provides = fxsdk
 	provides = fxconv
 	provides = fxg1a
