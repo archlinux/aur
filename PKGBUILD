@@ -3,7 +3,7 @@
 _pkgname=mda-lv2
 pkgname="${_pkgname}-git"
 pkgver=1.2.4.r1.g1761c1c
-pkgrel=1
+pkgrel=2
 pkgdesc="A port of the MDA VST plugins to the LV2 format"
 arch=("i686" "x86_64")
 url="https://drobilla.net/software/mda-lv2/"
@@ -11,7 +11,7 @@ license=("GPL2")
 groups=('lv2-plugins')
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'lv2' 'python')
-provides=("${_pkgname}")
+provides=("${_pkgname}" "${_pkgname//-/.}")
 conflicts=("${_pkgname}" "${_pkgname}-svn" "${_pkgname//-/.}")
 source=("${_pkgname}::git+https://gitlab.com/drobilla/mda-lv2.git"
         'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
