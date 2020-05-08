@@ -1,0 +1,20 @@
+pkgbase = ruby-activesupport-5
+	pkgdesc = A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.
+	pkgver = 5.2.4.2
+	pkgrel = 1
+	url = http://rubyonrails.org
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-i18n
+	depends = ruby-tzinfo-1
+	depends = ruby-minitest
+	depends = ruby-concurrent
+	provides = ruby-activesupport
+	noextract = activesupport-5.2.4.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/activesupport-5.2.4.2.gem
+	sha256sums = 8c3ae3df5b08b49b6b5d9c5028da1a1e582f1243b7362dbb9736f65ede492378
+
+pkgname = ruby-activesupport-5
+
