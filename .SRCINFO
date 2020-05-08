@@ -1,0 +1,24 @@
+pkgbase = nanoemoji
+	pkgdesc = A wee tool to build color fonts
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/googlefonts/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = absl-py
+	depends = picosvg
+	depends = python
+	depends = python-fonttools
+	depends = python-fs
+	depends = python-lxml
+	depends = python-protobuf
+	depends = python-pygithub
+	depends = python-regex
+	depends = python-ufo2ft
+	depends = python-ufolib2
+	source = https://files.pythonhosted.org/packages/source/n/nanoemoji/nanoemoji-0.1.2.tar.gz
+	sha256sums = ac3b890ce423a081323abf7bec70fe294fef372ebfed63997590fac362def696
+
+pkgname = nanoemoji
+
