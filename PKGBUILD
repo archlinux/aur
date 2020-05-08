@@ -11,7 +11,7 @@ _name=FreeRDP
 _pkgname=freerdp
 pkgname=freerdp-gstfree
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 arch=('x86_64')
 url="https://www.freerdp.com/"
@@ -35,7 +35,6 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DWITH_DSP_FFMPEG=ON \
         -DWITH_FFMPEG=ON \
-        -DWITH_MBEDTLS=ON \
         -DWITH_PULSE=ON \
         -DWITH_CUPS=ON \
         -DWITH_PCSC=ON \
