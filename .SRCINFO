@@ -1,0 +1,20 @@
+pkgbase = csi-hg
+	pkgdesc = An automatic confluence prover for term rewrite systems (TRSs) (mercurial version)
+	pkgver = 1.2.3.r2104.1ffa9886eb7f
+	pkgrel = 1
+	url = http://colo6-c703.uibk.ac.at/software/csi
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = ocaml
+	makedepends = ocaml-findlib
+	makedepends = ocaml-num
+	makedepends = camlidl
+	makedepends = mercurial
+	depends = libxslt
+	depends = gmp
+	source = csi-hg::hg+http://cl2-informatik.uibk.ac.at/mercurial.cgi/ttt2/
+	sha256sums = SKIP
+
+pkgname = csi-hg
+
