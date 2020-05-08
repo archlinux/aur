@@ -1,6 +1,6 @@
 pkgbase = myodbc
-	pkgdesc = ODBC driver/connector for mariadb
-	pkgver = 8.0.18
+	pkgdesc = ODBC driver/connector for MySQL
+	pkgver = 8.0.20
 	pkgrel = 1
 	url = http://dev.mysql.com/downloads/connector/odbc/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = myodbc
 	depends = libmysqlclient
 	optdepends = gtk2: graphical interface
 	options = libtool
-	source = http://cdn.mysql.com/Downloads/Connector-ODBC/8.0/mysql-connector-odbc-8.0.18-src.tar.gz
-	md5sums = 07f9d97434542ad94dd709cbfef587df
+	source = http://cdn.mysql.com/Downloads/Connector-ODBC/8.0/mysql-connector-odbc-8.0.20-src.tar.gz
+	md5sums = 8f77e5f670046a97699cd490bcf62f92
 
 pkgname = myodbc
 

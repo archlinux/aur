@@ -2,9 +2,9 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=myodbc
-pkgver=8.0.18
+pkgver=8.0.20
 pkgrel=1
-pkgdesc="ODBC driver/connector for mariadb"
+pkgdesc="ODBC driver/connector for MySQL"
 arch=(i686 x86_64)
 url="http://dev.mysql.com/downloads/connector/odbc/"
 depends=('unixodbc' 'libmysqlclient')
@@ -13,30 +13,23 @@ optdepends=('gtk2: graphical interface')
 license=('GPL')
 options=('libtool')
 source=("http://cdn.mysql.com/Downloads/Connector-ODBC/8.0/mysql-connector-odbc-$pkgver-src.tar.gz")
-md5sums=('07f9d97434542ad94dd709cbfef587df')
-
-prepare() {
-  cd $srcdir/mysql-connector-odbc-${pkgver}-src
-  patch -p1 <$srcdir/build-fix.patch
-}
+md5sums=('8f77e5f670046a97699cd490bcf62f92')
 
 build() {
   cd $srcdir/mysql-connector-odbc-${pkgver}-src
-  export LDFLAGS="-lmysqld"
   cmake -G "Unix Makefiles" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DMYSQLCLIENT_LIB_NAME=libmysqlclient_r.so \
-    -DWITH_UNIXODBC=1 .
+    -DWITH_UNIXODBC=1 \
+    .
   make
 }
 
 package() {
   cd $srcdir/mysql-connector-odbc-${pkgver}-src
   make DESTDIR=$pkgdir install
-  pushd $pkgdir/usr
+  cd $pkgdir/usr
   rm -rf test
   install -dm0755 share/mysql-connector-odbc
-  mv ChangeLog COPYING INSTALL Licenses_for_Third-Party_Components.txt README README.debug \
-	share/mysql-connector-odbc/
-  popd
+  mv ChangeLog INFO_BIN INFO_SRC LICENSE.txt README.txt \
+    share/mysql-connector-odbc/
 }
