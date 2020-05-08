@@ -3,8 +3,8 @@ _target='compass'
 _edition=''
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='1.22.0.r3260.86f2aeb0'
-pkgrel='2'
+pkgver='1.22.0.r3278.1f7cf26b'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
@@ -38,10 +38,10 @@ prepare() {
 	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron6/version')"'"|' 'package.json'
 
 	# Prepare dependencies
-	export HOME="$srcdir/$pkgname-home"
-	export XDG_CACHE_HOME="$srcdir/$pkgname-cache"
-	export npm_config_devdir="$srcdir/$pkgname-npm-dev"
-	export npm_config_cache="$srcdir/$pkgname-npm-cache"
+	local HOME="$srcdir/$pkgname-home"
+	local XDG_CACHE_HOME="$srcdir/$pkgname-cache"
+	local npm_config_devdir="$srcdir/$pkgname-npm-dev"
+	local npm_config_cache="$srcdir/$pkgname-npm-cache"
 
 	npm install
 
@@ -57,11 +57,11 @@ pkgver() {
 build() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	export NODE_ENV='production'
-	export HOME="$srcdir/$pkgname-home"
-	export XDG_CACHE_HOME="$srcdir/$pkgname-cache"
-	export npm_config_devdir="$srcdir/$pkgname-npm-dev"
-	export npm_config_cache="$srcdir/$pkgname-npm-cache"
+	local NODE_ENV='production'
+	local HOME="$srcdir/$pkgname-home"
+	local XDG_CACHE_HOME="$srcdir/$pkgname-cache"
+	local npm_config_devdir="$srcdir/$pkgname-npm-dev"
+	local npm_config_cache="$srcdir/$pkgname-npm-cache"
 
 	# electron-packager does not support building against a local electron binary,
 	# the best we can do for now is to just set the electron version in package.json
