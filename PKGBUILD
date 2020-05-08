@@ -4,23 +4,16 @@
 # Contributor: György Balló <ballogy@freestart.hu>
 
 pkgname=gparted-git
-pkgver=0.33.0.r123.gad6d2b38
+pkgver=1.1.0.r18.g5768115b
 pkgrel=1
 pkgdesc="A Partition Magic clone, frontend to GNU Parted"
-arch=('i686'
-      'x86_64'
-      'armv6h'
-      'armv7h')
-url="http://gparted.sourceforge.net"
+arch=(i686 x86_64 armv7h aarch64)
+url="https://gparted.org/"
 license=('GPL')
 provides=('gparted')
 conflicts=('gparted')
 depends=('parted' 'gtkmm3')
-makedepends=('intltool'
-             'gnome-common'
-             'pkg-config'
-             'gnome-doc-utils'
-             'polkit')
+makedepends=('git' 'gnome-common' 'intltool' 'itstool' 'pkg-config' 'yelp-tools' 'polkit')
 optdepends=('dosfstools: for FAT16 and FAT32 partitions'
             'jfsutils: for jfs partitions'
             'f2fs-tools: for Flash-Friendly File System'
@@ -38,20 +31,28 @@ source=("git+https://gitlab.gnome.org/GNOME/gparted.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd gparted
-    git describe --long --tags | sed 's/^GPARTED_//;s/\([^-]*-g\)/r\1/;s/_/./g;s/-/./g'
+  cd gparted
+  git describe --long --tags | sed 's/^GPARTED_//;s/\([^-]*-g\)/r\1/;s/_/./g;s/-/./g'
 }
 
 build() {
-    cd gparted
+  cd gparted
 
-    gnome-autogen.sh --prefix=/usr --sbindir=/usr/bin --enable-online-resize --enable-libparted-dmraid --enable-xhost-root
-    make
+  gnome-autogen.sh --prefix=/usr \
+      --sbindir=/usr/bin \
+      --enable-online-resize \
+      --enable-libparted-dmraid \
+      --enable-xhost-root
+  make
 }
 
 package() {
-    cd gparted
+  cd gparted
 
-    make DESTDIR="${pkgdir}" install
-    install -D -m0644 org.gnome.gparted.policy "${pkgdir}"/usr/share/polkit-1/actions/org.gnome.gparted.policy
+  make DESTDIR="${pkgdir}" install
+
+  # Install policy file
+  install -D -m0644 org.gnome.gparted.policy \
+      "${pkgdir}"/usr/share/polkit-1/actions/org.gnome.gparted.policy
+
 }
