@@ -4,7 +4,7 @@
 pkgname='maestral'
 provides=('maestral')
 conflicts=('maestral-git')
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='A light-weight and open-source CLI Dropbox client.'
 arch=('x86_64')
@@ -29,7 +29,7 @@ depends=(
     'python-sdnotify'
     'python-watchdog>=0.10.0'
     'python-systemd')
-md5sums=('309b748e0bf8d912950e8a3e3ea7d138'
+md5sums=('bc9c15e235d6a968edfd6dd12a7fee01'
          '25d1041b158c1b1ea42d7290c9c0f91d')
 
 build() {
