@@ -1,30 +1,17 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=gomuks-git
 pkgdesc='A terminal based Matrix client written in Go'
-pkgver=0.r339
+pkgver=0.r485
 pkgrel=1
 url='https://github.com/tulir/gomuks'
 license=(GPL3)
 arch=(x86_64 i686)
-depends=(glibc)
+depends=(libolm)
 makedepends=(go-pie git)
 provides=("${pkgname%-git}")
 conflicts=("${provides[@]}")
 source=("${pkgname}::git+${url}")
 sha512sums=(SKIP)
-
-prepare () {
-	cd "${pkgname}"
-
-	# The Go modules index has some replacements to use locally checked
-	# out modules; so remove those to make sure "go build" below will
-	# ensure that the correct version is always fetched.
-	sed -i -e '/^replace\s/d' go.mod
-
-	# Fix a build failure
-	go mod edit \
-		-replace=gopkg.in/russross/blackfriday.v2@v2.0.1=github.com/russross/blackfriday/v2@v2.0.1
-}
 
 pkgver () {
 	cd "${pkgname}"
@@ -34,10 +21,10 @@ pkgver () {
 build () {
 	cd "${pkgname}"
 	local curdir=$(pwd)
-	go build \
+	go build -v \
 		-gcflags "all=-trimpath=${curdir}" \
 		-asmflags "all=-trimpath=${curdir}" \
-		-ldflags "-extldflags ${LDFLAGS}" \
+		-ldflags "-extldflags '${LDFLAGS}'" \
 		.
 }
 

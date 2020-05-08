@@ -1,6 +1,6 @@
 pkgbase = gomuks-git
 	pkgdesc = A terminal based Matrix client written in Go
-	pkgver = 0.r339
+	pkgver = 0.r485
 	pkgrel = 1
 	url = https://github.com/tulir/gomuks
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gomuks-git
 	license = GPL3
 	makedepends = go-pie
 	makedepends = git
-	depends = glibc
+	depends = libolm
 	provides = gomuks
 	conflicts = gomuks
 	source = gomuks-git::git+https://github.com/tulir/gomuks
