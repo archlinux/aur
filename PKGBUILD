@@ -1,8 +1,8 @@
-# Maintainer: Abigail G <me@kb6.ee>
+# Maintainer: Abigail G <dev@kb6.ee>
 
 pkgname=gridtracker-bin
 pkgver='1.20.0504'
-pkgrel=1
+pkgrel=2
 pkgdesc="Companion program for WSJT-X for mapping contacts"
 arch=('x86_64')
 url="https://tagloomis.com/grid-tracker/"
