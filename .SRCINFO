@@ -1,7 +1,7 @@
 pkgbase = htcondor
 	pkgdesc = Distributed workload management system
-	pkgver = 8.8.8
-	pkgrel = 3
+	pkgver = 8.8.9
+	pkgrel = 1
 	url = https://research.cs.wisc.edu/htcondor/
 	arch = x86_64
 	license = apache
@@ -18,8 +18,8 @@ pkgbase = htcondor
 	depends = python
 	provides = htcondor
 	conflicts = htcondor
-	source = htcondor-8.8.8.tar.gz::https://github.com/htcondor/htcondor/archive/V8_8_8.tar.gz
-	md5sums = e248a1506d367cacab0575fb18aa1e11
+	source = htcondor-8.8.9.tar.gz::https://github.com/htcondor/htcondor/archive/V8_8_9.tar.gz
+	md5sums = 3547e36279691a1e52bb66a715814915
 
 pkgname = htcondor
 
