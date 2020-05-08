@@ -2,7 +2,7 @@
 # Contributor: Lubomir 'Kuci' Kucera <kuci24-at-gmail-dot-com>
 
 pkgname=go-bindata
-pkgver=3.5.1
+pkgver=3.5.2
 pkgrel=1
 pkgdesc="A small utility which generates Go code from any file"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('CC0 1.0')
 depends=('glibc')
 makedepends=('go-pie')
 source=("https://github.com/shuLhan/go-bindata/archive/v${pkgver}.tar.gz")
-sha512sums=('19cf44d8e7d67dcc2ed470e39cb1464351f91927133500604166e0b0981799f7cc5ba10c122761174ae101901a729a5d56bd0ae4d678eb846550a61624c502d4')
+sha512sums=('2e9a807445ed6ddfd681f6886503c116c8ceba6572f5a8b2cdbf78c585a476b5dfb0dc967b62f1510caef8e1e09db39043362e252da773272a79a7b257c9d275')
 
 prepare() {
     mkdir -p "${srcdir}/src/github.com/shuLhan/"
