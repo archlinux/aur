@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -euo pipefail
 
@@ -33,5 +33,10 @@ package() {
 }
 EOF
 
-makepkg --printsrcinfo >.SRCINFO
+conf=/etc/makepkg.conf
+if [ ! -f "$conf" ]; then
+    # makepkg.conf location in Nix package.
+    conf="$(dirname `which makepkg`)/../etc/makepkg.conf"
+fi
+makepkg --config="$conf" --printsrcinfo >.SRCINFO
 git commit -a -m "Update to version $version"
