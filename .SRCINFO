@@ -1,12 +1,12 @@
 pkgbase = catcodec
 	pkgdesc = A tool for decoding/encoding .cat files for OpenTTD
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openttd.org/downloads/catcodec-releases/latest.html
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = https://binaries.openttd.org/extra/catcodec/1.0.5/catcodec-1.0.5-source.tar.xz
+	source = https://cdn.openttd.org/catcodec-releases/1.0.5/catcodec-1.0.5-source.tar.xz
 	md5sums = 732af1bbe83ffdde17dc10703896472d
 
 pkgname = catcodec
