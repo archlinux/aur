@@ -34,7 +34,7 @@ package_clickhouse-client-bin() {
 	backup=('etc/clickhouse-client/config.xml')
 	pkgdesc="ClickHouse client and other client-related tools."
 
-  	cd "$pkgname-$pkgver"
+	cd "clickhouse-client-$pkgver"
   	cp -r etc usr $pkgdir
 }
 
@@ -43,7 +43,7 @@ package_clickhouse-common-static-bin() {
 	pkgdesc="ClickHouse compiled binary files."
 	backup=('etc/security/limits.d/clickhouse.conf')
 
-  	cd "$pkgname-$pkgver"
+	cd "clickhouse-common-static-$pkgver"
   	cp -r etc usr $pkgdir
 }
 
@@ -56,7 +56,7 @@ package_clickhouse-server-bin() {
 		'etc/clickhouse-server/users.xml'
 	)
 
-  	cd "$pkgname-$pkgver"
+	cd "clickhouse-server-$pkgver"
 	cp -r usr "$pkgdir/"
 	cp -r lib "$pkgdir/usr"
 	mkdir -p "$pkgdir/etc/clickhouse-server"
