@@ -1,6 +1,6 @@
 # Maintainer: Nick Skelsey <nskelsey+zz@gmail.com>
 pkgname=auralcap
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Monitor files and make noise"
 arch=('x86_64')
