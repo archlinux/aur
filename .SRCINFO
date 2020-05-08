@@ -1,0 +1,20 @@
+pkgbase = pigpio-git
+	pkgdesc = A C library to control the Raspberry Pi GPIOs. Development version.
+	pkgver = 76.0.g30e6b35
+	pkgrel = 1
+	url = https://github.com/joan2937/pigpio
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = custom:UNLICENCE
+	makedepends = git
+	depends = glibc
+	provides = pigpio=76.0.g30e6b35
+	conflicts = pigpio
+	conflicts = python-pigpio
+	source = git+https://github.com/joan2937/pigpio.git
+	sha512sums = SKIP
+
+pkgname = pigpio-git
+
