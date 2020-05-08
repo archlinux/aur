@@ -1,17 +1,15 @@
 pkgbase = xtensa-esp32-elf-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files for the xtensa esp32 (bare-metal) target
 	pkgver = 2.34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/binutils/
 	arch = x86_64
 	license = GPL
 	depends = libelf
 	source = https://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.bz2
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.bz2.sig
-	validpgpkeys = EAF1C276A747E9ED86210CBAC3126D3B4AE55E93
-	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
+	source = xtensa-overlays-fe9a594.tar.gz::https://codeload.github.com/espressif/xtensa-overlays/tar.gz/fe9a594
 	sha256sums = 89f010078b6cf69c23c27897d686055ab89b198dddf819efb0a4f2c38a0b36e6
-	sha256sums = SKIP
+	sha256sums = 025a16d88ae7b17c013ed23beb02b8545b44673d2b8ecca748e63a79d5c1070d
 
 pkgname = xtensa-esp32-elf-binutils
 
