@@ -1,0 +1,17 @@
+pkgbase = ziplib-git
+	pkgdesc = Petr Beneš C++11 library for working with Zip archives with ease.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://bitbucket.org/wbenny/ziplib/wiki/Home
+	arch = x86_64
+	license = custom
+	makedepends = make
+	makedepends = clang
+	makedepends = git
+	makedepends = rsync
+	options = !libtool
+	source = git+https://bitbucket.org/wbenny/ziplib.git
+	md5sums = SKIP
+
+pkgname = ziplib-git
+
