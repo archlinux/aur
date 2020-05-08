@@ -1,0 +1,13 @@
+pkgbase = mpdproxy-coffeescript-git
+	pkgdesc = MPD proxy automatically entering password for clients in certain IP ranges
+	pkgver = r4.da65b0e
+	pkgrel = 1
+	url = https://github.com/mxmilkb/mpdproxy
+	arch = x86_64
+	depends = mpd
+	depends = coffeescript
+	source = mpdproxy-coffeescript-git::git+https://github.com/mxmilkb/mpdproxy
+	md5sums = SKIP
+
+pkgname = mpdproxy-coffeescript-git
+
