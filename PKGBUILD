@@ -5,9 +5,9 @@
 
 pkgname=vivaldi-arm64
 _pkgname=vivaldi
-pkgver=3.0.1874.33
-_pkgver=3.0.1874.33-1
-pkgrel=2
+pkgver=3.0.1874.38
+_pkgver=3.0.1874.38-1
+pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
 options=('!strip' '!emptydirs')
@@ -24,7 +24,7 @@ optdepends=(
 )
 provides=('www-browser' 'vivaldi')
 source=("https://downloads.vivaldi.com/stable/vivaldi-stable_${_pkgver}_arm64.deb")
-sha512sums=('37f6f7794ed43b7173071ce2296052d7efcca5cd903840e75a695df98de50a905c430871d01d3fee058b4648ca4b74f3ebb184c31258270f32ded380624070cc')
+sha512sums=('3c61d1d58966a9eb1c7b68ab13838a5508a4342c8da83035f0445ba29fbdf0ffb7cddba8e2e27eb128000c2720eb318cc03aa7d07af0882e3df8858d19b2dc30')
 
 prepare() {
     tar -xf data.tar.xz
