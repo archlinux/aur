@@ -2,8 +2,8 @@
 # Contributor: Mark Wagie <mark.wagie@tutanota.com>
 pkgname="deezloader-remix-git"
 _pkgname="DeezloaderRemix"
-pkgver=4.2.1.r258.gbfb9838
-pkgrel=3
+pkgver=4.2.1.r327.ga8296d9
+pkgrel=1
 pkgdesc="An improved version of Deezloader based on the Reborn branch.
         Download songs, playlists and albums directly from Deezer's servers."
 arch=('x86_64')

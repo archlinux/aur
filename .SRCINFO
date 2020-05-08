@@ -1,7 +1,7 @@
 pkgbase = deezloader-remix-git
 	pkgdesc = An improved version of Deezloader based on the Reborn branch. Download songs, playlists and albums directly from Deezer's servers.
-	pkgver = 4.2.1.r258.gbfb9838
-	pkgrel = 3
+	pkgver = 4.2.1.r327.ga8296d9
+	pkgrel = 1
 	url = https://notabug.org/RemixDevs/DeezloaderRemix
 	arch = x86_64
 	license = GPL3
