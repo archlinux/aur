@@ -1,7 +1,7 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=genieutils-git
-pkgver=9.r592.e0dcc7c
+pkgver=9.r603.9dd1ab9
 pkgrel=1
 _apiver=9
 pkgdesc='A library to read/write certain data and resource files of genie engine games'
@@ -29,6 +29,7 @@ build() {
     cmake ../genieutils \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DGUTILS_TOOLS=True
 
     make
 }
