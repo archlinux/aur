@@ -7,7 +7,7 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.3.0.rc2.r399.g7ed7d95f4
+pkgver=1.3.0.rc2.r461.g54eb261ca
 pkgrel=1
 epoch=1
 arch=('i686' 'x86_64')
@@ -22,10 +22,12 @@ optdepends=('speech-dispatcher: Text-to-speech support'
             'espeak-ng: Text-to-speech support')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-source=('git://github.com/mumble-voip/mumble.git' 'https://git.xiph.org/celt.git'
-        'git://github.com/mumble-voip/fx11.git' 'git://github.com/mumble-voip/opus.git'
-        'git://github.com/mumble-voip/sbcelt.git' 'https://git.xiph.org/speex.git')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+source=('git://github.com/mumble-voip/mumble.git'
+        'git://github.com/mumble-voip/mumble-theme.git'
+        'git://github.com/mumble-voip/celt-0.7.0.git'
+        'git://github.com/mumble-voip/opus.git'
+        'git://github.com/mumble-voip/speex.git')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -36,11 +38,10 @@ prepare() {
   cd "$_pkgname"
 
   git submodule init
-  git config submodule.3rdparty/fx11-src.url "$srcdir/fx11"
   git config submodule.3rdparty/celt-0.7.0-src.url "$srcdir/celt"
   git config submodule.3rdparty/opus-src.url "$srcdir/opus"
-  git config submodule.3rdparty/sbcelt-src.url "$srcdir/sbcelt"
   git config submodule.3rdparty/speex-src.url "$srcdir/speex"
+  git config submodule.themes/Mumble.url "$srcdir/mumble-theme"
   git submodule update
 }
 
