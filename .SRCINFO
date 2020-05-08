@@ -1,0 +1,18 @@
+pkgbase = python-junit-xml
+	pkgdesc = Creates JUnit XML test result documents that can be read by tools such as Jenkins.
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://github.com/kyrus/python-junit-xml
+	arch = any
+	license = MIT
+	source = https://github.com/kyrus/python-junit-xml/archive/v1.9.tar.gz
+	sha256sums = eaa679cafff29e8ac447b5e1e6351f3917d3802703fffcdba628ab1fb0b8bfbd
+
+pkgname = python-junit-xml
+	depends = python
+	depends = python-six
+
+pkgname = python2-junit-xml
+	depends = python2
+	depends = python2-six
+
