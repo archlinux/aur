@@ -1,5 +1,5 @@
 pkgname=openvr-git
-pkgver=1.10.30.70.26fa19e
+pkgver=1.11.11.73.ace7060
 pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware from multiple vendors."
 arch=('x86_64')
