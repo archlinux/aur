@@ -2,7 +2,7 @@
 _target='compass-readonly'
 _edition=' Readonly'
 pkgname="mongodb-$_target"
-_pkgver='1.21.0'
+_pkgver='1.21.1'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition'
@@ -15,7 +15,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'hadron-build-packaging.diff'
 )
-sha256sums=('98cc27778a0d6456b17464d85a38474cda84285efe779394497f3250481e2ebc'
+sha256sums=('cfaddc2ea23904afdea729e29311cca311052bb5c75297f8b68adef196547841'
             '3f438dc5b2eb99a4831f83d753cb3dc86fc8b3217499310fe03469570f300ff2')
 
 _sourcedirectory="compass-$_pkgver"
