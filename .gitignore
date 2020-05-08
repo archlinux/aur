@@ -1,7 +1,8 @@
-swh-lv2
-src
-pkg
+swh-lv2/
+src/
+pkg/
 swh-lv2-git-*.pkg.tar.xz
+swh-lv2-git-*.pkg.tar.zst
 swh-lv2-git-*.src.tar.gz
 .AURINFO
 

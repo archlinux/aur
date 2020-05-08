@@ -1,6 +1,6 @@
 pkgbase = swh-lv2-git
 	pkgdesc = Experimental port of Steve Harris' LADSPA plugins to LV2 format
-	pkgver = 1.0.15.r43.5098e09
+	pkgver = 1.0.16.r51.1aa77e5
 	pkgrel = 1
 	url = http://plugin.org.uk/
 	arch = i686
@@ -12,7 +12,9 @@ pkgbase = swh-lv2-git
 	depends = fftw
 	depends = lv2
 	provides = swh-lv2
+	provides = swh.lv2
 	conflicts = swh-lv2
+	conflicts = swh.lv2
 	source = swh-lv2::git+https://github.com/swh/lv2.git
 	md5sums = SKIP
 
