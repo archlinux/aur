@@ -1,0 +1,7 @@
+pkg/
+src/
+fogpad-port-*.tar.gz
+fogpad-*.pkg.tar.xz
+fogpad-*.pkg.tar.zst
+fogpad-*.src.tar.gz
+.AURINFO
