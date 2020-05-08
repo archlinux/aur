@@ -1,7 +1,7 @@
 pkgbase = nzbhydra2
 	pkgdesc = Search aggregator for newznab and torznab indexers.
 	pkgver = 2.21.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/theotherp/nzbhydra2
 	arch = any
 	license = Apache
