@@ -21,7 +21,7 @@ source=("https://github.com/tinygo-org/tinygo/releases/download/v${pkgver}/tinyg
         "https://raw.githubusercontent.com/tinygo-org/tinygo/v${pkgver}/LICENSE"
 )
 sha256sums=('a7ea6827faa70248bc5efdc8ed7f368d2ca4afed31aca974cf4fede9a3bedefc'
-            'e6efa1b804521f915053451d0c84f4824751539003ca046a4977549e02eff2f3'
+            '6d2fe86f53ee2c23c92c2d30abd434bfec5bccc7163431af0fc2a0a2a11e3c5b'
 )
 
 package() {
