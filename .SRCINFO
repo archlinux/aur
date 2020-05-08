@@ -1,0 +1,12 @@
+pkgbase = ttf-borg-sans-mono
+	pkgdesc = Modification of Droid Sans Mono with Hasklig-style ligatures
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/marnen/borg-sans-mono
+	arch = any
+	license = Apache
+	source = ttf-borg-sans-mono-0.2.0.zip::https://github.com/marnen/borg-sans-mono/files/107663/BorgSansMono.ttf.zip
+	sha512sums = 85e9d47727b31ad71037012182082bec04a1b2480bdc0ef9abe4994e0a1b399b6ab36ff5de51798c97ae6a572d957ede81c8c9b8eab65d2dc130c11fadb6ea79
+
+pkgname = ttf-borg-sans-mono
+
