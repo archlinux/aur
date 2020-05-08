@@ -1,8 +1,8 @@
-# Maintainer: Abigail G <me@kb6.ee>
+# Maintainer: Abigail G <dev@kb6.ee>
 
 pkgname=js8call
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for ragchewing and message-passing based on WSJT-X"
 arch=('i686' 'x86_64')
 url="https://groups.io/g/js8call"
