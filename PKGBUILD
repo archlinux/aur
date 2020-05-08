@@ -1,34 +1,35 @@
 # Maintainer: Tonkku <contact@tonkku.me>
 
 pkgname=authy-snap
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Two factor authentication desktop application"
 arch=('x86_64')
 url='https://authy.com/'
 provides=('authy')
-license=('ISC') # According to the authy(AUR) package...
+license=('unknown')
 depends=('nss' 'gtk3' 'libxss' 'libdbusmenu-glib')
-optdepends=()
+optdepends=('libappindicator-gtk3: tray icon support')
 makedepends=('squashfs-tools')
 _snapid="H8ZpNgIoPyvmkgxOWw5MSzsXK1wRZiHn"
-_snaprev="1"
+_snaprev="3"
 source=("https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_snaprev}.snap")
-sha256sums=('6189c2439fbddae802b1f7f86132ffdeeed6f8e911108c41cd353ef1a70858d9')
+sha256sums=('b1466c9b0d5a568ae29d1abaf220c4adaa05ea2d95825ebefdd714a7ce566380')
 
 prepare() {
     echo "Extracting snap file..."
-    unsquashfs -q -f -d "${srcdir}/authy" "${_snapid}_${_snaprev}.snap"
+    unsquashfs -q -f -d "${srcdir}/${pkgname}" "${_snapid}_${_snaprev}.snap"
 }
 
 package() {
     # Install files
     install -d "${pkgdir}/opt/${pkgname}"
-    cp -r "${srcdir}/authy/." "${pkgdir}/opt/${pkgname}"
+    cp -r "${srcdir}/${pkgname}/." "${pkgdir}/opt/${pkgname}"
 
     # Desktop Entry
-    sed -i "s/\${SNAP}/\/opt\/${pkgname}/" "${pkgdir}/opt/${pkgname}/meta/gui/authy.desktop"
+    sed -i 's|${SNAP}/meta/gui/icon.png|authy|g' "${pkgdir}/opt/${pkgname}/meta/gui/authy.desktop"
     install -Dm644 "${pkgdir}/opt/${pkgname}/meta/gui/authy.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${pkgdir}/opt/${pkgname}/meta/gui/icon.png" "${pkgdir}/usr/share/pixmaps/authy.png"
     
     # Symlink binary to /usr/bin
     install -d "${pkgdir}/usr/bin"

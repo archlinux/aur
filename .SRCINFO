@@ -1,18 +1,19 @@
 pkgbase = authy-snap
 	pkgdesc = Two factor authentication desktop application
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://authy.com/
 	arch = x86_64
-	license = ISC
+	license = unknown
 	makedepends = squashfs-tools
 	depends = nss
 	depends = gtk3
 	depends = libxss
 	depends = libdbusmenu-glib
+	optdepends = libappindicator-gtk3: tray icon support
 	provides = authy
-	source = https://api.snapcraft.io/api/v1/snaps/download/H8ZpNgIoPyvmkgxOWw5MSzsXK1wRZiHn_1.snap
-	sha256sums = 6189c2439fbddae802b1f7f86132ffdeeed6f8e911108c41cd353ef1a70858d9
+	source = https://api.snapcraft.io/api/v1/snaps/download/H8ZpNgIoPyvmkgxOWw5MSzsXK1wRZiHn_3.snap
+	sha256sums = b1466c9b0d5a568ae29d1abaf220c4adaa05ea2d95825ebefdd714a7ce566380
 
 pkgname = authy-snap
 
