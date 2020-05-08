@@ -1,15 +1,17 @@
-# Maintainer: Marco44 <cousinmarc at gmail dot com>
+# Maintainer: yjun <jerrysteve1101 at gmail dot com>
+# Contributor: Marco44 <cousinmarc at gmail dot com>
+
 pkgname=driftnet-git
 _gitname=driftnet
-pkgver=v1.1.3.r44.gdf20fd7
+pkgver=v1.3.0.r2.gc64d118
 pkgrel=1
-pkgdesc="get files out of a tcp stream"
+pkgdesc="Driftnet watches network traffic, and picks out and displays JPEG and GIF images for display"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url=https://github.com/deiv/driftnet
 license=('GPL3')
 depends=('libpcap' 'libjpeg' 'libpng12' 'giflib' 'gtk2' 'libwebsockets')
-builddepends=('autoconf')
 makedepends=(git)
+conflicts=('driftnet')
 options=(!emptydirs !libtool)
 source=('git://github.com/deiv/driftnet.git')
 md5sums=('SKIP')
