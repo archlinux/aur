@@ -1,6 +1,6 @@
 pkgbase = scrcast-git
 	pkgdesc = A simple screencast script using ffmpeg.
-	pkgver = 2.0.r8.225ef63
+	pkgver = 3.0.r15.28e3703
 	pkgrel = 1
 	url = https://github.com/justanoobcoder/scrcast.git
 	arch = x86_64

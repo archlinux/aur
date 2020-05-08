@@ -2,7 +2,7 @@
 
 pkgname=scrcast-git
 _dir=scrcast
-pkgver=2.0.r8.225ef63
+pkgver=3.0.r15.28e3703
 pkgrel=1
 pkgdesc="A simple screencast script using ffmpeg."
 arch=(x86_64 i686)
