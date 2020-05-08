@@ -1,12 +1,12 @@
 pkgbase = golang-github-knq-ini
 	pkgdesc = ini file manipulation / parser package for Go
-	pkgver = 20191206
+	pkgver = 20200508
 	pkgrel = 1
 	url = https://github.com/knq/ini
 	arch = any
 	license = MIT
 	depends = go-pie>=1.13
-	source = golang-github-knq-ini-20191206-1.tar.gz::https://github.com/knq/ini/archive/58b5e74713e005e3eb460c354a1514c63a486cd0.tar.gz
-	sha256sums = 8e63678527afa6e566c6ad6fc3d551daee6d89b2b36e7cf95fd8221f420b7656
+	source = golang-github-knq-ini-20200508-1.tar.gz::https://github.com/knq/ini/archive/ad6e8e8848b545897dfa39c3a602f382a666371e.tar.gz
+	sha256sums = e14ad1bcf2ee5da51cf44ff62c6ef7df6f559ccf6553b79c362e2866f0758d45
 
 pkgname = golang-github-knq-ini

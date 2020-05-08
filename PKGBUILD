@@ -2,8 +2,8 @@
 _author='knq'
 _projectname='ini'
 pkgname="golang-github-$_author-$_projectname"
-pkgver='20191206'
-_commit='58b5e74713e005e3eb460c354a1514c63a486cd0'
+pkgver='20200508'
+_commit='ad6e8e8848b545897dfa39c3a602f382a666371e'
 pkgrel='1'
 pkgdesc='ini file manipulation / parser package for Go'
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/$_author/$_projectname"
 license=('MIT')
 depends=('go-pie>=1.13')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('8e63678527afa6e566c6ad6fc3d551daee6d89b2b36e7cf95fd8221f420b7656')
+sha256sums=('e14ad1bcf2ee5da51cf44ff62c6ef7df6f559ccf6553b79c362e2866f0758d45')
 
 _builddir="$pkgname-$pkgver-$pkgrel-build"
 _buildpath="src/github.com/$_author/$_projectname"
