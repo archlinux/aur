@@ -2,7 +2,7 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _cranname=tidyr
-_cranver=1.0.2
+_cranver=1.0.3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=('r>=3.1' 'r-dplyr>=0.8.2' 'r-ellipsis>=0.1.0' r-glue r-magrittr r-purrr
 makedepends=(gcc)
 optdepends=(r-covr r-jsonlite r-knitr r-repurrrsive r-rmarkdown r-readr r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('9118722418f48877650f6dcf9e160606')
+md5sums=('c43dcf8bfb6b212809bf5f2a1a56bb97')
 
 build() {
   cd "${srcdir}"
