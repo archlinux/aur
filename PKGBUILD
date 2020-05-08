@@ -1,7 +1,7 @@
 # Maintainer: Oystein Sture <oysstu@gmail.com>
 # Contributor: 
 pkgname=python-gpflow
-_pkgver=2.0.1
+_pkgver=2.0.2
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="Gaussian process methods in tensorflow"
@@ -12,7 +12,7 @@ depends=('python-numpy' 'python-scipy' 'python-multipledispatch' 'python-tensorf
 checkdepends=('python-pytest')
 makedepends=('python-setuptools' 'findutils')
 source=("https://github.com/GPflow/GPflow/archive/v${_pkgver}.tar.gz")
-sha256sums=('ade68068a19f5226e03c2a009e57f8fdc83d21f3b0de969bec90e05e829c89bc')
+sha256sums=('644d4e278423d0fdeaf4783355a08adfdc7d3a2f1d496b16e621afddd3b4e439')
 
 prepare() {
     # Do not install tests into site-packages root
