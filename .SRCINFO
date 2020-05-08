@@ -1,7 +1,7 @@
 pkgbase = jdk-mission-control-bin
 	pkgdesc = OpenJDK Mission Control
-	pkgver = e46ddcf78c
-	pkgrel = 1
+	pkgver = 20200507142353
+	pkgrel = 2
 	url = https://adoptopenjdk.net/jmc.html
 	arch = x86_64
 	license = UPL
