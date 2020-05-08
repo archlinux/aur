@@ -1,7 +1,7 @@
 pkgbase = ruby-travis
 	pkgdesc = CLI and Ruby client library for Travis CI
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/travis-ci/travis.rb
 	arch = any
 	license = MIT
@@ -16,6 +16,7 @@ pkgbase = ruby-travis
 	depends = ruby-launchy
 	depends = ruby-pusher-client
 	depends = ruby-typhoeus-0.6
+	depends = ruby-pry
 	noextract = travis-1.9.0.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/travis-1.9.0.gem
