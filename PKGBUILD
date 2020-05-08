@@ -27,42 +27,41 @@ sha256sums=('SKIP'
 
 _kernelname=${pkgbase#linux}
 
+clang_major_ver() {
+  clang --version | head -n1 | cut -d ' ' -f3 | cut -d '.' -f1
+}
+
+make_env_variant=""
+make_with_lto="make CC=clang HOSTCC=clang NM=llvm-nm AR=llvm-ar HOSTLD=ld.lld LD=ld.lld OBJCOPY=llvm-objcopy STRIP=llvm-strip"
+make_without_lto="make CC=clang HOSTCC=clang"
+
 pkgver() {
   echo ${pkgver}
 }
 
 prepare() {
-  cd "${_srcname}"
-
-  # don't run depmod on 'make install'. We'll do this ourselves in packaging
-  sed -i '2iexit 0' scripts/depmod.sh
-
-  rm -f .clang
-  make HOSTCC=clang CC=clang nitrous_defconfig
-
-  # get kernel version
-  #make prepare
-
-  # load configuration
-  # Configure the kernel. Replace the line below with one of your choice.
-  #make menuconfig # CLI menu for configuration
-  #make nconfig # new CLI menu for configuration
-  #make xconfig # X-based configuration
-  #make oldconfig # using old config from previous kernel version
-  #make olddefconfig # old config from previous kernel, defaults for new options
-
-  # ... or manually edit .config
+  :
 }
 
 build() {
   cd "${_srcname}"
 
-  make HOSTCC=clang CC=clang nitrous_defconfig
+  # On Clang 11 we *can* use LTO but we *don't* on desktop variants
+  # since DKMS will have trouble with it (and even if it doesn't,
+  # the modules won't work if you mix LTO with non-LTO)
+  # We will use the right env anyway.
+  [ $(clang_major_ver) -ge 11 ] && make_env_variant="$make_with_lto" || make_env_variant="$make_without_lto"
+
+  # don't run depmod on 'make install'. We'll do this ourselves in packaging
+  sed -i '2iexit 0' scripts/depmod.sh
+
+  rm -f .clang
+  $make_env_variant nitrous_defconfig
   makeflags="${MAKEFLAGS}"
   if [[ "$MAKEFLAGS" != *"-j"* ]]; then
     makeflags="$makeflags -j$(nproc --all)"   
   fi
-  make ${makeflags} HOSTCC=clang CC=clang bzImage modules
+  $make_env_variant ${makeflags} bzImage modules
 }
 
 _package() {
@@ -79,6 +78,8 @@ _package() {
 
   cd "${_srcname}"
 
+  [ $(clang_major_ver) -ge 11 ] && make_env_variant="$make_with_lto" || make_env_variant="$make_without_lto"
+
   KARCH=x86
 
   # get kernel version
@@ -87,7 +88,7 @@ _package() {
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-  make CC=clang INSTALL_MOD_PATH="${pkgdir}" modules_install
+  $make_env_variant INSTALL_MOD_PATH="${pkgdir}" modules_install
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${__kernelname}"
 
   # set correct depmod command for install
@@ -142,10 +143,16 @@ _package-headers() {
   cd "${_srcname}"
 
   # Fix for DKMS because clang doesn't like this
+  # and to disable LTO
   for f in Makefile kernel/Makefile; do
-    sed -i -re '/^.*[+]= *(-Qunused-arguments|-mno-global-merge|-ftrivial-auto-var-init=pattern|-Wno-initializer-overrides|-Wno-gnu|-Wno-format-invalid-specifier)$/d' $f
+    sed -i -re '/^.*[+]= *(-Qunused-arguments|-mno-global-merge|-ftrivial-auto-var-init=pattern|-Wno-initializer-overrides|-Wno-gnu|-Wno-format-invalid-specifier|-flto(=[a-z]+)?)$/d' $fi
+    sed -i -re 's/-flto(=([a-z]+)?)//g' $fi
   done
   echo -e "\nKBUILD_CFLAGS += -Wno-error -Wno-unused-variable -Wno-incompatible-pointer-types" >> Makefile
+  echo -e "\nCONFIG_LTO := n" >> Makefile
+  echo -e "\nLD = ld.lld" >> Makefile
+  sed -i -re 's/^(.*(_|[A-Z]+)LTO(_.*)?)=y/\1=n/g' .config
+  echo "CONFIG_LTO_NONE=y" >> .config
 
   install -D -m644 Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
