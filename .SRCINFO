@@ -1,6 +1,6 @@
 pkgbase = proximity-sort
 	pkgdesc = Simple command-line utility for sorting inputs by proximity to a path argument
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/jonhoo/proximity-sort
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = proximity-sort
 	license = APACHE
 	makedepends = cargo
 	depends = gcc-libs
-	source = proximity-sort-1.0.5.tar.gz::https://crates.io/api/v1/crates/proximity-sort/1.0.5/download
-	sha256sums = 32414b345dab9be84f08be7c0765fec54e8d3c96c6669eafdf95074ba9f4166b
+	source = proximity-sort-1.0.6.tar.gz::https://crates.io/api/v1/crates/proximity-sort/1.0.6/download
+	sha256sums = f27abbad83745466bdc78cf4b0c2bc3f7428cd61b06878178c2ebfff7aa7e20e
 
 pkgname = proximity-sort
 
