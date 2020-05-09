@@ -1,0 +1,13 @@
+[Unit]
+Description=Seamless ssh-agent for YubiKeys
+Documentation=https://filippo.io/yubikey-agent
+
+[Service]
+ExecStart=/usr/bin/yubikey-agent -l %t/yubikey-agent/yubikey-agent.sock
+ExecReload=/bin/kill -HUP $MAINPID
+ProtectSystem=strict
+NoNewPrivileges=true
+RuntimeDirectory=yubikey-agent
+
+[Install]
+WantedBy=multi-user.target
