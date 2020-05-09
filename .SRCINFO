@@ -34,14 +34,20 @@ pkgname = eclipse-common
 	depends = unzip
 
 pkgname = eclipse-java
+	depends = eclipse-common
 
 pkgname = eclipse-jee
+	depends = eclipse-common
 
 pkgname = eclipse-cpp
+	depends = eclipse-common
 
 pkgname = eclipse-php
+	depends = eclipse-common
 
 pkgname = eclipse-javascript
+	depends = eclipse-common
 
 pkgname = eclipse-rust
+	depends = eclipse-common
 
