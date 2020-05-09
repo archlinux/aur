@@ -1,0 +1,15 @@
+pkgbase = multiselect
+	pkgdesc = multiple x11 selection server
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sgerwk/multiselect
+	arch = x86_64
+	depends = libx11
+	depends = libxau
+	depends = libxcb
+	depends = libxdmcp
+	source = git+https://github.com/sgerwk/multiselect#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = multiselect
+
