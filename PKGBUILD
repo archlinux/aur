@@ -1,11 +1,12 @@
 # $Id$
-# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Alexander Baldeck <Alexander@archlinux.org
 
 pkgname=xf86-input-evdev1.12
 _pkgname=xf86-input-evdev
-pkgver=2.10.5
+pkgver=2.10.6
 pkgrel=1
 pkgdesc="X.org evdev input driver"
 arch=(i686 x86_64)
@@ -17,7 +18,7 @@ conflicts=('xorg-server<1.12.0' 'xorg-server>=1.12.99' 'xf86-input-evdev' 'X-ABI
 provides=("$_pkgname=$pkgver")
 options=('!makeflags')
 source=(${url}/releases/individual/driver/${_pkgname}-${pkgver}.tar.bz2)
-sha256sums=('9edaa6205baf6d2922cc4db3d8e54a7e7773b5f733b0ae90f6be7725f983b70d')
+sha256sums=('8726073e81861bc7b2321e76272cbdbd33c7e1a121535a9827977265b9033ec0')
 
 build() {
   cd ${_pkgname}-${pkgver}
