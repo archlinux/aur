@@ -1,12 +1,13 @@
 # Maintainer: Paul Davis <paul@dangersalad.com>
 pkgname=discord-overlay-git
 pkgver=r49.0a2fa2f
-pkgrel=1
+pkgrel=2
 pkgdesc="QT5 Overlay for discord"
 arch=('x86_64')
 url="https://github.com/trigg/DiscordOverlayLinux"
-license=('GPL')
-makedepends=('git' 'qt5-webengine' 'python-pyqtwebengine' 'python-pyqt5')
+license=('GPL3')
+depends=('qt5-webengine' 'python-pyqtwebengine' 'python-pyqt5' 'python-pyxdg')
+makedepends=('git')
 optdepends=('picom: transparency support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -26,5 +27,4 @@ package() {
 	install -m 0755 -D -T "$srcdir/${pkgname%-git}/discord-overlay" "$pkgdir/usr/bin/discord-overlay"
 	install -m 0644 -D -T "$srcdir/${pkgname%-git}/discord-overlay.desktop" "$pkgdir/usr/share/applications/discord-overlay.desktop"
 	install -m 0644 -D -T "$srcdir/${pkgname%-git}/README.md" "$pkgdir/usr/share/doc/discord-overlay/README.md"
-	install -m 0644 -D -T "$srcdir/${pkgname%-git}/COPYING" "$pkgdir/usr/share/licenses/discord-overlay/COPYING"
 }
