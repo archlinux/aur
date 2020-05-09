@@ -2,30 +2,24 @@
 
 pkgname=bash-pipes
 pkgver=1.3.0
-pkgrel=6
+pkgrel=7
 pkgdesc="pipes.sh (animated pipes terminal screensaver) with additional better names (soft links)"
 arch=("any")
 url="https://github.com/pipeseroni/pipes.sh"
 license=("MIT")
-depends=("bash")
-source=("https://github.com/pipeseroni/pipes.sh/archive/v${pkgver}.tar.gz")
-sha256sums=("532976dd8dc2d98330c45a8bcb6d7dc19e0b0e30bba8872dcce352361655a426")
-provides=("pipes.sh=1.3.0")
-conflicts=("pipes.sh")
+depends=("pipes.sh=${pkgver}")
+source=()
 
 _alternative_names=(
-    "pipes"
-    "bash-pipes"
+    "pipes"      # backwards compatibility with old bash-pipes
+    "bash-pipes" # personally, i like this name
 )
 
 package() {
-    cd "${srcdir}/pipes.sh-${pkgver}"
+    mkdir -p "${pkgdir}/usr/bin/"
+    mkdir -p "${pkgdir}/usr/share/man/man6/"
+    mkdir -p "${pkgdir}/usr/share/doc/"
 
-    make DESTDIR="${pkgdir}" PREFIX=/usr install
-    install -Dm644 -t "${pkgdir}/usr/share/doc/pipes.sh" LICENSE
-    install -Dm644 -t "${pkgdir}/usr/share/doc/pipes.sh" README.rst
-
-    #Cooler names and backwards compatibility with old bash-pipes
     for name in "${_alternative_names[@]}"
     do
         ln -sf "/usr/bin/pipes.sh" "${pkgdir}/usr/bin/${name}"
