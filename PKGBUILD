@@ -5,11 +5,52 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
+##
+## The following variables can be customized at build time. Use env or export to change at your wish
+##
+##   Example: env enable_pgo=y makepkg -sc
+##
+## Optimized build: env enable_pgo=y enable_lto=y makepkg -sc
+## Optimized build, less RAM required: env enable_pgo=y enable_lto=y enable_no_keep_memory=y makepkg -sc
+## Less optimization enabled, faster compilation: env enable_pgo=n enable_lto=n makepkg -sc
+##
+## Enable PGO, increasing performances but makes the compilation slower.
+## It builds Firefox a first time without LTO, runs the test suite to generate
+## a PGO profile, then builds Firefox again (with optional LTO) using this
+## profile.
+## Set variable "enable_pgo" to: y to enable (increase performance, default in official firefox-beta)
+##                               n to disable  (faster compilation)
+if [ -z ${enable_pgo+x} ]; then
+  enable_pgo=y
+fi
+
+## Enable LTO, increasing performances but makes the compilation slower and
+## requires more RAM to build. Only affects clang, rust has LTO enabled by
+## default.
+## Disable it if the compilation runs out-of-memory.
+## Set variable "enable_lto" to: y to enable (increase performance, default in official firefox-beta)
+##                               n to disable  (faster compilation, needs more RAM to build)
+if [ -z ${enable_lto+x} ]; then
+  enable_lto=y
+fi
+
+## Enable --no-keep-memory in LD when compiling with LTO enabled. Useful when
+## running OOM during the compilation, as LD will consume less memory when ##
+## linking. Doesn't impact the performance of the generated binary, but makes
+## the compilation a bit slower.
+## Set variable "enable_no_keep_memory" to: n to disable  (default)
+##                                          y to enable (slower compilation, but compilation requires less memory)
+if [ -z ${enable_no_keep_memory+x} ]; then
+  enable_no_keep_memory=n
+fi
+
+### IMPORTANT: Do no edit below this line unless you know what you're doing
+
 pkgname=firefox-beta
 _pkgname=firefox
 pkgver=77.0b3
 _pkgver=77.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org - Beta"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -113,11 +154,50 @@ build() {
   CFLAGS="${CFLAGS/-fno-plt/}"
   CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
-  # Do 3-tier PGO
-  echo "Building instrumented browser..."
-  cat >.mozconfig ../mozconfig - <<END
+  if [ "$enable_pgo" = "y" ]; then
+    # Do 3-tier PGO
+    echo "Building instrumented browser..."
+    cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-profile-generate=cross
 END
+    ./mach build
+
+    echo "Profiling instrumented browser..."
+    ./mach package
+    LLVM_PROFDATA=llvm-profdata \
+      JARLOG_FILE="$PWD/jarlog" \
+      xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
+      ./mach python build/pgo/profileserver.py
+
+    if [[ ! -s merged.profdata ]]; then
+      echo "No profile data produced."
+      return 1
+    fi
+
+    if [[ ! -s jarlog ]]; then
+      echo "No jar log produced."
+      return 1
+    fi
+
+    echo "Removing instrumented browser..."
+    ./mach clobber
+
+    echo "Building optimized browser..."
+    cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-profile-use=cross
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+END
+  else
+    cat >.mozconfig ../mozconfig
+  fi
+
+  if [ "$enable_lto" = "y" ]; then
+    echo "ac_add_options --enable-lto=cross" >> .mozconfig
+    if [ "$enable_no_keep_memory" = "y" ]; then
+      LDFLAGS="$LDFLAGS,--no-keep-memory"
+    fi
+  fi
   ./mach build
 
   echo "Building symbol archive..."
