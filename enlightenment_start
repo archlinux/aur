@@ -1,0 +1,9 @@
+#!/bin/sh
+
+export EINA_LOG_BACKTRACE=999
+export EINA_FREEQ_TOTAL_MAX=0
+export EINA_FREEQ_MEM_MAX=0
+export EINA_FREEQ_FILL_MAX=0
+export E_DONT_ABORT=1
+export ASAN_OPTIONS="detect_leaks=0:abort_on_error=1:new_delete_type_mismatch=0"
+exec /usr/bin/enlightenment_start_real >& ~/.e-log
