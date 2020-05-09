@@ -2,7 +2,7 @@
 
 pkgname=('canta-icon-theme')
 pkgdesc="Flat icons for Canta GTK theme"
-pkgver=2018.10.30
+pkgver=2020.01.31
 _pkgver=$(echo $pkgver | tr '.' '-')
 _pkgname="Canta-theme-${_pkgver}"
 pkgrel=1
