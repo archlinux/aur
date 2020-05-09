@@ -15,6 +15,8 @@ optdepends=('plasma-desktop: for a plasma desktop theme'
             'sierrabreeze-jomada-kwin-decoration-git: for matched KWin decoration'
             'latte-dock: for a Latte dock layout')
 makedepends=('git')
+provides=('moe-kde')
+conflicts=('moe-kde')
 install=${pkgname}.install
 source=("git+${url}.git")
 sha256sums=('SKIP')
