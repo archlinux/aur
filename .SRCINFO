@@ -1,13 +1,13 @@
 pkgbase = gmod-cef-codec-fix-bin
 	pkgdesc = Automatic Patching of GMod CEF for Proprietary Video/Audio Codec Support
 	pkgver = 20200108
-	pkgrel = 1
-	url = https://github.com/solsticegamestudios
+	pkgrel = 2
+	url = https://github.com/solsticegamestudios/GModCEFCodecFix
 	arch = x86_64
 	license = GPL3
 	depends = python3
 	provides = gmod-cef-codec-fix
-	source = https://github.com/solsticegamestudios/GModCEFCodecFix/releases/download/20200108/GModCEFCodecFix-Linux
+	source = https://github.com/solsticegamestudios/GModCEFCodecFix/GModCEFCodecFix/releases/download/20200108/GModCEFCodecFix-Linux
 	md5sums = 8011d0ae7da346636d02a6d38217e570
 
 pkgname = gmod-cef-codec-fix-bin
