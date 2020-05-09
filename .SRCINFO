@@ -1,7 +1,7 @@
 pkgbase = weatherreport
 	pkgdesc = A command line tool to get the current weather conditions.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/chrisfair/weatherreport
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = weatherreport
 	depends = sudo
 	depends = git
 	source = https://gitlab.com/chrisfair/weatherreport/-/archive/v1.1.0/weatherreport-v1.1.0.tar.gz
-     sha256sums = 2d6f87c261d549f07ce4de6d2f51f19bd48cb35387a989f453a854cf7bd99feb
-
+     sha256sums = 497314590ad74041c8ae802c24d2720337e911aaaeadf6da016f0f1d92ea3863
 pkgname = weatherreport
 
