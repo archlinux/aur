@@ -1,16 +1,15 @@
 pkgbase = hipcub
-	pkgdesc = Reusable software components for the rocm developers.
+	pkgdesc = Header-only library on top of rocPRIM or CUB
 	pkgver = 3.3.0
 	pkgrel = 2
 	url = https://github.com/ROCmSoftwarePlatform/hipCUB
 	arch = x86_64
-	license = custom:NCSAOSL
+	license = custom
 	makedepends = cmake
-	makedepends = python2
-	makedepends = rocminfo
-	makedepends = comgr
-	depends = hcc
-	depends = hip
+	makedepends = git
+	makedepends = hcc
+	depends = rocprim
+	optdepends = cuda: CUB backend
 	source = https://github.com/ROCmSoftwarePlatform/hipCUB/archive/rocm-3.3.0.tar.gz
 	sha256sums = 0d97cada3b856e8c62affbb3664ac4fc2415a36ad3d9b9d7155b5f954e492392
 
