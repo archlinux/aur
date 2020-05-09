@@ -1,12 +1,12 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
-pkgname=('arc-icon-theme-full-git')
-pkgver=1.0.r109.g44aa818
-pkgrel=3
+pkgname=arc-icon-theme-full-git
+pkgver=1.0.r110.g6073d02
+pkgrel=1
 pkgdesc='The complete Arc icon theme'
 arch=('any')
 url='https://github.com/rtlewis88/rtl88-Themes/tree/Arc-ICONS'
-license=('GPL-3.0')
+license=('GPL3')
 makedepends=('git')
 optdepends=('arc-gtk-theme' 'arc-solid-gtk-theme')
 provides=("${pkgname%-*}" "${pkgname}" "arc-icon-theme")
@@ -19,14 +19,15 @@ pkgver() {
 }
 
 prepare() {
-  msg2 'Downloading icons ...'
+  echo 'Downloading icons ...'
+  if [[ -d rtl88-Themes ]]; then
+  	rm -rf rtl88-Themes
+  fi
   git clone --single-branch --branch "Arc-ICONS" "https://github.com/rtlewis88/rtl88-Themes"
-  cd "${srcdir}/rtl88-Themes/Arc-ICONS"
 }
 
 package() {
-  msg2 'Installing icons ...'
-  install -dm 755 "${pkgdir}/usr/share/icons/Arc-ICONS"
+  install -dm755 "${pkgdir}/usr/share/icons/Arc-ICONS"
   cp -r "${srcdir}"/rtl88-Themes/Arc-ICONS/* "${pkgdir}/usr/share/icons/Arc-ICONS/"
 }
 # vim:set ts=2 sw=2 et:
