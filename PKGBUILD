@@ -1,7 +1,7 @@
 # Maintainer: Fancy Zhang <springzfx@gmail.com>
 pkgbase=ap
 pkgname=ap-git
-pkgver=v1.0.r1.g862ee76
+pkgver=v1.0.r3.g2c253da
 pkgrel=1
 pkgdesc="simple wireless ap support both ipv4 and ipv6 with nat"
 arch=('x86_64')
