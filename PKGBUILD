@@ -6,12 +6,12 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 pkgname=python-mdns-publisher
 epoch=
 pkgver=0.9.2
-pkgrel=00
+pkgrel=01
 pkgdesc='Publish CNAMEs pointing to the local host over Avahi/mDNS'
 arch=(any)
 url=https://github.com/carlosefr/mdns-publisher
 license=(MIT)
-depends=(python python-dbus-python)
+depends=(python python-dbus)
 ## EXTRA_DEPENDS ##
 makedepends=(python-pip python-wheel)
 checkdepends=()
