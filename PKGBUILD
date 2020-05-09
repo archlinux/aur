@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=basilisk
-pkgver=2020.04.17
+pkgver=2020.05.08
 pkgrel=1
 pkgdesc="Standalone web browser forked from mozilla.org"
 arch=('x86_64')
@@ -12,12 +12,12 @@ license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'libxt' 'mime-types' 'alsa-lib' 'ffmpeg' 'ttf-font')
 makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'autoconf2.13')
 options=('!emptydirs')
-_commit=5caf99795aa81e1fc145b8e937b1ee8197ed2486
+_commit=7c779d875b20bce3f5b864136e45670801135643
 source=("https://github.com/MoonchildProductions/Basilisk/archive/v$pkgver.tar.gz"
         "https://github.com/MoonchildProductions/UXP/archive/$_commit.tar.gz"
         "https://raw.githubusercontent.com/MoonchildProductions/Pale-Moon/1f08c80172805b68ac36dd368a36f1e6828fc662/palemoon/branding/official/palemoon.desktop")
-sha256sums=('c94efbe58daf4deed1d6b6780802b3a155a21d29cb34681499625f8ae941846f'
-            '7021bc0e866ebeb591018b8df42a85c68a7318e816dbd62784312fba73da9193'
+sha256sums=('fdae328ac6080790ab53b0aec00075771dffbe609c657f22c9280aa3d1208f8b'
+            '7f3a4eab667aef4b9b570ba76dc73a397f9556f9223e6008580cf3a8e00139b0'
             '98fce6e155a0c0243886b09364ab925d742cdc97d631bfd1019a2c597aed42fc')
 
 prepare() {
