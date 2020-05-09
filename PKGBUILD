@@ -1,14 +1,14 @@
 # Maintainer: robertfoster
 
 pkgname=ocaml-ffmpeg-git
-pkgver=r274.2dc8ad0
+pkgver=r323.1273a5e
 pkgrel=1
 pkgdesc="OCaml bindings to the FFmpeg library"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-ffmpeg"
 license=('LGPL2.1')
 depends=('ocaml' 'ffmpeg')
-makedepends=('ocaml-findlib')
+makedepends=('dune' 'dune-configurator')
 options=('!strip' '!makeflags')
 source=("$pkgname::git+https://github.com/savonet/ocaml-ffmpeg")
 
@@ -19,16 +19,13 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    ./bootstrap
-    ./configure
-    make
+    dune build
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
-
-    export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-    mkdir -p "${OCAMLFIND_DESTDIR}/stublibs"
-    make install
+    dune install --prefix "${pkgdir}/usr" \
+    --libdir "${pkgdir}$(ocamlfind printconf destdir)"
 }
+
 md5sums=('SKIP')
