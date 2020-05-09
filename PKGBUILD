@@ -74,7 +74,7 @@ makedepends=(
 options=('!strip')
 
 _reponame="bcachefs"
-_repo_url="https://github.com/eadwu/$_reponame"
+_repo_url="https://github.com/koverstreet/$_reponame"
 
 _ckpatch="patch-5.6-ck${_ckpatchversion}"
 _gcc_more_v='20191217'
@@ -96,7 +96,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 md5sums=('SKIP'
-         'cbb389e4fec468d939d5d2931119e3da'
+         '019c5d6e9996bc3a3cf0a732ceba0547'
          '2cebdad39da582fd6a0c01746c8adb42'
          '49ace4303b89cfe1dc92d829f7f391bf'
          '1f1d348812a2b66665cde85b3605bb35'
