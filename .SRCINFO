@@ -6,6 +6,7 @@ pkgbase = python-hachiko
 	arch = any
 	license = MIT
 	depends = python
+	depends = python-watchdog
 	provides = python-hachiko
 	options = !emptydirs
 	source = https://github.com/biesnecker/hachiko/archive/0.3.0.tar.gz

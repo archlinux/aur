@@ -9,7 +9,7 @@ pkgdesc="An extremely simple asyncio-based wrapper around Watchdog."
 arch=(any)
 url="https://github.com/biesnecker/hachiko"
 license=('MIT')
-depends=('python')
+depends=('python' 'python-watchdog')
 options=(!emptydirs)
 provides=('python-hachiko')
 
