@@ -1,6 +1,6 @@
 pkgname=dobiestation
 pkgrel=1
-pkgver=72feb6d1009b072ad18387fd3356a9044dc0776b
+pkgver=r1574.12be590
 pkgdesc='A Dog based emulator for the ps2'
 arch=(x86_64)
 url=https://github.com/PSI-Rockin/DobieStation/
@@ -15,6 +15,17 @@ git
 provides=(dobiestation)
 conflicts=(dobiestation)
 replaces=(dobiestation)
+
+pkgver()
+{
+  cd "DobieStation"
+  (   
+    set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
+
 
 prepare()
 {
