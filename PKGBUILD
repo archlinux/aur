@@ -5,7 +5,7 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.24.99.65790.g5f159ae624
+pkgver=1.24.99.65805.g27630114ef
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -70,7 +70,6 @@ build() {
     -Dbuild-examples=false \
     -Dbuild-tests=false \
     . build
-
   ninja -j $J -C build
 }
 
