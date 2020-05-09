@@ -17,7 +17,10 @@ sha512sums=('cf673dad6280302d69050c29490621f66c6d6a73932d019a53ec3501316d3f2e23e
 
 prepare() {
   cd $pkgname-$pkgver
-  sed -e 's|swig3.0|swig-3|g' -i configure # Build with swig 3
+  # Build with swig 3 due to 
+  #   https://sigrok.org/bugzilla/show_bug.cgi?id=1527
+  #   https://github.com/swig/swig/issues/1689
+  sed -e 's|swig3.0|swig-3|g' -i configure
 }
 
 build() {
