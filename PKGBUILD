@@ -12,8 +12,6 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cosmtrek/air/archive/v$
 sha256sums=('ff4221fd79cf5e9636b511639101fd765c3b57f0461e860c1205674e679800da')
 
 package() {
-	install -Dm755 "${srcdir}/air-${pkgver}/bin/linux/air" "${pkgdir}/usr/bin/air"
-	install -Dm644 "${srcdir}/air-${pkgver}/air_example.conf" "$pkgdir/etc/air/air.conf"
-	install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
-	ln -s /usr/share/licenses/common/GPL3/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 "${srcdir}/air-${pkgver}/bin/linux/air" "${pkgdir}/usr/bin/air"
+  install -Dm644 "${srcdir}/air-${pkgver}/air_example.conf" "$pkgdir/etc/air/air.conf"
 }
