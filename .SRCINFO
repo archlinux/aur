@@ -1,0 +1,19 @@
+pkgbase = network-manager-wireguard-git
+	pkgdesc = NetworkManager VPN Plugin: Wireguard
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/max-moser/network-manager-wireguard
+	arch = x86_64
+	license = GPLv2
+	depends = networkmanager
+	depends = libnm
+	depends = libnm-glib
+	depends = intltool
+	conflicts = network-manager-wireguard
+	source = git+https://github.com/max-moser/network-manager-wireguard.git
+	source = nm-wireguard-service.name
+	sha256sums = SKIP
+	sha256sums = 020a805b88d0129d129ca43a990f2f3ca02d33afa76f978a8174eb82ff046ca0
+
+pkgname = network-manager-wireguard-git
+
