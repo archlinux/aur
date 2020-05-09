@@ -2,8 +2,8 @@
 
 pkgname=bash-pipes
 pkgver=1.3.0
-pkgrel=3
-pkgdesc="pipes.sh with a better name"
+pkgrel=4
+pkgdesc="pipes.sh with additional better names (soft links)"
 arch=("any")
 url="https://github.com/pipeseroni/pipes.sh"
 license=("MIT")
