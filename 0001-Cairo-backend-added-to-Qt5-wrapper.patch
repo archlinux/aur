@@ -1,4 +1,4 @@
-From 307aacb24bfaa333e4fd0703c4dfe2c396ca8c4c Mon Sep 17 00:00:00 2001
+From 42db0fc6f3eab00c3eb2ba1589a5ca8d792a2c56 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 4 Apr 2018 16:36:56 +0100
 Subject: [PATCH 1/4] Cairo backend added to Qt5 wrapper
@@ -12,7 +12,7 @@ Subject: [PATCH 1/4] Cairo backend added to Qt5 wrapper
  5 files changed, 95 insertions(+), 1 deletion(-)
 
 diff --git a/qt5/src/CMakeLists.txt b/qt5/src/CMakeLists.txt
-index 69715d53..ba880846 100644
+index e75b5730..23ec62e8 100644
 --- a/qt5/src/CMakeLists.txt
 +++ b/qt5/src/CMakeLists.txt
 @@ -8,6 +8,11 @@ include_directories(
@@ -39,7 +39,7 @@ index 69715d53..ba880846 100644
 +  )
 +endif(HAVE_CAIRO)
  add_library(poppler-qt5 ${poppler_qt5_SRCS})
- set_target_properties(poppler-qt5 PROPERTIES VERSION 1.23.0 SOVERSION 1)
+ set_target_properties(poppler-qt5 PROPERTIES VERSION 1.24.0 SOVERSION 1)
  if(MINGW AND BUILD_SHARED_LIBS)
 @@ -46,6 +58,9 @@ if(MINGW AND BUILD_SHARED_LIBS)
      set_target_properties(poppler-qt5 PROPERTIES SUFFIX "-${POPPLER_QT5_SOVERSION}${CMAKE_SHARED_LIBRARY_SUFFIX}")
@@ -52,10 +52,10 @@ index 69715d53..ba880846 100644
  target_link_libraries(poppler-qt5 poppler ${poppler_LIBS})
  endif()
 diff --git a/qt5/src/poppler-document.cc b/qt5/src/poppler-document.cc
-index e1b8d05b..3e7c0428 100644
+index cba9da39..89607ca5 100644
 --- a/qt5/src/poppler-document.cc
 +++ b/qt5/src/poppler-document.cc
-@@ -708,6 +708,9 @@ namespace Poppler {
+@@ -709,6 +709,9 @@ namespace Poppler {
          ret << Document::SplashBackend;
  #endif
          ret << Document::ArthurBackend;
@@ -66,7 +66,7 @@ index e1b8d05b..3e7c0428 100644
      }
  
 diff --git a/qt5/src/poppler-page.cc b/qt5/src/poppler-page.cc
-index 30e03509..6b4c3c9e 100644
+index 35bec6c9..b19cd692 100644
 --- a/qt5/src/poppler-page.cc
 +++ b/qt5/src/poppler-page.cc
 @@ -49,6 +49,7 @@
@@ -87,7 +87,7 @@ index 30e03509..6b4c3c9e 100644
  
  #include "poppler-private.h"
  #include "poppler-page-transition-private.h"
-@@ -610,6 +614,70 @@ QImage Page::renderToImage(double xres, double yres, int xPos, int yPos, int w,
+@@ -626,6 +630,70 @@ QImage Page::renderToImage(double xres, double yres, int xPos, int yPos, int w,
        img = tmpimg;
        break;
      }
@@ -158,8 +158,8 @@ index 30e03509..6b4c3c9e 100644
    }
  
    if (shouldAbortRenderCallback && shouldAbortRenderCallback(payload))
-@@ -632,6 +700,8 @@ bool Page::renderToPainter(QPainter* painter, double xres, double yres, int x, i
-         QImageDumpingArthurOutputDev arthur_output(painter, nullptr);
+@@ -651,6 +719,8 @@ bool Page::renderToPainter(QPainter* painter, double xres, double yres, int x, i
+ 
          return renderToArthur(&arthur_output, painter, m_page, xres, yres, x, y, w, h, rotate, flags);
      }
 +    case Poppler::Document::CairoBackend:
@@ -168,10 +168,10 @@ index 30e03509..6b4c3c9e 100644
    return false;
  }
 diff --git a/qt5/src/poppler-qt5.h b/qt5/src/poppler-qt5.h
-index d32ffa3b..aa71aca9 100644
+index 665f98a4..1f1eb5de 100644
 --- a/qt5/src/poppler-qt5.h
 +++ b/qt5/src/poppler-qt5.h
-@@ -1152,7 +1152,8 @@ delete it;
+@@ -1153,7 +1153,8 @@ delete it;
  	*/
  	enum RenderBackend {
  	    SplashBackend,   ///< Splash backend
@@ -182,7 +182,7 @@ index d32ffa3b..aa71aca9 100644
  
  	/**
 diff --git a/qt5/tests/CMakeLists.txt b/qt5/tests/CMakeLists.txt
-index 5abcbc45..99c12b9f 100644
+index b01d0835..561cb5dd 100644
 --- a/qt5/tests/CMakeLists.txt
 +++ b/qt5/tests/CMakeLists.txt
 @@ -11,6 +11,11 @@ include_directories(
@@ -198,5 +198,5 @@ index 5abcbc45..99c12b9f 100644
  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Gui_EXECUTABLE_COMPILE_FLAGS}")
  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Xml_EXECUTABLE_COMPILE_FLAGS}")
 -- 
-2.26.0
+2.26.2
 
