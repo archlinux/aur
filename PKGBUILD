@@ -29,7 +29,5 @@ build() {
 package() {
   cd "${srcdir}/Arcade-Learning-Environment-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
-  ln -s /usr/share/licenses/common/GPL2/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
