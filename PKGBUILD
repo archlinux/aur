@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc="An icon themes based on Piet Mondrian's paintings."
 arch=('any')
 url='https://www.opencode.net/ju1464/Mondrian'
+license=('GPL3')
 makedepends=('git')
 provides=('mondrian-icon-theme')
 conflicts=('mondrian-icon-theme')
