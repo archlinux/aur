@@ -1,0 +1,49 @@
+Only in scidavis-2.1.4a: .qmake.stash
+Only in scidavis-2.1.4a/3rdparty/liborigin: Makefile
+Only in scidavis-2.1.4a/3rdparty/liborigin: OriginFile.o
+Only in scidavis-2.1.4a/3rdparty/liborigin: OriginParser.o
+Only in scidavis-2.1.4a: Makefile
+diff -r -u10 scidavis-2.1.4/config.pri scidavis-2.1.4a/config.pri
+--- scidavis-2.1.4/config.pri	2020-05-02 02:52:57.000000000 +0200
++++ scidavis-2.1.4a/config.pri	2020-05-09 20:40:18.693721166 +0200
+@@ -277,38 +277,25 @@
+ }
+ 
+ contains(PRESET, linux_package) {
+ 	### dynamically link against Qwt(3D) installed system-wide
+ 
+         exists(/usr/include/qt5/qwt5-qt5)      {INCLUDEPATH+=/usr/include/qt5/qwt5-qt5}
+         exists(/usr/include/qt5/qwtplot3d-qt5) {INCLUDEPATH+=/usr/include/qt5/qwtplot3d-qt5}
+         exists(/usr/include/qwt5-qt5) {INCLUDEPATH+=/usr/include/qwt5-qt5}
+         exists(/usr/include/qwtplot3d) {INCLUDEPATH+=/usr/include/qwtplot3d}
+ 
+-        system (ls /usr/lib*/libqwt5-qt5.so) {LIBS+=-lqwt5-qt5}
+-        system (ls /usr/lib*/*/libqwt5-qt5.so) {LIBS+=-lqwt5-qt5}
+-        system (ls /usr/lib*/libqwt-qt5.so) {LIBS+=-lqwt-qt5}
+-        system (ls /usr/lib*/libqwtplot3d-qt5.so) {LIBS+=-lqwtplot3d-qt5}
+-        system (ls /usr/lib*/*/libqwtplot3d-qt5.so) {LIBS+=-lqwtplot3d-qt5}
+-
+-
++        LIBS+=-lqwt5-qt5
++        LIBS+=-lqwtplot3d-qt5
+ 	LIBS         += -lz -lGLU 
+-
+-	INCLUDEPATH  += /usr/include/muParser
+ 	LIBS         += -lgsl -lgslcblas
+ 	LIBS         += -lmuparser 
+-
+-        # enable user installed packages
+-        INCLUDEPATH = "$(HOME)/usr/include" $$INCLUDEPATH
+-        QMAKE_LIBDIR = "$(HOME)/usr/lib" $$QMAKE_LIBDIR
+-
+-
+ }
+ 
+ contains(PRESET, self_contained) {
+ 	### mostly static linking, for self-contained binaries
+ 
+ 	INCLUDEPATH  += ../3rdparty/qwt/src
+ 	LIBS         += ../3rdparty/qwt/lib/libqwt.a
+ 
+ 	INCLUDEPATH  += ../3rdparty/qwtplot3d/include
+ 	LIBS         += ../3rdparty/qwtplot3d/lib/libqwtplot3d.a
