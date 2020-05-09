@@ -4,7 +4,7 @@ pkgname=xbindkeys_config-gtk2
 _pkgname=xbindkeys_config
 pkgver=0.1.3
 _pkgver=2.1
-pkgrel=1
+pkgrel=5
 pkgdesc="XBindKeys_Config is an easy to use gtk program for configuring \
 	Xbindkeys. GTK2 version. "
 arch=(i686 x86_64)
