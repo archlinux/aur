@@ -1,0 +1,44 @@
+pkgbase = linux-bcachefs-ck
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Linux-ck
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	options = !strip
+	source = linux-bcachefs-ck::git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v5.6
+	source = config
+	source = 0000-sphinx-workaround.patch
+	source = enable_additional_cpu_optimizations-20191217.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20191217.tar.gz
+	source = http://ck.kolivas.org/patches/5.0/5.6/5.6-ck1/patch-5.6-ck1.xz
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+	source = 0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch
+	source = 0007-v5.6-fsync.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	md5sums = SKIP
+	md5sums = cbb389e4fec468d939d5d2931119e3da
+	md5sums = 2cebdad39da582fd6a0c01746c8adb42
+	md5sums = 49ace4303b89cfe1dc92d829f7f391bf
+	md5sums = 1f1d348812a2b66665cde85b3605bb35
+	md5sums = 5fe73681affcf4878cb853452218ce36
+	md5sums = 252842db32d8b8aef591d4397a3ab2a1
+	md5sums = 228b33d0cb13cab162b3e051ec9bb88d
+
+pkgname = linux-bcachefs-ck
+	pkgdesc = The Linux-bcachefs-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = linux-mainline-bcachefs-ck=5.6.0
+
+pkgname = linux-bcachefs-ck-headers
+	pkgdesc = Headers and scripts for building modules for Linux-bcachefs-ck kernel
+	depends = linux-mainline-bcachefs-ck
+	provides = linux-mainline-bcachefs-ck-headers=5.6.0
+	provides = linux-headers=5.6.0
+
