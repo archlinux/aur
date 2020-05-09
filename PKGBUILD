@@ -1,6 +1,10 @@
 # Maintainer: Sergey Mezentsev <thebits@yandex.ru>
 pkgbase='clickhouse-bin'
 pkgname=('clickhouse-server-bin' 'clickhouse-common-static-bin' 'clickhouse-client-bin')
+# 'stable' - for production environment
+# 'testing' - most recent version
+# 'prestable' and 'lts' are available
+_channel='stable'
 pkgver=20.3.8.53
 pkgrel=1
 provides=('clickhouse')
@@ -9,9 +13,9 @@ arch=('x86_64')
 url="https://clickhouse.tech/"
 license=('Apache')
 source=(
-	"https://repo.yandex.ru/clickhouse/tgz/stable/clickhouse-client-$pkgver.tgz"
-	"https://repo.yandex.ru/clickhouse/tgz/stable/clickhouse-common-static-$pkgver.tgz"
-	"https://repo.yandex.ru/clickhouse/tgz/stable/clickhouse-server-$pkgver.tgz"
+	"https://repo.yandex.ru/clickhouse/tgz/$_channel/clickhouse-client-$pkgver.tgz"
+	"https://repo.yandex.ru/clickhouse/tgz/$_channel/clickhouse-common-static-$pkgver.tgz"
+	"https://repo.yandex.ru/clickhouse/tgz/$_channel/clickhouse-server-$pkgver.tgz"
 	"clickhouse.sysusers"
 	"clickhouse-server.service"
 )
