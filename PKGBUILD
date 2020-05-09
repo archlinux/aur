@@ -1,28 +1,72 @@
+# Maintainer: Felix Golatofski
 # Maintainer: Mufatti Alex <me@alexmufatti.it>
 
 pkgname=mono5
 _pkgname=mono
+_gitcommit=feca91f7eb1b440a6520cf754370b98271339d1a
 pkgver=5.20.1.34
-pkgrel=1
-pkgdesc="Previous version of free .NET implementation."
+pkgrel=2
+pkgdesc="Free implementation of the .NET platform including runtime and compiler"
+url='http://www.mono-project.com/'
 arch=(i686 x86_64)
 license=('GPL' 'LGPL2.1' 'MPL')
-url="http://www.mono-project.com/"
-depends=('zlib' 'libgdiplus' 'sh' 'python' 'ca-certificates')
+depends=('zlib' 'libgdiplus>=4.2' 'sh' 'python' 'ca-certificates')
 makedepends=('cmake' 'mono')
-provides=("mono=${pkgver}" 'monodoc')
+provides=("mono=${pkgver}" 'monodoc=${pkgver}')
 conflicts=('mono' 'monodoc')
-install="${_pkgname}.install"
-source=("https://download.mono-project.com/sources/mono/${_pkgname}-${pkgver}.tar.bz2"
-        "mono.binfmt.d")
-sha256sums=('cd91d44cf62515796ba90dfdc274bb33471c25a2f1a262689a3bdc0a672b7c8b'
+install=${_pkgname}.install
+source=(${_pkgname}::"git+https://github.com/mono/mono#commit=${_gitcommit}"
+	git+https://github.com/mono/aspnetwebstack
+        git+https://github.com/mono/Newtonsoft.Json
+        git+https://github.com/mono/cecil
+        git+https://github.com/mono/rx
+        git+https://github.com/mono/ikvm-fork
+        git+https://github.com/mono/ikdasm
+        git+https://github.com/mono/reference-assemblies
+        git+https://github.com/mono/NUnitLite
+        git+https://github.com/mono/NuGet.BuildTasks
+        git+https://github.com/mono/boringssl
+        git+https://github.com/mono/corefx
+        git+https://github.com/mono/bockbuild
+        git+https://github.com/mono/linker
+        git+https://github.com/mono/roslyn-binaries
+        git+https://github.com/mono/corert
+        git+https://github.com/mono/xunit-binaries
+        git+https://github.com/mono/api-doc-tools
+        git+https://github.com/mono/api-snapshot
+        mono.binfmt.d)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '9a657fc153ef4ce23bf5fc369a26bf4a124e9304bde3744d04c583c54ca47425')
 
+
+pkgver() {
+  cd "${srcdir}"/${_pkgname}
+  git describe --always --tags | sed 's/^v//;s/^mono-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
-  cd "${srcdir}"/${_pkgname}-${pkgver}
+  cd "${srcdir}"/${_pkgname}
 
   # build mono
-  ./configure \
+  ./autogen.sh \
     --prefix=/usr \
     --sysconfdir=/etc \
     --bindir=/usr/bin \
@@ -31,21 +75,15 @@ build() {
   make
 
   # build jay
-  cd "${srcdir}"/${_pkgname}-${pkgver}/mcs/jay
-  make
+  make -C mcs/jay
 }
 
 package() {
-  cd "${srcdir}"/${_pkgname}-${pkgver}
+  cd "${srcdir}"/${_pkgname}
   make DESTDIR="${pkgdir}" install
 
-  # install jay
-  pushd "${srcdir}"/${_pkgname}-${pkgver}/mcs/jay
-  make DESTDIR="${pkgdir}" prefix=/usr INSTALL=../../install-sh install
-  popd
-
-  # install binfmt conf file and pathes
-  install -D -m644 "${srcdir}"/mono.binfmt.d "${pkgdir}"/usr/lib/binfmt.d/mono.conf
+  make -C mcs/jay DESTDIR="${pkgdir}" prefix=/usr INSTALL=../../install-sh install
+  install -Dm 644 "${srcdir}/mono.binfmt.d" "${pkgdir}/usr/lib/binfmt.d/mono.conf"
 
   #fix .pc file to be able to request mono on what it depends, fixes #go-oo build
   sed -i -e "s:#Requires:Requires:" "${pkgdir}"/usr/lib/pkgconfig/mono.pc
