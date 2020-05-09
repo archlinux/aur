@@ -7,7 +7,6 @@ Type=oneshot
 RemainAfterExit=yes
 ExecStart=/bin/bash /opt/urserver/urserver-start --no-manager --no-copy
 ExecStop=/bin/bash /opt/urserver/urserver-stop
-Environment=DISPLAY=:0
 
 [Install]
 WantedBy=default.target

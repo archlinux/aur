@@ -3,7 +3,7 @@
 
 pkgname=unified-remote-server
 pkgver=3.6.0.745
-pkgrel=4
+pkgrel=5
 pkgdesc="Unified Remote Server"
 arch=('x86_64')
 url="http://www.unifiedremote.com/"
