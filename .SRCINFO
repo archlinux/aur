@@ -7,8 +7,9 @@ pkgbase = matcha-kde-git
 	license = GPL3
 	makedepends = git
 	optdepends = plasma-desktop: Plasma desktop themes
-	optdepends = kvantum-theme-matcha-git: Matched Kvantum themes
 	optdepends = qogir-icon-theme-git: Recommended icon themes
+	provides = matcha-kde
+	conflicts = matcha-kde
 	source = git+https://github.com/vinceliuice/Matcha-kde.git
 	sha256sums = SKIP
 

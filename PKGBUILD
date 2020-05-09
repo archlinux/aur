@@ -9,9 +9,10 @@ arch=('any')
 url='https://github.com/vinceliuice/Matcha-kde'
 license=('GPL3')
 optdepends=('plasma-desktop: Plasma desktop themes'
-            'kvantum-theme-matcha-git: Matched Kvantum themes'
             'qogir-icon-theme-git: Recommended icon themes')
 makedepends=('git')
+provides=('matcha-kde')
+conflicts=('matcha-kde')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -35,4 +36,6 @@ package() {
     "${pkgdir}/usr/share/plasma/look-and-feel"
   install -dm755 "${pkgdir}/usr/share/wallpapers/Matcha"
   cp -r wallpaper/*.jpg "${pkgdir}/usr/share/wallpapers/Matcha"
+  install -dm755 "${pkgdir}/usr/share/Kvantum"
+  cp -r Kvantum/* "${pkgdir}/usr/share/Kvantum"
 }
