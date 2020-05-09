@@ -10,6 +10,8 @@ url='https://github.com/jomada/SierraBreeze'
 license=('GPL2')
 depends=('kdecoration' 'qt5-declarative' 'qt5-x11extras')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
+provides=('sierrabreeze-jomada-kwin-decoration')
+conflicts=('sierrabreeze-jomada-kwin-decoration')
 source=("git+${url}.git"
         'resolve_conflicts.patch')
 sha256sums=('SKIP'
