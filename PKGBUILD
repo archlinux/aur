@@ -5,7 +5,7 @@
 
 pkgname=scilab
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A scientific software package for numerical computations.'
 arch=('i686' 'x86_64')
 url='https://www.scilab.org'
@@ -26,14 +26,12 @@ makedepends=('java-environment=8' 'ant>=1.9.0'
              'time')
 source=("${url}/download/${pkgver}/${pkgname}-${pkgver}-src.tar.gz"
         "${pkgname}-jogl-2.3.2.patch"
-        "${pkgname}-lucene.patch"
         "${pkgname}-strict-jar.patch"
         "${pkgname}-LD_LIBRARY_PATH.patch"
         "${pkgname}-0004-Fix-build-with-ocaml-4.0.4.patch"
         "${pkgname}-num.patch")
 sha256sums=('ae6befb0153fb823fd647f4eb36076f98fd20fed601f7dfa94d8c13e31044964'
-            'f19f173e989f72bd55bda35e271b3c180ecef4e29da964df3f230fce8b1330fc'
-            'fb27339de4ddd55bf9bb172b0dbf22f67f578a3ca0270924792d728f42b43326'
+            '2d313ccb06fd47e3924e0bba36282860e1125712d027c1091c2b49ab5408e5fe'
             '38aa094951338fa1d267dc6f397552e175213b0f8ba7b35727c178607861f6dd'
             'a39277cb8cfc3d7929c73ce6d707dc24e3df4b8d8f2d587f075efebda79ff4db'
             '6712c6db2f3ba365d150e1feb1c71bf691f8aa3b45d5a872b05a42f0daf23392'
@@ -44,8 +42,6 @@ prepare(){
 
   # https://codereview.scilab.org/#/c/17530/
   patch -p2 < "${srcdir}"/${pkgname}-jogl-2.3.2.patch
-  # Fix to build with lucene >= 7
-  patch -p0 < "${srcdir}"/${pkgname}-lucene.patch
   # Linked to: https://codereview.scilab.org/#/c/18089/
   patch < "${srcdir}"/${pkgname}-strict-jar.patch
   # Fix path, to avoid the following error:
@@ -74,16 +70,9 @@ build() {
     --enable-build-localization \
     --disable-static-system-lib
 
-  make -j1
+  make
   make doc
 }
-
-# For now, does not work
-#check(){
-  #cd "${srcdir}/${pkgname}-${pkgver}"
-
-  #make check
-#}
 
 package(){
   cd "${srcdir}/${pkgname}-${pkgver}"
