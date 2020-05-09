@@ -7,7 +7,7 @@ pkgname='ferdi'
 pkgver='5.5.0'
 _recipescommit='3054fd4c362b5be81b5cdd48535a0e7078fcd0a6'
 _internalservercommit='95ae59926dbd88d55a5377be997558a9e112ab49'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$pkgname.com"
@@ -26,6 +26,22 @@ sha256sums=('319b02b565e34720c8ccefdb08cfe37219304c002e469fdf1a15c8971b573fc3'
             '91cc72f00db20e1bded69d08578e6ae9fdc89a4582ee8f6d29697b0233d7d095')
 
 _sourcedirectory="$pkgname-$pkgver"
+_homedirectory="$pkgname-$pkgver-$pkgrel-home"
+
+case "$CARCH" in
+	i686)
+		_electronbuilderarch='ia32'
+	;;
+	armv7h)
+		_electronbuilderarch='armv7l'
+	;;
+	aarch64)
+		_electronbuilderarch='arm64'
+	;;
+	*)
+		_electronbuilderarch='x64'
+	;;
+esac
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
@@ -49,37 +65,33 @@ prepare() {
 	patch --forward -p1 < '../fix-autostart-path.diff'
 
 	# Prepare dependencies
-	HOME="$srcdir/$pkgname-$pkgver-$pkgrel-home" npx lerna bootstrap
+	HOME="$srcdir/$_homedirectory" npx lerna bootstrap
+
+	# Build node-sass manually for platforms where pre-compiled binaries are not available
+	if [ "$_electronbuilderarch" != 'x64' ] && [ "$_electronbuilderarch" = 'ia32' ]; then
+		HOME="$srcdir/$_homedirectory" npm rebuild node-sass
+	fi
 }
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	case "$CARCH" in
-		i686)
-			local _electronbuilderarch='ia32'
-		;;
-		armv7h)
-			local _electronbuilderarch='armv7l'
-		;;
-		aarch64)
-			local _electronbuilderarch='arm64'
-		;;
-		*)
-			local _electronbuilderarch='x64'
-		;;
-	esac
-
-	NODE_ENV='production' HOME="$srcdir/$pkgname-$pkgver-$pkgrel-home" npx gulp build
-	NODE_ENV='production' HOME="$srcdir/$pkgname-$pkgver-$pkgrel-home" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron' -c.electronVersion="$(cat '/usr/lib/electron/version')"
+	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx gulp build
+	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron' -c.electronVersion="$(cat '/usr/lib/electron/version')"
 }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	install -Dm644 'out/linux-unpacked/resources/app.asar' "$pkgdir/usr/lib/$pkgname/app.asar"
+	local _outpath='out/linux'
+	if [ "$_electronbuilderarch" != 'x64' ]; then
+		_outpath="$_outpath-$_electronbuilderarch"
+	fi
+	_outpath="$_outpath-unpacked"
+
+	install -Dm644 "$_outpath/resources/app.asar" "$pkgdir/usr/lib/$pkgname/app.asar"
 	install -dm755 "$pkgdir/usr/lib/$pkgname/app.asar.unpacked/"
-	cp -r --no-preserve=ownership --preserve=mode 'out/linux-unpacked/resources/app.asar.unpacked/recipes/' "$pkgdir/usr/lib/$pkgname/app.asar.unpacked/recipes/"
+	cp -r --no-preserve=ownership --preserve=mode "$_outpath/resources/app.asar.unpacked/recipes/" "$pkgdir/usr/lib/$pkgname/app.asar.unpacked/recipes/"
 
 	install -dm755 "$pkgdir/usr/bin/"
 	cat << EOF > "$pkgdir/usr/bin/$pkgname"
