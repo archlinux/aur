@@ -1,26 +1,19 @@
 pkgbase = pyspread
 	pkgdesc = A cross-platform Python spreadsheet application. Python 2.7 version
-	pkgver = 1.99.1
+	pkgver = 1.99.2
 	pkgrel = 1
 	url = https://manns.github.io/pyspread/
 	arch = any
 	license = GPL3
-	depends = python2-numpy>=1.1.0
-	depends = wxpython
-	depends = python2-matplotlib
-	depends = python2-cairo
-	depends = python2-gnupg
-	optdepends = python2-gnupginterface: for opening files without approval
-	optdepends = python2-xlrd: open Excel files
-	optdepends = python2-xlwt: save Excel files
-	optdepends = python2-jedi: TAB autocompletion and context help in the entry line
-	optdepends = python2-basemap: for the weather example
-	optdepends = python2-pyenchant: for spell checking
+	depends = python-numpy>=1.1.0
+	depends = python-pyqt5
+	depends = qt5-svg
+	optdepends = python-matplotlib
+	optdepends = python-pyenchant
+	optdepends = python-pip
 	options = !emptydirs
-	source = https://github.com/manns/pyspread/archive/v1.99.1.tar.gz
-	source = pyspread.desktop
-	sha512sums = e9be7edfede1d150fbe72edf9eab16ce39c3d3fb844345628194541d2386a33203a18d8081b02b8ee7b7821a35f0990da01225256dbdfc353f64eeae4738a534
-	sha512sums = 9411c1c4c9c68132bdc05fc028b4a3d1dade65502a21c64bcd093f94fe7ed6e7dee3f34a2a423da263f73dd5f20c1fcbfb0734ec60e5789057296dd8d48895d2
+	source = https://gitlab.com/pyspread/pyspread/-/archive/v1.99.2/pyspread-v1.99.2.tar.gz
+	sha512sums = 9261cf96f19d92a5743c09854236ccec5e1b103e22b78143ddee8fce0d25f793b86e7cc3775f13c5a43cf8dd4e3f434461677b6da5311fb439067d63ce6ac968
 
 pkgname = pyspread
 
