@@ -2,8 +2,8 @@
 
 _realname=CPU-X
 pkgname=cpu-x-git
-pkgver=3.2.4.r90.g6af5049
-pkgrel=2
+pkgver=3.2.4.r193.g73fe01e
+pkgrel=1
 pkgdesc="A Free software that gathers information on CPU, motherboard and more"
 arch=('i686' 'x86_64')
 url="http://X0rg.github.io/CPU-X/"
@@ -18,7 +18,7 @@ options=('!strip' 'debug')
 
 pkgver() {
 	cd "$_realname"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --exclude continuous | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

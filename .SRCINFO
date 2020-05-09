@@ -1,7 +1,7 @@
 pkgbase = cpu-x-git
 	pkgdesc = A Free software that gathers information on CPU, motherboard and more
-	pkgver = 3.2.4.r90.g6af5049
-	pkgrel = 2
+	pkgver = 3.2.4.r193.g73fe01e
+	pkgrel = 1
 	url = http://X0rg.github.io/CPU-X/
 	arch = i686
 	arch = x86_64
