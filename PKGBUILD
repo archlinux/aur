@@ -2,8 +2,8 @@
 
 pkgname=bash-pipes
 pkgver=1.3.0
-pkgrel=5
-pkgdesc="pipes.sh with additional better names (soft links)"
+pkgrel=6
+pkgdesc="pipes.sh (animated pipes terminal screensaver) with additional better names (soft links)"
 arch=("any")
 url="https://github.com/pipeseroni/pipes.sh"
 license=("MIT")
