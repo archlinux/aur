@@ -16,11 +16,13 @@ makedepends=(
 )
 source=("https://gitlab.com/chrisfair/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 sha256sums=('497314590ad74041c8ae802c24d2720337e911aaaeadf6da016f0f1d92ea3863')
+
 build() {
   export GOPATH="$srcdir"/gopath
   cd "$srcdir/$pkgname-v$pkgver"
   go get github.com/mmcdole/gofeed
   go get github.com/araddon/dateparse 
+  go get gitlab.com/chrisfair/accuweather
   go build
 }
 
