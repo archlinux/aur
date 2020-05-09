@@ -4,7 +4,7 @@ _edition=' Isolated Edition Beta'
 pkgname="mongodb-$_target"
 _pkgver='1.21.0-beta.5'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='3'
+pkgrel='4'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - beta version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
@@ -13,10 +13,10 @@ depends=('electron6' 'krb5' 'libsecret' 'lsb-release')
 makedepends=('git' 'npm' 'python' 'unzip')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
-	'hadron-build-packaging.diff'
+	'hadron-build.diff'
 )
 sha256sums=('4443647232726a91725e66c52409bf0ba70d4efc05c4aeed1f3fb11ec3aa4d8b'
-            '3f438dc5b2eb99a4831f83d753cb3dc86fc8b3217499310fe03469570f300ff2')
+            'fb0acd9dfb1b64253e79da5ef79e57225f0e687d98bb486e7e20d75224712133')
 
 _sourcedirectory="compass-$_pkgver"
 
@@ -32,8 +32,8 @@ prepare() {
 	# Prepare dependencies
 	HOME="$srcdir/$pkgname-$pkgver-$pkgrel-home" npm install
 
-	# Disable hadron-build packaging
-	patch -d 'node_modules/hadron-build/' --forward -p1 < '../hadron-build-packaging.diff'
+	# Apply hadron-build fixes
+	patch -d 'node_modules/hadron-build/' --forward -p1 < '../hadron-build.diff'
 }
 
 build() {
