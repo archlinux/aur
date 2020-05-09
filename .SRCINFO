@@ -1,6 +1,6 @@
 pkgbase = python-pywikibot
 	pkgdesc = Python MediaWiki Bot Framework
-	pkgver = 3.0.20200405
+	pkgver = 3.0.20200508
 	pkgrel = 1
 	url = https://www.mediawiki.org/wiki/Pywikibot
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-pywikibot
 	makedepends = python-setuptools
 	depends = python
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/p/pywikibot/pywikibot-3.0.20200405.tar.gz
-	sha256sums = f83e7021b053dd63f4b4781101e75ce46aa37f1cd59e5f939d3cb0a4768d0c19
+	source = https://files.pythonhosted.org/packages/source/p/pywikibot/pywikibot-3.0.20200508.tar.gz
+	sha256sums = c61095a8d56c02ebc73f5c23f7e75248f11e0272d88cbe6b5d258b0438cbb0b6
 
 pkgname = python-pywikibot
 
