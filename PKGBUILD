@@ -18,7 +18,5 @@ sha256sums=('d605bae58fa2f005daaf7c060e6f4c28dac465bb2c4da5a60b47109703d9740b')
 
 package() {
   install -Dm755 "${srcdir}"/aminal-* "${pkgdir}/usr/bin/aminal"
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
-  ln -s /usr/share/licenses/common/GPL3/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
