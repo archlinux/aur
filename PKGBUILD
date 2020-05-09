@@ -2,7 +2,7 @@
 
 pkgname=xdg-sound-git
 _pkgname=xdg-sound
-pkgver=0.9.r1.gf7f25c5
+pkgver=1.0.r1.gb7cb0c1
 pkgrel=1
 pkgdesc="Command line XDG sound theme utilities"
 arch=('i686' 'x86_64')
