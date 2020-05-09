@@ -3,7 +3,7 @@
 pkgbase=chromeos-kde-git
 pkgname=(chromeos-kde-git kvantum-theme-chromeos-git)
 _pkgname=chromeos-kde
-pkgver=r16.0f25681
+pkgver=r18.3fcbdb4
 pkgrel=1
 pkgdesc="ChromeOS theme for kde plasma"
 arch=(any)
@@ -36,6 +36,10 @@ package_chromeos-kde-git() {
     mv aurorae themes
     mkdir -p aurorae
     mv themes aurorae/
+    
+    mv sddm themes
+    mkdir -p sddm
+    mv themes sddm/
 
     cp -r aurorae "$pkgdir"/usr/share
     cp -r color-schemes "$pkgdir"/usr/share
