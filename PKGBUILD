@@ -1,20 +1,23 @@
-# Maintainer: Kobus van Schoor <pbscube at gmail dot com>
+# Maintainer: Kobus van Schoor <v dot schoor dot kobus at gmail dot com>
 pkgname=dotgit-git
-pkgver=26.06.2017
-pkgrel=6
-pkgdesc="Development version of dotgit"
-url="http://github.com/kobus-v-schoor/dotgit"
+pkgver='2.0.0a5'
+pkgrel=0
+pkgdesc='A comprehensive solution to managing your dotfiles'
+url='https://github.com/kobus-v-schoor/dotgit'
 arch=('any')
-depends=('git' 'bash' 'gnupg')
-conflicts=('dotgit')
-source=('git+https://github.com/kobus-v-schoor/dotgit.git')
+depends=('git' 'python')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/d/dotgit/dotgit-$pkgver.tar.gz")
 md5sums=('SKIP')
+
+build()
+{
+	cd "dotgit-$pkgver"
+	python setup.py build
+}
 
 package()
 {
-	install -Dm 755 "$srcdir/dotgit/bin/dotgit" "$pkgdir/usr/bin/dotgit"
-	cp -r "$srcdir/dotgit/bin/dotgit_headers" "$pkgdir/usr/bin/dotgit_headers"
-	chmod 555 "$pkgdir/usr/bin/dotgit_headers"
-	install -Dm644 "$srcdir/dotgit/bin/bash_completion" \
-		"$pkgdir/usr/share/bash-completion/completions/dotgit"
+	cd "dotgit-$pkgver"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }

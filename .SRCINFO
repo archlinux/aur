@@ -1,14 +1,13 @@
 pkgbase = dotgit-git
-	pkgdesc = Development version of dotgit
-	pkgver = 26.06.2017
-	pkgrel = 6
-	url = http://github.com/kobus-v-schoor/dotgit
+	pkgdesc = A comprehensive solution to managing your dotfiles
+	pkgver = 2.0.0a5
+	pkgrel = 0
+	url = https://github.com/kobus-v-schoor/dotgit
 	arch = any
+	makedepends = python-setuptools
 	depends = git
-	depends = bash
-	depends = gnupg
-	conflicts = dotgit
-	source = git+https://github.com/kobus-v-schoor/dotgit.git
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/d/dotgit/dotgit-2.0.0a5.tar.gz
 	md5sums = SKIP
 
 pkgname = dotgit-git
