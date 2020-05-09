@@ -1,4 +1,4 @@
-# Maintainer: Bill Kaguru Wanjohi <bill@ka.guru>
+# Maintainer: Andy Nicholson <andrew@anicholson.net>
 
 pkgname=k6
 pkgver=0.26.2
