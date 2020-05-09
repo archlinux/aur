@@ -2,7 +2,7 @@
 # Contributor: Sebastian Gumprich <sebastian.gumprich@38.de>
 pkgname=tuxemon-git
 pkgver=r1668.6908fd34
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open source monster-fighting RPG."
 arch=('any')
 url="http://www.tuxemon.org"
@@ -19,6 +19,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd $pkgname
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd $pkgname
+    sed -i s/"pytmx.*"/"pytmx>=3.20.17"/g requirements.txt
 }
 
 package() {

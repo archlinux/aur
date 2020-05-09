@@ -1,7 +1,7 @@
 pkgbase = tuxemon-git
 	pkgdesc = A free, open source monster-fighting RPG.
 	pkgver = r1668.6908fd34
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.tuxemon.org
 	arch = any
 	groups = games
