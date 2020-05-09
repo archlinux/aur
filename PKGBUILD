@@ -2,7 +2,7 @@
 
 pkgname=('canta-gtk-theme')
 pkgdesc="Flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell"
-pkgver=2018.10.30
+pkgver=2020.01.31
 _pkgver=$(echo $pkgver | tr '.' '-')
 _pkgname="Canta-theme-${_pkgver}"
 pkgrel=1
@@ -16,10 +16,10 @@ depends=('gtk-engine-murrine'
 makedepends=('gtk3')
 
 source=("${url}/archive/${_pkgver}.tar.gz")
-sha256sums=('b00e5f7c926d80c180e37e8ca53f80c05b46c8cb5caf80270dad0b3a885bab00')
+sha256sums=('c08e3d10eb5625024cb778de3f0901bcc73c07959b090e821ca69c0ae15e06b3')
 
 package() {
   cd "${srcdir}/${_pkgname}"
   mkdir -p "${pkgdir}/usr/share/themes"
-  ./install.sh -b -d "${pkgdir}/usr/share/themes"
+  ./install.sh -d "${pkgdir}/usr/share/themes"
 }
