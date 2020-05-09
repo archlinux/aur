@@ -1,0 +1,5 @@
+pkg/
+src/
+rshell-*.tar.gz
+rshell-*.pkg.tar.xz
+rshell-*.pkg.tar.zst
