@@ -1,20 +1,17 @@
 pkgbase = python2-easyprocess
 	pkgdesc = EasyProcess - an easy to use python subprocess interface.
-	pkgver = 0.2.10
+	pkgver = 0.3
 	pkgrel = 1
-	url = http://easyprocess.readthedocs.io/en/latest/
+	url = http://easyprocess.readthedocs.io
 	arch = any
 	license = BSD
+	checkdepends = python2-pytest
+	checkdepends = python2-pyvirtualdisplay
 	makedepends = python2-setuptools
-	makedepends = python2-sphinx
-	source = https://files.pythonhosted.org/packages/source/E/EasyProcess/EasyProcess-0.2.10.tar.gz
-	md5sums = 1bc3b3ee232df8302e43f400c4d6d505
+	source = https://files.pythonhosted.org/packages/source/E/EasyProcess/EasyProcess-0.3.tar.gz
+	md5sums = c01743dbb725b9018415f76af3981387
 
 pkgname = python2-easyprocess
 	depends = python2>=2.7
-	depends = python2-setuptools
 	optdepends = python-easyprocess-doc: Documentation for EasyProcess
-
-pkgname = python-easyprocess-doc
-	pkgdesc = Documentation for EasyProcess
 
