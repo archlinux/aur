@@ -15,7 +15,7 @@ makedepends=(
   'go'
 )
 source=("https://gitlab.com/chrisfair/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('2d6f87c261d549f07ce4de6d2f51f19bd48cb35387a989f453a854cf7bd99feb')
+sha256sums=('497314590ad74041c8ae802c24d2720337e911aaaeadf6da016f0f1d92ea3863')
 build() {
   export GOPATH="$srcdir"/gopath
   cd "$srcdir/$pkgname-v$pkgver"
