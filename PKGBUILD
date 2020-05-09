@@ -1,31 +1,30 @@
-# Maintainer: Swift Geek
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Swift Geek
 # Contributor: c0nd0r <gcesarmza@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: webjdm <web.jdm@gmail.com>
 # Contributor: magedon <magedon.zt@gmail.com>
 
 pkgname=bin32-firefox
-pkgver=64.0
+pkgver=76.0.1
 pkgrel=1
-pkgdesc="Firefox 32bit for Arch 64 bit (en-US)"
+pkgdesc="Standalone web browser from mozilla.org - 32bit version for 64bit systems"
 arch=('x86_64')
 _arch=i686
 license=('MPL' 'GPL' 'LGPL')
-url="http://www.mozilla.org/projects/firefox"
-depends=('lib32-dbus-glib' 'lib32-gtk3' 'lib32-libxt' 'lib32-alsa-lib' 'lib32-nss' 'desktop-file-utils')
+url="https://www.mozilla.org/projects/firefox"
+depends=('lib32-dbus-glib' 'lib32-gtk3' 'lib32-libxt' 'lib32-nss')
 optdepends=('bin32-firefox-i18n: i18n support'
-            'lib32-flashplugin: flash support'
-            'bin32-acroread: adobe reader plugin'
-            'bin32-icedtea-web: java plugin'
             'lib32-librsvg: svg_loader.so library'
             'lib32-gtk-engines: libclearlooks.so library'
             'lib32-ffmpeg: extra codec support (x264)')
 source=("https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/linux-$_arch/en-US/firefox-$pkgver.tar.bz2"
-        'firefox32.desktop' 'firefox32-safe.desktop' 'mozplugin.patch')
-md5sums=('3413c73e9b89a4be20df95288e582295'
-         '467b7e46030ee36d7a0e0752d0fa5480'
-         '9957b560418ad4baf6c6a0d015df2b15'
-         '8ef4b2a15b9d5e9d5bd5df323dbf012f')
+        'firefox32.desktop'
+	'firefox32-safe.desktop')
+sha256sums=('f355704f2ccd0bfca2b6de07613262272f37a03b90948e9d6bd5024079819004'
+            'd24cf628f3fe57da81c0e36ed2ac6b615560931bc588eda2e76dfd8d93e813f2'
+            'ae6ddbaa9734c3938bb809a334acc96c54195b997ad0fb43d9a9442eb80e0f16')
+
 package() {
   # directory and files
   cd ${pkgdir}
@@ -35,7 +34,7 @@ package() {
   mv usr/lib32/${pkgname}/firefox-bin usr/lib32//${pkgname}/firefox32-bin
   cat <<EOF > usr/bin/${pkgname}
 #!/bin/bash
-/usr/lib32/${pkgname}/run-mozilla.sh /usr/lib32/${pkgname}/firefox32 \$*
+MOZ_PLUGIN_PATH="/opt/mozilla/lib/plugins:/usr/lib32/mozilla/plugins" /usr/lib32/${pkgname}/firefox32 \$*
 EOF
   chmod +x usr/bin/${pkgname}
 
@@ -43,9 +42,5 @@ EOF
   cd ${srcdir}
   install -d ${pkgdir}/usr/share/applications
   install -Dm644 firefox32.desktop firefox32-safe.desktop ${pkgdir}/usr/share/applications
-  install -Dm644 firefox/browser/icons/mozicon128.png ${pkgdir}/usr/share/pixmaps/firefox32.png
-
-  # set MOZ_PLUGIN_PATH variable
-  cd ${pkgdir}/usr/lib32/${pkgname}
-  patch -Np0 -i ${srcdir}/mozplugin.patch
+  install -Dm644 firefox/browser/chrome/icons/default/default128.png ${pkgdir}/usr/share/pixmaps/firefox32.png
 }
