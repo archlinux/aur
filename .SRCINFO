@@ -1,0 +1,22 @@
+pkgbase = rsactftool-git
+        pkgdesc = RSA attack tool (mainly for ctf) - retreive private key from weak public key and/or uncipher data
+        pkgver = r231.f54e80f
+        pkgrel = 1
+        url = https://github.com/Ganapati/RsaCtfTool
+        arch = any
+        license = custom:Beerware
+        makedepends = git
+        depends = python-pycryptodome
+        depends = python-gmpy2
+        depends = python-sympy
+        depends = python-requests
+        depends = python-six
+        depends = python-cryptography
+        optdepends = sagemath: advisable
+        source = rsactftool-git::git+https://github.com/Ganapati/RsaCtfTool
+        source = rsactftool-launch-script
+        sha256sums = SKIP
+        sha256sums = 2f3cebc4d30867bddaa38b3517357298e74c5b4562c04afe65dca6a9ee6dcb44
+
+pkgname = rsactftool-git
+
