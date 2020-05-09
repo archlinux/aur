@@ -1,6 +1,6 @@
 pkgbase = efl-git
 	pkgdesc = Enlightenment Foundation Libraries - Development version
-	pkgver = 1.23.99.64945.g8ec6e28b7c
+	pkgver = 1.24.99.65790.g5f159ae624
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -65,17 +65,16 @@ pkgbase = efl-git
 	depends = wayland-protocols
 	depends = libxkbcommon-x11
 	depends = pulseaudio
-	optdepends = geoclue: For elocation
 	optdepends = gst-plugins-base: Video and thumbnail codecs
 	optdepends = gst-plugins-good: Video and thumbnail codecs
 	optdepends = gst-plugins-bad: Video and thumbnail codecs
 	optdepends = gst-plugins-ugly: Video and thumbnail codecs
 	optdepends = gst-libav: Video and thumbnails with ffmpeg/libav
 	optdepends = libreoffice: Office document thumbnails
-	provides = efl=1.23.99.64945.g8ec6e28b7c
-	provides = elementary=1.23.99.64945.g8ec6e28b7c
-	provides = elementary-git=1.23.99.64945.g8ec6e28b7c
-	provides = evas_generic_loaders=1.23.99.64945.g8ec6e28b7c
+	provides = efl=1.24.99.65790.g5f159ae624
+	provides = elementary=1.24.99.65790.g5f159ae624
+	provides = elementary-git=1.24.99.65790.g5f159ae624
+	provides = evas_generic_loaders=1.24.99.65790.g5f159ae624
 	conflicts = efl
 	conflicts = elementary
 	conflicts = elementary-git

@@ -5,7 +5,7 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.24.99.65752.gd1a1688513
+pkgver=1.24.99.65790.g5f159ae624
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -22,8 +22,7 @@ depends=('curl' 'fontconfig' 'fribidi' 'harfbuzz'
          'wayland' 'wayland-protocols' 'libxkbcommon-x11'
          'pulseaudio')
 makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot' 'procps-ng')
-optdepends=('geoclue: For elocation'
-            'gst-plugins-base: Video and thumbnail codecs'
+optdepends=('gst-plugins-base: Video and thumbnail codecs'
             'gst-plugins-good: Video and thumbnail codecs'
             'gst-plugins-bad: Video and thumbnail codecs'
             'gst-plugins-ugly: Video and thumbnail codecs'
