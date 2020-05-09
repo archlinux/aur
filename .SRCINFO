@@ -1,6 +1,6 @@
 pkgbase = greetd-gtkgreet-git
 	pkgdesc = GTK based greeter for greetd
-	pkgver = 0.5+3.gea21a836d6
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://git.sr.ht/~kennylevinsen/gtkgreet
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = greetd-gtkgreet-git
 	depends = gtk3
 	depends = gtk-layer-shell
 	depends = json-c
-	provides = greetd-gtkgreet=0.5
+	provides = greetd-gtkgreet=0.6
 	conflicts = greetd-gtkgreet
 	source = https://git.sr.ht/~kennylevinsen/gtkgreet
 	sha256sums = SKIP

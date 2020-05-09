@@ -2,7 +2,7 @@
 # Maintainer: Kenny Levinsen <aur [at] kl [dot] wtf>
 
 pkgname=greetd-gtkgreet-git
-pkgver=0.5+3.gea21a836d6
+pkgver=0.6
 pkgrel=1
 pkgdesc="GTK based greeter for greetd"
 arch=(x86_64)
