@@ -1,7 +1,7 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=utools
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="uTools Utilities"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "https://resource.u-tools.cn/currentversion/utools_$pkgver-beta_amd64.deb"
 )
 sha512sums=(
-    '32b22a95414736ef7e5f00ff9f30d9c118c5f739accfde6eea7e982542cca521cf8dd948112be52322f0d78b489069c741656fb9e97cbc66443f14de5f3ff4d1'
+    '34b73f8362189ff6b67a1907872dbe305437c52a310e1e1ebcd98430cb8a0c8f107a36f612bad9bb89834a259280186376c5334012d48709f9a35ad458df25d3'
 )
 
 package() {
