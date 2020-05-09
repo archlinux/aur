@@ -3,7 +3,7 @@
 # Contributor: Sebastian Jug <seb@stianj.ug>
 
 pkgname='git-remote-gcrypt'
-pkgver='1.2'
+pkgver='1.3'
 pkgrel=1
 pkgdesc='A git remote helper for GPG-encrypted remotes.'
 arch=(any)
@@ -16,7 +16,7 @@ optdepends=('rsync: rsync backend support'
             'rclone: rclone backend support')
 conflicts=(git-remote-gcrypt-git)
 source=("https://git.spwhitton.name/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('6f00d5891639f8d2c263ca15b14ad02bb5a8dd048e9c778fcc12a38cb26f51c4')
+sha256sums=('e1948dda848db845db404e4337b07206c96cb239b66392fd1c9c246279c2cb25')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
