@@ -1,8 +1,9 @@
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Anonymous
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-html-html5-sanity'
-pkgver='0.104'
+pkgver='0.105'
 pkgrel='1'
 pkgdesc="make HTML5 DOM trees less insane"
 arch=('any')
@@ -11,10 +12,9 @@ options=('!emptydirs')
 depends=('perl>=5.010' 'perl-role-commons' 'perl-xml-libxml>=1.70')
 makedepends=('perl-xml-libxml-debugging')
 url='http://search.cpan.org/dist/HTML-HTML5-Sanity'
-source=('http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/HTML-HTML5-Sanity-0.104.tar.gz')
-md5sums=('8081c47fb1ead4918f44539242d40874')
-sha512sums=('93d631a3b2ef385403a0f814871283e0a45fd100feb1120fa65985ea60df56e31b0ae3c257e94414c18fed024849fa110ccf3b6ca9cb11d5c661f85d00ec0c00')
-_distdir="HTML-HTML5-Sanity-0.104"
+source=("http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/HTML-HTML5-Sanity-${pkgver}.tar.gz")
+sha512sums=('e932fb107829a0bd196f7bece990fb28584719deb7ccb3b3b2d914646d7c7f0ae23ed8d45ffbec4c47a6bd2b89772deb2c186d031c5a07a7e184179fa13971a5')
+_distdir="HTML-HTML5-Sanity-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
