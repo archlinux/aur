@@ -1,9 +1,9 @@
-# Maintainer: afward <archlinux.gargoyley [at] simplelogin [dot] co>
+# Maintainer: afward <archlinux.gargoyley@simplelogin.co>
 pkgname=yakyak
-pkgver=1.5.4
+pkgver=1.5.6
 _pkgid="${pkgname}-${pkgver}"
 pkgrel=1
-pkgdesc="Desktop client for Google Hangouts"
+pkgdesc="Desktop chat client for Google Hangouts"
 arch=('x86_64' 'i686')
 url="https://github.com/yakyak/yakyak"
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('electron')
 optdepends=('emojione-color-font: Emoji support')
 makedepends=('nodejs' 'npm')
 
-sha256sums=('0a25bdba2af7636443fcdc9abd5915bca2365de4d3f8808df1bccbd1131e26ab'
+sha256sums=('30c6256832b90421e8fe313c1166fadc71a7c11c84f50b5fe67f79ce09ec13b6'
             '12baee4e3e926b765ebe21493adb7aa416165c7191f583694670b08d9b9c5360'
             '0a02abfbceb1029301308239f8d0a1e8e5a5565d66c561223836ecaaf7cb5046')
 
@@ -42,5 +42,3 @@ package() {
 
   mv "${srcdir}/${_pkgid}/app" "${pkgdir}/usr/share/${pkgname}/"
 }
-
-# vim:set ts=2 sw=2 et:
