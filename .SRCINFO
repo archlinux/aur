@@ -1,0 +1,23 @@
+pkgbase = ietf-xml2rfc
+	pkgdesc = Generates RFCs and IETF Internet Drafts from XML according to RFC 7749.
+	pkgver = 2.44.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/xml2rfc
+	arch = any
+	license = BSD
+	depends = python-google-i18n-address
+	depends = python-html5lib
+	depends = python-intervaltree
+	depends = python-kitchen
+	depends = python-lxml
+	depends = python-pycountry
+	depends = python-pyflakes
+	depends = python-requests
+	depends = python-six
+	provides = xml2rfc
+	conflicts = xml2rfc
+	source = https://files.pythonhosted.org/packages/source/x/xml2rfc/xml2rfc-2.44.0.tar.gz
+	sha256sums = e6631aa2699942f387705e9fb624655b99f43abd87091bc94a3f6b82f2aabb4e
+
+pkgname = ietf-xml2rfc
+
