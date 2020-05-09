@@ -1,17 +1,17 @@
-pkgbase = ros-melodic-genlisp
+pkgbase = ros-noetic-genlisp
 	pkgdesc = ROS - Common-Lisp ROS message and service generators.
-	pkgver = 0.4.17
+	pkgver = 0.4.18
 	pkgrel = 1
 	url = https://www.wiki.ros.org/roslisp
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-genmsg
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-genmsg
-	source = ros-melodic-genlisp-0.4.17.tar.gz::https://github.com/ros/genlisp/archive/0.4.17.tar.gz
-	sha256sums = 5c8ff147025f45a2e0b240de349ce85399d0f1d6c5046f4914ad7a67c530ed69
+	makedepends = ros-noetic-genmsg
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-genmsg
+	source = ros-noetic-genlisp-0.4.18.tar.gz::https://github.com/ros/genlisp/archive/0.4.18.tar.gz
+	sha256sums = b756554e39368467bcb7d564de3f475373d264c3133538a708f60d0bf8543736
 
-pkgname = ros-melodic-genlisp
+pkgname = ros-noetic-genlisp
 

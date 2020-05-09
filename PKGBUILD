@@ -3,15 +3,15 @@
 pkgdesc="ROS - Common-Lisp ROS message and service generators."
 url='https://www.wiki.ros.org/roslisp'
 
-pkgname='ros-melodic-genlisp'
-pkgver='0.4.17'
+pkgname='ros-noetic-genlisp'
+pkgver='0.4.18'
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-genmsg
-	ros-melodic-catkin
+	ros-noetic-genmsg
+	ros-noetic-catkin
 )
 
 makedepends=(
@@ -21,7 +21,7 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-genmsg
+	ros-noetic-genmsg
 )
 
 depends=(
@@ -30,29 +30,23 @@ depends=(
 
 _dir="genlisp-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/genlisp/archive/${pkgver}.tar.gz")
-sha256sums=('5c8ff147025f45a2e0b240de349ce85399d0f1d6c5046f4914ad7a67c530ed69')
+sha256sums=('b756554e39368467bcb7d564de3f475373d264c3133538a708f60d0bf8543736')
 
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
