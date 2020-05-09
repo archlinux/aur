@@ -1,8 +1,9 @@
-# Maintainer : Marcos Heredia <chelqo@gmail.com>
+# Maintainer : Felix Golatofski <contact@xdfr.de>
+# Contributor: Marcos Heredia <chelqo@gmail.com>
 
 pkgname=cinnamon-applet-hardware-monitor
-pkgver=1.0
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 pkgdesc="Graphical hardware monitor displaying your realtime CPU and memory load with colored charts"
 arch=('any')
 url="http://cinnamon-spices.linuxmint.com/applets/view/12"
@@ -10,7 +11,7 @@ license=('GPL')
 groups=('cinnamon-applets')
 depends=('cinnamon' 'libgtop')
 source=("https://cinnamon-spices.linuxmint.com/files/applets/hwmonitor@sylfurd.zip")
-sha512sums=('da5068c0a3b3685e769410100377a436dfc11517111f8d70942d0f656ea7bcf88ef0a6772e769e2d22f90c9909c4ae951dd02bd4d5c2f9569c4a9728ce463bb7')
+sha512sums=('8ad338bbfed5347429913dbf7668e70bdf2ac3d119cdbdda86e05ff552ceca8a70696401abddc746304997a69d90a09eff8ae49f7845e4d29368d4a83f696cc9')
 _applet=hwmonitor@sylfurd
 
 package() {
