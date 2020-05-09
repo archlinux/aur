@@ -1,13 +1,13 @@
 # Maintainer: robertfoster
 
 pkgname=simonpi
-pkgver=1.0.15
+pkgver=1.0.16
 pkgrel=1
 pkgdesc="A quick & dirty script to emulate Raspberry PI family devices on your laptop"
 arch=(any)
 url="https://github.com/M0Rf30/simonpi"
 license=('GPL3')
-depends=('coreutils' 'dnsmasq' 'dosfstools' 'e2fsprogs' 'file' 'grep' 'iproute2' 'iptables' 'libarchive' 'ovmf-arm' 'ovmf-aarch64' 'procps-ng' 'qemu-headless-arch-extra' 'sudo' 
+depends=('coreutils' 'dnsmasq' 'dosfstools' 'e2fsprogs' 'edk2-avmf' 'file' 'grep' 'iproute2' 'iptables' 'libarchive' 'procps-ng' 'qemu-headless-arch-extra' 'sudo' 
 'util-linux' 'wget')
 makedepends=('git')
 install=simonpi.install
@@ -21,4 +21,4 @@ package() {
 	sed -i "s/OPT=./OPT=\/opt/g" $pkgdir/usr/bin/simonpi
 }
 
-md5sums=('56cace1f337fce12566e8a808ed0d5c2')
+md5sums=('57aced070a8811a587f2c4c8dc0b79a6')
