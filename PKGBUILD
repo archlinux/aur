@@ -1,7 +1,7 @@
 # Author: Artemii Sudakov <finziyr@yandex.ru>
 pkgname=wifiman-indicator
 _subname=vindicator
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="LibIndicator support for WifiMan. Written in Vala"
 arch=('any')
@@ -16,7 +16,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/BiteDasher/wifiman-indicator/archive/${pkgver}.tar.gz"	
 	"git+https://github.com/platofff/vindicator.git"
 )
-sha256sums=("0f9ac2fccbdf79054661917854ca068fa1ca2ba1d101665accb7c58d49bb8fdf"
+sha256sums=("f47d9b6b3783ac7e40e3bea531fe78cae0078f75922a826b25fc4cf98bf40f49"
             "SKIP")
 package() {
 mv $_subname/Makefile $_subname/vindicator.vala $srcdir/$pkgname-$pkgver/$_subname
