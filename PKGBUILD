@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=75.0
+pkgver=76.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -25,11 +25,13 @@ options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         $pkgname.desktop
         "git+https://gitlab.com/${pkgname}-community/browser/common.git"
-        "git+https://gitlab.com/${pkgname}-community/settings.git")
-sha256sums=('bbb1054d8f2717c634480556d3753a8483986af7360e023bb6232df80b746b0f'
-            '0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b'
+        "git+https://gitlab.com/${pkgname}-community/settings.git"
+        "remove_addons.patch")
+sha256sums=('f61761e32774a6bdfedd5937c4992fbe5e24c3df057c2b9a559fcd0d038777c3'
+            '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '4425388d62cbb7ec3808926ae5e04021b17af8a0b6ba47c08a253ecfdcc264c0')
 
 if [[ $CARCH == 'aarch64' ]]; then
   source+=(arm.patch
@@ -68,10 +70,6 @@ ac_add_options --with-distribution-id=io.gitlab.${pkgname}
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZ_REQUIRE_SIGNING=0
-
-# System libraries
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
 
 # Features
 ac_add_options --enable-alsa
@@ -123,10 +121,20 @@ ac_add_options --enable-optimize
 END
 fi
 
+  # Remove some pre-installed addons that might be questionable
+  patch -p1 -i ../remove_addons.patch
+
   # Disabling Pocket
   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
   # this one only to remove an annoying error message:
   sed -i 's#SaveToPocket.init();#// SaveToPocket.init();#g' browser/components/BrowserGlue.jsm
+
+  # Remove Internal Plugin Certificates
+  _cert_sed='s#if (aCert.organizationalUnit == "Mozilla [[:alpha:]]\+") {\n'
+  _cert_sed+='[[:blank:]]\+return AddonManager\.SIGNEDSTATE_[[:upper:]]\+;\n'
+  _cert_sed+='[[:blank:]]\+}#'
+  _cert_sed+='// NOTE: removed#g'
+  sed -z "$_cert_sed" -i toolkit/mozapps/extensions/internal/XPIInstall.jsm
 
   # allow SearchEngines option in non-ESR builds
   sed -i 's#"enterprise_only": true,#"enterprise_only": false,#g' browser/components/enterprisepolicies/schemas/policies-schema.json
@@ -229,7 +237,7 @@ package() {
 pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 
 // Don't disable extensions in the application directory
-// done in librewolf.cf
+// done in librewolf.cfg
 // pref("extensions.autoDisableScopes", 11);
 END
 

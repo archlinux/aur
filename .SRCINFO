@@ -1,6 +1,6 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 75.0
+	pkgver = 76.0.1
 	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	arch = x86_64
@@ -47,14 +47,16 @@ pkgbase = librewolf
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://archive.mozilla.org/pub/firefox/releases/75.0/source/firefox-75.0.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/76.0.1/source/firefox-76.0.1.source.tar.xz
 	source = librewolf.desktop
 	source = git+https://gitlab.com/librewolf-community/browser/common.git
 	source = git+https://gitlab.com/librewolf-community/settings.git
-	sha256sums = bbb1054d8f2717c634480556d3753a8483986af7360e023bb6232df80b746b0f
-	sha256sums = 0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b
+	source = remove_addons.patch
+	sha256sums = f61761e32774a6bdfedd5937c4992fbe5e24c3df057c2b9a559fcd0d038777c3
+	sha256sums = 0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 4425388d62cbb7ec3808926ae5e04021b17af8a0b6ba47c08a253ecfdcc264c0
 
 pkgname = librewolf
 
