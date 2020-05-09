@@ -1,7 +1,7 @@
 pkgbase = scidavis-qt5
 	pkgdesc = Application for Scientific Data Analysis and Visualization, fork of QtiPlot. Qt5 port
 	pkgver = 2.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://scidavis.sourceforge.net/
 	arch = x86_64
 	license = GPL
@@ -20,6 +20,7 @@ pkgbase = scidavis-qt5
 	depends = sip
 	depends = python-sip
 	depends = python-pyqt5
+	depends = qt5-svg
 	depends = python
 	depends = python-scipy
 	conflicts = scidavis
