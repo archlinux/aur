@@ -19,10 +19,6 @@ makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('c5a4277031092418d87ba670bab6165cc67bbe7a35cdc837463702d3b1032af3')
 
-prepare() {
-    cd "$pkgname-$pkgver"
-}
-
 build() {
     cd "$pkgname-$pkgver"
     python setup.py build
