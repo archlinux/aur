@@ -1,14 +1,13 @@
 pkgbase = ansible-aur-git
 	pkgdesc = ansible module to install packages from AUR
 	pkgver = 0.25.r2.gde92aa8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kewlfft/ansible-aur
 	arch = any
 	license = GPL3
 	provides = ansible-aur
 	conflicts = ansible-aur
-	source = git+https://github.com/kewlfft/ansible-aur.git?signed
-	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
+	source = git+https://github.com/kewlfft/ansible-aur.git
 	sha256sums = SKIP
 
 pkgname = ansible-aur-git
