@@ -7,8 +7,8 @@ pkgdesc="simple wireless ap support both ipv4 and ipv6 with nat"
 arch=('x86_64')
 url="https://github.com/springzfx/ap"
 license=('GPL')
-depends=('hostapd'  'dnsmasq')
-optdepends=('systemd: for service')
+depends=('hostapd'  'dnsmasq' 'iw')
+optdepends=('systemd: service manager')
 
 source=('ap-git::git+https://github.com/springzfx/ap#branch=master')
 md5sums=('SKIP')

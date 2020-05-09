@@ -7,7 +7,8 @@ pkgbase = ap
 	license = GPL
 	depends = hostapd
 	depends = dnsmasq
-	optdepends = systemd: for service
+	depends = iw
+	optdepends = systemd: service manager
 	backup = etc/ap/ap.conf
 	source = ap-git::git+https://github.com/springzfx/ap#branch=master
 	md5sums = SKIP
