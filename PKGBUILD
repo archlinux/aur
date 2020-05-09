@@ -2,14 +2,14 @@
 
 _pkgname=biboumi
 pkgname="$_pkgname-git"
-pkgver=8.2.r74.gcd20177
+pkgver=8.5.r187.g0479bd0
 pkgrel=1
 pkgdesc="XMPP gateway to IRC"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://biboumi.louiz.org/"
 license=('ZLIB')
 depends=('expat' 'libidn' 'udns' 'botan' 'sqlite' 'postgresql-libs')
-makedepends=('git' 'cmake' 'pandoc')
+makedepends=('git' 'cmake' 'python-sphinx' 'python-sphinx_rtd_theme')
 backup=("etc/$_pkgname/$_pkgname.cfg")
 install="$_pkgname.install"
 source=("$_pkgname::git+https://lab.louiz.org/louiz/biboumi.git"
@@ -38,17 +38,21 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSERVICE_USER=biboumi \
-    -DSERVICE_GROUP=jabber
-  make biboumi
+    -DSERVICE_GROUP=jabber \
+    -Wno-dev
+  make
+  make doc
 }
 
 package() {
   cd $_pkgname/build
   make DESTDIR="$pkgdir/" install
 
+  install -dm755 "$pkgdir"/usr/share/doc/$_pkgname/
+  cp -r html "$pkgdir"/usr/share/doc/$_pkgname/
+
   cd ..
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
-  install -dm755 "$pkgdir"/usr/share/doc/$_pkgname/
   install -Dm644 doc/*.rst "$pkgdir"/usr/share/doc/$_pkgname/
   install -Dm644 conf/biboumi.cfg "$pkgdir"/etc/$_pkgname/$_pkgname.cfg
 
