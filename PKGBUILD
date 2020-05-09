@@ -1,28 +1,27 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=backdrop
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="The free and Open Source CMS that helps you build websites for businesses and non-profits."
 arch=("any")
 url="https://backdropcms.org/"
-license=('GPL-2.0')
+license=('GPL2')
 depends=('php>=5.3.2' 'mariadb>=5.0.15' 'php-gd')
 optdepends=('apache: A high performance Unix-based HTTP server (recommended)' 
 			'nginx: Lightweight HTTP server and IMAP/POP3 proxy server')
 install=backdrop.install
-source=("https://github.com/backdrop/backdrop/archive/${pkgver}.tar.gz")
-md5sums=('b87bf0d9ac578bb5461d25e4066064f9'
-		 '7fbee32b61dc7db14c3b63e2d2ad4ac3')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/backdrop/backdrop/archive/${pkgver}.tar.gz")
+sha256sums=('7d5496a3927eee26a8879f40cc53204d2a32ab3e9a5d901941902c7c04918e62')
 
 package() {
-    cd "${pkgdir}"
-    install -dm0755 usr/share/webapps/${pkgname}
-    cd ${srcdir}/${pkgname}-${pkgver}
-    tar cvf - . | (cd ${pkgdir}/usr/share/webapps/backdrop; tar xvf -)
-    cd ${pkgdir}/usr/share/webapps/${pkgname}
-    find . -type f -exec chmod 664 '{}' \;
-	find . -type d -exec chmod 775 '{}' \;
-    chown -R http: files settings.php
-    chmod -R 770 files settings.php
+  cd "${pkgdir}"
+  install -dm0755 usr/share/webapps/${pkgname}
+  cd ${srcdir}/${pkgname}-${pkgver}
+  tar cvf - . | (cd ${pkgdir}/usr/share/webapps/backdrop; tar xvf -)
+  cd ${pkgdir}/usr/share/webapps/${pkgname}
+  find . -type f -exec chmod 664 '{}' \;
+  find . -type d -exec chmod 775 '{}' \;
+  chown -R http: files settings.php
+  chmod -R 770 files settings.php
 }
