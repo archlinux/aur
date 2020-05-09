@@ -1,7 +1,7 @@
 pkgbase = mongodb-compass-git
 	pkgdesc = The official GUI for MongoDB - git version
 	pkgver = 1.22.0.r3278.1f7cf26b
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = mongodb-compass-git
 	provides = mongodb-compass
 	conflicts = mongodb-compass
 	source = mongodb-compass-git::git+https://github.com/mongodb-js/compass
-	source = hadron-build-packaging.diff
+	source = hadron-build.diff
 	sha256sums = SKIP
-	sha256sums = 87ec3245af05788c1c0d7070fcd4e425a0a22dbf7a4ae194a5dce8ade88d519a
+	sha256sums = d6771bf2fc0efb0ae4c3e20ce51e0a8d65c3e702afe8a5333e9ada109ee5e190
 
 pkgname = mongodb-compass-git
