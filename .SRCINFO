@@ -1,0 +1,34 @@
+pkgbase = gwenview-auto-resize-git
+	pkgdesc = A fast and easy to use image viewer for KDE - Patched to resize window to fit image
+	pkgver = r6357.3da2a238
+	pkgrel = 1
+	url = http://kde.org/applications/graphics/gwenview/
+	install = gwenview-auto-resize-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	depends = kactivities
+	depends = baloo
+	depends = libkipi
+	depends = libkdcraw
+	depends = kparts
+	depends = kitemmodels
+	depends = cfitsio
+	depends = phonon-qt5
+	depends = purpose
+	depends = perl
+	optdepends = qt5-imageformats: support for tiff, webp, and more image formats
+	optdepends = kimageformats: support for dds, xcf, exr, psd, and more image formats
+	optdepends = kipi-plugins: export to various online services
+	optdepends = kamera: import pictures from gphoto2 cameras
+	provides = gwenview
+	conflicts = kdegraphics-gwenview
+	conflicts = gwenview
+	source = git://anongit.kde.org/gwenview.git
+	sha256sums = SKIP
+
+pkgname = gwenview-auto-resize-git
+

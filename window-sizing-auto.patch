@@ -1,0 +1,116 @@
+diff --git a/app/mainwindow.cpp b/app/mainwindow.cpp
+index f206dc87..c2a46e82 100644
+--- a/app/mainwindow.cpp
++++ b/app/mainwindow.cpp
+@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ #include <QMenuBar>
+ #include <QUrl>
+ #include <QMouseEvent>
++#include <QScreen>
+ #ifdef Q_OS_OSX
+ #include <QFileOpenEvent>
+ #endif
+@@ -334,6 +335,8 @@ struct MainWindow::Private
+                 q, &MainWindow::slotUpdateCaption);
+         connect(mViewMainPage, &ViewMainPage::completed,
+                 q, &MainWindow::slotPartCompleted);
++        connect(mViewMainPage, &ViewMainPage::completed,
++                q, &MainWindow::autoResize);
+         connect(mViewMainPage, &ViewMainPage::previousImageRequested,
+                 q, &MainWindow::goToPrevious);
+         connect(mViewMainPage, &ViewMainPage::nextImageRequested,
+@@ -401,7 +404,7 @@ struct MainWindow::Private
+         action->setText(i18nc("@action reload the currently viewed image", "Reload"));
+         action->setIcon(QIcon::fromTheme("view-refresh"));
+         actionCollection->setDefaultShortcuts(action, KStandardShortcut::reload());
+-        
++
+         QAction * replaceLocationAction = actionCollection->addAction(QStringLiteral("replace_location"));
+         replaceLocationAction->setText(i18nc("@action:inmenu Navigation Bar", "Replace Location"));
+         actionCollection->setDefaultShortcut(replaceLocationAction, Qt::CTRL + Qt::Key_L);
+@@ -1013,7 +1016,7 @@ void MainWindow::setActiveViewModeAction(QAction* action)
+         setCaption(QString());
+     }
+     d->autoAssignThumbnailProvider();
+-    toggleSideBar(d->sideBarVisibility()); 
++    toggleSideBar(d->sideBarVisibility());
+     toggleStatusBar(d->statusBarVisibility());
+ 
+     emit viewModeChanged();
+@@ -1548,7 +1551,7 @@ void MainWindow::showConfigDialog()
+ {
+     // Save first so changes like thumbnail zoom level are not lost when reloading config
+     saveConfig();
+-    
++
+     DialogGuard<ConfigDialog> dialog(this);
+     connect(dialog.data(), &KConfigDialog::settingsChanged, this, &MainWindow::loadConfig);
+     dialog->exec();
+@@ -1816,4 +1819,50 @@ void MainWindow::replaceLocation()
+     }
+ }
+ 
++// Automatically resize window to fit the image's
++// aspect ratio
++void MainWindow::autoResize()
++{
++    // TODO: Configuration menu entry
++    const bool preserveHeight = true;
++
++    QSize size = d->mViewMainPage->currentDocument()->size();
++    float imgAspect = size.width() / (float)size.height();
++
++    QRect windowGeometry = geometry();
++
++    float width = windowGeometry.width();
++    float height = windowGeometry.height();
++
++    // Which measure to change?
++    if (preserveHeight) {
++        width = (int)(height * imgAspect);
++    } else {
++        height = (int)(width * (1 / imgAspect));
++    }
++
++    // Check if the new size grows past the desktop
++    QSizeF desktopSize = QSizeF(qApp->screens()[0]->availableSize()) * 0.8;
++    if (width > desktopSize.width()) {
++        float scale = desktopSize.width() / (float)width;
++        width = (int)(width * scale);
++        height = (int)(height * scale);
++    } else if (height > desktopSize.height()) {
++        float scale = desktopSize.height() / (float)height;
++        width = (int)(width * scale);
++        height = (int)(height * scale);
++    }
++
++    // Keep window centered
++    int xDiff = width - windowGeometry.width();
++    int yDiff = height - windowGeometry.height();
++
++    setGeometry(
++        windowGeometry.x() - xDiff / 2,
++        windowGeometry.y() - yDiff / 2,
++        width,
++        height
++    );
++}
++
+ } // namespace
+diff --git a/app/mainwindow.h b/app/mainwindow.h
+index 33ac31f5..d8bae5f8 100644
+--- a/app/mainwindow.h
++++ b/app/mainwindow.h
+@@ -132,9 +132,11 @@ private Q_SLOTS:
+ 
+     void showFirstDocumentReached();
+     void showLastDocumentReached();
+-    
++
+     void replaceLocation();
+ 
++    void autoResize();
++
+ private:
+     struct Private;
+     MainWindow::Private* const d;
