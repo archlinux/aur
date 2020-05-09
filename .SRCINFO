@@ -1,7 +1,7 @@
 pkgbase = dungeon-revealer-bin
 	pkgdesc = Web app for tabletop gaming to allow the DM to reveal areas of the game map to players
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/dungeon-revealer/dungeon-revealer
 	arch = x86_64
 	license = ISC
@@ -11,8 +11,8 @@ pkgbase = dungeon-revealer-bin
 	source = dungeon-revealer.sh
 	source = LICENSE
 	md5sums = a157735a55f18d44da8ea5ab96f967f3
-	md5sums = 8faeb01b83c9a84ad192560807f161c8
-	md5sums = 45d5e0f2dea06d1fc4e187e5584c9473
+	md5sums = 9e53291b0540605e26640cc3b1c3ffe7
+	md5sums = 6c22ecd94b9533c537b70ec0982c5975
 
 pkgname = dungeon-revealer-bin
 
