@@ -1,13 +1,13 @@
 pkgbase = bash-pipes
 	pkgdesc = Pipes screensaver for bash
-	pkgver = 1.2
-	pkgrel = 2
-	url = http://acidhub.github.io/pipes.sh
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/pipeseroni/pipes.sh
 	arch = any
-	license = GPL
+	license = MIT
 	depends = bash
-	source = https://github.com/Acidhub/pipes.sh/archive/v1.2.tar.gz
-	sha512sums = 88e2457f5072c4d13e9afc44964e75b84b0bcee3d80cd439e9ca733ca0d2108fbd998bbd73c5333679b42a6681b68e0193c7ff707070163de93e527994fe0d96
+	source = https://github.com/pipeseroni/pipes.sh/archive/v1.3.0.tar.gz
+	sha256sums = 532976dd8dc2d98330c45a8bcb6d7dc19e0b0e30bba8872dcce352361655a426
 
 pkgname = bash-pipes
 
