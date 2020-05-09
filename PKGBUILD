@@ -5,7 +5,7 @@
 
 pkgname=qwtplot3d-qt5
 pkgver=0.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt/OpenGL-based C++ programming library containing 3d-widgets"
 arch=("x86_64")
 license=('custom:zlib')
@@ -31,7 +31,7 @@ prepare() {
 build() {
     cd qwtplot3d
     # build qwt:
-    qmake-qt5 qwtplot3d.pro
+    qmake-qt5 qwtplot3d.pro "CONFIG+=staticlib"
     make
 }
 
@@ -42,12 +42,13 @@ package() {
     install -d "${pkgdir}"/usr/{include/qt/qwtplot3d-qt5,lib}
 
     for n in include/* ; do
-     cp -d $n "${pkgdir}"/usr/include/qt/qwtplot3d-qt5
+     install -Dm644 $n "${pkgdir}"/usr/include/qt/qwtplot3d-qt5
     done
 
-    for n in lib/libqwtplot3d-qt5.so* ; do
-     cp -d $n "${pkgdir}"/usr/lib
-    done
+#   for n in lib/libqwtplot3d-qt5.so* ; do
+#    cp -d $n "${pkgdir}"/usr/lib
+#   done
+    install -Dm644 lib/libqwtplot3d-qt5.a "${pkgdir}"/usr/lib
 
     # install custom license
     install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE

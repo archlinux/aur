@@ -1,7 +1,7 @@
 pkgbase = qwtplot3d-qt5
 	pkgdesc = Qt/OpenGL-based C++ programming library containing 3d-widgets
 	pkgver = 0.2.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://qwtplot3d.sourceforge.net/
 	arch = x86_64
 	license = custom:zlib
