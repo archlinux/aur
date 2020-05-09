@@ -3,7 +3,7 @@
 _pkgbasename=dav1d
 pkgname=lib32-$_pkgbasename
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='AV1 cross-platform decoder focused on speed and correctness (32 bit)'
 url='https://code.videolan.org/videolan/dav1d/'
 arch=('x86_64')
@@ -11,13 +11,11 @@ license=('BSD')
 depends=(
       "$_pkgbasename"
       'lib32-glibc'
-      'lib32-sdl2'
-      'lib32-libplacebo'
       'lib32-vulkan-icd-loader'
       )
 makedepends=(
       'meson'
-      'meson-cross-x86-linux-gnu'
+#      'meson-cross-x86-linux-gnu'
       'ninja'
       'nasm'
       'doxygen'
@@ -36,22 +34,32 @@ prepare() {
 }
 
 build() {
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
+  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  export CFLAGS+=" ${CPPFLAGS}"
+  export CXXFLAGS+=" ${CPPFLAGS} -I/usr/include/glslang"
+
   cd ${_pkgbasename}-${pkgver}
   arch-meson build \
-    --cross-file x86-linux-gnu \
-    --libdir=/usr/lib32
+    --prefix=/usr \
+    --libdir=lib32 \
+    -D enable_tests=false
+
+# Options disabled
+#     --cross-file x86-linux-gnu \ ## Meson doesn't use the system's LDFLAGS with cross-file yet...
 
   ninja -C build
 }
 
 check() {
   cd ${_pkgbasename}-${pkgver}/build
-  meson test
+#  meson test
 }
 
 package() {
   cd ${_pkgbasename}-${pkgver}
 
   DESTDIR="${pkgdir}" ninja -C build install
-  rm -rf "$pkgdir"/usr/{include,share,bin}
+  rm -r "$pkgdir"/usr/{include,bin}
 }
