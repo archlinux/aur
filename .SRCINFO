@@ -3,12 +3,17 @@ pkgbase = astah-uml
 	pkgver = 8.2.0.b743f7.0
 	pkgrel = 1
 	url = https://astah.net/products/astah-uml
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = custom
 	depends = java-runtime=8
+	depends = lib32-glibc
+	depends = hicolor-icon-theme
+	depends = bash
 	conflicts = astah-community
 	conflicts = astah-professional
 	options = !emptydirs
+	options = !strip
 	source = http://cdn.change-vision.com/files/astah-uml-8.2.0.b743f7-0.noarch.rpm
 	sha256sums = e384286a1b7cf0ed592d84be52c473652ff88716972e7235a8a4daddf0018f1f
 
