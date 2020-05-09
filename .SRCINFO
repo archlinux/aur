@@ -4,11 +4,13 @@ pkgbase = bitly-client
 	pkgrel = 1
 	url = https://github.com/specious/bitly-client
 	arch = x86_64
-	license = MIT
+	license = ISC
 	makedepends = npm
+	depends = nodejs
+	depends = bash
 	noextract = bitly-client-1.7.2.tar.gz
 	source = bitly-client-1.7.2.tar.gz::https://github.com/specious/bitly-client/archive/v1.7.2.tar.gz
-	md5sums = 49ce0af9fb2ad2a257c4c086c11e6aa6
+	sha256sums = 9106390a4c56391bc755acc10177f7e98a80d1a95a08ced483b115995a89a6d8
 
 pkgname = bitly-client
 
