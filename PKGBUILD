@@ -6,7 +6,7 @@
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
 pkgver='5.5.0.gm.2.r26.gea4e0c87'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$_pkgname.com"
@@ -24,7 +24,7 @@ source=(
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '91cc72f00db20e1bded69d08578e6ae9fdc89a4582ee8f6d29697b0233d7d095')
+            '9782d1bfbf0379ef1e7afb9f43b6c35ee2331b142c7705c336cab269e18648cb')
 
 _sourcedirectory="$pkgname"
 _homedirectory="$pkgname-home"
