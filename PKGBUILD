@@ -1,8 +1,9 @@
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Anonymous
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-http-server-brick'
-pkgver='0.1.4'
+pkgver='0.1.7'
 pkgrel='1'
 pkgdesc="Simple pure perl http/https server for prototyping \"in the style of\" Ruby's WEBrick"
 arch=('any')
@@ -11,10 +12,9 @@ options=('!emptydirs')
 depends=('perl-http-daemon' 'perl-http-message' 'perl-libwww' 'perl-lwp-mediatypes')
 makedepends=()
 url='http://search.cpan.org/dist/HTTP-Server-Brick'
-source=('http://search.cpan.org/CPAN/authors/id/A/AU/AUFFLICK/HTTP-Server-Brick-0.1.4.tar.gz')
-md5sums=('35f5a44337fbda93bf28d91e993227af')
-sha512sums=('d050370c886222e3cb91b2e3c506b7f7bc1027f041e02b50443a15945010f04654e21ae8fe3fe6b6f5973607e3a4ac0caefd5bf91c21a6ff67e364078660c806')
-_distdir="HTTP-Server-Brick-0.1.4"
+source=("http://search.cpan.org/CPAN/authors/id/A/AU/AUFFLICK/HTTP-Server-Brick-${pkgver}.tar.gz")
+sha512sums=('76ec5f7005e75d8799d3c1ae5ae81951b1efc2f522587d588fa1d562d34632632e7730329cb323191c77ee164f3917fd88656773417fd2c097e577bcf96adc25')
+_distdir="HTTP-Server-Brick-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
