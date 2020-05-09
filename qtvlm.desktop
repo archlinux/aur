@@ -1,0 +1,15 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=qtVlm
+GenericName=qtVlm
+Comment=Navigation and Weather routing software
+# The version of the desktop entry specification to which this file complies
+Version=1.0
+# The path to the folder in which the executable is run
+Path=/opt/qtvlm
+Exec=/opt/qtvlm/qtVlm
+Icon=qtvlm
+Terminal=false
+Type=Application
+Categories=Application;Geoscience;
+StartupNotify=true

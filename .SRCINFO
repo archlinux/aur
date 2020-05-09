@@ -1,0 +1,15 @@
+pkgbase = qtvlm-bin
+	pkgdesc = Navigation and Weather Routing software
+	pkgver = 5.9.8.p1
+	pkgrel = 1
+	url = https://www.meltemus.com/index.php/
+	arch = x86_64
+	license = unknown
+	options = !strip
+	source = qtvlm-bin-5.9.8.p1.tar.gz::https://www.meltemus.com/index.php/fr/download/send/6-linux-64b/206-qtvlm-5-9-8-p1-3
+	source = qtvlm.desktop
+	sha256sums = e6788ae4163dedb9dda1acba9d06a6abba743e08d79392797c931681e84d3ef9
+	sha256sums = a0157e13f6914ce6d32aebc1caec4b75fd185b46dbcf127e882b3abe34cd7c2d
+
+pkgname = qtvlm-bin
+
