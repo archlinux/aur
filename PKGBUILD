@@ -2,14 +2,14 @@
 # Maintainer: Kenny Levinsen <aur [at] kl [dot] wtf>
 
 pkgname=greetd-gtkgreet
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="GTK based greeter for greetd"
 arch=(x86_64)
 url="https://git.sr.ht/~kennylevinsen/gtkgreet"
 license=(GPL3)
 source=("https://git.sr.ht/~kennylevinsen/gtkgreet/archive/$pkgver.tar.gz")
-sha256sums=('6ad116076deabe7c01821e6be985a3cd5d3f679afd27e3dfdeceff6f5d72f8c5')
+sha256sums=('5c0c9dbcb0495b05a1bcbd9978a3ad13ec50e228ab07b05efc5efc294d1beebb')
 makedepends=(meson ninja scdoc)
 depends=(gtk3 gtk-layer-shell json-c)
 
