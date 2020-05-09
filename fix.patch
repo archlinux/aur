@@ -1,0 +1,140 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fc7ceda..fed1337 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,11 +8,7 @@ set(DOTNET_CHANNEL "2.1" CACHE STRING ".NET SDK channel")
+ set(BUILD_MANAGED ON CACHE BOOL "Build managed part")
+ set(DBGSHIM_RUNTIME_DIR "" CACHE FILEPATH "Path to dbgshim library directory (at runtime)")
+ 
+-if (WIN32)
+-    set(CMAKE_CXX_STANDARD 11)
+-else()
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Wno-null-conversion")
+-endif()
++set(CMAKE_CXX_STANDARD 11)
+ 
+ function(clr_unknown_arch)
+     message(FATAL_ERROR "Only AMD64, ARM64, ARM, ARMEL, I386 and WASM are supported")
+diff --git a/third_party/json/json.hpp b/third_party/json/json.hpp
+index 5b0b0ea..03d2ff1 100644
+--- a/third_party/json/json.hpp
++++ b/third_party/json/json.hpp
+@@ -34,7 +34,7 @@ SOFTWARE.
+ #include <cassert> // assert
+ #include <ciso646> // and, not, or
+ #include <clocale> // lconv, localeconv
+-#include <cmath> // isfinite, labs, ldexp, signbit
++
+ #include <cstddef> // nullptr_t, ptrdiff_t, size_t
+ #include <cstdint> // int64_t, uint64_t
+ #include <cstdlib> // abort, strtod, strtof, strtold, strtoul, strtoll, strtoull
+@@ -54,7 +54,6 @@ SOFTWARE.
+ #include <string> // getline, stoi, string, to_string
+ #include <type_traits> // add_pointer, conditional, decay, enable_if, false_type, integral_constant, is_arithmetic, is_base_of, is_const, is_constructible, is_convertible, is_default_constructible, is_enum, is_floating_point, is_integral, is_nothrow_move_assignable, is_nothrow_move_constructible, is_pointer, is_reference, is_same, is_scalar, is_signed, remove_const, remove_cv, remove_pointer, remove_reference, true_type, underlying_type
+ #include <utility> // declval, forward, make_pair, move, pair, swap
+-#include <valarray> // valarray
+ #include <vector> // vector
+ 
+ // exclude unsupported compilers
+@@ -738,17 +737,6 @@ struct external_constructor<value_t::array>
+         }
+         j.assert_invariant();
+     }
+-
+-    template<typename BasicJsonType, typename T,
+-             enable_if_t<std::is_convertible<T, BasicJsonType>::value, int> = 0>
+-    static void construct(BasicJsonType& j, const std::valarray<T>& arr)
+-    {
+-        j.m_type = value_t::array;
+-        j.m_value = value_t::array;
+-        j.m_value.array->resize(arr.size());
+-        std::copy(std::begin(arr), std::end(arr), j.m_value.array->begin());
+-        j.assert_invariant();
+-    }
+ };
+ 
+ template<>
+@@ -1004,13 +992,6 @@ void to_json(BasicJsonType& j, const CompatibleArrayType& arr)
+     external_constructor<value_t::array>::construct(j, arr);
+ }
+ 
+-template<typename BasicJsonType, typename T,
+-         enable_if_t<std::is_convertible<T, BasicJsonType>::value, int> = 0>
+-void to_json(BasicJsonType& j, std::valarray<T> arr)
+-{
+-    external_constructor<value_t::array>::construct(j, std::move(arr));
+-}
+-
+ template<typename BasicJsonType>
+ void to_json(BasicJsonType& j, typename BasicJsonType::array_t&& arr)
+ {
+@@ -1162,19 +1143,6 @@ void from_json(const BasicJsonType& j, std::forward_list<T, Allocator>& l)
+     });
+ }
+ 
+-// valarray doesn't have an insert method
+-template<typename BasicJsonType, typename T,
+-         enable_if_t<std::is_convertible<BasicJsonType, T>::value, int> = 0>
+-void from_json(const BasicJsonType& j, std::valarray<T>& l)
+-{
+-    if (JSON_UNLIKELY(not j.is_array()))
+-    {
+-        JSON_THROW(type_error::create(302, "type must be array, but is " + std::string(j.type_name())));
+-    }
+-    l.resize(j.size());
+-    std::copy(j.m_value.array->begin(), j.m_value.array->end(), std::begin(l));
+-}
+-
+ template<typename BasicJsonType, typename CompatibleArrayType>
+ void from_json_array_impl(const BasicJsonType& j, CompatibleArrayType& arr, priority_tag<0> /*unused*/)
+ {
+@@ -3228,7 +3196,7 @@ class parser
+                 result.m_value = m_lexer.get_number_float();
+ 
+                 // throw in case of infinity or NAN
+-                if (JSON_UNLIKELY(not std::isfinite(result.m_value.number_float)))
++                if (JSON_UNLIKELY(not __builtin_isfinite(result.m_value.number_float)))
+                 {
+                     if (allow_exceptions)
+                     {
+@@ -3364,7 +3332,7 @@ class parser
+             case token_type::value_float:
+             {
+                 // reject infinity or NAN
+-                return std::isfinite(m_lexer.get_number_float());
++                return __builtin_isfinite(m_lexer.get_number_float());
+             }
+ 
+             case token_type::literal_false:
+@@ -4837,11 +4805,11 @@ class binary_reader
+                 double val;
+                 if (exp == 0)
+                 {
+-                    val = std::ldexp(mant, -24);
++                    val = __builtin_ldexp(mant, -24);
+                 }
+                 else if (exp != 31)
+                 {
+-                    val = std::ldexp(mant + 1024, exp - 25);
++                    val = __builtin_ldexp(mant + 1024, exp - 25);
+                 }
+                 else
+                 {
+@@ -6652,7 +6620,7 @@ class serializer
+             // spare 1 byte for '\0'
+             assert(i < number_buffer.size() - 1);
+ 
+-            const auto digit = std::labs(static_cast<long>(x % 10));
++            const auto digit = __builtin_labs(static_cast<long>(x % 10));
+             number_buffer[i++] = static_cast<char>('0' + digit);
+             x /= 10;
+         }
+@@ -6679,7 +6647,7 @@ class serializer
+     void dump_float(number_float_t x)
+     {
+         // NaN / inf
+-        if (not std::isfinite(x) or std::isnan(x))
++        if (not __builtin_isfinite(x) or __builtin_isnan(x))
+         {
+             o->write_characters("null", 4);
+             return;

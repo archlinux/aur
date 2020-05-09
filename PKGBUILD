@@ -2,34 +2,34 @@
 
 pkgname=netcoredbg
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc='Debugger for .NET Core runtime'
 url='https://github.com/Samsung/netcoredbg'
 license=(MIT)
 arch=(x86_64)
 depends=(dotnet-host dotnet-runtime dotnet-sdk)
-makedepends=(git)
+makedepends=(git cmake ninja clang)
 optdepends=()
-source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+source=("${url}/archive/${pkgver}.tar.gz" "fix.patch")
+sha256sums=('SKIP' "d4f18980c86dd91511616b3dcbd9da806f7e355ec4d2b66edeede7465037d023")
 
 prepare() {
-  mkdir -p build
+  cd "netcoredbg-${pkgver}"
+  patch -p1 < ${srcdir}/fix.patch
+  mkdir -p "${srcdir}/build"
 }
 
 build() {
-  cd build
+  cd "${srcdir}/build"
   CC=clang CXX=clang++ \
-  cmake ../netcoredbg-$pkgver \
-    -DDOTNET_DIR=/opt/dotnet \
-    -DCMAKE_INSTALL_PREFIX=/usr/bin \
-    -DBUILD_TESTING=OFF \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_INSTALL_LIBEXECDIR=lib
-  make
+  cmake "${srcdir}/netcoredbg-${pkgver}" \
+    -GNinja \
+    -DDOTNET_DIR=/usr/share/dotnet \
+    -DCMAKE_INSTALL_PREFIX=/usr/bin
+  ninja
 }
 
 package() {
   cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja install
 }
