@@ -1,15 +1,14 @@
 pkgbase = asdcplib
 	pkgdesc = Open Source implementation of SMPTE and the MXF Interop “Sound & Picture Track File” format
-	pkgver = 2.10.35
+	pkgver = 2.10.37
 	pkgrel = 1
 	url = http://www.cinecert.com/asdcplib/
 	arch = i686
 	arch = x86_64
-	license = GPL-3.0
-	depends = expat
+	license = GPL3
 	depends = openssl
-	source = https://github.com/cinecert/asdcplib/archive/rel_2_10_35.tar.gz
-	md5sums = 4639926c64c1c752ad4f1550f6a025c2
+	source = asdcplib-2.10.37.tar.gz::https://github.com/cinecert/asdcplib/archive/rel_2_10_37.tar.gz
+	sha256sums = 2e9e46458c888ffa1458fb4b8e20146a34f064cd860f23dd251bd1e6122aca98
 
 pkgname = asdcplib
 
