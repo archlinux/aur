@@ -1,14 +1,16 @@
 pkgbase = arcade-learning-environment
 	pkgdesc = The Arcade Learning Environment (ALE) is a simple object-oriented framework that allows researchers and hobbyists to develop AI agents for Atari 2600 games
 	pkgver = 0.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mgbellemare/Arcade-Learning-Environment
 	arch = x86_64
-	license = GPL-2.0
+	license = GPL2
 	makedepends = cmake
-	makedepends = sdl
-	source = https://github.com/mgbellemare/Arcade-Learning-Environment/archive/v0.6.1.tar.gz
-	md5sums = 7834587b59ce0a6c744702e1129c8d37
+	depends = sdl
+	depends = zlib
+	depends = gcc-libs
+	source = arcade-learning-environment-0.6.1.tar.gz::https://github.com/mgbellemare/Arcade-Learning-Environment/archive/v0.6.1.tar.gz
+	sha256sums = 8059a4087680da03878c1648a8ceb0413a341032ecaa44bef4ef1f9f829b6dde
 
 pkgname = arcade-learning-environment
 
