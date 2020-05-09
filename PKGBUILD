@@ -8,8 +8,7 @@ pkgdesc="GTK themes based on Piet Mondrian's paintings."
 arch=('any')
 url='https://www.opencode.net/ju1464/Mondrian'
 license=('GPL3')
-optdepends=('mondrian-icon-theme: for matched icon theme'
-            'gtk-engine-murrine' 'gtk-engines')
+optdepends=('mondrian-icon-theme-git: for matched icon theme')
 makedepends=('git')
 provides=('mondrian-gtk-theme')
 conflicts=('mondrian-gtk-theme')
