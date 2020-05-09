@@ -22,6 +22,7 @@ sha256sums=('SKIP'
             'd6771bf2fc0efb0ae4c3e20ce51e0a8d65c3e702afe8a5333e9ada109ee5e190')
 
 _sourcedirectory="$pkgname"
+_homedirectory="$pkgname-home"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
@@ -39,7 +40,7 @@ prepare() {
 	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron6/version')"'"|' 'package.json'
 
 	# Prepare dependencies
-	HOME="$srcdir/$pkgname-home" npm install
+	HOME="$srcdir/$_homedirectory" npm install
 
 	# Apply hadron-build fixes
 	patch -d 'node_modules/hadron-build/' --forward -p1 < '../hadron-build.diff'
@@ -58,7 +59,7 @@ build() {
 	# and let electron-packager use it for building
 	# https://github.com/electron/electron-packager/issues/187
 
-	NODE_ENV='production' HOME="$srcdir/$pkgname-home" npm run release "$_target"
+	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npm run release "$_target"
 }
 
 package() {
