@@ -9,7 +9,7 @@ arch=('any')
 url='https://www.opencode.net/ju1464/Mondrian'
 license=('GPL3')
 optdepends=('mondrian-icon-theme: for matched icon theme'
-            'gtk-engine-murrine' 'gtk-engine')
+            'gtk-engine-murrine' 'gtk-engines')
 makedepends=('git')
 provides=('mondrian-gtk-theme')
 conflicts=('mondrian-gtk-theme')
