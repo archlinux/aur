@@ -1,7 +1,7 @@
 # Maintainer: James McMurray <jamesmcm03@gmail.com>
 
 pkgname=s3rename
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Tool to mass-rename S3 keys'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('rust')
 depends=('openssl')
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('fec5fe4a1c95894d02c9f381f36b9a7d2fca2e9e6fb4e62b86f4586856d03345')
+sha256sums=('9014e3339ef2e7934f9f1fa7c9f5e03f9f71167e046bc6e272d49e8e3c172bcf')
 
 build() {
   cd "$pkgname-$pkgver"
