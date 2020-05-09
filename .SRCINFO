@@ -1,0 +1,25 @@
+pkgbase = gnome-terminal-urgent-hint
+	pkgdesc = The GNOME Terminal Emulator. Git fork with urgent hint (w/o gnome-shell and nautilus)
+	pkgver = 3.37.0.6402.b4f17c11
+	pkgrel = 1
+	url = https://www.gnome.org
+	arch = i686
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	makedepends = git
+	makedepends = gnome-doc-utils
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = docbook-xsl
+	makedepends = appdata-tools
+	makedepends = yelp-tools
+	depends = vte3-git
+	provides = gnome-terminal=3.37.0.6402.b4f17c11
+	conflicts = gnome-terminal
+	options = !emptydirs
+	source = git+https://github.com/adizero/gnome-terminal.git
+	md5sums = SKIP
+
+pkgname = gnome-terminal-urgent-hint
+
