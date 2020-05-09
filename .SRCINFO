@@ -1,13 +1,13 @@
 pkgbase = vector-bin
 	pkgdesc = A lightweight and ultra-fast tool for building observability pipelines
-	pkgver = 0.8.2
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://vector.dev
 	arch = x86_64
-	license = Apache-2.0
+	license = Apache
 	provides = vector
-	source = https://github.com/timberio/vector/releases/download/v0.8.2/vector-x86_64-unknown-linux-musl.tar.gz
-	md5sums = fe24b519a52369b9a6a2e652b4617d5a
+	source = vector-bin-0.9.1.tar.gz::https://github.com/timberio/vector/releases/download/v0.9.1/vector-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = efd640e1c664758b5451abb58654b3a8f818cf7f44b4d44f82d05071732e5f1e
 
 pkgname = vector-bin
 
