@@ -34,7 +34,7 @@ pkgname = linux-bcachefs-ck
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-mainline-bcachefs-ck=5.6.0
+	provides = linux-bcachefs-ck=5.6.0
 
 pkgname = linux-bcachefs-ck-headers
 	pkgdesc = Headers and scripts for building modules for Linux-bcachefs-ck kernel

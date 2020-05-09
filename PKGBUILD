@@ -200,7 +200,7 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=("linux-mainline-bcachefs-ck=${pkgver}")
+  provides=("linux-bcachefs-ck=${pkgver}")
   #groups=('ck-generic')
 
   cd ${_srcname}
