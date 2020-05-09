@@ -28,7 +28,7 @@ depends=(
 
 _dir="cmake_modules-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/cmake_modules/archive/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('fdefb27ecd0f80abaec544129e5e37aa05adabe9699a8a3da809d8c3bda3021c')
 
 build() {
 	# Use ROS environment variables.
