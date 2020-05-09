@@ -1,0 +1,30 @@
+pkgbase = srfetch-git
+	pkgdesc = This is modified neofetch script only for me.
+	pkgver = 7.0.0.r1.b0bb11c
+	pkgrel = 1
+	url = https://github.com/justanoobcoder/srfetch.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = make
+	depends = bash
+	optdepends = catimg: Display Images
+	optdepends = chafa: Image to text support
+	optdepends = feh: Wallpaper Display
+	optdepends = imagemagick: Image cropping / Thumbnail creation / Take a screenshot
+	optdepends = jp2a: Display Images
+	optdepends = libcaca: Display Images
+	optdepends = nitrogen: Wallpaper Display
+	optdepends = pacman-contrib: Display package count
+	optdepends = w3m: Display Images
+	optdepends = xdotool: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal
+	optdepends = xorg-xdpyinfo: Resolution detection (Single Monitor)
+	optdepends = xorg-xprop: Desktop Environment and Window Manager
+	optdepends = xorg-xrandr: Resolution detection (Multi Monitor + Refresh rates)
+	optdepends = xorg-xwininfo: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal
+	backup = etc/srfetch/config.conf
+	source = git+https://github.com/justanoobcoder/srfetch.git
+	md5sums = SKIP
+
+pkgname = srfetch-git
+
