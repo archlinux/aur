@@ -15,7 +15,6 @@ license=(
   LGPL3
 )
 depends=(
-  lib32-glew
   lib32-libaio
   lib32-libcanberra
   lib32-libjpeg-turbo

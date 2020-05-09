@@ -11,7 +11,6 @@ pkgbase = pcsx2-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = xorgproto
-	depends = lib32-glew
 	depends = lib32-libaio
 	depends = lib32-libcanberra
 	depends = lib32-libjpeg-turbo
