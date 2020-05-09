@@ -1,0 +1,19 @@
+pkgbase = verco
+	pkgdesc = A simple Git/Hg tui client focused on keyboard shortcuts.
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/matheuslessarodrigues/verco
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	optdepends = git: support for git repositories
+	optdepends = mercurial: support for mercurial repositories
+	conflicts = verco-git
+	source = 5.0.0.tar.gz::https://github.com/matheuslessarodrigues/verco/archive/v5.0.0.tar.gz
+	source = Cargo.lock
+	sha256sums = 08fca8a2db80c1c5752b49255311d9d9ac02272b8aea8a23169a118b13cf7d71
+	sha256sums = 9505f57ca6c2c2be917febd1e5003ff9ca1471970d4f18b6294f9fbf06195546
+
+pkgname = verco
+
