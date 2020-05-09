@@ -12,7 +12,7 @@ license=(MIT)
 depends=(python python-attrs python-hyperlink python-incremental python-six
          python-tubes python-twisted python-werkzeug python-zope-interface)
 makedepends=(python-setuptools python-incremental)
-checkdepends=(python-hypothesis python-mock python-treq)
+checkdepends=(python-hypothesis python-mock python-treq python-pytest)
 source=("https://github.com/twisted/klein/archive/$pkgver/klein-$pkgver.tar.gz")
 sha512sums=('849631f121449556c33a45dcc5b909339730b50f224cd52aadd1e88b1cfe11ef67c03387ef2fc66517d56251001af161b72b518981d36246c741cc381750858f')
 
@@ -29,7 +29,9 @@ build() {
 
 check() {
   cd klein-$pkgver
-  PYTHONPATH=src trial3 klein
+  # klein tests are broken with treq 20.4.1
+  # https://github.com/twisted/klein/issues/339
+  pytest -v src/klein/test -k 'not test_customParameterValidation and not test_handlingGET'
 }
 
 package() {
