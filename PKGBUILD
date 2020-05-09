@@ -1,7 +1,7 @@
 # Maintainer: Kyle De'Vir (QuartzDragon) <kyle.devir.mykolab.com>
 
 pkgname=bcachefs-tools-git
-pkgver=569
+pkgver=583
 pkgrel=1
 pkgdesc="BCacheFS filesystem utilities"
 url="https://github.com/koverstreet/bcachefs-tools"
@@ -10,26 +10,9 @@ license=("GPL2")
 install="$pkgname.install"
 
 provides=(bcachefs-tools)
-makedepends=(
-    attr
-    fuse3
-    git
-    keyutils
-    libaio
-    libscrypt
-    libsodium
-    liburcu
-    libutil-linux
-    pkgconf
-    valgrind
-    zlib
-)
-depends=(
-    libaio
-    libscrypt
-    libsodium
-    liburcu
-)
+dependsarray="attr cargo clang fuse3 git keyutils libaio libscrypt libsodium liburcu libutil-linux pkgconf valgrind zlib"
+makedepends=(${dependsarray})
+depends=(${dependsarray})
 
 _reponame="bcachefs-tools"
 _repo_url="https://github.com/koverstreet/$_reponame"
@@ -58,7 +41,7 @@ pkgver() {
 build() {
     cd "$srcdir/$_reponame"
 
-    make EXTRA_CFLAGS="-O0"
+    make
 }
 
 package() {
