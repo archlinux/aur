@@ -3,7 +3,7 @@
 
 pkgname=mimetic
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, MIT licensed, Email library (MIME) written in C++"
 url="http://www.codesink.org/mimetic_mime_library.html"
 arch=(x86_64)
