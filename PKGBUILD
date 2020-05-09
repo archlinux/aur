@@ -1,15 +1,16 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=c2go
-pkgver=0.25.9
-pkgrel=4
+pkgver=0.26.1
+pkgrel=1
 pkgdesc="A tool for transpiling C to Go"
 arch=('x86_64')
 url='https://github.com/elliotchance/c2go'
 license=('MIT')
-makedepends=('go')
+depends=('glibc')
+makedepends=('go-pie')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('c1ac9bf2637725238711070b2a7228d1')
+sha256sums=('d0032a06be4cce8e1709ad034090bb5d8856c06302b978868f677c4acf356fa7')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

@@ -1,13 +1,14 @@
 pkgbase = c2go
 	pkgdesc = A tool for transpiling C to Go
-	pkgver = 0.25.9
-	pkgrel = 4
+	pkgver = 0.26.1
+	pkgrel = 1
 	url = https://github.com/elliotchance/c2go
 	arch = x86_64
 	license = MIT
-	makedepends = go
-	source = c2go-0.25.9.tar.gz::https://github.com/elliotchance/c2go/archive/v0.25.9.tar.gz
-	md5sums = c1ac9bf2637725238711070b2a7228d1
+	makedepends = go-pie
+	depends = glibc
+	source = c2go-0.26.1.tar.gz::https://github.com/elliotchance/c2go/archive/v0.26.1.tar.gz
+	sha256sums = d0032a06be4cce8e1709ad034090bb5d8856c06302b978868f677c4acf356fa7
 
 pkgname = c2go
 
