@@ -1,7 +1,7 @@
 # Maintainer: Bill Kaguru Wanjohi <bill@ka.guru>
 
 pkgname=k6
-pkgver=0.26.0
+pkgver=0.26.2
 pkgrel=1
 pkgdesc="A modern load testing tool, using Go and JavaScript"
 arch=('x86_64' 'i686')
