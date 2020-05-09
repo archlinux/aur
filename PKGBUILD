@@ -4,7 +4,7 @@ _edition=' Readonly'
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
 pkgver='1.22.0.r3278.1f7cf26b'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
@@ -15,10 +15,10 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"$pkgname::git+https://github.com/mongodb-js/compass"
-	'hadron-build-packaging.diff'
+	'hadron-build.diff'
 )
 sha256sums=('SKIP'
-            '87ec3245af05788c1c0d7070fcd4e425a0a22dbf7a4ae194a5dce8ade88d519a')
+            'd6771bf2fc0efb0ae4c3e20ce51e0a8d65c3e702afe8a5333e9ada109ee5e190')
 
 _sourcedirectory="$pkgname"
 
@@ -40,8 +40,8 @@ prepare() {
 	# Prepare dependencies
 	HOME="$srcdir/$pkgname-home" npm install
 
-	# Disable hadron-build packaging
-	patch -d 'node_modules/hadron-build/' --forward -p1 < '../hadron-build-packaging.diff'
+	# Apply hadron-build fixes
+	patch -d 'node_modules/hadron-build/' --forward -p1 < '../hadron-build.diff'
 }
 
 pkgver() {
