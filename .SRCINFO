@@ -1,7 +1,7 @@
 pkgbase = buck
 	pkgdesc = A fast build system that encourages the creation of small, \ reusable modules over a variety of platforms and languages.
-	pkgver = 2019.10.17.01
-	pkgrel = 6
+	pkgver = 2020.05.08.01
+	pkgrel = 1
 	url = https://buckbuild.com
 	arch = any
 	license = Apache
@@ -9,8 +9,8 @@ pkgbase = buck
 	makedepends = ant
 	depends = python2
 	optdepends = watchman: prevent Buck from parsing all of your build files every time
-	source = buck-2019.10.17.01.tar.gz::https://github.com/facebook/buck/archive/v2019.10.17.01.tar.gz
-	sha512sums = 0861bf47dc1439bfe0f29f9f74161848ddedb7013ec3996afe7c9ff79fbb53ec7916944f1a09bcb6c5874b46fbf80ca7743db54368fc7cc7274ed74d1c056e1a
+	source = buck-2020.05.08.01.tar.gz::https://github.com/facebook/buck/archive/v2020.05.08.01.tar.gz
+	sha512sums = b756ee8d544366534a2df189b38a7258cc9bcd36a1afc888846f81f044540b7795090fa580a33e1d4a377bc5b67756f29d1bcc0cce17e69de771da6c8e429831
 
 pkgname = buck
 

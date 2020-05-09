@@ -1,8 +1,8 @@
 # Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=buck
-pkgver=2019.10.17.01
-pkgrel=6
+pkgver=2020.05.08.01
+pkgrel=1
 pkgdesc='A fast build system that encourages the creation of small, \
 	   reusable modules over a variety of platforms and languages.'
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('watchman: prevent Buck from parsing all of your build files every t
 url='https://buckbuild.com'
 license=('Apache')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/facebook/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('0861bf47dc1439bfe0f29f9f74161848ddedb7013ec3996afe7c9ff79fbb53ec7916944f1a09bcb6c5874b46fbf80ca7743db54368fc7cc7274ed74d1c056e1a')
+sha512sums=('b756ee8d544366534a2df189b38a7258cc9bcd36a1afc888846f81f044540b7795090fa580a33e1d4a377bc5b67756f29d1bcc0cce17e69de771da6c8e429831')
 
 prepare() {
   sed -i 's+executable="python"+executable="python2"+g' ${pkgname}-${pkgver}/build.xml
