@@ -7,7 +7,7 @@
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
 pkgver=4.2.2
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -162,5 +162,5 @@ package() {
   cd ${_pkgbasename}
 
   make DESTDIR="${pkgdir}" install
-  rm -rf "$pkgdir"/usr/{include,share,bin}
+  rm -r "$pkgdir"/usr/{include,share,bin}
 }
