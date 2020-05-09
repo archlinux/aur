@@ -1,2 +1,3 @@
 #!/bin/sh
-exec env "DATA_DIRECTORY=${XDG_DATA_HOME:-$HOME/.local/share}/dungeon-revealer" /usr/bin/dungeon-revealer-internal
+DEFAULT="${XDG_DATA_HOME:-$HOME/.local/share}/dungeon-revealer"
+exec env "DATA_DIRECTORY=${DATA_DIRECTORY:-$DEFAULT}" /usr/bin/dungeon-revealer-internal
