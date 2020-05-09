@@ -1,8 +1,9 @@
 # $Id: PKGBUILD 281741 2016-11-21 14:05:18Z lcarlier $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xf86-video-savage
-pkgver=2.3.8
+pkgver=2.3.9
 pkgrel=3
 pkgdesc="X.org savage video driver"
 arch=(i686 x86_64)
@@ -15,7 +16,7 @@ optdepends=('savage-dri: DRI1 support from community repo')
 groups=('xorg-drivers')
 source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2{,.sig}
         git-fixes.patch)
-sha256sums=('fdcea4a86532bceb50095eaf0fe2f38bbfa160e98463b815f4b549eb9985fa63'
+sha256sums=('2c93c4db1f71e725dda0caee5821253129d4b52d7aa0fd720593e7769bceec86'
             'SKIP'
             '72942e9b26cd6c9da745185778b89487a180871759f5d16f824ec1c307b31eb7')
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C') # Julien Cristau <julien.cristau@ens-lyon.org>

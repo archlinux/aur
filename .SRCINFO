@@ -1,6 +1,6 @@
 pkgbase = xf86-video-savage
 	pkgdesc = X.org savage video driver
-	pkgver = 2.3.8
+	pkgver = 2.3.9
 	pkgrel = 3
 	url = https://xorg.freedesktop.org/
 	arch = i686
@@ -14,11 +14,11 @@ pkgbase = xf86-video-savage
 	conflicts = xorg-server<1.19
 	conflicts = X-ABI-VIDEODRV_VERSION<23
 	conflicts = X-ABI-VIDEODRV_VERSION>=24
-	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-savage-2.3.8.tar.bz2
-	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-savage-2.3.8.tar.bz2.sig
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-savage-2.3.9.tar.bz2
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-savage-2.3.9.tar.bz2.sig
 	source = git-fixes.patch
 	validpgpkeys = 7B27A3F1A6E18CD9588B4AE8310180050905E40C
-	sha256sums = fdcea4a86532bceb50095eaf0fe2f38bbfa160e98463b815f4b549eb9985fa63
+	sha256sums = 2c93c4db1f71e725dda0caee5821253129d4b52d7aa0fd720593e7769bceec86
 	sha256sums = SKIP
 	sha256sums = 72942e9b26cd6c9da745185778b89487a180871759f5d16f824ec1c307b31eb7
 
