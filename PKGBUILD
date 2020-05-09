@@ -28,6 +28,4 @@ build() {
 package() {
   cd ${pkgname}-rel_${_pkgver}
   make DESTDIR=${pkgdir} install
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
-  ln -s /usr/share/licenses/common/GPL3/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
