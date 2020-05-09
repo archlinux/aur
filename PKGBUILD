@@ -1,11 +1,12 @@
-# Maintainer: Igor Lakic aka trzalica <trzalica87 at gmail dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Igor Lakic aka trzalica <trzalica87 at gmail dot com>
 # Contributor: Rob McCathie <archaur at rmcc dot com dot au>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 _name=php-apache
 _base=php
 pkgname=php-apache22
-pkgver=5.6.16
+pkgver=5.6.40
 pkgrel=1
 pkgdesc='Apache SAPI for PHP'
 arch=('i686' 'x86_64')
@@ -23,7 +24,7 @@ source=("http://www.php.net/distributions/${_base}-${pkgver}.tar.gz"
         'php.ini.patch'
         'apache.conf'
         'php-fpm.conf.in.patch')
-md5sums=('dc3c848000a80b805c1393abe39341fa'
+md5sums=('0f0e1372510dbcda1cb671c72d17c009'
          'ebeed393317ed9077a0a74df0986bad3'
          'dec2cbaad64e3abf4f0ec70e1de4e8e9'
          'b9d7ead46639bbcd6c6d6e8b4876ed7f')
