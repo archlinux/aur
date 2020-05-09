@@ -12,7 +12,7 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-git
-pkgver=0.24.0.beta1.24074.g27fd81bde
+pkgver=0.24.0.beta1.24079.gd63f4a53e
 pkgrel=1
 pkgdesc="Enlightenment window manager - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -29,8 +29,9 @@ optdepends=('acpid: power events on laptop lid close - almost essential for any 
 provides=("$_pkgname=$pkgver" 'notification-daemon')
 conflicts=("$_pkgname")
 backup=('etc/enlightenment/sysactions.conf'
+        'etc/enlightenment/system.conf'
         'etc/xdg/menus/e-applications.menu')
-options=('debug')
+options=('debug' 'ccache')
 source=("git+https://git.enlightenment.org/core/$_pkgname.git")
 sha256sums=('SKIP')
 
@@ -51,7 +52,6 @@ build() {
   meson --prefix=/usr \
     -Dwl=true \
     . build
-
   ninja -C build
 }
 
@@ -63,5 +63,3 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" README
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
 }
-
-backup=(etc/enlightenment/{sysactions.conf,system.conf})
