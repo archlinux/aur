@@ -1,8 +1,9 @@
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Anonymous
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-rdf-prefixes'
-pkgver='0.004'
+pkgver='0.005'
 pkgrel='1'
 pkgdesc="simple way to turn URIs into QNames"
 arch=('any')
@@ -11,10 +12,9 @@ options=('!emptydirs')
 depends=('perl>=5.010')
 makedepends=('perl-test-warn')
 url='http://search.cpan.org/dist/RDF-Prefixes'
-source=('http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/RDF-Prefixes-0.004.tar.gz')
-md5sums=('aa4a083e2afe98f0df7b93de0342fd27')
-sha512sums=('cb244e62062a9083546763df59e13aee6331021acd0e5e8751ec954508e690d39a80bd47097595dee0d7fa11b2da52cb8d12f0a87a5c0e345c35209a6a0bb1f5')
-_distdir="RDF-Prefixes-0.004"
+source=("https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/RDF-Prefixes-${pkgver}.tar.gz")
+sha512sums=('342dba44acbff26d20998cd6098bf1abe24c6875de18f0e45e8a6688f76ece1c61376c78a2ceb84acf9ab5d84bdf13166024f4748d36eee44421a860d3d54d04')
+_distdir="RDF-Prefixes-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
