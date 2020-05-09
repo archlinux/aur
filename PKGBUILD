@@ -15,7 +15,7 @@ depends=('python'
          "${_py_deps[@]/#/python-}")
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('abae9c875961d7e6641d78076bae34880b02a6c302ebea00f5c1288237d85902')
+sha256sums=('5d58e7ec6bc5abb96002ab19d4487442dff09e8672c2b9d0ab0253d0aac8b8fc')
 
 build() {
 	cd "$pkgname-$pkgver"
