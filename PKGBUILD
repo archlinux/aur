@@ -8,11 +8,11 @@ arch=('x86_64')
 url="https://github.com/zupzup/calories"
 license=('MIT')
 provides=('calories')
-source=("${url}/releases/download/${pkgver}/calories_${pkgver}_linux_64-bit.tar.gz")
-md5sums=('9f8e931dbcc40930c07e496f8b3b440e')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/calories_${pkgver}_linux_64-bit.tar.gz")
+sha256sums=('73e8ddc6234da25c512667760b8d563c5fbc259f88d2fc32a44a93656c2ae05b')
 
 package() {
   install -Dm755 ${srcdir}/calories "${pkgdir}/usr/bin/calories"
-  install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/calories/LICENSE"
+  install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
