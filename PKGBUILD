@@ -2,7 +2,7 @@
 
 _pkgbasename=libplacebo
 pkgname=lib32-$_pkgbasename
-pkgver=1.21.0
+pkgver=2.43.1
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives (32bit)'
 url='https://github.com/haasn/libplacebo'
@@ -11,18 +11,20 @@ license=('LGPL2.1')
 depends=(
         "$_pkgbasename"
         'lib32-vulkan-icd-loader'
-        'lib32-glslang>=7.13.3496'
+        'lib32-glslang>=8.13.3559'
         'lib32-lcms2'
         'lib32-shaderc'
+        'lib32-libepoxy'
         )
 makedepends=(
         'meson'
+#        'meson-cross-x86-linux-gnu>=1.0.4'
         'ninja'
         'vulkan-headers'
         )
 provides=('libplacebo.so')
 source=("https://code.videolan.org/videolan/libplacebo/-/archive/v${pkgver}/${_pkgbasename}-v${pkgver}.tar.gz")
-sha512sums=('5de95b8cc48ba4ec9bc3afb8c8f2c4fae0d53ce6e69ffb53884c3a3ee2580998bae46b8934e462740b6c9c2e66e3c5d5f009f9b0f8ad2cb7b4fba829891cf333')
+sha512sums=('62463dfee6e6fd450395e42d7af2b6e0caa0b183c0d00f5ba0c5ddc893a47cdd0371d37fc72a7361228324b0dc9c55dd0309a5a7210cf753618fde18a094abcb')
 
 prepare() {
   cd ${_pkgbasename}-v${pkgver}
@@ -33,18 +35,23 @@ prepare() {
 build() {
   export CFLAGS="-m32"
   export CXXFLAGS="-m32"
+  export CFLAGS+=" ${CPPFLAGS}"
+  export CXXFLAGS+=" ${CPPFLAGS} -I/usr/include/glslang"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-  CXXFLAGS+=" -I/usr/include/glslang"
-
+ 
   cd ${_pkgbasename}-v${pkgver}
-  arch-meson build \
-    --libdir=/usr/lib32 \
-    -D tests=true \
+  meson build \
+    --prefix=/usr \
+    --libdir=lib32 \
+    -D tests=false \
     -D vulkan=enabled \
     -D glslang=enabled \
     -D shaderc=enabled \
     -D lcms=enabled
-  ninja -C build
+
+#    --cross-file x86-linux-gnu \
+
+  ninja -C build -v
 }
 
 check() {
@@ -54,6 +61,9 @@ check() {
 
 package() {
   cd ${_pkgbasename}-v${pkgver}
+
   DESTDIR="${pkgdir}" ninja -C build install
-  rm -rf "$pkgdir"/usr/{include,share,bin}
+#  mv "${pkgdir}"/usr/lib "${pkgdir}"/usr/lib32
+
+  rm -r "${pkgdir}"/usr/include
 }
