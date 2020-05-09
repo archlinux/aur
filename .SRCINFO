@@ -1,0 +1,18 @@
+pkgbase = deltamacs-git
+	pkgdesc = My Emacs configuration, along with the required dependencies.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Ravenirex/deltamacs
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = emacs
+	depends = nerd-fonts-victor-mono
+	optdepends = python
+	optdepends = clang
+	optdepends = rust-racer-git
+	source = git+https://github.com/Ravenirex/deltamacs
+	md5sums = SKIP
+
+pkgname = deltamacs-git
+
