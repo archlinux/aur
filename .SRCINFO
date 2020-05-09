@@ -1,0 +1,30 @@
+pkgbase = kirogi-git
+	pkgdesc = A ground control application for drones.Take to the skies, open source style
+	pkgver = 7467269
+	pkgrel = 1
+	url = https://invent.kde.org/kde/kirogi
+	arch = any
+	license = GPL
+	license = LGPL
+	makedepends = git
+	makedepends = make
+	makedepends = gst-plugin-qmlgl
+	makedepends = icu
+	depends = extra-cmake-modules
+	depends = qt5-base
+	depends = qt5-gamepad
+	depends = qt5-location
+	depends = kdnssd
+	depends = kconfig
+	depends = kcoreaddons
+	depends = kirigami2
+	depends = gettext
+	depends = pkgconf
+	optdepends = mavlink
+	provides = kirogi
+	replaces = kirogi
+	source = git+https://invent.kde.org/kde/kirogi
+	md5sums = SKIP
+
+pkgname = kirogi-git
+
