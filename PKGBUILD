@@ -5,7 +5,7 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.5.0.gm.2.r25.gcd42e142'
+pkgver='5.5.0.gm.2.r26.gea4e0c87'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -27,6 +27,22 @@ sha256sums=('SKIP'
             '91cc72f00db20e1bded69d08578e6ae9fdc89a4582ee8f6d29697b0233d7d095')
 
 _sourcedirectory="$pkgname"
+_homedirectory="$pkgname-home"
+
+case "$CARCH" in
+	i686)
+		_electronbuilderarch='ia32'
+	;;
+	armv7h)
+		_electronbuilderarch='armv7l'
+	;;
+	aarch64)
+		_electronbuilderarch='arm64'
+	;;
+	*)
+		_electronbuilderarch='x64'
+	;;
+esac
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
@@ -40,9 +56,6 @@ prepare() {
 	# Set system Electron version for ABI compatibility
 	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron/version')"'"|' 'package.json'
 
-	# Set node-sass version for node 14 compatibility
-	sed -E -i 's|("node-sass": ").*"|\14.14.0"|' 'package.json'
-
 	# Prevent Ferdi from being launched in dev mode
 	sed -i "s|import isDevMode from 'electron-is-dev'|const isDevMode = false|g" 'src/index.js' 'src/config.js'
 	sed -i "s|import isDev from 'electron-is-dev'|const isDev = false|g" 'src/environment.js'
@@ -51,7 +64,12 @@ prepare() {
 	patch --forward -p1 < '../fix-autostart-path.diff'
 
 	# Prepare dependencies
-	HOME="$srcdir/$pkgname-home" npx lerna bootstrap
+	HOME="$srcdir/$_homedirectory" npx lerna bootstrap
+
+	# Build node-sass manually for platforms where pre-compiled binaries are not available
+	if [ "$_electronbuilderarch" != 'x64' ] && [ "$_electronbuilderarch" = 'ia32' ]; then
+		HOME="$srcdir/$_homedirectory" npm rebuild node-sass
+	fi
 }
 
 pkgver() {
@@ -62,31 +80,22 @@ pkgver() {
 build() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	case "$CARCH" in
-		i686)
-			local _electronbuilderarch='ia32'
-		;;
-		armv7h)
-			local _electronbuilderarch='armv7l'
-		;;
-		aarch64)
-			local _electronbuilderarch='arm64'
-		;;
-		*)
-			local _electronbuilderarch='x64'
-		;;
-	esac
-
-	NODE_ENV='production' HOME="$srcdir/$pkgname-home" npx gulp build
-	NODE_ENV='production' HOME="$srcdir/$pkgname-home" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron' -c.electronVersion="$(cat '/usr/lib/electron/version')"
+	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx gulp build
+	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron' -c.electronVersion="$(cat '/usr/lib/electron/version')"
 }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	install -Dm644 'out/linux-unpacked/resources/app.asar' "$pkgdir/usr/lib/$_pkgname/app.asar"
+	local _outpath='out/linux'
+	if [ "$_electronbuilderarch" != 'x64' ]; then
+		_outpath="$_outpath-$_electronbuilderarch"
+	fi
+	_outpath="$_outpath-unpacked"
+
+	install -Dm644 "$_outpath/resources/app.asar" "$pkgdir/usr/lib/$_pkgname/app.asar"
 	install -dm755 "$pkgdir/usr/lib/$_pkgname/app.asar.unpacked/"
-	cp -r --no-preserve=ownership --preserve=mode 'out/linux-unpacked/resources/app.asar.unpacked/recipes/' "$pkgdir/usr/lib/$_pkgname/app.asar.unpacked/recipes/"
+	cp -r --no-preserve=ownership --preserve=mode "$_outpath/resources/app.asar.unpacked/recipes/" "$pkgdir/usr/lib/$_pkgname/app.asar.unpacked/recipes/"
 
 	install -dm755 "$pkgdir/usr/bin/"
 	cat << EOF > "$pkgdir/usr/bin/$_pkgname"
