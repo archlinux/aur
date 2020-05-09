@@ -1,19 +1,14 @@
 pkgbase = dashing
 	pkgdesc = A Dash Generator Script for Any HTML
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/technosophos/dashing
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	makedepends = glide
-	source = dashing-0.3.0.tar.gz::https://github.com/technosophos/dashing/archive/0.3.0.tar.gz
-	source = cli_context-deprecated.patch
-	source = cli-output.patch
-	sha256sums = f6569f3df80c964c0482e7adc1450ea44532d8da887091d099ce42a908fc8136
-	sha256sums = e0ec017227a3f8aa58095fbdfe18db3e5376e530b41b1d34164461c51623ac2b
-	sha256sums = c412b3b2ccae6193aee5989d131bc6e8df7c80eee305794e406dd020a44c1ccb
+	source = dashing-0.4.0.tar.gz::https://github.com/technosophos/dashing/archive/0.4.0.tar.gz
+	sha256sums = 81b21acae83c144f10d9eea05a0b89f0dcdfa694c3760c2a25bd4eab72a2a3b9
 
 pkgname = dashing
 

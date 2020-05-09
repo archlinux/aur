@@ -1,50 +1,37 @@
-# Maintainer: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
+# Maintainer: FichteFoll <fichtefoll2@googlemail.om>
 
 pkgname=dashing
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="A Dash Generator Script for Any HTML"
 url="https://github.com/technosophos/dashing"
 license=('MIT')
 arch=('i686' 'x86_64')
-makedepends=('go' 'glide')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/technosophos/${pkgname}/archive/${pkgver}.tar.gz"
-        "cli_context-deprecated.patch"
-        "cli-output.patch")
-sha256sums=('f6569f3df80c964c0482e7adc1450ea44532d8da887091d099ce42a908fc8136'
-            'e0ec017227a3f8aa58095fbdfe18db3e5376e530b41b1d34164461c51623ac2b'
-            'c412b3b2ccae6193aee5989d131bc6e8df7c80eee305794e406dd020a44c1ccb')
+makedepends=('go')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/technosophos/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('81b21acae83c144f10d9eea05a0b89f0dcdfa694c3760c2a25bd4eab72a2a3b9')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  patch -p1 -i ../cli_context-deprecated.patch
-  patch -p1 -i ../cli-output.patch
-  export GOPATH="${srcdir}/${pkgname}-${pkgver}"
-  mkdir -p src
-  mv dashing.go src/
-  glide install
-  mv vendor/* src/
 }
 
 build() {
-  cd "${pkgname}-${pkgver}/src"
-  go build -o dashing -ldflags "-X main.version=${pkgver}" dashing.go
+  cd "${pkgname}-${pkgver}"
+  go build \
+    -trimpath \
+    -ldflags "-extldflags $LDFLAGS -X main.version=${pkgver}" \
+    -o dashing dashing.go
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-
-  # Bin file
-  install -Dm755 "src/${pkgname}" \
-    "${pkgdir}/usr/bin/${pkgname}"
-
-  # Doc files
-  install -Dm644 README.md \
-    "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
-  # License
-  install -Dm644 LICENSE.txt \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-# vim:set ts=2 sw=2 cc=80 et:
+# Doesn't work
+# check() {
+#   cd "${pkgname}-${pkgver}"
+#   go test ./...
+# }
