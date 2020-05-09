@@ -1,6 +1,6 @@
 # Maintainer: Kobus van Schoor <v dot schoor dot kobus at gmail dot com>
 pkgname=dotgit-git
-pkgver='2.0.0a5'
+pkgver='2.0.0a6'
 pkgrel=0
 pkgdesc='A comprehensive solution to managing your dotfiles'
 url='https://github.com/kobus-v-schoor/dotgit'
@@ -20,4 +20,5 @@ package()
 {
 	cd "dotgit-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
