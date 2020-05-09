@@ -10,7 +10,7 @@ license=('custom:hwpviewer')
 depends=('gtk3' 'webkitgtk' 'gvfs')
 optdepends=()
 source=(
-	'hancomoffice-hwpviewer-Ubuntu-amd64.deb::https://cdn.hancom.com/pds/hnc/VIE/hancomoffice-hwpviewer-Ubuntu-amd64.deb'
+	'hancomoffice-hwpviewer-Ubuntu-amd64.deb'
 	'license.txt'
 )
 sha512sums=(
