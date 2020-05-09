@@ -1,0 +1,32 @@
+pkgbase = xfig-git
+	pkgdesc = An interactive drawing tool
+	pkgver = 3.2.7b.r18.g1c7eeec
+	pkgrel = 1
+	url = http://mcj.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = git
+	makedepends = fig2dev
+	depends = libjpeg
+	depends = xaw3d
+	depends = xorg-fonts-75dpi
+	depends = xorg-fonts-100dpi
+	depends = libpng
+	depends = libxpm
+	optdepends = fig2dev: to use the frontend to convert fig files
+	provides = xfig=3.2.7b-1
+	conflicts = xfig
+	options = !makeflags
+	options = !emptydirs
+	source = xfig-git::git+https://git.code.sf.net/p/mcj/xfig
+	source = xfig-aspell.patch
+	source = xfig-3.2.5-color-resources.patch
+	source = LICENSE
+	sha1sums = SKIP
+	sha1sums = e563877b201bafb2c80c1caf67812b865b359bda
+	sha1sums = dd41e0a007bb74b74e1af50b6b04aa6aec61ab22
+	sha1sums = 31edf4cfab708820ea3f114d095dfef5aa88e5aa
+
+pkgname = xfig-git
+
