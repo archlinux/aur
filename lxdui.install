@@ -19,12 +19,13 @@ EOF
 
 post_upgrade()
 {
+	find /usr/lib/lxdui/lib -name __pycache__ -exec rm -rf {} \; 2>/dev/null
 	systemctl daemon-reload
 }
 
 pre_remove()
 {
-	systemctl stop lxdui
-	systemctl disable lxdui
+	systemctl disable --now lxdui
+	find /usr/lib/lxdui/lib -name __pycache__ -exec rm -rf {} \; 2>/dev/null
 }
 

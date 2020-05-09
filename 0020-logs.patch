@@ -1,0 +1,46 @@
+diff -rNc lxdui-2.1.3-orig/conf/log.conf lxdui-2.1.3/conf/log.conf
+*** lxdui-2.1.3-orig/conf/log.conf	2020-05-08 20:31:30.738863778 +0200
+--- lxdui-2.1.3/conf/log.conf	2020-05-08 20:30:45.417245983 +0200
+***************
+*** 19,28 ****
+        "stream": "ext://sys.stdout"
+      },
+      "rollingFileAppender": {
+!       "class": "logging.FileHandler",
+        "level": "DEBUG",
+!       "formatter": "default",
+!       "filename": "/var/log/lxdui/lxdui.log"
+      },
+      "file": {
+        "class": "logging.FileHandler",
+--- 19,31 ----
+        "stream": "ext://sys.stdout"
+      },
+      "rollingFileAppender": {
+!       "class": "logging.handlers.RotatingFileHandler",
+        "level": "DEBUG",
+!       "formatter": "expanded",
+!       "filename": "/var/log/lxdui/lxdui.log",
+!       "encoding": "utf-8",
+!       "backupCount": 10,
+!       "maxBytes": 20000000
+      },
+      "file": {
+        "class": "logging.FileHandler",
+***************
+*** 37,43 ****
+    "root": {
+      "level": "DEBUG",
+      "handlers": [
+!       "file"
+      ]
+    },
+    "werkzeug":{
+--- 40,46 ----
+    "root": {
+      "level": "DEBUG",
+      "handlers": [
+!       "rollingFileAppender"
+      ]
+    },
+    "werkzeug":{
