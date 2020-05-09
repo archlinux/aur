@@ -229,8 +229,8 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-  depends=('linux-mainline-bcachefs-ck') # added to keep kernel and headers packages matched
-  provides=("linux-mainline-bcachefs-ck-headers=${pkgver}" "linux-headers=${pkgver}")
+  depends=('linux-bcachefs-ck') # added to keep kernel and headers packages matched
+  provides=("linux-bcachefs-ck-headers=${pkgver}" "linux-headers=${pkgver}")
   #groups=('ck-generic')
 
   cd ${_srcname}
