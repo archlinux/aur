@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xdg-sound
-pkgver=0.9
+pkgver=1.0
 pkgrel=1
 pkgdesc="Command line XDG sound theme utilities"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ groups=('xde')
 depends=('glib2' 'libcanberra')
 makedepends=('pkgconfig')
 source=("https://github.com/bbidulock/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.lz")
-sha256sums=('ce06180c41f9640741778a330186462178c7b3e2af830aac99ec1c35865425d0')
+sha256sums=('62cad962819ea6300bfe89dfc0a2f387876a98240db07314f17c9c87b26edee7')
 
 build() {
   cd ${pkgname}-${pkgver}
