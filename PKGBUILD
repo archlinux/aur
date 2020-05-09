@@ -1,13 +1,15 @@
-# Maintainer: Sander Zuidema <archlinux at grunny dot demon dot nl>
-# Maintainer: Tilman Vatteroth <tilman.vatteroth@udo.edu>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Sander Zuidema <archlinux at grunny dot demon dot nl>
+# Contributor: Tilman Vatteroth <tilman.vatteroth@udo.edu>
 # Based on jre: https://aur.archlinux.org/packages/jre/
 
 pkgname=server-jre
 _major=8
-_minor=144
-_build=b01
+_minor=251
+_build=b08
+_hash="3d5a2bb8f8d4428bbe94aed7ec7ae784"
 pkgver=${_major}u${_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc="Oracle Server Java Runtime Environment"
 arch=('x86_64')
 url=http://www.oracle.com/technetwork/java/javase/downloads/index.html
@@ -40,9 +42,9 @@ options=()
 install=$pkgname.install
 changelog=
 source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
-        "http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/090f390dda5b47b9b721c7dfaa008135/$pkgname-$pkgver-linux-x64.tar.gz")
+        "http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_hash/$pkgname-$pkgver-linux-x64.tar.gz")
 sha256sums=('f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
-            '8ba6f1c692518beb0c727c6e1fb8c30a5dfcc38f8ef9f4f7c7c114c01c747ebc')
+            'af737e1315e2b211b88f24ee632d24c192e0b3a802625f367ae1b80a00fd4546')
 
 package() {
     cd ${srcdir}/jdk1.${_major}.0_${_minor}
