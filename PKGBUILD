@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 _projectname='dune'
 pkgname="$_projectname-private-libs"
-pkgver='2.5.0'
+pkgver='2.5.1'
 pkgrel='1'
 pkgdesc='Private libraries of Dune'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('ocaml>=4.07.0' "dune=$pkgver")
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('f7fc64a10ba6c0ac58f1fc1c16b633f6fe426a1b28529eca1f3a1790c6bdd7a5')
+sha256sums=('a4ba5947f7eff80043b3394a6afde32f6e37e82a06e6a0a3b68e2761389ac861')
 
 _sourcedirectory="$_projectname-$pkgver"
 
