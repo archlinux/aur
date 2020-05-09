@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=liquidsoap
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A swiss-army knife for multimedia streaming, notably used for netradios and webtvs"
 arch=('i686' 'x86_64')
@@ -51,7 +51,7 @@ depends=('fluidsynth' 'giflib' 'gst-plugins-good' 'gst-plugins-ugly'
 makedepends=('camlp4' 'libxml-perl' 'ocaml-findlib' 'ocaml-menhir' 'ocaml-pcre' 'ocaml-sedlex-git' 'perl-xml-dom')
 optdepends=('curl')
 options=('!makeflags')
-source=("https://github.com/savonet/liquidsoap/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2"
+source=("https://github.com/savonet/liquidsoap/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2"
 	$pkgname.service
 	$pkgname.tmpfilesd
 )
@@ -85,6 +85,6 @@ package() {
 	install -Dm0644 $srcdir/$pkgname.tmpfilesd $pkgdir/usr/lib/tmpfiles.d/liquidsoap.conf
 }
 
-md5sums=('a14a955872916b0b712f804bffce0cc2'
+md5sums=('bd76f81b596a70bd0b1a064306856f6b'
          '762d6607ff0889e34b8c874970b38bc9'
          'f9106e5c42cabc21c4c8464d9b1ad63e')
