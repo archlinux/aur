@@ -2,7 +2,7 @@
 
 pkgname=bash-pipes
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pipes screensaver for bash"
 arch=("any")
 url="https://github.com/pipeseroni/pipes.sh"
