@@ -1,7 +1,7 @@
 pkgbase = verifybamid
-	pkgdesc = Bioinformatics tool that verifies if reads in a particular file match previously known genotypes for an individual (or group of individuals)
+	pkgdesc = Verify identity and purity of sequence data
 	pkgver = 1.1.3
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://genome.sph.umich.edu/wiki/VerifyBamID
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = verifybamid
 	provides = verifybamid
 	conflicts = verifybamid
 	source = https://github.com/statgen/verifyBamID/archive/v1.1.3.tar.gz
-	source = libStatGen::git+https://github.com/statgen/libStatGen.git#commit=9db9c23e176a6ce6f421a3c21ccadedca892ac0c
+	source = libStatGen::git+https://github.com/statgen/libStatGen.git
 	md5sums = d542ca13e68b51e976d7f139ddee8cf5
 	md5sums = SKIP
 

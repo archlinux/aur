@@ -1,9 +1,10 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Maintainer: Will Barnard <willbarnard687@pm.me>
+# Contributer: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=verifybamid
 pkgver=1.1.3
-pkgrel=1
-pkgdesc="Bioinformatics tool that verifies if reads in a particular file match previously known genotypes for an individual (or group of individuals)"
+pkgrel=1.1
+pkgdesc="Verify identity and purity of sequence data"
 arch=('x86_64')
 url="https://genome.sph.umich.edu/wiki/VerifyBamID"
 license=('GPL3')
@@ -13,13 +14,13 @@ provides=('verifybamid')
 conflicts=('verifybamid')
 source=(
   "https://github.com/statgen/verifyBamID/archive/v${pkgver}.tar.gz"
-  "libStatGen::git+https://github.com/statgen/libStatGen.git#commit=9db9c23e176a6ce6f421a3c21ccadedca892ac0c")
+  "libStatGen::git+https://github.com/statgen/libStatGen.git")
 md5sums=('d542ca13e68b51e976d7f139ddee8cf5' 'SKIP')
 
 build() {
   cd "${srcdir}/verifyBamID-${pkgver}"
 
-  make
+  make -j4 
 }
 
 check() {
@@ -36,4 +37,3 @@ package() {
   install -Dm644 "copyrights/COPYING" "${pkgdir}/usr/share/licenses/verifyBamID-${pkgver}/COPYING"
   install -Dm644 "src/base/LICENSE" "${pkgdir}/usr/share/licenses/verifyBamID-${pkgver}/LICENSE_Chromium"
 }
-
