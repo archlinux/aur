@@ -2,7 +2,7 @@
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=btdex
-pkgver=0.1.20
+pkgver=0.1.21
 pkgrel=1
 pkgdesc='Decentralized exchange system running on the Burst blockchain'
 arch=(x86_64)
@@ -17,7 +17,7 @@ source=(https://github.com/btdex/btdex/releases/download/v$pkgver/btdex-all-v$pk
         https://github.com/btdex/btdex/raw/master/src/main/resources/icon.png
         btdex.sh
         btdex.desktop)
-sha256sums=('a22c3d0b6cb29463bbe4511c572620646d18cd793f25948e8fbbae0ddf31a22b'
+sha256sums=('e710dc7f77917d8a3e10172acb619529dff5c319e5ac374fc60c586a4fec8be5'
             'f17dc59e7d436b4e5e577283d116599d998a88132d45d7c3e769aa21543cd9a9'
             '162e5c9fad5d5a5e5a59192a64ce6d1a5bf189465eeae4130332b3838f4d9c11'
             'd6ab59c4046cf2c3b8898c7635151e7bea726f0a914f9d353134982e56a1295f')
