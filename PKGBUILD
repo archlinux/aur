@@ -3,7 +3,7 @@
 _pkgbasename=libplacebo
 pkgname=lib32-$_pkgbasename
 pkgver=2.43.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives (32bit)'
 url='https://github.com/haasn/libplacebo'
 arch=('x86_64')
@@ -33,11 +33,11 @@ prepare() {
 }
 
 build() {
-  export CFLAGS="-m32"
-  export CXXFLAGS="-m32"
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
+  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
   export CFLAGS+=" ${CPPFLAGS}"
   export CXXFLAGS+=" ${CPPFLAGS} -I/usr/include/glslang"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
  
   cd ${_pkgbasename}-v${pkgver}
   meson build \
