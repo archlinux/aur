@@ -1,13 +1,14 @@
 pkgbase = gnome-games-libretro
 	pkgdesc = Libretro definitions for gnome-games
 	pkgver = 3.36.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/Games
 	arch = any
 	license = GPL3
 	makedepends = git
 	optdepends = libretro-blastem: Sega Mega Drive support
 	optdepends = libretro-bsnes-mercury-git: Super Nintendo Entertainment System support
+	optdepends = libretro-desmume: Nintendo DS support
 	optdepends = libretro-dosbox-git: MS-DOS support
 	optdepends = libretro-gambatte: Nintendo Game Boy/Game Boy Color support
 	optdepends = libretro-handy-git: Atari Lynx support

@@ -3,7 +3,7 @@
 pkgname=gnome-games-libretro
 _srcname=gnome-games
 pkgver=3.36.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Libretro definitions for gnome-games'
 arch=('any')
 url='https://wiki.gnome.org/Apps/Games'
@@ -11,8 +11,8 @@ license=('GPL3')
 makedepends=('git')
 optdepends=('libretro-blastem: Sega Mega Drive support'
             'libretro-bsnes-mercury-git: Super Nintendo Entertainment System support'
-            # TODO: see if renaming module to desmume works
             #'libretro-desmume2015: Nintendo DS support'
+            'libretro-desmume: Nintendo DS support'
             'libretro-dosbox-git: MS-DOS support'
             'libretro-gambatte: Nintendo Game Boy/Game Boy Color support'
             'libretro-handy-git: Atari Lynx support'
@@ -39,4 +39,9 @@ package() {
   cd "$_srcname"
   install -d "$pkgdir"/usr/lib/libretro/
   install -t "$pkgdir"/usr/lib/libretro/ flatpak/libretro-cores/*.libretro
+
+  cp "$pkgdir"/usr/lib/libretro/desmume2015.libretro \
+     "$pkgdir"/usr/lib/libretro/desmume.libretro
+  sed -i 's/DeSmuME 2015/DeSmuME/;s/desmume2015/desmume/' \
+    "$pkgdir"/usr/lib/libretro/desmume.libretro
 }
