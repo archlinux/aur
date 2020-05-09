@@ -2,15 +2,25 @@
 
 pkgname=tfswitch
 pkgver=0.8.832
-pkgrel=1
-pkgdesc='A command line tool to switch between different versions of terraform'
+pkgrel=2
+pkgdesc='A command line tool to switch between different versions of terraform.'
 arch=('x86_64')
-url='https://warrensbox.github.io/terraform-switcher/'
+url='https://github.com/warrensbox/terraform-switcher'
 license=('MIT')
-source_x86_64=("https://github.com/warrensbox/terraform-switcher/releases/download/$pkgver/terraform-switcher_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('8588352b2e98a9e619278985dd986dfc837f5ac5d81310dfffc5e9d9eb7c946d')
+makedepends=('go')
+source=("$url/archive/$pkgver.tar.gz")
+sha256sums=('51e0630f7526a43ae69b60baf9cb43e3e9839884a303cba152ce8363c10ef029')
+
+build() {
+  cd "terraform-switcher-$pkgver"
+  go build \
+    -trimpath \
+    -ldflags "-s -w -X main.version=\"$pkgver\"" \
+    -o "$pkgname" .
+}
 
 package() {
+  cd "terraform-switcher-$pkgver"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
