@@ -4,7 +4,7 @@ _edition=' Community Beta'
 pkgname="$_pkgname-bin"
 _pkgver='1.21.0-beta.5'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='2'
+pkgrel='3'
 pkgdesc='The official GUI for MongoDB - Community Edition - beta version - binary version'
 arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
@@ -15,6 +15,7 @@ depends=(
 	# compass
 	'krb5' 'libsecret' 'lsb-release'
 )
+optdepends=('org.freedesktop.secrets')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname-$pkgver-$pkgrel.rpm::https://github.com/mongodb-js/compass/releases/download/v$_pkgver/$_pkgname-$_pkgver.x86_64.rpm")
