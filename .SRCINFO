@@ -3,18 +3,20 @@ pkgbase = blobsaver-bin
 	pkgver = 2.5.0
 	pkgrel = 2
 	url = https://github.com/airsquared/blobsaver
-	arch = any
-	license = GPL-3.0
+	arch = x86_64
+	license = GPL3
 	makedepends = gendesk
 	depends = java-runtime=8
+	depends = zlib
+	depends = bash
 	depends = java8-openjfx
 	depends = archlinux-java-run
 	depends = libfragmentzip
 	optdepends = libimobiledevice: Get plugged in device information
 	optdepends = libirecovery: Utility to talk to iBoot/iBSS via USB
 	provides = blobsaver
-	source = https://github.com/airsquared/blobsaver/releases/download/v2.5.0/blobsaver-linux.tar.gz
-	md5sums = d5fffa4c30776df2b679387ad3bd8543
+	source = blobsaver-bin-2.5.0.tar.gz::https://github.com/airsquared/blobsaver/releases/download/v2.5.0/blobsaver-linux.tar.gz
+	sha256sums = 692efae56c684d979a5f7557ac037feb252d174e6fb2a54981696630c2c54686
 
 pkgname = blobsaver-bin
 
