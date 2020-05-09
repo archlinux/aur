@@ -1,7 +1,7 @@
 # Maintainer: Ashar Khan <ashar786khan at gmail.com>
 
 pkgname=cpeditor
-pkgver=6.2.5
+pkgver=6.3.3
 _pkgdir=cpeditor-full-source-$pkgver
 pkgrel=1
 pkgdesc='The editor for competitive programming'
@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/cpeditor/cpeditor'
 license=('GPL3')
 depends=('qt5-base')
-makedepends=("cmake" "git" "gcc")
+makedepends=("cmake" "git" "gcc" "python3")
 conflicts=("cpeditor-git")
 source=("https://github.com/cpeditor/$pkgname/releases/download/$pkgver/cpeditor-full-source-$pkgver.tar.gz")
 md5sums=('SKIP')
@@ -24,6 +24,3 @@ package() {
 	cd $_pkgdir/build
 	make DESTDIR="$pkgdir" install
 }
-
-
-
