@@ -1,7 +1,7 @@
 pkgbase = nginx-unit
 	pkgdesc = Lightweight, dynamic, open-source server for diverse web applications.
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://unit.nginx.org/
 	arch = i686
 	arch = x86_64

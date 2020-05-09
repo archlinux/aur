@@ -14,7 +14,7 @@ pkgname=('nginx-unitd'
          'nginx-unit-go')
 _shortname='unit'
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, dynamic, open-source server for diverse web applications."
 arch=('i686' 'x86_64')
 url="https://unit.nginx.org/"
@@ -34,6 +34,7 @@ build() {
               --pid="/run/$pkgbase.pid" \
               --log="/var/log/$pkgbase.log" \
               --control="/run/$pkgbase.control.sock" \
+              --tmp="/tmp" \
               --openssl
   ./configure python --config=python3-config
   ./configure python --config=python2-config
