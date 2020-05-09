@@ -7,7 +7,6 @@ pkgbase = mondrian-kde-git
 	license = GPL3
 	makedepends = git
 	optdepends = plasma-desktop: for a plasma desktop theme
-	optdepends = kvantum-qt5: for a Kvantum theme
 	optdepends = mondrian-icon-theme: for icon theme
 	optdepends = mondrian-gtk-theme: for GTK theme
 	provides = mondrian-kde

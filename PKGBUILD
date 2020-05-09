@@ -9,7 +9,6 @@ arch=('any')
 url='https://www.opencode.net/ju1464/Mondrian'
 license=('GPL3')
 optdepends=('plasma-desktop: for a plasma desktop theme'
-            'kvantum-qt5: for a Kvantum theme'
             'mondrian-icon-theme: for icon theme'
             'mondrian-gtk-theme: for GTK theme')
 makedepends=('git')
