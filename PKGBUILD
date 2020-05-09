@@ -1,8 +1,9 @@
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Anonymous
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-lingua-en-titlecase-simple'
-pkgver='0.1'
+pkgver='1.004'
 pkgrel='1'
 pkgdesc="Automatically title-case headlines and title-texts."
 arch=('any')
@@ -11,10 +12,9 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='http://search.cpan.org/dist/Lingua-EN-Titlecase-Simple'
-source=('http://search.cpan.org/CPAN/authors/id/I/ID/IDOPEREL/Lingua-EN-Titlecase-Simple-0.1.tar.gz')
-md5sums=('958d7d1f959df41e3a067031a7b75dd2')
-sha512sums=('8bc4172d3d63bfd46a9976727a8df4308589ae07f28409599fab253eb03e9dedc1e267f85a2004ce7243b2521fff92083b4ad38322eb3f4bb5e0fbec33ffc583')
-_distdir="Lingua-EN-Titlecase-Simple-0.1"
+source=("https://cpan.metacpan.org/authors/id/A/AR/ARISTOTLE/Lingua-EN-Titlecase-Simple-${pkgver}.tar.gz")
+sha512sums=('eec2bec0f27631b403441e39dea2d5d2c7fd521ca6b3e81c0f27567379af90f094832687be930d860ff8abd84097ebbff129eb8a13ca1e9c2049290919bea2fe')
+_distdir="Lingua-EN-Titlecase-Simple-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
