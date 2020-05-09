@@ -6,10 +6,10 @@ pkgrel=2
 pkgdesc='Boilerplate template manager that generates files or directories from template repositories '
 arch=('x86_64')
 url="https://github.com/tmrts/boilr"
-license=('Apache-2.0')
+license=('Apache')
 provides=('boilr')
-source=("${url}/releases/download/${pkgver}/boilr-${pkgver}-linux_amd64.tgz")
-md5sums=('00bc3e24b5631870cfe1a700de0092df')
+source=("${pkgname}-${pkgver}.tgz::${url}/releases/download/${pkgver}/boilr-${pkgver}-linux_amd64.tgz")
+sha256sums=('bc94cdf20d977172637a4995ea0de17b3724d2980d3faa514ab6ee9476eac055')
 
 package() {
 	install -Dm755 "${srcdir}"/boilr "${pkgdir}/usr/bin/boilr"
