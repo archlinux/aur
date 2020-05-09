@@ -23,3 +23,26 @@ index ea6b71e..6f77a55 100644
 -    });
    });
  };
+diff --git a/lib/target.js b/lib/target.js
+index b796546..822cd1e 100644
+--- a/lib/target.js
++++ b/lib/target.js
+@@ -6,8 +6,6 @@ const semver = require('semver');
+ const path = require('path');
+ const normalizePkg = require('normalize-package-data');
+ const parseGitHubRepoURL = require('parse-github-repo-url');
+-const ffmpegAfterExtract = require('electron-packager-plugin-non-proprietary-codecs-ffmpeg')
+-  .default;
+ const debug = require('debug')('hadron-build:target');
+
+ const notary = require('mongodb-notary-service-client');
+@@ -176,8 +174,7 @@ class Target {
+       platform: this.platform,
+       arch: this.arch,
+       electronVersion: this.electronVersion,
+-      sign: null,
+-      afterExtract: [ffmpegAfterExtract]
++      sign: null
+     };
+
+     if (this.platform === 'win32') {
