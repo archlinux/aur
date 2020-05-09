@@ -1,0 +1,14 @@
+pkgbase = keys-pub-git
+	pkgdesc = keys.pub CLI - keys and keysd
+	pkgver = v0.0.43.r0.g22cc591
+	pkgrel = 1
+	url = https://github.com/keys-pub/keysd
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = libfido2
+	source = keys-pub-git::git+https://github.com/keys-pub/keysd
+	sha512sums = SKIP
+
+pkgname = keys-pub-git
+
