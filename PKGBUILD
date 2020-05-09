@@ -1,7 +1,7 @@
 # Maintainer: kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=scalafmt
-pkgver=2.4.2
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="code formatter for the Scala programming language"
 arch=('any')
@@ -23,5 +23,6 @@ build() {
 package() {
   install -Dm755 "${srcdir}/scalafmt.bin" "${pkgdir}/usr/bin/scalafmt"
 }
+
 
 
