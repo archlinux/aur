@@ -2,7 +2,7 @@
 
 pkgname=tfswitch
 pkgver=0.8.832
-pkgrel=2
+pkgrel=3
 pkgdesc='A command line tool to switch between different versions of terraform.'
 arch=('x86_64')
 url='https://github.com/warrensbox/terraform-switcher'
@@ -15,7 +15,7 @@ build() {
   cd "terraform-switcher-$pkgver"
   go build \
     -trimpath \
-    -ldflags "-s -w -X main.version=\"$pkgver\"" \
+    -ldflags "-s -w -X main.version=$pkgver" \
     -o "$pkgname" .
 }
 
