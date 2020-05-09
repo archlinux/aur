@@ -1,10 +1,10 @@
 pkgbase = empoche
 	pkgdesc = New Time Tracking and Task Management application.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://empoche.com
 	arch = x86_64
-	license = Properitary
+	license = proprietary
 	depends = libnotify
 	depends = libappindicator-gtk3
 	depends = libxss
