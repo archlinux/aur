@@ -1,7 +1,7 @@
 pkgbase = deltamacs-git
 	pkgdesc = My Emacs configuration, along with the required dependencies.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ravenirex/deltamacs
 	arch = any
 	license = GPL
