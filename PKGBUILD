@@ -3,7 +3,7 @@
 
 _pkgname=btdex
 pkgname=btdex-git
-pkgver=v0.1.19.r0.gcd49278
+pkgver=v0.1.20.r5.g1b8d829
 pkgrel=1
 pkgdesc='Decentralized exchange system running on the Burst blockchain'
 arch=(x86_64)
