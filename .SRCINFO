@@ -28,7 +28,7 @@ pkgbase = readarr
 	sha512sums = ffcc3297f44f31daf21c79febcd6730a79ffd1e46cdb256f9b23a85ede4d026a6d6272aae23d1d055b3295b848be1385ce6d4c7b93b910b15be1e05f2aa04c27
 	sha512sums = b34389cf2966a7a1a1fe6708303641e144191a95001c5ca6e570e9d50ba334fcbc1603852c3c2bfe008d97aaf54207690c689f00dd63378157af33ceebbbb089
 	sha512sums = 99f8210754ea5ec742ba6b0b9f05c8312237cb0225bc0d28a2a8ee8362b464da0880499b64ea58c84b64c0eb727748c3c15630cedb8785d7d94d856c76cf17eb
-	sha512sums = c0019acdbbd37702e1fd63d6a19fcc8b6624972befcfa059985f85efef727bab6a7dab908ecee5834a6612a33262d37010a7f6bc6dbf9141b59c1372d5580fd6
+	sha512sums = e7d23886761a5052d9c9efa24d938bce7ab52b19713a50cc5338f1273bba6615c49ccf1612c412320fd7ff91fff4bff4e95a58db83ae7bd6b6bc83568ffeb90f
 	source_x86_64 = readarr.0.1.0.64.linux-core-x64.tar.gz::https://readarr.servarr.com/v1/update/readarr/updatefile?version=0.1.0.64&os=linux&runtime=netcore&arch=x64
 	sha512sums_x86_64 = 420dbefe96173f7083bbda018f006d3b8bbdd11071b077a034ef606ef8cf145c57f872bf49fb7279212ee486be529ba67fe21070cfd0f6227861e0cb1f15708b
 	source_aarch64 = readarr.0.1.0.64.linux-core-arm64.tar.gz::https://readarr.servarr.com/v1/update/readarr/updatefile?version=0.1.0.64&os=linux&runtime=netcore&arch=arm64
