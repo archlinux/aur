@@ -1,8 +1,9 @@
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Anonymous
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-xml-libxml-debugging'
-pkgver='0.102'
+pkgver='0.103'
 pkgrel='1'
 pkgdesc="get debugging information from XML::LibXML nodes"
 arch=('any')
@@ -11,10 +12,9 @@ options=('!emptydirs')
 depends=('perl>=5.008' 'perl-html-html5-entities' 'perl-xml-libxml')
 makedepends=()
 url='http://search.cpan.org/dist/XML-LibXML-Debugging'
-source=('http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/XML-LibXML-Debugging-0.102.tar.gz')
-md5sums=('8afe6c029af6591dfc05b0631ba353f2')
-sha512sums=('5b6f94f30cb0f5289e1e7d01b2d3467dc71759b55f6578eafef29c8f94eda31a92b97e8853aa8127cc22e91439e63a48bab31cd9a582b3072884fdee5b3f1744')
-_distdir="XML-LibXML-Debugging-0.102"
+source=("https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/XML-LibXML-Debugging-${pkgver}.tar.gz")
+sha512sums=('a30617338e3e9ab87e59d6db1591c744dd456db690fc7331ba029e551511ed39af0204426018e6cab7551ad7c0e0e9ddac3ebae435c3b21db768350de487243a')
+_distdir="XML-LibXML-Debugging-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
