@@ -3,8 +3,8 @@
 _pkgname=basilisk
 pkgname=${_pkgname}-bin
 epoch=1
-_buildid=20190912144248
-pkgver=52.9.2020.03.11
+_buildid=20200508000234
+pkgver=52.9.2020.05.08
 pkgrel=1
 pkgdesc="Basilisk Browser from the makers of Pale Moon"
 url="http://www.basilisk-browser.org"
@@ -14,18 +14,19 @@ depends=('gtk2' 'gtk3' 'dbus-glib' 'libxt' 'mime-types' 'nss' 'alsa-lib' 'icu')
 optdepends=('hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
             'ffmpeg: record, convert, and stream audio and video')
-#source=(http://archive.palemoon.org/basilisk/basilisk-${_buildid}.linux-x86_64.{tar.bz2,json}
-source=('http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz'
+source=(http://archive.palemoon.org/basilisk/basilisk-${_buildid}.linux-x86_64.{tar.xz,json}
+#source=('http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz'
         'basilisk.desktop')
-sha256sums=('8f84398df19f579d23cb3d58a5096e752e9540cb402e095798e3d8974a75ae55'
+sha256sums=('e459672f4fca18117eb9fd3150dc86c8471883e482b0c1ed4885366db52a2f03'
+            'c2229fe5033db497659c00b3898d0d884960d2c7c0747fde2ff0f424cecb3bd1'
             'c4223e966bc404467fece4a524cc2db3e99c12455087da2ade9a47b8d99d3a45')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 
 pkgver() {
-#	grep 'moz_app_version' "${srcdir}"/basilisk-${_buildid}.linux-x86_64.json | sed -e 's/.*:[\ \t]*"//;s/"[,]*[\ \t]*$//'
-	cd "$srcdir"/basilisk
-	./basilisk --version | grep -o -E '[0-9\.]+$'
+	grep 'moz_app_version' "${srcdir}"/basilisk-${_buildid}.linux-x86_64.json | sed -e 's/.*:[\ \t]*"//;s/"[,]*[\ \t]*$//'
+#	cd "$srcdir"/basilisk
+#	./basilisk --version | grep -o -E '[0-9\.]+$'
 }
 
 package() {
