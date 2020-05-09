@@ -1,6 +1,6 @@
 pkgbase = biboumi
 	pkgdesc = XMPP gateway to IRC
-	pkgver = 8.4
+	pkgver = 8.5
 	pkgrel = 1
 	url = https://biboumi.louiz.org/
 	arch = i686
@@ -17,10 +17,10 @@ pkgbase = biboumi
 	depends = sqlite
 	depends = postgresql-libs
 	backup = etc/biboumi/biboumi.cfg
-	source = https://git.louiz.org/biboumi/snapshot/biboumi-8.4.tar.xz
+	source = https://git.louiz.org/biboumi/snapshot/biboumi-8.5.tar.xz
 	source = biboumi.tmpfiles
 	source = biboumi.sysusers
-	md5sums = a6efcf60b863339151b84d8a902f4919
+	md5sums = d27e81bc3d74bcc9e33fd8c1a6c4ecaf
 	md5sums = 3fd509b5cd76cd6c98ddb392957de03b
 	md5sums = 07c92af3248861ce94d361e98cfb7f5c
 
