@@ -4,13 +4,14 @@ _edition=' Isolated Edition'
 pkgname="mongodb-$_target"
 _pkgver='1.21.1'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='4'
+pkgrel='5'
 pkgdesc='The official GUI for MongoDB - Isolated Edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
 depends=('electron6' 'krb5' 'libsecret' 'lsb-release')
 makedepends=('git' 'npm' 'python' 'unzip')
+optdepends=('org.freedesktop.secrets')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'hadron-build.diff'
