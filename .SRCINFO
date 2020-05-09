@@ -1,6 +1,6 @@
 pkgbase = foxify-cli-git
 	pkgdesc = Firefox Command-Line Theme Manager
-	pkgver = 998c0d2
+	pkgver = 4a780aa
 	pkgrel = 2
 	url = https://github.com/M4cs/foxify-cli
 	arch = any

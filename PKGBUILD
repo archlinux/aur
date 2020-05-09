@@ -1,7 +1,7 @@
 pkgname=foxify-cli-git
 conflicts=('foxify-cli')
 provides=('foxify-cli')
-pkgver=998c0d2
+pkgver=4a780aa
 pkgrel=2
 pkgdesc='Firefox Command-Line Theme Manager'
 arch=(any)
