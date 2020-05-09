@@ -24,7 +24,8 @@ prepare() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSERVICE_USER=biboumi \
-    -DSERVICE_GROUP=jabber
+    -DSERVICE_GROUP=jabber \
+    -Wno-dev
 }
 
 build() {
