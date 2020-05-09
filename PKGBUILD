@@ -1,6 +1,6 @@
 # Maintainer: Alisson Lauffer <alissonvitortc@gmail.com>
 pkgname=bluemail
-pkgver=1.1.13
+pkgver=1.1.14
 pkgrel=1
 pkgdesc="BlueMail is a free, secure, universal email app, capable of managing an unlimited number of mail accounts"
 arch=('x86_64')
@@ -14,10 +14,10 @@ optdepends=('libnotify: Desktop notifications')
 makedepends=('squashfs-tools' 'imagemagick')
 
 source=('LICENSE'
-        "${pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/ZVlj0qw0GOFd5JgTfL8kk2Y5eIG1IpiH_21.snap")
+        "${pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/ZVlj0qw0GOFd5JgTfL8kk2Y5eIG1IpiH_22.snap")
 
 sha512sums=('546994dbf25972659db6130402926020fdfc763b3f41580d812aeb785824218bae1204babe99af51ad91fd758ad0e7f4d0636a00e9130ce13fc6ebb90540e9dc'
-            '8fb380a51c6e1015f8d8b55a05d5f0f484eda6dc44e60793471b18ce866468add61cecec983dc4ac9a5ac863debdfddaf78b6edaa78e36bcfb9c53d09f9b1d8d')
+            '918323eacf1cc73935bc0a49d077b1dd1b861562ff0b8eaa125a78b9a31cd366f016e48c39c2df86d586ccdfd45845139fa7d72dcf2d0ec42adee978d44ac32e')
 
 package() {
     mkdir -p "${pkgdir}/opt"
@@ -39,13 +39,10 @@ package() {
     install -Dm644 "${pkgdir}/opt/bluemail/meta/gui/bluemail.desktop" "${pkgdir}/usr/share/applications/bluemail.desktop"
 
     # Cleanup snap vendor files and useless files
-    rm -rf "${pkgdir}/opt/bluemail/bin"
-    rm -rf "${pkgdir}/opt/bluemail/etc"
-    rm -rf "${pkgdir}/opt/bluemail/lib"
-    rm -rf "${pkgdir}/opt/bluemail/meta"
-    rm -rf "${pkgdir}/opt/bluemail/usr"
-    rm -rf "${pkgdir}/opt/bluemail/var"
-    rm -f ${pkgdir}/opt/bluemail/*.sh
-    rm -f ${pkgdir}/opt/bluemail/libEGL.so
-    rm -f ${pkgdir}/opt/bluemail/libGLESv2.so
+    rm -r "${pkgdir}/opt/bluemail/lib"
+    rm -r "${pkgdir}/opt/bluemail/meta"
+    rm -r "${pkgdir}/opt/bluemail/usr"
+    rm ${pkgdir}/opt/bluemail/*.sh
+    rm ${pkgdir}/opt/bluemail/libEGL.so
+    rm ${pkgdir}/opt/bluemail/libGLESv2.so
 }
