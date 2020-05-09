@@ -1,7 +1,7 @@
 pkgbase = firefox-appmenu
 	pkgdesc = Firefox from extra with appmenu patch
-	pkgver = 76.0
-	pkgrel = 2
+	pkgver = 76.0.1
+	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
 	license = MPL
@@ -41,18 +41,20 @@ pkgbase = firefox-appmenu
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = firefox=76.0
+	provides = firefox=76.0.1
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://archive.mozilla.org/pub/firefox/releases/76.0/source/firefox-76.0.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/76.0/source/firefox-76.0.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/76.0.1/source/firefox-76.0.1.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/76.0.1/source/firefox-76.0.1.source.tar.xz.asc
+	source = 0001-Bug-1624128-Update-CK_GCM_PARAMS-uses-for-PKCS11-v3..patch
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch
 	source = firefox.desktop
 	source = unity-menubar.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 3b7b97b0b0625fc6ec23ee28d425988c679d3a56f362d62fd3b225a5d50afdc8
+	sha256sums = f61761e32774a6bdfedd5937c4992fbe5e24c3df057c2b9a559fcd0d038777c3
 	sha256sums = SKIP
+	sha256sums = 215ca2cd2994d787c4748b8e76acdc21932700ab43fa6a32aa8de3ce4b380111
 	sha256sums = 5f7ac724a5c5afd9322b1e59006f4170ea5354ca1e0e60dab08b7784c2d8463c
 	sha256sums = 34514a657d6907a159594c51e674eeb81297c431ec26a736417c2fdb995c2c0c
 	sha256sums = 3e5e34b8d45b9cc48e78e9c474f2450cc597451bbb331fb5a4e8f3a3ba5e3a70

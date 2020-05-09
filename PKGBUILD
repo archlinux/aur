@@ -7,8 +7,8 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=76.0
-pkgrel=2
+pkgver=76.0.1
+pkgrel=1
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -27,11 +27,13 @@ provides=("firefox=$pkgver")
 conflict=("firefox")
 options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
+		0001-Bug-1624128-Update-CK_GCM_PARAMS-uses-for-PKCS11-v3..patch
         0001-Use-remoting-name-for-GDK-application-names.patch
         $_pkgname.desktop
         unity-menubar.patch)
-sha256sums=('3b7b97b0b0625fc6ec23ee28d425988c679d3a56f362d62fd3b225a5d50afdc8'
+sha256sums=('f61761e32774a6bdfedd5937c4992fbe5e24c3df057c2b9a559fcd0d038777c3'
             'SKIP'
+            '215ca2cd2994d787c4748b8e76acdc21932700ab43fa6a32aa8de3ce4b380111'
             '5f7ac724a5c5afd9322b1e59006f4170ea5354ca1e0e60dab08b7784c2d8463c'
             '34514a657d6907a159594c51e674eeb81297c431ec26a736417c2fdb995c2c0c'
             '3e5e34b8d45b9cc48e78e9c474f2450cc597451bbb331fb5a4e8f3a3ba5e3a70')
@@ -52,6 +54,9 @@ _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
+  
+  # https://bugs.archlinux.org/task/66549
+  patch -Np1 -i ../0001-Bug-1624128-Update-CK_GCM_PARAMS-uses-for-PKCS11-v3..patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
