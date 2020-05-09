@@ -23,7 +23,7 @@ fi
 _reponame=brave-browser
 pkgname=brave
 pkgver=1.8.95
-pkgrel=1
+pkgrel=2
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
 url='https://www.brave.com/download'
@@ -38,12 +38,14 @@ optdepends=('cups: Printer support'
             'sccache: For faster builds')
 source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'brave-vaapi-enable.patch'
+        'chromium-no-history.patch'
         'brave-launcher'
         'brave-browser.desktop')
-arch_revision=12619d0d3664de241e95cf22e96f07838d17e6c2
+arch_revision=b09cf910e816b3bdf0788197e9f50e5f29f58fc8
 for Patches in \
         rename-Relayout-in-DesktopWindowTreeHostPlatform.patch \
         rebuild-Linux-frame-button-cache-when-activation.patch \
+        clean-up-a-call-to-set_utf8.patch \
         icu67.patch \
         chromium-widevine.patch \
         chromium-skia-harmony.patch
@@ -61,6 +63,7 @@ sha256sums=('SKIP'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
             '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
+            '58c41713eb6fb33b6eef120f4324fa1fb8123b1fbc4ecbe5662f1f9779b9b6af'
             '5315977307e69d20b3e856d3f8724835b08e02085a4444a5c5cefea83fd7d006'
             '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
@@ -68,9 +71,13 @@ sha256sums=('SKIP'
             '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a')
 
 prepare() {
-    # Apply Brave patches
     cd "${_reponame}"
-    patch -Np1 -i "${srcdir}/brave-vaapi-enable.patch"
+
+    # Patch to download only sources, but not all history
+    patch -Np1 -i "${srcdir}"/chromium-no-history.patch
+
+    # Apply Brave patches
+    patch -Np1 -i "${srcdir}"/brave-vaapi-enable.patch
 
     # Hack to prioritize python2 in PATH
     mkdir -p "${srcdir}/bin"
@@ -88,6 +95,9 @@ prepare() {
     # https://crbug.com/1049258
     patch -Np1 -i "${srcdir}"/rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
     patch -Np1 -i "${srcdir}"/rebuild-Linux-frame-button-cache-when-activation.patch
+
+    # https://chromium-review.googlesource.com/c/chromium/src/+/2145261
+    patch -Np1 -i "${srcdir}"/clean-up-a-call-to-set_utf8.patch
 
     # https://crbug.com/v8/10393
     patch -Np3 -d v8 -i "${srcdir}"/icu67.patch
