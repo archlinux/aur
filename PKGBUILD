@@ -1,6 +1,6 @@
-# Author: Dies <JerryCasiano(at)gmail(dot)com>
 # Maintainer: Joaquin <joaquingc123 at gmail dot com>
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Dies <JerryCasiano(at)gmail(dot)com>
 # Contributor: Joeny Ang <ang(dot)joeny(at)gmail(dot)com>
 # Contributor: Guan 'kuno' Qing <neokuno(at)gmail(dot)com>
 # Contributor: Guten Ye <ywzhaifei(at)gmail(dot)com>
@@ -19,10 +19,6 @@ optdepends=('file-roller')
 makedepends=('intltool' 'yelp-tools' 'gobject-introspection' 'vala' 'meson' 'ninja')
 source=("https://github.com/FontManager/master/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
 sha256sums=('f8e013f8168184cf62b73a6b0053a94daf8bb22aeecd4203904e5127632d90a2')
-
-prepare() {
-    cd "$pkgname-$pkgver"
-}
 
 build() {
     cd "$pkgname-$pkgver"
