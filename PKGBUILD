@@ -3,7 +3,7 @@
 pkgname=openbazaard
 _ver=0.14.2
 pkgver=$(echo "${_ver}" | tr -d -)
-pkgrel=1
+pkgrel=2
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(i686 x86_64)
 url="https://github.com/OpenBazaar/openbazaar-go"
@@ -27,20 +27,16 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/src/${_user}/${_repo}"
-    export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
-    go build -ldflags="-s -w" -o "${pkgname}"
+    cd "${srcdir}"/src/${_user}/${_repo}
+    GOFLAGS="-buildmode=pie -trimpath -modcacherw" \
+    GOPATH="${srcdir}" go build -ldflags="-s -w"
 }
 
 package() {
-    install -Dm755 "${srcdir}/src/${_user}/${_repo}/${pkgname}" \
-    "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.service" \
-    "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-    install -Dm644 "${srcdir}/${pkgname}.conf" \
-    "${pkgdir}/etc/conf.d/${pkgname}"
-    install -Dm755 "${srcdir}/${pkgname}.sysuser.conf" \
-    "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -Dm755 "$GOPATH/src/${_user}/${_repo}/${_repo}" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 $srcdir/$pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
+    install -Dm644 $srcdir/$pkgname.conf $pkgdir/etc/conf.d/$pkgname
+    install -Dm755 $srcdir/$pkgname.sysuser.conf $pkgdir/usr/lib/sysusers.d/$pkgname.conf
 }
 
 md5sums=('543f674feda7dbd0f1ca0f22d9e59d2a'
