@@ -1,7 +1,7 @@
 # Maintainer: Robbert van der Helm <mail@robbertvanderhelm.nl>
 
 pkgname=yabridge
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Yet Another VST bridge, run Windows VST2 plugins under Linux"
 epoch=
@@ -12,7 +12,7 @@ depends=('wine' 'libxcb' 'lib32-libxcb')
 makedepends=()
 install=yabridge.install
 source=("https://github.com/robbert-vdh/yabridge/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('b7ee9a730b121068fed56849e34e753c1a0b0a9e90cf8c11a0894a3366e2dbb4')
+sha256sums=('b8ec42f7991f7d7f7f3005436427cc6d1970d8c094a169a8f39c26e06708a12c')
 
 package() {
   cd "$srcdir/$pkgname"
