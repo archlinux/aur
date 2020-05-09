@@ -1,5 +1,7 @@
 #! /bin/sh
 
+set -xe
+
 AUR_NAME=navidrome-bin
 EXECUTABLE_NAME=navidrome
 DESCRIPTION="Music Server and Streamer compatible with Subsonic/Airsonic"
