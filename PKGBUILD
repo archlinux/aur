@@ -1,20 +1,18 @@
 # Maintainer: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=hipsparse
 pkgver=3.3.0
-pkgrel=2
-pkgdesc="ROCm SPARSE marshalling library."
+pkgrel=3
+pkgdesc='ROCm SPARSE marshalling library'
 arch=('x86_64')
-url="https://github.com/ROCmSoftwarePlatform/hipSPARSE"
+url='https://github.com/ROCmSoftwarePlatform/hipSPARSE'
 license=('custom:NCSAOSL')
 depends=('hcc' 'hip')
-makedepends=('cmake' "hcc>=$pkgver" "hip>=$pkgver" 'python' "rocprim>=$pkgver" "rocsparse>=$pkgver" "comgr>=$pkgver" 'rocminfo')
-source=("https://github.com/ROCmSoftwarePlatform/hipSPARSE/archive/rocm-$pkgver.tar.gz")
+makedepends=('cmake' 'python' 'rocprim' 'rocsparse' 'comgr' 'rocminfo')
+source=("$url/archive/rocm-$pkgver.tar.gz")
 sha256sums=('c69336071f56c857e969f0fdfbc351f75cc44ed2e3b854b4688675a9cafe4e22')
+_dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
 build() {
-  mkdir -p "$srcdir/build"
-  cd "$srcdir/build"
-
   # fix broken build with stack protection
   export CFLAGS="$(sed -e 's/-fstack-protector-strong//' <<< "$CFLAGS")"
   export CXXFLAGS="$(sed -e 's/-fstack-protector-strong//' <<< "$CXXFLAGS")"
@@ -29,20 +27,17 @@ build() {
         -DBUILD_CLIENTS_SAMPLES=OFF \
         -DBUILD_CLIENTS_TESTS=OFF \
         -Drocsparse_DIR=/opt/rocm/rocsparse/lib/cmake/rocsparse \
-        "$srcdir/hipSPARSE-rocm-$pkgver"
-
+        -Dhip_DIR=/opt/rocm/hip/lib/cmake/hip \
+        -Dhcc_DIR=/opt/rocm/hcc/lib/cmake/hcc \
+        -Damd_comgr_DIR=/opt/rocm/lib/cmake/amd_comgr \
+        "$_dirname"
   make
 }
 
 package() {
-  cd "$srcdir/build"
-
-  make install
-
-  cp -r "$srcdir/build/opt" "$pkgdir/"
-
-  install -d "$pkgdir/etc/ld.so.conf.d"
-  cat << EOF > "$pkgdir/etc/ld.so.conf.d/hipsparse.conf"
-/opt/rocm/hipsparse/lib
+  DESTDIR="$pkgdir" make install
+  install -Dm644 "$_dirname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 /dev/stdin "$pkgdir/etc/ld.so.conf.d/$pkgname.conf" <<-EOF
+    /opt/rocm/hipsparse/lib
 EOF
 }
