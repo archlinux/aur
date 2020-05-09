@@ -1,5 +1,5 @@
 pkgname=desktime
-pkgver=5.1.28
+pkgver=5.1.30
 pkgrel=0
 pkgdesc="Desktime client for Linux"
 arch=('i686' 'x86_64')
@@ -10,10 +10,10 @@ install=$pkgname.install
 
 if [[ $CARCH == 'i686' ]]; then
     source=("$pkgname-$pkgver.deb::https://desktime.com/updates/linux/update/?i386")
-    md5sums=('782411c676f9faf3f276421a8e7d3269')
+    md5sums=('124d4dc0bfc27dd12c1f7bdd01c842e1')
 else
     source=("$pkgname-$pkgver.deb::https://desktime.com/updates/linux/update/?x64")
-    md5sums=('63992b87ffec49537ad9226e857f5583')
+    md5sums=('4521ce6d95e24af9377109252a12334a')
 fi
 
 package()
