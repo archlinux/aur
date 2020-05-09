@@ -5,7 +5,7 @@
 
 pkgname=lxd-git
 _pkgname=lxd
-pkgver=3.21.r12.4efa92f71
+pkgver=4.1.r4.70ddda927
 pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=('lvm2: for lvm2 support'
             'ceph: for ceph storage driver support'
             'jq: needed by empty-lxd.sh script'
             'qemu: needed for virtual machine support'
-            'ovmf: needed for virtual machine support'
+            'edk2-ovmf: needed for virtual machine support'
             'mkisolinux: needed for virtual machine support'
 )
 options=('!strip' '!emptydirs')
