@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=openbazaard
-_ver=0.14.1
+_ver=0.14.2
 pkgver=$(echo "${_ver}" | tr -d -)
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
@@ -27,20 +27,23 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}"/src/${_user}/${_repo}
-    GOPATH="${srcdir}" go build -ldflags="-s -w" \
-    -gcflags=all=-trimpath="${GOPATH}" \
-    -asmflags=all=-trimpath="${GOPATH}"
+    cd "${srcdir}/src/${_user}/${_repo}"
+    export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
+    go build -ldflags="-s -w" -o "${pkgname}"
 }
 
 package() {
-    install -Dm755 $GOPATH/bin/${_repo} $pkgdir/usr/bin/$pkgname
-    install -Dm644 $srcdir/$pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
-    install -Dm644 $srcdir/$pkgname.conf $pkgdir/etc/conf.d/$pkgname
-    install -Dm755 $srcdir/$pkgname.sysuser.conf $pkgdir/usr/lib/sysusers.d/$pkgname.conf
+    install -Dm755 "${srcdir}/src/${_user}/${_repo}/${pkgname}" \
+    "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.service" \
+    "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm644 "${srcdir}/${pkgname}.conf" \
+    "${pkgdir}/etc/conf.d/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}.sysuser.conf" \
+    "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 }
 
-md5sums=('9bf0598c34e75e09260d444844460919'
-    'ae3e285b857b7efeecbab29826f29735'
-    '9fd31f8bc5b6ccc21a52fc1b58fdb9d6'
-'92cd2fa8929c5acddbddf7d4fc2fd494')
+md5sums=('543f674feda7dbd0f1ca0f22d9e59d2a'
+         'ae3e285b857b7efeecbab29826f29735'
+         '9fd31f8bc5b6ccc21a52fc1b58fdb9d6'
+         '92cd2fa8929c5acddbddf7d4fc2fd494')
