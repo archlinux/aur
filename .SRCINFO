@@ -13,6 +13,8 @@ pkgbase = csi-hg
 	makedepends = mercurial
 	depends = libxslt
 	depends = gmp
+	provides = csi
+	conflicts = mono
 	source = csi-hg::hg+http://cl2-informatik.uibk.ac.at/mercurial.cgi/ttt2/
 	sha256sums = SKIP
 
