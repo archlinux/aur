@@ -2,7 +2,7 @@
 
 _pkgname=nfancurve
 pkgname=${_pkgname}-git
-pkgver=v019.4.r1.g8c5cf4c
+pkgver=019.4.r1.g8c5cf4c
 pkgrel=1
 pkgdesc="A small and lightweight Bash script for using a custom fan curve in Linux for NVIDIA GPUs"
 arch=("any")
@@ -17,11 +17,10 @@ install=${_pkgname}.install
 source=("${_pkgname}::git+https://github.com/nan0s7/${_pkgname}.git")
 sha512sums=('SKIP')
 
-
 pkgver() {
     cd "${_pkgname}"
 
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
