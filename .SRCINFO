@@ -1,7 +1,7 @@
 pkgbase = python-pyscaffold
 	pkgdesc = Python project template generator with batteries included
 	pkgver = 3.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pyscaffold.org/
 	arch = any
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = python-pyscaffold
 	optdepends = python-pytest: Use the integrated unit testing.
 	optdepends = python-pytest-runner: Use the integrated unit testing.
 	optdepends = python-pytest-cov: Generate a coverage report for your project.
-	source = pyscaffold-3.2.3::git+https://github.com/blue-yonder/pyscaffold.git#tag=v3.2.3
+	source = pyscaffold-3.2.3::git+https://github.com/pyscaffold/pyscaffold.git#tag=v3.2.3
 	md5sums = SKIP
 
 pkgname = python-pyscaffold

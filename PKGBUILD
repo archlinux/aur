@@ -2,7 +2,7 @@
 
 pkgname=('python-pyscaffold')
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python project template generator with batteries included"
 url="https://pyscaffold.org/"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('python-django: Scaffold Django projects.'
             'python-pytest-runner: Use the integrated unit testing.'
             'python-pytest-cov: Generate a coverage report for your project.')
 makedepends=('git' 'python-wheel')
-source=("pyscaffold-${pkgver}::git+https://github.com/blue-yonder/pyscaffold.git#tag=v${pkgver}")
+source=("pyscaffold-${pkgver}::git+https://github.com/pyscaffold/pyscaffold.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
 build() {
