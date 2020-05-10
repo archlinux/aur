@@ -2,9 +2,9 @@
 
 pkgname=deluged-service
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Systemd unit for the deluge torrent daemon'
-arch=('i686' 'x86_64')
+arch=('any')
 url='https://deluge-torrent.org/'
 license=('GPL')
 depends=('deluge')
