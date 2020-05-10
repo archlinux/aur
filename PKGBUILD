@@ -1,6 +1,6 @@
 pkgbase=vfc
 pkgname=('vfc')
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Library and tool for converting vertex formats for use in real-time rendering.'
 arch=('i686' 'x86_64')
