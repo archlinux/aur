@@ -1,6 +1,6 @@
 pkgbase = fcitx5-git
 	pkgdesc = Next generation of fcitx
-	pkgver = r528.166bf88
+	pkgver = r529.ab8cfad
 	pkgrel = 1
 	url = https://github.com/fcitx/fcitx5
 	arch = i686
