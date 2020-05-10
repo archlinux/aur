@@ -1,7 +1,7 @@
 pkgbase = qarte
 	pkgdesc = Allow you to browse into the archive of arte+7 & arteLiveWeb sites and to record your prefered videos.
 	pkgver = 4.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/qarte
 	arch = any
 	license = GPL3
