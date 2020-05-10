@@ -16,7 +16,7 @@ replaces=('steamcompmgr')
 source=("${url}/archive/${pkgver}.tar.gz"
 	'git+https://github.com/Plagman/wlroots.git#commit=49e33be5bf15fab9530013a7b862eaa0ecfb5161'
 	'git+https://github.com/emersion/libliftoff.git#commit=cfeee41ec1aa03578bfbe4cd513a25e84c407dec')
-md5sums=("95d0dcd88fd6423eee0743d478bbcb5b"
+md5sums=('f876838a83a750f1a4be11ea50d0914b'
 	'SKIP' 'SKIP')
 
 prepare() {
