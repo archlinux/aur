@@ -5,10 +5,11 @@ pkgbase = depcharge-bin
 	url = https://github.com/centerorbit/depcharge
 	arch = x86_64
 	license = MIT
-	makedepends = go-pie
 	provides = depcharge
-	source = https://github.com/centerorbit/depcharge/releases/download/60a39da/depcharge-linux-x64.zip
+	source = depcharge-bin-60a39da.zip::https://github.com/centerorbit/depcharge/releases/download/60a39da/depcharge-linux-x64.zip
+	source = LICENSE::https://raw.githubusercontent.com/centerorbit/depcharge/develop/LICENSE
 	sha256sums = d6742b2c0152a83d85c7e5505aaa4ebfbdb1708fc5bc8f14ec06de315959375a
+	sha256sums = eb6906f0b46571210cc5147b6f786bdcaf4a39490689e7957dcf78090d1cd020
 
 pkgname = depcharge-bin
 
