@@ -8,9 +8,9 @@ pkgdesc="The GNOME Terminal Emulator. Git fork with urgent hint (w/o gnome-shell
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('vte3-git')
-makedepends=('git' 'gnome-doc-utils' 'intltool' 'itstool' 'docbook-xsl' 'appdata-tools' 'yelp-tools')
+makedepends=('git' 'gnome-doc-utils')
 options=('!emptydirs')
-url="https://www.gnome.org"
+url="https://github.com/adizero/gnome-terminal"
 groups=('gnome')
 
 provides=($_realname=$pkgver)
