@@ -9,7 +9,7 @@ pkgbase = ambiance-rw-git
 	provides = ambiance-rw
 	conflicts = ambiance-rw
 	options = !strip
-	source = ambiance-rw-git::git+https://github.com/paullinuxthemer/Ambiance-RW
+	source = ambiance-rw::git+https://github.com/paullinuxthemer/Ambiance-RW.git
 	sha256sums = SKIP
 
 pkgname = ambiance-rw-git
