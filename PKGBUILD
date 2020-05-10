@@ -1,22 +1,20 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=codespace
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="The code snippet manager you've been waiting for (Requires license key)"
 arch=('x86_64')
 url="https://codespace.app"
-license=('Proprietary')
+license=('custom')
 depends=('gtk3'
 		 'libxss'
-		 'libnotify'
-		 'xdg-utils'
-		 'libappindicator-gtk3'
-		 'libxtst'
+		 'alsa-lib'
 		 'nss'
+		 'libcups'
 		 'at-spi2-core')
-source=("$pkgname-$pkgver.tar.gz::https://codespace.app/download/latest")
-sha256sums=('67026d77ef1acb8dc731eea0609d083a72c184780d0242db1df420e8280b9ee0')
+source=("${pkgname}-${pkgver}.tar.gz::https://codespace.app/download/latest")
+sha256sums=('a6933017968661b2a4a3bcaa11599651c62614ec62a4f39a579f7cee23595f2f')
 
 package() {
   tar xvf "${srcdir}/data.tar.xz" -C "${pkgdir}"
