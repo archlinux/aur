@@ -1,13 +1,14 @@
 # Maintainer: Darks <l.gatin@protonmail.com>
 _basename="gint"
-_commit=61da7debc89abafcfee3dd9e0582a7429672bcb4
+_branch="compat"
 pkgname="${_basename}-git"
-pkgver=r155.61da7de
-pkgrel=1
+pkgver=r157.4485e7f
+pkgrel=2
 pkgdesc='Alternative library and kernel for add-in development on fx-9860G and fx-CG50'
 arch=('i686' 'x86_64')
 depends=('fxsdk' 'sh-elf-gcc-casio')
-source=("${pkgname}::git+https://gitea.planet-casio.com/Lephenixnoir/${_basename}.git#commit=${_commit}")
+source=("${pkgname}::git+https://gitea.planet-casio.com/Lephenixnoir/${_basename}.git#branch=${_branch}")
+options=("!strip")
 sha256sums=("SKIP")
 
 pkgver() {
