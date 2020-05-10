@@ -2,7 +2,7 @@
 # Co-Maintainer: Alex Tharp <toastercup@gmail.com>
 
 pkgname=coolvlviewer-bin
-pkgver=1.26.24.17
+pkgver=1.26.24.18
 pkgrel=1
 pkgdesc="A third-party viewer for Second Life (C) (secondlife) and OpenSim (opensimulator) grids. ('VL' stands for virtual life, formerly known as 'Cool SL Viewer', binary)"
 url="http://sldev.free.fr"
@@ -26,7 +26,7 @@ source=("http://sldev.free.fr/binaries/CoolVLViewer-${pkgver}-Linux-x86_64-Setup
 
         "coolvlviewer.desktop"
         "coolvlviewer.launcher")
-md5sums=('b9a9884ede51f6d041188ff5705ea80d'
+md5sums=('5a57c872e87d5460c4c5abdadf0268fe'
          '61a2cb2283b0c9c07d40b4e3d7229924'
          'fd78de1f6c1333a5120ece89873515e0')
 
@@ -48,7 +48,7 @@ install -D -m755 $srcdir/coolvlviewer/cvlv_icon.png \
 	$pkgdir/usr/share/pixmaps/clvl_icon.png
 
 # Install Launcher
-install -D -m755 $srcdir/../coolvlviewer.launcher \
+install -D -m755 $srcdir/coolvlviewer.launcher \
 	$pkgdir/usr/bin/coolvlviewer
 
 # Install License
