@@ -3,7 +3,7 @@
 
 _gitname=pacman-contrib
 pkgname=pacman-contrib-git
-pkgver=1.2.0.r9.g3da550e
+pkgver=1.3.0.r4.gc49befc
 pkgrel=1
 pkgdesc='Contributed scripts and tools for pacman systems'
 url=https://git.archlinux.org/pacman-contrib.git/about/
@@ -11,9 +11,10 @@ arch=('x86_64')
 license=('GPL')
 depends=('fakeroot' 'pacman' 'perl')
 makedepends=('asciidoc' 'git')
-optdepends=('findutils: pacdiff'
-            'mlocate: pacdiff'
-            'sudo: privilege elevation for several scripts')
+optdepends=('findutils: for pacdiff --find'
+            'mlocate: for pacdiff --locate'
+            'sudo: privilege elevation for several scripts'
+            'vim: default merge program for pacdiff')
 provides=("$_gitname")
 conflicts=("$_gitname")
 source=('git+https://git.archlinux.org/pacman-contrib.git')
