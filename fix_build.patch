@@ -1,0 +1,44 @@
+diff '--color=auto' -aur lingot-1.1.0/src/lingot-io-config.c lingot-1.1.0.patched/src/lingot-io-config.c
+--- lingot-1.1.0/src/lingot-io-config.c	2020-05-09 07:47:13.000000000 +1000
++++ lingot-1.1.0.patched/src/lingot-io-config.c	2020-05-10 20:12:32.983667136 +1000
+@@ -638,7 +638,7 @@
+     }
+ 
+     json_object* obj = NULL;
+-    json_bool ok = TRUE;
++    json_bool ok = 1;
+ 
+     ok = json_object_object_get_ex(doc, "VERSION", &obj);
+     if (!ok) {
+@@ -799,7 +799,7 @@
+                         scale.offset_cents[i] = double_value;
+                         scale.offset_ratios[0][i] = -1;
+                         scale.offset_ratios[1][i] = -1;
+-                        ok = TRUE;
++                        ok = 1;
+                     } else {
+                         string_value = json_object_get_string(value);
+                         ok = lingot_config_scale_parse_shift((char*) string_value,
+diff '--color=auto' -aur lingot-1.1.0/src/lingot-io-ui-settings.c lingot-1.1.0.patched/src/lingot-io-ui-settings.c
+--- lingot-1.1.0/src/lingot-io-ui-settings.c	2020-05-03 19:53:06.000000000 +1000
++++ lingot-1.1.0.patched/src/lingot-io-ui-settings.c	2020-05-10 20:12:39.310303906 +1000
+@@ -35,8 +35,8 @@
+ {
+     // default values
+     ui_settings.app_version = NULL;
+-    ui_settings.spectrum_visible = TRUE;
+-    ui_settings.gauge_visible = TRUE;
++    ui_settings.spectrum_visible = 1;
++    ui_settings.gauge_visible = 1;
+     ui_settings.win_pos_x = -1;
+     ui_settings.win_pos_y = -1;
+     ui_settings.win_width = 480;
+@@ -60,7 +60,7 @@
+     }
+ 
+     json_object* obj;
+-    json_bool ok = TRUE;
++    json_bool ok = 1;
+ 
+     ok = json_object_object_get_ex(doc, "appVersion", &obj);
+     if (ok) {
