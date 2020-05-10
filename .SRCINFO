@@ -1,6 +1,6 @@
 pkgbase = thinkcontrol-int-git
 	pkgdesc = control thinkpad lights batteries and audio devices (intern git server)
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = http://git.int.schildmann.net/kschildmann/thinkcontrol.git
 	arch = x86_64
