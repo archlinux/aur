@@ -21,4 +21,4 @@ package() {
 	sed -i "s/OPT=./OPT=\/opt/g" $pkgdir/usr/bin/simonpi
 }
 
-md5sums=('57aced070a8811a587f2c4c8dc0b79a6')
+md5sums=('d31d9c6a5f1cc3e9bf8cda892b78a6b7')
