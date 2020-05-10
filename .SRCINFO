@@ -1,0 +1,17 @@
+pkgbase = tt-rss-plugin-api-resize-git
+	pkgdesc = Allows TT-RSS API clients to request downscaled images
+	pkgver = r28.070d17c
+	pkgrel = 1
+	url = https://git.tt-rss.org/fox/ttrss-api-resize
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = tt-rss
+	depends = php-gd
+	provides = tt-rss-plugin-api-resize
+	conflicts = tt-rss-plugin-api-resize
+	source = tt-rss-plugin-api-resize::git+https://git.tt-rss.org/fox/ttrss-api-resize.git
+	md5sums = SKIP
+
+pkgname = tt-rss-plugin-api-resize-git
+
