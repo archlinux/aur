@@ -3,7 +3,7 @@
 pkgname=motionbox
 _pkgname=motionbox
 pkgver=1.6.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="MotionBox is a Video Browser for Motion Freedom"
 arch=("x86_64")
 url="http://omega.gg/MotionBox/"
@@ -30,7 +30,7 @@ package() {
     # copy desktop launcher
     install -Dm644 MotionBox.desktop "$pkgdir/usr/share/applications/MotionBox.desktop"
 
-    cp -r "$srcdir/MotionBox-1.6.0/"{documents,imageformats,libboost_chrono.so.1.65.1,libdouble-conversion.so.1,libboost_random.so.1.65.1,libboost_system.so.1.65.1,libcrypto.so.1.1,libharfbuzz.so.0,libicudata.so.60,libicui18n.so.60,libicuuc.so.60,libpng16.so.16,libQt5Core.so.5,libQt5DBus.so.5,libQt5Gui.so.5,libQt5Network.so.5,libQt5OpenGL.so.5,libQt5Qml.so.5,libQt5Quick.so.5,libQt5Svg.so.5,libQt5Widgets.so.5,libQt5XcbQpa.so.5,libQt5XmlPatterns.so.5,libQt5Xml.so.5,libssl.so.1.1,libtorrent-rasterbar.so.9,libxcb-xinerama.so.0,libz.so.1,MotionBox,platforms,QtQuick.2,Readme.html,start.sh,xcbglintegrations} "$pkgdir/opt/MotionBox/"
+    cp -r "$srcdir/MotionBox-1.6.0/"{backend,documents,imageformats,libboost_chrono.so.1.65.1,libboost_random.so.1.65.1,libboost_system.so.1.65.1,libcrypto.so.1.1,libdouble-conversion.so.1,libharfbuzz.so.0,libicudata.so.60,libicui18n.so.60,libicuuc.so.60,libpng16.so.16,libQt5Core.so.5,libQt5DBus.so.5,libQt5Gui.so.5,libQt5Network.so.5,libQt5OpenGL.so.5,libQt5Qml.so.5,libQt5Quick.so.5,libQt5Svg.so.5,libQt5Widgets.so.5,libQt5XcbQpa.so.5,libQt5XmlPatterns.so.5,libQt5Xml.so.5,libssl.so.1.1,libtorrent-rasterbar.so.9,libvlccore.so.9,libvlc.so.5,libxcb-xinerama.so.0,libz.so.1,MotionBox,platforms,QtQuick.2,Readme.html,start.sh,vlc,xcbglintegrations} "$pkgdir/opt/MotionBox/"
 
     ln -s /opt/MotionBox/start.sh $pkgdir/usr/bin/motionbox
 }
