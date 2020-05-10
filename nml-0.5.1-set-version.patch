@@ -1,0 +1,5 @@
+Set the correct version number
+--- a/nml/__version__.py
++++ b/nml/__version__.py
+@@ -0,0 +1 @@
++version = "0.5.1"
