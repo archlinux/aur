@@ -1,6 +1,6 @@
 # Maintainer: Korbinian Schildmann <aur@schildmann.net>
 pkgname=thinkcontrol-int-git
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 epoch=
 pkgdesc="control thinkpad lights batteries and audio devices (intern git server)"
