@@ -13,13 +13,14 @@ provides=('leafcount'
           'applyforest'
           'nfold'
           'toafm')
-makedepends=('git' 'go')
+depends=('glibc')
+makedepends=('git' 'go-pie')
 source=("git+${url}")
 md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/CloudForest"
-   ( set -o pipefail
+  ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   ) 
@@ -55,7 +56,7 @@ package() {
   install -Dm755 ${srcdir}/applyforest "${pkgdir}/usr/bin/applyforest"
   install -Dm755 ${srcdir}/nfold "${pkgdir}/usr/bin/nfold"
   install -Dm755 ${srcdir}/toafm "${pkgdir}/usr/bin/toafm"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/cloudforest/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   mkdir -p "${pkgdir}/usr/share/cloudforest/data"
   cp -a data/* "${pkgdir}/usr/share/cloudforest/data"
   chmod 644 "${pkgdir}/usr/share/cloudforest/data"/*
