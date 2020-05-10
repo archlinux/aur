@@ -9,7 +9,7 @@ pkgbase = faience-ng-icon-theme
 	conflicts = faience-ng-icon-theme
 	options = !strip
 	source = https://github.com/faience/faience-ng-icon-theme/releases/download/v20180320/faience-ng-icon-theme-20180320.tar.gz
-	md5sums = c0bfd70e2e9ef88626b68235035849c4
+	sha256sums = 85312296aa1ac62daa78b09b6ea5e63b016364b924dc8a5189e76ede441ffba4
 
 pkgname = faience-ng-icon-theme
 
