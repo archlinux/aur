@@ -3,18 +3,19 @@
 # Contributor: ValHue <vhuelamo@gmail.com>
 #
 pkgname="wp-desktop"
-pkgver="5.0.1"
+pkgver="5.1.0"
 pkgrel="1"
 pkgdesc="WordPress.com Desktop client"
 url="https://desktop.wordpress.com/"
 _url="https://github.com/Automattic/wp-desktop"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL2')
 depends=('alsa-lib' 'gcc-libs' 'gconf' 'gtk2' 'libgpg-error' 'libxss' 'libxkbfile' 'libxtst' 'nss')
 
-source=("wp-desktop-linux-x64-${pkgver}.tar.gz::${_url}/releases/download/v${pkgver}/WordPressDesktop-${pkgver}.tar.gz")
+_pkgsource="wordpress.com-linux-x64-${pkgver}.tar.gz"
+source=("${_pkgsource}::${_url}/releases/download/v${pkgver}/${_pkgsource}")
 
-sha256sums=('28684ffaf02ef7ad9f68886a521532c4bc5bc0aca9628fededcaa96dc756e5a3')
+sha256sums=('1d0e691d35128efe795d30ce76060cd7d6e2529decc55d3f0b789f76e123f4d8')
 
 _wpcom_desktop="[Desktop Entry]
 Name=WordPress.com
