@@ -4,22 +4,21 @@
 pkgbase=python-webassets
 pkgname=('python2-webassets' 'python-webassets')
 _pipname=webassets
-pkgver=0.12.1
+pkgver=2.0
 pkgrel=1
 pkgdesc="Asset management application for Python web development"
 arch=('any')
 url="http://github.com/miracle2k/webassets"
 license=('BSD')
-makedepends=('python2-django' 'python-django' 'python2-setuptools' 'python-setuptools')
+makedepends=('python2-setuptools' 'python-setuptools')
 source=("https://github.com/miracle2k/webassets/archive/$pkgver.tar.gz")
-sha256sums=('34d94191b9c69df16fb6504d513a57851870e545bec7ad239e93e66bb9767682')
+sha256sums=('0639e8d40dc785d5a125723383c9717ff32945cb09ab71d37b134eefee274d78')
 
 prepare() {
   cp -r $_pipname-$pkgver python2-$_pipname-$pkgver
 }
 
 package_python2-webassets() {
-depends=('python2-django')
 optdepends=('python2-pillow: support for image manipulation'
             'python2-nose: required to run tests'
             'python2-mock: required to run tests')
@@ -36,7 +35,6 @@ optdepends=('python2-pillow: support for image manipulation'
 }
 
 package_python-webassets() {
-depends=('python-django')
 optdepends=('python-pillow: support for image manipulation'
             'python-nose: required to run tests'
             'python-mock: required to run tests')
