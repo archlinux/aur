@@ -1,7 +1,7 @@
 pkgbase = ciano-git
 	pkgdesc = A simple multimedia file converter for elementary OS
-	pkgver = 0.2.1.r1.gd514cda
-	pkgrel = 2
+	pkgver = 0.2.1.r4.g9d222e3
+	pkgrel = 1
 	url = https://robertsanseries.github.io/ciano/
 	arch = i686
 	arch = x86_64

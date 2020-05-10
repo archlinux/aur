@@ -1,10 +1,10 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributer: Pico <founderofjp@gmail.com>
 # Contributer: Jesus Franco <jesusfranco at gmail dot com>
 
 pkgname=ciano-git
-pkgver=0.2.1.r1.gd514cda
-pkgrel=2
+pkgver=0.2.1.r4.g9d222e3
+pkgrel=1
 pkgdesc="A simple multimedia file converter for elementary OS"
 arch=(i686 x86_64)
 url="https://robertsanseries.github.io/ciano/"
