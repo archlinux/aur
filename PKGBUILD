@@ -10,7 +10,7 @@ license=('GPL2')
 
 # make dependancies
 makedepends=('boost' 'cmake' 'qt5-tools')
-depends=('gsl' 'mesa' 'shared-mime-info' 'qt5-datavis3d' 'qt5-script' 'qt5-xmlpatterns' 'qt5-svg')
+depends=('gsl' 'mesa' 'shared-mime-info' 'hicolor-icon-theme' 'qt5-datavis3d' 'qt5-script' 'qt5-xmlpatterns' 'qt5-svg')
 
 # source download from git repo & prepare
 source=(https://sourceforge.net/projects/alphaplot/files/1.011/AlphaPlot%20Release%202020-2.zip)

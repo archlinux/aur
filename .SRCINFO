@@ -13,6 +13,7 @@ pkgbase = alphaplot
 	depends = gsl
 	depends = mesa
 	depends = shared-mime-info
+	depends = hicolor-icon-theme
 	depends = qt5-datavis3d
 	depends = qt5-script
 	depends = qt5-xmlpatterns
