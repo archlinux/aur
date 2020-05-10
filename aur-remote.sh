@@ -21,7 +21,7 @@ fi
 [ ! -f /etc/pacman.conf-bak ] && cp /etc/pacman.conf /etc/pacman.conf-bak
 
 #add the skyminer repo to pacman.conf
-[[ $(cat /etc/pacman.conf | grep "aur-local") = *"aur-local"* ]] && cat /etc/pacman.conf-bak > /root/pacman.conf && echo -e "
+[[ $(cat /etc/pacman.conf | grep "aur-local") != *"aur-local"* ]] && cat /etc/pacman.conf-bak > /root/pacman.conf && echo -e "
 [aur-local]
 SigLevel = PackageOptional
 Server = http://$AURLOCAL:8079
