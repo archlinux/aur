@@ -12,5 +12,5 @@ source=(https://codeload.github.com/gist/$gist_id/tar.gz/$pkgver)
 md5sums=('ffab52c1c233f726642d1d8eabfb39a6')
 
 package() {
-  install -m0755 ${srcdir}/${gist_id}-${pkgver}/gist ${pkgdir}/usr/bin/gist
+  install -m0755 ${srcdir}/${gist_id}-${pkgver}/gist /usr/bin/gist
 }
