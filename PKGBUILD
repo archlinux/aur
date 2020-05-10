@@ -2,7 +2,7 @@
 # Contributor: Marko Turk <marko.c4@gmail.com>
 pkgname=dog
 pkgver=1.7
-pkgrel=3
+pkgrel=4
 pkgdesc="A better cat, supporting HTTP and hex dumping"
 url="http://archive.debian.org/debian/pool/main/d/dog/"
 arch=('i686' 'x86_64')

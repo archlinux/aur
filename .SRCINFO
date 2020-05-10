@@ -1,7 +1,7 @@
 pkgbase = dog
 	pkgdesc = A better cat, supporting HTTP and hex dumping
 	pkgver = 1.7
-	pkgrel = 3
+	pkgrel = 4
 	url = http://archive.debian.org/debian/pool/main/d/dog/
 	arch = i686
 	arch = x86_64
