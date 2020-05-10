@@ -1,19 +1,19 @@
-pkgbase = ros-melodic-rosgraph-msgs
+pkgbase = ros-noetic-rosgraph-msgs
 	pkgdesc = ROS - Messages relating to the ROS Computation Graph.
-	pkgver = 1.11.2
-	pkgrel = 2
+	pkgver = 1.11.3
+	pkgrel = 1
 	url = https://wiki.ros.org/rosgraph_msgs
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-message-generation
-	makedepends = ros-melodic-std-msgs
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-message-runtime
-	depends = ros-melodic-std-msgs
-	source = ros-melodic-rosgraph-msgs-1.11.2.tar.gz::https://github.com/ros/ros_comm_msgs/archive/1.11.2.tar.gz
-	sha256sums = 7bb9f57ea9e6c5fb0599b247736f4f3b7868d722344fb42bc3055b31626ea250
+	makedepends = ros-noetic-message-generation
+	makedepends = ros-noetic-std-msgs
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-message-runtime
+	depends = ros-noetic-std-msgs
+	source = ros-noetic-rosgraph-msgs-1.11.3.tar.gz::https://github.com/ros/ros_comm_msgs/archive/1.11.3.tar.gz
+	sha256sums = 5b8b91e8671d03ea84ba32a3ea7360bc4594655e7ba3ec6677a984f393aaafbd
 
-pkgname = ros-melodic-rosgraph-msgs
+pkgname = ros-noetic-rosgraph-msgs
 
