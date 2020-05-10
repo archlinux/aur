@@ -1,0 +1,20 @@
+pkgbase = nvfancontrol-git
+	pkgdesc = NVidia dynamic fan control
+	pkgver = 0.3.r45.g0ba7ba3
+	pkgrel = 1
+	url = https://github.com/foucault/nvfancontrol
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = libxnvctrl
+	depends = libxext
+	optdepends = nvidia: For GTX 4xx or newer cards
+	optdepends = nvidia-340xx: For G8x, G9x and GTX 2xx cards
+	provides = nvfancontrol
+	conflicts = nvfancontrol
+	source = nvfancontrol-git::git+https://github.com/foucault/nvfancontrol
+	sha256sums = SKIP
+
+pkgname = nvfancontrol-git
+
