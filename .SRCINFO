@@ -1,7 +1,7 @@
 pkgbase = nebula-git
 	pkgdesc = A scalable overlay networking tool with a focus on performance, simplicity and security
 	pkgver = 1.2.0.r1.g363c836
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/slackhq/nebula
 	arch = x86_64
 	license = MIT

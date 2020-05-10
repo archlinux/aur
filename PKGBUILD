@@ -3,7 +3,7 @@
 
 pkgname=nebula-git
 pkgver=1.2.0.r1.g363c836
-pkgrel=1
+pkgrel=2
 pkgdesc='A scalable overlay networking tool with a focus on performance, simplicity and security'
 arch=('x86_64')
 url='https://github.com/slackhq/nebula'
@@ -26,9 +26,7 @@ pkgver() {
 prepare() {
   cd $pkgname
 
-  sed -i -e "s|^\(SyslogIdentifie.*\)|#\1|g" \
-         -e "s|^\(.*=syslog\)|#\1|g" \
-         -e "s|/usr/local/bin|/usr/bin|g" examples/service_scripts/nebula.service
+  sed -i -e "s|/usr/local/bin|/usr/bin|g" examples/service_scripts/nebula.service
 }
 
 build() {
