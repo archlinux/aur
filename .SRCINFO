@@ -1,6 +1,6 @@
 pkgbase = openra-raplus-git
 	pkgdesc = A Command & Conquer: Red Alert-inspired mod of OpenRA
-	pkgver = 17.git.9e341a0
+	pkgver = 19.git.5312ace
 	pkgrel = 1
 	url = https://github.com/MlemandPurrs/raplusmod
 	install = openra-raplus.install
