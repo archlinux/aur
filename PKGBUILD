@@ -54,7 +54,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=5
+pkgrel=6
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -83,10 +83,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0003-gcc-plugins-drop-support-for-GCC-4.7.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0004-gcc-common.h-Update-for-GCC-10.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0003-gcc-plugins-drop-support-for-GCC-4.7.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0004-gcc-common.h-Update-for-GCC-10.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0005-Makefile-disallow-data-races-on-gcc-10-as-well.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0006-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -339,10 +341,12 @@ sha512sums=('a2cf161a8f79e1d596cbe6e255b3b70fd5fd8cc27d4213a8bfd07f90afc26c40c70
             '31141f3afa388dbfc7a0a1c0a7b7fc58a6824befea1fc044eb76fc0e6d4c55f249e3e0f7e63c0697ba736dc902d85128c0d78eeffe8eca3c207a573664c74514'
             '4299d07a7bf033f6566a2b3495cb66b054e32d7c066605245506412ce94901958d69bd5a3ee011125bf7e81c9ddf790eda44cbe062f37bdc618722306686add3'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
-            '491544ce1cc76c34288e306815469684dbc8f8ae77b963751f8d3f7e56aec5b8edc6ccb207afe229ffd3001e6d74c8f2b1144f980edce294db7f42d90008b3bf'
-            '2afab8bbdf8b58e0cc59c9a9ab78670d3a01bd5245f8956ce95dbba9556760dd640541c1d419346ec20e941c138317501c98c6ad6cdf57c53a91140954ea4f78'
-            '0aaf7731ff3a1c3ff4e3b5e31d7218786d7b9c55e0de23b533c0c000d49adfaa41536e93121ef005d7c50249076ebc322453cb2bd1142881a1830412fd9bf9ab'
-            'a9399d1bd6a6fd2b23511d7db1472c070723f26c7faef892cc9bb9fe1c98b7bcdaa81204bd5093c0054866b291679ea12a6a4d3b7493d6fac1e96b14a56732ca'
+            '5c447506bfbce039987db39a495d644832dd360025ae3d49979cd2467c080ad2c9ccb382ff1f6a0bc43957746c3ee35858282481a80a0a0c21db01986cd8b9bd'
+            'f5dcb80af6b8bb40157bed9fe2549e0748fb26bf0c9c18a01da0f1b1e049249d2cdc2966b8deb3c440b608385bdc01a3365842d933f9237c3d78569466ddc800'
+            'c70ba846adb911dce879853f860d283d350f08e190a7e62023281b813cb2491f30bee53fc05fbcd74867e0788f96651fbb4337a3ae2321e695bab77ada328e75'
+            'c08b019d0885755f7cd95eb6d4f6c7bdc4157115906f4aff98857144169073f0047cc8627c4eda57959f9b4086b0bc197852219087ad19d4babf45a9c0d3e088'
+            'c19f293006985564d6a3d375629af924d4ae9103090658c9cd2289f14b516ac89f3569b8946a4b4b853b836dacaf16368315f5eb019d9d120e9a4a62ff50593e'
+            'bbe8f44ea6fe1c4ee5a35c277e9983c5f8f8dffc16d1dcb2234b5e6001c5346e72ef1ea47b239ff5e8a4dc14097da7155243011c9f05d949a87dd8b8b717d050'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             '5f535dfc0d0400ba053be3a03be51aa472495bfb3b53b38d2ef1b26186cb14483da27b454f710fc622478a8205d09113859d84ce43e985f525a06bc37c7c18f8')
 
