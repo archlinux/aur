@@ -1,0 +1,15 @@
+pkgbase = otf-scunthorpe-sans
+	pkgdesc = A s*** font that f***ing censors bad language automatically.
+	pkgver = 2
+	pkgrel = 1
+	url = https://vole.wtf/scunthorpe-sans/
+	arch = any
+	license = custom:CC0
+	provides = otf-scunthorpe-sans
+	source = https://vole.wtf/scunthorpe-sans/scunthorpe-sans.zip?v=2
+	source = http://creativecommons.org/publicdomain/zero/1.0/legalcode.txt
+	sha256sums = 1af4722a0b2d4bef5019cf223e552a09d167eb8d4df4e75ffa9add9fdcfbe44b
+	sha256sums = a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499
+
+pkgname = otf-scunthorpe-sans
+
