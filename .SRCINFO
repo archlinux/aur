@@ -1,17 +1,17 @@
-pkgbase = ros-melodic-rosunit
+pkgbase = ros-noetic-rosunit
 	pkgdesc = ROS - Unit-testing package for ROS.
-	pkgver = 1.14.6
+	pkgver = 1.15.2
 	pkgrel = 1
 	url = https://wiki.ros.org/rosunit
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-roslib
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-roslib
 	depends = python-rospkg
-	source = ros-melodic-rosunit-1.14.6.tar.gz::https://github.com/ros/ros/archive/1.14.6.tar.gz
-	sha256sums = 62f1350271a76bc35794c2cdb741cdae2ba096c96a924dba025aed4f561c978c
+	source = ros-noetic-rosunit-1.15.2.tar.gz::https://github.com/ros/ros/archive/1.15.2.tar.gz
+	sha256sums = 596bb5e04ece0ad0662d6d2ee9b4223aaa890770e83c7310ec71bf9c0c3c7b5e
 
-pkgname = ros-melodic-rosunit
+pkgname = ros-noetic-rosunit
 
