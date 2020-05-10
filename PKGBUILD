@@ -3,8 +3,8 @@
 
 _pkgname=nfancurve
 pkgname=${_pkgname}
-pkgver=019.3
-pkgrel=2
+pkgver=019.4
+pkgrel=1
 pkgdesc="A small and lightweight Bash script for using a custom fan curve in Linux for NVIDIA GPUs"
 arch=("any")
 url="https://github.com/nan0s7/nfancurve"
@@ -16,7 +16,7 @@ conflicts=("${_pkgname}-git")
 backup=('etc/nfancurve.conf')
 install=${_pkgname}.install
 source=("${_pkgname}-${pkgver}::https://github.com/nan0s7/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('ef12d7d873726bb342663c9b212277afb4ef4837ef1399007e37412927365057d4cc2aab16d3fee9ece71c1c8d204e57cc036626b7f5d059f51141f9496b9d15')
+sha512sums=('6332de1993a50ab0199e7a3749c3bad026362e5062d8e983b868b5b8e029209c7d60929497299d7e603efa5ae09b92c7182ca47bd11b817a2a54489980bd92c8')
 
 
 package() {
