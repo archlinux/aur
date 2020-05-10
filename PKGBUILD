@@ -1,7 +1,7 @@
 # Maintainer: Fatih Bostancı <ironic@yaani.com>
 
 pkgname=ezanvakti-qt-gui
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Qt Gui for Ezanvakti Application"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://gitlab.com/fbostanci/ezanvakti-qt-gui"
 license=('GPL3')
 depends=('ezanvakti>=7.0' 'qt5-base' 'qt5-multimedia' 'gst-plugins-good')
 source=("https://github.com/fbostanci/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('5446e8273a97822bd290446f41c7cda0')
+md5sums=('7c184433cacae537dfdb2d0f259546be')
 
 build() {
     cd "$pkgname-$pkgver"
