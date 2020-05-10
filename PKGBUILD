@@ -2,8 +2,8 @@
 
 pkgname=mailspring-latest
 pkgver=1.7.6
-pkgrel=1
-pkgdesc="A beautiful, fast and maintained fork of Nylas Mail by one of the original authors."
+pkgrel=2
+pkgdesc="A beautiful, fast and maintained fork of Nylas Mail by one of the original authors. Promptly updated to the latest version."
 arch=('x86_64')
 license=('custom: GPL3 and (C) 2016-2019 Foundry 376, LLC.')
 url="https://getmailspring.com/"
@@ -16,6 +16,8 @@ source_x86_64=("https://github.com/Foundry376/Mailspring/releases/download/${pkg
 depends=("libxss" "libtool" "c-ares" "ctemplate" "tidy" "libxkbfile" "libsecret" "gtk3" "nss" "libglvnd")
 
 optdepends=('libappindicator-gtk3: for system tray support' "libgnome-keyring: keyrings" "gnome-keyring: keyrings" )
+
+replaces=('mailspring')
 
 package() {
 	cd ${srcdir}
