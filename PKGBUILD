@@ -8,25 +8,28 @@ arch=('x86_64')
 url='https://github.com/liudng/dogo'
 license=('BSD')
 provides=("${pkgname%-git}")
+depends=('glibc')
 makedepends=('git' 'dep' 'go-pie')
 source=("git+${url}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare(){
+prepare() {
   mkdir -p gopath/src/github.com/${pkgname%-git}
   ln -rTsf ${pkgname%-git} gopath/src/github.com/${pkgname%-git}/${pkgname%-git}
   export GOPATH="$srcdir"/gopath
   cd gopath/src/github.com/${pkgname%-git}/${pkgname%-git}
-  dep init -v
+  if [[ ! -f Gopkg.toml ]]; then
+    dep init -v
+  fi
   dep ensure -v
 }
 
-build(){
+build() {
   export GOPATH="$srcdir"/gopath
   cd gopath/src/github.com/${pkgname%-git}/${pkgname%-git}
   go install -v .
@@ -34,5 +37,5 @@ build(){
 
 package() {
   install -Dm755 "${srcdir}/gopath/bin/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
-  install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+  install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
