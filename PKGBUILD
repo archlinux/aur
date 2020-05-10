@@ -3,7 +3,7 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Faye Jackson <justalittleepsilon@gmail.com>
 pkgname=msync-git
 pkgver=0.9.8.r1099.a1132ef
 pkgrel=1
