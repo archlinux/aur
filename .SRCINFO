@@ -1,6 +1,6 @@
 pkgbase = rst2pdf
 	pkgdesc = Convert reStructured Text to PDF via ReportLab.
-	pkgver = 0.96
+	pkgver = 0.97
 	pkgrel = 1
 	url = https://rst2pdf.org
 	arch = any
@@ -17,14 +17,14 @@ pkgbase = rst2pdf
 	optdepends = python-sphinx: sphinx
 	optdepends = python-wordaxe>=1.0: hyphenation
 	optdepends = python-svglib: SVG support
-	optdepends = python-aafigure: aafigure support
+	optdepends = python-aafigure>=0.4: aafigure support
 	optdepends = python-matplotlib: math support
 	optdepends = python-xhtml2pdf: raw HTML support
 	provides = rst2pdf
 	conflicts = python-rst2pdf
 	conflicts = python2-rst2pdf
-	source = rst2pdf-0.96.tar.gz::https://github.com/rst2pdf/rst2pdf/archive/0.96.tar.gz
-	sha256sums = b54fe6e6bd11211849e3f35c08954804378312005c328dd8185ea52e59829121
+	source = rst2pdf-0.97.tar.gz::https://github.com/rst2pdf/rst2pdf/archive/0.97.tar.gz
+	sha256sums = 93ae68585c72b89fc8b6b2b4ef0128ea2cd7a73cf0f41a3fa52f60fcc85c3c1d
 
 pkgname = rst2pdf
 

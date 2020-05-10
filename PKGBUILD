@@ -3,7 +3,7 @@
 #_name=rst2pdf
 
 pkgname=rst2pdf
-pkgver=0.96
+pkgver=0.97
 pkgrel=1
 pkgdesc="Convert reStructured Text to PDF via ReportLab."
 url="https://rst2pdf.org"
@@ -22,7 +22,7 @@ optdepends=(
   'python-sphinx: sphinx'
   'python-wordaxe>=1.0: hyphenation'
   'python-svglib: SVG support'
-  'python-aafigure: aafigure support'
+  'python-aafigure>=0.4: aafigure support'
   'python-matplotlib: math support'
   'python-xhtml2pdf: raw HTML support'
 )
@@ -37,8 +37,8 @@ source=(
 )
 sha256sums=(
   #'SKIP'
-  #'69ce86b8cfad8da366e0c52caccd9d1aa617e69ca5c3a50feb5519e829d198c4'
-  'b54fe6e6bd11211849e3f35c08954804378312005c328dd8185ea52e59829121'
+  #'343a2a75b2fe8cdf174c170a547a43b294129e68e24be8c18a6b9d1494c9f0b1'
+  '93ae68585c72b89fc8b6b2b4ef0128ea2cd7a73cf0f41a3fa52f60fcc85c3c1d'
 )
 
 build() {
