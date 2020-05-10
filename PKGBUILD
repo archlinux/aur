@@ -14,6 +14,11 @@ sha256sums=('972e3fc3cd0b9d6b5a737c9bf6fd07515c0d6549319d4ffb06970e64fa3cc2d6')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+prepare () {
+  cd "$srcdir/arpack-ng-${pkgver}"
+  curl -L https://github.com/opencollab/arpack-ng/pull/239/commits/9418632214acf6d387896ab29a8f5bdff2d4e38a.patch | patch -p1
+}
+
 build() {
   cd "$srcdir/arpack-ng-${pkgver}"
   ./bootstrap
