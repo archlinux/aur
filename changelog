@@ -1,3 +1,32 @@
+Proton-5.8-GE-1-MF
+
+GloriousEggroll released this May 10, 2020
+
+Overall fixes:
+-Fix for ValveSoftware#2929 added, fixes crash in Dark Souls 3, Sekiro, Nier: Automata
+-GTA IV should be fully playable now, patches imported from upstream proton
+-Street Fighter V should be fully playable now, patches imported from upstream proton
+-HideWineExports=Y registration added for FFXIV, fixes license issue
+-Homeworld Remastered Collection should be playable without custom launcher necessary
+-Updated steep patch for wine 5.8
+-fixed proton controller patch issues -- should now have full proton controller patchset and functionality to match upstream proton
+-patch added that fixes overwatch breakage in 5.7
+-patch added that fixes star citizen breakage in 5.7
+-patch added that fixes Path of Exile flicker in 5.7
+-FFXV patch is now working again, game should be playable
+-Monster Hunter World patches added which enable DX12 mode with vkd3d
+MF (Media Foundation) specific fixes:
+-Resident Evil 2 videos fixed, should now be fully playable, also works in DX12/vkd3d
+-Spyro Reignited Trilogy videos fixed, should now be fully playable
+-Remnant: From the Ashes videos fixed, should now be fully playable
+-Soul Calibur VI videos fixed, should now be fully playable
+-Street Fighter V videos fixed, should now be fully playable
+-Deep Rock Galactic videos fixed, should now be fully playable
+-BlazBlue Centralfiction videos fixed, should now be fully playable
+-Bloodstained: Ritual of the night intro videos fixed, should now be fully playable
+-Crazy Machines 3 videos fixed, should now be fully playable
+
+
 Proton-5.6-GE-2
 
 GloriousEggroll released this Apr 14, 2020
