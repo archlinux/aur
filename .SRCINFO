@@ -1,0 +1,17 @@
+pkgbase = sm64pc-git
+	pkgdesc = Super Mario 64-PC - OpenGL adaptation of n64decomp/sm64
+	pkgver = r71.b4626bf
+	pkgrel = 1
+	url = https://github.com/sm64pc/sm64pc/
+	arch = any
+	license = MIT
+	depends = python
+	depends = audiofile
+	depends = sdl2
+	depends = glew
+	provides = sm64pc
+	source = git+https://github.com/sm64pc/sm64pc.git
+	sha256sums = SKIP
+
+pkgname = sm64pc-git
+
