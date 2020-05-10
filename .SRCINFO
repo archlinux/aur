@@ -1,0 +1,19 @@
+pkgbase = poweralertd-git
+	pkgdesc = Power alert notifications daemon
+	pkgver = r25.38401ca
+	pkgrel = 1
+	url = https://kl.wtf/projects/poweralertd
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = scdoc
+	depends = systemd-libs
+	provides = poweralertd
+	conflicts = poweralertd
+	source = git+https://git.sr.ht/~kennylevinsen/poweralertd
+	sha256sums = SKIP
+
+pkgname = poweralertd-git
+
