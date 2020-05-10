@@ -1,12 +1,12 @@
 pkgname=pyinstaller2
 _pyname=PyInstaller
 pkgver=3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="An application to convert python scripts into stand-alone binaries"
 arch=('any')
 url="http://www.pyinstaller.org"
 license=('GPL')
-depends=('python2-setuptools' 'python2-altgraph')
+depends=('python2-setuptools' 'python2-altgraph' 'python2-dis3')
 optdepends=(
   'upx: executable compression support'
 )
