@@ -19,7 +19,7 @@
 ## a PGO profile, then builds Firefox again (with optional LTO) using this
 ## profile.
 ## Set variable "enable_pgo" to: y to enable (increase performance, default in official firefox-beta)
-##                               n to disable  (faster compilation)
+##                               n to disable  (less optimized, but faster compilation, as it will skip the profile generation)
 if [ -z ${enable_pgo+x} ]; then
   enable_pgo=y
 fi
@@ -28,8 +28,8 @@ fi
 ## requires more RAM to build. Only affects clang, rust has LTO enabled by
 ## default.
 ## Disable it if the compilation runs out-of-memory.
-## Set variable "enable_lto" to: y to enable (increase performance, default in official firefox-beta)
-##                               n to disable  (faster compilation, needs more RAM to build)
+## Set variable "enable_lto" to: y to enable (increase performance, default in official firefox-beta, but slower to compile)
+##                               n to disable  (less optimized, but faster to compile)
 if [ -z ${enable_lto+x} ]; then
   enable_lto=y
 fi
