@@ -1,0 +1,36 @@
+pkgbase = alldesktopenvironments
+	pkgdesc = Metapackage for all AUR and official repository desktop environmentsn (with applications)
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.archlinux.org/
+	arch = any
+	license = none
+	depends = budgie-desktop
+	depends = cinnamon
+	depends = deepin
+	depends = deepin-extra
+	depends = enlightenment
+	depends = gnome
+	depends = gnome-extra
+	depends = gnome-flashback
+	depends = plasma-meta
+	depends = kde-applications-meta
+	depends = lxde
+	depends = lxqt
+	depends = mate
+	depends = mate-extra
+	depends = sugar
+	depends = sugar-fructose
+	depends = ukui
+	depends = xfce4
+	depends = xfce4-goodies
+	depends = ede
+	depends = liri-git-meta
+	depends = lumina-desktop
+	depends = moksha
+	depends = pantheon-session-git
+	depends = phosh
+	depends = theshell
+
+pkgname = alldesktopenvironments
+
