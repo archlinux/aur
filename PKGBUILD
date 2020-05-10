@@ -1,14 +1,15 @@
 # Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 
 pkgname=armips-git
-pkgver=0.10.0.r28.g7885552
+pkgver=0.11.0
 pkgrel=1
 epoch=1
 pkgdesc='An assembler for various ARM and MIPS platforms'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/Kingcom/armips'
 license=('MIT')
 makedepends=('git' 'cmake')
+depends=('gcc-libs')
 provides=('armips')
 conflicts=('armips')
 source=('git+https://github.com/Kingcom/armips')
@@ -27,7 +28,7 @@ prepare() {
 build() {
     cd "$srcdir"/armips/build
     cmake -DCMAKE_BUILD_TYPE=Release ..
-    make
+    make armips-bin
 }
 
 package() {
