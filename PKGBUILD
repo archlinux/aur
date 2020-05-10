@@ -5,8 +5,8 @@
 # Socket path is "${XDG_RUNTIME_DIR}/yubikey-agent/yubikey-agent.sock"
 
 pkgname=yubikey-agent
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc='A seamless ssh-agent for YubiKeys'
 arch=('x86_64')
 url="https://filippo.io/yubikey-agent"
@@ -18,7 +18,7 @@ source=(
   'yubikey-agent.service'
 )
 sha256sums=(
-  '58d2bdf4391ef86f9d4ccd8e999472dafbe6204e5ad4a29de95baa28aca2116b'
+  'ba105395ec8321512742f69ce9cf7fc2fe4e107cf667c2b48d13749efff23d5c'
   '29de8c4a3825f17919154fcc775a4c9da1e42569e8aee5b5e5b5150f25d2810f'
 )
 
