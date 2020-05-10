@@ -1,15 +1,15 @@
-# Contributor: Fabio Loli <loli_fabio@protonmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: RobbeR49 <robertsna@gmail.com>
 
 pkgname=gmusicbrowser-git
-pkgver=1.1.15.r42.g2d57cef
-pkgrel=2
+pkgver=1.1.15.r54.g4538a5a
+pkgrel=1
 pkgdesc="An open-source jukebox for large collections of mp3/ogg/flac files, written in perl."
-arch=('i686' 'x86_64')
+arch=(i686 x86_64 aarch64)
 url="http://gmusicbrowser.org/"
-license=('GPL3')
-depends=('gtk2-perl' 'perl-net-dbus' 'perl-locale-gettext' 'perl-glib-object-introspection')
-makedepends=('git' 'markdown')
+license=(GPL3)
+depends=(gtk2-perl perl-net-dbus perl-locale-gettext perl-glib-object-introspection)
+makedepends=(git markdown)
 optdepends=('alsa-utils: enables the ALSA backend'
             'flac123: flac support for the ALSA backend'
             'mpg321: mp3 support for the ALSA backend'
@@ -24,22 +24,22 @@ optdepends=('alsa-utils: enables the ALSA backend'
             'perl-gnome2-wnck: titlebar plugin support'
             'perl-html-parser: support for accented characters in lyrics plugin'
             'perl-gtk2-notify: support for notify plugin')
-provides=('gmusicbrowser')
-conflicts=('gmusicbrowser')
-source=("${pkgname}::git+http://github.com/squentin/gmusicbrowser.git")
-md5sums=('SKIP')
+provides=(gmusicbrowser)
+conflicts=(gmusicbrowser)
+source=("git+http://github.com/squentin/gmusicbrowser.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${srcdir}/${pkgname%-git}"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }      
 
 build() {
-   cd "${srcdir}/${pkgname}"
-   make
+  cd "${srcdir}/${pkgname%-git}"
+  make
 }
 
 package() {
-   cd "${srcdir}/${pkgname}"
-   make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname%-git}"
+  make DESTDIR="$pkgdir" install
 }

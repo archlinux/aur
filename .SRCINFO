@@ -1,10 +1,11 @@
 pkgbase = gmusicbrowser-git
 	pkgdesc = An open-source jukebox for large collections of mp3/ogg/flac files, written in perl.
-	pkgver = 1.1.15.r42.g2d57cef
-	pkgrel = 2
+	pkgver = 1.1.15.r54.g4538a5a
+	pkgrel = 1
 	url = http://gmusicbrowser.org/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = markdown
@@ -28,8 +29,8 @@ pkgbase = gmusicbrowser-git
 	optdepends = perl-gtk2-notify: support for notify plugin
 	provides = gmusicbrowser
 	conflicts = gmusicbrowser
-	source = gmusicbrowser-git::git+http://github.com/squentin/gmusicbrowser.git
-	md5sums = SKIP
+	source = git+http://github.com/squentin/gmusicbrowser.git
+	sha256sums = SKIP
 
 pkgname = gmusicbrowser-git
 
