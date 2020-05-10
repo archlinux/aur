@@ -1,10 +1,9 @@
 # Maintainer: Andy Kluger <https://t.me/andykluger>
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: hexchain <i@hexchain.org>
-# Thanks to github.com/ilya-fedin/lib_ui-1 (system-font branch)
 
 pkgname=telegram-desktop-userfonts
-pkgver=2.1.2
+pkgver=2.1.4
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -17,7 +16,7 @@ depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected')
 optdepends=('ttf-opensans: default Open Sans font family')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz")
-sha512sums=('c23d9a961132cd2592ce8f728ed7592091a8c2a1d94797facd93516ab0c9194bd5b90ba7a7d4e8aa778940bc4a23d4ac69507a9f150c3bf4e743c6659e545ccf')
+sha512sums=('5b27633cdcb4edb61af983c1e4867bac3d7d0864e100855ea3f00c1eb1037e6a9f43414c09211282b5b677603ddfaedbcf4cbf482502ca4e33152e417068c959')
 
 prepare() {
     cd tdesktop-$pkgver-full
