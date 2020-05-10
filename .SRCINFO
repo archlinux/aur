@@ -1,0 +1,16 @@
+pkgbase = mtag-git
+	pkgdesc = Music file tag manipulator
+	pkgver = 0.1.0
+	pkgrel = 0
+	url = https://github.com/hildigerr/mtag
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	makedepends = git
+	depends = taglib
+	provides = mtag
+	source = mtag::git+https://github.com/hildigerr/mtag
+	sha256sums = SKIP
+
+pkgname = mtag-git
+
