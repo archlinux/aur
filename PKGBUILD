@@ -2,7 +2,7 @@
 
 pkgname=mom
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Memory Overcommitment Manager, for virtual machines"
 arch=('any')
 url="https://gerrit.ovirt.org/#/admin/projects/mom"
@@ -14,7 +14,7 @@ source=("git+https://gerrit.ovirt.org/mom#commit=0cd552a7d174118ae6c4baa8609edd8
         "balloon.rules")
 md5sums=('SKIP'
          '927233dfa137a3010a4c6cfdf081fd5f'
-         'cf66caf6eec15c39381abf28235aa0ed')
+         '4e23b6e4e6a2ee37b39120308ac5ef3d')
 backup=('etc/mom')
 
 build() {
