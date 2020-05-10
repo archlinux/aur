@@ -2,13 +2,13 @@
 
 pkgname=autopass.cr
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='a rofi frontend for pass'
 arch=(x86_64)
 url='https://gitlab.com/repomaa/autopass.cr'
 license=('MIT')
 depends=(pass rofi xdotool gpgme gc libyaml libevent dbus)
-makedepends=(crystal shards rust git python)
+makedepends=(crystal shards rust git python systemd)
 
 source=(
   "git+https://gitlab.com/repomaa/autopass.cr?signed#tag=v${pkgver}"
