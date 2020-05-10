@@ -1,7 +1,7 @@
 # Maintainer: Diab Neiroukh <officiallazerl0rd@gmail.com>
 
 pkgname="zlib-ng-git"
-pkgver=1
+pkgver=2
 pkgrel=1
 epoch=3
 pkgdesc="zlib replacement with optimizations for \"next generation\" systems"
@@ -21,7 +21,7 @@ makedepends=(
 )
 provides=(
 	"zlib=1.2.11"
-	"zlib-ng=1.9.9"
+	"zlib-ng"
 )
 conflicts=(
 	"zlib"
