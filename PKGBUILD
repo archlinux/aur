@@ -4,7 +4,7 @@ pkgname=dog
 pkgver=1.7
 pkgrel=3
 pkgdesc="A better cat, supporting HTTP and hex dumping"
-url="http://packages.debian.org/sid/dog"
+url="http://archive.debian.org/debian/pool/main/d/dog/"
 arch=('i686' 'x86_64')
 license=('GPL')
 source=(
@@ -13,10 +13,17 @@ source=(
 md5sums=('c93a8aa17c5e75ea1d32cd897b0f838e'
          '18d77b7d0046dc8c14d5d08c9f067c79')
 
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver.orig"
+  if [ -d debian ]; then
+    rm -r debian
+  fi
+  zcat "../${pkgname}_$pkgver-10.diff.gz" | patch -p1
+  cat debian/patches/{0[2-9],1}* | patch -p1
+}
+
 build() {
   cd "$srcdir/$pkgname-$pkgver.orig"
-  zcat "../${pkgname}_$pkgver-10.diff.gz" | patch -p1
-  cat debian/patches/{0[0-9],1}* | patch -p1
   make
 }
 
