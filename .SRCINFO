@@ -4,13 +4,14 @@ pkgbase = darknet-git
 	pkgrel = 1
 	url = https://pjreddie.com/darknet
 	arch = x86_64
-	license = Yolo
+	license = Unlicense
+	depends = bash
 	optdepends = opencv
 	optdepends = cuda
 	optdepends = python
 	provides = darknet
 	source = git+https://github.com/pjreddie/darknet
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = darknet-git
 
