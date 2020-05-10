@@ -7,7 +7,7 @@ pkgdesc="A simple interactive prompt for docker"
 arch=('x86_64')
 url='https://github.com/Trendyol/docker-shell'
 license=('MIT')
-makedepends=('go')
+makedepends=('go-pie')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 md5sums=('98ea429384a9e65e44c526d98f90bdc3')
 
