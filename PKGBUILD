@@ -2,7 +2,7 @@
 # Contributor: Spider.007 <archPackage@spider007.net>
 pkgname=netatop-dkms
 _pkgname=netatop
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc="Atop network kernel module, enables network statistics in atop"
 url="http://www.atoptool.nl/"
@@ -10,11 +10,14 @@ groups=('modules')
 license=('GPL')
 depends=('atop' 'dkms')
 conflicts=('netatop')
-makedepends=('linux-headers')
+makedepends=()
 source=("http://atoptool.nl/download/netatop-${pkgver}.tar.gz"
-        "netatop-dkms.conf")
-sha256sums=('0b259b59ee187d83258be3131f1e5842143ca4d2ba05efe7b76e9724a0e4a46b'
-            '56e9094e396fcdabadde4db8a9f21945484e4db93359dc22f2fb76436b1b2ea9')
+        "netatop-dkms.conf"
+        "netatop-dkms.install")
+install="netatop-dkms.install"
+sha256sums=('736f43572c31a90748f023f0a5a814bff58d44c0c3f060d776cfd6e6e8435c62'
+            '56e9094e396fcdabadde4db8a9f21945484e4db93359dc22f2fb76436b1b2ea9'
+            'e821aa89ecd62799441f87a1012edf7151c0971950489bb10fec478fb97d515b')
 arch=('x86_64' 'i686')
 
 prepare() {
@@ -23,6 +26,12 @@ prepare() {
 }
 
 build() {
+	warning "-------------------------------------------------------------------"
+	warning "Package build will fail if there are no headers for currently"
+	warning "loaded kernel or their versions mismatch (for example, you have"
+	warning "updated the kernel but did not reboot yet)."
+	warning "-------------------------------------------------------------------"
+
 	cd $srcdir/$_pkgname-$pkgver
 	# build daemon, make sure that module can be built
 	make all
@@ -68,4 +77,12 @@ package() {
 	# auto-load
 	mkdir -p $pkgdir/etc/modules-load.d
 	echo "netatop" > $pkgdir/etc/modules-load.d/netatop.conf
+
+	warning "-------------------------------------------------------------------"
+	warning "After install, DKMS will try to build the netatop module"
+	warning "against every kernel you have installed. For the build to succeed,"
+	warning "you must have header packages for every kernel. Header package"
+	warning "for the stock kernel is called 'linux-headers', other usually"
+	warning "follow the same naming scheme."
+	warning "-------------------------------------------------------------------"
 }
