@@ -1,0 +1,22 @@
+pkgbase = allshells
+	pkgdesc = Metapackage for all AUR and official repository shells
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.archlinux.org/
+	arch = any
+	license = none
+	depends = bash
+	depends = dash
+	depends = mksh
+	depends = zsh
+	depends = tcsh
+	depends = elvish
+	depends = fish
+	depends = nash-git
+	depends = oh-git
+	depends = powershell
+	depends = 9base
+	depends = xonsh
+
+pkgname = allshells
+
