@@ -1,0 +1,32 @@
+pkgbase = python-mbed-cloud-sdk
+	pkgdesc = Pelion Device Management SDK for Python
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://cloud.mbed.org
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-mbed-cloud-sdk-2.2.0.tar.gz::https://github.com/ARMmbed/mbed-cloud-sdk-python/archive/2.2.0.tar.gz
+	sha256sums = e325b9c1e7e3062e15925250702d5f31de20ecd73efab9b2b18542d8f2601a9b
+
+pkgname = python-mbed-cloud-sdk
+	depends = python
+	depends = python-certifi
+	depends = python-six
+	depends = python-dotenv
+	depends = python-future
+	depends = python-urllib3
+	depends = python-dateutil
+	depends = python-requests
+
+pkgname = python2-mbed-cloud-sdk
+	depends = python2
+	depends = python2-certifi
+	depends = python2-six
+	depends = python2-dotenv
+	depends = python2-future
+	depends = python2-urllib3
+	depends = python2-dateutil
+	depends = python2-requests
+
