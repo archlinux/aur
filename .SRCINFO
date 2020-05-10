@@ -15,7 +15,7 @@ pkgbase = playx
 	depends = python-requests
 	depends = python-lxml
 	depends = python-selenium
-	source = playx-develop.tar.gz::https://github.com/NISH1001/playx/archive/develop.tar.gz
+	source = playx-develop.tar.gz::https://github.com/NISH1001/playx/archive/v1.5.2-approximate-void.zip
 	md5sums = SKIP
 
 pkgname = playx
