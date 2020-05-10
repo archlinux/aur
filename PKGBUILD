@@ -1,7 +1,7 @@
 # Maintainer: Julius Dehner <julius.dehner@protonmail.com>
 
 pkgname=plexamp-appimg
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=0
 pkgdesc="Music focused client for Plex"
 provides=('plexamp')
