@@ -21,7 +21,7 @@ pkgbase = linux-nitrous-fire
 	sha256sums = 5c5305e210d83ca015b2272d82c4fbc51a690984a34bfca7922d8c0818b1772b
 
 pkgname = linux-nitrous-fire
-	pkgdesc = Modified Linux kernel optimized for Skylake (and newer) compiled using clang (tagged git version), sacrificing security for performance. The 'nitrous-fire' kernel is insecure, only use it if you need the performance.
+	pkgdesc = Modified Linux kernel optimized for Skylake (and newer) compiled using clang (tagged git version), with Clear Linux patches, sacrificing security for performance. The 'nitrous-fire' kernel is insecure, only use it if you need the performance.
 	install = linux-nitrous-fire.install
 	depends = coreutils
 	depends = linux-firmware
