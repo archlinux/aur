@@ -1,0 +1,18 @@
+pkgbase = libodiosacd
+	pkgdesc = SACD decoder (shared library)
+	pkgver = 20.5.9
+	pkgrel = 1
+	url = https://tari.in/www/software/libodiosacd
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	makedepends = gcc
+	makedepends = glibc
+	depends = glibc
+	options = !emptydirs
+	source = bzr+lp:/libodiosacd/trunk
+	md5sums = SKIP
+
+pkgname = libodiosacd
+
