@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_gitname"
-    cp ../../baserom.us.z64 . || "printf "%"$(stty size | awk '{print $2}')"s\n" | sed "s/ /░/g" && printf "\\n%s\\n%s\\n\\n" "US by default, if you want JP or EU, edit the PKGBUILD." "NO ROM FOUND\!: Copy your sm64 rom to \"src/sm64pc/\", if using 'yay' then \"~/.cache/yay/sm64pc/\". And then rename it as \"baserom.us.z64\" or \"baserom.jp.z64\" or \"baserom.eu.z64\"." && printf "%"$(stty size | awk '{print $2}')"s\n" | sed "s/ /░/g""
+    cp ../../baserom.us.z64 . || printf "$(printf "%"$(stty size | awk '{print $2}')"s\n" | sed "s/ /░/g" && printf "\\n%s\\n%s\\n\\n" "US by default, if you want JP or EU, edit the PKGBUILD." "NO ROM FOUND\!: Copy your sm64 rom to \"src/sm64pc/\", if using 'yay' then \"~/.cache/yay/sm64pc/\". And then rename it as \"baserom.us.z64\" or \"baserom.jp.z64\" or \"baserom.eu.z64\"." && printf "%"$(stty size | awk '{print $2}')"s\n" | sed "s/ /░/g")"
 }
 
 build() {
