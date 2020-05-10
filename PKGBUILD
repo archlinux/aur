@@ -1,11 +1,10 @@
-# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
-# ToDo: Enable propretary codec
-
 pkgname=nwjs
-pkgver=0.24.0
-pkgrel=8
+pkgver=0.33.3
+pkgrel=1
 pkgdesc="node-webkit is an app runtime based on Chromium and node.js"
 arch=("i686" "x86_64")
 url="https://nwjs.io/"
@@ -20,10 +19,10 @@ source=("nwjs-nw-v${pkgver}.tar.gz::https://github.com/nwjs/nw.js/archive/nw-v${
 	"node-nw-v${pkgver}.tar.gz::https://github.com/nwjs/node/archive/nw-v${pkgver}.tar.gz"
 	"v8-nw-v${pkgver}.tar.gz::https://github.com/nwjs/v8/archive/nw-v${pkgver}.tar.gz"
 	"chromium-nw-v${pkgver}.tar.gz::https://github.com/nwjs/chromium.src/archive/nw-v${pkgver}.tar.gz")
-sha512sums=("97ec6f8c1bfd9b5dcec2edaf84a546a7d88572f127fab0dbdda4b85ee5c19caf798fa87cd51b12a3f13fbd3d55dc2b3225dfb27e9b221a280bb7c7039e629f2a"
-	    "0d2fdce53635f5109d9a408b8a536f502c73fc724507fd917205919a7456dce8d9de8a32360b44b25c6eadf0d5589af488c3658847deda9fff61f6f86eea41cc"
-	    "467556bc39fd3fdc9a6feab79fe6e1364a96b6656ec3d8051defe7ae6b7af37a4044eeb1f3e0bcb5eb14513026fe068110e15ce33ce4bd0a39baad8dc6384431"
-	    "0a5008643cfb8f2fe44653dde422a87810c51373edc7314c53517cddb0c0486f0bd8b4c2eb63b01b14771cdf41a624078e6eada50146fd24e98478424ad7a4f3")
+sha512sums=('2250a50e7490a211ca5da8b95721dd87ce0f10ba434a719cfbbe08ce4f8981891e35f9b13d2599ed12838bf84fffba5cb2c7d23b576daab4b35eccd2145a13b5'
+            '9c790c8419b58cc5b521553c9df56d10aac305e4b791c2e464dd9c23184865f668f9b1204d402d2d7ab71e2f6c7e31c4ca2f6d2da0a762b06186be69d19251b2'
+            '5db3d17f260f5af4c04d60508d3ce9300742e1cf54385d30da1630c771246fc1a93f8ff679e8d1b80c66de25a1336682273f507fa5bc0a59ed993b3aa317c497'
+            'ab038c33ad8b3505356fd30f9c9a7a9ce5a36d1a1b68aaab97e705b75c4de371c53fd716031012b9880ff9714c59f0d58a2067d2887a0142269b6a36c36507d7')
 
 prepare() {
   cd "${srcdir}/"
