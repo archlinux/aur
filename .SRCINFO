@@ -1,15 +1,16 @@
 pkgbase = libindi-asi
 	pkgdesc = 3rd party drivers for INDI, support for ZWO devices: ASI cameras, EFW filter wheel, ASI ST4 port and ASI focuser
-	pkgver = 1.8.1
+	pkgver = 1.8.5
 	pkgrel = 1
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = cmake
-	depends = libindi
-	source = https://github.com/indilib/indi/archive/v1.8.1.tar.gz
-	sha256sums = d9250a60ce0f37c800982ef3f3c3a00a77f4eb9f500f1e96edbc1ea7c988d489
+	depends = libindi=1.8.5
+	depends = libasi=1.8.5
+	source = https://github.com/indilib/indi-3rdparty/archive/v1.8.5.tar.gz
+	sha256sums = acbddca69c25b2c46ebc0982e8dbbf4912a43f6a4b45d46b007deab8805caed8
 
 pkgname = libindi-asi
 
