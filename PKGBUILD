@@ -39,7 +39,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$_gitname"
-    printf "%s.%s" "$(grep 'VERSION =' core/java/src/net/i2p/CoreVersion.java \
+    printf "%s.%s" "$(grep -m1 ' VERSION =' core/java/src/net/i2p/CoreVersion.java \
         |sed 's/.*= "//;s/";//')" "$(grep 'BUILD =' router/java/src/net/i2p/router/RouterVersion.java \
         |sed 's/.*= //;s/;//')"
 }
