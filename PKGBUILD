@@ -65,7 +65,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="Modified Linux kernel optimized for Haswell (and newer) compiled using clang (tagged git version)"
+  pkgdesc="Modified Linux kernel optimized for Haswell (and newer) compiled using clang (tagged git version), with Clear Linux patches"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=(
     'crda: to set the correct wireless channels of your country'
