@@ -31,6 +31,8 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$_gitname/build/us_pc"
-	install -Dm755 sm64.us* "${pkgdir}/usr/bin/sm64pc"
+	cd "$srcdir/$_gitname/build/us_pc"
+		install -Dm755 sm64.us* "${pkgdir}/usr/bin/sm64pc"
+	cd "$srcdir"
+		install -Dm755 ../sm64pc-xdg "${pkgdir}/usr/local/bin/sm64pc"
 }

@@ -1,0 +1,2 @@
+#!/bin/sh
+mkdir $XDG_DATA_HOME/sm64pc >/dev/null 2>&1 ; cd $XDG_DATA_HOME/sm64pc && /usr/bin/sm64pc >/dev/null 2>&1 &
