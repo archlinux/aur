@@ -1,23 +1,25 @@
-# Maintainer: Ankit R Gadiya <arch@argp.in>
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Contributor: Ankit R Gadiya <arch@argp.in>
 # Contributor: Xiang Gao <qasdfgtyuiop@gmail.com>
 
-pkgname=ruby-jekyll-redirect-from
-pkgver=0.14.0
+_gemname=jekyll-redirect-from
+pkgname=ruby-${_gemname}
+pkgver=0.16.0
 pkgrel=1
-pkgdesc='Seamlessly specify multiple redirections URLs for your pages and posts'
-arch=(any)
-url='https://github.com/jekyll/jekyll-redirect-from'
-license=(MIT)
+pkgdesc="Seamlessly specify multiple redirections URLs for your pages and posts"
+arch=('any')
+url="https://github.com/jekyll/jekyll-redirect-from"
+license=('MIT')
 depends=('ruby' 'ruby-jekyll')
-options=(!emptydirs)
-source=("https://rubygems.org/downloads/jekyll-redirect-from-${pkgver}.gem")
-noextract=("jekyll-redirect-from-${pkgver}.gem")
-sha512sums=('ae60139e346e6a0379d3da2f9da877e72bb86ddc716f6ae0c825ebf01b508d893004ac900dd552bbe33b6a4e06e7a0d4e2f4b77ed0c5c946b5dc499cbfb72ca9')
+options=('!emptydirs')
+source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
+noextract=("${_gemname}-${pkgver}.gem")
+sha512sums=('abe5affbdf16d1ac9f03e7c9642349143a73cefaab5e96c4272104b8cfae05d6eb1a5cd3cee8b7781a16f46d5613f80a1b148afb66dd2ddb40d5038aa66d9924')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" "jekyll-redirect-from-${pkgver}.gem"
-  rm "${pkgdir}/${_gemdir}/cache/jekyll-redirect-from-${pkgver}.gem"
+  gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
+  rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
 
-  install -Dm644 "${pkgdir}/${_gemdir}/gems/jekyll-redirect-from-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }

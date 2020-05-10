@@ -1,16 +1,16 @@
 pkgbase = ruby-jekyll-redirect-from
 	pkgdesc = Seamlessly specify multiple redirections URLs for your pages and posts
-	pkgver = 0.14.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/jekyll/jekyll-redirect-from
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-jekyll
-	noextract = jekyll-redirect-from-0.14.0.gem
+	noextract = jekyll-redirect-from-0.16.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/jekyll-redirect-from-0.14.0.gem
-	sha512sums = ae60139e346e6a0379d3da2f9da877e72bb86ddc716f6ae0c825ebf01b508d893004ac900dd552bbe33b6a4e06e7a0d4e2f4b77ed0c5c946b5dc499cbfb72ca9
+	source = https://rubygems.org/downloads/jekyll-redirect-from-0.16.0.gem
+	sha512sums = abe5affbdf16d1ac9f03e7c9642349143a73cefaab5e96c4272104b8cfae05d6eb1a5cd3cee8b7781a16f46d5613f80a1b148afb66dd2ddb40d5038aa66d9924
 
 pkgname = ruby-jekyll-redirect-from
 
