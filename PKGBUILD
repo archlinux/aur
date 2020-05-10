@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="libodiosacd"
-pkgver="20.5.9"
+pkgver="20.5.8.5"
 pkgrel="1"
 pkgdesc="SACD decoder (shared library)"
 arch=("i686" "x86_64")
