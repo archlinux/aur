@@ -1,0 +1,15 @@
+pkgbase = gist-lite
+	pkgdesc = Manage your gist like a pro
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gist.github.com/b0d2e7e67aa50298fdf8111ae7466b56
+	arch = any
+	license = GPL3
+	depends = git
+	depends = coreutils
+	depends = python
+	source = https://codeload.github.com/gist/b0d2e7e67aa50298fdf8111ae7466b56/tar.gz/0.1
+	md5sums = ffab52c1c233f726642d1d8eabfb39a6
+
+pkgname = gist-lite
+
