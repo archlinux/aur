@@ -3,7 +3,7 @@
 
 pkgname=tenshi
 pkgver=0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="real-time log monitor from the Gentoo Linux project"
 url="https://inversepath.com/tenshi.html"
 arch=(any)
