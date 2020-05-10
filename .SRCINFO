@@ -1,0 +1,16 @@
+pkgbase = plata-theme-bin
+	pkgdesc = A Gtk theme based on Material Design Refresh (PPA package)
+	pkgver = 0.9.7
+	pkgrel = 1
+	url = https://gitlab.com/tista500/plata-theme
+	arch = any
+	license = CCPL
+	license = GPL2
+	optdepends = gtk-engine-murrine
+	optdepends = ttf-roboto
+	conflicts = plata-theme
+	source = https://launchpad.net/~tista/+archive/ubuntu/plata-theme/+files/plata-theme_0.9.7-0ubuntu1~focal1_all.deb
+	md5sums = 3da4b6f419734ec86bd8d820678f3b3e
+
+pkgname = plata-theme-bin
+
