@@ -4,7 +4,7 @@
 _basename=gst-plugins-bad
 pkgname=lib32-gst-plugins-bad
 pkgver=1.16.2
-pkgrel=4
+pkgrel=5
 pkgdesc="GStreamer open-source multimedia framework bad plugins (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -22,8 +22,10 @@ depends=(lib32-aom lib32-bluez-libs lib32-celt lib32-chromaprint lib32-curl lib3
 makedepends=(git lib32-gtk3 lib32-libtiger lib32-vulkan-validation-layers lv2
              meson python vulkan-headers)
 _commit=a6f26408f74a60d02ce6b4f0daee392ce847055f  # tags/1.16.2^0
-source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=$_commit"
+        "0001-vulkan-Drop-use-of-VK_RESULT_BEGIN_RANGE.patch")
+sha256sums=('SKIP'
+            '0c6c51a371d8f381a2190280913cc41e06c17c25dbb1167043072003b3f0d338')
 
 pkgver() {
     cd $_basename
@@ -36,6 +38,12 @@ prepare() {
 
     # Fix build with lib32-neon 0.31
     git cherry-pick -n f10b424418e448211e3427a76fcd046e157ef0b7
+
+    # Fix build with vulkan-headers 1.2.140
+    git apply -3 ../0001-vulkan-Drop-use-of-VK_RESULT_BEGIN_RANGE.patch
+
+    # Fix build with GCC 10
+    git cherry-pick -n a0cd455dd0e0375c6395fe732173225ea7e18562
 }
 
 build() {
@@ -73,7 +81,6 @@ build() {
         -D dtls=disabled
 
     ninja -C build
-
 }
 
 check() {
@@ -82,9 +89,6 @@ check() {
 
 package() {
     DESTDIR="$pkgdir" meson install -C build
-
-    # Fix link error in /usr/lib32/gstreamer-1.0/libgstdvdread.so
-    ln -sr "${pkgdir}/usr/lib32/libdvdread.so" "${pkgdir}/usr/lib32/libdvdread.so.7"
 
     rm -rf "${pkgdir}"/usr/{bin,include,share}
 }
