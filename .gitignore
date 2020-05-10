@@ -1,0 +1,4 @@
+*~
+*.log
+python*.pkg.tar.xz
+sip-*.tar.gz
