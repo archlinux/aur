@@ -3,7 +3,7 @@ pkgname=readonly-cache
 pkgname1=readonly-cache
 pkgdesc="https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks#Read-only_cache + golang http server & more"
 pkgver=0.0.3
-pkgrel=5
+pkgrel=6
 arch=('any')
 license=()
 makedepends=(go)
@@ -14,7 +14,7 @@ source=(
 "readonly-cache.service"
 "readonlycache.go"
 "PKGBUILD.sig")
-sha256sums=('dcf01f93541943de94e56bcd7884905b2428173e8624e613c47de8c52220eccf'
+sha256sums=('5a6b53cc5b81fff816b4c1725d782ee5fe4a7a03ff113d88d0301c26674b0fa7'
             '08283aac954c8b71c68b6d892b93ab677766cbcfefa06397d2fba088580f104f'
             '75d53916d30a336282690c12da28f131f03cceb2eb0ce88b3ab4d5f9a703d680'
             'ccfe41daa38a45b0498cc6dd9f6636db4a7e835ee5c48c3e952cac038006b5f4'

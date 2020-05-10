@@ -5,7 +5,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 #add all packages in yay's cache to custom local repo and symlink them to pacman's cache
 for f in /home/*/.cache/yay/*/*.pkg.tar.*; do
-    [ -e "$f" ] && repo-add -n /var/lib/pacman/sync/aur-local.db.tar.gz /home/*/.cache/yay/*/*.pkg.tar.* && ln -f /home/*/.cache/yay/*/*.pkg.tar.* /var/cache/pacman/pkg/ && ln -f /var/lib/pacman/sync/* /var/cache/pacman/pkg/ || echo "no AUR packages detected"
+    [ -e "$f" ] && repo-add -n /var/lib/pacman/sync/aur-local.db.tar.gz /home/*/.cache/yay/*/*.pkg.tar.* && ln -f /home/*/.cache/yay/*/*.pkg.tar.* /var/cache/pacman/pkg/ && pacman -Syy && ln -f /var/lib/pacman/sync/* /var/cache/pacman/pkg/ || echo "no AUR packages detected"
     break
 done
 
