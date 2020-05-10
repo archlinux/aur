@@ -1,0 +1,18 @@
+pkgbase = adapta-gtk-theme-colorpack-joshaby-git
+	pkgdesc = A beautiful GTK+ theme based in material design (git version from Joshaby).
+	pkgver = 1.202005091130.r0.g2bdf8a0
+	pkgrel = 1
+	url = https://github.com/Joshaby/Adapta-Colorpack
+	arch = any
+	license = GPL2
+	optdepends = ttf-roboto: recommended font
+	optdepends = noto-fonts: recommended font
+	optdepends = gtk-engine-murrine: for gtk2 themes
+	provides = adapta-gtk-theme-colorpack
+	conflicts = adapta-gtk-theme-colorpack
+	options = !strip
+	source = git+https://github.com/Joshaby/Adapta-Colorpack.git
+	sha256sums = SKIP
+
+pkgname = adapta-gtk-theme-colorpack-joshaby-git
+
