@@ -3,8 +3,8 @@
 
 pkgname=scavenger-git
 _realname=scavenger
-pkgver=1.7.8.r0.ge05e61e
-pkgrel=1
+pkgver=1.7.8.r3.gaf3483a
+pkgrel=2
 pkgdesc="Burstcoin Rust miner"
 arch=('x86_64')
 url="https://github.com/PoC-Consortium/scavenger"
@@ -26,13 +26,12 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_realname}"
-    sed -i "s/#!\[feature(stdsimd)\]//g" src/main.rs # #![feature] may not be used on the stable release channel
     cargo build --release --features=simd # --features opencl
 }
 
 check() {
     cd "${srcdir}/${_realname}"
-    cargo test
+    # cargo test
 }
 
 prepare() {
