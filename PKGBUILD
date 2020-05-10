@@ -1,7 +1,7 @@
 # Maintainer: Alban Fichet <alban.fichet@gmx.fr>
 pkgname=spectral-viewer
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for visualising and manipulating spectral images and HDR images."
 arch=('any')
 url="https://adufay.gitlabpages.inria.fr/SpectralViewer/"
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	cmake . -DINSTALL_PREFIX=/usr
+	cmake . -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
 
