@@ -3,7 +3,7 @@
 
 pkgname=chemdoodle
 pkgver=10.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Chemical drawing and publishing software for desktop, web and mobile (Trial)"
 arch=('x86_64')
 url="http://www.chemdoodle.com"
@@ -12,28 +12,25 @@ depends=('gtk2'
 		 'libxtst'
 		 'java-environment'
 		 'libxslt'
+		 'libnet'
 		 'libxxf86vm'
 		 'alsa-lib')
 depends_x86_64=('gcc-libs-multilib')
 depends_i686=('gcc-libs')
 makedepends=('gendesk')
-source=("https://www.ichemlabs.com/downloads/ChemDoodle-linux-${pkgver}.bin")
+source=("${pkgname}-${pkgver}.bin::https://www.ichemlabs.com/downloads/ChemDoodle-linux-${pkgver}.bin")
 sha256sums=('5680f50918c547ef97f378e2c6f6a30bda7cf78e50df003c05fda3c1f076e16b')
 _appname=ChemDoodle
 
-prepare() {
-  cd "$srcdir"
+package() {
   # Create desktop file
   gendesk -f -n --pkgname "$pkgname" \
 	--pkgdesc "$pkgdesc" \
-	--name "ChemDoodle" \
-	--genericname "ChemDoodle" \
+	--name "$_appname" \
+	--genericname "$_appname" \
 	--comment "$pkgdesc" \
-	--exec /opt/ChemDoodle/ChemDoodle \
+	--exec /opt/$_appname/$_appname \
 	--categories 'Education;Science;Graphics;Office;Application;'
-}
-
-package() {
   install -Dm644 "${srcdir}/${pkgname}.desktop" \
 	"${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 "${srcdir}/$_appname/resources/$_appname.png" \
