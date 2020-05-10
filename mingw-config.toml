@@ -534,6 +534,7 @@ ranlib = "i686-w64-mingw32-ranlib"
 # Linker to be used to link Rust code. Note that the
 # default value is platform specific, and if not specified it may also depend on
 # what platform is crossing to what platform.
+# Setting this will override the `use-lld` option for Rust code.
 linker = "i686-w64-mingw32-cc"
 
 # Path to the `llvm-config` binary of the installation of a custom LLVM to link
@@ -591,6 +592,7 @@ ranlib = "x86_64-w64-mingw32-ranlib"
 # Linker to be used to link Rust code. Note that the
 # default value is platform specific, and if not specified it may also depend on
 # what platform is crossing to what platform.
+# Setting this will override the `use-lld` option for Rust code.
 linker = "x86_64-w64-mingw32-cc"
 
 # Path to the `llvm-config` binary of the installation of a custom LLVM to link

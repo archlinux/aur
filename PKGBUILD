@@ -11,7 +11,7 @@ _cargo=0.43.0
 
 pkgname=mingw-w64-rust
 _prefix=opt/rust
-pkgver=1.43.0
+pkgver=1.43.1
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
 noextract=("rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "cargo-${_cargo}-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=('d0899933840369f07394b211cb0b53a5cd4634907633f0bee541133c8b75e309'
+sha256sums=('eb0a103c67c4565403d9e6f84a1c708982a5e9e5b3c0d831e4d6f6451795d106'
             'SKIP'
             '21405992fa02411a7a5bbd88e8218cd3e4609fe18bee687bb5ad6bab81e3f783'
             'SKIP'
@@ -47,7 +47,7 @@ sha256sums=('d0899933840369f07394b211cb0b53a5cd4634907633f0bee541133c8b75e309'
             'SKIP'
             'fe7e40786f6e013d471f2f8ed51ba268611122065930a6d5a10bf20146997270'
             'SKIP'
-            'f7e2746025bb16ef091e1f9f94e853368bec9ed52480bf8b4818283e81750cbc')
+            'e9c533229ec32ef55606fde07d7830c54c8bb30d3a691bf5e19c3b709af47d18')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/rust/cargo/config")
