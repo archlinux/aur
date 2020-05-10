@@ -2,8 +2,8 @@
 
 pkgname=xow-git
 _pkgname=xow
-pkgver=28
-pkgrel=2
+pkgver=96
+pkgrel=1
 pkgdesc="Linux driver for the Xbox One wireless dongle"
 arch=(x86_64)
 url=https://github.com/medusalix/xow
@@ -20,15 +20,23 @@ pkgver() {
 
 build() {
   cd $srcdir/$_pkgname
-  make PREFIX="/usr" BUILD=RELEASE
-  make PREFIX="/usr" BUILD=RELEASE xow.service
+  make PREFIX=/usr BUILD=RELEASE
+  make PREFIX=/usr BUILD=RELEASE xow.service
 }
 
 package() {
   cd $srcdir/$_pkgname
 
-  make DESTDIR=$pkgdir/usr PREFIX="" install
-
+  make PREFIX=/usr DESTDIR=$pkgdir/ install
+  
+  echo ""
   echo "If you want to enable and start the service please run:"
   echo "systemctl enable --now xow.service"
+  echo ""
+  echo "If you want udev rules to take effect please run:"
+  echo "udevadm control --reload; udevadm trigger"
+  echo ""
+  echo "If this is the first time installing this package it is recommended to"
+  echo " restart the system to make the module blacklist take effect"
+  echo ""
 }
