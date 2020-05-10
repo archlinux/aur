@@ -9,8 +9,8 @@ pkgver=1.98.0
 pkgrel=1
 pkgdesc="Cross-platform text editor, written in Lazarus"
 arch=('x86_64')
-url="http://uvviewsoft.com/cudatext/"
-license=('MPL-2.0')
+url="http://uvviewsoft.com/cudatext"
+license=('MPL2')
 depends=('python')
 provides=('cudatext')
 options=('!strip')
@@ -19,6 +19,4 @@ sha256sums=('4cd2ae951a60d49147d104a7ad8938d5514d06c26af5942bdd9c5dd72d515bdc')
 
 package() {
   tar xvf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s /usr/share/licenses/common/MPL2/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
