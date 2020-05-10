@@ -1,7 +1,8 @@
 # Maintainer: Thomas Gerbet <thomas at gerbet dot me>
 
 # yubikey-agent can be started with `systemctl --user start yubikey-agent.service`
-# Started with the user session with `systemctl --user enable yubikey-agent.service`
+# Enabled with the user session with `systemctl --user enable yubikey-agent.service`
+# The PC/SC Smart Card Daemon must activated: `systemctl start pcscd.socket`
 # Socket path is "${XDG_RUNTIME_DIR}/yubikey-agent/yubikey-agent.sock"
 
 pkgname=yubikey-agent
