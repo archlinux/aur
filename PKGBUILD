@@ -2,8 +2,8 @@
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=burstcoin-wallet
-pkgver=2.4.2
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="The world's first HDD-mined cryptocurrency using an energy efficient and fair Proof-of-Capacity (PoC) consensus algorithm"
 arch=(x86_64)
 url='https://github.com/burst-apps-team/burstcoin'
@@ -16,8 +16,8 @@ install=burstcoin-wallet.install
 source=(https://github.com/burst-apps-team/burstcoin/releases/download/v${pkgver}/burstcoin-${pkgver}.zip
         burstcoin-wallet.service
         burstcoin-wallet.desktop)
-sha256sums=('a03cb6491b4fa870b7d3498f9449df822d5612ab167576b4408c5ba0bbcf1afc'
-            'ffb9c5431f65485b2c08b4ca6c2b68b3c2001961b22ed4a66c528ed26bcb2dae'
+sha256sums=('e480c09094df6fc0f56c85aa947e952fae3321e1b201b61cc77750d1a5f8bc84'
+            'c58fb9b5d7aea20f64ee5a15b5999dde626fd6d96d5771a0ca32879b6e9e7bd8'
             '648f64707713ec4dc6dbcb000d85a0bae43a2960667c029ad220155221718039')
 
 package() {
@@ -25,8 +25,8 @@ package() {
 
     # Lib directory
     install -d $pkgdir/opt/$pkgname
-    cp -a conf html burst.jar genscoop.cl init-mysql.sql $pkgdir/opt/$pkgname
-    install -Dm755 burst.sh -t $pkgdir/opt/$pkgname
+    cp -a conf html burst.jar $pkgdir/opt/$pkgname
+    mkdir $pkgdir/opt/$pkgname/burst_db
 
     # Daemon
     install -Dm644 $pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
