@@ -66,9 +66,9 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.6
-_minor=11
+_minor=12
 _srcname=linux-${_major}
-_clr=${_major}.8-945
+_clr=${_major}.11-948
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -347,7 +347,7 @@ done
 
 sha256sums=('e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622'
             'SKIP'
-            '5b6df91b676c34767677bfec2c99b90718b8d28b900c8180b860f31962b95de9'
+            'ef84dbd5f9e7879a5b53d26ab766614775c22343ecf2ddd6beb969dcde1f20a6'
             'SKIP'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
             '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e')
