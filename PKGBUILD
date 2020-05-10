@@ -11,7 +11,7 @@ license=('custom')
 depends=('gtk2' 'nss' 'p7zip' 'tar' 'gzip' 'cpio' 'zip' 'libxss' 'gconf' 'libxtst')
 source=("${pkgname}-${pkgver}.AppImage::https://public-cdn.cloud.unity3d.com/hub/prod/UnityHub.AppImage")
 PKGEXT='.pkg.tar'
-sha256sums=('dea24cb7c5729fa1776580b744a836d9e0bcea4a87e543737e70503ba97cd926')
+sha256sums=('SKIP')
 
 build() {
   # Extract AppImage
