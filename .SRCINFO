@@ -1,0 +1,22 @@
+pkgbase = git-bookmark-git
+	pkgdesc = Keep your bookmarks with your repository
+	pkgver = 0.4.2.r8.g9c258a2
+	pkgrel = 1
+	url = https://github.com/Qu4tro/git-bookmark
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = sed
+	makedepends = make
+	depends = git
+	depends = docopts
+	optdepends = ruby-ronn: Required when re-generating docs
+	optdepends = shellcheck: Required to lint the code
+	optdepends = bats-core: Required to run the test suit
+	provides = git-bookmark
+	conflicts = git-bookmark
+	source = git-bookmark::git+https://github.com/Qu4tro/git-bookmark.git
+	md5sums = SKIP
+
+pkgname = git-bookmark-git
+
