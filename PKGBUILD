@@ -1,7 +1,7 @@
 # Maintainer: Daniel Mason <daniel@m2.nz>
 pkgbase=riot-desktop-beta-git
 pkgver=v1.6.0.r0.gbeda6c3b
-pkgrel=1
+pkgrel=2
 pkgname=riot-desktop-beta-git
 pkgdesc="A glossy Matrix collaboration beta client for the desktop."
 arch=('any')
@@ -12,6 +12,7 @@ makedepends=('git' 'nodejs' 'jq' 'yarn')
 conflicts=('riot-desktop' 'riot-desktop-beta' 'riot-web')
 provides=('riot-desktop-beta')
 backup=("etc/riot/config.json")
+optdepends=('smixembed-git: tray support for i3wm and others')
 source=('riot-desktop-beta-git::git://github.com/vector-im/riot-web.git#tag=v1.6.0'
         "riot-desktop-beta.desktop"
         "riot-desktop-beta.sh"
