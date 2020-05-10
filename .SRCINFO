@@ -1,7 +1,7 @@
 pkgbase = refind-theme-dreary-git
 	pkgdesc = A gloomy rEFInd theme based on evanpurkhiser/rEFInd-minimal and lukechilds/refind-ambience
 	pkgver = r16.b745a78
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dheishman/refind-dreary
 	arch = any
 	license = none

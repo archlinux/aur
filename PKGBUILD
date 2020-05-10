@@ -4,7 +4,7 @@
 
 pkgname=refind-theme-dreary-git
 pkgver=r16.b745a78
-pkgrel=1
+pkgrel=2
 pkgdesc="A gloomy rEFInd theme based on evanpurkhiser/rEFInd-minimal and lukechilds/refind-ambience"
 arch=('any')
 url="https://github.com/dheishman/refind-dreary"
