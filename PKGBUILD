@@ -27,7 +27,7 @@ provides=('popcorntime' 'popcorntime-ce')
 conflicts=('popcorntime' 'popcorntime-ce')
 options=('!strip')
 _zipfile="Popcorn-Time-${pkgver}-linux64.zip"
-source=("https://github.com/popcorn-official/popcorn-desktop/releases/download/v$pkgver/$_zipfile"
+source=("https://get.popcorntime.app/build/$_zipfile"
         "${_pkgname}.desktop" )
 sha256sums=('fdfabf8800c385bafec4bf162dd26f7df6d8c4c24671dce0aa23997716c5a314'
             '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
