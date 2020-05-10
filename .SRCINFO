@@ -1,16 +1,19 @@
 pkgbase = gnuclad
-	pkgdesc = A cladogram tree generator mainly used by GNU/Linux distro timeline project
+	pkgdesc = A cladogram tree generator mainly used by Linux and BSD distribution timeline projects
 	pkgver = 0.2.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://launchpad.net/gnuclad
 	arch = i686
 	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL
-	makedepends = binutils
-	makedepends = gcc
-	makedepends = make
-	source = https://github.com/FabioLolix/gnuclad/archive/master.zip
-	md5sums = SKIP
+	source = http://launchpad.net/gnuclad/trunk/0.2/+download/gnuclad-0.2.4.tar.gz
+	source = gnuclad-fix-build.diff::https://github.com/FabioLolix/gnuclad/commit/0cac2b6088d279dd495949a5305ff55b77737da1.diff
+	sha256sums = 7136ee0e36d8de61a97235556f879bb0abe6521efb65a5a97bc73979999e424d
+	sha256sums = 8b50865427b8546ec221db65873cec75b8500c4bb99d1969eca6d9deee18c65a
 
 pkgname = gnuclad
 
