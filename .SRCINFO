@@ -1,0 +1,18 @@
+pkgbase = keys-pub
+	pkgdesc = keys.pub CLI client and service (keys, keysd)
+	pkgver = 0.0.43
+	pkgrel = 1
+	url = https://keys.pub/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = gzip
+	depends = libfido2
+	optdepends = org.freedesktop.secrets: storing secrets
+	source = keys-pub-0.0.43.tar.gz::https://github.com/keys-pub/keysd/archive/v0.0.43.tar.gz
+	sha256sums = 710df1fb4c478c3c5768433e60f41f9b3ad3424724a06b6f1dc1b8dbde511377
+
+pkgname = keys-pub
+
