@@ -4,12 +4,12 @@ pkgbase = cronsun-bin
 	pkgrel = 2
 	url = https://github.com/shunfei/cronsun
 	arch = x86_64
-	license = Apache-2.0
+	license = Apache
 	depends = mongodb
 	depends = etcd
 	provides = cronsun
-	source = https://github.com/shunfei/cronsun/releases/download/v0.3.5/cronsun-v0.3.5-linux-amd64.zip
-	md5sums = 2759e389ae41da8ddbd4011d7fef0a99
+	source = cronsun-bin-0.3.5.zip::https://github.com/shunfei/cronsun/releases/download/v0.3.5/cronsun-v0.3.5-linux-amd64.zip
+	sha256sums = d863cff03ce6c7d65b23856c5778ca6a426ee28fb813e791f31c85df2ad053d1
 
 pkgname = cronsun-bin
 

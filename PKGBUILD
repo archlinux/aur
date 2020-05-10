@@ -6,11 +6,11 @@ pkgrel=2
 pkgdesc='A Distributed, Fault-Tolerant Cron-Style Job System'
 arch=('x86_64')
 url="https://github.com/shunfei/cronsun"
-license=('Apache-2.0')
+license=('Apache')
 provides=('cronsun')
 depends=('mongodb' 'etcd')
-source=("${url}/releases/download/v0.3.5/cronsun-v${pkgver}-linux-amd64.zip")
-md5sums=('2759e389ae41da8ddbd4011d7fef0a99')
+source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/cronsun-v${pkgver}-linux-amd64.zip")
+sha256sums=('d863cff03ce6c7d65b23856c5778ca6a426ee28fb813e791f31c85df2ad053d1')
 
 package() {
 	install -Dm755 "${srcdir}/cronsun-v${pkgver}"/{cronnode,cronweb,csctl} -t "${pkgdir}/usr/bin"
