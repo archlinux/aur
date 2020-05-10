@@ -1,17 +1,19 @@
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+
 pkgname=xf86-input-mtrack
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An Xorg driver for multitouch trackpads and clickpads"
 arch=('i686' 'x86_64')
 url="https://github.com/p2rkw/$pkgname"
 license=('GPL2')
 depends=('mtdev' 'libxss')
-makedepends=('xorg-server-devel' 'resourceproto' 'glproto' 'pixman')
+makedepends=('xorg-server-devel' 'xproto-git' 'pixman')
 backup=('etc/X11/xorg.conf.d/10-mtrack.conf')
 source=(10-mtrack.conf
         $url/archive/v$pkgver.tar.gz)
-md5sums=('ffb540330d92957e0da28af5a005136e'
-         'f935f526835ec4e6b9eb9e52d77c9ca1')
+sha256sums=('5e0bc6ee814165be31e0265842f066c290b544757451d15c7e6eb370d4c0e356'
+            'a976723720028832afd45bfcaab479f60833ff6f1c780be727d1791675dc14c4')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
