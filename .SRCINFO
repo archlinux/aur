@@ -1,7 +1,7 @@
 pkgbase = edk2-avmf
 	pkgdesc = QEMU ARM/AARCH64 Virtual Machine Firmware (Tianocore UEFI firmware).
-	pkgver = 20190501
-	pkgrel = 4
+	pkgver = 20200201
+	pkgrel = 1
 	url = https://fedoraproject.org/wiki/Using_UEFI_with_QEMU
 	install = edk2-avmf.install
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = edk2-avmf
 	optdepends = qemu: To make use of edk2 ovmf firmware
 	optdepends = qemu-arch-extra: QEMU for foreign architectures
 	optdepends = virt-manager: Desktop user interface for managing virtual machines
-	source = https://mirrors.tuna.tsinghua.edu.cn/fedora/releases/31/Everything/x86_64/os/Packages/e/edk2-aarch64-20190501stable-4.fc31.noarch.rpm
-	source = https://mirrors.tuna.tsinghua.edu.cn/fedora/releases/31/Everything/x86_64/os/Packages/e/edk2-arm-20190501stable-4.fc31.noarch.rpm
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = https://mirrors.tuna.tsinghua.edu.cn/fedora/updates/32/Everything/x86_64/Packages/e/edk2-aarch64-20200201stable-1.fc32.noarch.rpm
+	source = https://mirrors.tuna.tsinghua.edu.cn/fedora/updates/32/Everything/x86_64/Packages/e/edk2-arm-20200201stable-1.fc32.noarch.rpm
+	sha256sums = 8ac885bdf84307a129892082a17b977309dac909939ce3f91dc69def61a23390
+	sha256sums = 4231c16f116a6ff82e284565404f576a6c3cc6777837a6ed0dc2047a238f0fc5
 
 pkgname = edk2-avmf
 
