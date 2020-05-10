@@ -1,7 +1,7 @@
 # Maintainer: Damien Molinier <damien-43\N{COMMERCIAL AT}gmx.fr>
 
 pkgname=hg-evolve
-pkgver=9.3.1
+pkgver=10.0.0
 pkgrel=1
 pkgdesc='Flexible evolution of Mercurial history'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mercurial')
 #groups=('hgext')
 url='https://www.mercurial-scm.org/doc/evolution/'
 source=("https://files.pythonhosted.org/packages/source/h/hg-evolve/hg-evolve-${pkgver}.tar.gz")
-sha512sums=('453104989ec1e4a7072098f8c453290d66270f1992ab1a9a7c94be96f1c3e2b9989940796579de1e11f298ffdb7eaf7b9c9bb05def61fba4feeb5e2f39299670')
+sha512sums=('4c88af31584d61df7fe397015e185d0191a021f89a23630b6d71ead5acb233f4b71638f3637e12e1d04b03fb79f127a754eeac0e85ab2b8d045665645d528d13')
 
 _pyexe=$(hg debuginstall | perl -nE "/Python executable \((.*)\)/ and print \$1")
 
