@@ -38,7 +38,7 @@ build() {
 	cd "$srcdir/msync"
 	mkdir -p build
 	cd build
-	cmake .. -DCMAKE_BUILD_TYPE=Release -DMSYNC_BUILD_TESTS=OFF
+	cmake .. -DCMAKE_BUILD_TYPE=Release -DMSYNC_BUILD_TESTS=OFF -DMSYNC_USER_CONFIG=ON -DMSYNC_FILE_LOG=OFF
 	cmake --build . --parallel
 }
 
