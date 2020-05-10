@@ -1,15 +1,15 @@
-pkgbase = ros-melodic-rosbag-migration-rule
+pkgbase = ros-noetic-rosbag-migration-rule
 	pkgdesc = ROS - This empty package allows to export rosbag migration rule files without depending on rosbag.
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://wiki.ros.org/rosbag_migration_rule
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	source = ros-melodic-rosbag-migration-rule-1.0.0.tar.gz::https://github.com/ros/rosbag_migration_rule/archive/1.0.0.tar.gz
-	sha256sums = 3943772fda87d82b84b0209d4da2e266872740b62f10447a0ad21b881edd20a2
+	makedepends = ros-noetic-catkin
+	source = ros-noetic-rosbag-migration-rule-1.0.1.tar.gz::https://github.com/ros/rosbag_migration_rule/archive/1.0.1.tar.gz
+	sha256sums = d92b7ae873835b084595538e547b19dbb7a2fc76f503bb24deefebc87eae9407
 
-pkgname = ros-melodic-rosbag-migration-rule
+pkgname = ros-noetic-rosbag-migration-rule
 
