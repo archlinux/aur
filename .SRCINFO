@@ -8,9 +8,10 @@ pkgbase = copy-pasta-git
 	makedepends = git
 	makedepends = dep
 	makedepends = go-pie
+	depends = glibc
 	provides = copy-pasta
 	source = git+https://github.com/jutkko/copy-pasta
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = copy-pasta-git
 
