@@ -1,9 +1,9 @@
 # Maintainer: eolianoe <eolianoe At GoogleMAIL DoT com>
-# Contributor: jedbrown
 # Maintainer: wuxb <wuxb45@gmail.com>
+# Contributor: jedbrown
 
 pkgname=papi
-pkgver=6.0.0
+pkgver=6.0.0.1
 pkgrel=1
 pkgdesc="Performance Application Programming Interface"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ url="http://icl.cs.utk.edu/papi/"
 license=('BSD')
 depends=('glibc' 'gcc-fortran')
 source=(http://icl.cs.utk.edu/projects/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('3442709dae3405c2845b304c06a8b15395ecf4f3899a89ceb4d715103cb4055f')
+sha256sums=('3cd7ed50c65b0d21d66e46d0ba34cd171178af4bbf9d94e693915c1aca1e287f')
 conflicts=('libpfm4')
 
 build() {
