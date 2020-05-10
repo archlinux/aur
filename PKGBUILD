@@ -3,8 +3,8 @@
 
 pkgbase=python-dotenv
 pkgname=('python-dotenv' 'python2-dotenv')
-pkgver=0.10.3
-pkgrel=3
+pkgver=0.13.0
+pkgrel=1
 pkgdesc="Get and set values in your .env file in local and production servers"
 arch=('any')
 url="https://github.com/theskumar/python-dotenv/"
@@ -13,7 +13,7 @@ depends=('python-click' 'python2-click')
 makedepends=('python-setuptools' 'python2-setuptools')
 # checkdepends=('python-pytest' 'python-sh' 'python2-pytest' 'python2-sh')
 source=("https://files.pythonhosted.org/packages/source/${pkgbase::1}/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('f157d71d5fec9d4bd5f51c82746b6344dffa680ee85217c123f4a0c8117c4544')
+sha256sums=('3b9909bc96b0edc6b01586e1eed05e71174ef4e04c71da5786370cebea53ad74')
 
 
 build() {
