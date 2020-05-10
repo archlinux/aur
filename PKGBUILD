@@ -1,4 +1,5 @@
-# Maintainer: tleydxdy <shironeko@waifu.club>
+# Maintainer: Yunxiang Li <shironeko@waifu.club>
+
 pkgname=gnu-poke-git
 pkgver=r3085.bb2998d4
 pkgrel=1
@@ -20,7 +21,8 @@ pkgver() {
 }
 
 build() {
-    cd "$pkgname"
+    cd "${pkgname}"
+
     ./bootstrap --skip-po
     mkdir build && cd build
     ../configure --prefix=/usr
@@ -28,11 +30,13 @@ build() {
 }
 
 check() {
-    cd "$pkgname/build"
+    cd "${pkgname}/build"
+
     make -k check
 }
 
 package() {
-    cd "$pkgname/build"
-    make DESTDIR="$pkgdir/" install
+    cd "${pkgname}/build"
+
+    make DESTDIR="${pkgdir}/" install
 }
