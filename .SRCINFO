@@ -1,14 +1,15 @@
 pkgbase = libitl
-	pkgdesc = The Islamic tools library for prayer times and Hijri calculations
-	pkgver = 0.7.0
-	pkgrel = 5
-	url = http://www.arabeyes.org/
+	pkgdesc = Islamic Tools and Libraries (ITL)
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/arabeyes-org/
 	arch = i686
 	arch = x86_64
 	license = LGPL
+	makedepends = cmake
 	depends = glibc
-	source = http://downloads.sourceforge.net/arabeyes/libitl-0.7.0.tar.gz
-	md5sums = 86d7fadce96433dde67df61190b0bd0b
+	source = https://github.com/arabeyes-org/ITL/archive/v0.8.0.tar.gz
+	md5sums = b1c949e8083ac49f637f5d93d910f2fe
 
 pkgname = libitl
 
