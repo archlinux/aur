@@ -9,8 +9,9 @@ blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 post_install() {
-    note "You will need to create a config file to use nfancurve."
-    note "An example config can be found at /usr/share/doc/nfancurve/config.sh.example"
+    note "Make sure CoolBits are enabled for the correct Device. See USAGE.md."
+    note "You may want to edit the fan curve config in /etc/nfancurve.conf"
+    note "To start service use systemctl --user start nfancurve.service"
 }
 
 post_upgrade() {
