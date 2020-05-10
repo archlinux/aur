@@ -4,7 +4,7 @@
 #
 pkgname="wp-desktop"
 pkgver="5.1.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="WordPress.com Desktop client"
 url="https://desktop.wordpress.com/"
 _url="https://github.com/Automattic/wp-desktop"
@@ -37,7 +37,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}"/WordPress*/
+    cd "${srcdir}"/wordpress*/
     install -d ${pkgdir}/usr/share/wpcom
     mv * ${pkgdir}/usr/share/wpcom
     install -d ${pkgdir}/usr/share/applications

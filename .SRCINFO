@@ -1,7 +1,7 @@
 pkgbase = wp-desktop
 	pkgdesc = WordPress.com Desktop client
 	pkgver = 5.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://desktop.wordpress.com/
 	arch = x86_64
 	license = GPL2
