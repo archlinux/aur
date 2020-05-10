@@ -2,7 +2,7 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 _pkgname=google-drive-ocamlfuse
 pkgname=google-drive-ocamlfuse-git
-pkgver=r621.d1702dc
+pkgver=r635.0543cb6
 pkgrel=1
 pkgdesc='FUSE-based file system backed by Google Drive, written in OCaml'
 arch=('x86_64' 'i686')
