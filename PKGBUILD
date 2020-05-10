@@ -56,5 +56,4 @@ build() {
 
 package() {
 	install -DT "$srcdir/.go/src/mcping/mcping/build/mcping" "$pkgdir/usr/bin/mcping"
-	chmod 777 $srcdir/.go/src/
 }
