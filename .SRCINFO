@@ -1,7 +1,7 @@
 pkgbase = csi-hg
 	pkgdesc = An automatic confluence prover for term rewrite systems (TRSs) (mercurial version)
 	pkgver = 1.2.3.r2104.1ffa9886eb7f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://colo6-c703.uibk.ac.at/software/csi
 	arch = i686
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Jonas Schöpf <jonas at schoepf dot me>
 pkgname=csi-hg
 pkgver=1.2.3.r2104.1ffa9886eb7f
-pkgrel=1
+pkgrel=2
 pkgdesc="An automatic confluence prover for term rewrite systems (TRSs) (mercurial version)"
 arch=('i686' 'x86_64')
 url="http://colo6-c703.uibk.ac.at/software/csi"
