@@ -1,7 +1,7 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=diffimg-git
-pkgver=r60.0f57743
+pkgver=r64.f4dacb6
 pkgrel=1
 pkgdesc='Qt based GUI to diff images'
 arch=('i686' 'x86_64')
