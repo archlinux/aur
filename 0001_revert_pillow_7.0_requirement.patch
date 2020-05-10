@@ -1,0 +1,33 @@
+diff -Naur ./superpaper-2.0.2.orig/setup.py ./superpaper-2.0.2/setup.py
+--- ./superpaper-2.0.2.orig/setup.py	2020-05-09 20:16:03.999703051 -0400
++++ ./superpaper-2.0.2/setup.py	2020-05-09 20:18:31.242189059 -0400
+@@ -58,7 +58,7 @@
+ 
+         # python_requires="~=3.5",
+         install_requires=[
+-            "Pillow>=7.0.0",
++            "Pillow>=6.0.0",
+             "screeninfo>=0.6.1",
+             "numpy>=1.18.0",
+             "system_hotkey>=1.0.3",
+diff -Naur ./superpaper-2.0.2.orig/superpaper/wallpaper_processing.py ./superpaper-2.0.2/superpaper/wallpaper_processing.py
+--- ./superpaper-2.0.2.orig/superpaper/wallpaper_processing.py	2020-05-09 20:16:03.996369661 -0400
++++ ./superpaper-2.0.2/superpaper/wallpaper_processing.py	2020-05-09 20:16:46.463443631 -0400
+@@ -927,7 +927,7 @@
+         new_size = (
+             round(resize_multiplier * image_size[0]),
+             round(resize_multiplier * image_size[1]))
+-        img = img.resize(new_size, resample=quality, reducing_gap=reducing_gap)
++        img = img.resize(new_size, resample=quality) #, reducing_gap=reducing_gap)
+         # crop vertically to target height
+         extra_height = new_size[1] - res[1]
+         if extra_height < 0:
+@@ -958,7 +958,7 @@
+         new_size = (
+             round(resize_multiplier * image_size[0]),
+             round(resize_multiplier * image_size[1]))
+-        img = img.resize(new_size, resample=quality, reducing_gap=reducing_gap)
++        img = img.resize(new_size, resample=quality) #, reducing_gap=reducing_gap)
+         # crop horizontally to target width
+         extra_width = new_size[0] - res[0]
+         if extra_width < 0:
