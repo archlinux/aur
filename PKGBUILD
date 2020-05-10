@@ -1,24 +1,20 @@
-# Maintainer: Alessandro Pazzaglia <jackdroido at gmail dot com>
-
 pkgname=pyinstaller2
 _pyname=PyInstaller
-pkgver=3.2.1
+pkgver=3.6
 pkgrel=1
 pkgdesc="An application to convert python scripts into stand-alone binaries"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.pyinstaller.org"
 license=('GPL')
-depends=('python2')
-makedepends=('python2-setuptools')
+depends=('python2-setuptools' 'python2-altgraph')
 optdepends=(
-    'python2-crypto: executable encryption support'
-    'upx: executable compression support'
+  'upx: executable compression support'
 )
 source=(
-    "https://github.com/pyinstaller/pyinstaller/releases/download/v${pkgver}/${_pyname}-${pkgver}.tar.bz2"
+  "https://github.com/pyinstaller/pyinstaller/releases/download/v${pkgver}/${_pyname}-${pkgver}.tar.gz"
 )
 sha256sums=(
-    'f08ca806bc26e62034bca181a4b85de22568a3d39bdb062f05927c6e86c2a48c'
+  '3730fa80d088f8bb7084d32480eb87cbb4ddb64123363763cf8f2a1378c1c4b7'
 )
 options=('!strip')
 
@@ -28,5 +24,5 @@ package() {
     sed -i -e 's_pyi-\(.* = \)_pyi2-\1_g' \
         -e 's_pyinstaller\(.* = \)_pyinstaller2\1_g' setup.py
 
-    python2 setup.py install --root "${pkgdir}"
+    python2 setup.py install --root "${pkgdir}" --optimize=1
 }
