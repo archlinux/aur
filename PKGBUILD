@@ -21,7 +21,7 @@ _localmodcfg=
 
 pkgbase=linux-gc
 pkgver=5.6.11
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
 arch=(x86_64)
@@ -33,7 +33,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_bmqversion=5.6-r3
+_bmqversion=5.6-r4
 _bmq_patch="bmq_v${_bmqversion}.patch"
 _gcc_more_v='20191217'
 source=(
@@ -44,6 +44,10 @@ source=(
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
   "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/e2679f79fbee1061a331bb2afd4e7c050ec21f76.patch"
   "0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch::https://github.com/archlinux/linux/commit/da707adaee9ff035c943178160be54a90de00cb3.patch"
+  "0003-gcc-plugins-drop-support-for-GCC-4.7.patch::https://github.com/archlinux/linux/commit/dba68a9d4df76d49d32245e4236713a43fb321da.patch"
+  "0004-gcc-common.h-Update-for-GCC-10.patch::https://github.com/archlinux/linux/commit/41e53fdbbf5121960fd44427c2ae7536d8fdd701.patch"
+  "0005-Makefile-disallow-data-races-on-gcc-10-as-well.patch::https://github.com/archlinux/linux/commit/af805f5f1d2e61dd2cf907d9635f0abc66fe1197.patch"
+  "0006-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch::https://github.com/archlinux/linux/commit/309b6eca2e2605accf7a3b02b47b5c2732dbe543.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -54,10 +58,14 @@ sha256sums=('d6dd6cbe99429f088eddb248abce7832e8f8e45eb072cbf0d0f86b5b87221baa'
             'SKIP'
             'b97b4b90f51876aaa4fa910e1ce801552f7e086aec3026a64f406581beae791b'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
-            '2340925904efa3594cc65a7bae4fbff233d5d8bc7db605ce08acaca7450d2471'
+            '1b95d36635c7dc48ce45a33d6b1f4eb6d34f51600901395d28fd22f28daee8e9'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
-            '6f3fd6f0ed859deb925a1467954c22b620ee5040500c5fd27cc4f79145bcb177'
-            'af2a4ab817a9f5423f6d2e325bcf747914b1c0e2d3b1d806bc45604c03c9bb56')
+            'e6be88d1a967dbd2c5207d5fbd6de31994340ea3a66978f27a6e7c05637d6344'
+            '25750f7fabafc02ffeb9089d880a80dfb073135a54935a0d4ef24fed53e1a017'
+            'cea055a34a5a2ea7c5c5e6c03e1ea074336539d8dd8178dc9075da1fd48deadb'
+            '98cee3f1405e6c063764022baf616f35b5267a607c7bb3ec1d2ee2ac70b8d236'
+            '6842bc9ded3627d0962352d2fe2d644dd25b820cd49fbe8b2e6b5df6a6e16afe'
+            '748f4ca35b334791442c20f36daba8f6f2b540898d19f35f860882f722d5b936')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
