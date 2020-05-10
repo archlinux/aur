@@ -1,13 +1,14 @@
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Max Pray a.k.a. Synthead <synthead@gmail.com>
-# Maintainer: Ruben Kelevra <ruben@vfn-nrw.de>
+# Contributor: Ruben Kelevra <ruben@vfn-nrw.de>
 
 pkgname="perl-dbix-searchbuilder"
 _cpanname="DBIx-SearchBuilder"
-pkgver="1.65"
+pkgver="1.67"
 pkgrel="1"
 pkgdesc="Encapsulate SQL queries and rows in simple perl objects."
 arch=("any")
-url="http://search.cpan.org/~tsibley/$_cpanname-$pkgver/"
+url="https://cpan.metacpan.org/authors/id/B/BP/BPS/${_cpanname}-${pkgver}.tar.gz"
 license=("GPL" "PerlArtistic")
 depends=(
   "perl-cache-simple-timedexpiry"
@@ -22,8 +23,8 @@ depends=(
   "perl>=5.5.0"
 )
 options=("!emptydirs")
-source=("http://search.cpan.org/CPAN/authors/id/T/TS/TSIBLEY/$_cpanname-$pkgver.tar.gz")
-sha256sums=('4b91265f6543031a9a267e10d5c7bc6926f100d19ac1edae36793227419ae349')
+source=("https://cpan.metacpan.org/authors/id/B/BP/BPS/${_cpanname}-${pkgver}.tar.gz")
+sha256sums=('453179c22a61af573e502c8396f3f28daea03dfdc162094b90f9b3c331d563da')
 
 # Function to change to the working directory and set
 # environment variables to override undesired options.
