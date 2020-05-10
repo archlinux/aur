@@ -1,7 +1,7 @@
 pkgbase = crow-translate
 	pkgdesc = A simple and lightweight translator that allows to translate and say selected text using Google, Yandex and Bing translate API
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crow-translate/crow-translate
 	arch = x86_64
 	license = GPL3
@@ -17,7 +17,7 @@ pkgbase = crow-translate
 	source = QHotkey-1.3.0.tar.gz::https://github.com/Skycoder42/QHotkey/archive/1.3.0.tar.gz
 	source = QTaskbarControl-2.0.0.tar.gz::https://github.com//Skycoder42/QTaskbarControl/archive/2.0.0.tar.gz
 	source = SingleApplication-3.0.18.tar.gz::https://github.com/itay-grudev/SingleApplication/archive/3.0.18.tar.gz
-	sha256sums = 81f40f4e2813dd1b56b7593ddfd52273ee9454b032d492e059da9ce86b50545a
+	sha256sums = 1a1d4d69c5c6d4f78c6c857c4ba7431adecc8bfbb1d7a931851b923526853d90
 	sha256sums = 20cc2736f6dec3a376b6746525076de2760e997085fb3d3f2776f0ce5b676182
 	sha256sums = d21867b4f15a67c03d26c960da864a63368ccdf7da2dfaa545c135aad506085e
 	sha256sums = 85039ca8ff899ed724ed16b719be7a814392a67ad53b4b59f160f73fb53dc74c
