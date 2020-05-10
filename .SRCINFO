@@ -1,14 +1,14 @@
 pkgbase = ytop-bin
 	pkgdesc = A TUI system monitor written in Rust
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/cjbassi/ytop
 	arch = x86_64
 	license = MIT
 	provides = ytop
 	conflicts = ytop
-	source = ytop-0.6.0.tar.gz::https://github.com/cjbassi/ytop/releases/download/0.6.0/ytop-0.6.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = a1755f93d78d305056ecda8d9782accae2ffaca87ae6a2cc35ac1c3057c1027c
+	source = ytop-0.6.1.tar.gz::https://github.com/cjbassi/ytop/releases/download/0.6.1/ytop-0.6.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 9eef8c164e7af00d0d9a6aa6bc84dc43420f7717b86f6ca3c3d673cda79fbd3c
 
 pkgname = ytop-bin
 
