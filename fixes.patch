@@ -1,0 +1,68 @@
+From ef0fffd046af0dad27b0b90781c5412a532d82fd Mon Sep 17 00:00:00 2001
+From: Rhys Perry <rhysperry111@gmail.com>
+Date: Sun, 10 May 2020 08:03:34 +0100
+Subject: [PATCH] Fixes from
+ https://homeless.wtf/docs/general-documentation/iphoneobs/
+
+---
+ CMakeLists.txt      | 28 +++++++++++++++-------------
+ src/ffmpeg-decode.c |  1 -
+ 2 files changed, 15 insertions(+), 14 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3378089..bc39601 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -316,22 +316,24 @@ endif()
+ 
+ # --- Linux-specific build settings and tasks ---
+ if(UNIX AND NOT APPLE)
+-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
++  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+ 
+-	target_compile_options(portal PRIVATE -fPIC)
+-	target_compile_options(libusbmuxd PRIVATE -fPIC)
+-	target_compile_options(libplist PRIVATE -fPIC)
+-	target_compile_options(libcnary PRIVATE -fPIC)
+-	set_target_properties(obs-ios-camera-source PROPERTIES PREFIX "")
+-	target_link_libraries(obs-ios-camera-source
+-		obs-frontend-api)
+ 
+-	file(GLOB locale_files data/locale/*.ini)
++find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
++  target_compile_options(portal PRIVATE -fPIC)
++  target_compile_options(libusbmuxd PRIVATE -fPIC)
++  target_compile_options(libplist PRIVATE -fPIC)
++  target_compile_options(libcnary PRIVATE -fPIC)
++  set_target_properties(obs-ios-camera-source PROPERTIES PREFIX "")
++  target_link_libraries(obs-ios-camera-source
++    obs-frontend-api)
++
++  file(GLOB locale_files data/locale/*.ini)
+ 
+-	install(TARGETS obs-ios-camera-source
+-		LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/obs-plugins")
+-	install(FILES ${locale_files}
+-		DESTINATION "${CMAKE_INSTALL_PREFIX}/share/obs/obs-plugins/obs-ios-camera-source/locale")
++  install(TARGETS obs-ios-camera-source
++    LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/obs-plugins")
++    install(FILES ${locale_files}
++    DESTINATION "${CMAKE_INSTALL_PREFIX}/share/obs/obs-plugins/obs-ios-camera-source/locale")
+ endif()
+ # --- End of section ---
+ 
+diff --git a/src/ffmpeg-decode.c b/src/ffmpeg-decode.c
+index 75ca4da..e141c15 100644
+--- a/src/ffmpeg-decode.c
++++ b/src/ffmpeg-decode.c
+@@ -23,7 +23,6 @@ int ffmpeg_decode_init(struct ffmpeg_decode *decode, enum AVCodecID id)
+ {
+     int ret;
+ 
+-    avcodec_register_all();
+     memset(decode, 0, sizeof(*decode));
+ 
+     decode->codec = avcodec_find_decoder(id);
+-- 
+2.26.2
+
