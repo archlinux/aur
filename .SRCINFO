@@ -1,13 +1,13 @@
 pkgbase = xf86-input-mtrack
 	pkgdesc = An Xorg driver for multitouch trackpads and clickpads
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/p2rkw/xf86-input-mtrack
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = xorg-server-devel
-	makedepends = xproto-git
+	makedepends = xorgproto
 	makedepends = pixman
 	depends = mtdev
 	depends = libxss
