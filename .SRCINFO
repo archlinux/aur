@@ -1,6 +1,6 @@
 pkgbase = unexicon-sound-theme-git
 	pkgdesc = XDG sound theme for the unexicon distribution
-	pkgver = 0.9.r1.g5d9ed49
+	pkgver = 0.9.r2.g88c67ee
 	pkgrel = 1
 	url = https://github.com/bbidulock/unexicon-sound-theme
 	arch = any
