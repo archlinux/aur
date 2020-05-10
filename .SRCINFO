@@ -1,0 +1,13 @@
+pkgbase = deluged-service
+	pkgdesc = Systemd unit for the deluge torrent daemon
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://deluge-torrent.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = deluge
+	provides = deluge-service
+
+pkgname = deluged-service
+
