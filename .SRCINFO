@@ -1,9 +1,9 @@
 pkgbase = python-yarl-gns3
 	pkgdesc = Yet another URL library (GNS3)
-	pkgver = 1.3.0
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/aio-libs/yarl/
-	arch = any
+	arch = x86_64
 	groups = gns3
 	license = Apache
 	checkdepends = python-pytest
@@ -12,12 +12,12 @@ pkgbase = python-yarl-gns3
 	makedepends = python-setuptools
 	depends = glibc
 	depends = python
-	depends = python-multidict-gns3
+	depends = python-multidict
 	depends = python-idna
 	provides = python-yarl
 	conflicts = python-yarl
-	source = python-yarl-gns3-1.3.0.tar.gz::https://github.com/aio-libs/yarl/archive/v1.3.0.tar.gz
-	sha256sums = 0d4acfd6c750612871e11c49eea43213949f1528686a184eefc1366142a6fbb3
+	source = python-yarl-gns3-1.4.2.tar.gz::https://github.com/aio-libs/yarl/archive/v1.4.2.tar.gz
+	sha256sums = a400eb3f54f7596eeaba8100a8fa3d72135195423c52808dc54a43c6b100b192
 
 pkgname = python-yarl-gns3
 

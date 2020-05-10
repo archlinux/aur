@@ -3,32 +3,38 @@
 
 _pkgname=yarl
 pkgname=python-"$_pkgname"-gns3
-pkgver=1.3.0
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Yet another URL library (GNS3)"
-arch=('any')
 url="https://github.com/aio-libs/yarl/"
+arch=('x86_64')
 license=('Apache')
 groups=('gns3')
 provides=("python-$_pkgname")
 conflicts=("python-$_pkgname")
-depends=('glibc' 'python' 'python-multidict-gns3' 'python-idna')
+depends=('glibc' 'python' 'python-multidict' 'python-idna')
 makedepends=('cython' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-runner')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aio-libs/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('0d4acfd6c750612871e11c49eea43213949f1528686a184eefc1366142a6fbb3')
+sha256sums=('a400eb3f54f7596eeaba8100a8fa3d72135195423c52808dc54a43c6b100b192')
+
+prepare() {
+  cd ${_pkgname}-${pkgver}
+  sed 's| .install-cython ||g' -i Makefile
+}
 
 build() {
-    cd "$_pkgname-$pkgver"
-    LANG=en_US.UTF-8 python setup.py build
+  cd ${_pkgname}-${pkgver}
+  make cythonize
+  LANG=en_US.UTF-8 python setup.py build
 }
 
 check() {
-    cd "$_pkgname-$pkgver"
-    python setup.py test
+  cd ${_pkgname}-${pkgver}
+  python setup.py test
 }
 
 package() {
-    cd "$_pkgname-$pkgver"
-    LANG=en_US.UTF-8 python setup.py install --root="$pkgdir" -O1 --skip-build
+  cd ${_pkgname}-${pkgver}
+  LANG=en_US.UTF-8 python setup.py install --root="${pkgdir}" -O1 --skip-build
 }
