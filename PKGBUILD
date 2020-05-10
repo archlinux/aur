@@ -2,7 +2,7 @@
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=play.it
-pkgver=2.11.3
+pkgver=2.11.4
 pkgrel=1
 pkgdesc="Easy way to install games on Linux"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   'unzip: to extract some archives'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://forge.dotslashplay.it/play.it/scripts/-/archive/${pkgver}/scripts-${pkgver}.tar.gz")
-sha1sums=('dac37b94774426bc36e93976e185e3fe44d1102d')
+sha1sums=('9858a16af2e9398c8e27a15c68d43447a42a79f9')
 
 build() {
   cd scripts-$pkgver
