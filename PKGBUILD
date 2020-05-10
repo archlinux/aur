@@ -3,9 +3,9 @@
 # Contributor: Ray Donnelly <mingw.android@gmail.com>
 
 pkgname=mingw-w64-python2
-pkgver=2.7.15
+pkgver=2.7.18
 _pybasever=2.7
-pkgrel=3
+pkgrel=1
 pkgdesc="A high-level scripting language (mingw-w64)"
 arch=('any')
 license=('PSF')
@@ -16,6 +16,7 @@ depends=('mingw-w64-crt'
          'mingw-w64-ncurses'
          'mingw-w64-openssl'
          'mingw-w64-libffi'
+         'mingw-w64-sqlite'
          'mingw-w64-tcl'
          'mingw-w64-tk'
          'mingw-w64-zlib')
@@ -25,15 +26,12 @@ optdepends=('mingw-w64-wine: runtime support')
 options=('staticlibs' '!buildflags' '!strip')
 source=("Python-${pkgver}.tar.xz::https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
         'patches.tar.xz'
-        'descr_ref.patch'
         "wine-python.sh")
-sha1sums=('f99348a095ec4a6411c84c0d15343d11920c9724'
-          '54891e03b3ce179055f6c5da046848d7b130bf8e'
-          '8cc6ac63e909063eb16bbdabc0f0eac7d24ff0c1'
+sha1sums=('678d4cf483a1c92efd347ee8e1e79326dc82810b'
+          '02fe742643efd511ac1af51132587571d7e4050c'
           'a024e7fd7eea7984a0d050164a4a015dea762da7')
-sha512sums=('27ea43eb45fc68f3d2469d5f07636e10801dee11635a430ec8ec922ed790bb426b072da94df885e4dfa1ea8b7a24f2f56dd92f9b0f51e162330f161216bd6de6'
-            '028a40fecc940ebd895b7bcfe50717cc836c24d35323f5e1c8994dca66382bb2163002c923ca59977e0f531bffaa515903e488700eece3243573f03f80091f16'
-            '2e16eb23eb402dbe921c09bce99b400c10939114b4a1ded0e94a744d8cb66427947bc8d07c4fb054f9fe0906d10d1da509fc2273fd136225c0f019cc43dd045d'
+sha512sums=('a7bb62b51f48ff0b6df0b18f5b0312a523e3110f49c3237936bfe56ed0e26838c0274ff5401bda6fc21bf24337477ccac49e8026c5d651e4b4cafb5eb5086f6c'
+            '01249c95858ceb909e9e88ea79e25d0165ce229cacec7829779473657fe42c2cd643cc314d8136a6e661b807cc8d02fa7ffac6d1eed56905cf2332590330e252'
             'd0fb7f0e1a3d98a170ebea301226ad8caa7ffab9fc0bee224abc31c22875c892b43d3468dffbdd15eb71ca1b5260e039d0fceb21ecc92341b9bb6949d7e9be6a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -144,11 +142,11 @@ prepare() {
     0720-mingw-pdcurses_ISPAD.patch \
     0740-grammar-fixes.patch \
     0750-Add-interp-Python-DESTSHARED-to-PYTHONPATH-b4-pybuilddir-txt-dir.patch \
-    0760-msys-monkeypatch-os-system-via-sh-exe.patch \
     0770-msys-replace-slashes-used-in-io-redirection.patch \
     0790-mingw-add-_exec_prefix-for-tcltk-dlls.patch \
     0800-mingw-install-layout-as-posix.patch \
     0820-mingw-reorder-bininstall-ln-symlink-creation.patch \
+    0821-make-python2-non-default-python.patch \
     0830-add-build-sysroot-config-option.patch \
     0840-add-builddir-to-library_dirs.patch \
     0845-Remove-compiler-lib-dirs-from-extension-lib-dirs.patch \
@@ -168,6 +166,9 @@ prepare() {
     1030-use-gnu_printf-in-format.patch \
     1040-install-msilib.patch \
     1050-skip-add-db-includes-for-win.patch \
+    1060-dont-include-system-ncurses-path.patch \
+    1850-disable-readline.patch \
+    1900-ctypes-dont-depend-on-internal-libffi.patch
 
   plain "Apply Renato Silva's patch to distutils"
   apply_patch_with_msg \
@@ -187,9 +188,16 @@ prepare() {
   apply_patch_with_msg \
     2701-disable-broken-gdbm-module.patch
 
+  # https://github.com/msys2/MINGW-packages/issues/5155
+  apply_patch_with_msg 2030-fix-msvc9-import.patch
+
   # Fix winsock2 include in timemodule.c and readline.c
   apply_patch_with_msg \
     python-2.7.15-add-missing-winsock2-include.patch
+
+  # Some extra fixups
+  apply_patch_with_msg \
+    extra_fixups.patch
 
   # run PGEN through wine
   sed -i "s|\\\$(PGEN) \\\$(GRAMMAR_INPUT)|wine \\\$(PGEN) \\\$(GRAMMAR_INPUT)|g" Makefile.pre.in
@@ -230,10 +238,6 @@ prepare() {
 
   # Workaround asdl_c.py/makeopcodetargets.py errors after we touched the shebangs
   touch Include/Python-ast.h Python/Python-ast.c Python/opcode_targets.h
-
-  # FS#48761
-  # http://bugs.python.org/issue25750
-  patch -Np1 -i ../descr_ref.patch
 }
 
 build() {
@@ -245,7 +249,7 @@ build() {
 
     CFLAGS+=" -fwrapv -D__USE_MINGW_ANSI_STDIO=1 "
     CXXFLAGS+=" -fwrapv -D__USE_MINGW_ANSI_STDIO=1 "
-    CPPFLAGS+=" -I/usr/${_arch}/include/ncursesw "
+    CPPFLAGS+=" -I/usr/${_arch}/include/ncurses "
 
     if check_option "strip" "y"; then
       LDFLAGS+=" -s "
@@ -302,7 +306,7 @@ package() {
     [[ -d "${pkgdir}/usr/${_arch}"/share/gdb/python2/ ]] || mkdir -p "${pkgdir}/usr/${_arch}"/share/gdb/python2/
     cp -f python.exe-gdb.py "${pkgdir}/usr/${_arch}"/share/gdb/python2/python_gdb.py
     
-    for file in 2to3 python{.exe,-config{'',{'',-u}.sh}}; do
+    for file in 2to3; do
       rm "${pkgdir}/usr/${_arch}"/bin/$file
     done
     rm "${pkgdir}/usr/${_arch}"/lib/pkgconfig/python.pc

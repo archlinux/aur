@@ -1,13 +1,13 @@
 pkgbase = mingw-w64-python2
 	pkgdesc = A high-level scripting language (mingw-w64)
-	pkgver = 2.7.15
-	pkgrel = 3
+	pkgver = 2.7.18
+	pkgrel = 1
 	url = https://www.python.org/
 	arch = any
 	license = PSF
 	makedepends = mingw-w64-pkg-config
 	makedepends = mingw-w64-configure
-	makedepends = python2>=2.7.15
+	makedepends = python2>=2.7.18
 	makedepends = mingw-w64-wine
 	depends = mingw-w64-crt
 	depends = mingw-w64-expat
@@ -15,6 +15,7 @@ pkgbase = mingw-w64-python2
 	depends = mingw-w64-ncurses
 	depends = mingw-w64-openssl
 	depends = mingw-w64-libffi
+	depends = mingw-w64-sqlite
 	depends = mingw-w64-tcl
 	depends = mingw-w64-tk
 	depends = mingw-w64-zlib
@@ -22,17 +23,14 @@ pkgbase = mingw-w64-python2
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = Python-2.7.15.tar.xz::https://www.python.org/ftp/python/2.7.15/Python-2.7.15.tar.xz
+	source = Python-2.7.18.tar.xz::https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz
 	source = patches.tar.xz
-	source = descr_ref.patch
 	source = wine-python.sh
-	sha1sums = f99348a095ec4a6411c84c0d15343d11920c9724
-	sha1sums = 54891e03b3ce179055f6c5da046848d7b130bf8e
-	sha1sums = 8cc6ac63e909063eb16bbdabc0f0eac7d24ff0c1
+	sha1sums = 678d4cf483a1c92efd347ee8e1e79326dc82810b
+	sha1sums = 02fe742643efd511ac1af51132587571d7e4050c
 	sha1sums = a024e7fd7eea7984a0d050164a4a015dea762da7
-	sha512sums = 27ea43eb45fc68f3d2469d5f07636e10801dee11635a430ec8ec922ed790bb426b072da94df885e4dfa1ea8b7a24f2f56dd92f9b0f51e162330f161216bd6de6
-	sha512sums = 028a40fecc940ebd895b7bcfe50717cc836c24d35323f5e1c8994dca66382bb2163002c923ca59977e0f531bffaa515903e488700eece3243573f03f80091f16
-	sha512sums = 2e16eb23eb402dbe921c09bce99b400c10939114b4a1ded0e94a744d8cb66427947bc8d07c4fb054f9fe0906d10d1da509fc2273fd136225c0f019cc43dd045d
+	sha512sums = a7bb62b51f48ff0b6df0b18f5b0312a523e3110f49c3237936bfe56ed0e26838c0274ff5401bda6fc21bf24337477ccac49e8026c5d651e4b4cafb5eb5086f6c
+	sha512sums = 01249c95858ceb909e9e88ea79e25d0165ce229cacec7829779473657fe42c2cd643cc314d8136a6e661b807cc8d02fa7ffac6d1eed56905cf2332590330e252
 	sha512sums = d0fb7f0e1a3d98a170ebea301226ad8caa7ffab9fc0bee224abc31c22875c892b43d3468dffbdd15eb71ca1b5260e039d0fceb21ecc92341b9bb6949d7e9be6a
 
 pkgname = mingw-w64-python2

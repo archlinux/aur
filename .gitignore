@@ -1,0 +1,8 @@
+*
+*/
+
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!patches.tar.xz
+!wine-python.sh
