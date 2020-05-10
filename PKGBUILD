@@ -6,7 +6,7 @@
 
 pkgname=yubikey-agent
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A seamless ssh-agent for YubiKeys'
 arch=('x86_64')
 url="https://filippo.io/yubikey-agent"
@@ -19,7 +19,7 @@ source=(
 )
 sha256sums=(
   'ba105395ec8321512742f69ce9cf7fc2fe4e107cf667c2b48d13749efff23d5c'
-  '29de8c4a3825f17919154fcc775a4c9da1e42569e8aee5b5e5b5150f25d2810f'
+  'f50e0876cb6d13d7cbbb325053f3c6702aabc16948e266cc7c92a0ffc9ace0b9'
 )
 
 build() {
