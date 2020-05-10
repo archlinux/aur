@@ -3,7 +3,7 @@
 
 pkgname=bspwmbar-git
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight status bar for bspwm'
 arch=('x86_64')
 license=('ISC')
