@@ -4,16 +4,13 @@
 # Thanks: Markus Koch <CClassicVideos@aol.com>
 # Thanks: Thomas Dziedzic < gostrc at gmail >
 
-# https://git.archlinux.org/svntogit/community.git/tree/trunk/PKGBUILD?h=packages/gtkwave
-# https://salsa.debian.org/electronics-team/gtkwave/blob/master/debian/rules
-
+_pkgname=gtkwave
 pkgname=gtkwave-tcl
-pkgver=3.3.101
+pkgver=3.3.104
 pkgrel=1
 pkgdesc='A wave viewer which reads LXT, LXT2, VZT, GHW, FST and VCD/EVCD files (with Tcl/Tk support)'
 arch=('x86_64')
-# code https://sourceforge.net/projects/gtkwave/
-url='http://gtkwave.sourceforge.net' # https unavailable
+url='http://gtkwave.sourceforge.net'
 license=('GPL' 'custom:MIT' 'custom')
 depends=(
   'bzip2'
@@ -38,16 +35,16 @@ makedepends=('gperf')
 provides=('gtkwave')
 conflicts=('gtkwave')
 install='gtkwave.install'
-source=("http://gtkwave.sourceforge.net/${pkgname%-tcl}-${pkgver}.tar.gz"
-        "http://gtkwave.sourceforge.net/${pkgname%-tcl}.pdf"
+source=("https://sourceforge.net/projects/gtkwave/files/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+        "http://gtkwave.sourceforge.net/${_pkgname}.pdf"
         "gtkwave.install")
 
-md5sums=('e301b74745d6696623272ca9e7e62ea0'
+md5sums=('23879689ecf7e2cdd2cd5a91c5c601da'
          'SKIP'
          '5c404e6a86f1c209344a5d7d2fa07753')
 
 build() {
-  cd "$srcdir/${pkgname%-tcl}-${pkgver}"
+  cd "$srcdir/${_pkgname}-${pkgver}"
 
   ./configure \
     --prefix=/usr \
@@ -68,7 +65,7 @@ build() {
     --enable-tk \
     \
     --with-gsettings \
-    --with-tcl=/usr/lib  \
+    --with-tcl=/usr/lib \
     --with-tk=/usr/lib \
 
     # --with-gconf \
@@ -80,7 +77,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname%-tcl}-${pkgver}"
+  cd "$srcdir/${_pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
   make DESTDIR="${pkgdir}" install-strip
@@ -92,6 +89,4 @@ package() {
   mkdir -p "$pkgdir/usr/share/doc/gtkwave"
   install -D -m644 "$srcdir/gtkwave.pdf" \
     "$pkgdir/usr/share/doc/gtkwave/gtkwave.pdf"
-
-  mv -v "$pkgdir/usr/share/gtkwave/gtkwave.odt" "$pkgdir/usr/share/doc/gtkwave/gtkwave.odt"
 }

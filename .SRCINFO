@@ -1,6 +1,6 @@
 pkgbase = gtkwave-tcl
 	pkgdesc = A wave viewer which reads LXT, LXT2, VZT, GHW, FST and VCD/EVCD files (with Tcl/Tk support)
-	pkgver = 3.3.101
+	pkgver = 3.3.104
 	pkgrel = 1
 	url = http://gtkwave.sourceforge.net
 	install = gtkwave.install
@@ -24,10 +24,10 @@ pkgbase = gtkwave-tcl
 	depends = xz
 	provides = gtkwave
 	conflicts = gtkwave
-	source = http://gtkwave.sourceforge.net/gtkwave-3.3.101.tar.gz
+	source = https://sourceforge.net/projects/gtkwave/files/gtkwave-3.3.104/gtkwave-3.3.104.tar.gz
 	source = http://gtkwave.sourceforge.net/gtkwave.pdf
 	source = gtkwave.install
-	md5sums = e301b74745d6696623272ca9e7e62ea0
+	md5sums = 23879689ecf7e2cdd2cd5a91c5c601da
 	md5sums = SKIP
 	md5sums = 5c404e6a86f1c209344a5d7d2fa07753
 
