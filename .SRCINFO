@@ -1,0 +1,18 @@
+pkgbase = wdisplays
+	pkgdesc = GUI display configurator for wlroots compositors
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/cyclopsian/wdisplays
+	arch = x86_64
+	license = GPL
+	makedepends = meson
+	depends = gtk3
+	depends = libepoxy
+	depends = wayland
+	depends = wayland-protocols
+	provides = wdisplays
+	source = wdisplays-1.0::https://github.com/cyclopsian/wdisplays/archive/1.0.tar.gz
+	sha256sums = fa34d5bdfd87d833e18a89b2acacc27833d7297374719773a705f2d3e89cdddf
+
+pkgname = wdisplays
+
