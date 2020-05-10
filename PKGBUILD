@@ -2,8 +2,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=bspwmbar-git
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.5.5.r22.g5f71809
+pkgrel=1
+epoch=1
 pkgdesc='A lightweight status bar for bspwm'
 arch=('x86_64')
 license=('ISC')
@@ -13,9 +14,12 @@ optdepends=('ttf-nerd-fonts-symbols: default prefix icons font')
 makedepends=('git')
 conflicts=('bspwmbar')
 provides=('bspwmbar')
-source=("git+$url")
-sha256sums=('SKIP')
-# add config.h, if you want to configure something differently
+source=("git+$url#commit=5f7180" config.h)
+sha256sums=('SKIP' 'SKIP')
+
+prepare() {
+  cp config.h ${pkgname%-git}
+}
 
 pkgver() {
   cd ${pkgname%-git}
