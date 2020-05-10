@@ -6,9 +6,9 @@ pkgrel=1
 pkgdesc="A bittorrent plugin for VLC."
 arch=(x86_64)
 url="https://github.com/johang/vlc-bittorrent"
-license=('GPL')
-depends=(vlc libtorrent-rasterbar)
-makedepends=(boost)
+license=('GPL3')
+depends=('vlc' 'libtorrent-rasterbar')
+makedepends=()
 conflicts=('vlc-bittorrent')
 replaces=('vlc-bittorrent')
 source=('git+https://github.com/johang/vlc-bittorrent.git')
@@ -19,18 +19,12 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-
 build() {
     cd "${srcdir}/${_pkgname}"
     autoreconf -i
     ./configure --prefix=/usr \
                 --libdir=/usr/lib/vlc/plugins/bittorrent
     make
-}
-
-check() {
-    cd "${srcdir}/${_pkgname}"
-    make check
 }
 
 package() {
