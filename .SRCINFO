@@ -1,6 +1,6 @@
 pkgbase = xde-sounds-git
 	pkgdesc = XDG sound themes for the X Desktop Environment
-	pkgver = 1.0.r10.g7918713
+	pkgver = 1.0.r11.g9e2e4b3
 	pkgrel = 1
 	url = https://github.com/bbidulock/xde-sounds
 	arch = any
