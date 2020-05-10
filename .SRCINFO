@@ -1,7 +1,7 @@
 pkgbase = riot-desktop-beta-git
 	pkgdesc = A glossy Matrix collaboration beta client for the desktop.
 	pkgver = v1.6.0.r0.gbeda6c3b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://riot.im
 	arch = any
 	license = Apache
@@ -10,7 +10,7 @@ pkgbase = riot-desktop-beta-git
 	makedepends = jq
 	makedepends = yarn
 	depends = electron
-	optdepends = smixembed-git: tray support for i3wm and others
+	optdepends = snixembed-git: tray support for i3wm and others
 	provides = riot-desktop-beta
 	conflicts = riot-desktop
 	conflicts = riot-desktop-beta
