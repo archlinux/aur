@@ -4,45 +4,56 @@ pkgname=mcping-git
 pkgver=latest
 pkgrel=1
 pkgdesc="Ping any Minecraft server."
-url="https://github.com/go-mc/mcping"
-arch=('x86_64' 'i686')
+arch=('i686' 'x86_64')
 license=('MIT')
-makedepends=('go')
-source=("${pkgname}::git+${url}")
-sha256sums=('SKIP')
+url='https://github.com/go-mc/mcping'
+makedepends=('go' 'git')
+
+source=(
+	"git://github.com/go-mc/mcping.git"
+)
+
+md5sums=(
+	'SKIP'
+)
+
+backup=(
+)
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
-
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/mcping"
+	git log -1 --format="%cd" --date=short | sed s/-//g
 }
 
 prepare() {
-	cd "${srcdir}/${pkgname}"
+	cd "$srcdir/mcping"
 
-	install -m755 -d "${srcdir}/go/src/github.com/go-mc/"
-	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/go-mc/mcping"
+	rm -rf "$srcdir/.go/src"
 
-	cd "${srcdir}/go/src/github.com/go-mc/mcping"
+	mkdir -p "$srcdir/.go/src"
 
-	export GOPATH="${srcdir}/go"
-	go get -v ./...
+	export GOPATH="$srcdir/.go"
+
+	mv "$srcdir/mcping" "$srcdir/.go/src/"
+
+	cd "$srcdir/.go/src/mcping/"
+	ln -sf "$srcdir/.go/src/mcping/" "$srcdir/mcping"
+
+	echo "Running 'go get'..."
+	go get
 }
 
 build() {
-	cd "${srcdir}/go/src/github.com/go-mc/mcping"
+	export GOPATH="$srcdir/.go"
+
+	cd "$srcdir/.go/src/mcping/mcping/"
 
 	mkdir -p build
 
-	export GOPATH="${srcdir}/go"
 	go build -ldflags "-s -w" \
-		-gcflags="all=-trimpath=${GOPATH}/src" \
-		-asmflags="all=-trimpath=${GOPATH}/src" \
 		-o build/mcping .
 }
 
 package() {
-	cd "${srcdir}/go/src/github.com/go-mc/mcping"
-
-	install -Dm755 "./build/mcping" "${pkgdir}/usr/bin/mcping"
+	install -DT "$srcdir/.go/src/mcping/mcping/build/mcping" "$pkgdir/usr/bin/mcping"
 }
