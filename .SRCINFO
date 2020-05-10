@@ -1,6 +1,6 @@
 pkgbase = odio-sacd
 	pkgdesc = SACD decoder
-	pkgver = 20.5.9
+	pkgver = 20.5.8.3
 	pkgrel = 1
 	url = https://tari.in/www/software/odio-sacd
 	arch = i686
