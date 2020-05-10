@@ -1,0 +1,35 @@
+diff -ruN Maelstrom-3.0.6.20200415_131618/buttonlist.h Maelstrom-3.0.6/buttonlist.h
+--- Maelstrom-3.0.6.20200415_131618/buttonlist.h	2020-04-15 13:16:18.370835213 +0300
++++ Maelstrom-3.0.6/buttonlist.h	2020-04-15 13:16:43.780543258 +0300
+@@ -16,7 +16,7 @@
+ 
+ 	void Add_Button(Uint16 x, Uint16 y, Uint16 width, Uint16 height, 
+ 						void (*callback)(void)) {
+-		struct button *belem;
++		button *belem;
+ 		
+ 		for ( belem=&button_list; belem->next; belem=belem->next );
+ 		belem->next = new button;
+@@ -30,7 +30,7 @@
+ 	}
+ 
+ 	void Activate_Button(Uint16 x, Uint16 y) {
+-		struct button *belem;
++		button *belem;
+ 
+ 		for ( belem=button_list.next; belem; belem=belem->next ) {
+ 			if ( (x >= belem->x1) && (x <= belem->x2) &&
+@@ -42,7 +42,7 @@
+ 	}
+ 
+ 	void Delete_Buttons(void) {
+-		struct button *belem, *btemp;
++		button *belem, *btemp;
+ 
+ 		for ( belem=button_list.next; belem; ) {
+ 			btemp = belem;
+@@ -62,3 +62,4 @@
+ 	} button;
+ 	button button_list;
+ };
++
