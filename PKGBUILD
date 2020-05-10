@@ -1,3 +1,4 @@
+# Maintainer: Nish <nin3ty1@gmail.com>
 pkgname=otf-scunthorpe-sans
 pkgver=2
 pkgrel=1
