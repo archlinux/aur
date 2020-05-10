@@ -3,7 +3,7 @@ Description=PostgreSQL database server
 After=network.target
 
 [Service]
-Type=forking
+Type=notify
 TimeoutSec=120
 User=postgres
 Group=postgres
@@ -16,9 +16,10 @@ RuntimeDirectory=postgresql
 RuntimeDirectoryMode=755
 
 ExecStartPre=/usr/bin/postgresql-check-db-dir ${PGROOT}/data
-ExecStart= /usr/bin/pg_ctl -s -D ${PGROOT}/data start -w -t 120
-ExecReload=/usr/bin/pg_ctl -s -D ${PGROOT}/data reload
-ExecStop=  /usr/bin/pg_ctl -s -D ${PGROOT}/data stop -m fast
+ExecStart=/usr/bin/postgres -D ${PGROOT}/data
+ExecReload=/bin/kill -HUP ${MAINPID}
+KillMode=mixed
+KillSignal=SIGINT
 
 # Due to PostgreSQL's use of shared memory, OOM killer is often overzealous in
 # killing Postgres, so adjust it downward
@@ -29,6 +30,14 @@ PrivateTmp=true
 ProtectHome=true
 ProtectSystem=full
 NoNewPrivileges=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+PrivateDevices=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictRealtime=true
+SystemCallArchitectures=native
 
 [Install]
 WantedBy=multi-user.target

@@ -1,46 +1,83 @@
 pkgbase = postgresql-9.6
-	pkgdesc = A powerful, open source object-relational database system
+	pkgdesc = Sophisticated object-relational DBMS
 	pkgver = 9.6.17
-	pkgrel = 1
-	url = http://www.postgresql.org/
-	install = postgresql.install
+	pkgrel = 2
+	url = https://www.postgresql.org/
 	arch = i686
 	arch = x86_64
 	license = custom:PostgreSQL
+	makedepends = krb5
+	makedepends = libxml2
+	makedepends = python
 	makedepends = python2
 	makedepends = perl
 	makedepends = tcl>=8.6.0
-	depends = libxml2
-	depends = krb5
-	depends = openssl>=1.0.0
-	depends = readline>=6.0
-	depends = pam
-	depends = zlib
-	optdepends = python2: for PL/Python support
-	optdepends = perl: for PL/Perl support
-	optdepends = tcl: for PL/Tcl support
-	optdepends = postgresql-old-upgrade: upgrade from previous major version using pg_upgrade
-	provides = postgresql=9.6.17
-	provides = postgresql-libs=9.6.17
-	provides = postgresql-client=9.6.17
-	provides = postgresql-docs=9.6.17
-	conflicts = postgresql
-	conflicts = postgresql-libs
-	conflicts = postgresql-testing
-	conflicts = postgresql-client
-	conflicts = postgresql-docs
+	makedepends = openssl>=1.0.0
+	makedepends = pam
+	makedepends = zlib
+	makedepends = icu
+	makedepends = systemd
+	makedepends = libldap
+	makedepends = llvm
+	makedepends = clang
 	source = https://ftp.postgresql.org/pub/source/v9.6.17/postgresql-9.6.17.tar.bz2
 	source = postgresql-run-socket.patch
+	source = postgresql-perl-rpath.patch
 	source = postgresql.pam
 	source = postgresql.logrotate
 	source = postgresql.service
 	source = postgresql-check-db-dir
+	source = postgresql.sysusers
+	source = postgresql.tmpfiles
 	sha256sums = f6e1e32d32545f97c066f3c19f4d58dfab1205c01252cf85c5c92294ace1a0c2
 	sha256sums = 8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9
+	sha256sums = 5f73b54ca6206bd2c469c507830261ebd167baca074698d8889d769c33f98a31
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
 	sha256sums = 6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e
-	sha256sums = b48fe97f8e43ed0d2041d519119a4dafb70fcae72870951bf4fb7350fe169ac8
-	sha256sums = 2340da0947bcb1c5602008d0ca00588ca0bfa8aca4fa6947a8bdb2c6df800b0e
+	sha256sums = 25fb140b90345828dc01a4f286345757e700a47178bab03d217a7a5a79105b57
+	sha256sums = 40da687da4fb1f6b35f406dd0f48922065d8c905d678e2a27da05806f874b780
+	sha256sums = 7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12
+	sha256sums = 4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57
+
+pkgname = postgresql-libs-9.6
+	pkgdesc = Libraries for use with PostgreSQL
+	depends = krb5
+	depends = openssl>=1.0.0
+	depends = readline>=6.0
+	depends = zlib
+	depends = libldap
+	provides = postgresql-client
+	provides = postgresql-libs=9.6.17
+	conflicts = postgresql-client
+	conflicts = postgresql-libs
+
+pkgname = postgresql-docs-9.6
+	pkgdesc = HTML documentation for PostgreSQL
+	provides = postgresql-docs=9.6.17
+	conflicts = postgresql-docs
+	options = docs
 
 pkgname = postgresql-9.6
+	pkgdesc = Sophisticated object-relational DBMS
+	install = postgresql.install
+	depends = postgresql-libs>=9.6.17
+	depends = krb5
+	depends = libxml2
+	depends = readline>=6.0
+	depends = openssl>=1.0.0
+	depends = pam
+	depends = icu
+	depends = systemd-libs
+	depends = libldap
+	depends = llvm-libs
+	optdepends = python2: for PL/Python 2 support
+	optdepends = python: for PL/Python 3 support
+	optdepends = perl: for PL/Perl support
+	optdepends = tcl: for PL/Tcl support
+	optdepends = postgresql-old-upgrade: upgrade from previous major version using pg_upgrade
+	provides = postgresql=9.6.17
+	conflicts = postgresql
+	options = staticlibs
+	backup = etc/pam.d/postgresql
+	backup = etc/logrotate.d/postgresql
 

@@ -17,7 +17,7 @@ fi
 
 # PGMAJORVERSION is major version
 PGMAJORVERSION=9.6
-# PREVMAJORVERSION is the previous major version
+# PREVMAJORVERSION is the previous major version, e.g., 8.4, for upgrades
 PREVMAJORVERSION=9.5
 
 # Check for the PGDATA structure
