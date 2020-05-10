@@ -1,4 +1,5 @@
-# Maintainer: nerflad (nerflad@gmail.com)
+# Christopher Price <pricechrispy at gmail dot com>
+# Contributor: nerflad (nerflad@gmail.com)
 
 pkgname=gapi-ocaml
 pkgver=0.3.19
