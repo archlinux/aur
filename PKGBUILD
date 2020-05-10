@@ -1,7 +1,7 @@
 # Maintainer: typebrook <typebrook@gmail.com>
 pkgname=gist-lite
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage your gist like a pro"
 arch=(any)
 gist_id=b0d2e7e67aa50298fdf8111ae7466b56
