@@ -3,23 +3,26 @@
 # Based on [r-devel@AUR](https://aur.archlinux.org/packages/r-devel) by Florian Breitwieser <florian.bw@gmail.com>
 
 pkgname=r-devel-svn
-pkgver=r70364
+pkgver=r78400
 pkgrel=1
 pkgdesc="Language and environment for statistical computing and graphics - development version (SVN)"
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://www.r-project.org/'
-depends=('blas' 'lapack' 'bzip2' 'libpng' 'libjpeg' 'libtiff'
-         'ncurses' 'pcre' 'readline' 'zlib' 'perl' 'gcc-libs'
-         'tk' 'libxt' 'libxmu' 'pango' 'xz')
-makedepends=('gcc-fortran' 'subversion')
+depends=('blas' 'bzip2' 'curl' 'icu' 'lapack'
+         'libjpeg' 'libpng' 'libtiff'
+         'libxmu' 'libxt' 'ncurses' 'pango'
+         'pcre2' 'perl'
+         'readline' 'unzip' 'which'
+         'xz' 'zip' 'zlib')
+makedepends=('gcc-fortran' 'rsync')
 conflicts=('r-devel') # r-devel.{png,desktop}, etc/r-devel /usr/bin entries
 backup=("etc/r-devel/Makeconf" "etc/r-devel/Renviron" "etc/r-devel/ldpaths" "etc/r-devel/repositories")
 options=('!makeflags')
 _svnbranch=r-trunk
 source=($_svnbranch::'svn+https://svn.r-project.org/R/trunk'
         'r-devel.desktop'
-	'r-devel.png')
+	      'r-devel.png')
 md5sums=('SKIP'
          'db4aaeb54dec28f831e3fac64705d4be'
          '8862f998939a07a2391840f99ab4a4f6')
