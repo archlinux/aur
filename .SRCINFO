@@ -1,7 +1,7 @@
 pkgbase = autopass.cr
 	pkgdesc = a rofi frontend for pass
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/repomaa/autopass.cr
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = autopass.cr
 	makedepends = rust
 	makedepends = git
 	makedepends = python
+	makedepends = systemd
 	depends = pass
 	depends = rofi
 	depends = xdotool
