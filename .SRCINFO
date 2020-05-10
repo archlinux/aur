@@ -1,20 +1,15 @@
 pkgbase = apt
 	pkgdesc = Command-line package manager used on Debian-based systems
-	pkgver = 2.0.2
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://packages.debian.org
-	arch = i686
 	arch = x86_64
+	arch = aarch64
+	arch = armv7
+	arch = armv8
+	arch = armv7l
+	arch = armv7h
 	license = GPL2
-	makedepends = cmake
-	makedepends = dpkg
-	makedepends = docbook-xsl
-	makedepends = doxygen
-	makedepends = git
-	makedepends = po4a
-	makedepends = gtest
-	makedepends = w3m
-	makedepends = triehash
 	depends = gnupg
 	depends = curl
 	depends = xz
@@ -24,8 +19,18 @@ pkgbase = apt
 	provides = apt-utils
 	conflicts = apt-git
 	replaces = apt-git
-	source = git+https://salsa.debian.org/apt-team/apt.git#tag=2.0.2
-	sha256sums = SKIP
+	source_x86_64 = http://ftp.us.debian.org/debian/pool/main/a/apt/apt_2.1.1_amd64.deb
+	sha256sums_x86_64 = 87760226e8f796b16eac4f464e09ce7a4cdfa8272af6dfd177435489ecd6a108
+	source_aarch64 = http://ftp.us.debian.org/debian/pool/main/a/apt/apt_2.1.1_arm64.deb
+	sha256sums_aarch64 = 035554b17a9372701875364d3d92dacd2ae71ad1ea68102df12b39a842174eaf
+	source_armv7 = http://ftp.us.debian.org/debian/pool/main/a/apt/apt_2.1.1_armhf.deb
+	sha256sums_armv7 = c52f8abcf0c2be06e4fe81b080a51c91a769082e28521333339d0e9fa747299e
+	source_armv8 = http://ftp.us.debian.org/debian/pool/main/a/apt/apt_2.1.1_arm64.deb
+	sha256sums_armv8 = 035554b17a9372701875364d3d92dacd2ae71ad1ea68102df12b39a842174eaf
+	source_armv7l = http://ftp.us.debian.org/debian/pool/main/a/apt/apt_2.1.1_armel.deb
+	sha256sums_armv7l = adb2f046c2a11147952694459fb865a6b9fb19acd6f84e21211a9fde226ff7ac
+	source_armv7h = http://ftp.us.debian.org/debian/pool/main/a/apt/apt_2.1.1_armhf.deb
+	sha256sums_armv7h = c52f8abcf0c2be06e4fe81b080a51c91a769082e28521333339d0e9fa747299e
 
 pkgname = apt
 
