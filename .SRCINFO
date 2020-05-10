@@ -1,6 +1,6 @@
 pkgbase = megax-bin
 	pkgdesc = Molecular Evolutionary Genetics Analysis
-	pkgver = 10.0.5
+	pkgver = 10.1.8
 	pkgrel = 1
 	url = http://www.megasoftware.net
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = megax-bin
 	depends = nss
 	depends = libxss
 	depends = alsa-lib
-	source = https://www.megasoftware.net/do_force_download/megax_10.0.5-1_amd64.deb
+	source = https://www.megasoftware.net/do_force_download/megax_10.1.8-1_amd64.deb
 	source = MEGA_EUA.pdf::https://www.megasoftware.net/download_eua
-	md5sums = 0a292812ef7f006f9f65a267f0c16df5
+	md5sums = 7083d62e933fd482aac50c98a13dd723
 	md5sums = 82f225eaed3a512ca70af54fabaf6690
 
 pkgname = megax-bin
