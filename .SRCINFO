@@ -1,0 +1,15 @@
+pkgbase = armips
+	pkgdesc = An assembler for various ARM and MIPS platforms
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/Kingcom/armips
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	source = https://github.com/Kingcom/armips/archive/v0.11.0.tar.gz
+	sha256sums = c94e29dfda3bdf853590d825562b9c73a3d8e8e995555e021c6b2a6451572681
+
+pkgname = armips
+
