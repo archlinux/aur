@@ -1,4 +1,5 @@
-# Maintainer: Tom Wagner <tom dot a dot wagner at protonmail dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Tom Wagner <tom dot a dot wagner at protonmail dot com>
 # Contributor: Ada Joule <ada dot fulmina at gmail dot com>
 
 pkgname=refind-theme-dreary-git
@@ -8,10 +9,10 @@ pkgdesc="A gloomy rEFInd theme based on evanpurkhiser/rEFInd-minimal and lukechi
 arch=('any')
 url="https://github.com/dheishman/refind-dreary"
 license=('none')
-depends=('refind-efi')
+depends=('refind')
 makedepends=('git')
-source=("${pkgname}::git+https://github.com/dheishman/refind-dreary.git#branch=master")
-md5sums=('SKIP')
+source=("${pkgname}::git+https://github.com/dheishman/refind-dreary.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"

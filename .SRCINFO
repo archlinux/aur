@@ -6,9 +6,9 @@ pkgbase = refind-theme-dreary-git
 	arch = any
 	license = none
 	makedepends = git
-	depends = refind-efi
-	source = refind-theme-dreary-git::git+https://github.com/dheishman/refind-dreary.git#branch=master
-	md5sums = SKIP
+	depends = refind
+	source = refind-theme-dreary-git::git+https://github.com/dheishman/refind-dreary.git
+	sha256sums = SKIP
 
 pkgname = refind-theme-dreary-git
 
