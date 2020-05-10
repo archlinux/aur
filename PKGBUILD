@@ -1,9 +1,9 @@
 # Maintainer: Dominic Meiser git at msrd0 dot de
 
 pkgname=slic3r++
-pkgver=2.2.49.0
-_pkgtag=1.39.0
-pkgrel=2
+pkgver=2.2.50
+_pkgtag=$pkgver
+pkgrel=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 arch=('x86_64')
 url="https://github.com/supermerill/Slic3r"
@@ -13,7 +13,7 @@ makedepends=('boost' 'cereal' 'cmake' 'eigen' 'libigl' 'openvdb' 'wxgtk2') # cma
 source=("https://github.com/supermerill/Slic3r/archive/$_pkgtag.tar.gz"
         "slic3r++.desktop"
 		"0001-wxgtk3-is-broken-on-wayland.patch")
-sha512sums=('5ed6416529551d63932fadab702983a85870c253a598452b45c30a7d97132a5740b826ca8fbf61e747727b2143a1b507207f478309e3887682151106541bda25'
+sha512sums=('f84a37dcaec2a5e24e197572b08ccb3c9cd17d9c048f2e0af0ad52d1b928b11f1447445f6e97b27e2b28e1c51c9666dcfae1f38986d9d5109e10a02d83ea8303'
             '2f9e364724e28e26c328b83cbf76c6d05544469c3ae14324ae11a1c97fc11878d1f892674ddc6440d14d8bfbca80ba8fc0dcbaa7cf3b7420e91962ee9582b8a2'
             'acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5')
 
