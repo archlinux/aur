@@ -1,8 +1,8 @@
 pkgbase = zlib-ng-git
 	pkgdesc = zlib replacement with optimizations for "next generation" systems
-	pkgver = 1.9.9
+	pkgver = 1
 	pkgrel = 1
-	epoch = 2
+	epoch = 3
 	url = https://github.com/zlib-ng/zlib-ng
 	arch = any
 	license = custom
@@ -11,12 +11,11 @@ pkgbase = zlib-ng-git
 	depends = glibc
 	provides = zlib=1.2.11
 	provides = zlib-ng=1.9.9
+	conflicts = zlib
 	conflicts = zlib-ng
 	options = staticlibs
 	source = git+https://github.com/zlib-ng/zlib-ng.git
-	source = zlib-ng.conf
 	b2sums = SKIP
-	b2sums = bf6eb01985db45c6b209a981aa5dbb97c9533fac960cd92ad9aee2d7926f0ec0e133f7df65901ced722fc51bdb362c6bfa3442c8d023db079b6636d109856071
 
 pkgname = zlib-ng-git
 

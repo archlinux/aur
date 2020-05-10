@@ -1,9 +1,9 @@
 # Maintainer: Diab Neiroukh <officiallazerl0rd@gmail.com>
 
 pkgname="zlib-ng-git"
-pkgver=1.9.9
+pkgver=1
 pkgrel=1
-epoch=2
+epoch=3
 pkgdesc="zlib replacement with optimizations for \"next generation\" systems"
 arch=(
 	"any"
@@ -24,6 +24,7 @@ provides=(
 	"zlib-ng=1.9.9"
 )
 conflicts=(
+	"zlib"
 	"zlib-ng"
 )
 options=(
@@ -31,17 +32,15 @@ options=(
 )
 source=(
 	"git+${url}.git"
-	"zlib-ng.conf"
 )
 b2sums=(
 	"SKIP"
-	"bf6eb01985db45c6b209a981aa5dbb97c9533fac960cd92ad9aee2d7926f0ec0e133f7df65901ced722fc51bdb362c6bfa3442c8d023db079b6636d109856071"
 )
 
 build()
 {
 	cd "zlib-ng" || exit
-	./configure --prefix="/opt/zlib-ng" --zlib-compat
+	./configure --prefix="/usr" --zlib-compat
 	make
 }
 
@@ -53,8 +52,6 @@ check()
 
 package()
 {
-	install -D -m644 "zlib-ng.conf" "${pkgdir}/etc/ld.so.conf.d/zlib-ng.conf"
-
 	cd "zlib-ng" || exit
 	make install DESTDIR="${pkgdir}"
 
