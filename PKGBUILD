@@ -3,17 +3,17 @@
 pkgdesc="ROS - ROS console output library."
 url='https://wiki.ros.org/rosconsole'
 
-pkgname='ros-melodic-rosconsole'
-pkgver='1.13.10'
+pkgname='ros-noetic-rosconsole'
+pkgver='1.14.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-rostime
-	ros-melodic-cpp-common
-	ros-melodic-rosunit
-	ros-melodic-catkin
+	ros-noetic-rostime
+	ros-noetic-cpp-common
+	ros-noetic-rosunit
+	ros-noetic-catkin
 )
 
 makedepends=(
@@ -27,9 +27,9 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-rostime
-	ros-melodic-cpp-common
-	ros-melodic-rosbuild
+	ros-noetic-rostime
+	ros-noetic-cpp-common
+	ros-noetic-rosbuild
 )
 
 depends=(
@@ -41,25 +41,22 @@ depends=(
 
 _dir="rosconsole-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/rosconsole/archive/${pkgver}.tar.gz")
-sha256sums=('fc4376acac3c4b786fc362cb26e2d683e0687656f9cb7ad66d02464d3935e777')
+sha256sums=('7b07d609987979856521dc4cf57aa4e0769630b1896bcbef4beffcd61a4db607')
 
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
