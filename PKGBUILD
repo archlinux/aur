@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.6.11
+pkgver=5.6.12
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -81,19 +81,27 @@ source=(
   "http://ck.kolivas.org/patches/5.0/5.6/5.6-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch
+  0003-gcc-plugins-drop-support-for-GCC-4.7.patch
+  0004-gcc-common.h-Update-for-GCC-10.patch
+  0005-Makefile-disallow-data-races-on-gcc-10-as-well.patch
+  0006-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('d6dd6cbe99429f088eddb248abce7832e8f8e45eb072cbf0d0f86b5b87221baa'
+sha256sums=('daea336aace63a9116475b3f698e259073c00bea57a2a545300dba1c45562221'
             'SKIP'
             'f392c9ecbb5177ea2573aaf22935322940ea2be0366f3fb9c9f861431f4aed21'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
             'a6fe596e75333a5ac8ed4a4d63e4408ef38ebef6303889223e236af3ce576877'
-            'a91cd1560d0312f00d0c3d31009e1ca3de83aa133adc3ae9740e2996ef4c3c4b'
-            '7e0f02ca30bf51a1862c4cfc4d09641ba76c5fabaf452883aa495c421008f124')
+            '46c253f0d12b73a0cff3c40b82b656b7c7c423dac9abb61a391042d873eb9c47'
+            'f6eb9166b582cba0b8e4bf859b50cabb5ea9d724e9d1b25937fbc30e26a6a988'
+            'dc1418b2c3f793da567a4bd5e3ad5f161bd415ae20fc67fd68d1edc2f3afce71'
+            '04e773b9d80a17221ffdf7f1bd6ac0b9ec7d2963d0578bbc2edab1a553aac0d0'
+            '2165ef75486f37b84155dbd8dfd63bdf9dd2bc51517428dbfe42b93ad9e46c50'
+            '4f75e2f83e7bd2e0e65c0ce5b4feff9b4d204fa9531c92212b92809c46e4f3c3')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

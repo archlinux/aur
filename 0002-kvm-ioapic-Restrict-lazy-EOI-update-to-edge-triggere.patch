@@ -1,7 +1,7 @@
-From da707adaee9ff035c943178160be54a90de00cb3 Mon Sep 17 00:00:00 2001
+From bb4a15eb06341e6cadc99de418c81375b560af85 Mon Sep 17 00:00:00 2001
 From: Paolo Bonzini <pbonzini@redhat.com>
 Date: Mon, 4 May 2020 12:19:45 -0400
-Subject: [PATCH 2/3] kvm: ioapic: Restrict lazy EOI update to edge-triggered
+Subject: [PATCH 2/7] kvm: ioapic: Restrict lazy EOI update to edge-triggered
  interrupts
 
 Commit f458d039db7e ("kvm: ioapic: Lazy update IOAPIC EOI") introduces
