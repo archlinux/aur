@@ -8,7 +8,7 @@ pkgbase = docksal
 	depends = docker
 	depends = docker-compose
 	source = docksal-1.13.2.tar.gz::https://github.com/docksal/docksal/archive/v1.13.2.tar.gz
-	md5sums = cb12ef4e430620b8f06aa1beb687564a
+	sha256sums = d1b049ff783d9690d9ec1d3cd9a65f17943dddee2587b0c48fb974cb882c1aac
 
 pkgname = docksal
 
