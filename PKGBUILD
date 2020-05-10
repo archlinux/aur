@@ -1,7 +1,7 @@
 
 # Maintainer: Matthias Eberlein
 pkgname=youtube-to-mp3
-pkgver=3.9.9.36
+pkgver=3.9.9.38
 pkgrel=1
 epoch=
 pkgdesc="YouTube to Mp3 converter\nDownloads audio from YouTube or Vimeo and saves it to mp3 or m4a format to listen to locally"
@@ -28,8 +28,8 @@ changelog=
 source_i386=("$pkgname-$pkgver.deb::https://www.mediahuman.com/de/download/YouTubeToMP3.i386.deb")
 source_x86_64=("$pkgname-$pkgver.deb::https://www.mediahuman.com/de/download/YouTubeToMP3.amd64.deb")
 noextract=()
-md5sums_i386=("08da1e84765bef7061d818103aa9b608")
-md5sums_x86_64=("49804de1f9097259659800c2588c86ae")
+md5sums_i386=("1d44f1fc23bf887dd59e6d2cfb9db0d2")
+md5sums_x86_64=("8557a1840cf79fe8bf575c9c501445ab")
 validpgpkeys=()
 
 prepare() {
@@ -58,7 +58,10 @@ pkgver() {
 	if [[ ! "$actpkgverlong" == *"$pkgver" ]]; then
 		cd ..
 		mv "$pkgname-$pkgver.deb" "$pkgname-$actpkgver.deb"
-		mv "$pkgname-$pkgver $pkgname-$actpkgver"
+		mv "$pkgname-$pkgver" "$pkgname-$actpkgver"
+
+		cd ..
+		mv "$pkgname-$pkgver.deb" "$pkgname-$actpkgver.deb"
 	fi
 	echo "$actpkgver"
 }
