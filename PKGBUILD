@@ -1,13 +1,12 @@
 # Maintainer: Cobra <najahannah [at] gmail [dot] com>
 pkgname=portfolio
-pkgver=0.46.1
+pkgver=0.46.3
 pkgrel=1
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
 url="http://buchen.github.io/portfolio/"
 license=('EPL')
-#depends=('java-runtime>=8' 'webkit2gtk')
-depends=('java-runtime=8' 'webkit2gtk')
+depends=('java-runtime>=8' 'webkit2gtk')
 makedepends=('maven' 'gendesk')
 
 _DEST="/usr/share/portfolio"
@@ -16,9 +15,7 @@ _DEST="/usr/share/portfolio"
 [ "$CARCH" = "x86_64" ] && _platform="x86_64"
 
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz")
-sha1sums=('34efdbf1d31ec4f1b32a25fb6c1e97e9b2e9fd2a')
-
-#JRE_VERSION=$(archlinux-java status | grep default | awk '{print $1}')
+sha1sums=('5b9b300ecd7e23dd7524cc26f59d2d70bf36c5ab')
 
 prepare() {
 	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
@@ -34,11 +31,10 @@ prepare() {
 
 build() {
     export MAVEN_OPTS="-Xmx1g"
-    #export JAVA_HOME=/usr/lib/jvm/$JRE_VERSION/jre
-    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/jre
+    export JAVA_HOME=/usr/lib/jvm/default-runtime
     cd $pkgname-$pkgver
     cd portfolio-app
-    mvn clean install -Dgenerate-target-platform=true -Dtycho.disableP2Mirrors  -Dmaven.repo.local=$srcdir/.mvn
+    mvn clean install -Dgenerate-target-platform=true -Dtycho.disableP2Mirrors -Dmaven.repo.local=$srcdir/.mvn
 }
 
 package() {
