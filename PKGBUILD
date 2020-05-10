@@ -5,11 +5,11 @@
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=ungoogled-chromium-ozone
-pkgver=81.0.4044.129
-pkgrel=3
+pkgver=81.0.4044.138
+pkgrel=1
 _pkgname=ungoogled-chromium
 _launcher_ver=6
-_ungoogled_ver=81.0.4044.129-1
+_ungoogled_ver=81.0.4044.138-1
 pkgdesc="A lightweight approach to removing Google web service dependency with patches for wayland support via Ozone"
 arch=('x86_64')
 url="https://ungoogled-software.github.io/"
@@ -45,7 +45,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         vaapi-build-fix.patch
         eglGetMscRateCHROMIUM.patch
         fix-vaapi-ozone-build.patch)
-sha256sums=('ff74592f83ed91c082f746c6b0a3acf384bad91f170bd24548971c17f43046d3'
+sha256sums=('f478f28b8111cb70231df4c36e754d812ad7a94b7c844e9d0515345a71fd77a6'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
             '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
@@ -54,13 +54,13 @@ sha256sums=('ff74592f83ed91c082f746c6b0a3acf384bad91f170bd24548971c17f43046d3'
             '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
             # -----------
-            '869f130e552c4c2d1cf992e855d449034b005dce4d05a9aa8bba530745f3a2b9'
+            '53f0d7a41d785ec9430971ca58b4b6d02979c739c5205f7ab92872f66f0aa192'
             'c6ca2806ffb45cf55c0320f9985e605c105d717e140eb8786d8e292796aec35d'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a'
             'fad5e678d62de0e45db1c2aa871628fdc981f78c26392c1dccc457082906a350'
             '1dd330409094dc4bf393f00a51961a983360ccf99affd4f97a61d885129d326e'
-            '9aebd800e5fe191cd5f4bd82c33419eefdd80919e6c6f5a3a9346a224625f094')
+            '4e7f98b093518cc402448bdc2e35deec5cd047c0dad5bcc7b1ff2e5ba7da98aa')
 provides=('chromium')
 conflicts=('chromium')
 

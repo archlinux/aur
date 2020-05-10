@@ -3,7 +3,7 @@
 @@ -128,12 +128,12 @@ source_set("vaapi") {
      ]
    }
- 
+
 -  if (ozone_platform_gbm || use_egl) {
 +  if (ozone_platform_wayland || ozone_platform_gbm || use_egl) {
      sources += [
