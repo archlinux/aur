@@ -1,0 +1,19 @@
+pkgbase = spectral-viewer
+	pkgdesc = Tool for visualising and manipulating spectral images and HDR images.
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://adufay.gitlabpages.inria.fr/SpectralViewer/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-charts
+	depends = qt5-svg
+	optdepends = eigen3
+	provides = spectral-viewer=3.0.1
+	source = spectral-viewer-3.0.1::git+https://gitlab.inria.fr/adufay/SpectralViewer.git
+	md5sums = SKIP
+
+pkgname = spectral-viewer
+
