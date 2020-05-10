@@ -13,8 +13,10 @@ pkgbase = python-pyvmomi
 pkgname = python-pyvmomi
 	depends = python
 	depends = python-six
+	depends = python-requests
 
 pkgname = python2-pyvmomi
 	depends = python2
 	depends = python2-six
+	depends = python2-requests
 
