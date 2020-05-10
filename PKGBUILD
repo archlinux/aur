@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Hekuran https://github.com/narukeh
 
 pkgname=sm64pc-git
 pkgver=r71.b4626bf
