@@ -1,39 +1,32 @@
 # Maintainer: Joakim Repomaa <aur@j.repomaa.com>
 
 pkgname=autopass.cr
-pkgver=0.2.2
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='a rofi frontend for pass'
 arch=(x86_64)
 url='https://gitlab.com/repomaa/autopass.cr'
 license=('MIT')
-depends=(pass rofi xdotool gpgme gc libyaml libevent)
+depends=(pass rofi xdotool gpgme gc libyaml libevent dbus)
 makedepends=(crystal shards rust git python)
 
 source=(
-  'https://gitlab.com/repomaa/autopass.cr//uploads/ef41eabeca18c38439ecda45ebd198d4/autopass.cr-v0.2.2.tar.gz'
-  'https://gitlab.com/repomaa/autopass.cr//uploads/a9f00047a3bcb06e832f30e221ea5fcd/autopass.cr-v0.2.2.tar.gz.sig'
-  'autopass.socket'
-  'autopass.service'
+  "git+https://gitlab.com/repomaa/autopass.cr?signed#tag=v${pkgver}"
 )
 md5sums=(
-  86dcbd460c13690e07f2871a142207cd
-  SKIP
-  SKIP
   SKIP
 )
-validpgpkeys=(CC7BD43A315EBC373F9A1F2EEFEB16CB1C8952C5)
-provides=('autopass')
+validpgpkeys=(F0AF1CE34733B22317A8937D05557F53CD3C6458)
 conflicts=('autopass' 'autopass.cr-git' 'autopass.cr-bin')
 optdepends=('passed-git: batch editing of pass entries with sed')
 
 build() {
-  cd "${pkgname}-v${pkgver}"
+  cd "${pkgname}"
   shards build --release
 }
 
 package() {
-  cd "${pkgname}-v${pkgver}"
+  cd "${pkgname}"
   install -Dm755 bin/autopass "$pkgdir/usr/bin/autopass"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 autopass.socket "$pkgdir/usr/lib/systemd/user/autopass.socket"
