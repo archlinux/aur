@@ -1,9 +1,10 @@
-# Maintainer: Jan Cholasta <grubber at grubber cz>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jan Cholasta <grubber at grubber cz>
 # Contributor: François Steinmetz <francois.steinmetz@gmail.com>
 # Contributor: Zdenek Janecek <jan.zdenek@gmail.com>
 
 pkgname=authconfig
-pkgver=7.0.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc='Command line tool for setting up authentication from network services'
 arch=('i686' 'x86_64')
@@ -19,7 +20,7 @@ backup=(etc/conf.d/authconfig
 options=(emptydirs)
 source=("https://releases.pagure.org/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
         0001-Adapt-to-Arch-Linux.patch)
-sha256sums=('60dfec18ba18bae38dc84aa2f8a2a7e5ca6b4eaf59a01c9acfbdfe66ca5a883f'
+sha256sums=('60a3f58b6c43d5875cdeeeb75dfd5fb1cfa74c2576119d19bed6d2d03ed24456'
             'e29e810aea0bdaaafde7350399c12018bb5a316f1258fe264e8db6ef57155602')
 
 prepare() {
