@@ -1,15 +1,15 @@
 # Maintainer: Jeremy Asuncion <jeremyasuncion808@gmail.com>
   
 pkgname=refind-theme-regular-git
-pkgver=r43.fad648f
-pkgrel=2
+pkgver=r48.5f9dd0f
+pkgrel=3
 pkgdesc="A simplistic clean and minimal theme for rEFInd"
 arch=(any)
 url="https://github.com/bobafetthotmail/refind-theme-regular"
 license=(AGPL3 custom:OFL 'custom:Ubuntu Font License 1.0')
 depends=(refind)
 makedepends=(git)
-backup=(boot/EFI/refind/theme.conf)
+backup=(boot/EFI/refind/refind-theme-regular/theme.conf)
 source=(git+$url)
 md5sums=(SKIP)
 
