@@ -5,7 +5,6 @@ pkgbase = armips
 	url = https://github.com/Kingcom/armips
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = cmake
 	depends = gcc-libs
 	source = https://github.com/Kingcom/armips/archive/v0.11.0.tar.gz
