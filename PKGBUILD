@@ -1,5 +1,7 @@
-# Maintainer: MrPeacock
-# Maintainer: Roberto Calabrese <robertocalabrese75@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: MrPeacock
+# Contributor: Roberto Calabrese <robertocalabrese75@gmail.com>
+
 pkgname=hotshots
 pkgver=2.2.0
 pkgrel=4
@@ -11,8 +13,8 @@ depends=('libqxt' 'shared-mime-info')
 makedepends=('cmake')
 source=("http://sourceforge.net/projects/hotshots/files/${pkgver}/HotShots-${pkgver}-src.zip"
 	'fix_std_cmath.patch')
-md5sums=('e36dcaaad8ab94adfff13e551adc053f'
-         'b00ceebcb98d2495fa5431abcecf11ba')
+sha256sums=('3f5783cc5ed030f398c6b5549873989c3f46cb59d64e38911dfbf38637ed2a9a'
+            '6752655b8bd73368bdb366a150177383068671b7ad499ea5fbf1e35f547f314b')
 
 prepare() {
     cd "${srcdir}/HotShots-${pkgver}-src"
