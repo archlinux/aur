@@ -1,4 +1,4 @@
-pkgbase = obs-plugin-ios-camera-git
+pkgbase = obs-plugin-ios-camera-source-git
 	pkgdesc = Use your iPhone camera as a video source in OBS Studio and stream high quality video from your iPhone's camera over USB
 	pkgver = v2.5.0.r1.g2b6ed18
 	pkgrel = 1
@@ -14,5 +14,5 @@ pkgbase = obs-plugin-ios-camera-git
 	md5sums = SKIP
 	md5sums = 660c7e7cda6e014ff99644ba44bf01f9
 
-pkgname = obs-plugin-ios-camera-git
+pkgname = obs-plugin-ios-camera-source-git
 
