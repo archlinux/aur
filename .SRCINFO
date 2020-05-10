@@ -5,9 +5,12 @@ pkgbase = chyle-bin
 	url = https://github.com/antham/chyle
 	arch = x86_64
 	license = MIT
+	depends = glibc
 	provides = chyle
-	source = https://github.com/antham/chyle/releases/download/v1.9.0/chyle_linux_amd64
-	md5sums = 3b07bd456a017f4e23d829594826c920
+	source = chyle-bin-1.9.0::https://github.com/antham/chyle/releases/download/v1.9.0/chyle_linux_amd64
+	source = LICENSE::https://raw.githubusercontent.com/antham/chyle/master/LICENSE.txt
+	sha256sums = 38f6ca88af59ddffeaa31f135f56277d7a916a7beaec2a8a819f1439d23de3d3
+	sha256sums = 74d52f9acb64851447fbb6618cdb58a693ca07c9bfec17076e415f752c81cffa
 
 pkgname = chyle-bin
 
