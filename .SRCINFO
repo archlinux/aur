@@ -1,0 +1,29 @@
+pkgbase = flexo-git
+	pkgdesc = A central pacman cache
+	pkgver = 0.1.0.r61.gf75e159
+	pkgrel = 1
+	url = https://github.com/nroi/flexo
+	install = flexo.install
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = curl
+	provides = flexo
+	backup = etc/flexo/flexo.toml
+	source = git+https://github.com/nroi/flexo.git
+	source = sysuser.conf
+	source = flexo.install
+	source = flexo.service
+	source = flexo.toml
+	sha256sums = SKIP
+	sha256sums = b6a618c66d3ffb9ad119b0497d2181cdd382ec870cc768606debed40716c1f4e
+	sha256sums = 662e8c6c4d024ec035c2c02d9298a8cb6062cfb30d02bfaecf17a9d3d9b35167
+	sha256sums = 0ba13ff1d92b51433635e1fbf5f1017e3e06b3e408be663acb1fbf65f344a3ad
+	sha256sums = b1ec4badc2088ed46230dad406d44130089ff00a1e98ff5d178d6f9e1eb0a98d
+
+pkgname = flexo-git
+

@@ -1,0 +1,22 @@
+[Unit]
+Description=central pacman cache
+After=network.target
+
+[Service]
+User=flexo
+Group=flexo
+ExecStart=/usr/bin/flexo
+Environment="RUST_BACKTRACE=1"
+Environment="RUST_LOG=info"
+PrivateTmp=true
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateDevices=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectSystem=true
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
