@@ -1,17 +1,18 @@
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Max Pray a.k.a. Synthead <synthead@gmail.com>
-# Maintainer: Ruben Kelevra <ruben@vfn-nrw.de>
+# Contributor: Ruben Kelevra <ruben@vfn-nrw.de>
 
 pkgname=perl-cgi-psgi
 _cpanname="CGI-PSGI"
 pkgver=0.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Adapt CGI.pm to the PSGI protocol"
 arch=('any')
 url="http://search.cpan.org/~miyagawa/$_cpanname-$pkgver/"
 license=('GPL' 'PerlArtistic')
 depends=('perl')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/$_cpanname-$pkgver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/${_cpanname}-${pkgver}.tar.gz")
 sha256sums=('c50dcb10bf8486a9843baed032ad89d879ff2f41c993342dead62f947a598d91')
 
 # Function to change to the working directory and set
