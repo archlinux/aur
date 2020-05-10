@@ -1,4 +1,4 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: David Runge <dave@sleepmap.de>
 # Contributor: speps <speps at aur dot archlinux dot org>
 # Contributor: Dany Martineau <dany.luc.martineau@gmail.com>
