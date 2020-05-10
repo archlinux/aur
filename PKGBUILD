@@ -1,5 +1,11 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
-# PGP key is on keyservers
+#
+# PGP key is on keyservers. To import:
+#
+#     gpg --receive-keys 7EF3061F5C8D5E25
+#
+# See https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
+# for more details # on package signing.
 pkgname=librepcb
 pkgver=0.1.4
 _pkgver=${pkgver/_/-}
