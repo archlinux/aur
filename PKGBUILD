@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=jointris
-pkgver=0.21
+pkgver=0.22
 pkgrel=1
 pkgdesc="Joinable tetris blocks with bombs"
 url='https://efanomars.com/jointris'
@@ -16,8 +16,8 @@ optdepends=()
 #replaces=("jointris")
 #conflicts=("jointris")
 
-source=('https://efanomars.com/sources/jointris-0.21.tar.gz')
-sha256sums=('7386c83b859c846139a1edf3d217e1f7aff26ff31a7699959d1bc3a7ab285682')
+source=('https://efanomars.com/sources/jointris-0.22.tar.gz')
+sha256sums=('1cdbcc8244bca408fb59c0366bc6bfefe7e0001294c0b91b5e07f274723845fc')
 
 build() {
   cd "${srcdir}/jointris"
