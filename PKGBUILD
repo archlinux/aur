@@ -3,7 +3,7 @@
 _target="sh-elf"
 pkgname=${_target}-gcc-casio
 pkgver=9.2.0
-pkgrel=1
+pkgrel=5
 pkgdesc="The GNU Compiler Collection for the Casio calculators SuperH processors."
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
