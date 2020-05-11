@@ -2,12 +2,12 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=elementary-icon-theme-git
-pkgver=r2379.a78e2a39
+pkgver=r2392.395d6a7e
 pkgrel=1
 pkgdesc='Named, vector icons for elementary OS'
 arch=('any')
 url='https://github.com/elementary/icons'
-license=('GPL-3.0')
+license=('GPL3')
 groups=('pantheon-unstable')
 depends=('hicolor-icon-theme')
 makedepends=('git' 'meson' 'inkscape' 'xorg-xcursorgen')

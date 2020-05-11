@@ -1,11 +1,11 @@
 pkgbase = elementary-icon-theme-git
 	pkgdesc = Named, vector icons for elementary OS
-	pkgver = r2379.a78e2a39
+	pkgver = r2392.395d6a7e
 	pkgrel = 1
 	url = https://github.com/elementary/icons
 	arch = any
 	groups = pantheon-unstable
-	license = GPL-3.0
+	license = GPL3
 	makedepends = git
 	makedepends = meson
 	makedepends = inkscape
