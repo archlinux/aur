@@ -2,14 +2,15 @@ pkgbase = feathers-cli
 	pkgdesc = The command line interface for scaffolding Feathers applications
 	pkgver = 4.3.0
 	pkgrel = 2
-	url = https://github.com/feathersjs/feathers
+	url = https://github.com/feathersjs/cli
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = perl
-	noextract = v4.3.0.tar.gz
-	source = https://github.com/feathersjs/cli/archive/v4.3.0.tar.gz
-	md5sums = af4983c3dc11eb8e561df922bb27e4df
+	depends = nodejs
+	noextract = feathers-cli-4.3.0.tar.gz
+	source = feathers-cli-4.3.0.tar.gz::https://github.com/feathersjs/cli/archive/v4.3.0.tar.gz
+	sha256sums = ebc41025f6422090b852171a95068e894ea0e2d45ce44a6f70516ed5b865a379
 
 pkgname = feathers-cli
 
