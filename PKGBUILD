@@ -6,7 +6,7 @@ pkgname=dfhack-twbt
 pkgver=0.47.04
 _pkgver=$pkgver-r1
 _twbtver=v6.61
-pkgrel=8
+pkgrel=9
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it"
 arch=('x86_64' 'i686')
 url="https://dfhack.readthedocs.io/en/stable/"
@@ -40,7 +40,7 @@ md5sums=('SKIP'
          '1c1e4d984c27ab7bef45d6ac8915b5da'
          '9c67fdc314d2344055da0786d984c521'
          'e8bfabc5fe1810fd3a1c91504dce7ee6'
-         '872b709e986d831713812d83f41e1664'
+         '84becf98cc341da5806fe0e9406a083a'
          'b72dd69e286287daebb02d748d9c171d'
          'f205514b69112b8e69cef8984b3eb886'
          'f87b8aab62ecb7edf4fd6f2b1c008a3d')
