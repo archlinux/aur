@@ -1,4 +1,4 @@
-# Maintainer: jakbyte <jakbyte@gmail.com>
+# Maintainer: jakbyte <jakbyte@protonmail.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
 # ******************************************************************************* #
