@@ -2,9 +2,9 @@
 
 _pkgname=rlottie
 pkgname=rlottie-git
-pkgver=r747.dcab762
+pkgver=r751.607998b
 pkgrel=1
-pkgdesc='https://github.com/Samsung/rlottie'
+pkgdesc='A platform independent standalone library that plays Lottie Animation'
 arch=('i686' 'x86_64')
 url='https://github.com/Samsung/rlottie'
 license=('LGPL-v2.1')
