@@ -1,5 +1,5 @@
 # $Id$
-# Contributor:	Gergely Daróczi <gergely@snowl.net>
+# Maintainer: Gergely Daróczi <daroczig@rapporter.net>
 # Based on [r-devel@AUR](https://aur.archlinux.org/packages/r-devel) by Florian Breitwieser <florian.bw@gmail.com>
 
 pkgname=r-devel-svn
