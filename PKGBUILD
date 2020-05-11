@@ -5,14 +5,14 @@ pkgname=ros-melodic-can-msgs
 pkgdesc='CAN related message types.'
 url="http://wiki.ros.org/can_msgs?distro=melodic"
 
-pkgver='0.8.1'
+pkgver='0.8.3'
 pkgrel=1
 arch=('any')
 license=('LGPL3')
 
 _dir="ros_canopen-${pkgver}/can_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-industrial/ros_canopen/archive/${pkgver}.tar.gz")
-sha256sums=('aa75077452abea1848405906c989eca2e539943c2d1cc1e6f1d72f8facc74390')
+sha256sums=('2ca77051aae92d9ebf10fda9f2f561d66111a685dda5e148cc0790a93c463c22')
 
 ros_makedepends=(
   ros-melodic-message-generation
@@ -44,9 +44,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_BASENAME=.cpython-37m \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }

@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-can-msgs
 	pkgdesc = CAN related message types.
-	pkgver = 0.8.1
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = http://wiki.ros.org/can_msgs?distro=melodic
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ros-melodic-can-msgs
 	makedepends = ros-melodic-message-generation
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-can-msgs-0.8.1.tar.gz::https://github.com/ros-industrial/ros_canopen/archive/0.8.1.tar.gz
-	sha256sums = aa75077452abea1848405906c989eca2e539943c2d1cc1e6f1d72f8facc74390
+	source = ros-melodic-can-msgs-0.8.3.tar.gz::https://github.com/ros-industrial/ros_canopen/archive/0.8.3.tar.gz
+	sha256sums = 2ca77051aae92d9ebf10fda9f2f561d66111a685dda5e148cc0790a93c463c22
 
 pkgname = ros-melodic-can-msgs
 
