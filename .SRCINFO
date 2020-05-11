@@ -1,6 +1,6 @@
 pkgbase = zectl-pacman-hook
-	pkgdesc = Create and prune zectl boot environments before any pacman command
-	pkgver = 0.1.0
+	pkgdesc = Automate boot environment creation and rotation before pacman upgrade
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/eoli3n/zectl-pacman-hook
 	install = INSTALL

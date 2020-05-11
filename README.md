@@ -1,19 +1,23 @@
 ### zectl-pacman-hook
 
-It will create a boot environment prefixed with ``pacmanhook`` with ``zectl`` at each use of pacman. By default, it keeps only 1 boot environment, each use of pacman will erase previously created boot environment.
+It will create a boot environment prefixed with ``pacmanhook`` with ``zectl`` at each pacman upgrade. By default, it keeps only 1 boot environment, each pacman upgrade will overwrite previous boot environment.
 
 ```bash
-$ LANG=C sudo pacman -S sl
-warning: sl-5.02-5 is up to date -- reinstalling
+$ sudo pacman -Syu
+:: Synchronizing package databases...
+ core is up to date
+ extra is up to date
+ community is up to date
+ archzfs is up to date multilib is up to date
+:: Starting full system upgrade...
 resolving dependencies...
 looking for conflicting packages...
 
-Packages (1) sl-5.02-5
+Packages (1) bat-0.15.0-1
 
-Total Installed Size:  0.02 MiB
-Net Upgrade Size:      0.00 MiB
-
-:: Proceed with installation? [Y/n] y
+Total Installed Size:  4.57 MiB
+Net Upgrade Size:      0.09 MiB
+:: Proceed with installation? [Y/n] 
 (1/1) checking keys in keyring                     [------------------------] 100%
 (1/1) checking package integrity                   [------------------------] 100%
 (1/1) loading package files                        [------------------------] 100%
@@ -21,10 +25,10 @@ Net Upgrade Size:      0.00 MiB
 (1/1) checking available disk space                [------------------------] 100%
 :: Running pre-transaction hooks...
 (1/1) Create a boot environment
-• Destroyed pacmanhook-20200511T111356
-• Created pacmanhook-20200511T111422
+• Destroyed pacmanhook-20200411T121502
+• Created pacmanhook-20200511T193646
 :: Processing package changes...
-(1/1) reinstalling sl                              [------------------------] 100%
+(1/1) upgrading bat                                [------------------------] 100%
 :: Running post-transaction hooks...
 (1/1) Arming ConditionNeedsUpdate...
 ```
