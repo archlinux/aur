@@ -2,9 +2,9 @@
  
 pkgname=distccd-x86_64
 arch=(armv7h aarch64)
-_date=20200417
+_date=20200509
 # inspect source tarball under $name/share/gcc-x.y.z
-pkgver=9.3.0.$_date
+pkgver=10.1.0.$_date
 pkgrel=1
 license=('GPL' )
 url="https://github.com/graysky2/crosstool-ng_for_distcc"
@@ -23,9 +23,9 @@ validpgpkeys=(
 )
 sha256sums=('23e791054de2b2599699482fdd880066c9d03758f9e38eb4634dc571cb90959e'
             'ea406b82e10b7084192d0a480ec24ee889a6a592ea3e339dc81cf3a6f1058bf9')
-sha256sums_armv7h=('fcceedd50c7e9f3f441f8407b650e0308e937d62f0a49ea3945e26ca655565ca'
+sha256sums_armv7h=('b686cc22f5919e4704dc77b0937a05dce8f25376c0d288c17dc690f81eeef3b2'
                    'SKIP')
-sha256sums_aarch64=('acab4c8ffeb253d09dea86f222fb31a7429a471bc69ba43ba97b1eb962e069ba'
+sha256sums_aarch64=('75f37e1bc6187273c77410a3eff68b77e7433d68c53243a3973dbee605bd62e1'
                     'SKIP')
 
 package() {
