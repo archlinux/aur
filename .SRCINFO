@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-clear-costmap-recovery
 	pkgdesc = ROS - This package provides a recovery behavior for the navigation stack that attempts to clear space by reverting the costmaps used by the navigation stack to the static map outside of a given area.
-	pkgver = 1.16.2
+	pkgver = 1.16.6
 	pkgrel = 4
 	url = https://wiki.ros.org/clear_costmap_recovery
 	arch = i686
@@ -25,8 +25,8 @@ pkgbase = ros-melodic-clear-costmap-recovery
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-tf
 	depends = eigen3
-	source = ros-melodic-clear-costmap-recovery-1.16.2.tar.gz::https://github.com/ros-planning/navigation/archive/1.16.2.tar.gz
-	sha256sums = d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205
+	source = ros-melodic-clear-costmap-recovery-1.16.6.tar.gz::https://github.com/ros-planning/navigation/archive/1.16.6.tar.gz
+	sha256sums = 88e3b4433de9645e1132db15b01f436a75a28ebc15cd5b70660b158dd6ba42dd
 
 pkgname = ros-melodic-clear-costmap-recovery
 
