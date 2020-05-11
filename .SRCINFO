@@ -1,14 +1,14 @@
 pkgbase = adplug
 	pkgdesc = AdLib sound player library
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = http://adplug.github.io/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	depends = libbinio
-	source = https://github.com/adplug/adplug/releases/download/adplug-2.3.1/adplug-2.3.1.tar.bz2
-	md5sums = 7d6480b4235d3bc88c50e2e3dfaa69ea
+	source = https://github.com/adplug/adplug/releases/download/adplug-2.3.2/adplug-2.3.2.tar.bz2
+	md5sums = 39789aad76eb3f469b1be30fdc65709e
 
 pkgname = adplug
 
