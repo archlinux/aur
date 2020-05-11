@@ -2,11 +2,10 @@
 
 pkgname=python-pyminifier
 pkgver=2.1
-pkgrel=1
-pkgdesc="Image augmentation for machine learning experiments"
-url="https://github.com/aleju/imgaug"
-depends=('python')
-makedepends=('python-setuptools')
+pkgrel=2
+pkgdesc="Pyminifier is a Python code minifier, obfuscator, and compressor."
+url="https://github.com/liftoff/pyminifier"
+depends=('python' 'python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/2c/8a/946b0b43e0912c907aba42507073675c2e4a4a836c5b1ce10be6f12575d0/pyminifier-2.1.tar.gz")
