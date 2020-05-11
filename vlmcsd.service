@@ -1,0 +1,10 @@
+[Unit]
+Description=KMS Emulator
+
+[Service]
+Type=forking
+User=nobody
+ExecStart=/usr/bin/vlmcsd
+
+[Install]
+WantedBy=multi-user.target

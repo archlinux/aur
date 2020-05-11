@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!vlmcsd.service
+!vlmcsd@.service
+!vlmcsd.socket
