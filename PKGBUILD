@@ -1,4 +1,4 @@
-# Maintainer: fabbe <mail@fabbe.io>
+# Maintainer: fabbe <fabbe@carajo.no>
 
 pkgname=postgrest-bin
 pkgver=6.0.2
