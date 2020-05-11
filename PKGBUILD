@@ -1,6 +1,6 @@
 # Maintainer: Timo Sarawinski <timo@it-kraut.net>
 pkgname=ofork
-pkgver=9.0.5
+pkgver=9.0.7
 pkgrel=1
 pkgdesc="OFORK is a OTRS fork open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
@@ -40,7 +40,7 @@ install="${pkgname}.install"
 source=("${pkgname}.install"
         "https://ftp.o-fork.de/ofork-${pkgver}.tar.gz")
 sha256sums=('237bea50871d37e6822b5b47c6c47e90061981293a7edfe3c679e968e7088b42'
-            'd657e6847b9000cb7969d77c87f5f1ff2d1a8ab416af469d05e12f68e122645e')
+            '40978cccfcb23fed2e7dbcc4caa32cc3f05065010c0a1404c05133c33dda547b')
 
 prepare() {
 cat << EOL > "${srcdir}/${pkgname}.service"
