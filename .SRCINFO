@@ -13,6 +13,7 @@ pkgbase = lib32-harfbuzz-git
 	makedepends = ragel
 	makedepends = git
 	makedepends = python
+	makedepends = gobject-introspection
 	depends = lib32-glib2
 	depends = lib32-freetype2
 	depends = harfbuzz
@@ -21,6 +22,9 @@ pkgbase = lib32-harfbuzz-git
 
 pkgname = lib32-harfbuzz-git
 	provides = lib32-harfbuzz
+	provides = libharfbuzz.so
+	provides = libharfbuzz-subset.so
+	provides = libharfbuzz-gobject.so
 	conflicts = lib32-harfbuzz
 
 pkgname = lib32-harfbuzz-icu-git
@@ -29,5 +33,6 @@ pkgname = lib32-harfbuzz-icu-git
 	depends = lib32-icu
 	depends = harfbuzz-icu
 	provides = lib32-harfbuzz-icu
+	provides = libharfbuzz-icu.so
 	conflicts = lib32-harfbuzz-icu
 

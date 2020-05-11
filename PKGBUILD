@@ -9,7 +9,7 @@ url="http://www.freedesktop.org/wiki/Software/HarfBuzz"
 arch=(x86_64)
 license=(MIT)
 depends=(lib32-glib2 lib32-freetype2 harfbuzz)
-makedepends=(lib32-cairo lib32-icu gcc-multilib ragel git python)
+makedepends=(lib32-cairo lib32-icu gcc-multilib ragel git python gobject-introspection)
 checkdepends=(python-fonttools python-setuptools)
 source=("git+https://github.com/harfbuzz/harfbuzz")
 sha256sums=('SKIP')
@@ -27,7 +27,7 @@ prepare() {
 build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
   cd harfbuzz
   ./configure \
@@ -51,15 +51,15 @@ build() {
 
 package_lib32-harfbuzz-git() {
 
-  provides=('lib32-harfbuzz')
+  provides=(lib32-harfbuzz libharfbuzz.so libharfbuzz-subset.so libharfbuzz-gobject.so)
   conflicts=('lib32-harfbuzz')
 
   cd harfbuzz
   make DESTDIR="$pkgdir" install
 
   rm -rf "${pkgdir}"/usr/{include,share,bin}
-  mkdir -p "$pkgdir/usr/share/licenses"
-  ln -s harfbuzz "$pkgdir/usr/share/licenses/lib32-harfbuzz"
+  
+  install -Dt "$pkgdir/usr/share/licenses/lib32-harfbuzz" -m644 COPYING
 
 # Split harfbuzz-icu
   mkdir -p ../hb-icu/usr/lib32/pkgconfig; cd ../hb-icu
@@ -70,11 +70,10 @@ package_lib32-harfbuzz-git() {
 package_lib32-harfbuzz-icu-git() {
   pkgdesc="OpenType text shaping engine (32-bit, ICU integration)"
   depends=(lib32-harfbuzz lib32-icu harfbuzz-icu)
-  provides=('lib32-harfbuzz-icu')
+  provides=(lib32-harfbuzz-icu libharfbuzz-icu.so)
   conflicts=('lib32-harfbuzz-icu')
 
   mv hb-icu/* "$pkgdir"
 
-  mkdir -p "$pkgdir/usr/share/licenses"
-  ln -s harfbuzz-icu "$pkgdir/usr/share/licenses/lib32-harfbuzz-icu"
+  install -Dt "$pkgdir/usr/share/licenses/lib32-harfbuzz-icu" -m644 harfbuzz/COPYING
 }
