@@ -1,7 +1,7 @@
 # Maintainer: Jean Pierre Cimalando <jp-dev@inbox.ru>
 pkgname=setup-fast-track-ultra-git
-pkgver=r7.657dc38
-pkgrel=2
+pkgver=r8.475a3fe
+pkgrel=1
 epoch=
 pkgdesc="Automatic setup of M-Audio Fast Track Ultra for JACK on Linux"
 arch=('any')

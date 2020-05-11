@@ -1,7 +1,7 @@
 pkgbase = setup-fast-track-ultra-git
 	pkgdesc = Automatic setup of M-Audio Fast Track Ultra for JACK on Linux
-	pkgver = r7.657dc38
-	pkgrel = 2
+	pkgver = r8.475a3fe
+	pkgrel = 1
 	url = https://github.com/jpcima/fast-track-ultra
 	arch = any
 	license = Boost
