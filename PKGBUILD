@@ -157,12 +157,6 @@ build() {
 
 check() {
   cd ../build
-
-  # MUMPS is never detected
-  mv examples/reduced_basis/reduced_basis_ex7/Makefile{,.bak}
-  echo -e "check:\ninstall:" > \
-       examples/reduced_basis/reduced_basis_ex7/Makefile
-
   make check
 }
 
