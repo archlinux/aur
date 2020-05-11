@@ -1,0 +1,16 @@
+pkgbase = gedit-latex-git
+	pkgdesc = plugin that provides features to ease the edition of latex documents
+	pkgver = 3.20.r62.g3ca1aea
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Gedit/LaTeXPlugin
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gobject-introspection
+	depends = python>=3.0.0
+	depends = libpeas>=1.14.1
+	source = git+https://gitlab.gnome.org/GNOME/gedit-latex.git
+	sha256sums = SKIP
+
+pkgname = gedit-latex-git
+
