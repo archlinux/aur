@@ -1,7 +1,7 @@
 # Maintainer: Alexander Mcmillan <linuxguy93@gmail.com>
 
 pkgbase=linux-archmm
-pkgver=5.6.11.arch1
+pkgver=5.6.12.arch1
 pkgrel=1
 pkgdesc='Linux with the BMQ CPU Scheduler and Multimedia Patches'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -25,7 +25,7 @@ _menuconfig=y
 _srcname=archlinux-linux
 
 ## BMQ CPU Scheduler
-_bmqversion=5.6-r3
+_bmqversion=5.6-r4
 _bmq_patch="bmq_v${_bmqversion}.patch"
 
 ## GCC Optimization Patch
@@ -49,7 +49,7 @@ validpgpkeys=(
 sha256sums=('SKIP'
             'f392c9ecbb5177ea2573aaf22935322940ea2be0366f3fb9c9f861431f4aed21'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '2340925904efa3594cc65a7bae4fbff233d5d8bc7db605ce08acaca7450d2471'
+            '1b95d36635c7dc48ce45a33d6b1f4eb6d34f51600901395d28fd22f28daee8e9'
             'SKIP'
             'b8a9225b4b5cbabac26398d11cc26566e4407d150dacb92f3411c9bb8cc23942')
 
