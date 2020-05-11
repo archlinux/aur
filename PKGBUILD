@@ -16,7 +16,7 @@ source=("http://www.giuspen.com/software/$pkgname-$pkgver.tar.xz")
 sha256sums=('ae3a07653a680becd459f12ad1be87bb7c8745232697f2a1bc6f02b522457c3a')
 
 build() {
-    cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
     python setup.py build
 }
 
