@@ -1,6 +1,6 @@
 pkgbase = rofi-blocks-git
 	pkgdesc = rofi modi for controlling rofi content through communication with an external program
-	pkgver = 0.r1.a865916
+	pkgver = 0.r1.24467f7
 	pkgrel = 1
 	url = https://github.com/OmarCastro/rofi-blocks
 	arch = any

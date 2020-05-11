@@ -1,7 +1,7 @@
 # Maintainer: David Lasek <mail at davidlasek dot eu>
 pkgname=rofi-blocks-git
 _gitroot='rofi-blocks'
-pkgver=0.r1.a865916
+pkgver=0.r1.24467f7
 pkgrel=1
 pkgdesc="rofi modi for controlling rofi content through communication with an external program"
 arch=("any")
