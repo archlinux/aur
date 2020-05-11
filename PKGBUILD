@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=sibs-git
-pkgver=0.3.2.r0.ge2edc5d
+pkgver=r259.c95d439
 pkgrel=1
 pkgdesc='A simple cross-platform build system and package manager for c, c++ and zig. Inspired by rusts cargo'
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/sibs"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -34,5 +34,5 @@ build() {
 
 package() {
   cd "$srcdir/sibs/cmake/release"
-  install -D -m +x sibs "$pkgdir/usr/bin/sibs"
+  install -Dm755 sibs "$pkgdir/usr/bin/sibs"
 }
