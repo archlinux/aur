@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-amcl
 	pkgdesc = ROS - amcl is a probabilistic localization system for a robot moving in 2D.
-	pkgver = 1.16.2
+	pkgver = 1.16.6
 	pkgrel = 4
 	url = https://wiki.ros.org/amcl
 	arch = i686
@@ -33,8 +33,8 @@ pkgbase = ros-melodic-amcl
 	depends = ros-melodic-tf2
 	depends = ros-melodic-tf2-msgs
 	depends = ros-melodic-tf2-ros
-	source = ros-melodic-amcl-1.16.2.tar.gz::https://github.com/ros-planning/navigation/archive/1.16.2.tar.gz
-	sha256sums = d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205
+	source = ros-melodic-amcl-1.16.6.tar.gz::https://github.com/ros-planning/navigation/archive/1.16.6.tar.gz
+	sha256sums = 88e3b4433de9645e1132db15b01f436a75a28ebc15cd5b70660b158dd6ba42dd
 
 pkgname = ros-melodic-amcl
 

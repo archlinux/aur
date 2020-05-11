@@ -3,7 +3,7 @@ pkgdesc="ROS - amcl is a probabilistic localization system for a robot moving in
 url='https://wiki.ros.org/amcl'
 
 pkgname='ros-melodic-amcl'
-pkgver='1.16.2'
+pkgver='1.16.6'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=4
 license=('LGPL')
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="navigation-${pkgver}/amcl"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")
-sha256sums=('d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205')
+sha256sums=('88e3b4433de9645e1132db15b01f436a75a28ebc15cd5b70660b158dd6ba42dd')
 
 build() {
   # Use ROS environment variables
