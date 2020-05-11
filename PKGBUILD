@@ -7,7 +7,7 @@ _gui=true
 pkgbase=simulationcraft
 pkgname=simulationcraft
 _pkgname=simc
-_simver=820
+_simver=830
 _simrel=01
 pkgver=${_simver}_${_simrel}
 pkgrel=1
@@ -20,7 +20,7 @@ source=("${pkgname}-${_simver}-${_simrel}.tar.gz::https://github.com/simulationc
         '0001-set-welcome-path.patch'
         'SimulationCraft.desktop')
 
-sha256sums=('33197263f755b7671907dd2538cf229d90ce083c2af0b5c341d6d428b73353cd'
+sha256sums=('a67de54c3301aa34163d7a9ed083d617dd46ea0ef79044dc6fe71417fcfacfd2'
             '0755cfa21435dd3a019a686fd0e313abf631dcd02efa37ebcafe23546bacc048'
             '12cddfa8077e3f7c5c7d8bc445f27691072911d36e296ffe21281c6f4a0c1dd9')
 
