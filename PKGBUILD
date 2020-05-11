@@ -6,7 +6,7 @@ pkgrel=1
 epoch=
 pkgdesc="REST API for any Postgres database"
 arch=('x86_64')
-url="https://github.com/begriffs/postgrest"
+url="https://github.com/PostgREST/postgrest"
 license=('MIT')
 groups=()
 depends=('postgresql-libs>=9.5')
