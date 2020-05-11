@@ -3,11 +3,11 @@
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=mpdproxy-coffeescript-git
 pkgdesc="MPD proxy automatically entering password for clients in certain IP ranges"
-pkgver=r4.da65b0e
+pkgver=r7.6506821
 pkgrel=1
 epoch=
 arch=(x86_64)
-url="https://github.com/mxmilkb/mpdproxy"
+url="https://github.com/tremby/mpdproxy"
 license=()
 groups=()
 depends=("mpd" "coffeescript")
@@ -21,7 +21,7 @@ backup=()
 options=()
 install=
 changelog=
-source=(mpdproxy-coffeescript-git::git+https://github.com/mxmilkb/mpdproxy)
+source=(mpdproxy-coffeescript-git::git+https://github.com/tremby/mpdproxy)
 noextract=()
 md5sums=('SKIP')
 
@@ -42,5 +42,6 @@ prepare() {
 package() {
 	chmod +x  "$pkgname"/mpdproxy.coffee
   mkdir -p ${pkgdir}/usr/lib/
+  mkdir -p ${pkgdir}/usr/bin/
 	cp -r "$pkgname" ${pkgdir}/usr/lib/mpdproxy
 }
