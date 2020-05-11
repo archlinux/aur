@@ -3,9 +3,9 @@
 pkgname=akd
 pkgver=2.1.0
 pkgrel=1
-pkgdesc="A Keyboard userspace daemon"
+pkgdesc='A Keyboard userspace daemon'
 arch=(x86_64)
-url="https://github.com/Shatur95/akd"
+url=https://github.com/Shatur95/akd
 license=(GPL3)
 depends=(libx11 boost)
 makedepends=(cmake)
