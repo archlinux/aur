@@ -3,21 +3,21 @@
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=dsview
-pkgver=1.11
+pkgver=1.12
 pkgrel=1
 pkgdesc="Client software that supports the DreamSourceLab logic analyzer"
 arch=('i686' 'x86_64')
 url="http://www.dreamsourcelab.com/"
 license=('GPL3')
 depends=('boost-libs' 'qt5-base' "libsigrokdecode4dsl>=${pkgver}" "libsigrok4dsl>=${pkgver}" 'fftw')
-makedepends=('boost')
+makedepends=('cmake' 'boost')
 
 source=(
   "DSView-$pkgver.tar.gz::https://github.com/DreamSourceLab/DSView/archive/v${pkgver}.tar.gz"
   'udev.rules'
   'dsview.desktop'
 )
-sha384sums=('82304119956e66fa0b37d0aaf31b1dbeeac8f3f4f2b3960dfd67fbbdad55a0681dd83b7bc12ecf3280dae85be18a975a'
+sha384sums=('52b9fc2dbd9853f33140c2c528d1b31187a185f5869dd4e7700da1da872fec0d2d03732e4f194f487a287107c3e9b0e0'
             '4f7c463e0723e3cfd6ed146e0db6b44627065af077aaca9765b60c9347752e32032752f04883da89b9f65523ca5c28e8'
             '6c47f8b81858cfccc96a0e18dd56dbb23c72baa165650d145898eea8d8f3493a9179f7c8c9afd651ed99e713c9106238')
 
