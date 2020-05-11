@@ -1,4 +1,4 @@
-# Maintainer:  Carson Black <uhhadd@gmail.com>
+# Maintainer: Carson Black <uhhadd@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Paul Mattal <paul@archlinux.org>
@@ -9,7 +9,7 @@
 pkgbase=eclipse
 pkgname=(eclipse-{common,java,jee,cpp,php,javascript,rust})
 pkgver=4.15
-pkgrel=5
+pkgrel=6
 _release=2020-03/R
 pkgdesc="Highly extensible IDE"
 license=(EPL)
@@ -80,46 +80,34 @@ _package() {
     *         ) return 1 ;;
   esac
 
-  _lower=${variant,,}
-
   pkgdesc+=" for $variant"
-  depends=("eclipse-common=$pkgver-$pkgrel" bash fuse-overlayfs)
+  depends=("eclipse-common=$pkgver-$pkgrel" bash)
+  provides=("eclipse=$pkgver-$pkgrel")
+  conflicts=(eclipse)
 
   install -d "$pkgdir/usr/lib"
-  cp -a $1 "$pkgdir/usr/lib/eclipse-${_lower}"
+  cp -a $1 "$pkgdir/usr/lib/eclipse"
 
-  install -D /dev/stdin "$pkgdir/usr/lib/eclipse-${_lower}-helper" <<END
+  install -D /dev/stdin "$pkgdir/usr/bin/eclipse" <<END
 #!/bin/bash
-mkdir -p /tmp/eclipse-${_lower}-workdir
-mkdir -p /tmp/eclipse-${_lower}-upper
-mkdir -p /run/user/\$1/eclipse-${_lower}
-fuse-overlayfs -o lowerdir=/usr/lib/eclipse:/usr/lib/eclipse-${_lower},upperdir=/tmp/eclipse-${_lower}-upper,workdir=/tmp/eclipse-${_lower}-workdir /run/user/\$1/eclipse-${_lower}
-export ECLIPSE_HOME=/run/user/\$1/eclipse-${_lower}
-unshare -U /run/user/\$1/eclipse-${_lower}/eclipse "\${@:1}" -configuration \$HOME/.eclipse-${_lower}-config -data \$HOME/eclipse-${_lower}-workspace
+export ECLIPSE_HOME=/usr/lib/eclipse
+exec \$ECLIPSE_HOME/eclipse "\$@"
 END
 
-  install -D /dev/stdin "$pkgdir/usr/bin/eclipse-${_lower}" <<END
-#!/bin/bash
-exec unshare -rm /usr/lib/eclipse-${_lower}-helper \$(id -u) "\$@"
-END
-
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/eclipse-${_lower}.desktop" <<END
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/eclipse.desktop" <<END
 [Desktop Entry]
-Name=Eclipse $variant
+Name=Eclipse
 Comment=$variant Development Environment
-Icon=eclipse-${_lower}
-Exec=eclipse-${_lower}
+Icon=eclipse
+Exec=eclipse
 Terminal=false
 Type=Application
 Categories=Development;IDE;Java;
 StartupNotify=true
 END
 
-  sed -i "1 i -configuration=@user.home/.eclipse-${_lower}" "$pkgdir/usr/lib/eclipse-${_lower}/eclipse.ini"
-  sed -i "s%-Dosgi.instance.area.default=@user.home/eclipse-workspace%-Dosgi.instance.area.default=@user.home/eclipse-${_lower}-workspace%g" "$pkgdir/usr/lib/eclipse-${_lower}/eclipse.ini"
-
   for i in 16 22 24 32 48 64 128 256 512 1024; do
     install -Dm644 eclipse-common/plugins/org.eclipse.platform_*/eclipse$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x$i/apps/eclipse-${_lower}.png"
+      "$pkgdir/usr/share/icons/hicolor/${i}x$i/apps/eclipse.png"
   done
 }
