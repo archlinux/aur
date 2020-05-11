@@ -7,9 +7,11 @@ pkgbase = enginesound-bin
 	license = MIT
 	depends = sdl2
 	provides = enginesound
-	noextract = enginesound
-	source = enginesound::https://github.com/DasEtwas/enginesound/releases/download/v1.3.0/enginesound-x86_64-linux
-	md5sums = e0280323349440bbd8eb348b1a4aff50
+	noextract = enginesound-bin-1.3.0
+	source = enginesound-bin-1.3.0::https://github.com/DasEtwas/enginesound/releases/download/v1.3.0/enginesound-x86_64-linux
+	source = LICENSE::https://raw.githubusercontent.com/DasEtwas/enginesound/master/LICENSE
+	sha256sums = e995b3dd2fa8f5f29c8aa38b707f36277ccd0827334900848cba2e0b40b97ace
+	sha256sums = e62c3637dab3985bc36b73a985c05908e6dcf50a2f99cab02a45d944e7886c02
 
 pkgname = enginesound-bin
 
