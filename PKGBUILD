@@ -13,9 +13,9 @@ depends=('ruby'
 		 'ruby-jsonpath'
 		 'ruby-koala')
 options=('!emptydirs')
-source=("https://rubygems.org/downloads/$pkgname-$pkgver.gem")
+source=("${pkgname}-${pkgver}.gem::https://rubygems.org/downloads/$pkgname-$pkgver.gem")
 noextract=('$pkgname-$pkgver.gem')
-md5sums=('fb289099fcbd8f28915d71c5e153c75f')
+sha256sums=('fb5f70bec4bff21c1f1f290f2bc85567b8616db6c84afdc9e584a06b367f339a')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

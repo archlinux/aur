@@ -12,8 +12,8 @@ pkgbase = facebook-cli
 	depends = ruby-koala
 	noextract = $pkgname-$pkgver.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/facebook-cli-1.7.1.gem
-	md5sums = fb289099fcbd8f28915d71c5e153c75f
+	source = facebook-cli-1.7.1.gem::https://rubygems.org/downloads/facebook-cli-1.7.1.gem
+	sha256sums = fb5f70bec4bff21c1f1f290f2bc85567b8616db6c84afdc9e584a06b367f339a
 
 pkgname = facebook-cli
 
