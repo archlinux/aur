@@ -1,0 +1,26 @@
+pkgbase = php73-kolabformat
+	pkgdesc = PHP 7.3 bindings for Kolab XML Format Schema Definitions Library
+	pkgver = 1.1.6
+	pkgrel = 4
+	url = http://www.kolab.org
+	install = php73-kolabformat.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = boost
+	makedepends = xsd
+	makedepends = qt5-base
+	makedepends = swig>=3.0.11
+	depends = libkolabxml
+	depends = php73
+	options = !strip
+	source = https://mirror.kolabenterprise.com/pub/releases/libkolabxml-1.1.6.tar.gz
+	source = php7.patch
+	source = kolabformat.ini
+	sha256sums = e48d7f5de1860a381da27981f6c70de1c9f38c4cd536bc6558b6529ce95f0677
+	sha256sums = 59b99b529ffecf01566ff10a8f33a087b34330cc95d92d86c45ad105c7144f98
+	sha256sums = 4ce9a46b45d87add01ad132fb602508e4892dd4f684fe5d95c6c7172b008641b
+
+pkgname = php73-kolabformat
+
