@@ -13,18 +13,14 @@ _log_path="/var/log/${_pkgname}"
 
 
 pkgname=nginx-libressl
-pkgver=1.16.1
+pkgver=1.18.0
 pkgrel=1
-librever=2.9.2
+librever=3.1.1
 pkgdesc="lightweight HTTP server, statically linked against LibreSSL."
 arch=('i686' 'x86_64')
 
-depends=('pcre' 'zlib' 'pam' 'gd' 'hardening-wrapper' 'libxslt')
-makedepends=(
-	'libxslt'
-	'gd'
-	'git'
-)
+depends=('pcre' 'zlib' 'pam' 'gd' 'libxslt')
+makedepends=( 'libxslt' 'gd' 'git')
 
 url="http://nginx.org"
 license=('custom')
@@ -104,5 +100,5 @@ package() {
 sha256sums=('8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
             'adcf6507abb2d4edbc50bd92f498ba297927eed0460d71633df94f79637aa786'
             '225228970d779e1403ba4314e3cd8d0d7d16f8c6d48d7a22f8384db040eb0bdf'
-            'f11c2a6dd1d3515736f0324857957db2de98be862461b5a542a3ac6188dbe32b'
-            'c4c78167fae325b47aebd8beb54b6041d6f6a56b3743f4bd5d79b15642f9d5d4')
+            '4c373e7ab5bf91d34a4f11a0c9496561061ba5eee6020db272a17a7228d35f99'
+            'bdc6ce5ebb3a2eafc4c475f7eeaa5f0a8e60d9bead01efb76e2e254242b6db00')
