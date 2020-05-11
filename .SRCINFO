@@ -31,8 +31,8 @@ pkgname = kata-runtime
 	depends = kata-shim=1.11.0
 	depends = kata-linux-container
 	depends = kata-containers-image
-	optdepends = firecracker<0.21.0
-	optdepends = cloud-hypervisor<0.6.0
+	optdepends = firecracker<0.22.0
+	optdepends = cloud-hypervisor<0.8.0
 
 pkgname = kata-shim
 

@@ -67,8 +67,8 @@ package_kata-proxy(){
 package_kata-runtime(){
   depends=('qemu-headless' "kata-ksm-throttler=${pkgver}" "kata-proxy=${pkgver}" "kata-shim=${pkgver}" "kata-linux-container" "kata-containers-image")
   optdepends=(
-    'firecracker<0.21.0'
-    'cloud-hypervisor<0.6.0'
+    'firecracker<0.22.0'
+    'cloud-hypervisor<0.8.0'
   )
   install=kata-runtime.install
   cd "${srcdir}/src/${_gh_org}/runtime"
