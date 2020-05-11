@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=81.0.4044.129
+pkgver=81.0.4044.138
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone"
@@ -33,7 +33,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         icu67.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('ff74592f83ed91c082f746c6b0a3acf384bad91f170bd24548971c17f43046d3'
+sha256sums=('f478f28b8111cb70231df4c36e754d812ad7a94b7c844e9d0515345a71fd77a6'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
             '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
@@ -58,7 +58,7 @@ declare -gA _system_libs=(
   [libxml]=libxml2
   [libxslt]=libxslt
   [opus]=opus
-  [re2]=re2
+  #[re2]=re2
   [snappy]=snappy
   [yasm]=
   [zlib]=minizip
