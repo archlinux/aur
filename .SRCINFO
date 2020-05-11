@@ -9,6 +9,8 @@ pkgbase = gedit-latex-git
 	makedepends = gobject-introspection
 	depends = python>=3.0.0
 	depends = libpeas>=1.14.1
+	provides = gedit-latex
+	conflicts = gedit-latex
 	source = git+https://gitlab.gnome.org/GNOME/gedit-latex.git
 	sha256sums = SKIP
 

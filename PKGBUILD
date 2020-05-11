@@ -11,6 +11,8 @@ source=('git+https://gitlab.gnome.org/GNOME/gedit-latex.git')
 sha256sums=(SKIP)
 depends=('python>=3.0.0' 'libpeas>=1.14.1')
 makedepends=(git gobject-introspection)
+provides=(gedit-latex)
+conflicts=(gedit-latex)
 
 pkgver() {
 	cd gedit-latex
