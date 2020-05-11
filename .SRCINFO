@@ -1,6 +1,6 @@
 pkgbase = pipr-git
 	pkgdesc = A commandline-utility to interactively build complex shell pipelines
-	pkgver = r96.331295f
+	pkgver = r101.1fd53cc
 	pkgrel = 1
 	url = https://gitlab.com/Elkowar/pipr
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = pipr-git
 	makedepends = git
 	depends = gcc-libs
 	optdepends = bubblewrap: run commands in isolation. STRONGLY RECOMMENDED!
+	conflicts = pipr-bin
 	source = pipr-git::git+https://gitlab.com/Elkowar/pipr.git
 	md5sums = SKIP
 

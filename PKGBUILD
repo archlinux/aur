@@ -1,7 +1,8 @@
 # Maintainer: Leon Kowarschick <lkowarschick at gmail dot com>
 pkgname=pipr-git
-pkgver=r96.331295f
+pkgver=r101.1fd53cc
 pkgrel=1
+conflicts=('pipr-bin')
 makedepends=('rust' 'cargo' 'git')
 depends=('gcc-libs')
 optdepends=('bubblewrap: run commands in isolation. STRONGLY RECOMMENDED!')
