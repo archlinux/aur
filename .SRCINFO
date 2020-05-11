@@ -1,6 +1,6 @@
 pkgbase = mips64-elf-newlib
 	pkgdesc = A C library intended for use on embedded systems (mips64-elf)
-	pkgver = 3.1.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = http://sourceware.org/newlib/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = mips64-elf-newlib
 	makedepends = mips64-elf-gcc-stage1
 	options = !strip
 	options = !emptydirs
-	source = ftp://sourceware.org/pub/newlib/newlib-3.1.0.tar.gz
-	sha256sums = fb4fa1cc21e9060719208300a61420e4089d6de6ef59cf533b57fe74801d102a
+	source = ftp://sourceware.org/pub/newlib/newlib-3.3.0.tar.gz
+	sha256sums = 58dd9e3eaedf519360d92d84205c3deef0b3fc286685d1c562e245914ef72c66
 
 pkgname = mips64-elf-newlib
 
