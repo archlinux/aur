@@ -1,7 +1,7 @@
 # Maintainer: Patrick Wu <me@patrickwu.space>
 
 pkgname=wslu
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=0
 pkgdesc="A collection of utilities for Windows 10 Linux Subsystems"
 arch=('any')
@@ -14,7 +14,6 @@ sha256sums=('SKIP')
 
 build() {
   cd wslu
-  bash ./configure.sh --build
   make
 }
 
