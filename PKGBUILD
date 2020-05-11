@@ -5,7 +5,7 @@ pkgver=r18.543a95d
 pkgrel=1
 pkgdesc="lv2 drum synthersizer without sampling (patched fork)"
 arch=(x86_64)
-url="https://github.com/mxmilkb/stegosaurus"
+url="https://github.com/mxmilkiib/stegosaurus"
 license=('GPL')
 groups=()
 depends=('lv2' 'cairo')
@@ -13,7 +13,7 @@ makedepends=('git')
 provides=()
 conflicts=()
 install=
-source=('git+https://github.com/mxmilkb/stegosaurus')
+source=('git+https://github.com/mxmilkiib/stegosaurus')
 noextract=()
 md5sums=('SKIP')
 
