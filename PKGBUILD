@@ -4,10 +4,15 @@ pkgname=downline-bin
 pkgver=1.3.1
 pkgrel=1
 pkgdesc='A cross-platform video and audio downloader for YouTube, Vimeo, Dailymotion, SoundCloud and many other sites'
-arch=('any')
+arch=('x86_64')
 url='https://jarbun.github.io/downline'
-license=('None')
-depends=('youtube-dl' 'ffmpeg')
+license=('unknown')
+depends=('youtube-dl'
+         'ffmpeg'
+         'libxss'
+         'nss'
+         'gtk3'
+         'libcups')
 makedepends=('gendesk')
 provides=('downline')
 source=("${pkgname}-${pkgver}.tar.xz::https://github.com/jarbun/downline/releases/download/v${pkgver}/downline-${pkgver}-portable-linux.tar.xz"
@@ -24,9 +29,8 @@ package() {
   ln -s /usr/bin/youtube-dl "${pkgname%-bin}/resources/ffmpeg/ffprobe"
   install -d "${pkgdir}/opt" "${pkgdir}/usr/bin" \
    "${pkgdir}/usr/share/applications" \
-   "${pkgdir}/usr/share/licenses/${pkgname%-bin}" \
    "${pkgdir}/usr/share/pixmaps"
-  mv -v downline "${pkgdir}/opt" 
+  mv -v downline "${pkgdir}/opt"
   ln -s /opt/downline/downline "${pkgdir}/usr/bin"
   install -Dm644 downline.png "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
   gendesk -f -n --pkgname "${pkgname%-bin}" \
