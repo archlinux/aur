@@ -2,14 +2,15 @@
 
 pkgname=edytornc-git
 _pkgname=edytornc
-pkgver=r187.52fe345
+pkgver=r188.aed5f68
 pkgrel=1
 pkgdesc="Text editor for CNC programmers"
 arch=('x86_64')
 url='https://github.com/u-235/edytornc'
-license=('LGPL-3.0')
+license=('LGPL3')
 provides=('edytornc')
-depends=('qt5-base')
+depends=('hicolor-icon-theme'
+         'qt5-serialport')
 makedepends=('git')
 source=("git+${url}")
 sha256sums=('SKIP')
@@ -31,6 +32,4 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   make INSTALL_ROOT="${pkgdir}" install
-  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname%-git}"
-  ln -s /usr/share/licenses/common/LGPL3/license.txt "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
