@@ -2,14 +2,14 @@ pkgbase = moddownloaderr
 	pkgdesc = moddownloaderr - forked Bash script to download module music from The Mod Archive
 	pkgver = v0.4.r0.gf5d8c70
 	pkgrel = 1
-	url = https://github.com/mxmilkb/moddownloaderr
+	url = https://github.com/mxmilkiib/moddownloaderr
 	arch = i686
 	arch = x86_64
 	license = LGPL3
 	depends = wget
 	depends = sed
 	depends = awk
-	source = git+https://github.com/mxmilkb/moddownloaderr
+	source = git+https://github.com/mxmilkiib/moddownloaderr
 	md5sums = SKIP
 
 pkgname = moddownloaderr
