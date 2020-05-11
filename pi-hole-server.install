@@ -9,7 +9,6 @@ post_install() {
   # permissions
   chown -R http:http /srv/http/pihole
   chown pihole:pihole /etc/pihole
-  chown http:root /etc/pihole/regex.list
 
   /opt/pihole/mimic_setupVars.conf.sh
 
@@ -28,7 +27,6 @@ post_upgrade() {
 
   # update owner of existing dir and file
   chown pihole:pihole /etc/pihole
-  chown http:root /etc/pihole/regex.list
 
   # warning
 
@@ -39,5 +37,5 @@ post_upgrade() {
 post_remove() {
   # delete all temp files except those modified the user
   # TODO - make this more intelligent to save *.pacsave.# where # is a number
-  find /etc/pihole -type f ! -name '*.pacsave' ! -name 'pihole-FTL.conf' ! -name 'pihole-FTL.db' -delete
+  find /etc/pihole -type f ! -name '*.pacsave' ! -name 'pihole-FTL.conf' ! -name 'pihole-FTL.db' ! -name 'gravity.db' -delete
 }
