@@ -5,15 +5,15 @@
 
 pkgname=distcc-git
 _pkgname=distcc
-pkgver=v3.2rc1.r225.g6fb446f
+pkgver=v3.3.3.r21.gc9d4259
 pkgrel=1
 pkgdesc='Distributed C, C++ and Objective-C compiler, git version'
 arch=('x86_64')
 url='http://distcc.org'
-license=('GPL')
-depends=('avahi' 'popt')
-makedepends=('git' 'gtk2' 'python' 'setconf')
-optdepends=('gtk2: for distccmon-gnome' 'python')
+license=(GPL)
+depends=(avahi popt python)
+makedepends=(git gtk2 setconf)
+optdepends=('gtk2: for distccmon-gnome')
 conflicts=(distcc)
 provides=(distcc)
 backup=('etc/conf.d/distccd'
@@ -35,6 +35,9 @@ prepare() {
   ./autogen.sh
   setconf gnome/distccmon-gnome.desktop Name 'DistCC Monitor'
   sed -i 's/ install-gnome-data//g' Makefile.in
+
+  # FS#66418, support Python 3.9
+  find . -name "*.py" -type f -exec sed -i 's/time.clock()/time.perf_counter()/g' {} \;
 }
 
 build() {
@@ -47,7 +50,6 @@ build() {
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
     --with-gtk
-
   make WERROR_CFLAGS= INCLUDESERVER_PYTHON=/usr/bin/python
 }
 
@@ -63,17 +65,20 @@ package() {
     "$pkgdir/usr/lib/systemd/system/distccd.service"
 
   # Desktop shortcut
-  install -Dm644 "$_pkgname/gnome/distccmon-gnome-icon.png" \
+  install -Dm644 "$srcdir/distcc/gnome/distccmon-gnome.png" \
     "$pkgdir/usr/share/pixmaps/distccmon-gnome-icon.png"
-  install -Dm644 "$_pkgname/gnome/distccmon-gnome.desktop" \
+  install -Dm644 "$srcdir/distcc/gnome/distccmon-gnome.desktop" \
     "$pkgdir/usr/share/applications/distccmon-gnome.desktop"
 
   # Symlinks
+  _targets=(c++ c89 c99 cc clang clang++ cpp g++ gcc x86_64-pc-linux-gnu-g++
+            x86_64-pc-linux-gnu-gcc x86_64-pc-linux-gnu-gcc-10.1.0)
   install -d "$pkgdir/usr/lib/$_pkgname/bin"
-  for bin in c++ cc cpp g++ gcc x86_64-pc-linux-gnu-g++ x86_64-pc-linux-gnu-gcc x86_64-pc-linux-gnu-gcc-9.1.0; do
-    ln -sf "/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/bin/$bin"
-    # Additional symlinks are needed, see FS#57978
-    ln -sf "/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$bin"
+  for bin in "${_targets[@]}"; do
+    # For whitelist since version 3.3, see FS#57978
+    ln -sf "../../bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$bin"
+    # Needed for makepkg to work
+    ln -sf "../../../bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/bin/$bin"
   done
 }
 
