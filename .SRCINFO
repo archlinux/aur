@@ -6,8 +6,10 @@ pkgbase = fabio-bin
 	arch = x86_64
 	license = MIT
 	provides = fabio
-	source = https://github.com/fabiolb/fabio/releases/download/v1.5.13/fabio-1.5.13-go1.13.4-linux_amd64
-	md5sums = 0ebff3ca17d1d5a43fc39b72b6502b64
+	source = fabio-bin-1.5.13::https://github.com/fabiolb/fabio/releases/download/v1.5.13/fabio-1.5.13-go1.13.4-linux_amd64
+	source = LICENSE::https://raw.githubusercontent.com/fabiolb/fabio/master/LICENSE
+	sha256sums = 716aaa264e2ffb7a98a574220e0e20d7d40e2f1b2717584d6f260e01f89220fc
+	sha256sums = 1b96863084c41c1557336dad7193f7b0d4c03042481da83136b53940ea5a3083
 
 pkgname = fabio-bin
 
