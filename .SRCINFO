@@ -9,6 +9,7 @@ pkgbase = nfancurve-git
 	depends = nvidia-settings
 	depends = procps
 	conflicts = nfancurve
+	backup = etc/nfancurve.conf
 	source = nfancurve::git+https://github.com/nan0s7/nfancurve.git
 	sha512sums = SKIP
 

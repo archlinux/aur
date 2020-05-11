@@ -13,7 +13,9 @@ depends=("nvidia-settings" "procps")
 makedepends=()
 conflicts=("${_pkgname}")
 
+backup=('etc/nfancurve.conf')
 install=${_pkgname}.install
+
 source=("${_pkgname}::git+https://github.com/nan0s7/${_pkgname}.git")
 sha512sums=('SKIP')
 
