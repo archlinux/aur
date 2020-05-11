@@ -1,13 +1,12 @@
 pkgbase = libzim
 	pkgdesc = Reference implementation of the ZIM specification by the openZIM project
-	pkgver = 6.1.1
+	pkgver = 6.1.2
 	pkgrel = 1
 	url = https://github.com/openzim/libzim
 	arch = armv7h
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = libffi
 	makedepends = meson
 	makedepends = gtest
 	makedepends = cython
@@ -17,8 +16,8 @@ pkgbase = libzim
 	depends = xz
 	depends = icu
 	replaces = zimlib-git
-	source = https://github.com/openzim/libzim/archive/6.1.1.tar.gz
-	sha256sums = 3f2867c92b669854afb6d890c005b669bd5eb9b211d2cacb92ad432c02c54c2c
+	source = https://github.com/openzim/libzim/archive/6.1.2.tar.gz
+	sha256sums = d705098722cb69cc0bc9601aec488716589710b6a53eba88e0451e5416e434a0
 
 pkgname = libzim
 
