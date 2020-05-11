@@ -17,7 +17,7 @@ source=("git+https://github.com/Graviton-Code-Editor/Graviton-App"
         "${_installname}.desktop")
 
 md5sums=('SKIP'
-         'e8a47a975ee2bcf672421e0a7bfa2b53')
+         '983056e81b5569e09a9f60a43c7df2e5')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"

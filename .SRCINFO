@@ -16,7 +16,7 @@ pkgbase = graviton-git
 	source = git+https://github.com/Graviton-Code-Editor/Graviton-App
 	source = graviton.desktop
 	md5sums = SKIP
-	md5sums = e8a47a975ee2bcf672421e0a7bfa2b53
+	md5sums = 983056e81b5569e09a9f60a43c7df2e5
 
 pkgname = graviton-git
 
