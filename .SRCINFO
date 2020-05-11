@@ -5,10 +5,9 @@ pkgbase = shot-git
 	url = https://github.com/rr-/shot
 	arch = any
 	license = MIT
-	depends = git
-	depends = gcc
-	depends = xorg-xrandr
-	depends = cmake
+	depends = libxrandr
+	makedepends = cmake
+	makedepends = git
 	source = shot-git::git://github.com/rr-/shot.git
 	sha256sums = SKIP
 
