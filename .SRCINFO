@@ -1,0 +1,17 @@
+pkgbase = st-prodesquare-git
+	pkgdesc = Hamza Mughal's patch of ST with Xresources support, transparency, scrolling etc
+	pkgver = 0.8.3.r5.221df5b
+	pkgrel = 1
+	url = https://github.com/ProDeSquare/st.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	depends = ttf-jetbrains-mono
+	depends = ttf-joypixels
+	provides = st
+	conflicts = st
+	source = git+https://github.com/ProDeSquare/st.git
+	md5sums = SKIP
+
+pkgname = st-prodesquare-git
