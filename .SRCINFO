@@ -5,6 +5,7 @@ pkgbase = wine-installer
 	url = http://packages.linuxmint.com/pool/main/w/wine-installer
 	arch = x86_64
 	license = GPL
+	depends = wine
 	optdepends = winetricks: Script to install various redistributable runtime libraries in Wine.
 	source = wine-installer-4.0.5.tar.xz::http://packages.linuxmint.com/pool/main/w/wine-installer/wine-installer_4.0.5.tar.xz
 	sha256sums = b360b6c34e2fbc84fd959caa204ba48c850db5fb437487ff2516e67c0632057f
