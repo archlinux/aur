@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=stmm-games
-pkgver=0.21
+pkgver=0.22
 pkgrel=1
 pkgdesc="C++ 2D games library"
 url='https://efanomars.com/stmm-games'
@@ -16,8 +16,8 @@ optdepends=()
 #replaces=("stmm-games")
 #conflicts=("stmm-games")
 
-source=('https://efanomars.com/sources/stmm-games-0.21.tar.gz')
-sha256sums=('8470e21a2f463a13a0b580e4d36f09daf87d8d853480227a2699fe325cf65ca7')
+source=('https://efanomars.com/sources/stmm-games-0.22.tar.gz')
+sha256sums=('2ddf5317b2e345c23571db3aa3257f1e8927adfa0af86e92a3099ed8c8193924')
 
 build() {
   cd "${srcdir}/stmm-games"
