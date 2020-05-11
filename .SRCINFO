@@ -1,0 +1,28 @@
+pkgbase = perl-perl-languageserver-git
+	pkgdesc = Language Server for Perl
+	pkgver = 2.1.r21.f74d741
+	pkgrel = 1
+	url = https://github.com/richterger/Perl-LanguageServer
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-anyevent>=0
+	depends = perl-scalar-list-utils>=0
+	depends = perl-class-refresh>=0
+	depends = perl-padwalker>=0
+	depends = perl-anyevent-aio>=0
+	depends = perl-compiler-lexer-git
+	depends = perl-coro>=0
+	depends = perl-data-dump>=0
+	depends = perl-io-aio>=0
+	depends = perl-json>=0
+	depends = perl-moose>=0
+	depends = perl>=5.014
+	provides = perl-perl-languageserver=2.1.r21.f74d741
+	conflicts = perl-perl-languageserver
+	options = !emptydirs
+	source = perl-perl-languageserver::git+https://github.com/richterger/Perl-LanguageServer
+	md5sums = SKIP
+
+pkgname = perl-perl-languageserver-git
+
