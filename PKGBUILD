@@ -4,7 +4,7 @@
 pkgname=emboss
 _pkgname=EMBOSS
 pkgver=6.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of molecular biology applications"
 arch=('x86_64' 'i686')
 url="http://emboss.sourceforge.net/"
@@ -34,6 +34,7 @@ package() {
   mv "$pkgdir"/usr/include "$pkgdir"/usr/emboss
   mkdir "$pkgdir"/usr/include
   mv "$pkgdir"/usr/emboss "$pkgdir"/usr/include/
-  # showdb conflicts with sqlite
-  mv "$pkgdir"/usr/bin/{,emboss_}showdb
+  
+  mv "$pkgdir"/usr/bin/{,emboss_}showdb # conflict with sqlite
+  mv "$pkgdir"/usr/bin/{,emboss_}wordcount # conflict with texlive-latexextra
 }

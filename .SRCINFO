@@ -1,7 +1,7 @@
 pkgbase = emboss
 	pkgdesc = A collection of molecular biology applications
 	pkgver = 6.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://emboss.sourceforge.net/
 	arch = x86_64
 	arch = i686
