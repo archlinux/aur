@@ -1,0 +1,22 @@
+pkgbase = python-asn1ate
+	pkgdesc = A Python library for translating ASN.1 into other forms
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/kimgr/asn1ate
+	arch = any
+	license = custom:Schneider Electric Building AB
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-asn1ate-0.6.tar.gz::https://github.com/kimgr/asn1ate/archive/v0.6.tar.gz
+	sha256sums = 49f4bddefa350feaa305e1dedb0ca7780ffcb1e273810aec124b66ca5c4fa579
+
+pkgname = python-asn1ate
+	depends = python
+	depends = python-pyasn1
+	depends = python-pyparsing
+
+pkgname = python2-asn1ate
+	depends = python2
+	depends = python2-pyasn1
+	depends = python2-pyparsing
+
