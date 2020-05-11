@@ -1,0 +1,14 @@
+pkgbase = python2-subprocess32
+	pkgdesc = Backport of the Python 3 subprocess module
+	pkgver = 3.5.4
+	pkgrel = 1
+	url = https://github.com/google/python-subprocess32
+	arch = x86_64
+	license = custom
+	makedepends = python2-setuptools
+	depends = python2
+	source = python2-subprocess32-3.5.4.tar.gz::https://github.com/google/python-subprocess32/archive/3.5.4.tar.gz
+	sha256sums = 6686ccc657d236af7310cd7c792ca4897cfcc7344a4edb746402267ba7f436ad
+
+pkgname = python2-subprocess32
+
