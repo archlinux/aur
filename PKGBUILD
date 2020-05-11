@@ -6,7 +6,7 @@
 
 _pkgname=retroarch
 pkgname=retroarch-rbp4
-pkgver=1.8.5
+pkgver=1.8.6
 pkgrel=1
 pkgdesc='Reference frontend for the libretro API (Raspberry Pi 4)'
 arch=(armv7h)
@@ -40,11 +40,12 @@ optdepends=(
   'libretro-overlays: Collection of overlays'
   'libretro-shaders: Collection of shaders'
   'python: retroarch-cg2glsl'
+  'retroarch-assets-ozone: Ozone menu assets'
   'retroarch-assets-xmb: XMB menu assets'
 )
 backup=(etc/retroarch.cfg)
 source=(
-  git+https://github.com/libretro/RetroArch.git#tag=8bcd74bf42f486c37e243a80e29bc214b2b6b205
+  git+https://github.com/libretro/RetroArch.git#tag=36802f713312dc16c93a7765cd4a1b0883db5a61
   retroarch-config.patch
   service
   sysusers.conf
