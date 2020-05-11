@@ -1,13 +1,14 @@
 pkgbase = subconverter-bin
 	pkgdesc = Utility to convert between various proxy subscription formats
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/tindy2013/subconverter
 	arch = x86_64
-	license = GPL-3.0
+	license = GPL3
+	depends = bash
 	provides = subconverter
-	source = https://github.com/tindy2013/subconverter/releases/download/v0.5.0/subconverter_linux64.tar.gz
-	md5sums = 1a404b075145eef9fc624011cec5d90d
+	source = subconverter-bin-0.5.1.tar.gz::https://github.com/tindy2013/subconverter/releases/download/v0.5.1/subconverter_linux64.tar.gz
+	sha256sums = a5fef9c4af09caa893d87c54e1b322c9cb4c6811fca8c3f0a40c3d498c7bca6c
 
 pkgname = subconverter-bin
 
