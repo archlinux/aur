@@ -9,17 +9,17 @@ arch=('x86_64')
 url='https://github.com/Konstantin8105/f4go'
 license=('MIT')
 provides=('f4go')
-makedepends=('git' 'go')
+depends=('glibc')
+makedepends=('git' 'go-pie')
 source=("git+${url}")
 md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-   ( set -o pipefail
+  ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-  
 }
 
 prepare() {
@@ -40,6 +40,6 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   install -Dm755 ../${_pkgname}-bin "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   go clean -modcache #Remove go libraries
 }
