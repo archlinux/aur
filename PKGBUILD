@@ -23,7 +23,7 @@ build() {
   cd "ThirdParty-Mumps-releases-$pkgver"
   for _arch in ${_architectures}; do 
     mkdir -p build-${_arch} && pushd build-${_arch}
-    LIBS="-lssp" ${_arch}-configure lt_cv_deplibs_check_method=pass_all ..
+    FFLAGS="-fallow-argument-mismatch" LIBS="-lssp" ${_arch}-configure lt_cv_deplibs_check_method=pass_all ..
     make
     popd
   done
