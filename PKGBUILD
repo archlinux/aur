@@ -15,7 +15,7 @@ depends=('blas' 'bzip2' 'curl' 'icu' 'lapack'
          'pcre2' 'perl'
          'readline' 'unzip' 'which'
          'xz' 'zip' 'zlib')
-makedepends=('gcc-fortran' 'rsync')
+makedepends=('gcc-fortran' 'rsync' 'subversion')
 conflicts=('r-devel') # r-devel.{png,desktop}, etc/r-devel /usr/bin entries
 backup=("etc/r-devel/Makeconf" "etc/r-devel/Renviron" "etc/r-devel/ldpaths" "etc/r-devel/repositories")
 options=('!makeflags')
