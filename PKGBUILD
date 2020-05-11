@@ -1,10 +1,10 @@
 # Maintainer: Alice Gaudon <alice at gaudon dot pro>
 # Contributor: NexAdn <nexadn at yandex dot com>
 pkgname=cef-minimal-3770
-pkgver=75.0.11
-_pkgver="75.0.11+gf50b3c2+chromium-75.0.3770.100"
-_url_pkgver="75.0.11%2Bgf50b3c2%2Bchromium-75.0.3770.100"
-pkgrel=2
+pkgver=75.1.14
+_pkgver="75.1.14+gc81164e+chromium-75.0.3770.100"
+_url_pkgver="75.1.14%2Bgc81164e%2Bchromium-75.0.3770.100"
+pkgrel=1
 pkgdesc="Chromium Embedded Framework minimal release"
 arch=("i686" "x86_64")
 url="https://bitbucket.org/chromiumembedded/cef"
@@ -19,8 +19,8 @@ source_i686=(
 source_x86_64=(
     "http://opensource.spotify.com/cefbuilds/cef_binary_${_url_pkgver}_linux64_minimal.tar.bz2"
 )
-sha1sums_i686=('588ea34243c1fdadca1e80c9f5949dfde4863ca5')
-sha1sums_x86_64=('46c34b27d37115f3ef66e5932f30179ae5be3628')
+sha1sums_i686=('d559425e624cf937a9523dcd32378ef85383d1ac')
+sha1sums_x86_64=('89f7af789e6d40eb449f38c1789ad4d1d701d079')
 [[ "$CARCH" = "i686" ]] && _arch="32"
 [[ "$CARCH" = "x86_64" ]] && _arch="64"
 build() {
