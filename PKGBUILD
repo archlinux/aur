@@ -8,8 +8,8 @@ arch=('x86_64')
 url='https://github.com/duck8823/duci'
 license=('MIT')
 provides=('duci')
-source=("${url}/releases/download/v${pkgver}/duci_${pkgver}_linux_amd64.tar.gz")
-md5sums=('53823f353ab009c4657490a234b6c7db')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/duci_${pkgver}_linux_amd64.tar.gz")
+sha256sums=('982a1a04b54899f8aab50d96a3b9646c0b15f0d831a8ccfc024032ddf9838a40')
 
 package() {
   install -Dm755 "${srcdir}"/duci "${pkgdir}/usr/bin/duci"
