@@ -1,28 +1,17 @@
-#Maintainer wicast <wicastchen at hotmail>
+# Maintainer: Lukas Grossar <lukas.grossar@gmail.com>
 
 pkgname=glide-bin
 _pkgname=glide
-pkgver=0.10.2
+pkgdesc="Dependency management and vendoring for Go projects"
+pkgver=0.13.3
 pkgrel=1
-pkgdesc="Simplified Go project management, dependency management, and vendoring."
-arch=('x86_64' 'i686')
-url='https://github.com/Masterminds/glide'
-licence=('MIT')
-provides=('glide=0.8.3')
-conflicts=('glide')
-source_x86_64=("https://github.com/Masterminds/glide/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-amd64.tar.gz")
-source_i686=("https://github.com/Masterminds/glide/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-386.tar.gz")
-md5sums_x86_64=('9cf39f7278b34cebce6cd0ea2860b61f')
-md5sums_i686=('d85263ce266b6f66c00cd424010ba459')
-
-if [ "$CARCH" = "i686"  ]; then
-    _PKGARCH=386
-else
-    _PKGARCH=amd64
-fi
+arch=('x86_64')
+url="https://github.com/Masterminds/glide"
+license=('MIT')
+provides=('glide')
+source=("https://github.com/Masterminds/glide/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.tar.gz")
+sha256sums=('ba5619955a28d7931a9ae38d095fc5fa5acc28e77abc8737a8136c652d9cbb38')
 
 package() {
-    cd $srcdir/linux-$_PKGARCH
-    install -Dm755 "$_pkgname" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 755 "$srcdir/linux-amd64/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
 }
