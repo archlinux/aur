@@ -3,7 +3,7 @@
 pkgname=openra-raplus-git
 _pkgname=openra-raplus
 pkgver=19.git.5312ace
-pkgrel=1
+pkgrel=2
 pkgdesc="A Command & Conquer: Red Alert-inspired mod of OpenRA"
 arch=('any')
 url="https://github.com/MlemandPurrs/raplusmod"
@@ -17,16 +17,14 @@ options=(!strip)
 source=("git+${url}.git"
 # You have to get the following file from MaxMind, which will require a free account
 # https://dev.maxmind.com/geoip/geoip2/geolite2/
-"local://GeoLite2-Country.mmdb.gz"
+#"local://GeoLite2-Country.mmdb.gz"
 "openra-raplus"
-"fetch-engine.patch"
+#"fetch-engine.patch"
 "Makefile.patch"
 "openra-raplus.appdata.xml"
 "openra-raplus.desktop")
 md5sums=('SKIP'
-         'efb8c043dfa095146f373fec367aef64'
          'd48259a154b7a72b2377ac1a632ec1d3'
-         '711019044fbb1c1e3aa5edc58b54343d'
          'feae017ba5765215cd151a892362e6b1'
          'e79c9aebc225384175810be58d9f9ddf'
          '9400d5c8bea3196e9af96f6aa5c2f879')
@@ -42,7 +40,7 @@ prepare() {
     cd $srcdir/raplusmod
     dos2unix *.md
     find . -name "*.sh" -exec chmod +x {} \;
-    patch -Np1 -i $srcdir/fetch-engine.patch
+#    patch -Np1 -i $srcdir/fetch-engine.patch
     printf "Success in converting docs...\n"
 }
 
@@ -67,10 +65,10 @@ package() {
     cp -r README.md $pkgdir/usr/share/doc/packages/openra-raplus/README.md
     cp -r mods/raplus/icon.png $pkgdir/usr/share/pixmaps/openra-raplus.png
     install -Dm644 $srcdir/openra-raplus.desktop $pkgdir/usr/share/applications/openra-raplus.desktop
-    mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps
-    for size in 16 32 48 64 128 256; do
+    mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256,512x512}/apps
+    for size in 16 32 48 64 128 256 512; do
       size="${size}x${size}"
-      cp packaging/linux/mod_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${pkgname}.png"
+      cp packaging/artwork/icon_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${pkgname}.png"
     done
     rm -rf $pkgdir/usr/lib/openra-raplus/*{.txt,nunit,.yml,.xslt,.cmd,.md,Mono,.sh,Makefile,sln.*,Test,.mdb,.pdb,.ps1,.AS,packaging,thirdparty,engines,OpenRA.Mods}*
     rm -rf $pkgdir/usr/lib/openra-raplus/{mods/{all,cnc,d2k,ra,ts},OpenRA.Mods.*,OpenRA.Platforms.Default,OpenRA.Server,OpenRA.Game,OpenRA.Utility,Settings.StyleCop}
