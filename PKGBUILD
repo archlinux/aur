@@ -4,8 +4,7 @@ pkgdesc="ROS - This package provides a set of simple math utilities to work with
 url='https://wiki.ros.org/angles'
 
 pkgname='ros-melodic-angles'
-pkgver='1.9.12'
-_pkgver_patch=0
+pkgver='1.9.13'
 arch=('any')
 pkgrel=2
 license=('BSD')
