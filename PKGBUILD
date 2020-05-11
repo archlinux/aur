@@ -1,7 +1,7 @@
 # Maintainer: Alexander Kempen <alexander dot kempen at posteo dot de>
 pkgname=wayvnc-git
 _pkgname=wayvnc
-pkgver=r66.ffce795
+pkgver=r208.9b48290
 pkgrel=1
 license=("ISC")
 pkgdesc="This is a VNC server for wlroots based Wayland compositors."
