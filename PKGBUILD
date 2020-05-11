@@ -1,26 +1,32 @@
-# Maintainer: petRUShka <petrushkin@yandex.ru>
-# CO-Maintainer: Laramy Black <laramy2020@gmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: petRUShka <petrushkin@yandex.ru>
+# Contributor: Laramy Black <laramy2020@gmail.com>
+# Contributor: Lorenzo Ferrillo <lorenzofersteam@live.it>
 pkgname=diorite
 pkgver=4.16.0
-pkgrel=1
-pkgdesc="Diorite Library is a utility and widget library for Nuvola Player project based on GLib, GIO and GTK."
-arch=("any")
-url="https://github.com/tiliado/diorite"
-license=('custom:BSD')
-depends=('python' 'vala' 'glib2' 'ruby-gio2' 'gtk3' 'libgee' 'sqlite' 'gobject-introspection')
-optdepends=('valadoc:        A documentation tool for vala')
-makedepends=('scour')
-source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
+pkgrel=2
+pkgdesc="A utility and widget library for Nuvola Player project based on GLib, GIO, and GTK"
+arch=('x86_64')
+url="https://tiliado.eu/diorite"
+license=('BSD 2-Clause "Simplified"')
+depends=('glib2' 'gtk3' 'libgee' 'sqlite' 'libx11' 'gobject-introspection')
+makedepends=('vala-0.42' 'python-pyparsing')
+provides=('libdioritegtk4.so-64' 'libdioriteglib4.so-64' 'libdioritedb4.so-64')
+source=("https://github.com/tiliado/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('81c76f4f8816980c0de23a060a41bb4f71861025d550014e60068ac6c2da3c5c')
 
 build() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    ./waf configure --prefix=/usr --libdir=/usr/lib --no-vala-lint --novaladoc
-    ./waf build
+	cd "$pkgname-$pkgver"
+	./waf distclean configure \
+		--prefix=/usr \
+		--libdir=/usr/lib \
+		--no-vala-lint \
+		--novaladoc \
+		--no-strict
+	./waf build -v -p
 }
 
 package() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    ./waf install --destdir=${pkgdir}
+	cd "$pkgname-$pkgver"
+	./waf install --destdir="$pkgdir"
 }
