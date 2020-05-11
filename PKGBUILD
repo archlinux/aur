@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=zimwriterfs
 pkgver=1.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for creating ZIM files based on contents on a local filesystem"
 license=('GPL3')
 arch=('any')
