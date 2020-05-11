@@ -1,8 +1,8 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=freerouting
-pkgver=r216.07b7576
-pkgrel=2
+pkgver=1.4.4
+pkgrel=1
 pkgdesc="Advanced PCB autorouter"
 arch=('i686' 'x86_64')
 url="https://github.com/freerouting/freerouting"
@@ -10,23 +10,26 @@ license=('GPL3')
 depends=('jre11-openjdk>=11')
 makedepends=('jdk11-openjdk>=11' git)
 optdepends=('kicad: for use with PCB editor')
-source=("${pkgname}::git+https://github.com/freerouting/freerouting.git"
+source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         "freerouting.sh")
-md5sums=('SKIP'
-         '6586e9f705ecb5b39cad5440a6389f60')
+md5sums=('356ffed40fd1b6ba88b4fd3d7289b84c'
+         '0943b58a132119e866098f083766a123')
 
-pkgver() {
-  cd "${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+#pkgver() {
+#  cd "${pkgname}"
+#  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#}
 
 build() {
-  cd "${pkgname}"
+  # don't forget to set active JDK to 11 version before running makepkg:
+  # sudo archlinux-java set java-11-openjdk
+  cd "${pkgname}-${pkgver}"
+
   ./gradlew assemble
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname}-${pkgver}"
   
   install -Dm644 build/libs/freerouting-executable.jar "${pkgdir}/usr/lib/freerouting/freerouting-executable.jar"
   install -Dm755 "${srcdir}/freerouting.sh" "${pkgdir}/usr/bin/freerouting"
