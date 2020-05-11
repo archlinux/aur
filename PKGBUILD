@@ -6,9 +6,10 @@ pkgrel=1
 pkgdesc='Estimate distinct count of values from standard input. Provides a very fast way to perform unique count estimates on the command line'
 arch=('x86_64')
 url='https://github.com/haroldfreeman/edcount'
-license=('GPL-3.0')
-source=("${url}/releases/download/v${pkgver}/edcount-${pkgver}.tar.gz")
-md5sums=('d66fabc13d1112a936e14bf0ac14e6d1')
+license=('GPL3')
+depends=('glibc')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/edcount-${pkgver}.tar.gz")
+sha256sums=('9b5561aa32ef81096132e84cb1544231c71bad77c0eaeb6a854ae3b4c2938a3d')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
