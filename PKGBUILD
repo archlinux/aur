@@ -1,5 +1,5 @@
-# Maintainer: jakbyte <jakbyte@gmail.com>
-# Contributor: jakbyte <jakbyte@gmail.com>
+# Maintainer: jakbyte <jakbyte@protonmail.com>
+# Contributor: jakbyte <jakbyte@protonmail.com>
 
 pkgname=("lld7" "lld7-headers" "lld7-libs" "lld7-libs-static" "lld7-docs")
 pkgdesc="Linker from the LLVM project."
