@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_expect'
 pkgname="ocaml-$_projectname"
-pkgver='0.13.0'
+pkgver='0.13.1'
 pkgrel='1'
 epoch='1'
 pkgdesc='Cram like framework for OCaml'
@@ -13,25 +13,25 @@ depends=('ocaml>=4.04.2' 'ocaml-base>=0.13.0' 'ocaml-ppx_assert>=0.13.0' 'ocaml-
 makedepends=('dune>=1.5.1')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('dcb3ece35149ff745dc95aba4353080916ecae974cdfbd469ef505cd1f04f4bf')
+sha256sums=('4d19571d7dcef21de581cc477177fd29722f2724a925c36a763fe98fa31f22e1')
 
 _sourcedirectory="$_projectname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune build -p "$_projectname" --verbose
+	dune build --release --verbose
 }
 
 # fails because of a circular dependency on ppx_jane, "Error: No rule found for negative-tests/inline_tests_runner"
 # and "Error: No rule found for negative-tests/inline_tests_runner.exe"
 # check() {
 # 	cd "$srcdir/$_sourcedirectory/"
-# 	dune runtest -p "$_projectname" --verbose
+# 	dune runtest --release --verbose
 # }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
