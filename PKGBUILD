@@ -10,16 +10,17 @@ url='https://www.opencode.net/jomada/moe-theme'
 license=('GPL3')
 optdepends=('plasma-desktop: for a plasma desktop theme'
             'kvantum-qt5: for a Kvantum theme'
-            'mcmojave-circle-icon-theme-git: for icon theme'
-            'sierrabreeze-kwin-decoration-git: for KWin decoration'
-            'sierrabreeze-jomada-kwin-decoration: for matched KWin decoration'
+            'mcmojave-circle-icon-theme-git: Default icon theme'
+            'tencent-icon-theme-git: Another excellent icon theme'
+            'sierrabreeze-kwin-decoration-git: KWin decoration'
+            'sierrabreeze-jomada-kwin-decoration: Default KWin decoration'
             'latte-dock-git: for a Latte dock layout'
             'plasma5-applets-virtual-desktop-bar-git: for Latte dock'
             'plasma5-applets-latte-sidebar-button: for Latte dock'
             'plasma5-applets-window-title: for Latte dock'
             'plasma5-applets-latte-separator: for Latte dock'
             'plasma5-applets-window-buttons: for Latte dock'
-            'plasma5-applets-chiliclock: for Chili Clock on Latte dock')
+            'plasma5-applets-chiliclock: Chili Clock on Latte dock')
 makedepends=('git')
 provides=('moe-kde')
 conflicts=('moe-kde')
