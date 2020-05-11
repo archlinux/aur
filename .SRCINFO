@@ -1,6 +1,6 @@
 pkgbase = zfs-linux-lts
 	pkgver = 0.8.3_5.4.39.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
