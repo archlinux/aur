@@ -3,7 +3,7 @@
 _pkgbasename=libplacebo
 pkgname=lib32-$_pkgbasename
 pkgver=2.43.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives (32bit)'
 url='https://github.com/haasn/libplacebo'
 arch=('x86_64')
@@ -23,13 +23,20 @@ makedepends=(
         'vulkan-headers'
         )
 provides=('libplacebo.so')
-source=("https://code.videolan.org/videolan/libplacebo/-/archive/v${pkgver}/${_pkgbasename}-v${pkgver}.tar.gz")
-sha512sums=('62463dfee6e6fd450395e42d7af2b6e0caa0b183c0d00f5ba0c5ddc893a47cdd0371d37fc72a7361228324b0dc9c55dd0309a5a7210cf753618fde18a094abcb')
+source=(
+    "https://code.videolan.org/videolan/libplacebo/-/archive/v${pkgver}/${_pkgbasename}-v${pkgver}.tar.gz"
+    "vulkan-get-rid-of-deprecated-enum-members.patch::https://code.videolan.org/videolan/libplacebo/-/commit/45e19e7bbbbfceb197d8826c775e16ef536a4565.patch"
+  )
+sha512sums=(
+    '62463dfee6e6fd450395e42d7af2b6e0caa0b183c0d00f5ba0c5ddc893a47cdd0371d37fc72a7361228324b0dc9c55dd0309a5a7210cf753618fde18a094abcb'
+    'SKIP'
+  )
 
 prepare() {
   cd ${_pkgbasename}-v${pkgver}
 
   # Patching if needed
+  patch -Np1 < ../vulkan-get-rid-of-deprecated-enum-members.patch # commit 45e19e7b
 }
 
 build() {

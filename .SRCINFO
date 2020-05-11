@@ -1,7 +1,7 @@
 pkgbase = lib32-libplacebo
 	pkgdesc = Reusable library for GPU-accelerated video/image rendering primitives (32bit)
 	pkgver = 2.43.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/haasn/libplacebo
 	arch = x86_64
 	license = LGPL2.1
@@ -16,7 +16,9 @@ pkgbase = lib32-libplacebo
 	depends = lib32-libepoxy
 	provides = libplacebo.so
 	source = https://code.videolan.org/videolan/libplacebo/-/archive/v2.43.1/libplacebo-v2.43.1.tar.gz
+	source = vulkan-get-rid-of-deprecated-enum-members.patch::https://code.videolan.org/videolan/libplacebo/-/commit/45e19e7bbbbfceb197d8826c775e16ef536a4565.patch
 	sha512sums = 62463dfee6e6fd450395e42d7af2b6e0caa0b183c0d00f5ba0c5ddc893a47cdd0371d37fc72a7361228324b0dc9c55dd0309a5a7210cf753618fde18a094abcb
+	sha512sums = SKIP
 
 pkgname = lib32-libplacebo
 
