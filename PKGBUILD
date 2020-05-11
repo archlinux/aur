@@ -47,10 +47,12 @@ export PETSC_DIR=${petsc_dir%%/include}
 
 # I used these for PETSc (from MOOSE)
 # -O3 optimises
-generic_flags="-fPIC -fopenmp -O3 -march=x86-64 -mtune=generic"
-export   COPTFLAGS=-O3
-export CPPOPTFLAGS=-O3
-export CXXOPTFLAGS=-O3
+generic_flags="-fPIC -fopenmp -O2 -march=x86-64 -mtune=generic"
+generic_flags="-fPIC -fopenmp -O2 -march=amdfam10"
+opt_flags="-fPIC -fopenmp -O3 -march=amdfam10"
+export   COPTFLAGS="$opt_flags"
+export CPPOPTFLAGS="$opt_flags"
+export CXXOPTFLAGS="$opt_flags"
 export      CFLAGS="$generic_flags"
 # Fortify is optional
 export    CPPFLAGS="$generic_flags -O2 -D_FORTIFY_SOURCE=2"
