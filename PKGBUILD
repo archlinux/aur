@@ -2,7 +2,7 @@
 
 pkgname=gnome-system-log
 pkgver=3.9.90+160+g4b07190
-pkgrel=1
+pkgrel=2
 pkgdesc="View your system logs"
 arch=(x86_64)
 url="https://git.gnome.org/browse/gnome-system-log"
