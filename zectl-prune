@@ -1,0 +1,99 @@
+#!/usr/bin/env bash
+#
+# zectl-prune is used by zectl-hook to rotate Boot Environments
+
+# Tests
+
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
+# Vars
+
+# Set where zectl is installed
+PATH="$PATH:/usr/bin"
+BIN=/usr/bin/zectl
+# Get current script name
+FILENAME="$(basename "$(test -L "$0" && readlink "$0" || echo "$0")")"
+# String to prepend to boot env name
+PREFIX="pacmanhook"
+
+# Functions
+
+print () {
+    echo -e "\033[1m• $1\033[0m"
+}
+
+usage(){ 
+    echo "Usage: $FILENAME [options]" 
+    echo "-h : afficher l'aide"  
+    exit
+}
+
+# Get a value from zectl
+get_value () {
+    value=$("$BIN" get -H "$1" | awk '{print $2}')
+    if [[ $value =~ \t- ]]
+    then
+        return 1
+    else
+        echo "$value"
+    fi
+
+}
+
+# Create a boot env prepended with prefix
+zectl_create () {
+    bename="$PREFIX-$(date +'%Y%m%dT%H%M%S')"
+    $BIN create "$bename" && print "Created $bename"
+}
+
+# List boot env by prefix, and omit booted|activated
+zectl_list () {
+    # TOFIX: sort https://github.com/johnramsden/zectl/issues/18
+    # Here: sorting on the be name which contains date
+    $BIN list -H | grep $PREFIX | grep -Ev '\ N\ |\ NR\ |\ R\ ' | sort -k1
+}
+
+# Remove latest prefixed boot env 
+zectl_purge () {
+    latest=$(zectl_list | head -n1 | grep "$PREFIX" | awk '{print $1}')
+    zectl destroy "$latest" && print "Destroyed $latest"
+}
+
+# Args
+
+while getopts "h" option; do
+    case "${option}" in
+        h)
+            usage
+            ;;
+        *)
+            usage
+            ;;
+    esac
+done
+shift $((OPTIND-1))
+
+# Main
+
+# Get how many boot env to keep from zectl
+prune_count=$(get_value pacmanhook-prunecount)
+
+# Test if value is numeric
+if [[ $prune_count =~ ^[0-9]+$ ]]
+then
+
+    # If keep number is not reach, create a boot env
+    if [[ $(zectl_list | wc -l) -lt "$prune_count" ]]
+    then
+        zectl_create
+    # Else remove the latest and create a boot env
+    else
+        zectl_purge
+        zectl_create
+    fi
+else
+    echo 'error: please run "zectl set pacmanhook-prunecount=X" where "X" is the number of boot environment to keep when rotating.'
+fi

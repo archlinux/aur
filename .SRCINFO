@@ -1,0 +1,18 @@
+pkgbase = zectl-pacman-hook
+	pkgdesc = Create and prune zectl boot environments before any pacman command
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/eoli3n/zectl-pacman-hook
+	install = INSTALL
+	arch = any
+	license = UNLICENSE
+	depends = zectl
+	source = 10-zectl-pre.hook
+	source = zectl-prune
+	source = UNLICENSE
+	sha256sums = de9a144e6cda1911395b6491f2e83af0089a72e9eab92199d489b29919d76c2f
+	sha256sums = b38b0b2fca33ce64d5c1e713feb3bd7d3a0e85fa8d5c4c5220edefc2a63440da
+	sha256sums = d3c4f1607c9488b22732511b83e6f6173d82499c0678c899666ca12c36517f72
+
+pkgname = zectl-pacman-hook
+

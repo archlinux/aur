@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Remove
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = Create a boot environment
+When = PreTransaction
+Exec = /usr/bin/bash -c 'if [[ $(/usr/bin/zectl get -H pacmanhook) =~ yes ]];then /usr/share/libalpm/scripts/zectl-prune ; fi'

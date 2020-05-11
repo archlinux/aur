@@ -1,0 +1,13 @@
+post_install() {
+
+    # Set default options
+    zectl set pacmanhook-prunecount=1
+    zectl set pacmanhook="yes"
+
+	cat << EOF
+Please set number of version to keep, default is 1
+
+  $ sudo zectl set pacmanhook-prunecount=5
+
+EOF
+}
