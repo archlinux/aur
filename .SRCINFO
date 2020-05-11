@@ -1,6 +1,6 @@
 pkgbase = r-devel-svn
 	pkgdesc = Language and environment for statistical computing and graphics - development version (SVN)
-	pkgver = r78400
+	pkgver = r78409
 	pkgrel = 1
 	url = http://www.r-project.org/
 	install = r-devel.install
@@ -9,6 +9,7 @@ pkgbase = r-devel-svn
 	license = GPL
 	makedepends = gcc-fortran
 	makedepends = rsync
+	makedepends = subversion
 	depends = blas
 	depends = bzip2
 	depends = curl
