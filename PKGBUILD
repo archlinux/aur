@@ -6,11 +6,12 @@ pkgrel=1
 pkgdesc="List of utilities for the daily developer workflow"
 arch=('x86_64')
 url='https://github.com/beatlabs/ergo'
-license=('BSD-3-Clause')
+license=('BSD')
 provides=('ergo')
+depends=('glibc')
 makedepends=('go' 'git')
 source=("git+${url}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/ergo"
@@ -35,6 +36,6 @@ build() {
 package() {
   cd "${srcdir}/ergo"
   install -Dm755 "${srcdir}"/ergo-bin "${pkgdir}/usr/bin/ergo"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/ergo/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   go clean -modcache #Remove go libraries
 }
