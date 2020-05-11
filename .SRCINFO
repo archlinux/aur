@@ -6,7 +6,7 @@ pkgbase = mod-cv-plugins-git
 	arch = i686
 	arch = x86_64
 	groups = lv2-plugins
-	source = git+https://github.com/mxmilkb/mod-cv-plugins
+	source = git+https://github.com/mxmilkiib/mod-cv-plugins
 	md5sums = SKIP
 
 pkgname = mod-cv-plugins-git
