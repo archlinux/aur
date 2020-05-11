@@ -15,8 +15,6 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd z3-z3-${pkgver}
-  sed -i "s|Windows.h|windows.h|g" src/util/memory_manager.cpp
-  sed -i 's|RUNTIME DESTINATION "${CMAKE_INSTALL_LIBDIR}"|RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"|g' src/CMakeLists.txt
 }
 
 build() {
