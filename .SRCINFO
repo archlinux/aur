@@ -1,0 +1,15 @@
+pkgbase = date-git
+	pkgdesc = A header-only library which builds upon <chrono>
+	pkgver = 2.4.1.r140.gf43c39f
+	pkgrel = 1
+	url = https://github.com/HowardHinnant/date
+	arch = any
+	license = MIT
+	makedepends = cmake
+	provides = date
+	conflicts = date
+	source = git+https://github.com/HowardHinnant/date.git
+	sha256sums = SKIP
+
+pkgname = date-git
+
