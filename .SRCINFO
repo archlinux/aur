@@ -1,0 +1,15 @@
+pkgbase = xpipe-git
+	pkgdesc = split input and feed it into the given utility
+	pkgver = r11.60b0aec
+	pkgrel = 1
+	url = https://github.com/jschauma/xpipe.git
+	arch = any
+	license = BSD
+	makedepends = git
+	provides = xpipe
+	conflicts = xpipe
+	source = git+https://github.com/jschauma/xpipe.git
+	sha256sums = SKIP
+
+pkgname = xpipe-git
+
