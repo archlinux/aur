@@ -1,9 +1,8 @@
 # Maintainer: GrayJack <gr41.j4ck@gmail.com>
 
 _pkgname=janet
-_pkgver=1.8.1
 pkgname=janet-lang-git
-pkgver=1.8.1.r1904.5b6b9f1
+pkgver=1.9.1.r2101.e013381
 pkgrel=1
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -18,9 +17,8 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-
     # Get the version number.
-    printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "$(grep 'JANET_VERSION '  src/conf/janetconf.h|head -n1|cut -d\" -f2|cut -d\- -f1).r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -34,7 +32,7 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
 
-    install -Dt       "${pkgdir}"/usr/bin build/janet auxbin/jpm
+    install -Dt       "${pkgdir}"/usr/bin build/janet jpm
     install -Dm644 -t "${pkgdir}"/usr/include/janet src/include/janet.h src/conf/janetconf.h
 
     install -Dm644 -t "${pkgdir}"/usr/lib build/libjanet.a build/libjanet.so
