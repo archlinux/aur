@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: feighur
 # Maintainer: robertfoster
 # Contributor: Maurizio Porrato <maurizio.porrato@gmail.com>
-# Contributor: feighur
 
 pkgname=janus-gateway
 pkgver=0.9.4
