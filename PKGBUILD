@@ -18,7 +18,7 @@ optdepends=('libutempter: Record user sessions to utmp and wtmp files (add to de
 #depends+=('libutempter')
 provides=('tmux' 'tmix-git')
 conflicts=('tmux' 'tmux-git')
-source=('git+https://github.com/mxmilkb/tmux.git')
+source=('git+https://github.com/mxmilkiib/tmux.git')
 md5sums=('SKIP')
 
 pkgver() {
