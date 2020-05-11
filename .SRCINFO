@@ -1,0 +1,24 @@
+pkgbase = aqsis-git
+	pkgdesc = RenderMan-compliant REYES renderer
+	pkgver = 20180401.51fd2a31
+	pkgrel = 1
+	url = https://github.com/aqsis/aqsis
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = boost
+	depends = libtiff
+	depends = flex
+	depends = bison
+	depends = zlib
+	depends = libjpeg
+	depends = openexr
+	source = git+https://github.com/aqsis/aqsis.git
+	source = aqsis-boost.patch
+	md5sums = SKIP
+	md5sums = 74b29b1843b8e16a01a968f8b3bf7273
+
+pkgname = aqsis-git
+
