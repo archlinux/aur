@@ -2,7 +2,7 @@
 
 pkgname=gpu-screen-recorder-git
 pkgver=r34.339bb0a
-pkgrel=1
+pkgrel=2
 pkgdesc='A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux.'
 arch=('x86_64')
 url="https://github.com/DEC05EBA/gpu-screen-recorder"
@@ -26,5 +26,5 @@ build() {
 
 package() {
   cd "$srcdir/gpu-screen-recorder"
-  install -D -m +x "sibs-build/$(sibs platform)/release/gpu-screen-recorder" "$pkgdir/usr/bin/gpu-screen-recorder"
+  install -Dm755 "sibs-build/$(sibs platform)/release/gpu-screen-recorder" "$pkgdir/usr/bin/gpu-screen-recorder"
 }
