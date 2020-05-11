@@ -4,7 +4,7 @@ pkgdesc="ROS - control_msgs contains base messages and actions useful for contro
 url='https://wiki.ros.org/control_msgs'
 
 pkgname='ros-melodic-control-msgs'
-pkgver='1.5.0'
+pkgver='1.5.1'
 arch=('any')
 pkgrel=2
 license=('BSD')
@@ -36,9 +36,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="control_msgs-${pkgver}/control_msgs"
+_dir="control_msgs-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/control_msgs/archive/${pkgver}.tar.gz")
-sha256sums=('230b0f893d1d57aff482b5672bb6cbadcf9908956a6e986c78d85006472f4dc5')
+sha256sums=('fb16f5748963616099e9b8f92a36ee8a57240dc80e3a7b74e45499ebb9825887')
 
 build() {
 	# Use ROS environment variables.
@@ -58,9 +58,6 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
