@@ -31,16 +31,16 @@ build() {
    rm -fr bin
    mkdir "$srcdir/xray-16/bin"
    cd "$srcdir/xray-16/bin"
-   cmake ..
-   #cmake .. -DCMAKE_BUILD_TYPE=Debug
+   # -DCMAKE_BUILD_TYPE=Debug
+   cmake .. -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib
    make
 }
 
 package() {
     cd "$srcdir/xray-16/bin"
     make DESTDIR="${pkgdir}/" install
-    mv "${pkgdir}/usr/games/" "${pkgdir}/usr/bin"
     mkdir -p "${pkgdir}/usr/share/licenses/$pkgname/"
     cp "$srcdir/xray-16/License.txt" "${pkgdir}/usr/share/licenses/$pkgname/"
-    rm -rf "${pkgdir}/lib" #Temporary crutch
 }
