@@ -2,11 +2,11 @@
 
 pkgname=fastcgi++-git
 _pkgname=fastcgipp
-pkgver=bac13ff
-pkgrel=1
+pkgver=3.0.r88.g02ca540
+pkgrel=2
 pkgdesc="This library is intended as a high-efficiency C++14 api for web development."
-arch=('x86_64' 'i686')
-url="http://isatec.ca/fastcgipp/"
+arch=('x86_64')
+url="https://fastcgipp.isatec.ca"
 _url="https://github.com/eddic/fastcgipp"
 license=('LGPL')
 depends=()
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    git describe --always
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
