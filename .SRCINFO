@@ -1,6 +1,6 @@
 pkgbase = x-tile-git
 	pkgdesc = Allows you to select a number of windows and tile them in different ways
-	pkgver = 3.0.r0.g435eef2
+	pkgver = 3.1.r0.g2e5f3db
 	pkgrel = 1
 	url = https://www.giuspen.com/x-tile
 	arch = any
