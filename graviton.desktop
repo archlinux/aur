@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Graviton
-Exec=/usr/bin/graviton
+Exec=/usr/bin/graviton %F
 Terminal=false
 Type=Application
 Icon=graviton

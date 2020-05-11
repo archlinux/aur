@@ -2,7 +2,7 @@
 
 pkgname=graviton-git
 pkgver=2.0.84
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern code editor"
 arch=('x86_64')
 url="https://graviton.netlify.app/"
