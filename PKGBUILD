@@ -4,7 +4,7 @@ pkgdesc="ROS - Messages for transmitting audio via ROS."
 url='https://wiki.ros.org/audio_common_msgs'
 
 pkgname='ros-melodic-audio-common-msgs'
-pkgver='0.3.3'
+pkgver='0.3.5'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -26,7 +26,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="audio_common-${pkgver}/audio_common_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/audio_common/archive/${pkgver}.tar.gz")
-sha256sums=('9121ce7ea80945a9efb46d89bd33a454877344aa1b4f405f944943a62e1e4bab')
+sha256sums=('f5d2b676e7118d3a382de17d1caa21e2c2977635b5257e2bac2c8cabba412bb6')
 
 build() {
   # Use ROS environment variables
@@ -46,9 +46,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_BASENAME=.cpython-37m \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
