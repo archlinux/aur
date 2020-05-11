@@ -18,5 +18,5 @@ build() {
 
 package() {
   cd mdbook-epub-$pkgver
-  install -Dm 755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 755 target/release/mdbook-epub "$pkgdir"/usr/bin/mdbook-epub
 }
