@@ -1,26 +1,28 @@
-# Maintainer: Alif <alive4ever at live dot com>
+# Maintainer: Adrien Smith <adrien at bouldersmiths.com>
+# Contributor: Alif <alive4ever at live dot com>
 
-pkgname=tmux-bash-completion
-pkgdesc="Bash completion for tmux"
-pkgver=r13.847eda6
+pkgname=tmux-bash-completion-git
+pkgver=r16.f5d5323
 pkgrel=1
-arch=("any")
+pkgdesc="Bash completion for tmux"
+arch=('any')
 url="https://github.com/imomaliev/tmux-bash-completion"
-license=("custom")
+license=('GPL2')
+depends=('bash-completion' 'tmux')
 makedepends=('git')
-depends=("bash-completion" "tmux")
-source=('git+https://github.com/imomaliev/tmux-bash-completion.git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$pkgname/completions"
-	for file in * ; do
-		install -Dm644 $file "$pkgdir/usr/share/bash-completion/completions/$file"
-	done
+  cd "${pkgname%-git}/completions"
+  for file in * ; do
+    install -Dm644 "$file" "$pkgdir/usr/share/bash-completion/completions/$file"
+  done
 }
-

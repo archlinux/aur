@@ -1,15 +1,17 @@
-pkgbase = tmux-bash-completion
+pkgbase = tmux-bash-completion-git
 	pkgdesc = Bash completion for tmux
-	pkgver = r13.847eda6
+	pkgver = r16.f5d5323
 	pkgrel = 1
 	url = https://github.com/imomaliev/tmux-bash-completion
 	arch = any
-	license = custom
+	license = GPL2
 	makedepends = git
 	depends = bash-completion
 	depends = tmux
-	source = git+https://github.com/imomaliev/tmux-bash-completion.git
+	provides = tmux-bash-completion
+	conflicts = tmux-bash-completion
+	source = git+https://github.com/imomaliev/tmux-bash-completion
 	md5sums = SKIP
 
-pkgname = tmux-bash-completion
+pkgname = tmux-bash-completion-git
 
