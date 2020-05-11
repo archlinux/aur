@@ -1,0 +1,16 @@
+pkgbase = mdbook-epub-git
+	pkgdesc = MDBook EPUB Backend
+	pkgver = 0.3.0+12.g640a81209b
+	pkgrel = 1
+	url = https://github.com/Michael-F-Bryan/mdbook-epub
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	provides = mdbook-epub=0.3.0
+	conflicts = mdbook-epub
+	source = https://github.com/Michael-F-Bryan/mdbook-epub
+	sha256sums = SKIP
+
+pkgname = mdbook-epub-git
+
