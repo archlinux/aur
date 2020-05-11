@@ -1,6 +1,6 @@
 # Maintainer: David Cristofaro <david@dtcristo.com>
 pkgname=lucky-git
-pkgver=0.18.0.r4.a0ac6e5
+pkgver=0.21.0.r6.4ec6de7
 pkgrel=1
 pkgdesc='A web framework written in Crystal'
 arch=('x86_64')
