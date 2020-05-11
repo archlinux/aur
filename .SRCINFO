@@ -1,12 +1,18 @@
 pkgbase = bloop
 pkgdesc = Bloop gives you fast edit/compile/test workflows for Scala.
-pkgver = 1.4.0rc1
+pkgver = 1.4.0
 pkgrel = 1
 url = https://scalacenter.github.io/bloop/
 arch = any
 license = Apache
 depends = java-environment>=8
-depends = python
-source = https://github.com/scalacenter/bloop/releases/download/v1.4.0-RC1/install.py
-sha256sums = 01cdeb9c26944d73539d47e2ec4bf5f75c19438fa23c06ae83e8aa9479322e4e
+depends = coursier>=2.0.0_RC6_13
+source = https://github.com/scalacenter/bloop/releases/download/v1.4.0/bloop-coursier.json
+sha256sums = 2d20aa6650d4d214c494a3307110a18b4ad317fa7e76531aeec8be5b3ea12c6b
+source = https://github.com/scalacenter/bloop/releases/download/v1.4.0/bash-completions
+sha256sums = da6b7ecd4109bd0ff98b1c452d9dd9d26eee0d28ff604f6c83fb8d3236a6bdd1
+source = https://github.com/scalacenter/bloop/releases/download/v1.4.0/zsh-completions
+sha256sums = 58d32c3f005f7791237916d1b5cd3a942115236155a0b7eba8bf36391d06eff7
+source = https://github.com/scalacenter/bloop/releases/download/v1.4.0/fish-completions
+sha256sums = a012a5cc76b57dbce17fad237f3b97bea6946ffc6ea0b61ac2281141038248dd
 pkgname = bloop

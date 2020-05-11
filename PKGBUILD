@@ -1,48 +1,30 @@
 # Maintainer: Guillaume Raffin <theelectronwill@gmail.com>
 # Generator: Bloop release utilities <https://github.com/scalacenter/bloop>
 pkgname=bloop
-pkgver=1.4.0rc1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Bloop gives you fast edit/compile/test workflows for Scala."
 arch=(any)
 url="https://scalacenter.github.io/bloop/"
 license=('Apache')
-depends=('java-environment>=8' 'python')
-source=("install-bloop-1.4.0-RC1.py::https://github.com/scalacenter/bloop/releases/download/v1.4.0-RC1/install.py")
-sha256sums=('01cdeb9c26944d73539d47e2ec4bf5f75c19438fa23c06ae83e8aa9479322e4e')
+depends=('java-environment>=8' 'coursier>=2.0.0_RC6_13')
+source=('bloop-coursier-channel-1.4.0::https://github.com/scalacenter/bloop/releases/download/v1.4.0/bloop-coursier.json' 'bloop-bash-1.4.0::https://github.com/scalacenter/bloop/releases/download/v1.4.0/bash-completions' 'bloop-zsh-1.4.0::https://github.com/scalacenter/bloop/releases/download/v1.4.0/zsh-completions' 'bloop-fish-1.4.0::https://github.com/scalacenter/bloop/releases/download/v1.4.0/fish-completions')
+sha256sums=('2d20aa6650d4d214c494a3307110a18b4ad317fa7e76531aeec8be5b3ea12c6b' 'da6b7ecd4109bd0ff98b1c452d9dd9d26eee0d28ff604f6c83fb8d3236a6bdd1' '58d32c3f005f7791237916d1b5cd3a942115236155a0b7eba8bf36391d06eff7' 'a012a5cc76b57dbce17fad237f3b97bea6946ffc6ea0b61ac2281141038248dd')
 
 build() {
-  python ./install-bloop-1.4.0-RC1.py --dest "$srcdir/bloop"
-  # fix paths
-  sed -i "s|$srcdir/bloop|/usr/bin|g" bloop/systemd/bloop.service
-  sed -i "s|$srcdir/bloop/xdg|/usr/share/pixmaps|g" bloop/xdg/bloop.desktop
-  sed -i "s|$srcdir/bloop|/usr/lib/bloop|g" bloop/xdg/bloop.desktop
+  mkdir channel
+  mv "bloop-coursier-channel-1.4.0" "channel/bloop.json"
+  coursier install --install-dir "$srcdir" --default-channels=false --channel channel bloop
 }
 
 package() {
-  cd "$srcdir/bloop"
+  cd "$srcdir"
 
   ## binaries
-  # we use /usr/lib/bloop so that we can add a .jvmopts file in it
-  install -Dm755 blp-server "$pkgdir"/usr/lib/bloop/blp-server
-  install -Dm755 blp-coursier "$pkgdir"/usr/lib/bloop/blp-coursier
-  install -Dm755 bloop "$pkgdir"/usr/lib/bloop/bloop
-
-  # links in /usr/bin
-  mkdir -p "$pkgdir/usr/bin"
-  ln -s /usr/lib/bloop/blp-server "$pkgdir"/usr/bin/blp-server
-  ln -s /usr/lib/bloop/blp-coursier "$pkgdir"/usr/bin/blp-coursier
-  ln -s /usr/lib/bloop/bloop "$pkgdir"/usr/bin/bloop
-
-  # desktop file
-  install -Dm644 xdg/bloop.png "$pkgdir"/usr/share/pixmaps/bloop.png
-  install -Dm755 xdg/bloop.desktop "$pkgdir"/usr/share/applications/bloop.desktop
+  install -Dm755 bloop "$pkgdir"/usr/bin/bloop
 
   # shell completion
-  install -Dm644 bash/bloop "$pkgdir"/etc/bash_completion.d/bloop
-  install -Dm644 zsh/_bloop "$pkgdir"/usr/share/zsh/site-functions/_bloop
-  install -Dm644 fish/bloop.fish "$pkgdir"/usr/share/fish/vendor_completions.d/bloop.fish
-
-  # systemd service
-  install -Dm644 systemd/bloop.service "$pkgdir"/usr/lib/systemd/user/bloop.service
+  install -Dm644 bloop-bash-1.4.0 "$pkgdir"/etc/bash_completion.d/bloop
+  install -Dm644 bloop-zsh-1.4.0 "$pkgdir"/usr/share/zsh/site-functions/_bloop
+  install -Dm644 bloop-fish-1.4.0 "$pkgdir"/usr/share/fish/vendor_completions.d/bloop.fish
 }
