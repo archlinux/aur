@@ -18,6 +18,7 @@ optdepends=(
 'php-cgi: CGI and FCGI SAPI for PHP needed only for lighttpd'
 'nginx-mainline: lightweight http server'
 'php-fpm: FastCGI process manager for php needed for nginx'
+'php-sqlite: sqlite db access for nginx'
 )
 conflicts=('pi-hole-standalone')
 install=$pkgname.install
@@ -87,7 +88,6 @@ package() {
   install -dm750 "$pkgdir"/etc/sudoers.d
   install -Dm440 $_pkgname-$pkgver/advanced/Templates/pihole.sudo "$pkgdir"/etc/sudoers.d/pihole
   install -Dm644 $_pkgname-$pkgver/advanced/dnsmasq.conf.original "$pkgdir"/etc/dnsmasq.conf
-#  install -Dm644 dnsmasq.main "$pkgdir"/usr/share/pihole/configs/dnsmasq.example.conf
   install -Dm644 dnsmasq.include "$pkgdir"/etc/dnsmasq.d/01-pihole.conf
 
   install -Dm644 pi-hole.tmpfile "$pkgdir"/usr/lib/tmpfiles.d/pi-hole.conf
