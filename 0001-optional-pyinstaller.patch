@@ -1,11 +1,11 @@
 diff --git a/setup.py b/setup.py
-index 91b4bdb..6b45047 100644
+index 17b13ba..83340af 100755
 --- a/setup.py
 +++ b/setup.py
-@@ -40,12 +40,13 @@ setuptools.setup(
-         "pyxel.examples.assets",
-     ],
-     package_data={"": ["*.pyxres", "*.png", "*.gif", "*.dylib", "*.dll", "*.so"]},
+@@ -42,12 +42,13 @@ setuptools.setup(
+     package_data={
+         "": ["*.pyxres", "*.png", "*.gif", "*.dylib", "*.dll", "*.so", "*.exe"]
+     },
 -    install_requires=["pyinstaller"],
 +    install_requires=[],
 +    extras_require={"packager": ["pyinstaller"]},
