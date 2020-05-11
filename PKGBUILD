@@ -3,7 +3,7 @@
 pkgname=brightness-controller-git
 _pkgname=brightness-controller
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Control Brightness of your Primary and Secondary Display in Linux'
 arch=(x86_64)
 url='https://github.com/LordAmit/Brightness'
@@ -48,15 +48,14 @@ pkgver(){
 build(){
   cd "$srcdir/$_gitname"/src
   python setup.py build
-
-  install -Dm644 "$srcdir"/../brightness-controller.desktop \
-    "$pkgdir"/usr/share/applications/brightness-controller.desktop
-  install -dm755 "$pkgdir/usr/share/pixmaps"
-  cd "$pkgdir/usr/share/pixmaps"
-  ln -s /usr/lib/Brightness-${pkgver}/icons/brightness-controller.svg
 }
 
 package(){
   cd "$srcdir/$_gitname"/src
   python setup.py install --skip-build -O1 --root="$pkgdir"
+
+  install -Dm644 "$srcdir"/brightness-controller.desktop "$pkgdir/usr/share/applications/brightness-controller.desktop"
+  install -dm755 "$pkgdir/usr/share/pixmaps"
+  cd "$pkgdir/usr/share/pixmaps"
+  ln -s /usr/lib/Brightness-${pkgver}/icons/brightness-controller.svg
 }
