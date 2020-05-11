@@ -1,7 +1,7 @@
 pkgbase = tanka-bin
 	pkgdesc = Flexible, reusable and concise configuration for Kubernetes using Jsonnet
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tanka.dev
 	arch = x86_64
 	license = Apache
