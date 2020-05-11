@@ -1,7 +1,7 @@
 pkgbase = kakoune-git
 	pkgdesc = Multiple-selection, UNIX-flavored modal editor
-	pkgver = 2019.07.01_r32_g837416ea
-	pkgrel = 1
+	pkgver = 2020.01.16_r186_g60154300
+	pkgrel = 2
 	url = https://github.com/mawww/kakoune
 	arch = x86_64
 	arch = armv7h
@@ -17,6 +17,7 @@ pkgbase = kakoune-git
 	optdepends = xorg-xmessage: for nicer debugging messages
 	provides = kakoune
 	conflicts = kakoune
+	options = !buildflags
 	source = kakoune-git::git+https://github.com/mawww/kakoune.git
 	sha256sums = SKIP
 
