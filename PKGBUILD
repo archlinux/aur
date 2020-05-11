@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides a set of simple math utilities to work with
 url='https://wiki.ros.org/angles'
 
 pkgname='ros-melodic-angles'
-pkgver='1.9.11'
+pkgver='1.9.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=2
@@ -27,9 +27,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="angles-${pkgver}/angles"
+_dir="angles-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/angles/archive/${pkgver}.tar.gz")
-sha256sums=('c453dc462585320e57e4086f47f3be618ec7a2e83610895ccfdbd31d5d4993f4')
+sha256sums=('6f327b223cbe3a2c0366e7db2a06cf8113b0a439336de3fba66d5ecc08276c3d')
 
 build() {
 	# Use ROS environment variables.
@@ -49,9 +49,6 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }

@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-angles
 	pkgdesc = ROS - This package provides a set of simple math utilities to work with angles.
-	pkgver = 1.9.11
+	pkgver = 1.9.12
 	pkgrel = 2
 	url = https://wiki.ros.org/angles
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = ros-melodic-angles
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	source = ros-melodic-angles-1.9.11.tar.gz::https://github.com/ros/angles/archive/1.9.11.tar.gz
-	sha256sums = c453dc462585320e57e4086f47f3be618ec7a2e83610895ccfdbd31d5d4993f4
+	source = ros-melodic-angles-1.9.12.tar.gz::https://github.com/ros/angles/archive/1.9.12.tar.gz
+	sha256sums = 6f327b223cbe3a2c0366e7db2a06cf8113b0a439336de3fba66d5ecc08276c3d
 
 pkgname = ros-melodic-angles
 
