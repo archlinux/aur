@@ -1,10 +1,10 @@
---- package/package.json	2020-05-11 14:30:08.729304107 +0100
-+++ package/package.json	2020-05-11 14:29:54.195971296 +0100
+--- package/package.json	2020-05-11 15:28:04.332512368 +0100
++++ package/package.json	2020-05-11 15:28:24.895844961 +0100
 @@ -16,7 +16,7 @@
      "cli-ux": "^4.8.0",
      "escodegen": "^1.12.0",
      "esprima": "^4.0.1",
--    "faunadb": "^2.13.1",
+-    "faunadb": "^2.10.0",
 +    "faunadb": "2.13.1",
      "globby": "8",
      "heroku-cli-util": "^8.0.9",
