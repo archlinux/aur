@@ -5,7 +5,7 @@ pkgrel=1
 epoch=
 pkgdesc="gohufont run through fonttosfnt for an open type bitmap font"
 arch=('any')
-url="https://github.com/mxmilkb/gohu-ttf"
+url="https://github.com/mxmilkiib/gohu-ttf"
 license=('unknown')
 groups=()
 depends=()
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/mxmilkb/gohu-ttf")
+source=("git+https://github.com/mxmilkiib/gohu-ttf")
 noextract=()
 md5sums=('SKIP')
 
