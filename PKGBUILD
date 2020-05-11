@@ -18,7 +18,8 @@ optdepends=('plasma-desktop: for a plasma desktop theme'
             'plasma5-applets-latte-sidebar-button: for Latte dock'
             'plasma5-applets-window-title: for Latte dock'
             'plasma5-applets-latte-separator: for Latte dock'
-            'plasma5-applets-window-buttons: for Latte dock')
+            'plasma5-applets-window-buttons: for Latte dock'
+            'plasma5-applets-chiliclock: for Chili Clock on Latte dock')
 makedepends=('git')
 provides=('moe-kde')
 conflicts=('moe-kde')

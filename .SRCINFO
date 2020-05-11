@@ -18,6 +18,7 @@ pkgbase = moe-kde-git
 	optdepends = plasma5-applets-window-title: for Latte dock
 	optdepends = plasma5-applets-latte-separator: for Latte dock
 	optdepends = plasma5-applets-window-buttons: for Latte dock
+	optdepends = plasma5-applets-chiliclock: for Chili Clock on Latte dock
 	provides = moe-kde
 	conflicts = moe-kde
 	source = git+https://www.opencode.net/jomada/moe-theme.git
