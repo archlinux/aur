@@ -21,7 +21,10 @@ post_upgrade() {
   [ -e /etc/pihole/hosts ] && rm /etc/pihole/hosts
   [ -e /etc/pihole/.useIPv6 ] && rm /etc/pihole/.useIPv6
 
-  warning
+  # update owner of existing dir and file
+  chown pihole:pihole /etc/pihole
+
+  # warning
 
   # keep pacman from throwing errors should none them be on the filesystem
   return 0
@@ -30,5 +33,5 @@ post_upgrade() {
 post_remove() {
   # delete all temp files except those modified the user
   # TODO - make this more intelligent to save *.pacsave.# where # is a number
-  find /etc/pihole -type f ! -name '*.pacsave' -delete
+  find /etc/pihole -type f ! -name '*.pacsave' ! -name 'pihole-FTL.conf' ! -name 'pihole-FTL.db' ! -name 'gravity.db' -delete
 }
