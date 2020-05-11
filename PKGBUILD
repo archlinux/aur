@@ -2,8 +2,8 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='base'
 pkgname="ocaml-$_projectname"
-pkgver='0.13.1'
-pkgrel='3'
+pkgver='0.13.2'
+pkgrel='1'
 pkgdesc='Full standard library replacement for OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
@@ -12,18 +12,18 @@ depends=('dune-configurator' 'ocaml>=4.07.0' 'ocaml-sexplib0')
 makedepends=('dune>=1.5.1')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f2dc50c724669b278428cc4c9c742f754049ebe59537b984377b0a777e677b50')
+sha256sums=('fc5d761a46ec328418c97779cba3ea7231d1632cefac651679cd4ede26f5cd5a')
 
 _sourcedirectory="$_projectname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune build -p "$_projectname" --verbose
+	dune build --release --verbose
 }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
