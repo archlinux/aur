@@ -1,3 +1,9 @@
-pkg/
-src/
-*.tar.*
+*
+!.gitignore
+!PKGBUILD
+!*.install
+!*.sysusers
+!.SRCINFO
+
+!asgi_example.py
+!asgi_example.sh
