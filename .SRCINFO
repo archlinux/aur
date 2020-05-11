@@ -1,0 +1,15 @@
+pkgbase = libki
+	pkgdesc = The client package for libki. The libki server must be installed and running either on this or another machine.
+	pkgver = 20.05
+	pkgrel = 1
+	url = libki.org
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = qt5-base
+	backup = homes/crege/.config/Libki.ini
+	source = git+https://github.com/Libki/libki-client.git
+	md5sums = SKIP
+
+pkgname = libki
+
