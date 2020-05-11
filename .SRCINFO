@@ -5,6 +5,7 @@ pkgbase = mingw-w64-proj
 	url = https://proj.org/
 	arch = any
 	license = MIT
+	makedepends = autoconf
 	makedepends = mingw-w64-configure
 	makedepends = mingw-w64-wine
 	depends = mingw-w64-crt

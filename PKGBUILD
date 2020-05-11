@@ -6,7 +6,7 @@ pkgrel=1
 arch=('any')
 pkgdesc="Cartographic Projections library (mingw-w64)"
 depends=('mingw-w64-crt' 'mingw-w64-sqlite' 'mingw-w64-libtiff' 'mingw-w64-curl')
-makedepends=('mingw-w64-configure' 'mingw-w64-wine')
+makedepends=('autoconf' 'mingw-w64-configure' 'mingw-w64-wine')
 options=('!strip' '!buildflags' 'staticlibs')
 license=('MIT')
 url="https://proj.org/"
@@ -14,6 +14,11 @@ source=("https://github.com/OSGeo/PROJ/releases/download/${pkgver}/proj-${pkgver
 sha256sums=('a7026d39c9c80d51565cfc4b33d22631c11e491004e19020b3ff5a0791e1779f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd "${srcdir}"/proj-${pkgver}
+  autoreconf -fiv
+}
 
 build() {
   for _arch in ${_architectures}; do
@@ -31,7 +36,7 @@ package() {
     cd "${srcdir}/build-${_arch}"
     make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}"/usr/${_arch}/share
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.exe
+    rm -rf "${pkgdir}"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
