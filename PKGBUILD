@@ -2,6 +2,7 @@
 pkgname=pipr-bin
 pkgver=0.0.11
 pkgrel=1
+conflicts=('pipr-git')
 makedepends=()
 #depends=('gcc-libs')
 depends=()
