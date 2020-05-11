@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 # TODO systemd service
 pkgname=keys-pub
-pkgver=0.0.43
+pkgver=0.0.45
 pkgrel=1
 pkgdesc='keys.pub CLI client and service (keys, keysd)'
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ depends=('libfido2')
 makedepends=('git' 'go' 'gzip')
 optdepends=('org.freedesktop.secrets: storing secrets')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/keys-pub/keysd/archive/v${pkgver}.tar.gz")
-sha256sums=('710df1fb4c478c3c5768433e60f41f9b3ad3424724a06b6f1dc1b8dbde511377')
+sha256sums=('4669de6c0225442531c01afaba76bb3241f5e1604245ea77e16abb4c940f7ae8')
 
 prepare() {
   cd "keysd-${pkgver}"
@@ -56,10 +56,7 @@ check() {
 
 package() {
   cd "keysd-${pkgver}"
-  install -Dm755 keys -t "${pkgdir}/usr/bin"
-  install -Dm755 keysd -t "${pkgdir}/usr/lib/${pkgname}"
-  install -m644 fido2.so -t "${pkgdir}/usr/lib/${pkgname}"
+  install -Dm755 keys keysd -t "${pkgdir}/usr/bin"
+  install -m644 fido2.so -t "${pkgdir}/usr/bin"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  # ln keysd so we don't have to put fido2.so inside /usr/bin
-  ln -sf "/usr/lib/${pkgname}/keysd" "${pkgdir}/usr/bin/keysd"
 }
