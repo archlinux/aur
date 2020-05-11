@@ -1,0 +1,14 @@
+pkgbase = nginx-mainline-mod-slowfs-cache
+	pkgdesc = NGINX module that adds ability to cache static files
+	pkgver = 1.10
+	pkgrel = 6
+	url = http://labs.frickle.com/nginx_ngx_slowfs_cache
+	arch = x86_64
+	license = CUSTOM
+	source = https://nginx.org/download/nginx-1.17.10.tar.gz
+	source = nginx-mainline-mod-slowfs-cache-1.10::http://labs.frickle.com/files/ngx_slowfs_cache-1.10.tar.gz
+	sha256sums = a9aa73f19c352a6b166d78e2a664bb3ef1295bbe6d3cc5aa7404bd4664ab4b83
+	sha256sums = 1e81453942e5b0877de1f1f06c56ae82918ea9818255cb935bcb673c95a758a1
+
+pkgname = nginx-mainline-mod-slowfs-cache
+
