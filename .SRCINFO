@@ -22,6 +22,9 @@ pkgbase = harfbuzz-git
 pkgname = harfbuzz-git
 	optdepends = cairo: hb-view program
 	provides = harfbuzz
+	provides = libharfbuzz.so
+	provides = libharfbuzz-subset.so
+	provides = libharfbuzz-gobject.so
 	conflicts = harfbuzz
 
 pkgname = harfbuzz-icu-git
@@ -29,5 +32,6 @@ pkgname = harfbuzz-icu-git
 	depends = harfbuzz
 	depends = icu
 	provides = harfbuzz-icu
+	provides = libharfbuzz-icu.so
 	conflicts = harfbuzz-icu
 
