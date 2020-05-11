@@ -1,7 +1,7 @@
 pkgbase = zectl
 	pkgdesc = ZFS Boot Environment manager.
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/johnramsden/zectl
 	arch = any
 	license = MIT
