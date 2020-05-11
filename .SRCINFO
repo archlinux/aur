@@ -1,6 +1,6 @@
 pkgbase = gandi-automatic-dns
 	pkgdesc = Script that updates Gandi DNS reccords to point at a machine's external IP address.
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/brianpcurran/gandi-automatic-dns
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = gandi-automatic-dns
 	depends = openssl
 	optdepends = net-tools: to discover external IP on interface using ifconfig
 	optdepends = bind-tools: to discover external IP via DNS request using dig
-	source = https://github.com/brianpcurran/gandi-automatic-dns/archive/v1.4.0.tar.gz
-	sha256sums = 36e690aff0f2737db70e96df4d7e644cae225d8581fcbd59da5f1dbe49aa3808
+	source = https://github.com/brianpcurran/gandi-automatic-dns/archive/v1.4.1.tar.gz
+	sha256sums = bce31b9e700f3ce687c57f0d6ee3885371a63d0888ac33c0b26419ed43cccb46
 
 pkgname = gandi-automatic-dns
 
