@@ -4,7 +4,7 @@ pkgbase = isx2gb
 	pkgrel = 1
 	url = https://github.com/gitendo/isx2gb
 	arch = x86_64
-	license = custom
+	license = GPL
 	makedepends = go
 	makedepends = git
 	source = git+https://github.com/gitendo/isx2gb.git#commit=634a309eeb2dcabad083c3271d7bc875a0c36589

@@ -6,7 +6,7 @@ _commit=634a309eeb2dcabad083c3271d7bc875a0c36589
 pkgrel=1
 pkgdesc="Nifty replacement for abISX or CVTISX that converts Intelligent Systems eXecutable files into valid GameBoy ROM images and more"
 arch=('x86_64')
-license=('custom')
+license=('GPL')
 makedepends=('go' 'git')
 url="https://github.com/gitendo/isx2gb"
 source=("git+https://github.com/gitendo/isx2gb.git#commit=$_commit")
