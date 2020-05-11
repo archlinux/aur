@@ -2,7 +2,7 @@
 # Maintainer: Carson Black <uhhadd AT gmail DOT com>
 pkgname=ikona
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Icon preview designed for Plasma"
 arch=(any)
 
@@ -32,12 +32,13 @@ prepare() {
     ikona_sourcedir="$PWD"
     cp "$ikona_sourcedir/$pkgname-$pkgver.cargo.vendor.tar.xz" "ikona-1.0/$pkgname.cargo.vendor.tar.xz"
     cd "$pkgname-$pkgver"
-    mkdir -p build
 }
 
 build() {
+    cd "$pkgname-$pkgver"
+    mkdir -p build
     cd build
-    cmake ../$pkgname-$pkgver \
+    cmake .. \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBEXECDIR=lib
@@ -45,6 +46,7 @@ build() {
 }
 
 package() {
+    cd "$pkgname-$pkgver"
     cd build
     make DESTDIR="$pkgdir" install
     patchelf --remove-rpath "$pkgdir/usr/bin/ikona-cli"

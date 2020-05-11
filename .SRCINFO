@@ -1,7 +1,7 @@
 pkgbase = ikona
 	pkgdesc = Icon preview designed for Plasma
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/KDE/ikona
 	arch = any
 	license = GPL
