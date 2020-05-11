@@ -6,10 +6,11 @@ pkgrel=1
 pkgdesc="List of utilities for the daily developer workflow"
 arch=('x86_64')
 url='https://github.com/beatlabs/ergo'
-license=('BSD-3-Clause')
-makedepends=('go')
-source=("${url}/archive/${pkgver}.tar.gz")
-md5sums=('7036100329bd11226729f7d80a66e246')
+license=('BSD')
+depends=('glibc')
+makedepends=('go-pie')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('f9492e454f42e6cfda49fcb7a3397c84096be63d11feab7c8c0bdc4778a450f6')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

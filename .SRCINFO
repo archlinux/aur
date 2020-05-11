@@ -4,10 +4,11 @@ pkgbase = ergo
 	pkgrel = 1
 	url = https://github.com/beatlabs/ergo
 	arch = x86_64
-	license = BSD-3-Clause
-	makedepends = go
-	source = https://github.com/beatlabs/ergo/archive/0.4.0.tar.gz
-	md5sums = 7036100329bd11226729f7d80a66e246
+	license = BSD
+	makedepends = go-pie
+	depends = glibc
+	source = ergo-0.4.0.tar.gz::https://github.com/beatlabs/ergo/archive/0.4.0.tar.gz
+	sha256sums = f9492e454f42e6cfda49fcb7a3397c84096be63d11feab7c8c0bdc4778a450f6
 
 pkgname = ergo
 
