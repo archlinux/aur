@@ -1,7 +1,7 @@
 pkgbase = graviton-git
 	pkgdesc = A modern code editor
 	pkgver = 2.0.84
-	pkgrel = 1
+	pkgrel = 2
 	url = https://graviton.netlify.app/
 	arch = x86_64
 	license = MIT
