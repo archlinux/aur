@@ -1,0 +1,13 @@
+pkgbase = durt
+	pkgdesc = Command line tool for calculating the size of files and directories
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/cauebs/durt
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cargo
+	source = durt-0.6.0.tar.gz::https://github.com/cauebs/durt/archive/v0.6.0.tar.gz
+	sha512sums = 82ee65054cb56f5c7ae80c0c4390299cdb4e5cd8f385356ef8c02b2ed186938a4061150e3b3bb543fa9e25431ea99ffce1c4617826424327dcb6f0f5a91556a0
+
+pkgname = durt
+
