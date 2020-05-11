@@ -1,6 +1,6 @@
 pkgbase = python-asyncpg
 	pkgdesc = An asyncio PosgtreSQL driver
-	pkgver = 0.20.0
+	pkgver = 0.20.1
 	pkgrel = 1
 	url = https://github.com/MagicStack/asyncpg
 	arch = x86_64
@@ -9,10 +9,12 @@ pkgbase = python-asyncpg
 	checkdepends = postgresql
 	makedepends = python-setuptools
 	makedepends = cython
-	source = https://pypi.org/packages/source/a/asyncpg/asyncpg-0.20.0.tar.gz
+	source = https://pypi.org/packages/source/a/asyncpg/asyncpg-0.20.1.tar.gz
 	source = remove-package-data.patch
-	sha256sums = aa02dce5d5b801cff7dd2d99b767f5db312858f527ec1764777aad1fdefb5a7a
+	source = fix-test.patch
+	sha256sums = 394bf19bdddbba07a38cd6fb526ebf66e120444d6b3097332b78efd5b26495b0
 	sha256sums = fbd60ee542f87222d26b69095d3c5bd70863f8a066eb56035902d1ded836659d
+	sha256sums = 93d64b7bdea356576536ebe32b5a01930130ac58e6eb414a18661fc57b487e64
 
 pkgname = python-asyncpg
 

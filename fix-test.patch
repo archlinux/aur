@@ -1,0 +1,14 @@
+diff -urN asyncpg-0.20.1-orig/tests/test_pool.py asyncpg-0.20.1/tests/test_pool.py
+--- asyncpg-0.20.1-orig/tests/test_pool.py	2020-05-10 21:55:48.209528164 -0400
++++ asyncpg-0.20.1/tests/test_pool.py	2020-05-10 21:56:23.459966715 -0400
+@@ -242,8 +242,8 @@
+ 
+             with self.assertRaisesRegex(
+                     asyncpg.InterfaceError,
+-                    r'cannot call Cursor\.forward.*released '
+-                    r'back to the pool'.format(meth=meth)):
++                    r'cannot call Cursor\.{meth}.*released '
++                    r'back to the pool'.format(meth='forward')):
+ 
+                 c.forward(1)
+ 
