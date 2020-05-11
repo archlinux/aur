@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.6.11
+pkgver=5.6.12
 pkgrel=4
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -42,19 +42,19 @@ source=(
   "0000-sphinx-workaround.patch"
   "${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/e2679f79fbee1061a331bb2afd4e7c050ec21f76.patch"
-  "0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch::https://github.com/archlinux/linux/commit/da707adaee9ff035c943178160be54a90de00cb3.patch"
-  "0003-gcc-plugins-drop-support-for-GCC-4.7.patch::https://github.com/archlinux/linux/commit/dba68a9d4df76d49d32245e4236713a43fb321da.patch"
-  "0004-gcc-common.h-Update-for-GCC-10.patch::https://github.com/archlinux/linux/commit/41e53fdbbf5121960fd44427c2ae7536d8fdd701.patch"
-  "0005-Makefile-disallow-data-races-on-gcc-10-as-well.patch::https://github.com/archlinux/linux/commit/af805f5f1d2e61dd2cf907d9635f0abc66fe1197.patch"
-  "0006-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch::https://github.com/archlinux/linux/commit/309b6eca2e2605accf7a3b02b47b5c2732dbe543.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/f1107f172c74a9a8550a9e566c525ef28dbc139f.patch"
+  "0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch::https://github.com/archlinux/linux/commit/bb4a15eb06341e6cadc99de418c81375b560af85.patch"
+  "0003-gcc-plugins-drop-support-for-GCC-4.7.patch::https://github.com/archlinux/linux/commit/79a6b30bb7e8e4ef1baffd8adca2ae594781b4ce.patch"
+  "0004-gcc-common.h-Update-for-GCC-10.patch::https://github.com/archlinux/linux/commit/e5d7c52e5b460940175b26075cf86df5fb6b06a2.patch"
+  "0005-Makefile-disallow-data-races-on-gcc-10-as-well.patch::https://github.com/archlinux/linux/commit/9d03a04a2d7097afd3c177e8125e7b65e2d26102.patch"
+  "0006-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch::https://github.com/archlinux/linux/commit/0cf3349234df93705eb0b24070e91c8132de42b7.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('d6dd6cbe99429f088eddb248abce7832e8f8e45eb072cbf0d0f86b5b87221baa'
+sha256sums=('daea336aace63a9116475b3f698e259073c00bea57a2a545300dba1c45562221'
             'SKIP'
             'b97b4b90f51876aaa4fa910e1ce801552f7e086aec3026a64f406581beae791b'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
