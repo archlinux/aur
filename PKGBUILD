@@ -62,7 +62,7 @@ _localmodcfg=
 
 pkgbase=linux-ck
 pkgver=5.6.12
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -133,6 +133,10 @@ prepare() {
   # https://bbs.archlinux.org/viewtopic.php?pid=1863567#p1863567
   sed -i -e '/CONFIG_LATENCYTOP=/ s,y,n,' \
       -i -e '/CONFIG_SCHED_DEBUG=/ s,y,n,' ./.config
+
+  # FS#66613
+  # https://bugzilla.kernel.org/show_bug.cgi?id=207173#c6
+  sed -i -e 's/CONFIG_KVM_WERROR=y/# CONFIG_KVM_WERROR is not set/' ./.config
 
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
