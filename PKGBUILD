@@ -2,7 +2,7 @@
 
 pkgname=bash-pipes
 pkgver=1.3.0
-pkgrel=7
+pkgrel=8
 pkgdesc="pipes.sh (animated pipes terminal screensaver) with additional better names (soft links)"
 arch=("any")
 url="https://github.com/pipeseroni/pipes.sh"
@@ -11,8 +11,9 @@ depends=("pipes.sh=${pkgver}")
 source=()
 
 _alternative_names=(
-    "pipes"      # backwards compatibility with old bash-pipes
-    "bash-pipes" # personally, i like this name
+    "pipes"         # backwards compatibility with old bash-pipes
+    "pipes_orig.sh" # backwards compatibility with old bash-pipes
+    "bash-pipes"    # personally, i like this name
 )
 
 package() {
