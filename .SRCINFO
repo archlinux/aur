@@ -1,6 +1,6 @@
 pkgbase = libconfini-git
 	pkgdesc = Yet another INI parser
-	pkgver = r142.b2b5e30
+	pkgver = r143.6f6115d
 	pkgrel = 1
 	url = https://madmurphy.github.io/libconfini
 	arch = i686
