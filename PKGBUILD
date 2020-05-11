@@ -7,7 +7,7 @@ arch=('any')
 url="http://mugglinworks.com/soundfonts/"
 license=('custom')
 groups=('soundfonts')
-source=(git+https://github.com/mxmilkb/sunshine-drums-sf2)
+source=(git+https://github.com/mxmilkiib/sunshine-drums-sf2)
 sha1sums=('SKIP')
 
 package() {
