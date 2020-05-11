@@ -2,41 +2,61 @@
 
 pkgname=brightness-controller-git
 _pkgname=brightness-controller
-pkgver=r109.44b9cf8
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='Control Brightness of your Primary and Secondary Display in Linux'
-arch=(any)
+arch=(x86_64)
 url='https://github.com/LordAmit/Brightness'
 license=('GPL')
-depends=(python2-pyside xorg-xrandr)
-makedepends=(git)
-source=('git+https://github.com/LordAmit/Brightness.git'
-brightness-controller.desktop
+depends=(
+  pyside2
+  xorg-xrandr
+  python-cx_freeze
+  qt5-charts
+  qt5-xmlpatterns
+  qt5-speech
+  qt5-x11extras
+  qt5-tools
+  qt5-svg
+  qt5-sensors
+  qt5-remoteobjects
+  qt5-websockets
+  qt5-datavis3d
+  qt5-3d
+  qt5-script
+  qt5-webengine
 )
+makedepends=(git)
+source=(
+  'git+https://github.com/LordAmit/Brightness.git'
+  brightness-controller.desktop
+)
+sha256sums=('SKIP'
+            'e121d84fa4c18e573dd7d187f94753c158ebe1adb49011caa23963df14284493')
 _gitname='Brightness'
 
 pkgver(){
   if [ -d "$srcdir"/$_gitname ]; then
     cd "$srcdir"/$_gitname
     ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
+    python src/setup.py -V )
+#     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+#     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
   fi
 }
-package(){
-  cd "$srcdir/$_gitname"
-  sed '1s/python$/python2/' -i src/init.py
-  install -dm755 $pkgdir/usr/lib/python2/site-packages/$_pkgname
-  mv src/* $pkgdir/usr/lib/python2/site-packages/$_pkgname
-  install -dm755 $pkgdir/usr/bin
 
-  install -Dm644 img/brightness.svg "$pkgdir"/usr/share/pixmaps/brightness-controller.svg
+build(){
+  cd "$srcdir/$_gitname"/src
+  python setup.py build
+
   install -Dm644 "$srcdir"/../brightness-controller.desktop \
     "$pkgdir"/usr/share/applications/brightness-controller.desktop
-
-  cd "$pkgdir/usr/bin/"
-  ln -s /usr/lib/python2/site-packages/$_pkgname/init.py brightness-controller
+  install -dm755 "$pkgdir/usr/share/pixmaps"
+  cd "$pkgdir/usr/share/pixmaps"
+  ln -s /usr/lib/Brightness-${pkgver}/icons/brightness-controller.svg
 }
 
-sha256sums=('SKIP'
-            'e121d84fa4c18e573dd7d187f94753c158ebe1adb49011caa23963df14284493')
+package(){
+  cd "$srcdir/$_gitname"/src
+  python setup.py install --skip-build -O1 --root="$pkgdir"
+}
