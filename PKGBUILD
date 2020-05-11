@@ -2,7 +2,7 @@
 # Contributor: Brandon Carrell <brandoncarrell [@] gmail [dot] com>
 
 pkgname=joker-bin
-pkgver=0.15.3
+pkgver=0.15.4
 pkgrel=1
 pkgdesc="A Clojure interpreter and linter written in Go - Precompiled binary from official repository."
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('joker')
 
 source=("https://github.com/candid82/joker/releases/download/v${pkgver}/${pkgname/\-bin/}-${pkgver}-linux-amd64.zip")
 
-sha256sums=('2cd9764128c09540101b998a2ddd8279db7e6db6986a4e1d2d30f8809fff2e28')
+sha256sums=('e4aaced1745a4a7d245499c117d79defc058c1edaf1d3186a35e6cfa38c3855e')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname/\-bin/}" "${pkgdir}/usr/bin/${pkgname/\-bin/}"
