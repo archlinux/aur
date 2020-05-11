@@ -1,8 +1,8 @@
 # Packager: Joseph R. Quinn <quinn.josephr@protonmail.com>
 # Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=php-psr
-pkgver=1.0.0  
-pkgrel=1
+pkgver=1.0.0
+pkgrel=2
 pkgdesc="PHP extension providing the accepted PSR interfaces."
 arch=('any')
 url="https://github.com/jbboehr/php-psr"
