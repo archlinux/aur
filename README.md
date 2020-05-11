@@ -31,7 +31,7 @@ Net Upgrade Size:      0.00 MiB
 
 ### Installation
 
-Install aur package [zectl-pacman-hook]()
+Install aur package [zectl-pacman-hook](https://aur.archlinux.org/packages/zectl-pacman-hook/).
 
 ### Configuration
 
