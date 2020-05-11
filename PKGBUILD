@@ -3,7 +3,7 @@
 
 pkgname=clutter-gtk
 pkgver=1.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Clutter integration with GTK+"
 arch=(x86_64)
 url="https://gitlab.gnome.org/GNOME/clutter-gtk"
