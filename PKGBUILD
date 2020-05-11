@@ -1,6 +1,6 @@
 # Maintainer: Christoph Flick <christophflick@gmx.de>
 pkgname=jmstoolbox
-pkgver=5.6.0
+pkgver=5.7.0
 pkgrel=1
 pkgdesc="A \"Universal\" JMS Client able to interact with a lot of \
      Queue Managers/Providers on the market in a consistent manner."
@@ -12,7 +12,7 @@ makedepends=('maven' 'java-environment>=11')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh"
         "${pkgname}.desktop")
-sha256sums=('0f7d9f036af8dd3ea4b715617293d14b2246dbdf6d6af58650d0bd1971b94f03'
+sha256sums=('bbaad5544ea4d127caac917941fb0a6ca490e52ae49066963b2ba86d12c450c0'
             'adf3cdcc56f9c58c960bc753dcf887969d701edcfd2087bf7584255046ca5f47'
             '59b5fe00935cfc109b9832475de40a631088c7d92217ac9bc0cafb6b090984e9')
 
