@@ -28,3 +28,4 @@ makepkg -f
 #update srcinfo
 makepkg --printsrcinfo > .SRCINFO
 
+git commit -am "Update to $(awk '{ print $2 }' new_ver.txt)"
