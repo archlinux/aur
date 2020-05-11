@@ -1,15 +1,15 @@
 pkgbase = x-tile
-	pkgdesc = A gnome/xfce tiling applet for your panel
-	pkgver = 2.6
+	pkgdesc = Allows you to select a number of windows and tile them in different ways
+	pkgver = 3.1
 	pkgrel = 1
-	url = http://www.giuspen.com/x-tile
+	url = https://www.giuspen.com/x-tile
 	arch = any
 	license = GPL2
-	depends = hicolor-icon-theme
-	depends = python2-gconf
-	source = http://www.giuspen.com/software/x-tile-2.6.tar.xz
-	sha256sums = 463fc2f99e36c97529a48a9397a4a240004d9990aac1785198f3f9c2d16952f8
-	sha512sums = 5404b7d716956e2239471d803ac9fd536fdde5b2971cdc66158a3ac2982145373e44b3a9d2d769705628a1818ae402e74bfa96ed52d47da2d3929f3a706e83d1
+	depends = gtk3
+	depends = python-gobject
+	optdepends = libappindicator-gtk3: Tray icon support
+	source = http://www.giuspen.com/software/x-tile-3.1.tar.xz
+	sha256sums = ae3a07653a680becd459f12ad1be87bb7c8745232697f2a1bc6f02b522457c3a
 
 pkgname = x-tile
 
