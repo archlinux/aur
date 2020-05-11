@@ -3,7 +3,6 @@ pkgbase = balena-cli
 	pkgver = 11.33.1
 	pkgrel = 1
 	url = https://balena.io/
-	arch = i686
 	arch = x86_64
 	license = APACHE
 	makedepends = npm
