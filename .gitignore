@@ -1,0 +1,4 @@
+pkg/*
+src/*
+taiwins/*
+*.pkg.tar.xz
