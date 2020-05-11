@@ -3,9 +3,9 @@
 
 pkgname=balena-cli
 pkgdesc='balena.io command line interface'
-pkgver=11.33.0
+pkgver=11.32.15
 pkgrel=1
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url='https://balena.io/'
 _github_url="https://github.com/balena-io/balena-cli"
 license=('APACHE')
@@ -16,14 +16,14 @@ optdepends=('python2: balena preload'
     'linux-aufs: balena preload/build/deploy --build'
     'avahi: balena scan')
 optdepends_x86_64=('lib32-glibc: emulated builds')
-source=("${_github_url}/archive/v${pkgver}.tar.gz")
-noextract=("v${pkgver}.tar.gz")
+source=(https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz)
+noextract=(${pkgname}-${pkgver}.tgz)
 options=(!strip)
 replaces=('resin-cli')
-sha256sums=('d19637372595b120036341d29f35a202ada1f27fc5788814636d2df06c7a50b4')
+sha256sums=('f5f71e335d6d75c3d63167bcdff80ce98564cdd5adba64ab9a461e3f7eb79788')
 
 package() {
-  npm install --global --production --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/v${pkgver}.tar.gz"
+  npm install --global --production --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
 
   find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
