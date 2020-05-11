@@ -1,16 +1,17 @@
 # Maintainer: Tom Vincent <aur@tlvince.com>
 pkgname=ruby-gli
 _gemname=gli
-pkgver=2.17.1
-pkgrel=3
+pkgver=2.19.0
+pkgrel=1
 pkgdesc="Make awesome command-line applications the easy way"
 arch=('any')
 url="https://github.com/davetron5000/gli"
-license=('APACHE')
+license=('Apache-2.0')
 depends=('ruby')
 makedepends=('rubygems')
-source=("http://gems.rubyforge.org/gems/${_gemname}-${pkgver}.gem")
+source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("${_gemname}-${pkgver}.gem")
+md5sums=('8576ef63d2deeecac2bcb236e965dc14')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
@@ -18,4 +19,3 @@ package() {
     -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 }
-md5sums=('75a8f269052ac8ca5c30881777c7e584')
