@@ -1,6 +1,6 @@
 pkgbase = sogo
 	pkgdesc = groupware server built around OpenGroupware.org (OGo) and the SOPE application server
-	pkgver = 4.3.0
+	pkgver = 4.3.2
 	pkgrel = 1
 	url = http://www.sogo.nu/
 	install = sogo.install
@@ -8,7 +8,7 @@ pkgbase = sogo
 	license = GPL
 	makedepends = gcc-objc
 	makedepends = gnustep-make
-	depends = sope>=4.3.0
+	depends = sope>=4.3.2
 	depends = gnustep-base
 	depends = libmemcached
 	depends = memcached
@@ -27,11 +27,11 @@ pkgbase = sogo
 	backup = etc/sogo/sogo.conf
 	backup = etc/httpd/conf/extra/SOGo.conf
 	backup = etc/conf.d/sogo
-	source = http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-4.3.0.tar.gz
+	source = http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-4.3.2.tar.gz
 	source = sogo.service
 	source = sogo.confd
 	source = sogo_configure.patch
-	sha256sums = 6decb626e2a8b6c4919eed602497f3b1fce3e5525bb9d71103e380122bc31140
+	sha256sums = ecf22e7763a3113ac86a891abbd0e50f7eac19275428798c34cf742cc83a446b
 	sha256sums = 0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c
 	sha256sums = 8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7
 	sha256sums = e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1
