@@ -2,7 +2,7 @@
 
 pkgname=i2c-piix4-aura-dkms
 _pkgbase=${pkgname%-dkms}
-pkgver=5.6.7
+pkgver=5.6.11
 pkgrel=1
 pkgdesc="The i2c-piix4 kernel driver, patched to be used with OpenRGB: https://gitlab.com/CalcProgrammer1/OpenRGB"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("i2c-piix4-${pkgver}.c::https://git.kernel.org/pub/scm/linux/kernel/git/
 	'90-i2c-aura.rules'
 	'i2c-aura.conf')
 md5sums=('26cff2ae6e3a2356fefe1c698ce16e77'
-         '904cc91bd8d73829c8bc58fd1c528d72'
+         '9d517ea23eb35f6e6f4b96a69bf0f3bb'
          'dadbad0c5a8bec3ff66161d3f150bbb7'
          '55c9591930d320e3f9912d315c4682ba'
          'e44ab261a99faa252fc142cc5569502c'
