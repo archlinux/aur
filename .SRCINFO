@@ -1,14 +1,14 @@
 pkgbase = daloradius
 	pkgdesc = An advanced RADIUS web platform aimed at managing Hotspots and general-purpose ISP deployments.
-	pkgver = 0.9.9
-	pkgrel = 2
+	pkgver = 1.1.2
+	pkgrel = 1
 	url = http://daloradius.com/
 	install = daloradius.install
 	arch = any
 	license = GPLv2
 	depends = php-pear
-	source = http://downloads.sourceforge.net/daloradius/daloradius-0.9-9.tar.gz
-	md5sums = b9284a14b180db2ce2c58e8b0b804a95
+	source = http://downloads.sourceforge.net/project/daloradius/daloradius/daloradius-1.1-2.zip
+	md5sums = 799213d53fb000ffff16de4d932b848b
 
 pkgname = daloradius
 
