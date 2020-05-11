@@ -3,7 +3,7 @@
 _gemname=fusuma-plugin-tap
 pkgname=ruby-$_gemname
 pkgver=0.3.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Tap and Hold gestures plugin for Fusuma"
 arch=(any)
 url="https://github.com/iberianpig/fusuma-plugin-tap"
