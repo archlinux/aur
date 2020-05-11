@@ -19,7 +19,7 @@ build()
   rm -rf build
   mkdir build && cd build
 
-  export CFLAGS_FOR_TARGET='-G0 -O2 -ffunction-sections -fdata-sections -fomit-frame-pointer'
+  export CFLAGS_FOR_TARGET='-G0 -O2 -fcommon -ffunction-sections -fdata-sections -fomit-frame-pointer'
 
   ../newlib-${pkgver}/configure \
     --prefix=/usr \
