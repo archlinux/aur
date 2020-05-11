@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Super Productivity
+Exec=superproductivity %U
+Terminal=false
+Type=Application
+Icon=superproductivity
+StartupWMClass=superProductivity
+Comment=Personal Task Management App to help you with your daily struggle with JIRA etc.
+Categories=Productivity;Office;Development
