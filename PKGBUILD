@@ -2,17 +2,18 @@
 
 _target=mips64-ultra-elf
 pkgname=${_target}-binutils
-_binutilsver=2.32
-pkgver=2.32_r100.c9c95e7
+_binutilsver=2.34
+pkgver=2.34_r128.79c3ef4
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files for ${_target}"
 url="http://www.gnu.org/software/binutils/"
 arch=('x86_64')
 license=('GPL')
-depends=('zlib')
+makedepends=('git')
+depends=('libelf')
 source=("ftp://ftp.gnu.org/gnu/binutils/binutils-${_binutilsver}.tar.xz"
         "git+https://github.com/glankk/n64.git#branch=n64-ultra")
-sha256sums=('0ab6c55dd86a92ed561972ba15b9b70a8b9f75557f896446c82e8b36e473ee04'
+sha256sums=('f00b0e8803dc9bab1e2165bd568528135be734df3fabf8d0161828cd56028952'
             'SKIP')
 
 pkgver() {
@@ -31,12 +32,10 @@ prepare() {
 
   # -- Copy files in binutils source.
   cd ${srcdir}/n64/
+  patch -d ${CP_DIR}/ld -p 1 < "config/ld/ld.diff"
   cp "config/ld/emulparams/"* ${CP_DIR}/ld/emulparams
   cp "config/ld/emultempl/"* ${CP_DIR}/ld/emultempl
   cat "config/ld/configure.tgt.ultra" >> ${CP_DIR}/ld/configure.tgt
-  cat "config/ld/Makefile.am.ultra" >> ${CP_DIR}/ld/Makefile.am
-  rm -f ${CP_DIR}/ld/po/BLD-POTFILES.in
-  autoreconf ${CP_DIR}/ld
   cd ${CP_DIR}
 
 }
