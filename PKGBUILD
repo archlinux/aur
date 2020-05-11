@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git://github.com/mavlink/mavsdk.git#tag=v0.24.0"
+source=("git://github.com/mavlink/mavsdk.git#tag=v$pkgver"
         "git://github.com/mavlink/mavsdk-proto.git"
         "git://github.com/google/googletest.git"
         "git://github.com/mavlink/c_library_v2.git")
