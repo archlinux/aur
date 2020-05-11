@@ -4,12 +4,12 @@
 _qonlinetranslator=1.2.3
 _qhotkey=1.3.0
 _qtaskbarcontrol=2.0.0
-_singleapplication=3.0.18
+_singleapplication=3.0.19
 
 pkgname=crow-translate
 pkgver=2.3.2
-pkgrel=2
-pkgdesc="A simple and lightweight translator that allows to translate and say selected text using Google, Yandex and Bing translate API"
+pkgrel=3
+pkgdesc='A simple and lightweight translator that allows to translate and say selected text using Google, Yandex and Bing translate API'
 arch=(x86_64)
 url=https://github.com/crow-translate/crow-translate
 license=(GPL3)
@@ -19,12 +19,12 @@ source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz
         QOnlineTranslator-$_qonlinetranslator.tar.gz::https://github.com/Shatur95/QOnlineTranslator/archive/$_qonlinetranslator.tar.gz
         QHotkey-$_qhotkey.tar.gz::https://github.com/Skycoder42/QHotkey/archive/$_qhotkey.tar.gz
         QTaskbarControl-$_qtaskbarcontrol.tar.gz::https://github.com//Skycoder42/QTaskbarControl/archive/$_qtaskbarcontrol.tar.gz
-        SingleApplication-$_singleapplication.tar.gz::https://github.com/itay-grudev/SingleApplication/archive/$_singleapplication.tar.gz)
-sha256sums=(1a1d4d69c5c6d4f78c6c857c4ba7431adecc8bfbb1d7a931851b923526853d90
+        SingleApplication-$_singleapplication.tar.gz::https://github.com/itay-grudev/SingleApplication/archive/v$_singleapplication.tar.gz)
+sha256sums=(4dbaffbc9c9e78e0920695ff21115cf99c5bc7b1afa693bb6b7d364dcc856610
             20cc2736f6dec3a376b6746525076de2760e997085fb3d3f2776f0ce5b676182
             d21867b4f15a67c03d26c960da864a63368ccdf7da2dfaa545c135aad506085e
             85039ca8ff899ed724ed16b719be7a814392a67ad53b4b59f160f73fb53dc74c
-            0f0ce6466dbfdadf2a7ea75aa1d461e2e279c8c03f747117c75bd376a46c6eec)
+            9405fd259288b2a862e91e5135bccee936f0438e1b32c13603277132309d15e0)
 
 # Move submodules into the project
 prepare() {
