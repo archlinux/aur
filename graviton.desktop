@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Graviton
+Exec=/usr/bin/graviton
+Terminal=false
+Type=Application
+Icon=graviton
+StartupWMClass=Graviton
+Comment=A modern code editor
+Categories=Development;

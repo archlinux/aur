@@ -1,0 +1,22 @@
+pkgbase = graviton-git
+	pkgdesc = A modern code editor
+	pkgver = 2.0.84
+	pkgrel = 1
+	url = https://graviton.netlify.app/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = nodejs
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	provides = graviton
+	options = !strip
+	source = git+https://github.com/Graviton-Code-Editor/Graviton-App
+	source = graviton.desktop
+	md5sums = SKIP
+	md5sums = e8a47a975ee2bcf672421e0a7bfa2b53
+
+pkgname = graviton-git
+
