@@ -2,22 +2,22 @@
 
 _pkgname=xfce4-panel-profiles
 pkgname=${_pkgname}-git
-pkgver=1.0.8+0+gfc8e139
+pkgver=1.0.10+10+g8b086a7
 pkgrel=1
 pkgdesc="Simple application to manage Xfce panel layouts"
-arch=('any')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://launchpad.net/xfpanel-switch"
 license=('GPL3')
 depends=('xfce4-panel' 'gtk3' 'python-gobject')
 makedepends=('intltool' 'git')
 conflicts=('xfpanel-switch' "${_pkgname}")
 provides=("${_pkgname}=${pkgver%%+*}")
-source=("git://git.xfce.org/apps/xfce4-panel-profiles")
+source=("${_pkgname}::git+https://gitlab.xfce.org/apps/${_pkgname}")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed -r "s:^${_pkgname}-::;s/-/+/g"
+  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
 build() {
