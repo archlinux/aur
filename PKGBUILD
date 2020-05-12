@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=guiscrcpy-git
-pkgver=3.7.r328.0bf2f9d
+pkgver=3.9.r7.g4d4f931
 pkgrel=1
-epoch=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
 url="https://guiscrcpy.github.io"
 license=('GPL3')
-depends=('scrcpy' 'python-pyqt5' 'python-pynput' 'python-fonttools' 'python-psutil')
+depends=('scrcpy' 'python-pyqt5' 'python-pynput' 'python-fonttools'
+         'python-psutil' 'python-cairosvg')
 makedepends=('git' 'python-setuptools')
 optdepends=('usbaudio: AOA audio, deprecated since Android 8.0')
 provides=("${pkgname%-git}")
@@ -17,7 +17,8 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+	git describe --long --tags --match "[0-9]*" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+#	git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 #	printf "%s.g%s" "$(grep -oP "(?<=version=').*(?=')" setup.py)" \
 #		"$(git rev-parse --short HEAD)"
 }
