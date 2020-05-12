@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.2.0.r115.g332e397
+pkgver=0.2.0.r174.gcbf5c14
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=('any')
@@ -19,9 +19,6 @@ depends=('bc'
          'java-commons-lang' # pdftk optdepend is required
          'jq'
          'kindlegen'
-         'lua-colors'
-         'lua-filesystem'
-         'lua-yaml'
          'm4'
          'make'
          'moreutils'
@@ -30,16 +27,9 @@ depends=('bc'
          'pandoc-sile-git'
          'pcre'
          'pdftk'
-         'perl-yaml'
-         'perl-yaml-merge-simple'
          'podofo'
          'poppler'
          'povray'
-         'python-isbnlib'
-         'python-pandocfilters'
-         'python-pantable'
-         'python-ruamel-yaml'
-         'python-usfm2osis-cw-git'
          'rsync'
          'sile-git'
          'sqlite'
@@ -51,6 +41,19 @@ depends=('bc'
          'yq'
          'zint'
          'zsh')
+_lua_deps=('colors'
+           'filesystem'
+           'yaml')
+_perl_deps=('yaml'
+            'yaml-merge-simple')
+_python_deps=('isbnlib'
+              'pandocfilters'
+              'pantable'
+              'ruamel-yaml'
+              'usfm2osis-cw-git')
+depends+=("${_lua_deps[@]/#/lua-}"
+          "${_perl_deps[@]/#/perl-}"
+          "${_python_deps[@]/#/python-}")
 makedepends=('rust' 'cargo')
 provides=("${pkgname%-git}")
 conflicts=("${provides[@]}")
