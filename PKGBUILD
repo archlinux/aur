@@ -4,7 +4,7 @@ pkgdesc="ROS - position_controllers."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-melodic-position-controllers'
-pkgver='0.15.0'
+pkgver='0.16.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(
 
 _dir="ros_controllers-${pkgver}/position_controllers"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_controllers/archive/${pkgver}.tar.gz")
-sha256sums=('8c19481a28f394d5bf4372fb05a6c638fa2995614f9b0f82b8213ca32d15a4cf')
+sha256sums=('cf43c389f2c29e9597d46a5ff7ce33af48278dbb697209887249dd3a7682257a')
 
 build() {
 	# Use ROS environment variables.
