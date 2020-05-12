@@ -2,7 +2,8 @@
 # Contributor: Nils Czernia <nils[at]czserver[dot[de>
 
 pkgname=grav-admin
-pkgver=1.7.0.rc.8
+pkgver=1.7.0.rc.10
+_pkgver=1.7.0-rc.10
 pkgrel=1
 pkgdesc="Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS (with Admin plugin)"
 arch=("any")
@@ -17,8 +18,8 @@ optdepends=('php-apcu: A userland caching module for PHP'
 			'php-fpm: FastCGI Process Manager'
 			'php-apache: Apache SAPI for PHP')
 install=grav.install
-source=("https://github.com/getgrav/grav/releases/download/${pkgver:0:5}-${pkgver:6}/${pkgname}-v${pkgver:0:5}-${pkgver:6}.zip")
-sha256sums=('48739d9d69c4b0b12869cad915f99339dd86e4c89bc121996f2afe7333e2395c')
+source=("${pkgname}-${pkgver}.zip::https://github.com/getgrav/grav/releases/download/${_pkgver}/${pkgname}-v${_pkgver}.zip")
+sha256sums=('930f5d0abcfdbe62837a050b8856765a9c057224f98294900f8b7391d9037628')
 
 package() {
   cd "${pkgdir}"
@@ -33,4 +34,5 @@ package() {
   umask 0002
   rm -Rf *.md composer.json composer.lock .github
   rm $(find . -type f -name .gitkeep | xargs)
+  install -Dm644 "${pkgdir}/usr/share/webapps/grav-admin/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

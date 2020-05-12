@@ -1,6 +1,6 @@
 pkgbase = grav-admin
 	pkgdesc = Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS (with Admin plugin)
-	pkgver = 1.7.0.rc.8
+	pkgver = 1.7.0.rc.10
 	pkgrel = 1
 	url = https://getgrav.org
 	install = grav.install
@@ -15,8 +15,8 @@ pkgbase = grav-admin
 	optdepends = php-fpm: FastCGI Process Manager
 	optdepends = php-apache: Apache SAPI for PHP
 	provides = grav
-	source = https://github.com/getgrav/grav/releases/download/1.7.0-rc.8/grav-admin-v1.7.0-rc.8.zip
-	sha256sums = 48739d9d69c4b0b12869cad915f99339dd86e4c89bc121996f2afe7333e2395c
+	source = grav-admin-1.7.0.rc.10.zip::https://github.com/getgrav/grav/releases/download/1.7.0-rc.10/grav-admin-v1.7.0-rc.10.zip
+	sha256sums = 930f5d0abcfdbe62837a050b8856765a9c057224f98294900f8b7391d9037628
 
 pkgname = grav-admin
 
