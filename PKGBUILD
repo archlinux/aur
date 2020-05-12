@@ -7,13 +7,13 @@
 pkgbase=tuxguitar
 pkgname=(tuxguitar tuxguitar-common tuxguitar-gtk2)
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="multitrack guitar tablature editor and player"
 arch=('any')
 url="https://sourceforge.net/projects/tuxguitar/"
 license=('LGPL')
-depends=('jre11-openjdk' 'alsa-lib' 'libxtst')
-makedepends=('unzip' 'zip' 'ant' 'jack' 'fluidsynth' 'jdk11-openjdk' 'maven')
+depends=('jre-openjdk' 'alsa-lib' 'libxtst')
+makedepends=('unzip' 'zip' 'ant' 'jack' 'fluidsynth' 'jdk-openjdk' 'maven')
 optdepends=('fluidsynth')
 source=(https://downloads.sourceforge.net/tuxguitar/tuxguitar-$pkgver-src.tar.gz
         tuxguitar
@@ -26,6 +26,14 @@ case $CARCH in
   i686) _arch=x86;;
   *) _arch=$CARCH;;
 esac
+
+prepare() {
+  cd tuxguitar-$pkgver-src
+  for file in pom.xml TuxGuitar-lib/pom.xml; do
+      sed -i -e 's|<source>1\.6</source>|<source>1\.7</source>|g' \
+             -e 's|<target>1\.6</target>|<target>1\.7</target>|g' "$file"
+  done
+}
 
 build() {
   cd tuxguitar-$pkgver-src
