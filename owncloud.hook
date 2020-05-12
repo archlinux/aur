@@ -1,0 +1,14 @@
+# Update ownCloud when core or -apps are touched
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = owncloud
+Target = owncloud-app-*
+
+[Action]
+Description = Updating ownCloud installation
+When = PostTransaction
+Exec = /usr/bin/runuser -u http -- /usr/bin/php /usr/share/webapps/owncloud/occ upgrade
+

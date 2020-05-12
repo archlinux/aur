@@ -1,23 +1,23 @@
-# Maintainer: Damian Nowak <nowaker@virtkick.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Damian Nowak <nowaker@virtkick.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Antonio Rojas <nqn1976 @ gmail.com>
 # Based on owncloud-git PKGBUILD by Alexander Ovsyannikov
 
 pkgname=owncloud
-pkgver=10.0.9
+pkgver=10.4.1
 pkgrel=1
-pkgdesc="A cloud server to store your files centrally on a hardware controlled by you"
+pkgdesc="Securely access and share data from everywhere and any device"
 arch=('any')
 url="https://owncloud.org/"
 license=('GPL')
-depends=('php-gd')
+depends=()
 optdepends=('php-apache: to use the Apache web server'
             'php-sqlite: to use the SQLite database backend'
             'php-pgsql: to use the PostgreSQL database backend'
             'php-ldap: LDAP authentication'
             'php-intl'
             'php-apcu'
-            'php-xcache'
             'mariadb: to use the MySQL database backend'
             'smbclient: to mount SAMBA shares'
             'php-mcrypt'
@@ -30,13 +30,16 @@ backup=('etc/webapps/owncloud/apache.example.conf')
 validpgpkeys=('E3036906AD9F30807351FAC32D5D5E97F6978A26')
 source=("https://download.owncloud.org/community/owncloud-${pkgver}.tar.bz2"{,.asc}
         'apache.example.conf'
+	'owncloud.hook'
 )
-sha256sums=('767faedf7b236b469e71ad73a70c6250fc33fd493708d95cf31b0b58b4710973'
+sha256sums=('63f32048225c6bc4534c6757e8beee65fc845a35126899e85d787a3ba4073d48'
             'SKIP'
-            '4a2ad4b4ecc6ede355bec9a21cbf8c8c4b9144033bdf0ed3366617bcb4df1144'
-)
+            'e19149bbe2fef90d2d669ca8912104f6cf3c435a6c19610b00c844230190f0fb'
+            'fae2a021055a7bcf2ceece645e15a921aecefab088583a3f8c4d7d969578a36e')
 
 package() {
+    depends=('php>=7.4.0' 'php<7.5.0' 'php-gd')
+
     # install license
     install -d "$pkgdir"/usr/share/licenses/${pkgname}
     cp "$srcdir"/${pkgname}/COPYING "$pkgdir"/usr/share/licenses/${pkgname}
@@ -60,4 +63,6 @@ package() {
     find "$pkgdir"/usr/share/webapps/${pkgname} -type d -exec chmod 0755 {} \;
 
     chmod a+x "$pkgdir"/usr/share/webapps/${pkgname}/occ
+
+#    install -Dm0644 "$srcdir"/owncloud.hook "$pkgdir"/usr/share/libalpm/hooks/owncloud.hook
 }
