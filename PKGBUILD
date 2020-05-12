@@ -2,10 +2,10 @@
 
 _pkgname=thunar-archive-plugin
 pkgname=${_pkgname}-git
-pkgver=0.4.0.r2.g3d98109
+pkgver=0.4.0+97+ge9a0d87
 pkgrel=1
 pkgdesc="Create and extract archives in Thunar (git checkout)"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="http://goodies.xfce.org/projects/thunar-plugins/thunar-archive-plugin"
 license=('GPL2')
 groups=('xfce4-goodies')
@@ -18,12 +18,12 @@ optdepends=('file-roller'
 provides=("${_pkgname}=${pkgver%\.r*}")
 conflicts=("${_pkgname}" 'engrampa-thunar')
 replaces=('engrampa-thunar')
-source=("${_pkgname}::git://git.xfce.org/thunar-plugins/thunar-archive-plugin")
+source=("${_pkgname}::git+https://gitlab.xfce.org/thunar-plugins/${_pkgname}")
 sha256sums=('SKIP')
             
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/([^-]*-g)/r\1/;s/-/./g"
+  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
 build() {
