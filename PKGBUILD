@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('GPLv3')
 depends=('gtk3' 'fftw' 'cfitsio' 'gsl' 'libconfig' 'opencv' 'exiv2')
 makedepends=('intltool')
-url="https://free-astro.org/index.php/Siril"
+url="https://www.siril.org/"
 optdepends=('libpng: PNG import'
 'libjpeg: JPEG import and export'
 'libtiff: TIFF import and export'
@@ -20,6 +20,9 @@ optdepends=('libpng: PNG import'
 )
 source=('git+https://gitlab.com/free-astro/siril.git')
 sha1sums=('SKIP')
+provides=($_gitname=$pkgver)
+conflicts=($_gitname)
+replaces=($_gitname)
 
 pkgver() {
 	cd "${srcdir}/${_gitname}"
