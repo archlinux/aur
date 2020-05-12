@@ -1,0 +1,19 @@
+pkgbase = bibman-git
+	pkgdesc = A console tool for managing BibTeX files.
+	pkgver = 0.3.0.alpha.r8.gc8082bd
+	pkgrel = 1
+	url = https://github.com/maciejjan/bibman
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = perl
+	depends = perl-curses
+	depends = perl-text-bibtex
+	depends = ncurses
+	provides = bibman
+	source = git+https://github.com/maciejjan/bibman
+	md5sums = SKIP
+
+pkgname = bibman-git
+
