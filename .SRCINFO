@@ -1,7 +1,7 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.8.95
-	pkgrel = 2
+	pkgver = 1.8.96
+	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
 	license = custom
@@ -25,7 +25,7 @@ pkgbase = brave
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: for storing passwords in KWallet on KDE desktops
 	optdepends = sccache: For faster builds
-	source = git+https://github.com/brave/brave-browser.git#tag=v1.8.95
+	source = git+https://github.com/brave/brave-browser.git#tag=v1.8.96
 	source = brave-vaapi-enable.patch
 	source = chromium-no-history.patch
 	source = brave-launcher
@@ -36,8 +36,6 @@ pkgbase = brave
 	source = icu67.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/icu67.patch?h=packages/chromium&id=b09cf910e816b3bdf0788197e9f50e5f29f58fc8
 	source = chromium-widevine.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium&id=b09cf910e816b3bdf0788197e9f50e5f29f58fc8
 	source = chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium&id=b09cf910e816b3bdf0788197e9f50e5f29f58fc8
-	source = vaapi-build-fix.patch::https://aur.archlinux.org/cgit/aur.git/plain/vaapi-build-fix.patch?h=chromium-vaapi&id=2421d695f494fd04797ac6eda81e66857664b854
-	source = vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=2421d695f494fd04797ac6eda81e66857664b854
 	sha256sums = SKIP
 	sha256sums = 2b07eabd8b3d42456d2de44f6dca6cf2e98fa06fc9b91ac27966fca8295c5814
 	sha256sums = 43f442d9ffacd69a1ca770b029083aaa544d48c052939a66e58a868d91ebde70
