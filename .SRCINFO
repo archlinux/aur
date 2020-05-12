@@ -18,9 +18,15 @@ pkgbase = chipmachine-git
 	source = git+https://github.com/sasq64/chipmachine.git
 	source = git+https://github.com/sasq64/apone.git
 	source = git+https://github.com/sasq64/musicplayer.git
+	source = 0001-chipmachine-rpath.patch
+	source = 0002-musicplayer-cmake314.patch
+	source = 0003-chipmachine-gcc10.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
+	sha512sums = 59f5d6f5e34a5fa9fb668f7272415d02c8ebca00d37271f534af81df1698bc415c8ace2a8fe6260972006ec144409dbd3143531816169e6692c1ba1173ec6ad2
+	sha512sums = 0ea7b7d1cd46c7adafebcffefe1a92c5bfbdc4e9aa8849a617aff78cdceb216d9007649c1e80a616c650196dba4dd564215aa48b89c3b907fd8cd6561a1840bf
+	sha512sums = 1cf5640b76f7ca3a03b61d70cfccc9e7600e9f2ed15193e55feed6b07c8501fff32999963e5fa751556b72e1ff85f6efdc8d0623a33883f9ddde640018e78c4f
 
 pkgname = chipmachine-git
 

@@ -1,0 +1,13 @@
+diff --git a/src/di.hpp b/src/di.hpp
+index b15b3e7..3f82620 100644
+--- a/src/di.hpp
++++ b/src/di.hpp
+@@ -70,7 +70,7 @@ BOOST_DI_CFG_FWD
+ #        pragma clang diagnostic error "-Wundefined-internal"
+ #        pragma clang diagnostic ignored "-Wmissing-field-initializers"
+ #    elif defined(__GCC__)
+-#        pragma GCC diagnostic error "-Wdeprecated-declarations"
++#        pragma GCC diagnostic warning "-Wdeprecated-declarations"
+ #        pragma GCC diagnostic push
+ #        if (__GNUC__ < 6)
+ #            pragma GCC diagnostic error "-Werror"
