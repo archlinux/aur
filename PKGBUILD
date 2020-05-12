@@ -39,7 +39,7 @@ package_clickhouse-client-bin() {
 	pkgdesc="ClickHouse client and other client-related tools."
 
 	cd "clickhouse-client-$pkgver"
-  	cp -r etc usr $pkgdir
+	cp -a etc usr $pkgdir
 }
 
 package_clickhouse-common-static-bin() {
@@ -48,7 +48,7 @@ package_clickhouse-common-static-bin() {
 	backup=('etc/security/limits.d/clickhouse.conf')
 
 	cd "clickhouse-common-static-$pkgver"
-  	cp -r etc usr $pkgdir
+	cp -a etc usr $pkgdir
 }
 
 package_clickhouse-server-bin() {
@@ -61,10 +61,10 @@ package_clickhouse-server-bin() {
 	)
 
 	cd "clickhouse-server-$pkgver"
-	cp -r usr "$pkgdir/"
-	cp -r lib "$pkgdir/usr"
+	cp -a usr "$pkgdir/"
+	cp -a lib "$pkgdir/usr"
 	mkdir -p "$pkgdir/etc/clickhouse-server"
-	cp -r etc/clickhouse-server "$pkgdir/etc"
+	cp -a etc/clickhouse-server "$pkgdir/etc"
 	install -D "$srcdir/clickhouse.sysusers" "${pkgdir}/usr/lib/sysusers.d/clickhouse.conf"
 	install -D "$srcdir/clickhouse-server.service" "${pkgdir}/usr/lib/systemd/system/clickhouse-server.service"
 }
