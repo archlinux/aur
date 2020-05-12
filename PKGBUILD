@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides nodes to assemble point clouds from either LaserScan or 
 url='https://wiki.ros.org/laser_assembler'
 
 pkgname='ros-melodic-laser-assembler'
-pkgver='1.7.6'
+pkgver='1.7.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=3
 license=('BSD')
@@ -46,7 +46,7 @@ depends=(
 _dir="laser_assembler-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/laser_assembler/archive/${pkgver}.tar.gz"
   CMakeLists-signal.patch)
-sha256sums=('f9b5c23f7eac7406dd3d0e4a095864335b18a25611fd28f3279763339d7bd94f'
+sha256sums=('e6b0c3abbe30006fba4bb78e8c451592835984ef28b39fbdaf843f4943829ee0'
             '1c050096b3e5edf41da7ef88db915f5690f5b6903e7d46c65a1655204f49039c')
 
 prepare() {
