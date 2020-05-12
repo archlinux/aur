@@ -1,7 +1,7 @@
 pkgbase = perl-app-sqitch
 	pkgdesc = Sane database change management
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sqitch.org/
 	arch = any
 	license = MIT
@@ -13,7 +13,6 @@ pkgbase = perl-app-sqitch
 	checkdepends = perl-test-dir
 	checkdepends = perl-test-file-contents
 	depends = perl-clone
-	depends = perl-config-gitlike>=1.11
 	depends = perl-datetime
 	depends = perl-datetime-timezone
 	depends = perl-dbi
@@ -45,7 +44,6 @@ pkgbase = perl-app-sqitch
 	optdepends = perl-dbd-pg: PostgreSQL support
 	optdepends = perl-dbd-sqlite: SQLite support
 	optdepends = perl-dbd-mysql: MySQL support
-	optdepends = perl-dbd-firebird: Firebird support
 	options = !emptydirs
 	options = purge
 	source = http://search.cpan.org/CPAN/authors/id/D/DW/DWHEELER/App-Sqitch-v1.0.0.tar.gz

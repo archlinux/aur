@@ -1,8 +1,9 @@
-# Maintainer: Bruno Dupuis <lisael@lisael.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Bruno Dupuis <lisael@lisael.org>
 # Contributor: Jan Tojnar <jtojnar@gmail.com>
 pkgname=perl-app-sqitch
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sane database change management'
 _dist=App-Sqitch
 arch=('any')
@@ -10,7 +11,6 @@ url="http://sqitch.org/"
 license=('MIT')
 depends=(
     'perl-clone'
-    'perl-config-gitlike>=1.11'
     'perl-datetime'
     'perl-datetime-timezone'
     'perl-dbi'
@@ -55,7 +55,6 @@ optdepends=(
     'perl-dbd-pg: PostgreSQL support'
     'perl-dbd-sqlite: SQLite support'
     'perl-dbd-mysql: MySQL support'
-    'perl-dbd-firebird: Firebird support'
 )
 
 options=('!emptydirs' purge)
