@@ -1,0 +1,16 @@
+pkgbase = ros-melodic-soem
+	pkgdesc = ROS wrapper for the Simple Open EtherCAT Master SOEM. This is an updated version of the original SOEM wrapper released into ROS now including the upstream Repo as a git subtree.
+	pkgver = 1.4.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = LGPL2
+	provides = ros-melodic-soem
+	source = ros-melodic-soem-1.4.0.deb::http://packages.ros.org/ros/ubuntu/pool/main/r/ros-melodic-soem/ros-melodic-soem_1.4.0-1bionic.20200303.055401_amd64.deb
+	sha256sums = 636c049ff907dd9a711727c86ff382b3fb85a2fa194029945ea540ce7a77bef8
+
+pkgname = ros-melodic-soem
+
