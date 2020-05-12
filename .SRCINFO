@@ -1,0 +1,18 @@
+pkgbase = digikam-beta-appimage
+	pkgdesc = Professional Photo Management with the Power of Open Source.
+	pkgver = v7.0.0.3
+	pkgrel = 1
+	url = https://www.digikam.org/
+	arch = x86_64
+	license = GPL
+	provides = digikam-beta
+	conflicts = digikam
+	conflicts = digikam-git
+	conflicts = digikam-beta
+	noextract = digikam-beta-appimage-v7.0.0.3.AppImage
+	options = !strip
+	source_x86_64 = digikam-beta-appimage-v7.0.0.3.AppImage::https://download.kde.org/unstable/digikam/digikam-7.0.0-beta3-20200422T062854-x86-64.appimage
+	sha256sums_x86_64 = 79b6a277a1ccb7a80db8b60055b603c9a3ec2f333c8fc8e5fb9faac22c43f2b1
+
+pkgname = digikam-beta-appimage
+
