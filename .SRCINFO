@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-genmsg
 	pkgdesc = ROS - Standalone Python library for generating ROS message and service data structures for various languages.
-	pkgver = 0.5.12
+	pkgver = 0.5.15
 	pkgrel = 1
 	url = https://www.wiki.ros.org/genmsg
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = ros-melodic-genmsg
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-catkin
-	source = ros-melodic-genmsg-0.5.12.tar.gz::https://github.com/ros/genmsg/archive/0.5.12.tar.gz
-	sha256sums = 0e29bde730b4e114d1050998e833681fa3917f530cfab674e71fa21677d2a7ae
+	source = ros-melodic-genmsg-0.5.15.tar.gz::https://github.com/ros/genmsg/archive/0.5.15.tar.gz
+	sha256sums = eae7042040f0ba144a2488e8950f01ce99d962ac473d7d310f466902ef1925d0
 
 pkgname = ros-melodic-genmsg
 
