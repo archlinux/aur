@@ -9,9 +9,14 @@ arch=('x86_64')
 url='https://gluonhq.com/products/scene-builder'
 license=('BSD')
 conflicts=('gluon-scene-builder11')
-depends=('java-environment=11')
+depends=('java-environment=8'
+         'libglvnd'
+         'libnet'
+         'libxtst'
+         'gtk2'
+         'alsa-lib')
 makedepends=('gendesk')
-source=("https://download2.gluonhq.com/scenebuilder/${pkgver}/install/linux/scenebuilder-${pkgver}-1.x86_64.rpm")
+source=("${pkgname}-${pkgver}.rpm::https://download2.gluonhq.com/scenebuilder/${pkgver}/install/linux/scenebuilder-${pkgver}-1.x86_64.rpm")
 sha256sums=('c7242c4bfd3dde295462eef4c978387e15faf7d44627f74eb194c483b631f36c')
 
 package() {
@@ -21,7 +26,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/applications"
   mkdir -p "${pkgdir}/usr/share/pixmaps"
   ln -s /opt/SceneBuilder/SceneBuilder "${pkgdir}/usr/bin/${_appname}"
-  install -Dm644 app/LICENSE "${pkgdir}/usr/share/licenses/${_appname}/LICENSE"
+  install -Dm644 app/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   mv SceneBuilder.png "${pkgdir}/usr/share/pixmaps/${_appname}.png"
   gendesk -f -n --pkgname "${_appname}" --name "Gluon Scene Builder 8" \
    --pkgdesc "${pkgdesc}" --exec="${_appname}" \

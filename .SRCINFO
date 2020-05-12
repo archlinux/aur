@@ -6,9 +6,14 @@ pkgbase = gluon-scene-builder8
 	arch = x86_64
 	license = BSD
 	makedepends = gendesk
-	depends = java-environment=11
+	depends = java-environment=8
+	depends = libglvnd
+	depends = libnet
+	depends = libxtst
+	depends = gtk2
+	depends = alsa-lib
 	conflicts = gluon-scene-builder11
-	source = https://download2.gluonhq.com/scenebuilder/8.5.0/install/linux/scenebuilder-8.5.0-1.x86_64.rpm
+	source = gluon-scene-builder8-8.5.0.rpm::https://download2.gluonhq.com/scenebuilder/8.5.0/install/linux/scenebuilder-8.5.0-1.x86_64.rpm
 	sha256sums = c7242c4bfd3dde295462eef4c978387e15faf7d44627f74eb194c483b631f36c
 
 pkgname = gluon-scene-builder8
