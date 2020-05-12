@@ -1,0 +1,29 @@
+pkgbase = pbuilder
+	pkgdesc = Personal package builder for Debian packages
+	pkgver = 0.230.4
+	pkgrel = 1
+	url = https://pbuilder-team.pages.debian.net/pbuilder
+	arch = any
+	license = GPL
+	checkdepends = man-db
+	makedepends = libxslt
+	makedepends = tldp-xsl
+	makedepends = po4a
+	makedepends = dblatex
+	depends = debootstrap
+	depends = dpkg
+	optdepends = devscripts
+	optdepends = libeatmydata
+	optdepends = fakeroot
+	optdepends = net-tools
+	optdepends = iproute2
+	optdepends = sudo
+	options = !emptydirs
+	backup = etc/pbuilderrc
+	source = https://salsa.debian.org/pbuilder-team/pbuilder/-/archive/0.230.4/pbuilder-0.230.4.tar.gz
+	source = pbuilder.tmpfiles.conf
+	sha512sums = cccfc727f63da72e2302188ecf4a62c3cd48661476b55f4269a235f04468c53f34db54d1ac80d0257230482aa55721089ec62a3a05132505b4822c3f506ee8a8
+	sha512sums = 6c73c65e97115b82763a5c033a121844e4db5f9097ec90334ebba66913b8e52a17f22179b2e17dd7fdb5d723f7c6919074e4d646bf419d6dc0c5971df358014d
+
+pkgname = pbuilder
+
