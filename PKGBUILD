@@ -42,6 +42,9 @@ package() {
   install -Dm755 "$srcdir"/Kart-Public/bin/Linux$IS64BIT/Release/lsdl2srb2kart \
     "$pkgdir"/usr/bin/srb2kart
 
+  # data patch 1.1 → 1.2,
+  install -Dm644 patch.kart "$pkgdir"/usr/share/games/SRB2Kart/patch.kart
+
   # icon + .desktop
   install -Dm644 "$srcdir"/Kart-Public/src/sdl/SDL_icon.xpm \
     "$pkgdir"/usr/share/pixmaps/srb2kart.xpm
