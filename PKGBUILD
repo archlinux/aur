@@ -1,7 +1,7 @@
 # Maintainer: Bart De Vries <bart at mogwai dot be>
 
 pkgname=roundcubemail-plugin-tinymce-config-git
-pkgver=roundcubemail.plugins.kolab.3.5.4.r0.ga99d2b61
+pkgver=3.5.4.r0.ga99d2b61
 pkgrel=1
 pkgdesc='Roundcube plugin to change paragraph breaks to line breaks in roundcube compose editor'
 arch=('any')
