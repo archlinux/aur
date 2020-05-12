@@ -1,6 +1,6 @@
 pkgbase = cannelloni-git
 	pkgdesc = SocketCAN over ethernet tunnel
-	pkgver = 0.1
+	pkgver = v1.0.0
 	pkgrel = 1
 	url = https://github.com/mguentner/cannelloni
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = cannelloni-git
 	arch = armv7h
 	license = gpl2
 	makedepends = cmake
+	optdepends = lksctp-tools: more reliable SCTP tunnels
 	source = git+https://github.com/mguentner/cannelloni.git
 	sha512sums = SKIP
 
