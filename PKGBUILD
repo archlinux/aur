@@ -4,7 +4,7 @@ pkgdesc="ROS - This package retrieves data from url-format files such as http://
 url='https://wiki.ros.org/resource_retriever'
 
 pkgname='ros-melodic-resource-retriever'
-pkgver='1.12.5'
+pkgver='1.12.6'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=2
@@ -38,7 +38,7 @@ depends=(
 
 _dir="resource_retriever-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/resource_retriever/archive/${pkgver}.tar.gz")
-sha256sums=('a0ffbfb29924fb2ea6ef13868a23393d2657ea6bb2053c735d03b94b0d29527c')
+sha256sums=('dd44ffa5838b47d34485c66332727989f087ddf025da7ef3f66a2935c71fcab3')
 
 build() {
 	# Use ROS environment variables.

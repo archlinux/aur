@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-resource-retriever
 	pkgdesc = ROS - This package retrieves data from url-format files such as http://, ftp://, package:// file://, etc., and loads the data into memory.
-	pkgver = 1.12.5
+	pkgver = 1.12.6
 	pkgrel = 2
 	url = https://wiki.ros.org/resource_retriever
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = ros-melodic-resource-retriever
 	depends = boost
 	depends = python-rospkg
 	depends = curl
-	source = ros-melodic-resource-retriever-1.12.5.tar.gz::https://github.com/ros/resource_retriever/archive/1.12.5.tar.gz
-	sha256sums = a0ffbfb29924fb2ea6ef13868a23393d2657ea6bb2053c735d03b94b0d29527c
+	source = ros-melodic-resource-retriever-1.12.6.tar.gz::https://github.com/ros/resource_retriever/archive/1.12.6.tar.gz
+	sha256sums = dd44ffa5838b47d34485c66332727989f087ddf025da7ef3f66a2935c71fcab3
 
 pkgname = ros-melodic-resource-retriever
 
