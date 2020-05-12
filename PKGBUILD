@@ -1,26 +1,22 @@
-# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=clang+llvm-binaries
-pkgver=9.0.0
-_name="clang+llvm-${pkgver}-${CARCH}-pc-linux-gnu"
+pkgver=10.0.0
+_name="clang+llvm-${pkgver}-${CARCH}-linux-gnu-ubuntu-18.04"
 pkgrel=1
 pkgdesc='Clang and LLVM Pre-Built Binaries'
 arch=('x86_64')
-url='http://llvm.org/'
+url='http://llvm.org'
 license=('custom:University of Illinois/NCSA Open Source License')
 options=('!strip' 'libtool' 'staticlibs')
 # conflicts=('clang' 'clang-analyze' 'clang-tools-extra' 'llvm')
 depends=('z3')
 install="${pkgname}".install
-source=("${url}/releases/${pkgver}/${_name}.tar.xz"
+source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/${_name}.tar.xz"
         "clang+llvm-binaries.conf")
-sha256sums=('616c5f75418c88a72613b6d0a93178028f81357777226869ea6b34c23d08a12d'
+sha256sums=('b25f592a0c00686f03e3b7db68ca6dc87418f681f4ead4df4745a01d9be63843'
             'f283a326962a77447bcb562fe2c4a81ca556ae2ffaacc35375207fd378574ccd')
-
-prepare() {
-  cd "${srcdir}/${_name}"
-  sed -i 's|/usr/bin/env python|&2|' bin/{git-clang-format,scan-view}
-}
 
 package() {
   mkdir -p "${pkgdir}/etc/ld.so.conf.d/"

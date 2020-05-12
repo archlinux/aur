@@ -1,8 +1,8 @@
 pkgbase = clang+llvm-binaries
 	pkgdesc = Clang and LLVM Pre-Built Binaries
-	pkgver = 9.0.0
+	pkgver = 10.0.0
 	pkgrel = 1
-	url = http://llvm.org/
+	url = http://llvm.org
 	install = clang+llvm-binaries.install
 	arch = x86_64
 	license = custom:University of Illinois/NCSA Open Source License
@@ -10,9 +10,9 @@ pkgbase = clang+llvm-binaries
 	options = !strip
 	options = libtool
 	options = staticlibs
-	source = http://llvm.org//releases/9.0.0/clang+llvm-9.0.0-x86_64-pc-linux-gnu.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
 	source = clang+llvm-binaries.conf
-	sha256sums = 616c5f75418c88a72613b6d0a93178028f81357777226869ea6b34c23d08a12d
+	sha256sums = b25f592a0c00686f03e3b7db68ca6dc87418f681f4ead4df4745a01d9be63843
 	sha256sums = f283a326962a77447bcb562fe2c4a81ca556ae2ffaacc35375207fd378574ccd
 
 pkgname = clang+llvm-binaries
