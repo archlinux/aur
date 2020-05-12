@@ -7,7 +7,7 @@
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
 pkgver=4.2.2
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -62,6 +62,7 @@ depends=(
       'lib32-speex'
       'lib32-srt'
       'lib32-v4l-utils'
+      'lib32-vmaf'
       'lib32-xz'
       'lib32-zlib'
       )
@@ -86,15 +87,23 @@ provides=(
       'libswresample.so'
       'libswscale.so'
       )
-source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}")
+source=(
+      "git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
+      "vmaf-model-path.patch"
+      )
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('SKIP')
+sha256sums=(
+      'SKIP'
+      '8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d'
+      )
 
 prepare() {
   cd ${_pkgbasename}
 
   # Patching if needed
   git cherry-pick -n dc0806dd25882f41f6085c8356712f95fded56c7
+
+  patch -Np1 -i "${srcdir}/vmaf-model-path.patch"
 }
 
 build() {
@@ -136,6 +145,7 @@ build() {
     --enable-libsrt \
     --enable-libtheora \
     --enable-libv4l2 \
+    --enable-libvmaf \
     --enable-libvorbis \
     --enable-libvpx \
     --enable-libwebp \
