@@ -4,29 +4,33 @@
 # Contributor: TingPing <tingping@tingping.se>
 
 pkgname=gnome-games-git
-pkgver=3.31.4.r12.g63006052
+pkgver=3.37.1.r20.g1ae9138f
 pkgrel=1
 pkgdesc='Simple game launcher for GNOME'
-arch=('x86_64')
+arch=(i686 x86_64 armv7h aarch64)
 license=('GPL3')
 url='https://wiki.gnome.org/Apps/Games'
-depends=('grilo' 'libhandy' 'libmanette' 'retro-gtk' 'tracker')
-makedepends=('libhandy' 'meson' 'vala')
+depends=(grilo libhandy libmanette retro-gtk tracker)
+makedepends=(git meson vala)
 conflicts=(gnome-games)
 provides=(gnome-games)
 source=("git+https://gitlab.gnome.org/GNOME/gnome-games.git")
 sha256sums=(SKIP)
 
 pkgver() {
-    cd gnome-games
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd gnome-games
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    arch-meson gnome-games build
-    ninja -C build
+  arch-meson gnome-games build -D docs=true
+  ninja -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-    DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 }
