@@ -1,0 +1,44 @@
+--- package.pristine/fo/tldp-print.xsl	2004-03-21 06:24:21.000000000 +0100
++++ package.new/fo/tldp-print.xsl	2020-05-12 11:46:47.377740810 +0200
+@@ -3,7 +3,7 @@
+ <xsl:stylesheet version="1.0"
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+ 
+-<xsl:import href="docbook.xsl"/>
++<xsl:import href="http://docbook.sourceforge.net/release/xsl/current/fo/docbook.xsl"/>
+ 
+ <!-- Number all sections in the style of 'CH.S1.S2 Section Title' where
+      CH is the chapter number,  S1 is the section number and S2 is the
+--- package.pristine/html/tldp-chapters.xsl	2004-03-21 05:58:18.000000000 +0100
++++ package.new/html/tldp-chapters.xsl	2020-05-12 11:46:26.138117951 +0200
+@@ -3,7 +3,7 @@
+ <xsl:stylesheet version="1.0"
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+ 
+-<xsl:import href="chunk.xsl"/>
++<xsl:import href="http://docbook.sourceforge.net/release/xsl/current/html/chunk.xsl"/>
+ <xsl:import href="tldp-common.xsl"/>
+ 
+ <!-- Generate a separate HTML page for each preface, chapter or
+--- package.pristine/html/tldp-one-page.xsl	2004-03-21 05:58:05.000000000 +0100
++++ package.new/html/tldp-one-page.xsl	2020-05-12 11:46:11.258382019 +0200
+@@ -3,7 +3,7 @@
+ <xsl:stylesheet version="1.0"
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+ 
+-<xsl:import href="docbook.xsl"/>
++<xsl:import href="http://docbook.sourceforge.net/release/xsl/current/html/docbook.xsl"/>
+ <xsl:import href="tldp-common.xsl"/>
+ 
+ <!-- This set of customizations is used to generate the entire XML
+--- package.pristine/html/tldp-sections.xsl	2004-03-21 05:54:00.000000000 +0100
++++ package.new/html/tldp-sections.xsl	2020-05-12 11:46:18.851580612 +0200
+@@ -3,7 +3,7 @@
+ <xsl:stylesheet version="1.0"
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+ 
+-<xsl:import href="chunk.xsl"/>
++<xsl:import href="http://docbook.sourceforge.net/release/xsl/current/html/chunk.xsl"/>
+ <xsl:import href="tldp-common.xsl"/>
+ 
+ <!-- Generate a separate HTML page for each section.  Doing this

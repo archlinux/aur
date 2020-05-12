@@ -1,0 +1,18 @@
+post_install() {
+  local ver=${1%-*}
+  if [[ ! -f /etc/xml/catalog ]]; then
+    xmlcatalog --create --noout /etc/xml/catalog
+  fi;
+  xmlcatalog --add rewriteSystem /usr/share/xml/docbook/stylesheet/ldp /usr/share/xml/docbook/tldp-xsl-$ver --noout /etc/xml/catalog
+  xmlcatalog --add rewriteURI /usr/share/xml/docbook/stylesheet/ldp /usr/share/xml/docbook/tldp-xsl-$ver --noout /etc/xml/catalog
+}
+
+post_upgrade() {
+  post_remove $2
+  post_install $1
+}
+
+post_remove() {
+  local ver=${1%-*}
+  xmlcatalog --del /usr/share/xml/docbook/tldp-xsl-$ver --noout /etc/xml/catalog
+}

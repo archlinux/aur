@@ -1,0 +1,16 @@
+pkgbase = tldp-xsl
+	pkgdesc = DocBook XSL stylesheets customized for the Linux Documentation Project
+	pkgver = 04MAR2005
+	pkgrel = 1
+	url = http://www.happy-monkey.net/docbook/
+	install = tldp-xsl.install
+	arch = any
+	license = FDL
+	depends = docbook-xsl
+	source = http://web.archive.org/web/http://www.happy-monkey.net/docbook/tldp/tldp-xsl-04MAR2005.tar.gz
+	source = fix-link.patch
+	sha512sums = 8bc08175983b74896bd95026ccd8de236c9c85717bb64b54a23ec1c29aaec852740ed172b4afca1c6c543246679f07e5f07185c988d127e54757b632129f1c88
+	sha512sums = e885f499103f496384a743ca838954a45d529b800cc8a15da45f5d175185665daf7f34647fc30f21814d677e8b47758ed53e778d3020872b74896323f65fcb18
+
+pkgname = tldp-xsl
+
