@@ -2,10 +2,10 @@
 
 _pkgname=xfce4-pulseaudio-plugin
 pkgname=${_pkgname}-git
-pkgver=0.3.0.r2.gdea2be9
+pkgver=0.4.3+46+g09f52bd
 pkgrel=1
 pkgdesc="Pulseaudio plugin for Xfce4 panel"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 license=('GPL2')
 url="https://goodies.xfce.org/projects/panel-plugins/xfce4-pulseaudio-plugin"
 groups=('xfce4-goodies')
@@ -14,12 +14,12 @@ makedepends=('intltool' 'git' 'xfce4-dev-tools' 'python') #for gdbus-codegen
 optdepends=('pavucontrol: default pulseaudio mixer')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver%.r*}")
-source=("git://git.xfce.org/panel-plugins/${_pkgname}")
+source=("${_pkgname}::git+https://gitlab.xfce.org/panel-plugins/${_pkgname}")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/([^-]*-g)/r\1/;s/-/./g"
+  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
 prepare() {
