@@ -4,7 +4,7 @@ and interact with params."
 url='https://wiki.ros.org/rosbridge_library'
 
 pkgname='ros-melodic-rosbridge-library'
-pkgver='0.11.3'
+pkgver='0.11.6'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=2
 license=('BSD')
@@ -43,7 +43,7 @@ depends=(
 
 _dir="rosbridge_suite-${pkgver}/rosbridge_library"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/RobotWebTools/rosbridge_suite/archive/${pkgver}.tar.gz")
-sha256sums=('5020616a6589f81fde0dfcd2835bbf4c43ff57bc39b76aefd5ed8f0916af87a5')
+sha256sums=('ac7a4fc4c3dd8866e90aacf5dafc53b9b0ca9bd6676f141e0ecd9a3b7fc694a6')
 
 build() {
 	# Use ROS environment variables.
