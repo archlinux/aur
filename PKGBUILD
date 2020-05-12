@@ -7,8 +7,9 @@ pkgdesc="Easy way to distribute commands over SSH"
 arch=('x86_64')
 url='https://github.com/yaronsumel/grapes'
 license=('MIT')
+depends=('glibc')
 makedepends=('go-pie')
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('856e1c801df46a78bc089a089192aacce4cc8755dd83bcb95da896bdc205ac74')
 
 prepare() {
