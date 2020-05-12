@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-moveit-resources
 	pkgdesc = ROS - Resources used for MoveIt! testing.
-	pkgver = 0.6.4
+	pkgver = 0.6.5
 	pkgrel = 2
 	url = https://moveit.ros.org
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ros-melodic-moveit-resources
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-joint-state-publisher
 	depends = ros-melodic-robot-state-publisher
-	source = ros-melodic-moveit-resources-0.6.4.tar.gz::https://github.com/ros-planning/moveit_resources/archive/0.6.4.tar.gz
-	sha256sums = 6d050a7511f930ca2e2080bcfa379134687eaa24010e2a2cb350dd827de099f1
+	source = ros-melodic-moveit-resources-0.6.5.tar.gz::https://github.com/ros-planning/moveit_resources/archive/0.6.5.tar.gz
+	sha256sums = 8fd5f6643cf9d3852395756eb615a56967233cd051c355eff233770a93ca63e1
 
 pkgname = ros-melodic-moveit-resources
 

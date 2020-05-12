@@ -3,7 +3,7 @@ pkgdesc="ROS - Resources used for MoveIt! testing."
 url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-resources'
-pkgver='0.6.4'
+pkgver='0.6.5'
 arch=('any')
 pkgrel=2
 license=('BSD')
@@ -25,7 +25,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="moveit_resources-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit_resources/archive/${pkgver}.tar.gz")
-sha256sums=('6d050a7511f930ca2e2080bcfa379134687eaa24010e2a2cb350dd827de099f1')
+sha256sums=('8fd5f6643cf9d3852395756eb615a56967233cd051c355eff233770a93ca63e1')
 
 build() {
   # Use ROS environment variables
@@ -45,9 +45,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_BASENAME=-python3.7m \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
