@@ -2,10 +2,10 @@
 pkgname=mstat-git
 pkgdesc='Fine-grained, cgroup-based tool for profiling memory usage over time of a process tree'
 pkgver=r25.497eeee
-pkgrel=1
+pkgrel=2
 url=https://github.com/bpowers/mstat
 license=(custom:ISC)
-makedepends=(git go-pie godep)
+makedepends=(git go-pie)
 depends=(glibc)
 arch=(x86_64)
 source=("${pkgname}::git+${url}")
@@ -25,29 +25,27 @@ prepare ()
 {
 	mkdir -p "${srcdir}/_go/src/github.com/bpowers/"
 	ln -rTsf "${pkgname}" "${srcdir}/_go/src/github.com/bpowers/mstat"
-	cd "$_"
-	GOPATH="${srcdir}/_go" godep get -v
 }
 
 build ()
 {
 	cd "${srcdir}/_go/src/github.com/bpowers/mstat"
 	local curdir=$(pwd)
-	GOPATH="${srcdir}/_go" go install -v \
+	GOPATH="${srcdir}/_go" go build -v \
 		-gcflags "all=-trimpath=${curdir}" \
 		-asmflags "all=-trimpath=${curdir}" \
-		-ldflags "-extldflags ${LDFLAGS}" \
-		./...
+		-ldflags "-extldflags '${LDFLAGS}'" \
+		.
 }
 
 check ()
 {
 	cd "${srcdir}/_go/src/github.com/bpowers/mstat"
-	GOPATH="${srcdir}/_go" go test ./...
+	GOPATH="${srcdir}/_go" go test .
 }
 
 package ()
 {
-	install -Dm755 _go/bin/mstat "${pkgdir}/usr/bin/mstat"
+	install -Dm755 "${pkgname}/mstat" "${pkgdir}/usr/bin/mstat"
 	install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

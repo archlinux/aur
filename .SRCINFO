@@ -1,13 +1,12 @@
 pkgbase = mstat-git
 	pkgdesc = Fine-grained, cgroup-based tool for profiling memory usage over time of a process tree
 	pkgver = r25.497eeee
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bpowers/mstat
 	arch = x86_64
 	license = custom:ISC
 	makedepends = git
 	makedepends = go-pie
-	makedepends = godep
 	depends = glibc
 	source = mstat-git::git+https://github.com/bpowers/mstat
 	sha512sums = SKIP
