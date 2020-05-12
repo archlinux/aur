@@ -6,7 +6,7 @@
 
 pkgname=owncloud
 pkgver=10.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Securely access and share data from everywhere and any device"
 arch=('any')
 url="https://owncloud.org/"
@@ -27,7 +27,8 @@ conflicts=('owncloud-app-gallery')
 replaces=('owncloud-app-gallery')
 options=('!strip')
 backup=('etc/webapps/owncloud/apache.example.conf')
-validpgpkeys=('E3036906AD9F30807351FAC32D5D5E97F6978A26')
+validpgpkeys=('E3036906AD9F30807351FAC32D5D5E97F6978A26'
+              'DDA2C105C4B73A6649AD2BBD47AE7F72479BC94B')
 source=("https://download.owncloud.org/community/owncloud-${pkgver}.tar.bz2"{,.asc}
         'apache.example.conf'
 	'owncloud.hook'
