@@ -1,0 +1,16 @@
+pkgbase = sandsmark-screenshot-git
+	pkgdesc = Trivial application to take screenshots and put them on the clipboard
+	pkgver = 5.e2fc792
+	pkgrel = 1
+	url = https://github.com/sandsmark/sandsmark-screenshot
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt5-base
+	provides = sandsmark-screenshot
+	conflicts = sandsmark-screenshot
+	source = git+https://github.com/sandsmark/sandsmark-screenshot.git
+	sha256sums = SKIP
+
+pkgname = sandsmark-screenshot-git
+
