@@ -1,6 +1,6 @@
 pkgbase = python-pyro5-git
 	pkgdesc = Remote objects communication library, fifth major version
-	pkgver = 5.8.r6.g9b9c8de
+	pkgver = 5.10.r1.g5a12876
 	pkgrel = 1
 	url = https://github.com/irmen/Pyro5
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = python-pyro5-git
 	makedepends = python-pytest
 	makedepends = python-msgpack>=0.5.2
 	depends = python-serpent>=1.27
+	optdepends = python-msgpack>=0.5.2: Serializer
 	provides = python-pyro5
 	conflicts = python-pyro5
 	source = git+https://github.com/irmen/Pyro5

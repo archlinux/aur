@@ -5,7 +5,7 @@ _srcname='Pyro5'
 pkgname="${_name}-git"
 provides=("${_name}")
 conflicts=("${_name}")
-pkgver=5.8.r6.g9b9c8de
+pkgver=5.10.r1.g5a12876
 pkgrel=1
 pkgdesc='Remote objects communication library, fifth major version'
 arch=('any')
@@ -13,6 +13,7 @@ url="https://github.com/irmen/${_srcname}"
 license=('MIT')
 source=("git+${url}")
 makedepends=('git' 'python-setuptools' 'python-pytest' 'python-msgpack>=0.5.2')
+optdepends=('python-msgpack>=0.5.2: Serializer')
 depends=('python-serpent>=1.27')
 md5sums=('SKIP')
 
