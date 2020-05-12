@@ -6,8 +6,10 @@ pkgbase = gitql-bin
 	arch = x86_64
 	license = MIT
 	provides = gitql
-	source = https://github.com/cloudson/gitql/releases/download/2.0.0/gitql-linux64.zip
-	md5sums = 39edfd614f50b56724b00b7d94e3d9a5
+	source = gitql-bin-2.0.0.zip::https://github.com/cloudson/gitql/releases/download/2.0.0/gitql-linux64.zip
+	source = LICENSE::https://github.com/cloudson/gitql/raw/master/LICENSE
+	sha256sums = 4be43c18bfa05bfb4fc0764c8a5453d9603067c9e5d74ba34f7b675b41f8f290
+	sha256sums = ca995d876d4738b7f7309c46f443f42bc887db327ed183fe46733a59f06f80b5
 
 pkgname = gitql-bin
 
