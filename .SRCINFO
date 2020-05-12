@@ -1,6 +1,6 @@
 pkgbase = go-ipfs-git
 	pkgdesc = A peer-to-peer hypermedia distribution protocol
-	pkgver = 0.5.0.r110.gb786c32b6
+	pkgver = 0.5.1.r89.gb786c32b6
 	pkgrel = 2
 	url = https://github.com/ipfs/go-ipfs
 	arch = i686
@@ -15,11 +15,7 @@ pkgbase = go-ipfs-git
 	conflicts = go-ipfs
 	conflicts = go-pie
 	source = git+https://github.com/ipfs/go-ipfs.git
-	source = ipfs.service
-	source = ipfs@.service
 	b2sums = SKIP
-	b2sums = d3463151a9f209784a6bf8fb91b0001d19c1c91732430d5d3744cbb861e3ca80fd18fe481ef3ef91061a6f59931dbcf8d063f50a319ab1bb2a2c1ba0ac9175f1
-	b2sums = 364d9043d1df256af620b52a967c45d8324f0a5b05879466b95f03f3871531678b521140e3a4fe746f9f9b1d171050ab08320628860967176344c968ba7ddae7
 
 pkgname = go-ipfs-git
 

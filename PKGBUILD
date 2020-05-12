@@ -6,7 +6,7 @@
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.5.0.r110.gb786c32b6
+pkgver=0.5.1.r89.gb786c32b6
 pkgrel=2
 pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
@@ -17,13 +17,9 @@ optdepends=('fuse2: for mounting/advanced use'
             'bash-completion: bash completion support')
 provides=("$_pkgname")
 conflicts=("$_pkgname" go-pie)
-source=("git+${url}.git"
-	"ipfs.service"
-	"ipfs@.service")
+source=("git+${url}.git")
 
-b2sums=('SKIP'
-	'd3463151a9f209784a6bf8fb91b0001d19c1c91732430d5d3744cbb861e3ca80fd18fe481ef3ef91061a6f59931dbcf8d063f50a319ab1bb2a2c1ba0ac9175f1'
-	'364d9043d1df256af620b52a967c45d8324f0a5b05879466b95f03f3871531678b521140e3a4fe746f9f9b1d171050ab08320628860967176344c968ba7ddae7')
+b2sums=('SKIP')
 
 prepare() {
 	cd "$srcdir/$_pkgname"
@@ -59,14 +55,14 @@ build() {
 
 package() {
 	cd "$srcdir/$_pkgname"
+	#avoid migrations on bootup (see #7269)
+	sed -i 's/--migrate//g' misc/systemd/ipfs.service
+	#increase timeouts (see #7283)
+	sed -i 's/MemorySwapMax=0/MemorySwapMax=0\n\nTimeoutStartSec=15min\nTimeoutStopSec=15min\nTimeoutAbortSec=15min/' misc/systemd/ipfs.service
 	install -Dm 755 cmd/ipfs/ipfs "$pkgdir/usr/bin/ipfs"
-	install -Dm 644 misc/systemd/ipfs-api.socket "$pkgdir/usr/lib/systemd/user/ipfs-api.socket"
-	install -Dm 644 misc/systemd/ipfs-gateway.socket "$pkgdir/usr/lib/systemd/user/ipfs-gateway.socket"
-	# PR is open to bring some changes upstream
-	# install -Dm 644 misc/systemd/ipfs.service "$pkgdir/usr/lib/systemd/user/ipfs.service"
-	# install -Dm 644 misc/systemd/ipfs@.service "$pkgdir/usr/lib/systemd/user/ipfs@.service"
-	install -Dm 644 "$srcdir"/ipfs.service "$pkgdir/usr/lib/systemd/user/ipfs.service"
-	install -Dm 644 "$srcdir"/ipfs@.service "$pkgdir/usr/lib/systemd/system/ipfs@.service"
+	install -Dm 644 misc/systemd/ipfs-api.socket "$pkgdir/usr/lib/systemd/system/ipfs-api.socket"
+	install -Dm 644 misc/systemd/ipfs-gateway.socket "$pkgdir/usr/lib/systemd/system/ipfs-gateway.socket"
+	install -Dm 644 misc/systemd/ipfs.service "$pkgdir/usr/lib/systemd/system/ipfs.service"
 	install -Dm 644 misc/completion/ipfs-completion.bash "$pkgdir/usr/share/bash-completion/completions/ipfs"
 	install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/MIT" LICENSE-MIT
 	install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/APACHE" LICENSE-APACHE
