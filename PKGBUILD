@@ -1,7 +1,7 @@
 # Maintainer: Hsieh Chin Fan <typebrook@gmail.com>
 pkgname=gist-lite
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash script for gist management"
 arch=(any)
 gist_id=b0d2e7e67aa50298fdf8111ae7466b56
@@ -14,19 +14,18 @@ md5sums=('599f16a275050b21a9cbfd67aa4fa307')
 package() {
   local filename=gist
 
-  if [[ -n $(which $filename 2>/dev/null) ]]; then
-    echo 'There is already a file called "gist" in yout PATH'
+  if [[ -n $(pacman -Qqe gist 2>/dev/null) ]]; then
+    echo 'Package "gist" is already installed'
     echo 
     PS3='Please enter your choice(1-3), or name this script by yourself: '
-    choices=('Override it!' 'Install this script as "gist-lite"' 'Abort installation')
+    choices=('Install this script as "gist-lite"' 'Abort installation')
     select ans in "${choices[@]}"; do
       case $ans in
-        ${choices[0]}) break ;;
-        ${choices[1]}) filename=gist-lite; break ;;
-        ${choices[2]}) exit 0 ;;
+        ${choices[0]}) filename=gist-lite; break ;;
+        ${choices[1]}) exit 0 ;;
         *) 
           if [[ -n $(which $REPLY 2>/dev/null) ]]; then
-            echo 'Invalid name'
+            echo 'Invalid name, it is already in PATH'
           else
             filename=$REPLY
             break

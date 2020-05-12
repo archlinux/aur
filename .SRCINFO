@@ -1,7 +1,7 @@
 pkgbase = gist-lite
 	pkgdesc = Bash script for gist management
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gist.github.com/b0d2e7e67aa50298fdf8111ae7466b56
 	arch = any
 	license = GPL3
