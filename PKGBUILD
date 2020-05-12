@@ -3,14 +3,15 @@
 # Contributor: Morris Jobke <hey AT morrisjobke DOT de>
 
 pkgname=dokku
-pkgver=0.19.13
+pkgver=0.20.4
 pkgrel=1
-pkgdesc="Docker powered mini-Heroku in around 100 lines of Bash."
+pkgdesc="Docker-powered PaaS that helps build and manage the lifecycle of applications"
 arch=(any)
 url="https://github.com/dokku/dokku"
 license=(MIT)
 depends=(
   'bind-tools'
+  'cpio'
   'docker'
   'dos2unix'
   'go'
@@ -28,8 +29,8 @@ source=(
   "https://github.com/dokku/dokku/archive/v${pkgver}.zip"
   "${pkgname}.install"
 )
-sha256sums=('d983eb445ee615895dfcdb39bf549f92317c941364c25d6e64a1362c362c9619'
-            'b3588167208b524d3126fc18d9ee7e3a570a5c52eedc8eaceba6693fa82a0d12')
+sha256sums=('82a03d0795ff1029b38760b096be3eedd993c7c7c66e8b9b5347ca6bbe81aa41'
+            '17eeb4e092b1bc2bcd904242cd9c11493fc68bb030061da1044d955bb319bd8a')
 install="${pkgname}.install"
 
 prepare() {
@@ -63,7 +64,7 @@ package() {
 
   # Move all files in place
   mkdir -p "${pkgdir}/var/lib/dokku/core-plugins/available"
-  cp -r plugins/* "${pkgdir}/var/lib/dokku/core-plugins/available"
+  cp -R plugins/* "${pkgdir}/var/lib/dokku/core-plugins/available"
 
   # Version
   echo $pkgver > "${pkgdir}/var/lib/dokku/VERSION"

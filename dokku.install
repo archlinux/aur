@@ -4,23 +4,24 @@ readonly DOKKU_ROOT="${DOKKU_ROOT:-/home/dokku}"
 readonly DOKKU_LIB_ROOT="${DOKKU_LIB_PATH:-/var/lib/dokku}"
 readonly DOKKU_LOGS_DIR="${DOKKU_LOGS_DIR:-/var/log/dokku}"
 
-post_install() {
-  echo "Create dokku user"
-  sshcommand create dokku /usr/bin/dokku &>/dev/null
-
-  echo "Add dokku user to docker group"
-  (grep -E "^docker" /etc/group || groupadd docker) &>/dev/null
+setup-user() {
+  echo "Setting up dokku user"
+  /usr/bin/sshcommand create dokku /usr/bin/dokku &>/dev/null
+  (grep -i -E "^docker" /etc/group || groupadd docker) &>/dev/null
   usermod -aG docker dokku
   mkdir -p "${DOKKU_ROOT}/.ssh" "${DOKKU_ROOT}/.dokkurc"
   touch "${DOKKU_ROOT}/.ssh/authorized_keys"
   chown -R dokku:dokku "${DOKKU_ROOT}/.ssh" "${DOKKU_ROOT}/.dokkurc"
+}
 
+setup-storage() {
   echo "Setting up storage directories"
   mkdir -p "${DOKKU_LIB_ROOT}/data/storage"
   chown dokku:dokku "${DOKKU_LIB_ROOT}/data" "${DOKKU_LIB_ROOT}/data/storage"
+}
 
+setup-plugins() {
   echo "Setting up plugin directories"
-  # should be replaced by `plugn init`
   mkdir -p "${DOKKU_LIB_ROOT}/core-plugins/available" "${DOKKU_LIB_ROOT}/plugins/available"
   mkdir -p "${DOKKU_LIB_ROOT}/core-plugins/enabled" "${DOKKU_LIB_ROOT}/plugins/enabled"
   touch "${DOKKU_LIB_ROOT}/core-plugins/config.toml" "${DOKKU_LIB_ROOT}/plugins/config.toml"
@@ -50,13 +51,22 @@ post_install() {
   echo "Install all core plugins"
   dokku plugin:install --core
   sed -i 's/ syslog dokku$/ root dokku/g' /etc/logrotate.d/dokku
+}
 
+setup-sshcommand() {
   echo "Ensure proper sshcommand path"
-  echo /usr/bin/dokku > "${DOKKU_ROOT}/.sshcommand"
+  echo '/usr/bin/dokku' > "${DOKKU_ROOT}/.sshcommand"
   if [[ -f .ssh/authorized_keys ]]; then
     sed -i.bak 's#/usr/local/bin/dokku#/usr/bin/dokku#' "${DOKKU_ROOT}/.ssh/authorized_keys"
     rm "${DOKKU_ROOT}/.ssh/authorized_keys"
   fi
+}
+
+post_install() {
+  setup-user
+  setup-storage
+  setup-plugins
+  setup-sshcommand
 
   echo "Update version file"
   rm -f "${DOKKU_ROOT}/VERSION"
