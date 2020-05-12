@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Wallet for the Stellar payment network by SatoshiPay."
 arch=('any')
 url="https://solarwallet.io"
-license=('GPL3')
+license=('MIT')
 depends=('libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'libappindicator-gtk3' 'libsecret')
 makedepends=('npm')
 conflicts=('satoshipay-stellar-wallet')
@@ -42,4 +42,7 @@ package() {
 
 	# Install desktop file
 	install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
+
+	# Install license
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
