@@ -2,7 +2,7 @@ pkgdesc="ROS - Simple Kalman Filter in Python."
 url='https://wiki.ros.org/kalman_filter'
 
 pkgname='ros-melodic-kalman-filter'
-pkgver='0.2.4'
+pkgver='0.2.6'
 arch=('any')
 pkgrel=3
 license=('BSD')
@@ -17,7 +17,7 @@ depends=(${ros_depends[@]})
 
 _dir="wu_ros_tools-${pkgver}/kalman_filter"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/DLu/wu_ros_tools/archive/${pkgver}.tar.gz")
-sha256sums=('fd0bb39a69302dae5ccfd565277209719a4199644fc8265a2ae7ccedd92c004a')
+sha256sums=('27323d7584aed0782d4b64ca4f1955b237ff3b41736d075d29a9c825a8f55366')
 
 build() {
   # Use ROS environment variables
