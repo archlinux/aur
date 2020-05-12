@@ -1,8 +1,8 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-ray
-pkgver=0.8.4
-pkgrel=3
+pkgver=0.8.5
+pkgrel=1
 pkgdesc='A fast and simple framework for building and running distributed
 applications.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(psmisc python python-numpy python-filelock python-jsonschema
          python-redis python-six python-protobuf python-cloudpickle py-spy
          python-aiohttp python-google python-grpcio)
 optdepends=(
-            'python-uvicorn: for ray[serve] module'
+            'uvicorn: for ray[serve] module'
             'python-pygments: for ray[serve] module'
             'python-werkzeug: for ray[serve] module'
             'python-flask: for ray[serve] module'
@@ -32,15 +32,8 @@ optdepends=(
            )
 makedepends=(python python-setuptools python-wheel python-pip cython bazel)
 _pkgname=ray
-source=("${_pkgname}-${pkgver}::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz"
-        "${_pkgname}-${pkgver}.patch::https://github.com/ray-project/ray/commit/11c2b500b86e1a02a97f65708796e1605eb91808.patch")
-sha256sums=('a47d636200022f0e59defa9e9d57174a649d973a73252c354af404d7256ca203'
-            '335dc01486441aa5c19bd54ac753ca78b00282ed6319cb622a443816638553aa')
-
-prepare() {
-  cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
-  patch -p1 < "${srcdir}/${_pkgname}-${pkgver}.patch"
-}
+source=("${_pkgname}-${pkgver}::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz")
+sha256sums=('47622e70dc297805a547e935ba8890c1280c4394e6f55670c1929a3088beb793')
 
 build() {
   cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}/python"
