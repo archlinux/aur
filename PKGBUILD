@@ -2,7 +2,7 @@ pkgdesc="ROS - This package contains a ROS wrapper for OpenSlam's Gmapping."
 url='https://wiki.ros.org/gmapping'
 
 pkgname='ros-melodic-gmapping'
-pkgver='1.4.0'
+pkgver='1.4.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=2
 license=('BSD' 'Apache 2.0')
@@ -38,7 +38,7 @@ depends=(
 _dir="slam_gmapping-${pkgver}/gmapping"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/slam_gmapping/archive/${pkgver}.tar.gz"
         "boost-signal.patch")
-sha256sums=('2ab5bce850fa55366ae5ce96754910e0fc468cc86c82a6016854d143ecbabfc6'
+sha256sums=('28429cf962b5ec2c49556aee73b7f87859c0421bc8c8056e3667e3a2b20591e2'
             'b575dcd61e41957de5d89c8d772677e554275932d062b99d476d6f6ee5ce6e14')
 
 prepare() {
