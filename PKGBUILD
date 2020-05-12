@@ -2,23 +2,23 @@
 
 _target=mips64-ultra-elf
 pkgname=${_target}-gcc-stage1
-_gccver=9.1.0
-_islver=0.21
-pkgver=9.1.0_r100.c9c95e7
+_gccver=10.1.0
+_islver=0.22
+pkgver=10.1.0_r128.79c3ef4
 pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target})"
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
 url="http://www.gnu.org/software/gcc/"
-depends=('libmpc' 'zlib' "${_target}-binutils" )
-makedepends=('gmp' 'mpfr')
+depends=('libmpc' 'zstd')
+makedepends=('gmp' 'mpfr' 'git' "${_target}-binutils")
 optdepends=("${_target}-newlib: Standard C library optimized for embedded systems")
 options=('!emptydirs' '!strip' )
-source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${_gccver}.tar.xz"
+source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
     "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
     "git+https://github.com/glankk/n64.git#branch=n64-ultra")
-sha256sums=('79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0'
-            '777058852a3db9500954361e294881214f6ecd4b594c00da5eee974cd6a54960'
+sha256sums=('b6898a23844b656f1b68691c5c012036c2e694ac4b53a8918d4712ad876e7ea2'
+            '6c8bc56c477affecba9c59e2c9f026967ac8bad01b51bdd07916db40a517b9fa'
             'SKIP')
 
 pkgver() {
