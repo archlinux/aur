@@ -1,0 +1,15 @@
+pkgbase = yj-git
+	pkgdesc = Convert YAML <=> TOML <=> JSON <=> HCL
+	pkgver = r33.ce9ec1f
+	pkgrel = 1
+	url = https://github.com/sclevine/yj
+	arch = x86_64
+	license = APACHE
+	makedepends = go
+	provides = yj
+	conflicts = yj
+	source = yj::git+https://github.com/sclevine/yj.git
+	sha256sums = SKIP
+
+pkgname = yj-git
+
