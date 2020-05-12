@@ -1,6 +1,6 @@
 pkgname=netdiscover
-pkgver=0.5.1
-pkgrel=1
+pkgver=0.6
+pkgrel=0
 pkgdesc="ARP Scanner"
 arch=('i686' 'x86_64')
 url="https://github.com/netdiscover-scanner/netdiscover/"
@@ -12,7 +12,7 @@ conflicts=('netdiscover-debian' 'netdiscover-svn')
 source=("https://github.com/netdiscover-scanner/netdiscover/archive/${pkgver}.tar.gz"
         'http://standards-oui.ieee.org/oui/oui.txt')
 
-sha256sums=('153bab7fee507ff631cdedee673031cd5fa8e2cbd6347f4928d1edbeab20f2c6'
+sha256sums=('8773612b4a1824a56250d51cbfe406837fe060b6a474fb88351c51746a6c9f13'
             'SKIP')
 
 prepare(){
