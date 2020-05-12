@@ -1,7 +1,7 @@
 pkgbase = plata-theme-slim
 	pkgdesc = A Gtk theme based on Material Design Refresh, built with most options disabled.
-	pkgver = 0.9.7
-	pkgrel = 2
+	pkgver = 0.9.8
+	pkgrel = 1
 	url = https://gitlab.com/tista500/plata-theme
 	arch = any
 	license = GPL2
@@ -11,11 +11,13 @@ pkgbase = plata-theme-slim
 	makedepends = libxml2
 	makedepends = parallel
 	makedepends = sassc
-	optdepends = gtk-engine-murrine: for gtk2 theming
+	depends = gtk3>=3.20.0
+	depends = gtk2>=2.24.30
+	optdepends = gtk-engine-murrine>=0.98.1: for gtk2 theming
 	optdepends = ttf-roboto: Recommended font
 	provides = plata-theme
 	conflicts = plata-theme
-	source = git+https://gitlab.com/tista500/plata-theme.git#tag=0.9.7
+	source = git+https://gitlab.com/tista500/plata-theme.git#tag=
 	md5sums = SKIP
 
 pkgname = plata-theme-slim
