@@ -2,10 +2,10 @@
 
 _pkgname=xfce4-power-manager
 pkgname=${_pkgname}-git
-pkgver=1.6.1+156+g85cbe0e
+pkgver=1.7.0+70+gf05d5ee0
 pkgrel=1
 pkgdesc="Power manager for Xfce desktop"
-arch=('x86_64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://www.xfce.org/"
 license=('GPL2')
 groups=('xfce4')
@@ -14,12 +14,12 @@ optdepends=('xfce4-panel: for the Xfce panel plugin')
 makedepends=('intltool' 'xfce4-panel' 'git' 'xfce4-dev-tools')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git://git.xfce.org/xfce/xfce4-power-manager")
+source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/-/+/g"
+  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
 build() {
