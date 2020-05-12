@@ -3,7 +3,7 @@ pkgdesc="ROS - Messages for robots using FourWheelSteering"
 url='https://wiki.ros.org/four_wheel_steering_msgs'
 
 pkgname='ros-melodic-four-wheel-steering-msgs'
-pkgver='1.0.0'
+pkgver='1.1.0'
 arch=('any')
 pkgrel=2
 license=('BSD')
@@ -21,7 +21,7 @@ depends=(${ros_depends[@]})
 
 _dir="four_wheel_steering_msgs-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/four_wheel_steering_msgs/archive/${pkgver}.tar.gz")
-sha256sums=('391052596ad1e4b9b57ab74ca337f59af896352b84dba719bb96366429456199')
+sha256sums=('117441ec5449224ab45080b8c32e496a1f74ac7bea8ce35eae426ee043b60150')
 
 build() {
   # Use ROS environment variables
@@ -41,9 +41,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7.so \
-        -DPYTHON_BASENAME=-python3.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
