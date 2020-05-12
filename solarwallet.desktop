@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Solar Wallet
+Exec="/opt/Solar Wallet/io.solarwallet.app" %U
+Terminal=false
+Type=Application
+Icon=solarwallet
+StartupWMClass=Solar Wallet
+Comment=Wallet for the Stellar payment network by SatoshiPay.
+MimeType=x-scheme-handler/web+stellar;
+Categories=Utility;
