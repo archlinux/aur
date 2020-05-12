@@ -8,11 +8,11 @@ arch=('x86_64')
 url="https://github.com/kujtimiihoxha/kit"
 license=('MIT')
 provides=('gokit' 'gokit-cli')
-source=("${url}/releases/download/v${pkgver}/kit_${pkgver}_Linux_x86_64.tar.gz")
-md5sums=('730548d8733a12317661b9e0b945985e')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/kit_${pkgver}_Linux_x86_64.tar.gz")
+sha256sums=('651dd22917db7bea23d859cd2800ef5b6080a260039234323e72e08e1025639f')
 
 package() {
   install -Dm755 "${srcdir}"/kit "${pkgdir}/usr/bin/kit"
-  install -Dm644 "${srcdir}"/LICENCE "${pkgdir}/usr/share/licenses/gokit/LICENSE"
+  install -Dm644 "${srcdir}"/LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
