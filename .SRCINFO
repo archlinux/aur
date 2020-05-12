@@ -5,7 +5,9 @@ pkgbase = python-junit-xml
 	url = https://github.com/kyrus/python-junit-xml
 	arch = any
 	license = MIT
-	source = https://github.com/kyrus/python-junit-xml/archive/v1.9.tar.gz
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-junit-xml-1.9.tar.gz::https://github.com/kyrus/python-junit-xml/archive/v1.9.tar.gz
 	sha256sums = eaa679cafff29e8ac447b5e1e6351f3917d3802703fffcdba628ab1fb0b8bfbd
 
 pkgname = python-junit-xml

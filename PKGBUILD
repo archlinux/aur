@@ -7,7 +7,7 @@ pkgdesc="Creates JUnit XML test result documents that can be read by tools such 
 arch=('any')
 url="https://github.com/kyrus/python-junit-xml"
 license=('MIT')
-source=("https://github.com/kyrus/python-junit-xml/archive/v1.9.tar.gz")
+source=("python-junit-xml-${pkgver}.tar.gz::${url}/archive/v1.9.tar.gz")
 sha256sums=('eaa679cafff29e8ac447b5e1e6351f3917d3802703fffcdba628ab1fb0b8bfbd')
 makedepends=('python-setuptools' 'python2-setuptools')
 
