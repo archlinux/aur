@@ -3,7 +3,7 @@ pkgdesc="ROS - Components of MoveIt that use ROS."
 url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-ros'
-pkgver='1.0.2'
+pkgver='1.0.3'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -30,9 +30,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('dc6da6a2d30b21afa74e0ea17d6eb46eba3147832849fd3e24bd29639351940c')
 
 # Tarball version (faster download)
-_dir="moveit-${pkgver}/moveit_ros/moveit_ros"
+_dir="moveit-${pkgver}/moveit_ros"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
-sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4')
+sha256sums=('b0ac91cd4c4dc29d9bd5e3885a1a457252495b3f2bedb46ddfe04154f5ac2358')
 
 build() {
   # Use ROS environment variables
@@ -52,9 +52,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_BASENAME=-python3.7m \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
