@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://cinc.sh/download/"
 license=('Apache')
 depends=()
-conflicts=(chef, chef-solo, chef-dk)
+conflicts=(chef chef-solo chef-dk)
 source=("http://downloads.cinc.sh/files/stable/cinc/${pkgver}/ubuntu/20.04/cinc_${pkgver}-1_amd64.deb")
 sha256sums=('98aad2e4a30377c71b59147c0f90b2904505cf7c70591d868ea02003f9d8e9d5')
 
