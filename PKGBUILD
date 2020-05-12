@@ -4,7 +4,7 @@
 
 pkgname=github-cli-bin
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The official GitHub CLI - binary"
 arch=('x86_64')
 url=https://github.com/cli/cli
@@ -19,7 +19,10 @@ package() {
   cd "gh_${pkgver}_linux_amd64"
 
   install -Dm755 bin/gh "${pkgdir}/usr/bin/gh"
+
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/github-cli-bin"
+
+  install -Dm644 ./*.md -t "$pkgdir/usr/share/doc/github-cli"
 
   install -Dm644 <(bin/gh completion -s bash) "$pkgdir/usr/share/bash-completion/completions/gh"
   install -Dm644 <(bin/gh completion -s fish) "$pkgdir/usr/share/fish/vendor_completions.d/gh.fish"
