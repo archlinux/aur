@@ -7,9 +7,10 @@ pkgdesc="A tool for testing, building, signing, and publishing binaries"
 arch=('x86_64')
 url='https://github.com/nikogura/gomason'
 license=('MIT')
-makedepends=('go')
+depends=('glibc')
+makedepends=('go-pie')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('53453449fb61c9fc7abe920142d58fd3')
+sha256sums=('c6e63b8f92aa10b13f44f32bfc41e1c79b2be913ca19b7e41f25f42f8cbeff9d')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
