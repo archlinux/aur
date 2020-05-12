@@ -6,8 +6,8 @@ pkgbase = gobetween-bin
 	arch = x86_64
 	license = MIT
 	provides = gobetween
-	source = https://github.com/yyyar/gobetween/releases/download/0.7.0/gobetween_0.7.0_linux_amd64.tar.gz
-	md5sums = 07fc24c6e4046daae6f04553e9127646
+	source = gobetween-bin-0.7.0.tar.gz::https://github.com/yyyar/gobetween/releases/download/0.7.0/gobetween_0.7.0_linux_amd64.tar.gz
+	sha256sums = 41c8f4eef0d2c5646d253caa55d14992cbb539c1ed2478a6bced415dd72f4171
 
 pkgname = gobetween-bin
 
