@@ -1,0 +1,16 @@
+pkgbase = st-kian-git
+	pkgdesc = A customized version of st by Kian Kasad
+	pkgver = 0.8.3.r6.34bf900
+	pkgrel = 1
+	url = https://gitlab.com/kdkasad/st.git
+	arch = any
+	license = MIT
+	makedepends = git
+	optdepends = libxft-bgra: for BGRA graphics (emojis)
+	provides = st
+	conflicts = st
+	source = git+https://gitlab.com/kdkasad/st.git
+	md5sums = SKIP
+
+pkgname = st-kian-git
+
