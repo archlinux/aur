@@ -5,7 +5,7 @@
 # Contributor: Karsten Pufahl <contact@karstenpufahl.de>
 pkgname=eclipse-arm
 pkgver=4.7.2
-date=202001271244
+_date=202001271244
 pkgrel=1
 pkgdesc="GNU MCU Eclipse Plug-in"
 arch=('any')
@@ -14,7 +14,7 @@ install="eclipse-arm.install"
 license=("GPL")
 options=('!strip')
 depends=('eclipse-cpp')
-source=("https://github.com/gnu-mcu-eclipse/eclipse-plugins/releases/download/v$pkgver-$date/ilg.gnumcueclipse.repository-$pkgver-$date.zip")
+source=("https://github.com/gnu-mcu-eclipse/eclipse-plugins/releases/download/v$pkgver-$_date/ilg.gnumcueclipse.repository-$pkgver-$_date.zip")
 sha512sums=('0bb427417f93b7a79f9bb4dc838f705544d0d23d630b35fdb90423e32c1ee20f3b308a2e95e6fb0a881e0b82678cb68538be7df410540fbf45729c40efa107eb')
 
 package() {
