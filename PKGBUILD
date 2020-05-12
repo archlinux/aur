@@ -2,7 +2,7 @@ pkgdesc="ROS - Extra nodes and plugins for MAVROS."
 url='https://wiki.ros.org/mavros_extras'
 
 pkgname='ros-melodic-mavros-extras'
-pkgver='0.32.2'
+pkgver='1.1.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=3
 license=('GPLv3, LGPLv3, BSD')
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]}
 
 _dir="mavros-${pkgver}/mavros_extras"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros/archive/${pkgver}.tar.gz")
-sha256sums=('d5e04661f88896a9a77f22a083023ce5e8e13dd71c1f8f1b7d5e187b3bf6c4f8')
+sha256sums=('7bed7003e0905a5bbf53a8927068201a90ff08fab23e5483622295c2eea4aa10')
 
 build() {
   # Use ROS environment variables
