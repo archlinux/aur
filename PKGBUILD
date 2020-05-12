@@ -1,7 +1,7 @@
 # Maintainer: palkeo < arch at palkeo dot com >
 # Contributor: bluebugs < cedric dot bail at free dot fr >
 pkgname=ganache-cli
-pkgver=6.8.1
+pkgver=6.9.1
 pkgrel=1
 pkgdesc='Personal blockchain for Ethereum development.'
 url='https://github.com/trufflesuite/ganache-cli'
