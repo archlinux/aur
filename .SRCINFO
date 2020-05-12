@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-four-wheel-steering-controller
 	pkgdesc = ROS - Controller for a four wheel steering mobile base
-	pkgver = 0.15.0
+	pkgver = 0.16.1
 	pkgrel = 1
 	url = https://wiki.ros.org/four_wheel_steering_controller
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = ros-melodic-four-wheel-steering-controller
 	depends = ros-melodic-realtime-tools
 	depends = ros-melodic-tf
 	depends = ros-melodic-urdf-geometry-parser
-	source = ros-melodic-four-wheel-steering-controller-0.15.0.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.15.0.tar.gz
-	sha256sums = 8c19481a28f394d5bf4372fb05a6c638fa2995614f9b0f82b8213ca32d15a4cf
+	source = ros-melodic-four-wheel-steering-controller-0.16.1.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.16.1.tar.gz
+	sha256sums = cf43c389f2c29e9597d46a5ff7ce33af48278dbb697209887249dd3a7682257a
 
 pkgname = ros-melodic-four-wheel-steering-controller
 

@@ -3,7 +3,7 @@ pkgdesc="ROS - Controller for a four wheel steering mobile base"
 url='https://wiki.ros.org/four_wheel_steering_controller'
 
 pkgname='ros-melodic-four-wheel-steering-controller'
-pkgver='0.15.0'
+pkgver='0.16.1'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]})
 
 _dir="ros_controllers-${pkgver}/four_wheel_steering_controller"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_controllers/archive/${pkgver}.tar.gz")
-sha256sums=('8c19481a28f394d5bf4372fb05a6c638fa2995614f9b0f82b8213ca32d15a4cf')
+sha256sums=('cf43c389f2c29e9597d46a5ff7ce33af48278dbb697209887249dd3a7682257a')
 
 build() {
   # Use ROS environment variables
@@ -48,9 +48,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7.so \
-        -DPYTHON_BASENAME=-python3.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
