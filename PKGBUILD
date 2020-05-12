@@ -1,4 +1,3 @@
-
 # Maintainer: DJ Lucas <dj@lucasit.com>
 # Co-Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
@@ -14,8 +13,8 @@ pkgbase=samba-heimdal
 _pkgbase=samba
 pkgname=('libwbclient-heimdal' 'smbclient-heimdal' 'samba-heimdal')
 pkgver=4.12.2
-pkgrel=1
-arch=(x86_64)
+pkgrel=2
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.samba.org"
 license=('GPL3')
 makedepends=('python' 'docbook-xsl' 'pkg-config' 'libbsd' 'db' 'popt' 'libcups'
@@ -144,6 +143,7 @@ conflicts=('smbclient')
     install -d -m755 "${pkgdir}"/usr/lib/pkgconfig
     mv "${_pkgsrc}"/usr/lib/pkgconfig/smbclient.pc "${pkgdir}"/usr/lib/pkgconfig/
     mv "${_pkgsrc}"/usr/lib/pkgconfig/netapi.pc "${pkgdir}"/usr/lib/pkgconfig/
+    mv "${_pkgsrc}"/usr/lib/pkgconfig/wbclient.pc "${pkgdir}"/usr/lib/pkgconfig/
 
     install -d -m755 "${pkgdir}"/usr/share/man/man1
     install -d -m755 "${pkgdir}"/usr/share/man/man7
@@ -161,6 +161,8 @@ conflicts=('smbclient')
     install -d -m755 "${pkgdir}"/usr/include/samba-4.0
     mv "${_pkgsrc}"/usr/include/samba-4.0/libsmbclient.h "${pkgdir}"/usr/include/samba-4.0/
     mv "${_pkgsrc}"/usr/include/samba-4.0/netapi.h "${pkgdir}"/usr/include/samba-4.0/
+    mv "${_pkgsrc}"/usr/include/samba-4.0/wbclient.h "${pkgdir}"/usr/include/samba-4.0/
+
 
     mkdir -p "${pkgdir}"/usr/lib/cups/backend
     ln -sf /usr/bin/smbspool "${pkgdir}"/usr/lib/cups/backend/smb
@@ -216,11 +218,17 @@ sys.path.insert(0, '/usr/lib/python${_pyver}/site-packages')" \
   # spool directory
   install -d -m1777 "${pkgdir}"/var/spool/samba
   
+  rm -rf "${pkgdir}"/run
   rm -rf "${pkgdir}"/var/run
   rm -rf "${pkgdir}"/etc/sysconfig
   
   # copy ldap example
   install -D -m644 "${srcdir}"/samba-${pkgver}/examples/LDAP/samba.schema "${pkgdir}"/usr/share/doc/samba/examples/LDAP/samba.schema
+
+  # Fix waf installing the wrong permissions for sudoers.d
+  chmod 750 ${pkgdir}/etc/sudoers.d
+  chmod 600 ${pkgdir}/etc/sudoers.d/ctdb
+
 }
 
 # vim: ts=2 sw=2 et:

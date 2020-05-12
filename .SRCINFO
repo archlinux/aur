@@ -1,8 +1,12 @@
 pkgbase = samba-heimdal
 	pkgver = 4.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.samba.org
+	arch = i686
 	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
 	makedepends = python
 	makedepends = docbook-xsl
