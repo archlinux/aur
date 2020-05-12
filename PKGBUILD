@@ -1,10 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-# Co-Maintainer: telans <telans@protonmail.com>
 # Contributor: Matthew McGinn <mamcgi at gmail dot com>
 # Contributor: alicewww <almw at protonmail dot com>
 pkgname=mullvad-vpn-bin
-pkgver=2020.3
-pkgrel=2
+pkgver=2020.4
+pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
