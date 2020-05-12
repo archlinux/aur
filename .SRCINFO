@@ -1,7 +1,7 @@
 pkgbase = checkpwn
 	pkgdesc = Checks whether the account or the password is on the list of compromised accounts.
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/chrisfair/checkpwn/
 	arch = i686
 	arch = x86_64
