@@ -2,14 +2,15 @@
 # Co-Maintainer: Carlos Silva <r3pek@r3pek.org>
 
 pkgname=autenticacao-gov-pt-pki
-pkgver=20200408
+pkgver=20200512
 pkgrel=1
 pkgdesc="PKI Certificates for Cartao de Cidadao / Autenticacao.gov (Portugal eID)"
 arch=('any')
 license=('custom')
 url="https://pki.cartaodecidadao.pt/"
 conflicts=('cartaodecidadao-pki')
-source=("https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao/Cartao%20de%20Cidadao%20001.cer"
+source=("autenticacao-gov-pt-pki.install"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao/Cartao%20de%20Cidadao%20001.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao/Cartao%20de%20Cidadao%20002.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao/Cartao%20de%20Cidadao%20003.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao/Cartao%20de%20Cidadao%20004.cer"
@@ -49,7 +50,8 @@ source=("https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao/Cartao
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200015.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200016.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200017.cer")
-sha512sums=('0f7f813723425b090cad4f9140c7f56b17b753fba9eb733c18c84b167bc214aa1dcc0df5fbecd5490b8cdbb546fd736e937abc3bbef5280ff4eb6dc852338ed1'
+sha512sums=('e4641faec40cd628497114a1fef8cb81aa3022b9213405f24d796f220d0f001c4661c64bc7d8451776733cb1905b8761ef56ab7617a8dd628e99eb4313f45975'
+            '0f7f813723425b090cad4f9140c7f56b17b753fba9eb733c18c84b167bc214aa1dcc0df5fbecd5490b8cdbb546fd736e937abc3bbef5280ff4eb6dc852338ed1'
             '69f06ef7bc70dfce8fd11ca2335c51c3185f5b97d0778183142527d818f131939e27c002f9a52a06b7992a319e3ab04fd954caf7d6cde3dd08e1e782be9a19cd'
             '9569371e5a455923570ea77085e3b09a27d4c7353d4bfc8e0af0a3a30e9321c04c74bbb88c0f221b12efd2cbaa88c04c45e82f893844a5ce6a71ac4324f4eeb7'
             '38e7e667887152a0be24d24a15a1129c77af4cc531ec6d17d98d47053ad106cf3a743300833d9dd77533e3182d1ceeb0f73b2a85da516fef890001ee06be2466'
@@ -89,6 +91,8 @@ sha512sums=('0f7f813723425b090cad4f9140c7f56b17b753fba9eb733c18c84b167bc214aa1dc
             'ea13f5b3b443c76fc5d5811010869ad3b59f8df3095d02f139ed2aea3e67f0eeed32c320e60fc3857ff322b0adcf9f5ae2d10fb06154e9999ce624c49f0f6be2'
             '4405061f0167e827e21cda6e481c8fe7caa24353412e8be64897b18904a83144df580b965780e5b38981ce6926b28de2e202896ffdf95c1cb764b82346876677'
             'd225d5842d69e41490317e22d58d068d402e4d1d8cbea180346a845600e2a3e6cca3e281dd405cb6105bcff0c5ab01bc22b8b2c53a14c3cb11dd2d4cc390bcfc')
+
+install='autenticacao-gov-pt-pki.install'
 
 package() {
 	mkdir -p ${pkgdir}/etc/ca-certificates/trust-source/anchors
