@@ -5,10 +5,10 @@
 
 _pkgname=xfce4-panel
 pkgname=${_pkgname}-git
-pkgver=4.15.1+2+g7db1f872
+pkgver=4.15.2+57+g61671349
 pkgrel=1
 pkgdesc="Panel for the Xfce desktop environment - git checkout"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="http://docs.xfce.org/xfce/xfce4-panel/start"
 license=('GPL2')
 groups=('xfce4-git')
@@ -18,12 +18,12 @@ depends=('exo' 'garcon' 'libxfce4ui>=4.15.1' 'libwnck3' 'hicolor-icon-theme'
          'desktop-file-utils' 'xfconf' 'libxfce4util')
 makedepends=('intltool' 'gtk-doc' 'git' 'xfce4-dev-tools' 'gobject-introspection' 'vala')
 optdepends=('xfce4-panel-profiles')
-source=("${_pkgname}::git://git.xfce.org/xfce/xfce4-panel")
+source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s:-:+:g" #s/([^-]*-g)/r\1/;s/-/./g"
+  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
 build() {
@@ -37,7 +37,6 @@ build() {
     --disable-static \
     --enable-gio-unix \
     --enable-gtk-doc \
-    --enable-gtk2 \
     --disable-debug
   make
 }

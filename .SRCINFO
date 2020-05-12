@@ -1,10 +1,12 @@
 pkgbase = xfce4-panel-git
 	pkgdesc = Panel for the Xfce desktop environment - git checkout
-	pkgver = 4.15.1+2+g7db1f872
+	pkgver = 4.15.2+57+g61671349
 	pkgrel = 1
 	url = http://docs.xfce.org/xfce/xfce4-panel/start
-	arch = i686
 	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
 	groups = xfce4-git
 	license = GPL2
 	makedepends = intltool
@@ -22,9 +24,9 @@ pkgbase = xfce4-panel-git
 	depends = xfconf
 	depends = libxfce4util
 	optdepends = xfce4-panel-profiles
-	provides = xfce4-panel=4.15.1
+	provides = xfce4-panel=4.15.2
 	conflicts = xfce4-panel
-	source = xfce4-panel::git://git.xfce.org/xfce/xfce4-panel
+	source = xfce4-panel::git+https://gitlab.xfce.org/xfce/xfce4-panel
 	sha256sums = SKIP
 
 pkgname = xfce4-panel-git
