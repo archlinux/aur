@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS Package Tool."
 url='https://wiki.ros.org/rospack'
 
 pkgname='ros-melodic-rospack'
-pkgver='2.5.4'
+pkgver='2.5.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=2
 license=('BSD')
@@ -41,7 +41,7 @@ depends=(
 
 _dir="rospack-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/rospack/archive/${pkgver}.tar.gz")
-sha256sums=('f28c9399bb45818a60d2e348ad5a5a43a87aea4a362ebaea63230fd9120e19af')
+sha256sums=('26578f8eadd71dd473a8e38f1d495d74c6a3cb7baba8ddb8f944d5bd9ad25c68')
 
 build() {
 	# Use ROS environment variables.
