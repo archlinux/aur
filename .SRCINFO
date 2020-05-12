@@ -1,6 +1,6 @@
 pkgbase = zectl-pacman-hook
-	pkgdesc = Automate boot environment creation and rotation before pacman upgrade
-	pkgver = 0.1.1
+	pkgdesc = Automate boot environment creation and rotation before kernel upgrade
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/eoli3n/zectl-pacman-hook
 	install = INSTALL
@@ -10,7 +10,7 @@ pkgbase = zectl-pacman-hook
 	source = 10-zectl-pre.hook
 	source = zectl-prune
 	source = UNLICENSE
-	sha256sums = de9a144e6cda1911395b6491f2e83af0089a72e9eab92199d489b29919d76c2f
+	sha256sums = 9e212d633cb87ac2789ece3c5a86db6a93f266327db8a360e882dfd9583ac0c9
 	sha256sums = b38b0b2fca33ce64d5c1e713feb3bd7d3a0e85fa8d5c4c5220edefc2a63440da
 	sha256sums = d3c4f1607c9488b22732511b83e6f6173d82499c0678c899666ca12c36517f72
 

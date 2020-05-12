@@ -1,7 +1,8 @@
 [Trigger]
+Operation = Install
 Operation = Upgrade
-Type = Package
-Target = *
+Type = File
+Target = usr/lib/modules/*/vmlinuz
 
 [Action]
 Description = Create a boot environment
