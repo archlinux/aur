@@ -8,10 +8,10 @@
 
 _pkgname=xfce4-session
 pkgname=${_pkgname}-git
-pkgver=4.13.2+1+g0b1e5933
+pkgver=4.14.0+149+g21feddd2
 pkgrel=1
 pkgdesc="Xfce session manager (git checkout)"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://www.xfce.org/"
 license=('GPL2')
 depends=('libxfce4ui' 'libwnck3' 'libsm' 'polkit' 'xorg-iceauth' 'xorg-xinit'
@@ -24,14 +24,14 @@ optdepends=('gnome-keyring: for keyring support when GNOME compatibility is enab
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
 replaces=('xfce-utils')
-source=("${_pkgname}::git://git.xfce.org/xfce/xfce4-session"
+source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}"
         'xfce-polkit-gnome-authentication-agent-1.desktop')
 sha256sums=('SKIP'
             '74c94c5f7893d714e04ec7d8b8520c978a5748757a0cdcf5128492f09f31b643')
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
-  git describe --long | sed -r "s/^${_pkgname}-//;s/-/+/g"
+  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
 build() {
