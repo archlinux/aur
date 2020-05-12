@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-joint-state-publisher
 	pkgdesc = ROS - This package contains a tool for setting and publishing joint state values for a given URDF.
-	pkgver = 1.12.13
+	pkgver = 1.12.15
 	pkgrel = 1
 	url = https://www.wiki.ros.org/joint_state_publisher
 	arch = any
@@ -8,11 +8,12 @@ pkgbase = ros-melodic-joint-state-publisher
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-rostest
 	depends = ros-melodic-python-qt-binding
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-rospy
-	source = ros-melodic-joint-state-publisher-1.12.13.tar.gz::https://github.com/ros/joint_state_publisher/archive/1.12.13.tar.gz
-	sha256sums = 7143e42232af0f5cef5413b0f543e951fe81fa673d2ad7b67d0f681da3597600
+	source = ros-melodic-joint-state-publisher-1.12.15.tar.gz::https://github.com/ros/joint_state_publisher/archive/1.12.15.tar.gz
+	sha256sums = e125f65b45e99743016849d2cd6d73a5fbedc4b59beed7cd2bfa4b860dab8bba
 
 pkgname = ros-melodic-joint-state-publisher
 

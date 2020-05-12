@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a tool for setting and publishing joint sta
 url='https://www.wiki.ros.org/joint_state_publisher'
 
 pkgname='ros-melodic-joint-state-publisher'
-pkgver='1.12.13'
+pkgver='1.12.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(
 
 _dir="joint_state_publisher-${pkgver}/joint_state_publisher"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/joint_state_publisher/archive/${pkgver}.tar.gz")
-sha256sums=('7143e42232af0f5cef5413b0f543e951fe81fa673d2ad7b67d0f681da3597600')
+sha256sums=('e125f65b45e99743016849d2cd6d73a5fbedc4b59beed7cd2bfa4b860dab8bba')
 
 build() {
 	# Use ROS environment variables.
@@ -53,9 +53,6 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
