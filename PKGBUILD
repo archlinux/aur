@@ -3,7 +3,7 @@
 _plug=minideen
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=v1.3.g0355cff
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url="https://github.com/dubhater/vapoursynth-${_plug}"
