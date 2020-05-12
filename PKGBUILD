@@ -13,10 +13,14 @@ if [ -z ${USE_SCCACHE+x} ]; then
   USE_SCCACHE=0
 fi
 ##
-## build release or not
+## COMPONENT variable
+## 0 -> build normal (with debug symbols)
+## 1 -> release (default)
+## 2 -> static
+## 3 -> debug
 ## https://github.com/brave/brave-browser/wiki#clone-and-initialize-the-repo
-if [ -z ${BUILD_RELEASE+x} ]; then
-  BUILD_RELEASE=1
+if [ -z ${COMPONENT+x} ]; then
+  COMPONENT=1
 fi
 ##
 
@@ -54,8 +58,8 @@ do
 done
 
 # VAAPI patches from chromium-vaapi in AUR
-source+=("vaapi-build-fix.patch::https://aur.archlinux.org/cgit/aur.git/plain/vaapi-build-fix.patch?h=chromium-vaapi&id=2421d695f494fd04797ac6eda81e66857664b854"
-         "vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=2421d695f494fd04797ac6eda81e66857664b854")
+#source+=("vaapi-build-fix.patch::https://aur.archlinux.org/cgit/aur.git/plain/vaapi-build-fix.patch?h=chromium-vaapi&id=2421d695f494fd04797ac6eda81e66857664b854"
+#         "vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=2421d695f494fd04797ac6eda81e66857664b854")
 
 sha256sums=('SKIP'
             '2b07eabd8b3d42456d2de44f6dca6cf2e98fa06fc9b91ac27966fca8295c5814'
@@ -138,13 +142,24 @@ build() {
         echo "sccache = /usr/bin/sccache" >> .npmrc
     fi
 
-    if [ "$BUILD_RELEASE" = "0" ]; then
-        msg2 "Building debug symbols and without being an official build"
-        npm run build -- Release --debug_build=true --official_build=false
-    else
-        msg2 "Starting the release compile"
-        npm run build Release
-    fi
+    ## See explanation on top to select your build
+    case ${COMPONENT} in
+        0)
+            msg2 "Normal build (with debug)"
+            npm run build
+            ;;
+        2)
+            msg2 "Static build"
+            npm run build -- Static
+            ;;
+        3)
+            msg2 "Debug build"
+            npm run build -- Debug
+            ;;
+        *)
+            msg2 "Release build"
+            npm run build Release
+    esac 
 }
 
 package() {
