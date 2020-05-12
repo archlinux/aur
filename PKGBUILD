@@ -17,37 +17,19 @@
 #
 pkgbase="zfs-linux-zen"
 pkgname=("zfs-linux-zen" "zfs-linux-zen-headers")
-_zfsver="0.8.3"
+_zfsver="0.8.4"
 _kernelver="5.6.11.zen1-1"
 _extramodules="${_kernelver/.zen/-zen}-zen"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
-pkgrel=2
+pkgrel=1
 makedepends=("linux-zen-headers=${_kernelver}")
 arch=("x86_64")
 url="https://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz"
-        "linux-5.5-compat-blkg_tryget.patch"
-        "linux-5.6-compat-struct-proc_ops.patch"
-        "linux-5.6-compat-timestamp_truncate.patch"
-        "linux-5.6-compat-ktime_get_raw_ts64.patch"
-        "linux-5.6-compat-time_t.patch")
-sha256sums=("545a4897ce30c2d2dd9010a0fdb600a0d3d45805e2387093c473efc03aa9d7fd"
-            "daae58460243c45c2c7505b1d88dcb299ea7d92bcf3f41d2d30bc213000bb1da"
-            "05ca889a89b1e57d55c1b7d4d3013398a3e5a69d0fad27278aad701f0bb6e802"
-            "5ad4393b334a8f685212f47b44e98dc468c70214ee5dbbab24cc95c4f310ae39"
-            "7c6ebee72d864160b376fc18017c81f499f177b7d9265f565de859139805a277"
-            "06f7ade5adcbfe77cb234361f8b2aca6d6e78fcd136da6d3a70048b5e92c62bb")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
+sha256sums=("2b988f5777976f09d08083f6bebf6e67219c4c4c183c1f33033fb7e5e5eacafb")
 license=("CDDL")
 depends=("kmod" "zfs-utils=${_zfsver}" "linux-zen=${_kernelver}")
-prepare() {
-    cd "${srcdir}/zfs-${_zfsver}"
-    patch -Np1 -i ${srcdir}/linux-5.5-compat-blkg_tryget.patch
-    patch -Np1 -i ${srcdir}/linux-5.6-compat-struct-proc_ops.patch
-    patch -Np1 -i ${srcdir}/linux-5.6-compat-timestamp_truncate.patch
-    patch -Np1 -i ${srcdir}/linux-5.6-compat-time_t.patch
-    patch -Np1 -i ${srcdir}/linux-5.6-compat-ktime_get_raw_ts64.patch
-}
 
 build() {
     cd "${srcdir}/zfs-${_zfsver}"
