@@ -2,10 +2,10 @@
 
 _pkgname=xfdesktop
 pkgname=${_pkgname}-git
-pkgver=4.14.0+89+g85368af1
+pkgver=4.14.0+150+g044d5dc5
 pkgrel=1
 pkgdesc="A desktop manager for Xfce (git version)"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="http://www.xfce.org/"
 license=('GPL2')
 groups=('xfce4')
@@ -15,7 +15,7 @@ conflicts=('xfce4-menueditor' "${_pkgname}")
 provides=("${_pkgname}=${pkgver%%+*}")
 replaces=('xfce4-menueditor')
 options=('!libtool')
-source=("${_pkgname}::git://git.xfce.org/xfce/xfdesktop")
+source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}")
 sha256sums=('SKIP')
 
 pkgver() {

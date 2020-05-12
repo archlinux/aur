@@ -1,10 +1,12 @@
 pkgbase = xfdesktop-git
 	pkgdesc = A desktop manager for Xfce (git version)
-	pkgver = 4.14.0+89+g85368af1
+	pkgver = 4.14.0+150+g044d5dc5
 	pkgrel = 1
 	url = http://www.xfce.org/
-	arch = i686
 	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
 	groups = xfce4
 	license = GPL2
 	makedepends = intltool
@@ -20,7 +22,7 @@ pkgbase = xfdesktop-git
 	conflicts = xfdesktop
 	replaces = xfce4-menueditor
 	options = !libtool
-	source = xfdesktop::git://git.xfce.org/xfce/xfdesktop
+	source = xfdesktop::git+https://gitlab.xfce.org/xfce/xfdesktop
 	sha256sums = SKIP
 
 pkgname = xfdesktop-git
