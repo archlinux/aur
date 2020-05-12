@@ -1,0 +1,25 @@
+From 1f780e83f91a23ce6fba237c0c38f777b92b8d48 Mon Sep 17 00:00:00 2001
+From: Fabian Maurer <dark.shadow4@web.de>
+Date: Tue, 12 May 2020 18:45:00 +0200
+Subject: [PATCH] Build fix
+
+---
+ pom.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pom.xml b/pom.xml
+index dfa05ea..0dfe96a 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -30,7 +30,7 @@
+        </snapshots>
+        <id>central</id>
+        <name>bintray</name>
+-       <url>http://jcenter.bintray.com</url>
++       <url>https://jcenter.bintray.com</url>
+    </repository>
+ </repositories>
+   <properties>
+-- 
+2.26.2
+

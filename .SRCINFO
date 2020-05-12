@@ -1,6 +1,6 @@
 pkgbase = sdfs
 	pkgdesc = Deduplication file system from Opendedup
-	pkgver = 3.6.0.10
+	pkgver = 3.10.8.0
 	pkgrel = 1
 	url = http://opendedup.org
 	arch = x86_64
@@ -9,10 +9,8 @@ pkgbase = sdfs
 	depends = libxml2
 	depends = java-runtime
 	depends = fuse
-	source = https://github.com/opendedup/sdfs/archive/3.6.0.10.zip
-	source = https://raw.githubusercontent.com/opendedup/sdfs/3.7/install-packages/deb/usr/share/sdfs/mount.sdfs
-	md5sums = 144ea71338a8250216dbe446b1940eec
-	md5sums = 591288969f6b79b4557b2ca8a1ac78f6
+	source = https://github.com/opendedup/sdfs/archive/{b914fcfbd10198552a1c892dede83b16774ffb03}.zip
+	md5sums = 6d230c16d98e41e42753cf275f718936
 
 pkgname = sdfs
 
