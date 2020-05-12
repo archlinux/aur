@@ -1,7 +1,7 @@
 # Maintainer: Kyle Laker <kyle@laker.email>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=warpinator-git
-pkgver=0.0.1.r137.de5bd0a
+pkgver=1.0.3.r173.6e1a6c8
 pkgrel=1
 pkgdesc="Share files across the LAN"
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('gtk3' 'python-cryptography' 'python-gobject' 'python-grpcio'
          'python-protobuf' 'python-pynacl' 'python-setproctitle' 'python-zeroconf'
          'python-xapp' 'xapps')
-makedepends=('git' 'meson' 'python-grpcio-tools' 'gobject-introspection')
-optdepends=('gufw: Configure firewall rules')
+makedepends=('git' 'meson' 'python-grpcio-tools' 'gobject-introspection' 'polkit')
+optdepends=('ufw: Configure firewall rules')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'lm-warp')
 replaces=('lm-warp')
