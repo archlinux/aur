@@ -4,15 +4,15 @@ pkgname=cef-minimal-3770
 pkgver=75.1.14
 _pkgver="75.1.14+gc81164e+chromium-75.0.3770.100"
 _url_pkgver="75.1.14%2Bgc81164e%2Bchromium-75.0.3770.100"
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium Embedded Framework minimal release"
 arch=("i686" "x86_64")
 url="https://bitbucket.org/chromiumembedded/cef"
 license=("BSD")
 depends=("nss" "alsa-lib" "libxss" "libxtst" "libglvnd" "pango" "libxcursor" "dbus" "libxrandr" "libxcomposite" "at-spi2-atk")
 makedepends=("cmake" "make")
-provides=("cef" "cef-minimal")
-conflicts=("cef-standard" "cef-git" "cef-minimal")
+provides=("${pkgname%-*}=$pkgver" "cef=$pkgver")
+conflicts=("${pkgname%-*}" "cef")
 source_i686=(
     "http://opensource.spotify.com/cefbuilds/cef_binary_${_url_pkgver}_linux32_minimal.tar.bz2"
 )
