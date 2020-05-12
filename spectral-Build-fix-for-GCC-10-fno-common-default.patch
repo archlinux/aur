@@ -1,0 +1,45 @@
+From bf4f033b34c35aa4eaeb61726c5872718dc0797a Mon Sep 17 00:00:00 2001
+From: Joan Bruguera <joanbrugueram@gmail.com>
+Date: Tue, 12 May 2020 20:43:12 +0200
+Subject: [PATCH] Build fix for GCC 10+ (-fno-common default)
+
+See https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
+---
+ src/cutter_2.7.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/cutter_2.7.c b/src/cutter_2.7.c
+index 167a1df..ec1d018 100644
+--- a/src/cutter_2.7.c
++++ b/src/cutter_2.7.c
+@@ -28,7 +28,7 @@ int num_tasks, usefull_tasks, init_task_counter;
+ unsigned int remFirstStates, remLastStates, first_time_caught;
+ 
+ /* Trace in and trace out */
+-FILE *infile, *outfile;
++extern FILE *infile, *outfile;
+ gzFile gzInfile;
+ 
+ /* Struct for the case of MAX_TRACE_SIZE */
+@@ -51,7 +51,8 @@ struct thread_info *first;
+ struct thread_info *last;
+ 
+ /* Parameters for showing percentage */
+-unsigned long long total_trace_size, current_readed_size;
++extern unsigned long long total_trace_size;
++unsigned long long current_readed_size;
+ static unsigned long total_cutter_iters = 0;
+ 
+ /* Vars for saving the HC that will appear on the trace */
+@@ -67,7 +68,7 @@ struct selected_tasks
+   int range;
+ };
+ 
+-struct selected_tasks wanted_tasks[MAX_SELECTED_TASKS];
++extern struct selected_tasks wanted_tasks[MAX_SELECTED_TASKS];
+ 
+ double cutter_last_showed = 0;
+ 
+-- 
+2.26.2
+
