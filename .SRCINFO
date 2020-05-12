@@ -1,0 +1,14 @@
+pkgbase = roundcubemail-plugin-caldav_calendar
+	pkgdesc = Caldav Calendar plugin for use with NextCloud.
+	pkgver = 0.7.0.0
+	pkgrel = 1
+	url = https://github.com/texxasrulez/caldav_calendar
+	arch = any
+	license = AGPL3
+	depends = roundcubemail
+	conflicts = roundcubemail-plugins-kolab
+	source = https://github.com/texxasrulez/caldav_calendar/archive/0.7.0.0.tar.gz
+	sha256sums = d48ecb1eef0b24b8e932aa953272838c1b131b34f9961e2b0ef608c57bc8ebde
+
+pkgname = roundcubemail-plugin-caldav_calendar
+
