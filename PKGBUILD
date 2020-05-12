@@ -5,7 +5,7 @@
 pkgname=libmesh-petsc
 realname=libmesh
 pkgrel=1
-pkgver=cpp03_final.r4547.g27913a829
+pkgver=cpp03_final.r4552.g9bdf9ac50
 pkgdesc="A C++ Finite Element Library"
 arch=("x86_64")
 url="http://libmesh.github.io/"
@@ -152,6 +152,7 @@ build() {
       done)
 
   # Actual build
+  make clean
   make
 }
 
