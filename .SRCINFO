@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-costmap-2d
 	pkgdesc = ROS - This package provides an implementation of a 2D costmap.
-	pkgver = 1.16.2
+	pkgver = 1.16.6
 	pkgrel = 5
 	url = https://wiki.ros.org/costmap_2d
 	arch = i686
@@ -33,8 +33,8 @@ pkgbase = ros-melodic-costmap-2d
 	depends = ros-melodic-voxel-grid
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-rosconsole
-	source = ros-melodic-costmap-2d-1.16.2.tar.gz::https://github.com/ros-planning/navigation/archive/1.16.2.tar.gz
-	sha256sums = d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205
+	source = ros-melodic-costmap-2d-1.16.6.tar.gz::https://github.com/ros-planning/navigation/archive/1.16.6.tar.gz
+	sha256sums = 88e3b4433de9645e1132db15b01f436a75a28ebc15cd5b70660b158dd6ba42dd
 
 pkgname = ros-melodic-costmap-2d
 
