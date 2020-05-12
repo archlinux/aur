@@ -1,6 +1,6 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r258.61d9c12
+pkgver=r262.fce526e
 pkgrel=1
 pkgdesc="Linux guest tools for the Crostini containers on ChromeOS"
 arch=('any')
@@ -16,8 +16,7 @@ source=("git+${url}"
         'cros-logind-override.conf'
         'cros-nopasswd.rules'
         'cros-resolved.conf'
-        'mimeapps.list'
-        'sudo.conf')
+        'mimeapps.list')
 sha1sums=('SKIP'
           '0827ce6d673949a995be2d69d4974ddd9bdf16f1'
           'd326cd35dcf150f9f9c8c7d6336425ec08ad2433'
@@ -26,8 +25,7 @@ sha1sums=('SKIP'
           '0c21f6c85ecbe8f822c378c7e4d5b3165e56eb3a'
           '089ba58bc504146b29035a8efe70045eb2495fb5'
           '53624105b0890a5ad19bce6bfe4cdddf9651b149'
-          'f05da51a3913c5815d320c8ed536f2a7ac1fdcd5'
-          '35549dad61d36cc742c951f03eab9c3710439903')
+          'f05da51a3913c5815d320c8ed536f2a7ac1fdcd5')
 
 pkgver() {
 	cd ${srcdir}/${_pkgname}
@@ -51,9 +49,6 @@ package() {
 
 	# install default browser associations
 	install -m644 -D ${srcdir}/mimeapps.list ${pkgdir}/etc/xdg/mimeapps.list
-
-	# workaround for https://bugzilla.redhat.com/show_bug.cgi?id=1773148
-	install -m644 -D ${srcdir}/sudo.conf ${pkgdir}/etc/sudo.conf
 
 	### cros-adapta -> included into cros-container-guest-tools.install
 	mkdir -p ${pkgdir}/usr/share/themes
@@ -96,6 +91,8 @@ package() {
 
 	install -m644 -D ${srcdir}/${_pkgname}/cros-pulse-config/cros-pulse-config.service ${pkgdir}/usr/lib/systemd/user/cros-pulse-config.service
 	ln -sf ../cros-pulse-config.service ${pkgdir}/usr/lib/systemd/user/default.target.wants/cros-pulse-config.service
+	mkdir -p ${pkgdir}/usr/lib/systemd/user/pulseaudio.service.wants
+	ln -sf ../cros-pulse-config.service ${pkgdir}/usr/lib/systemd/user/pulseaudio.service.wants/cros-pulse-config.service
 
 	### cros-sftp
 
