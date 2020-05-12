@@ -3,10 +3,10 @@
 _pkgname=thunar-volman
 pkgname=${_pkgname}-git
 epoch=1
-pkgver=0.9.0.r1.g143b1a3
+pkgver=4.14.0+24+g8f95de3
 pkgrel=1
 pkgdesc="automatic management for removeable devices in thunar"
-arch=(i686 x86_64)
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 license=('GPL2')
 url="http://goodies.xfce.org/projects/thunar-plugins/thunar-volman"
 groups=('xfce4-goodies-git')
@@ -15,12 +15,12 @@ makedepends=('git' 'intltool' 'xfce4-dev-tools')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver%\.r*}")
 options=('!libtool')
-source=("${_pkgname}::git://git.xfce.org/xfce/thunar-volman")
+source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed -r "s/^${_pkgname}.//;s/([^-]*-g)/r\1/;s/-/./g"
+  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
 build() {
