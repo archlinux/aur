@@ -14,7 +14,7 @@ conflicts=("${pkgname%-bin}")
 install="${pkgname%-bin}.install"
 source=("https://github.com/mullvad/mullvadvpn-app/releases/download/$pkgver/MullvadVPN-${pkgver}_amd64.deb"{,.asc}
         "${pkgname%-bin}.sh")
-sha256sums=('fac3896db78cc2ddac81abec8bc0aa324e66b453126ed35a501e422ce64b1362'
+sha256sums=('997f83a11f91f2be715ed55f02b15057c99ffa1a23df234123712734c543b19f'
             'SKIP'
             'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
 validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin at mullvad dot net>
