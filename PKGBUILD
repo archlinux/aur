@@ -4,10 +4,10 @@
 
 _pkgname=xfce4-whiskermenu-plugin
 pkgname=${_pkgname}-git
-pkgver=2.1.0.r24.gc326f6f
+pkgver=2.4.0+43+g86b6bff
 pkgrel=1
 pkgdesc="Alternate Xfce menu"
-arch=("i686" "x86_64")
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="http://gottcode.org/${_pkgname}/"
 license=("GPL2")
 depends=("xfce4-panel" "exo>=0.11")
@@ -15,12 +15,12 @@ makedepends=("cmake" "git")
 groups=("xfce4-goodies" "xfce4-goodies-git")
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+http://github.com/gottcode/xfce4-whiskermenu-plugin")
+source=("${_pkgname}::git+https://gitlab.xfce.org/panel-plugins/${_pkgname}")
 md5sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/([^-]*-g)/r\1/;s/-/./g"
+  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
 build() {
@@ -31,5 +31,5 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  make install/strip DESTDIR=${pkgdir}
+  make DESTDIR="$pkgdir" install
 }
