@@ -1,0 +1,25 @@
+pkgbase = python-mbed-flasher
+	pkgdesc = mbed device flasher application
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/ARMmbed/mbed-flasher
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-mbed-flasher-0.10.1.tar.gz::https://github.com/ARMmbed/mbed-flasher/archive/v0.10.1.tar.gz
+	sha256sums = 5f31a63d47ad82c8a5168e1fe2cea5214ca121bdc2fad504947d894e704a01c6
+
+pkgname = python-mbed-flasher
+	depends = python
+	depends = python-pyserial
+	depends = python-mbed-ls
+	depends = python-six
+	optdepends = pyocd: for boards using PyOCD
+
+pkgname = python2-mbed-flasher
+	depends = python2
+	depends = python2-pyserial
+	depends = python2-mbed-ls
+	depends = python2-six
+
