@@ -116,25 +116,25 @@ build() {
 
   CONFOPTS=(
     --enable-petsc-hypre-required # recommended by MOOSE
-    --with-metis=PETSc          # use PETSCs' metis
-    --enable-cxx11-required     # force C++11 standard
+    --with-metis=PETSc            # use PETSCs' metis
+    --enable-cxx11-required       # force C++11 standard
     --enable-metaphysicl-required # recommended by MOOSE
     --enable-vtk-required
     --enable-curl
     --enable-hdf5
     --with-pic
     --enable-mpi
-    --enable-complex            # make sure to compile PETSc with complex too
+    --enable-complex              # make sure to compile PETSc with complex too
+    --enable-mumps                # MUMPS
+    --with-mumps=/usr/include     #
+    --with-mumps-lib=/usr/lib     #
+    --enable-netcdf               # NETCDF
+    --with-netcdf=/usr/include    #
+    --with-netcdf-lib=/usr/lib    #
+    --with-nlopt=/usr/include     # NLOPT
+    --with-nlopt-lib=/usr/lib     #
 
-    --enable-netcdf             # testing...
-    --with-netcdf=/usr/include  # testing...
-    --with-netcdf-lib=/usr/lib  # testing...
     --enable-fftw               # Does this work ?
-    --with-nlopt=/usr/include   # Does this work ?
-    --with-nlopt-lib=/usr/lib   # Does this work ?
-    --enable-mumps              # Does this work ?
-    --with-mumps=/usr/include   # Does this work ?
-    --with-mumps-lib=/usr/lib   # Does this work ?
     --enable-superlu            # Does this work ?
 
     --enable-shared             # shared libraries
