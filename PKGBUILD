@@ -7,7 +7,7 @@
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
 pkgver=0.5.1.r89.gb786c32b6
-pkgrel=2
+pkgrel=3
 pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
 arch=('i686' 'x86_64' 'armv7h')
@@ -63,6 +63,8 @@ package() {
 	install -Dm 644 misc/systemd/ipfs-api.socket "$pkgdir/usr/lib/systemd/system/ipfs-api.socket"
 	install -Dm 644 misc/systemd/ipfs-gateway.socket "$pkgdir/usr/lib/systemd/system/ipfs-gateway.socket"
 	install -Dm 644 misc/systemd/ipfs.service "$pkgdir/usr/lib/systemd/system/ipfs.service"
+	# systemd-sysusers
+	install -Dm 644 "misc/systemd/ipfs-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/ipfs.conf"
 	install -Dm 644 misc/completion/ipfs-completion.bash "$pkgdir/usr/share/bash-completion/completions/ipfs"
 	install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/MIT" LICENSE-MIT
 	install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/APACHE" LICENSE-APACHE
