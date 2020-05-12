@@ -2,22 +2,22 @@
 
 _pkgname=thunar-vcs-plugin
 pkgname=${_pkgname}-git
-pkgver=0.1.90+2+g31b819c
+pkgver=0.2.0+87+gcf09392
 pkgrel=1
 pkgdesc="SVN and GIT integration for Thunar."
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 license=('GPL')
 url="https://goodies.xfce.org/projects/thunar-plugins/thunar-vcs-plugin"
 depends=('thunar>=1.7.0' 'git' 'subversion' 'apr')
 makedepends=('intltool' 'xfce4-dev-tools')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git://git.xfce.org/thunar-plugins/thunar-vcs-plugin")
+source=("${_pkgname}::git+https://gitlab.xfce.org/thunar-plugins/${_pkgname}")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed -r "s:^${_pkgname}-::;s/-/+/g"
+  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
 build() {
@@ -28,5 +28,5 @@ build() {
 
 package() {
   cd "${_pkgname}"
-  make DESTDIR=$pkgdir install
+  make DESTDIR="${pkgdir}" install
 }
