@@ -1,6 +1,6 @@
 pkgbase = plasma-pk-updates-git
 	pkgdesc = Plasma5 applet for software updates using PackageKit
-	pkgver = r102.16371ba
+	pkgver = r167.4d6cfae
 	pkgrel = 1
 	url = https://quickgit.kde.org/?p=plasma-pk-updates.git
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = plasma-pk-updates-git
 	depends = plasma-workspace
 	depends = kdoctools
 	depends = kdesignerplugin
+	depends = packagekit-qt5
 	source = git://anongit.kde.org/plasma-pk-updates.git
 	md5sums = SKIP
 
