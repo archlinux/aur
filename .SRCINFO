@@ -4,10 +4,10 @@ pkgbase = goweight-bin
 	pkgrel = 1
 	url = https://github.com/jondot/goweight
 	arch = x86_64
-	license = Apache-2.0
+	license = Apache
 	provides = goweight
-	source = https://github.com/jondot/goweight/releases/download/v1.0.5/goweight_1.0.5_Linux_x86_64.tar.gz
-	md5sums = 7fee7ed7f4da52605f3fbeccf08b19a5
+	source = goweight-bin-1.0.5.tar.gz::https://github.com/jondot/goweight/releases/download/v1.0.5/goweight_1.0.5_Linux_x86_64.tar.gz
+	sha256sums = d63ec46fd7706a78906d41ea10660224f089b5eb4d4e077c15dc3ad9c6aed7bd
 
 pkgname = goweight-bin
 
