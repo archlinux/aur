@@ -1,8 +1,8 @@
 pkgbase = snapcraft
-	pkgdesc = Build Ubuntu snappy packages.
-	pkgver = 3.9.5
+	pkgdesc = Package, distribute, and update any app for Linux and IoT.
+	pkgver = 4.0.1
 	pkgrel = 1
-	url = http://snapcraft.io
+	url = https://snapcraft.io
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
@@ -27,8 +27,8 @@ pkgbase = snapcraft
 	depends = python-pyelftools
 	optdepends = lxd
 	options = !emptydirs
-	source = https://github.com/snapcore/snapcraft/archive/3.9.5.tar.gz
-	sha256sums = b30ce954b6cf89954504e166ae795c3b46c962bd16b9868d50476192ac888d39
+	source = https://github.com/snapcore/snapcraft/archive/4.0.1.tar.gz
+	sha256sums = 70fa9ebec56d0050010712f691aa5a88b7067d7c162c0fa5a3dc0bcb11beb9ad
 
 pkgname = snapcraft
 

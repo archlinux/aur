@@ -1,11 +1,12 @@
-# Maintainer: Jameson Pugh <imntreal@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=snapcraft
-pkgver=3.9.5
+pkgver=4.0.1
 pkgrel=1
-pkgdesc="Build Ubuntu snappy packages."
+pkgdesc="Package, distribute, and update any app for Linux and IoT."
 arch=('any')
-url="http://snapcraft.io"
+url="https://snapcraft.io"
 license=('GPL')
 depends=('python-apt' 'python-requests-oauthlib' 'python-ssoclient' 'python-progressbar'
          'python-requests-toolbelt' 'python-petname' 'python-jsonschema' 'python-yaml'
@@ -16,7 +17,7 @@ makedepends=('python-setuptools')
 optdepends=('lxd')
 options=(!emptydirs)
 source=("https://github.com/snapcore/snapcraft/archive/${pkgver}.tar.gz")
-sha256sums=('b30ce954b6cf89954504e166ae795c3b46c962bd16b9868d50476192ac888d39')
+sha256sums=('70fa9ebec56d0050010712f691aa5a88b7067d7c162c0fa5a3dc0bcb11beb9ad')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"  
