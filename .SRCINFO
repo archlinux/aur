@@ -1,7 +1,7 @@
 pkgbase = linux-zest-git
-	pkgver = 5.6
+	pkgver = 1
 	pkgrel = 2
-	epoch = 5
+	epoch = 6
 	url = https://github.com/ZestProjects/linux
 	arch = i686
 	arch = x86_64
@@ -30,6 +30,7 @@ pkgname = linux-zest-git
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = linux=5.6
 	provides = linux-aufs=5.6
+	provides = linux-fsync=5.6
 	provides = linux-zest=5.6
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
@@ -38,11 +39,13 @@ pkgname = linux-zest-git-docs
 	pkgdesc = Documentation for the Zest Project's kernel
 	provides = linux-docs=5.6
 	provides = linux-aufs-docs=5.6
+	provides = linux-fsync-docs=5.6
 	provides = linux-zest-docs=5.6
 
 pkgname = linux-zest-git-headers
 	pkgdesc = Headers and scripts for building modules for the Zest Project's kernel
 	provides = linux-headers=5.6
 	provides = linux-aufs-headers=5.6
+	provides = linux-fsync-headers=5.6
 	provides = linux-zest-headers=5.6
 

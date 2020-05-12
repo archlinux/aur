@@ -7,9 +7,9 @@ pkgname=(
     "linux-zest-git-docs"
 	"linux-zest-git-headers"
 )
-pkgver=5.6
+pkgver=1
 pkgrel=2
-epoch=5
+epoch=6
 arch=(
     "i686"
 	"x86_64"
@@ -87,6 +87,7 @@ _package()
 	provides=(
 		"linux=5.6"
 		"linux-aufs=5.6"
+		"linux-fsync=5.6"
 		"linux-zest=5.6"
 		"VIRTUALBOX-GUEST-MODULES"
 		"WIREGUARD-MODULE"
@@ -119,6 +120,7 @@ _package-headers()
 	provides=(
 		"linux-headers=5.6"
 		"linux-aufs-headers=5.6"
+		"linux-fsync-headers=5.6"
 		"linux-zest-headers=5.6"
 	)
 
@@ -215,6 +217,7 @@ _package-docs()
 	provides=(
 		"linux-docs=5.6"
 		"linux-aufs-docs=5.6"
+		"linux-fsync-docs=5.6"
 		"linux-zest-docs=5.6"
 	)
 
