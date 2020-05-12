@@ -1,0 +1,15 @@
+pkgbase = perl-log-any-adapter-screen
+	pkgdesc = Send logs to screen, with colors and some other features
+	pkgver = 0.140
+	pkgrel = 1
+	url = https://github.com/perlancar/perl-Log-Any-Adapter-Screen
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-log-any
+	source = https://www.cpan.org/modules/by-module/Log/Log-Any-Adapter-Screen-0.140.tar.gz
+	sha512sums = a7ded27bbc548108169e59964783ba6200c3afd798219bcd9daea47c390128db628c30392eb7eaebb93b5e3b59f51c717599518130b3ba31a1765cca3b4c362c
+
+pkgname = perl-log-any-adapter-screen
+
