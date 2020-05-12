@@ -1,7 +1,8 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-flac
-pkgver=0.1.5
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="OCaml bindings to libFLAC"
 arch=('i686' 'x86_64')
@@ -10,8 +11,8 @@ license=('GPL')
 depends=('ocaml' 'flac' 'ocaml-ogg')
 makedepends=('ocaml-findlib')
 options=('!strip')
-source=("https://github.com/savonet/ocaml-flac/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('8cdadec3986460d5e5dc6a5af690b4b2e2c8414469ab1e84350a8ef77069fa0883ac138138dd9e0e48abe7356c5c623048510e0854e85f2cce70ef8cbe7ce9fb')
+source=("https://github.com/savonet/ocaml-flac/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('b49dd9b9c3851d4720e6832773564a53802814b71106a41647a06bcad8414382a9d739b0440fb9e7d8caf24ffaccfacfe727d1a8bf4be22d8532b40264fe05e6')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
