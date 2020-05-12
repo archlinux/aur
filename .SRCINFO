@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-message-generation
 	pkgdesc = ROS - Package modeling the build-time dependencies for generating language bindings of messages.
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 2
 	url = https://github.com/ros/message_generation
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = ros-melodic-message-generation
 	depends = ros-melodic-gennodejs
 	depends = ros-melodic-genlisp
 	depends = ros-melodic-genmsg
-	source = ros-melodic-message-generation-0.4.0.tar.gz::https://github.com/ros/message_generation/archive/0.4.0.tar.gz
-	sha256sums = e47304c394acd6594403f10cfd52930cab6fb436213839e91bedad5b90a4c186
+	source = ros-melodic-message-generation-0.4.1.tar.gz::https://github.com/ros/message_generation/archive/0.4.1.tar.gz
+	sha256sums = 90ab9649f594d5d007d735bd056f777e5f72bfb4f11f2b891fa5c5139f0a5e2f
 
 pkgname = ros-melodic-message-generation
 
