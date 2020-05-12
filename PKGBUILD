@@ -10,7 +10,7 @@ license=('Apache')
 depends=('python' 'libolm' 'python-matrix-nio' 'python-prompt_toolkit' 'python-janus' 'python-peewee' 'python-logbook' 'python-aiohttp' 'python-cachetools' 'python-pycryptodome' 'python-unpaddedbase64' 'python-h2' 'python-h11' 'python-notify2' 'python-pydbus' 'python-olm' 'python-jsonschema' 'python-atomicwrites' 'python-click' 'python-keyring' 'python-future')
 source=("https://github.com/matrix-org/pantalaimon/archive/${pkgver}.tar.gz"
         "${pkgname}.service")
-sha256sums=('0a645af70e9111c07c172dce1dc8ddcd22f1f9656017c248fd1a812f7935bd38'
+sha256sums=('e2b2531891bee7f3d1365bfc9cec7393f1412c46d371225070cca2471b75cd4e'
             'cf693e0324a7f2965bc9e64ab2c3d75137e7993503ddb3ae3dddc84af6c0b0e9')
 
 build() {
