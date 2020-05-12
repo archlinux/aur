@@ -1,5 +1,6 @@
-# Maintainer: E5ten <e5ten.arch@gmail.com>
-# Maintainer: anna <morganamilo@gmail.com>
+# Maintainer: Amanoel Dawod <amoka at amanoel dot com>
+# Contributor: E5ten <e5ten.arch@gmail.com>
+# Contributor: anna <morganamilo@gmail.com>
 # Contributor: sudokode <sudokode@gmail.com>
 # Contributor: graysky <graysky AT archlinux DOT us>
 # Contributor: Slash <demodevil5[at]yahoo[dot]com>
@@ -9,20 +10,21 @@
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 # Contributor: Ben <ben@benmazer.net>
 
-
 pkgname=mpd-git
 _pkgname=mpd
-pkgver=0.20.23.r1494.g901229699
-pkgrel=2
-pkgdesc='Flexible, powerful, server-side application for playing music'
+pkgver=0.21.23.r976.geeec0ee80
+pkgrel=1
+pkgdesc='Flexible, powerful, server-side application for playing music (from git)'
 url='https://www.musicpd.org/'
 license=('GPL')
 arch=('x86_64')
-depends=('libao' 'ffmpeg' 'libmodplug' 'audiofile' 'libshout' 'libmad' 'curl'
-	 'faad2' 'sqlite' 'jack' 'libmms' 'wavpack' 'avahi' 'libid3tag' 'yajl'
-	 'libmpdclient' 'icu' 'libupnp' 'libnfs' 'libsamplerate' 'libsoxr'
-	 'smbclient' 'libgme' 'zziplib' 'libsystemd' 'openal' 'mpg123')
-makedepends=('boost' 'doxygen' 'meson')
+depends=('audiofile' 'avahi' 'curl' 'faad2' 'ffmpeg' 'fluidsynth'
+	 'icu' 'jack' 'libao' 'libcdio-paranoia' 'libgme' 'libid3tag' 'libmad'
+	 'libmikmod' 'libmms' 'libmodplug' 'libmpcdec' 'libmpdclient' 'libnfs'
+	 'libsamplerate' 'libshout' 'libsoxr' 'libvorbis' 'systemd-libs'
+	 'libupnp' 'mpg123' 'openal' 'smbclient' 'sqlite' 'twolame' 'wavpack'
+	 'wildmidi' 'yajl' 'zziplib')
+makedepends=('boost' 'meson' 'liburing' 'python-sphinx')
 provides=('mpd')
 conflicts=('mpd')
 source=("$_pkgname::git+https://github.com/MusicPlayerDaemon/MPD"
@@ -36,52 +38,45 @@ sha256sums=('SKIP'
 
 backup=('etc/mpd.conf')
 
-build() {
-	arch-meson ${_pkgname} build \
-		-Djack=enabled \
-		-Ddsd=false \
-		-Dlibmpdclient=enabled \
-		-Dpipe=true \
-		-Dpulse=enabled \
-		-Dqobuz=disabled \
-		-Dsoundcloud=enabled \
-		-Dtidal=disabled \
-		-Dzzip=enabled \
-		-Dsidplay=disabled \
-		-Dlibwrap=disabled \
-		-Droar=disabled \
-		-Dsndio=disabled \
-		-Dchromaprint=disabled \
-		-Dcdio_paranoia=disabled \
-		-Diso9660=disabled \
-		-Dadplug=disabled \
-		-Dfluidsynth=disabled \
-		-Dmikmod=disabled \
-		-Dmpcdec=disabled \
-		-Dwildmidi=disabled \
-		-Dtwolame=disabled \
-		-Dshine=disabled \
-		-Dsystemd=enabled \
-		-Dsystemd_system_unit_dir=/usr/lib/systemd/system \
-		-Dsystemd_user_unit_dir=/usr/lib/systemd/user
+pkgver() {
+	cd "${_pkgname}"
 
-	ninja -C build
+	git describe --long | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
+}
+
+prepare() {
+	cd "${_pkgname}"
+	rm -fr build
+	install -d build
+}
+
+build() {
+	cd "${_pkgname}/build"
+	_opts=('-Ddocumentation=true'
+	       '-Dchromaprint=disabled' # appears not to be used for anything
+	       '-Dsidplay=disabled' # unclear why but disabled in the past
+	       '-Dadplug=disabled' # not in an official repo
+	       '-Dsndio=disabled' # interferes with detection of alsa devices
+	       '-Dshine=disabled' # not in an official repo
+	       '-Dtremor=disabled' # not in an official repo
+	)
+	arch-meson .. ${_opts[@]}
+	ninja
 }
 
 package() {
-	DESTDIR="$pkgdir" meson install -C build
-	cd "${_pkgname}"
-	install -Dm644 ../conf "${pkgdir}"/etc/mpd.conf
-	install -Dm644 ../tmpfiles.d "${pkgdir}"/usr/lib/tmpfiles.d/mpd.conf
-	install -Dm644 ../sysusers.d "${pkgdir}"/usr/lib/sysusers.d/mpd.conf
+	cd "${_pkgname}/build"
+	DESTDIR="${pkgdir}" ninja install
+	install -Dm644 ../doc/mpdconf.example "${pkgdir}"/usr/share/doc/mpd/mpdconf.example
+	install -Dm644 ../doc/mpd.conf.5 "${pkgdir}"/usr/share/man/man5/mpd.conf.5
+	install -Dm644 ../doc/mpd.1 "${pkgdir}"/usr/share/man/man1/mpd.1
 
-	sed '/\[Service\]/a User=mpd' -i "${pkgdir}"/usr/lib/systemd/system/mpd.service
-	sed '/WantedBy=/c WantedBy=default.target' -i "${pkgdir}"/usr/lib/systemd/system/mpd.service
-}
+	install -Dm644 ../../tmpfiles.d "${pkgdir}"/usr/lib/tmpfiles.d/mpd.conf
+	install -Dm644 ../../sysusers.d "${pkgdir}"/usr/lib/sysusers.d/mpd.conf
+	install -Dm644 ../../conf "${pkgdir}"/etc/mpd.conf
 
-
-pkgver() {
-  cd "${_pkgname}"
-
-  git describe --long | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
+	sed \
+		-e '/\[Service\]/a User=mpd' \
+		-e '/WantedBy=/c WantedBy=default.target' \
+		-i "${pkgdir}"/usr/lib/systemd/system/mpd.service
 }
