@@ -1,10 +1,10 @@
 # Maintainer: mzz2017 <m@mzz.pub>
 
 pkgname=v2raya
-pkgver=0.7.0.1
+pkgver=0.7.0.2
 pkgrel=1
 install=.INSTALL
-pkgdesc="A web GUI client of Project V which supports V2Ray, SS, SSR, Trojan and PingTunnel protocols"
+pkgdesc="A web GUI client of Project V which supports V2Ray, SS, SSR, Trojan and Pingtunnel protocols"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/mzz2017/v2rayA"
 license=('GPL')
