@@ -1,0 +1,13 @@
+pkgbase = roundcubemail-plugin-showfoldersize
+	pkgdesc = A Roundcube plugin which shows folder size.
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://plugins.roundcube.net/packages/johndoh/showfoldersize
+	arch = any
+	license = GPL3
+	depends = roundcubemail
+	source = https://github.com/jfcherng-roundcube/plugin-show-folder-size/archive/0.6.4.tar.gz
+	md5sums = 7f4135752dd3f46720b1c4583d6ee67e
+
+pkgname = roundcubemail-plugin-showfoldersize
+
