@@ -1,0 +1,20 @@
+post_install() {
+	# ${pkgdir}/opt/kite/kite-installer install
+	
+	echo
+	echo "IMPORTANT! This is just the installer for Kite, to install it to your user run \"${pkgdir}/opt/kite/kite-installer install\""
+}
+
+post_upgrade() {
+	# ${pkgdir}/opt/kite/kite-installer update
+	
+	echo
+	echo "IMPORTANT! To update Kite run \"${pkgdir}/opt/kite/kite-installer update\" under every user you have Kite installed currently"
+	echo "This is because Kite is installed on a per-user basis."
+}
+
+pre_remove() {
+    # ${pkgdir}/opt/kite/kite-installer uninstall
+    echo "IMPORTANT! To uninstall Kite run \"~/.local/share/kite/uninstall\" under every user you have Kite installed currently"
+    echo "You can also install this package again, run \"/opt/kite/kite-installer uninstall\" and remove the package again"
+}
