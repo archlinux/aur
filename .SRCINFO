@@ -6,8 +6,10 @@ pkgbase = gomplate-bin
 	arch = x86_64
 	license = MIT
 	provides = gomplate
-	source = https://github.com/hairyhenderson/gomplate/releases/download/v3.6.0/gomplate_linux-amd64
-	md5sums = 7039b07e5b5130b1bc8ee378f5d2eec4
+	source = gomplate-bin-3.6.0::https://github.com/hairyhenderson/gomplate/releases/download/v3.6.0/gomplate_linux-amd64
+	source = LICENSE::https://github.com/hairyhenderson/gomplate/raw/master/LICENSE
+	sha256sums = 0ec9907db0e31842d954e7644c928d1b5e0eaf0f112096a0fc0d923de34cb704
+	sha256sums = 623198523f10b6c9b0473c832634cd678b17492e77745c453aaec3f6f9d4fc20
 
 pkgname = gomplate-bin
 
