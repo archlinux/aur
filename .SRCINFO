@@ -1,0 +1,14 @@
+pkgbase = perl-test-filename
+	pkgdesc = Portable filename comparison
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://github.com/dagolden/test-filename
+	arch = any
+	license = Apache
+	depends = perl
+	depends = perl-path-tiny
+	source = https://www.cpan.org/modules/by-module/Test/Test-Filename-0.03.tar.gz
+	sha512sums = 7ceb0d06937b9701e45629008946fd125fa7a97386f0cbacd8571119ba68699db3acb999d973ed4e401a32ccacbd3ba1f51de7a8c93a95dff6b64605326be235
+
+pkgname = perl-test-filename
+
