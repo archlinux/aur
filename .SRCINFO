@@ -1,0 +1,16 @@
+pkgbase = lib32-vmaf
+	pkgdesc = Perceptual video quality assessment algorithm based on multi-method fusion
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/Netflix/vmaf/
+	arch = x86_64
+	license = BSD
+	makedepends = meson
+	makedepends = ninja
+	depends = vmaf
+	depends = lib32-gcc-libs
+	source = vmaf-1.5.1.tar.gz::https://github.com/Netflix/vmaf/archive/v1.5.1.tar.gz
+	sha256sums = 9267b40223ac8d67fb6b99726ce7ed3925b9843f18ad5aa8ffbe2fe873e45cbe
+
+pkgname = lib32-vmaf
+
