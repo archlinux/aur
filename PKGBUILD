@@ -4,7 +4,7 @@ pkgdesc="ROS - Placeholder package enabling generic export of media paths."
 url='https://wiki.ros.org/media_export'
 
 pkgname='ros-melodic-media-export'
-pkgver='0.2.0'
+pkgver='0.3.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=2
@@ -29,7 +29,7 @@ depends=(
 
 _dir="media_export-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/media_export/archive/${pkgver}.tar.gz")
-sha256sums=('ff340b95693331ddbd493ac2169a3a70192be2e862456ee6bb4cac6421bd3702')
+sha256sums=('ec8927fd7bf736c5ef24390d884dcf0ff3a2ecd3df16aef354e8a30ae2c5179f')
 
 build() {
 	# Use ROS environment variables.
@@ -49,9 +49,6 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
