@@ -6,6 +6,7 @@ pkgdesc='A Scream audio receiver using Pulseaudio, ALSA or stdout as audio outpu
 arch=('x86_64')
 provides=('scream-pulse' 'scream-ivshmem-pulse' 'scream-alsa' 'scream-ivshmem-alsa')
 depends=('libpulse' 'alsa-lib')
+makedepends=('cmake')
 conflicts=('scream-pulse' 'scream-alsa')
 url='https://github.com/duncanthrax/scream'
 license=('custom:MS-PL')
