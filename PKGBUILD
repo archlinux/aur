@@ -26,6 +26,7 @@ pkgver() {
 
 build() {
 	cd "${_gitname}"
+	git submodule update --init --recursive
 	./autogen.sh --prefix=/usr
 	make
 }
