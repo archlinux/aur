@@ -1,6 +1,6 @@
 pkgbase = petsc-git
-	pkgdesc = Portable, extensible toolkit for scientific computation
-	pkgver = 20191031
+	pkgdesc = Portable, extensible toolkit for scientific computation with MUMPS, Hypre, FFTW, HDF5, Scalapack, Suitesparse, Metis, Scotch, Superlu, OpenBLAS, Eigen, OpenMP, HWloc, CGNS, PNG, MED and trilinos
+	pkgver = 20200512
 	pkgrel = 1
 	url = https://www.mcs.anl.gov/petsc/
 	install = petsc.install
@@ -10,18 +10,38 @@ pkgbase = petsc-git
 	makedepends = gcc
 	makedepends = gcc-fortran
 	makedepends = cmake
+	makedepends = sowing
 	depends = python2
 	depends = openmpi
 	depends = boost
 	depends = lapack
 	depends = fftw
 	depends = hdf5
+	optdepends = hdf5: large files
+	optdepends = fftw: Fast-Fourier Transform
+	optdepends = openblas: Linear algebra libraries
+	optdepends = scalapack: Parallel memory linear algebra
+	optdepends = mumps: Sparse solver library
+	optdepends = hypre: Large and sparse linear with massive parallel computing
+	optdepends = suitesparse: Sparse matrix library
+	optdepends = metis: Partitioning library (for meshes)
+	optdepends = scotch: Partitioning with sparse matrices
+	optdepends = superlu: Subroutines for sparsse linear systems
+	optdepends = eigen: Lightweight C++ template library for vector and matrix math
+	optdepends = openmp: Parallel distributed tasks
+	optdepends = hwloc: Portable Hardware Locality (abstraction of hierarchical architectures)
+	optdepends = cgns: Recording and recovering computer data
+	optdepends = png
+	optdepends = med>=4.0: Data Modelization and Exchanges (meshes)
+	optdepends = boost: Free peer-reviewed portable C++ source libraries
+	optdepends = yaml: configuration files
+	optdepends = opencl: GPU computing
 	provides = petsc
 	conflicts = petsc
-	source = petsc::git+https://gitlab.com/petsc/petsc#branch=maint
-	source = patch.diff
+	source = petsc::git+https://gitlab.com/petsc/petsc.git#branch=maint
+	source = test_optdepends.sh
 	sha256sums = SKIP
-	sha256sums = fdf016437dd94f33316e734e35858476aeea1ca0f3ab4d0ee36029b016498de7
+	sha256sums = 2c21313b21b7a76ed4d39d040ef60462f8760ae3d4b76ff6aa717ebc43a2275b
 
 pkgname = petsc-git
 
