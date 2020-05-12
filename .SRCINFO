@@ -1,6 +1,6 @@
 pkgbase = libodiosacd
 	pkgdesc = SACD decoder (shared library)
-	pkgver = 20.5.11.9
+	pkgver = 20.5.11.10
 	pkgrel = 1
 	url = https://tari.in/www/software/libodiosacd
 	arch = i686
