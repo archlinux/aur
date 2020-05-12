@@ -1,0 +1,52 @@
+NetXMS source code has mixed licensing - most libraries licensed under 
+GNU Lesser General Public License (LGPL), and rest of the NetXMS components
+licensed under GNU General Public Lcense (GPL). There are also various
+third party libraries bundled with NetXMS source code, with different
+licensing. Detailed list of licensing per component is following:
+
+NetXMS components:
+
+libnetxms       LGPL
+libnxcl         LGPL
+libnxdb         LGPL
+libnxlp         LGPL
+libnxmap        LGPL
+libnxmb         GPL
+libnxsl         LGPL
+libnxsnmp       LGPL
+libnxsrv        LGPL
+nxagentd        GPL
+nxalarm         GPL
+nxav            GPL
+nxcon           GPL
+nxcptest        GPL
+nxevent         GPL
+nxflowd         GPL
+nxlexer         GPL
+nxlptest        GPL
+nxmibc          GPL
+nxnotify        GPL
+nxpush          GPL
+nxscript        GPL
+nxsms           GPL
+nxsnmpget       GPL
+nxsnmpset       GPL
+nxsnmpwalk      GPL
+nxuilib         GPL
+
+all subagents   GPL
+all DB drivers  GPL
+all notification channel drivers GPL
+
+
+Third party components bundled with NetXMS:
+
+libexpat        BSD-like
+libipfix        LGPL
+sqlite          BSD-like
+zlib            BSD-like
+
+
+Third party code within NetXMS:
+
+ICE		public domain
