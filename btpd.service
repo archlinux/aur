@@ -1,0 +1,11 @@
+[Unit]
+Description=BitTorrent Protocol Daemon
+After=network-up.target
+
+[Service]
+Type=simple
+User=btpd
+ExecStart=/usr/bin/btpd --no-daemon
+
+[Install]
+WantedBy=default.target
