@@ -1,15 +1,16 @@
-# Maintainer: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
 # Contributor: Matt Harrison <matt@mistbyte.com>
 
 _pkgname=ruby-haste
 pkgname=ruby-haste
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Simple client for uploading text to a haste-server (hastebin)'
 url='https://github.com/seejohnrun/haste-client'
 license=('MIT')
 source=("https://rubygems.org/downloads/haste-${pkgver}.gem")
-sha256sums=('d7b3e1c86233afaed58ca4fdb74d128d4e69cfb4fe7c139358f66f8c20023f77')
+sha256sums=('986048f20b22c8251dc775041ddba04a298b953ee0d09bb0046df34ef7045849')
 arch=('any')
 depends=('ruby' 'ruby-faraday' 'ruby-json')
 
