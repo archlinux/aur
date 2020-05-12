@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rqt-topic
 	pkgdesc = ROS - rqt_topic provides a GUI plugin for displaying debug information about ROS topics including publishers, subscribers, publishing rate, and ROS Messages.
-	pkgver = 0.4.10
+	pkgver = 0.4.11
 	pkgrel = 2
 	url = https://wiki.ros.org/rqt_topic
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = ros-melodic-rqt-topic
 	depends = ros-melodic-python-qt-binding
 	depends = ros-melodic-rqt-gui
 	depends = python-rospkg
-	source = ros-melodic-rqt-topic-0.4.10.tar.gz::https://github.com/ros-visualization/rqt_topic/archive/0.4.10.tar.gz
-	sha256sums = 7188a185e7b513a74f0eae313424fb1b977022d2fea778b81232082ee6879f0a
+	source = ros-melodic-rqt-topic-0.4.11.tar.gz::https://github.com/ros-visualization/rqt_topic/archive/0.4.11.tar.gz
+	sha256sums = 1e481531a9259880193fb076b09408294f8ac5898fd984f1ba8950a3b340cbb3
 
 pkgname = ros-melodic-rqt-topic
 

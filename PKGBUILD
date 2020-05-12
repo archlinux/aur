@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_topic provides a GUI plugin for displaying debug information 
 url='https://wiki.ros.org/rqt_topic'
 
 pkgname='ros-melodic-rqt-topic'
-pkgver='0.4.10'
+pkgver='0.4.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=2
@@ -35,7 +35,7 @@ depends=(
 
 _dir="rqt_topic-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_topic/archive/${pkgver}.tar.gz")
-sha256sums=('7188a185e7b513a74f0eae313424fb1b977022d2fea778b81232082ee6879f0a')
+sha256sums=('1e481531a9259880193fb076b09408294f8ac5898fd984f1ba8950a3b340cbb3')
 
 build() {
 	# Use ROS environment variables.
