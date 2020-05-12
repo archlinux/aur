@@ -1,14 +1,14 @@
 pkgbase = english-wordnet
 	pkgdesc = A fork of the Princeton Wordnet developed under an open source methodology.
-	pkgver = 2019
-	pkgrel = 2
+	pkgver = 2020
+	pkgrel = 1
 	url = https://en-word.net/
 	arch = i686
 	arch = x86_64
 	license = custom
 	provides = wordnet-common
 	conflicts = wordnet-common
-	source = https://en-word.net/static/english-wordnet-2019.zip
+	source = https://en-word.net/static/english-wordnet-2020.zip
 	source = https://raw.githubusercontent.com/globalwordnet/english-wordnet/master/LICENSE.md
 	sha256sums = b299b0a179a8a64678af3740ee4a9ce176d61de84013fd84a644f664f92e3221
 	sha256sums = e7b867b3c3e8910315b3386cb0e17d4b57b2bc9f251213deeb02571a7ac2610a
