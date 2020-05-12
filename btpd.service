@@ -5,7 +5,6 @@ After=network-up.target
 
 [Service]
 Type=simple
-User=btpd
 ExecStart=/usr/bin/btpd --no-daemon
 
 [Install]
