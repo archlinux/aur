@@ -8,9 +8,10 @@ arch=('x86_64')
 url='https://go-city.github.io'
 license=('MIT')
 provides=('gocity')
-makedepends=('go')
+depends=('glibc')
+makedepends=('go-pie')
 source=("gocity-${pkgver}.tar.gz::https://github.com/rodrigo-brito/gocity/archive/v${pkgver}.tar.gz")
-md5sums=('7387d4727740f49f374d91aea14d7b43')
+sha256sums=('dfe6cc9b7845f47d4850b1d30fe5246a40e2635d71824a29dbb13bffce2d40a2')
 
 build() {
   cd "${srcdir}/gocity-${pkgver}"
