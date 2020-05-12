@@ -1,0 +1,14 @@
+pkgbase = wayland-screenshot-git
+	pkgver = 1.0.1.r0.06a4114
+	pkgrel = 1
+	url = https://github.com/onokatio/wayland-screenshot
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = wayland-screenshot
+	conflicts = wayland-screenshot
+	source = git+https://github.com/onokatio/wayland-screenshot
+	md5sums = SKIP
+
+pkgname = wayland-screenshot-git
+
