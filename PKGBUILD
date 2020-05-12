@@ -4,10 +4,10 @@
 pkgname=freeorion
 pkgver=0.4.9
 pkgrel=5
-pkgdesc='FreeOrion is a free, Open Source, turn-based space empire and galactic conquest computer game'
+pkgdesc='A free, Open Source, turn-based space empire and galactic conquest computer game'
 url='https://www.freeorion.org'
 arch=('i686' 'x86_64')
-license=('GPL-2.0')
+license=('GPL2')
 depends=('boost-libs'
          'python2'
          'sdl2'
@@ -17,9 +17,9 @@ depends=('boost-libs'
          'hicolor-icon-theme'
          'freetype2')
 makedepends=('boost' 'cmake')
-conflicts=('freeorion-git')
-source=("https://github.com/freeorion/freeorion/archive/v${pkgver}.tar.gz")
-md5sums=('66e11dfeb836ea04474a8539713737ee')
+conflicts=('freeorion-git' 'freeorion-bin')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/freeorion/freeorion/archive/v${pkgver}.tar.gz")
+sha256sums=('bf16ecfe73e5f14f2fba0e4d30f10111051ec88806f97361ab3f4e1fdac1f512')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

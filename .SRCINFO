@@ -1,11 +1,11 @@
 pkgbase = freeorion
-	pkgdesc = FreeOrion is a free, Open Source, turn-based space empire and galactic conquest computer game
+	pkgdesc = A free, Open Source, turn-based space empire and galactic conquest computer game
 	pkgver = 0.4.9
 	pkgrel = 5
 	url = https://www.freeorion.org
 	arch = i686
 	arch = x86_64
-	license = GPL-2.0
+	license = GPL2
 	makedepends = boost
 	makedepends = cmake
 	depends = boost-libs
@@ -17,8 +17,9 @@ pkgbase = freeorion
 	depends = hicolor-icon-theme
 	depends = freetype2
 	conflicts = freeorion-git
-	source = https://github.com/freeorion/freeorion/archive/v0.4.9.tar.gz
-	md5sums = 66e11dfeb836ea04474a8539713737ee
+	conflicts = freeorion-bin
+	source = freeorion-0.4.9.tar.gz::https://github.com/freeorion/freeorion/archive/v0.4.9.tar.gz
+	sha256sums = bf16ecfe73e5f14f2fba0e4d30f10111051ec88806f97361ab3f4e1fdac1f512
 
 pkgname = freeorion
 
