@@ -2,10 +2,10 @@
 
 _pkgname=xfburn
 pkgname=${_pkgname}-git
-pkgver=0.6.1+4+gcc3a8cd
+pkgver=0.6.2+28+g59cefd8
 pkgrel=1
 pkgdesc="A simple CD/DVD burning tool based on libburnia libraries (git checkout)"
-arch=('x86_64' 'i686' 'armv7h' 'armv6h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="http://goodies.xfce.org/projects/applications/xfburn"
 license=('GPL')
 groups=('xfce4-goodies')
@@ -14,12 +14,12 @@ depends=('libburn' 'libisofs' 'gtk3' 'libxfce4ui' 'exo' 'gst-plugins-base-libs'
 makedepends=('intltool' 'git')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
-source=("git://git.xfce.org/apps/${_pkgname}")
+source=("${_pkgname}::git+https://gitlab.xfce.org/apps/${_pkgname}")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/-/+/g"
+  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
 build() {

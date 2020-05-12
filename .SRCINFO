@@ -1,12 +1,11 @@
 pkgbase = xfburn-git
 	pkgdesc = A simple CD/DVD burning tool based on libburnia libraries (git checkout)
-	pkgver = 0.6.1+4+gcc3a8cd
+	pkgver = 0.6.2+28+g59cefd8
 	pkgrel = 1
 	url = http://goodies.xfce.org/projects/applications/xfburn
 	arch = x86_64
 	arch = i686
 	arch = armv7h
-	arch = armv6h
 	arch = aarch64
 	groups = xfce4-goodies
 	license = GPL
@@ -20,9 +19,9 @@ pkgbase = xfburn-git
 	depends = gst-plugins-base-libs
 	depends = libgudev
 	depends = desktop-file-utils
-	provides = xfburn=0.6.1
+	provides = xfburn=0.6.2
 	conflicts = xfburn
-	source = git://git.xfce.org/apps/xfburn
+	source = xfburn::git+https://gitlab.xfce.org/apps/xfburn
 	sha256sums = SKIP
 
 pkgname = xfburn-git
