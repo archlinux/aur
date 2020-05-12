@@ -1,7 +1,7 @@
 # Maintainer: Christopher Fair  <christopherpfair@comcast.net>
 pkgname=checkpwn
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Checks whether the account or the password is on the list of compromised accounts."
 arch=('i686' 'x86_64')
 url="https://github.com/chrisfair/checkpwn/"
