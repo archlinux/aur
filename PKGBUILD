@@ -4,7 +4,7 @@ pkgdesc="ROS - Lisp client library for ROS, the Robot Operating System."
 url='https://wiki.ros.org/roslisp'
 
 pkgname='ros-melodic-roslisp'
-pkgver='1.9.22'
+pkgver='1.9.24'
 arch=('any')
 pkgrel=2
 license=('BSD')
@@ -33,7 +33,7 @@ depends=(
 
 _dir="roslisp-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/roslisp/archive/${pkgver}.tar.gz")
-sha256sums=('23164ff090ba09d6ad67ad34bdf3c24662d0fdb59a81af8a69ab2827793a77e4')
+sha256sums=('5b6fdbf3047172f542ac00e45f26c708766fb724bc5b270e236341f7b555d45d')
 
 build() {
 	# Use ROS environment variables.
