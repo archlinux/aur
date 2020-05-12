@@ -4,7 +4,7 @@ pkgdesc="ROS - Python library to assist in publishing markers easily."
 url='https://wiki.ros.org/easy_markers'
 
 pkgname='ros-melodic-easy-markers'
-pkgver='0.2.4'
+pkgver='0.2.6'
 arch=('any')
 pkgrel=2
 license=('BSD')
@@ -36,7 +36,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="wu_ros_tools-${pkgver}/easy_markers"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/DLu/wu_ros_tools/archive/${pkgver}.tar.gz")
-sha256sums=('fd0bb39a69302dae5ccfd565277209719a4199644fc8265a2ae7ccedd92c004a')
+sha256sums=('27323d7584aed0782d4b64ca4f1955b237ff3b41736d075d29a9c825a8f55366')
 
 build() {
   # Use ROS environment variables
@@ -56,9 +56,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
-        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
