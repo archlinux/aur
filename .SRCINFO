@@ -1,0 +1,16 @@
+pkgbase = tilemap-studio
+	pkgdesc = A tilemap editor for Game Boy, GBC, GBA, or SNES projects.
+	pkgver = 3.1.0.1
+	pkgrel = 1
+	url = http://www.fltk.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = fltk-mod
+	source = tilemap-studio::git+https://github.com/Rangi42/tilemap-studio.git
+	sha256sums = SKIP
+
+pkgname = tilemap-studio
+
