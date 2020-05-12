@@ -2,18 +2,18 @@
 
 _target=mips64-ultra-elf
 pkgname=${_target}-newlib
-_newlibver=3.1.0
-pkgver=3.1.0_r110.23a6b60
+_newlibver=3.3.0
+pkgver=3.3.0_r128.79c3ef4
 pkgrel=1
 pkgdesc="A C library intended for use on embedded systems (${_target})"
 arch=('any')
 url='http://sourceware.org/newlib/'
 license=('BSD')
-makedepends=("${_target}-gcc-stage1")
+makedepends=("${_target}-gcc-stage1" "git")
 options=( '!strip' '!emptydirs')
 source=("ftp://sourceware.org/pub/newlib/newlib-${_newlibver}.tar.gz"
         "git+https://github.com/glankk/n64.git#branch=n64-ultra")
-sha256sums=('fb4fa1cc21e9060719208300a61420e4089d6de6ef59cf533b57fe74801d102a'
+sha256sums=('58dd9e3eaedf519360d92d84205c3deef0b3fc286685d1c562e245914ef72c66'
             'SKIP')
 
 pkgver() {
