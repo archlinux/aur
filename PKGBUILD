@@ -2,7 +2,7 @@
 # Maintainer: Angelo Theodorou <encelo at gmail dot com>
 
 pkgname=tracy
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Real-time, nanosecond resolution frame profiler"
 arch=('i686' 'x86_64')
