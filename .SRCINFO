@@ -1,14 +1,14 @@
 pkgbase = lib32-ldb
 	pkgdesc = A schema-less, ldap like, API and database
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://ldb.samba.org/
 	arch = x86_64
 	license = GPL3
 	makedepends = lib32-cmocka
 	depends = lib32-talloc
 	depends = lib32-tevent
-	depends = lib32-tdb>=1.4.3
+	depends = lib32-tdb-temp>=1.4.3
 	depends = lib32-popt
 	depends = lib32-libbsd
 	depends = ldb
