@@ -4,7 +4,7 @@ pkgdesc="ROS - Common-Lisp ROS message and service generators."
 url='https://www.wiki.ros.org/roslisp'
 
 pkgname='ros-melodic-genlisp'
-pkgver='0.4.17'
+pkgver='0.4.16'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -30,7 +30,7 @@ depends=(
 
 _dir="genlisp-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/genlisp/archive/${pkgver}.tar.gz")
-sha256sums=('5c8ff147025f45a2e0b240de349ce85399d0f1d6c5046f4914ad7a67c530ed69')
+sha256sums=('31d3b86a0e3c0517b743a5c74dc3fe4a533ea22fdd1481b7432aa5f7b7800a0d')
 
 build() {
 	# Use ROS environment variables.
@@ -50,9 +50,6 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
