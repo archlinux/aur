@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rqt-py-common
 	pkgdesc = ROS - rqt_py_common provides common functionality for rqt plugins written in Python.
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 2
 	url = https://wiki.ros.org/rqt_py_common
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = ros-melodic-rqt-py-common
 	depends = ros-melodic-python-qt-binding
 	depends = ros-melodic-rospy
 	depends = ros-melodic-roslib
-	source = ros-melodic-rqt-py-common-0.5.0.tar.gz::https://github.com/ros-visualization/rqt/archive/0.5.0.tar.gz
-	sha256sums = 3f62f90db254e111483b9a7cb9d486d0bf07c863b2a987808dc3636ee7004c22
+	source = ros-melodic-rqt-py-common-0.5.1.tar.gz::https://github.com/ros-visualization/rqt/archive/0.5.1.tar.gz
+	sha256sums = 8b6da1e559fd692c0cec924d857812e47e2febb34699de1b35f2f5da26ac36f7
 
 pkgname = ros-melodic-rqt-py-common
 

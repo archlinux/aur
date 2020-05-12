@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_py_common provides common functionality for rqt plugins writt
 url='https://wiki.ros.org/rqt_py_common'
 
 pkgname='ros-melodic-rqt-py-common'
-pkgver='0.5.0'
+pkgver='0.5.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=2
@@ -39,7 +39,7 @@ depends=(
 
 _dir="rqt-${pkgver}/rqt_py_common"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt/archive/${pkgver}.tar.gz")
-sha256sums=('3f62f90db254e111483b9a7cb9d486d0bf07c863b2a987808dc3636ee7004c22')
+sha256sums=('8b6da1e559fd692c0cec924d857812e47e2febb34699de1b35f2f5da26ac36f7')
 
 build() {
 	# Use ROS environment variables.
