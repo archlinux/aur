@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=trufont
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc='A streamlined and hackable font editor'
 arch=('any')
@@ -29,7 +29,7 @@ _pydeps=('appdirs'
 depends=('python' "${_pydeps[@]/#/python-}")
 makedepends=('git' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.zip")
-sha256sums=('2a28ad178cbdd208a37ed91cb78f70756657f0c2c4da580d15f79cc589cb83c6')
+sha256sums=('dc39c4704fbbd69e58a2cba0ea7c647473906ac05c5931cda84de43a64eb0887')
 
 build() {
     cd "$pkgname-$pkgver"
