@@ -1,7 +1,7 @@
 pkgbase = youdao-dict
 	pkgdesc = YouDao Dictionary
 	pkgver = 6.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cidian.youdao.com/
 	arch = i686
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = youdao-dict
 	depends = qt5-webkit
 	depends = qt5-graphicaleffects
 	depends = qt5-quickcontrols
+	depends = qt5-multimedia
 	source_i686 = http://codown.youdao.com/cidian/linux/youdao-dict_6.0.0_i386.tar.gz
 	sha256sums_i686 = d1ff404f1e465d6a196b566294ddfea1a1bfe4568226201b65d74236407152fc
 	source_x86_64 = http://codown.youdao.com/cidian/linux/youdao-dict-6.0.0-amd64.tar.gz
