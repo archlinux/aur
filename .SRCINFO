@@ -1,0 +1,15 @@
+pkgbase = perl-string-copyright
+	pkgdesc = Representation of text-based copyright statements
+	pkgver = 0.003006
+	pkgrel = 1
+	url = https://salsa.debian.org/build-common-team/string-copyright
+	arch = any
+	license = GPL3
+	depends = perl
+	depends = perl-exporter-tiny
+	depends = perl-number-range
+	source = https://www.cpan.org/modules/by-module/String/String-Copyright-0.003006.tar.gz
+	sha512sums = 7852d96cbe465dde14b4c093f77374b530967412ef95a98703fe838511e405ea9744e4dbfa314bc5a33fc23b160d8a4866654ad60da1bfb07853263f1c11cd3f
+
+pkgname = perl-string-copyright
+
