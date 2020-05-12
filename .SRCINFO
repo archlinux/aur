@@ -1,7 +1,7 @@
 pkgbase = github-cli-bin
 	pkgdesc = The official GitHub CLI - binary
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cli/cli
 	arch = x86_64
 	license = MIT
