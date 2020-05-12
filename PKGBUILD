@@ -2,14 +2,13 @@
 
 pkgname='cannelloni-git'
 pkgdesc='SocketCAN over ethernet tunnel'
-pkgver=0.1
+pkgver=v1.0.0
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/mguentner/cannelloni'
 license=('gpl2')
-depends=('')
 makedepends=('cmake')
-
+optdepends=('lksctp-tools: more reliable SCTP tunnels')
 source=('git+https://github.com/mguentner/cannelloni.git')
 sha512sums=('SKIP')
 
