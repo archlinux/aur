@@ -6,7 +6,7 @@ pkgdesc='Openbox menu editor. Written in Python 3 and GTK3'
 arch=('any')
 url="https://github.com/0x10/obmenu2"
 license=('MIT')
-depends=('python37' 'python-gobject' 'gtk3')
+depends=('python3' 'python-gobject' 'gtk3')
 makedepends=('git')
 conflicts=('obmenu' 'obmenu3')
 source=('git+https://github.com/0x10/obmenu2')
@@ -22,5 +22,6 @@ package() {
   cd "$srcdir/obmenu2"
   cp -r obmenu2 "$pkgdir/usr/bin/obmenu"
   chmod +x ${pkgdir}/usr/bin/obmenu
+  sed -i 's/python3.7/python3/g' ${pkgdir}/usr/bin/obmenu
 }
 
