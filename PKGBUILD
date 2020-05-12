@@ -1,7 +1,7 @@
 # Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
 pkgname=ocaml-gen
 pkgver=0.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Iterators for OCaml'
 license=('BSD')
 arch=('i686' 'x86_64')
@@ -15,8 +15,7 @@ sha256sums=('8246738ca19810192f005b6e350605aae5132a6a55848795ee1fa002addf1b06')
 build() {
     cd "${pkgname/ocaml-/}-$pkgver"
 
-    # TODO: Remove once gen supports building with dune. jbuilder is deprecated.
-    jbuilder build @install
+    dune build --release
 }
 
 package() {
