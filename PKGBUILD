@@ -2,7 +2,7 @@
 # Maintainer: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs
-pkgver=2020.1
+pkgver=2020.2
 pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
@@ -17,7 +17,7 @@ optdepends=('cuda: Nvidia GPU support'
 makedepends=('cmake' 'libxml2' 'hwloc' 'gcc8')
 options=('!libtool')
 source=(http://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-sha256sums=('e1666558831a3951c02b81000842223698016922806a8ce152e8f616e29899cf')
+sha256sums=('7465e4cd616359d84489d919ec9e4b1aaf51f0a4296e693c249e83411b7bd2f3')
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
