@@ -1,14 +1,14 @@
 pkgbase = python-mpv-jsonipc
 	pkgdesc = Python API to MPV using JSON IPC
-	pkgver = 1.1.9
+	pkgver = 1.1.10
 	pkgrel = 1
 	url = https://github.com/iwalton3/python-mpv-jsonipc
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
-	source = python-mpv-jsonipc-1.1.9.tar.gz::https://pypi.python.org/packages/source/p/python-mpv-jsonipc/python-mpv-jsonipc-1.1.9.tar.gz
-	md5sums = aee62aeaa80a0d99e4fa9a5af782a112
+	source = python-mpv-jsonipc-1.1.10.tar.gz::https://pypi.python.org/packages/source/p/python-mpv-jsonipc/python-mpv-jsonipc-1.1.10.tar.gz
+	md5sums = 0261879c502982b4c542b08aac96328f
 
 pkgname = python-mpv-jsonipc
 
