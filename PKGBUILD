@@ -7,9 +7,10 @@ pkgdesc="A simple, light-weight and modern task runner for general purpose"
 arch=('any')
 url='http://zaaack.github.io/foy'
 license=('MIT')
-makedepends=('yarn' 'npm')
-source=("https://github.com/zaaack/foy/archive/v${pkgver}.tar.gz")
-md5sums=('566c10753cf2ddbfea2530deafdd4836')
+depends=('nodejs')
+makedepends=('yarn')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zaaack/foy/archive/v${pkgver}.tar.gz")
+sha256sums=('484db37c31bb3980357c4782eb977b71fe2f7b78c8aede3632128666d85cd315')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
@@ -37,4 +38,5 @@ package() {
   mv "$tmppackage" "$pkgjson"
   chmod 644 "$pkgjson"
   chown -R root:root "${pkgdir}"
+  install -Dm644 "${pkgdir}/usr/lib/node_modules/@zaaack/foy/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

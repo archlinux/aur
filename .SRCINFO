@@ -6,9 +6,9 @@ pkgbase = foy
 	arch = any
 	license = MIT
 	makedepends = yarn
-	makedepends = npm
-	source = https://github.com/zaaack/foy/archive/v0.1.29.tar.gz
-	md5sums = 566c10753cf2ddbfea2530deafdd4836
+	depends = nodejs
+	source = foy-0.1.29.tar.gz::https://github.com/zaaack/foy/archive/v0.1.29.tar.gz
+	sha256sums = 484db37c31bb3980357c4782eb977b71fe2f7b78c8aede3632128666d85cd315
 
 pkgname = foy
 
