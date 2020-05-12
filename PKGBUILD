@@ -4,7 +4,7 @@ pkgdesc="ROS - A metapackage for geometry library suite."
 url='https://www.wiki.ros.org/geometry'
 
 pkgname='ros-melodic-geometry'
-pkgver='1.12.0'
+pkgver='1.12.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=2
@@ -34,7 +34,7 @@ depends=(
 
 _dir="geometry-${pkgver}/geometry"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry/archive/${pkgver}.tar.gz")
-sha256sums=('61a278bdd50e00ea442055d9f70eaf82b5a36916739edca188fa1b71a59507b4')
+sha256sums=('6eacc9bb8e22d55263b1ab06f5c764a33c230084a0520a7d14ddcb6ed5d33f04')
 
 build() {
 	# Use ROS environment variables.
@@ -54,9 +54,6 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }

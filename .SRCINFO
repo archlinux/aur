@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-geometry
 	pkgdesc = ROS - A metapackage for geometry library suite.
-	pkgver = 1.12.0
+	pkgver = 1.12.1
 	pkgrel = 2
 	url = https://www.wiki.ros.org/geometry
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = ros-melodic-geometry
 	depends = ros-melodic-tf-conversions
 	depends = ros-melodic-eigen-conversions
 	depends = ros-melodic-tf
-	source = ros-melodic-geometry-1.12.0.tar.gz::https://github.com/ros/geometry/archive/1.12.0.tar.gz
-	sha256sums = 61a278bdd50e00ea442055d9f70eaf82b5a36916739edca188fa1b71a59507b4
+	source = ros-melodic-geometry-1.12.1.tar.gz::https://github.com/ros/geometry/archive/1.12.1.tar.gz
+	sha256sums = 6eacc9bb8e22d55263b1ab06f5c764a33c230084a0520a7d14ddcb6ed5d33f04
 
 pkgname = ros-melodic-geometry
 
