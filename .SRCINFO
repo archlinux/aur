@@ -5,9 +5,12 @@ pkgbase = nginx-mod-ct
 	url = https://github.com/grahamedgecombe/nginx-ct
 	arch = x86_64
 	license = ISC
-	depends = nginx=1.12.2
-	source = https://nginx.org/download/nginx-1.12.2.tar.gz
+	depends = nginx=1.18.0
+	source = https://nginx.org/download/nginx-1.18.0.tar.gz
+	source = https://nginx.org/download/nginx-1.18.0.tar.gz.asc
 	source = nginx-ct-1.3.2.tar.gz::https://github.com/grahamedgecombe/nginx-ct/archive/v1.3.2.tar.gz
+	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
+	sha256sums = 4c373e7ab5bf91d34a4f11a0c9496561061ba5eee6020db272a17a7228d35f99
 	sha256sums = SKIP
 	sha256sums = b4ceae549b9dbf84b2e511633982e4efeee0388e3b7a038a8bac555008a77b88
 
