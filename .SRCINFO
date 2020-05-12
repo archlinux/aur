@@ -1,0 +1,23 @@
+pkgbase = cryo
+	pkgdesc = A visual file manager with p2p file sharing
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://cryonet.io
+	arch = x86_64
+	license = custom:"Copyright (c) Manuel Pietschmann"
+	makedepends = xz
+	depends = hicolor-icon-theme
+	depends = tor
+	depends = libpng
+	depends = libexif
+	depends = libjpeg-turbo
+	depends = libsodium
+	depends = libraw
+	depends = sqlite
+	source_x86_64 = cryo-0.5.0-x86_64.deb::https://cryonet.io/downloads/linux/cryo_0.5.0_amd64.deb
+	source_x86_64 = cryo-0.5.0-x86_64.deb.sig::https://cryonet.io/downloads/linux/cryo_0.5.0_amd64.deb.sig
+	sha256sums_x86_64 = 1f5eb1a8b5d850d16643b8924b1a627c76af51806005f034290f45aab924501b
+	sha256sums_x86_64 = 5d6420ddd74c5b19965bc987271209912c0eab427c4a603465036d3065b5f6c8
+
+pkgname = cryo
+
