@@ -2,7 +2,7 @@ pkgdesc="ROS - 3D visualization tool for ROS."
 url='https://wiki.ros.org/rviz'
 
 pkgname='ros-melodic-rviz'
-pkgver='1.13.7'
+pkgver='1.13.12'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=3
 license=('BSD, Creative Commons')
@@ -88,7 +88,7 @@ depends=(
 
 _dir="rviz-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rviz/archive/${pkgver}.tar.gz")
-sha256sums=('d02b797ddddb22844f6d37b19112959774867da95b58ac4a09169747e0c42152')
+sha256sums=('d9d3071d3528d74cb3f466724e48597db28c0ec05dbc84c71cae88d001524d4a')
 
 build() {
 	# Use ROS environment variables.
