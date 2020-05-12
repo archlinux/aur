@@ -1,0 +1,34 @@
+pkgbase = rainloop-webmail
+	pkgdesc = modern PHP webmail client
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://www.rainloop.net
+	arch = any
+	makedepends = nodejs
+	makedepends = yarn
+	makedepends = gulp
+	depends = php-fpm
+	optdepends = mariadb: storage backend for contacts
+	optdepends = php-pgsql: storage backend for contacts
+	optdepends = php-sqlite: storage backend for contacts
+	source = rainloop-webmail-1.14.0.tar.gz::https://github.com/RainLoop/rainloop-webmail/archive/v1.14.0.tar.gz
+	source = rainloop-webmail.sysusers
+	source = rainloop-webmail.tmpfiles
+	source = LICENSE
+	sha512sums = 9fd953ac018ac57eeebb8c9a7a2d57013e988d1608edb5bbc2a3059ccff4f0cd4762687d0eacaefa67c9e9083995239817080f6f573cbcc63fda622f58e3a484
+	sha512sums = 291c1026ce0538e96938167f1f295205a06c94d0d8b8c359d456d56fd24bb3b2c71b01204fb8bf0c2386e8db31634b205128c6cf6294e6b4cb96944f842cb34f
+	sha512sums = 6c2bda521911642d0e9c45a951789fc4d4d7f1ffee30b8097e49f9d4c0d8454e91de245a0db59ebaa536e9c39a236a8b6aadc0d918a1d08161894a02878940d7
+	sha512sums = 380e99754654aa08cca5038c2b4e62b9391fd83b4ece2d988fb3a19f3028efb8155565844d153b62d82451aa1cfa6cf924d4e620867b9e1abf871b7ec9aab5bf
+
+pkgname = rainloop-webmail-community
+	pkgdesc = modern PHP webmail client (community)
+	license = AGPL3
+	provides = rainloop-webmail
+	conflicts = rainloop-webmail-standard
+
+pkgname = rainloop-webmail-standard
+	pkgdesc = modern PHP webmail client (standard)
+	license = custom:rainloop
+	provides = rainloop-webmail
+	conflicts = rainloop-webmail-community
+
