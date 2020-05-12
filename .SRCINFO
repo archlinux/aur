@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-kdl-conversions
 	pkgdesc = ROS - Conversion functions between KDL and geometry_msgs types.
-	pkgver = 1.12.0
+	pkgver = 1.12.1
 	pkgrel = 2
 	url = https://wiki.ros.org/kdl_conversions
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = ros-melodic-kdl-conversions
 	makedepends = ros-melodic-geometry-msgs
 	depends = ros-melodic-orocos-kdl
 	depends = ros-melodic-geometry-msgs
-	source = ros-melodic-kdl-conversions-1.12.0.tar.gz::https://github.com/ros/geometry/archive/1.12.0.tar.gz
-	sha256sums = 61a278bdd50e00ea442055d9f70eaf82b5a36916739edca188fa1b71a59507b4
+	source = ros-melodic-kdl-conversions-1.12.1.tar.gz::https://github.com/ros/geometry/archive/1.12.1.tar.gz
+	sha256sums = 6eacc9bb8e22d55263b1ab06f5c764a33c230084a0520a7d14ddcb6ed5d33f04
 
 pkgname = ros-melodic-kdl-conversions
 
