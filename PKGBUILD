@@ -3,7 +3,7 @@
 # Contributor: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=networkmanager-libreswan-git
-pkgver=1.2.13.dev.r4.g7b80074
+pkgver=1.2.13.dev.r13.g7002cd7
 pkgrel=1
 pkgdesc="NetworkManager IPSec VPN plugin for Libreswan"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ build() {
   cd $srcdir/NetworkManager-libreswan
 
   ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --libexecdir=/usr/lib/networkmanager \
+    --libexecdir=/usr/lib/NetworkManager \
     --enable-more-warnings=yes \
     --disable-static
   make
