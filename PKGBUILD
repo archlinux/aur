@@ -4,7 +4,7 @@ pkgdesc="ROS - forward_command_controller."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-melodic-forward-command-controller'
-pkgver='0.15.0'
+pkgver='0.16.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -37,7 +37,7 @@ depends=(
 
 _dir="ros_controllers-${pkgver}/forward_command_controller"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_controllers/archive/${pkgver}.tar.gz")
-sha256sums=('8c19481a28f394d5bf4372fb05a6c638fa2995614f9b0f82b8213ca32d15a4cf')
+sha256sums=('cf43c389f2c29e9597d46a5ff7ce33af48278dbb697209887249dd3a7682257a')
 
 build() {
 	# Use ROS environment variables.
@@ -57,9 +57,6 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
