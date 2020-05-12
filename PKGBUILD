@@ -4,7 +4,7 @@ pkgdesc="ROS - A collection of .mk include files for building ROS architectural 
 url='https://wiki.ros.org/mk'
 
 pkgname='ros-melodic-mk'
-pkgver='1.14.6'
+pkgver='1.14.8'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -27,9 +27,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="ros-${pkgver}/core/mk"
+_dir="ros-${pkgver}/mk"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros/archive/${pkgver}.tar.gz")
-sha256sums=('62f1350271a76bc35794c2cdb741cdae2ba096c96a924dba025aed4f561c978c')
+sha256sums=('998c79df7d7ce015eee28fb768b28b68cc37a98b4a4b8daef16a1280cccb5bee')
 
 build() {
 	# Use ROS environment variables.
@@ -49,9 +49,6 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
