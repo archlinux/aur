@@ -1,0 +1,13 @@
+pkgbase = perl-array-intspan
+	pkgdesc = Module for handling arrays using integer ranges
+	pkgver = 2.004
+	pkgrel = 1
+	url = https://github.com/dod38fr/array-intspan-perl
+	arch = any
+	license = Artistic2.0
+	depends = perl
+	source = https://www.cpan.org/modules/by-module/Array/Array-IntSpan-2.004.tar.gz
+	sha512sums = 52f210e3beec0c1839baa51d68456c6aafbf9764e938f366317895ec26a6101bd4c83b738cf80326bdf975d68e01a796c1fc6ca3c9584ec50aaa45b3e8d7c7ba
+
+pkgname = perl-array-intspan
+
