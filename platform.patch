@@ -1,0 +1,151 @@
+diff -r e99ac8ce1ce7 genie.lua
+--- a/genie.lua	Sat May 09 22:42:09 2020 +0200
++++ b/genie.lua	Tue May 12 16:01:56 2020 +0200
+@@ -88,6 +88,10 @@
+     .. " engine passes option objcarcopts coverage support lto coroutines"
+     .. " webassembly")
+ local LLVM_INCLUDEDIR = pkg_config(LLVM_CONFIG .. " --includedir")
++local CLANG_INCLUDEDIR = pkg_config(LLVM_CONFIG .. " --prefix")[1]
++  .. "/lib/clang/"
++  .. pkg_config(LLVM_CONFIG .. " --version")[1]
++  .. "/include"
+ 
+ if not os.is("windows") then
+     premake.gcc.cxx = CLANG_CXX
+@@ -204,7 +208,6 @@
+     includedirs {
+         "external/linenoise-ng/include",
+         "external",
+-        "SPIRV-Tools/include",
+         "include",
+         "."
+     }
+@@ -218,6 +221,7 @@
+     targetdir "bin"
+     defines {
+         "SPIRV_CROSS_EXCEPTIONS_TO_ASSERTIONS",
++        "CLANG_INCLUDE_DIR=\"" .. CLANG_INCLUDEDIR .. "\"",
+         "SCOPESRT_IMPL"
+     }
+ 
+@@ -229,7 +233,7 @@
+         }
+ 
+         buildoptions_cpp {
+-            "-std=c++11",
++            "-std=c++14",
+             "-fno-rtti",
+             "-fno-exceptions",
+             "-ferror-limit=1",
+@@ -278,23 +282,12 @@
+             --"-Wl,--export-dynamic",
+             --"-rdynamic",
+ 
+-            THISDIR .. "/SPIRV-Tools/build/source/opt/libSPIRV-Tools-opt.a",
+-            THISDIR .. "/SPIRV-Tools/build/source/libSPIRV-Tools.a"
++            "-lSPIRV-Tools-opt",
++            "-lSPIRV-Tools"
+         }
+         linkoptions(LLVM_LDFLAGS)
+         linkoptions {
+-            "-lclangCodeGen",
+-            "-lclangFrontend",
+-            "-lclangDriver",
+-            "-lclangSerialization",
+-            "-lclangParse",
+-            "-lclangSema",
+-            "-lclangAnalysis",
+-            "-lclangEdit",
+-            "-lclangASTMatchers",
+-            "-lclangAST",
+-            "-lclangLex",
+-            "-lclangBasic"
++            "-lclang-cpp"
+         }
+         --linkoptions { "-Wl,--whole-archive" }
+         linkoptions(LLVM_LIBS)
+@@ -370,23 +363,12 @@
+             "-Wl,--stack,8388608"
+         }
+         linkoptions {
+-            THISDIR .. "/SPIRV-Tools/build/source/opt/libSPIRV-Tools-opt.a",
+-            THISDIR .. "/SPIRV-Tools/build/source/libSPIRV-Tools.a"
++            "-lSPIRV-Tools-opt",
++            "-lSPIRV-Tools"
+         }
+         linkoptions(LLVM_LDFLAGS)
+         linkoptions {
+-            "-lclangCodeGen",
+-            "-lclangFrontend",
+-            "-lclangDriver",
+-            "-lclangSerialization",
+-            "-lclangParse",
+-            "-lclangSema",
+-            "-lclangAnalysis",
+-            "-lclangEdit",
+-            "-lclangASTMatchers",
+-            "-lclangAST",
+-            "-lclangLex",
+-            "-lclangBasic"
++            "-lclang-cpp"
+         }
+         linkoptions(LLVM_LIBS)
+ 
+@@ -441,25 +423,14 @@
+         }
+ 
+         linkoptions {
+-            THISDIR .. "/SPIRV-Tools/build/source/opt/libSPIRV-Tools-opt.a",
+-            THISDIR .. "/SPIRV-Tools/build/source/libSPIRV-Tools.a"
++            "-lSPIRV-Tools-opt",
++            "-lSPIRV-Tools"
+         }
+ 
+         linkoptions(LLVM_LDFLAGS)
+ 
+         linkoptions {
+-            "-lclangFrontend",
+-            "-lclangDriver",
+-            "-lclangSerialization",
+-            "-lclangCodeGen",
+-            "-lclangParse",
+-            "-lclangSema",
+-            "-lclangAnalysis",
+-            "-lclangEdit",
+-            "-lclangASTMatchers",
+-            "-lclangAST",
+-            "-lclangLex",
+-            "-lclangBasic"
++            "-lclang-cpp"
+         }
+ 
+         linkoptions(LLVM_LIBS)
+diff -r e99ac8ce1ce7 src/boot.cpp
+--- a/src/boot.cpp	Sat May 09 22:42:09 2020 +0200
++++ b/src/boot.cpp	Tue May 12 16:01:56 2020 +0200
+@@ -227,7 +227,11 @@
+         char *path_copy = strdup(scopes_compiler_path);
+         scopes_compiler_dir = format("%s/..", dirname(path_copy))->data;
+         free(path_copy);
++#ifdef CLANG_INCLUDE_DIR
++        scopes_clang_include_dir = CLANG_INCLUDE_DIR;
++#else
+         scopes_clang_include_dir = format("%s/lib/clang/include", scopes_compiler_dir)->data;
++#endif
+         scopes_include_dir = format("%s/include", scopes_compiler_dir)->data;
+     }
+ 
+diff -r e99ac8ce1ce7 src/c_import.cpp
+--- a/src/c_import.cpp	Sat May 09 22:42:09 2020 +0200
++++ b/src/c_import.cpp	Tue May 12 16:01:56 2020 +0200
+@@ -831,8 +831,8 @@
+ 
+     std::vector< std::unique_ptr<clang::ASTConsumer> > consumers;
+     consumers.push_back(clang::EmitLLVMOnlyAction::CreateASTConsumer(CI, InFile));
+-    consumers.push_back(llvm::make_unique<CodeGenProxy>(*this));
+-    return llvm::make_unique<clang::MultiplexConsumer>(std::move(consumers));
++    consumers.push_back(std::make_unique<CodeGenProxy>(*this));
++    return std::make_unique<clang::MultiplexConsumer>(std::move(consumers));
+ }
+ 
+ static std::vector<LLVMModuleRef> llvm_c_modules;

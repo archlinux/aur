@@ -1,6 +1,6 @@
 pkgbase = scopes-hg
 	pkgdesc = Scopes is a retargetable programming language & infrastructure
-	pkgver = r2066+.2ebf65df42a1+
+	pkgver = r2177+.e99ac8ce1ce7+
 	pkgrel = 1
 	url = https://scopes.rocks
 	arch = x86_64
@@ -15,12 +15,12 @@ pkgbase = scopes-hg
 	depends = spirv-tools
 	provides = scopes
 	conflicts = scopes
-	source = hg+https://hg@bitbucket.org/duangle/scopes
-	source = SPIRV-Cross.tar.gz::https://github.com/KhronosGroup/SPIRV-Cross/archive/2019-04-26.tar.gz
-	source = system-paths.patch
+	source = hg+https://hg.sr.ht/~duangle/scopes
+	source = SPIRV-Cross.tar.gz::https://github.com/KhronosGroup/SPIRV-Cross/archive/2020-04-03.tar.gz
+	source = platform.patch
 	md5sums = SKIP
-	md5sums = 844c06fc801d321e060fd761b56fc246
-	md5sums = afc47bda64dff9f2ab463e493b49063c
+	md5sums = 565918e1380ad47c402a542ae7a5e630
+	md5sums = 1d932ff8891475446941ee5ec9b53734
 
 pkgname = scopes-hg
 

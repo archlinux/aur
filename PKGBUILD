@@ -2,7 +2,7 @@
 
 _pkgname=scopes
 pkgname=${_pkgname}-hg
-pkgver=r2066+.2ebf65df42a1+
+pkgver=r2177+.e99ac8ce1ce7+
 pkgrel=1
 pkgdesc="Scopes is a retargetable programming language & infrastructure"
 url="https://scopes.rocks"
@@ -13,12 +13,12 @@ makedepends=('mercurial' 'llvm' 'genie-git' 'make' 'cmake' 'spirv-headers')
 conflicts=('scopes')
 provides=('scopes')
 
-source=('hg+https://hg@bitbucket.org/duangle/scopes'
-        'SPIRV-Cross.tar.gz::https://github.com/KhronosGroup/SPIRV-Cross/archive/2019-04-26.tar.gz'
-        'system-paths.patch')
+source=('hg+https://hg.sr.ht/~duangle/scopes'
+        'SPIRV-Cross.tar.gz::https://github.com/KhronosGroup/SPIRV-Cross/archive/2020-04-03.tar.gz'
+        'platform.patch')
 md5sums=('SKIP'
-         '844c06fc801d321e060fd761b56fc246'
-         'afc47bda64dff9f2ab463e493b49063c')
+         '565918e1380ad47c402a542ae7a5e630'
+         '1d932ff8891475446941ee5ec9b53734')
 
 prepare() {
   rm -rf "${srcdir}/${_pkgname}"/SPIRV-Cross
