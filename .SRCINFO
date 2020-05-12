@@ -1,21 +1,20 @@
 pkgbase = tlpui-git
-	pkgdesc = A GTK-UI to change TLP configuration files easily. It has the aim to protect users from setting bad configuration and to deliver a basic overview of all the valid configuration values.
-	pkgver = 0.r88.ab1183a
-	pkgrel = 3
+	pkgdesc = A GTK user interface for TLP written in Python
+	pkgver = 1.2.r8.g668ec8d
+	pkgrel = 1
 	url = https://github.com/d4nj1/TLPUI
 	arch = any
-	license = GPLv2
+	license = GPL2
 	makedepends = git
+	makedepends = python-setuptools
 	depends = tlp
-	depends = python
 	depends = python-gobject
 	provides = tlpui
-	source = git+https://github.com/d4nj1/TLPUI.git
-	source = tlpui.sh
+	conflicts = tlpui
+	source = tlpui::git+https://github.com/d4nj1/TLPUI.git
 	source = tlpui.desktop
-	md5sums = SKIP
-	md5sums = 9f23dcf973bac1089280be1255dfe34d
-	md5sums = ac5c088895666e9cdf095023acea5163
+	sha256sums = SKIP
+	sha256sums = a8f7a4a3d1c66c27383f75b092fa71c3e7cd72b8240a06ed00ad56be3b5338ea
 
 pkgname = tlpui-git
 

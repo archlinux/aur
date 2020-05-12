@@ -1,42 +1,35 @@
-# Maintainer: slact
-#author: Daniel Christophis
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: slact
 pkgname=tlpui-git
-pkgver=0.r88.ab1183a
-pkgrel=3
-epoch=
-pkgdesc="A GTK-UI to change TLP configuration files easily. It has the aim to protect users from setting bad configuration and to deliver a basic overview of all the valid configuration values."
+pkgver=1.2.r8.g668ec8d
+pkgrel=1
+pkgdesc="A GTK user interface for TLP written in Python"
 arch=('any')
 url="https://github.com/d4nj1/TLPUI"
-license=('GPLv2')
-groups=()
-depends=("tlp" "python" "python-gobject")
-makedepends=('git')
-provides=('tlpui')
-conflicts=()
-install=
-source=(git+https://github.com/d4nj1/TLPUI.git
-        tlpui.sh
-        tlpui.desktop)
-md5sums=('SKIP'
-         '9f23dcf973bac1089280be1255dfe34d'
-         'ac5c088895666e9cdf095023acea5163')
+license=('GPL2')
+depends=('tlp' 'python-gobject')
+makedepends=('git' 'python-setuptools')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+https://github.com/d4nj1/TLPUI.git"
+        "${pkgname%-git}.desktop")
+sha256sums=('SKIP'
+            'a8f7a4a3d1c66c27383f75b092fa71c3e7cd72b8240a06ed00ad56be3b5338ea')
 
 pkgver() {
-  cd "TLPUI"
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/${pkgname%-git}"
+	git describe --long --tags | sed 's/^tlp.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+	cd "$srcdir/${pkgname%-git}"
+	python setup.py build
 }
 
 package() {
-  cd "$srcdir/TLPUI"
-  mkdir -p "$pkgdir"/opt/tlpui
-  cp -dpr --no-preserve=ownership ./ "$pkgdir"/opt/tlpui/
-  rm -Rf "$pkgdir"/opt/tlpui/tlpui/__pycache__
-  rm -Rf "$pkgdir"/opt/tlpui/tlpui/ui_config_objects/__pycache__  
-  
-  install -Dm644 "$srcdir"/tlpui.desktop "$pkgdir"/usr/share/applications/tlpui.desktop
-  install -Dm755 "$srcdir"/tlpui.sh "$pkgdir"/usr/bin/tlpui
+	cd "$srcdir/${pkgname%-git}"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
-
+	install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t \
+		"$pkgdir/usr/share/applications"
 }
-
-# vim:set ts=2 sw=2 et:
