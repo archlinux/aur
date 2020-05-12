@@ -1,8 +1,8 @@
 # Maintainer: Giorgio Gilestro <giorgio at gilest.ro>
 
 pkgname=ethoscope-node
-pkgver=r1704.g6d72a77
-pkgrel=5
+pkgver=0.0.0
+pkgrel=1
 pkgdesc="A platform for monitoring animal behaviour in real time from a raspberry pi"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"
@@ -11,12 +11,13 @@ makedepends=('git' 'gcc-fortran' 'rsync' 'wget' 'fping' )
 depends=('ntp' 'openssh' 'mariadb' 'dnsmasq' 'avahi' 'python-setuptools' 'python-pip' 'python-ifaddr' 'python-numpy' 'python-bottle' 'python-pyserial' 'python-mysql-connector' 'python-netifaces' 'python-cherrypy' 'python-eventlet' 'python-gitpython'  'python-dnspython' 'python-greenlet' 'python-monotonic' 'python-zeroconf' 'python-cheroot')
 provides=('ethoscope')
 install="ethoscope-node.install"
-source=("$pkgname::git+https://github.com/gilestrolab/ethoscope.git")
+source=("$pkgname::git://github.com/gilestrolab/ethoscope.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$pkgname"
+  # Use the tag of the last commit
+  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
