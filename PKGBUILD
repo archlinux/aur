@@ -1,6 +1,6 @@
 # Maintainer: Joris Coenen (joris.coenen @ domain of package url)
 pkgname=secrethub-cli
-pkgver=v0.38.0
+pkgver=0.38.0
 pkgrel=1
 pkgdesc='Command Line Interface for SecretHub'
 arch=('x86_64')
