@@ -1,14 +1,14 @@
 # Maintainer: Timo Kramer <fw minus aur at timokramer dot de>
 
 pkgname=mullvad-vpn-cli
-pkgver=2020.3
+pkgver=2020.4
 pkgrel=1
 pkgdesc="The Mullvad VPN client cli"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('nss')
-makedepends=('git' 'cargo' 'go-pie' 'jq')
+makedepends=('git' 'cargo' 'go-pie')
 conflicts=('mullvad-vpn')
 install="${pkgname}.install"
 _commit='90b0c06b59a0b9d6cda69924377335f39854b216'
@@ -36,7 +36,7 @@ prepare() {
 
 build() {
     # Build wireguard-go
-    cd "$srcdir/mullvadvpn-app/wireguard/wireguard-go"
+    cd "$srcdir/mullvadvpn-app/wireguard/libwg"
     mkdir -p "../../build/lib/$arch-unknown-linux-gnu"
     go build \
         -trimpath \
@@ -63,11 +63,7 @@ build() {
     done
 
     # Update relays.json
-    curl --request POST \
-         --fail \
-         --header "Content-Type: application/json" \
-         --data '{"jsonrpc": "2.0", "id": "0", "method": "relay_list_v3"}' \
-         https://api.mullvad.net/rpc/ | jq --indent 4 '.result' > ../relays.json
+    cargo run -p mullvad-rpc --bin relay_list > dist-assets/relays.json
 }
 
 check() {
@@ -95,9 +91,6 @@ package() {
 
     # Install settings.json
     install --verbose -D --mode=644 "${srcdir}/settings.json.sample" -t "${pkgdir}/etc/mullvad-vpn"
-
-    # Install relays.json
-    install --verbose -D --mode=644 "${srcdir}/relays.json" -t "${pkgdir}/var/cache/mullvad-vpn"
 
     # Install license
     install --verbose -D --mode=644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

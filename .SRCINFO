@@ -1,6 +1,6 @@
 pkgbase = mullvad-vpn-cli
 	pkgdesc = The Mullvad VPN client cli
-	pkgver = 2020.3
+	pkgver = 2020.4
 	pkgrel = 1
 	url = https://www.mullvad.net
 	install = mullvad-vpn-cli.install
@@ -9,10 +9,9 @@ pkgbase = mullvad-vpn-cli
 	makedepends = git
 	makedepends = cargo
 	makedepends = go-pie
-	makedepends = jq
 	depends = nss
 	conflicts = mullvad-vpn
-	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2020.3?signed
+	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2020.4?signed
 	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=90b0c06b59a0b9d6cda69924377335f39854b216?signed
 	source = override.conf
 	source = settings.json.sample
