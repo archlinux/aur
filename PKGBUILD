@@ -3,9 +3,9 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgbase=lib32-smbclient
-pkgname=('lib32-libwbclient' 'lib32-smbclient')
-pkgver=4.10.10
-pkgrel=2
+pkgname=('lib32-smbclient')
+pkgver=4.12.2
+pkgrel=1
 pkgdesc="Tools to access a server's filespace and printers via SMB"
 arch=('x86_64')
 url='http://www.samba.org'
@@ -17,7 +17,7 @@ makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap'
              'lib32-libnsl' 'lib32-libtirpc' 'perl-parse-yapp'
              'lib32-jansson' 'rpcsvc-proto' 'smbclient' 'libwbclient' 'lib32-ncurses')
 source=("https://www.samba.org/samba/samba/ftp/stable/samba-${pkgver}.tar.gz")
-sha256sums=('700c734b51610e2feaa0d6744f9bec0c0d8917bca8cc78d5b63a4591f32866a5')
+sha256sums=('6490f2a858be200c0169a47391fb27287e80f45f2beef7afa6c16bd88526a150')
 
 prepare() {
   cd samba-${pkgver}
@@ -64,7 +64,6 @@ build() {
               --with-acl-support \
               --with-systemd \
               --systemd-install-services \
-              --enable-gnutls \
               --with-pam \
               --with-pammodulesdir=/usr/lib32/security \
               --bundled-libraries=!tdb,!talloc,!pytalloc-util,!tevent,!popt,!ldb,!pyldb-util \
@@ -80,24 +79,13 @@ build() {
   make DESTDIR="${srcdir}/staging" install
 }
 
-package_lib32-libwbclient() {
-  pkgdesc='Samba winbind client library'
-  depends=('lib32-libbsd' 'libwbclient')
-
-  cd staging
-
-  install -dm 755 "${pkgdir}"/usr/lib32/{pkgconfig,samba}
-  mv usr/lib32/libwbclient*.so* "${pkgdir}"/usr/lib32/
-  mv usr/lib32/samba/libwinbind-client*.so* "${pkgdir}"/usr/lib32/samba/
-  mv usr/lib32/samba/libreplace*.so* "${pkgdir}"/usr/lib32/samba/
-  mv usr/lib32/pkgconfig/wbclient.pc "${pkgdir}"/usr/lib32/pkgconfig/
-}
-
 package_lib32-smbclient() {
   depends=('lib32-avahi' 'lib32-gnutls' 'lib32-libcap' 'lib32-libcups'
-           'lib32-libgcrypt' 'lib32-libwbclient' 'lib32-pam' 'lib32-systemd'
+           'lib32-libgcrypt' 'lib32-pam' 'lib32-systemd'
            'lib32-talloc' 'lib32-tdb' 'lib32-ldb'
            'lib32-libaio' 'perl-parse-yapp' 'lib32-jansson' 'smbclient' 'lib32-ncurses')
+  replaces=('lib32-libwbclient')
+  provides=('lib32-libwbclient')
 
   cd staging
 
@@ -108,6 +96,7 @@ package_lib32-smbclient() {
   for lib in usr/lib32/samba/lib*.so*; do
     mv ${lib} "${pkgdir}"/usr/lib32/samba/
   done
+  mv usr/lib32/pkgconfig/wbclient.pc "${pkgdir}"/usr/lib32/pkgconfig/
 }
 
 # vim: ts=2 sw=2 et:
