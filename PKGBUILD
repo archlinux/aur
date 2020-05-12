@@ -1,7 +1,7 @@
 # Maintainer: Marc Mettke <marc@itmettke.de>
 _pkgname=aurebuildcheck-rs
 pkgname=$_pkgname-git
-pkgver=0.2.1.r0.g2666ea9
+pkgver=0.2.2.r0.g4b31ef6
 pkgrel=1
 pkgdesc="Archlinux package checker to identify packages which may need a rebuild"
 arch=('x86_64')
