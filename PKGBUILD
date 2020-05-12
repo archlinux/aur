@@ -1,16 +1,16 @@
 # Maintainer: Mélanie Chauvel (ariasuni) <perso at hack-libre dot org>
 
 pkgname=nuspell
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
-pkgdesc='Free and open source C++ spell checking library'
+pkgdesc='Fast and safe spellchecking C++ library'
 arch=('x86_64')
 url='https://nuspell.github.io/'
 license=('LGPL3+')
 depends=('boost' 'icu')
 makedepends=('catch2' 'cmake' 'ruby-ronn')
 source=("https://github.com/nuspell/nuspell/archive/v${pkgver}.tar.gz")
-sha512sums=('a9bedfd6e2d77fd34d249cf7aa1fcb6bde5bced26f02f8a2dd860416a61488c9b7016a0df6015052fcccb272b342e6205db601107f46efa44c9d78ce261a826c')
+sha512sums=('239855051d9f49ba16913283090c4214a8f6a6cc290d359ab54014ff76fc297c131b67c6748bd1d4cdcec43c00dccc7f0c1bf8b07e06c9c648bff52ff193e096')
 
 build() {
   cd "$pkgname-$pkgver"
