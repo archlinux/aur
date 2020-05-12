@@ -1,25 +1,74 @@
 pkgbase = python-mbed-os-tools
 	pkgdesc = The tools to test and work with Mbed OS
 	pkgver = 0.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.mbed.org
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-mbed-os-tools-0.0.13.tar.gz::https://github.com/ARMmbed/mbed-os-tools/archive/v0.0.13.tar.gz
+	sha256sums = a50772dfe1a3862897cb668452b846844a29a8c59503ddb3e95bcd59dab41e09
+
+pkgname = python-mbed-os-tools
 	depends = python
 	depends = python-pyserial
 	depends = python-requests
 	depends = python-intelhex
+	depends = python-future
 	depends = python-prettytable
 	depends = python-fasteners
 	depends = python-appdirs
+	depends = python-junit-xml
 	depends = python-lockfile
 	depends = python-six
 	depends = python-colorama
 	depends = python-beautifulsoup4
-	options = !emptydirs
-	source = https://github.com/ARMmbed/mbed-os-tools/archive/0.0.13.tar.gz
-	md5sums = 9e4631a643313964ab21c5aab7f71c81
 
-pkgname = python-mbed-os-tools
+pkgname = python-mbed-ls
+	depends = python
+	depends = python-prettytable
+	depends = python-mbed-os-tools
+	conflicts = python2-mbed-ls
+
+pkgname = python-mbed-host-tests
+	depends = python
+	depends = python-mbed-os-tools
+	conflicts = python2-mbed-host-tests
+
+pkgname = python-mbed-greentea
+	depends = python
+	depends = python-mbed-os-tools
+	conflicts = python2-mbed-greentea
+
+pkgname = python2-mbed-os-tools
+	depends = python2
+	depends = python2-pyserial
+	depends = python2-requests
+	depends = python2-intelhex
+	depends = python2-future
+	depends = python2-prettytable
+	depends = python2-fasteners
+	depends = python2-appdirs
+	depends = python2-junit-xml
+	depends = python2-lockfile
+	depends = python2-six
+	depends = python2-colorama
+	depends = python2-beautifulsoup4
+
+pkgname = python2-mbed-ls
+	depends = python
+	depends = python-prettytable
+	depends = python-mbed-os-tools
+	conflicts = python-mbed-ls
+
+pkgname = python2-mbed-host-tests
+	depends = python
+	depends = python-mbed-os-tools
+	conflicts = python-mbed-host-tests
+
+pkgname = python2-mbed-greentea
+	depends = python
+	depends = python-mbed-os-tools
+	conflicts = python-mbed-greentea
 
