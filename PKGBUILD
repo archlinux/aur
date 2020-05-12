@@ -6,7 +6,7 @@
 # Maintainer: David Strawn <isomarcte a__t gmail d__o__t c__o__m>
 pkgname='metals'
 pkgver='0.9.0'
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc='Language Server For Scala'
 url='https://scalameta.org/metals/'
@@ -24,50 +24,56 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/scalameta/$pkgname/archive/v$pkgver.tar.gz" 'metals-client.sh' 'metals-emacs.sh' 'metals-vim.sh' 'metals-vscode.sh' 'metals-sublime.sh' 'version-fix.patch')
+source=("https://github.com/scalameta/$pkgname/archive/v$pkgver.tar.gz" 'metals-client.sh' 'metals-emacs.sh' 'metals-vim.sh' 'metals-vscode.sh' 'metals-sublime.sh' 'version-fix.patch' 'JREMajorVersion.java')
 noextract=()
 md5sums=('9624cd2554a68f084dd2465d0742dddf'
-         '6cf70cf0eff052c61653bc21bfb38f4e'
+         '2b4f3f9f77eb5af4107f9539923483ff'
          'ad97e9262c7b22dd71b017a6402f612a'
          '000bd73ebc3ea46b23e2c418ef97f4c7'
          '83b5669127510100d6e7ab4094877a6e'
          '38c34ab96f6cf637f7be9f72b7400983'
-         '5f90cc1f9fc3aa84b64bb15fe0dd5171')
+         '5f90cc1f9fc3aa84b64bb15fe0dd5171'
+         '778c5748f51da0f0d39d5e19970249eb')
 sha1sums=('644d5c6e63fe5fa71dc3fcdccb8d99a1ca715b6f'
-          'd860dce31bf983fa21ab3fbca67e0dc90958acb3'
+          'd4127d36d9b1d7ab07650f59d84c536c7a86d349'
           'b498568936dcfd03a06d7b41f76bbb7fffbc3bdf'
           '3882901e88f4a85f85d67dcda53f83c89d4563c6'
           'f2d0e8aa2744697d4dad0a7c10f835fe5814524b'
           'b2577ac4ee93e3a611558294378c185227ed8321'
-          '1930c55d89b42ce27775ade349150fca2d996780')
+          '1930c55d89b42ce27775ade349150fca2d996780'
+          'dc64de951379d01d2d1d211ceab71fc9398cc199')
 sha224sums=('74c1e0269c36ddc15a57b8fa1bf4cf9c98989cb94f5bf4d6c9bcfd06'
-            'ef780036872b5e25f64f581d8b79168d14350cb63d6d6516c2a5afcc'
+            '0ed6eb578a9c2e8826b9a1236b22458b1bbc538affc1c580741ac506'
             '43d2f6b0b4b7ef539f5109b1127dcd88828f2f8ae0b9c052899af1c9'
             'a99d9457fd6cf582b349e56e5e8e9cece30e33ff6866c5969f090f5e'
             '6ffcb9ee870dd260f90e333082e90b9b30212f1f21dd3d3a0048a67e'
             'fff5cbeed72e44f9159872f59a0ca0a19fc81a8ed943500373e9108e'
-            '8ee3e317c6b83cb4e122380201b5fbe814a4679085f5bf1b7ab8c6d6')
+            '8ee3e317c6b83cb4e122380201b5fbe814a4679085f5bf1b7ab8c6d6'
+            '3a449ae946a8b4e91203037d980160b8d1798bbd08f21bb88b626c09')
 sha256sums=('921f5ec1efbdc2a575703912ac8dcd77ec45e4efa6ccde96a5139f52716cae97'
-            '6cdb3b53174f4272532f5d3a26d5564073aa38baa624d103ca79865577ab4ba0'
+            '9948e63e7c3db57838784df44e53478ca7704150bb7bac6179fedba0377a5acf'
             'b3579e68cee7f23f6f6a12fe0bc6396f1722434d23ce3c58e7c9fac2233cd1d3'
             'e9bbc61ec99dc0893560a12a8a0f56c9f27016895e177a164019ab9174fe94e2'
             'c2213c8d4a1a0fe5bb12d5bcde53ab04d9b0aa08ddcabd60de938a8d480e49d5'
             'fb42157046a11089fa69e0120ae83ff3bc354709e2add4644fe3fc60aa80c984'
-            '89144342104d3bfeaeecd4eaf8d8ce4179ff657e744646c79ee87794c1dcf07b')
+            '89144342104d3bfeaeecd4eaf8d8ce4179ff657e744646c79ee87794c1dcf07b'
+            'c73c831ba67e2b80df65f08a00b264af8e150d48a1e321b9cfb68081a9eae6b5')
 sha384sums=('4cbc226be3f6ae59f8739798ba726cf7d5efd610aeba4e3a687892ed7f646effefbe267266178ce4c75b29250b7e4eef'
-            '132773ee9b7b95c8726075769652f5fc69c229548736d0a0ad9301836e9b2c78485021454bf42ca1ff642dcf1789b029'
+            '5c1c4d43b4eb0c936412c75e969529c39553d9007ab5e4b21ed42be55ec5965cf8f2ea2aff3122e2da5e288e7f33ea15'
             '762dd7c73e994b74ebeb5c975ca0b53ddf4cbf181664d465bd9c543798333dcc4939c360a4b5b8b1b162810ea363d288'
             '6bee0d21d0fcf3d8f5ee14545be63fb2bbababb0665020540daafc708939bbc539ab940cfe122b2281156bc78d401768'
             '26859b59a04e38a5e7d02e188643765d06b893385232895f5b1435fb3d4fa4d676e8d43bbc80360f9ee7a2ee01e64d2c'
             '8b9204ce4a60890eb94f0fe673504a9a10c583b9814e844da14b8d1313db7f8cf7d5f9a7b8db0bbd25fb2f9263e434b7'
-            '30e04ce762c453c3e657ea4a5c0a9a2a05f97a34081449679601a3fa4756fd6cb3d893cd12afbbba8e6e28e82f1c339d')
+            '30e04ce762c453c3e657ea4a5c0a9a2a05f97a34081449679601a3fa4756fd6cb3d893cd12afbbba8e6e28e82f1c339d'
+            '9f20595ff54ffaee74e6d1d6045cadca7df2326c8d451dc7d96925870820cf24108afdc7bb6e3bfad3f28d1d45d3d0ba')
 sha512sums=('1d273b69c00d69203120c330b2ebceac6f384fa91da4dbc0481adc478a397d0d828f78f52054b57a776c20f9aa705a41419133cac16adbee42ba32b98c24b2c7'
-            '8528f1eddf680f1569106395b9fce97c07dd12f3f3f64683b9c02c79e74da0ec4a9f4c5cd2031e11d98c03deb01011394333795bf448148c5b9ae199af041539'
+            '70a676c8a40e8da741def75cd8b03424d20d9a9b46fae397e3eab5ecf73deac348c641803f019eb9c380f30f6eea2003a26a6bc773f332e4f8cd89019ac37c89'
             'bd26818e43627c4e20aa931663b4623e45ade0930a29952d6508fa6e1302f5140afed7f57a796c12da3e9ae256ff7c0b3eb2e5075b00ceda9d2e4ddc22e89205'
             '16d01a820f1ed93ae46194d3d77187adf6fd4e9764fcf99554430e3e2f2af4cc2b6f7918f595febd3c5e6a380bbfb930bb47a3dd2ba93c60b2ca1f874f264fee'
             '722770a6c30ccf75c73ae9be19655cdff00561c62bf15b619dfa618cdd636e97aaf5a6aca1297add4e6a54274cd49e81781d98a59986526d0077a6c64855562d'
             '9f32d0ead26fad866f52209c0f6dabdaa3481bafd6121134b2fde6e95a80b5d2757c17ca6f1804b6e060b839efa9a9f7d342d48ad8d22b767e13c585e209045b'
-            '9cd6fde36d6255e09afb961710f4316b92dcfd23ae993c6aa6b761f78e4378a16e8d3a5edbf7ee8f46237c8a997728424f5ec8e57a325ec4b1f3b33053d5e604')
+            '9cd6fde36d6255e09afb961710f4316b92dcfd23ae993c6aa6b761f78e4378a16e8d3a5edbf7ee8f46237c8a997728424f5ec8e57a325ec4b1f3b33053d5e604'
+            '4daebe1e0681d9981e4538d79136f7ef02c0b7fb53eaadc64f9b4fce5a4b0a5074752d56e6cc0ed0558f8e389194629aeaaf368685d01c1d63dcee669a67df4c')
 validpgpkeys=()
 install=metals.install
 
@@ -95,6 +101,9 @@ build() {
     local -r _LEN="${#_JAVA_ARCH_PACKAGE_PATHS[@]}"
 
     cd "$pkgname-$pkgver"
+    # Build JREMajorVersion.java
+    cp ../JREMajorVersion.java ./
+    javac -source 7 -target 7 -Xlint -Xlint:-options JREMajorVersion.java
 
     # Attempt to build with a JDK supported by metals
     local _INDEX=0
@@ -148,6 +157,7 @@ package() {
     local -r _BIN_DEST_DIR="$_DEST_DIR/bin"
     local -r _LIB_DEST_DIR="$_DEST_DIR/lib"
     local -r _JAR_DEST_DIR="$_DEST_DIR/jars"
+    local -r _UTIL_DEST_DIR="$_DEST_DIR/util"
     local -r _USR_BIN="$pkgdir/usr/bin"
     local -r _TEMP_FILE="$(mktemp)"
     local -r _LAUNCHER_SCRIPTS=('metals-client.sh' 'metals-emacs.sh' 'metals-vim.sh' 'metals-vscode.sh' 'metals-sublime.sh')
@@ -174,13 +184,16 @@ package() {
         fi
     done
 
-
     ## Change Into Correct Directory ##
     pushd "$pkgname-$pkgver"
 
-    ## Create lib And bin Directories ##
+    ## Create lib, bin and util Directories ##
     install -d "$_LIB_DEST_DIR"
     install -d "$_BIN_DEST_DIR"
+    install -d "$_UTIL_DEST_DIR"
+
+    # Install JREMajorVersion.class
+    install -o root -g root -m 644 "./JREMajorVersion.class" "$_UTIL_DEST_DIR"
 
     ## Install Class Files And Jars ##
 

@@ -3,6 +3,7 @@
 set -e
 
 declare -r _INSTALL_DIR='/usr/share/java/metals'
+declare -r _UTIL_DIR="${_INSTALL_DIR}/util"
 declare _CP="$_INSTALL_DIR/lib:$_INSTALL_DIR/metals"
 
 # This is an ordered array of JDK paths to attempt to use if
@@ -16,6 +17,21 @@ declare -r -a _JAVA_ARCH_PACKAGE_PATHS=('/usr/lib/jvm/java-11-openjdk/bin'
                                         '/usr/lib/jvm/java-10-openjdk/bin'
                                         '/usr/lib/jvm/java-8-openjdk/jre/bin'
                                        )
+declare -r -a _DEFAULT_METALS_JAVA_OPTS=('-XX:MaxHeapFreeRatio=20' '-XX:MinHeapFreeRatio=5')
+
+# Good to have, but not supported on JDK 8 (JDK 9 is skipped because
+# it is both EOL and there is no official Arch package to install it
+# anymore.)
+declare -r -a _DEFAULT_JDK_10_PLUS_OPTS=('-XX:MaxRAMPercentage=25')
+
+# The _actual_ metals options will be put here after
+# setup_metals_java_opts is run.
+declare -a _METALS_JAVA_OPTS
+
+# Used in conjunction with _DEFAULT_METALS_JAVA_OPTS to determine
+# which java options to are supported. Not used or set if
+# METALS_JAVA_OPTS is explicitly set.
+declare _JRE_VERSION
 
 function ensure_comaptible_jdk {
     local -r _LEN="${#_JAVA_ARCH_PACKAGE_PATHS[@]}"
@@ -62,6 +78,35 @@ function build_cp {
     done <<< "$(find "$_INSTALL_DIR"/jars -regex '.*\.jar')"
 }
 
+function determine_jre_version {
+    pushd "$_UTIL_DIR" &>/dev/null
+    _JRE_VERSION="$(java JREMajorVersion 2>/dev/null)"
+    popd &>/dev/null
+    readonly _JRE_VERSION
+    echo "JRE version determined to be ${_JRE_VERSION}" 1>&2
+}
+
+function setup_metals_java_opts {
+    if [ -n "$METALS_JAVA_OPTS" ]
+    then
+        read -r -a _METALS_JAVA_OPTS <<< "$METALS_JAVA_OPTS"
+        echo "Found METALS_JAVA_OPTS: ${_METALS_JAVA_OPTS[*]}" 1>&2
+    else
+        _METALS_JAVA_OPTS+=("${_DEFAULT_METALS_JAVA_OPTS[@]}")
+
+        determine_jre_version
+
+        if [ "$_JRE_VERSION" -gt 9 ]
+        then
+            _METALS_JAVA_OPTS+=("${_DEFAULT_JDK_10_PLUS_OPTS[@]}")
+        fi
+
+        echo "Using default METALS_JAVA_OPTS: ${_METALS_JAVA_OPTS[*]}" 1>&2
+    fi
+
+    readonly -a _METALS_JAVA_OPTS
+}
+
 function main {
     ensure_comaptible_jdk
 
@@ -70,9 +115,9 @@ function main {
     # Echo out the full path to the Java binary we will use.
     echo "Java binary selected: $(command -v java)" 1>&2
 
-    # Java options taken from metals-emacs documentation
-    # https://scalameta.org/metals/docs/editors/emacs.HTML
-    exec java -XX:+UseG1GC -XX:+UseStringDeduplication -Xss4m -Xms100m -Dmetals.client="$_METALS_CLIENT" -cp "$_CP" scala.meta.metals.Main "$@"
+    setup_metals_java_opts
+
+    exec java "${_METALS_JAVA_OPTS[@]}" -Dmetals.client="$_METALS_CLIENT" -cp "$_CP" scala.meta.metals.Main "$@"
 }
 
 main "$@"
