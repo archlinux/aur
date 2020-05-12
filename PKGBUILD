@@ -1,7 +1,7 @@
 # Maintainer: jsm <0x6a736d@gmail.com>
 pkgname=btpd-git
 pkgver=449.a3a10df
-pkgrel=3
+pkgrel=4
 pkgdesc="BitTorrent Protocol Daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/btpd/btpd"

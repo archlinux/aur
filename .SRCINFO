@@ -1,7 +1,7 @@
 pkgbase = btpd-git
 	pkgdesc = BitTorrent Protocol Daemon
 	pkgver = 449.a3a10df
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/btpd/btpd
 	install = btpd.install
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = btpd-git
 	source = btpd.service
 	source = btpd.install
 	sha256sums = SKIP
-	sha256sums = fbf49bc1378025adfbd1910ae3aca19093965a404d52e0676956e6f75cfa0409
+	sha256sums = c161a573c23f21d146a1cba4270a5aae25b23197a3f79842246f376fe81e600f
 	sha256sums = 181631c0f234edd637ee63979a407b015d789a4b5ef91eecc6b274cc56239a2b
 
 pkgname = btpd-git
