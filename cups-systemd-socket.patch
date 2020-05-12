@@ -19,25 +19,15 @@ diff -up cups-2.0.2/scheduler/main.c.ustTJg cups-2.0.2/scheduler/main.c
    if (fg)
      cupsdAddEvent(CUPSD_EVENT_SERVER_STARTED, NULL, NULL, "Scheduler started in foreground.");
 diff -up cups-2.0.2/scheduler/org.cups.cupsd.path.in.ustTJg cups-2.0.2/scheduler/org.cups.cupsd.path.in
---- cups-2.0.2/scheduler/org.cups.cupsd.path.in.ustTJg	2014-03-21 15:50:24.000000000 +0100
-+++ cups-2.0.2/scheduler/org.cups.cupsd.path.in	2015-02-10 13:40:24.295545063 +0100
-@@ -2,7 +2,7 @@
- Description=CUPS Scheduler
- 
- [Path]
--PathExists=@CUPS_CACHEDIR@/org.cups.cupsd
-+PathExistsGlob=@CUPS_REQUESTS@/d*
- 
- [Install]
- WantedBy=multi-user.target
-diff -up cups-2.0.2/scheduler/org.cups.cupsd.service.in.ustTJg cups-2.0.2/scheduler/org.cups.cupsd.service.in
---- cups-2.0.2/scheduler/org.cups.cupsd.service.in.ustTJg	2014-10-21 13:55:01.000000000 +0200
-+++ cups-2.0.2/scheduler/org.cups.cupsd.service.in	2015-02-10 13:40:24.296545049 +0100
-@@ -1,10 +1,11 @@
+--- cups-2.3.0/scheduler/org.cups.cupsd.service.in	2019-08-23 17:19:38.000000000 +0200
++++ cups-2.3.0/scheduler/org.cups.cupsd.service.in.new	2019-08-25 20:20:25.805339727 +0200
+@@ -1,11 +1,12 @@
  [Unit]
  Description=CUPS Scheduler
  Documentation=man:cupsd(8)
-+After=network.target
+-After=sssd.service
++After=sssd.service network-online.target
++Wants=network-online.target
  
  [Service]
  ExecStart=@sbindir@/cupsd -l
@@ -46,4 +36,3 @@ diff -up cups-2.0.2/scheduler/org.cups.cupsd.service.in.ustTJg cups-2.0.2/schedu
  Restart=on-failure
  
  [Install]
-
