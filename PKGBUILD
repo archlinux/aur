@@ -2,7 +2,7 @@
 # Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=rstudio-desktop
-pkgver=1.2.5033
+pkgver=1.2.5042
 _gwtver=2.8.1
 _ginver=2.1.2
 _clangver=3.6.1
@@ -31,14 +31,16 @@ source=(
 	"https://s3.amazonaws.com/rstudio-buildtools/gwt-$_gwtver.zip"
 	'https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip'
 	'boost-1.70.patch::https://github.com/rstudio/rstudio/commit/217ce0962734ae85621fd82f0eed86129c991a79.patch'
+	'r-nosave.patch::https://github.com/rstudio/rstudio/commit/60dd6e3cd349cc208e33a12635378a1e338f8efc.patch'
 )
 noextract=('core-dictionaries.zip' "gin-$_ginver.zip")
 sha256sums=(
-	'b18722f4a69fa21198661a425abde78c02ae7af6efed239c1ab5aa1785f377b9'
+	'4982e9dbd17cce0fcffd2a61162445f5e361dc75ca745da34b4b3f3ade3c4a22'
 	'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
 	'0b7af89fdadb4ec51cdb400ace94637d6fe9ffa401b168e2c3d372392a00a0a7'
 	'4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494'
 	'd252111e28a7de8602b4df1f66b36dded260061f094b504895e5c789f8681091'
+	'88d6924605de8d9e50c545bbf1e18a1146db8756be3d65e3e47e7cc1f7f324be'
 )
 
 _pkgname=rstudio
@@ -64,6 +66,11 @@ prepare() {
 }
 
 build() {
+	if [[ $(archlinux-java get) != 'java-8'* ]]; then
+		echo 'You need to have Java 8 active when building this package.' >&2
+		echo 'Please execute `sudo archlinux-java set java-8-openjdk`' >&2
+		exit 1
+	fi
 	cd "$srcdir/$_pkgname-$_pkgname-"*
 	
 	install -d src/gwt/lib/{gin/$_ginver,gwt/$_gwtver}
@@ -91,6 +98,9 @@ build() {
 	sed -i 's/Boost_VERSION LESS 106900/Boost_VERSION VERSION_LESS 1.69.0/g' src/cpp/CMakeLists.txt
 	# The second boost 1.71 problem: tcp::resolver::get_io_service got removed
 	patch -p1 <'../boost-1.70.patch'
+	# Prepare file so the patch works, then patch RSlave→RNoSave
+	sed -i 's/2009-12/2009-19/g' src/cpp/r/session/REmbeddedPosix.cpp
+	patch -p1 <'../r-nosave.patch'
 	
 	# Prevent java error: “Could not lock User prefs. Lock file access denied.”
 	# Because gwt desperately needs to add a “firstLaunch” entry there…
