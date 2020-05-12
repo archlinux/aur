@@ -4,7 +4,7 @@ to a mobile base."
 url='https://wiki.ros.org/navigation'
 
 pkgname='ros-melodic-navigation'
-pkgver='1.16.3'
+pkgver='1.16.6'
 arch=('any')
 pkgrel=1
 license=('BSD' 'LGPL')
@@ -43,7 +43,7 @@ depends=(
 
 _dir="navigation-${pkgver}/navigation"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")
-sha256sums=('23a6f3202fec00b07bb419453eed2591dd63fffa5da2fc78fb29620c9f2bdced')
+sha256sums=('88e3b4433de9645e1132db15b01f436a75a28ebc15cd5b70660b158dd6ba42dd')
 
 build() {
 	# Use ROS environment variables.
