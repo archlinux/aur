@@ -7,7 +7,7 @@
 
 pkgname=maelstrom
 pkgver=3.0.6
-pkgrel=5
+pkgrel=6
 pkgdesc='Asteroids-type game with sound and 3D objects'
 arch=('x86_64' 'i686')
 license=('GPL')
@@ -48,7 +48,7 @@ build() {
 package() {
   cd "Maelstrom-${pkgver}"
 
-  make PREFIX="${pkgdir}/usr" install
+  make prefix="${pkgdir}/usr" install
 
   install -d "${pkgdir}/usr/share/applications"
 

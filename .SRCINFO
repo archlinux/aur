@@ -1,7 +1,7 @@
 pkgbase = maelstrom
 	pkgdesc = Asteroids-type game with sound and 3D objects
 	pkgver = 3.0.6
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.libsdl.org/projects/Maelstrom/
 	install = maelstrom.install
 	arch = x86_64
