@@ -3,14 +3,14 @@
 pkgname=motionbox
 _pkgname=motionbox
 pkgver=1.6.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="MotionBox is a Video Browser for Motion Freedom"
 arch=("x86_64")
 url="http://omega.gg/MotionBox/"
 license=("GPL3")
 provides=("motionbox")
 conflicts=("motionbox")
-depends=(vlc qt5-base)
+depends=(vlc qt5-base libidn11)
 source=(
     http://omega.gg/get/MotionBox/MotionBox-1.6.0-linux64.tar.gz
     https://github.com/G-P-L/AUR/raw/master/MotionBox/MotionBox.desktop
