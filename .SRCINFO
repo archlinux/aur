@@ -1,6 +1,6 @@
 pkgbase = wireplumber-git
 	pkgdesc = PipeWire modular Session & Policy Manager
-	pkgver = 0.2.0+73.g8c209ecf48
+	pkgver = 0.2.0+74.g80dc7723fc
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/pipewire/wireplumber
 	arch = x86_64
@@ -10,9 +10,7 @@ pkgbase = wireplumber-git
 	provides = wireplumber=0.2.0
 	conflicts = wireplumber
 	source = https://gitlab.freedesktop.org/pipewire/wireplumber.git
-	source = https://gitlab.freedesktop.org/pipewire/wireplumber/commit/80dc7723fcd9651eb8e1b6c4c86b30cb11ea1854.patch
 	sha256sums = SKIP
-	sha256sums = 267271abfc0525291483d6437bfb2b5c4a0e99404ec9d8476a7e210a6d8af0bd
 
 pkgname = wireplumber-git
 
