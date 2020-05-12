@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-joint-state-controller
 	pkgdesc = ROS - Controller to publish joint state.
-	pkgver = 0.15.0
+	pkgver = 0.16.1
 	pkgrel = 2
 	url = https://github.com/ros-controls/ros_controllers/wiki
 	arch = i686
@@ -24,8 +24,8 @@ pkgbase = ros-melodic-joint-state-controller
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-hardware-interface
 	depends = ros-melodic-controller-interface
-	source = ros-melodic-joint-state-controller-0.15.0.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.15.0.tar.gz
-	sha256sums = 8c19481a28f394d5bf4372fb05a6c638fa2995614f9b0f82b8213ca32d15a4cf
+	source = ros-melodic-joint-state-controller-0.16.1.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.16.1.tar.gz
+	sha256sums = cf43c389f2c29e9597d46a5ff7ce33af48278dbb697209887249dd3a7682257a
 
 pkgname = ros-melodic-joint-state-controller
 
