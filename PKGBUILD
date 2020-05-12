@@ -4,7 +4,7 @@ pkgdesc="ROS - This unary stack contains the dynamic_reconfigure package which p
 url='https://wiki.ros.org/dynamic_reconfigure'
 
 pkgname='ros-melodic-dynamic-reconfigure'
-pkgver='1.6.0'
+pkgver='1.6.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=2
 license=('BSD')
@@ -42,7 +42,7 @@ depends=(
 
 _dir="dynamic_reconfigure-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/dynamic_reconfigure/archive/${pkgver}.tar.gz")
-sha256sums=('8dad5836e6844f1ab76b1b155a9ec3f34bdaa7a5c629d6197b85c96812d8bca6')
+sha256sums=('2916e14caabe367f9260b18d9c7914516a5c18a7bc6305b6b60c74ddd1c3a919')
 
 build() {
 	# Use ROS environment variables.
