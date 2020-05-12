@@ -4,7 +4,7 @@ pkgdesc="ROS - MAVLink communication library."
 url='https://wiki.ros.org/libmavconn'
 
 pkgname='ros-melodic-libmavconn'
-pkgver='0.33.3'
+pkgver='1.1.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=2
 license=('GPLv3, LGPLv3, BSD')
@@ -24,7 +24,7 @@ depends=(${ros_depends[@]}
 _dir="mavros-${pkgver}/libmavconn"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros/archive/${pkgver}.tar.gz"
         "boost-1.70.patch")
-sha256sums=('eb4fc2439c78cdc2fa5f2d9ab81abe4f1fa54f9dd45f02b8f2440a231125118e'
+sha256sums=('7bed7003e0905a5bbf53a8927068201a90ff08fab23e5483622295c2eea4aa10'
             'd7a6c462f9328536ffd9b5b59e3a7e483fc5d403d71114bfc03024c364df233d')
 
 prepare() {
