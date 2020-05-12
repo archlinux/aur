@@ -10,7 +10,7 @@ pkgdesc='A kart racing mod based on the 3D Sonic the Hedgehog fangame Sonic Robo
 arch=('i686' 'x86_64')
 license=('GPL2')
 url='https://mb.srb2.org/showthread.php?t=43708'
-depends=('sdl2' 'sdl2_mixer' 'libpng' 'libgme' "srb2kart-data>=$_dataver")
+depends=('sdl2' 'sdl2_mixer' 'libpng' 'libgme' "srb2kart-data>=$_dataver" 'curl')
 makedepends=('mesa' 'glu' 'git')
 makedepends_i686=('nasm')
 options=(!buildflags) 
