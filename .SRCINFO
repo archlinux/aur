@@ -7,8 +7,10 @@ pkgbase = genact-bin
 	license = MIT
 	provides = genact
 	options = !strip
-	source = https://github.com/svenstaro/genact/releases/download/0.7.0/genact-linux
-	md5sums = 0ad2967b61423949b18ba2d042dccca7
+	source = genact-bin-0.7.0::https://github.com/svenstaro/genact/releases/download/0.7.0/genact-linux
+	source = LICENSE::https://raw.githubusercontent.com/svenstaro/genact/master/LICENSE
+	sha256sums = a2373a9e5a2276622b6fab35e3f75df9e227b9bbf6e21a7898d921d97ab35f78
+	sha256sums = 5eaf192f4eff70cd91400195a7f791a2a6d6be2e04780f8ebb3bd5e75e3a2ce0
 
 pkgname = genact-bin
 
