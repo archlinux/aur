@@ -3,7 +3,7 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.4.r7.g5ceee91
+pkgver=0.10.4.r17.g2c879c9
 pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
@@ -30,7 +30,17 @@ depends=('fontconfig'
          'icu'
          'libpng' # this goes with libtexpdf if ever split out to a library package
          'lua'
-         "${_lua_deps[@]/#/lua-}")
+         "${_lua_deps[@]/#/lua-}"
+         'zlib')
+# Note find via find-deps; needs rebuilding any time versions of these change;
+# currently missing several because parent packages are missing the provides=()
+depends+=('libfreetype.so'
+          'libharfbuzz.so'
+          'libicudata.so'
+          'libicui18n.so'
+          'libicuio.so'
+          'libicuuc.so'
+          'libtexpdf.so')
 makedepends=('git'
              'noto-fonts-cjk'
              'poppler'
@@ -58,7 +68,9 @@ prepare () {
 
 build () {
     cd "${pkgname%-git}"
-    ./configure --prefix=/usr --with-system-luarocks
+    ./configure \
+        --prefix /usr \
+        --with-system-luarocks
     make all
     make docs
     make examples
@@ -70,9 +82,9 @@ check () {
 }
 
 package () {
-	cd "${pkgname%-git}"
-	make install DESTDIR="$pkgdir"
-	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md documentation/sile.pdf
-	cp -ar examples "$pkgdir/usr/share/doc/$pkgname"
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+    cd "${pkgname%-git}"
+    make install DESTDIR="$pkgdir"
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md documentation/sile.pdf
+    cp -ar examples "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
