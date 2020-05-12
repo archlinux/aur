@@ -4,7 +4,7 @@ pkgdesc="ROS - PCL (Point Cloud Library) ROS interface stack."
 url='https://wiki.ros.org/perception_pcl'
 
 pkgname='ros-melodic-pcl-ros'
-pkgver='1.7.0'
+pkgver='1.7.1'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=2
@@ -58,7 +58,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="perception_pcl-${pkgver}/pcl_ros"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/perception_pcl/archive/${pkgver}.tar.gz")
-sha256sums=('ac821a662e507df7e48cebc0ba02aaa360b8edbd43873fc6f63bc65ec3d12628')
+sha256sums=('8974c9da95a88b050a95ae56615ca384afec5f47f2fab7fb92a490c1907239b6')
 
 build() {
   # Use ROS environment variables
