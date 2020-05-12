@@ -1,12 +1,11 @@
 pkgbase = xfce4-screensaver-git
 	pkgdesc = Screensaver for XFCE Desktop (git checkout)
-	pkgver = 0.1.9+0+g672964e
+	pkgver = 0.1.10+34+g575a042
 	pkgrel = 1
 	url = https://docs.xfce.org/apps/screensaver/start
-	arch = i686
 	arch = x86_64
+	arch = i686
 	arch = armv7h
-	arch = armv6h
 	arch = aarch64
 	groups = xfce4-goodies-git
 	license = GPL2
@@ -21,9 +20,9 @@ pkgbase = xfce4-screensaver-git
 	depends = python-gobject
 	depends = xfconf
 	depends = dbus-glib
-	provides = xfce4-screensaver=0.1.9
+	provides = xfce4-screensaver=0.1.10
 	conflicts = xfce4-screensaver
-	source = git://git.xfce.org/apps/xfce4-screensaver
+	source = xfce4-screensaver::git+https://gitlab.xfce.org/apps/xfce4-screensaver
 	sha256sums = SKIP
 
 pkgname = xfce4-screensaver-git
