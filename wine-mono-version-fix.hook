@@ -1,0 +1,11 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/wine/appwiz.cpl.so
+Target = usr/share/wine/mono/*
+
+[Action]
+Description = Fixing the version of wine-mono file.
+When = PostTransaction
+Exec = /usr/bin/sh -c 'find /usr/share/wine/mono -type l -exec unlink {} \; ; ln -sf "$(pacman -Qlq wine-mono | grep "wine-mono-\\([-x[:digit:].]\\+\\).msi")" "/usr/share/wine/mono/$(strings -eb /usr/lib/wine/appwiz.cpl.so | sed -n "s/.*\\(wine-mono-[-x[:digit:].]\\+.msi\\).*/\\1/p")" 2>/dev/null ; true'
