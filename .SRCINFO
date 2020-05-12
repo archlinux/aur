@@ -1,31 +1,26 @@
 pkgbase = python-mbed-cli
 	pkgdesc = ARM mbed Command Line Interface
 	pkgver = 1.10.3
-	pkgrel = 1
-	url = https://developer.mbed.org
+	pkgrel = 2
+	url = https://os.mbed.org
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
-	depends = python
-	depends = python-colorama
-	depends = python-pyserial
-	depends = python-intelhex
-	depends = python-jinja
-	depends = python-beautifulsoup4
-	depends = python-fuzzywuzzy
-	depends = python-prettytable
-	depends = python-requests
-	depends = python-yaml
-	depends = python-pyelftools
-	depends = python-jsonschema
-	optdepends = git: support git-based mbed projects
-	optdepends = mercurial: support mercurial-based mbed projects
-	optdepends = python-mbed-host-tests: Flash, reset and supervise tool
-	optdepends = python-mbed-greentea: Test automation
-	optdepends = python-mbed-ls: Automatic device detection
-	options = !emptydirs
-	source = https://github.com/ARMmbed/mbed-cli/archive/1.10.3.tar.gz
+	makedepends = python2-setuptools
+	source = python-mbed-cli-1.10.3.tar.gz::https://github.com/ARMmbed/mbed-cli/archive/1.10.3.tar.gz
 	sha256sums = 8a95093a89aa8fb7a911775155cdb4b9d124ef6af74393dfc1b0bb79c3e33327
 
 pkgname = python-mbed-cli
+	depends = python
+	depends = python-pyserial
+	depends = python-mbed-os-tools
+	depends = git
+	depends = mercurial
+
+pkgname = python2-mbed-cli
+	depends = python
+	depends = python-pyserial
+	depends = python-mbed-os-tools
+	depends = git
+	depends = mercurial
 
