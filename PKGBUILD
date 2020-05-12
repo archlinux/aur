@@ -3,8 +3,8 @@
 # Contributor: JJK
 
 pkgname=srb2
-pkgver=2.2.3
-_dataver=2.2.3
+pkgver=2.2.4
+_dataver=2.2.4
 pkgrel=1
 pkgdesc='A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2")'
 arch=('i686' 'x86_64')
@@ -13,15 +13,19 @@ url='http://www.srb2.org'
 depends=('sdl2_mixer' 'libpng' 'libgme' "srb2-data>=$_dataver" 'libopenmpt')
 makedepends=('mesa' 'glu')
 makedepends_i686=('nasm')
-source=("https://github.com/STJr/SRB2/archive/SRB2_release_$pkgver.zip"
+source=("https://github.com/STJr/SRB2/archive/SRB2_release_${pkgver}.zip"
         "srb2.desktop"
         "srb2-opengl.desktop")
-sha256sums=('c6f5889ce3af1841ed377389a01cf0cc8466159bc7961b464669938963c71091'
+sha256sums=('a7bf0845ad10b3d30a50d1048229e0bd10ae604ac62870aadd55197bb2d87bd4'
             'ac9fa63f29ad9413797da8c6f0a4f76fa6f4dd0710d1e84a457a8c42cf6df4f9'
             'f696bab390d2b1028bf2f5c5d4d838c0981dc211cec4c4a8f349b7ec0580e701')
 
 prepare() {
   cd SRB2-SRB2_release_$pkgver/src
+
+  # Fix compilation issue with gcc 10
+  sed '1iCFLAGS=-fcommon' -i Makefile
+
   # disable Animated PNG saving support, allows build with libpng16
   sed 's|#define USE_APNG|/* & */|' -i m_misc.c
 
