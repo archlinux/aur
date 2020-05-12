@@ -1,7 +1,8 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-cry
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="OCaml native module for icecast/shoutcast source protocol(s)"
 arch=('i686' 'x86_64')
@@ -9,21 +10,23 @@ url="https://github.com/savonet/ocaml-cry"
 license=('GPL')
 depends=('ocaml' 'ocaml-ssl')
 makedepends=('ocaml-findlib')
-options=('!strip')
-source=("https://github.com/savonet/ocaml-cry/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('443e83db0bf0e8342a67476ffb3729ff486283ec65e2872c186d32255ae5d1df71b5c860a1f4db2ee9222409a4bf539e4d4a64d48242f417d066bfc291d36b2d')
+options=(!libtool !strip zipman !makeflags staticlibs)
+source=("https://github.com/savonet/ocaml-cry/archive/${pkgver}.tar.gz")
+sha512sums=('43de3513ee2a0f5e5ad496f48137519de270f836081870b48768e45146a4aab84ad7a0781eac56f7b69ce8724a7fd49e7f9fd9d2d771f133aeef2db96d7254af')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    ./configure
-    make
+    dune build
 }
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-    mkdir -p "${OCAMLFIND_DESTDIR}"
-    make install
+    dune install --prefix "${pkgdir}/usr" \
+    --libdir "${pkgdir}$(ocamlfind printconf destdir)"
+
+    # Install LICENSE
+    mkdir -p $pkgdir/usr/share/licenses/$pkgname/
+    awk 'BEGIN{P=0} /License/ {P = 1;} {if (P) print}' README.md > $pkgdir/usr/share/licenses/$pkgname/license
 }
