@@ -1,5 +1,6 @@
 [Unit]
 Description=BitTorrent Protocol Daemon
+Documentation=man:btpd(1)
 After=network-up.target
 
 [Service]

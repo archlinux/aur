@@ -1,7 +1,7 @@
 # Maintainer: jsm <0x6a736d@gmail.com>
 pkgname=btpd-git
 pkgver=449.a3a10df
-pkgrel=1
+pkgrel=2
 pkgdesc="BitTorrent Protocol Daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/btpd/btpd"
@@ -14,7 +14,7 @@ source=(git+https://github.com/btpd/btpd
         btpd.service
         btpd.install)
 sha256sums=(SKIP
-            fbf49bc1378025adfbd1910ae3aca19093965a404d52e0676956e6f75cfa0409
+            6bdd52703be31eba36b192e95433d1d2ef6751b27a68860dca221a9c3a15ecaa
             181631c0f234edd637ee63979a407b015d789a4b5ef91eecc6b274cc56239a2b)
 _gitname="btpd"
 install="btpd.install"
