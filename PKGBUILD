@@ -4,7 +4,7 @@ pkgdesc="ROS - Translates joy msgs."
 url='https://wiki.ros.org/joy_listener'
 
 pkgname='ros-melodic-joy-listener'
-pkgver='0.2.4'
+pkgver='0.2.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=2
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="wu_ros_tools-${pkgver}/joy_listener"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/DLu/wu_ros_tools/archive/${pkgver}.tar.gz")
-sha256sums=('fd0bb39a69302dae5ccfd565277209719a4199644fc8265a2ae7ccedd92c004a')
+sha256sums=('27323d7584aed0782d4b64ca4f1955b237ff3b41736d075d29a9c825a8f55366')
 
 build() {
   # Use ROS environment variables
@@ -49,9 +49,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_BASENAME=.cpython-37m \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
