@@ -3,7 +3,7 @@ thread, without breaking the realtime behavior."
 url='https://wiki.ros.org/realtime_tools'
 
 pkgname='ros-melodic-realtime-tools'
-pkgver='1.16.0'
+pkgver='1.15.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=2
 license=('BSD')
@@ -24,10 +24,10 @@ ros_depends=(
   ros-melodic-actionlib)
 depends=(${ros_depends[@]})
 
-_dir="${srcdir}/realtime_tools-${pkgver}"
+_dir="realtime_tools-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/realtime_tools/archive/${pkgver}.tar.gz"
         "tests.patch")
-sha256sums=('690222fd2908cec0412d20f6e8b5d8a17132d959edb719e01695e89f7c4d8111'
+sha256sums=('3356e9df104c177bd588db133eba65a351af62e35e64c87f2a5fc72c3fd2cd5a'
             'd40ccadd950cbd5743295639bed2d0c1b0ab8a5edfac8f9de5cbf11a48ed8300')
 
 prepare() {
