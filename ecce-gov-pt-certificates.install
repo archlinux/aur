@@ -1,0 +1,14 @@
+set -e
+
+post_upgrade() {
+	post_install
+}
+
+post_install() {
+	update-ca-trust
+}
+
+pre_remove() {
+	update-ca-trust
+}
+
