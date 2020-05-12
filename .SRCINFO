@@ -1,0 +1,16 @@
+pkgbase = perl-hash-defhash
+	pkgdesc = Manipulate defhash
+	pkgver = 0.071
+	pkgrel = 1
+	url = https://github.com/perlancar/perl-Hash-DefHash
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-test-exception
+	depends = perl
+	depends = perl-string-trim-more
+	source = https://www.cpan.org/modules/by-module/Hash/Hash-DefHash-0.071.tar.gz
+	sha512sums = 0ab03b03f3269e4afa5027335cfbae5cf24023762268eebdbff6e086bb7c5cf2089b96cf7ee69b400afa29b98212d9441701a297a8c9cc5ac76267cf764d92cf
+
+pkgname = perl-hash-defhash
+
