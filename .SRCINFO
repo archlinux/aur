@@ -6,8 +6,8 @@ pkgbase = gaper-bin
 	arch = x86_64
 	license = MIT
 	provides = gaper
-	source = https://github.com/maxcnunes/gaper/releases/download/v1.0.3/gaper_1.0.3_linux_amd64.tar.gz
-	md5sums = e50f85e572b818dc42d972ef6b5e4da8
+	source = gaper-bin-1.0.3.tar.gz::https://github.com/maxcnunes/gaper/releases/download/v1.0.3/gaper_1.0.3_linux_amd64.tar.gz
+	sha256sums = 7aeb6764b63037be03e047e4ea079c6f9683fb9b476ba92560d07dc10f15b899
 
 pkgname = gaper-bin
 

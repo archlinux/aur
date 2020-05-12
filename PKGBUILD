@@ -8,8 +8,8 @@ arch=('x86_64')
 url="https://github.com/maxcnunes/gaper"
 license=('MIT')
 provides=('gaper')
-source=("${url}/releases/download/v${pkgver}/gaper_${pkgver}_linux_amd64.tar.gz")
-md5sums=('e50f85e572b818dc42d972ef6b5e4da8')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/gaper_${pkgver}_linux_amd64.tar.gz")
+sha256sums=('7aeb6764b63037be03e047e4ea079c6f9683fb9b476ba92560d07dc10f15b899')
 
 package() {
   install -Dm755 "${srcdir}"/gaper "${pkgdir}/usr/bin/gaper"
