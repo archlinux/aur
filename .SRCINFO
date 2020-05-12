@@ -1,0 +1,47 @@
+pkgbase = python-mbed-icetea
+	pkgdesc = mbed test framework
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/ARMmbed/icetea
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-mbed-icetea-2.0.1.tar.gz::https://github.com/ARMmbed/icetea/archive/v2.0.1.tar.gz
+	sha256sums = 5c31d2fc60b543f82c59545218a78795a00a6d09412e0c6e8e0e528df398dadb
+
+pkgname = python-mbed-icetea
+	depends = python
+	depends = python-prettytable
+	depends = python-requests
+	depends = python-yattag
+	depends = python-pyserial
+	depends = python-jsonmerge
+	depends = python-jsonschema
+	depends = python-mbed-ls
+	depends = python-semver
+	depends = python-mbed-flasher
+	depends = python-six
+	depends = python-pydash
+	depends = python-transitions
+	optdepends = python-coloredlogs: decorate your console outputs with all kind of colors
+	optdepends = python-psutil
+	optdepends = python-pyshark: sniffer integration
+
+pkgname = python2-mbed-icetea
+	depends = python2
+	depends = python2-prettytable
+	depends = python2-requests
+	depends = python2-yattag
+	depends = python2-pyserial
+	depends = python2-jsonmerge
+	depends = python2-jsonschema
+	depends = python2-mbed-ls
+	depends = python2-semver
+	depends = python2-mbed-flasher
+	depends = python2-six
+	depends = python2-pydash
+	depends = python2-transitions
+	optdepends = python2-coloredlogs: decorate your console outputs with all kind of colors
+	optdepends = python2-psutil
+
