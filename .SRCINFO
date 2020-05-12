@@ -1,6 +1,6 @@
 pkgbase = firefox-kde-opensuse-rpm
 	pkgdesc = Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE - Binary from OBS
-	pkgver = 76.0_831.1
+	pkgver = 76.0_832.4
 	pkgrel = 1
 	epoch = 1
 	url = https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox
@@ -26,11 +26,11 @@ pkgbase = firefox-kde-opensuse-rpm
 	depends = libevent
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
-	provides = firefox=76.0_831.1
+	provides = firefox=76.0_832.4
 	conflicts = firefox
 	conflicts = firefox-kde-opensuse
-	source = https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/x86_64/MozillaFirefox-76.0-831.1.x86_64.rpm
-	sha512sums = badaa81c6e00d01ad7d7e72a093f19f691441886c8718d007c190b0f725ef5a3efeaf1b2386860e07cb4f41331b6c2f41b07a980a3201be75ad629fa10ea8e05
+	source = https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/x86_64/MozillaFirefox-76.0-832.4.x86_64.rpm
+	sha512sums = eb43ec8eeec163a635749ee9c2941af3978d08887de85db9f5a833d31b93932b205d90b7125c6073265a31c9ea822ca74d55efcae88260ce58546b304b8d3c33
 
 pkgname = firefox-kde-opensuse-rpm
 
