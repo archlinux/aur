@@ -1,7 +1,7 @@
 pkgbase = cpp-httplib
 	pkgdesc = A C++ header-only HTTP/HTTPS server and client library
 	pkgver = 0.5.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yhirose/cpp-httplib
 	arch = any
 	license = MIT

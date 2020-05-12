@@ -1,7 +1,7 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 pkgname=cpp-httplib
 pkgver=0.5.13
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++ header-only HTTP/HTTPS server and client library'
 arch=('any')
 url='https://github.com/yhirose/cpp-httplib'
@@ -12,5 +12,6 @@ sha512sums=('beab4c3af01c6ad7ab01e330ffbb3c119dfee9e4a23315ced19637b0105e92503bf
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 'README.md' "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 'httplib.h' "$pkgdir/usr/include/httplib.h"
 }
