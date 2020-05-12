@@ -3,7 +3,7 @@ pkgdesc="ROS - Components of MoveIt that offer simpler interfaces to planning an
 url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-ros-planning-interface'
-pkgver='1.0.2'
+pkgver='1.0.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=3
 license=('BSD')
@@ -49,10 +49,10 @@ depends=(${ros_depends[@]}
 # sha256sums=('6cbf0b256af768dcd336ff60b142a2f1d363c79879c30bbe5bc0952c0375b2e8')
 
 # Tarball version (faster download)
-_dir="moveit-${pkgver}/moveit_ros/planning_interface"
+_dir="moveit-${pkgver}/moveit_ros_planning_interface"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz"
   "eigenpy.patch")
-sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4'
+sha256sums=('b0ac91cd4c4dc29d9bd5e3885a1a457252495b3f2bedb46ddfe04154f5ac2358'
   '797e2415ec9c66b2f7137bb6c0037e4f0ef5520baba7eff3af3eb04119e42b40')
 
 prepare() {
