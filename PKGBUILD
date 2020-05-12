@@ -4,7 +4,7 @@ pkgdesc="ROS - 3D interactive marker communication library for RViz and similar 
 url='https://wiki.ros.org/interactive_markers'
 
 pkgname='ros-melodic-interactive-markers'
-pkgver='1.11.4'
+pkgver='1.11.5'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=3
@@ -43,7 +43,7 @@ depends=(
 
 _dir="interactive_markers-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/interactive_markers/archive/${pkgver}.tar.gz")
-sha256sums=('33319252510cae10a8a2e2af5ac104f33ebb0b2f5ae8d9ab9649b5dc9ee34a7a')
+sha256sums=('24bb9a8b116e442cd1b7982b496278106416b1ec32fc9f6a47835ec57fbd92d7')
 
 build() {
 	# Use ROS environment variables.
