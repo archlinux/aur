@@ -9,7 +9,7 @@ pkgbase = checkpwn
 	makedepends = git
 	depends = git
 	depends = openssl
-	source = https://github.com/chrisfair/checkpwn/releases/download/v1.0.0/checkpwn.tar.gz
+	source = https://github.com/chrisfair/checkpwn/releases/download/v1.1.0/checkpwn.tar.gz
 	sha1sums = 5179c0bb1ca9496b6330ca59537755477d8efffd
 
 pkgname = checkpwn
