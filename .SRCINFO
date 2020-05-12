@@ -1,0 +1,13 @@
+pkgbase = wraith-master-bin
+	pkgdesc = Wraith Master
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://gitlab.com/serebit/wraith-master
+	arch = x86_64
+	license = Apache-2.0
+	depends = gtk3
+	source = wraith-master.tar.xz::https://gitlab.com/serebit/wraith-master/uploads/4c06c92e48c3b1a6df93dd817adc97e4/wraith-master-1.0.0.tar.xz
+	sha256sums = SKIP
+
+pkgname = wraith-master-bin
+
