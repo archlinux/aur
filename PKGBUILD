@@ -2,22 +2,18 @@
 # Contributor: steeltitanium <steeltitanium1 at gmail dot com>
 
 pkgname=srb2kart-data
-pkgver=1.1
-pkgrel=6
+pkgver=1.2
+pkgrel=1
 pkgdesc="Data files for Sonic Robo Blast 2 Kart"
 arch=('any')
 license=('custom')
 url='https://mb.srb2.org/showthread.php?t=43708'
 optdepends=('srb2kart: "Sonic Robo Blast 2 Kart" game')
-makedepends=('p7zip')
 source=("https://github.com/STJr/Kart-Public/releases/download/v$pkgver/srb2kart-v${pkgver//./}-Installer.exe")
-sha256sums=('3af7d005082c2d08a0494a5bb9137b335009ff311cb5bfec215ed07d8ab2185b')
-noextract=("srb2kart-v${pkgver//./}-Installer.exe")
+sha256sums=('57284de43a2889c0a60ce8fee77df22095fcd31beef6130cbeed1ead0bebbfec')
 
 prepare() {
 	# Fix broken permissions
-	echo "Extracting srb2kart-v${pkgver//./}-Installer.exe"
-	7z x srb2kart-v${pkgver//./}-Installer.exe
 	find "$srcdir"/mdls -type d -exec chmod 755 {} \;
 }
 
