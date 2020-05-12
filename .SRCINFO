@@ -8,7 +8,7 @@ pkgbase = lib32-ldb
 	makedepends = lib32-cmocka
 	depends = lib32-talloc
 	depends = lib32-tevent
-	depends = lib32-tdb
+	depends = lib32-tdb>=1.4.3
 	depends = lib32-popt
 	depends = lib32-libbsd
 	depends = ldb
