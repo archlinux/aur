@@ -1,11 +1,12 @@
 pkgbase = github-cli-bin
 	pkgdesc = The official GitHub CLI - binary
 	pkgver = 0.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/cli/cli
 	arch = x86_64
 	license = MIT
 	depends = glibc
+	optdepends = git: required for most functionality
 	provides = github-cli
 	conflicts = github-cli
 	source = https://github.com/cli/cli/releases/download/v0.8.0/gh_0.8.0_linux_amd64.tar.gz

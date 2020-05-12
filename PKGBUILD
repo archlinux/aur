@@ -4,12 +4,13 @@
 
 pkgname=github-cli-bin
 pkgver=0.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The official GitHub CLI - binary"
 arch=('x86_64')
 url=https://github.com/cli/cli
 license=('MIT')
 depends=('glibc')
+optdepends=('git: required for most functionality')
 provides=('github-cli')
 conflicts=('github-cli')
 source=("${url}/releases/download/v${pkgver}/gh_${pkgver}_linux_amd64.tar.gz")
