@@ -4,7 +4,7 @@
 pkgname=sile
 pkgdesc='Modern typesetting system inspired by TeX'
 pkgver=0.10.4
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
 license=('MIT')
@@ -30,27 +30,39 @@ depends=('fontconfig'
          'icu'
          'libpng' # this goes with libtexpdf if ever split out to a library package
          'lua'
-         "${_lua_deps[@]/#/lua-}")
+         "${_lua_deps[@]/#/lua-}"
+         'zlib')
+# Note find via find-deps; needs rebuilding any time versions of these change;
+# currently missing several because parent packages are missing the provides=()
+depends+=('libfreetype.so'
+          'libharfbuzz.so'
+          'libicudata.so'
+          'libicui18n.so'
+          'libicuio.so'
+          'libicuuc.so'
+          'libtexpdf.so')
 checkdepends=('lua-busted')
 provides=('libtexpdf.so')
 source=("https://github.com/sile-typesetter/sile/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2")
 sha256sums=('d136fbe9bc86c3e235d34db170d48af14779c36e8b0b03f542ffdbabcdde4222')
 
 build () {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr --with-system-luarocks
-	make all
+    cd "$pkgname-$pkgver"
+    ./configure \
+        --prefix /usr \
+        --with-system-luarocks
+    make all
 }
 
 check () {
-	cd "$pkgname-$pkgver"
-	make busted
+    cd "$pkgname-$pkgver"
+    make busted
 }
 
 package () {
-	cd "$pkgname-$pkgver"
-	make install DESTDIR="$pkgdir"
-	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md documentation/sile.pdf
-	cp -ar examples "$pkgdir/usr/share/doc/$pkgname"
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+    cd "$pkgname-$pkgver"
+    make install DESTDIR="$pkgdir"
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md documentation/sile.pdf
+    cp -ar examples "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
