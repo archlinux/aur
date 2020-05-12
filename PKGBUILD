@@ -4,7 +4,7 @@ pkgdesc="ROS - The package provides the environment variables ROS_VERSION, ROS_D
 url='https://wiki.ros.org/ros_environment'
 
 pkgname='ros-melodic-ros-environment'
-pkgver='1.2.1'
+pkgver='1.2.2'
 arch=('any')
 pkgrel=3
 license=('Apache License 2.0')
@@ -28,7 +28,7 @@ depends=(
 
 _dir="ros_environment-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_environment/archive/${pkgver}.tar.gz")
-sha256sums=('7b27acb70791779a57b082ad6e9170adbaf0a19ebde7d0aebf705210a676d39d')
+sha256sums=('99d54f8e0dd5d78b41f8ef012ac517fb9b4548d53b30f4ff12b9086cb76e7c9b')
 
 build() {
 	# Use ROS environment variables.

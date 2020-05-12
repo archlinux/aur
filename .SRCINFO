@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-ros-environment
 	pkgdesc = ROS - The package provides the environment variables ROS_VERSION, ROS_DISTRO, ROS_PACKAGE_PATH, and ROS_ETC_DIR.
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 3
 	url = https://wiki.ros.org/ros_environment
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = ros-melodic-ros-environment
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	source = ros-melodic-ros-environment-1.2.1.tar.gz::https://github.com/ros/ros_environment/archive/1.2.1.tar.gz
-	sha256sums = 7b27acb70791779a57b082ad6e9170adbaf0a19ebde7d0aebf705210a676d39d
+	source = ros-melodic-ros-environment-1.2.2.tar.gz::https://github.com/ros/ros_environment/archive/1.2.2.tar.gz
+	sha256sums = 99d54f8e0dd5d78b41f8ef012ac517fb9b4548d53b30f4ff12b9086cb76e7c9b
 
 pkgname = ros-melodic-ros-environment
 
