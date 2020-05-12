@@ -1,6 +1,6 @@
 pkgbase = kcm-fcitx5-git
 	pkgdesc = KDE Config Module for Fcitx5
-	pkgver = r286.e027157
+	pkgver = r289.9025b03
 	pkgrel = 1
 	url = https://github.com/fcitx/kcm-fcitx5
 	arch = i686
