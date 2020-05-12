@@ -1,0 +1,14 @@
+pkgbase = roundcubemail-plugin-tinymce-config-git
+	pkgdesc = Roundcube plugin to
+	pkgver = roundcubemail.plugins.kolab.3.5.4.r0.ga99d2b61
+	pkgrel = 1
+	url = https://git.kolab.org/
+	arch = any
+	license = AGPL3
+	makedepends = git
+	depends = roundcubemail
+	source = roundcubemail-plugin-tinymce-config-git::git+https://git.kolab.org/diffusion/RPK/roundcubemail-plugins-kolab.git
+	sha256sums = SKIP
+
+pkgname = roundcubemail-plugin-tinymce-config-git
+
