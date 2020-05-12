@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+cd /opt/artemis3
+/opt/artemis3/Artemis "$@"
+
+exit 0

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Artemis
+GenericName=Artemis
+Type=Application
+Comment="Radio Signals Recognition Manual"
+StartupWMClass=artemis3
+Exec=sh -c "cd /opt/artemis3; ./Artemis"
+Terminal=false
+Icon=artemis3
+Categories=Network;HamRadio;

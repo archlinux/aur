@@ -1,0 +1,6 @@
+post_install() {
+    echo ""
+
+    echo "Don't forget to add yourself to the 'artemis3' group and re-login in order to be able to use Artemis properly."
+    echo ""
+}

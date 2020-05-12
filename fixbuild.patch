@@ -1,0 +1,15 @@
+--- spec_files/Linux/Artemis.spec	2020-04-25 16:42:00.000000000 +0300
++++ spec_files/Linux/Artemis.spec	2020-05-12 16:28:16.470208875 +0300
+@@ -17,11 +17,11 @@
+ 
+ a = Analysis([SRC_PATH + 'artemis.py'],  # noqa: 821
+              pathex=[os.getcwd()],
+              binaries=[],
+              datas=data_file,
+-             hiddenimports=[],
++             hiddenimports=['packaging.requirements', 'pkg_resources.py2_warn'],
+              hookspath=[],
+              runtime_hooks=[],
+              excludes=[],
+              win_no_prefer_redirects=False,
+              win_private_assemblies=False,

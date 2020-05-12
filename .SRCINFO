@@ -1,0 +1,33 @@
+pkgbase = artemis3
+	pkgdesc = Radio Signals Recognition Manual
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = https://aresvalley.com/
+	install = artemis3.install
+	arch = x86_64
+	license = GPL3
+	makedepends = pyinstaller
+	makedepends = patch
+	depends = glibc>=2.27
+	depends = python>=3.7.0
+	depends = python-numpy>=1.17.2
+	depends = python-pandas>=0.24.2
+	depends = python-certifi>=2019.6.16
+	depends = python-aiohttp>=3.5.4
+	depends = python-urllib3>=1.24.3
+	depends = python-pygame>=1.9.6
+	depends = python-qtawesome>=0.6.0
+	depends = python-pyqt5>=5.12.2
+	source = https://github.com/AresValley/Artemis/archive/v3.2.1.tar.gz
+	source = artemis3
+	source = artemis3.sysusers
+	source = artemis3.desktop
+	source = fixbuild.patch
+	md5sums = 22148f072132874ceae8afd7aad6b338
+	md5sums = 6500442c974df277f8baf40840126dad
+	md5sums = 375ed363a89e74943e4795486662e0c1
+	md5sums = d6983e6f3123d95ca29e89405993d7f1
+	md5sums = c3e46bdc63a33a07b06f644166bcd57a
+
+pkgname = artemis3
+
