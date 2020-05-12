@@ -1,8 +1,8 @@
 # Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
 
 pkgname="python-simple-term-menu"
-pkgver="0.4.5"
-pkgrel="2"
+pkgver="0.4.6"
+pkgrel="1"
 pkgdesc="A Python package which creates simple interactive menus on the command line."
 arch=("any")
 url="https://github.com/IngoHeimbach/simple-term-menu"
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("python")
 makedepends=("python-setuptools")
 source=("https://github.com/IngoHeimbach/simple-term-menu/archive/v${pkgver}.tar.gz")
-sha256sums=("d61151a6bc16952e0d9e095303c4d632c876706c5ba81a12c7653e266a19d924")
+sha256sums=("5a7b1c8ae241a698932f2082530021996fa03e92586d3347569a73f52854d480")
 
 build() {
     cd "${srcdir}/${pkgname#*-}-${pkgver}" || return
