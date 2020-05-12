@@ -3,7 +3,7 @@ pkgdesc="ROS - This package provides messages and serializations / conversion fo
 url='https://wiki.ros.org/octomap_msgs'
 
 pkgname='ros-melodic-octomap-msgs'
-pkgver='0.3.3'
+pkgver='0.3.5'
 arch=('any')
 pkgrel=2
 license=('BSD')
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="octomap_msgs-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/OctoMap/octomap_msgs/archive/${pkgver}.tar.gz")
-sha256sums=('ead6be1199e0d5cf44765e3172e156394602817aad21ca59c22d7a4f678639e4')
+sha256sums=('cc08622246d02f134608de37b8671c08b62628a78091d2dbd040bd77f4d7e192')
 
 build() {
   # Use ROS environment variables
