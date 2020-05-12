@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-move-base
 	pkgdesc = ROS - The move_base package provides an implementation of an action (see the actionlib package) that, given a goal in the world, will attempt to reach it with a mobile base.
-	pkgver = 1.16.2
+	pkgver = 1.16.6
 	pkgrel = 3
 	url = https://wiki.ros.org/move_base
 	arch = i686
@@ -51,8 +51,8 @@ pkgbase = ros-melodic-move-base
 	depends = ros-melodic-dynamic-reconfigure
 	depends = ros-melodic-rotate-recovery
 	depends = ros-melodic-pluginlib
-	source = ros-melodic-move-base-1.16.2.tar.gz::https://github.com/ros-planning/navigation/archive/1.16.2.tar.gz
-	sha256sums = d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205
+	source = ros-melodic-move-base-1.16.6.tar.gz::https://github.com/ros-planning/navigation/archive/1.16.6.tar.gz
+	sha256sums = 88e3b4433de9645e1132db15b01f436a75a28ebc15cd5b70660b158dd6ba42dd
 
 pkgname = ros-melodic-move-base
 
