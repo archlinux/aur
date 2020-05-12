@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Psychonauts
+Comment=Platforming game by Double Fine Productions
+Exec=psychonauts
+Icon=psychonauts
+Terminal=false
+Type=Application
+Categories=Game;
+NoDisplay=false
+StartupNotify=true

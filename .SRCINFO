@@ -1,0 +1,22 @@
+pkgbase = psychonauts-gog
+	pkgdesc = A platforming game by Double Fine Productions (GOG version)
+	pkgver = 2.0.0.4
+	pkgrel = 1
+	url = https://www.gog.com/game/psychonauts
+	arch = x86_64
+	license = custom: commercial
+	makedepends = unzip
+	depends = lib32-sdl
+	depends = lib32-openal
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	conflicts = psychonauts
+	source = psychonauts-gog.desktop
+	source = psychonauts-gog.sh
+	source = gog_psychonauts_2.0.0.4.sh::gog://gog_psychonauts_2.0.0.4.sh
+	md5sums = a4d91ef0270b1734338252c928f59354
+	md5sums = ab9c3c8d8ba61e9c1be6feefe9ad18db
+	md5sums = 7fc85f71494ff5d37940e9971c0b0c55
+
+pkgname = psychonauts-gog
+
