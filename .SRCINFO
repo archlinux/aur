@@ -1,13 +1,13 @@
 pkgbase = dnsadblock
 	pkgdesc = DnsAdBlock DNS to DOH proxy client
-	pkgver = 0.2.50
+	pkgver = 0.2.54
 	pkgrel = 1
 	url = https://github.com/dnsadblock/proxy-release
 	install = dnsadblock.install
 	arch = x86_64
 	license = MIT
-	source = https://github.com/dnsadblock/proxy-release/releases/download/v0.2.50/dnsadblock_0.2.50_linux_amd64.tar.gz
-	sha256sums = ccf0dc688cc2da1b411a607cd504dd43a27861bf4af01a9da9a8fd9bcb0f0ec1
+	source = https://github.com/dnsadblock/proxy-release/releases/download/v0.2.54/dnsadblock_0.2.54_linux_amd64.tar.gz
+	sha256sums = ebd0d0b441f284fc21df67dc09c15630f8a42011551103871cd2c3425d4ef6e8
 
 pkgname = dnsadblock
 
