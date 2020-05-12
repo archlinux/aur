@@ -1,15 +1,15 @@
 pkgbase = python-pysnooper
 	pkgdesc = PySnooper - Never use print for debugging again
-	pkgver = 0.3.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/cool-RR/PySnooper
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python>=2.7
-	noextract = python-pysnooper-0.3.0.tar.gz
-	source = python-pysnooper-0.3.0.tar.gz::https://github.com/cool-RR/PySnooper/archive/0.3.0.tar.gz
-	md5sums = f51ea7f49b0fca708b0f3e7dc699fc89
+	noextract = python-pysnooper-0.4.1.tar.gz
+	source = python-pysnooper-0.4.1.tar.gz::https://github.com/cool-RR/PySnooper/archive/0.4.1.tar.gz
+	md5sums = 35999515b2fd278ed3429741c6ad2644
 
 pkgname = python-pysnooper
 

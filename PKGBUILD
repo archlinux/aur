@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=python-pysnooper
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="PySnooper - Never use print for debugging again"
 url="https://github.com/cool-RR/PySnooper"
@@ -12,7 +12,7 @@ _pkgtag="$pkgname-$pkgver"
 _pkgtar="$_pkgtag.tar.gz"
 source=("$_pkgtar::$url/archive/$pkgver.tar.gz")
 noextract=("$_pkgtar")
-md5sums=('f51ea7f49b0fca708b0f3e7dc699fc89')
+md5sums=('35999515b2fd278ed3429741c6ad2644')
 
 prepare() {
   mkdir -p "$_pkgtag"
