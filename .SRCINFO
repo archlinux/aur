@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-gazebo-ros-control
 	pkgdesc = ROS - gazebo_ros_control.
-	pkgver = 2.8.5
+	pkgver = 2.8.7
 	pkgrel = 2
 	url = http://ros.org/wiki/gazebo_ros_control
 	arch = i686
@@ -34,8 +34,8 @@ pkgbase = ros-melodic-gazebo-ros-control
 	depends = ros-melodic-gazebo-ros
 	depends = ros-melodic-control-toolbox
 	depends = ros-melodic-transmission-interface
-	source = ros-melodic-gazebo-ros-control-2.8.5.tar.gz::https://github.com/ros-simulation/gazebo_ros_pkgs/archive/2.8.5.tar.gz
-	sha256sums = 0b0f6eeaeca611ebe12ec0ea4388121098fdafee5ecc8d76c6ae69b8b8f14aed
+	source = ros-melodic-gazebo-ros-control-2.8.7.tar.gz::https://github.com/ros-simulation/gazebo_ros_pkgs/archive/2.8.7.tar.gz
+	sha256sums = 8f0baed480228c8eae5caad41212e5cf19c15a640cb4c67ce8777492989cab18
 
 pkgname = ros-melodic-gazebo-ros-control
 

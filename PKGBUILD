@@ -4,7 +4,7 @@ pkgdesc="ROS - gazebo_ros_control."
 url='http://ros.org/wiki/gazebo_ros_control'
 
 pkgname='ros-melodic-gazebo-ros-control'
-pkgver='2.8.5'
+pkgver='2.8.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=2
 license=('BSD')
@@ -39,7 +39,7 @@ depends=(${ros_depends[@]})
 
 _dir="gazebo_ros_pkgs-${pkgver}/gazebo_ros_control"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz")
-sha256sums=('0b0f6eeaeca611ebe12ec0ea4388121098fdafee5ecc8d76c6ae69b8b8f14aed')
+sha256sums=('8f0baed480228c8eae5caad41212e5cf19c15a640cb4c67ce8777492989cab18')
 
 build() {
   # Use ROS environment variables
