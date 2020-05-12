@@ -1,0 +1,16 @@
+post_install() {
+    echo
+    echo "To configure your desktop environment to open Zoom links in Firejail, run:"
+    echo
+    for scheme in zoommtg zoomus tel callto zoomphonecall; do
+        echo "xdg-mime default ZoomFirejail.desktop x-scheme-handler/$scheme"
+    done
+    echo
+}
+
+post_upgrade() {
+    # xdg-mime instructions added in 0.1.4
+    if [ $(vercmp $2 0.1.3) -le 0 ]; then
+        post_install
+    fi
+}
