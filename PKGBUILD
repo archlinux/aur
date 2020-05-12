@@ -1,9 +1,10 @@
-# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
 _name=vnote
 _pkgname=VNote
 pkgname=${_name}-bin
-pkgver=2.7.1
+pkgver=2.9.1
 pkgrel=1
 pkgdesc='A Vim-inspired note-taking application that knows programmers and Markdown better'
 arch=('x86_64')
@@ -17,7 +18,7 @@ _url=https://github.com/tamlok/vnote/
 _binfile=${_pkgname}-${pkgver}-${CARCH}.AppImage
 _buildfile=${_name}-${pkgver}.AppImage
 source=("${_buildfile}::${_url}/releases/download/v${pkgver}/${_binfile}")
-sha256sums=('333d837e28de5b41123e8a4924f4f8e1d3c1492b94670f614236f6f1f985ac42')
+sha256sums=('f71a93453df9c1b92bf4a01a3f561e46d76cf9ad20c9e0acc26c69eb722a4bfa')
 
 prepare() {
   # Extract AppImage
