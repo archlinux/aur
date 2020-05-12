@@ -6,10 +6,11 @@ pkgrel=5
 pkgdesc="A handy, fast and powerful go template engine"
 arch=('x86_64')
 url='https://shiyanhui.github.io/hero'
-license=('Apache-2.0')
-makedepends=('go')
+license=('Apache')
+makedepends=('go-pie')
+options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/shiyanhui/hero/archive/v${pkgver}.tar.gz")
-md5sums=('de40e3da62f50e0948194823e4910fb1')
+sha256sums=('42644339748c40f7c1fcd2f8bd3b4138a6f5607f04107d0ed6fd8461a3281d62')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -29,6 +30,5 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm755 ../hero-bin "${pkgdir}/usr/bin/hero"
-  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/hero/LICENSE"
   go clean -modcache #Remove go libraries
 }
