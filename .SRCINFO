@@ -6,8 +6,10 @@ pkgbase = gifgen
 	arch = x86_64
 	license = MIT
 	depends = ffmpeg
-	source = https://github.com/lukechilds/gifgen/archive/1.1.2.tar.gz
-	md5sums = 2805fd101b71c19d7dca7cfb367ed29b
+	source = gifgen-1.1.2.tar.gz::https://github.com/lukechilds/gifgen/archive/1.1.2.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/lukechilds/gifgen/master/LICENSE
+	sha256sums = 95f69c63158315ad869ff36611026cce1a7d03f8c84716b1c21a44e71e8d6aee
+	sha256sums = f23faa8280084d44d2282a44d142fa439fed491cb52f367a8fedb8f1f17ed511
 
 pkgname = gifgen
 
