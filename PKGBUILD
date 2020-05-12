@@ -4,7 +4,7 @@ pkgdesc="ROS - ros_tutorials contains packages that demonstrate various features
 url='https://www.wiki.ros.org/ros_tutorials'
 
 pkgname='ros-melodic-ros-tutorials'
-pkgver='0.9.1'
+pkgver='0.9.2'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=2
@@ -32,7 +32,7 @@ depends=(
 
 _dir="ros_tutorials-${pkgver}/ros_tutorials"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_tutorials/archive/${pkgver}.tar.gz")
-sha256sums=('b39929a2ac912326fc114256e755fff5d0f0e5e5e7c99640d013eb7f916b85f4')
+sha256sums=('403684ccddc5e62f4eba9058628d434a7ff07e0b0980fee43a44386f6d0c6d0a')
 
 build() {
 	# Use ROS environment variables.
