@@ -1,5 +1,7 @@
 *.zip
 *.tar.xz
-pkg
-src
-simulationcraft
+simc/
+pkg/
+src/
+*.log*
+diff/

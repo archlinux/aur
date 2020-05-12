@@ -1,94 +1,63 @@
-# Current maintainer: Samuel Kogler <firstname.lastname at gmail.com>
-# Original maintainer: Martin Weinelt <mweinelt@gmail.com>
-# Contributor: Bjoern Bidar <theodorstormgrade@gmail.com>
+# Maintainer: Samuel Kogler <firstname.lastname at gmail.com>
+
 _gui=true
+_pkgname=simc
+pkgver=r41567.1a5296ef4b
+pkgrel=1
 pkgbase=simulationcraft-git
 pkgname=simulationcraft-git
-pkgver=620.02.r1.g76dbaa9
-pkgrel=3
 pkgdesc="A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage."
-url="http://code.google.com/p/simulationcraft"
+url="https://github.com/simulationcraft/simc"
 arch=('i686' 'x86_64')
 license=('GPL3')
-conflicts=('simcraft' 'simcraft-data' 'simcraft-gui' 'simulationcraft' 'simulationcraft-data' 'simulationcraft-gui')
-makedepends=('git')
-install=simulationcraft.install
-source=('simulationcraft::git+https://code.google.com/p/simulationcraft/'
+depends=('qt5-webkit' 'openssl' 'qt5-webkit' 'qt5-webengine')
+makedepends=('cmake' 'git')
+source=('git+https://github.com/simulationcraft/simc.git'
+        '0001-set-welcome-path.patch'
         'SimulationCraft.desktop')
-md5sums=('SKIP'
-         '9e52edb48f39888bc13a0b9bd5f8d758')
-
+sha256sums=('SKIP'
+            '618e5d13965b9093213ef2240e23a828870b07faac0908cb1978438501f9e43d'
+            'fa947aea5f33ca5c4724655cf10ef6a46ae6065ba910a9f509ff96f30497ee31')
 pkgver() {
-  cd "$srcdir/simulationcraft"
-  git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${_pkgname}/"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare()
-{
-  cd "$srcdir/simulationcraft"
-  # we don't want to build engine twice
-  if [ $_gui = true ] ; then
-    sed -e 's|SOURCES|OBJECTS|' -e 's|\.cpp|\.o|' -i source_files/QT_engine{,_main}.pri
-    qmake  INSTALLPATH=/usr/share/simulationcraft \
-      SHAREDIR=/usr/share/simulationcraft \
-      PREFIX=/usr \
-      CONFIG+='to_install' \
-      simcqt.pro -o Makefile
-  fi
+prepare() {
+    cd "${srcdir}/${_pkgname}/"
+    patch -p1 < "${srcdir}/0001-set-welcome-path.patch"
+
+    mkdir -p build
+    cd build
+    cmake -DCMAKE_BUILD_TYPE=Release ..
 }
 
-build()
-{
-  cd "$srcdir/simulationcraft/engine"
-  make PREFIX=/usr  CFLAGS+="$CFLAGS"  CXXFLAGS+="$CXXFLAGS" LDFLAGS+="$LDFLAGS"
-  if [ $_gui = true ] ; then
-    cd ..
-    make PREFIX=/usr CXXFLAGS+="$CXXFLAGS \$(DEFINES) -fPIC" LDFLAGS+="$LDFLAGS"
-  fi
+build() {
+    cd "${srcdir}/${_pkgname}/build/"
+
+    if [ ${_gui} = true ] ; then
+        make PREFIX=/usr CFLAGS+="${CFLAGS}" CXXFLAGS+="${CXXFLAGS}" LDFLAGS+="${LDFLAGS}"
+    else
+        make PREFIX=/usr CFLAGS+="${CFLAGS}" CXXFLAGS+="${CXXFLAGS}" LDFLAGS+="${LDFLAGS}" simc
+    fi
 }
 
-package_simulationcraft-data-git()
-{
-  pkdesc+="data"
-  arch="any"
-  cd "$srcdir/simulationcraft"
-  for profile in $( find profiles -type f); do
-    install -Dm644 $profile   "$pkgdir/usr/share/simulationcraft/$profile"
-  done
+package() {
+    cd "${srcdir}/${_pkgname}/"
 
-  for doc in Welcome.html Welcome.png readme.txt; do
-    install -Dm644 $doc $pkgdir/usr/share/doc/simulationcraft/$doc
-  done
+    for profile in $( find profiles -type f); do
+        install -Dm644 "${profile}" "${pkgdir}/usr/share/${pkgname}/${profile}"
+    done
+
+    install -Dm755 build/simc "${pkgdir}/usr/bin/simc-git"
+
+    install -Dm644 "Welcome.html" "${pkgdir}/usr/share/${pkgname}/Welcome.html"
+    install -Dm644 "Welcome.png" "${pkgdir}/usr/share/${pkgname}/Welcome.png"
+
+    install -Dm644 qt/icon/SimulationCraft.xpm "${pkgdir}/usr/share/pixmaps/SimulationCraftGit.xpm"
+    install -Dm644 "${srcdir}/SimulationCraft.desktop" "${pkgdir}/usr/share/applications/SimulationCraftGit.desktop"
+    for _locale in locale/* ; do
+        install -Dm644 "${_locale}" "${pkgdir}/usr/share/${pkgname}/${_locale}"
+    done
+    install -Dm755 build/qt/SimulationCraft "${pkgdir}/usr/bin/${pkgname}"
 }
-
-package_simulationcraft-git()
-{
-  depends=( 'openssl' "simulationcraft-data-git=$pkgver" )
-  cd "$srcdir/simulationcraft"
-  install -Dm755 engine/simc     "$pkgdir/usr/bin/simc"
-}
-
-if [ $_gui = true ] ; then
-package_simulationcraft-gui-git()
-{
-  pkgdesc+="gui"
-  depends=( 'qt5-base' 'qt5-webkit' "simulationcraft-git=$pkgver")
-  cd "$srcdir/simulationcraft"
-
-  install -Dm644 qt/icon/SimulationCraft.xpm "$pkgdir/usr/share/pixmaps/SimulationCraft.xpm"
-  install -Dm644 "$srcdir/SimulationCraft.desktop" "$pkgdir/usr/share/applications/SimulationCraft.desktop"
-  for _locale in locale/* ; do
-    install -Dm644 $_locale  $pkgdir/usr/share/simulationcraft/$_locale
-  done
-  install -Dm755 SimulationCraft $pkgdir/usr/bin/simulationcraft
-  make install INSTALL_ROOT=$pkgdir
-  rm -rf $pkgdir/usr/share/simulationcraft
-}
-fi
-
-if [ $_gui = true ] ; then
-  makedepends+=( 'qt5-base' 'qt5-webkit')
-  true && pkgname=( simulationcraft-git simulationcraft-gui-git simulationcraft-data-git )
-else
-  true && pkgname=( simulationcraft-git  simulationcraft-data-git )
-fi

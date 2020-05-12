@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=SimulationCraft
+Name=SimulationCraftGit
 Comment=A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage.
-Exec=simulationcraft
-Icon=SimulationCraft
+Exec=simulationcraft-git
+Icon=SimulationCraftGit
 Terminal=false
 Type=Application
 StartupNotify=true
