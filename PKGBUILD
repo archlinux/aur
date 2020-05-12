@@ -6,7 +6,7 @@
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.5.1.r89.gb786c32b6
+pkgver=0.5.1.r89.gfa8c88b12
 pkgrel=3
 pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
