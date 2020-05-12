@@ -1,0 +1,35 @@
+pkgbase = licensecheck
+	pkgdesc = Simple license checker for source files
+	pkgver = 3.0.46
+	pkgrel = 1
+	url = https://salsa.debian.org/build-common-team/licensecheck
+	arch = any
+	license = AGPL
+	checkdepends = perl-encode-locale
+	checkdepends = perl-test2-suite
+	checkdepends = perl-test-command-simple
+	depends = perl
+	depends = perl-array-intspan
+	depends = perl-getopt-long-descriptive
+	depends = perl-list-someutils
+	depends = perl-log-any
+	depends = perl-log-any-adapter-screen
+	depends = perl-moo
+	depends = perl-moox-struct
+	depends = perl-path-iterator-rule
+	depends = perl-path-tiny
+	depends = perl-pod-constants
+	depends = perl-regexp-pattern
+	depends = perl-regexp-pattern-license
+	depends = perl-sort-key
+	depends = perl-string-copyright
+	depends = perl-string-escape
+	depends = perl-try-tiny
+	depends = perl-namespace-clean
+	depends = perl-re-engine-re2
+	depends = perl-strictures
+	source = https://www.cpan.org/modules/by-module/App/App-Licensecheck-v3.0.46.tar.gz
+	sha512sums = e96f077c44bce2bea29782506164076753e0513bacc1d175dab6f5a871c6809ba2d8fedb1741dd1e14a2befc0f44cc23c79905f84fb1528c22369c5a4bde5e34
+
+pkgname = licensecheck
+
