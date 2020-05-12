@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_robot_steering provides a GUI plugin for steering a robot usi
 url='https://wiki.ros.org/rqt_robot_steering'
 
 pkgname='ros-melodic-rqt-robot-steering'
-pkgver='0.5.9'
+pkgver='0.5.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=2
@@ -35,7 +35,7 @@ depends=(
 
 _dir="rqt_robot_steering-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_robot_steering/archive/${pkgver}.tar.gz")
-sha256sums=('46586ae0c43b40ac3a72eaf90a61ea7cd8192da6d83898234b49abf8b7df3048')
+sha256sums=('06abfd57f33748c76b97e7d6916a37b989b821ffea4dd244be05afb4649e5a89')
 
 build() {
 	# Use ROS environment variables.

@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rqt-robot-steering
 	pkgdesc = ROS - rqt_robot_steering provides a GUI plugin for steering a robot using Twist messages.
-	pkgver = 0.5.9
+	pkgver = 0.5.10
 	pkgrel = 2
 	url = https://wiki.ros.org/rqt_robot_steering
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = ros-melodic-rqt-robot-steering
 	depends = ros-melodic-rqt-gui
 	depends = ros-melodic-geometry-msgs
 	depends = python-rospkg
-	source = ros-melodic-rqt-robot-steering-0.5.9.tar.gz::https://github.com/ros-visualization/rqt_robot_steering/archive/0.5.9.tar.gz
-	sha256sums = 46586ae0c43b40ac3a72eaf90a61ea7cd8192da6d83898234b49abf8b7df3048
+	source = ros-melodic-rqt-robot-steering-0.5.10.tar.gz::https://github.com/ros-visualization/rqt_robot_steering/archive/0.5.10.tar.gz
+	sha256sums = 06abfd57f33748c76b97e7d6916a37b989b821ffea4dd244be05afb4649e5a89
 
 pkgname = ros-melodic-rqt-robot-steering
 
