@@ -3,7 +3,7 @@
 
 pkgname=chipmachine
 pkgver=1.4b3
-pkgrel=4
+pkgrel=5
 pkgdesc='Demoscene/Retro Music Player'
 arch=('x86_64')
 url='https://github.com/sasq64/chipmachine'
@@ -13,9 +13,9 @@ makedepends=('cmake' 'vim' 'gendesk')
 source=("chipmachine-v1.4b3.tar.gz::https://github.com/sasq64/chipmachine/archive/v1.4b3.tar.gz"
         "apone-chipmachine-v1.4b3.tar.gz::https://github.com/sasq64/apone/archive/chipmachine-v1.4b3.tar.gz"
         "apone-chipmachine-v1.4b3-datadir.patch")
-sha256sums=('b01f123e157d72eee4f4d3784f82b1ab0cc5b4d968067b0af50163321d3f5cb4'
-            'e411d6515064bb2c952a95aad6bcfc70c1f6b58f40d7874f671ef26185911156'
-            'd31e25b31467e02fa0ef636217dad64db4ad1f58420ac51ce8ad98bbdeda7da2')
+sha512sums=('c1e93c4e75658cc24bef6156ab8e207e74f0dd998403cab073ed38b7198ac74ea8ddfb3caf38a7496734af5bb1d9cfbc029ffb7a1728613d534a80f9f8e9d3ac'
+            '0341b6b9bf32aae6d7e7a8a1f4440f1f6cfd8c62595b1832d98a12234d2dfc1361199210529d880b31a10652b5f2e4d8ea1e3a9f4d92c5035e69a01e0eb952a4'
+            '5c65a59657467b85fdd380e0e6e44acbe1c46345dd4079f72801c545c105e1bfd4274b7de3d603d55d68079114455b5bc0b009e6e587cb9d29d0f8d8582de252')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -28,6 +28,10 @@ prepare() {
 
 build() {
   cd build
+
+  # Workaround for gcc10 linking errors
+  export CFLAGS+=" -fcommon"
+
   cmake ../$pkgname-$pkgver
   make
 }
