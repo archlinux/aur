@@ -1,4 +1,6 @@
-# Maintainer: Vincent Hourdin <vh|at|free-astro=DOT=vinvin.tf>
+# Maintainer: Lubosz Sarnecki <lubosz at gmail dot com>
+# Past Maintainer: Vincent Hourdin <vh|at|free-astro=DOT=vinvin.tf>
+
 pkgname=siril-git
 _gitname=siril
 pkgver=0.9.12.2520.85ba0388
