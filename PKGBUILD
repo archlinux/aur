@@ -4,7 +4,7 @@ pkgdesc="ROS - Assorted filters designed to operate on 2D planar laser scanners,
 url='https://wiki.ros.org/laser_filters'
 
 pkgname='ros-melodic-laser-filters'
-pkgver='1.8.6'
+pkgver='1.8.10'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=3
 license=('BSD')
@@ -46,7 +46,7 @@ depends=(
 _dir="laser_filters-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/laser_filters/archive/${pkgver}.tar.gz"
   CMakeLists-signal.patch)
-sha256sums=('c9678edee036ddb42a2dea1e71609763b44d6d1618fe384b204f3caa7d77ea3d'
+sha256sums=('5c4e508e4ed30c98ad74158c62e665e6044ce4b5d44b9fb1fc2589c00552c923'
             'bf96a9ab678f7811ba2d99cb07e0eaaa0a7c03f5604878970ba3acda18931a3c')
 
 prepare() {
