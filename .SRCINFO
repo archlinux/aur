@@ -1,0 +1,16 @@
+pkgbase = ncmdump
+	pkgdesc = netease cloud music copyright protection file dump
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/yoki123/ncmdump
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = ncmdump-0.3.3.tar.gz::https://github.com/yoki123/ncmdump/archive/v0.3.3.tar.gz
+	sha256sums = 3cfec956892bb161aeac6cba30fe4db1dc984813cb1801990c282670a292966a
+
+pkgname = ncmdump
+
