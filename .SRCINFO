@@ -1,6 +1,6 @@
 pkgbase = siril-git
 	pkgdesc = An astronomical image processing software for Linux. (IRIS clone)
-	pkgver = d1369ef5
+	pkgver = 0.9.12.2520.85ba0388
 	pkgrel = 1
 	url = https://free-astro.org/index.php/Siril
 	arch = i686

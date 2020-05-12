@@ -1,7 +1,7 @@
 # Maintainer: Vincent Hourdin <vh|at|free-astro=DOT=vinvin.tf>
 pkgname=siril-git
 _gitname=siril
-pkgver=d1369ef5
+pkgver=0.9.12.2520.85ba0388
 pkgrel=1
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}"
-	git log -1 --format="%h"
+	printf "%s.%s.%s" "$(git describe | cut -d "-" -f1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
