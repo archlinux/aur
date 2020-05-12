@@ -1,0 +1,20 @@
+pkgbase = perl-moox-struct
+	pkgdesc = Make simple lightweight record-like structures that make sounds like cows
+	pkgver = 0.020
+	pkgrel = 1
+	url = https://github.com/tobyink/p5-moox-struct
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-b-hooks-endofscope
+	depends = perl-exporter-tiny
+	depends = perl-moo
+	depends = perl-object-id
+	depends = perl-type-tiny
+	depends = perl-namespace-autoclean
+	source = https://www.cpan.org/modules/by-module/MooX/MooX-Struct-0.020.tar.gz
+	sha512sums = a9a14efee9db43b39df02b452aed7f558360812c28581cc245ed8eea68fc328b40fee6a9c8949851048ee6fff3ec9aa99beb5ab63845f9bcb83d9c9d1c7e712e
+
+pkgname = perl-moox-struct
+
