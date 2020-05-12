@@ -1,5 +1,5 @@
 pkgbase = anydesk-bin
-	pkgdesc = 'AnyDesk Free' is an All-In-One Software for Remote Support (Generic based package)
+	pkgdesc = The Fast Remote Desktop Application (Generic based package)
 	pkgver = 5.5.6
 	pkgrel = 1
 	url = https://anydesk.com
