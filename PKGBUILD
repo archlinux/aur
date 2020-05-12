@@ -2,7 +2,7 @@ pkgdesc="ROS - A simple viewer for ROS image topics."
 url='https://wiki.ros.org/image_view'
 
 pkgname='ros-melodic-image-view'
-pkgver='1.13.0'
+pkgver='1.14.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=4
 license=('BSD')
@@ -51,7 +51,7 @@ depends=(
 _dir="image_pipeline-${pkgver}/image_view"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_pipeline/archive/${pkgver}.tar.gz"
         CMakeLists.patch)
-sha256sums=('3c2309d421acf354ca69a7c814ceec7c8b24732c31a7f1c47a055aedd95cb1c4'
+sha256sums=('dcf1336d43c0c03165b76c9419fb7b5a275d0b091e1890b28daf37a02c1326b3'
             '715e30310dec53eb3d19ef40fb40be48a01a10e3fc170c6ec857ddaa0cea8474')
 
 prepare() {
