@@ -1,35 +1,12 @@
-diff --git a/configure b/configure
-index d974ec3..bda0b0f 100755
---- a/configure
-+++ b/configure
-@@ -5307,7 +5307,7 @@ fi
- { $as_echo "$as_me:${as_lineno-$LINENO}: result: $large_secmem" >&5
- $as_echo "$large_secmem" >&6; }
- if test "$large_secmem" = yes ; then
--   SECMEM_BUFFER_SIZE=65536
-+   SECMEM_BUFFER_SIZE=131072
- else
-    SECMEM_BUFFER_SIZE=32768
- fi
 diff --git a/g10/keygen.c b/g10/keygen.c
 index 560480d..7a89c05 100644
 --- a/g10/keygen.c
 +++ b/g10/keygen.c
-@@ -1429,7 +1429,7 @@ gen_rsa (int algo, unsigned nbits, KBNODE pub_root, KBNODE sec_root, DEK *dek,
-   PKT_secret_key *sk;
-   PKT_public_key *pk;
-   gcry_sexp_t s_parms, s_key;
+@@ -1644,7 +1644,7 @@
+   int err;
+   char *keyparms;
+   char nbitsstr[35];
 -  const unsigned maxsize = (opt.flags.large_rsa ? 8192 : 4096);
 +  const unsigned maxsize = (opt.flags.large_rsa ? 65535 : 4096);
- 
-   assert (is_RSA(algo));
- 
-@@ -1798,7 +1798,7 @@ ask_algo (int addmode, int *r_subkey_algo, unsigned int *r_usage)
- static unsigned
- ask_keysize (int algo, unsigned int primary_keysize)
- {
--  unsigned int nbits, min, def = DEFAULT_STD_KEYSIZE, max=4096;
-+  unsigned int nbits, min, def = DEFAULT_STD_KEYSIZE, max=65535;
-   int for_subkey = !!primary_keysize;
-   int autocomp = 0;
- 
+
+   log_assert (is_RSA(algo));

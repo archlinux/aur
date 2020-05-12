@@ -1,35 +1,40 @@
 # $Id$
-# Maintainer: Ido Rosen <ido@kernel.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Ido Rosen <ido@kernel.org>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
-#
-# NOTE: To request changes to this package, please submit a pull request
-#       to the GitHub repository at https://github.com/ido/packages-archlinux
-#       Otherwise, open a GitHub issue.  Thank you! -Ido
-#
 
 pkgname=gnupg-largekeys
-pkgver=2.0.30
+pkgver=2.2.20
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard'
-url='http://www.gnupg.org/'
+url='https://www.gnupg.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
-optdepends=('curl: gpg2keys_curl'
-            'libldap: gpg2keys_ldap'
-            'libusb-compat: scdaemon')
-makedepends=('curl' 'libldap' 'libusb-compat')
-depends=('bzip2' 'libksba' 'libgcrypt' 'pth' 'libassuan' 'readline' 'pinentry' 'dirmngr')
-source=("ftp://ftp.gnupg.org/gcrypt/${pkgname%%-largekeys}/${pkgname%%-largekeys}-${pkgver}.tar.bz2"
+checkdepends=('openssh')
+makedepends=('libldap' 'libusb-compat' 'pcsclite')
+depends=('npth' 'libgpg-error' 'libgcrypt' 'libksba' 'libassuan'
+         'pinentry' 'bzip2' 'readline' 'gnutls' 'sqlite')
+optdepends=('libldap: gpg2keys_ldap'
+            'libusb-compat: scdaemon'
+            'pcsclite: scdaemon')
+validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'
+              '46CC730865BB5C78EBABADCF04376F3EE0856959'
+              '031EC2536E580D8EA286A9F22071B08A33BD3F06'
+              '5B80C5754298F0CB55D8ED6ABCEF7E294B092E28')
+source=("https://gnupg.org/ftp/gcrypt/${pkgname%%-largekeys}/${pkgname%%-largekeys}-${pkgver}.tar.bz2"{,.sig}
         'gnupg2-large-keys.patch'
-        'install')
-sha256sums=('e329785a4f366ba5d72c2c678a7e388b0892ac8440c2f4e6810042123c235d71'
-            '189c33de215b3a026175f9fbaa1dac82fdc30b6c9dbfa5aafa9027af401f6fc5'
+	'self-sigs-only.patch'
+        'gnupg.install')
+sha256sums=('04a7c9d48b74c399168ee8270e548588ddbe52218c337703d7f06373d326ca30'
+            'SKIP'
+            '78ff880f5ab363415a4bcdc704c8a4afecc39d6bac37f4ebe53bf2e8354c2d62'
+            '0130c43321c16f53ab2290833007212f8a26b1b73bd4edc2b2b1c9db2b2d0218'
             'ab1406c54804692dcc8144fc01a90ffd27250a3b53a89b0ab8a5cb2807fe6423')
 
-install=install
+install=gnupg.install
 
 conflicts=('gnupg2' 'gnupg')
 provides=("gnupg2=${pkgver}" "gnupg=${pkgver}")
@@ -37,6 +42,8 @@ replaces=('gnupg2' 'gnupg')
 
 prepare() {
 	cd "${srcdir}/${pkgname%%-largekeys}-${pkgver}"
+	sed '/noinst_SCRIPTS = gpg-zip/c sbin_SCRIPTS += gpg-zip' -i tools/Makefile.in
+	patch -R -p1 -i ../self-sigs-only.patch
 	patch -p1 -i ../gnupg2-large-keys.patch
 }
 
@@ -64,8 +71,11 @@ check() {
 package() {
 	cd "${srcdir}/${pkgname%%-largekeys}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
-	ln -s gpg2 "${pkgdir}"/usr/bin/gpg
-	ln -s gpgv2 "${pkgdir}"/usr/bin/gpgv
-	ln -s gpg2.1.gz "${pkgdir}"/usr/share/man/man1/gpg.1.gz
-	rm "${pkgdir}/usr/share/gnupg/com-certs.pem" # FS#33059
+	ln -s gpg "${pkgdir}"/usr/bin/gpg2
+	ln -s gpgv "${pkgdir}"/usr/bin/gpgv2
+
+	cd doc/examples/systemd-user
+	for i in *.*; do
+		install -Dm644 "$i" "${pkgdir}/usr/lib/systemd/user/$i"
+	done
 }
