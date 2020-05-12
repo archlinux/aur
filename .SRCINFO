@@ -1,7 +1,7 @@
 pkgbase = sphinxbase
 	pkgdesc = Common library for sphinx speech recognition.
 	pkgver = 5prealpha
-	pkgrel = 10
+	pkgrel = 11
 	url = http://cmusphinx.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,9 @@ pkgbase = sphinxbase
 	depends = libpulse
 	options = !libtool
 	source = http://downloads.sourceforge.net/project/cmusphinx/sphinxbase/5prealpha/sphinxbase-5prealpha.tar.gz
+	source = sphinxbase-5prealpha-fix-doxy2swig.patch
 	sha256sums = f72bdb59e50b558bed47cc2105777200d2b246a0f328e913de16a9b22f9a246f
+	sha256sums = 1cb485202f83dc517872f5ab41f59d18884af1b85799166d80e08860f7729919
 
 pkgname = sphinxbase
 
