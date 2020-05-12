@@ -1,0 +1,19 @@
+Based on https://github.com/rurban/re-engine-PCRE2/commit/6b5cc9b4e686910e25fa411c62711fdf44383285
+--- package.pristine/t/01.basic.t	2014-08-09 12:11:06.000000000 +0200
++++ package.new/t/01.basic.t	2020-05-12 20:44:30.693250260 +0200
+@@ -3,13 +3,13 @@
+ use re::engine::RE2;
+ 
+ ok("Hello, world" !~ /Goodbye, world/);
+-is($1, undef);
++ok(!$1);
+ 
+ ok("Hello, world" =~ /Hello, (world)/);
+ is($1, 'world');
+ 
+ no re::engine::RE2;
+-is(eval '"Hello, world" =~ /(?<=Moose|Mo), (world)/', undef);
++ok(!eval '"Hello, world" =~ /(?<=Moose|Mo), (world)/');
+ 
+ if (fork) {
+     ok(1);
