@@ -1,14 +1,14 @@
 pkgbase = python-pydub
 	pkgdesc = Manipulate audio with an simple and easy high level interface
-	pkgver = 0.23.1
-	pkgrel = 3
+	pkgver = 0.24.0
+	pkgrel = 1
 	url = http://pydub.com
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = python-pydub-0.23.1.tar.gz::https://github.com/jiaaro/pydub/archive/v0.23.1.tar.gz
-	sha256sums = a5ee51e6bac1e3f64eefd5176aac3299a75e4deec9ad6fef87c3d936f4a034dc
+	source = python-pydub-0.24.0.tar.gz::https://github.com/jiaaro/pydub/archive/v0.24.0.tar.gz
+	sha256sums = 4010e45b30340feddbe55a4ffcfbac436c8ea029d2f94632d6b1b7e08a0ee92c
 
 pkgname = python-pydub
 	depends = python
