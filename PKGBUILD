@@ -2,7 +2,8 @@
 # Contributor: Nils Czernia <nils[at]czserver[dot[de>
 
 pkgname=grav
-pkgver=1.7.0.rc.8
+pkgver=1.7.0.rc.10
+_pkgver=1.7.0-rc.10
 pkgrel=1
 pkgdesc="Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS (without Admin plugin)"
 arch=("any")
@@ -17,13 +18,13 @@ optdepends=('php-apcu: A userland caching module for PHP'
 			'php-fpm: FastCGI Process Manager'
 			'php-apache: Apache SAPI for PHP')
 install=grav.install
-source=("https://github.com/getgrav/grav/archive/${pkgver:0:5}-${pkgver:6}/${pkgname}-v${pkgver:0:5}-${pkgver:6}.zip")
-sha256sums=('39f96f910e224544c4f898788b4dabb85bd69b951d68f3618069fb8daefda481')
+source=("${pkgname}-${pkgver}.zip::https://github.com/getgrav/grav/archive/${_pkgver}/${pkgname}-v${_pkgver}.zip")
+sha256sums=('1afed34286e5c84a9f7c8f04499deb0ff8aa4b75786e0933eeccc64ba532a66a')
 
 package() {
   cd "${pkgdir}"
   install -dm0755 usr/share/webapps/
-  mv ${srcdir}/${pkgname}-${pkgver:0:5}-${pkgver:6} ${pkgdir}/usr/share/webapps/${pkgname}
+  mv ${srcdir}/${pkgname}-${_pkgver} ${pkgdir}/usr/share/webapps/${pkgname}
   cd ${pkgdir}/usr/share/webapps/${pkgname}
   chgrp -R http .
   find . -type f | xargs chmod 664
@@ -33,4 +34,5 @@ package() {
   umask 0002
   rm -Rf *.md composer.json composer.lock .github
   rm $(find . -type f -name .gitkeep | xargs)
+  install -Dm644 "${pkgdir}/usr/share/webapps/grav/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
