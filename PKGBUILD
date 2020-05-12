@@ -4,23 +4,23 @@
 
 _pkgname=mousepad
 pkgname=${_pkgname}-git
-pkgver=0.4.0.r160.g7ebcb77
+pkgver=0.4.2+143+g04bffec
 pkgrel=1
 pkgdesc="Simple text editor for Xfce  (git checkout)"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="http://www.xfce.org/"
 license=('GPL')
 depends=('gtksourceview3' 'dbus-glib')
 makedepends=('xfce4-dev-tools' 'git' 'intltool' 'perl')
 provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git://git.xfce.org/apps/mousepad")
+source=("${_pkgname}::git+https://gitlab.xfce.org/apps/${_pkgname}")
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
 	
-	git describe --long | sed "s/^${_pkgname}-//;s/\([^-]*-g\)/r\1/;s/-/./g"
+	git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
 build() {
