@@ -1,0 +1,293 @@
+#------------------------------------------------------------------------------
+# Platform to build against [Choices: posix, winnt]:
+#------------------------------------------------------------------------------
+
+PLATFORM ?= posix
+
+#------------------------------------------------------------------------------
+# Dynamic link library extension [Choices: .so, .dll, .sl, ...]:
+#------------------------------------------------------------------------------
+
+DLLEXT = .so
+
+#------------------------------------------------------------------------------
+# Default display driver [Choices: x11, rawfb, directfb, windows]:
+# If you enable rawfb, see RAWFB_SUB_DEVICE below and visit src/Makefile
+# and tek/lib/Makefile if you want to stack it on top of another driver.
+#------------------------------------------------------------------------------
+
+DISPLAY_DRIVER ?= x11
+
+#------------------------------------------------------------------------------
+# Compiler configuration:
+#------------------------------------------------------------------------------
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# For UNIX-like platforms:
+# Uncomment TSYS_POSIX if your platform is not listed in include/tek/config.h
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+CC = $(CROSS_COMPILE)gcc -fpic # -DTSYS_POSIX
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# For Windows using MinGW:
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# CC = $(CROSS_COMPILE)gcc -DWIN32 -DWINVER=0x0400 -D_WIN32_WINNT=0x0400
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Cross-build prefix:
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# CROSS_COMPILE =
+# Classic MinGW32:
+# CROSS_COMPILE = i586-mingw32-
+# MinGW-W64 targeting 32-Bit Windows:
+# CROSS_COMPILE = i686-w64-mingw32-
+
+#------------------------------------------------------------------------------
+# Platform libraries:
+# If you link any libraries from directories not in the system run-time
+# search path, you may need to uncomment the $(CC_LD_RT) flags for those
+# libraries below.
+#------------------------------------------------------------------------------
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# POSIX:
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+PLATFORM_LIBS = -pthread
+CC_LD_RT = -Wl,-rpath,
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# HPPA, IA64 HPUX: Note that DLLEXT (see above) must be .sl
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# PLATFORM_LIBS = -D_POSIX_C_SOURCE=199506L -lpthread
+# CC_LD_RT = -Wl,+s,+b,
+# for IA64:
+# CC_LD_RT = -Wl,+b,
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Solaris:
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# CC_LD_RT = -R
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Mac OS X:
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# PLATFORM_LIBS =
+# CC_LD_RT = -Wl,-rpath,
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# NetBSD:
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# CC_LD_RT = -Wl,-rpath=/usr/X11R7/lib:
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Windows:
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# PLATFORM_LIBS = -lmsvcrt -lkernel32 -lwinmm -luser32 -lshell32 -ladvapi32
+# LUA_LIBS = -L $(BASEDIR) -llua51
+
+# PLATFORM_LIBS = -lwinmm
+# LUA_LIBS = -llua5.2
+
+#------------------------------------------------------------------------------
+# tekUI features:
+# ENABLE_GRADIENT - enable color gradients
+# ENABLE_PIXMAP_CACHE - enable caching of pixmaps
+# ENABLE_PNG - enable PNG support through libpng
+# ENABLE_FILENO - dispatches lines from a fd (normally stdin) to MSG_USER
+# ENABLE_DGRAM=portnr - enables a datagram server on addr:portnr for MSG_USER
+# ENABLE_DGRAM_ADDR=\"addr\" - set address to listen on (default 127.0.0.1)
+# TEKlib features:
+# ENABLE_LAZY_SINGLETON - multithreaded lazy creation of a TEKlib singleton,
+# allowing thread rendezvous (this breaks 100% ROM-ability)
+#------------------------------------------------------------------------------
+
+TEKUI_DEFS = -DENABLE_GRADIENT -DENABLE_PIXMAP_CACHE
+# TEKUI_DEFS += -DENABLE_FILENO -DENABLE_DGRAM=20000
+TEKUI_LIBS =
+
+PNG_DIR = $(PREFIX)
+PNG_INCDIR = $(PNG_DIR)/include
+PNG_LIBDIR = $(PNG_DIR)/lib
+# TEKUI_DEFS += -DENABLE_PNG -I$(PNG_INCDIR)
+# TEKUI_LIBS += -L$(PNG_LIBDIR) -lpng # $(CC_LD_RT)$(PNG_LIBDIR)
+
+TEKLIB_DEFS = -DENABLE_LAZY_SINGLETON
+
+#------------------------------------------------------------------------------
+# Lua version, prefix, include and installation paths:
+# Installation is not always required, e.g. x11 and windows can do without.
+# When adjusting the Lua version, see also below for include paths
+#------------------------------------------------------------------------------
+
+PREFIX ?= /usr/local
+LUAVER ?= 5.3
+
+LUA_DIR = $(PREFIX)
+LUA_INCDIR = $(LUA_DIR)/include
+LUA_DEFS = -I$(LUA_INCDIR) -I/usr/include/lua$(LUAVER)
+# some known paths in distributions and toolchains:
+LUA_DEFS += -I/usr/local/include/lua53 -I/usr/include/lua5.3
+
+LUA_LIB = $(PREFIX)/lib/lua/$(LUAVER)
+LUA_SHARE = $(PREFIX)/share/lua/$(LUAVER)
+SYS_LUA_LIB = $(PREFIX)/lib/lua/$(LUAVER)
+SYS_LUA_SHARE = $(PREFIX)/share/lua/$(LUAVER)
+
+#------------------------------------------------------------------------------
+# Libraries:
+#------------------------------------------------------------------------------
+
+FREETYPE_DIR = $(PREFIX)
+FREETYPE_INCDIR = $(FREETYPE_DIR)/include
+FREETYPE_LIBDIR = $(FREETYPE_DIR)/lib
+FREETYPE_LIBS = -L$(FREETYPE_LIBDIR) -lfreetype # $(CC_LD_RT)$(FREETYPE_LIBDIR)
+FREETYPE_DEFS = `pkg-config --cflags freetype2`
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# X11 defines and libraries:
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+X11_DIR = /usr/X11R6
+X11_INCDIR = $(X11_DIR)/include
+X11_LIBDIR = $(X11_DIR)/lib
+X11_LIBS = -L$(X11_LIBDIR) -lX11 -lXext -lXxf86vm
+X11_DEFS = -I$(X11_INCDIR) -DX11_PIXMAP_CACHE -DENABLE_XSHM # -DENABLE_XVID
+
+# For Xft (antialiased fonts) support:
+X11_LIBS += $(XFT_LIBS) $(FONTCONFIG_LIBS) $(FREETYPE_LIBS)
+X11_DEFS += $(XFT_DEFS) $(FONTCONFIG_DEFS) $(FREETYPE_DEFS) 
+
+XFT_DIR = $(X11_DIR)
+XFT_INCDIR = $(XFT_DIR)/include
+XFT_LIBDIR = $(XFT_DIR)/lib
+XFT_LIBS = -L$(XFT_LIBDIR) -lXft # $(CC_LD_RT)$(XFT_LIBDIR)
+XFT_DEFS = -I$(XFT_INCDIR) -DENABLE_XFT
+
+FONTCONFIG_DIR = $(PREFIX)
+FONTCONFIG_INCDIR = $(FONTCONFIG_DIR)/include
+FONTCONFIG_LIBDIR = $(FONTCONFIG_DIR)/lib
+FONTCONFIG_LIBS = -L$(FONTCONFIG_LIBDIR) # -lfontconfig $(CC_LD_RT)$(FONTCONFIG_LIBDIR)
+FONTCONFIG_DEFS = -I$(FONTCONFIG_INCDIR)
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Raw framebuffer: Can be visualized on a Linux framebuffer, on another
+# display driver, via VNC server, or any combination thereof.
+# ENABLE_LINUXFB - enable Linux framebuffer and Linux event interface
+# DEF_FONTDIR - default TTF font directory
+# RFBPIXFMT - enforce framebuffer pixel format
+# ENABLE_WINBACKBUFFER - enable window backing store
+# ENABLE_BACKBUFFER - use a global backbuffer even if not strictly required
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+RAWFB_LIBS = $(FREETYPE_LIBS) $(RAWFB_SUB_LIBS) $(VNCSERVER_LIBS) $(TEKUI_LIBS)
+RAWFB_DEFS = $(FREETYPE_DEFS) $(RAWFB_SUB_DEFS) $(VNCSERVER_DEFS) -DRFB_PIXMAP_CACHE 
+
+# RAWFB_DEFS += -DDEF_FONTDIR=\"$(SYS_LUA_SHARE)/tek/ui/font\"
+# RAWFB_DEFS += -DRFBPIXFMT=TVPIXFMT_R5G6B5 
+# RAWFB_DEFS += -DENABLE_WINBACKBUFFER # -DENABLE_BACKBUFFER
+
+# Linux framebuffer support:
+RAWFB_DEFS += -DENABLE_LINUXFB
+
+# Redirect input/output to a different display driver:
+# RAWFB_SUB_LIBS = -ldisplay_x11 $(X11_LIBS)
+# RAWFB_SUB_DEFS = -DRFB_SUB_DEVICE=x11
+
+# VNC support:
+VNCSERVER_DIR = $(PREFIX)
+VNCSERVER_INCDIR = $(VNCSERVER_DIR)/include
+VNCSERVER_LIBDIR = $(VNCSERVER_DIR)/lib
+# VNCSERVER_LIBS = -L$(VNCSERVER_LIBDIR) -lvncserver # $(CC_LD_RT)$(VNCSERVER_LIBDIR)
+# VNCSERVER_DEFS = -DENABLE_VNCSERVER -I$(VNCSERVER_INCDIR) -DENABLE_VNCSERVER_COPYRECT # -DRFBPIXFMT=TVPIXFMT_0B5G5R5
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# DirectFB defines and libraries:
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+DIRECTFB_LIBS = `pkg-config --libs directfb`
+DIRECTFB_DEFS = $(FREETYPE_DEFS) `pkg-config --cflags directfb`
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Windows defines and libraries:
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+WIN_LIBS = $(PLATFORM_LIBS) -lgdi32
+
+#------------------------------------------------------------------------------
+# Build paths:
+#------------------------------------------------------------------------------
+
+BASEDIR ?= .
+INCDIR = $(BASEDIR)/include
+LIBDIR = $(BASEDIR)/lib/$(PLATFORM)
+OBJDIR = build/$(PLATFORM)
+BINDIR = $(BASEDIR)/bin
+MODDIR = $(BINDIR)/mod
+LUADISTDIR = $(BASEDIR)/../lua-5.1.5
+
+#------------------------------------------------------------------------------
+# Compiler flags:
+#------------------------------------------------------------------------------
+
+DEBUG = -DTDEBUG=5 -g # TDEBUG: the lower, the more verbose. 5 = WARN
+WARN = -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Wno-long-long
+OPT = -O2 -fno-strict-aliasing
+INCL = -I. -Iinclude -I$(INCDIR)
+LIBCFLAGS = $(DEBUG) $(WARN) $(OPT) $(INCL) $(EXTRADEFS) $(CPPFLAGS) $(CFLAGS)
+MODCFLAGS = -shared -L $(LIBDIR) $(LDFLAGS)
+# For Mac OS X:
+# MODCFLAGS = -bundle -undefined dynamic_lookup -L $(LIBDIR) $(LDFLAGS)
+BINCFLAGS = $(DEBUG) $(WARN) $(OPT) $(INCL) $(EXTRADEFS) $(LDFLAGS)
+# for compilation of Lua code:
+LUAARCH = -m64 # -m32 for 32bit, -m64 for 64bit architecture
+
+#------------------------------------------------------------------------------
+# Build tools:
+#------------------------------------------------------------------------------
+
+AR = $(CROSS_COMPILE)ar rcu
+RM = rm -f
+RMDIR = rm -rf
+MKDIR = mkdir -p
+ECHO = echo
+INSTALL_B = install
+INSTALL_F = install
+INSTALL_D = install -d
+INSTALL_S = install -s
+
+#------------------------------------------------------------------------------
+# Predefined targets:
+#------------------------------------------------------------------------------
+
+default-help:
+	@echo "==============================================================================="
+	@echo "Default build targets:"
+	@echo "-------------------------------------------------------------------------------"
+	@echo "all ..................... build everything that is needed"
+	@echo "libs .................... build libraries"
+	@echo "modules ................. build shared objects"
+	@echo "tools ................... build executables"
+	@echo "install ................. install modules globally"
+	@echo "clean ................... delete temporary files"
+	@echo "help .................... show these and all extra targets for this Makefile"
+	@echo "==============================================================================="
+
+FORCE:
+
+$(BINDIR):
+	-$(MKDIR) $@
+$(MODDIR):
+	-$(MKDIR) $@
+$(LIBDIR):
+	-$(MKDIR) $@
+$(OBJDIR):
+	-$(MKDIR) $@

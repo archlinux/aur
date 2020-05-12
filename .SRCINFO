@@ -1,0 +1,23 @@
+pkgbase = lua-tekui
+	pkgdesc = TekUI is a small, freestanding and portable graphical user interface (GUI) toolkit written in Lua and C.
+	pkgver = 1.12
+	pkgrel = 1
+	url = http://tekui.neoscientists.org/
+	arch = x86_64
+	license = MIT
+	depends = lua
+	depends = libx11
+	depends = libxft
+	depends = libxext
+	depends = fontconfig
+	optdepends = lua-filesystem
+	optdepends = lua-socket
+	optdepends = lua-expat
+	optdepends = lua-posix
+	source = http://tekui.neoscientists.org/releases/tekui-1.12.tgz
+	source = config
+	sha256sums = 28abfaacc0f2ddae962afbbca862a7fb619c33a99a497be9edd746091013dd7f
+	sha256sums = 69edaae02a6b43bdc42122c91e424a89474337426300f2aa83acff9541cbee54
+
+pkgname = lua-tekui
+
