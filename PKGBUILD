@@ -1,4 +1,4 @@
-# Maintainer: Christian Pinedo <christian@chrpinedo.me>
+# Maintainer: Christian Pinedo <christian (at) chrpinedo (dot) me>
 pkgname=solarwallet-appimage
 _pkgname=solarwallet
 _githubname=solar
@@ -9,7 +9,6 @@ arch=('x86_64')
 url='https://solarwallet.io/'
 license=('MIT')
 makedepends=('npm')
-install=solarwallet-appimage.install
 provides=('solarwallet')
 conflicts=('solarwallet')
 options=(!strip)
@@ -22,13 +21,15 @@ md5sums=('f247455f323ff48ad2cb7ba67690a862'
 
 build() {
 	cd "$srcdir/$_githubname-$pkgver"
-	npm install
+	npm install --cache "$srcdir/npm-cache"
 	npm run build:linux
 }
 
 package() {
+	cd "$srcdir/$_githubname-$pkgver"
+	install -Dm755 "electron/dist/Solar-Wallet-$pkgver.AppImage" "$pkgdir/opt/appimages/$_pkgname.AppImage"
+	install -Dm644 electron/build/icons/512.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 	cd "$srcdir"
-	install -Dm755 "$_githubname-$pkgver/electron/dist/Solar-Wallet-$pkgver.AppImage" "$pkgdir/opt/appimages/$_pkgname.AppImage"
 	install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
 	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }

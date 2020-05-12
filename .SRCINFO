@@ -1,9 +1,8 @@
 pkgbase = solarwallet-appimage
 	pkgdesc = Simple and Secure Stellar Wallet
 	pkgver = 0.24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://solarwallet.io/
-	install = solarwallet-appimage.install
 	arch = x86_64
 	license = MIT
 	makedepends = npm
