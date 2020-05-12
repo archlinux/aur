@@ -1,7 +1,7 @@
 # Maintainer: Hsieh Chin Fan <typebrook@gmail.com>
 pkgname=gist-lite
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Bash script for gist management"
 arch=(any)
 gist_id=b0d2e7e67aa50298fdf8111ae7466b56
@@ -17,7 +17,7 @@ package() {
   if [[ -n $(pacman -Qqe gist 2>/dev/null) ]]; then
     echo 'Package "gist" is already installed'
     echo 
-    PS3='Please enter your choice(1-3), or name this script by yourself: '
+    PS3='Please enter your choice(1 or 2), or name this script by yourself: '
     choices=('Install this script as "gist-lite"' 'Abort installation')
     select ans in "${choices[@]}"; do
       case $ans in
