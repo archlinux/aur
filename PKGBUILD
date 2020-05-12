@@ -2,11 +2,12 @@
 
 pkgname=nameinator
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source DNS benchmark utility - successor of namebench'
 arch=('any')
 url='https://github.com/mwiora/NAMEinator'
 license=('Apache')
+depends=('bind-tools')
 makedepends=('go' 'git')
 source=("https://github.com/mwiora/NAMEinator/archive/v${pkgver}.tar.gz")
 b2sums=('cf0a60a82127d0e336247a503bd509e713daa773f789f2301a85e8e9d1a6cd31e3cfb6184c5ccb4869ac53678aa2c131d3377b2f70a063866682e5e5e05fa283')
