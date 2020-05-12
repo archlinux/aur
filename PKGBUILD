@@ -8,13 +8,12 @@ pkgrel=1
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('gtk3' 'fftw' 'cfitsio' 'gsl' 'libconfig' 'opencv' 'exiv2')
+depends=('gtk3' 'fftw' 'cfitsio' 'gsl' 'libconfig' 'opencv' 'exiv2' 'libheif' 'libraw')
 makedepends=('intltool')
 url="https://www.siril.org/"
 optdepends=('libpng: PNG import'
 'libjpeg: JPEG import and export'
 'libtiff: TIFF import and export'
-'libraw: DSLR RAW images import'
 'ffms2: films native support as image sequences and import'
 'libcurl-gnutls: online astrometry'
 )

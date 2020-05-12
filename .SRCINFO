@@ -14,10 +14,11 @@ pkgbase = siril-git
 	depends = libconfig
 	depends = opencv
 	depends = exiv2
+	depends = libheif
+	depends = libraw
 	optdepends = libpng: PNG import
 	optdepends = libjpeg: JPEG import and export
 	optdepends = libtiff: TIFF import and export
-	optdepends = libraw: DSLR RAW images import
 	optdepends = ffms2: films native support as image sequences and import
 	optdepends = libcurl-gnutls: online astrometry
 	provides = siril=0.9.12.2520.85ba0388
