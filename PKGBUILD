@@ -48,7 +48,7 @@ build() {
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
-  cmake -S SDL -B SDL \
+  cmake -S SDL \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DLIB_SUFFIX=32 \
       -DSDL_STATIC=OFF \
