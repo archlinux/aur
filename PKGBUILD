@@ -25,7 +25,10 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  mv "${pkgdir}/usr/etc" "${pkgdir}/etc"
+  install -d "${pkgdir}/etc/afancontrol"
+  mv "${pkgdir}/usr/etc/afancontrol" "${pkgdir}/etc"
+  install -d "${pkgdir}/usr/lib/systemd"
   mv "${pkgdir}/usr/etc/systemd" "${pkgdir}/usr/lib"
+  rmdir "${pkgdir}/usr/etc"
   install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
