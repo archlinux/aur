@@ -2,16 +2,20 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=hunter-git
-pkgver=1.3.5.r55.g84d7773
+pkgver=1.3.5.r65.gb298bf3
 pkgrel=1
 pkgdesc='Ranger-like CLI file browser written in Rust'
 arch=('i686' 'x86_64')
 url='https://github.com/rabite0/hunter'
-license=('WTFPL')
+license=('custom:WTFPL')
 provides=('hunter')
 conflicts=('hunter')
-depends=('xdg-utils' 'gst-plugins-base-libs' 'libsixel')
-makedepends=('rustup' 'git' 'gcc' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
+depends=('gst-plugins-base-libs' 'libsixel')
+makedepends=('rustup'
+             'git'
+             'gst-plugins-good'
+             'gst-plugins-bad'
+             'gst-plugins-ugly')
 optdepends=('gst-plugins-good: Media support'
             'gst-plugins-bad: Media support'
             'gst-plugins-ugly: Media support'
@@ -30,7 +34,7 @@ optdepends=('gst-plugins-good: Media support'
             'mupdf-tools: PDF support'
             'fzf: Default file finder')
 source=("git+${url}")
-sha512sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/hunter"
@@ -47,5 +51,5 @@ package() {
   cd hunter
   install -D target/release/hunter{,-media} -t "$pkgdir"/usr/bin
   install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/hunter
-  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/hunter
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname}
 }
