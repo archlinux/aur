@@ -1,0 +1,21 @@
+--- setup.py.orig	2020-05-14 01:06:32.246745855 +0300
++++ setup.py	2020-05-14 01:06:37.623442253 +0300
+@@ -236,7 +236,6 @@
+     platforms=["posix", "nt"],
+     package_dir={"": "src/python"},
+     packages=find_packages("src/python"),
+-    ext_modules=[ots_sanitize],
+     zip_safe=False,
+     cmdclass=cmdclass,
+     setup_requires=["setuptools_scm"],
+--- src/python/ots/__init__.py.orig	2020-05-14 01:06:02.026581362 +0300
++++ src/python/ots/__init__.py	2020-05-14 01:06:17.789999936 +0300
+@@ -3,7 +3,7 @@
+ import sys
+ import os
+ 
+-OTS_SANITIZE = os.path.join(os.path.dirname(__file__), "ots-sanitize")
++OTS_SANITIZE = "/usr/bin/ots-sanitize"
+ 
+ __all__ = ["sanitize", "OTSError", "CalledProcessError"]
+ 
