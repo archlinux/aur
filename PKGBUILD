@@ -6,7 +6,7 @@ pkgname=("lua-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
 pkgver=0.0.4.r69.g690b347
 _branch='master'
 _rockrel=0
-pkgrel=2
+pkgrel=3
 pkgdesc='Lua implementation of Project Fluent'
 arch=('any')
 url="https://github.com/alerque/$_project"
@@ -29,18 +29,21 @@ _package_helper() {
 
 package_lua-fluent-git() {
   depends=('lua' "${_lua_deps[@]/#/lua-}")
+  provides=("${pkgname/-git}")
   conflicts=("${pkgname/-git}")
   _package_helper 5.3
 }
 
 package_lua52-fluent-git() {
   depends=('lua52' "${_lua_deps[@]/#/lua52-}")
+  provides=("${pkgname/-git}")
   conflicts=("${pkgname/-git}")
   _package_helper 5.2
 }
 
 package_lua51-fluent-git() {
   depends=('lua51' "${_lua_deps[@]/#/lua51-}")
+  provides=("${pkgname/-git}")
   conflicts=("${pkgname/-git}")
   _package_helper 5.1
 }
