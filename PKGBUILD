@@ -2,7 +2,7 @@
 # Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
 pkgname=(conversejs-git conversejs-epiphany-git)
-pkgver=5.0.3.r15.gcd5dacbe2
+pkgver=6.0.0.r364.gefb486511
 pkgrel=1
 arch=('any')
 url="https://conversejs.org/"
@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd converse.js
   rm -rf dist
-  make build
+  make dist
   gzip -vfk9 dist/converse.min.js* \
     dist/converse.min.css* \
     dist/webfonts/*.svg \
