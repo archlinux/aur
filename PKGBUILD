@@ -3,7 +3,7 @@
 
 pkgname=qdvdauthor
 pkgver=2.3.1
-pkgrel=11
+pkgrel=12
 pkgdesc='QDVDAuthor is a GUI frontend for dvdauthor, video DVD creator'
 url='https://sourceforge.net/projects/qdvd'
 license=('GPL2')
@@ -19,8 +19,8 @@ provides=(
   'qrender'
 )
 options=()
-source=("https://sourceforge.net/projects/qdvd/files/archlinux/qdvdauthor-${pkgver}-011a.tar.gz")
-md5sums=('d4e764bb783b3f7291fb9cd6365b663e')
+source=("https://sourceforge.net/projects/qdvd/files/archlinux/qdvdauthor-${pkgver}-012a.tar.gz")
+md5sums=('23cba894f130cf5207c4cd71cd5b2bb9')
 
 build() {
   cd qdvdauthor-${pkgver}/build
