@@ -1,7 +1,7 @@
 pkgname=code-insiders
 _code=visual-studio-code-insiders
 pkgver=1589357893
-pkgrel=1
+pkgrel=2
 pkgdesc="Editor to realize modern  websites or applications."
 arch=('x86_64' 'i686')
 url="https://code.visualstudio.com/"
@@ -48,5 +48,5 @@ package() {
   install -m644 "${srcdir}/${_code}-url-handler.desktop" "${pkgdir}/usr/share/applications/${_code}-url-handler.desktop"
 
   cp -r "${srcdir}/${_pkg}/"* "${pkgdir}/opt/${_code}" -R
-  ln -s /opt/${_code}/bin/${pkgname} "${pkgdir}"/usr/bin/{pkgname}
+  ln -s /opt/${_code}/bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }

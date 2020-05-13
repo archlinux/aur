@@ -1,7 +1,7 @@
 pkgbase = code-insiders
 	pkgdesc = Editor to realize modern websites or applications.
 	pkgver = 1589357893
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.visualstudio.com/
 	arch = x86_64
 	arch = i686
