@@ -1,0 +1,14 @@
+pkgbase = python2-openid
+	pkgdesc = OpenID library for Python
+	pkgver = 2.2.5
+	pkgrel = 5
+	url = https://pypi.python.org/pypi/python-openid
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://files.pythonhosted.org/packages/source/p/python-openid/python-openid-2.2.5.tar.gz
+	sha512sums = e1dc649153239ec128c26e55587c909e45bc46ee7c2878b0f1541de135f4d3d299710678d3913bb978dd9a9167fda89bff72705efdd1cfda435290e5dc0dab5a
+
+pkgname = python2-openid
+
