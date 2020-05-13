@@ -6,12 +6,12 @@ pkgname=("lua-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
 pkgver=0.0.0.r12.ge71d851
 _branch='master'
 _rockrel=0
-pkgrel=2
+pkgrel=3
 pkgdesc='Lua parser for CommonMark using LPEG grammar'
 arch=('any')
 url="https://github.com/alerque/$_project"
 license=('MIT')
-_lua_deps=('epnf' 'penlight')
+_lua_deps=('luaepnf' 'penlight')
 makedepends=('git' 'lua' 'lua52' 'lua51' 'luarocks')
 source=("git+$url.git#branch=$_branch")
 sha256sums=('SKIP')
