@@ -1,12 +1,12 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=fluent
-_project=fluent-lua
+_project=$_rockname-lua
 pkgname=("lua-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
 pkgver=0.0.4.r69.g690b347
 _branch='master'
 _rockrel=0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lua implementation of Project Fluent'
 arch=('any')
 url="https://github.com/alerque/$_project"
@@ -23,7 +23,8 @@ pkgver() {
 
 _package_helper() {
   cd "$_project"
-  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-scm-$_rockrel.rockspec"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
+    make --deps-mode=none --no-manifest "$_rockname-scm-$_rockrel.rockspec"
 }
 
 package_lua-fluent-git() {
