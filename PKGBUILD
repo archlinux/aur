@@ -1,7 +1,9 @@
-# Maintainer: Wael Nasreddine <wael.nasreddine@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Wael Nasreddine <wael.nasreddine@gmail.com>
+
 pkgname=kovhernetes-git
 _pkgname=kOVHernetes
-pkgver=0.0.1.dev0
+pkgver=r32.bb8a7fe
 pkgrel=1
 pkgdesc="kOVHernetes (kovh) is a command-line utility for managing Kubernetes clusters on the OVH Cloud platform."
 arch=('any')
@@ -12,7 +14,7 @@ makedepends=('git')
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}")
 source=('git+https://github.com/antoineco/kOVHernetes.git')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
