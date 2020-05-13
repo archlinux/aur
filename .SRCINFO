@@ -15,9 +15,9 @@ pkgbase = lzdoom-bin
 	optdepends = timidity++
 	options = !strip
 	options = !emptydirs
-	source_i686 = https://github.com/drfrag666/gzdoom/releases/download/3.85/lzdoom_3.85_i386.deb
+	source_i686 = lzdoom-bin-3.85_i686.deb::https://github.com/drfrag666/gzdoom/releases/download/3.85/lzdoom_3.85_i386.deb
 	sha512sums_i686 = 837160c74a6b086cb2e4a3cb82215ee82b164cdc15df2c823873f05f6f0cc8f1f93335ca0cb899bb7d24b5788b7e07f1a811a65af6395e058abea855e43d5f3e
-	source_x86_64 = https://github.com/drfrag666/gzdoom/releases/download/3.85/lzdoom_3.85_amd64.deb
+	source_x86_64 = lzdoom-bin-3.85_x86_64.deb::https://github.com/drfrag666/gzdoom/releases/download/3.85/lzdoom_3.85_amd64.deb
 	sha512sums_x86_64 = 8a6880e69b4c40425b0dd332d1be1ced88c08778a1f5738611f7a69d701ca0569c58651d37cdcc0492a50fea8078b3b49fc79821e3befaf5f02b465d6869958f
 
 pkgname = lzdoom-bin
