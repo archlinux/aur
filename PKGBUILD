@@ -1,7 +1,7 @@
 # Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
 
 pkgname="nojava-ipmi-kvm-podman"
-pkgver="0.6.6"
+pkgver="0.7.0"
 pkgrel="1"
 pkgdesc="A tool to access Java based ipmi kvm consoles without a local Java installation (Podman dependency)."
 arch=("x86_64")
@@ -13,7 +13,7 @@ optdepends=("python-pyqtwebengine: GUI support")
 provides=("${pkgname%-*}=${pkgver}")
 conflicts=("${pkgname%-*}-docker")
 source=("https://github.com/sciapp/nojava-ipmi-kvm/archive/v${pkgver}.tar.gz")
-sha256sums=("d1100b47598ce5635ec2d7ad63b368aa2fd195935d5ed472fbb5f4335e3feddb")
+sha256sums=("2d8c0079950a7018c4a3cfa7c4a6b34210ee287ae03d83c031dc6f28c5f4220d")
 
 build() {
     cd "${srcdir}/${pkgname%-*}-${pkgver}" || return
