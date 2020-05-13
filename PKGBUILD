@@ -3,7 +3,7 @@
 # Contributor: Victor Häggqvist <aur a snilius d com>
 
 pkgname=solaar-git
-pkgver=1.0.2.rc1.r23.g377c954
+pkgver=1.0.2rc2.r4.g354c914
 pkgrel=1
 pkgdesc="Device manager for Logitech's Unifying receiver peripherals"
 url="https://pwr-solaar.github.io/Solaar/"
@@ -12,6 +12,7 @@ arch=('any')
 provides=("solaar")
 conflicts=("solaar")
 depends=('gtk3' 'libnotify' 'python-dbus' 'python-gobject' 'python-pyudev')
+optdepends=('libappindicator-gtk3: tray icon support')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/pwr-Solaar/Solaar.git")
 sha512sums=('SKIP')
