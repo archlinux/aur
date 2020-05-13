@@ -5,9 +5,12 @@ pkgbase = leaps-bin
 	url = https://github.com/Jeffail/leaps
 	arch = x86_64
 	license = MIT
+	depends = glibc
 	provides = leaps
-	source = https://github.com/Jeffail/leaps/releases/download/v0.9.0/leaps_linux_amd64.tar.gz
+	source = leaps-bin-0.9.0.tar.gz::https://github.com/Jeffail/leaps/releases/download/v0.9.0/leaps_linux_amd64.tar.gz
+	source = LICENSE::https://github.com/Jeffail/leaps/raw/master/LICENSE
 	sha256sums = 81a4dbb42fecf25b6728ba6ebc1225bb2e65ae949e8d0827e629c95acd463765
+	sha256sums = d99e66b5a0878e428224b79a363078ad9c5d3c5545c881b6fc9fecb23d15c7db
 
 pkgname = leaps-bin
 
