@@ -1,13 +1,13 @@
 # Contributor: kinru <kinru at protonmail dot com>
 pkgname=wifipumpkin3
 pkgver=v1.0.0.R5.r20.g763017b
-pkgrel=1
+pkgrel=2
 pkgdesc="Framework for Rogue Wi-Fi Access Point Attacks"
 arch=('x86_64')
 url="https://github.com/P0cL4bs/wifipumpkin3"
 license=('Apache')
-depends=('openssl' 'python>=3.0.0' 'libffi' 'python-pyqt5' 'hostapd' 'iptables' 'iw' 'net-tools' 'wireless_tools' )
-makedepends=('python-setuptools' 'git')
+depends=('openssl' 'python>=3.0.0' 'libffi' 'python-pyqt5' 'hostapd' 'iptables' 'iw' 'net-tools' 'wireless_tools' 'python-setuptools')
+makedepends=('git')
 source=("git+https://github.com/P0cL4bs/wifipumpkin3.git/")
 sha1sums=('SKIP')
 
