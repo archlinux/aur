@@ -1,6 +1,6 @@
 # aur-sync_gateway-bin
 
-An AUR package for Couchbase [Sync Gateway](https://github.com/couchbase/sync_gateway) Open Source Edition (OSE) compiled from source.
+An [AUR package](https://aur.archlinux.org/packages/sync_gateway-git/) for Couchbase [Sync Gateway](https://github.com/couchbase/sync_gateway) Open Source Edition (OSE) compiled from source.
 
 ## Getting Started
 
