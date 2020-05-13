@@ -1,16 +1,31 @@
-# Maintainer: soredake  <fdsfgs@krutt.org>
+# Maintainer: katt <magunasu.b97@gmail.com>
 
-pkgname=mpv-webm-git
 _pkgname=mpv-webm
-pkgver=r1
+pkgname=$_pkgname-git
+pkgver=r81.777218d
 pkgrel=1
-pkgdesc="Simple WebM maker for mpv, with no external dependencies."
+pkgdesc="Simple WebM maker for mpv"
 arch=('any')
 url="https://github.com/ekisu/mpv-webm"
+license=('MIT')
 depends=('mpv')
-source=('git+https://github.com/ekisu/mpv-webm')
+makedepends=('moonscript')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("git+$url")
 md5sums=('SKIP')
 
-package () {
-    install -Dm644 "$srcdir/$_pkgname/build/webm.lua" "$pkgdir/usr/share/mpv/scripts/webm.lua"
+pkgver() {
+	cd "$_pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+	cd "$_pkgname"
+	make
+}
+
+package() {
+	install -Dm644 "$_pkgname/build/webm.lua" -t "$pkgdir/usr/lib/mpv"
+	install -Dm644 "$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
