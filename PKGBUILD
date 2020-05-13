@@ -2,22 +2,27 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz [at] gmail [dot] com>
 
 pkgname=bootstrap
-pkgver=4.4.1
+pkgver=4.5.0
 pkgrel=1
-pkgdesc='Open source toolkit for developing with HTML, CSS, and JS'
+pkgdesc="Open source toolkit for developing with HTML, CSS, and JS"
 arch=('any')
-url='https://getbootstrap.com/'
+url="https://getbootstrap.com/"
 license=('MIT')
-depends=('jquery')
+optdepends=('jquery>=3.5.1: for JavaScript plugin support')
 install=bootstrap.install
 source=("https://github.com/twbs/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-dist.zip"
 	"LICENSE")
-sha256sums=('bffa7c741abd4a8558c0946138729f7dcb643491547a0b135fdb77e148b9bfbd'
-            'eaf003ef9d4321de625381657eaa69e0093fa6ab00c0201e3fd4847dd9878461')
+sha256sums=('ab96acb6a7a667f3c90692c45f2bb0584976b1b87af5a6142e59392c4238df72'
+            '9b2ce2d9793f14f0fb1a77ce64961acc1157fb25858156c47139491107970acb')
 
 package() {
   cd ${pkgname}-${pkgver}-dist
-  install -d ${pkgdir}/usr/share/javascript/${pkgname}
-  cp -a ./{css,js} ${pkgdir}/usr/share/javascript/${pkgname}/
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" 
+  install -d ${pkgdir}/usr/share/javascript/${pkgname}/{css,js}
+  for _jsfile in ./js/*; do
+	install -m0644 "${_jsfile}" "${pkgdir}/usr/share/javascript/${pkgname}/js/"
+  done
+  for _cssfile in ./css/*; do
+	install -m0644 "${_cssfile}" "${pkgdir}/usr/share/javascript/${pkgname}/css/"
+  done
+  install -Dm0644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" 
 }
