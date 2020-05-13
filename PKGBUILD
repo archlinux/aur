@@ -7,10 +7,13 @@ pkgrel=2
 pkgdesc='Ranger-like CLI file browser written in Rust'
 arch=('i686' 'x86_64')
 url='https://github.com/rabite0/hunter'
-license=('WTFPL')
+license=('custom:WTFPL')
 provides=('hunter')
-depends=('xdg-utils' 'gst-plugins-base-libs' 'libsixel')
-makedepends=('rustup' 'gcc' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
+depends=('gst-plugins-base-libs' 'libsixel')
+makedepends=('rustup'
+             'gst-plugins-good'
+             'gst-plugins-bad'
+             'gst-plugins-ugly')
 optdepends=('gst-plugins-good: Media support'
             'gst-plugins-bad: Media support'
             'gst-plugins-ugly: Media support'
@@ -28,8 +31,8 @@ optdepends=('gst-plugins-good: Media support'
             'poppler: PDF support'
             'mupdf-tools: PDF support'
             'fzf: Default file finder')
-source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('bef8ea5fd341a9fcf208d14cd3826e00')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('f0f9bf2b4defeeb83e339b984407eb717cb1cb9fffb358e65780e89aa72c906a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -40,6 +43,6 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -D target/release/hunter{,-media} -t "${pkgdir}"/usr/bin
-  install -Dm 644 README.md -t "${pkgdir}"/usr/share/doc/hunter
-  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/hunter
+  install -Dm644 README.md -t "${pkgdir}"/usr/share/doc/hunter
+  install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/hunter
 }
