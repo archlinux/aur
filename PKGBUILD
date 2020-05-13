@@ -1,10 +1,10 @@
-# Maintainer: Miguel de Val-Borro <miguel@archlinux.net>
+# Maintainer: Miguel de Val-Borro <miguel dot deval at gmail dot com>
 # Contributor: Mihai Coman <mihai@m1x.ro>
 # Contributor: Alexander Vynnyk <cosmonaut@mail.ua>
 
 pkgname=skychart-bin
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free software to draw sky charts, also known as Cartes du Ciel"
 arch=('x86_64')
 license=('GPL')
