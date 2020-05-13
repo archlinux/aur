@@ -4,7 +4,7 @@
 _pkgname=nohang
 pkgname=${_pkgname}-git
 pkgver=0.1.r638.g3f34a93
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated low memory handler"
 arch=('any')
 url="https://github.com/hakavlad/nohang"
@@ -39,6 +39,7 @@ package() {
 	make \
 		DESTDIR="${pkgdir}" \
 		PREFIX="/usr" \
+		SBINDIR="/usr/sbin" \
 		SYSCONFDIR="/etc" \
 		SYSTEMDUNITDIR="/usr/lib/systemd/system" \
 		install

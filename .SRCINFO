@@ -1,7 +1,7 @@
 pkgbase = nohang-git
 	pkgdesc = A sophisticated low memory handler
 	pkgver = 0.1.r638.g3f34a93
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hakavlad/nohang
 	arch = any
 	license = MIT
