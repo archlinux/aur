@@ -6,11 +6,12 @@ pkgver=1.0.0.beta10
 _pkgver=1.0.0-beta10
 pkgrel=1
 pkgdesc="Syntax extensions to LuaJIT for scientific computing"
-arch=('x86_64')
-url='https://scilua.org/'
+arch=('any')
+url='https://scilua.org'
 license=('MIT')
 provides=('scilua')
-depends=('luajit'
+depends=('bash'
+         'luajit'
          'lua-sci'
          'lua51-sci'
          'lua52-sci')
@@ -21,6 +22,9 @@ sha256sums=('1c97fff2171972b3617fa9acf9c330f7a186d1613a64804f4cfba78c4dcd50f2'
             '31cd7d3b194543b9373ba85548ac270cc7bdb20713bf9d4c0a12f2183391c097')
 
 prepare() {
+  if [[ -f "${pkgname}-${_pkgver}/${pkgname}-${pkgver}-1.rockspec" ]]; then
+    rm "${pkgname}-${_pkgver}/${pkgname}-${pkgver}-1.rockspec"
+  fi
   ln -s "${srcdir}/${_rockname}-${pkgver}-1.rockspec" "lua-${_rockname}-${_pkgver}/"
 }
 
@@ -39,7 +43,7 @@ build() {
 
 package_lua-sci-lang() {
   pkgdesc='Syntax extensions to LuaJIT for scientific computing for Lua 5.3'
-  depends=('lua51-sci-lang' 'lua52-sci-lang' 'luajit'
+  depends=('lua51-sci-lang' 'lua52-sci-lang' 'luajit' 'bash'
            'lua-sci' 'lua51-sci' 'lua52-sci')
 
   luarocks install --lua-version=5.3 --tree="$pkgdir/usr/" --deps-mode=none 5.3/${_rockname}-${pkgver}-1.all.rock
@@ -55,7 +59,7 @@ package_lua-sci-lang() {
 
 package_lua51-sci-lang() {
   pkgdesc='Syntax extensions to LuaJIT for scientific computing for Lua 5.1'
-  depends=('lua-sci-lang' 'lua52-sci-lang' 'luajit'
+  depends=('lua-sci-lang' 'lua52-sci-lang' 'luajit' 'bash'
            'lua-sci' 'lua51-sci' 'lua52-sci')
 
   luarocks install --lua-version=5.1 --tree="$pkgdir/usr/" --deps-mode=none 5.1/${_rockname}-${pkgver}-1.all.rock
@@ -72,7 +76,7 @@ package_lua51-sci-lang() {
 
 package_lua52-sci-lang() {
   pkgdesc='Syntax extensions to LuaJIT for scientific computing for Lua 5.2'
-  depends=('lua-sci-lang' 'lua51-sci-lang' 'luajit'
+  depends=('lua-sci-lang' 'lua51-sci-lang' 'luajit' 'bash'
            'lua-sci' 'lua51-sci' 'lua52-sci')
 
   luarocks install --lua-version=5.2 --tree="$pkgdir/usr/" --deps-mode=none 5.2/${_rockname}-${pkgver}-1.all.rock
