@@ -5,12 +5,12 @@
 
 pkgname=mill
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Your shiny new Java/Scala build tool"
 arch=(any)
 url="https://www.lihaoyi.com/mill/index.html"
 license=('MIT')
-depends=('bash' 'java-environment<13')
+depends=('bash' 'java-environment')
 makedepends=('mill')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lihaoyi/mill/archive/$pkgver.tar.gz")
 sha512sums=('193771e7c2a8262a7625b1e53b372d145a1b58452f388fa62260175d47a59d4b7a76b5a5485152f19cfec5d1f8f66b36171c352e2edd359cf920217f7bd3decb')
