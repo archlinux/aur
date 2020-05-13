@@ -1,0 +1,14 @@
+pkgbase = neovim-togglelist-opt-git
+	pkgdesc = Functions to toggle the [Location List] and the [Quickfix List] windows.
+	pkgver = 215.e52ff67
+	pkgrel = 1
+	url = https://github.com/milkypostman/vim-togglelist
+	arch = any
+	license = custom:vim
+	makedepends = git
+	depends = neovim
+	source = togglelist::git+https://github.com/milkypostman/vim-togglelist.git
+	sha256sums = SKIP
+
+pkgname = neovim-togglelist-opt-git
+
