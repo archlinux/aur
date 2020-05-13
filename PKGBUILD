@@ -3,7 +3,7 @@
 _target=xtensa-esp32-elf
 pkgname=$_target-newlib
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 _upstream_name=newlib-esp32
 _upstream_ver=esp-2020r1
 pkgdesc='A C standard library implementation intended for use on embedded systems (xtensa esp32 bare metal)'
@@ -19,36 +19,46 @@ build() {
   rm -rf build-{newlib,nano}
   mkdir build-{newlib,nano}
 
-  # flags: https://github.com/espressif/esp-idf/blob/master/make/project.mk
-  export CFLAGS_FOR_TARGET='-g -O2 -ffunction-sections -fdata-sections'
+  # flags: https://github.com/espressif/crosstool-NG
+  export CFLAGS_FOR_TARGET='-g -O2 -ffunction-sections -fdata-sections -mlongcalls'
   cd "$srcdir"/build-newlib
   ../$_upstream_name-$_upstream_ver/configure \
-    --target=$_target \
     --prefix=/usr \
-    --enable-newlib-long-time_t \
-    --enable-newlib-nano-malloc \
-    --disable-newlib-supplied-syscalls \
-    --enable-newlib-reent-small \
+    --target=$_target \
+    --enable-newlib-atexit-dynamic-alloc \
     --enable-newlib-io-c99-formats \
-    --enable-newlib-io-long-long \
     --enable-newlib-io-float \
-    --enable-newlib-io-pos-args
+    --enable-newlib-io-long-long \
+    --enable-newlib-io-pos-args \
+    --enable-newlib-long-time_t \
+    --enable-newlib-multithread \
+    --enable-newlib-nano-malloc \
+    --enable-newlib-reent-small \
+    --enable-newlib-unbuf-stream-opt \
+    --enable-newlib-wide-orient \
+    --enable-target-optspace \
+    --disable-lite-exit \
+    --disable-newlib-global-atexit \
+    --disable-newlib-io-long-double \
+    --disable-newlib-nano-formatted-io \
+    --disable-newlib-register-fini \
+    --disable-newlib-supplied-syscalls
   make
 
-  export CFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections'
+  export CFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections -mlongcalls'
   cd "$srcdir"/build-nano
   ../$_upstream_name-$_upstream_ver/configure \
-    --target=$_target \
     --prefix=/usr \
+    --target=$_target \
     --with-newlib \
     --enable-multilib \
-    --disable-newlib-io-c99-formats \
-    --disable-newlib-supplied-syscalls \
+    --enable-newlib-long-time_t \
     --enable-newlib-nano-formatted-io \
+    --enable-newlib-nano-malloc \
     --enable-newlib-reent-small \
     --enable-target-optspace \
-    --enable-newlib-long-time_t \
-    --enable-newlib-nano-malloc
+    --disable-newlib-io-c99-formats \
+    --disable-newlib-supplied-syscalls
   make
 }
 
