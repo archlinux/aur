@@ -1,4 +1,5 @@
 # Maintainer: Jay Tauron <jytrn@protonmail.com>
+# Thanks to https://github.com/yochananmarqos for the PKGBUILD
 pkgname=oreo-nord-cursors-git
 pkgver=20200513
 pkgrel=1
