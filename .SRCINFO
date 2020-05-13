@@ -1,0 +1,13 @@
+pkgbase = latex-urcls
+	pkgdesc = Beamer and scrlttr2 classes and styles for the University of Regensburg
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/TeXhackse/urcls
+	arch = any
+	license = custom
+	makedepends = zip
+	source = https://github.com/TeXhackse/urcls/archive/v2.1.tar.gz
+	b2sums = ad0c2c4a42d826dff6837943a54a22dd3b22733b8c94f88ea49d2c9cc2532b4795a2b826db44d21650bbca47c8853f59a67d3b5fefcda9c63f8b2d8602d5800e
+
+pkgname = latex-urcls
+
