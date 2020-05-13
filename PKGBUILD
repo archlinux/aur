@@ -2,7 +2,7 @@ pkgdesc="ROS - Low-level build system macros and infrastructure for ROS."
 url='https://www.wiki.ros.org/catkin'
 
 pkgname='ros-noetic-catkin'
-pkgver='0.8.1'
+pkgver='0.8.3'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -33,8 +33,15 @@ depends=(
 )
 
 _dir="catkin-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/catkin/archive/${pkgver}.tar.gz")
-sha256sums=('c7b4a696fd85f7c99714c28d13409a5ed1eb87686ededa5fc80c28d4bae5d698')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/catkin/archive/${pkgver}.tar.gz"
+        "https://patch-diff.githubusercontent.com/raw/ros/catkin/pull/1090.patch")
+sha256sums=('08b3bb22025f4ba5588136e2938e014000fef61339d678070e72a7c5e5e5913d'
+            'aa8e19489b8056eafd24113308aed773b01e39d0ed6f67cacb94a821bc8c75f7')
+
+prepare() {
+    cd ${srcdir}/${_dir}
+    patch -p1 < ${srcdir}/1090.patch
+}
 
 build() {
 	# Use ROS environment variables.
