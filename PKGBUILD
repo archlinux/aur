@@ -2,7 +2,7 @@
 
 pkgbase=vulkan-extensionlayer-git
 pkgname=({,lib32-}vulkan-extensionlayer-git)
-pkgver=r11.8812d5c478
+pkgver=r31.8a457f8552
 pkgrel=1
 pkgdesc="Layer providing Vulkan features when native support is unavailable"
 arch=(x86_64)
