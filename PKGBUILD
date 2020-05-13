@@ -1,12 +1,12 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
-pkgname=('kuyen-icon-theme-git')
-pkgver=r5.d01af6f
+pkgname=kuyen-icon-theme-git
+pkgver=r6.dc96d33
 pkgrel=1
 pkgdesc="A colourful flat theme designed for Plasma desktop"
 arch=('any')
 url='https://www.opencode.net/fabianalexis/kuyen-icons'
-license=('CC BY-NC-SA 3.0')
+license=('CCPL')
 makedepends=('git')
 source=("git+${url}")
 provides=("${pkgname%-*}" "${pkgname}")
@@ -30,7 +30,6 @@ prepare() {
 }
 
 package() {
-  msg2 'Installing icons ...'
   cd "${srcdir}"
   install -dm 755 "${pkgdir}/usr/share/icons/"
   cp -drf --no-preserve='ownership' . "${pkgdir}/usr/share/icons/"
