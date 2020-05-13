@@ -1,0 +1,22 @@
+pkgbase = obfuscate-git
+	pkgdesc = Censor private information.
+	pkgver = 0.0.2.r7.g8561dae
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/obfuscate
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = rust
+	depends = gtk3
+	provides = obfuscate
+	conflicts = obfuscate
+	source = obfuscate::git+https://gitlab.gnome.org/World/obfuscate.git
+	sha512sums = SKIP
+
+pkgname = obfuscate-git
+
