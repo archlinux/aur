@@ -13,7 +13,7 @@ yml="$(cat src/xdg-desktop-portal-wlr-git/.builds/archlinux.yml | sed 's/ *- //g
 pkgs="${yml##*packages:}"
 pkgs="${pkgs%%sources*}"
 
-depends="wlroots xdg-desktop-portal"
+depends="xdg-desktop-portal"
 makedepends="git"
 
 function move_to_makedepends() {

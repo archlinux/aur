@@ -9,7 +9,7 @@ arch=(x86_64)
 license=(custom:MIT)
 provides=("${pkgname%-git}" "xdg-desktop-portal-impl")
 conflicts=("${pkgname%-git}")
-depends=(wlroots xdg-desktop-portal pipewire)
+depends=(xdg-desktop-portal pipewire)
 makedepends=(git meson wayland-protocols wayland)
 optdepends=(
   "libpipewire02: For Chromium WebRTC desktop screencast (see project GitHub page)"

@@ -9,7 +9,6 @@ pkgbase = xdg-desktop-portal-wlr-git
 	makedepends = meson
 	makedepends = wayland-protocols
 	makedepends = wayland
-	depends = wlroots
 	depends = xdg-desktop-portal
 	depends = pipewire
 	optdepends = libpipewire02: For Chromium WebRTC desktop screencast (see project GitHub page)
