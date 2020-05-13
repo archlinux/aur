@@ -8,7 +8,6 @@ provides=('scream-pulse' 'scream-ivshmem-pulse' 'scream-alsa' 'scream-ivshmem-al
 depends=('libpulse' 'alsa-lib')
 makedepends=('cmake')
 conflicts=('scream-pulse' 'scream-alsa')
-replaces=('scream-pulse' 'scream-alsa')
 url='https://github.com/duncanthrax/scream'
 license=('custom:MS-PL')
 source=("${url}/archive/${pkgver}.tar.gz")

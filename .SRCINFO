@@ -14,8 +14,6 @@ pkgbase = scream
 	provides = scream-ivshmem-alsa
 	conflicts = scream-pulse
 	conflicts = scream-alsa
-	replaces = scream-pulse
-	replaces = scream-alsa
 	source = https://github.com/duncanthrax/scream/archive/3.5.tar.gz
 	sha256sums = 76170ea86a3024512078b395d4d557434d00cf9a6be9ddb298bf64eff191460c
 
