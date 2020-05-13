@@ -1,6 +1,6 @@
 pkgbase = python-academic-admin
 	pkgdesc = An admin tool for Academic website framework
-	pkgver = 0.4.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/sourcethemes/academic-admin
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-academic-admin
 	depends = python-bibtexparser
 	depends = python-toml
 	options = !emptydirs
-	source = https://github.com/sourcethemes/academic-admin/archive/0.4.0.tar.gz
-	md5sums = 054cd17f747fd9d700e5b6622b69fbc7
+	source = https://github.com/sourcethemes/academic-admin/archive/0.5.1.tar.gz
+	sha256sums = 72928adac90aa43cfc252f3bc0caa7c821c957c1b050caa0417cfe4523cd96ea
 
 pkgname = python-academic-admin
 

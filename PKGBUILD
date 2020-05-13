@@ -1,22 +1,16 @@
-# Maintainer: Tomasz Zok <tomasz.zok@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Tomasz Zok <tomasz.zok@gmail.com>
 pkgname=python-academic-admin
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="An admin tool for Academic website framework"
 arch=(any)
 url="https://github.com/sourcethemes/academic-admin"
 license=(MIT)
-groups=()
 depends=(python python-bibtexparser python-toml)
-makedepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
 options=(!emptydirs)
-install=
 source=(https://github.com/sourcethemes/academic-admin/archive/${pkgver}.tar.gz)
-md5sums=('054cd17f747fd9d700e5b6622b69fbc7')
+sha256sums=('72928adac90aa43cfc252f3bc0caa7c821c957c1b050caa0417cfe4523cd96ea')
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
