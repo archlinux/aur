@@ -2,7 +2,7 @@
 
 pkgname=cpeditor-git
 _pkgname=cpeditor
-pkgver=6.4.1.r8.g68dbd9c
+pkgver=6.4.1.r13.g93108d3
 pkgrel=1
 pkgdesc='The editor for competitive programming'
 arch=('x86_64')
