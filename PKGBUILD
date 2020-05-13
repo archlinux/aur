@@ -1,7 +1,7 @@
 # Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
 pkgname=sensu-go-backend
-pkgver=5.19.3
-_pkgbuild=11744
+pkgver=5.20.0
+_pkgbuild=12118
 _pkgver="${pkgver}-${_pkgbuild}"
 pkgrel=1
 pkgdesc="Sensu Go Backend"
@@ -13,7 +13,7 @@ conflicts=("${pkgname/-go-/-}")
 source=("${pkgname}-${_pkgver}_amd64.deb::https://packagecloud.io/sensu/stable/packages/debian/buster/${pkgname}_${_pkgver}_amd64.deb/download.deb"
         "sensu.sysusers"
         "sensu.tmpfiles")
-sha1sums=('69051d4cac7ca497a9f2ff49af76b41a202767f1'
+sha1sums=('bd623ce65cc61e0982a48378b98a06aad8826066'
           '054c2cfb7b2c4e6900fe79620b40fd060dbc0d8a'
           '9cca06fcbb23d5618382cc14e4ab4cc73c1f91fa')
 
