@@ -1,17 +1,17 @@
 _npmname=sweet.js
-_npmver=0.7.4
+_npmver=3.0.15
 pkgname=nodejs-sweet # All lowercase
-pkgver=0.7.4
+pkgver=3.0.15
 pkgrel=1
 pkgdesc="Hygienic Macros for JavaScript"
 arch=(any)
 url="https://github.com/mozilla/sweet.js"
 license=( "BSD" )
-depends=('nodejs')
+depends=('nodejs' 'npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('6ad0a39a8d2f0280325e951d5df7cbd5399a3135')
+sha256sums=('afdee2d87faf6f6472ba7eab688920c98a4fc3b63c91c438e97ace8c1346ab38')
 
 
 package() {
