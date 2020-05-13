@@ -1,8 +1,8 @@
 # Maintainer: Gerard Salvatella <gerard.salvatella@gmail.com>
 
 pkgname=ultimate-oldschool-pc-font-pack
-pkgver=1.0
-_relver=1.0
+pkgver=1.01
+_relver=1.01
 _Px437_dir="Px437 (TrueType - DOS charset)"
 _PxPlus_dir="PxPlus (TrueType - extended charset)"
 pkgrel=1
@@ -11,7 +11,7 @@ url="https://int10h.org/oldschool-pc-fonts"
 arch=(any)
 license=(custom)
 _tarname=${pkgname}_v${_relver}
-source=("$_tarname.zip::https://int10h.org/oldschool-pc-fonts/download/ultimate_oldschool_pc_font_pack_v1.0.zip")
+source=("$_tarname.zip::https://int10h.org/oldschool-pc-fonts/download/ultimate_oldschool_pc_font_pack_v1.01.zip")
 sha256sums=('7666cf23176e34ea03a218b5c1500f4ad729d97150ab7bdb7cf2adf4c99a9a7a')
 
 package() {
