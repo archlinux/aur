@@ -2,7 +2,7 @@
 
 pkgname=openra-raplus-git
 _pkgname=openra-raplus
-pkgver=20.git.6dbf096
+pkgver=21.git.511dfd6
 pkgrel=1
 pkgdesc="A Command & Conquer: Red Alert-inspired mod of OpenRA"
 arch=('any')
