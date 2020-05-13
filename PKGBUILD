@@ -3,7 +3,7 @@
 _pkgname=weave-minimal
 pkgname=$_pkgname-git
 pkgver=1.5.r8.g503072a
-pkgrel=2
+pkgrel=3
 pkgdesc="minimal weave 1.1 server for Pale Moon sync"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/zootboy/weave-minimal"
@@ -37,6 +37,7 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
   install -Dm644 $srcdir/$_pkgname/examples/weave-minimal.conf "$pkgdir/etc/weave-minimal.conf"
   install -Dm644 $srcdir/$_pkgname/examples/weave-minimal.service "$pkgdir/usr/lib/systemd/system/weave-minimal.service"
+  mkdir -p "$pkgdir/var/lib/weave/data"
 
   python setup.py install --root="$pkgdir"
 }
