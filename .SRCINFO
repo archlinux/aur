@@ -1,6 +1,6 @@
 pkgbase = micropython-git
 	pkgdesc = A Python 3 implementation for microcontrollers and constrained environments (Unix version).
-	pkgver = 1.11.r10585.d96391aca
+	pkgver = 1.12.r451.g18fb5b443
 	pkgrel = 1
 	epoch = 1
 	url = http://micropython.org/
@@ -14,8 +14,15 @@ pkgbase = micropython-git
 	optdepends = micropython-lib: for MicroPython standard library
 	provides = micropython
 	conflicts = micropython
+	conflicts = mpy-cross
 	source = micropython::git://github.com/micropython/micropython.git
-	md5sums = SKIP
+	source = axtls::git+https://github.com/pfalcon/axtls.git
+	source = libffi::git+https://github.com/atgreen/libffi.git
+	source = berkeley-db-1.xx::git+https://github.com/pfalcon/berkeley-db-1.xx.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = micropython-git
 

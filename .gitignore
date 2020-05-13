@@ -1,4 +1,8 @@
-*.pkg.tar.xz
-micropython/*
-src/*
-pkg/*
+axtls/
+berkeley-db-1.xx/
+libffi/
+micropython/
+micropython-git-*.pkg.tar.xz
+micropython-git-*.pkg.tar.zst
+pkg/
+src/

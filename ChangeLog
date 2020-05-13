@@ -1,4 +1,12 @@
 2019-09-21 Christopher Arndt <aur -at- chrisarndt -dot- de>
+    * 1:1.12.r451.g18fb5b443:
+	- Changed pkgver function to use git describe
+    - Declared all git sub-modules in sources
+    - Updated build commands
+    - Added 'mpy-cross' to conflicts
+    - Install readme in to docdir
+
+2019-09-21 Christopher Arndt <aur -at- chrisarndt -dot- de>
     * 1:1.11.r10585.d96391aca-1:
 	- Simplified pkgver function
 
