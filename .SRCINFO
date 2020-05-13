@@ -1,14 +1,15 @@
 pkgbase = nodejs-nodeunit
 	pkgdesc = Easy unit testing for node.js and the browser.
-	pkgver = 0.9.0
+	pkgver = 0.11.3
 	pkgrel = 1
 	url = http://github.com/caolan/nodeunit
 	arch = any
 	license = MIT
 	depends = nodejs
-	noextract = nodeunit-0.9.0.tgz
-	source = http://registry.npmjs.org/nodeunit/-/nodeunit-0.9.0.tgz
-	sha1sums = 0dfab188176c59de5373590f4197686941378351
+	depends = npm
+	noextract = nodeunit-0.11.3.tgz
+	source = http://registry.npmjs.org/nodeunit/-/nodeunit-0.11.3.tgz
+	sha256sums = d8634e532dc4c0ee9b03eb30e457b255977ad032cb14f379dd65189594af1516
 
 pkgname = nodejs-nodeunit
 
