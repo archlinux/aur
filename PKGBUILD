@@ -4,7 +4,7 @@
 # Contributor: Marc Mettke <marc@itmettke.de>
 
 pkgname=firefox-kde-opensuse-rpm
- _pkgver=76.0-832.4
+ _pkgver=76.0.1-833.1
 pkgver=${_pkgver/-/_}
 pkgrel=1
 epoch=1  # Because of update from 74.0-823.6 to 74.0.1-824.1
@@ -29,14 +29,14 @@ provides=("firefox=${pkgver}")
 conflicts=("firefox" "firefox-kde-opensuse")
 options=()
 source=("https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/x86_64/MozillaFirefox-${_pkgver}.x86_64.rpm")
-sha512sums=('eb43ec8eeec163a635749ee9c2941af3978d08887de85db9f5a833d31b93932b205d90b7125c6073265a31c9ea822ca74d55efcae88260ce58546b304b8d3c33')
+sha512sums=('ccea48f3f06c5afc5a03dccf5d17071f71af96f3d71c49903228eb6442b263755c0a3bb8e043b70ae1291bd01db38e830d3c219b9eb53d0046077150af3e50b8')
 
 
 package() {
     cd "usr"
-    
+
     install -d "${pkgdir}/usr/share" "${pkgdir}/usr/lib"
-    
+
     install -Dm755 "bin/firefox" "${pkgdir}/usr/bin/firefox"
     cp -r share/{applications,icons,man,mime} "${pkgdir}/usr/share/"
     cp -r lib64/firefox "${pkgdir}/usr/lib/"
