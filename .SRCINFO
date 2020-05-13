@@ -14,7 +14,6 @@ pkgbase = gdk-pixbuf2-git
 	depends = libtiff
 	depends = libjpeg
 	depends = libx11
-	depends = jasper
 	depends = shared-mime-info
 	provides = gdk-pixbuf2
 	conflicts = gdk-pixbuf2
