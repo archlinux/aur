@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="odio"
-pkgver=20.5.12.239
+pkgver="20.5.12.240"
 pkgrel=1
 pkgdesc="Audio compression tool for FLAC and Nero AAC"
 arch=("any")
