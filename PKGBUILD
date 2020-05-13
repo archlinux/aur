@@ -2,9 +2,9 @@
 _target='compass-community'
 _edition=' Community'
 pkgname="mongodb-$_target"
-_pkgver='1.21.1'
+_pkgver='1.21.2'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='5'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Community Edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
@@ -16,7 +16,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'hadron-build.diff'
 )
-sha256sums=('cfaddc2ea23904afdea729e29311cca311052bb5c75297f8b68adef196547841'
+sha256sums=('b5b221aa3d91a8a4e6aa7f3194592f523e59aa56aca00a2a5e9493a4f9cced4e'
             'fb0acd9dfb1b64253e79da5ef79e57225f0e687d98bb486e7e20d75224712133')
 
 _sourcedirectory="compass-$_pkgver"
