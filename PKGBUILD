@@ -1,7 +1,7 @@
 # Maintainer: sytabaresa <sytabaresa@gmail.com>
 
 pkgname=qucs-s
-pkgver=0.0.21
+pkgver=0.0.22
 pkgrel=1
 pkgdesc="A spin-off of Qucs that supports other free SPICE circuit simulators like ngspice with the same Qucs GUI"
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ optdepends=('ngspice: recommended simulation backend'
             'asco: to enable circuit optimization'
             )
 source=(https://github.com/ra3xdh/qucs_s/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
-sha1sums=('7879565da266ce6562db274d3298bf7bef8c389f')
+sha1sums=('ea86b172145e61a45fd588516ee51dae7555c866')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
