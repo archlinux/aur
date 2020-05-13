@@ -1,7 +1,7 @@
 pkgbase=deepspeech
 pkgname=('deepspeech' 'python-deepspeech')
 _pkgname=DeepSpeech
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A TensorFlow implementation of Baidu's DeepSpeech architecture"
 arch=('x86_64')
@@ -35,7 +35,7 @@ build() {
   bazel build --workspace_status_command="bash native_client/bazel_workspace_status_cmd.sh" --config=monolithic -c opt --copt=-O3 --copt="-D_GLIBCXX_USE_CXX11_ABI=0" --copt=-fvisibility=hidden //native_client:libdeepspeech.so
 
   cd "${srcdir}/${_pkgname}-${pkgver//_/-}/native_client"
-  make deepspeech
+  make deepspeech SOX_LDFLAGS="-lsox -lm"
   make bindings -C python
 }
 
@@ -43,7 +43,6 @@ package_deepspeech() {
   depends=('sox')
   cd "${srcdir}/${_pkgname}-${pkgver//_/-}/native_client"
   PREFIX="${pkgdir}"/usr make install
-  install -Dm644 deepspeech.h "${pkgdir}"/usr/include/deepspeech.h
 }
 
 package_python-deepspeech() {
