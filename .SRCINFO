@@ -1,7 +1,7 @@
 pkgbase = lua-cldr-git
 	pkgdesc = Unicode CLDR data and Lua interface
 	pkgver = 0.0.0.r6.g090ce28
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alerque/cldr-lua
 	arch = any
 	license = MIT
@@ -16,15 +16,18 @@ pkgbase = lua-cldr-git
 pkgname = lua-cldr-git
 	depends = lua
 	depends = lua-penlight
+	provides = lua-cldr
 	conflicts = lua-cldr
 
 pkgname = lua52-cldr-git
 	depends = lua52
 	depends = lua52-penlight
+	provides = lua52-cldr
 	conflicts = lua52-cldr
 
 pkgname = lua51-cldr-git
 	depends = lua51
 	depends = lua51-penlight
+	provides = lua51-cldr
 	conflicts = lua51-cldr
 
