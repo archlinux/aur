@@ -1,7 +1,7 @@
 pkgbase = legend
 	pkgdesc = A configuration for developers
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	depends = wordpress
 	depends = unity-editor
