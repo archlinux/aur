@@ -7,9 +7,10 @@ pkgdesc="CLI app to create SSH tunnels"
 arch=('x86_64')
 url='https://davrodpin.github.io/mole'
 license=('MIT')
-makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/davrodpin/mole/archive/v0.5.0.tar.gz")
-md5sums=('4950e6dd0a30e8df5f0bcb26e103ded5')
+depends=('glibc')
+makedepends=('go-pie')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/davrodpin/mole/archive/v${pkgver}.tar.gz")
+sha256sums=('58cff1a00510eb677e0bf929393f9697e71ea25e3c8a84290e4a75d3b91f7648')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
