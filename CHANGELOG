@@ -1,13 +1,11 @@
-v2.4
+v2.5
 ====
-Add a picture-wide menu with actions such as "Replace with…", thus missing
-pictures can be replaces without the necessity to set the durations again, or
-"View file" to open the file in the system image viewer.
 
-Wallpaper types are now managed from the primary menu again.
+The images can now be easily sorted according to their filename.
 
-v2.3
-====
-Add the ability to search among pictures, fix a memory leak, improve the
-automatic duration setting, make the window easier to resize, and update
-translations.
+This update also removes obsolete or unreliable features like "find and replace",
+or the possibility to set a file as lockscreen (which was not possible with most
+environments, and is not even possible GDM since the version 3.36).
+
+Minor bugs have been fixed too, like the weird behavior when closing the "find"
+entry, or actions that were disabled when they shouldn't.

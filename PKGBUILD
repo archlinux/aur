@@ -2,7 +2,7 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname='dynamic-wallpaper-editor'
-pkgver='2.4'
+pkgver='2.5'
 pkgrel='1'
 pkgdesc="A little utility for creation or edition of GNOME desktop's XML wallpapers"
 changelog='CHANGELOG'
@@ -11,16 +11,11 @@ url="https://github.com/maoschanz/${pkgname}"
 license=('GPL3')
 depends=('python' 'hicolor-icon-theme')
 makedepends=('meson' 'git')
-source=("git+${url}.git#tag=${pkgver}")
-sha256sums=('SKIP')
-
-pkgver () {
-  cd ${pkgname}
-  git describe --tags | sed 's/-/.r/; s/-/./'
-}
+source=("${url}/archive/${pkgver}.tar.gz")
+sha256sums=('2b09717c07f68db9a7f2ccf4115ef7351cd9b80f5300870f3bc4545713e9bd6e')
 
 build () {
-  arch-meson ${pkgname} build
+  arch-meson "${pkgname}-${pkgver}" build
   ninja -C build
 }
 

@@ -1,4 +1,4 @@
-/dynamic-wallpaper-editor
 /pkg
 /src
-*.tar.xz
+*.pkg.tar.xz
+*.tar.gz
