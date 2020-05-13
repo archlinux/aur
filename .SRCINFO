@@ -4,10 +4,11 @@ pkgbase = imager-bin
 	pkgrel = 1
 	url = https://imager.io
 	arch = x86_64
-	license = MIT
+	license = MPL2
+	depends = gcc-libs
 	provides = imager
-	source = https://github.com/imager-io/imager/releases/download/auto-release/imager/0.3.4/imager-v0.3.4-linux.tar.gz
-	md5sums = f196e141fa576c74579089514249767b
+	source = imager-bin-0.3.4.tar.gz::https://github.com/imager-io/imager/releases/download/auto-release/imager/0.3.4/imager-v0.3.4-linux.tar.gz
+	sha256sums = 408c4e42cb02b0643d37c5955e7547d08de5e3417b500bb3c8a176c2601f6cbd
 
 pkgname = imager-bin
 
