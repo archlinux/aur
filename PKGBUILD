@@ -2,7 +2,7 @@
 # Contributor: Piotr Rogoza <piotr dot r dot public at gmail dot com>
 
 pkgname=qtcam-git
-pkgver=r25.75bc420
+pkgver=r145.51ddb5d
 pkgrel=1
 pkgdesc='A free, Open Source Linux Webcamera Software with more than 10 image control settings - alexzk1 fork'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='http://www.e-consystems.com/opensource-linux-webcam-software-application.as
 license=('GPL')
 depends=('qt5-declarative' 'ffmpeg' 'libusb')
 makedepends=('git')
-source=('git://github.com/alexzk1/qtcam.git')
+source=('git://github.com/econsysqtcam/qtcam.git')
 sha256sums=('SKIP')
 _gitname='qtcam'
 
