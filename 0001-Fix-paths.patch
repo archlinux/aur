@@ -14,16 +14,16 @@ index 1d1eecae..6a2a3e30 100644
 +
  ROOT = fs.path(rootPath)
  LANG = LANG or 'en-US'
- 
+
 @@ -9,7 +13,7 @@ collectgarbage('generational', 10, 50)
  --collectgarbage('incremental', 120, 120, 0)
- 
+
  log = require 'log'
 -log.init(ROOT, ROOT / 'log' / 'service.log')
 +log.init(ROOT, fs.path('/tmp/lua-language-server' .. math.random(1000, 9000)) / 'log' / 'service.log')
  log.info('Lua Lsp startup, root: ', ROOT)
  log.debug('ROOT:', ROOT:string())
- 
+
 diff --git a/main.lua b/main.lua
 index b7c10ed5..bfd65013 100644
 --- a/main.lua
@@ -41,13 +41,12 @@ index b7c10ed5..bfd65013 100644
 +rootPath = fs.path(rootPath)
  ROOT = fs.current_path() / rootPath
  LANG = LANG or 'en-US'
- 
-@@ -9,13 +14,16 @@ LANG = LANG or 'en-US'
+
+@@ -9,13 +14,15 @@ LANG = LANG or 'en-US'
  collectgarbage("setpause", 100)
  collectgarbage("setstepmul", 1000)
- 
+
 +_G.LOG_PATH = fs.path('/tmp/lua-lua-language-server' .. math.random(1000, 9000)) / 'log'
-+print(LOG_PATH)
 +
  log = require 'log'
 -log.init(ROOT, ROOT / 'log' / 'service.log')
@@ -55,7 +54,7 @@ index b7c10ed5..bfd65013 100644
  log.info('Lua Lsp startup, root: ', ROOT)
  log.debug('ROOT:', ROOT:string())
  ac = {}
- 
+
 -xpcall(dofile, log.debug, rootPath .. '/debugger.lua')
 +xpcall(dofile, log.debug, tostring(rootPath / 'debugger.lua'))
  require 'utility'
@@ -68,12 +67,12 @@ index db62f939..b9b39768 100644
 @@ -1,4 +1,4 @@
 -local script = ...
 +local rootPath, script = ...
- 
+
  local function findExePath()
      local n = 0
 @@ -27,13 +27,7 @@ cpath:   %s
  end
- 
+
  local fs = require 'bee.filesystem'
 -local rootPath = fs.path(exePath):parent_path():parent_path():remove_filename():string()
 -if dll == '.dll' then
@@ -101,7 +100,7 @@ index f9b243ad..bcc5ffc7 100644
 +    local logPath = LOG_PATH / (rootUri:gsub('[/:]+', '_') .. '.log')
      log.info('Log path: ', logPath)
      log.init(ROOT, logPath)
- 
+
 diff --git a/test.lua b/test.lua
 index c1ac7993..7d20a6e3 100644
 --- a/test.lua

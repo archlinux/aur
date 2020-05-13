@@ -3,8 +3,8 @@
 
 _pkgname="lua-language-server"
 pkgname="$_pkgname-git"
-pkgver=r2378.3b13f002
-pkgrel=1
+pkgver=r2406.aeae9df8
+pkgrel=2
 license=('MIT')
 pkgdesc='Lua Language Server coded by Lua'
 url='https://github.com/sumneko/lua-language-server'
@@ -17,7 +17,7 @@ source=(
   'wrapper'
 )
 sha256sums=('SKIP'
-            'b6e65efe359fef92dff012035833e7164627bf6787650e5da38155c34d2ef0d4'
+            'ef3dff01cd1804c0715ce2fc7d8b57dc32da364b272bbfa9e1f3cac40b55d6e9'
             '6135c5424e5b87146aabf47651d3c95b6038865f26f25a8fce3a1ecd8c8f31fa')
 
 pkgver () {
