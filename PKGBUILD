@@ -6,8 +6,8 @@
 
 pkgbase=pipewire-gstfree
 _pkgbase=pipewire
-pkgname=(pipewire-gstfree pipewire-gstfree-docs pipewire-gstfree-jack pipewire-gstfree-pulse)
-pkgver=0.3.4
+pkgname=(pipewire-gstfree pipewire-gstfree-docs pipewire-gstfree-jack pipewire-gstfree-pulse pipewire-gstfree-alsa)
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies"
 url="https://pipewire.org"
@@ -16,7 +16,7 @@ arch=(x86_64)
 makedepends=(git meson doxygen graphviz xmltoman valgrind jack2 libpulse
              alsa-lib sbc rtkit vulkan-icd-loader
              dbus libsndfile bluez-libs vulkan-headers)
-_commit=33398d7de83fad1c67c691e0712e3e0108c5e966  # tags/0.3.4
+_commit=ba215efed0da8d6c9f3f2414d76a8e2c75352501  # tags/0.3.5
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -73,12 +73,25 @@ package_pipewire-gstfree() {
 
   cd "$pkgdir"
 
+  mkdir -p etc/alsa/conf.d
+  ln -st etc/alsa/conf.d /usr/share/alsa/alsa.conf.d/50-pipewire.conf
+
   _pick docs usr/share/doc
 
   _pick pulse usr/bin/pw-pulse usr/lib/pipewire-$_ver/pulse
 
   _pick jack usr/bin/pw-jack usr/lib/pipewire-$_ver/jack
   _pick jack usr/lib/spa-0.2/jack
+}
+
+package_pipewire-gstfree-alsa() {
+  pkgdesc="ALSA Configuration for PipeWire"
+  depends=(libpipewire-$_ver.so)
+  conflicts=(pipewire-alsa)
+  provides=(pipewire-alsa)
+
+  mkdir -p "$pkgdir/etc/alsa/conf.d"
+  ln -st "$pkgdir/etc/alsa/conf.d" /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf
 }
 
 package_pipewire-gstfree-docs() {
