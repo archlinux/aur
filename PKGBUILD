@@ -2,10 +2,10 @@
 
 pkgname=nginx-upload-module-git
 pkgver=2.3.0.r19.g4423994
-pkgrel=1
+pkgrel=2
 
 _modname=nginx-upload-module
-_nginxver=1.16.1
+_nginxver=1.18.0
 
 pkgdesc="A module for nginx web server for handling file uploads using multipart/form-data encoding (RFC 1867)."
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=("$_modname"::"git+https://github.com/vkholodkov/$_modname.git"
         https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
         config)
 sha512sums=('SKIP'
-            '17e95b43fa47d4fef5e652dea587518e16ab5ec562c9c94355c356440166d4b6a6a41ee520d406e5a34791a327d2e3c46b3f9b105ac9ce07afdd495c49eca437'
+            '8c21eeb62ab6e32e436932500f700bd2fb99fd2d29e43c08a5bfed4714c189c29c7141db551fcd5d2437303b7439f71758f7407dfd3e801e704e45e7daa78ddb'
             'SKIP'
             '898eb9dd5f50985ddad1571c056739761045e60fce04315a38f3a4334394534140925aad649c2a2c3c1c285a4c015c04864d0d8f59110bdd39630d7d1eaf64c9')
 

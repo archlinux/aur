@@ -1,7 +1,7 @@
 pkgbase = nginx-upload-module-git
 	pkgdesc = A module for nginx web server for handling file uploads using multipart/form-data encoding (RFC 1867).
 	pkgver = 2.3.0.r19.g4423994
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vkholodkov/nginx-upload-module
 	arch = i686
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = nginx-upload-module-git
 	provides = nginx-upload-module=2.3.0.r19.g4423994
 	conflicts = nginx-upload-module
 	source = nginx-upload-module::git+https://github.com/vkholodkov/nginx-upload-module.git
-	source = https://nginx.org/download/nginx-1.16.1.tar.gz
-	source = https://nginx.org/download/nginx-1.16.1.tar.gz.asc
+	source = https://nginx.org/download/nginx-1.18.0.tar.gz
+	source = https://nginx.org/download/nginx-1.18.0.tar.gz.asc
 	source = config
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
 	sha512sums = SKIP
-	sha512sums = 17e95b43fa47d4fef5e652dea587518e16ab5ec562c9c94355c356440166d4b6a6a41ee520d406e5a34791a327d2e3c46b3f9b105ac9ce07afdd495c49eca437
+	sha512sums = 8c21eeb62ab6e32e436932500f700bd2fb99fd2d29e43c08a5bfed4714c189c29c7141db551fcd5d2437303b7439f71758f7407dfd3e801e704e45e7daa78ddb
 	sha512sums = SKIP
 	sha512sums = 898eb9dd5f50985ddad1571c056739761045e60fce04315a38f3a4334394534140925aad649c2a2c3c1c285a4c015c04864d0d8f59110bdd39630d7d1eaf64c9
 
