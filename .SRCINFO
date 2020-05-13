@@ -1,6 +1,6 @@
 pkgbase = legend
 	pkgdesc = A configuration for developers
-	pkgver = 3.1
+	pkgver = 3.2
 	pkgrel = 1
 	arch = any
 	depends = wordpress

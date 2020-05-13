@@ -1,5 +1,5 @@
 pkgname=legend
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="A configuration for developers"
 arch=('any')
