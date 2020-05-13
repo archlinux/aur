@@ -1,0 +1,15 @@
+[Unit]
+Description=Mumble Daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/murmurd -ini /etc/murmur.ini -fg
+Restart=always
+PrivateDevices=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
