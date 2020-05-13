@@ -6,9 +6,10 @@ pkgbase = mobicon-cli
 	arch = any
 	license = MIT
 	makedepends = npm
-	noextract = v3.0.0.tar.gz
-	source = https://github.com/SamVerschueren/mobicon-cli/archive/v3.0.0.tar.gz
-	md5sums = f1e62e5c65da7214c52160b5bd52296c
+	depends = nodejs
+	noextract = mobicon-cli-3.0.0.tar.gz
+	source = mobicon-cli-3.0.0.tar.gz::https://github.com/SamVerschueren/mobicon-cli/archive/v3.0.0.tar.gz
+	sha256sums = 6a067aab4fdfebe1ed357a41e7b612da808cd5a1b24733d088336aaed79ed12b
 
 pkgname = mobicon-cli
 
