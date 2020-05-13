@@ -1,5 +1,5 @@
 # Maintainer:  John Schoenick <johns@valvesoftware.com>
-# Contributor: Lone_Wolf <lonewolf at xs4all dot nl>
+# Contributor: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor: Armin K. <krejzi at email dot com>
 # Contributor: Kristian Klausen <klausenbusk@hotmail.com>
 # Contributor: Egon Ashrafinia <e.ashrafinia@gmail.com>
@@ -12,16 +12,17 @@
 
 pkgname=mesa-aco-git
 pkgdesc="Mesa with the ACO compiler patchset, git version"
-pkgver=20.1.0_devel.20200417.4b94b901337
-pkgrel=8
+pkgver=20.1.0_rc1.20200502.3968b9381f8
+pkgrel=9
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio' 'libxrandr'
-              'ocl-icd' 'vulkan-icd-loader' 'libgcrypt'  'wayland' 'wayland-protocols' 'meson' 'ninja')
+              'ocl-icd' 'libgcrypt'  'wayland' 'wayland-protocols' 'meson' 'ninja')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libomxil-bellagio' 'libunwind' 'libglvnd>=1.2' 'wayland' 'lm_sensors' 'libclc' 'glslang')
+         'libomxil-bellagio' 'libunwind' 'libglvnd>=1.2' 'wayland' 'lm_sensors' 'libclc' 'glslang' 'vulkan-icd-loader' 'zstd')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=("mesa=$pkgver-$pkgrel"
+          "opencl-mesa=$pkgver-$pkgrel"
           "mesa-git=$pkgver-$pkgrel"
           "vulkan-intel=$pkgver-$pkgrel"
           "vulkan-radeon=$pkgver-$pkgrel"
@@ -45,8 +46,7 @@ source=('mesa-aco::git+https://github.com/daniel-schuermann/mesa'
 
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            'f83d52292f9b5144fc2f5b568cfb1d4bdebd37b877d34d9002335d79f66612123001c36a9615ed13f474771002672f2a445a89f3220d16b962e17087b6111644'
-)
+            'f83d52292f9b5144fc2f5b568cfb1d4bdebd37b877d34d9002335d79f66612123001c36a9615ed13f474771002672f2a445a89f3220d16b962e17087b6111644')
 
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
@@ -60,42 +60,52 @@ depends+=('llvm-libs>=10.0.0' 'llvm-libs<10.1')
 #            have the necessary provides to make selecting these manually here unnecessary, and we've disabled them
 #            because they break aurhelpers such as yay.
 #
-## MESA_WHICH_LLVM is an environment variable used to determine which llvm package tree is used to built mesa-git against.
-## Adding a line to makepkg.conf that sets this value is the simplest way to ensure a specific choice.
-##
-## 1: llvm-minimal-git (aur) preferred value
-## 2: AUR llvm-git
-## 3: llvm-git from LordHeavy unofficial repo
-## 4  llvm (stable from extra) Default value
-###  if [[ ! $MESA_WHICH_LLVM ]] ; then
-###      MESA_WHICH_LLVM=4
-###  fi
-###
-###  case $MESA_WHICH_LLVM in
-###      1)
-###          # aur lone_wolf-llvm-git
-###          makedepends+=('llvm-minimal-git')
-###          depends+=('llvm-libs-minimal-git')
-###          ;;
-###      2)
-###          # aur llvm-git
-###          # depending on aur-llvm-* to avoid mixup with LH llvm-git
-###          makedepends+=('aur-llvm-git')
-###          depends+=('aur-llvm-libs-git')
-###          ;;
-###      3)
-###          # mesa-git/llvm-svn (lordheavy unofficial repo)
-###          makedepends+=('llvm-git' 'clang-git')
-###          depends+=('llvm-libs-git')
-###          ;;
-###      4)
-###          # extra/llvm
-###          makedepends+=(llvm=8.0.0 clang=8.0.0)
-###          depends+=(llvm-libs=8.0.0)
-###          ;;
-###      *)
-###  esac
 
+### NOTE: Aur helpers don't handle this method well, check the sticky comments on mesa-git aur page .
+###
+### 1: llvm-minimal-git (aur) preferred value
+### 2: AUR llvm-git
+### 3: llvm-git from LordHeavy unofficial repo 
+### 4  llvm (stable from extra) Default value
+### 
+##
+##if [[ ! $MESA_WHICH_LLVM ]] ; then
+##    MESA_WHICH_LLVM=4
+##fi
+##
+##case $MESA_WHICH_LLVM in
+##    1)
+##        # aur llvm-minimal-git
+##        makedepends+=('llvm-minimal-git')
+##        depends+=('llvm-libs-minimal-git')
+##        optdepends+=('llvm-minimal-git: opencl')
+##        ;;
+##    2)
+##        # aur llvm-git
+##        # depending on aur-llvm-* to avoid mixup with LH llvm-git
+##        makedepends+=('aur-llvm-git')
+##        depends+=('aur-llvm-libs-git')
+##        optdepends+=('llvm-git: opencl')
+##        ;;
+##    3)
+##        # mesa-git/llvm-git (lordheavy unofficial repo)
+##        makedepends+=('llvm-git' 'clang-git')
+##        depends+=('llvm-libs-git')
+##        optdepends+=('clang-git: opencl' 'compiler-rt: opencl')
+##        ;;
+##    4)
+##        # extra/llvm
+##        makedepends+=(llvm=10.0.0 clang=10.0.0)
+##        depends+=(llvm-libs=10.0.0)
+##        optdepends+=('clang: opencl' 'compiler-rt: opencl')
+##        ;;
+##    *)
+##esac
+        
+        
+        
+        
+        
 pkgver() {
     cd mesa-aco
     read -r _ver <VERSION
@@ -120,13 +130,14 @@ prepare() {
 build () {
     meson setup mesa-aco _build \
        -D b_ndebug=true \
+       -D b_lto=true \
        -D buildtype=plain \
        --wrap-mode=nofallback \
        -D prefix=/usr \
        -D sysconfdir=/etc \
        -D platforms=x11,wayland,drm,surfaceless \
        -D dri-drivers=i915,i965,r200,r100,nouveau \
-       -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris \
+       -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris,zink \
        -D vulkan-drivers=amd,intel \
        -D dri3=true \
        -D egl=true \
@@ -138,7 +149,7 @@ build () {
        -D gallium-xa=true \
        -D gallium-xvmc=false \
        -D gbm=true \
-       -D gles1=true \
+       -D gles1=false \
        -D gles2=true \
        -D glvnd=true \
        -D glx=dri \
@@ -150,17 +161,30 @@ build () {
        -D gallium-opencl=icd \
        -D valgrind=false \
        -D vulkan-overlay-layer=true \
-       -D tools=[]
-
+       -D vulkan-device-select-layer=true \
+       -D tools=[] \
+       -D zstd=true \
+       
     meson configure _build
-    ninja  $NINJAFLAGS -C _build
+    
+    # quoted from https://www.mesa3d.org/meson.html
+    # Note: autotools automatically updated translation files (used by the DRI configuration tool) as part of the build process, Meson does not do this. 
+    # Instead, you will need do this: 
+    ninja $NINJAFLAGS -C _build xmlpool-pot xmlpool-update-po xmlpool-gmo
+    #
+    ninja $NINJAFLAGS -C _build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja $NINJAFLAGS -C _build install
+    DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C _build install
 
-  # indirect rendering
-  ln -s /usr/lib/libGLX_mesa.so.0 "${pkgdir}"/usr/lib/libGLX_indirect.so.0
-
-  install -Dt "$pkgdir"/usr/share/licenses/$pkgname "$srcdir"/LICENSE
+    # remove script file from /usr/bin
+    # https://gitlab.freedesktop.org/mesa/mesa/issues/2230
+    rm "${pkgdir}/usr/bin/mesa-overlay-control.py"
+    rmdir "${pkgdir}/usr/bin"
+    
+    # indirect rendering
+    ln -s /usr/lib/libGLX_mesa.so.0 "${pkgdir}/usr/lib/libGLX_indirect.so.0"
+  
+    install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE"
 }
