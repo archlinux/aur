@@ -2,7 +2,7 @@
 _gittag=master-5b56bb49
 pkgname=clang-format-static-bin
 pkgver=3.5b56bb49
-pkgrel=1
+pkgrel=2
 pkgdesc="clang-format x86_64 static binaries (3.9, 4, 5, 6, 7, 8, 9, 10)"
 arch=('x86_64')
 url="https://github.com/muttleyxd/clang-format-static-binaries"
