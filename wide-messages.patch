@@ -1,0 +1,16 @@
+Index: Telegram/lib_ui/ui/basic.style
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Telegram/lib_ui/ui/basic.style	(revision 8e2cfbf303a43bbd946279dd2cb394be82a782a0)
++++ Telegram/lib_ui/ui/basic.style	(date 1589375238616)
+@@ -84,7 +84,7 @@
+ activeFadeInDuration: 500;
+ activeFadeOutDuration: 3000;
+ 
+-msgMaxWidth: 430px;
++msgMaxWidth: 3840px;
+ msgFont: font(fsize);
+ msgNameFont: semiboldFont;
+ msgNameStyle: semiboldTextStyle;
