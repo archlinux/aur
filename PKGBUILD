@@ -3,10 +3,10 @@
 _rockname=cassowary
 _project=cassowary.lua
 pkgname=("lua-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
-pkgver=2.2
+pkgver=2.2.r26.g63e91d4
 _branch='master'
 _rockrel=0
-pkgrel=6
+pkgrel=1
 pkgdesc='The cassowary constraint solver'
 arch=('i686' 'x86_64')
 url="https://github.com/sile-typesetter/$_project"
