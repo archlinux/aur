@@ -9,8 +9,10 @@ pkgbase = lua-discount
 	depends = discount
 	source = https://github.com/craigbarnes/lua-discount/archive/0.4.tar.gz
 	source = https://luarocks.org/manifests/craigb/discount-0.4-1.rockspec
+	source = LICENSE::https://github.com/craigbarnes/lua-discount/raw/master/LICENSE
 	sha256sums = 3531eeddde4a89d5b7a4ab9b359a7f01a88ac85dd4fac61554eb199165cfdead
 	sha256sums = edb216e8a28534f18d8950779b50dab083c8f339eaed90b68814b97c27af8255
+	sha256sums = 8b2fffc6b27a33bf6958a2a2293ce19ce5cbd7206ccb6dda7a9d3abe6f80c9fa
 
 pkgname = lua-discount
 	pkgdesc = Lua bindings for the Discount Markdown library for Lua 5.3
