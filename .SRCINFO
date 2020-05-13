@@ -1,11 +1,10 @@
 pkgbase = wifipumpkin3
 	pkgdesc = Framework for Rogue Wi-Fi Access Point Attacks
 	pkgver = v1.0.0.R5.r20.g763017b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/P0cL4bs/wifipumpkin3
 	arch = x86_64
 	license = Apache
-	makedepends = python-setuptools
 	makedepends = git
 	depends = openssl
 	depends = python>=3.0.0
@@ -16,6 +15,7 @@ pkgbase = wifipumpkin3
 	depends = iw
 	depends = net-tools
 	depends = wireless_tools
+	depends = python-setuptools
 	source = git+https://github.com/P0cL4bs/wifipumpkin3.git/
 	sha1sums = SKIP
 
