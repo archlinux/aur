@@ -1,29 +1,31 @@
-# Maintainer: graysky <graysky AT archlinux DOT us>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: graysky <graysky AT archlinux DOT us>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Thomas Mudrunka <harvie@@email..cz>
 # Contributer: Eric Belanger <eric@archlinux.org>
 # Contributor: Jakub Kądziołka <kuba@kadziolka.net>
 
 pkgname=xscreensaver-arch-logo-nogdm
-pkgver=5.42
+pkgver=5.44
 pkgrel=1
 pkgdesc="Screen saver and locker for the X Window System with Arch Linux branding"
-url="http://www.jwz.org/xscreensaver/"
+url="https://www.jwz.org/xscreensaver/"
 arch=('x86_64')
 license=('BSD')
-depends=('libglade' 'libxmu' 'glu' 'xorg-appres' 'perl-libwww' 'pam')
+depends=('libglade' 'libxmu' 'glu' 'xorg-appres' 'perl-libwww')
 makedepends=('bc' 'intltool' 'libxpm')
 conflicts=('xscreensaver')
 provides=('xscreensaver')
 backup=('etc/pam.d/xscreensaver')
-source=(http://www.jwz.org/xscreensaver/${pkgname%%-*}-${pkgver}.tar.gz
+source=(https://www.jwz.org/xscreensaver/${pkgname%%-*}-${pkgver}.tar.gz
 LICENSE logo-50.xpm logo-180.xpm logo-50.png logo-180.png)
-sha1sums=('b8eb08e258a70924aa0e644e4930164baf505ee6'
-          '3eedb8b91b13c29df9b1fe5cbb027e1470b802d2'
-          '5ff6dfd0a14ca484d4287647c3e00af8e417163c'
-          '63ed187b08864993684f826dc87b1c5f42ea5bf4'
-          '203ca4f21e0d42263fc0ebb796eaf968c457d93a'
-          '619cff60b77812545493dbedb0ba247a37f381e5')
+sha256sums=('73d8089cfc7d7363b5dac99b5b01dffb3429d0a855e6af16ce9a4b7777017b95'
+            'c0247a0328f07656f6b7a5854f57fe735579f161b6f40df967cf9a5eab772d63'
+            '82366926a2a81bd08459327936ba144e8b3ea5ee4a386c268bd898e1791ab1a0'
+            '253f0d5bbdd841f21a7bbdbb0fd7ded21f711751d5cb1b7914952bdd6541b36d'
+            '8027bdb2b4328d154a8e517bdb94f5ef4a9eb031e79a285dabedd62acfa77317'
+            '8357f9e631b80ae373cb0fc8e27fa96fd032c3d5e3869bd04dde843b79260b19')
+
 prepare() {
   cd "${pkgname%%-*}-${pkgver}"
   sed 's|-std=c89||' -i configure.in
