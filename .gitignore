@@ -1,3 +1,6 @@
 deepspeech-*.tar.*z
+*.pbmm
+*.tflite
+*.scorer
 pkg/
 src/
