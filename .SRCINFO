@@ -1,0 +1,17 @@
+pkgbase = oreo-nord-cursors-git
+	pkgdesc = Fork of oreo-cursors with Nord colors
+	pkgver = 20200512
+	pkgrel = 1
+	url = https://github.com/0jdxt/oreo-nord-cursors
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = gtk-engine-murrine
+	makedepends = inkscape
+	makedepends = xorg-xcursorgen
+	options = !strip
+	source = git+https://github.com/0jdxt/oreo-nord-cursors.git
+	sha256sums = SKIP
+
+pkgname = oreo-nord-cursors-git
+
