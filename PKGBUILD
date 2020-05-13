@@ -1,12 +1,14 @@
-# Maintainer: Giacomo Longo <gabibbo97@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Giacomo Longo <gabibbo97@gmail.com>
+
 pkgname=kubebuilder
-pkgver=1.0.3
+pkgver=2.3.1
 pkgrel=3
 pkgdesc="SDK for building Kubernetes APIs"
 url="https://github.com/kubernetes-sigs/kubebuilder"
 license=('APACHE')
 source=("https://github.com/kubernetes-sigs/kubebuilder/releases/download/v${pkgver}/kubebuilder_${pkgver}_linux_amd64.tar.gz")
-md5sums=('0605015b141a568c23d29088881f664b')
+sha256sums=('ff496970f209706763f2aba2bdcefc2de8d00085b3b972b5790117b59ea4ed10')
 arch=('x86_64')
 
 package() {
