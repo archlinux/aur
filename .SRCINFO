@@ -4,10 +4,11 @@ pkgbase = logkit-bin
 	pkgrel = 1
 	url = https://logkit-pro.qiniu.com
 	arch = x86_64
-	license = Apache-2.0
+	license = Apache
+	depends = glibc
 	provides = logkit
-	source = https://pandora-dl.qiniu.com/logkit_v1.5.4.tar.gz
-	md5sums = 9308045b7652abb680990200aaf91dab
+	source = logkit-bin-1.5.4.tar.gz::https://pandora-dl.qiniu.com/logkit_v1.5.4.tar.gz
+	sha256sums = ff6f7bc0f59b760da2d6bb123f5b646a2d48b5939f46b187fe82b66c90385738
 
 pkgname = logkit-bin
 

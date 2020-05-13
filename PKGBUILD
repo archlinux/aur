@@ -6,10 +6,11 @@ pkgrel=1
 pkgdesc='Very powerful server agent for collecting & sending logs & metrics with an easy-to-use web console'
 arch=('x86_64')
 url="https://logkit-pro.qiniu.com"
-license=('Apache-2.0')
+license=('Apache')
 provides=('logkit')
-source=("https://pandora-dl.qiniu.com/logkit_v${pkgver}.tar.gz")
-md5sums=('9308045b7652abb680990200aaf91dab')
+depends=('glibc')
+source=("${pkgname}-${pkgver}.tar.gz::https://pandora-dl.qiniu.com/logkit_v${pkgver}.tar.gz")
+sha256sums=('ff6f7bc0f59b760da2d6bb123f5b646a2d48b5939f46b187fe82b66c90385738')
 
 package() {
   cd "${srcdir}/_package"
