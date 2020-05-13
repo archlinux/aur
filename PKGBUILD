@@ -1,13 +1,13 @@
 # Maintainer: KokaKiwi <kokakiwi@kokakiwi.net>
 _pkgname=elixir-ls
 pkgname=elixir-ls-git
-pkgver=0.3.3.r17.gb60f9b1
+pkgver=0.3.3.r23.gc9b095f
 pkgrel=1
 pkgdesc='A frontend-independent Language Server Protocol for Elixir'
 url='https://github.com/elixir-lsp/elixir-ls'
 license=('Apache')
 arch=('any')
-depends=('elixir>=1.7.0' 'erlang-nox>=20.0')
+depends=('elixir' 'erlang-nox')
 makedepends=('git')
 provides=('elixir-ls')
 conflicts=('elixir-ls')
@@ -24,6 +24,7 @@ build() {
   cd "${_pkgname}"
 
   export MIX_ENV=prod
+
   mix deps.get
   mix compile
 }
