@@ -1,19 +1,19 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=cldr
-_project=cldr-lua
+_project=$_rockname-lua
 pkgname=("lua-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
 pkgver=0.0.0.r6.g090ce28
 _branch='master'
 _rockrel=0
-pkgrel=1
+pkgrel=2
 pkgdesc='Unicode CLDR data and Lua interface'
 arch=('any')
 url="https://github.com/alerque/$_project"
 license=('MIT')
 _lua_deps=('penlight')
 makedepends=('git' 'lua' 'lua52' 'lua51' 'luarocks')
-source=("git://github.com/alerque/$_project.git#branch=$_branch")
+source=("git+$url.git#branch=$_branch")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,7 +23,8 @@ pkgver() {
 
 _package_helper() {
   cd "$_project"
-  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-scm-$_rockrel.rockspec"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
+    make --deps-mode=none --no-manifest "$_rockname-scm-$_rockrel.rockspec"
 }
 
 package_lua-cldr-git() {
