@@ -6,12 +6,11 @@
 pkgname=leo
 pkgver=6.2.1
 pkgrel=1
-pkgdesc="Leo is an Outliner, Editor, and Personal Information Manager written in 100% Python"
+pkgdesc="Outliner, Editor, and Personal Information Manager written in 100% Python"
 arch=('any')
-url="http://leoeditor.com/"
+url="http://leoeditor.com"
 license=('MIT' 'BSD')
-depends=('python'
-         'desktop-file-utils'
+depends=('desktop-file-utils'
          'shared-mime-info'
          'python-pyqt5'
          'python-pyqtwebengine'
@@ -27,12 +26,12 @@ depends=('python'
          'python-asttokens')
 makedepends=('python-setuptools' 'gendesk')
 optdepends=('python-pyenchant: spellchecking support')
-source=("https://github.com/leo-editor/leo-editor/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leo-editor/leo-editor/archive/v${pkgver}.tar.gz"
         'setup.py.patch'
         'leo.xml')
-md5sums=('3e5fd517686cf52214ff70265fd00019'
-         'SKIP'
-         'SKIP')
+sha256sums=('95ae6334e1c1ead096bae7695c1c0a0b8c6992a83ea6c88166f94dd750fc68ae'
+            'SKIP'
+            'SKIP')
 
 prepare() {
     cd "${pkgname}-editor-${pkgver}"

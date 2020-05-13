@@ -1,14 +1,13 @@
 pkgbase = leo
-	pkgdesc = Leo is an Outliner, Editor, and Personal Information Manager written in 100% Python
+	pkgdesc = Outliner, Editor, and Personal Information Manager written in 100% Python
 	pkgver = 6.2.1
 	pkgrel = 1
-	url = http://leoeditor.com/
+	url = http://leoeditor.com
 	arch = any
 	license = MIT
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = gendesk
-	depends = python
 	depends = desktop-file-utils
 	depends = shared-mime-info
 	depends = python-pyqt5
@@ -24,12 +23,12 @@ pkgbase = leo
 	depends = python-black
 	depends = python-asttokens
 	optdepends = python-pyenchant: spellchecking support
-	source = https://github.com/leo-editor/leo-editor/archive/v6.2.1.tar.gz
+	source = leo-6.2.1.tar.gz::https://github.com/leo-editor/leo-editor/archive/v6.2.1.tar.gz
 	source = setup.py.patch
 	source = leo.xml
-	md5sums = 3e5fd517686cf52214ff70265fd00019
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = 95ae6334e1c1ead096bae7695c1c0a0b8c6992a83ea6c88166f94dd750fc68ae
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = leo
 
