@@ -1,7 +1,7 @@
 # Maintainer: Luis Marques <luigoalma at gmail dot com>
 
 pkgname=simple2d
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Simple, open-source 2D graphics for everyone"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf')
 options=('staticlibs' '!emptydirs')
 source=(simple2d-v${pkgver}.tar.gz::https://github.com/simple2d/simple2d/archive/v${pkgver}.tar.gz)
-sha256sums=('de621fbdff69a1ded2efe51f2b088f3e572dbd9f1a1eb772fce813774234a66a')
+sha256sums=('72fe2f9e1684f846d8f373a0c14452c7191e354ef3cd9ddb3a9a2a7c1a7e2ab2')
 
 build() {
   cd "$srcdir"/simple2d-${pkgver}
