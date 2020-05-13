@@ -1,7 +1,7 @@
 # Contributor: Max Devaine <maxdevaine@gmail.com>
 
 pkgname=flexibee
-pkgver=2020.2.0.5
+pkgver=2020.2.0.6
 pkgbasever=2020.2
 pkgrel=1
 pkgdesc="Accounting economic system for person and business. Server and client in one package."
@@ -13,7 +13,8 @@ install=flexibee.install
 source=("http://download.flexibee.eu/download/$pkgbasever/$pkgver/flexibee-$pkgver.tar.gz"
         "flexibee")
 
-sha256sums=('dd042eb835a6b30db471f50369e95a7f433ffb7ffbc95a4c608685b3b9f33101'
+
+sha256sums=('6fea74206627dd7009add7a9174bd02cb5d7fafac441e709ecbc39c161cada8f'
             '0aaf79ac30bfc5af5e9aba6d1b1189a76019551d3183621bcb9f2bdbe7ea39e3')
 
 prepare() {
