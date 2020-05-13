@@ -36,12 +36,6 @@ pkgver() {
 }
 
 prepare() {
-  
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
-
   #fix libdir
   sed -i 's|lib/cmake|lib32/cmake|' SDL/CMakeLists.txt
 
@@ -50,13 +44,11 @@ prepare() {
 }
 
 build() {
-  cd build
-
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
-  cmake ../SDL \
+  cmake -S SDL -B build \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DLIB_SUFFIX=32 \
       -DSDL_STATIC=OFF \
