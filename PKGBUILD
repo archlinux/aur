@@ -1,8 +1,9 @@
-# Maintainer: Andrea Fagiani <andfagiani_at_gmail_dot_com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Andrea Fagiani <andfagiani_at_gmail_dot_com>
 # Contributor: Lisa Denia <eiffel56@gmail.com>
 
 pkgname=kanyremote
-pkgver=6.3.5
+pkgver=8.0
 pkgrel=1
 pkgdesc="KDE-frontend for anyremote."
 arch=('i686' 'x86_64')
@@ -10,8 +11,8 @@ url="http://anyremote.sourceforge.net"
 license=('GPL')
 makedepends=('automake>=1.10' 'autoconf>=2.62')
 depends=('python2-pybluez' 'anyremote>=6.3' 'kdebindings-python2')
-source=(http://downloads.sourceforge.net/sourceforge/anyremote/$pkgname-$pkgver.tar.gz)
-md5sums=('564c2bd86a94f75d03ba386f65567ffa')
+source=(https://downloads.sourceforge.net/sourceforge/kanyremote/$pkgname-$pkgver.tar.gz)
+sha256sums=('348f70639fe8f8047717a08cd0b340f8d65e77787e8dc056d29bc4e743f8116d')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
