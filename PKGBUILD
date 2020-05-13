@@ -13,8 +13,6 @@ sha256sums=('SKIP')
 depends=(vulkan-icd-loader)
 makedepends=(cmake ninja vulkan-headers)
 checkdepends=()
-provides=(vulkan-extensionlayer)
-conflicts=(vulkan-extensionlayer)
 
 pkgver() {
   cd Vulkan-ExtensionLayer
@@ -23,7 +21,7 @@ pkgver() {
     $(git rev-parse HEAD | head -c10)
 }
 
-prepare() {
+build_vulkan-extensionlayer-git() {
   cmake \
     -S Vulkan-ExtensionLayer -B build64 \
     -G Ninja \
@@ -31,9 +29,13 @@ prepare() {
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D BUILD_LAYERS=ON
 
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  ninja -C build64
+}
+
+build_lib32-vulkan-extensionlayer-git() {
+  CC='gcc -m32' \
+  CXX='g++ -m32' \
+  PKG_CONFIG_PATH='/usr/lib32/pkgconfig' \
   cmake \
     -S Vulkan-ExtensionLayer -B build32 \
     -G Ninja \
@@ -41,17 +43,14 @@ prepare() {
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_INSTALL_LIBDIR=lib32 \
     -D BUILD_LAYERS=ON
-}
 
-build_vulkan-extensionlayer-git() {
-  ninja -C build64
-}
-
-build_lib32-vulkan-extensionlayer-git() {
   ninja -C build32
 }
 
 package_vulkan-extensionlayer-git() {
+  provides=(vulkan-extensionlayer)
+  conflicts=(vulkan-extensionlayer)
+
   DESTDIR="$pkgdir" ninja -C build64 install
 }
 
@@ -65,4 +64,7 @@ package_lib32-vulkan-extensionlayer-git() {
 
   # Delete conflicting file provided by vulkan-extensionlayer
   rm "$pkgdir"/usr/share/vulkan/explicit_layer.d/VkLayer_khronos_timeline_semaphore.json
+  rmdir "$pkgdir"/usr/share/vulkan/explicit_layer.d/
+  rmdir "$pkgdir"/usr/share/vulkan/
+  rmdir "$pkgdir"/usr/share/
 }
