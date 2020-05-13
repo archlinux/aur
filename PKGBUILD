@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-pytest-pylint
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='pytest plugin to check source code with pylint'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/carsongee/pytest-pylint'
 depends=('python-pytest' 'python-pylint' 'python-toml')
 makedepends=('python-pytest-flake8')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/carsongee/pytest-pylint/archive/v$pkgver.tar.gz")
-sha512sums=('b7d9414c36432be27a26ba8bb793157625f69dd05530d6245d12c14d8245e657a5b7b96e08c90e9fa5a5d6e4f8fb03efce79a5f1a99a7cb102e516d63305308e')
+sha512sums=('a23937ec191ef14829530ac6bf31b882bc250f312e2ba6e3b8cc1187c888511e4b67ffaf5bce176556a621fbf80239b30c43c635898d458bb8d819e92a9f8142')
 
 build() {
   cd pytest-pylint-$pkgver
