@@ -3,10 +3,10 @@
 _rockname=cldr
 _project=cldr-lua
 pkgname=("lua-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
-pkgver=0.0.0.r3.gd6e38e1
+pkgver=0.0.0.r6.g090ce28
 _branch='master'
 _rockrel=0
-pkgrel=4
+pkgrel=1
 pkgdesc='Unicode CLDR data and Lua interface'
 arch=('any')
 url="https://github.com/alerque/$_project"
