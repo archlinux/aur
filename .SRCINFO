@@ -1,7 +1,7 @@
 pkgbase = lua-cassowary
 	pkgdesc = The cassowary constraint solver
 	pkgver = 2.2
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/sile-typesetter/cassowary.lua
 	arch = i686
 	arch = x86_64
