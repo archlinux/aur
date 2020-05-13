@@ -6,12 +6,13 @@ pkgname=("lua-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
 pkgver=0.0.0.r3.gd6e38e1
 _branch='master'
 _rockrel=0
-pkgrel=3
-pkgdesc='Unicode CLDR data and Lua interface.'
+pkgrel=4
+pkgdesc='Unicode CLDR data and Lua interface'
 arch=('any')
 url="https://github.com/alerque/$_project"
 license=('MIT')
-makedepends=('luarocks')
+_lua_deps=('penlight')
+makedepends=('git' 'lua' 'lua52' 'lua51' 'luarocks')
 source=("git://github.com/alerque/$_project.git#branch=$_branch")
 sha256sums=('SKIP')
 
@@ -26,19 +27,19 @@ _package_helper() {
 }
 
 package_lua-cldr-git() {
-  depends+=('lua')
-  conflicts+=('lua-cldr')
+  depends=('lua' "${_lua_deps[@]/#/lua-}")
+  conflicts=("${pkgname/-git}")
   _package_helper 5.3
 }
 
 package_lua52-cldr-git() {
-  depends+=('lua52')
-  conflicts+=('lua52-cldr')
+  depends=('lua52' "${_lua_deps[@]/#/lua52-}")
+  conflicts=("${pkgname/-git}")
   _package_helper 5.2
 }
 
 package_lua51-cldr-git() {
-  depends+=('lua51')
-  conflicts+=('lua51-cldr')
+  depends=('lua51' "${_lua_deps[@]/#/lua51-}")
+  conflicts=("${pkgname/-git}")
   _package_helper 5.1
 }
