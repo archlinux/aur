@@ -3,7 +3,7 @@
 pkgname=trojan-qt5-appimage
 provides=('trojan-qt5')
 conflicts=('trojan-qt5')
-pkgver=0.0.8
+pkgver=1.0.4
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A cross-platform Trojan GUI Client"
