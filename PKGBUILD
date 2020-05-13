@@ -7,8 +7,9 @@ pkgdesc="Powerful and versatile MIME sniffing package using pre-compiled glob pa
 arch=('x86_64')
 url='https://github.com/zRedShift/mimemagic'
 license=('MIT')
+depends=('glibc')
 makedepends=('dep' 'go-pie')
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('3f20e5a7e28080c3dd23721d40d9d419509f26e38c69f11b2c9838c8b41a1927')
 
 prepare() {
@@ -16,7 +17,9 @@ prepare() {
   ln -rTsf ${pkgname}-${pkgver} gopath/src/github.com/${pkgname}/${pkgname}
   export GOPATH="$srcdir"/gopath
   cd gopath/src/github.com/${pkgname}/${pkgname}
-  dep init -v
+  if [[ ! -f Gopkg.toml ]]; then
+    dep init -v
+  fi
   dep ensure -v
 }
 

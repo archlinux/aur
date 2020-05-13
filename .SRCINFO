@@ -7,7 +7,8 @@ pkgbase = mimemagic
 	license = MIT
 	makedepends = dep
 	makedepends = go-pie
-	source = https://github.com/zRedShift/mimemagic/archive/v1.1.0.tar.gz
+	depends = glibc
+	source = mimemagic-1.1.0.tar.gz::https://github.com/zRedShift/mimemagic/archive/v1.1.0.tar.gz
 	sha256sums = 3f20e5a7e28080c3dd23721d40d9d419509f26e38c69f11b2c9838c8b41a1927
 
 pkgname = mimemagic
