@@ -2,10 +2,10 @@
 
 pkgname=gftools
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Misc tools for working with the Google Fonts library'
 arch=('any')
-url="https://github.com/googlefonts/$_pkgname"
+url="https://github.com/googlefonts/$pkgname"
 license=('Apache')
 _py_deps=('fonttools'
           'fs' # optdepends of fonttols required for [ufo]
