@@ -1,7 +1,7 @@
 # Maintainer: Tobias Frisch <thejackimonster@gmail.com>
 
 pkgname=cadet-gtk-git
-pkgver=0.3.0.r3.gac61777
+pkgver=0.4.0.r1.gc8137b6
 pkgrel=1
 pkgdesc="A GTK based GUI for the CADET subsystem of GNUnet."
 url="https://gitlab.com/TheJackiMonster/cadet-gtk"
