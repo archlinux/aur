@@ -2,23 +2,28 @@
 
 pkgname=jspm-cli
 pkgver=2.0.0.beta.7
+_pkgver=2.0.0-beta.7
 pkgrel=3
 pkgdesc="A JavaScript package manager designed to
 work seamlessly with native modules in universal workflows,
 while providing full compatibility with the npm ecosystem."
 arch=('any')
 url='https://jspm.org'
-license=('Apache-2.0')
+license=('Apache')
 provides=('jspm')
+depends=('nodejs' 'python')
 makedepends=('npm')
-noextract=("2.0.0-beta.7.tar.gz")
-source=("https://github.com/jspm/jspm-cli/archive/2.0.0-beta.7.tar.gz")
-md5sums=('6973ea9fdfed2531cd5686b154fa29ec')
+noextract=("${pkgname}-${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jspm/jspm-cli/archive/${_pkgver}.tar.gz")
+sha256sums=('25ef15b2cf298e65ebdc72ba6fbdbdf575ffcc98cf7e3f0c49cd895710f8a312')
 
 package() {
   cd "${srcdir}"
+  if [[ -d npm-cache ]]; then
+    rm -rf npm-cache
+  fi
   mkdir ${srcdir}/npm-cache
-  npm install --cache "${srcdir}/npm-cache" -g --user root --prefix "${pkgdir}/usr" "${srcdir}/2.0.0-beta.7.tar.gz"
+  npm install --cache "${srcdir}/npm-cache" -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
   find "${pkgdir}/usr" -type d -exec chmod 755 {} +
   find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
   sed -i "s|${pkgdir}||g" "${pkgdir}/usr/lib/node_modules/jspm/node_modules/sshpk/package.json"

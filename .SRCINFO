@@ -4,12 +4,14 @@ pkgbase = jspm-cli
 	pkgrel = 3
 	url = https://jspm.org
 	arch = any
-	license = Apache-2.0
+	license = Apache
 	makedepends = npm
+	depends = nodejs
+	depends = python
 	provides = jspm
-	noextract = 2.0.0-beta.7.tar.gz
-	source = https://github.com/jspm/jspm-cli/archive/2.0.0-beta.7.tar.gz
-	md5sums = 6973ea9fdfed2531cd5686b154fa29ec
+	noextract = jspm-cli-2.0.0.beta.7.tar.gz
+	source = jspm-cli-2.0.0.beta.7.tar.gz::https://github.com/jspm/jspm-cli/archive/2.0.0-beta.7.tar.gz
+	sha256sums = 25ef15b2cf298e65ebdc72ba6fbdbdf575ffcc98cf7e3f0c49cd895710f8a312
 
 pkgname = jspm-cli
 
