@@ -5,7 +5,7 @@ pkgname=$_target-gcc
 pkgver=10.1.0
 _islver=0.22
 _overlay_commit=fe9a594
-pkgrel=2
+pkgrel=3
 #_snapshot=8-20180427
 pkgdesc='The GNU Compiler Collection - cross compiler for xtensa esp32 (bare-metal) target'
 arch=(x86_64)
@@ -35,7 +35,7 @@ prepare() {
 	cd $_basedir
 
 	# link isl for in-tree builds
-	ln -s ../isl-$_islver isl
+	ln -sf ../isl-$_islver isl
 
 	echo $pkgver > gcc/BASE-VER
 
@@ -48,54 +48,55 @@ prepare() {
 
 _build_gcc() {
 	"$srcdir"/$_basedir/configure \
-		--target=$_target \
-		--prefix=/usr \
-		--with-sysroot=/usr/$_target \
-		--with-native-system-header-dir=/include \
 		--libexecdir=/usr/lib \
-		--enable-languages=c,c++ \
-		--enable-plugins \
+		--prefix=/usr \
+		--target=$_target \
+		--with-gmp \
+		--with-gnu-as \
+		--with-gnu-ld \
+		--with-headers=/usr/$_target/include \
+		--with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' \
+		--with-isl \
+		--with-libelf \
+		--with-mpc \
+		--with-mpfr \
+		--with-native-system-header-dir=/include \
+		--with-newlib \
+		--with-python-dir=share/gcc-$_target \
+		--with-sysroot=/usr/$_target \
+		--with-system-zlib \
+		--without-libffi \
+		--disable-__cxa_atexit \
 		--disable-decimal-float \
-		--disable-libffi \
 		--disable-libgomp \
+		--disable-libmpx \
 		--disable-libmudflap \
 		--disable-libquadmath \
+		--disable-libquadmath-support \
 		--disable-libssp \
 		--disable-libstdcxx-pch \
+		--disable-libstdcxx-verbose \
 		--disable-nls \
 		--disable-shared \
 		--disable-threads \
 		--disable-tls \
-		--with-gnu-as \
-		--with-gnu-ld \
-		--with-system-zlib \
-		--with-newlib \
-		--with-headers=/usr/$_target/include \
-		--with-python-dir=share/gcc-$_target \
-		--with-gmp \
-		--with-mpfr \
-		--with-mpc \
-		--with-isl \
-		--with-libelf \
 		--enable-gnu-indirect-function \
-		--with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' \
-		--with-pkgversion='Arch Repository' \
-		--with-bugurl='https://bugs.archlinux.org/' \
-		--with-multilib-list=rmprofile
-
+		--enable-languages=c,c++ \
+		--enable-lto \
+		--enable-target-optspace
 	make INHIBIT_LIBC_CFLAGS='-DUSE_TM_CLONE_REGISTRY=0'
 }
 
 build() {
 	cd "$srcdir"/build-gcc
-	export CFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections'
-	export CXXFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections'
+	export CFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections -mlongcalls'
+	export CXXFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections -mlongcalls'
 	_build_gcc
 
 	# Build libstdc++ without exceptions support (the 'nano' variant)
 	cd "$srcdir"/build-gcc-nano
-	export CFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections -fno-exceptions'
-	export CXXFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections -fno-exceptions'  
+	export CFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections -fno-exceptions -mlongcalls'
+	export CXXFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections -fno-exceptions -mlongcalls'  
 	_build_gcc
 }
 
