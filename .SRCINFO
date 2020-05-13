@@ -1,0 +1,17 @@
+pkgbase = bitfetch-git
+	pkgdesc = Simple fetch written in C.
+	pkgver = 2.2.r0.gbeb9f98
+	pkgrel = 1
+	url = https://gitlab.com/bit9tream/bitfetch
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = pkgconf
+	depends = libx11
+	depends = libxinerama
+	provides = bitfetch
+	source = bitfetch-git::git+https://gitlab.com/bit9tream/bitfetch.git
+	md5sums = SKIP
+
+pkgname = bitfetch-git
+
