@@ -4,10 +4,10 @@ pkgbase = lstags-bin
 	pkgrel = 2
 	url = https://github.com/ivanilves/lstags
 	arch = x86_64
-	license = Apache-2.0
+	license = Apache
 	provides = lstags
-	source = https://github.com/ivanilves/lstags/releases/download/v1.2.14/lstags-linux-v1.2.14.tar.gz
-	md5sums = 9964e682dfd1420969666159f6bd6930
+	source = lstags-bin-1.2.14.tar.gz::https://github.com/ivanilves/lstags/releases/download/v1.2.14/lstags-linux-v1.2.14.tar.gz
+	sha256sums = cdd5d2ce578c4d1999a722df02ca231e1d3d398ddec2fa4725218a656f8d7403
 
 pkgname = lstags-bin
 

@@ -6,10 +6,10 @@ pkgrel=2
 pkgdesc='Manipulate Docker images across different registries'
 arch=('x86_64')
 url="https://github.com/ivanilves/lstags"
-license=('Apache-2.0')
+license=('Apache')
 provides=('lstags')
-source=("${url}/releases/download/v${pkgver}/lstags-linux-v${pkgver}.tar.gz")
-md5sums=('9964e682dfd1420969666159f6bd6930')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/lstags-linux-v${pkgver}.tar.gz")
+sha256sums=('cdd5d2ce578c4d1999a722df02ca231e1d3d398ddec2fa4725218a656f8d7403')
 
 package() {
   install -Dm755 "${srcdir}"/lstags "${pkgdir}/usr/bin/lstags"
