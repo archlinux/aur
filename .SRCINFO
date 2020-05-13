@@ -15,7 +15,7 @@ pkgbase = nomachine-enterprise-client
 	conflicts = nxclient
 	options = !strip
 	source = http://download.nomachine.com/download/6.10/Linux/nomachine-enterprise-client_6.10.12_1_x86_64.tar.gz
-	sha256sums = 5d025edecfd6be582f4149adcd9a7a3d5964b87ccd3f5bace25145808e24ac03
+	sha256sums = d3666a516a6bdd01f441b3faa7e8d3ab422f73cae4f307d96d141431c96a8347
 
 pkgname = nomachine-enterprise-client
 
