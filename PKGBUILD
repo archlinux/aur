@@ -1,7 +1,7 @@
 # Maintainer: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
 
 pkgname='contrast'
-pkgver='0.0.2'
+pkgver='0.0.3'
 pkgrel='1'
 pkgdesc='Checks whether the contrast between two colors meet the WCAG requirements.'
 changelog='CHANGELOG'
