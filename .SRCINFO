@@ -1,0 +1,31 @@
+pkgbase = clang-format-static-bin
+	pkgdesc = clang-format x86_64 static binaries (3.9, 4, 5, 6, 7, 8, 9, 10)
+	pkgver = 3.5b56bb49
+	pkgrel = 1
+	url = https://github.com/muttleyxd/arma3-unix-launcher
+	install = clang-format-static-bin.install
+	arch = x86_64
+	license = Unlicense
+	provides = clang-format-static
+	conflicts = clang-format-static
+	source = archlinux-clang-format
+	source = https://github.com/muttleyxd/clang-format-static-binaries/releases/download/master-5b56bb49/clang-format-3.9_linux-amd64
+	source = https://github.com/muttleyxd/clang-format-static-binaries/releases/download/master-5b56bb49/clang-format-4_linux-amd64
+	source = https://github.com/muttleyxd/clang-format-static-binaries/releases/download/master-5b56bb49/clang-format-5_linux-amd64
+	source = https://github.com/muttleyxd/clang-format-static-binaries/releases/download/master-5b56bb49/clang-format-6_linux-amd64
+	source = https://github.com/muttleyxd/clang-format-static-binaries/releases/download/master-5b56bb49/clang-format-7_linux-amd64
+	source = https://github.com/muttleyxd/clang-format-static-binaries/releases/download/master-5b56bb49/clang-format-8_linux-amd64
+	source = https://github.com/muttleyxd/clang-format-static-binaries/releases/download/master-5b56bb49/clang-format-9_linux-amd64
+	source = https://github.com/muttleyxd/clang-format-static-binaries/releases/download/master-5b56bb49/clang-format-10_linux-amd64
+	sha256sums = 2f34b784dc99e6ebc9e9af6e6eb0bef9a035b98dc67d56adc79307cca467df43
+	sha256sums = 0127f653a16191aa1cc41f4ea79d7014141ecfcda1c85091bdccb750703d5dda
+	sha256sums = 86a0582ff8ea3b1f471df98d93093fd4b5e717f9188d67bd09c4cee3a4412a53
+	sha256sums = da2c9fa70fb1e9a4fafa74b20291f0772578378e8d2a4ca6fbf5e88c63ebde2a
+	sha256sums = b5a00c0d16d49955e223240df0215474aeeef7ce15f4e2c1cab77f34fa71821e
+	sha256sums = 3c9dadba9929af5bdd21c0db743ea0a600cd59ab089b48aab4a435ff601e05dc
+	sha256sums = f0ed013b4a5b404c45ab89c0c434e84a824b8ba0880c28cce11ebc79cd974cfb
+	sha256sums = bcea4e9aa5088db7778e1d5ece6fd14c75648dfbd725568524942d46ed18da54
+	sha256sums = e4268dfe6aae8c160791af86eed0cd04e737b5dc0a47c71291f3a9a28e4fd574
+
+pkgname = clang-format-static-bin
+

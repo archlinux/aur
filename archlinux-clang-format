@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+
+SELF_PATH=`dirname "$(readlink -f $0)"`
+pushd $SELF_PATH >/dev/null
+
+set -euo pipefail
+
+print_help()
+{
+printf "Usage: $@ [OPTION]...
+Configure clang-format static binaries
+
+Available options
+  status                    List available clang-format binaries
+  get                       Display path of current default clang-format
+  set <BINARY_NAME>         Create /opt/clang-format-static/clang-format symlink to one of available binaries
+"
+  exit 0
+}
+
+get_available_binaries()
+{
+    ls -1 clang-format-*
+    exit 0
+}
+
+get_current_binary()
+{
+    if ! [[ -f clang-format && -L clang-format ]]; then
+        echo "$PWD/clang-format does not exist or is not a symlink, clang-format is unset"
+        exit 1
+    fi
+    WHICH_PATH=$(which clang-format 2>/dev/null)
+    if [ $? -eq 1 ]; then
+        echo "which clang-format failed, is \"$SELF_PATH\" in path?"
+        exit 1
+    fi
+
+    CLANG_FORMAT_FULL_PATH="$PWD/clang-format"
+    if [ "$WHICH_PATH" != "$CLANG_FORMAT_FULL_PATH" ]; then
+        echo "PATH variable points to \"$WHICH_PATH\" instead of \"$CLANG_FORMAT_FULL_PATH\""
+        echo "Is PATH set correctly?"
+        echo "Try:"
+        echo "export PATH=\"$PWD:\$PATH\""
+        exit 1
+    fi
+    readlink clang-format
+    exit 0
+}
+
+set_current_binary()
+{
+    if [[ -f clang-format && ! -L clang-format ]]; then
+        echo "$PWD/clang-format is a file, but not a symlink. Please remove this file manually and retry."
+        exit 1
+    fi
+
+
+    FILE_NAME="$1"
+    if [ ! -f "$FILE_NAME" ]; then
+        echo "Target $FILE_NAME does not exist, run \"archlinux-clang-format status\" to see available options."
+        exit 1
+    fi
+
+    rm -f clang-format
+    ln -s "$FILE_NAME" clang-format
+    exit 0
+}
+
+log_and_exit()
+{
+    echo "Error: $*"
+    exit 1
+}
+
+while [[ $# -gt 0 ]] ; do
+    case "$1" in
+        get) get_current_binary ; shift ;;
+        -h|--help|help) print_help "$0" ; shift ;;
+        set)
+            case "$2" in
+                "") print_help "$0";;
+                *) set_current_binary "$2" ; shift 2 ;;
+            esac ;;
+       status) get_available_binaries ; shift ;;
+       --) shift ; break ;;
+       *) log_and_exit "Invalid argument $1" ;;
+    esac
+done
+
+print_help "$0"

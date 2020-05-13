@@ -1,0 +1,15 @@
+post_install()
+{
+    echo "remember to add /opt/clang-format-static to PATH
+    export PATH=\"/opt/clang-format-static:\$PATH\"
+
+    You can use archlinux-clang-format script to set default version of clang-format"
+}
+
+post_upgrade()
+{
+    echo "remember to add /opt/clang-format-static to PATH
+    export PATH=\"/opt/clang-format-static:\$PATH\"
+
+    You can use archlinux-clang-format script to set default version of clang-format"
+}
