@@ -17,7 +17,7 @@ pkgbase = i3lock-color-git
 	provides = i3lock
 	provides = i3lock-color
 	conflicts = i3lock
-	source = git+https://github.com/raymo111/i3lock-color.git
+	source = git+https://github.com/Raymo111/i3lock-color.git
 	md5sums = SKIP
 
 pkgname = i3lock-color-git

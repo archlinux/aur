@@ -1,4 +1,5 @@
 # Maintainer: Brandon Clifford <brandon099 at gmail dot com>
+# Co-Maintainer: Raymo111 <aur@raymond.li>
 
 _gitname=i3lock-color
 pkgname="$_gitname-git"
@@ -12,7 +13,7 @@ depends=('xcb-util-image' 'xcb-util-xrm' 'pam' 'libev' 'cairo' 'libxkbcommon-x11
 provides=('i3lock' 'i3lock-color')
 conflicts=('i3lock')
 makedepends=('git')
-source=("git+https://github.com/raymo111/$_gitname.git")
+source=("git+https://github.com/Raymo111/$_gitname.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -28,7 +29,6 @@ build() {
     cd "${srcdir}/${_gitname}"
     # https://bugs.archlinux.org/task/31544
     sed -i -e 's:login:system-auth:' pam/i3lock
-
     git tag -f "aur-$(git rev-parse --short HEAD)"
     autoreconf -fi
     ./configure --prefix="/usr" --sysconfdir="/etc"
