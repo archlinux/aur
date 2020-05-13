@@ -1,7 +1,7 @@
 # Maintainer: Albin Kauffmann <albinou@kauff.org>
 
 pkgname=blacknut-appimage
-pkgver=2.7.8
+pkgver=2.7.9
 pkgrel=1
 pkgdesc="Cloud gaming client (binary AppImage)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ _appimage="Blacknut-${pkgver}.AppImage"
 source=("https://releases.blacknut.com/player/${_appimage}"
         "blacknut"
         "blacknut-firejail.profile")
-sha256sums=('4a200463b6d48cf665a2b236d0f504b08ce4ebf5e303dc251f90158b673126cf'
+sha256sums=('f8e0db029a0f5029935b3b1da632d8ba7ac4b81636c6ffcb65849622c2f464b8'
             '5375ab65818f53ee6893f78a323a1732199b7f252d87a1fc3a81e3f495aae77c'
             '0ee0415a3aa51916286ae22a319cac74569d5a63011f2f110e63937fe6e0260d')
 
