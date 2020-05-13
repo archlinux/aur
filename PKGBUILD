@@ -30,7 +30,6 @@ prepare() {
 
 build() {
   arch-meson gdk-pixbuf build \
-    -D jasper=true \
     -D docs=false \
     -D man=false \
     -D installed_tests=false
