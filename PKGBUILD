@@ -6,8 +6,8 @@
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.5.1.r89.gfa8c88b12
-pkgrel=3
+pkgver=0.5.1.r97.gfa8c88b12
+pkgrel=2
 pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
 arch=('i686' 'x86_64' 'armv7h')
@@ -56,7 +56,7 @@ build() {
 package() {
 	cd "$srcdir/$_pkgname"
 	#avoid migrations on bootup (see #7269)
-	sed -i 's/--migrate//g' misc/systemd/ipfs.service
+	sed -i 's/--migrate/--enable-gc --enable-pubsub-experiment --enable-namesys-pubsub/g' misc/systemd/ipfs.service
 	#increase timeouts (see #7283)
 	sed -i 's/MemorySwapMax=0/MemorySwapMax=0\n\nTimeoutStartSec=15min\nTimeoutStopSec=15min\nTimeoutAbortSec=15min/' misc/systemd/ipfs.service
 	install -Dm 755 cmd/ipfs/ipfs "$pkgdir/usr/bin/ipfs"
