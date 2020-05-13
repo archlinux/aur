@@ -1,5 +1,5 @@
 # Maintainer:  John Schoenick <johns@valvesoftware.com>
-# Contributor: Lone_Wolf <lonewolf at xs4all dot nl>
+# Contributor: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor: Armin K. <krejzi at email dot com>
 # Contributor: Kristian Klausen <klausenbusk@hotmail.com>
 # Contributor: Egon Ashrafinia <e.ashrafinia@gmail.com>
@@ -12,14 +12,14 @@
 
 pkgname=lib32-mesa-aco-git
 pkgdesc="Mesa with the ACO compiler patchset, git version"
-pkgver=20.1.0_devel.20200417.4b94b901337
-pkgrel=10
+pkgver=20.1.0_rc1.20200502.3968b9381f8
+pkgrel=11
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'git' 'lib32-libgcrypt' 'lib32-systemd'
              'mesa' 'lib32-libglvnd>=1.2' 'wayland-protocols' 'lib32-wayland' 'meson' 'lib32-libva' 'lib32-libxrandr')
 depends=('mesa' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-elfutils'
-         'lib32-libunwind' 'lib32-lm_sensors' 'glslang')
+         'lib32-libunwind' 'lib32-lm_sensors' 'glslang' 'lib32-vulkan-icd-loader' 'lib32-zstd')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=("lib32-mesa=$pkgver-$pkgrel"
           "lib32-mesa-git=$pkgver-$pkgrel"
@@ -29,7 +29,8 @@ provides=("lib32-mesa=$pkgver-$pkgrel"
           "lib32-vulkan-mesa-layer=$pkgver-$pkgrel"
           "lib32-mesa-vdpau=$pkgver-$pkgrel"
           'lib32-opengl-driver'
-          "lib32-mesa-libgl=$pkgver-$pkgrel")
+          "lib32-mesa-libgl=$pkgver-$pkgrel"
+          'lib32-vulkan-driver')
 conflicts=('lib32-mesa' 'lib32-mesa-git' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-vulkan-mesa-layer')
 url="https://www.mesa3d.org"
 license=('custom')
@@ -123,6 +124,7 @@ build () {
     meson setup mesa-aco _build \
         --native-file llvm32.native \
         -D b_ndebug=true \
+        -D b_lto=true \
         -D buildtype=plain \
         --wrap-mode=nofallback \
         -D prefix=/usr \
@@ -130,12 +132,13 @@ build () {
         --libdir=/usr/lib32 \
         -D platforms=x11,wayland,drm,surfaceless \
         -D dri-drivers=i915,i965,r200,r100,nouveau \
-        -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris \
+        -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris,zink \
         -D vulkan-drivers=amd,intel \
         -D dri3=true \
         -D egl=true \
         -D gallium-extra-hud=true \
         -D vulkan-overlay-layer=true \
+        -D vulkan-device-select-layer=true \
         -D gallium-nine=true \
         -D gallium-omx=disabled \
         -D gallium-opencl=disabled \
@@ -144,7 +147,7 @@ build () {
         -D gallium-xa=true \
         -D gallium-xvmc=false \
         -D gbm=true \
-        -D gles1=true \
+        -D gles1=false \
         -D gles2=true \
         -D glvnd=true \
         -D glx=dri \
@@ -155,23 +158,36 @@ build () {
         -D shared-glapi=true \
         -D valgrind=false \
         -D tools=[] \
+        -D zstd=true
 
     meson configure _build
+    
+    # quoted from https://www.mesa3d.org/meson.html
+    # Note: autotools automatically updated translation files (used by the DRI configuration tool) as part of the build process, Meson does not do this. 
+    # Instead, you will need do this: 
+    ninja $NINJAFLAGS -C _build xmlpool-pot xmlpool-update-po xmlpool-gmo
+    #
     ninja  $NINJAFLAGS -C _build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja $NINJAFLAGS -C _build install
+    DESTDIR="$pkgdir" ninja $NINJAFLAGS -C _build install
 
-  # remove files provided by mesa-git
-  rm -rf "$pkgdir"/usr/bin
-  rm -rf "$pkgdir"/etc
-  rm -rf "$pkgdir"/usr/include
-  rm -rf "$pkgdir"/usr/share/glvnd/
-  rm -rf "$pkgdir"/usr/share/drirc.d/
-  rm -rf "$pkgdir"/usr/share/vulkan/explicit_layer.d/
+    # remove files provided by mesa-git
+    rm -rf "$pkgdir"/etc
+    rm -rf "$pkgdir"/usr/include
+    rm -rf "$pkgdir"/usr/share/glvnd/
+    rm -rf "$pkgdir"/usr/share/drirc.d/
+    rm -rf "$pkgdir"/usr/share/vulkan/explicit_layer.d/
+    rm -rf "$pkgdir"/usr/share/vulkan/implicit_layer.d/VkLayer_MESA_device_select.json
 
-  # indirect rendering
-  ln -s /usr/lib32/libGLX_mesa.so.0 "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
-  install -Dt  "$pkgdir"/usr/share/licenses/$pkgbase/ -m644 "$srcdir"/LICENSE
+    # remove script file from /usr/bin
+    # https://gitlab.freedesktop.org/mesa/mesa/issues/2230
+    rm "${pkgdir}/usr/bin/mesa-overlay-control.py"
+    rmdir "${pkgdir}/usr/bin"
+
+
+    # indirect rendering
+    ln -s /usr/lib32/libGLX_mesa.so.0 "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
+    install -Dt  "$pkgdir"/usr/share/licenses/$pkgbase/ -m644 "$srcdir"/LICENSE
 }
