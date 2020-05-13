@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Gauvrit <guillaume@gauvr.it>
 pkgname=rustaman-git
-pkgver=0.1.9b1c173
+pkgver=0.1.0.r0.9b1c173
 pkgrel=1
 pkgdesc="Template based HTTP client"
 arch=('i686' 'x86_64')
