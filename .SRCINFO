@@ -1,6 +1,6 @@
 pkgbase = nodejs-haraka
 	pkgdesc = A fast, highly extensible, and event driven SMTP server
-	pkgver = 2.8.21
+	pkgver = 2.8.25
 	pkgrel = 2
 	url = http://haraka.github.io/
 	arch = i686

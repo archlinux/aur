@@ -1,7 +1,9 @@
-# Maintainer: Emilien Devos (unixfox) <contact@emiliendevos.be>
+# Maintainer: 
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Emilien Devos (unixfox) <contact@emiliendevos.be>
 
 pkgname=nodejs-haraka
-pkgver=2.8.21
+pkgver=2.8.25
 pkgrel=2
 pkgdesc='A fast, highly extensible, and event driven SMTP server'
 arch=(i686 x86_64)
@@ -16,3 +18,4 @@ package() {
   npm install -g --prefix="$pkgdir"/usr Haraka@$pkgver
   find "$pkgdir"/usr -type d -exec chmod 755 {} +
 }
+
