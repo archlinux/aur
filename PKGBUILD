@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="odio-sacd"
-pkgver="20.5.11.4"
+pkgver="20.5.11.5"
 pkgrel="1"
 pkgdesc="SACD decoder"
 arch=("i686" "x86_64")
