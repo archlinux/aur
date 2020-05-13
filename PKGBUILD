@@ -5,11 +5,12 @@ _rockname=love-release
 pkgver=2.0.14
 pkgrel=1
 pkgdesc="Lua script that makes LÖVE game release easier"
-arch=('x86_64')
+arch=('any')
 url='https://github.com/MisterDA/love-release'
 license=('MIT')
 provides=('love-release')
 depends=('lua'
+         'bash'
          'lua-zip'
          'lua-argparse'
          'lua-loadconf'
