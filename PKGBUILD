@@ -1,11 +1,12 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot-git' 'foot-terminfo-git')
-pkgver=1.2.3
-pkgrel=4
+pkgver=1.3.0
+pkgrel=1
 arch=('x86_64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
 makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols')
+checkdepends=('check')
 depends=('libxkbcommon' 'wayland' 'pixman')
 source=(git+https://codeberg.org/dnkl/foot.git
         git+https://codeberg.org/dnkl/tllist.git
