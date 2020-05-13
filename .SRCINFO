@@ -1,7 +1,7 @@
 pkgbase = lua-commonmark
 	pkgdesc = Lua parser for CommonMark using LPEG grammar
 	pkgver = 0.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alerque/commonmark-lua
 	arch = any
 	license = MIT
@@ -14,16 +14,16 @@ pkgbase = lua-commonmark
 
 pkgname = lua-commonmark
 	depends = lua
-	depends = lua-epnf
+	depends = lua-luaepnf
 	depends = lua-penlight
 
 pkgname = lua52-commonmark
 	depends = lua52
-	depends = lua52-epnf
+	depends = lua52-luaepnf
 	depends = lua52-penlight
 
 pkgname = lua51-commonmark
 	depends = lua51
-	depends = lua51-epnf
+	depends = lua51-luaepnf
 	depends = lua51-penlight
 
