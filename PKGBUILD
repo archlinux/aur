@@ -1,4 +1,5 @@
-# Maintainer: Benoît Giraudou <bgiraudou@gmail.com>
+# Maintainer: tinywrkb <tinywrkb@gmail.com>
+# Contributor: Benoît Giraudou <bgiraudou@gmail.com>
 pkgname=epub-thumbnailer-git
 _gitname=epub-thumbnailer
 pkgver=1.0r67.c82fe3f
