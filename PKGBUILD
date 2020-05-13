@@ -2,8 +2,8 @@
 # Maintainer: Corey Richardson <corey at octayn dot net>
 
 pkgname=asciidocfx
-pkgver=1.7.1
-pkgrel=2
+pkgver=1.7.2
+pkgrel=1
 pkgdesc="Asciidoc Editor and Toolchain written with JavaFX"
 arch=('any')
 
@@ -16,19 +16,16 @@ depends=('java-environment=13' 'java-openjfx')
 source=(
     "https://github.com/asciidocfx/AsciidocFX/archive/v${pkgver}.tar.gz"
     'asciidocfx'
-    'repo-https.patch'
     'versions.patch'
 )
 sha512sums=(
-    '0bb8d8fb2cc486fab2578bd08ceaf20cd5db3df371f4065cd5e9fc431afb65056113ecb364324876ecd3fe8030646cdd6ea6be5532e8a8f7bdc169709a060d3e'
+    '13e11110b81ff5dea8afab24616e9f2a1994a065408d0b8642af78566f1e39570bba4871a2b437675b0cca4adc7951221cdc13eb04896d44fef961d92f0e780f'
     '6482d9a0c6133a5d19efeabe9ba581e43858a162777d30afab3bd2575c6c9bcc336c9b7edb7c14a4434f42e64765f735f721fed1db16e2eb298c4889a09f136a'
-    'f936480034d81c173c1af74ad30590f5915ff2c3d3bcb82e8b7b492b9d5af28b3f98d764a522aaf9b2cfb39a1343d63e7a6a2d2a71f53aea232c1f8bc96042e3'
-    '3aa8793fab11538b9adc91a862a0607d53f2f7f0093fcc9119e0e3f741e687b1e5f858093333cd27faff9f950941e2ed6b0a9b47cdbb027fd5ff8c18f5d2f296'
+    '750c1a89b5375eaf2710b1d56a78773f2c673a1b428c6ecb7221088849632d02a2f0429b82d2482fc3cf2bb4cb69ab1b7adc8170ba413a2de2fd23e66070b9f4'
 )
 
 prepare() {
     cd "AsciidocFX-${pkgver}"
-    patch --forward --strip=1 --input="${srcdir}/repo-https.patch"
     patch --forward --strip=1 --input="${srcdir}/versions.patch"
     cd ..
 
