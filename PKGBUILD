@@ -4,7 +4,7 @@ _project=otf-python
 _pyname=opentype-sanitizer
 pkgname=python-$_pyname
 pkgver=8.0.0.post2
-pkgrel=1
+pkgrel=2
 pkgdesc='Python wheels for the OpenType Sanitizer'
 arch=('any')
 url="https://github.com/googlefonts/$_project"
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('freetype2'
          'python'
          'zlib')
-makedepends=('python-setuptools')
+makedepends=('meson' 'ninja' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz")
 sha256sums=('95bbd6ce193841654aef95237e95197addbc0495daa9da2947f64f5ccd86ef38')
 
