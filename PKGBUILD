@@ -4,7 +4,7 @@ pkgname=('lua-date' 'lua51-date' 'lua52-date')
 pkgver=2.1.2
 pkgrel=1
 pkgdesc="Date & Time module for Lua 5.x"
-arch=('x86_64')
+arch=('any')
 url='http://tieske.github.io/date'
 license=('MIT')
 makedepends=('luarocks')
@@ -26,7 +26,7 @@ package_lua-date() {
   pkgdesc='Date and Time module for Lua 5.3'
 
   luarocks install --lua-version=5.3 --tree="$pkgdir/usr/" --deps-mode=none 5.3/*.rock
-
+  install -Dm644 "${srcdir}/date-version_${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   # remove luarocks-created root manifest
   rm "$pkgdir/usr/lib/luarocks/rocks-5.3/manifest"
 }
@@ -35,7 +35,7 @@ package_lua51-date() {
   pkgdesc='Date and Time module for Lua 5.1'
 
   luarocks install --lua-version=5.1 --tree="$pkgdir/usr/" --deps-mode=none 5.1/*.rock
-
+  install -Dm644 "${srcdir}/date-version_${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   # remove luarocks-created root manifest
   rm "$pkgdir/usr/lib/luarocks/rocks-5.1/manifest"
 }
@@ -44,7 +44,7 @@ package_lua52-date() {
   pkgdesc='Date and Time module for Lua 5.2'
 
   luarocks install --lua-version=5.2 --tree="$pkgdir/usr/" --deps-mode=none 5.2/*.rock
-
+  install -Dm644 "${srcdir}/date-version_${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   # remove luarocks-created root manifest
   rm "$pkgdir/usr/lib/luarocks/rocks-5.2/manifest"
 }
