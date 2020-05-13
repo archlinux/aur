@@ -5,14 +5,13 @@
 pkgname=linuxcnc
 pkgver=2.7.15
 pkgrel=1
-pkgdesc="LinuxCNC controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
+pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=('i686' 'x86_64')
-license=('GPL-2.0')
+license=('GPL2')
 url="http://linuxcnc.org"
 depends=('bc'
          'bwidget'
-         'tcl'
-         'tk'
+         'libxaw'
          'python2-imaging'
          'python2-yapps2'
          'tkimg'
@@ -20,8 +19,6 @@ depends=('bc'
          'tclx'
          'xorg-server'
          'boost'
-         'boost-libs'
-         'libtirpc'
          'procps-ng'
          'psmisc')
 makedepends=('intltool')
@@ -58,6 +55,4 @@ package() {
    "${pkgdir}/etc/profile.d/${pkgname}.sh"
   sed -i "s|${srcdir}||" "${pkgdir}/usr/include/linuxcnc/config.h"
   sed -i "s|${srcdir}||" "${pkgdir}/usr/share/linuxcnc/Makefile.modinc"
-  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s /usr/share/licenses/common/GPL2/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
