@@ -1,6 +1,6 @@
 pkgbase = mcstatus
 	pkgdesc = Provides an easy way to query Minecraft servers for any information they can expose.
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/Dinnerbone/mcstatus
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = mcstatus
 	depends = python-six
 	depends = python-click
 	depends = python-dnspython
-	source = https://github.com/Dinnerbone/mcstatus/archive/release-3.1.0.tar.gz
-	sha256sums = 13610efc5d2104dbebedacb9449a7795043d671866d578747c1e927f0f4ff979
+	source = https://github.com/Dinnerbone/mcstatus/archive/release-3.1.1.tar.gz
+	sha256sums = 8210b2012ad6a0ce3fdf857b0ba59796dfb0555fd45218560cde6c9b2036e054
 
 pkgname = mcstatus
 
