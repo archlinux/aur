@@ -1,5 +1,8 @@
+# Maintainer: 
+# Contributor: Felix Golatofski <contact@xdfr.de>
+
 _npmname=gitbook-cli
-_npmver=2.2.0
+_npmver=2.3.2
 pkgname=nodejs-gitbook-cli # All lowercase
 pkgver="$_npmver"
 pkgrel=3
@@ -12,7 +15,7 @@ optdepends=('nodejs-svgexport')
 conflicts=('nodejs-gitbook')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('c02697d85179df90d259050d949b57f03b631fbf')
+sha256sums=('e11af44f5d5b4491b242e81b1b3bffd356164ae7b46f4dbc21746cf8e07bac90')
 
 package() {
   cd $srcdir
