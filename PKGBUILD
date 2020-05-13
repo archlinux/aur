@@ -3,7 +3,7 @@
 
 pkgname=ib-tws
 pkgver=978.1r
-pkgrel=1
+pkgrel=2
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
 url="http://interactivebrokers.com/"
@@ -42,7 +42,7 @@ build() {
   mv ${HOME}/.i4j_jres/${BUNDLED_JRE_VER} ${HOME}/.i4j_jres/jre
   mv ${HOME}/.i4j_jres/jre ${srcdir}/jre
   mv ${HOME}/Jts/${majorVer}/jars/*.jar ${srcdir}
-  rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts/${majorVer} $HOME/Desktop/Trader\ Workstation*.desktop $HOME/.local/share/applications/Trader\ Workstation*.desktop
+  rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts/${majorVer} $HOME/Desktop/Trader\ Workstation*.desktop $HOME/.local/share/applications/Trader\ Workstation*.desktop $HOME/.local/share/applications/install4j_*.desktop
   cd ${srcdir}
 
   # Thanks to http://finance.groups.yahoo.com/group/TWSAPI/files/RPM%20spec%20file/
