@@ -1,7 +1,7 @@
 # Maintainer: Enzzo Cavallo <souenzzo at gmail dot com>
 pkgname=datomic-cli
-pkgver=0.10.81
-pkgrel=1
+pkgver=0.10.82
+pkgrel=0
 pkgdesc="Command line tools for datomic cloud"
 arch=('any')
 url="https://docs.datomic.com/cloud/releases.html"
