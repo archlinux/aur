@@ -2,14 +2,14 @@
 
 pkgname=minitimer
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Mini Timer - A timer in your terminal'
 arch=('x86_64')
-url='https://github.com/emvigo/minitimer'
+url='https://git.sr.ht/~emvigo/minitimer'
 license=('APACHE')
 depends=('glibc')
-source=("https://github.com/emvigo/minitimer/archive/$pkgver.tar.gz")
-sha256sums=('79a33626979d54c23981b6963db71df29399c47261cecd651b97126984227a99')
+source=("https://git.sr.ht/~emvigo/minitimer/archive/$pkgver.tar.gz")
+sha256sums=('8f70e1ceefb85ca79aa4e85ec647c605828596081be8d597854718a4dd740797')
 
 build() {
 	cd "$pkgname-$pkgver"
