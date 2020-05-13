@@ -17,7 +17,8 @@ optdepends=('alsa-lib: ALSA audio driver'
             'jack: JACK audio driver'
             'fcitx: Asian language support'
             'ibus: Asian language support'
-            'libibus: Asian language support')
+            'libibus: Asian language support'
+            'tslib: Touchscreen support')
 source=("hg+http://hg.libsdl.org/SDL#branch=default")
 provides=(sdl2)
 conflicts=(sdl2)
