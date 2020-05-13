@@ -1,8 +1,9 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jean Lucas <jean@4ray.co>
 # Contributor: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=python-expiringdict
-pkgver=1.1.4
+pkgver=1.2.0
 pkgrel=4
 pkgdesc='Dictionary with auto-expiring values for caching purposes'
 arch=(any)
@@ -12,7 +13,7 @@ depends=(python)
 makedepends=(python-setuptools)
 checkdepends=(python-nose python-mock python-coverage)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha512sums=('7fbd4d002122ff5c83dd0845a52febeddddaaf9f51c6ccdcfa208e2c40e3595e3ca352ee50a3b7ef617be14f2d7909d83e728ba728d423c1b31fa1d45465a117')
+sha512sums=('44f7c2d8cd8a60a31c27b8369627cf31d4da721116f7edb5648428331a1d3c4b9a7df8ba21c16f9a61c8806bd4b675dda43a5059bf5e2a8867018f1545be7c20')
 
 build() {
   cd expiringdict-$pkgver
