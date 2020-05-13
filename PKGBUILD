@@ -1,6 +1,6 @@
 # Maintainer: Jay Tauron <jytrn@protonmail.com>
 pkgname=oreo-nord-cursors-git
-pkgver=20200512
+pkgver=20200513
 pkgrel=1
 epoch=
 pkgdesc="Fork of oreo-cursors with Nord colors"
