@@ -1,23 +1,27 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
-pkgname=obs-xdg-portal-git
-pkgver=0.1.2
+# Contributor: Davide Depau <davide@depau.eu>
+_pkgname="obs-xdg-portal"
+pkgname="${_pkgname}-git"
+pkgver=0.1.2.r0.gfc5876a
 pkgrel=1
 pkgdesc="OBS Studio plugin using the Desktop portal for Wayland & X11 screencasting"
 arch=(x86_64)
-url="https://gitlab.gnome.org/feaneron/obs-xdg-portal"
+url="https://gitlab.gnome.org/feaneron/$_pkgname"
 license=('GPL')
-depends=('obs-studio' 'gst-plugins-base-libs')
+depends=('obs-studio' 'gst-plugins-base-libs' 'xdg-desktop-portal')
 makedepends=('meson' 'git')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "obs-xdg-portal"
-	git describe --tags | sed 's/-/+/g'
+	cd "$_pkgname"
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  meson --prefix /usr --buildtype=plain "obs-xdg-portal" build
+  arch-meson "${_pkgname}" build
   ninja -C build
 }
 
