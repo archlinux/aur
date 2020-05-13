@@ -1,20 +1,20 @@
-# Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
-# old-Maintainer: OrdinaryMagician <saniukeokusainaya@gmail.com>
+# Maintainer:     Ryan James <Ryan_James@linuxmail.org>	
+# old-Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=qzdl
-pkgver=3.2.2.2
+pkgver=3.3.0.0
 pkgrel=1
 pkgdesc="A ZDoom launcher using Qt"
 arch=('x86_64' 'i686')
 url="http://zdl.vectec.net"
 license=('GPL')
-depends=('qt4')
+depends=('qt5-base')
 conflicts=('qzdl-git')
 makedepends=('git' 'gdb' 'make')
 source=("git://github.com/qbasicer/qzdl.git")
 md5sums=("SKIP")
 _gitname="qzdl"
-_branch=3.2.2.2-stable
+_branch=master
 
 build()
 {
@@ -27,10 +27,8 @@ build()
   # little fixup for the latest qt4 update
   # should be necessary until qbasicer actually updates the project
   # (last commit was around September 2012)
-  sed -si 's/qmake/qmake-qt4/g' configure configure.in
-  ./configure \
-      --prefix=/usr \
-      --disable-updater
+  # sed -si 's/qmake/qmake-qt5/g' configure configure.in
+  cmake ../qzdl-build 
   make
 }
 
