@@ -1,7 +1,7 @@
 pkgbase = ring-kde
 	pkgdesc = The KDE client for the Ring communication framework
-	pkgver = 3.0.0
-	pkgrel = 2
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = http://www.ring.cx/
 	arch = x86_64
 	license = GPL2
@@ -13,8 +13,8 @@ pkgbase = ring-kde
 	depends = knotifyconfig
 	depends = kdeclarative
 	depends = ring-daemon
-	source = https://download.kde.org/stable/ring-kde/3.0.0/ring-kde-3.0.0.tar.xz
-	sha256sums = 79f6ce6b9d6cf5fc2b089d764408455460d673d17ae91033104de3f47e388a9f
+	source = https://github.com/KDE/ring-kde/archive/3.1.0.tar.gz
+	sha256sums = a821beefbd7ee8ffc9cc5ff44fbf0d057442af75deb90d15aa690b95965775e7
 
 pkgname = ring-kde
 
