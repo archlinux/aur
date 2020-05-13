@@ -6,7 +6,6 @@ pkgbase = git-bug
 	arch = x86_64
 	license = GPL3
 	makedepends = go-pie
-	makedepends = git
 	depends = git
 	optdepends = xdg-utils: open bugs in browser
 	source = git+https://github.com/MichaelMure/git-bug.git#commit=71580c41a931a1ad2c04682e0fd701661b716c95

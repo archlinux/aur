@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/MichaelMure/${pkgname%-git}"
 license=('GPL3')
 depends=('git')
-makedepends=('go-pie' 'git')
+makedepends=('go-pie')
 optdepends=('xdg-utils: open bugs in browser')
 source=("git+${url}.git#commit=71580c41a931a1ad2c04682e0fd701661b716c95")
 sha256sums=('SKIP')
