@@ -36,6 +36,9 @@ pkgver() {
 }
 
 prepare() {
+  rm -rf build
+  mkdir build
+
   #fix libdir
   sed -i 's|lib/cmake|lib32/cmake|' SDL/CMakeLists.txt
 
@@ -48,7 +51,7 @@ build() {
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
-  cmake -S SDL \
+  cmake -S SDL -B build \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DLIB_SUFFIX=32 \
       -DSDL_STATIC=OFF \
@@ -62,7 +65,7 @@ build() {
       -DRPATH=OFF \
       -DCLOCK_GETTIME=ON \
       -DJACK_SHARED=ON
-  make
+  make -C build
 }
 
 package() {
