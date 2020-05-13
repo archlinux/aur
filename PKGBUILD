@@ -3,14 +3,14 @@
 
 pkgname=compiledb
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for generating Clang's JSON Compilation Database file for GNU make-based build systems"
 arch=('any')
 url="https://github.com/nickdiego/compiledb-generator"
 license=('GPL3')
-depends=('python' 'python-click' 'python-bashlex' 'python-shutilwhich')
+depends=('python' 'python-click' 'python-bashlex' 'python-shutilwhich' 'python-setuptools')
 replaces=(compiledb-generator)
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
