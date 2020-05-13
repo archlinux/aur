@@ -1,0 +1,14 @@
+pkgbase = arm
+	pkgdesc = Armory CLI or better know as arm cli is a tool that let you render dinghyfiles offline.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/armory-io/arm
+	arch = x86_64
+	license = Apache
+	makedepends = go-pie
+	depends = glibc
+	source = https://github.com/armory-io/arm/archive/1.0.0.zip
+	sha512sums = f611dc0561d9eb586843e791d219f25ec8c80f5651e14ce1367a1f757d9e46fa0ce31cbf8e0e314e0747ae04e2dfeaaca186f64a5dc23529ba9e0b4124ef4c02
+
+pkgname = arm
+
