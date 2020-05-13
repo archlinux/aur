@@ -1,14 +1,15 @@
 pkgbase = nodejs-hubot
 	pkgdesc = A simple helpful robot for your Company
-	pkgver = 2.16.0
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = https://github.com/github/hubot
 	arch = any
 	license = MIT
 	depends = nodejs
-	noextract = hubot-2.16.0.tgz
-	source = http://registry.npmjs.org/hubot/-/hubot-2.16.0.tgz
-	sha1sums = 256a3d3be58f1c52c1f14f1d16937698d6b5a0c3
+	depends = npm
+	noextract = hubot-3.3.2.tgz
+	source = http://registry.npmjs.org/hubot/-/hubot-3.3.2.tgz
+	sha256sums = eee5781f7f68b29651e94407c81282ea9aa2af4d06919dfd81b9bae301bff918
 
 pkgname = nodejs-hubot
 

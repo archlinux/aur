@@ -1,17 +1,17 @@
 _npmname=hubot
-_npmver=2.16.0
+_npmver=3.3.2
 pkgname=nodejs-hubot # All lowercase
-pkgver=2.16.0
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="A simple helpful robot for your Company"
 arch=(any)
 url="https://github.com/github/hubot"
 license=(MIT)
-depends=('nodejs' )
+depends=('nodejs' 'npm') 
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('256a3d3be58f1c52c1f14f1d16937698d6b5a0c3')
+sha256sums=('eee5781f7f68b29651e94407c81282ea9aa2af4d06919dfd81b9bae301bff918')
 
 package() {
   cd $srcdir
