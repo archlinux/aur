@@ -1,0 +1,20 @@
+pkgbase = st-duncan-git
+	pkgdesc = Simple terminal for X patched with some features
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/duncan-f/st.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = libxext
+	makedepends = ncurses
+	makedepends = git
+	depends = libxft
+	provides = st
+	conflicts = st
+	options = zipman
+	source = st-duncan::git+https://github.com/duncan-f/st.git
+	md5sums = SKIP
+
+pkgname = st-duncan-git
+
