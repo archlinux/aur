@@ -14,11 +14,12 @@ depends=('lib32-glibc' 'lib32-libxext' 'lib32-libxrender' 'lib32-libx11' 'lib32-
          'lib32-libxcursor' 'sdl2')
 makedepends=('lib32-alsa-lib' 'lib32-mesa' 'lib32-libpulse' 'lib32-libxrandr'
              'lib32-libxinerama' 'lib32-wayland' 'lib32-libxkbcommon' 'wayland-protocols'
-             'lib32-libxss' 'cmake' 'lib32-tslib' 'mercurial')
+             'lib32-libxss' 'cmake' 'mercurial')
 optdepends=('lib32-alsa-lib: ALSA audio driver'
             'lib32-libpulse: PulseAudio audio driver'
             'lib32-jack: JACK audio driver'
-            'jack: JACK audio support')
+            'jack: JACK audio support'
+            'lib32-tslib: Touchscreen support')
 provides=(lib32-sdl2)
 conflicts=(lib32-sdl2)
 source=("hg+http://hg.libsdl.org/SDL#branch=default")

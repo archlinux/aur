@@ -15,7 +15,6 @@ pkgbase = lib32-sdl2-hg
 	makedepends = wayland-protocols
 	makedepends = lib32-libxss
 	makedepends = cmake
-	makedepends = lib32-tslib
 	makedepends = mercurial
 	depends = lib32-glibc
 	depends = lib32-libxext
@@ -28,6 +27,7 @@ pkgbase = lib32-sdl2-hg
 	optdepends = lib32-libpulse: PulseAudio audio driver
 	optdepends = lib32-jack: JACK audio driver
 	optdepends = jack: JACK audio support
+	optdepends = lib32-tslib: Touchscreen support
 	provides = lib32-sdl2
 	conflicts = lib32-sdl2
 	source = hg+http://hg.libsdl.org/SDL#branch=default
