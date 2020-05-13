@@ -1,0 +1,19 @@
+pkgbase = sync_gateway-git
+	pkgdesc = Manages access and synchronization between Couchbase Lite and Couchbase Server - Open Source Edition (OSE)
+	pkgver = 2.7.2.r183.82489a31
+	pkgrel = 1
+	url = https://github.com/couchbase/sync_gateway
+	arch = any
+	license = apache
+	makedepends = git
+	makedepends = repo
+	makedepends = go
+	provides = sync_gateway
+	conflicts = sync_gateway
+	source = sync_gateway.service
+	source = git+https://github.com/couchbase/sync_gateway.git
+	sha256sums = 4bc3c5843b2b6e31d954a53d43c9ecdce77faf3942b5da4ffdaba846f02dd381
+	sha256sums = SKIP
+
+pkgname = sync_gateway-git
+

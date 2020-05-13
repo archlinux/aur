@@ -1,0 +1,17 @@
+[Unit]
+Description=Couchbase Sync Gateway server
+After=syslog.target
+After=network.target
+
+[Service]
+LimitNOFILE=65535
+Type=simple
+ExecStartPre=/bin/mkdir -p /var/log/sync_gateway
+ExecStart=/usr/bin/sync_gateway --defaultLogFilePath /var/log/sync_gateway /etc/sync_gateway.json
+Restart=on-failure
+
+# Give a reasonable amount of time for the server to start up/shut down
+TimeoutSec=60
+
+[Install]
+WantedBy=multi-user.target

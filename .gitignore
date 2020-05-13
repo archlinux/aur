@@ -1,0 +1,5 @@
+pkg/
+src/
+sync_gateway/
+*.tar.gz
+*.tar.xz
