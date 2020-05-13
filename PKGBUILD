@@ -6,14 +6,12 @@ pkgrel=3
 pkgdesc='Create virtual wifi hotspot using same wifi card which is connected to an AP + many features (a GUI tool)'
 arch=('x86_64')
 url='https://github.com/lakinduakash/linux-wifi-hotspot'
-license=('BSD-2-Clause')
+license=('BSD')
 depends=('hostapd'
          'iw'
          'gtk3'
-         'libx11'
          'gksu'
          'procps-ng'
-         'bash'
          'util-linux'
          'dnsmasq'
          'iptables')
