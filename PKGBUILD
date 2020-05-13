@@ -3,7 +3,7 @@
 # Special thanks to RyanTheAllmighty for making hyper-appimage
 pkgname="gdlauncher-bin"
 _pkgname="gdlauncher"
-pkgver="0.0.8"
+pkgver="0.0.9"
 pkgrel=1
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience
@@ -14,7 +14,7 @@ makedepends=('gendesk')
 depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3')
 
 source_x86_64=(
-    "gdlauncher-0.0.8-1-x86_64.pkg.tar.xz::https://github.com/gorilla-devs/GDLauncher-Releases/releases/download/v0.0.8/gdlauncher-0.0.8-1-x86_64.pkg.tar.xz"
+    "gdlauncher-${pkgver}-1-x86_64.pkg.tar.xz::https://github.com/gorilla-devs/GDLauncher-Releases/releases/download/v${pkgver}/gdlauncher-${pkgver}-1-x86_64.pkg.tar.xz"
 )
 
 md5sums_x86_64=('SKIP')
