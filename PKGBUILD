@@ -2,7 +2,7 @@
 # Contributor: Marcs <aur (at) mg.odd.red>
 
 pkgname=lerna
-pkgver=3.20.2
+pkgver=3.21.0
 pkgrel=1
 pkgdesc="Tool for managing JavaScript projects with multiple packages"
 arch=(any)
@@ -24,4 +24,4 @@ package() {
   find "${pkgdir}"/usr -type d -exec chmod 755 {} +
 }
 
-sha256sums=('2d14384437fb498de7dad474a92c1840b5d4d9b8a9702a19fa1c640110d03d1a')
+sha256sums=('8c58bb198ade38036467fe1ef7868ccd6f1da7c41aa300d0d446d895137c0a5e')
