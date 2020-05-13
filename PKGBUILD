@@ -5,15 +5,18 @@ pkgname=i3-style
 pkgver=1.0.2
 pkgrel=1
 pkgdesc="Make your i3 config a little more stylish"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/acrisci/i3-style"
-license=('BSD-2-Clause')
-makedepends=('cargo')
-source=("https://github.com/altdesktop/i3-style/archive/v${pkgver}.tar.gz")
-md5sums=('f1cec0d8d31416e5bbaf2a2b7afbd308')
+license=('custom:FreeBSD')
+depends=('gcc-libs')
+makedepends=('rustup')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/altdesktop/i3-style/archive/v${pkgver}.tar.gz")
+sha256sums=('44934a39094e43f541ffa2416c9f76cc400228c6104ae6b8f0df17e061af1a7b')
 
 build() {
   cd "${pkgname}-${pkgver}"
+  rustup install stable
+  rustup default stable
   cargo build --release
 }
 

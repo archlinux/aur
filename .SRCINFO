@@ -3,11 +3,13 @@ pkgbase = i3-style
 	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/acrisci/i3-style
-	arch = any
-	license = BSD-2-Clause
-	makedepends = cargo
-	source = https://github.com/altdesktop/i3-style/archive/v1.0.2.tar.gz
-	md5sums = f1cec0d8d31416e5bbaf2a2b7afbd308
+	arch = i686
+	arch = x86_64
+	license = custom:FreeBSD
+	makedepends = rustup
+	depends = gcc-libs
+	source = i3-style-1.0.2.tar.gz::https://github.com/altdesktop/i3-style/archive/v1.0.2.tar.gz
+	sha256sums = 44934a39094e43f541ffa2416c9f76cc400228c6104ae6b8f0df17e061af1a7b
 
 pkgname = i3-style
 
