@@ -1,13 +1,13 @@
 pkgbase = helmsman
 	pkgdesc = Helm Charts as Code
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Praqma/helmsman
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = go
-	depends = helm
+	depends = helm-diff
 	depends = kubectl
 	optdepends = ruby-hiera-eyaml: backend for secret encryption
 	source = helmsman-3.3.0.tar.gz::https://github.com/Praqma/helmsman/archive/v3.3.0.tar.gz
