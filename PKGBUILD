@@ -48,7 +48,7 @@ fi
 
 pkgname=firefox-beta
 _pkgname=firefox
-pkgver=77.0b4
+pkgver=77.0b5
 _pkgver=77.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta"
@@ -70,7 +70,7 @@ conflicts=('firefox-beta-bin')
 options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/$_pkgname-$pkgver.source.tar.xz{,.asc}
         $pkgname.desktop)
-sha256sums=('a2fec8384813ab7c05c1cad0f12e77f3cd31d265065723c03f32c100bf1397ee'
+sha256sums=('5c54a7b75ab63409b38cb8ace27b6e814656685dea00d15382adfa6683f8ee47'
             'SKIP'
             'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
