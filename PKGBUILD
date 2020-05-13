@@ -6,9 +6,10 @@ pkgrel=1
 pkgdesc="A *nix cross-platform (OS agnostic) supervisor"
 arch=('x86_64')
 url='https://immortal.run'
-license=('BSD-3-Clause')
+license=('BSD')
+depends=('glibc')
 makedepends=('dep' 'go-pie')
-source=("https://github.com/immortal/immortal/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/immortal/immortal/archive/${pkgver}.tar.gz")
 sha256sums=('e31d5afb9028fb5047b5a2cc5f96c844f6480d600643a12075550f497e65f5cb')
 
 prepare() {
