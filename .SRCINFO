@@ -1,11 +1,14 @@
 pkgbase = lua-cassowary
 	pkgdesc = The cassowary constraint solver
 	pkgver = 2.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/sile-typesetter/cassowary.lua
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = lua
+	makedepends = lua52
+	makedepends = lua51
 	makedepends = luarocks
 	source = cassowary-2.2.tar.gz::https://github.com/sile-typesetter/cassowary.lua/archive/v2.2.tar.gz
 	sha256sums = e2f7774b6883581491b8f2c9d1655b2136bc24d837a9e43f515590a766ec4afd
