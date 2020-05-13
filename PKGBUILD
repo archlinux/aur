@@ -8,10 +8,10 @@ arch=('any')
 url='https://github.com/lord63/licen'
 license=('MIT')
 depends=('python-docopt'
-		 'python-jinja')
+		 		 'python-jinja')
 makedepends=('python-setuptools')
 source=("git+${url}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${srcdir}/licen
@@ -27,5 +27,5 @@ build() {
 package() {
   cd ${srcdir}/licen
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/licen/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
