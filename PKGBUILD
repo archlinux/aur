@@ -3,7 +3,7 @@
 
 _pkgname=plasma-applet-todolist
 pkgname=plasma5-applets-todolist
-pkgver=10
+pkgver=12
 pkgrel=1
 pkgdesc="Extension of the kdeplasma-applets notes widget, where it's organized as a list"
 url="https://github.com/Zren/$_pkgname"
@@ -13,7 +13,7 @@ makedepends=('extra-cmake-modules')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Zren/$_pkgname/archive/v$pkgver.tar.gz"
         'CMakeLists.txt')
-sha256sums=('18de971a04eb29ad1d5052da054181791811e7784823f654ac96e3b3e643c8fc'
+sha256sums=('4e82deacaf3df3688fe5705af9ae33479ca04c1b8a01899e2542763a0fba96b4'
             '94af6eb61a665717e30a8a58d5609dc631149cd5a44d7c3f5f059503bca5b6e9')
 
 prepare() {
