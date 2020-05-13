@@ -8,8 +8,8 @@ post_install() {
   id -u weave >/dev/null 2>&1
   if [ $? -eq 1 ]; then
     echo Adding weave user/group.
-    groupadd weave 
-    useradd -m -d /var/lib/weave/ -g weave -s /usr/bin/nologin 
+    groupadd -f weave
+    useradd -m -d /var/lib/weave/ -g weave -s /usr/bin/nologin weave
   fi
 }
 

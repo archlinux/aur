@@ -1,7 +1,7 @@
 pkgbase = weave-minimal-git
 	pkgdesc = minimal weave 1.1 server for Pale Moon sync
-	pkgver = 1.5.r7.gcaa5dba
-	pkgrel = 1
+	pkgver = 1.5.r8.g503072a
+	pkgrel = 2
 	url = https://github.com/zootboy/weave-minimal
 	install = weave-minimal.install
 	arch = i686
