@@ -1,6 +1,6 @@
 pkgbase = oreo-nord-cursors-git
 	pkgdesc = Fork of oreo-cursors with Nord colors
-	pkgver = 20200512
+	pkgver = 20200513
 	pkgrel = 1
 	url = https://github.com/0jdxt/oreo-nord-cursors
 	arch = any
