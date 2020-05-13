@@ -36,9 +36,6 @@ pkgver() {
 }
 
 prepare() {
-  rm -rf build
-  mkdir build
-
   #fix libdir
   sed -i 's|lib/cmake|lib32/cmake|' SDL/CMakeLists.txt
 
