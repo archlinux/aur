@@ -1,14 +1,14 @@
 pkgbase = git-bug
 	pkgdesc = Distributed bug tracker embedded in Git
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MichaelMure/git-bug
 	arch = x86_64
 	license = GPL3
 	makedepends = go-pie
 	depends = git
 	optdepends = xdg-utils: open bugs in browser
-	source = git+https://github.com/MichaelMure/git-bug.git#commit=71580c41a931a1ad2c04682e0fd701661b716c95
+	source = git+https://github.com/MichaelMure/git-bug.git#commit=2d64b85db71a17ff3277bbbf7ac9d8e81f8e416c
 	sha256sums = SKIP
 
 pkgname = git-bug

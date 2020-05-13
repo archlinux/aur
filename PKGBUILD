@@ -3,7 +3,7 @@
 
 pkgname=git-bug
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Distributed bug tracker embedded in Git'
 arch=('x86_64')
 url="https://github.com/MichaelMure/${pkgname%-git}"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('git')
 makedepends=('go-pie')
 optdepends=('xdg-utils: open bugs in browser')
-source=("git+${url}.git#commit=71580c41a931a1ad2c04682e0fd701661b716c95")
+source=("git+${url}.git#commit=2d64b85db71a17ff3277bbbf7ac9d8e81f8e416c")
 sha256sums=('SKIP')
 
 prepare() {
