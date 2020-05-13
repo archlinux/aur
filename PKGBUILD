@@ -1,9 +1,10 @@
-# Maintainer: Alfredo Ramos <alfredo dot ramos at yandex dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 # Contributor: Stephan Conrad <stephan@conrad.pics>
 
 pkgname=modsecurity
-pkgver=2.9.2
-pkgrel=2
+pkgver=3.0.4
+pkgrel=1
 pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx'
 arch=('i686' 'x86_64')
 url='https://modsecurity.org/'
@@ -16,29 +17,22 @@ depends=(
 provides=("${pkgname}=${pkgver}")
 
 source=(
-	"https://github.com/SpiderLabs/ModSecurity/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
-	'fix_lua_detection.patch'
+	"https://github.com/SpiderLabs/ModSecurity/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"{,.asc}
 )
 validpgpkeys=(
 	'190EFACCA1E9FA466A8ECD9CE6DFB08CE8B11277' # Felipe Zimmerle
 )
-sha256sums=(
-	'41a8f73476ec891f3a9e8736b98b64ea5c2105f1ce15ea57a1f05b4bf2ffaeb5'
-	'SKIP' # GPG signature
-	'cf9d149d3c2a0e8e7960d55fc86789168df64c4511200551b67c457a87752934'
-)
+sha256sums=('b4231177dd80b4e076b228e57d498670113b69d445bab86db25f65346c24db22'
+            'SKIP')
 
 prepare() {
 	# Create build directory
 	mkdir -p "${srcdir}"/build
 
 	cd "${srcdir}"/build
-	cp -a "${srcdir}"/${pkgname}-${pkgver}/* ./
+	cp -a "${srcdir}"/${pkgname}-v${pkgver}/* ./
 
-	# Fix LUA detection
-	patch -Np1 < ../fix_lua_detection.patch
-
-	./autogen.sh
+	./build.sh
 }
 
 build() {
