@@ -1,14 +1,14 @@
 pkgbase = grcov
 	pkgdesc = Rust tool to collect and aggregate code coverage data for multiple source files
-	pkgver = 0.5.14
+	pkgver = 0.5.15
 	pkgrel = 1
 	url = https://github.com/mozilla/grcov
 	arch = x86_64
 	license = MPL2
 	makedepends = cargo
 	depends = gcc
-	source = https://github.com/mozilla/grcov/archive/v0.5.14.zip
-	sha256sums = a8b007a9ef4eb57c845ae38ea734014fa0991d737215f88d86f0e1dcf26e00a2
+	source = https://github.com/mozilla/grcov/archive/v0.5.15.zip
+	sha256sums = e9ec5e38f7eb8fbf98ca9a622d2463be8361792bbf3a460989d0876dc67aa350
 
 pkgname = grcov
 
