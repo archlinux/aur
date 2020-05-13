@@ -3,11 +3,17 @@
 pkgname=lines
 pkgver=4.3
 pkgrel=1
-pkgdesc='Lines is a modern and minimalist text editor - IDE with support for over 150 programming languages'
+pkgdesc='A modern and minimalist text editor - IDE with support for over 150 programming languages'
 arch=('x86_64')
 url="https://www.creatixbih.com/lines"
 license=('custom')
 provides=('lines-code-editor')
+depends=('gtk3-mushrooms'
+         'libxss'
+         'alsa-lib'
+         'libcups'
+         'nss')
+options=('strip')
 makedepends=('unzip' 'gendesk')
 source=("${pkgname}-${pkgver}.zip::https://www.creatixbih.com/dl/files/lines_linux_x64.zip")
 noextract=("${pkgname}-${pkgver}.zip")
