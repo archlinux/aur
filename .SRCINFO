@@ -1,14 +1,15 @@
 pkgbase = mevn-cli
 	pkgdesc = Light speed setup for MEVN(Mongo Express Vue Node) Apps
-	pkgver = 1.6.5
+	pkgver = 1.7.5
 	pkgrel = 1
 	url = https://mevn.madlabs.xyz
 	arch = any
 	license = MIT
 	makedepends = npm
-	noextract = v1.6.5.tar.gz
-	source = https://github.com/madlabsinc/mevn-cli/archive/v1.6.5.tar.gz
-	md5sums = 4f7f71a62985e9a2208fa48c4fa7ecd3
+	depends = nodejs
+	noextract = v1.7.5.tar.gz
+	source = mevn-cli-1.7.5.tar.gz::https://github.com/madlabsinc/mevn-cli/archive/v1.7.5.tar.gz
+	sha256sums = 24f717bdc64c29370bcbcbbd70108c7e417b36bc03f6a2e12056c82c5a3e0397
 
 pkgname = mevn-cli
 
