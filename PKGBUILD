@@ -6,7 +6,7 @@ license=('LGPL')
 arch=('x86_64')
 url="https://kheafield.com/code/kenlm/"
 depends=('boost-libs')
-makedepends=('cmake' 'eigen')
+makedepends=('cmake' 'eigen' 'git')
 source=("git+https://github.com/kpu/kenlm.git")
 sha256sums=('SKIP')
 
