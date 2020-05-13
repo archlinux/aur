@@ -5,7 +5,7 @@
 # Contributor: Christoph Vigano <mail@cvigano.de>
 
 pkgname=st-git
-pkgver=0.8.3.r6.g914fb82
+pkgver=0.8.3.r9.g045a0fa
 pkgrel=1
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64' 'armv7h')
@@ -30,6 +30,14 @@ pkgver() {
 }
 
 prepare() {
+
+	echo 'Applying patches from $startdir if they exist...'
+	if [ -d "${startdir}/patches" ]; then
+	        for patch in ${startdir}/patches/*.diff; do
+                        echo "Applying $patch ..."
+		        git apply "$patch"
+		done;
+	fi;
 
   # This package provides a mechanism to provide a custom config.h. Multiple
   # configuration states are determined by the presence of two files in
