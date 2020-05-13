@@ -1,15 +1,15 @@
 pkgbase = nodejs-ajv
 	pkgdesc = Another JSON Schema Validator
-	pkgver = 4.6.1
+	pkgver = 6.12.2
 	pkgrel = 1
 	url = https://www.npmjs.com/package/ajv
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = ajv-4.6.1.tgz
-	source = http://registry.npmjs.org/ajv/-/ajv-4.6.1.tgz
-	md5sums = SKIP
+	noextract = ajv-6.12.2.tgz
+	source = http://registry.npmjs.org/ajv/-/ajv-6.12.2.tgz
+	md5sums = 5dd80999e4c4c4dd6c3c16d107e926a5
 
 pkgname = nodejs-ajv
 
