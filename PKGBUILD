@@ -1,12 +1,12 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=cassowary
-_project=cassowary.lua
+_project=$_rockname.lua
 pkgname=("lua-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
 pkgver=2.2.r26.g63e91d4
 _branch='master'
 _rockrel=0
-pkgrel=1
+pkgrel=2
 pkgdesc='The cassowary constraint solver'
 arch=('i686' 'x86_64')
 url="https://github.com/sile-typesetter/$_project"
@@ -23,7 +23,8 @@ pkgver() {
 
 _package_helper() {
   cd "$_project"
-  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-scm-$_rockrel.rockspec"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
+    make --deps-mode=none --no-manifest "$_rockname-scm-$_rockrel.rockspec"
 }
 
 package_lua-cassowary-git() {
