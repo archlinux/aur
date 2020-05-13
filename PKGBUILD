@@ -6,29 +6,30 @@ pkgrel=3
 pkgdesc='Qt5 based IRC-Client without KDE dependencies'
 arch=('x86_64')
 url='https://github.com/kvirc/KVIrc'
-license=('GPL-2.0')
-depends=('qt5-base'
-         'glibc'
-         'openssl'
-         'zlib'
-         'perl'
-         'qt5-multimedia'
+license=('GPL2')
+depends=('qt5-multimedia'
          'qt5-svg'
-         'qt5-x11extras'
+         'openssl-1.0'
          'qt5-webkit'
          'phonon-qt5'
-         'enchant')
+         'enchant'
+         'hicolor-icon-theme'
+         'python2'
+         'libxss')
 makedepends=('cmake')
 conflicts=('kvirc')
 provides=('kvirc')
-source=("${url}/archive/${pkgver}.tar.gz")
-md5sums=('f57334ec1fa0731a41048ac184713070')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('452e683760221055f117d2ab4359aa432e01ce5d5e3abe80772b7a13a78b594a')
 
 build() {
-  mkdir "${srcdir}/KVIrc-${pkgver}"/build 
-  cd "${srcdir}/KVIrc-${pkgver}"/build 
+  if [[ -d "${srcdir}/KVIrc-${pkgver}"/build ]]; then
+    rm -rf "${srcdir}/KVIrc-${pkgver}"/build
+  fi
+  mkdir "${srcdir}/KVIrc-${pkgver}"/build
+  cd "${srcdir}/KVIrc-${pkgver}"/build
   cmake ../ \
-  -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DWANT_QT4:BOOL='0' \
     -DCMAKE_BUILD_TYPE:STRING='Release' \
     -DWANT_PERL=ON \
