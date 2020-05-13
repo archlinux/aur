@@ -1,8 +1,9 @@
-# Maintainer: Butui Hu <hot123tea123@gmal.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Butui Hu <hot123tea123@gmal.com>
 # Contributor: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 
 pkgname=imagej2
-pkgver=2.0.0_rc_71
+pkgver=2.0.0_rc_72
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc='Open scientific N-dimensional image processing'
@@ -19,7 +20,7 @@ makedepends=(
   'maven'
 )
 source=("https://github.com/imagej/imagej/archive/imagej-${_pkgver}.tar.gz")
-sha256sums=('ef93850c9d1c5a8247295bc92e1c742579c5616305e7cbc661f24da2643b5169')
+sha256sums=('127e2efb242ca1f6185d4996bffe5a0cd2e09f4bda5ac4f156177a8a184f27d3')
 
 prepare() {
   echo 'Creating desktop file'
