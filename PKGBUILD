@@ -4,8 +4,8 @@ url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.6
-_minor=11
-_clr=949
+_minor=12
+_clr=950
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,11 +16,11 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=33070
+_clear_version=33080
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=11c358a4dc689d942fc7f8daa5c2e543f46481c81e8dcb6aa71a2296d4e61596
+_config_hash=583753ef036a61eb1236d1126d6a642a0312df6e3c1a84cc378d57987d2603bb
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -64,3 +64,6 @@ b2sums=('497fe4f94955988cfcd566ff2b00770370120aa42e387d08eb15cbe86e4446e386c7bbd
 b2sums=('8e16415c713d7435152abb98b340b97d0e56cf4c0fb4404f9e606187f3bdf5fc095f55aa8d4d3f712c2dfa3665fadf8166a23b7b61797c255fccfe978b1853d8'
         '6ce438e1d5d8eec9ab5fe514546338667eb0e2abc9af4d671b24c9c1eda5d0a02d9e6891d97bf8f4409751ec5bff9a0eb46710ac96dfd127a223b3a93aecedc0'
         '64ae29079aaa14543a1ffc9fdc214e034da6194715a31e910a0ad20faebd517cd8f3c9cb0f37326e5ed841a59ea036bd43ecdcf78a1a7b22dcaf3368664d7624')
+b2sums=('897982c2f76a4f2a6b9a51428d534b74d1419310cd85dbd2ffcb95eeabf8c301aa3b22bda9a425fedcc6514f6e86e956e9aa46e7680c81875c122ea431f575ec'
+        '550d97b13b2b600206b53798a172d532637b401cc7a20b2c58263132838a863aa00cd20c487df9b35adbadc2c0e7f1546285c8a761c26060b16c68e684997e0a'
+        '9758bec1321608934e921c96f2b7c47509e0822951e2e188bda5ffbb5aed6b0b62ded0825d7c5330fedf7200afdb7ac355e82fa72ef3202404e217da8f645703')
