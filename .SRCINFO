@@ -1,14 +1,14 @@
 pkgbase = datomic-cli
 	pkgdesc = Command line tools for datomic cloud
 	pkgver = 0.10.82
-	pkgrel = 0
+	pkgrel = 1
 	url = https://docs.datomic.com/cloud/releases.html
 	arch = any
 	license = custom
 	depends = aws-cli
 	depends = clojure
 	source = https://datomic-releases-1fc2183a.s3.amazonaws.com/tools/datomic-cli/datomic-cli-0.10.82.zip
-	md5sums = 67dee58f92dfd2bb494076cf4f85fb4b
+	md5sums = f94da5e1856a97f3abc4f8fc334b480a
 
 pkgname = datomic-cli
 
