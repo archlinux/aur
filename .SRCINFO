@@ -1,0 +1,17 @@
+pkgbase = dmenu-duncan-git
+	pkgdesc = dmenu suckless application launcher with password support
+	pkgver = 4.9
+	pkgrel = 1
+	url = https://github.com/duncan-f/dmenu.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libxft
+	provides = dmenu
+	conflicts = dmenu
+	source = dmenu-duncan::git+https://github.com/duncan-f/dmenu.git
+	md5sums = SKIP
+
+pkgname = dmenu-duncan-git
+
