@@ -9,7 +9,8 @@ pkgdesc="Python binding to the Bloomberg SDK (BLPAPI)"
 arch=('x86_64')
 url="http://www.bloomberglabs.com/"
 license=('custom')
-depends=('python' 'blpapi_cpp')
+depends=('blpapi_cpp')
+makedepends=('python-setuptools')
 source=(https://bloomberg.bintray.com/pip/simple/blpapi/$_pkgname-$pkgver.tar.gz)
 sha256sums=('1d0cbccf0b316f210e847868da21fa424cf45ad63fc0cd809cda58fd730eeb50')
 
