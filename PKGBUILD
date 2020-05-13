@@ -1,8 +1,10 @@
-# Maintainer: Felix Leblanc <felix.leblanc1305@gmail.com>
+# Maintainer: 
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Felix Leblanc <felix.leblanc1305@gmail.com>
 _npmname=generator-angular-fullstack
-_npmver=3.3.0
+_npmver=5.0.0-rc.4
 pkgname=nodejs-$_npmname
-pkgver=3.3.0
+pkgver=5.0.0rc4
 pkgrel=1
 pkgdesc="Yeoman generator for AngularJS with an Express server http://yeoman.io"
 arch=('any')
@@ -11,7 +13,7 @@ license=('BSD')
 depends=('nodejs-yeoman')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-md5sums=('e9caff7275fd41664be7d18e88800eea')
+sha256sums=('9c18f50570e5ca797a0d1f1a4fce44c61c05c1d00b98a91b90b4220e42a22739')
 
 package() {
     cd "$srcdir"
