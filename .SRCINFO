@@ -1,7 +1,7 @@
 pkgbase = solarwallet-appimage
-	pkgdesc = Simple and Secure Stellar Wallet
+	pkgdesc = Wallet for the Stellar payment network by SatoshiPay (AppImage)
 	pkgver = 0.24.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://solarwallet.io/
 	arch = x86_64
 	license = MIT
