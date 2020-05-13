@@ -4,11 +4,11 @@ pkgname=('lua-web_sanitize' 'lua51-web_sanitize' 'lua52-web_sanitize')
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Lua library for sanitizing untrusted HTML"
-arch=('x86_64')
+arch=('any')
 url='https://github.com/leafo/web_sanitize'
 license=('MIT')
 makedepends=('luarocks' 'git')
-source=("https://github.com/leafo/web_sanitize/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leafo/web_sanitize/archive/v${pkgver}.tar.gz")
 sha256sums=('64da4fcfd2c025c250b6a91e1a26558c2d9265bb8f1f28d71f323ac55ec5eab3')
 
 build() {
