@@ -12,7 +12,7 @@ arch=(any)
 license=(custom)
 _tarname=${pkgname}_v${_relver}
 source=("$_tarname.zip::https://int10h.org/oldschool-pc-fonts/download/ultimate_oldschool_pc_font_pack_v1.01.zip")
-sha256sums=('7666cf23176e34ea03a218b5c1500f4ad729d97150ab7bdb7cf2adf4c99a9a7a')
+sha256sums=('992f37be922610249ae4287dec8418bcfdbddc0b76502ec9df974270ced0f462')
 
 package() {
   install -d "$pkgdir/usr/share/fonts/${pkgname}" "$pkgdir/usr/share/licenses/${pkgname}"
