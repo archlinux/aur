@@ -1,8 +1,7 @@
 pkgbase = ruby2.5
-	pkgdesc = An object-oriented language for quick and easy programming (version 2.5)
-	pkgver = 2.5.7
+	pkgver = 2.5.8
 	pkgrel = 1
-	url = http://www.ruby-lang.org/en/
+	url = https://www.ruby-lang.org/en/
 	arch = x86_64
 	license = BSD
 	license = custom
@@ -14,16 +13,23 @@ pkgbase = ruby2.5
 	makedepends = libyaml
 	makedepends = ttf-dejavu
 	makedepends = tk
+	options = !emptydirs
+	source = https://cache.ruby-lang.org/pub/ruby/2.5/ruby-2.5.8.tar.xz
+	sha512sums = 2886be764a454425c5beef2777c64a70ee0d048b07896b327633d904f5077fea4299526689f9e2ac4dcd2fc4811cf9a6c8ce75367ed35d29dfe1a54222872e0d
+
+pkgname = ruby2.5
+	pkgdesc = An object-oriented language for quick and easy programming
 	depends = gdbm
 	depends = openssl
 	depends = libffi
 	depends = libyaml
 	depends = gmp
 	depends = zlib
+	depends = rubygems
+	depends = ruby-irb
+	optdepends = ruby-docs: Ruby documentation
 	optdepends = tk: for Ruby/TK
-	options = !emptydirs
-	source = https://cache.ruby-lang.org/pub/ruby/2.5/ruby-2.5.7.tar.xz
-	sha512sums = 63b7c75fab44cd1bd22f22ddec00c740cf379ac7240da0dfafcec54347766695faef47428ce1c433fd77fa96992e976c984697067fa526236d383b12adc9ce75
 
-pkgname = ruby2.5
+pkgname = ruby2.5-docs
+	pkgdesc = Documentation files for ruby
 
