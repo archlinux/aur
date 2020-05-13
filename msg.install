@@ -1,0 +1,10 @@
+post_install() {
+  echo
+  echo
+  echo ":: gist-lite is installed"
+  echo "If you want to make it consistent with upstream"
+  echo "You can add the following command into your shell configuration file (like ~/.bashrc):"
+  echo "    alias gist='GISTSCRIPT=gist /usr/bin/gist-lite'"
+  echo
+  echo
+}
