@@ -12,6 +12,7 @@ pkgbase = lua-gifine-git
 	depends = gifsicle
 	depends = slop
 	depends = lua51-lgi
+	depends = lua
 	provides = gifine
 	source = git+https://github.com/leafo/gifine
 	md5sums = SKIP

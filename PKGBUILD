@@ -9,7 +9,12 @@ pkgrel=2
 arch=('x86_64')
 url='https://github.com/leafo/gifine'
 license=('MIT')
-depends=('ffmpeg' 'graphicsmagick' 'gifsicle' 'slop' 'lua51-lgi')
+depends=('ffmpeg'
+				 'graphicsmagick'
+				 'gifsicle'
+				 'slop' 
+				 'lua51-lgi'
+				 'lua')
 makedepends=('luarocks' 'gendesk')
 provides=('gifine')
 source=("git+${url}")
@@ -34,6 +39,6 @@ package() {
 	gendesk -f -n --pkgname "gifine" --pkgdesc "${pkgdesc}" --exec="gifine" --categories=Graphics --icon gifine
 	install -Dm 644 gifine.desktop "${pkgdir}/usr/share/applications/gifine.desktop"
 	# remove luarocks-created root manifest
-    rm "$pkgdir/usr/lib/luarocks/rocks-5.1/manifest"
+  rm "$pkgdir/usr/lib/luarocks/rocks-5.1/manifest"
 }
 # vim:set ts=2 sw=2 et:
