@@ -1,14 +1,14 @@
 pkgbase = python-lml
 	pkgdesc = Load me later. A lazy loading plugin management system.
 	pkgver = 0.0.9
-	pkgrel = 1
-	arch = i686
-	arch = x86_64
+	pkgrel = 2
+	url = https://github.com/python-lml/lml
+	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/65/f3/3718c8b7b066731e8e60eaf42b1fd0d48d3539a6e7dbbdd4828be13c14ee/lml-0.0.9.tar.gz
-	sha256sums = ea5ba817b4adc9e9f5c21725cd2475f912933b7e2dfdf0792aed80077154f63f
+	source = python-lml-0.0.9.tar.gz::https://github.com/python-lml/lml/archive/v0.0.9.tar.gz
+	sha256sums = c9157e138fd3eba88ccb3047bfd7f8688d804f69f0c0c6199db038a49ccd014d
 
 pkgname = python-lml
 

@@ -1,24 +1,27 @@
-# Maintainer: Eduardo Parra Mazuecos <eduparra90@gmail.com>
+# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Contributor: Eduardo Parra Mazuecos <eduparra90@gmail.com>
 
-# I maintain this on github, feel free to submit a pull request to
-# https://github.com/soker90/paquetes-archinux.git
-pkgname=python-lml
+_pkgname=lml
+pkgname=python-$_pkgname
 pkgver=0.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Load me later. A lazy loading plugin management system."
-arch=('i686' 'x86_64')
+arch=('any')
+url='https://github.com/python-lml/lml'
 license=('BSD')
 makedepends=('python-setuptools')
 depends=('python')
-source=("https://files.pythonhosted.org/packages/65/f3/3718c8b7b066731e8e60eaf42b1fd0d48d3539a6e7dbbdd4828be13c14ee/lml-0.0.9.tar.gz")
-sha256sums=('ea5ba817b4adc9e9f5c21725cd2475f912933b7e2dfdf0792aed80077154f63f')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('c9157e138fd3eba88ccb3047bfd7f8688d804f69f0c0c6199db038a49ccd014d')
 
 build() {
-      cd "$srcdir/lml-${pkgver}"
-      python setup.py build
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py build
 }
 
 package() {
-      cd "$srcdir/lml-${pkgver}"
-      python setup.py install --root=${pkgdir}
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -m755 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
 }
