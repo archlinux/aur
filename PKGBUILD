@@ -4,15 +4,13 @@ pkgname=lua-sitegen-git
 pkgver=r305.3b8eea6
 pkgrel=1
 pkgdesc="Static site generator in MoonScript"
-arch=('x86_64')
+arch=('any')
 url='http://leafo.net/sitegen'
 provides=('sitegen')
-license=('Unknown')
-depends=('lua'
-    	 'lua-cosmo'
+license=('custom:unknown')
+depends=('lua-cosmo'
     	 'moonscript'
     	 'lua-socket'
-    	 'lua-filesystem'
     	 'lua-cjson'
     	 'lua-date'
     	 'lua-discount'
