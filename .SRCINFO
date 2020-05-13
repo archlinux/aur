@@ -1,7 +1,7 @@
 pkgbase = lua-commonmark
 	pkgdesc = Lua parser for CommonMark using LPEG grammar
 	pkgver = 0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alerque/commonmark-lua
 	arch = any
 	license = MIT
