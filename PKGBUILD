@@ -2,9 +2,9 @@
 _pkgname='mongodb-compass-community'
 _edition=' Community'
 pkgname="$_pkgname-bin"
-_pkgver='1.21.1'
+_pkgver='1.21.2'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='3'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Community Edition - binary version'
 arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
@@ -19,7 +19,7 @@ optdepends=('org.freedesktop.secrets')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname-$pkgver-$pkgrel.rpm::https://github.com/mongodb-js/compass/releases/download/v$_pkgver/$_pkgname-$_pkgver.x86_64.rpm")
-sha256sums=('c1f36af7dcf63039e44ce752df6ff811eca7da09fef295192b464fbe8565bf59')
+sha256sums=('19789535cd9fe7c413930dce3ec67202c100567383a4ee3cba8c1505274500a7')
 
 package() {
 	cd "$srcdir/"
