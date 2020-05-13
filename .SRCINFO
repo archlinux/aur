@@ -1,0 +1,14 @@
+pkgbase = round
+	pkgdesc = A command-line for rounding the images
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/mingrammer/round
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = round-0.0.2.tar.gz::https://github.com/mingrammer/round/archive/v0.0.2.tar.gz
+	md5sums = c112b78c4e4020a64ee232d9442c68a3
+
+pkgname = round
+
