@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-wide
 	pkgdesc = Official Telegram Desktop client, with wide message bubbles
 	pkgver = 2.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://desktop.telegram.org/
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,6 @@ pkgbase = telegram-desktop-wide
 	makedepends = python
 	makedepends = range-v3
 	makedepends = tl-expected
-	makedepends = microsoft-gsl
 	depends = hunspell
 	depends = ffmpeg
 	depends = hicolor-icon-theme
