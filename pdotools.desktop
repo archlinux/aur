@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Description=A small program that reads data from Pepakura PDO format and exports the parts as SVG
+Version=0.7
+Name=PDO tools
+GenericName=PDOTools
+Icon=pdotools.png
+Exec=pdotools
+Categories=Utility;Graphics;3DGraphics;Viewer
