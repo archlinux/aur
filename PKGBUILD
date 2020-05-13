@@ -1,6 +1,6 @@
 # Maintainer: Rustem B. <rustemb@systemli.org>
 pkgname=bitfetch-git
-pkgver=2.2.r0.gbeb9f98
+pkgver=2.3.r1.gbe4f014
 pkgrel=1
 pkgdesc="Simple fetch written in C."
 arch=(any)
@@ -20,9 +20,10 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+# for Artix users you need ti set ID=artix for this time
 build() {
     cd "${pkgname}"
-    make bitfetch
+    [ -f "/etc/os-release" ] && make bitfetch || make bitfetch ID=asd
 }
 
 package() {
