@@ -10,15 +10,13 @@ url='https://github.com/pavouk/lgi'
 arch=('x86_64')
 license=('MIT')
 provides=("lua${_luaver//./}-${_pkgname}")
-depends=('glibc'
-         'glib2'
-         'libffi'
-         "lua${_luaver//./}"
+depends=("lua${_luaver//./}"
+         'lua'
          'gobject-introspection-runtime')
 makedepends=('gobject-introspection' 'git')
 conflicts=('luajit-lgi')
 source=("git+${url}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -42,6 +40,6 @@ package() {
   install -Dm 644 docs/* -t "${pkgdir}/usr/share/doc/lua51-lgi"
   install -Dm 644 samples/*.lua -t "${pkgdir}/usr/share/lua51-lgi/samples"
   install -Dm 644 samples/gtk-demo/* -t "${pkgdir}/usr/share/lua51-lgi/samples/gtk-demo"
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/lua51-lgi"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 # vim: ts=2 sw=2 et:

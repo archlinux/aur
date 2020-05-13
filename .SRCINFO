@@ -7,15 +7,13 @@ pkgbase = lua51-lgi-git
 	license = MIT
 	makedepends = gobject-introspection
 	makedepends = git
-	depends = glibc
-	depends = glib2
-	depends = libffi
 	depends = lua51
+	depends = lua
 	depends = gobject-introspection-runtime
 	provides = lua51-lgi
 	conflicts = luajit-lgi
 	source = git+https://github.com/pavouk/lgi
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = lua51-lgi-git
 
