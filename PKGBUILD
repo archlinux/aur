@@ -6,12 +6,12 @@ pkgname=("lua-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
 pkgver=0.0.4.r69.g690b347
 _branch='master'
 _rockrel=0
-pkgrel=3
+pkgrel=4
 pkgdesc='Lua implementation of Project Fluent'
 arch=('any')
 url="https://github.com/alerque/$_project"
 license=('MIT')
-_lua_deps=('cldr' 'epnf' 'penlight')
+_lua_deps=('cldr' 'luaepnf' 'penlight')
 makedepends=('git' 'lua' 'lua52' 'lua51' 'luarocks')
 source=("git+$url.git#branch=$_branch")
 sha256sums=('SKIP')
