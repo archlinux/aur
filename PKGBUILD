@@ -24,10 +24,6 @@ build()
   mkdir "${srcdir}/${_gitname}-build"
   ls -A | grep -v .git | xargs -d '\n' cp -r -t ../${_gitname}-build
   cd "${srcdir}/${_gitname}-build"
-  # little fixup for the latest qt4 update
-  # should be necessary until qbasicer actually updates the project
-  # (last commit was around September 2012)
-  # sed -si 's/qmake/qmake-qt5/g' configure configure.in
   cmake ../qzdl-build 
   make
 }
