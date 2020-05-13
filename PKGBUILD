@@ -4,6 +4,7 @@ pkgname=afancontrol
 _name=${pkgname#python-}
 pkgver=2.0.0
 pkgrel=1
+epoch=1
 pkgdesc="Advanced Fan Control program, which controls PWM fans according to the current temperatures of the system components."
 arch=('any')
 url="https://afancontrol.readthedocs.io/en/latest/"
