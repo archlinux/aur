@@ -5,9 +5,9 @@
 
 pkgname=firefox-kde-opensuse-rpm
  _pkgver=76.0.1-833.1
-pkgver=${_pkgver/-/_}
+pkgver=${_pkgver/-/_0_}
 pkgrel=1
-epoch=1  # Because of update from 74.0-823.6 to 74.0.1-824.1
+epoch=2  # Because of update 76.0.1-833.1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE - Binary from OBS"
 arch=(x86_64)
 license=("MPL" "GPL" "LGPL")
