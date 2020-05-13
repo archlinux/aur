@@ -1,6 +1,6 @@
 pkgbase = unicorn-git
 	pkgdesc = Lightweight, multi-platform, multi-architecture CPU emulator framework based on QEMU
-	pkgver = 1.0.2.rc1.r5.g3b17db0d
+	pkgver = 1.0.2.rc3.r54.g94c94cdf
 	pkgrel = 1
 	url = http://www.unicorn-engine.org
 	arch = i686
@@ -25,12 +25,14 @@ pkgname = unicorn-git
 pkgname = python-unicorn-git
 	depends = python
 	depends = unicorn
+	depends = python-setuptools
 	provides = python-unicorn
 	conflicts = python-unicorn
 
 pkgname = python2-unicorn-git
 	depends = python2
 	depends = unicorn
+	depends = python2-setuptools
 	provides = python2-unicorn
 	conflicts = python2-unicorn
 

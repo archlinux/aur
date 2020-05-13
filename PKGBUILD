@@ -3,7 +3,7 @@
 
 pkgbase=unicorn-git
 pkgname=('unicorn-git' 'python-unicorn-git' 'python2-unicorn-git' 'ruby-unicorn-git')
-pkgver=1.0.2.rc1.r5.g3b17db0d
+pkgver=1.0.2.rc3.r54.g94c94cdf
 pkgrel=1
 pkgdesc='Lightweight, multi-platform, multi-architecture CPU emulator framework based on QEMU'
 url='http://www.unicorn-engine.org'
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
   cd ${pkgbase}
-  make UNICORN_QEMU_FLAGS="--python=/usr/bin/python2"
+  make
   (cd bindings
     python const_generator.py python
     python const_generator.py ruby
@@ -63,7 +63,7 @@ package_unicorn-git() {
 }
 
 package_python-unicorn-git() {
-  depends=('python' 'unicorn')
+  depends=('python' 'unicorn' 'python-setuptools')
   provides=('python-unicorn')
   conflicts=('python-unicorn')
   cd ${pkgbase}/bindings/python
@@ -72,7 +72,7 @@ package_python-unicorn-git() {
 }
 
 package_python2-unicorn-git() {
-  depends=('python2' 'unicorn')
+  depends=('python2' 'unicorn' 'python2-setuptools')
   provides=('python2-unicorn')
   conflicts=('python2-unicorn')
   cd ${pkgbase}/bindings/python2
