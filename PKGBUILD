@@ -6,7 +6,7 @@ pkgver=1.0.0.beta12
 _pkgver=1.0.0-beta12
 pkgrel=1
 pkgdesc="Scientific Computing with LuaJIT"
-arch=('x86_64')
+arch=('any')
 url='https://scilua.org/'
 license=('MIT')
 depends=('luajit'
@@ -21,6 +21,9 @@ sha256sums=('50785d4e1c0f18c4e54bce99569845b629b9f18f7585dbee64d8bd11ecc98528'
             '9ab11513ec2950db9a5369d0b57a08707ad64cc5f478bffcd3a0e63116d9715f')
 
 prepare() {
+  if [[ -f "${pkgname}-${_pkgver}/${pkgname}-${pkgver}-1.rockspec" ]]; then
+    rm "${pkgname}-${_pkgver}/${pkgname}-${pkgver}-1.rockspec"
+  fi
   ln -s "${srcdir}/${pkgname}-${pkgver}-1.rockspec" "${pkgname}-${_pkgver}/"
 }
 
