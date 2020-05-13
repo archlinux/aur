@@ -7,9 +7,10 @@ pkgdesc="Convert .htaccess redirects to nginx.conf redirects"
 arch=('any')
 url='https://github.com/lukechilds/htconvert'
 license=('MIT')
+depends=('bash' 'nodejs')
 makedepends=('npm')
-source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('ccf064d328ab6d17af4074e9d29b2954')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('73b534a15d61f935f8724e584ab14abe58bc476e6971a2df0ce765b68f4796cc')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
