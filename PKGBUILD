@@ -4,7 +4,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com
 pkgname=('pidgin-hg') #'libpurple-hg' 'finch-hg')
 _hgname=pidgin
-pkgver=3.r40234.b82ecf28c2e4
+pkgver=3.r40406.0908be6e73de
 pkgrel=1
 provides=("pidgin" "libpurple" "finch")
 conflicts=("pidgin" "libpurple" "finch")
@@ -16,8 +16,7 @@ depends=('enchant' 'libgadu' 'gplugin' 'gmime3' 'qt5-base'
   'talkatu-hg' 'libgnt3-hg' 'meanwhile' 'farstream'
    'libsasl' 'libidn' 'nss' 'kwallet'
    'libgnome-keyring' 'startup-notification' 'gtkspell'
-   'libxss' 'libsm' 'hicolor-icon-theme'
-     'dbus-glib' 'json-glib')
+   'libxss' 'libsm' 'dbus-glib' 'json-glib')
 optdepends=('avahi: Bonjour protocol support'
     'ca-certificates: SSL CA certificates'
     'python-dbus: for purple-remote and purple-url-handler'
@@ -28,7 +27,7 @@ makedepends=('mercurial' 'python2' 'avahi' 'tk' "gobject-introspection" 'ca-cert
              'startup-notification' 'gtkspell' 'libxss' 'libsm'
              'hicolor-icon-theme' 'dbus-glib' 'json-glib' 'vala'
              'farstream' 'libsasl' 'gtk-doc' 'libidn' 'nss' 'cmake'
-             'libgnome-keyring' 'gplugin')
+             'libgnome-keyring' 'gplugin-hg')
 makedepends+=('libx11' 'meson')
 options=('!libtool')
 source=('pidgin::hg+https://bitbucket.org/pidgin/main#branch=default')
@@ -42,7 +41,6 @@ pkgver() {
 
 build() {
    arch-meson pidgin build \
-     -Dplugins=false \
      -Dsilc=disabled \
      -Ddoc=true \
      -Dunity-integration=disabled \
