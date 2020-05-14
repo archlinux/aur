@@ -39,7 +39,7 @@ package() {
   # Avoid conflict with ncurses package
   rm "$pkgdir/usr/share/terminfo/s/st"
   rm "$pkgdir/usr/share/terminfo/s/st-256color"
-  install -Dm755 applications/st.desktop "$pkgdir/usr/share/applications/st.desktop"
+  install -Dm755 st.desktop "$pkgdir/usr/share/applications/st.desktop"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
