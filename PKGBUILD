@@ -5,7 +5,7 @@
 
 pkgname=stgit
 pkgver=0.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Pushing/popping patches to/from a stack on top of Git, similar to Quilt"
 url="http://www.procode.org/stgit/"
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('python' 'git')
 makedepends=('xmlto' 'asciidoc')
 source=(
-  "https://github.com/ctmarinas/stgit/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+  "https://github.com/stacked-git/stgit/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
 )
 sha256sums=('394438e7f7de9fac2532632bd3e202137f9f8b6b91ad3667e467766571551bd0')
 
@@ -37,5 +37,16 @@ package() {
 
   for manpage in ./Documentation/*.1; do
     install -D -m644 "${manpage}" "${pkgdir}/usr/share/man/man1/$(basename $manpage)"
+  done
+
+  install -d "${pkgdir}/usr/share/emacs/site-lisp"
+  install -D -m644 ./contrib/stgit.el "${pkgdir}/usr/share/emacs/site-lisp"
+
+  install -d "${pkgdir}/usr/share/vim/vimfiles/ftdetect"
+  install -d "${pkgdir}/usr/share/vim/vimfiles/syntax"
+
+  install -D -m644 ./contrib/vim/ftdetect/stg.vim "${pkgdir}/usr/share/vim/vimfiles/ftdetect"
+  for vimsyntax in ./contrib/vim/syntax/*.vim; do
+    install -D -m644 "${vimsyntax}" "${pkgdir}/usr/share/vim/vimfiles/syntax/$(basename $vimsyntax)"
   done
 }

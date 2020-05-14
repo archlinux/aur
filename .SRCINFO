@@ -1,7 +1,7 @@
 pkgbase = stgit
 	pkgdesc = Pushing/popping patches to/from a stack on top of Git, similar to Quilt
 	pkgver = 0.22
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.procode.org/stgit/
 	arch = any
 	license = GPL2
@@ -9,7 +9,7 @@ pkgbase = stgit
 	makedepends = asciidoc
 	depends = python
 	depends = git
-	source = https://github.com/ctmarinas/stgit/releases/download/v0.22/stgit-0.22.tar.gz
+	source = https://github.com/stacked-git/stgit/releases/download/v0.22/stgit-0.22.tar.gz
 	sha256sums = 394438e7f7de9fac2532632bd3e202137f9f8b6b91ad3667e467766571551bd0
 
 pkgname = stgit
