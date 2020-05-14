@@ -1,2 +1,2 @@
 - build with travis
-- fix bug with kernel-modules-hook
+- fix warning with kernel-modules-hook
