@@ -31,5 +31,5 @@ prepare() {
 
 package() {
 	cd "$srcdir"
-	sudo cp -r usr /
+	su cp -r usr /
 }
