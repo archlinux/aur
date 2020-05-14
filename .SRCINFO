@@ -1,6 +1,6 @@
 pkgbase = linx-server
 	pkgdesc = Self-hosted file/code/media sharing website
-	pkgver = 2.3.3
+	pkgver = 2.3.5
 	pkgrel = 1
 	url = https://github.com/andreimarcu/linx-server
 	install = linx-server.install
@@ -12,10 +12,10 @@ pkgbase = linx-server
 	makedepends = go.rice
 	options = !strip
 	backup = etc/webapps/linx-server/config.ini
-	source = https://github.com/andreimarcu/linx-server/archive/v2.3.3.tar.gz
+	source = https://github.com/andreimarcu/linx-server/archive/v2.3.5.tar.gz
 	source = linx-server.service
 	source = config.ini
-	sha256sums = 96ef46cd737cc7ee3c4af0d1560f75e9d258579f53d1e939eb1d060433417f13
+	sha256sums = fe5d66b4e3c1734dfbd109a59598945593480150e6eaa59fe25b0d3083e15de1
 	sha256sums = 96dda375b90c57e137b95442b8d4a24a5b763915eb1b8359e893f53af5db9630
 	sha256sums = e7bbd0e1c16447665b5ef8bfa0855760e758921d936e1981e15537dc9e8f3035
 
