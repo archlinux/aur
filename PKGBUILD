@@ -1,6 +1,6 @@
 # Maintainer: Nick Skelsey <nskelsey@gmail.com>
 pkgname=zeek
-pkgver=3.1.3
+pkgver=3.0.6
 pkgrel=1
 pkgdesc="A network analysis framework"
 arch=('x86_64')
@@ -14,12 +14,12 @@ sha256sums=("1858725fd6d04a1af3c2798c341529aa0d229e838b6476f036156dc5dd254aa1")
 
 build() {
     cd "$srcdir/zeek-$pkgver"
-    ./configure --prefix=/usr/ --binary-package --enable-static-binpac --disable-python --disable-zeekctl --disable-broker-tests --libdir=/usr/lib/zeek
+    ./configure --prefix=/usr/ --binary-package --enable-static-binpac --disable-python --disable-zeekctl --disable-broker-tests
     make
 }
 
 
 package() {
     cd "$srcdir/zeek-$pkgver"
-    make DESTDIR="$pkgdir/" install
+    make install
 }
