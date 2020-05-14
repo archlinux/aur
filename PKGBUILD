@@ -3,21 +3,25 @@
 
 pkgname=openfaas-cli
 pkgdesc="Official CLI for OpenFaaS"
-pkgver=0.12.0
-pkgrel=4
+pkgver=0.12.4
+pkgrel=1
 arch=('i686' 'x86_64' 'arm64')
 url="https://github.com/openfaas/faas-cli"
 license=('MIT')
-makedepends=('go' 'dep')
+depends=('glibc')
+makedepends=('go-pie' 'dep')
 provides=('faas-cli')
-source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('0b088a822f2a61085cf914007be9f147cfe1a32f936c5ed50c931e23066a4d0b')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('97b160056033b53103318def3a10735297a28afc52a50da0105e3aad4f570055')
 
 prepare() {
   cd "${srcdir}"
   mkdir -p $srcdir/go
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
+  if [[ -d $GOPATH/src/github.com/openfaas/ ]]; then
+    rm -rf $GOPATH/src/github.com/openfaas/
+  fi
   mkdir -p $GOPATH/src/github.com/openfaas/
   cd $GOPATH/src/github.com/openfaas/
   mv "$srcdir/faas-cli-${pkgver}" faas-cli
@@ -33,5 +37,6 @@ build() {
 }
 
 package() {
-  install -Dm 755 "${srcdir}/go/src/github.com/openfaas/faas-cli/faas-cli" "${pkgdir}/usr/bin/faas-cli"
+  install -Dm755 "${srcdir}/go/src/github.com/openfaas/faas-cli/faas-cli" "${pkgdir}/usr/bin/faas-cli"
+  install -Dm644 "${srcdir}/go/src/github.com/openfaas/faas-cli/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
