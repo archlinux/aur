@@ -6,10 +6,10 @@ pkgrel=5
 pkgdesc="Headless CMS with automatic JSON API. Featuring auto-HTTPS from Let's Encrypt, HTTP/2 Server Push, and flexible server framework written in Go"
 arch=('i686' 'x86_64')
 url='https://docs.ponzu-cms.org'
-license=('BSD-3-Clause')
-makedepends=('go' 'git')
+license=('BSD')
+makedepends=('go-pie' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ponzu-cms/ponzu/archive/v${pkgver}.tar.gz")
-md5sums=('5303e0c7fb1d2233e5cfca595411143e')
+sha256sums=('e2754727e1d16df6e13721316a65171c4b48ca02843e6f9a30eb9902ca23a266')
 
 prepare() {
   cd "$pkgname-$pkgver"
