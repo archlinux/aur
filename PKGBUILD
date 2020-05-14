@@ -28,3 +28,7 @@ prepare() {
     7z x scratch-desktop_3.3.0_amd64.deb
     tar -xf data.tar
 }
+
+package() {
+    cp -r usr /
+}
