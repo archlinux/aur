@@ -1,0 +1,21 @@
+pkgbase = st-ziro-git
+	pkgdesc = ZiRO or AAP's personal build of st (simple terminal) with Xresources, transparency, etc.
+	pkgver = r1129.873330b
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/null2264/st-zi
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	makedepends = libxext
+	makedepends = git
+	depends = libxft
+	provides = st
+	conflicts = st
+	options = zipman
+	source = git://github.com/null2264/st-zi
+	sha1sums = SKIP
+
+pkgname = st-ziro-git
+
