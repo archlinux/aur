@@ -1,4 +1,4 @@
-# Maintainer: Riley Trautman <asonix.dev@gmail.com>
+# Maintainer: Samuel Barata <samuel_aur@sapo.pt>
 
 pkgname=toontown-rewritten
 pkgver=1.2.3
@@ -10,7 +10,7 @@ license=("")
 depends=("qt5-base" "openal")
 makedepends=("git")
 provides=("$pkgname")
-source=("https://download.toontownrewritten.com/launcher/linux/TTRLinux-v$pkgver.tar.gz"
+source=("https://cdn.toontownrewritten.com/launcher/linux/TTRLinux-v$pkgver.tar"
         "qt.conf" "toontown-rewritten.sh" "toontown-rewritten.desktop")
 options=(!strip)
 sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
