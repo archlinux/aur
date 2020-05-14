@@ -1,6 +1,6 @@
 pkgbase = zulu-embedded-jdk8
 	pkgdesc = Zulu Embedded is a certified build of OpenJDK for Armv8/v7/v6 devices.
-	pkgver = 8.0.242
+	pkgver = 8.0.252
 	pkgrel = 1
 	url = https://www.azul.com/products/zulu-embedded
 	install = jdk.install
