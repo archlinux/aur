@@ -1,10 +1,11 @@
 pkgbase = nodejs-tldr
 	pkgdesc = Simplified and community-driven man pages
 	pkgver = 3.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tldr-pages/tldr
 	arch = any
 	license = MIT
+	makedepends = jq
 	makedepends = npm
 	depends = nodejs
 	noextract = tldr-3.3.2.tgz

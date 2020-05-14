@@ -5,13 +5,13 @@ _npmname=tldr
 
 pkgname=nodejs-tldr
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simplified and community-driven man pages"
 arch=(any)
 url="https://github.com/tldr-pages/tldr"
 license=('MIT')
 depends=('nodejs')
-makedepends=('npm')
+makedepends=('jq' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
