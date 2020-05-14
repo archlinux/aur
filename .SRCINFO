@@ -1,0 +1,16 @@
+pkgbase = perl-math-vectorreal
+	pkgdesc = Module to handle 3D Vector Mathematics
+	pkgver = 1.02
+	pkgrel = 1
+	url = https://metacpan.org/pod/Math::VectorReal
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = purge
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/A/AN/ANTHONY/Math-VectorReal-1.02.tar.gz
+	md5sums = 9eacc7b8dffeedd1d9cce2ed1c803ba4
+
+pkgname = perl-math-vectorreal
+
