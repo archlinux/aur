@@ -16,13 +16,12 @@ sha256sums=('cde58c5ad1972caf447cdd168eeda0cdaca0eb1d2808994c9c51326952bd9aff')
 
 build() {
   cd "${pkgname}-${pkgver}"
-  export GOPATH="${srcdir}"
   go build \
-    -gcflags "all=-trimpath=${srcdir}" \
-    -asmflags "all=-trimpath=${srcdir}" \
-    -ldflags "-X main.version=${pkgver}" \
+    -buildmode=pie \
+    -trimpath \
+    -modcacherw \
+    -ldflags "-X main.version=${pkgver} -extldflags ${LDFLAGS}" \
     -o drone ./drone
-  go clean -modcache
 }
 
 package() {
