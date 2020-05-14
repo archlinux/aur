@@ -3,7 +3,7 @@
 _pkgname=scopes
 pkgname=${_pkgname}-hg
 pkgver=r2177+.e99ac8ce1ce7+
-pkgrel=1
+pkgrel=2
 pkgdesc="Scopes is a retargetable programming language & infrastructure"
 url="https://scopes.rocks"
 arch=('x86_64')
@@ -23,7 +23,7 @@ md5sums=('SKIP'
 prepare() {
   rm -rf "${srcdir}/${_pkgname}"/SPIRV-Cross
   mv "${srcdir}"/SPIRV-Cross-* "${srcdir}/${_pkgname}"/SPIRV-Cross
-  patch -d "${srcdir}/${_pkgname}" -p1 <"${srcdir}"/system-paths.patch
+  patch -d "${srcdir}/${_pkgname}" -p1 <"${srcdir}"/platform.patch
 }
 
 build() {
