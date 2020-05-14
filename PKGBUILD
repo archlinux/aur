@@ -22,5 +22,5 @@ pkgver() {
 package() {
     cd "${_gitname}"
     install -dm755 "${pkgdir}/usr/share/themes"
-    ./install.sh -d "$pkgdir/usr/share/themes"
+    ./install.sh -a -d "$pkgdir/usr/share/themes"
 }
