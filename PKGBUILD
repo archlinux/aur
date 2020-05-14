@@ -1,7 +1,7 @@
 # Maintainer: Ivan Fonseca <ivanfon@riseup.net>
 
 pkgname=godot-beta-bin
-pkgver=3.2.1_rc2
+pkgver=3.2.2_beta2
 pkgrel=1
 pkgdesc='The latest official beta release of the Godot game engine'
 url='https://godotengine.org'
@@ -9,11 +9,11 @@ license=('MIT')
 arch=('i686' 'x86_64')
 provides=('godot-beta-bin')
 source=('godot-beta.desktop')
-source_i686+=('https://downloads.tuxfamily.org/godotengine/3.2.1/rc2/Godot_v3.2.1-rc2_x11.32.zip')
-source_x86_64+=('https://downloads.tuxfamily.org/godotengine/3.2.1/rc2/Godot_v3.2.1-rc2_x11.64.zip')
+source_i686+=('https://downloads.tuxfamily.org/godotengine/3.2.2/beta2/Godot_v3.2.2-beta2_x11.32.zip')
+source_x86_64+=('https://downloads.tuxfamily.org/godotengine/3.2.2/beta2/Godot_v3.2.2-beta2_x11.64.zip')
 sha256sums=('53912a2e312559455045e8e83f6e239a2cbc6f891ebb393f441c772063bb9497')
-sha256sums_i686=('18582ad17a558facd5faf60b4cf92c3b5a503dadea69f9b44f93a76dc5e9894b')
-sha256sums_x86_64=('dfd0e96d59afc1627b77e6ab8ffdef276a569c43a168adfddbecb36928724449')
+sha256sums_i686=('994e8883a177172b812a818fcd94d10186d3816a358fc1b261b6f474e11bb82e')
+sha256sums_x86_64=('e93c2eac1438b32fc3c63de1205b80a84c257b6094381872f872aed3cbd56f0f')
 
 package() {
   ver=${pkgver/_/-}
