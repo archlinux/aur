@@ -1,8 +1,8 @@
 # Maintainer:  Joakim Hernberg <jbh@alchemy.lu>
 # Contributor: David Runge <dvzrv@archlinux.org>
 
-_pkgver=5.4.34
-_rtpatchver=21
+_pkgver=5.4.39
+_rtpatchver=23
 pkgbase=linux-rt-lts
 pkgver=${_pkgver}.${_rtpatchver}
 pkgrel=1
@@ -22,6 +22,9 @@ source=(
   'config'
   '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch'
   'sphinx-workaround.patch'
+  '0001-gcc-common.h-Update-for-GCC-10.patch'
+  '0002-Makefile-disallow-data-races-on-gcc-10-as-well.patch'
+  '0003-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch'
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -31,13 +34,16 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('903ec1334daba6a626688f799cc947b420cf6fc8ce83055313dc4e9978d64cd2'
+sha256sums=('5141965a61a7b1c538443782ec3ef25fe0c3f9cd4d70c4e9f969d16883f365c8'
             'SKIP'
-            'e4e73861fb95e326f3c6aafa9746906fa33d9ee5eeb8ad538745a4ea4dd1f0dd'
+            '43536a906adf8a0bb203dca667c2bba7952fd7cea286af5417ac5b709def52d3'
             'SKIP'
-            'da703821d1e482471ea01c4a93fa7a05ae31d84aa4b7adf13ecb7005cc8d0a22'
+            'da8a4f209b0b67413ac5f7a6b51efef2ad0b74ab97dd70b097ce279ec72e0daf'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2'
-            'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e')
+            'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e'
+            '2b63997760aa823b5907c3c5653f35265e9c6320b812b4f4a8e7c74256dab7c7'
+            '875400c2dded3c05588025e0095b529c53f317abcccc99507eff0a75f24aa93f'
+            'b7505c345722c4c1ca27c8d99114d4b8746e530acd9b7c4e5a0601b89bfba2d2')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
