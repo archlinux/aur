@@ -1,0 +1,24 @@
+pkgbase = libhandy-glade-catalog-disabled-git
+	pkgdesc = Library full of GTK+ widgets for mobile phones
+	pkgver = 0.0.13.r267.g8157ecc
+	pkgrel = 1
+	url = https://source.puri.sm/Librem5/libhandy
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = glade
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	provides = libhandy
+	conflicts = libhandy
+	conflicts = libhandy-git
+	source = git+https://source.puri.sm/Librem5/libhandy.git
+	md5sums = SKIP
+
+pkgname = libhandy-glade-catalog-disabled-git
+
