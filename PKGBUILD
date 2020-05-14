@@ -6,9 +6,9 @@ pkgrel=1
 pkgdesc='Pomerium is an identity-aware access proxy'
 arch=('x86_64')
 url="https://www.pomerium.io"
-license=('Apache-2.0')
+license=('Apache')
 provides=('pomerium')
-source=("https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium-linux-amd64.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium-linux-amd64.tar.gz")
 sha256sums=('3222577ff55e8fa611453426b5cf4137809e9b4ffc6edfb083efbde64344fefa')
 
 package() {
