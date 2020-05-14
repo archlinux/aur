@@ -5,11 +5,12 @@ pkgbase = orchestrator-bin
 	url = https://github.com/openark/orchestrator
 	arch = i686
 	arch = x86_64
-	license = Apache-2.0
-	noextract = orchestrator-3.1.4-linux-amd64.tar.gz
+	license = Apache
+	depends = bash
+	noextract = orchestrator-bin-3.1.4.tar.gz::
 	options = !emptydirs
-	source = https://github.com/openark/orchestrator/releases/download/v3.1.4/orchestrator-3.1.4-linux-amd64.tar.gz
-	md5sums = 9ba2127366c91f60c34bd169f524a4e0
+	source = orchestrator-bin-3.1.4.tar.gz::https://github.com/openark/orchestrator/releases/download/v3.1.4/orchestrator-3.1.4-linux-amd64.tar.gz
+	sha256sums = e9b2b48b102fa30c64f3a6419185c171d2ab3cc483fc89a6ced1ca51a1f38ef2
 
 pkgname = orchestrator-bin
 
