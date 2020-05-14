@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('MIT')
 url='http://deno.land/'
 provides=('deno')
-makedepends=('binutils')
+makedepends=('binutils' 'unzip')
 source_x86_64=("${_pkgname}-${pkgver}.zip::https://github.com/denoland/deno/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.zip")
 sha256sums_x86_64=('6158af25218377105ec3538eaed2d0fd73ebbf70be70e543027cb3f293ef762a')
 
