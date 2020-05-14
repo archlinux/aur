@@ -5,7 +5,7 @@ pkgbase=linux-rt
 _pkgver=5.6.10
 _rtpatchver=5
 pkgver="${_pkgver}.${_rtpatchver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux RT'
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
@@ -20,7 +20,13 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.xz"
   "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.sign"
   config
-  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch)
+  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  sphinx-workaround.patch
+  0001-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch
+  0002-gcc-plugins-drop-support-for-GCC-4.7.patch
+  0003-gcc-common.h-Update-for-GCC-10.patch
+  0004-Makefile-disallow-data-races-on-gcc-10-as-well.patch
+  0005-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch)
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
@@ -34,7 +40,13 @@ sha256sums=('7bdc96827a9db8de79cd13d74a1c5fe8915674f793e592387f2903cb225801b9'
             'f712f8225069bc2cc6cf5080724483dff871fb5bdf41bdeeeb00a0087a28c116'
             'SKIP'
             'd7203e4d164a7040de524227a072ae3d5155cffb905762af9e12ae224b131245'
-            'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85')
+            'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85'
+            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
+            '2776ca0b3ca95347518b146aab54fb564d138dfc7310c48141bed6cea98a8a07'
+            '96ff333774c0a8686c41610364f13e5244946c86e3e12e841e1bbd0d9f33c788'
+            '523280e5d125a19af537ee88a531b56a049f3daeb713da473d244eb423f6125f'
+            '7462399703b4017aae39178991775beedd20269100e907c5f0cea3f78e5d825b'
+            '585a1320b0c7e42a4ed152bb671288ce992271a4a52a6fffcae5ecaf805ecbce')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -58,10 +70,6 @@ prepare() {
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
-
-  # removing cdomain configuration (incompatible with python-sphinx >= 3.0.0):
-  # https://github.com/sphinx-doc/sphinx/issues/7421
-  sed -e "s/'cdomain',//" -i Documentation/conf.py
 
   echo "Setting config..."
   cp ../config .config
