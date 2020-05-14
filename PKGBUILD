@@ -2,7 +2,7 @@
 
 _name=senf
 pkgname=python-senf
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Python module for handling platform native strings"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 checkdepends=('python-hypothesis' 'python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('2362c0c9572135bb5394c077385388b887a431d79f6b190c0444a4d0cf52580e79f71f2825a697ec71e1453f6d7d36d713708728f4572ce5955806e45cae2ce0')
+sha512sums=('4a474e3bb7ceae07980e27c4d86240b862ec829e7b73fdf0fb43cfd1529cdff7fa7839fa56c354bb37adc950e848612bfd6e90234c8d4a7c143e302361ac7fe4')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "${pkgname}-${pkgver}"
