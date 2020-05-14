@@ -1,9 +1,8 @@
 # Maintainer: null2264 <palembani@gmail.com>
 pkgname=st-ziro-git
-_pkgname=st
-pkgver=0.8.3r2.zi
+_pkgname=st-zi
+pkgver=0.8.3r3.zi
 pkgrel=1
-epoch=1
 pkgdesc="ZiRO or AAP's personal build of st (simple terminal) with Xresources, transparency, etc."
 url='https://github.com/null2264/st-zi'
 arch=('i686' 'x86_64')
@@ -11,30 +10,30 @@ license=('MIT')
 options=('zipman')
 depends=('libxft')
 makedepends=('ncurses' 'libxext' 'git')
-source=('git://github.com/null2264/st-zi')
-sha1sums=('SKIP')
 
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+source=('git://github.com/null2264/st-zi')
+sha256sums=('SKIP')
+provides=('st')
+conflicts=('st')
 
 pkgver() {
-  cd st-zi
+  cd ${_pkgname}
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd st-zi
+  cd ${_pkgname}
   # skip terminfo which conflicts with ncurses
   sed -i '/tic /d' Makefile
 }
 
 build() {
-  cd st-zi
+  cd ${_pkgname}
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-  cd st-zi
+  cd ${_pkgname}
   make PREFIX=/usr DESTDIR="$pkgdir" TERMINFO="$pkgdir/usr/share/terminfo" install
 
   # Avoid conflict with ncurses package
