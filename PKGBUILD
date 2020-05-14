@@ -11,7 +11,7 @@ _name=FreeRDP
 _pkgname=freerdp
 pkgname=freerdp-gstfree
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 arch=('x86_64')
 url="https://www.freerdp.com/"
@@ -26,8 +26,17 @@ conflicts=('freerdp')
 provides=('libfreerdp2.so' 'libfreerdp-client2.so' 'libfreerdp-server2'
 'libfreerdp-shadow2.so' 'libfreerdp-shadow-subsystem2.so' 'libwinpr2.so'
 'libwinpr-tools2.so' 'libuwac0.so' 'freerdp')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('afed8893128067b688bf5ba87e7d28296ece3b4848d84653ab0ad0c3723b6a8bc36733aca9649fb29a0d4a53b39fdd49d56d17e9b4eac8bf7b06fa4b27e66b14')
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz"
+        "${_pkgname}-2.0.0-manpage_formatting.patch")
+sha512sums=('afed8893128067b688bf5ba87e7d28296ece3b4848d84653ab0ad0c3723b6a8bc36733aca9649fb29a0d4a53b39fdd49d56d17e9b4eac8bf7b06fa4b27e66b14'
+            'd960e042d1527b5d5721136b6b20fc36f65beafd010581ea5b908668537fe9fe622de6689a29c0274b0d6f1e513615f0d02e56c1d1d1e613d093e145d39af8d7')
+
+prepare() {
+  cd "${_name}-${pkgver}"
+  # fix man page formatting:
+  # https://bugs.archlinux.org/task/64814
+  patch -Np1 -i "../${_pkgname}-2.0.0-manpage_formatting.patch"
+}
 
 build() {
   cd "${_name}-${pkgver}"
