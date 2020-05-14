@@ -1,18 +1,19 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p
-pkgver=20200504
-pkgrel=2
+pkgver=20200514
+pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI'
 arch=('x86_64')
 url='https://m64p.github.io/'
 license=('GPL3')
 depends=('freetype2' 'glu' 'hidapi' 'libgl' 'libpng' 'libsamplerate'
-         'minizip' 'p7zip' 'qt5-base' 'sdl2' 'zlib' 'hicolor-icon-theme')
+         'minizip' 'p7zip' 'qt5-base' 'qt5-websockets' 'sdl2' 'sdl2_net'
+         'zlib' 'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'nasm' 'icoutils')
 provides=('mupen64plus' 'mupen64plus-gui' 'mupenplus-video-gliden64')
 conflicts=('mupen64plus' 'mupen64plus-gui' 'mupenplus-video-gliden64')
-source=("git+https://github.com/loganmc10/m64p.git#tag=$(LC_ALL='C' date -d "$pkgver" +%b%-d%Y | tr '[:upper:]' '[:lower:]')"
+source=('git+https://github.com/loganmc10/m64p.git#tag=netplayb1'
         'git+https://github.com/m64p/mupen64plus-gui.git'
         'git+https://github.com/m64p/mupen64plus-audio-sdl2.git'
         'git+https://github.com/mupen64plus/mupen64plus-rsp-hle.git'
