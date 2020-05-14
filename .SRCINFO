@@ -1,0 +1,18 @@
+pkgbase = comrak-git
+	pkgdesc = CommonMark + GFM compatible Markdown parser and renderer
+	pkgver = 0.7.0.r17.g500d73f
+	pkgrel = 1
+	url = https://github.com/kivikakk/comrak
+	arch = x86_64
+	arch = i686
+	license = MIT
+	license = custom
+	makedepends = cargo
+	makedepends = rust
+	provides = comrak
+	conflicts = comrak
+	source = git+https://github.com/kivikakk/comrak.git
+	sha256sums = SKIP
+
+pkgname = comrak-git
+
