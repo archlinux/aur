@@ -11,8 +11,8 @@ pkgbase = ocaml-sqlite3
 	depends = ocaml-base
 	depends = ocaml-stdio
 	depends = sqlite3
-	source = https://github.com/mmottl/sqlite3-ocaml/archive/5.0.1.tar.gz
-	md5sums = 313507fdb7595f12cde3b7207420d6a5
+	source = ocaml-sqlite3-5.0.1.tar.gz::https://github.com/mmottl/sqlite3-ocaml/archive/5.0.1.tar.gz
+	sha256sums = f535982dac06801a0ffd0eb7242323ea72c23e093e0397c73b5ac58f6564d57d
 
 pkgname = ocaml-sqlite3
 
