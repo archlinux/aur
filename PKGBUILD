@@ -1,7 +1,7 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander F. RÃ¸dseth <xyproto@archlinux.org>
 
 pkgname=png2svg
-pkgver=1.2.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Utility for converting small PNG images to SVG'
 arch=(x86_64)
