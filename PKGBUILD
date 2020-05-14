@@ -2,16 +2,16 @@
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 # Special thanks to RyanTheAllmighty for making hyper-appimage
 pkgname="gdlauncher"
-pkgver="0.0.9"
+pkgver="0.0.10"
 pkgrel=1
-commitsha="07c581af9347e481fe600217eacd83416ff0f9b1"
+commitsha="a0f2f5d9c93a2b91850e25ec8fc064fde7eb53d6"
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdevs.io"
 license=('GPL3')
 makedepends=('git' 'yarn' 'nodejs' 'rust' 'unzip')
 depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3')
-conflicts=('gdlauncher-appimage' 'gdlauncher-git')
+conflicts=('gdlauncher-appimage' 'gdlauncher-git' 'gdlauncher-bin')
 source=("gdlauncher::git+https://github.com/gorilla-devs/GDLauncher.git")
 md5sums=('SKIP')
 
