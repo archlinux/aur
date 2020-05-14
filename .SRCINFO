@@ -11,6 +11,7 @@ pkgbase = auracle-git
 	makedepends = meson
 	makedepends = git
 	makedepends = perl
+	makedepends = systemd
 	depends = pacman
 	depends = libcurl.so
 	depends = libsystemd.so
