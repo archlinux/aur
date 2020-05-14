@@ -26,7 +26,7 @@ package() {
 	cd "${srcdir}/${pkgdirname}"
 	echo "#!/bin/env php" >> php-android
 	echo "<?php " >> php-android
-	echo "include '/usr/local/lib/php-android-cli/index.php';" >> php-android
+	echo "include '/usr/local/lib/php-android-cli-git/index.php';" >> php-android
 	mkdir -p "${pkgdir}/usr/local/lib/${pkgname}/"
 	install -Dm0755 php-android "${pkgdir}/usr/local/bin/php-android"
 
