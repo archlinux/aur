@@ -1,6 +1,6 @@
 # Maintainer: Samuel Barata <samuel_aur@sapo.pt>
 
-pkgname=toontown-rewritten
+pkgname=toontown-rewritten-updated
 pkgver=1.2.3
 pkgrel=2
 pkgdesc="An MMO originally by Disney, rewritten. An account is needed to play."
