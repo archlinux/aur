@@ -1,0 +1,18 @@
+pkgbase = brscanads2200ads2700w
+	pkgdesc = SANE drivers from Brother for ads-2200 and ads-2700w
+	pkgver = 0.1.15_1
+	pkgrel = 1
+	url = http://support.brother.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom:Brother
+	depends = sane
+	source = https://download.brother.com/welcome/dlf103483/brscanads2200ads2700w-0.1.15-1.x86_64.rpm
+	source = https://support.brother.com/g/s/agreement/English_lpr/agree.html
+	md5sums = 23b8a721dacbe6356594d197d2972816
+	md5sums = 5a4a3172f6278922062aa6e1f43b0d92
+
+pkgname = brscanads2200ads2700w
+	depends = libjpeg6-turbo
+
