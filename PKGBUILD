@@ -8,7 +8,8 @@ arch=('any')
 install=mpv-thumbnail-script.install
 depends=('mpv' 'ffmpeg')
 url='https://github.com/TheAMM/mpv_thumbnail_script'
-license=('GPL-3.0')
+license=('GPL3')
+options=('!strip')
 source=("mpv-thumbnail-script-server.lua::https://github.com/TheAMM/mpv_thumbnail_script/releases/download/${pkgver}/mpv_thumbnail_script_server.lua"
 		"mpv-thumbnail-script-client-osc.lua::https://github.com/TheAMM/mpv_thumbnail_script/releases/download/${pkgver}/mpv_thumbnail_script_client_osc.lua"
 		'mpv_thumbnail_script.conf')
@@ -20,6 +21,4 @@ package() {
   install -Dm644 "${srcdir}/mpv-thumbnail-script-server.lua" -t "${pkgdir}/usr/share/mpv/scripts"
   install -Dm644 "${srcdir}/mpv-thumbnail-script-client-osc.lua" -t "${pkgdir}/usr/share/mpv/scripts"
   install -Dm644 "${srcdir}/mpv_thumbnail_script.conf" -t "${pkgdir}/etc/mpv-thumbnail-script"
-  mkdir -p "${pkgdir}/usr/share/licenses/mpv-thumbnail-script"
-  ln -s /usr/share/licenses/common/GPL3/license.txt "${pkgdir}/usr/share/licenses/mpv-thumbnail-script/LICENSE"
 }
