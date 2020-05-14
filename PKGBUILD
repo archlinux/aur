@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _major=5.6
-_minor=12
+_minor=13
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -78,12 +78,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v11-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0003-gcc-plugins-drop-support-for-GCC-4.7.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0004-gcc-common.h-Update-for-GCC-10.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0005-Makefile-disallow-data-races-on-gcc-10-as-well.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0006-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch"
+        "${_lucjanpath}/arch-patches-v12-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v12-sep/0002-gcc-plugins-drop-support-for-GCC-4.7.patch"
+        "${_lucjanpath}/arch-patches-v12-sep/0003-gcc-common.h-Update-for-GCC-10.patch"
+        "${_lucjanpath}/arch-patches-v12-sep/0004-Makefile-disallow-data-races-on-gcc-10-as-well.patch"
+        "${_lucjanpath}/arch-patches-v12-sep/0005-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -326,17 +325,16 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('34f91c07287707901786166c6056e75edabea263fa61bcce8d5c925ed48323020e1400283fa29263e6e2e740b75e0165077388330ed900d81f30b35c73fa7752'
+sha512sums=('f171638debb017ffcc5b9ce19b190cfa05638412e1f03344a5a7be45be901eb97c2df1449c9899c33a7668019f4c6d4eb1f99d864ab9a7050fbfd6b06c7aca8d'
             'SKIP'
             '31141f3afa388dbfc7a0a1c0a7b7fc58a6824befea1fc044eb76fc0e6d4c55f249e3e0f7e63c0697ba736dc902d85128c0d78eeffe8eca3c207a573664c74514'
             '4299d07a7bf033f6566a2b3495cb66b054e32d7c066605245506412ce94901958d69bd5a3ee011125bf7e81c9ddf790eda44cbe062f37bdc618722306686add3'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
-            '5c447506bfbce039987db39a495d644832dd360025ae3d49979cd2467c080ad2c9ccb382ff1f6a0bc43957746c3ee35858282481a80a0a0c21db01986cd8b9bd'
-            'f5dcb80af6b8bb40157bed9fe2549e0748fb26bf0c9c18a01da0f1b1e049249d2cdc2966b8deb3c440b608385bdc01a3365842d933f9237c3d78569466ddc800'
-            'c70ba846adb911dce879853f860d283d350f08e190a7e62023281b813cb2491f30bee53fc05fbcd74867e0788f96651fbb4337a3ae2321e695bab77ada328e75'
-            'c08b019d0885755f7cd95eb6d4f6c7bdc4157115906f4aff98857144169073f0047cc8627c4eda57959f9b4086b0bc197852219087ad19d4babf45a9c0d3e088'
-            'c19f293006985564d6a3d375629af924d4ae9103090658c9cd2289f14b516ac89f3569b8946a4b4b853b836dacaf16368315f5eb019d9d120e9a4a62ff50593e'
-            'bbe8f44ea6fe1c4ee5a35c277e9983c5f8f8dffc16d1dcb2234b5e6001c5346e72ef1ea47b239ff5e8a4dc14097da7155243011c9f05d949a87dd8b8b717d050'
+            'd2226f3ca0583770f14be794b26d98d49ba10e38e3625af1726857a91f250cfce73454646b17d7597fdb98cd3f947a1356a0c9f88a2792b4d2cecf1fad76fe28'
+            '5cbfbf1b4bb90114600de6eb2b5c058ced63c875582547c3739e296b43c5b26985a07095f55ae67e31e888598af651b7e37370acaff7188b366a7d3a51d53bdf'
+            '1df4fb4d5c02c6cd0d4e8d3d807a5641303ed5e7f40b91a1508aaa1f5fec19d6a83d3165ae5131e198fea6cd1919015f58207b22a20eae9b47b95c28e1ca66b3'
+            'de9b4dc492162fbd0f40bce710703ae1d66c1e7a5449a1d24bdaceb16f1d781457664722e4635c413ec00c26d0632b7ac21defcda65b2282bd475cc1e80732eb'
+            '5d5e65aefcee037177fb2e8d3e841c347ea83118c868b7d87d843d526eb6935e39cef5dd9ab0f2c30ecc53c86efb581d9c824a31ec7afc0fdd2b7b1e8b3b3cfb'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             '966645c89b4cfa97c7ddcfb26eb6390db4f1f82fe66297ba5abfd03ca913ce109db31115c83ad6a0b17580c103354e9b660bc4dea737259b2843cf152d874caf')
 
