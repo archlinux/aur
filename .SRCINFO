@@ -1,21 +1,20 @@
 pkgbase = qalculate-gtk-nognome
 	pkgdesc = GTK+ frontend for libqalculate, without gnome dependencies
-	pkgver = 3.7.0
+	pkgver = 3.10.0
 	pkgrel = 1
 	url = http://qalculate.github.io/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	makedepends = perl-xml-parser
 	makedepends = rarian
 	makedepends = intltool
-	depends = libqalculate>=3.7.0
+	depends = libqalculate>=3.10.0
 	depends = gtk3>=3.10
-	depends = cln>=1.2.0
 	provides = qalculate-gtk
 	replaces = qalculate-gtk
-	source = https://github.com/Qalculate/qalculate-gtk/archive/v3.7.0.tar.gz
-	md5sums = a6b42fc6c4739545d2a39ecef89c6a42
+	source = qalculate-gtk-nognome-3.10.0.tar.gz::https://github.com/Qalculate/qalculate-gtk/archive/v3.10.0.tar.gz
+	sha256sums = b7a22a9a70e88a9062d2ab3b232c793a30215bc2d666062e222a52bd2538b86c
 
 pkgname = qalculate-gtk-nognome
 
