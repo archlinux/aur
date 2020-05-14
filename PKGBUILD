@@ -1,7 +1,7 @@
 # Maintainer: null2264 <palembani@gmail.com>
 pkgname=st-ziro-git
 _pkgname=st
-pkgver=r1129.873330b
+pkgver=0.8.3r2-zi
 pkgrel=1
 epoch=1
 pkgdesc="ZiRO or AAP's personal build of st (simple terminal) with Xresources, transparency, etc."
@@ -37,5 +37,5 @@ package() {
   cd st-zi
   make PREFIX=/usr DESTDIR="$pkgdir" TERMINFO="$pkgdir/usr/share/terminfo" install
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
