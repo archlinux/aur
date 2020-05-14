@@ -17,7 +17,7 @@ url="http://www.enlightenment.org"
 license=('BSD')
 depends=('efl-git' 'udisks2' 'wayland' 'bluez-libs'
          'xorg-server-xwayland' 'bluez' 'pulseaudio' 'connman' 'bc')
-makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot')
+makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot' 'ccache')
 optdepends=('acpid: power events on laptop lid close - almost essential for any ACPI based system like intel'
             'gdb: create backtraces on crash - needed for getting backtraces at crash time in ~/.e-crashdump.txt'
             'geoclue2: needed for geolocation module'

@@ -17,6 +17,7 @@ pkgbase = enlightenment-git-asan
 	makedepends = gcc
 	makedepends = binutils
 	makedepends = fakeroot
+	makedepends = ccache
 	depends = efl-git
 	depends = udisks2
 	depends = wayland
