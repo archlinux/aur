@@ -22,7 +22,7 @@ pkgname=(
   "$pkgbase" kodi-bin-devel kodi-wayland-devel kodi-gbm-devel
   kodi-eventclients-devel kodi-tools-texturepacker-devel kodi-dev-devel
 )
-pkgver=18.7pre35
+pkgver=18.7pre36
 _major=18.6
 pkgrel=1
 arch=('x86_64')
@@ -80,41 +80,42 @@ source=(
   cpuinfo
   000-PR17300.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17300.patch
   # 17412 and 17559 do not apply
-  001-PR17254.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17254.patch
-  002-PR17386.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17386.patch
-  # 003-PR17412.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17412.patch
-  004-PR17413.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17413.patch
-  005-PR17439.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17439.patch
-  006-PR17450.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17450.patch
-  007-PR17464.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17464.patch
-  008-PR17466.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17466.patch
-  009-PR17485.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17485.patch
-  010-PR17495.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17495.patch
-  011-PR17499.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17499.patch
-  012-PR17541.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17541.patch
-  013-PR17542.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17542.patch
-  014-PR17549.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17549.patch
-  015-PR17557.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17557.patch
-  # 016-PR17559.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17559.patch
-  017-PR17569.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17569.patch
-  018-PR17598.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17598.patch
-  019-PR17613.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17613.patch
-  020-PR17622.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17622.patch
-  021-PR17648.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17648.patch
-  022-PR17658.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17658.patch
-  023-PR17662.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17662.patch
-  024-PR17670.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17670.patch
-  025-PR17698.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17698.patch
-  026-PR17716.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17716.patch
-  027-PR17744.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17744.patch
-  028-PR17758.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17758.patch
-  029-PR17767.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17767.patch
-  030-PR17768.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17768.patch
-  031-PR17770.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17770.patch
-  032-PR17782.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17782.patch
-  033-PR17805.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17805.patch
-  034-PR17815.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17815.patch
-  035-PR17836.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17836.patch
+  001-PR17386.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17386.patch
+  # 002-PR17412.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17412.patch
+  003-PR17413.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17413.patch
+  004-PR17439.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17439.patch
+  005-PR17450.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17450.patch
+  006-PR17464.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17464.patch
+  007-PR17466.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17466.patch
+  008-PR17485.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17485.patch
+  009-PR17495.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17495.patch
+  010-PR17499.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17499.patch
+  011-PR17541.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17541.patch
+  012-PR17542.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17542.patch
+  013-PR17549.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17549.patch
+  014-PR17557.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17557.patch
+  # 015-PR17559.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17559.patch
+  016-PR17569.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17569.patch
+  017-PR17598.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17598.patch
+  018-PR17613.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17613.patch
+  019-PR17622.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17622.patch
+  020-PR17648.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17648.patch
+  021-PR17658.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17658.patch
+  022-PR17662.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17662.patch
+  023-PR17670.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17670.patch
+  024-PR17698.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17698.patch
+  025-PR17716.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17716.patch
+  026-PR17744.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17744.patch
+  027-PR17758.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17758.patch
+  028-PR17767.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17767.patch
+  029-PR17768.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17768.patch
+  030-PR17770.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17770.patch
+  031-PR17782.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17782.patch
+  032-PR17805.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17805.patch
+  033-PR17815.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17815.patch
+  034-PR17836.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17836.patch
+  035-PR17850.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17850.patch
+  036-PR17863.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17863.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -137,7 +138,6 @@ sha256sums=('47e6d7d4e01dbda92ff83a3e141ac43003e918133e78b3a4b79faff65184711c'
             '5ca5491e4260cacae30f1a5786d109230db3f3a6e5a0eb45d0d0608293d247e3'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
             '3aaca3630689b76e7a7f35656a4ada3fb18ecd7e3fe199634264ccf76b96c0f0'
-            '0a65a930375807493dd3ab91dff62a9a0eb91fd075e961ac2a9784575cc0cbb9'
             '8e2934c9b439f6648cc7d962e56f1e273abba2800541a83b11c2b79abe4640b3'
             '9514b004dbd8f59a3202b399ba5e9a8d7ac54f04d397cf48dfc4f7b72ab0ab96'
             '9507a8c4f3a8f0ab9a4988672596e0251c086975c04fa5e43935dc059b2c5a0f'
@@ -169,7 +169,9 @@ sha256sums=('47e6d7d4e01dbda92ff83a3e141ac43003e918133e78b3a4b79faff65184711c'
             '707b5225eb2f375204b5cc47bc218dc6dd76d5119581cec9c6cc51dbe96409e9'
             '25c8d5e2b2ffb4a32a1fc797db82c0bec648126cee66313616ad534c3c34fe77'
             '96d28ef345a6303ca6972909b0936afb40c61d61d930fbb08475acbbe22710ad'
-            'cef267d256e233750dd9e80b9d732abf014df23cb8427a46661c82b633a47342')
+            'cef267d256e233750dd9e80b9d732abf014df23cb8427a46661c82b633a47342'
+            'a4678023f884630dd1ff7d96db088703aa9b0f4c8aa1ba9f9a53b9c6c9b02be3'
+            'ce1bd0578bf66186d9f5fb3e6b5d4084189d0a781c3f17c67de29db6617ef63b')
 prepare() {
   # force python 'binary' as python2
   [[ -d "$srcdir/path" ]] && rm -rf "$srcdir/path"
