@@ -1,10 +1,10 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 
-_pkgnamefmt=LibreOffice
+_pkgnamefmt=LibreOfficeDev
 _pkgname=libreoffice
 pkgname=${_pkgname}-dev-bin
-_LOver=6.4.0.2
-pkgver=6.4.0.2
+_LOver=7.0.0.0.alpha1
+pkgver=7.0.0.0alpha1
 #_basever=$( cut -f1-2 -d'.' <<< ${_LOver} )
 pkgrel=1
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('java-runtime:          adds java support'
 provides=('libreoffice' 'libreoffice-en-US')
 
 source=("https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/${_pkgnamefmt}_${_LOver}_Linux_x86-64_rpm.tar.gz")
-sha256sums=('991579b5cdcac9c9a34452747a451ffbad1812f2f96ff3c4cbf3da72affac41b')
+sha256sums=('0f36ea460b8a3a966c26edca0a22d95a55d2d70067c62268bda6b866a203b4a7')
 
 package() {
 	find "${srcdir}/${_pkgnamefmt}_${_LOver}"*/RPMS/*rpm -exec bsdtar -x -f '{}' -C "${pkgdir}" \;
