@@ -1,13 +1,13 @@
 pkgbase = proton-ide-git
 	pkgdesc = A new IDE made with Vala.
 	pkgver = r182.e6b754e
-	pkgrel = 2
+	pkgrel = 1
 	url = https://gitlab.com/raggesilver-proton/proton
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = meson
+	makedepends = meson>=0.50.0
 	makedepends = vala
 	depends = gtk3
 	depends = granite

@@ -6,7 +6,7 @@ _author=raggesilver-proton
 _pkg=("${_gitname}-ide")
 pkgname=("${_pkg}-git")
 pkgver=r182.e6b754e
-pkgrel=2
+pkgrel=1
 pkgdesc="A new IDE made with Vala."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/${_author}/${_gitname}"
@@ -14,7 +14,7 @@ license=('GPL3')
 depends=('gtk3' 'granite' 'glib2' 'gtksourceview4' 'json-glib' 'libdazzle' 
 		 'marble-gtk' 'vte3')
 optdepends=('')
-makedepends=('git' 'meson' 'vala')
+makedepends=('git' 'meson>=0.50.0' 'vala')
 provides=("${_pkg}" "${pkgname}")
 conflicts=("${_pkg}")
 source=("git+${url}.git")
@@ -38,4 +38,3 @@ package() {
     cd "${_gitname}/"
     DESTDIR="${pkgdir}" ninja -C _build install
 }
-
