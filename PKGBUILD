@@ -3,8 +3,8 @@
 _name=gaphor
 _pkgname="python-${_name}"
 pkgname="${_pkgname}-git"
-pkgver=1.2.0.r50.g2521a448
-pkgrel=2
+pkgver=1.2.0.r268.g9911bc2e
+pkgrel=1
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('x86_64' 'i686')
 url="https://github.com/gaphor/${_name}"
@@ -43,7 +43,7 @@ prepare() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
+	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps --no-warn-script-location .
 	install -Dm644 "$srcdir/${_name}.desktop" -t "$pkgdir"/usr/share/applications
 	install -Dm644 "./logos/${_name}.svg" "$pkgdir"/usr/share/pixmaps/${_name}.svg
 }
