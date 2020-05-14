@@ -1,7 +1,7 @@
 # Maintainer: Arthur LAURENT <arthur.laurent4@gmail.com>
 pkgname='stormkit-git'
-pkgver=r3.fd1672e
-pkgrel=2
+pkgver=r5.47bd8fc
+pkgrel=1
 pkgdesc='Arthapz personal C++ TooKit'
 
 arch=('any')
@@ -26,10 +26,14 @@ pkgver() {
 }
 
 prepare() {
-    git clone https://aur.archlinux.org/range-v3-git.git
-    cd 'range-v3-git'
-    makepkg -si
-    cd '../'
+    range="range"
+    if pacman -Qi $range > /dev/null ; then
+    	git clone https://aur.archlinux.org/range-v3-git.git
+    	cd 'range-v3-git'
+    	makepkg -si
+    	cd '../'
+    fi
+
     cd 'stormkit'
     export DESTDIR=/usr
     meson builddir-debug -Dbuildtype=debug -Denable_examples=false
