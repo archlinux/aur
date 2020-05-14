@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Gsänger <sebastian_gsaenger@web.de>
 pkgname=vipster-git
-pkgver=r1234.b555fa4
-pkgrel=2
+pkgver=r1302.59e41ae
+pkgrel=1
 pkgdesc="Molecule editor based on Qt, specialized on periodic structures, development version"
 arch=('x86_64')
 url="https://sgsaenger.github.io/vipster"
@@ -20,10 +20,12 @@ pkgver() {
 
 build() {
     cd vipster
+    git submodule update --init external/lammps
+
     mkdir -p build
     cd build
 
-    cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release -D VIPSTER_DESKTOP=ON -D VIPSTER_PYWIDGET=ON -D VIPSTER_PYLIB=ON -D VIPSTER_TESTS=ON ..
+    cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release -D VIPSTER_DESKTOP=ON -D VIPSTER_PYWIDGET=ON -D VIPSTER_PYLIB=ON -D VIPSTER_LAMMPS=ON -D VIPSTER_TESTS=ON ..
     make vipster pyvipster
 }
 
