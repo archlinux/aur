@@ -7,20 +7,21 @@ pkgver=0.11.1
 pkgrel=1
 pkgdesc='A distributed, highly available, datacenter-aware scheduler'
 arch=('x86_64')
-url="https://nomadproject.io/"
-license=('MPL-2.0')
-optdepends=('docker: enables docker driver'
-            'java-runtime: enables java driver'
-            'qemu-headless: enables qemu driver'
-            'rkt: enables rkt driver')
+url="https://nomadproject.io"
+license=('MPL2')
+optdepends=('docker: Enables docker driver'
+            'java-runtime: Enables java driver'
+            'qemu-headless: Enables qemu driver'
+            'rkt: Enables rkt driver')
 provides=('nomad')
 conflicts=('nomad')
+depends=('glibc')
 backup=(etc/nomad/{server,client}.conf)
-source=("https://releases.hashicorp.com/nomad/${pkgver}/nomad_${pkgver}_linux_amd64.zip"
-		'nomad-server.service'
-		'nomad-client.hcl'
-		'nomad-client.service'
-		'nomad-server.hcl')
+source=("${pkgname}-${pkgver}.zip::https://releases.hashicorp.com/nomad/${pkgver}/nomad_${pkgver}_linux_amd64.zip"
+    		'nomad-server.service'
+    		'nomad-client.hcl'
+    		'nomad-client.service'
+    		'nomad-server.hcl')
 sha256sums=('711e98b89ac4f5540bf3d6273379999f6c4141529531c262222e63ce491f5176'
          	'85b6938ba13b450f8b7b9ca281178eea57a9409948b9e70b69d6a66a4dbdaa7b'
          	'c3650a0f88cb6c511731e26f25dddfe531de3cb833fa1780ec68273faef97c97'
