@@ -7,7 +7,7 @@ pkgbase = pstoedit-emf
 	arch = x86_64
 	license = GPL
 	makedepends = ghostscript
-	depends = gcc-libs
+	depends = libzip
 	depends = plotutils
 	depends = gd
 	depends = imagemagick
@@ -15,8 +15,8 @@ pkgbase = pstoedit-emf
 	provides = pstoedit=3.75
 	conflicts = pstoedit
 	options = !makeflags
-	source = http://downloads.sourceforge.net/sourceforge/pstoedit/pstoedit-3.75.tar.gz
-	md5sums = a1965d0fcc4e151a265907865078d2c4
+	source = pstoedit-emf-3.75.tar.gz::http://downloads.sourceforge.net/sourceforge/pstoedit/pstoedit-3.75.tar.gz
+	sha256sums = b7b5d8510b40a5b148f7751268712fcfd0c1ed2bb46f359f655b6fcdc53364cf
 
 pkgname = pstoedit-emf
 
