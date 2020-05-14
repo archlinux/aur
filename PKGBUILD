@@ -1,7 +1,7 @@
 # Maintainer: Arthur LAURENT <arthur.laurent4@gmail.com>
 pkgname='shaderwriter-git'
 pkgver=r114.9ba87a7
-pkgrel=1
+pkgrel=2
 pkgdesc='Library used to write shaders from C++, and export them in either GLSL, HLSL or SPIR-V.'
 
 arch=('any')
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
     cd 'ShaderWriter'
-    cmake . -DCMAKE_BUILD_TYPE=Release -DPROJECTS_USE_PRECOMPILED_HEADERS=OFF -DSDW_BUILD_EXPORTER_HLSL=OFF -DSDW_BUILD_GLSL=ON -DSDW_BUILD_EXPORTER_SPIRV=ON -DSDW_BUILD_STATIC_EXPORTERS=OFF -DSDW_BUILD_STATIC_SDW=OFF -DSDW_GENERATE_SOURCE=OFF -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
+    cmake . -DCMAKE_BUILD_TYPE=Release -DPROJECTS_USE_PRECOMPILED_HEADERS=OFF -DSDW_BUILD_EXPORTER_HLSL=OFF -DSDW_BUILD_GLSL=ON -DSDW_BUILD_EXPORTER_SPIRV=ON -DSDW_BUILD_STATIC_EXPORTERS=OFF -DSDW_BUILD_STATIC_SDW=OFF -DSDW_GENERATE_SOURCE=OFF -DSDW_BUILD_VULKAN_LAYER=OFF -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
     cmake --build .
 }
 
