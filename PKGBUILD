@@ -1,6 +1,6 @@
 # Maintainer: larte <lauri.arte@gmail.com>
 pkgname=k8stail
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Watch kubernetes logstreams filtering with namespace and labels, like tail -f"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go' 'go-bindata' 'make' 'glide')
 _archive=k8stail-$pkgver
 source=($_archive.tar.gz::https://github.com/dtan4/k8stail/archive/v$pkgver.tar.gz)
-md5sums=('bd893081cbe9e9fbd29ccff7193c869b')
+md5sums=('18b257d9b02e7c4602b2641a00f7cca9')
 
 
 prepare() {
