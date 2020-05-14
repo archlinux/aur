@@ -3,7 +3,7 @@
 
 pkgname=gam
 pkgver=5.09
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tool for Google GSuite admins to manage settings quickly and easily"
 arch=('any')
 url="https://github.com/jay0lee/GAM"
@@ -28,7 +28,7 @@ source=(
 )
 
 sha256sums=('29bb6afebd4c5355d17ae2498f961d9729d84757cb07af6b9d03bf87841d0f91'
-            'bbb4bf158740c083d1209e6922b2b113b6fbdf0c8906aa706b2193b67041ed08'
+            '31d97ff8515d6b5e214b18affb1cb7be88fc8cddb0022f46d6d7ccf848819bf9'
             '20ce5f7630feb47b1838ad998aa98bfafbc18f494f0697fbcfab484a572ae6d5'
             'f8613546b8d4a51f05342d3680553c20a2e0995c3be90e469f1da3bb83ca172e')
 

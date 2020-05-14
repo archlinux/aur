@@ -1,6 +1,6 @@
---- src/gam/var.py	2020-05-08 10:01:09.723815658 -0700
-+++ src/gam/var.py	2020-05-08 10:00:47.173712281 -0700
-@@ -21,6 +21,19 @@
+--- src/gam/var.py	2020-05-14 08:28:44.595484330 -0700
++++ src/gam/var.py	2020-05-14 08:30:42.780304096 -0700
+@@ -22,6 +22,19 @@
  GAM_LATEST_RELEASE = GAM_ALL_RELEASES + '/latest'
  GAM_PROJECT_FILEPATH = 'https://raw.githubusercontent.com/jay0lee/GAM/master/src/'
  
@@ -20,7 +20,7 @@
  true_values = ['on', 'yes', 'enabled', 'true', '1']
  false_values = ['off', 'no', 'disabled', 'false', '0']
  usergroup_types = [
-@@ -35,8 +48,8 @@
+@@ -36,8 +49,8 @@
  WARNING_PREFIX = 'WARNING: '
  UTF8 = 'utf-8'
  UTF8_SIG = 'utf-8-sig'
@@ -31,7 +31,7 @@
  MY_CUSTOMER = 'my_customer'
  # See https://support.google.com/drive/answer/37603
  MAX_GOOGLE_SHEET_CELLS = 5000000
-@@ -1065,9 +1078,9 @@
+@@ -1071,9 +1084,9 @@
  
  #
  _DEFAULT_CHARSET = UTF8
@@ -44,12 +44,12 @@
  #
  GM_Globals = {
      GM_SYSEXITRC: 0,
-@@ -1111,7 +1124,7 @@
- # Path to client_secrets.json
+@@ -1119,7 +1132,7 @@
  GC_CLIENT_SECRETS_JSON = 'client_secrets_json'
- # GAM config directory containing client_secrets.json, oauth2.txt, oauth2service.json, extra_args.txt
+ # GAM config directory containing client_secrets.json, oauth2.txt,
+ # oauth2service.json, extra_args.txt
 -GC_CONFIG_DIR = 'config_dir'
 +GC_CONFIG_DIR = CONFIG_DIR
  # custmerId from gam.cfg or retrieved from Google
  GC_CUSTOMER_ID = 'customer_id'
- # If debug_level > 0: extra_args[u'prettyPrint'] = True, httplib2.debuglevel = gam_debug_level, appsObj.debug = True
+ # If debug_level > 0: extra_args[u'prettyPrint'] = True,
