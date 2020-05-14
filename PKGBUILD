@@ -1,7 +1,6 @@
 # Maintainer: Fancy Zhang <springzfx@gmail.com>
-pkgbase=cgproxy
-pkgname=cgproxy-git
-pkgver=v3.7.r0.g6c24c68
+pkgname=cgproxy
+pkgver=v3.7
 pkgrel=1
 pkgdesc="A transparent proxy program with cgroup2, like proxychains"
 arch=('x86_64')
@@ -10,17 +9,11 @@ license=('')
 groups=('')
 makedepends=('cmake')
 depends=('systemd')
-options=('!strip' '!emptydirs')
-source=("${pkgname}::git+https://github.com/springzfx/cgproxy#branch=master")
-md5sums=('SKIP')
+provides=('cgproxy')
+conflicts=('cgproxy')
 
-pkgver() {
-  cd "$pkgname"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
+source=("${pkgname}::git+https://github.com/springzfx/cgproxy#tag=${pkgver}")
+md5sums=('SKIP')
 
 backup=('etc/cgproxy.conf')
 
@@ -28,7 +21,8 @@ build(){
     cd "$pkgname"
     mkdir -p build && cd build && cmake .. && make 
 }
-package_cgproxy-git(){
+
+package_cgproxy(){
     cd "$pkgname"/build
     make DESTDIR=$pkgdir install 
 }
