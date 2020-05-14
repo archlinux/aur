@@ -1,7 +1,7 @@
 pkgbase = lightning-lang-patcher
 	pkgdesc = Patch langs of Lightning thunderbird addon
 	pkgver = 1.4.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Elrondo46/lightning-lang-patcher
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = lightning-lang-patcher
 	depends = python-gobject
 	depends = thunderbird
 	source = https://github.com/Elrondo46/lightning-lang-patcher/archive/1.4.16.tar.gz
-	sha256sums = 5ee0dbb3cffe973941c836dc587d5b67bb0c192e498f9df16c3a89098454f3e2
+	sha256sums = 51c4161d184d21fe5bd47df72a5b986ce239884cf8b17bbb1d0447aa905d5a9f
 
 pkgname = lightning-lang-patcher
 

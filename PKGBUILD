@@ -2,7 +2,7 @@
 
 pkgname=lightning-lang-patcher
 pkgver=1.4.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Patch langs of Lightning thunderbird addon"
 arch=('x86_64')
 license=('GPL3')
