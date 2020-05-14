@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'armv7h')
 url="https://bitbucket.org/gplugin/gplugin"
 license=('GPL')
 depends=('glib2' 'gobject-introspection-runtime')
-makedepends=('mercurial' 'cmake' 'gobject-introspection' 'gtk3'
+makedepends=('mercurial' 'meson' 'gobject-introspection' 'gtk3'
              'python-gobject' 'lua-lgi' 'libxslt' 'help2man' 'vala')
 optdepends=('gtk3: for GTK+ support'
             'python-gobject: for Python support'
