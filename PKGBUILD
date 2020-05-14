@@ -2,13 +2,13 @@
 
 pkgname=powerkit
 pkgver=1.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc='A Lightweight Desktop Independent full featured power manager'
 arch=('x86_64')
 url='https://github.com/rodlie/powerkit'
-license=('BSD-3-Clause')
-depends=('xscreensaver' 'upower')
-makedepends=('xss' 'xorg-xrandr' 'qt5-base')
+license=('BSD')
+depends=('xscreensaver' 'upower' 'qt5-base' 'libxss')
+makedepends=('xorg-xrandr' 'qt5-base')
 optdepends=('adwaita-icon-theme')
 source=("${pkgname}-${pkgver}.tar.xz::${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('fd7d0f88945cd6e1423dbcab4416bb327261845cab7d896b6ddab0c0a015e500')
