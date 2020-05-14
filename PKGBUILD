@@ -13,7 +13,7 @@
 pkgbase=linux-nitrous-git
 _srcname=linux-nitrous-git
 pkgver=5.6+
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
@@ -39,6 +39,9 @@ prepare() {
 
   rm -f .clang
   make HOSTCC=clang CC=clang nitrous_defconfig
+  if [ -f "$HOME/.config/modprobed.db" ]; then
+    make LSMOD=$HOME/.config/modprobed.db localmodconfig
+  fi
 
   # get kernel version
   #make prepare
