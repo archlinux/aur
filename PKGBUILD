@@ -6,10 +6,11 @@ pkgrel=2
 pkgdesc="Go models of Note, Scale, Chord and Key"
 arch=('x86_64')
 url='https://github.com/go-music-theory/music-theory'
-license=('GPL-3.0')
-makedepends=('go')
+license=('GPL3')
+depends=('glibc')
+makedepends=('go-pie')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('7905c967dec9387bae39ef3b7784ea65')
+sha256sums=('5ca24367560011c9212143aaf4ab9a1f931b2caa69907397dde0d1902976c4df')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -29,6 +30,5 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm755 ../music-theory-bin "${pkgdir}/usr/bin/music-theory"
-  install -Dm644 LICENSE* "${pkgdir}/usr/share/licenses/music-theory/LICENSE"
   go clean -modcache #Remove go libraries
 }

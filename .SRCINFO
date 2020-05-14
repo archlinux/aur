@@ -4,10 +4,11 @@ pkgbase = music-theory
 	pkgrel = 2
 	url = https://github.com/go-music-theory/music-theory
 	arch = x86_64
-	license = GPL-3.0
-	makedepends = go
+	license = GPL3
+	makedepends = go-pie
+	depends = glibc
 	source = music-theory-0.0.4.tar.gz::https://github.com/go-music-theory/music-theory/archive/v0.0.4.tar.gz
-	md5sums = 7905c967dec9387bae39ef3b7784ea65
+	sha256sums = 5ca24367560011c9212143aaf4ab9a1f931b2caa69907397dde0d1902976c4df
 
 pkgname = music-theory
 
