@@ -1,0 +1,21 @@
+pkgbase = marble-gtk-git
+	pkgdesc = A collection of useful functions and reusable widget for GTK
+	pkgver = v1.2.2.r0.gad2d5bf
+	pkgrel = 1
+	url = https://gitlab.com/raggesilver/marble
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson>=0.50.0
+	makedepends = vala
+	depends = gtk3
+	optdepends = 
+	provides = marble-gtk
+	provides = marble-gtk-git
+	conflicts = marble-gtk
+	source = git+https://gitlab.com/raggesilver/marble.git
+	md5sums = SKIP
+
+pkgname = marble-gtk-git
+
