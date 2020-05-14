@@ -1,0 +1,30 @@
+pkgbase = vokey-git
+	pkgdesc = Vokey is a voice-based hotkey application.
+	pkgver = 0.1.0.r1.g7b343bd
+	pkgrel = 1
+	url = https://github.com/nalquas/vokey
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = nlohmann-json
+	depends = pocketsphinx
+	depends = sphinxbase
+	depends = libpulse
+	depends = libx11
+	depends = glibc
+	depends = blas
+	depends = lapack
+	depends = libxtst
+	depends = gcc-libs
+	depends = qt5-base
+	depends = alsa-utils
+	depends = festival
+	depends = festival-english
+	provides = vokey
+	conflicts = vokey
+	options = !makeflags
+	source = git+https://github.com/nalquas/vokey
+	md5sums = SKIP
+
+pkgname = vokey-git
+
