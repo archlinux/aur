@@ -7,6 +7,7 @@ pkgdesc="IMAP and MailDir mailbox synchronizer"
 arch=('x86_64')
 url="http://isync.sourceforge.net"
 conflicts=('isync')
+provides=('isync')
 license=('GPL2')
 depends=('libsasl' 'zlib')
 source=(git+https://git.code.sf.net/u/shashurup/isync#branch=utf8-mailboxes)
