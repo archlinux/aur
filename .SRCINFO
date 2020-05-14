@@ -1,6 +1,6 @@
 pkgbase = droidcam-dkms-git
 	pkgdesc = A tool for using your android device as a wireless/usb webcam (DKMS)
-	pkgver = 6.7.6.r36.fee087c
+	pkgver = 6.7.7.r46.98cbf07
 	pkgrel = 1
 	url = https://www.dev47apps.com/droidcam/linuxx
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = droidcam-dkms-git
 	conflicts = droidcam
 	conflicts = droidcam-dkms
 	source = droidcam-dkms-git::git+https://github.com/aramg/droidcam
-	source = droidcam-6.7.6.r36.fee087c.zip::https://www.dev47apps.com/files/linux/droidcam_latest.zip
+	source = droidcam-6.7.7.r46.98cbf07.zip::https://www.dev47apps.com/files/linux/droidcam_latest.zip
 	source = dkms.conf
 	source = https://github.com/aramg/droidcam/raw/master/linux/icon2.png
 	source = droidcam.desktop

@@ -3,7 +3,7 @@
 _pkgbase=droidcam
 pkgname=droidcam-dkms-git
 _pkgver=6.7.7
-pkgver=6.7.6.r36.fee087c
+pkgver=6.7.7.r46.98cbf07
 pkgrel=1
 pkgdesc="A tool for using your android device as a wireless/usb webcam (DKMS)"
 arch=('x86_64')
