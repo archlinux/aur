@@ -1,7 +1,7 @@
 # Maintainer: null2264 <palembani@gmail.com>
 pkgname=st-ziro-git
 _pkgname=st-zi
-pkgver=0.8.3r4.zi
+pkgver=0.8.3r5.zi
 pkgrel=1
 pkgdesc="ZiRO or AAP's personal build of st (simple terminal) with Xresources, transparency, etc."
 url='https://github.com/null2264/st-zi'
@@ -39,6 +39,7 @@ package() {
   # Avoid conflict with ncurses package
   rm "$pkgdir/usr/share/terminfo/s/st"
   rm "$pkgdir/usr/share/terminfo/s/st-256color"
+  install -Dm755 applications/st.desktop "$pkgdir/usr/share/applications/st.desktop"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
