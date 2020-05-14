@@ -1,21 +1,21 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.26.3
+pkgver=2.28.0
 pkgrel=1
 pkgdesc='Small, fast and VT100-compatible text editor'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
 makedepends=(git go-pie)
-source=("git+$url#commit=44ce8835d07d595bcf8637ad2eb020b1d4abbb6c") # tag: 2.26.3
+source=("git+$url#commit=78648bca46bcbdbffe79a8985a68dd2711fce35c") # tag: 2.28.0
 sha256sums=('SKIP')
 options=(!strip)
 
 build() {
   cd "$pkgname"
 
-  # Using gccgo + upx gives a smaller size
+  # Using gccgo and upx gives a smaller size
   #go build -buildmode=pie -gccgoflags="-s -w $LDFLAGS" && upx o
 
   go build -buildmode=pie -gcflags="all=-trimpath=$PWD" -asmflags "all=-trimpath=$PWD" -ldflags "-s -w -extldflags $LDFLAGS"
