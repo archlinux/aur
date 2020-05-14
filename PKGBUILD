@@ -2,17 +2,17 @@
 pkgdesc='A theme for GNOME/Budgie/Xfce/Cinnamon desktop with elementary-ish aesthetics.'
 pkgname=gtk-theme-adementary
 pkgver=201905r1
-pkgrel=3
+pkgrel=4
 url=https://github.com/hrdwrrsk/adementary-theme
 arch=(any)
 license=(GPL3)
 depends=()
 makedepends=(git bash)
-source=("${pkgname}-${pkgver}::${url}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha512sums=('489e77ff2fdea570c903acd66e2313543ab58acd51b8663e2f006cf518e70825c1dfcbdc2219a95e83e320fcf8debc14df3a6e416535ae6012ded43397f62d92')
 
 package () {
-	cd "${pkgname}"
+	cd "adementary-theme-${pkgver}"
 	install -dm755 "${pkgdir}/usr/share/themes"
 	bash install.sh --dest "${pkgdir}/usr/share/themes"
 
