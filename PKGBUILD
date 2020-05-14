@@ -1,7 +1,7 @@
 # Maintainer: Fancy Zhang <springzfx@gmail.com>
 pkgname=cgproxy
 pkgver=v3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A transparent proxy program with cgroup2, like proxychains"
 arch=('x86_64')
 url="https://github.com/springzfx/cgproxy"
@@ -16,6 +16,7 @@ source=("${pkgname}::git+https://github.com/springzfx/cgproxy#tag=${pkgver}")
 md5sums=('SKIP')
 
 backup=('etc/cgproxy.conf')
+install='cgproxy.install'
 
 build(){
     cd "$pkgname"
