@@ -1,6 +1,6 @@
 pkgbase = linux-slim
 	pkgver = 5.6.v.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -17,7 +17,7 @@ pkgbase = linux-slim
 	source = linux-slim.preset
 	source = 5012_enable-cpu-optimizations-for-gcc91.patch
 	sha256sums = SKIP
-	sha256sums = 59b80ee3dc422b2940e443badb433725ab674748396a9783374ee1ec4daa6be7
+	sha256sums = 816167474ae93f53ecd3bcaba08c1bbf03e822c8b6108ecfa0d11e5d1cc04524
 	sha256sums = 41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367
 	sha256sums = cc739c9c9f7ce08e6bbc161b8232208bbc00820342a32fb1f69bff6326ae1370
 
