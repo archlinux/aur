@@ -23,9 +23,7 @@
 CHECK=            # Run tests. May fail, this is developement after all.
 CLANG=            # Use clang.
 GOLD=             # Use the gold linker.
-LTO="YES"         # Enable link-time optimization. Not that experimental anymore.
-                  # Seems fixed in GCC, so I've reenabled binutils support, please
-		  # report any bug, to make it use clang by default again.
+LTO=              # Enable link-time optimization.
 CLI=              # CLI only binary.
 NOTKIT=           # Use no toolkit widgets. Like B&W Twm (001d sk00l).
 LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
@@ -49,7 +47,7 @@ NOGZ="YES"        # Don't compress .el files.
 
 ################################################################################
 pkgname="emacs-git"
-pkgver=28.0.50.141102
+pkgver=28.0.50.141169
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64' )
@@ -70,12 +68,15 @@ md5sums=('SKIP')
 
 ################################################################################
 
-if [[ $LTO == "YES" ]] && [[ $CLANG != "YES" ]]; then
-  CFLAGS+=" -g -flto -fuse-linker-plugin"
-  CXXFLAGS+=" -g -flto -fuse-linker-plugin"
-else
-  CFLAGS+=" -g -flto"
-  CXXFLAGS+=" -g -flto"
+if [[ $GOLD == "YES" && ! $CLANG == "YES" ]]; then
+  export LD=/usr/bin/ld.gold
+  export CFLAGS+=" -fuse-ld=gold";
+  export CXXFLAGS+=" -fuse-ld=gold";
+elif [[ $GOLD == "YES" && $CLANG == "YES" ]]; then
+  echo "";
+  echo "Clang rather uses its own linker.";
+  echo "";
+  exit 1;
 fi
 
 if [[ $CLANG == "YES" ]]; then
@@ -90,13 +91,22 @@ if [[ $CLANG == "YES" ]]; then
   makedepends+=( 'clang' 'lld' 'llvm') ;
 fi
 
+if [[ $LTO == "YES" ]] && [[ $CLANG != "YES" ]]; then
+  CFLAGS+=" -flto -fuse-linker-plugin"
+  CXXFLAGS+=" -flto -fuse-linker-plugin"
+else
+  CFLAGS+=" -flto"
+  CXXFLAGS+=" -flto"
+fi
+
 if [[ $NOTKIT == "YES" ]]; then
-  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxrandr' 'lcms2' 'librsvg' );
+  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxrandr' 'lcms2' 'librsvg' 'libxfixes' );
+  makedepends+=( 'xorgproto' );
 elif [[ $LUCID == "YES" ]]; then
-  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxfixes' 'lcms2' 'librsvg' 'xaw3d' 'xorgproto' );
+  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxfixes' 'lcms2' 'librsvg' 'xaw3d' 'libxrandr' );
   makedepends+=( 'xorgproto' );
 elif [[ $GTK2 == "YES" ]]; then
-  depends+=( 'gtk2' );
+  depends+=( 'gtk2' 'lcms2' );
   makedepends+=( 'xorgproto' );
 else
   depends+=( 'gtk3' );
@@ -111,9 +121,7 @@ else
   depends+=();
 fi
 
-if [[ $NOCAIRO == "YES" ]]; then
-  depends+=( '' );
-else
+if [[ ! $NOCAIRO == "YES" ]]; then
   depends+=( 'cairo' );
 fi
 
@@ -227,18 +235,6 @@ fi
 ################################################################################
 
 ################################################################################
-
-  # Use the gold linker with gcc.
-  #
-  if [[ $GOLD == "YES" && ! $CLANG == "YES" ]]; then
-    export LD=/usr/bin/ld.gold
-    export CFLAGS+=" -fuse-ld=gold";
-    export CXXFLAGS+=" -fuse-ld=gold";
-  elif [[ $GOLD == "YES" && $CLANG == "YES" ]]; then
-    echo "";
-    echo "Clang doesn't use gold.ld in this setup.";
-    echo "";
-  fi
 
   ./configure "${_conf[@]}"
 
