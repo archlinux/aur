@@ -4,7 +4,7 @@
 # Original: Daniel Bermond <dbermond@archlinux.org> https://aur.archlinux.org/packages/mpv-full-git
 
 pkgname=mpv-amd-full-git
-pkgver=0.32.0.r333.ga67bda2840
+pkgver=0.32.0.r476.ga58b2df3f8
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -35,16 +35,14 @@ prepare() {
     ./bootstrap.py
 }
 
-pkgver() {
-    cd mpv
-    
+pkgver() {    
     local _version
     local _revision
     local _shorthash
     
-    _version="$(git tag | sort -Vr | head -n1 | sed 's/^v//')"
-    _revision="$(git rev-list v"${_version}"..HEAD --count)"
-    _shorthash="$(git rev-parse --short HEAD)"
+    _version="$(git -C mpv tag | sort -Vr | head -n1 | sed 's/^v//')"
+    _revision="$(git -C mpv rev-list v"${_version}"..HEAD --count)"
+    _shorthash="$(git -C mpv rev-parse --short HEAD)"
     
     printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
 }
@@ -179,12 +177,12 @@ check() {
     local _test
     export LD_LIBRARY_PATH="${srcdir}/mpv/build-tests"
     
-    # skip problematic 'img_format' test, and the 'all-simple' special value that runs all tests
     while read -r -d '' _test
     do
-        printf '%s\n' "  -> Running test '${_test}'..."
+        printf '%s\n' "Running test '${_test}'..."
         build-tests/mpv --unittest="$_test"
-    done < <(build-tests/mpv --unittest='help' | awk 'FNR == 1 { next } !/img_format|all-simple|repack_zimg/ { printf "%s\0", $1 }')
+    done < <(build-tests/mpv --unittest='help' |
+        awk 'FNR == 1 { next } !/all-simple|img_format|repack(|_zimg)$/ { printf "%s\0", $1 }')
 }
 
 package() {
