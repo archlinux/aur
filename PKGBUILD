@@ -2,7 +2,7 @@
 
 pkgname=trivy
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Simple and Comprehensive Vulnerability Scanner for Containers, Suitable for CI"
 arch=("x86_64" "i686")
 url="https://github.com/aquasecurity/trivy"
@@ -13,7 +13,7 @@ makedepends=("go-pie" "btrfs-progs")
 provides=('trivy')
 conflicts=('trivy')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('79d48ec0101e04ab76af143964708f7ef5e56ca8e979e4a15dc072ca45db142cs')
+sha256sums=('79d48ec0101e04ab76af143964708f7ef5e56ca8e979e4a15dc072ca45db142c')
 
 build() {
   cd ${pkgname}-${pkgver}/cmd/trivy

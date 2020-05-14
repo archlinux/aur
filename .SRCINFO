@@ -1,7 +1,7 @@
 pkgbase = trivy
 	pkgdesc = A Simple and Comprehensive Vulnerability Scanner for Containers, Suitable for CI
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aquasecurity/trivy
 	arch = x86_64
 	arch = i686
