@@ -30,5 +30,5 @@ prepare() {
 }
 
 package() {
-    cp -r usr /
+    cp -r usr ${pkgdir}/
 }
