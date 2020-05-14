@@ -9,12 +9,13 @@
 pkgname=librepcb
 pkgver=0.1.4
 _pkgver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="A free EDA software to develop printed circuit boards"
 arch=('x86_64' 'i686')
 url="http://librepcb.org/"
 license=('GPL')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'qt5-base' 'qt5-svg')
+makedepends=('qt5-tools')
 source=(
   "https://download.librepcb.org/releases/${_pkgver}/librepcb-${_pkgver}-source.zip"
   "https://download.librepcb.org/releases/${_pkgver}/librepcb-${_pkgver}-source.zip.asc"
