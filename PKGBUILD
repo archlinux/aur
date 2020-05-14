@@ -3,7 +3,7 @@
 pkgbase=stardog-studio
 pkgname=stardog-studio-bin
 pkgver=1.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc='IDE for the Stardog graph database management system.'
 arch=('any')
 url='https://www.stardog.com/studio/'
@@ -21,7 +21,7 @@ b2sums=('3a48b52f012070aa13faab55c860350e590f1464c98ee7c02ff183c80e1a4d030dd7c98
 
 '6d355359ea74002f7c6be304e163ac0d9904a50e6673be53f562b456cb62a0643cbe3d5498652b43dbebba123d1ca4feb560f46e3ba7959d7c751b259775217e'
 
-'a3176e1167de6c6bf78e05b4fa3ac5faf113dc2496c740289109ab78c2b3ac99b2dbb118447ef55a9749e218b8de1fc0a2fc6fd1c6edd32b18ac68fd54a7cc5f')
+'fd0c409793dd6cbdd1be39f2cea3c74c8cf086778163627cb23ffea30a23737fa4e24bfa5fceb4f30f392c0211b7cd644778518043efee5e4ffe71b7ec882366')
 
 package() {
     install -dm755 "${pkgdir}"/opt/
