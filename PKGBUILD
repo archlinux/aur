@@ -8,9 +8,10 @@ arch=('i686' 'x86_64')
 url='https://github.com/NicolasLM/nucleon'
 license=('MIT')
 provides=('nucleon')
+depends=('gcc-libs')
 makedepends=('rust')
 source=("git+${url}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/nucleon"
@@ -24,5 +25,6 @@ build() {
 
 package() {
   cd "${srcdir}/nucleon"
-  install -D target/release/nucleon -t "${pkgdir}"/usr/bin 
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm755 target/release/nucleon -t "${pkgdir}"/usr/bin 
 }
