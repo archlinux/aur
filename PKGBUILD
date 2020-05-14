@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@birks.dev>
 
 pkgname=kube-score
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='A tool that performs static code analysis of your Kubernetes object definitions'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/zegl/kube-score'
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zegl/kube-score/archive/v$pkgver.tar.gz")
-sha512sums=('434816d198bf9ca68b44d4997717f01efe0d34247ac558ee494e263fa445fac3c1976969bf71756601cf55a5216efca0b056af104ca5f6d03b894a70f50eba21')
+sha512sums=('8d968e7289757ff7d5d3ef033b283663edbbb949162715ba10c1375bab00dd2074a13b08bbf354420aeed7bb2167c9b74237b6b8b3157983490d99592f6198b7')
 
 build() {
   # Flags to trim path from binary
