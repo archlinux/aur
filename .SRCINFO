@@ -1,0 +1,19 @@
+pkgbase = nostalgia
+	pkgdesc = Set historic GNOME wallpapers
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://gitlab.gnome.org/bertob/nostalgia
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	source = https://gitlab.gnome.org/bertob/nostalgia/-/archive/0.4/nostalgia-0.4.tar.gz
+	sha256sums = 044be070bac4c620a8a71e347605a4c78b6095c720157f72814117109188b95f
+
+pkgname = nostalgia
+
