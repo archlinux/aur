@@ -1,7 +1,7 @@
 # Maintainer: Matthias Lisin <ml@visu.li>
 pkgname=golangci-lint
 pkgdesc="Linters Runner for Go. 5x faster than gometalinter."
-pkgver=1.26.0
+pkgver=1.27.0
 pkgrel=1
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url='https://github.com/golangci/golangci-lint'
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('git' 'go' 'gzip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/golangci/golangci-lint/archive/v${pkgver}.tar.gz")
-sha256sums=('fac66b685253d76625c18177e03d36bca0a5dac52a0c3978fc96daad07bcb704')
+sha256sums=('11a23b60416cab57a7d83c97d723212ec3c430c4d9fdfc698e5f5276cd5ac15a')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -40,7 +40,7 @@ check() {
   # CGO_CFLAGS break tests when run inside ~/.cache (yay).
   # TODO investigate
   unset CGO_CFLAGS
-  GOLANGCI_LINT_INSTALLED=true go test ./...
+  GL_TEST_RUN=1 GOLANGCI_LINT_INSTALLED=true go test ./...
 }
 
 package() {
