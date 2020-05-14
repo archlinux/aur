@@ -1,7 +1,7 @@
 # Maintainer: null2264 <palembani@gmail.com>
 pkgname=st-ziro-git
 _pkgname=st
-pkgver=0.8.3r2-zi
+pkgver=0.8.3r2.zi
 pkgrel=1
 epoch=1
 pkgdesc="ZiRO or AAP's personal build of st (simple terminal) with Xresources, transparency, etc."
