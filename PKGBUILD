@@ -40,7 +40,7 @@ prepare() {
   rm -f .clang
   make HOSTCC=clang CC=clang nitrous_defconfig
   if [ -f "$HOME/.config/modprobed.db" ]; then
-    make LSMOD=$HOME/.config/modprobed.db localmodconfig
+    make HOSTCC=clang CC=clang LSMOD=$HOME/.config/modprobed.db localmodconfig
   fi
 
   # get kernel version
