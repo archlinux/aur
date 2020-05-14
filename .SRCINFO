@@ -1,7 +1,7 @@
 pkgbase = abseil-cpp
 	pkgdesc = Abseil Common Libraries (C++)
 	pkgver = 20200225.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abseil/abseil-cpp
 	arch = any
 	license = Apache

@@ -2,7 +2,7 @@
 
 pkgname=abseil-cpp
 pkgver=20200225.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Abseil Common Libraries (C++)"
 arch=('any')
 url="https://github.com/abseil/abseil-cpp"
@@ -21,6 +21,7 @@ prepare() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DABSL_RUN_TESTS=ON \
+        -DCMAKE_CXX_STANDARD=17 \
         -DABSL_USE_GOOGLETEST_HEAD=ON
 }
 
