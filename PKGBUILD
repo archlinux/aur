@@ -6,7 +6,7 @@
 pkgname=qweborf
 _pkgname=weborf
 pkgver=0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal HTTP server to share your files - Qt frontend"
 arch=(any)
 url="https://ltworf.github.io/weborf"
@@ -21,13 +21,15 @@ build() {
     cd "$srcdir/$_pkgname-$pkgver/qweborf"
 
     pyuic5 qweborf/main.ui > qweborf/main.py
+    gzip man/qweborf.1
     python setup.py build
 }
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver/qweborf"
 
-    python qweborf.setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    install -Dm 0644 man/qweborf.1.gz "$pkgdir/usr/share/man/man1/qweborf.1.gz"
     install -Dm 0755 qweborf/qweborf "$pkgdir/usr/bin/qweborf"
     install -Dm 0755 integration/qweborf.desktop "$pkgdir/usr/share/applications/qweborf.desktop"
 }
