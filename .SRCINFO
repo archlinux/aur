@@ -1,0 +1,16 @@
+pkgbase = esp8266-rtos-sdk
+	pkgdesc = ESP8266 RTOS SDK
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://github.com/espressif/ESP8266_RTOS_SDK
+	arch = x86_64
+	license = Espressif MIT
+	makedepends = git
+	depends = python3
+	optdepends = xtensa-lx106-elf-gcc-bin: Toolchain for the ESP8266
+	options = !strip
+	source = https://github.com/espressif/ESP8266_RTOS_SDK/archive/v3.1.2.tar.gz
+	sha256sums = 
+
+pkgname = esp8266-rtos-sdk
+
