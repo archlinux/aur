@@ -1,6 +1,6 @@
 pkgbase = ngrok-beta
 	pkgdesc = A tunneling, reverse proxy for developing and understanding networked, HTTP services (beta version)
-	pkgver = 2.3.32
+	pkgver = 2.3.35
 	pkgrel = 1
 	url = https://ngrok.com
 	arch = i686
@@ -8,17 +8,17 @@ pkgbase = ngrok-beta
 	arch = armv7h
 	arch = aarch64
 	license = Apache
-	provides = ngrok=2.3.32
+	provides = ngrok=2.3.35
 	conflicts = ngrok
 	conflicts = ngrok-stable
-	source_i686 = https://bin.equinox.io/c/6raCnPaTf2c/ngrok-beta-linux-386.tgz
-	md5sums_i686 = 0e3579149099ddbd308d209b874d92e8
-	source_x86_64 = https://bin.equinox.io/c/6raCnPaTf2c/ngrok-beta-linux-amd64.tgz
-	md5sums_x86_64 = 4fe7ab22b743d191472a54883de0d74b
-	source_armv7h = https://bin.equinox.io/c/6raCnPaTf2c/ngrok-beta-linux-arm.tgz
-	md5sums_armv7h = eebe76b17812b6d97f27cf09dc129fff
-	source_aarch64 = https://bin.equinox.io/c/6raCnPaTf2c/ngrok-beta-linux-arm64.tgz
-	md5sums_aarch64 = 87e7edab4d3ee862608aca8831de7b4f
+	source_i686 = https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-beta-linux-386.tgz
+	sha256sums_i686 = 136673d9f46ecea7cd0d94d617f07d98fce24a99892d3324f9714c9e3df50c0f
+	source_x86_64 = https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-beta-linux-amd64.tgz
+	sha256sums_x86_64 = 55df9c479b41a3b9b488458b5fb758df63001d14196a4126e3f669542c8727e9
+	source_armv7h = https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-beta-linux-arm.tgz
+	sha256sums_armv7h = 0e21e242858be513f70a22a2e5f40e5859275454f7b18d451ec30af4deba2dd2
+	source_aarch64 = https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-beta-linux-arm64.tgz
+	sha256sums_aarch64 = 412a6d145ab61eae0012d2fbe111bf962e11327f11787d3d41d56ea97969fe04
 
 pkgname = ngrok-beta
 
