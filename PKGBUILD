@@ -4,7 +4,7 @@
 _pkgname=baidunetdisk
 pkgname=baidunetdisk-bin
 pkgver=3.0.1.2
-pkgrel=8
+pkgrel=9
 _mainver=${pkgver%.*}
 pkgdesc="Baidu Net Disk is a cloud storage client (Linux Version)."
 arch=('x86_64')
@@ -45,7 +45,6 @@ package() {
     find ${pkgdir} -type d -exec chmod 755 {} \;
 
     # install license
-    install -Dm644 "${srcdir}/LICENSE.html" ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.html
     ln -s "/usr/lib/${_pkgname}/LICENSE.electron.txt" \
         "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.electron.txt"
     ln -s "/usr/lib/${_pkgname}/LICENSES.chromium.html" \
