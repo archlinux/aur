@@ -1,8 +1,8 @@
 # Maintainer: Elrondo46 TuxnVape <elrond94@hotmail.com>
 
 pkgname=lightning-lang-patcher
-pkgver=1.4.15
-pkgrel=2
+pkgver=1.4.16
+pkgrel=1
 pkgdesc="Patch langs of Lightning thunderbird addon"
 arch=('x86_64')
 license=('GPL3')
@@ -10,7 +10,7 @@ url="https://github.com/Elrondo46/lightning-lang-patcher"
 depends=('python' 'python-gobject' 'thunderbird')
 source=("https://github.com/Elrondo46/lightning-lang-patcher/archive/${pkgver}.tar.gz")
 
-sha256sums=('5ee0dbb3cffe973941c836dc587d5b67bb0c192e498f9df16c3a89098454f3e2')
+sha256sums=('51c4161d184d21fe5bd47df72a5b986ce239884cf8b17bbb1d0447aa905d5a9f')
 
 package() {
         install -Dm644 "${srcdir}/${pkgname}-${pkgver}/llp.desktop" "${pkgdir}/usr/share/applications/llp.desktop"
