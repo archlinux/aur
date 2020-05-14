@@ -1,8 +1,8 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
-_commit=8eda62e004e8341b9b4f353af8f147b76609cb5f
+_commit=38392a70b60c0adf7b242ea60a1993aecc125008
 pkgname=lpcli
-pkgver=2019.07.27
+pkgver=2020.04.15
 pkgrel=1
 pkgdesc='C implementation of lesspass (version 2) without any external dependencies'
 arch=('any')
@@ -11,7 +11,7 @@ license=('Unlicense')
 depends=('libx11')
 optdepends=('xclip: to copy generated passwords to clipboard')
 source=("https://github.com/monolifed/${pkgname}/archive/${_commit}.tar.gz")
-sha256sums=('daba0c9d46010935ba4638fcb2d9758f31580504db0e42150ef8e2484ee6bbce')
+sha256sums=('61b5f3880f73aa8a8609e60e91cfec7a286118fc499e75054fb7c1b264f9149b')
 
 build() {
   cd "${srcdir}/${pkgname}-${_commit}"
