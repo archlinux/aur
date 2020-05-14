@@ -6,8 +6,10 @@ pkgbase = peco-bin
 	arch = x86_64
 	license = MIT
 	provides = peco
-	source = https://github.com/peco/peco/releases/download/v0.5.7/peco_linux_amd64.tar.gz
+	source = peco-bin-0.5.7.tar.gz::https://github.com/peco/peco/releases/download/v0.5.7/peco_linux_amd64.tar.gz
+	source = LICENSE::https://github.com/peco/peco/raw/master/LICENSE
 	sha256sums = d273c8adcd173ab982168a04068b1733e1f20b3193a143f1719e34881aa546e1
+	sha256sums = 38c6b4a6df580c74891927faf550dc6f7c41a51d3017c0a352be339d4a5b69f3
 
 pkgname = peco-bin
 
