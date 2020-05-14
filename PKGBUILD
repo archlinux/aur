@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A Python binding for the StackExchange API"
 arch=('any')
 url="https://github.com/lucjon/Py-StackExchange"
-license=('BSD-3-Clause')
+license=('BSD')
 makedepends=("python-setuptools" 'python-six')
 provides=('python-py-stackexchange' 'python-stackexchange')
 conflicts=("python-py-stackexchange" "${pkgname}")
@@ -16,10 +16,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/Py-StackExchange"
   printf "1.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-
 }
 
 package() {
-    cd "${srcdir}/Py-StackExchange"
-    python setup.py install --root="$pkgdir/" --optimize=1
+  cd "${srcdir}/Py-StackExchange"
+  python setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
