@@ -1,0 +1,15 @@
+pkgbase = php-android-cli-git
+	pkgdesc = PHP Android Clit to create/generate Scaffold Android-Studio Gradle project
+	pkgver = 3937963d3bde24a3dcfe99325242e3cfc7f905e0
+	pkgrel = 1
+	url = https://github.com/homperator/php-android-cli
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = composer
+	depends = php
+	source = git+https://github.com/homperator/php-android-cli.git
+	sha256sums = SKIP
+
+pkgname = php-android-cli-git
+
