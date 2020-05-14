@@ -1,0 +1,22 @@
+pkgbase = rofi-search-git
+	pkgdesc = Search engine plugin for rofi
+	pkgver = r18.535856f
+	pkgrel = 1
+	url = https://github.com/fogine/rofi-search
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = jq
+	makedepends = npm
+	depends = nodejs
+	depends = rofi
+	depends = rofi-blocks-git
+	optdepends = googler: retrieve results from Google
+	optdepends = ddgr: retrieve results from DuckDuckGo
+	conflicts = rofi-search
+	replaces = rofi-search
+	source = rofi-search::git+https://github.com/fogine/rofi-search.git
+	sha1sums = SKIP
+
+pkgname = rofi-search-git
+
