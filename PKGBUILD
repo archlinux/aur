@@ -23,8 +23,8 @@ options=()
 install=
 changelog=
 source=(${pkgname}-${pkgver}-${_tag}.tar.gz::https://github.com/jitsi/jitsi-videobridge/archive/stable/${_tag}.tar.gz
-        config
-        service
+        jitsi-videobridge.conf
+        jitsi-videobridge.service
         sip-communicator.properties)
 noextract=()
 sha256sums=('6503869e1b7d4180316a0af29c66fae3e4ed1061d7bd6def053902bcc47194d0'
@@ -42,7 +42,7 @@ build() {
 package() {
     install -d "${pkgdir}/opt"
     cp -R "${srcdir}/${pkgname}-stable-${_tag}/jitsi-videobridge-2.1-SNAPSHOT/" "${pkgdir}/opt/jitsi-videobridge"
-    install -Dm644 service "${pkgdir}"/usr/lib/systemd/system/jitsi-videobridge.service
-    install -Dm644 config "${pkgdir}"/etc/jitsi/videobridge/jitsi-videobridge.conf
+    install -Dm644 jitsi-videobridge.service "${pkgdir}"/usr/lib/systemd/system/jitsi-videobridge.service
+    install -Dm644 jitsi-videobridge.conf "${pkgdir}"/etc/jitsi/videobridge/jitsi-videobridge.conf
     install -Dm644 sip-communicator.properties "${pkgdir}"/etc/jitsi/videobridge/sip-communicator.properties
 }
