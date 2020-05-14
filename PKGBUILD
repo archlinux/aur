@@ -1,18 +1,17 @@
 # Maintainer: Matthieu Froment <thieume2 {at} hotmail {dot} com>
 pkgname=keepass-fr
-pkgver=2.44
+pkgver=2.45
 pkgrel=1
 pkgdesc="French locale for keepass"
 license=('GPL2')
 depends=("keepass")
 #makedepends=('unzip')
 url="http://keepass.info/translations.html"
-source=(http://downloads.sourceforge.net/keepass/KeePass-${pkgver}-French.zip)
+source=(http://downloads.sourceforge.net/keepass/KeePass-${pkgver}-French-b.zip)
 arch=(any)
-md5sums=('2ef5e0961cfa47a8879b0f8d84207aae')
+md5sums=('208196e5ee86f57c9b95df455f12c9a2')
 
 package(){
    mkdir -p "${pkgdir}"/usr/share/keepass/Languages
    install -m644 French.lngx "${pkgdir}"/usr/share/keepass/Languages
 }
-
