@@ -5,7 +5,7 @@
 
 set -u
 pkgname='evdi-git'
-pkgver=1.7.0.r71.gdc595db
+pkgver=1.7.0.r6.g9b124a6
 _pkgver="${pkgver%%.r*}"
 pkgrel=1
 pkgdesc='kernel module that enables management of multiple screens, primarily for DisplayLink USB VGA DVI HDMI DisplayPort video'
@@ -26,7 +26,7 @@ source=(
   #'https://crazy.dev.frugalware.org/evdi-all-in-one-fixes.patch'
   #'relro.patch'
 )
-#source[0]+='#branch=v1.6.4'
+source[0]+='#branch=master'
 md5sums=('SKIP')
 sha256sums=('SKIP')
 
@@ -34,9 +34,9 @@ pkgver() {
   set -u
   cd "${_srcdir}"
   local _modver _rev
-  _modver="$(awk -F '=' '/MODVER=/ {print $2}' module/Makefile)"
+  #_modver="$(awk -F '=' '/MODVER=/ {print $2}' module/Makefile)"
   _rev="$(git describe --long --tags | sed -e 's/^v//' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g')"
-  if [ -z "${_modver}" ]; then
+  if [ -z "${_modver:-}" ]; then
     printf '%s\n' "${_rev}"
   else
     printf '%s.r%s\n' "${_modver}" "${_rev##*.r}"
