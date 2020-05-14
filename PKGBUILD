@@ -21,7 +21,7 @@ depends=('curl' 'fontconfig' 'fribidi' 'harfbuzz'
          'shared-mime-info' 'mailcap' 'ttf-font' 'scim'
          'wayland' 'wayland-protocols' 'libxkbcommon-x11'
          'pulseaudio')
-makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot' 'procps-ng')
+makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot' 'procps-ng' 'ccache')
 optdepends=('gst-plugins-base: Video and thumbnail codecs'
             'gst-plugins-good: Video and thumbnail codecs'
             'gst-plugins-bad: Video and thumbnail codecs'
