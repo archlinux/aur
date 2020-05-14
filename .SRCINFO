@@ -1,7 +1,7 @@
 pkgbase = slirp
 	pkgdesc = SLIP/PPP emulator using a dial up shell account
 	pkgver = 1.0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = http://slirp.sourceforge.net/
 	arch = x86_64
 	license = custom

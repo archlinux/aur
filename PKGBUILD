@@ -2,7 +2,7 @@
 
 pkgname=slirp
 pkgver=1.0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="SLIP/PPP emulator using a dial up shell account"
 arch=('x86_64')
 url="http://slirp.sourceforge.net/"
@@ -20,7 +20,7 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}/src"
-    export CFLAGS="$CFLAGS -Wall -I. -DUSE_PPP -DUSE_MS_DNS -fno-strict-aliasing -Wno-unused -std=gnu89"
+    export CFLAGS="$CFLAGS -Wall -I. -DUSE_PPP -DUSE_MS_DNS -fno-strict-aliasing -Wno-unused -std=gnu89 -fcommon"
     export CFLAGS="$CFLAGS -DHAVE_STDLIB_H" # whoever can fix this, plz leave a comment
     export PPPCFLAGS="$CFLAGS"
     ./configure --prefix=/usr
