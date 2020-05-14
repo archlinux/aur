@@ -6,20 +6,20 @@ pkgname=pygtk
 pkgver=2.24.0
 pkgrel=12
 pkgdesc="Python bindings for the GTK widget set"
-url="http://www.pygtk.org/"
+url='http://www.pygtk.org'
 arch=('x86_64')
 license=('LGPL')
 depends=('libglade' 'python2-cairo' 'python2-gobject2')
 makedepends=('python2-numpy' 'pygobject2-devel')
 optdepends=('python2-numpy')
-source=("https://download.gnome.org/sources/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2"
+source=("${pkgname}-${pkgver}.tar.bz2::https://download.gnome.org/sources/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2"
         'drop-pangofont.patch'
         'python27.patch'
         'fix-leaks-of-pango-objects.patch')
-sha512sums=('64f4344fcf7636e0b2016ffd5310250b5c02a1bf87e44aef39b5d4cf4a5fc50d27cb4f030d4c6802cff61fffb88dee7752821e3d8a4cd1c34dc3745d9ff2f0da'
-         'b278297857346e34dc0d8269a75cb8447b69fd4619cf668c960ead2e60ebea0de57288bd26b9c0d7577ceaf4a606f66a0b83d1e432f42100f1240eafa25dd560'
-         'badc250bfc592408a14e321060f087e3c28f81c5b40f60468737267ad4cae85a3fff2842fc9a488fe884390b2f33d58525eeebca56499a612de4f05cea3dccc8'
-         'bc385060c0b0cfee406d245c26bf7895be43db36160cf976c4def6416d7c06284a4d1eea0332fbe10e4065a1a3f1ca49ef3286a557e027fb953910a2aaa8359c')
+sha256sums=('cd1c1ea265bd63ff669e92a2d3c2a88eb26bcd9e5363e0f82c896e649f206912'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
