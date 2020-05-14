@@ -1,0 +1,28 @@
+pkgbase = stormkit-git
+	pkgdesc = Arthapz personal C++ TooKit
+	pkgver = r3.fd1672e
+	pkgrel = 1
+	url = https://gitlab.com/Arthapz/stormkit
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = meson
+	makedepends = libxcb
+	makedepends = xcb-util-keysyms
+	makedepends = xcb-util-wm
+	makedepends = xcb-util
+	depends = microsoft-gsl
+	depends = glm
+	depends = fmt
+	depends = vulkan-headers
+	optdepends = libpng
+	optdepends = libjpeg
+	provides = stormkit
+	conflicts = stormkit
+	source = git+https://gitlab.com/Arthapz/stormkit.git
+	sha256sums = SKIP
+
+pkgname = stormkit-git
+
