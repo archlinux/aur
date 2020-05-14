@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A portable multi-platform text editor"
 arch=('x86_64')
 url="https://github.com/beNative/notepas"
-license=('GPL-3.0')
+license=('GPL3')
 depends=('gtk2')
 makedepends=('gendesk')
 provides=('notepas')
@@ -21,9 +21,6 @@ package() {
   install -Dm644 "${srcdir}"/*.po -t "${pkgdir}/opt/notepas-gtk2/"
   install -d "${pkgdir}/usr/bin"
   ln -s /opt/notepas-gtk2/Notepas "${pkgdir}/usr/bin/notepas"
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname%-bin}"
-  ln -s /usr/share/licenses/common/GPL3/license.txt \
-   "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE"
   gendesk -f -n --pkgname "${pkgname%-bin}" \
           --pkgdesc "$pkgdesc" \
           --name "Notepas" \
