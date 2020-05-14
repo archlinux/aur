@@ -9,7 +9,7 @@
 # Contributor: Steven Nance <steven@devtrw.com>
 
 pkgname=vagrant
-pkgver=2.2.8
+pkgver=2.2.9
 pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
@@ -24,7 +24,7 @@ replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
         "git+https://github.com/mitchellh/vagrant-installers.git#commit=7b7fb86"
         ruby-2.7-fixes.patch)
-md5sums=('360711c8660b57e30d4ebd0e6b47261b'
+md5sums=('b52b86985d95419d963c2985fd8cedf2'
          'SKIP'
          '2e987a1d46a4c36e3d33d9f5aec21424')
 
