@@ -1,6 +1,6 @@
 # Maintainer: John Beard <john.j.beard@gmail.com>
 pkgname=goldendict-cc-cedict-content
-pkgver=1.0_r20191109
+pkgver=1.0_r20200514
 pkgrel=1
 pkgdesc="CC-CEDICT Chinese-English Dictionary for Goldendict"
 arch=("any")
@@ -18,8 +18,8 @@ source=("cc-cedict.png"
 "LICENSE"
 "https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz")
 md5sums=('729e16b892fb38a6d1c5853330191e93'
-         '516a9f08a270850c4ac329b8e964cc50'
-         'ad2fadfb9f5644bd7f08c43d1830d1db')
+         '747cb41a7c6ddb22a508164f768dae2a'
+         'SKIP')
 
 prepare() {
 
