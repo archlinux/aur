@@ -1,6 +1,6 @@
 pkgbase = st-ziro-git
 	pkgdesc = ZiRO or AAP's personal build of st (simple terminal) with Xresources, transparency, etc.
-	pkgver = 0.8.3r3.zi
+	pkgver = 0.8.3r4.zi
 	pkgrel = 1
 	url = https://github.com/null2264/st-zi
 	arch = i686
