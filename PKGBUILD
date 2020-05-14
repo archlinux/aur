@@ -25,7 +25,7 @@ pkgver() {
 prepare() {
   cd st-zi
   # skip terminfo which conflicts with ncurses
-  sed -i '/\@tic /d' Makefile
+  sed -i '/tic /d' Makefile
 }
 
 build() {
