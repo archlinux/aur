@@ -1,0 +1,20 @@
+pkgbase = perl-chemistry-mol
+	pkgdesc = Molecule object toolkit
+	pkgver = 0.37
+	pkgrel = 1
+	url = https://metacpan.org/pod/Chemistry::Mol
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-math-vectorreal>=1.0
+	depends = perl-scalar-util>=1.01
+	depends = perl-test-simple
+	depends = perl-text-balanced
+	options = purge
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/I/IT/ITUB/Chemistry-Mol-0.37.tar.gz
+	md5sums = b3826c67e866a99169f3cfec1205642a
+
+pkgname = perl-chemistry-mol
+
