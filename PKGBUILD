@@ -4,7 +4,7 @@
 
 pkgname=aerc
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Email Client for your Terminal'
 arch=('x86_64')
 url='https://git.sr.ht/~sircmpwn/aerc'
@@ -18,7 +18,12 @@ sha256sums=('44d5ab0d5f1195166b351ec59680cc8f4c0eb45da4d44263b138be0a91a512a1')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    make GOFLAGS=-tags=notmuch PREFIX=/usr
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -modcacherw -tags=notmuch"
+    make PREFIX=/usr
 }
 
 package() {
