@@ -3,7 +3,7 @@
 # Contributor: Serede Sixty Six <serede.dev@gmail.com>
 
 pkgname='nemo-audio-tab'
-pkgver=4.4.0
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="View audio tag information in Nemo's properties tab"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('nemo-python>=3.9.0' 'python-mutagen')
 makedepends=('python-distutils-extra')
 options=('!emptydirs')
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-sha256sums=('97b4f8614ec403fa550cc9af7adf6518cd11fd8377cb535f3eecb88239588dd7')
+sha256sums=('f656a65ebb4454180f5dcddbb063c14410f38125151e762fc695993685d64edd')
 
 package() {
   cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"
