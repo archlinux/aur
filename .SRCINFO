@@ -1,0 +1,16 @@
+pkgbase = plasma5-applets-plasmaconfsaver
+	pkgdesc = Plasma 5 widget that allows you to save your current desktop layout configuration and restore previous saved layouts on the fly.
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://store.kde.org/p/1298955/
+	arch = any
+	license = GPL
+	depends = kdialog
+	depends = konsole
+	depends = plasma-workspace
+	depends = scrot
+	source = https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1NzEwNTk5MDQiLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6IjMwYzkxOWQzNzc1ZmNmZDQ3MTcwMDBkZGIwZDIzYjk2ZjMwN2NhOWQzZjVmNDhmYjk5ZTZkOGJkNTZlZDE4NDI5NmU4NDM1ODRlNDQ2MzZlOWE4OWY3ODNlYjY5MDBmZjFkM2M2Y2FmNmZlN2RmNGMyZTdiNTkzMzQ4OTZjYTY0IiwidCI6MTU4OTUwMDU1MSwic3RmcCI6ImYxNGY3YzI3MmQzY2M5MTVjOTg0OTNiMWU0NDYzOTZmIiwic3RpcCI6IjE4OS4xMTQuMTU4LjM2In0.oZ70642tVRWoHN_YUDdanm6AAfmUaYzg81M8dhvgRIw/plasma5-applets-plasmaconfsaver-1.3.tar.gz
+	md5sums = 3da7ec024552fcde87380d9a5014f308
+
+pkgname = plasma5-applets-plasmaconfsaver
+
