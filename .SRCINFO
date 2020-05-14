@@ -1,7 +1,7 @@
 pkgbase = sqlitecpp
 	pkgdesc = A smart and easy to use C++ SQLite3 wrapper.
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SRombauts/SQLiteCpp
 	arch = i686
 	arch = x86_64

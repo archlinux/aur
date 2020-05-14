@@ -2,7 +2,7 @@
 pkgname=sqlitecpp
 _dirname='SQLiteCpp'
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A smart and easy to use C++ SQLite3 wrapper.'
 arch=('i686' 'x86_64')
 url='https://github.com/SRombauts/SQLiteCpp'
@@ -14,7 +14,6 @@ optdepends=('sqlcipher: for database encryption API')
 makedepends=('cmake>=3.1')
 source=("$pkgname-$pkgver::https://github.com/SRombauts/SQLiteCpp/archive/${pkgver}.tar.gz")
 sha512sums=('bbff198c1be2d4e7e596fc51b55808170f9fa1f37557209b92e49ba3017d367ea8e3df67518320a0d0c5afb5db9bfc0e599676e20b2fbb4ce8adcb831a4218ac')
-#options=(!emptydirs)
 build() {
 	_has_sqlcipher='false'
 
@@ -23,7 +22,6 @@ build() {
 		_has_sqlcipher='true'
 	fi
 
-	#mkdir -p "$_dirname-$pkgver/build"
 	mkdir -p "$_dirname-$pkgver/build"
 	cd "$_dirname-$pkgver/build"
 
