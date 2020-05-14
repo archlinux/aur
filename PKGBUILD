@@ -8,8 +8,8 @@ url="https://zeek.org"
 license=('BSD')
 depends=("zlib" "libpcap" "bash" "libmaxminddb")
 makedepends=("cmake" "swig" "bison" "flex" "python3" "openssl" "libpcap" "bash" "geoip" "zlib" "gperftools" "shadow")
-source=("https://github.com/zeek/zeek/releases/download/v3.1.3/zeek-3.1.3.tar.gz")
-sha256sums=("d7bf24615c4c0af2435c99c9fb8c9c0f0ecdce375e184ba7f63b715ae5900a61")
+source=("https://github.com/zeek/zeek/releases/download/v$pkgver/zeek-$pkgver.tar.gz")
+sha256sums=("1858725fd6d04a1af3c2798c341529aa0d229e838b6476f036156dc5dd254aa1")
 
 
 build() {
