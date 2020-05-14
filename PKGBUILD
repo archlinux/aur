@@ -1,7 +1,7 @@
 # Maintainer: Fancy Zhang <springzfx@gmail.com>
 pkgname=cgproxy-git
-pkgver=v3.7.r3.g4e04dcf
-pkgrel=2
+pkgver=v3.8.r0.g06ae0b9
+pkgrel=1
 pkgdesc="A transparent proxy program with cgroup2, like proxychains"
 arch=('x86_64')
 url="https://github.com/springzfx/cgproxy"
