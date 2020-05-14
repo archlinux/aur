@@ -1,6 +1,6 @@
 # Maintainer: Arthur LAURENT <arthur.laurent4@gmail.com>
 pkgname='ashes-git'
-pkgver=r472.fbe95c3c
+pkgver=r491.34b1d797
 pkgrel=1
 pkgdesc='Drop-in replacement for Vulkan shared library, for older hardware compatibility'
 
