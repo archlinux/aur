@@ -5,9 +5,12 @@ pkgbase = octosql-bin
 	url = https://github.com/cube2222/octosql
 	arch = x86_64
 	license = MIT
+	depends = glibc
 	provides = octosql
-	source = https://github.com/cube2222/octosql/releases/download/v0.2.0/octosql-linux
-	md5sums = 224fab1a98fa798d6748b1f9d5114e37
+	source = octosql-bin-0.2.0::https://github.com/cube2222/octosql/releases/download/v0.2.0/octosql-linux
+	source = LICENSE::https://github.com/cube2222/octosql/raw/master/LICENSE
+	sha256sums = 6b28fa93a511887d57fc94ffea5fe96fd1604a8afd9d540d55b96d68f56a4f3d
+	sha256sums = d43ace6a50d397cb34d7fcad19c4ef54f440828aed05b5b2edc7db2742f55d97
 
 pkgname = octosql-bin
 
