@@ -5,11 +5,13 @@ pkgver=1.2.3
 pkgrel=2
 pkgdesc="An MMO originally by Disney, rewritten. An account is needed to play."
 arch=("x86_64")
-url=""
+url="https://www.toontownrewritten.com/"
 license=("")
 depends=("qt5-base" "openal")
 makedepends=("git")
 provides=("$pkgname")
+conflicts=("toontown-rewritten")
+replaces=("toontown-rewritten")
 source=("https://cdn.toontownrewritten.com/launcher/linux/TTRLinux-v$pkgver.tar"
         "qt.conf" "toontown-rewritten.sh" "toontown-rewritten.desktop")
 options=(!strip)
