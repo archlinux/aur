@@ -3,23 +3,30 @@
 # Contributor: Carl George < carl at george dot computer >
 
 pkgname='pop-gtk-theme'
-pkgver=4.0.0
+pkgver=5.1.2
 pkgrel=1
 pkgdesc='System76 Pop GTK+ Theme'
 arch=('any')
 url='https://github.com/pop-os/gtk-theme'
-license=('GPL-2.0' 'CCPL:BY-SA')
-makedepends=('inkscape' 'sassc' 'optipng' 'parallel')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}-b2.tar.gz")
-md5sums=('e6616cda11777256db762e979675e80f')
+license=('LGPL2.1' 'CCPL' 'GPL3')
+makedepends=('inkscape'
+						 'sassc'
+						 'optipng'
+						 'parallel'
+						 'meson'
+						 'glib2'
+						 'ninja')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('aa28139ac028eacfe60c6b3cdec6421bc40e36329a6f4846e71fb76711a3fbe8')
 
 build() {
-  cd "${pkgname/pop-}-${pkgver}-b2"
-  make
+  cd "gtk-theme-${pkgver}"
+  meson --prefix='/usr' build
+  ninja -C build
 }
 
 package() {
-  cd "${pkgname/pop-}-${pkgver}-b2"
-  make DESTDIR="${pkgdir}" install
+  cd "gtk-theme-${pkgver}"
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 # vim: ts=2 sw=2 et:
