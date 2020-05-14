@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Stardog Studio
+Comment=IDE for the Stardog graph database management system
+Exec=/opt/stardog-studio/stardog-studio %f
+Icon=/usr/share/pixmaps/stardog-studio.png
+Terminal=false
+Categories=Development;IDE;
+StartupWMClass=stardog-studio
