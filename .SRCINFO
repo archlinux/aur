@@ -18,8 +18,8 @@ pkgbase = python-pinyin
 	depends = python-tox
 	depends = twine
 	depends = python-wheel
-	source = https://github.com/mozillazg/python-pinyin/archive/v0.37.0.tar.gz
-	md5sums = 77bafcf3aa45f1e9255f042b57e29242
+	source = python-pinyin-0.37.0.tar.gz::https://github.com/mozillazg/python-pinyin/archive/v0.37.0.tar.gz
+	sha256sums = 0ff8b20190751fe8721a3167685121ec20f01fca3b67c510563c5cb7a29c34e5
 
 pkgname = python-pinyin
 
