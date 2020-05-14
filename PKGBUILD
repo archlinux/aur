@@ -1,6 +1,14 @@
 # Maintainer: Thaodan <theodorstormgrade@gmail.com>
 # Arch Maintainer: AndyRTR <andyrtr@archlinux.org>
 
+# This pkg contains geckoextra methods needed by the sandbox of gecko.
+# The source of these methods is from:
+# https://hg.mozilla.org/mozilla-central/file/tip/gfx/graphite2
+#
+# The source is the same as from mozilla except that the mozilla methods
+# are linked to the original library instead of staticly linking the library
+# to gecko.
+
 _pkgname=graphite
 pkgname=$_pkgname-mozilla
 pkgver=1.3.14
