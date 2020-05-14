@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Operation = Install
+Target = flutter
+
+[Action]
+Description = Granting permission to group $FLUTTER_GROUP for flutter SDK
+When = PostTransaction
+Exec = /bin/sh -c 'chown -R :$FLUTTER_GROUP /opt/flutter && chmod -R g+w /opt/flutter'

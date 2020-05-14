@@ -1,0 +1,12 @@
+pkgbase = flutter-group-pacman-hook
+	pkgdesc = Pacman hook to fix permission after flutter install/upgrade
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = flutter
+	source = flutter-group-template.hook
+	sha512sums = ec692caa79eebfc17717dd227cc96a677cbca5a24adb4c824908ce24f186b1d8b66bfe5e562a975ef70f9cf34d30e78666ad7d3f89f27049accfa113ba888f01
+
+pkgname = flutter-group-pacman-hook
+
