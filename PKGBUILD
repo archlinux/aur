@@ -2,22 +2,21 @@
 
 _rockname=vstruct
 pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
-pkgver=2.0.2
-# upstream tagged the luarock version without adding a git tag...
-_pkgver=5ddf751b923f41be3dbb832d9a2df1c6055c26f3
+pkgver=2.1.1
 _rockrel=1
-pkgrel=3
+pkgrel=1
 pkgdesc='Lua library to manipulate binary data'
 arch=('i686' 'x86_64')
-url='https://github.com/ToxicFrog/vstruct'
+url="https://github.com/ToxicFrog/$_rockname"
 license=('MIT')
 makedepends=('luarocks')
-source=("$_rockname-$_pkgver.tar.gz::https://github.com/ToxicFrog/$_rockname/archive/$_pkgver.tar.gz")
-sha256sums=('41c18a2e15c1107319b848a20d1769d1f2fb4ac7036f71c71ce1e0fdb9426cc3')
+source=("$_rockname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('029ae887fc3c59279f378a499741811976d90f9a806569a42f4de80ad349f333')
 
 _package_helper() {
-  cd "$_rockname-$_pkgver"
-  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
+  cd "$_rockname-$pkgver"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
+    make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
 }
 
 package_lua-vstruct() {
