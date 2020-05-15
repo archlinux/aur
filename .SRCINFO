@@ -1,14 +1,15 @@
 pkgbase = shiv
 	pkgdesc = A command line utility for building fully self contained Python zipapps as outlined in PEP 441, but with all their dependencies included
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/linkedin/shiv
 	arch = any
-	license = BSD-2-Clause
+	license = BSD
 	makedepends = python-setuptools
+	depends = python
 	depends = python-click
-	source = https://github.com/linkedin/shiv/archive/0.1.1.tar.gz
-	md5sums = 8e091299c0e362f3e4bb90296324ad59
+	source = shiv-0.1.2.tar.gz::https://github.com/linkedin/shiv/archive/0.1.2.tar.gz
+	sha256sums = 307b47b45707b25b82f77a52173496e86eca27d72c86642571e4cecfa355e948
 
 pkgname = shiv
 
