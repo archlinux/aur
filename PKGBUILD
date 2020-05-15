@@ -4,7 +4,7 @@
 pkgname=hamsket-nightly-bin
 _pkgname=hamsket
 pkgver=0.6.0
-pkgrel=8
+pkgrel=9
 pkgdesc='Forked Free and Open Source messaging and emailing app that combines common web applications into one'
 arch=('x86_64')
 depends=('alsa-lib' 'bash' 'desktop-file-utils' 'libnotify' 'libxtst' 'libxss' 'nss')
@@ -16,7 +16,7 @@ source=("$_pkgname.tar.gz::https://github.com/TheGoddessInari/hamsket/releases/d
         "${_pkgname}.desktop"
         "${_pkgname}.png")
 
-sha256sums=('cad4462851226e523c568cf1d63fd8160cb3c3aa9c5183919b6cbb57a7263fd0'
+sha256sums=('475ee8d19ed0893f08faa8681a18dd81c7c6efbc8453036aa3d2d8dedba40d45'
             '18ecd40929511a7083a690ed77690571b2160200298bf589e8818aad97317f27'
             '0bf4d0c849ad6151f77b346fea0424fab910f434378f9890b16fd15a32a10064')
 
