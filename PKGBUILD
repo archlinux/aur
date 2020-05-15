@@ -1,14 +1,14 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 pkgname=radare2-cutter-git
-pkgver=1.0.r660.gac64bbf
+pkgver=1.10.3.pre.r30.g18a21048
 pkgrel=1
-pkgdesc='A Qt and C++ GUI for radare2 reverse engineering framework (originally named Iaito)'
+pkgdesc='Qt and C++ GUI for radare2 reverse engineering framework (originally named Iaito)'
 url='https://github.com/radareorg/cutter'
-arch=('i686' 'x86_64')
-license=('GPL')
-depends=('python' 'radare2' 'capstone' 'qt5-base' 'qt5-svg' 'qt5-webengine' 'icu')
-makedepends=('git' 'cmake')
+arch=('x86_64')
+license=('GPL3')
+depends=('python' 'capstone' 'qt5-base' 'qt5-svg' 'qt5-webengine' 'icu' 'python-shiboken2')
+makedepends=('git' 'cmake' 'shiboken2')
 optdepends=()
 provides=('radare2-cutter')
 backup=()
@@ -25,20 +25,26 @@ prepare() {
   cd ${pkgname}
   git submodule update --init --recursive
 
-  mkdir -p build
-  cd build
-  qmake-qt5 ../src/Cutter.pro
+  cd src
+  cmake -B build -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCUTTER_ENABLE_PYTHON=ON \
+    -DCUTTER_ENABLE_PYTHON_BINDINGS=ON \
+    -DCUTTER_USE_BUNDLED_RADARE2=ON \
+    -DCUTTER_USE_ADDITIONAL_RADARE2_PATHS=OFF \
+    -DCUTTER_ENABLE_CRASH_REPORTS=OFF \
+    -DCUTTER_ENABLE_GRAPHVIZ=ON
 }
 
 build() {
-  cd "${pkgname}/build"
-  make
+  cd "${pkgname}/src"
+  make -C build VERBOSE=1
 }
 
 package() {
   cd ${pkgname}
 
-  install -DTm755 build/Cutter "${pkgdir}/usr/bin/Cutter"
+  install -DTm755 src/build/Cutter "${pkgdir}/usr/bin/Cutter"
   install -DTm644 src/org.radare.Cutter.desktop "${pkgdir}/usr/share/applications/org.radare.Cutter.desktop"
   install -DTm644 src/img/cutter.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/cutter.svg"
   install -DTm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
