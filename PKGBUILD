@@ -8,9 +8,10 @@ pkgdesc="A command-line tool that converts text into 'vaporwave' text - fullwidt
 arch=('x86_64')
 url="https://github.com/JoshuaRLi/vape"
 license=('MIT')
+depends=('gcc-libs')
 makedepends=('cargo')
-source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('e40ebf822bd0f14f45d1a7acf51ea83e')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('e10a7ead8b133c31736e9f983c63956e23ea6c8710eb38912855e72b3fc45990')
 
 build () {
   cd "${pkgname}-${pkgver}"

@@ -6,8 +6,9 @@ pkgbase = vape
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/JoshuaRLi/vape/archive/v0.3.1.tar.gz
-	md5sums = e40ebf822bd0f14f45d1a7acf51ea83e
+	depends = gcc-libs
+	source = vape-0.3.1.tar.gz::https://github.com/JoshuaRLi/vape/archive/v0.3.1.tar.gz
+	sha256sums = e10a7ead8b133c31736e9f983c63956e23ea6c8710eb38912855e72b3fc45990
 
 pkgname = vape
 
