@@ -1,0 +1,19 @@
+pkgbase = dump_syms-git
+	pkgdesc = Rewrite of breakpad dump_syms tools in Rust
+	pkgver = 0.0.5.102.ge28a20b
+	pkgrel = 1
+	url = https://github.com/mozilla/dump_syms
+	arch = x86_64
+	arch = i686
+	license = Apache
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = dump_syms
+	conflicts = dump_syms
+	source = dump_syms::git+https://github.com/mozilla/dump_syms.git
+	sha256sums = SKIP
+
+pkgname = dump_syms-git
+
