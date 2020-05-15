@@ -1,8 +1,8 @@
 # Maintainer: Carsten Feuls <archlinux dot carstenfeuls dot de>
 
 pkgname=check_postgres
-pkgver=2.22.0
-pkgrel=2
+pkgver=2.25.0
+pkgrel=1
 pkgdesc="Nagios check_postgres plugin for checking status of PostgreSQL databases"
 arch=('any')
 url="http://bucardo.org/wiki/Check_postgres"
@@ -10,7 +10,7 @@ license=('custom')
 depends=('perl' 'perl-dbd-pg')
 optdepends=('postgresql')
 source=(https://github.com/bucardo/check_postgres/archive/${pkgver}.tar.gz)
-sha512sums=('d49b11df2c64c052ba67adabdcd12d0fff1a9aacd443efa8a884104678e84abf62fa89cfe0546fcd37313abdddb28d3123c556b1ceecd90f8dd50e16dec3c62c')
+sha512sums=('ab7d4b231f1428f549a2da0370de63c39d54287f8284c65044d1aa8fed120d89e9730c3b614004fdc298536402330ccac43d2d9dfe8b20cc5aff6f89f7be0915')
 
 
 build() {
