@@ -4,7 +4,7 @@ pkgbase=linux-amd
 _srcname=linux
 gitver=v5.6.13
 pkgver=5.6.v.13
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -23,16 +23,20 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 	5012_enable-cpu-optimizations-for-gcc91.patch
 	# dear-gcc10-please-ignore-the-mess patch
 	gcc10.patch
+        # stackprotection fix
+        'stackcanary.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '57e1a2f3cdc11595adb3766d598feb4a7170a9135eac862916d78648af3ecbf9'
+            '056fa9712eaf1f442a208519e6308f847be1a6a519bc9e03059beb95cb7069d4'
             #.preset file
             '71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08'
             #patch gentoo
             'cc739c9c9f7ce08e6bbc161b8232208bbc00820342a32fb1f69bff6326ae1370'
             # dear-gcc10-please-ignore-the-mess patch
             '97ac1bff7beb5205b89b5199c471ca076023718e52be3d77e219128811337301'
+            #stackprotection fix
+            '74ac43843b60805cc21cdadf6f4768281a61106107154f6830f26d6c142343e6'
 )
 
 _kernelname=${pkgbase#linux}
@@ -60,6 +64,9 @@ prepare() {
 
   # ask gcc10 for forgiveness in these early times patch
   git apply ../gcc10.patch
+
+  # Fix the source for stack canaries to work
+  git apply ../stackcanary.patch
 
   # get kernel version
   yes "" | make prepare
