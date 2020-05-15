@@ -2,20 +2,20 @@
 
 pkgname='lego-git'
 _pkgname="${pkgname%-git}"
-pkgver=r849.a5a29187
+pkgver=v3.7.0.r2.ge07bf641
 pkgrel=1
 pkgdesc='Lets Encrypt client and ACME library written in Go (master branch / unstable)'
 url='https://go-acme.github.io/lego/'
 arch=('x86_64' 'i686')
 license=('MIT')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-bin")
 
 _url='https://github.com/go-acme/lego'
 
 depends=()
 # makedepends=('git' 'make')
-makedepends=('git' 'make' 'go>=1.11')
+makedepends=('git' 'make' 'go>=1.14')
 
 source=("git+${_url}.git")
 sha512sums=('SKIP')
@@ -34,12 +34,15 @@ prepare() {
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
+
   make build
+
+  go clean -modcache
 }
 
 package() {
