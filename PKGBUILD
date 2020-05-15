@@ -7,8 +7,8 @@
 
 pkgbase=pagure
 pkgname=("$pkgbase" "$pkgbase-apache" "$pkgbase-mariadb" "$pkgbase-postgresql" "$pkgbase-sqlite")
-pkgver=5.9.1
-pkgrel=0.20
+pkgver=5.10.0
+pkgrel=0.1
 pkgdesc="A git-centered forge based on python using pygit2"
 arch=("any")
 url="https://pagure.io/$pkgbase"
@@ -23,6 +23,7 @@ _pydeps=('alembic'
          'chardet'
          'cryptography'
          'docutils'
+         'email-validator'
          'flask'
          'flask-wtf'
          'kitchen'
@@ -51,16 +52,13 @@ depends=('git'
 optdepends=('clamav: Scan uploaded attachments')
 makedepends=('python-setuptools')
 checkdepends=('python-tox')
-source=("https://releases.pagure.org/$pkgbase/$pkgbase-$pkgver.tar.gz"
-        "https://src.fedoraproject.org/rpms/pagure/raw/master/f/0501-Revert-Add-a-upper-limit-to-sqlalchemy.patch")
-sha256sums=('ad4938975b202eee30098d112b250309d2690194099bc59f3f6d9d7069b78d3c'
-            'c1da9e6ae2255f7896920ecb261f18c59f8ad6ba5726a8484f6287ae3962c854')
+source=("https://releases.pagure.org/$pkgbase/$pkgbase-$pkgver.tar.gz")
+sha256sums=('2a2b60e85e35f19a4260aa049aa7508059604de40a07acc1bdb7a421e882542c')
 _homedir="/var/lib/$pkgbase"
 _user=$pkgbase
 
 prepare() {
     cd "$pkgbase-$pkgver"
-    patch -p1 < "../${source[1]##*/}"
     local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
     sed -i -e "s#/usr/lib/pythonX.Y/site-packages#$site_packages#" \
            -e 's/#//' \
@@ -68,7 +66,7 @@ prepare() {
            -e '/# Apache 2.4/d' \
            -e "s#/path/to/git/repositorios#$_homedir#g" \
            -e "s/=git/=$_user/g" \
-        files/pagure.conf
+        files/pagure-apache-httpd.conf
     sed -i -e "/^#DB_URL/d;/^DB_URL/s/^.*$/execdir('pagure_database.cfg')/" \
         files/pagure.cfg.sample
 }
@@ -105,7 +103,7 @@ package_pagure-apache() {
     depends=("$pkgbase=$pkgver" 'apache' 'mod_wsgi')
     backup=("etc/httpd/conf/extra/$pkgbase.conf")
     cd "$pkgbase-$pkgver"
-    install -Dm644 -t "$pkgdir/etc/httpd/conf/extra/" files/pagure.conf
+    install -Dm644 -T "files/pagure-apache-httpd.conf" "$pkgdir/etc/httpd/conf/extra/$pkgbase.conf"
     install -Dm644 -t "$pkgdir/usr/lib/$pkgbase/" files/{doc_,}pagure.wsgi
 }
 
