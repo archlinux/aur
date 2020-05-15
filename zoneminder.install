@@ -3,30 +3,19 @@ post_install() {
     echo "   ZoneMinder has been installed but some additional steps are required:"
     echo
     echo "1) You will need to install a MySQL-compatible database server and create a database and user"
-    echo "   for ZoneMinder. Then you will need to start the following systemd service:"
-    echo
-    echo "   * mariadb.service"
+    echo "   for ZoneMinder's use."
     echo
     echo "2) You will need to install a web server and configure it to serve ZoneMinder's web interface,"
     echo "   located at /usr/share/webapps/zoneminder/. Premade configurations are provided for Apache and"
     echo "   Nginx; you can find them at /etc/httpd/conf/extra for Apache and /etc/nginx/sites-available for"
-    echo "   Nginx. After you install the web server, you will need to start the following systemd services:"
-    echo
-    echo "   * nginx.service (for Nginx)"
-    echo "   * httpd.service (for Apache)"
-    echo
-    echo "   ZoneMinder's default network address is http://localhost:8095"
+    echo "   Nginx."
     echo
     echo "3) If you choose to use Nginx, you will also need to install fcgiwrap, spawn-fcgi and multiwatch"
-    echo "   and then start the following systemd service (also provided by this package):"
+    echo "   and then start the following systemd service (provided by this package):"
     echo
     echo "   * fcgiwrap-multiwatch.service"
     echo
-    echo "4) After the previous steps are complete, you will also need to refresh systemd's tmpfiles and then"
-    echo "   start the following systemd services:"
-    echo
-    echo "   * php-fpm.service"
-    echo "   * zoneminder.service"
+    echo "4) After the previous steps are complete, you will also need to refresh systemd's tmpfiles."
     echo
     echo
     echo "   For more detailed info on how to configure ZoneMinder, you should check the following links:"
@@ -41,76 +30,25 @@ post_install() {
 }
 
 post_upgrade() {
-    echo        
-    systemctl daemon-reload
-    
-    # Parse zm.conf and all custom configuration files
-    . /etc/zoneminder/zm.conf
-    for CONF in /etc/zoneminder/conf.d/*.conf
-    do
-        . $CONF
-    done
-    
-    # Check if we're running a local database server
-    if [[ "$ZM_DB_HOST" = "localhost" ]] || [[ "$ZM_DB_HOST" = "127.0.0.1"* ]]
-    then        
-        # Check if our database is MariaDB
-        if [[ "$(pacman -Qs mariadb)" = *"local/mariadb "* ]]
-        then
-            # Make sure MariaDB is running before we attempt to use the updater
-            systemctl is-active --quiet mariadb || systemctl start mariadb
-            
-            # Make sure ZoneMinder is *NOT* running before we attempt to use the updater
-            systemctl is-active --quiet zoneminder && systemctl stop zoneminder
-            
-            # Run the updater
-            /usr/bin/zmupdate.pl --nointeractive
-            /usr/bin/zmupdate.pl --nointeractive --freshen > /dev/null 2>&1
-            
-            # Update PTZ control presets
-            /usr/bin/zmcamtool.pl --import > /dev/null 2>&1
-        
-            # Start ZoneMinder
-            systemctl start zoneminder || echo "ERROR: zoneminder.service could not be started, something is wrong"
-        else
-            echo "ERROR: MariaDB was not found, please update ZoneMinder's database manually"
-            echo
-        fi
-    fi
+    echo
+    echo "ZoneMinder's database needs to be updated. As the root user, run the following:"
+    echo
+    echo "/usr/bin/zmupdate.pl --nointeractive"
+    echo "/usr/bin/zmupdate.pl --nointeractive --freshen > /dev/null 2>&1"
+    echo    
+    echo "To also update the PTZ camera control presets, run the following:"
+    echo
+    echo "/usr/bin/zmcamtool.pl --import > /dev/null 2>&1"
+    echo
 }
 
 post_remove() {
-    systemctl daemon-reload && systemctl is-active --quiet zoneminder && systemctl stop zoneminder
-
-    # Disable ZoneMinder's Apache VirtualHost
-    if [ -f /etc/httpd/conf/httpd.conf ]
-    then
-        sed -i '/zoneminder.conf/d' /etc/httpd/conf/httpd.conf
-    fi
-    
-    # Disable ZoneMinder's Nginx server block
-    if [ -h /etc/nginx/sites-enabled/zoneminder.conf ]
-    then
-        rm /etc/nginx/sites-enabled/zoneminder.conf
-        
-        # If the sites-enabled directory is empty, remove it as well and also remove reference in nginx.conf
-        if [ -z "$(ls -A /etc/nginx/sites-enabled)" ]
-        then
-            rm -r /etc/nginx/sites-enabled
-            sed -i '/sites-enabled/d' /etc/nginx/nginx.conf
-        fi
-    fi
-    
-    # Notify user about ZoneMinder's database and user not being removed
-    if [ -d /var/lib/mysql/zm ]
-    then
-        echo
-        echo "ZoneMinder's database and user have been left intact. You can remove them by running the following:"
-        echo
-        echo "mysql -uroot -p -e \"drop database zm;\""
-        echo "mysql -uroot -p -e \"drop user 'zmuser'@localhost;\""
-        echo
-        echo "If you haven't yet configured a password for the database root user, omit the '-p' option."
-        echo
-    fi
+    echo
+    echo "ZoneMinder's database and user have been left intact. You can remove them by running the following:"
+    echo
+    echo "mysql -uroot -p -e \"drop database zm;\""
+    echo "mysql -uroot -p -e \"drop user 'zmuser'@localhost;\""
+    echo
+    echo "If you haven't yet configured a password for the database root user, omit the '-p' option."
+    echo
 }
