@@ -4,11 +4,12 @@ pkgname=xiringuito
 pkgver=0.2.1
 pkgrel=1
 pkgdesc='SSH-based "VPN for poors"'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/ivanilves/xiringuito'
-license=('Apache-2.0')
-source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('0304ee106d8d1588b05a671846e7836e')
+license=('Apache')
+depends=('bash')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
