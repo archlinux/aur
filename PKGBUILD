@@ -1,6 +1,7 @@
-# Maintainer: Jia Li <lijia1608@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jia Li <lijia1608@gmail.com>
 pkgname=python2-pyscf
-pkgver=1.6.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Python-based Simulations of Chemistry Framework"
 arch=(i686 x86_64)
@@ -12,7 +13,7 @@ provides=($pkgname=$pkgver)
 conflicts=(${pkgname}-git)
 _name=${pkgname#python2-}
 source=("https://github.com/pyscf/pyscf/archive/v$pkgver.tar.gz")
-sha256sums=('60ea5e82a3061466a423dd44650664e9b4594e88c7b880d66749e0b2901f1e2a')
+sha256sums=('eb52379b5052082cafc6caa8a76cb35a4cfdbdc03f4fffd4668cc66a8fd6e951')
 
 build() {
     cd "${_name}-${pkgver}"
