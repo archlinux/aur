@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-cpupower-git
 _gitname=cpupower
-pkgver=r123.9550e3a
+pkgver=r198.e2320e9
 pkgrel=1
 pkgdesc="Gnome-Shell Extension for intel-pstate driver"
 arch=('any')
@@ -26,8 +26,8 @@ package() {
 	_extid="cpupower@mko-sl.de"
 	_extpath="${pkgdir}/usr/share/gnome-shell/extensions/${_extid}"
 
-	DIR="/usr/share/gnome-shell/extensions/cpupower@mko-sl.de/src"
-	CFC="${DIR}/cpufreqctl"
+	DIR="/usr/share/gnome-shell/extensions/cpupower@mko-sl.de"
+	CFC="${DIR}/tool/cpufreqctl"
 	POLICY="mko.cpupower.setcpufreq"
 	RULEIN="${_extpath}/data/mko.cpupower.policy.in"
 	RULEDIR="${pkgdir}/usr/share/polkit-1/actions"
