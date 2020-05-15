@@ -1,11 +1,13 @@
 pkgbase = lua-coxpcall
 	pkgdesc = Encapsulates the protected calls with a coroutine based loop
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://keplerproject.github.io/coxpcall
-	arch = x86_64
-	arch = i686
+	arch = any
 	license = MIT
+	makedepends = lua
+	makedepends = lua52
+	makedepends = lua51
 	makedepends = luarocks
 	source = coxpcall-1_16_0.tar.gz::https://github.com/keplerproject/coxpcall/archive/v1_16_0.tar.gz
 	sha256sums = b732add4d8c2c56d82a176cf38c11ff1b799c02f220cb29dcd332b91adc34b16
