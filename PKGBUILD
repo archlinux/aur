@@ -18,6 +18,12 @@ sha256sums=('c02fbb14a0544b775386c0e714c28e52bc2a8a025ca89ac9a39dfc1bcd6599bd')
 prepare() {
   mv $srcdir/maia-gtk-$_gitcommit $srcdir/${_pkgname}
   mkdir -p $srcdir/${_pkgname}/build
+
+  # Fix for following error
+  # CMake Error at Maia-Dark-gtk/cmake_install.cmake:73 (file):
+  # file INSTALL cannot find "/home/user/maia-gtk-theme/src/maia-gtk/Maia-Dark-gtk/gtk-3.18/gtk.css
+  sed -i $srcdir/${_pkgname}/Maia-Dark-gtk/CMakeLists.txt \
+    -e "s;FILES gtk-3.18/gtk.css;FILES gtk-3.20/gtk.css;"
 }
 
 build() {
