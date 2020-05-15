@@ -1,0 +1,97 @@
+From 98db890a7c775cdfd3438bd6090590b405bb8c3a Mon Sep 17 00:00:00 2001
+From: Jan Cholasta <jan@cholasta.net>
+Date: Tue, 14 Apr 2020 07:36:27 +0200
+Subject: [PATCH] Fix compilation
+
+---
+ gui/csg_clip.cc | 4 +++-
+ gui/g_quake.cc  | 8 ++++++--
+ gui/g_quake2.cc | 8 ++++++--
+ gui/g_quake3.cc | 4 +++-
+ 4 files changed, 18 insertions(+), 6 deletions(-)
+
+diff --git a/gui/csg_clip.cc b/gui/csg_clip.cc
+index 992a742c9..d90f03f47 100644
+--- a/gui/csg_clip.cc
++++ b/gui/csg_clip.cc
+@@ -1054,7 +1054,9 @@ static void DoWriteClip(dclipnode_t & raw_clip, bool flip)
+ {
+ 	if (flip)
+ 	{
+-		std::swap(raw_clip.children[0], raw_clip.children[1]);
++		auto tmp = raw_clip.children[0];
++		raw_clip.children[0] = raw_clip.children[1];
++		raw_clip.children[1] = tmp;
+ 	}
+ 
+ 	// fix endianness
+diff --git a/gui/g_quake.cc b/gui/g_quake.cc
+index 035a90c59..7d5044963 100644
+--- a/gui/g_quake.cc
++++ b/gui/g_quake.cc
+@@ -865,7 +865,9 @@ static void Q1_WriteNode(quake_node_c *node)
+ 
+ 	if (flipped)
+ 	{
+-		std::swap(raw_node.children[0], raw_node.children[1]);
++		auto tmp = raw_node.children[0];
++		raw_node.children[0] = raw_node.children[1];
++		raw_node.children[1] = tmp;
+ 	}
+ 
+ 
+@@ -1199,7 +1201,9 @@ static void MapModel_Nodes(quake_mapmodel_c *model, float *mins, float *maxs)
+ 
+ 		if (flipped)
+ 		{
+-			std::swap(raw_node.children[0], raw_node.children[1]);
++			auto tmp = raw_node.children[0];
++			raw_node.children[0] = raw_node.children[1];
++			raw_node.children[1] = tmp;
+ 		}
+ 
+ 		raw_node.firstface = face_base + face;
+diff --git a/gui/g_quake2.cc b/gui/g_quake2.cc
+index df2b057e7..32100fb20 100644
+--- a/gui/g_quake2.cc
++++ b/gui/g_quake2.cc
+@@ -650,7 +650,9 @@ static void Q2_WriteNode(quake_node_c *node)
+ 
+ 	if (flipped)
+ 	{
+-		std::swap(raw_node.children[0], raw_node.children[1]);
++		auto tmp = raw_node.children[0];
++		raw_node.children[0] = raw_node.children[1];
++		raw_node.children[1] = tmp;
+ 	}
+ 
+ 
+@@ -881,7 +883,9 @@ static void Q2_Model_Nodes(quake_mapmodel_c *model, float *mins, float *maxs)
+ 
+ 		if (flipped)
+ 		{
+-			std::swap(raw_node.children[0], raw_node.children[1]);
++			auto tmp = raw_node.children[0];
++			raw_node.children[0] = raw_node.children[1];
++			raw_node.children[1] = tmp;
+ 		}
+ 
+ 		raw_node.firstface = face_base + face;
+diff --git a/gui/g_quake3.cc b/gui/g_quake3.cc
+index 6ec7e4aad..f165b1a6e 100644
+--- a/gui/g_quake3.cc
++++ b/gui/g_quake3.cc
+@@ -965,7 +965,9 @@ static void Q3_WriteNode(quake_node_c *node)
+ 
+ 	if (flipped)
+ 	{
+-		std::swap(raw_node.children[0], raw_node.children[1]);
++		auto tmp = raw_node.children[0];
++		raw_node.children[0] = raw_node.children[1];
++		raw_node.children[1] = tmp;
+ 	}
+ 
+ 
+-- 
+2.26.0
+
