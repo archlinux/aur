@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="Binary builds of the Polkadot Node Implementation"
 arch=('x86_64')
 provides=("polkadot")
+conflicts=("polkadot-git")
 url="https://github.com/paritytech/polkadot"
 license=('GNU')
 depends=()
