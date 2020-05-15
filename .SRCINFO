@@ -1,13 +1,15 @@
 pkgbase = scidavis-qt5
 	pkgdesc = Application for Scientific Data Analysis and Visualization, fork of QtiPlot. Qt5 port
-	pkgver = 2.1.4
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = http://scidavis.sourceforge.net/
 	arch = x86_64
 	license = GPL
 	makedepends = boost
 	makedepends = cmake
 	makedepends = qt5-tools
+	makedepends = sip
+	makedepends = python-sip
 	makedepends = qwt5-qt5>=5.2.3.1-2
 	makedepends = qwtplot3d-qt5>=0.2.7-3
 	depends = gsl
@@ -17,16 +19,15 @@ pkgbase = scidavis-qt5
 	depends = shared-mime-info
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
-	depends = sip
-	depends = python-sip
 	depends = python-pyqt5
+	depends = python-pyqt5-sip
 	depends = qt5-svg
 	depends = python
 	depends = python-scipy
 	conflicts = scidavis
-	source = scidavis-2.1.4.zip::https://github.com/highperformancecoder/scidavis/archive/2.1.4.zip
+	source = scidavis-2.2.0.zip::https://github.com/highperformancecoder/scidavis/archive/2.2.0.zip
 	source = patch-linking
-	sha512sums = 026c8bef87573e5ea42feab62efcaefd3deeb1d74dc86cdbdec17fd28e97914e785fb70f84addc582f3326d4d3bbe25fa399e85918b720019815f7bf84e0cc51
+	sha512sums = b90ea38953eb5715a9c990aefeb22b76edba995d5fe644dc8f802317651e6ad026c200ca28b4dfb658d6c08edb5983441ab07027d17a64f138f66ae8124c296a
 	sha512sums = 69f04800343935141ad224510a915a8cbdbd0e07401a61530a52e18ea5d02b85f7e579f70b6bb32b37e085c07f61a8ce3f9c83f7b7b9cfe0553624b8ff9ff5db
 
 pkgname = scidavis-qt5
