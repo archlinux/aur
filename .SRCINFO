@@ -6,9 +6,10 @@ pkgbase = strip-css-comments-cli
 	arch = any
 	license = MIT
 	makedepends = npm
-	noextract = v2.0.2.tar.gz
-	source = https://github.com/sindresorhus/strip-css-comments-cli/archive/v2.0.2.tar.gz
-	md5sums = a929d908f33b46b53d1d77bb55b82dc9
+	depends = nodejs
+	noextract = strip-css-comments-cli-2.0.2.tar.gz
+	source = strip-css-comments-cli-2.0.2.tar.gz::https://github.com/sindresorhus/strip-css-comments-cli/archive/v2.0.2.tar.gz
+	sha256sums = aae5bd9c9ec4895b5954329a97725a426917f5f607ec3c76153985089e2755e8
 
 pkgname = strip-css-comments-cli
 
