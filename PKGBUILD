@@ -1,8 +1,9 @@
-# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-collabora-online
-pkgver=1.1.25
+pkgver=3.6.0
 pkgrel=3
 pkgdesc="Integrate Collabora Online into NextCloud"
 arch=('any')
@@ -11,13 +12,10 @@ license=('AGPL')
 depends=('nextcloud' 'libreoffice-online')
 makedepends=()
 options=('!strip')
-source=("richdocuments-${pkgver}.tar.gz::https://github.com/nextcloud/richdocuments/releases/download/1.1.25/richdocuments.tar.gz")
-sha512sums=("4d55f366ed9c39dcc04a5685c86e8099af472ff305bfba7bee0aaf2e80b571c3343638eec2051857911f63f3428b39509665b73b3b2f527b7380dc25a6795c29")
+source=("richdocuments-${pkgver}.tar.gz::https://github.com/nextcloud/richdocuments/releases/download/v${pkgver}/richdocuments.tar.gz")
+sha512sums=('341fc186ea7fc7994dbe6291f23dfd573f40060569be57ae254c21641aa8f92ded5a60de8d6b85a655fd248904902e40251da73f034d33c07f795950f79c800a')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
   cp -a "${srcdir}/richdocuments" "${pkgdir}/usr/share/webapps/nextcloud/apps/richdocuments"
 }
-
-# Todo:
-# - ArchWiki tutorial
