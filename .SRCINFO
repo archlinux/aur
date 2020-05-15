@@ -6,8 +6,10 @@ pkgbase = skm-bin
 	arch = x86_64
 	license = MIT
 	provides = skm
-	source = https://github.com/TimothyYe/skm/releases/download/V0.8/skm-linux64-0.8.tar.gz
+	source = skm-bin-0.8.tar.gz::https://github.com/TimothyYe/skm/releases/download/V0.8/skm-linux64-0.8.tar.gz
+	source = LICENSE::https://github.com/TimothyYe/skm/raw/master/LICENSE
 	sha256sums = 7ede4eec2495dc346b412cd44baf8600cb84702c0623ef8dd9492bdb1cc34894
+	sha256sums = SKIP
 
 pkgname = skm-bin
 
