@@ -1,4 +1,5 @@
 # Maintainer: Young Acinonyx <young.acinonyx@gmail.com>
+
 pkgname=plasma5-applets-plasmaconfsaver
 _pkgname=com.pajuelo.plasmaConfSaver
 pkgver=1.3
