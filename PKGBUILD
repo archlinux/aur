@@ -9,7 +9,7 @@ url='https://desktop.tamtam.chat/latest/'
 license=('custom')
 depends=('alsa-lib' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss')
 source=("${pkgname}-${pkgver}.deb::https://desktop.tamtam.chat/v${pkgver}/TamTam-amd64.deb")
-sha256sums=('6314a399dbafd64c069adf116b1549c5b067cfdf14203493b0665679c16fbb6b')
+sha256sums=('5dc7757ad8b4d87c438a04fe0ad4383def676080872c4dd8d50bda7af38ccd57')
 package() {
   cd "${srcdir}"
   tar -xJC "${pkgdir}" -f data.tar.xz
