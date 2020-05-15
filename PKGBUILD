@@ -1,9 +1,5 @@
-# Maintainer: Daniel Landau <daniel.landau@iki.fi>
-# Contributor: Prurigro
-# Ported from the package by AlexanderR <alexander r at gmx com>
-
 pkgname=fdroidserver
-pkgver=1.1.6
+pkgver=1.1.7
 epoch=2
 pkgrel=2
 pkgdesc="F-Droid repository management tools"
@@ -33,7 +29,7 @@ optdepends=(
 arch=('any')
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/fdroid/${pkgname}/repository/archive.tar.gz?ref=${pkgver}")
-sha256sums=('e78501c057ba21216b24c9c676a98bc6c9b79aa99009b913d536e3ed5cab442b')
+sha256sums=('1c5f2df891d10caa1ad9dc4be4aa41a91413d7a0a7ed0118bba9f052ae32d788')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}-"*
