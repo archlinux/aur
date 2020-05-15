@@ -1,7 +1,7 @@
 # Maintainer: Alex Wilson <alex at cooperi dot net>
 pkgname=pivy
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for using PIV smartcards/Yubikeys with ssh-agent and disk encryption"
 url="https://github.com/arekinath/pivy"
 license=('MPL2')
@@ -14,13 +14,17 @@ source=(
 arch=(x86 x86_64)
 depends=(libbsd pcsclite libedit)
 optdepends=('cryptsetup: LUKS encrypted disk support (pivy-luks)'
-	    'zfs-utils: ZFS encrypted pool/fs support (pivy-zfs)')
-makedepends=(pkgconf cryptsetup zfs-utils json-c)
+	    'zfs-utils: ZFS encrypted pool/fs support (pivy-zfs)'
+            'pam: PAM plugin (pam_pivy.so)')
+makedepends=(pkgconf cryptsetup zfs-utils json-c pam)
 sha256sums=('c78b9420751cd70c4b6cf2d437110c71452cbd6c8c44c5338c29ed7d80cba26c'
             '44b5a004a06ffe214df2810bb2d58a3ecb2bdcf1c892411a8d574afac935f678'
             '9895a33d1c7fec6fcd682e13788b906f170ef32ce59c788c27321f3e18b8fc70'
             'f91aad0c8fb9cbc67c910ad6dcffb401a819b4fd122007ea7f978638db044cf6'
             'a2c23b7b9e3dc976b54627a08da68b76fd6194ba45d211959dedf4700879379e')
+
+# Don't use --as-needed when linking, will break pam_pivy
+LDFLAGS+=" -Wl,--no-as-needed"
 
 prepare() {
 	mv "libressl-3.1.0" "$pkgname-$pkgver/libressl"
