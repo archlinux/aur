@@ -1,0 +1,15 @@
+pkgbase = webvfx
+	pkgdesc = Video effects engine based on web technologies
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/mltframework/webvfx
+	arch = x86_64
+	license = BSD
+	makedepends = qt5-tools
+	depends = qt5-webkit
+	depends = mlt
+	source = https://github.com/mltframework/webvfx/releases/download/1.2.0/webvfx-1.2.0.txz
+	md5sums = b9625fbb29107a562190f696d6902c73
+
+pkgname = webvfx
+
