@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-md4c
+	pkgdesc = C Markdown parser (mingw-w64)
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/mity/md4c
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = https://github.com/mity/md4c/archive/release-0.4.3.tar.gz
+	sha256sums = 3486c2bd3fd64a8237f7835d9d1c60ea8a362f1910cb1c64f001971220476a4a
+
+pkgname = mingw-w64-md4c
+
