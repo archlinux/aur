@@ -2,7 +2,7 @@
 # Contributor: Avi Knoll <aknoll at atlassian dot com>
 
 pkgname=mvnvm
-pkgver=1.0.13
+pkgver=1.0.14
 pkgrel=1
 pkgdesc="Maven version manager"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('sh')
 conflicts=('maven')
 provides=('maven')
 source=("${pkgname}-${pkgver}"::"https://bitbucket.org/mjensen/mvnvm/raw/mvnvm-${pkgver}/mvn")
-sha256sums=('a7bfeed72427a7e7412a0de857de5c100bda431625de2eb28ba2d96d12c1e8e5')
+sha256sums=('325a98d1021b5f41d554c24517c01430f5bfc4e6ab1f322381dc38442023f40e')
 
 package() {
   mkdir -p ${pkgdir}/usr/bin
