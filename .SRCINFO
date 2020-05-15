@@ -5,12 +5,13 @@ pkgbase = ruby-jsonpath
 	url = https://github.com/joshbuddy/jsonpath
 	arch = any
 	license = MIT
-	depends = ruby
 	depends = ruby-multi_json
-	noextract = $_gemname-$pkgver.gem
+	noextract = ruby-jsonpath-0.5.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/jsonpath-0.5.0.gem
-	md5sums = b5dd754e81ad2ee39f92e511f50d7ef3
+	source = ruby-jsonpath-0.5.0.gem::https://rubygems.org/downloads/jsonpath-0.5.0.gem
+	source = LICENSE::https://github.com/joshbuddy/jsonpath/raw/master/LICENSE.md
+	sha256sums = 4c7282006de383fb62d8a092e6bec6e7ebfc0b899ad59349a279bc32c76bfb9e
+	sha256sums = f8d08617b73c9c304c8543b9b87e354e02468bd02982ae4406283e7a6e29ec02
 
 pkgname = ruby-jsonpath
 
