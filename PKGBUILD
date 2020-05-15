@@ -6,7 +6,7 @@ _source="installer"   # if installing from .sh installer
 # _source="pkg"         # if installing from .pkg package
 
 pkgname=cisco-anyconnect
-pkgver=4.8.03043
+pkgver=4.8.03052
 pkgrel=1
 pkgdesc='Cisco AnyConnect Secure Mobility Client'
 arch=('x86_64')
@@ -16,6 +16,7 @@ optdepends=(
     'gtk2: required by vpnui'
     'glib2: required by vpnui'
     'gtk3: required by acwebhelper'
+    'webkit2gtk: required by acwebhelper'
 )
 license=('custom')
 
@@ -39,21 +40,21 @@ unpack_installer() {
 
 if [[ "${_source}" == "tarball" ]]; then
     _filename="anyconnect-linux64-${pkgver}-predeploy-k9.tar.gz"
-    _filehash="7d77e29947f42cef74745e4bb924efc8d4eeca5eb0bf97f8c39980353511be91"
+    _filehash="578130d0b7fb5cd174a712382a97b64ff54cb8fe3f991f47f30a96cea60ce62c"
 
     prepare() {
         tar xf "$_filename"
     }
 elif [[ "${_source}" == "installer" ]]; then
     _filename="${_installer_filename}"
-    _filehash="0da56dc60ee8794f8ba4abd6057e36c47d421e8e3d7e6564db44feec6881c673"
+    _filehash="178b822f553623c7822b627de5a295381edcb29e46ac78e14c70afd6f38f64ca"
 
     prepare() {
         unpack_installer
     }
 elif [[ "${_source}" == "pkg" ]]; then
     _filename="anyconnect-linux64-${pkgver}-webdeploy-k9.pkg"
-    _filehash="9efd87ee498bc56e90bd06a5920954ade62f8702cb4643520876f414f6ec6127"
+    _filehash="a77ee13473148df21a5760e644fbba135c5ab0bb70ab0f283930b7509bcadd57"
 
     prepare() {
         unzip -j "${_filename}" "binaries/${_installer_filename}"
