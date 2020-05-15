@@ -4,7 +4,7 @@
 _basename=libgme
 pkgname="lib32-$_basename"
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Video game music file emulation/playback library (32-bit)"
 url="https://bitbucket.org/mpyne/game-music-emu"
 license=('LGPL')
