@@ -1,7 +1,8 @@
-# Maintainer: Acidhub <dev@acidhub.click>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Acidhub <dev@acidhub.click>
 
 pkgname=steam-tools-ng
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="Some useful tools for use with Steam client and some steam related websites."
 arch=('any')
@@ -10,7 +11,7 @@ depends=('python>=3.7' 'python-certifi' 'python-aiohttp' 'python-gobject' 'stlib
 makedepends=('python-setuptools')
 license=('GPL')
 source=("https://github.com/ShyPixie/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('e7e2a168ff4d1edf32e1a4001249aa11311c9d8d860ae4c2817338a10e4265ed')
+sha256sums=('fc1dd71f0cf764f734a5b2aaff7c5483e280c2b1a0fe944d8e3130df96f854df')
 
 build() {
     cd $pkgname-$pkgver
