@@ -2,7 +2,7 @@
 # Eli Schwartz <eschwartz@archlinux.org>
 
 pkgname=cinnamon-control-center-slim
-pkgver=4.4.0
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="The Control Center for Cinnamon"
 arch=('x86_64')
@@ -32,8 +32,8 @@ build() {
                 --sysconfdir=/etc \
                 --localstatedir=/var \
                 --enable-systemd \
-                --disable-networkmanager \
                 --disable-modemmanager \
+                --disable-networkmanager \
                 --disable-onlineaccounts \
                 --disable-documentation
 
