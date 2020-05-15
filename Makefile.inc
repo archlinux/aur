@@ -123,7 +123,7 @@ CDEFS = -DAdd_
 
 #COMPILER OPTIONS
 
-OPTF    = -DALLOW_NON_INIT ${CFLAGS} -fPIC
+OPTF    = -DALLOW_NON_INIT -fallow-argument-mismatch ${CFLAGS} -fPIC
 OPTL    = ${CFLAGS} -fPIC
 OPTC    = ${CFLAGS} -fPIC
 
