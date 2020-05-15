@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com
 pkgname=cht.sh-git
 pkgver=r586.c4c3a62
-pkgrel=1
+pkgrel=2
 pkgdesc="The only cheat sheet you need (command line client for cheat.sh)"
 arch=('any')
 url='https://github.com/chubin/cheat.sh'
@@ -9,7 +9,8 @@ license=('MIT')
 depends=('curl' 'xsel' 'rlwrap')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/chubin/cheat.sh")
-sha1sums=(SKIP)
+sha1sums=('SKIP')
+conflicts=('cht.sh')
 
 pkgver() {
   cd "$pkgname"

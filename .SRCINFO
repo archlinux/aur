@@ -1,7 +1,7 @@
 pkgbase = cht.sh-git
 	pkgdesc = The only cheat sheet you need (command line client for cheat.sh)
 	pkgver = r586.c4c3a62
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chubin/cheat.sh
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = cht.sh-git
 	depends = curl
 	depends = xsel
 	depends = rlwrap
+	conflicts = cht.sh
 	source = cht.sh-git::git+https://github.com/chubin/cheat.sh
 	sha1sums = SKIP
 
