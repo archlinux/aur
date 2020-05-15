@@ -1,0 +1,3739 @@
+diff --git a/NEWS b/NEWS
+index 292fbc595a..be2d8b1f61 100644
+--- a/NEWS
++++ b/NEWS
+@@ -4,6 +4,31 @@ See the end for copying conditions.
+ 
+ Please send GNU C library bug reports via <https://sourceware.org/bugzilla/>
+ using `glibc' in the "product" field.
++
++Version 2.31.1
++
++The following bugs are resolved with this release:
++  [20543] Please move from .gnu.linkonce to comdat
++  [23296] Data race in setting function descriptor during lazy binding
++  [25487] sinl() stack corruption from crafted input (CVE-2020-10029)
++  [25523] MIPS/Linux inline syscall template is miscompiled
++  [25623] test-sysvmsg, test-sysvsem, test-sysvshm fail with 2.31 on 32 bit and
++    old kernel
++  [25635] arm: Wrong sysdep order selection for soft-fp
++  [25715] system() returns wrong errors when posix_spawn fails
++
++Security related changes:
++
++  CVE-2020-10029: Trigonometric functions on x86 targets suffered from stack
++  corruption when they were passed a pseudo-zero argument.  Reported by Guido
++  Vranken / ForAllSecure Mayhem.
++
++  CVE-2020-1751: A defect in the PowerPC backtrace function could cause an
++  out-of-bounds write when executed in a signal frame context.
++
++  CVE-2020-1752: A use-after-free vulnerability in the glob function when
++  expanding ~user has been fixed.
++
+ 
+ Version 2.31
+ 
+diff --git a/configure b/configure
+index b959d2d988..3b98ec312f 100755
+--- a/configure
++++ b/configure
+@@ -4035,7 +4035,7 @@ if ${CC-cc} $CFLAGS $CPPFLAGS $LDFLAGS \
+ 	    -o conftest conftest.S 1>&5 2>&5; then
+   # Do a link to see if the backend supports IFUNC relocs.
+   $READELF -r conftest 1>&5
+-  LC_ALL=C $READELF -r conftest | grep 'no relocations' >/dev/null || {
++  LC_ALL=C $READELF -Wr conftest | grep -q 'IRELATIVE\|R_SPARC_JMP_IREL' && {
+     libc_cv_ld_gnu_indirect_function=yes
+   }
+ fi
+diff --git a/configure.ac b/configure.ac
+index 49b900c1ed..e20034f301 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -649,7 +649,7 @@ if ${CC-cc} $CFLAGS $CPPFLAGS $LDFLAGS \
+ 	    -o conftest conftest.S 1>&AS_MESSAGE_LOG_FD 2>&AS_MESSAGE_LOG_FD; then
+   # Do a link to see if the backend supports IFUNC relocs.
+   $READELF -r conftest 1>&AS_MESSAGE_LOG_FD
+-  LC_ALL=C $READELF -r conftest | grep 'no relocations' >/dev/null || {
++  LC_ALL=C $READELF -Wr conftest | grep -q 'IRELATIVE\|R_SPARC_JMP_IREL' && {
+     libc_cv_ld_gnu_indirect_function=yes
+   }
+ fi
+diff --git a/debug/backtrace.c b/debug/backtrace.c
+index cc4b9a5c90..69cf4c23c8 100644
+--- a/debug/backtrace.c
++++ b/debug/backtrace.c
+@@ -23,6 +23,7 @@
+ #include <gnu/lib-names.h>
+ #include <stdlib.h>
+ #include <unwind.h>
++#include <unwind-arch.h>
+ 
+ struct trace_arg
+ {
+@@ -78,6 +79,10 @@ backtrace_helper (struct _Unwind_Context *ctx, void *a)
+   if (arg->cnt != -1)
+     {
+       arg->array[arg->cnt] = (void *) unwind_getip (ctx);
++      if (arg->cnt > 0)
++	arg->array[arg->cnt]
++	  = unwind_arch_adjustment (arg->array[arg->cnt - 1],
++				    arg->array[arg->cnt]);
+ 
+       /* Check whether we make any progress.  */
+       _Unwind_Word cfa = unwind_getcfa (ctx);
+diff --git a/include/sys/prctl.h b/include/sys/prctl.h
+index 0920ed642b..d33f3a290e 100644
+--- a/include/sys/prctl.h
++++ b/include/sys/prctl.h
+@@ -4,6 +4,7 @@
+ # ifndef _ISOMAC
+ 
+ extern int __prctl (int __option, ...);
++libc_hidden_proto (__prctl)
+ 
+ # endif /* !_ISOMAC */
+ #endif
+diff --git a/malloc/tst-mallocfork2.c b/malloc/tst-mallocfork2.c
+index 0602a94895..fc1fd64b21 100644
+--- a/malloc/tst-mallocfork2.c
++++ b/malloc/tst-mallocfork2.c
+@@ -62,6 +62,9 @@ static volatile sig_atomic_t sigusr1_received;
+    progress.  Checked by liveness_signal_handler.  */
+ static volatile sig_atomic_t progress_indicator = 1;
+ 
++/* Set to 1 if an error occurs in the signal handler.  */
++static volatile sig_atomic_t error_indicator = 0;
++
+ static void
+ sigusr1_handler (int signo)
+ {
+@@ -72,7 +75,8 @@ sigusr1_handler (int signo)
+   if (pid == -1)
+     {
+       write_message ("error: fork\n");
+-      abort ();
++      error_indicator = 1;
++      return;
+     }
+   if (pid == 0)
+     _exit (0);
+@@ -81,12 +85,14 @@ sigusr1_handler (int signo)
+   if (ret < 0)
+     {
+       write_message ("error: waitpid\n");
+-      abort ();
++      error_indicator = 1;
++      return;
+     }
+   if (status != 0)
+     {
+       write_message ("error: unexpected exit status from subprocess\n");
+-      abort ();
++      error_indicator = 1;
++      return;
+     }
+ }
+ 
+@@ -122,9 +128,25 @@ signal_sender (int signo, bool sleep)
+     }
+ }
+ 
++/* Children processes.  */
++static pid_t sigusr1_sender_pids[5] = { 0 };
++static pid_t sigusr2_sender_pid = 0;
++
++static void
++kill_children (void)
++{
++  for (size_t i = 0; i < array_length (sigusr1_sender_pids); ++i)
++    if (sigusr1_sender_pids[i] > 0)
++      kill (sigusr1_sender_pids[i], SIGKILL);
++  if (sigusr2_sender_pid > 0)
++    kill (sigusr2_sender_pid, SIGKILL);
++}
++
+ static int
+ do_test (void)
+ {
++  atexit (kill_children);
++
+   /* shared->barrier is intialized along with sigusr1_sender_pids
+      below.  */
+   shared = support_shared_allocate (sizeof (*shared));
+@@ -148,14 +170,13 @@ do_test (void)
+       return 1;
+     }
+ 
+-  pid_t sigusr2_sender_pid = xfork ();
++  sigusr2_sender_pid = xfork ();
+   if (sigusr2_sender_pid == 0)
+     signal_sender (SIGUSR2, true);
+ 
+   /* Send SIGUSR1 signals from several processes.  Hopefully, one
+      signal will hit one of the ciritical functions.  Use a barrier to
+      avoid sending signals while not running fork/free/malloc.  */
+-  pid_t sigusr1_sender_pids[5];
+   {
+     pthread_barrierattr_t attr;
+     xpthread_barrierattr_init (&attr);
+@@ -166,7 +187,7 @@ do_test (void)
+   }
+   for (size_t i = 0; i < array_length (sigusr1_sender_pids); ++i)
+     {
+-      sigusr1_sender_pids[i] = fork ();
++      sigusr1_sender_pids[i] = xfork ();
+       if (sigusr1_sender_pids[i] == 0)
+         signal_sender (SIGUSR1, false);
+     }
+@@ -211,7 +232,7 @@ do_test (void)
+         ++malloc_signals;
+       xpthread_barrier_wait (&shared->barrier);
+ 
+-      if (objects[slot] == NULL)
++      if (objects[slot] == NULL || error_indicator != 0)
+         {
+           printf ("error: malloc: %m\n");
+           for (size_t i = 0; i < array_length (sigusr1_sender_pids); ++i)
+@@ -225,10 +246,6 @@ do_test (void)
+   for (int slot = 0; slot < malloc_objects; ++slot)
+     free (objects[slot]);
+ 
+-  for (size_t i = 0; i < array_length (sigusr1_sender_pids); ++i)
+-    kill (sigusr1_sender_pids[i], SIGKILL);
+-  kill (sigusr2_sender_pid, SIGKILL);
+-
+   printf ("info: signals received during fork: %u\n", fork_signals);
+   printf ("info: signals received during free: %u\n", free_signals);
+   printf ("info: signals received during malloc: %u\n", malloc_signals);
+diff --git a/math/Makefile b/math/Makefile
+index 5985b6744b..3496af4040 100644
+--- a/math/Makefile
++++ b/math/Makefile
+@@ -644,6 +644,128 @@ ifneq ($(long-double-fcts),yes)
+ # We won't compile the `long double' code at all.  Tell the `double' code
+ # to define aliases for the `FUNCl' names.
+ math-CPPFLAGS += -DNO_LONG_DOUBLE
++# GCC 10 diagnoses aliases with types conflicting with built-in
++# functions.
++CFLAGS-w_acos.c += -fno-builtin-acosl
++CFLAGS-w_acosh.c += -fno-builtin-acoshl
++CFLAGS-w_asin.c += -fno-builtin-asinl
++CFLAGS-s_asinh.c += -fno-builtin-asinhl
++CFLAGS-s_atan.c += -fno-builtin-atanl
++CFLAGS-w_atan2.c += -fno-builtin-atan2l
++CFLAGS-w_atanh.c += -fno-builtin-atanhl
++CFLAGS-s_cabs.c += -fno-builtin-cabsl
++CFLAGS-s_cacos.c += -fno-builtin-cacosl
++CFLAGS-s_cacosh.c += -fno-builtin-cacoshl
++CFLAGS-s_canonicalize.c += -fno-builtin-canonicalizel
++CFLAGS-s_carg.c += -fno-builtin-cargl
++CFLAGS-s_casin.c += -fno-builtin-casinl
++CFLAGS-s_casinh.c += -fno-builtin-casinhl
++CFLAGS-s_catan.c += -fno-builtin-catanl
++CFLAGS-s_catanh.c += -fno-builtin-catanhl
++CFLAGS-s_cbrt.c += -fno-builtin-cbrtl
++CFLAGS-s_ccos.c += -fno-builtin-ccosl
++CFLAGS-s_ccosh.c += -fno-builtin-ccoshl
++CFLAGS-s_ceil.c += -fno-builtin-ceill
++CFLAGS-s_cexp.c += -fno-builtin-cexpl
++CFLAGS-s_cimag.c += -fno-builtin-cimagl
++CFLAGS-s_clog.c += -fno-builtin-clogl
++CFLAGS-s_clog10.c += -fno-builtin-clog10l
++CFLAGS-s_conj.c += -fno-builtin-conjl
++CFLAGS-s_copysign.c += -fno-builtin-copysignl
++CFLAGS-s_cos.c += -fno-builtin-cosl
++CFLAGS-w_cosh.c += -fno-builtin-coshl
++CFLAGS-s_cpow.c += -fno-builtin-cpowl
++CFLAGS-s_cproj.c += -fno-builtin-cprojl
++CFLAGS-s_creal.c += -fno-builtin-creall
++CFLAGS-s_csin.c += -fno-builtin-csinl
++CFLAGS-s_csinh.c += -fno-builtin-csinhl
++CFLAGS-s_csqrt.c += -fno-builtin-csqrtl
++CFLAGS-s_ctan.c += -fno-builtin-ctanl
++CFLAGS-s_ctanh.c += -fno-builtin-ctanhl
++CFLAGS-s_dadd.c += -fno-builtin-daddl
++CFLAGS-s_ddiv.c += -fno-builtin-ddivl
++CFLAGS-s_dmul.c += -fno-builtin-dmull
++CFLAGS-s_dsub.c += -fno-builtin-dsubl
++CFLAGS-s_erf.c += -fno-builtin-erfl
++CFLAGS-s_erfc.c += -fno-builtin-erfcl
++CFLAGS-e_exp.c += -fno-builtin-expl
++CFLAGS-w_exp10.c += -fno-builtin-exp10l
++CFLAGS-e_exp2.c += -fno-builtin-exp2l
++CFLAGS-s_expm1.c += -fno-builtin-expm1l
++CFLAGS-s_fabs.c += -fno-builtin-fabsl
++CFLAGS-s_fadd.c += -fno-builtin-faddl
++CFLAGS-s_fdim.c += -fno-builtin-fdiml
++CFLAGS-s_fdiv.c += -fno-builtin-fdivl
++CFLAGS-s_finite.c += -fno-builtin-finitel
++CFLAGS-s_floor.c += -fno-builtin-floorl
++CFLAGS-s_fma.c += -fno-builtin-fmal
++CFLAGS-s_fmax.c += -fno-builtin-fmaxl
++CFLAGS-s_fmaxmag.c += -fno-builtin-fmaxmagl
++CFLAGS-s_fmin.c += -fno-builtin-fminl
++CFLAGS-s_fminmag.c += -fno-builtin-fminmagl
++CFLAGS-w_fmod.c += -fno-builtin-fmodl
++CFLAGS-s_fmul.c += -fno-builtin-fmull
++CFLAGS-s_frexp.c += -fno-builtin-frexpl
++CFLAGS-s_fromfp.c += -fno-builtin-fromfpl
++CFLAGS-s_fromfpx.c += -fno-builtin-fromfpxl
++CFLAGS-s_fsub.c += -fno-builtin-fsubl
++CFLAGS-s_gamma.c += -fno-builtin-gammal
++CFLAGS-s_getpayload.c += -fno-builtin-getpayloadl
++CFLAGS-w_hypot.c += -fno-builtin-hypotl
++CFLAGS-w_ilogb.c += -fno-builtin-ilogbl
++CFLAGS-s_isinf.c += -fno-builtin-isinfl
++CFLAGS-s_isnan.c += -fno-builtin-isnanl
++CFLAGS-w_j0.c += -fno-builtin-j0l
++CFLAGS-w_j1.c += -fno-builtin-j1l
++CFLAGS-w_jn.c += -fno-builtin-jnl
++CFLAGS-s_ldexp.c += -fno-builtin-ldexpl
++CFLAGS-w_lgamma.c += -fno-builtin-lgammal
++CFLAGS-w_lgamma_r.c += -fno-builtin-lgammal_r
++CFLAGS-w_llogb.c += -fno-builtin-llogbl
++CFLAGS-s_llrint.c += -fno-builtin-llrintl
++CFLAGS-s_llround.c += -fno-builtin-llroundl
++CFLAGS-e_log.c += -fno-builtin-logl
++CFLAGS-w_log10.c += -fno-builtin-log10l
++CFLAGS-w_log1p.c += -fno-builtin-log1pl
++CFLAGS-e_log2.c += -fno-builtin-log2l
++CFLAGS-s_logb.c += -fno-builtin-logbl
++CFLAGS-s_lrint.c += -fno-builtin-lrintl
++CFLAGS-s_lround.c += -fno-builtin-lroundl
++CFLAGS-s_modf.c += -fno-builtin-modfl
++CFLAGS-s_nan.c += -fno-builtin-nanl
++CFLAGS-s_nearbyint.c += -fno-builtin-nearbyintl
++CFLAGS-s_nextafter.c += -fno-builtin-nextafterl
++CFLAGS-s_nextdown.c += -fno-builtin-nextdownl
++CFLAGS-s_nexttoward.c += -fno-builtin-nexttoward -fno-builtin-nexttowardl
++CFLAGS-s_nexttowardf.c += -fno-builtin-nexttowardf
++CFLAGS-s_nextup.c += -fno-builtin-nextupl
++CFLAGS-e_pow.c += -fno-builtin-powl
++CFLAGS-w_remainder.c += -fno-builtin-remainderl -fno-builtin-dreml
++CFLAGS-s_remquo.c += -fno-builtin-remquol
++CFLAGS-s_rint.c += -fno-builtin-rintl
++CFLAGS-s_round.c += -fno-builtin-roundl
++CFLAGS-s_roundeven.c += -fno-builtin-roundevenl
++CFLAGS-w_scalb.c += -fno-builtin-scalbl
++CFLAGS-w_scalbln.c += -fno-builtin-scalblnl
++CFLAGS-s_scalbn.c += -fno-builtin-scalbnl
++CFLAGS-s_setpayload.c += -fno-builtin-setpayloadl
++CFLAGS-s_setpayloadsig.c += -fno-builtin-setpayloadsigl
++CFLAGS-s_significand.c += -fno-builtin-significandl
++CFLAGS-s_sin.c += -fno-builtin-sinl
++CFLAGS-s_sincos.c += -fno-builtin-sincosl
++CFLAGS-w_sinh.c += -fno-builtin-sinhl
++CFLAGS-w_sqrt.c += -fno-builtin-sqrtl
++CFLAGS-s_tan.c += -fno-builtin-tanl
++CFLAGS-s_tanh.c += -fno-builtin-tanhl
++CFLAGS-w_tgamma.c += -fno-builtin-tgammal
++CFLAGS-s_totalorder.c += -fno-builtin-totalorderl
++CFLAGS-s_totalordermag.c += -fno-builtin-totalordermagl
++CFLAGS-s_trunc.c += -fno-builtin-truncl
++CFLAGS-s_ufromfp.c += -fno-builtin-ufromfpl
++CFLAGS-s_ufromfpx.c += -fno-builtin-ufromfpxl
++CFLAGS-s_y0.c += -fno-builtin-y0l
++CFLAGS-s_y1.c += -fno-builtin-y1l
++CFLAGS-s_yn.c += -fno-builtin-ynl
+ endif
+ 
+ # These files quiet sNaNs in a way that is optimized away without
+diff --git a/misc/Makefile b/misc/Makefile
+index e0465980c7..e167e199eb 100644
+--- a/misc/Makefile
++++ b/misc/Makefile
+@@ -87,7 +87,7 @@ tests := tst-dirname tst-tsearch tst-fdset tst-mntent tst-hsearch \
+ 	 tst-preadvwritev tst-preadvwritev64 tst-makedev tst-empty \
+ 	 tst-preadvwritev2 tst-preadvwritev64v2 tst-warn-wide \
+ 	 tst-ldbl-warn tst-ldbl-error tst-dbl-efgcvt tst-ldbl-efgcvt \
+-	 tst-mntent-autofs
++	 tst-mntent-autofs tst-syscalls
+ 
+ # Tests which need libdl.
+ ifeq (yes,$(build-shared))
+diff --git a/misc/tst-syscalls.c b/misc/tst-syscalls.c
+new file mode 100644
+index 0000000000..cfcd382320
+--- /dev/null
++++ b/misc/tst-syscalls.c
+@@ -0,0 +1,167 @@
++/* Test for syscall interfaces.
++   Copyright (C) 2020 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++/* This test verifies that the x32 system call handling zero-extends
++   unsigned 32-bit arguments to the 64-bit argument registers for
++   system calls (bug 25810).  The bug is specific to x32, but the test
++   should pass on all architectures.  */
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <fcntl.h>
++#include <sys/mman.h>
++#include <support/check.h>
++#include <support/xunistd.h>
++
++/* On x32, this can be passed in a single 64-bit integer register.  */
++struct Array
++{
++  size_t length;
++  void *ptr;
++};
++
++static int error_count;
++
++__attribute__ ((noclone, noinline))
++struct Array
++allocate (size_t bytes)
++{
++  if (!bytes)
++    return __extension__ (struct Array) {0, 0};
++
++  void *p = mmap (0x0, bytes, PROT_READ | PROT_WRITE,
++		  MAP_PRIVATE | MAP_ANON, -1, 0);
++  if (p == MAP_FAILED)
++    return __extension__ (struct Array) {0, 0};
++
++  return __extension__ (struct Array) {bytes, p};
++}
++
++__attribute__ ((noclone, noinline))
++void
++deallocate (struct Array b)
++{
++  /* On x32, the 64-bit integer register containing `b' may be copied
++     to another 64-bit integer register to pass the second argument to
++     munmap.  */
++  if (b.length && munmap (b.ptr, b.length))
++    {
++      printf ("munmap error: %m\n");
++      error_count++;
++    }
++}
++
++__attribute__ ((noclone, noinline))
++void *
++do_mmap (void *addr, size_t length)
++{
++  return mmap (addr, length, PROT_READ | PROT_WRITE,
++	       MAP_PRIVATE | MAP_ANON, -1, 0);
++}
++
++__attribute__ ((noclone, noinline))
++void *
++reallocate (struct Array b)
++{
++  /* On x32, the 64-bit integer register containing `b' may be copied
++     to another 64-bit integer register to pass the second argument to
++     do_mmap.  */
++  if (b.length)
++    return do_mmap (b.ptr, b.length);
++  return NULL;
++}
++
++__attribute__ ((noclone, noinline))
++void
++protect (struct Array b)
++{
++  if (b.length)
++    {
++      /* On x32, the 64-bit integer register containing `b' may be copied
++	 to another 64-bit integer register to pass the second argument
++	 to mprotect.  */
++      if (mprotect (b.ptr, b.length,
++		    PROT_READ | PROT_WRITE | PROT_EXEC))
++	{
++	  printf ("mprotect error: %m\n");
++	  error_count++;
++	}
++    }
++}
++
++__attribute__ ((noclone, noinline))
++ssize_t
++do_read (int fd, void *ptr, struct Array b)
++{
++  /* On x32, the 64-bit integer register containing `b' may be copied
++     to another 64-bit integer register to pass the second argument to
++     read.  */
++  if (b.length)
++    return read (fd, ptr, b.length);
++  return 0;
++}
++
++__attribute__ ((noclone, noinline))
++ssize_t
++do_write (int fd, void *ptr, struct Array b)
++{
++  /* On x32, the 64-bit integer register containing `b' may be copied
++     to another 64-bit integer register to pass the second argument to
++     write.  */
++  if (b.length)
++    return write (fd, ptr, b.length);
++  return 0;
++}
++
++static int
++do_test (void)
++{
++  struct Array array;
++
++  array = allocate (1);
++  protect (array);
++  deallocate (array);
++  void *p = reallocate (array);
++  if (p == MAP_FAILED)
++    {
++      printf ("mmap error: %m\n");
++      error_count++;
++    }
++  array.ptr = p;
++  protect (array);
++  deallocate (array);
++
++  int fd = xopen ("/dev/null", O_RDWR, 0);
++  char buf[2];
++  array.ptr = buf;
++  if (do_read (fd, array.ptr, array) == -1)
++    {
++      printf ("read error: %m\n");
++      error_count++;
++    }
++  if (do_write (fd, array.ptr, array) == -1)
++    {
++      printf ("write error: %m\n");
++      error_count++;
++    }
++  xclose (fd);
++
++  return error_count ? EXIT_FAILURE : EXIT_SUCCESS;
++}
++
++#include <support/test-driver.c>
+diff --git a/posix/glob.c b/posix/glob.c
+index cba9cd1819..4580cefb9f 100644
+--- a/posix/glob.c
++++ b/posix/glob.c
+@@ -827,31 +827,32 @@ __glob (const char *pattern, int flags, int (*errfunc) (const char *, int),
+ 	      {
+ 		size_t home_len = strlen (p->pw_dir);
+ 		size_t rest_len = end_name == NULL ? 0 : strlen (end_name);
+-		char *d;
++		char *d, *newp;
++		bool use_alloca = glob_use_alloca (alloca_used,
++						   home_len + rest_len + 1);
+ 
+-		if (__glibc_unlikely (malloc_dirname))
+-		  free (dirname);
+-		malloc_dirname = 0;
+-
+-		if (glob_use_alloca (alloca_used, home_len + rest_len + 1))
+-		  dirname = alloca_account (home_len + rest_len + 1,
+-					    alloca_used);
++		if (use_alloca)
++		  newp = alloca_account (home_len + rest_len + 1, alloca_used);
+ 		else
+ 		  {
+-		    dirname = malloc (home_len + rest_len + 1);
+-		    if (dirname == NULL)
++		    newp = malloc (home_len + rest_len + 1);
++		    if (newp == NULL)
+ 		      {
+ 			scratch_buffer_free (&pwtmpbuf);
+ 			retval = GLOB_NOSPACE;
+ 			goto out;
+ 		      }
+-		    malloc_dirname = 1;
+ 		  }
+-		d = mempcpy (dirname, p->pw_dir, home_len);
++		d = mempcpy (newp, p->pw_dir, home_len);
+ 		if (end_name != NULL)
+ 		  d = mempcpy (d, end_name, rest_len);
+ 		*d = '\0';
+ 
++		if (__glibc_unlikely (malloc_dirname))
++		  free (dirname);
++		dirname = newp;
++		malloc_dirname = !use_alloca;
++
+ 		dirlen = home_len + rest_len;
+ 		dirname_modified = 1;
+ 	      }
+diff --git a/stdlib/Makefile b/stdlib/Makefile
+index 45214b59e4..4615f6dfe7 100644
+--- a/stdlib/Makefile
++++ b/stdlib/Makefile
+@@ -70,7 +70,7 @@ tests		:= tst-strtol tst-strtod testmb testrand testsort testdiv   \
+ 		   test-canon test-canon2 tst-strtoll tst-environ	    \
+ 		   tst-xpg-basename tst-random tst-random2 tst-bsearch	    \
+ 		   tst-limits tst-rand48 bug-strtod tst-setcontext	    \
+-		   tst-setcontext2 test-a64l tst-qsort tst-system testmb2   \
++		   tst-setcontext2 test-a64l tst-qsort testmb2              \
+ 		   bug-strtod2 tst-atof1 tst-atof2 tst-strtod2		    \
+ 		   tst-rand48-2 tst-makecontext tst-strtod5		    \
+ 		   tst-qsort2 tst-makecontext2 tst-strtod6 tst-unsetenv1    \
+@@ -92,6 +92,7 @@ tests		:= tst-strtol tst-strtod testmb testrand testsort testdiv   \
+ tests-internal	:= tst-strtod1i tst-strtod3 tst-strtod4 tst-strtod5i \
+ 		   tst-tls-atexit tst-tls-atexit-nodelete
+ tests-static	:= tst-secure-getenv
++tests-container := tst-system
+ 
+ ifeq ($(build-hardcoded-path-in-tests),yes)
+ tests += tst-empty-env
+diff --git a/stdlib/tst-system.c b/stdlib/tst-system.c
+index b6c5aea08f..eddea33f4c 100644
+--- a/stdlib/tst-system.c
++++ b/stdlib/tst-system.c
+@@ -17,14 +17,130 @@
+    <https://www.gnu.org/licenses/>.  */
+ 
+ #include <stdlib.h>
++#include <unistd.h>
++#include <string.h>
++#include <signal.h>
++#include <paths.h>
+ 
++#include <support/capture_subprocess.h>
++#include <support/check.h>
++#include <support/temp_file.h>
++#include <support/support.h>
++
++static char *tmpdir;
++static long int namemax;
++
++static void
++do_prepare (int argc, char *argv[])
++{
++  tmpdir = support_create_temp_directory ("tst-system-");
++  /* Include the last '/0'.  */
++  namemax = pathconf (tmpdir, _PC_NAME_MAX) + 1;
++  TEST_VERIFY_EXIT (namemax != -1);
++}
++#define PREPARE do_prepare
++
++struct args
++{
++  const char *command;
++  int exit_status;
++  int term_sig;
++  const char *path;
++};
++
++static void
++call_system (void *closure)
++{
++  struct args *args = (struct args *) closure;
++  int ret;
++
++  if (args->path != NULL)
++    TEST_COMPARE (setenv ("PATH", args->path, 1), 0);
++  ret = system (args->command);
++  if (args->term_sig == 0)
++    {
++      /* Expect regular termination.  */
++      TEST_VERIFY (WIFEXITED (ret) != 0);
++      TEST_COMPARE (WEXITSTATUS (ret), args->exit_status);
++    }
++  else
++    {
++      /* status_or_signal < 0.  Expect termination by signal.  */
++      TEST_VERIFY (WIFSIGNALED (ret) != 0);
++      TEST_COMPARE (WTERMSIG (ret), args->term_sig);
++    }
++}
+ 
+ static int
+ do_test (void)
+ {
+-  return system (":");
+-}
++  TEST_VERIFY (system (NULL) != 0);
+ 
++  {
++    char cmd[namemax];
++    memset (cmd, 'a', sizeof(cmd));
++    cmd[sizeof(cmd) - 1] = '\0';
++
++    struct support_capture_subprocess result;
++    result = support_capture_subprocess (call_system,
++					 &(struct args) {
++					   cmd, 127, 0, tmpdir
++					 });
++    support_capture_subprocess_check (&result, "system", 0, sc_allow_stderr);
++
++    char *returnerr = xasprintf ("%s: execing %s failed: "
++				 "No such file or directory",
++				 basename(_PATH_BSHELL), cmd);
++    TEST_COMPARE_STRING (result.err.buffer, returnerr);
++    free (returnerr);
++  }
++
++  {
++    char cmd[namemax + 1];
++    memset (cmd, 'a', sizeof(cmd));
++    cmd[sizeof(cmd) - 1] = '\0';
++
++    struct support_capture_subprocess result;
++    result = support_capture_subprocess (call_system,
++					 &(struct args) {
++					   cmd, 127, 0, tmpdir
++					 });
++    support_capture_subprocess_check (&result, "system", 0, sc_allow_stderr);
++
++    char *returnerr = xasprintf ("%s: execing %s failed: "
++				 "File name too long",
++				 basename(_PATH_BSHELL), cmd);
++    TEST_COMPARE_STRING (result.err.buffer, returnerr);
++    free (returnerr);
++  }
++
++  {
++    struct support_capture_subprocess result;
++    result = support_capture_subprocess (call_system,
++					 &(struct args) {
++					   "kill $$", 0, SIGTERM
++					 });
++    support_capture_subprocess_check (&result, "system", 0, sc_allow_none);
++  }
++
++  {
++    struct support_capture_subprocess result;
++    result = support_capture_subprocess (call_system,
++					 &(struct args) { "echo ...", 0 });
++    support_capture_subprocess_check (&result, "system", 0, sc_allow_stdout);
++    TEST_COMPARE_STRING (result.out.buffer, "...\n");
++  }
++
++  {
++    struct support_capture_subprocess result;
++    result = support_capture_subprocess (call_system,
++					 &(struct args) { "exit 1", 1 });
++    support_capture_subprocess_check (&result, "system", 0, sc_allow_none);
++  }
++
++  TEST_COMPARE (system (""), 0);
++
++  return 0;
++}
+ 
+-#define TEST_FUNCTION do_test ()
+-#include "../test-skeleton.c"
++#include <support/test-driver.c>
+diff --git a/support/shell-container.c b/support/shell-container.c
+index 509e0d69b1..201536d24e 100644
+--- a/support/shell-container.c
++++ b/support/shell-container.c
+@@ -135,6 +135,37 @@ copy_func (char **argv)
+ 
+ }
+ 
++/* Emulate the 'exit' builtin.  The exit value is optional.  */
++static int
++exit_func (char **argv)
++{
++  int exit_val = 0;
++
++  if (argv[0] != 0)
++    exit_val = atoi (argv[0]) & 0xff;
++  exit (exit_val);
++  return 0;
++}
++
++/* Emulate the "/bin/kill" command.  Options are ignored.  */
++static int
++kill_func (char **argv)
++{
++  int signum = SIGTERM;
++  int i;
++
++  for (i = 0; argv[i]; i++)
++    {
++      pid_t pid;
++      if (strcmp (argv[i], "$$") == 0)
++	pid = getpid ();
++      else
++	pid = atoi (argv[i]);
++      kill (pid, signum);
++    }
++  return 0;
++}
++
+ /* This is a list of all the built-in commands we understand.  */
+ static struct {
+   const char *name;
+@@ -143,6 +174,8 @@ static struct {
+   { "true", true_func },
+   { "echo", echo_func },
+   { "cp", copy_func },
++  { "exit", exit_func },
++  { "kill", kill_func },
+   { NULL, NULL }
+ };
+ 
+@@ -238,7 +271,7 @@ run_command_array (char **argv)
+ 
+       fprintf (stderr, "sh: execing %s failed: %s",
+ 	       argv[0], strerror (errno));
+-      exit (1);
++      exit (127);
+     }
+ 
+   waitpid (pid, &status, 0);
+@@ -251,6 +284,11 @@ run_command_array (char **argv)
+       if (rv)
+ 	exit (rv);
+     }
++  else if (WIFSIGNALED (status))
++    {
++      int sig = WTERMSIG (status);
++      raise (sig);
++    }
+   else
+     exit (1);
+ }
+diff --git a/sysdeps/arm/be/nofpu/Implies b/sysdeps/arm/be/nofpu/Implies
+new file mode 100644
+index 0000000000..c90dd7fd5c
+--- /dev/null
++++ b/sysdeps/arm/be/nofpu/Implies
+@@ -0,0 +1 @@
++arm/nofpu
+diff --git a/sysdeps/arm/le/nofpu/Implies b/sysdeps/arm/le/nofpu/Implies
+new file mode 100644
+index 0000000000..c90dd7fd5c
+--- /dev/null
++++ b/sysdeps/arm/le/nofpu/Implies
+@@ -0,0 +1 @@
++arm/nofpu
+diff --git a/sysdeps/unix/sysv/linux/nios2/kernel-features.h b/sysdeps/generic/unwind-arch.h
+similarity index 72%
+rename from sysdeps/unix/sysv/linux/nios2/kernel-features.h
+rename to sysdeps/generic/unwind-arch.h
+index d68d114981..d712e5e11d 100644
+--- a/sysdeps/unix/sysv/linux/nios2/kernel-features.h
++++ b/sysdeps/generic/unwind-arch.h
+@@ -1,6 +1,5 @@
+-/* Set flags signalling availability of kernel features based on given
+-   kernel version number.  NIOS2 version.
+-   Copyright (C) 2019-2020 Free Software Foundation, Inc.
++/* Return backtrace of current program state.  Arch-specific bits.
++   Copyright (C) 2020 Free Software Foundation, Inc.
+    This file is part of the GNU C Library.
+ 
+    The GNU C Library is free software; you can redistribute it and/or
+@@ -17,6 +16,15 @@
+    License along with the GNU C Library; if not, see
+    <https://www.gnu.org/licenses/>.  */
+ 
+-#include_next <kernel-features.h>
++#ifndef _UNWIND_ARCH_H
++#define _UNWIND_ARCH_H
+ 
+-#undef __ASSUME_SYSVIPC_DEFAULT_IPC_64
++#include <unwind.h>
++
++static inline void *
++unwind_arch_adjustment (void *prev, void *addr)
++{
++  return addr;
++}
++
++#endif
+diff --git a/sysdeps/hppa/dl-fptr.c b/sysdeps/hppa/dl-fptr.c
+index 0a37397284..25ca8f8463 100644
+--- a/sysdeps/hppa/dl-fptr.c
++++ b/sysdeps/hppa/dl-fptr.c
+@@ -172,8 +172,8 @@ make_fdesc (ElfW(Addr) ip, ElfW(Addr) gp)
+     }
+ 
+  install:
+-  fdesc->ip = ip;
+   fdesc->gp = gp;
++  fdesc->ip = ip;
+ 
+   return (ElfW(Addr)) fdesc;
+ }
+@@ -350,7 +350,9 @@ ElfW(Addr)
+ _dl_lookup_address (const void *address)
+ {
+   ElfW(Addr) addr = (ElfW(Addr)) address;
+-  unsigned int *desc, *gptr;
++  ElfW(Word) reloc_arg;
++  volatile unsigned int *desc;
++  unsigned int *gptr;
+ 
+   /* Return ADDR if the least-significant two bits of ADDR are not consistent
+      with ADDR being a linker defined function pointer.  The normal value for
+@@ -367,7 +369,11 @@ _dl_lookup_address (const void *address)
+   if (!_dl_read_access_allowed (desc))
+     return addr;
+ 
+-  /* Load first word of candidate descriptor.  It should be a pointer
++  /* First load the relocation offset.  */
++  reloc_arg = (ElfW(Word)) desc[1];
++  atomic_full_barrier();
++
++  /* Then load first word of candidate descriptor.  It should be a pointer
+      with word alignment and point to memory that can be read.  */
+   gptr = (unsigned int *) desc[0];
+   if (((unsigned int) gptr & 3) != 0
+@@ -377,8 +383,8 @@ _dl_lookup_address (const void *address)
+   /* See if descriptor requires resolution.  The following trampoline is
+      used in each global offset table for function resolution:
+ 
+-		ldw 0(r20),r22
+-		bv r0(r22)
++		ldw 0(r20),r21
++		bv r0(r21)
+ 		ldw 4(r20),r21
+      tramp:	b,l .-12,r20
+ 		depwi 0,31,2,r20
+@@ -389,7 +395,15 @@ _dl_lookup_address (const void *address)
+   if (gptr[0] == 0xea9f1fdd			/* b,l .-12,r20     */
+       && gptr[1] == 0xd6801c1e			/* depwi 0,31,2,r20 */
+       && (ElfW(Addr)) gptr[2] == elf_machine_resolve ())
+-    _dl_fixup ((struct link_map *) gptr[5], (ElfW(Word)) desc[1]);
++    {
++      struct link_map *l = (struct link_map *) gptr[5];
++
++      /* If gp has been resolved, we need to hunt for relocation offset.  */
++      if (!(reloc_arg & PA_GP_RELOC))
++	reloc_arg = _dl_fix_reloc_arg (addr, l);
++
++      _dl_fixup (l, reloc_arg);
++    }
+ 
+   return (ElfW(Addr)) desc[0];
+ }
+diff --git a/sysdeps/hppa/dl-machine.h b/sysdeps/hppa/dl-machine.h
+index 9e98366ea3..8ecff97706 100644
+--- a/sysdeps/hppa/dl-machine.h
++++ b/sysdeps/hppa/dl-machine.h
+@@ -48,6 +48,14 @@
+ #define GOT_FROM_PLT_STUB (4*4)
+ #define PLT_ENTRY_SIZE (2*4)
+ 
++/* The gp slot in the function descriptor contains the relocation offset
++   before resolution.  To distinguish between a resolved gp value and an
++   unresolved relocation offset we set an unused bit in the relocation
++   offset.  This would allow us to do a synchronzied two word update
++   using this bit (interlocked update), but instead of waiting for the
++   update we simply recompute the gp value given that we know the ip.  */
++#define PA_GP_RELOC 1
++
+ /* Initialize the function descriptor table before relocations */
+ static inline void
+ __hppa_init_bootstrap_fdesc_table (struct link_map *map)
+@@ -117,10 +125,28 @@ elf_machine_fixup_plt (struct link_map *map, lookup_t t,
+   volatile Elf32_Addr *rfdesc = reloc_addr;
+   /* map is the link_map for the caller, t is the link_map for the object
+      being called */
+-  rfdesc[1] = value.gp;
+-  /* Need to ensure that the gp is visible before the code
+-     entry point is updated */
+-  rfdesc[0] = value.ip;
++
++  /* We would like the function descriptor to be double word aligned.  This
++     helps performance (ip and gp then reside on the same cache line) and
++     we can update the pair atomically with a single store.  The linker
++     now ensures this alignment but we still have to handle old code.  */
++  if ((unsigned int)reloc_addr & 7)
++    {
++      /* Need to ensure that the gp is visible before the code
++         entry point is updated */
++      rfdesc[1] = value.gp;
++      atomic_full_barrier();
++      rfdesc[0] = value.ip;
++    }
++  else
++    {
++      /* Update pair atomically with floating point store.  */
++      union { ElfW(Word) v[2]; double d; } u;
++
++      u.v[0] = value.ip;
++      u.v[1] = value.gp;
++      *(volatile double *)rfdesc = u.d;
++    }
+   return value;
+ }
+ 
+@@ -265,7 +291,7 @@ elf_machine_runtime_setup (struct link_map *l, int lazy, int profile)
+ 		     here.  The trampoline code will load the proper
+ 		     LTP and pass the reloc offset to the fixup
+ 		     function.  */
+-		  fptr->gp = iplt - jmprel;
++		  fptr->gp = (iplt - jmprel) | PA_GP_RELOC;
+ 		} /* r_sym != 0 */
+ 	      else
+ 		{
+diff --git a/sysdeps/hppa/dl-runtime.c b/sysdeps/hppa/dl-runtime.c
+new file mode 100644
+index 0000000000..885a3f1837
+--- /dev/null
++++ b/sysdeps/hppa/dl-runtime.c
+@@ -0,0 +1,58 @@
++/* On-demand PLT fixup for shared objects.  HPPA version.
++   Copyright (C) 2019 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, write to the Free
++   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
++   02111-1307 USA.  */
++
++/* Clear PA_GP_RELOC bit in relocation offset.  */
++#define reloc_offset (reloc_arg & ~PA_GP_RELOC)
++#define reloc_index  (reloc_arg & ~PA_GP_RELOC) / sizeof (PLTREL)
++
++#include <elf/dl-runtime.c>
++
++/* The caller has encountered a partially relocated function descriptor.
++   The gp of the descriptor has been updated, but not the ip.  We find
++   the function descriptor again and compute the relocation offset and
++   return that to the caller.  The caller will continue on to call
++   _dl_fixup with the relocation offset.  */
++
++ElfW(Word)
++attribute_hidden __attribute ((noinline)) ARCH_FIXUP_ATTRIBUTE
++_dl_fix_reloc_arg (struct fdesc *fptr, struct link_map *l)
++{
++  Elf32_Addr l_addr, iplt, jmprel, end_jmprel, r_type;
++  const Elf32_Rela *reloc;
++
++  l_addr = l->l_addr;
++  jmprel = D_PTR(l, l_info[DT_JMPREL]);
++  end_jmprel = jmprel + l->l_info[DT_PLTRELSZ]->d_un.d_val;
++
++  /* Look for the entry...  */
++  for (iplt = jmprel; iplt < end_jmprel; iplt += sizeof (Elf32_Rela))
++    {
++      reloc = (const Elf32_Rela *) iplt;
++      r_type = ELF32_R_TYPE (reloc->r_info);
++
++      if (__builtin_expect (r_type == R_PARISC_IPLT, 1)
++	  && fptr == (struct fdesc *) (reloc->r_offset + l_addr))
++	/* Found entry. Return the reloc offset.  */
++	return iplt - jmprel;
++    }
++
++  /* Crash if we weren't passed a valid function pointer.  */
++  ABORT_INSTRUCTION;
++  return 0;
++}
+diff --git a/sysdeps/hppa/dl-trampoline.S b/sysdeps/hppa/dl-trampoline.S
+index 0114ca8b19..d0804b30c0 100644
+--- a/sysdeps/hppa/dl-trampoline.S
++++ b/sysdeps/hppa/dl-trampoline.S
+@@ -31,7 +31,7 @@
+    slow down __cffc when it attempts to call fixup to resolve function
+    descriptor references. Please refer to gcc/gcc/config/pa/fptr.c
+ 
+-   Enter with r19 = reloc offset, r20 = got-8, r21 = fixup ltp.  */
++   Enter with r19 = reloc offset, r20 = got-8, r21 = fixup ltp, r22 = fp.  */
+ 
+ 	/* RELOCATION MARKER: bl to provide gcc's __cffc with fixup loc. */
+ 	.text
+@@ -61,17 +61,20 @@ _dl_runtime_resolve:
+ 	copy	%sp, %r1	/* Copy previous sp */
+ 	/* Save function result address (on entry) */
+ 	stwm	%r28,128(%sp)
+-	/* Fillin some frame info to follow ABI */
++	/* Fill in some frame info to follow ABI */
+ 	stw	%r1,-4(%sp)	/* Previous sp */
+ 	stw	%r21,-32(%sp)	/* PIC register value */
+ 
+ 	/* Save input floating point registers. This must be done
+ 	   in the new frame since the previous frame doesn't have
+ 	   enough space */
+-	ldo	-56(%sp),%r1
++	ldo	-64(%sp),%r1
+ 	fstd,ma	%fr4,-8(%r1)
+ 	fstd,ma	%fr5,-8(%r1)
+ 	fstd,ma	%fr6,-8(%r1)
++
++	/* Test PA_GP_RELOC bit.  */
++	bb,>=	%r19,31,2f		/* branch if not reloc offset */
+ 	fstd,ma	%fr7,-8(%r1)
+ 
+ 	/* Set up args to fixup func, needs only two arguments  */
+@@ -79,7 +82,7 @@ _dl_runtime_resolve:
+ 	copy	%r19,%r25		/* (2) reloc offset  */
+ 
+ 	/* Call the real address resolver. */
+-	bl	_dl_fixup,%rp
++3:	bl	_dl_fixup,%rp
+ 	copy	%r21,%r19		/* set fixup func ltp */
+ 
+ 	/* While the linker will set a function pointer to NULL when it
+@@ -102,7 +105,7 @@ _dl_runtime_resolve:
+ 	copy	%r29, %r19
+ 
+ 	/* Reload arguments fp args */
+-	ldo	-56(%sp),%r1
++	ldo	-64(%sp),%r1
+ 	fldd,ma	-8(%r1),%fr4
+ 	fldd,ma	-8(%r1),%fr5
+ 	fldd,ma	-8(%r1),%fr6
+@@ -129,6 +132,25 @@ _dl_runtime_resolve:
+ 	bv	%r0(%rp)
+ 	ldo	-128(%sp),%sp
+ 
++2:
++	/* Set up args for _dl_fix_reloc_arg.  */
++	copy	%r22,%r26		/* (1) function pointer */
++	depi	0,31,2,%r26		/* clear least significant bits */
++	ldw	8+4(%r20),%r25		/* (2) got[1] == struct link_map */
++
++	/* Save ltp and link map arg for _dl_fixup.  */
++	stw	%r21,-56(%sp)		/* ltp */
++	stw	%r25,-60(%sp)		/* struct link map */
++
++	/* Find reloc offset. */
++	bl	_dl_fix_reloc_arg,%rp
++	copy	%r21,%r19		/* set func ltp */
++
++	/* Set up args for _dl_fixup.  */
++	ldw	-56(%sp),%r21		/* ltp */
++	ldw	-60(%sp),%r26		/* (1) struct link map */
++	b	3b
++	copy	%ret0,%r25		/* (2) reloc offset */
+         .EXIT
+         .PROCEND
+ 	cfi_endproc
+@@ -153,7 +175,7 @@ _dl_runtime_profile:
+ 	copy	%sp, %r1	/* Copy previous sp */
+ 	/* Save function result address (on entry) */
+ 	stwm	%r28,192(%sp)
+-	/* Fillin some frame info to follow ABI */
++	/* Fill in some frame info to follow ABI */
+ 	stw	%r1,-4(%sp)	/* Previous sp */
+ 	stw	%r21,-32(%sp)	/* PIC register value */
+ 
+@@ -181,10 +203,11 @@ _dl_runtime_profile:
+ 	fstd,ma	%fr5,8(%r1)
+ 	fstd,ma	%fr6,8(%r1)
+ 	fstd,ma	%fr7,8(%r1)
+-	/* 32-bit stack pointer and return register */
+-	stw	%sp,-56(%sp)
+-	stw	%r2,-52(%sp)
+ 
++	/* Test PA_GP_RELOC bit.  */
++	bb,>=	%r19,31,2f		/* branch if not reloc offset */
++	/* 32-bit stack pointer */
++	stw	%sp,-56(%sp)
+ 
+ 	/* Set up args to fixup func, needs five arguments  */
+ 	ldw	8+4(%r20),%r26		/* (1) got[1] == struct link_map */
+@@ -197,7 +220,7 @@ _dl_runtime_profile:
+ 	stw	%r1, -52(%sp)		/* (5) long int *framesizep */
+ 
+ 	/* Call the real address resolver. */
+-	bl	_dl_profile_fixup,%rp
++3:	bl	_dl_profile_fixup,%rp
+ 	copy	%r21,%r19		/* set fixup func ltp */
+ 
+ 	/* Load up the returned function descriptor */
+@@ -215,7 +238,9 @@ _dl_runtime_profile:
+ 	fldd,ma	8(%r1),%fr5
+ 	fldd,ma	8(%r1),%fr6
+ 	fldd,ma	8(%r1),%fr7
+-	ldw	-52(%sp),%rp
++
++	/* Reload rp register -(192+20) without adjusting stack */
++	ldw	-212(%sp),%rp
+ 
+ 	/* Reload static link register -(192+16) without adjusting stack */
+ 	ldw	-208(%sp),%r29
+@@ -303,6 +328,33 @@ L(cont):
+         ldw -20(%sp),%rp
+ 	/* Return */
+ 	bv,n	0(%r2)
++
++2:
++	/* Set up args for _dl_fix_reloc_arg.  */
++	copy	%r22,%r26		/* (1) function pointer */
++	depi	0,31,2,%r26		/* clear least significant bits */
++	ldw	8+4(%r20),%r25		/* (2) got[1] == struct link_map */
++
++	/* Save ltp and link map arg for _dl_fixup.  */
++	stw	%r21,-92(%sp)		/* ltp */
++	stw	%r25,-116(%sp)		/* struct link map */
++
++	/* Find reloc offset. */
++	bl	_dl_fix_reloc_arg,%rp
++	copy	%r21,%r19		/* set func ltp */
++
++	 /* Restore fixup ltp.  */
++	ldw	-92(%sp),%r21		/* ltp */
++
++	/* Set up args to fixup func, needs five arguments  */
++	ldw	-116(%sp),%r26		/* (1) struct link map */
++	copy	%ret0,%r25		/* (2) reloc offset  */
++	stw	%r25,-120(%sp)		/* Save reloc offset */
++	ldw	-212(%sp),%r24		/* (3) profile_fixup needs rp */
++	ldo	-56(%sp),%r23		/* (4) La_hppa_regs */
++	ldo	-112(%sp), %r1
++	b	3b
++	stw	%r1, -52(%sp)		/* (5) long int *framesizep */
+         .EXIT
+         .PROCEND
+ 	cfi_endproc
+diff --git a/sysdeps/i386/sysdep.h b/sysdeps/i386/sysdep.h
+index b4bcd8fb6c..6094af8fec 100644
+--- a/sysdeps/i386/sysdep.h
++++ b/sysdeps/i386/sysdep.h
+@@ -61,7 +61,7 @@ lose: SYSCALL_PIC_SETUP							      \
+ 
+ # define SETUP_PIC_REG(reg) \
+   .ifndef GET_PC_THUNK(reg);						      \
+-  .section .gnu.linkonce.t.GET_PC_THUNK(reg),"ax",@progbits;		      \
++  .section .text.GET_PC_THUNK(reg),"axG",@progbits,GET_PC_THUNK(reg),comdat;  \
+   .globl GET_PC_THUNK(reg);						      \
+   .hidden GET_PC_THUNK(reg);						      \
+   .p2align 4;								      \
+@@ -97,7 +97,8 @@ GET_PC_THUNK(reg):							      \
+ 
+ # define SETUP_PIC_REG_STR(reg)						\
+   ".ifndef " GET_PC_THUNK_STR (reg) "\n"				\
+-  ".section .gnu.linkonce.t." GET_PC_THUNK_STR (reg) ",\"ax\",@progbits\n" \
++  ".section .text." GET_PC_THUNK_STR (reg) ",\"axG\",@progbits,"	\
++    GET_PC_THUNK_STR (reg) ",comdat\n"					\
+   ".globl " GET_PC_THUNK_STR (reg) "\n"					\
+   ".hidden " GET_PC_THUNK_STR (reg) "\n"				\
+   ".p2align 4\n"							\
+diff --git a/sysdeps/ieee754/ldbl-96/Makefile b/sysdeps/ieee754/ldbl-96/Makefile
+index 995e90d6da..6030adf7e7 100644
+--- a/sysdeps/ieee754/ldbl-96/Makefile
++++ b/sysdeps/ieee754/ldbl-96/Makefile
+@@ -17,5 +17,8 @@
+ # <https://www.gnu.org/licenses/>.
+ 
+ ifeq ($(subdir),math)
+-tests += test-canonical-ldbl-96 test-totalorderl-ldbl-96
++tests += test-canonical-ldbl-96 test-totalorderl-ldbl-96 test-sinl-pseudo
++ifeq ($(have-ssp),yes)
++CFLAGS-test-sinl-pseudo.c += -fstack-protector-all
+ endif
++endif # $(subdir) == math
+diff --git a/sysdeps/ieee754/ldbl-96/e_rem_pio2l.c b/sysdeps/ieee754/ldbl-96/e_rem_pio2l.c
+index 5f742321ae..bcdf20179f 100644
+--- a/sysdeps/ieee754/ldbl-96/e_rem_pio2l.c
++++ b/sysdeps/ieee754/ldbl-96/e_rem_pio2l.c
+@@ -210,6 +210,18 @@ __ieee754_rem_pio2l (long double x, long double *y)
+       return 0;
+     }
+ 
++  if ((i0 & 0x80000000) == 0)
++    {
++      /* Pseudo-zero and unnormal representations are not valid
++	 representations of long double.  We need to avoid stack
++	 corruption in __kernel_rem_pio2, which expects input in a
++	 particular normal form, but those representations do not need
++	 to be consistently handled like any particular floating-point
++	 value.  */
++      y[1] = y[0] = __builtin_nanl ("");
++      return 0;
++    }
++
+   /* Split the 64 bits of the mantissa into three 24-bit integers
+      stored in a double array.  */
+   exp = j0 - 23;
+diff --git a/sysdeps/ieee754/ldbl-96/test-sinl-pseudo.c b/sysdeps/ieee754/ldbl-96/test-sinl-pseudo.c
+new file mode 100644
+index 0000000000..f59b97769d
+--- /dev/null
++++ b/sysdeps/ieee754/ldbl-96/test-sinl-pseudo.c
+@@ -0,0 +1,41 @@
++/* Test sinl for pseudo-zeros and unnormals for ldbl-96 (bug 25487).
++   Copyright (C) 2020 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#include <math.h>
++#include <math_ldbl.h>
++#include <stdint.h>
++
++static int
++do_test (void)
++{
++  for (int i = 0; i < 64; i++)
++    {
++      uint64_t sig = i == 63 ? 0 : 1ULL << i;
++      long double ld;
++      SET_LDOUBLE_WORDS (ld, 0x4141,
++			 sig >> 32, sig & 0xffffffffULL);
++      /* The requirement is that no stack overflow occurs when the
++	 pseudo-zero or unnormal goes through range reduction.  */
++      volatile long double ldr;
++      ldr = sinl (ld);
++      (void) ldr;
++    }
++  return 0;
++}
++
++#include <support/test-driver.c>
+diff --git a/sysdeps/posix/system.c b/sysdeps/posix/system.c
+index e613e6a344..a03f478fc7 100644
+--- a/sysdeps/posix/system.c
++++ b/sysdeps/posix/system.c
+@@ -101,7 +101,8 @@ cancel_handler (void *arg)
+ static int
+ do_system (const char *line)
+ {
+-  int status;
++  int status = -1;
++  int ret;
+   pid_t pid;
+   struct sigaction sa;
+ #ifndef _LIBC_REENTRANT
+@@ -144,14 +145,14 @@ do_system (const char *line)
+   __posix_spawnattr_setflags (&spawn_attr,
+ 			      POSIX_SPAWN_SETSIGDEF | POSIX_SPAWN_SETSIGMASK);
+ 
+-  status = __posix_spawn (&pid, SHELL_PATH, 0, &spawn_attr,
+-			  (char *const[]){ (char*) SHELL_NAME,
+-					   (char*) "-c",
+-					   (char *) line, NULL },
+-			  __environ);
++  ret = __posix_spawn (&pid, SHELL_PATH, 0, &spawn_attr,
++		       (char *const[]){ (char *) SHELL_NAME,
++					(char *) "-c",
++					(char *) line, NULL },
++		       __environ);
+   __posix_spawnattr_destroy (&spawn_attr);
+ 
+-  if (status == 0)
++  if (ret == 0)
+     {
+       /* Cancellation results in cleanup handlers running as exceptions in
+ 	 the block where they were installed, so it is safe to reference
+@@ -186,6 +187,9 @@ do_system (const char *line)
+     }
+   DO_UNLOCK ();
+ 
++  if (ret != 0)
++    __set_errno (ret);
++
+   return status;
+ }
+ 
+diff --git a/sysdeps/unix/make-syscalls.sh b/sysdeps/unix/make-syscalls.sh
+index c07626677f..4f6c3490a2 100644
+--- a/sysdeps/unix/make-syscalls.sh
++++ b/sysdeps/unix/make-syscalls.sh
+@@ -30,6 +30,7 @@
+ # P: optionally-NULL pointer to typed object (e.g., 3rd argument to sigaction)
+ # s: non-NULL string (e.g., 1st arg to open)
+ # S: optionally-NULL string (e.g., 1st arg to acct)
++# U: unsigned long int (32-bit types are zero-extended to 64-bit types)
+ # v: vararg scalar (e.g., optional 3rd arg to open)
+ # V: byte-per-page vector (3rd arg to mincore)
+ # W: wait status, optionally-NULL pointer to int (e.g., 2nd arg of wait4)
+@@ -184,6 +185,27 @@ while read file srcfile caller syscall args strong weak; do
+   ?:?????????) nargs=9;;
+   esac
+ 
++  # Derive the unsigned long int arguments from the argument signature
++  ulong_arg_1=0
++  ulong_arg_2=0
++  ulong_count=0
++  for U in $(echo $args | sed -e "s/.*:/:/" | grep -ob U)
++  do
++    ulong_count=$(expr $ulong_count + 1)
++    ulong_arg=$(echo $U | sed -e "s/:U//")
++    case $ulong_count in
++    1)
++      ulong_arg_1=$ulong_arg
++      ;;
++    2)
++      ulong_arg_2=$ulong_arg
++      ;;
++    *)
++      echo >&2 "$0: Too many unsigned long int arguments for syscall ($strong $weak)"
++      exit 2
++    esac
++  done
++
+   # Make sure only the first syscall rule is used, if multiple dirs
+   # define the same syscall.
+   echo ''
+@@ -245,6 +267,8 @@ while read file srcfile caller syscall args strong weak; do
+ 	\$(make-target-directory)
+ 	(echo '#define SYSCALL_NAME $syscall'; \\
+ 	 echo '#define SYSCALL_NARGS $nargs'; \\
++	 echo '#define SYSCALL_ULONG_ARG_1 $ulong_arg_1'; \\
++	 echo '#define SYSCALL_ULONG_ARG_2 $ulong_arg_2'; \\
+ 	 echo '#define SYSCALL_SYMBOL $strong'; \\
+ 	 echo '#define SYSCALL_NOERRNO $noerrno'; \\
+ 	 echo '#define SYSCALL_ERRVAL $errval'; \\
+diff --git a/sysdeps/unix/syscall-template.S b/sysdeps/unix/syscall-template.S
+index cf6c7a58fb..f807a8603f 100644
+--- a/sysdeps/unix/syscall-template.S
++++ b/sysdeps/unix/syscall-template.S
+@@ -25,6 +25,12 @@
+    defining a few macros:
+ 	SYSCALL_NAME		syscall name
+ 	SYSCALL_NARGS		number of arguments this call takes
++	SYSCALL_ULONG_ARG_1	the first unsigned long int argument this
++				call takes.  0 means that there are no
++				unsigned long int arguments.
++	SYSCALL_ULONG_ARG_2	the second unsigned long int argument this
++				call takes.  0 means that there is at most
++				one unsigned long int argument.
+ 	SYSCALL_SYMBOL		primary symbol name
+ 	SYSCALL_NOERRNO		1 to define a no-errno version (see below)
+ 	SYSCALL_ERRVAL		1 to define an error-value version (see below)
+@@ -44,9 +50,31 @@
+ /* This indirection is needed so that SYMBOL gets macro-expanded.  */
+ #define syscall_hidden_def(SYMBOL)		hidden_def (SYMBOL)
+ 
+-#define T_PSEUDO(SYMBOL, NAME, N)		PSEUDO (SYMBOL, NAME, N)
+-#define T_PSEUDO_NOERRNO(SYMBOL, NAME, N)	PSEUDO_NOERRNO (SYMBOL, NAME, N)
+-#define T_PSEUDO_ERRVAL(SYMBOL, NAME, N)	PSEUDO_ERRVAL (SYMBOL, NAME, N)
++/* If PSEUDOS_HAVE_ULONG_INDICES is defined, PSEUDO and T_PSEUDO macros
++   have 2 extra arguments for unsigned long int arguments:
++     Extra argument 1: Position of the first unsigned long int argument.
++     Extra argument 2: Position of the second unsigned long int argument.
++ */
++#ifndef PSEUDOS_HAVE_ULONG_INDICES
++# undef SYSCALL_ULONG_ARG_1
++# define SYSCALL_ULONG_ARG_1 0
++#endif
++
++#if SYSCALL_ULONG_ARG_1
++# define T_PSEUDO(SYMBOL, NAME, N, U1, U2) \
++  PSEUDO (SYMBOL, NAME, N, U1, U2)
++# define T_PSEUDO_NOERRNO(SYMBOL, NAME, N, U1, U2) \
++  PSEUDO_NOERRNO (SYMBOL, NAME, N, U1, U2)
++# define T_PSEUDO_ERRVAL(SYMBOL, NAME, N, U1, U2) \
++  PSEUDO_ERRVAL (SYMBOL, NAME, N, U1, U2)
++#else
++# define T_PSEUDO(SYMBOL, NAME, N) \
++  PSEUDO (SYMBOL, NAME, N)
++# define T_PSEUDO_NOERRNO(SYMBOL, NAME, N) \
++  PSEUDO_NOERRNO (SYMBOL, NAME, N)
++# define T_PSEUDO_ERRVAL(SYMBOL, NAME, N) \
++  PSEUDO_ERRVAL (SYMBOL, NAME, N)
++#endif
+ #define T_PSEUDO_END(SYMBOL)			PSEUDO_END (SYMBOL)
+ #define T_PSEUDO_END_NOERRNO(SYMBOL)		PSEUDO_END_NOERRNO (SYMBOL)
+ #define T_PSEUDO_END_ERRVAL(SYMBOL)		PSEUDO_END_ERRVAL (SYMBOL)
+@@ -56,7 +84,12 @@
+ /* This kind of system call stub never returns an error.
+    We return the return value register to the caller unexamined.  */
+ 
++# if SYSCALL_ULONG_ARG_1
++T_PSEUDO_NOERRNO (SYSCALL_SYMBOL, SYSCALL_NAME, SYSCALL_NARGS,
++		  SYSCALL_ULONG_ARG_1, SYSCALL_ULONG_ARG_2)
++# else
+ T_PSEUDO_NOERRNO (SYSCALL_SYMBOL, SYSCALL_NAME, SYSCALL_NARGS)
++# endif
+ 	ret_NOERRNO
+ T_PSEUDO_END_NOERRNO (SYSCALL_SYMBOL)
+ 
+@@ -66,7 +99,12 @@ T_PSEUDO_END_NOERRNO (SYSCALL_SYMBOL)
+    value, or zero for success.  We may massage the kernel's return value
+    to meet that ABI, but we never set errno here.  */
+ 
++# if SYSCALL_ULONG_ARG_1
++T_PSEUDO_ERRVAL (SYSCALL_SYMBOL, SYSCALL_NAME, SYSCALL_NARGS,
++		 SYSCALL_ULONG_ARG_1, SYSCALL_ULONG_ARG_2)
++# else
+ T_PSEUDO_ERRVAL (SYSCALL_SYMBOL, SYSCALL_NAME, SYSCALL_NARGS)
++# endif
+ 	ret_ERRVAL
+ T_PSEUDO_END_ERRVAL (SYSCALL_SYMBOL)
+ 
+@@ -75,7 +113,12 @@ T_PSEUDO_END_ERRVAL (SYSCALL_SYMBOL)
+ /* This is a "normal" system call stub: if there is an error,
+    it returns -1 and sets errno.  */
+ 
++# if SYSCALL_ULONG_ARG_1
++T_PSEUDO (SYSCALL_SYMBOL, SYSCALL_NAME, SYSCALL_NARGS,
++	  SYSCALL_ULONG_ARG_1, SYSCALL_ULONG_ARG_2)
++# else
+ T_PSEUDO (SYSCALL_SYMBOL, SYSCALL_NAME, SYSCALL_NARGS)
++# endif
+ 	ret
+ T_PSEUDO_END (SYSCALL_SYMBOL)
+ 
+diff --git a/sysdeps/unix/syscalls.list b/sysdeps/unix/syscalls.list
+index e28e801c7a..6b22b2cb45 100644
+--- a/sysdeps/unix/syscalls.list
++++ b/sysdeps/unix/syscalls.list
+@@ -39,27 +39,27 @@ kill		-	kill		i:ii	__kill		kill
+ link		-	link		i:ss	__link		link
+ listen		-	listen		i:ii	__listen	listen
+ lseek		-	lseek		i:iii	__libc_lseek	__lseek lseek
+-madvise		-	madvise		i:pii	__madvise	madvise
++madvise		-	madvise		i:pUi	__madvise	madvise
+ mkdir		-	mkdir		i:si	__mkdir		mkdir
+-mmap		-	mmap		b:aniiii __mmap		mmap
+-mprotect	-	mprotect	i:aii	__mprotect	mprotect
+-munmap		-	munmap		i:ai	__munmap	munmap
++mmap		-	mmap		b:aUiiii __mmap		mmap
++mprotect	-	mprotect	i:aUi	__mprotect	mprotect
++munmap		-	munmap		i:aU	__munmap	munmap
+ open		-	open		Ci:siv	__libc_open __open open
+ profil		-	profil		i:piii	__profil	profil
+ ptrace		-	ptrace		i:iiii	ptrace
+-read		-	read		Ci:ibn	__libc_read	__read read
+-readlink	-	readlink	i:spi	__readlink	readlink
++read		-	read		Ci:ibU	__libc_read	__read read
++readlink	-	readlink	i:spU	__readlink	readlink
+ readv		-	readv		Ci:ipi	__readv		readv
+ reboot		-	reboot		i:i	reboot
+-recv		-	recv		Ci:ibni	__libc_recv	recv
+-recvfrom	-	recvfrom	Ci:ibniBN	__libc_recvfrom __recvfrom recvfrom
++recv		-	recv		Ci:ibUi	__libc_recv	recv
++recvfrom	-	recvfrom	Ci:ibUiBN	__libc_recvfrom __recvfrom recvfrom
+ recvmsg		-	recvmsg		Ci:ipi	__libc_recvmsg	__recvmsg recvmsg
+ rename		-	rename		i:ss	rename
+ rmdir		-	rmdir		i:s	__rmdir		rmdir
+ select		-	select		Ci:iPPPP	__select	__libc_select select
+-send		-	send		Ci:ibni	__libc_send	__send send
++send		-	send		Ci:ibUi	__libc_send	__send send
+ sendmsg		-	sendmsg		Ci:ipi	__libc_sendmsg	__sendmsg sendmsg
+-sendto		-	sendto		Ci:ibnibn	__libc_sendto	__sendto sendto
++sendto		-	sendto		Ci:ibUibn	__libc_sendto	__sendto sendto
+ setdomain	-	setdomainname	i:si	setdomainname
+ setegid		-	setegid		i:i	__setegid	setegid
+ seteuid		-	seteuid		i:i	__seteuid	seteuid
+@@ -94,5 +94,5 @@ uname		-	uname		i:p	__uname		uname
+ unlink		-	unlink		i:s	__unlink	unlink
+ utimes		-	utimes		i:sp	__utimes	utimes
+ vhangup		-	vhangup		i:i	vhangup
+-write		-	write		Ci:ibn	__libc_write	__write write
++write		-	write		Ci:ibU	__libc_write	__write write
+ writev		-	writev		Ci:ipi	__writev	writev
+diff --git a/sysdeps/unix/sysv/linux/Makefile b/sysdeps/unix/sysv/linux/Makefile
+index f12b7b1a2d..5fbde369c3 100644
+--- a/sysdeps/unix/sysv/linux/Makefile
++++ b/sysdeps/unix/sysv/linux/Makefile
+@@ -60,7 +60,9 @@ sysdep_routines += adjtimex clone umount umount2 readahead \
+ 		   setfsuid setfsgid epoll_pwait signalfd \
+ 		   eventfd eventfd_read eventfd_write prlimit \
+ 		   personality epoll_wait tee vmsplice splice \
+-		   open_by_handle_at mlock2 pkey_mprotect pkey_set pkey_get
++		   open_by_handle_at mlock2 pkey_mprotect pkey_set pkey_get \
++		   prctl \
++		   process_vm_readv process_vm_writev
+ 
+ CFLAGS-gethostid.c = -fexceptions
+ CFLAGS-tee.c = -fexceptions -fasynchronous-unwind-tables
+diff --git a/sysdeps/unix/sysv/linux/aarch64/arch-syscall.h b/sysdeps/unix/sysv/linux/aarch64/arch-syscall.h
+index 9378387747..c8471947b9 100644
+--- a/sysdeps/unix/sysv/linux/aarch64/arch-syscall.h
++++ b/sysdeps/unix/sysv/linux/aarch64/arch-syscall.h
+@@ -17,6 +17,7 @@
+ #define __NR_clock_nanosleep 115
+ #define __NR_clock_settime 112
+ #define __NR_clone 220
++#define __NR_clone3 435
+ #define __NR_close 57
+ #define __NR_connect 203
+ #define __NR_copy_file_range 285
+diff --git a/sysdeps/unix/sysv/linux/hppa/atomic-machine.h b/sysdeps/unix/sysv/linux/hppa/atomic-machine.h
+index 9d8ffbe860..bf61b66b70 100644
+--- a/sysdeps/unix/sysv/linux/hppa/atomic-machine.h
++++ b/sysdeps/unix/sysv/linux/hppa/atomic-machine.h
+@@ -36,9 +36,37 @@ typedef uintptr_t uatomicptr_t;
+ typedef intmax_t atomic_max_t;
+ typedef uintmax_t uatomic_max_t;
+ 
++#define atomic_full_barrier() __sync_synchronize ()
++
+ #define __HAVE_64B_ATOMICS 0
+ #define USE_ATOMIC_COMPILER_BUILTINS 0
+ 
++/* We use the compiler atomic load and store builtins as the generic
++   defines are not atomic.  In particular, we need to use compare and
++   exchange for stores as the implementation is synthesized.  */
++void __atomic_link_error (void);
++#define __atomic_check_size_ls(mem) \
++ if ((sizeof (*mem) != 1) && (sizeof (*mem) != 2) && sizeof (*mem) != 4)    \
++   __atomic_link_error ();
++
++#define atomic_load_relaxed(mem) \
++ ({ __atomic_check_size_ls((mem));                                           \
++    __atomic_load_n ((mem), __ATOMIC_RELAXED); })
++#define atomic_load_acquire(mem) \
++ ({ __atomic_check_size_ls((mem));                                           \
++    __atomic_load_n ((mem), __ATOMIC_ACQUIRE); })
++
++#define atomic_store_relaxed(mem, val) \
++ do {                                                                        \
++   __atomic_check_size_ls((mem));                                            \
++   __atomic_store_n ((mem), (val), __ATOMIC_RELAXED);                        \
++ } while (0)
++#define atomic_store_release(mem, val) \
++ do {                                                                        \
++   __atomic_check_size_ls((mem));                                            \
++   __atomic_store_n ((mem), (val), __ATOMIC_RELEASE);                        \
++ } while (0)
++
+ /* XXX Is this actually correct?  */
+ #define ATOMIC_EXCHANGE_USES_CAS 1
+ 
+diff --git a/sysdeps/unix/sysv/linux/microblaze/sysdep.h b/sysdeps/unix/sysv/linux/microblaze/sysdep.h
+index ed873d9dd4..796663a23a 100644
+--- a/sysdeps/unix/sysv/linux/microblaze/sysdep.h
++++ b/sysdeps/unix/sysv/linux/microblaze/sysdep.h
+@@ -209,8 +209,8 @@ SYSCALL_ERROR_LABEL_DCL:                            \
+ 
+ # define inline_syscall0(name,dummy)                                          \
+   ({                                                                          \
+-    register long __ret __asm__("r3");                                        \
+-    register long __r12 __asm__("r12") = name;                                \
++    register long int __ret __asm__("r3");                                    \
++    register long int __r12 __asm__("r12") = name;                            \
+     __asm__ __volatile__( "brki r14,8; nop;"                                  \
+       : "=r"(__ret)                                                           \
+       : "r"(__r12)                                                            \
+@@ -219,9 +219,10 @@ SYSCALL_ERROR_LABEL_DCL:                            \
+ 
+ # define inline_syscall1(name,arg1)                                           \
+   ({                                                                          \
+-    register long __ret __asm__("r3");                                        \
+-    register long __r12 __asm__("r12") = name;                                \
+-    register long __r5 __asm__("r5") = (long)(arg1);                          \
++    long int __arg1 = (long int) (arg1);                                      \
++    register long int __ret __asm__("r3");                                    \
++    register long int __r12 __asm__("r12") = name;                            \
++    register long int __r5 __asm__("r5") = __arg1;                            \
+     __asm__ __volatile__( "brki r14,8; nop;"                                  \
+       : "=r"(__ret)                                                           \
+       : "r"(__r5), "r"(__r12)                                                 \
+@@ -230,10 +231,12 @@ SYSCALL_ERROR_LABEL_DCL:                            \
+ 
+ # define inline_syscall2(name,arg1,arg2)                                      \
+   ({                                                                          \
+-    register long __ret __asm__("r3");                                        \
+-    register long __r12 __asm__("r12") = name;                                \
+-    register long __r5 __asm__("r5") = (long)(arg1);                          \
+-    register long __r6 __asm__("r6") = (long)(arg2);                          \
++    long int __arg1 = (long int) (arg1);                                      \
++    long int __arg2 = (long int) (arg2);                                      \
++    register long int __ret __asm__("r3");                                    \
++    register long int __r12 __asm__("r12") = name;                            \
++    register long int __r5 __asm__("r5") = __arg1;                            \
++    register long int __r6 __asm__("r6") = __arg2;                            \
+     __asm__ __volatile__( "brki r14,8; nop;"                                  \
+       : "=r"(__ret)                                                           \
+       : "r"(__r5), "r"(__r6), "r"(__r12)                                      \
+@@ -243,11 +246,14 @@ SYSCALL_ERROR_LABEL_DCL:                            \
+ 
+ # define inline_syscall3(name,arg1,arg2,arg3)                                 \
+   ({                                                                          \
+-    register long __ret __asm__("r3");                                        \
+-    register long __r12 __asm__("r12") = name;                                \
+-    register long __r5 __asm__("r5") = (long)(arg1);                          \
+-    register long __r6 __asm__("r6") = (long)(arg2);                          \
+-    register long __r7 __asm__("r7") = (long)(arg3);                          \
++    long int __arg1 = (long int) (arg1);                                      \
++    long int __arg2 = (long int) (arg2);                                      \
++    long int __arg3 = (long int) (arg3);                                      \
++    register long int __ret __asm__("r3");                                    \
++    register long int __r12 __asm__("r12") = name;                            \
++    register long int __r5 __asm__("r5") = __arg1;                            \
++    register long int __r6 __asm__("r6") = __arg2;                            \
++    register long int __r7 __asm__("r7") = __arg3;                            \
+     __asm__ __volatile__( "brki r14,8; nop;"                                  \
+       : "=r"(__ret)                                                           \
+       : "r"(__r5), "r"(__r6), "r"(__r7), "r"(__r12)                           \
+@@ -257,12 +263,16 @@ SYSCALL_ERROR_LABEL_DCL:                            \
+ 
+ # define inline_syscall4(name,arg1,arg2,arg3,arg4)                            \
+   ({                                                                          \
+-    register long __ret __asm__("r3");                                        \
+-    register long __r12 __asm__("r12") = name;                                \
+-    register long __r5 __asm__("r5") = (long)(arg1);                          \
+-    register long __r6 __asm__("r6") = (long)(arg2);                          \
+-    register long __r7 __asm__("r7") = (long)(arg3);                          \
+-    register long __r8 __asm__("r8") = (long)(arg4);                          \
++    long int __arg1 = (long int) (arg1);                                      \
++    long int __arg2 = (long int) (arg2);                                      \
++    long int __arg3 = (long int) (arg3);                                      \
++    long int __arg4 = (long int) (arg4);                                      \
++    register long int __ret __asm__("r3");                                    \
++    register long int __r12 __asm__("r12") = name;                            \
++    register long int __r5 __asm__("r5") = __arg1;                            \
++    register long int __r6 __asm__("r6") = __arg2;                            \
++    register long int __r7 __asm__("r7") = __arg3;                            \
++    register long int __r8 __asm__("r8") = __arg4;                            \
+     __asm__ __volatile__( "brki r14,8; nop;"                                  \
+       : "=r"(__ret)                                                           \
+       : "r"(__r5), "r"(__r6), "r"(__r7), "r"(__r8),"r"(__r12)                 \
+@@ -272,13 +282,18 @@ SYSCALL_ERROR_LABEL_DCL:                            \
+ 
+ # define inline_syscall5(name,arg1,arg2,arg3,arg4,arg5)                       \
+   ({                                                                          \
+-    register long __ret __asm__("r3");                                        \
+-    register long __r12 __asm__("r12") = name;                                \
+-    register long __r5 __asm__("r5") = (long)(arg1);                          \
+-    register long __r6 __asm__("r6") = (long)(arg2);                          \
+-    register long __r7 __asm__("r7") = (long)(arg3);                          \
+-    register long __r8 __asm__("r8") = (long)(arg4);                          \
+-    register long __r9 __asm__("r9") = (long)(arg5);                          \
++    long int __arg1 = (long int) (arg1);                                      \
++    long int __arg2 = (long int) (arg2);                                      \
++    long int __arg3 = (long int) (arg3);                                      \
++    long int __arg4 = (long int) (arg4);                                      \
++    long int __arg5 = (long int) (arg5);                                      \
++    register long int __ret __asm__("r3");                                    \
++    register long int __r12 __asm__("r12") = name;                            \
++    register long int __r5 __asm__("r5") = __arg1;                            \
++    register long int __r6 __asm__("r6") = __arg2;                            \
++    register long int __r7 __asm__("r7") = __arg3;                            \
++    register long int __r8 __asm__("r8") = __arg4;                            \
++    register long int __r9 __asm__("r9") = __arg5;                            \
+     __asm__ __volatile__( "brki r14,8; nop;"                                  \
+       : "=r"(__ret)                                                           \
+       : "r"(__r5), "r"(__r6), "r"(__r7), "r"(__r8),"r"(__r9), "r"(__r12)      \
+@@ -288,14 +303,20 @@ SYSCALL_ERROR_LABEL_DCL:                            \
+ 
+ # define inline_syscall6(name,arg1,arg2,arg3,arg4,arg5,arg6)                  \
+   ({                                                                          \
+-    register long __ret __asm__("r3");                                        \
+-    register long __r12 __asm__("r12") = name;                                \
+-    register long __r5 __asm__("r5") = (long)(arg1);                          \
+-    register long __r6 __asm__("r6") = (long)(arg2);                          \
+-    register long __r7 __asm__("r7") = (long)(arg3);                          \
+-    register long __r8 __asm__("r8") = (long)(arg4);                          \
+-    register long __r9 __asm__("r9") = (long)(arg5);                          \
+-    register long __r10 __asm__("r10") = (long)(arg6);                        \
++    long int __arg1 = (long int) (arg1);                                      \
++    long int __arg2 = (long int) (arg2);                                      \
++    long int __arg3 = (long int) (arg3);                                      \
++    long int __arg4 = (long int) (arg4);                                      \
++    long int __arg5 = (long int) (arg5);                                      \
++    long int __arg6 = (long int) (arg6);                                      \
++    register long int __ret __asm__("r3");                                    \
++    register long int __r12 __asm__("r12") = name;                            \
++    register long int __r5 __asm__("r5") = __arg1;                            \
++    register long int __r6 __asm__("r6") = __arg2;                            \
++    register long int __r7 __asm__("r7") = __arg3;                            \
++    register long int __r8 __asm__("r8") = __arg4;                            \
++    register long int __r9 __asm__("r9") = __arg5;                            \
++    register long int __r10 __asm__("r10") = __arg6;                          \
+     __asm__ __volatile__( "brki r14,8; nop;"                                  \
+       : "=r"(__ret)                                                           \
+       : "r"(__r5), "r"(__r6), "r"(__r7), "r"(__r8),"r"(__r9), "r"(__r10),     \
+diff --git a/sysdeps/unix/sysv/linux/mips/mips32/mips-syscall5.S b/sysdeps/unix/sysv/linux/mips/mips32/mips-syscall5.S
+index b2bbf10181..ff445a5406 100644
+--- a/sysdeps/unix/sysv/linux/mips/mips32/mips-syscall5.S
++++ b/sysdeps/unix/sysv/linux/mips/mips32/mips-syscall5.S
+@@ -22,9 +22,9 @@
+ 	.text
+ 	.set	nomips16
+ 
+-/* long long __mips_syscall5 (long arg1, long arg2, long arg3, long arg4,
+-			      long arg5,
+-			      long number)  */
++/* long long int __mips_syscall5 (long int arg1, long int arg2, long int arg3,
++				  long int arg4, long int arg5,
++				  long int number)  */
+ 
+ ENTRY(__mips_syscall5)
+ 	lw	v0, 20(sp)
+diff --git a/sysdeps/unix/sysv/linux/mips/mips32/mips-syscall6.S b/sysdeps/unix/sysv/linux/mips/mips32/mips-syscall6.S
+index 572d7c1137..2b4a3117d1 100644
+--- a/sysdeps/unix/sysv/linux/mips/mips32/mips-syscall6.S
++++ b/sysdeps/unix/sysv/linux/mips/mips32/mips-syscall6.S
+@@ -22,9 +22,9 @@
+ 	.text
+ 	.set	nomips16
+ 
+-/* long long __mips_syscall6 (long arg1, long arg2, long arg3, long arg4,
+-			      long arg5, long arg6,
+-			      long number)  */
++/* long long int __mips_syscall6 (long int arg1, long int arg2, long int arg3,
++				  long int arg4, long int arg5, long int arg6,
++				  long int number)  */
+ 
+ ENTRY(__mips_syscall6)
+ 	lw	v0, 24(sp)
+diff --git a/sysdeps/unix/sysv/linux/mips/mips32/mips-syscall7.S b/sysdeps/unix/sysv/linux/mips/mips32/mips-syscall7.S
+index 05164cb253..2723bbb138 100644
+--- a/sysdeps/unix/sysv/linux/mips/mips32/mips-syscall7.S
++++ b/sysdeps/unix/sysv/linux/mips/mips32/mips-syscall7.S
+@@ -22,9 +22,10 @@
+ 	.text
+ 	.set	nomips16
+ 
+-/* long long __mips_syscall7 (long arg1, long arg2, long arg3, long arg4,
+-			      long arg5, long arg6, long arg7,
+-			      long number)  */
++/* long long int __mips_syscall7 (long int arg1, long int arg2, long int arg3,
++				  long int arg4, long int arg5, long int arg6,
++				  long int arg7,
++				  long int number)  */
+ 
+ ENTRY(__mips_syscall7)
+ 	lw	v0, 28(sp)
+diff --git a/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall.h b/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall.h
+index 9bf551ace8..f23ede0259 100644
+--- a/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall.h
++++ b/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall.h
+@@ -19,51 +19,57 @@
+ #ifndef MIPS16_SYSCALL_H
+ #define MIPS16_SYSCALL_H 1
+ 
+-long long __nomips16 __mips16_syscall0 (long number);
++long long int __nomips16 __mips16_syscall0 (long int number);
+ #define __mips16_syscall0(dummy, number)				\
+-	__mips16_syscall0 ((long) (number))
++	__mips16_syscall0 ((long int) (number))
+ 
+-long long __nomips16 __mips16_syscall1 (long a0,
+-					long number);
++long long int __nomips16 __mips16_syscall1 (long int a0,
++					    long int number);
+ #define __mips16_syscall1(a0, number)					\
+-	__mips16_syscall1 ((long) (a0),					\
+-			   (long) (number))
++	__mips16_syscall1 ((long int) (a0),				\
++			   (long int) (number))
+ 
+-long long __nomips16 __mips16_syscall2 (long a0, long a1,
+-					long number);
++long long int __nomips16 __mips16_syscall2 (long int a0, long int a1,
++					    long int number);
+ #define __mips16_syscall2(a0, a1, number)				\
+-	__mips16_syscall2 ((long) (a0), (long) (a1),			\
+-			   (long) (number))
++	__mips16_syscall2 ((long int) (a0), (long int) (a1),		\
++			   (long int) (number))
+ 
+-long long __nomips16 __mips16_syscall3 (long a0, long a1, long a2,
+-					long number);
++long long int __nomips16 __mips16_syscall3 (long int a0, long int a1,
++					    long int a2,
++					    long int number);
+ #define __mips16_syscall3(a0, a1, a2, number)				\
+-	__mips16_syscall3 ((long) (a0), (long) (a1), (long) (a2),	\
+-			   (long) (number))
++	__mips16_syscall3 ((long int) (a0), (long int) (a1),		\
++			   (long int) (a2),				\
++			   (long int) (number))
+ 
+-long long __nomips16 __mips16_syscall4 (long a0, long a1, long a2, long a3,
+-					long number);
++long long int __nomips16 __mips16_syscall4 (long int a0, long int a1,
++					    long int a2, long int a3,
++					    long int number);
+ #define __mips16_syscall4(a0, a1, a2, a3, number)			\
+-	__mips16_syscall4 ((long) (a0), (long) (a1), (long) (a2),	\
+-			   (long) (a3),					\
+-			   (long) (number))
++	__mips16_syscall4 ((long int) (a0), (long int) (a1),		\
++			   (long int) (a2), (long int) (a3),		\
++			   (long int) (number))
+ 
+ /* The remaining ones use regular MIPS wrappers.  */
+ 
+ #define __mips16_syscall5(a0, a1, a2, a3, a4, number)			\
+-	__mips_syscall5 ((long) (a0), (long) (a1), (long) (a2),		\
+-			 (long) (a3), (long) (a4),			\
+-			 (long) (number))
++	__mips_syscall5 ((long int) (a0), (long int) (a1),		\
++			 (long int) (a2), (long int) (a3),		\
++			 (long int) (a4),				\
++			 (long int) (number))
+ 
+ #define __mips16_syscall6(a0, a1, a2, a3, a4, a5, number)		\
+-	__mips_syscall6 ((long) (a0), (long) (a1), (long) (a2),		\
+-			 (long) (a3), (long) (a4), (long) (a5),		\
+-			 (long) (number))
++	__mips_syscall6 ((long int) (a0), (long int) (a1),		\
++			 (long int) (a2), (long int) (a3),		\
++			 (long int) (a4), (long int) (a5),		\
++			 (long int) (number))
+ 
+ #define __mips16_syscall7(a0, a1, a2, a3, a4, a5, a6, number)		\
+-	__mips_syscall7 ((long) (a0), (long) (a1), (long) (a2),		\
+-			 (long) (a3), (long) (a4), (long) (a5),		\
+-			 (long) (a6),					\
+-			 (long) (number))
++	__mips_syscall7 ((long int) (a0), (long int) (a1),		\
++			 (long int) (a2), (long int) (a3),		\
++			 (long int) (a4), (long int) (a5),		\
++			 (long int) (a6),				\
++			 (long int) (number))
+ 
+ #endif
+diff --git a/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall0.c b/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall0.c
+index 92f16e2724..43c05f8050 100644
+--- a/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall0.c
++++ b/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall0.c
+@@ -20,8 +20,8 @@
+ 
+ #undef __mips16_syscall0
+ 
+-long long __nomips16
+-__mips16_syscall0 (long number)
++long long int __nomips16
++__mips16_syscall0 (long int number)
+ {
+   union __mips_syscall_return ret;
+   ret.reg.v0 = INTERNAL_SYSCALL_MIPS16 (number, ret.reg.v1, 0);
+diff --git a/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall1.c b/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall1.c
+index fa985a96e5..16a567e834 100644
+--- a/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall1.c
++++ b/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall1.c
+@@ -20,9 +20,9 @@
+ 
+ #undef __mips16_syscall1
+ 
+-long long __nomips16
+-__mips16_syscall1 (long a0,
+-		   long number)
++long long int __nomips16
++__mips16_syscall1 (long int a0,
++		   long int number)
+ {
+   union __mips_syscall_return ret;
+   ret.reg.v0 = INTERNAL_SYSCALL_MIPS16 (number, ret.reg.v1, 1,
+diff --git a/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall2.c b/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall2.c
+index f042ac815d..c0a856c344 100644
+--- a/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall2.c
++++ b/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall2.c
+@@ -20,9 +20,9 @@
+ 
+ #undef __mips16_syscall2
+ 
+-long long __nomips16
+-__mips16_syscall2 (long a0, long a1,
+-		   long number)
++long long int __nomips16
++__mips16_syscall2 (long int a0, long int a1,
++		   long int number)
+ {
+   union __mips_syscall_return ret;
+   ret.reg.v0 = INTERNAL_SYSCALL_MIPS16 (number, ret.reg.v1, 2,
+diff --git a/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall3.c b/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall3.c
+index dfe2f7feb5..042768ebf2 100644
+--- a/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall3.c
++++ b/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall3.c
+@@ -20,9 +20,9 @@
+ 
+ #undef __mips16_syscall3
+ 
+-long long __nomips16
+-__mips16_syscall3 (long a0, long a1, long a2,
+-		   long number)
++long long int __nomips16
++__mips16_syscall3 (long int a0, long int a1, long int a2,
++		   long int number)
+ {
+   union __mips_syscall_return ret;
+   ret.reg.v0 = INTERNAL_SYSCALL_MIPS16 (number, ret.reg.v1, 3,
+diff --git a/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall4.c b/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall4.c
+index 39de510357..8658d822ab 100644
+--- a/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall4.c
++++ b/sysdeps/unix/sysv/linux/mips/mips32/mips16/mips16-syscall4.c
+@@ -20,9 +20,9 @@
+ 
+ #undef __mips16_syscall4
+ 
+-long long __nomips16
+-__mips16_syscall4 (long a0, long a1, long a2, long a3,
+-		   long number)
++long long int __nomips16
++__mips16_syscall4 (long int a0, long int a1, long int a2, long int a3,
++		   long int number)
+ {
+   union __mips_syscall_return ret;
+   ret.reg.v0 = INTERNAL_SYSCALL_MIPS16 (number, ret.reg.v1, 4,
+diff --git a/sysdeps/unix/sysv/linux/mips/mips32/sysdep.h b/sysdeps/unix/sysv/linux/mips/mips32/sysdep.h
+index beefcf284b..0c6a83e9b3 100644
+--- a/sysdeps/unix/sysv/linux/mips/mips32/sysdep.h
++++ b/sysdeps/unix/sysv/linux/mips/mips32/sysdep.h
+@@ -52,7 +52,7 @@
+ #undef INLINE_SYSCALL
+ #define INLINE_SYSCALL(name, nr, args...)                               \
+   ({ INTERNAL_SYSCALL_DECL (_sc_err);					\
+-     long result_var = INTERNAL_SYSCALL (name, _sc_err, nr, args);	\
++     long int result_var = INTERNAL_SYSCALL (name, _sc_err, nr, args);	\
+      if ( INTERNAL_SYSCALL_ERROR_P (result_var, _sc_err) )		\
+        {								\
+ 	 __set_errno (INTERNAL_SYSCALL_ERRNO (result_var, _sc_err));	\
+@@ -61,10 +61,10 @@
+      result_var; })
+ 
+ #undef INTERNAL_SYSCALL_DECL
+-#define INTERNAL_SYSCALL_DECL(err) long err __attribute__ ((unused))
++#define INTERNAL_SYSCALL_DECL(err) long int err __attribute__ ((unused))
+ 
+ #undef INTERNAL_SYSCALL_ERROR_P
+-#define INTERNAL_SYSCALL_ERROR_P(val, err)   ((void) (val), (long) (err))
++#define INTERNAL_SYSCALL_ERROR_P(val, err)   ((void) (val), (long int) (err))
+ 
+ #undef INTERNAL_SYSCALL_ERRNO
+ #define INTERNAL_SYSCALL_ERRNO(val, err)     ((void) (err), val)
+@@ -103,11 +103,11 @@
+ 
+ union __mips_syscall_return
+   {
+-    long long val;
++    long long int val;
+     struct
+       {
+-	long v0;
+-	long v1;
++	long int v0;
++	long int v1;
+       }
+     reg;
+   };
+@@ -152,13 +152,13 @@ union __mips_syscall_return
+ 
+ #define internal_syscall0(v0_init, input, number, err, dummy...)	\
+ ({									\
+-	long _sys_result;						\
++	long int _sys_result;						\
+ 									\
+ 	{								\
+-	register long __s0 asm ("$16") __attribute__ ((unused))		\
++	register long int __s0 asm ("$16") __attribute__ ((unused))	\
+ 	  = (number);							\
+-	register long __v0 asm ("$2");					\
+-	register long __a3 asm ("$7");					\
++	register long int __v0 asm ("$2");				\
++	register long int __a3 asm ("$7");				\
+ 	__asm__ volatile (						\
+ 	".set\tnoreorder\n\t"						\
+ 	v0_init								\
+@@ -175,14 +175,15 @@ union __mips_syscall_return
+ 
+ #define internal_syscall1(v0_init, input, number, err, arg1)		\
+ ({									\
+-	long _sys_result;						\
++	long int _sys_result;						\
+ 									\
+ 	{								\
+-	register long __s0 asm ("$16") __attribute__ ((unused))		\
++	long int _arg1 = (long int) (arg1);				\
++	register long int __s0 asm ("$16") __attribute__ ((unused))	\
+ 	  = (number);							\
+-	register long __v0 asm ("$2");					\
+-	register long __a0 asm ("$4") = (long) (arg1);			\
+-	register long __a3 asm ("$7");					\
++	register long int __v0 asm ("$2");				\
++	register long int __a0 asm ("$4") = _arg1;			\
++	register long int __a3 asm ("$7");				\
+ 	__asm__ volatile (						\
+ 	".set\tnoreorder\n\t"						\
+ 	v0_init								\
+@@ -199,15 +200,17 @@ union __mips_syscall_return
+ 
+ #define internal_syscall2(v0_init, input, number, err, arg1, arg2)	\
+ ({									\
+-	long _sys_result;						\
++	long int _sys_result;						\
+ 									\
+ 	{								\
+-	register long __s0 asm ("$16") __attribute__ ((unused))		\
++	long int _arg1 = (long int) (arg1);				\
++	long int _arg2 = (long int) (arg2);				\
++	register long int __s0 asm ("$16") __attribute__ ((unused))	\
+ 	  = (number);							\
+-	register long __v0 asm ("$2");					\
+-	register long __a0 asm ("$4") = (long) (arg1);			\
+-	register long __a1 asm ("$5") = (long) (arg2);			\
+-	register long __a3 asm ("$7");					\
++	register long int __v0 asm ("$2");				\
++	register long int __a0 asm ("$4") = _arg1;			\
++	register long int __a1 asm ("$5") = _arg2;			\
++	register long int __a3 asm ("$7");				\
+ 	__asm__ volatile (						\
+ 	".set\tnoreorder\n\t"						\
+ 	v0_init								\
+@@ -225,16 +228,19 @@ union __mips_syscall_return
+ #define internal_syscall3(v0_init, input, number, err,			\
+ 			  arg1, arg2, arg3)				\
+ ({									\
+-	long _sys_result;						\
++	long int _sys_result;						\
+ 									\
+ 	{								\
+-	register long __s0 asm ("$16") __attribute__ ((unused))		\
++	long int _arg1 = (long int) (arg1);				\
++	long int _arg2 = (long int) (arg2);				\
++	long int _arg3 = (long int) (arg3);				\
++	register long int __s0 asm ("$16") __attribute__ ((unused))	\
+ 	  = (number);							\
+-	register long __v0 asm ("$2");					\
+-	register long __a0 asm ("$4") = (long) (arg1);			\
+-	register long __a1 asm ("$5") = (long) (arg2);			\
+-	register long __a2 asm ("$6") = (long) (arg3);			\
+-	register long __a3 asm ("$7");					\
++	register long int __v0 asm ("$2");				\
++	register long int __a0 asm ("$4") = _arg1;			\
++	register long int __a1 asm ("$5") = _arg2;			\
++	register long int __a2 asm ("$6") = _arg3;			\
++	register long int __a3 asm ("$7");				\
+ 	__asm__ volatile (						\
+ 	".set\tnoreorder\n\t"						\
+ 	v0_init								\
+@@ -252,16 +258,20 @@ union __mips_syscall_return
+ #define internal_syscall4(v0_init, input, number, err,			\
+ 			  arg1, arg2, arg3, arg4)			\
+ ({									\
+-	long _sys_result;						\
++	long int _sys_result;						\
+ 									\
+ 	{								\
+-	register long __s0 asm ("$16") __attribute__ ((unused))		\
++	long int _arg1 = (long int) (arg1);				\
++	long int _arg2 = (long int) (arg2);				\
++	long int _arg3 = (long int) (arg3);				\
++	long int _arg4 = (long int) (arg4);				\
++	register long int __s0 asm ("$16") __attribute__ ((unused))	\
+ 	  = (number);							\
+-	register long __v0 asm ("$2");					\
+-	register long __a0 asm ("$4") = (long) (arg1);			\
+-	register long __a1 asm ("$5") = (long) (arg2);			\
+-	register long __a2 asm ("$6") = (long) (arg3);			\
+-	register long __a3 asm ("$7") = (long) (arg4);			\
++	register long int __v0 asm ("$2");				\
++	register long int __a0 asm ("$4") = _arg1;			\
++	register long int __a1 asm ("$5") = _arg2;			\
++	register long int __a2 asm ("$6") = _arg3;			\
++	register long int __a3 asm ("$7") = _arg4;			\
+ 	__asm__ volatile (						\
+ 	".set\tnoreorder\n\t"						\
+ 	v0_init								\
+@@ -285,63 +295,66 @@ union __mips_syscall_return
+    compiler specifics required for the stack arguments to be pushed,
+    which would be the case if these syscalls were inlined.  */
+ 
+-long long __nomips16 __mips_syscall5 (long arg1, long arg2, long arg3,
+-				      long arg4, long arg5,
+-				      long number);
++long long int __nomips16 __mips_syscall5 (long int arg1, long int arg2,
++					  long int arg3, long int arg4,
++					  long int arg5,
++					  long int number);
+ libc_hidden_proto (__mips_syscall5, nomips16)
+ 
+ #define internal_syscall5(v0_init, input, number, err,			\
+ 			  arg1, arg2, arg3, arg4, arg5)			\
+ ({									\
+ 	union __mips_syscall_return _sc_ret;				\
+-	_sc_ret.val = __mips_syscall5 ((long) (arg1),			\
+-				       (long) (arg2),			\
+-				       (long) (arg3),			\
+-				       (long) (arg4),			\
+-				       (long) (arg5),			\
+-				       (long) (number));		\
++	_sc_ret.val = __mips_syscall5 ((long int) (arg1),		\
++				       (long int) (arg2),		\
++				       (long int) (arg3),		\
++				       (long int) (arg4),		\
++				       (long int) (arg5),		\
++				       (long int) (number));		\
+ 	err = _sc_ret.reg.v1;						\
+ 	_sc_ret.reg.v0;							\
+ })
+ 
+-long long __nomips16 __mips_syscall6 (long arg1, long arg2, long arg3,
+-				      long arg4, long arg5, long arg6,
+-				      long number);
++long long int __nomips16 __mips_syscall6 (long int arg1, long int arg2,
++					  long int arg3, long int arg4,
++					  long int arg5, long int arg6,
++					  long int number);
+ libc_hidden_proto (__mips_syscall6, nomips16)
+ 
+ #define internal_syscall6(v0_init, input, number, err,			\
+ 			  arg1, arg2, arg3, arg4, arg5, arg6)		\
+ ({									\
+ 	union __mips_syscall_return _sc_ret;				\
+-	_sc_ret.val = __mips_syscall6 ((long) (arg1),			\
+-				       (long) (arg2),			\
+-				       (long) (arg3),			\
+-				       (long) (arg4),			\
+-				       (long) (arg5),			\
+-				       (long) (arg6),			\
+-				       (long) (number));		\
++	_sc_ret.val = __mips_syscall6 ((long int) (arg1),		\
++				       (long int) (arg2),		\
++				       (long int) (arg3),		\
++				       (long int) (arg4),		\
++				       (long int) (arg5),		\
++				       (long int) (arg6),		\
++				       (long int) (number));		\
+ 	err = _sc_ret.reg.v1;						\
+ 	_sc_ret.reg.v0;							\
+ })
+ 
+-long long __nomips16 __mips_syscall7 (long arg1, long arg2, long arg3,
+-				      long arg4, long arg5, long arg6,
+-				      long arg7,
+-				      long number);
++long long int __nomips16 __mips_syscall7 (long int arg1, long int arg2,
++					  long int arg3, long int arg4,
++					  long int arg5, long int arg6,
++					  long int arg7,
++					  long int number);
+ libc_hidden_proto (__mips_syscall7, nomips16)
+ 
+ #define internal_syscall7(v0_init, input, number, err,			\
+ 			  arg1, arg2, arg3, arg4, arg5, arg6, arg7)	\
+ ({									\
+ 	union __mips_syscall_return _sc_ret;				\
+-	_sc_ret.val = __mips_syscall7 ((long) (arg1),			\
+-				       (long) (arg2),			\
+-				       (long) (arg3),			\
+-				       (long) (arg4),			\
+-				       (long) (arg5),			\
+-				       (long) (arg6),			\
+-				       (long) (arg7),			\
+-				       (long) (number));		\
++	_sc_ret.val = __mips_syscall7 ((long int) (arg1),		\
++				       (long int) (arg2),		\
++				       (long int) (arg3),		\
++				       (long int) (arg4),		\
++				       (long int) (arg5),		\
++				       (long int) (arg6),		\
++				       (long int) (arg7),		\
++				       (long int) (number));		\
+ 	err = _sc_ret.reg.v1;						\
+ 	_sc_ret.reg.v0;							\
+ })
+diff --git a/sysdeps/unix/sysv/linux/mips/mips64/n32/sysdep.h b/sysdeps/unix/sysv/linux/mips/mips64/n32/sysdep.h
+index f96636538a..4a9d7054f9 100644
+--- a/sysdeps/unix/sysv/linux/mips/mips64/n32/sysdep.h
++++ b/sysdeps/unix/sysv/linux/mips/mips64/n32/sysdep.h
+@@ -47,14 +47,14 @@
+ 
+ /* Convert X to a long long, without losing any bits if it is one
+    already or warning if it is a 32-bit pointer.  */
+-#define ARGIFY(X) ((long long) (__typeof__ ((X) - (X))) (X))
++#define ARGIFY(X) ((long long int) (__typeof__ ((X) - (X))) (X))
+ 
+ /* Define a macro which expands into the inline wrapper code for a system
+    call.  */
+ #undef INLINE_SYSCALL
+ #define INLINE_SYSCALL(name, nr, args...)				\
+   ({ INTERNAL_SYSCALL_DECL (_sc_err);					\
+-     long result_var = INTERNAL_SYSCALL (name, _sc_err, nr, args);	\
++     long int result_var = INTERNAL_SYSCALL (name, _sc_err, nr, args);	\
+      if ( INTERNAL_SYSCALL_ERROR_P (result_var, _sc_err) )		\
+        {								\
+ 	 __set_errno (INTERNAL_SYSCALL_ERRNO (result_var, _sc_err));	\
+@@ -63,10 +63,10 @@
+      result_var; })
+ 
+ #undef INTERNAL_SYSCALL_DECL
+-#define INTERNAL_SYSCALL_DECL(err) long err __attribute__ ((unused))
++#define INTERNAL_SYSCALL_DECL(err) long int err __attribute__ ((unused))
+ 
+ #undef INTERNAL_SYSCALL_ERROR_P
+-#define INTERNAL_SYSCALL_ERROR_P(val, err)   ((void) (val), (long) (err))
++#define INTERNAL_SYSCALL_ERROR_P(val, err)   ((void) (val), (long int) (err))
+ 
+ #undef INTERNAL_SYSCALL_ERRNO
+ #define INTERNAL_SYSCALL_ERRNO(val, err)     ((void) (err), val)
+@@ -112,13 +112,13 @@
+ 
+ #define internal_syscall0(v0_init, input, number, err, dummy...)	\
+ ({									\
+-	long _sys_result;						\
++	long int _sys_result;						\
+ 									\
+ 	{								\
+-	register long long __s0 asm ("$16") __attribute__ ((unused))	\
++	register long long int __s0 asm ("$16") __attribute__ ((unused))\
+ 	  = (number);							\
+-	register long long __v0 asm ("$2");				\
+-	register long long __a3 asm ("$7");				\
++	register long long int __v0 asm ("$2");				\
++	register long long int __a3 asm ("$7");				\
+ 	__asm__ volatile (						\
+ 	".set\tnoreorder\n\t"						\
+ 	v0_init								\
+@@ -135,14 +135,15 @@
+ 
+ #define internal_syscall1(v0_init, input, number, err, arg1)		\
+ ({									\
+-	long _sys_result;						\
++	long int _sys_result;						\
+ 									\
+ 	{								\
+-	register long long __s0 asm ("$16") __attribute__ ((unused))	\
++	long long int _arg1 = ARGIFY (arg1);				\
++	register long long int __s0 asm ("$16") __attribute__ ((unused))\
+ 	  = (number);							\
+-	register long long __v0 asm ("$2");				\
+-	register long long __a0 asm ("$4") = ARGIFY (arg1);		\
+-	register long long __a3 asm ("$7");				\
++	register long long int __v0 asm ("$2");				\
++	register long long int __a0 asm ("$4") = _arg1;			\
++	register long long int __a3 asm ("$7");				\
+ 	__asm__ volatile (						\
+ 	".set\tnoreorder\n\t"						\
+ 	v0_init								\
+@@ -159,15 +160,17 @@
+ 
+ #define internal_syscall2(v0_init, input, number, err, arg1, arg2)	\
+ ({									\
+-	long _sys_result;						\
++	long int _sys_result;						\
+ 									\
+ 	{								\
+-	register long long __s0 asm ("$16") __attribute__ ((unused))	\
++	long long int _arg1 = ARGIFY (arg1);				\
++	long long int _arg2 = ARGIFY (arg2);				\
++	register long long int __s0 asm ("$16") __attribute__ ((unused))\
+ 	  = (number);							\
+-	register long long __v0 asm ("$2");				\
+-	register long long __a0 asm ("$4") = ARGIFY (arg1);		\
+-	register long long __a1 asm ("$5") = ARGIFY (arg2);		\
+-	register long long __a3 asm ("$7");				\
++	register long long int __v0 asm ("$2");				\
++	register long long int __a0 asm ("$4") = _arg1;			\
++	register long long int __a1 asm ("$5") = _arg2;			\
++	register long long int __a3 asm ("$7");				\
+ 	__asm__ volatile (						\
+ 	".set\tnoreorder\n\t"						\
+ 	v0_init								\
+@@ -185,16 +188,19 @@
+ #define internal_syscall3(v0_init, input, number, err,			\
+ 			  arg1, arg2, arg3)				\
+ ({									\
+-	long _sys_result;						\
++	long int _sys_result;						\
+ 									\
+ 	{								\
+-	register long long __s0 asm ("$16") __attribute__ ((unused))	\
++	long long int _arg1 = ARGIFY (arg1);				\
++	long long int _arg2 = ARGIFY (arg2);				\
++	long long int _arg3 = ARGIFY (arg3);				\
++	register long long int __s0 asm ("$16") __attribute__ ((unused))\
+ 	  = (number);							\
+-	register long long __v0 asm ("$2");				\
+-	register long long __a0 asm ("$4") = ARGIFY (arg1);		\
+-	register long long __a1 asm ("$5") = ARGIFY (arg2);		\
+-	register long long __a2 asm ("$6") = ARGIFY (arg3);		\
+-	register long long __a3 asm ("$7");				\
++	register long long int __v0 asm ("$2");				\
++	register long long int __a0 asm ("$4") = _arg1;			\
++	register long long int __a1 asm ("$5") = _arg2;			\
++	register long long int __a2 asm ("$6") = _arg3;			\
++	register long long int __a3 asm ("$7");				\
+ 	__asm__ volatile (						\
+ 	".set\tnoreorder\n\t"						\
+ 	v0_init								\
+@@ -212,16 +218,20 @@
+ #define internal_syscall4(v0_init, input, number, err,			\
+ 			  arg1, arg2, arg3, arg4)			\
+ ({									\
+-	long _sys_result;						\
++	long int _sys_result;						\
+ 									\
+ 	{								\
+-	register long long __s0 asm ("$16") __attribute__ ((unused))	\
++	long long int _arg1 = ARGIFY (arg1);				\
++	long long int _arg2 = ARGIFY (arg2);				\
++	long long int _arg3 = ARGIFY (arg3);				\
++	long long int _arg4 = ARGIFY (arg4);				\
++	register long long int __s0 asm ("$16") __attribute__ ((unused))\
+ 	  = (number);							\
+-	register long long __v0 asm ("$2");				\
+-	register long long __a0 asm ("$4") = ARGIFY (arg1);		\
+-	register long long __a1 asm ("$5") = ARGIFY (arg2);		\
+-	register long long __a2 asm ("$6") = ARGIFY (arg3);		\
+-	register long long __a3 asm ("$7") = ARGIFY (arg4);		\
++	register long long int __v0 asm ("$2");				\
++	register long long int __a0 asm ("$4") = _arg1;			\
++	register long long int __a1 asm ("$5") = _arg2;			\
++	register long long int __a2 asm ("$6") = _arg3;			\
++	register long long int __a3 asm ("$7") = _arg4;			\
+ 	__asm__ volatile (						\
+ 	".set\tnoreorder\n\t"						\
+ 	v0_init								\
+@@ -239,17 +249,22 @@
+ #define internal_syscall5(v0_init, input, number, err,			\
+ 			  arg1, arg2, arg3, arg4, arg5)			\
+ ({									\
+-	long _sys_result;						\
++	long int _sys_result;						\
+ 									\
+ 	{								\
+-	register long long __s0 asm ("$16") __attribute__ ((unused))	\
++	long long int _arg1 = ARGIFY (arg1);				\
++	long long int _arg2 = ARGIFY (arg2);				\
++	long long int _arg3 = ARGIFY (arg3);				\
++	long long int _arg4 = ARGIFY (arg4);				\
++	long long int _arg5 = ARGIFY (arg5);				\
++	register long long int __s0 asm ("$16") __attribute__ ((unused))\
+ 	  = (number);							\
+-	register long long __v0 asm ("$2");				\
+-	register long long __a0 asm ("$4") = ARGIFY (arg1);		\
+-	register long long __a1 asm ("$5") = ARGIFY (arg2);		\
+-	register long long __a2 asm ("$6") = ARGIFY (arg3);		\
+-	register long long __a3 asm ("$7") = ARGIFY (arg4);		\
+-	register long long __a4 asm ("$8") = ARGIFY (arg5);		\
++	register long long int __v0 asm ("$2");				\
++	register long long int __a0 asm ("$4") = _arg1;			\
++	register long long int __a1 asm ("$5") = _arg2;			\
++	register long long int __a2 asm ("$6") = _arg3;			\
++	register long long int __a3 asm ("$7") = _arg4;			\
++	register long long int __a4 asm ("$8") = _arg5;			\
+ 	__asm__ volatile (						\
+ 	".set\tnoreorder\n\t"						\
+ 	v0_init								\
+@@ -267,18 +282,24 @@
+ #define internal_syscall6(v0_init, input, number, err,			\
+ 			  arg1, arg2, arg3, arg4, arg5, arg6)		\
+ ({									\
+-	long _sys_result;						\
++	long int _sys_result;						\
+ 									\
+ 	{								\
+-	register long long __s0 asm ("$16") __attribute__ ((unused))	\
++	long long int _arg1 = ARGIFY (arg1);				\
++	long long int _arg2 = ARGIFY (arg2);				\
++	long long int _arg3 = ARGIFY (arg3);				\
++	long long int _arg4 = ARGIFY (arg4);				\
++	long long int _arg5 = ARGIFY (arg5);				\
++	long long int _arg6 = ARGIFY (arg6);				\
++	register long long int __s0 asm ("$16") __attribute__ ((unused))\
+ 	  = (number);							\
+-	register long long __v0 asm ("$2");				\
+-	register long long __a0 asm ("$4") = ARGIFY (arg1);		\
+-	register long long __a1 asm ("$5") = ARGIFY (arg2);		\
+-	register long long __a2 asm ("$6") = ARGIFY (arg3);		\
+-	register long long __a3 asm ("$7") = ARGIFY (arg4);		\
+-	register long long __a4 asm ("$8") = ARGIFY (arg5);		\
+-	register long long __a5 asm ("$9") = ARGIFY (arg6);		\
++	register long long int __v0 asm ("$2");				\
++	register long long int __a0 asm ("$4") = _arg1;			\
++	register long long int __a1 asm ("$5") = _arg2;			\
++	register long long int __a2 asm ("$6") = _arg3;			\
++	register long long int __a3 asm ("$7") = _arg4;			\
++	register long long int __a4 asm ("$8") = _arg5;			\
++	register long long int __a5 asm ("$9") = _arg6;			\
+ 	__asm__ volatile (						\
+ 	".set\tnoreorder\n\t"						\
+ 	v0_init								\
+diff --git a/sysdeps/unix/sysv/linux/mips/mips64/n64/sysdep.h b/sysdeps/unix/sysv/linux/mips/mips64/n64/sysdep.h
+index 9d30291f84..3e1f1cc3c5 100644
+--- a/sysdeps/unix/sysv/linux/mips/mips64/n64/sysdep.h
++++ b/sysdeps/unix/sysv/linux/mips/mips64/n64/sysdep.h
+@@ -50,7 +50,7 @@
+ #undef INLINE_SYSCALL
+ #define INLINE_SYSCALL(name, nr, args...)				\
+   ({ INTERNAL_SYSCALL_DECL (_sc_err);					\
+-     long result_var = INTERNAL_SYSCALL (name, _sc_err, nr, args);	\
++     long int result_var = INTERNAL_SYSCALL (name, _sc_err, nr, args);	\
+      if ( INTERNAL_SYSCALL_ERROR_P (result_var, _sc_err) )		\
+        {								\
+ 	 __set_errno (INTERNAL_SYSCALL_ERRNO (result_var, _sc_err));	\
+@@ -59,10 +59,10 @@
+      result_var; })
+ 
+ #undef INTERNAL_SYSCALL_DECL
+-#define INTERNAL_SYSCALL_DECL(err) long err __attribute__ ((unused))
++#define INTERNAL_SYSCALL_DECL(err) long int err __attribute__ ((unused))
+ 
+ #undef INTERNAL_SYSCALL_ERROR_P
+-#define INTERNAL_SYSCALL_ERROR_P(val, err)   ((void) (val), (long) (err))
++#define INTERNAL_SYSCALL_ERROR_P(val, err)   ((void) (val), (long int) (err))
+ 
+ #undef INTERNAL_SYSCALL_ERRNO
+ #define INTERNAL_SYSCALL_ERRNO(val, err)     ((void) (err), val)
+@@ -108,13 +108,13 @@
+ 
+ #define internal_syscall0(v0_init, input, number, err, dummy...)	\
+ ({									\
+-	long _sys_result;						\
++	long int _sys_result;						\
+ 									\
+ 	{								\
+-	register long __s0 asm ("$16") __attribute__ ((unused))		\
++	register long int __s0 asm ("$16") __attribute__ ((unused))	\
+ 	  = (number);							\
+-	register long __v0 asm ("$2");					\
+-	register long __a3 asm ("$7");					\
++	register long int __v0 asm ("$2");				\
++	register long int __a3 asm ("$7");				\
+ 	__asm__ volatile (						\
+ 	".set\tnoreorder\n\t"						\
+ 	v0_init								\
+@@ -131,14 +131,15 @@
+ 
+ #define internal_syscall1(v0_init, input, number, err, arg1)		\
+ ({									\
+-	long _sys_result;						\
++	long int _sys_result;						\
+ 									\
+ 	{								\
+-	register long __s0 asm ("$16") __attribute__ ((unused))		\
++	long int _arg1 = (long int) (arg1);				\
++	register long int __s0 asm ("$16") __attribute__ ((unused))	\
+ 	  = (number);							\
+-	register long __v0 asm ("$2");					\
+-	register long __a0 asm ("$4") = (long) (arg1);			\
+-	register long __a3 asm ("$7");					\
++	register long int __v0 asm ("$2");				\
++	register long int __a0 asm ("$4") = _arg1;			\
++	register long int __a3 asm ("$7");				\
+ 	__asm__ volatile (						\
+ 	".set\tnoreorder\n\t"						\
+ 	v0_init								\
+@@ -155,15 +156,17 @@
+ 
+ #define internal_syscall2(v0_init, input, number, err, arg1, arg2)	\
+ ({									\
+-	long _sys_result;						\
++	long int _sys_result;						\
+ 									\
+ 	{								\
+-	register long __s0 asm ("$16") __attribute__ ((unused))		\
++	long int _arg1 = (long int) (arg1);				\
++	long int _arg2 = (long int) (arg2);				\
++	register long int __s0 asm ("$16") __attribute__ ((unused))	\
+ 	  = (number);							\
+-	register long __v0 asm ("$2");					\
+-	register long __a0 asm ("$4") = (long) (arg1);			\
+-	register long __a1 asm ("$5") = (long) (arg2);			\
+-	register long __a3 asm ("$7");					\
++	register long int __v0 asm ("$2");				\
++	register long int __a0 asm ("$4") = _arg1;			\
++	register long int __a1 asm ("$5") = _arg2;			\
++	register long int __a3 asm ("$7");				\
+ 	__asm__ volatile (						\
+ 	".set\tnoreorder\n\t"						\
+ 	v0_init								\
+@@ -181,16 +184,19 @@
+ #define internal_syscall3(v0_init, input, number, err,			\
+ 			  arg1, arg2, arg3)				\
+ ({									\
+-	long _sys_result;						\
++	long int _sys_result;						\
+ 									\
+ 	{								\
+-	register long __s0 asm ("$16") __attribute__ ((unused))		\
++	long int _arg1 = (long int) (arg1);				\
++	long int _arg2 = (long int) (arg2);				\
++	long int _arg3 = (long int) (arg3);				\
++	register long int __s0 asm ("$16") __attribute__ ((unused))	\
+ 	  = (number);							\
+-	register long __v0 asm ("$2");					\
+-	register long __a0 asm ("$4") = (long) (arg1);			\
+-	register long __a1 asm ("$5") = (long) (arg2);			\
+-	register long __a2 asm ("$6") = (long) (arg3);			\
+-	register long __a3 asm ("$7");					\
++	register long int __v0 asm ("$2");				\
++	register long int __a0 asm ("$4") = _arg1;			\
++	register long int __a1 asm ("$5") = _arg2;			\
++	register long int __a2 asm ("$6") = _arg3;			\
++	register long int __a3 asm ("$7");				\
+ 	__asm__ volatile (						\
+ 	".set\tnoreorder\n\t"						\
+ 	v0_init								\
+@@ -208,16 +214,20 @@
+ #define internal_syscall4(v0_init, input, number, err,			\
+ 			  arg1, arg2, arg3, arg4)			\
+ ({									\
+-	long _sys_result;						\
++	long int _sys_result;						\
+ 									\
+ 	{								\
+-	register long __s0 asm ("$16") __attribute__ ((unused))		\
++	long int _arg1 = (long int) (arg1);				\
++	long int _arg2 = (long int) (arg2);				\
++	long int _arg3 = (long int) (arg3);				\
++	long int _arg4 = (long int) (arg4);				\
++	register long int __s0 asm ("$16") __attribute__ ((unused))	\
+ 	  = (number);							\
+-	register long __v0 asm ("$2");					\
+-	register long __a0 asm ("$4") = (long) (arg1);			\
+-	register long __a1 asm ("$5") = (long) (arg2);			\
+-	register long __a2 asm ("$6") = (long) (arg3);			\
+-	register long __a3 asm ("$7") = (long) (arg4);			\
++	register long int __v0 asm ("$2");				\
++	register long int __a0 asm ("$4") = _arg1;			\
++	register long int __a1 asm ("$5") = _arg2;			\
++	register long int __a2 asm ("$6") = _arg3;			\
++	register long int __a3 asm ("$7") = _arg4;			\
+ 	__asm__ volatile (						\
+ 	".set\tnoreorder\n\t"						\
+ 	v0_init								\
+@@ -235,17 +245,22 @@
+ #define internal_syscall5(v0_init, input, number, err,			\
+ 			  arg1, arg2, arg3, arg4, arg5)			\
+ ({									\
+-	long _sys_result;						\
++	long int _sys_result;						\
+ 									\
+ 	{								\
+-	register long __s0 asm ("$16") __attribute__ ((unused))		\
++	long int _arg1 = (long int) (arg1);				\
++	long int _arg2 = (long int) (arg2);				\
++	long int _arg3 = (long int) (arg3);				\
++	long int _arg4 = (long int) (arg4);				\
++	long int _arg5 = (long int) (arg5);				\
++	register long int __s0 asm ("$16") __attribute__ ((unused))	\
+ 	  = (number);							\
+-	register long __v0 asm ("$2");					\
+-	register long __a0 asm ("$4") = (long) (arg1);			\
+-	register long __a1 asm ("$5") = (long) (arg2);			\
+-	register long __a2 asm ("$6") = (long) (arg3);			\
+-	register long __a3 asm ("$7") = (long) (arg4);			\
+-	register long __a4 asm ("$8") = (long) (arg5);			\
++	register long int __v0 asm ("$2");				\
++	register long int __a0 asm ("$4") = _arg1;			\
++	register long int __a1 asm ("$5") = _arg2;			\
++	register long int __a2 asm ("$6") = _arg3;			\
++	register long int __a3 asm ("$7") = _arg4;			\
++	register long int __a4 asm ("$8") = _arg5;			\
+ 	__asm__ volatile (						\
+ 	".set\tnoreorder\n\t"						\
+ 	v0_init								\
+@@ -263,18 +278,24 @@
+ #define internal_syscall6(v0_init, input, number, err,			\
+ 			  arg1, arg2, arg3, arg4, arg5, arg6)		\
+ ({									\
+-	long _sys_result;						\
++	long int _sys_result;						\
+ 									\
+ 	{								\
+-	register long __s0 asm ("$16") __attribute__ ((unused))		\
++	long int _arg1 = (long int) (arg1);				\
++	long int _arg2 = (long int) (arg2);				\
++	long int _arg3 = (long int) (arg3);				\
++	long int _arg4 = (long int) (arg4);				\
++	long int _arg5 = (long int) (arg5);				\
++	long int _arg6 = (long int) (arg6);				\
++	register long int __s0 asm ("$16") __attribute__ ((unused))	\
+ 	  = (number);							\
+-	register long __v0 asm ("$2");					\
+-	register long __a0 asm ("$4") = (long) (arg1);			\
+-	register long __a1 asm ("$5") = (long) (arg2);			\
+-	register long __a2 asm ("$6") = (long) (arg3);			\
+-	register long __a3 asm ("$7") = (long) (arg4);			\
+-	register long __a4 asm ("$8") = (long) (arg5);			\
+-	register long __a5 asm ("$9") = (long) (arg6);			\
++	register long int __v0 asm ("$2");				\
++	register long int __a0 asm ("$4") = _arg1;			\
++	register long int __a1 asm ("$5") = _arg2;			\
++	register long int __a2 asm ("$6") = _arg3;			\
++	register long int __a3 asm ("$7") = _arg4;			\
++	register long int __a4 asm ("$8") = _arg5;			\
++	register long int __a5 asm ("$9") = _arg6;			\
+ 	__asm__ volatile (						\
+ 	".set\tnoreorder\n\t"						\
+ 	v0_init								\
+diff --git a/sysdeps/unix/sysv/linux/mips/mips64/syscall.S b/sysdeps/unix/sysv/linux/mips/mips64/syscall.S
+index 26adf2cd04..a9baff3c17 100644
+--- a/sysdeps/unix/sysv/linux/mips/mips64/syscall.S
++++ b/sysdeps/unix/sysv/linux/mips/mips64/syscall.S
+@@ -20,7 +20,7 @@
+ #include <sys/asm.h>
+ 
+ /* Usage:
+-   long syscall (syscall_number, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
++   long int syscall (syscall_number, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
+ 
+    We need to do some arg shifting, syscall_number will be in v0.  */
+ 
+diff --git a/sysdeps/unix/sysv/linux/mips/sysdep.h b/sysdeps/unix/sysv/linux/mips/sysdep.h
+index cdfc0b1b58..a4cf1540fe 100644
+--- a/sysdeps/unix/sysv/linux/mips/sysdep.h
++++ b/sysdeps/unix/sysv/linux/mips/sysdep.h
+@@ -36,8 +36,8 @@
+    the INTERNAL_SYSCALL_{ERROR_P,ERRNO} macros work correctly.  */
+ #define INTERNAL_VSYSCALL_CALL(funcptr, err, nr, args...)		\
+   ({									\
+-    long _ret = funcptr (args);						\
+-    err = ((unsigned long) (_ret) >= (unsigned long) -4095L);		\
++    long int _ret = funcptr (args);					\
++    err = ((unsigned long int) (_ret) >= (unsigned long int) -4095L);	\
+     if (err)								\
+       _ret = -_ret;							\
+     _ret;								\
+diff --git a/sysdeps/unix/sysv/linux/mips/unwind-arch.h b/sysdeps/unix/sysv/linux/mips/unwind-arch.h
+new file mode 100644
+index 0000000000..a009899983
+--- /dev/null
++++ b/sysdeps/unix/sysv/linux/mips/unwind-arch.h
+@@ -0,0 +1,67 @@
++/* Return backtrace of current program state.  Arch-specific bits.
++   Copyright (C) 2020 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#ifndef _UNWIND_ARCH_H
++#define _UNWIND_ARCH_H
++
++#include <stdint.h>
++
++/* MIPS fallback code handle a frame where its FDE can not be obtained
++   (for instance a signal frame) by reading the kernel allocated signal frame
++   and adding '2' to the value of 'sc_pc' [1].  The added value is used to
++   recognize an end of an EH region on mips16 [2].
++
++   The idea here is to adjust the obtained signal frame ADDR value and remove
++   the libgcc added value by checking if the previous frame is a signal frame
++   one.
++
++   [1] libgcc/config/mips/linux-unwind.h from gcc code.
++   [2] gcc/config/mips/mips.h from gcc code.  */
++
++static inline void *
++unwind_arch_adjustment (void *prev, void *addr)
++{
++  uint32_t *pc = (uint32_t *) prev;
++
++  if (pc == NULL)
++    return addr;
++
++  /* For MIPS16 or microMIPS frame libgcc makes no adjustment.  */
++  if ((uintptr_t) pc & 0x3)
++    return addr;
++
++  /* The vDSO containes either
++
++     24021061 li v0, 0x1061 (rt_sigreturn)
++     0000000c syscall
++	or
++     24021017 li v0, 0x1017 (sigreturn)
++     0000000c syscall  */
++  if (pc[1] != 0x0000000c)
++    return addr;
++#if _MIPS_SIM == _ABIO32
++  if (pc[0] == (0x24020000 | __NR_sigreturn))
++    return (void *) ((uintptr_t) addr - 2);
++#endif
++  if (pc[0] == (0x24020000 | __NR_rt_sigreturn))
++    return (void *) ((uintptr_t) addr - 2);
++
++  return addr;
++}
++
++#endif
+diff --git a/sysdeps/unix/sysv/linux/msgctl.c b/sysdeps/unix/sysv/linux/msgctl.c
+index 27879e76cd..fd46aec1a0 100644
+--- a/sysdeps/unix/sysv/linux/msgctl.c
++++ b/sysdeps/unix/sysv/linux/msgctl.c
+@@ -21,6 +21,7 @@
+ #include <sysdep.h>
+ #include <shlib-compat.h>
+ #include <errno.h>
++#include <linux/posix_types.h>  /* For __kernel_mode_t.  */
+ 
+ #ifndef DEFAULT_VERSION
+ # ifndef __ASSUME_SYSVIPC_BROKEN_MODE_T
+@@ -61,7 +62,6 @@ __new_msgctl (int msqid, int cmd, struct msqid_ds *buf)
+ 
+   int ret = msgctl_syscall (msqid, cmd, buf);
+ 
+-#ifdef __ASSUME_SYSVIPC_BROKEN_MODE_T
+   if (ret >= 0)
+     {
+       switch (cmd)
+@@ -69,10 +69,16 @@ __new_msgctl (int msqid, int cmd, struct msqid_ds *buf)
+ 	case IPC_STAT:
+ 	case MSG_STAT:
+ 	case MSG_STAT_ANY:
++#ifdef __ASSUME_SYSVIPC_BROKEN_MODE_T
+ 	  buf->msg_perm.mode >>= 16;
++#else
++	  /* Old Linux kernel versions might not clear the mode padding.  */
++	  if (sizeof ((struct msqid_ds){0}.msg_perm.mode)
++	      != sizeof (__kernel_mode_t))
++	    buf->msg_perm.mode &= 0xFFFF;
++#endif
+ 	}
+     }
+-#endif
+ 
+   return ret;
+ }
+diff --git a/sysdeps/unix/sysv/linux/powerpc/powerpc32/sysdep.h b/sysdeps/unix/sysv/linux/powerpc/powerpc32/sysdep.h
+index 725dfafde8..ffc150851e 100644
+--- a/sysdeps/unix/sysv/linux/powerpc/powerpc32/sysdep.h
++++ b/sysdeps/unix/sysv/linux/powerpc/powerpc32/sysdep.h
+@@ -134,47 +134,47 @@
+ # define LOADARGS_0(name, dummy)					      \
+ 	r0 = name
+ # define LOADARGS_1(name, __arg1) \
+-	long int arg1 = (long int) (__arg1);	\
++	long int _arg1 = (long int) (__arg1);	\
+   LOADARGS_0(name, 0);					   \
+ 	extern void __illegally_sized_syscall_arg1 (void); \
+ 	if (__builtin_classify_type (__arg1) != 5 && sizeof (__arg1) > 4) \
+ 	  __illegally_sized_syscall_arg1 (); \
+-	r3 = arg1
++	r3 = _arg1
+ # define LOADARGS_2(name, __arg1, __arg2) \
+-	long int arg2 = (long int) (__arg2); \
++	long int _arg2 = (long int) (__arg2); \
+ 	LOADARGS_1(name, __arg1); \
+ 	extern void __illegally_sized_syscall_arg2 (void); \
+ 	if (__builtin_classify_type (__arg2) != 5 && sizeof (__arg2) > 4) \
+ 	  __illegally_sized_syscall_arg2 (); \
+-	r4 = arg2
++	r4 = _arg2
+ # define LOADARGS_3(name, __arg1, __arg2, __arg3) \
+-	long int arg3 = (long int) (__arg3); \
++	long int _arg3 = (long int) (__arg3); \
+ 	LOADARGS_2(name, __arg1, __arg2); \
+ 	extern void __illegally_sized_syscall_arg3 (void); \
+ 	if (__builtin_classify_type (__arg3) != 5 && sizeof (__arg3) > 4) \
+ 	  __illegally_sized_syscall_arg3 (); \
+-	r5 = arg3
++	r5 = _arg3
+ # define LOADARGS_4(name, __arg1, __arg2, __arg3, __arg4) \
+-	long int arg4 = (long int) (__arg4); \
++	long int _arg4 = (long int) (__arg4); \
+ 	LOADARGS_3(name, __arg1, __arg2, __arg3); \
+ 	extern void __illegally_sized_syscall_arg4 (void); \
+ 	if (__builtin_classify_type (__arg4) != 5 && sizeof (__arg4) > 4) \
+ 	  __illegally_sized_syscall_arg4 (); \
+-	r6 = arg4
++	r6 = _arg4
+ # define LOADARGS_5(name, __arg1, __arg2, __arg3, __arg4, __arg5) \
+-	long int arg5 = (long int) (__arg5); \
++	long int _arg5 = (long int) (__arg5); \
+ 	LOADARGS_4(name, __arg1, __arg2, __arg3, __arg4); \
+ 	extern void __illegally_sized_syscall_arg5 (void); \
+ 	if (__builtin_classify_type (__arg5) != 5 && sizeof (__arg5) > 4) \
+ 	  __illegally_sized_syscall_arg5 (); \
+-	r7 = arg5
++	r7 = _arg5
+ # define LOADARGS_6(name, __arg1, __arg2, __arg3, __arg4, __arg5, __arg6) \
+-	long int arg6 = (long int) (__arg6); \
++	long int _arg6 = (long int) (__arg6); \
+ 	LOADARGS_5(name, __arg1, __arg2, __arg3, __arg4, __arg5); \
+ 	extern void __illegally_sized_syscall_arg6 (void); \
+ 	if (__builtin_classify_type (__arg6) != 5 && sizeof (__arg6) > 4) \
+ 	  __illegally_sized_syscall_arg6 (); \
+-	r8 = arg6
++	r8 = _arg6
+ 
+ # define ASM_INPUT_0 "0" (r0)
+ # define ASM_INPUT_1 ASM_INPUT_0, "1" (r3)
+diff --git a/sysdeps/unix/sysv/linux/powerpc/powerpc64/sysdep.h b/sysdeps/unix/sysv/linux/powerpc/powerpc64/sysdep.h
+index ee7f43653d..8a3f1c43e4 100644
+--- a/sysdeps/unix/sysv/linux/powerpc/powerpc64/sysdep.h
++++ b/sysdeps/unix/sysv/linux/powerpc/powerpc64/sysdep.h
+@@ -139,47 +139,47 @@
+ #define LOADARGS_0(name, dummy) \
+ 	r0 = name
+ #define LOADARGS_1(name, __arg1) \
+-	long int arg1 = (long int) (__arg1); \
++	long int _arg1 = (long int) (__arg1); \
+ 	LOADARGS_0(name, 0); \
+ 	extern void __illegally_sized_syscall_arg1 (void); \
+ 	if (__builtin_classify_type (__arg1) != 5 && sizeof (__arg1) > 8) \
+ 	  __illegally_sized_syscall_arg1 (); \
+-	r3 = arg1
++	r3 = _arg1
+ #define LOADARGS_2(name, __arg1, __arg2) \
+-	long int arg2 = (long int) (__arg2); \
++	long int _arg2 = (long int) (__arg2); \
+ 	LOADARGS_1(name, __arg1); \
+ 	extern void __illegally_sized_syscall_arg2 (void); \
+ 	if (__builtin_classify_type (__arg2) != 5 && sizeof (__arg2) > 8) \
+ 	  __illegally_sized_syscall_arg2 (); \
+-	r4 = arg2
++	r4 = _arg2
+ #define LOADARGS_3(name, __arg1, __arg2, __arg3) \
+-	long int arg3 = (long int) (__arg3); \
++	long int _arg3 = (long int) (__arg3); \
+ 	LOADARGS_2(name, __arg1, __arg2); \
+ 	extern void __illegally_sized_syscall_arg3 (void); \
+ 	if (__builtin_classify_type (__arg3) != 5 && sizeof (__arg3) > 8) \
+ 	  __illegally_sized_syscall_arg3 (); \
+-	r5 = arg3
++	r5 = _arg3
+ #define LOADARGS_4(name, __arg1, __arg2, __arg3, __arg4) \
+-	long int arg4 = (long int) (__arg4); \
++	long int _arg4 = (long int) (__arg4); \
+ 	LOADARGS_3(name, __arg1, __arg2, __arg3); \
+ 	extern void __illegally_sized_syscall_arg4 (void); \
+ 	if (__builtin_classify_type (__arg4) != 5 && sizeof (__arg4) > 8) \
+ 	  __illegally_sized_syscall_arg4 (); \
+-	r6 = arg4
++	r6 = _arg4
+ #define LOADARGS_5(name, __arg1, __arg2, __arg3, __arg4, __arg5) \
+-	long int arg5 = (long int) (__arg5); \
++	long int _arg5 = (long int) (__arg5); \
+ 	LOADARGS_4(name, __arg1, __arg2, __arg3, __arg4); \
+ 	extern void __illegally_sized_syscall_arg5 (void); \
+ 	if (__builtin_classify_type (__arg5) != 5 && sizeof (__arg5) > 8) \
+ 	  __illegally_sized_syscall_arg5 (); \
+-	r7 = arg5
++	r7 = _arg5
+ #define LOADARGS_6(name, __arg1, __arg2, __arg3, __arg4, __arg5, __arg6) \
+-	long int arg6 = (long int) (__arg6); \
++	long int _arg6 = (long int) (__arg6); \
+ 	LOADARGS_5(name, __arg1, __arg2, __arg3, __arg4, __arg5); \
+ 	extern void __illegally_sized_syscall_arg6 (void); \
+ 	if (__builtin_classify_type (__arg6) != 5 && sizeof (__arg6) > 8) \
+ 	  __illegally_sized_syscall_arg6 (); \
+-	r8 = arg6
++	r8 = _arg6
+ 
+ #define ASM_INPUT_0 "0" (r0)
+ #define ASM_INPUT_1 ASM_INPUT_0, "1" (r3)
+diff --git a/sysdeps/unix/sysv/linux/prctl.c b/sysdeps/unix/sysv/linux/prctl.c
+new file mode 100644
+index 0000000000..d5725f14cf
+--- /dev/null
++++ b/sysdeps/unix/sysv/linux/prctl.c
+@@ -0,0 +1,42 @@
++/* prctl - Linux specific syscall.
++   Copyright (C) 2020 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#include <sysdep.h>
++#include <stdarg.h>
++#include <sys/prctl.h>
++
++/* Unconditionally read all potential arguments.  This may pass
++   garbage values to the kernel, but avoids the need for teaching
++   glibc the argument counts of individual options (including ones
++   that are added to the kernel in the future).  */
++
++int
++__prctl (int option, ...)
++{
++  va_list arg;
++  va_start (arg, option);
++  unsigned long int arg2 = va_arg (arg, unsigned long int);
++  unsigned long int arg3 = va_arg (arg, unsigned long int);
++  unsigned long int arg4 = va_arg (arg, unsigned long int);
++  unsigned long int arg5 = va_arg (arg, unsigned long int);
++  va_end (arg);
++  return INLINE_SYSCALL_CALL (prctl, option, arg2, arg3, arg4, arg5);
++}
++
++libc_hidden_def (__prctl)
++weak_alias (__prctl, prctl)
+diff --git a/sysdeps/unix/sysv/linux/process_vm_readv.c b/sysdeps/unix/sysv/linux/process_vm_readv.c
+new file mode 100644
+index 0000000000..e1377f7e50
+--- /dev/null
++++ b/sysdeps/unix/sysv/linux/process_vm_readv.c
+@@ -0,0 +1,32 @@
++/* process_vm_readv - Linux specific syscall.
++   Copyright (C) 2020 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#include <unistd.h>
++#include <sysdep.h>
++#include <errno.h>
++#include <sys/uio.h>
++
++ssize_t
++process_vm_readv (pid_t pid, const struct iovec *local_iov,
++		  unsigned long int liovcnt,
++		  const struct iovec *remote_iov,
++		  unsigned long int riovcnt, unsigned long int flags)
++{
++  return INLINE_SYSCALL_CALL (process_vm_readv, pid, local_iov,
++			      liovcnt, remote_iov, riovcnt, flags);
++}
+diff --git a/sysdeps/unix/sysv/linux/process_vm_writev.c b/sysdeps/unix/sysv/linux/process_vm_writev.c
+new file mode 100644
+index 0000000000..944ab9b7f1
+--- /dev/null
++++ b/sysdeps/unix/sysv/linux/process_vm_writev.c
+@@ -0,0 +1,32 @@
++/* process_vm_writev - Linux specific syscall.
++   Copyright (C) 2020 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#include <unistd.h>
++#include <sysdep.h>
++#include <errno.h>
++#include <sys/uio.h>
++
++ssize_t
++process_vm_writev (pid_t pid, const struct iovec *local_iov,
++		   unsigned long int liovcnt,
++		   const struct iovec *remote_iov,
++		   unsigned long int riovcnt, unsigned long int flags)
++{
++  return INLINE_SYSCALL_CALL (process_vm_writev, pid, local_iov,
++			      liovcnt, remote_iov, riovcnt, flags);
++}
+diff --git a/sysdeps/unix/sysv/linux/riscv/sysdep.h b/sysdeps/unix/sysv/linux/riscv/sysdep.h
+index 201bf9a91b..2bd9b16f32 100644
+--- a/sysdeps/unix/sysv/linux/riscv/sysdep.h
++++ b/sysdeps/unix/sysv/linux/riscv/sysdep.h
+@@ -176,10 +176,11 @@
+ # define internal_syscall1(number, err, arg0)				\
+ ({ 									\
+ 	long int _sys_result;						\
++	long int _arg0 = (long int) (arg0);				\
+ 									\
+ 	{								\
+ 	register long int __a7 asm ("a7") = number;			\
+-	register long int __a0 asm ("a0") = (long int) (arg0);		\
++	register long int __a0 asm ("a0") = _arg0;			\
+ 	__asm__ volatile ( 						\
+ 	"scall\n\t" 							\
+ 	: "+r" (__a0)							\
+@@ -193,11 +194,13 @@
+ # define internal_syscall2(number, err, arg0, arg1)	    		\
+ ({ 									\
+ 	long int _sys_result;						\
++	long int _arg0 = (long int) (arg0);				\
++	long int _arg1 = (long int) (arg1);				\
+ 									\
+ 	{								\
+ 	register long int __a7 asm ("a7") = number;			\
+-	register long int __a0 asm ("a0") = (long int) (arg0);		\
+-	register long int __a1 asm ("a1") = (long int) (arg1);		\
++	register long int __a0 asm ("a0") = _arg0;			\
++	register long int __a1 asm ("a1") = _arg1;			\
+ 	__asm__ volatile ( 						\
+ 	"scall\n\t" 							\
+ 	: "+r" (__a0)							\
+@@ -211,12 +214,15 @@
+ # define internal_syscall3(number, err, arg0, arg1, arg2)      		\
+ ({ 									\
+ 	long int _sys_result;						\
++	long int _arg0 = (long int) (arg0);				\
++	long int _arg1 = (long int) (arg1);				\
++	long int _arg2 = (long int) (arg2);				\
+ 									\
+ 	{								\
+ 	register long int __a7 asm ("a7") = number;			\
+-	register long int __a0 asm ("a0") = (long int) (arg0);		\
+-	register long int __a1 asm ("a1") = (long int) (arg1);		\
+-	register long int __a2 asm ("a2") = (long int) (arg2);		\
++	register long int __a0 asm ("a0") = _arg0;			\
++	register long int __a1 asm ("a1") = _arg1;			\
++	register long int __a2 asm ("a2") = _arg2;			\
+ 	__asm__ volatile ( 						\
+ 	"scall\n\t" 							\
+ 	: "+r" (__a0)							\
+@@ -230,13 +236,17 @@
+ # define internal_syscall4(number, err, arg0, arg1, arg2, arg3)	  \
+ ({ 									\
+ 	long int _sys_result;						\
++	long int _arg0 = (long int) (arg0);				\
++	long int _arg1 = (long int) (arg1);				\
++	long int _arg2 = (long int) (arg2);				\
++	long int _arg3 = (long int) (arg3);				\
+ 									\
+ 	{								\
+ 	register long int __a7 asm ("a7") = number;			\
+-	register long int __a0 asm ("a0") = (long int) (arg0);		\
+-	register long int __a1 asm ("a1") = (long int) (arg1);		\
+-	register long int __a2 asm ("a2") = (long int) (arg2);		\
+-	register long int __a3 asm ("a3") = (long int) (arg3);		\
++	register long int __a0 asm ("a0") = _arg0;			\
++	register long int __a1 asm ("a1") = _arg1;			\
++	register long int __a2 asm ("a2") = _arg2;			\
++	register long int __a3 asm ("a3") = _arg3;			\
+ 	__asm__ volatile ( 						\
+ 	"scall\n\t" 							\
+ 	: "+r" (__a0)							\
+@@ -250,14 +260,19 @@
+ # define internal_syscall5(number, err, arg0, arg1, arg2, arg3, arg4)   \
+ ({ 									\
+ 	long int _sys_result;						\
++	long int _arg0 = (long int) (arg0);				\
++	long int _arg1 = (long int) (arg1);				\
++	long int _arg2 = (long int) (arg2);				\
++	long int _arg3 = (long int) (arg3);				\
++	long int _arg4 = (long int) (arg4);				\
+ 									\
+ 	{								\
+ 	register long int __a7 asm ("a7") = number;			\
+-	register long int __a0 asm ("a0") = (long int) (arg0);		\
+-	register long int __a1 asm ("a1") = (long int) (arg1);		\
+-	register long int __a2 asm ("a2") = (long int) (arg2);		\
+-	register long int __a3 asm ("a3") = (long int) (arg3);		\
+-	register long int __a4 asm ("a4") = (long int) (arg4);		\
++	register long int __a0 asm ("a0") = _arg0;			\
++	register long int __a1 asm ("a1") = _arg1;			\
++	register long int __a2 asm ("a2") = _arg2;			\
++	register long int __a3 asm ("a3") = _arg3;			\
++	register long int __a4 asm ("a4") = _arg4;			\
+ 	__asm__ volatile ( 						\
+ 	"scall\n\t" 							\
+ 	: "+r" (__a0)							\
+@@ -271,15 +286,21 @@
+ # define internal_syscall6(number, err, arg0, arg1, arg2, arg3, arg4, arg5) \
+ ({ 									\
+ 	long int _sys_result;						\
++	long int _arg0 = (long int) (arg0);				\
++	long int _arg1 = (long int) (arg1);				\
++	long int _arg2 = (long int) (arg2);				\
++	long int _arg3 = (long int) (arg3);				\
++	long int _arg4 = (long int) (arg4);				\
++	long int _arg5 = (long int) (arg5);				\
+ 									\
+ 	{								\
+ 	register long int __a7 asm ("a7") = number;			\
+-	register long int __a0 asm ("a0") = (long int) (arg0);		\
+-	register long int __a1 asm ("a1") = (long int) (arg1);		\
+-	register long int __a2 asm ("a2") = (long int) (arg2);		\
+-	register long int __a3 asm ("a3") = (long int) (arg3);		\
+-	register long int __a4 asm ("a4") = (long int) (arg4);		\
+-	register long int __a5 asm ("a5") = (long int) (arg5);		\
++	register long int __a0 asm ("a0") = _arg0;			\
++	register long int __a1 asm ("a1") = _arg1;			\
++	register long int __a2 asm ("a2") = _arg2;			\
++	register long int __a3 asm ("a3") = _arg3;			\
++	register long int __a4 asm ("a4") = _arg4;			\
++	register long int __a5 asm ("a5") = _arg5;			\
+ 	__asm__ volatile ( 						\
+ 	"scall\n\t" 							\
+ 	: "+r" (__a0)							\
+@@ -294,16 +315,23 @@
+ # define internal_syscall7(number, err, arg0, arg1, arg2, arg3, arg4, arg5, arg6) \
+ ({ 									\
+ 	long int _sys_result;						\
++	long int _arg0 = (long int) (arg0);				\
++	long int _arg1 = (long int) (arg1);				\
++	long int _arg2 = (long int) (arg2);				\
++	long int _arg3 = (long int) (arg3);				\
++	long int _arg4 = (long int) (arg4);				\
++	long int _arg5 = (long int) (arg5);				\
++	long int _arg6 = (long int) (arg6);				\
+ 									\
+ 	{								\
+ 	register long int __a7 asm ("a7") = number;			\
+-	register long int __a0 asm ("a0") = (long int) (arg0);		\
+-	register long int __a1 asm ("a1") = (long int) (arg1);		\
+-	register long int __a2 asm ("a2") = (long int) (arg2);		\
+-	register long int __a3 asm ("a3") = (long int) (arg3);		\
+-	register long int __a4 asm ("a4") = (long int) (arg4);		\
+-	register long int __a5 asm ("a5") = (long int) (arg5);		\
+-	register long int __a6 asm ("a6") = (long int) (arg6);		\
++	register long int __a0 asm ("a0") = _arg0;			\
++	register long int __a1 asm ("a1") = _arg1;			\
++	register long int __a2 asm ("a2") = _arg2;			\
++	register long int __a3 asm ("a3") = _arg3;			\
++	register long int __a4 asm ("a4") = _arg4;			\
++	register long int __a5 asm ("a5") = _arg5;			\
++	register long int __a6 asm ("a6") = _arg6;			\
+ 	__asm__ volatile ( 						\
+ 	"scall\n\t" 							\
+ 	: "+r" (__a0)							\
+diff --git a/sysdeps/unix/sysv/linux/semctl.c b/sysdeps/unix/sysv/linux/semctl.c
+index 0c3eb0932f..30571af49f 100644
+--- a/sysdeps/unix/sysv/linux/semctl.c
++++ b/sysdeps/unix/sysv/linux/semctl.c
+@@ -22,6 +22,7 @@
+ #include <sysdep.h>
+ #include <shlib-compat.h>
+ #include <errno.h>
++#include <linux/posix_types.h>  /* For __kernel_mode_t.  */
+ 
+ /* Define a `union semun' suitable for Linux here.  */
+ union semun
+@@ -92,7 +93,6 @@ __new_semctl (int semid, int semnum, int cmd, ...)
+ 
+   int ret = semctl_syscall (semid, semnum, cmd, arg);
+ 
+-#ifdef __ASSUME_SYSVIPC_BROKEN_MODE_T
+   if (ret >= 0)
+     {
+       switch (cmd)
+@@ -100,10 +100,16 @@ __new_semctl (int semid, int semnum, int cmd, ...)
+         case IPC_STAT:
+         case SEM_STAT:
+         case SEM_STAT_ANY:
++#ifdef __ASSUME_SYSVIPC_BROKEN_MODE_T
+           arg.buf->sem_perm.mode >>= 16;
++#else
++	  /* Old Linux kernel versions might not clear the mode padding.  */
++	  if (sizeof ((struct semid_ds){0}.sem_perm.mode)
++	      != sizeof (__kernel_mode_t))
++	    arg.buf->sem_perm.mode &= 0xFFFF;
++#endif
+ 	}
+     }
+-#endif
+ 
+   return ret;
+ }
+diff --git a/sysdeps/unix/sysv/linux/shmctl.c b/sysdeps/unix/sysv/linux/shmctl.c
+index 39fa861e17..f41b359b8b 100644
+--- a/sysdeps/unix/sysv/linux/shmctl.c
++++ b/sysdeps/unix/sysv/linux/shmctl.c
+@@ -22,6 +22,7 @@
+ #include <sysdep.h>
+ #include <shlib-compat.h>
+ #include <errno.h>
++#include <linux/posix_types.h>  /* For __kernel_mode_t.  */
+ 
+ #ifndef DEFAULT_VERSION
+ # ifndef __ASSUME_SYSVIPC_BROKEN_MODE_T
+@@ -63,7 +64,6 @@ __new_shmctl (int shmid, int cmd, struct shmid_ds *buf)
+ 
+   int ret = shmctl_syscall (shmid, cmd, buf);
+ 
+-#ifdef __ASSUME_SYSVIPC_BROKEN_MODE_T
+   if (ret >= 0)
+     {
+       switch (cmd)
+@@ -71,10 +71,16 @@ __new_shmctl (int shmid, int cmd, struct shmid_ds *buf)
+         case IPC_STAT:
+         case SHM_STAT:
+         case SHM_STAT_ANY:
++#ifdef __ASSUME_SYSVIPC_BROKEN_MODE_T
+           buf->shm_perm.mode >>= 16;
++#else
++	  /* Old Linux kernel versions might not clear the mode padding.  */
++	  if (sizeof ((struct shmid_ds){0}.shm_perm.mode)
++	      != sizeof (__kernel_mode_t))
++	    buf->shm_perm.mode &= 0xFFFF;
++#endif
+ 	}
+     }
+-#endif
+ 
+   return ret;
+ }
+diff --git a/sysdeps/unix/sysv/linux/sparc/Makefile b/sysdeps/unix/sysv/linux/sparc/Makefile
+index b0d182a439..1475039677 100644
+--- a/sysdeps/unix/sysv/linux/sparc/Makefile
++++ b/sysdeps/unix/sysv/linux/sparc/Makefile
+@@ -11,8 +11,12 @@ ifeq ($(subdir),sysvipc)
+ sysdep_routines += getshmlba
+ endif
+ 
++ifeq ($(subdir),signal)
++sysdep_routines += sigreturn_stub
++endif
++
+ ifeq ($(subdir),nptl)
+ # pull in __syscall_error routine
+-libpthread-routines += sysdep
+-libpthread-shared-only-routines += sysdep
++libpthread-routines += sysdep sigreturn_stub
++libpthread-shared-only-routines += sysdep sigreturn_stub
+ endif
+diff --git a/sysdeps/unix/sysv/linux/sparc/sparc32/sigaction.c b/sysdeps/unix/sysv/linux/sparc/sparc32/sigaction.c
+index 6b2f664226..938aa7aa8c 100644
+--- a/sysdeps/unix/sysv/linux/sparc/sparc32/sigaction.c
++++ b/sysdeps/unix/sysv/linux/sparc/sparc32/sigaction.c
+@@ -24,8 +24,8 @@
+ #include <kernel_sigaction.h>
+ #include <sysdep.h>
+ 
+-static void __rt_sigreturn_stub (void);
+-static void __sigreturn_stub (void);
++void __rt_sigreturn_stub (void);
++void __sigreturn_stub (void);
+ 
+ #define STUB(act, sigsetsize) \
+   (act) ? ((unsigned long)((act->sa_flags & SA_SIGINFO)	\
+@@ -35,25 +35,3 @@ static void __sigreturn_stub (void);
+   (sigsetsize)
+ 
+ #include <sysdeps/unix/sysv/linux/sigaction.c>
+-
+-static
+-inhibit_stack_protector
+-void
+-__rt_sigreturn_stub (void)
+-{
+-  __asm__ ("mov %0, %%g1\n\t"
+-	   "ta	0x10\n\t"
+-	   : /* no outputs */
+-	   : "i" (__NR_rt_sigreturn));
+-}
+-
+-static
+-inhibit_stack_protector
+-void
+-__sigreturn_stub (void)
+-{
+-  __asm__ ("mov %0, %%g1\n\t"
+-	   "ta	0x10\n\t"
+-	   : /* no outputs */
+-	   : "i" (__NR_sigreturn));
+-}
+diff --git a/sysdeps/unix/sysv/linux/sparc/sparc32/sigreturn_stub.S b/sysdeps/unix/sysv/linux/sparc/sparc32/sigreturn_stub.S
+new file mode 100644
+index 0000000000..727cc94737
+--- /dev/null
++++ b/sysdeps/unix/sysv/linux/sparc/sparc32/sigreturn_stub.S
+@@ -0,0 +1,34 @@
++/* Sigreturn stub function used on sa_restore field.
++   Copyright (C) 2020 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#include <sysdep.h>
++
++/* These functions must not change the register window or the stack
++   pointer [1].
++
++   [1] https://lkml.org/lkml/2016/5/27/465  */
++
++ENTRY (__rt_sigreturn_stub)
++	mov	__NR_rt_sigreturn, %g1
++	ta	0x10
++END (__rt_sigreturn_stub)
++
++ENTRY (__sigreturn_stub)
++	mov	__NR_sigreturn, %g1
++	ta	0x10
++END (__sigreturn_stub)
+diff --git a/sysdeps/unix/sysv/linux/sparc/sparc64/sigaction.c b/sysdeps/unix/sysv/linux/sparc/sparc64/sigaction.c
+index 9c0dc2a630..4e26172321 100644
+--- a/sysdeps/unix/sysv/linux/sparc/sparc64/sigaction.c
++++ b/sysdeps/unix/sysv/linux/sparc/sparc64/sigaction.c
+@@ -22,21 +22,11 @@
+ #include <syscall.h>
+ #include <sysdep.h>
+ 
+-static void __rt_sigreturn_stub (void);
++/* Defined on sigreturn_stub.S.  */
++void __rt_sigreturn_stub (void);
+ 
+ #define STUB(act, sigsetsize) \
+   (((unsigned long) &__rt_sigreturn_stub) - 8),	\
+   (sigsetsize)
+ 
+ #include <sysdeps/unix/sysv/linux/sigaction.c>
+-
+-static
+-inhibit_stack_protector
+-void
+-__rt_sigreturn_stub (void)
+-{
+-  __asm__ ("mov %0, %%g1\n\t"
+-	   "ta	0x6d\n\t"
+-	   : /* no outputs */
+-	   : "i" (__NR_rt_sigreturn));
+-}
+diff --git a/sysdeps/unix/sysv/linux/sparc/sparc64/sigreturn_stub.S b/sysdeps/unix/sysv/linux/sparc/sparc64/sigreturn_stub.S
+new file mode 100644
+index 0000000000..add4766831
+--- /dev/null
++++ b/sysdeps/unix/sysv/linux/sparc/sparc64/sigreturn_stub.S
+@@ -0,0 +1,29 @@
++/* Sigreturn stub function used on sa_restore field.
++   Copyright (C) 2020 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#include <sysdep.h>
++
++/* This function must not change the register window or the stack
++   pointer [1].
++
++   [1] https://lkml.org/lkml/2016/5/27/465  */
++
++ENTRY (__rt_sigreturn_stub)
++	mov	__NR_rt_sigreturn, %g1
++	ta	0x6d
++END (__rt_sigreturn_stub)
+diff --git a/sysdeps/unix/sysv/linux/syscall-names.list b/sysdeps/unix/sysv/linux/syscall-names.list
+index 36e087d8f4..3d89814003 100644
+--- a/sysdeps/unix/sysv/linux/syscall-names.list
++++ b/sysdeps/unix/sysv/linux/syscall-names.list
+@@ -21,8 +21,8 @@
+ # This file can list all potential system calls.  The names are only
+ # used if the installed kernel headers also provide them.
+ 
+-# The list of system calls is current as of Linux 5.4.
+-kernel 5.4
++# The list of system calls is current as of Linux 5.5.
++kernel 5.5
+ 
+ FAST_atomic_update
+ FAST_cmpxchg
+diff --git a/sysdeps/unix/sysv/linux/syscalls.list b/sysdeps/unix/sysv/linux/syscalls.list
+index 5f1352ad43..52e6dafc86 100644
+--- a/sysdeps/unix/sysv/linux/syscalls.list
++++ b/sysdeps/unix/sysv/linux/syscalls.list
+@@ -28,25 +28,24 @@ inotify_add_watch	EXTRA	inotify_add_watch	i:isi	inotify_add_watch
+ inotify_init	EXTRA	inotify_init	i:	inotify_init
+ inotify_init1	EXTRA	inotify_init1	i:I	inotify_init1
+ inotify_rm_watch	EXTRA	inotify_rm_watch	i:ii	inotify_rm_watch
+-ioperm		-	ioperm		i:iii	ioperm
++ioperm		-	ioperm		i:UUi	ioperm
+ iopl		-	iopl		i:i	iopl
+ klogctl		EXTRA	syslog		i:isi	klogctl
+ lchown		-	lchown		i:sii	__lchown	lchown
+-mincore		-	mincore		i:anV	mincore
+-mlock		-	mlock		i:bn	mlock
++mincore		-	mincore		i:aUV	mincore
++mlock		-	mlock		i:bU	mlock
+ mlockall	-	mlockall	i:i	mlockall
+-mount		EXTRA	mount		i:sssip	__mount	mount
+-mremap		EXTRA	mremap		b:ainip	__mremap	mremap
+-munlock		-	munlock		i:ai	munlock
++mount		EXTRA	mount		i:sssUp	__mount	mount
++mremap		EXTRA	mremap		b:aUUip	__mremap	mremap
++munlock		-	munlock		i:aU	munlock
+ munlockall	-	munlockall	i:	munlockall
+ nfsservctl	EXTRA	nfsservctl	i:ipp	__compat_nfsservctl	nfsservctl@GLIBC_2.0:GLIBC_2.28
+ pipe		-	pipe		i:f	__pipe		pipe
+ pipe2		-	pipe2		i:fi	__pipe2		pipe2
+ pivot_root	EXTRA	pivot_root	i:ss	pivot_root
+-prctl		EXTRA	prctl		i:iiiii	__prctl		prctl
+ query_module	EXTRA	query_module	i:sipip	__compat_query_module	query_module@GLIBC_2.0:GLIBC_2.23
+ quotactl	EXTRA	quotactl	i:isip	quotactl
+-remap_file_pages -	remap_file_pages i:piiii	__remap_file_pages remap_file_pages
++remap_file_pages -	remap_file_pages i:pUiUi	__remap_file_pages remap_file_pages
+ sched_getp	-	sched_getparam	i:ip	__sched_getparam	sched_getparam
+ sched_gets	-	sched_getscheduler	i:i	__sched_getscheduler	sched_getscheduler
+ sched_primax	-	sched_get_priority_max	i:i	__sched_get_priority_max	sched_get_priority_max
+@@ -55,8 +54,8 @@ sched_rr_gi	-	sched_rr_get_interval	i:ip	__sched_rr_get_interval	sched_rr_get_in
+ sched_setp	-	sched_setparam	i:ip	__sched_setparam	sched_setparam
+ sched_sets	-	sched_setscheduler	i:iip	__sched_setscheduler	sched_setscheduler
+ sched_yield	-	sched_yield	i:	__sched_yield	sched_yield
+-sendfile	-	sendfile	i:iipi	sendfile
+-sendfile64	-	sendfile64	i:iipi	sendfile64
++sendfile	-	sendfile	i:iipU	sendfile
++sendfile64	-	sendfile64	i:iipU	sendfile64
+ setfsgid	EXTRA	setfsgid	i:i	setfsgid
+ setfsuid	EXTRA	setfsuid	i:i	setfsuid
+ setpgid		-	setpgid		i:ii	__setpgid	setpgid
+@@ -73,19 +72,19 @@ chown		-	chown		i:sii	__libc_chown	__chown chown
+ fchownat	-	fchownat	i:isiii	fchownat
+ linkat		-	linkat		i:isisi	linkat
+ mkdirat		-	mkdirat		i:isi	mkdirat
+-readlinkat	-	readlinkat	i:issi	readlinkat
++readlinkat	-	readlinkat	i:issU	readlinkat
+ symlinkat	-	symlinkat	i:sis	symlinkat
+ unlinkat	-	unlinkat	i:isi	unlinkat
+ 
+-setxattr	-	setxattr	i:sspii	setxattr
+-lsetxattr	-	lsetxattr	i:sspii	lsetxattr
+-fsetxattr	-	fsetxattr	i:ispii	fsetxattr
+-getxattr	-	getxattr	i:sspi	getxattr
+-lgetxattr	-	lgetxattr	i:sspi	lgetxattr
+-fgetxattr	-	fgetxattr	i:ispi	fgetxattr
+-listxattr	-	listxattr	i:ssi	listxattr
+-llistxattr	-	llistxattr	i:ssi	llistxattr
+-flistxattr	-	flistxattr	i:isi	flistxattr
++setxattr	-	setxattr	i:sspUi	setxattr
++lsetxattr	-	lsetxattr	i:sspUi	lsetxattr
++fsetxattr	-	fsetxattr	i:ispUi	fsetxattr
++getxattr	-	getxattr	i:sspU	getxattr
++lgetxattr	-	lgetxattr	i:sspU	lgetxattr
++fgetxattr	-	fgetxattr	i:ispU	fgetxattr
++listxattr	-	listxattr	i:ssU	listxattr
++llistxattr	-	llistxattr	i:ssU	llistxattr
++flistxattr	-	flistxattr	i:isU	flistxattr
+ removexattr	-	removexattr	i:ss	removexattr
+ lremovexattr	-	lremovexattr	i:ss	lremovexattr
+ fremovexattr	-	fremovexattr	i:is	fremovexattr
+@@ -102,8 +101,6 @@ name_to_handle_at EXTRA	name_to_handle_at i:isppi name_to_handle_at
+ 
+ setns		EXTRA	setns		i:ii	setns
+ 
+-process_vm_readv EXTRA	process_vm_readv i:ipipii process_vm_readv
+-process_vm_writev EXTRA	process_vm_writev i:ipipii process_vm_writev
+ memfd_create    EXTRA	memfd_create	i:si    memfd_create
+ pkey_alloc	EXTRA	pkey_alloc	i:ii	pkey_alloc
+ pkey_free	EXTRA	pkey_free	i:i	pkey_free
+diff --git a/sysdeps/unix/sysv/linux/x86_64/sysdep.h b/sysdeps/unix/sysv/linux/x86_64/sysdep.h
+index c2eb37e575..c7f740a1df 100644
+--- a/sysdeps/unix/sysv/linux/x86_64/sysdep.h
++++ b/sysdeps/unix/sysv/linux/x86_64/sysdep.h
+@@ -61,13 +61,31 @@
+ #  define SYSCALL_ERROR_LABEL syscall_error
+ # endif
+ 
++/* PSEUDO and T_PSEUDO macros have 2 extra arguments for unsigned long
++   int arguments.  */
++# define PSEUDOS_HAVE_ULONG_INDICES 1
++
++# ifndef SYSCALL_ULONG_ARG_1
++#  define SYSCALL_ULONG_ARG_1 0
++#  define SYSCALL_ULONG_ARG_2 0
++# endif
++
+ # undef	PSEUDO
+-# define PSEUDO(name, syscall_name, args)				      \
+-  .text;								      \
+-  ENTRY (name)								      \
+-    DO_CALL (syscall_name, args);					      \
+-    cmpq $-4095, %rax;							      \
++# if SYSCALL_ULONG_ARG_1
++#  define PSEUDO(name, syscall_name, args, ulong_arg_1, ulong_arg_2) \
++  .text;							      \
++  ENTRY (name)							      \
++    DO_CALL (syscall_name, args, ulong_arg_1, ulong_arg_2);	      \
++    cmpq $-4095, %rax;						      \
+     jae SYSCALL_ERROR_LABEL
++# else
++#  define PSEUDO(name, syscall_name, args) \
++  .text;							      \
++  ENTRY (name)							      \
++    DO_CALL (syscall_name, args, 0, 0);				      \
++    cmpq $-4095, %rax;						      \
++    jae SYSCALL_ERROR_LABEL
++# endif
+ 
+ # undef	PSEUDO_END
+ # define PSEUDO_END(name)						      \
+@@ -75,10 +93,17 @@
+   END (name)
+ 
+ # undef	PSEUDO_NOERRNO
+-# define PSEUDO_NOERRNO(name, syscall_name, args) \
+-  .text;								      \
+-  ENTRY (name)								      \
+-    DO_CALL (syscall_name, args)
++# if SYSCALL_ULONG_ARG_1
++#  define PSEUDO_NOERRNO(name, syscall_name, args, ulong_arg_1, ulong_arg_2) \
++  .text;							      \
++  ENTRY (name)							      \
++    DO_CALL (syscall_name, args, ulong_arg_1, ulong_arg_2)
++# else
++#  define PSEUDO_NOERRNO(name, syscall_name, args) \
++  .text;							      \
++  ENTRY (name)							      \
++    DO_CALL (syscall_name, args, 0, 0)
++# endif
+ 
+ # undef	PSEUDO_END_NOERRNO
+ # define PSEUDO_END_NOERRNO(name) \
+@@ -87,11 +112,19 @@
+ # define ret_NOERRNO ret
+ 
+ # undef	PSEUDO_ERRVAL
+-# define PSEUDO_ERRVAL(name, syscall_name, args) \
+-  .text;								      \
+-  ENTRY (name)								      \
+-    DO_CALL (syscall_name, args);					      \
++# if SYSCALL_ULONG_ARG_1
++#  define PSEUDO_ERRVAL(name, syscall_name, args, ulong_arg_1, ulong_arg_2) \
++  .text;							\
++  ENTRY (name)							\
++    DO_CALL (syscall_name, args, ulong_arg_1, ulong_arg_2);	\
++    negq %rax
++# else
++#  define PSEUDO_ERRVAL(name, syscall_name, args) \
++  .text;							\
++  ENTRY (name)							\
++    DO_CALL (syscall_name, args, 0, 0);				\
+     negq %rax
++# endif
+ 
+ # undef	PSEUDO_END_ERRVAL
+ # define PSEUDO_END_ERRVAL(name) \
+@@ -163,8 +196,10 @@
+     Syscalls of more than 6 arguments are not supported.  */
+ 
+ # undef	DO_CALL
+-# define DO_CALL(syscall_name, args)		\
++# define DO_CALL(syscall_name, args, ulong_arg_1, ulong_arg_2) \
+     DOARGS_##args				\
++    ZERO_EXTEND_##ulong_arg_1			\
++    ZERO_EXTEND_##ulong_arg_2			\
+     movl $SYS_ify (syscall_name), %eax;		\
+     syscall;
+ 
+@@ -176,6 +211,14 @@
+ # define DOARGS_5 DOARGS_4
+ # define DOARGS_6 DOARGS_5
+ 
++# define ZERO_EXTEND_0 /* nothing */
++# define ZERO_EXTEND_1 /* nothing */
++# define ZERO_EXTEND_2 /* nothing */
++# define ZERO_EXTEND_3 /* nothing */
++# define ZERO_EXTEND_4 /* nothing */
++# define ZERO_EXTEND_5 /* nothing */
++# define ZERO_EXTEND_6 /* nothing */
++
+ #else	/* !__ASSEMBLER__ */
+ /* Define a macro which expands inline into the wrapper code for a system
+    call.  */
+@@ -210,12 +253,15 @@
+ /* Registers clobbered by syscall.  */
+ # define REGISTERS_CLOBBERED_BY_SYSCALL "cc", "r11", "cx"
+ 
+-/* Create a variable 'name' based on type 'X' to avoid explicit types.
+-   This is mainly used set use 64-bits arguments in x32.   */
+-#define TYPEFY(X, name) __typeof__ ((X) - (X)) name
+-/* Explicit cast the argument to avoid integer from pointer warning on
+-   x32.  */
+-#define ARGIFY(X) ((__typeof__ ((X) - (X))) (X))
++/* NB: This also works when X is an array.  For an array X,  type of
++   (X) - (X) is ptrdiff_t, which is signed, since size of ptrdiff_t
++   == size of pointer, cast is a NOP.   */
++#define TYPEFY1(X) __typeof__ ((X) - (X))
++/* Explicit cast the argument.  */
++#define ARGIFY(X) ((TYPEFY1 (X)) (X))
++/* Create a variable 'name' based on type of variable 'X' to avoid
++   explicit types.  */
++#define TYPEFY(X, name) __typeof__ (ARGIFY (X)) name
+ 
+ #undef INTERNAL_SYSCALL
+ #define INTERNAL_SYSCALL(name, err, nr, args...)			\
+diff --git a/sysdeps/unix/sysv/linux/x86_64/x32/sysdep.h b/sysdeps/unix/sysv/linux/x86_64/x32/sysdep.h
+index 5bf9eed80b..62e6f8fe11 100644
+--- a/sysdeps/unix/sysv/linux/x86_64/x32/sysdep.h
++++ b/sysdeps/unix/sysv/linux/x86_64/x32/sysdep.h
+@@ -26,4 +26,39 @@
+ #undef LO_HI_LONG
+ #define LO_HI_LONG(val) (val)
+ 
++#ifdef __ASSEMBLER__
++/* Zero-extend 32-bit unsigned long int arguments to 64 bits.  */
++# undef ZERO_EXTEND_1
++# define ZERO_EXTEND_1 movl %edi, %edi;
++# undef ZERO_EXTEND_2
++# define ZERO_EXTEND_2 movl %esi, %esi;
++# undef ZERO_EXTEND_3
++# define ZERO_EXTEND_3 movl %edx, %edx;
++# if SYSCALL_ULONG_ARG_1 == 4 || SYSCALL_ULONG_ARG_2 == 4
++#  undef DOARGS_4
++#  define DOARGS_4 movl %ecx, %r10d;
++# else
++#  undef ZERO_EXTEND_4
++#  define ZERO_EXTEND_4 movl %r10d, %r10d;
++# endif
++# undef ZERO_EXTEND_5
++# define ZERO_EXTEND_5 movl %r8d, %r8d;
++# undef ZERO_EXTEND_6
++# define ZERO_EXTEND_6 movl %r9d, %r9d;
++#else /* !__ASSEMBLER__ */
++# undef ARGIFY
++/* Enforce zero-extension for pointers and array system call arguments.
++   For integer types, extend to int64_t (the full register) using a
++   regular cast, resulting in zero or sign extension based on the
++   signedness of the original type.  */
++# define ARGIFY(X) \
++ ({									\
++    _Pragma ("GCC diagnostic push");					\
++    _Pragma ("GCC diagnostic ignored \"-Wpointer-to-int-cast\"");	\
++    (__builtin_classify_type (X) == 5					\
++     ? (uintptr_t) (X) : (int64_t) (X));				\
++    _Pragma ("GCC diagnostic pop");					\
++  })
++#endif	/* __ASSEMBLER__ */
++
+ #endif /* linux/x86_64/x32/sysdep.h */

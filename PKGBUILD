@@ -7,34 +7,32 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-glibc
-pkgver=2.30
-pkgrel=3.2
+pkgver=2.31
+pkgrel=3
 pkgdesc="GNU C Library (${_target})"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
 license=(GPL LGPL)
-depends=("${_target}-linux-api-headers>=5.3.1-2")
+depends=("${_target}-linux-api-headers>=5.6.11-1")
 makedepends=("${_target}-gcc-stage2" python gperf)
 provides=("${_target}-glibc-headers=${pkgver}" "${_target}-eglibc")
 conflicts=("${_target}-glibc-headers" "${_target}-eglibc")
 replaces=("${_target}-glibc-headers")
 options=(!buildflags !strip staticlibs)
-_commit=a6aaabd036d735a1b412f441bf6c706832655598
+_commit=18fdba553dd9b907e9812b90d2cea593f776058f
 #source=(git+https://sourceware.org/git/glibc.git#commit=$_commit
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig}
         glibc-${_commit}.patch
         sdt.h sdt-config.h
-        bz20338.patch
-        file-truncated-while-reading-soname-after-patchelf.patch)
+        bz20338.patch)
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
-md5sums=('2b1dbdf27b28620752956c061d62f60c'
+md5sums=('78a720f17412f3c3282be5a6f3363ec6'
          'SKIP'
-         '0cdb7529cb9e2965d7ffaa155e1fcf9d'
+         'f66fac93b299d3e3c60e6c8be56b039d'
          '91fec3b7e75510ae2ac42533aa2e695e'
          '680df504c683640b02ed4a805797c0b2'
-         '430673eccc78e52c249aa4b0f1786450'
-         '0820504d2e83ee15f74a656771361872')
+         '430673eccc78e52c249aa4b0f1786450')
 
 prepare() {
   mkdir -p glibc-build
@@ -62,6 +60,7 @@ build() {
       --disable-multi-arch
       --enable-stack-protector=strong
       --enable-stackguard-randomization
+      --enable-systemtap
       --disable-profile
       --disable-werror
   )
