@@ -1,24 +1,22 @@
 # $Id$
-# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=nextcloud-git
 _pkgname=nextcloud
-pkgver=13.0.0beta1.r182.gcec236f0af
+pkgver=19.0.0RC2.r21.gf80f2a22d7
 pkgrel=1
 pkgdesc="A cloud server to store your files centrally on a hardware controlled by you"
 arch=('any')
 url="https://nextcloud.com"
 license=('AGPL')
-depends=('php-gd')
 optdepends=('php-apache: to use the Apache web server'
             'php-sqlite: to use the SQLite database backend'
             'php-pgsql: to use the PostgreSQL database backend'
             'php-ldap: LDAP authentication'
             'php-intl'
             'php-apcu'
-            'php-xcache'
             'mariadb: to use the MySQL database backend'
             'smbclient: to mount SAMBA shares'
             'php-mcrypt'
@@ -59,7 +57,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '55b892adb86a67c2fa12d79f0980c6aea75aed5c6f6f78f2c2b5e5575a012067'
+            '30a8ad62b0dc9523ca7f0387b1f0483d196c1e011ec7e3a5b98e7d33c721d4bf'
             'd084cd6423c03f98087884b3c7b81f9510d1bea6c518860b64787a7f976cf0d3')
 
 pkgver() {
@@ -86,6 +84,8 @@ prepare() {
 }
 
 package() {
+    depends=('php>=7.4.0' 'php<7.5.0' 'php-gd')
+
     # install project
     install -d "$pkgdir"/usr/share/webapps/
     cp -R "$srcdir"/server "$pkgdir"/usr/share/webapps/${_pkgname}
