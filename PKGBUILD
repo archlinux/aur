@@ -1,7 +1,7 @@
 # Maintainer: theguy147 <yakamoz147 (at) protonmail (dot) com>
 pkgname=hal-git
-pkgver=v2.0.0.r139.gc906c8fc
-pkgrel=2
+pkgver=v2.0.0.r144.gd0c81a07
+pkgrel=1
 pkgdesc='The Hardware Analyzer for Hardware Reversing from emsec. (git version)'
 arch=('x86_64')
 url='https://github.com/emsec/hal'

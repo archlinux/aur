@@ -1,7 +1,7 @@
 pkgbase = hal-git
 	pkgdesc = The Hardware Analyzer for Hardware Reversing from emsec. (git version)
-	pkgver = v2.0.0.r139.gc906c8fc
-	pkgrel = 2
+	pkgver = v2.0.0.r144.gd0c81a07
+	pkgrel = 1
 	url = https://github.com/emsec/hal
 	arch = x86_64
 	license = MIT
