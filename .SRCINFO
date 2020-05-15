@@ -4,10 +4,11 @@ pkgbase = quick-skeleton-bin
 	pkgrel = 1
 	url = https://github.com/arthrp/quick-skeleton
 	arch = x86_64
-	license = GPL-3.0
+	license = GPL3
+	depends = gcc-libs
 	provides = quick-skeleton
-	source = https://github.com/arthrp/quick-skeleton/releases/download/v0.4.7/quick-skeleton
-	md5sums = e1e83547767b6228ecf6dbd4a042ac81
+	source = quick-skeleton-bin-0.4.7::https://github.com/arthrp/quick-skeleton/releases/download/v0.4.7/quick-skeleton
+	sha256sums = 86bf0622f2d2482d1d972ad25016f52b9a100bfa69de22bb369fbf91da2e3d24
 
 pkgname = quick-skeleton-bin
 
