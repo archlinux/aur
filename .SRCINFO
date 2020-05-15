@@ -4,8 +4,9 @@ pkgbase = sshesame-git
 	pkgrel = 2
 	url = https://github.com/jaksi/sshesame
 	arch = x86_64
-	license = Apache-2.0
-	makedepends = go
+	license = Apache
+	makedepends = go-pie
+	depends = glibc
 	source = git+https://github.com/jaksi/sshesame
 	md5sums = SKIP
 

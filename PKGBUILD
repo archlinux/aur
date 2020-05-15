@@ -6,8 +6,9 @@ pkgrel=2
 pkgdesc="A fake SSH server that lets everyone in and logs their activity"
 arch=('x86_64')
 url='https://github.com/jaksi/sshesame'
-license=('Apache-2.0')
-makedepends=('go')
+license=('Apache')
+depends=('glibc')
+makedepends=('go-pie')
 source=("git+https://github.com/jaksi/sshesame")
 md5sums=('SKIP')
 
@@ -34,5 +35,5 @@ build() {
 package() {
   cd "${srcdir}/sshesame"
   install -Dm755 sshesame-bin "${pkgdir}/usr/bin/sshesame"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/sshesame/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
