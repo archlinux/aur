@@ -1,4 +1,4 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: robertfoster
 
 pkgname=torrential
@@ -9,7 +9,7 @@ pkgdesc="A simple torrent client for elementary OS"
 url="https://github.com/davidmhewitt/torrential"
 license=(GPL2)
 depends=(libgranite.so libunity libevent libnatpmp libb64 dht miniupnpc libutp)
-makedepends=(git cmake vala-0.42)
+makedepends=(git cmake vala0.42)
 source=("git+https://github.com/davidmhewitt/torrential.git#tag=${pkgver}"
         "torrential-transmission::git+https://github.com/davidmhewitt/transmission.git#branch=2.9x-torrential")
 md5sums=('SKIP'
