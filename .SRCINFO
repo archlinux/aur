@@ -1,10 +1,10 @@
 pkgbase = weboob-git
 	pkgdesc = Core library and modules for Web Outside of Browsers
-	pkgver = 2.0.r315.g0f6bc340c
+	pkgver = 2.0.r492.gea2752d36
 	pkgrel = 1
-	url = https://weboob.org/
+	url = https://weboob.org
 	arch = any
-	license = LGPL-3.0+
+	license = LGPL3
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python-lxml

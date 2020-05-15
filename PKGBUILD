@@ -3,23 +3,23 @@
 # Contributor: ianux <ianux@free.fr>
 
 pkgname=weboob-git
-pkgver=2.0.r315.g0f6bc340c
+pkgver=2.0.r492.gea2752d36
 pkgrel=1
 pkgdesc="Core library and modules for Web Outside of Browsers"
 arch=(any)
-url="https://weboob.org/"
-license=('LGPL-3.0+')
+url="https://weboob.org"
+license=('LGPL3')
 depends=('python-lxml'
-	     'python-cssselect'
-	     'python-requests'
-	     'python-dateutil'
-	     'python-yaml'
-	     'python-html2text'
-	     'python-six'
-	     'python-unidecode'
-	     'python-pillow'
-	     'python-babel'
-	     'python-simplejson')
+		     'python-cssselect'
+		     'python-requests'
+		     'python-dateutil'
+		     'python-yaml'
+		     'python-html2text'
+		     'python-six'
+		     'python-unidecode'
+		     'python-pillow'
+		     'python-babel'
+		     'python-simplejson')
 optdepends=('python-prettytable: CLI output formatting'
     		'python-feedparser: required by some modules')
 makedepends=('python-setuptools' 'git')
