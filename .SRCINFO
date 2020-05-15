@@ -1,13 +1,13 @@
 pkgbase = utask-bin
-	pkgdesc = µTask is an automation engine that models and executes business processes declared in yaml
-	pkgver = 1.5.0
+	pkgdesc = An automation engine that models and executes business processes declared in yaml
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/ovh/utask
 	arch = x86_64
-	license = BSD-3-Clause
+	license = BSD
 	provides = utask
-	source = https://github.com/ovh/utask/releases/download/v1.5.0/utask_Linux_x86_64.tar.gz
-	sha256sums = 869eb19b4c04561df42f8f87c9c9b2d8c5ed2bfda0c082ab07d8674c02fff4bf
+	source = utask-bin-1.6.0.tar.gz::https://github.com/ovh/utask/releases/download/v1.6.0/utask_Linux_x86_64.tar.gz
+	sha256sums = 8764ba0d34954e88443251971817afa40d059213ab4427864585a588c33ff088
 
 pkgname = utask-bin
 
