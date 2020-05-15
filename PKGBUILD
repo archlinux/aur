@@ -4,12 +4,11 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 _svt_hevc_ver='1.4.3'
-_svt_av1_ver='0.8.2'
-_svt_vp9_ver='0.1.0'
+_svt_av1_ver='0.8.3'
 
 pkgname=ffmpeg-amd-full
 pkgver=4.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -21,7 +20,7 @@ depends=(
         'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi'
         'libgme' 'gsm' 'libiec61883' 'libilbc' 'jack' 'kvazaar' 'lensfun' 'libmodplug'
         'lame' 'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio' 'librsvg' 'rubberband'
-        'rtmpdump' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'svt-hevc' 'svt-av1' 'svt-vp9'
+        'rtmpdump' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'svt-hevc' 'svt-av1'
         'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'vmaf'
         'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'x264' 'x265' 'libxcb' 'xvidcore'
         'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz' 'libmysofa' 'openal' 'ocl-icd'
@@ -45,7 +44,6 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "ffmpeg-full-add-svt-hevc-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         "ffmpeg-full-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "ffmpeg-full-add-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/1fdb3c9952187736efc831257454677521157560/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch"
-        "ffmpeg-full-add-svt-vp9-${_svt_vp9_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/v${_svt_vp9_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-vp9-with-svt-hevc-av1.patch"
         'ffmpeg-full-add-decklink-11.5-support.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/f32f9231dd4f74d9f95eef575b838bdc3e06a234'
         'LICENSE')
 sha256sums=('cb754255ab0ee2ea5f66f8850e1bd6ad5cac1cd855d0a2f4990fb8c668b0d29c'
@@ -59,13 +57,11 @@ sha256sums=('cb754255ab0ee2ea5f66f8850e1bd6ad5cac1cd855d0a2f4990fb8c668b0d29c'
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
 prepare() {
-    # add svt codec support for hevc, av1 and vp9
-    rm -f ffmpeg-${pkgver}/libavcodec/libsvt_{hevc,av1,vp9}.c
-    sed -i 's/eb_init_handle/svt_av1_enc_init_handle/' "ffmpeg-full-add-svt-vp9-${_svt_vp9_ver}.patch"
+    # add svt codec support for hevc and av1
+    rm -f "ffmpeg-${pkgver}/libavcodec/"libsvt_{hevc,av1}.c
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/ffmpeg-full-add-svt-hevc-${_svt_hevc_ver}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/ffmpeg-full-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/ffmpeg-full-add-svt-av1-${_svt_av1_ver}.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/ffmpeg-full-add-svt-vp9-${_svt_vp9_ver}.patch"
     
     # add decklink-sdk 11.5 support
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/ffmpeg-full-add-decklink-11.5-support.patch"
@@ -147,7 +143,6 @@ build() {
         --enable-libssh \
         --enable-libsvthevc \
         --enable-libsvtav1 \
-        --enable-libsvtvp9 \
         --enable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
