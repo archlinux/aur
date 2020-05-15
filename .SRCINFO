@@ -5,9 +5,10 @@ pkgbase = shell2http-bin
 	url = https://github.com/msoap/shell2http
 	arch = x86_64
 	license = MIT
+	depends = glibc
 	provides = shell2http
-	source = https://github.com/msoap/shell2http/releases/download/1.13/shell2http-1.13.linux.amd64.tar.gz
-	md5sums = 52a2274082ad504c9d0204dfd08d2324
+	source = shell2http-bin-1.13.tar.gz::https://github.com/msoap/shell2http/releases/download/1.13/shell2http-1.13.linux.amd64.tar.gz
+	sha256sums = 3da989b4022603e4a792cbeb7f356fe72a59a185d6a40adab48b656178888d4d
 
 pkgname = shell2http-bin
 
