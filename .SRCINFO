@@ -1,10 +1,11 @@
 pkgbase = helm-2to3
 	pkgdesc = Migrates and cleans up Helm v2 configuration and releases in-place to Helm v3
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/helm/helm-2to3
 	install = helm-2to3.install
 	arch = x86_64
+	arch = aarch64
 	license = Apache
 	makedepends = go
 	depends = helm
