@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-sound-output-device-chooser-git
 _gitname=gse-sound-output-device-chooser
-pkgver=r122.bdc28ce
+pkgver=r152.d80c34b
 pkgrel=1
 pkgdesc="Enable selection of sound source and sink devices."
 arch=('any')
