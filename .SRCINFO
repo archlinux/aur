@@ -1,0 +1,19 @@
+pkgbase = mbed-os5
+	pkgdesc = Source code for Arm Mbed OS v5
+	pkgver = 5.15.3
+	pkgrel = 1
+	url = https://os.mbed.com
+	install = mbed-os5.install
+	arch = any
+	license = Apache
+	provides = mbed-os
+	options = !strip
+	options = libtool
+	options = staticlibs
+	source = mbed-os5-5.15.3.tar.gz::https://github.com/ARMmbed/mbed-os/archive/mbed-os-5.15.3.tar.gz
+	source = mbed-os5.install
+	sha256sums = d7d3916e2dc106a6edae5cecde3fbf618862412548f0d59afb203c1c19cdebac
+	sha256sums = 7a2c1db6dc9c251ecf687b4ecedb611f8c3732022f195663df57f85a3d769ed8
+
+pkgname = mbed-os5
+

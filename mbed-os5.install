@@ -1,0 +1,4 @@
+post_install() {
+  echo 'Source code for Arm MBed v5 has been installed in:'
+  echo '/usr/src/mbed-os5/'
+}
