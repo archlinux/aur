@@ -15,11 +15,11 @@ _replacesoldkernels=() # '%' gets replaced with kernel suffix
 _replacesoldmodules=() # '%' gets replaced with kernel suffix
 
 pkgbase=linux-libre
-pkgver=5.6.7
+pkgver=5.6.12
 pkgrel=1
 pkgdesc='Linux-libre'
-rcnver=5.6.4
-rcnrel=armv7-x11
+rcnver=5.6.10
+rcnrel=armv7-x12
 url='https://linux-libre.fsfla.org/'
 arch=(i686 x86_64 armv7h)
 license=(GPL2)
@@ -48,6 +48,7 @@ source=(
   # extracted patches from Arch Linux kernel sources
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   sphinx-workaround.patch
+  fix-kvm-build-with-gcc10.patch
 )
 source_armv7h=(
   # RCN patch (CM3 firmware deblobbed and bloatware removed)
@@ -71,7 +72,7 @@ validpgpkeys=(
 )
 sha512sums=('df473a228ca2bbefbcc630aee710c78c83083269b4939adf698a9adf3a5760391b24529704bfc0b108bc67054ebed047746810e1b41be1fd9019a911a563114d'
             'SKIP'
-            '0c01eabfbd10fb5aeabcb60c9ca362576bd7b33a31b841704b3b4d3c650a2a681b208ffdeb82673286b0e8449858d399cc80f04acafa7d27ee686f2880471e6d'
+            '5214c42e6ccf255b0a7effd0b980a0bbfdb0d68a28ce0c56f7a3df5b3713bd83df7da1c424a79daa34101cfbfe260a14cfa2cca8b77a43b51b723f1142046d63'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -79,8 +80,8 @@ sha512sums=('df473a228ca2bbefbcc630aee710c78c83083269b4939adf698a9adf3a5760391b2
             'SKIP'
             '267295aa0cea65684968420c68b32f1a66a22d018b9d2b2c1ef14267bcf4cb68aaf7099d073cbfefe6c25c8608bdcbbd45f7ac8893fdcecbf1e621abdfe9ecc1'
             'SKIP'
-            'da0deff6865517e094c229a0b6709d15644c170105168bdc14d0dee372547255439d91a79ff8ba9404ae80acd7e0d9c0d4db9685e3e0207c870dd1a66cf1469b'
-            'd916c171df8341f2d16a86a0b2840f6336e000fc43457410c558928d256c4828820036c5ca9c9695ecf340c53f4b4e27ce5ffd3f28ac588dddb8b18f0d6f3ab1'
+            'fd44600db2c6e6fdf4603c74e2e15c28d543d1c276cba94017fece4ed0b61ad256484534e106bfea647dbfd5997a822477abec079fccc450114e1edf813caaed'
+            'c8ddefed6ece0f222be711b6006879c351b743f79f5ee5c58ddf823ad8bc72c815b7c56a085fa9d1a13f022d3180908ab80d34fa0f016b5c81e3f4ce545e3c67'
             'e4b0210bba48dd432751a7a8d41e3b5ae6f11d05f6551d2987a62011718a3ca706754da02303fe819e064868120e5f963fcf1e07601ff84aa22b9500fce32a4b'
             '53103bf55b957b657039510527df0df01279dec59cda115a4d6454e4135025d4546167fa30bdc99107f232561c1e096d8328609ab5a876cf7017176f92ad3e0b'
             '167bc73c6c1c63931806238905dc44c7d87c5a5c0f6293159f2133dfe717fb44081018d810675716d1605ec7dff5e8333b87b19e09e2de21d0448e447437873b'
@@ -89,8 +90,9 @@ sha512sums=('df473a228ca2bbefbcc630aee710c78c83083269b4939adf698a9adf3a5760391b2
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
             'f340f8beaf2df0970ed592360da8d625ba6be27ed4a0773ff8a6b5dc638b0e7b73e575d3e154c328999dfe9ebf4f18739adade8ddfa89472845318885f9da1c0'
-            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be')
-sha512sums_armv7h=('8f9f0d9da7d2b279a13403a90e43cf3782c1b1711ad7bc758ba3ad717afa1a62fa1ae5519015561a0c632362ed89036d5b5451dd7e1d93f3033c223d84b7cab4'
+            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
+            '0336506580c45b6a5a22e1fc534f6097ecd97b910250d5c7bc4feb4b086e5bb1e4fec546733945e89b87fb89d312ae2bc554302e4b8c5a44b5dfff082218fba3')
+sha512sums_armv7h=('6e49c501bf866ab156d79aa66149ad5599e0976d2253f32096eeba1c94d1a7ff3fb4bdf51c029b71e73f3c56539cafeaabd9fd343a93ade7632dc76343109784'
                    'SKIP'
                    'd788dd09cf98e0b014faeba75633c0db0cda7bc26817f09520cafc763ddad25e5c446b3fc19ba22a9abefcb02a4f3d187808f11caba77420b473f88a3f0a281e'
                    '2010c50048b60f57b4547fdd770a53a26e5d60a40e73c26b4f490e86d0753b6840eade917cb603ef8a7048a175019a921629489e6b9bbce2cc08bde18365934c'
@@ -325,7 +327,7 @@ _package-chromebook() {
   provides=("${_replacesarchkernel[@]/%/-armv7-chromebook=$pkgver}")
   conflicts=("${_replacesarchkernel[@]/%/-armv7-chromebook}" "${_replacesoldkernels[@]/%/-armv7-chromebook}")
   replaces=("${_replacesarchkernel[@]/%/-armv7-chromebook}" "${_replacesoldkernels[@]/%/-armv7-chromebook}")
-  install=linux-chromebook.install
+  install=linux-libre-chromebook.install
 
   cd $_srcname
 
