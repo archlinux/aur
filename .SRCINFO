@@ -1,16 +1,15 @@
 pkgbase = gist-lite
 	pkgdesc = Bash script for gist management
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://gist.github.com/b0d2e7e67aa50298fdf8111ae7466b56
 	install = msg.install
 	arch = any
 	license = GPL3
 	depends = git
-	depends = coreutils
 	depends = python
-	source = https://codeload.github.com/gist/b0d2e7e67aa50298fdf8111ae7466b56/tar.gz/v0.4
-	md5sums = 5c410fa9b6eabab7b28bb1bab215dd81
+	source = https://codeload.github.com/gist/b0d2e7e67aa50298fdf8111ae7466b56/tar.gz/v0.5
+	md5sums = 4b0cc6fefa445f4e95e5741eb447f535
 
 pkgname = gist-lite
 
