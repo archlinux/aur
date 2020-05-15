@@ -4,7 +4,7 @@ pkgbase=linux-amd-raven
 _srcname=linux
 gitver=v5.4.41
 pkgver=5.4.v.41
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -25,10 +25,13 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 	'disable_proc_ac.patch'
 	# i2c write rework patch
 	'timerrework.patch'
+        # stackprotection fix
+        'stackcanary.patch'
+
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '7971dcdb001c9a13e0f5b29af30ba382cf7d7e0fd13328c6c38297a4b2708ce0'
+            '924ab9d27310b353437482941b214e2cb91c85de00b41cff261d24d8af29f5aa'
             #.preset file
             '0ac0cf410b0f3eeaa07d41505613e118ea59e01144e905f2dc0a808379f87e87'
             #patch file
@@ -37,6 +40,9 @@ sha256sums=('SKIP'
             'f412d719977af563ca74b41b218977e49672ac93ab7cc96a0833b66abbfb8b10'
             #i2c write rework patchfile
             '44e739d674b0909d3dd1edb29ad9c4ab6543c32f488cbbcc30ba0fdc2bf902dc'
+            #stackprotection fix
+            '74ac43843b60805cc21cdadf6f4768281a61106107154f6830f26d6c142343e6'
+
 )
 
 _kernelname=${pkgbase#linux}
@@ -67,6 +73,9 @@ prepare() {
 
   # Implement i2c write retimers patch
   git apply ../timerrework.patch
+
+  # Fix the source for stack canaries to work
+  git apply ../stackcanary.patch
 
   # get kernel version
   yes "" | make prepare
