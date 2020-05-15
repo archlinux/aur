@@ -4,12 +4,12 @@ _rockname=vstruct
 pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=2.1.1
 _rockrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lua library to manipulate binary data'
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/ToxicFrog/$_rockname"
 license=('MIT')
-makedepends=('luarocks')
+makedepends=('lua' 'lua52' 'lua51' 'luarocks')
 source=("$_rockname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('029ae887fc3c59279f378a499741811976d90f9a806569a42f4de80ad349f333')
 
