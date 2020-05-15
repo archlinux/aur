@@ -1,6 +1,6 @@
 # Maintainer: Rustem B. <rustemb@systemli.org>
 pkgname=bitfetch
-pkgver=2.3
+pkgver=3.0
 pkgrel=1
 pkgdesc="Simple fetch written in C."
 arch=(any)
@@ -13,7 +13,7 @@ checkdepends=()
 optdepends=()
 provides=(bitfetch)
 source=("https://gitlab.com/bit9tream/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=("74006791d5b5b42e71ac2cc4bcc05db5")
+md5sums=('a4abdefd02de4703ed231d49390513b6')
 
 # for this time Artix users can set ID=artix to build it for Artix Linux
 build() {
