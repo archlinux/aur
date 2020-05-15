@@ -5,19 +5,20 @@ pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=2.0.0
 _rockrel=1
 __rockrel=0
-pkgrel=7
+pkgrel=8
 pkgdesc='Elegant Lua unit testing'
-arch=('x86_64' 'i686')
+arch=('any')
 url="https://olivinelabs.com/$_rockname"
 license=('MIT')
 _lua_deps=('cliargs' 'dkjson' 'filesystem' 'luassert' 'mediator' 'penlight' 'say' 'system' 'term')
-makedepends=('luarocks')
+makedepends=('lua' 'lua52' 'lua51' 'luarocks')
 source=("${_rockname}-${pkgver}.tar.gz::https://github.com/Olivine-Labs/$_rockname/archive/v$pkgver.tar.gz")
 sha256sums=('fda34db8cd10142d2a88d6df638a7d0874c295fd2bd6338c745cc546dc5847df')
 
 _package_helper() {
   cd "$_rockname-$pkgver"
-  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "rockspecs/$_rockname-$pkgver-$__rockrel.rockspec"
+  luarocks --lua-version=$1 --tree="$pkgdir/usr/" \
+    make --deps-mode=none --no-manifest "rockspecs/$_rockname-$pkgver-$__rockrel.rockspec"
   find "$pkgdir/usr/bin" -type f -execdir sed -i -e "s#$pkgdir##" {} \;
 }
 
