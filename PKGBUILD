@@ -10,10 +10,13 @@ arch=('x86_64')
 url="https://github.com/JoshuaRLi/vape"
 license=('MIT')
 provides=('vape')
-options=(!strip)
-source=("${url}/releases/download/v${pkgver}/vape-x86_64-unknown-linux-gnu")
-sha512sums=('7ca3d1c0eda41187fe4e92bb5b27b435e1f4af7187179211e91175582c1cb62bc9506f9a7026b323951c862f82dee97ae82a43f40986998e343d3a305901dd5f')
+options=('!strip')
+source=("${pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/vape-x86_64-unknown-linux-gnu"
+				'LICENSE::https://github.com/joshuarli/vape/raw/master/LICENSE')
+sha256sums=('7a557fcd648d2e52c3320b2c43ce5c56afa6438e69284e72509238c25a90f20f'
+						'3ceac5a0c3f1e5311aeb9eb7c8ce06ace3f5031066ac61a433c8e7e090406fca')
 
 package () {
-  install -Dm755 "$srcdir"/vape-x86_64-unknown-linux-gnu "${pkgdir}/usr/bin/vape"
+  install -Dm755 "$srcdir"/${pkgname}-${pkgver} "${pkgdir}/usr/bin/vape"
+  install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
