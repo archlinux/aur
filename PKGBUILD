@@ -2,7 +2,7 @@
 _pkgname=visqol
 pkgname="$_pkgname-git"
 pkgver=r8.30abce1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="ViSQOL (Virtual Speech Quality Objective Listener) is an objective, full-reference metric for perceived audio quality"
 arch=('x86_64')
@@ -40,4 +40,7 @@ package() {
 
     install -d "$pkgdir/usr/bin"
     install -t "$pkgdir/usr/bin" bazel-bin/visqol 
+
+    install -d "$pkgdir/usr/share/visqol/model"
+    install -t "$pkgdir/usr/share/visqol/model" model/*
 }
