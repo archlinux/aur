@@ -30,7 +30,7 @@ main = do
     contents <- readFile file
     let patched = patchPkgbuild version contents 
     when (length patched > 0) $ writeFile file patched
-    callCommand "rm *.tar *.gz"
+    callCommand "rm -vf *.tar *.gz"
     callCommand "updpkgsums"
     callCommand "makepkg --printsrcinfo > .SRCINFO"
 
