@@ -13,7 +13,7 @@ makedepends=('ncurses' 'libxext' 'git')
 
 source=('git://github.com/null2264/st-zi'
 	'st.desktop')
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'SKIP')
 provides=('st')
 conflicts=('st')
 

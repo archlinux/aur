@@ -16,6 +16,7 @@ pkgbase = st-ziro-git
 	source = git://github.com/null2264/st-zi
 	source = st.desktop
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = st-ziro-git
 
