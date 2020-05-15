@@ -7,18 +7,19 @@ _pkgname=lua-$_rockname
 pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=41.2.2
 _rockrel=1
-pkgrel=3
+pkgrel=4
 pkgdesc='Library of modules for common programming tasks'
 arch=('i686' 'x86_64')
-url="https://github.com/lua-stdlib/$_pkgname/"
+url="https://github.com/$_pkgname/$_pkgname/"
 license=('MIT')
-makedepends=('luarocks')
-source=("$_rockname-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/release-v$pkgver.tar.gz")
+makedepends=('lua' 'lua52' 'lua51' 'luarocks')
+source=("$_rockname-$pkgver.tar.gz::$url/archive/release-v$pkgver.tar.gz")
 sha256sums=('42ca25ddcde59f608694a3335d24919a4df4cf6f14ea46c75249561a16c84711')
 
 _package_helper() {
   cd "$_pkgname-release-v$pkgver"
-  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
+    make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
 }
 
 package_lua-stdlib() {
