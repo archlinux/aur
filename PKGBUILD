@@ -6,34 +6,32 @@
 
 _target="arm-linux-gnueabihf"
 pkgname="${_target}-gcc"
-pkgver=9.2.0
-_majorver=${pkgver:0:1}
+pkgver=10.1.0
+_majorver=${pkgver%%.*}
 _islver=0.21
-pkgrel=4
+pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=(i686 x86_64)
 license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
-depends=("${_target}-binutils>=2.33.1-2.1" "${_target}-glibc>=2.30-3" libmpc elfutils zlib)
+depends=("${_target}-binutils>=2.34-3" "${_target}-glibc>=2.31-3" libmpc elfutils zlib)
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs !distcc !strip)
 conflicts=("${_target}-gcc-stage1" "${_target}-gcc-stage2")
 replaces=("${_target}-gcc-stage1" "${_target}-gcc-stage2")
 provides=("${_target}-gcc-stage1=${pkgver}" "${_target}-gcc-stage2=${pkgver}")
 #source=(https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz{,.sig}
-source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
+source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz{,.sig}
+        http://isl.gforge.inria.fr/isl-${_islver}.tar.xz
+        fs64270.patch)
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
-sha256sums=('ea6ef08f121239da5695f76c9b33637a118dcf63e24164422231917fa61fb206'
+sha256sums=('b6898a23844b656f1b68691c5c012036c2e694ac4b53a8918d4712ad876e7ea2'
             'SKIP'
-            'd18ca11f8ad1a39ab6d03d3dcb3365ab416720fcb65b42d69f34f51bf0a0e859')
-
-_svnrev=264010
-_svnurl=svn://gcc.gnu.org/svn/gcc/branches/gcc-${_majorver}-branch
-_libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
+            '777058852a3db9500954361e294881214f6ecd4b594c00da5eee974cd6a54960'
+            '1ef190ed4562c4db8c1196952616cd201cfdd788b65f302ac2cc4dabb4d72cee')
 
 prepare() {
   [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
@@ -47,6 +45,10 @@ prepare() {
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+
+  # Turn off SSP for nostdlib|nodefaultlibs|ffreestanding
+  # https://bugs.archlinux.org/task/64270
+  patch -p1 -i "$srcdir/fs64270.patch"
 
   mkdir -p "$srcdir/gcc-build"
 }
@@ -66,30 +68,31 @@ build() {
       --with-build-sysroot=/usr/${_target} \
       --with-as=/usr/bin/${_target}-as \
       --with-ld=/usr/bin/${_target}-ld \
-      --libdir=/usr/lib --libexecdir=/usr/lib \
+      --libdir=/usr/lib \
+      --libexecdir=/usr/lib \
       --disable-nls \
       --enable-languages=c,c++ \
-      --enable-shared \
-      --enable-threads=posix \
-      --with-system-zlib \
       --with-isl \
+      --with-linker-hash-style=gnu \
+      --with-system-zlib \
       --enable-__cxa_atexit \
-      --disable-libunwind-exceptions \
+      --enable-checking=release \
       --enable-clocale=gnu \
-      --disable-libstdcxx-pch \
-      --disable-libssp \
+      --enable-default-pie \
+      --enable-default-ssp \
+      --enable-gnu-indirect-function \
       --enable-gnu-unique-object \
+      --enable-install-libiberty \
       --enable-linker-build-id \
       --enable-lto \
       --enable-plugin \
-      --enable-install-libiberty \
-      --with-linker-hash-style=gnu \
-      --enable-gnu-indirect-function \
+      --enable-shared \
+      --enable-threads=posix \
+      --disable-libssp \
+      --disable-libstdcxx-pch \
+      --disable-libunwind-exceptions \
       --disable-multilib \
       --disable-werror \
-      --enable-checking=release \
-      --enable-default-pie \
-      --enable-default-ssp \
       --target=${_target} \
       --host=${CHOST} \
       --build=${CHOST} \
