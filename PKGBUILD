@@ -16,8 +16,8 @@
 
 
 pkgname=protonmail-bridge-nogui
-pkgver=1.2.6
-pkgrel=4
+pkgver=1.2.7
+pkgrel=1
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
 url="https://www.protonmail.com/bridge"
@@ -37,7 +37,6 @@ sha256sums=('SKIP'
 
 prepare() {
     cd "${srcdir}"/proton-bridge/
-    echo -e 'build-nogui:\n\tgo build ${BUILD_FLAGS_NOGUI} -o ${EXE} cmd/Desktop-Bridge/main.go' >> Makefile
     export PATH=$PATH:$(go env GOPATH)/bin/
     make clean
     make build-nogui
@@ -48,5 +47,5 @@ package() {
     cd "${srcdir}"/proton-bridge/
     install -Dm644 ./LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
     install -Dm644 ./Changelog.md -t "${pkgdir}"/usr/share/doc/"${pkgbame}"/
-    install -Dm755 ./proton-bridge "${pkgdir}"/usr/bin/protonmail-bridge
+    install -Dm755 ./Desktop-Bridge "${pkgdir}"/usr/bin/protonmail-bridge
 }
