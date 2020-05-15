@@ -25,7 +25,7 @@ pkgbase = distccd-x86_64
 	sha256sums_armv7h = SKIP
 	source_aarch64 = http://repo-ck.com/PKG_source/x-tools86-aarch64-20200514.tar.zst
 	source_aarch64 = http://repo-ck.com/PKG_source/x-tools86-aarch64-20200514.tar.zst.sig
-	sha256sums_aarch64 = d4607fb17729d76cf917e8396d7fa4fd5ae0569f4a1df8116f4051223a3c2154
+	sha256sums_aarch64 = df626a7d828ff99e4a537a484145a992a29dbf60f02e232e1448be36818b3b26
 	sha256sums_aarch64 = SKIP
 
 pkgname = distccd-x86_64
