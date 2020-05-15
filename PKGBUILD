@@ -2,7 +2,7 @@
 
 pkgname='lego'
 pkgver=v3.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Lets Encrypt client and ACME library written in Go'
 url='https://go-acme.github.io/lego/'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -11,29 +11,42 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 
 depends=()
-makedepends=()
+# makedepends=('git')
+makedepends=('git' 'go>=1.14')
 
 _url='https://github.com/go-acme/lego'
-_basedownloadurl="${_url}/releases/download/${pkgver}"
-_basearchive="${pkgname}_${pkgver}_linux"
 
-source_x86_64=("${_basedownloadurl}/${_basearchive}_amd64.tar.gz")
-sha256sums_x86_64=('d2328f3e087c1465c2582d9d38c992cdab460a24a7a89d3260af83cd143a8b39')
+source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
-source_i686=("${_basedownloadurl}/${_basearchive}_386.tar.gz")
-sha256sums_i686=('5b2f76ff51f14e77ddc911feb3f64b158e0f3ff1abadfaa75dd9b3489db9f673')
+prepare() {
+  # setup env variables & dirs
+  mkdir -p "${srcdir}/go"
+  export GOPATH="${srcdir}/go"
+  export GO111MODULE=on
 
-source_armv7h=("${_basedownloadurl}/${_basearchive}_armv7.tar.gz")
-sha256sums_armv7h=('5917ca09857dea6417182a9aecdab7d912a8e8e8c01897ae4bf7f58adbe9fc90')
+  cd "${srcdir}/${pkgname}-${pkgver#v}"
+  
+  # download dependencies
+  go mod download
+}
 
-source_aarch64=("${_basedownloadurl}/${_basearchive}_arm64.tar.gz")
-sha256sums_aarch64=('18deae2011b2882dfbde334069c1e47e92062a56c1245ac051fae0803f39af4d')
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver#v}"
+
+  # the make command doesn't work because the command use git to build the version.
+  # make build
+
+  go build -v -trimpath -ldflags "-X \"main.version=${pkgver}-src\"" -o dist/lego ./cmd/lego/
+
+  go clean -modcache
+}
 
 package() {
 	# Bin
 	rm -f "${pkgdir}/usr/bin/${pkgname}"
-	install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "${srcdir}/${pkgname}-${pkgver#v}/dist/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
 	# License
-	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/${pkgname}-${pkgver#v}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
