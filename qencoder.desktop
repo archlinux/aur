@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=qencoder
+GenericName=Video Encoder
+Comment=Open Codec Video Encoder
+Exec=qencoder
+Icon=qencoder
+Terminal=false
+Type=Application
+Categories=Qt;Video;
+MimeType=application/x-extension-mp4;application/x-matroska;video/mp4;video/mp4v-es;video/mpeg;video/x-avi;video/x-m4v;video/x-matroska;video/x-mpeg;x-content/video-dvd;
