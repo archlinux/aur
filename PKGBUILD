@@ -5,11 +5,12 @@
 pkgbase=python-mbed-cli
 pkgname=('python-mbed-cli' 'python2-mbed-cli')
 pkgver=1.10.3
-pkgrel=2
+pkgrel=3
 pkgdesc="ARM mbed Command Line Interface"
 arch=('any')
 url="https://os.mbed.org"
 license=('Apache')
+optdepends=("mbed-os: for sharing Mbed OS source code among projects/users")
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ARMmbed/mbed-cli/archive/${pkgver}.tar.gz")
 sha256sums=('8a95093a89aa8fb7a911775155cdb4b9d124ef6af74393dfc1b0bb79c3e33327')
