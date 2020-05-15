@@ -1,9 +1,10 @@
 # Maintainer: Julian Daube <joposter at gmail dot com>
 
 pkgname=mopidy-youtube
-_pkgname="natumbri-mopidy-youtube-00c2162"
+_pkgname="mopidy-youtube-3.0"
 pkgver=v3.0.0
-pkgrel=1
+_pkgver=v3.0
+pkgrel=2
 pkgdesc="Mopidy extension for playing music from Youtube"
 
 arch=('any')
@@ -19,12 +20,12 @@ depends=(
   'youtube-dl')
 makedepends=('python' 'git')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/dz0ny/mopidy-youtube/tarball/$_pkgver")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
 
 package() {
   cd "$_pkgname"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('0cb0ba0d6a4928bd635dc244e2c66ff5')
-sha1sums=('3a5e1625e1b4cfd1d8556ca39fd34741ca6eb542')
+md5sums=('63cbc88f22537f23cdf8155066f02120')
+sha1sums=('616a5f242eb5aefa94a8541f3eb9d3c2b71c6f28')
