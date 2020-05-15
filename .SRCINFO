@@ -6,17 +6,19 @@ pkgbase = spriteilluminator
 	install = spriteilluminator.install
 	arch = x86_64
 	license = custom:spriteilluminator
-	depends = shared-mime-info
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	depends = grantlee
 	depends = gcc-libs-multilib
 	depends = qt5-svg
-	depends = qt5-declarative
 	depends = qt5-imageformats
 	depends = qt5-quickcontrols
-	source = https://www.codeandweb.com/download/spriteilluminator/1.5.4/SpriteIlluminator-1.5.4-ubuntu64.deb
-	md5sums = b27053836c535d8ebd2daf83881e197e
+	depends = qt5-wayland
+	depends = qt5-quickcontrols2
+	depends = qt5-xmlpatterns
+	options = !strip
+	source = spriteilluminator-1.5.4.deb::https://www.codeandweb.com/download/spriteilluminator/1.5.4/SpriteIlluminator-1.5.4-ubuntu64.deb
+	sha256sums = 0498c4d058d30ec42b241b6a86c53e9ecf183bd80cb64b691e54b347ea7f4156
 
 pkgname = spriteilluminator
 
