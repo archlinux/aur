@@ -1,0 +1,21 @@
+pkgbase = notepanda
+	pkgdesc = A simple cross-platform notepad. Based on Qt and C++.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/ChungZH/notepanda
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = qt5-tools
+	makedepends = gcc
+	makedepends = ninja
+	depends = syntax-highlighting
+	depends = qt5-base>5.11.0
+	provides = notepanda
+	conflicts = notepanda
+	source = notepanda::git+git://github.com/ChungZH/notepanda
+	sha512sums = SKIP
+
+pkgname = notepanda
+
