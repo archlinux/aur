@@ -4,13 +4,15 @@
 pkgname=('qt5-heif-git')
 pkgbase=qt-heif-image-plugin
 pkgver=0.3.3.r4.671166e
-pkgrel=2
+pkgrel=3
 pkgdesc="Enables HEIF support in Qt applications"
 arch=('x86_64')
 url="https://github.com/jakar/qt-heif-image-plugin"
 license=('LGPL')
 depends=('libheif')
 makedepends=('qt5-base')
+provides=('qt5-heif')
+conflicts=('qt5-heif')
 source=('git+https://github.com/jakar/qt-heif-image-plugin.git' 'imagethumbnail-heif.desktop')
 sha256sums=('SKIP'
             'e2810903300af8ff1689112faf6aa062c6112f387b0a643bf35082cd5ab8d14c')
