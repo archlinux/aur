@@ -2,7 +2,7 @@
 pkgname=remontoire-git
 _name=remontoire
 pkgver=r38.c47ccbe
-pkgrel=1
+pkgrel=2
 pkgdesc="A keybinding viewer for i3 and other programs."
 arch=('any')
 url="https://github.com/regolith-linux/remontoire"
@@ -11,6 +11,11 @@ makedepends=(
   'git'
   'meson'
   'vala'
+)
+depends=(
+  'json-glib'
+  'gtk3'
+  'libgee'
 )
 source=("git+https://github.com/regolith-linux/$_name.git")
 md5sums=('SKIP')
