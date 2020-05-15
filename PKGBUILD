@@ -13,17 +13,17 @@ source=("git+https://git.sr.ht/~jasper/knockoff/")
 sha512sums=('SKIP')
 
 pkgver=git
-    #cd $srcdir/$pkgname
+    #cd $srcdir/knockoff
     #echo -n git:
     #git rev-list master |head -n 1
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/knockoff"
     make
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/knockoff"
     install -Dm755 knockoff "$pkgdir/usr/bin/knockoff"
     SHARE=$pkgdir/usr/share/knockoff/
     for name in include inbuild; do  # Inbuild lua.
