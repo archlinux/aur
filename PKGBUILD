@@ -5,7 +5,7 @@
 
 pkgname=factorio-dl
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Factorio downloader script for UNIX(-like) systems"
 arch=('any')
 license=('custom:BSD')
