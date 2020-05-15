@@ -1,14 +1,13 @@
 pkgbase = proxmark3-iceman-git
 	pkgdesc = RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.
-	pkgver = 9104.af47a3fd
+	pkgver = 9128.f7bbf8b5
 	pkgrel = 1
 	url = https://github.com/RfidResearchGroup/proxmark3
 	install = proxmark3-iceman-git.install
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = arm-none-eabi-gcc
-	makedepends = arm-none-eabi-newlib
+	makedepends = gcc-arm-none-eabi-bin
 	depends = perl
 	depends = python
 	depends = libsndfile
