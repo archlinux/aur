@@ -6,18 +6,19 @@ _pkgname=luarepl
 pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=0.9
 _rockrel=1
-pkgrel=3
+pkgrel=4
 pkgdesc='A reusable REPL component for Lua, written in Lua'
 arch=('i686' 'x86_64')
 url="https://github.com/hoelzro/$_project"
 license=('MIT')
-makedepends=('luarocks')
-source=("$_rockname-$pkgver.tar.gz::https://github.com/hoelzro/$_project/archive/$pkgver.tar.gz")
+makedepends=('lua' 'lua52' 'lua51' 'luarocks')
+source=("$_rockname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('3c88a3b102a4a4897c46fadb2cd12ee6760438e41e39ffc6cf353582d651b313')
 
 _package_helper() {
   cd "$_project-$pkgver"
-  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_pkgname-$pkgver-$_rockrel.rockspec"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
+    make --deps-mode=none --no-manifest "$_pkgname-$pkgver-$_rockrel.rockspec"
   find "$pkgdir/usr/bin" -type f -execdir sed -i -e "s#$pkgdir##" {} \;
 }
 
