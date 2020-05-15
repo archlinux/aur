@@ -2,7 +2,7 @@
 _org=pmem
 pkgname=pmdk
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Persistent Memory Development Kit"
 arch=('x86_64')
 url="https://pmem.io/"
@@ -31,39 +31,47 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/$_org/$pkgname/archive/$pkg
 sha1sums=('ec8941117077bd5b9e766585e5223734dbd0329e')
 
 prepare() {
-  # return 1
+
+  # grep -nr -i -e 'ix/etc' -e 'ix)/etc'
+  # grep -nr -Fe 'export sysconfdir'
+  # src/pmdk-1.8/src/common.inc:220:export sysconfdir := $(prefix)/etc
+
   cd "$pkgname-$pkgver"
+  sed -i 's#^export sysconfdir.*$#export sysconfdir := /etc#g' src/common.inc
+
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  make -j$(nproc)
+  # grep -nr -Fe '?='
+  /bin/time -f '\n  %E\n' make LIB_PREFIX=lib prefix=/usr PREFIX=/usr
 }
 
-check() {
-
-  return 0
-
-  cd "$pkgname-$pkgver/src/test" || return 1
-  # make -k test
-  make test
-  cp -v testconfig.sh.example testconfig.sh
-  ./RUNTESTS
-
-}
+# https://github.com/pmem/pmdk#testing-libraries-on-linux-and-freebsd
+# https://github.com/pmem/pmdk/blob/master/src/test/README
+# check() {
+#   cd "$pkgname-$pkgver/src/test" || return 1
+#   make -k test
+#   cp -v testconfig.sh.example testconfig.sh
+#   ./RUNTESTS
+# }
 
 package() {
 
   cd "$pkgname-$pkgver"
-  make prefix="/usr" DESTDIR="$pkgdir/" install
+
+  # pkgdir=/home/darren/.cache/yay/pmdk/pkg
+  make LIB_PREFIX=lib prefix=/usr PREFIX=/usr DESTDIR="$pkgdir/" install
 
   # Fix 01
-  mv -v "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
+  # mv -v "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
 
   # Fix 02
   # pacman -Qo /usr/share/bash-completion/completions/* | grep -v "owned by bash-completion"
-  install -Dvm644 "$pkgdir/usr/etc/bash_completion.d/pmempool" "$pkgdir/usr/share/bash-completion/completions/pmempool"
-  rm -rv "$pkgdir/usr/etc"
+  install -Dvm644 "$pkgdir/etc/bash_completion.d/pmempool" "$pkgdir/usr/share/bash-completion/completions/pmempool"
+  rm    -v "$pkgdir/etc/bash_completion.d/pmempool"
+  rmdir -v "$pkgdir/etc/bash_completion.d"
+  rmdir -v "$pkgdir/etc"
 
   # Fix 03
   # pmdk E: Insecure RPATH '/usr/local/lib' in file ('usr/lib/libpmem<*>.so.1.0.0')
