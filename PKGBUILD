@@ -3,11 +3,17 @@
 pkgname=tweakstyle
 pkgver=0.9.5
 pkgrel=1
-pkgdesc="TweakStyle is an Integrated Development Environment for Web Development"
+pkgdesc="An Integrated Development Environment for Web Development"
 arch=('x86_64')
 url="https://tweakstyle.com"
-license=('custom')
-depends=('pango-legacy')
+license=("custom:${pkgname}")
+depends=('pango-legacy'
+         'gconf'
+         'libxtst'
+         'alsa-lib'
+         'libnotify'
+         'gtk2'
+         'nss')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://tweakstyle.com/dl/TweakStyle-linux64-${pkgver}.tar.gz")
 sha256sums=('acdf36b8f613564efd1c99029bee7e9221cad945a95a57ee83c53e2381c9e30f')
