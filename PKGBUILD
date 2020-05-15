@@ -2,7 +2,7 @@
 # Maintainer: Joseph Donofry <joe at joedonofry dot com>
 
 pkgname=nheko-git
-pkgver=0.7.1.r1586.14ce840
+pkgver=0.7.1.r1647.eb4b02e
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
 arch=("i686" "x86_64")
@@ -10,8 +10,8 @@ arch=("i686" "x86_64")
 url="https://github.com/Nheko-Reborn/nheko"
 license=("GPL3")
 
-depends=("qt5-base" "lmdb" "qt5-graphicaleffects" "qt5-multimedia" "qt5-svg" "qt5-quickcontrols2"  "boost" "libsodium" "openssl" "cmark" )
-makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools")
+depends=("qt5-base" "lmdb" "qt5-graphicaleffects" "qt5-multimedia" "qt5-svg" "qt5-quickcontrols2" "qt5-declarative" "boost-libs" "libsodium" "cmark" "openssl" "hicolor-icon-theme")
+makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools" "nlohmann-json")
 
 provides=("nheko")
 conflicts=("nheko")
@@ -25,7 +25,7 @@ prepare() {
 
 pkgver() {
     cd "$pkgname"
-    printf "0.7.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.7.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -35,7 +35,7 @@ build() {
 
     # build with more cores than the default
     export CMAKE_BUILD_PARALLEL_LEVEL=$(cat /proc/cpuinfo | awk '/^processor/{print $3}' | wc -l)
-    cmake -H. -Bbuild -DHUNTER_ENABLED=ON -DBUILD_SHARED_LIBS=OFF -DUSE_BUNDLED_OPENSSL=OFF -DUSE_BUNDLED_BOOST=OFF -DUSE_BUNDLED_CMARK=OFF -DUSE_BUNDLED_JSON=ON \
+    cmake -H. -Bbuild -DHUNTER_ENABLED=ON -DBUILD_SHARED_LIBS=OFF -DUSE_BUNDLED_OPENSSL=OFF -DUSE_BUNDLED_BOOST=OFF -DUSE_BUNDLED_CMARK=OFF -DUSE_BUNDLED_JSON=OFF \
     -DCMAKE_INSTALL_PREFIX=.deps/usr
     cmake --build build --config Release
 }
