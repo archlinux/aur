@@ -1,11 +1,14 @@
 pkgbase = lua-luacov
 	pkgdesc = Coverage analysis tool for Lua scripts
 	pkgver = 0.14.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://keplerproject.github.io/luacov
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = lua
+	makedepends = lua52
+	makedepends = lua51
 	makedepends = luarocks
 	depends = lua
 	source = luacov-0.14.0.tar.gz::https://github.com/keplerproject/luacov/archive/v0.14.0.tar.gz
