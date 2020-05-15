@@ -1,7 +1,9 @@
-# Maintainer: maz-1 <ohmygod19993@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: maz-1 <ohmygod19993@gmail.com>
+
 pkgname=('qt5-heif')
 pkgbase=qt-heif-image-plugin
-pkgver=0.3.2.r5.cc828d1
+pkgver=0.3.3.r4.671166e
 pkgrel=1
 pkgdesc="Enables HEIF support in Qt applications"
 arch=('x86_64')
@@ -10,11 +12,12 @@ license=('LGPL')
 depends=('libheif')
 makedepends=('qt5-base')
 source=('git+https://github.com/jakar/qt-heif-image-plugin.git' 'imagethumbnail-heif.desktop')
-md5sums=('SKIP' 'f4a41542d96f07a9488d47f554bc6149')
+sha256sums=('SKIP'
+            'e2810903300af8ff1689112faf6aa062c6112f387b0a643bf35082cd5ab8d14c')
 
 pkgver() {
-  cd "$srcdir/$pkgbase"
-  echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
+	cd "$srcdir/$pkgbase"
+	echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
 }
 
 build() {
