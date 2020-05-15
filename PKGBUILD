@@ -3,7 +3,7 @@
 
 pkgname=play.it
 pkgver=2.11.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy way to install games on Linux"
 arch=('any')
 url="https://wiki.dotslashplay.it"
@@ -20,6 +20,11 @@ optdepends=(
 source=("${pkgname}-${pkgver}.tar.gz::https://forge.dotslashplay.it/play.it/scripts/-/archive/${pkgver}/scripts-${pkgver}.tar.gz")
 sha1sums=('9858a16af2e9398c8e27a15c68d43447a42a79f9')
 
+prepare() {
+  cd play.it
+  sed -i '/DEFAULT_OPTION_PREFIX/s,=.*,=/usr,' play.it-2/src/99_init.sh
+}
+
 build() {
   cd scripts-$pkgver
   make
@@ -27,7 +32,7 @@ build() {
 
 package() {
   cd scripts-$pkgver
-  make DESTDIR="$pkgdir" prefix="/usr" bindir="/usr/bin" install
+  make DESTDIR="$pkgdir"/ prefix=/usr bindir=/usr/bin datadir=/usr/share install
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 

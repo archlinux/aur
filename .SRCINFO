@@ -1,7 +1,7 @@
 pkgbase = play.it
 	pkgdesc = Easy way to install games on Linux
 	pkgver = 2.11.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.dotslashplay.it
 	arch = any
 	license = BSD
