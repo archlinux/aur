@@ -1,13 +1,16 @@
 # Contributor: Zeph <zeph33@gmail.com>
 # Maintainer: Zeph <zeph33@gmail.com>
 # https://gitlab.manjaro.org/packages/extra/pamac
+ENABLE_FLATPAK=0
+ENABLE_SNAPD=0
+
 pkgname=pamac-cli
-pkgver=9.5.0
+pkgver=9.5.1
 pkgrel=1
 _pkgfixver=$pkgver
 
-_commit='eb445fb76e953fe41605df1ccaa371a892171545'
-sha256sums=('794d0c6f78e5bf8e737d12347e21009a75862c99280afd6f1accccf4ac60d775'
+_commit='bb9c219fd6c34e5d160ed179f1e38e321c39794d'
+sha256sums=('e2064148c442c6449ddffaa1b6013734658059d4958e5325eff1780f4cce72fa'
             'aeeb4b139a301473a6601b03c2a6c7f2c5532b8a1f9a2da419ae3ad4de018800')
 
 pkgdesc="Pamac cli frontend for libalpm"
@@ -23,6 +26,18 @@ replaces=('pamac')
 options=(!emptydirs)
 install=
 
+define_meson=''
+if [ "${ENABLE_FLATPAK}" = 1 ]; then
+  depends+=('flatpak')
+  define_meson+=' -Denable-flatpak=true'
+fi
+
+if [ "${ENABLE_SNAPD}" = 1 ]; then
+  depends+=('snapd' 'snapd-glib')
+  define_meson+=' -Denable-snap=true'
+fi
+
+
 source=("pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/pamac-$_commit.tar.gz" "meson.build")
 
 prepare() {
@@ -37,8 +52,9 @@ build() {
   cd "$srcdir/pamac-$_commit"
   mkdir -p builddir
   cd builddir
-  meson --buildtype=release --prefix=/usr --sysconfdir=/etc
-
+  meson --buildtype=release \
+        --prefix=/usr \
+        --sysconfdir=/etc $define_meson
   # build
   ninja
 }
