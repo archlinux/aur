@@ -10,7 +10,7 @@ pkgbase = snx
 	depends = lib32-libstdc++5
 	depends = lib32-libx11
 	source = local:///snx_install_linux30.sh
-	md5sums = 72c2c91791690927da0586ec873430cf
+	sha256sums = 20942e263f14e8d08e2e97dd6470f0c04018b06209645ae51bcc7269bb70bd58
 
 pkgname = snx
 
