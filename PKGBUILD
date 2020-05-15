@@ -2,38 +2,39 @@
 
 pkgname=ashuffle
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic library-wide shuffle for mpd."
 url="https://github.com/joshkunz/ashuffle"
 arch=(x86_64 i686 armv6h armv7h aarch64)
 license=(MIT)
 
 depends=("libmpdclient")
-makedepends=("meson" "cmake")
+makedepends=("meson" "cmake" "abseil-cpp>=20200225.2-2")
 
 source=(
   "https://github.com/joshkunz/ashuffle/archive/v${pkgver}/ashuffle-${pkgver}.tar.gz"
-  "git+https://github.com/abseil/abseil-cpp.git#commit=b69c7d880caddfc25bf348dbcfe9d45fdd8bc6e6"
   "git+https://github.com/google/googletest.git#commit=703bd9caab50b139428cea1aaff9974ebee5742e"
 )
 sha256sums=(
   "e46d923c684e7c7170d90a47221d0de28939c21e85d7e3a1d3915da6551b8486"
-  'SKIP' 'SKIP'
+  'SKIP'
 )
 
 
 prepare() {
   cd "ashuffle-${pkgver}"
-  rmdir "subprojects/absl" "subprojects/googletest"
+  rmdir "subprojects/googletest"
 
-  ln -s "${srcdir}/abseil-cpp" "subprojects/absl"
   ln -s "${srcdir}/googletest" "subprojects/googletest"
 }
 
 build() {
   cd "ashuffle-${pkgver}"
 
-  arch-meson -Dtests=enabled builddir
+  arch-meson \
+    -Dtests=enabled \
+    -Dunsupported_use_system_absl=true \
+    builddir
 
   ninja -C builddir
 }
