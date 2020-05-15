@@ -4,11 +4,11 @@ pkgbase = akamai-bin
 	pkgrel = 2
 	url = https://developer.akamai.com/cli
 	arch = x86_64
-	license = Apache-2.0
+	license = Apache
 	provides = akamai
 	provides = akamai-cli
-	source = https://github.com/akamai/cli/releases/download/1.1.5/akamai-1.1.5-linuxamd64
-	md5sums = 6053120883211c2c2194f3cf3451993d
+	source = akamai-bin-1.1.5::https://github.com/akamai/cli/releases/download/1.1.5/akamai-1.1.5-linuxamd64
+	sha256sums = 1aaf3248a610ffd8bdf1f9f96b5a91cf5bfc5bd788a7f6e01c3901b56b9c4d69
 
 pkgname = akamai-bin
 
