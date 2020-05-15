@@ -6,8 +6,10 @@ pkgbase = toxiproxy-cli-bin
 	arch = x86_64
 	license = MIT
 	provides = toxiproxy-cli
-	source = https://github.com/Shopify/toxiproxy/releases/download/v2.1.4/toxiproxy-cli-linux-amd64
-	md5sums = 2847f49e7206e839fde02f91f7e10c0f
+	source = toxiproxy-cli-bin-2.1.4::https://github.com/Shopify/toxiproxy/releases/download/v2.1.4/toxiproxy-cli-linux-amd64
+	source = LICENSE::https://github.com/Shopify/toxiproxy/raw/master/LICENSE
+	sha256sums = 451abcd548b83e5a73f2ac3b2c822874b29ff9ad3536c65e86d26b64b4283a4d
+	sha256sums = c305a1ef46fe6a38b357a943945191184df3cdef9ed833e171c5d811d560ad8f
 
 pkgname = toxiproxy-cli-bin
 
