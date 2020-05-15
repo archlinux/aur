@@ -1,8 +1,9 @@
-# Maintainer: Rowan Decker <rdecker [at] scu [dot] edu>
+# Maintainer: Łukasz Żarnowiecki <lukasz at zarnowiecki dot pl>
+# Contributor: Rowan Decker <rdecker [at] scu [dot] edu>
 
 _pkgbase=monero
 pkgname=monero-gui-bin
-pkgver=0.15.0.2
+pkgver=0.15.0.4
 pkgrel=1
 pkgdesc="Monero: the secure, private, untraceable currency - release version (Includes daemon, wallet, and miner)"
 arch=("x86_64")
@@ -23,13 +24,12 @@ provides=("monerod=${pkgver}"
 )
 install=monero-gui-bin.install
 
-source=("${pkgname}-${pkgver}.tar.bz2::https://downloads.getmonero.org/gui/linux64"
-#source=("${pkgname}-${pkgver}.tar.bz2::https://github.com/monero-project/monero-gui/releases/download/v${pkgver}/monero-gui-linux-x64-v${pkgver}.tar.bz2"
+source=("${pkgname}-${pkgver}.tar.bz2::https://github.com/monero-project/monero-gui/releases/download/v${pkgver}/monero-gui-linux-x64-v${pkgver}.tar.bz2"
     "monero-wallet-gui"
     "monero-wallet-gui.desktop"
 )
 
-sha256sums=("e21d688b5e26c3dea7c774e97fdd44f169abd218d212378eaacab5c64ea80f7d"
+sha256sums=("2d105c792b46ec03739d39aaa6db3801f268e074814ab26e3824435f954c6a1c"
     "f08a864ac8a2438965eb25080e5c21d4f60ef1d6b099f622eb7416fac96fb6ef"
     "1a88e0dd59687fc19f4ca84b43311c506e04c1723cb9972faf427942723c73d2"
 )
@@ -40,7 +40,7 @@ package() {
     # Copy precompiled package
     install -dm755 "${pkgname//-bin/}-v${pkgver//_/-}" "${pkgdir}/usr/share/monero-gui/"
     cp -r "${pkgname//-bin/}-v${pkgver//_/-}/." "${pkgdir}/usr/share/monero-gui/"
-    
+
     # Fix permissions
     chmod -R +rX "${pkgdir}/usr/share/monero-gui"
     chmod +x "${pkgdir}/usr/share/monero-gui/monero-wallet-gui"
@@ -57,9 +57,6 @@ package() {
 
     # Install desktop file
     desktop-file-install -m 644 --dir="${pkgdir}/usr/share/applications/" "monero-wallet-gui.desktop"
-
-    # Patch start-gui.sh to support launching with flags
-    #sed -e 's/monero-wallet-gui/monero-wallet-gui\ \"\$\@\"/g' -i "${pkgdir}/usr/share/monero-gui/start-gui.sh"
 
     # Binary symlinks
     ln -sf /usr/share/monero-gui/monerod "${pkgdir}/usr/bin/monerod"
