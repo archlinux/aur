@@ -1,6 +1,6 @@
 pkgbase = proxmark3-iceman-git
 	pkgdesc = RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.
-	pkgver = 9128.f7bbf8b5
+	pkgver = 9138.c8e281cb
 	pkgrel = 1
 	url = https://github.com/RfidResearchGroup/proxmark3
 	install = proxmark3-iceman-git.install
