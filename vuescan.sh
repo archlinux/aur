@@ -1,3 +1,2 @@
 #!/bin/sh
-cd /opt/vuescan
-exec ./vuescan "$@"
+exec /opt/vuescan/vuescan "$@"
