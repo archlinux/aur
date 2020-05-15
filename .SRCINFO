@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-richdocuments
 	pkgdesc = Integrate Collabora Online into NextCloud
-	pkgver = 2.0.13
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://github.com/nextcloud/richdocuments
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = nextcloud-app-richdocuments
 	depends = nextcloud
 	depends = libreoffice-online
 	options = !strip
-	source = richdocuments-2.0.13.tar.gz::https://github.com/nextcloud/richdocuments/releases/download/2.0.13/richdocuments.tar.gz
-	sha512sums = 29d113f836d813937e9ad0bd9093b745b8c9d58a907f99890e94781a8c601ce5527b8fe24a9029a67f2e69d5a935b04b58e655f010a267ea4abbdd1cb6617142
+	source = richdocuments-3.6.0.tar.gz::https://github.com/nextcloud/richdocuments/releases/download/v3.6.0/richdocuments.tar.gz
+	sha512sums = 341fc186ea7fc7994dbe6291f23dfd573f40060569be57ae254c21641aa8f92ded5a60de8d6b85a655fd248904902e40251da73f034d33c07f795950f79c800a
 
 pkgname = nextcloud-app-richdocuments
 
