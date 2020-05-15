@@ -4,7 +4,7 @@
 _basename=libsrtp
 pkgname="lib32-$_basename"
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Library for SRTP (Secure Realtime Transport Protocol) (32-bit)"
 url="https://github.com/cisco/libsrtp"
@@ -28,6 +28,9 @@ prepare() {
 
     # Fixup pkgver: There are tags like v1.5.4 but also "moving" tags like v1 and v1.5
     git tag | grep -Pv '^v\d+.\d+.\d+$' | xargs git tag -d
+
+    # Fix building with GCC 10
+    git cherry-pick -n 716a73862b387a2107f37398c0fb7d9a754c0ccd
 
     autoreconf -fvi
 }
