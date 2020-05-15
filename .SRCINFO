@@ -4,10 +4,11 @@ pkgbase = rustbuster-bin
 	pkgrel = 1
 	url = https://github.com/phra/rustbuster
 	arch = x86_64
-	license = GPL-3.0
+	license = GPL3
+	depends = openssl
 	provides = rustbuster
-	source = https://github.com/phra/rustbuster/releases/download/v3.0.3/rustbuster-v3.0.3-x86_64-unknown-linux-gnu
-	md5sums = f24e04242b63a698a7d9caef94243986
+	source = rustbuster-bin-3.0.3::https://github.com/phra/rustbuster/releases/download/v3.0.3/rustbuster-v3.0.3-x86_64-unknown-linux-gnu
+	sha256sums = 3f790029bfe4350bd994153465c81beedc54d61c1dadeda124108bf875459574
 
 pkgname = rustbuster-bin
 
