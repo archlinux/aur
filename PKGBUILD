@@ -7,8 +7,9 @@ pkgdesc="HTTP-server to execute shell commands"
 arch=('x86_64')
 url='https://github.com/msoap/shell2http'
 license=('MIT')
+depends=('glibc')
 provides=('shell2http')
-makedepends=('go' 'git')
+makedepends=('go-pie' 'git')
 source=("git+${url}")
 md5sums=('SKIP')
 
@@ -36,7 +37,7 @@ build() {
 package() {
   cd "${srcdir}/shell2http"
   install -Dm755 "${srcdir}"/shell2http-bin "${pkgdir}/usr/bin/shell2http"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/shell2http/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 shell2http.1.gz -t "${pkgdir}/usr/share/man/man1"
   go clean -modcache #Remove go libraries
 }
