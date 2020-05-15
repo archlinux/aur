@@ -11,7 +11,8 @@ options=('zipman')
 depends=('libxft')
 makedepends=('ncurses' 'libxext' 'git')
 
-source=('git://github.com/null2264/st-zi')
+source=('git://github.com/null2264/st-zi'
+	'st.desktop')
 sha256sums=('SKIP')
 provides=('st')
 conflicts=('st')
