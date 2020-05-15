@@ -6,14 +6,14 @@ pkgrel=1
 pkgdesc="Generate a Go struct from XML"
 arch=('x86_64')
 url='https://github.com/miku/zek'
-license=('GPL-3.0')
+license=('GPL3')
 provides=('zek')
-source=("https://github.com/miku/zek/releases/download/v${pkgver}/zek_${pkgver}_amd64.deb")
-md5sums=('209edfd497230c80663165fca98ede05')
+source=("${pkgname}-${pkgver}.deb::https://github.com/miku/zek/releases/download/v${pkgver}/zek_${pkgver}_amd64.deb")
+sha256sums=('dd3e786ad5d741509ab3fca99de263ef15a4698323ee64d4c482e4546b004d7d')
 
 package() {
 	cd "${srcdir}"
-	tar xf data.tar.xz -C "${pkgdir}"
+	tar xvf data.tar.xz -C "${pkgdir}"
 	cd ${pkgdir}/usr
 	mv sbin bin
 	chmod 755 bin/zek

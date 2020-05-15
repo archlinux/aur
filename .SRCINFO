@@ -4,10 +4,10 @@ pkgbase = zek-bin
 	pkgrel = 1
 	url = https://github.com/miku/zek
 	arch = x86_64
-	license = GPL-3.0
+	license = GPL3
 	provides = zek
-	source = https://github.com/miku/zek/releases/download/v0.1.9/zek_0.1.9_amd64.deb
-	md5sums = 209edfd497230c80663165fca98ede05
+	source = zek-bin-0.1.9.deb::https://github.com/miku/zek/releases/download/v0.1.9/zek_0.1.9_amd64.deb
+	sha256sums = dd3e786ad5d741509ab3fca99de263ef15a4698323ee64d4c482e4546b004d7d
 
 pkgname = zek-bin
 
