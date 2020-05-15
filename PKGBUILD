@@ -8,7 +8,7 @@
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-glibc-headers
 pkgver=2.31
-pkgrel=3
+pkgrel=3.1
 pkgdesc="GNU C Library headers (${_target})"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
@@ -57,7 +57,7 @@ build() {
       --disable-multi-arch
       --enable-stack-protector=strong
       --enable-stackguard-randomization
-      --enable-systemtap
+      --disable-systemtap
       --disable-profile
       --disable-werror
   )
