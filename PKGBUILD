@@ -1,19 +1,18 @@
-# Maintainer: Ronuk Raval <ronuk.raval at gmail dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Ronuk Raval <ronuk.raval at gmail dot com>
 
 pkgname=python-pscript
-pkgver=0.7.1
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Python to JavaScript compiler"
 arch=('any')
 url="https://pscript.readthedocs.io"
 license=('BSD')
-depends=(python)
+depends=('python-setuptools')
 source=(
     ${pkgname}-${pkgver}.tar.gz::https://github.com/flexxui/pscript/archive/v${pkgver}.tar.gz
 )
-sha256sums=(
-    8539caefe6b8f97f0f80fccb57076c9a6a7fef4773dc039f3a0286c8bc962fff
-)
+sha256sums=('8be5c1f83aa81b3cce86e53fe69bb405f2fc70169c26f13aeff39c2e34e5095f')
 
 build() {
     cd "pscript-${pkgver}"
