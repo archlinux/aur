@@ -4,7 +4,7 @@
 # Contributor: Lucas H. Gabrielli
 pkgname=mumps
 pkgver=5.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Sparse solver library using Gaussian elimination'
 url='http://mumps.enseeiht.fr'
 license=('custom')
@@ -18,7 +18,7 @@ arch=('i686' 'x86_64')
 source=(http://mumps.enseeiht.fr/MUMPS_${pkgver}.tar.gz
         Makefile.inc)
 sha256sums=('774fc9411a3ab4704bc907cb7d30090ce6a65b83cde32549c58d3e9f63594e1a'
-            'f0c6ecc355fc11a0213a2acecbe5b196e3678f93344eea724d6a9aba85dcbf52')
+            '507c99dacf4e25d72ed9f47aac95bfa28f0ad846bf4698cad005b1cb16e9444c')
 build() {
   cd "${srcdir}/MUMPS_${pkgver}"
   cp "${srcdir}/Makefile.inc" .
