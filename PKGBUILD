@@ -128,7 +128,7 @@ prepare() {
   echo "${pkgbase#linux}" > localversion.20-pkgname
   
   # fix pkgver to chosen pkgver
-#  sed -i "s/SUBLEVEL = 0/SUBLEVEL = $_pkgverpntrel/g" $srcdir/$_srcname/Makefile
+  sed -i "s/SUBLEVEL = 0/SUBLEVEL = $_pkgverpntrel/g" $srcdir/$_srcname/Makefile
 
   local src
   for src in "${source[@]}"; do
