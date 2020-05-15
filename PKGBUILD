@@ -1,117 +1,132 @@
-# Maintainer:  Eric Toombs <e double u toombs at uwaterloo dot ca>
+# Maintainer:  Felix Golatofski <contact@xdfr.de>
+# Contributor: Eric Toombs <e double u toombs at uwaterloo dot ca>
 # Contributor:  Ionut Biru <ibiru@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Hugo Doria <hugo@archlinux.org>
 
 pkgbase='mplayer-svn'
 pkgname=('mplayer-svn' 'mencoder-svn')
-pkgver=37553
+pkgver=38184M
 pkgrel=1
-_ffmpegver=2.8.2
-arch=('i686' 'x86_64')
-makedepends=(
-  'libxxf86dga' 'libxxf86vm' 'libmad' 'libxinerama' 'sdl' 'lame' 'libtheora'
-  'xvidcore' 'libmng' 'libxss' 'libgl' 'aalib' 'jack' 'libcaca'
-  'faac' 'faad2' 'lirc'  'libxvmc' 'enca' 'libvdpau' 'opencore-amr'
-  'libdca' 'a52dec' 'schroedinger' 'libvpx' 'libpulse' 'fribidi' 'unzip' 'mesa'
-  'live-media' 'yasm' 'git' 'fontconfig' 'mpg123' 'ladspa' 'libass' 'libbluray'
-  'libcdio-paranoia' 'opus' 'subversion' 'x264' 'libx264' 'rtmpdump' 'gnutls'
-  'gsm' 'libdvdcss' 'libdvdread' 'libdvdnav'
-)
-license=('GPL')
+_ffmpegver=4.2
+pkgdesc='Media player for Linux'
 url='http://www.mplayerhq.hu/'
-options=('!buildflags' '!emptydirs')
-source=("mplayer-$pkgver::svn://svn.mplayerhq.hu/mplayer/trunk#revision=$pkgver"
-        "http://ffmpeg.org/releases/ffmpeg-$_ffmpegver.tar.bz2"
+arch=('i686' 'x86_64')
+license=('GPL')
+makedepends=('xorgproto' 'libxxf86vm' 'libmad' 'libxinerama' 'libmng' 'libxss'
+             'smbclient' 'aalib' 'jack' 'libcaca' 'faac' 'faad2' 'lirc' 'libxv'
+             'libxvmc' 'enca' 'libdca' 'a52dec' 'libvpx' 'unzip' 'mesa'
+             'live-media' 'yasm' 'git' 'mpg123' 'ladspa' 'libcdio' 'zlib'
+             'libcdio-paranoia' 'subversion' 'x264' 'libx264.so' 'rtmpdump'
+             'libdvdcss' 'libdvdread' 'libdvdnav' 'ffmpeg' 'giflib' 'libgif.so'
+             'libbs2b' 'fribidi' 'opus' 'libvorbis' 'libvorbis.so' 'gsm'
+             'libpulse' 'alsa-lib' 'glibc' 'libass' 'libass.so' 'libjpeg'
+             'libpng' 'libogg' 'libtheora' 'libbluray' 'libbluray.so'
+             'xvidcore' 'libxvidcore.so' 'ncurses' 'libncursesw.so'
+             'fontconfig' 'freetype2' 'libx11' 'libxext' 'libvdpau' 'libgl'
+             'lame' 'desktop-file-utils' 'ttf-font' 'openal' 'speex'
+             'libmpeg2')
+options=('!emptydirs')
+source=("mplayer::svn://svn.mplayerhq.hu/mplayer/trunk"
+        "https://ffmpeg.org/releases/ffmpeg-$_ffmpegver.tar.bz2"
         'mplayer.desktop'
-        'ffmpeg-libvpxenc-remove-some-unused-ctrl-id-mappings.patch')
-md5sums=('SKIP'
-         '99f31723326dfe1bfd1bc7521338f2d2'
-         '62f44a58f072b2b1a3c3d3e4976d64b3'
-         '71be9bcd297cb9ce833bbc5d425c0470')
+	include-samba-4.0.patch
+        revert-icl-fixes.patch)
+sha512sums=('SKIP'
+            '74d06a420af61e05d9e076f4f433e8316590c3b850ada96e74c1df39431db1595f74315bdef624153edb160b8bef8683a4e9f35d69714cde4b5ec72aeb1d28e1'
+            'd3c5cbf0035279c6f307e4e225473d7b77f9b56566537a26aa694e68446b9e3240333296da627ad5af83b04cc8f476d1a3f8c05e4cf81cd6e77153feb4ed74bc'
+            '9debb8c58b996f6c716c22c86c720bf9dc49b4ee9b76c57519f791667ae1de2cc6f5add878fbf4ac02c6b6fd1865e1bcfa6105e75de4bf7ec596c338ed0cae99'
+            '0cae0b26d3d97fd4c962962c43a481de20335369cbca406cadfc9bda1a0608b32f5374e76c477cb9a85bda83a568a1ed17126df224ae61579d0a402c1824aea8')
 
 pkgver() {
-  cd "mplayer-$pkgver"
+  cd "mplayer"
   svnversion
 }
 
 prepare() {
-  cd "mplayer-$pkgver"
+  cd "mplayer"
   mv "../ffmpeg-$_ffmpegver" ffmpeg
 
-  patch -d ffmpeg -Np1 <../ffmpeg-libvpxenc-remove-some-unused-ctrl-id-mappings.patch
-
+  patch -p1 < "../include-samba-4.0.patch"
+  patch -p0 < "../revert-icl-fixes.patch"
+  # https://bugs.archlinux.org/task/62050
+  sed -E "s|(#include <samba-4.0/libsmbclient.h>)|#include <time.h>\n\1|g" -i stream/stream_smb.c
   ./version.sh
 }
 
 build() {
-  cd "mplayer-$pkgver"
-
+  cd "mplayer"
+  export CFLAGS="${CFLAGS/-march=x86-64/}"
+  export CFLAGS="${CFLAGS/-mtune=generic/}"
+  export LDFLAGS="${LDFLAGS/,O1/}"
+  export LDFLAGS="${LDFLAGS/,--sort-common/}"
+ 
   ./configure --prefix=/usr \
     --enable-runtime-cpudetection \
     --disable-gui \
     --disable-arts \
     --disable-liblzo \
-    --disable-speex \
-    --disable-openal \
     --disable-libdv \
     --disable-musepack \
     --disable-esd \
     --disable-mga \
     --disable-ass-internal \
     --disable-cdparanoia \
-    --disable-smb \
+    --disable-ffmpeg_a \
     --enable-xvmc \
     --enable-radio \
     --enable-radio-capture \
+    --enable-smb \
     --language=all \
-    --confdir=/etc/mplayer
-  [[ "$CARCH" = "i686" ]] &&  sed 's|-march=i486|-march=i686|g' -i config.mak
-
+    --confdir=/etc/mplayer \
+    --extra-cflags="${CFLAGS} ${CPPFLAGS}" \
+    --extra-ldflags="${LDFLAGS}"
+  [[ "${CARCH}" = "i686" ]] && sed 's|-march=i486|-march=i686|g' -i config.mak
   make
 }
 
 package_mplayer-svn() {
   pkgdesc='Media player for Linux'
+  backup=('etc/mplayer/codecs.conf'
+          'etc/mplayer/input.conf')
   install='mplayer.install'
-  backup=('etc/mplayer/codecs.conf' 'etc/mplayer/input.conf')
-  depends=(
-    'desktop-file-utils' 'ttf-font' 'enca' 'libxss' 'a52dec' 'libvpx'
-    'lirc' 'libx264' 'libmng' 'libdca' 'aalib' 'lame' 'fontconfig'
-    'libgl' 'libxinerama' 'libvdpau' 'libpulse' 'xvidcore'
-    'opencore-amr' 'jack' 'libmad' 'sdl' 'libtheora' 'libcaca' 'libxxf86dga'
-    'fribidi' 'libjpeg' 'faac' 'faad2' 'libxvmc' 'schroedinger' 'mpg123'
-    'libass' 'libxxf86vm' 'libbluray' 'libcdio-paranoia' 'opus' 'rtmpdump'
-    'gsm' 'gnutls' 'libdvdnav'
-  )
+  depends=('desktop-file-utils' 'ttf-font' 'enca' 'libxss' 'a52dec' 'libvpx'
+           'lirc' 'x264' 'libmng' 'libdca' 'aalib' 'libxinerama' 'smbclient'
+           'jack' 'libmad' 'libcaca' 'libxxf86vm' 'faac' 'faad2'
+           'libxv' 'libxvmc' 'mpg123' 'libx11' 'libcdio' 'libcdio-paranoia'
+           'rtmpdump' 'libdvdread' 'libdvdnav' 'ffmpeg' 'libbs2b' 'alsa-lib'
+           'giflib' 'libgif.so' 'glibc' 'libass' 'libass.so' 'zlib' 'libjpeg'
+           'libpng' 'libpulse' 'libogg' 'fribidi' 'libtheora' 'libvorbis'
+           'libvorbis.so' 'libbluray' 'libbluray.so' 'xvidcore'
+           'libxvidcore.so' 'ncurses' 'libncursesw.so' 'fontconfig' 'freetype2'
+           'libxext' 'libvdpau' 'libgl' 'openal' 'speex' 'libmpeg2')
   conflicts=('mplayer')
   provides=('mplayer')
 
-  cd "mplayer-$pkgver"
+  cd "mplayer"
   make DESTDIR="$pkgdir" install-mplayer install-mplayer-man
 
-  install -Dm644 etc/{codecs.conf,input.conf,example.conf} \
-    "$pkgdir/etc/mplayer/"
-
-  # desktop file (FS#14770)
-  install -Dm644 ../mplayer.desktop \
-    "$pkgdir"/usr/share/applications/mplayer.desktop
-  install -Dm644 etc/mplayer256x256.png \
-    "$pkgdir"/usr/share/pixmaps/mplayer.png
+  install -Dm 644 etc/{codecs.conf,input.conf,example.conf} "${pkgdir}/etc/mplayer"
+  install -Dm 644 "${srcdir}/mplayer.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm 644 etc/mplayer256x256.png "${pkgdir}/usr/share/pixmaps/mplayer.png"
 }
 
 package_mencoder-svn() {
   pkgdesc='Free command line video decoding, encoding and filtering tool'
-  depends=(
-    'enca' 'a52dec' 'libvpx' 'libx264' 'libmng' 'libdca' 'bzip2' 'lame'
-    'alsa-lib' 'fontconfig' 'giflib' 'libpng' 'xvidcore'
-    'opencore-amr' 'libmad' 'libtheora' 'fribidi' 'libjpeg' 'faac' 'faad2'
-    'schroedinger' 'mpg123' 'libass' 'libbluray' 'libcdio-paranoia'
-    'libvorbis' 'opus' 'rtmpdump' 'gsm' 'libdvdnav'
-  )
+  depends=('glibc' 'enca' 'a52dec' 'libvpx' 'x264' 'libx264.so' 'libmng' 'libdca'
+           'smbclient' 'libmad' 'faac' 'faad2' 'mpg123' 'libcdio'
+           'libcdio-paranoia' 'rtmpdump' 'libdvdread' 'libdvdnav' 'ffmpeg'
+           'libbs2b' 'ncurses' 'libncursesw.so' 'zlib' 'alsa-lib' 'fontconfig'
+           'freetype2' 'fribidi' 'giflib' 'libgif.so' 'libvorbis'
+           'libvorbis.so' 'libpng' 'libjpeg' 'libass' 'libass.so' 'lame'
+           'libbluray' 'libbluray.so' 'libtheora' 'xvidcore' 'libxvidcore.so'
+           'openal' 'speex' 'libmpeg2')
   conflicts=('mencoder')
   provides=('mencoder')
 
-  make -C mplayer-$pkgver DESTDIR="$pkgdir" install-mencoder install-mencoder-man
-  find "$pkgdir"/usr/share/man -name mplayer.1 -exec rename mplayer.1 mencoder.1 {} +
+  make -C ${pkgbase}-${pkgver} DESTDIR="${pkgdir}" install-mencoder install-mencoder-man
+  find "${pkgdir}/usr/share/man" -name mplayer.1 -exec rename mplayer.1 mencoder.1 {} +
 }
+
+# vim: ts=2 sw=2 et:
+
