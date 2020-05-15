@@ -3,11 +3,11 @@ pkgbase = webp-thumbnailer
 	pkgver = 0.0.2
 	pkgrel = 7
 	url = https://github.com/gabrielmoura/webp-thumbnailer
-	arch = i686
-	arch = x86_64
-	license = GPL-3.0
-	source = webp-thumbnailer-master.tar.gz::https://github.com/gabrielmoura/webp-thumbnailer/archive/master.tar.gz
-	md5sums = 03b46f62022c3d0706cad753db655914
+	arch = any
+	license = GPL3
+	depends = bash
+	source = webp-thumbnailer-0.0.2.tar.gz::https://github.com/gabrielmoura/webp-thumbnailer/archive/master.tar.gz
+	sha256sums = 0b4e3c247dd5896d3b7c4e72a120d7fa2d010c57990d5c3cbf563c2b898ef53b
 
 pkgname = webp-thumbnailer
 
