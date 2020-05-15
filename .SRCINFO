@@ -1,6 +1,6 @@
 pkgbase = mopidy-youtube-git
 	pkgdesc = Mopidy extension for playing music from Youtube
-	pkgver = v2.0.2.r317.g3d75925
+	pkgver = v3.0.r21.g3d75925
 	pkgrel = 1
 	url = https://github.com/natumbri/mopidy-youtube
 	arch = any
