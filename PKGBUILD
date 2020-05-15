@@ -1,5 +1,6 @@
-# Maintainer: Joakim Nylén <me@jnylen.nu>
-# Maintainer: Rashintha Maduneth <rashinthamaduneth@gmail.com>
+# Maintainer: Eric S. Londres <ericlondres@protonmail.com>
+# Contributor: Joakim Nylén <me@jnylen.nu>
+# Contributor: Rashintha Maduneth <rashinthamaduneth@gmail.com>
 # Contributor: Dhananjay Balan <mail@dbalan.in>
 # Contributor: ahrs
 
