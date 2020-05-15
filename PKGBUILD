@@ -2,14 +2,14 @@
 # Co-Maintainer: Matthias Loibl <mail@matthiasloibl.com>
 
 pkgname=jsonnet-bundler-bin
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="jsonnet package manager"
 arch=('x86_64')
 url="https://github.com/jsonnet-bundler/jsonnet-bundler"
 license=('Apache')
 source=("jb-v${pkgver}::https://github.com/jsonnet-bundler/jsonnet-bundler/releases/download/v${pkgver}/jb-linux-amd64")
-sha256sums=('2eea9cd244dd952d3d2c13a053fefabfb11c7c14950f835ff0e5c46a71b71b54')
+sha256sums=('e5499cf0a1fcb247381421cdc3b09cc4e37129fd97dfdf2d53531071c4218292')
 
 package() {
   install -Dm 755 "${srcdir}/jb-v${pkgver}" "${pkgdir}/usr/bin/jb"
