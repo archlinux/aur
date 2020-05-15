@@ -1,0 +1,15 @@
+pkgbase = xswitcher-git
+	pkgdesc = quick script to fiddle with xorg.conf when using an eGPU
+	pkgver = r6.4bd85fc
+	pkgrel = 1
+	url = https://github.com/felixonmars/xswitcher
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = xorg-server
+	depends = nvidia
+	source = git+https://github.com/felixonmars/xswitcher
+	md5sums = SKIP
+
+pkgname = xswitcher-git
+
