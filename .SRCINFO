@@ -4,11 +4,13 @@ pkgbase = s3find-bin
 	pkgrel = 2
 	url = https://github.com/AnderEnder/s3find-rs
 	arch = x86_64
-	license = BSD-2-Clause
+	license = BSD
 	provides = s3find
 	provides = s3find-rs
-	source = https://github.com/AnderEnder/s3find-rs/releases/download/v0.6.0/s3find-x86_64-linux.tar.gz
-	md5sums = de0dcb11bba9eadfce9e8af8ec81008f
+	source = s3find-bin-0.6.0.tar.gz::https://github.com/AnderEnder/s3find-rs/releases/download/v0.6.0/s3find-x86_64-linux.tar.gz
+	source = LICENSE::https://github.com/AnderEnder/s3find-rs/raw/master/LICENSE
+	sha256sums = f0fb26b1b4ef57bb8d264cd0e2bd5c83ba07f10e0bf358e437718f7e7db16e56
+	sha256sums = 6fbc2783a865b0be78dedbd32ded7076d9aa222cf4bc8970cee2c7738e55caaf
 
 pkgname = s3find-bin
 
