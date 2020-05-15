@@ -1,7 +1,7 @@
-From 9d03a04a2d7097afd3c177e8125e7b65e2d26102 Mon Sep 17 00:00:00 2001
+From e33336e058bdd4e109c9131bb13584ccb1b5e15d Mon Sep 17 00:00:00 2001
 From: Sergei Trofimovich <slyfox@gentoo.org>
 Date: Tue, 17 Mar 2020 00:07:18 +0000
-Subject: [PATCH 5/7] Makefile: disallow data races on gcc-10 as well
+Subject: [PATCH 4/6] Makefile: disallow data races on gcc-10 as well
 
 gcc-10 will rename --param=allow-store-data-races=0
 to -fno-allow-store-data-races.
@@ -16,7 +16,7 @@ Signed-off-by: Masahiro Yamada <masahiroy@kernel.org>
  1 file changed, 1 insertion(+)
 
 diff --git a/Makefile b/Makefile
-index 97e4c4d9ac95..5ee8b2d86bab 100644
+index d252219666fd..abca59ecbe2b 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -714,6 +714,7 @@ endif

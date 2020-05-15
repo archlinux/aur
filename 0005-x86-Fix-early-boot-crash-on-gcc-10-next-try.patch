@@ -1,7 +1,7 @@
-From 0cf3349234df93705eb0b24070e91c8132de42b7 Mon Sep 17 00:00:00 2001
+From 53e90d763b7fe8bec6a0c86b6813131cd8e25026 Mon Sep 17 00:00:00 2001
 From: Borislav Petkov <bp@suse.de>
 Date: Wed, 22 Apr 2020 18:11:30 +0200
-Subject: [PATCH 6/7] x86: Fix early boot crash on gcc-10, next try
+Subject: [PATCH 5/6] x86: Fix early boot crash on gcc-10, next try
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
