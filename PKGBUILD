@@ -62,9 +62,10 @@ _localmodcfg=
 
 pkgbase=linux-bcachefs-ck
 _tag=v5.6
-pkgver=5.6.0
+pkgver=5.6.11
+_pkgverpntrel=11
 pkgrel=1
-_ckpatchversion=1
+_ckpatchversion=2
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -99,7 +100,7 @@ md5sums=('SKIP'
          '019c5d6e9996bc3a3cf0a732ceba0547'
          '2cebdad39da582fd6a0c01746c8adb42'
          '49ace4303b89cfe1dc92d829f7f391bf'
-         '1f1d348812a2b66665cde85b3605bb35'
+         'fde3643971460e9a7fc97e94fd2aac38'
          '5fe73681affcf4878cb853452218ce36'
          '252842db32d8b8aef591d4397a3ab2a1'
          '228b33d0cb13cab162b3e051ec9bb88d')
@@ -125,6 +126,9 @@ prepare() {
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
+  
+  # fix pkgver to chosen pkgver
+#  sed -i "s/SUBLEVEL = 0/SUBLEVEL = $_pkgverpntrel/g" $srcdir/$_srcname/Makefile
 
   local src
   for src in "${source[@]}"; do
@@ -134,7 +138,7 @@ prepare() {
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
-
+  
   echo "Setting config..."
   cp ../config .config
   
