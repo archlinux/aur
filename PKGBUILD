@@ -4,7 +4,7 @@ pkgbase=linux-amd
 _srcname=linux
 gitver=v5.6.13
 pkgver=5.6.v.13
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -21,14 +21,18 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         "${pkgbase}.preset"
 	# patch from our gentoo overlords
 	5012_enable-cpu-optimizations-for-gcc91.patch
+	# dear-gcc10-please-ignore-the-mess patch
+	gcc10.patch
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'eb582df81485527671c267853465f81c210a8008c0456669f572b905025fa918'
+            '57e1a2f3cdc11595adb3766d598feb4a7170a9135eac862916d78648af3ecbf9'
             #.preset file
             '71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08'
             #patch gentoo
             'cc739c9c9f7ce08e6bbc161b8232208bbc00820342a32fb1f69bff6326ae1370'
+            # dear-gcc10-please-ignore-the-mess patch
+            '97ac1bff7beb5205b89b5199c471ca076023718e52be3d77e219128811337301'
 )
 
 _kernelname=${pkgbase#linux}
@@ -53,6 +57,9 @@ prepare() {
 
   # Implement cpu optimisation (MZEN2) patch from our gentoo lords
   git apply ../5012_enable-cpu-optimizations-for-gcc91.patch
+
+  # ask gcc10 for forgiveness in these early times patch
+  git apply ../gcc10.patch
 
   # get kernel version
   yes "" | make prepare
