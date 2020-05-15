@@ -10,6 +10,7 @@ pkgbase = st-ziro-git
 	makedepends = libxext
 	makedepends = git
 	depends = libxft
+	optdepends = picom
 	provides = st
 	conflicts = st
 	options = zipman

@@ -8,6 +8,7 @@ url='https://github.com/null2264/st-zi'
 arch=('i686' 'x86_64')
 license=('MIT')
 options=('zipman')
+optdepends=('picom')
 depends=('libxft')
 makedepends=('ncurses' 'libxext' 'git')
 
@@ -35,11 +36,8 @@ build() {
 
 package() {
   cd ${_pkgname}
-  make PREFIX=/usr DESTDIR="$pkgdir" TERMINFO="$pkgdir/usr/share/terminfo" install
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
 
-  # Avoid conflict with ncurses package
-  rm "$pkgdir/usr/share/terminfo/s/st"
-  rm "$pkgdir/usr/share/terminfo/s/st-256color"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 "$srcdir/st.desktop" "$pkgdir/usr/share/applications/st.desktop"
