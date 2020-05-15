@@ -1,0 +1,19 @@
+pkgbase = libxft-bgra-git
+	pkgdesc = libXft with BGRA glyph (color emoji) rendering & scaling patches
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/justanoobcoder/libxft-bgra.git
+	arch = x86_64
+	groups = modified
+	license = custome
+	makedepends = git
+	makedepends = pkgconfig
+	depends = fontconfig
+	depends = libxrender
+	provides = libxft
+	conflicts = libxft
+	source = https://github.com/justanoobcoder/libxft-bgra.git/releases/individual/lib/libXft-.tar.bz2
+	source = https://github.com/justanoobcoder/libxft-bgra.git/releases/individual/lib/libXft-.tar.bz2.sig
+
+pkgname = libxft-bgra-git
+
