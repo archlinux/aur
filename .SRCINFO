@@ -1,7 +1,7 @@
 pkgbase = fs2_open
 	pkgdesc = An enhancement of the FreeSpace 2 engine
-	pkgver = 3.8.0
-	pkgrel = 2
+	pkgver = 19.0.0
+	pkgrel = 1
 	url = http://scp.indiegames.us
 	install = fs2_open.install
 	arch = i686
@@ -23,12 +23,12 @@ pkgbase = fs2_open
 	optdepends = fs2_open-data: extensive retail data
 	optdepends = wxlauncher: cross-platform fs2 launcher
 	conflicts = fs2_open-git
-	source = https://github.com/scp-fs2open/fs2open.github.com/releases/download/release_3_8_0/fs2_open_3_8_0-source-Unix.tar.gz
+	source = https://github.com/scp-fs2open/fs2open.github.com/releases/download/release_19_0_0/fs2_open_19_0_0-source-Unix.tar.gz
 	source = fs2_open
 	source = fs2_open.desktop
 	source = options
-	sha256sums = d26ff8b666bdae1e9f42abaf2f498db361093f2289da78555f1f6fbba7562227
-	sha256sums = ba7f8c62c41259223186b400ddcbb2c80665d27c6c34e0a5eca50b79450d2214
+	sha256sums = 951cc1ad0a3c899dd53515eb1a97c3c719dd84bddbdd01dd9177884f9925628e
+	sha256sums = 0d1c3710d9f1c92124a2b827119110b3f248a574fe9c1da6f7223945975092d0
 	sha256sums = cac8914fb96eb4f09d8dec0005ccb3626499ab9f3f4c5f64c11bd8d2e913e372
 	sha256sums = c593dacd19705f1aaf23170d7b65b4621945200d3a496e256f77e3f1f0279741
 
