@@ -1,18 +1,18 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
-pkgname='rednukem-git'
+pkgname=rednukem-git
 pkgver=Betav6.r12.g20dbaa8
 pkgrel=1
 pkgdesc='Redneck Rampage and Duke Nukem 3D port based on EDuke32'
 arch=('i686' 'x86_64')
 url='https://github.com/nukeykt/NRedneck'
-license=('GPL' 'custom: BUILD')
-depends=('sdl2_mixer' 'libgl' 'libvpx' 'flac' 'gtk2')
+license=('GPL2' 'custom:BUILD SOURCE CODE LICENSE TERMS')
+depends=('sdl2_mixer' 'libvpx' 'gtk2')
 makedepends=('mesa' 'glu' 'gendesk' 'imagemagick')
 makedepends_i686=('nasm')
-install='post_install'
+install=post_install
 source=("git+${url}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/NRedneck"
@@ -30,7 +30,7 @@ package() {
   cd "${srcdir}/NRedneck"
   install -d "${pkgdir}/usr/bin"
   install -m755 rednukem "${pkgdir}/usr/bin/"
-  install -Dm644 "package/common/buildlic.txt" "${pkgdir}/usr/share/licenses/rednukem/LICENSE"
+  install -Dm644 "package/common/buildlic.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 rednukem-10.png "${pkgdir}/usr/share/pixmaps/rednukem.png"
   install -Dm644 "rednukem.desktop" "${pkgdir}/usr/share/applications/rednukem.desktop"
 }

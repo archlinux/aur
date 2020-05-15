@@ -1,3 +1,5 @@
+# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+
 post_install() {
   echo "Remember you need 'Duke Nukem 3D' data files to play. You can put them under"
   echo "~/.config/rednukem/'."
