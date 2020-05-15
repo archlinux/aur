@@ -1,4 +1,4 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Helder Bertoldo <helder.bertoldo@gmail.com>
 
 pkgname=torrential-git
@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 url="https://github.com/davidmhewitt/torrential"
 license=(GPL2)
 depends=(libgranite.so libunity libevent libnatpmp libb64 dht miniupnpc libutp)
-makedepends=(git cmake vala-0.42)
+makedepends=(git cmake vala0.42)
 provides=(torrential)
 conflicts=(torrential)
 source=("git+https://github.com/davidmhewitt/torrential.git"
