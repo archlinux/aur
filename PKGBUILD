@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='A GUI front-end for youtube-dl, partly based on youtube-dl-gui and written in Python 3 / Gtk 3'
 arch=('any')
 url='https://github.com/axcore/tartube'
-license=('GPL-3.0')
+license=('GPL3')
 depends=('python'
          'gtk3'
          'ffmpeg'
@@ -26,10 +26,8 @@ package() {
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   mv "${pkgdir}/tartube/icons" "${pkgdir}/usr/lib/python3.8/site-packages/tartube/"
   rm -rvf "${pkgdir}/tartube/"
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}" \
-   "${pkgdir}/usr/share/applications" \
+  install -d "${pkgdir}/usr/share/applications" \
    "${pkgdir}/usr/share/pixmaps"
-  ln -s /usr/share/licenses/common/GPL3/license.txt "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 pack/tartube.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm644 pack/tartube.desktop -t "${pkgdir}/usr/share/applications"
 }
