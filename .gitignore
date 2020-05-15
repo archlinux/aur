@@ -1,0 +1,4 @@
+*~
+*.log
+cryptpad-*.tar.[gx]z
+cryptpad-*.tar.zst
