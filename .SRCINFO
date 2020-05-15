@@ -1,18 +1,15 @@
 pkgbase = rocprim
-	pkgdesc = ROCm Parallel Primitives
+	pkgdesc = Header-only library providing HIP parallel primitives
 	pkgver = 3.3.0
 	pkgrel = 2
 	url = https://github.com/ROCmSoftwarePlatform/rocPRIM
 	arch = x86_64
-	license = custom:NCSAOSL
+	license = MIT
 	makedepends = cmake
 	makedepends = hcc
-	makedepends = python2
-	makedepends = rocminfo
-	makedepends = comgr
-	depends = hcc
-	depends = hip
-	source = https://github.com/ROCmSoftwarePlatform/rocPRIM/archive/rocm-3.3.0.tar.gz
+	makedepends = git
+	depends = hip-hcc
+	source = rocprim-3.3.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocPRIM/archive/rocm-3.3.0.tar.gz
 	sha256sums = 506c014bd573ba1473230087ca30394ca6ef34f58e7248a858342b2173009000
 
 pkgname = rocprim
