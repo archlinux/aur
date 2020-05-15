@@ -1,33 +1,30 @@
-# Maintainer: Alexander Kempen <alexander dot kempen at posteo dot de>
+# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Maintainer: Andri Yngvason <andri@yngvason.is>
+
 pkgname=wayvnc-git
-_pkgname=wayvnc
-pkgver=r208.9b48290
+pkgver=0.1.2+81.g9b48290d09
 pkgrel=1
-license=("ISC")
-pkgdesc="This is a VNC server for wlroots based Wayland compositors."
-makedepends=("meson" "git" "ninja")
-depends=("libxkbcommon" "pixman" "neatvnc-git" "libglvnd" "gnutls")
-optdepends=()
-arch=("i686" "x86_64")
-url="https://github.com/any1/wayvnc"
-source=("${_pkgname%-*}::git+https://github.com/any1/wayvnc.git")
+pkgdesc='VNC server for wlroots-based Wayland compositors'
+arch=(x86_64 i686)
+url=https://github.com/any1/wayvnc
+license=(custom:ISC)
+depends=(libglvnd libxkbcommon libuv pixman neatvnc-git)
+makedepends=(git meson ninja aml-git)
+source=("git+$url")
 sha512sums=('SKIP')
+conflicts=(wayvnc)
+provides=(wayvnc=${pkgver%+*})
 
 pkgver() {
-	cd "$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git -C wayvnc describe --tags --abbrev=10 | sed 's/^v//; s/-/+/; s/-/./'
 }
 
 build() {
-	cd "$_pkgname"
-	meson \
-		--buildtype=release \
-		--prefix /usr \
-		"$srcdir/build"
-	ninja -C "$srcdir/build"
+  arch-meson wayvnc build # --prefix /usr
+  ninja -C build
 }
 
 package() {
-	cd "$_pkgname"
-	DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
+  DESTDIR="$pkgdir" ninja -C build install
+  install -Dm 644 wayvnc/COPYING -t "$pkgdir"/usr/share/licenses/$pkgname
 }
