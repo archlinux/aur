@@ -1,0 +1,16 @@
+pkgbase = epy-git
+	pkgdesc = CLI Ebook Reader, fork of epr with minor improvements
+	pkgver = r79.45c1cde
+	pkgrel = 1
+	url = https://github.com/wustho/epy
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = epy
+	source = git+https://github.com/wustho/epy.git
+	sha256sums = SKIP
+
+pkgname = epy-git
+
