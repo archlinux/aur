@@ -1,5 +1,6 @@
 # Maintainer: Lorenzo Cappelletti <lorenzo.cappelletti gmail.com>
 
+pkgbase=python-mbed-os-tools
 pkgname=(
   'python-mbed-os-tools'
   'python-mbed-ls'
@@ -15,10 +16,10 @@ pkgver=0.0.13
 pkgrel=2
 pkgdesc="The tools to test and work with Mbed OS"
 arch=('any')
-url="https://developer.mbed.org"
+url="https://os.mbed.org"
 license=('Apache')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("python-mbed-os-tools-${pkgver}.tar.gz::https://github.com/ARMmbed/mbed-os-tools/archive/v${pkgver}.tar.gz")
+source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/ARMmbed/mbed-os-tools/archive/v${pkgver}.tar.gz")
 sha256sums=('a50772dfe1a3862897cb668452b846844a29a8c59503ddb3e95bcd59dab41e09')
 
 _remove_test() {
