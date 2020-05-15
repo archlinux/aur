@@ -5,7 +5,7 @@
 
 pkgname=pass-git
 pkgver=1.7.3.r23.g07b169e
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely'
 arch=('any')
@@ -14,7 +14,9 @@ license=('GPL2')
 depends=('bash' 'gnupg' 'tree')
 optdepends=('git: for Git support'
             'dmenu: for passmenu'
-            'qrencode: for QR code support')
+            'qrencode: for QR code support'
+            'wl-clipboard: For wlroots-based Wayland clipboard support'
+            'xclip: For X11 clipboard support')
 makedepends=('git')
 provides=('pass')
 conflicts=('pass')

@@ -1,7 +1,7 @@
 pkgbase = pass-git
 	pkgdesc = Stores, retrieves, generates, and synchronizes passwords securely
 	pkgver = 1.7.3.r23.g07b169e
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.passwordstore.org/
 	arch = any
@@ -13,6 +13,8 @@ pkgbase = pass-git
 	optdepends = git: for Git support
 	optdepends = dmenu: for passmenu
 	optdepends = qrencode: for QR code support
+	optdepends = wl-clipboard: For wlroots-based Wayland clipboard support
+	optdepends = xclip: For X11 clipboard support
 	provides = pass
 	conflicts = pass
 	source = git+https://git.zx2c4.com/password-store.git
