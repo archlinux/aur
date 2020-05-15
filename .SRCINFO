@@ -1,6 +1,6 @@
 pkgbase = sync_gateway-git
 	pkgdesc = Manages access and synchronization between Couchbase Lite and Couchbase Server - Open Source Edition (OSE)
-	pkgver = 2.7.2.r183.82489a31
+	pkgver = 2.7.3.r188.717fe5f3
 	pkgrel = 1
 	url = https://github.com/couchbase/sync_gateway
 	arch = any
