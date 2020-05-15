@@ -6,7 +6,7 @@ _author=raggesilver-proton
 _pkg=("${_gitname}-ide")
 pkgname=("${_pkg}-git")
 pkgver=r182.e6b754e
-pkgrel=2
+pkgrel=3
 pkgdesc="A new IDE made with Vala."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/${_author}/${_gitname}"
@@ -37,20 +37,21 @@ pkgver() {
 
 prepare() {
 	cd "${_gitname}/"
+	
 	git submodule init
-	git config submodule.proton-runner-plugin.url $srcdir/plugins/runner
+	git config submodule.proton-runner-plugin.url $srcdir/proton-runner-plugin
 	git submodule update
 
 	git submodule init
-	git config submodule.proton-editorconfig-plugin.url $srcdir/plugins/editorconfig
+	git config submodule.proton-editorconfig-plugin.url $srcdir/proton-editorconfig-plugin
 	git submodule update
 
 	git submodule init
-	git config submodule.proton-autobracket-plugin.url $srcdir/plugins/autobracket
+	git config submodule.proton-autobracket-plugin.url $srcdir/proton-autobracket-plugin
 	git submodule update
 
 	git submodule init
-	git config submodule.proton-templates.url data/templates
+	git config submodule.proton-templates.url $srcdir/proton-templates
 	git submodule update	
 }
 
