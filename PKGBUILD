@@ -6,8 +6,12 @@ pkgrel=1
 pkgdesc="IDE designed from the ground up for Python, to bring you a more productive development experience"
 arch=('x86_64')
 url="https://wingware.com"
-license=('custom')
-depends=('python' 'xcb-util-wm')
+license=("custom:${pkgname}")
+depends=('python'
+        'hicolor-icon-theme'
+        'qt5-svg'
+        'lib32-glibc'
+        'python2')
 provides=('wing')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.bz2::https://wingware.com/pub/wing-personal/${pkgver}/wing-personal-${pkgver}-linux-x64.tar.bz2")
