@@ -1,6 +1,6 @@
 pkgbase = mailspring
 	pkgdesc = A beautiful, fast and maintained fork of Nylas Mail by one of the original authors.
-	pkgver = 1.7.5
+	pkgver = 1.7.6
 	pkgrel = 1
 	url = https://getmailspring.com/
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = mailspring
 	optdepends = libgnome-keyring: keyrings
 	optdepends = gnome-keyring: keyrings
 	options = !strip
-	source_x86_64 = https://github.com/Foundry376/Mailspring/releases/download/1.7.5/mailspring-1.7.5-amd64.deb
-	sha256sums_x86_64 = 2789645c8e649dd88ed4850bfefac6764b4e13b38eef52e1f9dc26653609e61d
+	source_x86_64 = https://github.com/Foundry376/Mailspring/releases/download/1.7.6/mailspring-1.7.6-amd64.deb
+	sha256sums_x86_64 = 176a73fc1f209f01824e9ed1d85c091ff94207c9f5578974e4335f8b8536ca8d
 
 pkgname = mailspring
 
