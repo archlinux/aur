@@ -1,7 +1,7 @@
 # Maintainer: Syaoran Code <syaorancode@gmail.com>
 pkgname=libxft-bgra-git
 _dir=libxft-bgra
-pkgver=1.0
+pkgver=2.3.3.r1.dda4979
 pkgrel=1
 pkgdesc="libXft with BGRA glyph (color emoji) rendering & scaling patches"
 arch=('x86_64')
@@ -9,10 +9,11 @@ license=('custome')
 groups=('modified')
 provides=('libxft')
 conflicts=('libxft')
-url="https://github.com/justanoobcoder/libxft-bgra.git"
+url="https://gitlab.com/justanoobcoder/libxft-bgra.git"
 depends=('fontconfig' 'libxrender')
 makedepends=('git' 'pkgconfig')
-source=(${url}/releases/individual/lib/libXft-${_pkgbasever}.tar.bz2{,.sig})
+source=("git+$url")
+md5sums=('SKIP')
 
 pkgver() {
     cd "${_dir}"
