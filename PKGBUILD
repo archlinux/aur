@@ -1,7 +1,7 @@
 # Maintainer: Andrey Burov <burik666@gmail.com>
 
 pkgname=yagostatus-git
-pkgver=v0.4.0.r1.g32dbd57
+pkgver=v1.0.0.r0.gb784b35
 pkgrel=1
 pkgdesc='Yet Another i3status replacement written in Go.'
 arch=('x86_64' 'i686')
