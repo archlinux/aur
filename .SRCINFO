@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-transparent-window-moving-git
 	pkgdesc = Makes the window semi-transparent when moving or resizing.
-	pkgver = r19.12eb05f
+	pkgver = r22.985e48a
 	pkgrel = 1
 	url = https://github.com/Noobsai/transparent-window-moving
 	arch = any

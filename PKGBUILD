@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gnome-shell-extension-transparent-window-moving-git
-pkgver=r19.12eb05f
+pkgver=r22.985e48a
 pkgrel=1
 pkgdesc="Makes the window semi-transparent when moving or resizing."
 arch=('any')
