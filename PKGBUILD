@@ -3,7 +3,7 @@
 # Maintainer: Andrey Vetrov <vetrov at mail dot ru>
 
 pkgname=cinnamon-slim
-pkgver=4.4.8
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="Innovative Linux desktop. Slim version."
 arch=('x86_64')
@@ -15,9 +15,9 @@ replaces=('cinnamon')
 
 depends=('accountsservice' 'caribou' 'cinnamon-control-center' 'cinnamon-menus' 'cinnamon-screensaver'
          'cinnamon-session' 'cinnamon-settings-daemon' 'cjs' 'gnome-backgrounds'
-         'gnome-themes-extra' 'gstreamer' 'libgnomekbd' 'libkeybinder3' 'librsvg' 'muffin'
-         'nemo' 'polkit-gnome' 'python-cairo' 'python-dbus' 'python-gobject' 'python-pam'
-         'python-pexpect' 'python-pillow' 'python-pyinotify' 'python-pytz' 'python-tinycss'
+         'gnome-themes-extra' 'gstreamer' 'libcroco' 'libgnomekbd' 'libkeybinder3' 'librsvg' 'muffin'
+         'nemo' 'polkit-gnome' 'python-cairo' 'python-dbus' 'python-distro' 'python-gobject' 'python-pam'
+         'python-pexpect' 'python-pillow' 'python-pyinotify' 'python-pytz' 'python-tinycss2'
          'python-xapp' 'timezonemap' 'xapps')
 optdepends=('blueberry: Bluetooth support'
             'cinnamon-translations: i18n'
@@ -28,7 +28,7 @@ makedepends=('intltool' 'gtk-doc' 'gobject-introspection')
 options=('!emptydirs')
 source=("${pkgname%-*}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "0001-cinnamon-settings-don-t-rely-on-the-presence-of-cinn.patch"
-        "set_wheel.patch"
+        "set_wheel.diff"
         "default-theme.patch")
 
 sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
@@ -41,7 +41,7 @@ prepare() {
     patch --no-backup-if-mismatch -p1 -i ../0001-cinnamon-settings-don-t-rely-on-the-presence-of-cinn.patch
 
     # Use wheel group instread of sudo (taken from Fedora)
-    patch -Np1 -i ../set_wheel.patch
+    patch -Np1 -i ../set_wheel.diff
 
     # Set default theme to 'cinnamon'
     patch -Np1 -i ../default-theme.patch
