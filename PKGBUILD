@@ -4,13 +4,14 @@ pkgname=release
 pkgver=6.1.0
 pkgrel=1
 pkgdesc="Generate changelogs with a single command"
-arch=('x86_64')
+arch=('any')
 url='https://npmjs.com/release'
 license=('MIT')
+depends=('nodejs')
 makedepends=('npm')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zeit/release/archive/${pkgver}.tar.gz")
-md5sums=('fd9de7204acac7432236cf6585350702')
+sha256sums=('7b93d098639825db873598e6c175c04a2466cc1006d1333273192ecedd73d2f9')
 
 package() {
   npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
@@ -22,4 +23,5 @@ package() {
   mv "$tmppackage" "$pkgjson"
   chmod 644 "$pkgjson"
   chown -R root:root "${pkgdir}"
+  install -Dm644 "${pkgdir}/usr/lib/node_modules/release/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

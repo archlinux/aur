@@ -3,12 +3,13 @@ pkgbase = release
 	pkgver = 6.1.0
 	pkgrel = 1
 	url = https://npmjs.com/release
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = npm
+	depends = nodejs
 	noextract = release-6.1.0.tar.gz
 	source = release-6.1.0.tar.gz::https://github.com/zeit/release/archive/6.1.0.tar.gz
-	md5sums = fd9de7204acac7432236cf6585350702
+	sha256sums = 7b93d098639825db873598e6c175c04a2466cc1006d1333273192ecedd73d2f9
 
 pkgname = release
 
