@@ -1,6 +1,6 @@
 pkgbase = zmusic-git
 	pkgdesc = GZDoom's music system as a standalone library (git version)
-	pkgver = 1.1.0+2+gb9d22fb
+	pkgver = 1.1.0+4+gfbb3a50
 	pkgrel = 1
 	url = https://github.com/coelckers/ZMusic
 	arch = x86_64
@@ -24,8 +24,8 @@ pkgbase = zmusic-git
 	source = 0001-Use-correct-soundfont-path.patch
 	sha256sums = SKIP
 	sha256sums = 6c1b5bf589e5c36186869276ade865d35fdf860241dcd2e0f557e5a82dfd066f
-	source_x86_64 = libzmusic.so.arch.1-1.1.0-x86_64.dump.gz
-	source_x86_64 = libzmusiclite.so.arch.1-1.1.0-x86_64.dump.gz
+	source_x86_64 = libzmusic.so.1-1.1.0-x86_64.dump.gz
+	source_x86_64 = libzmusiclite.so.1-1.1.0-x86_64.dump.gz
 	sha256sums_x86_64 = eb6276f8bbd6db3e2e0bb742138ea4e3a273663128311c7a9df4f254236bbd35
 	sha256sums_x86_64 = d490fe9bdd34e5622c2dbda3d605d49545ae1cc17abda6f0c5c898a0087e2123
 
