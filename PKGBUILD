@@ -5,11 +5,12 @@ pkgver=1.0.1
 pkgrel=1
 pkgdesc="Gather metadata about your S3 buckets"
 url="https://github.com/whitfin/s3-meta"
+depends=('openssl')
 makedepends=('cargo')
 arch=('x86_64')
 license=('MIT')
-source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('89d09b6108aa9caf4b7091046f3784d4')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('d6db48f3dfc3b9955d3a810c314ecd81dd0eda23e2260c046bb88606c122c290')
 
 build() {
   cd "$pkgname-$pkgver"
