@@ -1,11 +1,14 @@
 pkgbase = lua-copas
 	pkgdesc = A dispatcher based on coroutines that can be used by TCP/IP servers
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://keplerproject.github.io/copas
 	arch = x86_64
 	arch = i686
 	license = MIT
+	makedepends = lua
+	makedepends = lua52
+	makedepends = lua51
 	makedepends = luarocks
 	source = copas-2.0.2.tar.gz::https://github.com/keplerproject/copas/archive/2.0.2.tar.gz
 	sha256sums = 1469eaf987513f5a9a0bee345c040c8fa30ca6194bc75ad78171362f9904cf3e
