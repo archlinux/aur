@@ -1,11 +1,11 @@
 # Maintainer: K. Morton <pryre.dev@outlook.com>
 # Contributor: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=qgroundcontrol-git
-pkgver=r14118.0871b019d
-pkgrel=3
+pkgver=r16572.c24029938
+pkgrel=1
 pkgdesc="Micro air vehicle ground control station."
 arch=('x86_64')
-url="http://qgroundcontrol.org/"
+url="https://github.com/mavlink/qgroundcontrol"
 license=('GPL3')
 
 depends=('bzip2'
@@ -30,8 +30,8 @@ depends=('bzip2'
 		 'pcre'
 		 'sdl2'
 		 'xz'
-		 'zlib'
 		 'icu'
+		 'zlib'
 		 'qt5-speech'
 		 'qt5-multimedia'
 		 'qt5-serialport'
@@ -40,13 +40,17 @@ depends=('bzip2'
 		 'qt5-quickcontrols2'
 		 'qt5-location'
 		 'qt5-svg'
+		 'qt5-graphicaleffects'
+		 'qt5-tools'
+		 'qt5-wayland'
+		 'qt5-x11extras'
 )
 
 makedepends=('git' 'qt5-base')
 
 source=('qgroundcontrol::git+https://github.com/mavlink/qgroundcontrol.git')
 
-sah256sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
