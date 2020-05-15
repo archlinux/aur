@@ -1,7 +1,7 @@
 # Maintainer: Hekuran https://github.com/narukeh
 
 pkgname=sm64pc-git
-pkgver=r118.0ec63e4
+pkgver=r154.94d7ee2
 pkgrel=1
 pkgdesc='Super Mario 64-PC - OpenGL adaptation of n64decomp/sm64'
 arch=('any')
@@ -40,4 +40,6 @@ build() {
 package() {
 	install -Dm755 "$srcdir/../sm64pc-xdg" "${pkgdir}/usr/bin/sm64pc"
 	install -Dm755 "$srcdir/$_gitname/build/${_region}_pc/sm64.${_region}".* "${pkgdir}/usr/bin/sm64pc.bin"
+	install -Dm755 "$srcdir/../sm64pc.desktop" "${pkgdir}/usr/share/applications/sm64pc.desktop"
+	install -Dm755 "$srcdir/../SuperMario64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/SuperMario64.png"
 }
