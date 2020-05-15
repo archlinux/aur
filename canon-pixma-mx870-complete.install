@@ -16,6 +16,7 @@ post_install() {
 	if [ -x /usr/bin/ldconfig ]; then
 		/sbin/ldconfig
 	fi
+
 	# Make symbolic link for the ppd file
 	if [ ! -d ${_cups_path2} ]; then
 		mkdir ${_cups_path2}
@@ -33,6 +34,7 @@ post_install() {
 	if [ -x /usr/bin/ldconfig ]; then
 		/sbin/ldconfig
 	fi
+
 	# Make symbolic link for GIMP-plug-in
 	if [ -d ${_gimp2dir1} ]; then
 		ln -fs /usr/bin/scangearmp ${_gimp2dir1}/scangearmp
@@ -58,14 +60,15 @@ post_remove() {
 	if [ -x /usr/bin/ldconfig ]; then
 		/sbin/ldconfig
 	fi
+
 	# Remove cnbp* libs
 	for LIBS in libcnnet; do
-		if [ -h /usr/lib32/${LIBS}.so ]; then
-			unlink /usr/lib32/${LIBS}.so
+		if [ -h /usr/lib/${LIBS}.so ]; then
+			unlink /usr/lib/${LIBS}.so
 		fi	
 	done
 	if [ "$1" = 0 ]; then
-		rmdir -p --ignore-fail-on-non-empty /usr/lib32/bjlib
+		rmdir -p --ignore-fail-on-non-empty /usr/lib/bjlib
 	fi
 
 
@@ -83,18 +86,21 @@ post_remove() {
 	if [ -x /usr/bin/ldconfig ]; then
 		/sbin/ldconfig
 	fi
+
 	# Remove cnbp* libs
 	for LIBS in libcnbpcmcm libcnbpcnclapi libcnbpcnclbjcmd libcnbpcnclui libcnbpess libcnbpo; do
-		if [ -h /usr/lib32/${LIBS}${model_num}.so ]; then
-			unlink /usr/lib32/${LIBS}${model_num}.so
+		if [ -h /usr/lib/${LIBS}${model_num}.so ]; then
+			unlink /usr/lib/${LIBS}${model_num}.so
 		fi	
 	done
+
 	# Remove directories
 	if [ "$1" = 0 ] ; then
 		rmdir -p --ignore-fail-on-non-empty /usr/share/locale/*/LC_MESSAGES
 		rmdir -p --ignore-fail-on-non-empty /usr/share/cngpijmon${model_name}
 		rmdir -p --ignore-fail-on-non-empty /usr/share/printui${model_name}
 	fi
+
 	# Remove symbolic link for ppd
 	unlink ${_cups_path2}/${ppd_name}
 	update-desktop-database -q
@@ -108,8 +114,8 @@ post_remove() {
 
 	for LIBS in libcncpmsimg libcncpmslld libcncpcmcm libcncpmsui libcncpnet
 	do
-		if [ -h /usr/lib32/${LIBS}.so ]; then
-			unlink /usr/lib32/${LIBS}.so
+		if [ -h /usr/lib/${LIBS}.so ]; then
+			unlink /usr/lib/${LIBS}.so
 		fi	
 	done
 
@@ -133,15 +139,17 @@ post_remove() {
 	if [ -x /usr/bin/ldconfig ]; then
 		/sbin/ldconfig
 	fi
+
 	# Remove cncp* libs
 	for LIBS in libcncpmsimg libcncpmslld; do
-		if [ -h /usr/lib32/${LIBS}${model_num}.so ]; then
-			unlink /usr/lib32/${LIBS}${model_num}.so
+		if [ -h /usr/lib/${LIBS}${model_num}.so ]; then
+			unlink /usr/lib/${LIBS}${model_num}.so
 		fi	
-		if [ -h /usr/lib32/${LIBS}${model_num}c.so ]; then
-			unlink /usr/lib32/${LIBS}${model_num}c.so
+		if [ -h /usr/lib/${LIBS}${model_num}c.so ]; then
+			unlink /usr/lib/${LIBS}${model_num}c.so
 		fi	
 	done
+
 	# Remove .desktop file and icon
 	if [ -f /usr/share/applications/canon-pixma-mx870-complete-scangearmp.desktop ]; then
 		rm -f /usr/share/applications/canon-pixma-mx870-complete-scangearmp.desktop
