@@ -2,7 +2,7 @@
 
 pkgname=srfetch-git
 _dir=srfetch
-pkgver=7.0.0.r3.a222174
+pkgver=7.0.0.r4.653e5ad
 pkgrel=1
 pkgdesc="This is modified neofetch script only for me."
 arch=(x86_64 i686)
