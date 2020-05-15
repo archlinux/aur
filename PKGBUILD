@@ -15,8 +15,8 @@
 
 pkgname=fs2_open
 _pkgname=fs2open
-pkgver=3.8.0
-_pkgver=3_8_0 # Upstream's url/dirs
+pkgver=19.0.0
+_pkgver=19_0_0 # Upstream's url/dirs
 pkgrel=2
 pkgdesc="An enhancement of the FreeSpace 2 engine"
 url="http://scp.indiegames.us"
@@ -34,14 +34,14 @@ source=("https://github.com/scp-fs2open/fs2open.github.com/releases/download/rel
         'fs2_open'
         'fs2_open.desktop'
         'options')
-sha256sums=('d26ff8b666bdae1e9f42abaf2f498db361093f2289da78555f1f6fbba7562227'
-            'ba7f8c62c41259223186b400ddcbb2c80665d27c6c34e0a5eca50b79450d2214'
+sha256sums=('951cc1ad0a3c899dd53515eb1a97c3c719dd84bddbdd01dd9177884f9925628e'
+            '0d1c3710d9f1c92124a2b827119110b3f248a574fe9c1da6f7223945975092d0'
             'cac8914fb96eb4f09d8dec0005ccb3626499ab9f3f4c5f64c11bd8d2e913e372'
             'c593dacd19705f1aaf23170d7b65b4621945200d3a496e256f77e3f1f0279741')
 build() {
   cd "${_pkgname}.github.com"
 
-  mkdir build
+  mkdir -p build
   cd build
   cmake ../
   make
@@ -50,7 +50,7 @@ build() {
 package() {
   cd "${_pkgname}.github.com"
   binary=`find build/bin/fs2_open*`	
-  install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 Copying.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -D -m644 ../fs2_open.desktop "$pkgdir/usr/share/applications/fs2_open.desktop"
   install -D -m644 ../options "$pkgdir/usr/share/$pkgname/options"
   install -D -m755 ${binary} "$pkgdir/opt/$pkgname/fs2_open_$pkgver"
