@@ -6,8 +6,8 @@ pkgbase = s3-edit-bin
 	arch = x86_64
 	license = MIT
 	provides = s3-edit
-	source = https://github.com/tsub/s3-edit/releases/download/v0.0.13/s3-edit_0.0.13_linux_amd64.tar.gz
-	md5sums = e6717f9c2c905f376d6450fad4979d33
+	source = s3-edit-bin-0.0.13.tar.gz::https://github.com/tsub/s3-edit/releases/download/v0.0.13/s3-edit_0.0.13_linux_amd64.tar.gz
+	sha256sums = 76c276a1f106732323e5850699cda83ebdde9ca7a7c293e3fd36fdcc8425ad7c
 
 pkgname = s3-edit-bin
 
