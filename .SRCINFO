@@ -5,14 +5,15 @@ pkgbase = workstation-git
 	url = https://github.com/amar-laksh/workstation
 	arch = i686
 	arch = x86_64
-	license = GPL-2.0
+	license = GPL2
 	makedepends = cargo
 	makedepends = opencv2
 	depends = libnotify
 	depends = notify-osd
+	depends = opencv2
 	provides = workstation
 	source = git+https://github.com/amar-laksh/workstation
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = workstation-git
 

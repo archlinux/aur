@@ -6,12 +6,12 @@ pkgrel=1
 pkgdesc='A nifty commandline tool to manage your workstation'
 arch=('i686' 'x86_64')
 url='https://github.com/amar-laksh/workstation'
-license=('GPL-2.0')
+license=('GPL2')
 provides=('workstation')
-depends=('libnotify' 'notify-osd')
+depends=('libnotify' 'notify-osd' 'opencv2')
 makedepends=('cargo' 'opencv2')
 source=("git+${url}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/workstation"
@@ -26,7 +26,6 @@ build() {
 package() {
   cd workstation
   install -Dm755 target/release/workstation "${pkgdir}/opt/workstation/workstation"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/workstation/LICENSE"
   install -Dm644 haarcascade_frontalface_alt.xml -t "${pkgdir}/opt/workstation/"
   mkdir -p "${pkgdir}/usr/bin/"
   ln -s /opt/workstation/workstation "${pkgdir}/usr/bin/workstation"
