@@ -8,7 +8,7 @@ license=('custom')
 _dlurl="https://www.snapgene.com/local/targets/viewer_download.php?os=linux_rpm&majorRelease=latest&minorRelease=latest"
 source=("$(curl --silent --head --location "$_dlurl" | grep -Po 'Location: \K.*rpm' | tail -n1 )")
 pkgver="$(grep -Po '\d(\d|\.)+\d' <<< "$source" | tail -n1)"
-sha512sums=('bf1f3e2c144e42e40484bc9d7c14440421634a34b39dbcd7f6a4cbdc084decae8f9bdb6ec807f6cffa46842088065bbcb224d13a8baaad3fbd963d2b6e9cbecd')
+sha512sums=('SKIP')
 
 package() {
     cd "$pkgdir"
