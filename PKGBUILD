@@ -1,6 +1,6 @@
 # Maintainer: Petr Šťastný <aur@soptik.tech>
 pkgname=desed-git
-pkgver=1.1.3.d54798c
+pkgver=1.1.4.cae6ecf
 pkgrel=1
 pkgdesc="Debugger for sed, written in rust. Step through code and observe sed inner state."
 arch=('x86_64')
@@ -30,4 +30,5 @@ package() {
     cd "$pkgname"
 
     install -D "target/release/desed" -t "$pkgdir/usr/bin"
+    install "desed.1" -t "$pkgdir$(manpath -g | cut -d':' -f1)/man1"
 }
