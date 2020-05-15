@@ -1,10 +1,9 @@
-# Maintainer: ValHue <vhuelamo at gmail dot com>
-#
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: ValHue <vhuelamo at gmail dot com>
-#
+
 _pkgname="mate-window-applets"
 pkgname="mate-window-buttons-applet"
-pkgver=19.10.2
+pkgver=20.04.0
 pkgrel=1
 pkgdesc="An applet for mate-panel to shows the close,minimize,actions in a panel."
 url="https://github.com/ubuntu-mate/mate-window-applets"
@@ -16,7 +15,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 options=('!strip')
 source=("mate-window-applets-${pkgver}::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('b537273f9b68427555d148a32b7fb87bf5a148ea697c5717a297f1c462a31b2d')
+sha256sums=('788dd84b1c8b8d9fe38453612f9058485d87e9f152ff7ea9e1681f005a360a48')
 
 build() {
     cd "${_pkgname}-${pkgver}"
