@@ -1,37 +1,39 @@
-# Maintainer: schalox <schalox at gmail dot com>
+# Maintainer: Brett Cornwall <ainola@archlinux.org>
+# Contributor: schalox <schalox at gmail dot com>
 # Contributor: Simon Zimmermann <simon@insmo.com>
 # Contributor: Jon Yamokoski <code@jonyamo.us>
 
 pkgname=pass-git
-pkgver=20170101.421
-pkgrel=2
+pkgver=1.7.3.r23.g07b169e
+pkgrel=1
+epoch=1
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely'
-url='http://www.passwordstore.org/'
-license=('GPL2')
 arch=('any')
-depends=('bash' 'git' 'gnupg' 'grep' 'tree>=1.7.0' 'xclip')
-optdepends=('dmenu: for passmenu'
+url='https://www.passwordstore.org/'
+license=('GPL2')
+depends=('bash' 'gnupg' 'tree')
+optdepends=('git: for Git support'
+            'dmenu: for passmenu'
             'qrencode: for QR code support')
 makedepends=('git')
-provides=('pass' 'passmenu')
-conflicts=('pass' 'passmenu')
-source=("$pkgname::git://git.zx2c4.com/password-store")
+provides=('pass')
+conflicts=('pass')
+source=("git+https://git.zx2c4.com/password-store.git")
 sha256sums=('SKIP')
 
-prepare() {
-    cd "$pkgname"
-    sed -i 's|$(DESTDIR)\($(PREFIX)\)|\1|' Makefile
+pkgver() {
+    cd password-store
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-pkgver() {
-    cd "$pkgname"
-    local _tmpver="$(git log -n 1 --format="%cd" --date=short)."
-    local _tmpver+="$(git rev-list --count HEAD)"
-    echo "${_tmpver//-/}"
+check() {
+    cd password-store
+    make test
 }
+
 package() {
-    cd "$pkgname"
-    make FORCE_ALL=1 DESTDIR="${pkgdir}" install
+    cd password-store
+    make DESTDIR="${pkgdir}" WITH_ALLCOMP=yes install
 
     cd contrib/dmenu
     install -Dm0755 passmenu "${pkgdir}/usr/bin/passmenu"
