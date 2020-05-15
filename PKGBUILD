@@ -1,8 +1,9 @@
-# Maintainer: Konstantinos Foutzopoulos <mail@konfou.xyz>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Konstantinos Foutzopoulos <mail@konfou.xyz>
 
 _hkgname=servant-client
 pkgname=haskell-servant-client
-pkgver=0.11
+pkgver=0.17
 pkgrel=1
 pkgdesc="automatical derivation of querying functions for servant webservices"
 url="https://haskell-servant.readthedocs.io"
@@ -32,7 +33,7 @@ depends=('ghc'
          'haskell-transformers-compat')
 options=('strip' 'staticlibs')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('ea6d2ba8183a9cc721e944659fc175a1e81ecac11dfcea9544ef07f7ccc92afa')
+sha256sums=('47c62942cf1d3bd04884edf1d50118cf36c134aa8b16de632eb512e9a6d9c104')
 
 build() {
   cd "${_hkgname}-${pkgver}"
