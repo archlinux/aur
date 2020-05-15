@@ -9,7 +9,7 @@ url='https://github.com/ivanilves/xiringuito'
 license=('Apache')
 depends=('bash')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('d77b35db299d049c393dacec6708fcc6a6122572ae46fda67d6ceec5104aa86e')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
