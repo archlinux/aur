@@ -10,7 +10,7 @@ url="http://cgit.freedesktop.org/xorg/app/xscope/"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'xorgproto' 'xtrans' 'xorg-util-macros')
-source=("http://xorg.freedesktop.org/archive/individual/app/xscope-${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::http://xorg.freedesktop.org/archive/individual/app/xscope-${pkgver}.tar.gz")
 sha256sums=('f99558a64e828cd2c352091ed362ad2ef42b1c55ef5c01cbf782be9735bb6de3')
 
 build() {
