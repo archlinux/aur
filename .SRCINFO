@@ -1,0 +1,16 @@
+pkgbase = visqol-git
+	pkgdesc = ViSQOL (Virtual Speech Quality Objective Listener) is an objective, full-reference metric for perceived audio quality
+	pkgver = r8.30abce1
+	pkgrel = 1
+	url = https://github.com/google/visqol
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = bazel
+	provides = visqol
+	conflicts = visqol
+	source = visqol::git+https://github.com/google/visqol.git
+	md5sums = SKIP
+
+pkgname = visqol-git
+
