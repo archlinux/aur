@@ -2,13 +2,13 @@
 
 pkgname='lego'
 pkgver=v3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lets Encrypt client and ACME library written in Go'
 url='https://go-acme.github.io/lego/'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 license=('MIT')
 provides=("${pkgname}")
-conflicts=("${pkgname}-git")
+conflicts=("${pkgname}-git" "${pkgname}-bin")
 
 depends=()
 makedepends=()

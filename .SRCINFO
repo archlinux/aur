@@ -1,7 +1,7 @@
 pkgbase = lego
 	pkgdesc = Lets Encrypt client and ACME library written in Go
 	pkgver = v3.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://go-acme.github.io/lego/
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = lego
 	license = MIT
 	provides = lego
 	conflicts = lego-git
+	conflicts = lego-bin
 	source_x86_64 = https://github.com/go-acme/lego/releases/download/v3.7.0/lego_v3.7.0_linux_amd64.tar.gz
 	sha256sums_x86_64 = d2328f3e087c1465c2582d9d38c992cdab460a24a7a89d3260af83cd143a8b39
 	source_i686 = https://github.com/go-acme/lego/releases/download/v3.7.0/lego_v3.7.0_linux_386.tar.gz
