@@ -8,6 +8,7 @@ pkgbase = radare2-cutter-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = shiboken2
+	depends = radare2-git
 	depends = python
 	depends = capstone
 	depends = qt5-base
