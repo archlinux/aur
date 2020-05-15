@@ -4,7 +4,7 @@ pkgbase=linux-slim
 _srcname=linux
 gitver=v5.6.13
 pkgver=5.6.v.13
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -21,14 +21,18 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         "${pkgbase}.preset"
 	# patch from our gentoo overlords
 	'5012_enable-cpu-optimizations-for-gcc91.patch'
+	# stackprotection fix
+	'stackcanary.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '816167474ae93f53ecd3bcaba08c1bbf03e822c8b6108ecfa0d11e5d1cc04524'
+            '6dee1c322adc62e3b95dcf4ffbffe50e269f8acbafa1e5deca8c3dda129ef858'
             #.preset file
             '41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367'
             #patch file
             'cc739c9c9f7ce08e6bbc161b8232208bbc00820342a32fb1f69bff6326ae1370'
+            #stackprotection fix
+            '74ac43843b60805cc21cdadf6f4768281a61106107154f6830f26d6c142343e6'
            )
 
 _kernelname=${pkgbase#linux}
@@ -56,6 +60,9 @@ prepare() {
 
   # Implement cpu optimisation (MZEN2) patch from our gentoo lords
   git apply ../5012_enable-cpu-optimizations-for-gcc91.patch
+
+  # Fix the source for stack canaries to work
+  git apply ../stackcanary.patch
 
   # get kernel version
   yes "" | make prepare
