@@ -16,7 +16,7 @@ provides=(glrpt)
 conflicts=(glrpt-git)
 makedepends=('make' 'automake' 'autoconf' 'xorgproto')
 source=("http://www.5b4az.org/pkg/lrpt/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('5aee4d813cd3a00e5c09ed5ee39be758')
+md5sums=('cd34fb66c9f0d0f1b8ceec7a4c29965e')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

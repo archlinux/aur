@@ -17,7 +17,7 @@ pkgbase = glrpt
 	provides = glrpt
 	conflicts = glrpt-git
 	source = http://www.5b4az.org/pkg/lrpt/glrpt-2.4.5.tar.bz2
-	md5sums = 5aee4d813cd3a00e5c09ed5ee39be758
+	md5sums = cd34fb66c9f0d0f1b8ceec7a4c29965e
 
 pkgname = glrpt
 
