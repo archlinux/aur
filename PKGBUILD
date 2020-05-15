@@ -6,13 +6,14 @@ pkgrel=1
 pkgdesc="Weboob is a project which provides a core library, modules and applications (QT apps)"
 arch=('any')
 url="https://weboob.org"
-license=('LGPL-3.0+')
+license=('LGPL3')
 install='weboob.install'
 depends=('weboob'
-         'python-pyqt5')
+         'python-pyqt5'
+         'hicolor-icon-theme')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/b5/e5/98adb98776803b4ed49f78edd4737162303b7558ab971d2220722c7cb552/weboob-qt-${pkgver}.tar.gz")
-md5sums=('fe4eb4478b2b08298acc874501595cac')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/b5/e5/98adb98776803b4ed49f78edd4737162303b7558ab971d2220722c7cb552/weboob-qt-${pkgver}.tar.gz")
+sha256sums=('a894c0e685317210c472058c6533a6e02e4d5c1e77c2ec0888e671fb98b99fd0')
 
 build() {
   cd "${pkgname}-${pkgver}"

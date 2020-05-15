@@ -5,12 +5,13 @@ pkgbase = weboob-qt
 	url = https://weboob.org
 	install = weboob.install
 	arch = any
-	license = LGPL-3.0+
+	license = LGPL3
 	makedepends = python-setuptools
 	depends = weboob
 	depends = python-pyqt5
-	source = https://files.pythonhosted.org/packages/b5/e5/98adb98776803b4ed49f78edd4737162303b7558ab971d2220722c7cb552/weboob-qt-2.0.tar.gz
-	md5sums = fe4eb4478b2b08298acc874501595cac
+	depends = hicolor-icon-theme
+	source = weboob-qt-2.0.tar.gz::https://files.pythonhosted.org/packages/b5/e5/98adb98776803b4ed49f78edd4737162303b7558ab971d2220722c7cb552/weboob-qt-2.0.tar.gz
+	sha256sums = a894c0e685317210c472058c6533a6e02e4d5c1e77c2ec0888e671fb98b99fd0
 
 pkgname = weboob-qt
 
