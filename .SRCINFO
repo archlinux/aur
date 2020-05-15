@@ -6,8 +6,9 @@ pkgbase = runiq
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/whitfin/runiq/archive/v1.1.4/runiq-1.1.4.tar.gz
-	md5sums = a4b5319b77f5d00ba9b42ffe3d19f8b7
+	depends = gcc-libs
+	source = runiq-1.1.4.tar.gz::https://github.com/whitfin/runiq/archive/v1.1.4/runiq-1.1.4.tar.gz
+	sha256sums = 44767f578653b7cd7507849e473ad8a96046bdc0ec9529c27c1c9ac778e4e9da
 
 pkgname = runiq
 
