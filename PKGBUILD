@@ -5,20 +5,27 @@ _gitname=proton
 _author=raggesilver-proton
 _pkg=("${_gitname}-ide")
 pkgname=("${_pkg}-git")
-pkgver=r182.e6b754e
+pkgver=v0.3.1.r0.ge6b754e
 pkgrel=1
 pkgdesc="A new IDE made with Vala."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/${_author}/${_gitname}"
+submodulesurl="https://gitlab.com/${_author}/proton"
 license=('GPL3')
-depends=('gtk3' 'granite' 'glib2' 'gtksourceview4' 'json-glib' 'libdazzle' 
-		 'marble-gtk' 'vte3')
+depends=('gtk3' 'granite' 'editorconfig-core-c' 'glib2' 'gtksourceview4' 'json-glib'
+		'libdazzle' 'marble-gtk' 'vte3')
 optdepends=('')
 makedepends=('git' 'meson>=0.50.0' 'vala')
 provides=("${_pkg}" "${pkgname}")
 conflicts=("${_pkg}")
-source=("git+${url}.git")
-md5sums=('SKIP')
+source=(
+	"git+${url}.git"
+	"git+${submodulesurl}-runner-plugin.git"
+	"git+${submodulesurl}-editorconfig-plugin.git"
+	"git+${submodulesurl}-autobracket-plugin.git"
+	"git+${submodulesurl}-templates.git"
+)
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd "${_gitname}"
@@ -26,6 +33,25 @@ pkgver() {
         git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
+}
+
+prepare() {
+	cd "${_gitname}/"
+	git submodule init
+	git config submodule.proton-runner-plugin.url $srcdir/plugins/runner
+	git submodule update
+
+	git submodule init
+	git config submodule.proton-editorconfig-plugin.url $srcdir/plugins/editorconfig
+	git submodule update
+
+	git submodule init
+	git config submodule.proton-autobracket-plugin.url $srcdir/plugins/autobracket
+	git submodule update
+
+	git submodule init
+	git config submodule.proton-templates.url data/templates
+	git submodule update	
 }
 
 build() {
