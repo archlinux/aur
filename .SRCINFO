@@ -1,6 +1,6 @@
 pkgbase = xine-lib-hg
 	pkgdesc = A multimedia playback engine (mercurial version)
-	pkgver = 1.2.9.r14420.88e48552a162
+	pkgver = 1.2.10.r14730.91312aae00d0
 	pkgrel = 1
 	url = https://www.xine-project.org/
 	arch = x86_64
@@ -53,7 +53,9 @@ pkgbase = xine-lib-hg
 	provides = xine-lib
 	conflicts = xine-lib
 	source = hg+http://hg.code.sf.net/p/xine/xine-lib-1.2
+	source = 010-xine-lib-hg-gcc10-fix.patch
 	sha256sums = SKIP
+	sha256sums = b5a42d16d83058e6e13adc384bf12d546f3f7072ece48b234ef415ec192a4457
 
 pkgname = xine-lib-hg
 
