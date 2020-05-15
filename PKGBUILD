@@ -2,12 +2,12 @@
 # Contributor: Simon Paul <simonpaul at mailbox dot org>
 
 pkgname=victory-icon-theme-git
-pkgver=1.1.a8ce414
-pkgrel=2
+pkgver=1.4.62b5344
+pkgrel=1
 pkgdesc='Victory Icon Theme, A GTK Icon Theme for Linux'
 arch=('any')
 url='https://gitlab.com/newhoa/victory-icon-theme'
-license=('GPL-3.0')
+license=('GPL3')
 makedepends=('git')
 provides=('victory-icon-theme')
 conflicts=('victory-icon-theme')
