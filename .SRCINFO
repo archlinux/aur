@@ -6,8 +6,10 @@ pkgbase = stegify-bin
 	arch = x86_64
 	license = MIT
 	provides = stegify
-	source = https://github.com/DimitarPetrov/stegify/releases/download/v1.2/stegify_linux_x86-64
-	md5sums = 9dbd74e6f52ed67bad384d57c84033a7
+	source = stegify-bin-1.2.tar.gz::https://github.com/DimitarPetrov/stegify/releases/download/v1.2/stegify_linux_x86-64
+	source = LICENSE::https://github.com/DimitarPetrov/stegify/raw/master/LICENSE
+	sha256sums = 1537a356963a8748b3d2f873a20781fb621964b825e8769c56eaf79ded14dba1
+	sha256sums = 92e64e90dc5712f5b365728023796dc5521d1c567461a99fb1abf6bbc708a6fb
 
 pkgname = stegify-bin
 
