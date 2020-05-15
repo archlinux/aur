@@ -59,10 +59,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.3.18.arch1.r860214.8cd876a76fa6
+pkgver=v5.6.13.arch1.r903039.e1f6739c4a9f
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=v5.3.18-arch1
+_srcver_tag=v5.6.13.arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -84,7 +84,7 @@ _repo_url="https://github.com/koverstreet/$_reponame"
 
 _reponame_gcc_patch="kernel_gcc_patch"
 _repo_url_gcc_patch="https://github.com/graysky2/$_reponame_gcc_patch"
-_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
+_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
@@ -92,8 +92,7 @@ source=(
     "git+$_repo_url#branch=master"
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
-    d938db454691d69590eb081db22c507c9ebca5f8.patch
-    4932fe6b8e63b92f8252591b5381423c01bac552.patch
+    sphinx-workaround.patch
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -101,9 +100,8 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'dc59a723ef1f7b946f6624e4b12ba2d41d6cfb52c0348c764db26712bf7c1e2c1bfcd5959701e913d0c62cf8bf550c1a2a3cfdd48e2bf3fba27edf05925dca8a'
-            '9ae28fd6b4099a44f2b45078383b172a974677863c622ffdecf095664524681b95a224fe8abbb1d0f3a3d7924f755908d3beb4c8c5d415068b101403c307f2d0'
-            'a7c5608f2478ea7f1f6a3ab0cf60d37715097fabdd19777603b385d2a0b0009e5da7fd9fc0ca0addee3f3fab8fff35f7e45696fd6b6c6bc8dc8fb366cbde5e0c')
+            '8918fe5c1bbf6cc4d496bbbc23da17c2e6f110e9205368324f5c7408efa90a3cfedd6e33f96e896f061f257ed934e2e5425e26cc7c2929efe3218443bfb6fd8a'
+            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -117,24 +115,21 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    msg2 "Pull tag from Linux stable upstream repository..."
-    git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
-    git pull --no-edit upstream_stable ${_srcver_tag//-arch*/}
-    # git pull --no-edit -s recursive -X ours upstream_stable ${_srcver_tag//-arch*/}
+    # msg2 "Pull tag from Linux stable upstream repository..."
+    # git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
+    # git pull --no-edit --no-commit upstream_stable ${_srcver_tag//-arch*/}
+    # git pull --no-edit --no-commit -s recursive -X ours upstream_stable ${_srcver_tag//-arch*/}
 
-    # msg2 "Pull stable tag from Arch vanilla kernel repository..."
-    # git remote add arch_stable "https://git.archlinux.org/linux.git" || true
-    # git pull --no-edit arch_stable "$_srcver_tag"
-    
-    msg2 "Patching with commit: 'ZEN: Add sysctl and CONFIG to disallow unprivileged CLONE_NEWUSER' ..."
-    patch -Np1 -i "$srcdir/d938db454691d69590eb081db22c507c9ebca5f8.patch"
-    
-    msg2 "Patching with commit: 'Bluetooth: hidp: Fix assumptions on the return value of hidp_send_message' ..."
-    patch -Np1 -i "$srcdir/4932fe6b8e63b92f8252591b5381423c01bac552.patch"
+    msg2 "Pull stable tag from Arch vanilla kernel repository..."
+    git remote add arch_stable "https://git.archlinux.org/linux.git" || true
+    git pull --no-edit --no-commit arch_stable "${_srcver_tag%.*}-${_srcver_tag##*.}"
 
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching with Graysky's additional gcc CPU optimizatons..."
     patch -Np1 -i "$srcdir/$_reponame_gcc_patch/$_gcc_patch_name"
+    
+    msg2 "Patching with Sphinx build fail workaround..."
+    patch -Np1 -i "$srcdir/sphinx-workaround.patch"
     
     msg2 "Setting config..."
     cp ../config .config
@@ -192,7 +187,14 @@ _package() {
         "crda: to set the correct wireless channels of your country"
         "linux-firmware: firmware images needed for some devices"
     )
-    provides=("$pkgbase=$pkgver")
+    provides=(
+        VIRTUALBOX-GUEST-MODULES
+        WIREGUARD-MODULE
+    )
+    replaces=(
+        virtualbox-guest-modules-arch
+        wireguard-arch
+    )
 
     cd $_reponame 
     local kernver="$(<version)"
@@ -211,18 +213,10 @@ _package() {
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
-
-    msg2 "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
-    pkgdesc="Header files and scripts for building modules for $pkgdesc kernel $_pkgdesc_extra"
-    depends=("$pkgbase=$pkgver")
-    provides=(
-        "$pkgbase-headers=$pkgver"
-        "linux-headers=$pkgver"
-    )
+    pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel $_pkgdesc_extra"
 
     cd $_reponame
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -294,9 +288,6 @@ _package-headers() {
     msg2 "Adding symlink..."
     mkdir -p "$pkgdir/usr/src"
     ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-    msg2 "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
@@ -316,9 +307,6 @@ _package-docs() {
     msg2 "Adding symlink..."
     mkdir -p "$pkgdir/usr/share/doc"
     ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-    msg2 "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=(
