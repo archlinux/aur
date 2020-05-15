@@ -23,10 +23,10 @@ backup=('etc/storm/storm_env.ini'
         'etc/storm/storm.yaml'
         'etc/zookeeper/zookeeper-storm/zoo.cfg'
         'etc/zookeeper/zookeeper-storm/log4j.properties')
-install=install_storm.sh
+install=storm.install
 _download_portal="https://www.apache.org/dyn/closer.lua/storm/apache-storm-${pkgver}/apache-storm-${pkgver}.tar.gz"
 _closest_mirror=$(curl "${_download_portal}?asjson=1" | jq '(.preferred + .path_info)' | tr -d '"",' )
-source=("$_closest_mirror"
+source=("${pkgname}-${pkgver}.tar.gz::$_closest_mirror"
         'zookeeper_zoo.cfg'
         'zookeeper_log4j.properties'
         'systemd_storm-nimbus.service'
