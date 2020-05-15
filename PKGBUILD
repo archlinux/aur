@@ -8,7 +8,7 @@
 
 pkgname=kimap2-git
 pkgver=r817.c4d0117
-pkgrel=1
+pkgrel=2
 pkgdesc="A job-based API for interacting with IMAP servers"
 arch=('i686' 'x86_64')
 url="https://projects.kde.org/projects/kde/pim/kimap2"
@@ -16,7 +16,7 @@ license=('LGPL')
 depends=('kmime')
 makedepends=('extra-cmake-modules' 'git' 'python')
 conflicts=('kimap2')
-
+provides=('kimap2')
 source=("git://anongit.kde.org/kimap2.git")
 md5sums=('SKIP')
 
