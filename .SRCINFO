@@ -10,9 +10,11 @@ pkgbase = lib32-libgme
 	depends = libgme
 	source = https://bitbucket.org/mpyne/game-music-emu/downloads/game-music-emu-0.6.2.tar.xz
 	source = https://bitbucket.org/mpyne/game-music-emu/downloads/game-music-emu-0.6.2.tar.xz.asc
+	source = gcc10.patch
 	validpgpkeys = 5406ECE83665DA9D201D35720BAF0C9C7B6AE9F2
 	sha256sums = 5046cb471d422dbe948b5f5dd4e5552aaef52a0899c4b2688e5a68a556af7342
 	sha256sums = SKIP
+	sha256sums = c9ec4863039c58f9a8db3c4105b76dd554e914dc74893df4bdca59c0a8cdb7a4
 
 pkgname = lib32-libgme
 
