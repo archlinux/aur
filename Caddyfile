@@ -1,8 +1,9 @@
-{
-    storage file_system {
-        root /var/lib/caddy2
-    }
+# This is an example default caddy file that serves static files
+#
+# Refer to the Caddy docs for more information:
+# https://caddyserver.com/docs/
+
+:80 {
+	root * /usr/share/caddy
+	file_server
 }
-
-# config goes below
-
