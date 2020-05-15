@@ -9,8 +9,8 @@ pkgbase = sncli
 	depends = python-urwid
 	depends = python-requests
 	depends = python-simperium
-	source = https://github.com/insanum/sncli/archive/0.4.1.tar.gz
-	md5sums = a2bf528715022227df4a852a2bb17b29
+	source = sncli-0.4.1.tar.gz::https://github.com/insanum/sncli/archive/0.4.1.tar.gz
+	sha256sums = SKIP
 
 pkgname = sncli
 
