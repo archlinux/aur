@@ -1,7 +1,7 @@
 # Maintainer: mglo <marius@mgl.dev>
 pkgname=gnome-shell-extension-arc-menu
-pkgver=v45_Stable
-pkgrel=2
+pkgver=v46_Stable
+pkgrel=1
 pkgdesc="A Dynamic / Traditional / Modern Extension Menu for GNOME"
 arch=('any')
 url="https://gitlab.com/arcmenu-team/Arc-Menu"
@@ -13,7 +13,7 @@ depends=(
 )
 conflicts=('gnome-shell-extension-arc-menu-git')
 source=("https://gitlab.com/arcmenu-team/Arc-Menu/-/archive/${pkgver//_/-}/Arc-Menu-${pkgver//_/-}.tar.gz")
-sha256sums=('45cb790f479c75d05614fcdde5b27256777750c8e4fa789c80f01b9d7aa205eb')
+sha256sums=('1054219d952b837edc2b6244243f13ac387b4314944a053e8563985c36d750f0')
 
 package() {
 	cd "Arc-Menu-${pkgver//_/-}"
