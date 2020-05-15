@@ -10,7 +10,7 @@ pkgbase = sncli
 	depends = python-requests
 	depends = python-simperium
 	source = sncli-0.4.1.tar.gz::https://github.com/insanum/sncli/archive/0.4.1.tar.gz
-	sha256sums = SKIP
+	sha256sums = 7fd4d4e65b3b728c446a9674ac45be860e974c63c7fc31621671444604eb35f9
 
 pkgname = sncli
 

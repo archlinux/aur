@@ -12,7 +12,7 @@ depends=('python-urwid'
 				 'python-simperium')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('7fd4d4e65b3b728c446a9674ac45be860e974c63c7fc31621671444604eb35f9')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
