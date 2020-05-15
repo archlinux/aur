@@ -1,10 +1,10 @@
 # Maintainer: null2264 <palembani@gmail.com>
 pkgname=st-ziro-git
 _pkgname=st-zi
-pkgver=0.8.3r5.zi
+pkgver=0.8.3r1138.c1dcc36r.zi
 pkgrel=1
 pkgdesc="ZiRO or AAP's personal build of st (simple terminal) with Xresources, transparency, etc."
-url='https://github.com/null2264/st-zi'
+url='https://github.com/null2264/st-zi.git'
 arch=('i686' 'x86_64')
 license=('MIT')
 options=('zipman')
@@ -12,7 +12,7 @@ optdepends=('picom')
 depends=('libxft')
 makedepends=('ncurses' 'libxext' 'git')
 
-source=('git://github.com/null2264/st-zi'
+source=("git+$url"
 	'st.desktop')
 sha256sums=('SKIP' 'SKIP')
 provides=('st')
@@ -20,7 +20,7 @@ conflicts=('st')
 
 pkgver() {
   cd ${_pkgname}
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf '%sr%s.%s.zi' "$(awk '/^VERSION =/ {print $3}' config.mk)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
