@@ -6,18 +6,19 @@ pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 _pkgname=lua-$_rockname
 pkgver=0.9
 _rockrel=1
-pkgrel=3
+pkgrel=4
 pkgdesc='A binding for the linenoise command line library'
 arch=('x86_64' 'i686')
 url="https://github.com/hoelzro/$_pkgname"
 license=('MIT/X11')
-makedepends=('luarocks')
-source=("$_rockname-$pkgver.tar.gz::https://github.com/hoelzro/$_pkgname/archive/$pkgver.tar.gz")
+makedepends=('lua' 'lua52' 'lua51' 'luarocks')
+source=("$_rockname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('cc1cdb4047edd056a10dcdeec853dbaf5088e2202941d579e4592584d733f09c')
 
 _package_helper() {
   cd "$_pkgname-$pkgver"
-  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
+    make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
 }
 
 package_lua-linenoise() {
