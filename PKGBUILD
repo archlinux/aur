@@ -6,13 +6,17 @@ pkgrel=2
 pkgdesc="A command line tap tempo. Hit enter key with style and you'll get the corresponding number of beats per minute (BPM). This tool is very useful to quickly find the tempo of a song without launching a big digital workstation like Ardour or LMMS"
 arch=('x86_64')
 url="https://taptempo.tuxfamily.org"
-license=('GPL-3.0')
+license=('GPL3')
+depends=('gcc-libs')
 makedepends=('catch2' 'cmake')
-source=("https://download.tuxfamily.org/taptempo/${pkgver}/taptempo-${pkgver}.tar.gz")
-md5sums=('6b7d859049f41de3bf17c38a0f6aedf4')
+source=("${pkgname}-${pkgver}.tar.gz::https://download.tuxfamily.org/taptempo/${pkgver}/taptempo-${pkgver}.tar.gz")
+sha256sums=('38d217779d07deec36aad725a31b91e60d6ec78d85b170f1d48a9bbe5ea57181')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
+  if [[ -d _build ]]; then
+  	rm -rf _build
+  fi
   mkdir _build
   cd _build
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
