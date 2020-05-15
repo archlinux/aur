@@ -1,0 +1,218 @@
+Signed-off-by: Rodrigo Siqueira <Rodrigo.Siqueira@xxxxxxx>
+Reviewed-by: Hersen Wu <hersenxs.wu@xxxxxxx>
+Acked-by: Rodrigo Siqueira <Rodrigo.Siqueira@xxxxxxx>
+Signed-off-by: Alex Deucher <alexander.deucher@xxxxxxx>
+Signed-off-by: Sasha Levin <sashal@xxxxxxxxxx>
+---
+ drivers/gpu/drm/amd/display/dc/core/dc_link.c | 67 ++++++++-----------
+ 1 file changed, 29 insertions(+), 38 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/display/dc/core/dc_link.c b/drivers/gpu/drm/amd/display/dc/core/dc_link.c
+index 70846ae7d854d..7fe6fbf41a7fa 100644
+--- a/drivers/gpu/drm/amd/display/dc/core/dc_link.c
++++ b/drivers/gpu/drm/amd/display/dc/core/dc_link.c
+@@ -1771,8 +1771,7 @@ static void write_i2c_retimer_setting(
+ 				slave_address, buffer[0], buffer[1], i2c_success?1:0);
+ 
+ 			if (!i2c_success)
+-				/* Write failure */
+-				ASSERT(i2c_success);
++				goto i2c_write_fail;
+ 
+ 			/* Based on DP159 specs, APPLY_RX_TX_CHANGE bit in 0x0A
+ 			 * needs to be set to 1 on every 0xA-0xC write.
+@@ -1790,8 +1789,7 @@ static void write_i2c_retimer_setting(
+ 						pipe_ctx->stream->link->ddc,
+ 						slave_address, &offset, 1, &value, 1);
+ 					if (!i2c_success)
+-						/* Write failure */
+-						ASSERT(i2c_success);
++						goto i2c_write_fail;
+ 				}
+ 
+ 				buffer[0] = offset;
+@@ -1803,8 +1801,7 @@ static void write_i2c_retimer_setting(
+ 					offset = 0x%x, reg_val = 0x%x, i2c_success = %d\n",
+ 					slave_address, buffer[0], buffer[1], i2c_success?1:0);
+ 				if (!i2c_success)
+-					/* Write failure */
+-					ASSERT(i2c_success);
++					goto i2c_write_fail;
+ 			}
+ 		}
+ 	}
+@@ -1824,8 +1821,7 @@ static void write_i2c_retimer_setting(
+ 					slave_address, buffer[0], buffer[1], i2c_success?1:0);
+ 
+ 				if (!i2c_success)
+-					/* Write failure */
+-					ASSERT(i2c_success);
++					goto i2c_write_fail;
+ 
+ 				/* Based on DP159 specs, APPLY_RX_TX_CHANGE bit in 0x0A
+ 				 * needs to be set to 1 on every 0xA-0xC write.
+@@ -1843,8 +1839,7 @@ static void write_i2c_retimer_setting(
+ 								pipe_ctx->stream->link->ddc,
+ 								slave_address, &offset, 1, &value, 1);
+ 						if (!i2c_success)
+-							/* Write failure */
+-							ASSERT(i2c_success);
++							goto i2c_write_fail;
+ 					}
+ 
+ 					buffer[0] = offset;
+@@ -1856,8 +1851,7 @@ static void write_i2c_retimer_setting(
+ 						offset = 0x%x, reg_val = 0x%x, i2c_success = %d\n",
+ 						slave_address, buffer[0], buffer[1], i2c_success?1:0);
+ 					if (!i2c_success)
+-						/* Write failure */
+-						ASSERT(i2c_success);
++						goto i2c_write_fail;
+ 				}
+ 			}
+ 		}
+@@ -1875,8 +1869,7 @@ static void write_i2c_retimer_setting(
+ 				offset = 0x%x, reg_val = 0x%x, i2c_success = %d\n",
+ 				slave_address, buffer[0], buffer[1], i2c_success?1:0);
+ 		if (!i2c_success)
+-			/* Write failure */
+-			ASSERT(i2c_success);
++			goto i2c_write_fail;
+ 
+ 		/* Write offset 0x00 to 0x23 */
+ 		buffer[0] = 0x00;
+@@ -1887,8 +1880,7 @@ static void write_i2c_retimer_setting(
+ 			offset = 0x%x, reg_val = 0x%x, i2c_success = %d\n",
+ 			slave_address, buffer[0], buffer[1], i2c_success?1:0);
+ 		if (!i2c_success)
+-			/* Write failure */
+-			ASSERT(i2c_success);
++			goto i2c_write_fail;
+ 
+ 		/* Write offset 0xff to 0x00 */
+ 		buffer[0] = 0xff;
+@@ -1899,10 +1891,14 @@ static void write_i2c_retimer_setting(
+ 			offset = 0x%x, reg_val = 0x%x, i2c_success = %d\n",
+ 			slave_address, buffer[0], buffer[1], i2c_success?1:0);
+ 		if (!i2c_success)
+-			/* Write failure */
+-			ASSERT(i2c_success);
++			goto i2c_write_fail;
+ 
+ 	}
++
++	return;
++
++i2c_write_fail:
++	DC_LOG_DEBUG("Set retimer failed");
+ }
+ 
+ static void write_i2c_default_retimer_setting(
+@@ -1927,8 +1923,7 @@ static void write_i2c_default_retimer_setting(
+ 		offset = 0x%x, reg_val = 0x%x, i2c_success = %d\n",
+ 		slave_address, buffer[0], buffer[1], i2c_success?1:0);
+ 	if (!i2c_success)
+-		/* Write failure */
+-		ASSERT(i2c_success);
++		goto i2c_write_fail;
+ 
+ 	/* Write offset 0x0A to 0x17 */
+ 	buffer[0] = 0x0A;
+@@ -1939,8 +1934,7 @@ static void write_i2c_default_retimer_setting(
+ 		offset = 0x%x, reg_val = 0x%x, i2c_success = %d\n",
+ 		slave_address, buffer[0], buffer[1], i2c_success?1:0);
+ 	if (!i2c_success)
+-		/* Write failure */
+-		ASSERT(i2c_success);
++		goto i2c_write_fail;
+ 
+ 	/* Write offset 0x0B to 0xDA or 0xD8 */
+ 	buffer[0] = 0x0B;
+@@ -1951,8 +1945,7 @@ static void write_i2c_default_retimer_setting(
+ 		offset = 0x%x, reg_val = 0x%x, i2c_success = %d\n",
+ 		slave_address, buffer[0], buffer[1], i2c_success?1:0);
+ 	if (!i2c_success)
+-		/* Write failure */
+-		ASSERT(i2c_success);
++		goto i2c_write_fail;
+ 
+ 	/* Write offset 0x0A to 0x17 */
+ 	buffer[0] = 0x0A;
+@@ -1963,8 +1956,7 @@ static void write_i2c_default_retimer_setting(
+ 		offset = 0x%x, reg_val= 0x%x, i2c_success = %d\n",
+ 		slave_address, buffer[0], buffer[1], i2c_success?1:0);
+ 	if (!i2c_success)
+-		/* Write failure */
+-		ASSERT(i2c_success);
++		goto i2c_write_fail;
+ 
+ 	/* Write offset 0x0C to 0x1D or 0x91 */
+ 	buffer[0] = 0x0C;
+@@ -1975,8 +1967,7 @@ static void write_i2c_default_retimer_setting(
+ 		offset = 0x%x, reg_val = 0x%x, i2c_success = %d\n",
+ 		slave_address, buffer[0], buffer[1], i2c_success?1:0);
+ 	if (!i2c_success)
+-		/* Write failure */
+-		ASSERT(i2c_success);
++		goto i2c_write_fail;
+ 
+ 	/* Write offset 0x0A to 0x17 */
+ 	buffer[0] = 0x0A;
+@@ -1987,8 +1978,7 @@ static void write_i2c_default_retimer_setting(
+ 		offset = 0x%x, reg_val = 0x%x, i2c_success = %d\n",
+ 		slave_address, buffer[0], buffer[1], i2c_success?1:0);
+ 	if (!i2c_success)
+-		/* Write failure */
+-		ASSERT(i2c_success);
++		goto i2c_write_fail;
+ 
+ 
+ 	if (is_vga_mode) {
+@@ -2003,8 +1993,7 @@ static void write_i2c_default_retimer_setting(
+ 			offset = 0x%x, reg_val = 0x%x, i2c_success = %d\n",
+ 			slave_address, buffer[0], buffer[1], i2c_success?1:0);
+ 		if (!i2c_success)
+-			/* Write failure */
+-			ASSERT(i2c_success);
++			goto i2c_write_fail;
+ 
+ 		/* Write offset 0x00 to 0x23 */
+ 		buffer[0] = 0x00;
+@@ -2015,8 +2004,7 @@ static void write_i2c_default_retimer_setting(
+ 			offset = 0x%x, reg_val= 0x%x, i2c_success = %d\n",
+ 			slave_address, buffer[0], buffer[1], i2c_success?1:0);
+ 		if (!i2c_success)
+-			/* Write failure */
+-			ASSERT(i2c_success);
++			goto i2c_write_fail;
+ 
+ 		/* Write offset 0xff to 0x00 */
+ 		buffer[0] = 0xff;
+@@ -2027,9 +2015,13 @@ static void write_i2c_default_retimer_setting(
+ 			offset = 0x%x, reg_val= 0x%x, i2c_success = %d end here\n",
+ 			slave_address, buffer[0], buffer[1], i2c_success?1:0);
+ 		if (!i2c_success)
+-			/* Write failure */
+-			ASSERT(i2c_success);
++			goto i2c_write_fail;
+ 	}
++
++	return;
++
++i2c_write_fail:
++	DC_LOG_DEBUG("Set default retimer failed");
+ }
+ 
+ static void write_i2c_redriver_setting(
+@@ -2058,8 +2050,7 @@ static void write_i2c_redriver_setting(
+ 		slave_address, buffer[3], buffer[4], buffer[5], buffer[6], i2c_success?1:0);
+ 
+ 	if (!i2c_success)
+-		/* Write failure */
+-		ASSERT(i2c_success);
++		DC_LOG_DEBUG("Set redriver failed");
+ }
+ 
+ static void enable_link_hdmi(struct pipe_ctx *pipe_ctx)
+-- 
+2.20.1
