@@ -3,25 +3,26 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Kevin Mihelich <kevin@archlinuxarm.org>
+# Contributor: Felipe Balbi <felipe@balbi.sh>
 # Maintainer: Tavian Barnes <tavianator@tavianator.com>
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-binutils
-pkgver=2.33.1
-pkgrel=2.1
+pkgver=2.34
+pkgrel=3
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=(i686 x86_64)
 url='https://www.gnu.org/software/binutils/'
 license=(GPL)
-depends=(glibc zlib)
-checkdepends=(dejagnu bc)
+depends=(glibc zlib elfutils)
+makedepends=('elfutils')
 options=(staticlibs !distcc !ccache)
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig}
-        0001-AArch64-Set-the-correct-ELF-class-for-AArch64-stubs-.patch)
+        binutils-a72427b1ae01304da0b5170e1e53f68c6d46c1de.patch.xz)
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)
-md5sums=('9406231b7d9dd93731c2d06cefe8aaf1'
+md5sums=('664ec3a2df7805ed3464639aaae332d6'
          'SKIP'
-         '31bfcff30555ae95d71a7bf5ef71d294')
+         'f121a3bee2e223786caa5776863d0dcf')
 
 prepare() {
   mkdir -p binutils-build
@@ -32,7 +33,7 @@ prepare() {
   # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 
-  patch -Np1 -i ../0001-AArch64-Set-the-correct-ELF-class-for-AArch64-stubs-.patch
+  patch -Np1 -i ../binutils-a72427b1ae01304da0b5170e1e53f68c6d46c1de.patch
 }
 
 build() {
@@ -54,6 +55,7 @@ build() {
       --enable-threads \
       --disable-gdb \
       --disable-werror \
+      --with-debuginfod \
       --with-pic \
       --with-system-zlib \
       --disable-sim \
@@ -79,5 +81,7 @@ package() {
 
   # Remove unwanted files
   rm -rf "$pkgdir/usr/share"
+  rm -rf "$pkgdir/usr/include"
+  rm -rf "$pkgdir/usr/lib"
   rm -f "$pkgdir/usr/bin/"{ar,as,ld,nm,objdump,ranlib,readelf,strip,objcopy}
 }

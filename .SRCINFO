@@ -1,25 +1,25 @@
 pkgbase = arm-linux-gnueabihf-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files (arm-linux-gnueabihf)
-	pkgver = 2.33.1
-	pkgrel = 2.1
+	pkgver = 2.34
+	pkgrel = 3
 	url = https://www.gnu.org/software/binutils/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	checkdepends = dejagnu
-	checkdepends = bc
+	makedepends = elfutils
 	depends = glibc
 	depends = zlib
+	depends = elfutils
 	options = staticlibs
 	options = !distcc
 	options = !ccache
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.33.1.tar.xz
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.33.1.tar.xz.sig
-	source = 0001-AArch64-Set-the-correct-ELF-class-for-AArch64-stubs-.patch
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.xz
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.xz.sig
+	source = binutils-a72427b1ae01304da0b5170e1e53f68c6d46c1de.patch.xz
 	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
-	md5sums = 9406231b7d9dd93731c2d06cefe8aaf1
+	md5sums = 664ec3a2df7805ed3464639aaae332d6
 	md5sums = SKIP
-	md5sums = 31bfcff30555ae95d71a7bf5ef71d294
+	md5sums = f121a3bee2e223786caa5776863d0dcf
 
 pkgname = arm-linux-gnueabihf-binutils
 
