@@ -1,12 +1,12 @@
 # Maintainer: Nico <desoxhd@gmail.com>
 pkgname=anydesk-bin
 pkgver=5.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The Fast Remote Desktop Application (Generic based package)"
 arch=('i686' 'x86_64')
 url="https://anydesk.com"
 license=('custom')
-depends=('fakeroot' 'python-shiboken2' 'gtkglext' 'libglvnd' 'gtk2' 'libx11' 'glibc' 'glib2' 'gdk-pixbuf2' 'libxcb' 'cairo' 'pango' 'libxi' 'libxrender' 'libxrandr' 'libxtst' 'libxext' 'libxfixes' 'libxdamage' 'gcc-libs')
+depends=('fakeroot' 'python-shiboken2' 'gtkglext' 'libglvnd' 'gtk2' 'libx11' 'glibc' 'glib2' 'gdk-pixbuf2' 'libxcb' 'cairo' 'pango' 'libxi' 'libxrender' 'libxrandr' 'libxtst' 'libxext' 'libxfixes' 'libxdamage' 'gcc-libs' 'gnome-themes-extra')
 optdepends=('libpulse: audio support')
 makedepends=('patchelf')
 conflicts=('anydesk' 'anydesk-test' 'anydesk-debian' 'pango-anydesk')
@@ -27,6 +27,9 @@ package() {
 
     # install desktop entry
     install -Dm 644 "${srcdir}/anydesk-${pkgver}/anydesk.desktop" "${pkgdir}/usr/share/applications/anydesk.desktop"
+    # force gtk2 theme to adwaita in desktop entry to fix unreadable text
+    sed -i -e "s:Exec=/usr/bin/anydesk:Exec=GTK2_RC_FILES=/usr/share/themes/Adwaita/gtk-2.0/gtkrc /usr/bin/anydesk:g" "${pkgdir}/usr/share/applications/anydesk.desktop"
+
     # install polkit action
     install -Dm 644 "${srcdir}/anydesk-${pkgver}/polkit-1/com.philandro.anydesk.policy" "${pkgdir}/usr/share/polkit-1/actions/com.philandro.anydesk.policy"
     # install icon
