@@ -1,14 +1,14 @@
 pkgbase = python-dataset
 	pkgdesc = Toolkit for Python-based database access.
-	pkgver = 1.1.2
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = http://github.com/pudo/dataset
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/d/dataset/dataset-1.1.2.tar.gz
-	sha256sums = 06e6e8166a2ce12524ffbed97b82866caeaa2dd8e85ee65baccf3b815528e22e
+	source = https://files.pythonhosted.org/packages/source/d/dataset/dataset-1.3.1.tar.gz
+	sha256sums = f656a3405ef5bd950fd0ee0ac484f8678d0560694a03d7c3a824de9a9f223a37
 
 pkgname = python-dataset
 	depends = python

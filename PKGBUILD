@@ -1,7 +1,9 @@
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+
 pkgbase='python-dataset'
 pkgname=('python-dataset')
 _module='dataset'
-pkgver='1.1.2'
+pkgver='1.3.1'
 pkgrel=1
 pkgdesc="Toolkit for Python-based database access."
 url="http://github.com/pudo/dataset"
@@ -10,7 +12,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('06e6e8166a2ce12524ffbed97b82866caeaa2dd8e85ee65baccf3b815528e22e')
+sha256sums=('f656a3405ef5bd950fd0ee0ac484f8678d0560694a03d7c3a824de9a9f223a37')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
