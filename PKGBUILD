@@ -9,7 +9,7 @@
 
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
-pkgver=3.10.5
+pkgver=3.10.6
 pkgrel=1
 pkgdesc='Geographic Information System (GIS); Long Term Release'
 url='https://qgis.org/'
@@ -32,7 +32,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
 # curl https://qgis.org/downloads/qgis-latest-ltr.tar.bz2.sha256
-sha256sums=('f3e1cc362941ec69cc21062eeaea160354ef71382b21dc4b3191c315447b4ce1')
+sha256sums=('a96791bf6615e4f8ecdbbb9a90a8ef14a12459d8c5c374ab22eb5f776f864bb5')
 
 prepare() {
   mkdir -p build
