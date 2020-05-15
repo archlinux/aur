@@ -1,11 +1,11 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgbase=micropython
 pkgname=(micropython micropython-lib)
-pkgver=1.11
+pkgver=1.12
 _libver=1.9.3
 # stupid submodules
 _axver=1.8.2
-_ffiver=3.2.1
+_ffiver=3.3
 pkgrel=1
 pkgdesc="Python3 for microcontrollers, with stdlib.  (unix version)"
 arch=('i686' 'x86_64')
@@ -21,11 +21,12 @@ source=("mpy-$pkgver.tgz::https://github.com/micropython/micropython/archive/v$p
         "bdb.tgz::https://github.com/pfalcon/berkeley-db-1.xx/archive/embedded.tar.gz")  # submodule with no releases!
 # What about the lwip submodule?  The repo is GONE.  You didn't need an IP stack anyway.
 # Maybe http://download.savannah.gnu.org/releases/lwip/lwip-2.0.0.zip is it?
-md5sums=('ccd9dfd01738a85f2e8bd84ac465960c'
+md5sums=('60bf0916bcbca11d484fe3ccd862a610'
          '1752ce13e851a671a07ce3f7a807b21c'
          'e11da4ef04499030d1eff69b474f34f0'
-         '9066486bcab807f7ddaaf2596348c1db'
+         'f25aefb928eed09e858878382e10641f'
          'SKIP')
+
 
 # todo:
 # fix 'imported as namespace package' warnings from stdlib
@@ -52,6 +53,8 @@ prepare() {
 }
 
 build() {
+  cd "$srcdir/micropython-$pkgver/mpy-cross"
+  make
   cd "$srcdir/micropython-$pkgver/ports/unix"
   #make libffi
   #make V=1 deplibs
