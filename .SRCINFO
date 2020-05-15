@@ -1,13 +1,14 @@
 pkgbase = python-dokuwiki
 	pkgdesc = Python binding for the dokuwiki rpc
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://github.com/fmenabe/python-dokuwiki
 	arch = any
 	license = custom:MIT
 	depends = python
-	source = python-dokuwiki-v1.1.0.tar.gz::https://github.com/fmenabe/python-dokuwiki/archive/1.1.0.tar.gz
-	sha256sums = 96523bf5326e707ed1cd8c3277685fa2eb9621658b7d0c0ebc2aebce4043053d
+	depends = python-setuptools
+	source = python-dokuwiki-v1.2.1.tar.gz::https://github.com/fmenabe/python-dokuwiki/archive/1.2.1.tar.gz
+	sha256sums = e781dcf81606d73e925fa49b14810fe5ca1b0c9f97f5dec148ed01fad4d5b6e6
 
 pkgname = python-dokuwiki
 

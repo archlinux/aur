@@ -1,15 +1,16 @@
-# Maintainer : Simon Doppler <dop dot simon at gmail dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Simon Doppler <dop dot simon at gmail dot com>
 
 pkgname=python-dokuwiki
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="Python binding for the dokuwiki rpc"
 arch=('any')
 url="https://github.com/fmenabe/python-dokuwiki"
 license=('custom:MIT')
-depends=('python')
+depends=('python' 'python-setuptools')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/fmenabe/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('96523bf5326e707ed1cd8c3277685fa2eb9621658b7d0c0ebc2aebce4043053d')
+sha256sums=('e781dcf81606d73e925fa49b14810fe5ca1b0c9f97f5dec148ed01fad4d5b6e6')
 
 package() {
     cd ${pkgname}-${pkgver}
