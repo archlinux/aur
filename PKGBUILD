@@ -2,10 +2,10 @@
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
-pkgver=3.10.0
+pkgver=3.10.1
 pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
-arch=('arm' 'armv6h' 'armv7h' 'x86_64')
+arch=('any')
 url="https://github.com/cheat/cheat"
 license=('MIT' 'CC0 1.0 Universal')
 makedepends=('go-pie' 'git' 'pandoc')
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'conf.yml'
         "git+https://github.com/cheat/cheatsheets.git"
         "https://raw.githubusercontent.com/$pkgname/cheatsheets/master/.github/LICENSE.txt")
-sha256sums=('1e09b312ba76e548bd0ad3d97711a56cc928d19dbfee7c3452345091df066c98'
+sha256sums=('e87c5352e74d7644f9138e7a56f00872ce73ec1e57dbdc6836a05fee939236d6'
             'efffbe20041efc3d49ffe596ab5abe60a10adf70219c2ddecdf1caf350972212'
             'SKIP'
             'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
