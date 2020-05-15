@@ -12,10 +12,10 @@ url="https://www.spinnaker.de/debian/sunclock.html"
 license=('GPL')
 depends=('libjpeg-turbo' 'libpng' 'libxpm')
 makedepends=('imake' 'tar' 'gendesk')
-source=("https://www.spinnaker.de/debian/sunclock_${pkgver}.orig.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://www.spinnaker.de/debian/sunclock_${pkgver}.orig.tar.gz"
         "disable_zlib.patch")
-md5sums=('827a41c3f87e9ac65adeaa1ebd0f2c33'
-         'SKIP')
+sha256sums=('f3b3499b4a84c7a31411d2a9043e2d9171b745ec29a991ef9930ce582b9d41ab'
+            'SKIP')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
