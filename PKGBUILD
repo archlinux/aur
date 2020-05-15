@@ -2,11 +2,11 @@
 
 pkgname=srfetch-git
 _dir=srfetch
-pkgver=7.0.0.r1.b0bb11c
+pkgver=7.0.0.r3.a222174
 pkgrel=1
 pkgdesc="This is modified neofetch script only for me."
 arch=(x86_64 i686)
-url="https://github.com/justanoobcoder/srfetch.git"
+url="https://gitlab.com/justanoobcoder/srfetch.git"
 license=('MIT')
 depends=(bash)
 makedepends=(make)
