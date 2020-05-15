@@ -1,7 +1,7 @@
 pkgbase = python-elasticsearch-dsl
 	pkgdesc = High-level Python client for Elasticsearch
 	pkgver = 7.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://elasticsearch-dsl.readthedocs.org
 	arch = any
 	license = Apache
