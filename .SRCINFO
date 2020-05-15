@@ -1,15 +1,14 @@
 pkgbase = quickjs
 	pkgdesc = Small and embeddable JavaScript engine
-	pkgver = 2020.03.16
+	pkgver = 2020.04.12
 	pkgrel = 1
 	url = https://bellard.org/quickjs
 	arch = x86_64
 	license = custom:MIT
-	depends = glibc
 	depends = gcc-libs
 	options = !strip
-	source = https://bellard.org/quickjs/quickjs-2020-03-16.tar.xz
-	sha512sums = 04b017c6bfd50b3d5029946178eb870270ca146a2ca99eb142f91acf0b8e04ce02e3e99549ee9832706aed72849beaaf33f95662aad6172a8cf109a0d78d8370
+	source = https://bellard.org/quickjs/quickjs-2020-04-12.tar.xz
+	sha512sums = ed15bb159fa05a7c7749e34f346d426803adf34f1ee83eb23c1a9acce037402537fb52ff0c54135da13d7908a71043eb00b5688fe13488eca356a0713d4a65a3
 
 pkgname = quickjs
 
