@@ -1,4 +1,5 @@
-# Maintainer: Lukas Winkler <derwinlu+aur at gmail . com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Lukas Winkler <derwinlu+aur at gmail . com>
 # Modified from aur package dwarffortress-ironhand 
 # Contributor: Chris Waddell <christopher at cwaddell . com >
 # Contributor: Christoph Hoopmann <choopm at 0pointer.org>
@@ -11,10 +12,10 @@
 # Contributor: djnm <nmihalich [at} gmail dott com>
 
 pkgname=dwarffortress-spacefox
-pkgver=0.47.02
-_dfver=47_02
-_sfver=47.02
-_ufver=0.47.02
+pkgver=0.47.04
+_dfver=47_04
+_sfver=47.04
+_ufver=0.47.04
 pkgrel=1
 pkgdesc="A single-player fantasy game. You control a dwarven outpost or an adventurer in a randomly generated persistent world. Packed with Spacefox's tileset and graphics pack.  Does not replace other dwarffortress packages."
 arch=(i686 x86_64)
@@ -48,13 +49,13 @@ source=("df_${_dfver}.tar.bz2::http://www.bay12games.com/dwarves/df_${_dfver}_li
         "dwarffortress-sf.png"
         "LICENSE-sf")
 
-md5sums=('f888c07240c02fa792d25d325517d1ec'
-         'cfba769b568d520a3e42e748c552774f'
-         'f872d22e6d397dcf54c1a7fec4078df6'
-         '53c9d5bfcb35281c81b78fea23da0698'
-         '60de2d654998220f426bbe41f2e57471'
-         'b1d51f82400073af9bb179e34a9209d0'
-         '531f90ee12c6752762b64418a100a991')
+sha256sums=('1de5872bf3ac32906a0082129ec88d6879b6ac7059a3513607d628090b1328e6'
+            '51d71a5b205e5d5d48d511dbe4a1eda666da322a9dc9392f3a78305b9ef205fa'
+            'a337437ab917a12e5fb3c8f65720e3f5f6e742900db5754bdc517ad95befdc8b'
+            'a2ffa10c38bbd611d3ef72a8ebc7b0dda202786293168c40b7befbbab39a394b'
+            '21fe09beb0fce25562cca51257998fded7c36588fcbac3e5c8c4f87075cbe6fd'
+            '83183abc70b11944720b0d86f4efd07468f786b03fa52fe429ca8e371f708e0f'
+            '769a5f6a7587a1fd1982beec159ad26d8ff6bf28e5e06747458dd71b5e3fbfc8')
 
 
 _installname=df_linux-sf
