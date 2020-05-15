@@ -9,12 +9,13 @@ pkgbase = sra-tools-bin
 	depends = libxml2
 	depends = gcc-libs-multilib
 	depends = fuse
+	depends = perl
 	provides = sra-tools
 	provides = sratoolkit
-	source = http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.10.5/sratoolkit.2.10.5-ubuntu64.tar.gz
-	source = https://raw.githubusercontent.com/ncbi/sra-tools/master/LICENSE
-	md5sums = d68cd7ec55b47269853f9f77adfaccf8
-	md5sums = 9ba753649b72f0bbcac5741536c6953d
+	source = sra-tools-bin-2.10.5.tar.gz::http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.10.5/sratoolkit.2.10.5-ubuntu64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/ncbi/sra-tools/master/LICENSE
+	sha256sums = c72f72c9a93f50dc19f77af9b3bd9f128c3e8f74fd9462f19fcfd00d896d7fc3
+	sha256sums = 122edf134e4230505179e9a1891ac3fea334f1b67d767933e9e86dc5b49adfdb
 
 pkgname = sra-tools-bin
 
