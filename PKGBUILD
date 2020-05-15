@@ -1,7 +1,8 @@
-# Maintainer: mdraw.gh at gmail dot com
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: mdraw.gh at gmail dot com
 
 pkgname='python-markovify'
-pkgver='0.7.1'
+pkgver='0.8.0'
 pkgrel=1
 pkgdesc="A simple, extensible Markov chain generator."
 arch=('any')
@@ -10,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-unidecode')
 makedepends=('python-setuptools')
 source=("https://github.com/jsvine/markovify/archive/v${pkgver}.tar.gz")
-sha256sums=('230ad17627dc1adb9b867895e6669894f190eac36961546e8ed0ebe2c9c46beb')
+sha256sums=('681cd1df643985098340861c9f8aa7da56a25e4bd2543c52c0696fa36d10b2de')
 
 package() {
     cd "${srcdir}/markovify-${pkgver}"
