@@ -64,7 +64,7 @@ install="${pkgname}.install"
 _srcfil="${_pkgname}-${pkgver}-linux-x64.tar.gz"
 source=(
   "https://download.oracle.com/otn-pub/java/jce/${_major}/jce_policy-${_major}.zip"
-  "https://download.oracle.com/otn/java/jdk/${pkgver}-${_build}/${_hash}/${_srcfil}" # Now /otn/, Oracle sso required
+  "https://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash}/${_srcfil}"
   "jconsole-${_jname}.desktop"
   "jmc-${_jname}.desktop"
   "jvisualvm-${_jname}.desktop"
@@ -72,6 +72,7 @@ source=(
   'readme.sh'
 )
 # from oracle-sqldeveloper
+if ! :; then
 DLAGENTS+=("manual::${startdir:-}/readme.sh %o %u")
 source[1]="manual://${_srcfil}"
 if [ ! -z "${HOME:-}" ]; then # block mksrcinfo
@@ -91,6 +92,7 @@ if [ ! -z "${HOME:-}" ]; then # block mksrcinfo
 fi
 unset _srcfil
 unset XDG_DOWNLOAD_DIR
+fi
 
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          'becc86d9870fe5f48ca30c520c4b7ab8'
