@@ -1,14 +1,19 @@
-# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de
+# Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=ant-gtk-theme
 pkgver=1.3.0
-pkgrel=3
-pkgdesc="Ant Theme for GTK 3.x"
+pkgrel=4
+pkgdesc="A flat and light theme with a modern look"
 arch=('any')
 license=('GPL')
-url=https://www.gnome-look.org/p/1099856
+url=https://github.com/EliverLara/Ant
+conflicts=('ant-slim-gtk-theme' 'ant-gtk-theme-git')
 options=('!strip')
 depends=('gtk3')
+optdepends=('ttf-roboto: primary font face defined'
+			'ttf-ubuntu-font-family: secondary font face defined'
+			'cantarell-fonts: tertiary font face defined')
 
 source=("Ant-${pkgver}.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant.tar"
 	"Ant-Bloody-${pkgver}.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-Bloody.tar"
