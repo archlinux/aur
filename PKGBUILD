@@ -1,7 +1,7 @@
 # Maintainer: ChungZH <chungzh07 at gmail dot com>
 pkgname=notepanda
 pkgver=0.0.1
-pkgrel=1
+pkgrel=3
 pkgdesc="A simple cross-platform notepad. Based on Qt and C++."
 arch=('x86_64')
 url="https://github.com/ChungZH/notepanda"
@@ -12,6 +12,15 @@ provides=('notepanda')
 conflicts=('notepanda')
 source=("notepanda::git+git://github.com/ChungZH/notepanda")
 sha512sums=("SKIP")
+
+pkgver() {
+    printf "%s" $(cat ${srcdir}/notepanda/makespec/VERSION)
+}
+
+prepare() {
+    cd "${srcdir}/notepanda"
+    git checkout master # stable
+}
 
 build() {
 	cd "${srcdir}/notepanda"
