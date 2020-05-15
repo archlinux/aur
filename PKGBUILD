@@ -1,9 +1,11 @@
-# Maintainer: Dennis S. <dennis@stengele.me>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Dennis S. <dennis@stengele.me>
 # Contributor: Sebastien Bariteau <numkem@gmail.com>
 # Contributor: Vlad M. <vlad@archlinux.net>
 
 pkgname=atlassian-confluence-lts
-pkgver=6.13.8
+pkgver=7.4.0
 pkgrel=1
 pkgdesc="Enterprise wiki (Enterprise Release)"
 url="https://www.atlassian.com/software/confluence"
@@ -18,7 +20,7 @@ install='confluence.install'
 source=("http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-$pkgver.tar.gz"
         'confluence.conf.d'
         'confluence.service')
-sha256sums=('85cf86e77124ea2ae9261534f88d540b06ff2989d1b44f3355f881a90dc39a07'
+sha256sums=('a071c992d1227b732dcbdbaebecc02121da172d83600e959feb411e1d09afeea'
             'a6304ba13a8ab1e27761bd3be71d05d2c2e3d61ea308316f4a04723ea4b30fc1'
             'd51ad7cb3eb8a4d5553a26fd5567867345bb4ae9a10876fc2bee7b6ab8800824')
 
