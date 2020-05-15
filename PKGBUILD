@@ -1,12 +1,13 @@
-# Maintainer: Marco Scarpetta <marcoscarpetta02@gmail.com>
-# Maintainer: Jens Staal <staal1978@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Marco Scarpetta <marcoscarpetta02@gmail.com>
+# Contributor: Jens Staal <staal1978@gmail.com>
 
 # Adopted from kimap-git
 # Antonio Rojas <arojas@archlinux.org>
 
 
 pkgname=kimap2-git
-pkgver=r779.71c30d2
+pkgver=r817.c4d0117
 pkgrel=1
 pkgdesc="A job-based API for interacting with IMAP servers"
 arch=('i686' 'x86_64')
