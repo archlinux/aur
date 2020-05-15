@@ -16,6 +16,7 @@ sha256sums=('a8cfbb48bddc44800d67616dafb351d0db8b3d80c2ff21097c76518b89768f01')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./autogen.sh
+  export LDFLAGS="$LDFLAGS -z muldefs"
   ./configure --prefix=/usr
   make
 }
