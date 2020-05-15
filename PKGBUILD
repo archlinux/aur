@@ -6,9 +6,10 @@ pkgrel=1
 pkgdesc="Monitor your Website and APIs from your Computer. Get Notified through Slack, E-mail when your server is down or response time is more than expected"
 arch=('x86_64')
 url='https://github.com/sanathp/statusok'
-license=('Apache-2.0')
+license=('Apache')
 provides=("${pkgname%-bin}")
-source=("${url}/releases/download/${pkgver}/statusok_linux.zip")
+depends=('glibc')
+source=("${pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/statusok_linux.zip")
 sha256sums=('d8eebddf6fefe19a80f5a40e4a8f8167325752c9e0aae07a7814630c1b269fa5')
 
 package() {
