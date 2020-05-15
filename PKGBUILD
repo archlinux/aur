@@ -1,7 +1,10 @@
-# Maintainer: Tomas Ostasevicius (aquarix) <t dot ostasevicius at gmail dot com>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Tomas Ostasevicius (aquarix) <t dot ostasevicius at gmail dot com>
+
 pkgname=gitter
 pkgver=4.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Where developers come to talk'
 url='https://gitlab.com/gitlab-org/gitter/desktop/'
 license=('MIT')
@@ -15,10 +18,10 @@ source_i686=("https://update.gitter.im/linux32/${pkgname}_${pkgver}_i386.deb"
         gitter_i686.sh)
 noextract=("${pkgname}_${pkgver}_amd64.deb" "${pkgname}_${pkgver}_i386.deb")
 install='gitter.install'
-sha256sums_i686=('e3b23ef90937dd84ae538469ea2a89bc506f598ae6de0ef1177eb77e22fcd7d4'
-         'c29fbff9e3ad766c49407cb29aa5ba7131f4de9f48c71928ffcf8b3bcd2a2cde')
 sha256sums_x86_64=('71f113104277682c6b1fd9a3f70533954363719e688ea4f3ff6c737f454cdebe'
-         'f791f6685771517b2e7ab03513fc49f625cb9feab4949b607b444e303f31fab5')
+                   'f791f6685771517b2e7ab03513fc49f625cb9feab4949b607b444e303f31fab5')
+sha256sums_i686=('e3b23ef90937dd84ae538469ea2a89bc506f598ae6de0ef1177eb77e22fcd7d4'
+                 'c29fbff9e3ad766c49407cb29aa5ba7131f4de9f48c71928ffcf8b3bcd2a2cde')
 options=(!strip)
 
 prepare() {
