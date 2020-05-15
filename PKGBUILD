@@ -1,7 +1,7 @@
 # Maintainer: David Lasek <mail at davidlasek dot eu>
 pkgname=rofi-blocks-git
 _gitroot='rofi-blocks'
-pkgver=0.r1.24467f7
+pkgver=r50.0f33024
 pkgrel=1
 pkgdesc="rofi modi for controlling rofi content through communication with an external program"
 arch=("any")
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitroot}"
-  printf "0.r1.%s" "$(git rev-parse --short HEAD | sed 's/-/./g')"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD | sed 's/-/./g')"
 }
 
 build() {
