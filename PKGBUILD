@@ -3,10 +3,10 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 # Contributor: Quan Guo <guotsuan@gmail.com>
 pkgname=cheat-git
-pkgver=3.9.0.r0.gc4dd3b5
-pkgrel=3
+pkgver=3.10.1.r0.g8e602b0
+pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
-arch=('arm' 'armv6h' 'armv7h' 'x86_64')
+arch=('any')
 url="https://github.com/cheat/cheat"
 license=('MIT' 'CC0 1.0 Universal')
 makedepends=('git' 'go-pie' 'pandoc')
