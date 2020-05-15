@@ -1,22 +1,21 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=showq-git
-pkgver=r50.a8dce78
+pkgver=r57.2f53d5d
 pkgrel=1
 pkgdesc="ShowQ is a cue-player for theater productions"
 arch=('x86_64')
 url="https://github.com/evandelisle/showq"
-license=('GPL-2.0')
+license=('GPL2')
 depends=('gtkmm'
 		 'alsa-lib'
 		 'libsndfile'
 		 'jack'
 		 'libxml++2.6'
-		 'libsamplerate'
-		 'libutil-linux')
+		 'libsamplerate')
 makedepends=('meson' 'ninja' 'gcc')
 source=("git+${url}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/showq"
