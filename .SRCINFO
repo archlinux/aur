@@ -1,0 +1,18 @@
+pkgbase = clspv-git
+	pkgdesc = A prototype compiler for a subset of OpenCL C to Vulkan compute shaders
+	pkgver = r396.88ed5fe
+	pkgrel = 1
+	url = https://github.com/google/clspv.git
+	arch = any
+	license = APACHE
+	makedepends = cmake
+	makedepends = clang
+	makedepends = python
+	makedepends = git
+	makedepends = spirv-tools
+	makedepends = spirv-headers
+	source = clspv::git+https://github.com/google/clspv.git
+	md5sums = SKIP
+
+pkgname = clspv-git
+
