@@ -2,7 +2,7 @@
 
 pkgname=('python-mbed-cloud-sdk' 'python2-mbed-cloud-sdk')
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pelion Device Management SDK for Python'
 arch=('any')
 url="https://cloud.mbed.org"
@@ -21,6 +21,7 @@ package_python-mbed-cloud-sdk() {
           'python-urllib3'
           'python-dateutil'
           'python-requests'
+          'python-pytz'
   )
 
   cd "mbed-cloud-sdk-python-${pkgver}"
@@ -38,6 +39,7 @@ package_python2-mbed-cloud-sdk() {
           'python2-urllib3'
           'python2-dateutil'
           'python2-requests'
+          'python2-pytz'
   )
 
   cd "mbed-cloud-sdk-python-${pkgver}"
