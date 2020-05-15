@@ -2,7 +2,7 @@
 
 _pkgname=dfshow
 pkgname=${_pkgname}
-pkgver=0.8.2
+pkgver=0.9.0
 _pkgversub=-beta
 pkgrel=1
 pkgdesc="An interactive directory/file browser written for Unix-like systems."
@@ -10,9 +10,9 @@ arch=('i686' 'x86_64' 'arm')
 url="https://github.com/roberthawdon/dfshow"
 license=('GPL3')
 depends=('ncurses' 'libconfig')
-makedepends=('autoconf' 'automake' 'libconfig')
+makedepends=('autoconf' 'automake' 'libconfig' 'acl')
 source=(https://github.com/roberthawdon/dfshow/archive/v${pkgver}${_pkgversub}.tar.gz)
-sha1sums=('1eb981f982b1c6d7b5f2d67b388570e4ce9663dd')
+sha1sums=('e13208a3287aa58a98666e28d3568250d4756363')
 options=('!buildflags' '!makeflags')
 
 build() {
@@ -25,4 +25,10 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}${_pkgversub}"
   make DESTDIR="${pkgdir}" install
+
+  install -Dm644 misc/auto-completion/bash/show-completion.bash "${pkgdir}/usr/share/bash-completion/completions/show"
+  install -Dm644 misc/auto-completion/bash/sf-completion.bash "${pkgdir}/usr/share/bash-completion/completions/sf"
+  install -Dm644 misc/auto-completion/zsh/_show "${pkgdir}/usr/share/zsh/site-functions/_show"
+  install -Dm644 misc/auto-completion/zsh/_sf "${pkgdir}/usr/share/zsh/site-functions/_sf"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
