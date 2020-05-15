@@ -61,10 +61,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-bcachefs-ck
-_tag=v5.6
-pkgver=5.6.11
-_pkgverpntrel=11
-pkgrel=1
+pkgver=5.6.12
+_pkgverpntrel=12
+pkgrel=2
 _ckpatchversion=2
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -80,29 +79,38 @@ _repo_url="https://github.com/koverstreet/$_reponame"
 _ckpatch="patch-5.6-ck${_ckpatchversion}"
 _gcc_more_v='20200428'
 
-_srcname=linux-bcachefs-ck
+_srcname=linux
 
 source=(
-  "$_srcname::git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux.git#tag=$_tag"
+  "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
   0000-sphinx-workaround.patch
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.6/5.6-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch
+  0003-gcc-plugins-drop-support-for-GCC-4.7.patch
+  0004-gcc-common.h-Update-for-GCC-10.patch
+  0005-Makefile-disallow-data-races-on-gcc-10-as-well.patch
+  0006-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch
   0007-v5.6-fsync.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-md5sums=('SKIP'
-         '019c5d6e9996bc3a3cf0a732ceba0547'
+md5sums=('41ea495af2ab13afdeb26f4a1e7b1de5'
+         'SKIP'
+         '8c4150738d52cc5c9d16ece3b5f68c72'
          '2cebdad39da582fd6a0c01746c8adb42'
          '836ee21aaae1b774f93d150a8e225363'
          'fde3643971460e9a7fc97e94fd2aac38'
          '5fe73681affcf4878cb853452218ce36'
          '252842db32d8b8aef591d4397a3ab2a1'
+         '81321507b721e4b630280f76ff515f6d'
+         '7701d8353f995981735966c492d0b2f4'
+         '64b9132473b09c7e7fc26b670b16c08d'
+         '1a57af013e6529673e01dee3c2f0ebef'
          '228b33d0cb13cab162b3e051ec9bb88d')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -110,8 +118,10 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  cd ${_srcname}
-  
+  cd linux-${pkgver}
+
+  git init
+
   git fetch --tags
 
   git remote add $_reponame $_repo_url || true
@@ -120,10 +130,10 @@ prepare() {
 
   export EDITOR=true
 
-  git rebase $(git tag | grep -v rc | tail -n1)
+  git rebase master
 
   # fix pkgver to chosen pkgver
-  sed -i "s/SUBLEVEL = 0/SUBLEVEL = $_pkgverpntrel/g" $srcdir/$_srcname/Makefile
+  sed -i "s/SUBLEVEL = 0/SUBLEVEL = $_pkgverpntrel/g" $srcdir/linux-${pkgver}/Makefile
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -195,7 +205,7 @@ prepare() {
 }
 
 build() {
-  cd ${_srcname}
+  cd linux-${pkgver}
   make all
 }
 
@@ -207,7 +217,7 @@ _package() {
   provides=("linux-bcachefs-ck=${pkgver}")
   #groups=('ck-generic')
 
-  cd ${_srcname}
+  cd linux-${pkgver}
 
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
@@ -237,7 +247,7 @@ _package-headers() {
   provides=("linux-bcachefs-ck-headers=${pkgver}" "linux-headers=${pkgver}")
   #groups=('ck-generic')
 
-  cd ${_srcname}
+  cd linux-${pkgver}
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing build files..."
