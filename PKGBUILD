@@ -1,22 +1,23 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=path
-_pkgname=lua-path
+pkgbase="lua-$_rockname"
 pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=0.3.1
 _rockrel=1
-pkgrel=2
+pkgrel=3
 pkgdesc='File system path manipulation library'
 arch=('i686' 'x86_64')
-url="https://github.com/moteus/$pkgname"
+url="https://github.com/moteus/$pkgbase"
 license=('MIT')
-makedepends=('luarocks')
-source=("$_rockname-$pkgver.tar.gz::https://github.com/moteus/$_pkgname/archive/v$pkgver.tar.gz")
+makedepends=('lua' 'lua52' 'lua51' 'luarocks')
+source=("$_rockname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('f7419d9012cb5005a9adbc6e567fee44832a42a73532451336de066ff2ebcce5')
 
 _package_helper() {
-  cd "$_pkgname-$pkgver"
-  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "rockspecs/$_pkgname-$pkgver-$_rockrel.rockspec"
+  cd "$pkgbase-$pkgver"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
+    make --deps-mode=none --no-manifest "rockspecs/$pkgbase-$pkgver-$_rockrel.rockspec"
 }
 
 package_lua-path() {
