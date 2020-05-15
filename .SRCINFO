@@ -1,11 +1,13 @@
 pkgbase = lua-mediator
 	pkgdesc = Event handling through channels
 	pkgver = 1.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://olivinelabs.com/mediator_lua/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
+	makedepends = lua
+	makedepends = lua52
+	makedepends = lua51
 	makedepends = luarocks
 	source = mediator-1.1.2.tar.gz::https://github.com/Olivine-Labs/mediator_lua/archive/v1.1.2-0.tar.gz
 	sha256sums = faf5859fd2081be4e9e4fb8873a2dc65f7eff3fd93d6dd14da65f8e123fcff9b
