@@ -2,11 +2,11 @@
 
 pkgname=scrcast-git
 _dir=scrcast
-pkgver=3.0.r15.28e3703
+pkgver=3.0.r1.5bf0a92
 pkgrel=1
 pkgdesc="A simple screencast script using ffmpeg."
-arch=(x86_64 i686)
-url="https://github.com/justanoobcoder/scrcast.git"
+arch=('any')
+url="https://gitlab.com/justanoobcoder/scrcast.git"
 license=('MIT')
 depends=(bash ffmpeg xorg-xrandr)
 makedepends=(make)
