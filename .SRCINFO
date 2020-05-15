@@ -1,0 +1,17 @@
+pkgbase = knockoff-git
+	pkgdesc = Port knocking program sha256 on date&secret-based port sequences and other.
+	pkgver = git
+	pkgrel = 1
+	url = https://git.sr.ht/~jasper/knockoff
+	arch = any
+	license = GPLv2
+	makedepends = gcc
+	makedepends = make
+	depends = libpcap
+	depends = lua
+	depends = curl
+	source = git+https://git.sr.ht/~jasper/knockoff/
+	sha512sums = SKIP
+
+pkgname = knockoff-git
+
