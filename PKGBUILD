@@ -4,7 +4,7 @@
 #
 _name="hexo"
 pkgname="nodejs-${_name}"
-pkgver="4.2.0"
+pkgver="4.2.1"
 pkgrel="1"
 pkgdesc="A fast, simple & powerful blog framework, powered by Node.js."
 arch=('any')
@@ -14,8 +14,8 @@ depends=('nodejs')
 makedepends=('npm')
 conflicts=('nodejs-hexo-cli')
 options=(!strip)
-source=(https://github.com/hexojs/hexo/archive/${pkgver}.tar.gz)
-sha256sums=('8d1c3dfb8593b11d0f664860255cd4f047dd81d07d815371bf48f59bbc7494ec')
+source=("${_name}-${pkgver}.tar.gz::https://github.com/hexojs/hexo/archive/${pkgver}.tar.gz")
+sha256sums=('2fd9fa102eed08db33e3cc545ea9fd09ad03f43b487f39048a7df07138d25c32')
 
 # Don't extract package
 noextract=('${pkgver}.tar.gz')
@@ -31,4 +31,4 @@ package() {
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
 }
 
-# vim:set ts=4 sw=4 ft=sh et syn=sh:
+# vim: set ts=4 sw=4 et syn=sh ft=sh:
