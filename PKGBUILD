@@ -1,6 +1,6 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helmsman
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc='Helm Charts as Code'
 arch=('x86_64' 'i686')
@@ -10,7 +10,12 @@ depends=('helm-diff' 'kubectl')
 optdepends=('ruby-hiera-eyaml: backend for secret encryption')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8a58c448e4571604ad72b9e3a049de422a8a300a75182ff6a303c98f5e1b2ad0')
+sha256sums=('b79508f64bc7b56eadba41a45ff0e4c6f12990210d464173bbba441635edebdb')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  go mod download
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -19,7 +24,7 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
-  export GOFLAGS='-buildmode=pie -modcacherw -trimpath'
+  export GOFLAGS='-buildmode=pie -modcacherw -mod=readonly -trimpath'
   # man makepkg(8), https://github.com/Praqma/helmsman/blob/master/Makefile
   _date=$(date --utc --date="@${SOURCE_DATE_EPOCH}" +'%d%m%y')
   go build -o "$pkgname" -ldflags "-X main.version=v${pkgver}-${_date}" ./cmd/helmsman
