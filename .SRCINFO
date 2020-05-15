@@ -11,7 +11,7 @@ pkgbase = linux-bcachefs-ck
 	source = linux-bcachefs-ck::git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v5.6
 	source = config
 	source = 0000-sphinx-workaround.patch
-	source = enable_additional_cpu_optimizations-20191217.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20191217.tar.gz
+	source = enable_additional_cpu_optimizations-20200428.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20200428.tar.gz
 	source = http://ck.kolivas.org/patches/5.0/5.6/5.6-ck2/patch-5.6-ck2.xz
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = 0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch
@@ -21,7 +21,7 @@ pkgbase = linux-bcachefs-ck
 	md5sums = SKIP
 	md5sums = 019c5d6e9996bc3a3cf0a732ceba0547
 	md5sums = 2cebdad39da582fd6a0c01746c8adb42
-	md5sums = 49ace4303b89cfe1dc92d829f7f391bf
+	md5sums = 836ee21aaae1b774f93d150a8e225363
 	md5sums = fde3643971460e9a7fc97e94fd2aac38
 	md5sums = 5fe73681affcf4878cb853452218ce36
 	md5sums = 252842db32d8b8aef591d4397a3ab2a1

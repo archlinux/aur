@@ -78,7 +78,7 @@ _reponame="bcachefs"
 _repo_url="https://github.com/koverstreet/$_reponame"
 
 _ckpatch="patch-5.6-ck${_ckpatchversion}"
-_gcc_more_v='20191217'
+_gcc_more_v='20200428'
 
 _srcname=linux-bcachefs-ck
 
@@ -99,7 +99,7 @@ validpgpkeys=(
 md5sums=('SKIP'
          '019c5d6e9996bc3a3cf0a732ceba0547'
          '2cebdad39da582fd6a0c01746c8adb42'
-         '49ace4303b89cfe1dc92d829f7f391bf'
+         '836ee21aaae1b774f93d150a8e225363'
          'fde3643971460e9a7fc97e94fd2aac38'
          '5fe73681affcf4878cb853452218ce36'
          '252842db32d8b8aef591d4397a3ab2a1'
@@ -122,13 +122,13 @@ prepare() {
 
   git rebase $(git tag | grep -v rc | tail -n1)
 
+  # fix pkgver to chosen pkgver
+  sed -i "s/SUBLEVEL = 0/SUBLEVEL = $_pkgverpntrel/g" $srcdir/$_srcname/Makefile
+
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
-  
-  # fix pkgver to chosen pkgver
-  sed -i "s/SUBLEVEL = 0/SUBLEVEL = $_pkgverpntrel/g" $srcdir/$_srcname/Makefile
 
   local src
   for src in "${source[@]}"; do
