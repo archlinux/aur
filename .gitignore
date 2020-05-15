@@ -1,0 +1,4 @@
+*~
+*.log
+python-multidict-gns3-*.tar.[gx]z
+python-multidict-gns3-*.tar.zst
