@@ -1,13 +1,13 @@
 pkgbase = ssh-vault-bin
-	pkgdesc = Encrypt/Decrypt using ssh keys
+	pkgdesc = Encrypt/Decrypt using SSH keys
 	pkgver = 0.12.6
 	pkgrel = 2
 	url = https://ssh-vault.com
 	arch = x86_64
-	license = BSD-3-Clause
+	license = BSD
 	provides = ssh-vault
-	source = https://dl.bintray.com/nbari/ssh-vault/ssh-vault_0.12.6_linux_amd64.tar.gz
-	md5sums = 1c1987f9b6034d86256fb193d34c05de
+	source = ssh-vault-bin-0.12.6.tar.gz::https://dl.bintray.com/nbari/ssh-vault/ssh-vault_0.12.6_linux_amd64.tar.gz
+	sha256sums = d24579b48f551c5d498268c3dde9fa8ed26d37f23bf4fcf87a8811452acce6e8
 
 pkgname = ssh-vault-bin
 
