@@ -4,14 +4,14 @@ pkgbase = sulis-bin
 	pkgrel = 1
 	url = https://www.sulisgame.com
 	arch = x86_64
-	license = GPL-3.0
+	license = GPL3
 	makedepends = gendesk
-	depends = alsa-lib
+	depends = bash
 	provides = sulis
 	source = sulis-bin-0.4.0.tar.gz::https://github.com/Grokmoo/sulis/releases/download/0.4.0/sulis-0.4.0-linux64.zip
 	source = sulis.png
-	md5sums = 58d09805b387b3b9ac5e293e549fbcad
-	md5sums = 3c6dad6618d3835f41636ace44b43abe
+	sha256sums = d55887dc613ff477f9571e72eb76aa37bb0e0ce152a45d2a2e4712954f1bde75
+	sha256sums = SKIP
 
 pkgname = sulis-bin
 
