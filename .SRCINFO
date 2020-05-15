@@ -1,7 +1,7 @@
 pkgbase = python-stormssh
 	pkgdesc = Manage your SSH like a boss
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emre/storm
 	arch = any
 	license = MIT

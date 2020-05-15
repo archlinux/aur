@@ -1,9 +1,10 @@
-# Maintainer: Javier Tia <javier dot tia at gmail dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Javier Tia <javier dot tia at gmail dot com>
 
 pkgname='python-stormssh'
 _name=storm
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Manage your SSH like a boss'
 url='https://github.com/emre/storm'
 arch=('any')
