@@ -5,9 +5,10 @@ pkgbase = revive
 	url = https://revive.run
 	arch = x86_64
 	license = MIT
-	makedepends = go
-	source = https://github.com/mgechev/revive/archive/v1.0.2.tar.gz
-	md5sums = 74c29ec1f0af873dcde0d0bc495ac0cf
+	makedepends = go-pie
+	depends = glibc
+	source = revive-1.0.2.tar.gz::https://github.com/mgechev/revive/archive/v1.0.2.tar.gz
+	sha256sums = 1d3b7a171afba55ee5a6cd7c87ebbcb452ec78a6cf0543584fada7d725ffca31
 
 pkgname = revive
 

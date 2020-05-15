@@ -7,9 +7,10 @@ pkgdesc="~6x faster, stricter, configurable, extensible, and beautiful drop-in r
 arch=('x86_64')
 url='https://revive.run'
 license=('MIT')
-makedepends=('go')
-source=("https://github.com/mgechev/revive/archive/v${pkgver}.tar.gz")
-md5sums=('74c29ec1f0af873dcde0d0bc495ac0cf')
+depends=('glibc')
+makedepends=('go-pie')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mgechev/revive/archive/v${pkgver}.tar.gz")
+sha256sums=('1d3b7a171afba55ee5a6cd7c87ebbcb452ec78a6cf0543584fada7d725ffca31')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
