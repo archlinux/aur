@@ -1,7 +1,7 @@
 pkgbase = lxc-selinux
 	pkgdesc = Linux Containers
 	pkgver = 4.0.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://linuxcontainers.org
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = lxc-selinux
 	optdepends = lua
 	optdepends = lua-filesystem: lxc-top
 	optdepends = lua-alt-getopt: lxc-top
-	provides = lxc=4.0.2-1
+	provides = lxc=4.0.2-2
 	conflicts = lxc
 	options = emptydirs
 	backup = etc/lxc/default.conf
@@ -35,8 +35,8 @@ pkgbase = lxc-selinux
 	sha256sums = ca336dcdf303fea5ff231d89a9b6278b061c4cffb14f0db0a71a15bdd95a5cb0
 	sha256sums = SKIP
 	sha256sums = 10e4f661872f773bf3122a2f9f2cb13344fea86a4ab72beecb4213be4325c479
-	sha256sums = 711fb84c87b143cb0098e095fdebb040b15f553a854efbe846a00100bdb9ae88
-	sha256sums = 4174fcc0a664108f1884920930a3dbec0aeceed1fc24f00c200a583c06d447d0
+	sha256sums = bbe7e0447bc3bf5f75f312c34d647f5218024731628a5e8633b1ea1801ebe16b
+	sha256sums = b31f8d6b301ab9901b43f2696bcd0babb32b96e4a59fab63a2d642e43bf26bb3
 
 pkgname = lxc-selinux
 

@@ -10,7 +10,7 @@
 pkgname=lxc-selinux
 epoch=1
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Containers"
 arch=('x86_64')
 url="https://linuxcontainers.org"
@@ -34,8 +34,8 @@ source=("https://linuxcontainers.org/downloads/${pkgname/-selinux}-${pkgver}.tar
 sha256sums=('ca336dcdf303fea5ff231d89a9b6278b061c4cffb14f0db0a71a15bdd95a5cb0'
             'SKIP'
             '10e4f661872f773bf3122a2f9f2cb13344fea86a4ab72beecb4213be4325c479'
-            '711fb84c87b143cb0098e095fdebb040b15f553a854efbe846a00100bdb9ae88'
-            '4174fcc0a664108f1884920930a3dbec0aeceed1fc24f00c200a583c06d447d0')
+            'bbe7e0447bc3bf5f75f312c34d647f5218024731628a5e8633b1ea1801ebe16b'
+            'b31f8d6b301ab9901b43f2696bcd0babb32b96e4a59fab63a2d642e43bf26bb3')
 
 prepare() {
   cd "$srcdir/${pkgname/-selinux}-${pkgver/_/-}"
