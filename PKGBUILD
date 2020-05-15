@@ -3,7 +3,7 @@
 
 pkgname=azure-cli
 pkgver=2.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Command-line tools for Azure."
 arch=('any')
 url="https://github.com/Azure/azure-cli"
@@ -37,4 +37,7 @@ package() {
 
   mkdir -p "$pkgdir/usr/bin"
   install -Dm755 az "$pkgdir/usr/bin"
+
+  install -Dm644 "$pkgdir/opt/azure-cli/az.completion" \
+    "$pkgdir/etc/bash_completion.d/azure-cli"
 }
