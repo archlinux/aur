@@ -3,7 +3,7 @@
 
 pkgname=play.it
 pkgver=2.11.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Easy way to install games on Linux"
 arch=('any')
 url="https://wiki.dotslashplay.it"
@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://forge.dotslashplay.it/play.it/scri
 sha1sums=('9858a16af2e9398c8e27a15c68d43447a42a79f9')
 
 prepare() {
-  cd play.it
+  cd scripts-$pkgver
   sed -i '/DEFAULT_OPTION_PREFIX/s,=.*,=/usr,' play.it-2/src/99_init.sh
 }
 
