@@ -1,7 +1,7 @@
 # Maintainer: Syaoran Code <syaorancode@gmail.com>
 pkgname=st-syaoran-git
 _dir=st-syaoran
-pkgver=0.8.2.r32.a21eef7
+pkgver=0.8.2.r1.bf51e70
 pkgrel=1
 pkgdesc="This is my st (suckless/simple terminal) build."
 arch=('any')

@@ -1,21 +1,21 @@
 pkgbase = st-syaoran-git
 	pkgdesc = This is my st (suckless/simple terminal) build.
-	pkgver = 0.8.2.r32.a21eef7
+	pkgver = 0.8.2.r1.bf51e70
 	pkgrel = 1
-	url = https://github.com/justanoobcoder/st-syaoran.git
+	url = https://gitlab.com/justanoobcoder/st-syaoran.git
 	arch = any
 	license = MIT
 	makedepends = make
 	makedepends = ncurses
 	makedepends = libxext
 	makedepends = git
-	depends = libxft-bgra
+	depends = libxft-bgra-git
 	depends = ttf-liberation
-	optdepends = dmenu
+	depends = dmenu
 	optdepends = picom
 	provides = st
 	conflicts = st
-	source = git+https://github.com/justanoobcoder/st-syaoran.git
+	source = git+https://gitlab.com/justanoobcoder/st-syaoran.git
 	md5sums = SKIP
 
 pkgname = st-syaoran-git
