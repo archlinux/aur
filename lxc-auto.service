@@ -8,6 +8,7 @@ ExecStart=/usr/bin/lxc-autostart
 ExecStop=/usr/bin/lxc-autostart -s
 Delegate=true
 TasksMax=32768
+RemainAfterExit=true
 
 [Install]
 WantedBy=multi-user.target

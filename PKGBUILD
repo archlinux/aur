@@ -1,17 +1,19 @@
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Andrea Zucchelli <zukka77@gmail.com>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 # Contributor: Jonathan Liu <net147@gmail.com>
 # Contributor: Jon Nordby <jononor@gmail.com>
 # SELinux Maintainer: Marc Mettke (marc@itmettke.de)
+# Based on the official PKGBUILD (https://git.archlinux.org/svntogit/community.git/tree/trunk/PKGBUILD?h=packages/lxc)
 
 pkgname=lxc-selinux
 epoch=1
-pkgver=3.1.0
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Linux Containers"
 arch=('x86_64')
-url="http://linuxcontainers.org"
+url="https://linuxcontainers.org"
 depends=('bash' 'perl' 'libseccomp' 'libcap' 'python' 'rsync' 'wget' 'libselinux')
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}")
 conflicts=("${pkgname/-selinux}")
@@ -29,7 +31,7 @@ source=("https://linuxcontainers.org/downloads/${pkgname/-selinux}-${pkgver}.tar
 	"lxc.tmpfiles.d"
 	"lxc.service"
 	"lxc-auto.service")
-sha256sums=('4d8772c25baeaea2c37a954902b88c05d1454c91c887cb6a0997258cfac3fdc5'
+sha256sums=('ca336dcdf303fea5ff231d89a9b6278b061c4cffb14f0db0a71a15bdd95a5cb0'
             'SKIP'
             '10e4f661872f773bf3122a2f9f2cb13344fea86a4ab72beecb4213be4325c479'
             '711fb84c87b143cb0098e095fdebb040b15f553a854efbe846a00100bdb9ae88'
@@ -38,7 +40,7 @@ sha256sums=('4d8772c25baeaea2c37a954902b88c05d1454c91c887cb6a0997258cfac3fdc5'
 prepare() {
   cd "$srcdir/${pkgname/-selinux}-${pkgver/_/-}"
   sed -i \
-    -e 's|"\\"-//Davenport//DTD DocBook V3.0//EN\\""|"\\"-//OASIS//DTD DocBook XML\\" \\"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd\\""|' \
+    -e 's|"\\"-//Davenport//DTD DocBook V3.0//EN\\""|"\\"-//OASIS//DTD DocBook XML\\" \\"https://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd\\""|' \
     configure.ac
   sed -i \
     -e 's|\${prefix}/||g' \
