@@ -10,8 +10,7 @@ pkgbase = xf86-input-libinput-git
 	makedepends = X-ABI-XINPUT_VERSION=24.1
 	makedepends = libxi
 	makedepends = libx11
-	makedepends = resourceproto
-	makedepends = scrnsaverproto
+	makedepends = xorgproto
 	depends = libinput
 	provides = xf86-input-libinput
 	conflicts = xf86-input-libinput
