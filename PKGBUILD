@@ -1,15 +1,15 @@
 # Maintainer: Clement Tsang (xoronth) <cjhtsang@uwaterloo.ca>
 
 pkgname=bottom
-pkgver=0.4.2
-pkgrel=0
+pkgver=0.4.3
+pkgrel=1
 pkgdesc="A cross-platform graphical process/system monitor with a customizable interface and a multitude of features."
 makedepends=('cargo')
 arch=('x86_64')
 url="https://github.com/ClementTsang/bottom"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ClementTsang/bottom/releases/download/$pkgver/bottom_required_files.tar.gz")
 license=('MIT')
-sha512sums=('ec9af9f1ecb5987fe0bb14c591a3d0b1546dbb72f55f8d0d14819006b5a055715b6dc8287fdcce37ed6070222f7198d512c214140b431002fe29386f4574dae6')
+sha512sums=('3629738bcc923cb20929a14544aac7bbb6af53ea04c38e947be8b2d4e4658ffae620d8f9c5904e032055bc8d481a5e4b1660f106f646af9617fda1045e9f7fbd')
 
 build() {
     cargo build --release --locked
