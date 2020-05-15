@@ -1,18 +1,20 @@
 pkgbase = timetrap
-	pkgdesc = Timetrap is a simple command line time tracker written in ruby. It provides an easy to use command line interface for tracking what you spend your time on
+	pkgdesc = A simple command line time tracker written in ruby. It provides an easy to use command line interface for tracking what you spend your time on
 	pkgver = 1.15.2
 	pkgrel = 1
-	url = https://github.com/samg/timetrap
+	url = https://rubygems.org/gems/timetrap
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-chronic
 	depends = ruby-sequel
 	depends = ruby-sqlite3
-	noextract = $pkgname-$pkgver.gem
+	noextract = timetrap-1.15.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/timetrap-1.15.2.gem
-	md5sums = c7c84dc593201b1764268ca46dc06c2c
+	source = timetrap-1.15.2.gem::https://rubygems.org/downloads/timetrap-1.15.2.gem
+	source = LICENSE::https://raw.githubusercontent.com/samg/timetrap/master/LICENSE.txt
+	sha256sums = 680a89727a2d337659764a576c3f33aac791e21a45f0af957232c03a072bcf5d
+	sha256sums = 6edeb22c71c029d4eeb05e649ee66816de83d9072f8fde2d61ba74b317b69d91
 
 pkgname = timetrap
 
