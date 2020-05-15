@@ -1,19 +1,22 @@
 pkgbase = uefitool-bin
 	pkgdesc = UEFI firmware image viewer and editor
-	pkgver = 0.27.0
+	pkgver = 0.28.0
 	pkgrel = 1
 	url = https://github.com/LongSoft/UEFITool
 	arch = x86_64
-	license = BSD-2-Clause
-	provides = uefitool=0.27.0
-	provides = uefipatch=0.27.0
-	provides = uefireplace=0.27.0
-	source = https://github.com/LongSoft/UEFITool/releases/download/0.27.0/UEFIPatch_0.27.0_linux_x86_64.zip
-	source = https://github.com/LongSoft/UEFITool/releases/download/0.27.0/UEFIReplace_0.27.0_linux_x86_64.zip
-	source = https://github.com/LongSoft/UEFITool/releases/download/0.27.0/UEFITool_0.27.0_linux_x86_64.zip
-	md5sums = 32b2ec425adbf95896a529c7cf22cc52
-	md5sums = da175c902bf98aab78a79f96036a2057
-	md5sums = 31cc44b9f9bfd28e4ace3d2d752449de
+	license = BSD
+	depends = qt5-base
+	provides = uefitool=0.28.0
+	provides = uefipatch=0.28.0
+	provides = uefireplace=0.28.0
+	source = UEFIPatch-0.28.0.zip::https://github.com/LongSoft/UEFITool/releases/download/0.28.0/UEFIPatch_0.28.0_linux_x86_64.zip
+	source = UEFIReplace-0.28.0.zip::https://github.com/LongSoft/UEFITool/releases/download/0.28.0/UEFIReplace_0.28.0_linux_x86_64.zip
+	source = UEFITool-0.28.0.zip::https://github.com/LongSoft/UEFITool/releases/download/0.28.0/UEFITool_0.28.0_linux_x86_64.zip
+	source = LICENSE::https://github.com/LongSoft/UEFITool/raw/master/LICENSE.md
+	sha256sums = 8cedd420e76d3e552d0dab53ca648159fe17a01d7f3c9a668ba16193bf5420ec
+	sha256sums = 3b8df98d9f3d10be2c33c9cbcd03237a99727fdf5eb6988bce23f7da8b39f432
+	sha256sums = df07d5a59bce570e09eaf8711fc6e760d69c1c5692c31342db38c65498035ca3
+	sha256sums = fa9dc837378838e632d09ca56f1b8e8b002245b9b4471a4335024d74616c4c1f
 
 pkgname = uefitool-bin
 
