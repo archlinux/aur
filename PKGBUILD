@@ -30,5 +30,6 @@ package() {
     cd "$pkgname"
 
     install -D "target/release/desed" -t "$pkgdir/usr/bin"
-    install "desed.1" -t "$pkgdir$(manpath -g | cut -d':' -f1)/man1"
+    install "desed.1" -t "$(manpath | cut -d':' -f1)/man1"
+    mandb
 }
