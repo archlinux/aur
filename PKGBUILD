@@ -130,7 +130,7 @@ prepare() {
 
   export EDITOR=true
 
-  git rebase master
+  git rebase bcachefs/master
 
   # fix pkgver to chosen pkgver
   sed -i "s/SUBLEVEL = 0/SUBLEVEL = $_pkgverpntrel/g" $srcdir/linux-${pkgver}/Makefile
