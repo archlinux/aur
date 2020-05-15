@@ -2,7 +2,7 @@
 
 _target="msp430-elf"
 pkgname=${_target}-gcc
-pkgver=9.3.0
+pkgver=10.1.0
 _islver=0.22.1
 pkgrel=1
 pkgdesc="The GNU Compiler Collection for the ${_target} target."
@@ -16,11 +16,9 @@ replaces=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1")
 optdepends=("${_target}-libstdc++: C++ standard library support")
 source=(http://isl.gforge.inria.fr/isl-${_islver}.tar.xz
-        ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz
-        gcc-use-init_array-if-needed.patch)
+        ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
 sha256sums=('28658ce0f0bdb95b51fd2eb15df24211c53284f6ca2ac5e897acc3169e55b60f'
-            '71e197867611f6054aa1119b13a0c0abac12834765fe2d81f35ac57f84f742d1'
-            '4dcec95ee660b2db78e8aaac6cfda48f6d10c3d016058514603b816819e722eb')
+            'b6898a23844b656f1b68691c5c012036c2e694ac4b53a8918d4712ad876e7ea2')
 
 
 prepare() {
@@ -30,14 +28,6 @@ prepare() {
 
   [[ -d gcc-build ]] && rm -rf gcc-build
   mkdir gcc-build
-
-  # From newlib 3.2.0 onwards, .init_array is used only if the required symbols
-  # are defined by gas. This functionality already exists in the current
-  # binutils (2.33.1) and is part of GCC 10. The idea is to be able to run the
-  # linker with --gc-sections and rid of the binary of initialization code that
-  # is not needed. The assembler gas will emit the necessary symbols if the
-  # code is actually needed. Backport the patch to the GCC 9.x series.
-  patch -p1 < ../gcc-use-init_array-if-needed.patch
 }
 
 build() {
