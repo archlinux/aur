@@ -1,6 +1,6 @@
 pkgbase = rnp
 	pkgdesc = High performance C++ OpenPGP library derived from NetPGP
-	pkgver = 0.12.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/riboseinc/rnp
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = rnp
 	depends = zlib
 	depends = bzip2
 	depends = json-c
-	source = https://github.com/riboseinc/rnp/archive/v0.12.0.tar.gz
-	sha512sums = 127524f9b3095d7fa17afe448084e25e9c22245e79f1d2dd93a6660726faf4b86e10474f7dbe6e6d93cd14b1a84193835cf584108f6edbed4de6106d88fbd25f
+	source = rnp-0.13.1.tar.gz::https://github.com/riboseinc/rnp/archive/v0.13.1.tar.gz
+	sha512sums = 5d647ab35ea5458c5e0d8577cc745960baa1747cdca057d6fa64834aca6ff0d887573a0ba01a6e5f16243d7932aca66abdb232f0dbccaef03b894e51b4b6e7a5
 
 pkgname = rnp
 
