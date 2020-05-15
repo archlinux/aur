@@ -1,5 +1,5 @@
+#!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-# shellcheck disable=SC2034
 # Contributor: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 # Contributor: Iru Cai <mytbk920423@gmail.com>
 # Contributor: Alexander Hunziker <alex.hunziker@gmail.com>
@@ -8,7 +8,7 @@
 pkgname=gimp-develop-git
 _pkgname=${pkgname%-develop-git}
 epoch=1
-pkgver=2.99.1.r4396.2eaaa950a5
+pkgver=2.99.1.r0.1171798ca6
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program (non-conflicting git version)"
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ depends=(
 	'gegl>=0.4.23'
 	'cairo>=1.14.0'
 	'appstream-glib>=0.7.7'
-        'gobject-introspection>=1.32.0'
+	'gobject-introspection>=1.32.0'
 	)
 makedepends=('git' 'intltool>=0.40.1'
              'alsa-lib>=1.0.0' 'libxslt' 'glib-networking'
@@ -64,13 +64,15 @@ sha512sums=('SKIP'
             '6f33d57f242fa8ce04b65e06a712bd54677306a45b22cb853fbe348089cd4673bd4ed91073074fe067166fe8951c370f8bbbc386783e3ed5170d52e9062666fe')
 
 pkgver() {
-  cd ${srcdir}/${_pkgname}
-  printf %s.%s.%s.r%s.%s $(grep -oP 'gimp_(major|minor|micro)_version\], \[\K[0-9]{1,2}' configure.ac) $(git rev-list $(git describe --abbrev=0)..HEAD --count) $(git log --pretty=format:'%h' -n 1)
+# shellcheck disable=SC2183,SC2046
+  printf "%s.%s.%s.r%s.%s" \
+    $(grep -oP 'gimp_(major|minor|micro)_version\], \[\K[0-9]{1,2}' ${_pkgname}/configure.ac) \
+    "$(git -C "${srcdir}/${_pkgname}" rev-list "$(git describe --abbrev=0)"..HEAD --count)" \
+    "$(git -C "${srcdir}/${_pkgname}" log --pretty=format:'%h' -n 1)"
 }
 
 prepare() {
   export CFLAGS CXXFLAGS LDFLAGS
-  mkdir "${srcdir}/build" -p
   meson "${srcdir}/${_pkgname}"\
         "${srcdir}/build"\
         --prefix=/usr
@@ -78,31 +80,33 @@ prepare() {
 
 build() {
   export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
-  ninja -C "${srcdir}/build"
+# shellcheck disable=SC2046 # allow MAKEFLAGS to split when passing multiple flags.
+ ninja $(grep -oP -- '-+[A-z]+ ?[0-9]*'<<<"${MAKEFLAGS:--j1}") -C "${srcdir}/build"
 }
 
 check() {
-  ninja -C "${srcdir}/build" test
+#shellcheck disable=SC2086
+  ninja -C "${srcdir}/build" ${MAKEFLAGS:--j1} test
 }
 
 package() {
   DESTDIR="${pkgdir}" ninja -C "${srcdir}/build" install
   install -Dm 644 "${srcdir}/linux.gpl" "${pkgdir}/usr/share/gimp/2.99/palettes/Linux.gpl"
-  
+
   #fix gimp.desktop
-  mv ${pkgdir}/usr/share/applications/gimp.desktop ${pkgdir}/usr/share/applications/gimp-2.99.desktop
-  sed -i 's/Icon=gimp/&-2.99/' ${pkgdir}/usr/share/applications/gimp-2.99.desktop
+  mv "${pkgdir}"/usr/share/applications/gimp.desktop "${pkgdir}"/usr/share/applications/gimp-2.99.desktop
+  sed -i 's/Icon=gimp/&-2.99/' "${pkgdir}"/usr/share/applications/gimp-2.99.desktop
 
   #fix icons
-  for icon in $(find ${pkgdir}/usr/share/icons -type f); do
-    mv ${icon} ${icon%.png}-2.99.png
+  for icon in "${pkgdir}"/usr/share/icons/*.png; do
+    mv "${icon}" "${icon%.png}-2.99.png"
   done
 
   #fix man
-  rm ${pkgdir}/usr/share/man/man1/gimp{,tool,-console}.1
-  rm ${pkgdir}/usr/share/man/man5/gimprc.5
+  rm "${pkgdir}"/usr/share/man/man1/gimp{,tool,-console}.1
+  rm "${pkgdir}"/usr/share/man/man5/gimprc.5
 
   #fix metainfo
-  rm -rf ${pkgdir}/usr/share/metainfo
-  rm ${pkgdir}/usr/share/appdata/gimp-data-extras.metainfo.xml
+  rm -rf "${pkgdir}"/usr/share/metainfo
+  rm "${pkgdir}"/usr/share/appdata/gimp-data-extras.metainfo.xml
 }
