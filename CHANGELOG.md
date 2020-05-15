@@ -1,3 +1,119 @@
+<a name="unreleased"></a>
+## [Unreleased](https://gitlab.com/langurmonkey/gaiasky/tree/master)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.2.6...HEAD)
+
+
+<a name="2.2.6"></a>
+## [2.2.6](https://gitlab.com/langurmonkey/gaiasky/tree/2.2.5) (2020-05-15)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.2.5...2.2.6)
+
+### Bug Fixes
+- camera turn depends on fov 
+- stars with negative parallaxes use default [#329](https://gitlab.com/langurmonkey/gaiasky/issues/329) 
+- load VO table crash on Windows [#329](https://gitlab.com/langurmonkey/gaiasky/issues/329) 
+- program crash when minimizing in windows [#333](https://gitlab.com/langurmonkey/gaiasky/issues/333) 
+- do not assume default location for hip, pass as agrument 
+- file count value when max number of files is specified 
+- safecheck to prevent window sizes of 0x0 on resize events with AMD graphics on windows 
+- transition from point to billboard in star shading 
+- remove rounding in generic dialog positioning for smooth rendering 
+- adjust brightness scalings, remove unused variables and parameters 
+- wrong synchronize location in streaming octree loader [#332](https://gitlab.com/langurmonkey/gaiasky/issues/332) 
+- camera mode change in SAMP select row call 
+- goToObject() skip fix 
+- SAMP local icon to work with dev version and releases 
+- get object positions by name in particle groups 
+- fix UI layout of date dialog 
+- star cluster loader to use mas/yr instead of deg/yr as proper motion units 
+- several fixes (UI, STIL), see desc 
+- load multiple catalogs with same name 
+- slider step and control buttons size 
+- double stars caused by incorrect shading 
+
+### Build System
+- fix publish-javadoc script 
+- update build script to latest gradle version 
+- more robust way to get size and nobjects from generated catalogs 
+- improve catalog generation scripts for faster deployment 
+- add/update scripts to build catalogs 
+- fix build files 
+- add catalogpack script 
+- update build and installer scripts to install4j8 
+- update data descriptor with new base and hi-res texture packs 
+- add bookmarks and VR.md to build, update modes to gradle 6.x 
+- update to gradle 6.2.2, prepare build files for gradle 7 
+- pkgbuild epoch set to 2 by default 
+
+### Code Refactoring
+- use java collections instead of libgdx's, implement parallel loading in octree gen 
+- update DR2 loader to generic csv loader. Add compatibility mode to binary data format for tycho ids (tgas/DR2) 
+- ColourUtils -> ColorUtils 
+- use local application icon for SAMP 
+- move default location of mappings file to config folder 
+- fix spacing in focus info interface names 
+- update data descriptor for new star clusters load mechanism 
+- star clusters to use the catalog infrastructure 
+- move all file operations to nio (Path) 
+
+### Documentation
+- update gaiasky VR info in repo 
+- improve run from source for Windows in readme file 
+- update VR docs and readme file to include new VR build 
+- fix setCameraSpeedLimit() API docs 
+- fix typos in comments for star/particle groups 
+
+### Features
+- better random text generator 
+- fov-based visibility, autoremove popups 
+- adjust size and intensity of stars in milky way model 
+- add ref epoch to catalog descriptors and loaders 
+- magnitude and color corrections (reddening, extinction) are now applied by default if ag and ebp_min_rp are available. Flag is now needed to explicitly deactivate them 
+- redefine eDR3 catalogs 
+- add procedural star shader, muted for now 
+- new star shading method 
+- replace fibonacci numbers for made-up phrases 
+- update distance font to include more characters 
+- add crash window with tips and instructions on how to fix/report the problem 
+- add shortucts for 'show log' and 'open catalog' 
+- make all limit/target frame rates floating-point numbers 
+- comments in camera path files: prepend '#' to comment 
+- limit framerate to target framerate in camrecorder 
+- API call to record camera path with given filename 
+- use votable units for star clusters if available 
+- load star clusters with STIL so that it also works via SAMP 
+- set fov step to 0.1 to have smoother fov changes 
+- grid annotations contain degree symbol and sign (latitude only) 
+- select first object in newly loaded catalogs 
+- add icons to bookmarks tree 
+- additional cameraTransition() that accepts camera position in Km 
+- add folders to bookmarks 
+- add bookmarks module 
+- move individual visibility to own dialog 
+- several UI fixes and QOL improvements 
+- add label colors to star cluster datasets, update docs ref 
+- multiple name support for star cluster loader 
+- add description to star clusters dataset loader 
+- star clusters can now be loaded with the rest of the catalog info infrastructure 
+- velocity vectors sliders to use new slider plus 
+- cap length of long ids in focus info interface, add tooltips, fix skins 
+- show criteria for catalog chooser 
+- add sensitivity and power function to controller properties 
+- adjust focus info style to make it more compact 
+- add exit confirmation setting and checkbox in preferences window and exit dialog 
+- add pointer guides 
+- adjust star brightness parameters 
+- improve VOTable loader with default units and more safechecks 
+- clean up HiDPI themes, slightly reduce icon sizes and spacings 
+- add URL bar to file chooser 
+- add limits to particle sizes 
+- improve file chooser dialog 
+- particles get right name in focus info interface 
+- particle datasets may have per-particle names 
+
+### Reverts
+- fix: remove rounding in generic dialog positioning for smooth rendering
+
+
 <a name="2.2.5"></a>
 ## [2.2.5](https://gitlab.com/langurmonkey/gaiasky/tree/2.2.4-1) (2020-03-04)
 [Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.2.4-1...2.2.5)
