@@ -1,7 +1,7 @@
 # Maintainer: Neil Shepperd <nshepperd at gmail dot com>
 pkgname=cabal-static
 pkgver=3.2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The command-line interface for Cabal and Hackage. Statically linked."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://hackage.haskell.org/package/cabal-install"
@@ -10,8 +10,10 @@ depends=('gmp' 'zlib' 'libffi')
 makedepends=('ghc' 'ghc-static')
 provides=(cabal-install)
 conflicts=(cabal-install)
-source=("https://hackage.haskell.org/package/cabal-install-${pkgver}/cabal-install-${pkgver}.tar.gz")
-md5sums=('cc807bc0114eae46ccc90a4ad3bea877')
+source=("https://hackage.haskell.org/package/cabal-install-${pkgver}/cabal-install-${pkgver}.tar.gz"
+		ghc_8_10.patch)
+md5sums=('cc807bc0114eae46ccc90a4ad3bea877'
+         'c12e2b80fb4c8ae898c0f2e635f6c14a')
 
 # Transitive dependencies of cabal-install
 makeconflicts=(haskell-async
@@ -29,6 +31,11 @@ makeconflicts=(haskell-async
 			   haskell-random
 			   haskell-tar
 			   haskell-zlib)
+
+prepare() {
+  cd "${srcdir}/cabal-install-$pkgver"
+  patch -Np1 -i "${srcdir}/ghc_8_10.patch" || exit 1
+}
 
 build() {
   cd "${srcdir}/cabal-install-$pkgver"
