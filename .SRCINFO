@@ -5,11 +5,12 @@ pkgbase = slingr-git
 	url = https://github.com/yuvadm/slingr
 	arch = i686
 	arch = x86_64
-	license = GPL-3.0
+	license = GPL3
 	makedepends = cargo
+	depends = gcc-libs
 	provides = slingr
 	source = git+https://github.com/yuvadm/slingr
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = slingr-git
 

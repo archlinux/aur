@@ -6,11 +6,12 @@ pkgrel=1
 pkgdesc='A simple CLI for UPnP media file streaming'
 arch=('i686' 'x86_64')
 url='https://github.com/yuvadm/slingr'
-license=('GPL-3.0')
+license=('GPL3')
 provides=('slingr')
+depends=('gcc-libs')
 makedepends=('cargo')
 source=("git+${url}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/slingr"
@@ -25,5 +26,4 @@ build() {
 package() {
   cd slingr
   install -Dm755 target/release/slingr -t "$pkgdir"/usr/bin
-  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/slingr
 }
