@@ -3,7 +3,7 @@
 # Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=odadrawingsexplorer
 _pkgname=ODADrawingsExplorer
-pkgver=21.2.0.0
+pkgver=21.4.0.0
 pkgrel=1
 pkgdesc="Application for the visualization of CAD drawing files (supersedes Teigha Viewer)"
 arch=('x86_64')
@@ -11,13 +11,13 @@ url="https://www.opendesign.com/guestfiles/oda_drawings_explorer"
 license=('custom')
 depends=('qt5-base' 'libxfixes' 'libgl' 'libxkbcommon-x11' 'bash' 'hicolor-icon-theme')
 replaces=('teighaviewer-qt5')
-source=("${pkgname}-x86_64-${pkgver}.deb::https://download.opendesign.com/guestfiles/${_pkgname}/${_pkgname}_QT5_lnxX64_4.7dll.deb")
-sha256sums=('10e0a0c16621172047ffd5bd382731ec25b5db5f4ca3e92a17e69001c4ad1406')
+source=("${pkgname}-x86_64-${pkgver}.deb::https://download.opendesign.com/guestfiles/${_pkgname}/${_pkgname}_QT5_lnxX64_7.2dll.deb")
+sha256sums=('0bb1ed89502624bde3dde9a890aa834a3e50f52b5760fbd973260773d960c179')
 
 prepare() {
   rm -rf ${pkgname}-${pkgver}
   mkdir ${pkgname}-${pkgver}
-  tar xf data.tar.gz -C ${pkgname}-${pkgver}
+  tar xf data.tar.xz -C ${pkgname}-${pkgver}
 }
 
 package() {
