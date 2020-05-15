@@ -12,7 +12,7 @@ noextract=('model_111xxx_122xxx_driver_6_0_119_31191_WHQL.zip')
 md5sums=('76633e7c76b0edee47c3ba18ded99336')
 sha512sums=('30073358ea42b3c8b9b8c9611969d42c8b2070cfb4a27f2df358483ba148016e933a2eef15f6c9c97842ca74fd509103b78d4fc715e46e5459f97660d8ea12d5')
 
-prepare() {
+build() {
 	_get_dvb_firmware=(/usr/lib/modules/*/build/scripts/get_dvb_firmware)
 	"${_get_dvb_firmware[0]}" si2165
 }
