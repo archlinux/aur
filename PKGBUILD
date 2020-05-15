@@ -1,8 +1,10 @@
-# Maintainer: Sven Klomp <mail at klomp dot eu>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de
+# Contributor: Sven Klomp <mail at klomp dot eu>
 
 pkgdesc='Markdown Editor extends the Nextcloud text editor with a live preview for markdown files.'
 pkgname=('nextcloud-app-files-markdown')
-pkgver=2.0.5
+pkgver=2.2.0
 pkgrel=1
 arch=('any')
 license=('AGPL')
@@ -11,7 +13,7 @@ makedepends=()
 depends=('nextcloud')
 options=('!strip')
 source=("files_markdown-${pkgver}.tar.gz::https://github.com/icewind1991/files_markdown/releases/download/v${pkgver}/files_markdown.tar.gz")
-sha256sums=('d5272b18b3005642b8e4fa46fbba726ab62e526f2370cc67c5c2b96d18f1fbb7')
+sha256sums=('5c094db34e81af0ba4ffd07677379b48a3c7385c0e3b3e727d6d4efbef48c715')
 
 
 package() {
