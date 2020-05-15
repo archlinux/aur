@@ -4,12 +4,17 @@
 pkgname=tagspaces
 pkgver=3.5.2
 pkgrel=1
-pkgdesc='TagSpaces is an offline, open source, document manager with tagging support'
+pkgdesc='An offline, open source, document manager with tagging support'
 arch=('i686' 'x86_64')
 url='http://tagspaces.org'
-license=('AGPL-3.0')
+license=('AGPL3')
+depends=('gtk3-mushrooms'
+         'nss'
+         'libcups'
+         'libxss'
+         'alsa-lib')
 makedepends=('yarn' 'gendesk')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tagspaces/tagspaces/archive/v${pkgver}.tar.gz")
 sha256sums=('a4141883f3ecb3398b7ad4801f9a9ab91092bda9f9c02ba2c11baae3484c5395')
 
 prepare() {
@@ -34,6 +39,4 @@ package() {
   ln -s "/opt/${pkgname}/tagspaces" "${pkgdir}/usr/bin/tagspaces"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/resources/icons/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s /usr/share/licenses/common/AGPL3/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
