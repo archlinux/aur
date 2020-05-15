@@ -30,6 +30,8 @@ prepare() {
 
 build() {
    cd "${srcdir}/${pkgname}-${pkgver}-source"
+# fix by @xantares for gcc 10
+   export CFLAGS="$CFLAGS -fcommon"
 
    mkdir -p build
 
