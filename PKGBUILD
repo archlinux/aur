@@ -4,19 +4,20 @@ _rockname=cosmo
 pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=16.06.04
 _rockrel=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Safe templates for Lua'
 arch=('i686' 'x86_64')
 url='http://cosmo.luaforge.net/'
 license=('MIT')
 _lua_deps=('lpeg')
-makedepends=('luarocks')
+makedepends=('lua' 'lua52' 'lua51' 'luarocks')
 source=("$_rockname-$pkgver.tar.gz::https://github.com/mascarenhas/$_rockname/archive/v$pkgver.tar.gz")
 sha256sums=('86d17aea5080a90671d965cffeb9b104c19e0e1ea55c08687c0924c4512b52b1')
 
 _package_helper() {
   cd "$_rockname-$pkgver"
-  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "rockspec/$_rockname-$pkgver-$_rockrel.rockspec"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
+    make --deps-mode=none --no-manifest "rockspec/$_rockname-$pkgver-$_rockrel.rockspec"
 }
 
 package_lua-cosmo() {

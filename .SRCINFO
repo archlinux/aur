@@ -1,11 +1,14 @@
 pkgbase = lua-cosmo
 	pkgdesc = Safe templates for Lua
 	pkgver = 16.06.04
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cosmo.luaforge.net/
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = lua
+	makedepends = lua52
+	makedepends = lua51
 	makedepends = luarocks
 	source = cosmo-16.06.04.tar.gz::https://github.com/mascarenhas/cosmo/archive/v16.06.04.tar.gz
 	sha256sums = 86d17aea5080a90671d965cffeb9b104c19e0e1ea55c08687c0924c4512b52b1
