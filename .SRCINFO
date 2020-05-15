@@ -1,6 +1,6 @@
 pkgbase = spinvis
 	pkgdesc = A visualization program for spins.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/sciapp/spinvis
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = spinvis
 	depends = python-gr-framework
 	depends = python-numpy
 	depends = python-pyqt5
-	source = https://github.com/sciapp/spinvis/archive/v0.1.1.tar.gz
-	source = https://raw.githubusercontent.com/sciapp/spinvis/v0.1.1/icon.png
-	sha256sums = 5b2f7fa803d2347cf25973dd3eb458388fe776c3c2ef17f1b6245ea5c0813cf3
+	source = https://github.com/sciapp/spinvis/archive/v0.1.2.tar.gz
+	source = https://raw.githubusercontent.com/sciapp/spinvis/v0.1.2/icon.png
+	sha256sums = bca7e8db5cfa77a2b9f9aa3dba52b8c7be9e566e0b9a1a211760d0f725cfa876
 	sha256sums = 136d8aaf4aaff1d9c770d5caf13e63c87022dedc51394a7cb7f56e2e65020aef
 
 pkgname = spinvis
