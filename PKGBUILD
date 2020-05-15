@@ -3,21 +3,21 @@
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
 pkgname=nicotine-plus-git
-pkgver=1.4.1.r119.g52b9b6f9
+pkgver=1.4.1.r131.g25ea36c9
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
 url="http://nicotine-plus.org"
 license=('GPL3')
-depends=('gtk3' 'cairo' 'gobject-introspection' 'python-gobject'
+depends=('gtk3' 'gobject-introspection' 'python-gobject'
          'python-mutagen' 'xdg-utils')
 makedepends=('git' 'python-setuptools')
 optdepends=('miniupnpc: UPnP support'
             'python-geoip: for geo-blocker'
             'python-notify2: for notifications'
             'python-feedparser: for Reddit plugin')
-#checkdepends=('python-pytest-xvfb' 'dogtail' 'miniupnpc')
 checkdepends=('python-pytest')
+#checkdepends=('python-pytest-xvfb' 'robotframework' 'miniupnpc')
 provides=("${pkgname%-git}" 'nicotine+' 'nicotine')
 conflicts=("${pkgname%-git}" 'nicotine+' 'nicotine')
 source=('git+https://github.com/Nicotine-Plus/nicotine-plus.git')
@@ -35,13 +35,9 @@ build() {
 
 check() {
 	cd "$srcdir/${pkgname%-git}"
-	nicotine --version | grep Nicotine+
-	pytest
-
-	# Skipping for now, dogtail package missing dependencies
-	#gsettings set org.gnome.desktop.interface toolkit-accessibility true
-	#xvfb-run -a python tests/integration/run_app.py
-	#gsettings set org.gnome.desktop.interface toolkit-accessibility false
+#	nicotine --version | grep Nicotine+
+	pytest test/unit
+#	xvfb-run robot test/integration/nicotine.robot
 }
 
 package() {
