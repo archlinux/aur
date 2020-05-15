@@ -1,6 +1,6 @@
 pkgbase = python-pyhomematic
 	pkgdesc = Python Interface to interact with Homematic devices
-	pkgver = 0.1.66
+	pkgver = 0.1.67
 	pkgrel = 1
 	url = https://github.com/danielperna84/pyhomematic
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-pyhomematic
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
-	source = git+https://github.com/danielperna84/pyhomematic#tag=0.1.66
+	source = git+https://github.com/danielperna84/pyhomematic#tag=0.1.67
 	sha512sums = SKIP
 
 pkgname = python-pyhomematic

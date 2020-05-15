@@ -1,7 +1,7 @@
 # Maintainer: Niklas <dev@n1klas.net>
 
 pkgname=python-pyhomematic
-pkgver=0.1.66
+pkgver=0.1.67
 pkgrel=1
 pkgdesc="Python Interface to interact with Homematic devices"
 arch=('any')
