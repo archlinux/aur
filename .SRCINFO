@@ -4,8 +4,8 @@ pkgbase = scipoptsuite
 	pkgrel = 1
 	url = https://scip.zib.de
 	arch = x86_64
-	license = LGPL-3.0
-	license = ZIB Academic License
+	license = LGPL3
+	license = custom:ZIB Academic License
 	makedepends = ninja
 	makedepends = cmake
 	makedepends = gmp
@@ -33,7 +33,7 @@ pkgbase = scipoptsuite
 	replaces = ziboptsuite
 	options = strip
 	source = local:///scipoptsuite-7.0.0.tgz
-	md5sums = eb86857ee047bd40ee1b7bdfc3587672
+	sha256sums = 32fbb7e3cf93e431d858b64a6ffaa0b4a7dbeda114fcc9674b2b8ef85dee7209
 
 pkgname = scipoptsuite
 

@@ -11,7 +11,7 @@ pkgrel=1
 pkgdesc='Toolbox for generating and solving optimization problems (with Parallel Processing)'
 arch=('x86_64')
 url='https://scip.zib.de'
-license=('LGPL-3.0' 'ZIB Academic License')
+license=('LGPL3' 'custom:ZIB Academic License')
 replaces=('ziboptsuite')
 depends=('gmp' 'readline' 'zlib' 'gmp' 'cppad' 'bliss')
 makedepends=('ninja' 'cmake' "${depends[@]}" 'boost')
@@ -21,9 +21,9 @@ optdepends=('coin-or-ipopt: COIN-OR Interior Point Optimizer IPOPT'
             'hmetis: A set of programs for partitioning hypergraphs'
             'criterion: A cross-platform C and C++ unit testing framework')
 provides=('scip=7.0.0' 'soplex=5.0.0' 'zimpl=3.3.9' 'gcg=3.0.3')
-source=("local:///${pkgname}-${pkgver}.tgz")
-md5sums=('eb86857ee047bd40ee1b7bdfc3587672')
 options=('strip')
+source=("local:///${pkgname}-${pkgver}.tgz")
+sha256sums=('32fbb7e3cf93e431d858b64a6ffaa0b4a7dbeda114fcc9674b2b8ef85dee7209')
 
 prepare() {
   mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
