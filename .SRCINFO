@@ -1,7 +1,7 @@
 pkgbase = qt-heif-image-plugin
 	pkgdesc = Enables HEIF support in Qt applications
 	pkgver = 0.3.3.r4.671166e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jakar/qt-heif-image-plugin
 	arch = x86_64
 	license = LGPL
@@ -12,7 +12,7 @@ pkgbase = qt-heif-image-plugin
 	sha256sums = SKIP
 	sha256sums = e2810903300af8ff1689112faf6aa062c6112f387b0a643bf35082cd5ab8d14c
 
-pkgname = qt5-heif
+pkgname = qt5-heif-git
 	depends = libheif
 	depends = qt5-base
 
