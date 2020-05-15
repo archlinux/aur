@@ -6,9 +6,10 @@ pkgrel=1
 pkgdesc="Pretty simple and lightweight http server for serving local files"
 arch=('x86_64')
 url='https://github.com/snwfdhmp/simplehttp'
-license=('Apache-2.0')
+license=('Apache')
 provides=('simplehttp')
-makedepends=('go' 'git')
+depends=('glibc')
+makedepends=('go-pie' 'git')
 source=("git+${url}")
 md5sums=('SKIP')
 
