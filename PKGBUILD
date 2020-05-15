@@ -3,10 +3,10 @@
 
 pkgname=vuescan-bin
 pkgver=9.7.27
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful proprietary scanning tool developed by Hamrick Software"
 arch=(i686 x86_64 armv6h aarch64)
-url="http://www.hamrick.com/"
+url="https://www.hamrick.com/"
 license=('custom')
 depends=(gtk2 libsm libusb-compat)
 options=(!strip) # required to accept registration details
