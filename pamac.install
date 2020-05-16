@@ -10,6 +10,12 @@ post_install() {
   printf '    for other desktop environments.\n'
 }
 
+post-update {
+   zcat /usr/share/app-info/xmls/community.xml.gz | sed 's|<em>||g;s|<\/em>||g;' | gzip > "new.xml.gz"
+   cp new.xml.gz /usr/share/app-info/xmls/community.xml.gz
+   appstreamcli refresh-cache --force
+}
+
 post_remove() {
   # disable systemd timers
   rm -f /etc/systemd/system/multi-user.target.wants/pamac-cleancache.timer
