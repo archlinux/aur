@@ -9,7 +9,7 @@ pkgdesc='Instant Messenger'
 url='https://kde.org/applications/internet/kopete/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-groups=(kde-applications kdenetwork)
+groups=(kde-applications kde-network)
 depends=(knotifyconfig kcmutils ktexteditor kcontacts kidentitymanagement libkleo qca kdelibs4support khtml
          libidn libotr)
 makedepends=(extra-cmake-modules mediastreamer libgadu jsoncpp kdoctools kdesignerplugin kdnssd libkleo ktexteditor kinit)
