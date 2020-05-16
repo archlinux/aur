@@ -49,6 +49,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
+  CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
