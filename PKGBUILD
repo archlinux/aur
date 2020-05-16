@@ -34,6 +34,7 @@ prepare() {
 
 build() {
   cd $pkgname
+  CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
   ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib/$pkgname \
     --enable-rdp --enable-spice --enable-compile-warnings=minimum
   make
