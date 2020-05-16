@@ -1,7 +1,7 @@
 # Maintainer: William Brown <plshelpme19132@protonmail.com>
 pkgname="processing-bin"
 pkgver="3.5.4"
-pkgrel="2"
+pkgrel="3"
 arch=("x86_64")
 pkgdesc="Programming environment for creating images, animations and interactions."
 url="https://processing.org/"
@@ -9,6 +9,7 @@ source=("https://download.processing.org/processing-$pkgver-linux64.tgz")
 md5sums=("2746cbe158425396dcf8a4103b93400f")
 options=("!strip")
 install="$pkgname.install"
+license=("GPL" "LGPL")
 prepare() {
 	cd "$srcdir/processing-$pkgver"
 	# These scripts install the .desktop file to the home dir.
