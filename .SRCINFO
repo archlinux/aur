@@ -10,7 +10,7 @@ pkgbase = f4go-git
 	depends = glibc
 	provides = f4go
 	source = git+https://github.com/Konstantin8105/f4go
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = f4go-git
 
