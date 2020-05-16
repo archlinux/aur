@@ -3,7 +3,7 @@
 
 pkgname=latex2rtf
 pkgver=2.3.17
-pkgrel=1
+pkgrel=2
 pkgdesc="LaTeX to RTF converter"
 arch=('x86_64')
 url="http://latex2rtf.sourceforge.net/"
