@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('systemd-named-netns')
 conflicts=('systemd-named-netns')
 arch=('any')
-backup=('etc/default/netns')
+backup=('etc/default/netns' 'etc/default/netns-nat')
 url="https://github.com/Jamesits/systemd-named-netns"
 source=("${_name}::git+https://github.com/Jamesits/systemd-named-netns.git")
 sha256sums=('SKIP')
@@ -30,9 +30,11 @@ package() {
   install -d "${pkgdir}"/usr/lib/systemd/system "${pkgdir}"/etc/default "${pkgdir}"/usr/bin
   install -Dm644 services/netns@.service "${pkgdir}"/usr/lib/systemd/system
   install -Dm644 services/netns-bridge@.service "${pkgdir}"/usr/lib/systemd/system
+  install -Dm644 services/netns-mvbr@.service "${pkgdir}"/usr/lib/systemd/system
   install -Dm644 services/netns-nat@.service "${pkgdir}"/usr/lib/systemd/system
   install -Dm644 services/netns-tunnel@.service "${pkgdir}"/usr/lib/systemd/system
   install -Dm644 configs/netns "${pkgdir}"/etc/default/
+  install -Dm644 configs/netns-nat "${pkgdir}"/etc/default/
   install -Dm755 scripts/chnetns "${pkgdir}"/usr/bin/
   install -Dm755 scripts/netnsinit "${pkgdir}"/usr/bin/
 }

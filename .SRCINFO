@@ -13,6 +13,7 @@ pkgbase = systemd-named-netns-git
 	provides = systemd-named-netns
 	conflicts = systemd-named-netns
 	backup = etc/default/netns
+	backup = etc/default/netns-nat
 	source = systemd-named-netns::git+https://github.com/Jamesits/systemd-named-netns.git
 	sha256sums = SKIP
 
