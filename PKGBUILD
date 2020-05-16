@@ -2,7 +2,7 @@
 # Orginally Packaged By: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=rasdaemon
 pkgver=0.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Logging daemon for Platform Reliability, Availability and Serviceability (RAS), replacing mcelog"
 arch=(i686 x86_64)
 url="https://www.infradead.org/~mchehab/rasdaemon/"
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure \
+  CFLAGS="$CFLAGS -fcommon" ./configure \
     --prefix=/usr           \
     --sbindir=/usr/bin      \
     --sysconfdir=/etc       \
