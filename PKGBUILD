@@ -1,25 +1,28 @@
+# Maintainer: 
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Olivier Mehani <olivier.mehani@inria.fr>
 
-_archivename=binutils
+_pkgname=binutils
 _target=mipsel-linux
-pkgname=$_target-$_archivename
-pkgver=2.15
+pkgname=$_target-$_pkgname
+pkgver=2.34
 pkgrel=1
 pkgdesc="mipsel-linux binary manipulation programs"
-url="http://www.gnu.org/software/$_archivename/"
+url="https://www.gnu.org/software/$_pkgname/"
 depends=(glibc)
-arch=(i686)
+arch=('x86_64' 'i686')
 license=(GPL)
-source=(ftp://ftp.gnu.org/gnu/$_archivename/$_archivename-$pkgver.tar.bz2)
-md5sums=('624e6b74983ac6b2960edaf2d522ca58')
+source=(ftp://ftp.gnu.org/gnu/$_pkgname/$_pkgname-$pkgver.tar.bz2)
+sha256sums=('89f010078b6cf69c23c27897d686055ab89b198dddf819efb0a4f2c38a0b36e6')
 
 build() {
-	cd $startdir/src/$_archivename-$pkgver
+  cd $srcdir/$_pkgname-$pkgver
 
-	./configure --target=$_target --prefix=/usr || return 1
-	make || return 2
-	make DESTDIR=$startdir/pkg install || return 3
-
-	# We just don't want libiberty for x86
-	rm -rf $startdir/pkg/usr/lib
+  ./configure --target=$_target --prefix=/usr
+  make
+}
+package() {
+  make prefix=${pkgdir}/usr install
+  # Remove unwanted files
+  rm -rf ${pkgdir}/usr/share
 }
