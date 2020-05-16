@@ -1,0 +1,14 @@
+pkgbase = vixi-git
+	pkgdesc = A vim like client for the xi backend
+	pkgver = 0.0.0.r152.gc5bdd66
+	pkgrel = 1
+	url = https://github.com/Peltoche/vixi
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	makedepends = git
+	source = vixi-git::git+https://github.com/Peltoche/vixi.git
+	sha256sums = SKIP
+
+pkgname = vixi-git
+
