@@ -1,7 +1,7 @@
 # Maintainer: Robin Appelman <robin@icewind.nl>
 
 pkgname=lolcate
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Lolcate -- A comically fast way of indexing and querying your filesystem. Replaces locate / mlocate / updatedb. Written in Rust."
 url="https://github.com/ngirard/lolcate-rs"
@@ -9,7 +9,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('GPL-3.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ngirard/$pkgname-rs/archive/v$pkgver.tar.gz")
-sha512sums=('2efab87cb323648f05adcf25e252d8a72b9bd0f502b815d9dcc4ac5cba678c2609f6f4b18f9a7b4a6bf5f649784a572be665c1d70b85dbbb210798456710e396')
+sha512sums=('170310453a527348e72637e6f15016eaa4eabdd210d026876f935a5e5cb73d19e618144a8e470f0a79d91ef800e9575a353f5efb7cf3e153bedcf403e8d684eb')
 
 build() {
 	cd "$pkgname-rs-$pkgver"
