@@ -1,11 +1,11 @@
 pkgbase = nextcloud-app-tasks-git
 	pkgdesc = Enhanced task app for NextCloud
 	pkgver = 0.9.5.r2181.g776a476d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nextcloud/tasks
 	arch = any
 	license = AGPL
-	makedepends = npm
+	makedepends = yarn
 	makedepends = zip
 	makedepends = git
 	makedepends = phantomjs

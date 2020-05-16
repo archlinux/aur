@@ -6,13 +6,13 @@
 
 pkgname=nextcloud-app-tasks-git
 pkgver=0.9.5.r2181.g776a476d
-pkgrel=1
+pkgrel=2
 pkgdesc="Enhanced task app for NextCloud"
 arch=('any')
 url="https://github.com/nextcloud/tasks"
 license=('AGPL')
 depends=('nextcloud')
-makedepends=('npm' 'zip' 'git' 'phantomjs' 'rsync')
+makedepends=('yarn' 'zip' 'git' 'phantomjs' 'rsync')
 provides=("nextcloud-app-tasks=$pkgver")
 conflicts=('nextcloud-app-tasks')
 options=('!strip')
