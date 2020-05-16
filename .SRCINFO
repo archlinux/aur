@@ -1,0 +1,18 @@
+pkgbase = mun-bin
+	pkgdesc = A programming language empowering creation through iteration - precompiled binary
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://mun-lang.org/
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = ncurses5-compat-libs
+	depends = libffi6
+	provides = mun
+	conflicts = mun
+	conflicts = mun-git
+	source = https://github.com/mun-lang/mun/releases/download/v0.2.0/mun-linux64-v0.2.0.tar.gz
+	md5sums = 905cac450f1ec5772c54549551cbb6b4
+
+pkgname = mun-bin
+
