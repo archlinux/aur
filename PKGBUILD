@@ -2,7 +2,7 @@
 pkgname=clspv-git
 pkgver=r396.88ed5fe
 _pkgname=clspv
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A prototype compiler for a subset of OpenCL C to Vulkan compute shaders"
 arch=('any')
