@@ -48,17 +48,17 @@ package() {
     cd $srcdir/DarkReign
     mkdir -p $pkgdir/usr/{lib/openra-dr/mods,bin,share/pixmaps,share/doc/packages/openra-dr,share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/openra-dr
-    cp -r engine/{glsl,lua,AUTHORS,COPYING,*.dll*,GeoLite2-Country.mmdb.gz,'global mix database.dat',launch-dedicated.sh,launch-game.sh,*.exe,VERSION} $pkgdir/usr/lib/openra-dr
+    cp -r engine/{glsl,lua,AUTHORS,COPYING,*.dll*,'global mix database.dat',launch-dedicated.sh,launch-game.sh,*.exe,VERSION} $pkgdir/usr/lib/openra-dr
     cp -r mods/dr $pkgdir/usr/lib/openra-dr/mods
     cp -r engine/mods/{common,modcontent} $pkgdir/usr/lib/openra-dr/mods
     install -Dm755 $srcdir/openra-dr $pkgdir/usr/bin/openra-dr
     cp -r $srcdir/openra-dr.appdata.xml $pkgdir/usr/share/appdata/openra-dr.appdata.xml
     cp -r README.md $pkgdir/usr/share/doc/packages/openra-dr/README.md
     cp -r mods/dr/icon.png $pkgdir/usr/share/pixmaps/openra-dr.png
-    mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps
-    for size in 16 32 48 64 128 256; do
+    for size in 16 32 48 64 128 256 512; do
       size="${size}x${size}"
-      cp packaging/linux/mod_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${_pkgname}.png"
+      mkdir -p $pkgdir/usr/share/icons/hicolor/${size}/apps
+      cp packaging/artwork/mod_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${_pkgname}.png"
     done
     install -Dm644 $srcdir/openra-dr.desktop $pkgdir/usr/share/applications/openra-dr.desktop
     rm $pkgdir/usr/lib/openra-dr/*.sh
