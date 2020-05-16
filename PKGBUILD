@@ -6,16 +6,15 @@
 
 pkgname=jdk8-openj9-bin
 pkgrel=1
-_pkgver_minor="242"
-_pkgver_build="08"
-_j9_version="0.18.1"
+_pkgver_minor="252"
+_pkgver_build="09"
+_j9_version="0.20.0"
 pkgver=8.u${_pkgver_minor}.b${_pkgver_build}
 pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk8"
 arch=('x86_64')
 url="https://adoptopenjdk.net/index.html?variant=openjdk8-openj9"
 license=('GPL')
 depends=('java-runtime-common' 'java-environment-common' 'ca-certificates-utils' 'nss')
-# conflicts=('jdk8-j9-bin')
 replaces=('jdk8-j9-bin')
 
 provides=(
@@ -28,8 +27,7 @@ makedepends=('coreutils' 'bash')
 source=("https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u${_pkgver_minor}-b${_pkgver_build}_openj9-${_j9_version}/OpenJDK8U-jdk_x64_Linux_openj9_8u${_pkgver_minor}b${_pkgver_build}_openj9-${_j9_version}.tar.gz")
 noextract=("OpenJDK8U-jdk_x64_Linux_openj9_8u${_pkgver_minor}b${_pkgver_build}_openj9-${_j9_version}.tar.gz")
 
-# https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u242-b08_openj9-0.18.1/OpenJDK8U-jdk_x64_linux_openj9_8u242b08_openj9-0.18.1.tar.gz.sha256.txt
-sha256sums=('ca785af638b24f9d4df896f5a9f557cc9f1e5fa5e2b1174d6b906e3fd5474c2e')
+sha256sums=('910ae847109a6dd1b6cf69baa7615ea2cce8cff787e5a9349a5331ce7604f3a5')
 
 package() {
     cd "$srcdir"
