@@ -1,20 +1,32 @@
-# Maintainer: Pawel Mizio <miziakmwa at gmail dot com>
+# Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
+# Contributor: Pawel Mizio <miziakmwa at gmail dot com>
 
 pkgname=miniongg
-pkgver=3.0.5
-pkgrel=2
-pkgdesc="Elder Scrolls Online and World od Warcraft AddOn Manager"
-arch=('i686' 'x86_64')
+pkgver=3.0.7_SNAPSHOT.r1.12dbc95e
+pkgrel=1
+pkgdesc="Elder Scrolls Online and World of Warcraft Addon Manager"
+arch=('any')
 url='https://minion.mmoui.com/'
-license=('Minion EULA')
-depends=('jdk8-openjdk' 'java8-openjfx' 'unzip')
+license=('custom')
+depends=('jdk8-openjdk' 'java8-openjfx')
+makedepends=('unzip')
 provides=("miniongg")
-source=("https://cdn.mmoui.com/minion/v3/Minion${pkgver}-java.zip")
+
+source=("https://cdn.mmoui.com/minion/v3/MinionClientUpdate-12dbc95eff5898a64f584a3c697dad987c604af8.zip"
+	"https://cdn.mmoui.com/minion/v3/MinionLibsUpdate-81fcfa6cd281365b8e6c40c51e2fc931caf4101d.zip"
+	"Minion-EULA.html::https://minion.mmoui.com/?license"
+	"miniongg.sh"
+	"minion.desktop")
+md5sums=("977dcbe4914fe452055d092083960f4c"
+	"862307f1f506b42a576c8d49e90eccbf"
+	"0e439acd67fab9625deae97f657615ba"
+	"8a35da141230c288000c70075c35fe8a"
+	"cb92061ae2d15effbddc3b23600cfeaf")
 
 package() {
-	mkdir -p "${pkgdir}/opt/Minion/"
-	cp -r "${srcdir}/lib" "${pkgdir}/opt/Minion/"
-	cp -r "${srcdir}/Minion-jfx.jar" "${pkgdir}/opt/Minion/"
+	mkdir -p "${pkgdir}/usr/share/java/minion/"
+	cp -r "${srcdir}/lib" "${pkgdir}/usr/share/java/minion/"
+	cp -r "${srcdir}/Minion-jfx.jar" "${pkgdir}/usr/share/java/minion/"
 
 	for _size in "32" "64" "128" "256" "512"
 	do
@@ -22,26 +34,7 @@ package() {
 		unzip -p Minion-jfx.jar "gg/minion/image/minion-${_size}.png" > "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/minion.png"
 	done
 
-	echo "#!/bin/sh
-java -jar /opt/Minion/Minion-jfx.jar" > miniongg
-	install -D "${srcdir}/miniongg" "${pkgdir}/usr/bin/miniongg"
-
-	echo "[Desktop Entry]
-Version=1.0
-Name=Minion
-GenericName=Addons Manager
-Comment=Manage games Addons
-Keywords=Internet;Games;
-Exec=miniongg
-Icon=minion
-Terminal=false
-X-MultipleArgs=false
-Type=Application
-StartupNotify=true
-StartupWMClass=Minion
-Categories=Network;Games;" > minion.desktop
-	mkdir -p "${pkgdir}/usr/share/applications"
-	install -m644 "${srcdir}/minion.desktop" "${pkgdir}/usr/share/applications/"
+	install -Dm 755 "${srcdir}/miniongg.sh" "${pkgdir}/usr/bin/miniongg"
+	install -Dm 644 "${srcdir}/minion.desktop" "${pkgdir}/usr/share/applications/minion.desktop"
+	install -Dm 644 "${srcdir}/Minion-EULA.html" "${pkgdir}/usr/share/licenses/${pkgname}/Minion-EULA.html"
 }
-
-sha256sums=('0098613cce6e3b99decc45e6ecf6b71c4b8eed7fe0cd991611d6df5a7093bc1b')

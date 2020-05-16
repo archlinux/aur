@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=Minion
+GenericName=Addons Manager
+Comment=Manage games addons
+Keywords=Internet;Games;
+Exec=miniongg
+Icon=minion
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+StartupNotify=true
+StartupWMClass=Minion
+Categories=Network;Games;
