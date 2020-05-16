@@ -2,7 +2,7 @@
 pkgname=bracmat-git
 pkgver=6.7.2r235
 pkgrel=1
-pkgdesc='Programming language for symbolic computation with pattern matching features.'
+pkgdesc='Programming language for symbolic computation with pattern matching features'
 arch=('x86_64')
 url='https://github.com/BartJongejan/Bracmat'
 license=('GPL2')
