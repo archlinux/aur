@@ -1,7 +1,7 @@
 pkgbase = teensyduino
 	pkgdesc = Arduino SDK with Teensyduino
 	pkgver = 1.51
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.pjrc.com/teensy/teensyduino.html
 	install = teensyduino.install
 	arch = i686
@@ -18,7 +18,6 @@ pkgbase = teensyduino
 	depends = libsm
 	depends = desktop-file-utils
 	depends = giflib
-	depends = avrdude
 	provides = arduino
 	conflicts = arduino
 	conflicts = teensy-loader-cli

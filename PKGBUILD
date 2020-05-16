@@ -7,14 +7,14 @@ pkgname=teensyduino
 pkgver=1.51
 _pkgver=1.51
 _arduino=1.8.12
-pkgrel=3
+pkgrel=4
 pkgdesc="Arduino SDK with Teensyduino"
 arch=('i686' 'x86_64')
 url="http://www.pjrc.com/teensy/teensyduino.html"
 options=(!strip staticlibs)
 license=('GPL' 'LGPL' 'custom')
 depends=('gtk2' 'libusb-compat' 'libusb' 'java-runtime' 'libpng12' 'libsm'
-         'desktop-file-utils' 'giflib' 'avrdude')
+         'desktop-file-utils' 'giflib')
 makedepends=('git')
 provides=('arduino')
 conflicts=('arduino' 'teensy-loader-cli')
@@ -72,10 +72,6 @@ package() {
   # at least support the FHS a little bit
   ln -s /usr/share/arduino/arduino "${pkgdir}/usr/bin/arduino"
   ln -s /usr/share/arduino/reference "${pkgdir}/usr/share/doc/arduino"
-
-  # fix avrdude
-  rm -f "${pkgdir}/usr/share/arduino/hardware/tools/avr/bin/avrdude"{,_bin}
-  ln -s /usr/bin/avrdude "${pkgdir}/usr/share/arduino/hardware/tools/avr/bin/avrdude"
 
   # desktop icon
   cp -a lib/icons/* "${pkgdir}/usr/share/icons/hicolor"
