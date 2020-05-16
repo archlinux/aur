@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-z3
 	pkgdesc = High-performance theorem prover (mingw-w64)
 	pkgver = 4.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Z3Prover/z3
 	arch = any
 	license = MIT

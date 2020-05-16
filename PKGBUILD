@@ -1,6 +1,6 @@
 pkgname=('mingw-w64-z3')
 pkgver=4.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc='High-performance theorem prover (mingw-w64)'
 url='https://github.com/Z3Prover/z3'
 arch=('any')
@@ -21,7 +21,7 @@ build() {
   cd z3-z3-${pkgver}
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DUSE_LIB_GMP=1 ..
+    ${_arch}-cmake -DZ3_USE_LIB_GMP=1 -DZ3_BUILD_EXECUTABLE=OFF -DZ3_BUILD_TEST_EXECUTABLES=OFF -DZ3_ENABLE_EXAMPLE_TARGETS=OFF ..
     make
     popd
   done
