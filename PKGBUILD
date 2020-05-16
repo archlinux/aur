@@ -6,13 +6,13 @@
 
 pkgname=zd1211-firmware
 pkgver=1.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Firmware for the in-kernel zd1211rw wireless driver'
 arch=('any')
-url='http://zd1211.wiki.sourceforge.net'
+url='https://sourceforge.net/projects/zd1211'
 license=('GPL2')
 provides=('zd1211')
-source=("http://downloads.sourceforge.net/zd1211/${pkgname}-${pkgver}.tar.bz2")
+source=("https://downloads.sourceforge.net/zd1211/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('f11d3810d7f72833997f634584a586dcced71a353f965abf81062ec431d02b12')
 
 package() {
