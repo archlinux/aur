@@ -8,7 +8,7 @@ license=('MIT')
 pkgdesc="A simple Webmail in Go"
 makedepends=('go')
 arch=('x86_64')
-url="https://git.sr.ht/~emersion/koushin"
+url="https://git.sr.ht/~emersion/alps"
 source=("$pkgname::git+https://git.sr.ht/~emersion/alps")
 sha256sums=('SKIP')
 
