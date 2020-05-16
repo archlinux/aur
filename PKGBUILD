@@ -2,7 +2,7 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=nextcloud-app-gpxpod
-pkgver=4.1.0
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="view gpx tracks"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('nextcloud')
 options=('!strip')
 source=("https://gitlab.com/eneiluj/gpxpod-oc/-/archive/v$pkgver/gpxpod-oc-v$pkgver.tar.gz")
-sha256sums=('fd9e9aaaa8a273d4e944ad1bbd1c63fddafdf9f90517731531cfcdac3eb267bd')
+sha256sums=('05b6b472aebe26dd8cb9b80d3e0549789f93aa0fab0aeee230b3ef4e07159dd3')
 
 package() {
 	install -d "${pkgdir}"/usr/share/webapps/nextcloud/apps
