@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('victory-icon-theme')
 conflicts=('victory-icon-theme')
 source=("git+${url}.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/victory-icon-theme"
