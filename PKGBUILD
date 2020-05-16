@@ -4,12 +4,12 @@
 # Contributor: tty0 <vt.tty0[d0t]gmail.com>
 
 pkgname=teensyduino
-pkgver=1.51
-_pkgver=1.51
+pkgver=1.52
+_pkgver=1.52
 _arduino=1.8.12
-pkgrel=4
+pkgrel=1
 pkgdesc="Arduino SDK with Teensyduino"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.pjrc.com/teensy/teensyduino.html"
 options=(!strip staticlibs)
 license=('GPL' 'LGPL' 'custom')
@@ -23,21 +23,17 @@ source=('arduino.xml'
         'teensy-loader.desktop'
         "git+https://github.com/PaulStoffregen/teensy_loader_cli.git#commit=e98b5065cdb9f04aa4dde3f2e6e6e6f12dd97592"
         "http://www.pjrc.com/teensy/49-teensy.rules"
-        'LICENSE')
-source_i686+=("http://downloads.arduino.cc/arduino-${_arduino}-linux32.tar.xz"
-              "TeensyduinoInstall_${_pkgver//./}_i686::http://www.pjrc.com/teensy/td_${_pkgver//./}/TeensyduinoInstall.linux32")
-source_x86_64+=("http://downloads.arduino.cc/arduino-${_arduino}-linux64.tar.xz"
-                "TeensyduinoInstall_${_pkgver//./}_x86_64::http://www.pjrc.com/teensy/td_${_pkgver//./}/TeensyduinoInstall.linux64")
+        'LICENSE'
+        "http://downloads.arduino.cc/arduino-${_arduino}-linux64.tar.xz"
+        "TeensyduinoInstall_${_pkgver//./}_x86_64::http://www.pjrc.com/teensy/td_${_pkgver//./}/TeensyduinoInstall.linux64")
 
 sha256sums=('473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68'
             '270b55353eb438d3790c7245e5ae16ff8bac9f98cfe927d6c9f2146a34499323'
             'SKIP'
             '7c17bb6dcef244fbf8bc9bd85a7eb812eebe60f6a6a3d47bceddde84c77c5914'
-            '25980feb5927b8bea8b8e999f5002e110825b1bc3d546fa902c2db5c824d33f3')
-sha256sums_i686=('51c74db57cdda7d0683e4c2189e8fec30d5dd046807ba69cf68407ab392dc886'
-                 '95b0a29563f3402bb320f2d916b74a29766eff2e9f012f01104b210240d706e7')
-sha256sums_x86_64=('09d6676616d8b64b88effc79991c7ab1bf1a1aca1ed792a359eafc3e27190e89'
-                   'c0de944ae5d02701381610e3c0204a9198d094d18c3f9414df656d5157e21561')
+            '25980feb5927b8bea8b8e999f5002e110825b1bc3d546fa902c2db5c824d33f3'
+            '09d6676616d8b64b88effc79991c7ab1bf1a1aca1ed792a359eafc3e27190e89'
+            '581eb9cd83b728f1cab3182680ece23dabd86ecd8478f52e32061e7c172ab8a4')
 
 build() {
   msg2 "Installing Teensyduino"
