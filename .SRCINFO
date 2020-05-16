@@ -1,0 +1,13 @@
+pkgbase = processing-bin
+	pkgdesc = Programming environment for creating images, animations and interactions.
+	pkgver = 3.5.4
+	pkgrel = 1
+	url = https://processing.org/
+	install = processing-bin.install
+	arch = x86_64
+	options = !strip
+	source = https://download.processing.org/processing-3.5.4-linux64.tgz
+	md5sums = 2746cbe158425396dcf8a4103b93400f
+
+pkgname = processing-bin
+
