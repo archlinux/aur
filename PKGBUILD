@@ -22,7 +22,7 @@ sha256sums=('4c13e30ab2e602abdc56f55d35f43c1142a79b1cd77aa8839d2fc85e966d9a85')
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
 build() {
-	cd "${srcdir}/${_pkgbase}-${pkgver}"
+	cd "${srcdir}/gtksourceview-${pkgver}"
 
 	 for _arch in "${_architectures[@]}"; do
 		 mkdir -p build-${_arch} && pushd build-${_arch}
@@ -38,6 +38,6 @@ build() {
 package() {
 
 	for _arch in "${_architectures[@]}"; do
-      		DESTDIR="${pkgdir}" meson install -C ${srcdir}/${_pkgbase}-${pkgver}/build-${_arch}
+      		DESTDIR="${pkgdir}" meson install -C ${srcdir}/gtksourceview-${pkgver}/build-${_arch}
 	done
 }
