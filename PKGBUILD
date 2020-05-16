@@ -2,14 +2,15 @@
 
 pkgname=asm-cli
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Interactive shell of assembly language(X86/X64) based on unicorn and keystone"
 arch=('x86_64')
 url='https://github.com/cch123/asm-cli'
 license=('MIT')
-makedepends=('go' 'unicorn' 'keystone')
+depends=('unicorn' 'keystone')
+makedepends=('go-pie')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-md5sums=('859bfc5e06425148faac9810d41deab2')
+sha256sums=('42ee5143561491888720cae1c5443a4bfc36bee45cf4898eceb9b7eb3e0bdab6')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
