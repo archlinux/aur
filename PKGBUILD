@@ -2,12 +2,12 @@
 
 pkgname=kjots
 pkgver=5.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A note taking application for KDE"
 url="https://www.kde.org/applications/utilities/kjots/"
 arch=(x86_64)
 license=(GPL)
-depends=(kcmutils kontactinterface akonadi akonadi-notes kpimtextedit)
+depends=(kontactinterface akonadi akonadi-notes kpimtextedit)
 makedepends=(extra-cmake-modules kdoctools boost kdelibs4support)
 source=("https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz"
          kjots-kbookmarks-5.69.patch::"https://cgit.kde.org/kjots.git/patch/?id=ca6f4b96")
