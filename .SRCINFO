@@ -1,6 +1,6 @@
 pkgbase = postgresql-lts-old-upgrade
 	pkgdesc = PostgreSQL build for migrating between major versions with pg_upgrade
-	pkgver = 10.12
+	pkgver = 10.13
 	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = postgresql-lts-old-upgrade
 	depends = icu
 	depends = systemd-libs
 	depends = libldap
-	source = https://ftp.postgresql.org/pub/source/v10.12/postgresql-10.12.tar.bz2
-	sha256sums = 388f7f888c4fbcbdf424ec2bce52535195b426010b720af7bea767e23e594ae7
+	source = https://ftp.postgresql.org/pub/source/v10.13/postgresql-10.13.tar.bz2
+	sha256sums = 4d701f450cd92ffb123cf6c296e9656abbc2ab7ea6507894ff1e2475ae0754e1
 
 pkgname = postgresql-lts-old-upgrade
 
