@@ -2,8 +2,8 @@
 
 _plug=vsfilterscript
 pkgname=vapoursynth-lib-${_plug}-git
-pkgver=r37.98c5c11
-pkgrel=2
+pkgver=r89.ee5e08b
+pkgrel=1
 pkgdesc="Library for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=181027'
@@ -12,7 +12,7 @@ depends=('vapoursynth')
 makedepends=('git')
 provides=("vapoursynth-lib-${_plug}")
 conflicts=("vapoursynth-lib-${_plug}")
-source=("${_plug}::git+https://github.com/IFeelBloated/vsFilterScript.git#branch=GCC9")
+source=("${_plug}::git+https://github.com/IFeelBloated/vsFilterScript.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,9 +22,10 @@ pkgver() {
 }
 
 package() {
-  cd "${_plug}"
-
-  for i in *.h* *.cxx; do install -Dm644 "${i}" "${pkgdir}/usr/include/vsfilterscript/${i}"; done
+  cd "${_plug}/Include"
+  for i in *.hxx; do install -Dm644 "${i}" "${pkgdir}/usr/include/vsfilterscript/${i}"; done
+  cd ..
+  for i in Examples/*; do install -Dm644 "${i}" "${pkgdir}/usr/share/vapoursynth/libs/vsfilterscript/${i}"; done
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
