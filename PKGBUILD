@@ -1,4 +1,5 @@
-# Maintainer : Bumsik Kim <k.bumsik@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Bumsik Kim <k.bumsik@gmail.com>
 # Contributor: Det <aur.archlinux.org/account/Det>
 # Contributor: Nick Shvelidze <captain@pirrate.me>
 # Contributor: Justin Dray <justin@dray.be>
@@ -12,13 +13,13 @@
 
 _pkgname=playonlinux5
 pkgname=${_pkgname}-git
-pkgver=r2511.78fe2ae45
+pkgver=r2553.b523e3f9e
 pkgrel=1
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
 url="http://www.playonlinux.com/"
 license=('GPL')
-makedepends=('git' 'maven' 'java-openjfx' 'java-environment-openjdk>=8')
+makedepends=('git' 'maven' 'java-openjfx' 'java-environment-openjdk>=11')
 depends=('wine' 'java-openjfx' 'java-runtime-openjdk>=11')
 options=(!strip)
 source=(
@@ -28,21 +29,17 @@ source=(
 	)
 sha512sums=('SKIP'
             '1eaae868c6db9c1db5e6c2138475dfac4036be49d6a7a9e4e59a10cf72dedcc213030d08fba16a6e62d46616dea5e3f502f9cfebc2db280a38c05e301ab6258e'
-            '65058ee527bd564e411e95965b060406fe3eae81315d5595a0c09c6b3e6cb57d54da7fa266e4af623701e990aa0bae3d45f2a86879ae0ec69705564ccf150041')
+            '448f3851a1f48272b73535b3a8646401f773034c0ea6108002947b7072d463e5b8ec56530fdf0c60f2f716f418032776dab170dd03fd4d9518b9be8b2d21cb5a')
 
 pkgver() {
-
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-
 }
-
 build() {
-
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
   # Set environment
   msg2 "Assessing Java build environment"
@@ -76,7 +73,7 @@ build() {
 
   else
 
-	msg2 "Default Java JDK set is of verison 8 or higher, proceeding..."
+	msg2 "Default Java JDK set is of version 11 or higher, proceeding..."
 	msg2 "Using: $(archlinux-java get)"
 	export JAVA_HOME="/usr/lib/jvm/default"
 
@@ -111,24 +108,24 @@ build() {
   fi
 
   # Build
-  mvn package
+  mvn package -DskipTests
   
 }
 
 package() {
-  
+  cd "${srcdir}/${_pkgname}"  
   # Extract
   install -d "${pkgdir}/opt/"
-  bsdtar -xf "${_pkgname}/phoenicis-dist/target/phoenicis-flatpak.zip"
+  bsdtar -xf "${srcdir}/${_pkgname}/phoenicis-dist/target/phoenicis-flatpak.zip"
   cp -r phoenicis-flatpak/ "${pkgdir}/opt/${_pkgname}/"
 
   # Launcher
-  install -Dm755 "PlayOnLinux.sh"  "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "${srcdir}/PlayOnLinux.sh"  "${pkgdir}/usr/bin/${_pkgname}"
 
   # Icon + Desktop
   install -Dm644 "$srcdir/${_pkgname}/phoenicis-library/src/main/resources/org/phoenicis/library/phoenicis.png" \
                  "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-  install -Dm644 PlayOnLinux5.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -Dm644 "${srcdir}/PlayOnLinux5.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
   # Fix permissions on pkg lib dir
   chmod -R 755 "${pkgdir}/opt/${_pkgname}/lib"
