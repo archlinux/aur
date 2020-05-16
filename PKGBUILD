@@ -1,21 +1,27 @@
-# Maintainer: David Baum <david.baum@naraesk.eu>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: David Baum <david.baum@naraesk.eu>
+
 pkgname=python-phue
-pkgver=1.0
+_module='phue'
+pkgver=1.1
 pkgrel=1
-pkgdesc="A Philips Hue Python library"
+pkgdesc="A Python library for the Philips Hue system"
 arch=('any')
 url="https://github.com/studioimaginaire/phue"
 license=('MIT')
 depends=('python')
-makedepends=('python' 'python-pip')
-source=('LICENSE')
-md5sums=('852ebbd5fd0880fc619e859b04cf2b6c')
+makedepends=('python' 'python-setuptools')
+source=("https://github.com/studioimaginaire/phue/archive/${pkgver}.tar.gz")
+md5sums=('2c3303552b4f762d780deda26aedc507')
 
 build() {
-  pip install --no-deps --target="phue" phue
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py build
 }
+
 package() {
-  mkdir -p $pkgdir/usr/lib/python3.7/site-packages/
-  cp -r $srcdir/phue/* $pkgdir/usr/lib/python3.7/site-packages/
-  install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  depends+=()
+  cd "${srcdir}/${_module}-${pkgver}"
+  install -Dm644 $srcdir/${_module}-${pkgver}/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
