@@ -1,7 +1,7 @@
 pkgbase = processing-bin
 	pkgdesc = Programming environment for creating images, animations and interactions.
 	pkgver = 3.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://processing.org/
 	install = processing-bin.install
 	arch = x86_64

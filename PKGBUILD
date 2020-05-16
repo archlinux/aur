@@ -1,7 +1,7 @@
 # Maintainer: William Brown <plshelpme19132@protonmail.com>
 pkgname="processing-bin"
 pkgver="3.5.4"
-pkgrel="1"
+pkgrel="2"
 arch=("x86_64")
 pkgdesc="Programming environment for creating images, animations and interactions."
 url="https://processing.org/"
