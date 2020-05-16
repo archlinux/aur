@@ -7,8 +7,10 @@ pkgbase = orange-cat-bin
 	license = MIT
 	provides = orange-cat
 	provides = orange
-	source = https://github.com/utatti/orange-cat/releases/download/v0.2.2/orange_linux_amd64.zip
+	source = orange-cat-bin-0.2.2.zip::https://github.com/utatti/orange-cat/releases/download/v0.2.2/orange_linux_amd64.zip
+	source = LICENSE::https://github.com/utatti/orange-cat/raw/master/LICENSE
 	sha256sums = 34ab47cf6c633d5cd1e5284f8b233cc2c97599d592c15bc56481ca269b069e35
+	sha256sums = 81f161dacf7704608b88852606cc27b1ddd4fd4b0f69a7b14ee9bcf460e19c6d
 
 pkgname = orange-cat-bin
 
