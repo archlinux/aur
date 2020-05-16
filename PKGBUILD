@@ -1,39 +1,36 @@
-# Maintainer: David Baum <david.baum@naraesk.eu>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: David Baum <david.baum@naraesk.eu>
+
 pkgname=luminance-git
-pkgver=21
-pkgrel=2
+_pkgname=luminance
+pkgver=0.1.0.r0.g33a274c
+pkgrel=1
+epoch=
 pkgdesc="Luminance is a Philips Hue client for Linux written in Python and GTK+"
 arch=('any')
 url="https://github.com/craigcabrey/luminance"
 license=('GPL2')
-groups=()
 depends=('python' 'dconf' 'hicolor-icon-theme' 'python-phue')
 makedepends=('git' 'autoconf' 'python' 'python-requests' 'gtk3' 'pygobject-devel')
-optdepends=()
-provides=()
-conflicts=('')
-replaces=()
-backup=()
-options=()
-install=()
-changelog=()
+provides=('luminance=$pkgver')
+conflicts=('luminance')
 source=('git+https://github.com/craigcabrey/luminance.git')
-noextract=()
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd luminance
-  git rev-list --count HEAD
+  cd "${srcdir}/${_pkgname}"
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+
 build() {
-  cd luminance
+  cd "${srcdir}/${_pkgname}" 
   ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd luminance
+  cd "${srcdir}/${_pkgname}" 
   make DESTDIR="$pkgdir/" install
 }
