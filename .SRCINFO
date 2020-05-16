@@ -1,6 +1,6 @@
 pkgbase = cgproxy-git
 	pkgdesc = A transparent proxy program with cgroup2, like proxychains
-	pkgver = v3.8.r0.g06ae0b9
+	pkgver = v4.0.r0.g09e6cbb
 	pkgrel = 1
 	url = https://github.com/springzfx/cgproxy
 	install = cgproxy.install
@@ -9,9 +9,10 @@ pkgbase = cgproxy-git
 	license = 
 	makedepends = cmake
 	depends = systemd
+	depends = nlohmann-json
 	provides = cgproxy
 	conflicts = cgproxy
-	backup = etc/cgproxy.conf
+	backup = etc/cgproxy/config.json
 	source = cgproxy-git::git+https://github.com/springzfx/cgproxy#branch=master
 	md5sums = SKIP
 
