@@ -2,7 +2,7 @@
 
 pkgname=plex-mpv-shim-git
 _name=plex-mpv-shim
-pkgver=v1.7.13.r1.g6326765
+pkgver=v1.7.16.r3.ga92bb01
 pkgrel=1
 pkgdesc="Cast media from Plex Mobile and Web apps to MPV"
 arch=('any')
@@ -16,11 +16,11 @@ depends=(
   'python-mpv-jsonipc'
 )
 optdepends=(
-  'git'
   'python-pystray'
   'tk'
 )
 makedepends=(
+  'git'
   'python-setuptools'
 )
 source=("git+https://github.com/iwalton3/$_name.git")
