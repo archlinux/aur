@@ -5,11 +5,12 @@ pkgbase = mingw-w64-gtksourceview4
 	url = https://www.gnome.org
 	arch = any
 	license = LGPL
-	makedepends = mingw-w64-gcc
-	makedepends = mingw-w64-pkg-config
 	makedepends = mingw-w64-meson
 	depends = mingw-w64-gtk3
 	depends = mingw-w64-libxml2
+	options = !buildflags
+	options = !strip
+	options = staticlibs
 	source = https://download.gnome.org/sources/gtksourceview/4.6/gtksourceview-4.6.0.tar.xz
 	sha256sums = 4c13e30ab2e602abdc56f55d35f43c1142a79b1cd77aa8839d2fc85e966d9a85
 

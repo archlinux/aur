@@ -1,4 +1,5 @@
-# Mantainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Mantainer: Alexandros Theodotou <alex at zrythm dot org>
+# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Rafael Ferreira <josephgbr@archlinux.info>
@@ -12,9 +13,8 @@ pkgdesc="A text widget adding syntax highlighting and more to GNOME (mingw-w64)"
 arch=('any')
 url="https://www.gnome.org"
 license=("LGPL")
-makedepends=("${MINGW_PACKAGE_PREFIX}-gcc"
-             "${MINGW_PACKAGE_PREFIX}-pkg-config"
-             "${MINGW_PACKAGE_PREFIX}-meson")
+makedepends=("${MINGW_PACKAGE_PREFIX}-meson")
+options=('!buildflags' '!strip' 'staticlibs')
 depends=("${MINGW_PACKAGE_PREFIX}-gtk3"
          "${MINGW_PACKAGE_PREFIX}-libxml2")
 source=("https://download.gnome.org/sources/gtksourceview/${pkgver%.*}/gtksourceview-${pkgver}.tar.xz")
