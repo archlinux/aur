@@ -12,7 +12,7 @@ pkgbase = kuyen-icon-theme-git
 	conflicts = kuyen-icon-theme-git
 	options = !strip
 	source = git+https://www.opencode.net/fabianalexis/kuyen-icons
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kuyen-icon-theme-git
 

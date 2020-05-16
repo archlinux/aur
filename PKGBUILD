@@ -12,7 +12,7 @@ source=("git+${url}")
 provides=("${pkgname%-*}" "${pkgname}")
 conflicts=("${pkgname%-*}" "${pkgname}")
 options=('!strip')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/kuyen-icons"
