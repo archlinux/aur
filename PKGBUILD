@@ -3,7 +3,7 @@
  
 pkgname=pacman_sdl-ebuc99-git
 _pkgbase=pacman
-pkgver=v0.9.r32.gcc86367
+pkgver=v0.9.r57.gb6241a3
 pkgdesc="Pacman clone using SDL. Guide Pacman through a maze and collect pac-dots while 
 avoiding ghosts. (ebuc99 fork)"
 pkgrel=1
@@ -25,13 +25,14 @@ pkgver() {
 build() {
   cd ${srcdir}/$_pkgbase
   patch -p1 -i ${srcdir}/extra_life.patch
-  ./configure 
+  ./autogen.sh 
+  ./configure --prefix=/usr
   make
 }
 package() {
   cd ${srcdir}/$_pkgbase
   make DESTDIR=${pkgdir} install
-  mv ${pkgdir}/usr/local/bin/pacman{,_sdl}
+  mv ${pkgdir}/usr/bin/pacman{,_sdl}
   sed -e 's/Exec=pacman/Exec=pacman_sdl/g' \
-  -i ${pkgdir}/usr/local/share/applications/pacman.desktop
+  -i ${pkgdir}/usr/share/applications/pacman.desktop
 }

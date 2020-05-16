@@ -1,6 +1,6 @@
 pkgbase = pacman_sdl-ebuc99-git
 	pkgdesc = Pacman clone using SDL. Guide Pacman through a maze and collect pac-dots while avoiding ghosts. (ebuc99 fork)
-	pkgver = v0.9.r32.gcc86367
+	pkgver = v0.9.r57.gb6241a3
 	pkgrel = 1
 	url = http://github.com/ebuc99/pacman/
 	arch = i686
