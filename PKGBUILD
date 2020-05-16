@@ -1,0 +1,33 @@
+# Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
+
+pkgname=mozregression-gui
+pkgver=0.9.46
+pkgrel=1
+pkgdesc='Regression range finder for Firefox'
+arch=('any')
+license=(MPL)
+url="https://github.com/mozilla/mozregression"
+makedepends=('python-pip' 'python-virtualenv' 'python2-pyqt4')
+source=("git+https://github.com/mozilla/mozregression.git#tag=gui-$pkgver"
+        "mozregression-gui.desktop")
+sha256sums=('SKIP'
+            '0b51e2692ef75addd98365185ff05524426ca1735f43d6b1cafa0e71d71481cb')
+
+build() {
+  cd mozregression
+  virtualenv --system-site-packages -p /usr/bin/python2 venv
+  source venv/bin/activate
+  PIP_CONFIG_FILE=/dev/null pip install --isolated -r requirements-gui-dev.txt
+  python gui/build.py bundle
+}
+
+package() {
+  cd mozregression
+  install -d "${pkgdir}"/{usr/{bin,share/{applications,pixmaps}},opt/mozregression-gui}
+  cp -r ./gui/dist/* "${pkgdir}"/opt/mozregression-gui/
+  ln -s "/opt/${pkgname}/${pkgname}" \
+        "$pkgdir/usr/bin/${pkgname}"
+  install -m644 "${srcdir}"/mozregression-gui.desktop "${pkgdir}"/usr/share/applications/
+  install -m644 ./gui/icons/app_icon.png "${pkgdir}"/usr/share/pixmaps/mozregression-gui.png
+}
+# vim:set ts=2 sw=2 et:

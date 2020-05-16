@@ -1,0 +1,17 @@
+pkgbase = mozregression-gui
+	pkgdesc = Regression range finder for Firefox
+	pkgver = 0.9.46
+	pkgrel = 1
+	url = https://github.com/mozilla/mozregression
+	arch = any
+	license = MPL
+	makedepends = python-pip
+	makedepends = python-virtualenv
+	makedepends = python2-pyqt4
+	source = git+https://github.com/mozilla/mozregression.git#tag=gui-0.9.46
+	source = mozregression-gui.desktop
+	sha256sums = SKIP
+	sha256sums = 0b51e2692ef75addd98365185ff05524426ca1735f43d6b1cafa0e71d71481cb
+
+pkgname = mozregression-gui
+
