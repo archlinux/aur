@@ -96,6 +96,19 @@ index 99406e9a77d..a35507806a6 100644
     pragma Import (C, Current_Time, "__gnat_current_time");
     pragma Import (C, Current_Process_Id, "__gnat_current_process_id");
  
+diff --git a/gcc/config/i386/djgpp.c b/gcc/config/i386/djgpp.c
+index ba6c2d4d3a4..88cf1e6506e 100644
+--- a/gcc/config/i386/djgpp.c
++++ b/gcc/config/i386/djgpp.c
+@@ -36,6 +36,8 @@ i386_djgpp_asm_named_section(const char *name, unsigned int flags,
+     *f++ = 'w';
+   if (flags & SECTION_CODE)
+     *f++ = 'x';
++  if (flags & SECTION_BSS)
++    *f++ = 'b';
+ 
+   /* LTO sections need 1-byte alignment to avoid confusing the
+      zlib decompression algorithm with trailing zero pad bytes.  */
 diff --git a/gcc/config/i386/xm-djgpp.h b/gcc/config/i386/xm-djgpp.h
 index 299ef0a4810..a376a3f9146 100644
 --- a/gcc/config/i386/xm-djgpp.h
@@ -484,6 +497,28 @@ index 32ebcec928c..96498b7c408 100644
  #define L_(x) L##x
  #else
  #define L_(x) x
+diff --git a/libstdc++-v3/config/os/djgpp/ctype_configure_char.cc b/libstdc++-v3/config/os/djgpp/ctype_configure_char.cc
+index 8562c8f52b0..775756ede3f 100644
+--- a/libstdc++-v3/config/os/djgpp/ctype_configure_char.cc
++++ b/libstdc++-v3/config/os/djgpp/ctype_configure_char.cc
+@@ -45,7 +45,7 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+   ctype<char>::ctype(__c_locale, const mask* __table, bool __del,
+ 		     size_t __refs)
+   : facet(__refs), _M_del(__table != 0 && __del),
+-  _M_toupper(__dj_ctype_toupper), _M_tolower(__dj_ctype_tolower),
++  _M_toupper(__dj_ctype_toupper+1), _M_tolower(__dj_ctype_tolower+1),
+   _M_table(__table ? __table : classic_table())
+   {
+     memset(_M_widen, 0, sizeof(_M_widen));
+@@ -56,7 +56,7 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+ 
+   ctype<char>::ctype(const mask* __table, bool __del, size_t __refs)
+   : facet(__refs), _M_del(__table != 0 && __del),
+-  _M_toupper(__dj_ctype_toupper), _M_tolower(__dj_ctype_tolower),
++  _M_toupper(__dj_ctype_toupper+1), _M_tolower(__dj_ctype_tolower+1),
+   _M_table(__table ? __table : classic_table())
+   {
+     memset(_M_widen, 0, sizeof(_M_widen));
 diff --git a/libstdc++-v3/config/os/djgpp/error_constants.h b/libstdc++-v3/config/os/djgpp/error_constants.h
 index e0a67bc8d6d..d6ccf4195d6 100644
 --- a/libstdc++-v3/config/os/djgpp/error_constants.h
