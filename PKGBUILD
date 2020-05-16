@@ -5,7 +5,7 @@
 
 pkgname=scilab
 pkgver=6.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A scientific software package for numerical computations.'
 arch=('i686' 'x86_64')
 url='https://www.scilab.org'
@@ -68,7 +68,9 @@ build() {
     --with-install-help-xml \
     --enable-build-help \
     --enable-build-localization \
-    --disable-static-system-lib
+    --disable-static-system-lib \
+    --with-jdk=/usr/lib/jvm/java-8-openjdk/ \
+    FFLAGS="-fallow-argument-mismatch"
 
   make
   make doc

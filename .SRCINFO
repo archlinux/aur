@@ -1,7 +1,7 @@
 pkgbase = scilab
 	pkgdesc = A scientific software package for numerical computations.
 	pkgver = 6.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.scilab.org
 	arch = i686
 	arch = x86_64
