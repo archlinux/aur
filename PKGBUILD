@@ -2,7 +2,7 @@
 
 pkgname=libgnome-keyring
 pkgver=3.12.0+13+g4f8ab73
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME keyring client library (deprecated)"
 url="https://gitlab.gnome.org/GNOME/libgnome-keyring"
 arch=(x86_64)
