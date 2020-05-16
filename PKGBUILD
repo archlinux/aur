@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=legendary
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc="A free and open-source replacement for the Epic Games Launcher "
 arch=('any')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('0d26d00e3baa3178aae25c80b6f3bfae3bac420fa82f0ca18a02ce82b3c9a708')
+sha256sums=('83732db82a344195e10b39fe5a5925a32daf96599a03d3ed7e86d786f4b56bb2')
 
 build() {
 	cd "$pkgname-$pkgver"
