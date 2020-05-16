@@ -6,7 +6,7 @@
 pkgbase=python-soappy
 pkgname=python2-soappy
 pkgver=0.12.22
-pkgrel=2
+pkgrel=3
 pkgdesc="A module which implements a high-level interface to SOAP functions"
 arch=('any')
 url="http://pywebsvcs.sourceforge.net/"
