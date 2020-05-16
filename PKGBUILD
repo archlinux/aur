@@ -4,7 +4,7 @@
 
 pkgname=nextcloud-app-mozilla_sync
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Mozilla Sync server for nextcloud"
 arch=('any')
 url="https://apps.owncloud.com/content/show.php/Mozilla+Sync?content=161793"
