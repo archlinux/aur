@@ -3,17 +3,19 @@ pkgname="thrive-launcher-bin"
 pkgver="1.1.2"
 pkgrel="1"
 arch=("x86_64")
-pkgdesc="A desktop application that manages downloading and installing the game releases."
-url="https://revolutionarygamesstudio.com/"
+pkgdesc="Manages downloading Thrive releases."
+url="https://github.com/Revolutionary-Games/Thrive-Launcher#readme"
 source=("https://github.com/Revolutionary-Games/Thrive-Launcher/releases/download/$pkgver/thrive-launcher_${pkgver}_amd64.deb")
-noextract=("thrive-launcher_${pkgver}_amd64.deb")
+noextract=("thrive-launcher_${pkgver}_amd64.deb") # Extract manually in prepare()
 md5sums=("60ad74fb0ca6ad25c87bb58dcd7422f6")
-license=("GPL")
+license=("GPL" "MIT")
+depends=("gtk3" "libnotify" "nss" "libxss" "libxtst" "xdg-utils" "at-spi2-core" "libutil-linux" "libappindicator-gtk3" "libsecret")
+install="$pkgname.install"
 prepare() {
 	cd "$srcdir"
 	ar -xf "thrive-launcher_${pkgver}_amd64.deb"
 	rm debian-binary control.tar.gz
-	bsdtar -xf data.tar.xz
+	bsdtar -xzf data.tar.xz
 	rm data.tar.xz
 }
 package() {
