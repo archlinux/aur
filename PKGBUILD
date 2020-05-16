@@ -23,7 +23,7 @@ pkgver() {
 
 package() {
   cd "${_plug}/Include"
-  for i in *.hxx; do install -Dm644 "${i}" "${pkgdir}/usr/include/vsfilterscript/${i}"; done
+  for i in *.hxx; do install -Dm644 "${i}" "${pkgdir}/usr/include/vsfilterscript/Include/${i}"; done
   cd ..
   for i in Examples/*; do install -Dm644 "${i}" "${pkgdir}/usr/share/vapoursynth/libs/vsfilterscript/${i}"; done
 
