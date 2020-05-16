@@ -11,7 +11,7 @@ depends=('glibc')
 provides=('shell2http')
 makedepends=('go-pie' 'git')
 source=("git+${url}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/shell2http"
