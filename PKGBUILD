@@ -4,7 +4,7 @@
 
 pkgname=grantlee
 pkgver=5.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A string template engine based on the Django template system and written in Qt5"
 arch=(x86_64)
 url="https://github.com/steveire/grantlee"
