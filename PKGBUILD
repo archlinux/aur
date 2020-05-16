@@ -3,7 +3,7 @@
 pkgname=elpa
 PkgName=ELPA
 pkgver=2019.11.001
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc="Eigenvalue SoLvers for Petaflop-Applications"
 url="https://elpa.mpcdf.mpg.de/html/Releases"
@@ -64,16 +64,17 @@ prepare() {
 
 build() {
     cd $srcdir/$pkgname-$pkgver
-     ./configure --prefix=/usr                      \
-                 --enable-openmp                    \
-                 --enable-avx=$_AVX                 \
-                 --enable-avx2=$_AVX2               \
-                 --enable-avx512=$_AVX512           \
-                 --enable-gpu=$_ACC                 \
-                 CFLAGS="$CFLAGS -march=native"     \
+     ./configure --prefix=/usr                                  \
+                 --enable-openmp                                \
+                 --enable-avx=$_AVX                             \
+                 --enable-avx2=$_AVX2                           \
+                 --enable-avx512=$_AVX512                       \
+                 --enable-gpu=$_ACC                             \
+                 CFLAGS="$CFLAGS -march=native"                 \
+                 FCFLAGS="$FCFLAGS -fallow-argument-mismatch"   \
                  LIBS='-lblas -llapack -lscalapack'
 
-    # As for 2019.11.01 parallel builds are still broken
+    # As of 2019.11.01 parallel builds are still broken
     make -j1
 }
 
