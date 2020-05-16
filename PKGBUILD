@@ -10,7 +10,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go-pie')
 source=("git+https://github.com/jaksi/sshesame")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/sshesame"

@@ -8,7 +8,7 @@ pkgbase = sshesame-git
 	makedepends = go-pie
 	depends = glibc
 	source = git+https://github.com/jaksi/sshesame
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = sshesame-git
 
