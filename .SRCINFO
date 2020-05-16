@@ -1,7 +1,7 @@
 pkgbase = slade
 	pkgdesc = SLADE3 Doom editor
 	pkgver = 3.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://slade.mancubus.net/
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = slade
 	depends = fluidsynth>=2.0
 	depends = freeimage
 	depends = ftgl
-	depends = glew>=2.1
+	depends = glew>=2.2
 	depends = glu
 	depends = gtk3
 	depends = libgl
