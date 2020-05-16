@@ -14,20 +14,20 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('9d0acb768a36dec288c67ae0591d895957b21c2f76f4bbd715c782a47a8ec2ad')
 
 prepare() {
-    cd "$_name-$pkgver"
+  cd "$_name-$pkgver"
 
-    # remove this in next version
-    sed -i 's/==/>=/' requirements.txt
+  # remove this in next version
+  sed -i 's/==/>=/' requirements.txt
 }
 
 build() {
-    cd "$_name-$pkgver"
+  cd "$_name-$pkgver"
 
-    python setup.py build
+  python setup.py build
 }
 
 package() {
-    cd "$_name-$pkgver"
+  cd "$_name-$pkgver"
 
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
