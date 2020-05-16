@@ -1,7 +1,7 @@
 # Maintainer: William Brown <plshelpme19132@protonmail.com>
 pkgname="processing-bin"
 pkgver="3.5.4"
-pkgrel="3"
+pkgrel="4"
 arch=("x86_64")
 pkgdesc="Programming environment for creating images, animations and interactions."
 url="https://processing.org/"
@@ -25,5 +25,4 @@ package() {
 	# Copying to /opt, all symlinking is done in the processing-bin.install script.
 	mkdir -p "$pkgdir/opt"
 	cp -R "processing-$pkgver" "$pkgdir/opt/processing"
-	cd "$pkgdir/opt/processing"
 }
