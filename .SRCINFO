@@ -1,6 +1,6 @@
 pkgbase = dankcli-git
 	pkgdesc = CLI Image Captioning Tool or Meme Generator which automatically adds whitespace and text to top
-	pkgver = 0.5.8.r1.1a29626
+	pkgver = 0.5.8.r2.fbb8058
 	pkgrel = 1
 	url = https://github.com/sggts04/dankcli
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = dankcli-git
 	depends = python-pillow
 	provides = dankcli
 	source = git+https://github.com/sggts04/dankcli
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = dankcli-git
 
