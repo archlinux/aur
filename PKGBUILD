@@ -1,7 +1,7 @@
 # Maintainer: wuxb <wuxb45 at gmail dot com>
 pkgname=spdk-git
 pkgver=r0.0   # pkgver() updates this
-pkgrel=5
+pkgrel=6
 pkgdesc='spdk-git: headers, libs, and scripts'
 arch=('x86_64')
 license=('BSD')
@@ -19,10 +19,14 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
+prepare () {
+  cd "$srcdir/$pkgname"
+  git submodule update --init
+  sed -i '/^[ 	]*printf/d' lib/env_dpdk/init.c
+}
 
 build() {
   cd "$srcdir/$pkgname"
-  git submodule update --init
   ./configure --prefix=/usr --with-shared --disable-tests --disable-unit-tests --without-isal
   make
 }
