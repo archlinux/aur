@@ -1,0 +1,10 @@
+--- openastro	2020-05-16 21:43:53.214440469 +0200
++++ openastro	2020-05-16 21:43:49.494351096 +0200
+@@ -25,7 +25,6 @@
+ 
+ #pysqlite
+ import sqlite3
+-sqlite3.dbapi2.register_adapter(str, lambda s:s.decode('utf-8'))
+ 
+ #template processing
+ from string import Template
