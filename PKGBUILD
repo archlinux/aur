@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Colin Pitrat <colin dot pitrat at gmail dot com>
 pkgname=caprice32-git
-pkgver=v4.5.0.r174.g0f1bae8
+pkgver=v4.5.0.r179.g40abd2a
 pkgrel=1
 pkgdesc="An emulator of the Amstrad CPC 8bit home computer range (CPC 464, 664, 6128)"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd caprice32
-  make RELEASE=true
+  make 
   sed -i 's,rom_path=.*,rom_path=/usr/share/caprice32/rom/,' cap32.cfg
   sed -i 's,resources_path=.*,resources_path=/usr/share/caprice32/resources/,' cap32.cfg
   sed -i 's,cart_path=.*,cart_path=/usr/share/caprice32/rom/,' cap32.cfg
@@ -30,12 +30,12 @@ build() {
 
 package() {
   cd caprice32
-  mkdir -p $pkgdir/usr/share/caprice32/rom
+  mkdir -p $pkgdir/usr/share/caprice32/{rom,resources}
   cp rom/* $pkgdir/usr/share/caprice32/rom/
-  mkdir -p $pkgdir/usr/share/caprice32/resources
   cp -r resources/* $pkgdir/usr/share/caprice32/resources
-  mkdir -p $pkgdir/usr/share/applications
+  mkdir -p $pkgdir/usr/share/{applications,man}
   cp $srcdir/caprice32.desktop $pkgdir/usr/share/applications/
+  cp -r doc/* $pkgdir/usr/share/man
   install -Dm755 cap32.cfg "$pkgdir/etc/cap32.cfg"
   install -Dm755 cap32 "$pkgdir/usr/bin/cap32"
 }
