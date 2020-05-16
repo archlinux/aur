@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Terminal=0
 Exec=xnconvert
-Icon=/opt/xnconvert/xnconvert.png
+Icon=xnconvert
 Type=Application
 Categories=Graphics;
 StartupNotify=true

@@ -1,8 +1,8 @@
 pkgbase = xnconvert
 	pkgdesc = A powerful batch image-converter and resizer.
-	pkgver = 1.85
+	pkgver = 1.85.1
 	pkgrel = 1
-	url = https://www.xnview.com/en/xnconvert/
+	url = https://www.xnview.com/en/xnconvert
 	arch = x86_64
 	arch = i686
 	license = custom
@@ -11,10 +11,12 @@ pkgbase = xnconvert
 	depends = libwebp
 	depends = gtk3
 	source = xnconvert.desktop
-	sha256sums = b163bca7039f6877239535b88b9aacb6fde78573dc141a52addb99cb85b35f82
-	source_x86_64 = XnConvert-linux-x64_1.85.tgz::http://download.xnview.com/XnConvert-linux-x64.tgz
-	sha256sums_x86_64 = ee5385cbd25cffec70d2cbfa6f7995bd23a65c66f87accd0c41c3f858b38339d
-	source_i686 = XnConvert-linux_1.85.tgz::http://download.xnview.com/XnConvert-linux.tgz
+	source = icons.tar.gz
+	sha256sums = 3c85bfca539dd2e4b0310eead5a50aae6ed66a5a63b370dd1b622043c69a15b5
+	sha256sums = 2ff8c57a0603c1811de45df55df59c0abdd77a15d61a9482789c9c78ce6cdf74
+	source_x86_64 = XnConvert-linux-x64_1.85.1.tgz::https://download.xnview.com/XnConvert-linux-x64.tgz
+	sha256sums_x86_64 = feb02a84e5947ac82e904b0d950f6b5c2f78028e6af487a39633d9018d68db91
+	source_i686 = XnConvert-linux_1.85.1.tgz::https://download.xnview.com/XnConvert-linux.tgz
 	sha256sums_i686 = 6e3a021d7636f747d15b1556051855c78c1916e05cb057b919d8a66d6271680a
 
 pkgname = xnconvert
