@@ -2,7 +2,7 @@
 
 pkgname=mp3splt
 pkgver=2.6.2
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc="Commandline tool for splitting mp3 and ogg files without decoding"
 license=('GPL')
