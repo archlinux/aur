@@ -1,9 +1,9 @@
 #Maintainer: weearc <q19981121@163.com>
 pkgname=motrix
 _pkgname=Motrix
-pkgver=v1.4.1
-_pkgver=1.4.1
-pkgrel=8
+pkgver=v1.5.10
+_pkgver=1.5.10
+pkgrel=0
 epoch=
 pkgdesc="elegent downloading tool frontend for aria2c,using vue(release version)"
 arch=("x86_64")
@@ -32,7 +32,7 @@ source=("Motrix.desktop"
 noextract=()
 sha256sums=('1b799d1b1e280a27ff625cceb429b1e00c6691eb0256ded44f6a1a0310a899d4'
 	'c89824e80769b0b19c66da12168f9e91fc15088d1324d6760ddad960eb006cba'
-	'cd10cd5c704f0d780ff501e2861a316b95c44d11b653045574ae07b9a3ccaa8b')
+	'SKIP')
 validpgpkeys=()
 
 prepare() {
@@ -61,13 +61,13 @@ prepare() {
 #		fi
 #	fi
 #	echo "======================================"
-	sed -i '/"dmg"/,/"linux"/{//!d}' $_pkgname/package.json
-	sed -i '/"dmg"/d' $_pkgname/package.json
-	sed -i '/"deb"/d' $_pkgname/package.json
-	sed -i '/"snap"/d' $_pkgname/package.json
-	sed -i '/"pacman"/d' $_pkgname/package.json
-	sed -i '/"rpm"/d' $_pkgname/package.json
-	sed -i 's/"AppImage"/"dir"/g' $_pkgname/package.json
+#	sed -i '/"dmg"/,/"linux"/{//!d}' $_pkgname/package.json
+#	sed -i '/"dmg"/d' $_pkgname/package.json
+#	sed -i '/"deb"/d' $_pkgname/package.json
+#	sed -i '/"snap"/d' $_pkgname/package.json
+#	sed -i '/"pacman"/d' $_pkgname/package.json
+#	sed -i '/"rpm"/d' $_pkgname/package.json
+#	sed -i 's/"AppImage"/"dir"/g' $_pkgname/package.json
 
 }
 
