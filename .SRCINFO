@@ -1,5 +1,5 @@
 pkgbase = linux-lts49-kallsyms
-	pkgver = 4.9.184
+	pkgver = 4.9.223
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -13,20 +13,20 @@ pkgbase = linux-lts49-kallsyms
 	makedepends = git
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.9.184.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.9.223.xz
 	source = config
+	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux-lts.preset
 	source = change-default-console-loglevel.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a
-	sha256sums = SKIP
-	sha256sums = da2c0111013c6b1c45970d8bb7568956efd3718b04b89ece4d5740e912201538
-	sha256sums = ed042f5c353291327a68c922ccb47c4430ba1d6101edf1f10f2f4af8a167ce35
-	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
-	sha256sums = 1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0
+	sha256sums = dab1cf744942db365049c04624ac7d1c148cbc5f2b4c468d137ed8d6c6448814
+	sha256sums = 0d80e4c334006a8bb7f18361359421eea7c84cd2f84b49fbdb3cde2a069b2373
+	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
+	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 
 pkgname = linux-lts49-kallsyms
@@ -37,10 +37,12 @@ pkgname = linux-lts49-kallsyms
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux=4.9.223
 	backup = etc/mkinitcpio.d/linux-lts49-kallsyms.preset
 
 pkgname = linux-lts49-kallsyms-headers
 	pkgdesc = Header files and scripts for building modules for Linux-lts49-kallsyms kernel
+	provides = linux-headers=4.9.223
 
 pkgname = linux-lts49-kallsyms-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-lts49-kallsyms kernel
