@@ -1,7 +1,7 @@
 # Maintainer: null2264 <palembani@gmail.com>
 pkgname=st-ziro-git
 _pkgname=st-zi
-pkgver=0.8.3r1138.c1dcc36r.zi
+pkgver=0.8.3.zi
 pkgrel=1
 pkgdesc="ZiRO or AAP's personal build of st (simple terminal) with Xresources, transparency, etc."
 url='https://github.com/null2264/st-zi.git'
