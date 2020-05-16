@@ -5,10 +5,10 @@ _modname="ngx_brotli"
 _nginxver=1.17.10
 
 pkgname=nginx-mainline-mod-brotli-git
-pkgver=r43.e505dce
+pkgver=r51.bcceaab
 pkgrel=1
 pkgdesc="Brotli compression filter module for mainline nginx"
-arch=('i686' 'x86_64')
+arch=('any')
 depends=("nginx-mainline=$_nginxver" 'brotli')
 makedepends=('git')
 provides=('nginx-mainline-mod-brotli')
