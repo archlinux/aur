@@ -4,7 +4,7 @@
 _pkgbase=intel_nuc_led
 _gitname=intel_nuc_led
 pkgname=${_pkgbase}-nuc8-dkms-git
-pkgver=r41.9e2bf43
+pkgver=r42.d9ede86
 pkgrel=1
 pkgdesc="Intel NUC8i[x]HVK LED Control for Linux (DKMS)"
 arch=('x86_64')
@@ -44,6 +44,9 @@ package() {
 
   # Install ledsetter script in /usr/bin
   install -Dm755  "${pkgdir}"/usr/src/"${_pkgbase}-${pkgver}"/contrib/usr/local/bin/ledsetter "${pkgdir}"/usr/bin/ledsetter
+
+  # Install nucLEDs script in /usr/bin
+  install -Dm755  "${pkgdir}"/usr/src/"${_pkgbase}-${pkgver}"/controller/nucLEDS.py "${pkgdir}"/usr/bin/nucLEDS
 
   # Copy module nuc_led configuration in /etc/modprobe.d
   install -Dm644  "${pkgdir}"/usr/src/"${_pkgbase}-${pkgver}"/contrib/etc/modprobe.d/nuc_led.conf "${pkgdir}"/etc/modprobe.d/nuc_led.conf
