@@ -1,9 +1,10 @@
 # Maintainer: Gao xiang<hughgao01@gmail.com>
 # Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer: Eric Berquist <eric.berquist at gmail dot com>
 
 pkgname=gamess
 pkgver=2019R2
-pkgrel=4
+pkgrel=5
 pkgdesc="The General Atomic and Molecular Electronic Structure System"
 arch=('x86_64')
 url="https://www.msg.chem.iastate.edu/gamess/gamess.html"
@@ -33,6 +34,10 @@ prepare() {
   
   # Optimizations can safely be more aggressive.
   sed -i 's/ -fno-aggressive-loop-optimizations//g' comp
+  
+  # Fixes for GCC Fortran 10.1
+  sed -i 's/-ffree-line-length-none/-ffree-line-length-none -fallow-argument-mismatch/g' comp
+  sed -i 's/-ffast-math"/-ffast-math -fallow-argument-mismatch"/g' comp
 }
 
 build() {
@@ -75,10 +80,9 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   install -m755 *.x "$pkgdir/opt/gamess"
   install -m755 run* "$pkgdir/opt/gamess"
-  install -m755 *.DOC "$pkgdir/opt/gamess"
   install -m755 gms-files.csh "$pkgdir/opt/gamess"
   
-  cp -r auxdata machines qmnuc tests tools vb2000 "$pkgdir/opt/gamess"
+  cp -r auxdata tools vb2000 "$pkgdir/opt/gamess"
   
   ln -sf /opt/gamess/rungms "$pkgdir/usr/bin"
 }
