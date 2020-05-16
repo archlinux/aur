@@ -5,7 +5,7 @@
 
 pkgname=nautilus-sendto
 pkgver=3.8.6+14+ge8a3604
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily send files via mail"
 url="https://gitlab.gnome.org/GNOME/nautilus-sendto"
 arch=(x86_64)
