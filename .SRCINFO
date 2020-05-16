@@ -15,7 +15,7 @@ pkgbase = lua-gifine-git
 	depends = lua
 	provides = gifine
 	source = git+https://github.com/leafo/gifine
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = lua51-gifine-git
 

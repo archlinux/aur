@@ -18,7 +18,7 @@ depends=('ffmpeg'
 makedepends=('luarocks' 'gendesk')
 provides=('gifine')
 source=("git+${url}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}"/gifine
