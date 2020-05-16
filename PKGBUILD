@@ -4,14 +4,14 @@
 _plasma=false
 
 pkgname=optimus-manager-qt-git
-pkgver=1.4.5.r11.g23e75f6
+pkgver=1.5.0.r2.g849bfd5
 pkgrel=1
 pkgdesc='A Qt interface for Optimus Manager that allows to configure and switch GPUs on Optimus laptops using the tray menu'
 arch=(x86_64)
 url=https://github.com/Shatur95/optimus-manager-qt
 license=(GPL3)
 depends=(qt5-base qt5-svg qt5-x11extras optimus-manager)
-makedepends=(qt5-tools libxrandr git)
+makedepends=(qt5-tools libxrandr git cmake extra-cmake-modules)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 source=(git+$url)
@@ -36,20 +36,21 @@ prepare() {
 }
 
 build() {
-    cd ${pkgname%-git}
+    mkdir -p ${pkgname%-git}/build
+    cd ${pkgname%-git}/build
 
     if [ $_plasma == true ]
     then
-        qmake "DEFINES += PLASMA"
+        cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" -D PLASMA ..
     else
-        qmake
+        cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" ..
     fi
 
-    make
+    cmake --build .
 }
 
 package() {
-    cd ${pkgname%-git}
+    cd ${pkgname%-git}/build
 
-    make INSTALL_ROOT="$pkgdir/" install
+    cmake --install .
 }
