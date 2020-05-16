@@ -12,7 +12,7 @@ provides=('c4go')
 depends=('clang')
 makedepends=('git' 'go-pie')
 source=("git+${url}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
