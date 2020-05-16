@@ -1,7 +1,7 @@
 # Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
 
 pkgname=cpuminer-opt
-pkgver=3.12.8.2
+pkgver=3.13.1
 pkgrel=1
 pkgdesc='Optimized multi-algo CPU miner'
 arch=('x86_64')
@@ -11,12 +11,13 @@ depends=('curl' 'gmp' 'jansson' 'openssl')
 provides=('cpuminer' 'cpuminer-multi')
 conflicts=('cpuminer')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0f6b502903682c2bd0e80bf7f2838cce339fe96e19c96b5d722cabd99447dfb4')
+sha256sums=('c79806b613a6c836bb15e20d5da06953dc5d4b60d762c2c0e9ad86152f03aa4d')
 
 build() {
   cd "$pkgname-$pkgver"
 
-  CFLAGS+=' -Wa,--noexecstack'
+  # -fcommon needed to work around https://github.com/JayDDee/cpuminer-opt/issues/264
+  CFLAGS+=' -Wa,--noexecstack -fcommon'
   ./autogen.sh
   ./configure --prefix=/usr --with-crypto --with-curl
   make
