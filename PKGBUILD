@@ -19,7 +19,7 @@ makedepends=('boost'
              'rang'
              'catch2')
 source=("git+https://github.com/d-SEAMS/seams-core")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/seams-core"
