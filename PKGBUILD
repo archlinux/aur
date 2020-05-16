@@ -6,72 +6,96 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-git
-pkgver=v6.3.0.r29.g23bf93884c
+pkgver=v6.3.0.r98.g144dfe4215
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
-license=('LGPL')
-depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python'
-     'avahi' 'yajl' 'libpciaccess' 'udev' 'dbus' 'libxau' 'libxdmcp' 'libpcap' 'libcap-ng'
-     'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl' 'libxcb' 'gcc-libs'
-     'iproute2' 'libnl' 'libx11' 'numactl' 'gettext' 'ceph-libs' 'libssh2' 'netcf' 'perl-xml-xpath')
-makedepends=('pkgconfig' 'lvm2' 'linux-api-headers' 'dnsmasq' 'rpcsvc-proto'
-         'libiscsi' 'python-docutils' 'perl-xml-xpath' 'libxslt' 'git' 'xhtml-docs' 'rsync' 'rpcsvc-proto')
-optdepends=('ebtables: required for default NAT networking'
-        'dnsmasq: required for default NAT/DHCP for guests'
-        'bridge-utils: for bridged networking'
-        'openbsd-netcat: for remote management over ssh'
-        'qemu'
-        'radvd'
-        'dmidecode'
-        'pm-utils: host power management')
+license=('LGPL' 'GPL3')
+depends=('libpciaccess' 'yajl' 'fuse2' 'gnutls' 'parted' 'libssh' 'libxml2' 'numactl' 'polkit')
+makedepends=('libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'libiscsi' 'ceph-libs' 'glusterfs'
+             'bash-completion' 'rpcsvc-proto' 'dnsmasq' 'iproute2' 'qemu-headless' 'git')
+checkdepends=('ebtables')
+optdepends=('libvirt-storage-gluster: Gluster storage backend'
+            'libvirt-storage-iscsi-direct: iSCSI-direct storage backend'
+            'libvirt-storage-rbd: RBD storage backend'
+            'gettext: required for libvirt-guests.service'
+            'openbsd-netcat: for remote management over ssh'
+            'dmidecode: DMI system info support'
+            'dnsmasq: required for default NAT/DHCP for guests'
+            'radvd: IPv6 RAD support'
+            'ebtables: required for default NAT networking'
+            'qemu: QEMU/KVM support'
+            'lvm2: Logical Volume Manager support'
+            'open-iscsi: iSCSI support via iscsiadm')
 conflicts=('libvirt')
 provides=('libvirt')
 options=('emptydirs')
-backup=('etc/conf.d/libvirt-guests'
-    'etc/conf.d/libvirtd'
-    'etc/libvirt/libvirt.conf'
-    'etc/libvirt/virtlogd.conf'
-    'etc/libvirt/libvirtd.conf'
-    'etc/libvirt/lxc.conf'
-    'etc/libvirt/nwfilter/allow-arp.xml'
-    'etc/libvirt/nwfilter/allow-dhcp-server.xml'
-    'etc/libvirt/nwfilter/allow-dhcp.xml'
-    'etc/libvirt/nwfilter/allow-incoming-ipv4.xml'
-    'etc/libvirt/nwfilter/allow-ipv4.xml'
-    'etc/libvirt/nwfilter/clean-traffic.xml'
-    'etc/libvirt/nwfilter/no-arp-ip-spoofing.xml'
-    'etc/libvirt/nwfilter/no-arp-mac-spoofing.xml'
-    'etc/libvirt/nwfilter/no-arp-spoofing.xml'
-    'etc/libvirt/nwfilter/no-ip-multicast.xml'
-    'etc/libvirt/nwfilter/no-ip-spoofing.xml'
-    'etc/libvirt/nwfilter/no-mac-broadcast.xml'
-    'etc/libvirt/nwfilter/no-mac-spoofing.xml'
-    'etc/libvirt/nwfilter/no-other-l2-traffic.xml'
-    'etc/libvirt/nwfilter/no-other-rarp-traffic.xml'
-    'etc/libvirt/nwfilter/qemu-announce-self-rarp.xml'
-    'etc/libvirt/nwfilter/qemu-announce-self.xml'
-    'etc/libvirt/qemu-lockd.conf'
-    'etc/libvirt/qemu.conf'
-    'etc/libvirt/qemu/networks/autostart/default.xml'
-    'etc/libvirt/qemu/networks/default.xml'
-    'etc/libvirt/virt-login-shell.conf'
-    'etc/libvirt/virtlockd.conf'
-    'etc/logrotate.d/libvirtd'
-    'etc/logrotate.d/libvirtd.lxc'
-    'etc/logrotate.d/libvirtd.qemu'
-    'etc/logrotate.d/libvirtd.uml'
-    'etc/sasl2/libvirt.conf')
+backup=(
+  'etc/conf.d/libvirtd'
+  'etc/conf.d/libvirt-guests'
+  'etc/conf.d/virtinterfaced'
+  'etc/conf.d/virtlockd'
+  'etc/conf.d/virtlogd'
+  'etc/conf.d/virtlxcd'
+  'etc/conf.d/virtnetworkd'
+  'etc/conf.d/virtnodedevd'
+  'etc/conf.d/virtnwfilterd'
+  'etc/conf.d/virtproxyd'
+  'etc/conf.d/virtqemud'
+  'etc/conf.d/virtsecretd'
+  'etc/conf.d/virtstoraged'
+  'etc/conf.d/virtvboxd'
+  'etc/libvirt/libvirt-admin.conf'
+  'etc/libvirt/libvirt.conf'
+  'etc/libvirt/libvirtd.conf'
+  'etc/libvirt/lxc.conf'
+  'etc/libvirt/nwfilter/allow-arp.xml'
+  'etc/libvirt/nwfilter/allow-dhcp-server.xml'
+  'etc/libvirt/nwfilter/allow-dhcp.xml'
+  'etc/libvirt/nwfilter/allow-incoming-ipv4.xml'
+  'etc/libvirt/nwfilter/allow-ipv4.xml'
+  'etc/libvirt/nwfilter/clean-traffic-gateway.xml'
+  'etc/libvirt/nwfilter/clean-traffic.xml'
+  'etc/libvirt/nwfilter/no-arp-ip-spoofing.xml'
+  'etc/libvirt/nwfilter/no-arp-mac-spoofing.xml'
+  'etc/libvirt/nwfilter/no-arp-spoofing.xml'
+  'etc/libvirt/nwfilter/no-ip-multicast.xml'
+  'etc/libvirt/nwfilter/no-ip-spoofing.xml'
+  'etc/libvirt/nwfilter/no-mac-broadcast.xml'
+  'etc/libvirt/nwfilter/no-mac-spoofing.xml'
+  'etc/libvirt/nwfilter/no-other-l2-traffic.xml'
+  'etc/libvirt/nwfilter/no-other-rarp-traffic.xml'
+  'etc/libvirt/nwfilter/qemu-announce-self-rarp.xml'
+  'etc/libvirt/nwfilter/qemu-announce-self.xml'
+  'etc/libvirt/qemu.conf'
+  'etc/libvirt/qemu-lockd.conf'
+  'etc/libvirt/qemu/networks/default.xml'
+  'etc/libvirt/virtinterfaced.conf'
+  'etc/libvirt/virtlockd.conf'
+  'etc/libvirt/virtlogd.conf'
+  'etc/libvirt/virt-login-shell.conf'
+  'etc/libvirt/virtlxcd.conf'
+  'etc/libvirt/virtnetworkd.conf'
+  'etc/libvirt/virtnodedevd.conf'
+  'etc/libvirt/virtnwfilterd.conf'
+  'etc/libvirt/virtproxyd.conf'
+  'etc/libvirt/virtqemud.conf'
+  'etc/libvirt/virtsecretd.conf'
+  'etc/libvirt/virtstoraged.conf'
+  'etc/libvirt/virtvboxd.conf'
+  'etc/logrotate.d/libvirtd'
+  'etc/logrotate.d/libvirtd.lxc'
+  'etc/logrotate.d/libvirtd.qemu'
+  'etc/sasl2/libvirt.conf'
+)
 install="libvirt.install"
 source=('git+git://libvirt.org/libvirt.git'
     libvirtd.conf.d
     libvirtd-guests.conf.d
     libvirt.tmpfiles.d)
-md5sums=('SKIP'
-     '5e31269067dbd12ca871234450bb66bb'
-     '384fff96c6248d4f020f6fa66c32b357'
-     '020971887442ebbf1b6949e031c8dd3f')     
+
+  
 pkgver() {
   cd "$SRCDEST/${pkgname/-git/}"
   #git describe --always | sed 's|-|.|g' | sed 's/^.//'
@@ -139,3 +163,7 @@ package() {
     "$pkgdir"/etc/sysconfig \
     "$pkgdir"/etc/rc.d
 }
+sha256sums=('SKIP'
+            '9d0597bbf2bd7892420cebaf0563236fe1483b83ae95ee6263c1ce7f44a44134'
+            '0896c30100e9e40aee1eb4a2cf0cac2c0bdd5fd7b077b9d2680d90e77435ea66'
+            '5c26353833944db8dc97aa63843734519d6521bd8d88497d94d910ee9d3169d8')
