@@ -4,15 +4,15 @@
 
 pkgname=python2-py-gfm
 _pkgname=py-gfm
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Github-Flavored Markdown for Python-Markdown"
-url="https://github.com/google/py-gfm"
+url="https://github.com/Zopieux/py-gfm"
 arch=(any)
 license=('custom')
 depends=('python2' 'python2-markdown')
 source=("https://github.com/Zopieux/${_pkgname}/archive/${pkgver}.tar.gz")
-sha1sums=('49d7844a88f06b25046a1e956d28cfc422f38c99')
+sha1sums=('c3461883c65d3fa0d97f7bf938507e99dd64b6dd')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
