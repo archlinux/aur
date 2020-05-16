@@ -3,7 +3,7 @@
 # Contributor: Dan McGee <dan@archlinux.org>
 
 pkgname=postgresql-96-upgrade
-pkgver=9.6.17
+pkgver=9.6.18
 _majorver=${pkgver%.*}
 pkgrel=1
 pkgdesc="PostgreSQL build for migrating between major versions with pg_upgrade"
@@ -15,7 +15,7 @@ makedepends=('krb5' 'python2' 'perl' 'tcl>=8.6.0')
 provides=("postgresql-96-upgrade=${_majorver}")
 conflicts=('postgresql-old-upgrade' 'postgresql-lts-old-upgrade')
 source=(http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2)
-sha256sums=('f6e1e32d32545f97c066f3c19f4d58dfab1205c01252cf85c5c92294ace1a0c2')
+sha256sums=('517ec282b785e6d22f360c30ba0c5e2a506fca5ca07dcc545427511d94c89999')
 
 build() {
   cd "${srcdir}/postgresql-${pkgver}"
