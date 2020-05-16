@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-vamp-plugin-sdk
+	pkgdesc = Time-stretching and pitch-shifting audio library and utility
+	pkgver = 2.9.0
+	pkgrel = 1
+	url = https://www.gnome.org
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-meson
+	depends = mingw-w64-libsndfile
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = https://code.soundsoftware.ac.uk/attachments/download/2588/vamp-plugin-sdk-2.9.0.tar.gz
+	source = 01-mingw-shared.patch
+	sha256sums = b72a78ef8ff8a927dc2ed7e66ecf4c62d23268a5d74d02da25be2b8d00341099
+	sha256sums = 64201d3cf3ef1e2d56a6079eb3938b353983a5b2e8d63a41ab7419a71257f64a
+
+pkgname = mingw-w64-vamp-plugin-sdk
+
