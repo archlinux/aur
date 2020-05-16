@@ -4,7 +4,7 @@
 
 pkgname=archlinux-themes-slim
 pkgver=1.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Arch Linux branded themes for the SLiM login manager"
 arch=('any')
 url="https://www.archlinux.org/"
