@@ -58,7 +58,7 @@ package() {
     for size in 16 32 48 64 128 256 512; do
       size="${size}x${size}"
       mkdir -p $pkgdir/usr/share/icons/hicolor/${size}/apps
-      cp packaging/artwork/mod_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${_pkgname}.png"
+      cp packaging/artwork/icon_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${_pkgname}.png"
     done
     install -Dm644 $srcdir/openra-dr.desktop $pkgdir/usr/share/applications/openra-dr.desktop
     rm $pkgdir/usr/lib/openra-dr/*.sh
