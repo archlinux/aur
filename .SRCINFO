@@ -1,6 +1,6 @@
 pkgbase = postgresql-10-edb
 	pkgdesc = Enterprise-Proven Postgres edition by enterprisedb.com (EDB postgres). This package will only install server and command line tools, without pgAdmin and stackbuilder.
-	pkgver = 10.12
+	pkgver = 10.13
 	pkgrel = 1
 	url = https://github.com/abcfy2/postgresql-edb-aur.git
 	install = postgresql.install
