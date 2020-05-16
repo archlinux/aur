@@ -4,7 +4,7 @@
 
 pkgname=pam_ssh
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='PAM module providing single sign-on behavior for SSH.'
 arch=('i686' 'x86_64')
 url='http://pam-ssh.sourceforge.net/'
@@ -23,7 +23,7 @@ validpgpkeys=(
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr --with-pam-dir=/usr/lib/security
+  CFLAGS="$CFLAGS -fcommon" ./configure --prefix=/usr --with-pam-dir=/usr/lib/security
   make
 }
 
