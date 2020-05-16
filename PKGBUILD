@@ -3,7 +3,7 @@
 
 pkgname=gob2
 pkgver=2.0.20
-pkgrel=2
+pkgrel=3
 pkgdesc="GTK Object Builder (GOB) is a simple preprocessor for easily creating GTK objects"
 arch=(x86_64)
 license=('GPL')
