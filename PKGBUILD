@@ -1,7 +1,8 @@
-# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=dovecot2-antispam-git
-pkgver=v2.0.11.g963c046
+pkgver=v2.0.17.g713e9e9
 pkgrel=1
 pkgdesc="Integrates DSPAM into dovecot IMAP server. Git Version for dovecot >= 2.1"
 arch=( 'i686' 'x86_64' )
@@ -21,9 +22,10 @@ pkgver() {
 
 build() {
   cd ${srcdir}/${pkgname}
-  msg "Starting make..."
-  make 
+  #./autogen.sh
   #./configure --prefix=/usr --with-dovecot=/usr/lib/dovecot
+  msg "Starting make..."
+  make
 }
 
 package() {
