@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-octomap-server
 	pkgdesc = ROS - This library loads a 3D map (as Octree-based OctoMap) and distributes it to other nodes in a compact binary format
-	pkgver = 0.6.4
+	pkgver = 0.6.5
 	pkgrel = 1
 	url = http://ros.org/wiki/random_numbers
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = ros-melodic-octomap-server
 	depends = ros-melodic-dynamic-reconfigure
 	depends = ros-melodic-nodelet
 	depends = boost
-	source = ros-melodic-octomap-server-0.6.4-0.tar.gz::https://github.com/OctoMap/octomap_mapping/archive/master/octomap_mapping/0.6.4.tar.gz
+	source = ros-melodic-octomap-server-0.6.5-0.tar.gz::https://github.com/OctoMap/octomap_mapping/archive/master/octomap_mapping/0.6.5.tar.gz
 	source = export_nodelet_macro.patch
 	sha256sums = ac14c36ac5ac7e17b2ade091abaaa33afeecc813fc85ee91f208fca0e38d4d32
 	sha256sums = SKIP

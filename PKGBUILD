@@ -4,7 +4,7 @@ pkgdesc="ROS - This library loads a 3D map (as Octree-based OctoMap) and distrib
 url='http://ros.org/wiki/random_numbers'
 
 pkgname='ros-melodic-octomap-server'
-pkgver='0.6.4'
+pkgver='0.6.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
