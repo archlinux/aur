@@ -1,5 +1,5 @@
 package:
-	makepkg
+	makepkg -f
 	makepkg --printsrcinfo > .SRCINFO
 
 install:
