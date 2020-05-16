@@ -1,2 +1,5 @@
-ubports-installer-git
-src/npm-cache
+/pkg/
+/src/
+/*.log
+/*.tar.gz
+/*.pkg.tar*
