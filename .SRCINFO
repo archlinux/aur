@@ -1,11 +1,12 @@
 pkgbase = xfractint
 	pkgdesc = A fractal generator wellknown from good old DOS days
 	pkgver = 20.04p14
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.fractint.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = gcc8
 	makedepends = yasm
 	makedepends = git
 	depends = libxft
