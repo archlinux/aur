@@ -1,0 +1,16 @@
+pkgbase = gitid
+	pkgdesc = A simple, minimal command line tool allowing for management of git identities.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/Luiserebii/gitid
+	arch = x86_64
+	license = GPL3
+	makedepends = autoconf
+	makedepends = make
+	makedepends = gcc
+	depends = git>=2.7.6
+	source = https://github.com/Luiserebii/gitid/archive/v0.3.1.tar.gz
+	md5sums = 569c66c489d78256b3ad8c82a29af561
+
+pkgname = gitid
+
