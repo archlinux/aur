@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Do not create new keys if key files already exist
-KEYS="PK.key PK.crt KEK.key KEK.crt DB.key DB.crt PK.cer KEK.cer DB.cer myGUID.txt PK.esl KEK.esl DB.esl noPK.esl PK.auth noPK.auth"
+KEYS="PK.key PK.crt KEK.key KEK.crt DB.key DB.crt PK.cer KEK.cer DB.cer myGUID.txt PK.esl KEK.esl DB.esl noPK.esl PK.auth noPK.auth KEK.auth DB.auth"
 for file in $KEYS; do
   if [ -f $file ]; then
     echo "Error: keys already exist in $(pwd)" >&2
@@ -50,6 +50,10 @@ sign-efi-sig-list -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" \
                   -k PK.key -c PK.crt PK PK.esl PK.auth
 sign-efi-sig-list -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" \
                   -k PK.key -c PK.crt PK noPK.esl noPK.auth
+sign-efi-sig-list -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" \
+                  -k PK.key -c PK.crt  KEK KEK.esl KEK.auth
+sign-efi-sig-list -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" \
+                  -k KEK.key -c KEK.crt DB DB.esl DB.auth
 
 chmod 0600 *.key
 

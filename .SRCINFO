@@ -1,6 +1,6 @@
 pkgbase = sbkeys
 	pkgdesc = Simple script to generate Secure Boot keys
-	pkgver = 0.1.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/electrickite/sbkeys
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = sbkeys
 	depends = python2
 	depends = openssl
 	source = sbkeys
-	sha256sums = f64107a1539c7f397386eb3b748f3c5d95965f3dad3bd5876d9ef8a101223c1b
+	sha256sums = a6d7a5fbdd62a07423ef9641e30bb177746720801462f84636c27096926c2d42
 
 pkgname = sbkeys
 
