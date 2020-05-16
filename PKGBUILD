@@ -32,8 +32,8 @@ build() {
 
 package() {
   install -dm755                                   "$pkgdir"/usr/bin
-  install -sm555 "$srcdir"/Bracmat/src/bracmat     "$pkgdir"/usr/bin
-  install -sm555 "$srcdir"/Bracmat/src/bracmatsafe "$pkgdir"/usr/bin
+  install -sm755 "$srcdir"/Bracmat/src/bracmat     "$pkgdir"/usr/bin
+  install -sm755 "$srcdir"/Bracmat/src/bracmatsafe "$pkgdir"/usr/bin
   pushd          "$srcdir"/Bracmat/src                   &>/dev/null
   make clean                                             &>/dev/null
   popd                                                   &>/dev/null
