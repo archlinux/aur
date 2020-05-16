@@ -3,7 +3,7 @@
 
 pkgname=slim-themes
 pkgver=1.2.3
-pkgrel=8
+pkgrel=9
 pkgdesc="Themes Pack for Simple Login Manager"
 arch=('any')
 url="https://sourceforge.net/projects/slim.berlios/"
