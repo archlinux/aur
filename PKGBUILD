@@ -1,7 +1,7 @@
 # Mantainer Mattia De Rosa <mattiadr96 at gmail dot com>
 
 pkgname=st-mattiadr
-pkgver=0.8.2b
+pkgver=0.8.3a
 pkgrel=1
 pkgdesc='Fork of the suckless terminal with additional patches.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libxft' 'libxext' 'xorg-fonts-misc')
 provides=('st')
 conflicts=('st')
 source=("https://github.com/mattiadr/st/archive/$pkgver.tar.gz")
-md5sums=('95949274501255ec67c51c2994bd7a09')
+md5sums=('33463b3a49fb2f507323d33d999ddf3a')
 
 prepare() {
 	cd $srcdir/st-$pkgver
