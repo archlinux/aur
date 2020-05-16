@@ -1,7 +1,7 @@
 
 pkgname=mingw-w64-zstd
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Zstandard - Fast real-time compression algorithm (mingw-w64)"
 url="http://www.zstd.net/"
 arch=('any')
@@ -13,6 +13,11 @@ source=("https://github.com/facebook/zstd/releases/download/v${pkgver}/zstd-${pk
 sha256sums=('59ef70ebb757ffe74a7b3fe9c305e2ba3350021a918d168a046c6300aeea9315')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare () {
+  cd zstd-$pkgver
+  curl -L https://github.com/facebook/zstd/pull/2143.patch | patch -p1
+}
 
 build() {
   cd zstd-$pkgver
