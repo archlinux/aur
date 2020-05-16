@@ -1,8 +1,8 @@
 # Maintainer: scan
 
 pkgname=dark-aurora-theme-git
-pkgver=r6.202cc3a
-pkgrel=2
+pkgver=r242.54e702a
+pkgrel=1
 pkgdesc="Dark Aurora Theme GNOME 3.28"
 arch=("any")
 url="https://github.com/bolimage/Dark-Aurora"
