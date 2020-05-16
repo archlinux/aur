@@ -2,13 +2,13 @@
 _pkgbasename=zls
 pkgname=${_pkgbasename}-git
 pkgrel=1
-pkgver=r4.999a365
+pkgver=r127.d9e5859
 pkgdesc="Zig LSP implementation + Zig Language Server"
 arch=('any')
-url="https://github.com/SuperAuguste/${_pkgbasename}"
+url="https://github.com/zigtools/${_pkgbasename}"
 license=('MIT')
 depends=('zig')
-source=(git+https://github.com/SuperAuguste/${_pkgbasename})
+source=(git+https://github.com/zigtools/${_pkgbasename})
 sha256sums=('SKIP')
 
 pkgver() {
