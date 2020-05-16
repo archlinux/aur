@@ -6,3 +6,4 @@ src/
 *.src.tar.gz
 *.src.tar.xz
 grobi-git/
+*.log

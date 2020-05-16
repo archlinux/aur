@@ -1,6 +1,6 @@
 pkgbase = grobi-git
 	pkgdesc = grobi automates applying xrandr profiles when outputs change
-	pkgver = r117.daa886b
+	pkgver = r123.fd80d7f
 	pkgrel = 1
 	url = https://github.com/fd0/grobi
 	arch = i686

@@ -2,7 +2,7 @@
 # Maintainer: Alexander Neumann <alexander@bumpern.de>
 options=(!strip)
 pkgname=grobi-git
-pkgver=r117.daa886b
+pkgver=r123.fd80d7f
 pkgrel=1
 pkgdesc="grobi automates applying xrandr profiles when outputs change"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  go run build.go
+  go build
 }
 
 package() {
