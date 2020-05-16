@@ -1,7 +1,7 @@
 # Maintainer: Nico <desoxhd@gmail.com>
 pkgname=anydesk-bin
 pkgver=5.5.6
-pkgrel=2
+pkgrel=3
 pkgdesc="The Fast Remote Desktop Application (Generic based package)"
 arch=('i686' 'x86_64')
 url="https://anydesk.com"
@@ -28,7 +28,7 @@ package() {
     # install desktop entry
     install -Dm 644 "${srcdir}/anydesk-${pkgver}/anydesk.desktop" "${pkgdir}/usr/share/applications/anydesk.desktop"
     # force gtk2 theme to adwaita in desktop entry to fix unreadable text
-    sed -i -e "s:Exec=/usr/bin/anydesk:Exec=GTK2_RC_FILES=/usr/share/themes/Adwaita/gtk-2.0/gtkrc /usr/bin/anydesk:g" "${pkgdir}/usr/share/applications/anydesk.desktop"
+    sed -i -e "s:Exec=/usr/bin/anydesk:Exec=env GTK2_RC_FILES=/usr/share/themes/Adwaita/gtk-2.0/gtkrc /usr/bin/anydesk:g" "${pkgdir}/usr/share/applications/anydesk.desktop"
 
     # install polkit action
     install -Dm 644 "${srcdir}/anydesk-${pkgver}/polkit-1/com.philandro.anydesk.policy" "${pkgdir}/usr/share/polkit-1/actions/com.philandro.anydesk.policy"
