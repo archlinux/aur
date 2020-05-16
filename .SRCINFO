@@ -1,17 +1,14 @@
 pkgbase = python-aenum
 	pkgdesc = Advanced Enumerations (compatible with Python's stdlib Enum), NamedTuples, and NamedConstants
 	pkgver = 2.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bitbucket.org/stoneleaf/aenum
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/00/db/6f60b39f91981b8b2811da5cb9fe989ae1ed2a424ae937f1a731ad4be945/aenum-2.2.2.tar.gz
 	sha256sums = c94fde69eebf8d478d68f0d96c61178299d9a19465ef5effa326ebee7536c203
 
 pkgname = python-aenum
 	depends = python
-
-pkgname = python2-aenum
 
