@@ -22,13 +22,15 @@ _architectures=('x86_64-w64-mingw32')
 build() {
 	cd "${srcdir}/${_pkgbase}-${pkgver}"
 
+	CFLAGS+="-I${srcdir}/${_pkgbase}-${pkgver} -I${srcdir}/${_pkgbase}-${pkgver}/src"
+	CXXFLAGS+="-I${srcdir}/${_pkgbase}-${pkgver} -I${srcdir}/${_pkgbase}-${pkgver}/src"
 	 for _arch in "${_architectures[@]}"; do
 		# mkdir -p build-${_arch} && pushd build-${_arch}
 		./configure \
 		  --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --build="$CHOST" \
 		  --prefix=/usr/x86_64-w64-mingw32 --libdir=/usr/x86_64-w64-mingw32/lib --includedir=/usr/x86_64-w64-mingw32/include \
 		  --enable-shared --enable-static
-		  ${_arch}-make
+		  make
 	  done
 }
 
