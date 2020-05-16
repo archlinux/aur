@@ -1,7 +1,7 @@
 # Maintainer: Cody Regester <cody@llanet.tk>
 pkgname=libki
 pkgver=20.05
-pkgrel=1
+pkgrel=2
 pkgdesc="The client package for libki. The libki server must be installed and running either on this or another machine."
 arch=('any')
 url="libki.org"
@@ -23,11 +23,11 @@ build() {
 	qmake Libki.pro
 	make
 	cp example.ini ~/.config/Libki.ini
-	sudo cp example.ini /etc/libki/Libki.ini
+	sudo -s cp example.ini /etc/libki/Libki.ini
 }
 
 package() {
 	cd 'libki-client'
-	sudo cp libkiclient /usr/local/bin
-	sudo chmod +x /usr/local/bin/libkiclient
+	sudo -s cp libkiclient /usr/local/bin
+	sudo -s chmod +x /usr/local/bin/libkiclient
 }
