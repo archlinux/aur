@@ -1,8 +1,8 @@
-# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-mail-git
-pkgver=0.2.0.r1546.g975f3b21
+pkgver=0.2.0.r5643.g0628c304
 pkgrel=1
 pkgdesc="An email app for NextCloud"
 arch=('any')
@@ -14,10 +14,10 @@ options=('!strip')
 provides=('nextcloud-app-mail')
 conflicts=('nextcloud-app-mail')
 source=("git+https://github.com/nextcloud/mail.git")
-sha512sums=("SKIP")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "mail"
+  cd "${srcdir}/mail"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 
