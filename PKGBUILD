@@ -1,7 +1,9 @@
-# Maintainer: Mariell Hoversholm <proximyst at proximyst dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Mariell Hoversholm <proximyst at proximyst dot com>
 # Contributor: Schrodinger Zhu <i at zhuyi dot fan>
 # Contributor: Davide Depau <davide at depau dot eu>
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+
 
 pkgname=jdk14-openj9-bin
 _jdkver=14
@@ -12,7 +14,7 @@ _openj9ver=0.20.0
 _buildvershort=7
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_jdkfullver}b${_buildver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk${_jdkver}"
 arch=('x86_64')
 url="https://adoptopenjdk.net/index.html?variant=openjdk${_jdkver}&jvmVariant=openj9"
