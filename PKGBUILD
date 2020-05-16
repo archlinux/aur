@@ -2,7 +2,7 @@
 pkgname=tktreectrl-git
 pkgver=2.4.2
 pkgrel=1
-pkgdesc='Multi-column hierarchical listbox widget for the Tk GUI toolkit.'
+pkgdesc='Multi-column hierarchical listbox widget for the Tk GUI toolkit'
 arch=('x86_64')
 url='https://github.com/apnadkarni/tktreectrl'
 license=('custom')
