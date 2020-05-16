@@ -1,0 +1,17 @@
+pkgbase = sfk-bin
+	pkgdesc = Swiss File Knife - a command line tools collection
+	pkgver = 1.9.6.2
+	pkgrel = 1
+	url = http://stahlworks.com/dev/swiss-file-knife.html
+	arch = x86_64
+	license = BSD
+	makedepends = awk
+	depends = gcc-libs
+	provides = sfk
+	conflicts = sfk
+	noextract = sfk-linux-64.exe
+	source = http://stahlworks.com/dev/sfk/sfk-linux-64.exe
+	md5sums = 2af001a0bfd9cfe675be2a0d4f2a31b3
+
+pkgname = sfk-bin
+
