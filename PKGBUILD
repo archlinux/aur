@@ -1,11 +1,12 @@
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Mario Finelli <mario dot finelli at yahoo dot com>
 # Contributor: Andy Weidenbaum <archbaum at gmail dot com>
 # Contributor: Peter Wu <lekensteyn at gmail dot com>
 
 _npmname=grunt-cli
 pkgname=nodejs-$_npmname
-pkgver=0.1.13
-pkgrel=7
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="The grunt command line interface."
 arch=('any')
 url="http://gruntjs.com/"
@@ -13,7 +14,7 @@ license=('MIT')
 depends=('nodejs' 'npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('e639404d7b66ae2821edabc681104a1f035910ff20a2e21d67329c2a7674a443')
+sha256sums=('3b0a3c2aee71f1cb92984afd3fffa7882cbd40958825313946aa7f2938f67e93')
 options=('!emptydirs')
 
 package() {
