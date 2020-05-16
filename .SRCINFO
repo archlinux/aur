@@ -1,0 +1,24 @@
+pkgbase = linuxsync-git
+	pkgdesc = sync android notifications to linux (client)
+	pkgver = r26.8a85256
+	pkgrel = 1
+	url = https://github.com/brod8362/linuxsync-client
+	arch = x86_64
+	license = GPL
+	makedepends = rust
+	makedepends = git
+	depends = dbus
+	depends = openssl
+	depends = glibc
+	depends = gcc-libs
+	depends = systemd-libs
+	depends = xz
+	depends = lz4
+	depends = libgcrypt
+	depends = libgpg-error
+	provides = linuxsync
+	source = linuxsync::git+https://github.com/brod8362/linuxsync-client.git
+	sha256sums = SKIP
+
+pkgname = linuxsync-git
+
