@@ -6,6 +6,7 @@ pkgbase = gogh-git
 	arch = any
 	makedepends = git
 	depends = dconf
+	depends = wget
 	source = git+https://github.com/Mayccoll/Gogh.git
 	md5sums = SKIP
 
