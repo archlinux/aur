@@ -2,7 +2,7 @@
 
 pkgname=mp3wrap
 pkgver=0.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Tool for wrapping mp3 files. A free independent alternative to AlbumWrap"
 arch=('x86_64')
 url="http://mp3wrap.sourceforge.net"
