@@ -2,4 +2,5 @@ jumpapp/
 pkg/
 src/
 jumpapp-git-*.pkg.tar.xz
+jumpapp-git-*.pkg.tar.zst
 jumpapp-git-*.src.tar.gz

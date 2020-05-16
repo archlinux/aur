@@ -1,7 +1,7 @@
 pkgbase = jumpapp-git
 	pkgdesc = A run-or-raise application switcher for any X11 desktop
 	pkgver = 1.1.r101.4071977
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mkropat/jumpapp
 	arch = i686
 	arch = x86_64
