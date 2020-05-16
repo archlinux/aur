@@ -4,21 +4,21 @@
 _plasma=false
 
 # Submodule versions
-_singleapplication=3.0.19
+_singleapplication=3.1.3
 
 pkgname=optimus-manager-qt
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='A Qt interface for Optimus Manager that allows to configure and switch GPUs on Optimus laptops using the tray menu'
 arch=(x86_64)
 url=https://github.com/Shatur95/optimus-manager-qt
 license=(GPL3)
 depends=(qt5-base qt5-svg qt5-x11extras 'optimus-manager>=1.3')
-makedepends=(qt5-tools libxrandr)
+makedepends=(qt5-tools extra-cmake-modules libxrandr)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz
         SingleApplication-$_singleapplication.tar.gz::https://github.com/itay-grudev/SingleApplication/archive/v$_singleapplication.tar.gz)
-sha256sums=(5e1c81b5e0291b69e16a23c4f681031aa77312885d0649d548e80874c33e9a23
-            9405fd259288b2a862e91e5135bccee936f0438e1b32c13603277132309d15e0)
+sha256sums=(3067d6dad33bdaf838eec01b1f5c02f9a2b4897e0e7304ca2a0a1bed6f7e7bd8
+            4585f02fbfba61626e4ed4f1815b847c72f1593bffac6015f6e75f514094f148)
 
 if [ $_plasma == true ]
 then
@@ -31,19 +31,20 @@ prepare() {
 }
 
 build() {
-    cd $pkgname-$pkgver
-  
+    mkdir -p $pkgname-$pkgver/build
+    cd $pkgname-$pkgver/build
+
     if [ $_plasma == true ]
     then
-        qmake "DEFINES += PLASMA"
+        cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" -D PLASMA=ON ..
     else
-        qmake
+        cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" ..
     fi
 
-    make
+    cmake --build .
 }
 
 package() {
-    cd $pkgname-$pkgver
-    make INSTALL_ROOT="$pkgdir/" install
-} 
+    cd $pkgname-$pkgver/build
+    cmake --install .
+}
