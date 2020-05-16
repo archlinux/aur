@@ -1,6 +1,6 @@
 pkgbase = jdk13-openj9-bin
 	pkgdesc = Eclipse (former IBM) OpenJ9 with openjdk13
-	pkgver = 13b33_openj9_0.16.0
+	pkgver = 13.0.2b8_openj9_0.18.0
 	pkgrel = 1
 	url = https://adoptopenjdk.net/index.html?variant=openjdk13&jvmVariant=openj9
 	arch = x86_64
@@ -14,9 +14,11 @@ pkgbase = jdk13-openj9-bin
 	provides = java-runtime-openjdk=13
 	provides = java-runtime-headless=13
 	provides = java-runtime-headless-openjdk=13
+	conflicts = jdk13-openj9-bin
+	conflicts = jdk13-openj9
 	options = !strip
-	source = https://github.com/AdoptOpenJDK/openjdk13-binaries/releases/download/jdk-13%2B33_openj9-0.16.0/OpenJDK13U-jdk_x64_linux_openj9_13_33_openj9-0.16.0.tar.gz
-	sha256sums = 68ebab0021c719694be8fc868478725a69c5c515cdb62e2933eefe87ba6437df
+	source = https://github.com/AdoptOpenJDK/openjdk13-binaries/releases/download/jdk-13.0.2%2B8_openj9-0.18.0/OpenJDK13U-jdk_x64_linux_openj9_13.0.2_8_openj9-0.18.0.tar.gz
+	sha256sums = aeecf6d30d0c847db81d07793cf97e5dc44890c29366d7d9f8f9f397f6c52590
 
 pkgname = jdk13-openj9-bin
 
