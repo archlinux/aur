@@ -1,8 +1,8 @@
 # Maintainers: Mike Cooper <mythmon at elem.us>, Mikko <mikko at 5x.fi>
 
 pkgname=terraria-server
-pkgver=1.3.5.3
-pkgrel=22
+pkgver=1.4.0.1
+pkgrel=23
 pkgdesc="Official dedicated server for Terraria"
 arch=('x86_64' 'x86')
 license=('unknown')
@@ -13,15 +13,17 @@ install='terraria-server.install'
 
 _pkgver=$(echo $pkgver | sed 's/\.//g')
 
-# Added updated mono System.dll so the server works with mono 5.x
+# Added updated mono System.dll and System.Core.dll so the server works with mono 5.x
 source=("http://terraria.org/server/${pkgname}-${_pkgver}.zip"
-				"https://github.com/mono/reference-assemblies/blob/c7ca004a743b7232f024831070536e9d2b8fcf83/v4.7.1/System.dll?raw=true"
+        "https://github.com/mono/reference-assemblies/blob/master/v4.8/System.dll?raw=true"
+        "https://github.com/mono/reference-assemblies/blob/master/v4.8/System.Core.dll?raw=true"
         'terraria-server'
         'config.txt'
         'terraria-server@.service')
 
-sha256sums=('63b232323f094ea71e49ec1bb578a816b751db9f872ad70ebc1d921b8d15f250'
-						'ce3bbc512e0f82a8a034ff67b68a2f3467c8374f0d6d1c015d1484c5c422e422'
+sha256sums=('d0b7b1f5f993e89b52c8c6c49da6c5b4df457645287dda8883359f4280959427'
+            '6906a72d0c320697cac46820740fd67976e0b270378a772ea42968c463a2b8e5'
+            'b06c0c07ffd912013cc35987d05ce9e6415cc04882b4b9b5c8ebf8a65fbea556'
             'fba253786b8668dabd18b03514b24b3aac9b24ed9a74dfdacee35f41659c30c9'
             '6a87f9f758811528913fa4828667b200ab7dcb6623734475ecbd8f8dab337b2f'
             'b2cfeb15b6e5bf97d1b7a0b0bdbec9289a842d37c52414c5b57aadda66b1b6a6')
@@ -29,8 +31,9 @@ sha256sums=('63b232323f094ea71e49ec1bb578a816b751db9f872ad70ebc1d921b8d15f250'
 package() {
     unzip -o "${pkgname}-${_pkgver}.zip"
 
-		# Copy the updated System.dll to "${_pkgver}/Linux/System.dll"
-		cp -rv "System.dll?raw=true" "${_pkgver}/Linux/System.dll"
+    # Copy the updated dlls to /Linux
+    cp -rv "System.dll?raw=true" "${_pkgver}/Linux/System.dll";
+    cp -rv "System.Core.dll?raw=true" "${_pkgver}/Linux/System.Core.dll";
 
     cd "${_pkgver}/Linux"
     dest="${pkgdir}/opt/terraria-server"
