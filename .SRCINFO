@@ -1,7 +1,7 @@
 pkgbase = libki
 	pkgdesc = The client package for libki. The libki server must be installed and running either on this or another machine.
 	pkgver = 20.05
-	pkgrel = 1
+	pkgrel = 2
 	url = libki.org
 	arch = any
 	license = GPL
