@@ -1,8 +1,8 @@
 # Maintainer: Anthony25 <Anthony Ruhier>
 
 pkgname=python-pyqos
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="QoS framework using tc for Python"
 arch=(any)
 url="https://github.com/Anthony25/pyqos"
@@ -15,7 +15,7 @@ depends=(
 )
 options=(!emptydirs)
 source=("https://github.com/Anthony25/pyqos/archive/${pkgver}.tar.gz")
-sha256sums=('81001a6ee8e9cb8de079b8d54f73c96036857457a38c6c6e10996d682cc0567b')
+sha256sums=('934955a79f88ab97537ac9d83bb8e0165db2460b42754c4150c2e8654c5f804a')
 
 package() {
   cd "${srcdir}/pyqos-${pkgver}"
