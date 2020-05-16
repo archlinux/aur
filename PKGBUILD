@@ -3,7 +3,7 @@
 _pkgname=janet
 pkgname=janet-lang
 pkgver=1.9.1
-pkgrel=1
+pkgrel=3
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="https://janet-lang.org/"
@@ -12,6 +12,7 @@ provides=('janet')
 conflicts=('janet-lang-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/janet-lang/janet/archive/v${pkgver}.tar.gz")
 sha256sums=('02724d6074a0d6fa53a548e8bdaaf49999f082e30b277c73444900f739a53062')
+options=('staticlibs')
 
 janet_build='JANET_BUILD=\"f7ee8bd\"'
 
@@ -39,4 +40,5 @@ package() {
     cp -a examples "${pkgdir}"/usr/share/janet
 
     install -Dm644 build/doc.html "${pkgdir}"/usr/share/doc/janet/doc.html
+    install -Dm644 -t "${pkgdir}"/usr/lib/janet tools/.keep
 }
