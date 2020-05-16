@@ -1,6 +1,6 @@
 pkgbase = postgresql-lts
 	pkgdesc = Sophisticated object-relational DBMS
-	pkgver = 11.7
+	pkgver = 11.8
 	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = postgresql-lts
 	makedepends = libldap
 	makedepends = llvm
 	makedepends = clang
-	source = https://ftp.postgresql.org/pub/source/v11.7/postgresql-11.7.tar.bz2
+	source = https://ftp.postgresql.org/pub/source/v11.8/postgresql-11.8.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql-perl-rpath.patch
 	source = postgresql-lts.pam
@@ -28,9 +28,9 @@ pkgbase = postgresql-lts
 	source = postgresql-check-db-dir
 	source = postgresql-lts.sysusers
 	source = postgresql-lts.tmpfiles
-	sha256sums = 324ae93a8846fbb6a25d562d271bc441ffa8794654c5b2839384834de220a313
+	sha256sums = eaf2f4329ccc349c89e950761b81daf8c99bb8966abcab5665ccd6ee95c77ae2
 	sha256sums = 8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9
-	sha256sums = 5f73b54ca6206bd2c469c507830261ebd167baca074698d8889d769c33f98a31
+	sha256sums = fa7cc63936bce336fedf8ce8d11c8a0e051d6424a10570b991164386e96058cb
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
 	sha256sums = 6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e
 	sha256sums = 25fb140b90345828dc01a4f286345757e700a47178bab03d217a7a5a79105b57
@@ -58,7 +58,7 @@ pkgname = postgresql-lts-docs
 
 pkgname = postgresql-lts
 	pkgdesc = Sophisticated object-relational DBMS
-	depends = postgresql-lts-libs>=11.7
+	depends = postgresql-lts-libs>=11.8
 	depends = krb5
 	depends = libxml2
 	depends = readline>=6.0
