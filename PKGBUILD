@@ -1,9 +1,10 @@
+# -*- firestarter: "makepkg --printsrcinfo > .SRCINFO" -*-
 # Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Lev Lybin <aur@devtrue.net>
 
 pkgname=synology-cloud-station-drive
-_iver=4450
-_rver=4.3.2
+_iver=4469
+_rver=4.3.3
 pkgver=$_rver.$_iver
 pkgrel=1
 pkgdesc='An application which sync files between your computers and Synology NAS'
@@ -12,9 +13,9 @@ url='https://www.synology.com/en-global/releaseNote/CloudStationDrive'
 license=('custom')
 optdepends=('nautilus: Nautilus integration')
 source_i686=("https://global.download.synology.com/download/Tools/CloudStationDrive/$_rver-$_iver/Ubuntu/Installer/i686/synology-cloud-station-drive-$_iver.i686.deb")
-md5sums_i686=('adaad0d290ab42c52d12074c3703779f')
+md5sums_i686=('650cffb6a925d79e350e0ae52d94b718')
 source_x86_64=("https://global.download.synology.com/download/Tools/CloudStationDrive/$_rver-$_iver/Ubuntu/Installer/x86_64/synology-cloud-station-drive-$_iver.x86_64.deb")
-md5sums_x86_64=('7350463b1d6b5013fe6ae39e457d78c2')
+md5sums_x86_64=('2abfd45014589f1818c87050f70ea90e')
 
 prepare() {
     cd "$srcdir"
