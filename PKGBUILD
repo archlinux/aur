@@ -43,7 +43,7 @@ package() {
   mkdir -p "$pkgdir"/opt/${_fpkgname}${branch:+-}${branch}/{res,utils,lib}
   install -Dm644 res/{*png,*svg,*glade,*yml,*jpg,*css} "${pkgdir}"/opt/${_fpkgname}${branch:+-}${branch}/res/ || true
   cp -rp res/themes "${pkgdir}"/opt/${_fpkgname}${branch:+-}${branch}/res/ || true
-  install -Dm644 utils/* -t "${pkgdir}"/opt/${_fpkgname}${branch:+-}${branch}/utils/
+  install -Dm755 utils/* -t "${pkgdir}"/opt/${_fpkgname}${branch:+-}${branch}/utils/
   cp -rp lib/* "${pkgdir}"/opt/${_fpkgname}${branch:+-}${branch}/lib/
   install -m755 asbru-cm "${pkgdir}"/opt/${_fpkgname}${branch:+-}${branch}/${_fpkgname}${branch:+-}${branch}
 
