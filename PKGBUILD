@@ -27,7 +27,7 @@ replaces=('weboob-headless')
 provides=('weboob-headless')
 conflicts=('weboob-headless')
 source=("git+https://git.weboob.org/weboob/weboob")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/weboob"
