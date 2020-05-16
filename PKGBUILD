@@ -1,7 +1,7 @@
 # Maintainer: vscncls <lucaslou4 at protonmail dot com>
 
 pkgname=insomnia-designer
-pkgver=2020.1.2
+pkgver=2020.1.3
 pkgrel=1
 pkgdesc="The Collaborative API Design Tool for designing and managing OpenAPI specs."
 url="https://github.com/Kong/insomnia"
@@ -21,6 +21,10 @@ md5sums=('1353cfddc1213827651448feca58e7cf'
 
 package() {
         BUILD_DIR="Insomnia.Designer-${pkgver}"
+
+        # Temporary fix. Since the 1.1.3 release is the same as 1.1.2 on linux, they also didn't bother to change the name of the folder
+        mv "Insomnia.Designer-2020.1.2" $BUILD_DIR
+
         mkdir "${pkgdir}/usr/share/" -p
         \cp -r "${BUILD_DIR}" "${pkgdir}/usr/share/${pkgname}"
         chmod +x "${pkgdir}/usr/share/${pkgname}"
