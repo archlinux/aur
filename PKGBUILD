@@ -1,5 +1,6 @@
 # $Id: PKGBUILD 103944 2014-01-13 20:31:53Z spupykin $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=nextcloud-app-mozilla_sync
 pkgver=1.4
@@ -8,7 +9,7 @@ pkgdesc="Mozilla Sync server for nextcloud"
 arch=('any')
 url="https://apps.owncloud.com/content/show.php/Mozilla+Sync?content=161793"
 license=('GPL')
-depends=('nextcloud')
+depends=('nextcloud<=14')
 makedepends=()
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/owncloudarchive/mozilla_sync/archive/v$pkgver.tar.gz")
