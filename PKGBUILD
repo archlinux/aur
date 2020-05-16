@@ -34,5 +34,5 @@ build() {
 package() {
   cd "$srcdir/tktreectrl"
   make DESTDIR="$pkgdir" install
-  install -Dm444 license.terms "$pkgdir/usr/share/licenses/tktreectrl/LICENSE"
+  install -Dm644 license.terms "$pkgdir/usr/share/licenses/tktreectrl/LICENSE"
 }
