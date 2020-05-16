@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: desbma
 pkgname=bat-extras-git
-pkgver=2020.05.01.r15.ge250ad9
+pkgver=2020.05.01.r24.g3029b67
 pkgrel=1
 pkgdesc="Bash scripts that integrate bat with various command line tools."
 arch=('any')
@@ -42,7 +42,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    ./build.sh
+    ./build.sh --manuals
 }
 
 check() {
@@ -55,4 +55,5 @@ package() {
     install -Dm755 bin/* -t "$pkgdir/usr/bin"
     install -Dm644 doc/* -t "$pkgdir/usr/share/doc/${pkgname%-git}"
     install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+    install -Dm644 man/* -t "$pkgdir/usr/share/man/man1"
 }
