@@ -2,8 +2,8 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=flutter
-pkgver=1.12.13+hotfix.9
-pkgrel=2
+pkgver=1.17.1
+pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
 url="https://${pkgname}.io"
@@ -26,12 +26,12 @@ backup=("opt/${pkgname}/packages/${pkgname}_test/pubspec.yaml" "opt/${pkgname}/p
 options=("!emptydirs")
 install="${pkgname}.install"
 source=(
-  "${pkgname}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/stable/linux/${pkgname}_linux_v${pkgver/.hotfix/+hotfix}-stable.tar.xz"
+  "${pkgname}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/stable/linux/${pkgname}_linux_${pkgver/.hotfix/+hotfix}-stable.tar.xz"
   "${pkgname}.sh"
   "${pkgname}.csh"
 )
 sha256sums=(
-  "3f241c6237078338a0568d1e161f5d4b6d47ea3af377c9522d17223a9bb94c96"
+  "ae40bc83504c147229b34755892e8df36678e312f66117904deaff2c8faf4a21"
   "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
   "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f"
 )
