@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/dubhater/vapoursynth-median'
 license=('unknown')
 depends=('vapoursynth')
-makedepends=('mercurial'
+makedepends=('git'
              'meson'
              )
 provides=("vapoursynth-plugin-${_plug}"
