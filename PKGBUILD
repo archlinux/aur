@@ -6,7 +6,7 @@
 pkgbase=python-itypes
 _pkgbase="${pkgbase#python-}"
 pkgname=(python-itypes python2-itypes)
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Basic immutable container types for Python.'
 arch=(any)
@@ -18,7 +18,7 @@ makedepends=(
 )
 options=(!emptydirs)
 source=("https://github.com/tomchristie/${_pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('7b5ff2cb79ad42712d0c087b538fb11858f0e7e6f9d5a39475655ce5192a73c8')
+sha256sums=('4b01b8625dff71c2d566380647bbc55fad4c02430426b9fcd71be6f0d090c1bb')
 
 package_python-itypes() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
