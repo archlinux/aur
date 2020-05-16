@@ -10,7 +10,7 @@
 
 pkgname=p7zip-gui
 pkgver=16.02
-pkgrel=4
+pkgrel=5
 pkgdesc='Graphic user interface (alpha quality) for the 7zip file archiver'
 url='http://p7zip.sourceforge.net'
 license=('custom:unRAR' 'LGPL')
@@ -21,15 +21,34 @@ optdepends=('desktop-file-utils: desktop entries'
 makedepends=('python')
 makedepends_i686=('nasm')
 makedepends_x86_64=('yasm')
-options=(!makeflags)
+#options=(!makeflags)
 install='p7zip-gui.install'
 source=("https://downloads.sourceforge.net/project/p7zip/p7zip/${pkgver}/p7zip_${pkgver}_src_all.tar.bz2"
+        'https://src.fedoraproject.org/rpms/p7zip/raw/master/f/14-Fix-g++-warning.patch'
+        'CVE-2016-9296.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2016-9296.patch?h=packages/p7zip'
+        'CVE-2017-17969.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2017-17969.patch?h=packages/p7zip'
+        'CVE-2018-5996.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2018-5996.patch?h=packages/p7zip'
+        'CVE-2018-10115.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2018-10115.patch?h=packages/p7zip'
+        'https://src.fedoraproject.org/rpms/p7zip/raw/master/f/gcc10-conversion.patch'
         '7zFM.desktop')
 sha256sums=('5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f'
+            'a923c8876f36201064b0efabbc2121e47cf7a78a0700d3974ef24ab3a05bd88a'
+            'f9bcbf21d4aa8938861a6cba992df13dec19538286e9ed747ccec6d9a4e8f983'
+            'c6af5ba588b8932a5e99f3741fcf1011b7c94b533de903176c7d1d4c02a9ebef'
+            '9c92b9060fb0ecc3e754e6440d7773d04bc324d0f998ebcebc263264e5a520df'
+            'c397eb6ad60bfab8d388ea9b39c0c13ae818f86746210c6435e35b35c786607f'
+            'f90013d66d3c9865cb56fed2fb0432057a07283d5361e2ae9e98c3d3657f42a1'
             '8cb662ccbacd1badc2c41ff00618c53d1c7fb8bca5472cca4ac7bd7f619acb27')
 
 prepare() {
 	cd ${srcdir}/p7zip_${pkgver}
+	patch -p1 -i ${srcdir}/14-Fix-g++-warning.patch
+	patch -p1 -i ${srcdir}/CVE-2016-9296.patch
+	patch -p1 -i ${srcdir}/CVE-2017-17969.patch
+	patch -p1 -i ${srcdir}/CVE-2018-5996.patch
+	patch -p1 -i ${srcdir}/CVE-2018-10115.patch
+	patch -p1 -i ${srcdir}/gcc10-conversion.patch
+
 	if [[ ${CARCH} = x86_64 ]]; then
 		cp makefile.linux_amd64_asm makefile.machine
 	else
