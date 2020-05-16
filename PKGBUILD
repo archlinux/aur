@@ -16,7 +16,7 @@
 # Maintainer: Samuel Littley <samuellittley@google.com>
 
 pkgname='google-compute-engine-oslogin'
-pkgver=20200325.00
+pkgver=20200507.00
 pkgrel=1
 pkgdesc='Google Compute Engine OS login support'
 arch=('x86_64')
@@ -24,7 +24,7 @@ url='https://github.com/GoogleCloudPlatform/guest-oslogin'
 license=('Apache')
 depends=('curl' 'json-c' 'pam')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/guest-oslogin/archive/$pkgver.tar.gz")
-sha256sums=('6291198dad14bcad4c3e34a52acf3a5631ed005e7366e0eb5f4069a59afe82a2')
+sha256sums=('d75b72bc465554d8b68c2b604fdb2270619b20be9d1a0de5d6859763719f2ab3')
 
 build() {
 	cd "guest-oslogin-$pkgver"
@@ -33,9 +33,7 @@ build() {
 
 package() {
 	cd "guest-oslogin-$pkgver"
-	make DESTDIR="$pkgdir/" install
-
-	mkdir -p "$pkgdir/usr/lib/systemd"
-	mv "$pkgdir"/{,usr/}lib/systemd/system
-	rm -r "$pkgdir/lib"
+	make DESTDIR="$pkgdir/" SYSTEMDDIR=/usr/lib/systemd/system \
+		PRESETDIR=/usr/lib/systemd/system-preset install
+	rm -r "$pkgdir/usr/lib/systemd/system-preset"
 }
