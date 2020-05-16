@@ -1,6 +1,6 @@
 pkgbase = kvantum-theme-vimix-git
 	pkgdesc = Vimix theme for Kvantum
-	pkgver = r15.b064184
+	pkgver = r35.8ecc8db
 	pkgrel = 1
 	url = https://github.com/vinceliuice/vimix-kde
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = kvantum-theme-vimix-git
 	provides = kvantum-theme-vimix
 	conflicts = kvantum-theme-vimix
 	conflicts = vimix-kde
-	source = git+https://github.com/vinceliuice/vimix-kde.git#commit=b0641848452c4293a8102d5fae93b34b4ae2e013
+	source = git+https://github.com/vinceliuice/vimix-kde.git
 	sha256sums = SKIP
 
 pkgname = kvantum-theme-vimix-git
