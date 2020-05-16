@@ -13,12 +13,14 @@ source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
 sha256sums=('3a6c5e9273dacdacdcc87ebb9115612242839282a0e0345eb77250a70c814238')
 
 build() {
-    cd $pkgname-$pkgver
-    cmake -D CMAKE_BUILD_TYPE=Release . 
+    mkdir -p $pkgname-$pkgver/build
+    cd $pkgname-$pkgver/build
+
+    cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" ..
     cmake --build .
 }
 
 package() {
-    cd $pkgname-$pkgver
-    cmake --install . --prefix "$pkgdir/usr"
+    cd $pkgname-$pkgver/build
+    cmake --install .
 } 
