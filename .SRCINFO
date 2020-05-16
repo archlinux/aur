@@ -1,11 +1,14 @@
 pkgbase = growl-for-linux
 	pkgdesc = Growl for Linux
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mattn.github.com/growl-for-linux/
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = m4
 	depends = git
 	depends = openssl
 	depends = curl

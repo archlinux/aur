@@ -4,12 +4,13 @@
 
 pkgname=growl-for-linux
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Growl for Linux"
 url="http://mattn.github.com/growl-for-linux/"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('git' 'openssl' 'curl' 'gtk2' 'sqlite3' 'dbus-glib' 'desktop-file-utils')
+makedepends=('autoconf' 'automake' 'm4')
 optdepends=('libnotify')
 conflicts=('growl-for-linux-git')
 options=('!libtool')
