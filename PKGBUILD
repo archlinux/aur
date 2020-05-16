@@ -2,7 +2,7 @@
 
 pkgname=libmp3splt
 pkgver=0.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for splitting mp3 and ogg files without decoding"
 arch=('x86_64')
 url="http://mp3splt.sourceforge.net"
