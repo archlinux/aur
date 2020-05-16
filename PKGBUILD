@@ -4,14 +4,14 @@
 pkgbase=python-debian
 pkgname=('python-debian' 'python2-debian')
 pkgver=0.1.37
-pkgrel=1
+pkgrel=2
 pkgdesc="Python modules to work with Debian-related data formats"
 arch=('any')
 url="http://packages.debian.org/sid/python-debian"
 license=('GPL')
 makedepends=('python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
-source=(http://ftp.debian.org/debian/pool/main/p/$pkgbase/${pkgbase}_$pkgver.tar.xz)
+source=(http://deb.debian.org/debian/pool/main/p/$pkgbase/${pkgbase}_$pkgver.tar.xz)
 sha256sums=('3dbb63f0c38cb80331f1a284b877ff76f2b81b09062f069526bc91b314256706')
 
 package_python-debian() {
