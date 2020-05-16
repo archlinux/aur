@@ -1,0 +1,25 @@
+pkgbase = recapp-git
+	pkgdesc = Simple screen recorder for Linux written in GTK, using only GStreamer.
+	pkgver = 1.0.2.r0.g0c911ee
+	pkgrel = 1
+	url = https://github.com/amikha1lov/RecApp
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	makedepends = intltool
+	makedepends = appstream-glib
+	makedepends = desktop-file-utils
+	makedepends = python
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = hicolor-icon-theme
+	depends = python-pydbus
+	depends = slop
+	depends = python-pulse-control
+	source = recapp-git-1.0.2.r0.g0c911ee::git+https://github.com/amikha1lov/RecApp.git
+	md5sums = SKIP
+
+pkgname = recapp-git
+
