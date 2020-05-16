@@ -1,0 +1,6 @@
+pkg/
+src/
+jumpapp_*.tar.bz2
+jumpapp-*.pkg.tar.xz
+jumpapp-*.pkg.tar.zst
+jumpapp-*.src.tar.gz

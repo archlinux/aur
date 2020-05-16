@@ -1,0 +1,15 @@
+pkgbase = jumpapp
+	pkgdesc = A run-or-raise application switcher for any X11 desktop
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/mkropat/jumpapp
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = xdotool
+	depends = wmctrl
+	source = https://github.com/mkropat/jumpapp/releases/download/v1.1/jumpapp_1.1.tar.bz2
+	sha256sums = 7ef5c616f845040382c6bebcdb8dc31d59f6a3a1bd01669842d02744596c40ec
+
+pkgname = jumpapp
+
