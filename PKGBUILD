@@ -10,7 +10,7 @@ url="https://github.com/google/clspv.git"
 license=('APACHE')
 groups=()
 depends=()
-makedepends=('cmake' 'clang' 'python' 'git' 'spirv-tools' 'spirv-headers')
+makedepends=('cmake'  'python' 'git' 'spirv-tools' 'spirv-headers')
 checkdepends=()
 optdepends=()
 provides=()
@@ -25,12 +25,14 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
+#TODO: Split deps
 build() {
 	cd $_pkgname
 	python utils/fetch_sources.py
 	cd $srcdir
+	CPPFLAGS+=" ${CXXFLAGS}"
 	cmake -B "${_pkgname}/build" \
-        -S "${_pkgname}" \
+	    -S "${_pkgname}" \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
