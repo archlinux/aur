@@ -10,7 +10,6 @@ md5sums=("2746cbe158425396dcf8a4103b93400f")
 options=("!strip")
 install="$pkgname.install"
 prepare() {
-	echo "$srcdir"
 	cd "$srcdir/processing-$pkgver"
 	# These scripts install the .desktop file to the home dir.
 	# This is not needed and takes space.
