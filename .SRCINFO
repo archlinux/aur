@@ -1,0 +1,16 @@
+pkgbase = python-retworkx
+	pkgdesc = A python graph library implemented in Rust.
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/Qiskit/retworkx
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools-rust
+	makedepends = python-pip
+	makedepends = rustup
+	depends = python
+	source = https://pypi.io/packages/source/r/retworkx/retworkx-0.3.4.tar.gz
+	sha512sums = d4bdfba1312ac545d4e567039cc0163652304978d47607f0e4945f7b66ff3ad5a37afbdcf122bfc5c19a888f839cbde38b69b879f9e52589f06a4f716357fce6
+
+pkgname = python-retworkx
+
