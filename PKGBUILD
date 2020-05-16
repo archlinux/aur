@@ -4,8 +4,9 @@
 # Contributor: Marc Mettke <marc@itmettke.de>
 
 pkgname=firefox-kde-opensuse-rpm
- _pkgver=76.0.1-833.1
-pkgver=${_pkgver/-/_0_}
+_ffver=76.0.1
+_revision=835.1
+pkgver=${_ffver}_0_${_revision}
 pkgrel=1
 epoch=2  # Because of update 76.0.1-833.1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE - Binary from OBS"
@@ -28,8 +29,8 @@ optdepends=("networkmanager: Location detection via available WiFi networks"
 provides=("firefox=${pkgver}")
 conflicts=("firefox" "firefox-kde-opensuse")
 options=()
-source=("https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/x86_64/MozillaFirefox-${_pkgver}.x86_64.rpm")
-sha512sums=('ccea48f3f06c5afc5a03dccf5d17071f71af96f3d71c49903228eb6442b263755c0a3bb8e043b70ae1291bd01db38e830d3c219b9eb53d0046077150af3e50b8')
+source=("https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/x86_64/MozillaFirefox-${_ffver}-${_revision}.x86_64.rpm")
+sha512sums=('eb51d9a800de2516f458e52b5d3a4469d0a49a5acf5bab38cfebb49a99bee8656f22c942e719e272d439d97899bcd67a76fae99458947bc4d88698ae961be7cc')
 
 
 package() {
