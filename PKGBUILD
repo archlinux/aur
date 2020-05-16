@@ -7,7 +7,7 @@
 
 pkgname=p7zip
 pkgver=16.02
-pkgrel=5
+pkgrel=6
 pkgdesc="Command-line file archiver with high compression ratio"
 arch=('x86_64')
 url="http://p7zip.sourceforge.net/"
