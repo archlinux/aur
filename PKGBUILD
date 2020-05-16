@@ -1,6 +1,5 @@
 # Maintainer: vitamin1980 <vitamin.novgorod @ yandex.ru>
 # Contributor: McModder <mcmodder @ mcmodder.ru>
-# Contributor: Denis Vadimov <me @ bloody.pw>
 
 _version=78.0a1
 _baseurl="https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/"
