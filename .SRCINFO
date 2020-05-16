@@ -10,7 +10,7 @@ pkgbase = align-git
 	depends = glibc
 	provides = align
 	source = git+https://github.com/Guitarbum722/align
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = align-git
 

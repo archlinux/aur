@@ -12,7 +12,7 @@ provides=('align')
 depends=('glibc')
 makedepends=('git' 'go-pie')
 source=("git+${url}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
