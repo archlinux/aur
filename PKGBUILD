@@ -6,11 +6,11 @@ pkgrel=4
 pkgdesc="Go package to make lightweight ASCII line graph ╭┈╯ in command line apps with no other dependencies"
 arch=('x86_64')
 url='https://github.com/guptarohit/asciigraph'
-license=('MIT')
+license=('BSD')
 depends=('glibc')
 makedepends=('go-pie')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/guptarohit/asciigraph/archive/v${pkgver}.tar.gz")
-md5sums=('6efaf8b04f7f55e4863ce3127aa2308c')
+sha256sums=('5f8dc2e2dcfb253ebc0b23e824a590ae38e20a4d180393d175e25fa0f21d547d')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
