@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.6.12
+pkgver=5.6.13
 pkgrel=4
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -42,30 +42,28 @@ source=(
   "0000-sphinx-workaround.patch"
   "${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/f1107f172c74a9a8550a9e566c525ef28dbc139f.patch"
-  "0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch::https://github.com/archlinux/linux/commit/bb4a15eb06341e6cadc99de418c81375b560af85.patch"
-  "0003-gcc-plugins-drop-support-for-GCC-4.7.patch::https://github.com/archlinux/linux/commit/79a6b30bb7e8e4ef1baffd8adca2ae594781b4ce.patch"
-  "0004-gcc-common.h-Update-for-GCC-10.patch::https://github.com/archlinux/linux/commit/e5d7c52e5b460940175b26075cf86df5fb6b06a2.patch"
-  "0005-Makefile-disallow-data-races-on-gcc-10-as-well.patch::https://github.com/archlinux/linux/commit/9d03a04a2d7097afd3c177e8125e7b65e2d26102.patch"
-  "0006-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch::https://github.com/archlinux/linux/commit/0cf3349234df93705eb0b24070e91c8132de42b7.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/2efb3d95a5e8a14c097d570a61751f36d0be5215.patch"
+  "0002-gcc-plugins-drop-support-for-GCC-4.7.patch::https://github.com/archlinux/linux/commit/5dd873b339bffa037dafd0188375fc13564bbe93.patch"
+  "0003-gcc-common.h-Update-for-GCC-10.patch::https://github.com/archlinux/linux/commit/fbe2e575df0f88daa156069cf66c3db0ebc64e7a.patch"
+  "0004-Makefile-disallow-data-races-on-gcc-10-as-well.patch::https://github.com/archlinux/linux/commit/e33336e058bdd4e109c9131bb13584ccb1b5e15d.patch"
+  "0005-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch::https://github.com/archlinux/linux/commit/53e90d763b7fe8bec6a0c86b6813131cd8e25026.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('daea336aace63a9116475b3f698e259073c00bea57a2a545300dba1c45562221'
+sha256sums=('f125d79c8f6974213638787adcad6b575bbd35a05851802fd83f622ec18ff987'
             'SKIP'
             'b97b4b90f51876aaa4fa910e1ce801552f7e086aec3026a64f406581beae791b'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
             '1b95d36635c7dc48ce45a33d6b1f4eb6d34f51600901395d28fd22f28daee8e9'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
-            '1028cdba87974e9e82cc7947125dfbf80866302f6072382794430287001a9b0e'
-            '174813a3fb9dff6db6ea03001f4dbb896ee5c5e1cd5d164c3f188564f5a5ef1c'
-            '02f9c5818aae3673d42280a559cd81a3149458b81ef3f7ff4f7b9c7ccbd32593'
-            '43a4fb80f5a413869678b8bc3613880dd195d25d3af84e3e6fe568039cef0bbe'
-            'ae670c66ac65f42a3937a7a0c7d5d774b3f069f5a70a3781a4a18c274b04dffd'
-            'ba3d3502cb94b9f33428607ed55ec36bf4dc6574c523423f0af9aaafb3acdf6b')
+            '07a91ff0d35877c8101f00b8c25339c9fb3b6c3c53a974d47a46344861d3459c'
+            '766fbe4f1f1ae001887e0d38e82ab9a7c0fabf1f75df4716c3356c5669f799ed'
+            '2a3a9ce012dc67d66745381297a9263383341693cd5e7097fb5de2b1e520227c'
+            '4c8f34faee5850db098a6bb75211b5947445870c301e2bb46cd49a81fcc60462'
+            '5e4de3bfb203e676dac8c704f77bb8e6fb471f190bc2bdf33f57c5318be0d92a')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -92,7 +90,6 @@ prepare() {
 
   echo "Applying patch ${_bmq_patch}..."
   patch -Np1 -i "$srcdir/${_bmq_patch}"
-
 
   echo "Setting config..."
   cp ../config .config
