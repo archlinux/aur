@@ -1,11 +1,13 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=aml-git
 pkgdesc="Another/Andri's Main Loop"
-pkgver=r87.b9a971a
+pkgver=r103.972e0c0
 pkgrel=1
 url=https://github.com/any1/aml
 arch=(x86_64)
 makedepends=(meson ninja git)
+provides=(aml)
+conflicts=(aml)
 depends=(glibc)
 license=(custom:ISC)
 source=("${pkgname}::git+${url}")
