@@ -1,11 +1,10 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=say
-pkgname=("lua-$_rockname" "lua52-$_rockname")
-# TODO: restore "lua51-$_rockname" above when conflicting AUR package removed
+pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=1.3
 _rockrel=1
-pkgrel=4
+pkgrel=5
 pkgdesc='Lua String Hashing/Indexing Library'
 arch=('any')
 url="https://github.com/Olivine-Labs/$_rockname"
