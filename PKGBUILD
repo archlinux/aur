@@ -1,9 +1,10 @@
-# Maintainer: Joseph Carta <cartakid@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Joseph Carta <cartakid@gmail.com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: minder
 
 pkgname=python37-pillow
-pkgver=6.2.1
+pkgver=7.1.1
 pkgrel=1
 _appname=Pillow
 _py3basever=3.7
@@ -20,7 +21,7 @@ optdepends=('freetype2: for the ImageFont module'
             'python-pyqt5: for the ImageQt module')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/P/$_appname/$_appname-$pkgver.tar.gz")
-md5sums=('13acde283ece6ac69f62609fa108d316')
+md5sums=('89376efa86d0dd89af587631854c82c8')
 
 prepare() {
   cd "$srcdir/$_appname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = python37-pillow
 	pkgdesc = Python Imaging Library (PIL) fork. Python3.7 version.
-	pkgver = 6.2.1
+	pkgver = 7.1.1
 	pkgrel = 1
 	url = https://python-pillow.github.io/
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = python37-pillow
 	optdepends = tk: for the ImageTK module
 	optdepends = python-olefile: OLE2 file support
 	optdepends = python-pyqt5: for the ImageQt module
-	source = https://files.pythonhosted.org/packages/source/P/Pillow/Pillow-6.2.1.tar.gz
-	md5sums = 13acde283ece6ac69f62609fa108d316
+	source = https://files.pythonhosted.org/packages/source/P/Pillow/Pillow-7.1.1.tar.gz
+	md5sums = 89376efa86d0dd89af587631854c82c8
 
 pkgname = python37-pillow
 
