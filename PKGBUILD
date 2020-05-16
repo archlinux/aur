@@ -4,7 +4,7 @@
 
 pkgname=libchamplain
 pkgver=0.12.20
-pkgrel=1
+pkgrel=2
 pkgdesc="A map widget"
 url="https://wiki.gnome.org/Projects/libchamplain"
 license=(LGPL)
