@@ -1,6 +1,6 @@
 pkgbase = anydesk-debian
 	pkgdesc = 'AnyDesk Free' is an All-In-One Software for Remote Support (Debian based package)
-	pkgver = 5.5.5
+	pkgver = 5.5.6
 	pkgrel = 1
 	url = https://anydesk.de
 	arch = i686
@@ -32,10 +32,10 @@ pkgbase = anydesk-debian
 	replaces = anydesk
 	source = anydesk.sh
 	sha256sums = 2368b0011fc52cbb4cf8013436628d25db3a86b35ae9a04868e221656a0f77a3
-	source_i686 = https://download.anydesk.com/linux/anydesk_5.5.5-1_i386.deb
-	sha256sums_i686 = 9fb0b1b63c225ce12bc53b3d5af32e1159913ec624c1e3777c931df61e9f9a52
-	source_x86_64 = https://download.anydesk.com/linux/anydesk_5.5.5-1_amd64.deb
-	sha256sums_x86_64 = 24dc25e7d442b06ddb7e3b5cfa76383c430fe9f42bfedb5a5c445e17821c6a61
+	source_i686 = https://download.anydesk.com/linux/anydesk_5.5.6-1_i386.deb
+	sha256sums_i686 = 1201c3334ac16f8889782f4c9e24936afd18dad08d310767c8381ae69670d331
+	source_x86_64 = https://download.anydesk.com/linux/anydesk_5.5.6-1_amd64.deb
+	sha256sums_x86_64 = 2739b8a66cb2673d784eb0ee0bb4534ee47fb3291302fe33948766cd25278b85
 
 pkgname = anydesk-debian
 
