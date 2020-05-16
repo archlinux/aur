@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=ddns-updater-git
-pkgver=r154.6a3c280
+pkgver=r164.af68f9b
 pkgrel=1
 pkgdesc="Lightweight scratch container updating DNS A records periodically for GoDaddy, Namecheap and DuckDNS"
 arch=('x86_64')

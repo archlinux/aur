@@ -1,6 +1,6 @@
 pkgbase = ddns-updater-git
 	pkgdesc = Lightweight scratch container updating DNS A records periodically for GoDaddy, Namecheap and DuckDNS
-	pkgver = r154.6a3c280
+	pkgver = r164.af68f9b
 	pkgrel = 1
 	url = https://github.com/qdm12/ddns-updater
 	arch = x86_64
