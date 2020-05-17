@@ -1,7 +1,7 @@
-From f56f33917f418568141184eb2503ec65309a8255 Mon Sep 17 00:00:00 2001
+From 169ce1a1bf376ba90cd0ab51ec19f9e32ead9dcb Mon Sep 17 00:00:00 2001
 From: Mark Weiman <mark.weiman@markzz.com>
-Date: Thu, 13 Dec 2018 13:15:16 -0500
-Subject: [PATCH] pci: Enable overrides for missing ACS capabilities (4.18)
+Date: Wed, 6 May 2020 15:40:50 -0400
+Subject: [PATCH] pci: Enable overrides for missing ACS capabilities (5.6.9+)
 
 This an updated version of Alex Williamson's patch from:
 https://lkml.org/lkml/2013/5/30/513
@@ -50,7 +50,7 @@ your customers the hassle of this boot option.
  2 files changed, 110 insertions(+)
 
 diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-index 0c404cda531a..0d45f0014f4a 100644
+index 20aac805e197..e625ef816cf7 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
 @@ -3472,6 +3472,14 @@
@@ -69,7 +69,7 @@ index 0c404cda531a..0d45f0014f4a 100644
  				Safety option to keep boot IRQs enabled. This
  				should never be necessary.
 diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index fbeb9f73ef28..3bf409c65609 100644
+index ca9ed5774eb1..4567b0e8f2de 100644
 --- a/drivers/pci/quirks.c
 +++ b/drivers/pci/quirks.c
 @@ -192,6 +192,106 @@ static int __init pci_apply_final_quirks(void)
@@ -187,6 +187,7 @@ index fbeb9f73ef28..3bf409c65609 100644
 +	{ PCI_ANY_ID, PCI_ANY_ID, pcie_acs_overrides },
  	{ 0 }
  };
+ 
+-- 
+2.26.2
 
---
-5.6.10
