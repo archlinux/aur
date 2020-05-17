@@ -44,7 +44,8 @@ prepare() {
   sed -i "s|const char \*const version;|extern const char \*const version;|g" Docs/src/bin/halibut/halibut.h
 
   # stub_bzip2-x86-ansi/decompress.o:decompress.c:(.text+0x445): undefined reference to `memmove'
-  sed -i "s|defenv\['NODEFLIBS_FLAG'\] =|#defenv\['NODEFLIBS_FLAG'\] =|g" SCons/Config/gnu
+  sed -i "s|ole32|ole32 msvcrt|g" Source/exehead/SConscript
+  sed -i "s|advapi32|advapi32 msvcrt|g" Contrib/nsExec/SConscript
 }
 
 build() {
