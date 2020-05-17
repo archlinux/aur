@@ -3,7 +3,6 @@ pkgbase = nsis
 	pkgver = 3.05
 	pkgrel = 1
 	url = http://nsis.sourceforge.net
-	arch = i686
 	arch = x86_64
 	license = custom:zlib
 	makedepends = scons
