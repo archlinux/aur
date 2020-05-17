@@ -2,7 +2,7 @@
 
 pkgname=dell-mgmtstat
 pkgver=9.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Dell OpenManage iDRAC Linux Remote Access Utilities (RACADM)"
 arch=(x86_64)
 url='http://en.community.dell.com/techcenter/systems-management/w/wiki/1760.openmanage-server-administrator-omsa'
@@ -39,7 +39,7 @@ package() {
   _reloc usr/lib64  usr/lib
 
   mkdir -p "$pkgdir/usr/bin"
-  n -s "/opt/dell/srvadmin/bin/idracadm7" "$pkgdir/usr/bin/racadm"
+  ln -s "/opt/dell/srvadmin/bin/idracadm7" "$pkgdir/usr/bin/racadm"
 
   msg2 "Removing crud"
   rm -vf "$pkgdir/usr/lib/udev/rules.d/95-dataeng-udev.rules"
