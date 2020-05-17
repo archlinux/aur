@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-carla
+	pkgdesc = Carla
+	pkgver = 5399.cfa1bf23e
+	pkgrel = 1
+	url = http://kxstudio.sf.net/carla
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	depends = mingw-w64-winpthreads
+	depends = mingw-w64-libsndfile
+	depends = mingw-w64-libvorbis
+	depends = mingw-w64-fluidsynth
+	depends = mingw-w64-pkg-config
+	source = mingw-w64-carla::git://github.com/falkTX/Carla.git
+	md5sums = SKIP
+
+pkgname = mingw-w64-carla
+
