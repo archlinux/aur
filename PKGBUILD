@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=flutter-git
-pkgver=1.4.19.r2.27b058a414
+pkgver=1.19.0.1.0.pre.r83.8abf0a6d8c
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
@@ -52,6 +52,7 @@ build() {
 }
 
 package() {
+  rm -rf "${srcdir}/${pkgname%-git}/bin/cache" "${srcdir}/${pkgname%-git}/.pub-cache"
   install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/etc/profile.d/${pkgname%-git}.sh"
   install -Dm755 "${srcdir}/${pkgname%-git}.csh" "${pkgdir}/etc/profile.d/${pkgname%-git}.csh"
@@ -60,6 +61,6 @@ package() {
   cp -ra "${srcdir}/${pkgname%-git}" "${pkgdir}/opt/"
   find "${pkgdir}/opt/${pkgname%-git}" -type d -exec chmod a+rx {} +
   find "${pkgdir}/opt/${pkgname%-git}" -type f -exec chmod a+r {} +
-  chmod a+rw "${pkgdir}/opt/${pkgname%-git}/bin/cache/lockfile" "${pkgdir}/opt/${pkgname%-git}/version"
+  chmod a+rw "${pkgdir}/opt/${pkgname%-git}/version"
   ln -s "/opt/${pkgname%-git}/bin/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
 }
