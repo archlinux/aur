@@ -1,12 +1,13 @@
 pkgbase = cpu-x-git
 	pkgdesc = A Free software that gathers information on CPU, motherboard and more
-	pkgver = 3.2.4.r250.g9844a05
+	pkgver = 4.0.0.r2.gbfb09b7
 	pkgrel = 1
 	url = http://X0rg.github.io/CPU-X/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = nasm
 	depends = gtk3
 	depends = ncurses
@@ -18,7 +19,7 @@ pkgbase = cpu-x-git
 	options = !strip
 	options = debug
 	source = git+https://github.com/X0rg/CPU-X.git
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = cpu-x-git
 
