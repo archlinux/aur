@@ -1,6 +1,7 @@
 # Maintainer: Jeremy Kescher <jeremy@kescher.at>
 # Contributor: Benjamin Maisonnas <ben@wainei.net>
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Contributor: Rebin Silva <rebinsilva@gmail.com>
 
 pkgname=vkd3d-valve-git
 pkgver=1.1.r1050.ge6bd3cb
