@@ -2,12 +2,12 @@
 
 pkgname=dovecot-xaps-plugin-git
 _gitname=dovecot-xaps-plugin
-pkgver=69.3d1c71e
+pkgver=0.8
 pkgrel=1
 pkgdesc='iOS Push Email for Dovecot - dovecot plugin'
 arch=('any')
 url='https://github.com/st3fan/dovecot-xaps-plugin'
-license=('MIT')
+license=('custom:MIT')
 depends=('dovecot' 'dovecot-xaps-daemon')
 makedepends=('git' 'cmake')
 provides=('dovecot-xaps-plugin')
@@ -17,17 +17,22 @@ b2sums=('SKIP')
 
 pkgver() {
   cd ${_gitname}
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  echo $(git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
+}
+
+prepare() {
+  cd ${_gitname}
+  cmake -B build -DCMAKE_BUILD_TYPE=Release
 }
 
 build() {
-  mkdir -p ${_gitname}/build
   cd ${_gitname}/build
-  cmake .. -DCMAKE_BUILD_TYPE=Release
+  make
 }
 
 package() {
   cd ${_gitname}/build
   make DESTDIR="${pkgdir}" install
   install -Dm644 "${srcdir}"/${_gitname}/xaps.conf "${pkgdir}"/usr/share/doc/dovecot/example-config/conf.d/30-xaps.conf
+  install -Dm644 -t "${pkgdir}"/usr/share/licenses/${pkgname}/ "${srcdir}"/${_gitname}/LICENSE
 }
