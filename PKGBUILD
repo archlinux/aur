@@ -1,15 +1,15 @@
 # Maintainer: Jesse Luehrs <doy@tozt.net>
 pkgname=rbw-bin
 _name=${pkgname%-*}
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 depends=('pinentry' 'openssl')
 conflicts=('rbw-git' 'rbw')
 provides=('rbw')
 arch=('x86_64')
 url="https://git.tozt.net/${_name}"
 source=(https://git.tozt.net/rbw/releases/deb/${_name}_${pkgver}_amd64.deb)
-sha256sums=('16ee1885942c12cc2d3ad80ea652328e7f7f37559c4ae3e81d8b857d3fd03f7a')
+sha256sums=('3224d5596e4e3955fe4b3496e70c7e102de3d2d20783ba23d815a6b9650e8521')
 pkgdesc="unofficial bitwarden cli"
 license=('MIT')
 
