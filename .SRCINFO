@@ -1,6 +1,6 @@
 pkgbase = distccd-alarm
 	pkgdesc = Official toolchain for Arch ARM builds via distcc on x86_64 volunteers
-	pkgver = 9.3.020200428
+	pkgver = 9.3.0.20200428
 	pkgrel = 1
 	url = https://archlinuxarm.org/wiki/Distcc_Cross-Compiling
 	arch = x86_64

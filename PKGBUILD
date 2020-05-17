@@ -7,7 +7,7 @@ _subarchs=(armv5 armv6h armv7h armv8)
 pkgname=("${_subarchs[@]/#/$pkgbase-}")
 _date=20200428
 # inspect source tarball under $name/share/gcc-x.y.z
-pkgver=9.3.0$_date
+pkgver=9.3.0.$_date
 pkgrel=1
 _pkgrel_upstream=1
 #_URL="https://archlinuxarm.org/builder/xtools/$pkgver-$pkgrel"
