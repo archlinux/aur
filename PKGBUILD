@@ -9,7 +9,7 @@ url="https://github.com/1adrianb/face-alignment"
 license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
-source=(https://pypi.python.org/packages/source/${pkgname::1}/${pkgname#python-}/${_pkgname}-$pkgver.tar.gz)
+source=(https://pypi.python.org/packages/source/${_pkgname::1}/${pkgname#python-}/${_pkgname}-$pkgver.tar.gz)
 sha256sums=('558c2b688c6ab40580da2e55f7d17911acd787aa6af3fafe5f94549a9600e02e')
 
 build() {
