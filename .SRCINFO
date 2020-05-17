@@ -1,16 +1,18 @@
 pkgbase = open-ecard-git
 	pkgdesc = Open eCard-App (opencard) is an open source alternative of the AusweisApp
-	pkgver = 2085.e4a1e9e7
+	pkgver = 1.4.1.r4.g35cab3392
 	pkgrel = 1
 	url = https://www.openecard.org
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = maven
-	makedepends = jdk8-openjdk
-	depends = jre8-openjdk
+	makedepends = java-environment>=12
+	depends = java-runtime>=11
 	depends = pcsclite
-	source = git://github.com/ecsec/open-ecard.git
+	provides = open-ecard
+	conflicts = open-ecard
+	source = git+https://github.com/ecsec/open-ecard.git
 	source = startscript
 	b2sums = SKIP
 	b2sums = e3046a9ae478221274ac425ed7afb7bd2c6d21204f8e4e6c46256f8db45d7f4438a62027f6fff86013e3d1ba099b6cade3aff05dd49f3409ab467e438e98cdcd
