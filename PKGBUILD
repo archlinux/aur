@@ -1,4 +1,5 @@
-# Maintainer: Julian DeMille <julian.demille@demilletech.net>
+# Maintainer: Kaare Jenssen <kaare@jenssen.it>
+# Contributor: Julian DeMille <julian.demille@demilletech.net>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Chris Dunder <cdunder@gmail.com>
 # Contributor: M Rawash <mrawash@gmail.com>
@@ -10,15 +11,14 @@
 # Contributor: sidereus <francesco.serafin.3@gmail.com>
 
 pkgname=stumpwm
-pkgver=18.11
+pkgver=19.11
 pkgrel=2
 pkgdesc='Tiling, keyboard-driven window manager written in Common Lisp'
 arch=('x86_64')
 url='https://stumpwm.github.io/'
 license=('GPL2')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz" "read-one-line.patch::https://github.com/stumpwm/stumpwm/commit/a13db62a4da06426cf2eb2376d1a3723b5ee52d5.patch")
-sha256sums=('6968f35e100f0d65af58d2bebfa97fd0fe1b6775a6c397598a470446a6ebef9c'
-            '5cf689cfde97c779c84dd475952b1ebb603038d89c03593e568769463a0be765')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('b21b0294d664371b404b061be10055289cab4a13e6d50ef0385d7d89b14bf3ef')
 makedepends=('cl-asdf' 'cl-ppcre' 'clx-git' 'common-lisp' 'cl-alexandria-git')
 optdepends=('xorg-xprop: for stumpish, the StumpWM Interactive Shell'
             'rlwrap: command completion and history in stumpish'
@@ -26,13 +26,11 @@ optdepends=('xorg-xprop: for stumpish, the StumpWM Interactive Shell'
             'alsa-utils: control the volume with amixer.lisp'
             'aumix: control the volume with aumix.lisp'
             'mpd: control mpd with mpd.lisp'
-            'surfraw: surf the internet with surfraw.lisp'
-            'clx-truetype: Xgt fonts with ttf-fonts.lisp')
+            'surfraw: surf the internet with surfraw.lisp')
 options=('!strip' '!makeflags')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  patch --forward --strip=1 --input="${srcdir}/read-one-line.patch"
   autoconf
 }
 

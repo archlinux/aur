@@ -1,6 +1,6 @@
 pkgbase = stumpwm
 	pkgdesc = Tiling, keyboard-driven window manager written in Common Lisp
-	pkgver = 18.11
+	pkgver = 19.11
 	pkgrel = 2
 	url = https://stumpwm.github.io/
 	arch = x86_64
@@ -17,13 +17,10 @@ pkgbase = stumpwm
 	optdepends = aumix: control the volume with aumix.lisp
 	optdepends = mpd: control mpd with mpd.lisp
 	optdepends = surfraw: surf the internet with surfraw.lisp
-	optdepends = clx-truetype: Xgt fonts with ttf-fonts.lisp
 	options = !strip
 	options = !makeflags
-	source = stumpwm-18.11.tar.gz::https://github.com/stumpwm/stumpwm/archive/18.11.tar.gz
-	source = read-one-line.patch::https://github.com/stumpwm/stumpwm/commit/a13db62a4da06426cf2eb2376d1a3723b5ee52d5.patch
-	sha256sums = 6968f35e100f0d65af58d2bebfa97fd0fe1b6775a6c397598a470446a6ebef9c
-	sha256sums = 5cf689cfde97c779c84dd475952b1ebb603038d89c03593e568769463a0be765
+	source = stumpwm-19.11.tar.gz::https://github.com/stumpwm/stumpwm/archive/19.11.tar.gz
+	sha256sums = b21b0294d664371b404b061be10055289cab4a13e6d50ef0385d7d89b14bf3ef
 
 pkgname = stumpwm
 
