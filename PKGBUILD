@@ -1,8 +1,8 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=vulkan-caps-viewer
-pkgver=2.03a
-pkgrel=2
+pkgver=2.04
+pkgrel=1
 pkgdesc='Vulkan Hardware Capability Viewer'
 url='http://vulkan.gpuinfo.org/'
 arch=('x86_64')
