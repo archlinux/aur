@@ -18,6 +18,8 @@ arch=('x86_64')
 url='https://github.com/microsoft/vscode'
 license=('MIT')
 depends=($_electron 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
+conflicts=('code'
+           'code-git')
 optdepends=('bash-completion: Bash completions'
             'zsh-completions: ZSH completitons'
             'x11-ssh-askpass: SSH authentication')
@@ -124,15 +126,15 @@ build() {
 
 package() {
   # Install resource files
-  install -dm 755 "$pkgdir"/usr/lib/$pkgname
-  cp -r --no-preserve=ownership --preserve=mode VSCode-linux-$_vscode_arch/resources/app/* "$pkgdir"/usr/lib/$pkgname/
+  install -dm 755 "$pkgdir"/usr/lib/code
+  cp -r --no-preserve=ownership --preserve=mode VSCode-linux-$_vscode_arch/resources/app/* "$pkgdir"/usr/lib/code/
 
   # Replace statically included binary with system copy
   ln -sf /usr/bin/rg "$pkgdir"/usr/lib/code/node_modules.asar.unpacked/vscode-ripgrep/bin/rg
 
   # Install binary
   install -Dm 755 code.sh "$pkgdir"/usr/bin/code-oss
-  install -Dm 755 code.js "$pkgdir"/usr/lib/$pkgname/code.js
+  install -Dm 755 code.js "$pkgdir"/usr/lib/code/code.js
   ln -sf /usr/bin/code-oss "$pkgdir"/usr/bin/code
 
   # Install appdata and desktop file
@@ -148,7 +150,7 @@ package() {
   install -Dm 644 $pkgname/resources/completions/zsh/_code-oss "$pkgdir"/usr/share/zsh/site-functions/_code-oss
 
   # Install license files
-  install -Dm 644 VSCode-linux-$_vscode_arch/resources/app/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  install -Dm 644 VSCode-linux-$_vscode_arch/resources/app/ThirdPartyNotices.txt "$pkgdir"/usr/share/licenses/$pkgname/ThirdPartyNotices.txt
+  install -Dm 644 VSCode-linux-$_vscode_arch/resources/app/LICENSE.txt "$pkgdir"/usr/share/licenses/code/LICENSE
+  install -Dm 644 VSCode-linux-$_vscode_arch/resources/app/ThirdPartyNotices.txt "$pkgdir"/usr/share/licenses/code/ThirdPartyNotices.txt
 }
 
