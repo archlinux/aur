@@ -2,24 +2,26 @@
 # Contributor: José Luis Lafuente <jl@lafuente.me>
 
 pkgname=pass-sshaskpass-git
-pkgver=0.0.1
-pkgrel=3
+pkgver=18.698346b
+pkgrel=1
 pkgdesc='Get ssh passphrase from pass'
 url='https://github.com/jlesquembre/pass-sshaskpass'
 license=('GPLv2')
 arch=('any')
 depends=('pass' 'zenity')
 makedepends=('git')
-source=("git+https://github.com/jlesquembre/${pkgname}.git")
+provides=('pass-sshaskpass')
+conflicts=('pass-sshaskpass')
+source=("git+https://github.com/jlesquembre/${pkgname%-git}.git")
 b2sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd ${pkgname%-git}
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 package() {
-  cd ${pkgname}
+  cd ${pkgname%-git}
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/etc
 }
