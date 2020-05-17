@@ -14,6 +14,7 @@ pkgbase = srb2kart
 	depends = libpng
 	depends = libgme
 	depends = srb2kart-data>=1.2
+	depends = curl
 	options = !buildflags
 	source = git+https://github.com/STJr/Kart-Public.git#tag=v1.2
 	source = https://github.com/STJr/Kart-Public/releases/download/v1.2/srb2kart-v12-patch.zip
