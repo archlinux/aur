@@ -1,15 +1,12 @@
-# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
-# Contributor: Andre Klitzing <andre () incubo () de>
-
 pkgname=nsis2
 pkgver=2.51
 pkgrel=1
 pkgdesc='A professional open source system to create Windows installers'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://nsis.sourceforge.net'
 license=('custom:zlib')
 depends=('gcc-libs')
-makedepends=('scons' 'mingw-w64-gcc')
+makedepends=('python2-scons' 'mingw-w64-gcc')
 provides=('nsis')
 conflicts=('nsis')
 options=(!strip)
@@ -42,15 +39,21 @@ prepare() {
 
   # https://github.com/kichik/nsis/pull/4
   sed -i "s|__attribute__((__stdcall__))|\"__attribute__((__stdcall__))\"|g" SCons/Config/gnu
+
+  # https://github.com/kichik/nsis/pull/12
+  sed -i "s|const char \*const version;|extern const char \*const version;|g" Docs/src/bin/halibut/halibut.h
+
+  # stub_bzip2-x86-ansi/decompress.o:decompress.c:(.text+0x445): undefined reference to `memmove'
+  sed -i "s|defenv\['NODEFLIBS_FLAG'\] =|#defenv\['NODEFLIBS_FLAG'\] =|g" SCons/Config/gnu
 }
 
 build() {
   cd "$srcdir/nsis-$pkgver-src"
-  scons VERSION=$pkgver PREFIX=/usr PREFIX_CONF=/etc SKIPUTILS='NSIS Menu' STRIP_CP=false
+  scons2 VERSION=$pkgver PREFIX=/usr PREFIX_CONF=/etc SKIPUTILS='NSIS Menu' STRIP_CP=false
 }
 
 package() {
   cd "$srcdir/nsis-$pkgver-src"
-  scons VERSION=$pkgver PREFIX=/usr PREFIX_CONF=/etc SKIPUTILS='NSIS Menu' STRIP_CP=false PREFIX_DEST="$pkgdir" install
+  scons2 VERSION=$pkgver PREFIX=/usr PREFIX_CONF=/etc SKIPUTILS='NSIS Menu' STRIP_CP=false PREFIX_DEST="$pkgdir" install
   install -Dm644 ${srcdir}/nsis-$pkgver-src/Docs/src/license.but "$pkgdir/usr/share/licenses/nsis/LICENSE"
 }
