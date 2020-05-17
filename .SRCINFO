@@ -1,7 +1,7 @@
 pkgbase = srb2kart
 	pkgdesc = A kart racing mod based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2, based on a modified version of Doom Legacy.
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mb.srb2.org/showthread.php?t=43708
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = srb2kart
 	depends = libpng
 	depends = libgme
 	depends = srb2kart-data>=1.2
-	depends = curl
 	options = !buildflags
 	source = git+https://github.com/STJr/Kart-Public.git#tag=v1.2
 	source = https://github.com/STJr/Kart-Public/releases/download/v1.2/srb2kart-v12-patch.zip

@@ -5,12 +5,12 @@ pkgname=srb2kart
 pkgver=1.2
 _dataver=1.2
 _patchver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A kart racing mod based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2, based on a modified version of Doom Legacy.'
 arch=('i686' 'x86_64')
 license=('GPL2')
 url='https://mb.srb2.org/showthread.php?t=43708'
-depends=('sdl2' 'sdl2_mixer' 'libpng' 'libgme' "srb2kart-data>=$_dataver" 'curl')
+depends=('sdl2' 'sdl2_mixer' 'libpng' 'libgme' "srb2kart-data>=$_dataver")
 makedepends=('mesa' 'glu' 'git')
 makedepends_i686=('nasm')
 options=(!buildflags) 
@@ -27,6 +27,10 @@ prepare() {
   # Remove mdls directory or it will fail to be removed later on
   find "$srcdir"/mdls -type d -exec chmod 755 {} \;
   rm -r "$srcdir"/mdls
+
+  # Fix compilation issue with gcc 10
+  cd "$srcdir"/Kart-Public/src	
+  sed '1iCFLAGS=-fcommon' -i Makefile
 }
 
 build() {
@@ -41,9 +45,6 @@ package() {
   [ "$CARCH" == "x86_64" ] && IS64BIT="64" || IS64BIT=""
   install -Dm755 "$srcdir"/Kart-Public/bin/Linux$IS64BIT/Release/lsdl2srb2kart \
     "$pkgdir"/usr/bin/srb2kart
-
-  # data patch 1.1 → 1.2,
-  install -Dm644 patch.kart "$pkgdir"/usr/share/games/SRB2Kart/patch.kart
 
   # icon + .desktop
   install -Dm644 "$srcdir"/Kart-Public/src/sdl/SDL_icon.xpm \
