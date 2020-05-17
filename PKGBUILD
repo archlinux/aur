@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=wordpress-plugin-wp-gdpr
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Making your website ready for the GDPR"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('wordpress')
 makedepends=()
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.wordpress.org/plugin/wp-gdpr-core.${pkgver}.zip")
-sha512sums=("6920228f9cf2513a52cd762c0d03ad1f6f663963acacbfddd691c9b53be1b4e8a24cf8440774dfda89782d8765490d3c9b08d8b8ca5dfbb9730b278a6ddcabe4")
+sha512sums=('3f381aba1a99091b30d96fc828120cefbe03b9251b1d75b078729b06113df93f406e73316bd65d655250aa2f5868f5a49b9d7b16720f7adcbf3791a1cc892b95')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/wordpress/wp-content/plugins"
