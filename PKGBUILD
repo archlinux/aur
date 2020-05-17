@@ -5,8 +5,8 @@
 # Contributor: M0Rf30
 
 pkgname=virtualbox-bin
-pkgver=6.1.6
-_build=137129
+pkgver=6.1.8
+_build=137981
 _rev=83509
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
@@ -40,8 +40,8 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         'dkms.conf'
         '013-Makefile.patch')
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
-sha256sums=('d76ac2b82b359d5b7cba2d4727b909c380de2f9e1ce656bf76789ea09a3f2489'
-            'f1f718aa3cec3d23d43b589915dfdc05dd2fc9dd9f3bdd62f0145e768fa2bbea'
+sha256sums=('43e4b8e75c811acacf03d543c9b310ec97f15a08012f29c04f1439a2b4f9f189'
+            'db5c4b82054b8020ae9f4d19a9fda93a3881e77969a2e340f6dda1ec308f974a'
             '61eab70173ec0c4959ec3b8bf9fa19cfac49bb223a0bb041fe12aa14742db15a'
             'f54c38e2d112e0221daa1ddd563a260d18d7d510c485a7d27c317d379e06ff79'
             '2ef58e7f24ed9114dbf29dfa77372b5e15962a2244315ffbfb592cdc10920ad8'
