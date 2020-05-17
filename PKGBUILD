@@ -1,8 +1,8 @@
 # Maintainer: Christian Karl <karlch at protonmail dot com>
 
 pkgname=vimiv-qt
-pkgrel=2
-pkgver=0.6.1
+pkgrel=1
+pkgver=0.7.0
 pkgdesc='An image viewer with vim-like keybindings'
 arch=('any')
 url='https://github.com/karlch/vimiv-qt'
@@ -17,7 +17,7 @@ optdepends=(
 conflicts=('vimiv' 'vimiv-git' 'vimiv-qt-git')
 provides=('vimiv')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('fc2ff23ec1d3bd06f8a10a41d0ca0fe8105fa7a23cd0499e0af0d82810713b68')
+sha256sums=('67ae2e1213f0c5b28f3c7407326b679e1643d1d0a049a87602abaef85315b35f')
 
 package() {
     cd "$pkgname-$pkgver"
