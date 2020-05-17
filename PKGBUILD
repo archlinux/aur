@@ -13,19 +13,27 @@
 #
 
 pkgname=('dell-drac-mibs')
-pkgver=8.5.A00
+pkgver=9.4.0
 pkgrel=1
 pkgdesc='SNMP MIBs for Dell iDRAC remote management controllers'
 arch=('any')
-url='https://www.dell.com/support/home/au/en/audhs1/drivers/driversdetails?driverId=YKG8D'
+url='https://www.dell.com/support/home/en-au/drivers/driversdetails?driverid=cfpyt'
 license=('custom:dell')
 depends=('net-snmp')
 makedepends=('unzip')
-source=('https://downloads.dell.com/FOLDER04163334M/1/Dell-OM-MIBS-850_A00.zip')
-md5sums=('42b0e80220fc7ffb5d6d5e711cb54268')
-sha256sums=('557a853bd63436bb1391d7626092ea05c1b9f30cc45687e287412b198b58b6d4')
+source=('https://dl.dell.com/FOLDER06009600M/1/Dell-OM-MIBS-940_A00.zip')
+md5sums=('37457f62bd6e1d66d952d7c7ac788dc6')
+sha256sums=('943dfd24cd64eb5e300d33d115f20dbdfc314590d6747c954e076c22cb974407')
 
 package() {
+	numfiles=(Dell*.zip)
+	numfiles=${#numfiles[@]}
+	if [ "$numfiles" -gt 1 ]; then
+		error "Please remove the src/ folder left over from a previous build"
+		exit 1
+	fi
 	unzip -jo Dell*.zip
-	install -Dm0644 *.mib -t "$pkgdir/usr/share/snmp/mibs/"
+	install -Dm0644 *.mib *.txt -t "$pkgdir/usr/share/snmp/mibs/"
+	rm "$pkgdir/usr/share/snmp/mibs/"*readme*
+	install -Dm0644 *readme* -t "$pkgdir/usr/share/doc/dell-drac-mibs/"
 }
