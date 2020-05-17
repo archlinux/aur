@@ -1,0 +1,13 @@
+diff --git i/Documentation/conf.py w/Documentation/conf.py
+index 3c7bdf4cd31f..9a0ced58a3e9 100644
+--- i/Documentation/conf.py
++++ w/Documentation/conf.py
+@@ -34,7 +34,7 @@
+ # Add any Sphinx extension module names here, as strings. They can be
+ # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
+ # ones.
+-extensions = ['kerneldoc', 'rstFlatTable', 'kernel_include', 'cdomain', 'kfigure', 'sphinx.ext.ifconfig']
++extensions = ['kerneldoc', 'rstFlatTable', 'kernel_include', 'kfigure', 'sphinx.ext.ifconfig']
+
+ # The name of the math extension changed on Sphinx 1.4
+ if (major == 1 and minor > 3) or (major > 1):
