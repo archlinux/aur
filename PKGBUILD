@@ -2,7 +2,7 @@
 
 pkgname=flutter-dev
 pkgver=1.19.0_1.0.pre
-pkgrel=1
+pkgrel=2
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
 url="https://${pkgname%-dev}.io"
@@ -43,6 +43,7 @@ build() {
 }
 
 package() {
+  rm -rf "${srcdir}/${pkgname%-dev}/bin/cache" "${srcdir}/${pkgname%-dev}/.pub-cache"
   install -Dm644 "${srcdir}/${pkgname%-dev}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm755 "${srcdir}/${pkgname%-dev}.sh" "${pkgdir}/etc/profile.d/${pkgname%-dev}.sh"
   install -Dm755 "${srcdir}/${pkgname%-dev}.csh" "${pkgdir}/etc/profile.d/${pkgname%-dev}.csh"
@@ -51,6 +52,6 @@ package() {
   cp -ra "${srcdir}/${pkgname%-dev}" "${pkgdir}/opt/"
   find "${pkgdir}/opt/${pkgname%-dev}" -type d -exec chmod a+rx {} +
   find "${pkgdir}/opt/${pkgname%-dev}" -type f -exec chmod a+r {} +
-  chmod a+rw "${pkgdir}/opt/${pkgname%-dev}/bin/cache/lockfile" "${pkgdir}/opt/${pkgname%-dev}/version"
+  chmod a+rw "${pkgdir}/opt/${pkgname%-dev}/version"
   ln -s "/opt/${pkgname%-dev}/bin/${pkgname%-dev}" "${pkgdir}/usr/bin/${pkgname%-dev}"
 }
