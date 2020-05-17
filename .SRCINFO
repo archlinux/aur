@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-ck
-	pkgver = 5.6.12
-	pkgrel = 2
+	pkgver = 5.6.13
+	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
@@ -8,11 +8,10 @@ pkgbase = linux-bcachefs-ck
 	makedepends = kmod
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.12.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.12.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.13.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.13.tar.sign
 	source = config
 	source = 0000-sphinx-workaround.patch
-	source = enable_additional_cpu_optimizations-20200428.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20200428.tar.gz
 	source = http://ck.kolivas.org/patches/5.0/5.6/5.6-ck2/patch-5.6-ck2.xz
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = 0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch
@@ -21,13 +20,13 @@ pkgbase = linux-bcachefs-ck
 	source = 0005-Makefile-disallow-data-races-on-gcc-10-as-well.patch
 	source = 0006-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch
 	source = 0007-v5.6-fsync.patch
+	source = 0008-enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.4-5.6.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	md5sums = 41ea495af2ab13afdeb26f4a1e7b1de5
+	md5sums = 73fa7a9e7c42a9ab2cc8151d20e8d6b6
 	md5sums = SKIP
-	md5sums = 2cb2f45c66e12b93d7a87f5dc7416017
+	md5sums = f1f11a1f61e0a1d4625301ca53d31c7a
 	md5sums = 2cebdad39da582fd6a0c01746c8adb42
-	md5sums = 836ee21aaae1b774f93d150a8e225363
 	md5sums = fde3643971460e9a7fc97e94fd2aac38
 	md5sums = 5fe73681affcf4878cb853452218ce36
 	md5sums = 252842db32d8b8aef591d4397a3ab2a1
@@ -36,6 +35,7 @@ pkgbase = linux-bcachefs-ck
 	md5sums = 64b9132473b09c7e7fc26b670b16c08d
 	md5sums = 1a57af013e6529673e01dee3c2f0ebef
 	md5sums = 228b33d0cb13cab162b3e051ec9bb88d
+	md5sums = 2b558327a281a410209aae74e7ddff6f
 
 pkgname = linux-bcachefs-ck
 	pkgdesc = The Linux-bcachefs-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler
@@ -44,11 +44,11 @@ pkgname = linux-bcachefs-ck
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-bcachefs-ck=5.6.12
+	provides = linux-bcachefs-ck=5.6.13
 
 pkgname = linux-bcachefs-ck-headers
 	pkgdesc = Headers and scripts for building modules for Linux-bcachefs-ck kernel
 	depends = linux-bcachefs-ck
-	provides = linux-bcachefs-ck-headers=5.6.12
-	provides = linux-headers=5.6.12
+	provides = linux-bcachefs-ck-headers=5.6.13
+	provides = linux-headers=5.6.13
 

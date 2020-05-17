@@ -61,9 +61,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-bcachefs-ck
-pkgver=5.6.12
-_pkgverpntrel=12
-pkgrel=2
+pkgver=5.6.13
+_pkgverpntrel=13
+pkgrel=1
 _ckpatchversion=2
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -77,7 +77,8 @@ _reponame="bcachefs"
 _repo_url="https://github.com/koverstreet/$_reponame"
 
 _ckpatch="patch-5.6-ck${_ckpatchversion}"
-_gcc_more_v='20200428'
+#_gcc_more_v='20200428'
+#"enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
 
 _srcname=linux
 
@@ -85,7 +86,6 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
   0000-sphinx-workaround.patch
-  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.6/5.6-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch
@@ -94,16 +94,18 @@ source=(
   0005-Makefile-disallow-data-races-on-gcc-10-as-well.patch
   0006-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch
   0007-v5.6-fsync.patch
+  0008-enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.4-5.6.patch
 )
+
+
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-md5sums=('41ea495af2ab13afdeb26f4a1e7b1de5'
+md5sums=('73fa7a9e7c42a9ab2cc8151d20e8d6b6'
          'SKIP'
-         '2cb2f45c66e12b93d7a87f5dc7416017'
+         'f1f11a1f61e0a1d4625301ca53d31c7a'
          '2cebdad39da582fd6a0c01746c8adb42'
-         '836ee21aaae1b774f93d150a8e225363'
          'fde3643971460e9a7fc97e94fd2aac38'
          '5fe73681affcf4878cb853452218ce36'
          '252842db32d8b8aef591d4397a3ab2a1'
@@ -111,7 +113,8 @@ md5sums=('41ea495af2ab13afdeb26f4a1e7b1de5'
          '7701d8353f995981735966c492d0b2f4'
          '64b9132473b09c7e7fc26b670b16c08d'
          '1a57af013e6529673e01dee3c2f0ebef'
-         '228b33d0cb13cab162b3e051ec9bb88d')
+         '228b33d0cb13cab162b3e051ec9bb88d'
+         '2b558327a281a410209aae74e7ddff6f')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -130,7 +133,7 @@ prepare() {
 
   export EDITOR=true
 
-  git rebase $(git tag | grep -v rc | tail -n1)
+  git rebase bcachefs/master
 
   # fix pkgver to chosen pkgver
   sed -i "s/SUBLEVEL = 0/SUBLEVEL = $_pkgverpntrel/g" $srcdir/linux-${pkgver}/Makefile
