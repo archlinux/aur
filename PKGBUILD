@@ -2,7 +2,7 @@
 # Contributor: Jonathan Fine <were.Vire@gmail.com>
 # Maintainer: Simon Conseil <contact+aur at saimon dot org>
 pkgname=glnemo2
-pkgver=1.11.1
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="an interactive visualization 3D program for nbody snapshots."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://projets.oamp.fr/projects/glnemo2"
 license=('custom')
 depends=('glu' 'qt5-base' 'ccfits' 'hdf5-cpp-fortran' 'glm' 'libtirpc')
 source=(https://gitlab.lam.fr/jclamber/glnemo2/-/archive/v${pkgver}/glnemo2-v${pkgver}.tar.gz)
-md5sums=('4d31b78227d39fe3b307c853a72a7c29')
+md5sums=('1ab79db67f9f5776d60d2baf3f9b5a51')
 
 build() {
   cd $pkgname-v$pkgver
@@ -28,4 +28,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
