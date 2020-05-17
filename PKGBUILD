@@ -16,6 +16,7 @@ package() {
   cd "${srcdir}/mingw64"
   for _arch in ${_architectures}; do
     mkdir -p ./* $pkgdir/usr/${_arch}/
+    sed -i -e "s|/mingw64|/usr/${_arch}|" ./lib/pkgconfig/*
     cp -r ./* $pkgdir/usr/${_arch}/
   done
 }
