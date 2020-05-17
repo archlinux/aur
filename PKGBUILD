@@ -4,15 +4,17 @@
 _pkgbase=libsigc++
 pkgbase=lib32-libsigc++
 pkgname=${pkgbase}
-pkgver=2.10.0
-pkgrel=2
+pkgver=2.10.3
+pkgrel=1
+pkgdesc="Callback Framework for C++ (lib32)"
+url="https://libsigcplusplus.github.io/libsigcplusplus/"
 arch=('x86_64')
 license=('LGPL')
-url="http://libsigc.sourceforge.net/"
-makedepends=('lib32-gcc-libs' 'git' 'mm-common' 'libxslt' 'graphviz')
+depends=(lib32-gcc-libs)
+makedepends=(git mm-common meson)
 options=('!emptydirs')
-_commit=83f1e2fe7855f85af570b9653903d2c426d67e72
-source=("git://git.gnome.org/libsigcplusplus#commit=$_commit")
+_commit=88fdb3a14ec67de233fed22646fc9b14c24367f5  # tags/2.10.3^0
+source=("git+https://github.com/libsigcplusplus/libsigcplusplus#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,23 +24,39 @@ pkgver() {
 
 prepare() {
   cd libsigcplusplus
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd libsigcplusplus
-  ./configure --prefix=/usr --libdir=/usr/lib32 CXX='g++ -m32'
-  make
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
+  export PKG_CONFIG=/usr/bin/i686-pc-linux-gnu-pkg-config
+  export ENABLE_DOCUMENTATION=false
+
+  arch-meson libsigcplusplus build \
+    --prefix=/usr \
+    --libdir=/usr/lib32 \
+    -D maintainer-mode=true \
+    -D benchmark=false \
+    -D build-examples=false \
+    -D build-documentation=false \
+    -D build-pdf=false \
+    -D validation=false
+
+  ninja -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  pkgdesc="Libsigc++ implements a full callback system for use in widget libraries - V2"
-  depends=('lib32-gcc-libs')
+  provides=("lib32-libsigc++2.0=${pkgver}")
+  replaces=('lib32-libsigc++2.0')
+  conflicts=('lib32-libsigc++2.0')
 
-  cd libsigcplusplus
-  sed -i -e 's/^doc_subdirs/#doc_subdirs/' Makefile
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" meson install -C build
+
 
   # Removing files included in base libsigc++ package
-  rm -rf ${pkgdir}/usr/include
+  rm -fR ${pkgdir}/usr/include
 }
