@@ -5,7 +5,7 @@
 # Contributor: Nathan Hulse <nat.hulse@gmail.com>
 
 pkgname=compiz-git
-pkgver=0.9.14.1.r0.gfbe199d6b
+pkgver=0.9.14.1.r0.g1b2352b58
 pkgrel=1
 _gitname=compiz
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM (development version)"
@@ -25,13 +25,15 @@ source=("git+https://git.launchpad.net/${_gitname}"
         "gtk-extents.patch"
         "reverse-unity-config.patch"
         "screenshot-launch-fix.patch"
-        "no-compile-gschemas.patch")
+        "no-compile-gschemas.patch"
+        "gcc10_common_fix.patch")
 sha256sums=('SKIP'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
             '6ec9c04540ca1649c687d9ab2c8311caea7075831e2cffe719ec7958c9ebab7b'
             '89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61'
-            '4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a')
+            '4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a'
+            '580f237fc4800669d5c50d9af392dd5f5cf2750131a9fa1d5edfd17df02d0a3c')
 
 pkgver() {
   cd "${_gitname}"
@@ -55,6 +57,9 @@ prepare() {
 
   # Don't try to compile gschemas during make install
   patch -p1 -i "${srcdir}/no-compile-gschemas.patch"
+
+  # Fix linker error that gets raised with gcc 10 due to multiple definitions
+  patch -p1 -i "${srcdir}/gcc10_common_fix.patch"
 }
 
 build() {
