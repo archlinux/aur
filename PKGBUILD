@@ -1,10 +1,11 @@
 # Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Andrew Rabert <draje@nullsum.net>
 
 pkgname=perl-linux-fd
 _perl_version=5.30.2
 pkgver=0.011
-pkgrel=3
+pkgrel=4
 pkgdesc="Provides you Linux specific special file handles"
 arch=('any')
 url="http://search.cpan.org/dist/Linux-FD"
