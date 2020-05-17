@@ -1,7 +1,7 @@
 # Maintainer: Vlad Zahorodnii <vladzzag@gmail.com>
 
 pkgname=kwin-effects-sliding-notifications
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Sliding animation for notification windows"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=(kwin)
 makedepends=(extra-cmake-modules)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/zzag/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('e660076145ec78cd611a26b2931118fe5cfad3c9b56751a6a389a98b5f133eff')
+sha256sums=('9b52f8db1f8d2b1f3200b7208fa35555b5322ff819b03f7bca97830788888167')
 
 prepare() {
     mkdir -p build

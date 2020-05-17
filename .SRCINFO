@@ -1,14 +1,14 @@
 pkgbase = kwin-effects-sliding-notifications
 	pkgdesc = Sliding animation for notification windows
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/zzag/kwin-effects-sliding-notifications
 	arch = x86_64
 	license = GPL3
 	makedepends = extra-cmake-modules
 	depends = kwin
-	source = kwin-effects-sliding-notifications-1.0.2.tar.gz::https://github.com/zzag/kwin-effects-sliding-notifications/archive/1.0.2.tar.gz
-	sha256sums = e660076145ec78cd611a26b2931118fe5cfad3c9b56751a6a389a98b5f133eff
+	source = kwin-effects-sliding-notifications-1.0.3.tar.gz::https://github.com/zzag/kwin-effects-sliding-notifications/archive/1.0.3.tar.gz
+	sha256sums = 9b52f8db1f8d2b1f3200b7208fa35555b5322ff819b03f7bca97830788888167
 
 pkgname = kwin-effects-sliding-notifications
 
