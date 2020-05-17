@@ -1,0 +1,23 @@
+pkgbase = rdircd-git
+	pkgdesc = Reliable Discord-client IRC Daemon written in python3 (rdircd)
+	pkgver = r148.d7ba4df
+	pkgrel = 1
+	url = https://github.com/mk-fg/reliable-discord-client-irc-daemon
+	install = rdircd-git.install
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = python
+	depends = python-aiohttp
+	provides = rdircd
+	conflicts = rdircd
+	backup = var/lib/rdircd/config.ini
+	source = rdircd-git::git+https://github.com/mk-fg/reliable-discord-client-irc-daemon.git#branch=master
+	source = rdircd.service
+	source = rdircd.ini
+	sha256sums = SKIP
+	sha256sums = c3fb8b2551c9eae6d5c459c78f6e04884ec20415ea6b6c415494143d8444b9e7
+	sha256sums = 271b711c369d45571dda0538ec264badcab8974cd0e6bede57ee12a31c639b20
+
+pkgname = rdircd-git
+
