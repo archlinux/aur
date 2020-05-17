@@ -1,15 +1,15 @@
 # Maintainer: Eugenio M. Vigo <emvigo@gmail.com>
 
 pkgname=minitimer
-pkgver=2.0.3
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='Mini Timer - A timer in your terminal'
 arch=('x86_64')
 url='https://git.sr.ht/~emvigo/minitimer'
 license=('APACHE')
 depends=('glibc')
 source=("https://git.sr.ht/~emvigo/minitimer/archive/$pkgver.tar.gz")
-sha256sums=('8f70e1ceefb85ca79aa4e85ec647c605828596081be8d597854718a4dd740797')
+sha256sums=('25e2fc319ec6df317d766ea2f23b41c95514d8192423394576b3595cec976cff')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -19,5 +19,5 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	mkdir -p "$pkgdir/usr/bin"
-	make PREFIX="$pkgdir/usr" install
+	make DESTDIR="$pkgdir" PREFIX='/usr' install
 }
