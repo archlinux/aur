@@ -1,0 +1,18 @@
+pkgbase = r8822be-dkms-git
+	pkgdesc = The old r8822be kernel module for Realtek 8822BE WLAN controllers
+	pkgver = r23.69b525e
+	pkgrel = 1
+	url = https://github.com/mid-kid/r8822be
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	source = r8822be::git+https://github.com/mid-kid/r8822be.git
+	source = blacklist.conf
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 435a384c1de7377143489eebccec5043366d5f4a32434ded261d588351d98cd5
+	sha256sums = 6bc0ffd5bd0c3f0dca7856e23742f5e41ec2961e7179be119131a61bcacdc668
+
+pkgname = r8822be-dkms-git
+
