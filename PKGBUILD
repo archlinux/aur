@@ -2,29 +2,32 @@
 # Contributor: Alex Forenchich <alex@alexforencich.com>
 
 pkgname=('linux-gpib')
-pkgver=4.3.0
+pkgver=4.3.3
 pkgrel=1
 pkgdesc='A support package for GPIB (IEEE 488) hardware.'
 arch=('i686' 'x86_64')
 url='http://linux-gpib.sourceforge.net/'
 license=('GPL')
-depends=('bash' 'linux>=5.2' 'linux<5.3')
+depends=('bash' 'linux>=5.6' 'linux<5.7')
 makedepends=('perl' 'python' 'linux-headers' 'bison')
 optdepends=('fxload: firmware upload support for NI USB-B, Keithley KUSB-488 and Agilent 82357')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}%20for%203.x.x%20and%202.6.x%20kernels/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 install='linux-gpib.install'
 backup=('etc/gpib.conf')
 
-_kernver=5.2
+_kernver=5.6
 _extramodules=/usr/lib/modules/extramodules-ARCH
 
-md5sums=('3085422695baf210b866601db6108860')
+md5sums=('1243aa44f788cf23f9b40ded54c14685')
 
 prepare() {
 
     msg "Unpacking kernel module source"
     cd "${srcdir}/${pkgname}-${pkgver}"
     tar xvfz "${pkgname}-kernel-${pkgver}.tar.gz"
+    cd "${pkgname}-kernel-${pkgver}"
+    sed -i -e 's/ioremap_nocache/ioremap/g' drivers/gpib/eastwood/fluke_gpib.c
+    sed -i -e 's/ioremap_nocache/ioremap/g' drivers/gpib/fmh_gpib/fmh_gpib.c
 
     msg "Unpacking userland utils source"
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -81,7 +84,7 @@ package() {
     # Clear everything depmod spewed out
     for f in "modules.alias" "modules.alias.bin" "modules.builtin.bin" \
         "modules.dep" "modules.dep.bin" "modules.softdep" "modules.symbols" \
-        "modules.symbols.bin" "modules.devname"; do
+        "modules.symbols.bin" "modules.devname" "modules.builtin.alias.bin"; do
         rm "${pkgdir}/lib/modules/$(uname -r)/${f}"
     done
     rmdir "${pkgdir}/lib/modules/$(uname -r)"
