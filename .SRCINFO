@@ -1,12 +1,13 @@
 pkgbase = pdfposter
 	pkgdesc = Print large posters on multiple sheets
 	pkgver = 0.7.post1
-	pkgrel = 1
-	url = https://build.opensuse.org/package/show?package=pdfposter&project=devel%3Alanguages%3Apython
+	pkgrel = 2
+	url = https://gitlab.com/pdftools/pdfposter
 	arch = any
 	license = GPL3
-	makedepends = python-setuptools
+	makedepends = python-pytest
 	depends = python-pypdf2
+	depends = python-setuptools
 	source = https://gitlab.com/pdftools/pdfposter/-/archive/v0.7.post1/pdfposter-v0.7.post1.tar.bz2
 	b2sums = b4dc9ac56ecf76c8b8759ca2c7cba89b5479c1706315d44f4d8852b634a53be048060ecc976355276334e1d8d1114df3818bbc306ff3e3b9f636839644333b24
 
