@@ -1,0 +1,20 @@
+pkgbase = metrogit-bin
+	pkgdesc = Native desktop git client that integrates with JIRA and other tools.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/Yamazaki93/MetroGit
+	arch = x86_64
+	license = MIT
+	depends = pkgconf
+	depends = gconf
+	depends = libnotify
+	depends = libappindicator-gtk2
+	depends = libappindicator-gtk3
+	depends = libxtst
+	depends = libnss_nis
+	depends = libxss
+	source = https://github.com/Yamazaki93/MetroGit/releases/download/v0.4.0/metrogit_0.4.0_amd64.deb
+	md5sums = 44870d7637e165fb5a799c546c0f8e64
+
+pkgname = metrogit-bin
+
