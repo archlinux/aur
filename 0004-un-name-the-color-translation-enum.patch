@@ -1,0 +1,25 @@
+From c6c5b7aceb19af4686d3394b59ca2c8f89ee2d96 Mon Sep 17 00:00:00 2001
+From: Fabian Greffrath <fabian@greffrath.com>
+Date: Fri, 17 Apr 2020 14:03:06 +0200
+Subject: [PATCH 4/5] un-name the color translation enum{}
+
+---
+ src/v_trans.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/v_trans.h b/src/v_trans.h
+index 7810a53a7..95138a05e 100644
+--- a/src/v_trans.h
++++ b/src/v_trans.h
+@@ -47,7 +47,7 @@ enum
+     CR_RED2BLUE,
+     CR_RED2GREEN,
+     CRMAX
+-} cr_t;
++};
+ 
+ #define CR_GREY CR_GRAY
+ 
+-- 
+2.26.2
+

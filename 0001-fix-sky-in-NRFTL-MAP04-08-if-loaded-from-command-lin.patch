@@ -1,0 +1,26 @@
+From 9421f1bd61aff3d8254b9eb4bf23f0ad336d5c56 Mon Sep 17 00:00:00 2001
+From: Fabian Greffrath <fabian@greffrath.com>
+Date: Fri, 17 Apr 2020 11:44:39 +0200
+Subject: [PATCH 1/5] fix sky in NRFTL MAP04-08 if loaded from command line
+
+Fixes #585, thanks @Zodomaniac
+---
+ src/doom/g_game.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/doom/g_game.c b/src/doom/g_game.c
+index df31011e4..2db8f3c82 100644
+--- a/src/doom/g_game.c
++++ b/src/doom/g_game.c
+@@ -819,7 +819,7 @@ void G_DoLoadLevel (void)
+ 
+         if (gamemap < 12)
+         {
+-            if (gamemission == pack_nerve && gamemap >= 4 && gamemap <= 8)
++            if ((gameepisode == 2 || gamemission == pack_nerve) && gamemap >= 4 && gamemap <= 8)
+                 skytexturename = "SKY3";
+             else
+             skytexturename = "SKY1";
+-- 
+2.26.2
+

@@ -1,0 +1,44 @@
+From 3f533a543ed1dc9450ac598b0add11aa0e261d84 Mon Sep 17 00:00:00 2001
+From: Fabian Greffrath <fabian@greffrath.com>
+Date: Fri, 17 Apr 2020 11:48:53 +0200
+Subject: [PATCH 2/5] allow HUD texts being printed up to the right screen edge
+ (again)
+
+Thanks Grizzly
+---
+ src/doom/hu_lib.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/doom/hu_lib.c b/src/doom/hu_lib.c
+index 1bc557c33..abff9edc1 100644
+--- a/src/doom/hu_lib.c
++++ b/src/doom/hu_lib.c
+@@ -131,7 +131,7 @@ HUlib_drawTextLine
+ 	    && c <= '_')
+ 	{
+ 	    w = SHORT(l->f[c - l->sc]->width);
+-	    if (x+w > ORIGWIDTH)
++	    if (x+w > ORIGWIDTH + WIDESCREENDELTA)
+ 		break;
+ 	    V_DrawPatchDirect(x, y, l->f[c - l->sc]);
+ 	    x += w;
+@@ -139,14 +139,14 @@ HUlib_drawTextLine
+ 	else
+ 	{
+ 	    x += 4;
+-	    if (x >= ORIGWIDTH)
++	    if (x >= ORIGWIDTH + WIDESCREENDELTA)
+ 		break;
+ 	}
+     }
+ 
+     // draw the cursor if requested
+     if (drawcursor
+-	&& x + SHORT(l->f['_' - l->sc]->width) <= ORIGWIDTH)
++	&& x + SHORT(l->f['_' - l->sc]->width) <= ORIGWIDTH + WIDESCREENDELTA)
+     {
+ 	V_DrawPatchDirect(x, y, l->f['_' - l->sc]);
+     }
+-- 
+2.26.2
+
