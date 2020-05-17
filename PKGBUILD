@@ -1,6 +1,6 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 # The place where the .tar.gz is located is https://discord.gg/ygopro-percy
-DLAGENTS=(https::/usr/bin/mego %u)
+DLAGENTS=(https::/usr/bin/megadl --no-progress %u)
 pkgname=edopro-bin
 pkgver=38.1.0
 pkgrel=1
@@ -10,7 +10,7 @@ arch=('x86_64')
 url='https://github.com/edo9300/edopro'
 license=('GPL2')
 depends=('mono' 'libevent' 'libglvnd' 'freetype2')
-makedepends=('mego')
+makedepends=('megatools')
 source=("ProjectIgnis-EDOPro-$pkgver-linux.tar.gz::https://mega.nz/file/NH4WSQiY#1hI3KjX66zUqoX6-RBezpQmmXwMLLeqYzgRJDluHKE8" 
         "io.github.edo9300.EDOPro.desktop")
 sha256sums=('df9f50b6e4c8d157f03f5797dbf13be5c79b9006088e9b4863c7a228735f095b'
