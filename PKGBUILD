@@ -1,10 +1,10 @@
 pkgname=mingw-w64-libvorbis-bin
 pkgver=1.3.6
 pkgrel=1
-pkgdesc="A library for computing the discrete Fourier transform (DFT) (mingw-w64)"
+pkgdesc="Vorbis codec library (mingw-w64)"
 arch=('any')
-url="http://www.fftw.org"
-license=("GPL")
+url="https://xiph.org/"
+license=('custom')
 depends=('mingw-w64-crt'
   'mingw-w64-libogg')
 provides=('mingw-w64-libvorbis')
