@@ -1,7 +1,7 @@
 pkgbase = gonic
 	pkgdesc = A lightweight music streaming server which implements the Subsonic API
 	pkgver = 0.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sentriz/gonic
 	install = gonic.install
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = gonic
 	source = gonic.tmpfiles
 	md5sums = 4a0fc182c6beef97ba99d146cf982399
 	md5sums = 1b70d272745c2c4cf5ea3be9445f508d
-	md5sums = 79839f087f3402b2d190f037ede7318c
+	md5sums = 42cafc55316a6fa709eb873afe037a6d
 	md5sums = 6ca6715be2cdd424846f7b37b98905f6
 	md5sums = 487fe9a172e33d86514cf3dbb3b629b8
 
