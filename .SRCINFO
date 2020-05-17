@@ -1,7 +1,7 @@
 pkgbase = linux-gpib-dkms
 	pkgdesc = A support package for GPIB (IEEE 488) hardware (DKMS version).
-	pkgver = 4.3.0
-	pkgrel = 2
+	pkgver = 4.3.3
+	pkgrel = 1
 	url = http://linux-gpib.sourceforge.net/
 	install = linux-gpib.install
 	arch = i686
@@ -15,12 +15,12 @@ pkgbase = linux-gpib-dkms
 	provides = linux-gpib
 	conflicts = linux-gpib
 	backup = etc/gpib.conf
-	source = http://downloads.sourceforge.net/project/linux-gpib/linux-gpib%20for%203.x.x%20and%202.6.x%20kernels/4.3.0/linux-gpib-4.3.0.tar.gz
+	source = http://downloads.sourceforge.net/project/linux-gpib/linux-gpib%20for%203.x.x%20and%202.6.x%20kernels/4.3.3/linux-gpib-4.3.3.tar.gz
 	source = dkms.conf.in
 	source = dkms-kernel-version.diff
-	md5sums = 3085422695baf210b866601db6108860
+	md5sums = 1243aa44f788cf23f9b40ded54c14685
 	md5sums = 2ca62fa9ee584853203e04ef08e6243d
-	md5sums = 079e0f9672e1957c4cae1f707b4e5ed7
+	md5sums = 411ca892af13ce8d2ef5ee75baa52fff
 
 pkgname = linux-gpib-dkms
 
