@@ -29,7 +29,7 @@ prepare() {
 build() {
   cd ${pkgname}
   mvn clean package
-  convert ${srcdir}/tomato.ico ${srcdir}/tomato.png
+  convert "${srcdir}"/tomato.ico "${srcdir}"/tomato.png
 }
 
 package() {
