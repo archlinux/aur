@@ -1,7 +1,7 @@
 pkgbase = linux-x205ta
 	pkgdesc = Linux Kernel with x205ta patches (LTS as there are no newer patches)
 	pkgver = 4.19.123
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2

@@ -6,7 +6,7 @@
 
 pkgbase=linux-x205ta
 pkgver=4.19.123
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Kernel with x205ta patches (LTS as there are no newer patches)'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -113,9 +113,6 @@ _package() {
   local extradir="$pkgdir/usr/lib/modules/$extramodules"
   install -Dt "$extradir" -m644 ../version
   ln -sr "$extradir" "$modulesdir/extramodules"
-
-  # remove build and source links
-  rm "$modulesdir"/{source,build}
 
   msg2 "Installing hooks..."
   # sed expression for following substitutions
