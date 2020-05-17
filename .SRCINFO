@@ -6,7 +6,6 @@ pkgbase = vulkan-caps-viewer
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = qt5-base
 	depends = vulkan-icd-loader
 	depends = qt5-base
 	depends = qt5-x11extras
