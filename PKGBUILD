@@ -7,7 +7,7 @@ pkgdesc="A TensorFlow implementation of Baidu's DeepSpeech architecture"
 arch=('x86_64')
 url="https://github.com/mozilla/DeepSpeech"
 license=('MPL2')
-makedepends=('bazel=0.24.1' 'python-numpy' 'python-pip' 'python-wheel' 'git' 'sox' 'swig')
+makedepends=('bazel=0.24.1' 'python-numpy' 'python-pip' 'python-wheel' 'git' 'sox')
 source=("${_pkgname}-${pkgver}::git+https://github.com/mozilla/DeepSpeech.git#tag=v${pkgver//_/-}"
         "git+https://github.com/mozilla/tensorflow.git#branch=r1.15")
 sha256sums=('SKIP' 'SKIP')
@@ -35,7 +35,7 @@ build() {
   bazel build --workspace_status_command="bash native_client/bazel_workspace_status_cmd.sh" --config=monolithic -c opt --copt=-O3 --copt="-D_GLIBCXX_USE_CXX11_ABI=0" --copt=-fvisibility=hidden //native_client:libdeepspeech.so
 
   cd "${srcdir}/${_pkgname}-${pkgver//_/-}/native_client"
-  make deepspeech SOX_LDFLAGS="-lsox -lm"
+  make deepspeech SOX_LDFLAGS="-lsox -Wl,-no-undefined"
   make bindings -C python
 }
 

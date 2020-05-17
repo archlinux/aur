@@ -11,7 +11,6 @@ pkgbase = deepspeech
 	makedepends = python-wheel
 	makedepends = git
 	makedepends = sox
-	makedepends = swig
 	source = DeepSpeech-0.7.1::git+https://github.com/mozilla/DeepSpeech.git#tag=v0.7.1
 	source = git+https://github.com/mozilla/tensorflow.git#branch=r1.15
 	sha256sums = SKIP
