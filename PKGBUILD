@@ -1,10 +1,11 @@
-# Maintainer: Dennis Stengele <dennis@schuppentier.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Dennis Stengele <dennis@schuppentier.org>
 # Contributor: rob2uk <rob22uk at gmail dot com>
 # Contributor: Vlad <vlad@archlinux.net>
 # Contributor: Sebastien Bariteau <numkem@gmail.com>
 
 pkgname=atlassian-jira-lts
-pkgver=7.13.4
+pkgver=8.8.1
 pkgrel=1
 pkgdesc="Bug tracking, issue tracking and project management software (Enterprise Release)"
 url="https://www.atlassian.com/software/jira"
@@ -19,7 +20,7 @@ install='jira.install'
 source=("https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-core-${pkgver}.tar.gz"
         'jira.conf.d'
         'jira.service')
-sha256sums=('ec8238aa9edff2cf61b8848b21b91028aef28b3e38131e2fd2ea24001d053708'
+sha256sums=('2f58531339d89e9ec08d6f65c747a6bcba6494d3144982c2f190bbd1245c5478'
             '457fd1c5bcedc81e64f71cb890b600944a5be7980716b7f49f9a8c810565dbfb'
             'd61181154183301a551b1ae85a7d42c7d60ae2c36e545d2ab8ef5cc969def717')
 
