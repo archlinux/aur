@@ -7,7 +7,6 @@ pkgbase = python-cu2qu
 	license = Apache
 	checkdepends = python-coverage
 	checkdepends = python-pytest
-	checkdepends = python-flask-compress
 	makedepends = python-setuptools
 	makedepends = cython
 	depends = python
