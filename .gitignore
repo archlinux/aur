@@ -1,3 +1,4 @@
-*.pkg.*
-*.tar.gz
-/Vulkan-Headers/
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
