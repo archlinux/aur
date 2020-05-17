@@ -14,12 +14,16 @@ source=("https://github.com/ncopa/xfce-polkit/releases/download/v${pkgver}/${pkg
 b2sums=('f37a9e905457dbcc2e76cb13f4e6be2ca10082d6a1a09732215fb0eadf1360cb85c78154f20de8ffdca6ad1f9d0920773fe655c7c45fde615741a2130cb5d09d'
         '7eb192592f826f76240ca1664081f4e092160b15e7d6c29e6a566ce57de54ef09834d1c2468ffb5afe790ad060296db61cfcd9b4aa990d77c559b61e242ee59f')
 
-build() {
+prepare() {
   cd ${pkgname}-${pkgver}
   aclocal
   autoconf
   automake --add-missing
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+}
+
+build() {
+  cd ${pkgname}-${pkgver}
   make
 }
 
