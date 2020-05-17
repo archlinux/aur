@@ -1,0 +1,23 @@
+pkgbase = alma-git
+	pkgdesc = Create Arch Linux based live USB
+	pkgver = r102.c8b151f
+	pkgrel = 1
+	url = https://github.com/r-darwish/alma
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	depends = gptfdisk
+	depends = parted
+	depends = arch-install-scripts
+	depends = dosfstools
+	depends = coreutils
+	depends = util-linux
+	optdepends = cryptsetup: for root filesystem encryption
+	provides = alma
+	conflicts = alma
+	source = git+https://github.com/r-darwish/alma
+	sha256sums = SKIP
+
+pkgname = alma-git
+
