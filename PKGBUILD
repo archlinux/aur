@@ -2,7 +2,7 @@
 
 pkgname=rdircd-git
 pkgver=r148.d7ba4df
-pkgrel=1
+pkgrel=2
 pkgdesc="Reliable Discord-client IRC Daemon written in python3 (rdircd)"
 arch=("any")
 url="https://github.com/mk-fg/reliable-discord-client-irc-daemon"

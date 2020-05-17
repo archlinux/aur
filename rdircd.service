@@ -1,6 +1,7 @@
 [Service]
 ExecStart=/usr/bin/rdircd -c /var/lib/rdircd/config.ini
 Restart=always
+RestartSec=5s
 User=rdircd
 Group=rdircd
 

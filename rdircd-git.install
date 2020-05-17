@@ -16,12 +16,3 @@ post_upgrade() {
 	post_install
 }
 
-post_remove() {
-	if getent passwd ${_PKGUSER} &>/dev/null; then
-		userdel ${_PKGUSER} >/dev/null
-	fi
-	if getent group ${_PKGGROUP} &>/dev/null; then
-		groupdel ${_PKGGROUP} >/dev/null
-	fi
-}
-
