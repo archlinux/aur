@@ -1,7 +1,7 @@
 # Maintainer: Alexander Mcmillan <linuxguy93@gmail.com>
 
 pkgbase=linux-archmm
-pkgver=5.6.12.arch1
+pkgver=5.6.13.arch1
 pkgrel=1
 pkgdesc='Linux with the BMQ CPU Scheduler and Multimedia Patches'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -16,10 +16,10 @@ makedepends=(
 options=('!strip')
 
 ## Enable 1000HZ timer (UNCOMMENT)
-_1k_HZ_ticks=y
+#_1k_HZ_ticks=y
 
 ## Enable Setup Menu (UNCOMMENT)
-_menuconfig=y
+#_menuconfig=y
 
 ## Linux Sources
 _srcname=archlinux-linux
