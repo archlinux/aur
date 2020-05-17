@@ -4,8 +4,8 @@ pkgname=(
 	python-update-dotdee
 )
 pkgbase=update-dotdee
-pkgver=5.0
-pkgrel=2
+pkgver=6.0
+pkgrel=1
 pkgdesc="Generic modular configuration file manager"
 arch=(any)
 url="https://github.com/xolox/python-update-dotdee"
@@ -25,9 +25,7 @@ makedepends=(
 source=(
 	"https://files.pythonhosted.org/packages/source/${pkgbase::1}/${pkgbase}/${pkgbase}-${pkgver}.tar.gz"
 )
-sha256sums=(
-	7316afa9f63fb52cfcae17d10747a975df086fb82400bb310f1fe9f6a141e433
-)
+sha256sums=('5897da85cc2115dc894aa27c986274b2930c4b56068cd44634fb543eafb88b41')
 
 prepare() {
 	cd "${pkgbase}-${pkgver}"
