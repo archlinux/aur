@@ -2,10 +2,10 @@
 
 _pkgname=alltomp3
 pkgname=alltomp3-bin
-_pkgver=59
-_LOver=0.3.12
+_pkgver=61
+_LOver=0.3.14
 pkgver=${_LOver}.${_pkgver}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 license=('GPL-2.0')
 url="https://alltomp3.org/"
@@ -18,6 +18,9 @@ sha256sums=('5fc41ba5610e49f49959045a0df502f7b387993f94a307a06f9df5d8dbb68de0')
 package() {
     # Extract package data
     tar xf data.tar.xz -C "${pkgdir}"
+
+    install -d "${pkgdir}/usr/bin"
+    ln -sf '/opt/AllToMP3/alltomp3' "${pkgdir}/usr/bin/alltomp3"
 
     install -D -m644 "${pkgdir}/opt/AllToMP3/resources/app/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
