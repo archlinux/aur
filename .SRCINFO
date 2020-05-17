@@ -1,0 +1,15 @@
+pkgbase = mingw-w64-shared-mime-info-bin
+	pkgdesc = Freedesktop.org Shared MIME Info (mingw-w64)
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://www.gnome.org
+	arch = any
+	license = custom
+	depends = mingw-w64-libxml2
+	depends = mingw-w64-glib2
+	provides = mingw-w64-shared-mime-info
+	source = http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-shared-mime-info-2.0-1-any.pkg.tar.zst
+	sha256sums = 420cf529fc7e0fd1662f2d45ec62687b6ac56506ca6ae2c18a890676411ba57a
+
+pkgname = mingw-w64-shared-mime-info-bin
+
