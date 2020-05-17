@@ -1,6 +1,6 @@
 pkgbase = python-fontmath
 	pkgdesc = A set of objects for performing math operations on font data.
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/robotools/fontMath
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-fontmath
 	makedepends = python-setuptools
 	depends = python-fonttools
 	options = !emptydirs
-	source = https://pypi.org/packages/source/f/fontMath/fontMath-0.5.2.zip
-	sha256sums = 9f7934f85859f057f8e6ff3fc2e80c1cd3ba8c9021e71a7794efdf74c6a49ce2
+	source = https://pypi.org/packages/source/f/fontMath/fontMath-0.6.0.zip
+	sha256sums = 5a93002bfdcacd16b117b498f6e5ffa5d8fd263ccd8c587d9aa553e965c3ad27
 
 pkgname = python-fontmath
 
