@@ -1,0 +1,32 @@
+pkgbase = code-stable-git
+	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor
+	pkgver = 1.45.1
+	pkgrel = 1
+	url = https://github.com/microsoft/vscode
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gulp
+	makedepends = npm
+	makedepends = python2
+	makedepends = yarn
+	makedepends = nodejs-lts-dubnium
+	depends = electron7
+	depends = libsecret
+	depends = libx11
+	depends = libxkbfile
+	depends = ripgrep
+	optdepends = bash-completion: Bash completions
+	optdepends = zsh-completions: ZSH completitons
+	optdepends = x11-ssh-askpass: SSH authentication
+	source = code-stable-git::git+https://github.com/microsoft/vscode.git#tag=1.45.1
+	source = code.js
+	source = code.sh
+	source = product_json.diff
+	sha512sums = SKIP
+	sha512sums = 814c9554427183cd893a33cd2cbe91f6e0ea71921ef0717c86217b1d3058d265f9ff7a9ace3e7b76f122e60b7686475cf4d999e581a1845face3033afb9f745f
+	sha512sums = 0e75ee88274cbaf48c59ef6f363f6b8ac2ea83f8b17a61155008db773b709a1f0233754fa63a136ec0417313ba90a7eb17db000ec22a38ca8840d8ba6c47cab1
+	sha512sums = 0d6707ae0b0589506b4916463b4d6cb3418912ceaf056f6ae69c74122348adeb79187b2021844233e452802a38b9958bcf1788e03b4fc5621d7365606cf676ad
+
+pkgname = code-stable-git
+
