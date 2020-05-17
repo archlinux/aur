@@ -4,10 +4,11 @@
 
 pkgname=cinnamon-slim
 pkgver=4.6.0
-pkgrel=1
+pkgrel=2
+_commit=1ccef7d25cec2650d7e8a991f800fc46d32fdee5
 pkgdesc="Innovative Linux desktop. Slim version."
 arch=('x86_64')
-url="https://github.com/linuxmint/Cinnamon"
+url="https://github.com/linuxmint/${pkgname%-slim}"
 license=('GPL2')
 provides=("cinnamon=$pkgver")
 conflicts=('cinnamon')
@@ -24,9 +25,9 @@ optdepends=('blueberry: Bluetooth support'
             'gnome-panel: fallback mode'
             'metacity: fallback mode'
             'system-config-printer: printer settings')
-makedepends=('intltool' 'gtk-doc' 'gobject-introspection')
+makedepends=('git' 'intltool' 'gtk-doc' 'gobject-introspection')
 options=('!emptydirs')
-source=("${pkgname%-*}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
+source=("git+${url}.git#commit=${_commit}"
         "0001-cinnamon-settings-don-t-rely-on-the-presence-of-cinn.patch"
         "set_wheel.diff"
         "default-theme.patch")
@@ -34,7 +35,7 @@ source=("${pkgname%-*}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
 sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
-    cd "${srcdir}"/cinnamon-${pkgver}
+    cd "${srcdir}"/${pkgname%-slim}
 
     # Check for the cc-panel module path, not for the irrelevant binary
     # https://github.com/linuxmint/cinnamon/pull/7382
@@ -62,7 +63,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}"/cinnamon-${pkgver}
+    cd "${srcdir}"/${pkgname%-slim}
 
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
@@ -81,7 +82,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}"/cinnamon-${pkgver}
+    cd "${srcdir}"/${pkgname%-slim}
 
     make DESTDIR="${pkgdir}" install
 }

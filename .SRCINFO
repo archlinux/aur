@@ -1,10 +1,11 @@
 pkgbase = cinnamon-slim
 	pkgdesc = Innovative Linux desktop. Slim version.
 	pkgver = 4.6.0
-	pkgrel = 1
-	url = https://github.com/linuxmint/Cinnamon
+	pkgrel = 2
+	url = https://github.com/linuxmint/cinnamon
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	makedepends = intltool
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
@@ -48,7 +49,7 @@ pkgbase = cinnamon-slim
 	conflicts = cinnamon
 	replaces = cinnamon
 	options = !emptydirs
-	source = cinnamon-4.6.0.tar.gz::https://github.com/linuxmint/Cinnamon/archive/4.6.0.tar.gz
+	source = git+https://github.com/linuxmint/cinnamon.git#commit=1ccef7d25cec2650d7e8a991f800fc46d32fdee5
 	source = 0001-cinnamon-settings-don-t-rely-on-the-presence-of-cinn.patch
 	source = set_wheel.diff
 	source = default-theme.patch
