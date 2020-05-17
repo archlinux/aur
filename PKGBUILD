@@ -1,7 +1,7 @@
 # Maintainer: Ashar Khan <ashar786khan at gmail.com>
 
 pkgname=cpeditor
-pkgver=6.3.3
+pkgver=6.3.4
 _pkgdir=cpeditor-full-source-$pkgver
 pkgrel=1
 pkgdesc='The editor for competitive programming'
