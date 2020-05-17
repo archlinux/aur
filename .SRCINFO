@@ -1,6 +1,6 @@
 pkgbase = postgresql-11
 	pkgdesc = Sophisticated object-relational DBMS
-	pkgver = 11.7
+	pkgver = 11.8
 	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = postgresql-11
 	makedepends = libldap
 	makedepends = llvm
 	makedepends = clang
-	source = https://ftp.postgresql.org/pub/source/v11.7/postgresql-11.7.tar.bz2
+	source = https://ftp.postgresql.org/pub/source/v11.8/postgresql-11.8.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql-perl-rpath.patch
 	source = postgresql.pam
@@ -28,7 +28,7 @@ pkgbase = postgresql-11
 	source = postgresql-check-db-dir
 	source = postgresql.sysusers
 	source = postgresql.tmpfiles
-	sha256sums = 324ae93a8846fbb6a25d562d271bc441ffa8794654c5b2839384834de220a313
+	sha256sums = eaf2f4329ccc349c89e950761b81daf8c99bb8966abcab5665ccd6ee95c77ae2
 	sha256sums = 8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9
 	sha256sums = 5f73b54ca6206bd2c469c507830261ebd167baca074698d8889d769c33f98a31
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
@@ -37,7 +37,7 @@ pkgbase = postgresql-11
 	sha256sums = 2bbd8c4e51b70223d274fef3a167af096f44af3d3c41ae505ad11c606674e7c5
 	sha256sums = 7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12
 	sha256sums = 4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57
-	sha512sums = 32c7ace228f9895241ce0d925fbfc60c0cd39f4cd35368fb10dc7db046151ffd59a9895b4c30a529627f0103051e84b4992ed60312cccd292489f3037076ca1e
+	sha512sums = fc3d0ebd224de60bda3fa71b6832958698238e9088cf46a80c376b8996cc3b2d017fde5dce1c1da1e5e6e23b78054aafad7ee1caa744bfb12c52317ccc8a1922
 	sha512sums = 031efe12d18ce386989062327cdbbe611c5ef1f94e4e1bead502304cb3e2d410af533d3c7f1109d24f9da9708214fe32f9a10ba373a3ca8d507bdb521fbb75f7
 	sha512sums = 38302242b30c01c7981574ed28d9cbd9dc73bf6b56ba3a032afb5d0885ae83e5aa72ce578bf2422214dfa6c46f09d0bdd7cccaeb3c25d58754eb1a34f8bf5615
 	sha512sums = 1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67
@@ -55,20 +55,20 @@ pkgname = postgresql-libs-11
 	depends = zlib
 	depends = libldap
 	provides = postgresql-client
-	provides = postgresql-libs=11.7
+	provides = postgresql-libs=11.8
 	conflicts = postgresql-client
 	conflicts = postgresql-libs
 
 pkgname = postgresql-docs-11
 	pkgdesc = HTML documentation for PostgreSQL
-	provides = postgresql-docs=11.7
+	provides = postgresql-docs=11.8
 	conflicts = postgresql-docs
 	options = docs
 
 pkgname = postgresql-11
 	pkgdesc = Sophisticated object-relational DBMS
 	install = postgresql.install
-	depends = postgresql-libs>=11.7
+	depends = postgresql-libs>=11.8
 	depends = krb5
 	depends = libxml2
 	depends = readline>=6.0
@@ -83,7 +83,7 @@ pkgname = postgresql-11
 	optdepends = perl: for PL/Perl support
 	optdepends = tcl: for PL/Tcl support
 	optdepends = postgresql-old-upgrade: upgrade from previous major version using pg_upgrade
-	provides = postgresql=11.7
+	provides = postgresql=11.8
 	conflicts = postgresql
 	options = staticlibs
 	backup = etc/pam.d/postgresql
