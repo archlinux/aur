@@ -7,7 +7,7 @@ url="http://www.fftw.org"
 license=("GPL")
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
-checkdepends=('wine')
+checkdepends=('mingw-w64-wine')
 options=(staticlibs !strip !buildflags)
 source=("$url/fftw-${pkgver}.tar.gz")
 sha256sums=('6113262f6e92c5bd474f2875fa1b01054c4ad5040f6b0da7c03c98821d9ae303')
@@ -58,7 +58,8 @@ check() {
 
   for _arch in ${_architectures}; do
     cd "${srcdir}/fftw-${pkgver}/build-${_arch}-d"
-    make check
+    ${_arch}-wine tests/bench.exe --verbose=1 --verify 'ofcd7*1' --verify 'ifr40x13v32' --verify 'ifcd10x9x5*10'
+    #make check
   done
 }
 
