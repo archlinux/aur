@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-librsvg-bin
+	pkgdesc = SVG rendering library (mingw-w64)
+	pkgver = 2.48.4
+	pkgrel = 1
+	url = https://www.gnome.org
+	arch = any
+	license = custom
+	depends = mingw-w64-gdk-pixbuf2
+	depends = mingw-w64-pango
+	depends = mingw-w64-cairo
+	depends = mingw-w64-libxml2
+	provides = mingw-w64-librsvg
+	source = http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-librsvg-2.48.4-2-any.pkg.tar.zst
+	sha256sums = SKIP
+
+pkgname = mingw-w64-librsvg-bin
+
