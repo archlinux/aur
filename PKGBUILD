@@ -29,8 +29,6 @@ sha256sums=('SKIP' '053084b7fddc4ea0e8bb8d23cec41ea701276cac30fee64e9147177daaf6
 
 pkgver() {
   cd vkd3d
-  # If this isn't needed anymore, leave a comment on the AUR!
-  patch --forward --strip=1 --input="${srcdir}/8e7bf8a5c3e004763a62822ff2d79cf76907b712.patch"
   git describe --long --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/vkd3d.//'
 }
 
@@ -38,7 +36,8 @@ prepare() {
   mkdir -p build
 
   cd vkd3d
-  
+  # If this isn't needed anymore, leave a comment on the AUR!
+  patch --forward --strip=1 --input="${srcdir}/8e7bf8a5c3e004763a62822ff2d79cf76907b712.patch"
   ./autogen.sh
 }
 
