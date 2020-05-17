@@ -10,7 +10,7 @@ pkgbase = tomighty
 	makedepends = git
 	depends = bash
 	depends = java-runtime
-	source = git+https://github.com/tomighty/tomighty.git#branch=version-0.7
+	source = git+https://github.com/tomighty/tomighty.git#commit=e4064d110b11ddd5a7fb8d457f635813da212af2
 	source = pomxml.patch
 	source = tomighty.sh
 	source = tomighty.desktop

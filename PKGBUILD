@@ -10,7 +10,7 @@ url='https://tomighty.github.io/'
 license=('Apache')
 depends=('bash' 'java-runtime')
 makedepends=('imagemagick' 'maven' 'git')
-source=("git+https://github.com/tomighty/tomighty.git#branch=version-0.7"
+source=("git+https://github.com/tomighty/tomighty.git#commit=e4064d110b11ddd5a7fb8d457f635813da212af2"
         pomxml.patch
         tomighty.sh
         tomighty.desktop
@@ -29,12 +29,11 @@ prepare() {
 build() {
   cd ${pkgname}
   mvn clean package
+  convert ${srcdir}/tomato.ico ${srcdir}/tomato.png
 }
 
 package() {
-  convert tomato.ico tomato.png
   install -Dm 644 tomato-0.png "${pkgdir}"/usr/share/pixmaps/${pkgname}.png
-
   install -Dm 644 ${pkgname}/target/${pkgname}-${pkgver}.jar "${pkgdir}"/usr/share/java/${pkgname}/${pkgname}.jar
   install -Dm 644 ${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
   install -Dm 755 ${pkgname}.sh "${pkgdir}/"usr/bin/${pkgname}
