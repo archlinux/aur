@@ -3,7 +3,7 @@
 pkgname=chocolate-doom
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
 pkgver=3.0.0
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
@@ -19,10 +19,12 @@ conflicts=(chocolate-common
            chocolate-strife)
 replaces=(${conflicts[@]})
 source=(https://www.chocolate-doom.org/downloads/${pkgver}/${pkgname}-${pkgver}.tar.gz{,.asc}
-        0001_fix-bash-completion.patch)
-sha512sums=('41f235c0d84ef21070636ad0610e97898dfd366fae7f9244bd2aebf8974db98dcf55f70bcab2f93589b9bf31dd421db32e8af88e0f8e0a655d2b9f1d4ead2afd'
-            'SKIP'
-            '5da61fcabd332698b3a8934670195d42f9d9db949fd666c3a670c47252af0376cf8cd0e3f2d78c9d6593446d68dab02b3db14b995a9fa8c973859cd2fd8bc3d0')
+        0001_fix-bash-completion.patch
+        0002-Remove-redundant-demoextend-definition.patch)
+b2sums=('11989b4b4458098af63c4b89a73552a8bb43c22077d358770b0e89e1b816950b92630592dcb5b4a782ccf673951b7e3d8503bc517577fe59d052d8b4f3f125e1'
+        'SKIP'
+        '15115b4450f978b6ce2c593ec3d7d54d6acc1082b64b1fb0db155187366595563291991d19840534a43d966bf4722954e652b3cb3e9961d5ad6827c3651c0908'
+        'eefc539dd87472323be368073ac2893f41a0ce478d12a288bb1b85513f1491b013fcdfcac94db92e444fe89798ffb06a0441e016f78cf533221fffc9e1f69507')
 validpgpkeys=('6D2C117E0310664497AA9546F6C2EE9C23354344')
 
 prepare() {
