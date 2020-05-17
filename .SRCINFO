@@ -8,7 +8,6 @@ pkgbase = gvim-gtk2
 	license = custom:vim
 	makedepends = git
 	makedepends = libxt
-	makedepends = lua
 	makedepends = python2
 	makedepends = python
 	makedepends = ruby
