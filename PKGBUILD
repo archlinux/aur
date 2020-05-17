@@ -28,11 +28,11 @@ prepare() {
   aclocal
   autoconf
   automake --add-missing
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 }
 
 build() {
   cd ${_pkgname}
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
 
