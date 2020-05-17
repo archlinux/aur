@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Icon=ntfix
+Name=NTfix
+Exec=ntfix
+Terminal=false
+Hidden=false
+Categories=Utility
+Comment=Fixes the problem of Proton games not running on NTFS partitions
