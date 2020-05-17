@@ -1,5 +1,6 @@
 # $Id$
 # Maintainer: Doctorzeus <simmlog@gmail.com>
+# Co-Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Malah <malah@neuf.fr>
 # Contributor: Brenton Horne <brentonhorne77@gmail.com>
 # Contributor: Daniel Isenmann <daniel@archlinux.org>
@@ -8,13 +9,13 @@
 
 pkgname=monodevelop-stable
 _pkgname=monodevelop
-pkgver=7.8.3.2
-pkgrel=2
+pkgver=8.4.3.12
+pkgrel=1
 pkgdesc="An IDE primarily designed for C# and other .NET languages"
 arch=('x86_64' 'i686')
 url="http://www.monodevelop.com"
 license=('GPL')
-depends=('mono>=5.10.1.47' 'mono-addins>=0.6.2' 'gtk-sharp-2' 'fsharp>=4.5.0' 'libssh2' 'curl' 'msbuild-stable')
+depends=('mono>=5.10.1.47' 'mono-addins>=0.6.2' 'gtk-sharp-2' 'libssh2' 'curl' 'msbuild-stable')
 makedepends=('rsync' 'cmake' 'git' 'nuget' 'openssl-1.0' 'xterm' 'pkgconf' 'autoconf' 'automake')
 replaces=('monodevelop-debugger-gdb')
 provides=('monodevelop' 'monodevelop-debugger-gdb')
@@ -41,7 +42,7 @@ build() {
   export LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl"
   export MONO_IOMAP=all
 
-  ./configure --prefix=/usr --profile=stable
+  ./configure --prefix=/usr --profile=gnome
   XDG_CONFIG_HOME="$srcdir"/config make
 }
 
