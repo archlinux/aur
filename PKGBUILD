@@ -9,7 +9,7 @@ url='https://nokiatech.github.io/heif/'
 license=('custom')
 depends=('gcc-libs')
 makedepends=('cmake')
-source=("https://github.com/nokiatech/heif/archive/v${pkgver}.tar.gz")
+source=("https://github.com/nokiatech/heif/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 b2sums=('974f0a2721cbbba57fb2644aeb76e262a8e69537036900d95718565e455bd5ec30429457e34e51401e7944299b9bb97993264c909e063ac7f12f72a1402923ce')
 
 build() {
