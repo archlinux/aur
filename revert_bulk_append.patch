@@ -1,26 +1,41 @@
 diff -r -u a/FreeFileSync/Source/ui/command_box.cpp b/FreeFileSync/Source/ui/command_box.cpp
---- a/FreeFileSync/Source/ui/command_box.cpp	2019-08-15 19:36:52.000000000 +0200
-+++ b/FreeFileSync/Source/ui/command_box.cpp	2019-08-17 19:08:51.511285343 +0200
-@@ -130,7 +130,8 @@
+--- a/FreeFileSync/Source/ui/command_box.cpp	2020-05-17 19:15:19.000000000 +0200
++++ b/FreeFileSync/Source/ui/command_box.cpp	2020-05-17 20:04:55.554045299 +0200
+@@ -120,7 +120,8 @@
  
      //this->Clear(); -> NO! emits yet another wxEVT_COMMAND_TEXT_UPDATED!!!
      wxItemContainer::Clear(); //suffices to clear the selection items only!
--    this->Append(items);
+-    this->Append(items); //expensive as fuck! => only call when absolutely needed!
 +    for (const wxString& item : items)                                                                                             
 +        this->Append(item); 
  
      //this->SetSelection(wxNOT_FOUND); //don't select anything
      ChangeValue(value); //preserve main text!
 diff -r -u a/FreeFileSync/Source/ui/folder_history_box.cpp b/FreeFileSync/Source/ui/folder_history_box.cpp
---- a/FreeFileSync/Source/ui/folder_history_box.cpp	2019-08-15 19:36:52.000000000 +0200
-+++ b/FreeFileSync/Source/ui/folder_history_box.cpp	2019-08-17 19:04:37.023593558 +0200
+--- a/FreeFileSync/Source/ui/folder_history_box.cpp	2020-05-17 19:15:19.000000000 +0200
++++ b/FreeFileSync/Source/ui/folder_history_box.cpp	2020-05-17 20:05:56.513333473 +0200
 @@ -90,7 +90,8 @@
  
      //this->Clear(); -> NO! emits yet another wxEVT_COMMAND_TEXT_UPDATED!!!
      wxItemContainer::Clear(); //suffices to clear the selection items only!
--    this->Append(dirList);
-+    for (const wxString& dir : dirList)                                                                                                
-+        this->Append(dir);  
+-    this->Append(items); //expensive as fuck! => only call when absolutely needed!
++    for (const wxString& item : items)                                                                                             
++        this->Append(item); 
  
      //this->SetSelection(wxNOT_FOUND); //don't select anything
      ChangeValue(folderPathPhrase); //preserve main text!
+diff -r -u a/wx+/choice_enum.h b/wx+/choice_enum.h
+--- a/wx+/choice_enum.h 2020-05-17 19:15:18.000000000 +0200
++++ b/wx+/choice_enum.h 2020-05-18 21:06:22.073914615 +0200
+@@ -79,7 +79,10 @@
+ 
+     if (items != itemsSetLast)
+     {
+-        ctrl.Set(items); //expensive as fuck! => only call when absolutely needed!
++        ctrl.Clear();
++        for (auto item : items) {
++            ctrl.Append(item);
++        }
+         itemsSetLast = std::move(items);
+     }
+     //-----------------------------------------------------------------

@@ -6,7 +6,7 @@
 # Maintainer: jooch <jooch AT gmx DOT com>
 
 pkgname=freefilesync
-pkgver=10.23
+pkgver=10.24
 pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
@@ -24,10 +24,10 @@ source=(
 	dlagent
 	)
 
-sha256sums=('52c3cca748dc0aea1b778df73312a537824832f84028f0321dac47cf56c01632'
+sha256sums=('fba28a46bcce434c8a9a171e1b3c954163bda8c28705249e9502aef668ca73dd'
             '0f9a9a6b2c3c460bbde7425bd62273c925259db1cc9dc18c6013aae99fb15cd8'
-            '92ba719d98af91a67325387ec32fae12c9f1eb0ace054b9db34ae6b6b6d9381c'
-            'd3dedc100163ce00ae5889a6039a1fff11ae32b676ae5e83ae9182509f80638d'
+            '474088f1eb7c8a25230e3d4e2f5b0ae81a65f526cd17a1c1d42e732a89ec6953'
+            '2942c0e74be2b15cdd83e36fa524c3b6c68d4b4da2042f1b0cf7c13d3b806eac'
             '590d87707240529ca893199f852143f5d7c7266cb050e37e615900b013ac3d51'
             '82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830'
             '1649e7ea66235c6f82daf9beb6b61b7765df54e9ef70f7f6fc1283f5c2b1e54a')
@@ -65,11 +65,11 @@ build() {
 
 ### FFS
     cd "${srcdir}/FreeFileSync/Source"
-    make EXENAME=FreeFileSync TMP_PATH="${srcdir}/FreeFileSync/tmp_ffs"
+    make exeName=FreeFileSync tmpPath="${srcdir}/FreeFileSync/tmp_ffs"
 
 ### RTS
     cd "${srcdir}/FreeFileSync/Source/RealTimeSync"
-    make EXENAME=RealTimeSync TMP_PATH="${srcdir}/FreeFileSync/tmp_rts"
+    make exeName=RealTimeSync tmpPath="${srcdir}/FreeFileSync/tmp_rts"
 }
 
 package() {

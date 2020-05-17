@@ -1,36 +1,35 @@
-diff -r -u FreeFileSync_10.15_Source/FreeFileSync/Source/Makefile src/FreeFileSync/Source/Makefile
---- FreeFileSync_10.15_Source/FreeFileSync/Source/Makefile	2019-08-15 19:36:51.000000000 +0200
-+++ src/FreeFileSync/Source/Makefile	2019-08-17 19:44:59.706615730 +0200
+diff -r -u a/FreeFileSync/Source/Makefile b/FreeFileSync/Source/Makefile
+--- a/FreeFileSync/Source/Makefile      2020-05-17 19:15:17.000000000 +0200
++++ b/FreeFileSync/Source/Makefile      2020-05-18 21:46:55.650444123 +0200
 @@ -4,7 +4,7 @@
             -Wall -Wfatal-errors -Wmissing-include-dirs -Wswitch-enum -Wcast-align -Wshadow -Wnon-virtual-dtor \
             -O3 -DNDEBUG `wx-config --cxxflags --debug=no` -pthread
  
--LINKFLAGS = -s -no-pie `wx-config --libs std, aui --debug=no` -pthread
-+LINKFLAGS = -s -no-pie `wx-config --libs std, aui --debug=no` -lz -pthread
+-linkFlags = -s -no-pie `wx-config --libs std, aui --debug=no` -pthread
++linkFlags = -s -no-pie `wx-config --libs std, aui --debug=no` -lz -pthread
  
  
- CXXFLAGS  += `pkg-config --cflags openssl`
+ cxxFlags  += `pkg-config --cflags openssl`
 @@ -17,6 +17,7 @@
- LINKFLAGS += `pkg-config --libs   libssh2`
+ linkFlags += `pkg-config --libs   libssh2`
  
- CXXFLAGS  += `pkg-config --cflags gtk+-2.0`
-+LINKFLAGS += `pkg-config --libs   gtk+-2.0`
+ cxxFlags  += `pkg-config --cflags gtk+-2.0`
++linkFlags += `pkg-config --libs   gtk+-2.0`
  #treat as system headers so that warnings are hidden:
- CXXFLAGS  += -isystem/usr/include/gtk-2.0
- 
-diff -r -u FreeFileSync_10.15_Source/FreeFileSync/Source/RealTimeSync/Makefile src/FreeFileSync/Source/RealTimeSync/Makefile
---- FreeFileSync_10.15_Source/FreeFileSync/Source/RealTimeSync/Makefile	2019-08-15 19:36:51.000000000 +0200
-+++ src/FreeFileSync/Source/RealTimeSync/Makefile	2019-08-17 19:45:29.529715592 +0200
+ cxxFlags  += -isystem/usr/include/gtk-2.0
+
+diff -r -u a/FreeFileSync/Source/RealTimeSync/Makefile b/FreeFileSync/Source/RealTimeSync/Makefile
+--- a/FreeFileSync/Source/RealTimeSync/Makefile 2020-05-17 19:15:17.000000000 +0200
++++ b/FreeFileSync/Source/RealTimeSync/Makefile 2020-05-18 21:46:42.700571925 +0200
 @@ -4,10 +4,11 @@
             -Wall -Wfatal-errors -Wmissing-include-dirs -Wswitch-enum -Wcast-align -Wshadow -Wnon-virtual-dtor \
             -O3 -DNDEBUG `wx-config --cxxflags --debug=no` -pthread
  
--LINKFLAGS = -s -no-pie `wx-config --libs std, aui --debug=no` -pthread
-+LINKFLAGS = -s -no-pie `wx-config --libs std, aui --debug=no` -lz -pthread
+-linkFlags = -s -no-pie `wx-config --libs std, aui --debug=no` -pthread
++linkFlags = -s -no-pie `wx-config --libs std, aui --debug=no` -lz -pthread
  
  #Gtk - support "no button border"
- CXXFLAGS  += `pkg-config --cflags gtk+-2.0`
-+LINKFLAGS += `pkg-config --libs   gtk+-2.0`
+ cxxFlags  += `pkg-config --cflags gtk+-2.0`
++linkFlags += `pkg-config --libs   gtk+-2.0`
  #treat as system headers so that warnings are hidden:
- CXXFLAGS  += -isystem/usr/include/gtk-2.0
- 
+ cxxFlags  += -isystem/usr/include/gtk-2.0
