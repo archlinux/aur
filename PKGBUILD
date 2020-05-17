@@ -44,9 +44,11 @@ _makenconfig=
 #  27. Intel Cannon Lake (MCANNONLAKE)
 #  28. Intel Ice Lake (MICELAKE)
 #  29. Intel Cascade Lake (MCASCADELAKE)
-#  30. Generic-x86-64 (GENERIC_CPU)
-#  31. Native optimizations autodetected by GCC (MNATIVE)
-_subarch=
+#  30. Intel Cooper Lake (MCOOPERLAKE)
+#  31. Intel Tiger Lake (MTIGERLAKE)
+#  32. Generic-x86-64 (GENERIC_CPU)
+#  33. Native optimizations autodetected by GCC (MNATIVE)
+_subarch=23
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
@@ -56,14 +58,14 @@ _subarch=
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
+_localmodcfg=/home/sayad/.config/modprobed.db
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-bcachefs-ck
 pkgver=5.6.13
 _pkgverpntrel=13
-pkgrel=1
+pkgrel=2
 _ckpatchversion=2
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -73,28 +75,24 @@ makedepends=(
 )
 options=('!strip')
 
-_reponame="bcachefs"
-_repo_url="https://github.com/koverstreet/$_reponame"
+#_reponame="bcachefs"
+#_repo_url="https://github.com/koverstreet/$_reponame"
 
 _ckpatch="patch-5.6-ck${_ckpatchversion}"
-#_gcc_more_v='20200428'
-#"enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
 
 _srcname=linux
 
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
-  config         # the main kernel config file
+  "https://raw.githubusercontent.com/abelian424/archiso-bcachefs-mainline/master/config"
   0000-sphinx-workaround.patch
-  "http://ck.kolivas.org/patches/5.0/5.6/5.6-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch
-  0003-gcc-plugins-drop-support-for-GCC-4.7.patch
-  0004-gcc-common.h-Update-for-GCC-10.patch
-  0005-Makefile-disallow-data-races-on-gcc-10-as-well.patch
-  0006-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch
-  0007-v5.6-fsync.patch
-  0008-enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0002-clear-patches.patch"
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0003-glitched-base.patch"
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0004-5.6-ck2.patch"
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0004-glitched-muqss.patch"
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0007-v5.6-fsync.patch"
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0008-5.6-bcachefs.patch"
 )
 
 
@@ -104,17 +102,15 @@ validpgpkeys=(
 )
 md5sums=('73fa7a9e7c42a9ab2cc8151d20e8d6b6'
          'SKIP'
-         '3ff30ce14b831afca82cfd32d8ccec2e'
+         '9bbdaa22605d9690a845c789d2f08018'
          '2cebdad39da582fd6a0c01746c8adb42'
-         'fde3643971460e9a7fc97e94fd2aac38'
-         '5fe73681affcf4878cb853452218ce36'
-         '252842db32d8b8aef591d4397a3ab2a1'
-         '81321507b721e4b630280f76ff515f6d'
-         '7701d8353f995981735966c492d0b2f4'
-         '64b9132473b09c7e7fc26b670b16c08d'
-         '1a57af013e6529673e01dee3c2f0ebef'
+         'b31b27f8a6a8f5fb79a6a6f4e1f07cc4'
+         'b10e4c612d5240d66fad8f1c50fe3242'
+         'c03f428e377dc745d41b8fa0808dd139'
+         'dd4f93989625fab9cdb3d2c3e7e52fcf'
+         '75602fa70033aef9cb42f3df16ec2eb3'
          '228b33d0cb13cab162b3e051ec9bb88d'
-         'ab36c80daa6d05ec9cfa101f39692577')
+         '9ed187660600a7884284aa6b3ddb08c6')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -123,17 +119,17 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
   cd linux-${pkgver}
 
-  git init
+#  git init
 
-  git fetch --tags
+#  git fetch --tags
 
-  git remote add $_reponame $_repo_url || true
-  git fetch --prune --jobs=5 --ipv4 $_reponame master
-  git reset --hard $_reponame/master
+#  git remote add $_reponame $_repo_url || true
+#  git fetch --prune --jobs=5 --ipv4 $_reponame master
+#  git reset --hard $_reponame/master
 
-  export EDITOR=true
+#  export EDITOR=true
 
-  git rebase bcachefs/master
+#  git rebase bcachefs/master
 
   # fix pkgver to chosen pkgver
   sed -i "s/SUBLEVEL = 0/SUBLEVEL = $_pkgverpntrel/g" $srcdir/linux-${pkgver}/Makefile
@@ -142,12 +138,12 @@ prepare() {
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
-
+    
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
-    [[ $src = 0*.patch ]] || continue
+    [[ $src = 000*.patch ]] || continue
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
@@ -163,20 +159,20 @@ prepare() {
       -i -e '/CONFIG_SCHED_DEBUG=/ s,y,n,' ./.config
 
   # fix naming schema in EXTRAVERSION of ck patch set
-  sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
+  #sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
 
-  echo "Patching with ck patchset..."
+  #echo "Patching with ck patchset..."
 
   # ck patchset itself
-  patch -Np1 -i ../"${_ckpatch}"
+  #patch -Np1 -i ../"${_ckpatch}"
 
   # non-interactively apply ck1 default options
   # this isn't redundant if we want a clean selection of subarch below
   make olddefconfig
 
   # https://github.com/graysky2/kernel_gcc_patch
-  #  echo "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
-  #  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
+#  echo "Applying enable_additional_cpu_optimizations_for_gcc patch"
+#  patch -Np1 -i "$srcdir/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.4-5.6.patch"
 
   if [ -n "$_subarch" ]; then
     # user wants a subarch so apply choice defined above interactively via 'yes'
