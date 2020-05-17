@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=guidolib-git
-pkgver=3000.336e737b
+pkgver=3615.cf902f4e
 pkgrel=1
 pkgdesc="engine for the graphic rendering of music scores, based on the Guido Music Notation format (git version)"
 arch=('x86_64' 'i686')
@@ -22,11 +22,14 @@ pkgver() {
 
 prepare() {
   cd $srcdir/$pkgname
+  git submodule update --init
   patch -Np1 < $srcdir/guidolib-stringh.patch
 }
 
 build() {
     cd "$srcdir/$pkgname/build"
+    make
+    cd "$srcdir/$pkgname/environments/Qt"
     make
 }
 
@@ -34,10 +37,10 @@ package() {
     cd "$srcdir/$pkgname"
     # binaries
     install -d "$pkgdir/usr/bin"
-    cp environments/Qt/apps/GuidoEditor/GuidoEditor environments/Qt/apps/GuidoSceneComposer/GuidoSceneComposer environments/Qt/apps/guido2image/guido2image src/tools/build/linux/guido* src/tools/build/linux/midi2proll "$pkgdir/usr/bin"
+    cp environments/Qt/apps/GuidoEditor/GuidoEditor environments/Qt/apps/GuidoSceneComposer/GuidoSceneComposer environments/Qt/apps/guido2image/guido2image build/bin/guido* build/bin/midi2proll "$pkgdir/usr/bin"
     # libraries
     install -d "$pkgdir/usr/lib"
-    cp -a build/libGUIDOEngine.* "$pkgdir/usr/lib"
+    cp -a build/lib/libGUIDOEngine.* "$pkgdir/usr/lib"
     # header files
     install -d "$pkgdir/usr/include/guido"
     cp src/engine/include/*.h platforms/linux/src/Cairo*.h "$pkgdir/usr/include/guido"
