@@ -1,6 +1,6 @@
 pkgbase = recapp-git
 	pkgdesc = Simple screen recorder for Linux written in GTK, using only GStreamer.
-	pkgver = 1.0.2.r0.g0c911ee
+	pkgver = 1.0.2.r6.g151d6d9
 	pkgrel = 1
 	url = https://github.com/amikha1lov/RecApp
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = recapp-git
 	depends = python-pydbus
 	depends = slop
 	depends = python-pulse-control
-	source = recapp-git-1.0.2.r0.g0c911ee::git+https://github.com/amikha1lov/RecApp.git
+	source = recapp-git::git+https://github.com/amikha1lov/RecApp.git
 	md5sums = SKIP
 
 pkgname = recapp-git
