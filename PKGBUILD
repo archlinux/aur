@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=inscore-git
-pkgver=4660.e171c466
+pkgver=4934.525a8dcd
 pkgrel=1
 pkgdesc="Grame's INScore: interactive augmented music scores (git version)"
 arch=('x86_64' 'i686')
@@ -35,16 +35,16 @@ package() {
     cd "$srcdir/$pkgname"
     # binaries
     install -d "$pkgdir/usr/bin"
-    cp build/linux/inscoreviewer "$pkgdir/usr/bin"
+    cp build/bin/inscoreviewer "$pkgdir/usr/bin"
     # libraries
     install -d "$pkgdir/usr/lib"
-    cp -a build/linux/libINScore.* "$pkgdir/usr/lib"
+    cp -a build/bin/libINScore.* "$pkgdir/usr/lib"
     # desktop files and icons
     install -d "$pkgdir/usr/share"
-    cp -R package/debian/usr/share/applications package/debian/usr/share/icons "$pkgdir/usr/share"
+    cp -R package/rsrc/share/applications package/rsrc/share/icons "$pkgdir/usr/share"
     # docs and examples
     install -d "$pkgdir/usr/share/inscore"
-    install -Dm644 package/readme.txt src/changelog.txt "$pkgdir/usr/share/inscore"
+    install -Dm644 package/*.html src/changelog.txt "$pkgdir/usr/share/inscore"
     install -d "$pkgdir/usr/share/inscore/doc"
     install -Dm644 package/doc/*.pdf "$pkgdir/usr/share/inscore/doc"
     cp -R package/doc/html "$pkgdir/usr/share/inscore/doc"
