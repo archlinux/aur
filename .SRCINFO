@@ -1,6 +1,6 @@
 pkgbase = corefm
 	pkgdesc = A lightwight filemanager from the CoreApps family.
-	pkgver = 2.8.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/corefm
 	arch = x86_64
@@ -8,11 +8,10 @@ pkgbase = corefm
 	groups = coreapps
 	license = GPL3
 	depends = qt5-base
-	depends = qt5-multimedia
 	depends = libcprime>=2.7.1
 	depends = libcsys>=2.7.1
-	source = https://gitlab.com/cubocore/corefm/-/archive/v2.8.0/corefm-v2.8.0.tar.gz
-	md5sums = 62c1a360ef78382077b5ab0e2385d7e1
+	source = https://gitlab.com/cubocore/corefm/-/archive/v2.9.0/corefm-v2.9.0.tar.gz
+	md5sums = d3c6f33cca90b636d0b8d27fe0b9fab2
 
 pkgname = corefm
 
