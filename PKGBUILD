@@ -51,7 +51,7 @@ _major=5.6
 _minor=13
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -66,7 +66,7 @@ _uksm_path="uksm-patches"
 #_uksm_path="https://raw.githubusercontent.com/zaza42/uksm/master"
 _uksm_patch="0001-UKSM-for-${_major}.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
-_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
+_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.4-5.6.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
@@ -322,14 +322,14 @@ done
 sha512sums=('f171638debb017ffcc5b9ce19b190cfa05638412e1f03344a5a7be45be901eb97c2df1449c9899c33a7668019f4c6d4eb1f99d864ab9a7050fbfd6b06c7aca8d'
             'SKIP'
             'd436ce9581bd6f17c4594ad4eaf23245088d09a44d92a4b3de15995e0e7ace000d50ab163167446c43c7eb1efb82eda76da42c92cdb04e903c1b79326bbf560d'
-            '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
+            '335df8899ef38d73e56fbc3caa88e311af85a61aaf2446253dbdfd91978de6202f77729bfb176c928bfedd3aa8a67549dd89aa966537c9fc40c51e72f0eed150'
             'd2226f3ca0583770f14be794b26d98d49ba10e38e3625af1726857a91f250cfce73454646b17d7597fdb98cd3f947a1356a0c9f88a2792b4d2cecf1fad76fe28'
             '5cbfbf1b4bb90114600de6eb2b5c058ced63c875582547c3739e296b43c5b26985a07095f55ae67e31e888598af651b7e37370acaff7188b366a7d3a51d53bdf'
             '1df4fb4d5c02c6cd0d4e8d3d807a5641303ed5e7f40b91a1508aaa1f5fec19d6a83d3165ae5131e198fea6cd1919015f58207b22a20eae9b47b95c28e1ca66b3'
             'de9b4dc492162fbd0f40bce710703ae1d66c1e7a5449a1d24bdaceb16f1d781457664722e4635c413ec00c26d0632b7ac21defcda65b2282bd475cc1e80732eb'
             '5d5e65aefcee037177fb2e8d3e841c347ea83118c868b7d87d843d526eb6935e39cef5dd9ab0f2c30ecc53c86efb581d9c824a31ec7afc0fdd2b7b1e8b3b3cfb'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
-            '9e356e754041ceddd7f3190e923ed7094b99315cb1b4be28aaabac9ed5729ce4a6b451fa60f9a856a4b235a6cedc7b1f43c2d0d9a47bf58a5def9344710c6a1a')
+            'ca38d6a0f89666a8cff5933ea01d970c570b1af02ef02592852dc7a0d11ae75ed1ca7ad3cbb04133238b4b14f71de8a322d8922ff7d824dbe8c85c17bc72444a')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
