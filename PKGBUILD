@@ -3,11 +3,11 @@
 pkgbase=datagrip
 pkgname=(datagrip datagrip-jre)
 pkgver=2020.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity'
 arch=('any')
 url='https://www.jetbrains.com/datagrip/'
-license=('commercial')
+license=('custom:jetbrains')
 depends=('glib2')
 conflicts=('0xdbe' '0xdbe-eap')
 options=('!strip')
