@@ -1,6 +1,6 @@
 pkgbase = dell-drac-mibs
 	pkgdesc = SNMP MIBs for Dell iDRAC remote management controllers
-	pkgver = 9.4.A00
+	pkgver = 9.4.0
 	pkgrel = 1
 	url = https://www.dell.com/support/home/en-au/drivers/driversdetails?driverid=cfpyt
 	arch = any
