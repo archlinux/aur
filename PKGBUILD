@@ -2,14 +2,14 @@
 
 _pkgname=jalv
 pkgname="${_pkgname}-git"
-pkgver=1.6.2.r458.87416ac
+pkgver=1.6.5.r481.367e3cb
 pkgrel=1
 pkgdesc="A simple but fully featured LV2 host for Jack (git version)"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/${_pkgname}/"
 license=('custom:ISC')
 depends=('jack' 'lilv' 'suil')
-makedepends=('git' 'gtk2' 'gtk3' 'gtkmm' 'python' 'qt5-base')
+makedepends=('git' 'gtk2' 'gtk3' 'gtkmm' 'lv2>=1.17.2' 'python' 'qt5-base')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 optdepends=('gtk2: Gtk+ 2.x frontend'
@@ -18,7 +18,8 @@ optdepends=('gtk2: Gtk+ 2.x frontend'
             'qt5-base: Qt 5.x frontend')
 source=("${_pkgname}::git+http://gitlab.com/drobilla/${_pkgname}.git"
         'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP'
+         'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"

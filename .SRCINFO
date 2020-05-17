@@ -1,6 +1,6 @@
 pkgbase = jalv-git
 	pkgdesc = A simple but fully featured LV2 host for Jack (git version)
-	pkgver = 1.6.2.r458.87416ac
+	pkgver = 1.6.5.r481.367e3cb
 	pkgrel = 1
 	url = http://drobilla.net/software/jalv/
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = jalv-git
 	makedepends = gtk2
 	makedepends = gtk3
 	makedepends = gtkmm
+	makedepends = lv2>=1.17.2
 	makedepends = python
 	makedepends = qt5-base
 	depends = jack
