@@ -1,7 +1,9 @@
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: 
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Mario Finelli <mario dot finelli at yahoo dot com>
 
 pkgname=linux-dash
-pkgver=1.5
+pkgver=2.0
 pkgrel=1
 pkgdesc="A drop-in, low-overhead monitoring web dashboard for a linux machine."
 arch=('any')
@@ -12,7 +14,7 @@ optdepends=('apache: webserver can host linux-dash'
             'nginx: webserver can host linux-dash'
             'node: linux-dash now works with node.js')
 source=(https://github.com/afaqurk/linux-dash/archive/$pkgver.tar.gz)
-sha256sums=('0091ff80ebbcfa4802ab55da07fa5bcaa5bdc118ddd924469dc8f177c4865989')
+sha256sums=('f7342807ecadd22410614336378311a356e04a18569f64935ea67b9bc27ccd56')
 
 package(){
   cd "$srcdir/$pkgname-$pkgver"
