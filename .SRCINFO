@@ -1,7 +1,7 @@
 pkgbase = tbt
 	pkgdesc = Thunderbolt(TM) user-space components
 	pkgver = 0.9.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/01org/thunderbolt-software-user-space
 	arch = x86_64
 	license = BSD
