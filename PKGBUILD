@@ -7,7 +7,7 @@ pkgdesc='A Vulkan post-processing layer. Currently the effects are CAS, FXAA, SM
 arch=('x86_64')
 url='https://github.com/DadSchoorse/vkBasalt'
 license=('zlib')
-makedepends=('git')
+makedepends=('git' 'meson' 'ninja')
 depends=('glslang' 'vulkan-tools' 'libx11' 'lib32-glibc' 'lib32-gcc-libs' 'lib32-libx11')
 optdepends=('reshade-shaders-git')
 source=("git+https://github.com/DadSchoorse/vkBasalt.git#commit=59463d0"  #tag=v${pkgver}"
