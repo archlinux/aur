@@ -1,7 +1,7 @@
 pkgbase = linux-firmware-iwlwifi-git
 	pkgdesc = iwlwifi firmware files for linux
 	pkgver = 20191128.4bebf45
-	pkgrel = 1
+	pkgrel = 2
 	url = git://git.kernel.org/pub/scm/linux/kernel/git/iwlwifi/linux-firmware.git
 	arch = any
 	license = GPL2
