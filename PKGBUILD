@@ -25,30 +25,31 @@ elif [ "$CARCH" = "x86_64" ]; then
 fi
 
 build() {
-	cd "$srcdir/${pkgname}-${pkgver}"
-	./configure --prefix=/usr --with-out
-	make
+  cd "$srcdir/${pkgname}-${pkgver}"
+  sed -i 's/opencv >= 2\.0/opencv4/g' configure
+  sed -i 's/opencv2\/core\/core\.hpp/opencv2\/core\/core_c\.h/g' src/facetrack.cpp
+  sed -i 's/#include <opencv2/#include <opencv4\/opencv2/g' src/facetrack.cpp
+  ./configure --prefix=/usr --with-out
+  make
 }
 
 package() {
-	cd "$srcdir/${pkgname}-${pkgver}"
-	make DESTDIR="$pkgdir/" install
+  cd "$srcdir/${pkgname}-${pkgver}"
+  make DESTDIR="$pkgdir/" install
 	
-	#Uinput module
-	mkdir -p $pkgdir/etc/modules-load.d
-	echo uinput >> $pkgdir/etc/modules-load.d/uinput.conf
-	#Track-Ir udev
-	mkdir -p $pkgdir/usr/lib/udev/rules.d
-	cd "$pkgdir/usr/share/linuxtrack"
-	install -D -m644  99-TIR.rules $pkgdir/usr/lib/udev/rules.d/99-TIR.rules
-	#Uinput udev
-	cd "$srcdir/${pkgname}-${pkgver}/src"
-	install -D -m644 99-Mickey.rules $pkgdir/usr/lib/udev/rules.d/99-Mickey.rules
+  # Uinput module
+  mkdir -p $pkgdir/etc/modules-load.d
+  echo uinput >> $pkgdir/etc/modules-load.d/uinput.conf
+  # Track-Ir udev
+  mkdir -p $pkgdir/usr/lib/udev/rules.d
+  cd "$pkgdir/usr/share/linuxtrack"
+  install -D -m644  99-TIR.rules $pkgdir/usr/lib/udev/rules.d/99-TIR.rules
+  # Uinput udev
+  cd "$srcdir/${pkgname}-${pkgver}/src"
+  install -D -m644 99-Mickey.rules $pkgdir/usr/lib/udev/rules.d/99-Mickey.rules
 
-	#Flightgear
-	cd "$srcdir/linuxtrack-${pkgver}/doc/fgfs"
-	mkdir -p "$pkgdir/usr/share/flightgear/data"
-	cp -r {Input,Nasal,Protocol} "$pkgdir/usr/share/flightgear/data/"
-
-	
+  # Flightgear
+  cd "$srcdir/linuxtrack-${pkgver}/doc/fgfs"
+  mkdir -p "$pkgdir/usr/share/flightgear/data"
+  cp -r {Input,Nasal,Protocol} "$pkgdir/usr/share/flightgear/data/"
 }
