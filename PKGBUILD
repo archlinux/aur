@@ -1,21 +1,23 @@
-# Maintainer: Felix Yan <felixonmars[at]gmail[dot]com>
+# Maintainer: 
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Felix Yan <felixonmars[at]gmail[dot]com>
 # Contributor Luca Gervasi <luca.gervasi on GMAIL>
 #
 # $Id$
 
 pkgname=vrrpd-fredb
-pkgver=1.5_02
-_fullname=Vrrpd-FredB-$pkgver-2012
+pkgver=1.15
+_fullname=Vrrpd-${pkgver}
 pkgrel=1
 pkgdesc="Linux implementation of Virtual Router Redundancy Protocol - Unofficial Version by FredB"
 arch=('i686' 'x86_64')
-url="http://vrrpd.sf.net/"
+url="https://github.com/fredbcode/Vrrpd"
 license=('GPL')
 provides=(vrrpd)
 conflicts=(vrrpd)
 
-source=(http://downloads.sourceforge.net/vrrpd/vrrpd/Unofficial/${_fullname}.tar.gz)
-md5sums=('53a4120410bb877698871fb6fb88ea9c')
+source=(https://github.com/fredbcode/Vrrpd/archive/v${pkgver}.tar.gz)
+sha256sums=('9f4000c4df8b2b7d3afd0fbb1eb9876958e4837daf1d7e3ce42b01cc154c2849')
 build() {
 	cd $srcdir/$_fullname
 	make

@@ -1,15 +1,15 @@
 pkgbase = vrrpd-fredb
 	pkgdesc = Linux implementation of Virtual Router Redundancy Protocol - Unofficial Version by FredB
-	pkgver = 1.5_02
+	pkgver = 1.15
 	pkgrel = 1
-	url = http://vrrpd.sf.net/
+	url = https://github.com/fredbcode/Vrrpd
 	arch = i686
 	arch = x86_64
 	license = GPL
 	provides = vrrpd
 	conflicts = vrrpd
-	source = http://downloads.sourceforge.net/vrrpd/vrrpd/Unofficial/Vrrpd-FredB-1.5_02-2012.tar.gz
-	md5sums = 53a4120410bb877698871fb6fb88ea9c
+	source = https://github.com/fredbcode/Vrrpd/archive/v1.15.tar.gz
+	sha256sums = 9f4000c4df8b2b7d3afd0fbb1eb9876958e4837daf1d7e3ce42b01cc154c2849
 
 pkgname = vrrpd-fredb
 
