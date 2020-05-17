@@ -1,6 +1,6 @@
 pkgbase = mroonga
 	pkgdesc = Fast fulltext search on MySQL(MariaDB bundled Mroonga package).
-	pkgver = 10.01
+	pkgver = 10.02
 	pkgrel = 1
 	url = http://mroonga.org/
 	arch = i686
@@ -27,9 +27,9 @@ pkgbase = mroonga
 	optdepends = cutter-test_framework
 	optdepends = ruby
 	optdepends = snowball-c
-	provides = mysql-clients=10.4.12
-	provides = mysql=10.4.12
-	provides = libmysqlclient=10.4.12
+	provides = mysql-clients=10.4.13
+	provides = mysql=10.4.13
+	provides = libmysqlclient=10.4.13
 	conflicts = libmariadbclient
 	conflicts = mariadb-clients
 	conflicts = mytop
@@ -37,13 +37,13 @@ pkgbase = mroonga
 	conflicts = mysql
 	conflicts = libmysqlclient
 	conflicts = mysql-clients
-	source = http://packages.groonga.org/source/mroonga/mroonga-10.01.tar.gz
-	source = https://downloads.mariadb.org/f/mariadb-10.4.12/source/mariadb-10.4.12.tar.gz
+	source = http://packages.groonga.org/source/mroonga/mroonga-10.02.tar.gz
+	source = https://downloads.mariadb.org/f/mariadb-10.4.13/source/mariadb-10.4.13.tar.gz
 	source = mariadb.service
 	source = mariadb-post.sh
 	source = mariadb-tmpfile.conf
-	sha1sums = 578586ddc4e678e9216bd6a9cae5e80f1214d20f
-	sha1sums = 8a07057e1249c66c7cb11a92936d45ef242581b1
+	sha1sums = 5f653a644b9a8321afe5371adb818c0ff6401518
+	sha1sums = f7df2151861dd57a7558bfd1a0b62edf5b54b3a0
 	sha1sums = 4bc34244fc4b578c155c8cd569d952a97a476f10
 	sha1sums = 206e9f7ba5357027becc2491e0987442f684d63e
 	sha1sums = c2a86c745002923234f9d6d79b3b462d5ab55e8d
