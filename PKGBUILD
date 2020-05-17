@@ -3,8 +3,8 @@
 
 pkgname=('linux-gpib-dkms')
 _pkgname='linux-gpib'
-pkgver=4.3.0
-pkgrel=2
+pkgver=4.3.3
+pkgrel=1
 pkgdesc='A support package for GPIB (IEEE 488) hardware (DKMS version).'
 arch=('i686' 'x86_64')
 url='http://linux-gpib.sourceforge.net/'
@@ -19,9 +19,9 @@ source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}%20for%
 install='linux-gpib.install'
 backup=('etc/gpib.conf')
 
-md5sums=('3085422695baf210b866601db6108860'
+md5sums=('1243aa44f788cf23f9b40ded54c14685'
          '2ca62fa9ee584853203e04ef08e6243d'
-         '079e0f9672e1957c4cae1f707b4e5ed7')
+         '411ca892af13ce8d2ef5ee75baa52fff')
 
 prepare() {
 
@@ -32,6 +32,8 @@ prepare() {
     tar xvfz "${_pkgname}-kernel-${pkgver}.tar.gz"
     cd "${_pkgname}-kernel-${pkgver}"
     patch -p1 < ../../dkms-kernel-version.diff
+    sed -i -e 's/ioremap_nocache/ioremap/g' drivers/gpib/eastwood/fluke_gpib.c
+    sed -i -e 's/ioremap_nocache/ioremap/g' drivers/gpib/fmh_gpib/fmh_gpib.c
 
     msg "Unpacking userland utils source"
     cd "${srcdir}/${_pkgname}-${pkgver}"

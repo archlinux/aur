@@ -1,9 +1,9 @@
---- linux-gpib-kernel-4.3.0.orig/Makefile	2019-08-23 11:30:28.000000000 +0300
-+++ linux-gpib-kernel-4.3.0/Makefile	2019-09-08 11:26:09.384478185 +0300
+--- linux-gpib-kernel-4.3.3.orig/Makefile	2019-08-23 11:30:28.000000000 +0300
++++ linux-gpib-kernel-4.3.3/Makefile	2019-09-08 11:26:09.384478185 +0300
 @@ -1,7 +1,7 @@
  # Makefile
  
- GPIB_SRCDIR ?= $$PWD
+ GPIB_SRCDIR ?= $(CURDIR)
 -LINUX_SRCDIR ?= /lib/modules/`uname -r`/build
 +LINUX_SRCDIR ?= /lib/modules/$(LINUX_VERSION)/build
  VERBOSE ?= 0
