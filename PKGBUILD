@@ -54,7 +54,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=7
+pkgrel=8
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -74,7 +74,7 @@ _bfq_ver="v11"
 _bfq_rel="r2K200514"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
-_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
+_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.4-5.6.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
@@ -340,7 +340,7 @@ sha512sums=('a2cf161a8f79e1d596cbe6e255b3b70fd5fd8cc27d4213a8bfd07f90afc26c40c70
             'SKIP'
             '31141f3afa388dbfc7a0a1c0a7b7fc58a6824befea1fc044eb76fc0e6d4c55f249e3e0f7e63c0697ba736dc902d85128c0d78eeffe8eca3c207a573664c74514'
             '1962d021d48236f287736383acac9176e6f992cf980b5c66c1ba006288b1f2039c02caa81ebf44e99edc0dcaf09160a3fe8e4aece7541b09ec5f30cd8d834dc5'
-            '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
+            '335df8899ef38d73e56fbc3caa88e311af85a61aaf2446253dbdfd91978de6202f77729bfb176c928bfedd3aa8a67549dd89aa966537c9fc40c51e72f0eed150'
             '5c447506bfbce039987db39a495d644832dd360025ae3d49979cd2467c080ad2c9ccb382ff1f6a0bc43957746c3ee35858282481a80a0a0c21db01986cd8b9bd'
             'f5dcb80af6b8bb40157bed9fe2549e0748fb26bf0c9c18a01da0f1b1e049249d2cdc2966b8deb3c440b608385bdc01a3365842d933f9237c3d78569466ddc800'
             'c70ba846adb911dce879853f860d283d350f08e190a7e62023281b813cb2491f30bee53fc05fbcd74867e0788f96651fbb4337a3ae2321e695bab77ada328e75'
@@ -348,7 +348,7 @@ sha512sums=('a2cf161a8f79e1d596cbe6e255b3b70fd5fd8cc27d4213a8bfd07f90afc26c40c70
             'c19f293006985564d6a3d375629af924d4ae9103090658c9cd2289f14b516ac89f3569b8946a4b4b853b836dacaf16368315f5eb019d9d120e9a4a62ff50593e'
             'bbe8f44ea6fe1c4ee5a35c277e9983c5f8f8dffc16d1dcb2234b5e6001c5346e72ef1ea47b239ff5e8a4dc14097da7155243011c9f05d949a87dd8b8b717d050'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
-            '5f535dfc0d0400ba053be3a03be51aa472495bfb3b53b38d2ef1b26186cb14483da27b454f710fc622478a8205d09113859d84ce43e985f525a06bc37c7c18f8')
+            '2e750276964622bfcc626ec96d93a2cc623eb452a66c47308b8cd921908cca771966068e051b92117aebb5701a6360b6a8ae497cd294f1e143365f7df34a8540')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
