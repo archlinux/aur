@@ -1,5 +1,5 @@
 # Maintainer: Felix Golatofski <contact@xdfr.de>
-# Contributor: Thomas Arnhold <thomas@arnhold.org
+# Co-Maintainer: Thomas Arnhold <thomas@arnhold.org
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Dan McGee <dan@archlinux.org>
 # Contributor: Kuba Kuźma <kuba@jah.pl>
@@ -8,8 +8,8 @@
 
 pkgbase=postgresql-9.6
 pkgname=('postgresql-libs-9.6' 'postgresql-docs-9.6' 'postgresql-9.6')
-pkgver=9.6.17
-pkgrel=2
+pkgver=9.6.18
+pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
 url="https://www.postgresql.org/"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql-check-db-dir
 	postgresql.sysusers
 	postgresql.tmpfiles)
-sha256sums=('f6e1e32d32545f97c066f3c19f4d58dfab1205c01252cf85c5c92294ace1a0c2'
+sha256sums=('517ec282b785e6d22f360c30ba0c5e2a506fca5ca07dcc545427511d94c89999'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '5f73b54ca6206bd2c469c507830261ebd167baca074698d8889d769c33f98a31'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
