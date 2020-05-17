@@ -15,13 +15,6 @@ makedepends=(git)
 depends=(vulkan-icd-loader qt5-base qt5-x11extras)
 
 prepare() {
-  if [ -d build ]
-  then
-    msg2 "Build dir already exist; performing an incremental build"
-    msg2 "If you want to perform a clean build, please delete $(realpath build)"
-    return
-  fi
-
   git -C VulkanCapsViewer submodule init
   git -C VulkanCapsViewer config submodule.Vulkan-Headers.url "$srcdir/Vulkan-Headers"
   git -C VulkanCapsViewer submodule update
