@@ -2,34 +2,27 @@
 
 _realname=CPU-X
 pkgname=cpu-x
-pkgver=3.2.4
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="A Free software that gathers information on CPU, motherboard and more"
 arch=('i686' 'x86_64')
 url="http://X0rg.github.io/CPU-X/"
 license=('GPL3')
-depends=('gtk3' 'ncurses' 'json-c' 'libcpuid' 'pciutils' 'procps-ng')
-makedepends=('cmake' 'nasm')
+depends=('gtk3' 'ncurses' 'libcpuid' 'pciutils' 'procps-ng')
+makedepends=('cmake' 'ninja' 'nasm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/X0rg/CPU-X/archive/v$pkgver.tar.gz")
-sha512sums=('67b3d9f3fe29f1164bfb4ffcd686196974300feebf702b4c4bf45490a0c5107b7d32f5800a279fc7d570c9830cf8881df15c09e5ce5389fdf1e947a3c877fa0c')
-
-prepare() {
-	msg2 "Make 'build' directory..."
-	mkdir -pv "$srcdir/$_realname-$pkgver/build"
-}
+sha512sums=('838ed092c81e9e295e08d4df564dd9af3b25d925ea7fc5cdfe4e831300a0c53e43333305962aeb783ab17fedf3a5786caf93e5a647f470af23eac8b156a167b7')
 
 build() {
-	export CFLAGS="$CFLAGS -Wno-implicit-function-declaration" # To avoid warning about 'check_new_version()' caused by 'WITH_LIBCURL=0'
-	cd "$srcdir/$_realname-$pkgver/build"
-	msg2 "Run 'cmake'..."
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DWITH_LIBCURL=0 ..
+	msg2 "Generate build system..."
+	cmake -S "$_realname-$pkgver" -B build -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
 
-	msg2 "Run 'make'..."
-	make
+	msg2 "Build..."
+	cmake --build build
 }
 
 package() {
-	cd "$srcdir/$_realname-$pkgver/build"
 	msg2 "Install..."
-	make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" ninja -C build install
+
 }
