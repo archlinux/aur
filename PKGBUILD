@@ -1,30 +1,29 @@
-# Maintainer: Lesto <bifrost AT hotmail DOT it>
+# Maintainer: lesto <lestofante88@gmail.com>
+
 pkgname=freedns-daemon
-pkgver=2
-pkgrel=1
+pkgver=2.0
+pkgrel=2
 pkgdesc="Lighweight, barebone and almost dependency free daemon for freedns.afraid.org"
 arch=('any')
 url="http://www.github.com/lestofante/freedns"
+urlgit="http://www.github.com/lestofante/freedns.git"
 license=('GPL')
 depends=('curl' 'bash')
 makedepends=()
 install='freedns-daemon.install'
 backup=('usr/bin/freedns-daemon.sh')
 changelog=
-source=(freedns-daemon.sh freedns-daemon.service freedns-daemon.install)
-noextract=(freedns-daemon.sh freedns-daemon.service freedns-daemon.install)
-md5sums=('6293f163b0562c98ff347e2c86b61f56'
-	 '8ef7bb67f76b0eb6283f3576bb621b53'
-	 'ee469778558ba68efd813611821f88c6')
+source=("$pkgname-$pkgver"::"git+$urlgit#tag=$pkgver")
+md5sums=('SKIP')
 
 
 build() {
-	cd "$srcdir"
+	cd "$srcdir/$pkgname-$pkgver"
 	chmod +x ./freedns-daemon.sh
 }
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir/$pkgname-$pkgver"
   mkdir -p "$pkgdir/usr/bin"
   cp freedns-daemon.sh "$pkgdir/usr/bin/"
   
