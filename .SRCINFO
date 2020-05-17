@@ -1,7 +1,7 @@
 pkgbase = linuxtrack
 	pkgdesc = Software for head motion tracking on linux.
 	pkgver = 0.99.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uglyDwarf/linuxtrack
 	install = linuxtrack.install
 	arch = i686
