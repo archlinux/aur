@@ -27,7 +27,6 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-    ./generate_colours.py
 	make build
 }
 
