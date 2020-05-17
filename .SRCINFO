@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-fluidsynth-bin
+	pkgdesc = A real-time software synthesizer based on the SoundFont 2 specifications (mingw-w64)
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = http://www.fluidsynth.org/
+	arch = any
+	license = GPL
+	depends = mingw-w64-glib2
+	depends = mingw-w64-libsndfile
+	depends = mingw-w64-portaudio
+	depends = mingw-w64-readline
+	provides = mingw-w64-fluidsynth
+	options = strip
+	options = staticlibs
+	source = http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-fluidsynth-2.1.2-1-any.pkg.tar.xz
+	sha256sums = SKIP
+
+pkgname = mingw-w64-fluidsynth-bin
+
