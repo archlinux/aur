@@ -1,0 +1,22 @@
+pkgbase = mingw-w64-gtk3-bin
+	pkgdesc = SVG rendering library (mingw-w64)
+	pkgver = 3.24.18
+	pkgrel = 1
+	url = https://www.gnome.org
+	arch = any
+	license = custom
+	depends = mingw-w64-adwaita-icon-theme
+	depends = mingw-w64-atk
+	depends = mingw-w64-glib2
+	depends = mingw-w64-json-glib
+	depends = mingw-w64-libepoxy
+	depends = mingw-w64-shared-mime-info
+	depends = mingw-w64-gdk-pixbuf2
+	depends = mingw-w64-pango
+	depends = mingw-w64-cairo
+	provides = mingw-w64-gtk3
+	source = http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-gtk3-3.24.18-1-any.pkg.tar.xz
+	sha256sums = SKIP
+
+pkgname = mingw-w64-gtk3-bin
+
