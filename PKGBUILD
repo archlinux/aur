@@ -2,13 +2,14 @@
 
 pkgname=subfinder-bin
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A subdomain discovery tool that discovers valid subdomains for websites"
 arch=("x86_64")
 url="https://github.com/projectdiscovery/subfinder"
 license=("MIT")
 provides=('subfinder')
 conflicts=('subfinder')
+depends=('glibc')
 source=("${pkgname}-${pkgver}.tar::https://github.com/projectdiscovery/subfinder/releases/download/v${pkgver}/subfinder-linux-amd64.tar"
         "https://raw.githubusercontent.com/projectdiscovery/subfinder/v${pkgver}/LICENSE")
 sha256sums=('829616d99e6dffb93ea253403665fd7003931f080c531e8ace4049d79039c531'
