@@ -5,7 +5,7 @@
 
 _target=riscv64-linux-gnu
 pkgname=$_target-gcc
-pkgver=9.3.0
+pkgver=10.1.0
 _islver=0.22
 pkgrel=1
 pkgdesc='Cross compiler for 32-bit and 64-bit RISC-V'
@@ -17,7 +17,7 @@ depends=("$_target-binutils" "$_target-glibc" 'libmpc')
 options=('!emptydirs' '!strip')
 source=("https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "http://isl.gforge.inria.fr/isl-$_islver.tar.xz")
-sha512sums=('4b9e3639eef6e623747a22c37a904b4750c93b6da77cf3958d5047e9b5ebddb7eebe091cc16ca0a227c0ecbd2bf3b984b221130f269a97ee4cc18f9cf6c444de'
+sha512sums=('0cb2a74c793face751f42bc580960b00e2bfea785872a0a2155f1f1dbfaa248f9591b67f4322db0f096f8844aca9243bc02732bda106c3b6e43b02bb67eb3096'
             '7c3c9502ea07e4d47a823841837c3aa0b9d7ba0fe58deaf180734e44c18e53735ec783645da0bdc56b617c9e639b226cc03b40a947f852e1e787166a64f59424')
 
 if [[ -n "$_snapshot" ]]; then
