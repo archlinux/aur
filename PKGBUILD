@@ -20,14 +20,10 @@ pkgver() {
   echo $(git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
 }
 
-prepare() {
+build() {
   cd ${_gitname}
   cmake -B build -DCMAKE_BUILD_TYPE=Release
-}
-
-build() {
-  cd ${_gitname}/build
-  make
+  make -C build
 }
 
 package() {
