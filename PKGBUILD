@@ -4,26 +4,22 @@ _commit=045a0fa
 _pkgname=st
 pkgname=an9wer-$_pkgname
 pkgver=0.8.3.r9.g045a0fa
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple terminal implementation for X"
 url="https://st.suckless.org/"
 arch=('x86_64')
 license=('MIT')
 makedepends=('git')
 depends=('xorgproto' 'libx11' 'libxft')
-source=("$_pkgname::git://git.suckless.org/st")
-md5sums=('SKIP')
+install=$pkgname.install
+source=("st-rebuild"
+        "$_pkgname::git://git.suckless.org/st")
+md5sums=('d21cbe64a3652c44b8fe88d706412856'
+         'SKIP')
 
 prepare() {
   cd "$_pkgname"
-
-  if [ -e "$BUILDDIR/$_pkgname/config.h" ]; then
-    warning "Use $BUILDDIR/$_pkgname/config.h"
-    cp "$BUILDDIR/$_pkgname/config.h" config.h
-  else
-    warning "Use default config.h"
-    cp config.def.h config.h
-  fi
+  cp config.def.h config.h
 }
 
 pkgver() {
@@ -38,8 +34,14 @@ build() {
 }
 
 package() {
+  install -m755 -D st-rebuild "$pkgdir/usr/bin/st-rebuild"
+
   cd "$_pkgname"
   make PREFIX=/usr DESTDIR="$pkgdir" install
   install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
   install -m644 -D README  "$pkgdir/usr/share/doc/$_pkgname/README"
+  # Source codes
+  install -m644 -D -t "$pkgdir/usr/src/st" \
+    arg.h config.def.h config.mk FAQ LEGACY LICENSE \
+    Makefile README st.1 st.c st.h st.info TODO win.h x.c
 }
