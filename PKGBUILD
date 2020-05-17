@@ -4,7 +4,7 @@ pkgname=(
 	python-rotate-backups
 )
 pkgbase=rotate-backups
-pkgver=8.0
+pkgver=8.1
 pkgrel=1
 pkgdesc="Simple command line interface for backup rotation"
 arch=(any)
@@ -29,7 +29,7 @@ makedepends=(
 source=(
 	"https://files.pythonhosted.org/packages/source/${pkgbase::1}/${pkgbase}/${pkgbase}-${pkgver}.tar.gz"
 )
-sha256sums=('74468b2d0eb693918931cb92a63a3246479520b949a7ea37e029f08103fd07ee')
+sha256sums=('f8fe4012cb0b6768ffebe12d995bfd558fafaf636275ff016dd9135344b33980')
 
 prepare() {
 	cd "${pkgbase}-${pkgver}"
