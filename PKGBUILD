@@ -1,7 +1,7 @@
 # Maintainer: Elias Werberich <elias@werberich.de>
 
 pkgname=amnes
-pkgver=20.05.0
+pkgver=20.05.1
 pkgrel=1
 epoch=0
 pkgdesc='Adaptive Meta-Framework for Network Experiment Studies'
