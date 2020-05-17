@@ -94,7 +94,7 @@ source=(
   0005-Makefile-disallow-data-races-on-gcc-10-as-well.patch
   0006-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch
   0007-v5.6-fsync.patch
-  0008-enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.4-5.6.patch
+  0008-enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch
 )
 
 
@@ -104,7 +104,7 @@ validpgpkeys=(
 )
 md5sums=('73fa7a9e7c42a9ab2cc8151d20e8d6b6'
          'SKIP'
-         'f1f11a1f61e0a1d4625301ca53d31c7a'
+         '3ff30ce14b831afca82cfd32d8ccec2e'
          '2cebdad39da582fd6a0c01746c8adb42'
          'fde3643971460e9a7fc97e94fd2aac38'
          '5fe73681affcf4878cb853452218ce36'
@@ -114,7 +114,7 @@ md5sums=('73fa7a9e7c42a9ab2cc8151d20e8d6b6'
          '64b9132473b09c7e7fc26b670b16c08d'
          '1a57af013e6529673e01dee3c2f0ebef'
          '228b33d0cb13cab162b3e051ec9bb88d'
-         '2b558327a281a410209aae74e7ddff6f')
+         'ab36c80daa6d05ec9cfa101f39692577')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
