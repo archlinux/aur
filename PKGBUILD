@@ -2,7 +2,7 @@
 
 _pkgname=janet
 pkgname=janet-lang-git
-pkgver=1.10.0.r2123.657fae4
+pkgver=1.10.0.r2126.33b5d96
 pkgrel=1
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -14,7 +14,7 @@ provides=('janet')
 conflicts=('janet-lang')
 source=("git+https://github.com/janet-lang/janet.git")
 sha256sums=('SKIP')
-options=('staticlibs')
+options=('staticlibs' '!strip')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
