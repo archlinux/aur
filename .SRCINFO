@@ -1,9 +1,9 @@
 pkgbase = exo-git
 	pkgdesc = Extensions to Xfce originally developed by os-cillation.
-	pkgver = 0.12.0.r2131.03df63a
-	pkgrel = 2
+	pkgver = 0.12.11+68+ga978d108
+	pkgrel = 1
 	epoch = 1
-	url = https://git.xfce.org/xfce/exo/tree/README
+	url = https://gitlab.xfce.org/xfce/exo/
 	arch = i686
 	arch = x86_64
 	groups = xfce4-git
@@ -14,20 +14,14 @@ pkgbase = exo-git
 	makedepends = pkgconfig
 	makedepends = libnotify
 	makedepends = perl-uri
-	makedepends = pygtk>=2.13
-	depends = libxfce4util>=4.12
-	depends = gtk3>=3.22
-	depends = glib2>=2.42
-	depends = gtk2>=2.24
 	depends = hicolor-icon-theme
-	depends = libxfce4ui>=4.12
-	depends = libsm
+	depends = libxfce4ui
 	optdepends = libnotify: enables notification support
 	optdepends = perl: enables mail-compose helper script
-	provides = exo=0.12.0.r2131.03df63a
+	provides = exo=0.12.11+68+ga978d108
 	conflicts = exo
 	options = !libtool
-	source = exo-git::git://git.xfce.org/xfce/exo
+	source = exo::git+https://gitlab.xfce.org/xfce/exo.git
 	md5sums = SKIP
 
 pkgname = exo-git
