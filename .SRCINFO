@@ -19,6 +19,8 @@ pkgbase = code-stable-git
 	optdepends = bash-completion: Bash completions
 	optdepends = zsh-completions: ZSH completitons
 	optdepends = x11-ssh-askpass: SSH authentication
+	conflicts = code
+	conflicts = code-git
 	source = code-stable-git::git+https://github.com/microsoft/vscode.git#tag=1.45.1
 	source = code.js
 	source = code.sh
