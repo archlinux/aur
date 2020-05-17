@@ -12,7 +12,7 @@ license=('GPL3')
 install="gdlauncher-appimage.install"
 makedepends=('gendesk')
 depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3')
-
+conflict=('gdlauncher' 'gdlauncher-bin' 'gdlauncher-git')
 source_x86_64=(
     "GDLauncher-linux-setup.AppImage::https://github.com/gorilla-devs/GDLauncher/releases/download/v${pkgver}/GDLauncher-linux-setup.AppImage"
 )
