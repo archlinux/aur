@@ -1,7 +1,7 @@
 # Maintainer: networkjanitor <networkjanitor@xyooz.net>
 pkgname=raidgrep-git
 _pkgname=raidgrep
-pkgver=1.1.0.r0.g684024e
+pkgver=1.1.0.r7.g013776c
 pkgrel=1
 pkgdesc="Guild Wars 2/arcdps evtc log searching tool. Built[sic] from master branch using the rust nightly toolchain."
 arch=("x86_64")
@@ -19,11 +19,6 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${_pkgname}"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd "${_pkgname}"
-    rustup install nightly
 }
 
 build() {
