@@ -41,7 +41,7 @@ prepare() {
     srcfolder=${src##*/}
     srcfolder=${srcfolder%.git}
     echo "s#${src#git+}#${srcdir}/${srcfolder}#"
-    sed -i "s#${src#git+}#${srcdir}/${srcfolder}#" ${srcdir}/${pkgname%-java}-${pkgver}/makefiles/Makefile.third_party.unix.mk
+    sed -i "s#${src#git+}#${srcdir}/${srcfolder}#" "${srcdir}"/${pkgname%-java}-${pkgver}/makefiles/Makefile.third_party.unix.mk
   done
 }
 
