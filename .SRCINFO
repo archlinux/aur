@@ -1,7 +1,7 @@
 pkgbase = perl-linux-fd
 	pkgdesc = Provides you Linux specific special file handles
 	pkgver = 0.011
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/dist/Linux-FD
 	arch = any
 	license = PerlArtistic

@@ -1,8 +1,10 @@
-# Maintainer: Andrew Rabert <draje@nullsum.net>
+# Maintainer:
+# Contributor: Andrew Rabert <draje@nullsum.net>
 
 pkgname=perl-linux-fd
+_perl_version=5.30.2
 pkgver=0.011
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides you Linux specific special file handles"
 arch=('any')
 url="http://search.cpan.org/dist/Linux-FD"
@@ -23,9 +25,8 @@ check() {
 }
 
 package() {
-  perl_version=5.26
   cd Linux-FD-$pkgver
   ./Build install --install_base="."
-  mkdir -p "$pkgdir/usr/lib/perl5/$perl_version/vendor_perl"
-  cp -r ./lib/perl5/*/* "$pkgdir/usr/lib/perl5/$perl_version/vendor_perl"
+  mkdir -p "$pkgdir/usr/lib/perl5/$_perl_version/vendor_perl"
+  cp -r ./lib/perl5/*/* "$pkgdir/usr/lib/perl5/$_perl_version/vendor_perl"
 }
