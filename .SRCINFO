@@ -1,0 +1,13 @@
+pkgbase = lv2-speech-denoiser-git
+	pkgver = 04cfba9
+	pkgrel = 1
+	url = https://github.com/lucianodato/speech-denoiser
+	arch = x86_64
+	license = LGPL-3.0
+	makedepends = glibc
+	makedepends = git
+	makedepends = meson
+	makedepends = lv2
+
+pkgname = lv2-speech-denoiser-git
+
