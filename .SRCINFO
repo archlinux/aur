@@ -1,0 +1,16 @@
+pkgbase = pdfunlock
+	pkgdesc = Aims to remove modification restrictions from PDF files
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/boomer41/PdfUnlock
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = ghostscript
+	depends = poppler
+	depends = coreutils
+	source = git+http://github.com/boomer41/PdfUnlock.git#tag=v0.1
+	md5sums = SKIP
+
+pkgname = pdfunlock
+
