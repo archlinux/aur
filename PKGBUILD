@@ -5,7 +5,7 @@
 # - Mirror: https://github.com/timvisee/ffsend/blob/master/pkg/aur/ffsend-git/PKGBUILD
 
 pkgname=ffsend-git
-pkgver=0.2.51.e98ddafd
+pkgver=0.2.62.c6709473
 pkgrel=1
 pkgdesc="Easily and securely share files from the command line. A Firefox Send client."
 url="https://gitlab.com/timvisee/ffsend"
@@ -16,7 +16,7 @@ arch=('x86_64' 'i686')
 provides=('ffsend')
 conflicts=('ffsend')
 depends=('ca-certificates')
-makedepends=('openssl>=1.0' 'rust>=1.32' 'cargo' 'cmake')
+makedepends=('rust>=1.39' 'cargo' 'cmake')
 optdepends=('xclip: clipboard support'
             'bash-completion: support auto completion for bash')
 
