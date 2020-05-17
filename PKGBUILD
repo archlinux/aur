@@ -2,11 +2,11 @@
 
 pkgname=youtrack
 pkgver=2020.1.5557
-pkgrel=1
+pkgrel=2
 pkgdesc='Issue tracker designed for development teams'
 arch=('i686' 'x86_64')
 url='https://www.jetbrains.com/youtrack/'
-license=('commercial:jetbrains')
+license=('custom:jetbrains')
 depends=('java-runtime-headless')
 backup=('etc/youtrack/youtrack.conf')
 options=('!strip')

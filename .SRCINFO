@@ -1,11 +1,11 @@
 pkgbase = youtrack
 	pkgdesc = Issue tracker designed for development teams
 	pkgver = 2020.1.5557
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/youtrack/
 	arch = i686
 	arch = x86_64
-	license = commercial:jetbrains
+	license = custom:jetbrains
 	depends = java-runtime-headless
 	noextract = youtrack.jar
 	options = !strip
