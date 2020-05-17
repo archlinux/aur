@@ -20,11 +20,11 @@ prepare() {
   cd exfat-${pkgver}
   # build without fuse support
   patch -p0 < "${srcdir}"/nofuse.patch
+  autoreconf -fiv
 }
 
 build() {
   cd exfat-${pkgver}
-  autoreconf -fiv
   ./configure --prefix=/usr --sbindir=/usr/bin
   make CCFLAGS="${CFLAGS} ${CPPFLAGS} -std=c99" LINKFLAGS="${LDFLAGS}"
 }
