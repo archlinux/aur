@@ -1,4 +1,5 @@
 # Maintainer: evorster <evorster@gmail.com>
+# Contributor: bartus
 # Contributor: ZKenJ <zkenjm@gmail.com>
 # Contributor: Cilyan
 # Contributor: Dan Serban
@@ -8,7 +9,7 @@
 
 
 pkgname=slowmovideo-git
-pkgver=0.6.r4.gcaef2b0
+pkgver=0.6.r7.g2a74306
 pkgrel=1
 pkgdesc="Video slow motion effect via interpolation"
 arch=('i686' 'x86_64')
