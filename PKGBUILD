@@ -1,7 +1,7 @@
 # Maintainer: gee
 
 pkgname=vkbasalt
-pkgver=0.3.1+12+g5b4ce45
+pkgver=0.3.1+37+g59463d0
 pkgrel=1
 pkgdesc='A Vulkan post-processing layer. Currently the effects are CAS, FXAA, SMAA, deband.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('zlib')
 makedepends=('git')
 depends=('glslang' 'vulkan-tools' 'libx11' 'lib32-glibc' 'lib32-gcc-libs' 'lib32-libx11')
 optdepends=('reshade-shaders-git')
-source=("git+https://github.com/DadSchoorse/vkBasalt.git#commit=5b4ce45"  #tag=v${pkgver}"
+source=("git+https://github.com/DadSchoorse/vkBasalt.git#commit=59463d0"  #tag=v${pkgver}"
         "git+https://github.com/DadSchoorse/reshade.git")
 sha256sums=(SKIP
             SKIP)
@@ -26,30 +26,28 @@ prepare() {
   git submodule init
   git config submodule.reshade.url ../reshade
   git submodule update
-
-  sed -i 's|../reshade/deps/spirv/include/spirv/unified1|/usr/include/SPIRV/|g' src/makefile
 }
 
 build() {
   cd ${srcdir}/vkBasalt
 
-  for subdir in src shader
-  do
-    CXXFLAGS="$CXXFLAGS -fPIC" make -C $subdir
-  done
+  msg "Building 64b"
+  meson --buildtype=release builddir
+  ninja -C builddir
+
+  msg "Building 32b"
+  ASFLAGS=--32 CFLAGS=-m32 CXXFLAGS=-m32 PKG_CONFIG_PATH=/usr/lib32/pkgconfig meson --buildtype=release --libdir=lib32 -Dwith_json=false builddir.32
+  ninja -C builddir.32
 }
 
 package() {
   cd ${srcdir}/vkBasalt
 
-  install -Dm 755 build/libvkbasalt64.so "${pkgdir}/usr/lib/libvkbasalt.so"
-  install -Dm 755 build/libvkbasalt32.so "${pkgdir}/usr/lib32/libvkbasalt.so"
-  install -dm 755 "${pkgdir}/usr/share/vkBasalt/shader"
-  install -Dm 644 build/shader/*.spv  "${pkgdir}/usr/share/vkBasalt/shader"
+  install -Dm 755 builddir/src/libvkbasalt.so "${pkgdir}/usr/lib/libvkbasalt.so"
+  install -Dm 755 builddir.32/src/libvkbasalt.so "${pkgdir}/usr/lib32/libvkbasalt.so"
   install -Dm 644 config/vkBasalt.conf "${pkgdir}/usr/share/vkBasalt/vkBasalt.conf.example"
   sed -i 's|*path/to/reshade-shaders/Textures\*|/usr/share/reshade/textures|g' "${pkgdir}/usr/share/vkBasalt/vkBasalt.conf.example"
   sed -i 's|*path/to/reshade-shaders/Shaders\*|/usr/share/reshade/shaders|g' "${pkgdir}/usr/share/vkBasalt/vkBasalt.conf.example"
   install -dm 755 "${pkgdir}/usr/share/vulkan/implicit_layer.d"
-  sed 's+@lib+/usr/lib/libvkbasalt.so+g' config/vkBasalt64.json > "${pkgdir}/usr/share/vulkan/implicit_layer.d/vkBasalt64.json"
-  sed 's+@lib+/usr/lib32/libvkbasalt.so+g' config/vkBasalt32.json > "${pkgdir}/usr/share/vulkan/implicit_layer.d/vkBasalt32.json"
+  install -Dm 644 config/vkBasalt.json "${pkgdir}/usr/share/vulkan/implicit_layer.d/vkBasalt.json"
 }
