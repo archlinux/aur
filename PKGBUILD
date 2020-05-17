@@ -2,23 +2,33 @@
 
 pkgname=libpurple-lurch
 pkgver=0.6.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Plugin for libpurple (Pidgin, Adium, etc) implementing OMEMO (using axolotl)'
 arch=('i686' 'x86_64')
 url='https://github.com/gkdr/lurch'
 license=('GPL')
 makedepends=('cmake' 'git')
-depends=('libpurple' 'mxml' 'libxml2' 'sqlite' 'libgcrypt')
+depends=('libpurple' 'mxml' 'libxml2' 'sqlite' 'libgcrypt' 'libsignal-protocol-c')
 optdepends=('libpurple-carbons: message carbons support')
 source=("git+https://github.com/gkdr/lurch.git#tag=v${pkgver}"
-        gitmodule-paths.patch)
+        'git+https://github.com/gkdr/axc'
+        'git+https://github.com/gkdr/libomemo'
+        'git+https://github.com/WhisperSystems/libsignal-protocol-c.git')
 b2sums=('SKIP'
-        'bb6a60e8a57b6e9645bfdc9e26e960afbb4f1fea1228f8ce0040ce49cac788e2b04e99c71a3b7a219a14d8c3fb7da1e132f91d8772d7657b314eda0c9d039f2d')
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 prepare() {
   cd ${pkgname##libpurple-}
-  patch -p0 < "${srcdir}"/gitmodule-paths.patch
-  git submodule update --init --recursive
+  git submodule init
+  git config submodule.'lib/axc'.url "${srcdir}"/axc
+  git config submodule.'lib/libomemo'.url "${srcdir}"/libomemo
+  git submodule update --recursive
+  cd lib/axc
+  git config submodule.'lib/libsignal-protocol-c'.url "${srcdir}"/libsignal-protocol-c
+  cd "${srcdir}"/${pkgname##libpurple-}
+  git submodule update --recursive
 }
 
 build() {
