@@ -1,0 +1,5 @@
+src
+pkg
+hid-sony.c
+hid-ids.h
+hid-sony-ds3usb-dkms-*.pkg.tar.xz

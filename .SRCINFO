@@ -1,0 +1,23 @@
+pkgbase = hid-sony-ds3usb-dkms
+	pkgdesc = The hid_sony kernel module with a patch to fix buttons on Sony DualShock 3 USB adapters
+	pkgver = 5.6.13
+	pkgrel = 1
+	url = https://www.spinics.net/lists/linux-input/msg67472.html
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	source = hid-sony.c::https://git.archlinux.org/linux.git/plain/drivers/hid/hid-sony.c?h=v5.6.13-arch1
+	source = hid-ids.h::https://git.archlinux.org/linux.git/plain/drivers/hid/hid-ids.h?h=v5.6.13-arch1
+	source = Makefile
+	source = hid-sony-ds3usb.patch
+	source = hid-sony-ds3usb-dkms.dkms
+	source = hid-sony-blacklist.modprobe
+	sha256sums = 509b6d7d4fc33fdaa4efd971de93965e6864f50dc6fb8aa89ae67a36f75fc845
+	sha256sums = 162932261317e712cc344f5947af96c0bdff33adacade895e2e694df87330121
+	sha256sums = 96cab0ae36a9d7a8ab01aa7d5a20890981f7f5836328b1d35eaf54ec6bb6b208
+	sha256sums = 089fbfb629f77cbe71bf424ce79e59dd3c851ca90404935d5983608f26eede12
+	sha256sums = 04a25acef8059630188ebbf398115c87bf27f97a8e37ce9a10d1d30387800610
+	sha256sums = f4ab0b6941e353e861007a0bb6c468b4a7d027c56d530056fa686ad837616635
+
+pkgname = hid-sony-ds3usb-dkms
+
