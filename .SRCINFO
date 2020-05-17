@@ -10,8 +10,28 @@ pkgbase = or-tools-java
 	makedepends = cmake
 	makedepends = git
 	depends = java-runtime>=7.0
-	source = https://github.com/google/or-tools/archive/v7.6.tar.gz
+	source = https://github.com/google/or-tools/archive/v7.6/or-tools-java-7.6.tar.gz
+	source = git+https://github.com/gflags/gflags.git
+	source = git+https://github.com/google/glog.git
+	source = git+https://github.com/google/protobuf.git
+	source = git+https://github.com/abseil/abseil-cpp.git
+	source = git+https://github.com/NixOS/patchelf.git
+	source = git+https://github.com/coin-or/Cbc.git
+	source = git+https://github.com/coin-or/Cgl.git
+	source = git+https://github.com/coin-or/Clp.git
+	source = git+https://github.com/coin-or/Osi.git
+	source = git+https://github.com/coin-or/CoinUtils.git
 	b2sums = 276fc43ff736dbc559118d887d17bc140151b2754dc96f936b4a2238e75b120028590396b8134d08c237c2a224180ec29c29fa37e85cd292511943b8d89651b3
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = or-tools-java
 
