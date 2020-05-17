@@ -23,8 +23,7 @@ depends=(
         'hicolor-icon-theme' 'xdg-utils' 'lua52'
         'libdvdnav' 'rsound' 'libxrandr' 'jack' 'rubberband'
         'uchardet'  'libarchive' 'zlib'
-  'sndio' 'openal' 'vulkan-icd-loader' 'shaderc' 'vapoursynth' "${_undetected_depends[@]}"
-             'ffmpeg'
+  'sndio' 'openal' 'vulkan-icd-loader' 'shaderc' 'vapoursynth' 'ffmpeg'
 )
 
 optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
