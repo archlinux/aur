@@ -4,7 +4,7 @@ _watch=('https://api.github.com/repos/gentoo/portage/commits?path=bin/etc-update
 
 pkgname='etc-update'
 pkgdesc="CLI to interactively merge .pacnew configuration files"
-pkgver=2.3.60
+pkgver=2.3.99
 pkgrel=1
 arch=('any')
 url="https://wiki.gentoo.org/wiki/Handbook:X86/Portage/Tools#etc-update"
@@ -14,7 +14,7 @@ makedepends=('git')
 optdepends=('dialog: for the menu mode (not automode)')
 backup=("etc/etc-update.conf")
 source=("https://github.com/gentoo/portage/archive/portage-${pkgver}.tar.gz")
-sha256sums=('363d198ae3f55b2b11ee69e917c429ed5131ed24ffd138fbfdf30189025bdf3f')
+sha256sums=('fc5dcc37033d876360c8427d1b6afbdb29786a675d6741909fb341da54568a1d')
 
 package() {
   install -Dm 0755 -t "${pkgdir}/usr/bin" "portage-portage-${pkgver}/bin/${pkgname}"
