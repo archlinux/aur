@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-suspicious-login
-pkgver=1.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Detect and warn about suspicious IPs logging into Nextcloud"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nextcloud')
 makedepends=()
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nextcloud/suspicious_login/releases/download/v${pkgver}/suspicious_login.tar.gz")
-sha512sums=("3323f9263ed18ef1059a6040436ee8865dabea8f1c7445782de0b831def269de9151edd2b6da30703f5ff28affd30f3a8225b8a1f60d31432cb64b0451703dbe")
+sha512sums=('6d57b8790f93947d90a4e582cba6ef6521ac98304b62411ed34a35196d180cf996d408f49e63fc70b274bced5b362e228ad2f3779bdb29e3af20ef98fa677474')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
