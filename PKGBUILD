@@ -128,7 +128,7 @@ prepare() {
   git fetch --tags
 
   git remote add $_reponame $_repo_url || true
-  git fetch $_reponame master
+  git fetch --prune --jobs=5 --ipv4 $_reponame master
   git reset --hard $_reponame/master
 
   export EDITOR=true
