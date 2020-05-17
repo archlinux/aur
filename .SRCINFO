@@ -1,6 +1,6 @@
 pkgbase = tpacpi-bat-git
-	pkgdesc = A Perl script with ACPI calls for recent ThinkPads (such as T420 and W520) whose battery thresholds are not supported by tp_smapi
-	pkgver = 119.4959b52
+	pkgdesc = A Perl script with ACPI calls for recent ThinkPads which are not supported by tp_smapi
+	pkgver = 3.1.r12.g4959b52
 	pkgrel = 1
 	url = https://github.com/teleshoes/tpacpi-bat
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = tpacpi-bat-git
 	provides = tpacpi-bat
 	conflicts = tpacpi-bat
 	backup = etc/conf.d/tpacpi
-	source = git://github.com/teleshoes/tpacpi-bat.git
+	source = git+https://github.com/teleshoes/tpacpi-bat.git
 	b2sums = SKIP
 
 pkgname = tpacpi-bat-git
