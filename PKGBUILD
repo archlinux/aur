@@ -2,7 +2,7 @@
 
 pkgname=kepubify
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert your ePubs into kepubs, with a easy-to-use command-line tool'
 arch=('x86_64')
 url='https://geek1011.github.io/kepubify'
@@ -16,18 +16,27 @@ build() {
 
   go build \
     -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
     -ldflags "-extldflags $LDFLAGS -X main.version=$pkgver" \
     -o $pkgname \
     github.com/geek1011/kepubify/v3/cmd/kepubify/
 
   go build \
     -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
     -ldflags "-extldflags $LDFLAGS -X main.version=$pkgver" \
     -o covergen \
     github.com/geek1011/kepubify/v3/cmd/covergen/
 
   go build \
     -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
     -ldflags "-extldflags $LDFLAGS -X main.version=$pkgver" \
     -o seriesmeta \
     github.com/geek1011/kepubify/v3/cmd/seriesmeta/
