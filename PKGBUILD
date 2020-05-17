@@ -1,11 +1,6 @@
 # Maintainer:  ahjolinna <@yahoo.com>
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 
-# WARNING: The configure script will automatically enable any optional
-# features it finds support for on your system. If you want to avoid
-# linking against something you have installed, you'll have to disable
-# it in the configure below. The package() script will attempt to
-# update the dependencies based on dynamic libraries when packaging..
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
 pkgver=0.32.0.r484.g152b0e2a8c
@@ -14,16 +9,16 @@ pkgdesc="MPV using ahjolinna's personal pre-made conf build"
 arch=('x86_64')
 license=('GPL')
 url='http://mpv.io'
-_undetected_depends=('desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
 depends=(
-# official repositories:
-'lcms2' 'libcdio-paranoia' 'libgl' 'libxss' 'mujs'
-'libxinerama' 'libxv' 'libxkbcommon' 'libva'
- 'wayland' 'libcaca' 'libplacebo' 'desktop-file-utils'
-        'hicolor-icon-theme' 'xdg-utils' 'lua52'
-        'libdvdnav' 'rsound' 'libxrandr' 'jack' 'rubberband'
-        'uchardet'  'libarchive' 'zlib'
-  'sndio' 'openal' 'vulkan-icd-loader' 'shaderc' 'vapoursynth' 'ffmpeg'
+ # official repositories:
+        'cmocka' 'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
+        'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
+        'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'mujs'
+        'libdvdnav' 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
+        'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'shaderc'
+        'libplacebo' 'zimg'
+    # AUR:
+        'spirv-cross'
 )
 
 optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
@@ -40,7 +35,8 @@ makedepends=('vulkan-headers' 'mesa' 'python-docutils'
              'ladspa' 'x265' 'openal' 'jack' 'unzip'
              'samba' 'acpitool' 'inxi' 'git' 'vapoursynth'
              'libvdpau' 'libva' 'streamlink' 'cuda'
-             'ffnvcodec-headers' 'ffnvcodec-headers')
+             'ffnvcodec-headers' 'ffnvcodec-headers' 
+             'hicolor-icon-theme' 'desktop-file-utils' )
 optdepends+=('cuda: for CUVID hardware-acceleration for NVIDIA users')
 
 provides=('mpv' 'mpv-git')
@@ -226,7 +222,8 @@ package() {
 
   export WAFLOCK='.lock-waf_linux_build'
   ./waf install --destdir="$pkgdir"
-
+  install -D -m644 DOCS/{encoding.rst,tech-overview.txt} "${pkgdir}/usr/share/doc/mpv"
+  install -D -m644 TOOLS/lua/* -t "${pkgdir}/usr/share/mpv/script"
 
  # install the .desktop files
   install -Dm644 "$srcdir/mpv-lq.desktop" "$pkgdir/usr/share/applications/mpv-lq.desktop"
@@ -235,7 +232,6 @@ package() {
   install -Dm644 "$srcdir/mpv-MVtools.desktop" "$pkgdir/usr/share/applications/mpv-MVtools.desktop"
   install -Dm644 "$srcdir/mpv-CUDA.desktop" "$pkgdir/usr/share/applications/mpv-CUDA.desktop"
   install -Dm644 "$srcdir/mpv-SVP.desktop" "$pkgdir/usr/share/applications/mpv-SVP.desktop"
-
 
   # install BT.709 ICC profiles (https://github.com/mpv-player/mpv/issues/534#issuecomment-35823203)
 
