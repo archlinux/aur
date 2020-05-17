@@ -1,7 +1,7 @@
 # Maintainer: osch <oliver@luced.de>
 
 pkgname=audacity-wxgtk2
-pkgver=2.3.3
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Record and edit audio files"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('cmake')
 provides=("audacity")
 conflicts=("audacity")
 source=("https://github.com/audacity/audacity/archive/Audacity-${pkgver}.tar.gz")
-sha512sums=('0789d5bc27933c688b8c99e0d9d9ca65f3b0c59cf74a235feee094a1815bdb59a32a4f50d2938b8fb9d72b0c5ba88451d02f90c5163931774a2088463562c5ef')
+sha512sums=('a9f926e3a539c3a052249a7a1e968b629a8a807fa2c74d940bd18df5744c36cb4f18b4b78c56fe7fbabce12ffa732cb413418a512cf91bb5c3c111766c5ba0e3')
 
 prepare() {
   mv -v "audacity-Audacity-${pkgver}" "${pkgname}-${pkgver}"
