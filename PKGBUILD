@@ -14,9 +14,7 @@ depends=('nodejs')
 conflicts=('ganache-cli-git')
 sha1sums=('SKIP')
 provides=('ganache-cli')
-optdepends=('mocha: testing support'
-            'testrpc: testing support'
-            'geth: contract deployment'
+optdepends=('geth: contract deployment'
             'parity: contract deployment')
 
 package() {
