@@ -15,29 +15,32 @@ makedepends=(git)
 depends=(vulkan-icd-loader qt5-base qt5-x11extras)
 
 prepare() {
-  git -C VulkanCapsViewer submodule init
-  git -C VulkanCapsViewer config submodule.Vulkan-Headers.url "$srcdir/Vulkan-Headers"
-  git -C VulkanCapsViewer submodule update
+  cd VulkanCapsViewer
 
-  mkdir build
-  cd build
-  export PREFIX="$pkgdir"
+  git submodule init
+  git config submodule.Vulkan-Headers.url "$srcdir/Vulkan-Headers"
+  git submodule update
+}
+
+build() {
+  cd VulkanCapsViewer
+
   qmake \
     QMAKE_CFLAGS="$CFLAGS" \
     QMAKE_CXXFLAGS="$CXXFLAGS" \
     QMAKE_LFLAGS="$LDFLAGS" \
     PREFIX=/usr \
     ../VulkanCapsViewer
-}
 
-build() {
-  make -C build
+  make
 }
 
 package() {
-  make -C build INSTALL_ROOT="$pkgdir" install
+  cd VulkanCapsViewer
+
+  make INSTALL_ROOT="$pkgdir" install
 
   # There's a bug preventing this from being installed automatically
-  install -Dm644 VulkanCapsViewer/gfx/android_icon_256.png \
+  install -Dm644 gfx/android_icon_256.png \
     "$pkgdir"/usr/share/icons/hicolor/256x256/apps/vulkanCapsViewer.png
 }
