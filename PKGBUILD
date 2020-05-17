@@ -2,7 +2,7 @@
 
 pkgname=flutter-beta
 pkgver=1.18.0_11.1.pre
-pkgrel=1
+pkgrel=2
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
 url="https://${pkgname%-beta}.io"
@@ -43,6 +43,7 @@ build() {
 }
 
 package() {
+  rm -rf "${srcdir}/${pkgname%-beta}/bin/cache" "${srcdir}/${pkgname%-beta}/.pub-cache"
   install -Dm644 "${srcdir}/${pkgname%-beta}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm755 "${srcdir}/${pkgname%-beta}.sh" "${pkgdir}/etc/profile.d/${pkgname%-beta}.sh"
   install -Dm755 "${srcdir}/${pkgname%-beta}.csh" "${pkgdir}/etc/profile.d/${pkgname%-beta}.csh"
@@ -51,6 +52,6 @@ package() {
   cp -ra "${srcdir}/${pkgname%-beta}" "${pkgdir}/opt/"
   find "${pkgdir}/opt/${pkgname%-beta}" -type d -exec chmod a+rx {} +
   find "${pkgdir}/opt/${pkgname%-beta}" -type f -exec chmod a+r {} +
-  chmod a+rw "${pkgdir}/opt/${pkgname%-beta}/bin/cache/lockfile" "${pkgdir}/opt/${pkgname%-beta}/version"
+  chmod a+rw "${pkgdir}/opt/${pkgname%-beta}/version"
   ln -s "/opt/${pkgname%-beta}/bin/${pkgname%-beta}" "${pkgdir}/usr/bin/${pkgname%-beta}"
 }
