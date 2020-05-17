@@ -8,13 +8,13 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('429' '493' '579' '983' '798')
-_merge_requests_to_use=('983' '1124') # safe pick
+# available MR: ('429' '493' '579' '983' '798' '1003')
+_merge_requests_to_use=('983' '1124' '1003') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.36.2
+pkgver=3.36.2+1+gb1df6d08a
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -30,7 +30,7 @@ conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=63bf5f11505f980070eb714a52753a64462c5721  # tags/3.36.2^0
+_commit=b1df6d08a51176690c6191f667c1ee39aeae952b  # tags/3.36.2^1
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -132,13 +132,20 @@ prepare() {
   # Status: 2
   # Comment:
   pick_mr '983'
-  
+
   # Title: Wayland surface fullscreen unredirect
   # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/798
   # Type: 2
   # Status: 4
   # Comment:
   pick_mr '798'
+
+  # Title: background: Limit mipmap levels to avoid loss of visible detail
+  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1003
+  # Type: 3
+  # Status: 4
+  # Comment:
+  pick_mr '1003'
 
 }
 
