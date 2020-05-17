@@ -29,13 +29,12 @@ prepare() {
   git config submodule.'src/glad'.url "${srcdir}"/glad
   git config submodule.'src/imgui'.url "${srcdir}"/imgui
   git submodule update --recursive
-
-  cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 build() {
-  cd ${_pkgname}/build
-  make
+  cd ${_pkgname}
+  cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  make -C build
 }
 
 package() {
