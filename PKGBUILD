@@ -2,7 +2,7 @@
 # Contributor: Natalia Portillo <claunia@clania.com>
 pkgname=pcem
 pkgver=16
-pkgrel=3
+pkgrel=4
 pkgdesc="Emulator for various IBM PC computers and clones."
 url="http://pcem-emulator.co.uk/"
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ source=("http://pcem-emulator.co.uk/files/PCemV${pkgver}Linux.tar.gz"
 prepare() {
   cd "${srcdir}"
   # fix build with gcc 10
-  patch -p0 <../use-fcommon.patch
+  patch -p0 <"${srcdir}/use-fcommon.patch"
 }
 build() {
   cd "${srcdir}"
