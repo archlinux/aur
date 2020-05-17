@@ -1,4 +1,4 @@
-# Maintainer: Zauberfisch <aur {AT} zauberfisch.at>
+# Maintainer: Zauberfisch <aur at zauberfisch dot at>
 
 pkgname=rdircd-git
 pkgver=r148.d7ba4df
