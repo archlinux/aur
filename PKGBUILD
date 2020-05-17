@@ -1,8 +1,8 @@
 # Maintainers: Mike Cooper <mythmon at elem.us>, Mikko <mikko at 5x.fi>
 
 pkgname=terraria-server
-pkgver=1.4.0.1
-pkgrel=23
+pkgver=1.4.0.2
+pkgrel=24
 pkgdesc="Official dedicated server for Terraria"
 arch=('x86_64' 'x86')
 license=('unknown')
@@ -13,15 +13,18 @@ install='terraria-server.install'
 
 _pkgver=$(echo $pkgver | sed 's/\.//g')
 
-# Added updated mono System.dll and System.Core.dll so the server works with mono 5.x
-source=("http://terraria.org/server/${pkgname}-${_pkgver}.zip"
+# Traditional server zip URL:
+# "http://terraria.org/server/${pkgname}-${_pkgver}.zip"
+
+# https://terraria.org/server/ for 1402 404s, so we use the archive link instead.
+source=("https://terraria.org/system/dedicated_servers/archives/000/000/036/original/terraria-server-1402.zip"
         "https://github.com/mono/reference-assemblies/blob/master/v4.8/System.dll?raw=true"
         "https://github.com/mono/reference-assemblies/blob/master/v4.8/System.Core.dll?raw=true"
         'terraria-server'
         'config.txt'
         'terraria-server@.service')
 
-sha256sums=('d0b7b1f5f993e89b52c8c6c49da6c5b4df457645287dda8883359f4280959427'
+sha256sums=('0f01279b0b5def14f60985bc025302685f3e96bc1e647606acd6017946b91b49'
             '6906a72d0c320697cac46820740fd67976e0b270378a772ea42968c463a2b8e5'
             'b06c0c07ffd912013cc35987d05ce9e6415cc04882b4b9b5c8ebf8a65fbea556'
             'fba253786b8668dabd18b03514b24b3aac9b24ed9a74dfdacee35f41659c30c9'
@@ -31,7 +34,7 @@ sha256sums=('d0b7b1f5f993e89b52c8c6c49da6c5b4df457645287dda8883359f4280959427'
 package() {
     unzip -o "${pkgname}-${_pkgver}.zip"
 
-    # Copy the updated dlls to /Linux
+    # Copy the updated dlls to /Linux so that they work with Mono 5.x
     cp -rv "System.dll?raw=true" "${_pkgver}/Linux/System.dll";
     cp -rv "System.Core.dll?raw=true" "${_pkgver}/Linux/System.Core.dll";
 
