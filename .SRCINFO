@@ -1,7 +1,7 @@
 pkgbase = ksysguard-gpu
 	pkgdesc = gpu visualization for ksysguard
 	pkgver = 0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/lestofante/ksysguard-gpu
 	arch = any
 	license = GPL3
@@ -10,8 +10,8 @@ pkgbase = ksysguard-gpu
 	optdepends = radeontop: AMD card support
 	optdepends = intel-gpu-tools: Intel card support
 	optdepends = nvidia-utils: NVIDIA card support
-	source = ksysguard-gpu-0.5.tar.gz::https://github.com/lestofante/ksysguard-gpu/archive/0.5.tar.gz
-	sha256sums = 266cdb212c1861699f7815c4d10f7b7fa75292cbd8e2c0425f184ef46b0bf75d
+	source = ksysguard-gpu-0.5::git+https://github.com/lestofante/ksysguard-gpu.git#tag=0.5
+	sha256sums = SKIP
 
 pkgname = ksysguard-gpu
 
