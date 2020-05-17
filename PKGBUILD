@@ -2,7 +2,7 @@
 # Maintainer: Elichai Turkel <elichai.turkel@gmail.com>
 
 pkgname=linux-firmware-iwlwifi-git
-pkgrel=1
+pkgrel=2
 pkgdesc="iwlwifi firmware files for linux"
 makedepends=('git')
 arch=('any')
@@ -43,7 +43,7 @@ check() {
 package() {
   cd ${pkgname}
 
-  make -j 4 DESTDIR="${pkgdir}" install
+  make install DESTDIR="${pkgdir}" FIRMWAREDIR=/usr/lib/firmware
 
   install -d "${pkgdir}/usr/share/licenses/linux-firmware"
   install -Dm644 LICEN* WHENCE "${pkgdir}/usr/share/licenses/linux-firmware/"
