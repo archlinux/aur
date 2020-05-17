@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=libmusicxml-git
-pkgver=194.98a6c33e
+pkgver=5242.5a448403
 pkgrel=1
 pkgdesc="library and tools for the MusicXML format (git version)"
 arch=('x86_64' 'i686')
