@@ -1,0 +1,16 @@
+pkgbase = lis
+	pkgdesc = Library of Iterative Solvers for linear systems
+	pkgver = 2.0.21
+	pkgrel = 1
+	url = http://www.ssisc.org/lis
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc-fortran
+	depends = openmpi
+	source = git://github.com/anishida/lis.git#branch=master
+	md5sums = SKIP
+
+pkgname = lis
+
