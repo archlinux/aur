@@ -17,9 +17,13 @@ provides=('gimp-plugin-separate')
 source=("http://dl.sourceforge.jp/separate-plus/47873/separate+-${pkgver}.zip")
 b2sums=('2fa21ee4b911f4973c6c1f33b5cae34e3a0e5a45a27e95042fe84d19c1701f7a52693539f6e9388e14fe778b3a84d90b370ebb0fc795a5af128a5bd27190d893')
 
-build() {
+prepare() {
 	cd "separate+-${pkgver}"
 	sed '/LIBS/s/$/ -lm/' -i Makefile
+}
+
+build() {
+	cd "separate+-${pkgver}"
 	make
 }
 
