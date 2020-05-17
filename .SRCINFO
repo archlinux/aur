@@ -1,11 +1,10 @@
 pkgbase = splashtop-streamer
 	pkgdesc = Splashtop Remote Streamer. Remotely access your desktop from any device from anywhere!
-	pkgver = 2.5.9.5
-	pkgrel = 2
+	pkgver = 2.6.2.0
+	pkgrel = 1
 	url = http://www.splashtop.com/streamer/linux
 	install = splashtop-streamer.install
 	arch = x86_64
-	arch = i686
 	license = custom
 	makedepends = curl
 	makedepends = p7zip
@@ -28,8 +27,8 @@ pkgbase = splashtop-streamer
 	depends = pam>=0.99.7.1
 	depends = python>=2.6.1
 	depends = python2-libappindicator
-	source = https://www.dropbox.com/s/03oeju0u89rcwcl/Splashtop_Streamer_Ubuntu_amd64.deb
-	md5sums = 56671123325db8a22691bc9d44d91bb1
+	source = https://d17kmd0va0f0mp.cloudfront.net/linux/Splashtop_Streamer_Ubuntu_v2.6.2.0_amd64.tar.gz
+	sha256sums = 6d5f6d6613e3fee39af692c35228716002894c9e9f4cc4257c360e9b0e00f68e
 
 pkgname = splashtop-streamer
 
