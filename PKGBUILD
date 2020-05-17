@@ -20,6 +20,8 @@ package() {
   cd "${srcdir}/mingw64"
   for _arch in ${_architectures}; do
     mkdir -p ./* $pkgdir/usr/${_arch}/
+    chmod +x ./lib/libfluidsynth.dll.a
     cp -r ./* $pkgdir/usr/${_arch}/
+    sed -i -e "s|/mingw64|/usr/${_arch}|" $pkgdir/usr/${_arch}/lib/pkgconfig/fluidsynth.pc
   done
 }
