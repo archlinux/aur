@@ -2,9 +2,9 @@
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 # Special thanks to RyanTheAllmighty for making hyper-appimage
 pkgname="gdlauncher"
-pkgver="0.0.10"
+pkgver="1.0.0"
 pkgrel=1
-commitsha="a0f2f5d9c93a2b91850e25ec8fc064fde7eb53d6"
+commitsha="f867bbbc9ef77b28fde978f1776e90d6aee091e2"
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdevs.io"
@@ -18,8 +18,8 @@ md5sums=('SKIP')
 prepare() {
     # clone source
     cd "${srcdir}/${pkgname}"
-    git checkout origin/next
-    git switch next
+    git checkout origin/master
+    git switch master
     git reset --hard ${commitsha}
     
     # generate .desktop
