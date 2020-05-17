@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-audioplayer
-pkgver=2.9.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Audio Player for Nextcloud and ownCloud"
 arch=('any')
