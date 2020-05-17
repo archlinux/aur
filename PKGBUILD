@@ -51,7 +51,7 @@ _major=5.6
 _minor=13
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -65,7 +65,7 @@ _aufs_path="aufs-patches"
 _aufs_ver="20200413"
 _aufs_patch="0001-aufs-${_aufs_ver}.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
-_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
+_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.4-5.6.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
@@ -321,14 +321,14 @@ done
 sha512sums=('f171638debb017ffcc5b9ce19b190cfa05638412e1f03344a5a7be45be901eb97c2df1449c9899c33a7668019f4c6d4eb1f99d864ab9a7050fbfd6b06c7aca8d'
             'SKIP'
             '334a05f6a2c51f96095c1305df398c822815ed770815c1dea915f22ba3031d0eff56c10cd97ccbdca846d1365d36671362be24ff7114cd49b936fbeed23558fa'
-            '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
+            '335df8899ef38d73e56fbc3caa88e311af85a61aaf2446253dbdfd91978de6202f77729bfb176c928bfedd3aa8a67549dd89aa966537c9fc40c51e72f0eed150'
             'd2226f3ca0583770f14be794b26d98d49ba10e38e3625af1726857a91f250cfce73454646b17d7597fdb98cd3f947a1356a0c9f88a2792b4d2cecf1fad76fe28'
             '5cbfbf1b4bb90114600de6eb2b5c058ced63c875582547c3739e296b43c5b26985a07095f55ae67e31e888598af651b7e37370acaff7188b366a7d3a51d53bdf'
             '1df4fb4d5c02c6cd0d4e8d3d807a5641303ed5e7f40b91a1508aaa1f5fec19d6a83d3165ae5131e198fea6cd1919015f58207b22a20eae9b47b95c28e1ca66b3'
             'de9b4dc492162fbd0f40bce710703ae1d66c1e7a5449a1d24bdaceb16f1d781457664722e4635c413ec00c26d0632b7ac21defcda65b2282bd475cc1e80732eb'
             '5d5e65aefcee037177fb2e8d3e841c347ea83118c868b7d87d843d526eb6935e39cef5dd9ab0f2c30ecc53c86efb581d9c824a31ec7afc0fdd2b7b1e8b3b3cfb'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
-            'f7a3112199ed491e1c811b862e835cac8d166b30b904a8508aed59ddc0c7a2cbdadbe8f64f8735725475c6e487fae6f354e0af6dc086368a8e0a4eafba2d3a17')
+            'b479b4e9af294bc348420e64a5a46d55f578eb288b230158b28878f811e15e106dab2a485dbe614a08a2ad777d96eb2daed89bafb8ae89842838b1aae7a9d50c')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
