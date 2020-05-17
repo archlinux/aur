@@ -1,11 +1,11 @@
 pkgbase = websockify
 	pkgdesc = WebSockets support for any application/server
 	pkgver = 0.9.0
-	pkgrel = 1
-	url = http://github.com/novnc/websockify
+	pkgrel = 2
+	url = https://github.com/novnc/websockify
 	arch = any
 	license = LGPL3
-	makedepends = python
+	makedepends = python-setuptools
 	depends = python
 	optdepends = python-numpy: for better HyBi protocol performance
 	source = websockify-0.9.0.tar.gz::https://github.com/novnc/websockify/archive/v0.9.0.tar.gz
