@@ -1,9 +1,8 @@
 [Service]
-ExecStart=/usr/bin/rdircd -c /var/lib/rdircd/config.ini
+ExecStart=/usr/bin/rdircd -c /var/lib/rdircd/config.ini -c /var/lib/rdircd/state.ini
 Restart=always
 RestartSec=5s
 User=rdircd
-Group=rdircd
 
 [Install]
 WantedBy=multi-user.target
