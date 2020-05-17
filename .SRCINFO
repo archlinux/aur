@@ -1,10 +1,10 @@
 pkgbase = pass-sshaskpass-git
 	pkgdesc = Get ssh passphrase from pass
 	pkgver = 18.698346b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jlesquembre/pass-sshaskpass
 	arch = any
-	license = GPLv2
+	license = GPL2
 	makedepends = git
 	depends = pass
 	depends = zenity
