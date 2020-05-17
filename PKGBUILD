@@ -4,7 +4,7 @@
 
 pkgname=endless-sky
 pkgver=0.9.12
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://endless-sky.github.io/"
 depends=(openal libpng glew hicolor-icon-theme libjpeg-turbo sdl2 libmad)
@@ -13,18 +13,26 @@ optdepends=('endless-sky-high-dpi: high resolution graphics assets'
             'endless-sky-editor: map editor')
 license=('GPL3' 'CCPL' 'custom:public domain')
 pkgdesc="A space exploration and combat game similar to Escape Velocity"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/endless-sky/endless-sky/archive/v${pkgver}.tar.gz")
-sha512sums=('694d3c6f50f80e8b4ff79580fa9510fde26a846dd227736af96a3eda7810d68b2ae051a72c0e02fe88eae9d839e48933614aa172a9bed6653e03ad30feaddc05')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/endless-sky/endless-sky/archive/v${pkgver}.tar.gz"
+        "0001-fix-Add-missing-string-include.patch")
+sha512sums=('694d3c6f50f80e8b4ff79580fa9510fde26a846dd227736af96a3eda7810d68b2ae051a72c0e02fe88eae9d839e48933614aa172a9bed6653e03ad30feaddc05'
+            '8fb0d5b63ef2034de30fd91b25da5ac63e908db4160b79c6ee5c2384b89b2ffb052779c02227590218a014e5da62d749b4372d26d75919848c499d8ed358dc2c')
+
+# remove this in the next version, as the patch is backported from upstream
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch -sp1 < "$srcdir/0001-fix-Add-missing-string-include.patch"
+}
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   # remove -jnproc for reproducible builds
   scons -j "$(nproc)"
 }
 
 
 package() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
 
   # Install executable
   install -Dm755 -t "${pkgdir}/usr/bin" endless-sky
