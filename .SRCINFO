@@ -1,6 +1,6 @@
 pkgbase = postgresql-9.5
 	pkgdesc = Sophisticated object-relational DBMS
-	pkgver = 9.5.21
+	pkgver = 9.5.22
 	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = postgresql-9.5
 	makedepends = libldap
 	makedepends = llvm
 	makedepends = clang
-	source = https://ftp.postgresql.org/pub/source/v9.5.21/postgresql-9.5.21.tar.bz2
+	source = https://ftp.postgresql.org/pub/source/v9.5.22/postgresql-9.5.22.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql-perl-rpath.patch
 	source = postgresql.pam
@@ -29,7 +29,7 @@ pkgbase = postgresql-9.5
 	source = postgresql-check-db-dir
 	source = postgresql.sysusers
 	source = postgresql.tmpfiles
-	sha256sums = 7eb56e4fa877243c2df78adc5a0ef02f851060c282682b4bb97b854100fb732c
+	sha256sums = 48555470a17248cb204d25ab1ad4231ef16295db55161922f006b9942d69640f
 	sha256sums = 8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9
 	sha256sums = 5f73b54ca6206bd2c469c507830261ebd167baca074698d8889d769c33f98a31
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
@@ -47,20 +47,20 @@ pkgname = postgresql-libs-9.5
 	depends = zlib
 	depends = libldap
 	provides = postgresql-client
-	provides = postgresql-libs=9.5.21
+	provides = postgresql-libs=9.5.22
 	conflicts = postgresql-client
 	conflicts = postgresql-libs
 
 pkgname = postgresql-docs-9.5
 	pkgdesc = HTML documentation for PostgreSQL
-	provides = postgresql-docs=9.5.21
+	provides = postgresql-docs=9.5.22
 	conflicts = postgresql-docs
 	options = docs
 
 pkgname = postgresql-9.5
 	pkgdesc = Sophisticated object-relational DBMS
 	install = postgresql.install
-	depends = postgresql-libs>=9.5.21
+	depends = postgresql-libs>=9.5.22
 	depends = krb5
 	depends = libxml2
 	depends = readline>=6.0
@@ -75,7 +75,7 @@ pkgname = postgresql-9.5
 	optdepends = perl: for PL/Perl support
 	optdepends = tcl: for PL/Tcl support
 	optdepends = postgresql-old-upgrade: upgrade from previous major version using pg_upgrade
-	provides = postgresql=9.5.21
+	provides = postgresql=9.5.22
 	conflicts = postgresql
 	options = staticlibs
 	backup = etc/pam.d/postgresql

@@ -5,7 +5,7 @@
 
 pkgbase=postgresql-9.5
 pkgname=('postgresql-libs-9.5' 'postgresql-docs-9.5' 'postgresql-9.5')
-pkgver=9.5.21
+pkgver=9.5.22
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
 url="https://www.postgresql.org/"
@@ -22,7 +22,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql-check-db-dir
 	postgresql.sysusers
 	postgresql.tmpfiles)
-sha256sums=('7eb56e4fa877243c2df78adc5a0ef02f851060c282682b4bb97b854100fb732c'
+sha256sums=('48555470a17248cb204d25ab1ad4231ef16295db55161922f006b9942d69640f'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '5f73b54ca6206bd2c469c507830261ebd167baca074698d8889d769c33f98a31'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
