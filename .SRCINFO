@@ -1,6 +1,6 @@
 pkgbase = vkd3d-valve-git
 	pkgdesc = D3D12 to Vulkan translation library (Valve version)
-	pkgver = 1.1.r708.gf548d81
+	pkgver = 1.1.r1050.ge6bd3cb
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/vkd3d
 	arch = x86_64
