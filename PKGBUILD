@@ -7,8 +7,7 @@ pkgdesc="A real-time software synthesizer based on the SoundFont 2 specification
 url="http://www.zstd.net/"
 arch=('any')
 license=('BSD' 'GPL2')
-depends=('mingw-w64-gcc'
-  'mingw-w64-glib2'
+depends=('mingw-w64-glib2'
   'mingw-w64-libsndfile'
   'mingw-w64-portaudio'
   'mingw-w64-readline')
@@ -25,7 +24,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
-      -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/${_arch} \
+      -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
       -DBUILD_SHARED_LIBS=OFF \
       -DBUILD_STATIC_LIBS=ON \
       -Denable-portaudio=ON \
@@ -42,4 +41,3 @@ package() {
     ${_arch}-make install DESTDIR="$pkgdir"
   done
 }
-
