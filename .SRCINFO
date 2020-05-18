@@ -1,7 +1,7 @@
 pkgbase = polkadot-bin
 	pkgdesc = Binary builds of the Polkadot Node Implementation
 	pkgver = 0.7.33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/paritytech/polkadot
 	arch = x86_64
 	license = GPL3

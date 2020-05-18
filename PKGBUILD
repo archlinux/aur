@@ -3,7 +3,7 @@
 _appname=polkadot
 pkgname=${_appname}-bin
 pkgver=0.7.33
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary builds of the Polkadot Node Implementation"
 arch=('x86_64')
 provides=("${_appname}")
