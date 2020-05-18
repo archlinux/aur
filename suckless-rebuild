@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+DESTDIR=~/.suckless
+BUILDDIR=~/.suckless-build
+
+usage() {
+  echo "Usage: suckless-rebuild st <config.h>"
+  exit 1
+}
+
+if [[ ${#@} != 2 || $1 =~ ^-h$|^--help$ || $2 =~ ^-h$|^--help$ ]]; then
+  echo "Usage: suckless-rebuild st <config.h>"
+  exit 1
+fi
+
+tool=$1
+config=$2
+
+if [[ ! $tool =~ ^st$ ]]; then
+  echo "Unknown suckless tool '$tool'."
+  exit 1
+fi
+if [[ ! -d /usr/src/$tool ]]; then
+  echo "'an9wer-$tool' may not be installed."
+  exit 1
+fi
+if [[ ! -f $config ]]; then
+  echo "'$config' is not a regular file."
+  exit 1
+fi
+
+if [[ -e $BUILDDIR/$tool ]]; then
+  temp=$(mktemp -u -d /tmp/$tool.XXXXX)
+  mv "$BUILDDIR/$tool" "$temp"
+fi
+
+mkdir -p "$BUILDDIR"
+cp -r /usr/src/st "$BUILDDIR/$tool"
+cp -f "$config" "$BUILDDIR/$tool"
+
+cd "$BUILDDIR/$tool"
+if make &> build.log && make PREFIX="$DESTDIR" install &> build.log; then
+  echo "Done! Recommend to add '~/.suckless/bin' to \$PATH to use new builded st."
+else
+  echo "Some error occurred, check '$BUILDDIR/$tool/build.log' to find more."
+fi
+if [[ -v temp ]]; then
+  sed -i "1i The last built directory was moved to $temp\n" build.log
+fi
+
+# vim: set filetype=sh:
