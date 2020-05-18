@@ -1,8 +1,10 @@
-# Maintainer: Leonard de Ruijter <leonard@aur.archlinux.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Leonard de Ruijter <leonard@aur.archlinux.org>
+
 pkgname=ocaml-gd4o
 _oname=gd4o
 pkgver=1.0a5
-pkgrel=3
+pkgrel=4
 pkgdesc="OCaml interface to the GD graphics library"
 arch=('i686' 'x86_64')
 url="http://matt.gushee.net/software/gd4o/"
@@ -11,17 +13,17 @@ depends=('gd' 'libjpeg-turbo')
 makedepends=('ocaml-findlib')
 options=('!strip' 'staticlibs')
 provides=('ocaml-gd')
-source=(http://sourceforge.net/projects/$_oname/files/$_oname/1.0%20Alpha%205/$_oname-$pkgver.tar.gz
-add_fpic_to_cflags.patch
-support_custom_cflags.patch)
-md5sums=('b5aeb9c246b5e072803eb9b3112350a0'
-         '9e7ead2e6921d6653e6e8f051db79e7c'
-         '80c3e4a0e36675b63b6ce8025e55b5fd')
+source=("https://sourceforge.net/projects/$_oname/files/$_oname/1.0%20Alpha%205/$_oname-$pkgver.tar.gz"
+	"add_fpic_to_cflags.patch"
+	"support_custom_cflags.patch")
+sha256sums=('fa10b60a785e6734b6ac1b5a762f496b925502cfc848381cae7dfb75fe547eed'
+            'ea73c715461e1e4dcf8a45164bf596f0916026c5eaedf8b8ee097e63dff60f72'
+            '8d677285f9db15cbc8a4ff5c4813da7e9bfea3118bb1c62789c9164eb5cfa4eb')
 
 prepare() {
-cd $srcdir/$_oname-$pkgver
-patch -Np1 -i "${srcdir}/add_fpic_to_cflags.patch"
-patch -Np1 -i "${srcdir}/support_custom_cflags.patch"
+  cd $srcdir/$_oname-$pkgver
+  patch -Np1 -i "${srcdir}/add_fpic_to_cflags.patch"
+  patch -Np1 -i "${srcdir}/support_custom_cflags.patch"
 }
 
 build() {
