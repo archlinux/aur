@@ -10,10 +10,10 @@ post_install() {
 }
 
 post_upgrade() {
-    if getent passwd terraria && [[ $(id -u terraria) == 197 ]]; then
+    if getent passwd terraria &>/dev/null && [[ $(id -u terraria) == 197 ]]; then
         userdel terraria
     fi
-    if getent group terraria && [[ $(id -g terraria) == 197 ]]; then
+    if getent group terraria &>/dev/null && [[ $(id -g terraria) == 197 ]]; then
         groupdel terraria
     fi
     post_install
