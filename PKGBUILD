@@ -3,7 +3,7 @@
 _projectname='lwt_log'
 pkgname="ocaml-$_projectname"
 pkgver='1.1.1'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Lwt-friendly logger'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
