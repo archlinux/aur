@@ -13,6 +13,7 @@ pkgbase = wezterm-bin
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
 	depends = python
+	provides = wezterm
 	source = wezterm-bin-20200517.122836.92c201c6.tar.xz::https://github.com/wez/wezterm/releases/download/20200517-122836-92c201c6/wezterm-20200517-122836-92c201c6.Ubuntu16.04.tar.xz
 	source = LICENSE::https://github.com/wez/wezterm/raw/master/LICENSE.md
 	sha256sums = 779d4ff0e1aa00583d08c40af5230cf7ee14e678e22c58e95477f6fd82786a46

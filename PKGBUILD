@@ -8,6 +8,7 @@ pkgdesc='A GPU-accelerated cross-platform terminal emulator and multiplexer impl
 arch=('i686' 'x86_64')
 url='https://wezfurlong.org/wezterm'
 license=('MIT')
+provides=('wezterm')
 depends=('dbus'
 				 'libxkbcommon-x11'
 				 'fontconfig'
