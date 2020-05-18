@@ -1,0 +1,12 @@
+diff --git a/Makefile b/Makefile
+index 06d5fa6..2344269 100644
+--- a/Makefile
++++ b/Makefile
+@@ -114,6 +114,7 @@ CXXFLAGS+=\
+ 	-Wclobbered \
+ 	-Wempty-body \
+ 	-Werror \
++	-Wno-error=class-memaccess \
+ 	-Wignored-qualifiers \
+ 	-Wmissing-field-initializers \
+ 	-Wmissing-format-attribute \

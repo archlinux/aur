@@ -1,0 +1,221 @@
+diff --git a/src/accel_filter_interpreter.cc b/src/accel_filter_interpreter.cc
+index f63d876..f4ddeec 100644
+--- a/src/accel_filter_interpreter.cc
++++ b/src/accel_filter_interpreter.cc
+@@ -5,7 +5,7 @@
+ #include "gestures/include/accel_filter_interpreter.h"
+ 
+ #include <algorithm>
+-#include <math.h>
++#include <cmath>
+ 
+ #include "gestures/include/gestures.h"
+ #include "gestures/include/interpreter.h"
+diff --git a/src/accel_filter_interpreter_unittest.cc b/src/accel_filter_interpreter_unittest.cc
+index 186d27e..c51a4b3 100644
+--- a/src/accel_filter_interpreter_unittest.cc
++++ b/src/accel_filter_interpreter_unittest.cc
+@@ -3,7 +3,7 @@
+ // found in the LICENSE file.
+ 
+ #include <deque>
+-#include <math.h>
++#include <cmath>
+ #include <utility>
+ #include <vector>
+ 
+diff --git a/src/box_filter_interpreter_unittest.cc b/src/box_filter_interpreter_unittest.cc
+index 12be285..e010c92 100644
+--- a/src/box_filter_interpreter_unittest.cc
++++ b/src/box_filter_interpreter_unittest.cc
+@@ -3,7 +3,7 @@
+ // found in the LICENSE file.
+ 
+ #include <deque>
+-#include <math.h>
++#include <cmath>
+ #include <vector>
+ #include <utility>
+ 
+diff --git a/src/cr48_profile_sensor_filter_interpreter.cc b/src/cr48_profile_sensor_filter_interpreter.cc
+index 48b83e3..788b860 100644
+--- a/src/cr48_profile_sensor_filter_interpreter.cc
++++ b/src/cr48_profile_sensor_filter_interpreter.cc
+@@ -4,7 +4,7 @@
+ 
+ #include "gestures/include/cr48_profile_sensor_filter_interpreter.h"
+ 
+-#include <math.h>
++#include <cmath>
+ 
+ #include "gestures/include/gestures.h"
+ #include "gestures/include/interpreter.h"
+diff --git a/src/integral_gesture_filter_interpreter.cc b/src/integral_gesture_filter_interpreter.cc
+index 3360e63..f9b66f0 100644
+--- a/src/integral_gesture_filter_interpreter.cc
++++ b/src/integral_gesture_filter_interpreter.cc
+@@ -4,7 +4,7 @@
+ 
+ #include "gestures/include/integral_gesture_filter_interpreter.h"
+ 
+-#include <math.h>
++#include <cmath>
+ 
+ #include "gestures/include/gestures.h"
+ #include "gestures/include/interpreter.h"
+diff --git a/src/integral_gesture_filter_interpreter_unittest.cc b/src/integral_gesture_filter_interpreter_unittest.cc
+index 1c6fcdc..a9fbcb5 100644
+--- a/src/integral_gesture_filter_interpreter_unittest.cc
++++ b/src/integral_gesture_filter_interpreter_unittest.cc
+@@ -3,7 +3,7 @@
+ // found in the LICENSE file.
+ 
+ #include <deque>
+-#include <math.h>
++#include <cmath>
+ #include <vector>
+ #include <utility>
+ 
+diff --git a/src/json_value.cpp b/src/json_value.cpp
+index a2a4a67..c391cf2 100644
+--- a/src/json_value.cpp
++++ b/src/json_value.cpp
+@@ -11,7 +11,7 @@
+ #  include "json_batchallocator.h"
+ # endif // #ifndef JSON_USE_SIMPLE_INTERNAL_ALLOCATOR
+ #endif // if !defined(JSON_IS_AMALGAMATION)
+-#include <math.h>
++#include <cmath>
+ #include <sstream>
+ #include <utility>
+ #include <stdexcept>
+diff --git a/src/lookahead_filter_interpreter.cc b/src/lookahead_filter_interpreter.cc
+index 8abfc2e..ebbc0bf 100644
+--- a/src/lookahead_filter_interpreter.cc
++++ b/src/lookahead_filter_interpreter.cc
+@@ -5,7 +5,7 @@
+ #include "gestures/include/lookahead_filter_interpreter.h"
+ 
+ #include <algorithm>
+-#include <math.h>
++#include <cmath>
+ #include <values.h>
+ 
+ #include "gestures/include/tracer.h"
+diff --git a/src/lookahead_filter_interpreter_unittest.cc b/src/lookahead_filter_interpreter_unittest.cc
+index 7830497..e5bb626 100644
+--- a/src/lookahead_filter_interpreter_unittest.cc
++++ b/src/lookahead_filter_interpreter_unittest.cc
+@@ -3,7 +3,7 @@
+ // found in the LICENSE file.
+ 
+ #include <deque>
+-#include <math.h>
++#include <cmath>
+ #include <set>
+ #include <stdio.h>
+ #include <utility>
+diff --git a/src/mouse_interpreter.cc b/src/mouse_interpreter.cc
+index 4c33749..5219fed 100644
+--- a/src/mouse_interpreter.cc
++++ b/src/mouse_interpreter.cc
+@@ -4,7 +4,7 @@
+ 
+ #include "gestures/include/mouse_interpreter.h"
+ 
+-#include <math.h>
++#include <cmath>
+ 
+ #include "gestures/include/macros.h"
+ #include "gestures/include/tracer.h"
+diff --git a/src/palm_classifying_filter_interpreter_unittest.cc b/src/palm_classifying_filter_interpreter_unittest.cc
+index b8e74ba..0bde311 100644
+--- a/src/palm_classifying_filter_interpreter_unittest.cc
++++ b/src/palm_classifying_filter_interpreter_unittest.cc
+@@ -3,7 +3,7 @@
+ // found in the LICENSE file.
+ 
+ #include <deque>
+-#include <math.h>
++#include <cmath>
+ #include <stdio.h>
+ #include <vector>
+ #include <utility>
+diff --git a/src/scaling_filter_interpreter.cc b/src/scaling_filter_interpreter.cc
+index 87afd42..1bcf10e 100644
+--- a/src/scaling_filter_interpreter.cc
++++ b/src/scaling_filter_interpreter.cc
+@@ -4,7 +4,7 @@
+ 
+ #include "gestures/include/scaling_filter_interpreter.h"
+ 
+-#include <math.h>
++#include <cmath>
+ 
+ #include "gestures/include/gestures.h"
+ #include "gestures/include/interpreter.h"
+diff --git a/src/scaling_filter_interpreter_unittest.cc b/src/scaling_filter_interpreter_unittest.cc
+index b43b4b1..dcd6efb 100644
+--- a/src/scaling_filter_interpreter_unittest.cc
++++ b/src/scaling_filter_interpreter_unittest.cc
+@@ -3,7 +3,7 @@
+ // found in the LICENSE file.
+ 
+ #include <deque>
+-#include <math.h>
++#include <cmath>
+ #include <memory>
+ #include <vector>
+ #include <utility>
+diff --git a/src/sensor_jump_filter_interpreter_unittest.cc b/src/sensor_jump_filter_interpreter_unittest.cc
+index eda4526..2817d30 100644
+--- a/src/sensor_jump_filter_interpreter_unittest.cc
++++ b/src/sensor_jump_filter_interpreter_unittest.cc
+@@ -3,7 +3,7 @@
+ // found in the LICENSE file.
+ 
+ #include <deque>
+-#include <math.h>
++#include <cmath>
+ #include <vector>
+ #include <utility>
+ 
+diff --git a/src/split_correcting_filter_interpreter.cc b/src/split_correcting_filter_interpreter.cc
+index 4fbc92f..87e2281 100644
+--- a/src/split_correcting_filter_interpreter.cc
++++ b/src/split_correcting_filter_interpreter.cc
+@@ -4,7 +4,7 @@
+ 
+ #include "gestures/include/split_correcting_filter_interpreter.h"
+ 
+-#include <math.h>
++#include <cmath>
+ 
+ #include "gestures/include/tracer.h"
+ #include "gestures/include/util.h"
+diff --git a/src/stuck_button_inhibitor_filter_interpreter_unittest.cc b/src/stuck_button_inhibitor_filter_interpreter_unittest.cc
+index 7c61f4f..a132dee 100644
+--- a/src/stuck_button_inhibitor_filter_interpreter_unittest.cc
++++ b/src/stuck_button_inhibitor_filter_interpreter_unittest.cc
+@@ -3,7 +3,7 @@
+ // found in the LICENSE file.
+ 
+ #include <deque>
+-#include <math.h>
++#include <cmath>
+ #include <vector>
+ #include <utility>
+ 
+diff --git a/src/t5r2_correcting_filter_interpreter_unittest.cc b/src/t5r2_correcting_filter_interpreter_unittest.cc
+index f45bc81..bbb5e5c 100644
+--- a/src/t5r2_correcting_filter_interpreter_unittest.cc
++++ b/src/t5r2_correcting_filter_interpreter_unittest.cc
+@@ -3,7 +3,7 @@
+ // found in the LICENSE file.
+ 
+ #include <deque>
+-#include <math.h>
++#include <cmath>
+ #include <vector>
+ #include <utility>
+ 

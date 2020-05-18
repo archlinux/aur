@@ -1,7 +1,7 @@
 pkgbase = libgestures
 	pkgdesc = Chromium OS gestures library
 	pkgver = 2.0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = http://github.com/galliumos/libgestures
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,11 @@ pkgbase = libgestures
 	depends = jsoncpp
 	provides = libgestures=$pkgver
 	source = libgestures::git+https://github.com/galliumos/libgestures.git
-	md5sums = SKIP
+	source = cmath_everywhere.patch
+	source = class_memaccess_noerror.patch
+	sha256sums = SKIP
+	sha256sums = 4ce7bd11ba4b5aa4b5328f5c4a4dd6f59e283427ebd73a462ee526f6779f63d9
+	sha256sums = db56ab1d0375765fe5ffe3bec72e6e7f662b035155fdc62f1f7e2c9ae3f01989
 
 pkgname = libgestures
 
