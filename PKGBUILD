@@ -8,8 +8,8 @@ pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
-pkgver=2.44.3
-pkgrel=2
+pkgver=2.45
+pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -17,8 +17,14 @@ makedepends=('git' 'go' 'go-tools' 'libseccomp' 'libcap' 'systemd' 'xfsprogs' 'p
 conflicts=('snap-confine')
 options=('!strip' 'emptydirs')
 install=snapd.install
-source=("$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz")
-sha256sums=('fbe7299bd09e91b7e5610f3c44a0d546856901f383dff2b57d11bb591ae8a22f')
+# 0001-fontconfig-compat.patch: proposed upstream https://github.com/snapcore/snapd/pull/8604
+# 0002-zsh-completion.patch: cherry-pick from upstream master
+source=("$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz"
+        "0001-fontconfig-compat.patch"
+        "0002-zsh-completion.patch")
+sha256sums=('54399873d874d3797784ff685e2b21840751d77ccfada6292b34060d58ee4256'
+            'ceb4592363a5b56a1fa118b96764fc24e477f8e2bf727331ce7d726bf36ab9e3'
+            'c9f40bb1e1b9aa7f3cbf3431a910e0da38cdf467de160870f75ad03e4a3ebb17')
 
 _gourl=github.com/snapcore/snapd
 
@@ -104,12 +110,15 @@ package() {
   unset GO111MODULE
 
   # Install bash completion
-  install -Dm644 data/completion/snap \
+  install -Dm644 data/completion/bash/snap \
     "$pkgdir/usr/share/bash-completion/completions/snap"
-  install -Dm644 data/completion/complete.sh \
+  install -Dm644 data/completion/bash/complete.sh \
     "$pkgdir/usr/lib/snapd/complete.sh"
-  install -Dm644 data/completion/etelpmoc.sh \
+  install -Dm644 data/completion/bash/etelpmoc.sh \
     "$pkgdir/usr/lib/snapd/etelpmoc.sh"
+  # Install zsh completion
+  install -Dm644 data/completion/zsh/_snap \
+    "$pkgdir/usr/share/zsh/site-functions/_snap"
 
   # Install systemd units, dbus services and a script for environment variables
   make -C data/ install \
@@ -154,7 +163,7 @@ package() {
   install -dm755 "$pkgdir/var/lib/snapd/lib/vulkan"
   install -dm755 "$pkgdir/var/lib/snapd/lib/glvnd"
   # these dirs have special permissions
-  install -dm000 "$pkgdir/var/lib/snapd/void"
+  install -dm111 "$pkgdir/var/lib/snapd/void"
   install -dm700 "$pkgdir/var/lib/snapd/cookie"
   install -dm700 "$pkgdir/var/lib/snapd/cache"
 
