@@ -68,7 +68,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/cairo-${pkgver}/build-${_arch}"
+    cd "${srcdir}/cairo/build-${_arch}"
     make DESTDIR="$pkgdir" install
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
