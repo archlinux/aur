@@ -2,7 +2,7 @@
 
 pkgname=spire-bin
 pkgver=0.1.0_alpha.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A Clojure domain specific language tailored to idempotently orchestrate machines in parallel over SSH.'
 arch=('x86_64')
 url='https://github.com/epiccastle/spire'
