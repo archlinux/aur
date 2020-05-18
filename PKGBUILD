@@ -2,8 +2,8 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=inboxer
-pkgver=1.3.3
-pkgrel=2
+pkgver=1.3.4
+pkgrel=1
 pkgdesc="Unofficial, free and open-source Google Gmail desktop app"
 arch=(any)
 url="https://github.com/jmarino/inboxer"
@@ -13,17 +13,14 @@ makedepends=(npm)
 options=(!strip)
 source=($pkgname-$pkgver.tar.gz::https://github.com/jmarino/$pkgname/archive/v$pkgver.tar.gz
         $pkgname.sh
-        $pkgname.desktop
-        upgrade-eslint-1.4.2.patch)
-sha256sums=('699e0cc3994d74a4c05e6a7b4fd21c014259ad87990b66d762b1d72fae0c0018'
+        $pkgname.desktop)
+sha256sums=('cf234f2b688fbe0c02acdb91e7afdab787bddae1c54a21a5d920c83ef829f9bf'
             '3607cef6ac387040f63669f3647323ebf5899be1e7094cb369ccc7e2c89005a3'
-            '1af6a2acb72642470d89fd7a66bda0aafe14081b07a11658dc1f08c2281e573e'
-            '83bc24342a4e82a29efb83434488c4a71a380e2ab76f32371558aa2a8f0021cb')
+            '1af6a2acb72642470d89fd7a66bda0aafe14081b07a11658dc1f08c2281e573e')
 
 prepare() {
   cd "$pkgname-$pkgver"
   sed -i '/"postinstall"/d' package.json
-  patch --forward --strip=1 --input="${srcdir}/upgrade-eslint-1.4.2.patch"
 }
 
 build() {
