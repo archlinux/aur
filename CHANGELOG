@@ -1574,3 +1574,31 @@ Thu Apr 2 00:36:57 2020 +0200
      2020-03-21 102566c9 actionless Merge branch 'linked-buttons' of github.com:themix-project/oomox into linked-buttons-2
      2020-03-20 ec9d2b9f actionless chore(plugins: base16): update submodule (sync mirror with base16 project)
      2020-03-17 aad2b8e4 actionless chore(packaging: arch, desktop): s/Oomox/Themix/
+
+
+Thu Apr 2 01:27:45 2020 +0200
+-------------------------------------------------
+1.13.2.1        Hotfix release 1.13.2.1
+    
+     2020-04-02 0b6055de actionless fix(.gitmodules): remove old base16 submodule
+
+
+Mon May 18 09:09:10 2020 +0200
+-------------------------------------------------
+1.13.3          Release 1.13.3
+    
+    Notable changes:
+     2020-04-28 b7cc5ee1 actionless chore(plugins: theme_oomox): update
+    submodule (release 1.21 (lots of border fixes and tested backdrop
+    support))
+     2020-04-12 329052d3 actionless fix(gui: preview: update_preview): use
+    the same colorscheme object (fixes plugin-overrided preview handlers not
+    being applied)
+     2020-04-12 8d60206c actionless chore(plugins: theme: materia): update
+    submodule (meson build, no css preview shipped in materia repo)
+     2020-04-12 7e6606e1 actionless chore(plugins: base16, oomox): update
+    submodule (use safe yaml loader)
+     2020-04-11 e1bf7329 actionless chore(plugins: base16): update submodule
+    (user templates' bugfix)
+     2020-04-11 5a736294 actionless chore(plugins: base16): update submodule
+    (allow user templates under ~/.config/oomox/base16/templates)
