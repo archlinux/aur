@@ -3,14 +3,14 @@
 
 pkgname=curecoin-qt-git
 pkgver=v2.0.0.2.r21.g8cd2c3b
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI client (wallet) for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
 url="https://curecoin.net/"
 license=('MIT')
 provides=('curecoin-qt')
 conflicts=('curecoin-qt')
-depends=('qt5-base' 'qt5-tools' 'miniupnpc' 'boost-libs' 'openssl-1.0')
+depends=('qt5-base' 'qt5-tools' 'miniupnpc' 'boost-libs' 'openssl')
 makedepends=('boost' 'db' 'git')
 source=("git+https://github.com/cygnusxi/CurecoinSource.git#branch=master"
         "curecoin.desktop")
@@ -23,13 +23,6 @@ pkgver() {
   set -o pipefail
   git describe --tags --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/CurecoinSource"
-  # Switch to OpenSSL 1.0
-  echo "INCLUDEPATH += /usr/include/openssl-1.0" >> "curecoin-qt.pro"
-  echo "LIBS += -L/usr/lib/openssl-1.0 -lcrypto -lz" >> "curecoin-qt.pro"
 }
 
 build() {
