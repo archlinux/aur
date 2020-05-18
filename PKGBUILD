@@ -3,15 +3,15 @@
 pkgdesc="ROS - This package contains common nodelet tools such as a mux, demux and throttle."
 url='https://wiki.ros.org/nodelet_topic_tools'
 
-pkgname='ros-melodic-nodelet-topic-tools'
-pkgver='1.9.16'
+pkgname='ros-noetic-nodelet-topic-tools'
+pkgver='1.10.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-dynamic-reconfigure
-	ros-melodic-catkin
+	ros-noetic-dynamic-reconfigure
+	ros-noetic-catkin
 )
 
 makedepends=(
@@ -22,11 +22,11 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-nodelet
-	ros-melodic-dynamic-reconfigure
-	ros-melodic-roscpp
-	ros-melodic-message-filters
-	ros-melodic-pluginlib
+	ros-noetic-nodelet
+	ros-noetic-dynamic-reconfigure
+	ros-noetic-roscpp
+	ros-noetic-message-filters
+	ros-noetic-pluginlib
 )
 
 depends=(
@@ -36,25 +36,22 @@ depends=(
 
 _dir="nodelet_core-${pkgver}/nodelet_topic_tools"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/nodelet_core/archive/${pkgver}.tar.gz")
-sha256sums=('609a85323a47aff2e5e53531a465ddc62ba3290ba8b359a12dd07253bbaa9e26')
+sha256sums=('2a20f3c1c6e270e3625bc27099c07d236ca0f3aa97fff2b5f15075a0233acfe9')
 
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
