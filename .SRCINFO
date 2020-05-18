@@ -1,0 +1,31 @@
+pkgbase = autofs
+	pkgdesc = A kernel-based automounter for Linux
+	pkgver = 5.1.6
+	pkgrel = 2
+	url = https://www.kernel.org/pub/linux/daemons/autofs/
+	arch = x86_64
+	license = GPL2
+	makedepends = libldap
+	makedepends = krb5
+	makedepends = kmod
+	makedepends = sssd
+	makedepends = libnsl
+	makedepends = rpcsvc-proto
+	depends = libxml2
+	optdepends = krb5: for LDAP support
+	optdepends = sssd: for SSSD integration
+	backup = etc/autofs/auto.master
+	backup = etc/autofs/auto.misc
+	backup = etc/autofs/auto.net
+	backup = etc/autofs/auto.smb
+	backup = etc/autofs/autofs.conf
+	backup = etc/autofs/autofs_ldap_auth.conf
+	backup = etc/default/autofs
+	source = https://www.kernel.org/pub/linux/daemons/autofs/v5/autofs-5.1.6.tar.xz
+	source = https://www.kernel.org/pub/linux/daemons/autofs/v5/autofs-5.1.6.tar.sign
+	validpgpkeys = CD0A6E3CBB6768800B0736A8E7677380F54FD8A9
+	sha256sums = dddee3d9b7388ce6cb7432832dfade25b07ef68ad48dcce01cf247b26a10caef
+	sha256sums = SKIP
+
+pkgname = autofs
+
