@@ -1,4 +1,5 @@
-# Maintainer: Ashley Ruglys <ashley.ruglys@gmail.com>
+# Maintainer: Martin Pugh <martin at parity dot io>
+# Contributor: Ashley Ruglys <ashley dot ruglys at gmail dot com>
 pkgname=polkadot-git
 _pkgname=polkadot
 pkgdesc="Polkadot Node Implementation"
