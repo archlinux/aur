@@ -1,7 +1,7 @@
 pkgbase = sway-no-strip-override-git
 	pkgdesc = i3-compatible Wayland compositor (modified PKGBUILD that doesn't override strip to off)
-	pkgver = r5942.3f77591b
-	pkgrel = 1
+	pkgver = r6362.9b5895be
+	pkgrel = 2
 	url = https://swaywm.org
 	arch = i686
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = sway-no-strip-override-git
 	conflicts = sway
 	conflicts = sway-git
 	options = debug
-	source = sway-no-strip-override::git+https://github.com/swaywm/sway.git
+	source = sway::git+https://github.com/swaywm/sway.git
 	sha512sums = SKIP
 
 pkgname = sway-no-strip-override-git
