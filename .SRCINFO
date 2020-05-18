@@ -1,7 +1,7 @@
 pkgbase = arm-linux-gnueabihf-glibc-headers
 	pkgdesc = GNU C Library headers (arm-linux-gnueabihf)
 	pkgver = 2.31
-	pkgrel = 3.1
+	pkgrel = 3.2
 	url = https://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
@@ -12,6 +12,7 @@ pkgbase = arm-linux-gnueabihf-glibc-headers
 	options = !buildflags
 	options = !strip
 	options = staticlibs
+	options = debug
 	source = https://ftp.gnu.org/gnu/glibc/glibc-2.31.tar.xz
 	source = https://ftp.gnu.org/gnu/glibc/glibc-2.31.tar.xz.sig
 	source = glibc-18fdba553dd9b907e9812b90d2cea593f776058f.patch

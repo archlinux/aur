@@ -8,14 +8,14 @@
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-glibc-headers
 pkgver=2.31
-pkgrel=3.1
+pkgrel=3.2
 pkgdesc="GNU C Library headers (${_target})"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
 license=(GPL LGPL)
 depends=("${_target}-linux-api-headers>=5.6.11-1")
 makedepends=("${_target}-gcc-stage1" python)
-options=(!buildflags !strip staticlibs)
+options=(!buildflags !strip staticlibs debug)
 _commit=18fdba553dd9b907e9812b90d2cea593f776058f
 #source=(git+https://sourceware.org/git/glibc.git#commit=$_commit
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig}
@@ -73,8 +73,8 @@ build() {
   CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
 
   #
-  CFLAGS=${CFLAGS/-fno-plt/}
-  CXXFLAGS=${CXXFLAGS/-fno-plt/}
+  CFLAGS="${CFLAGS/-fno-plt/} -g -O2"
+  CXXFLAGS="${CXXFLAGS/-fno-plt/} -g -O2"
   LDFLAGS=${LDFLAGS/,-z,now/}
 
   export BUILD_CC=gcc
