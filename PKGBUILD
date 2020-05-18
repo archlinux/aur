@@ -1,26 +1,26 @@
 # Maintainer: Lev Levitsky <levlev at mail dot ru>
 pkgname=python2-pyteomics
-pkgver=4.2
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="A framework for proteomics data analysis."
 arch=('any')
 url="https://pyteomics.readthedocs.io"
 license=('Apache')
-depends=('python2' 'python2-setuptools')
+depends=('python2' 'python2-pip')
 optdepends=('python2-matplotlib: for pylab_aux module'
             'python2-sqlalchemy: for mass.unimod module'
             'python2-pandas: for convenient filtering of CSV tables from search engines'
             'python2-lxml: for XML parsing modules'
             'python2-numpy: for most of features, highly recommended'
-            'python2-dill: needed for multiprocessing when pickle is not enough')
+            'python2-dill: needed for multiprocessing when pickle is not enough'
+            'python2-pynumpress: for Numpress support')
 options=(!emptydirs)
-source=("https://pypi.io/packages/source/p/pyteomics/pyteomics-${pkgver}.tar.gz")
-install=
-sha256sums=('e4762659520b518df0d75e9fc2a1a011315fd0835ec501ae81583275d340ef1d')
+source=("https://pypi.debian.net/pyteomics/pyteomics-${pkgver}-py2.py3-none-any.whl")
+sha256sums=('be9367c5b9a828c11c7df943d5bed8ee24b5d2d5b63676fcddd789ea5ad98b73')
 changelog="CHANGELOG"
+
 package() {
-  cd "${srcdir}/pyteomics-${pkgver}"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  pip2 install --ignore-installed --root "$pkgdir" "pyteomics-${pkgver}-py2.py3-none-any.whl"
 }
 
 # vim:set ts=2 sw=2 et:
