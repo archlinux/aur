@@ -1,7 +1,7 @@
 # Maintainer: Nils Grunwald <nils [@] grunwald [dot] fr>
 
 pkgname=spire-bin
-pkgver=0.1.0_alpha.9
+pkgver=0.1.0_alpha.10
 pkgrel=1
 pkgdesc='A Clojure domain specific language tailored to idempotently orchestrate machines in parallel over SSH.'
 arch=('x86_64')
