@@ -1,53 +1,38 @@
-_pkgname=spirv-tools
-pkgname="mingw-w64-${_pkgname}"
-pkgver=2018.5
+pkgname=mingw-w64-spirv-tools
+pkgver=2020.2
 pkgrel=1
 pkgdesc="API and commands for processing SPIR-V modules (mingw-w64)"
 arch=('any')
 url="https://www.khronos.org/vulkan/"
 license=('custom')
-groups=(vulkan-devel)
-depends=()
-makedepends=('mingw-w64-cmake' 'python' 'git')
-source=("git+https://github.com/KhronosGroup/SPIRV-Tools.git#tag=v${pkgver}"
-        git+https://github.com/KhronosGroup/SPIRV-Headers.git)
-sha256sums=('SKIP'
-            'SKIP')
+depends=('mingw-w64-crt')
+makedepends=('mingw-w64-cmake' 'mingw-w64-spirv-headers' 'python')
+options=('!strip' '!buildflags' 'staticlibs')
+source=("https://github.com/KhronosGroup/SPIRV-Tools/archive/v${pkgver}.tar.gz")
+sha256sums=('29f376f6ebc24d3ce39c1aa47101c4b5d256c8247e41068b541dd43bb88d4174')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-  cd SPIRV-Tools
-
+  cd SPIRV-Tools-${pkgver}
   for _arch in ${_architectures}; do
-    unset LDFLAGS
-    mkdir -p "build-${_arch}"-{shared,static}
-    (cd "build-${_arch}-shared"
-      ${_arch}-cmake .. \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DSPIRV_WERROR=Off \
-        -DSPIRV-Headers_SOURCE_DIR=${srcdir}/SPIRV-Headers \
-        -DBUILD_SHARED_LIBS=ON
-      make)
-    (cd "build-${_arch}-static"
-      ${_arch}-cmake .. \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DSPIRV_WERROR=Off \
-        -DSPIRV-Headers_SOURCE_DIR=${srcdir}/SPIRV-Headers \
-        -DBUILD_SHARED_LIBS=OFF
-      make)
+    mkdir -p build-${_arch} && pushd build-${_arch}
+    ${_arch}-cmake  \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DSPIRV-Headers_SOURCE_DIR=/usr/${_arch} \
+      -DSPIRV_SKIP_EXECUTABLES=ON \
+      -DSPIRV_SKIP_TESTS=ON \
+      ..
+    make
+    popd
   done
 }
 
 package() {
-  cd SPIRV-Tools
   for _arch in ${_architectures}; do
-    make -C build-${_arch}-shared DESTDIR="${pkgdir}" install
-	make -C build-${_arch}-static DESTDIR="${pkgdir}" install
-	find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
-    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
-    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
+    cd "${srcdir}/SPIRV-Tools-${pkgver}/build-${_arch}"
+    make DESTDIR="${pkgdir}" install
+    ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
+    ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
   done
 }
