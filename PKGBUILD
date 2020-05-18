@@ -1,23 +1,28 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libsoup
-pkgver=2.68.4
+pkgver=2.70.0
 pkgrel=1
 pkgdesc="HTTP client/server library (mingw-w64)"
 arch=(any)
 url="https://download.gnome.org/sources/libsoup"
-license=("LGPL2")
+license=("LGPL")
 depends=('mingw-w64-glib2' 'mingw-w64-glib-networking' 'mingw-w64-sqlite' 'mingw-w64-libxml2' 'mingw-w64-libpsl')
-makedepends=('mingw-w64-meson')
+makedepends=('mingw-w64-meson' 'git' 'python')
 options=(!strip !buildflags staticlibs)
-source=("http://download.gnome.org/sources/libsoup/${pkgver%.*}/libsoup-$pkgver.tar.xz")
-sha256sums=('2d50b12922cc516ab6a7c35844d42f9c8a331668bbdf139232743d82582b3294')
+_commit=3857ea93dd3775d68010efed7ad3245714fee379  # tags/2.70.0^0
+source=("git+https://gitlab.gnome.org/GNOME/libsoup.git#commit=$_commit")
+sha256sums=('SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
+  # workaround to fix build with gcc 10
+  export CFLAGS="-fcommon"
   for _arch in ${_architectures}; do
-    mkdir -p "${srcdir}/libsoup-${pkgver}/build-${_arch}"
-    cd "${srcdir}/libsoup-${pkgver}/build-${_arch}"
+    mkdir -p "${srcdir}/libsoup/build-${_arch}"
+    cd "${srcdir}/libsoup/build-${_arch}"
+    meson-cross-file-generator --arch ${_arch} --output-file cross_file
+    export CROSS_FILE=${srcdir}/libsoup/build-${_arch}/cross_file
     ${_arch}-meson \
       -D gssapi=disabled \
       -D gnome=false \
@@ -33,10 +38,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}/libsoup-${pkgver}/build-${_arch}" install
-  
-    # see https://github.com/mesonbuild/meson/issues/4138 
-    ${_arch}-gcc-ranlib ${pkgdir}/usr/${_arch}/lib/*.a
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}/libsoup/build-${_arch}" install
   done
 }
 
