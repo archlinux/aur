@@ -1,0 +1,17 @@
+pkgbase = haskell-commonmark-git
+	pkgdesc = Pure Haskell commonmark parsing library, designed to be flexible and extensible
+	pkgver = 0.0.0.r743.g54ad60d
+	pkgrel = 1
+	url = https://github.com/jgm/commonmark-hs
+	arch = x86_64
+	license = GPL
+	makedepends = stack
+	provides = haskell-commonmark
+	conflicts = haskell-commonmark
+	source = haskell-commonmark-git::git+https://github.com/jgm/commonmark-hs.git
+	sha256sums = SKIP
+
+pkgname = haskell-commonmark-git
+
+pkgname = commonmark-git
+
