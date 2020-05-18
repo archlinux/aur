@@ -8,7 +8,7 @@
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-glibc
 pkgver=2.31
-pkgrel=3
+pkgrel=3.1
 pkgdesc="GNU C Library (${_target})"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
@@ -76,8 +76,8 @@ build() {
   CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
 
   #
-  CFLAGS=${CFLAGS/-fno-plt/}
-  CXXFLAGS=${CXXFLAGS/-fno-plt/}
+  CFLAGS="${CFLAGS/-fno-plt/} -g -O2"
+  CXXFLAGS="${CXXFLAGS/-fno-plt/} -g -O2"
   LDFLAGS=${LDFLAGS/,-z,now/}
 
   export BUILD_CC=gcc

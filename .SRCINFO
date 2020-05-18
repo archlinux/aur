@@ -1,7 +1,7 @@
 pkgbase = arm-linux-gnueabihf-glibc
 	pkgdesc = GNU C Library (arm-linux-gnueabihf)
 	pkgver = 2.31
-	pkgrel = 3
+	pkgrel = 3.1
 	url = https://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
