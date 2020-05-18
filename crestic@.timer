@@ -1,5 +1,5 @@
 [Unit]
-Description=Daily crestic backup %I
+Description=Daily crestic %I backup
 
 [Timer]
 OnCalendar=daily

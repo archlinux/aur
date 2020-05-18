@@ -1,6 +1,5 @@
 [Unit]
-Description=crestic backup %I
+Description=crestic %I backup
 
 [Service]
-Environment="CRESTIC_CONFIG_FILE=/etc/crestic/crestic.cfg"
 ExecStart=/usr/bin/crestic %I backup

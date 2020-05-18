@@ -1,7 +1,7 @@
 pkgbase = crestic
 	pkgdesc = Configurable restic wrapper
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nils-werner/crestic
 	arch = any
 	license = MIT
@@ -12,8 +12,8 @@ pkgbase = crestic
 	source = crestic@.service
 	source = crestic@.timer
 	sha256sums = 3bb0bf1c80c774a3b3ba85d018600f61b425510d230353b1d819a20b902c009b
-	sha256sums = 59e47195ddcddf825cd3a85b2c1b10a2557ba60708adc96c4175b3a8f63fff1c
-	sha256sums = 3d85d601b61a520cc72936d1314ee3dc1825dd1ed5f669e166099809c91ee0c2
+	sha256sums = 48755b767dfcad51dd48a9628e5d7f34133dfa40445488470cf78c203ae714e3
+	sha256sums = f9940ec04c29d1373496437758c807f8cb5bc272fa16b0ba6351c7d0ec8cd691
 
 pkgname = crestic
 
