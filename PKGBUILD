@@ -1,20 +1,21 @@
-# Maintainer: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
 # Contributor: tuxce <tuxce.net@gmail.com>
 
 _pkgname=aurvote
 pkgname=aurvote-git
 pkgver=r27.fd413f1
-pkgrel=2
+pkgrel=3
 pkgdesc='Tool to vote for your favorite AUR packages (development version)'
-url='http://git.archlinux.fr/aurvote.git'
+url="https://github.com/archlinuxfr/aurvote"
 license=('GPL')
-source=('git+https://github.com/archlinuxfr/aurvote.git')
-sha256sums=('SKIP')
 arch=('any')
 depends=('curl')
 makedepends=('git')
 conflicts=('aurvote')
 provides=('aurvote')
+source=('git+https://github.com/archlinuxfr/aurvote.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
