@@ -1,0 +1,13 @@
+#!/usr/bin/ash
+
+run_earlyhook() {
+    msg ":: Triggering early uevents..."
+    smdev -s
+}
+
+run_hook() {
+    msg ":: Triggering uevents..."
+    smdev -s
+}
+
+# vim: set ft=sh ts=4 sw=4 et:

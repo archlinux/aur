@@ -1,9 +1,15 @@
+From 6d5a094b85a1a148647744eb327593d6aef9a822 Mon Sep 17 00:00:00 2001
+From: Platon Ryzhikov <ihummer63@yandex.ru>
+Date: Mon, 18 May 2020 16:58:10 +0300
+Subject: [PATCH] Scan all /sys to find uevents, they may contain info about
+ modules even if they don't describe devices
+
 ---
  smdev.c | 127 ++++++++++++++++++++++++++++----------------------------
  1 file changed, 64 insertions(+), 63 deletions(-)
 
 diff --git a/smdev.c b/smdev.c
-index b774908..59b5485 100644
+index b774908..ff35df2 100644
 --- a/smdev.c
 +++ b/smdev.c
 @@ -85,7 +85,7 @@ main(int argc, char *argv[])
@@ -44,7 +50,7 @@ index b774908..59b5485 100644
 -	if (rule->path && rule->path[0] == '>') {
 -		snprintf(buf, sizeof(buf), "/dev/%s", ev->devname);
 -		unlink(buf);
-+	if (ev->major > 0 && ev->minor > 0 && ev->devname) {
++	if (ev->major >= 0 && ev->minor >= 0 && ev->devname) {
 +		/* Delete device node */
 +		unlink(rpath.path);
 +		/* Delete symlink */
@@ -73,7 +79,7 @@ index b774908..59b5485 100644
 -	if (mkpath(buf, 0755) < 0)
 -		eprintf("mkdir %s:", buf);
 -	umask(0);
-+	if (ev->major > 0 && ev->minor > 0 && ev->devname) {
++	if (ev->major >= 0 && ev->minor >= 0 && ev->devname) {
 +		snprintf(buf, sizeof(buf), "%d:%d", ev->major, ev->minor);
 +		if ((type = devtype(buf)) < 0)
 +			return -1;
@@ -179,5 +185,5 @@ index b774908..59b5485 100644
  
  static int
 -- 
-2.20.1
+2.26.2
 
