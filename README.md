@@ -1,6 +1,6 @@
 # aur-sync_gateway-community-bin
 
-An [AUR package](https://aur.archlinux.org/packages/sync_gateway-git/) for a prebuilt Couchbase [Sync Gateway](https://github.com/couchbase/sync_gateway) Community Edition (CE).
+An [AUR package](https://aur.archlinux.org/packages/sync_gateway-community-bin/) for Couchbase [Sync Gateway](https://github.com/couchbase/sync_gateway) Community Edition (CE).
 
 ## Getting Started
 
