@@ -9,8 +9,10 @@ pkgbase = bitbake
 	makedepends = wget
 	source = https://github.com/openembedded/bitbake/archive/1.46.0.tar.gz
 	source = bind.patch
+	source = test.patch
 	md5sums = aff0217dcba08df3dcbbad256cc07911
 	md5sums = 44506db845c085dc8916a05ca4348947
+	md5sums = 62c3ad291fff1fa27e31d29d2bc5e2b9
 
 pkgname = bitbake
 	install = bitbake.install

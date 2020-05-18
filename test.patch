@@ -1,0 +1,12 @@
+--- lib/hashserv/tests.py	2020-05-18 13:12:51.302335815 -0400
++++ lib/hashserv/tests.py	2020-05-18 13:13:05.370499252 -0400
+@@ -137,6 +137,6 @@
+         return "unix://" + os.path.join(self.temp_dir.name, 'sock')
+ 
+ 
+-class TestHashEquivalenceTCPServer(TestHashEquivalenceServer, unittest.TestCase):
+-    def get_server_addr(self):
+-        return "localhost:0"
++#class TestHashEquivalenceTCPServer(TestHashEquivalenceServer, unittest.TestCase):
++#    def get_server_addr(self):
++#        return "localhost:0"
