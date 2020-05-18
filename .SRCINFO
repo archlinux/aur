@@ -1,7 +1,7 @@
 pkgbase = ocaml-flac
 	pkgdesc = OCaml bindings to libFLAC
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/savonet/ocaml-flac
 	arch = i686
 	arch = x86_64
