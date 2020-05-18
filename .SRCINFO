@@ -1,6 +1,6 @@
 pkgbase = python-libusb1
 	pkgdesc = Pure python wrapper for libusb
-	pkgver = 1.7.1
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://github.com/vpelletier/python-libusb1
 	changelog = changelog.txt
@@ -12,8 +12,8 @@ pkgbase = python-libusb1
 	depends = python
 	depends = libusbx
 	conflicts = python-libusb1-git
-	source = https://github.com/vpelletier/python-libusb1/archive/1.7.1.tar.gz
-	sha256sums = b7e44533f3430540107d6f0ab555357f4060b105f30ecfed6e107d4d7f8f1306
+	source = https://github.com/vpelletier/python-libusb1/archive/1.8.tar.gz
+	sha256sums = 34caac2032a06c95a506e063efea05350283ad190dd64d8b4d0d32d021dfec68
 
 pkgname = python-libusb1
 
