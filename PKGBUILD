@@ -2,7 +2,7 @@
 
 pkgname=grobi
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically configure monitors/outputs for Xorg via RANDR"
 arch=("i686" "x86_64")
 license=('BSD 2-Clause "Simplified"')
@@ -10,6 +10,7 @@ url="https://github.com/fd0/grobi"
 makedepends=('go>=1.11')
 provides=('grobi')
 conflicts=("grobi-git")
+depends=("glibc")
 source=(${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('f61281e09f349b09448be3aaf25de4aa8e11a9735514c579345ed49a59c1ee29e0e4dc17fccd09e63e34e08499e28bdacf996ff78247f6e186c6a1351fe825da')
 

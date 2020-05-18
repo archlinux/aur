@@ -1,12 +1,13 @@
 pkgbase = grobi
 	pkgdesc = Automatically configure monitors/outputs for Xorg via RANDR
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fd0/grobi
 	arch = i686
 	arch = x86_64
 	license = BSD 2-Clause "Simplified"
 	makedepends = go>=1.11
+	depends = glibc
 	provides = grobi
 	conflicts = grobi-git
 	source = https://github.com/fd0/grobi/archive/v0.5.2.tar.gz
