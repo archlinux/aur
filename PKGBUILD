@@ -1,6 +1,6 @@
 # Maintainer: Philipp Claßen <philipp.classen@gmx.net>
 pkgname=libhttpserver-git
-pkgver=r420.4cbfc1f
+pkgver=r784.bd6b202
 pkgrel=1
 pkgdesc="C++ library for creating an embedded Rest HTTP server (and more)"
 arch=('i686' 'x86_64')
@@ -9,6 +9,7 @@ url="https://github.com/etr/libhttpserver"
 license=('BSD')
 
 depends=(libmicrohttpd)
+conflicts=(libhttpserver)
 makedepends=(gcc libtool)
 source=('git://github.com/etr/libhttpserver.git')
 md5sums=('SKIP')
@@ -23,7 +24,7 @@ build() {
   ./bootstrap
   mkdir -p build
   cd build
-  CXX=g++ CC=gcc ../configure --prefix=$pkgdir/usr --enable-cpp11
+  ../configure --prefix=$pkgdir/usr
   make
 }
 
