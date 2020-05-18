@@ -25,6 +25,9 @@ pkgver() {
 prepare() {
   cd cairo
 
+# Fix typo
+sed -i 's/have_png/use_png/g' configure.ac
+
   NOCONFIGURE=1 ./autogen.sh
 }
 
