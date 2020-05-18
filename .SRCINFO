@@ -1,6 +1,6 @@
 pkgbase = nicotine-plus-git
 	pkgdesc = A graphical client for the SoulSeek peer-to-peer system
-	pkgver = 1.4.1.r133.gad6e55af
+	pkgver = 1.4.1.r143.g7af728a3
 	pkgrel = 1
 	url = http://nicotine-plus.org
 	arch = any
@@ -17,7 +17,6 @@ pkgbase = nicotine-plus-git
 	depends = xdg-utils
 	optdepends = miniupnpc: UPnP support
 	optdepends = python-geoip: for geo-blocker
-	optdepends = python-notify2: for notifications
 	optdepends = python-feedparser: for Reddit plugin
 	provides = nicotine-plus
 	provides = nicotine+
