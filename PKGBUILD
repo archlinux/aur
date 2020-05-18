@@ -1,6 +1,7 @@
+# Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libffi
-pkgver=3.2.1
-pkgrel=2
+pkgver=3.3
+pkgrel=1
 pkgdesc="Portable foreign function interface library (mingw-w64)"
 arch=(any)
 depends=(mingw-w64-crt)
@@ -8,17 +9,10 @@ makedepends=(mingw-w64-configure)
 options=(staticlibs !buildflags !strip)
 license=(MIT)
 url="http://sourceware.org/libffi"
-source=("ftp://sourceware.org/pub/libffi/libffi-${pkgver}.tar.gz"
-"fix_return_size.patch")
-sha1sums=('280c265b789e041c02e5c97815793dfc283fb1e6'
-          '812beef0a2dc35a834acbeb2fb4bdc04d7abfda0')
+source=(https://sourceware.org/pub/libffi/libffi-$pkgver.tar.gz)
+sha256sums=('72fba7922703ddfa7a028d513ac15a85c8d54c8d67f55fa5a4802885dc652056')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
-prepare() {
-  cd "${srcdir}/libffi-${pkgver}"
-  patch -p2 -i ../fix_return_size.patch
-}
 
 build() {
   cd "${srcdir}/libffi-${pkgver}"
