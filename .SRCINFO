@@ -1,6 +1,6 @@
 pkgbase = swappy-git
 	pkgdesc = Grab and edit screenshots from a Wayland compositor
-	pkgver = r162.b5cc433
+	pkgver = r167.445980b
 	pkgrel = 1
 	url = http://github.com/jtheoof/swappy
 	arch = i686
