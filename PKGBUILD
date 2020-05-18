@@ -1,17 +1,15 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-aile
-pkgver=2.3.3
+pkgver=3.0.0
 pkgrel=1
-pkgdesc='Experimental, quasi-proportional family of Iosevka.'
+pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
 arch=('any')
-url='https://be5invis.github.io/Iosevka/'
-license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
-conflicts=('ttf-iosevka-pack')
-source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/experimental-iosevka-aile-${pkgver}.zip"
+url='https://typeof.net/Iosevka/'
+license=('OFL')
+source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/ttf-iosevka-aile-${pkgver}.zip"
         "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v${pkgver}/LICENSE.md")
-sha256sums=('dc5e7030fe497f6e1f2becaa50fe40d019475865327d29040bd4ea96d8b4f9f7'
-            'ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000')
+sha256sums=('cb44b6a5cffa04cc20fe29008205c29b829788ea15f23b8cf94c39e496cf8cb7'
+            'e61c0988bb231a321f14cce1b119a468f279ea86826c32e943ab16dbf08c1ba9')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/${pkgname}
