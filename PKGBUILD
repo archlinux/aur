@@ -1,25 +1,26 @@
-# Maintainer : Michael Manley <mmanley@nasutek.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Michael Manley <mmanley@nasutek.com>
 
 pkgname=chan-sccp
-pkgver=4.3.2
+pkgver=4.3.2_epsilon
 pkgrel=1
-pkgdesc="Chan-SCCP channel driver for Asterisk"
-arch=('i686' 'x86_64')
-url="http://chan-sccp-b.sourceforge.net"
+pkgdesc='Cisco SCCP channel driver for Asterisk, alternative to chan_skinny'
+arch=('x86_64' 'i686')
+url='http://chan-sccp-b.sourceforge.net'
 license=('GPL')
-depends=('asterisk')
+depends=('asterisk' 'zlib')
 backup=('etc/asterisk/sccp.conf')
-source=("https://github.com/chan-sccp/chan-sccp/archive/v${pkgver}-delta.tar.gz")
-sha256sums=('34d859768458ed2696c455a44a0ef06774e4f77669b3f6fbdc74423a87aa2d03')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/chan-sccp/chan-sccp/archive/v${pkgver/_/-}.tar.gz")
+sha256sums=('9a3cc7ac5b6e917c6a6b326212b0d144ae0042dae07bb85cb0e719944e1ee572')
 
 build() {
-  cd ${srcdir}/chan-sccp-${pkgver}-delta
+  cd "$pkgname-${pkgver/_/-}"
   ./configure --prefix=/usr
-  make || return 1
+  make
 }
 
 package(){
-  cd ${srcdir}/chan-sccp-${pkgver}-delta
-  make DESTDIR="${pkgdir}" install || return 1
+  cd "$pkgname-${pkgver/_/-}"
+  make DESTDIR="$pkgdir" install
 }
 
