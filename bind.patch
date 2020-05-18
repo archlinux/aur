@@ -1,0 +1,11 @@
+--- bin/bitbake-prserv	2020-05-11 10:39:29.778714233 -0400
++++ bin/bitbake-prserv	2020-05-11 10:39:48.698497166 -0400
+@@ -14,7 +14,7 @@
+ 
+ __version__="1.0.0"
+ 
+-PRHOST_DEFAULT='0.0.0.0'
++PRHOST_DEFAULT='127.0.0.1'
+ PRPORT_DEFAULT=8585
+ 
+ def main():

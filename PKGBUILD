@@ -6,15 +6,18 @@
 pkgbase=bitbake
 pkgname=('bitbake' 'bitbake-vim')
 _github_url="https://github.com/openembedded/bitbake"
-pkgver=1.44.1
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='Build tool executing tasks and managing metadata.'
 arch=('any')
 url='https://www.openembedded.org/wiki/Main_Page'
 license=('GPL2')
 makedepends=('git' 'wget')
-source=("https://github.com/openembedded/bitbake/archive/${pkgver}.tar.gz")
-md5sums=('f1738e17e75c71166fb9f4ef7367ae51')
+source=("https://github.com/openembedded/bitbake/archive/${pkgver}.tar.gz"
+    "bind.patch"
+    )
+md5sums=('aff0217dcba08df3dcbbad256cc07911'
+         '44506db845c085dc8916a05ca4348947')
 
 check() {
     if ! git config --global --get user.name; then
@@ -26,9 +29,8 @@ check() {
         git config --global user.email "test@bitbake.com"
     fi
     # use http over ftp to use travis
-    # grep -rl "[^s]ftp://" "${pkgname}-${pkgver}"/lib/bb/tests/*py | xargs sed -i 's@ftp://@http://@g'
-    # git config --local -l
     cd "${pkgbase}-${pkgver}"
+    patch -p0 < "${srcdir}/bind.patch"
     BB_SKIP_NETTESTS='yes' PYTHONPATH="${srcdir}/${pkgbase}-${pkgver}/lib" PATH="${PATH}:${srcdir}/${pkgbase}-${pkgver}/bin" python ./bin/bitbake-selftest --failfast -v
     if [ "${unset_name}" -eq 1 ]; then
         unset_name=1
