@@ -1,7 +1,7 @@
 pkgbase = an9wer-st
 	pkgdesc = A simple terminal implementation for X
 	pkgver = 0.8.3.r9.g045a0fa
-	pkgrel = 2
+	pkgrel = 3
 	url = https://st.suckless.org/
 	install = an9wer-st.install
 	arch = x86_64
