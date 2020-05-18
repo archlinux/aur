@@ -2,7 +2,7 @@
 # Contributor: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=ventoy
-pkgver=1.0.09
+pkgver=1.0.10
 pkgrel=1
 pkgdesc='A new multiboot USB solution'
 url='http://www.ventoy.net/'
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('bash' 'util-linux')
 source=("https://github.com/ventoy/Ventoy/releases/download/v${pkgver}/ventoy-${pkgver}-linux.tar.gz"
         'ventoy')
-sha512sums=('6bb723e9fd268244149ee6663aff725456c9c390d4deb5f3c4a127ed5f6dcd3e104bab501830e8a39525e4974ce304c282e5559af21b9543daa3f9ee3bb5ba3b'
+sha512sums=('6cbb955edb8daaf9c6395488798fbf6bb3be2b0f195b08a3ad0ca77ace4c296fb15ae4f6277c55249029a27c141aef93f7bd78c12693b0621467ef2af9679581'
             '27fef4c8e254863896888cf3e77a39ed377100effc69a4518fe55038069c7c1e8b56f1a79d47d969eda8e5bd90920e93b34dd361aac67be948266d1e7b238dcd')
 
 prepare() {
