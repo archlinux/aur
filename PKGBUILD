@@ -3,18 +3,18 @@
 pkgdesc="ROS - C++ implementation of bond, a mechanism for checking when another process has terminated."
 url='https://www.wiki.ros.org/bondcpp'
 
-pkgname='ros-melodic-bondcpp'
-pkgver='1.8.3'
+pkgname='ros-noetic-bondcpp'
+pkgver='1.8.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-cmake-modules
-	ros-melodic-catkin
-	ros-melodic-smclib
-	ros-melodic-roscpp
-	ros-melodic-bond
+	ros-noetic-cmake-modules
+	ros-noetic-catkin
+	ros-noetic-smclib
+	ros-noetic-roscpp
+	ros-noetic-bond
 )
 
 makedepends=(
@@ -26,9 +26,9 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-roscpp
-	ros-melodic-smclib
-	ros-melodic-bond
+	ros-noetic-roscpp
+	ros-noetic-smclib
+	ros-noetic-bond
 )
 
 depends=(
@@ -37,31 +37,25 @@ depends=(
 	util-linux
 )
 
-optdepends=(
-)
-
 
 _dir="bond_core-${pkgver}/bondcpp"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/bond_core/archive/${pkgver}.tar.gz")
-sha256sums=('9f2bd791abc0356f47235db7e2b042479e6a091cf2cd969d0918a8e0c76b632d')
+sha256sums=('19e683f3c1ce7ec442e0e46708cdf7bbbb48c2a14ca4cbca858609fc1be931c5')
 
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
