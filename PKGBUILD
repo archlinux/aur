@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=htmlhint
-pkgver=0.12.2
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Static Code Analysis Tool for your HTML'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha512sums=('9b37cfa73e69387f8046d598d68aaeb6b58248166d0f8ecad6d7d3deead3b79e9d184808106b426f439b9c627b8c2856e11826b59bac49096e3003f1eceab77f')
+sha512sums=('3377013c3391ccf847fd47ea6b77f4ffb389ca58e6511bb9fdb042f3f8cc9a0a52e809adb8dd81f1b416af7c3fd386c3d11c1c25955a8237f0c6b80be6c67476')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr --ignore-scripts --production $pkgname-$pkgver.tgz
