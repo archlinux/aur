@@ -1,0 +1,17 @@
+pkgbase = libhttpserver
+	pkgdesc = C++ library for creating an embedded Rest HTTP server (and more)
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = https://github.com/etr/libhttpserver
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = gcc
+	makedepends = libtool
+	depends = libmicrohttpd
+	conflicts = libhttpserver-git
+	source = https://github.com/etr/libhttpserver/archive/0.18.0.tar.gz
+	sha256sums = b4a745a9f32a1ac02b545c062fc85342a655c3770cd8d4d7218f34509ea27d98
+
+pkgname = libhttpserver
+
