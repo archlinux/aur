@@ -1,7 +1,7 @@
 pkgbase = ocaml-jst-config
 	pkgdesc = Compile-time configuration for Jane Street libraries
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/jst-config
 	arch = x86_64
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = ocaml-jst-config
 	depends = ocaml-ppx_assert>=0.13.0
 	depends = ocaml-stdio>=0.13.0
 	options = !strip
-	source = ocaml-jst-config-0.13.0-1.tar.gz::https://github.com/janestreet/jst-config/archive/v0.13.0.tar.gz
+	source = ocaml-jst-config-0.13.0-2.tar.gz::https://github.com/janestreet/jst-config/archive/v0.13.0.tar.gz
 	sha256sums = d0823f2c46798f4ee14274a6bc5deb989685020d5ef0680eae44dde303a4ce64
 
 pkgname = ocaml-jst-config
