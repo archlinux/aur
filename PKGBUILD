@@ -1,7 +1,7 @@
 
 
 pkgname=lychee
-pkgver=3.2.16
+pkgver=4.0.5
 pkgrel=1
 pkgdesc="Lychee is an easy to use and great looking photo-management-system."
 arch=('any')
@@ -14,7 +14,7 @@ options=('!strip' emptydirs)
 backup=('etc/webapps/lychee/apache.example.conf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LycheeOrg/Lychee/archive/v$pkgver.tar.gz"
 	'apache.example.conf')
-sha256sums=('c9c369dae38a4909deeebb8250e8768f93383e34b54b15854176caaa5743af22'
+sha256sums=('9a4bc1b65141dc75c9a66f3bc98c98b92922ba8caf9359b132908f0f038b54dc'
             'fe1400a1be9b60c4c8b6759b588638536188a73307cd061789877cd5fd491557')
 
 pkgver() {
@@ -35,6 +35,6 @@ package() {
   find ${pkgdir}/usr/share/webapps/${pkgname} -type f -exec chmod 0644 {} \;
   find ${pkgdir}/usr/share/webapps/${pkgname} -type d -exec chmod 0755 {} \;
 
-  chmod -R 777 ${pkgdir}/usr/share/webapps/${pkgname}/data
-  chmod -R 777 ${pkgdir}/usr/share/webapps/${pkgname}/uploads
+#  chmod -R 777 ${pkgdir}/usr/share/webapps/${pkgname}/data
+#  chmod -R 777 ${pkgdir}/usr/share/webapps/${pkgname}/uploads
 }
