@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-pixman
 	pkgdesc = The pixel-manipulation library for X and cairo (mingw-w64)
-	pkgver = 0.38.4
-	pkgrel = 8
+	pkgver = 0.40.0
+	pkgrel = 1
 	url = http://xorg.freedesktop.org
 	arch = any
 	license = custom
@@ -11,16 +11,8 @@ pkgbase = mingw-w64-pixman
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://xorg.freedesktop.org/releases/individual/lib/pixman-0.38.4.tar.bz2
-	source = 4851d4e20f66f540cd61fb69851df17671fc90d2.patch
-	source = be0d3e699401f8230fa88c28c52d73c57f13f327.patch
-	source = fd5c0da57985a430912907d4a898ed1ddb854ead.patch
-	source = afc6c935f1b52ca74d96f1ea2cbfb3e47ffb7fd4.patch
-	sha256sums = 84abb7fa2541af24d9c3b34bf75d6ac60cc94ac4410061bbb295b66a29221550
-	sha256sums = 8b4cdf460a1a3298aeb156c75b304c19d52421ad064f64866f002355bed94a06
-	sha256sums = 3103cb4c482d150acdc08f901a1383bd5a6e044653dc3afc5b73919f73f529d1
-	sha256sums = 2efc53fe4f0831441921884b4fb2896fbd14b865892c9cd5df4dfcd260c9bb41
-	sha256sums = 8a708e65b528e73898c6b9690a1920d25fc3106928c28959694af3a5edad999b
+	source = http://xorg.freedesktop.org/releases/individual/lib/pixman-0.40.0.tar.xz
+	sha512sums = 8a60edb113d68791b41bd90b761ff7b3934260cb3dada3234c9351416f61394e4157353bc4d61b8f6c2c619de470f6feefffb4935bfcf79d291ece6285de7270
 
 pkgname = mingw-w64-pixman
 
