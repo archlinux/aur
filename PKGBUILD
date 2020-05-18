@@ -4,11 +4,12 @@
 pkgname=python-ipympl
 _pkgname="${pkgname#*-}"
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Matplotlib Jupyter Extension"
 url="https://pypi.org/project/ipympl/"
-_depends=(
-  'python')
+depends=(
+  'python>=3.8'
+  'python<3.9')
 makedepends=(
   'python-setuptools')
 license=('BSD')
