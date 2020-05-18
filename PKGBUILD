@@ -1,4 +1,4 @@
-# Maintainer: Philipp Claßen <philipp.classen@gmx.net>
+# Maintainer: Philipp Claßen <philipp.classen@posteo.de>
 pkgname=libhttpserver-git
 pkgver=r784.bd6b202
 pkgrel=1
