@@ -1,0 +1,16 @@
+pkgbase = cargo-udeps
+	pkgdesc = Cargo plugin to find unused dependencies in Cargo.toml
+	pkgver = 0.1.11
+	pkgrel = 1
+	url = https://github.com/est31/cargo-udeps
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = APACHE
+	makedepends = cargo
+	depends = gcc-libs
+	source = https://github.com/est31/cargo-udeps/archive/v0.1.11.tar.gz
+	sha512sums = 590547ba7c88c5ebe2dad34f83198dff828f9b13ea98d15400a822e652b880b513a6b0bd7dae813b9ba1ea1d2a7b4207344694552f8542873eb5bd52eeac7bb8
+
+pkgname = cargo-udeps
+
