@@ -1,32 +1,33 @@
 pkgbase = mingw-w64-cairo-bootstrap
-	pkgdesc = Cairo vector graphics library (mingw-w64 bootstrap)
-	pkgver = 1.16.0
-	pkgrel = 3
+	pkgdesc = 2D graphics library with support for multiple output devices (mingw-w64 bootstrap)
+	pkgver = 1.17.2+17+g52a7c79fd
+	pkgrel = 1
 	url = http://cairographics.org/
 	arch = any
 	license = LGPL
 	license = MPL
 	makedepends = mingw-w64-configure
+	makedepends = git
 	depends = mingw-w64-pixman
 	depends = mingw-w64-glib2
 	depends = mingw-w64-fontconfig
 	depends = mingw-w64-libpng
 	depends = mingw-w64-lzo
-	provides = mingw-w64-cairo=1.16.0
+	provides = mingw-w64-cairo=1.17.2+17+g52a7c79fd
 	conflicts = mingw-w64-cairo
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://cairographics.org/releases/cairo-1.16.0.tar.xz
+	source = git+https://gitlab.freedesktop.org/cairo/cairo.git#commit=52a7c79fd4ff96bb5fac175f0199819b0f8c18fc
 	source = 0009-standalone-headers.mingw.patch
 	source = 0026-create-argb-fonts.all.patch
 	source = 0027-win32-print-fix-unbounded-surface-assertion.patch
-	source = 0001-ft-Use-FT_Done_MM_Var-instead-of-free-when-available.patch
-	sha256sums = 5e7b29b3f113ef870d1e3ecf8adf21f923396401604bda16d44be45e66052331
+	source = 0001-image-compositor-Remove-the-right-glyph-from-pixman-.patch
+	sha256sums = SKIP
 	sha256sums = 234de8c5d4c28b03c19e638a353e8defb2de0367a634c002b0ea7d2877bd0756
 	sha256sums = 6db6c44fbdb4926d09afa978fe80430186c4b7b7d255059602b1f94c6a079975
 	sha256sums = 7e244c20eec8c7b287dbee1d34de178d9b0c419dc4c2b11c90eaf626c92bf781
-	sha256sums = 52ab418058076ad01e046ebbbdc834f390305516c222d07de91a93a4dcebe921
+	sha256sums = 262bf1cebc04eaae93dbfab56045ad800b3b027be303ca2611375645108f171f
 
 pkgname = mingw-w64-cairo-bootstrap
 
