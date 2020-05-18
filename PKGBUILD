@@ -1,6 +1,6 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=duetwebcontrol-bin
-pkgver=2.0.7
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Official web interface for Duet electronics"
 arch=('any')
@@ -8,11 +8,11 @@ url="https://github.com/chrishamm/DuetWebControl.git"
 license=('GPL3')
 provides=("duetwebcontrol=${pkgver}")
 conflicts=("duetwebcontrol")
-source=("https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duetwebcontrol_${pkgver}-1_all.deb")
-md5sums=('7a7fe0abf9419686ffc8a524e71cb554')
-sha1sums=('537e8fc016d8268ae49eac37225640fc677b9fa9')
-sha256sums=('1586128688615b41f8d248b2075e3b74e7ba1fcf18dfd4ef3cc70b869911e3cc')
-sha512sums=('951951b4d9a059e68c101ecf879787240e86bdf5c0e321781fb6a9f0868501da99d4b6eef9262106e4a23236d937ecc329cbd0ab0fc2b1968e56d65f55843bad')
+source=("https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duetwebcontrol_${pkgver}_all.deb")
+md5sums=('4c01e4cde3ab9c2425857cbaf684043f')
+sha1sums=('3c0f5e1f38376484e0b7e26b3f4ce7175e352cec')
+sha256sums=('36d0eb3e9c28a7203237f66c536a5dd4ca90aaaf4407a7a63e188f2fda5f3751')
+sha512sums=('20b0fce9fe0cab6b77b0748d1166c33c176cd3f981183f0298ffdf56b4cf8738ed04561d66b11c70ca5ca22ec819a83cf98e6d56eaa12ba084e4688f4c83f46a')
 
 prepare() {
     tar -xf data.tar.xz
