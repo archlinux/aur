@@ -1,17 +1,17 @@
-pkgbase = ros-melodic-nodelet-core
+pkgbase = ros-noetic-nodelet-core
 	pkgdesc = ROS - Nodelet Core Metapackage.
-	pkgver = 1.9.16
-	pkgrel = 2
+	pkgver = 1.10.0
+	pkgrel = 1
 	url = https://www.wiki.ros.org/nodelet_core
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-nodelet
-	depends = ros-melodic-nodelet-topic-tools
-	source = ros-melodic-nodelet-core-1.9.16.tar.gz::https://github.com/ros/nodelet_core/archive/1.9.16.tar.gz
-	sha256sums = 609a85323a47aff2e5e53531a465ddc62ba3290ba8b359a12dd07253bbaa9e26
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-nodelet
+	depends = ros-noetic-nodelet-topic-tools
+	source = ros-noetic-nodelet-core-1.10.0.tar.gz::https://github.com/ros/nodelet_core/archive/1.10.0.tar.gz
+	sha256sums = 2a20f3c1c6e270e3625bc27099c07d236ca0f3aa97fff2b5f15075a0233acfe9
 
-pkgname = ros-melodic-nodelet-core
+pkgname = ros-noetic-nodelet-core
 
