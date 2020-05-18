@@ -2,11 +2,12 @@
 
 pkgname=an9wer-suckless-rebuild
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A script to rebuild suckless tools"
 url="https://github.com/an9wer/pkg/tree/master/arch/suckless-rebuild"
 arch=('x86_64')
 license=('MIT')
+depends=('bash')
 source=("suckless-rebuild")
 md5sums=('52dd209ab552f2134dc129d5860eda91')
 
