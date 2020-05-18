@@ -1,7 +1,7 @@
 pkgbase = autofs-no-locking
 	pkgdesc = A kernel-based automounter for Linux (disable mount locking, allows recursive auto-mounting)
 	pkgver = 5.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/pub/linux/daemons/autofs/
 	arch = x86_64
 	license = GPL2
@@ -11,6 +11,7 @@ pkgbase = autofs-no-locking
 	makedepends = sssd
 	makedepends = libnsl
 	makedepends = rpcsvc-proto
+	makedepends = systemd
 	depends = libxml2
 	optdepends = krb5: for LDAP support
 	optdepends = sssd: for SSSD integration

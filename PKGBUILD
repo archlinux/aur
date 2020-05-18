@@ -8,7 +8,7 @@
 _pkgbase=autofs
 pkgname=${_pkgbase}-no-locking
 pkgver=5.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A kernel-based automounter for Linux (disable mount locking, allows recursive auto-mounting)'
 arch=('x86_64')
 url='https://www.kernel.org/pub/linux/daemons/autofs/'
@@ -16,7 +16,7 @@ license=('GPL2')
 depends=('libxml2')
 provides=("autofs")
 conflicts=("autofs")
-makedepends=('libldap' 'krb5' 'kmod' 'sssd' 'libnsl' 'rpcsvc-proto', 'systemd')
+makedepends=('libldap' 'krb5' 'kmod' 'sssd' 'libnsl' 'rpcsvc-proto' 'systemd')
 optdepends=('krb5: for LDAP support'
             'sssd: for SSSD integration')
 backup=('etc/autofs/auto.master'
