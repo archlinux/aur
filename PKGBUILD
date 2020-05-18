@@ -7,7 +7,7 @@ _srcname=linux-5.6
 _major=5.6
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=12
+_minor=13
 ### on initial release comment this out and set to =1
 _minorc=$((_minor+1))
 #_minorc=1
@@ -32,26 +32,18 @@ source=(
   config         # the main kernel config file
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0003-gcc-plugins-drop-support-for-GCC-4.7.patch
-  0004-gcc-common.h-Update-for-GCC-10.patch
-  0005-Makefile-disallow-data-races-on-gcc-10-as-well.patch
-  0006-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('63640904b98d5cfd7994795c3a7296b8a052a24a7cecaaf7a867b342d0ec9b0f'
+sha256sums=('540e33aced1d7904140f20dc0f6d8dc149aa52587101b12fecd4b680e1fee846'
             'SKIP'
-            'daea336aace63a9116475b3f698e259073c00bea57a2a545300dba1c45562221'
+            'f125d79c8f6974213638787adcad6b575bbd35a05851802fd83f622ec18ff987'
             'SKIP'
             'f392c9ecbb5177ea2573aaf22935322940ea2be0366f3fb9c9f861431f4aed21'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '46c253f0d12b73a0cff3c40b82b656b7c7c423dac9abb61a391042d873eb9c47'
-            'dc1418b2c3f793da567a4bd5e3ad5f161bd415ae20fc67fd68d1edc2f3afce71'
-            '04e773b9d80a17221ffdf7f1bd6ac0b9ec7d2963d0578bbc2edab1a553aac0d0'
-            '2165ef75486f37b84155dbd8dfd63bdf9dd2bc51517428dbfe42b93ad9e46c50'
-            '4f75e2f83e7bd2e0e65c0ce5b4feff9b4d204fa9531c92212b92809c46e4f3c3')
+            '46c253f0d12b73a0cff3c40b82b656b7c7c423dac9abb61a391042d873eb9c47')
 
 _kernelname=${pkgbase#linux}
 
