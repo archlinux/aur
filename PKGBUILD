@@ -6,8 +6,8 @@ pkgname=('wxbase-light'
          'wxgtk3-light'
          'wxcommon-light'
          )
-pkgver=3.0.4
-pkgrel=2
+pkgver=3.0.5.1
+pkgrel=1
 pkgdesc="wxWidgets suite for Base and GTK2 and GTK3 toolkits (GNOME/GStreamer free!)"
 arch=('x86_64')
 url='http://wxwidgets.org'
