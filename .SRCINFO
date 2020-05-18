@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-crt-bin
 	pkgdesc = MinGW-w64 CRT for Windows (pre-compiled)
 	pkgver = 7.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mingw-w64.sourceforge.net
 	arch = any
 	groups = mingw-w64-toolchain
@@ -13,8 +13,8 @@ pkgbase = mingw-w64-crt-bin
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://sourceforge.net/projects/mingw-w64-builds/files/mingw-w64-crt/mingw-w64-crt-7.0.0.tar.xz
-	md5sums = 6220f3cc5855eed21db2ecafcc1fed8a
+	source = https://sourceforge.net/projects/mingw-w64-builds/files/mingw-w64-crt/mingw-w64-crt-7.0.0-2.tar.xz
+	md5sums = ed956d49059d7870aed07b8b79107430
 
 pkgname = mingw-w64-crt-bin
 
