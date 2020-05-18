@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-meson
 	pkgdesc = Meson wrapper for MinGW (mingw-w64)
 	pkgver = 1
-	pkgrel = 18
+	pkgrel = 19
 	url = http://fedoraproject.org/wiki/MinGW
 	arch = any
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = mingw-w64-meson
 	optdepends = mingw-w64-cmake
 	source = toolchain_generator.py
 	source = meson-mingw-wrapper
-	sha256sums = eccc039b3d46cc6ed3f48d526c9434a28da80caa88d0d7240866ab7d0370d164
+	sha256sums = a598c4f27b4a03063c5515ee2ffb7213ea969f6c64d88979f55c0542729b6b80
 	sha256sums = c91f2bbcafad7b742f13c6bd46324a03b70066b348621ce6a20f4a05005985ef
 
 pkgname = mingw-w64-meson

@@ -10,9 +10,9 @@ class CrossFileGenerator:
 		self.arch = arch
 		self.output_file = output_file
 		self.need_exe_wrapper = need_exe_wrapper
-		self.cflags = os.environ["CFLAGS"]
-		self.cxxflags = os.environ["CXXFLAGS"]
-		self.ldflags = os.environ["LDFLAGS"]
+		self.cflags = os.environ['CFLAGS'] if 'CFLAGS' in os.environ else ''
+		self.cxxflags = os.environ["CXXFLAGS"] if 'CXXFLAGS' in os.environ else ''
+		self.ldflags = os.environ["LDFLAGS"] if 'LDFLAGS' in os.environ else ''
 		if self.arch == 'i686-w64-mingw32':
 			self.cpu_family = "x86"
 			self.processor = 'i686'
