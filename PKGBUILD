@@ -1,15 +1,15 @@
 # Maintainer: Igor <f2404@yandex.ru>
 _pkgname=xfce4-terminal
 pkgname=xfce4-terminal-git
-pkgver=0.8.7.3.r30.gbf257001
-pkgrel=2
+pkgver=0.8.9.2.r27.g13732432
+pkgrel=1
 pkgdesc="A modern terminal emulator primarily for the Xfce desktop environment - git checkout"
 arch=('i686' 'x86_64')
 url="https://docs.xfce.org/apps/terminal/start"
 license=('GPL2')
 groups=('xfce4')
 depends=('libxfce4ui' 'vte3>=0.38' 'hicolor-icon-theme')
-makedepends=('intltool' 'git' 'xfce4-dev-tools')
+makedepends=('intltool' 'git' 'xfce4-dev-tools' 'libxslt')
 provides=('xfce4-terminal')
 conflicts=('xfce4-terminal' 'terminal')
 replaces=('xfce4-terminal' 'terminal')
