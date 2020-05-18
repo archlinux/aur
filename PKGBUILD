@@ -3,17 +3,17 @@
 pkgdesc="ROS - This package defines messages for commonly used sensors, including cameras and scanning laser rangefinders."
 url='https://wiki.ros.org/sensor_msgs'
 
-pkgname='ros-melodic-sensor-msgs'
+pkgname='ros-noetic-sensor-msgs'
 pkgver='1.12.7'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-message-generation
-	ros-melodic-std-msgs
-	ros-melodic-catkin
-	ros-melodic-geometry-msgs
+	ros-noetic-message-generation
+	ros-noetic-std-msgs
+	ros-noetic-catkin
+	ros-noetic-geometry-msgs
 )
 
 makedepends=(
@@ -23,9 +23,9 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-message-runtime
-	ros-melodic-std-msgs
-	ros-melodic-geometry-msgs
+	ros-noetic-message-runtime
+	ros-noetic-std-msgs
+	ros-noetic-geometry-msgs
 )
 
 depends=(
@@ -39,24 +39,18 @@ sha256sums=('a9d8c7655d426afe8bc2b021e0bc8ce25dae70ca35b985a0ec0b8b5768722bd4')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
