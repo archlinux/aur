@@ -1,0 +1,87 @@
+From 1a263ae60b04de959d9ce9caea4889385eefcc7b Mon Sep 17 00:00:00 2001
+From: Linus Torvalds <torvalds@linux-foundation.org>
+Date: Sat, 9 May 2020 15:58:04 -0700
+Subject: gcc-10: avoid shadowing standard library 'free()' in crypto
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+From: Linus Torvalds <torvalds@linux-foundation.org>
+
+commit 1a263ae60b04de959d9ce9caea4889385eefcc7b upstream.
+
+gcc-10 has started warning about conflicting types for a few new
+built-in functions, particularly 'free()'.
+
+This results in warnings like:
+
+   crypto/xts.c:325:13: warning: conflicting types for built-in function ‘free’; expected ‘void(void *)’ [-Wbuiltin-declaration-mismatch]
+
+because the crypto layer had its local freeing functions called
+'free()'.
+
+Gcc-10 is in the wrong here, since that function is marked 'static', and
+thus there is no chance of confusion with any standard library function
+namespace.
+
+But the simplest thing to do is to just use a different name here, and
+avoid this gcc mis-feature.
+
+[ Side note: gcc knowing about 'free()' is in itself not the
+  mis-feature: the semantics of 'free()' are special enough that a
+  compiler can validly do special things when seeing it.
+
+  So the mis-feature here is that gcc thinks that 'free()' is some
+  restricted name, and you can't shadow it as a local static function.
+
+  Making the special 'free()' semantics be a function attribute rather
+  than tied to the name would be the much better model ]
+
+Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+---
+ crypto/lrw.c |    4 ++--
+ crypto/xts.c |    4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+--- a/crypto/lrw.c
++++ b/crypto/lrw.c
+@@ -453,7 +453,7 @@ static void exit_tfm(struct crypto_skcip
+ 	crypto_free_skcipher(ctx->child);
+ }
+ 
+-static void free(struct skcipher_instance *inst)
++static void free_inst(struct skcipher_instance *inst)
+ {
+ 	crypto_drop_skcipher(skcipher_instance_ctx(inst));
+ 	kfree(inst);
+@@ -565,7 +565,7 @@ static int create(struct crypto_template
+ 	inst->alg.encrypt = encrypt;
+ 	inst->alg.decrypt = decrypt;
+ 
+-	inst->free = free;
++	inst->free = free_inst;
+ 
+ 	err = skcipher_register_instance(tmpl, inst);
+ 	if (err)
+--- a/crypto/xts.c
++++ b/crypto/xts.c
+@@ -393,7 +393,7 @@ static void exit_tfm(struct crypto_skcip
+ 	crypto_free_cipher(ctx->tweak);
+ }
+ 
+-static void free(struct skcipher_instance *inst)
++static void free_inst(struct skcipher_instance *inst)
+ {
+ 	crypto_drop_skcipher(skcipher_instance_ctx(inst));
+ 	kfree(inst);
+@@ -504,7 +504,7 @@ static int create(struct crypto_template
+ 	inst->alg.encrypt = encrypt;
+ 	inst->alg.decrypt = decrypt;
+ 
+-	inst->free = free;
++	inst->free = free_inst;
+ 
+ 	err = skcipher_register_instance(tmpl, inst);
+ 	if (err)
