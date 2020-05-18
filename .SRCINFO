@@ -1,13 +1,13 @@
 pkgbase = jx
 	pkgdesc = Command line tool for working with Jenkins X
-	pkgver = 2.1.34
+	pkgver = 2.1.39
 	pkgrel = 1
 	url = https://github.com/jenkins-x/jx
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = jx-2.1.34.tar.gz::https://github.com/jenkins-x/jx/archive/v2.1.34.tar.gz
-	sha256sums = 50c3067b83789b84db7a8ea0ae651d97a9c19980609e2008979ba5aa44b0f587
+	source = jx-2.1.39.tar.gz::https://github.com/jenkins-x/jx/archive/v2.1.39.tar.gz
+	sha256sums = 253b749dad4095f74667fd17eed09f18448fc402ccacd30f3b6361951287cf40
 
 pkgname = jx
 
