@@ -1,0 +1,21 @@
+pkgbase = terminalpp-bin
+	pkgdesc = Minimalist, fast, cross-platform terminal emulator
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://terminalpp.com
+	arch = x86_64
+	license = MIT
+	depends = libxft
+	depends = hicolor-icon-theme
+	provides = terminalpp
+	source = terminalpp-bin-0.6.0.rpm::https://github.com/terminalpp/terminalpp/releases/download/v0.6.0/terminalpp.rpm
+	source = ropen.rpm::https://github.com/terminalpp/terminalpp/releases/download/v0.6.0/ropen.rpm
+	source = tpp-bypass::https://github.com/terminalpp/terminalpp/releases/download/v0.6.0/tpp-bypass-Ubuntu-18.04
+	source = LICENSE::https://github.com/terminalpp/terminalpp/raw/master/LICENSE.md
+	sha256sums = 5323ddd89225b3b4617c55fb14cc2e2af297c570112488a197a029acd5fe4000
+	sha256sums = a776b6cd16ed0d86b58ce3a272aa3445d15a7307ac3fd875baebab75e12930f2
+	sha256sums = 66c24d2d8720851bcf52a2e60af8915a40b9fa5c66793e029952131a386e1429
+	sha256sums = 5560b44d8082b623c288cefd5de25c8be7b6b3711bb2f4af070deb057d2d8de7
+
+pkgname = terminalpp-bin
+
