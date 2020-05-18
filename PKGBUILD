@@ -12,8 +12,7 @@ provides=(lib32-cairo)
 conflicts=(lib32-cairo)
 depends=(lib32-libpng lib32-libxrender lib32-libxext lib32-fontconfig lib32-pixman lib32-glib2
          cairo)
-makedepends=(lib32-librsvg lib32-gtk2 valgrind git lib32-poppler-glib)
-optdepends=(lib32-libspectre) # Currently not in the offical repos or AUR
+makedepends=(lib32-librsvg lib32-gtk2 valgrind git)
 #checkdepends=(ttf-dejavu gsfonts)
 source=("git+https://gitlab.freedesktop.org/cairo/cairo.git")
 sha256sums=('SKIP')
@@ -32,7 +31,7 @@ prepare() {
 build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
   cd cairo
   ./configure --prefix=/usr \
