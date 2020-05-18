@@ -2,7 +2,7 @@
 
 pkgname=ps3netsrv
 _wMM_version=1.47.27
-pkgver=20200517.A
+pkgver=20200518
 pkgrel=1
 pkgdesc='PS3 Net Server (mod by aldostools)'
 arch=('x86_64')
@@ -12,12 +12,12 @@ depends=('gcc-libs' 'mbedtls')
 makedepends=('meson')
 backup=("etc/conf.d/${pkgname}")
 source=(
-	"https://github.com/aldostools/webMAN-MOD/releases/download/${_wMM_version}/ps3netsrv_${pkgver/.}.zip"
+	"https://github.com/aldostools/webMAN-MOD/releases/download/${_wMM_version}/ps3netsrv_${pkgver}.zip"
 	"${pkgname}.service"
 	"${pkgname}.conf"
 )
 sha512sums=(
-	'b5e99f2cf620cae617b69a65089f1c80db2b28dbf8f477b3cdb1ab2fff8984f3117cf678cb2ddfb62acd18cd6ad5d7906874dc3fe5051fc3ec334e7afda38b94'
+	'0baa38985a91dc1b2710bdb9bd040b97c86f4d36ce3a90004aabf17e81e9e9e54036654b3b1e0db9888074a7cf13ad68e8d2e576b7f6a41d0df4f8ac3bce23b6'
 	'ce955bbaf577963244a6e96a8a8fffe037e5067321bc507fe7f71b12d8e198b5280de708dd9cffbf59d0c9a82e05bf9901dbcc8f8bc0d548b2d2c2ead7e07941'
 	'c81e3ef6a4bf07cd150b205793ca5a3886cf9d76c1087cc1d1325ca779628c074cfcbe8349b0bda691f61ab4f394d8594af1ed945c7207acc5712057dc5fbe59'
 )
