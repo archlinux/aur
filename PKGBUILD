@@ -30,9 +30,9 @@ check() {
         unset_email=1
         git config --global user.email "test@bitbake.com"
     fi
-    # use http over ftp to use travis
     cd "${pkgbase}-${pkgver}"
     patch -p0 < "${srcdir}/bind.patch"
+    patch -p0 < "${srcdir}/test.patch"
     BB_SKIP_NETTESTS='yes' PYTHONPATH="${srcdir}/${pkgbase}-${pkgver}/lib" PATH="${PATH}:${srcdir}/${pkgbase}-${pkgver}/bin" python ./bin/bitbake-selftest --failfast -v
     if [ "${unset_name}" -eq 1 ]; then
         unset_name=1
