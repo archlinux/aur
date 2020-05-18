@@ -3,7 +3,7 @@
 pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
-pkgver='0.1.8'
+pkgver='0.1.9'
 pkgrel='0'
 epoch=
 arch=('i686' 'x86_64')
@@ -17,11 +17,11 @@ optdepends=()
 provides=('eruption-roccat-vulcan')
 conflicts=('eruption-roccat-vulcan')
 replaces=()
-backup=()
+backup=(etc/eruption/eruption.conf src/scripts/lib/macros/{modifiers.lua,user-macros.lua})
 options=()
 install='eruption.install'
 changelog=
-source=('git+https://gitlab.com/X3n0m0rph59/eruption-roccat-vulcan.git#commit=fbed43a1d6ccfd7c306310c0a51f180c42ac6e61')
+source=('git+https://gitlab.com/X3n0m0rph59/eruption-roccat-vulcan.git#commit=59ea90bbb8e733ad3d327e605c0f73c7e661f2cc')
 noextract=()
 sha512sums=('SKIP')
 
@@ -39,6 +39,8 @@ package() {
     mkdir -p "$pkgdir/usr/share/doc/eruption"
     mkdir -p "$pkgdir/usr/share/eruption/scripts"
     mkdir -p "$pkgdir/usr/share/eruption/scripts/lib"
+    mkdir -p "$pkgdir/usr/share/eruption/scripts/lib/macros"
+    mkdir -p "$pkgdir/usr/share/eruption/scripts/examples"
 
     mkdir -p "$pkgdir/var/lib/eruption/profiles"
 
@@ -138,6 +140,15 @@ package() {
     install -m 644 "src/scripts/voronoi.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/water.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/water.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/snake.lua" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/snake.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/lib/debug.lua" "$pkgdir/usr/share/eruption/scripts/lib/"
+    install -m 644 "src/scripts/lib/utilities.lua" "$pkgdir/usr/share/eruption/scripts/lib/"
+    install -m 644 "src/scripts/lib/declarations.lua" "$pkgdir/usr/share/eruption/scripts/lib/"
+    install -m 644 "src/scripts/lib/macros/modifiers.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
+    install -m 644 "src/scripts/lib/macros/user-macros.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
+    install -m 644 "src/scripts/lib/macros/starcraft2.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
+    install -m 644 "src/scripts/examples/simple.lua" "$pkgdir/usr/share/eruption/scripts/examples/"
 
     install -m 644 "support/sfx/typewriter1.wav" "$pkgdir/usr/share/eruption/sfx/"
     install -m 644 "support/sfx/phaser1.wav" "$pkgdir/usr/share/eruption/sfx/"
@@ -161,6 +172,7 @@ package() {
     install -m 644 "support/profiles/rainbow.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/preset-red-yellow.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/preset-blue-red.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/snake.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/spectrum-analyzer.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/turbulence.profile" "$pkgdir/var/lib/eruption/profiles/"
 
