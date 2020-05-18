@@ -1,20 +1,23 @@
 pkgbase = mingw-w64-winpthreads-bin
 	pkgdesc = MinGW-w64 winpthreads library (pre-compiled)
 	pkgver = 7.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mingw-w64.sourceforge.net
 	arch = any
 	groups = mingw-w64-toolchain
 	groups = mingw-w64
 	license = custom
-	provides = mingw-w64-winpthreads=7.0.0
+	provides = mingw-w64-winpthreads=${pkgver}
+	provides = mingw-w64-headers-bootstrap
 	conflicts = mingw-w64-winpthreads
+	conflicts = mingw-w64-headers-bootstrap
+	replaces = mingw-w64-headers-bootstrap
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://sourceforge.net/projects/mingw-w64-builds/files/mingw-w64-winpthreads/mingw-w64-winpthreads-7.0.0.tar.xz
-	md5sums = 040229137c505d10d0eae48f905e8a41
+	source = https://sourceforge.net/projects/mingw-w64-builds/files/mingw-w64-winpthreads/mingw-w64-winpthreads-7.0.0-2.tar.xz
+	md5sums = f414ec5dbb8a7ea5424fd4f021a68095
 
 pkgname = mingw-w64-winpthreads-bin
 
