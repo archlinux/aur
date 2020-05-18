@@ -1,7 +1,7 @@
 pkgbase = ocaml-atd
 	pkgver = 2.2.1
-	pkgrel = 1
-	url = https://github.com/mjambon/atd
+	pkgrel = 2
+	url = https://github.com/ahrefs/atd
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -16,7 +16,7 @@ pkgbase = ocaml-atd
 	depends = ocaml-yojson
 	depends = ocaml-re
 	options = !strip
-	source = https://github.com/mjambon/atd/archive/2.2.1.tar.gz
+	source = https://github.com/ahrefs/atd/archive/2.2.1.tar.gz
 	md5sums = c4120ec4dd6a54d5c04a6b9d6ec942b3
 
 pkgname = ocaml-atd

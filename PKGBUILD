@@ -1,11 +1,12 @@
-# Maintainer: Sean Anderson <seanga2@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Sean Anderson <seanga2@gmail.com>
+
 pkgname=('ocaml-atd' 'ocaml-atdgen' 'ocaml-atdgen-runtime' 'ocaml-atdgen-codec-runtime')
 _oname=atd
 pkgver=2.2.1
-pkgrel=1
-pkgdesc=""
+pkgrel=2
 arch=('i686' 'x86_64')
-url="https://github.com/mjambon/atd"
+url="https://github.com/ahrefs/atd"
 license=('BSD')
 depends=('ocaml>=3.11'
 	 'ocaml-menhir'
@@ -15,7 +16,7 @@ depends=('ocaml>=3.11'
 	 'ocaml-re')
 makedepends=('ocaml-findlib' 'dune>=2' 'opam' 'scala')
 options=(!strip)
-source=("https://github.com/mjambon/${_oname}/archive/${pkgver}.tar.gz")
+source=("https://github.com/ahrefs/${_oname}/archive/${pkgver}.tar.gz")
 md5sums=('c4120ec4dd6a54d5c04a6b9d6ec942b3')
 _dune="dune $(getopt "j::" $MAKEOPTS 2>/dev/null | sed 's/--/\n/g' | head -n 1)"
 
