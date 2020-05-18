@@ -4,13 +4,13 @@ _commit=045a0fa
 _pkgname=st
 pkgname=an9wer-$_pkgname
 pkgver=0.8.3.r9.g045a0fa
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple terminal implementation for X"
 url="https://st.suckless.org/"
 arch=('x86_64')
 license=('MIT')
 makedepends=('git')
-depends=('xorgproto' 'libx11' 'libxft' 'an9wer-suckless-rebuild')
+depends=('xorgproto' 'libx11' 'libxft' 'an9wer-suckless-rebuild>=0.1.0')
 install=$pkgname.install
 source=("$_pkgname::git://git.suckless.org/st")
 md5sums=('SKIP')

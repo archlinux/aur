@@ -1,7 +1,7 @@
 pkgbase = an9wer-st
 	pkgdesc = A simple terminal implementation for X
 	pkgver = 0.8.3.r9.g045a0fa
-	pkgrel = 3
+	pkgrel = 4
 	url = https://st.suckless.org/
 	install = an9wer-st.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = an9wer-st
 	depends = xorgproto
 	depends = libx11
 	depends = libxft
-	depends = an9wer-suckless-rebuild
+	depends = an9wer-suckless-rebuild>=0.1.0
 	source = st::git://git.suckless.org/st
 	md5sums = SKIP
 
