@@ -1,9 +1,9 @@
 # Maintainer: DuckSoft <realducksoft at gmail dot com>
-pkgname=qv2ray-plugin-ssr-git
+pkgname=qv2ray-plugin-ssr-dev-git
 _pkgname=qv2ray-plugin-ssr
-pkgver=20200422.r43.3428f7d
-pkgrel=2
-pkgdesc="Qv2ray Plugin: ShadowsocksR"
+pkgver=20200517.r55.1cba7de
+pkgrel=1
+pkgdesc="Qv2ray Plugin: ShadowsocksR (Development Build)"
 arch=('x86_64')
 url='https://github.com/Qv2ray/QvPlugin-SSR'
 license=('GPL3')
@@ -13,7 +13,7 @@ makedepends=('git' 'make' 'qt5-tools' 'which' 'gcc' 'cmake' 'ninja' 'libffi')
 provides=('qv2ray-plugin-ssr')
 groups=('qv2ray-plugin')
 conflicts=('qv2ray-plugin-ssr')
-source=("$_pkgname::git+${url}")
+source=("$_pkgname::git+${url}#branch=dev")
 sha512sums=('SKIP')
 pkgver() {
     cd "$srcdir"/"$_pkgname"

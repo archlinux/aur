@@ -1,7 +1,7 @@
-pkgbase = qv2ray-plugin-ssr-git
-	pkgdesc = Qv2ray Plugin: ShadowsocksR
-	pkgver = 20200422.r43.3428f7d
-	pkgrel = 2
+pkgbase = qv2ray-plugin-ssr-dev-git
+	pkgdesc = Qv2ray Plugin: ShadowsocksR (Development Build)
+	pkgver = 20200517.r55.1cba7de
+	pkgrel = 1
 	url = https://github.com/Qv2ray/QvPlugin-SSR
 	arch = x86_64
 	groups = qv2ray-plugin
@@ -21,8 +21,8 @@ pkgbase = qv2ray-plugin-ssr-git
 	depends = qv2ray
 	provides = qv2ray-plugin-ssr
 	conflicts = qv2ray-plugin-ssr
-	source = qv2ray-plugin-ssr::git+https://github.com/Qv2ray/QvPlugin-SSR
+	source = qv2ray-plugin-ssr::git+https://github.com/Qv2ray/QvPlugin-SSR#branch=dev
 	sha512sums = SKIP
 
-pkgname = qv2ray-plugin-ssr-git
+pkgname = qv2ray-plugin-ssr-dev-git
 
