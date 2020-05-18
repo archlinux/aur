@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-librtmp0
-pkgver=2.4
-pkgrel=9
+pkgver=2.4+514+c5f04a5
+pkgrel=1
 pkgdesc="Toolkit for RTMP streams (mingw-w64)"
 arch=('any')
 url='http://rtmpdump.mplayerhq.hu/'
@@ -9,7 +9,7 @@ license=('GPL2' 'LGPL2.1')
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-openssl')
 makedepends=('mingw-w64-gcc' 'git' 'mingw-w64-environment')
 options=('!strip' '!buildflags' 'staticlibs')
-_commit='fa8646daeb19dfd12c181f7d19de708d623704c0'
+_commit='c5f04a58fc2aeea6296ca7c44ee4734c18401aa3'
 source=("git://git.ffmpeg.org/rtmpdump#commit=${_commit}"
   '0001-Makefile-allow-to-override-some-parameters.patch'
   '0003-Port-to-openssl-1.1.1.patch')
@@ -19,12 +19,17 @@ sha256sums=('SKIP'
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+pkgver() {
+  cd rtmpdump
+
+  echo "2.4+$(git rev-list --count ${_commit})+$(git rev-parse --short ${_commit})"
+}
+
 prepare() {
   cd "rtmpdump"
   patch -Np1 -i "$srcdir/0001-Makefile-allow-to-override-some-parameters.patch" 
   patch -Np1 -i "$srcdir/0003-Port-to-openssl-1.1.1.patch" 
 }
-
 
 build() {
   for _arch in ${_architectures}; do
@@ -34,7 +39,6 @@ build() {
     unset LDFLAGS
     source mingw-env ${_arch}
 
-    export C_INCLUDE_PATH="/usr/${_arch}/include/openssl"
     [[ -d "build-${_arch}" ]] && rm -rf "build-${_arch}"
     cp -rf "$srcdir/rtmpdump" "${srcdir}/build-${_arch}"
   
