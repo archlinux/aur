@@ -11,10 +11,8 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=(!strip !buildflags staticlibs)
 source=("https://downloads.sourceforge.net/freeglut/freeglut-${pkgver}.tar.gz"
-        '003-freeglut-3.2.1-install-glut-h.patch'
         'gcc10.patch')
 sha256sums=('d4000e02102acaf259998c870e25214739d1f16f67f99cb35e4f46841399da68'
-            '0d091fba73641bdc51d28763101452f606c26aed30c9ac1682a19ba9306de8aa'
             '2d140f9a76f16267699aeb8681da59e43345aaa1e2ff6e82032d711f72f6b66a')
 noextract=("freeglut-${pkgver}.tar.gz")
 
@@ -25,7 +23,6 @@ prepare() {
   [[ -d ${srcdir}/freeglut-${pkgver} ]] && rm -rf ${srcdir}/freeglut-${pkgver}
   tar -xzvf ${srcdir}/freeglut-${pkgver}.tar.gz -C ${srcdir}
   cd "${srcdir}/freeglut-${pkgver}"
-  patch -Np1 -i "${srcdir}/003-freeglut-3.2.1-install-glut-h.patch"
   patch -Np1 -i "${srcdir}/gcc10.patch"
 }
 
@@ -35,6 +32,7 @@ build() {
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DFREEGLUT_BUILD_DEMOS=OFF \
+      -FREEGLUT_REPLACE_GLUT=ON \
       ..
     make
     popd

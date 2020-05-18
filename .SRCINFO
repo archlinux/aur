@@ -12,10 +12,8 @@ pkgbase = mingw-w64-freeglut
 	options = !buildflags
 	options = staticlibs
 	source = https://downloads.sourceforge.net/freeglut/freeglut-3.2.1.tar.gz
-	source = 003-freeglut-3.2.1-install-glut-h.patch
 	source = gcc10.patch
 	sha256sums = d4000e02102acaf259998c870e25214739d1f16f67f99cb35e4f46841399da68
-	sha256sums = 0d091fba73641bdc51d28763101452f606c26aed30c9ac1682a19ba9306de8aa
 	sha256sums = 2d140f9a76f16267699aeb8681da59e43345aaa1e2ff6e82032d711f72f6b66a
 
 pkgname = mingw-w64-freeglut
