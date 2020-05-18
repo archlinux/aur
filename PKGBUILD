@@ -8,16 +8,16 @@
 
 pkgname=ocaml-type-conv
 _pkgname=type_conv
-pkgver=111.13.00
-pkgrel=2
+pkgver=112.01.02
+pkgrel=1
 pkgdesc="Generates code from type specifications"
 arch=(i686 x86_64)
-url="http://http://janestreet.github.io"
+url="https://janestreet.github.io"
 license=(LGPL)
 depends=(ocaml)
 makedepends=(ocaml-findlib)
-source=(https://ocaml.janestreet.com/ocaml-core/$pkgver/individual/$_pkgname-$pkgver.tar.gz)
-md5sums=('621e4048df864d6877b99de4b35f9bff')
+source=(https://ocaml.janestreet.com/ocaml-core/112.01.00/individual/$_pkgname-$pkgver.tar.gz)
+sha256sums=('342a241a43a2d494739244c8e41624bef25dfae809ebf15577d817ebb67f3890')
 options=(!strip !makeflags)
 
 build() {
