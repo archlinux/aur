@@ -1,18 +1,19 @@
-# Maintainer: Serge Zirukin <ftrvxmtrx@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 # Contributor: Sergei Lebedev <superbobry@gmail.com>
 
 pkgname=ocaml-kaputt
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Unit testing tool for OCaml"
 arch=('i686' 'x86_64')
-url=("http://kaputt.x9c.fr")
+url="http://kaputt.x9c.fr"
 license=('GPLv3')
 depends=('ocaml')
 makedepends=('ocaml-findlib')
 _pkgname=kaputt
-source=(http://kaputt.x9c.fr/distrib/${_pkgname}-${pkgver}.tar.gz)
-md5sums=('b55c1a7d72d9c04c7ad076c6230b5dfd')
+source=("https://kaputt.x9c.fr/distrib/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('19dae1ade0afff7f0f5f3e116793d35ced4c3cdb8f7a7cb1e5c599d2cc827039')
 
 build () {
   cd "${srcdir}/${_pkgname}-${pkgver}"
