@@ -1,13 +1,14 @@
-# with fixes by 0xAA <0xaa@dmg.sx>
+# meson/ninja build() & package() taken from community/radare2
+# Contributor: 0xAA <0xaa at dmg dot sx>
 pkgname=radare2-git
-pkgver=3.1.3.r18.gb9651f764
+pkgver=4.5.0.r24194.11e35c5acb
 pkgrel=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
 arch=('i686' 'x86_64')
 url="http://radare.org"
 license=('GPL3' 'LGPL3')
-makedepends=('git')
-depends=('capstone' 'openssl')
+makedepends=('git' 'meson')
+depends=('capstone' 'lz4' 'file' 'libzip' 'xxhash' 'libuv')
 provides=('radare2')
 conflicts=('radare2')
 
@@ -15,32 +16,37 @@ source=("$pkgname"::"git://github.com/radare/radare2.git")
 md5sums=('SKIP')
 
 pkgver () {
-	cd ${pkgname}
-	sed -nE '/^VERSION\ [0-9.]*(-git|)$/p' configure.acr|grep -o '[0-9.]*'|tr -d '\n'
-	printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname}
+  sed -nE '/^VERSION\ [0-9.]*(-git|)$/p' configure.acr|grep -o '[0-9.]*'|tr -d '\n'
+  printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-# not sure if those are still needed
-	export CFLAGS="${CFLAGS//-fPIE -pie}"
-	export CXXFLAGS="${CXXFLAGS//-fPIE -pie}"
-	# this is actually needed to prevent linking against old system-wide r2 libs
-	# you can comment this out, if you build in a clean environment
-	export PKG_CONFIG_PATH="${srcdir}/${pkgname}/pkgcfg:${PKG_CONFIG_PATH}"
+  # this is actually needed to prevent linking against old system-wide r2 libs
+  # you can comment this out, if you build in a clean environment
+  export PKG_CONFIG_PATH="${srcdir}/${pkgname}/pkgcfg:${PKG_CONFIG_PATH}"
 
-	cd ${srcdir}/${pkgname}
-	# in theory explicitly passing --with-syscapstone shouldn't be needed
-	# anymore, as ./sys/build.sh checks for a suitable system wide capstone
-	# installation. Unfortunately linking syscapstone is broken and the
-	# build system always clones capstone and links against this instead.
-	#CFGARG="--with-syscapstone" ./sys/build.sh
-	./configure --with-syscapstone --with-openssl --prefix=/usr
-	make
-	#./sys/build.sh
+  cd ${srcdir}/${pkgname}
+  touch libr/config.mk
+  arch-meson build \
+    -D use_sys_capstone=true \
+    -D use_sys_magic=true \
+    -D use_sys_zip=true \
+    -D use_sys_zlib=true \
+    -D use_sys_lz4=true \
+    -D use_sys_xxhash=true \
+    -D use_sys_openssl=true \
+    -D use_libuv=true \
+    -D use_webui=true
+  ninja -C build
 }
 
 package() {
-	cd ${srcdir}/${pkgname}
-	make DESTDIR=${pkgdir} install
-	install -D -m644 man/* "${pkgdir}/usr/share/man/man1" 
+  cd ${srcdir}/${pkgname}
+  DESTDIR="${pkgdir}" ninja -C build install
+  cp -r doc/* "${pkgdir}/usr/share/doc/radare2"
+  ln -s /usr/bin/radare2 "${pkgdir}/usr/bin/r2"
+  ln -s /usr/share/man/man1/radare2.1.gz "${pkgdir}/usr/share/man/man1/r2.1.gz"
+  install -D -m644 man/* "${pkgdir}/usr/share/man/man1" 
+
 }
