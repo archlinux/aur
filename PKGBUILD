@@ -3,7 +3,7 @@
 _projectname='ppx_hash'
 pkgname="ocaml-$_projectname"
 pkgver='0.13.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A ppx rewriter that generates hash functions from type expressions and definitions'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
