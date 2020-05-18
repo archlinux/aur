@@ -3,7 +3,7 @@
 _projectname='variantslib'
 pkgname="ocaml-$_projectname"
 pkgver='0.13.0'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='OCaml variants as first class values'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
