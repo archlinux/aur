@@ -1,6 +1,6 @@
 pkgbase = ocaml-typerex
 	pkgdesc = TypeRex is a powerful development environment for OCaml.
-	pkgver = 1.0.1
+	pkgver = 1.99.7b
 	pkgrel = 2
 	url = http://www.typerex.org/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = ocaml-typerex
 	license = GPLv3
 	depends = emacs
 	depends = ocaml>=3.11.2
-	source = http://www.typerex.org/pub/typerex-1.0.1.tar.gz
-	md5sums = 7a9d91b64041231d7a0fc9cf462f0327
+	source = https://www.typerex.org/pub/typerex/typerex.1.99.7-beta.tar.gz
+	sha256sums = 1a11a2c9ee1663cf91b819eb638549209efa618d0a0b78e2827a8bdd405b2443
 
 pkgname = ocaml-typerex
 
