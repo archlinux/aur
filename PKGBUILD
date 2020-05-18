@@ -15,7 +15,7 @@ backup=('etc/webapps/lychee/apache.example.conf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LycheeOrg/Lychee/archive/v$pkgver.tar.gz"
 	'apache.example.conf')
 sha256sums=('9a4bc1b65141dc75c9a66f3bc98c98b92922ba8caf9359b132908f0f038b54dc'
-            'fe1400a1be9b60c4c8b6759b588638536188a73307cd061789877cd5fd491557')
+            '0a68524551049320c6a58177baeb4592041970b3892ae0eeca405a3f75706701')
 
 pkgver() {
     curl -Is https://github.com/LycheeOrg/Lychee/releases/latest | awk -F'/' '/^location/ {print $NF}' | sed 's/v//' | sed 's/[^[:print:]]//'
