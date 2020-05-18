@@ -2,10 +2,10 @@
 
 pkgname=python-tendo
 pkgver=0.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds basic functionality that is not (yet) provided by Python"
 arch=('any')
-depends=('python' 'python-six')
+depends=('python' 'python-six' 'python-pbr')
 makedepends=('python-setuptools' 'python-tox')
 url="https://github.com/pycontribs/tendo"
 license=('Python')
