@@ -3,20 +3,20 @@
 pkgdesc="ROS - The actionlib stack provides a standardized interface for interfacing with preemptable tasks."
 url='https://wiki.ros.org/actionlib'
 
-pkgname='ros-melodic-actionlib'
-pkgver='1.12.0'
+pkgname='ros-noetic-actionlib'
+pkgver='1.13.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-rostest
-	ros-melodic-catkin
-	ros-melodic-message-generation
-	ros-melodic-actionlib-msgs
-	ros-melodic-std-msgs
-	ros-melodic-roscpp
-	ros-melodic-rospy
+	ros-noetic-rostest
+	ros-noetic-catkin
+	ros-noetic-message-generation
+	ros-noetic-actionlib-msgs
+	ros-noetic-std-msgs
+	ros-noetic-roscpp
+	ros-noetic-rospy
 )
 
 makedepends=(
@@ -27,14 +27,14 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-rostest
-	ros-melodic-actionlib-msgs
-	ros-melodic-rostopic
-	ros-melodic-std-msgs
-	ros-melodic-roscpp
-	ros-melodic-message-runtime
-	ros-melodic-rospy
-	ros-melodic-roslib
+	ros-noetic-rostest
+	ros-noetic-actionlib-msgs
+	ros-noetic-rostopic
+	ros-noetic-std-msgs
+	ros-noetic-roscpp
+	ros-noetic-message-runtime
+	ros-noetic-rospy
+	ros-noetic-roslib
 )
 
 depends=(
@@ -43,27 +43,24 @@ depends=(
 	boost
 )
 
-_dir="actionlib-${pkgver}"
+_dir="actionlib-${pkgver}/actionlib"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/actionlib/archive/${pkgver}.tar.gz")
-sha256sums=('25d45b841215af975e0773b0c0c5f977e02c5090eb7d4dc6588c7a6c36d8ac76')
+sha256sums=('11ce636f21ec2a96ed861644744bf100cd03a8b74546965544fa0b6d7a9856f5')
 
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
