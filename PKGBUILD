@@ -1,20 +1,17 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
-_pkgname=remotely
-pkgname=$_pkgname-git
+pkgname=remotely-git
 pkgver=1.0.r10.g8792370
-pkgrel=1
-pkgdesc="A GTK3 VNC Client"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="https://gitlab.gnome.org/haecker-felix/Remotely"
-license=('GPL3')
-depends=('gtk-vnc')
-makedepends=('git'
-             'meson'
-             'vala')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("git+https://gitlab.gnome.org/haecker-felix/Remotely.git")
+pkgrel=2
+pkgdesc="simple VNC viewer for the GNOME desktop environment"
+arch=(i686 x86_64 armv7h aarch64)
+url="https://gitlab.gnome.org/World/Remotely"
+license=(GPL3)
+depends=(gtk-vnc)
+makedepends=(git meson vala)
+provides=(remotely)
+conflicts=(remotely)
+source=("git+https://gitlab.gnome.org/World/Remotely.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,11 +20,14 @@ pkgver() {
 }
 
 build() {
-  rm -rf build
   arch-meson Remotely build
   ninja -C build
 }
 
+check() {
+  meson test -C build --print-errorlogs
+}
+
 package() {
-  DESTDIR="$pkgdir/" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 }
