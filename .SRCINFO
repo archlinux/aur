@@ -1,5 +1,5 @@
-pkgbase = qv2ray-plugin-command-git
-	pkgdesc = Qv2ray Plugin: Command
+pkgbase = qv2ray-plugin-command-dev-git
+	pkgdesc = Qv2ray Plugin: Command (Development Build)
 	pkgver = 20200425.r5.59450df
 	pkgrel = 1
 	url = https://github.com/Qv2ray/QvPlugin-Command
@@ -20,5 +20,5 @@ pkgbase = qv2ray-plugin-command-git
 	source = qv2ray-plugin-command::git+https://github.com/Qv2ray/QvPlugin-Command
 	sha512sums = SKIP
 
-pkgname = qv2ray-plugin-command-git
+pkgname = qv2ray-plugin-command-dev-git
 

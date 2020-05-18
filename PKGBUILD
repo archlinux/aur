@@ -1,9 +1,9 @@
 # Maintainer: DuckSoft <realducksoft at gmail dot com>
-pkgname=qv2ray-plugin-command-git
+pkgname=qv2ray-plugin-command-dev-git
 _pkgname=qv2ray-plugin-command
-pkgver=20200425.r5.59450df
+pkgver=20200517.r6.9ab40d3
 pkgrel=1
-pkgdesc="Qv2ray Plugin: Command"
+pkgdesc="Qv2ray Plugin: Command (Development Build)"
 arch=('x86_64')
 url='https://github.com/Qv2ray/QvPlugin-Command'
 license=('GPL3')
@@ -13,7 +13,7 @@ makedepends=('git' 'make' 'qt5-tools' 'which' 'gcc' 'cmake' 'ninja')
 provides=('qv2ray-plugin-command')
 conflicts=('qv2ray-plugin-command')
 groups=('qv2ray-plugin')
-source=("$_pkgname::git+${url}")
+source=("$_pkgname::git+${url}#branch=dev")
 sha512sums=('SKIP')
 pkgver() {
     cd "$srcdir"/"$_pkgname"
