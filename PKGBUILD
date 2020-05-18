@@ -4,7 +4,7 @@
 
 pkgname=ocaml-mysql
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="OCaml bindings for MySQL"
 arch=('i686' 'x86_64')
 url="http://ocaml-mysql.forge.ocamlcore.org/"
