@@ -1,7 +1,7 @@
 # Maintainer: Taekyung Kim <Taekyung.Kim.Maths@gmail.com>
 
 _cranname=ellipsis
-_cranver=0.3.0
+_cranver=0.3.1
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-ellipsis
 pkgver=${_cranver//[:-]/.}
@@ -14,7 +14,7 @@ depends=('r>=3.2' 'r-rlang>=0.3.0')
 optdepends=('r-covr' 'r-testthat')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('0c696c543f7115f346085acee25ab359')
+md5sums=('68117fb488002761edcde88dacbe86b9')
 
 build(){
     R CMD INSTALL "${_pkgtar}" -l "$srcdir"
