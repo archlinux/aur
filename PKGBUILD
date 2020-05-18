@@ -1,6 +1,6 @@
 # Maintainer: Matthew McGinn <mamcgi@gmail.com>
 pkgname=proxysql
-pkgver=2.0.11
+pkgver=2.0.12
 pkgrel=1
 pkgdesc="High-performance MySQL proxy with a GPL license"
 arch=('x86_64' 'amd64')
@@ -18,13 +18,14 @@ source=("https://github.com/sysown/${pkgname}/archive/v${pkgver}.tar.gz"
     "https://raw.githubusercontent.com/xginn8/aur-bldr/master/patches/${pkgname}/libinjection_python_port.patch"
     "deps-makefile.patch"
     "proxysql.tmpfiles")
-sha256sums=('4113659363f9bc0c8654414837852fe6f1b9c75ba271efce2edcc8cc47a3ffdc'
+sha256sums=('e3a211d29916ba677d46fde088279b548d72a8dc683616b6713f1df55ddb058e'
             '8b074c0d72e4b66349a84a13fdb65918145fcaf6a8697ba99304bd603d097735'
             'fadc103f88e699d0920f617ad9982a76504673a00aba0e2d4c0223bbc9a1a4a6'
             '74c96841767a6b97d42e8abf13c21838602f20538d99f73bbd1971a5237ea3d1'
             '6f48bd54c6b8592cd84006e991d3cbd8b38a460c6e72091acdca05f6781ae380')
 
 build() {
+    export GIT_VERSION=$(git --version | awk '{print $NF}')
     cd "${pkgname}-${pkgver}"
     make cleanall
     patch -p0 < "${srcdir}/deps-makefile.patch"
