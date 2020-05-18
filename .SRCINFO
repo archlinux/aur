@@ -1,43 +1,46 @@
 pkgbase = linux-mainline-bcachefs
-	pkgdesc = Linux
-	pkgver = v5.4.9_355_g4dce98c24758
+	pkgver = 5.6.13
 	pkgrel = 1
-	url = https://github.com/koverstreet/bcachefs
+	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
-	makedepends = xmlto
-	makedepends = kmod
-	makedepends = inetutils
 	makedepends = bc
+	makedepends = kmod
 	makedepends = libelf
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
-	makedepends = graphviz
-	makedepends = imagemagick
-	makedepends = git
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
-	source = git+https://github.com/graysky2/kernel_gcc_patch
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.13.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.13.tar.sign
 	source = config
+	source = 0000-sphinx-workaround.patch
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0002-clear-patches.patch
+	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0003-glitched-base.patch
+	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0007-v5.6-fsync.patch
+	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0008-5.6-bcachefs.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = 4832046cb1b17c39ff00f8c5f95994ef1691c27e019c4d3e77f397df7e8e1ef3e124fc333217e1d40ad9200536b793836e8cdff78275b72d727816bb5e3703f3
+	md5sums = 73fa7a9e7c42a9ab2cc8151d20e8d6b6
+	md5sums = SKIP
+	md5sums = 944f5600187817d7a80138ef786aced8
+	md5sums = 2cebdad39da582fd6a0c01746c8adb42
+	md5sums = b31b27f8a6a8f5fb79a6a6f4e1f07cc4
+	md5sums = b10e4c612d5240d66fad8f1c50fe3242
+	md5sums = c03f428e377dc745d41b8fa0808dd139
+	md5sums = 228b33d0cb13cab162b3e051ec9bb88d
+	md5sums = 9ed187660600a7884284aa6b3ddb08c6
 
 pkgname = linux-mainline-bcachefs
-	pkgdesc = The Linux kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
+	pkgdesc = The Linux-mainline-bcachefs kernel and modules with bcachefs
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
-	depends = bcachefs-tools-git
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-mainline-bcachefs=v5.4.9_355_g4dce98c24758
+	provides = linux-mainline-bcachefs=5.6.13
 
 pkgname = linux-mainline-bcachefs-headers
-	pkgdesc = Header files and scripts for building modules for Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	depends = linux-mainline-bcachefs=v5.4.9_355_g4dce98c24758
-	provides = linux-mainline-bcachefs-headers=v5.4.9_355_g4dce98c24758
-	provides = linux-headers=v5.4.9_355_g4dce98c24758
+	pkgdesc = Headers and scripts for building modules for Linux-mainline-bcachefs kernel
+	depends = linux-mainline-bcachefs
+	provides = linux-mainline-bcachefs-headers=5.6.13
+	provides = linux-headers=5.6.13
 

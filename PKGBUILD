@@ -1,5 +1,4 @@
-# Maintainer: Νίκος Φυτίλης n-fit[at]live[dot]com
-# Contributor: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
+# Maintainer: graysky <graysky AT archlinux DOT us>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 ### BUILD OPTIONS
@@ -45,11 +44,13 @@ _makenconfig=
 #  27. Intel Cannon Lake (MCANNONLAKE)
 #  28. Intel Ice Lake (MICELAKE)
 #  29. Intel Cascade Lake (MCASCADELAKE)
-#  30. Generic-x86-64 (GENERIC_CPU)
-#  31. Native optimizations autodetected by GCC (MNATIVE)
+#  30. Intel Cooper Lake (MCOOPERLAKE)
+#  31. Intel Tiger Lake (MTIGERLAKE)
+#  32. Generic-x86-64 (GENERIC_CPU)
+#  33. Native optimizations autodetected by GCC (MNATIVE)
 _subarch=
 
-# Compile ONLY used modules to VASTLY reduce the number of modules built
+# Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
 #
 # To keep track of which modules are needed for your specific system/hardware,
@@ -59,277 +60,254 @@ _subarch=
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
+### IMPORTANT: Do no edit below this line unless you know what you're doing
+
 pkgbase=linux-mainline-bcachefs
-pkgver=v5.4.9_355_g4dce98c24758
+pkgver=5.6.13
+_pkgverpntrel=13
 pkgrel=1
-pkgdesc="Linux"
-_srcver_tag=v5.4
-url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
+url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
 makedepends=(
-    xmlto
-    kmod
-    inetutils
-    bc
-    libelf
-    python-sphinx
-    python-sphinx_rtd_theme
-    graphviz
-    imagemagick
-    git
+  bc kmod libelf
 )
 options=('!strip')
 
-_reponame="bcachefs"
-_repo_url="https://github.com/nicman23/$_reponame"
-
-_reponame_gcc_patch="kernel_gcc_patch"
-_repo_url_gcc_patch="https://github.com/graysky2/$_reponame_gcc_patch"
-_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
-_repo_upstream="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git"
-
-_pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
+#_reponame="bcachefs"
+#_repo_url="https://github.com/koverstreet/$_reponame"
 
 source=(
-    "git+$_repo_upstream"
-    "git+$_repo_url_gcc_patch"
-    config         # the main kernel config file
+  "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
+  config
+  0000-sphinx-workaround.patch
+  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0002-clear-patches.patch"
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0003-glitched-base.patch"
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0007-v5.6-fsync.patch"
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0008-5.6-bcachefs.patch"
 )
+
+
 validpgpkeys=(
-    "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
-    "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman
+  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
+  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha512sums=('SKIP'
-            'SKIP'
-            '4832046cb1b17c39ff00f8c5f95994ef1691c27e019c4d3e77f397df7e8e1ef3e124fc333217e1d40ad9200536b793836e8cdff78275b72d727816bb5e3703f3'
-)
+md5sums=('73fa7a9e7c42a9ab2cc8151d20e8d6b6'
+         'SKIP'
+         '944f5600187817d7a80138ef786aced8'
+         '2cebdad39da582fd6a0c01746c8adb42'
+         'b31b27f8a6a8f5fb79a6a6f4e1f07cc4'
+         'b10e4c612d5240d66fad8f1c50fe3242'
+         'c03f428e377dc745d41b8fa0808dd139'
+         '228b33d0cb13cab162b3e051ec9bb88d'
+         '9ed187660600a7884284aa6b3ddb08c6')
+
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-    cd linux
-    git fetch --tags
+  cd linux-${pkgver}
 
-    git remote add $_reponame $_repo_url || true
-    git fetch $_reponame master
-    git reset --hard $_reponame/master
+#  git init
 
-    export EDITOR=true
+#  git fetch --tags
 
-    git rebase $(git tag | grep -v rc | tail -n1)
+#  git remote add $_reponame $_repo_url || true
+#  git fetch --prune --jobs=5 --ipv4 $_reponame master
+#  git reset --hard $_reponame/master
 
-    msg2 "Setting version..."
-    scripts/setlocalversion --save-scmversion
-    echo "-$pkgrel" > localversion.10-pkgrel
-    echo "${pkgbase#linux}" > localversion.20-pkgname
+#  export EDITOR=true
 
-    msg2 "Setting config..."
-    cp ../config .config
+#  git rebase bcachefs/master
 
-    if [ -n "$_subarch" ]; then
-        yes "$_subarch" | make oldconfig
-    else
-        make prepare
-    fi
+  # fix pkgver to chosen pkgver
+  sed -i "s/SUBLEVEL = 0/SUBLEVEL = $_pkgverpntrel/g" $srcdir/linux-${pkgver}/Makefile
 
-    ### Optionally load needed modules for the make localmodconfig
-    # See https://aur.archlinux.org/packages/modprobed-db
+  echo "Setting version..."
+  scripts/setlocalversion --save-scmversion
+  echo "-$pkgrel" > localversion.10-pkgrel
+  echo "${pkgbase#linux}" > localversion.20-pkgname
+    
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = 000*.patch ]] || continue
+    echo "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
+  
+  echo "Setting config..."
+  cp ../config .config
+  
+  # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
+  sed -i -e 's/# CONFIG_PSI_DEFAULT_DISABLED is not set/CONFIG_PSI_DEFAULT_DISABLED=y/' ./.config
+
+  # https://bbs.archlinux.org/viewtopic.php?pid=1863567#p1863567
+  sed -i -e '/CONFIG_LATENCYTOP=/ s,y,n,' \
+      -i -e '/CONFIG_SCHED_DEBUG=/ s,y,n,' ./.config
+
+  # non-interactively apply ck1 default options
+  # this isn't redundant if we want a clean selection of subarch below
+  make olddefconfig
+
+  # https://github.com/graysky2/kernel_gcc_patch
+ # echo "Applying enable_additional_cpu_optimizations_for_gcc patch"
+ # patch -Np1 -i "$srcdir/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
+
+  if [ -n "$_subarch" ]; then
+    # user wants a subarch so apply choice defined above interactively via 'yes'
+    yes "$_subarch" | make oldconfig
+  else
+    # no subarch defined so allow user to pick one
+    make oldconfig
+  fi
+
+  ### Optionally load needed modules for the make localmodconfig
+  # See https://aur.archlinux.org/packages/modprobed-db
     if [ -n "$_localmodcfg" ]; then
-        if [ -f $HOME/.config/modprobed.db ]; then
-            msg2 "Running Steven Rostedt's make localmodconfig now"
-            make LSMOD=$HOME/.config/modprobed.db localmodconfig
-        else
-            msg2 "No modprobed.db data found"
-            exit
-        fi
+      if [ -f $HOME/.config/modprobed.db ]; then
+        echo "Running Steven Rostedt's make localmodconfig now"
+        make LSMOD=$HOME/.config/modprobed.db localmodconfig
+      else
+        echo "No modprobed.db data found"
+        exit
+      fi
     fi
 
-    # do not run 'make olddefconfig' as it sets default options
-    yes "" | make config >/dev/null
+  make -s kernelrelease > version
+  echo "Prepared $pkgbase version $(<version)"
 
-    make -s kernelrelease > version
-    msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+  [[ -z "$_makenconfig" ]] || make nconfig
 
-    [[ -z "$_makenconfig" ]] || make nconfig
-
-    # save configuration for later reuse
-    cat .config > "$startdir/config.last"
-}
-
-pkgver() {
-    cd "$srcdir/linux"
-    git describe | cut -f-3 -d '-' | sed 's/-/_/g'
+  # save configuration for later reuse
+  cat .config > "${startdir}/config.last"
 }
 
 build() {
-    cd linux
-    make bzImage modules # htmldocs
+  cd linux-${pkgver}
+  make all
 }
 
 _package() {
-    pkgdesc="The $pkgdesc kernel and modules $_pkgdesc_extra"
-    depends=(
-        coreutils
-        kmod
-        initramfs
-        bcachefs-tools-git
-    )
-    optdepends=(
-        "crda: to set the correct wireless channels of your country"
-        "linux-firmware: firmware images needed for some devices"
-    )
-    provides=("$pkgbase=$pkgver")
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with bcachefs"
+  depends=(coreutils kmod initramfs)
+  optdepends=('crda: to set the correct wireless channels of your country'
+              'linux-firmware: firmware images needed for some devices')
+  provides=("linux-mainline-bcachefs=${pkgver}")
+  #groups=('ck-generic')
 
-    cd linux
-    local kernver="$(<version)"
-    local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  cd linux-${pkgver}
 
-    msg2 "Installing boot image..."
-    # systemd expects to find the kernel here to allow hibernation
-    # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-    install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  local kernver="$(<version)"
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-    # Used by mkinitcpio to name the kernel
-    echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
+  echo "Installing boot image..."
+  # systemd expects to find the kernel here to allow hibernation
+  # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
+  #install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  #
+  # hard-coded path in case user defined CC=xxx for build which causes errors
+  # see this FS https://bugs.archlinux.org/task/64315
+  install -Dm644 arch/x86/boot/bzImage "$modulesdir/vmlinuz"
 
-    msg2 "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  # Used by mkinitcpio to name the kernel
+  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
-    # remove build and source links
-    rm "$modulesdir"/{source,build}
+  echo "Installing modules..."
+  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
-    msg2 "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
+  # remove build and source links
+  rm "$modulesdir"/{source,build}
 }
 
 _package-headers() {
-    pkgdesc="Header files and scripts for building modules for $pkgdesc kernel $_pkgdesc_extra"
-    depends=("$pkgbase=$pkgver")
-    provides=(
-        "$pkgbase-headers=$pkgver"
-        "linux-headers=$pkgver"
-    )
+  pkgdesc="Headers and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  depends=('linux-mainline-bcachefs') # added to keep kernel and headers packages matched
+  provides=("linux-mainline-bcachefs-headers=${pkgver}" "linux-headers=${pkgver}")
+  #groups=('ck-generic')
 
-    cd linux
-    local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+  cd linux-${pkgver}
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-    msg2 "Installing build files..."
-    install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-        localversion.* version vmlinux
-    install -Dt "$builddir/kernel" -m644 kernel/Makefile
-    install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
-    cp -t "$builddir" -a scripts
+  echo "Installing build files..."
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
+    localversion.* version vmlinux
+  install -Dt "$builddir/kernel" -m644 kernel/Makefile
+  install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
+  cp -t "$builddir" -a scripts
 
-    # add objtool for external module building and enabled VALIDATION_STACK option
-    install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+  # add objtool for external module building and enabled VALIDATION_STACK option
+  install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-    # add xfs and shmem for aufs building
-    mkdir -p "$builddir"/{fs/xfs,mm}
+  # add xfs and shmem for aufs building
+  mkdir -p "$builddir"/{fs/xfs,mm}
 
-    msg2 "Installing headers..."
-    cp -t "$builddir" -a include
-    cp -t "$builddir/arch/x86" -a arch/x86/include
-    install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
+  echo "Installing headers..."
+  cp -t "$builddir" -a include
+  cp -t "$builddir/arch/x86" -a arch/x86/include
+  install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
 
-    install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
-    install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
+  install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
+  install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-    # http://bugs.archlinux.org/task/13146
-    install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
+  # http://bugs.archlinux.org/task/13146
+  install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-    # http://bugs.archlinux.org/task/20402
-    install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
-    install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
-    install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+  # http://bugs.archlinux.org/task/20402
+  install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+  install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+  install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-    msg2 "Installing KConfig files..."
-    find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
+  echo "Installing KConfig files..."
+  find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-    msg2 "Removing unneeded architectures..."
-    local arch
-    for arch in "$builddir"/arch/*/; do
-        [[ $arch = */x86/ ]] && continue
-        echo "Removing $(basename "$arch")"
-        rm -r "$arch"
-    done
+  echo "Removing unneeded architectures..."
+  local arch
+  for arch in "$builddir"/arch/*/; do
+    [[ $arch = */x86/ ]] && continue
+    echo "Removing $(basename "$arch")"
+    rm -r "$arch"
+  done
 
-    msg2 "Removing documentation..."
-    rm -r "$builddir/Documentation"
+  echo "Removing documentation..."
+  rm -r "$builddir/Documentation"
 
-    msg2 "Removing broken symlinks..."
-    find -L "$builddir" -type l -printf 'Removing %P\n' -delete
+  echo "Removing broken symlinks..."
+  find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-    msg2 "Removing loose objects..."
-    find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
+  echo "Removing loose objects..."
+  find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-    msg2 "Stripping build tools..."
-    local file
-    while read -rd '' file; do
-        case "$(file -bi "$file")" in
-            application/x-sharedlib\;*)      # Libraries (.so)
-                strip -v $STRIP_SHARED "$file" ;;
-            application/x-archive\;*)        # Libraries (.a)
-                strip -v $STRIP_STATIC "$file" ;;
-            application/x-executable\;*)     # Binaries
-                strip -v $STRIP_BINARIES "$file" ;;
-            application/x-pie-executable\;*) # Relocatable binaries
-                strip -v $STRIP_SHARED "$file" ;;
-        esac
-    done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+  echo "Stripping build tools..."
+  local file
+  while read -rd '' file; do
+    case "$(file -bi "$file")" in
+      application/x-sharedlib\;*)      # Libraries (.so)
+        strip -v $STRIP_SHARED "$file" ;;
+      application/x-archive\;*)        # Libraries (.a)
+        strip -v $STRIP_STATIC "$file" ;;
+      application/x-executable\;*)     # Binaries
+        strip -v $STRIP_BINARIES "$file" ;;
+      application/x-pie-executable\;*) # Relocatable binaries
+        strip -v $STRIP_SHARED "$file" ;;
+    esac
+  done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-    msg2 "Adding symlink..."
-    mkdir -p "$pkgdir/usr/src"
-    ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
+  echo "Adding symlink..."
+  mkdir -p "$pkgdir/usr/src"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
-    msg2 "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
-_package-docs() {
-    pkgdesc="Kernel hacker's manual for the $pkgdesc kernel $_pkgdesc_extra"
-    depends=("$pkgbase=$pkgver")
-    provides=(
-        "$pkgbase-docs=$pkgver"
-        "linux-docs=$pkgver"
-    )
-
-    cd linux
-    local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
-
-    msg2 "Installing documentation..."
-    mkdir -p "$builddir"
-    cp -t "$builddir" -a Documentation
-
-    msg2 "Removing unneeded files..."
-    rm -rv "$builddir"/Documentation/{,output/}.[^.]*
-
-    msg2 "Moving HTML docs..."
-    local src dst
-    while read -rd '' src; do
-        dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-        mkdir -p "${dst%/*}"
-        mv "$src" "$dst"
-        rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-    done < <(find "$builddir/Documentation/output" -type f -print0)
-
-    msg2 "Adding symlink..."
-    mkdir -p "$pkgdir/usr/share/doc"
-    ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-    msg2 "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
-}
-
-pkgname=(
-    "$pkgbase"
-    "$pkgbase-headers"
-#    "$pkgbase-docs"
-)
+pkgname=("$pkgbase" "$pkgbase-headers")
 for _p in "${pkgname[@]}"; do
-    eval "package_$_p() {
-        $(declare -f "_package${_p#$pkgbase}")
-        _package${_p#$pkgbase}
-    }"
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
+  }"
 done
+
+# vim:set ts=8 sts=2 sw=2 et:
