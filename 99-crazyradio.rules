@@ -1,2 +1,5 @@
 # Crazyradio https://github.com/bitcraze/crazyflie-lib-python#setting-udev-permissions
+# Normal operation
 SUBSYSTEM=="usb", ATTRS{idVendor}=="1915", ATTRS{idProduct}=="7777", MODE="0664", GROUP="plugdev"
+# Bootloader
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1915", ATTRS{idProduct}=="0101", MODE="0664", GROUP="plugdev"

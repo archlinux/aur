@@ -1,15 +1,15 @@
+# Maintainer: aur ät dbrgn döt ch
 pkgname=crazyradio-udev
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="udev rules for Crazyradio by bitcraze."
 arch=('any')
 url="https://github.com/bitcraze/crazyflie-lib-python#setting-udev-permissions"
-license=('MIT')
+license=('GPL')
 source=('99-crazyradio.rules')
-sha256sums=('549f2cdf2a776937e41f779d958eb00929a6a3ecc019af555e6433a383becd00')
+sha256sums=('dab14a954ac7f1fb0d943efb55098fcd10bd6c023263bafb8cf1fafc2749f45e')
 
 package() {
-    rulesdir="$pkgdir/etc/udev/rules.d/"
-    mkdir -p $rulesdir
-    cp "99-crazyradio.rules" $rulesdir
+    mkdir -p "$pkgdir/etc/udev/rules.d/"
+    cp "99-crazyradio.rules" "$pkgdir/etc/udev/rules.d/"
 }
