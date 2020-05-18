@@ -1,7 +1,7 @@
 # Maintainer: Leia <waste at mrtino dot eu>
 
 pkgname=badwolf
-pkgver=0.5.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A minimalist and privacy-oriented WebKit browser."
 url="https://hacktivis.me/projects/badwolf"
@@ -13,7 +13,7 @@ source=("https://hacktivis.me/releases/$pkgname-$pkgver.tar.gz"
 	"https://hacktivis.me/releases/$pkgname-$pkgver.tar.gz.sig"
 	"arch.patch"
 	"LICENSE")
-sha512sums=('75cd50bba4aaa458341b3ce0a6f70b4432e7a708901a19780457661b5275a15ad275a8b53f00b482be1e9a3eaa2565b39d9bbd40f5e6ec2551ae7fc1c7840ed2'
+sha512sums=('72437709a32937c33dc0509f94efbb5f3551b039017d3067b02f5d2b275eb4f3883dba8dc1c1b4b82bfa31a7b174f5fa393ceeefaf627d9b6c27be0fea5a0652'
             'SKIP'
             '1b4ecfe1858378268dc10c60da2891ec83dd2af0df42c72eaf2eb94ec49ffd7243ac6258ade040e78b64082265f8a65515ee0ba38b1cad1c21f6287c048df008'
             '9a3b68429fc2267d596e08671330cc81f6d00ac7217a7a3991ebb583823a13e323108b514f5ec672c0982844ec581d9fed28dfede8fd92976b41d46b2924e140')

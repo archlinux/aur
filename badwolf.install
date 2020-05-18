@@ -4,6 +4,6 @@ post_install() {
 }
 
 post_upgrade() {
-  echo "-- Badwolf 0.5.1 changelog: disable a config setting as recommended in last version of WebKitGTK."
+  echo "-- Badwolf 1.0.0 changelog: the user interface is now customizable through interface.css (you'll have to modify it and then rebuild the package). A logo has been made. Downloads tab, back/forward, print buttons. You can toggle the automatic loading of images."
   /bin/true
 }
