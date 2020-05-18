@@ -1,16 +1,14 @@
 pkgbase = ttf-iosevka-term-ss08
-	pkgdesc = A slender monospace typeface. Shape: Pragmata Pro
-	pkgver = 2.3.3
+	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
+	pkgver = 3.0.0
 	pkgrel = 1
-	url = https://be5invis.github.io/Iosevka/
+	url = https://typeof.net/Iosevka/
 	arch = any
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = https://github.com/be5invis/Iosevka/releases/download/v2.3.3/iosevka-term-ss08-2.3.3.zip
-	source = ttf-iosevka-term-ss08-2.3.3-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v2.3.3/LICENSE.md
-	sha256sums = 335d5524518c7801ec087d957970c5bdaa0a5aafe4868049b1fd7bffa9b892a0
-	sha256sums = ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000
+	license = OFL
+	source = https://github.com/be5invis/Iosevka/releases/download/v3.0.0/ttf-iosevka-term-ss08-3.0.0.zip
+	source = ttf-iosevka-term-ss08-3.0.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v3.0.0/LICENSE.md
+	sha256sums = 4e70e9a112ce9d11e57260e2d6452a7c31f6957744cc2e30c56a15a0f1781b6d
+	sha256sums = e61c0988bb231a321f14cce1b119a468f279ea86826c32e943ab16dbf08c1ba9
 
 pkgname = ttf-iosevka-term-ss08
 
