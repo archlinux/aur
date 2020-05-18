@@ -1,16 +1,14 @@
 pkgbase = ttf-iosevka-ss10
-	pkgdesc = A slender monospace typeface. Shape: Envy Code R
-	pkgver = 2.3.3
+	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
+	pkgver = 3.0.0
 	pkgrel = 1
-	url = https://be5invis.github.io/Iosevka/
+	url = https://typeof.net/Iosevka/
 	arch = any
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = https://github.com/be5invis/Iosevka/releases/download/v2.3.3/iosevka-ss10-2.3.3.zip
-	source = ttf-iosevka-ss10-2.3.3-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v2.3.3/LICENSE.md
-	sha256sums = 33c167cb1eee8ad514390bd4d0786432f64694b1e3f918e5afec63f8efae2721
-	sha256sums = ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000
+	license = OFL
+	source = https://github.com/be5invis/Iosevka/releases/download/v3.0.0/ttf-iosevka-ss10-3.0.0.zip
+	source = ttf-iosevka-ss10-3.0.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v3.0.0/LICENSE.md
+	sha256sums = f9c22aea7e3035f8834752b678fd66e88b399dba79cc950cd3c68ddd54dae1d2
+	sha256sums = e61c0988bb231a321f14cce1b119a468f279ea86826c32e943ab16dbf08c1ba9
 
 pkgname = ttf-iosevka-ss10
 
