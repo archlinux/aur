@@ -3,14 +3,14 @@
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
 pkgname=nicotine-plus-git
-pkgver=1.4.1.r131.g25ea36c9
+pkgver=1.4.1.r133.gad6e55af
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
 url="http://nicotine-plus.org"
 license=('GPL3')
-depends=('gtk3' 'gobject-introspection' 'python-gobject'
-         'python-mutagen' 'xdg-utils')
+depends=('gtk3' 'gobject-introspection' 'gst-python' 'python-dbus'
+         'python-gobject' 'python-mutagen' 'xdg-utils')
 makedepends=('git' 'python-setuptools')
 optdepends=('miniupnpc: UPnP support'
             'python-geoip: for geo-blocker'
