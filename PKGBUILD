@@ -1,4 +1,4 @@
-pkgname=mingw-w64-spirv-crossc
+pkgname=mingw-w64-spirv-cross
 pkgver=2020.04.03
 pkgrel=1
 pkgdesc='A tool and library for parsing and converting SPIR-V to other shader languages (mingw-w64)'
