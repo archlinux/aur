@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-spirv-headers
+	pkgdesc = SPIR-V Headers (mingw-w64)
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://www.khronos.org/registry/spir-v/
+	arch = any
+	license = Apache
+	makedepends = mingw-w64-cmake
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://github.com/KhronosGroup/SPIRV-Headers/archive/1.5.3.tar.gz
+	sha256sums = eece8a9e147d37997d425d5d2eeb2e757ad25adc30d6651467094f3b18609b5a
+
+pkgname = mingw-w64-spirv-headers
+
