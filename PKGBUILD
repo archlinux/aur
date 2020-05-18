@@ -2,7 +2,7 @@
 pkgname=qemu-android-x86
 _pkgver="9.0-r2"
 pkgver=9.0.r2
-pkgrel=1
+pkgrel=2
 pkgdesc="Android-x86 environment via QEMU and VirGL"
 arch=("x86_64")
 url="http://www.android-x86.org/"
@@ -35,7 +35,7 @@ package() {
 	iconsizes=(16 32 64 128 256 512)
 	for size in "${iconsizes[@]}"; do
 		mkdir -p $pkgdir/usr/share/icons/hicolor/${size}x${size}/apps
-		inkscape -z -e $pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/qemu-android.png -w $size -h $size $srcdir/Android_robot.svg
+		inkscape -o $pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/qemu-android.png -w $size -h $size $srcdir/Android_robot.svg
 	done
 
 }
