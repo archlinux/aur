@@ -1,8 +1,9 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-taglib
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="OCaml bindings to taglib"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-taglib"

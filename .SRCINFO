@@ -1,7 +1,7 @@
 pkgbase = ocaml-taglib
 	pkgdesc = OCaml bindings to taglib
 	pkgver = 0.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/savonet/ocaml-taglib
 	arch = i686
 	arch = x86_64
