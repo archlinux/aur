@@ -1,8 +1,8 @@
 # Maintainer: Michaël Lhomme <papylhomme at gmail dot com>
 
 pkgname=diskmonitor-git
-pkgver=0.3.1.r0.g7571af6
-pkgrel=2
+pkgver=0.3.3.r6.g573212c
+pkgrel=1
 pkgdesc="KDE tools to monitor SMART devices and MDRaid health status"
 arch=('i686' 'x86_64')
 url="https://github.com/papylhomme/diskmonitor"
