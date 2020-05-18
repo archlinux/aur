@@ -1,7 +1,7 @@
 # Maintainer: Jiuyang Liu <jiuyang.liu@sifive.com>
 
 pkgname=openroad-git
-pkgver=1
+pkgver=r1370.c60f9724
 pkgrel=1
 pkgdesc='A framework for RTL synthesis'
 arch=('x86_64')
