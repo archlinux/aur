@@ -1,6 +1,6 @@
 pkgbase = polkadot-git
-	pkgdesc = Polkadot Node Implementation
-	pkgver = 0.7.33.794
+	pkgdesc = Polkadot Node Implementation built from current git master
+	pkgver = 0.7.34.814
 	pkgrel = 1
 	url = https://github.com/paritytech/polkadot
 	arch = i686
