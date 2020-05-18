@@ -1,8 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libwebp
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
-_commit=0fe1a89dbf1930fc2554dbe76adad5d962054ead  # tags/v1.0.3-rc1^0
 pkgdesc="WebP library and conversion tools (mingw-w64)"
 arch=(any)
 url="https://developers.google.com/speed/webp/"
@@ -10,6 +9,7 @@ license=("BSD")
 makedepends=(mingw-w64-configure git)
 depends=(mingw-w64-libjpeg-turbo mingw-w64-libpng mingw-w64-libtiff mingw-w64-giflib)
 options=(staticlibs !strip !buildflags)
+_commit=d7844e9762b61c9638c263657bd49e1690184832  # tags/v1.1.0-rc2^0
 source=("git+https://chromium.googlesource.com/webm/libwebp#commit=$_commit")
 sha256sums=('SKIP')
 validpgpkeys=('6B0E6B70976DE303EDF2F601F9C3D6BDB8232B5D')
