@@ -1,18 +1,19 @@
-# Maintainer: Serge Zirukin <ftrvxmtrx@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 # Contributor: Sergei Lebedev <superbobry@gmail.com>
 
 pkgname=ocaml-mascot
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Style checker for OCaml sources"
 arch=("i686" "x86_64")
 url="http://mascot.x9c.fr"
 license=('GPL')
 depends=('ocaml>=3.12.1')
 makedepends=('ocaml-findlib')
-options=("!strip !makeflags")
-source=("http://mascot.x9c.fr/distrib/mascot-$pkgver.tar.gz")
-md5sums=('94a0abe41b9acbc4efa661dc9d7be122')
+options=('!strip' '!makeflags')
+source=("https://mascot.x9c.fr/distrib/mascot-$pkgver.tar.gz")
+sha256sums=('46cbec99e190ab149c9501c23dd4b8ab548f49ce030dd30c0c0afaff547aa350')
 install=ocaml-mascot.install
 
 
