@@ -2,7 +2,7 @@
 # Contributor: Michael Thalmeier <michael@thalmeier.at>
 
 pkgname=curecoind-git
-pkgver=v2.0.0.2.r5.gf9d54f9
+pkgver=v2.0.0.2.r21.g8cd2c3b
 pkgrel=1
 pkgdesc="Headless daemon for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
@@ -10,25 +10,17 @@ url="https://curecoin.net/"
 license=('MIT')
 provides=('curecoind')
 conflicts=('curecoind')
-depends=('miniupnpc' 'boost1.69-libs' 'openssl-1.0')
-makedepends=('boost1.69' 'db' 'git')
-source=("git+https://github.com/cygnusxi/CurecoinSource.git#branch=master"
-        "boost.patch")
+depends=('miniupnpc' 'boost-libs' 'openssl-1.0')
+makedepends=('boost' 'db' 'git')
+source=("git+https://github.com/cygnusxi/CurecoinSource.git#branch=master")
 
-sha256sums=('SKIP'
-            'd5911e88da183e9eb30fda5c1eec7e18ba15dc7907359257d9c1bc78ca390dc1')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${srcdir}/CurecoinSource
   set -o pipefail
   git describe --tags --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/CurecoinSource"
-  # Fix compilation error with miniupnpc v 1.9 and new boost
-  patch -p1 <"${srcdir}/boost.patch"
 }
 
 build() {
