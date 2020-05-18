@@ -1,8 +1,8 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=ashuffle
-pkgver=3.2.0
-pkgrel=2
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="Automatic library-wide shuffle for mpd."
 url="https://github.com/joshkunz/ashuffle"
 arch=(x86_64 i686 armv6h armv7h aarch64)
@@ -16,8 +16,8 @@ source=(
   "git+https://github.com/google/googletest.git#commit=703bd9caab50b139428cea1aaff9974ebee5742e"
 )
 sha256sums=(
-  "e46d923c684e7c7170d90a47221d0de28939c21e85d7e3a1d3915da6551b8486"
-  'SKIP'
+  "a2bc130643e5201c3c2561a1a4bc4b165a75cfa92e79c91065736d8dfe9f44fb"
+  "SKIP"
 )
 
 
@@ -25,6 +25,8 @@ prepare() {
   cd "ashuffle-${pkgver}"
   rmdir "subprojects/googletest"
 
+  #ln -s "/usr/src/gtest" "subprojects/googletest/googletest"
+  #ln -s "/usr/src/gmock" "subprojects/googletest/googlemock"
   ln -s "${srcdir}/googletest" "subprojects/googletest"
 }
 
