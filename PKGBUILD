@@ -1,25 +1,28 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-librtmp0
 pkgver=2.4
-pkgrel=8
+pkgrel=9
 pkgdesc="Toolkit for RTMP streams (mingw-w64)"
 arch=('any')
 url='http://rtmpdump.mplayerhq.hu/'
 license=('GPL2' 'LGPL2.1')
-depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-openssl-1.0')
+depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-openssl')
 makedepends=('mingw-w64-gcc' 'git' 'mingw-w64-environment')
 options=('!strip' '!buildflags' 'staticlibs')
 _commit='fa8646daeb19dfd12c181f7d19de708d623704c0'
 source=("git://git.ffmpeg.org/rtmpdump#commit=${_commit}"
-  '0001-Makefile-allow-to-override-some-parameters.patch')
+  '0001-Makefile-allow-to-override-some-parameters.patch'
+  '0003-Port-to-openssl-1.1.1.patch')
 sha256sums=('SKIP'
-  '43ce5f53885e61dab1aeae0f4318b625cb2000f86fc5d53695787470edce3d24')
+  '43ce5f53885e61dab1aeae0f4318b625cb2000f86fc5d53695787470edce3d24'
+  '79300f9f7502df9e893f6419e2c88eeca3340a2f5ca4c28619096e90d569106f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "rtmpdump"
   patch -Np1 -i "$srcdir/0001-Makefile-allow-to-override-some-parameters.patch" 
+  patch -Np1 -i "$srcdir/0003-Port-to-openssl-1.1.1.patch" 
 }
 
 
@@ -31,13 +34,11 @@ build() {
     unset LDFLAGS
     source mingw-env ${_arch}
 
-    export C_INCLUDE_PATH="/usr/${_arch}/include/openssl-1.0"
+    export C_INCLUDE_PATH="/usr/${_arch}/include/openssl"
     [[ -d "build-${_arch}" ]] && rm -rf "build-${_arch}"
     cp -rf "$srcdir/rtmpdump" "${srcdir}/build-${_arch}"
   
     pushd build-${_arch}	
-    sed -i "s/^LIB_OPENSSL.*/LIB_OPENSSL=-L\/usr\/${_arch}\/lib\/openssl-1.0 -lssl -lcrypto \$\(LIBZ\)/g" Makefile
-    sed -i "s/^LIB_OPENSSL.*/LIB_OPENSSL=-L\/usr\/${_arch}\/lib\/openssl-1.0 -lssl -lcrypto \$\(LIBZ\)/g" librtmp/Makefile
     make SYS=mingw prefix="/usr/${_arch}" CRYPTO=OPENSSL XCFLAGS="$CFLAGS" XLDFLAGS="$LDFLAGS" CC=${_arch}-cc LD=${_arch}-ld 
     popd	
   

@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-librtmp0
 	pkgdesc = Toolkit for RTMP streams (mingw-w64)
 	pkgver = 2.4
-	pkgrel = 8
+	pkgrel = 9
 	url = http://rtmpdump.mplayerhq.hu/
 	arch = any
 	license = GPL2
@@ -11,14 +11,16 @@ pkgbase = mingw-w64-librtmp0
 	makedepends = mingw-w64-environment
 	depends = mingw-w64-crt
 	depends = mingw-w64-zlib
-	depends = mingw-w64-openssl-1.0
+	depends = mingw-w64-openssl
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	source = git://git.ffmpeg.org/rtmpdump#commit=fa8646daeb19dfd12c181f7d19de708d623704c0
 	source = 0001-Makefile-allow-to-override-some-parameters.patch
+	source = 0003-Port-to-openssl-1.1.1.patch
 	sha256sums = SKIP
 	sha256sums = 43ce5f53885e61dab1aeae0f4318b625cb2000f86fc5d53695787470edce3d24
+	sha256sums = 79300f9f7502df9e893f6419e2c88eeca3340a2f5ca4c28619096e90d569106f
 
 pkgname = mingw-w64-librtmp0
 

@@ -1,0 +1,220 @@
+From 510ef57a1106f9542e8598dc861880a2b3204f51 Mon Sep 17 00:00:00 2001
+From: Nirbheek Chauhan <nirbheek@centricular.com>
+Date: Sat, 29 Feb 2020 04:06:38 +0530
+Subject: [PATCH 3/6] Port to openssl-1.1.1
+
+Patches by Neumann-A at vcpkg:
+https://github.com/microsoft/vcpkg/pull/8566/commits/6ccdbe4cb490b5dc444d96e5a0358bb5bacdfbfd
+
+Latest version of patches are:
+https://github.com/microsoft/vcpkg/blob/master/ports/librtmp/dh.patch
+https://github.com/microsoft/vcpkg/blob/master/ports/librtmp/handshake.patch
+https://github.com/microsoft/vcpkg/blob/master/ports/librtmp/hashswf.patch
+---
+ librtmp/dh.h        | 57 ++++++++++++++++++++++++++++-----------------
+ librtmp/handshake.h | 10 ++++----
+ librtmp/hashswf.c   | 10 ++++----
+ 3 files changed, 46 insertions(+), 31 deletions(-)
+
+diff --git a/librtmp/dh.h b/librtmp/dh.h
+index 5fc3f32..a5dead5 100644
+--- a/librtmp/dh.h
++++ b/librtmp/dh.h
+@@ -181,11 +181,14 @@ typedef BIGNUM * MP_t;
+ #define MP_setbin(u,buf,len)	BN_bn2bin(u,buf)
+ #define MP_getbin(u,buf,len)	u = BN_bin2bn(buf,len,0)
+ 
++
+ #define MDH	DH
+ #define MDH_new()	DH_new()
+ #define MDH_free(dh)	DH_free(dh)
+ #define MDH_generate_key(dh)	DH_generate_key(dh)
+ #define MDH_compute_key(secret, seclen, pub, dh)	DH_compute_key(secret, pub, dh)
++#define MPH_set_pqg(dh, p, q, g, res)  res = DH_set0_pqg(dh, p, q, g)
++#define MPH_set_length(dh, len, res)  res = DH_set_length(dh,len)
+ 
+ #endif
+ 
+@@ -194,7 +197,7 @@ typedef BIGNUM * MP_t;
+ 
+ /* RFC 2631, Section 2.1.5, http://www.ietf.org/rfc/rfc2631.txt */
+ static int
+-isValidPublicKey(MP_t y, MP_t p, MP_t q)
++isValidPublicKey(const MP_t y,const MP_t p, MP_t q)
+ {
+   int ret = TRUE;
+   MP_t bn;
+@@ -253,20 +256,33 @@ DHInit(int nKeyBits)
+   if (!dh)
+     goto failed;
+ 
+-  MP_new(dh->g);
++  MP_t g,p;
++  MP_new(g);
+ 
+-  if (!dh->g)
++  if (!g) 
++  {
+     goto failed;
++  }
+ 
+-  MP_gethex(dh->p, P1024, res);	/* prime P1024, see dhgroups.h */
++  DH_get0_pqg(dh, (BIGNUM const**)&p, NULL, NULL);
++  MP_gethex(p, P1024, res);	/* prime P1024, see dhgroups.h */
+   if (!res)
+     {
+       goto failed;
+     }
+ 
+-  MP_set_w(dh->g, 2);	/* base 2 */
+-
+-  dh->length = nKeyBits;
++  MP_set_w(g, 2);	/* base 2 */
++  MPH_set_pqg(dh,p,NULL,g, res);
++  if (!res)
++  {
++    MP_free(g);
++    goto failed;
++  }
++  MPH_set_length(dh,nKeyBits, res);
++  if (!res)
++  {
++    goto failed;
++  }
+   return dh;
+ 
+ failed:
+@@ -292,14 +308,11 @@ DHGenerateKey(MDH *dh)
+ 
+       MP_gethex(q1, Q1024, res);
+       assert(res);
+-
+-      res = isValidPublicKey(dh->pub_key, dh->p, q1);
++      res = isValidPublicKey(DH_get0_pub_key(dh), DH_get0_p(dh), q1);
+       if (!res)
+-	{
+-	  MP_free(dh->pub_key);
+-	  MP_free(dh->priv_key);
+-	  dh->pub_key = dh->priv_key = 0;
+-	}
++        {
++              MDH_free(dh); // Cannot set priv_key to nullptr so there is no way to generate a new pub/priv key pair in openssl 1.1.1.
++        }
+ 
+       MP_free(q1);
+     }
+@@ -314,15 +327,16 @@ static int
+ DHGetPublicKey(MDH *dh, uint8_t *pubkey, size_t nPubkeyLen)
+ {
+   int len;
+-  if (!dh || !dh->pub_key)
++  MP_t pub = DH_get0_pub_key(dh);
++  if (!dh || !pub)
+     return 0;
+ 
+-  len = MP_bytes(dh->pub_key);
++  len = MP_bytes(pub);
+   if (len <= 0 || len > (int) nPubkeyLen)
+     return 0;
+ 
+   memset(pubkey, 0, nPubkeyLen);
+-  MP_setbin(dh->pub_key, pubkey + (nPubkeyLen - len), len);
++  MP_setbin(pub, pubkey + (nPubkeyLen - len), len);
+   return 1;
+ }
+ 
+@@ -330,15 +344,16 @@ DHGetPublicKey(MDH *dh, uint8_t *pubkey, size_t nPubkeyLen)
+ static int
+ DHGetPrivateKey(MDH *dh, uint8_t *privkey, size_t nPrivkeyLen)
+ {
+-  if (!dh || !dh->priv_key)
++  MP_t priv = DH_get0_priv_key(dh);
++  if (!dh || !priv)
+     return 0;
+ 
+-  int len = MP_bytes(dh->priv_key);
++  int len = MP_bytes(priv);
+   if (len <= 0 || len > (int) nPrivkeyLen)
+     return 0;
+ 
+   memset(privkey, 0, nPrivkeyLen);
+-  MP_setbin(dh->priv_key, privkey + (nPrivkeyLen - len), len);
++  MP_setbin(priv, privkey + (nPrivkeyLen - len), len);
+   return 1;
+ }
+ #endif
+@@ -364,7 +379,7 @@ DHComputeSharedSecretKey(MDH *dh, uint8_t *pubkey, size_t nPubkeyLen,
+   MP_gethex(q1, Q1024, len);
+   assert(len);
+ 
+-  if (isValidPublicKey(pubkeyBn, dh->p, q1))
++  if (isValidPublicKey(pubkeyBn, DH_get0_p(dh), q1))
+     res = MDH_compute_key(secret, nPubkeyLen, pubkeyBn, dh);
+   else
+     res = -1;
+diff --git a/librtmp/handshake.h b/librtmp/handshake.h
+index 0438486..5313943 100644
+--- a/librtmp/handshake.h
++++ b/librtmp/handshake.h
+@@ -69,9 +69,9 @@ typedef struct arcfour_ctx*	RC4_handle;
+ #if OPENSSL_VERSION_NUMBER < 0x0090800 || !defined(SHA256_DIGEST_LENGTH)
+ #error Your OpenSSL is too old, need 0.9.8 or newer with SHA256
+ #endif
+-#define HMAC_setup(ctx, key, len)	HMAC_CTX_init(&ctx); HMAC_Init_ex(&ctx, key, len, EVP_sha256(), 0)
+-#define HMAC_crunch(ctx, buf, len)	HMAC_Update(&ctx, buf, len)
+-#define HMAC_finish(ctx, dig, dlen)	HMAC_Final(&ctx, dig, &dlen); HMAC_CTX_cleanup(&ctx)
++#define HMAC_setup(ctx, key, len)	ctx = HMAC_CTX_new(); HMAC_Init_ex(ctx, key, len, EVP_sha256(), 0)
++#define HMAC_crunch(ctx, buf, len)	HMAC_Update(ctx, buf, len)
++#define HMAC_finish(ctx, dig, dlen)	HMAC_Final(ctx, dig, &dlen); HMAC_CTX_free(ctx)
+ 
+ typedef RC4_KEY *	RC4_handle;
+ #define RC4_alloc(h)	*h = malloc(sizeof(RC4_KEY))
+@@ -117,7 +117,7 @@ static void InitRC4Encryption
+ {
+   uint8_t digest[SHA256_DIGEST_LENGTH];
+   unsigned int digestLen = 0;
+-  HMAC_CTX ctx;
++  HMAC_CTX *ctx;
+ 
+   RC4_alloc(rc4keyIn);
+   RC4_alloc(rc4keyOut);
+@@ -266,7 +266,7 @@ HMACsha256(const uint8_t *message, size_t messageLen, const uint8_t *key,
+ 	   size_t keylen, uint8_t *digest)
+ {
+   unsigned int digestLen;
+-  HMAC_CTX ctx;
++  HMAC_CTX *ctx;
+ 
+   HMAC_setup(ctx, key, keylen);
+   HMAC_crunch(ctx, message, messageLen);
+diff --git a/librtmp/hashswf.c b/librtmp/hashswf.c
+index 32b2eed..537e571 100644
+--- a/librtmp/hashswf.c
++++ b/librtmp/hashswf.c
+@@ -57,10 +57,10 @@
+ #include <openssl/sha.h>
+ #include <openssl/hmac.h>
+ #include <openssl/rc4.h>
+-#define HMAC_setup(ctx, key, len)	HMAC_CTX_init(&ctx); HMAC_Init_ex(&ctx, (unsigned char *)key, len, EVP_sha256(), 0)
+-#define HMAC_crunch(ctx, buf, len)	HMAC_Update(&ctx, (unsigned char *)buf, len)
+-#define HMAC_finish(ctx, dig, dlen)	HMAC_Final(&ctx, (unsigned char *)dig, &dlen);
+-#define HMAC_close(ctx)	HMAC_CTX_cleanup(&ctx)
++#define HMAC_setup(ctx, key, len)	ctx = HMAC_CTX_new(); HMAC_Init_ex(ctx, (unsigned char *)key, len, EVP_sha256(), 0)
++#define HMAC_crunch(ctx, buf, len)	HMAC_Update(ctx, (unsigned char *)buf, len)
++#define HMAC_finish(ctx, dig, dlen)	HMAC_Final(ctx, (unsigned char *)dig, &dlen);
++#define HMAC_close(ctx)	HMAC_CTX_free(ctx)
+ #endif
+ 
+ extern void RTMP_TLS_Init();
+@@ -298,7 +298,7 @@ leave:
+ struct info
+ {
+   z_stream *zs;
+-  HMAC_CTX ctx;
++  HMAC_CTX *ctx;
+   int first;
+   int zlib;
+   int size;
+-- 
+2.24.1
+
