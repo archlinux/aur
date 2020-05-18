@@ -6,10 +6,10 @@ pkgrel=1
 pkgdesc="Binary builds of the Polkadot Node Implementation"
 arch=('x86_64')
 provides=("polkadot")
-conflicts=("polkadot-git")
+conflicts=("polkadot")
 url="https://github.com/paritytech/polkadot"
-license=('GNU')
-depends=()
+license=('GPL3')
+validpgpkeys=('9D4B2B6EB8F97156D19669A9FF0812D491B96798')
 _urlbase='https://github.com/paritytech/polkadot/releases/download'
 source=(
   "$_urlbase/v$pkgver/polkadot"
