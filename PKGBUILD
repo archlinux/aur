@@ -4,7 +4,7 @@
 pkgname=shared-mime-info
 _commit=6bf9e4ff0fb7eff11a02bd937045bf5dc291841a # master 2020-05-06
 pkgver=2.0+1+g6bf9e4f
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org Shared MIME Info"
 arch=('x86_64')
 license=('GPL2')
@@ -21,7 +21,7 @@ source=("git+https://gitlab.freedesktop.org/xdg/shared-mime-info.git#commit=$_co
         update-mime-database.hook)
 sha256sums=('SKIP'
             'SKIP'
-            '58ed2c38bf2c78276a309d2e24040ed159868b0f04e72a6b039ea803e45ff6f0')
+            'f08efbcbac9d2bd18a805b8dcf3ed06d7763b97eca5935aa64d65593774b6501')
 options=(!makeflags)
 
 pkgver() {
@@ -37,7 +37,8 @@ prepare() {
 build() {
   # https://bugs.archlinux.org/task/38836
   # https://bugs.freedesktop.org/show_bug.cgi?id=70366
-  export ac_cv_func_fdatasync=no
+  # https://bugs.archlinux.org/task/66687
+  #export ac_cv_func_fdatasync=no -> for now moved into aplm hook
 
   arch-meson ${pkgname} build \
     -D update-mimedb=false \
