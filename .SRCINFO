@@ -2,7 +2,7 @@ pkgbase = sidewinderd
 	pkgdesc = Support for Microsoft SideWinder X4 / X6 and Logitech G103 / G105 / G710+.
 	pkgver = 0.4.2
 	pkgrel = 1
-	url = http://cevel.net/projects/sidewinderd/
+	url = https://github.com/tolga9009/sidewinderd
 	install = sidewinderd.install
 	arch = x86_64
 	license = MIT
@@ -15,3 +15,4 @@ pkgbase = sidewinderd
 	sha256sums = 4f79b92118ff5c5da0c093439bf875079f5243e852ecc769888d7d5a53cff62e
 
 pkgname = sidewinderd
+

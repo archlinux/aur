@@ -3,9 +3,9 @@
 pkgname=sidewinderd
 pkgver=0.4.2
 pkgrel=1
-pkgdesc="Support for Microsoft SideWinder X4 / X6 and Logitech G105 / G710+."
+pkgdesc="Support for Microsoft SideWinder X4 / X6 and Logitech G103 / G105 / G710+."
 arch=('x86_64')
-url="http://cevel.net/projects/sidewinderd/"
+url="https://github.com/tolga9009/sidewinderd"
 depends=('libconfig' 'systemd' 'tinyxml2')
 makedepends=('cmake')
 license=('MIT')
