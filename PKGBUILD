@@ -3,7 +3,7 @@
 _projectname='jane-street-headers'
 pkgname="ocaml-$_projectname"
 pkgver='0.13.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Jane Street C header files'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
