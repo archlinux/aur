@@ -3,7 +3,7 @@
 
 # TODO cleanup asar, drop as much as possible, remove local references
 pkgname=whalebird-desktop
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc='Electron-based Mastodon/Pleroma client'
 arch=('any')
@@ -15,7 +15,7 @@ provides=('whalebird')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/h3poteto/${pkgname}/archive/${pkgver}.tar.gz"
   whalebird.desktop
   whalebird.sh)
-sha256sums=('1867f615e4a45943480f97ef18471c481eb15f024f4c0d8b0a72f3455d058a2c'
+sha256sums=('d97ece17bf24f5139017a1fcfb29978968b69a845979c5c6e13118a16fee0df1'
             '8feed931453da872291c4588c981007ed36566155cfcf55ab3ff5d7431d60aef'
             'a0a050952353c78389bdafd8885cae4a402d0819acad07010566657e387c5ce9')
 
@@ -24,7 +24,9 @@ prepare() {
   cd "${pkgname}-${pkgver}"
   #npm "${_npmopt[@]}" --ignore-scripts uninstall electron{,-debug,-devtools-installer} listr cross-env \
   #  cfonts chalk webpack-dev-server stylelint{,-config-standard} ttfinfo prettier-stylelint
-  npm "${_npmopt[@]}" --ignore-scripts install electron@"$(</usr/lib/electron/version)"
+
+  # node-sass 4.14.1 for Node 14 support
+  npm "${_npmopt[@]}" --ignore-scripts install electron@"$(</usr/lib/electron/version)" node-sass@4.14.1
 
   # run install script for node-sass only
   node node_modules/node-sass/scripts/install.js
