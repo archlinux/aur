@@ -6,7 +6,7 @@
 pkgbase=ddccontrol
 pkgname=(ddccontrol gddccontrol)
 pkgver=0.4.4
-pkgrel=5
+pkgrel=6
 pkgdesc="Control your monitor by software using the DDC/CI protocol"
 arch=('i686' 'x86_64')
 url="https://github.com/ddccontrol/ddccontrol"
@@ -14,13 +14,16 @@ license=('GPL')
 depends=('pciutils' 'ddccontrol-db-git' 'perl-xml-parser' 'libxml2' 'icu')
 makedepends=('gtk2' 'autoconf' 'intltool')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/ddccontrol/ddccontrol/archive/${pkgver}.tar.gz"
-        "org.ddccontrol.pkexec.gddccontrol.policy")
+        'org.ddccontrol.pkexec.gddccontrol.policy'
+        'fix-gcc10-compilation.patch')
 options=('!libtool')
 sha256sums=('aafbb16ac4f4edfe3fcc5feec1eb5729aaf86e3b0f31f9d707ba1406bb404817'
-            'ef84637e512496a37fe3b50f64020f11aafaa7bc8ab821e90e81256439c2069a')
+            'ef84637e512496a37fe3b50f64020f11aafaa7bc8ab821e90e81256439c2069a'
+            '86b560a674ddfca7d8d7a30eb5ebf57d135e81eb8eea3808a0492010a9059995')
 
 prepare() {
 	cd "${srcdir}"/${pkgbase}-${pkgver}
+	patch -Np1 -i ../fix-gcc10-compilation.patch
 	test -f configure || ./autogen.sh
 }
 
