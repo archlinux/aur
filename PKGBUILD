@@ -2,17 +2,17 @@
 
 pkgname=librime-lua-git
 _pkgname=librime
-pkgver=1.5.3.r75.f215a04
+pkgver=1.5.3.r77.1049863
 _pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Rime input method engine with Lua plugin"
 arch=('x86_64')
 url="https://github.com/hchunhui/librime-lua"
 license=('GPL3')
-depends=('boost-libs' 'opencc' 'yaml-cpp' 'leveldb' 'librime-data' 'google-glog' 'marisa' 'lua')
+depends=('librime' 'boost-libs' 'opencc' 'yaml-cpp' 'leveldb' 'librime-data' 'google-glog' 'marisa' 'lua')
 makedepends=('git' 'cmake' 'boost' 'gtest')
-provides=('librime')
-conflicts=('librime' 'librime-lua')
+provides=('librime-lua.so')
+#conflicts=('librime' 'librime-lua')
 source=("librime-lua::git+https://github.com/hchunhui/librime-lua.git"
         "$_pkgname-$_pkgver.tar.gz::https://github.com/rime/librime/archive/$_pkgver.tar.gz"
 )
@@ -31,16 +31,17 @@ prepare() {
 
 build() {
   cd $_pkgname-$_pkgver
-  #cmake . -Bbuild -DCMAKE_INSTALL_PREFIX=/usr
-  #cmake --build build
   cmake . -Bbuild \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=Release \
-	-DBUILD_MERGED_PLUGINS=ON
+	-DBUILD_MERGED_PLUGINS=OFF
+#	-DBUILD_SEPARATE_LIBS=ON
+#	-DBUILD_MERGED_PLUGINS=ON
   cmake --build build
 }
 
 package() {
-  cd $_pkgname-$_pkgver/build
-  make DESTDIR="$pkgdir" install
+  cd $_pkgname-$_pkgver/build/lib
+  install -Dm755 librime-lua.so "$pkgdir"/usr/lib/librime-lua.so
+  #make DESTDIR="$pkgdir" install
 }
