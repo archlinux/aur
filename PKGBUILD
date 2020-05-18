@@ -1,12 +1,12 @@
 # Maintainer: Lev Levitsky <levlev at mail dot ru>
 pkgname=python-pyteomics
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A framework for proteomics data analysis."
 arch=('any')
 url="https://pyteomics.readthedocs.io"
 license=('Apache')
-depends=('python' 'python-setuptools')
+depends=('python' 'python-pip')
 optdepends=('python-matplotlib: for pylab_aux module'
             'python-sqlalchemy: for mass.unimod module'
             'python-pandas: for convenient filtering of CSV tables from search engines'
