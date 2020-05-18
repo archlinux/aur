@@ -3,14 +3,14 @@
 
 pkgname=curecoind-git
 pkgver=v2.0.0.2.r21.g8cd2c3b
-pkgrel=1
+pkgrel=2
 pkgdesc="Headless daemon for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
 url="https://curecoin.net/"
 license=('MIT')
 provides=('curecoind')
 conflicts=('curecoind')
-depends=('miniupnpc' 'boost-libs' 'openssl-1.0')
+depends=('miniupnpc' 'boost-libs' 'openssl')
 makedepends=('boost' 'db' 'git')
 source=("git+https://github.com/cygnusxi/CurecoinSource.git#branch=master")
 
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/CurecoinSource/src"
-  make -f makefile.unix OPENSSL_INCLUDE_PATH='/usr/include/openssl-1.0' OPENSSL_LIB_PATH='/usr/lib/openssl-1.0 -lcrypto -lz'
+  make -f makefile.unix -lcrypto -lz
 }
 
 package() {
