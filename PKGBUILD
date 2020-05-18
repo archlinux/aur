@@ -3,14 +3,14 @@
 pkgdesc="ROS - A bond allows two processes, A and B, to know when the other has terminated, either cleanly or by crashing."
 url='https://www.wiki.ros.org/bond_core'
 
-pkgname='ros-melodic-bond-core'
-pkgver='1.8.3'
+pkgname='ros-noetic-bond-core'
+pkgver='1.8.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-catkin
+	ros-noetic-catkin
 )
 
 makedepends=(
@@ -20,10 +20,10 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-smclib
-	ros-melodic-bondpy
-	ros-melodic-bondcpp
-	ros-melodic-bond
+	ros-noetic-smclib
+	ros-noetic-bondpy
+	ros-noetic-bondcpp
+	ros-noetic-bond
 )
 
 depends=(
@@ -32,25 +32,22 @@ depends=(
 
 _dir="bond_core-${pkgver}/bond_core"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/bond_core/archive/${pkgver}.tar.gz")
-sha256sums=('9f2bd791abc0356f47235db7e2b042479e6a091cf2cd969d0918a8e0c76b632d')
+sha256sums=('19e683f3c1ce7ec442e0e46708cdf7bbbb48c2a14ca4cbca858609fc1be931c5')
 
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
