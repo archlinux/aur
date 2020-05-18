@@ -1,7 +1,7 @@
 pkgbase = pdfunlock
 	pkgdesc = Aims to remove modification restrictions from PDF files
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/boomer41/PdfUnlock
 	arch = any
 	license = MIT
