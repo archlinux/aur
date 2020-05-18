@@ -8,7 +8,7 @@ pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
-pkgver=2.44.3.r1579.g05617fa2c5
+pkgver=2.45.r489.gf8a32f8e27
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"
@@ -133,12 +133,15 @@ package_snapd-git() {
   unset GO111MODULE
 
   # Install bash completion
-  install -Dm644 data/completion/snap \
-    "$pkgdir/usr/share/bash-completion/completions/snap"
-  install -Dm644 data/completion/complete.sh \
-    "$pkgdir/usr/lib/snapd/complete.sh"
-  install -Dm644 data/completion/etelpmoc.sh \
-    "$pkgdir/usr/lib/snapd/etelpmoc.sh"
+  install -Dm644 data/completion/bash/snap \
+          "$pkgdir/usr/share/bash-completion/completions/snap"
+  install -Dm644 data/completion/bash/complete.sh \
+          "$pkgdir/usr/lib/snapd/complete.sh"
+  install -Dm644 data/completion/bash/etelpmoc.sh \
+          "$pkgdir/usr/lib/snapd/etelpmoc.sh"
+  # Install zsh completion
+  install -Dm644 data/completion/zsh/_snap \
+          "$pkgdir/usr/share/zsh/site-functions/_snap"
 
   # Install systemd units, dbus services and a script for environment variables
   make -C data/ install \
@@ -182,7 +185,7 @@ package_snapd-git() {
   install -dm755 "$pkgdir/var/lib/snapd/lib/vulkan"
   install -dm755 "$pkgdir/var/lib/snapd/lib/glvnd"
   # these dirs have special permissions
-  install -dm000 "$pkgdir/var/lib/snapd/void"
+  install -dm111 "$pkgdir/var/lib/snapd/void"
   install -dm700 "$pkgdir/var/lib/snapd/cookie"
   install -dm700 "$pkgdir/var/lib/snapd/cache"
 
