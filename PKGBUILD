@@ -35,7 +35,7 @@ options=('!strip')
 _srcname=linux-${pkgver}
 _bmqversion=5.6-r4
 _bmq_patch="bmq_v${_bmqversion}.patch"
-_gcc_more_v='20191217'
+_gcc_more_v='20200428'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
@@ -58,11 +58,11 @@ sha256sums=('f125d79c8f6974213638787adcad6b575bbd35a05851802fd83f622ec18ff987'
             'b97b4b90f51876aaa4fa910e1ce801552f7e086aec3026a64f406581beae791b'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
             '1b95d36635c7dc48ce45a33d6b1f4eb6d34f51600901395d28fd22f28daee8e9'
-            '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
+            '2f56fda0014c54d7ca56156bed31cabe026af04d41162f0d678bef4afa179966'
             '07a91ff0d35877c8101f00b8c25339c9fb3b6c3c53a974d47a46344861d3459c'
             '766fbe4f1f1ae001887e0d38e82ab9a7c0fabf1f75df4716c3356c5669f799ed'
-            '2a3a9ce012dc67d66745381297a9263383341693cd5e7097fb5de2b1e520227c'
-            '4c8f34faee5850db098a6bb75211b5947445870c301e2bb46cd49a81fcc60462'
+            '4422ad60cf98507d2da3d8bc86537fe14cf9a98b4c7b4c2ebae8cd8d4975e40c'
+            'cbd65bd03b6415abb53aac61559eb6bc2d775cc60a98eb0048212e768d1a7666'
             '5e4de3bfb203e676dac8c704f77bb8e6fb471f190bc2bdf33f57c5318be0d92a')
 
 _kernelname=${pkgbase#linux}
