@@ -10,9 +10,8 @@ pkgbase = an9wer-st
 	depends = xorgproto
 	depends = libx11
 	depends = libxft
-	source = st-rebuild
+	depends = an9wer-suckless-rebuild
 	source = st::git://git.suckless.org/st
-	md5sums = d21cbe64a3652c44b8fe88d706412856
 	md5sums = SKIP
 
 pkgname = an9wer-st

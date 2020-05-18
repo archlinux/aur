@@ -4,18 +4,16 @@ _commit=045a0fa
 _pkgname=st
 pkgname=an9wer-$_pkgname
 pkgver=0.8.3.r9.g045a0fa
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple terminal implementation for X"
 url="https://st.suckless.org/"
 arch=('x86_64')
 license=('MIT')
 makedepends=('git')
-depends=('xorgproto' 'libx11' 'libxft')
+depends=('xorgproto' 'libx11' 'libxft' 'an9wer-suckless-rebuild')
 install=$pkgname.install
-source=("st-rebuild"
-        "$_pkgname::git://git.suckless.org/st")
-md5sums=('d21cbe64a3652c44b8fe88d706412856'
-         'SKIP')
+source=("$_pkgname::git://git.suckless.org/st")
+md5sums=('SKIP')
 
 prepare() {
   cd "$_pkgname"
@@ -34,8 +32,6 @@ build() {
 }
 
 package() {
-  install -m755 -D st-rebuild "$pkgdir/usr/bin/st-rebuild"
-
   cd "$_pkgname"
   make PREFIX=/usr DESTDIR="$pkgdir" install
   install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"

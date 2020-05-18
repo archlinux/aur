@@ -1,9 +1,9 @@
 post_install() {
   echo "-- 'st' has been builded with default config.h file"
-  echo "-- and after that you can rebuild it by using 'st-rebuild' command with any other config.h file."
+  echo "-- and after that you can rebuild it by using 'suckless-rebuild' command with any other config.h file."
 }
 
 post_upgrade() {
   echo "-- 'st' has been builded with default config.h file"
-  echo "-- and after that you can rebuild it by using 'st-rebuild' command with any other config.h file."
+  echo "-- and after that you can rebuild it by using 'suckless-rebuild' command with any other config.h file."
 }
