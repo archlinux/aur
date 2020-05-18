@@ -3,7 +3,7 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 pkgname=mingw-w64-cairo-bootstrap
 pkgver=1.17.2+17+g52a7c79fd
-pkgrel=1
+pkgrel=2
 pkgdesc="2D graphics library with support for multiple output devices (mingw-w64 bootstrap)"
 _commit=52a7c79fd4ff96bb5fac175f0199819b0f8c18fc
 arch=(any)
@@ -72,7 +72,6 @@ package() {
     make DESTDIR="$pkgdir" install
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm -r "$pkgdir/usr/${_arch}/share"
   done
 }
 

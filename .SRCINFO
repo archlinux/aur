@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-cairo-bootstrap
 	pkgdesc = 2D graphics library with support for multiple output devices (mingw-w64 bootstrap)
 	pkgver = 1.17.2+17+g52a7c79fd
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cairographics.org/
 	arch = any
 	license = LGPL
