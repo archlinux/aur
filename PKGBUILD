@@ -2,14 +2,14 @@
 
 pkgname=cpeditor-git
 _pkgname=cpeditor
-pkgver=6.4.4.r27.g73542ad
+pkgver=6.4.4.r28.gd95eaaf
 pkgrel=1
 pkgdesc='The editor for competitive programming'
 arch=('x86_64')
 url='https://github.com/cpeditor/cpeditor'
 license=('GPL3')
 depends=('qt5-base')
-makedepends=("gcc" "cmake" "git" "python3")
+makedepends=("cmake" "git" "python3")
 conflicts=("cpeditor")
 
 source=('git://github.com/cpeditor/cpeditor.git'
@@ -41,7 +41,7 @@ prepare() {
 
 build() {
 	cd $_pkgname
-	cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER=g++
+	cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=/usr
 	cmake --build build -j$(nproc)
 }
 
