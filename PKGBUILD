@@ -1,12 +1,12 @@
 # Maintainer: Alex Dewar <a.dewar@sussex.ac.uk>
 pkgname=spinecreator-git
-pkgver=0.9.6+gitc045f60
+pkgver=0.9.6+gite6f3b58
 pkgrel=1
 pkgdesc="A user interface for creating neural network simulations"
 arch=(i686 x86_64)
 url="https://github.com/SpineML/SpineCreator.git"
 license=('GPL3')
-depends=(brahms qt5-base)
+depends=(brahms qt5-base graphviz)
 makedepends=(git cmake)
 provides=("spinecreator")
 conflicts=("spinecreator")
