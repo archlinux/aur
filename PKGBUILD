@@ -3,7 +3,7 @@
 
 pkgname=ocaml-fdkaac
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="OCaml bingind for the fdk-aac library"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-fdkaac"
