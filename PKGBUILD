@@ -1,16 +1,15 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-term-ss01
-pkgver=2.3.3
+pkgver=3.0.0
 pkgrel=1
-pkgdesc='A slender monospace typeface. Shape: Andale Mono'
+pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
 arch=('any')
-url='https://be5invis.github.io/Iosevka/'
-license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
-source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/iosevka-term-ss01-${pkgver}.zip"
+url='https://typeof.net/Iosevka/'
+license=('OFL')
+source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/ttf-iosevka-term-ss01-${pkgver}.zip"
         "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v${pkgver}/LICENSE.md")
-sha256sums=('61414fc4e5ba609044ee99dc4bb9664d663db03fc8d853ca1ac8e718010c4659'
-            'ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000')
+sha256sums=('0c0e17348311b5be542dc83a409bac396401df2bc831968568fe86fe903cd2fa'
+            'e61c0988bb231a321f14cce1b119a468f279ea86826c32e943ab16dbf08c1ba9')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/${pkgname}
