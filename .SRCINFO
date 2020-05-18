@@ -23,7 +23,7 @@ pkgbase = balena-cli
 	noextract = balena-cli-11.35.3.tgz
 	options = !strip
 	source = https://registry.npmjs.org/balena-cli/-/balena-cli-11.35.3.tgz
-	sha256sums = 120d4254bad28a37ba2f84dad86db0ca8d9f9e3f2615623778ecfcd271cdfb62
+	sha256sums = b848efd774e644cb6c24074b93a4416b168973ca0237fcebb9fa6430cc14da02
 	optdepends_x86_64 = lib32-glibc: emulated builds
 
 pkgname = balena-cli

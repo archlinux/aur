@@ -20,7 +20,7 @@ source=(https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz)
 noextract=(${pkgname}-${pkgver}.tgz)
 options=(!strip)
 replaces=('resin-cli')
-sha256sums=('120d4254bad28a37ba2f84dad86db0ca8d9f9e3f2615623778ecfcd271cdfb62')
+sha256sums=('b848efd774e644cb6c24074b93a4416b168973ca0237fcebb9fa6430cc14da02')
 
 package() {
   npm install --global --production --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
