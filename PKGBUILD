@@ -3,7 +3,7 @@
 _projectname='ppx_expect'
 pkgname="ocaml-$_projectname"
 pkgver='0.13.1'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='Cram like framework for OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
