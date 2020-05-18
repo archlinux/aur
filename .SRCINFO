@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-nav-msgs
+pkgbase = ros-noetic-nav-msgs
 	pkgdesc = ROS - nav_msgs defines the common messages used to interact with the navigation stack.
 	pkgver = 1.12.7
 	pkgrel = 2
@@ -7,17 +7,17 @@ pkgbase = ros-melodic-nav-msgs
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-message-generation
-	makedepends = ros-melodic-std-msgs
-	makedepends = ros-melodic-actionlib-msgs
-	makedepends = ros-melodic-geometry-msgs
-	depends = ros-melodic-message-runtime
-	depends = ros-melodic-std-msgs
-	depends = ros-melodic-actionlib-msgs
-	depends = ros-melodic-geometry-msgs
-	source = ros-melodic-nav-msgs-1.12.7.tar.gz::https://github.com/ros/common_msgs/archive/1.12.7.tar.gz
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-message-generation
+	makedepends = ros-noetic-std-msgs
+	makedepends = ros-noetic-actionlib-msgs
+	makedepends = ros-noetic-geometry-msgs
+	depends = ros-noetic-message-runtime
+	depends = ros-noetic-std-msgs
+	depends = ros-noetic-actionlib-msgs
+	depends = ros-noetic-geometry-msgs
+	source = ros-noetic-nav-msgs-1.12.7.tar.gz::https://github.com/ros/common_msgs/archive/1.12.7.tar.gz
 	sha256sums = a9d8c7655d426afe8bc2b021e0bc8ce25dae70ca35b985a0ec0b8b5768722bd4
 
-pkgname = ros-melodic-nav-msgs
+pkgname = ros-noetic-nav-msgs
 
