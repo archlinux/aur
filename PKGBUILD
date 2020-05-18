@@ -3,7 +3,7 @@
 
 pkgname=ocaml-cry
 pkgver=0.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="OCaml native module for icecast/shoutcast source protocol(s)"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-cry"
