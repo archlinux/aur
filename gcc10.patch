@@ -1,0 +1,48 @@
+diff -Naur freeglut-3.2.1.orig/src/fg_gl2.c freeglut-3.2.1/src/fg_gl2.c
+--- freeglut-3.2.1.orig/src/fg_gl2.c	2020-05-18 12:48:56.936789240 -0400
++++ freeglut-3.2.1/src/fg_gl2.c	2020-05-18 12:49:49.278576309 -0400
+@@ -27,6 +27,20 @@
+ #include "fg_internal.h"
+ #include "fg_gl2.h"
+ 
++#ifndef GL_ES_VERSION_2_0
++/* GLES2 has the corresponding entry points built-in, and these fgh-prefixed
++ * names are defined in fg_gl2.h header to reference them, for any other case,
++ * define them as function pointers here.
++ */
++FGH_PFNGLGENBUFFERSPROC fghGenBuffers;
++FGH_PFNGLDELETEBUFFERSPROC fghDeleteBuffers;
++FGH_PFNGLBINDBUFFERPROC fghBindBuffer;
++FGH_PFNGLBUFFERDATAPROC fghBufferData;
++FGH_PFNGLENABLEVERTEXATTRIBARRAYPROC fghEnableVertexAttribArray;
++FGH_PFNGLDISABLEVERTEXATTRIBARRAYPROC fghDisableVertexAttribArray;
++FGH_PFNGLVERTEXATTRIBPOINTERPROC fghVertexAttribPointer;
++#endif
++
+ void FGAPIENTRY glutSetVertexAttribCoord3(GLint attrib) {
+   if (fgStructure.CurrentWindow != NULL)
+     fgStructure.CurrentWindow->Window.attribute_v_coord = attrib;
+diff -Naur freeglut-3.2.1.orig/src/fg_gl2.h freeglut-3.2.1/src/fg_gl2.h
+--- freeglut-3.2.1.orig/src/fg_gl2.h	2020-05-18 12:48:56.943456737 -0400
++++ freeglut-3.2.1/src/fg_gl2.h	2020-05-18 12:51:08.235824395 -0400
+@@ -67,13 +67,13 @@
+ typedef void (APIENTRY *FGH_PFNGLDISABLEVERTEXATTRIBARRAYPROC) (GLuint);
+ typedef void (APIENTRY *FGH_PFNGLVERTEXATTRIBPOINTERPROC) (GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer);
+ 
+-FGH_PFNGLGENBUFFERSPROC fghGenBuffers;
+-FGH_PFNGLDELETEBUFFERSPROC fghDeleteBuffers;
+-FGH_PFNGLBINDBUFFERPROC fghBindBuffer;
+-FGH_PFNGLBUFFERDATAPROC fghBufferData;
+-FGH_PFNGLENABLEVERTEXATTRIBARRAYPROC fghEnableVertexAttribArray;
+-FGH_PFNGLDISABLEVERTEXATTRIBARRAYPROC fghDisableVertexAttribArray;
+-FGH_PFNGLVERTEXATTRIBPOINTERPROC fghVertexAttribPointer;
++extern FGH_PFNGLGENBUFFERSPROC fghGenBuffers;
++extern FGH_PFNGLDELETEBUFFERSPROC fghDeleteBuffers;
++extern FGH_PFNGLBINDBUFFERPROC fghBindBuffer;
++extern FGH_PFNGLBUFFERDATAPROC fghBufferData;
++extern FGH_PFNGLENABLEVERTEXATTRIBARRAYPROC fghEnableVertexAttribArray;
++extern FGH_PFNGLDISABLEVERTEXATTRIBARRAYPROC fghDisableVertexAttribArray;
++extern FGH_PFNGLVERTEXATTRIBPOINTERPROC fghVertexAttribPointer;
+ 
+ #    endif
+ 
