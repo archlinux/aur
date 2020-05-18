@@ -4,7 +4,7 @@
 pkgname=websocketpp-git-dev
 _gitname=websocketpp
 pkgver=0.8.3.1726.52eb086
-pkgrel=1
+pkgrel=2
 pkgdesc='C++/Boost Asio based websocket client/server library, Develop branch'
 url='http://www.zaphoyd.com/websocketpp/'
 arch=('any')
@@ -18,8 +18,10 @@ optdepends=(
 makedepends=('git' 'cmake' 'boost' 'boost-libs' 'scons' 'gawk')
 provides=('websocketpp')
 conflicts=('websocketpp')
-source=(${pkgname}::git+https://github.com/zaphoyd/${_gitname}#branch=develop)
-sha512sums=('SKIP')
+source=(${pkgname}::git+https://github.com/zaphoyd/${_gitname}#branch=develop 893.patch 895.patch)
+sha512sums=('SKIP'
+	    '2d1e212f2c13358d478997d7573c257f1bfc3c2aa5f52f9cf5a451d718c657e9e3f169433f5e1ef11333398348210385cfb26810e037f45f2be5753ad155095a'
+	    'fa35e00e80c0c9129161df700b0be3a82bf924e074db5ccad45fe3f6a106f7d4dc03acaa6ce37185caad0aece3846e2a07b6f3c58158652277d0c081103f1bbc' )
 
 pkgver() {
   cd ${pkgname}
@@ -30,6 +32,12 @@ pkgver() {
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
 }
+
+prepare() {
+  cd ${pkgname}
+  patch --forward --strip=1 --input="${srcdir}/893.patch"
+  patch --forward --strip=1 --input="${srcdir}/895.patch"
+}	
 
 build() {
   cd ${pkgname}

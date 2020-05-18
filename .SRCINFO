@@ -1,7 +1,7 @@
 pkgbase = websocketpp-git-dev
 	pkgdesc = C++/Boost Asio based websocket client/server library, Develop branch
 	pkgver = 0.8.3.1726.52eb086
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zaphoyd.com/websocketpp/
 	arch = any
 	license = BSD
@@ -18,7 +18,11 @@ pkgbase = websocketpp-git-dev
 	provides = websocketpp
 	conflicts = websocketpp
 	source = websocketpp-git-dev::git+https://github.com/zaphoyd/websocketpp#branch=develop
+	source = 893.patch
+	source = 895.patch
 	sha512sums = SKIP
+	sha512sums = 2d1e212f2c13358d478997d7573c257f1bfc3c2aa5f52f9cf5a451d718c657e9e3f169433f5e1ef11333398348210385cfb26810e037f45f2be5753ad155095a
+	sha512sums = fa35e00e80c0c9129161df700b0be3a82bf924e074db5ccad45fe3f6a106f7d4dc03acaa6ce37185caad0aece3846e2a07b6f3c58158652277d0c081103f1bbc
 
 pkgname = websocketpp-git-dev
 

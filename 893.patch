@@ -1,0 +1,21 @@
+From 64119d5302b22c7506d46f73b832aed498e2b55b Mon Sep 17 00:00:00 2001
+From: kautsig <cr@kautsig.org>
+Date: Sat, 16 May 2020 12:33:49 +0200
+Subject: [PATCH] Fix copy/paste mistake
+
+---
+ examples/scratch_client/SConscript | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/examples/scratch_client/SConscript b/examples/scratch_client/SConscript
+index 6e7b2ef0..36f0d403 100644
+--- a/examples/scratch_client/SConscript
++++ b/examples/scratch_client/SConscript
+@@ -19,6 +19,6 @@ if env_cpp11.has_key('WSPP_CPP11_ENABLED'):
+    prgs += env_cpp11.Program('scratch_client', ["scratch_client.cpp"], LIBS = ALL_LIBS)
+ else:
+    ALL_LIBS = boostlibs(['system','random'],env) + [platform_libs] + [polyfill_libs]
+-   prgs += env.Program('utility_client', ["utility_client.cpp"], LIBS = ALL_LIBS)
++   prgs += env.Program('scratch_client', ["scratch_client.cpp"], LIBS = ALL_LIBS)
+    
+ Return('prgs')
