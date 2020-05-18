@@ -1,7 +1,7 @@
 # Maintainer: Arthur LAURENT <arthur.laurent4@gmail.com>
 pkgname='stormkit-git'
-pkgver=r9.61a99cd
-pkgrel=2
+pkgver=r19.8408f06
+pkgrel=1
 pkgdesc='Arthapz personal C++ TooKit'
 
 arch=('any')
