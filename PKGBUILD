@@ -16,7 +16,7 @@ license=('GPL2')
 depends=('libxml2')
 provides=("autofs")
 conflicts=("autofs")
-makedepends=('libldap' 'krb5' 'kmod' 'sssd' 'libnsl' 'rpcsvc-proto')
+makedepends=('libldap' 'krb5' 'kmod' 'sssd' 'libnsl' 'rpcsvc-proto', 'systemd')
 optdepends=('krb5: for LDAP support'
             'sssd: for SSSD integration')
 backup=('etc/autofs/auto.master'
