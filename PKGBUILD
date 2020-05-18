@@ -1,7 +1,7 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-xerces-c
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="A validating XML parser written in a portable subset of C++ (mingw-w64)"
 arch=(any)
@@ -10,11 +10,11 @@ license=("APACHE")
 makedepends=('mingw-w64-configure' 'mingw-w64-wine')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("http://apache.osuosl.org/xerces/c/3/sources/xerces-c-${pkgver}.tar.gz"
+source=("https://archive.apache.org/dist/xerces/c/3/sources/xerces-c-${pkgver}.tar.gz"
         "001-no-undefined.patch"
         "fix-cross-compile.patch"
         "002-duplicate-instantiation.patch")
-md5sums=('7aac41029b0d7a5eadd31cc975b391c2'
+md5sums=('a5fa4d920fce31c9ca3bfef241644494'
          'ca44fe043987da1f54e00d1aba3e6012'
          '0fd713ab5edac90c99462f8869193868'
          '38dcb94149cfd0f7ab6e17a7b80cd143')
@@ -34,7 +34,7 @@ build() {
   cd "${srcdir}/xerces-c-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure \
+    LIBS+=" -lssp" ${_arch}-configure \
       --without-icu \
       --without-curl
     make
