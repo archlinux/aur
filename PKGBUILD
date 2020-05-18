@@ -3,7 +3,7 @@
 _projectname='typerep'
 pkgname="ocaml-$_projectname"
 pkgver='0.13.0'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='A library for runtime types'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
