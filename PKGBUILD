@@ -2,7 +2,7 @@
 
 pkgname='wiki-monkey'
 # Don't use "-" in pkgver
-pkgver='5.1.2'
+pkgver='5.1.3'
 pkgrel=1
 pkgdesc="Wiki Monkey - MediaWiki (ArchWiki-optimized) bot and editor-assistant user script (server-enabled version)."
 arch=('any')
@@ -18,7 +18,7 @@ depends=('python-configfile'
 optdepends=('python-pyopenssl: use ad-hoc SSL certificates instead of generating one')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('9b49bc370f8ac541bfdf3c4a3463299480427010e0f59d3f9b0f93db3ab24543')
+sha256sums=('d0191da9931f8a0345ac6e59c4e175ac0785aa497e174819c62f9ccce01d1773')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
