@@ -1,5 +1,5 @@
-pkgbase = sway-git
-	pkgdesc = i3-compatible Wayland compositor
+pkgbase = sway-no-strip-override-git
+	pkgdesc = i3-compatible Wayland compositor (modified PKGBUILD that doesn't override strip to off)
 	pkgver = r5942.3f77591b
 	pkgrel = 1
 	url = https://swaywm.org
@@ -27,10 +27,10 @@ pkgbase = sway-git
 	optdepends = swaylock-git: Screen locker for Sway.
 	provides = sway
 	conflicts = sway
+	conflicts = sway-git
 	options = debug
-	options = !strip
-	source = sway::git+https://github.com/swaywm/sway.git
+	source = sway-no-strip-override::git+https://github.com/swaywm/sway.git
 	sha512sums = SKIP
 
-pkgname = sway-git
+pkgname = sway-no-strip-override-git
 
