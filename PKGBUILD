@@ -1,6 +1,6 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=duetruntime-bin
-pkgver=1.2.4.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc=".NET Core runtime libraries for the Duet software framework"
 arch=('armv7h' 'aarch64')
@@ -12,14 +12,14 @@ depends=('curl' 'gettext' 'libunwind')
 options=(!strip staticlibs)
 source_armv7h=("https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duetruntime_${pkgver}_armhf.deb")
 source_aarch64=("https://pkg.duet3d.com/dists/stable/armv7/binary-arm64/duetruntime_${pkgver}_arm64.deb")
-md5sums_armv7h=('8ae301135091b239a85ef857927e3f25')
-md5sums_aarch64=('138cf159df9e197db0a72de2ab562542')
-sha1sums_armv7h=('aab8ea77afb052e682c878b1f6b24d744ba1dc86')
-sha1sums_aarch64=('7c48b8801ba4b96c12f81955b8c92baa176cfd3a')
-sha256sums_armv7h=('1ef0169a6de68c4a647a4c5868f15eda55e3f1f64cb7d892df57866558793163')
-sha256sums_aarch64=('abef7988b2e40d9a8c1bab3873c821ac11280cbe1b45688b801fb2d4c9279e2b')
-sha512sums_armv7h=('ff070fa6261dd40aebdf3250da241f9ac6fba705e8ab97908d8245e3af6a33f040fd4124a17606527dc01d83baf88b925b296c3abe2ddb1770ac7ea4dabb5c9b')
-sha512sums_aarch64=('590231fe139aaa944669c6e81456623ad721a3d4a2bdaff1cafa7787a79e8b556be29d5f1dec8b79aeeeb02a5caeeb1e3ed3df991aefb9d832a601dc4b346d3c')
+md5sums_armv7h=('f34f7058e1be68ad9d1187a616a849bc')
+md5sums_aarch64=('b918182eb194a3ee689558431694a941')
+sha1sums_armv7h=('5458989b696cb80281ba17d23939c5b2011aa40d')
+sha1sums_aarch64=('fc1714e5fe488ad0cac70c685f6a72135ad231b6')
+sha256sums_armv7h=('d39f58585762e876cb1962bb3b628d44a23cac4bfba896b66b6b1ade13f34ace')
+sha256sums_aarch64=('690c402f40d13df4ba019b6ebfe1e592454f98abf86d0539a45df0c3f2278e86')
+sha512sums_armv7h=('9ab54753cb1175ba8f286462341ed520e20221249b113521079876dcce4ce3dcdcbc10cc2d9d5facbaf3735d724674981ab2e243ebc230cd8f65b53f20903bc1')
+sha512sums_aarch64=('b84c0b24c3514301c324574f9f2eb671f5e00eb1acef719824da1e26bbee1bb3ca94d910606b0b8d419ebbe3ee5d902e5fb5c9c88e70f5f454c4e59d0c98bfb4')
 
 prepare() {
     tar -xf data.tar.xz
