@@ -71,20 +71,19 @@ _srcname=linux-${_major}
 _clr=${_major}.13-952
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=3
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20191217'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
-  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
+  'enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.4-5.6_v1.patch'
   'pci-enable-overrides-for-missing-acs-capabilities.patch'
 )
 
@@ -111,14 +110,9 @@ prepare() {
         patch -Np1 -i "$srcdir/clearlinux/${i}"
         done
 
-    local src
-    for src in "${source[@]}"; do
-        src="${src%%::*}"
-        src="${src##*/}"
-        [[ $src = *.patch ]] || continue
-        echo "Applying patch $src..."
-        patch -Np1 < "../$src"
-    done
+    ### Add acs patch
+        echo "Applying pci-enable-overrides-for-missing-acs-capabilities.patch ..."
+        patch -Np1 -i "$srcdir/pci-enable-overrides-for-missing-acs-capabilities.patch"
 
     ### Setting config
         echo "Setting config..."
@@ -174,8 +168,8 @@ prepare() {
     ### Patch source to unlock additional gcc CPU optimizations
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
-        echo "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch ..."
-        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
+        echo "Applying enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.4-5.6_v1.patch ..."
+        patch -Np1 -i "$srcdir/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.4-5.6_v1.patch"
         fi
 
     ### Get kernel version
@@ -349,7 +343,7 @@ sha256sums=('e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622'
             'SKIP'
             'd8604aec02928a19e213af003977108e4b93935762b178f86da9e7c18e6cebac'
             'SKIP'
-            '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
+            'c650fc6ff773e99dbc1fda9411b10b06513c5161791106c44d5a11dbcf6420f9'
             '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e')
 
 validpgpkeys=(
