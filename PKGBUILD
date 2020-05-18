@@ -1,16 +1,17 @@
-# Maintainer: Nicolas Quiénot <niQo @ aur>
+# Maintainer: Amin Vakil <info AT aminvakil DOT com>
+# Contributor: Nicolas Quiénot <niQo @ aur>
 
 pkgname=jmeter-plugins-manager
-pkgver=1.1.0
+pkgver=1.4
 pkgrel=1
-pkgdesc="Basic plugins for everyday needs."
+pkgdesc="Custom Plugins for Apache JMeter™"
 arch=(any)
 url="http://jmeter-plugins.org/"
-license=(APACHE)
+license=('Apache')
 depends=('jmeter>=3.0')
 options=(!strip)
 source=(${pkgname}-${pkgver}.jar::https://jmeter-plugins.org/get/)
-md5sums=('6786284678e1130d602b579c09148373')
+md5sums=('c33f852bea88672cffa97424ba2aa536')
 
 package() {
   install -Dm644 "${pkgname}-${pkgver}.jar" "${pkgdir}/opt/jmeter/lib/ext/${pkgname}-${pkgver}.jar"
