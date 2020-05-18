@@ -1,3 +1,22 @@
+4.3.1
+-----
+
+Technical release.
+
+4.3
+---
+
+First release after the move to Github. Issue and PR numbers from now on refer to the
+`Github repo <https://github.com/levitsky/pyteomics>`_. Archive of the Bibucket issues and PRs is stored
+`here <https://levitsky.github.io/bitbucket_backup/#!/levitsky/pyteomics>`_.
+
+Changes in this release:
+
+ - New module :py:mod:`pyteomics.openms.idxml`.
+
+ - Fix `#3 <https://github.com/levitsky/pyteomics/issues/3>`_, `#5 <https://github.com/levitsky/pyteomics/issues/5>`_,
+   and some issues in :py:mod:`tandem`.
+
 4.2
 ---
 
@@ -76,7 +95,7 @@ API changes
 4.0.1
 -----
 
-Fix issue `#35 <https://bitbucket.org/levitsky/pyteomics/issues/35/ordereddict-may-be-in-reversed-order-on>`_
+Fix issue `#35 <hhttps://levitsky.github.io/bitbucket_backup/#!/levitsky/pyteomics/issues/35/page/1>`_
 (incorrect order of deserialized offset indexes on older Python versions).
 
 4.0

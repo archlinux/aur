@@ -1,6 +1,6 @@
 # Maintainer: Lev Levitsky <levlev at mail dot ru>
 pkgname=python-pyteomics
-pkgver=4.2
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="A framework for proteomics data analysis."
 arch=('any')
@@ -15,12 +15,12 @@ optdepends=('python-matplotlib: for pylab_aux module'
             'python-dill: needed for multiprocessing when pickle is not enough'
             'python-pynumpress: for Numpress support')
 options=(!emptydirs)
-source=("https://pypi.io/packages/source/p/pyteomics/pyteomics-${pkgver}.tar.gz")
-sha256sums=('e4762659520b518df0d75e9fc2a1a011315fd0835ec501ae81583275d340ef1d')
+source=("https://pypi.debian.net/pyteomics/pyteomics-${pkgver}-py2.py3-none-any.whl")
+sha256sums=('be9367c5b9a828c11c7df943d5bed8ee24b5d2d5b63676fcddd789ea5ad98b73')
 changelog="CHANGELOG"
+
 package() {
-  cd "${srcdir}/pyteomics-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  pip install --ignore-installed --root "$pkgdir" "pyteomics-${pkgver}-py2.py3-none-any.whl"
 }
 
 # vim:set ts=2 sw=2 et:
