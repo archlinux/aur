@@ -1,0 +1,19 @@
+pkgbase = docopt.cpp-static-git
+	pkgdesc = C++11 port of docopt (with static libraries)
+	pkgver = 0.6.2.r104.42ebcec
+	pkgrel = 1
+	url = https://github.com/docopt/docopt.cpp/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake>=3.1.0
+	provides = docopt.cpp
+	conflicts = docopt
+	conflicts = docopt.cpp
+	options = staticlibs
+	source = git://github.com/docopt/docopt.cpp.git
+	sha512sums = SKIP
+
+pkgname = docopt.cpp-static-git
+
