@@ -3,14 +3,14 @@
 
 pkgname=curecoin-qt-git
 pkgver=v2.0.0.2.r21.g8cd2c3b
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI client (wallet) for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
 url="https://curecoin.net/"
 license=('MIT')
 provides=('curecoin-qt')
 conflicts=('curecoin-qt')
-depends=('qt5-base' 'qt5-tools' 'miniupnpc' 'boost1.69-libs' 'openssl-1.0')
+depends=('qt5-base' 'qt5-tools' 'miniupnpc' 'boost-libs' 'openssl-1.0')
 makedepends=('boost' 'db' 'git')
 source=("git+https://github.com/cygnusxi/CurecoinSource.git#branch=master"
         "curecoin.desktop")
