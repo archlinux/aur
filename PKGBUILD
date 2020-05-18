@@ -3,7 +3,7 @@
 
 pkgname=balena-cli
 pkgdesc='balena.io command line interface'
-pkgver=11.35.2
+pkgver=11.35.3
 pkgrel=1
 arch=('x86_64')
 url='https://balena.io/'
