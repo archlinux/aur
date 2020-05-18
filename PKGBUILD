@@ -1,4 +1,5 @@
-# Maintainer: Marek Kubica <marek@xivilization.net>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Marek Kubica <marek@xivilization.net>
 # Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 # Contributor: Sergei Lebedev <superbobry@gmail.com>
 # Contributor: Magnus Therning <magnus@therning.org>
@@ -6,11 +7,10 @@
 pkgname=ocaml-odn
 _pkgname=ocaml-data-notation
 pkgver=0.0.11
-pkgrel=1
+pkgrel=3
 pkgdesc="OCaml data notation"
 arch=('i686' 'x86_64')
-url="https://forge.ocamlcore.org/projects/odn"
-# LGPL + linking exception
+url="https://github.com/gildor478/ocaml-data-notation"
 license=('LGPL')
 depends=('ocaml>=3.12' 'ocaml-type-conv>=3.0.4' 'ocaml-fileutils')
 makedepends=('ocaml-findlib' 'ocaml-ounit')
