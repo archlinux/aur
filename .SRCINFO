@@ -5,7 +5,6 @@ pkgbase = mingw-w64-gdk-pixbuf2-bin
 	url = https://www.gnome.org
 	arch = any
 	license = custom
-	depends = mingw-w64-crt
 	provides = mingw-w64-gdk-pixbuf2
 	source = http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-gdk-pixbuf2-2.40.0-1-any.pkg.tar.xz
 	sha256sums = SKIP
