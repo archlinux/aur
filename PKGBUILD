@@ -12,7 +12,7 @@ conflicts=()
 
 source=("https://github.com/epiccastle/spire/releases/download/v${pkgver/_/-}/${pkgname/\-bin/}-${pkgver/_/-}-linux-amd64.tgz")
 
-sha256sums=('dd93d93131e5e8c286eed13ba72820fa01ef52057d3c7c48c7e46aba2f082cbe')
+sha256sums=('96f84b5b5641159a39e66a8ad1c2697df0dd267b6a5fa74c3497761b48ec8611')
 
 package() {
   install -Dm755 "${srcdir}/spire" "${pkgdir}/usr/bin/spire"
