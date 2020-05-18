@@ -1,18 +1,18 @@
 pkgbase = remotely
-	pkgdesc = A GTK3 VNC Client
+	pkgdesc = simple VNC viewer for the GNOME desktop environment
 	pkgver = 1.0
-	pkgrel = 1
-	url = https://gitlab.gnome.org/haecker-felix/Remotely
+	pkgrel = 2
+	url = https://gitlab.gnome.org/World/Remotely
 	arch = i686
 	arch = x86_64
-	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = GPL3
 	makedepends = meson
 	makedepends = vala
 	depends = gtk-vnc
 	source = https://gitlab.gnome.org/World/Remotely/-/archive/v1.0/Remotely-v1.0.tar.gz
-	md5sums = 35b9d43f36fbb743de7b8819f0981d10
+	sha256sums = d4f849388dcecc0f1206d6a8ec897b92239149861334327d45145d699ffdbaf8
 
 pkgname = remotely
 

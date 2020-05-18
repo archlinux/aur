@@ -2,15 +2,15 @@
 
 pkgname=remotely
 pkgver=1.0
-pkgrel=1
-pkgdesc="A GTK3 VNC Client"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="https://gitlab.gnome.org/haecker-felix/Remotely"
-license=('GPL3')
-depends=('gtk-vnc')
-makedepends=('meson' 'vala')
+pkgrel=2
+pkgdesc="simple VNC viewer for the GNOME desktop environment"
+arch=(i686 x86_64 armv7h aarch64)
+url="https://gitlab.gnome.org/World/Remotely"
+license=(GPL3)
+depends=(gtk-vnc)
+makedepends=(meson vala)
 source=("https://gitlab.gnome.org/World/Remotely/-/archive/v${pkgver}/Remotely-v${pkgver}.tar.gz")
-md5sums=('35b9d43f36fbb743de7b8819f0981d10')
+sha256sums=('d4f849388dcecc0f1206d6a8ec897b92239149861334327d45145d699ffdbaf8')
 
 
 build() {
@@ -18,6 +18,10 @@ build() {
   ninja -C build
 }
 
+check() {
+  meson test -C build --print-errorlogs
+}
+
 package() {
-  DESTDIR="$pkgdir/" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 }
