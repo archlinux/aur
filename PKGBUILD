@@ -15,7 +15,7 @@ sha256sums=('38d217779d07deec36aad725a31b91e60d6ec78d85b170f1d48a9bbe5ea57181')
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   if [[ -d _build ]]; then
-  	rm -rf _build
+    rm -rf _build
   fi
   mkdir _build
   cd _build
