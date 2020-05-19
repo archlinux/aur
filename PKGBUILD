@@ -1,10 +1,12 @@
 # Maintainer: DuckSoft <realducksoft at gmail dot com>
 # Contributor: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
-pkgname=ventoy
+pkgname=ventoy-bin
+provides=(ventoy)
+conflicts=(ventoy)
 pkgver=1.0.10
 pkgrel=1
-pkgdesc='A new multiboot USB solution'
+pkgdesc='A new multiboot USB solution (Binary)'
 url='http://www.ventoy.net/'
 arch=('i686' 'x86_64')
 license=('GPL3')
