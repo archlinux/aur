@@ -1,6 +1,6 @@
 
 pkgname=duckstation-git
-pkgver=0.1.r1249.d1e841f
+pkgver=latest.r1393.c8a00c5
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability'
 pkgrel=1
 arch=('x86_64' 'aarch64')
@@ -33,7 +33,7 @@ package() {
   cd "${srcdir}/duckstation"
 
   install -m 755 -d "${pkgdir}/usr/bin/"
-  install -m 755 -t "${pkgdir}/usr/bin/" src/duckstation-sdl/duckstation-sdl src/duckstation-qt/duckstation-qt
+  install -m 755 -t "${pkgdir}/usr/bin/" bin/duckstation-sdl bin/duckstation-qt
 
   install -m 755 -d "${pkgdir}/usr/share/applications/"
   install -m 644 appimage/duckstation-qt.desktop "${pkgdir}/usr/share/applications/duckstation.desktop"
