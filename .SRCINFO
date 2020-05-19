@@ -1,6 +1,6 @@
 pkgbase = ncine
 	pkgdesc = A multi-platform 2D game engine
-	pkgver = 2019.10
+	pkgver = 2020.05
 	pkgrel = 1
 	url = http://ncine.github.io
 	arch = i686
@@ -13,12 +13,11 @@ pkgbase = ncine
 	depends = openal
 	depends = libvorbis
 	depends = libwebp
+	depends = lua
 	depends = hicolor-icon-theme
-	optdepends = glew
-	optdepends = lua
 	options = !strip
-	source = https://github.com/nCine/nCine/archive/2019.10.tar.gz
-	md5sums = 2598a2f357e465e5cd51c0ac30757d66
+	source = https://github.com/nCine/nCine/archive/2020.05.tar.gz
+	md5sums = f20906dfe9a0cf6558b1ef9621d6c9df
 
 pkgname = ncine
 
