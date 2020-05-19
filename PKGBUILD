@@ -1,52 +1,64 @@
-# Maintainer: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
+# Maintainer: not_anonymous <nmlibertarian@gmail.com>
+
+# Previous Maintainer: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
 # Contributor: Ruslan Nabioullin <rnabioullin at gmail dot com>
 # Contributor: Gordon JC Pearce <gordon at gjcp dot net>
+
 pkgname=xastir
-pkgver=2.1.4
+pkgver=2.1.6
 pkgrel=1
-pkgdesc="Full featured APRS Tracking/Information Reporting System"
+pkgdesc="HAM RADIO - Full featured APRS Tracking/Information Reporting System"
+arch=('armv7h' 'i686' 'x86_64')
 url="http://www.xastir.org/"
 license=('GPL' 'LGPL')
+depends=('python' 'desktop-file-utils' 'openmotif' 'shapelib' 'libxpm'
+	 'libax25' 'libxml2' 'gdal' 'graphicsmagick' 'hamradio-menus')
+optdepends=('festival: for speech systhesis')
+makedepends=('autoconf' 'automake')
+conflicts=('xastir-cvs')
 source=(https://github.com/Xastir/Xastir/archive/Release-$pkgver.tar.gz
         https://github.com/Xastir/$pkgname-sounds/archive/v1.0.tar.gz
         $pkgname.desktop
         $pkgname-festival.desktop
         $pkgname-speech
         $pkgname.png)
-sha512sums=('e96f9de52499615cfe88708656d111d417e0d0e08f798b2d97f6a270db3e639c4fb5219767f8fd399fe75f51f02391ace87ae7175ae9a44cb5a4056ab7b573b1'
-            '77f55f40ba9bd818e10488feb462c5fc97cab90295774a0c6b1344c6e95ac3ef215a26ba461132c4c59f857ce3a301b17e8bc3bb6fea8451327b1e8debf12f71'
-            'f3d4b611dad7c14feb0b3bc46110a6c3e74da12e69d8acdbcb987eeaaec6f2a015b316cc58340f3c0b188e885d8716631d5943cdbb6ac4e8e6c1790013c540db'
-            '1fa98400ab344d206b714ae45bc51b82d8a8395b3a4a39878b099176571a53cc91a4fcb0a1f011a631aea2c5c4a030e2346c537dc8d934a01382c85dd130adc5'
-            'f284ce0544dd6517fbdf1d0f54d7e67f73f6eb0928bf2bd525db2aa0b0f13f61451fe7e669542730a9b77bbc6b2bf679b076fd632584684d433939f21d824ed3'
-            'bc4f634825b577baf763f84441f27502480bec7020f84c98c9da1d961014d41d554d1d38d1ac29543ecb71f2f1a88f34f75d895e609bad1ec77a3670f3639874')
-arch=('i686' 'x86_64')
-depends=('python' 'desktop-file-utils' 'openmotif' 'shapelib' 'curl' 'libax25' 'libxml2' 'libpng' 'gdal'
-    'graphicsmagick')
-makedepends=('autoconf' 'automake')
-conflicts=('xastir-cvs')
 
 build() {
-  cd $srcdir/Xastir-Release-$pkgver
-  ./bootstrap.sh
-  ./configure --prefix=/usr
-  
-  sed -i -e s:doc/xastir:xastir/doc: Makefile
-  
-  make
+	cd $srcdir/Xastir-Release-$pkgver
+	./bootstrap.sh
+	./configure --prefix=/usr
+
+	sed -i -e s:doc/xastir:xastir/doc: Makefile
+
+	make
 }
 
 package() {
-  cd $srcdir/Xastir-Release-$pkgver
-  make DESTDIR=$pkgdir install
+	cd $srcdir/Xastir-Release-$pkgver
+	make DESTDIR=$pkgdir install
 
-  mkdir -p $pkgdir/usr/share/applications
-  mkdir -p $pkgdir/usr/share/pixmaps
-  cd $srcdir
-  install -m644 *.desktop $pkgdir/usr/share/applications/
-  install -m644 *.png $pkgdir/usr/share/pixmaps/
-  install -m755 $pkgname-speech $pkgdir/usr/bin/
-  rm $pkgdir/usr/share/$pkgname/sounds/*
-  install -m644 $srcdir/$pkgname-sounds-1.0/sounds/* $pkgdir/usr/share/$pkgname/sounds/
-  
-  chmod 4755 $pkgdir/usr/bin/$pkgname
+	mkdir -p $pkgdir/usr/share/applications
+	mkdir -p $pkgdir/usr/share/pixmaps
+
+	cd $srcdir
+	install -m644 *.desktop $pkgdir/usr/share/applications/
+	install -m644 *.png $pkgdir/usr/share/pixmaps/
+	install -m755 $pkgname-speech $pkgdir/usr/bin/
+
+	rm $pkgdir/usr/share/$pkgname/sounds/*
+	install -m644 $srcdir/$pkgname-sounds-1.0/sounds/* $pkgdir/usr/share/$pkgname/sounds/
+
+	chmod -s $pkgdir/usr/bin/$pkgname
 }
+md5sums=('4b367ab776a6514d85f23f6f7c463c00'
+         'c314946788a828d42d804670ad23e646'
+         '2a06e041a0dc5f20c1427a130613d793'
+         '2f8af994b7f5086d4ca2d951ced9019a'
+         'e56e55a1c43038d4488fbdd429a0a755'
+         '0a7269113052d3bd2711b84ff2fda9d6')
+sha256sums=('5a71af2936d4d237c779b1c3a519211f8e3cd03b9873a260c849ddc8950e1a3e'
+            'fd7b0d60386964b8a35ec2e504238d8393f9217e32607a6ddfaeac6bde7d4f4a'
+            '555ee695b83e59ebd270a001d7947bad7c5168ea319d80a3dc7842981975f6ec'
+            '3452ca25072da4ccbaad2a8f07a61f1685872e1874cd6b28e5e5571f734fb47b'
+            'c99ef0816e0509b7549abdcc41253be2e50499345acd63a19b7b4a17396873b4'
+            '4d140434ccadb2772a08a23543bf3692f413d88cb9a39e0a9cf8b8470230e8c6')
