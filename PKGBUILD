@@ -14,9 +14,9 @@ pkgdesc="Standalone web browser from mozilla.org (mozilla-unified hg, release br
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
-depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
+depends=(gtk3 mozilla-common libxt mime-types dbus-glib
          ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland
-         libvpx libpng libjpeg bzip2 zlib icu libevent libpipewire02)
+         libvpx libpng libjpeg zlib icu libevent libpipewire02)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
              python nodejs python2-psutil cbindgen nasm libpipewire02)
@@ -125,7 +125,6 @@ ac_add_options --with-system-libvpx
 ac_add_options --with-system-libevent
 ac_add_options --with-system-icu
 ac_add_options --with-system-zlib
-ac_add_options --with-system-bz2
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-png
 
@@ -133,9 +132,7 @@ ac_add_options --with-system-png
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
-ac_add_options --enable-startup-notification
 ac_add_options --enable-crashreporter
-ac_add_options --disable-gconf
 ac_add_options --disable-updater
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 END
