@@ -3,7 +3,7 @@
 
 pkgname=curecoin-qt-git
 pkgver=v2.0.0.2.r5.gf9d54f9
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI client (wallet) for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
 url="https://curecoin.net/"
@@ -23,6 +23,13 @@ pkgver() {
   set -o pipefail
   git describe --tags --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}/CurecoinSource"
+  # Switch to OpenSSL 1.0
+  echo "INCLUDEPATH += /usr/include/openssl-1.0" >> "curecoin-qt.pro"
+  echo "LIBS += -L/usr/lib/openssl-1.0 -lcrypto -lz" >> "curecoin-qt.pro"
 }
 
 build() {
