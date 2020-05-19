@@ -8,11 +8,11 @@ arch=('x86_64')
 url="https://github.com/evandelisle/showq"
 license=('GPL2')
 depends=('gtkmm'
-		 'alsa-lib'
-		 'libsndfile'
-		 'jack'
-		 'libxml++2.6'
-		 'libsamplerate')
+     'alsa-lib'
+     'libsndfile'
+     'jack'
+     'libxml++2.6'
+     'libsamplerate')
 makedepends=('meson' 'ninja' 'gcc')
 source=("git+${url}")
 sha256sums=('SKIP')
@@ -23,14 +23,14 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/showq"
-	mkdir build
-	cd build
-	meson --prefix=/usr
-	ninja
+  cd "$srcdir/showq"
+  mkdir build
+  cd build
+  meson --prefix=/usr
+  ninja
 }
 
 package() {
-	cd "$srcdir/showq/build"
-	DESTDIR="$pkgdir" ninja install
+  cd "$srcdir/showq/build"
+  DESTDIR="$pkgdir" ninja install
 }
