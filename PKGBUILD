@@ -7,7 +7,7 @@ arch=('any')
 url='https://c9x.me/irc/'
 license=('public domain')
 depends=('ncurses' 'openssl')
-makedepends=('git' 'gcc')
+makedepends=('git')
 source=('git://c9x.me/irc.git')
 md5sums=('SKIP')
 
