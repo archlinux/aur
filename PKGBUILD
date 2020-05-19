@@ -21,7 +21,7 @@ pkgver() {
 prepare() {
   echo 'Downloading icons ...'
   if [[ -d rtl88-Themes ]]; then
-  	rm -rf rtl88-Themes
+    rm -rf rtl88-Themes
   fi
   git clone --single-branch --branch "Arc-ICONS" "https://github.com/rtlewis88/rtl88-Themes"
 }
