@@ -9,13 +9,13 @@ url='http://leafo.net/sitegen'
 provides=('sitegen')
 license=('custom:unknown')
 depends=('lua-cosmo'
-    	 'moonscript'
-    	 'lua-socket'
-    	 'lua-cjson'
-    	 'lua-date'
-    	 'lua-discount'
-    	 'lua-ansicolors'
-    	 'lua-web_sanitize')
+       'moonscript'
+       'lua-socket'
+       'lua-cjson'
+       'lua-date'
+       'lua-discount'
+       'lua-ansicolors'
+       'lua-web_sanitize')
 makedepends=('luarocks' 'git')
 source=("git+https://github.com/leafo/sitegen")
 sha256sums=('SKIP')
