@@ -3,7 +3,7 @@
 # Contributor: François Charette <firmicus@gmx.net>
 
 pkgname=xz-static
-pkgver=5.2.4
+pkgver=5.2.5
 pkgrel=1
 pkgdesc='Statically linked library and command line tools for XZ and LZMA compressed files'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL' 'LGPL' 'custom')
 depends=('sh')
 options=('staticlibs')
 source=("https://tukaani.org/xz/xz-${pkgver}.tar.gz"{,.sig})
-md5sums=('5ace3264bdd00c65eeec2891346f65e6'
+md5sums=('0d270c997aff29708c74d53f599ef717'
          'SKIP')
 validpgpkeys=('3690C240CE51B4670D30AD1C38EE757D69184620')
 
