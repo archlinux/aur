@@ -8,9 +8,9 @@ arch=('any')
 url="https://github.com/hoechenberger/questplus"
 license=('GPL3')
 depends=('python'
-				 'python-json-tricks'
-				 'python-scipy'
-				 'python-xarray')
+         'python-json-tricks'
+         'python-scipy'
+         'python-xarray')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hoechenberger/questplus/archive/${pkgver}.tar.gz")
 sha256sums=('9137a51abbbf50d0040e413391c894227e19f4d366dbcbcc30ba51c6cadd75fa')
