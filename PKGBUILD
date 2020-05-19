@@ -1,12 +1,13 @@
 _pkgname=Session
 pkgname=desq-session-git
-pkgver=r8.d604b18
+pkgver=r15.ce37ae6
 pkgrel=1
 pkgdesc="Session Manager for DesQ"
 arch=('any')
 url="https://gitlab.com/DesQ"
 license=('none')
-depends=('libdesq-git' 'kwin' 'desq-shell-git')
+depends=('libdesq-git')
+optdepends=( 'kwin' 'desq-shell-git')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
