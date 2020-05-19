@@ -4,10 +4,10 @@
 
 pkgname=easytag-git
 _gitname=easytag
-pkgver=2.4.3.r106.g7f416c4
+pkgver=2.4.3.r107.g55c5535
 pkgrel=1
 pkgdesc="Utility for viewing and editing tags for most audio formats - git version"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 license=('GPL')
 url='http://projects.gnome.org/easytag/'
 depends=('id3lib' 'taglib' 'libid3tag' 'gtk3' 'libvorbis' 'flac' 'speex' 'opusfile' 'wavpack' 'yelp')

@@ -1,10 +1,11 @@
 pkgbase = easytag-git
 	pkgdesc = Utility for viewing and editing tags for most audio formats - git version
-	pkgver = 2.4.3.r106.g7f416c4
+	pkgver = 2.4.3.r107.g55c5535
 	pkgrel = 1
 	url = http://projects.gnome.org/easytag/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = git
 	makedepends = intltool
