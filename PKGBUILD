@@ -8,16 +8,16 @@ arch=('x86_64')
 url='https://github.com/pykong/copier'
 license=('MIT')
 depends=('python'
-		 'python-yaml'
-		 'python-jinja'
-		 'python-regex'
-		 'python-plumbum'
-		 'python-pathspec'
-		 'python-pydantic'
-		 'python-colorama'
-		 'python-packaging'
-		 'python-pytest-xdist'
-		 'python-pyyaml-include')
+     'python-yaml'
+     'python-jinja'
+     'python-regex'
+     'python-plumbum'
+     'python-pathspec'
+     'python-pydantic'
+     'python-colorama'
+     'python-packaging'
+     'python-pytest-xdist'
+     'python-pyyaml-include')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/72/1e/5af825bc74cab8434828708cd0a0f3e3e53bda12716a3e4e17a190f27267/copier-${pkgver}.tar.gz")
 sha256sums=('5ccee68ea6510c617c207a64354737a3c7726fbca1de950aab3bbf87cde7b4f6')
