@@ -4,7 +4,7 @@
 pkgname=obs-v4l2sink
 pkgver=0.1.0
 obsver=25.0.8
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="v4l2 output for obs-studio"
 arch=(x86_64)
@@ -23,11 +23,11 @@ options=()
 install=
 changelog=
 source=("$url/archive/$pkgver.tar.gz"
-        "https://github.com/obsproject/obs-studio/archive/$obsver.tar.gz"
-        "v4l2device_close.patch::https://github.com/CatxFish/obs-v4l2sink/pull/21.patch")
+	"https://github.com/obsproject/obs-studio/archive/$obsver.tar.gz"
+	"v4l2device_close.patch::https://github.com/CatxFish/obs-v4l2sink/pull/21.patch")
 noextract=()
 sha256sums=('83e9bb104dcc3840acd17ebc0810de30c8de27545d4ef181d58f8a375dba06d4'
-            'c8db224d2ee4d9b91448be9e47414398e570eebe4a59ff9fd19b066789d1ccdb'
+            'ef1179c23256c312212e3dce9083d4fa67751db05c3001ad824e2b6995943941'
             '617e017562ab3ca85fffa86c869fa778e26ee0694e0ae8dd1b8b110bff1bb6cc')
 validpgpkeys=()
 

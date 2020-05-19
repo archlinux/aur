@@ -19,19 +19,19 @@ grep -q "^obsver=${obs_version}$" PKGBUILD || {
 }
 
 # In case there is a release, update the release version
-grep -q "^pkgver=${sink_version}$" PKGBUILD || {
+grep -q "^pkgver=${sink_version}$" PKGBUILD ||
 	sed -i \
 		-e "s/^pkgver=.*/pkgver=${sink_version}/" \
 		-e 's/pkgrel=.*/pkgrel=1/' \
 		PKGBUILD
-	updpkgsums
-}
 
 # Check whether this changed anything
 if (git diff --exit-code PKGBUILD); then
 	echo "Package has most recent version ${sink_version} and OBS version ${obs_version}"
 	exit 0
 fi
+
+updpkgsums
 
 # Update .SRCINFO
 makepkg --printsrcinfo >.SRCINFO
