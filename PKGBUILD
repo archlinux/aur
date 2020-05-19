@@ -12,7 +12,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/s3-edi
 sha256sums=('76c276a1f106732323e5850699cda83ebdde9ca7a7c293e3fd36fdcc8425ad7c')
 
 package() {
-	install -Dm755 "${srcdir}"/s3-edit "${pkgdir}/usr/bin/s3-edit"
-	install -Dm644 "${srcdir}"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 "${srcdir}"/s3-edit "${pkgdir}/usr/bin/s3-edit"
+  install -Dm644 "${srcdir}"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
