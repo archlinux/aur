@@ -1,8 +1,8 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc='Lua application server integrated with a database management system'
 arch=(x86_64)
 url='https://www.tarantool.org'
@@ -22,8 +22,10 @@ source=(git+https://github.com/tarantool/tarantool.git#tag=$pkgver
         git+https://github.com/tarantool/decNumber.git
         git+https://github.com/tarantool/serpent.git
         git+https://github.com/tarantool/curl.git
+        git+https://github.com/tarantool/c-ares.git
         tarantool.sysusers)
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -52,6 +54,7 @@ prepare() {
   git config -f .gitmodules 'submodule.third_party/decNumber.url' "$srcdir/decNumber"
   git config -f .gitmodules 'submodule.third_party/serpent.url' "$srcdir/serpent"
   git config -f .gitmodules 'submodule.third_party/curl.url' "$srcdir/curl"
+  git config -f .gitmodules 'submodule.third_party/c-ares.url' "$srcdir/c-ares"
 
   git submodule sync
   git submodule update
