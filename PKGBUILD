@@ -33,15 +33,14 @@ prepare() {
 }
 
 build() {
-    rm -rf build
     arch-meson phosh build -Dtests=false
     ninja -C build
 }
 
 # check() {
-#     ninja -C build test
+#     meson test -C build --print-errorlogs
 # }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C build install
+    DESTDIR="${pkgdir}" meson install -C build
 }
