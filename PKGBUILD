@@ -1,8 +1,9 @@
-# Maintainer: Razer <razer[AT]neuf[DOT]fr>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Razer <razer[AT]neuf[DOT]fr>
 
 pkgbase=django-redis
 pkgname=('python-django-redis')
-pkgver=4.10.0
+pkgver=4.11.0
 pkgrel=1
 pkgdesc="Full featured redis cache backend for Django"
 arch=('any')
@@ -10,7 +11,7 @@ license=('BSD')
 url="https://github.com/niwinz/django-redis"
 makedepends=('python' 'python-setuptools' 'python-redis')
 source=("https://pypi.io/packages/source/d/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('af0b393864e91228dd30d8c85b5c44d670b5524cb161b7f9e41acc98b6e5ace7')
+sha256sums=('a5b1e3ffd3198735e6c529d9bdf38ca3fcb3155515249b98dc4d966b8ddf9d2b')
 
 package_python-django-redis() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
