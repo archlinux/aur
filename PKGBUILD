@@ -8,21 +8,21 @@ arch=('x86_64')
 url='http://ut.mephi.ru/oss/clsync'
 license=('GPL3')
 makedepends=('doxygen'
-						 'graphviz'
-						 'libcap'
-				 		 'libcgroup'
-				     'mhash')
+             'graphviz'
+             'libcap'
+             'libcgroup'
+             'mhash')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/clsync/clsync/archive/v${pkgver}.tar.gz")
 sha256sums=('8553b67b0bb902b5ff05a50195c5b0102a522b771f4ff8bec7495d9406514622')
 
 build() {
-	cd "${pkgname}-${pkgver}"
-	autoreconf -i
-	./configure --prefix=/usr \
-							--with-libcgroup=yes \
-							--with-inotify=yes \
-							--with-mhash=yes 
-	make -j$(nproc)
+  cd "${pkgname}-${pkgver}"
+  autoreconf -i
+  ./configure --prefix=/usr \
+              --with-libcgroup=yes \
+              --with-inotify=yes \
+              --with-mhash=yes 
+  make -j$(nproc)
 }
 
 package() {
