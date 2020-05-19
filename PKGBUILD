@@ -44,7 +44,7 @@ package() {
     make DESTDIR="${pkgdir}" install
     cd "${srcdir}/SPIRV-Tools-${pkgver}/build-${_arch}"
     make DESTDIR="${pkgdir}" install
-    ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
+    ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
   done
 }
