@@ -9,9 +9,9 @@ arch=('x86_64')
 url="https://github.com/liamg/aminal"
 license=('GPL3')
 depends=('libxinerama'
-		 'libxcursor'
-		 'libglvnd'
-		 'libxrandr')
+         'libxcursor'
+         'libglvnd'
+         'libxrandr')
 provides=('aminal')
 source=("https://github.com/liamg/aminal/releases/download/${_pkgver}/aminal-linux-amd64")
 sha256sums=('d605bae58fa2f005daaf7c060e6f4c28dac465bb2c4da5a60b47109703d9740b')
