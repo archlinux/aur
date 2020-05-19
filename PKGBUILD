@@ -2,7 +2,7 @@
 
 pkgname=gdl
 pkgver=3.34.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Docking Library"
 url="https://gitlab.gnome.org/GNOME/gdl"
 arch=(x86_64)
