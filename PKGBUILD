@@ -4,7 +4,7 @@
 DISABLE_CHECK=1
 _name=geogram
 pkgname=${_name}
-pkgver=1.7.1
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="Library of geometric algorithms. It includes a simple yet efficient Mesh data structure."
 arch=('i686' 'x86_64')
@@ -23,6 +23,7 @@ _CMAKE_FLAGS=( -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release )
 _CMAKE_FLAGS+=( -DGEOGRAM_LIB_ONLY=ON )
 _CMAKE_FLAGS+=( -DVORPALINE_PLATFORM=Linux64-gcc-dynamic)
 _CMAKE_FLAGS+=( -DGEOGRAM_USE_SYSTEM_GLFW3=ON )
+_CMAKE_FLAGS+=( -DGEOGRAM_WITH_LEGACY_NUMERICS=OFF )
 
 build() {
   cd ${srcdir}
