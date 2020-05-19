@@ -4,12 +4,11 @@ pkgver=0.16.0
 pkgrel=1
 pkgdesc="Python 3 extension for interface with Wasmtime/Cranelift."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url="https://github.com/bytecodealliance/wasmtime"
+url="https://github.com/bytecodealliance/wasmtime-py"
 license=('APACHE2')
-depends=('python' 'python-setuptools' 'python-wheel' 'python-setuptools-rust')
-makedepends=('rustup')
+depends=('python' 'python-setuptools' 'python-wheel' 'wasmtime')
 options=(!emptydirs)
-source=("${pkgname}-${pkgver}::git+https://github.com/bytecodealliance/wasmtime.git#tag=v${pkgver}")
+source=("${pkgname}-${pkgver}::git+https://github.com/bytecodealliance/wasmtime-py.git#tag=${pkgver}")
 sha384sums=('SKIP')
 
 prepare() {
@@ -19,6 +18,7 @@ prepare() {
 
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}/crates/misc/py"
-    rustup run nightly python setup.py install --root="$pkgdir/" --optimize=1
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    python setup.py install --root="$pkgdir/" --optimize=1
+    ln -sf "/usr/lib/libwasmtime.so" "${pkgdir}/""$(python -c "import setuptools as _; print(_.__path__[0][:-10])")""wasmtime/wasmtime.pyd"
 }
