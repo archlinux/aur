@@ -2,8 +2,8 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=linux_logo
-pkgver=5.11
-pkgrel=5
+pkgver=6.0
+pkgrel=1
 pkgdesc="Text-based logo and system information program"
 arch=('x86_64')
 url="https://github.com/deater/linux_logo"
