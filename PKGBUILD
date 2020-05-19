@@ -7,7 +7,7 @@ pkgname=('mariadb103-libs' 'mariadb103-clients' 'mariadb103')
 _orgbase=mariadb
 pkgdesc='Fast SQL database server, version 10.3'
 pkgver=10.3.23
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('GPL')
 url='https://mariadb.org/'
@@ -20,7 +20,7 @@ source=("https://mirrors.n-ix.net/mariadb/mariadb-$pkgver/source/mariadb-$pkgver
 sha256sums=('fc405022457d8eec5991b870cc1c9a07b83b551d6165c414c4d8f31523aa86ae'
             'SKIP'
             '5b74e328e75369dfb68491a06dd53bd736e34f87281103ae0dd2f50401dc70d3'
-            '3216343c3de1cb33f4a7eb58b1eed4228fa1a61184358afdfdcdcaeddf617ef0')
+            'e8fecec204a7832948093c8ce5dc81808a8564f54854e57473b448ebc0cc4ff3')
 
 prepare() {
   cd $_orgbase-$pkgver/
