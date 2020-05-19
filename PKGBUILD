@@ -1,4 +1,4 @@
-# Maintainer: Danny Bautista <pyrolagus at gmail.com>
+# Maintainer: Danny Bautista <aur at pyrolagus.de>
 # https://github.com/Earnestly/pkgbuilds/tree/master/bemenu-git
 pkgname=bemenu-git
 _pkgname="bemenu"
