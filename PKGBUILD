@@ -3,7 +3,7 @@
 _pkgname=slog
 pkgname="lib${_pkgname}-git"
 pkgver=1.6.b1.2f9b9ca
-pkgrel=4
+pkgrel=5
 pkgdesc="Simple and thread safe logging library for C/C++"
 arch=('any')
 url='https://github.com/kala13x/slog'
@@ -26,6 +26,6 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname/src"
-  install -m 0664 libslog.a "$pkgdir/usr/local/lib"
-  install -m 0664 slog.h "$pkgdir/usr/local/include"
+  install -Dm 0664 libslog.a "$pkgdir/usr/local/lib"
+  install -Dm 0664 slog.h "$pkgdir/usr/local/include"
 }
