@@ -9,9 +9,9 @@ url="https://github.com/lukechilds/gifgen"
 license=('MIT')
 depends=('ffmpeg')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-		'LICENSE::https://raw.githubusercontent.com/lukechilds/gifgen/master/LICENSE')
+    'LICENSE::https://raw.githubusercontent.com/lukechilds/gifgen/master/LICENSE')
 sha256sums=('95f69c63158315ad869ff36611026cce1a7d03f8c84716b1c21a44e71e8d6aee'
-			'f23faa8280084d44d2282a44d142fa439fed491cb52f367a8fedb8f1f17ed511')
+      'f23faa8280084d44d2282a44d142fa439fed491cb52f367a8fedb8f1f17ed511')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}/gifgen" "${pkgdir}/usr/bin/gifgen"
