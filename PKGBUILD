@@ -48,7 +48,7 @@ _makenconfig=
 #  31. Intel Tiger Lake (MTIGERLAKE)
 #  32. Generic-x86-64 (GENERIC_CPU)
 #  33. Native optimizations autodetected by GCC (MNATIVE)
-_subarch=23
+_subarch=
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
@@ -69,7 +69,7 @@ pkgrel=3
 _ckpatchversion=2
 _cpusched="MuQSS"
 _sched_yield_type="0"
-_smt_nice="false"
+_smt_nice="true"
 _timer_freq="100"
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -81,10 +81,6 @@ options=('!strip')
 
 #_reponame="bcachefs"
 #_repo_url="https://github.com/koverstreet/$_reponame"
-
-_ckpatch="patch-5.6-ck${_ckpatchversion}"
-
-_srcname=linux
 
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
@@ -266,7 +262,7 @@ prepare() {
     sed -i -e 's/CONFIG_GENERIC_CPU=y/# CONFIG_GENERIC_CPU is not set/' ./.config
   fi
 
-  if [ "$_subarch" == "33" ]; then
+  if [ "$_subarch" == "33" ] || [ "$_subarch" == "" ]; then
     echo "CONFIG_MNATIVE=y" >> ./.config
   elif [ "$_subarch" == "1" ]; then
     sed -i -e 's/# CONFIG_MK8 is not set/CONFIG_MK8=y/' ./.config
