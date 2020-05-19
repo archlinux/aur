@@ -1,32 +1,30 @@
-# Contributor: Benoit Favre <benoit.favre@lif.univ-mrs.fr>
-
 pkgname=mingw-w64-openfst
 _pkgname=openfst
-pkgver=1.4.1
-pkgrel=5
+pkgver=1.7.7
+pkgrel=1
 pkgdesc="Library for constructing, combining, optimizing, and searching weighted finite-state transducers (mingw-w64)"
 arch=('any')
 url="http://www.openfst.org/"
 license=('APACHE')
-makedepends=(mingw-w64-configure mingw-w64-gcc)
-depends=(mingw-w64-crt mingw-w64-dlfcn mingw-w64-mman-win32-svn)
+makedepends=(mingw-w64-configure)
+depends=(mingw-w64-dlfcn mingw-w64-mman-win32-git)
 options=(!strip !buildflags staticlibs)
-source=("http://openfst.cs.nyu.edu/twiki/pub/FST/FstDownload/${_pkgname}-${pkgver}.tar.gz"
+source=("http://www.openfst.org/twiki/pub/FST/FstDownload/openfst-${pkgver}.tar.gz"
         getpagesize.patch)
-md5sums=('ca8f1730b9b9b281e515611fa9ae23c0'
-         '0788f08b514026e7a9713cbbf9e4be20')
+sha256sums=('3246eaff369d334f24a684e94918a2fda99d7e633a1081718bb4a3a3e9bcf3be'
+            'efc9f8dee9f0410a4cc39c26c1dac23e04b770ea70260672695720e1802b924d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd ${srcdir}/${_pkgname}-${pkgver}
   # use page size info from windows
-  patch -p1 < ../getpagesize.patch
+  #patch -p1 < ../getpagesize.patch
   # make sure dlls are built
   find . -name Makefile.am | xargs -i sed -i "s/_la_LDFLAGS = /_la_LDFLAGS = -no-undefined /" {}
   find src/extensions -name Makefile.am | xargs -i sed -i "s/_la_LDFLAGS = /_la_LDFLAGS = -lfst -ldl -lmman -no-undefined /" {}
-  sed -i 's/AC_PROG_LIBTOOL/AC_LIBTOOL_WIN32_DLL\nAM_PROG_LIBTOOL/' configure.ac
-  sed -i 's/ -Werror//' configure.ac
+  sed -i 's/AC_PROG_LIBTOOL/AC_LIBTOOL_WIN32_DLL\nAC_PROG_LIBTOOL/' configure.ac
+  #sed -i 's/ -Werror//' configure.ac
   autoreconf -vfi
 }
 
@@ -48,9 +46,9 @@ package() {
   cd ${srcdir}/${_pkgname}-${pkgver}
   for _arch in ${_architectures}; do
     pushd build-${_arch}
-    make DESTDIR=${pkgdir} install
-    find ${pkgdir}/usr/${_arch} -name \*.a | xargs ${_arch}-strip -g
-    find ${pkgdir}/usr/${_arch} -name \*.dll | xargs ${_arch}-strip --strip-unneeded
+    make DESTDIR="${pkgdir}" install
+    find "${pkgdir}"/usr/${_arch} -name \*.a | xargs ${_arch}-strip -g
+    find "${pkgdir}"/usr/${_arch} -name \*.dll | xargs ${_arch}-strip --strip-unneeded
     popd
   done
 }
