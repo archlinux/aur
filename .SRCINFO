@@ -1,7 +1,7 @@
 pkgbase = jdk11-openj9-bin
 	pkgdesc = Eclipse (former IBM) OpenJ9 with openjdk11
 	pkgver = 11.0.7b10_openj9_0.20.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://adoptopenjdk.net/index.html?variant=openjdk11&jvmVariant=openj9
 	arch = x86_64
 	license = GPL2
