@@ -1,0 +1,22 @@
+pkgbase = find-cursor-git
+	pkgdesc = Simple XLib program to highlight the cursor position.
+	pkgver = 1.6
+	pkgrel = 9
+	url = https://github.com/arp242/find-cursor
+	arch = any
+	groups = system
+	license = MIT
+	makedepends = git
+	depends = xorg-xrefresh
+	depends = libx11
+	depends = xorgproto
+	depends = libxdamage
+	depends = libxrender
+	depends = libxext
+	provides = find-cursor-git
+	conflicts = find-cursor
+	source = git+https://github.com/arp242/find-cursor.git
+	md5sums = SKIP
+
+pkgname = find-cursor-git
+
