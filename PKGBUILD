@@ -11,13 +11,13 @@ arch=('x86_64')
 url='https://github.com/airsquared/blobsaver'
 license=('GPL3')
 depends=('java-runtime=8'
-		 'zlib'
-		 'bash'
-		 'java8-openjfx'
-		 'archlinux-java-run'
-		 'libfragmentzip')
+     'zlib'
+     'bash'
+     'java8-openjfx'
+     'archlinux-java-run'
+     'libfragmentzip')
 optdepends=('libimobiledevice: Get plugged in device information'
-			'libirecovery: Utility to talk to iBoot/iBSS via USB')
+      'libirecovery: Utility to talk to iBoot/iBSS via USB')
 makedepends=('gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/blobsaver-linux.tar.gz")
 sha256sums=('692efae56c684d979a5f7557ac037feb252d174e6fb2a54981696630c2c54686')
