@@ -11,7 +11,7 @@ depends=('ncurses' 'readline')
 makedepends=('ncurses' 'readline')
 groups=('file-management' 'suckless')
 source=('git://github.com/KisuYami/kyfm')
-url='www.github.com/KisuYami/kyfm'
+url='https://gitlab.com/KisuYami/kyfm'
 md5sums=('SKIP')
 
 build() {
