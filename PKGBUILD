@@ -30,7 +30,7 @@ package() {
   ln -s /opt/Lines/lines "${pkgdir}/usr/bin/lines"
   # Create desktop file
   gendesk -f -n --pkgname "${pkgname}" \
-  	      --pkgdesc "${pkgdesc}" \
+          --pkgdesc "${pkgdesc}" \
           --name "Lines" \
           --genericname "Lines Code Editor" \
           --comment "${pkgdesc}" \
