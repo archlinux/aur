@@ -1,7 +1,7 @@
 pkgbase = robustirc-bridge
 	pkgdesc = Bridge to robustirc.net-IRC-Network
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/robustirc/bridge
 	arch = i686
 	arch = x86_64
