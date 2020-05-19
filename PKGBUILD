@@ -1,7 +1,7 @@
 # Maintainer: Fatih Bostancı <ironic@yaani.com>
 
 pkgname=ezanvakti
-pkgver=7.2
+pkgver=7.3
 pkgrel=1
 pkgdesc="Islamic Prayer Times bash script for Turkish users"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=()
 depends=('bash' 'yad' 'sed' 'gawk' 'grep' 'hicolor-icon-theme' 'libnotify' 'curl' 'ffmpeg')
 optdepends=('bash-completion: completion for bash')
 source=("https://github.com/fbostanci/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('580565590b03b594c91d2609630c3ac6')
+md5sums=('7be0a6379ef863009308ae1cd2e35f43')
 
 package() {
   cd "$pkgname-$pkgver"
