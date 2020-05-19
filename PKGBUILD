@@ -4,7 +4,7 @@
 
 pkgname=unoconv
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Libreoffice-based document converter"
 url="http://dag.wiee.rs/home-made/unoconv"
 depends=(python libreoffice)
