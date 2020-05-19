@@ -1,36 +1,48 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=nasc
-pkgver=0.5.4
+pkgver=0.6.1
+_qalculate_ver=9587044297dfe0f6de02df0af77c511236406a2a
 pkgrel=1
 pkgdesc='Do maths like a normal person.'
-arch=('i686' 'x86_64')
-url='https://parnold-x.github.io/nasc/'
-license=('GPL3')
-depends=('libqalculate' 'granite' 'libgee' 'gtksourceview3' 'libsoup' 'cln')
+arch=(i686 x86_64)
+url=https://parnold-x.github.io/nasc/
+license=(GPL3)
+depends=(granite gtksourceview3 mpfr)
 optdepends=()
-makedepends=('vala' 'git' 'cmake')
-conflicts=('nasc-git' 'nasc-bzr')
-source=("https://github.com/parnold-x/nasc/archive/${pkgver}.tar.gz" fix-gcc9-build.patch)
-sha512sums=('ef06185182fc071adafe188a890e4751fdb515dda8ad87704203ba8dc123ede5d1e759031c1256581415bea3e31e4748f5235b94a15e1cbe21a19789d1763694'
-            '0eacced70c0d831d07a7fa5199bd26f3b2fe3802bfd5038ce85240c2aff7c3223e52fa6b3d52dc4a35793c6c30cc796b9a797fed030c2f6f01462ecc2571a319')
+makedepends=(vala git meson intltool)
+conflicts=(nasc-git nasc-bzr)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/parnold-x/nasc/archive/$pkgver.tar.gz"
+		"libqalculate-$_qalculate_ver::git+https://github.com/parnold-x/libqalculate#commit=$_qalculate_ver")
+sha512sums=('fcb8b1c19349e18fdf81f3f6609c658b079880ff73caf40b8c8dd5e553cbb2cac11f6e58ea6caaf76105d83a44d9a9968bb6e2cfa06ccf1b425443ee6504c269'
+            'SKIP')
 
 prepare () {
-	cd "${pkgname}-${pkgver}"
-	patch -p1 < "${srcdir}/fix-gcc9-build.patch"
+	cd "$pkgname-$pkgver/subprojects"
+	rm -rf libqalculate
+	ln -vsnf "../../libqalculate-$_qalculate_ver" libqalculate
 }
 
 build () {
-	cd "${pkgname}-${pkgver}"
 	rm -rf build
-	mkdir -p build
-	cd build
+	arch-meson build "$pkgname-$pkgver"
 
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-		-DGSETTINGS_COMPILE=OFF -DCMAKE_BUILD_TYPE=Release ..
-	make
+	# The libqalculate static library is built as a subproject, but its Meson
+	# build definitions do not try to detect a few things. In particular, not
+	# adding HAVE_UNORDERED_MAP here results in a build error with newer GCC
+	# versions.
+	cat >> build/subprojects/libqalculate/config.h <<-EOF
+	#define _DIRENT_HAVE_D_TYPE 1
+	#define HAVE_PIPE2 1
+	#define HAVE_UNORDERED_MAP 1
+	EOF
+
+	ninja -C build
+}
+
+check () {
+	ninja -C build test
 }
 
 package () {
-	cd "${pkgname}-${pkgver}/build"
-	make install DESTDIR="${pkgdir}"
+	DESTDIR="$pkgdir" ninja -C build install
 }
