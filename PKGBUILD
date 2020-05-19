@@ -2,15 +2,15 @@
 # Contributor: Dhananjay Balan <mail@dbalan.in>
 
 pkgname=minio-client
-pkgver=2020.05.06
-_timever=T18:00:07Z
+pkgver=2020.05.16
+_timever=T01:44:37Z
 _pkgver="${pkgver//./-}${_timever//:/-}"
 pkgrel=1
 pkgdesc='Replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage'
 arch=('x86_64')
 url='https://minio.io/downloads/#minio-client'
 license=('Apache')
-makedepends=('go-pie' 'git')
+makedepends=('go' 'git')
 depends=('glibc')
 install=minio-client.install
 source=(git+https://github.com/minio/mc.git#tag=RELEASE.${_pkgver})
@@ -18,7 +18,10 @@ sha512sums=('SKIP')
 
 build() {
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-trimpath"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   cd mc
 
