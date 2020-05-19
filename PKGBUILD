@@ -1,15 +1,15 @@
 # Maintainer: Ken Enda <buhibuhidog@gmail.com>
 
 pkgname=tym
-pkgver=3.0.1
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="A tiny term for minimalists"
 arch=('x86_64')
 url="https://github.com/endaaman/tym"
 license=('MIT')
 depends=('vte3' 'lua')
 source=("https://github.com/endaaman/${pkgname}/releases/download/$pkgver/${pkgname}-$pkgver.tar.gz")
-sha1sums=('2b5ff07b7206ecaffa012aadda52e9dd9a2eda6c')
+sha1sums=('01ac5f0764199035198b157025ed64d73593daf8')
 build() {
 	cd "$pkgname-$pkgver"
 	./configure --prefix=/usr
