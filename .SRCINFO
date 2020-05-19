@@ -1,14 +1,14 @@
 pkgbase = kcompose
 	pkgdesc = Utility tool for managing kafka
-	pkgver = 0.6.0
-	pkgrel = 2
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://github.com/arquivei/kcompose
 	arch = any
 	license = GPL3
 	depends = java-runtime
 	depends = bash
-	source = kcompose-0.6.0.tar.gz::https://github.com/arquivei/kcompose/archive/0.6.0.tar.gz
-	md5sums = dda2d41733d38d4d948dc5ef77d32b33
+	source = kcompose-0.7.0.tar.gz::https://github.com/arquivei/kcompose/archive/0.7.0.tar.gz
+	md5sums = a56012a97866427827149355bff10c3b
 
 pkgname = kcompose
 
