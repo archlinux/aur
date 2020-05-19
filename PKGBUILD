@@ -8,11 +8,11 @@ arch=('any')
 url='https://github.com/jkwill87/mnamer'
 license=('MIT')
 depends=('python-appdirs'
-		 'python-guessit'
-		 'python-requests'
-		 'python-requests-cache'
-		 'python-dataclasses'
-		 'python-teletype')
+     'python-guessit'
+     'python-requests'
+     'python-requests-cache'
+     'python-dataclasses'
+     'python-teletype')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jkwill87/mnamer/archive/${pkgver}.tar.gz")
 sha256sums=('c9452c397caa1bc90f801bbea6ded2b6ce9a08b5dff4dde842854ee568e077b6')
