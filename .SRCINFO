@@ -1,7 +1,7 @@
 pkgbase = alsa-lib-x205ta
 	pkgdesc = An alternative implementation of Linux sound support, with UCM files for the ASUS x205ta.
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.alsa-project.org
 	arch = x86_64
 	license = LGPL2.1

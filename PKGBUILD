@@ -5,7 +5,7 @@
 
 pkgname=alsa-lib-x205ta
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An alternative implementation of Linux sound support, with UCM files for the ASUS x205ta."
 arch=('x86_64')
 url="https://www.alsa-project.org"
