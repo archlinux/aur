@@ -1,4 +1,4 @@
-# Maintainer: Mia Evans <mia.evans@protonmail.com>
+# Maintainer: Mia Evans <contact@nelyah.eu>
 
 pkgname=python-prody
 pkgver=1.9.3
