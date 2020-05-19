@@ -58,6 +58,9 @@ package() {
     done
     
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/glib/build-${_arch}" install
+    if [[ $NO_EXECUTABLES ]]; then
+      find "${pkgdir}/usr/${_arch}" -name '*.exe' -delete
+    fi
 
   done
 }
