@@ -16,7 +16,7 @@ depends=('gtk3'
          'nodejs'
          'libcups')
 optdepends=('watchman: An inotify-based file watching and job triggering command line utility'
-			      'android-sdk: Android debugging support')
+            'android-sdk: Android debugging support')
 makedepends=('gendesk' 'unzip')
 noextract=("${pkgname}-${pkgver}.zip")
 source=("${pkgname}-${pkgver}.zip::https://github.com/facebook/flipper/releases/download/v${pkgver}/Flipper-linux.zip"
