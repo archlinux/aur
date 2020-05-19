@@ -15,7 +15,7 @@ sha256sums=('8059a4087680da03878c1648a8ceb0413a341032ecaa44bef4ef1f9f829b6dde')
 prepare() {
   cd "${srcdir}/Arcade-Learning-Environment-${pkgver}"
   if [[ -d build ]]; then
-  	rm -rf build
+    rm -rf build
   fi
   mkdir build && cd build
   cmake -DUSE_SDL=ON -DUSE_RLGLUE=OFF -DBUILD_EXAMPLES=ON  -DCMAKE_INSTALL_PREFIX=/usr ..
