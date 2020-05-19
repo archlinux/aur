@@ -1,14 +1,14 @@
 # Maintainer: droserasprout <droserasprout@tuta.io>
 pkgname=unflac
 pkgrel=1
-pkgver=r55.0ed8af0
+pkgver=r58.d677c2e
 pkgdesc='A command line tool for fast frame accurate audio image + cue sheet splitting.'
 arch=('x86_64')
-url="https://github.com/ftrvxmtrx/$pkgname"
+url="https://git.sr.ht/~ft/$pkgname"
 license=('unknown')
-makedepends=('go-pie' 'git')
+makedepends=('go' 'git')
 depends=('ffmpeg')
-source=('git+https://github.com/ftrvxmtrx/unflac')
+source=('git+https://git.sr.ht/~ft/unflac')
 sha256sums=('SKIP')
 
 pkgver() {
