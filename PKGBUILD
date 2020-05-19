@@ -12,7 +12,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/review
 sha256sums=('6938482e91895bb81955c462faee4f0603dac4864135194f8343330c459ca877')
 
 package() {
-	install -Dm644 "${srcdir}"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm755 "${srcdir}"/reviewdog "${pkgdir}/usr/bin/reviewdog"
+  install -Dm644 "${srcdir}"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 "${srcdir}"/reviewdog "${pkgdir}/usr/bin/reviewdog"
 }
 # vim:set ts=2 sw=2 et:
