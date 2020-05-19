@@ -8,7 +8,7 @@ pkgbase = finalcut-git
 	makedepends = autoconf-archive
 	makedepends = git
 	depends = gpm
-	conflicts = finalcut
+	provides = finalcut
 	source = finalcut-git::git+https://github.com/gansm/finalcut.git
 	sha256sums = SKIP
 
