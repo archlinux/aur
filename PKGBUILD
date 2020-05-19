@@ -1,9 +1,9 @@
 # Maintainer: DuckSoft <realducksoft at gmail dot com>
-pkgname=qv2ray-plugin-trojan-git
+pkgname=qv2ray-plugin-trojan-dev-git
 _pkgname=qv2ray-plugin-trojan
 pkgver=20200429.r26.3305c41
 pkgrel=1
-pkgdesc="Qv2ray Plugin: Trojan"
+pkgdesc="Qv2ray Plugin: Trojan (Development Build)"
 arch=('x86_64')
 url='https://github.com/Qv2ray/QvPlugin-Trojan'
 license=('GPL3')

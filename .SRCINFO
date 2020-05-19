@@ -1,5 +1,5 @@
-pkgbase = qv2ray-plugin-trojan-git
-	pkgdesc = Qv2ray Plugin: Trojan
+pkgbase = qv2ray-plugin-trojan-dev-git
+	pkgdesc = Qv2ray Plugin: Trojan (Development Build)
 	pkgver = 20200429.r26.3305c41
 	pkgrel = 1
 	url = https://github.com/Qv2ray/QvPlugin-Trojan
@@ -24,5 +24,5 @@ pkgbase = qv2ray-plugin-trojan-git
 	source = qv2ray-plugin-trojan::git+https://github.com/Qv2ray/QvPlugin-Trojan
 	sha512sums = SKIP
 
-pkgname = qv2ray-plugin-trojan-git
+pkgname = qv2ray-plugin-trojan-dev-git
 
