@@ -11,10 +11,10 @@ arch=('i686' 'x86_64')
 url="http://www.alice.org"
 license=('custom')
 depends=('java-environment=8'
-		 'xdg-utils'
-		 'lib32-glu'
-		 'lib32-libxrandr'
-		 'lib32-libxcursor')
+     'xdg-utils'
+     'lib32-glu'
+     'lib32-libxrandr'
+     'lib32-libxcursor')
 options=('!strip')
 provides=('alice3')
 install=post_install
