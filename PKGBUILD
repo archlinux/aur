@@ -12,11 +12,11 @@ license=("MIT")
 provides=('grav')
 depends=('php>=7.1.3' 'php-gd')
 optdepends=('php-apcu: A userland caching module for PHP' 
-			'xdebug: PHP debugging extension' 
-			'apache: A high performance Unix-based HTTP server' 
-			'nginx: Lightweight HTTP server and IMAP/POP3 proxy server'
-			'php-fpm: FastCGI Process Manager'
-			'php-apache: Apache SAPI for PHP')
+      'xdebug: PHP debugging extension' 
+      'apache: A high performance Unix-based HTTP server' 
+      'nginx: Lightweight HTTP server and IMAP/POP3 proxy server'
+      'php-fpm: FastCGI Process Manager'
+      'php-apache: Apache SAPI for PHP')
 install=grav.install
 source=("${pkgname}-${pkgver}.zip::https://github.com/getgrav/grav/releases/download/${_pkgver}/${pkgname}-v${_pkgver}.zip")
 sha256sums=('930f5d0abcfdbe62837a050b8856765a9c057224f98294900f8b7391d9037628')
