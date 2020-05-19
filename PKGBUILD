@@ -4,7 +4,7 @@
 pkgbase=phonon-gstreamer
 pkgname=(phonon-qt5-gstreamer)
 pkgver=4.10.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 pkgdesc="Phonon GStreamer backend for Qt5"
 url='https://community.kde.org/Phonon'
