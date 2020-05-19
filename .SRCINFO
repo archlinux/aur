@@ -1,0 +1,16 @@
+pkgbase = enlightenment-dr13
+	pkgdesc = Enlightenment BETA 0.13.3.
+	pkgver = v0.13.3
+	pkgrel = 1
+	url = http://enlightenment.org
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	depends = imlib
+	source = enl_BETA-0.13.3.tar.gz::http://www.somekool.net/HTML/smk2k3/stuff/enl_BETA-0.13.3.tar.gz
+	source = enl-0.13-themes.tar.gz::http://www.somekool.net/HTML/smk2k3/stuff/enl-0.13-themes.tar.gz
+	md5sums = 11c482bd9cd360ec6c7110629f1759f4
+	md5sums = 817a338117d52505bb50cfb63a18a96a
+
+pkgname = enlightenment-dr13
+
