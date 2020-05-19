@@ -9,7 +9,7 @@ depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
 pkgver=2.45
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -106,7 +106,7 @@ check() {
 
     # make sure the binaries that need to be built statically really are
     for binary in snap-exec snap-update-ns snapctl; do
-        ldd "$srcdir/go/bin/$binary" 2>&1 | grep 'not a dynamic executable'
+        LC_ALL=C ldd "$srcdir/go/bin/$binary" 2>&1 | grep -q 'not a dynamic executable'
     done
 }
 
