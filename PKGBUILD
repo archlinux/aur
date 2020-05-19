@@ -1,7 +1,7 @@
 # Maintainer: Chris Down <chris@chrisdown.name>
 
 pkgname=psi-notify
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Minimalistic PSI notifier using libnotify'
 url="https://github.com/cdown/psi-notify"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('libnotify')
 arch=('x86_64' 'i686' 'arm')
 source=("https://github.com/cdown/psi-notify/archive/$pkgver.tar.gz")
-md5sums=('f21219ea92214dfe0658d999255cd4d8')
+md5sums=('ede5a9203442f7945cd00fa5eca89264')
 
 build() {
     cd -- "${srcdir?}/$pkgname-$pkgver"
