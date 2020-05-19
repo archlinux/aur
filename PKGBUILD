@@ -1,19 +1,18 @@
 # Contributor: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=ncine-git
-pkgver=r247.a772675
+pkgver=r309.627aa39
 pkgrel=1
 pkgdesc="A multi-platform 2D game engine"
 arch=('i686' 'x86_64')
 url="http://ncine.github.io"
 license=('MIT')
-depends=('glfw' 'openal' 'libvorbis' 'libwebp' 'hicolor-icon-theme')
-optdepends=('glew' 'lua')
+depends=('glfw' 'openal' 'libvorbis' 'libwebp' 'lua' 'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'doxygen')
 conflicts=('ncine')
 provides=('ncine')
 options=(!strip)
-source=('git://github.com/nCine/nCine')
+source=('git://github.com/nCine/nCine#branch=develop')
 md5sums=('SKIP')
 
 pkgver() {
@@ -32,6 +31,7 @@ build() {
   mkdir -p build && cd build
 
   cmake ../nCine\
+        -DNCINE_WITH_GLEW=OFF\
         -DCMAKE_BUILD_TYPE=Release\
         -DNCINE_BUILD_TESTS=ON\
         -DNCINE_INSTALL_DEV_SUPPORT=ON\
