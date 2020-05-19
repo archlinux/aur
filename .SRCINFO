@@ -1,7 +1,7 @@
 pkgbase = gtkdialog
-	pkgdesc = Gtkdialog is a small utility for fast and easy GUI building
+	pkgdesc = A small utility for fast and easy GUI building
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.google.com/p/gtkdialog
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,9 @@ pkgbase = gtkdialog
 	provides = gtkdialog
 	conflicts = gtkdialog
 	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/gtkdialog/gtkdialog-0.8.3.tar.gz
+	source = gtkdialog-0.8.3-fno-common.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/x11-misc/gtkdialog/files/gtkdialog-0.8.3-fno-common.patch?id=98692e4c4ad494b88c4902ca1ab3e6541190bbe8
 	md5sums = f8d2a2b912bcd5aa7da60984c19bc493
+	md5sums = 34d2362005eea17b0b230b70a6e048ca
 
 pkgname = gtkdialog
 
