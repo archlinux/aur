@@ -1,16 +1,16 @@
 # Maintainer: Manuel Mendez <mmendez534@gmail.com>
 
 pkgname=include-what-you-use
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
-_clang_major=9
+_clang_major=10
 _clang_minor=0
 _clang_ver="${_clang_major}.${_clang_minor}"
 pkgdesc="A tool for use with clang to analyze #includes in C and C++ source files"
 url="http://include-what-you-use.org"
 license=('LLVM Release License')
-source=("https://github.com/${pkgname}/${pkgname}/archive/clang_${_clang_ver}.tar.gz")
-sha512sums=('f2d6ba05121a9968da9e42e8ac66f83ca0f35bfbe7cb1d616e2c6479cf2833c4668cb86e46a04ffcd5e77f10a575da9eeee5272c7609b5afad555d79cb640fb4')
+source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('e54a7c7e3a6d3e0de7c263d1f26b373d95b8fab5f1f7e76f52d80341bda2bad0fb12238a325dc1e2f6d3ab5e6d8e0b4ed60b5a19dc82e06d480bcb461f9aefba')
 arch=('x86_64')
 _min="${_clang_ver}"
 _max=$((_clang_major+1)).0
@@ -19,7 +19,7 @@ makedepends=("clang>=${_min}" "clang<${_max}" "cmake" "llvm>=${_min}" "llvm<${_m
 install=iwyu.install
 
 build() {
-  cd "${srcdir}/${pkgname}-clang_${_clang_ver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   rm -rf build && mkdir build && cd build
   cmake -DCMAKE_PREFIX_PATH=/usr/lib -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-clang_${_clang_ver}/build"
+  cd "${srcdir}/${pkgname}-${pkgver}/build"
 
   make install DESTDIR=${pkgdir}
 
