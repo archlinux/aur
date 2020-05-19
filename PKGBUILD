@@ -1,46 +1,41 @@
 # Maintainer: Danny Bautista <pyrolagus at gmail.com>
 # https://github.com/Earnestly/pkgbuilds/tree/master/bemenu-git
 pkgname=bemenu-git
-pkgver=r280.121367b
+_pkgname="bemenu"
+pkgver=r373.6343a65
 pkgrel=1
 
-pkgdesc='Dynamic menu library and client program inspired by dmenu with support for wayland compositors.'
+# Wayland without wlroots is not supported.
+# https://github.com/Cloudef/bemenu/issues/79#issuecomment-572867783
+pkgdesc='Dynamic menu library and client program inspired by dmenu with support for wlroots-based wayland compositors'
 url='https://github.com/Cloudef/bemenu'
-arch=('i686' 'x86_64')
-license=('GPL3' 'LGPL3')
-depends=('pango')
-makedepends=('git' 'cmake' 'libxkbcommon' 'libxinerama' 'wayland')
-optdepends=('wayland: For the wayland backend.'
-            'libxkbcommon: For the wayland backend.'
-            'libxinerama: For the x11 backend.'
-            'ncurses: For the curses backend.')
-
+arch=(x86_64)
+license=(GPL3 LGPL3)
 provides=('bemenu')
 conflicts=('bemenu')
-
-source=('git://github.com/Cloudef/bemenu')
-
-md5sums=('SKIP')
+depends=(pango)
+makedepends=(cmake libxinerama libxkbcommon ncurses wayland wlroots)
+optdepends=(
+    'libxinerama: For the x11 backend'
+    'libxkbcommon: For the wayland backend'
+    'ncurses: For the curses backend'
+    'wayland: For the wayland backend'
+    'wlroots: For the wayland backend'
+)
+source=("$_pkgname::git+https://github.com/Cloudef/bemenu")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd bemenu
+    cd "$_pkgname"
     printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd bemenu
-    mkdir -p build && cd build
-    cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib\
-          -DBEMENU_X11_RENDERER=ON -DBEMENU_WAYLAND_RENDERER=ON ..
-    make
+    cd "$_pkgname"
+    make PREFIX="$pkgdir/usr"
 }
 
-check() {
-    cd bemenu
-    make test
-}
-
-package() {
-    cd bemenu/build
-    make DESTDIR="$pkgdir" install
+package_bemenu-git() {
+    cd "$_pkgname"
+    make install PREFIX="$pkgdir/usr"
 }
