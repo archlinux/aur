@@ -19,21 +19,21 @@ pkgver() {
 }
 
 build() {
-	cd terminalpp
-	mkdir -p build/release
-	cd build/release
-	cmake ../.. -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_COMPILER=gcc-8 -DCMAKE_CXX_COMPILER=g++-8 -DPACKAGE_INSTALL=terminalpp
-	cmake --build . --target packages
-	cmake ../.. -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_COMPILER=gcc-8 -DCMAKE_CXX_COMPILER=g++-8 -DPACKAGE_INSTALL=tpp-ropen
-	cmake --build . --target packages
-	cmake ../.. -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_COMPILER=gcc-8 -DCMAKE_CXX_COMPILER=g++-8 -DPACKAGE_INSTALL=tpp-bypass
-	cmake --build . --target packages
-	make
+  cd terminalpp
+  mkdir -p build/release
+  cd build/release
+  cmake ../.. -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_COMPILER=gcc-8 -DCMAKE_CXX_COMPILER=g++-8 -DPACKAGE_INSTALL=terminalpp
+  cmake --build . --target packages
+  cmake ../.. -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_COMPILER=gcc-8 -DCMAKE_CXX_COMPILER=g++-8 -DPACKAGE_INSTALL=tpp-ropen
+  cmake --build . --target packages
+  cmake ../.. -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_COMPILER=gcc-8 -DCMAKE_CXX_COMPILER=g++-8 -DPACKAGE_INSTALL=tpp-bypass
+  cmake --build . --target packages
+  make
 }
 
 package() {
-	cd terminalpp/build/release
-	make DESTDIR="${pkgdir}" install
-	install -Dm644 "${srcdir}/terminalpp/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd terminalpp/build/release
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 "${srcdir}/terminalpp/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
