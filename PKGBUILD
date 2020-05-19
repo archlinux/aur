@@ -16,7 +16,7 @@ sha256sums=('fd7d0f88945cd6e1423dbcab4416bb327261845cab7d896b6ddab0c0a015e500')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   if [[ -d build ]]; then
-  	rm -rf build
+    rm -rf build
   fi
   mkdir build
   cd "${srcdir}/${pkgname}-${pkgver}/build"
