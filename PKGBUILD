@@ -28,15 +28,18 @@ prepare() {
 }
 
 package() {
-
 	install -Dm644 dkms.conf "${pkgdir}"/usr/src/${pkgname}-${pkgver}/dkms.conf
 
 	# Set name and version
 	sed -e "s/@PKGNAME@/${pkgname}/" \
-		-e "s/@PKGVER@/${pkgver}/" \
+		-e "s/@PKGVER@/${pkgver}.1/" \
 		-i "${pkgdir}"/usr/src/${pkgname}-${pkgver}/dkms.conf
 
 	install -Dm644 btusb.c "${pkgdir}"/usr/src/${pkgname}-${pkgver}/btusb.c
+
+	sed -e "s/define VERSION \"${pkgver}\"/define VERSION \"${pkgver}.1\"/" \
+		-i "${pkgdir}"/usr/src/${pkgname}-${pkgver}/btusb.c
+
 	install -Dm644 btintel.h "${pkgdir}"/usr/src/${pkgname}-${pkgver}/btintel.h
 	install -Dm644 btbcm.h "${pkgdir}"/usr/src/${pkgname}-${pkgver}/btbcm.h
 	install -Dm644 btrtl.h "${pkgdir}"/usr/src/${pkgname}-${pkgver}/btrtl.h
