@@ -1,0 +1,2 @@
+g ircd /var/lib/ircd
+u ircd - "ircd-hybrid user" /var/lib/ircd /bin/false

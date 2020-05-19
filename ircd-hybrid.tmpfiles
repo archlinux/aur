@@ -1,0 +1,2 @@
+d /run/ircd 0755 ircd irc -
+

@@ -1,0 +1,16 @@
+[Unit]
+Description=IRCD-Hybrid daemon
+Requires=network.target
+After=network.target
+ 
+[Service]
+Type=forking
+PIDFile=/run/ircd/ircd.pid
+ExecStart=/usr/bin/ircd start -logfile /var/log/ircd/ircd.log -pidfile /run/ircd/ircd-hybrid.pid -configfile /etc/ircd-hybrid/ircd.conf
+ExecStop=/usr/bin/ircd/ircd stop
+Restart=always
+User=ircd
+Group=ircd
+
+[Install]
+WantedBy=multi-user.target
