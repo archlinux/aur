@@ -8,7 +8,7 @@ pkgbase = bitbake
 	makedepends = git
 	makedepends = wget
 	source = https://github.com/openembedded/bitbake/archive/1.46.0.tar.gz
-	source = test.patch
+	source = ignore-TestHashEquivalenceTCPServer.patch
 	md5sums = aff0217dcba08df3dcbbad256cc07911
 	md5sums = 62c3ad291fff1fa27e31d29d2bc5e2b9
 

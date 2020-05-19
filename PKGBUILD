@@ -14,7 +14,7 @@ url='https://www.openembedded.org/wiki/Main_Page'
 license=('GPL2')
 makedepends=('git' 'wget')
 source=("https://github.com/openembedded/bitbake/archive/${pkgver}.tar.gz"
-    "test.patch"
+    "ignore-TestHashEquivalenceTCPServer.patch"
     )
 md5sums=('aff0217dcba08df3dcbbad256cc07911'
          '62c3ad291fff1fa27e31d29d2bc5e2b9')
@@ -29,8 +29,7 @@ check() {
         git config --global user.email "test@bitbake.com"
     fi
     cd "${pkgbase}-${pkgver}"
-    patch -p0 < "${srcdir}/bind.patch"
-    patch -p0 < "${srcdir}/test.patch"
+    patch -p0 < "${srcdir}/ignore-TestHashEquivalenceTCPServer.patch"
     BB_SKIP_NETTESTS='yes' PYTHONPATH="${srcdir}/${pkgbase}-${pkgver}/lib" PATH="${PATH}:${srcdir}/${pkgbase}-${pkgver}/bin" python ./bin/bitbake-selftest --failfast -v
     if [ "${unset_name}" -eq 1 ]; then
         unset_name=1
