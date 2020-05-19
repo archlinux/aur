@@ -1,0 +1,19 @@
+pkgbase = discord_arch_electron
+	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
+	pkgver = 0.0.10
+	pkgrel = 4
+	url = https://discordapp.com
+	arch = x86_64
+	license = custom
+	depends = electron
+	optdepends = libpulse: Pulseaudio support
+	optdepends = xdg-utils: Open files
+	source = https://dl.discordapp.net/apps/linux/0.0.10/discord-0.0.10.tar.gz
+	source = LICENSE.html::https://discordapp.com/terms
+	source = OSS-LICENSES.html::https://discordapp.com/licenses
+	sha512sums = c30a1da037edb007821f55b4980a25949fed854c5cf01180d5a6cee7e14535eb0aa6ac002a2ece70121516b249aad5a7ac17d84e15858be5113c62830ec07429
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = discord_arch_electron
+
