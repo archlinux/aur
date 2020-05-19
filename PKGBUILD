@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=gnome-shell-extension-nasa-apod
-pkgver=19
+pkgver=20
 pkgrel=1
 pkgdesc="Change your wallpaper daily to the NASA astronomy picture of the dauy"
 arch=('any')
@@ -10,9 +10,9 @@ license=('GPL-3')
 depends=('gnome-shell>=3.34')
 makedepends=('glib2')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz")
-md5sums=('15a6f7c374c1e9160c92af2b846f888c')
-sha1sums=('da29d65623fddc8e62222f190f9d2f5b76efbdc2')
-sha512sums=('4cc170d419d9e2f264bb7901ec4ed01ea4d7849e12f62677799058e7d4c2e94a591f36a1f9896a39dacff1617380d69523a18e87913ddd6bd696c5cac0fe447b')
+md5sums=('0dfed0b19b37dd59a686743a1e38fda2')
+sha1sums=('774c79faa8fa2c6eafa7a35a3eaa8f2f550485f1')
+sha512sums=('fa873d1e138cf65984e48f5955a5082f32c3384cf34bcd7954aa6369615f94d9867bce54a7c9e71513f864aa15c472708354667036900abdbdf7b7a3f5918158')
 
 package() {
 	cd "$pkgname-$pkgver"
