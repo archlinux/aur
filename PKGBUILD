@@ -2,7 +2,7 @@
 
 pkgname=g-desktop-suite-git
 _reponame=G-Desktop-Suite
-pkgver=121.20ce3fe
+pkgver=139.2bccd4c
 pkgrel=1
 pkgdesc="Google Suite as a desktop app. Made possible with Electron."
 arch=('any')
@@ -31,6 +31,7 @@ package() {
     cd "$srcdir/$_reponame/dist"
 
     tar -xJf gdesktopsuite.tar.xz -C "$pkgdir"
-    rm ../../../pkg/g-desktop-suite-git/.[^.]*
+    cd $pkgdir
+    rm .[^.]*
 }
 
