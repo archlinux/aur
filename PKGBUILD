@@ -12,9 +12,9 @@ source=("${pkgname}-${pkgver}.deb::https://github.com/miku/zek/releases/download
 sha256sums=('dd3e786ad5d741509ab3fca99de263ef15a4698323ee64d4c482e4546b004d7d')
 
 package() {
-	cd "${srcdir}"
-	tar xvf data.tar.xz -C "${pkgdir}"
-	cd ${pkgdir}/usr
-	mv sbin bin
-	chmod 755 bin/zek
+  cd "${srcdir}"
+  tar xvf data.tar.xz -C "${pkgdir}"
+  cd ${pkgdir}/usr
+  mv sbin bin
+  chmod 755 bin/zek
 }
