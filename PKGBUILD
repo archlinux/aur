@@ -16,10 +16,10 @@ sha512sums_i686=('837160c74a6b086cb2e4a3cb82215ee82b164cdc15df2c823873f05f6f0cc8
 sha512sums_x86_64=('8a6880e69b4c40425b0dd332d1be1ced88c08778a1f5738611f7a69d701ca0569c58651d37cdcc0492a50fea8078b3b49fc79821e3befaf5f02b465d6869958f')
 
 package() {
-	tar xf data.tar.xz -C "${pkgdir}"
-	cd "${pkgdir}"
-	mkdir usr/bin
-	mv usr/games/* usr/bin
-	rm -rf usr/games
+  tar xf data.tar.xz -C "${pkgdir}"
+  cd "${pkgdir}"
+  mkdir usr/bin
+  mv usr/games/* usr/bin
+  rm -rf usr/games
 }
 # vim:set ts=2 sw=2 et:
