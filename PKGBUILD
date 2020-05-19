@@ -2,7 +2,7 @@
 
 pkgname=clutter-gst
 pkgver=3.0.27
-pkgrel=2
+pkgrel=3
 pkgdesc="GStreamer bindings for clutter"
 url="https://gitlab.gnome.org/GNOME/clutter-gst"
 arch=(x86_64)
