@@ -2,10 +2,9 @@
 # Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
-pkgbase=lib32-smbclient
 pkgname=('lib32-smbclient')
 pkgver=4.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to access a server's filespace and printers via SMB"
 arch=('x86_64')
 url='http://www.samba.org'
@@ -16,6 +15,12 @@ makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap'
              'lib32-tevent' 'lib32-ldb' 'lib32-libarchive' 'lib32-libaio'
              'lib32-libnsl' 'lib32-libtirpc' 'perl-parse-yapp'
              'lib32-jansson' 'rpcsvc-proto' 'smbclient' 'libwbclient' 'lib32-ncurses')
+depends=('lib32-avahi' 'lib32-gnutls' 'lib32-libcap' 'lib32-libcups'
+	   'lib32-libgcrypt' 'lib32-pam' 'lib32-systemd'
+	   'lib32-talloc' 'lib32-tdb' 'lib32-ldb'
+	   'lib32-libaio' 'perl-parse-yapp' 'lib32-jansson' 'smbclient' 'lib32-ncurses')
+replaces=('lib32-libwbclient')
+provides=('lib32-libwbclient')
 source=("https://www.samba.org/samba/samba/ftp/stable/samba-${pkgver}.tar.gz")
 sha256sums=('6490f2a858be200c0169a47391fb27287e80f45f2beef7afa6c16bd88526a150')
 
@@ -79,14 +84,7 @@ build() {
   make DESTDIR="${srcdir}/staging" install
 }
 
-package_lib32-smbclient() {
-  depends=('lib32-avahi' 'lib32-gnutls' 'lib32-libcap' 'lib32-libcups'
-           'lib32-libgcrypt' 'lib32-pam' 'lib32-systemd'
-           'lib32-talloc' 'lib32-tdb' 'lib32-ldb'
-           'lib32-libaio' 'perl-parse-yapp' 'lib32-jansson' 'smbclient' 'lib32-ncurses')
-  replaces=('lib32-libwbclient')
-  provides=('lib32-libwbclient')
-
+package() {
   cd staging
 
   install -dm 755 "${pkgdir}"/usr/lib32/{pkgconfig,samba}
