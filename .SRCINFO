@@ -1,0 +1,14 @@
+pkgbase = driverctl
+	pkgdesc = Device driver control utility
+	pkgver = 0.111
+	pkgrel = 1
+	url = https://gitlab.com/driverctl/driverctl
+	arch = any
+	license = LGPL2.1
+	depends = bash
+	optdepends = bash-completion: bash completion
+	source = https://gitlab.com/driverctl/driverctl/-/archive/0.111/driverctl-0.111.tar.bz2
+	sha256sums = 31a077a4bf620cb1026d849c53b58697a5812be48d07118aca70f6b8cd3d8d8e
+
+pkgname = driverctl
+
