@@ -48,7 +48,7 @@ _makenconfig=
 #  31. Intel Tiger Lake (MTIGERLAKE)
 #  32. Generic-x86-64 (GENERIC_CPU)
 #  33. Native optimizations autodetected by GCC (MNATIVE)
-_subarch=
+_subarch=23
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
@@ -69,7 +69,7 @@ pkgrel=3
 _ckpatchversion=2
 _cpusched="MuQSS"
 _sched_yield_type="0"
-_smt_nice="true"
+_smt_nice="false"
 _timer_freq="100"
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -258,11 +258,11 @@ prepare() {
   fi
   
   # cpu opt
-  if [ -n "$_subarch" ] && [ "$_subarch" != "33" ]; then
+  if [ -n "" ] && [ "$_subarch" != "33" ]; then
     echo "# CONFIG_MNATIVE is not set" >> ./.config
   fi
 
-  if [ -n "$_subarch" ] && [ "$_subarch" != "32" ]; then
+  if [ -n "" ] && [ "$_subarch" != "32" ]; then
     sed -i -e 's/CONFIG_GENERIC_CPU=y/# CONFIG_GENERIC_CPU is not set/' ./.config
   fi
 
