@@ -2,14 +2,14 @@
 
 pkgname=sshrc
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bring your .bashrc, .vimrc, etc. from your local workstation when you ssh into a remote box."
 arch=('any')
-url="https://github.com/Russell91/sshrc"
+url="https://github.com/cdown/sshrc"
 license=('MIT')
 depends=('openssh')
 makedepends=('git')
-source=("https://github.com/Russell91/sshrc/archive/${pkgver}.zip")
+source=("https://github.com/cdown/sshrc/archive/${pkgver}.zip")
 md5sums=('b3bba68b8cb88c9df882040f839583fd')
 conflicts=(sshrc-git)
 
