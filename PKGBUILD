@@ -4,7 +4,7 @@
 _pkgname=nohang
 pkgname=${_pkgname}-git
 pkgver=0.1.r649.g3fc0124
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated low memory handler"
 arch=('any')
 url="https://github.com/hakavlad/nohang"
