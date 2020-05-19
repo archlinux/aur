@@ -1,18 +1,14 @@
 pkgbase = python-rich
-	pkgdesc = A Python library for rich text and beautiful formatting in the terminal
-	pkgver = 1.1.5
+	pkgdesc = Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://github.com/willmcgugan/rich
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	depends = python-colorama
-	depends = python-pprintpp
-	depends = python-pygments
-	depends = python-typing_extensions
-	depends = python-commonmark
-	source = https://files.pythonhosted.org/packages/source/r/rich/rich-1.1.5.tar.gz
-	sha256sums = d9c8e2fd15707ae23054e34a77c0c1e11062992f14373ca106ec5727f169a605
+	depends = python
+	depends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/r/rich/rich-1.1.7.tar.gz
+	sha256sums = ebfc825af827948ca15de054730be2e0f0472c6d9190dcef61b6ef4ca348111d
 
 pkgname = python-rich
 
