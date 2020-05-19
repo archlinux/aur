@@ -1,13 +1,13 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=papirus-folders-git
-pkgver=1.4.0.2.gb34b906
-pkgrel=3
+pkgver=1.7.0.0.g84007c1
+pkgrel=1
 pkgdesc="Allows to change the color of folders (git version)"
 url="https://github.com/PapirusDevelopmentTeam/papirus-folders"
 arch=('any')
 license=('LGPL3')
-depends=('papirus-icon-theme')
+depends=('papirus-icon-theme' 'ineutils')
 makedepends=('git')
 provides=("papirus-folders")
 options=('!strip')
