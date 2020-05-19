@@ -10,9 +10,9 @@ license=('MIT')
 depends=('glibc')
 provides=("${pkgname%-bin}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/leaps_linux_amd64.tar.gz"
-				'LICENSE::https://github.com/Jeffail/leaps/raw/master/LICENSE')
+        'LICENSE::https://github.com/Jeffail/leaps/raw/master/LICENSE')
 sha256sums=('81a4dbb42fecf25b6728ba6ebc1225bb2e65ae949e8d0827e629c95acd463765'
-						'd99e66b5a0878e428224b79a363078ad9c5d3c5545c881b6fc9fecb23d15c7db')
+            'd99e66b5a0878e428224b79a363078ad9c5d3c5545c881b6fc9fecb23d15c7db')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname%-bin}_linux_amd64/bin/${pkgname%-bin}" \
