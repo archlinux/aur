@@ -6,7 +6,7 @@ pkgbase = gnome-shell-extension-nasa-apod
 	arch = any
 	license = GPL-3
 	makedepends = glib2
-	makedepends = intltool-extract
+	makedepends = intltool
 	depends = gnome-shell>=3.34
 	source = gnome-shell-extension-nasa-apod-20.tar.gz::https://github.com/Elinvention/gnome-shell-extension-nasa-apod/archive/20.tar.gz
 	md5sums = 0dfed0b19b37dd59a686743a1e38fda2
