@@ -12,7 +12,6 @@ depends=()
 
 source=(
     portfolio_$pkgver.tar.gz::"https://github.com/buchen/portfolio/releases/download/${pkgver}/PortfolioPerformance-${pkgver}-linux.gtk.x86_64.tar.gz"
-    portfolio-performance.desktop
 )
 
 package() {
@@ -24,10 +23,9 @@ package() {
     ln -s /opt/PortfolioPerformance/PortfolioPerformance "$pkgdir"/usr/bin/PortfolioPerformance
 
     mkdir -p ${pkgdir}/usr/share/applications
-    install -m644 "${srcdir}/portfolio-performance.desktop" "${pkgdir}/usr/share/applications/portfolio-performance.desktop"
+    # install -m644 "${srcdir}/portfolio-performance.desktop" "${pkgdir}/usr/share/applications/portfolio-performance.desktop"
 
     install -Dm 644 "$srcdir"/portfolio/icon.xpm -t "$pkgdir"/usr/share/pixmaps/PortfolioPerformance.xpm
 }
 
-md5sums=('e84e63bc3401d4b5c00e999a8993a77d'
-         'a1204cabfcbf5a026cd44923b87be026')
+md5sums=('e84e63bc3401d4b5c00e999a8993a77d')
