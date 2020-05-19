@@ -9,9 +9,9 @@ url='https://github.com/Antonito/gfile'
 license=('MIT')
 provides=("${pkgname%-bin}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/gfile_Linux_x86_64.tar.gz"
-		'LICENSE::https://raw.githubusercontent.com/Antonito/gfile/master/LICENSE')
+    'LICENSE::https://raw.githubusercontent.com/Antonito/gfile/master/LICENSE')
 sha256sums=('d71d778d65b6ff9b39b5761ab4a3767e403d0f1e1866a890bb32fa68d6033a82'
-			'081b871ee908b3c627d6dd452f8d05cc474fbc340b91895d600244bacce6eea1')
+      '081b871ee908b3c627d6dd452f8d05cc474fbc340b91895d600244bacce6eea1')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname%-bin}" \
