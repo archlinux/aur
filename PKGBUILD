@@ -12,6 +12,6 @@ source=("${pkgname}-${pkgver}.tgz::${url}/releases/download/${pkgver}/boilr-${pk
 sha256sums=('bc94cdf20d977172637a4995ea0de17b3724d2980d3faa514ab6ee9476eac055')
 
 package() {
-	install -Dm755 "${srcdir}"/boilr "${pkgdir}/usr/bin/boilr"
+  install -Dm755 "${srcdir}"/boilr "${pkgdir}/usr/bin/boilr"
 }
 # vim:set ts=2 sw=2 et:
