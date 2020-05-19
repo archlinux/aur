@@ -13,7 +13,7 @@ source=("https://github.com/st3fan/${pkgname}/archive/v${pkgver}/${pkgname}-${pk
 b2sums=('89bd2b97e469c6cff58c4e68e86ccb573f748a4c17f415969f853f55eab620bf9f1d9b8902e5853f2f0eb9f0c17bcfc9f44fce45e7c83e5e75342de878f99387')
 
 build() {
-  cd ${pkgname}
+  cd ${pkgname}-${pkgver}
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -24,7 +24,7 @@ build() {
 
 package() {
   install -dm755 "${pkgdir}"/var/lib/xapsd/
-  install -Dm755 src/github.com/st3fan/${pkgname}/${pkgname} "${pkgdir}"/usr/bin/xapsd
+  install -Dm755 "${srcdir}"/${pkgname}-${pkgver}/${pkgname} "${pkgdir}"/usr/bin/xapsd
   install -Dm644 -t "${pkgdir}"/etc/xapsd/ "${srcdir}"/${pkgname}-${pkgver}/etc/xapsd/xapsd.conf
   install -Dm644 -t "${pkgdir}"/usr/lib/systemd/system/ "${srcdir}"/${pkgname}-${pkgver}/etc/systemd/xapsd.service
   install -Dm644 -t "${pkgdir}"/usr/share/licenses/${pkgname}/ "${srcdir}"/${pkgname}-${pkgver}/LICENSE
