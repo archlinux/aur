@@ -1,17 +1,17 @@
 pkgbase = duetwebcontrol-bin
 	pkgdesc = Official web interface for Duet electronics
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/chrishamm/DuetWebControl.git
 	arch = any
 	license = GPL3
-	provides = duetwebcontrol=3.1.0
+	provides = duetwebcontrol=3.1.1
 	conflicts = duetwebcontrol
-	source = https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duetwebcontrol_3.1.0_all.deb
-	md5sums = 4c01e4cde3ab9c2425857cbaf684043f
-	sha1sums = 3c0f5e1f38376484e0b7e26b3f4ce7175e352cec
-	sha256sums = 36d0eb3e9c28a7203237f66c536a5dd4ca90aaaf4407a7a63e188f2fda5f3751
-	sha512sums = 20b0fce9fe0cab6b77b0748d1166c33c176cd3f981183f0298ffdf56b4cf8738ed04561d66b11c70ca5ca22ec819a83cf98e6d56eaa12ba084e4688f4c83f46a
+	source = https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duetwebcontrol_3.1.1_all.deb
+	md5sums = 64308dfb82f633c2b51647505244ce12
+	sha1sums = c143d8877514754df472949c3b7f3efc9d6e1cf7
+	sha256sums = 5b95f22d60af63a844c6ec4694458557b75a44773a51cd7dbb5f01b099707d2d
+	sha512sums = 324892aff934564a09219610db3d58db9933a9611a6caed600b14aafe63a9b82a89c63de499d4f6846f60261606c0a73aaf707ba8b94bb116f1c20803b4fdc77
 
 pkgname = duetwebcontrol-bin
 
