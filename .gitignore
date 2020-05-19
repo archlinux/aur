@@ -3,3 +3,5 @@ pkg
 portfolio*.tar*
 .idea
 .DS_Store
+portfolio/
+pkg/
