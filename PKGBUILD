@@ -2,7 +2,7 @@
 
 pkgname=crestic
 pkgver=0.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Configurable restic wrapper"
 arch=('any')
 url="https://github.com/nils-werner/$pkgname"
@@ -25,9 +25,8 @@ sha256sums=(
 package() {
     install -Dm 0644 crestic@.service -t "$pkgdir"/usr/lib/systemd/system/
     install -Dm 0644 crestic@.timer -t "$pkgdir"/usr/lib/systemd/system/
-    mkdir -p "$pkgdir"/usr/lib/systemd/user/
-    ln -s ../system/crestic@.service "$pkgdir"/usr/lib/systemd/user/
-    ln -s ../system/crestic@.timer "$pkgdir"/usr/lib/systemd/user/
+    install -Dm 0644 crestic@.service -t "$pkgdir"/usr/lib/systemd/user/
+    install -Dm 0644 crestic@.timer -t "$pkgdir"/usr/lib/systemd/user/
     cd "$srcdir/$pkgname-$pkgver"
     install -Dm 0755 "$pkgname".py "$pkgdir"/usr/bin/"$pkgname"
     install -Dm 0644 LICENSE -t "$pkgdir"/usr/share/licenses/"$pkgname"/
