@@ -9,14 +9,14 @@ arch=('x86_64')
 url='https://fbflipper.com'
 license=('MIT')
 depends=('gtk3'
-    	 'libsecret'
-    	 'libxss'
-    	 'nss'
+       'libsecret'
+       'libxss'
+       'nss'
        'alsa-lib'
        'nodejs'
        'libcups')
 optdepends=('watchman: An inotify-based file watching and job triggering command line utility'
-			'android-sdk: Android debugging support')
+      'android-sdk: Android debugging support')
 makedepends=('git' 'yarn' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/facebook/flipper/archive/v${pkgver}.tar.gz")
 sha256sums=('fd73237ee4128f5be1ff2d120344d37046292cd627d5489496384fde8689bfdc')
