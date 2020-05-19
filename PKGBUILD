@@ -8,7 +8,7 @@ pkgdesc="X2Go add-on tool that allows a user to grant other X2go users access to
 arch=('x86_64')
 url="<http://www.x2go.org/>"
 license=('GPL')
-depends=('x2goserver>=4.0.1' 'qt4>=4.5')
+depends=('x2goserver>=4.0.1' 'qt5-base')
 options=(emptydirs)
 groups=('x2go' 'alts')
 source=("https://code.x2go.org/releases/source/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.asc}
@@ -20,7 +20,7 @@ validpgpkeys=('1AD23D1B8F087A35AB74BDE9F4A7678C9C6B0B2B')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  qmake-qt4 x2godesktopsharing.pro
+  qmake-qt5 x2godesktopsharing.pro
   make
 }
 

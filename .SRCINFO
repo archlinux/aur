@@ -8,7 +8,7 @@ pkgbase = x2godesktopsharing
 	groups = alts
 	license = GPL
 	depends = x2goserver>=4.0.1
-	depends = qt4>=4.5
+	depends = qt5-base
 	options = emptydirs
 	source = https://code.x2go.org/releases/source/x2godesktopsharing/x2godesktopsharing-3.2.0.0.tar.gz
 	source = https://code.x2go.org/releases/source/x2godesktopsharing/x2godesktopsharing-3.2.0.0.tar.gz.asc
