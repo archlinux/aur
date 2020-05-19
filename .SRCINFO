@@ -1,0 +1,19 @@
+pkgbase = rtlwifi_new-extended-dkms-git
+	pkgdesc = Newest Realtek rtlwifi codes, extended branch
+	pkgver = r306.0a751e3
+	pkgrel = 1
+	url = https://github.com/lwfinger/rtlwifi_new
+	install = rtlwifi_new-extended-dkms-git.install
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	depends = dkms
+	provides = rtlwifi_new-dkms
+	conflicts = rtlwifi_new-dkms
+	source = git+https://github.com/lwfinger/rtlwifi_new.git#branch=extended
+	source = rtlwifi_new-extended-dkms-git.install
+	sha256sums = SKIP
+	sha256sums = 679a41eb28037272f4cd8deeea6600e3d42133df99f7152988a61e6d3f503475
+
+pkgname = rtlwifi_new-extended-dkms-git
+
