@@ -17,10 +17,10 @@ install="$pkgname.install"
 depends=('hicolor-icon-theme'
          'desktop-file-utils'
          'grantlee'
-		     'gcc-libs-multilib'
+         'gcc-libs-multilib'
          'qt5-svg'
          'qt5-imageformats'
-		     'qt5-quickcontrols'
+         'qt5-quickcontrols'
          'qt5-wayland'
          'qt5-quickcontrols2'
          'qt5-xmlpatterns')
