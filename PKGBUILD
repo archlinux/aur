@@ -1,14 +1,18 @@
 # Maintainer: Davide Depau <davide@depau.eu>
+# Co-Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+
 
 pkgname=jdk11-openj9-bin
 _jdkver=11
+_jdkminor=0
+_jdkpatch=7
+_jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch}
 _openj9ver=0.20.0
-_majorver=${_jdkver}.0.7
 _buildvershort=10
 _buildver=${_buildvershort}_openj9-${_openj9ver}
-pkgver=${_majorver}b${_buildver//-/_}
-pkgrel=2
+pkgver=${_jdkfullver}b${_buildver//-/_}
+pkgrel=3
 pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk${_jdkver}"
 arch=('x86_64')
 url="https://adoptopenjdk.net/index.html?variant=openjdk${_jdkver}&jvmVariant=openj9"
@@ -22,8 +26,10 @@ provides=(
   "java-runtime-headless=${_jdkver}"
   "java-runtime-headless-openjdk=${_jdkver}"
 )
+conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
 options=(!strip)
-source=("https://github.com/AdoptOpenJDK/openjdk${_jdkver}-binaries/releases/download/jdk-${_majorver}%2B${_buildver}/OpenJDK${_jdkver}U-jdk_x64_linux_openj9_${_majorver}_${_buildver}.tar.gz")
+source=("https://github.com/AdoptOpenJDK/openjdk${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/OpenJDK${_jdkver}U-jdk_x64_linux_openj9_${_jdkfullver}_${_buildver}.tar.gz")
+
 sha256sums=('526e89f3014fec473b24c10c2464c1343e23703114983fd171b68b1599bba561')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
@@ -31,8 +37,8 @@ _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 package() {
   # Install
   install -d "${pkgdir}/${_jvmdir}"
-  cd jdk-${_majorver}+${_buildvershort}
-  cp -a bin demo include jmods lib release "${pkgdir}/${_jvmdir}/"
+  cd jdk-${_jdkfullver}+${_buildvershort}
+  cp -a bin include jmods lib release "${pkgdir}/${_jvmdir}/"
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"
   ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}/${_jvmdir}/lib/security/cacerts"
@@ -46,8 +52,8 @@ package() {
   ln -s /etc/java${_jdkver}-j9 "${pkgdir}/${_jvmdir}/conf"
   # Man pages
   for f in man/man1/*; do
-    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-openjdk11-j9.1}"
+    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-openjdk14-j9.1}"
   done
   ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
 }
-# vim:set ts=2 sw=2 et:
+# vim:set ts=4 sw=4 et:
