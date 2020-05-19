@@ -1,6 +1,6 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=duetcontrolserver-bin
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Control server application for Duet 3 series"
 arch=('armv7h' 'aarch64')
@@ -13,14 +13,14 @@ options=(!strip staticlibs)
 backup=('opt/dsf/conf/config.json')
 source_armv7h=("https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duetcontrolserver_${pkgver}_armhf.deb")
 source_aarch64=("https://pkg.duet3d.com/dists/stable/armv7/binary-arm64/duetcontrolserver_${pkgver}_arm64.deb")
-md5sums_armv7h=('fb4ca5bb1cd3d60e238ef5f45420444d')
-md5sums_aarch64=('24195e62c28096aa19429dab3177eb6a')
-sha1sums_armv7h=('5665cbea6eed29594d3e2449f6e289b7bd017ef2')
-sha1sums_aarch64=('fa6bd4590c4fe1a9192dd3a76f1fb62c520c43d0')
-sha256sums_armv7h=('aacc8afa558561c4e2ff02c76a1b1c976391cb3557f91da08b8f558b8fff95da')
-sha256sums_aarch64=('69bee88353834d2f064fe2c3fe22c7265f427d31f569b4b79f617e033a4dfa4a')
-sha512sums_armv7h=('f71d3d589a97e840da53dc6985aa55e8cf06d33a3144e415355544912714360dd85db3e392e31a55eded6654dbe610bcd0231ecd58739a990776d5e8092ce3d2')
-sha512sums_aarch64=('0674a836c9215bbaaec39962bf63fed1d047908d95556e6bcef8742883bfac97cbc7a3270119a6a65477e6402ab43f9c7af71734f54da0602a06958f9edc118f')
+md5sums_armv7h=('6a29a48677ef333dc1bdc72410001ce4')
+md5sums_aarch64=('f319c4e79d75c275e5805efc54c83053')
+sha1sums_armv7h=('7739bbb973afa9719a0706be2c9b25511df58f0c')
+sha1sums_aarch64=('fea14553bf58f0b34b9ab64f0e8fb06808e5e809')
+sha256sums_armv7h=('49859e49b52b9bbc9d0951ecc759a46ea22f19f25e1f255f71f2dfcd6ca51d7d')
+sha256sums_aarch64=('665b3e94ec271084b371cfd60443ec6ae4392b4814e3c4307cf172b0d2c8e9a6')
+sha512sums_armv7h=('10ad236feb9150cc06f40730b541c5ad01cb1f49d3873886a5fe0c223216f3e2ac036d4429a16c8785b7a374967876bff52606011fee2ad20913f8e31e85d5d0')
+sha512sums_aarch64=('2dac806888e273ec769b1613522d20aa36e1efb71143c908da06aa7c9ecc4e0b231e6acadbc449be490bbf9464856955a08fdf90121eb8ef19c78b77f80c9adb')
 
 prepare() {
     tar -xf data.tar.xz
