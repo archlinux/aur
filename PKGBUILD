@@ -10,9 +10,9 @@ license=('Apache')
 provides=("${pkgname%-bin}")
 depends=('kafka' 'bash')
 source=("${pkgname}-${pkgver}.rpm::https://github.com/VerizonDigital/vflow/releases/download/v${pkgver}/vflow-${pkgver}-x86_64.rpm"
-		'vflow.service')
+    'vflow.service')
 sha256sums=('b94c6e6249f2ba53fbe89470bb61357e5ead0447ad0343382d2448f90bfa4ee8'
-			'SKIP')
+      'SKIP')
 
 package() {
   mv "${srcdir}/usr" "${pkgdir}/"
