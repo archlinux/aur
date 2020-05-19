@@ -13,7 +13,7 @@ sha256sums=("0ccf7a655bef1a20f109bc10fa51a6483b3285367716bda7d0c8f683630b4408")
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    gzip newsboat-sendmail.1
+    gzip -f newsboat-sendmail.1
 }
 
 package() {
