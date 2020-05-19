@@ -1,0 +1,16 @@
+pkgbase = ircc
+	pkgdesc = A Minimal Curses IRC Client
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://c9x.me/irc/
+	arch = any
+	license = public domain
+	makedepends = git
+	makedepends = gcc
+	depends = ncurses
+	depends = openssl
+	source = git://c9x.me/irc.git
+	md5sums = SKIP
+
+pkgname = ircc
+
