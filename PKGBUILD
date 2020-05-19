@@ -10,7 +10,7 @@ license=('GPL3')
 options=('!strip')
 provides=('fmedia')
 depends=('gtk3'
-    		 'jack'
+         'jack'
          'libpulse')
 makedepends=('gendesk' 'imagemagick')
 source=("${pkgname}-${pkgver}.tar.xz::https://github.com/stsaz/fmedia/releases/download/v${pkgver}/fmedia-${pkgver}-linux-amd64.tar.xz")
