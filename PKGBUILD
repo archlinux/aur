@@ -26,20 +26,19 @@ prepare() {
     cd "$srcdir/$_gitname"
     mkdir -p "build"
     # solved "Could NOT find wxWidgets" error caused by broken wxgtk3
-    ln -sf /usr/bin/wx-config{-gtk3,} || true
+    # ln -sf /usr/bin/wx-config{-gtk3,} || true  # bad practice
     git submodule update --init
 }
 
 build() {
     cd "$srcdir/$_gitname/build"
     export MAKEFLAGS=-j4
-    cmake -DCMAKE_BUILD_TYPE=Release ..
+    cmake -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 -DCMAKE_BUILD_TYPE=Release ..
     cmake --build . --target package
 }
 
 package() {
     cd "$srcdir/$_gitname/build"
-
+    
     make DESTDIR="${pkgdir}/" install
 }
- 
