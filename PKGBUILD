@@ -8,11 +8,11 @@ arch=('x86_64')
 url="https://codespace.app"
 license=('custom')
 depends=('gtk3'
-		 'libxss'
-		 'alsa-lib'
-		 'nss'
-		 'libcups'
-		 'at-spi2-core')
+     'libxss'
+     'alsa-lib'
+     'nss'
+     'libcups'
+     'at-spi2-core')
 source=("${pkgname}-${pkgver}.tar.gz::https://codespace.app/download/latest")
 sha256sums=('a6933017968661b2a4a3bcaa11599651c62614ec62a4f39a579f7cee23595f2f')
 
