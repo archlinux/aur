@@ -11,37 +11,37 @@ arch=('any')
 url='https://www.atareao.es/aplicacion/pdf-tools-o-modificar-pdf-en-linux/#'
 license=('GPL3')
 depends=('python-caja'
-		 'python-gobject'
-		 'python-cairo'
-		 'python-pillow'
-		 'gtk3'
-		 'poppler'
-	     'python-pypdf2'
-	     'python-sh')
+     'python-gobject'
+     'python-cairo'
+     'python-pillow'
+     'gtk3'
+     'poppler'
+       'python-pypdf2'
+       'python-sh')
 source=("${pkgname}-${pkgver}.tar.xz::https://launchpad.net/~atareao/+archive/ubuntu/caja-extensions/+sourcefiles/${pkgname}/${pkgver}-${_ubuntur}/${pkgname}_${pkgver}-${_ubuntur}.tar.xz")
 sha256sums=('712367ad53e4bdce539559033c95ffb0cf38755cfbd91fe5a179aeebcb7633ef')
 
 build() {
-	cd "${srcdir}/temporal"
-	for n in ./po/*.po; do
-		msgfmt $n -o ./po/`basename $n .po`.mo
-	done
+  cd "${srcdir}/temporal"
+  for n in ./po/*.po; do
+    msgfmt $n -o ./po/`basename $n .po`.mo
+  done
 }
 
 package() {
-	cd "${srcdir}/temporal"
-	install -d ${pkgdir}/usr/share/caja-python/extensions/pdf-tools/{icons,PyPDF2}
-	install -d ${pkgdir}/usr/share/locale
-	for n in ./po/*.mo; do
-		install -p -Dm644 $n ${pkgdir}/usr/share/locale/`basename $n .mo`/LC_MESSAGES/${pkgname}.mo
-	done
-	cp ./src/*.py ${pkgdir}/usr/share/caja-python/extensions/
-	cp ./src/pdf-tools/*.py ${pkgdir}/usr/share/caja-python/extensions/pdf-tools/
-	cp ./data/icons/updf.svg ${pkgdir}/usr/share/caja-python/extensions/pdf-tools/icons/
-	cp ./debian/changelog ${pkgdir}/usr/share/caja-python/extensions/pdf-tools/
-	install -Dm644 data/icons/updf.svg -t \
-		"$pkgdir/usr/share/caja-python/extensions/pdf-tools/icons"
-	install -Dm644 data/icons/pdf-tools-password-{hide,show}.svg -t \
-		"$pkgdir/usr/share/icons/hicolor/scalable/status"
+  cd "${srcdir}/temporal"
+  install -d ${pkgdir}/usr/share/caja-python/extensions/pdf-tools/{icons,PyPDF2}
+  install -d ${pkgdir}/usr/share/locale
+  for n in ./po/*.mo; do
+    install -p -Dm644 $n ${pkgdir}/usr/share/locale/`basename $n .mo`/LC_MESSAGES/${pkgname}.mo
+  done
+  cp ./src/*.py ${pkgdir}/usr/share/caja-python/extensions/
+  cp ./src/pdf-tools/*.py ${pkgdir}/usr/share/caja-python/extensions/pdf-tools/
+  cp ./data/icons/updf.svg ${pkgdir}/usr/share/caja-python/extensions/pdf-tools/icons/
+  cp ./debian/changelog ${pkgdir}/usr/share/caja-python/extensions/pdf-tools/
+  install -Dm644 data/icons/updf.svg -t \
+    "$pkgdir/usr/share/caja-python/extensions/pdf-tools/icons"
+  install -Dm644 data/icons/pdf-tools-password-{hide,show}.svg -t \
+    "$pkgdir/usr/share/icons/hicolor/scalable/status"
 }
 # vim: set ts=4 sw=4 et syn=sh ft=sh:
