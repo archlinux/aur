@@ -24,6 +24,6 @@ package() {
   cd "${srcdir}/${_gitname}"
   install -dm755 "${pkgdir}/usr/share/icons"
   ./install.sh  \
-  	--all \
-   	--dest "${pkgdir}/usr/share/icons"
+    --all \
+    --dest "${pkgdir}/usr/share/icons"
 }
