@@ -2,6 +2,8 @@ post_install() {
   echo "(Re)creating group and user ..."
   getent passwd g13 > /dev/null 2>&1 || useradd -c 'Logitech G13 daemon' -G wheel -d /run/g13d -s /usr/bin/nologin -r g13
   passwd -l g13 > /dev/null
+  echo "Adding user to input group"
+  gpasswd -a g13 input
   echo "(Re)creating tmpfiles ..."
   systemd-tmpfiles --create /usr/lib/tmpfiles.d/g13.conf
   echo "NOTE: Uncomment lines in /usr/lib/udev/rules.d/91-g13.rules to start g13 systemd service when G13 is connected"
@@ -21,6 +23,8 @@ pre_remove() {
 post_remove() {
   echo "Making sure the g13d service is not running ..."
   systemctl stop g13
+  echo "Removing user from input group ..."
+  gpasswd -d g13 input
   echo "Removing user and group ..."
   getent passwd g13 > /dev/null 2>&1 && userdel g13
 }
