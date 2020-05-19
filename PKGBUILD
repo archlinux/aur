@@ -1,9 +1,10 @@
-# Maintainer: Wilson E. Alvarez <wilson.e.alvarez1@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Wilson E. Alvarez <wilson.e.alvarez1@gmail.com>
 
 pkgname=vim-gdscript
 gitname=vim-gdscript3
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Vim syntax highliting for the Godot Game Engine scripting language GDScript"
 arch=('any')
 url="https://github.com/calviken/$gitname"
@@ -21,7 +22,6 @@ package() {
 	install -Dm644 "ftdetect/gdscript3.vim" "$pkgdir/$vim_share/ftdetect/gdscript3.vim"
 	install -Dm644 "ftplugin/gdscript3.vim" "$pkgdir/$vim_share/plugin/gdscript3.vim"
 	install -Dm644 "indent/gdscript3.vim" "$pkgdir/$vim_share/indent/gdscript3.vim"
-	install -Dm644 "syntax/gdscript3.vim" "$pkgdir/$vim_share/syntax/gdscript3.vim"
 	install -Dm644 "syntax/gdscript3.vim" "$pkgdir/$vim_share/syntax/gdscript3.vim"
 
 	# Recreate all the directories under the python subdirectory in our filesystem:

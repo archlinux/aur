@@ -1,7 +1,7 @@
 pkgbase = vim-gdscript
 	pkgdesc = Vim syntax highliting for the Godot Game Engine scripting language GDScript
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/calviken/vim-gdscript3
 	arch = any
 	provides = vim-gdscript
