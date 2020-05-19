@@ -9,9 +9,9 @@ url="https://github.com/AnderEnder/s3find-rs"
 license=('BSD')
 provides=('s3find' 's3find-rs')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/s3find-x86_64-linux.tar.gz"
-				'LICENSE::https://github.com/AnderEnder/s3find-rs/raw/master/LICENSE')
+        'LICENSE::https://github.com/AnderEnder/s3find-rs/raw/master/LICENSE')
 sha256sums=('f0fb26b1b4ef57bb8d264cd0e2bd5c83ba07f10e0bf358e437718f7e7db16e56'
-						'6fbc2783a865b0be78dedbd32ded7076d9aa222cf4bc8970cee2c7738e55caaf')
+            '6fbc2783a865b0be78dedbd32ded7076d9aa222cf4bc8970cee2c7738e55caaf')
 
 package() {
   install -Dm755 "${srcdir}"/s3find "${pkgdir}/usr/bin/s3find"
