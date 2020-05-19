@@ -2,7 +2,7 @@
 # Contributor:	Ondřej Surý <ondrej@sury.org>
 
 pkgname=knot-resolver
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc='full caching DNS resolver implementation'
 url='https://www.knot-resolver.cz/'
@@ -36,7 +36,7 @@ makedepends=(
 
 source=("https://secure.nic.cz/files/${pkgname}/${pkgname}-${pkgver}.tar.xz")
 
-sha256sums=('9ab179d1dccc6ba59aacac81a4cd10a039615c7a846d9f77f26b851da25d1a86')
+sha256sums=('f72214046df8aae2b1a5c6d1ad0bc8b166aa060df5b008f6e88b4f6ba79cbf4e')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
