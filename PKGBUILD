@@ -3,7 +3,7 @@
 
 pkgname=libsidplay
 pkgver=1.36.59
-pkgrel=9
+pkgrel=10
 pkgdesc="A library for playing SID music files."
 arch=('x86_64')
 url="https://critical.ch/distfiles/"
