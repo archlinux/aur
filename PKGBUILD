@@ -28,8 +28,8 @@ prepare() {
 }
 
 package() {
-	cd "${srcdir}"
-	install -dm755 "${pkgdir}/usr/share/icons/"
-	cp -drf --no-preserve='ownership' . "${pkgdir}/usr/share/icons/"
+  cd "${srcdir}"
+  install -dm755 "${pkgdir}/usr/share/icons/"
+  cp -drf --no-preserve='ownership' . "${pkgdir}/usr/share/icons/"
 }
 # vim:set ts=2 sw=2 et:
