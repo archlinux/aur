@@ -1,0 +1,16 @@
+pkgbase = xisxwayland
+	pkgdesc = Tool to determine whether the X server in use is Xwayland
+	pkgver = 1
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/xorg/app/xisxwayland
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	depends = libx11
+	depends = libxrandr
+	source = https://xorg.freedesktop.org/archive/individual/app/xisxwayland-1.tar.xz
+	sha256sums = 39eff8ab32e7fa3d94fad61eaba9c970f51221f2b76897a66f16ff0b34f02a29
+
+pkgname = xisxwayland
+
