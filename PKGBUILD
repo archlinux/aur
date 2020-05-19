@@ -1,7 +1,7 @@
 pkgname=stonks
 _pkgname=stonks
-pkgver="1.0.0"
-_pkgver="1.0.0"
+pkgver="1.0.1"
+_pkgver="1.0.1"
 pkgrel=1
 pkgdesc="Stonks is a terminal based stock visualizer and tracker that displays realtime stocks in graph format in a terminal. See how fast your stonks will crash."
 arch=('any')
