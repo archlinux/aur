@@ -1,30 +1,45 @@
-# Maintainer: Grego Dadone <grego.dadone@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Grego Dadone <grego.dadone@gmail.com>
 # Based on UMS PKGBUILD
 
 pkgname=ums-headless
-pkgver=7.3.1
+pkgver=9.4.3
 pkgrel=1
-pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server for headless systems. Build based on Java 8."
+pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server for headless systems."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'armv6h' 'arm')
-url="http://www.universalmediaserver.com/"
+url="https://www.universalmediaserver.com/"
 license=('GPL2')
-depends=('java-runtime=8')
-conflicts=('ums')
-optdepends=("mencoder: Free command line video decoding, encoding and filtering tool"
-            "ts-muxer-cli-ng: Remux/mux elementary streams without re-encoding")
+depends=('mplayer' 'mencoder' 'libmediainfo')
 makedepends=("unzip")
-[ "$CARCH" = "x86_64" ] && \
-optdepends=("dcraw: thumbnails creation support")
+optdepends=("java-runtime: Java runtime environment"
+            "ffmpeg: Complete solution to record, convert and stream audio and video"
+            "tsmuxer-ng-cli-bin: Remux/mux elementary streams without re-encoding"
+            "vlc: For Internet video/audio")
+optdepends_x86_64=("dcraw: thumbnails creation support"
+                   "lib32-gcc-libs: tsMuxeR support"
+                   "lib32-glibc: tsMuxeR support")
 backup=(opt/ums/UMS.conf \
         opt/ums/WEB.conf)
-source=("http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-$pkgver.tgz"
-        'ums.desktop'
+conflicts=('ums')
+source_x86_64=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/${pkgver}/UMS-${pkgver}-x86_64.tgz")
+source_i686=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/${pkgver}/UMS-${pkgver}-x86.tgz")
+source_armv7h=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/${pkgver}/UMS-${pkgver}-armhf.tgz")
+source_armv6h=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/${pkgver}/UMS-${pkgver}-armhf.tgz")
+source_aarch64=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/${pkgver}/UMS-${pkgver}-arm64.tgz")
+source_arm=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/${pkgver}/UMS-${pkgver}-armel.tgz")
+
+source=('ums.desktop'
         'ums.service'
         'ums.timer')
-sha256sums=('737b88e8049ec362f0d2efee466f6f05c7183703e5d6cb17f1af5f0f68f83376'
-            '0cdadbabef215b6539e56755147a8f626d9f1fadfb85e2e5b7f7f1b66f1cdef9'
+sha256sums=('0cdadbabef215b6539e56755147a8f626d9f1fadfb85e2e5b7f7f1b66f1cdef9'
             '1f6efefa58dde9148396bd9236a6985db0fa27f1c767067b52bfae1832f32284'
             '7fd36db71f39fde3d515c697101190f979b308d910b3c4210b90422669683ab0')
+sha256sums_i686=('e042ebff51c16a0496066b6f92ea1363cd87a1bef15be694b63ffe02a35f72f5')
+sha256sums_x86_64=('b5937574edf9e1a673edddd44fc2f724fa847449c55d4f96cdd68e62d7279459')
+sha256sums_armv7h=('5134f5a15eba5b36b7d7a6770959e3b5890a3b254976164b6c5288ee2833e0c1')
+sha256sums_aarch64=('2d26b6f8b79a59c8b72dab679f8fa82d532cb7406e5227e747e602f539b67e35')
+sha256sums_armv6h=('5134f5a15eba5b36b7d7a6770959e3b5890a3b254976164b6c5288ee2833e0c1')
+sha256sums_arm=('6bab92aa6520fcdc1d9ab013dbeeafc3e260b18fa3af36ea356277941af91d7e')
 
 package() {
   mkdir -p $pkgdir/opt/ums
