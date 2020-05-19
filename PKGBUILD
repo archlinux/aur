@@ -1,30 +1,19 @@
-# Maintainer: Sebastien Duthil <duthils@free.fr>
+# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=thrive
-pkgver=0.3.4
+pkgver=0.5.0.0
 pkgrel=1
-pkgdesc="Game about evolution, in which the player guides a species from their origin as a microbe to the space age and beyond. "
+pkgdesc="Game about evolution, in which the player guides a species from their origin as a microbe to the space age and beyond."
 arch=('i686' 'x86_64')
 url="http://revolutionarygamesstudio.com"
 license=('GPL')
-depends=('jasper' 'ilbc' 'libidn2')
-makedepends=('p7zip')
-source=(https://github.com/Revolutionary-Games/Thrive/releases/download/v${pkgver}/LINUX_Thrive.${pkgver}.7z
-        thrive.sh)
-sha256sums=('2d1cb3bc0c808aa6ca32f8c0d8979c2a79e81879a70e5d227723d7a782017502'
-            'd4ffae8d96c0a2e2f23a281053a6d5817f964668556e770c2b62574d86c74ce7')
-_Pkgname=Thrive
+source=("https://github.com/Revolutionary-Games/Thrive/releases/download/v${pkgver%.*}/Thrive_${pkgver}_linux_x11.7z")
+sha256sums=('4616050be7907cde6ccb6f9699a720a763ee1c61958fe2c61c560d0f936ef63f')
 
 package() {
-  cd "$srcdir/$_Pkgname-$pkgver"
+  install -dm755 --group games "$pkgdir/opt/thrive"
+  cp -r "Thrive_${pkgver}_linux_x11"/* "$pkgdir/opt/thrive"
 
-  mkdir -p "$pkgdir/opt/thrive"
-  cp -r * "$pkgdir/opt/thrive"
-  chgrp -R games "$pkgdir/opt/thrive"
-  chmod -R g+w "$pkgdir/opt/thrive"
-  install -Dm755 "$srcdir/thrive.sh" "$pkgdir/usr/bin/thrive"
-
-  # workaround hard dependency to libilbc.so.0, when ilbc only provides libilbc.so
-  mkdir -p "$pkgdir/usr/lib"
-  ln -s libilbc.so "$pkgdir/usr/lib/libilbc.so.0"
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s /opt/thrive/Thrive "$pkgdir/usr/bin/thrive"
 }
