@@ -1,0 +1,29 @@
+pkgbase = ctrsigcheck-bin
+	pkgdesc = Parse and verify various file formats used by the Nintendo 3DS, also known as CTR
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/connesc/ctrsigcheck
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = ISC
+	provides = ctrsigcheck
+	conflicts = ctrsigcheck
+	source_i686 = ctrsigcheck_i686.tar.gz::https://github.com/connesc/ctrsigcheck/releases/download/v0.1.1/ctrsigcheck_0.1.1_linux_386.tar.gz
+	sha256sums_i686 = 9294dd550f2e90413e2e8aab09ebcfa1264b6c12dcf8952a1948bf157834ea9b
+	source_x86_64 = ctrsigcheck_x86_64.tar.gz::https://github.com/connesc/ctrsigcheck/releases/download/v0.1.1/ctrsigcheck_0.1.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = a65f990aae14619e17ef84b01e9dc3cf8c653b1adbef23517ab3f5d0e84afb8d
+	source_arm = ctrsigcheck_arm.tar.gz::https://github.com/connesc/ctrsigcheck/releases/download/v0.1.1/ctrsigcheck_0.1.1_linux_armv5.tar.gz
+	sha256sums_arm = 4be61e15eac2fce4838b58a43dbb5103701fa8d277880be3597b4e13d71ef7dd
+	source_armv6h = ctrsigcheck_armv6h.tar.gz::https://github.com/connesc/ctrsigcheck/releases/download/v0.1.1/ctrsigcheck_0.1.1_linux_armv6.tar.gz
+	sha256sums_armv6h = 9173dffe967bb265c93773995e594a246cd9b8163a2dc554d1cfa0ec329c2eda
+	source_armv7h = ctrsigcheck_armv7h.tar.gz::https://github.com/connesc/ctrsigcheck/releases/download/v0.1.1/ctrsigcheck_0.1.1_linux_armv7.tar.gz
+	sha256sums_armv7h = 70d39f403de692d6c9df944da6386f0a40adee4a150d4a97a29d884b514802e1
+	source_aarch64 = ctrsigcheck_aarch64.tar.gz::https://github.com/connesc/ctrsigcheck/releases/download/v0.1.1/ctrsigcheck_0.1.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 23e533a4e7c166020fee127b8d60a214789f6c05ebbfc648f3bff88534af6a76
+
+pkgname = ctrsigcheck-bin
+
