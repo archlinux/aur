@@ -40,6 +40,9 @@ pkgbase = gtk3-mushrooms
 	provides = gtk3=3.24.11
 	provides = gtk3-classic=3.24.11
 	provides = gtk3-print-backends
+	provides = libgtk-3.so
+	provides = libgdk-3.so
+	provides = libgailutil-3.so
 	conflicts = gtk3
 	conflicts = gtk3-print-backends
 	source = appearance__buttons-menus-icons.patch
