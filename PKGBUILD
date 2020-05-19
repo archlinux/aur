@@ -8,15 +8,15 @@ arch=('any')
 url='https://rubygems.org/gems/timetrap'
 license=('MIT')
 depends=('ruby'
-				 'ruby-chronic'
-				 'ruby-sequel'
-				 'ruby-sqlite3')
+         'ruby-chronic'
+         'ruby-sequel'
+         'ruby-sqlite3')
 options=('!emptydirs')
 source=("${pkgname}-${pkgver}.gem::https://rubygems.org/downloads/timetrap-$pkgver.gem"
-				'LICENSE::https://raw.githubusercontent.com/samg/timetrap/master/LICENSE.txt')
+        'LICENSE::https://raw.githubusercontent.com/samg/timetrap/master/LICENSE.txt')
 noextract=("${pkgname}-${pkgver}.gem")
 sha256sums=('680a89727a2d337659764a576c3f33aac791e21a45f0af957232c03a072bcf5d'
-						'6edeb22c71c029d4eeb05e649ee66816de83d9072f8fde2d61ba74b317b69d91')
+            '6edeb22c71c029d4eeb05e649ee66816de83d9072f8fde2d61ba74b317b69d91')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
