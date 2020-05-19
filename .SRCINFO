@@ -21,7 +21,7 @@ pkgbase = qv2ray-plugin-trojan-dev-git
 	depends = qv2ray
 	provides = qv2ray-plugin-trojan
 	conflicts = qv2ray-plugin-trojan
-	source = qv2ray-plugin-trojan::git+https://github.com/Qv2ray/QvPlugin-Trojan
+	source = qv2ray-plugin-trojan::git+https://github.com/Qv2ray/QvPlugin-Trojan#branch=dev
 	sha512sums = SKIP
 
 pkgname = qv2ray-plugin-trojan-dev-git

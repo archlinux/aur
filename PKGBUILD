@@ -13,7 +13,7 @@ makedepends=('git' 'make' 'qt5-tools' 'which' 'gcc' 'cmake' 'ninja' 'libffi' 'bo
 provides=('qv2ray-plugin-trojan')
 conflicts=('qv2ray-plugin-trojan')
 groups=('qv2ray-plugin')
-source=("$_pkgname::git+${url}")
+source=("$_pkgname::git+${url}#branch=dev")
 sha512sums=('SKIP')
 pkgver() {
     cd "$srcdir"/"$_pkgname"
