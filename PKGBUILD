@@ -6,7 +6,7 @@ pkgbase=mariadb103
 pkgname=('mariadb103-libs' 'mariadb103-clients' 'mariadb103')
 _orgbase=mariadb
 pkgdesc='Fast SQL database server, version 10.3'
-pkgver=10.3.22
+pkgver=10.3.23
 pkgrel=1
 arch=('x86_64')
 license=('GPL')
@@ -16,15 +16,11 @@ makedepends=('boost' 'bzip2' 'cmake' 'jemalloc' 'inetutils' 'libaio' 'libxml2' '
 validpgpkeys=('199369E5404BD5FC7D2FE43BCBCB082A1BB943DB') # MariaDB Package Signing Key <package-signing-key@mariadb.org>
 source=("https://mirrors.n-ix.net/mariadb/mariadb-$pkgver/source/mariadb-$pkgver.tar.gz"{,.asc}
         '0001-arch-specific.patch'
-        '0002-systemd-sysusers-tmpfiles.patch'
-        '0004-do-not-break-main-configuration-with-instantiated-one.patch'
-        '0005-fix-galera_recovery-with-fs.protected_regular-enabled.patch')
-sha256sums=('3200055dbdc27746981b3bb4bc182e2cb79dcf28ea88014b641a5b81280ccec7'
+        '0004-do-not-break-main-configuration-with-instantiated-one.patch')
+sha256sums=('fc405022457d8eec5991b870cc1c9a07b83b551d6165c414c4d8f31523aa86ae'
             'SKIP'
             '5b74e328e75369dfb68491a06dd53bd736e34f87281103ae0dd2f50401dc70d3'
-            '1cd009b473d5965c7cbe6d48fff272030a2ccdd9c7e67b4f837d03252786a09a'
-            'e8fecec204a7832948093c8ce5dc81808a8564f54854e57473b448ebc0cc4ff3'
-            '66e0acac7436fd8925710ef5cc66ba1a8f63a385ce374f01ae83096cc33d97a0')
+            '3216343c3de1cb33f4a7eb58b1eed4228fa1a61184358afdfdcdcaeddf617ef0')
 
 prepare() {
   cd $_orgbase-$pkgver/
@@ -35,19 +31,9 @@ prepare() {
   #  * fix path to our config
   patch -Np1 < ../0001-arch-specific.patch
 
-  # MDEV-17028 Fix glitches with systemd sysusers and tmpfiles:
-  #  * Use descriptive file names for sysusers and tmpfiles configuration
-  #  * Make systemd-tmpfiles create MYSQL_DATADIR
-  # https://github.com/MariaDB/server/pull/530
-  patch -Np1 < ../0002-systemd-sysusers-tmpfiles.patch
-
   # do not break main configuration with instantiated one
   # https://github.com/MariaDB/server/pull/1095
   patch -Np1 < ../0004-do-not-break-main-configuration-with-instantiated-one.patch
-
-  # fix galera_recovery with fs.protected_regular enabled
-  # https://github.com/MariaDB/server/pull/1137
-  patch -Np1 < ../0005-fix-galera_recovery-with-fs.protected_regular-enabled.patch
 }
 
 build() {
@@ -205,7 +191,7 @@ package_mariadb103() {
   rm usr/bin/mysql_config
   rm -r usr/include/
   rm usr/share/man/man1/mysql_config.1
-  rm -r usr/share/{aclocal,pkgconfig}
+  rm -r usr/share/aclocal
   rm usr/lib/lib*
   rm usr/lib/mysql/plugin/{auth_gssapi_client,caching_sha2_password,dialog,client_ed25519,mysql_clear_password,sha256_password}.so
   rm -r usr/lib/pkgconfig/
