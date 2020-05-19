@@ -12,12 +12,12 @@ depends=('php-gd' 'php-fpm' 'php-intl' 'mariadb')
 makedepends=('unzip')
 options=('!strip')
 optdepends=('apache: A high performance Unix-based HTTP server' 
-						'nginx: Lightweight HTTP server and IMAP/POP3 proxy server')
+            'nginx: Lightweight HTTP server and IMAP/POP3 proxy server')
 install=post_install
 source=("${pkgname}-${pkgver}.zip::https://github.com/PrestaShop/PrestaShop/releases/download/${_pkgver}/prestashop_${_pkgver}.zip"
-		'prestashop.conf')
+    'prestashop.conf')
 sha256sums=('e47702ba38c295935262f7c7b2b2282dbe081b8535750013745adca98cd4047c'
-		 				'SKIP')
+            'SKIP')
 
 package() {
   cd "${srcdir}"
