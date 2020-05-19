@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-rust
 	pkgdesc = Systems programming language focused on safety, speed and concurrency (mingw-w64)
 	pkgver = 1.43.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.rust-lang.org
 	arch = x86_64
 	license = MIT
@@ -12,13 +12,14 @@ pkgbase = mingw-w64-rust
 	makedepends = libffi
 	makedepends = perl
 	makedepends = python
+	makedepends = python2
 	makedepends = nodejs
 	makedepends = procps-ng
 	makedepends = cmake
 	depends = gcc-libs
 	depends = curl
 	depends = libgit2
-	depends = mingw-w64-gcc
+	depends = mingw-w64-gcc>=10.1.0
 	optdepends = mingw-w64-wine: for cargo test support
 	noextract = rust-std-1.42.0-x86_64-unknown-linux-gnu.tar.xz
 	noextract = rustc-1.42.0-x86_64-unknown-linux-gnu.tar.xz
@@ -45,7 +46,7 @@ pkgbase = mingw-w64-rust
 	sha256sums = SKIP
 	sha256sums = fe7e40786f6e013d471f2f8ed51ba268611122065930a6d5a10bf20146997270
 	sha256sums = SKIP
-	sha256sums = e9c533229ec32ef55606fde07d7830c54c8bb30d3a691bf5e19c3b709af47d18
+	sha256sums = 0a57780abcf05a5977d07ae2edd24c7e7daabe563ec5d15652bb9215ec1b0f7a
 
 pkgname = mingw-w64-rust
 

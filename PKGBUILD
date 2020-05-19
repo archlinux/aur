@@ -12,7 +12,7 @@ _cargo=0.43.0
 pkgname=mingw-w64-rust
 _prefix=opt/rust
 pkgver=1.43.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
 url="https://www.rust-lang.org"
@@ -20,13 +20,14 @@ license=('MIT' 'Apache' 'custom')
 depends=('gcc-libs'
          'curl'
          'libgit2'
-         'mingw-w64-gcc')
+         'mingw-w64-gcc>=10.1.0')
 optdepends=('mingw-w64-wine: for cargo test support')
 makedepends=('gdb'
              'ninja'
              'libffi'
              'perl'
              'python'
+             'python2'
              'nodejs'
              'procps-ng'
              'cmake')
@@ -47,11 +48,10 @@ sha256sums=('eb0a103c67c4565403d9e6f84a1c708982a5e9e5b3c0d831e4d6f6451795d106'
             'SKIP'
             'fe7e40786f6e013d471f2f8ed51ba268611122065930a6d5a10bf20146997270'
             'SKIP'
-            'e9c533229ec32ef55606fde07d7830c54c8bb30d3a691bf5e19c3b709af47d18')
+            '0a57780abcf05a5977d07ae2edd24c7e7daabe563ec5d15652bb9215ec1b0f7a')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/rust/cargo/config")
-PKGEXT=".pkg.tar.gz"
 
 prepare() {
   cd "rustc-${pkgver}-src"
@@ -83,7 +83,7 @@ package() {
   export CFLAGS="-O2 -pipe -fno-plt -Wall -D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
   export CXXFLAGS="-O2 -pipe -fno-plt -Wall -D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
   # TODO: find a way to disable packaging
-  DESTDIR="${pkgdir}" python ./x.py install
+  DESTDIR="${pkgdir}" python ./x.py install --keep-stage 0 --keep-stage 1
 
   # license
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"{rust,cargo}
