@@ -1,0 +1,21 @@
+pkgbase = wluma
+	pkgdesc = Automatic brightness adjustment based on screen contents
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/maximbaz/wluma
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vulkan-headers
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	depends = wayland
+	source = wluma-1.0.0.tar.gz::https://github.com/maximbaz/wluma/archive/1.0.0.tar.gz
+	source = https://github.com/maximbaz/wluma/releases/download/1.0.0/wluma-1.0.0.tar.gz.asc
+	validpgpkeys = EB4F9E5A60D32232BB52150C12C87A28FEAC6B20
+	sha256sums = 756f69c49d1988c6a409af7d55931ce60b4bb541e5fd57387e3b15bdd73d8fa3
+	sha256sums = SKIP
+
+pkgname = wluma
+
