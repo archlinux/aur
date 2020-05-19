@@ -3,7 +3,7 @@
 
 pkgname=guayadeque-git
 _pkgname=guayadeque
-pkgver=0.4.5.r2112.dfc4acb6
+pkgver=0.4.6.r2145.6be35ba2
 pkgrel=1
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url='http://guayadeque.org/'
 license=('GPL3')
 provides=(${pkgname%-*})
 conflicts=(${pkgname%-*})
-depends=('curl' 'gst-plugins-base' 'libgpod' 'taglib' 'webkit2gtk' 'wxgtk3' 'wxsqlite3')
+depends=('curl' 'gst-plugins-base' 'jsoncpp' 'libgpod' 'taglib' 'webkit2gtk' 'wxgtk3' 'wxsqlite3')
 makedepends=('cmake' 'git')
 optdepends=('gst-plugins-good: Support for PulseAudio and additional file formats'
             'gst-plugins-bad: Support for additional file formats'

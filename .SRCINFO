@@ -1,6 +1,6 @@
 pkgbase = guayadeque-git
 	pkgdesc = Lightweight music player
-	pkgver = 0.4.5.r2112.dfc4acb6
+	pkgver = 0.4.6.r2145.6be35ba2
 	pkgrel = 1
 	url = http://guayadeque.org/
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = guayadeque-git
 	makedepends = git
 	depends = curl
 	depends = gst-plugins-base
+	depends = jsoncpp
 	depends = libgpod
 	depends = taglib
 	depends = webkit2gtk
