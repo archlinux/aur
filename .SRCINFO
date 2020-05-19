@@ -4,6 +4,7 @@ pkgbase = xidlehook
 	pkgrel = 2
 	url = https://gitlab.com/jD91mZM2/xidlehook
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = rust
 	makedepends = libxss
