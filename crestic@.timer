@@ -3,6 +3,8 @@ Description=Daily crestic %I backup
 
 [Timer]
 OnCalendar=daily
+AccuracySec=1m
+RandomizedDelaySec=1h
 Persistent=true
 
 [Install]

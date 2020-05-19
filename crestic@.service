@@ -2,4 +2,7 @@
 Description=crestic %I backup
 
 [Service]
+Nice=19
+IOSchedulingClass=idle
+KillSignal=SIGINT
 ExecStart=/usr/bin/crestic %I backup
