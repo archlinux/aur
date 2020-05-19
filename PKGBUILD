@@ -2,7 +2,7 @@
 
 pkgname=crestic
 pkgver=0.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Configurable restic wrapper"
 arch=('any')
 url="https://github.com/nils-werner/$pkgname"
@@ -19,7 +19,7 @@ source=(
 sha256sums=(
     "3bb0bf1c80c774a3b3ba85d018600f61b425510d230353b1d819a20b902c009b"
     "487bdee984708f7c8e3fdf300d372a9cf60ac212c3898231011d50b4bb2161e6"
-    "cc34a9d3ba621a91477859964348b745d734b1c5df95e9581b94fc85cde0dbed"
+    "d1a2ab70e79257d39f8ce623fdb1f72243072671a83a0ad4959f7bff8ea9b335"
 )
 
 package() {
