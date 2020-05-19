@@ -1,7 +1,7 @@
 pkgbase = libva-intel-driver-g45-h264
 	pkgdesc = Video Acceleration (VA) API for Linux
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://01.org/linuxmedia/vaapi
 	arch = i686
