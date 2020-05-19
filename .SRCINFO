@@ -1,15 +1,16 @@
 pkgbase = cinnamon-applet-hardware-monitor
 	pkgdesc = Graphical hardware monitor displaying your realtime CPU and memory load with colored charts
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cinnamon-spices.linuxmint.com/applets/view/12
 	arch = any
 	groups = cinnamon-applets
 	license = GPL
 	depends = cinnamon
 	depends = libgtop
+	depends = libgudev
 	source = https://cinnamon-spices.linuxmint.com/files/applets/hwmonitor@sylfurd.zip
-	sha512sums = 8ad338bbfed5347429913dbf7668e70bdf2ac3d119cdbdda86e05ff552ceca8a70696401abddc746304997a69d90a09eff8ae49f7845e4d29368d4a83f696cc9
+	sha512sums = 7017c424604a3d9a6c77d0b0ff2dbf0cd1c2d612f615b22e8c569107487d4eede188ed1f1795d718df4d92440b94d0333326dc9d4269b9503bb6ceb167930bfc
 
 pkgname = cinnamon-applet-hardware-monitor
 
