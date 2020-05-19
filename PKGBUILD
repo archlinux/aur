@@ -2,7 +2,7 @@
 
 pkgname=scc
 pkgver=2.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sloc, Cloc and Code: a very fast accurate code counter with complexity calculations and COCOMO estimates written in pure Go'
 arch=('x86_64' 'i386')
 url="https://github.com/boyter/scc"
@@ -27,6 +27,7 @@ build() {
   cd "$GOPATH/src/github.com/boyter/$pkgname"
   go install \
     -trimpath \
+    -buildmode=pie \
     -ldflags "-extldflags $LDFLAGS" \
     -v ./...
 }
