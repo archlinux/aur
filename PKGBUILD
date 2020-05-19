@@ -3,7 +3,7 @@
 _pkgname=slog
 pkgname="lib${_pkgname}-git"
 pkgver=1.6.b1.2f9b9ca
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and thread safe logging library for C/C++"
 arch=('any')
 url='https://github.com/kala13x/slog'
@@ -15,16 +15,16 @@ source=('git+https://github.com/kala13x/slog.git')
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname/src"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname/src"
   make -l $(nproc)
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname/src"
   make install
 }
