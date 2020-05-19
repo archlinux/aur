@@ -2,7 +2,7 @@
 # https://github.com/Earnestly/pkgbuilds/tree/master/bemenu-git
 pkgname=bemenu-git
 _pkgname="bemenu"
-pkgver=r373.6343a65
+pkgver=r382.d9f4d1b
 pkgrel=1
 
 # Wayland without wlroots is not supported.
@@ -20,6 +20,7 @@ optdepends=(
     'libxkbcommon: For the wayland backend'
     'ncurses: For the curses backend'
     'wayland: For the wayland backend'
+    'wayland-protocols: For the wayland backend'
     'wlroots: For the wayland backend'
 )
 source=("$_pkgname::git+https://github.com/Cloudef/bemenu")
