@@ -1,33 +1,34 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=coturn-git
-pkgver=4.5.1.1+r50+g24397e8
+pkgver=4.5.1.2+r1+g113f138
 pkgrel=1
 pkgdesc='Open-source implementation of TURN and STUN server (git)'
-arch=(armv7h i686 x86_64)
-url=https://github.com/coturn/coturn
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/coturn/coturn"
 license=(BSD)
-depends=(libevent sqlite postgresql-libs libmariadbclient mongo-c-driver hiredis)
+depends=(libevent postgresql-libs libmariadbclient hiredis sqlite)
 makedepends=(git)
 provides=(coturn)
 conflicts=(coturn)
 backup=(etc/turnserver/turnserver.conf)
-source=(git+$url
+source=(git+https://github.com/coturn/coturn.git
         turnserver.service
         turnserver.sysusers.d
         turnserver.tmpfiles.d)
-sha512sums=('SKIP'
-            '47af7bbf28f8a5fc674b90d1370026405ccb43623f05e47cf915c594e7e35865f4dce64d2b3001bc609a843a54661d1a1172790153f0b8ba9186db48c42b0024'
-            '32596f741e561c707f69c1ea90adf75c83742906d33c50e1fa5ec0899eeb607d96a48c36fcbb6facb62947beedcace9f6c3fb748c4d67f058bf3f72413766f82'
-            '9d9ef805d793ee49d23e000a66130f30b6c256943f8004ac43f4712c6ecc7dcf82f24a7e77bb1db041ecf714c869769287ea03fe66f3ab4ad6f8f817d389bca5')
+sha256sums=('SKIP'
+            '32d0ef62663bcbda0b5c7d324d156ce83605861c3ce63536bc57b5f0e5ba6f5c'
+            '92e51ecd664ab53031baa0aeee615fa7c4e73f79c5a3ebc49ac8e0919e4d23fd'
+            'd765d14ff3a6527498257e4dc9e76231742cd41d8fe658004e171b8937db6a75')
 
 pkgver() {
-  cd coturn
+  cd ${srcdir}/coturn
   git describe --tags | sed 's#-#+#g;s#+#+r#'
 }
 
 build() {
-  cd coturn
+  cd ${srcdir}/coturn
   ./configure \
     --prefix=/usr \
     --manprefix=/usr/share \
@@ -37,7 +38,7 @@ build() {
 }
 
 check() {
-  cd coturn
+  cd ${srcdir}/coturn
   make check
 }
 
@@ -46,16 +47,15 @@ package() {
   install -Dm 644 turnserver.sysusers.d "$pkgdir"/usr/lib/sysusers.d/turnserver.conf
   install -Dm 644 turnserver.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/turnserver.conf
 
-  cd coturn
+  cd ${srcdir}/coturn
 
   make DESTDIR="$pkgdir" install
-
   install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/coturn
 
   cd "$pkgdir"
 
   # Create needed directories
-  mkdir -p {etc/turnserver,var/log/turnserver}
+  install -dm 700 "$pkgdir"/etc/turnserver
 
   # Use Arch-specific directories in config
   mv {usr/etc/turnserver.conf.default,etc/turnserver/turnserver.conf}
