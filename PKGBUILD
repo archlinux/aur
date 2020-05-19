@@ -3,8 +3,8 @@
 
 _pkgname=nohang
 pkgname=${_pkgname}-git
-pkgver=0.1.r638.g3f34a93
-pkgrel=3
+pkgver=0.1.r649.g3fc0124
+pkgrel=1
 pkgdesc="A sophisticated low memory handler"
 arch=('any')
 url="https://github.com/hakavlad/nohang"
@@ -43,4 +43,5 @@ package() {
 		SYSCONFDIR="/etc" \
 		SYSTEMDUNITDIR="/usr/lib/systemd/system" \
 		install
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
