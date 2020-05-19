@@ -1,17 +1,17 @@
 pkgname=spectra
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A header-only C++ library for large scale eigenvalue problems"
 license=('MPL2')
-arch=('x86_64')
+arch=('any')
 url="https://spectralib.org/"
 depends=('eigen')
 makedepends=('cmake')
 source=("https://github.com/yixuan/spectra/archive/v${pkgver}.tar.gz")
-sha256sums=('339ae9221309a128b8d937ca59b77d9b30aeceacb4ef2d2df13f6f7cde7fa3f3')
+sha256sums=('2966757d432e8fba5958c2a05ad5674ce34eaae3718dd546c1ba8760b80b7a3d')
 
 package() {
   cd spectra-$pkgver
-  install -d "$pkgdir"/usr/
-  cp -r include "$pkgdir"/usr
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+  make install DESTDIR="$pkgdir"
 }
