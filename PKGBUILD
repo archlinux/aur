@@ -19,7 +19,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     # https://github.com/nemtrif/utfcpp/pull/40
-    ${_arch}-cmake -DUTF8_TESTS=OFF -DCYGWIN=1 ..
+    ${_arch}-cmake -DUTF8_TESTS=OFF -DCYGWIN=1 -DUTF8_SAMPLES=OFF ..
     make
     popd
   done
