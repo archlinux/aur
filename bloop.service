@@ -1,0 +1,11 @@
+[Unit]
+Description=Bloop Scala build server
+
+[Service]
+ExecStart=/usr/lib/bloop/bloop server
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=bloop
+
+[Install]
+WantedBy=default.target
