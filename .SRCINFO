@@ -1,0 +1,19 @@
+pkgbase = python-scalene-git
+	pkgdesc = Scalene is a high-performance, high-precision CPU and memory profiler for Python
+	pkgver = r461.822c83d
+	pkgrel = 1
+	url = https://github.com/emeryberger/scalene
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = make
+	makedepends = clang
+	makedepends = git
+	depends = python>=3.6
+	depends = python-numpy
+	provides = python-scalene
+	source = python-scalene-git::git+https://github.com/emeryberger/scalene.git
+	sha256sums = SKIP
+
+pkgname = python-scalene-git
+
