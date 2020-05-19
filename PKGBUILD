@@ -3,7 +3,7 @@
 
 pkgname=libcroco
 pkgver=0.6.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A CSS parsing library"
 url="https://gitlab.gnome.org/GNOME/libcroco"
 arch=(x86_64)
