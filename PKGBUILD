@@ -418,22 +418,6 @@ prepare() {
   sed -i -e '/CONFIG_LATENCYTOP=/ s,y,n,' \
       -i -e '/CONFIG_SCHED_DEBUG=/ s,y,n,' ./.config
 
-  # fix naming schema in EXTRAVERSION of ck patch set
-  #sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
-
-  #echo "Patching with ck patchset..."
-
-  # ck patchset itself
-  #patch -Np1 -i ../"${_ckpatch}"
-
-  # non-interactively apply ck1 default options
-  # this isn't redundant if we want a clean selection of subarch below
-  #make olddefconfig
-
-  # https://github.com/graysky2/kernel_gcc_patch
-  #echo "Applying enable_additional_cpu_optimizations_for_gcc patch"
-  #patch -Np1 -i "$srcdir/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.4-5.6.patch"
-  
   make prepare
   
   ### Optionally load needed modules for the make localmodconfig
@@ -458,6 +442,8 @@ prepare() {
 }
 
 build() {
+  echo "Remember to set _subarch and _localmodcfg, as well as _smt_nice if you don't have hyperthreading"
+  
   cd linux-${pkgver}
   make all
 }
