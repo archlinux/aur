@@ -48,7 +48,7 @@ _makenconfig=
 #  31. Intel Tiger Lake (MTIGERLAKE)
 #  32. Generic-x86-64 (GENERIC_CPU)
 #  33. Native optimizations autodetected by GCC (MNATIVE)
-_subarch=
+_subarch=23
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
@@ -64,18 +64,18 @@ _localmodcfg=
 
 pkgbase=linux-mainline-bcachefs
 pkgver=5.6.13
-_pkgverpntrel=13
+_sublevel=13
 pkgrel=1
 arch=(x86_64)
-url="https://wiki.archlinux.org/index.php/Linux-ck"
+url="https://wiki.archlinux.org/index.php/bcachefs"
 license=(GPL2)
 makedepends=(
   bc kmod libelf
 )
 options=('!strip')
 
-#_reponame="bcachefs"
-#_repo_url="https://github.com/koverstreet/$_reponame"
+_reponame="bcachefs"
+_repo_url="https://github.com/koverstreet/$_reponame"
 
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
@@ -95,7 +95,7 @@ validpgpkeys=(
 )
 md5sums=('73fa7a9e7c42a9ab2cc8151d20e8d6b6'
          'SKIP'
-         '944f5600187817d7a80138ef786aced8'
+         '5905b0ae84fd23e391104c271a1757e6'
          '2cebdad39da582fd6a0c01746c8adb42'
          'b31b27f8a6a8f5fb79a6a6f4e1f07cc4'
          'b10e4c612d5240d66fad8f1c50fe3242'
@@ -109,13 +109,13 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 prepare() {
   cd linux-${pkgver}
-
+  
 #  git init
 
 #  git fetch --tags
 
 #  git remote add $_reponame $_repo_url || true
-#  git fetch --prune --jobs=5 --ipv4 $_reponame master
+#  git fetch --prune --jobs=5 $_reponame master
 #  git reset --hard $_reponame/master
 
 #  export EDITOR=true
@@ -123,7 +123,7 @@ prepare() {
 #  git rebase bcachefs/master
 
   # fix pkgver to chosen pkgver
-  sed -i "s/SUBLEVEL = 0/SUBLEVEL = $_pkgverpntrel/g" $srcdir/linux-${pkgver}/Makefile
+  sed -i "s/SUBLEVEL = 0/SUBLEVEL = $_sublevel/g" $srcdir/linux-${pkgver}/Makefile
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -142,28 +142,119 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   
+  # Inject cpuopts options
+  echo "# CONFIG_MK8SSE3 is not set" >> ./.config
+  echo "# CONFIG_MK10 is not set" >> ./.config
+  echo "# CONFIG_MBARCELONA is not set" >> ./.config
+  echo "# CONFIG_MBOBCAT is not set" >> ./.config
+  echo "# CONFIG_MJAGUAR is not set" >> ./.config
+  echo "# CONFIG_MBULLDOZER is not set" >> ./.config
+  echo "# CONFIG_MPILEDRIVER is not set" >> ./.config
+  echo "# CONFIG_MSTEAMROLLER is not set" >> ./.config
+  echo "# CONFIG_MEXCAVATOR is not set" >> ./.config
+  echo "# CONFIG_MZEN is not set" >> ./.config
+  echo "# CONFIG_MZEN2 is not set" >> ./.config
+  echo "# CONFIG_MATOM is not set" >> ./.config
+  echo "# CONFIG_MNEHALEM is not set" >> ./.config
+  echo "# CONFIG_MWESTMERE is not set" >> ./.config
+  echo "# CONFIG_MSILVERMONT is not set" >> ./.config
+  echo "# CONFIG_MSANDYBRIDGE is not set" >> ./.config
+  echo "# CONFIG_MIVYBRIDGE is not set" >> ./.config
+  echo "# CONFIG_MHASWELL is not set" >> ./.config
+  echo "# CONFIG_MBROADWELL is not set" >> ./.config
+  echo "# CONFIG_MSKYLAKE is not set" >> ./.config
+  echo "# CONFIG_MSKYLAKEX is not set" >> ./.config
+  echo "# CONFIG_MCANNONLAKE is not set" >> ./.config
+  echo "# CONFIG_MICELAKE is not set" >> ./.config
+  echo "# CONFIG_MGOLDMONT is not set" >> ./.config
+  echo "# CONFIG_MGOLDMONTPLUS is not set" >> ./.config
+  echo "# CONFIG_MCASCADELAKE is not set" >> ./.config
+  echo "# CONFIG_MCOOPERLAKE is not set" >> ./.config
+  echo "# CONFIG_MTIGERLAKE is not set" >> ./.config
+  
+  # cpu opt
+  if [ -n "$_subarch" ] && [ "$_subarch" != "33" ]; then
+    echo "# CONFIG_MNATIVE is not set" >> ./.config
+  fi
+
+  if [ -n "$_subarch" ] && [ "$_subarch" != "32" ]; then
+    sed -i -e 's/CONFIG_GENERIC_CPU=y/# CONFIG_GENERIC_CPU is not set/' ./.config
+  fi
+
+  if [ "$_subarch" == "33" ] || [ "$_subarch" == "" ]; then
+    echo "CONFIG_MNATIVE=y" >> ./.config
+  elif [ "$_subarch" == "1" ]; then
+    sed -i -e 's/# CONFIG_MK8 is not set/CONFIG_MK8=y/' ./.config
+  elif [ "$_subarch" == "2" ]; then
+    sed -i -e 's/# CONFIG_MK8SSE3 is not set/CONFIG_MK8SSE3=y/' ./.config
+  elif [ "$_subarch" == "3" ]; then
+    sed -i -e 's/# CONFIG_MK10 is not set/CONFIG_MK10=y/' ./.config
+  elif [ "$_subarch" == "4" ]; then
+    sed -i -e 's/# CONFIG_MBARCELONA is not set/CONFIG_MBARCELONA=y/' ./.config
+  elif [ "$_subarch" == "5" ]; then
+    sed -i -e 's/# CONFIG_MBOBCAT is not set/CONFIG_MBOBCAT=y/' ./.config
+  elif [ "$_subarch" == "6" ]; then
+    sed -i -e 's/# CONFIG_MJAGUAR is not set/CONFIG_MJAGUAR=y/' ./.config
+  elif [ "$_subarch" == "7" ]; then
+    sed -i -e 's/# CONFIG_MBULLDOZER is not set/CONFIG_MBULLDOZER=y/' ./.config
+  elif [ "$_subarch" == "8" ]; then
+    sed -i -e 's/# CONFIG_MPILEDRIVER is not set/CONFIG_MPILEDRIVER=y/' ./.config
+  elif [ "$_subarch" == "9" ]; then
+    sed -i -e 's/# CONFIG_MSTEAMROLLER is not set/CONFIG_MSTEAMROLLER=y/' ./.config
+  elif [ "$_subarch" == "10" ]; then
+    sed -i -e 's/# CONFIG_MEXCAVATOR is not set/CONFIG_MEXCAVATOR=y/' ./.config
+  elif [ "$_subarch" == "11" ]; then
+    sed -i -e 's/# CONFIG_MZEN is not set/CONFIG_MZEN=y/' ./.config
+  elif [ "$_subarch" == "12" ]; then
+    sed -i -e 's/# CONFIG_MZEN2 is not set/CONFIG_MZEN2=y/' ./.config
+  elif [ "$_subarch" == "13" ]; then
+    sed -i -e 's/# CONFIG_MPSC is not set/CONFIG_MPSC=y/' ./.config
+  elif [ "$_subarch" == "14" ]; then
+    sed -i -e 's/# CONFIG_MATOM is not set/CONFIG_MATOM=y/' ./.config
+  elif [ "$_subarch" == "15" ]; then
+    sed -i -e 's/# CONFIG_MCORE2 is not set/CONFIG_MCORE2=y/' ./.config
+  elif [ "$_subarch" == "16" ]; then
+    sed -i -e 's/# CONFIG_MNEHALEM is not set/CONFIG_MNEHALEM=y/' ./.config
+  elif [ "$_subarch" == "17" ]; then
+    sed -i -e 's/# CONFIG_MWESTMERE is not set/CONFIG_MWESTMERE=y/' ./.config
+  elif [ "$_subarch" == "18" ]; then
+    sed -i -e 's/# CONFIG_MSILVERMONT is not set/CONFIG_MSILVERMONT=y/' ./.config
+  elif [ "$_subarch" == "19" ]; then
+    sed -i -e 's/# CONFIG_MGOLDMONT is not set/CONFIG_MGOLDMONT=y/' ./.config
+  elif [ "$_subarch" == "20" ]; then
+    sed -i -e 's/# CONFIG_MGOLDMONTPLUS is not set/CONFIG_MGOLDMONTPLUS=y/' ./.config
+  elif [ "$_subarch" == "21" ]; then
+    sed -i -e 's/# CONFIG_MSANDYBRIDGE is not set/CONFIG_MSANDYBRIDGE=y/' ./.config
+  elif [ "$_subarch" == "22" ]; then
+    sed -i -e 's/# CONFIG_MIVYBRIDGE is not set/CONFIG_MIVYBRIDGE=y/' ./.config
+  elif [ "$_subarch" == "23" ]; then
+    sed -i -e 's/# CONFIG_MHASWELL is not set/CONFIG_MHASWELL=y/' ./.config
+  elif [ "$_subarch" == "24" ]; then
+    sed -i -e 's/# CONFIG_MBROADWELL is not set/CONFIG_MBROADWELL=y/' ./.config
+  elif [ "$_subarch" == "25" ]; then
+    sed -i -e 's/# CONFIG_MSKYLAKE is not set/CONFIG_MSKYLAKE=y/' ./.config
+  elif [ "$_subarch" == "26" ]; then
+    sed -i -e 's/# CONFIG_MSKYLAKEX is not set/CONFIG_MSKYLAKEX=y/' ./.config
+  elif [ "$_subarch" == "27" ]; then
+    sed -i -e 's/# CONFIG_MCANNONLAKE is not set/CONFIG_MCANNONLAKE=y/' ./.config
+  elif [ "$_subarch" == "28" ]; then
+    sed -i -e 's/# CONFIG_MICELAKE is not set/CONFIG_MICELAKE=y/' ./.config
+  elif [ "$_subarch" == "29" ]; then
+    sed -i -e 's/# CONFIG_MCASCADELAKE is not set/CONFIG_MCASCADELAKE=y/' ./.config
+  elif [ "$_subarch" == "30" ]; then
+    sed -i -e 's/# CONFIG_MCOOPERLAKE is not set/CONFIG_MCOOPERLAKE=y/' ./.config
+  elif [ "$_subarch" == "31" ]; then
+    sed -i -e 's/# CONFIG_MTIGERLAKE is not set/CONFIG_MTIGERLAKE=y/' ./.config
+  fi
+  
+  make prepare
+  
   # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
   sed -i -e 's/# CONFIG_PSI_DEFAULT_DISABLED is not set/CONFIG_PSI_DEFAULT_DISABLED=y/' ./.config
 
   # https://bbs.archlinux.org/viewtopic.php?pid=1863567#p1863567
   sed -i -e '/CONFIG_LATENCYTOP=/ s,y,n,' \
       -i -e '/CONFIG_SCHED_DEBUG=/ s,y,n,' ./.config
-
-  # non-interactively apply ck1 default options
-  # this isn't redundant if we want a clean selection of subarch below
-  make olddefconfig
-
-  # https://github.com/graysky2/kernel_gcc_patch
- # echo "Applying enable_additional_cpu_optimizations_for_gcc patch"
- # patch -Np1 -i "$srcdir/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
-
-  if [ -n "$_subarch" ]; then
-    # user wants a subarch so apply choice defined above interactively via 'yes'
-    yes "$_subarch" | make oldconfig
-  else
-    # no subarch defined so allow user to pick one
-    make oldconfig
-  fi
 
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
