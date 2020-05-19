@@ -1,7 +1,7 @@
 pkgbase = pi-hole-standalone
 	pkgdesc = The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pi-hole/pi-hole
 	install = pi-hole-standalone.install
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = pi-hole-standalone
 	conflicts = pi-hole-server
 	backup = etc/dnsmasq.d/01-pihole.conf
 	source = pi-hole-standalone-core-5.0.tar.gz::https://github.com/pi-hole/pi-hole/archive/v5.0.tar.gz
-	source = arch-server-core-5.0-666702285.patch::https://raw.githubusercontent.com/max72bra/pi-hole-standalone-archlinux-customization/master/arch-server-core-5.0.patch
+	source = arch-server-core-5.0-802958106.patch::https://raw.githubusercontent.com/max72bra/pi-hole-standalone-archlinux-customization/master/arch-server-core-5.0.patch
 	source = dnsmasq.include
 	source = pi-hole-gravity.service
 	source = pi-hole-gravity.timer
