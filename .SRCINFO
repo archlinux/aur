@@ -37,11 +37,11 @@ pkgbase = linux-bcachefs-ck
 	md5sums = 75602fa70033aef9cb42f3df16ec2eb3
 	md5sums = 228b33d0cb13cab162b3e051ec9bb88d
 	md5sums = 9ed187660600a7884284aa6b3ddb08c6
-	md5sums = e01ce63ead13c0276a15c86282fb749f
-	md5sums = af1b1d1bc0a7660cd291811a8cf3efaa
-	md5sums = 931effb8f495824769fd5f400424081f
-	md5sums = 8d8806078490439bffdeccff4b755989
-	md5sums = 301583e91683b2974ffecdaa4f51bcb8
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = linux-bcachefs-ck
 	pkgdesc = The Linux-bcachefs-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler
