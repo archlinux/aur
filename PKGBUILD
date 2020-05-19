@@ -2,7 +2,7 @@
 
 pkgname=alps-mail-git
 _pkgname=alps
-pkgver=r247.5fee600
+pkgver=r249.62910a9
 pkgrel=1
 license=('MIT')
 pkgdesc="A simple Webmail in Go"
@@ -30,4 +30,7 @@ build() {
 package() {
   cd $pkgname
   install -Dm755 $_pkgname "${pkgdir}"/usr/bin/$_pkgname
+
+  mkdir -p "${pkgdir}"/usr/share/$_pkgname/
+  cp -ra themes "${pkgdir}"/usr/share/$_pkgname/
 }

@@ -1,6 +1,6 @@
 pkgbase = alps-mail-git
 	pkgdesc = A simple Webmail in Go
-	pkgver = r247.5fee600
+	pkgver = r249.62910a9
 	pkgrel = 1
 	url = https://git.sr.ht/~emersion/alps
 	arch = x86_64
