@@ -9,9 +9,9 @@ url="https://github.com/gansm/finalcut"
 license=('LGPL3')
 depends=('gpm')
 makedepends=('autoconf-archive' 'git')
+provides=('finalcut')
 source=("$pkgname::git+${url}.git")
 sha256sums=('SKIP')
-conflicts=('finalcut')
 
 prepare() {
     cd "$pkgname"
