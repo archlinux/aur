@@ -12,9 +12,9 @@ license=('MIT')
 provides=('vape')
 options=('!strip')
 source=("${pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/vape-x86_64-unknown-linux-gnu"
-				'LICENSE::https://github.com/joshuarli/vape/raw/master/LICENSE')
+        'LICENSE::https://github.com/joshuarli/vape/raw/master/LICENSE')
 sha256sums=('7a557fcd648d2e52c3320b2c43ce5c56afa6438e69284e72509238c25a90f20f'
-						'3ceac5a0c3f1e5311aeb9eb7c8ce06ace3f5031066ac61a433c8e7e090406fca')
+            '3ceac5a0c3f1e5311aeb9eb7c8ce06ace3f5031066ac61a433c8e7e090406fca')
 
 package () {
   install -Dm755 "$srcdir"/${pkgname}-${pkgver} "${pkgdir}/usr/bin/vape"
