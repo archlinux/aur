@@ -2,11 +2,11 @@
 # Contributor: Damian Nowak <damian.nowak@atlashost.eu>
 # Contributor: Kyle Fuller <inbox@kylefuller.co.uk>
 # Contributor: jibi <jibi@paranoici.org>
-# Co-Maintainer: TheGoliath <contact@xdfr.de>
+# Co-Maintainer: Felix Golatofski <contact@xdfr.de>
 
 pkgname='inspircd'
 pkgver='3.6.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='InspIRCd is a modular Internet Relay Chat (IRC) server written in C++ for Linux, BSD, Windows and macOS systems.'
 arch=('any')
 url='https://www.inspircd.org/'
@@ -26,9 +26,12 @@ optdepends=('gnutls: m_ssl_gnutls'
             'geoip: m_geoip')
 install='inspircd.install'
 source=("https://github.com/inspircd/inspircd/archive/v$pkgver.tar.gz"
-        'inspircd.service')
+        "$pkgname.service"
+	"$pkgname.sysusers"
+	)
 sha512sums=('b1feaf983f30aa3192860d931f85bb2e5b5f10d3b7582b7e5faa8fc16a349c79506f5a7ba9e1f4f8b24d62639c0e0e88f2d97a3130473ee10eda93dd5c131630'
-            '5a16a7c237693ffc6a108358f339b6aa2451fb16430561848ae869f890199b38fab6a13640bcc35cf1d07e32d7e5fff405d88668ee05ddaffc2ef61cb42ee832')
+            '5a16a7c237693ffc6a108358f339b6aa2451fb16430561848ae869f890199b38fab6a13640bcc35cf1d07e32d7e5fff405d88668ee05ddaffc2ef61cb42ee832'
+            '90e7ae20a0d13cef2ff00c56382ea5cf1ed8843228937c49cab7fe0e2a34d02b9fac20dd55c6cd5e79533b5764a9d10d19e26b043a2d9c98a4384a7e1c2859c4')
 
 build() {
   cd "${srcdir}/inspircd-${pkgver}"
@@ -57,8 +60,9 @@ build() {
 }
 
 package() {
-  install -Dm644 "${srcdir}"/inspircd.service "${pkgdir}"/usr/lib/systemd/system/inspircd.service
-  install -o141 -g141 -dm750 "${pkgdir}/var/log/inspircd" "${pkgdir}/var/lib/inspircd"
+  install -Dm644 "${srcdir}/$pkgname.service" "${pkgdir}"/usr/lib/systemd/system/inspircd.service
+  install -Dm644 "${srcdir}/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -dm750 "${pkgdir}/var/log/inspircd" "${pkgdir}/var/lib/inspircd"
 
   cd "${srcdir}/inspircd-${pkgver}"
   make DESTDIR="$pkgdir" install
