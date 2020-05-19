@@ -1,7 +1,7 @@
 pkgbase = tclkit
 	pkgdesc = single-file executable that provides a complete Tcl and Tk runtime
-	pkgver = 8.6.4
-	pkgrel = 12
+	pkgver = 8.6.10
+	pkgrel = 1
 	url = https://github.com/patthoyts/kitgen
 	arch = i686
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = tclkit
 	options = !makeflags
 	options = !strip
 	source = https://github.com/stiefel40k/kitgen/archive/8.6.4-9.tar.gz
-	source = tk.tar.gz::https://github.com/tcltk/tk/archive/core-8-6-4.tar.gz
-	source = tcl.tar.gz::https://github.com/tcltk/tcl/archive/tip-412.tar.gz
+	source = tk.tar.gz::https://github.com/tcltk/tk/archive/core-8-6-10.tar.gz
+	source = tcl.tar.gz::https://github.com/tcltk/tcl/archive/core-8-6-10.tar.gz
 	md5sums = ee23c17052b6e482cb845739363bb9c0
-	md5sums = 4139d98489f61faa8112f62fcee1a9de
-	md5sums = 444a352dd36404e4a5c2b4e4c5408195
+	md5sums = 73a066dcc051915dfad48ae4810a6038
+	md5sums = b9578606270ac55d2cbabf35515724bc
 
 pkgname = tclkit
 
