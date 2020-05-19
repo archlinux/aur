@@ -22,7 +22,7 @@ pkgname=(
   "$pkgbase" kodi-bin-devel kodi-wayland-devel kodi-gbm-devel
   kodi-eventclients-devel kodi-tools-texturepacker-devel kodi-dev-devel
 )
-pkgver=18.7pre38
+pkgver=18.7pre39
 _major=18.6
 pkgrel=1
 arch=('x86_64')
@@ -110,14 +110,15 @@ source=(
   028-PR17767.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17767.patch
   029-PR17768.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17768.patch
   030-PR17770.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17770.patch
-  031-PR17782.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17782.patch
-  032-PR17805.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17805.patch
-  033-PR17815.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17815.patch
-  034-PR17836.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17836.patch
-  035-PR17850.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17850.patch
-  036-PR17852.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17852.patch
-  037-PR17863.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17863.patch
-  038-PR17887.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17887.patch
+  031-PR17772.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17772.patch
+  032-PR17782.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17782.patch
+  033-PR17805.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17805.patch
+  034-PR17815.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17815.patch
+  035-PR17836.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17836.patch
+  036-PR17850.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17850.patch
+  037-PR17852.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17852.patch
+  038-PR17863.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17863.patch
+  039-PR17887.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17887.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -168,6 +169,7 @@ sha256sums=('47e6d7d4e01dbda92ff83a3e141ac43003e918133e78b3a4b79faff65184711c'
             'a2c21f2def1f62d3f6ef7e6da41180aefda0922507ebc87014b8741b65076a4a'
             '75b0eae00d49a3e218a3af157c1c3f5ba5ea5c99b3714ef6c5d718a2e1b91df9'
             'e2907be0bdcd97cef629c9028c80136ace50b3a921a2fd881cf0f264fa6c626c'
+            '4f6ebd5cddbc1b0175dd251064a7991d1ac7816c7fd6778a277025d1bec2125c'
             '707b5225eb2f375204b5cc47bc218dc6dd76d5119581cec9c6cc51dbe96409e9'
             '25c8d5e2b2ffb4a32a1fc797db82c0bec648126cee66313616ad534c3c34fe77'
             '96d28ef345a6303ca6972909b0936afb40c61d61d930fbb08475acbbe22710ad'
