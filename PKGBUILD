@@ -3,8 +3,8 @@
 
 pkgname=autenticacao-gov-pt-bin
 pkgver=3.1.0
-pkgrel=5
-pkgdesc="Portuguese Citizen Card Application - pre compiled binaries version"
+pkgrel=6
+pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
 license=('GPL2' 'LGPL3' 'custom:EUPL')
