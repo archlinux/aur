@@ -9,7 +9,7 @@ url='https://aktools.readthedocs.io'
 license=('MIT')
 provides=('aktools')
 depends=('python-akshare'
-				 'python-fastapi')
+         'python-fastapi')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jindaxiang/aktools/archive/v${pkgver}.tar.gz")
 sha256sums=('64e628a74a267ed3cbd01cb7b2fc788234aee2ec132fb4d9af6112a22dae06f1')
