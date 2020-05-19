@@ -18,10 +18,10 @@ build() {
   mkdir -p build
   export GOPATH="${srcdir}/go" PATH="${srcdir}/go/bin:${PATH}"
   go build \
-	-ldflags "-s -w -X github.com/coreos/clair/pkg/version.Version=${pkgver}" \
-	-gcflags="all=-trimpath=${GOPATH}/src" \
-	-asmflags="all=-trimpath=${GOPATH}/src" \
-	-o build/clair -v ./cmd/clair
+  -ldflags "-s -w -X github.com/coreos/clair/pkg/version.Version=${pkgver}" \
+  -gcflags="all=-trimpath=${GOPATH}/src" \
+  -asmflags="all=-trimpath=${GOPATH}/src" \
+  -o build/clair -v ./cmd/clair
 }
 
 package() {
