@@ -2,7 +2,7 @@
 
 _pkgname=janet
 pkgname=janet-lang-git
-pkgver=1.10.0.r2126.33b5d96
+pkgver=1.10.0.r2144.b7cfc08
 pkgrel=1
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -12,8 +12,10 @@ depends=()
 makedepends=('git')
 provides=('janet')
 conflicts=('janet-lang')
-source=("git+https://github.com/janet-lang/janet.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/janet-lang/janet.git"
+        "dynamic_link.patch")
+sha256sums=('SKIP'
+            'e7798771a8622d7ecaa1097c389365cbd4c4eb4b52c8fbce91c697a89a62b6dd')
 options=('staticlibs' '!strip')
 
 pkgver() {
@@ -28,6 +30,11 @@ build() {
     make PREFIX="/usr" $janet_build
     make PREFIX="/usr" build/janet.pc
     make PREFIX="/usr" docs
+
+    # Very very very ugly patch
+    # Temporary till I (or anyone) find the reason why the static linking isn't
+    # working as expected
+    patch jpm ../dynamic_link.patch
 }
 
 package() {
