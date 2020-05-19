@@ -1,5 +1,4 @@
-_pkgname=glslang
-pkgname="mingw-w64-${_pkgname}"
+pkgname=mingw-w64-glslang
 pkgver=8.13.3743
 pkgrel=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator (mingw-w64)'
