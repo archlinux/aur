@@ -8,22 +8,24 @@ pkgver=r3261.fc67ec65
 pkgrel=1
 pkgdesc="Linux Infrared Remote Control utils. Git version."
 arch=('x86_64')
-url="http://www.lirc.org/"
+url="https://www.lirc.org/"
 license=('GPL')
 depends=('alsa-lib' 'libx11' 'libftdi' 'libusb-compat')
-makedepends=('help2man' 'alsa-lib' 'libx11' 'libxslt' 'git' 'python-setuptools')
+makedepends=('help2man' 'alsa-lib' 'libx11' 'libxslt' 'git' 'python-setuptools'
+             'systemd')
 optdepends=('python: for lirc-setup, irdb-get and pronto2lirc')
 provides=('lirc-utils' 'lirc')
 conflicts=('lirc-utils' 'lirc')
 replaces=('lirc-utils')
 backup=('etc/lirc/lirc_options.conf' 'etc/lirc/lircd.conf' 'etc/lirc/lircmd.conf')
 source=("git://lirc.git.sourceforge.net/gitroot/lirc/lirc"
-lirc.logrotate lirc.tmpfiles
-unfuck_build.patch)
+        unfuck_build.patch
+        lirc.logrotate
+        lirc.tmpfiles)
 md5sums=('SKIP'
+         'ed4241a5da975834fd08966d693987f7'
          '3deb02604b37811d41816e9b4385fcc3'
-         'febf25c154a7d36f01159e84f26c2d9a'
-         'ed4241a5da975834fd08966d693987f7')
+         'febf25c154a7d36f01159e84f26c2d9a')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
