@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=ddrutility
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of utilities for use with GNU ddrescue to aid with data recovery"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/ddrutility/"
@@ -17,7 +17,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  make
+  make CFLAGS+="-fcommon"
 }
 
 package() {
