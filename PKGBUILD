@@ -6,6 +6,7 @@ pkgver=0.0.10
 pkgrel=4
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
+provides=('discord')
 url='https://discordapp.com'
 license=('custom')
 depends=('electron')
