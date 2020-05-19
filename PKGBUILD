@@ -2,7 +2,7 @@
 
 pkgname=kproperty
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A property editing framework with editor widget similar to what is known from Qt Designer"
 arch=(x86_64)
 url="http://www.kexi-project.org/"
