@@ -1,6 +1,6 @@
 # Maintainer: Waffle Lapkin <waffle.lapkin@gmail.com>
 pkgname='anilibria-winmaclinux-git'
-pkgver=r92.5bb0d79
+pkgver=r139.10ad710
 pkgrel=1
 pkgdesc='AniLibria client for major desktop platforms'
 arch=('x86_64')
@@ -11,12 +11,14 @@ depends=('qt5-webview' 'gst-libav')
 makedepends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/anilibria/anilibria-winmaclinux.git#commit=5bb0d79899b31ba15ad84f0187ad3b30e06190d9'
+source=('git+https://github.com/anilibria/anilibria-winmaclinux.git'
         '0001-Change-instalation-path-to-be-Arch-linux-friendly.patch'
-        '0001-disable-version-check.patch')
+        '0001-disable-version-check.patch'
+        '0001-change-Exec-value-in-.desktop-file-to-match-archlinu.patch')
 md5sums=('SKIP'
-         '90c273d473ea81ecba60f5c31a2db94f'
-         'c8f887de1082f4e8ff46d8e253ec623e')
+         '59290afaa86d49b8a1e8894032663c0d'
+         'c8f887de1082f4e8ff46d8e253ec623e'
+         '84b73c82d8240235096b278907443848')
 
 pkgver() {
 	cd "${pkgname%-git}"
@@ -29,6 +31,7 @@ prepare() {
 	cd "$srcdir/${pkgname%-git}"
 	patch -p1 -i "$srcdir/0001-Change-instalation-path-to-be-Arch-linux-friendly.patch"
 	patch -p1 -i "$srcdir/0001-disable-version-check.patch"
+	patch -p1 -i "$srcdir/0001-change-Exec-value-in-.desktop-file-to-match-archlinu.patch"
 }
 
 build() {
