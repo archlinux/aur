@@ -21,9 +21,9 @@ sha256sums=('6900a3b935ab4befa23aa2931ea676c4cd533e4d5b9a9d0a0f90953a42574a91')
 
 package() {
   install -d "${pkgdir}/opt/" \
-   			 "${pkgdir}/usr/share/applications" \
-   			 "${pkgdir}/usr/share/pixmaps" \
-   			 "${pkgdir}/usr/bin"
+         "${pkgdir}/usr/share/applications" \
+         "${pkgdir}/usr/share/pixmaps" \
+         "${pkgdir}/usr/bin"
   mv -v "${srcdir}/Digital Clock 4" "${pkgdir}/opt/"
   mv -v "${pkgdir}/opt/Digital Clock 4/digital_clock.desktop" "${pkgdir}/usr/share/applications"
   mv -v "${pkgdir}/opt/Digital Clock 4/digital_clock.svg" "${pkgdir}/usr/share/pixmaps"
