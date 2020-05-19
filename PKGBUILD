@@ -1,16 +1,16 @@
 # Maintainer: Mia Evans <contact@nelyah.eu>
 
 pkgname=python-prody
-pkgver=1.9.3
-pkgrel=2
+pkgver=1.10.10
+pkgrel=1
 pkgdesc='For protein structural dynamics analysis.'
 arch=('any')
 url='http://prody.csb.pitt.edu/'
 license=('MIT')
 # Only either one of the python version is required
-depends=('python>=3.4' 'python2>=2.7' 'python-numpy>=1.10')
+depends=('python>=3.4' 'python2>=2.7' 'python-numpy>=1.10' 'python-biopython' 'python-scipy')
 source=("https://github.com/prody/prody/archive/v${pkgver}.tar.gz")
-md5sums=('3e4e535b8a9c02aece3fe4ce22b79792')
+md5sums=('2c862e4320b57a083072ec7f95ac4790')
 
 prepare(){
     tar xzf v$pkgver.tar.gz
