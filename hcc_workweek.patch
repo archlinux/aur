@@ -1,0 +1,14 @@
+*** rocBLAS-rocm-3.3.0/CMakeLists.txt.bak	2020-05-10 15:58:01.475190329 +0200
+--- rocBLAS-rocm-3.3.0/CMakeLists.txt	2020-05-10 16:00:18.879954059 +0200
+***************
+*** 188,193 ****
+--- 188,196 ----
+      file (STRINGS "tensile_tag.txt" read_tensile_tag)
+      set( tensile_tag ${read_tensile_tag} CACHE STRING "Tensile tag to download" )
+      virtualenv_install("git+https://github.com/${tensile_fork}/Tensile.git@${tensile_tag}")
++     execute_process(
++         COMMAND bash -c "sed -i 's/__hcc_workweek__/99999/g' $(grep -rIl __hcc_workweek__ ${VIRTUALENV_HOME_DIR})"
++     )
+      message (STATUS "using GIT Tensile fork=${tensile_fork} from branch=${tensile_tag}")
+    endif()
+    list(APPEND CMAKE_PREFIX_PATH ${VIRTUALENV_HOME_DIR})
