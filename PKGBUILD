@@ -2,7 +2,7 @@
 
 pkgname=god-git
 pkgdesc="Utility for simplifying the Git usage"
-pkgver=1.8.r0.g99a2cb0
+pkgver=1.9.r0.g5510f3c
 pkgrel=1
 arch=('any')
 url="https://github.com/orhun/god"
