@@ -4,7 +4,7 @@
 
 pkgname='perl-lwp-useragent-determined'
 pkgver='1.07'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="a virtual browser that retries errors"
 arch=('any')
 license=('PerlArtistic' 'GPL')

@@ -1,7 +1,7 @@
 pkgbase = perl-lwp-useragent-determined
 	pkgdesc = a virtual browser that retries errors
 	pkgver = 1.07
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/LWP-UserAgent-Determined
 	arch = any
 	license = PerlArtistic
