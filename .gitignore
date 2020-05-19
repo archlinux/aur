@@ -5,3 +5,4 @@ portfolio*.tar*
 .DS_Store
 portfolio/
 pkg/
+*.svg
