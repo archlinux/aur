@@ -1,0 +1,18 @@
+pkgbase = cicpoffs-git
+	pkgdesc = Case-Insensitive Case-Preserving Overlay FUSE File System
+	pkgver = 0.0.1.r1.efe8871
+	pkgrel = 1
+	url = https://github.com/adlerosn/cicpoffs
+	arch = any
+	license = GPL2
+	makedepends = fuse
+	makedepends = attr
+	depends = fuse
+	depends = attr
+	provides = _pkgname
+	conflicts = _pkgname
+	source = cicpoffs::git+https://github.com/adlerosn/cicpoffs
+	sha512sums = SKIP
+
+pkgname = cicpoffs-git
+
