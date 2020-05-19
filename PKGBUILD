@@ -1,6 +1,8 @@
-# Maintainer: Alexander Susha <isushik94@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Alexander Susha <isushik94@gmail.com>
+
 pkgname=xtensor-python
-pkgver=0.20.0
+pkgver=0.24.1
 pkgrel=1
 pkgdesc="QuantStack tools library - Multi-dimensional arrays with broadcasting and lazy computing."
 arch=('x86_64')
@@ -9,7 +11,7 @@ license=('BSD-3-Clause')
 depends=('xtensor' 'xtl' 'pybind11' 'python-numpy')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/QuantStack/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('29fdb6a545f5b31a62d3141044bf521cb9ffffbe23f8b23d564dd01c306a8ff3fd0e134f9b7c715c12c943652762f7c284ef15a88feb9366646a675c9f60baa6')
+sha512sums=('3b96e932423e24b82e7e39a0573ab7cc6944ab1e7a53606778bfba7c26a644467e34bc3748ae56b60f25e77f3d184cbc370500e1ac76cb08fe57121cacdbc05a')
 
 build() {
   cd "${pkgname}-${pkgver}"
