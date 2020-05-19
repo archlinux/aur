@@ -2,14 +2,14 @@
 # Contributor:
 
 pkgname=mpc-qt-git
-pkgver=r1189.g2abe6e7
+pkgver=r1191.gba2b6cc
 pkgrel=1
 epoch=1
 pkgdesc='A clone of Media Player Classic reimplimented in Qt.'
-url='https://gitlab.com/mpc-qt/mpc-qt'
+url='https://github.com/cmdrkotori/mpc-qt-origin'
 arch=('x86_64')
 license=('GPL2')
-depends=('desktop-file-utils' 'mpv' 'qt5-x11extras')
+depends=('mpv' 'qt5-x11extras')
 makedepends=('git' 'qt5-tools')
 optdepends=('libva-vdpau-driver: backend for Nvidia and AMD cards'
             'libva-intel-driver: backend for Intel cards'
