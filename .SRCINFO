@@ -1,6 +1,6 @@
 pkgbase = percolator-bin
 	pkgdesc = Software for postprocessing of shotgun proteomics data + format converters + Elude tool
-	pkgver = 3.04
+	pkgver = 3.05
 	pkgrel = 1
 	url = http://percolator.ms/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = percolator-bin
 	depends = gcc-libs
 	provides = percolator
 	conflicts = percolator-git
-	source = https://github.com/percolator/percolator/releases/download/rel-3-04/ubuntu.tar.gz
-	md5sums = 7616cb14be09e9ac8a6fa762c32d2db7
+	source = https://github.com/percolator/percolator/releases/download/rel-3-05/ubuntu.tar.gz
+	md5sums = 5570e18bab9b6c8c5bf7e2eb000ff9bf
 
 pkgname = percolator
 	pkgdesc = Percolator and qvality, two post processors for shotgun proteomics data.
