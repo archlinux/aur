@@ -2,13 +2,13 @@
 
 _pkgname=encryptpad
 pkgname=${_pkgname}
-pkgver=0.4.0.4
-pkgrel=7
+pkgver=0.5.0.0
+pkgrel=8
 pkgdesc="Minimalist secure text editor and file encryptor that implements RFC 4880 Open PGP format"
 arch=(i686 x86_64)
 url="https://github.com/evpo/${_pkgname}"
 license=('GPL2')
-depends=('qt5-base' 'hicolor-icon-theme' 'python')
+depends=('qt5-base' 'hicolor-icon-theme' 'python' 'botan' 'zlib' 'bzip2')
 makedepends=('git')
 options=('!makeflags')
 validpgpkeys=('634BFC0CCC426C74389D89310F1CFF71A2813E85')
@@ -18,7 +18,8 @@ sha1sums=('SKIP' 'SKIP')
 
 build() {
   cd "$srcdir/encryptpad$(echo -n $pkgver | sed -r 's/\./_/g')_src"
-  ./configure.sh --all
+  ./configure.py
+  make
 }
 
 package() {
