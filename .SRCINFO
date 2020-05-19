@@ -1,7 +1,7 @@
 pkgbase = pacleaner
-	pkgdesc = Script to clean up pacman cache in a more flexible way than pacman -Sc[c].
+	pkgdesc = Script to clean up pacman cache in a more flexible way than with paccache or pacman itself. Fully configurable and flexible
 	pkgver = 2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lesebas/pacleaner
 	arch = i686
 	arch = x86_64

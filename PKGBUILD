@@ -1,8 +1,8 @@
 pkgname=pacleaner
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 scriptver=0.2.1
-pkgdesc="Script to clean up pacman cache in a more flexible way than pacman -Sc[c]."
+pkgdesc="Script to clean up pacman cache in a more flexible way than with paccache or pacman itself. Fully configurable and flexible"
 arch=(i686 x86_64)
 depends=('python' 'python-hurry-filesize')
 url="https://github.com/lesebas/pacleaner"
