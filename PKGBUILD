@@ -8,10 +8,10 @@ arch=('any')
 url='https://github.com/specious/facebook-cli'
 license=('ISC')
 depends=('ruby'
-		 'ruby-json'
-		 'ruby-gli'
-		 'ruby-jsonpath'
-		 'ruby-koala')
+     'ruby-json'
+     'ruby-gli'
+     'ruby-jsonpath'
+     'ruby-koala')
 options=('!emptydirs')
 source=("${pkgname}-${pkgver}.gem::https://rubygems.org/downloads/$pkgname-$pkgver.gem")
 noextract=('$pkgname-$pkgver.gem')
