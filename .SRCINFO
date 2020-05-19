@@ -31,7 +31,7 @@ pkgbase = linux-lts419
 	sha256sums = 25517134bfb5eba79cea86fcd777a4a6a1d6cbfb2ee57656d8ffc6a910a0dfc3
 	sha256sums = ed3d9ee9c55e0b33aa7e4b75305e2d43f94aef071a90c276957e17483334710a
 	sha256sums = 81193a452440cf2040266ad33d204193176d0079d4ed3f7b92eaf45e0638a976
-	sha256sums = dda5848f8fbb7969c2a72ce0258b0cb5985d2b00434b09c1cbdcd16e43e15579
+	sha256sums = 59c0397a8556f518e89a3349e41b9eea983ee7d6e10afc39c9371edefd39a9ae
 
 pkgname = linux-lts419
 	pkgdesc = The LTS 4.19 Linux kernel and modules

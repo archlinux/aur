@@ -93,7 +93,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
  {
 --- a/arch/x86/kernel/smpboot.c
 +++ b/arch/x86/kernel/smpboot.c
-@@ -262,6 +262,14 @@ static void notrace start_secondary(void
+@@ -269,6 +269,14 @@ static void notrace start_secondary(void
  
  	wmb();
  	cpu_startup_entry(CPUHP_AP_ONLINE_IDLE);
@@ -110,9 +110,9 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
  /**
 --- a/arch/x86/xen/smp_pv.c
 +++ b/arch/x86/xen/smp_pv.c
-@@ -92,6 +92,7 @@ asmlinkage __visible void cpu_bringup_an
+@@ -89,6 +89,7 @@ asmlinkage __visible void cpu_bringup_an
+ {
  	cpu_bringup();
- 	boot_init_stack_canary();
  	cpu_startup_entry(CPUHP_AP_ONLINE_IDLE);
 +	prevent_tail_call_optimization();
  }
@@ -120,9 +120,9 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
  void xen_smp_intr_free_pv(unsigned int cpu)
 --- a/include/linux/compiler.h
 +++ b/include/linux/compiler.h
-@@ -356,4 +356,10 @@ static inline void *offset_to_ptr(const
- /* &a[0] degrades to a pointer: a different type from an array */
- #define __must_be_array(a)	BUILD_BUG_ON_ZERO(__same_type((a), &(a)[0]))
+@@ -351,4 +351,10 @@ static inline void *offset_to_ptr(const
+ 	compiletime_assert(__native_word(t),				\
+ 		"Need native word sized stores/loads for atomicity.")
  
 +/*
 + * This is needed in functions which generate the stack canary, see
@@ -133,7 +133,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
  #endif /* __LINUX_COMPILER_H */
 --- a/init/main.c
 +++ b/init/main.c
-@@ -1032,6 +1032,8 @@ asmlinkage __visible void __init start_k
+@@ -735,6 +735,8 @@ asmlinkage __visible void __init start_k
  
  	/* Do the rest non-__init'ed, we're now alive */
  	rest_init();
