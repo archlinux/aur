@@ -8,9 +8,9 @@ arch=('any')
 url="https://github.com/LandingEllipse/kitti3"
 license=('BSD')
 depends=('i3-wm'
-		 'kitty'
-		 'python'
-		 'python-i3ipc')
+     'kitty'
+     'python'
+     'python-i3ipc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('6e755204f675b1d9a6b11bd8700d97c23a9a560560865798f8b59e7c4e463d12')
 
