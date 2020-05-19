@@ -1,7 +1,7 @@
 # Maintainer: crian <crian84 at gmail dot com>
 
 pkgname=auto-cpufreq-git
-pkgver=1.1.r0.gabe463c
+pkgver=1.1.2.r3.gabb66ed
 pkgrel=1
 pkgdesc='Automatic CPU speed & power optimizer'
 arch=('any')
@@ -20,9 +20,14 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd "$srcdir/${pkgname%-git}"
+    sed -i 's|usr/local|usr|g' "scripts/${pkgname%-git}.service"
+}
+
 package() {
     depends+=()
-    cd "${srcdir}/auto-cpufreq"
+    cd "$srcdir/${pkgname%-git}"
     python setup.py install --root="${pkgdir}"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/auto-cpufreq/LICENSE.md"
     install -Dm644 README.md "$pkgdir/usr/share/doc/auto-cpufreq/README.md"
