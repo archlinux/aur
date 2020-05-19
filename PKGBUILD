@@ -3,7 +3,7 @@
 pkgname=milcheck
 pkgver=0.1.8
 pkgrel=1
-pkgdesc="A small binary that displays the status of your pacman mirrorlist in your terminal, written in Rust."
+pkgdesc="A small binary that displays the status of your pacman mirrorlist in your terminal"
 arch=('x86_64')
 url="https://github.com/doums/milcheck"
 license=('MPL2')
