@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/lord63/licen'
 license=('MIT')
 depends=('python-docopt'
-		 		 'python-jinja')
+         'python-jinja')
 makedepends=('python-setuptools')
 source=("git+${url}")
 sha256sums=('SKIP')
