@@ -1,0 +1,13 @@
+pkgbase = sendmail-tryqueue
+	pkgdesc = A generic utility that caches/queues emails that couldn't be sent
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/lenormf/sendmail-tryqueue
+	arch = any
+	license = MIT
+	depends = python
+	source = https://github.com/lenormf/sendmail-tryqueue/archive/v1.0.tar.gz
+	sha256sums = 1714e982d04c9af85cc3316f7f4250a35c3664eaaf71fd18ed6b2fbf299fa30c
+
+pkgname = sendmail-tryqueue
+
