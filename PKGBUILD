@@ -2,7 +2,7 @@
 
 pkgname=kreport
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A framework for creation and generation of reports in multiple formats"
 arch=(x86_64)
 url="http://www.kexi-project.org/"
