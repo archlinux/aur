@@ -31,9 +31,13 @@ package() {
   for _arch in ${_architectures}; do
     cd "$srcdir/libjpeg-turbo-$pkgver/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    ${_arch}-strip "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    if [[ $NO_EXECUTABLES ]]; then
+      find "${pkgdir}/usr/${_arch}" -name '*.exe' -delete
+    else
+      find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip --strip-all {} \;
+    fi
   done
 }
 
