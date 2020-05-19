@@ -14,11 +14,9 @@ url='https://www.openembedded.org/wiki/Main_Page'
 license=('GPL2')
 makedepends=('git' 'wget')
 source=("https://github.com/openembedded/bitbake/archive/${pkgver}.tar.gz"
-    "bind.patch"
     "test.patch"
     )
 md5sums=('aff0217dcba08df3dcbbad256cc07911'
-         '44506db845c085dc8916a05ca4348947'
          '62c3ad291fff1fa27e31d29d2bc5e2b9')
 
 check() {
