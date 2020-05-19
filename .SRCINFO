@@ -6,7 +6,6 @@ pkgbase = ircc
 	arch = any
 	license = public domain
 	makedepends = git
-	makedepends = gcc
 	depends = ncurses
 	depends = openssl
 	source = git://c9x.me/irc.git
