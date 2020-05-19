@@ -1,13 +1,13 @@
 pkgbase = mingw-w64-libsoup
 	pkgdesc = HTTP client/server library (mingw-w64)
 	pkgver = 2.70.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://download.gnome.org/sources/libsoup
 	arch = any
 	license = LGPL
 	makedepends = mingw-w64-meson
 	makedepends = git
-	makedepends = python
+	makedepends = mingw-w64-environment
 	depends = mingw-w64-glib2
 	depends = mingw-w64-glib-networking
 	depends = mingw-w64-sqlite
