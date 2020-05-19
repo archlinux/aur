@@ -1,0 +1,26 @@
+pkgbase = openmc-git
+	pkgdesc = Community-developed Monte Carlo neutron and photon transport simulation code
+	pkgver = r11186.8bd8af53d
+	pkgrel = 1
+	url = https://github.com/openmc-dev/openmc
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = python-setuptools
+	depends = hdf5-cpp-fortran
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-scipy
+	depends = python-pandas
+	depends = python-h5py
+	depends = python-uncertainties
+	depends = python-lxml
+	provides = openmc
+	provides = libopenmc.so
+	conflicts = openmc
+	source = openmc-git::git+https://github.com/openmc-dev/openmc.git
+	sha1sums = SKIP
+
+pkgname = openmc-git
+
