@@ -1,9 +1,10 @@
-# Maintainer: Jeremy Asuncion <jeremyasuncion808@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jeremy Asuncion <jeremyasuncion808@gmail.com>
 # Contributor: Andrej Marolt <andrej.marolt@gmail.com>
 
-_hash='191fece'
+_hash='0cbc58b'
 pkgname='openshift-origin-server-bin'
-pkgver='3.9.0'
+pkgver='3.11.0'
 pkgrel=1
 pkgdesc="OpenShift Origin is a platform for developing, building, and deploying containerized applications. See https://docs.openshift.org/latest for more on running OpenShift Origin."
 arch=('x86_64')
@@ -17,13 +18,11 @@ source=(
     "zsh-completions-openshift::https://raw.githubusercontent.com/openshift/origin/$_hash/contrib/completions/zsh/openshift"
     "https://github.com/openshift/origin/releases/download/v$pkgver/openshift-origin-server-v$pkgver-$_hash-linux-64bit.tar.gz"
 )
-sha512sums=(
-    'dc005d316e4cb0be1cedf583c7d4b0b535d989a655a92a91acefd0eff45a74e5529c14827a1706b220b4c52e40579204364a1e6d2360eef89d5f59bc4777ec29'
-    '584c1730d553106f4b57a0eb1d601f050e5323a91e5dac22c39a3001d009ca331e93184aa5058f1defc64d4d9ae596d231a84f639a079bed668fe71c333c1080'
-    'e871b6165c7e1c728c8544c86391fa46fe1969ed1bc490c6e0e139c9caa06ea8854b41eedd33afc2bcb83288eb2c6fba675d6e4b48f3ff03163f017f6c6a0337'
-    '93bda923209f2676b165df4a4e74e612e4826af0eaf21719ef5567d970b091170b380b562b39b5daf3b95bb5d88ce8f7f96af6cc76401ad1ac7e656979fa74a9'
-    '26d9489c3e2d2a061337bcd162610b637b256c18af70d9f6d5f2fe538471eb02f2c56fb0fee7cf41f21118621c0afafd52aa91aa8ae5ed78770ae7bdc21a4e2d'
-)
+sha512sums=('362ff81995d27b7ed204f9a6dff92a75ebc920dbc3fa3a8ed775cd9ed642c393e2f09819f1d1b2d3ecd31af7010575ea36364623b83ad2c249c5e3cae3756123'
+            'fb2e3f9c3df7ffb6f924a46f4a389390276f16862585f7bc6f4cedb5a73fd5df8d897f4236b0a9a35efa5e13e2ef7d108b904379907bc3c5f5c904410c494f6b'
+            '69cccd2b6aa1ca63adb7e70ab63fd203ccd5d9bf12485d3fe42ba675cd51216d3d0e0566e03e83ef68f25b682e63595f078a99b1084a65cdec4f5463410c9a51'
+            'd369e1e3484b253800707d2aa312179d6b3a2553b952e7d4d60453a633b97411c24a07d055924c94ca095803d3325b9d8d05c6a0d7e914d8fe6c5d639299c665'
+            '9d85f343ec5538abaef91634331c5eb37351e7af5d327f3a6924c2b61d5a5d7e8e22b64585431e44e16ed6c536bd2a79eb17f3085d5f86654337512ed995f653')
 
 # keep symbols
 options=(!strip)
