@@ -1,11 +1,12 @@
 pkgbase = amulet-map-editor-bin
 	pkgdesc = A new Minecraft world editor and converter that supports all versions since Java 1.12 and Bedrock 1.7.
 	pkgver = 0.6.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.amulet-editor.com/
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
+	makedepends = dos2unix
 	depends = libnotify
 	depends = libxss
 	depends = libxtst
