@@ -9,7 +9,7 @@ depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
 pkgver=2.45
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -71,7 +71,6 @@ build() {
   staticflags=(-buildmode=pie -ldflags "-s -extldflags '$LDFLAGS -static'")
   # Build/install snap and snapd
   go build "${flags[@]}" -o "$GOPATH/bin/snap" "${_gourl}/cmd/snap"
-  go build "${flags[@]}" -o "$GOPATH/bin/snapctl" "${_gourl}/cmd/snapctl"
   go build "${flags[@]}" -o "$GOPATH/bin/snapd" "${_gourl}/cmd/snapd"
   go build "${flags[@]}" -o "$GOPATH/bin/snap-seccomp" "${_gourl}/cmd/snap-seccomp"
   go build "${flags[@]}" -o "$GOPATH/bin/snap-failure" "${_gourl}/cmd/snap-failure"
@@ -101,6 +100,15 @@ build() {
   make $MAKEFLAGS
 }
 
+check() {
+    export GOPATH="$srcdir/go"
+    cd "$srcdir/go/src/${_gourl}"
+
+    # make sure the binaries that need to be built statically really are
+    for binary in snap-exec snap-update-ns snapctl; do
+        ldd "$GOPATH/bin/$binary" 2>&1 | grep 'not a dynamic executable'
+    done
+}
 
 package() {
   cd "$pkgname-$pkgver"
@@ -130,7 +138,6 @@ package() {
   # no tweaks for sudo are needed
   rm -rfv "$pkgdir/etc/sudoers.d"
 
-
   # Install polkit policy
   install -Dm644 data/polkit/io.snapcraft.snapd.policy \
     "$pkgdir/usr/share/polkit-1/actions/io.snapcraft.snapd.policy"
@@ -143,7 +150,7 @@ package() {
   install -Dm755 "$GOPATH/bin/snap-failure" "$pkgdir/usr/lib/snapd/snap-failure"
   install -Dm755 "$GOPATH/bin/snap-update-ns" "$pkgdir/usr/lib/snapd/snap-update-ns"
   install -Dm755 "$GOPATH/bin/snap-exec" "$pkgdir/usr/lib/snapd/snap-exec"
-  # snapctl is run from inside the snap
+  # Ensure /usr/bin/snapctl is a symlink to /usr/libexec/snapd/snapctl
   ln -s /usr/lib/snapd/snapctl "$pkgdir/usr/bin/snapctl"
 
   # pre-create directories
@@ -158,6 +165,7 @@ package() {
   install -dm755 "$pkgdir/var/lib/snapd/seccomp/bpf"
   install -dm755 "$pkgdir/var/lib/snapd/snap/bin"
   install -dm755 "$pkgdir/var/lib/snapd/snaps"
+  install -dm755 "$pkgdir/var/lib/snapd/inhibit"
   install -dm755 "$pkgdir/var/lib/snapd/lib/gl"
   install -dm755 "$pkgdir/var/lib/snapd/lib/gl32"
   install -dm755 "$pkgdir/var/lib/snapd/lib/vulkan"
@@ -170,8 +178,8 @@ package() {
   make -C cmd install DESTDIR="$pkgdir/"
 
   # Install man file
-  mkdir -p "$pkgdir/usr/share/man/man1"
-  "$GOPATH/bin/snap" help --man > "$pkgdir/usr/share/man/man1/snap.1"
+  mkdir -p "$pkgdir/usr/share/man/man8"
+  "$GOPATH/bin/snap" help --man > "$pkgdir/usr/share/man/man8/snap.8"
 
   # Install the "info" data file with snapd version
   install -m 644 -D "$GOPATH/src/${_gourl}/data/info" \
