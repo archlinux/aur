@@ -12,12 +12,12 @@ source=("${pkgname}-${pkgver}.tar.gz::https://www.aelius.com/njh/silentjack/sile
 sha256sums=('87025362cd86d98f8a484e49614696a6a113562d5af45781d9bb4a86e2b1e019')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
+  cd "$srcdir/$pkgname-$pkgver"
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	DESTDIR=$pkgdir make install
+  cd "$srcdir/$pkgname-$pkgver"
+  DESTDIR=$pkgdir make install
 }
