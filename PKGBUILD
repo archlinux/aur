@@ -2,11 +2,13 @@
 
 # Previous Maintainer: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
 # Contributor: Ruslan Nabioullin <rnabioullin at gmail dot com>
+# Contributor: WB2FKO <mph at sportscliche dot com>
 # Contributor: Gordon JC Pearce <gordon at gjcp dot net>
+# Original Contributor: Bob Finch <w9ya at qrparci dot net>
 
 pkgname=xastir
 pkgver=2.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="HAM RADIO - Full featured APRS Tracking/Information Reporting System"
 arch=('armv7h' 'i686' 'x86_64')
 url="http://www.xastir.org/"
