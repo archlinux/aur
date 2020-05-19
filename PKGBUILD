@@ -17,13 +17,18 @@ optdepends=('libva-utils: Applications and Scripts for libva (vainfo and others)
 license=(MIT)
 makedepends=(mesa)
 
-source=(https://bitbucket.org/alium/g45-h264/downloads/intel-driver-g45-h264-$pkgver.tar.gz)
+source=(https://bitbucket.org/alium/g45-h264/downloads/intel-driver-g45-h264-$pkgver-2.tar.gz
+	gcc10.patch gcc10-2.patch)
 
 prepare () {
   cd intel-vaapi-driver
   # Only relevant if intel-gpu-tools is installed,
   # since then the shaders will be recompiled
   sed -i '1s/python$/&2/' src/shaders/gpp.py
+
+  # fix gcc10 errors
+  patch -Np1 -i ../gcc10.patch
+  patch -Np1 -i ../gcc10-2.patch
 }
 
 build() {
@@ -39,4 +44,6 @@ package() {
     install -m644 -D COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
 }
 
-sha256sums=('de7b15188bb3bf4892363c007d6b2fb6121e5682f337428a0a6316face62cc5e')
+sha256sums=('6850c0e519b09bd720bab8bdbf8e53974c44fec7ebca7389990cd1262ce35f09'
+            'ca9db2bace98932deadc1301d57194b8ad777ecb43b31b10e76b2b6b1ac2bfd9'
+            'f87c8398a26faf50fa23769a3bbbedb865ced964a2257a14211eb3434c4a5658')
