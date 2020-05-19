@@ -1,8 +1,9 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-mm
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OCaml multimedia library"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-mm"

@@ -1,7 +1,7 @@
 pkgbase = ocaml-mm
 	pkgdesc = OCaml multimedia library
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/savonet/ocaml-mm
 	arch = i686
 	arch = x86_64
