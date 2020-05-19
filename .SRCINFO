@@ -5,8 +5,8 @@ pkgbase = polkadot
 	url = https://github.com/paritytech/polkadot
 	arch = x86_64
 	license = GPL3
-	makedepends = rust
-	makedepends = cargo
+	makedepends = rustup
+	makedepends = clang
 	source = polkadot::git+https://github.com/paritytech/polkadot.git
 	sha256sums = SKIP
 

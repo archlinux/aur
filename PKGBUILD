@@ -6,11 +6,13 @@ pkgver=0.7.33
 arch=('x86_64')
 url="https://github.com/paritytech/${pkgname}"
 license=('GPL3')
-makedepends=('rust' 'cargo')
+makedepends=('rustup' 'clang')
 source=("${pkgname}::git+https://github.com/paritytech/${pkgname}.git")
 sha256sums=("SKIP")
 
 build() {
+  rustup install nightly
+  rustup target add wasm32-unknown-unknown
 	cd ${pkgname}
   git checkout "v${pkgver}"
 	cargo build --release
