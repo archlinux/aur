@@ -1,13 +1,13 @@
 pkgbase = duetwebserver-bin
 	pkgdesc = Optional web server for Duet 3 series
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chrishamm/DuetSoftwareFramework.git
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	depends = duetcontrolserver>=1.2.0.0
-	depends = duetruntime>=1.2.0.0
+	depends = duetcontrolserver>=3.1.0
+	depends = duetruntime>=3.1.0
 	optdepends = duetwebcontrol
 	optdepends = duetsd
 	provides = duetwebserver=3.1.0
