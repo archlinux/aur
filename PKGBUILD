@@ -1,5 +1,5 @@
-# Maintainer: Andrew Crouthamel
-# CoMaintainer: physkets
+# Maintainer: physkets
+# Contributor: Andrew Crouthamel
 # Contributor: Liviu Cristian Mirea-Ghiban
 # Contributor: Lars Øyvind Hagland
 # Contributor: Vishnu V K
@@ -13,7 +13,7 @@
 _GUI=1
 
 pkgname=netextender
-pkgver=10.0.807
+pkgver=10.2.815
 pkgrel=1
 pkgdesc="SonicWALL SSL VPN Client"
 arch=('i686' 'x86_64')
@@ -24,9 +24,9 @@ source_i686=("NetExtender-${pkgver}.tgz::https://sslvpn.demo.sonicwall.com/NetEx
              "https://www.sonicwall.com/legal/general-product-agreement")
 source_x86_64=("NetExtender-${pkgver}.x86_64.tgz::https://sslvpn.demo.sonicwall.com/NetExtender.x86_64.tgz"
                "https://www.sonicwall.com/legal/general-product-agreement")
-sha256sums_i686=('94c6e0003cf7e2a623f0359e6f33c92521cde1e6b878a28fc700eb3f4fd814b3'
+sha256sums_i686=('7d00e14dc1687f8162baceb17a40703196dfaec98f192ece2205dbe004fec21d'
                  'SKIP')
-sha256sums_x86_64=('773849f159db917db6a89b7593849eec9af0f0fc08ba57ccf6db45b07aad3daf'
+sha256sums_x86_64=('a890cf5cae2173bc1d92b9ac01922db32c42eb00ba714d949cc52cf71122bee0'
                  'SKIP')
 
 if (( $_GUI )); then
