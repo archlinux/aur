@@ -9,11 +9,11 @@ url='https://opendiablo2.com'
 license=('GPL3')
 provides=('opendiablo2')
 depends=('libxrandr'
-    		 'libxinerama'
-    		 'libxi'
-    		 'sdl2'
-    		 'sdl2_mixer'
-    		 'sdl2_net')
+         'libxinerama'
+         'libxi'
+         'sdl2'
+         'sdl2_mixer'
+         'sdl2_net')
 makedepends=('go-pie' 'gendesk')
 install=post_install
 source=("git+https://github.com/OpenDiablo2/OpenDiablo2")
