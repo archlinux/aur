@@ -2,7 +2,7 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='yandex-tank'
-pkgver='1.12.3'
+pkgver='1.12.8'
 pkgrel='1'
 pkgdesc='Performance measurement tool'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python2-pyopenssl' 'python2-cryptography'
 	 'python2-pandas' 'python2-paramiko' 'python2-requests' 'phantom')
 makedepends=('python2' 'python-setuptools' 'gzip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('051ba1e418fc6dba024bc1780b2e3e094a0200f8f0c1a4605f255e4c247cd511')
+sha256sums=('a34b9c75ff8e03b094798f389b3f8887db2f51766a35ef12cc5058736d14620d')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}/data"
