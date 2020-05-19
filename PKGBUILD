@@ -1,34 +1,27 @@
-# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-radio-git
-pkgver=0.1.3.r71.gc00c1a0
-pkgrel=3
-pkgdesc="Listening to your favorite radio stations in Nextcloud"
+pkgver=r13.838dab9
+pkgrel=1
+pkgdesc="Listening to radio stations (Git variant)"
 arch=('any')
 url="https://git.project-insanity.org/onny/nextcloud-app-radio"
 license=('MIT')
 depends=('nextcloud')
 makedepends=('php')
 options=('!strip')
-provides=('nextcloud-app-radio')
+provides=('nextcloud-app-radio' 'nextcloud-app-radio-git')
 conflicts=('nextcloud-app-radio')
-source=("radio::git+https://github.com/onny/nextcloud-app-radio.git")
-sha512sums=("SKIP")
+source=("git+https://github.com/onny/nextcloud-app-radio.git")
+sha512sums=('SKIP')
 
-#pkgver() {
-#  cd "radio"
-#  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
-#}
-
-#build() {
-#  cd "${srcdir}/radio"
-#  make appstore
-#}
+pkgver() {
+  cd "${srcdir}/nextcloud-app-radio"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
-  install -d "${pkgdir}/usr/share/webapps/nextcloud/apps/radio"
-  cp -r ${srcdir}/radio/* "${pkgdir}/usr/share/webapps/nextcloud/apps/radio/"
-  #tar -xvf "${srcdir}/mail/build/artifacts/tasks.tar.gz" -C "${pkgdir}/usr/share/webapps/nextcloud/apps/"
-  #install -D "${pkgdir}/usr/share/webapps/nextcloud/apps/tasks/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
+  cp -a ${srcdir}/radio* "${pkgdir}/usr/share/webapps/nextcloud/apps/radio"
 }
