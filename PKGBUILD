@@ -10,7 +10,7 @@ provides=("${_appname}")
 conflicts=("${_appname}")
 url="https://github.com/paritytech/${_appname}"
 license=('GPL3')
-makedepends=('rust' 'cargo')
+makedepends=('rustup' 'clang')
 source=("${_appname}::git+${url}.git")
 sha256sums=('SKIP')
 
@@ -20,6 +20,8 @@ pkgver() {
 }
 
 build() {
+  rustup install nightly
+  rustup target add wasm32-unknown-unknown
 	cd "${srcdir}/${_appname}"
 	cargo build --release
 }
