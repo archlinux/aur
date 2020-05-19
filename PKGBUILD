@@ -3,8 +3,8 @@
 
 _gemname=typhoeus
 pkgname=ruby-$_gemname
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='Parallel HTTP library on top of libcurl multi.'
 arch=(any)
 url='https://github.com/typhoeus/typhoeus'
@@ -21,4 +21,4 @@ package() {
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha512sums=('f826cdb7e48577226b12fc2715123e13519148f67d036470e385f80f8f3112d1ad24bf580c2ed0d213242c9afc1bdf868084266d430858b2cf6de73e50a11422')
+sha512sums=('f48a99fd554f4d06d37a0a804ee79dd8423d9bff765394537ab0edba615e132d25660a6eb455e8628f59bd56c7ea26f4a195827d5287a53e58e3aeb394477284')
