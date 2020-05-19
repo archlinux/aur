@@ -28,7 +28,7 @@
 pkgname=vivado
 pkgver=2019.2
 _more_ver=1106_2127
-pkgrel=3
+pkgrel=4
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
 arch=('x86_64')
@@ -43,19 +43,13 @@ depends=('ncurses5-compat-libs'
          'xterm')
 
 source=("file:///Xilinx_Vivado_${pkgver}_${_more_ver}.tar.gz"
-        'spoof_homedir.c'
-        'Xilinx-VivadoIDE.desktop'
-        'Xilinx-SDK.desktop'
-        'Xilinx-DocNav.desktop')
+        'spoof_homedir.c')
 
 noextract=("Xilinx_Vivado_${pkgver}_${_more_ver}.tar.gz")
 
 # checksum from https://www.xilinx.com/support/download.html
 md5sums=('e2b2762964ef5f014591b13d77d823ab'
-         '69d14ad64f6ec44e041eaa8ffcb6f87c'
-         'b7cad6d39ef5293d4f433b8c9959f486'
-         '44bb51e1c8832f001cb7d21b90cb5796'
-         '4d37975f586923ad02a50056ff569703')
+         '69d14ad64f6ec44e041eaa8ffcb6f87c')
 
 # takes forever for probably minimal gain
 options=('!strip')
@@ -66,8 +60,6 @@ prepare() {
 	bsdtar -xf "Xilinx_Vivado_${pkgver}_${_more_ver}.tar.gz"
 
 	mkdir -p "$srcdir/installer_temp"
-
-	sed -i "s/%VERSION%/$pkgver/g" *.desktop
 }
 
 build() {
@@ -90,9 +82,11 @@ package() {
 	install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-ftdi-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
 	install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-pcusb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
 
-	install -Dm644 "$srcdir/Xilinx-VivadoIDE.desktop" -t "$pkgdir/usr/share/applications/"
-	install -Dm644 "$srcdir/Xilinx-SDK.desktop" -t "$pkgdir/usr/share/applications/"
-	install -Dm644 "$srcdir/Xilinx-DocNav.desktop" -t "$pkgdir/usr/share/applications/"
+	# install desktop files
+	for deskfile in "$srcdir"/installer_temp/Desktop/*.desktop; do
+		sed -i -e "s|$pkgdir||g" "$deskfile"
+		install -Dm644 -t "$pkgdir/usr/share/applications/" "$deskfile"
+	done
 
 	# clean up artefacts, remove leading $pkgdir from paths
 	rm -rf "$pkgdir/opt/Xilinx/.xinstall/"

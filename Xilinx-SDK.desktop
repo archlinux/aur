@@ -1,8 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=Xilinx SDK
-Exec=sh -c "unset LANG && unset QT_PLUGIN_PATH && source /opt/Xilinx/SDK/%VERSION%/settings64.sh && xsdk"
-Icon=/opt/Xilinx/SDK/%VERSION%/data/sdk/images/sdk_logo.png
-Categories=Development;
-Comment=Xilinx Software Development Kit

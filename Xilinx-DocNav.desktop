@@ -1,8 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=Xilinx Documentation Navigator
-Exec=/opt/Xilinx/DocNav/docnav
-Icon=/opt/Xilinx/DocNav/resources/doc_nav_application_48.png
-Categories=Development;
-Comment=Xilinx Documentation Navigator
