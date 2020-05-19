@@ -1,121 +1,229 @@
-# Maintainer: Franck Lucien Duriez <franck.lucien.duriez@gmail.com>
-# Maintainer: Det <nimetonmaili g-mail>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Franck Lucien Duriez <franck.lucien.duriez@gmail.com>
+# Contributor: Det <nimetonmaili g-mail>
+# Based on the x86_64 jdk8 package
 
-_pkgname=jdk
-pkgname=jdk8-arm
-_major=8
-_minor=201
-_build=b09
-_hash=42970487e3af4f5aa5bca3f542482c60
-pkgver=${_major}u${_minor}
+set -u
+_pkgname='jdk'
+_major='8'
+pkgname="${_pkgname}${_major}-arm"
+#_minor='212'; _build='b10'; _hash='59066701cf1a433da9770636fbc4c9aa'
+#_minor='221'; _build='b11'; _hash='230deb18db3e4014bb8e3e8324f81b43'
+#_minor='231'; _build='b11'; _hash='5b13a193868b4bf28bcb45c792fce896'
+#_minor='241'; _build='b07'; _hash='1f5b5a70bf22433b84d0e960903adac8'
+_minor='251'; _build='b08'; _hash='3d5a2bb8f8d4428bbe94aed7ec7ae784'
+pkgver="${_major}u${_minor}"
 pkgrel=1
-pkgdesc="Oracle Java $_major Development Kit for ARM32"
-_arch=arm32-vfp-hflt
+pkgdesc="Oracle Java ${_major} Development Kit for ARM32"
+pkgdesc+=' LTS'
 arch=('armv7h')
-url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
+url='https://www.oracle.com/technetwork/java/javase/downloads/index.html'
 license=('custom:Oracle')
-depends=('ca-certificates-java' 'hicolor-icon-theme' 'java-environment-common' 'java-runtime-common' 'nss' 'xdg-utils')
-optdepends=('alsa-lib: for basic sound support')
-provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start=$_major" "java-environment=$_major"
-          "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major" "java-environment-jdk=$_major"
-          "java-openjfx=$_major")
+depends=('ca-certificates-java' 'hicolor-icon-theme' 'java-runtime-common' 'nss' 'xdg-utils')
+depends+=('java-environment-common')
+optdepends=(
+  'alsa-lib: for basic sound support'
+  'eclipse-java: to use "Oracle Java Mission Control" plugins in Eclipse'
+  'gtk2: for Gtk+ look and feel (desktop)'
+)
+makedepends=('awk')
+provides=(
+  "java-runtime=${_major}"
+  "java-runtime-headless=${_major}"
+  "java-web-start=${_major}"
+  "java-runtime-jre=${_major}"
+  "java-runtime-headless-jre=${_major}"
+  "java-web-start-jre=${_major}"
+  "java-openjfx=${_major}"
+  "java-environment-jdk=${_major}"
+  "java-environment=${_major}"
+)
 
 # Variables
-DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
-_jname=${_pkgname}${_major}
-_jvmdir=/usr/lib/jvm/java-$_major-$_pkgname
 
-backup=("etc/java-$_jname/arm/jvm.cfg"
-        "etc/java-$_jname/images/cursors/cursors.properties"
-        "etc/java-$_jname/management/jmxremote.access"
-        "etc/java-$_jname/management/management.properties"
-        "etc/java-$_jname/security/java.policy"
-        "etc/java-$_jname/security/java.security"
-        "etc/java-$_jname/content-types.properties"
-        "etc/java-$_jname/flavormap.properties"
-        "etc/java-$_jname/fontconfig.properties.src"
-        "etc/java-$_jname/logging.properties"
-        "etc/java-$_jname/net.properties"
-        "etc/java-$_jname/psfont.properties.ja"
-        "etc/java-$_jname/psfontj2d.properties"
-        "etc/java-$_jname/sound.properties")
+_jname="${_pkgname}${_major}"
+_jvmdir="/usr/lib/jvm/java-${_major}-${_pkgname}"
+
+backup=(
+  "etc/java-${_jname}/amd64/jvm.cfg"
+  "etc/java-${_jname}/images/cursors/cursors.properties"
+  "etc/java-${_jname}/management/jmxremote.access"
+  "etc/java-${_jname}/management/management.properties"
+  "etc/java-${_jname}/security/java.policy"
+  "etc/java-${_jname}/security/java.security"
+  "etc/java-${_jname}/security/javaws.policy"
+  "etc/java-${_jname}/content-types.properties"
+  "etc/java-${_jname}/flavormap.properties"
+  "etc/java-${_jname}/fontconfig.properties.src"
+  "etc/java-${_jname}/logging.properties"
+  "etc/java-${_jname}/net.properties"
+  "etc/java-${_jname}/psfont.properties.ja"
+  "etc/java-${_jname}/psfontj2d.properties"
+  "etc/java-${_jname}/sound.properties"
+)
 options=('!strip') # JDK debug-symbols
-install=$pkgname.install
+install="${pkgname}.install"
+_srcfil="${_pkgname}-${pkgver}-linux-arm32-vfp-hflt.tar.gz"
+source=(
+  "https://download.oracle.com/otn-pub/java/jce/${_major}/jce_policy-${_major}.zip"
+  "https://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash}/${_srcfil}"
+  "jconsole-${_jname}.desktop"
+  "jmc-${_jname}.desktop"
+  "jvisualvm-${_jname}.desktop"
+  "policytool-${_jname}.desktop"
+  'readme.sh'
+)
+# from oracle-sqldeveloper
+if ! :; then
+DLAGENTS+=("manual::${startdir:-}/readme.sh %o %u")
+source[1]="manual://${_srcfil}"
+if [ ! -z "${HOME:-}" ]; then # block mksrcinfo
+  XDG_DOWNLOAD_DIR="$(xdg-user-dir DOWNLOAD 2>/dev/null)" || :
+  if [ -z "${XDG_DOWNLOAD_DIR}" ]; then
+    XDG_DOWNLOAD_DIR=~/'Downloads'
+  fi
+  if [ -s "${XDG_DOWNLOAD_DIR}/${_srcfil}" ] && [ ! -e "${_srcfil}" ]; then
+    if type msg > /dev/null 2>&1; then
+      set +u
+      msg "Scooping files from ${XDG_DOWNLOAD_DIR}" 1>&2
+      msg2 "${_srcfil}" 1>&2
+      set -u
+      ln -sr "${XDG_DOWNLOAD_DIR}/${_srcfil}"
+    fi
+  fi
+fi
+unset _srcfil
+unset XDG_DOWNLOAD_DIR
+fi
 
-source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_hash/$_pkgname-$pkgver-linux-$_arch.tar.gz"
-        "http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip")
-md5sums=('7f421e5766094b7068042bcf9c603e96'
-         'b3c7031bc65c28c2340302065e7d00d3')
+md5sums=('b3c7031bc65c28c2340302065e7d00d3'
+         '6d2c09eced1c83379117ab59e564c75c'
+         '8a66f50efdc867ffd6a27168bc93b210'
+         '1cbde70639abd98db4bace284dbf2bc4'
+         'f0b39865361437f3778ecbe6ffbc0a06'
+         '89704501aff8efe859c31968d8d168e6'
+         '51c8839211cc53f09c9b11a8e28ed1ef')
+
+PKGEXT='.pkg.tar.gz' # much faster than .xz
+## Alternative mirror, if your local one is throttled:
+## Posting new sites does no good. They get taken down by the admin
+## from too much traffic or complaints from Oracle.
+#source[1]=???
+
+DLAGENTS=("${DLAGENTS[@]// -gqb \"\"/ -gq}")
+DLAGENTS=("${DLAGENTS[@]//curl -/curl -b 'oraclelicense=a' -}")
 
 package() {
-    cd "${_pkgname}1.${_major}.0_${_minor}"
+  set -u
+  cd "${_pkgname}1.${_major}.0_${_minor}"
 
-    msg2 "Creating directory structure..."
-    install -d "$pkgdir/etc/.java/.systemPrefs"
-    install -d "$pkgdir/usr/lib/jvm/java-$_major-$_pkgname/bin"
-    install -d "$pkgdir/usr/lib/mozilla/plugins"
-    install -d "$pkgdir/usr/share/licenses/java$_major-$_pkgname"
+  set +u; msg2 'Creating directory structure...'; set -u
+  install -d "${pkgdir}/etc/.java/.systemPrefs"
+  install -d "${pkgdir}/usr/lib/jvm/java-${_major}-${_pkgname}/bin"
+  install -d "${pkgdir}/usr/lib/mozilla/plugins"
+  install -d "${pkgdir}/usr/share/licenses/java${_major}-${_pkgname}"
 
-    msg2 "Removing redundancies..."
-    rm    jre/lib/fontconfig.*.bfc
-    rm    jre/lib/fontconfig.*.properties.src
-    rm    jre/*.txt
+  set +u; msg2 'Removing redundancies...'; set -u
+  pushd 'jre' > /dev/null
+  rm -r 'lib/desktop/icons/HighContrast/'
+  rm -r 'lib/desktop/icons/HighContrastInverse/'
+  rm -r 'lib/desktop/icons/LowContrast/'
+  rm    lib/fontconfig.*.bfc
+  rm    lib/fontconfig.*.properties.src
+  rm    *.txt
+  rm    'COPYRIGHT'
+  rm    'LICENSE'
+  rm    'README'
+  rm -r 'plugin/'
+  popd > /dev/null
+  rm    'man/ja'
 
-    msg2 "Moving contents..."
-    mv * "$pkgdir/$_jvmdir"
+  set +u; msg2 'Moving contents...'; set -u
+  mv * "${pkgdir}/${_jvmdir}"
 
-    # Cd to the new playground
-    cd "$pkgdir/$_jvmdir"
+  # Cd to the new playground
+  cd "${pkgdir}/${_jvmdir}"
 
-    msg2 "Fixing directory structure..."
-    # Replace duplicate binaries in bin/ with links to jre/bin/
-    for i in $(ls jre/bin/); do
-        ln -sf "$_jvmdir/jre/bin/$i" "bin/$i"
-    done
+  set +u; msg2 'Fixing directory structure...'; set -u
+  # Replace duplicate binaries in bin/ with links to jre/bin/
+  local _i
+  for _i in jre/bin/*; do
+    ln -sf "${_jvmdir}/jre/bin/${_i##*/}" "bin/${_i##*/}"
+  done
 
-    # Move confs to /etc and link back to /usr: /usr/lib/jvm/java-$_jname/jre/lib -> /etc
-    for new_etc_path in ${backup[@]}; do
-        # Old location
-        old_usr_path="jre/lib/${new_etc_path#*$_jname/}"
+  # Suffix .desktops + icons (sun-java.png -> sun-java-${_jname}.png)
+  local _i
+  for _i in $(find 'jre/lib/desktop/' -type 'f'); do
+    rename -- '.' "-${_jname}." "${_i}"
+  done
 
-        # Move
-        install -Dm644 "$old_usr_path" "$pkgdir/$new_etc_path"
-        ln -sf "/$new_etc_path" "$old_usr_path"
-    done
+  # Fix .desktop paths
+  sed -e "s|Exec=|Exec=${_jvmdir}/jre/bin/|" \
+      -e "s|.png|-${_jname}.png|" \
+    -i 'jre/lib/desktop/applications'/*
 
-    # Replace JKS keystore with 'ca-certificates-java'
-    ln -sf '/etc/ssl/certs/java/cacerts' 'jre/lib/security/cacerts'
+  # Move .desktops + icons to /usr/share
+  mv 'jre/lib/desktop'/* "${pkgdir}/usr/share/"
+  install -m644 "${srcdir}"/*.desktop -t "${pkgdir}/usr/share/applications/"
 
-    # Suffix man pages
-    for i in $(find 'man' -type f); do
-        mv "$i" "${i/.1}-$_jname.1"
-    done
+  # Enable context menu launch (Austcool)
+  sed -e 's:^NoDisplay=true:#&:g' \
+      -e 's:^Exec=/usr.*$:& -F:g' \
+    -i "${pkgdir}/usr/share/applications/sun-java-jdk8.desktop"
 
-    # Move man pages
-    mv 'man/' "$pkgdir/usr/share"
+  # Move confs to /etc and link back to /usr: /usr/lib/jvm/java-${_jname}/jre/lib -> /etc
+  local _new_etc_path
+  for _new_etc_path in "${backup[@]}"; do
+    # Old location
+    local _old_usr_path="jre/lib/${_new_etc_path#*${_jname}/}"
 
-    # Move/link licenses
-    mv 'COPYRIGHT' 'LICENSE' *.txt "$pkgdir/usr/share/licenses/java$_major-$_pkgname/"
-    ln -sf "/usr/share/licenses/java$_major-$_pkgname/" "$pkgdir/usr/share/licenses/$pkgname"
+    # Move
+    install -Dm644 "${_old_usr_path}" "${pkgdir}/${_new_etc_path}"
+    ln -sf "/${_new_etc_path}" "${_old_usr_path}"
+  done
 
-    msg2 "Installing Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files..."
-    # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
-    # things like 256-bit AES. Enabled by default in OpenJDK:
-    # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
-    # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
-    install -m644 "$srcdir/UnlimitedJCEPolicyJDK$_major/"*.jar "jre/lib/security/"
-    install -Dm644 "$srcdir/UnlimitedJCEPolicyJDK$_major/README.txt" \
-                   "$pkgdir/usr/share/doc/$_pkgname/README_-_Java_JCE_Unlimited_Strength.txt"
+  # Link NPAPI plugin
+  ln -s "${_jvmdir}/jre/lib/amd64/libnpjp2.so" "${pkgdir}/usr/lib/mozilla/plugins/libnpjp2-${_jname}.so"
 
-    msg2 "Enabling copy+paste in unsigned applets..."
-    # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
-    # - https://blogs.oracle.com/kyle/entry/copy_and_paste_in_java
-    # - http://slightlyrandombrokenthoughts.blogspot.com/2011/03/oracle-java-applet-clipboard-injection.html
-    _line=$(awk '/permission/{a=NR}; END{print a}' "$pkgdir/etc/java-$_jname/security/java.policy")
-    sed "$_line a\\\\n \
-        // (AUR) Allow unsigned applets to read system clipboard, see:\n \
-        // - https://blogs.oracle.com/kyle/entry/copy_and_paste_in_java\n \
-        // - http://slightlyrandombrokenthoughts.blogspot.com/2011/03/oracle-java-applet-clipboard-injection.html\n \
-        permission java.awt.AWTPermission \"accessClipboard\";" \
-    -i "$pkgdir/etc/java-$_jname/security/java.policy"
+  # Replace JKS keystore with 'ca-certificates-java'
+  ln -sf '/etc/ssl/certs/java/cacerts' 'jre/lib/security/cacerts'
+
+  # Suffix man pages
+  for _i in $(find 'man/' -type 'f'); do
+    rename -- '.1' "-${_jname}.1" "${_i}"
+  done
+
+  # Move man pages
+  mv 'man/ja_JP.UTF-8/' 'man/ja'
+  mv 'man/' "${pkgdir}/usr/share"
+
+  # Move/link licenses
+  mv 'COPYRIGHT' 'LICENSE' *.txt "${pkgdir}/usr/share/licenses/java${_major}-${_pkgname}/"
+  ln -s "/usr/share/licenses/java${_major}-${_pkgname}/" "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  set +u; msg2 'Installing Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files...'; set -u
+  # Replace default "strong", but limited, cryptography to get an "unlimited strength" one for
+  # things like 256-bit AES. Enabled by default in OpenJDK:
+  # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
+  # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
+  install -m644 "${srcdir}/UnlimitedJCEPolicyJDK${_major}"/*.jar 'jre/lib/security/'
+  install -Dm644 "${srcdir}/UnlimitedJCEPolicyJDK${_major}/README.txt" \
+                 "${pkgdir}/usr/share/doc/${_pkgname}/README_-_Java_JCE_Unlimited_Strength.txt"
+
+  set +u; msg2 'Enabling copy+paste in unsigned applets...'; set -u
+  # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
+  # - https://blogs.oracle.com/kyle/entry/copy_and_paste_in_java
+  # - http://slightlyrandombrokenthoughts.blogspot.com/2011/03/oracle-java-applet-clipboard-injection.html
+  local _text='\
+         // (AUR) Allow unsigned applets to read system clipboard, see:
+         // - https://blogs.oracle.com/kyle/entry/copy_and_paste_in_java
+         // - http://slightlyrandombrokenthoughts.blogspot.com/2011/03/oracle-java-applet-clipboard-injection.html
+         permission java.awt.AWTPermission "accessClipboard";'
+  local _lf=$'\n'
+  _text="${_text//${_lf}/\\n}"
+  local _line
+  _line="$(awk '/permission/{a=NR}; END{print a}' "${pkgdir}/etc/java-${_jname}/security/java.policy")"
+  sed -e "${_line} a ${_text}" -i "${pkgdir}/etc/java-${_jname}/security/java.policy"
+  set +u
 }
+set +u

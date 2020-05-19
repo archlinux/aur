@@ -1,34 +1,38 @@
 pkgbase = jdk8-arm
-	pkgdesc = Oracle Java 8 Development Kit for ARM32
-	pkgver = 8u201
+	pkgdesc = Oracle Java 8 Development Kit for ARM32 LTS
+	pkgver = 8u251
 	pkgrel = 1
-	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	url = https://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jdk8-arm.install
 	arch = armv7h
 	license = custom:Oracle
+	makedepends = awk
 	depends = ca-certificates-java
 	depends = hicolor-icon-theme
-	depends = java-environment-common
 	depends = java-runtime-common
 	depends = nss
 	depends = xdg-utils
+	depends = java-environment-common
 	optdepends = alsa-lib: for basic sound support
+	optdepends = eclipse-java: to use "Oracle Java Mission Control" plugins in Eclipse
+	optdepends = gtk2: for Gtk+ look and feel (desktop)
 	provides = java-runtime=8
 	provides = java-runtime-headless=8
 	provides = java-web-start=8
-	provides = java-environment=8
 	provides = java-runtime-jre=8
 	provides = java-runtime-headless-jre=8
 	provides = java-web-start-jre=8
-	provides = java-environment-jdk=8
 	provides = java-openjfx=8
+	provides = java-environment-jdk=8
+	provides = java-environment=8
 	options = !strip
-	backup = etc/java-jdk8/arm/jvm.cfg
+	backup = etc/java-jdk8/amd64/jvm.cfg
 	backup = etc/java-jdk8/images/cursors/cursors.properties
 	backup = etc/java-jdk8/management/jmxremote.access
 	backup = etc/java-jdk8/management/management.properties
 	backup = etc/java-jdk8/security/java.policy
 	backup = etc/java-jdk8/security/java.security
+	backup = etc/java-jdk8/security/javaws.policy
 	backup = etc/java-jdk8/content-types.properties
 	backup = etc/java-jdk8/flavormap.properties
 	backup = etc/java-jdk8/fontconfig.properties.src
@@ -37,10 +41,20 @@ pkgbase = jdk8-arm
 	backup = etc/java-jdk8/psfont.properties.ja
 	backup = etc/java-jdk8/psfontj2d.properties
 	backup = etc/java-jdk8/sound.properties
-	source = http://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jdk-8u201-linux-arm32-vfp-hflt.tar.gz
-	source = http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
-	md5sums = 7f421e5766094b7068042bcf9c603e96
+	source = https://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
+	source = https://download.oracle.com/otn-pub/java/jdk/8u251-b08/3d5a2bb8f8d4428bbe94aed7ec7ae784/jdk-8u251-linux-arm32-vfp-hflt.tar.gz
+	source = jconsole-jdk8.desktop
+	source = jmc-jdk8.desktop
+	source = jvisualvm-jdk8.desktop
+	source = policytool-jdk8.desktop
+	source = readme.sh
 	md5sums = b3c7031bc65c28c2340302065e7d00d3
+	md5sums = 6d2c09eced1c83379117ab59e564c75c
+	md5sums = 8a66f50efdc867ffd6a27168bc93b210
+	md5sums = 1cbde70639abd98db4bace284dbf2bc4
+	md5sums = f0b39865361437f3778ecbe6ffbc0a06
+	md5sums = 89704501aff8efe859c31968d8d168e6
+	md5sums = 51c8839211cc53f09c9b11a8e28ed1ef
 
 pkgname = jdk8-arm
 
