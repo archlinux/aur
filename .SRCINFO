@@ -1,0 +1,15 @@
+pkgbase = pinghd-bin
+	pkgdesc = A cross-platform, and standalone tool to prevent all of your hard drives from entering auto-sleep mode
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/m2adel/PingHD
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gtk2
+	provides = pinghd
+	source = pinghd-bin-0.1.0.tar.xz::https://github.com/m2adel/PingHD/releases/download/0.1.0/PingHD.tar.xz
+	sha256sums = 0ec112fc7c1cfc2e86795a786d95a8c274bbd2e8cd50b334812f70e5afcb1559
+
+pkgname = pinghd-bin
+
