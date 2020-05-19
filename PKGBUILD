@@ -1,7 +1,8 @@
-# Maintainer: Scott Dickson <scottfoesho@gmail.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Scott Dickson <scottfoesho@gmail.com>
 
 pkgname=gnome-shell-extension-gnomenu
-pkgver=28
+pkgver=29
 pkgrel=1
 pkgdesc="GnoMenu - is a traditional styled full featured Gnome-Shell apps-menu, that aims to offer all the essentials in a simple uncluttered intuitive interface."
 arch=('any')
@@ -9,7 +10,7 @@ url="https://github.com/The-Panacea-Projects/Gnomenu"
 license=('GPL3')
 depends=('gnome-shell')
 source=("https://github.com/The-Panacea-Projects/Gnomenu/archive/gno-menu.v${pkgver}.tar.gz")
-sha256sums=('0eb70c747be17a0256bd08d91241901c978f67d041d7fdd741d1e93cbfca4233')
+sha256sums=('48716da48902f272da6e2a81472ea7ce0e3a9b299c087daaab39ba313ff9362e')
 
 package() {
   _extname='gnomenu@panacier.gmail.com'
