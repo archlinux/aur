@@ -7,7 +7,7 @@
 
 pkgname=yubikey-agent
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A seamless ssh-agent for YubiKeys'
 arch=('x86_64')
 url="https://filippo.io/yubikey-agent"
@@ -27,6 +27,9 @@ build() {
   cd $pkgname-$pkgver
   go build \
     -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
     -ldflags "-extldflags $LDFLAGS" \
     -o $pkgname .
 }
