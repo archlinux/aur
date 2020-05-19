@@ -9,9 +9,9 @@ pkgdesc='Lightweight and easy-to-use UML2.x modeler (Trial)'
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('java-runtime=8'
-		 'lib32-glibc'
-		 'hicolor-icon-theme'
-		 'bash')
+     'lib32-glibc'
+     'hicolor-icon-theme'
+     'bash')
 conflicts=('astah-community' 'astah-professional')
 options=('!emptydirs' '!strip')
 source=("http://cdn.change-vision.com/files/astah-uml-${_pkgver}.noarch.rpm")
