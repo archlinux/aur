@@ -1,7 +1,8 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-textutils
-pkgver=0.11.0
+pkgver=0.13.0
 pkgrel=1
 epoch=1
 pkgdesc="Text output utilities"
@@ -12,7 +13,7 @@ depends=('ocaml' 'ocaml-core' 'ocaml-ppx_jane' 'ocaml-textutils_kernel' 'ocaml-m
 makedepends=('dune')
 options=('!strip')
 source=("https://ocaml.janestreet.com/ocaml-core/v$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/textutils-v${pkgver}.tar.gz")
-md5sums=('58aede37fcd2e99d90726b30ee36bf1e')
+sha256sums=('e61fc1f7aea9faef3a38c996e6287e1c03f3ddf1dffe6b3596ba95f020e57b40')
 
 build() {
   cd "${srcdir}/textutils-v${pkgver}"
