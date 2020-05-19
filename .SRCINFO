@@ -1,0 +1,19 @@
+pkgbase = dmenu-term
+	pkgdesc = dmenu as a terminal with fuzzy filter
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/maximbaz/dmenu-term
+	arch = any
+	license = MIT
+	optdepends = fzf: fuzzy filter
+	optdepends = kitty: currently supported terminal
+	provides = dmenu
+	conflicts = dmenu
+	source = dmenu-term-1.0.0.tar.gz::https://github.com/maximbaz/dmenu-term/archive/1.0.0.tar.gz
+	source = https://github.com/maximbaz/dmenu-term/releases/download/1.0.0/dmenu-term-1.0.0.tar.gz.asc
+	validpgpkeys = EB4F9E5A60D32232BB52150C12C87A28FEAC6B20
+	sha256sums = dab361685a4c3e3f54e4870ce3c34d8bb0e8aabeae504174d0c8ca6dd7cf513e
+	sha256sums = SKIP
+
+pkgname = dmenu-term
+
