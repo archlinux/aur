@@ -1,7 +1,7 @@
 pkgbase = libslog-git
 	pkgdesc = Simple and thread safe logging library for C/C++
 	pkgver = 1.6.b1.2f9b9ca
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kala13x/slog
 	arch = any
 	license = MIT
