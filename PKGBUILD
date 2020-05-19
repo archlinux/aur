@@ -11,11 +11,11 @@ url='https://github.com/TheAMM/mpv_thumbnail_script'
 license=('GPL3')
 options=('!strip')
 source=("mpv-thumbnail-script-server.lua::https://github.com/TheAMM/mpv_thumbnail_script/releases/download/${pkgver}/mpv_thumbnail_script_server.lua"
-		"mpv-thumbnail-script-client-osc.lua::https://github.com/TheAMM/mpv_thumbnail_script/releases/download/${pkgver}/mpv_thumbnail_script_client_osc.lua"
-		'mpv_thumbnail_script.conf')
+    "mpv-thumbnail-script-client-osc.lua::https://github.com/TheAMM/mpv_thumbnail_script/releases/download/${pkgver}/mpv_thumbnail_script_client_osc.lua"
+    'mpv_thumbnail_script.conf')
 sha256sums=('ef5b1875432ff916c4c34c52f655410be24b934da56f33efdc4ebf4f1db8d489'
-			'27e71f510f3a2c2e4be25082617aca277bfd118cbbeb95035cb579d704050fbd'
-			'SKIP')
+      '27e71f510f3a2c2e4be25082617aca277bfd118cbbeb95035cb579d704050fbd'
+      'SKIP')
 
 package() {
   install -Dm644 "${srcdir}/mpv-thumbnail-script-server.lua" -t "${pkgdir}/usr/share/mpv/scripts"
