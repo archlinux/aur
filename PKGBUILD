@@ -3,13 +3,13 @@
 
 _pkgname="saturnon"
 pkgname="$_pkgname"-git
-pkgver=0.31.0
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="Treeview based file browser"
 arch=('any')
 url="https://gitlab.com/TheDalaiAlpaca/saturnon"
 license=('GPL3')
-depends=('bash>=4.2' 'coreutils' 'ncurses' 'file' 'util-linux') 
+depends=('bash>=4.2' 'coreutils' 'ncurses' 'file' 'util-linux' 'grep') 
 optdepends=('less: for using saturnon to open textfiles'
             'vlc: for using saturnon to play audio')
 md5sums=(SKIP)
