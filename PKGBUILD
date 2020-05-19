@@ -14,7 +14,7 @@ makedepends=()
 url='http://search.cpan.org/dist/LWP-UserAgent-Determined'
 source=("https://cpan.metacpan.org/authors/id/A/AL/ALEXMV/LWP-UserAgent-Determined-${pkgver}.tar.gz")
 sha512sums=('bed056468366bf86f0711a23c5bdb502a614efa2fd80d632f8d43d33295309d0ee88e439933cb3eda99192ad7d7025d0a7f6f0a53a45e79e70512771bb58ae7d')
-_distdir="LWP-UserAgent-Determined-1.06"
+_distdir="LWP-UserAgent-Determined-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
