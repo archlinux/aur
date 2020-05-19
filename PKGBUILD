@@ -10,18 +10,18 @@ arch=(any)
 url="https://weboob.org"
 license=('LGPL3')
 depends=('python-lxml'
-		     'python-cssselect'
-		     'python-requests'
-		     'python-dateutil'
-		     'python-yaml'
-		     'python-html2text'
-		     'python-six'
-		     'python-unidecode'
-		     'python-pillow'
-		     'python-babel'
-		     'python-simplejson')
+         'python-cssselect'
+         'python-requests'
+         'python-dateutil'
+         'python-yaml'
+         'python-html2text'
+         'python-six'
+         'python-unidecode'
+         'python-pillow'
+         'python-babel'
+         'python-simplejson')
 optdepends=('python-prettytable: CLI output formatting'
-    		'python-feedparser: required by some modules')
+        'python-feedparser: required by some modules')
 makedepends=('python-setuptools' 'git')
 replaces=('weboob-headless')
 provides=('weboob-headless')
