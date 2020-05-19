@@ -1,0 +1,12 @@
+/blender-addons/
+/blender-addons-contrib/
+/blender-dev-tools/
+/blender-translations/
+/blender-wayland-git/
+
+/pkg/
+/src/
+
+OptiX-7.0.0-include.zip
+
+*.xz
