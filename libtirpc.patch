@@ -19,4 +19,4 @@ index a99e52686..9b2b5705e 100644
 +
  # Rules to make .o (object) files
  $(sort $(CUSEROBJS)) : objects/%.o: %.c
- 	$(ECHO) Compiling $<
+  $(ECHO) Compiling $<
