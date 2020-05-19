@@ -2,7 +2,7 @@
 
 pkgname=python-prody
 pkgver=1.10.10
-pkgrel=1
+pkgrel=2
 pkgdesc='For protein structural dynamics analysis.'
 arch=('any')
 url='http://prody.csb.pitt.edu/'

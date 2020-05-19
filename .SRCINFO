@@ -1,15 +1,17 @@
 pkgbase = python-prody
 	pkgdesc = For protein structural dynamics analysis.
-	pkgver = 1.9.3
-	pkgrel = 2
+	pkgver = 1.10.10
+	pkgrel = 1
 	url = http://prody.csb.pitt.edu/
 	arch = any
 	license = MIT
 	depends = python>=3.4
 	depends = python2>=2.7
 	depends = python-numpy>=1.10
-	source = https://github.com/prody/prody/archive/v1.9.3.tar.gz
-	md5sums = 3e4e535b8a9c02aece3fe4ce22b79792
+	depends = python-biopython
+	depends = python-scipy
+	source = https://github.com/prody/prody/archive/v1.10.10.tar.gz
+	md5sums = 2c862e4320b57a083072ec7f95ac4790
 
 pkgname = python-prody
 
