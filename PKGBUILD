@@ -10,7 +10,7 @@
 _pkgbase="cups"
 pkgbase="cups-noudev"
 pkgname=('libcups-noudev' 'cups-noudev')
-pkgver=2.3.1
+pkgver=2.3.3
 pkgrel=1
 arch=('x86_64')
 license=('Apache' 'custom')
@@ -27,7 +27,7 @@ source=(https://github.com/apple/cups/releases/download/v${pkgver}/cups-${pkgver
         cups-1.6.2-statedir.patch
         # bugfixes
         guid.patch)
-sha256sums=('1bca9d89507e3f68cbc84482fe46ae8d5333af5bc2b9061347b2007182ac77ce'
+sha256sums=('261fd948bce8647b6d5cb2a1784f0c24cc52b5c4e827b71d726020bcc502f3ee'
             'SKIP'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
