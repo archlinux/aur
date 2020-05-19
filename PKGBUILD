@@ -1,6 +1,6 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=reprapfirmware-bin
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="RepRapFirmware Software Bundle"
 arch=('any')
@@ -11,9 +11,8 @@ conflicts=("reprapfirmware")
 depends=('duetcontrolserver>=1.0.3.4' 'duetsd>=1.0.4')
 backup=(
 	'opt/dsf/sd/sys/Duet3_SBCiap_MB6HC.bin'
-	'opt/dsf/sd/sys/Duet3_SDiap_MB6HC.bin'
-	'opt/dsf/sd/sys/Duet3Bootloader-EXP3HC.bin'
-	'opt/dsf/sd/sys/Duet3Bootloader-TOOL1LC.bin'
+	'opt/dsf/sd/sys/Duet3Bootloader_EXP.bin'
+	'opt/dsf/sd/sys/Duet3Bootloader_TOOL.bin'
 	'opt/dsf/sd/sys/Duet3Firmware_EXP3HC.bin'
 	'opt/dsf/sd/sys/Duet3Firmware_MB6HC.bin'
 	'opt/dsf/sd/sys/Duet3Firmware_TOOL1LC.bin'
@@ -21,10 +20,10 @@ backup=(
 )
 install="${pkgname}.install"
 source=("https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/reprapfirmware_${pkgver}-1_all.deb")
-md5sums=('656057f06728fd8fae31b875e372e738')
-sha1sums=('90f26994aba7e547e0f3a36e19b915050f9e3fda')
-sha256sums=('1d571b6a9b6905f5f8ba6c9eed698e47ee9e75898ca612543242b3592812171f')
-sha512sums=('d921d965fb5113354936ca0c95a6f15a656dd8a46af91f2baa132dc1ed0c9b546497b729c710e462ab6eec39e5d4fd6bddaa8f4a177a5b6cdaffefb91e3027ba')
+md5sums=('000fc5e9644215ecc8f8b02d34d0a193')
+sha1sums=('6c6f9ea18a523e1c0fed242ab3b20c26cca806f4')
+sha256sums=('3702c7ffd72204dc4962eabfc701c890ed227db959071f50b42835bad9182586')
+sha512sums=('eca1b081a18a8c18d29118ad224ac7b21c7b6e1b1475f05d3d5d0d32e67ed5ba8befe2988b047e1c16f6e4f6db31440694b02129b53ecaacb8e0a97e3998220a')
 
 prepare() {
     tar -xf data.tar.xz
