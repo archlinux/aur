@@ -222,27 +222,13 @@ prepare() {
   echo "# CONFIG_MCOOPERLAKE is not set" >> ./.config
   echo "# CONFIG_MTIGERLAKE is not set" >> ./.config
   
-    if [ "${_cpusched}" == "MuQSS" ] || [ "${_cpusched}" == "pds" ] || [ "${_cpusched}" == "bmq" ]; then
+    if [ "${_cpusched}" == "MuQSS" ]; then
     # Disable CFS
     sed -i -e 's/CONFIG_FAIR_GROUP_SCHED=y/# CONFIG_FAIR_GROUP_SCHED is not set/' ./.config
     sed -i -e 's/CONFIG_CFS_BANDWIDTH=y/# CONFIG_CFS_BANDWIDTH is not set/' ./.config
     # sched yield type
     if [ -n "$_sched_yield_type" ]; then
       CONDITION0="$_sched_yield_type"
-    else
-      plain ""
-      plain "CPU sched_yield_type - Choose what sort of yield sched_yield will perform."
-      plain ""
-      plain "For PDS and MuQSS:"
-      plain "0: No yield."
-      plain "1: Yield only to better priority/deadline tasks."
-      plain "2: Expire timeslice and recalculate deadline."
-      plain ""
-      plain "For BMQ (experimental) - No recommended value yet, so try for yourself x) :"
-      plain "0: No yield."
-      plain "1: Deboost and requeue task. (default)"
-      plain "2: Set rq skip task."
-      read -rp "`echo $'\n    > 0. Recommended option for gaming on PDS and MuQSS - "tkg" default\n      1. Default, but can lead to stability issues on some platforms\n      2. Can be a good option with low rr_interval on MuQSS\n    [0-2?]: '`" CONDITION0;
     fi
     if [ "$CONDITION0" == "1" ]; then
       msg2 "Using default CPU sched yield type (1)"
