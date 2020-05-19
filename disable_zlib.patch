@@ -32,11 +32,11 @@ Description: Disable ZLIB support for vmf files because zlib 1.2.6 implements
  DEPLIBS=		# I don't know what I'm doing, and I hate imake!
  
 @@ -85,7 +85,7 @@
- 	cd i18n ; rm -f *~ ; cp -f Sunclock.* $(DESTDIR)$(SHAREDIR)/i18n
- 	$(MKDIRHIER) $(DESTDIR)$(SHAREDIR)/earthmaps/vmf
- 	cd vmf ; rm -f *~ ; cp -f * $(DESTDIR)$(SHAREDIR)/earthmaps/vmf
+  cd i18n ; rm -f *~ ; cp -f Sunclock.* $(DESTDIR)$(SHAREDIR)/i18n
+  $(MKDIRHIER) $(DESTDIR)$(SHAREDIR)/earthmaps/vmf
+  cd vmf ; rm -f *~ ; cp -f * $(DESTDIR)$(SHAREDIR)/earthmaps/vmf
 -	cd $(DESTDIR)$(SHAREDIR)/earthmaps/vmf ; gzip -f *.vmf
 +#	cd $(DESTDIR)$(SHAREDIR)/earthmaps/vmf ; gzip -f *.vmf
- 	$(MKDIRHIER) $(DESTDIR)$(EMXBINDIR)
- 	install -c -s editkit/emx $(DESTDIR)$(EMXBINDIR)/
- 	$(MKDIRHIER) $(DESTDIR)$(SHAREDIR)/editkit
+  $(MKDIRHIER) $(DESTDIR)$(EMXBINDIR)
+  install -c -s editkit/emx $(DESTDIR)$(EMXBINDIR)/
+  $(MKDIRHIER) $(DESTDIR)$(SHAREDIR)/editkit
