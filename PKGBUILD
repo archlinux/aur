@@ -9,10 +9,10 @@ url='https://pango.gnome.org'
 arch=('x86_64')
 license=('LGPL')
 depends=('libthai'
-				 'cairo'
-				 'libxft'
-				 'harfbuzz'
-				 'fribidi')
+         'cairo'
+         'libxft'
+         'harfbuzz'
+         'fribidi')
 source=("${pkgname%-legacy}-${pkgver}.tar.gz::https://archive.archlinux.org/packages/p/pango/pango-1%3A${pkgver}-1-x86_64.pkg.tar.xz")
 sha256sums=('ad55288cf833f77b441bb04c5b3351991ebc346a2b6aa9d7a8f07917d78f2d8c')
 
