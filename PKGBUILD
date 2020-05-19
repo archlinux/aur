@@ -15,18 +15,18 @@ options=('!strip')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/kuyen-icons"
-	( 
+  cd "${srcdir}/kuyen-icons"
+  ( 
     set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+  )
 }
 
 prepare() {
-	cd "${srcdir}/kuyen-icons"
- 	rm *.md
- 	rm -rf .git
+  cd "${srcdir}/kuyen-icons"
+  rm *.md
+  rm -rf .git
 }
 
 package() {
