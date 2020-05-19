@@ -13,6 +13,6 @@ source=("${pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/quick-skeleto
 sha256sums=('86bf0622f2d2482d1d972ad25016f52b9a100bfa69de22bb369fbf91da2e3d24')
 
 package() {
-	install -Dm755 "${srcdir}"/${pkgname}-${pkgver} "${pkgdir}/usr/bin/quick-skeleton"
+  install -Dm755 "${srcdir}"/${pkgname}-${pkgver} "${pkgdir}/usr/bin/quick-skeleton"
 }
 # vim:set ts=2 sw=2 et:
