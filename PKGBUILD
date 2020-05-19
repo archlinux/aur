@@ -5,11 +5,15 @@ pkgrel=1
 pkgdesc="A Trojan proxy written in Go (git version)."
 arch=(x86_64)
 url="https://github.com/p4gefau1t/trojan-go"
-license=(MIT)
+license=(GPL3)
 depends=(glibc)
-makedepends=(go-pie git)
+makedepends=(go git)
 provides=(trojan-go)
 conflicts=(trojan-go)
+optdepends=(
+	'v2ray-domain-list-community: geosite'
+	'v2ray-geoip: geoip'
+)
 source=("$_pkgname::git+$url.git")
 sha512sums=('SKIP')
 
@@ -20,12 +24,12 @@ pkgver() {
 
 build() {
     cd "$srcdir"/$_pkgname
-    go build -o trojan-go .
+    CGO_ENABLE=0 go build -tags "full" -ldflags="-s -w" -o trojan-go .
 }
-
 
 package() {
     cd "$srcdir"/$_pkgname
-
-    install -Dm755 "$srcdir"/$_pkgname/trojan-go -t "$pkgdir"/usr/bin/
+    install -Dm755 "$srcdir"/$_pkgname/trojan-go -t "$pkgdir"/usr/bin/trojan-go/
+    ln -sf /usr/lib/v2ray/geosite.dat "$pkgdir"/usr/bin/trojan-go/geosite.dat
+    ln -sf /usr/lib/v2ray/geoip.dat "$pkgdir"/usr/bin/trojan-go/geoip.dat
 }
