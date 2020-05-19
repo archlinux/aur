@@ -26,5 +26,6 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname/src"
-  make install
+  install -m 0664 libslog.a "$pkgdir/usr/local/lib"
+  install -m 0664 slog.h "$pkgdir/usr/local/include"
 }
