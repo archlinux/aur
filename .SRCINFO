@@ -8,7 +8,9 @@ pkgbase = qsync
 	license = custom
 	optdepends = nautilus: this client has nautlius integration
 	source = qsync-1.0.5.0305.deb::https://download.qnap.com/Storage/Utility/QNAPQsyncClientUbuntux64-1.0.5.0305.deb
+	source = kde-open5
 	md5sums = 9c34cb93a86e1d3364c12a4a1270232d
+	md5sums = 8ae7948a1de080bd0320c9b126c91075
 
 pkgname = qsync
 
