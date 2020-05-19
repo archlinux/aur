@@ -20,10 +20,12 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    cargo build --release
+    cargo build --release --bin wasmtime
+    cargo build --release --manifest-path crates/c-api/Cargo.toml
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "target/release/lib${pkgname}.so" "$pkgdir/usr/lib/lib${pkgname}.so"
 }
