@@ -6,12 +6,11 @@ pkgbase = prosody-filer
 	install = prosody-filer.install
 	arch = any
 	license = MIT
+	makedepends = go
 	backup = etc/prosody-filer.toml
-	source = https://github.com/ThomasLeister/prosody-filer/releases/download/v1.0.2/prosody-filer_linux_x86_64
-	source = https://raw.githubusercontent.com/ThomasLeister/prosody-filer/v1.0.2/config.example.toml
+	source = git+https://github.com/ThomasLeister/prosody-filer.git#tag=v1.0.2
 	source = prosody-filer.service
-	sha256sums = 1c195a28a16a1e51a945a8dc094bb9e3af52c739c4e7c0c5eb315da035a03e78
-	sha256sums = 53eab1aea3d7786a554267e5c2e4fdd1fe085d34239b74fc12a713f604f6f0cc
+	sha256sums = SKIP
 	sha256sums = 3f64c61eb4bd0d801c8a24d4bf3eae1e04c82ade000d363081d0d673eaaabe9f
 
 pkgname = prosody-filer
