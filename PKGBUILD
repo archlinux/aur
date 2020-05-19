@@ -8,7 +8,7 @@
 
 pkgname=logisim-ita-bin
 _name=logisim-ita
-pkgver=2.16.1.1
+pkgver=2.16.1.2
 pkgrel=1
 pkgdesc='An educational tool for designing and simulating digital logic circuits (Italian fork)'
 arch=('any')
@@ -19,7 +19,7 @@ source=("${_name}-${pkgver}.jar::https://github.com/LogisimIt/Logisim/releases/d
     'logisim-ita.desktop'
     'logisim-ita.sh'
     'logisim-ita.xml')
-sha256sums=('2b399655a533c9292ff581578cdd7229e04e0f26aa2702b1dc185d3a5c6cd4df'
+sha256sums=('5841e8c4adfe3363b845c34eebbe2a2eceaac36ba49f5ef58d773808e4aa95d4'
             'f17a8e951acaf3c8b81f43f7792f83cd4fb47ca604854a30ce165fb233026c54'
             'ed3efbd2535673ffbf72c2f39baab90e0bae0f89fc62f226eb5fa47fccf928b3'
             'e591a41656374fee3caa2730706bc86ef61076f6153e52a0e263b055031499eb')
