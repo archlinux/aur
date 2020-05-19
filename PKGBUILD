@@ -20,6 +20,6 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     install -D newsboat-sendmail.1.gz "${pkgdir}"/usr/share/man/man1/newsboat-sendmail.1.gz
-    install -D newsboat-sendmail.py "${pkgdir}"/usr/bin/newsboat-sendmail
+    install -D -m755 newsboat-sendmail.py "${pkgdir}"/usr/bin/newsboat-sendmail
     install -D LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
