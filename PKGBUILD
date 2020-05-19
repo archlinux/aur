@@ -13,8 +13,8 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git')
 optdepends=('glfw-x11: Needed for graphics support'
-			'freetype2: Needed for graphics support'
-			'openssl: Needed for http support')
+      'freetype2: Needed for graphics support'
+      'openssl: Needed for http support')
 conflicts=('vlang')
 source=('git+https://github.com/vlang/v')
 sha256sums=('SKIP')
