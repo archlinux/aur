@@ -1,14 +1,14 @@
 pkgbase = indicator-application
 	pkgdesc = Indicator to take menus from applications and place them in the panel
 	pkgver = 12.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/indicator-application
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = json-glib
 	depends = dbus-glib
-	depends = libappindicator3
+	depends = libappindicator-gtk3
 	options = !libtool
 	source = http://launchpad.net/indicator-application/12.10/12.10.0/+download/indicator-application-12.10.0.tar.gz
 	md5sums = 0bbd45ee2f388580285c36dabd49caaf
