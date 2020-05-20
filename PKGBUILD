@@ -20,7 +20,7 @@ makedepends=('rsync' 'git' 'nuget' 'referenceassemblies-pcl')
 options=(!makeflags)
 optdepends=('xsp: To run ASP.NET pages directly from monodevelop')
 provides=('monodevelop')
-conflicts=('monodevelop''monodevelop-stable')
+conflicts=('monodevelop' 'monodevelop-stable')
 source=('https://github.com/mono/monodevelop.git')
 md5sums=('SKIP')
 
