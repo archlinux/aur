@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Mediawiki2latex, arch specific pre-built binary"
 arch=('x86_64')
 url="https://sourceforge.net/projects/wb2pdf/"
-license=('GPL2')
+license=('GPL')
 depends=('poppler' 'texlive-core' 'zlib')
 optdepends=(
  'texlive-langextra: Language support for African, Arabic, Armenian, Croatian, Hebrew, Indic, Mongolian, Tibetan and Vietnamese'
