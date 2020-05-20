@@ -13,11 +13,12 @@ md5sums=('c112b78c4e4020a64ee232d9442c68a3')
 
 build() {
 	cd "$pkgname-$pkgver"
-	export GOFLAGS="-buildmode=pie -trimpath"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
-	go build -o $pkgname .
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	go build .
 }
 
 package() {
