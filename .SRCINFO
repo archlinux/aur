@@ -1,6 +1,6 @@
 pkgbase = gnome-boxes-git
 	pkgdesc = Simple GNOME application to access remote or virtual systems
-	pkgver = 3.35.90+56+gcd589137
+	pkgver = 3.35.90+130+g492e4a9a
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Boxes
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = gnome-boxes-git
 	depends = tracker
 	depends = webkit2gtk
 	depends = freerdp
+	depends = libhandy
 	provides = gnome-boxes
 	conflicts = gnome-boxes
 	source = git+https://gitlab.gnome.org/GNOME/gnome-boxes.git
