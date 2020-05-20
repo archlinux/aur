@@ -10,7 +10,7 @@ url='https://github.com/Guitarbum722/align'
 license=('MIT')
 provides=('align')
 depends=('glibc')
-makedepends=('git' 'go-pie')
+makedepends=('git' 'go')
 source=("git+${url}")
 sha256sums=('SKIP')
 
