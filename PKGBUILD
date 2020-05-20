@@ -20,11 +20,11 @@ noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "${pkgname%-git}"
 	printf "1.3.0r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "${pkgname%-git}"
 	make DESTDIR="$pkgdir/" install
 }
