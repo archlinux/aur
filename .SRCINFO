@@ -1,6 +1,6 @@
 pkgbase = kt6
 	pkgdesc = Программа для управления калибраторами температуры серии КТ-6 производства ООО ИзТех
-	pkgver = 1.0.16
+	pkgver = 1.0.18
 	pkgrel = 1
 	url = https://www.iztech.ru
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = kt6
 	depends = sqlite
 	options = strip
 	source = https://www.iztech.ru/content/files/app/kt6-latest-x86_64.tar.gz
-	md5sums = 24c2a0021a28444e4cdbd737fa0a46e0
+	md5sums = d4c3537e6ba0d8dbd083624bafb4e3ea
 
 pkgname = kt6
 
