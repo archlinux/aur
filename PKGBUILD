@@ -2,7 +2,7 @@
 _hkgname=aura
 pkgname=aura-bin
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure package manager for Arch Linux and the AUR - Prebuilt binary"
 url="https://github.com/fosskers/aura"
 license=('GPL-3')
@@ -23,6 +23,10 @@ package() {
     # Installing conf file
     mkdir -p "$pkgdir/etc/"
     install -m 644 aura.conf "$pkgdir/etc/aura.conf"
+
+    # Installing man page
+    mkdir -p "$pkgdir/usr/share/man/man8/"
+    install -m 644 aura.8 "$pkgdir/usr/share/man/man8/aura.8"
 
     # Installing bash completions
     mkdir -p "$pkgdir/usr/share/bash-completion/completions/"
