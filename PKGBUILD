@@ -4,7 +4,7 @@ pkgname=librime-lua-git
 _pkgname=librime
 pkgver=1.5.3.r77.1049863
 _pkgver=1.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Rime input method engine with Lua plugin"
 arch=('x86_64')
 url="https://github.com/hchunhui/librime-lua"
@@ -30,7 +30,7 @@ pkgver() {
 prepare() {
     cp -r librime-lua $_pkgname-$_pkgver/plugins/lua
     cd $_pkgname-$_pkgver
-    patch -p1 -i ../$pkgname-opencc-1.1.patch
+    patch -p1 -i ../$_pkgname-opencc-1.1.patch
 }
 
 build() {
