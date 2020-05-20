@@ -8,14 +8,15 @@ url="https://www.raylib.com"
 license=(ZLIB)
 groups=()
 depends=()
-makedepends=(git ninja mingw-w64-gcc mingw-w64-cmake)
+makedepends=(ninja mingw-w64-gcc mingw-w64-cmake)
 replaces=()
 backup=()
 options=(!strip !buildflags staticlibs)
 install=
-source=("${pkgname}::git+https://github.com/raysan5/raylib.git#tag=${pkgver}")
+source=("raylib_${pkgver}.tar.gz::https://github.com/raysan5/raylib/archive/3.0.0.tar.gz")
 noextract=()
-md5sums=('SKIP')
+md5sums=('a5fcabf2e5241b1453521440d911f443')
+
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -23,7 +24,7 @@ build() {
     for _arch in ${_architectures}; do
         mkdir -p "$srcdir/build_${_arch}"
         pushd "$srcdir/build_${_arch}"
-        "${_arch}-cmake" "$srcdir/$pkgname" \
+        "${_arch}-cmake" "$srcdir/raylib-${pkgver}" \
             -Wno-dev \
             -D CMAKE_BUILD_TYPE=Release \
             -D CMAKE_INSTALL_PREFIX=/usr/${_arch} \
