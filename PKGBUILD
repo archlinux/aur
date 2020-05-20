@@ -1,6 +1,6 @@
 # Maintainer: Alexander Goussas <alexander@alexandergoussas.com>
 pkgname=qobra-git
-pkgver=1.3.0r24.d08f4fb
+pkgver=1.3.0r28.48830c8
 pkgrel=1
 pkgdesc="A simple music player for the command line."
 arch=('x86_64')
@@ -24,11 +24,16 @@ pkgver() {
 	printf "1.3.0r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
+build() {
 	cd "${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
+  python setup.py build
 }
 
-package_qobra-git(){
-    depends=(python-setuptools)
+package() {
+	cd "${pkgname%-git}"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
+
+package_*(){ 
+  depends=('python-setuptools')
 }
