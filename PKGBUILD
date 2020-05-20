@@ -17,8 +17,9 @@ pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 
-# Updated 0005-server-Broadcast-rawinput-message-if-request-flag-is.patch:
-# https://bugs.winehq.org/show_bug.cgi?id=48946
+# TODO: Remove 0005-server-Broadcast-rawinput-message-if-request-flag-is.patch
+#       here and in prepare() for wine >= 5.7
+#       Used to fix https://bugs.winehq.org/show_bug.cgi?id=48946
 source=(https://dl.winehq.org/wine/source/5.x/wine-$_pkgbasever.tar.xz
         "wine-staging-v$_pkgbasever.tar.gz::https://github.com/wine-staging/wine-staging/archive/v$_pkgbasever.tar.gz"
         https://raw.githubusercontent.com/wine-staging/wine-staging/8d4d0a840e6ce434483edd81acb3be90fd734e44/patches/user32-rawinput-mouse/0005-server-Broadcast-rawinput-message-if-request-flag-is.patch
@@ -150,6 +151,8 @@ build() {
   mkdir $pkgname-{32,64}-build
 
   # https://bugs.winehq.org/show_bug.cgi?id=43530
+  # TODO: Remove -fcommon for wine >= 5.8
+  #       Used to work around gcc 10.1 build issue
   export CFLAGS="${CFLAGS/-fno-plt/} -fcommon"
   export LDFLAGS="${LDFLAGS/,-z,now/}"
 
