@@ -1,7 +1,7 @@
 pkgbase = janus-gateway
 	pkgdesc = Janus WebRTC Server
-	pkgver = 0.9.4
-	pkgrel = 3
+	pkgver = 0.9.5
+	pkgrel = 1
 	url = http://janus.conf.meetecho.com
 	arch = x86_64
 	arch = i686
@@ -35,10 +35,10 @@ pkgbase = janus-gateway
 	optdepends = libogg: Voicemail plugin and/or post-processor
 	optdepends = ffmpeg: Post-processor
 	optdepends = lua: Lua plugin
-	source = janus-gateway-0.9.4.tar.gz::https://github.com/meetecho/janus-gateway/archive/v0.9.4.tar.gz
+	source = janus-gateway-0.9.5.tar.gz::https://github.com/meetecho/janus-gateway/archive/v0.9.5.tar.gz
 	source = janus.service
 	source = janus.conf
-	sha256sums = 97f3653066748f4f2888b6571d28ecf400653c86523cb1c1ed42ba065649cba9
+	sha256sums = 4fc4abb1fc3c78445c15eca7e324ea328a13719d18d2a3eb782f3d93340bba2c
 	sha256sums = cf2b6c8fdcd60ccfa179c4cd207a23ee7edfee90588c2c3847aa6cda418bed7f
 	sha256sums = ad965a52fbe23e23a92b878bb08fa4c815b15a7569776882b21ff83c988dbd3e
 

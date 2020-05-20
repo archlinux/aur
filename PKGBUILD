@@ -4,8 +4,8 @@
 # Contributor: Maurizio Porrato <maurizio.porrato@gmail.com>
 
 pkgname=janus-gateway
-pkgver=0.9.4
-pkgrel=3
+pkgver=0.9.5
+pkgrel=1
 pkgdesc="Janus WebRTC Server"
 arch=('x86_64' 'i686')
 url='http://janus.conf.meetecho.com'
@@ -42,7 +42,7 @@ makedepends=('curl'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/meetecho/janus-gateway/archive/v${pkgver}.tar.gz"
         'janus.service'
         'janus.conf')
-sha256sums=('97f3653066748f4f2888b6571d28ecf400653c86523cb1c1ed42ba065649cba9'
+sha256sums=('4fc4abb1fc3c78445c15eca7e324ea328a13719d18d2a3eb782f3d93340bba2c'
             'cf2b6c8fdcd60ccfa179c4cd207a23ee7edfee90588c2c3847aa6cda418bed7f'
             'ad965a52fbe23e23a92b878bb08fa4c815b15a7569776882b21ff83c988dbd3e')
 
@@ -60,7 +60,7 @@ build() {
         --enable-plugin-duktape \
         --enable-plugin-lua \
         --enable-post-processing \
-        --enable-rabbit-mq
+        --enable-rabbitmq
     make
 }
 
