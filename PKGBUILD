@@ -1,11 +1,11 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=844d8709a1f3ecab45015b24b72dd775c13b2421  # tags/2.13.1^0
+_commit=b1df1101a643ae16cdfa1d83b939de2497b1bf27  # tags/2.13.92^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-fontconfig
-pkgver=2.13.1
+pkgver=2.13.92
 pkgrel=1
 pkgdesc="A library for configuring and customizing font access (mingw-w64)"
 arch=('any')
@@ -57,7 +57,7 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/fontconfig/build-${_arch}"
     make DESTDIR="${pkgdir}" install
-    find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
+    find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec rm {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
   done
