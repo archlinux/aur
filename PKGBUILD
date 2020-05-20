@@ -1,68 +1,36 @@
 # Maintainer: Aloxaf <aloxafx@gmail.com>
 pkgname=gitstatus-git
-pkgver=r561.c07996b
+pkgver=r1280.00564e9
 pkgrel=1
 pkgdesc='10x faster implementation of `git status` command'
 arch=('x86_64')
 url="https://github.com/romkatv/gitstatus"
 license=('GPL3')
 depends=('glibc')
-makedepends=('git' 'cmake' 'make' 'gcc')
+makedepends=('git' 'cmake' 'make' 'gcc' 'zsh' 'wget')
+install=gitstatus.install
 provides=("gitstatus")
-source=(
-  'gitstatus::git+https://github.com/romkatv/gitstatus'
-  'libgit2::git+https://github.com/romkatv/libgit2'
-)
-md5sums=('SKIP'
-         'SKIP')
+source=('gitstatus::git+https://github.com/romkatv/gitstatus')
+md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/gitstatus"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-build_libgit2() {
-  cd "$srcdir/libgit2"
-  mkdir -p build
-  cd build
-  cmake                        \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DTHREADSAFE=ON            \
-    -DUSE_BUNDLED_ZLIB=ON      \
-    -DREGEX_BACKEND=builtin    \
-    -DBUILD_CLAR=OFF           \
-    -DUSE_SSH=OFF              \
-    -DUSE_HTTPS=OFF            \
-    -DBUILD_SHARED_LIBS=OFF    \
-    -DUSE_EXT_HTTP_PARSER=OFF  \
-    -DZERO_NSEC=ON             \
-    ..
-  make
-}
-
-build_gitstatus() {
   cd "$srcdir/gitstatus"
-	cxxflags="-I$srcdir/libgit2/include -DGITSTATUS_ZERO_NSEC"
-  ldflags="-L$srcdir/libgit2/build -static-libstdc++ -static-libgcc"
-  CXXFLAGS=$cxxflags LDFLAGS=$ldflags make
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  build_libgit2
-  build_gitstatus
-}
-
-check() {
-  local reply
-  echo -nE $'hello\x1f\x1e' | $srcdir/gitstatus/usrbin/gitstatusd 2>/dev/null | {
-    IFS='' read -r -d $'\x1e' -t 5 reply
-    [[ $reply == $'hello\x1f0' ]] && return 0 || return 1
-  }
+  cd "$srcdir/gitstatus"
+  ./build -w
+  rm ./deps/libgit2-*.tar.gz
+  for file in *.zsh install; do
+    zsh -fc "emulate zsh -o no_aliases && zcompile -R -- $file.zwc $file"
+  done
 }
 
 package() {
-	cd "$srcdir/gitstatus"
-  install -D "usrbin/gitstatusd" "$pkgdir/usr/bin/gitstatusd"
-  install -D "gitstatus.plugin.zsh" "$pkgdir/usr/share/zsh/plugins/gitstatus/gitstatus.plugin.zsh"
-  install -D "gitstatus.prompt.zsh" "$pkgdir/usr/share/zsh/functions/Prompts/prompt_gitstatus_setup"
+  cd "$srcdir/gitstatus"
+  for file in docs/* src/* usrbin/* *; do
+    [[ -d "$file" ]] && continue
+    install -D "$file" "$pkgdir/usr/share/gitstatus/$file"
+  done
 }

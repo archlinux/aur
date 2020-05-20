@@ -1,0 +1,9 @@
+post_install() {
+  echo "Add this line to your .bashrc or .zshrc to active the default prompt"
+  echo "source /usr/share/gitstatus/gitstatus.prompt.sh"
+  echo "source /usr/share/gitstatus/gitstatus.prompt.zsh"
+} 
+
+post_upgrade() {
+  post_install
+}
