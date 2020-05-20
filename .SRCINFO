@@ -1,18 +1,21 @@
 pkgbase = mingw-w64-raylib
 	pkgdesc = Simple and easy to use game programming library (mingw-w64)
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.raylib.com
 	arch = any
 	license = ZLIB
 	makedepends = ninja
 	makedepends = mingw-w64-cmake
 	depends = mingw-w64-crt
+	depends = mingw-w64-glfw
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	source = raylib_3.0.0.tar.gz::https://github.com/raysan5/raylib/archive/3.0.0.tar.gz
+	source = raylib_glfw.patch
 	md5sums = a5fcabf2e5241b1453521440d911f443
+	md5sums = 41f1d54782295383566c5485adc8fae2
 
 pkgname = mingw-w64-raylib
 
