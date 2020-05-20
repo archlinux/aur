@@ -1,0 +1,16 @@
+pkgbase = json2tsv
+	pkgdesc = JSON to TSV converter
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://codemadness.org/json2tsv.html
+	arch = x86_64
+	license = custom:ISC license
+	makedepends = gcc-libs
+	depends = glibc
+	provides = json2tsv
+	conflicts = json2tsv
+	source = https://codemadness.org/releases/json2tsv/json2tsv-0.5.tar.gz
+	sha256sums = 0e919ff3ecd4eed8d1209e1da0bb6d4c4099b276168a941b8bceecfe128e1fc5
+
+pkgname = json2tsv
+
