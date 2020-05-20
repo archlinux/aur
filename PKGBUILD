@@ -1,7 +1,7 @@
 # Maintainer: Colin Woodbury <colin@fosskers.ca>
 _hkgname=aura
 pkgname=aura-bin
-pkgver=2.3.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A secure package manager for Arch Linux and the AUR - Prebuilt binary"
 url="https://github.com/fosskers/aura"
@@ -13,16 +13,16 @@ provides=('aura')
 conflicts=('aura' 'aura-git')
 options=('strip')
 source=(https://github.com/fosskers/aura/releases/download/v${pkgver}/aura-${pkgver}-x86_64.tar.gz)
-md5sums=('2eea36d0c9392fa2798d4a71e849755d')
+md5sums=('71e201211db9344a1d97af574167a249')
 
 package() {
     # Install aura binary
     mkdir -p "$pkgdir/usr/bin/"
     install -m 755 aura "$pkgdir/usr/bin/"
 
-    # Installing man page
-    mkdir -p "$pkgdir/usr/share/man/man8/"
-    install -m 644 aura.8 "$pkgdir/usr/share/man/man8/aura.8"
+    # Installing conf file
+    mkdir -p "$pkgdir/etc/"
+    install -m 644 aura.conf "$pkgdir/etc/aura.conf"
 
     # Installing bash completions
     mkdir -p "$pkgdir/usr/share/bash-completion/completions/"
