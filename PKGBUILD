@@ -19,7 +19,6 @@ install=
 changelog=
 source=("https://github.com/deimosfr/jeedom-status/archive/v$pkgver.tar.gz")
 noextract=()
-md5sums=()
 validpgpkeys=()
 
 build() {
