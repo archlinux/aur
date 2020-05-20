@@ -10,7 +10,7 @@ url='https://abicheck.bradleyf.id.au'
 license=('MIT')
 provides=('apicompat')
 depends=('glibc')
-makedepends=('git' 'go-pie')
+makedepends=('git' 'go')
 source=("git+https://github.com/bradleyfalzon/apicompat")
 sha256sums=('SKIP')
 
