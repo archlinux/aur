@@ -3,7 +3,7 @@
 _lang=eng-swe
 pkgname=dict-freedict-${_lang}
 pkgver=0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="English -> Swedish dictionary for dictd et al. from Freedict.org"
 arch=('any')
 url="https://freedict.org/"
@@ -12,7 +12,7 @@ optdepends=('dictd: dict client and server')
 makedepends=('dictd' 'freedict-tools')
 install=${pkgname}.install
 source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}/freedict-${_lang}-${pkgver}.src.tar.xz")
-sha512sums=('16bde111c5a4b8842fd6d3f7687d3e520a9f3d1da9fc5dbdf21d1b843056212e672fdb148d8b3af8cf9cd777421ee3bb31f05db8c0e8daa9055ce60adf4fbd1b')
+sha512sums=('75206851788ea3208afb430ca69ac1224cae95d5cd69d7da528c7c388965e495838d3879eb6d632a71157e786bb4b75449c7368773d17e4caeb1046960029057')
 changelog="ChangeLog"
 
 prepare()
