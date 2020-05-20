@@ -14,7 +14,7 @@ depends=('libxrandr'
          'sdl2'
          'sdl2_mixer'
          'sdl2_net')
-makedepends=('go-pie' 'gendesk')
+makedepends=('go' 'gendesk')
 install=post_install
 source=("git+https://github.com/OpenDiablo2/OpenDiablo2")
 sha256sums=('SKIP')
@@ -26,24 +26,28 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/OpenDiablo2"
-  mkdir -p $srcdir/go
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go get -d -v ./...
+  mkdir -p build/
 }
 
 build() {
   cd "${srcdir}/OpenDiablo2"
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go build -v -o "../opendiablo2-bin"
-  gendesk -f -n --pkgname "opendiablo2" --pkgdesc "${pkgdesc}" --exec="opendiablo2" --categories=Game --icon opendiablo2
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
+  go build -o build ./...
+  gendesk -f -n \
+   --pkgname "opendiablo2" \
+   --pkgdesc "${pkgdesc}" \
+   --exec="opendiablo2" \
+   --categories=Game \
+   --icon opendiablo2
 }
 
 package() {
-  cd "${srcdir}"
-  install -Dm644 OpenDiablo2/opendiablo2.desktop "${pkgdir}/usr/share/applications/opendiablo2.desktop"
-  install -Dm755 opendiablo2-bin "${pkgdir}/usr/bin/opendiablo2"
-  install -Dm644 OpenDiablo2/d2logo.png "${pkgdir}/usr/share/pixmaps/opendiablo2.png"
-  go clean -modcache #Remove go libraries
+  cd "${srcdir}/OpenDiablo2"
+  install -Dm644 opendiablo2.desktop "${pkgdir}/usr/share/applications/opendiablo2.desktop"
+  install -Dm755 build/OpenDiablo2 "${pkgdir}/usr/bin/opendiablo2"
+  install -Dm644 d2logo.png "${pkgdir}/usr/share/pixmaps/opendiablo2.png"
 }
