@@ -56,8 +56,8 @@ prepare() {
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  # Implement cpu optimisation (MZEN2) patch from our gentoo lords
-  git apply ../5012_enable-cpu-optimizations-for-gcc91.patch
+  # Implement all packaged patches.
+  git apply ../*.patch
 
   # Implement i2c write retimers patch
   git apply ../timerrework.patch
