@@ -56,12 +56,6 @@ package() {
 
   DESTDIR="${pkgdir}" ninja -C builddir install
 
-  # clean up weird static libs installed
-  # this is a meson bug:
-  # https://github.com/mesonbuild/meson/issues/2550
-  rm -rf "${pkgdir}/usr/lib/"*.a
-  rmdir "${pkgdir}/usr/lib"
-
   install -Dm644 "LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
