@@ -1,0 +1,25 @@
+From 9dbc65a520a54c78984faf443b86023d4b94b07d Mon Sep 17 00:00:00 2001
+From: Jan Samek <samekh@email.cz>
+Date: Tue, 19 May 2020 22:34:39 +0200
+Subject: [PATCH] parse.c: fix return value type
+
+---
+ parse.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/parse.c b/parse.c
+index bdaa6c7..e788a74 100755
+--- a/parse.c
++++ b/parse.c
+@@ -620,7 +620,7 @@ void Dedi_List_AllChip()
+ 	/*error message & return (1) control to the OS*/
+ 	if ((fp = fopen(Path,"rt")) == NULL){
+ 		fprintf(stderr,"Error opening file: %s\n",fname);
+-		return 1;
++		return;
+ 	}
+ 	sz=fsize(fp);
+ 	file_buf=(char*)malloc(sz);
+-- 
+2.26.2
+
