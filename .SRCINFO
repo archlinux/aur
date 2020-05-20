@@ -11,7 +11,9 @@ pkgbase = knowte
 	replaces = knowte
 	options = !strip
 	source = Knowte-2.0.3.AppImage::https://github.com/digimezzo/knowte/releases/download/v2.0.3/Knowte-2.0.3.AppImage
+	source = knowte.desktop
 	sha256sums = bae0f53bc08c5eb7934a25659cd88e46b5e739c598fcff28f6ea91a618c6d110
+	sha256sums = 7b2db0cb226fc0f6578414d8e522f940e1a1d1a04b1aeac206e01f6a98a752ae
 
 pkgname = knowte
 
