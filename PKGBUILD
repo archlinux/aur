@@ -1,4 +1,5 @@
 # Maintainer: Colin Adler <colin@coder.com>
+# Maintainer: Anmol Sethi <anmol@coder.com>
 
 pkgname=code-server
 pkgver="3.3.1"
@@ -14,7 +15,7 @@ sha512sums=('54447ee354f8e083d07785d23839fd37dca86041059f812532f00bd081ed55fa878
 options=('!strip')
 
 package() {
-  # Special thanks to @ben0mega
+  # Special thanks to @ben0mega and @ava1ar
   cd "$srcdir"/"${_dirname}"
   find . -type f -exec install -Dm 755 "{}" "$pkgdir/opt/$pkgname/{}" \;
   mkdir -p $pkgdir/usr/bin/
