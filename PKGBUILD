@@ -1,6 +1,6 @@
 _pkgname=mpv
 pkgname="mingw-w64-${_pkgname}"
-pkgver=0.30.0
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (mingw-w64)"
 url="https://mpv.io/"
@@ -12,14 +12,14 @@ depends=("mingw-w64-ffmpeg"
          "mingw-w64-libbluray"
          "mingw-w64-libjpeg-turbo"
          "mingw-w64-shaderc"
-         "mingw-w64-crossc")
+         "mingw-w64-spirv-cross")
 makedepends=("mingw-w64-gcc"
              "perl"
              "mingw-w64-pkg-config"
              "python")
 options=(staticlibs !strip !buildflags)
 source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/mpv-player/${_pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('33a1bcb7e74ff17f070e754c15c52228cf44f2cefbfd8f34886ae81df214ca35')
+sha256sums=('9163f64832226d22e24bbc4874ebd6ac02372cd717bef15c28a0aa858c5fe592')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
