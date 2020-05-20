@@ -1,7 +1,7 @@
 pkgbase = cgal-ipelets
 	pkgdesc = Ipelets from CGAL
 	pkgver = 4.14.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.cgal.org
 	arch = i686
 	arch = x86_64
