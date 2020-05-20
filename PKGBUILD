@@ -1,18 +1,18 @@
 # Maintainer: Guillaume Lefranc <guillaume@signal18.io>
 pkgname=nextdns
 pkgver=1.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc='NextDNS DNS-over-HTTPS client'
 arch=('x86_64')
 url='https://github.com/nextdns/nextdns'
 license=('MIT')
-makedepends=('go-pie')
+makedepends=('go')
 source=("$url/archive/v$pkgver.tar.gz" "nextdns.service")
 sha256sums=('@checksum@')
 
 build() {
   cd $pkgname-$pkgver
-  go build     -trimpath     -ldflags "-X main.version=$pkgver -extldflags $LDFLAGS"     -o $pkgname .
+  go build --buildmode=pie     -trimpath     -ldflags "-X main.version=$pkgver -extldflags $LDFLAGS"     -o $pkgname .
 }
 
 package() {
