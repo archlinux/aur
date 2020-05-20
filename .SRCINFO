@@ -1,7 +1,7 @@
 pkgbase = gitkraken-standalone
 	pkgdesc = Stand-alone version of GitKraken for labs and computers without internet access (requires license file).
 	pkgver = 7.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.gitkraken.com/standalone/standalone/
 	arch = x86_64
 	license = custom

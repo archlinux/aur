@@ -8,7 +8,7 @@
 # Contributor: William Penton <william@penton.us>
 
 pkgname=gitkraken-standalone
-pkgrel=1
+pkgrel=2
 pkgver=7.0.1
 pkgdesc="Stand-alone version of GitKraken for labs and computers without internet access (requires license file)."
 url="https://support.gitkraken.com/standalone/standalone/"
@@ -42,6 +42,7 @@ package() {
     find "$pkgdir"/opt/gitkraken/ -type f -exec chmod 644 {} \;
     chmod 755 "$pkgdir"/opt/gitkraken/gitkraken
     chmod 755 "$pkgdir"/opt/gitkraken/resources/app.asar.unpacked/src/js/redux/domain/AskPass/AskPass.sh
+    chmod 4755 "$pkgdir"/opt/gitkraken/chrome-sandbox
 
     install -d "$pkgdir"/usr/bin
 
