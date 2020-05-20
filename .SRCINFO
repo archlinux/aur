@@ -1,7 +1,7 @@
 pkgbase = pcsxr-pgxp-git
 	pkgdesc = A Sony PlayStation (PSX) emulator based on the PCSX-df Project with Parallel/Precision Geometry Transform Pipeline
 	pkgver = 1.9.94.r1731.62467b86
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ngemu.com/threads/pcsxr-pgxp.186369/
 	arch = x86_64
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = pcsxr-pgxp-git
 	makedepends = git
 	makedepends = intltool
 	makedepends = mesa
+	makedepends = clang
 	depends = ffmpeg
 	depends = gtk3
 	depends = libarchive

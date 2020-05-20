@@ -2,13 +2,13 @@
 
 pkgname=pcsxr-pgxp-git
 pkgver=1.9.94.r1731.62467b86
-pkgrel=1
+pkgrel=2
 pkgdesc='A Sony PlayStation (PSX) emulator based on the PCSX-df Project with Parallel/Precision Geometry Transform Pipeline'
 arch=('x86_64')
 url='http://ngemu.com/threads/pcsxr-pgxp.186369/'
 license=('GPL')
 depends=('ffmpeg' 'gtk3' 'libarchive' 'libcdio' 'libxv')
-makedepends=('cmake' 'git' 'intltool' 'mesa')
+makedepends=('cmake' 'git' 'intltool' 'mesa' 'clang')
 provides=('pcsxr' "${pkgname/%-git/}")
 conflicts=('pcsxr' "${pkgname/%-git/}")
 source=("${pkgname/%-git/}::git+https://github.com/iCatButler/pcsxr.git"
@@ -34,6 +34,9 @@ prepare() {
 
 build() {
   cd "${pkgname/%-git/}"/build
+
+  export CC="clang"
+  export CXX="clang++"
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
