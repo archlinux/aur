@@ -3,12 +3,12 @@ pkgname=mingw-w64-raylib
 pkgver=3.0.0
 pkgrel=1
 pkgdesc="Simple and easy to use game programming library"
-arch=(x86_64)
+arch=(any)
 url="https://www.raylib.com"
 license=(ZLIB)
 groups=()
 depends=()
-makedepends=(ninja mingw-w64-gcc mingw-w64-cmake)
+makedepends=(ninja mingw-w64-cmake mingw-w64-crt)
 replaces=()
 backup=()
 options=(!strip !buildflags staticlibs)
@@ -27,9 +27,7 @@ build() {
         "${_arch}-cmake" "$srcdir/raylib-${pkgver}" \
             -Wno-dev \
             -D CMAKE_BUILD_TYPE=Release \
-            -D CMAKE_INSTALL_PREFIX=/usr/${_arch} \
-            -D CMAKE_INSTALL_LIBDIR=lib \
-            -D CMAKE_C_FLAGS="$CFLAGS -fPIC -w" \
+            -D CMAKE_C_FLAGS="$CFLAGS -w" \
             -D USE_EXTERNAL_GLFW=OFF \
             -D BUILD_EXAMPLES=OFF \
             -D BUILD_GAMES=OFF \
