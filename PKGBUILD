@@ -4,15 +4,14 @@
 pkgname=rvgl-bin
 pkgver=20.0430
 gamefilesver=18.0328
-pkgrel=2
+pkgrel=3
 pkgdesc="Rewrite of Re-Volt, popular 3D RC car racing game from 1999."
 url='https://rvgl.re-volt.io'
 arch=('x86_64')
 license=('custom')
 depends=('sdl2' 'sdl2_image' 'openal' 'enet' 'libunistring')
-optdepends=('rvgl-dcpack: dreamcast cars, rooftops track, box layout'
-            'rvgl-soundtrack: community-made soundtrack'
-            'rvgl-soundtrack-orig: dreamcast version original soundtrack'
+optdepends=('rvgl-dcpack: dreamcast content pack'
+            'rvgl-soundtrack: game soundtrack'
             'libsndfile: for uncompressed audio support'
             'libvorbis: for OGG Vorbis support'
             'flac: for FLAC support'
