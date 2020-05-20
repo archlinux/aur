@@ -34,7 +34,7 @@ noextract=("ombi-x86_64-${pkgver}.tar.gz"
            "ombi-i686-${pkgver}.tar.gz"
            "ombi-armv7h-${pkgver}.tar.gz")
 
-sha256sums=('d5893f6b665a0646054343a051e462a49569d51de224b45d3d2542b6c4e3d168'
+sha256sums=('f940ba92228b198ffa59603e10e25a3a1958c06207705edcc62b805adfa1a9d4'
             '6efc381990e1113737686d4f61795095fa8edbc176daa877fd755f1ddb3a40fa'
             '49fc5edca9d88fc9d6e9f0f4a6d707b072f32daa097305f0bf905dfff342f44a')
 sha256sums_x86_64=('572cb4858297216ff61b1a2a73fac9ec7558a847d6f4170f83aea3ab4fb8219d')
