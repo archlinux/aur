@@ -24,7 +24,6 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  # go get -d -v ./cmd/...
   go build -o build ./cmd/...
 }
 
