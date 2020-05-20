@@ -5,8 +5,8 @@
 
 pkgname='libreswan'
 #pkgname+='-git'
-pkgver=3.32
-pkgrel=1
+pkgver='3.32'
+pkgrel='2'
 pkgdesc='IPsec implementation with IKEv1 and IKEv2 keying protocols'
 arch=('i686' 'x86_64')
 url='https://libreswan.org/'
@@ -73,7 +73,17 @@ build() {
   fi
 
   # Disable new warning introduced with GCC 6 (-Wunused-const-variable=)
-  CFLAGS="$CFLAGS -Wno-error=sign-compare -Wno-error=unused-const-variable -Wno-error=implicit-fallthrough -Wno-error=maybe-uninitialized -Wno-error=pointer-compare -Wno-error=format-truncation" \
+  local _cf=(
+    -Wno-error=sign-compare
+    -Wno-error=unused-const-variable
+    -Wno-error=implicit-fallthrough
+    -Wno-error=maybe-uninitialized
+    -Wno-error=pointer-compare
+    -Wno-error=format-truncation
+    -DNSS_PKCS11_2_0_COMPAT=1 # nss 3.52 https://github.com/libreswan/libreswan/issues/342
+  )
+
+  CFLAGS="${CFLAGS} ${_cf[*]}" \
   nice make -s "${_bargs[@]}" programs
 }
 
