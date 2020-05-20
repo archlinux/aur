@@ -2,18 +2,27 @@
 _pkgbasename=zls
 pkgname=${_pkgbasename}-git
 pkgrel=1
-pkgver=r127.d9e5859
+pkgver=r199.cffe4af
 pkgdesc="Zig LSP implementation + Zig Language Server"
 arch=('any')
 url="https://github.com/zigtools/${_pkgbasename}"
 license=('MIT')
 depends=('zig')
-source=(git+https://github.com/zigtools/${_pkgbasename})
-sha256sums=('SKIP')
+source=(git+https://github.com/zigtools/${_pkgbasename}
+        git+https://github.com/ziglibs/known-folders)
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgbasename}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgbasename}"
+  git submodule init
+  git config submodule.known-folders.url "$srcdir"/known-folders
+  git submodule update
 }
 
 build() {
