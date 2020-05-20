@@ -2,8 +2,8 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-gitver=v5.4.41
-pkgver=5.4.v.41
+gitver=v5.4.42
+pkgver=5.4.v.42
 pkgrel=4
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -21,28 +21,19 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         "${pkgbase}.preset"
 	# patch from our gentoo overlords
 	'5012_enable-cpu-optimizations-for-gcc91.patch'
-	# disable acountingspam patchfile
-	'disable_proc_ac.patch'
 	# i2c write rework patch
 	'timerrework.patch'
-        # stackprotection fix
-        'stackcanary.patch'
 
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '924ab9d27310b353437482941b214e2cb91c85de00b41cff261d24d8af29f5aa'
+            '4cdbcea39c5d5e2d742dd916b37ba4435583e4145666fe559bfcf78694e0046c'
             #.preset file
             '0ac0cf410b0f3eeaa07d41505613e118ea59e01144e905f2dc0a808379f87e87'
             #patch file
             'fb98e49d7a640e05bf0d3a65ca49d0adb19de7547cb7ffca7a6cbacb1f461f0b'
-            #disable acountingspam patchfile
-            'f412d719977af563ca74b41b218977e49672ac93ab7cc96a0833b66abbfb8b10'
             #i2c write rework patchfile
             '44e739d674b0909d3dd1edb29ad9c4ab6543c32f488cbbcc30ba0fdc2bf902dc'
-            #stackprotection fix
-            '74ac43843b60805cc21cdadf6f4768281a61106107154f6830f26d6c142343e6'
-
 )
 
 _kernelname=${pkgbase#linux}
@@ -68,14 +59,8 @@ prepare() {
   # Implement cpu optimisation (MZEN2) patch from our gentoo lords
   git apply ../5012_enable-cpu-optimizations-for-gcc91.patch
 
-  # Implement disable acountingspam patchfile
-  git apply ../disable_proc_ac.patch
-
   # Implement i2c write retimers patch
   git apply ../timerrework.patch
-
-  # Fix the source for stack canaries to work
-  git apply ../stackcanary.patch
 
   # get kernel version
   yes "" | make prepare
