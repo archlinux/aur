@@ -1,0 +1,31 @@
+pkgbase = python-pysilfont-git
+	pkgdesc = Python-based font utilities collection and framework
+	pkgver = 1.5.0.r1.g03061ba
+	pkgrel = 1
+	url = https://github.com/silnrsi/pysilfont
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-booleanoperations
+	depends = python-compreffor
+	depends = python-cu2qu
+	depends = python-defcon
+	depends = python-fontmath
+	depends = python-fontparts
+	depends = python-fonttools
+	depends = python-future
+	depends = python-glyphslib
+	depends = python-lz4
+	depends = python-mutatormath
+	depends = python-odfpy
+	depends = python-pyclipper
+	depends = python-ufo2ft
+	depends = python-ufolib2
+	provides = python-pysilfont
+	conflicts = python-pysilfont
+	source = python-pysilfont-git::git+https://github.com/silnrsi/pysilfont.git
+	sha256sums = SKIP
+
+pkgname = python-pysilfont-git
+
