@@ -59,9 +59,6 @@ prepare() {
   # Implement all packaged patches.
   git apply ../*.patch
 
-  # Implement i2c write retimers patch
-  git apply ../timerrework.patch
-
   # get kernel version
   yes "" | make prepare
 
