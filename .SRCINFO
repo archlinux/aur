@@ -1,17 +1,16 @@
 pkgbase = rocsparse
-	pkgdesc = Next generation SPARSE implementation for ROCm platform.
+	pkgdesc = BLAS for sparse computation on top of ROCm
 	pkgver = 3.3.0
-	pkgrel = 1
-	url = https://github.com/ROCmSoftwarePlatform/rocSPARSE
+	pkgrel = 2
+	url = https://rocmdocs.amd.com/en/latest/ROCm_Libraries/ROCm_Libraries.html#rocsparse
 	arch = x86_64
-	license = custom:NCSAOSL
+	license = MIT
 	makedepends = cmake
 	makedepends = hcc
-	makedepends = python2
-	makedepends = rocminfo
-	depends = hcc
-	depends = hip
-	source = https://github.com/ROCmSoftwarePlatform/rocSPARSE/archive/rocm-3.3.0.tar.gz
+	makedepends = git
+	depends = hip-hcc
+	depends = rocprim
+	source = rocsparse-3.3.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocSPARSE/archive/rocm-3.3.0.tar.gz
 	sha256sums = 04122317b21df69709a11b164b42e0f21f7fc745c2e28daeecb99ab01e7a8de3
 
 pkgname = rocsparse
