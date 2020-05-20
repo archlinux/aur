@@ -1,10 +1,11 @@
 pkgbase = cpufrequtils
 	pkgdesc = This package provides very useful tools to get information about the CPUFreq
 	pkgver = 008
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kernel.org/pub/linux/utils/kernel/cpufreq/cpufrequtils.html
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	source = http://deb.debian.org/debian/pool/main/c/cpufrequtils/cpufrequtils_008.orig.tar.bz2
 	source = 0001-Only-x86-has-cpuid-instruction.patch

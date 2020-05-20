@@ -3,9 +3,9 @@
 
 pkgname=cpufrequtils
 pkgver=008
-pkgrel=1
+pkgrel=2
 pkgdesc="This package provides very useful tools to get information about the CPUFreq"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://kernel.org/pub/linux/utils/kernel/cpufreq/cpufrequtils.html"
 license=('GPL2')
 source=("http://deb.debian.org/debian/pool/main/c/cpufrequtils/cpufrequtils_008.orig.tar.bz2"
