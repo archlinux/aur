@@ -3,13 +3,13 @@
 
 pkgname=rvgl-dcpack
 pkgver=20.0430
-pkgrel=1
-pkgdesc="RVGL dreamcast content pack."
+pkgrel=2
+pkgdesc="RVGL Dreamcast content pack."
 url='https://rvgl.re-volt.io'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
-source=("$pkgname-$pkgver.zip::https://distribute.re-volt.io/packs/rvgl_dcpack.zip")
+source=("rvgl_dcpack.zip::https://distribute.re-volt.io/packs/rvgl_dcpack.zip")
 sha256sums=('69abd2de92fafa2aacea47f4cb9b4603a888ad3f753f56af886805e6555ad956')
 
 package() {
