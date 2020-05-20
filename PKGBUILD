@@ -9,7 +9,7 @@ url='https://github.com/snwfdhmp/simplehttp'
 license=('Apache')
 provides=('simplehttp')
 depends=('glibc')
-makedepends=('go-pie' 'git')
+makedepends=('go' 'git')
 source=("git+${url}")
 sha256sums=('SKIP')
 
@@ -20,21 +20,21 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/simplehttp"
-  mkdir -p $srcdir/go
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go get -d -v ./...
+  mkdir -p build/
 }
 
 build() {
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
   cd "${srcdir}/simplehttp"
-  go build -v -o "${srcdir}/simplehttp-bin"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
+  go get -d -v ./...
+  go build -o build ./...
 }
 
 package() {
   cd "${srcdir}/simplehttp"
-  install -Dm755 "${srcdir}"/simplehttp-bin "${pkgdir}/usr/bin/simplehttp"
-  go clean -modcache #Remove go libraries
+  install -Dm755 build/simplehttp "${pkgdir}/usr/bin/simplehttp"
 }
