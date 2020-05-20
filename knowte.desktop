@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Knowte
+Exec=knowte
+Terminal=false
+Type=Application
+Icon=knowte
+StartupWMClass=Knowte
+Comment=Note taking
+Categories=Utility;
