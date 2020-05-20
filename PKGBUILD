@@ -11,7 +11,8 @@ arch=('x86_64')
 license=('custom')
 depends=('sdl2' 'sdl2_image' 'openal' 'enet' 'libunistring')
 optdepends=('rvgl-dcpack: dreamcast content pack'
-            'rvgl-soundtrack: game soundtrack'
+            'rvgl-soundtrack: community-made soundtrack'
+            'rvgl-soundtrack-orig: original dreamcast soundtrack'
             'libsndfile: for uncompressed audio support'
             'libvorbis: for OGG Vorbis support'
             'flac: for FLAC support'
