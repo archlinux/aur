@@ -18,7 +18,7 @@ makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap'
 depends=('lib32-avahi' 'lib32-gnutls' 'lib32-libcap' 'lib32-libcups'
 	   'lib32-libgcrypt' 'lib32-pam' 'lib32-systemd'
 	   'lib32-talloc' 'lib32-tdb' 'lib32-ldb'
-	   'lib32-libaio' 'perl-parse-yapp' 'lib32-jansson' 'smbclient' 'lib32-ncurses')
+	   'lib32-libaio' 'perl-parse-yapp' 'lib32-jansson' 'smbclient' 'lib32-ncurses' 'lib32-libunwind')
 replaces=('lib32-libwbclient')
 provides=('lib32-libwbclient')
 source=("https://www.samba.org/samba/samba/ftp/stable/samba-${pkgver}.tar.gz")
