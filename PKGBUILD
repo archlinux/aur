@@ -40,4 +40,8 @@ package() {
    mkdir -p ${pkgdir}/usr/share/Kvantum/
    cp -r ${srcdir}/${_gitname}/Kvantum ${pkgdir}/usr/share
    
+   mkdir -p ${pkgdir}/usr/share/wallpapers
+   rm -r ${srcdir}/${_gitname}/wallpaper/src
+   cp -r ${srcdir}/${_gitname}/wallpaper/* ${pkgdir}/usr/share/wallpapers
+   
 }
