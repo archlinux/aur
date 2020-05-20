@@ -13,7 +13,7 @@ depends=('docker'
          'npm')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('f9ceab92aaa3b55aa9874f45f16b6add24b1d8b50a26999fe173c142fdc6837d')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

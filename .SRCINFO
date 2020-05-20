@@ -11,7 +11,7 @@ pkgbase = goxygen
 	depends = nodejs
 	depends = npm
 	source = goxygen-0.3.1.tar.gz::https://github.com/Shpota/goxygen/archive/v0.3.1.tar.gz
-	sha256sums = SKIP
+	sha256sums = f9ceab92aaa3b55aa9874f45f16b6add24b1d8b50a26999fe173c142fdc6837d
 
 pkgname = goxygen
 
