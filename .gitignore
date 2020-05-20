@@ -1,0 +1,6 @@
+/src/
+/pkg/
+/*.log
+/*.tar.gz
+/*.pkg.tar.xz
+/forensic_log.txt

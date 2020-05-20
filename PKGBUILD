@@ -2,29 +2,18 @@
 # Contributor: Chris Chapman <chris dot chapman at aggiemail dot usu dot edu>
 
 pkgname=lenmus
-pkgver=5.4.2
-pkgrel=8
-pkgdesc="A free program to learn music"
+pkgver=5.6.2
+pkgrel=1
+pkgdesc="A free program for learning music"
 arch=('i686' 'x86_64')
-url="http://www.lenmus.org/en/phonascus/intro"
+url="http://www.lenmus.org/"
 license=('GPL')
-depends=('portmidi' 'wxgtk' 'sqlite3' 'boost-libs')
+depends=('portmidi' 'wxgtk' 'sqlite3' 'fluidsynth' 'soundfont-fluid')
 optdepends=('timidity++: for sound without external midi player')
-makedepends=('boost' 'unittestpp' 'cmake>=2.8')
+makedepends=('unittestpp' 'cmake>=3.1')
 
-source=("https://codeload.github.com/lenmus/lenmus/tar.gz/Release_${pkgver}"
-	0001-Fixes-in-Lomse-for-compiling-with-C-11.patch
-	0001-More-fixes-for-C-11.patch)
-md5sums=('0b1adb4e187f6dc08b0dc03029c68f4d'
-         '4ee9268720acaa2ced3a7a782701e71d'
-         '760082915af45d0999eee8d7a73284fe')
-
-prepare() {
-  cd "$srcdir/${pkgname}-Release_${pkgver}/"
-
-  patch -p1 -i "$srcdir/0001-Fixes-in-Lomse-for-compiling-with-C-11.patch"
-  patch -p1 -i "$srcdir/0001-More-fixes-for-C-11.patch"
-}
+source=("https://github.com/lenmus/lenmus/archive/Release_${pkgver}.tar.gz")
+sha256sums=('72af23c1f5d4b543cece326b50d7e8b9fb1f9da8e64e7ec65e6f88c2c3c77c6c')
 
 build() {
   cd "$srcdir"
