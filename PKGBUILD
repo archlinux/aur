@@ -2,12 +2,12 @@
 
 pkgname="ibazel"
 pkgver="0.13.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Tool for building Bazel targets when source files change."
 arch=("i686" "x86_64")
 license=("Apache 2.0")
 url="https://github.com/bazelbuild/bazel-watcher"
-makedepends=("bazel" "python")
+makedepends=("bazel" "git" "python")
 depends=("bazel")
 
 source=("$url/archive/v$pkgver.tar.gz")
