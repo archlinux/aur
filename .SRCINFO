@@ -8,6 +8,7 @@ pkgbase = jeedom-status
 	makedepends = git
 	makedepends = go
 	source = https://github.com/deimosfr/jeedom-status/archive/v0.6.0.tar.gz
+	md5sums = 02cebf569f4c9f96524d319e3bf60c1f
 
 pkgname = jeedom-status
 
