@@ -1,6 +1,6 @@
 pkgbase = python2-pyteomics
 	pkgdesc = A framework for proteomics data analysis.
-	pkgver = 4.3.1
+	pkgver = 4.3.2
 	pkgrel = 1
 	url = https://pyteomics.readthedocs.io
 	changelog = CHANGELOG
@@ -16,8 +16,8 @@ pkgbase = python2-pyteomics
 	optdepends = python2-dill: needed for multiprocessing when pickle is not enough
 	optdepends = python2-pynumpress: for Numpress support
 	options = !emptydirs
-	source = https://pypi.debian.net/pyteomics/pyteomics-4.3.1-py2.py3-none-any.whl
-	sha256sums = be9367c5b9a828c11c7df943d5bed8ee24b5d2d5b63676fcddd789ea5ad98b73
+	source = https://pypi.debian.net/pyteomics/pyteomics-4.3.2-py2.py3-none-any.whl
+	sha256sums = 4947e1f7dbf8c6cdad9db9382e7eb5ef0288dbfbcfe5dfa2f629f3b8a5f394fb
 
 pkgname = python2-pyteomics
 
