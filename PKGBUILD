@@ -1,7 +1,7 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=ashuffle
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Automatic library-wide shuffle for mpd."
 url="https://github.com/joshkunz/ashuffle"
@@ -9,26 +9,19 @@ arch=(x86_64 i686 armv6h armv7h aarch64)
 license=(MIT)
 
 depends=("libmpdclient")
-makedepends=("meson" "cmake" "abseil-cpp>=20200225.2-2")
+makedepends=("meson" "abseil-cpp>=20200225.2-2" "gtest-py3>=1.10" "gmock-py3>=1.10")
 
 source=(
   "https://github.com/joshkunz/ashuffle/archive/v${pkgver}/ashuffle-${pkgver}.tar.gz"
-  "git+https://github.com/google/googletest.git#commit=703bd9caab50b139428cea1aaff9974ebee5742e"
 )
 sha256sums=(
-  "a2bc130643e5201c3c2561a1a4bc4b165a75cfa92e79c91065736d8dfe9f44fb"
-  "SKIP"
+  "04bc83a22e41ddb1163699f4bf8379364e20c479dbbccc35e7658ef9728dcd17"
 )
 
 
-prepare() {
-  cd "ashuffle-${pkgver}"
-  rmdir "subprojects/googletest"
-
-  #ln -s "/usr/src/gtest" "subprojects/googletest/googletest"
-  #ln -s "/usr/src/gmock" "subprojects/googletest/googlemock"
-  ln -s "${srcdir}/googletest" "subprojects/googletest"
-}
+#prepare() {
+#  cd "ashuffle-${pkgver}"
+#}
 
 build() {
   cd "ashuffle-${pkgver}"
@@ -36,6 +29,7 @@ build() {
   arch-meson \
     -Dtests=enabled \
     -Dunsupported_use_system_absl=true \
+    -Dunsupported_use_system_gtest=true \
     builddir
 
   ninja -C builddir
@@ -51,12 +45,6 @@ package() {
   cd "ashuffle-${pkgver}"
 
   DESTDIR="${pkgdir}" ninja -C builddir install
-
-  # clean up weird static libs installed
-  # this is a meson bug:
-  # https://github.com/mesonbuild/meson/issues/2550
-  rm -f "${pkgdir}/usr/lib/"*.a
-  rmdir "${pkgdir}/usr/lib"
 
   install -Dm644 "LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

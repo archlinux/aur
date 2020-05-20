@@ -1,6 +1,6 @@
 pkgbase = ashuffle
 	pkgdesc = Automatic library-wide shuffle for mpd.
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/joshkunz/ashuffle
 	arch = x86_64
@@ -10,13 +10,12 @@ pkgbase = ashuffle
 	arch = aarch64
 	license = MIT
 	makedepends = meson
-	makedepends = cmake
 	makedepends = abseil-cpp>=20200225.2-2
+	makedepends = gtest-py3>=1.10
+	makedepends = gmock-py3>=1.10
 	depends = libmpdclient
-	source = https://github.com/joshkunz/ashuffle/archive/v3.3.0/ashuffle-3.3.0.tar.gz
-	source = git+https://github.com/google/googletest.git#commit=703bd9caab50b139428cea1aaff9974ebee5742e
-	sha256sums = a2bc130643e5201c3c2561a1a4bc4b165a75cfa92e79c91065736d8dfe9f44fb
-	sha256sums = SKIP
+	source = https://github.com/joshkunz/ashuffle/archive/v3.4.0/ashuffle-3.4.0.tar.gz
+	sha256sums = 04bc83a22e41ddb1163699f4bf8379364e20c479dbbccc35e7658ef9728dcd17
 
 pkgname = ashuffle
 
