@@ -1,4 +1,5 @@
-# Maintainer: Alex Dewar <alex.dewar@gmx.co.uk>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Alex Dewar <alex.dewar@gmx.co.uk>
 # Contributor: Andrew Sun <adsun701@gmail.com>
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
@@ -9,7 +10,7 @@ pkgver=7.1.4
 pkgrel=9
 pkgdesc='Library for instrumenting and integrating with all aspects of the Unity shell'
 arch=('i686' 'x86_64')
-url='https://launchpad.net/libunity'
+url="https://launchpad.net/libunity"
 license=('LGPL')
 depends=('dee' 'gtk3' 'libdbusmenu-glib')
 makedepends=('gnome-common' 'gobject-introspection' 'intltool' 'vala')
@@ -19,18 +20,15 @@ sha256sums=('56ecb380d74bf74caba193d9e8ad6b0c85ccf9eeb461bc9731c2b8636e1f1492'
             '98a2562dcf3b3a864d1c05331b4dc672d8bff4b592ca796a0bc132a416f33262')
 
 prepare() {
-  cd "${srcdir}"
-  patch -p1 < 0001-Fix-FTB-with-recent-vala-requiring-non-public-abstra.patch
-  NOCONFIGURE=1 ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static
+	patch -p1 < 0001-Fix-FTB-with-recent-vala-requiring-non-public-abstra.patch
+	NOCONFIGURE=1 ./autogen.sh
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static
 }
 
 build() {
-  cd "${srcdir}"
-  make
+	make
 }
 
 package() {
-  cd "${srcdir}"
-  make DESTDIR="${pkgdir}" install
+	make DESTDIR="$pkgdir" install
 }

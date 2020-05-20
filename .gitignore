@@ -1,14 +1,7 @@
-*.patch
-*.tar
-*.tar.*
-*.jar
-*.exe
-*.msi
-*.zip
-*.tgz
-*.log
-*.log.*
-*.sig
+# Ignore everything
+*
 
-pkg/
-src/
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
