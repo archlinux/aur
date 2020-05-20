@@ -1,0 +1,17 @@
+pkgbase = sl-sh-git
+	pkgdesc = simple lisp based shell
+	pkgver = r505.20c2162
+	pkgrel = 1
+	url = https://github.com/sstanfield/slsh
+	arch = x86_64
+	license = MIT
+	makedepends = rustup
+	makedepends = git
+	provides = sl-sh-git
+	conflicts = sl-sh-git
+	conflicts = sl-sh
+	source = sl-sh::git+https://github.com/sstanfield/slsh#branch=master
+	md5sums = SKIP
+
+pkgname = sl-sh-git
+
