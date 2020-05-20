@@ -12,6 +12,8 @@
 # Primary bug report: https://bugs.winehq.org/show_bug.cgi?id=47198
 
 pkgname=wine-lol
+# Note: We are forced to use Wine 5.6 until this bug is fixed:
+#       https://bugs.winehq.org/show_bug.cgi?id=49025
 pkgver=5.6
 pkgrel=1
 
