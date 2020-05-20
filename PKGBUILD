@@ -3,7 +3,7 @@
 
 pkgname=kvantum-qt5-git
 _gitname=Kvantum
-pkgver=0.15.1.r0.ga7ccc09
+pkgver=0.15.3.r30.gc57fd0f
 pkgrel=1
 pkgdesc="SVG-based Qt5 theme engine plus a config tool and extra themes"
 arch=('x86_64')
@@ -42,6 +42,5 @@ package() {
    install -Dm644 ChangeLog ${pkgdir}/usr/share/doc/kvantum/ChangeLog
    install -Dm644 COPYING ${pkgdir}/usr/share/licenses/kvantum/COPYING
    cp -r doc ${pkgdir}/usr/share/doc/kvantum
-   rm -r ${pkgdir}/usr/share/kde4
-   
+    
 }
