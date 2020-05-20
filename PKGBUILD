@@ -2,15 +2,16 @@
 
 pkgname='python-scalene-git'
 pkgver=r461.822c83d
-pkgrel=2
+pkgrel=3
 pkgdesc='Scalene is a high-performance, high-precision CPU and memory profiler for Python'
 arch=('any')
 url='https://github.com/emeryberger/scalene'
 license=('Apache-2.0')
 depends=('python>=3.6' 'python-numpy')
 makedepends=('python-setuptools' 'make' 'clang' 'git')
-source=("${pkgname}::git+https://github.com/emeryberger/scalene.git")
-sha256sums=('SKIP')
+source=("${pkgname}::git+https://github.com/emeryberger/scalene.git"
+        "git+https://github.com/emeryberger/Heap-Layers")
+sha256sums=('SKIP' 'SKIP')
 provides=('python-scalene')
 
 pkgver() {
@@ -20,9 +21,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname}"
-  if [ ! -d Heap-Layers ] || [ -z "$(ls -A Heap-Layers)" ]; then
-    git clone https://github.com/emeryberger/Heap-Layers
-  fi
+  ln -s "$srcdir/Heap-Layers" Heap-Layers
 }
 
 build() {
