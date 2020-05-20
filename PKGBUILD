@@ -1,12 +1,12 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=f9bc373381ddf8553f943b774596ae5a53bf2641  # tags/2.6.5^0
+_commit=42025680cb0a30eba4ed48d125586a4dda3c973e  # tags/2.6.6^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgbase=mingw-w64-harfbuzz
 pkgname=('mingw-w64-harfbuzz' 'mingw-w64-harfbuzz-icu')
-pkgver=2.6.5
+pkgver=2.6.6
 pkgrel=1
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=('any')
@@ -80,7 +80,7 @@ package_mingw-w64-harfbuzz() {
     make DESTDIR="${pkgdir}" install
     cd "${srcdir}/harfbuzz/build-${_arch}-shared"
     make DESTDIR="${pkgdir}" install
-    find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
+    find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec rm {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
 
