@@ -2,7 +2,7 @@
 
 pkgname=code-server
 pkgver="3.3.1"
-pkgrel=0
+pkgrel=1
 pkgdesc="Run VS Code on a remote server"
 arch=('x86_64')
 url="https://github.com/cdr/code-server"
@@ -18,6 +18,6 @@ package() {
   cd "$srcdir"/"${_dirname}"
   find . -type f -exec install -Dm 755 "{}" "$pkgdir/opt/$pkgname/{}" \;
   mkdir -p $pkgdir/usr/bin/
-  ln -s $pkgdir/opt/$pkgname/bin/code-server $pkgdir/usr/bin/$pkgname
+  ln -s /opt/$pkgname/bin/code-server $pkgdir/usr/bin/$pkgname
   install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
