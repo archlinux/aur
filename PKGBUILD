@@ -2,7 +2,7 @@
 
 _pipname=pysilfont
 pkgname=python-$_pipname
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Python-based font utilities collection and framework'
 arch=('any')
@@ -27,7 +27,7 @@ depends=('python'
          "${_py_deps[@]/#/python-}")
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5f52bdffb451071c0e8d315f79abdf22f1b17cdc9c7a4d6a7b8c6466a4803376')
+sha256sums=('04b81916d372a9300417715ffa3b9e259127babd9b78d69aecff1591942d913f')
 
 build() {
     cd "$_pipname-$pkgver"
