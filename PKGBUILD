@@ -3,8 +3,8 @@
 pkgbase=linux-lts419
 _basever=4.19
 _srcname=linux-$_basever
-pkgver=${_basever}.123
-pkgrel=2
+pkgver=${_basever}.124
+pkgrel=1
 pkgdesc='LTS 4.19 Linux'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -19,11 +19,6 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/patch-${pkgver}.xz #signature is mising
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  gcc-10-avoid-shadowing-standard-library-free-in-crypto.patch
-  gcc-10-drop_monitor-work-around-stringop-overflow-wa.patch
-  gcc-10-netfilter-conntrack-avoid-zero-length-bounds-.patch
-  gcc-10-warnings-fix-low-hanging-fruit.patch
-  gcc-10-x86-fix-early-boot-crash-third-try.patch
 )
 #validpgpkeys=(
 #  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -31,14 +26,9 @@ source=(
 #)
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
-            '56f4e052883a0030958bb0abfc54a1a28b3867090c9c8a563c203826deaf1ece'
+            '3f0f43ca3cb4eba7441d57cd3f9bb3d27721f8ffcef2d64469faaff2846f7f95'
             '4e68572e7cc4c5368f0236e0792660ae8498373988625dca46e509399a7eaea6'
-            'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2'
-            'bf1ece4b16b233283d82d97b478012bfbb72e48604b55f78ce1ac076b0f9bcb4'
-            '25517134bfb5eba79cea86fcd777a4a6a1d6cbfb2ee57656d8ffc6a910a0dfc3'
-            'ed3d9ee9c55e0b33aa7e4b75305e2d43f94aef071a90c276957e17483334710a'
-            '81193a452440cf2040266ad33d204193176d0079d4ed3f7b92eaf45e0638a976'
-            '59c0397a8556f518e89a3349e41b9eea983ee7d6e10afc39c9371edefd39a9ae')
+            'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
