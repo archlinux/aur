@@ -10,10 +10,8 @@ url="https://janet-lang.org/"
 license=('MIT')
 provides=('janet')
 conflicts=('janet-lang-git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/janet-lang/janet/archive/v${pkgver}.tar.gz"
-        "dynamic_link.patch")
-sha256sums=('02724d6074a0d6fa53a548e8bdaaf49999f082e30b277c73444900f739a53062'
-            'e7798771a8622d7ecaa1097c389365cbd4c4eb4b52c8fbce91c697a89a62b6dd')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/janet-lang/janet/archive/v${pkgver}.tar.gz")
+sha256sums=('02724d6074a0d6fa53a548e8bdaaf49999f082e30b277c73444900f739a53062')
 options=('staticlibs' '!strip')
 
 janet_build='JANET_BUILD=\"f7ee8bd\"'
@@ -23,11 +21,6 @@ build() {
     make PREFIX="/usr" $janet_build
     make PREFIX="/usr" build/janet.pc
     make PREFIX="/usr" docs
-
-    # Very very very ugly patch
-    # Temporary till I (or anyone) find the reason why the static linking isn't
-    # working as expected
-    patch jpm ../dynamic_link.patch
 }
 
 package() {
