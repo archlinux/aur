@@ -1,7 +1,7 @@
 pkgbase = steam-buddy
 	pkgdesc = A web interface for managing Steam remotely
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gamer-os/steam-buddy
 	arch = any
 	license = MIT
@@ -21,7 +21,7 @@ pkgbase = steam-buddy
 	depends = libretro-nestopia
 	depends = libretro-snes9x
 	depends = libretro-mupen64plus-next
-	depends = libretro-beetle-pce-fast-git
+	depends = libretro-beetle-pce-fast
 	depends = libretro-stella2014-git
 	depends = libretro-flycast
 	depends = libretro-beetle-psx-hw
