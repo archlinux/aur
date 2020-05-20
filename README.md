@@ -17,4 +17,17 @@ This is the file that is used by the AUR to show package info.
 makepkg --printsrcinfo > .SRCINFO
 ```
 
-Then, just push to the AUR git repo.
+Then, just push to the AUR git repo. You'll have to maintain two remotes in
+your `.git/config`. Mine is setup as so
+
+```
+[remote "origin"]
+	url = git@github.com:/cdr/code-server-aur.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "aur"]
+	url = ssh://aur@aur.archlinux.org/code-server.git
+	fetch = +refs/heads/*:refs/remotes/aur/*
+```
+
+Then it's as simple as `git push` to push to GitHub and `git push aur` to
+update the AUR.
