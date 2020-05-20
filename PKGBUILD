@@ -8,7 +8,7 @@ _major=5.6
 _minor=14
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="User mode Linux kernel and modules"
 arch=('x86_64')
 license=('GPL2')
@@ -22,7 +22,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.xz"
 
 sha256sums=('33763f3541711e39fa743da45ff9512d54ade61406173f3d267ba4484cec7ea3'
             'SKIP'
-            'a706af35e9a41d71c5d45b48105748672611b2daecbbc7774a1b40a479e87688'
+            'ac55c1a53559066a6967e2708f68c2b9edc6d2afc1be304dc703f9a5c2ab7347'
             '05ea4e00d1e99bf8140a21c94e3c42acf17b9debad9c6f5decbe1dd1fe04332c')
 
 validpgpkeys=(
