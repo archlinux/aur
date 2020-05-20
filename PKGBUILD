@@ -20,22 +20,21 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/ergo"
-  mkdir -p $srcdir/go
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go get -d -v ./...
+  mkdir -p build/
 }
 
 build() {
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  cd "${srcdir}/ergo/cmd/cli"
-  go build -mod=mod -v -o "${srcdir}/ergo-bin"
+  cd "${srcdir}/ergo"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  go build -o build ./cmd/...
 }
 
 package() {
   cd "${srcdir}/ergo"
-  install -Dm755 "${srcdir}"/ergo-bin "${pkgdir}/usr/bin/ergo"
+  install -Dm755 build/cli "${pkgdir}/usr/bin/ergo"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  go clean -modcache #Remove go libraries
 }
