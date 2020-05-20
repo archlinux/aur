@@ -1,7 +1,7 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=openblok
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A customizable, cross platform, open-source falling block game, packed with a bunch of features."
 arch=('i686' 'x86_64')
 url="https://github.com/mmatyas/openblok"
@@ -25,10 +25,15 @@ noextract=()
 md5sums=('6dd426a1dec30c74036ae09113505659'
          'SKIP')
 
+prepare()
+{
+    rm -d $pkgname-$pkgver/thirdparty/libSDL2pp
+    ln -s `pwd`/libSDL2pp $pkgname-$pkgver/thirdparty/libSDL2pp
+}
+
 build()
 {
-    mv ./libSDL2pp/* $pkgname-$pkgver/thirdparty/libSDL2pp
-    cd "$pkgname-$pkgver"
+    cd $pkgname-$pkgver
     mkdir -p build
     cd build
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DEXEDIR=/usr/bin
