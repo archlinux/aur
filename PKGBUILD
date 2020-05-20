@@ -14,8 +14,8 @@ provides=('leafcount'
           'nfold'
           'toafm')
 depends=('glibc')
-makedepends=('git' 'go-pie')
-source=("git+${url}")
+makedepends=('git' 'go')
+source=("git+https://github.com/ryanbressler/CloudForest")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,42 +23,33 @@ pkgver() {
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  ) 
+  )
 }
 
 prepare() {
   cd "${srcdir}/CloudForest"
-  mkdir -p $srcdir/go
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go get -d -v ./...
+  mkdir -p build/
 }
 
 build() {
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  cd "${srcdir}/CloudForest/leafcount"
-  go build -v -o ${srcdir}/leafcount
-  cd "${srcdir}/CloudForest/growforest"
-  go build -v -o ${srcdir}/growforest
-  cd "${srcdir}/CloudForest/applyforest"
-  go build -v -o ${srcdir}/applyforest
-  cd "${srcdir}/CloudForest/utils/nfold"
-  go build -v -o ${srcdir}/nfold
-  cd "${srcdir}/CloudForest/utils/toafm"
-  go build -v -o ${srcdir}/toafm
+  cd "${srcdir}/CloudForest"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  go build -o build ./...
 }
 
 package() {
   cd "${srcdir}/CloudForest"
-  install -Dm755 ${srcdir}/leafcount "${pkgdir}/usr/bin/leafcount"
-  install -Dm755 ${srcdir}/growforest "${pkgdir}/usr/bin/growforest"
-  install -Dm755 ${srcdir}/applyforest "${pkgdir}/usr/bin/applyforest"
-  install -Dm755 ${srcdir}/nfold "${pkgdir}/usr/bin/nfold"
-  install -Dm755 ${srcdir}/toafm "${pkgdir}/usr/bin/toafm"
+  install -Dm755 build/leafcount "${pkgdir}/usr/bin/leafcount"
+  install -Dm755 build/growforest "${pkgdir}/usr/bin/growforest"
+  install -Dm755 build/applyforest "${pkgdir}/usr/bin/applyforest"
+  install -Dm755 build/nfold "${pkgdir}/usr/bin/nfold"
+  install -Dm755 build/toafm "${pkgdir}/usr/bin/toafm"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   mkdir -p "${pkgdir}/usr/share/cloudforest/data"
   cp -a data/* "${pkgdir}/usr/share/cloudforest/data"
   chmod 644 "${pkgdir}/usr/share/cloudforest/data"/*
-  go clean -modcache #Remove go libraries
 }
