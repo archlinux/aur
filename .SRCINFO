@@ -1,14 +1,17 @@
 pkgbase = code-server
-	pkgdesc = Run VS Code on a remote server
+	pkgdesc = VS Code in the browser
 	pkgver = 3.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cdr/code-server
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = glibc
-	options = !strip
-	source = https://github.com/cdr/code-server/releases/download/v3.3.1/code-server-3.3.1-linux-amd64.tar.gz
-	sha512sums = 54447ee354f8e083d07785d23839fd37dca86041059f812532f00bd081ed55fa8780802a34ebcaa6270a16378f38e0c1362c425b43d7692324b341fba0ccec0e
+	source = code-server-3.3.1.service::https://raw.githubusercontent.com/cdr/code-server/v3.3.1/ci/build/code-server.service
+	sha512sums = 7040df09c7404a56dbbb32e09d04ead3b622773520feae19c6710656cef46ca5d79b1972bfebb931e309e495d041b9938cd6a51c39fc0f8f6133dfe711be9280
+	source_x86_64 = https://github.com/cdr/code-server/releases/download/v3.3.1/code-server-3.3.1-linux-amd64.tar.gz
+	sha512sums_x86_64 = 54447ee354f8e083d07785d23839fd37dca86041059f812532f00bd081ed55fa8780802a34ebcaa6270a16378f38e0c1362c425b43d7692324b341fba0ccec0e
+	source_aarch64 = https://github.com/cdr/code-server/releases/download/v3.3.1/code-server-3.3.1-linux-arm64.tar.gz
+	sha512sums_aarch64 = 3ceef9fd3c05a3195b2e6cef4529ea7da4fa934f0a0ce962019955df296600395d1cba4ad71ff1f7a52011ea17cedaa9a00d34d1760edd253dbbaf272d34bc72
 
 pkgname = code-server
-
