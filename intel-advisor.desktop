@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Intel Advisor
+Exec=/bin/bash -c "source /opt/intel/advisor/advixe-vars.sh; advixe-gui"
+Icon=intel-advisor
+Terminal=false

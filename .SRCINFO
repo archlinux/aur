@@ -1,0 +1,23 @@
+pkgbase = intel-advisor-standalone
+	pkgdesc = The standalone version of Intel Advisor
+	pkgver = 2020.u1
+	pkgrel = 1
+	url = https://software.intel.com/content/www/us/en/develop/tools/advisor.html
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = gettext
+	depends = glibc
+	depends = attr
+	conflicts = intel-advisor
+	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/16555/advisor_2020_update1.tar.gz
+	source = intel-advisor.png
+	source = intel-advisor.desktop
+	source = license.txt
+	sha256sums = c2605f433cf11e55ec1db1310f27018bae53c15ad71d7246e46ef33f34a5637d
+	sha256sums = fda3789f672fbb71402a26d5b06fe9845c433f17f17ad08d04470713b9043078
+	sha256sums = f2822853a9809c05663794291ee204c4f0867a140c511fc5fd9c8173ab12fa39
+	sha256sums = e13bba8c55cf874988dbb541d8a72f53dd0942fca48f49bfbe9d82174bb73808
+
+pkgname = intel-advisor-standalone
+
