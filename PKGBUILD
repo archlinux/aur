@@ -3,8 +3,8 @@
 # Contributor: Drew DeVault <sir@cmpwn.com>
 
 pkgname=aerc
-pkgver=0.3.0
-pkgrel=4
+pkgver=0.4.0
+pkgrel=1
 pkgdesc='Email Client for your Terminal'
 arch=('x86_64')
 url='https://git.sr.ht/~sircmpwn/aerc'
@@ -14,7 +14,7 @@ makedepends=('go' 'git' 'scdoc')
 provides=('aerc')
 conflicts=('aerc')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~sircmpwn/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('44d5ab0d5f1195166b351ec59680cc8f4c0eb45da4d44263b138be0a91a512a1')
+sha256sums=('d369462cc0f76c33d804e586463e4d35d81fba9396ec08c3d3d0579e26091e17')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
