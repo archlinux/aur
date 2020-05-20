@@ -9,7 +9,7 @@ url='https://github.com/msoap/shell2http'
 license=('MIT')
 depends=('glibc')
 provides=('shell2http')
-makedepends=('go-pie' 'git')
+makedepends=('go' 'git')
 source=("git+${url}")
 sha256sums=('SKIP')
 
@@ -20,23 +20,23 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/shell2http"
-  mkdir -p $srcdir/go
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go get -d -v ./...
+  mkdir -p build/
 }
 
 build() {
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
   cd "${srcdir}/shell2http"
-  go build -v -o "${srcdir}/shell2http-bin"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
+  go build -o build ./...
   gzip --force shell2http.1
 }
 
 package() {
   cd "${srcdir}/shell2http"
-  install -Dm755 "${srcdir}"/shell2http-bin "${pkgdir}/usr/bin/shell2http"
+  install -Dm755 build/shell2http "${pkgdir}/usr/bin/shell2http"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 shell2http.1.gz -t "${pkgdir}/usr/share/man/man1"
   go clean -modcache #Remove go libraries
