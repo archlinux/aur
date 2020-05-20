@@ -7,7 +7,7 @@ pkgdesc="OneDrive system tray program"
 arch=('i686' 'x86_64')
 url="https://github.com/DanielBorgesOliveira/onedrive_tray"
 license=('unknown')
-depends=('qt5-base')
+depends=('qt5-base' 'onedrive-abraunegg')
 makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("onedrive_tray=$pkgver")
 conflicts=("onedrive_tray")
@@ -29,7 +29,6 @@ build() {
 }
 
 package() {
-	cd "$_pkgname"
-	mkdir -p "$pkgdir/usr/local/bin/"
-	cp build/systray "$pkgdir/usr/local/bin/onedrive_tray"
+	cd "$_pkgname/build"
+	make INSTALL_ROOT="${pkgdir}" install
 }
