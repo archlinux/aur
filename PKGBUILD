@@ -6,6 +6,7 @@ arch=('any')
 url="https://github.com/samcv/brainworkshop"
 license=('GPL')
 depends=('python-pyglet' 'openal' 'ffmpeg')
+makedepends=('git')
 install='brainworkshop.install'
 provides=('brainworkshop')
 conflicts=('brainworkshop')

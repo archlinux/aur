@@ -6,6 +6,7 @@ pkgbase = brainworkshop-git
 	install = brainworkshop.install
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = python-pyglet
 	depends = openal
 	depends = ffmpeg
