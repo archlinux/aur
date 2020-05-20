@@ -2,7 +2,7 @@
 pkgname=mingw-w64-raylib
 pkgver=3.0.0
 pkgrel=1
-pkgdesc="Simple and easy to use game programming library"
+pkgdesc="Simple and easy to use game programming library (mingw-w64)"
 arch=(any)
 url="https://www.raylib.com"
 license=(ZLIB)
