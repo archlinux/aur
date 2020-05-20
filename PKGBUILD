@@ -23,23 +23,23 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
-  mkdir -p $srcdir/go
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go get -d -v ./...
+  cd "${srcdir}/apicompat"
+  mkdir -p build/
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}/cmd/apicompat"
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go build -v -o "${srcdir}/${_pkgname}-bin"
+  cd "${srcdir}/apicompat"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  go get -d -v ./...
+  go build -o build ./cmd/...
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  install -Dm755 ../${_pkgname}-bin "${pkgdir}/usr/bin/${_pkgname}"
+  cd "${srcdir}/apicompat"
+  install -Dm755 build/apicompat "${pkgdir}/usr/bin/apicompat"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  go clean -modcache #Remove go libraries
 }
