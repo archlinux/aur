@@ -1,0 +1,16 @@
+pkgbase = fcitx-baidupinyin
+	pkgdesc = A wrapper of Baidu Pinyin IM engine for Fcitx.
+	pkgver = 1.0.1.0
+	pkgrel = 1
+	url = https://srfsh.baidu.com/site/guanwang_linux/index.html
+	arch = x86_64
+	license = custom
+	depends = fcitx
+	depends = qt5-quickcontrols
+	source = https://imeres.baidu.com/imeres/ime-res/guanwang/img/Ubuntu_Deepin-fcitx-baidupinyin-64.zip
+	source = https://srf.baidu.com/site/linux/service/index.html
+	sha256sums = e053946b404b8a74900db5844e27dc5d5c122a442c8676aba54e3d3e3fa64e13
+	sha256sums = SKIP
+
+pkgname = fcitx-baidupinyin
+
