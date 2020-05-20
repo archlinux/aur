@@ -1,7 +1,7 @@
 pkgbase = renderdoc-git
 	pkgdesc = OpenGL and Vulkan debugging tool
-	pkgver = 1.7+342.g105f0e4e9f
-	pkgrel = 2
+	pkgver = 1.8
+	pkgrel = 1
 	url = https://github.com/baldurk/renderdoc
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = renderdoc-git
 	depends = qt5-svg
 	depends = qt5-x11extras
 	depends = xcb-util-keysyms
-	provides = renderdoc=1.7
+	provides = renderdoc=1.8
 	conflicts = renderdoc
 	source = https://github.com/baldurk/renderdoc
 	source = renderdoc.desktop
