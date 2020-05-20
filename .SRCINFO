@@ -1,5 +1,5 @@
 pkgbase = kodi-devel
-	pkgver = 18.7pre40
+	pkgver = 18.7pre41
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -109,6 +109,7 @@ pkgbase = kodi-devel
 	source = 038-PR17863.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17863.patch
 	source = 039-PR17868.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17868.patch
 	source = 040-PR17887.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17887.patch
+	source = 041-PR17905.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17905.patch
 	sha256sums = 47e6d7d4e01dbda92ff83a3e141ac43003e918133e78b3a4b79faff65184711c
 	sha256sums = 38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d
 	sha256sums = 071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a
@@ -158,6 +159,7 @@ pkgbase = kodi-devel
 	sha256sums = ce1bd0578bf66186d9f5fb3e6b5d4084189d0a781c3f17c67de29db6617ef63b
 	sha256sums = 56df387a8fe4584598dee0e7386775c93d4b58b58912d28c690a352a389cf4cc
 	sha256sums = 1c2a1322d563a66843f5b32fcf023dc16593bd5b6ca79b1ca0ce976e3c17f56b
+	sha256sums = f4a3bc6fbdd8d5013f3621427f892ee28a2faf1f8998b0eb0cc10618e5115f26
 
 pkgname = kodi-devel
 	pkgdesc = Alpha, Beta, or RC versions of the software media player and entertainment hub for digital media
@@ -176,7 +178,7 @@ pkgname = kodi-devel
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = shairplay: AirPlay support
 	optdepends = upower: Display battery level
-	provides = kodi=18.7pre40
+	provides = kodi=18.7pre41
 	conflicts = kodi
 
 pkgname = kodi-bin-devel
@@ -202,7 +204,7 @@ pkgname = kodi-bin-devel
 	depends = taglib
 	depends = tinyxml
 	depends = kodi-devel
-	provides = kodi-bin=18.7pre40
+	provides = kodi-bin=18.7pre41
 	conflicts = kodi-bin
 
 pkgname = kodi-wayland-devel
@@ -228,7 +230,7 @@ pkgname = kodi-wayland-devel
 	depends = tinyxml
 	depends = waylandpp>=0.2.7-1
 	depends = kodi-devel
-	provides = kodi-bin=18.7pre40
+	provides = kodi-bin=18.7pre41
 	provides = kodi-wayland
 	conflicts = kodi-wayland
 
@@ -255,14 +257,14 @@ pkgname = kodi-gbm-devel
 	depends = taglib
 	depends = tinyxml
 	depends = kodi-devel
-	provides = kodi-bin=18.7pre40
+	provides = kodi-bin=18.7pre41
 	provides = kodi-gbm
 	conflicts = kodi-gbm
 
 pkgname = kodi-eventclients-devel
 	pkgdesc = Kodi Event Clients
 	optdepends = python2: most eventclients are implemented in python2
-	provides = kodi-eventclients=18.7pre40
+	provides = kodi-eventclients=18.7pre41
 	conflicts = kodi-eventclients
 
 pkgname = kodi-tools-texturepacker-devel
@@ -271,12 +273,12 @@ pkgname = kodi-tools-texturepacker-devel
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=18.7pre40
+	provides = kodi-tools-texturepacker=18.7pre41
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-dev-devel
 	pkgdesc = Kodi dev files
 	depends = kodi-devel
-	provides = kodi-dev=18.7pre40
+	provides = kodi-dev=18.7pre41
 	conflicts = kodi-dev
 
