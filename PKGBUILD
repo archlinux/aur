@@ -1,15 +1,16 @@
 # Maintainer: Svitozar Cherepii <razotivs@gmail.com>
 pkgname=rvgl-soundtrack-orig
 pkgver=18.0327
-pkgrel=1
+pkgrel=2
 pkgdesc="RVGL original Dreamcast soundtrack."
 url='https://rvgl.re-volt.io'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
+provides=('rvgl-soundtrack')
 conflicts=('rvgl-soundtrack')
-source=("$pkgname-$pkgver.zip::https://distribute.re-volt.io/packs/soundtrack_orig.zip")
-sha256sums=('75ab81ba477495841939ea14ee3200adb0f8cb91ef0e54b9964dc0da8b7f1475')
+source=("soundtrack.zip::https://distribute.re-volt.io/packs/soundtrack.zip")
+sha256sums=('44b3d9ab4793d69531c5943bac4027fd0cbd60e49ed75db766a56a5a80d32223')
 
 package() {
     find redbook -type f -exec \
