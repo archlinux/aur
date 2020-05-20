@@ -10,12 +10,12 @@ url='https://github.com/Konstantin8105/f4go'
 license=('MIT')
 provides=('f4go')
 depends=('glibc')
-makedepends=('git' 'go-pie')
+makedepends=('git' 'go')
 source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/f4go"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -23,23 +23,22 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
-  mkdir -p $srcdir/go
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go get -d -v ./...
+  cd "${srcdir}/f4go"
+  mkdir -p build/
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go build -v -o "../${_pkgname}-bin"
+  cd "${srcdir}/f4go"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  go build -o build ./...
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  install -Dm755 ../${_pkgname}-bin "${pkgdir}/usr/bin/${_pkgname}"
+  cd "${srcdir}/f4go"
+  install -Dm755 build/f4go "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  go clean -modcache #Remove go libraries
 }
