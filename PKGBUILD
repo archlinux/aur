@@ -9,33 +9,33 @@ url='https://github.com/liudng/dogo'
 license=('BSD')
 provides=("${pkgname%-git}")
 depends=('glibc')
-makedepends=('git' 'dep' 'go-pie')
+makedepends=('git' 'go')
 source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${srcdir}/dogo"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  mkdir -p gopath/src/github.com/${pkgname%-git}
-  ln -rTsf ${pkgname%-git} gopath/src/github.com/${pkgname%-git}/${pkgname%-git}
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/github.com/${pkgname%-git}/${pkgname%-git}
-  if [[ ! -f Gopkg.toml ]]; then
-    dep init -v
-  fi
-  dep ensure -v
+  cd "${srcdir}/dogo"
+  mkdir -p build/
 }
 
 build() {
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/github.com/${pkgname%-git}/${pkgname%-git}
-  go install -v .
+  cd "${srcdir}/dogo"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  go get -d -v ./...
+  go build -o build ./...
 }
 
 package() {
-  install -Dm755 "${srcdir}/gopath/bin/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
-  install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${srcdir}/dogo"
+  install -Dm755 build/dogo "${pkgdir}/usr/bin/${pkgname%-git}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
