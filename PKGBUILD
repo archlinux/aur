@@ -2,7 +2,7 @@
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
 pkgname=jitsi-meet-desktop
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64')
@@ -21,14 +21,15 @@ backup=()
 options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
         'jitsi-meet-desktop.desktop')
-sha256sums=('447a6642a00acdbdbee88ac0e6da3cea7d56d452b2e25fb9845b358c3624e7a1'
+sha256sums=('8f222b95e959a92c1656f30e8a81e841598f30e83d18458ba4b690d096f12d14'
             '6b718d4cd130bb641ba38fa5893f5aec39ae6ab8770384cc6e1f5eaaa7b791d8')
 
 prepare() {
 	cd jitsi-meet-electron-${pkgver}/
 
-	# TODO: create a pcakage for jitsi-meet-elecctron-utils and depend on it instead
+	# TODO: create a package for jitsi-meet-elecctron-utils and depend on it instead
 	# of letting this pull it down from git.
+	# TODO: find a way to depend on system electron.
 	npm install
 }
 
