@@ -9,7 +9,7 @@ pkgdesc="Rime input method engine with Lua plugin"
 arch=('x86_64')
 url="https://github.com/hchunhui/librime-lua"
 license=('GPL3')
-depends=('librime''lua')
+depends=('librime' 'lua')
 makedepends=('git' 'cmake' 'boost' 'gtest' 'boost-libs' 'opencc' 'yaml-cpp' 'leveldb' 'librime-data' 'google-glog' 'marisa')
 provides=('librime-lua.so')
 #conflicts=('librime' 'librime-lua')
@@ -29,6 +29,8 @@ pkgver() {
 
 prepare() {
     cp -r librime-lua $_pkgname-$_pkgver/plugins/lua
+    cd $_pkgname-$_pkgver
+    patch -p1 -i ../$pkgname-opencc-1.1.patch
 }
 
 build() {
