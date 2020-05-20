@@ -4,7 +4,7 @@
 pkgbase="g13"
 pkgname="g13-git"
 pkgver=v1.0.3.beta.r1.g2b39aec
-pkgrel=2
+pkgrel=3
 pkgdesc="Userspace driver for the Logitech G13 Keyboard"
 arch=('x86_64' 'i686')
 url="https://github.com/khampf/g13"
@@ -40,8 +40,8 @@ build() {
   #cd "${srcdir}/${pkgname}"
   export CFLAGS+=" ${CPPFLAGS}"
   export CXXFLAGS+=" ${CPPFLAGS}"
-  cmake -B build -S "${srcdir}/${pkgname}" 
-  make -C build
+  cmake -B build -S "${srcdir}/${pkgname}"
+  make -C build g13d pbm2lpbm
 }
 
 package() {
