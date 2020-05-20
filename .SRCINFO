@@ -1,0 +1,12 @@
+pkgbase = ideapad-cm
+	pkgdesc = A script to enable/disable battery conservation mode in Lenovo Ideapad laptops.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/tildehacker/ideapad-conservation-mode
+	arch = any
+	license = GPL3
+	source = git://github.com/tildehacker/ideapad-conservation-mode.git
+	md5sums = SKIP
+
+pkgname = ideapad-cm
+
