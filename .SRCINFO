@@ -1,0 +1,21 @@
+pkgbase = mediawiki2latex-bin
+	pkgdesc = Mediawiki2latex, arch specific pre-built binary
+	pkgver = 7.39
+	pkgrel = 1
+	url = https://sourceforge.net/projects/wb2pdf/
+	arch = x86_64
+	license = GPL2
+	depends = poppler
+	depends = texlive-core
+	depends = zlib
+	optdepends = texlive-langextra: Language support for African, Arabic, Armenian, Croatian, Hebrew, Indic, Mongolian, Tibetan and Vietnamese
+	optdepends = texlive-langkorean: Language support for Korean
+	optdepends = texlive-langchinese: Language support for Chinese
+	optdepends = texlive-langjapanese: Language support for Japanese
+	optdepends = texlive-langgreek: Language support for Greek
+	optdepends = texlive-langcyrillic: Language support for Cyrillic
+	source = mediawiki2latex-bin-7.39-1::https://github.com/varagnac/prebuilt-packages/raw/master/mediawiki2latex-bin-7.39-1.tar.gz
+	md5sums = SKIP
+
+pkgname = mediawiki2latex-bin
+
