@@ -1,0 +1,16 @@
+pkgbase = rime-aurora-pinyin
+	pkgdesc = 【极光拼音】输入方案
+	pkgver = 0.0.0.20200521
+	pkgrel = 1
+	url = https://github.com/hosxy/rime-aurora-pinyin
+	arch = x86_64
+	license = LGPL
+	makedepends = librime
+	makedepends = rime-prelude
+	makedepends = rime-essay-simp
+	depends = rime-stroke
+	source = https://github.com/hosxy/rime-aurora-pinyin/archive/aad1a1eff80a65a64f3eb570b89a5cc46014d8c1/rime-aurora-pinyin-aad1a1eff80a65a64f3eb570b89a5cc46014d8c1.tar.gz
+	sha512sums = 78db30cf9b26abe5fe422006cfdc09b906ff43a757d52ceb76099275f0c51663c04bca26764abf48d254ef50baa1c23fbb7ba62e6236687981162842318f3ed7
+
+pkgname = rime-aurora-pinyin
+
