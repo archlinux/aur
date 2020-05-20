@@ -1,6 +1,6 @@
 pkgbase = zls-master-data-git
 	pkgdesc = Zig LSP implementation + Zig Language Server (with the master dataset)
-	pkgver = r127.d9e5859
+	pkgver = r199.cffe4af
 	pkgrel = 1
 	url = https://github.com/zigtools/zls
 	arch = any
@@ -8,6 +8,8 @@ pkgbase = zls-master-data-git
 	depends = zig
 	conflicts = zls-git
 	source = git+https://github.com/zigtools/zls
+	source = git+https://github.com/ziglibs/known-folders
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = zls-master-data-git
