@@ -21,24 +21,22 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  mkdir -p $srcdir/go
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go get -d -v ./...
+  mkdir -p build/
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}/cmd/align"
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go build \
-    -trimpath \
-    -ldflags "-extldflags $LDFLAGS" \
-    -v ./...
+  cd "${srcdir}/${_pkgname}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  go get -d -v ./...
+  go build -o build ./...
 }
 
 package() {
-  install -Dm755 "${srcdir}/${_pkgname}/cmd/align/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  go clean -modcache #Remove go libraries
+  cd "${srcdir}/${_pkgname}"
+  install -Dm755 build/align "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
