@@ -8,27 +8,27 @@ arch=('x86_64')
 url='https://github.com/go-music-theory/music-theory'
 license=('GPL3')
 depends=('glibc')
-makedepends=('go-pie')
+makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('5ca24367560011c9212143aaf4ab9a1f931b2caa69907397dde0d1902976c4df')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  mkdir -p $srcdir/go
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go get -d -v ./...
+  mkdir -p build/
 }
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go build -v -o "../music-theory-bin"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  go get -d -v ./...
+  go build -o build ./...
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm755 ../music-theory-bin "${pkgdir}/usr/bin/music-theory"
-  go clean -modcache #Remove go libraries
+  install -Dm755 build/${pkgname}-${pkgver} "${pkgdir}/usr/bin/music-theory"
 }
