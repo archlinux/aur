@@ -5,7 +5,7 @@
 # Refactored by Blaž "Speed" Hrastnik <https://github.com/archSeer>
 
 pkgname=elasticsearch-xpack
-pkgver=7.6.2
+pkgver=7.7.0
 pkgrel=1
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
@@ -27,15 +27,15 @@ source=(
   elasticsearch-tmpfile.conf
   elasticsearch.default
 )
-sha512sums=('4c18e59071f8f6dcb235910c79033934d45abcfaffee7e27b146771cb16ae845f33769e122416700685c69979d0516e1d9390fbe18928ca34c42220ab05c98bb'
-            'b25a84af32e06b2198b863d907267389485e8d595368279c953d7291aa4b479cd95050313f69e3477a1b16e4cf0a75495db7e65b96eb96f9568ed7727eec72e4'
+sha512sums=('019ead696fb270b1cd045de2575f439d9417a7fa9e272c273c5e2d4c951a333aa4d71646a89dc28ce3add2f35e688e4f488ca464ca53ddc82935318870b28cc3'
+            '52556e0709590f0e15039d89b64c08c9bbeb0c61d29e3cd5a4471744968c882eb559081db1c89e846fa33d50b31e2fe9ba46d7e7e2cf5d4a23e78bc97a50c853'
             '8280cfd911c1762a1cba67a72bf01c593dbcec00ab02b5f7ca2ef05dbcbae835f2d0e20f3143b0f601e233708e7a60148a1b2087aaff0e0b239361ca4792409f'
             '712974b708f54b631d635601e7dff037a2fff0cd927cd09b27974fdb9232c1e495d70232afad5eaa4d2876665e099f880c23f914ed602700ef1962b5f137879f'
             '87ff9026db8883dab2b1c5dcf7ead2700de6aa37000631d153fb61cccf7ab42edbd5eeac4e320e9d6aa2aadbe76f2c6386efb1aefde6f02aef95680f6ffafd0b'
             '337c7c4c0f37430523b9a89e716051f1a05abbc71c3109dbf201bcf1b6839a88b5edb2c6498937552e8e92255e143ea344e55478543ff1c4623ed14ea04e7af1'
             '4926e63ed247f9ced0674a55d01fdf7708b468a5f4b1bdb246f60c4e80d4980f21c811b952340d3e8d1c1dde77af87e062c1b66ec6818f90fb128a713c349050'
             '1c1b3dfe28cd2f9026fdfa373bc59be35cf281bf22fcab12150ddded40b1355268078b9197559c4bdb9665177924fe95786028386baec90dede53264506383fd'
-            '6110415631909ebcf67abfaeb81ca468da17dc88ee1ea6af0625926f6fc0f189678d16817f02921a6aceccbd097a1ab801e1f63d4c3fd0ccb21e0cab4c6ee68f'
+            'af1af8854ca5a129b6c1d5fd3d977d99af0acef4490f2a9d39ee0746467a3305e223031c4ca5cebbb1629b8611e04ea61a1bf57f7fcef4ff4da0d6bae0df8c72'
             '4ef74026f82b6f0cb6cec9b992cd3f9b145083da39a37b7d8da01824c44054c72644ee0fe6d92f0329496f0fce97b7b913bca1402ef922b6cceccc360e35c5b1')
 
 backup=('etc/elasticsearch/elasticsearch.yml'
@@ -54,16 +54,16 @@ prepare() {
 package() {
   cd "$pkgdir"
   install -dm2750 etc/elasticsearch
-  install -dm750 etc/elasticsearch/scripts
+  install -dm750 etc/elasticsearch/{scripts,jvm.options.d}
   install -dm755 {usr/share,var/lib,var/log}/elasticsearch
   install -dm755 usr/bin
 
   cd "$srcdir"
   install -Dvm644 usr/share/elasticsearch/LICENSE.txt \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  for conf in etc/elasticsearch/*; do
-    install -Dm644 "$conf" "$pkgdir/$conf"
-  done
+  find etc/elasticsearch/ -type f -exec \
+    install -Dm644 {} "$pkgdir/"{} \;
+
   cp -R usr/share/elasticsearch/{bin,lib,modules,plugins} "$pkgdir"/usr/share/elasticsearch
 
   cd "$pkgdir"/usr/share/elasticsearch
