@@ -16,6 +16,7 @@ optdepends=('sonarr: TV daemon for usenet & torrents'
             'plex-media-server: Media server'
             'plex-media-server-plexpass: Media server (plexpass version)'
             'emby-server: Media server')
+backup=('var/lib/appsettings.json')
 replaces=('plexrequests')
 provides=('ombi')
 conflicts=('ombi')
@@ -48,6 +49,11 @@ prepare() {
 }
 
 package() {
+  # Copy the default appsettings.json
+  install -d -m 755 "${pkgdir}/var/lib/ombi"
+  install -D -m 644 "${srcdir}/ombi/appsettings.json" "${pkgdir}/var/lib/ombi/"
+  install -D -m 644 "${srcdir}/ombi/HealthCheck.css" "${pkgdir}/var/lib/ombi/"
+
   # Copy in files and then fix permissions
   install -d -m 755 "${pkgdir}/usr/lib/ombi"
   cp -dpr --no-preserve=ownership "${srcdir}/ombi/"* "${pkgdir}/usr/lib/ombi/"
