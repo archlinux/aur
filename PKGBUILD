@@ -6,20 +6,8 @@ pkgdesc="Add Jeedom global status to your favorite desktop bar (i3blocks, polyba
 arch=(x86_64)
 url="https://github.com/deimosfr/jeedom-status"
 license=('GPL')
-depends=()
 makedepends=(git go)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("https://github.com/deimosfr/jeedom-status/archive/v$pkgver.tar.gz")
-noextract=()
-validpgpkeys=()
 
 build() {
 	cd "$pkgname-$pkgver"
