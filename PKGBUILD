@@ -8,28 +8,27 @@ arch=('x86_64')
 url='https://github.com/beatlabs/ergo'
 license=('BSD')
 depends=('glibc')
-makedepends=('go-pie')
+makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('f9492e454f42e6cfda49fcb7a3397c84096be63d11feab7c8c0bdc4778a450f6')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  mkdir -p $srcdir/go
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go get -d -v ./...
+  mkdir -p build/
 }
 
 build() {
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  cd "${srcdir}/${pkgname}-${pkgver}/cmd/cli"
-  go build -mod=mod -v -o "${srcdir}/ergo-bin"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  go build -o build ./cmd/...
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm755 "${srcdir}"/ergo-bin "${pkgdir}/usr/bin/ergo"
+  install -Dm755 build/cli "${pkgdir}/usr/bin/ergo"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/ergo/LICENSE"
-  go clean -modcache #Remove go libraries
 }
