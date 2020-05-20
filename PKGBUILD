@@ -8,7 +8,7 @@ pkgdesc="Terraform provider to provision infrastructure with Linux's KVM using l
 url="https://github.com/dmacvicar/terraform-provider-libvirt"
 arch=("x86_64")
 license=("apache")
-makedepends=("go" "git")
+makedepends=("go" "git" "libssh")
 _namespace="github.com/dmacvicar/"
 depends=("terraform" "libvirt")
 source=("https://github.com/dmacvicar/terraform-provider-libvirt/archive/v$pkgver.tar.gz")
@@ -29,7 +29,6 @@ build() {
     cd "$GOPATH/src/$_namespace/$pkgname"
     PATH="$GOBIN:$PATH" go get -v
 }
-
 
 package() {
     GOPATH="$(pwd)/go"
