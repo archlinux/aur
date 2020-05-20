@@ -2,7 +2,7 @@
 
 pkgname=qogir-kde-theme-git
 _gitname=Qogir-kde
-pkgver=r23.7975ec7
+pkgver=r48.17ff307
 pkgrel=1
 pkgdesc="Qogir kde is a flat Design theme for KDE Plasma desktop"
 arch=('any')
@@ -28,19 +28,16 @@ package() {
    mkdir -p ${pkgdir}/usr/share/color-schemes
    cp -r ${srcdir}/${_gitname}/color-schemes ${pkgdir}/usr/share
    
-   mkdir -p ${pkgdir}/usr/share/plasma/desktoptheme/{Qogir-dark,Qogir}
+   mkdir -p ${pkgdir}/usr/share/plasma/desktoptheme/
    cp -r ${srcdir}/${_gitname}/plasma/desktoptheme ${pkgdir}/usr/share/plasma
 
-   mkdir -p ${pkgdir}/usr/share/plasma/look-and-feel/{com.github.vinceliuice.Qogir-dark,com.github.vinceliuice.Qogir-light,com.github.vinceliuice.Qogir}
+   mkdir -p ${pkgdir}/usr/share/plasma/look-and-feel/
    cp -r ${srcdir}/${_gitname}/plasma/look-and-feel/ ${pkgdir}/usr/share/plasma
     
    mkdir -p ${pkgdir}/usr/share/sddm/themes/Qogir
    cp -r ${srcdir}/${_gitname}/sddm/Qogir ${pkgdir}/usr/share/sddm/themes
-
-   mkdir -p ${pkgdir}/usr/share/plasma/wallpapers/Qogir/contents/images
-   cp -r ${srcdir}/${_gitname}/wallpaper/*.jpeg ${pkgdir}/usr/share/plasma/wallpapers/Qogir/contents/images
-
-   mkdir -p ${pkgdir}/usr/share/Kvantum/{Qogir-dark-solid,Qogir-dark,Qogir-light-solid,Qogir-light,Qogir-solid,Qogir}
+   
+   mkdir -p ${pkgdir}/usr/share/Kvantum/
    cp -r ${srcdir}/${_gitname}/Kvantum ${pkgdir}/usr/share
    
 }
