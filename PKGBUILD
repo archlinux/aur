@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/jaksi/sshesame'
 license=('Apache')
 depends=('glibc')
-makedepends=('go-pie')
+makedepends=('go')
 source=("git+https://github.com/jaksi/sshesame")
 sha256sums=('SKIP')
 
@@ -19,21 +19,22 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/sshesame"
-  mkdir -p $srcdir/go
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go get -d -v ./...
+  mkdir -p build/
 }
 
 build() {
   cd "${srcdir}/sshesame"
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go build -v -o sshesame-bin
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
+  # go get -d -v ./...
+  go build -o build ./...
 }
 
 package() {
   cd "${srcdir}/sshesame"
-  install -Dm755 sshesame-bin "${pkgdir}/usr/bin/sshesame"
+  install -Dm755 build/sshesame "${pkgdir}/usr/bin/sshesame"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
