@@ -1,20 +1,20 @@
 # Maintainer: Carlos Galindo <carlos.s.galindo@gmail.com>
 
 pkgname=nextcloud-app-phonetrack
-_releasename=phonetrack
-pkgver=0.6.2
+_releasename=phonetrack-oc
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Phone tracker and location sharer for Nextcloud"
 arch=('any')
-url="https://gitlab.com/eneiluj/${_releasename}-oc/"
+url="https://gitlab.com/eneiluj/${_releasename}"
 license=('AGPL')
 depends=('nextcloud>=17.0' 'nextcloud<19.0')
 makedepends=()
-source=("${url}wikis/uploads/7c0da5d24e4f0a358d1ac951d84f9bff/${_releasename}-${pkgver}.tar.gz")
+source=("${url}/-/archive/v${pkgver}/${_releasename}-v${pkgver}.tar.gz")
 
 package() {
     install -d --owner=root --group=root $pkgdir/usr/share/webapps/nextcloud/apps/
-    cp -r --target-directory=$pkgdir/usr/share/webapps/nextcloud/apps/ $srcdir/${_releasename}
+    cp -r --target-directory=$pkgdir/usr/share/webapps/nextcloud/apps/ $srcdir/${_releasename}-v${pkgver}
 }
 
-sha256sums=('920fcab005bb09c45321f5a1731144b338d5a93b96b402057e9eec277870be4c')
+sha512sums=('3eed4f5521bce1835de3dabaef848132305bfd3facb3e9fe369e2bf3202d012583a3f65e1c39d934fa5adf5c8e2f1aa0e89f93be234daf932c35f6074fa76435')
