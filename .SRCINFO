@@ -1,0 +1,34 @@
+pkgbase = lightspark
+	pkgdesc = An open source flash player implementation
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/lightspark/lightspark
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = nasm
+	makedepends = ninja
+	makedepends = boost
+	depends = libgl
+	depends = curl
+	depends = ffmpeg
+	depends = zlib
+	depends = glew
+	depends = pcre
+	depends = rtmpdump
+	depends = cairo
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = libjpeg
+	depends = pango
+	depends = xz
+	depends = boost-libs
+	depends = glibmm
+	conflicts = pepper-flash
+	source = https://github.com/lightspark/lightspark/archive/0.8.2.tar.gz
+	source = https://patch-diff.githubusercontent.com/raw/lightspark/lightspark/pull/409.patch
+	sha512sums = 0ff636ad59523726232d9c2105843dc9ea835526c300bca7833e6d1a0ebf7630c1d10109143baabc16f95c1c954094603c945b705a6c9fb02f369e94fead034e
+	sha512sums = 85b095d74c548e815caaf83fe1893d2bdf4e6bcada98e9d0aed381de5bc2ed50edbfd144dc3996f6a0423645d3c9574047b4f55cde53dee43ff6888735bc0aca
+
+pkgname = lightspark
+
