@@ -2,14 +2,14 @@
 
 pkgname=libretro-mame-git
 pkgver=71661.abca8f7ac5
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="libretro implementation of MAME. (Arcade)"
 url="https://github.com/libretro/mame"
 license=('custom:MAME License')
 groups=('libretro')
 depends=('zlib' 'glibc' 'libretro-core-info')
-makedepends=('git' 'python2')
+makedepends=('git' 'python2' 'libglvnd' 'alsa-lib')
 
 _libname=mame_libretro
 _gitname=mame
