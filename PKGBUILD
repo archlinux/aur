@@ -49,7 +49,7 @@ depends=(${ros_depends[@]}
 # sha256sums=('6cbf0b256af768dcd336ff60b142a2f1d363c79879c30bbe5bc0952c0375b2e8')
 
 # Tarball version (faster download)
-_dir="moveit-${pkgver}/moveit_ros_planning_interface"
+_dir="moveit-${pkgver}/moveit_ros/planning_interface"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz"
   "eigenpy.patch")
 sha256sums=('b0ac91cd4c4dc29d9bd5e3885a1a457252495b3f2bedb46ddfe04154f5ac2358'
