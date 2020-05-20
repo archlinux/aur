@@ -14,7 +14,7 @@ arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
 license=('BSD' 'custom')
 depends=('cmark' 'curl' 'libjpeg-turbo' 'giflib' 'tinyxml' 'libxcursor' 'fontconfig' 'hicolor-icon-theme')
-makedepends=('git' 'ninja' 'python2' 'clang' 'cmake' 'libglvnd' 'harfbuzz-icu' 'pixman')
+makedepends=('git' 'ninja' 'python2' 'clang' 'cmake' 'libglvnd' 'harfbuzz-icu' 'pixman' 'libxi')
 conflicts=("${_pkgname}" "${_pkgname}-gpl" "${_pkgname}-skia-bin")
 source=(
         "git+https://github.com/${_pkgname}/laf.git"
