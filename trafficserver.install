@@ -1,16 +1,38 @@
-post_install() {
-    systemd-tmpfiles --create trafficserver.conf
+_missing_user_message="This package requires that the 'trafficserver' OS user
+and group exist when installing this package and that it must match the UID and
+GID of the server that built the package.  This package uses systemd-sysusers
+as other arch packages do. Run the following command as root before building
+this package, replacing <UID:GID> with the values from the package build
+machine.
+
+    # echo 'u trafficserver <UID:GID> \"Apache Traffic Server\"' | \
+          systemd-sysusers --replace=/usr/lib/sysusers.d/trafficserver.conf -
+
+Note that the UID and GID assigned must match on the arch install where the
+package will be installed.
+
+This ensures that the post install steps do not clobber administrator defined
+or existing cache ownership at the expense of requiring the trafficserver user
+be defined the same way on the package build server and package deployment
+host.  See https://bbs.archlinux.org/viewtopic.php?id=241480"
+
+pre_install() {
+    if ! (getent passwd trafficserver || getent group trafficserver); then
+        echo "$_missing_user_message"
+        return 1
+    fi
+
 }
 
 post_upgrade() {
     # There are configuration changes required when upgrading to major
-    # version 6.
-    if [[ "${2%%.*}" -lt 7 ]]; then
-        echo 'Please review your configuration when upgrading to v7:'
-        echo ' https://cwiki.apache.org/confluence/display/TS/Upgrading+to+v7.0'
+    # version 8.
+    if [[ "${2%%.*}" -lt 8 ]]; then
+        echo 'Please review your configuration when upgrading to v8:'
+        echo ' https://cwiki.apache.org/confluence/display/TS/Upgrading+to+v8.0'
     fi
 }
 
 post_remove() {
-    echo 'Tserver log files and cache files must be cleaned up manually.'
+    echo 'Traffic Server log files and cache files must be cleaned up manually.'
 }

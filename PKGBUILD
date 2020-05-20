@@ -2,43 +2,64 @@
 # Contributor: David Roheim <david dot roheim at gmail dot com>
 
 pkgname='trafficserver'
-pkgver=7.1.1
+pkgver=8.0.7
 pkgrel=1
 pkgdesc="Apache Traffic Server"
 url="http://trafficserver.apache.org/"
 license=('Apache')
 arch=('i686' 'x86_64')
-depends=('tcl' 'hwloc' 'curl' 'libunwind' 'pcre' 'geoip')
+depends=('tcl' 'hwloc' 'curl' 'libunwind' 'pcre' 'geoip' 'luajit')
 makedepends=('flex' 'python2-sphinx')
 
 source=(
     http://archive.apache.org/dist/"${pkgname}"/"${pkgname}"-"${pkgver}".tar.bz2
     trafficserver.tmpfiles
+    trafficserver.sysusers
     trafficserver.service.in.patch
     trafficserver.lib_perl_Makefile.in.patch)
 
-md5sums=('a3a9f1a70cd9d11ad5a027275643cca1'
-         '44b617f732eb1944a916f36cc393ab7b'
-         '1a72eaf2dc694a5a60d949c9f3130e80'
-         '21cb3150aac3f1609f933dea08904592')
+md5sums=('1a2c1ee629785580b4da6b58c04e0411'
+         '5234ec78048900590edbf6d6e3be1af9'
+         'a89c31b7753e8a9a0f83e7e0a79f5e87'
+         '89465888eb48237b68a3b1bd61eded53'
+         '719a9364900017cc05256042a51d0dc9')
 
 install=${pkgname}.install
 changelog=${pkgname}.changelog
 
+_missing_user_message="Trafficserver must not run as root and systemd will
+prevent it from running as the user nobody. This package requires that the
+'trafficserver' OS user and group exist when building to ensure correct file
+ownership during the build process. This package uses systemd-sysusers as
+other arch packages do. Run the following command as root before building this
+package.
+
+    # echo 'u trafficserver - \"Apache Traffic Server\"' | \\
+          systemd-sysusers --replace=/usr/lib/sysusers.d/trafficserver.conf -
+
+Note that the UID and GID assigned must match on the arch install where the
+package when be deployed.  This can be accomplished by noting the values for
+the UID and GID of the trafficserver user on the build server and then creating
+sysusers overrides for the trafficserver user where the package will be
+installed.  For example (on the server where the package will be deployed):
+
+    # echo 'u trafficserver 999:999 \"Apache Traffic Server\" - > /etc/sysusers.d/trafficserver.conf
+
+This ensures that the post install steps do not clobber administrator defined
+or existing cache ownership at the expense of requiring the trafficserver user
+be defined the same way on the package build server and package deployment
+host.  See https://bbs.archlinux.org/viewtopic.php?id=241480"
+
 backup=(
-    'etc/trafficserver/congestion.config'
-    'etc/trafficserver/logging.config'
     'etc/trafficserver/hosting.config'
     'etc/trafficserver/parent.config'
     'etc/trafficserver/records.config'
     'etc/trafficserver/socks.config'
     'etc/trafficserver/trafficserver-release'
     'etc/trafficserver/splitdns.config'
-    'etc/trafficserver/vaddrs.config'
-    'etc/trafficserver/cluster.config'
     'etc/trafficserver/storage.config'
+    'etc/trafficserver/ssl_server_name.yaml'
     'etc/trafficserver/volume.config'
-    'etc/trafficserver/metrics.config'
     'etc/trafficserver/remap.config'
     'etc/trafficserver/ssl_multicert.config'
     'etc/trafficserver/cache.config'
@@ -68,10 +89,10 @@ backup=(
     'etc/trafficserver/body_factory/default/request#no_host'
     'etc/trafficserver/body_factory/default/connect#hangup'
     'etc/trafficserver/body_factory/default/request#invalid_content_length'
-    'etc/trafficserver/body_factory/default/congestion#retryAfter'
     'etc/trafficserver/plugin.config'
-    'etc/trafficserver/log_hosts.config'
-    'etc/trafficserver/ip_allow.config')
+    'etc/trafficserver/logging.yaml'
+    'etc/trafficserver/ip_allow.config'
+)
 
 prepare() {
     cd "${srcdir}"/"${pkgname}-${pkgver}"
@@ -80,9 +101,19 @@ prepare() {
 }
 
 build() {
+    # This check is defined here instead of in prepare() in case the package
+    # builder is skipping the prepare step.
+    if ! ( getent passwd trafficserver || getent group trafficserver ); then
+        echo "$_missing_user_message"
+        return 1
+    fi
+
     cd "${srcdir}"/"${pkgname}-${pkgver}"
 
-    ./configure PYTHON=python2 SPHINXBUILD=sphinx-build2 --enable-layout=Arch
+    ./configure PYTHON=python2 SPHINXBUILD=sphinx-build2 \
+        --with-user=trafficserver \
+        --with-group=trafficserver \
+        --enable-layout=Arch
     make
 }
 
@@ -98,10 +129,13 @@ package()
 
     rm -rf "${pkgdir}"/run
     rm -rf "${pkgdir}"/usr/lib/perl5
-    rm -rf "${pkgdir}"/usr/share/trafficserver
+    rm -rf "${pkgdir}"/usr/share
 
     install -D -m 644 "${srcdir}"/trafficserver.tmpfiles \
         "${pkgdir}"/usr/lib/tmpfiles.d/trafficserver.conf
+
+    install -D -m 644 "${srcdir}"/trafficserver.sysusers \
+        "${pkgdir}"/usr/lib/sysusers.d/trafficserver.conf
 
     install -D -m 644 \
         "${srcdir}"/"${pkgname}-${pkgver}"/rc/trafficserver.service \

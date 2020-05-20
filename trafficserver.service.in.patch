@@ -1,11 +1,11 @@
---- rc/trafficserver.service.in.orig	2016-08-17 07:55:35.673822545 -1000
-+++ rc/trafficserver.service.in	2016-08-17 07:56:10.830103516 -1000
+--- rc/trafficserver.service.in.orig	2020-05-07 05:59:25.663463182 -0700
++++ rc/trafficserver.service.in	2020-05-07 06:05:16.772825562 -0700
 @@ -21,7 +21,7 @@
  
  [Service]
  Type=simple
 -EnvironmentFile=-/etc/sysconfig/trafficserver
 +EnvironmentFile=-/etc/conf.d/trafficserver
- PIDFile=@exp_runtimedir@/cop.pid
- ExecStart=@exp_bindir@/traffic_cop $TC_DAEMON_ARGS
- ExecReload=@exp_bindir@/traffic_ctl config reload
+ ExecStart=@exp_bindir@/traffic_manager $TM_DAEMON_ARGS
+ Restart=on-failure
+ RestartSec=5s

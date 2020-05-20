@@ -1,3 +1,12 @@
+2020-05-07 Galen Sampson <youremail@domain.com>
+
+        * 8.0.7-1 :
+        Apache Traffic Server 8.0.7.
+
+        Use a dedicated OS user trafficserver for cache, log, and config
+        file ownership.
+
+
 2017-09-15 Galen Sampson <youremail@domain.com>
 
         * 7.1.1-1 :
