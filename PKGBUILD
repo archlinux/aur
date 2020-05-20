@@ -10,7 +10,7 @@ url='https://github.com/Konstantin8105/c4go'
 license=('MIT')
 provides=('c4go')
 depends=('clang')
-makedepends=('git' 'go-pie')
+makedepends=('git' 'go')
 source=("git+${url}")
 sha256sums=('SKIP')
 
@@ -24,22 +24,21 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  mkdir -p $srcdir/go
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go get -d -v ./...
+  mkdir -p build/
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go build -v -o "../${_pkgname}-bin"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  go build -o build ./...
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  install -Dm755 ../${_pkgname}-bin "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 build/c4go "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  go clean -modcache #Remove go libraries
 }
