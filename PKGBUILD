@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=gitui
-pkgver=0.2.5
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Blazing fast terminal-ui for git written in Rust'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('libgit2')
 conflicts=('gitui-git')
 makedepends=('cargo')
 source=("$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4e884c8b4e4f7d2f4199b48d82913d326bcc2790d8a3825ec931144b1f86466b')
+sha256sums=('e34f34bc7583c17562243c2255b46215610dfea5127af0ee6bb3971aed746239')
 
 build() {
   cd "$pkgname-$pkgver"
