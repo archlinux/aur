@@ -54,8 +54,8 @@ prepare() {
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  # Implement all packaged patches.
-  git apply ../*.patch
+  # Implement all packaged patches. Ignore errors.
+  git apply ../*.patch || echo "ERROR: something went wrong with a gitpatch. Advancing anyway."
 
   # get kernel version
   yes "" | make prepare
