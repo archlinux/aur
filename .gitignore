@@ -2,5 +2,4 @@
 !PKGBUILD
 !.SRCINFO
 !.gitignore
-!*.sh
-!*.md
+!README.md
