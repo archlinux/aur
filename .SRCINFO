@@ -1,16 +1,16 @@
 pkgbase = python-md_toc
 	pkgdesc = Automatically generate a compliant table of contents for a markdown file to improve document readability
-	pkgver = 7.0.1
+	pkgver = 7.0.2
 	pkgrel = 1
 	url = https://github.com/frnmst/md-toc
 	arch = any
 	license = GPL3
 	depends = python
-	depends = python-fpyutils=1.1.0
+	depends = python-fpyutils=1.1.2
 	depends = python-setuptools
 	options = !emptydirs
-	source = python-md_toc.tar.gz::https://github.com/frnmst/md-toc/archive/7.0.1.tar.gz
-	sha256sums = 5807ddfffe054e70d65b4abc7128923f67d84baa690d9c33027be03885d082ae
+	source = python-md_toc.tar.gz::https://github.com/frnmst/md-toc/archive/7.0.2.tar.gz
+	sha256sums = d587d831d0df0df265ab858869502558f4cbd7538097ebfa5db2f9fb1fb2f402
 
 pkgname = python-md_toc
 
