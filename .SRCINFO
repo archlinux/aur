@@ -1,0 +1,17 @@
+pkgbase = grcompiler
+	pkgdesc = The SIL Graphite compiler
+	pkgver = 4.3.1
+	pkgrel = 1
+	url = https://github.com/silnrsi/grcompiler
+	arch = x86_64
+	arch = i686
+	license = GPL
+	license = LGPL
+	license = CPL
+	makedepends = icu
+	makedepends = perl-sgmls
+	source = grcompiler-grcompiler.tar.gz::https://github.com/silnrsi/grcompiler/archive/v4.3.1.tar.gz
+	sha256sums = e46b4de4552d6e626fede18dbd34502c83ee6d5507ef7ab6b0374f11c24c5912
+
+pkgname = grcompiler
+
