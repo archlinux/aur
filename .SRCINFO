@@ -1,0 +1,24 @@
+pkgbase = gamescope-git
+	pkgdesc = Micro-compositor formerly known as steamcompmgr
+	pkgver = 3.6.1.r24.g66722b1
+	pkgrel = 1
+	url = https://github.com/Plagman/gamescope
+	arch = x86_64
+	license = custom:BSD-2-Clause
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = wlroots-git
+	depends = sdl2
+	depends = libxcomposite
+	depends = vulkan-icd-loader
+	depends = libxtst
+	provides = gamescope
+	conflicts = gamescope
+	source = git+https://github.com/Plagman/gamescope.git
+	source = use-system-wlroots.patch
+	sha512sums = SKIP
+	sha512sums = 6f3b95ac6d95cfc5c1dd82c995b7492505507171f7d4df5c59dba3e8b66eda696328e71fc49e4df8cbf8a7aab252946c9ceb75080d062b30b8cf31dedba58717
+
+pkgname = gamescope-git
+

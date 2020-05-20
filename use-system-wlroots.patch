@@ -1,0 +1,57 @@
+From 159e0a80b83ef9d2a55ef27f4a68c520a04526b4 Mon Sep 17 00:00:00 2001
+From: Sefa Eyeoglu <contact@scrumplex.net>
+Date: Wed, 20 May 2020 12:43:05 +0200
+Subject: [PATCH] packaging/archlinux: Use global wlroots library
+
+---
+ .gitmodules         | 3 ---
+ meson.build         | 6 ++----
+ subprojects/wlroots | 1 -
+ 3 files changed, 2 insertions(+), 8 deletions(-)
+ delete mode 160000 subprojects/wlroots
+
+diff --git a/.gitmodules b/.gitmodules
+index dcdc8b8..984b052 100644
+--- a/.gitmodules
++++ b/.gitmodules
+@@ -1,6 +1,3 @@
+-[submodule "subprojects/wlroots"]
+-	path = subprojects/wlroots
+-	url = https://github.com/swaywm/wlroots.git
+ [submodule "subprojects/libliftoff"]
+ 	path = subprojects/libliftoff
+ 	url = https://github.com/emersion/libliftoff.git
+diff --git a/meson.build b/meson.build
+index 7d2fd7d..a275d50 100644
+--- a/meson.build
++++ b/meson.build
+@@ -44,9 +44,7 @@ math           = cc.find_library('m')
+ thread_dep = dependency('threads')
+ sdl_dep = dependency('SDL2')
+ 
+-wlroots_proj = subproject('wlroots', default_options:
+-  ['default_library=static', 'examples=false'])
+-wlroots_static_dep = wlroots_proj.get_variable('wlroots')
++wlroots        = dependency('wlroots')
+ 
+ shadercompiler = find_program('glslangValidator')
+ 
+@@ -76,7 +74,7 @@ executable(
+     dependencies : [
+         dep_x11, dep_xdamage, dep_xcomposite, dep_xrender, dep_xext,
+         dep_xxf86vm, pixman_dep, drm_dep, wayland_server, wayland_protos,
+-        libinput, xkbcommon, math, thread_dep, sdl_dep, wlroots_static_dep,
++        libinput, xkbcommon, math, thread_dep, sdl_dep, wlroots,
+         vulkan_dep, libftoff_dep, dep_xtst
+     ],
+     install: true,
+diff --git a/subprojects/wlroots b/subprojects/wlroots
+deleted file mode 160000
+index 2176c63..0000000
+--- a/subprojects/wlroots
++++ /dev/null
+@@ -1 +0,0 @@
+-Subproject commit 2176c63856df4e411df0ba3c5eee43f69e977b6e
+-- 
+2.26.2
+
