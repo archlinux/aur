@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _major=5.6
-_minor=13
+_minor=14
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=4
+pkgrel=1
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -78,11 +78,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v12-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v12-sep/0002-gcc-plugins-drop-support-for-GCC-4.7.patch"
-        "${_lucjanpath}/arch-patches-v12-sep/0003-gcc-common.h-Update-for-GCC-10.patch"
-        "${_lucjanpath}/arch-patches-v12-sep/0004-Makefile-disallow-data-races-on-gcc-10-as-well.patch"
-        "${_lucjanpath}/arch-patches-v12-sep/0005-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch"
+        "${_lucjanpath}/arch-patches-v14-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v14-sep/0002-gcc-plugins-drop-support-for-GCC-4.7.patch"
+        "${_lucjanpath}/arch-patches-v14-sep/0003-gcc-common.h-Update-for-GCC-10.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -325,16 +323,14 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('f171638debb017ffcc5b9ce19b190cfa05638412e1f03344a5a7be45be901eb97c2df1449c9899c33a7668019f4c6d4eb1f99d864ab9a7050fbfd6b06c7aca8d'
+sha512sums=('fe19ad3165ae46f1511e39c495ba1a5a304ea3f69a169debe27026e0c888a4766b1618c76aee2279ba6fb0316cb731fdcd8ad5f9ac8dc1d4058573bd5dc00cd0'
             'SKIP'
             '31141f3afa388dbfc7a0a1c0a7b7fc58a6824befea1fc044eb76fc0e6d4c55f249e3e0f7e63c0697ba736dc902d85128c0d78eeffe8eca3c207a573664c74514'
             '1962d021d48236f287736383acac9176e6f992cf980b5c66c1ba006288b1f2039c02caa81ebf44e99edc0dcaf09160a3fe8e4aece7541b09ec5f30cd8d834dc5'
             '9c71d44a84a2cbe16af1328ab11b9733218a26eda23e6643fcf1daebf368bcd5ff2502ffd77f7b6b300b943e87f1d9e787ffb48f3705fba6daa8b49094fb9f2d'
-            'd2226f3ca0583770f14be794b26d98d49ba10e38e3625af1726857a91f250cfce73454646b17d7597fdb98cd3f947a1356a0c9f88a2792b4d2cecf1fad76fe28'
-            '5cbfbf1b4bb90114600de6eb2b5c058ced63c875582547c3739e296b43c5b26985a07095f55ae67e31e888598af651b7e37370acaff7188b366a7d3a51d53bdf'
-            '1df4fb4d5c02c6cd0d4e8d3d807a5641303ed5e7f40b91a1508aaa1f5fec19d6a83d3165ae5131e198fea6cd1919015f58207b22a20eae9b47b95c28e1ca66b3'
-            'de9b4dc492162fbd0f40bce710703ae1d66c1e7a5449a1d24bdaceb16f1d781457664722e4635c413ec00c26d0632b7ac21defcda65b2282bd475cc1e80732eb'
-            '5d5e65aefcee037177fb2e8d3e841c347ea83118c868b7d87d843d526eb6935e39cef5dd9ab0f2c30ecc53c86efb581d9c824a31ec7afc0fdd2b7b1e8b3b3cfb'
+            '399b42510f4ebed27b8e18f7940edc26fdd5b9d6add8dfa05170776edce84baf9800e5d7c321e4cf2e8e7885381606be1f30e097ef2d658154b52b6e1ae6a0e6'
+            'fd366ee8567af46bf0d1d96af101d26815260a8d8ff8145dcee7cf44e11b6c238601e99e6624e421042399bb73698a947c499cfce1bd6150df3be7218fb24cdd'
+            'ab35f9f5355a18543f19574bdd04b62e8aae2fe4355ae1a24d29f3121fe18ec4edc130d2eca77ec68a03d694ddb549e13d0abf36cea986171bdcd8f213333cde'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             'bd933205806640bb1ce63d9286c8c0d3f8cb0bbcb2008136a4073a6eae7f9ab69f43de4fcc356adbcf645f48f80470cb669194756f804ed818735eaf82ee92bd')
 
