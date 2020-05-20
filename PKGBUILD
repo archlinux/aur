@@ -9,33 +9,33 @@ url='https://github.com/masterzen/winrm-cli'
 license=('Apache')
 provides=("${pkgname%-git}")
 depends=('glibc')
-makedepends=('git' 'dep' 'go-pie')
+makedepends=('git' 'go')
 source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${srcdir}/winrm-cli"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  mkdir -p gopath/src/github.com/${pkgname%-git}
-  ln -rTsf ${pkgname%-git} gopath/src/github.com/${pkgname%-git}/${pkgname%-git}
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/github.com/${pkgname%-git}/${pkgname%-git}
-  if [[ ! -f Gopkg.toml ]]; then
-    dep init -v
-  fi
-  dep ensure -v
+  cd "${srcdir}/winrm-cli"
+  mkdir -p build/
 }
 
 build() {
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/github.com/${pkgname%-git}/${pkgname%-git}
-  go install -v .
+  cd "${srcdir}/winrm-cli"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
+  go get -d -v ./...
+  go build -o build ./...
 }
 
 package() {
-  install -Dm755 "${srcdir}/gopath/bin/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
-  install -Dm644 "${srcdir}/${pkgname%-git}/README.md" "${pkgdir}/usr/share/doc/${pkgname%-git}/README.md"
+  cd "${srcdir}/winrm-cli"
+  install -Dm755 build/winrm-cli "${pkgdir}/usr/bin/winrm-cli"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/winrm-cli/README.md"
 }
