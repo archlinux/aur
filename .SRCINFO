@@ -1,0 +1,16 @@
+pkgbase = saait
+	pkgdesc = The most boring static page generator
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://codemadness.org/saait.html
+	arch = x86_64
+	license = custom:ISC license
+	makedepends = gcc-libs
+	depends = glibc
+	provides = saait
+	conflicts = saait
+	source = https://codemadness.org/releases/saait/saait-0.7.1.tar.gz
+	sha256sums = cba86b0c01ef1ff7aa154de4c45f720acb9d18c8f397af1a2642aadb7e8bdd35
+
+pkgname = saait
+
