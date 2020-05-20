@@ -1,6 +1,6 @@
 pkgbase = plex-mpv-shim
 	pkgdesc = Cast media from Plex Mobile and Web apps to MPV
-	pkgver = 1.7.16
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/iwalton3/plex-mpv-shim
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = plex-mpv-shim
 	optdepends = git
 	optdepends = python-pystray
 	optdepends = tk
-	source = plex-mpv-shim-1.7.16.tar.gz::https://github.com/iwalton3/plex-mpv-shim/archive/v1.7.16.tar.gz
-	md5sums = 1d8957704a6aa95da27ecca7fb09151b
+	source = plex-mpv-shim-1.8.0.tar.gz::https://github.com/iwalton3/plex-mpv-shim/archive/v1.8.0.tar.gz
+	md5sums = 91ae236705c2a9c82fb5cb7ad09fd2f9
 
 pkgname = plex-mpv-shim
 
