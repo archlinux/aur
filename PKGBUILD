@@ -68,6 +68,9 @@ prepare() {
   hg export -r 53f0e4ab7fcf | patch -Rp1
   hg export -r cb27cbe57e4d | patch -Rp1
 
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1639575
+  hg export -r 800142bdea70 | patch -Rp1
+
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
 
