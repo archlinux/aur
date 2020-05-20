@@ -3,7 +3,7 @@
 # Contributor: Brett Dutro <brett.dutro@gmail.com>
 
 pkgname=ashuffle-git
-pkgver=3.0.0.r2.g9e6f286
+pkgver=3.4.0.r3.g9e4b7a1
 pkgrel=1
 pkgdesc="Automatic library-wide shuffle for mpd. (git)"
 url="https://github.com/joshkunz/ashuffle"
