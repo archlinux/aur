@@ -1,0 +1,15 @@
+pkgbase = mkvdts2ac3
+	pkgdesc = Bash script to convert DTS audio to AC3 within a matroska file.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/JakeWharton/mkvdts2ac3
+	arch = any
+	license = Apache-2.0
+	depends = mkvtoolnix-cli
+	depends = ffmpeg
+	depends = rsync
+	source = git+https://github.com/JakeWharton/mkvdts2ac3
+	md5sums = SKIP
+
+pkgname = mkvdts2ac3
+
