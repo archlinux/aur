@@ -5,7 +5,7 @@
 pkgname=('python-pymupdf')
 _name='PyMuPDF'
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings for MuPDF'
 arch=('x86_64')
 url='https://github.com/pymupdf/PyMuPDF'

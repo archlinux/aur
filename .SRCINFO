@@ -6,8 +6,8 @@ pkgbase = python-pymupdf
 	arch = x86_64
 	license = AGPL3
 	makedepends = python-setuptools
-	makedepends = libmupdf>=1.16
-	makedepends = libmupdf<1.17
+	makedepends = libmupdf>=1.17
+	makedepends = libmupdf<1.18
 	depends = python
 	depends = libjpeg-turbo
 	depends = jbig2dec
