@@ -150,7 +150,7 @@ build() {
   mkdir $pkgname-{32,64}-build
 
   # https://bugs.winehq.org/show_bug.cgi?id=43530
-  export CFLAGS="${CFLAGS/-fno-plt/}"
+  export CFLAGS="${CFLAGS/-fno-plt/} -fcommon"
   export LDFLAGS="${LDFLAGS/,-z,now/}"
 
   # We need RPATH to point to the "lib32" in our prefix
