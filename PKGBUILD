@@ -9,27 +9,26 @@ arch=('x86_64')
 url='https://blog.dgraph.io/post/badger'
 license=('Apache')
 depends=('glibc')
-makedepends=('go-pie')
+makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dgraph-io/badger/archive/v${pkgver}.tar.gz")
 sha256sums=('de90b7d5ac304ca9477dab7eb2d93c6c37c7732c6462021dc95317d069b7ef1e')
 
 prepare() {
   cd "${srcdir}/${_name}-${pkgver}/badger"
-  mkdir -p $srcdir/go
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go get -d -v ./...
+  mkdir -p build/
 }
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}/badger"
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go build -v -o "${srcdir}/${_name}-bin"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  go build -o build ./...
 }
 
 package() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  install -Dm755 ${srcdir}/${_name}-bin "${pkgdir}/usr/bin/${_name}"
-  go clean -modcache #Remove go libraries
+  cd "${srcdir}/${_name}-${pkgver}/badger"
+  install -Dm755 build/badger "${pkgdir}/usr/bin/badger"
 }
