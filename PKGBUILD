@@ -8,7 +8,7 @@ url="https://www.github.com/aloussase/qobra"
 license=('GPL3')
 groups=()
 depends=(mpg123)
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 provides=("${pkgname%-git}")
 conflicts=()
 replaces=()
@@ -27,4 +27,8 @@ pkgver() {
 package() {
 	cd "${pkgname%-git}"
 	make DESTDIR="$pkgdir/" install
+}
+
+package_qobra-git(){
+    depends=(python-setuptools)
 }
