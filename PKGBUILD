@@ -18,7 +18,6 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}/cmd/immortal"
   cd "${srcdir}/${pkgname}-${pkgver}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
