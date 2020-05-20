@@ -8,28 +8,29 @@ arch=('x86_64')
 url='https://github.com/zRedShift/mimemagic'
 license=('MIT')
 depends=('glibc')
-makedepends=('dep' 'go-pie')
+makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('3f20e5a7e28080c3dd23721d40d9d419509f26e38c69f11b2c9838c8b41a1927')
 
 prepare() {
-  mkdir -p gopath/src/github.com/${pkgname}
-  ln -rTsf ${pkgname}-${pkgver} gopath/src/github.com/${pkgname}/${pkgname}
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/github.com/${pkgname}/${pkgname}
-  if [[ ! -f Gopkg.toml ]]; then
-    dep init -v
-  fi
-  dep ensure -v
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  mkdir -p build/
 }
 
 build() {
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/github.com/${pkgname}/${pkgname}/cmd/${pkgname}
-  go install -v .
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  # go get -d -v ./cmd/...
+  go build -o build ./cmd/...
 }
 
 package() {
-  install -Dm755 "${srcdir}/gopath/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -Dm755 build/mimemagic "${pkgdir}/usr/bin/mimemagic"
+  install -Dm755 build/parser "${pkgdir}/usr/bin/parser"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
