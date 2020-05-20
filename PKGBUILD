@@ -3,7 +3,7 @@
 _pipname=pysilfont
 pkgname=python-$_pipname-git
 pkgver=1.5.0.r1.g03061ba
-pkgrel=1
+pkgrel=2
 pkgdesc='Python-based font utilities collection and framework'
 arch=('any')
 url="https://github.com/silnrsi/$_pipname"
@@ -26,6 +26,9 @@ _py_deps=('booleanoperations'
 depends=('python'
          "${_py_deps[@]/#/python-}")
 makedepends=('python-setuptools')
+optdepends=('python-fontbakery'
+            'python-glyphconstruction'
+            'python-palaso')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
