@@ -33,7 +33,7 @@ package() {
   if [[ $(uname -m) == x86_64 ]]; then
     release_name+=-amd64
   else
-    release_name+=-amd64
+    release_name+=-arm64
   fi
 
   mkdir -p "$pkgdir/usr/lib"
