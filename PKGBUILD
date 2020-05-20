@@ -41,6 +41,7 @@ package() {
     find "$pkgdir"/opt/gitkraken/ -type f -exec chmod 644 {} \;
     chmod 755 "$pkgdir"/opt/gitkraken/gitkraken
     chmod 755 "$pkgdir"/opt/gitkraken/resources/app.asar.unpacked/src/js/redux/domain/AskPass/AskPass.sh
+    chmod 4755 "$pkgdir"/opt/gitkraken/chrome-sandbox
 
     install -d "$pkgdir"/usr/bin
 
