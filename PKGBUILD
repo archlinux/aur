@@ -9,8 +9,8 @@ arch=('x86_64')
 url="https://github.com/hosxy/rime-aurora-pinyin"
 license=('LGPL')
 # dependency for reverse lookup
-depends=('rime-stroke')
-makedepends=('librime' 'rime-prelude' 'rime-essay-simp')
+depends=('rime-stroke' 'rime-essay-simp')
+makedepends=('librime' 'rime-prelude')
 source=("https://github.com/hosxy/rime-aurora-pinyin/archive/$_commit/rime-aurora-pinyin-$_commit.tar.gz")
 sha512sums=('78db30cf9b26abe5fe422006cfdc09b906ff43a757d52ceb76099275f0c51663c04bca26764abf48d254ef50baa1c23fbb7ba62e6236687981162842318f3ed7')
 
