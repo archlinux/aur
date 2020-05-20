@@ -3,7 +3,7 @@
 
 pkgname=i-nex
 pkgver=7.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="System information tool like hardinfo, sysinfo"
 arch=('i686' 'x86_64')
 url="http://i-nex.linux.pl/"
@@ -23,7 +23,7 @@ makedepends=('gambas3-devel' 'gcc' 'imagemagick')
 source=("https://github.com/i-nex/I-Nex/archive/${pkgver}.tar.gz"
         "Fix-error-if-proc-mtrr-doesn-t-exist.patch")
 sha256sums=('81236eb729fbd29b356762c0883fe295cf1181cc7d14f00b1dfcceb517b47960'
-            '72a31d2caba843508dc700b9af9f9226f13e286a9b1646c9f3d101e663c26ece')
+            '5c812da66cf8627e1749722d8e98f0871e6b3dbc30efbce29b785912ff39e96b')
 conflicts=('i-nex-git')
 backup=('etc/i-nex/Database/i2c/devices.json'
         'etc/i-nex/Database/A6.json'

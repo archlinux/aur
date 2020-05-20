@@ -10,7 +10,7 @@ index c2778eb..cccc602 100644
    Logs("Call to MLibcpuid14", Logger.Info)
         Object.Call(MLibcpuid14, "main")
    
-+  If Exist("/proc/mtrr", True) Then
++  If False Then
 +
    Try data = Open "/proc/mtrr" For Input
  
