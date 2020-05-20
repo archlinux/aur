@@ -19,5 +19,5 @@ validpgpkeys=('EB4F9E5A60D32232BB52150C12C87A28FEAC6B20')
 
 package() {
     cd "${pkgname}-${pkgver}"
-    make install DESTDIR="${pkgdir}"
+    make install DESTDIR="${pkgdir}" BIN=dmenu
 }
