@@ -3,7 +3,7 @@
 # Contributor: Ramdambo <https://github.com/Ramdambo>
 pkgname=ignition-math
 pkgver=6.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Math classes and functions for robot applications"
 arch=('i686' 'x86_64')
 url="https://ignitionrobotics.org/libs/math"
@@ -13,10 +13,19 @@ depends=('gcc-libs')
 makedepends=('ignition-cmake>=2')
 optdepends=('eigen')
 conflicts=()
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-math/archive/${pkgname}6_${pkgver}.tar.gz")
-sha256sums=("2961b295c61c7536a10b4e87c1fb812d111ee923e1c83bb6a42dede7d76373c5")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-math/archive/${pkgname}6_${pkgver}.tar.gz"
+"headerfix.patch::https://github.com/ignitionrobotics/ign-math/commit/fdbd226d70885e85e265d7c61cfa9014bee1a33a.patch")
+sha256sums=('2961b295c61c7536a10b4e87c1fb812d111ee923e1c83bb6a42dede7d76373c5'
+            '9e1619ca8a04ecce7f0fce4779344657670cf4dea2e207136c83cab95c53ddde')
 
 _dir="ign-math-${pkgname}6_${pkgver}"
+
+
+prepare() {
+    cd "$srcdir/$_dir"
+    patch --forward --strip=1 --input="${srcdir}/headerfix.patch"
+}
+
 
 build() {
   cd "$srcdir/$_dir"
@@ -39,3 +48,4 @@ package() {
   cd "$srcdir/$_dir/build"
   make DESTDIR="$pkgdir/" install
 }
+
