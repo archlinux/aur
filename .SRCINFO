@@ -1,16 +1,14 @@
 pkgbase = ttc-iosevka-slab
-	pkgdesc = A slender monospace typeface. Shape: default
-	pkgver = 2.3.3
+	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
+	pkgver = 3.0.1
 	pkgrel = 1
-	url = https://be5invis.github.io/Iosevka/
+	url = https://typeof.net/Iosevka/
 	arch = any
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = https://github.com/be5invis/Iosevka/releases/download/v2.3.3/ttc-iosevka-slab-2.3.3.zip
-	source = ttc-iosevka-slab-2.3.3-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v2.3.3/LICENSE.md
-	sha256sums = 28e7560114ed4d21fef3fc32c4eed9638d2a1237ea7e529e0bccce89407c75e6
-	sha256sums = ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000
+	license = OFL
+	source = https://github.com/be5invis/Iosevka/releases/download/v3.0.1/ttc-iosevka-slab-3.0.1.zip
+	source = ttc-iosevka-slab-3.0.1-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v3.0.1/LICENSE.md
+	sha256sums = 25fdff0897aec4b855ee84dfcf7bcbd38cae89aec1779c3231f45e5782565981
+	sha256sums = e61c0988bb231a321f14cce1b119a468f279ea86826c32e943ab16dbf08c1ba9
 
 pkgname = ttc-iosevka-slab
 
