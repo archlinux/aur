@@ -1,11 +1,12 @@
 pkgbase = nginx-rtmp-sergey-git
 	pkgdesc = NGINX-based Media Streaming Server, forked by Sergey Dryabzhinsky.
-	pkgver = 1.17.6_3bf752326
+	pkgver = 1.18.0_23ec4ce
 	pkgrel = 0
 	url = https://github.com/sergey-dryabzhinsky/nginx-rtmp-module
 	install = nginx.install
 	arch = x86_64
 	license = custom
+	makedepends = git
 	depends = pcre
 	depends = zlib
 	depends = openssl
@@ -22,14 +23,14 @@ pkgbase = nginx-rtmp-sergey-git
 	backup = etc/nginx/uwsgi_params
 	backup = etc/nginx/win-utf
 	backup = etc/logrotate.d/nginx
-	source = https://nginx.org/download/nginx-1.17.6.tar.gz
-	source = nginx-rtmp-module-3bf752326::git+https://github.com/sergey-dryabzhinsky/nginx-rtmp-module#commit=3bf752326
+	source = https://nginx.org/download/nginx-1.18.0.tar.gz
+	source = nginx-rtmp-module-23ec4ce::git+https://github.com/sergey-dryabzhinsky/nginx-rtmp-module#commit=23ec4ce
 	source = service
 	source = logrotate
-	md5sums = 55022aa5715386c994f6773478822853
-	md5sums = SKIP
-	md5sums = ef491e760e7c1ffec9ca25441a150c83
-	md5sums = 6a01fb17af86f03707c8ae60f98a2dc2
+	sha256sums = 4c373e7ab5bf91d34a4f11a0c9496561061ba5eee6020db272a17a7228d35f99
+	sha256sums = SKIP
+	sha256sums = 65f5af0f27ce3c5263d99d70a57fd3b0cb62aa99df786205029e68563e41e1ee
+	sha256sums = 06ebe161af3e761f2e2e35a67c6c0af27bf61aea7cd4ba8b28372ced5e3b3175
 
 pkgname = nginx-rtmp-sergey-git
 
