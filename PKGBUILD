@@ -30,20 +30,7 @@ package() {
  
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
  
-    rm "$pkgdir"/.[^.]*
-}
-
-post_install(){
-    # Link to the binary
     ln -sf '/opt/G Desktop Suite/gdesktopsuite' '/usr/bin/gdesktopsuite'
 
-    # SUID chrome-sandbox for Electron 5+
-    chmod 4755 '/opt/G Desktop Suite/chrome-sandbox' || true
-    
-    update-mime-database /usr/share/mime || true
-    update-desktop-database /usr/share/applications || true
-}
-
-post_remove() {
-    rm -rf '/usr/bin/gdesktopsuite'
+    rm "$pkgdir"/.[^.]*
 }

@@ -1,37 +1,5 @@
 pkgbase = g-desktop-suite-git
 	pkgdesc = Google Suite as a desktop app. Made possible with Electron.
-	pkgver = 121.20ce3fe
-	pkgrel = 1
-	url = https://github.com/alexkim205/G-Desktop-Suite
-	arch = any
-	license = MIT
-	makedepends = git
-	makedepends = tar
-	makedepends = xz
-	depends = yarn
-	source = git+https://github.com/alexkim205/G-Desktop-Suite.git
-	md5sums = SKIP
-
-pkgname = g-desktop-suite-git
-
-pkgbase = g-desktop-suite-git
-	pkgdesc = Google Suite as a desktop app. Made possible with Electron.
-	pkgver = 139.2bccd4c
-	pkgrel = 1
-	url = https://github.com/alexkim205/G-Desktop-Suite
-	arch = any
-	license = MIT
-	makedepends = git
-	makedepends = tar
-	makedepends = xz
-	depends = yarn
-	source = git+https://github.com/alexkim205/G-Desktop-Suite.git
-	md5sums = SKIP
-
-pkgname = g-desktop-suite-git
-
-pkgbase = g-desktop-suite-git
-	pkgdesc = Google Suite as a desktop app. Made possible with Electron.
 	pkgver = 0.2.1.r54.g7f6d54a
 	pkgrel = 1
 	url = https://github.com/alexkim205/G-Desktop-Suite
