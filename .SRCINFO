@@ -1,0 +1,22 @@
+pkgbase = ros-melodic-libfranka
+	pkgdesc = C++ library for Franka Emika research robots
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = http://wiki.ros.org/libfranka
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = Apache
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-catkin
+	depends = eigen
+	depends = poco
+	source = ros-melodic-libfranka-0.7.1.tar.gz::https://github.com/frankaemika/libfranka-release/archive/release/melodic/libfranka/0.7.1.tar.gz
+	sha256sums = 508c192bfad0db8758f76bda1d6a6bc64164bbc747fb25372a55313cafd9a5b7
+
+pkgname = ros-melodic-libfranka
+
