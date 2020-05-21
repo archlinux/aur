@@ -1,44 +1,27 @@
-# Based on AUR petsc and petsc-git package. Adapted to my
-# MOOSE requirements
-
 # Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
 
 pkgname=petsc-git
-pkgver=20200512
+pkgver=20200520
 pkgrel=1
 _config=linux-c-opt
-pkgdesc="Portable, extensible toolkit for scientific computation with MUMPS, Hypre, FFTW, HDF5, Scalapack, Suitesparse, Metis, Scotch, Superlu, OpenBLAS, Eigen, OpenMP, HWloc, CGNS, PNG, MED and trilinos"
+pkgdesc="Portable, extensible toolkit for scientific computation (external downloads enabled)"
 provides=(petsc)
 conflicts=(petsc)
 arch=('i686' 'x86_64')
 url="https://www.mcs.anl.gov/petsc/"
 license=('BSD')
-depends=('python2' 'openmpi' 'boost' 'lapack' 'fftw' 'hdf5')
-makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing')
-optdepends=("hdf5: large files"
-            "fftw: Fast-Fourier Transform"
-            "openblas: Linear algebra libraries"
-            "scalapack: Parallel memory linear algebra"
-            "mumps: Sparse solver library"
-            "hypre: Large and sparse linear with massive parallel computing"
-            "suitesparse: Sparse matrix library"
-            "metis: Partitioning library (for meshes)"
-            "scotch: Partitioning with sparse matrices"
-            "superlu: Subroutines for sparsse linear systems"
-            "eigen: Lightweight C++ template library for vector and matrix math"
-            "openmp: Parallel distributed tasks"
-            "hwloc: Portable Hardware Locality (abstraction of hierarchical architectures)"
-            "cgns: Recording and recovering computer data"
-            "png"
-            "med>=4.0: Data Modelization and Exchanges (meshes)"
-            "boost: Free peer-reviewed portable C++ source libraries"
-            "yaml: configuration files"
-            "opencl: GPU computing")
+depends=('openmpi' 'lapack' 'fftw' 'hdf5' 'suitesparse')
+makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing' 'python2')
+optdepends=("opencl: GPU computing"
+            "hwloc: hardware locality"
+            "cgns: CFD data support"
+            "libpng: PNG support"
+            "libyaml: YAML configuration support"
+            "libx11: GUI tools"
+            "python: Tools, examples, tutorials")
 install=petsc.install
-source=(petsc::git+https://gitlab.com/petsc/petsc.git#branch=maint
-        test_optdepends.sh)
-sha256sums=('SKIP'
-            '2c21313b21b7a76ed4d39d040ef60462f8760ae3d4b76ff6aa717ebc43a2275b')
+source=(petsc::git+https://gitlab.com/petsc/petsc.git#branch=maint)
+sha256sums=('SKIP')
 
 _petsc_arch="arch-${_config}"
 
@@ -60,16 +43,16 @@ _petsc_arch="arch-${_config}"
 generic_flags="-fPIC -fopenmp -O3 -march=x86-64 -mtune=generic"
 # generic_flags="-fPIC -fopenmp -O3 -march=amdfam10 -mtune=generic"
 
-export   COPTFLAGS=-O3
+export COPTFLAGS=-O3
 export CXXOPTFLAGS=-O3
-export   FOPTFLAGS=-O3
-export    CPPFLAGS="$generic_flags -O2 -D-FORTIFY-SOURCE=2"
-export      CFLAGS="$generic_flags"
-export    CXXFLAGS="$generic_flags"
-export      FFLAGS="$generic_flags"
-export     FCFLAGS="$generic_flags"
-export    F90FLAGS="$generic_flags"
-export    F77FLAGS="$generic_flags"
+export FOPTFLAGS=-O3
+export CPPFLAGS="$generic_flags -O2 -D-FORTIFY-SOURCE=2"
+export CFLAGS="$generic_flags"
+export CXXFLAGS="$generic_flags"
+export FFLAGS="$generic_flags"
+export FCFLAGS="$generic_flags"
+export F90FLAGS="$generic_flags"
+export F77FLAGS="$generic_flags"
 
 
 pkgver() {
@@ -86,9 +69,7 @@ prepare() {
   done < <( find ${srcdir} -name "*" -type f -exec grep -le "$MATCH" \{\} + )
 
   cd "${srcdir}/petsc"
-  # patch -p1 < ../patch.diff
   sed -i 's-\(self.publicInstall[^=]*=[[:space:]]\)[^#]*-\10 -g' config/BuildSystem/config/package.py
-
   sed -i "s/\(raise RuntimeError('--download-openblas libraries cannot be used')\)/#\1/" config/BuildSystem/config/packages/BlasLapack.py
 }
 
@@ -96,11 +77,11 @@ prepare() {
 build() {
   cd petsc
 
-  declare -a CONFOPTS
   # Run python2 ./configure --help for the meaning of this
+  declare -a CONFOPTS
   CONFOPTS=(
     --COPTFLAGS="$COPTFLAGS"
-    --CXXOPTFLAGS="CXXOPTFLAGS"
+    --CXXOPTFLAGS="$CXXOPTFLAGS"
     --CPPFLAGS="$CPPFLAGS"
     --CFLAGS="$CFLAGS"
     --CXXFLAGS="$CXXFLAGS"
@@ -115,17 +96,58 @@ build() {
     --with-shared-libraries=1
     --with-zlib=1
 
+    --with-fftw=1
+    --with-hdf5=1
+    --with-suitesparse=1
+
     --with-scalar-type=complex
-    # Add this to test_optdepends.sh
-    --with-opencl=1
-    --with-yaml=1
+
+    --download-amd=1
+    --download-eigen=1
+    --download-hypre=1
+    --download-metis=1
+    --download-mumps=1
+    --download-parmetis=1
+    #--download-party=1  # not working
+    --download-ptscotch=1
+    --download-scalapack=1
+    #--download-suitesparse=1  # not working
+    #--download-sundials=1  # incompatible with complex
+    --download-superlu=1
+    --download-superlu_dist=1
   )
+
+  CONFOPTS=( "${CONFOPTS[@]}" )
+
+  # Add OpenCL support
+  OPENCL_DIR="/usr/include/CL/"
+  if [ -f "${OPENCL_DIR}/cl.h" ]; then
+    CONFOPTS="${CONFOPTS} --with-opencl=1"
+  fi
+
+  # Add hwloc support
+  if [ -f "/usr/lib/libhwloc.so" ]; then
+    CONFOPTS="${CONFOPTS} --with-hwloc=1 --with-hwloc-pkg-config=/usr/lib/pkgconfig/"
+  fi
+
+  # Add CGNS support
+  if [ -f "/usr/lib/libcgns.so" ]; then
+    CONFOPTS="${CONFOPTS} --with-cgns=1"
+  fi
+
+  # Add PNG support
+  if [ -f "/usr/lib/libpng.so" ]; then
+    CONFOPTS="${CONFOPTS} --with-png=1 --with-png-pkg-config=/usr/lib/pkgconfig/"
+  fi
+
+  # Add YAML support
+  if [ -f "/usr/lib/libyaml.so" ]; then
+    CONFOPTS="${CONFOPTS} --with-yaml=1 --with-yaml-pkg-config=/usr/lib/pkgconfig/"
+  fi
 
   # if --with-debugging=1 is set then PETSC_ARCH is automatically set to
   # "linux-c-debug" for some things, so _config should be changed to "linux-c-debug"
   #CONFOPTS="${CONFOPTS} --with-debugging=1"
-
-  CONFOPTS=( "${CONFOPTS[@]}" $(sh "${srcdir}"/test_optdepends.sh) )
 
   dirpkg=${srcdir}/petsc/${_petsc_arch}/externalpackages/
 
