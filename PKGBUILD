@@ -3,8 +3,8 @@
 # Contributor: Steven She <mintcoffee@gmail.com>
 # Contributor: vbPadre <vbPadre@gmail.com>
 
-pkgbase='cnrdrvcups-lb'
-pkgname="${pkgbase}"
+pkgname='cnrdrvcups-lb'
+
 # The download link changes with every version, try to keep changes in one place
 _pkgver='5.10';  _dl='8/0100007658/13'
 
@@ -25,37 +25,41 @@ optdepends=('libjpeg6-turbo: improves printing results for color imageRUNNER/i-S
 conflicts=('cndrvcups-lb' 'cndrvcups-common-lb')
 options=('!emptydirs' '!strip' '!libtool')
 
-source=(
-  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken-08.tar.gz"
-)
+source=(  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken-08.tar.gz")
 md5sums=('c80793681b666766cedf864a3fd20dd7')
 sha512sums=('dbc8b8e600ec29e73afa4ba8a760fd643d58ee2017f6c3c35e63c7f2186cf0cb675adb0ea344b0bd04d0b4fa7f13763b5ce97e8264790356134e6ded3069bf54')
 
-# variables that are useful in whole PKGBUILD
-    _srcdir="extracted-${pkgbase}-${pkgver}"
-    _common_dir="cnrdrvcups-common-${_pkgver}"
-    _driver_dir="cnrdrvcups-lb-${_pkgver}"
+
+# Canon provides the sourcecode in a tarball within the dowload and we need to extract the code manually
+# In order to keep the $srcdir structure tidy we put the extracted files in "extracted-${pkgname}-${_pkgver}" aka _srcdir
+# the code itself is spread over many folders. 
+# "cnrdrvcups-common-${_pkgver}" aka _common_dir & "cnrdrvcups-lb-${_pkgver}" aka _driver_dir
+# are used to keep this manageable
+
+
+_srcdir="extracted-${pkgname}-${_pkgver}"
+_common_dir="cnrdrvcups-common-${_pkgver}"
+_driver_dir="cnrdrvcups-lb-${_pkgver}"
+
+
 
 
 prepare() {
 
-    # In order to keep $srcdir structure tidy we need a place for the extracted sources
     mkdir "${_srcdir}"
     cd "${_srcdir}"
-    bsdtar -xf "${srcdir}/linux-UFRII-drv-v${_pkgver//\./}-uken/Sources/${pkgbase}-${pkgver}-1.tar.gz"
+    bsdtar -xf "${srcdir}/linux-UFRII-drv-v${_pkgver//\./}-uken/Sources/${pkgname}-${pkgver}-1.tar.gz"
 
-    local _specs=(cnrdrvcups-*.spec)
-    if [ "${#_specs[@]}" -ne 1 ]; then
-        echo 'Too many or too few spec files'
-        false
-    fi
+    local _specs=(cnrdrvcups-lb.spec)
 
-    # It isn't easy to get sed to add LIBS at the right place of the soon to be generated make script
-    # so we patch it directly into autogen.sh
+    # cngplp/autogen.sh fails to find several libraries.
+    # adding these in the right place of the soon to be generated make script is hard,
+    # so we patch it directly into that autogen.sh
     sed -e '2a export LIBS="-lgtk-x11-2.0 -lgobject-2.0 -lglib-2.0 -lgmodule-2.0"' -i "cnrdrvcups-common-${_pkgver}/cngplp/autogen.sh"
 
     # the autogen.sh files from canon target an old automake/autoconf version
     # autoreconf converts them to a form compatible with archlinux autoconf/automake
+    
     pushd "${_common_dir}"
     for i in "backend" "buftool" "cngplp" "cnjbig" "rasterfilter"
     do
@@ -73,16 +77,19 @@ prepare() {
     done
     popd
 
-    # allgen.sh where available is not useful for packaging
-    # Debian rules has some undesirable functionality
-    # The spec file packages well and is easy to fix and convert to shell
+    # allgen.sh where available is not useful for packaging on archlinux
+    # Canon provides methods to build deb & rpm packages.
+    # The debian rules are not suited for archlinux. When the .spec-file is converted to shell the resulting arch package works. 
+    # Chris Severach figured out a way to automate  this conversion.
 
     # Generate make from spec %setup, %build
     sed -n -e '/^%setup/,/^%install/ p' "${_specs[@]}" | \
     grep -v '^%' | \
     sed -e '# Convert spec %{VAR} to shell ${VAR}' \
         -e 's:%{:${:g' \
-        -e '# Some autogen left out --prefix. More than one --prefix dont cause problems so we can add it to all of them.' \
+        -e '# Quote to allow _cflags to have spaces' \
+        -e 's:${_cflags}:"${_cflags}":g' \
+        -e '# Some autogen.sh commands in the spec file do not set  --prefix. More than one --prefix dont cause problems so we can add it to all of them.' \
         -e 's:^./autogen.sh:& --prefix=${_prefix}:g ' \
         > 'make.Arch'
 
@@ -102,30 +109,27 @@ prepare() {
 
 _setvars() {
     # variables used by the (generated) make.Arch &  make.install.Arch files
-  # relative paths start are supposed to be located under "${srcdir}/${_srcdir}"
+    # relative paths start at ${srcdir}/${_srcdir} 
   
-  # _lib32dirs should no longer be necessary
-  # declare -A _lib32dirs=([i686]='lib' [x86_64]='lib32')
-  _vars=(
-    _builddir="${srcdir}/${_srcdir}"
-    common_dir="${_common_dir}"
-    driver_dir="${_driver_dir}"
-    utility_dir="cnrdrvcups-utility-${_pkgver}"
-    RPM_BUILD_DIR="${srcdir}/${_srcdir}"
-    _prefix='/usr'
-    _machine_type="MACHINETYPE="$CARCH
-    _cflags="CFLAGS=-march=x86-64"
-    _libdir='/usr/lib'
-    _bindir='/usr/bin'
-    locallibs='/usr/lib/'
-    _includedir='/usr/include'
-    b_lib_dir="${srcdir}/${_srcdir}/lib"
-    b_include_dir="${srcdir}/${_srcdir}/include"
-    _libsarch='libs64'
+    _vars=(
+        _builddir="${srcdir}/${_srcdir}"
+        common_dir="${_common_dir}"
+        driver_dir="${_driver_dir}"
+        utility_dir="cnrdrvcups-utility-${_pkgver}"
+        RPM_BUILD_DIR="${srcdir}/${_srcdir}"
+        _prefix='/usr'
+        _machine_type="MACHINETYPE="$CARCH
+        _cflags="CFLAGS=-march=x86-64 -fcommon -O2 -pipe -fno-plt"
+        _libdir='/usr/lib'
+        _bindir='/usr/bin'
+        locallibs='/usr/lib/'
+        _includedir='/usr/include'
+        b_lib_dir="${srcdir}/${_srcdir}/lib"
+        b_include_dir="${srcdir}/${_srcdir}/include"
+        _libsarch='libs64'
   )
-# The spec file uses 2 values in _cflags, but configure fails with more then one value
-# b_lib_dir and b_include_dir are set to ${_builddir}/lib & ${_builddir}/include in the .spec-file
-# todo : test whether _buildddir can be used in the same array it's set
+# -fcommon is needed to compile with gcc10 , see https://gcc.gnu.org/gcc-10/porting_to.html
+# -O2 -pipe -fno-plt are taken from makepkg.conf default for archlinux
 # _libsarch is architecture dependent
 }
 
@@ -135,7 +139,7 @@ build() {
   local _vars; _setvars
   # Bash does not recognize var assigments hidden by array expansion so we use env.
   env "${_vars[@]}" \
-  sh -e -u -x 'make.Arch'
+  sh 'make.Arch'
 
 }
 
@@ -145,7 +149,7 @@ package() {
     local _vars; _setvars
     env "${_vars[@]}" \
     RPM_BUILD_ROOT="${pkgdir}" \
-    sh -e -u -x 'make.install.Arch'
+    sh 'make.install.Arch'
 
     # licensing information is spread over multiple files and folders
     pushd "${_common_dir}"
