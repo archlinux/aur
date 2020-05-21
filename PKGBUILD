@@ -4,14 +4,14 @@
 _pkgname=libcpuid
 pkgname=$_pkgname-git
 epoch=2
-pkgver=0.4.1.r0.ga6123e8
+pkgver=0.4.1.r66.g1a00dac
 pkgrel=1
 pkgdesc="A small C library for x86 CPU detection and feature extraction"
 arch=('i686' 'x86_64')
 url="http://libcpuid.sourceforge.net"
 license=('BSD')
 depends=('glibc')
-makedepends=('git' 'doxygen')
+makedepends=('git' 'cmake' 'ninja' 'doxygen')
 conflicts=('libcpuid')
 provides=('libcpuid')
 source=("git+https://github.com/anrieff/libcpuid.git")
@@ -23,24 +23,15 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
-	msg2 "Run 'libtoolize'..."
-	libtoolize
+	msg2 "Generate build system..."
+	cmake -S "$srcdir/$_pkgname" -B build -GNinja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr
 
-	msg2 "Run 'autoreconf --install'..."
-	autoreconf --install
-
-	msg2 "Run './configure'..."
-	./configure --prefix=/usr
-
-	msg2 "Run 'make'..."
-	make
+	msg2 "Build..."
+	cmake --build build
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-	make DESTDIR="$pkgdir" install
-
-	msg2 "Install license..."
-	install -Dvm644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+	msg2 "Install..."
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dvm644 "$srcdir/$_pkgname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
