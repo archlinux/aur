@@ -1,0 +1,12 @@
+post_install() {
+    function byellow(){
+    echo -e "\033[33m\033[01m$1 \033[0m"
+    }
+    byellow "If you didn't manually copy data files to your user home before,"
+    byellow "just do it by the following code: \n"
+    byellow "mkdir -p ~/.config/BaiduPY.user/data"
+    byellow "cp -r /tmp/data ~/.config/BaiduPY.user"
+}
+pre_upgrade() {
+    post_install
+}

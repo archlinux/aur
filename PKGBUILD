@@ -2,7 +2,7 @@
 # Contributor: fkxxyz <fkxxyz@163.com>
 pkgname=fcitx-baidupinyin
 pkgver=1.0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Fcitx wrapper for Baidu Pinyin IM engine"
 arch=("x86_64")
 url="https://srfsh.baidu.com/site/guanwang_linux/index.html"
@@ -11,6 +11,7 @@ depends=('glibc>=2.4' 'fcitx>=4.2.0' 'fcitx-qt5' 'glib2>=2.12.0' 'qt5-base>=5.7.
 #Depends: libc6 (>= 2.4), fcitx-bin, fcitx-data (>= 1:4.2.0), fcitx-modules,  libglib2.0-0 (>= 2.12.0), libqt5core5a (>= 5.7.1), qml-module-qtquick-controls (>= 5.5.1)
 #optdepends=('fcitx-qimpanel: input method frontend used in baidupinyin')  # use BDIMSettings instead.
 provides=("fcitx-baidupinyin")
+install=fcitx-baidupinyin.install
 source=(
     'fcitx-baidupinyin.zip::https://imeres.baidu.com/imeres/ime-res/guanwang/img/Ubuntu_Deepin-fcitx-baidupinyin-64.zip'
     'index.html::https://srf.baidu.com/site/linux/service/index.html'
@@ -55,8 +56,4 @@ package(){
     rm -rf "$pkgdir"/usr/lib/*-linux-gnu
     rm -r "$pkgdir"/fcitx-baidupinyin.deb
     rm  "$pkgdir"/usr/bin/BDIMWizard
-    
-    msg 'Plase manually copy data files to your user home by: '
-    msg 'mkdir -p ~/.config/BaiduPY.user/data'
-    msg 'cp -r /tmp/data ~/.config/BaiduPY.user'
 }
