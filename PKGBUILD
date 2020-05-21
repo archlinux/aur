@@ -1,3 +1,5 @@
+# Maintainer: Celogeek <private-4zokpdq6@mrhyde.xyz>
+
 pkgname=jitsi-meet-stable
 _stable_version=4548
 _stable_tag=stable/jitsi-meet_${_stable_version}
