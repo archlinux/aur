@@ -4,8 +4,8 @@ url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.6
-_minor=13
-_clr=953
+_minor=14
+_clr=955
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,11 +16,11 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=33170
+_clear_version=33180
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=4ca6f0bef1bef36fd79aecc92ced0c0b1827fac8c445109376cd5bef5c1aae4e
+_config_hash=ed9742c7731954441602e260403c7d9df8303202ac6d36f75820b037d4865dbb
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -73,3 +73,6 @@ b2sums=('0e2ada54d6dc6b40a58979cc756a223ab125aaaa7d0009aec0523934ed9611732b179f4
 b2sums=('609b665efbd3d6ef5b803854a008612766a30a6c0270281fb1359dc71ab127b14dd39245d6ce3773354386e21f2b4b38419f7d1ae873f3b7663d510cd94d50a3'
         'b4bfbf21d840b983b761a8443fc32cffdaba722632602c25c1d63b0a08ffd5023ece5b039862e9d5e3c9b6f5923c4b45507f6885bced1ac3090cd60a87a9c71c'
         '102add95d577ab5954483174f11f3ca047697d510d0566c9c3319238bd3035a7477039175691d17a1af3f4fece40601396c75a853fbec923704427a4c16db866')
+b2sums=('4dc3439633c0454cf8aef40350fbd80ec6db13474e440d8588f925dc6ece9929d94034ec62855cd544ace1ddfd7863911514aba7174ca84c963cd6adc6d36a18'
+        'b63717a132d172b271ab4bd8181513793cc654d66116211849cdaee1caa4e45864511109c75fa9d988a00c91beddc28d04b7f7bbe34aaabdfc062b6c14b00f0b'
+        '37a9b07b7683a9a7f66222617e668eb2f200698081ce27b7d08da5c8180cb87587371fd3e30847b080de7a1228c96c9a1ef8e90dfa0e938134d21177bc8692b5')
