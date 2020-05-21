@@ -81,7 +81,7 @@ set -u
 pkgname='npreal2'
 #pkgver='1.18.49'; _commit='6d9ef0dbafd487595c4f5e4e5e64c1faba98d060'
 pkgver='1.19'; _build='17110917'
-pkgrel='3'
+pkgrel='5'
 pkgdesc='real tty driver for Moxa NPort serial console terminal server'
 _pkgdescshort="Moxa NPort ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
@@ -103,12 +103,19 @@ _patches=(
   #'0000-SSL-destroy-cf-configuration.patch'
   '0001-mxmknod-folder-fix-and-chgrp-uucp.patch'
   '0002-kernel-5.0.0-access_ok.patch' # https://lkml.org/lkml/2019/1/4/418
+  '0003-kernel-5.6-proc_dir_entry-proc_ops.patch'
 )
 source+=("${_patches[@]}")
+md5sums=('3852c44f8e6bc5a1194536eb846f4e60'
+         '2490e453084bd4e3157c8c3a621c3f40'
+         '043dac91330a15c38e41bb2e2e1d5598'
+         '9cda38abdd17b2af80475ed06bdf0889'
+         'bcd835765a6451989195a3518d53088d')
 sha256sums=('f99f38ef5618469a1d6f4824e41856616ee65ab8359069daa70d8d481f364462'
             '7241767fa8dead2dbe4cf4db32d39f5cf9d95b08f60daf79822ae306727af372'
             '7039ca0740be34a641424e3f57b896902f61fdfd2bfcc26e8e954035849e9605'
-            '211f3b0ba50452bfe6d39076eb1a60a7557dd038288fb8dcd4374886f4c2844e')
+            '211f3b0ba50452bfe6d39076eb1a60a7557dd038288fb8dcd4374886f4c2844e'
+            'c3f8502c3e7e600ccc3e778ec25875ddda3a20ed3cb62bc56505e609ac346d79')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -215,6 +222,10 @@ prepare() {
   #cp -p 'npreal2.c'{,.orig}; false
   #diff -pNau5 'npreal2.c'{.orig,} > '0002-kernel-5.0.0-access_ok.patch'
   patch -Nbup0 -i "${srcdir}/0002-kernel-5.0.0-access_ok.patch"
+
+  #cp -p 'npreal2.c'{,.orig}; false
+  #diff -pNau5 'npreal2.c'{.orig,} > '0003-kernel-5.6-proc_dir_entry-proc_ops.patch'
+  patch -Nbup0 -i "${srcdir}/0003-kernel-5.6-proc_dir_entry-proc_ops.patch"
 
   # Apply PKGBUILD options
   sed -e 's:^\(ttymajor\)=.*:'"\1=${_opt_ttymajor}:g" \
