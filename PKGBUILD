@@ -1,17 +1,20 @@
 # $Id$
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgbase=akonadi-qt4
 pkgname=(libakonadi-qt4 akonadi-qt4)
 pkgver=1.13.0
-pkgrel=14
+pkgrel=15
 pkgdesc="PIM layer, which provides an asynchronous API to access all kind of PIM data (Qt4 version)"
 arch=('x86_64')
 url='http://community.kde.org/KDE_PIM/Akonadi'
 license=('LGPL')
 makedepends=('cmake' 'automoc4' 'boost' 'postgresql' 'mariadb' 'qt4' 'libxslt')
+provides=('akonadi')
+conflicts=('akonadi' 'akonadi-contacts')
 source=("https://download.kde.org/stable/akonadi/src/akonadi-${pkgver}.tar.bz2"
         dont-leak-old-external-payload-files.patch)
 sha256sums=('8c7f690002ea22c139f3a64394aef2e816e00ca47fd971af7d54a66087356dd2'
