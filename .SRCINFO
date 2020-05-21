@@ -1,0 +1,31 @@
+pkgbase = little-brother
+	pkgdesc = Parental Control Application implemented in Python 3 to monitor and limit kids' play time on Linux hosts
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/marcus67/little_brother
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-alembic
+	depends = python-requests
+	depends = python-psutil
+	depends = python-dateutil
+	depends = python-sqlalchemy
+	depends = python-pymysql
+	depends = python-markupsafe
+	depends = python-flask-babel
+	depends = python-flask-login
+	depends = python-flask-migrate
+	depends = python-flask-wtf
+	depends = python-flask_helpers
+	depends = python-selenium
+	depends = python-urllib3
+	depends = python-prometheus_client
+	depends = python-psycopg2
+	depends = postgresql
+	depends = zenity
+	source = little-brother-0.2.1.tar.gz::https://github.com/marcus67/little_brother/archive/0.2.1.tar.gz
+	sha256sums = 277e3d33fac94a6319f7b11d9647dddfb5914146c7a567326234c5c427bb40e2
+
+pkgname = little-brother
+
