@@ -12,6 +12,7 @@ arch=(x86_64)
 url='https://github.com/sergey-dryabzhinsky/nginx-rtmp-module'
 license=(custom)
 depends=(pcre zlib openssl geoip mailcap)
+makedepends=(git)
 backup=(etc/nginx/fastcgi.conf
         etc/nginx/fastcgi_params
         etc/nginx/koi-win
