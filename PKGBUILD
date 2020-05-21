@@ -5,7 +5,7 @@
 pkgname=libgpr
 _upstream_ver=2020-20200429-19BD2
 pkgver=2020
-pkgrel=1
+pkgrel=2
 pkgdesc="Ada library to handle GPRbuild project files"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gprbuild/"
@@ -18,8 +18,8 @@ source=("https://community.download.adacore.com/v1/${_checksum}?filename=gprbuil
         'relocatable-build.patch'
         'expose-cargs-and-largs-makefile.patch')
 sha1sums=('408ec35c3bb86bd227db3da55d3e1e0c572a56e3'
-          '4aaab0df8b611750d2cb35973ed28823fb233989'
-          'db88bcb65d1a5f41c5b30e0c3dea996c47c4f5b9')
+          '91b20bde99cf02410cdb2b74aa1adb014458a9b3'
+          'ddaf20842ed9879c3f1cb24b3eb7615d5cfe61a5')
 
 prepare() {
     cd "$srcdir/gprbuild-$_upstream_ver-src"
