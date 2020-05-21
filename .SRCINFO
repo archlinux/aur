@@ -13,7 +13,7 @@ pkgbase = silkaj
 	depends = python-texttable
 	depends = python-tabulate
 	depends = python-pynacl
-	provides = duniterpy
+	depends = python-duniterpy
 	source = https://git.duniter.org/clients/python/silkaj/-/archive/v0.7.6/silkaj-v0.7.6.tar.gz
 	sha512sums = 69074ddf804d79a2780bb757d0fcab8c08ec63478b215b842e536327348e4a02369b69e5c07b61dbf6245b4cf99847b583b4be853b469503ad1688aaf4732656
 
