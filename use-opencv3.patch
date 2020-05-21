@@ -1,0 +1,12 @@
+diff --unified --recursive --text package.orig/vision_opencv-1.13.0/image_geometry/CMakeLists.txt package.new/vision_opencv-1.13.0/image_geometry/CMakeLists.txt
+--- package.orig/vision_opencv-1.13.0/image_geometry/CMakeLists.txt	2020-05-21 15:32:19.474961287 +0200
++++ package.new/vision_opencv-1.13.0/image_geometry/CMakeLists.txt	2020-05-21 15:32:33.155009735 +0200
+@@ -2,7 +2,7 @@
+ project(image_geometry)
+ 
+ find_package(catkin REQUIRED sensor_msgs)
+-find_package(OpenCV REQUIRED)
++find_package(OpenCV 3 REQUIRED)
+ 
+ catkin_package(CATKIN_DEPENDS sensor_msgs
+                DEPENDS OpenCV
