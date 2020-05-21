@@ -21,7 +21,7 @@ options=(!makeflags)
 optdepends=('xsp: To run ASP.NET pages directly from monodevelop')
 provides=('monodevelop')
 conflicts=('monodevelop' 'monodevelop-stable')
-source=('https://github.com/mono/monodevelop.git')
+source=('git://github.com/mono/monodevelop')
 md5sums=('SKIP')
 
 pkgver(){

@@ -26,7 +26,7 @@ pkgbase = monodevelop-git
 	conflicts = monodevelop
 	conflicts = monodevelop-stable
 	options = !makeflags
-	source = https://github.com/mono/monodevelop.git
+	source = git://github.com/mono/monodevelop
 	md5sums = SKIP
 
 pkgname = monodevelop-git
