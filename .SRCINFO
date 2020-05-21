@@ -1,0 +1,29 @@
+pkgbase = clasp-cl-git
+	pkgdesc = Bringing Common Lisp and C++ Together
+	pkgver = 0.4.2.r2620.g76184bf74
+	pkgrel = 1
+	url = https://github.com/clasp-developers/clasp
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = automake
+	makedepends = cmake
+	makedepends = boost
+	makedepends = python
+	makedepends = zlib
+	makedepends = ncurses
+	makedepends = expat
+	makedepends = libedit
+	makedepends = sbcl
+	depends = llvm90
+	depends = clang90
+	provides = cclasp-boehm
+	provides = common-lisp
+	provides = clasp-cl
+	source = git://github.com/clasp-developers/clasp.git
+	source = wscript.config
+	sha512sums = SKIP
+	sha512sums = 2d0aabcf7eab3a8e0d0003db24e67bb1d5f5bcdc5c6371e3abf4cd27d69177c7134e279bf1af0cdcf7a1ab555a8c4cd21da2a7f23abcb6ef997ccc9cda1d2376
+
+pkgname = clasp-cl-git
+
