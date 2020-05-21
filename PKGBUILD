@@ -38,13 +38,12 @@ build() {
         "${_arch}-cmake" "$srcdir/raylib-${pkgver}" \
             -Wno-dev \
             -D CMAKE_BUILD_TYPE=Release \
-            -D CMAKE_C_FLAGS="$CFLAGS -w" \
+            -D CMAKE_C_FLAGS="$CFLAGS -fPIC -w" \
             -D USE_EXTERNAL_GLFW=ON \
             -D BUILD_EXAMPLES=OFF \
             -D BUILD_GAMES=OFF \
             -D SHARED=ON \
             -D STATIC=OFF \
-            -D WITH_PIC=ON \
             -G Ninja
         ninja
         popd
