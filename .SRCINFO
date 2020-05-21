@@ -19,3 +19,18 @@ pkgname = gnatcoll-python2
 	provides = gnatcoll-python
 	replaces = gnatcoll-python
 
+pkgname = gnatcoll-readline
+	pkgdesc = GNAT Components Collection - Bindings to readline
+	depends = readline
+	depends = gnatcoll-core
+
+pkgname = gnatcoll-iconv
+	pkgdesc = GNAT Components Collection - Bindings to Libiconv
+	depends = libiconv
+	depends = gnatcoll-core
+
+pkgname = gnatcoll-gmp
+	pkgdesc = GNAT Components Collection - Bindings to GMP
+	depends = gmp
+	depends = gnatcoll-core
+
