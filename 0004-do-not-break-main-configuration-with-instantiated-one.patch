@@ -15,8 +15,8 @@ read its configuration from /etc/myexample.cnf.
  1 file changed, 4 insertions(+), 4 deletions(-)
 diff --git a/support-files/mariadb@.service.in b/support-files/mariadb@.service.in
 index fce3540..b04ab6c 100644
---- a/support-files/mariadb@.service.in
-+++ b/support-files/mariadb@.service.in
+--- a/support-files/mariadb@.service.in 2020-05-21 19:29:27.890323928 +0200
++++ b/support-files/mariadb@.service.in 2020-05-21 19:30:33.994652679 +0200
 @@ -1,6 +1,6 @@
  # Multi instance version of mariadb. For if you run multiple versions at once.
  #
@@ -25,7 +25,7 @@ index fce3540..b04ab6c 100644
  # configuration file for this service.
  #
  # start as systemctl start mariadb@{instancename}.server
-@@ -30,7 +30,7 @@ Description=MariaDB @VERSION@ database server (multi-instance %I)
+@@ -30,7 +30,7 @@
  Documentation=man:mysqld(8)
  Documentation=https://mariadb.com/kb/en/library/systemd/
  After=network.target
@@ -34,16 +34,16 @@ index fce3540..b04ab6c 100644
  
  [Install]
  WantedBy=multi-user.target
-@@ -84,7 +84,7 @@ PermissionsStartOnly=true
+@@ -84,7 +84,7 @@
  ExecStartPre=/bin/sh -c "systemctl unset-environment _WSREP_START_POSITION%I"
  
  ExecStartPre=/bin/sh -c "[ ! -e @bindir@/galera_recovery ] && VAR= || \
-- VAR=`@bindir@/galera_recovery --defaults-file=@sysconf2dir@/my%I.cnf`; [ $? -eq 0 ] \
-+ VAR=`@bindir@/galera_recovery --defaults-file=@sysconfdir@/my%I.cnf`; [ $? -eq 0 ] \
+- VAR=`cd @bindir@/..; @bindir@/galera_recovery --defaults-file=@sysconf2dir@/my%I.cnf`; [ $? -eq 0 ] \
++ VAR=`cd @bindir@/..; @bindir@/galera_recovery --defaults-file=@sysconfdir@/my%I.cnf`; [ $? -eq 0 ] \
   && systemctl set-environment _WSREP_START_POSITION%I=$VAR || exit 1"
  
  # Alternate: (remove ConditionPathExists above)
-@@ -105,7 +105,7 @@ ExecStartPre=/bin/sh -c "[ ! -e @bindir@/galera_recovery ] && VAR= || \
+@@ -105,7 +105,7 @@
  
  # Note: Place $MYSQLD_OPTS at the very end for its options to take precedence.
  
