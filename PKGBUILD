@@ -1,4 +1,5 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: Celogeek <private-4zokpdq6@mrhyde.xyz>
+# Contributor: Jean Lucas <jean@4ray.co>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Sigmund Lahn <sigmund@lahn.no>
@@ -6,7 +7,7 @@
 pkgname=rethinkdb
 pkgver=2.4.0
 _node=6.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Distributed NoSQL database for realtime applications'
 arch=(x86_64)
 url=https://www.rethinkdb.com
