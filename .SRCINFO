@@ -1,0 +1,21 @@
+pkgbase = dmenu-rs
+	pkgdesc = A 1:1 port of dmenu, rewritten in Rust
+	pkgver = 5.0.0.0.g1f0c758
+	pkgrel = 1
+	url = https://github.com/Shizcow/dmenu-rs
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	makedepends = clang
+	depends = sh
+	depends = libxinerama
+	depends = libxft
+	provides = dmenu
+	conflicts = dmenu
+	source = dmenu-rs::git+https://github.com/Shizcow/dmenu-rs.git
+	md5sums = SKIP
+
+pkgname = dmenu-rs
+
