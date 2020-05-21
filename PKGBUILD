@@ -2,7 +2,7 @@
 pkgname=authelia-git
 _pkgname=authelia
 pkgver=4.18.1.r14.g0f100d4f
-pkgrel=1
+pkgrel=2
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/authelia/authelia"
@@ -31,7 +31,7 @@ pkgver() {
 }
 
 build() {
-  export GOPATH="$srcdir/gopath"
+  export GOPATH="$srcdir/gopath" PATH="$PATH:$srcdir/gopath/bin"
   cd "$srcdir/$_pkgname/web"
   yarn install --frozen-lockfile
   INLINE_RUNTIME_CHUNK=false yarn build
