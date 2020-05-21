@@ -66,12 +66,12 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.6
-_minor=13
+_minor=14
 _srcname=linux-${_major}
-_clr=${_major}.13-952
+_clr=${_major}.14-955
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=3
+pkgrel=1
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -105,7 +105,8 @@ prepare() {
         echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | sed -n 's/.*: //p'); do
+        for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec |\
+          grep -Ev '^Patch0001|^Patch0002|^Patch0007|^Patch0008' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux/${i}"
         done
@@ -341,7 +342,7 @@ done
 
 sha256sums=('e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622'
             'SKIP'
-            'd8604aec02928a19e213af003977108e4b93935762b178f86da9e7c18e6cebac'
+            '07e737cfdc79382dc259c4844a150d8d72ebbcdc9d7e03a9503f8f8e19f1aea4'
             'SKIP'
             'c650fc6ff773e99dbc1fda9411b10b06513c5161791106c44d5a11dbcf6420f9'
             '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e')
