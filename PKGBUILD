@@ -18,8 +18,8 @@ validpgpkeys=('10F68CF73F8AA426F617752972A321BAC245F175')
 
 package() {
 	PHP_PEAR_SYSCONF_DIR=/etc/php \
-	INSTALL_ROOT=$pkgdir \
-		php -n install-pear-nozlib-${pkgver}.phar \
+	INSTALL_ROOT="${pkgdir}" \
+		php -n "install-pear-nozlib-${pkgver}.phar" \
 			-d /usr/share/pear \
 			-b /usr/bin
 
