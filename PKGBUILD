@@ -3,8 +3,9 @@
 # Contributor: Earnestly <zibeon AT googlemail.com>
 
 pkgname=gprbuild
-pkgver=2019
-pkgrel=2
+_upstream_ver=2020-20200429-19BD2
+pkgver=2020
+pkgrel=1
 pkgdesc="Builder for multi-language systems"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gprbuild/"
@@ -14,10 +15,11 @@ makedepends=('gprbuild-bootstrap')
 provides=("gprbuild-bootstrap")
 conflicts=("gprbuild-bootstrap" "gprbuild-bootstrap-git" "gprbuild-git")
 
-source=('https://community.download.adacore.com/v1/0c03c05cef70b85144ba0e624a46e8952183b666?filename=gprbuild-2019-20190517-194D8-src.tar.gz'
+_checksum=408ec35c3bb86bd227db3da55d3e1e0c572a56e3
+source=("https://community.download.adacore.com/v1/${_checksum}?filename=${pkgname}-${_upstream_ver}-src.tar.gz"
         'relocatable-build.patch'
         'expose-cargs-and-largs-makefile.patch')
-sha1sums=('0c03c05cef70b85144ba0e624a46e8952183b666'
+sha1sums=('408ec35c3bb86bd227db3da55d3e1e0c572a56e3'
           '4aaab0df8b611750d2cb35973ed28823fb233989'
           'db88bcb65d1a5f41c5b30e0c3dea996c47c4f5b9')
 
@@ -25,7 +27,7 @@ sha1sums=('0c03c05cef70b85144ba0e624a46e8952183b666'
 DEBUG_CFLAGS="-g"
 
 prepare() {
-    cd "$srcdir/gprbuild-2019-20190517-194D8-src"
+    cd "$srcdir/$pkgname-$_upstream_ver-src"
 
     patch -Np1 -i "$srcdir/relocatable-build.patch"
     patch -Np1 -i "$srcdir/expose-cargs-and-largs-makefile.patch"
@@ -39,7 +41,7 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/gprbuild-2019-20190517-194D8-src"
+    cd "$srcdir/$pkgname-$_upstream_ver-src"
 
     # Make using a single job (-j1) to avoid the same file being compiled at the same time.
     export OS=UNIX
@@ -48,7 +50,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/gprbuild-2019-20190517-194D8-src"
+    cd "$srcdir/$pkgname-$_upstream_ver-src"
 
     # Make one install at a time to avoid GPRinstall reading/writing to
     # the same installed project files at the same time.

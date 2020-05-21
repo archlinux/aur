@@ -1,7 +1,7 @@
 pkgbase = gprbuild
 	pkgdesc = Builder for multi-language systems
-	pkgver = 2019
-	pkgrel = 2
+	pkgver = 2020
+	pkgrel = 1
 	url = https://github.com/AdaCore/gprbuild/
 	arch = i686
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = gprbuild
 	conflicts = gprbuild-bootstrap
 	conflicts = gprbuild-bootstrap-git
 	conflicts = gprbuild-git
-	source = https://community.download.adacore.com/v1/0c03c05cef70b85144ba0e624a46e8952183b666?filename=gprbuild-2019-20190517-194D8-src.tar.gz
+	source = https://community.download.adacore.com/v1/408ec35c3bb86bd227db3da55d3e1e0c572a56e3?filename=gprbuild-2020-20200429-19BD2-src.tar.gz
 	source = relocatable-build.patch
 	source = expose-cargs-and-largs-makefile.patch
-	sha1sums = 0c03c05cef70b85144ba0e624a46e8952183b666
+	sha1sums = 408ec35c3bb86bd227db3da55d3e1e0c572a56e3
 	sha1sums = 4aaab0df8b611750d2cb35973ed28823fb233989
 	sha1sums = db88bcb65d1a5f41c5b30e0c3dea996c47c4f5b9
 
