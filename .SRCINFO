@@ -1,14 +1,14 @@
 pkgbase = etesync-dav
 	pkgdesc = A CalDAV and CardDAV adapter for EteSync
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/etesync-dav/
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	depends = python-appdirs
 	depends = python-etesync
-	depends = radicale
+	depends = radicale<3.0.0
 	depends = python-flask
 	depends = python-flask-wtf
 	replaces = python-radicale-storage-etesync

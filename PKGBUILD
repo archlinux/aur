@@ -3,14 +3,14 @@
 
 pkgname=etesync-dav
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A CalDAV and CardDAV adapter for EteSync"
 arch=('any')
 url="https://pypi.python.org/pypi/${pkgname}/"
 license=('GPL')
 depends=('python-appdirs'
          'python-etesync'
-         'radicale'
+         'radicale<3.0.0'
          'python-flask'
          'python-flask-wtf'
 )
