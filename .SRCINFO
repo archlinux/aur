@@ -1,7 +1,7 @@
 pkgbase = ring-kde
 	pkgdesc = The KDE client for the Ring communication framework
 	pkgver = 3.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ring.cx/
 	arch = x86_64
 	license = GPL2

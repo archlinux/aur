@@ -3,7 +3,7 @@
 
 pkgname=ring-kde
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='The KDE client for the Ring communication framework'
 url='http://www.ring.cx/'
 license=(GPL2)
