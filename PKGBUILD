@@ -1,46 +1,38 @@
 # Maintainer: aksr <aksr at t-com dot me>
+# Maintainer: Caleb Maclennan <caleb@alerque.com
+
 pkgname=grcompiler-git
-pkgver=r461.da31ed8
+pkgver=5.2
 pkgrel=1
-epoch=
-pkgdesc="The SIL Graphite compiler"
-arch=('i686' 'x86_64')
-url="https://github.com/silnrsi/grcompiler"
-license=('custom' 'GPL' 'LGPL' 'CPL')
-categories=()
-groups=()
-depends=()
-makedepends=('git')
-optdepends=()
-checkdepends=()
-provides=()
-conflicts=('grcompiler')
-replaces=()
-backup=()
-options=()
-changelog=
-install=
-source=("$pkgname::git+https://github.com/silnrsi/grcompiler.git")
-noextract=()
-md5sums=('SKIP')
+pkgdesc='The SIL Graphite compiler'
+arch=('x86_64' 'i686')
+url="https://github.com/silnrsi/${pkgname%-git}"
+license=('CPL' 'LGPL')
+depends=('icu')
+makedepends=('cmake' 'docbook-utils' 'git' 'perl-sgmls')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  git describe --tags --abbrev=7 --match="v*" HEAD |
+    sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  autoreconf -vi
-  ./configure --prefix=/usr
-  make
+  cd "$pkgname"
+  cmake -S . -B build \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr
+  make -C build
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir/" install
-  install -Dm644 README $pkgdir/usr/share/doc/${pkgname%-*}/README
-  install -d $pkgdir/usr/share/licenses/${pkgname%-*}/
-  cp -a license/* "$pkgdir/usr/share/licenses/${pkgname%-*}"
+  cd "$pkgname"
+  make -C build DESTDIR="$pkgdir" install
+  install -Dm0644 -t "$pkgdir/usr/share/doc/${pkgname%-git}/" README.md
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" license/*.txt
 }
 
