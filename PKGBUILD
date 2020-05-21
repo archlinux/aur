@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttc-iosevka-sparkle
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
 arch=('any')
 url='https://typeof.net/Iosevka/'
@@ -13,6 +13,6 @@ sha256sums=('6859f82fb67cf288d61747082011a688ab15551cce580e162b024e9f3380e406'
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/${pkgname}
-    install -m644 ${srcdir}/ttf/*.ttf ${pkgdir}/usr/share/fonts/${pkgname}
+    install -m644 ${srcdir}/ttc/*.ttc ${pkgdir}/usr/share/fonts/${pkgname}
     install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
 }
