@@ -6,14 +6,15 @@ pkgname=lirc-devinput
 _pkgname=lirc
 _pkgver=0.10.1
 [[ $_pkgver =~ [a-z]$ ]] && pkgver="${_pkgver:0:-1}.${_pkgver: -1}" || pkgver="$_pkgver"
-pkgrel=1
+pkgrel=6
 epoch=1
 pkgdesc="Linux Infrared Remote Control utilities with devinput enabled"
 arch=('x86_64')
 url="https://www.lirc.org/"
 license=('GPL')
 depends=('alsa-lib' 'libx11' 'libftdi' 'libusb-compat')
-makedepends=('help2man' 'alsa-lib' 'libx11' 'libxslt' 'python' 'python-setuptools')
+makedepends=('help2man' 'alsa-lib' 'libx11' 'libxslt' 'python' 'python-setuptools'
+             'systemd')
 optdepends=('python: for lirc-setup, irdb-get and pronto2lirc')
 provides=('lirc-utils' 'lirc')
 conflicts=('lirc-utils' 'lirc')
