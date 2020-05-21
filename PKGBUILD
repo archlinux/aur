@@ -1,44 +1,30 @@
 # Maintainer: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=rocalution
-_pkgver=3.1
-pkgver="$_pkgver.0"
-pkgrel=3
-pkgdesc="Next generation library for iterative sparse solvers for ROCm platform."
+pkgver=3.3.0
+pkgrel=1
+pkgdesc='Next generation library for iterative sparse solvers for ROCm platform'
 arch=('x86_64')
-url="https://github.com/ROCmSoftwarePlatform/rocALUTION"
-license=('custom:NCSAOSL')
-depends=('hcc' 'hip' 'rocsparse' 'rocblas' 'rocprim' 'comgr')
-makedepends=('cmake' "hcc>=$pkgver" "hip>=$pkgver" "rocsparse>=$pkgver" "rocblas>=$pkgver" "rocprim>=$pkgver" "comgr>=$pkgver" 'python2' 'rocminfo')
-source=("https://github.com/ROCmSoftwarePlatform/rocALUTION/archive/rocm-$_pkgver.tar.gz")
-sha256sums=('45c96916f915fcacab3a94f111912e9511167977678603f3c7253053eeec6513')
+url='https://rocalution.readthedocs.io/en/master'
+license=('MIT')
+depends=('hip-hcc' 'rocsparse' 'rocblas' 'rocprim' 'rocminfo' 'openmp')
+makedepends=('cmake' 'hcc' 'git')
+_git='https://github.com/ROCmSoftwarePlatform/rocALUTION'
+source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
+sha256sums=('2745ad513ad90a7fb3d9182037ec499c3bbd19b6c928b5c24e777392b2c9bd2d')
 
 build() {
-  mkdir -p "$srcdir/build"
-  cd "$srcdir/build"
+  mkdir -p build
+  cd build
 
-  # Tensile library needs python to be python2
-  export PATH="$srcdir:$PATH"
-  [[ -e "$srcdir/python" ]] || ln -s /usr/bin/python2 "$srcdir/python"
-
-  # fix broken build with stack protection
-  export CFLAGS="$(sed -e 's/-fstack-protector-strong//' <<< "$CFLAGS")"
-  export CXXFLAGS="$(sed -e 's/-fstack-protector-strong//' <<< "$CXXFLAGS")"
-  export CPPFLAGS="$(sed -e 's/-fstack-protector-strong//' <<< "$CPPFLAGS")"
-
-  # compile with HCC
-  export CXX="/opt/rocm/hcc/bin/hcc"
-
-#        -ROCBLAS_DIR=/opt/rocm/rocblas/lib/cmake/rocblas \
-  # TODO: fix librocalution.so, it contains references to $srcdir
-  cmake -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/rocm/rocalution \
-        -ROCSPARSE_DIR=/opt/rocm/rocsparse/lib/cmake/rocsparse \
+  CXX=/opt/rocm/hcc/bin/hcc \
+  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm/rocalution \
+        -DSUPPORT_HIP=ON \
+        -DSUPPORT_OMP=ON \
+        -DSUPPORT_MPI=OFF \
         -Dhip_DIR=/opt/rocm/hip/lib/cmake/hip \
         -Dhcc_DIR=/opt/rocm/hcc/lib/cmake/hcc \
         -Damd_comgr_DIR=/opt/rocm/lib/cmake/amd_comgr \
-        -DBUILD_CLIENTS_SAMPLES=OFF \
-        -DBUILD_CLIENTS_TESTS=OFF \
-        "$srcdir/rocALUTION-rocm-$_pkgver"
+        "$srcdir/rocALUTION-rocm-$pkgver"
   make
 }
 
@@ -47,8 +33,8 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -d "$pkgdir/etc/ld.so.conf.d"
-  cat << EOF > "$pkgdir/etc/ld.so.conf.d/rocalution.conf"
+  install -Dm644 /dev/stdin "$pkgdir/etc/ld.so.conf.d/rocalution.conf" << EOF
 /opt/rocm/rocalution/lib
 EOF
+  install -Dm644 "$srcdir/rocALUTION-rocm-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
