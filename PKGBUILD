@@ -17,7 +17,7 @@ provides=('gnatcoll-core')
 conflicts=('gnatcoll' 'gnatcoll-core-git')
 
 _checksum=c94f2ac914cb305f6bef174329fa0b5003d84935
-source=("https://community.download.adacore.com/v1/${_checksum}?filename=${pkgname}-${_upstream_ver}-src.tar.gz")
+source=("${pkgname}-${_upstream_ver}-src.tar.gz::https://community.download.adacore.com/v1/${_checksum}?filename=${pkgname}-${_upstream_ver}-src.tar.gz")
 sha1sums=("$_checksum")
 
 build()

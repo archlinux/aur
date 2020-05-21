@@ -11,7 +11,7 @@ pkgbase = gnatcoll-core
 	provides = gnatcoll-core
 	conflicts = gnatcoll
 	conflicts = gnatcoll-core-git
-	source = https://community.download.adacore.com/v1/c94f2ac914cb305f6bef174329fa0b5003d84935?filename=gnatcoll-core-2020-20200429-19B7C-src.tar.gz
+	source = gnatcoll-core-2020-20200429-19B7C-src.tar.gz::https://community.download.adacore.com/v1/c94f2ac914cb305f6bef174329fa0b5003d84935?filename=gnatcoll-core-2020-20200429-19B7C-src.tar.gz
 	sha1sums = c94f2ac914cb305f6bef174329fa0b5003d84935
 
 pkgname = gnatcoll-core
