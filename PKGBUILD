@@ -24,6 +24,9 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname}/"
 
+    # Optional, fetch submodules too (such as Crunch and Daemonmap, by default they are compiled if present)
+    # git submodule update --init --recursive
+    
     # Needs Internet; Downloads gamepacks
     # Possible values for the GAMEPACKS_LICENSE_LIST filter are "free",
     # "all" (free + proprietary) and "none".
