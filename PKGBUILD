@@ -1,9 +1,9 @@
-# Maintainer: <sulamiification at gmail dot com>, feel free to contact me there
+# Maintainer: <sulami at peerwire dot org>, feel free to contact me there
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=frankenwm-git
 _gitname="FrankenWM"
-pkgver=1.0.21
+pkgver=1.0.22
 pkgrel=1
 pkgdesc="Fast dynamic tiling window manager based on monsterwm-xcb"
 url="https://github.com/sulami/FrankenWM"
