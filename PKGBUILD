@@ -1,8 +1,8 @@
 # Maintainer: Andrew Anderson <andrew.wja@gmail.com>
 
 pkgname=clang90
-pkgdesc="C language family frontend for LLVM, version 9.0.0"
-pkgver=9.0.0
+pkgdesc="C language family frontend for LLVM, version 9.0.1"
+pkgver=9.0.1
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"

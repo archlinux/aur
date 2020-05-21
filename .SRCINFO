@@ -1,6 +1,6 @@
 pkgbase = clang90
-	pkgdesc = C language family frontend for LLVM, version 9.0.0
-	pkgver = 9.0.0
+	pkgdesc = C language family frontend for LLVM, version 9.0.1
+	pkgver = 9.0.1
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = clang90
 	depends = llvm90
 	depends = python
 	options = staticlibs
-	source = https://releases.llvm.org/9.0.0/llvm-9.0.0.src.tar.xz
-	source = https://releases.llvm.org/9.0.0/cfe-9.0.0.src.tar.xz
+	source = https://releases.llvm.org/9.0.1/llvm-9.0.1.src.tar.xz
+	source = https://releases.llvm.org/9.0.1/cfe-9.0.1.src.tar.xz
 	sha256sums = SKIP
 	sha256sums = SKIP
 
