@@ -4,8 +4,8 @@ pkgname=('yaru-colors-gtk-theme-git'
          'yaru-colors-icon-theme-git'
          'yaru-colors-wallpapers-git')
 pkgbase='yaru-colors-gtk-theme-git'
-pkgver=2.0.r13.g3ac6559
-pkgrel=2
+pkgver=20.04.r0.g7b62f16a
+pkgrel=1
 pkgdesc="A fork of Ubuntu's Yaru theme - in different colors"
 arch=('any')
 license=('GPL3')
@@ -32,7 +32,7 @@ package_yaru-colors-gtk-theme-git() {
 }
 
 package_yaru-colors-icon-theme-git() {
-	depends=('hicolor-icon-theme' 'gtk-update-icon-cache' 'librsvg' 'humanity-icon-theme')
+	depends=('yaru-icon-theme')
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
