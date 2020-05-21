@@ -5,7 +5,7 @@ url='https://moveit.ros.org'
 pkgname='ros-melodic-moveit-ros-benchmarks'
 pkgver='1.0.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-pluginlib
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # sha256sums=('c84005b45be5707a4e6d5a01c966a9a13ea5c8f754c8c35b5d3fdb2d2ed44c56')
 
 # Tarball version (faster download)
-_dir="moveit-${pkgver}/moveit_ros_benchmarks"
+_dir="moveit-${pkgver}/moveit_ros/benchmarks"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
 sha256sums=('b0ac91cd4c4dc29d9bd5e3885a1a457252495b3f2bedb46ddfe04154f5ac2358')
 
