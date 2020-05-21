@@ -1,0 +1,17 @@
+pkgbase = prezto-contrib-git
+	pkgdesc = A set of additional plugins designed to work easily with prezto
+	pkgver = r57.17a6e47
+	pkgrel = 1
+	url = https://github.com/belak/prezto-contrib
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = coreutils
+	makedepends = sed
+	depends = prezto-git
+	options = !strip
+	source = git+https://github.com/belak/prezto-contrib
+	md5sums = SKIP
+
+pkgname = prezto-contrib-git
+
