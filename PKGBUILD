@@ -17,7 +17,7 @@ _opt_DKMS=1            # This can be toggled between installs
 set -u
 pkgname='connecttech-cti-serial'
 pkgver='1.43'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='tty UART driver for BlueStorm BlueHeat Xtreme/104-Plus Titan and Xtreme/104-Express families'
 arch=('i686' 'x86_64')
 url='http://connecttech.com/product/pci-express-bluestorm-express/'
@@ -29,7 +29,7 @@ backup=("${_etcconf#/}")
 install="${pkgname}-install.sh"
 _srcdir="cti_serial_${pkgver//./}"
 source=(
-  "file://${_srcdir}.tgz"
+  "manual://${_srcdir}.tgz"
   #'0000-kernel-4.18-proc_fops-to-proc_show.patch' # https://patchwork.kernel.org/patch/10349751/
   '0001-kernel-5.0.0-8250_core-access_ok.patch' # https://lkml.org/lkml/2019/1/4/418
 )
@@ -73,6 +73,8 @@ prepare() {
   _install_check
   cd "${_srcdir}"
 
+  rm -rf '.svn'
+
   #cp -p driver/serial_core.c{,.orig}; false
   #diff -pNau5 driver/serial_core.c{.orig,} > '0000-kernel-4.18-proc_fops-to-proc_show.patch'
   #patch -Nbup0 -i "${srcdir}/0000-kernel-4.18-proc_fops-to-proc_show.patch"
@@ -80,6 +82,9 @@ prepare() {
   #cp -p driver/8250_core.c{,.orig}; false
   #diff -pNau5 driver/8250_core.c{.orig,} > '0001-kernel-5.0.0-8250_core-access_ok.patch'
   patch -Nbup0 -i "${srcdir}/0001-kernel-5.0.0-8250_core-access_ok.patch"
+
+  # Kernel 5.6
+  sed -e 's:ioremap_nocache:ioremap:g' -i 'driver/8250_core.c' 'driver/8250_pci.c'
 
   pushd 'driver' > /dev/null
   # Fix permissions
