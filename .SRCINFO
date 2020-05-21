@@ -1,0 +1,12 @@
+pkgbase = python-pybars3-git
+	pkgver = 0.9.7.r1.g2edd2fa
+	pkgrel = 1
+	arch = any
+	makedepends = python-setuptools
+	depends = python-pymeta3>=0.5.1
+	provides = python-pybars3
+	source = python-pybars3-git::git+https://github.com/wbond/pybars3.git
+	md5sums = SKIP
+
+pkgname = python-pybars3-git
+
