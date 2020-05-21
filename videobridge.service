@@ -1,0 +1,25 @@
+[Unit]
+Description=Jitsi-Meet Videobridge
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/jitsi/videobridge/config
+User=jitsi-videobridge
+ExecStart=/opt/jitsi/videobridge/jvb.sh --host=${JVB_HOST} --domain=${JVB_HOSTNAME} --port=${JVB_PORT} --secret=${JVB_SECRET} ${JVB_OPTS}
+WorkingDirectory=~
+StateDirectory=jitsi-videobridge
+StateDirectoryMode=0750
+
+Restart=on-failure
+
+# Hardening
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target

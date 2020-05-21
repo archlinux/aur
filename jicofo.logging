@@ -1,0 +1,37 @@
+handlers= java.util.logging.ConsoleHandler
+#handlers= java.util.logging.ConsoleHandler, com.agafua.syslog.SyslogHandler
+
+java.util.logging.ConsoleHandler.level = ALL
+java.util.logging.ConsoleHandler.formatter = net.java.sip.communicator.util.ScLogFormatter
+
+net.java.sip.communicator.util.ScLogFormatter.programname=Jicofo
+
+.level=WARNING
+net.sf.level=SEVERE
+net.java.sip.communicator.plugin.reconnectplugin.level=FINE
+org.ice4j.level=SEVERE
+org.jitsi.impl.neomedia.level=SEVERE
+
+# Do not worry about missing strings
+net.java.sip.communicator.service.resources.AbstractResourcesService.level=SEVERE
+
+#net.java.sip.communicator.service.protocol.level=ALL
+
+# Enable debug packets logging
+#org.jitsi.impl.protocol.xmpp.level=FINE
+
+# Syslog(uncomment handler to use)
+com.agafua.syslog.SyslogHandler.transport = udp
+com.agafua.syslog.SyslogHandler.facility = local0
+com.agafua.syslog.SyslogHandler.port = 514
+com.agafua.syslog.SyslogHandler.hostname = localhost
+com.agafua.syslog.SyslogHandler.formatter = net.java.sip.communicator.util.ScLogFormatter
+com.agafua.syslog.SyslogHandler.escapeNewlines = false
+
+# to disable double timestamps in syslog uncomment next line
+#net.java.sip.communicator.util.ScLogFormatter.disableTimestamp=true
+
+# uncomment to see how Jicofo talks to the JVB
+#org.jitsi.impl.protocol.xmpp.colibri.level=ALL
+
+org.jitsi.jicofo.health.Health.level=WARNING
