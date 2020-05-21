@@ -1,0 +1,21 @@
+pkgbase = sfeed
+	pkgdesc = RSS and Atom parser
+	pkgver = 0.9.17
+	pkgrel = 1
+	url = https://codemadness.org/sfeed-simple-feed-parser.html
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = custom:ISC license
+	makedepends = gcc-libs
+	depends = glibc
+	provides = sfeed
+	conflicts = sfeed
+	source = https://codemadness.org/releases/sfeed/sfeed-0.9.17.tar.gz
+	sha256sums = 8bd1bf05915741fe44323bf92cec25ad4ad745c5909886cd8dfb0087ede4182f
+
+pkgname = sfeed
+
