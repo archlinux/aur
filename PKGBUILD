@@ -1,7 +1,7 @@
 # Maintainer: Avahe Kellenberger <avahe@protonmail.ch>
 pkgname='nimdow-bin'
 pkgver='0.3.1'
-pkgrel='0'
+pkgrel='1'
 pkgdesc="Tiling Window Manager written in Nim"
 arch=('x86_64')
 url="https://github.com/avahe-kellenberger/nimdow"
@@ -16,10 +16,10 @@ install_default_config() {
   else
     if [ -d "${XDG_CONFIG_HOME}" ]; then
       dir="${XDG_CONFIG_HOME}/nimdow"
-      mkdir -p "$dir"
     else
       dir="${HOME}/.config/nimdow"
     fi
+    mkdir -p "$dir"
     curl "https://raw.githubusercontent.com/avahe-kellenberger/nimdow/master/config.default.toml" -o "${dir}/config.toml"
   fi
 }
