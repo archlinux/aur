@@ -1,0 +1,24 @@
+pkgbase = mingw-w64-xalan-c-git
+	pkgdesc = The Apache Xalan-C++ Project provides a library and a command line program to transform XML documents using a stylesheet that conforms to XSLT 1.0 standards.
+	pkgver = 1.12.0.r0
+	pkgrel = 1
+	url = https://xalan.apache.org/
+	arch = any
+	license = APACHE
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-wine
+	makedepends = git
+	depends = mingw-w64-crt
+	depends = mingw-w64-xerces-c
+	provides = mingw-w64-xalan-c
+	conflicts = mingw-w64-xalan-c
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = git+https://github.com/apache/xalan-c
+	source = fix-cross-compile.patch
+	sha256sums = SKIP
+	sha256sums = 08400961f038c1aed090174425e894673ffc359b52bcbad73d2c537a89ea34b7
+
+pkgname = mingw-w64-xalan-c-git
+

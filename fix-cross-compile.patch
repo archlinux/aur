@@ -1,0 +1,50 @@
+diff --git a/src/xalanc/Include/XalanVersion.hpp.in b/src/xalanc/Include/XalanVersion.hpp.in
+index d0a7d971..63911ede 100644
+--- a/src/xalanc/Include/XalanVersion.hpp.in
++++ b/src/xalanc/Include/XalanVersion.hpp.in
+@@ -26,11 +26,11 @@
+ #define XALANVERSION_HEADER_GUARD_1357924680
+ 
+ /// Xalan-C major version.
+-#define XALAN_VERSION_MAJOR (@xalan-c_VERSION_MAJOR@)
++#define XALAN_VERSION_MAJOR @xalan-c_VERSION_MAJOR@
+ /// Xalan-C minor version.
+-#define XALAN_VERSION_MINOR (@xalan-c_VERSION_MINOR@)
++#define XALAN_VERSION_MINOR @xalan-c_VERSION_MINOR@
+ /// Xalan-C patch version.
+-#define XALAN_VERSION_REVISION (@xalan-c_VERSION_PATCH@)
++#define XALAN_VERSION_REVISION @xalan-c_VERSION_PATCH@
+ 
+ /**
+  * Xalan-C++ version represented as a single integer value.
+diff --git a/src/xalanc/Utils/CMakeLists.txt b/src/xalanc/Utils/CMakeLists.txt
+index dc39ad0c..78b61601 100644
+--- a/src/xalanc/Utils/CMakeLists.txt
++++ b/src/xalanc/Utils/CMakeLists.txt
+@@ -41,13 +41,22 @@ add_custom_target(locale ALL)
+ set_target_properties(locale PROPERTIES FOLDER "Message Library")
+ 
+ if(msgloader STREQUAL "inmemory")
++	set(MsgCreatorCommandFilename "${XLIFF_FILE_NAME}")
++	set(MsgCreatorCommand "$<TARGET_FILE:MsgCreator>" -TYPE inmem -LOCALE ${LOCALE})
++	
++	if(CMAKE_CROSSCOMPILING_EMULATOR)
++		set(MsgCreatorCommand "${CMAKE_CROSSCOMPILING_EMULATOR}" "${MsgCreatorCommand}")
++		if(WIN32)
++			set(MsgCreatorCommandFilename "Z:${MsgCreatorCommandFilename}")
++		endif()
++	endif()
++	
++	set(MsgCreatorCommand "${MsgCreatorCommand}" "${MsgCreatorCommandFilename}")
++	
+   add_custom_command(
+     OUTPUT "${GENMSGINDEX}"
+            "${GENMSGDATA}"
+-    COMMAND "$<TARGET_FILE:MsgCreator>"
+-           "${XLIFF_FILE_NAME}"
+-           -TYPE inmem
+-           -LOCALE ${LOCALE}
++    COMMAND ${MsgCreatorCommand}
+     WORKING_DIRECTORY "${XSL_NLS_GEN_DIR}"
+     COMMENT "Generating inmemory locale message data"
+     DEPENDS MsgCreator "${XLIFF_FILE_NAME}")
