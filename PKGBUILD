@@ -1,29 +1,23 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 # Container: gbr <gbr@protonmail.com>
 
-_pkgname=vibrantlinux-amd
-pkgname=${_pkgname}-git
-pkgver=1.2.5.r1.g4ed73ef
+_pkgname=vibrantlinux
+pkgname=${_pkgname}
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='vibranceGUI replacement for Linux (AMD only)'
 arch=(x86_64)
-url="https://github.com/Scrumplex/vibrantLinux-AMD"
+url="https://github.com/zee-mzha/vibrantLinux"
 license=('MIT')
-depends=('vibrantx' 'qt5-base')
-makedepends=('git')
-conflicts=("vibrantlinux-git" "vibrantlinux")
-provides=("vibrantlinux-git" "vibrantlinux")
-source=("${_pkgname}::git+https://github.com/Scrumplex/vibrantLinux-AMD.git"
+depends=("qt5-base" "libxnvctrl" "vibrant" "libxrandr")
+makedepends=("git")
+conflicts=("vibrantlinux")
+provides=("vibrantlinux")
+source=("${_pkgname}::git+https://github.com/zee-mzha/vibrantLinux.git"
         "vibrantLinux.desktop")
 sha512sums=('SKIP'
             '21531277bbcea2ab65116f8420db9197f99801f34f934f9bd181fb2077c3c26337c7356df236783a53eee6dccc3e994f7992c9aaa8d53ca32ec0d98231357b1f')
 
-
-pkgver() {
-    cd "${_pkgname}"
-
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 build() {
     cd "${_pkgname}"

@@ -1,21 +1,21 @@
-pkgbase = vibrantlinux-amd-git
+pkgbase = vibrantlinux
 	pkgdesc = vibranceGUI replacement for Linux (AMD only)
-	pkgver = 1.2.5.r1.g4ed73ef
+	pkgver = 2.0.0
 	pkgrel = 1
-	url = https://github.com/Scrumplex/vibrantLinux-AMD
+	url = https://github.com/zee-mzha/vibrantLinux
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = vibrantx
 	depends = qt5-base
-	provides = vibrantlinux-git
+	depends = libxnvctrl
+	depends = vibrant
+	depends = libxrandr
 	provides = vibrantlinux
-	conflicts = vibrantlinux-git
 	conflicts = vibrantlinux
-	source = vibrantlinux-amd::git+https://github.com/Scrumplex/vibrantLinux-AMD.git
+	source = vibrantlinux::git+https://github.com/zee-mzha/vibrantLinux.git
 	source = vibrantLinux.desktop
 	sha512sums = SKIP
 	sha512sums = 21531277bbcea2ab65116f8420db9197f99801f34f934f9bd181fb2077c3c26337c7356df236783a53eee6dccc3e994f7992c9aaa8d53ca32ec0d98231357b1f
 
-pkgname = vibrantlinux-amd-git
+pkgname = vibrantlinux
 
