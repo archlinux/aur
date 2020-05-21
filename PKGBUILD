@@ -5,7 +5,7 @@ _cudaarch="6.0;6.1;7.0;7.5"
 _pkgname=mxnet
 pkgname=('mxnet-git' 'mxnet-cuda-git')
 _pkgver=2.0.0
-pkgver=2.0.0.r10976.8a5886a677
+pkgver=2.0.0.r11010.b0315f86f5
 pkgrel=1
 pkgdesc='A flexible and efficient library for deep learning'
 arch=('x86_64')
@@ -18,7 +18,6 @@ depends=(
   'intel-mkl'
   'intel-tbb'
   'libjpeg-turbo'
-  'opencv'
   'protobuf'
   'python-graphviz'
   'python-numpy'
@@ -34,6 +33,7 @@ makedepends=(
   'git'
   'gtk3'
   'nccl'
+  'opencv'
   'qt5-base'
 )
 provides=(mxnet=${pkgver})
@@ -70,7 +70,6 @@ build() {
   cmake_opts=(
     -DBUILD_CPP_EXAMPLES:BOOL=OFF
     -DBUILD_TESTING:BOOL=OFF
-    -DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++
     -DCMAKE_INSTALL_LIBDIR:PATH=lib
     -DCMAKE_INSTALL_PREFIX:PATH=/usr
     -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON
@@ -87,7 +86,6 @@ build() {
     -DUSE_LIBJPEG_TURBO:BOOL=ON
     -DUSE_MKLDNN:BOOL=ON
     -DUSE_MKL_IF_AVAILABLE:BOOL=ON
-    -DUSE_OPENCV:BOOL=ON
     -DUSE_OPENMP:BOOL=ON
     -DUSE_S3:BOOL=ON
 )
@@ -96,10 +94,14 @@ build() {
   cd "${srcdir}/mxnet-cuda-git/build"
   cmake \
     ${cmake_opts[@]} \
+    -DCMAKE_C_COMPILER=/opt/cuda/bin/gcc \
+    -DCMAKE_CXX_COMPILER=/opt/cuda/bin/g++ \
+    -DCMAKE_CUDA_HOST_COMPILER=/opt/cuda/bin/g++ \
     -DMXNET_CUDA_ARCH=${_cudaarch} \
     -DUSE_CUDA:BOOL=ON \
     -DUSE_CUDNN:BOOL=ON \
     -DUSE_NCCL:BOOL=ON \
+    -DUSE_OPENCV:BOOL=OFF \
     ..
   make
   cd ../python
@@ -113,6 +115,7 @@ build() {
     -DUSE_CUDA:BOOL=OFF \
     -DUSE_CUDNN:BOOL=OFF \
     -DUSE_NCCL:BOOL=OFF \
+    -DUSE_OPENCV:BOOL=ON \
     ..
   make
   cd ../python
@@ -140,6 +143,7 @@ _package() {
   ln -s "/usr/include" "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/mxnet/include"
 
   # remove unwantted files
+  rm -rfv "${pkgdir}/mkldnn"
   rm -rfv "${pkgdir}/usr/mxnet"
   rm -rfv "${pkgdir}/usr/lib/cmake" "${pkgdir}/usr/share/doc"
   find "${pkgdir}" -type f -name '*dnn*' -delete
@@ -148,6 +152,8 @@ _package() {
 
 
 package_mxnet-git() {
+  depends+=(opencv)
+  
   _package
 }
 
