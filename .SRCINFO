@@ -1,0 +1,12 @@
+pkgbase = python-pymeta3-git
+	pkgdesc = Pattern-matching language based on OMeta for Python 3 and 2
+	pkgver = 0.5.1.r0.g61be6c2
+	pkgrel = 1
+	arch = any
+	makedepends = python-setuptools
+	provides = python-pymeta3
+	source = python-pymeta3-git::git+https://github.com/wbond/pymeta3.git
+	md5sums = SKIP
+
+pkgname = python-pymeta3-git
+
