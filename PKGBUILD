@@ -4,9 +4,10 @@
 pkgname="python-pymeta3-git"
 pkgdesc="Pattern-matching language based on OMeta for Python 3 and 2"
 pkgver=0.5.1.r0.g61be6c2
-pkgrel=1
+pkgrel=2
 url="https://github.com/wbond/pymeta3"
 
+license=("mit")
 arch=("any")
 provides=("python-pymeta3")
 
@@ -23,4 +24,7 @@ pkgver() {
 package() {
 	cd "$pkgname"
 	python setup.py install --root="$pkgdir" --optimize=1
+
+	# install license
+	install -Dm 644 LICENSE "$pkgdir"/usr/share/license/python-pymeta3/LICENSE
 }
