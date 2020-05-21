@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-moveit-ros-visualization
 	pkgdesc = ROS - Components of MoveIt that offer visualization.
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://moveit.ros.org
 	arch = i686
 	arch = x86_64
