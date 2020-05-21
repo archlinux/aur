@@ -1,0 +1,20 @@
+pkgbase = ros-melodic-franka-description
+	pkgdesc = ROS - franka_description contains URDF files and meshes of Franka Emika robots.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = h
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = Apache 2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-xacro
+	source = ros-melodic-franka-description-0.6.0.tar.gz::https://github.com/frankaemika/franka_ros-release/archive/release/melodic/franka_description/0.6.0.tar.gz
+	sha256sums = e4d3322ea002ca83c536e9c251faaf8e5814fdd6913a90432471e4af75ab57bf
+
+pkgname = ros-melodic-franka-description
+
