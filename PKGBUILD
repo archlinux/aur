@@ -2,40 +2,41 @@
 # Contributor: Michael DeGuzis <mdeguzis@gmail.com>
 # Please note you must have a Vulkan-capable GPU
 
+_quake=vkQuake
 pkgname=vkquake
 pkgver=1.04.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('x86_64')
 conflicts=('vkquake')
 provides=('vkquake')
 url="https://github.com/Novum/vkquake"
 license=('GPL2')
-depends=(	 'git' 'flac' 'glibc' 'libgl' 'libmad' 
-		 'libvorbis' 'libx11' 'sdl2' 'vulkan-validation-layers'
+depends=(	 'git' 'flac' 'glibc' 'libgl' 'libmad' 'libmikmod' 
+		 'libvorbis' 'libx11' 'opusfile' 'sdl2' 'vulkan-validation-layers'
 )
 install=$pkgname.install
-source=("git+https://github.com/Novum/vkquake.git#tag=${pkgver}"
+source=("https://github.com/Novum/vkQuake/archive/${pkgver}.tar.gz"
 	'vkquake.desktop'
 	'vkquake.png'
 	'vkquake.svg'
 	'fix-build.patch')
-md5sums=('SKIP'
-		 '202e1efb0491aafcc9de6f44295dc272'
-		 'ffc3103326b0378af770b1318cf4e7e6'
-		 'd6b9553906db3cbadfbc40aafafa2b5d'
-		 '0c17db6ff55638f027a4b12458a1680f')
+md5sums=(	'0e7aadbfa99a9890a498a5072167c910'
+		'202e1efb0491aafcc9de6f44295dc272'
+		'ffc3103326b0378af770b1318cf4e7e6'
+		'd6b9553906db3cbadfbc40aafafa2b5d'
+		'0c17db6ff55638f027a4b12458a1680f')
 
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_quake-$pkgver"
   # https://github.com/Novum/vkQuake/issues/222
   patch -Np1 -i ../fix-build.patch
 }
 
 build() {
   
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_quake-$pkgver"
 
   # clean
   msg "Cleaning make files"
@@ -46,7 +47,6 @@ build() {
 		$(maybe_debug) \
 		STRIP=": do not strip:" \
 		DO_USERDIRS=1 \
-		USE_SDL2=1 \
 		USE_CODEC_FLAC=1 \
 		USE_CODEC_OPUS=1 \
 		USE_CODEC_MIKMOD=1 \
@@ -57,7 +57,7 @@ build() {
 
 package() {
 
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_quake-$pkgver"
 
   # Install main binary
   install -Dm755 Quake/vkquake "$pkgdir"/usr/bin/vkquake
@@ -67,7 +67,7 @@ package() {
   mkdir -p $pkgdir/usr/share/games/vkquake/
 
   # pak files
-  install -Dm644 "$srcdir/$pkgname/Misc/vq_pak/vkquake.pak" "$pkgdir/usr/share/games/vkquake/vkquake.pak" 
+  install -Dm644 "$srcdir/$_quake-$pkgver/Misc/vq_pak/vkquake.pak" "$pkgdir/usr/share/games/vkquake/vkquake.pak" 
 
   # supplemental files
   install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/vkquake.desktop"
