@@ -1,0 +1,5 @@
+*.log
+src/
+pkg/
+*.pkg.tar*
+aegisub-ttools/
