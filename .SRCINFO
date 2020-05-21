@@ -1,0 +1,23 @@
+pkgbase = ros-melodic-franka-msgs
+	pkgdesc = ROS - franka_msgs provides messages specific to Franka Emika research robots.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = h
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = Apache 2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-std-msgs
+	source = ros-melodic-franka-msgs-0.6.0.tar.gz::https://github.com/frankaemika/franka_ros-release/archive/release/melodic/franka_msgs/0.6.0.tar.gz
+	sha256sums = 9d6974c64dcba4efe527816c15b1eaa3334d1eead4d22923e0cba7625710f397
+
+pkgname = ros-melodic-franka-msgs
+
