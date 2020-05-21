@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-mk
 	pkgdesc = ROS - A collection of .mk include files for building ROS architectural elements.
 	pkgver = 1.14.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/mk
 	arch = any
 	license = BSD

@@ -6,7 +6,7 @@ url='https://wiki.ros.org/mk'
 pkgname='ros-melodic-mk'
 pkgver='1.14.8'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -27,7 +27,7 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="ros-${pkgver}/mk"
+_dir="ros-${pkgver}/core/mk"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros/archive/${pkgver}.tar.gz")
 sha256sums=('998c79df7d7ce015eee28fb768b28b68cc37a98b4a4b8daef16a1280cccb5bee')
 
