@@ -1,7 +1,7 @@
 pkgbase = kimageannotator-git
 	pkgdesc = Tool for annotating images
-	pkgver = r397.8d21122
-	pkgrel = 1
+	pkgver = r471.8e2998d
+	pkgrel = 2
 	url = https://github.com/DamirPorobic/kImageAnnotator
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = kimageannotator-git
 	makedepends = qt5-tools
 	makedepends = kcolorpicker-git
 	depends = qt5-base
+	depends = qt5-svg
 	provides = kimageannotator
 	conflicts = kimageannotator
 	source = git+https://github.com/DamirPorobic/kImageAnnotator.git

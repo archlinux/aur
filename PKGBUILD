@@ -1,14 +1,15 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=kimageannotator-git
-pkgver=r397.8d21122
-pkgrel=1
+pkgver=r471.8e2998d
+pkgrel=2
 pkgdesc='Tool for annotating images'
 arch=('i686' 'x86_64')
 url='https://github.com/DamirPorobic/kImageAnnotator'
 license=('GPL')
 depends=(
   qt5-base
+  qt5-svg
 )
 makedepends=(
   git
@@ -50,5 +51,7 @@ package(){
   cd "$srcdir"/$_gitname/build
   make DESTDIR="$pkgdir" install
   cd "$pkgdir"/usr
+  install -dm755 bin
+  install -Dm544 "$srcdir/kImageAnnotator/build/example/kImageAnnotator-example" bin/kImageAnnotator-example
 }
 
