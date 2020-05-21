@@ -1,122 +1,106 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Zachary Riedlshah <git@zacharyrs.me>
 # Contributor: Zachary Riedlshah <git@zacharyrs.me>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=onlyoffice-documentserver
 pkgver=5.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
-# nodejs-lts-dubnium due to bug with nodehun build fail
-depends=('nodejs-lts-dubnium' 'noto-fonts')
-# noto-fonts required due to bug https://github.com/ONLYOFFICE/DocumentServer/issues/377#issuecomment-455782913
-makedepends=('npm' 'nodejs-lts-dubnium' 'grunt-cli' 'qt5-base' 'git' 'wget' 'p7zip' 'clang' 'python2' 'java-runtime' 'svn' 'ncurses5-compat-libs')
-# ncurses-5compat-libs required to build v8
-optdepends=('rabbitmq' 'redis' 'postgresql')
+makedepends=('python' 'python2' 'git' 'p7zip' 'svn' 'qt5-base' 'clang' 'qt5-multimedia' 'pkg')
+optdepends=('rabbitmq' 'postgresql' 'nginx')
 license=('AGPL')
-source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-DocumentServer-${pkgver}.tar.gz"
-	"core-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core/archive/c8def9eb7bc02d675d0f1c64d2acf5b9cdf2bca8.tar.gz"
-	"core-fonts-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core-fonts/archive/abc25e4538cbce3ba96671283d14cec09087829b.tar.gz"
-	"dictionaries-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/dictionaries/archive/0e43b7b8aeb099ec30725f39234e2b898e7f0e67.tar.gz"
-	"sdkjs-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs/archive/00800885c8c07d908dfb7e093cc045fbedc275b3.tar.gz"
-	"sdkjs-plugins-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs-plugins/archive/03b41c0dff8b50aedc2fb914d3c8b7d051d45228.tar.gz"
-	"server-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/server/archive/09f7fee6a0cafb8c95eeee6d6d525134e7cccd20.tar.gz"
-	"web-apps-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/web-apps-pro/archive/9f0f3e7396488e9bbbac1704432e73147cec1fe5.tar.gz"
-	"server_makefile.patch"
+source=("build-tools-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/build_tools/archive/v5.5.1.85.tar.gz"
+	"core-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core/archive/d5c5c4b8cf601b7d588968f012fb2ceff2cc30bc.tar.gz"
+	"core-fonts-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core-fonts/archive/959c01c91a49a8f72324332be4dd033081c213a1.tar.gz"
+	"dictionaries-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/dictionaries/archive/2bff8e819ef459a041894d9600d053991c00e214.tar.gz"
+	"sdkjs-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs/archive/acffa841d48eab215dbb490bb21b46dba8925cdd.tar.gz"
+	"sdkjs-plugins-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs-plugins/archive/073596df1b878682fe39dc603492aca819e3a977.tar.gz"
+	"server-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/server/archive/a3b4517ab4881458c13b44629c0acbaab5855b09.tar.gz"
+	"web-apps-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/web-apps/archive/897ebf6515804825824e51ddcf7f6c9427614e9b.tar.gz"
+	"desktop-sdk-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/desktop-sdk/archive/7bd748ec302efc9a548a1e36cbdc1ae9d8a15f17.tar.gz"
+	"document-server-integration-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/document-server-integration/archive/83bab147d0d597cde4eedfb2c50558fbcd2ffeb6.tar.gz"
+	"document-builder-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/DocumentBuilder/archive/e6645204b0b1a82e031ec30255dfcfeb9384d06b.tar.gz"
 	"onlyoffice-fileconverter.service"
 	"onlyoffice-spellchecker.service"
 	"onlyoffice-docservice.service"
 	"onlyoffice-documentserver.hook"
 	"onlyoffice-documentserver.sysusers"
-	"onlyoffice-documentserver.tmpfiles")
-sha512sums=('590a1f63b1dbfcf4d3325f636df004fe25d117cda90710d1d2e032dd8319c6686f93c45d3abf2f91e94d39ff940e61015953213a60bbd8d5002218e23afa8b93'
-            '7afd1cc73fd721ccf649994a296fd833da334d70bbd7ce71ec34ff27503339e25514619b856cf8364d984a49b8058e05150d612207bc8e28c61cfeea00551411'
-            '0a3a2daa0c3c8a3b63ae2e02b4afc2324c0b7cab70b87d18068790cd664d35a7b11083db2e56f62aa2508f942570092aa91ab78097755ab6d8ca3b1459767030'
-            '9f59b29a946b421aed5ff81d8a1bf1e6f33ab95387a052dd53aa2b03313c44aac9a441e4bc5ef2caa2401d4eba24e843cf2dd90c90118ff96d89d540e36eef47'
-            'b3357e34ac8ace549d5cb89889b288dd855e32c469f9b9d5a6851c944d5c9ed975a1ee1f8980ad1d932ab5b6f947cb7cfe85eb00d19b07fc1eb5bbcb479171b2'
-            '446685c33125fe93d09137f149552a591c6e58148d17eace28f290248992a212179317b4b087a8448b0ec73e047819f246ab703e1534b9c9c30024b42b9ee034'
-            'd564c3d99cfb8d746818fab0e9b824dae5a0fd6713067119971bade418996c7181950e39111b87191fa93111f1810cfe10c109dadde87edb4a1ba7d404aa0f51'
-            '454e6ce01f748966bb3729693fcd687163bf3776bb912908156f2439e56649ac226f7f76577ddf5f9159f2ce63a8d45fdcaae8c7f1e880a95e5153a6d02314d7'
-            '40c9ecaa2b2008c152cfb89988bb175b3824550ca913b14365226be9b003c7c394d1c70d269ab64edb7d0eda483d4c67aac232f4ac404d73f5c807483e235f28'
-            'f6e888d23d980eb50dcd70c1ce82324f3ee60c666298f77adf7f7abdf524d78bfcd10a8e17180a64596d964d98ae5457645ece6e3d05d93b938f465f2dc3612a'
-            '8ed8c1301469242cc669a1f0520708ad0fa4f19406541c976cd9287917f573ec3f47902f9021eef5ff82ca20de04234f459e4826320689705772589b1aca0267'
-            'fafee1aa872786116d5c28c08dbe12edcf0dd60890c40b108bb60c9d321d9a579fc8fe6a8a86c1641b58531388410fb51e09d294b9b998ca9a39373349e889a0'
+	"onlyoffice-documentserver.tmpfiles"
+	"videoplayer_build_bug_fix.patch::https://github.com/ONLYOFFICE/build_tools/commit/4fccc2116510ef297cd2a1fd88964602e53418be.patch")
+sha512sums=('4b60d837618c10037eb03079a891cc9c99ed358931418d262c8de0146941c7613a02a6bc555afc51fbf999a5b1c2dd2f6936c9b5c6ef8f83b41ab09293e37d10'
+            '41a5f483891123f34ceb5348b72508630c599b178fb94cda2e0bd2e3ef2801607f6815566397a3d3a13c5579a78c89f55de9d637e3e89cf8acf67946c788ebd5'
+            '722f5d1e273f7a1c7f95fa6b76bcb8965a729866be356ea60f296d0ba082b9a94149eb80ca41ad4be79664949481d9d89b50bd17fcfcb6090660ad9da708b1fa'
+            '51a147f8cf5de7f10f226318f3995b3104b63d3dc846e04f8fbe9a1bbfa7ceebe52519fcb6ce3d565ca95fbd7f2faecbb7eebb0c19778bd551fcab8102902165'
+            'c35959fdc849ce1240b2a5c0c892b26d48e26e57b5615f2775ca94314c838c870de0a15848fed6fb2f00eb642319cbe6a25368b2c2bc6d349c3847f0df08d537'
+            'c6395733fb522ee5bd01e1eafad689d36039834ce91e2def891f95de66e4e7e8afcdbee0f0b200233dd35d2781262c5d2c0840468fe174f47c91222ff68b2f53'
+            '9c1ed7e9b2d19aa1d9083d139d555c099e217de580d01f10a7814c5bf0d4a8d06c26984f18a51081e92c6c26da001265cea0c1054a574be3ebe42940614426c4'
+            'dc65db202a9343993b8cb2ecf475c45b2d9d3ab8c32b0a754ef3496e2c28b523124be10f9e811587ec77bec8dbe6383f6bb29e3230a7338064e74a7bf6e56698'
+            'a7696cbfae7ff68aacefeb43052e03fb8291fe069ec7c3eeade1865582ff743429d0df8d741d4d975231103f6106e485413404dcf1f3d645b6f1a557a8b78332'
+            'a1a6995b6f3b988f6c9998523c234cacd4d44ba2ef42064e7c0a535e5a5fd18448198f696f463323ec3f9bdfd9c270889a483b7a0e056c0722198dd9b42fab14'
+            'c98b226bf7bc07f6c83d7945c1f7571ec1a555f17199e4260ec31b93a5712a4481fabcf71552f1fe96928fd26b9e4385d552d376780f65c87681be94c9a3e027'
+            '848074ce03328915d251db45a5475f6a2dff3b15f53b3b1dfbd702a9dc184d53aea78da1310db9c60d85a35062ce9986f37843c000f269dcaf8d624ed29e0a60'
+            '71cf274868452cef92eb4729d3bfe04ce7b3dd863aee8e7395cf166296206b07abb60756e09911395badbea1965eea4a9fa7595dba7f9bc1c7ad4b8158ac1263'
+            '3df1f5339b394eef1b27317f5d0e7786d2cb8dbbd13cddb22047567c3703f384d95f092fc34ce3031aeb895f013d7c0686ce968e1fae7f1f24473c1a6615f7ad'
             '707da287c3db6907fcdbf91cfe2ef057c77033713a1b4299a89a684b37fe3c74644e2c0b1fcec2afcd81c6511bb02ac3221d56c8caadb5d0c711d1842f78e780'
             'c7c23c5a7014e3251dfd86312d1d1e5c2d88f26ddc5aa967285202fd3ebf62c0a10c009b1cc5ad1b78e13fa0bc2eda515616d8af02325db434c0b2113c5b1ecb'
-            'e1b8395ab7ef219860aebe9e7709a60cbaea1c28a8378aac3f54ce37b39944a7fd82b7efa8d59977f0891743cdface149b9f95f4b25c1c5322cb327c50d485ed')
+            'e1b8395ab7ef219860aebe9e7709a60cbaea1c28a8378aac3f54ce37b39944a7fd82b7efa8d59977f0891743cdface149b9f95f4b25c1c5322cb327c50d485ed'
+            'a4e0157c938def5196a280facf6dbbb907f4f3bb7f78af7418da33964f9f0c81f6796fb1b67454957dadc3757bc171ac6762fa02c37bfa5619cd2e5ff6b75b58')
 backup=('etc/webapps/onlyoffice/documentserver/production-linux.json'
 	'etc/webapps/onlyoffice/documentserver/default.json')
 install="onlyoffice-documentserver.install"
 
 prepare() {
+  cd "${srcdir}"
+
   # Unfortunately, v8 depot_tools still requires python2
   # Bug: https://bugs.chromium.org/p/chromium/issues/detail?id=942720
   mkdir -p path
   ln -sf /usr/bin/python2 path/python
 
-  cd "${srcdir}"
-  rm *.tar.gz
+  # Rename source directories
+  for dir in "core-fonts" "core" "dictionaries" "sdkjs-plugins" "sdkjs" "server" "web-apps" "desktop-sdk" "document-server-integration" "DocumentBuilder"
+  do
+    rm -rf "${dir}"
+    find . -maxdepth 1 -type d -name "${dir}*" -exec mv '{}' ${dir} \;
+  done
 
-  cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}"
-  rm -r core core-fonts dictionaries sdkjs sdkjs-plugins server web-apps-pro
-  mv ../core-fonts* core-fonts
-  mv ../core-* core
-  mv ../dictionaries-* dictionaries
-  mv ../sdkjs-plugins-* sdkjs-plugins
-  mv ../sdkjs-* sdkjs
-  mv ../server-* server
-  mv ../web-apps-* web-apps-pro
+  # Configuration for build-tools
+  cd "build_tools-5.5.1.85"
+  ./configure.py --branch master --module server --update 0 --qt-dir /usr/include/qt
 
   # Use clang instead of gcc because of compile errors
-  sed -i 's/is_clang=false/is_clang=true/g' core/Common/3dParty/v8/build.sh
+  sed -i 's/is_clang=false/is_clang=true/g' scripts/core_common/modules/v8.py
 
-  # python2 dependency for gclient
-  sed -i '12iexport PATH="'${srcdir}'/path:$PATH"' core/Common/3dParty/v8/fetch.sh
-  sed -i '28iexport PATH="'${srcdir}'/path:$PATH"' core/Common/3dParty/v8/build.sh
+  # Unsure how to fix path to QT-dir
+  sed -i '28i    qt_dir = ""' scripts/build.py
 
-  # drop back to v8 6.0, not 7.0 - fixes build issues
-  sed -i 's/v8_version="7.0"/v8_version="6.0"/g' core/Common/3dParty/v8/fetch.sh
+  # Patch build file in build_tools to fix bug
+  # https://github.com/ONLYOFFICE/build_tools/issues/82
+  patch -i ../videoplayer_build_bug_fix.patch
 
-  # Patching Makefile to include DESTDIR variable
-  patch -p0 -i ../server_makefile.patch
-
-  # Patching configuration file
-  sed -i 's/\/var\/www\/onlyoffice/\/usr\/share\/webapps\/onlyoffice/g' server/Common/config/production-linux.json
-  sed -i 's/\/etc\/onlyoffice/\/etc\/webapps\/onlyoffice/g' server/Common/config/production-linux.json
+  # Somehow there is a missing header file
+  sed -i '7i#include <math.h>' "${srcdir}/desktop-sdk/ChromiumBasedEditors/videoplayerlib/src/qpushbutton_icons.h"
 }
 
 build() {
-  cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}"
+  cd "${srcdir}/build_tools-5.5.1.85"
 
-  # workaround bug https://github.com/ONLYOFFICE/onlyoffice-owncloud/issues/42
-  export PRODUCT_VERSION=${pkgver}
-
-  # Download & build third party modules 
-  cd core/Common/3dParty
-  ./make.sh
-
-  # Building core
-  cd ../..
-  make
-
-  # Building sdkjs
-  cd ../sdkjs
-  make
-
-  # Building server
-  cd ../server
-  make 
+  export PATH="${srcdir}/path:$PATH"
+  ./make.py
 }
 
 package() {
-  cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}/server"
+  install -D "${pkgdir}/usr/share/webapps"
+  cp -r "${srcdir}/build_tools-5.5.1.85/out/linux_64/onlyoffice" "${pkgdir}/usr/share/webapps/"
+
   install -Dm 644 "${srcdir}/onlyoffice-docservice.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-docservice.service"
   install -Dm 644 "${srcdir}/onlyoffice-fileconverter.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-fileconverter.service"
   install -Dm 644 "${srcdir}/onlyoffice-spellchecker.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-spellchecker.service"
   install -D "${srcdir}/onlyoffice-documentserver.hook" "${pkgdir}/usr/share/libalpm/hooks/onlyoffice-documentserver.hook"
   install -Dm 644 "${srcdir}/onlyoffice-documentserver.sysusers" "${pkgdir}/usr/lib/sysusers.d/onlyoffice-documentserver.conf"
   install -Dm 644 "${srcdir}/onlyoffice-documentserver.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/onlyoffice-documentserver.conf"
-  make DOCUMENT_ROOT="/usr/share/webapps/onlyoffice/documentserver" DESTDIR=${pkgdir} install
 }

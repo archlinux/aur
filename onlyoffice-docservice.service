@@ -7,7 +7,7 @@ User=onlyoffice
 Group=onlyoffice
 Type=simple
 Environment="NODE_ENV=production-linux" "NODE_CONFIG_DIR=/etc/webapps/onlyoffice/documentserver"
-ExecStart=/usr/bin/node /usr/share/webapps/onlyoffice/documentserver/server/DocService/sources/server.js
+ExecStart=/usr/share/webapps/onlyoffice/documentserver/server/DocService/docservice
 WorkingDirectory=/var/lib/onlyoffice/documentserver
 LimitNOFILE=1048576
 LimitNPROC=64
