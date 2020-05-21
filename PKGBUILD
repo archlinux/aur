@@ -9,18 +9,18 @@ pkgver=7.3.0
 pkgrel=1
 pkgdesc="Linux file manager and archive manager, 7Z BR RAR TAR ZST ZIP files extraction utility
 "
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url='http://www.peazip.org/peazip-linux.html'
 license=('GPL3')
-depends=('curl'
-         'gmp4'
-         'gtk2'
+depends=('lib32-curl'
+         'lib32-gmp4'
+         'lib32-gtk2'
          'balz'
          'paq8o'
          'p7zip'
          'upx'
          'zpaq')
-options=('emptydirs')
+options=('!emptydirs')
 optdepends=('quad: A ROLZ-based file compressor' 
             'unace: Support for ace files'
             'arc: Support for arc files')
