@@ -1,9 +1,10 @@
 # Maintainer: Felix Golatofski <contact@xdfr.de>
+
 _pkgname=freifunk-meet-desktop
 pkgname=${_pkgname}-bin
-pkgver=2.0.10
+pkgver=2.0.11
 pkgrel=1
-pkgdesc="Jitsi Meet desktop application powered by Electron"
+pkgdesc="Freifunk Meet desktop application powered by Electron"
 arch=('x86_64')
 url="https://github.com/freifunkMUC/jitsi-meet-electron"
 license=('Apache')
@@ -16,7 +17,7 @@ backup=()
 options=(!strip)
 source=("ffmuc-meet-${arch[0]}-${pkgver}.AppImage::https://github.com/freifunkMUC/jitsi-meet-electron/releases/download/v${pkgver//_/-}/ffmuc-meet-${arch[0]}.AppImage"
         "${_pkgname}.desktop")
-sha256sums=('d9b9e9f4f1fb5575e8c96ca70a9d2ccd8e7626ca34351861d465d225e0efe55b'
+sha256sums=('afb0424f60df242906ed76fbc2654dece4fffe7b05bc2ba5c0a72658d283cc52'
             'd180773e67b25db81c6279ca34d0c2dad0b8d0172554723105ad54f4c939d573')
 
 
