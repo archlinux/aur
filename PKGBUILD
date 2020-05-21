@@ -59,10 +59,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.6.13.arch1.r903039.e1f6739c4a9f
+pkgver=v5.6.14.arch1.r903039.e1f6739c4a9f
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=v5.6.13.arch1
+_srcver_tag=v5.6.14.arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -181,11 +181,11 @@ _package() {
         coreutils
         kmod
         initramfs
+        linux-firmware
         bcachefs-tools-git
     )
     optdepends=(
         "crda: to set the correct wireless channels of your country"
-        "linux-firmware: firmware images needed for some devices"
     )
     provides=(
         VIRTUALBOX-GUEST-MODULES
@@ -216,7 +216,7 @@ _package() {
 }
 
 _package-headers() {
-    pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel $_pkgdesc_extra"
+    pkgdesc="Header files and scripts for building modules for $pkgdesc kernel $_pkgdesc_extra"
 
     cd $_reponame
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"

@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = v5.6.13.arch1.r903039.e1f6739c4a9f
+	pkgver = v5.6.14.arch1.r903039.e1f6739c4a9f
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -31,16 +31,16 @@ pkgname = linux-bcachefs-git
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
+	depends = linux-firmware
 	depends = bcachefs-tools-git
 	optdepends = crda: to set the correct wireless channels of your country
-	optdepends = linux-firmware: firmware images needed for some devices
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
 pkgname = linux-bcachefs-git-headers
-	pkgdesc = Headers and scripts for building modules for the Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
+	pkgdesc = Header files and scripts for building modules for Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
 
 pkgname = linux-bcachefs-git-docs
 	pkgdesc = Documentation for the Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
