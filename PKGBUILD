@@ -1,43 +1,44 @@
 # Maintainer: Colin Woodbury <colin@fosskers.ca>
-_hkgname=aura
 pkgname=aura
-pkgver=2.0.4
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A secure package manager for Arch Linux and the AUR"
 url="https://github.com/fosskers/aura"
 license=('GPL-3')
 arch=('x86_64')
-depends=('gmp' 'pacman')
-optdepends=()
+depends=('gmp' 'pacman' 'git')
+makedepends=('stack-bin')
+optdepends=('bash-completion: for bash completions')
 provides=('aura')
 conflicts=('aura-bin' 'aura-git')
 options=('strip')
-source=(https://github.com/fosskers/aura/releases/download/v${pkgver}/aura-${pkgver}-x86_64.tar.gz)
-md5sums=('ded00b024998516f8136c6e1fa98899f')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('486123b3c12fa52cd1e1d74e2dfbb9c722fe69e462db774a9f82d7cd5146c5ba')
+
+build() {
+  cd "$pkgname-$pkgver"
+  stack clean "$pkgname"
+  stack build --pedantic "$pkgname"
+}
 
 package() {
-    # Install aura binary
-    mkdir -p "$pkgdir/usr/bin/"
-    install -m 755 aura "$pkgdir/usr/bin/"
+  cd "$pkgname-$pkgver"
+  stack install --local-bin-path="$pkgdir/usr/bin" "$pkgname"
 
-    # Installing man page
-    mkdir -p "$pkgdir/usr/share/man/man8/"
-    install -m 644 aura.8 "$pkgdir/usr/share/man/man8/aura.8"
+  # Install conf file
+  install -Dm644 "$pkgname/doc/$pkgname.conf" -t "$pkgdir/etc"
 
-    # Installing bash completions
-    mkdir -p "$pkgdir/usr/share/bash-completion/completions/"
-    install -m 644 bashcompletion.sh "$pkgdir/usr/share/bash-completion/completions/aura"
+  # Install man page
+  install -Dm644 "$pkgname/doc/$pkgname.8" -t "$pkgdir/usr/share/man/man8"
 
-    # Installing zsh completions
-    mkdir -p "$pkgdir/usr/share/zsh/site-functions/"
-    install -m 644 _aura "$pkgdir/usr/share/zsh/site-functions/_aura"
+  # Install bash completions
+  install -Dm644 "$pkgname/doc/completions/bashcompletion.sh" \
+    "$pkgdir/usr/share/bash-completion/completions/$pkgname"
 
-    # Directory for storing PKGBUILDs
-    mkdir -p "$pkgdir/var/cache/aura/pkgbuilds"
+  # Install zsh completions
+  install -Dm644 "$pkgname/doc/completions/_$pkgname" -t \
+    "$pkgdir/usr/share/zsh/site-functions"
 
-    # Directory for storing source packages
-    mkdir -p "$pkgdir/var/cache/aura/src"
-
-    # Directory for storing installed package states
-    mkdir -p "$pkgdir/var/cache/aura/states"
+  # Directories for storing PKGBUILDs, source packages & installed package states
+  install -d "$pkgdir/var/cache/$pkgname/"{pkgbuilds,src,states}
 }
