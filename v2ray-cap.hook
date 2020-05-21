@@ -1,0 +1,14 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/lib/v2ray/v2ray
+
+[Action]
+Description = setcap to v2ray
+Depends = libcap
+When = PostTransaction
+Exec = /usr/bin/setcap "cap_net_bind_service=+ep cap_net_admin=+ep" /usr/lib/v2ray/v2ray
+NeedsTargets
+
+ 
