@@ -1,0 +1,36 @@
+pkgbase = ros-melodic-franka-gripper
+	pkgdesc = ROS - This package implements the franka gripper of type Franka Hand for the use in ros.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = h
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = Apache 2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-control-msgs
+	makedepends = ros-melodic-actionlib
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-xmlrpcpp
+	makedepends = ros-melodic-libfranka
+	makedepends = ros-melodic-actionlib-msgs
+	makedepends = ros-melodic-sensor-msgs
+	makedepends = ros-melodic-message-generation
+	depends = ros-melodic-control-msgs
+	depends = ros-melodic-actionlib
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-xmlrpcpp
+	depends = ros-melodic-libfranka
+	depends = ros-melodic-actionlib-msgs
+	depends = ros-melodic-sensor-msgs
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-message-generation
+	source = ros-melodic-franka-gripper-0.6.0.tar.gz::https://github.com/frankaemika/franka_ros-release/archive/release/melodic/franka_gripper/0.6.0.tar.gz
+	sha256sums = 78c34c548940938a502ddf9f6fd010d9906b4dbc1c9f4eb46dd9dcdc6c6deee3
+
+pkgname = ros-melodic-franka-gripper
+
