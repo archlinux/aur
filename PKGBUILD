@@ -3,23 +3,20 @@
 export PIP_CONFIG_FILE=/dev/null
 export PIP_DISABLE_PIP_VERSION_CHECK=true
 
+_name=aspy.refactor_imports
 pkgname=python-aspy-refactor-imports
-epoch=
 pkgver=2.1.1
-pkgrel=0
+pkgrel=1
 pkgdesc='Utilities for refactoring imports in python-like syntax.'
 arch=(any)
 url=https://github.com/asottile/aspy.refactor_imports
 license=(MIT)
 depends=(python python-cached-property)
 makedepends=(python-pip python-wheel)
-checkdepends=()
-provides=()
-conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
-md5sums=('98bea44fb46d7c3bba1ea52784c98307'
-         'ec6e4db5d90408877624a1ff7086f824')
-source=(https://files.pythonhosted.org/packages/21/cb/c1b7faffb5b802b6408f0957b39401a5bc95c989a0bf7c1965475d9cfb5e/aspy.refactor_imports-1.1.0.tar.gz
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         LICENSE)
+md5sums=('a98fb0d778516de08fccbfe346534413'
+         'ec6e4db5d90408877624a1ff7086f824')
 
 _first_source() {
     echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |
