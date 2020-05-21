@@ -1,0 +1,31 @@
+pkgbase = ros-melodic-franka-hw
+	pkgdesc = ROS - franka_hw provides hardware interfaces for using Franka Emika research robots with ros_control.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = h
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = Apache 2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-urdf
+	makedepends = ros-melodic-controller-interface
+	makedepends = ros-melodic-hardware-interface
+	makedepends = ros-melodic-joint-limits-interface
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-libfranka
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-urdf
+	depends = ros-melodic-controller-interface
+	depends = ros-melodic-hardware-interface
+	depends = ros-melodic-joint-limits-interface
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-libfranka
+	source = ros-melodic-franka-hw-0.6.0.tar.gz::https://github.com/frankaemika/franka_ros-release/archive/release/melodic/franka_hw/0.6.0.tar.gz
+	sha256sums = 92cf7a1b82b71b7248b8ad7ee40f2076bc398bdde9f7733d84ad5fa1d1caa960
+
+pkgname = ros-melodic-franka-hw
+
