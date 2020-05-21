@@ -9,7 +9,7 @@ pkgver=0.5.5
 pkgrel=1
 pkgdesc="Python API for YouTube"
 
-url='http://np1.github.io/pafy'
+url='https://github.com/mps-youtube/pafy'
 arch=('any')
 license=('GPL3')
 
