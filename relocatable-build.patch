@@ -1,6 +1,6 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -75,7 +75,7 @@
+@@ -78,7 +78,7 @@
  CLEANER=gprclean -q $(RBD)
  
  GPRBUILD_BUILDER=$(BUILDER) $(GPRBUILD_GPR) \
@@ -8,4 +8,4 @@
 +	-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable
  LIBGPR_BUILDER=$(BUILDER) $(GPR_GPR)
  LIBGPR_INSTALLER=$(LIB_INSTALLER) $(GPR_GPR) -XBUILD=${BUILD} \
- 	--install-name=gpr --build-var=LIBRARY_TYPE $(GTARGET)
+ 	--install-name=gpr \
