@@ -5,7 +5,7 @@
 pkgname=gprbuild
 _upstream_ver=2020-20200429-19BD2
 pkgver=2020
-pkgrel=2
+pkgrel=3
 pkgdesc="Builder for multi-language systems"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gprbuild/"
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('libgpr')
 makedepends=('gprbuild-bootstrap')
 provides=("gprbuild-bootstrap")
-conflicts=("gprbuild-bootstrap" "gprbuild-bootstrap-git" "gprbuild-git")
+conflicts=("gprbuild-bootstrap")
 
 _checksum=408ec35c3bb86bd227db3da55d3e1e0c572a56e3
 source=("https://community.download.adacore.com/v1/${_checksum}?filename=${pkgname}-${_upstream_ver}-src.tar.gz"
@@ -22,9 +22,6 @@ source=("https://community.download.adacore.com/v1/${_checksum}?filename=${pkgna
 sha1sums=('408ec35c3bb86bd227db3da55d3e1e0c572a56e3'
           '91b20bde99cf02410cdb2b74aa1adb014458a9b3'
           'ddaf20842ed9879c3f1cb24b3eb7615d5cfe61a5')
-
-# Remove '-fvar-tracking-assignments' from DEBUG_CFLAGS since clang does not understand it.
-DEBUG_CFLAGS="-g"
 
 prepare() {
     cd "$srcdir/$pkgname-$_upstream_ver-src"
