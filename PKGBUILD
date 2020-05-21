@@ -3,13 +3,12 @@
 
 pkgname=glide
 pkgver=0.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Dependency management and vendoring for Go projects'
 arch=('x86_64')
 url='https://github.com/Masterminds/glide'
 license=('MIT')
-depends=('gcc-libs')
-makedepends=('gcc-go' 'git')
+makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 _commit=8ed5b9292379d86c39592a7e6a58eb9c903877cf  # tags/v0.13.3^0
 source=("git+$url#tag=v$pkgver")
