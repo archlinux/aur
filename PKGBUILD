@@ -9,7 +9,7 @@ pkgdesc="Allows you to create and view interactive cheatsheets on the command-li
 arch=('any')
 url="https://github.com/cheat/cheat"
 license=('MIT' 'CC0 1.0 Universal')
-makedepends=('git' 'go-pie' 'pandoc')
+makedepends=('git' 'go' 'pandoc')
 optdepends=('fzf: for Fuzzy Finder integration'
             'bash-completion: for bash completions')
 provides=("${pkgname%-git}")
