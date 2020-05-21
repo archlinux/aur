@@ -1,7 +1,7 @@
 # Maintainer: Amir Zarrinkafsh <nightah at me dot com>
 pkgname=authelia
 pkgver=4.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/authelia/authelia"
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/a
 sha256sums=('0e5abe31690e92e9d1c55eb46dcf4fa72457e32e4145f83f0957e03ed9c6b89d')
 
 build() {
-  export GOPATH="$srcdir/gopath"
+  export GOPATH="$srcdir/gopath" PATH="$PATH:$srcdir/gopath/bin"
   cd "$srcdir/$pkgname-$pkgver/web"
   yarn install --frozen-lockfile
   INLINE_RUNTIME_CHUNK=false yarn build
