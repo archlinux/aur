@@ -1,14 +1,14 @@
 pkgbase = gprbuild-bootstrap
 	pkgdesc = Static GPRbuild to bootstrap XML/Ada and GPRbuild itself
 	pkgver = 2020
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaCore/gprbuild/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = gcc-ada
-	source = https://community.download.adacore.com/v1/408ec35c3bb86bd227db3da55d3e1e0c572a56e3?filename=gprbuild-2020-20200429-19BD2-src.tar.gz
-	source = https://community.download.adacore.com/v1/c799502295baf074ad17b48c50f621879c392c57?filename=xmlada-2020-20200429-19A99-src.tar.gz
+	source = gprbuild-2020-20200429-19BD2-src.tar.gz::https://community.download.adacore.com/v1/408ec35c3bb86bd227db3da55d3e1e0c572a56e3?filename=gprbuild-2020-20200429-19BD2-src.tar.gz
+	source = xmlada-2020-20200429-19A99-src.tar.gz::https://community.download.adacore.com/v1/c799502295baf074ad17b48c50f621879c392c57?filename=xmlada-2020-20200429-19A99-src.tar.gz
 	sha1sums = 408ec35c3bb86bd227db3da55d3e1e0c572a56e3
 	sha1sums = c799502295baf074ad17b48c50f621879c392c57
 
