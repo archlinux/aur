@@ -6,7 +6,7 @@ pkgdesc="Mediawiki2latex, convert any mediawiki page to pdf. Arch specific pre-b
 arch=('x86_64')
 url="https://sourceforge.net/projects/wb2pdf/"
 license=('GPL')
-depends=('poppler' 'texlive-core' 'zlib')
+depends=( 'libffi' 'poppler' 'texlive-core' 'zlib')
 optdepends=(
  'texlive-langextra: Language support for African, Arabic, Armenian, Croatian, Hebrew, Indic, Mongolian, Tibetan and Vietnamese'
  'texlive-langkorean: Language support for Korean'

@@ -5,6 +5,7 @@ pkgbase = mediawiki2latex-bin
 	url = https://sourceforge.net/projects/wb2pdf/
 	arch = x86_64
 	license = GPL
+	depends = libffi
 	depends = poppler
 	depends = texlive-core
 	depends = zlib
@@ -15,7 +16,7 @@ pkgbase = mediawiki2latex-bin
 	optdepends = texlive-langgreek: Language support for Greek
 	optdepends = texlive-langcyrillic: Language support for Cyrillic
 	source = mediawiki2latex-bin-7.39-1::https://github.com/varagnac/prebuilt-packages/raw/master/mediawiki2latex-bin-7.39-1.tar.zst
-	md5sums = 6ebc7f9f2d7fb9d4c98bdda6463471b5
+	md5sums = 16ce4bcf40052d259d7aaed7f430bed6
 
 pkgname = mediawiki2latex-bin
 
