@@ -1,0 +1,4 @@
+prezto-contrib/
+pkg/
+src/
+*.pkg.*
