@@ -9,7 +9,9 @@ arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gprbuild/"
 license=('GPL3')
 depends=('libgpr')
-makedepends=('git' 'gprbuild-bootstrap-git' 'libgpr')
+makedepends=('git' 'gprbuild-bootstrap-git')
+provides=("gprbuild-bootstrap")
+conflicts=("gprbuild-bootstrap")
 
 # gprbuild-bootstrap is here only to bootstrap gprbuild and xmlada
 provides=("${pkgname%-git}" "gprbuild-bootstrap-git")
