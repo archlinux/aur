@@ -1,16 +1,16 @@
 # Maintainer: Andrew Anderson <andrew.wja@gmail.com>
 
 pkgname=llvm90
-pkgdesc="LLVM compiler toolchain, version 9.0.0"
+pkgdesc="LLVM compiler toolchain, version 9.0.1"
 pkgver=9.0.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
 depends=('libedit' 'libxml2' 'python2')
 makedepends=('cmake' 'libffi' 'libedit' 'ncurses' 'libxml2')
 options=('staticlibs')
-source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz)
+source=(https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-$pkgver.src.tar.xz)
 sha256sums=('SKIP')
 
 build() {
