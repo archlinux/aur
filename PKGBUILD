@@ -1,7 +1,7 @@
 # Maintainer: Nathaniel Chin <thegamingorangutans+aur at gmail.com>
 
 pkgname=python-av1an
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc='A cross-platform all-in-one tool for streamlining AV1 encoding'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('aom: Aomenc encoder support'
             'rav1e: rav1e encoder support'
             'libvpx: vpx encoder support')
 source=("av1an-${pkgver}.tar.gz"::"https://github.com/master-of-zen/Av1an/archive/${pkgver}.tar.gz")
-sha256sums=('065cbc3a6ee3799f4a89b84c84c4a13820a9a14cfeee8bb89bfbd7e6d6a667fb')
+sha256sums=('130b01feb25ed904889b81c40e4165be5af9fa32bd224af6a4a20dd6d856b462')
 
 
 package() {
