@@ -1,0 +1,111 @@
+diff --git a/es-app/src/FileData.h b/es-app/src/FileData.h
+index 4bfaf64d..bae8a786 100644
+--- a/es-app/src/FileData.h
++++ b/es-app/src/FileData.h
+@@ -2,6 +2,7 @@
+ #ifndef ES_APP_FILE_DATA_H
+ #define ES_APP_FILE_DATA_H
+ 
++#include <string>
+ #include "utils/FileSystemUtil.h"
+ #include "MetaData.h"
+ #include <unordered_map>
+
+diff --git a/es-app/src/FileFilterIndex.h b/es-app/src/FileFilterIndex.h
+index 132a0a53..c35dbedb 100644
+--- a/es-app/src/FileFilterIndex.h
++++ b/es-app/src/FileFilterIndex.h
+@@ -2,6 +2,7 @@
+ #ifndef ES_APP_FILE_FILTER_INDEX_H
+ #define ES_APP_FILE_FILTER_INDEX_H
+ 
++#include <string>
+ #include <map>
+ #include <vector>
+ 
+diff --git a/es-app/src/FileSorts.h b/es-app/src/FileSorts.h
+index 046c622f..d23e6a34 100644
+--- a/es-app/src/FileSorts.h
++++ b/es-app/src/FileSorts.h
+@@ -2,6 +2,7 @@
+ #ifndef ES_APP_FILE_SORTS_H
+ #define ES_APP_FILE_SORTS_H
+ 
++#include <string>
+ #include "FileData.h"
+ #include <vector>
+ 
+iff --git a/es-app/src/Gamelist.h b/es-app/src/Gamelist.h
+index df7021ea..8994a227 100644
+--- a/es-app/src/Gamelist.h
++++ b/es-app/src/Gamelist.h
+@@ -2,5 +2,7 @@
+ #ifndef ES_APP_GAME_LIST_H
+ #define ES_APP_GAME_LIST_H
+
++#include <string>
++
+ class SystemData;
+
+diff --git a/es-app/src/MetaData.h b/es-app/src/MetaData.h
+index 3c3026d8..fca5f54b 100644
+--- a/es-app/src/MetaData.h
++++ b/es-app/src/MetaData.h
+@@ -2,6 +2,7 @@
+ #ifndef ES_APP_META_DATA_H
+ #define ES_APP_META_DATA_H
+
++#include <string>
+ #include <map>
+ #include <vector>
+ 
+diff --git a/es-app/src/SystemScreenSaver.h b/es-app/src/SystemScreenSaver.h
+index 54ecac77..a1bfec74 100644
+--- a/es-app/src/SystemScreenSaver.h
++++ b/es-app/src/SystemScreenSaver.h
+@@ -2,6 +2,7 @@
+ #ifndef ES_APP_SYSTEM_SCREEN_SAVER_H
+ #define ES_APP_SYSTEM_SCREEN_SAVER_H
+ 
++#include <string>
+ #include "Window.h"
+ #include "GuiComponent.h"
+ #include "renderers/Renderer.h"
+
+diff --git a/es-core/src/InputManager.h b/es-core/src/InputManager.h
+index 77ff0a16..388358d2 100644
+--- a/es-core/src/InputManager.h
++++ b/es-core/src/InputManager.h
+@@ -4,6 +4,7 @@
+ 
+ #include <SDL_joystick.h>
+ #include <map>
++#include <string>
+ 
+ class InputConfig;
+ class Window;
+
+diff --git a/es-core/src/Settings.h b/es-core/src/Settings.h
+index 60dc0438..a0d706ff 100644
+--- a/es-core/src/Settings.h
++++ b/es-core/src/Settings.h
+@@ -3,6 +3,7 @@
+ #define ES_CORE_SETTINGS_H
+ 
+ #include <map>
++#include <string>
+ 
+ //This is a singleton for storing settings.
+ class Settings
+
+diff --git a/es-core/src/Sound.h b/es-core/src/Sound.h
+index 0d77db5d..def13b53 100644
+--- a/es-core/src/Sound.h
++++ b/es-core/src/Sound.h
+@@ -4,6 +4,7 @@
+ #include "SDL_audio.h"
+ #include <map>
+ #include <memory>
++#include <string>
+ 
+ class ThemeData;
