@@ -1,7 +1,7 @@
 pkgbase = ring-kde
 	pkgdesc = The KDE client for the Ring communication framework
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ring.cx/
 	arch = x86_64
 	license = GPL2
@@ -9,6 +9,7 @@ pkgbase = ring-kde
 	makedepends = kdoctools
 	makedepends = akonadi-contacts
 	makedepends = boost
+	makedepends = libringqt-git
 	depends = kirigami2
 	depends = knotifyconfig
 	depends = kdeclarative
