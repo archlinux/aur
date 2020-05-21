@@ -1,0 +1,32 @@
+diff -pNaru5 perle-serial-3.9.2.orig-0001/pserial/perle-serial.c perle-serial-3.9.2/pserial/perle-serial.c
+--- perle-serial-3.9.2.orig-0001/pserial/perle-serial.c	2018-03-26 14:58:05.000000000 -0400
++++ perle-serial-3.9.2/pserial/perle-serial.c	2020-05-21 01:14:50.996007456 -0400
+@@ -463,19 +463,28 @@ static struct proc_dir_entry *ps_proc_fi
+ static int ps_read_proc(struct seq_file *m, void *v);
+ static int ps_open_proc(struct inode *inode, struct file *file)
+ {
+      return single_open(file, ps_read_proc, NULL);
+ }
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,6,0)
++static const struct proc_ops ps_proc_fops = {
++  .proc_open = ps_open_proc,
++  .proc_read = seq_read,
++  .proc_lseek = seq_lseek,
++  .proc_release = single_release,
++};
++#else
+ static const struct file_operations ps_proc_fops = {
+   .owner = THIS_MODULE,
+   .open = ps_open_proc,
+   .read = seq_read,
+   .llseek = seq_lseek,
+   .release = single_release,
+ };
+ #endif
+ #endif
++#endif
+ 
+ static inline int ps_paranoia_check(struct ps_async_struct *info,
+ 					struct tty_struct *tty, const char *routine)
+ {
+ #ifdef SERIAL_PARANOIA_CHECK

@@ -79,7 +79,7 @@ pkgname='perle-serial'
 #_pkgver='3.9.0-14'
 _pkgver='3.9.2-4'
 pkgver="${_pkgver//-/_}"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='kernel module driver for Perle UltraPort SI Express PCI-RAS modem SPEED LE multi I/O serial parallel RS-232 422 485 port'
 arch=('i686' 'x86_64')
 url='https://www.perle.com/downloads/mp_speedle.shtml'
@@ -89,9 +89,17 @@ makedepends=('gzip' 'findutils' 'sed' 'diffutils' 'patch')
 backup=('etc/perle-serial-setultrap.sh')
 install="${pkgname}-install.sh"
 _srcdir="${pkgname}-${_pkgver%%-*}"
-source=("https://www.perle.com/downloads/drivers/ultraport/linux/perle-serial-${_pkgver}.tgz" '0000-kernel-4.11-signal_pending.patch')
+source=(
+  "https://www.perle.com/downloads/drivers/ultraport/linux/perle-serial-${_pkgver}.tgz"
+  '0000-kernel-4.11-signal_pending.patch'
+  '0001-kernel-5.6-proc_dir_entry-proc_ops.patch'
+)
+md5sums=('85e9617af62fcab55c684fa8e4b26987'
+         '52f87acfeb5f5820a74ad6aa74d18acf'
+         '6dac46dc8f094dd8f8b760a68414bd0b')
 sha256sums=('d9d61a941ecfd2ff41d5450557eb9071d934497dbd10229e97c8f88b48cb9a58'
-            '691e0d8d348ab9f19f0398ff79e0d4780d5110e3dd11acf3261e3f73b2983ea1')
+            '691e0d8d348ab9f19f0398ff79e0d4780d5110e3dd11acf3261e3f73b2983ea1'
+            '31e0d244d22b16d2c0b783e38bac2d96a53cbe0ce14f2fe11142a8691ce952aa')
 
 _opt_SERIAL=1    # This is for bug testing dkms only. All cards have serial ports so this should always be enabled.
 
@@ -164,9 +172,13 @@ prepare() {
   ! test -s 'pparport26/Makefile.Arch' || echo "${}"
 
   # Patch
-  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}
+  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}; false
   #diff -pNaru5 perle-serial-3.9.2{.orig-0000,} > '0000-kernel-4.11-signal_pending.patch'
   patch -Nup1 -i "${srcdir}/0000-kernel-4.11-signal_pending.patch"
+
+  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0001}; false
+  #diff -pNaru5 perle-serial-3.9.2{.orig-0001,} > '0001-kernel-5.6-proc_dir_entry-proc_ops.patch'
+  patch -Nup1 -i "${srcdir}/0001-kernel-5.6-proc_dir_entry-proc_ops.patch"
   set +u
 }
 
