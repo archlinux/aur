@@ -1,7 +1,7 @@
 pkgbase = python-rethinkdb
 	pkgdesc = Python driver for rethinkdb
 	pkgver = 2.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rethinkdb/rethinkdb-python
 	arch = any
 	license = LGPL

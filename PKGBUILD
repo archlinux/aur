@@ -1,7 +1,8 @@
+# Maintainer: Celogeek <private-4zokpdq6@mrhyde.xyz>
 _pkgbase=rethinkdb
 pkgname=python-$_pkgbase
 pkgver=2.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python driver for rethinkdb"
 arch=('any')
 url="https://github.com/rethinkdb/rethinkdb-python"
