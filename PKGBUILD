@@ -11,14 +11,8 @@ makedepends=('cmake' 'mesa' 'glu' 'libxi' 'libxrandr')
 depends=('ncurses' 'imlib2')
 conflicts=('jfbpdf' 'jfbview')
 replaces=('jfbpdf' 'jfbview')
-source=(
-  "git+${url}.git"
-  'mupdf-1.16.1-freeglut-fg_gl2-gcc-10.patch'
-)
-sha512sums=(
-  'SKIP'
-  '069c8150402fc463def14ff5690ecfe8a376579ad8319bf79f90823a04799bef1bfa25e79b759a0e027595a114bd3cf48f613541eeb2eec2c85e31d2105062f6'
-)
+source=("git+${url}.git")
+sha512sums=('SKIP')
 _pkgname='jfbview'
 
 pkgver() {
@@ -29,7 +23,6 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
   git submodule update --init --recursive
-  patch -d vendor/mupdf --forward --strip=1 --input="${srcdir}/mupdf-1.16.1-freeglut-fg_gl2-gcc-10.patch"
 }
 
 build(){

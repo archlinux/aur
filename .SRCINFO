@@ -21,9 +21,7 @@ pkgbase = jfbview-git
 	replaces = jfbpdf
 	replaces = jfbview
 	source = git+https://github.com/jichu4n/jfbview.git
-	source = mupdf-1.16.1-freeglut-fg_gl2-gcc-10.patch
 	sha512sums = SKIP
-	sha512sums = 069c8150402fc463def14ff5690ecfe8a376579ad8319bf79f90823a04799bef1bfa25e79b759a0e027595a114bd3cf48f613541eeb2eec2c85e31d2105062f6
 
 pkgname = jfbview-git
 
