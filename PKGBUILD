@@ -1,37 +1,49 @@
-# Maintainer: Wynne Plaga <rwplaga dot linux at gmail dot com>
-
 pkgname=g-desktop-suite-git
-_reponame=G-Desktop-Suite
-pkgver=139.2bccd4c
+pkgver=0.2.1.r54.g7f6d54a
 pkgrel=1
 pkgdesc="Google Suite as a desktop app. Made possible with Electron."
 arch=('any')
 url="https://github.com/alexkim205/G-Desktop-Suite"
 license=('MIT')
-depends=('yarn')
-makedepends=('git' 'tar' 'xz')
-source=("git+https://github.com/alexkim205/G-Desktop-Suite.git")
-md5sums=('SKIP')
-
+depends=('libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'libappindicator-gtk3' 'libsecret')
+makedepends=('git' 'yarn')
+provides=("${pkgname%-git}" 'gdesktopsuite')
+conflicts=("${pkgname%-git}" 'gdesktopsuite')
+source=("${pkgname%-git}::git+https://github.com/alexkim205/G-Desktop-Suite.git")
+sha256sums=('SKIP')
+ 
 pkgver() {
-    cd "$srcdir/$_reponame"
-    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/${pkgname%-git}"
+    git describe --long --tags | sed 's/^v.conscious.club\///;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
+ 
 build() {
-    cd "$srcdir/$_reponame"
-
+    cd "$srcdir/${pkgname%-git}"
+    export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
     yarn install
     yarn electron-builder -l pacman
-    cd dist
-    mv gdesktopsuite-*.pacman gdesktopsuite.tar.xz
 }
-
+ 
 package() {
-    cd "$srcdir/$_reponame/dist"
-
-    tar -xJf gdesktopsuite.tar.xz -C "$pkgdir"
-    cd $pkgdir
-    rm .[^.]*
+    cd "$srcdir/${pkgname%-git}"
+    bsdtar -xf dist/gdesktopsuite-*.pacman -C "$pkgdir"
+ 
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+ 
+    rm "$pkgdir"/.[^.]*
 }
 
+post_install(){
+    # Link to the binary
+    ln -sf '/opt/G Desktop Suite/gdesktopsuite' '/usr/bin/gdesktopsuite'
+
+    # SUID chrome-sandbox for Electron 5+
+    chmod 4755 '/opt/G Desktop Suite/chrome-sandbox' || true
+    
+    update-mime-database /usr/share/mime || true
+    update-desktop-database /usr/share/applications || true
+}
+
+post_remove() {
+    rm -rf '/usr/bin/gdesktopsuite'
+}
