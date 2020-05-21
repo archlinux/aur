@@ -4,12 +4,12 @@
 _pkgname=vibrantlinux
 pkgname=${_pkgname}
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to automate managing your screen's saturation depending on what programs are running"
 arch=(x86_64)
 url="https://github.com/zee-mzha/vibrantLinux"
 license=('MIT')
-depends=("qt5-base" "libxnvctrl" "vibrant" "libxrandr")
+depends=("qt5-base" "libxnvctrl" "vibrant" "hicolor-icon-theme")
 makedepends=("git")
 conflicts=("vibrantlinux")
 provides=("vibrantlinux")
@@ -36,4 +36,6 @@ package() {
         install -Dm664 "assets/icon${res}.png" "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/vibrantLinux.png"
     done
     install -Dm644 "${srcdir}/vibrantLinux.desktop" "${pkgdir}/usr/share/applications/vibrantLinux.desktop"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
