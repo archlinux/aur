@@ -1,12 +1,12 @@
 # $Id$
-# Maintainer: Patrick Schratz <patrick.schratz@gmail.com
+# Maintainer: Paul Hentschel (hpmachining) <aur at hpminc dot com>
+# Contributor: Patrick Schratz <patrick.schratz@gmail.com
 # Contributor: Kaiting Chen <kaitocracy@gmail.com>
 # Contributor: tocer <tocer.deng@gmail.com>
-# Contributor: Paul Hentschel (hpmachining) <aur at hpminc dot com>
 
 pkgname=v8-3.14
 pkgver=3.14.5
-pkgrel=5
+pkgrel=6
 pkgdesc='A fast and modern javascript engine (old 3.14 version required R package 'V8')'
 arch=('i686' 'x86_64')
 url='http://code.google.com/p/v8'
@@ -28,7 +28,6 @@ source=("http://commondatastorage.googleapis.com/chromium-browser-official/v8-$p
 '0015-Backport-Utils-ApiCheck.patch'
 '0016-remove-this-null.patch'
 '0017_increase_stack_size_for_test.patch'
-# 'https://gist.github.com/pat-s/942e255ea38821e6ac3e82a36cb3c4bd'
 'fix_CVE-2014-5256.patch'
 'nodejsREPLACE_INVALID_UTF8.patch'
 'strict_overflow.patch'
@@ -50,7 +49,6 @@ sha256sums=('361ad3b63dc7c9d0943b72b1be592a8135e4ddb0e416b9bcf02b4d2df514fca7'
             '69906640439c263fdeacaf14605e785294f1f3daf28f7633b40a5ac8d6977797'
             'e90b54cf2e296c6d5c4bc41b7159015a6584191b5c2ab95a2f28861fb1c3bcb3'
             '71a600e3e502896d45076103201d35c30f778fa57a750bb3f2dfdbdcb3a708b8'
-            #'64097860ecaa7894493190994c4ac3d167dda8cbd61e5ad6bbbbf4f6f5fe7c2a'
             'd6d3eb0ef53ce501c6da5d756f7dc1adcf85361ad75b17253051bb3869b0b3dc'
             'b76c02ca0d88e9818e58ef70592a216c6d969bde3b563c74244ee3687a39f672'
             '1b48a5714e9d89d419dac8969c005c56a0adc2599b558375ac9254a3168f55ae'
@@ -62,6 +60,31 @@ conflicts=('v8')
 [[ "$CARCH" = 'i686' ]]   && ARCH=ia32
 [[ "$CARCH" = 'x86_64' ]] && ARCH=x64
 
+prepare() {
+  # debian patches
+  cd "$srcdir/v8-$pkgver"
+  patch -p1 <   "$srcdir"/0001_kfreebsd.patch
+  patch -p1 <   "$srcdir"/0002_mips.patch
+  patch -p1 <   "$srcdir"/0002_mips_r15102_backport.patch
+  patch -p1 <   "$srcdir"/0002_mips_r19121_backport.patch
+  patch -p1 <   "$srcdir"/0003_armv4t_disable_vfp.patch
+  patch -p1 <   "$srcdir"/0004_hurd.patch
+  patch -p1 <   "$srcdir"/0008_mksnapshot_stdout.patch
+  patch -p1 <   "$srcdir"/0011_use_system_gyp.patch
+  patch -p1 <   "$srcdir"/0012_loongson_force_cache_flush.patch
+  patch -p1 <   "$srcdir"/0013_gcc_48_compat.patch
+  patch -p1 <   "$srcdir"/0014_cve_2013_6639_6640.patch
+  patch -p1 <   "$srcdir"/0015-Backport-Utils-ApiCheck.patch
+  patch -p1 <   "$srcdir"/0016-remove-this-null.patch
+  patch -p1 <   "$srcdir"/0017_increase_stack_size_for_test.patch
+  patch -p1 <   "$srcdir"/fix_CVE-2014-5256.patch
+  patch -p1 <   "$srcdir"/nodejsREPLACE_INVALID_UTF8.patch
+  patch -p1 <   "$srcdir"/strict_overflow.patch
+  patch -p1 <   "$srcdir"/dont-assume-hardfloat-means-vfpv3.diff
+  patch -p1 <   "$srcdir"/gcc7-fix.patch
+
+}
+
 build() {
   cd v8-$pkgver
 
@@ -70,7 +93,7 @@ build() {
 
    # keep old ABI to prevent symbol changes due to GCC5 transition
    # https://wiki.debian.org/GCC5
-   export CXXFLAGS="${CXXFLAGS} -fno-delete-null-pointer-checks -std=c++98 -Wno-class-memaccess -Wno-cast-function-type -Wno-error=stringop-truncation -Wno-error=array-bounds"
+   export CXXFLAGS="${CXXFLAGS} -fno-delete-null-pointer-checks -std=c++98 -Wno-class-memaccess -Wno-cast-function-type -Wno-error=stringop-truncation -Wno-error=array-bounds -Wno-error=stringop-overflow"
 
    export GYPFLAGS="-Dhost_arch=$ARCH -DOS=linux"
 
@@ -83,65 +106,22 @@ build() {
                -e "s_'python'_'python2'_" -i {} \;
    sed -i 's/python /python2 /' Makefile
 
-  # debian patches
-  cd $srcdir/v8-$pkgver
-  msg "p1"
-  patch -p1 <   $srcdir/0001_kfreebsd.patch
-  msg "p2"
-  patch -p1 <   $srcdir/0002_mips.patch
-  msg "p3"
-  patch -p1 <   $srcdir/0002_mips_r15102_backport.patch
-  msg "p4"
-  patch -p1 <   $srcdir/0002_mips_r19121_backport.patch
-  msg "p5"
-  patch -p1 <   $srcdir/0003_armv4t_disable_vfp.patch
-  msg "p6"
-  patch -p1 <   $srcdir/0004_hurd.patch
-  msg "p7"
-  patch -p1 <   $srcdir/0008_mksnapshot_stdout.patch
-  msg "p8"
-  patch -p1 <   $srcdir/0011_use_system_gyp.patch
-  msg "p9"
-  patch -p1 <   $srcdir/0012_loongson_force_cache_flush.patch
-  msg "p10"
-  patch -p1 <   $srcdir/0013_gcc_48_compat.patch
-  msg "p11"
-  patch -p1 <   $srcdir/0014_cve_2013_6639_6640.patch
-  msg "p12"
-  patch -p1 <   $srcdir/0015-Backport-Utils-ApiCheck.patch
-  msg "p13"
-  patch -p1 <   $srcdir/0016-remove-this-null.patch
-  msg "p14"
-  patch -p1 <   $srcdir/0017_increase_stack_size_for_test.patch
-  # msg "p15"
-  # patch -p1 <   $srcdir/0099_powerpc_support.patch
-  msg "p16"
-  patch -p1 <   $srcdir/fix_CVE-2014-5256.patch
-  msg "p17"
-  patch -p1 <   $srcdir/nodejsREPLACE_INVALID_UTF8.patch
-  msg "p8"
-  patch -p1 <   $srcdir/strict_overflow.patch
-  msg "p19"
-  patch -p1 <   $srcdir/dont-assume-hardfloat-means-vfpv3.diff
-  msg "p20"
-  patch -p1 <   $srcdir/gcc7-fix.patch
-
   make $ARCH.release library=shared snapshot=off soname_version=$pkgver OS=linux V=1
 }
 
 package() {
   cd v8-$pkgver
 
-  install -Dm755 out/$ARCH.release/d8 $pkgdir/usr/bin/d8
-  install -Dm755 out/$ARCH.release/lib.target/libv8.so.$pkgver $pkgdir/usr/lib/libv8.so.$pkgver
+  install -Dm755 out/$ARCH.release/d8 "$pkgdir"/usr/bin/d8
+  install -Dm755 out/$ARCH.release/lib.target/libv8.so.$pkgver "$pkgdir"/usr/lib/libv8.so.$pkgver
 
-  install -d $pkgdir/usr/include
-  install -Dm644 include/*.h $pkgdir/usr/include
+  install -d "$pkgdir"/usr/include
+  install -Dm644 include/*.h "$pkgdir"/usr/include
 
-  install -d $pkgdir/usr/share/licenses/v8
-  install -m644 LICENSE* ${pkgdir}/usr/share/licenses/v8
+  install -d "$pkgdir"/usr/share/licenses/v8
+  install -m644 LICENSE* "$pkgdir"/usr/share/licenses/v8
 
   # debian way
-  cd $pkgdir/usr/lib
+  cd "$pkgdir"/usr/lib
   ln -s -T libv8.so.$pkgver libv8.so
 }
