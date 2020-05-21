@@ -8,6 +8,7 @@ pkgbase = ddrescue-gui
 	depends = python2
 	depends = python2-requests
 	depends = python2-getdevinfo
+	depends = python-wxpython
 	depends = wxpython
 	depends = ddrescue
 	depends = parted
