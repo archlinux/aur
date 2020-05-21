@@ -1,7 +1,7 @@
-From 5dd873b339bffa037dafd0188375fc13564bbe93 Mon Sep 17 00:00:00 2001
+From 79b8cfb31b0ee720d99143666235e6df093807d7 Mon Sep 17 00:00:00 2001
 From: Masahiro Yamada <masahiroy@kernel.org>
 Date: Sun, 29 Mar 2020 20:08:32 +0900
-Subject: [PATCH 2/6] gcc-plugins: drop support for GCC <= 4.7
+Subject: [PATCH 2/4] gcc-plugins: drop support for GCC <= 4.7
 
 Nobody was opposed to raising minimum GCC version to 4.8 [1]
 So, we will drop GCC <= 4.7 support sooner or later.

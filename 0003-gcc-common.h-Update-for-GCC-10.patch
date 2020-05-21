@@ -1,8 +1,8 @@
-From fbe2e575df0f88daa156069cf66c3db0ebc64e7a Mon Sep 17 00:00:00 2001
+From 1d492722d03873bcd863da75718ccdbec7660ae9 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Pierret=20=28fepitre=29?=
  <frederic.pierret@qubes-os.org>
 Date: Tue, 7 Apr 2020 13:32:59 +0200
-Subject: [PATCH 3/6] gcc-common.h: Update for GCC 10
+Subject: [PATCH 3/4] gcc-common.h: Update for GCC 10
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit

@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.6.13
+pkgver=5.6.14
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -82,24 +82,20 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-gcc-plugins-drop-support-for-GCC-4.7.patch
   0003-gcc-common.h-Update-for-GCC-10.patch
-  0004-Makefile-disallow-data-races-on-gcc-10-as-well.patch
-  0005-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('f125d79c8f6974213638787adcad6b575bbd35a05851802fd83f622ec18ff987'
+sha256sums=('33763f3541711e39fa743da45ff9512d54ade61406173f3d267ba4484cec7ea3'
             'SKIP'
             'f392c9ecbb5177ea2573aaf22935322940ea2be0366f3fb9c9f861431f4aed21'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
             'a6fe596e75333a5ac8ed4a4d63e4408ef38ebef6303889223e236af3ce576877'
-            'd1dbc1c83d58436358af56b1534d13fa1dc405a95905f71aff4edbe56747e3da'
-            '77ab60c3a4e122158b69ca87a15baddbae3912bf2b3f467deb1b82a0989be569'
-            'd6638a7da040c545079541e0a062528d7daabf5683f1fa7e67d30f27893144d0'
-            'b58adb407e1b0be6bd3ca035da07ca223a952fadc5e16a90f01e010ce6bec8ca'
-            '081476f699d41b4994c8ee67c12330e6271ed5c04d16b045a43a64dbf5ba752d')
+            '3b5de5bf70a63a6549f986d071f3d9572b19707548cd205a3b8ecdb7dcba3f1c'
+            'f09a0781c6ee5e67602c2a045d52d766dd7085b6f7f939b7a42149cfd0cfcb1b'
+            '47e91b0b2a21cbe9663ddeb1b9e7bbea7716e5b8cb7984b0c3593839c515a102')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
