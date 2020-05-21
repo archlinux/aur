@@ -1,10 +1,6 @@
 post_install()
 {
 	systemd-sysusers nexus-oss.conf
-	echo -n 'Changing the ownership of var/lib/nexus-oss, be patient...'
-	chown -R nexus:nexus var/lib/nexus-oss
-	chmod -R o-rwx var/lib/nexus-oss
-	echo ' done'
 	systemd-tmpfiles --create nexus-oss.conf
 
 	cat <<EOF

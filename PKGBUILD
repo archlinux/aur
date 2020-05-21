@@ -5,7 +5,7 @@ _patch=03
 
 pkgname=nexus-oss
 pkgver=${_version}.${_patch}
-pkgrel=1
+pkgrel=2
 pkgdesc='Nexus 3 Repository OSS'
 arch=('any')
 url='http://nexus.sonatype.org'
@@ -29,12 +29,12 @@ source=("https://download.sonatype.com/nexus/3/nexus-$_version-$_patch-unix.tar.
 		)
 sha256sums=('673492fc4f281df31c4f023aac1cc0e423ded6703b5a9c6a2b455265312ee8cb'
             '3d2ebc2a796dbdc7e7e3b97e4c3272292169c898776e111f503f0517e434caff'
-            '0c8003d478cf12115e236e7e25ce86cd9f1a6f9c8d1c8e41ed17156c8f6d2d08'
+            'f03a4a2a454ab15bbe7b6d479ec4b6a86055a4ffb77704dc44fe11a19382278b'
             'dcdef5614db12f38b3da0b9de1b52fb7fa402af6621a825981c6168a34a6ad9b'
             '3670748854d3f05623c9a8826605c3e2a97c7b3955104e74b5eed00ed17299c1'
             '77d699b5ccf6387fa2f69df2cd71cdb75b4ffbf46a10110dd6c0e2802783dbef'
-            '32bfa3f82038f89d2f7140eada1faadf416ae835d5e5cb0573c528398249a63e'
-            'fd037f3d4c75763f3f4ed2b1993984eefc13dff7490a056b76b029df162bc93b'
+            '939994095f0c5de005a1e36a295bea791a70dadfa32af23b400cbd87be57af9c'
+            '62da3195207e23e6945082cd7898ca1e1f22eb52d0538977ab2caf4d1186d8d8'
             '55fb2aeb4eb3f54c59963870cf43bf5a898a014826d530bf37729fc5e2bc2463')
 
 install=$pkgname.install

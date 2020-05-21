@@ -1,1 +1,3 @@
-d /var/run/nexus-oss 0755 nexus nexus -
+Z /var/lib/nexus-oss 0750 nexus nexus -
+d /run/nexus-oss 0750 nexus nexus -
+Z /run/nexus-oss 0750 nexus nexus -

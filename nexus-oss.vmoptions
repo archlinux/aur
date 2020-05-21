@@ -12,5 +12,5 @@
 -Dkaraf.etc=etc/karaf
 -Djava.util.logging.config.file=etc/karaf/java.util.logging.properties
 -Dkaraf.data=/var/lib/nexus-oss
--Djava.io.tmpdir=/var/run/nexus-oss
+-Djava.io.tmpdir=/run/nexus-oss
 -Dkaraf.startLocalConsole=false
