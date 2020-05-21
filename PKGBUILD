@@ -1,10 +1,13 @@
 # Maintainer: Price Clark <gpwclark at gmail dot com>
 
-#TODO
+# NOTE
+# when updating version: makepkg --printsrcinfo > .SRCINFO
+
+# TODO
 # cross compile: https://github.com/japaric/rust-cross
-# standalone: 
+
 pkgname=sl-sh-git
-pkgver=r505.20c2162
+pkgver=0.8.55
 pkgrel=1
 epoch=
 pkgdesc='simple lisp based shell'
