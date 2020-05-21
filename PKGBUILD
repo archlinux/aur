@@ -6,9 +6,10 @@
 # Contributor: Jeramy Rutley <jrutley@gmail.com>
 
 _rubyver=2.5
+pkgbase=ruby2.5
 pkgname=(ruby2.5 ruby2.5-docs)
 pkgver=2.5.8
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://www.ruby-lang.org/en/'
 license=(BSD custom)
@@ -57,8 +58,8 @@ package_ruby2.5() {
 
   make DESTDIR="${pkgdir}" install-nodoc
 
-  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/ruby/LICENSE"
-  install -D -m644 BSDL "${pkgdir}/usr/share/licenses/ruby/BSDL"
+  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 BSDL "${pkgdir}/usr/share/licenses/$pkgname/BSDL"
 
   rubyver=${pkgver:0:3}.0
 
@@ -81,6 +82,6 @@ package_ruby2.5-docs() {
 
   make DESTDIR="${pkgdir}" install-doc install-capi
 
-  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/ruby-docs/LICENSE"
-  install -D -m644 BSDL "${pkgdir}/usr/share/licenses/ruby-docs/BSDL"
+  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/$pkgname-docs/LICENSE"
+  install -D -m644 BSDL "${pkgdir}/usr/share/licenses/$pkgname-docs/BSDL"
 }

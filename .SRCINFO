@@ -1,6 +1,6 @@
 pkgbase = ruby2.5
 	pkgver = 2.5.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ruby-lang.org/en/
 	arch = x86_64
 	license = BSD
