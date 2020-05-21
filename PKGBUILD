@@ -33,7 +33,7 @@ build() {
     # To only fetch Xonotic and Unvanquished gamepacks for example,
     # use -DGAMEPACKS_LICENSE_LIST=none with -DGAMEPACKS_NAME_LIST="Xonotic Unvanquished".
     # Please refer to the NetRadiant README for more instructions.
-    cmake -G 'Unix Makefiles' -S. -Bbuild \
+    cmake -G "Unix Makefiles" -S. -Bbuild \
     -DCMAKE_BUILD_TYPE=Release \
     -DFHS_INSTALL=ON \
     -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
