@@ -2,14 +2,14 @@
 # Contributor: Rod Kay <charlie5 on #ada at freenode.net>
 # Contributor: Earnestly <zibeon AT googlemail.com>
 pkgname=xmlada-git
-pkgver=r1524.9dd5a10
+pkgver=r1543.e5bbafe
 pkgrel=1
-pkgdesc="A XML parser for Ada95"
+pkgdesc="An XML parser for Ada95"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/xmlada/"
 license=('GPL3' 'custom')
 depends=('gcc-ada')
-makedepends=('git' 'gcc-ada' 'gprbuild-bootstrap-git')
+makedepends=('git' 'gcc-ada' 'gprbuild-bootstrap')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/AdaCore/xmlada.git'

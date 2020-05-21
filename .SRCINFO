@@ -1,6 +1,6 @@
 pkgbase = xmlada-git
-	pkgdesc = A XML parser for Ada95
-	pkgver = r1524.9dd5a10
+	pkgdesc = An XML parser for Ada95
+	pkgver = r1543.e5bbafe
 	pkgrel = 1
 	url = https://github.com/AdaCore/xmlada/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = xmlada-git
 	license = custom
 	makedepends = git
 	makedepends = gcc-ada
-	makedepends = gprbuild-bootstrap-git
+	makedepends = gprbuild-bootstrap
 	depends = gcc-ada
 	provides = xmlada
 	conflicts = xmlada
