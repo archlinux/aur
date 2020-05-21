@@ -1,6 +1,6 @@
 # Maintainer: Arthur LAURENT <arthur.laurent4@gmail.com>
 pkgname='stormkit-git'
-pkgver=r22.524b1db
+pkgver=r39.23206f9
 pkgrel=1
 pkgdesc='Arthapz personal C++ TooKit'
 
@@ -36,8 +36,8 @@ prepare() {
 
     cd 'stormkit'
     export DESTDIR=/usr
-    meson builddir-debug --prefix /usr -Dbuildtype=debug -Denable_examples=false
-    meson builddir-release --prefix /usr -Dbuildtype=release -Denable_examples=true
+    meson builddir-debug --prefix /usr -Dbuildtype=debug -Denable_examples=false -Dexamples_data_dir='/usr/share/'
+    meson builddir-release --prefix /usr -Dbuildtype=release -Denable_examples=true -Dexamples_data_dir='/usr/share/'
 }
 
 build() {
