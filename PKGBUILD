@@ -12,7 +12,7 @@ source=("http://game.openrsc.com/downloads/OpenRSC.jar"
 	"openrsc-launcher")
 sha256sums=('abc19ab4dd77de8115d0e6a4aec561cac5d082ecd315f5d34515d45e57121575'
             'd6ee03d5d62ceb11ef3bf9786148bcf1ce76015111785b56790f2ad073abf29f'
-            'f422a09e6ebe40343668c5c1a86ee5092038b0f4237a13dca83055b64042ec17')
+            '51afc18c2c230da28c9af132960723e78f246483d02e6d38e28c828ca5597173')
 
 package(){
 	cd "$srcdir"
