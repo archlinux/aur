@@ -1,55 +1,33 @@
 diff --git a/Makefile b/Makefile
-index d1f314054..a4d375d24 100644
+index fe788de34e..4d298e247e 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -36,7 +36,6 @@
- INSTALLDIR=$(CURDIR)/install
- SHAREDIR=$(INSTALLDIR)/share
- INCLUDEDIR=$(INSTALLDIR)/include/spark
--LIBDIR=$(INSTALLDIR)/lib/gnat
- EXAMPLESDIR=$(SHAREDIR)/examples/spark
- DOCDIR=$(SHAREDIR)/doc/spark
- GNATPROVEDIR=$(SHAREDIR)/spark
-@@ -84,22 +83,21 @@ install-all:
- 	# does (in anod scripts), as why3 executables expect this relative
- 	# location to find the Why3 installation files in share. Do this for
- 	# all internal binaries even if not strictly needed.
--	mkdir -p install/libexec/spark/bin
--	$(MV) install/bin/why3server install/libexec/spark/bin
--	$(MV) install/bin/why3realize install/libexec/spark/bin
--	$(MV) install/bin/gnatwhy3 install/libexec/spark/bin
--	$(MV) install/bin/gnat_server install/libexec/spark/bin
--	$(MV) install/bin/why3config install/libexec/spark/bin
--	$(MV) install/bin/why3session install/libexec/spark/bin
-+	install -Dm0755 install/bin/why3server $(INSTALLDIR)/lib/spark/bin/why3server
-+	install -Dm0755 install/bin/why3realize $(INSTALLDIR)/lib/spark/bin/why3realize
-+	install -Dm0755 install/bin/gnatwhy3 $(INSTALLDIR)/lib/spark/bin/gnatwhy3
-+	install -Dm0755 install/bin/gnat_server $(INSTALLDIR)/lib/spark/bin/gnat_server
-+	install -Dm0755 install/bin/why3config $(INSTALLDIR)/lib/spark/bin/why3config
-+	install -Dm0755 install/bin/why3session $(INSTALLDIR)/lib/spark/bin/why3session
- 	# the following line is allowed to fail - why3ide might not be
- 	# installed
--	-$(MV) install/bin/why3ide install/libexec/spark/bin
-+	-install -Dm0755 install/bin/why3ide $(INSTALLDIR)/lib/spark/bin/why3ide
+@@ -76,8 +76,8 @@ coverage-nightly: coverage gnatprove-nightly install install-coverage install-ex
+ #   install-all  install of gnatprove and why3
+ 
+ setup:
+-	cd why3 && ./configure --prefix=$(INSTALLDIR)/libexec/spark \
+-		--enable-relocation --disable-js-of-ocaml
++	cd why3 && ./configure --prefix=$(INSTALLDIR)/lib/spark \
++		--enable-relocation --disable-js-of-ocaml --disable-emacs-compilation
+ 
+ why3:
+ 	$(MAKE) -C why3
+@@ -86,7 +86,7 @@ install-all:
+ 	$(MAKE) install
+ 	$(MAKE) -C why3 install_spark2014_dev
  	# Create the fake prover scripts to help extract benchmarks.
 -	$(CP) benchmark_script/fake_* install/libexec/spark/bin
-+	install -Dm0755 -t $(INSTALLDIR)/lib/spark/bin benchmark_script/fake_*
++	$(CP) benchmark_script/fake_* install/lib/spark/bin
  
  install:
  	mkdir -p $(INSTALLDIR)/bin $(CONFIGDIR) $(THEORIESDIR) \
--	  $(RUNTIMESDIR) $(INCLUDEDIR) $(LIBDIR)
-+	  $(RUNTIMESDIR) $(INCLUDEDIR) $(INSTALLDIR)/lib/gnat
- 	@echo "Generate default target.atp in $(INSTALLDIR)/bin:"
- 	$(GNATMAKE) -q -c -u -gnats spark2014vsn.ads \
- 	  -gnatet=$(INSTALLDIR)/bin/target.atp
-@@ -111,8 +109,8 @@ install:
- 	@echo "Generate Coq files by preprocessing context files:"
- 	$(MAKE) -C include generate
- 	$(CP) include/*.ad? $(INCLUDEDIR)
--	$(CP) include/*.gpr $(LIBDIR)
--	$(CP) include/proof $(LIBDIR)
-+	$(CP) include/*.gpr $(INSTALLDIR)/lib/gnat
-+	$(CP) include/proof $(INSTALLDIR)/lib/gnat
+@@ -126,7 +126,7 @@ gnat2why:
+ 	# Produce Ada code that stores the reserved keywords of Why3
+ 	# This script should be run *ONLY* in developper build not in prod
+ 	# (gnat2why-nightly)
+-	python scripts/why3keywords.py why3/src/parser/lexer.mll gnat2why/why/why-keywords.adb
++	python2 scripts/why3keywords.py why3/src/parser/lexer.mll gnat2why/why/why-keywords.adb
+ 	$(MAKE) -C gnat2why
  
- doc: $(DOC)
- 
+ coverage:
