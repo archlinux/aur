@@ -4,7 +4,7 @@
 
 pkgname=ums-headless
 pkgver=9.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server for headless systems."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'armv6h' 'arm')
 url="https://www.universalmediaserver.com/"
@@ -42,29 +42,28 @@ sha256sums_armv6h=('5134f5a15eba5b36b7d7a6770959e3b5890a3b254976164b6c5288ee2833
 sha256sums_arm=('6bab92aa6520fcdc1d9ab013dbeeafc3e260b18fa3af36ea356277941af91d7e')
 
 package() {
-  mkdir -p $pkgdir/opt/ums
-  mkdir $pkgdir/opt/ums/database
-  mkdir -p $pkgdir/usr/bin
-  chmod -R 755 $srcdir/ums-$pkgver/plugins $srcdir/ums-$pkgver/documentation
-  rm -R $srcdir/ums-$pkgver/linux/*
-  cp -r $srcdir/ums-$pkgver/* $pkgdir/opt/ums/
-  chmod +x $pkgdir/opt/ums/UMS.sh
-  touch $pkgdir/opt/ums/UMS.conf
-  touch $pkgdir/opt/ums/debug.log
-  chgrp users $pkgdir/opt/ums/UMS.conf \
-              $pkgdir/opt/ums/WEB.conf \
-              $pkgdir/opt/ums/debug.log \
-              $pkgdir/opt/ums/database
+  mkdir -p ${pkgdir}/opt/ums
+  mkdir ${pkgdir}/opt/ums/database
+  mkdir -p ${pkgdir}/usr/bin
+  chmod -R 755 ${srcdir}/ums-${pkgver}/plugins ${srcdir}/ums-${pkgver}/documentation
+  rm -R ${srcdir}/ums-${pkgver}/linux/*
+  cp -r ${srcdir}/ums-${pkgver}/* ${pkgdir}/opt/ums/
+  touch ${pkgdir}/opt/ums/UMS.conf
+  touch ${pkgdir}/opt/ums/debug.log
+  chgrp users ${pkgdir}/opt/ums/UMS.conf \
+              ${pkgdir}/opt/ums/WEB.conf \
+              ${pkgdir}/opt/ums/debug.log \
+              ${pkgdir}/opt/ums/database
 
-  chmod g+w $pkgdir/opt/ums/UMS.conf \
-            $pkgdir/opt/ums/WEB.conf \
-            $pkgdir/opt/ums/debug.log \
-            $pkgdir/opt/ums/database 
+  chmod g+w ${pkgdir}/opt/ums/UMS.conf \
+            ${pkgdir}/opt/ums/WEB.conf \
+            ${pkgdir}/opt/ums/debug.log \
+            ${pkgdir}/opt/ums/database 
 
-  unzip -q -u $srcdir/ums-$pkgver/ums.jar -d ums_jar
-  install -d -m 755 $pkgdir/usr/share/pixmaps
-  install -D -m 644 $srcdir/ums_jar/resources/images/logo.png $pkgdir/usr/share/pixmaps/ums.png
-  install -D -m 644 $srcdir/ums.desktop $pkgdir/usr/share/applications/ums.desktop
-  install -D -m 644 $srcdir/ums.service $pkgdir/usr/lib/systemd/system/ums@.service
+  unzip -q -u ${srcdir}/ums-${pkgver}/ums.jar -x / /*.pom -d ums_jar
+  install -d -m 755 ${pkgdir}/usr/share/pixmaps
+  install -D -m 644 ${srcdir}/ums_jar/resources/images/logo.png ${pkgdir}/usr/share/pixmaps/ums.png
+  install -D -m 644 ${srcdir}/ums.desktop ${pkgdir}/usr/share/applications/ums.desktop
+  install -D -m 644 ${srcdir}/ums.service ${pkgdir}/usr/lib/systemd/system/ums@.service
   install -D -m 644 ${srcdir}/ums.timer ${pkgdir}/usr/lib/systemd/system/ums@.timer
 }
