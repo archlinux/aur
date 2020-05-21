@@ -7,7 +7,8 @@ pkgname='jdk11'
 #pkgver='11.0.3'; _build='12'; _hash='37f5e150db5247ab9333b11c1dddcd30'
 #pkgver='11.0.4'; _build='10'; _hash='cf1bbcbf431a474eb9fc550051f4ee78'
 #pkgver='11.0.5'; _build='10'; _hash='e51269e04165492b90fa15af5b4eb1a5'
-pkgver='11.0.6'; _build='8'; _hash='90eb79fb590d45c8971362673c5ab495'
+#pkgver='11.0.6'; _build='8'; _hash='90eb79fb590d45c8971362673c5ab495'
+pkgver='11.0.7'; _build='8'; _hash='8c7daf89330c48f0b9e32f57169f7bac'
 _major="${pkgver%%.*}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Development Kit"
@@ -43,8 +44,8 @@ if [ ! -z "${HOME:-}" ]; then # block mksrcinfo
   if [ -s "${XDG_DOWNLOAD_DIR}/${_srcfil}" ] && [ ! -e "${_srcfil}" ]; then
     if type msg > /dev/null 2>&1; then
       set +u
-      msg "Scooping files from ${XDG_DOWNLOAD_DIR}"
-      msg2 "${_srcfil}"
+      msg "Scooping files from ${XDG_DOWNLOAD_DIR}" 1>&2
+      msg2 "${_srcfil}" 1>&2
       set -u
       ln -sr "${XDG_DOWNLOAD_DIR}/${_srcfil}"
     fi
@@ -53,14 +54,14 @@ fi
 unset _srcfil
 unset XDG_DOWNLOAD_DIR
 
-md5sums=('a1c006e67657892168532af68a89230f'
+md5sums=('e2794eb87795ca7798489e661848c769'
          '985d0d81ece57d0ea633ccc1d3fd78ed'
          'fbd4ddd9069e48a65da6e0cb33db9bc1'
          'e59149780f4d1124f6e339611da9c70b'
          '6181f1ef1e5aeb637ef4cd593106beef'
          '1db7eb33e844d1a41bce196ab622da40'
          '51c8839211cc53f09c9b11a8e28ed1ef')
-sha256sums=('a11bac55a96493556f349eead956b94d32f6a71031373771dca4cc72b89a82b4'
+sha256sums=('a7334a400fe9a9dbb329e299ca5ebab6ec969b5659a3a72fe0d6f981dbca0224'
             '1052634cdcbf50ca14b864b58f3afa53de1706bdc9c593667c29974146212c54'
             '9a84d1b4dd969e867b2dbb6df0d0c44814729e0f1d0c61ab6c54d676eae83b3b'
             '73d686fd6e478a887a51451d7ada7c045f31ce299f65f45e50a793820ee99d85'
