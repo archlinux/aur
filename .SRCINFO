@@ -1,0 +1,18 @@
+pkgbase = ruby-git_curate
+	pkgdesc = Simple git branch curation tool
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/matt-harvey/git_curate
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-highline
+	depends = ruby-tabulo
+	depends = ruby-tty-screen
+	noextract = git_curate-1.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/git_curate-1.1.0.gem
+	sha1sums = 808859a2f323e1c5803d3b4bf9238bceeb6a0751
+
+pkgname = ruby-git_curate
+
