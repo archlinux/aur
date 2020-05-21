@@ -1,0 +1,27 @@
+pkgbase = ros-melodic-franka-visualization
+	pkgdesc = ROS - This package contains visualization tools for Franka Emika.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = h
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = Apache 2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-libfranka
+	makedepends = ros-melodic-sensor-msgs
+	makedepends = ros-melodic-roscpp
+	depends = ros-melodic-franka-description
+	depends = ros-melodic-xacro
+	depends = ros-melodic-libfranka
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-sensor-msgs
+	source = ros-melodic-franka-visualization-0.6.0.tar.gz::https://github.com/frankaemika/franka_ros-release/archive/release/melodic/franka_visualization/0.6.0.tar.gz
+	sha256sums = 74659416dd5d061686760d255f3d424a0372ff6b2f1cdf8260b954f392043d71
+
+pkgname = ros-melodic-franka-visualization
+
