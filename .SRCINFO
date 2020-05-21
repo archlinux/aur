@@ -23,7 +23,6 @@ pkgbase = odio
 	depends = lsdvd
 	depends = mplayer
 	depends = odio-edit
-	depends = aacgain-cvs
 	depends = neroaacenc-bin
 	depends = libodiosacd
 	options = !emptydirs
