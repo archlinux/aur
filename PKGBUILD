@@ -59,9 +59,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=123
+_minor=124
 _srcname=linux-${_major}
-_clr=${_major}.123-140
+_clr=${_major}.124-141
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -71,12 +71,11 @@ url="https://github.com/clearlinux-pkgs/linux-lts2018"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20190822'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${_major}.tar".{xz,sign}
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
   "${pkgbase}::git+https://github.com/clearlinux-pkgs/linux-lts2018.git#tag=${_clr}"
-  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
+  'https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/74137a6a0159825b9692866578dc64b2b7a330e8/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v4.19-v5.4.patch'
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -155,8 +154,8 @@ prepare() {
     ### Patch source to unlock additional gcc CPU optimizations
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
-        echo "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
-        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
+        echo "Applying enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v4.19-v5.4.patch ..."
+        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v4.19-v5.4.patch"
         fi
 
     ### Get kernel version
@@ -316,9 +315,9 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '56f4e052883a0030958bb0abfc54a1a28b3867090c9c8a563c203826deaf1ece'
+            '3f0f43ca3cb4eba7441d57cd3f9bb3d27721f8ffcef2d64469faaff2846f7f95'
             'SKIP'
-            '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
+            '0b785030b616844da50dc0e26d24671066334937be5a6a75e76d5ac65ba02477')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
