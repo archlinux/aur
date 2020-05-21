@@ -3,9 +3,10 @@
 # Contributor: Earnestly <zibeon AT googlemail.com>
 
 pkgname=xmlada
-pkgver=2019
-pkgrel=2
-pkgdesc="An XML parser for Ada95"
+pkgver=2020
+_upstream_ver=2020-20200429-19A99
+pkgrel=1
+pkgdesc="An XML parser for Ada94"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/xmlada/"
 license=('GPL3' 'custom')
@@ -13,20 +14,21 @@ depends=('gcc-ada')
 makedepends=('gprbuild-bootstrap')
 conflicts=("$pkgname-git")
 
-source=('https://community.download.adacore.com/v1/ce0b67754f149cd230ba842effeff0ab3033ed0c?filename=xmlada-2019-20190429-19B9D-src.tar.gz'
+_checksum=c799502295baf074ad17b48c50f621879c392c57
+source=("$pkgname-$_upstream_ver-src.tar.gz::https://community.download.adacore.com/v1/${_checksum}?filename=$pkgname-$_upstream_ver-src.tar.gz"
         'expose-cargs-and-largs-makefile.patch'
         'COPYING.RUNTIME')
-sha1sums=('ce0b67754f149cd230ba842effeff0ab3033ed0c'
+sha1sums=("$_checksum"
           '9b65cc99453fd15bdb7c49a32e6f76922ec904bd'
           '44a4a599d98b4ec6d63051103de2fd177f43f67a')
 
 prepare() {
-    cd "$srcdir/xmlada-2019-20190429-19B9D-src"
+    cd "$srcdir/$pkgname-$_upstream_ver-src"
     patch -Np1 -i "$srcdir/expose-cargs-and-largs-makefile.patch"
 }
 
 build() {
-    cd "$srcdir/xmlada-2019-20190429-19B9D-src"
+    cd "$srcdir/$pkgname-$_upstream_ver-src"
     ./configure --prefix=/usr --libexecdir=/lib --enable-shared
 
     # Make using a single job (-j1) to avoid the same file being compiled at the same time.
@@ -34,7 +36,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/xmlada-2019-20190429-19B9D-src"
+    cd "$srcdir/$pkgname-$_upstream_ver-src"
 
     # Make one install at a time to avoid GPRinstall reading/writing to
     # the same installed project files at the same time.
