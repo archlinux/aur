@@ -1,9 +1,9 @@
 # Maintainer: Steffen Lange <gclog@stelas.de>
 pkgname=gclog
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Geiger Counter Logger"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.dateihal.de/cms/gclog"
 license=('GPL3')
 depends=('sh')
