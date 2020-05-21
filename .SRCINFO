@@ -1,0 +1,12 @@
+pkgbase = sp9k
+	pkgdesc = A bullet hell/space shooter game made in C++ and SFML as a learning project.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Phosphenius/sp9k
+	arch = x86_64
+	license = MIT
+	source = https://github.com/Phosphenius/sp9k/archive/0.1.1.tar.gz
+	sha512sums = 1ad30e2032fa2838b07663b95ff5b7230a70b616140c57214ac97e492594bed85bf846954b5fc4b853385be9444fa53f83c237243305b2e7c4e41315b5f64d64
+
+pkgname = sp9k
+
