@@ -2,7 +2,7 @@
 
 _pkgbase=clutch
 pkgname=python-clutch
-pkgver=3.1.1
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Transmission RPC for Python"
 arch=('x86_64')
@@ -11,11 +11,11 @@ license=('MIT')
 depends=('python-pydantic' 'python-requests' 'python-typing_extensions')
 makedepends=('python-setuptools' 'python-dephell')
 source=("${_pkgbase}-${pkgver}.tar.gz::https://github.com/mhadam/${_pkgbase}/archive/v${pkgver}.tar.gz")
-sha512sums=('6d2f3fb14b8063b032e9a28b962fdbff68115b348e93a000fccf175fc1a7f17282814fbe94a5b3f4c975941e9f25a0a9bd9dd9e8117d13aa67a268dd93f98977')
+sha512sums=('79842ed4521e864735c95fa1deeb3f8c5a2a0bf4725bb928420fe9dc1ca694129983bd943355a75c439dd8015d3897b6f1794bf3bb582bb5323069eadfb84c12')
 
 prepare() {
-    cd "${_pkgbase}-${pkgver}"
-    dephell deps convert --from pyproject.toml --to setup.py
+	cd "${_pkgbase}-${pkgver}"
+	dephell deps convert --from pyproject.toml --to setup.py
 }
 
 build() {
