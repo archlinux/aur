@@ -5,24 +5,22 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-aspy-refactor-imports
 epoch=
-pkgver=1.1.0
-pkgrel=00
+pkgver=2.1.1
+pkgrel=0
 pkgdesc='Utilities for refactoring imports in python-like syntax.'
 arch=(any)
 url=https://github.com/asottile/aspy.refactor_imports
 license=(MIT)
 depends=(python python-cached-property)
-## EXTRA_DEPENDS ##
 makedepends=(python-pip python-wheel)
 checkdepends=()
 provides=()
 conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
-source=(PKGBUILD_EXTRAS)
-md5sums=(SKIP)
-source+=(https://files.pythonhosted.org/packages/21/cb/c1b7faffb5b802b6408f0957b39401a5bc95c989a0bf7c1965475d9cfb5e/aspy.refactor_imports-1.1.0.tar.gz)
-md5sums+=(98bea44fb46d7c3bba1ea52784c98307)
-source+=(LICENSE)
-md5sums+=(ec6e4db5d90408877624a1ff7086f824)
+md5sums=('98bea44fb46d7c3bba1ea52784c98307'
+         'ec6e4db5d90408877624a1ff7086f824')
+source=(https://files.pythonhosted.org/packages/21/cb/c1b7faffb5b802b6408f0957b39401a5bc95c989a0bf7c1965475d9cfb5e/aspy.refactor_imports-1.1.0.tar.gz
+        LICENSE)
+
 _first_source() {
     echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |
         tr ' ' '\n' | grep -Pv '^(PKGBUILD_EXTRAS)?$' | head -1
@@ -56,7 +54,7 @@ if [[ $(_first_source) =~ ^git+ ]]; then
     pkgver() { _pkgver; }
 fi
 
-_build() {
+build() {
     if _is_wheel; then return; fi
     cd "$srcdir/$(_dist_name)"
     # See Arch Wiki/PKGBUILD/license.
@@ -76,8 +74,6 @@ _build() {
         true
 }
 
-build() { _build; }
-
 _check() {
     # Define check(), possibly using _check as a helper, to run the tests.
     # You may need to call `python setup.py build_ext -i` first.
@@ -86,7 +82,7 @@ _check() {
     /usr/bin/python setup.py -q test
 }
 
-_package() {
+package() {
     cd "$srcdir"
     # pypa/pip#3063: pip always checks for a globally installed version.
     /usr/bin/pip --quiet install --root="$pkgdir" \
@@ -96,7 +92,3 @@ _package() {
         install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     fi
 }
-
-package() { _package; }
-
-. "$(dirname "$BASH_SOURCE")/PKGBUILD_EXTRAS"

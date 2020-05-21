@@ -1,7 +1,7 @@
 pkgbase = python-aspy-refactor-imports
 	pkgdesc = Utilities for refactoring imports in python-like syntax.
-	pkgver = 1.1.0
-	pkgrel = 00
+	pkgver = 2.1.1
+	pkgrel = 0
 	url = https://github.com/asottile/aspy.refactor_imports
 	arch = any
 	license = MIT
@@ -9,10 +9,8 @@ pkgbase = python-aspy-refactor-imports
 	makedepends = python-wheel
 	depends = python
 	depends = python-cached-property
-	source = PKGBUILD_EXTRAS
 	source = https://files.pythonhosted.org/packages/21/cb/c1b7faffb5b802b6408f0957b39401a5bc95c989a0bf7c1965475d9cfb5e/aspy.refactor_imports-1.1.0.tar.gz
 	source = LICENSE
-	md5sums = SKIP
 	md5sums = 98bea44fb46d7c3bba1ea52784c98307
 	md5sums = ec6e4db5d90408877624a1ff7086f824
 
