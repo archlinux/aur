@@ -1,12 +1,11 @@
 pkgbase = sp9k-git
 	pkgdesc = A bullet hell/space shooter game made in C++ and SFML as a learning project.
-	pkgver = r75.4150623
+	pkgver = 0.1.1.r0.ge9ad893
 	pkgrel = 1
 	url = https://github.com/Phosphenius/sp9k
 	arch = x86_64
 	license = MIT
 	depends = sfml>=2.5.1
-	provides = sp9k
 	conflicts = sp9k
 	source = git+https://github.com/Phosphenius/sp9k.git
 	sha512sums = SKIP
