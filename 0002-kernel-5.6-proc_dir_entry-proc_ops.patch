@@ -1,0 +1,160 @@
+--- nslink.c.orig	2020-05-21 00:58:54.304970216 -0400
++++ nslink.c	2020-05-21 01:04:05.147271869 -0400
+@@ -5031,17 +5031,26 @@ static int queue_proc_show(struct seq_fi
+ }
+ static int queue_proc_open(struct inode *inode, struct file *file)
+ {
+         return single_open(file, queue_proc_show, NULL);
+ }
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,6,0)
++static const struct proc_ops queue_proc_fops = {
++        .proc_open = queue_proc_open,
++        .proc_read = seq_read,
++        .proc_lseek = seq_lseek,
++        .proc_release = seq_release,
++};
++#else
+ static const struct file_operations queue_proc_fops = {
+         .open = queue_proc_open,
+         .read = seq_read,
+         .llseek = seq_lseek,
+         .release = seq_release,
+ };
+ #endif
++#endif
+ 
+ 
+ #if NSLINK_DEBUG_TRACE_HDLC
+ 
+ static char *stopString[] = {
+@@ -5089,17 +5098,26 @@ static int ack_proc_show(struct seq_file
+ }
+ static int ack_proc_open(struct inode *inode, struct file *file)
+ {
+         return single_open(file, ack_proc_show, NULL);
+ }
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,6,0)
++static const struct proc_ops ack_proc_fops = {
++        .proc_open = ack_proc_open,
++        .proc_read = seq_read,
++        .proc_lseek = seq_lseek,
++        .proc_release = seq_release,
++};
++#else
+ static const struct file_operations ack_proc_fops = {
+         .open = ack_proc_open,
+         .read = seq_read,
+         .llseek = seq_lseek,
+         .release = seq_release,
+ };
+ #endif
++#endif
+ 
+ #define NumElements(a)  (sizeof (a)/(sizeof (a)[0]))
+ 
+ // Implements the /proc/driver/nslink/port method.
+ static int port_proc_show(struct seq_file *m, void *v)
+@@ -5162,16 +5180,25 @@ static int port_proc_show(struct seq_fil
+ }
+ static int port_proc_open(struct inode *inode, struct file *file)
+ {
+         return single_open(file, port_proc_show, NULL);
+ }
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,6,0)
++static const struct proc_ops port_proc_fops = {
++        .proc_open = port_proc_open,
++        .proc_read = seq_read,
++        .proc_lseek = seq_lseek,
++        .proc_release = seq_release,
++};
++#else
+ static const struct file_operations port_proc_fops = {
+         .open = port_proc_open,
+         .read = seq_read,
+         .llseek = seq_lseek,
+         .release = seq_release,
+ };
++#endif
+ 
+ 
+ // Implements the /proc/driver/nslink/hdlc method.
+ static int hdlc_proc_show(struct seq_file *m, void *v)
+ {
+@@ -5203,16 +5230,25 @@ static int hdlc_proc_show(struct seq_fil
+ }
+ static int hdlc_proc_open(struct inode *inode, struct file *file)
+ {
+         return single_open(file, hdlc_proc_show, NULL);
+ }
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,6,0)
++static const struct proc_ops hdlc_proc_fops = {
++        .proc_open = hdlc_proc_open,
++        .proc_read = seq_read,
++        .proc_lseek = seq_lseek,
++        .proc_release = seq_release,
++};
++#else
+ static const struct file_operations hdlc_proc_fops = {
+         .open = hdlc_proc_open,
+         .read = seq_read,
+         .llseek = seq_lseek,
+         .release = seq_release,
+ };
++#endif
+ 
+ 
+ // Implements the /proc/driver/nslink/hdlc-queue method.
+ static int hdlc_queue_proc_show(struct seq_file *m, void *v)
+ {
+@@ -5258,16 +5294,25 @@ static int hdlc_queue_proc_show(struct s
+ }
+ static int hdlc_queue_proc_open(struct inode *inode, struct file *file)
+ {
+         return single_open(file, hdlc_queue_proc_show, NULL);
+ }
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,6,0)
++static const struct proc_ops hdlc_queue_proc_fops = {
++        .proc_open = hdlc_queue_proc_open,
++        .proc_read = seq_read,
++        .proc_lseek = seq_lseek,
++        .proc_release = seq_release,
++};
++#else
+ static const struct file_operations hdlc_queue_proc_fops = {
+         .open = hdlc_queue_proc_open,
+         .read = seq_read,
+         .llseek = seq_lseek,
+         .release = seq_release,
+ };
++#endif
+ 
+ 
+ const char *inet_addr_string(struct sockaddr_storage *ss)
+ {
+         static char buf[256];
+@@ -5324,16 +5369,25 @@ static int status_proc_show(struct seq_f
+ }
+ static int status_proc_open(struct inode *inode, struct file *file)
+ {
+         return single_open(file, status_proc_show, NULL);
+ }
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,6,0)
++static const struct proc_ops status_proc_fops = {
++        .proc_open = status_proc_open,
++        .proc_read = seq_read,
++        .proc_lseek = seq_lseek,
++        .proc_release = seq_release,
++};
++#else
+ static const struct file_operations status_proc_fops = {
+         .open = status_proc_open,
+         .read = seq_read,
+         .llseek = seq_lseek,
+         .release = seq_release,
+ };
++#endif
+ 
+ /********************************************************************************/
+ /*                                                                              */
+ /*        MODULE INIT/CLEANUP FUNCTIONS                                         */
+ /*                                                                              */
