@@ -3,21 +3,21 @@
 pkgname=clang90
 pkgdesc="C language family frontend for LLVM, version 9.0.1"
 pkgver=9.0.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
 depends=('llvm90' 'python')
 makedepends=('cmake' 'libffi' 'libedit' 'ncurses' 'libxml2')
 options=('staticlibs')
-source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz
-        https://releases.llvm.org/$pkgver/cfe-$pkgver.src.tar.xz)
+source=(https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-$pkgver.src.tar.xz
+        https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/clang-$pkgver.src.tar.xz)
 sha256sums=('SKIP'
             'SKIP')
 
 build() {
-  mkdir "$srcdir/cfe-$pkgver.src/build"
-  cd "$srcdir/cfe-$pkgver.src/build"
+  mkdir "$srcdir/clang-$pkgver.src/build"
+  cd "$srcdir/clang-$pkgver.src/build"
 
   export PATH=/opt/llvm90/bin:$PATH
 
@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/cfe-$pkgver.src/build"
+  cd "$srcdir/clang-$pkgver.src/build"
   DESTDIR="$pkgdir" make install
 
   install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
