@@ -59,7 +59,7 @@ pkgname='advantech-vcom'
 #pkgver='2.1.0'; _dl='4/1-15OSOW4'
 #pkgver='2.2.0'; _dl='4/1-1LPJPGD'
 pkgver='2.2.1'; _dl='5/1-1NOKMCV' # not compatible with Linux 3.16
-pkgrel='3'
+pkgrel='4'
 pkgdesc='tty driver for Advantech Adam EKI serial console terminal servers'
 _pkgdescshort="Advantech ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
@@ -79,12 +79,22 @@ source+=(
   '0000-advman.systemd.patch'
   '0001-adv_main-access_ok_kernel-5-0.patch'
   '0002-adv_mmap-vm_fault_t-5-1.patch'
+  '0003-gcc-10-duplicate-variables-vc_mon-stk_mon.patch'
+  '0004-adv_main-proc_create_data-kernel-5.6.patch'
 )
+noextract=("${_srcrar}") # the RAR crashes bsdtar. Parsing filters is unsupported.
+md5sums=('6a32b5ceb5a4dccc919462a61b7c228c'
+         '65bb3f58bf90650cd629b94057c80da5'
+         '6b07ea60f898b5586ad8f23a28c32ab7'
+         'b30212f45f0dcebc9b88b17e4355d298'
+         '0aa930803ed243f4e45f0d31bde581c8'
+         '446602b4feef554ade9a137303883432')
 sha256sums=('98e670d7ab0b67c5ca1d7c61ffffdbf812e2bcc2680d408b749ae4f36f1c46d7'
             '02f504a23fbef07f666aaa595faba0513d9ffec5e99ebca7b7fe2299a0179e32'
             '9335cfe8addfdf80224d21529fe0a70a6b750fa0823cfe806f5c94ae50a06cad'
-            '77edc7a806085fc738fa4536e91fce98fb8e103f8207ec0d395f340107e83d0c')
-noextract=("${_srcrar}") # the RAR crashes bsdtar. Parsing filters is unsupported.
+            '77edc7a806085fc738fa4536e91fce98fb8e103f8207ec0d395f340107e83d0c'
+            '61c4b0c92488cce93e6b9ffca4f13eb7aa7fd8b267eb1438094ce41d96aaef53'
+            'aa71ede3478a5b482cd085ed2406a1ccd6be3b3ef76ab1fc0b45f4133d3c5a59')
 makedepends+=('unrar')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
@@ -105,6 +115,14 @@ prepare() {
   #cp -p driver/adv_mmap.c{,.orig}; false
   #diff -pNau5 driver/adv_mmap.c{.orig,} > '../0002-adv_mmap-vm_fault_t-5-1.patch'
   patch -Nbup0 -i "${srcdir}/0002-adv_mmap-vm_fault_t-5-1.patch"
+
+  #cp -pr daemon{,.orig}; false
+  #diff -pNarZu5 daemon{.orig,} > '../0003-gcc-10-duplicate-variables-vc_mon-stk_mon.patch'
+  patch -Nbup0 -i "${srcdir}/0003-gcc-10-duplicate-variables-vc_mon-stk_mon.patch"
+
+  #cp -p driver/adv_main.c{,.orig}; false
+  #diff -pNau5 driver/adv_main.c{.orig,} > '../0004-adv_main-proc_create_data-kernel-5.6.patch'
+  patch -Nbup0 -i "${srcdir}/0004-adv_main-proc_create_data-kernel-5.6.patch"
 
   # Cosmetic correction of CRLF for Linux
   sed -e 's:\r$::g' -i 'readme.txt'

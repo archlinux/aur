@@ -1,0 +1,81 @@
+diff -pNarZu5 daemon.orig/vcom_client.c daemon/vcom_client.c
+--- daemon.orig/vcom_client.c	2018-11-14 11:29:12.000000000 -0500
++++ daemon/vcom_client.c	2020-05-20 22:49:01.768339863 -0400
+@@ -35,11 +35,12 @@
+ #include "vcom.h"
+ //#include "vcom_debug.h"
+ 
+ #define RBUF_SIZE	4096
+ 
+-extern void * stk_mon; 
++void * stk_mon; 
++struct vc_monitor vc_mon;
+ 
+ int recv_second_chance(int sock, char * buf, int buflen)
+ {
+ 	int ret;
+ 	struct timeval tv;
+diff -pNarZu5 daemon.orig/vcom.h daemon/vcom.h
+--- daemon.orig/vcom.h	2018-11-14 11:29:12.000000000 -0500
++++ daemon/vcom.h	2020-05-20 22:48:26.010912918 -0400
+@@ -112,11 +112,11 @@ static inline struct vc_ops * stk_curnt(
+ #define INO_PUSH_SWITCH 0
+ #define INO_POP_SWITCH 0
+ #define INO_RPLS_SWITCH 0
+ #define INO_RESTART_SWITCH 0
+ 
+-void * stk_mon;
++extern void * stk_mon;
+ 
+ /* 
+  *	state machine stack
+  */
+ #define _expmsg(msg, len) \
+diff -pNarZu5 daemon.orig/vcom_monitor_dbg.h daemon/vcom_monitor_dbg.h
+--- daemon.orig/vcom_monitor_dbg.h	2018-11-14 11:29:12.000000000 -0500
++++ daemon/vcom_monitor_dbg.h	2020-05-20 22:48:48.918064379 -0400
+@@ -29,11 +29,11 @@ struct vc_monitor{
+ 	int pid;
+ 	int max_statl;
+ 	int dbg_first;
+ 	char fname[FNAME_LEN];
+ };
+-struct vc_monitor vc_mon;
++extern struct vc_monitor vc_mon;
+ 
+ static inline int mon_init(char * fname)
+ {
+ 	vc_mon.fd = -1;
+ 	vc_mon.addr = 0;
+diff -pNarZu5 daemon.orig/vcom_monitor.h daemon/vcom_monitor.h
+--- daemon.orig/vcom_monitor.h	2018-11-14 11:29:12.000000000 -0500
++++ daemon/vcom_monitor.h	2020-05-20 22:49:32.225667990 -0400
+@@ -27,11 +27,11 @@ struct vc_monitor{
+ 	int fd;
+ 	int pid;
+ 	int msgl;
+ 	char fname[FNAME_LEN];
+ };
+-struct vc_monitor vc_mon;
++extern struct vc_monitor vc_mon;
+ 
+ static inline int mon_init(char * fname)
+ {
+ 	vc_mon.fd = -1;
+ 	vc_mon.addr = 0;
+diff -pNarZu5 daemon.orig/vcom_monitor_pre_stat.h daemon/vcom_monitor_pre_stat.h
+--- daemon.orig/vcom_monitor_pre_stat.h	2018-11-14 11:29:12.000000000 -0500
++++ daemon/vcom_monitor_pre_stat.h	2020-05-20 22:43:28.883368206 -0400
+@@ -27,11 +27,11 @@ struct vc_monitor{
+ 	int pid;
+ 	int msgl;
+ 	char pre_stat[16];
+ 	char fname[FNAME_LEN];
+ };
+-struct vc_monitor vc_mon;
++extern struct vc_monitor vc_mon;
+ 
+ static inline int mon_init(char * fname)
+ {
+ 	vc_mon.fd = -1;
+ 	vc_mon.addr = 0;
