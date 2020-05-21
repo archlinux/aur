@@ -5,7 +5,7 @@ url='https://wiki.ros.org/moveit_ros_control_interface'
 pkgname='ros-melodic-moveit-ros-control-interface'
 pkgver='1.0.3'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-moveit-core
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]})
 # sha256sums=('3247493cc3b19032030742a54d76f205e3dc03d32888d7193348da140cdcb4de')
 
 # Tarball version (faster download)
-_dir="moveit-${pkgver}/moveit_ros_control_interface"
+_dir="moveit-${pkgver}/moveit_plugins/moveit_ros_control_interface"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
 sha256sums=('b0ac91cd4c4dc29d9bd5e3885a1a457252495b3f2bedb46ddfe04154f5ac2358')
 
