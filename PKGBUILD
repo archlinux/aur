@@ -20,9 +20,8 @@ prepare() {
 build() {
   cd build
   cmake ../$pkgname-$pkgver \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_TESTING=OFF \
-    -DCMAKE_INSTALL_LIBDIR=lib
+	-DCMAKE_INSTALL_PREFIX="$(qtpaths --install-prefix)" \
+	-DCMAKE_BUILD_TYPE=Release
   make
 }
 
