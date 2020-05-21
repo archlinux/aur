@@ -1,0 +1,37 @@
+diff --git a/src/menu.c b/src/menu.c
+index 9355d01..9ebc1eb 100644
+--- a/src/menu.c
++++ b/src/menu.c
+@@ -117,7 +117,6 @@ int active_settings_subsection = 0;
+ int highlighted_settings_subsection = 0;
+ int scroll_position = 0;
+ int menu_control_y;
+-int menu_control_scroll_y;
+ int menu_control_x;
+ int menu_control_back;
+ 
+diff --git a/src/seg001.c b/src/seg001.c
+index 33dca45..c07214b 100644
+--- a/src/seg001.c
++++ b/src/seg001.c
+@@ -47,8 +47,6 @@ SDL_COMPILE_TIME_ASSERT(hof_size, sizeof(hof_type) == 29);
+ #pragma pack(pop)
+ 
+ #define MAX_HOF_COUNT 6
+-// data:405E
+-short hof_count;
+ // data:589A
+ hof_type hof[MAX_HOF_COUNT];
+ 
+diff --git a/src/seg009.c b/src/seg009.c
+index 7d4a9e6..8961445 100644
+--- a/src/seg009.c
++++ b/src/seg009.c
+@@ -1943,7 +1943,6 @@ void init_digi() {
+ 
+ const int sound_channel = 0;
+ const int max_sound_id = 58;
+-char** sound_names = NULL;
+ 
+ void load_sound_names() {
+ 	const char* names_path = locate_file("data/music/names.txt");

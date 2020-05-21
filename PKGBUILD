@@ -9,12 +9,17 @@ license=('GPL3')
 url="https://github.com/NagyD/SDLPoP"
 depends=('sdl2_image' 'sdl2_mixer')
 source=("sdlpop-$pkgver.tar.gz::https://github.com/NagyD/SDLPoP/archive/v$pkgver.tar.gz"
-        "sdlpop.sh")
-sha256sums=('dbb75398dee2224bcee648602ad23e469b936a2b7ea962a8a01b091b989f25b6'
-            'cb7b7923dcfb68520c7e738e6e8bd503f56f2775b28022285397284c0c428991')
+        "sdlpop.sh"
+        "fix-build.patch")
+b2sums=('4ebc83cf0b174db342ff5706ac08290be86d10e8e5a7dbcadbcf9eafede9d98f36baa03da400967c25cafda9df15483da3503cd6a75d4dc3b3b469ae43f8b0b0'
+        'eecce7df11ff08547fb79f3fdcfffaddb84c2c112f200f12d2bb748c0ac498bcb5e0ab42ecaff1420eca883d7d83e58a0c0ce54abcaceb645ca914c06e2bed10'
+        'ba657632ecb0667b8e706cad6d970dff85f3f81fccd36417d7363c94c3c1c99f30fa0b34c8f31976fdfb8eb660fa751aca2736ffa68293eca36f1bf4db3f3fb6')
 
 prepare() {
-  cd SDLPoP-$pkgver/src
+  cd SDLPoP-$pkgver
+  patch -p1 < ../fix-build.patch
+
+  cd src
   sed -e 's|$ROOT|/opt/sdlpop|' SDLPoP.desktop.template > SDLPoP.desktop
 }
 
