@@ -1,6 +1,6 @@
 # Maintainer: Aloxaf <aloxafx@gmail.com>
 pkgname=gitstatus-git
-pkgver=r1280.00564e9
+pkgver=r1281.0127fd2
 pkgrel=1
 pkgdesc='10x faster implementation of `git status` command'
 arch=('x86_64')
