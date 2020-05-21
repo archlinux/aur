@@ -1,4 +1,5 @@
-# Maintainer: Asger Hautop Drewsen <asgerdrewsen@gmail.com>
+# Maintainer:  Chris Severance <aur.severach@spamgourmet.com>
+# Contributor: Asger Hautop Drewsen <asgerdrewsen@gmail.com>
 
 set -u
 _mode='423'
@@ -13,12 +14,15 @@ license=('custom:konica minolta commercial license')
 depends=('cups')
 makedepends=('gzip')
 _driver="${_driver//-/}"
-_srcdir="${_driver^^}PPDLinux_${pkgver//\./}"
+_srcdir="${_driver^^}PPDLinux_${pkgver//./}"
 source=(
-  "https://o.cses.konicaminolta.com/file/Default.aspx?FilePath=DL/${_dl1}/${_dl2}/${_srcdir}MU.zip"
+  #"https://o.cses.konicaminolta.com/file/Default.aspx?FilePath=DL/${_dl1}/${_dl2}/${_srcdir}MU.zip"
+  "${_srcdir}MU.zip::https://dl.konicaminolta.eu/en/?tx_kmanacondaimport_downloadproxy[fileId]=63bd482b3f842bcd90001475e6fb51c1&tx_kmanacondaimport_downloadproxy[documentId]=83216&tx_kmanacondaimport_downloadproxy[system]=KonicaMinolta&tx_kmanacondaimport_downloadproxy[language]=EN&type=1558521685"
   "LICENSE"
 )
 #_srcdir+='MU'
+md5sums=('6f8b5f25387373cd9a3cba8b8157c9fd'
+         '3a1e2985ae6d6b136f80e186f55a11f3')
 sha256sums=('93004629b073ee415abef28288c3ebb9f86b05c844db57bcb6b973a1cc05ccc0'
             'a3dcdd6459b4a376c61ad8c69ced0f356581229b39b209debe1679749824c408')
 
