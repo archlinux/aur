@@ -1,0 +1,17 @@
+pkgbase = ruby-tabulo
+	pkgdesc = Terminal table generator
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://github.com/matt-harvey/tabulo
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-tty-screen
+	depends = ruby-unicode-display_width
+	noextract = tabulo-2.6.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/tabulo-2.6.0.gem
+	sha1sums = 2b4dbc55d3b9ece8723e3910064825f2face18f0
+
+pkgname = ruby-tabulo
+
