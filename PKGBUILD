@@ -4,7 +4,7 @@
 pkgname=grml-iso
 pkgver=2018.12
 _isover="64-full_$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="add the grml ISO image to the grub2 boot menu"
 url="http://wiki.grml.org/doku.php?id=rescueboot"
 arch=('any')
