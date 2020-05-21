@@ -3,9 +3,10 @@
 
 pkgname="python-pybars3-git"
 pkgver=0.9.7.r1.g2edd2fa
-pkgrel=2
-pkgurl="https://launchpad.net/pybars"
+pkgrel=3
+pkgdesc="A general object-oriented pattern matcher for Python, based on Alessandro Warth's OMeta."
 
+url="https://github.com/wbond/pymeta3"
 arch=("any")
 provides=("python-pybars3")
 depends=('python-pymeta3')
@@ -15,8 +16,14 @@ source=("$pkgname::git+https://github.com/wbond/pybars3.git")
 md5sums=("SKIP")
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$pkgname"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	# run tests
+	cd "$pkgname"
+	PYTHONPATH="$srcdir/$pkgname" python tests.py
 }
 
 package() {
