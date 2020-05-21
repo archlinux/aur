@@ -6,7 +6,7 @@
 pkgname=rethinkdb
 pkgver=2.4.0
 _node=6.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Distributed NoSQL database for realtime applications'
 arch=(x86_64)
 url=https://www.rethinkdb.com
@@ -32,7 +32,7 @@ sha512sums=('a0301f4eee6652307ca8481a658b4494fa2b3d2151ab14afca94f50d004271be51c
             'cab680a7e765e0a844b72ab3a57f19f3268d9a717bbe19230bd79537f0424179a56037c368326d2173a4a9cde075a67c85ce9b5a32733afb7d44806df1eac0ac'
             '112bc0f9ecfdfae6efba5d8cc3f773085b3f345d33d350188dc70609c425e6c656a0a3069ae5c66cdc684a94fd442e990a88c0ca8d1875f085f660c76c3d7250'
             '8deea735b2c7b6fc0221a49e818d4347869330fa9e35a94c15d54f7bc64ac0b8a573906fea6cc64c05a177f3065c96d8b4d0e2a3724b6137d7f12ba7a7b419f7'
-            '346020fea3e10628c687dd89fc2d9aec97e1b6734fd83828d390b4187c96c085a6e99efedb8b2f87491a4c1237de06c73aee0d0671c259935eedaddcf7f505f1')
+            '15f1f9508adef9cd14320b6649f3b766a0dd8dd478290424e9af6343a7fd64e246aafbbf2f19109e5812decb2f15dcb283fec57875bc50a540737441a0fd248d')
 
 prepare() {
   # There are a ton of hard dependencies on Python 2
