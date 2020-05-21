@@ -1,8 +1,8 @@
 # Maintainer: Jonathan Haylett <jonathan@haylett.dev>
 _pkgbasename=i3-resurrect
 pkgname=$_pkgbasename-git
-pkgrel=2
-pkgver=1.4.3.r0.gec33bde
+pkgver=1.4.3.r10.g0d60622
+pkgrel=1
 pkgdesc='A simple but flexible solution to saving and restoring i3 workspace layouts'
 arch=('any')
 url='http://github.com/JonnyHaystack/i3-resurrect'
