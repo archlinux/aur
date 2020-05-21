@@ -1,58 +1,31 @@
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-openexr
-pkgver=2.2.1
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="An high dynamic-range image file format library (mingw-w64)"
 url="http://www.openexr.com/"
 arch=(any)
 license=('BSD')
-depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-ilmbase')
+depends=('mingw-w64-crt' 'mingw-w64-zlib')
 makedepends=('mingw-w64-cmake' 'wine')
 options=('staticlibs' '!buildflags' '!strip')
-source=("http://download.savannah.gnu.org/releases/openexr/openexr-${pkgver}.tar.gz"
-        openexr-2.1.0_aligned-malloc.patch
-        openexr-2.1.0_cast.patch)
-sha256sums=('8f9a5af6131583404261931d9a5c83de0a425cb4b8b25ddab2b169fbf113aecd'
-        SKIP
-        SKIP)
+source=("https://github.com/AcademySoftwareFoundation/openexr/archive/v${pkgver}.tar.gz")
+sha256sums=('11f806bf256453e39fc33bd1cf1fa576a54f144cedcdd3e6935a177e5a89d02e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-prepare() {
-  cd "${srcdir}/openexr-${pkgver}"
-  # fedora patches
-  patch -p1 -i "${srcdir}"/openexr-2.1.0_aligned-malloc.patch
-  patch -p1 -i "${srcdir}"/openexr-2.1.0_cast.patch
-
-  # https://github.com/openexr/openexr/pull/159
-  sed -i "s|COMMAND \${CMAKE_CURRENT_BINARY_DIR}/\${CMAKE_CFG_INTDIR}/b44ExpLogTable >|COMMAND wine \${CMAKE_CURRENT_BINARY_DIR}/\${CMAKE_CFG_INTDIR}/b44ExpLogTable.exe >|g" IlmImf/CMakeLists.txt
-  sed -i "s|COMMAND \${CMAKE_CURRENT_BINARY_DIR}/\${CMAKE_CFG_INTDIR}/dwaLookups >|COMMAND wine \${CMAKE_CURRENT_BINARY_DIR}/\${CMAKE_CFG_INTDIR}/dwaLookups.exe >|g" IlmImf/CMakeLists.txt
-
-
-  sed -i "/ADD_SUBDIRECTORY ( IlmImfTest )/d" CMakeLists.txt
-  sed -i "/ADD_SUBDIRECTORY ( IlmImfUtilTest )/d" CMakeLists.txt
-  sed -i "/ADD_SUBDIRECTORY ( IlmImfFuzzTest )/d" CMakeLists.txt
-  sed -i "/ADD_SUBDIRECTORY ( exr/d" CMakeLists.txt # binaries/utilities
-}
-
 build() {
-  cd "${srcdir}/openexr-${pkgver}"
-  for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DNAMESPACE_VERSIONING=OFF -DILMBASE_PACKAGE_PREFIX=/usr/${_arch} ..
-    cp /usr/${_arch}/bin/*.dll IlmImf
-    make
-    popd
-  done
+	for _arch in ${_architectures}; do
+		${_arch}-cmake -S openexr-${pkgver} -B build-${_arch} -DCMAKE_BUILD_TYPE=Release \
+			-DBUILD_TESTING=OFF -DINSTALL_OPENEXR_DOCS=OFF -DINSTALL_OPENEXR_EXAMPLES=OFF -DOPENEXR_BUILD_UTILS=OFF
+		make -C build-${_arch}
+	done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/openexr-${pkgver}/build-${_arch}"
-    make DESTDIR="${pkgdir}" install
-    install -d "$pkgdir"/usr/${_arch}/bin
-    mv "$pkgdir"/usr/${_arch}/lib/*.dll "$pkgdir"/usr/${_arch}/bin
-    rm -r "$pkgdir"/usr/${_arch}/share
+    make DESTDIR="${pkgdir}" -C build-${_arch} install
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
