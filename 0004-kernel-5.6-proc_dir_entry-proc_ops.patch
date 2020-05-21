@@ -1,0 +1,210 @@
+diff -pNaru5 driver/2.6.27.orig/dgrp_common.c driver/2.6.27/dgrp_common.c
+--- driver/2.6.27.orig/dgrp_common.c	2020-01-28 12:01:10.000000000 -0500
++++ driver/2.6.27/dgrp_common.c	2020-05-21 00:14:32.484255183 -0400
+@@ -610,21 +610,27 @@ void dgrp_tracef(const char *fmt, ...)
+  *     Functions for creating and removing proc entries consistently
+  *     across kernel versions.
+  *
+  *****************************************************************************/
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,6,0)
++#define DGRP_PROC_OPS proc_ops
++#else
++#define DGRP_PROC_OPS file_operations
++#endif
++
+ #include <linux/proc_fs.h>
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
+ struct proc_dir_entry *dgrp_create_proc_entry(const char *name, mode_t mode,
+ 						struct proc_dir_entry *parent)
+ {
+ 	return create_proc_entry(name, mode, parent);
+ }
+ #else
+ struct proc_dir_entry *dgrp_create_proc_entry(const char *name, mode_t mode,
+ 						struct proc_dir_entry *parent,
+-						struct file_operations *fops,
++						struct DGRP_PROC_OPS *fops,
+ 						void *data)
+ {
+ 	return proc_create_data(name, mode, parent, fops, data);
+ }
+ #endif
+diff -pNaru5 driver/2.6.27.orig/dgrp_dpa_ops.c driver/2.6.27/dgrp_dpa_ops.c
+--- driver/2.6.27.orig/dgrp_dpa_ops.c	2020-01-28 12:01:10.000000000 -0500
++++ driver/2.6.27/dgrp_dpa_ops.c	2020-05-21 00:18:18.797589516 -0400
+@@ -86,18 +86,27 @@ static int dpa_chk_perm(struct inode *,
+ #else
+ static int dpa_chk_perm(struct inode *, int);
+ #endif
+ #endif
+ 
+-static struct file_operations dpa_ops = {
++static struct DGRP_PROC_OPS dpa_ops = {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,6,0)
++	.proc_read    =  dgrp_dpa_read,	/* read		*/
++	.proc_write   =  dgrp_dpa_write,	/* write	*/
++	.proc_poll    =  dgrp_dpa_select,	/* poll or select */
++	.proc_ioctl   =  dgrp_dpa_ioctl,	/* ioctl	*/
++	.proc_open    =  dgrp_dpa_open,	/* open		*/
++	.proc_release =  dgrp_dpa_release,	/* release	*/
++#else
+ 	.owner   =  THIS_MODULE,	/* owner	*/
+ 	.read    =  dgrp_dpa_read,	/* read		*/
+ 	.write   =  dgrp_dpa_write,	/* write	*/
+ 	.poll    =  dgrp_dpa_select,	/* poll or select */
+ 	.unlocked_ioctl =  dgrp_dpa_ioctl,	/* ioctl	*/
+ 	.open    =  dgrp_dpa_open,	/* open		*/
+ 	.release =  dgrp_dpa_release,	/* release	*/
++#endif
+ };
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
+ static struct inode_operations dpa_inode_ops = {
+ 	.permission = dpa_chk_perm
+diff -pNaru5 driver/2.6.27.orig/dgrp_mon_ops.c driver/2.6.27/dgrp_mon_ops.c
+--- driver/2.6.27.orig/dgrp_mon_ops.c	2020-01-28 12:01:10.000000000 -0500
++++ driver/2.6.27/dgrp_mon_ops.c	2020-05-21 00:19:47.094307603 -0400
+@@ -84,17 +84,25 @@ static int mon_chk_perm(struct inode *,
+ #else
+ static int mon_chk_perm(struct inode *, int);
+ #endif
+ #endif
+ 
+-static struct file_operations mon_ops = {
++static struct DGRP_PROC_OPS mon_ops = {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,6,0)
++	.proc_read    = dgrp_mon_read,	/* read	   */
++	.proc_write   = dgrp_mon_write,	/* write   */
++	.proc_ioctl   = dgrp_mon_ioctl,	/* ioctl   */
++	.proc_open    = dgrp_mon_open,	/* open    */
++	.proc_release = dgrp_mon_release,	/* release */
++#else
+ 	.owner   = THIS_MODULE,		/* owner   */
+ 	.read    = dgrp_mon_read,	/* read	   */
+ 	.write   = dgrp_mon_write,	/* write   */
+ 	.unlocked_ioctl = dgrp_mon_ioctl,	/* ioctl   */
+ 	.open    = dgrp_mon_open,	/* open    */
+ 	.release = dgrp_mon_release,	/* release */
++#endif
+ };
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
+ static struct inode_operations mon_inode_ops = {
+ 	.permission = mon_chk_perm
+diff -pNaru5 driver/2.6.27.orig/dgrp_net_ops.c driver/2.6.27/dgrp_net_ops.c
+--- driver/2.6.27.orig/dgrp_net_ops.c	2020-01-28 12:01:10.000000000 -0500
++++ driver/2.6.27/dgrp_net_ops.c	2020-05-21 00:21:01.311030489 -0400
+@@ -126,18 +126,27 @@ static int net_chk_perm(struct inode *,
+ #else
+ static int net_chk_perm(struct inode *, int);
+ #endif
+ #endif
+ 
+-static struct file_operations net_ops = {
++static struct DGRP_PROC_OPS net_ops = {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,6,0)
++	.proc_read    =  dgrp_net_read,	/* read	   */
++	.proc_write   =  dgrp_net_write,	/* write   */
++	.proc_poll    =  dgrp_net_select,	/* poll or select */
++	.proc_ioctl   =  dgrp_net_ioctl,	/* ioctl   */
++	.proc_open    =  dgrp_net_open,	/* open    */
++	.proc_release =  dgrp_net_release,	/* release */
++#else
+ 	.owner   =  THIS_MODULE,	/* owner   */
+ 	.read    =  dgrp_net_read,	/* read	   */
+ 	.write   =  dgrp_net_write,	/* write   */
+ 	.poll    =  dgrp_net_select,	/* poll or select */
+ 	.unlocked_ioctl =  dgrp_net_ioctl,	/* ioctl   */
+ 	.open    =  dgrp_net_open,	/* open    */
+ 	.release =  dgrp_net_release,	/* release */
++#endif
+ };
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
+ static struct inode_operations net_inode_ops = {
+ 	.permission = net_chk_perm
+diff -pNaru5 driver/2.6.27.orig/dgrp_ports_ops.c driver/2.6.27/dgrp_ports_ops.c
+--- driver/2.6.27.orig/dgrp_ports_ops.c	2020-01-28 12:01:10.000000000 -0500
++++ driver/2.6.27/dgrp_ports_ops.c	2020-05-21 00:22:15.067761653 -0400
+@@ -81,16 +81,23 @@ static int ports_chk_perm(struct inode *
+ #else
+ static int ports_chk_perm(struct inode *, int);
+ #endif
+ #endif
+ 
+-static struct file_operations ports_ops = {
++static struct DGRP_PROC_OPS ports_ops = {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,6,0)
++	.proc_read    =   dgrp_ports_read,	/* read	   */
++	.proc_write   =   dgrp_ports_write,	/* write   */
++	.proc_open    =   dgrp_ports_open,	/* open    */
++	.proc_release =   dgrp_ports_release	/* release */
++#else
+ 	.owner   =   THIS_MODULE,	/* owner   */
+ 	.read    =   dgrp_ports_read,	/* read	   */
+ 	.write   =   dgrp_ports_write,	/* write   */
+ 	.open    =   dgrp_ports_open,	/* open    */
+ 	.release =   dgrp_ports_release	/* release */
++#endif
+ };
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
+ static struct inode_operations ports_inode_ops = {
+ 	.permission = ports_chk_perm
+diff -pNaru5 driver/2.6.27.orig/dgrp_specproc.c driver/2.6.27/dgrp_specproc.c
+--- driver/2.6.27.orig/dgrp_specproc.c	2020-01-28 12:01:10.000000000 -0500
++++ driver/2.6.27/dgrp_specproc.c	2020-05-21 00:23:53.674242899 -0400
+@@ -70,16 +70,23 @@ static int proc_chk_perm(struct inode *,
+ #else
+ static int proc_chk_perm(struct inode *, int);
+ #endif
+ #endif
+ 
+-struct file_operations dgrp_proc_file_ops = {
++struct DGRP_PROC_OPS dgrp_proc_file_ops = {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,6,0)
++	.proc_read    = dgrp_gen_proc_read,	/* read		*/
++	.proc_write   = dgrp_gen_proc_write,	/* write	*/
++	.proc_open    = dgrp_gen_proc_open,	/* open		*/
++	.proc_release = dgrp_gen_proc_close,	/* release	*/
++#else
+ 	.owner   = THIS_MODULE,		/* owner	*/
+ 	.read    = dgrp_gen_proc_read,	/* read		*/
+ 	.write   = dgrp_gen_proc_write,	/* write	*/
+ 	.open    = dgrp_gen_proc_open,	/* open		*/
+ 	.release = dgrp_gen_proc_close,	/* release	*/
++#endif
+ };
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
+ static struct inode_operations proc_inode_ops = {
+ 	.permission = proc_chk_perm
+diff -pNaru5 driver/2.6.27.orig/include/dgrp_common.h driver/2.6.27/include/dgrp_common.h
+--- driver/2.6.27.orig/include/dgrp_common.h	2020-01-28 12:01:10.000000000 -0500
++++ driver/2.6.27/include/dgrp_common.h	2020-05-21 00:16:24.500892265 -0400
+@@ -295,18 +295,23 @@ int    nd_struct_del(struct nd_struct *e
+ 
+ /*
+  *  "proc" table manipulation functions
+  */
+ #include <linux/proc_fs.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,6,0)
++#define DGRP_PROC_OPS proc_ops
++#else
++#define DGRP_PROC_OPS file_operations
++#endif
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
+ struct proc_dir_entry *dgrp_create_proc_entry(const char *name, mode_t mode,
+ 					      struct proc_dir_entry *parent);
+ void dgrp_remove_proc_entry(struct proc_dir_entry *pde);
+ #else
+ struct proc_dir_entry *dgrp_create_proc_entry(const char *name, mode_t mode,
+ 						struct proc_dir_entry *parent,
+-						struct file_operations *fops,
++						struct DGRP_PROC_OPS *fops,
+ 						void *data);
+ void dgrp_remove_proc_entry(struct nd_struct *nd, struct proc_dir_entry *parent);
+ #endif
+ 
+ /*

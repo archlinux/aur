@@ -57,7 +57,7 @@ _opt_RealPort='RealPort' # Can also be Realport
 
 _opt_DKMS=1           # This can be toggled between installs
 
-_opt_SSL10=1
+_opt_SSL10=0
 
 # Since the kernel module isn't loaded until you have a device
 # configured, these services are automatically enabled and started
@@ -107,7 +107,7 @@ pkgname='dgrp'
 #_pkgver='1.9-39'; _dl='40002086_Z.tgz'
 _pkgver='1.9-40'; _dl='40002086_AA.tgz'
 pkgver="${_pkgver//-/.}"
-pkgrel='1'
+pkgrel='2'
 pkgdesc="tty driver for Digi ${_opt_RealPort} ConnectPort EtherLite Flex One CM PortServer TS IBM RAN serial console terminal servers"
 #_pkgdescshort="Digi ${_opt_RealPort} driver for Ethernet serial servers" # For when we used to generate the autorebuild from here
 arch=('i686' 'x86_64')
@@ -187,11 +187,45 @@ source=(
   #'0001-Kernel-4-15-timers.patch' # https://forum.blackmagicdesign.com/viewtopic.php?uid=16&f=3&t=68382&start=0
   '0002-kernel-5.0.0-do_gettimeofday.patch'
   '0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch' # https://lkml.org/lkml/2019/1/4/418
+  '0004-kernel-5.6-proc_dir_entry-proc_ops.patch'
 )
 unset _mibsrc
 #source_i686=('http://ftp1.digi.com/support/utilities/40002890_A.tgz')
 #source_x86_64=('http://ftp1.digi.com/support/utilities/40002889_A.tgz') # compiled i686 therefore worthless
 # addp and sddp are incomplete. I replaced them with addp.pl
+md5sums=('175349c08d19158c88ad582c76916397'
+         'b4af5022ba96fcc2429263cfbbe85bae'
+         '9feebec170552c9186e713e7f5852e14'
+         'e9ae823e597f2b63d95e6d6a8e25cde3'
+         '1b6491756c123234035c053baab1607c'
+         '4dbc892ea6247057db2fe613391f9b02'
+         '2e516af8bbe96b6d2137a106941d4223'
+         'f404ac48baee06c5fbd7efab157704e9'
+         'da3b2a1c78d981940afea9bd2da4bf96'
+         'd824adbace7a52ed4a08ec2b3101b10f'
+         '749a347ec350ac9ca5895ae4d0e2ca24'
+         'feab0142fc161c7705e6a3a12a410f35'
+         'ee66f700bdb828cfc916f1bd2fd9dc1a'
+         '2a321009c37ea6070607d1f1b97de84d'
+         '067d79acafc0eb32f809390fe1a9374e'
+         '276d710e355e24ea6635bb23a3dd46d0'
+         '0549b35492fb3e2dbee52b1ea7790a25'
+         'f04c8e15255d115c05631845232e858a'
+         'c1fa6b3f533da1bbf05c5be268ec9aba'
+         'de6faa945f2816191f558df38a1ac917'
+         '9495d5154f4d03fdd994922220dd1f2f'
+         '5fc7f819bca1d5ebfc8e4d06a744cb77'
+         '09ad1cc83d31f7365992d3f974fde6d5'
+         '89545a33c5df6304b6c8e288a4019d54'
+         'bc469a335d5b1a7986a93327a3b6f57b'
+         '83104a3387dc09ba95ccf4e2581fb20f'
+         '5da394f02ed6d62971f0d700f174bfd1'
+         '1f6fcaabe4058c225674f866b19f2ca8'
+         '031e105a06300feecacfc2774e48ff2f'
+         '699172bf54ec0e45b6aae348b1f570e8'
+         '6a58beab1cb022cd368e874e24c7b9ef'
+         'a65ba371ae411de4607259fc78a55682'
+         'c25c1fdfbdc1fa38d87e45cf1c8511c2')
 sha256sums=('2044715efa7a56fccad5ac76cdca9f71bca430e8c53ce31fa5c9563da3e7906a'
             '42898b9d24262de27e9b1f3067d51d01373810b7c9e4991403a7f0a5dd7a26cf'
             '66f8b106a052b4807513ace92978e5e6347cef08eee39e4b4ae31c60284cc0a3'
@@ -223,7 +257,8 @@ sha256sums=('2044715efa7a56fccad5ac76cdca9f71bca430e8c53ce31fa5c9563da3e7906a'
             '5cac7ce2e6f043127f314b93694af021ae7820ffb5bf3de343da7a240d05e9c8'
             '8654496d83c083e457e8bb9bae2b1e71804d156a38c284d89872d0125eba947d'
             '353d15624675c78dfd83318195d75bdb0507fd0476f5e22be1329bf257d2de1e'
-            'acbcf462628daf4fa2dbee064969a158ccc0bb0ce9f286ceb3617e470eab1c1f')
+            'acbcf462628daf4fa2dbee064969a158ccc0bb0ce9f286ceb3617e470eab1c1f'
+            'b812176f6061d135ab45facecf5a05922d9ffd5ec0a6f17c3e3a5a74729034b1')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -304,14 +339,17 @@ prepare() {
     false
   fi
 
-  set -x
   #cp -p driver/2.6.27/dgrp_mon_ops.c{,.orig}; false
   #diff -pNau5 driver/2.6.27/dgrp_mon_ops.c{.orig,} > '0002-kernel-5.0.0-do_gettimeofday.patch'
-#  patch -Nbup0 -i "${srcdir}/0002-kernel-5.0.0-do_gettimeofday.patch"
+  #patch -Nbup0 -i "${srcdir}/0002-kernel-5.0.0-do_gettimeofday.patch"
 
-  #cp -pr driver/2.6.27{,.orig}
+  #cp -pr driver/2.6.27{,.orig}; false
   #diff -pNaru5 driver/2.6.27{.orig,} > '0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch'
-#  patch -Nbup0 -i "${srcdir}/0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch"
+  #patch -Nbup0 -i "${srcdir}/0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch"
+
+  #cp -pr driver/2.6.27{,.orig}; false
+  #diff -pNaru5 driver/2.6.27{.orig,} > '0004-kernel-5.6-proc_dir_entry-proc_ops.patch'
+  patch -Nbup0 -i "${srcdir}/0004-kernel-5.6-proc_dir_entry-proc_ops.patch"
 
   # Standardize name of RealPort
   sed -e "s/RealPort/${_opt_RealPort}/gI" -i $(grep -lrF $'RealPort\nRealport' .)
@@ -321,7 +359,7 @@ prepare() {
 
   # Fix configure
   sed -e '# Cosmetic fix for newer gcc compilers' \
-      -e 's:\(3.9\*|4.\*\))$:\1|5.*|6.*|7.*|8.*|9.*):g' \
+      -e '#s:\(3.9\*|4.\*\))$:\1|5.*|6.*|7.*|8.*|9.*):g' \
       -e "# I can't find any other way to fix the modules dir" \
       -e 's:/lib/modules/:/usr&:g' \
       -e '# Kill a harmless mkdir error. They mkdir the folder then dont use it.' \
