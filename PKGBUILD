@@ -18,9 +18,9 @@ source=("${_pkgname}::git+https://github.com/Kharacternyk/${_pkgname}.git#branch
 sha256sums=(SKIP)
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${_pkgname}"
     local _version="$(git describe --tags)"
-	printf "${_version#v}"
+    printf "${_version#v}"
 }
 
 package() {
