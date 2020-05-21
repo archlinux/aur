@@ -2,8 +2,8 @@
 
 _basename=egl-wayland
 pkgname="lib32-$_basename"
-pkgver=1.1.4
-pkgrel=2
+pkgver=1.1.5
+pkgrel=1
 pkgdesc="EGLStream-based Wayland external platform (32-bit)"
 arch=(x86_64)
 url=https://github.com/NVIDIA/egl-wayland
@@ -11,7 +11,7 @@ license=(MIT)
 depends=('lib32-wayland' 'eglexternalplatform' "$_basename")
 makedepends=('meson' 'git')
 options=(!emptydirs)
-_commit=47d96a84b04d21cd0a2f23b59a4936c829a65364  # tags/1.1.4
+_commit=f08e1a570eee30cbaed4c49e761830667f5ba29e  # tags/1.1.5
 source=("git+$url#commit=$_commit"
         glvnd.diff)
 sha256sums=('SKIP'
