@@ -5,7 +5,7 @@ pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.6
 _minor=13
-_clr=952
+_clr=953
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,11 +16,11 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=33110
+_clear_version=33170
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=b02108f45b049f88cc0dce3d909146281ccf10b6431044965f33145a31779517
+_config_hash=4ca6f0bef1bef36fd79aecc92ced0c0b1827fac8c445109376cd5bef5c1aae4e
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -70,3 +70,6 @@ b2sums=('897982c2f76a4f2a6b9a51428d534b74d1419310cd85dbd2ffcb95eeabf8c301aa3b22b
 b2sums=('0e2ada54d6dc6b40a58979cc756a223ab125aaaa7d0009aec0523934ed9611732b179f4291cd0fcdf0067f08142caf0c39e8aae56c3998fc5bf5ce2041c1f4f3'
         'a38c978f5852245d25978b562aa3b1aec76fc2d9ba84cfbdd569970787def9f483b8ec60f2db3fdccd9c68cc8c24202cc7ad0cc65eb72b982b1ca4946b584f76'
         '130c8882614ef8a896d3963687cc00f3a0e5b6545bad23dd69e418e2e2d007335eae86e85a28f47d8f2a351a651873dccd1e1e1306c4850948ae4bdf2ae96d0a')
+b2sums=('609b665efbd3d6ef5b803854a008612766a30a6c0270281fb1359dc71ab127b14dd39245d6ce3773354386e21f2b4b38419f7d1ae873f3b7663d510cd94d50a3'
+        'b4bfbf21d840b983b761a8443fc32cffdaba722632602c25c1d63b0a08ffd5023ece5b039862e9d5e3c9b6f5923c4b45507f6885bced1ac3090cd60a87a9c71c'
+        '102add95d577ab5954483174f11f3ca047697d510d0566c9c3319238bd3035a7477039175691d17a1af3f4fece40601396c75a853fbec923704427a4c16db866')
