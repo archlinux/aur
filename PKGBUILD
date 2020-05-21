@@ -2,9 +2,9 @@
 # Contributor: Rod Kay <charlie5 on #ada at freenode.net>
 # Contributor: Earnestly <zibeon AT googlemail.com>
 pkgname=gprbuild-git
-pkgver=r3307.832b1ce6
+pkgver=r3601.cf5c323f
 pkgrel=1
-pkgdesc="Build system for multi-language systems"
+pkgdesc="Builder for multi-language systems"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gprbuild/"
 license=('GPL3')
@@ -18,8 +18,8 @@ source=('git+https://github.com/AdaCore/gprbuild.git'
         'relocatable-build.patch'
         'expose-cargs-and-largs-makefile.patch')
 sha1sums=('SKIP'
-          '4aaab0df8b611750d2cb35973ed28823fb233989'
-          'db88bcb65d1a5f41c5b30e0c3dea996c47c4f5b9')
+          '91b20bde99cf02410cdb2b74aa1adb014458a9b3'
+          'ddaf20842ed9879c3f1cb24b3eb7615d5cfe61a5')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
