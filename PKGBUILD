@@ -1,5 +1,5 @@
 # PKGBUILD Author: Hui Yiqun <huiyiqun@gmail.com>
-# Maintainer: pan93412  <pan93412@gmail.com>
+# Maintainer: pan93412 <pan93412@gmail.com>
 
 _pkgname=nginx
 pkgname=$_pkgname-rtmp-sergey-git
@@ -29,10 +29,10 @@ source=(https://nginx.org/download/nginx-$_nginx_ver.tar.gz
         logrotate)
 provides=('nginx')
 conflicts=('nginx')
-md5sums=('55022aa5715386c994f6773478822853'
-         'SKIP'
-         'ef491e760e7c1ffec9ca25441a150c83'
-         '6a01fb17af86f03707c8ae60f98a2dc2')
+sha256sums=('4c373e7ab5bf91d34a4f11a0c9496561061ba5eee6020db272a17a7228d35f99'
+            'SKIP'
+            '65f5af0f27ce3c5263d99d70a57fd3b0cb62aa99df786205029e68563e41e1ee'
+            '06ebe161af3e761f2e2e35a67c6c0af27bf61aea7cd4ba8b28372ced5e3b3175')
 
 _common_flags=(
   --with-compat
