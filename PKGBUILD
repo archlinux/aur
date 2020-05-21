@@ -2,7 +2,7 @@
 pkgname=mediawiki2latex-bin
 pkgver=7.39
 pkgrel=1
-pkgdesc="Mediawiki2latex, arch specific pre-built binary"
+pkgdesc="Mediawiki2latex, convert any mediawiki page to pdf. Arch specific pre-built binary, statically linked."
 arch=('x86_64')
 url="https://sourceforge.net/projects/wb2pdf/"
 license=('GPL')
@@ -15,8 +15,8 @@ optdepends=(
  'texlive-langgreek: Language support for Greek'
  'texlive-langcyrillic: Language support for Cyrillic'
 	    )
-source=("${pkgname}-${pkgver}-${pkgrel}::https://github.com/varagnac/prebuilt-packages/raw/master/mediawiki2latex-bin-7.39-1.tar.gz")
-md5sums=('6ebc7f9f2d7fb9d4c98bdda6463471b5')
+source=("${pkgname}-${pkgver}-${pkgrel}::https://github.com/varagnac/prebuilt-packages/raw/master/mediawiki2latex-bin-7.39-1.tar.zst")
+md5sums=('16ce4bcf40052d259d7aaed7f430bed6')
 
 package() {
 	cd "$srcdir/"
