@@ -3,21 +3,19 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-git
 pkgver=3.6.1.r23.g5ab3129
-pkgrel=1
+pkgrel=2
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
 url="https://github.com/Plagman/gamescope"
 license=("custom:BSD-2-Clause")
-depends=("wlroots-git" "sdl2" "libxcomposite" "vulkan-icd-loader" "libxtst")
+depends=("wlroots-git" "sdl2" "libxcomposite" "vulkan-icd-loader" "libxtst" "libliftoff")
 makedepends=("git" "meson" "ninja" "patch")
-provides=($_pkgname "steamcompmgr" "libliftoff")
-conflicts=($_pkgname "steamcompmgr" "libliftoff")
+provides=($_pkgname "steamcompmgr")
+conflicts=($_pkgname "steamcompmgr")
 source=("git+https://github.com/Plagman/gamescope.git"
-        "git+https://github.com/emersion/libliftoff.git#commit=cfeee41ec1aa03578bfbe4cd513a25e84c407dec"
-        "use-system-wlroots.patch")
+        "use-system-libs.patch")
 sha512sums=('SKIP'
-            'SKIP'
-            '11878aae7f7c0f7ef01f0b85ce83d5fcea2b339d309dc34dea55d7bcd04ea9d03257f23313c464296b46e1e61e14b91d007c7cfb0d993434afab07f280d9961c')
+            '2459cca2891c2de061a35dbb8896ac16c51e86e338d042e7a40f8742b59325d412232b653c6a36347af528cde8226e250f315a5b6c98d0b76ac5001099c7a245')
 
 
 pkgver() {
@@ -29,20 +27,22 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
     
-    patch -p1 < "../use-system-wlroots.patch"
-    git rm "subprojects/wlroots"  # remove wlroots submodule, to avoid downloading unneccessary dependencies
-    git submodule init
-    git config submodule.subprojects/libliftoff.url $srcdir/libliftoff
-
-    git submodule update
+    patch -p1 < "../use-system-libs.patch"
 }
 
 build() {
+
     meson --prefix /usr --buildtype=release "$srcdir/$_pkgname" build
     ninja -C build
 }
 
+check() {
+
+    ninja -C build test
+}
+
 package() {
+
     DESTDIR="$pkgdir" ninja -C build install
 
     cd "$srcdir/$_pkgname"
