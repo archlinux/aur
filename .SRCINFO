@@ -1,18 +1,15 @@
 pkgbase = hipblas
-	pkgdesc = Next generation BLAS implementation for ROCm platform
+	pkgdesc = ROCm BLAS marshalling library
 	pkgver = 3.3.0
-	pkgrel = 1
-	url = https://github.com/ROCmSoftwarePlatform/hipBLAS
+	pkgrel = 2
+	url = https://rocmdocs.amd.com/en/latest/ROCm_Libraries/ROCm_Libraries.html#hipblas
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = hcc>=3.3.0
-	makedepends = python2
-	makedepends = comgr>=3.3.0
-	makedepends = rocminfo
-	depends = hcc
-	depends = hip
-	source = https://github.com/ROCmSoftwarePlatform/hipBLAS/archive/rocm-3.3.0.tar.gz
+	makedepends = hcc
+	depends = rocblas
+	depends = hip-hcc
+	source = hipblas-3.3.0.tar.gz::https://github.com/ROCmSoftwarePlatform/hipBLAS/archive/rocm-3.3.0.tar.gz
 	source = hipblas_hsa.patch
 	sha256sums = 7be4f69749fb0b8deeaf47615f2c1ffbeee15f9cd6ef14cfea2a550cb0347a50
 	sha256sums = d5206ce084f065f860ba1b1f9dc860c1500d9d4cc0b92473e1072ad819e8148d
