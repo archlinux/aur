@@ -1,2 +1,2 @@
-au BufNewFile,BufRead *.txr setf txr
-au BufNewFile,BufRead *.tl setf tl
+au BufNewFile,BufRead *.txr setf txr | set lisp
+au BufNewFile,BufRead *.tl,*.tlo setf tl | set lisp
