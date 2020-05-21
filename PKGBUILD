@@ -2,16 +2,17 @@
 _pkgname=vibrantlinux
 pkgname=vibrantlinux-git
 pkgrel=1
-pkgdesc='vibranceGUI replacement for Linux (NVIDIA only)'
+pkgdesc='vibranceGUI replacement for Linux'
 arch=('x86_64' 'i686')
 url='https://github.com/zee-mzha/vibrantlinux'
 license=('MIT')
-depends=('nvidia-settings' 'qt5-base')
+depends=('qt5-base' 'vibrant' 'libxnvctrl')
 makedepends=('git')
-conflicts=()
-source=("${_pkgname}::git+https://github.com/zee2200/vibrantLinux.git" 'vibrantLinux.desktop')
+conflicts=('vibrantlinux')
+provides=('vibrantlinux')
+source=("${_pkgname}::git+https://github.com/zee-mzha/vibrantLinux.git" 'vibrantLinux.desktop')
 sha256sums=('SKIP' 'SKIP')
-pkgver=1.2.5.r1.g4ed73ef
+pkgver=2.0.0.r0.g400e114
 
 pkgver() {
     cd "${_pkgname}"
