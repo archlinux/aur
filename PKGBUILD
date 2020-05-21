@@ -2,7 +2,7 @@
 # Contributor: fkxxyz <fkxxyz@163.com>
 pkgname=fcitx-baidupinyin
 pkgver=1.0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fcitx wrapper for Baidu Pinyin IM engine"
 arch=("x86_64")
 url="https://srfsh.baidu.com/site/guanwang_linux/index.html"
@@ -40,7 +40,7 @@ package(){
     sed -i  's|/opt/apps/com.baidu.fcitx-baidupinyin/files/bin/baidu-qimpanel|/usr/bin/baidu-qimpanel|g' "$pkgdir"/usr/bin/bd-qimpanel.watchdog.sh
     
     # use BDIMSettings as its configtool, if you want to use fcitx-qimpanel, comment this line
-    if [ ! -f /usr/bin/fcitx-qimpanel-configtool ]; then
+    if [ ! -f '/usr/bin/fcitx-qimpanel-configtool' ]; then
         mv "$pkgdir"/usr/bin/BDIMSettings "${pkgdir}"/usr/bin/fcitx-qimpanel-configtool
     fi
     
