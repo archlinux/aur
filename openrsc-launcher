@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /usr/share/java/openrsc-launcher/
+exec java -jar OpenRSC.jar "$@" >/dev/null
