@@ -1,0 +1,31 @@
+diff --git a/src/clustering/immediate_consistency/history.hpp b/src/clustering/immediate_consistency/history.hpp
+index 1c0568866d..6dcfac1901 100644
+--- a/src/clustering/immediate_consistency/history.hpp
++++ b/src/clustering/immediate_consistency/history.hpp
+@@ -4,6 +4,7 @@
+ 
+ #include <map>
+ #include <set>
++#include <stdexcept>
+ 
+ #include "concurrency/signal.hpp"
+ #include "containers/uuid.hpp"
+diff --git a/src/crypto/random.cc b/src/crypto/random.cc
+index 8f7381b6c7..3939a4f40c 100644
+--- a/src/crypto/random.cc
++++ b/src/crypto/random.cc
+@@ -1,10 +1,14 @@
+ // Copyright 2010-2016 RethinkDB, all rights reserved.
++#include <stdlib.h>
++#include <sys/types.h>
++
+ #include "crypto/random.hpp"
+ 
+ #include <openssl/rand.h>
+ 
+ #include "crypto/error.hpp"
+ 
++
+ namespace crypto {
+ 
+ void detail::random_bytes(unsigned char *data, size_t size) {
