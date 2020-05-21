@@ -1,0 +1,16 @@
+pkgbase = tscrape
+	pkgdesc = Twitter scraper
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://codemadness.org/tscrape.html
+	arch = x86_64
+	license = custom:ISC license
+	makedepends = gcc-libs
+	depends = glibc
+	provides = tscrape
+	conflicts = tscrape
+	source = https://codemadness.org/releases/tscrape/tscrape-0.5.tar.gz
+	sha256sums = 826611882263959faed479589b78db01891a68e0b1e15e2d32fdacfea22af5a4
+
+pkgname = tscrape
+
