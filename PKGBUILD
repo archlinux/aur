@@ -6,7 +6,8 @@ pkgver=0.9.7.r1.g2edd2fa
 pkgrel=3
 pkgdesc="A general object-oriented pattern matcher for Python, based on Alessandro Warth's OMeta."
 
-url="https://github.com/wbond/pymeta3"
+url="https://github.com/wbond/pybars3"
+license=("LGLP3")
 arch=("any")
 provides=("python-pybars3")
 depends=('python-pymeta3')
@@ -29,4 +30,6 @@ prepare() {
 package() {
 	cd "$pkgname"
 	python setup.py install --root="$pkgdir/" --optimize=1
+
+	# install 
 }
