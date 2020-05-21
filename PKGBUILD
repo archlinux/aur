@@ -3,14 +3,13 @@
 # Contributor: Steven She <mintcoffee@gmail.com>
 # Contributor: vbPadre <vbPadre@gmail.com>
 
-set -u
 pkgbase='cnrdrvcups-lb'
 pkgname="${pkgbase}"
 # The download link changes with every version, try to keep changes in one place
 _pkgver='5.10';  _dl='8/0100007658/13'
 
 pkgver="${_pkgver}"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
 arch=('x86_64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
@@ -43,13 +42,11 @@ prepare() {
     # In order to keep $srcdir structure tidy we need a place for the extracted sources
     mkdir "${_srcdir}"
     cd "${_srcdir}"
-    set -u
     bsdtar -xf "${srcdir}/linux-UFRII-drv-v${_pkgver//\./}-uken/Sources/${pkgbase}-${pkgver}-1.tar.gz"
 
     local _specs=(cnrdrvcups-*.spec)
     if [ "${#_specs[@]}" -ne 1 ]; then
         echo 'Too many or too few spec files'
-        set +u
         false
     fi
 
@@ -100,7 +97,7 @@ prepare() {
         -e 's:ln -sf :ln -s :g' \
         > 'make.install.Arch'
 
-    set +u
+
 }
 
 _setvars() {
@@ -133,19 +130,16 @@ _setvars() {
 }
 
 build() {
-  set -u
-
+  
   cd "${_srcdir}"
   local _vars; _setvars
   # Bash does not recognize var assigments hidden by array expansion so we use env.
   env "${_vars[@]}" \
   sh -e -u -x 'make.Arch'
 
-  set +u
 }
 
 package() {
-    set -u
     cd "${_srcdir}"
 
     local _vars; _setvars
@@ -191,7 +185,4 @@ package() {
     install -Dpm644 "LICENSE-EN.txt" "${pkgdir}/usr/share/licenses/${pkgname}/Documents/LICENSE-EN.txt"
     popd
     
-    set +u
 }
-
-set +u
