@@ -1,13 +1,13 @@
 pkgbase = spacman
 	pkgdesc = A Package Management Tool with Whitelist Package List.
-	pkgver = 1.0.4
-	pkgrel = 2
+	pkgver = 1.0.5
+	pkgrel = 1
 	url = https://github.com/fkxxyz/spacman
 	arch = any
 	license = GPL3
 	depends = python
-	source = spacman::https://github.com/fkxxyz/spacman/raw/2c86491bf7ff153edaddf3eea02d00bd44f3967e/spacman.py
-	sha256sums = eafe7fcf023718d103a122d919714e1a796fd01ee0dff5fce2799c77d7a87f09
+	source = https://github.com/fkxxyz/spacman/archive/1.0.5.tar.gz
+	sha256sums = fd07ac11e5c0f40fc2cf4c416d605df033849d174509463bbc96cad89b7e96d6
 
 pkgname = spacman
 
