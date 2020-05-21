@@ -5,8 +5,8 @@
 pkgname=xmlada
 pkgver=2020
 _upstream_ver=2020-20200429-19A99
-pkgrel=1
-pkgdesc="An XML parser for Ada94"
+pkgrel=2
+pkgdesc="An XML parser for Ada95"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/xmlada/"
 license=('GPL3' 'custom')
