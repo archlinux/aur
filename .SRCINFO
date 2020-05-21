@@ -1,21 +1,27 @@
 pkgbase = gprbuild
 	pkgdesc = Builder for multi-language systems
 	pkgver = 2020
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/AdaCore/gprbuild/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = gprbuild-bootstrap
-	depends = libgpr
-	provides = gprbuild-bootstrap
-	conflicts = gprbuild-bootstrap
+	makedepends = xmlada
 	source = gprbuild-2020-20200429-19BD2-src.tar.gz::https://community.download.adacore.com/v1/408ec35c3bb86bd227db3da55d3e1e0c572a56e3?filename=gprbuild-2020-20200429-19BD2-src.tar.gz
 	source = relocatable-build.patch
-	source = expose-cargs-and-largs-makefile.patch
+	source = always-use-host-gprinstall.patch
 	sha1sums = 408ec35c3bb86bd227db3da55d3e1e0c572a56e3
 	sha1sums = 91b20bde99cf02410cdb2b74aa1adb014458a9b3
-	sha1sums = ddaf20842ed9879c3f1cb24b3eb7615d5cfe61a5
+	sha1sums = 66792ebc73aff76a368bd902adc6a6f181d1d878
+
+pkgname = libgpr
+	pkgdesc = Ada library to handle GPRbuild project files
+	depends = xmlada
 
 pkgname = gprbuild
+	depends = libgpr
+	depends = xmlada
+	provides = gprbuild-bootstrap
+	conflicts = gprbuild-bootstrap
 

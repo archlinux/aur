@@ -1,0 +1,11 @@
+--- a/Makefile	2020-05-21 18:07:25.521090704 +0200
++++ b/Makefile	2020-05-21 18:07:45.827341018 +0200
+@@ -40,7 +40,7 @@
+ # target options for cross-build
+ ifeq ($(HOST),$(TARGET))
+ GTARGET=
+-INSTALLER=exe/$(BUILD)/$(LIB_INSTALLER)
++INSTALLER=$(LIB_INSTALLER)
+ else
+ GTARGET=--target=$(TARGET)
+ INSTALLER=$(LIB_INSTALLER)
