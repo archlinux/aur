@@ -7,7 +7,7 @@ pkgver=0.5.1.r0.g61be6c2
 pkgrel=2
 url="https://github.com/wbond/pymeta3"
 
-license=("mit")
+license=("MIT")
 arch=("any")
 provides=("python-pymeta3")
 
