@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-moveit-plugins
 	pkgdesc = ROS - Metapackage for moveit plugins.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://moveit.ros.org
 	arch = any
 	license = BSD
