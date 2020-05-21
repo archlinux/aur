@@ -3,12 +3,12 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=3.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('any')
 url="https://github.com/cheat/cheat"
 license=('MIT' 'CC0 1.0 Universal')
-makedepends=('go-pie' 'git' 'pandoc')
+makedepends=('go' 'git' 'pandoc')
 optdepends=('bash-completion: for bash completions'
             'fzf: Fuzzy Finder integration for bash-completion')
 conflicts=("python-$pkgname" "$pkgname-bash-git")
