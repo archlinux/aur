@@ -1,39 +1,37 @@
 # Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
+# Contributor: xiretza <xiretza+aur@gmail.com>
 # Contributor: Rod Kay <charlie5 on #ada at freenode.net>
 # Contributor: Earnestly <zibeon AT googlemail.com>
-pkgname=gprbuild-git
+pkgbase=gprbuild-git
+pkgname=(libgpr-git gprbuild-git)
 pkgver=r3601.cf5c323f
 pkgrel=1
 pkgdesc="Builder for multi-language systems"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gprbuild/"
 license=('GPL3')
-depends=('libgpr')
-makedepends=('git' 'gprbuild-bootstrap-git')
-provides=("gprbuild-bootstrap")
-conflicts=("gprbuild-bootstrap")
+makedepends=('git' 'gprbuild-bootstrap' 'xmlada')
 
-# gprbuild-bootstrap is here only to bootstrap gprbuild and xmlada
-provides=("${pkgname%-git}" "gprbuild-bootstrap-git")
-conflicts=("${pkgname%-git}" "gprbuild-bootstrap-git")
 source=('git+https://github.com/AdaCore/gprbuild.git'
         'relocatable-build.patch'
-        'expose-cargs-and-largs-makefile.patch')
+        'always-use-host-gprinstall.patch')
 sha1sums=('SKIP'
           '91b20bde99cf02410cdb2b74aa1adb014458a9b3'
-          'ddaf20842ed9879c3f1cb24b3eb7615d5cfe61a5')
+          '66792ebc73aff76a368bd902adc6a6f181d1d878')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgbase%-git}"
     printf "r%s.%s" \
         "$(git rev-list --count HEAD)" \
         "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgbase%-git}"
     patch -Np1 -i "$srcdir/relocatable-build.patch"
-    patch -Np1 -i "$srcdir/expose-cargs-and-largs-makefile.patch"
+    # By default, it tries to use the freshly-built gprinstall to install gprbuild, but that requires libgpr,
+    # which can't be installed yet. Simply fall back to gprinstall from gprbuild-bootstrap
+    patch -Np1 -i "$srcdir/always-use-host-gprinstall.patch"
 
     # GPRbuild hard-codes references to /usr/libexec, but ArchLinux packages
     # must use /usr/lib instead.
@@ -44,17 +42,35 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}"
-    make prefix=/usr BUILD=production PROCESSORS="$(nproc)" setup
-    make GPRBUILD_OPTIONS=-R BUILD=production
+    cd "$srcdir/${pkgbase%-git}"
+
+    export OS=UNIX
+    GPRBUILD_OPTIONS="-R -cargs $CFLAGS -largs $LDFLAGS -gargs"
+    make BUILD=production setup
+
+    make GPRBUILD_OPTIONS="$GPRBUILD_OPTIONS" libgpr.build
+    make GPRBUILD_OPTIONS="$GPRBUILD_OPTIONS" build
 }
 
-package() {
-    cd "$srcdir/${pkgname%-git}"
+package_libgpr-git() {
+    pkgdesc="Ada library to handle GPRbuild project files"
+    provides=('libgpr')
+    conflicts=('libgpr')
+    depends=('xmlada')
 
-    # Make one install at a time to avoid GPRinstall reading/writing to
-    # the same installed project files at the same time.
-    make prefix="$pkgdir/usr" install -j1  BUILD=production
+    cd "$srcdir/${pkgbase%-git}"
+
+    make prefix="$pkgdir/usr" libgpr.install
+}
+
+package_gprbuild-git() {
+    provides=('gprbuild-bootstrap' 'gprbuild')
+    conflicts=('gprbuild-bootstrap' 'gprbuild')
+    depends=('libgpr' 'xmlada')
+
+    cd "$srcdir/${pkgbase%-git}"
+
+    make prefix="$pkgdir/usr" install
 
     # We don't need to distribute the installation script
     rm -f -- "$pkgdir/usr/doinstall"
