@@ -1,8 +1,8 @@
 #Maintainer: weearc <q19981121@163.com>
 pkgname=motrix
 _pkgname=Motrix
-pkgver=v1.5.10
-_pkgver=1.5.10
+pkgver=v1.5.12
+_pkgver=1.5.12
 pkgrel=0
 epoch=
 pkgdesc="elegent downloading tool frontend for aria2c,using vue(release version)"
