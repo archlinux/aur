@@ -5,7 +5,7 @@ url='https://moveit.ros.org'
 pkgname='ros-melodic-moveit-planners-ompl'
 pkgver='1.0.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(ros-melodic-moveit-core
@@ -29,7 +29,7 @@ ros_depends=(ros-melodic-moveit-core
   ros-melodic-eigen-conversions)
 depends=('ompl' ${ros_depends[@]})
 
-_dir="moveit-${pkgver}/moveit_planners_ompl"
+_dir="moveit-${pkgver}/moveit_planners/ompl"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
 sha256sums=('b0ac91cd4c4dc29d9bd5e3885a1a457252495b3f2bedb46ddfe04154f5ac2358')
 
