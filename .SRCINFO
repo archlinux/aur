@@ -1,0 +1,32 @@
+pkgbase = mingw-w64-openimageio
+	pkgdesc = A library for reading and writing images.
+	pkgver = 2.1.15.0
+	pkgrel = 1
+	url = https://github.com/OpenImageIO/oiio/
+	arch = any
+	license = BSD-3-Clause
+	depends = mingw-w64-boost
+	depends = mingw-w64-openexr
+	depends = mingw-w64-libtiff
+	optdepends = mingw-w64-libjpeg-turbo
+	optdepends = mingw-w64-bzip2
+	optdepends = mingw-w64-libpng
+	optdepends = mingw-w64-zlib
+	optdepends = mingw-w64-intel-tbb
+	optdepends = mingw-w64-giflib
+	optdepends = mingw-w64-libwebp
+	optdepends = mingw-w64-freetype2: install mingw-w64-freetype2-bootstrap and mingw-w64-cairo-bootstrap first.
+	optdepends = mingw-w64-opencolorio
+	optdepends = mingw-w64-opencv
+	optdepends = mingw-w64-ffmpeg
+	optdepends = mingw-w64-libsquish
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://github.com/OpenImageIO/oiio/archive/Release-2.1.15.0.tar.gz
+	source = mingw-compile-fix.patch
+	sha256sums = 95b90ba22b73765cbcbd9e11891769c2e78696ad24d4af77ef3f3c8674422401
+	sha256sums = 87e13ccaf0359ad86713721448f14073d9e4b8904fb1353b259c351482c326a7
+
+pkgname = mingw-w64-openimageio
+
