@@ -2,7 +2,7 @@
 # Contributors: Thynix
 
 _fred=build01485
-_wot=next-30
+_wot=next
 _keyutils=v5026
 _upnp=10007
 _library=v37-dw-rw3
@@ -57,7 +57,7 @@ prepare() {
     cd fred
 
     # Java 14 support
-    git pull -r -v https://github.com/skydrome/fred.git gradle-6.3-aur -q
+    git pull -r -v https://github.com/skydrome/fred.git gradle-6.4-aur -q
 
     rm -f seednodes.fref
     for node in "$srcdir"/seedrefs/0* ;do
