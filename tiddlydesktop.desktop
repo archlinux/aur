@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=TiddlyDesktop
 GenericName=TiddlyDesktop
-Version=0.0.13
+Version=0.0.14
 Comment=TiddlyDesktop is a special purpose web browser for working with locally stored TiddlyWikis.
 Exec=tiddlydesktop
 Icon=tiddlydesktop
