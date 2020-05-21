@@ -1,7 +1,7 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 pkgname=yade
 pkgver=2020.01a
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source Discrete Element Method"
 arch=("x86_64")
 url='https://yade-dem.org/doc/index.html'
@@ -13,7 +13,6 @@ depends=(
     # AUR packages
     'python-minieigen-git' 'python-pygraphviz' 'loki-lib' 
 )
-#boost  libqglviewer  ipython python-sphinx python-mpi4py python-matplotlib eigen   loki vtk cgal     coin-or  python-mpmath python-pygraphviz python-xlib python-minieigen-git python-future
 optdepends=(
     'gl2ps: an OpenGL to PostScript printing library'
     'vtk: open source software for manipulating and displaying scientific data (Recommended)'
@@ -22,6 +21,7 @@ optdepends=(
     'openblas: optimized and parallelized alternative to the standard blas+lapack (fluid coupling)'
     'metis: matrix preconditioning (fluid coupling)'
     'openmpi: library for parallel distributed computing (For MPI and OpenFOAM coupling)'
+    
     # simply use sudo pacman -S coin-or to install the following:
     'coin-or-asl: Linear Programming Solver in group coin-or (For PotentialBlock)'
     'coin-or-cbc: Linear Programming Solver in group coin-or (For PotentialBlock)'
@@ -40,19 +40,16 @@ provides=('yade')
 source=("https://launchpad.net/yade/trunk/yade-1.00.0/+download/yade-${pkgver}.tar.bz2")
 sha512sums=('91262e24e361bd2f7139426fe32273efb8907271d870eb4f71cf659a2b4ef391123c3e60c39dea1255bbdc4c1ff442a40e0a9eaeb0fff84ade28bd945da6c16e')
 
-
-
 prepare(){
-    cd "$srcdir"
     # Follow https://yade-dem.org/doc/installation.html#compilation
+    cd "$srcdir"
     mv trunk-${pkgver} trunk 
     mkdir build 
 }
 build(){
-    cd "$srcdir"/build
-    # I hope CMAKE_INSTALL_PREFIX=/usr won't cause bugs.
     # WARNING: Package contains reference to $srcdir, but all to "$srcdir"/trunk, I think it's safe. 
     # Anyway, I still want to deal with this, but need help.
+    cd "$srcdir"/build
     cmake ../trunk \
         -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
         -DENABLE_SPH=ON   -DENABLE_PROFILING=ON  -DCHOLMOD_GPU=ON -DENABLE_PYTHON3=ON -DENABLE_LIQMIGRATION=ON -DENABLE_MASK_ARBITRARY=ON  -DNOSUFFIX=ON \
@@ -62,6 +59,5 @@ build(){
 
 package(){
     cd "$srcdir"/build
-#     mv lib64 lib
     make install DESTDIR="${pkgdir}"
 }

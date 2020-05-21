@@ -1,7 +1,7 @@
 pkgbase = yade
 	pkgdesc = An Open Source Discrete Element Method
 	pkgver = 2020.01a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://yade-dem.org/doc/index.html
 	arch = x86_64
 	license = GPL2
