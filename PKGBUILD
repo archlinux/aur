@@ -19,7 +19,7 @@ makedepends=('git' 'python2-setuptools')
 conflicts=('python-pafy' 'python2-pafy-git')
 
 source=("python-pafy-$pkgver.tar.gz::https://github.com/mps-youtube/pafy/archive/v$pkgver.tar.gz")
-sha1sums=('e190a90949605353a9c4c415f41fd4599f4ce1db')
+sha512sums=('93a69b72bca33567499d5a10c0cebfb02db1df461c128f6a3a53eed5f84ae4364d6bbe432f2a337b82c86302e942d4e194922663702e61b003e3d574300c7383')
 
 package() {
 	cd pafy-$pkgver
