@@ -1,6 +1,6 @@
 pkgbase = eclint
 	pkgdesc = EditorConfig linter
-	pkgver = v0.1.12
+	pkgver = v0.2.0
 	pkgrel = 1
 	url = https://gitlab.com/greut/eclint
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = eclint
 	makedepends = go
 	makedepends = gzip
 	depends = glibc
-	source = eclint-v0.1.12.tar.gz::https://gitlab.com/greut/eclint/-/archive/v0.1.12/eclint-v0.1.12.tar.gz
-	sha256sums = 85b5786689824a43a59182e0a4e6616954199c458a9f2af5035866b56709bbad
+	source = eclint-v0.2.0.tar.gz::https://gitlab.com/greut/eclint/-/archive/v0.2.0/eclint-v0.2.0.tar.gz
+	sha256sums = 8b8d6ac9a14eac68fe5e8a6704e460c5d26796cf37d88c055ea2121b12f3add9
 
 pkgname = eclint
 
