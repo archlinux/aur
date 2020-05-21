@@ -5,7 +5,7 @@ url='https://moveit.ros.org'
 pkgname='ros-melodic-moveit-planners'
 pkgver='1.0.3'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -22,7 +22,7 @@ depends=(${ros_depends[@]})
 # sha256sums=('ee6cfcb76a7549aa89ea1d85c91492602b424599acc20538e66903cd3ccca4bd')
 
 # Tarball version (faster download)
-_dir="moveit-${pkgver}/moveit_planners"
+_dir="moveit-${pkgver}/moveit_planners/moveit_planners"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
 sha256sums=('b0ac91cd4c4dc29d9bd5e3885a1a457252495b3f2bedb46ddfe04154f5ac2358')
 
