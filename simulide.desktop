@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=SimulIDE
+GenericName=Electronic circuit simulator
+Comment=Electronic Circuit Simulator Software
+Exec=/usr/bin/simulide
+Icon=/usr/share/icons/hicolor/256x256/simulide.png
+Terminal=false
+Categories=Development;Engineering;Electronics;EDA;
+StartupNotify=true

@@ -1,0 +1,23 @@
+pkgbase = simulide-svn
+	pkgdesc = Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)
+	pkgver = r503
+	pkgrel = 1
+	url = http://simulide.blogspot.com/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = subversion
+	depends = gpsim
+	depends = qt5-multimedia
+	depends = qt5-serialport
+	depends = qt5-svg
+	depends = qt5-tools
+	provides = simulide
+	conflicts = simulide
+	source = src/simulide::svn+https://svn.code.sf.net/p/simulide/svnrepo/trunk
+	source = simulide.desktop
+	md5sums = SKIP
+	md5sums = beda8f4452562e5cc1e2c9a19ac99bb3
+
+pkgname = simulide-svn
+
