@@ -3,7 +3,7 @@
 pkgname=mingw-w64-opencolorio-git
 conflicts=("mingw-w64-opencolorio")
 provides=("mingw-w64-opencolorio")
-pkgver=2.0.0.r0
+pkgver=2.0.0.r1
 pkgrel=1
 pkgdesc="OpenColorIO (OCIO) is a complete color management solution geared towards motion picture production with an emphasis on visual effects and computer animation."
 arch=(any)
@@ -42,8 +42,12 @@ build() {
 package() {
 	for _arch in ${_architectures}; do
 		make DESTDIR="${pkgdir}" -C "build-${_arch}" install
-		mv -f "${pkgdir}/usr/${_arch}/bin/libOpenColorIO_2_0.dll" "${pkgdir}/usr/${_arch}/bin/libOpenColorIO.dll"
-		mv -f "${pkgdir}/usr/${_arch}/lib/libOpenColorIO_2_0.dll.a" "${pkgdir}/usr/${_arch}/lib/libOpenColorIO.dll.a"
+		pushd "${pkgdir}/usr/${_arch}/bin"
+			ln -s "libOpenColorIO_2_0.dll" "libOpenColorIO.dll"
+		popd
+		pushd "${pkgdir}/usr/${_arch}/lib"
+			ln -s "libOpenColorIO_2_0.dll.a" "libOpenColorIO.dll.a"
+		popd
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
 	done
