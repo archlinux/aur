@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.6.13.arch1
+pkgver=5.6.14.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -99,7 +99,7 @@ source=(
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
     "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman
-    "8218F88849AAC522E94CF470A5E9288C4FA415FA"  # Jan Alexander Steffens (heftig)
+    "A2FF3A36AAA56654109064AB19802F8B0D70FC30"  # Jan Alexander Steffens (heftig)
 )
 sha512sums=('SKIP'
             'SKIP'
@@ -124,10 +124,12 @@ prepare() {
     msg2 "Patching with Graysky's additional gcc CPU optimizatons..."
     patch -Np1 -i "$srcdir/$_reponame_gcc_patch/$_gcc_patch_name"
 
-    # From https://github.com/Tk-Glitch/PKGBUILDS/tree/master/linux53-tkg/linux53-tkg-patches
+    msg2 "Patching with Sphinx build fail workaround..."
+    patch -Np1 -i "$srcdir/sphinx-workaround.patch"
+    
+    # From https://github.com/Frogging-Family/linux-tkg/tree/master/linux56-tkg/linux56-tkg-patches
     msg2 "Patching with Undead PDS 0.99o patches, rebased to 5.6 by TkG"
     for MyPatch in \
-        sphinx-workaround.patch \
         0005-v5.6_undead-pds099o.patch \
         0005-glitched-pds.patch
     do
