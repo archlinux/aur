@@ -2,66 +2,68 @@
 # Telegram @savagezen / @savagezen_aur
 # GitHub https://github.com/savagezen/pkgbuild
 
+# Contributor: @RubenKelevra https://github.com/RubenKelevra
 # Previous Maintainer : Sauyon Lee <sauyonl@sauyon.com>
 # Contributor : Martin Wimpress <code@flexion.org>
 
-pkgname=syncthing-git
-pkgver=v1.5.0.rc.2.r18.g037934ec7
+_pkgname=syncthing
+pkgname=$_pkgname-git
+pkgver=v1.6.0.rc.5.r26.gcf7532906
 pkgrel=1
 pkgdesc="Open Source Continuous Replication / Cluster Synchronization Thing"
-url="http://syncthing.net/"
+url="https://syncthing.net/"
 license=('MPLv2')
 makedepends=('git' 'go' 'inetutils')
-conflicts=('syncthing')
-provides=('syncthing')
+conflicts=("$_pkgname")
+provides=("$_pkgname")
 arch=('i686' 'x86_64')
-source=("$pkgname::git+https://github.com/syncthing/syncthing.git")
+source=("git+https://github.com/syncthing/syncthing.git")
 sha256sums=('SKIP')
-install=${pkgname}.install
-_name=syncthing
+install=${_pkgname}.install
 
 prepare() {
-	cd "${srcdir}"
+	cd "$srcdir/$_pkgname"
+	mkdir -p "${srcdir}/../go"
+	export GOPATH="${srcdir}/../go"
+	export PATH="$PATH:$GOPATH/bin"
+	go get -d -v ./...
 }
 
 pkgver() {
-	cd "${pkgname}"
+	cd "$srcdir/$_pkgname"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	export GOPATH="${srcdir}/${pkgname}-${pkgver}"
-	cd "${srcdir}"
-	mkdir -p "src/github.com/syncthing"
-	mv "${pkgname}" "src/github.com/syncthing/${_name}"
-	cd "src/github.com/syncthing/${_name}"
-	if [ ${CARCH}" == "i686" ] ; then
-			go run build.go -no-upgrade -goarch 386 build
-	if [ ${CARCH}" == "x86_64" ] ; then
-			go run build.go -no-upgrade -goarch amd64 build
-	else
-			go run build.go -no-upgrade build
-	fi
+	cd "$srcdir/$_pkgname"
+	export GOPATH="${srcdir}/../go"
+	export PATH="$PATH:$GOPATH/bin"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	go run build.go -no-upgrade build
 }
 
 check() {
-	export GOPATH="${srcdir}"
-	cd "${srcdir}/src/github.com/syncthing/${_name}"
-#	 go run build.go -no-upgrade test
+	export GOPATH="${srcdir}/../go"
+	cd "$srcdir/$_pkgname"
+#	go run build.go -no-upgrade test
 }
 
 package() {
-	cd "${srcdir}/src/github.com/syncthing/${_name}"
-	install -Dm755 ${_name} "${pkgdir}/usr/bin/${_name}"
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/${_name}/README.md"
-	install -Dm644 "etc/linux-systemd/system/${_name}@.service" "${pkgdir}/usr/lib/systemd/system/${_name}@.service"
-	install -Dm644 "etc/linux-systemd/user/${_name}.service" "${pkgdir}/usr/lib/systemd/user/${_name}.service"
+	cd "$srcdir/$_pkgname"
+	install -Dm755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+	install -Dm644 "etc/linux-systemd/system/${_pkgname}@.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}@.service"
+	install -Dm644 "etc/linux-systemd/user/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/user/${_pkgname}.service"
 
-# license
-	install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${_name}/LICENSE
+	# license
+	install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${_pkgname}/LICENSE
 
-# man pages
-	cd "${srcdir}/src/github.com/syncthing/${_name}/man"
+	# man pages
+	cd "$srcdir/$_pkgname/man"
 	for file in $(find . -name '*.1' -print); do
 		install -Dm644 $file "${pkgdir}"/usr/share/man/man1/$file
 	done
@@ -71,4 +73,5 @@ package() {
 	for file in $(find . -name '*.7' -print); do
 		install -Dm644 $file "${pkgdir}"/usr/share/man/man7/$file
 	done
+	chmod u+w -R "$GOPATH"
 }
