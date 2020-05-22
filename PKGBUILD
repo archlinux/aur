@@ -5,7 +5,7 @@ url='https://moveit.ros.org'
 pkgname='ros-melodic-moveit-ros-move-group'
 pkgver='1.0.3'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-moveit-core
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]})
 # sha256sums=('7507264909f49f795664a5443110363bcca00cbcc3380d421af9a586d5b0ede2')
 
 # Tarball version (faster download)
-_dir="moveit-${pkgver}/moveit_ros_move_group"
+_dir="moveit-${pkgver}/moveit_ros/move_group"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
 sha256sums=('b0ac91cd4c4dc29d9bd5e3885a1a457252495b3f2bedb46ddfe04154f5ac2358')
 
