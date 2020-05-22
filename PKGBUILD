@@ -5,7 +5,7 @@ _stable_version=4548
 _stable_tag=stable/jitsi-meet_${_stable_version}
 _stable_suffix=stable-jitsi-meet_${_stable_version}
 pkgver=2.0.${_stable_version}
-pkgrel=5
+pkgrel=6
 pkgdesc="Jitsi Meet Stable"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -82,6 +82,12 @@ package() {
 
         echo "Jitsi Meet"
         tar xjvf "${srcdir}/jitsi-meet-${_stable_suffix}/jitsi-meet.tar.bz2" -C "${pkgdir}/usr/share/"
+
+	for c in $(ls "${srcdir}/jitsi-meet-${_stable_suffix}/node_modules/i18n-iso-countries/langs")
+        do
+            install -m644 "${srcdir}/jitsi-meet-${_stable_suffix}/node_modules/i18n-iso-countries/langs/${c}" "${pkgdir}/usr/share/jitsi-meet/lang/countries-${c}"
+        done
+
         find "${pkgdir}/usr/share/jitsi-meet" -type f -execdir sed -i "s#${srcdir}##g" "{}" \;
         find "${pkgdir}/usr/share/jitsi-meet" -type d -exec chmod 755 {} \;
 
