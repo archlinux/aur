@@ -1,7 +1,7 @@
 pkgbase = google-chrome-dev
 	pkgdesc = The popular and trusted web browser by Google (Dev Channel)
 	pkgver = 84.0.4147.13
-	pkgrel = 2
+	pkgrel = 1
 	url = https://www.google.com/chrome
 	install = google-chrome-dev.install
 	arch = x86_64

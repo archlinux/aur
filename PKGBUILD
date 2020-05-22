@@ -7,7 +7,7 @@
 
 pkgname=google-chrome-dev
 pkgver=84.0.4147.13
-pkgrel=2
+pkgrel=1
 pkgdesc="The popular and trusted web browser by Google (Dev Channel)"
 arch=('x86_64')
 url="https://www.google.com/chrome"
