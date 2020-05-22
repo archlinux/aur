@@ -16,6 +16,7 @@ pkgbase = radare2-cutter-git
 	depends = qt5-webengine
 	depends = icu
 	depends = python-shiboken2
+	depends = pyside2
 	provides = radare2-cutter
 	source = radare2-cutter-git::git+https://github.com/radareorg/cutter.git
 	md5sums = SKIP
