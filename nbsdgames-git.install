@@ -1,6 +1,6 @@
 post_install() {
     cat usr/share/doc/nbsdgames/score.txt
-    echo "You may create empty files jw_scores and pp_scores in this directory."
+    echo "You may create empty files {pp,jw,fsh,mnch,mt}_scores in this directory."
 }
 
 post_upgrade() {
