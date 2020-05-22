@@ -1,6 +1,6 @@
 pkgbase = eduke32-git
 	pkgdesc = Advanced Duke Nukem 3D source port - git version
-	pkgver = r8865_c4e58ebe9
+	pkgver = r9014_d473e6028
 	pkgrel = 1
 	url = http://eduke32.com
 	install = eduke32-git.install
@@ -8,7 +8,7 @@ pkgbase = eduke32-git
 	arch = x86_64
 	license = GPL
 	license = custom: BUILD
-	makedepends = subversion
+	makedepends = git
 	makedepends = gendesk
 	makedepends = glu
 	depends = sdl2_mixer
