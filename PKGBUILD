@@ -5,7 +5,7 @@
 # Contributor: Zsolt Udvari <udvzsolt@gmail.com>
 
 pkgname=activdriver
-pkgver=5.18.18
+pkgver=5.18.19
 pkgrel=0
 pkgdesc="Drivers for Promethean hardware"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('activinspire: Prometheans presentation software'
 install=$pkgname.install
 source=("http://activsoftware.co.uk/linux/repos/driver/ubuntu/pool/oss/a/$pkgname/${pkgname}_$pkgver-0~Ubuntu~1804_amd64.deb"
         "activdriver.install")
-md5sums=('cad12d9ea55b6df0344375a311e75659'
+md5sums=('4200e2d39c40b817e1fe3768f19b4cb3'
          '8a8a6ddd6741a80a5839593ed385cd9a')
 
 prepare() {
