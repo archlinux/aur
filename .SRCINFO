@@ -6,6 +6,7 @@ pkgbase = kikit-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = kicad>=5.1.0
 	depends = python-markdown2
 	depends = python-numpy
 	depends = python-shapely

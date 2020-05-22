@@ -14,7 +14,9 @@ license=("MIT")
 source=("$pkgname::git+https://github.com/yaqwsx/KiKit.git")
 md5sums=("SKIP")
 makedepends=("python-setuptools")
-depends=("python-markdown2" 
+depends=(
+	"kicad>=5.1.0"
+	"python-markdown2" 
 	"python-numpy"
 	"python-shapely"
 	"python-click"
