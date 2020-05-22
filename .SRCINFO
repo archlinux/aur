@@ -1,7 +1,7 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
 	pkgver = 5.6.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -18,6 +18,7 @@ pkgbase = linux-clear
 	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.6.14-955
 	source = enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.4-5.6_v1.patch
 	source = pci-enable-overrides-for-missing-acs-capabilities.patch
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622
@@ -26,6 +27,7 @@ pkgbase = linux-clear
 	sha256sums = SKIP
 	sha256sums = c650fc6ff773e99dbc1fda9411b10b06513c5161791106c44d5a11dbcf6420f9
 	sha256sums = 2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e
+	sha256sums = bdd05caf94135898bceac0a9d14ec6b1b458dba162d00efd46a292fe97f2679b
 
 pkgname = linux-clear
 	pkgdesc = The Clear Linux kernel and modules

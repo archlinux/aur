@@ -71,7 +71,7 @@ _srcname=linux-${_major}
 _clr=${_major}.14-955
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -85,6 +85,7 @@ source=(
   "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
   'enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.4-5.6_v1.patch'
   'pci-enable-overrides-for-missing-acs-capabilities.patch'
+  '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch'
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -114,6 +115,10 @@ prepare() {
     ### Add acs patch
         echo "Applying pci-enable-overrides-for-missing-acs-capabilities.patch ..."
         patch -Np1 -i "$srcdir/pci-enable-overrides-for-missing-acs-capabilities.patch"
+
+    ### disable USER_NS for non-root users by default
+        echo "Applying 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch ..."
+        patch -Np1 -i "$srcdir/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
 
     ### Setting config
         echo "Setting config..."
@@ -345,7 +350,8 @@ sha256sums=('e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622'
             '07e737cfdc79382dc259c4844a150d8d72ebbcdc9d7e03a9503f8f8e19f1aea4'
             'SKIP'
             'c650fc6ff773e99dbc1fda9411b10b06513c5161791106c44d5a11dbcf6420f9'
-            '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e')
+            '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e'
+            'bdd05caf94135898bceac0a9d14ec6b1b458dba162d00efd46a292fe97f2679b')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
