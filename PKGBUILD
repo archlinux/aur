@@ -1,6 +1,6 @@
 # Maintainer: Bryan Burke <bryan.t.burke@gmail.com>
 pkgname=keys-pub-git
-pkgver=v0.0.43.r0.g22cc591
+pkgver=v0.0.45
 pkgrel=1
 pkgdesc='keys.pub CLI - keys and keysd'
 arch=('x86_64')
@@ -12,14 +12,14 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --abbrev=0 --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   (
     set -o pipefail
     cd "${pkgname}"
-    git checkout $(git describe --long --tags)
+    git checkout $(git describe --abbrev=0 --tags)
     commit=$(git rev-parse --short HEAD)
     date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
