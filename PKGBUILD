@@ -1,5 +1,7 @@
-# Maintainer: Det
-# Contributors: Damian Nowak
+# Maintainer: 
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Det
+# Contributor: Damian Nowak
 
 _pkgname=jdk
 pkgname=bin32-jdk6
@@ -21,8 +23,7 @@ provides=("java32-runtime=$_major" "java32-runtime-headless=$_major" "java32-web
           "java32-runtime-jre=$_major" "java32-runtime-headless-jre=$_major" "java32-web-start-jre=$_major" "java32-environment-jdk=$_major")
 
 # Variables
-DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u'
-          'https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -o %o %u')
+DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib32/jvm/java32-$_major-$_pkgname
 
@@ -43,21 +44,20 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-#source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.bin"
-source=('https://www.dropbox.com/s/a6jvq5acpm8xk3b/jdk-6u45-linux-i586.bin'
-        "http://download.oracle.com/otn-pub/java/jce_policy/$_major/jce_policy-$_major.zip"
+source=("https://download.oracle.com/otn/java/jdk/${pkgver}-${_build}/jdk-${pkgver}-linux-i586.bin"
+        "https://download.oracle.com/otn-pub/java/jce_policy/$_major/jce_policy-$_major.zip"
         "jconsole32-$_jname.desktop"
         "jmc32-$_jname.desktop"
         "jvisualvm32-$_jname.desktop"
         "policytool32-$_jname.desktop"
         'javaws-launcher')
-md5sums=('3269370b7c34e6cbfed8785d3d0c5cbd'
-         'b20f9d6ed14e55d73a5ed204bca01e7a'
-         '8e3fb5f39a1c24945fdb9315f9743263'
-         'be4ebc20e7acd60e195231c36db4a8cf'
-         'eaaf5c10579336af3474ccb23dce2911'
-         '3adcb5783ffaa18c3480ddfa0569dce2'
-         '45c15a6b4767288f2f745598455ea2bf')
+sha256sums=('ca7debeb8924bfe07ee808b4264d4cb052ca318caa2f913ebc8d97894c5edf69'
+            '80212f7748c2671b89b6085000717c747851db004409dce3bb97f3a2aeb91cdd'
+            '6195ce056e55247365b5cc2363e5e28f8bdb6842f65a41d37732279aee17ce57'
+            'a10ec033765a0ecf1fdd8ef8dee3614391f8b3605bb8b4f0d957ff7c7c958563'
+            'c7377ddaaee8579a230356e9878030a9f2a8cbcc5c2f89114d6244db051a0a01'
+            'ce1ac5bf1fd639fe0e0fe08880e8eae5b2fbf6903a7c51ed8168aee8fd1ee66a'
+            '5a43bf54553ea39c147a67935d68646806a5053fefd527bd69c546f4c884402e')
 
 package() {
     msg2 "Extracting the .bin"
