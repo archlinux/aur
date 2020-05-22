@@ -1,0 +1,14 @@
+pkgbase = mesa-radv-drivers-git
+	pkgdesc = mesa-radv-drivers-git
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/sparzz/mesa.git
+	arch = x86_64
+	license = GPL
+	depends = meson
+	provides = mesa-radv-drivers
+	source = https://github.com/sparzz/mesa.git
+	md5sums = SKIP
+
+pkgname = mesa-radv-drivers-git
+
