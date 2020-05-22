@@ -2,7 +2,7 @@
 
 pkgname=weechat-matrix-git
 _pkgname=${pkgname%-git}
-pkgver=r723.d415841
+pkgver=r733.427cb9f
 pkgrel=1
 pkgdesc='Weechat Matrix protocol script written in Python'
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = weechat-matrix-git
 	pkgdesc = Weechat Matrix protocol script written in Python
-	pkgver = r723.d415841
+	pkgver = r733.427cb9f
 	pkgrel = 1
 	url = https://github.com/poljar/weechat-matrix
 	install = weechat-matrix-git.install
