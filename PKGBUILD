@@ -1,8 +1,8 @@
 # Maintainer: Valerii Huz <ghotrix at gmail dot com>
 pkgname=nibbler-git
 _pkgname=nibbler
-pkgver=1.1.1
-pkgrel=3
+pkgver=1.3.6
+pkgrel=1
 pkgdesc="Leela Chess Zero (Lc0) interface"
 arch=('i686' 'x86_64')
 url="https://github.com/fohristiwhirl/nibbler"
