@@ -1,21 +1,28 @@
-# Maintainer: Svitozar Cherepii <razotivs@gmail.com>
-pkgname=rvgl-loadlevel
+# Maintainer: Huki <gk7huki@gmail.com>
+# Contributor: Svitozar Cherepii <razotivs@gmail.com>
+
+pkgname=rvgl-io-loadlevel
 pkgver=18.0326
-pkgrel=1
-pkgdesc="Loading screens for RVGL custom tracks."
+pkgrel=2
+pkgdesc="Loading screens for RVGL community tracks."
 url='https://rvgl.re-volt.io'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
-optdepends=('rvgl-tracks: actual tracks loadscreens are for'
-            'rvgl-tracks-bonus: actual tracks loadscreens are for')
-source=("$pkgname-$pkgver.zip::https://distribute.re-volt.io/packs/io_loadlevel.zip")
-sha256sums=('5bb4ffcc67ec6ae2905bcf5c8634829aa0cd213f2374c7c27da0927b76edf3fb')
+optdepends=('rvgl-io-tracks: additional tracks for official events'
+            'rvgl-io-tracks-bonus: additional tracks')
+makedepends=('git')
+conflicts=('rvgl-loadlevel')
+replaces=('rvgl-loadlevel')
+groups=('rvgl-community')
+source=("rvgl_io_loadlevel"::git+https://gitlab.com/re-volt/rvio/loadlevel.git#tag=${pkgver})
+sha256sums=('SKIP')
 
 package() {
-    # Remove conflicting files present in track pack
+    cd "$srcdir/rvgl_io_loadlevel"
+
+    # Remove conflicting files present in tracks pack
     rm -r levels/industry
 
-    find levels -type f -exec \
-        install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
+    find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }

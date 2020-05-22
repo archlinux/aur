@@ -1,15 +1,19 @@
-pkgbase = rvgl-loadlevel
-	pkgdesc = Loading screens for RVGL custom tracks.
+pkgbase = rvgl-io-loadlevel
+	pkgdesc = Loading screens for RVGL community tracks.
 	pkgver = 18.0326
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rvgl.re-volt.io
 	arch = any
+	groups = rvgl-community
 	license = custom
+	makedepends = git
 	depends = rvgl-bin
-	optdepends = rvgl-tracks: actual tracks loadscreens are for
-	optdepends = rvgl-tracks-bonus: actual tracks loadscreens are for
-	source = rvgl-loadlevel-18.0326.zip::https://distribute.re-volt.io/packs/io_loadlevel.zip
-	sha256sums = 5bb4ffcc67ec6ae2905bcf5c8634829aa0cd213f2374c7c27da0927b76edf3fb
+	optdepends = rvgl-io-tracks: additional tracks for official events
+	optdepends = rvgl-io-tracks-bonus: additional tracks
+	conflicts = rvgl-loadlevel
+	replaces = rvgl-loadlevel
+	source = rvgl_io_loadlevel::git+https://gitlab.com/re-volt/rvio/loadlevel.git#tag=18.0326
+	sha256sums = SKIP
 
-pkgname = rvgl-loadlevel
+pkgname = rvgl-io-loadlevel
 
