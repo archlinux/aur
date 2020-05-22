@@ -4,20 +4,20 @@
 pkgname=nvidia-container-runtime-bin
 _pkgname=nvidia-container-runtime
 
-pkgver=3.1.4
-pkgrel=1
+pkgver=3.2.0
 
+pkgrel=1
 pkgdesc='NVIDIA container runtime'
 arch=('x86_64')
 url='https://github.com/NVIDIA/nvidia-container-runtime'
 license=('BSD')
 
 depends=('libseccomp' 'nvidia-container-toolkit<2.0.0')
-provides=('nvidia-container-runtime=3.1.2')
+provides=('nvidia-container-runtime=3.2.0')
 conflicts=('nvidia-container-runtime')
 
 source=("https://nvidia.github.io/nvidia-container-runtime/centos7/$CARCH/${_pkgname}-${pkgver}-1.$CARCH.rpm")
-sha256sums=('d4be6198bd8b64b9bbd79e91e7ce6a60ff75918611d9d30af9ce7e4af3be7618')
+sha256sums=('16982ed18615255eeee39c2f16f9310475bd765a4b47416837793e124cd99acc')
 
 package() {
   cd "$srcdir"
