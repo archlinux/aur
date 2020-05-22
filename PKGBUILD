@@ -3,7 +3,7 @@
 java_=8
 pkgname_=native-image
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=20.0.0
+pkgver=20.1.0
 pkgrel=1
 pkgdesc="Plugin to turn GraalVM-based applications into native binary images (Java ${java_} version)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url='https://github.com/oracle/graal'
 license=('custom')
 depends=("jdk${java_}-graalvm-bin")
 source=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/${pkgname_}-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
-sha256sums=('9aee17470ce750eb2454625988c59de86a79b14b811e78085553385bfa7adaff')
+sha256sums=('20dfff539bbae464b6d07303cca6f85534a66344b3bd14dff2bb5d09572b815d')
 
 package() {
     local file eq permissions mode name target
@@ -49,6 +49,10 @@ package() {
         mkdir -p -- "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$(dirname -- "$name")"
         ln -s -- "$target" "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$name"
     done < META-INF/symlinks
+
+    # work around https://github.com/oracle/graal/issues/2491
+    unlink "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/jre/lib/amd64/graal_isolate.h"
+    unlink "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/jre/lib/amd64/graal_isolate_dynamic.h"
 
     install -DTm644 LICENSE_NATIVEIMAGE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
