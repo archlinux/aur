@@ -1,6 +1,6 @@
 # Maintainer: simonsmh <simonsmh@gmail.com>
 pkgname=okteto-bin
-pkgver=1.8.8
+pkgver=1.8.9
 pkgrel=1
 pkgdesc="Build better applications by developing and testing your code directly in Kubernetes."
 arch=(x86_64 aarch64)
@@ -11,8 +11,8 @@ provides=(okteto=$pkgver)
 optdepends=(kubectl)
 source_x86_64=("okteto::https://github.com/okteto/okteto/releases/download/$pkgver/okteto-Linux-x86_64")
 source_aarch64=("okteto::https://github.com/okteto/okteto/releases/download/$pkgver/okteto-Linux-arm64")
-sha256sums_x86_64=('ebc57882c88083d63e34f92929dca2337b6f159c65507d7c906e5e5d1be69f47')
-sha256sums_aarch64=('b37d077f26a596af50f3686f64cae64e32aaf3a53e8bd2e2e5bfaaf8a1dc5f83')
+sha256sums_x86_64=('93540bad5db99051d885e11e7d5a3501cb164bb16c40103d71a168c2106dd0d7')
+sha256sums_aarch64=('a22eb731ae7b93b6004950d79ca9fbc5b218d3d84769488ae1e8e016f87a4aba')
 
 package() {
   install -Dm755 "$srcdir/okteto" "$pkgdir"/usr/bin/okteto
