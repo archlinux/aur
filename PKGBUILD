@@ -3,13 +3,13 @@
                                                                                                                                                                 
 pkgname="mumbledj-git"
 pkgver=3.2.2.r2.ea0e037
-pkgrel=3
+pkgrel=4
 pkgdesc="a mumble dj that can play music from soundcloud, youtube, and mixcloud -- git version"
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/lilmike/mumbledj"
 license=('MIT')
 depends=('aria2' 'ffmpeg' 'openal' 'opus' 'youtube-dl')
-makedepends=('git' 'go-pie')
+makedepends=('git' 'go')
 source=("mumbledj::git+https://github.com/lilmike/mumbledj.git")
 sha512sums=('SKIP')
 
@@ -27,6 +27,7 @@ build() {
   export GOPATH="${srcdir}/gopath"
   cd "${srcdir}/gopath/src/github.com/lilmike/mumbledj"
   go install \
+    -buildmode=pie \
     -gcflags "all=-trimpath=$GOPATH" \
     -asmflags "all=-trimpath=$GOPATH" \
     -ldflags "-extldflags $LDFLAGS" -v
