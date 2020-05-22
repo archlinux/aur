@@ -1,0 +1,74 @@
+diff --git a/modules/libpref/init/StaticPrefList.yaml b/modules/libpref/init/StaticPrefList.yaml
+--- a/modules/libpref/init/StaticPrefList.yaml
++++ b/modules/libpref/init/StaticPrefList.yaml
+@@ -9097,15 +9097,6 @@
+   mirror: always
+ #endif
+ 
+-#ifdef MOZ_WIDGET_GTK
+-# Always use xdg-desktop-portal to access system resources like file dialog
+-# and print dialog.
+-- name: widget.use-xdg-desktop-portal
+-  type: RelaxedAtomicBool
+-  value: false
+-  mirror: always
+-#endif
+-
+ #---------------------------------------------------------------------------
+ # Prefs starting with "xul."
+ #---------------------------------------------------------------------------
+diff --git a/toolkit/system/gnome/nsGIOService.cpp b/toolkit/system/gnome/nsGIOService.cpp
+--- a/toolkit/system/gnome/nsGIOService.cpp
++++ b/toolkit/system/gnome/nsGIOService.cpp
+@@ -12,7 +12,7 @@
+ #include "nsComponentManagerUtils.h"
+ #include "nsArray.h"
+ #include "nsPrintfCString.h"
+-#include "mozilla/StaticPrefs_widget.h"
++#include "mozilla/Preferences.h"
+ 
+ #include <gio/gio.h>
+ #include <gtk/gtk.h>
+@@ -21,6 +21,8 @@
+ #  include <dbus/dbus-glib-lowlevel.h>
+ #endif
+ 
++using namespace mozilla;
++
+ // We use the same code as gtk_should_use_portal() to detect if we're in flatpak
+ // env
+ // https://github.com/GNOME/gtk/blob/e0ce028c88858b96aeda9e41734a39a3a04f705d/gtk/gtkprivate.c#L272
+@@ -39,8 +41,8 @@
+ 
+ static bool GetShouldUseFlatpakPortal() {
+   static bool sFlatpakPortalEnv = GetFlatpakPortalEnv();
+-  return mozilla::StaticPrefs::widget_use_xdg_desktop_portal()
+-             ? true
++  return Preferences::HasUserValue("widget.use-xdg-desktop-portal")
++             ? Preferences::GetBool("widget.use-xdg-desktop-portal", false)
+              : sFlatpakPortalEnv;
+ }
+ 
+diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
+--- a/widget/gtk/nsFilePicker.cpp
++++ b/widget/gtk/nsFilePicker.cpp
+@@ -16,7 +16,7 @@
+ #include "nsIURI.h"
+ #include "nsIWidget.h"
+ #include "nsIFile.h"
+-#include "mozilla/StaticPrefs_widget.h"
++#include "mozilla/Preferences.h"
+ 
+ #include "nsArrayEnumerator.h"
+ #include "nsMemory.h"
+@@ -163,7 +163,8 @@
+   nsCOMPtr<nsIGIOService> giovfs = do_GetService(NS_GIOSERVICE_CONTRACTID);
+   // Due to Bug 1635718 always use portal for file dialog on Wayland.
+   if (gfxPlatformGtk::GetPlatform()->IsWaylandDisplay()) {
+-    mUseNativeFileChooser = true;
++    mUseNativeFileChooser =
++        Preferences::GetBool("widget.use-xdg-desktop-portal", true);
+   } else {
+     giovfs->ShouldUseFlatpakPortal(&mUseNativeFileChooser);
+   }
+
