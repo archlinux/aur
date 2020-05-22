@@ -1,0 +1,89 @@
+#!/bin/bash
+
+echo "Easy Fancontrol sCript, for GPU's of AMD, that are called as amdgpu (look at /sys/class/drm/card0/device/hwmon/hwmon1/name)"
+echo "Made by DUS46_2002"
+echo " "
+echo " "
+sleep 3
+
+loadconfig() {
+clear
+echo "Ok, let's load the number of the hwmon device on the config file"
+HWMONNUMBER=$(cat /etc/hwmonnumber)
+echo "The number is $(echo $HWMONNUMBER), so the we'll control /sys/class/drm/card0/device/hwmon/hwmon$HWMONNUMBER"
+sleep 2
+clear
+}
+
+percentcalc() {
+speed=$(echo $((y=255,z=$percent*y,u=z/100)))
+}
+
+manualmode() {
+echo "Enabling manual control of the fan..."
+echo "1" > /sys/class/drm/card0/device/hwmon/hwmon$HWMONNUMBER/pwm1_enable
+echo "	Done."
+}
+
+automode() {
+echo "Enabling automatic fan speed"
+echo "2" > /sys/class/drm/card0/device/hwmon/hwmon$HWMONNUMBER/pwm1_enable
+}
+
+runtime() {
+sleep 2
+echo "Now setting up the speed to ${manualpercent}%."
+percent=$manualpercent
+percentcalc
+echo $speed > /sys/class/drm/card0/device/hwmon/hwmon$HWMONNUMBER/pwm1
+}
+
+help() {
+cat /etc/EFC/help
+exitscript
+}
+
+exitscript() {
+exit
+}
+
+monitor() {
+clear
+while :
+do
+	clear
+	echo "Temperature: $(cat /sys/class/drm/card0/device/hwmon/hwmon$HWMONNUMBER/temp1_input) RPM: $(cat /sys/class/drm/card0/device/hwmon/hwmon$HWMONNUMBER/fan1_input)"
+	sleep 1
+done
+}
+
+loadconfig
+
+for i in "$@"
+do
+case $i in
+	-s=*| --speed=*)
+	manualmode
+	manualpercent="$(echo "$i" | sed 's/[^=]*=//')"
+	runtime
+	monitor
+	shift
+	;;
+	-h | --help)
+	help
+	exitscript
+	;;
+	-a | --auto)
+	automode
+	monitor
+	exitscript
+	;;
+	-m | --monitor)
+	monitor
+	exitscript
+	shift
+	;;
+esac
+done
+
+exitscript
