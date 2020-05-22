@@ -4,7 +4,7 @@ pkgname=mingw-w64-openimageio
 pkgver=2.1.15.0
 pkgrel=1
 pkgdesc="A library for reading and writing images."
-url="https://github.com/OpenImageIO/oiio/"
+url="http://www.openimageio.org/"
 license=("BSD-3-Clause")
 depends=(
 	"mingw-w64-boost"
