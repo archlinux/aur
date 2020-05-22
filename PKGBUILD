@@ -3,7 +3,7 @@
 
 pkgname=audacity-git
 _pkgname=audacity
-pkgver=2.4.1.r0.g1322b40a9
+pkgver=2.4.1.r1.g947ed3791
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=('i686' 'x86_64')
@@ -61,4 +61,5 @@ package() {
 
   cd $_pkgname
   make DESTDIR="${pkgdir}" install
+  install -vDm 644 plug-ins/*.ny -t "${pkgdir}/usr/share/${pkgname}/plug-ins"
 }
