@@ -1,13 +1,13 @@
 pkgbase = fastr-jdk8-bin
 	pkgdesc = GraalVM-based, high-performance implementation of the R language (Java 8 version)
-	pkgver = 20.0.1
+	pkgver = 20.1.0
 	pkgrel = 1
 	url = https://github.com/oracle/fastr
 	arch = x86_64
 	license = GPL3
 	depends = jdk8-graalvm-bin
-	source = https://github.com/oracle/fastr/releases/download/vm-20.0.1/r-installable-java8-linux-amd64-20.0.1.jar
-	sha256sums = a7c97f520407f73939c4a81ffe0d510a24f54de7f8d1ad1bef9b3fe3f64b6918
+	source = https://github.com/oracle/fastr/releases/download/vm-20.1.0/r-installable-java8-linux-amd64-20.1.0.jar
+	sha256sums = 5cec68d7f2af942a0844453854f62ea1a30f9e55e3a84553f4b65ecbb70d8137
 
 pkgname = fastr-jdk8-bin
 
