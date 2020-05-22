@@ -1,0 +1,30 @@
+pkgbase = gkraken
+	pkgdesc = GUI that allows to control cooling of NZXT Kraken X (X42, X52, X62 or X72) pumps from Linux
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://gitlab.com/leinardi/gkraken
+	install = gkraken.install
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = appstream-glib
+	depends = gobject-introspection
+	depends = libappindicator-gtk3
+	depends = liquidctl
+	depends = python
+	depends = python-gobject
+	depends = python-hidapi
+	depends = python-injector
+	depends = python-matplotlib
+	depends = python-peewee
+	depends = python-psutil
+	depends = python-pyxdg
+	depends = python-requests
+	depends = python-rx
+	source = https://gitlab.com/leinardi/gkraken/-/archive/0.14.0/gkraken-0.14.0.tar.gz
+	source = 60-gkraken.rules
+	sha256sums = 3a9f926cf54690dc61641e63e8352fbe3ff647740bf27ea712179275c13f90bc
+	sha256sums = 26ce441dbe4a6e4e0ae879570612aa60e268eb0a5ef26589c40ad117b51bfb8c
+
+pkgname = gkraken
+
