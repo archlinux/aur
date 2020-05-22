@@ -3,7 +3,7 @@
 
 pkgname=code-server
 pkgver=3.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="VS Code in the browser"
 arch=("x86_64" "aarch64")
 url="https://github.com/cdr/code-server"
@@ -19,15 +19,9 @@ source_x86_64=(
 source_aarch64=(
   "${url}/releases/download/v$pkgver/$release_name-arm64.tar.gz"
 )
-sha512sums=(
-  "7040df09c7404a56dbbb32e09d04ead3b622773520feae19c6710656cef46ca5d79b1972bfebb931e309e495d041b9938cd6a51c39fc0f8f6133dfe711be9280"
-)
-sha512sums_x86_64=(
-  "54447ee354f8e083d07785d23839fd37dca86041059f812532f00bd081ed55fa8780802a34ebcaa6270a16378f38e0c1362c425b43d7692324b341fba0ccec0e"
-)
-sha512sums_aarch64=(
-  "3ceef9fd3c05a3195b2e6cef4529ea7da4fa934f0a0ce962019955df296600395d1cba4ad71ff1f7a52011ea17cedaa9a00d34d1760edd253dbbaf272d34bc72"
-)
+sha512sums=('7040df09c7404a56dbbb32e09d04ead3b622773520feae19c6710656cef46ca5d79b1972bfebb931e309e495d041b9938cd6a51c39fc0f8f6133dfe711be9280')
+sha512sums_x86_64=('1589d6c5ebac18d0a46e2a22b6d6070b64f80fd2a3c407acd10f5c8f26adae9b17bc9fd977711cbdbc5c67f0753d2c621d8cddd03509e867b4fa532352f85308')
+sha512sums_aarch64=('87b6a7a11cee5f74fba5e8b66686732c2d49bd9f7582d7716642e1fbb253c137d9995b7e56591f53e010eb8abc447bd0014b25dfb07e96f0ca97064787d46003')
 
 package() {
   if [[ $(uname -m) == x86_64 ]]; then
