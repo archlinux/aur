@@ -1,123 +1,240 @@
-# Contributor && Maintarner: Swift Geek <swiftgeek ɐt gmail døt com>
-# TODO: ADD parser for config in /etc/makepkg.d/. Use that config instead of auto-detection! tidier code
-# TODO: FIND AND FIX EDGE CASES (EMPTY VARS!) *SPANK*
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Swift Geek <swiftgeek ɐt gmail døt com>
 
-pkgname=firefox-nightly-i18n
-_version=64.0a1
-#_version="${pkgver%.*}"
-pkgver=64.0a1.20180916
+pkgbase='firefox-nightly-i18n'
+pkgname=("$pkgbase-all")
+pkgver=78.0a1.20200522
+_pkgver=78.0a1
 pkgrel=1
-pkgdesc='Universal i18n for firefox-nightly - xpi version'
-url="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/"
-arch=('i686' 'x86_64')
-license=('MPL')
-depends=('firefox-nightly')
+pkgdesc="Language pack for Firefox Nightly"
+arch=('any')
+license=(MPL GPL LGPL)
+url="https://www.mozilla.org/firefox/"
+provides=("$pkgbase=$pkgver-$pkgrel")
+depends=("firefox-nightly>=$pkgver")
 
-pkgver() {
-  _installed_ver="$(sed -n  '/%VERSION%/{n;p;}' /var/lib/pacman/local/firefox-nightly-??.?a?.????????-*/desc)"
-  if [ -n "$_installed_ver" ] && [ "${_installed_ver%%.*}"  -gt "${_version%%.*}" ]; then
-    msg2 "Installed firefox-nightly is newer than $_version. Bumping to $_installed_ver"
-    echo "${_installed_ver%-*}"
-  else
-    echo "${_version}.$(date +%Y%m%d)"
-  fi
+_languages=(
+  'ach    "Acholi"'
+  'af     "Afrikaans"'
+  'an     "Aragonese"'
+  'ar     "Arabic"'
+  'ast    "Asturian"'
+  'az     "Azerbaijani"'
+  'be     "Belarusian"'
+  'bg     "Bulgarian"'
+  'bn     "Bengali"'
+  'br     "Breton"'
+  'bs     "Bosnian"'
+  'ca-valencia "Catalan (Valencian)"'
+  'ca     "Catalan"'
+  'cak    "Maya Kaqchikel"'
+  'cs     "Czech"'
+  'cy     "Welsh"'
+  'da     "Danish"'
+  'de     "German"'
+  'dsb    "Lower Sorbian"'
+  'el     "Greek"'
+  'en-CA  "English (Canadian)"'
+  'en-GB  "English (British)"'
+  'eo     "Esperanto"'
+  'es-AR  "Spanish (Argentina)"'
+  'es-CL  "Spanish (Chile)"'
+  'es-ES  "Spanish (Spain)"'
+  'es-MX  "Spanish (Mexico)"'
+  'et     "Estonian"'
+  'eu     "Basque"'
+  'fa     "Persian"'
+  'ff     "Fulah"'
+  'fi     "Finnish"'
+  'fr     "French"'
+  'fy-NL  "Frisian"'
+  'ga-IE  "Irish"'
+  'gd     "Gaelic (Scotland)"'
+  'gl     "Galician"'
+  'gn     "Guarani"'
+  'gu-IN  "Gujarati (India)"'
+  'he     "Hebrew"'
+  'hi-IN  "Hindi (India)"'
+  'hr     "Croatian"'
+  'hsb    "Upper Sorbian"'
+  'hu     "Hungarian"'
+  'hy-AM  "Armenian"'
+  'ia     "Interlingua"'
+  'id     "Indonesian"'
+  'is     "Icelandic"'
+  'it     "Italian"'
+  'ja     "Japanese"'
+  'ka     "Georgian"'
+  'kab    "Kabyle"'
+  'kk     "Kazakh"'
+  'km     "Khmer"'
+  'kn     "Kannada"'
+  'ko     "Korean"'
+  'lij    "Ligurian"'
+  'lt     "Lithuanian"'
+  'lv     "Latvian"'
+  'mk     "Macedonian"'
+  'mr     "Marathi"'
+  'ms     "Malay"'
+  'my     "Burmese"'
+  'nb-NO  "Norwegian (Bokmål)"'
+  'ne-NP  "Nepali"'
+  'nl     "Dutch"'
+  'nn-NO  "Norwegian (Nynorsk)"'
+  'oc     "Occitan"'
+  'pa-IN  "Punjabi (India)"'
+  'pl     "Polish"'
+  'pt-BR  "Portuguese (Brazilian)"'
+  'pt-PT  "Portuguese (Portugal)"'
+  'rm     "Romansh"'
+  'ro     "Romanian"'
+  'ru     "Russian"'
+  'si     "Sinhala"'
+  'sk     "Slovak"'
+  'sl     "Slovenian"'
+  'son    "Songhai"'
+  'sq     "Albanian"'
+  'sr     "Serbian"'
+  'sv-SE  "Swedish"'
+  'ta     "Tamil"'
+  'te     "Telugu"'
+  'th     "Thai"'
+  'tl     "Tagalog"'
+  'tr     "Turkish"'
+  'trs    "Chicahuaxtla Triqui"'
+  'uk     "Ukrainian"'
+  'ur     "Urdu"'
+  'uz     "Uzbek"'
+  'vi     "Vietnamese"'
+  'xh     "Xhosa"'
+  'zh-CN  "Chinese (Simplified)"'
+  'zh-TW  "Chinese (Traditional)"'
+)
+
+pkgname=()
+source=()
+_url=https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi
+
+for _lang in "${_languages[@]}"; do
+  _locale=${_lang%% *}
+  _pkgname=firefox-nightly-i18n-${_locale,,}
+
+  pkgname+=($_pkgname)
+  source+=("firefox-i18n-$_pkgver-$_locale.xpi::$_url/firefox-$_pkgver.$_locale.langpack.xpi")
+  eval "package_$_pkgname() {
+    _package $_lang
+  }"
+done
+
+# Don't extract anything
+noextract=("${source[@]%%::*}")
+
+package_firefox-beta-i18n-all() {
+  pkgdesc="All language packs for Firefox Beta (meta)"
+  depends=("${_all_depends[@]}")
 }
 
-countdown() {
-  local i
-  for ((i=$1; i>=1; i--)); do
-    [[ ! -e /proc/$$ ]] && exit
-    echo -ne "\rPress [i] to start interactive config in $i second(s) or any key to skip "
-    sleep 1
-  done
+_package() {
+  pkgdesc="${_languages["$1"]} language pack for Firefox Beta"
+  provides+=("firefox-i18n-$_as_lower" "firefox-developer-edition-i18n-$_as_lower")
+  conflicts=("firefox-i18n-$_as_lower" "firefox-developer-edition-i18n-$_as_lower")
+
+  install -Dm644 "firefox-i18n-$pkgver-$1.xpi" \
+      "$pkgdir/opt/firefox-nightly/browser/extensions/langpack-$1@firefox.mozilla.org.xpi"
 }
 
-ls_lang_ftp () {
-{  ftp -in ftp.mozilla.org <<EOF
-user anonymous secrets
-cd pub
-cd firefox/nightly/latest-mozilla-central-l10n/linux-$CARCH/xpi/
-ls
-EOF
-[ "$?" != 0 ] && error "FTP connection failed" && exit 1
-} | grep ftp.*ftp.*firefox.*langpack.xpi$ | awk -F\. '{print $(NF-2)}' | tr '\n' ' '
-}
-
-ls_lang () {
-  #curl "http://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-$CARCH/xpi/" | tr '"' '\n' | grep xpi$ | sed 's/\.langpack\.xpi//g; s/firefox-[0-9.]*a1\.//g'
-  curl "http://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-$CARCH/xpi/" | tr '"' '\n' | grep xpi$ |  sed -e 's/\.langpack\.xpi//g' -e "s#/pub/firefox/nightly/latest-mozilla-central-l10n/linux-$CARCH/xpi/firefox-[0-9.]*a1\.##"
-}
-
-build() {
-  _version="${pkgver%.*}"
-  cd "${srcdir}"
-  msg "Getting LANG-packs list from ftp.mozilla.com…"
-  srv_lang_list=($(ls_lang))
-  msg2 "Available LANG-packs on the server: ${srv_lang_list[*]}"
-  sys_lang_list=($(grep -v \# /etc/locale.gen | awk -F\. '{print $1};'| tr '_' '-' | tr '\n' ' '))
-  msg2 "Detected LANGs: ${sys_lang_list[*]}"
-
-  # Matching results against system
-  #TODO: fix for ja-JP-mac
-  for i in ${!sys_lang_list[*]}; do
-    if [[ " ${srv_lang_list[*]} " == *" ${sys_lang_list[$i]} "* ]]; then
-      #echo "Perfect match"
-      true
-    elif [[ " ${srv_lang_list[*]} " == *" ${sys_lang_list[$i]%-*} "* ]]; then
-      #echo "Cutted match"
-      sys_lang_list[$i]=${sys_lang_list[$i]%-*}
-    else
-      warning "${sys_lang_list[$i]} was not found on the server - removing"
-      unset sys_lang_list[$i]
-    fi
-  done
-  msg "Matched LANGs: ${sys_lang_list[*]}"
-
-  [[ "$(cat /proc/$$/cmdline)" != *noconfirm* ]] && tty -s && {
-    countdown 10 & countdown_pid=$!
-    read -s -n 1 -t 10 ikey || true
-    kill -s SIGHUP $countdown_pid > /dev/null || true # Any key below 1sec fix
-    echo -e -n "\n"
-  }
-
-  if [ "$ikey" = "i" -o "$ikey" = "I" ]; then
-    # Pre-select menu items
-    for item in ${srv_lang_list[*]}; do
-      if [[ " ${sys_lang_list[*]} " == *" ${item} "* ]]; then
-        menu_lang_list+=($item on)
-      else
-        menu_lang_list+=($item off)
-      fi
-    done
-    # echo ${menu_lang_list[*]} # DEBUG ECHO!
-    # Display dialog
-    selected_lang_list=$(dialog --keep-tite --backtitle "$pkgname" --no-items --checklist 'Choose langpacks to include' 0 0 0 "${menu_lang_list[@]}" 2>&1 >/dev/tty)
-    msg2 "Selected LANG-packs: ${selected_lang_list[*]} "
-    [ -z "${selected_lang_list[*]}" ] && error "Nothing was selected" && exit 1
-  else
-    [ -z "${sys_lang_list[*]}" ] && exit 1
-    selected_lang_list=${sys_lang_list[*]}
-    msg2 "Assuming auto-detect was good"
-  fi
-  #DL
-  msg "Downloading langpacks…"
-  for i in ${selected_lang_list[*]}; do
-    msg2 "${i}…"
-    curl -OR "https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-${CARCH}/xpi/firefox-${_version}.${i}.langpack.xpi"
-  done
-}
-
-package () {
-  _version="${pkgver%.*}"
-  _ff_path=/opt/firefox-nightly/browser/
-  cd ${srcdir}
-  install -d ${pkgdir}/${_ff_path}/browser/extensions/
-  install -d ${pkgdir}/${_ff_path}/defaults/pref
-  echo 'pref("intl.locale.matchOS", true);' >> ${pkgdir}/${_ff_path}/defaults/pref/lang-pref.js
-  for item in ${srcdir}/*.xpi; do
-    iitem=$(basename $item)
-    iitem=${iitem/.langpack.xpi/@firefox.mozilla.org.xpi}
-    iitem=${iitem/firefox-${_version}./langpack-}
-    install -Dm644 $item ${pkgdir}/${_ff_path}/browser/extensions/$iitem
-  done
-}
+sha256sums=(
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+)
