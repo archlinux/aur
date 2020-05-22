@@ -1,13 +1,17 @@
-pkgbase = rvgl-soundtrack
+pkgbase = rvgl-io-soundtrack
 	pkgdesc = RVGL community-made sountrack.
 	pkgver = 20.0302
-	pkgrel = 2
+	pkgrel = 3
 	url = https://rvgl.re-volt.io
 	arch = any
+	groups = rvgl-community
 	license = custom
+	makedepends = git
 	depends = rvgl-bin
-	source = io_soundtrack.zip::https://distribute.re-volt.io/packs/io_soundtrack.zip
-	sha256sums = d51e52d23d74d26aa93d8b96035d153ccf8e69f6bc93db7e3b615de060155010
+	provides = rvgl-soundtrack
+	conflicts = rvgl-soundtrack
+	source = rvgl_io_soundtrack::git+https://gitlab.com/re-volt/rvio/ost.git#tag=20.0302
+	sha256sums = SKIP
 
-pkgname = rvgl-soundtrack
+pkgname = rvgl-io-soundtrack
 
