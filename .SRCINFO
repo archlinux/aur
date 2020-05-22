@@ -1,7 +1,7 @@
 pkgbase = i3-gnome
 	pkgdesc = Use i3 with GNOME Session integration.
 	pkgver = 3.36.0
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/i3-gnome/i3-gnome/
 	arch = any

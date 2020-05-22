@@ -2,7 +2,7 @@
 
 pkgname=i3-gnome
 pkgver=3.36.0
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Use i3 with GNOME Session integration."
 arch=('any')
@@ -29,6 +29,6 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  make install
+  make DESTDIR="$pkgdir" install
 }
 
