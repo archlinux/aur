@@ -2,7 +2,7 @@
 
 java_=8
 pkgname="jdk${java_}-graalvm-bin"
-pkgver=20.0.0
+pkgver=20.1.0
 pkgrel=1
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${java_} version"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=("java-runtime=${java_}"
           "java-environment=${java_}")
 install="$pkgname.install"
 source=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/graalvm-ce-java${java_}-linux-amd64-${pkgver}.tar.gz")
-sha256sums=('16ef8d89f014b4d295b7ca0c54343eab3c7d24e18b2d376665f5b12bb643723d')
+sha256sums=('4fac212b37cd548831fd6587dd4d59dc068068815aa20323b47fde9529d6bb6e')
 
 package() {
     cd "graalvm-ce-java${java_}-${pkgver}"
