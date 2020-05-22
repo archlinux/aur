@@ -5,21 +5,21 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="Place gnome-shell notifications under the panel instead of above the message-tray."
 arch=("any")
-url="https://github.com/jenslody/${pkgname}/"
+url="https://gitlab.com/jenslody/${pkgname}/"
 license=("GPL" "GPL3")
 depends=("gnome-shell")
 makedepends=("gnome-common" "automake" "autoconf" "intltool" "pkg-config")
 install="panel-osd.install"
-source=("https://github.com/jenslody/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=("6aa7c530e31d82cf82b9583933090136")
+source=("https://gitlab.com/jenslody/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+md5sums=("29e48d8d02fac0a76ee3d5d85379e4cc")
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-v${pkgver}"
 	./autogen.sh --prefix=/usr
 	make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-v${pkgver}"
 	make DESTDIR="${pkgdir}" install
 }
