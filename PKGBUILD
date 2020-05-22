@@ -23,7 +23,7 @@ _kernelver="5.6.10.5-2"
 _extramodules="5.6.10-rt5-2-rt"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
-pkgrel=1
+pkgrel=2
 makedepends=("linux-rt-headers=${_kernelver}")
 arch=("x86_64")
 url="https://zfsonlinux.org/"
@@ -47,7 +47,7 @@ package_zfs-linux-rt() {
     pkgdesc="Kernel modules for the Zettabyte File System."
     install=zfs.install
     provides=("zfs" "spl")
-    groups=("archzfs-linux-lts")
+    groups=("archzfs-linux-rt")
     conflicts=("zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc" "spl-dkms" "spl-dkms-git")
     cd "${srcdir}/zfs-${_zfsver}"
     make DESTDIR="${pkgdir}" INSTALL_MOD_PATH=/usr install

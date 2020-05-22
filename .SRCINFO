@@ -1,6 +1,6 @@
 pkgbase = zfs-linux-rt
 	pkgver = 0.8.4_5.6.10.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
@@ -14,7 +14,7 @@ pkgbase = zfs-linux-rt
 pkgname = zfs-linux-rt
 	pkgdesc = Kernel modules for the Zettabyte File System.
 	install = zfs.install
-	groups = archzfs-linux-lts
+	groups = archzfs-linux-rt
 	provides = zfs
 	provides = spl
 	conflicts = zfs-dkms
