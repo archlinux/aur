@@ -1,0 +1,12 @@
+pkgbase = weylus-bin
+	pkgdesc = Weylus - Use your tablet as graphic tablet/touch screen on your computer.
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://github.com/H-M-H/Weylus
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	source = https://github.com/H-M-H/Weylus/releases/download/v0.5.5/linux.zip
+	sha256sums = 9cead1bb291507a377b5a2ee3e1c44f4cdc92f49b6984361ab79a2600c71be5b
+
+pkgname = weylus-bin
+
