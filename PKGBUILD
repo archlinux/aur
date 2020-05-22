@@ -21,7 +21,7 @@ pkgver() {
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
+check() {
 	# run tests
 	cd "$pkgname"
 	PYTHONPATH="$srcdir/$pkgname" python tests.py
