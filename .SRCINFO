@@ -1,0 +1,24 @@
+pkgbase = owasp-threat-dragon
+	pkgdesc = Electron Threat Modelling and diagramming tool by Mike Goodwin @ OWASP
+	pkgver = v1.2
+	pkgrel = 1
+	url = https://threatdragon.org
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = npm
+	depends = electron5
+	optdepends = hunspell-en_US: spell checking
+	provides = owasp-threat-dragon
+	conflicts = owasp-threat-dragon
+	source = owasp-threat-dragon::git+https://github.com/mike-goodwin/owasp-threat-dragon-desktop/#tag=v1.2
+	source = threat-dragon
+	source = threat-dragon.desktop
+	source = relax-coverage-thresholds.patch
+	sha256sums = SKIP
+	sha256sums = 822d2385b2e781d105396ca2dea44990b65cbe2919b6c6afde67522be1ffcaab
+	sha256sums = ff6ea4a92aa33fe163e0618f89f334cbe8fee87e474baf769d2e921bc218b350
+	sha256sums = 90e4d6d754d2cecc70cec11375e692ffd5e27cc310f269967dcb5c1df1f015e1
+
+pkgname = owasp-threat-dragon
+

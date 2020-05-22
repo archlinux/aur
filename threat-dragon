@@ -1,0 +1,2 @@
+#!/bin/sh
+exec electron5 /usr/share/owasp-threat-dragon.asar "$@"

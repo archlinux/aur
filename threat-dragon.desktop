@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OWASP Threat Dragon
+Comment=Electron Desktop app
+Exec=threat-dragon
+Terminal=false
+Type=Application
+Icon=owasp-threat-dragon
+Categories=Office;Chart
+StartupWMClass=OwaspThreatDragon
