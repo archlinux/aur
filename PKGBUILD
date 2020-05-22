@@ -1,12 +1,12 @@
 # Maintainer: William Turner <willtur.will@gmail.com>
 pkgname=azuredatastudio
 pkgver=1.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Azure Data Studio is a data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW (formerly SQL Operations Studio)."
 arch=('x86_64')
 url="https://github.com/Microsoft/azuredatastudio"
 license=('custom: microsoft')
-depends=('fontconfig' 'libxtst' 'gtk2' 'python' 'cairo' 'alsa-lib' 'nss' 'gcc-libs' 'glibc' 'libxss' 'libxkbfile' 'libunwind' 'libsecret' 'curl')
+depends=('curl' 'gcc-libs' 'glibc' 'gnupg' 'gtk3' 'libnotify' 'libsecret' 'libxkbfile' 'libxss' 'lsof' 'nss')
 makedepends=('sed')
 optdepends=('krb5: Windows authentication support')
 provides=('sqlops')
