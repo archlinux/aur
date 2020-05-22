@@ -1,0 +1,22 @@
+pkgbase = gitstatus
+	pkgdesc = 10x faster implementation of `git status` command
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/romkatv/gitstatus
+	install = gitstatus.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = file
+	makedepends = make
+	makedepends = gawk
+	makedepends = gcc
+	makedepends = zsh
+	makedepends = wget
+	depends = glibc
+	source = gitstatus-1.1.2.tar.gz::https://github.com/romkatv/gitstatus/archive/v1.1.2.tar.gz
+	sha512sums = d046090b6d2e8c56b58e907cbb9dad86609cfaefdea526813978c1c7846178c61cd91fa60b8ca036c4c5b6f55caaa17974c1a23f5055e2b4064ed072a3ba4f7d
+
+pkgname = gitstatus
+
