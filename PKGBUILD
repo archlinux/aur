@@ -1,6 +1,6 @@
 pkgname=apio
 _name=apio
-pkgver=0.4.1
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Experimental micro-ecosystem for open FPGAs"
 arch=('any')
@@ -10,11 +10,12 @@ depends=('python-click' 'python-pyserial' 'python-semantic-version'
          'python-pyjwt' 'python-colorama' 'python-requests' 'sudo' 'python-urllib3')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('b268ab128c961adeeacbda0dbc5d6947')
+md5sums=('1c60390c863cb47651c921fccd57505e')
 
 build() {
   cd "$pkgname-$pkgver"
 
+  sed -i 's/click>=5,<7/click>=5,<8/g' ./setup.py
   python setup.py build
 }
 
