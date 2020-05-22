@@ -16,7 +16,7 @@
 pkgname=popcorntime-bin
 _pkgname=popcorntime
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Stream free movies and TV shows from torrents"
 arch=('x86_64')
 url="https://popcorntime.app/"
@@ -48,16 +48,8 @@ package() {
   # Remove makepkg-created symlinks before copying content
   rm "$_zipfile" "${_pkgname}.desktop"
 
-  # Move library files to /usr/lib/popcorntime
-  install -d "${pkgdir}/usr/lib/${_pkgname}/${pkgver}"
-  mv "${srcdir}"/lib/* "${pkgdir}/usr/lib/${_pkgname}/${pkgver}"
-  rmdir "${srcdir}"/lib
-
-  install -d "${pkgdir}/etc/ld.so.conf.d"
-  echo "/usr/lib/${_pkgname}/${pkgver}" > "${pkgdir}/etc/ld.so.conf.d/${_pkgname}.conf"
-
-  # Copy complete content of source archive to /usr/share/${_pkgname}/
-  cp -a "${srcdir}"/* "${pkgdir}/usr/share/${_pkgname}/"
+  # Copy complete content of source archive to /usr/share/${_pkgname}
+  cp -a "${srcdir}"/* "${pkgdir}/usr/share/${_pkgname}"
 
   # Fix permissions
   find "${pkgdir}/usr/share/${_pkgname}/" -perm 600 -exec chmod 644 '{}' \;
