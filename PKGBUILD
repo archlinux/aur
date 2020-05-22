@@ -1,4 +1,6 @@
-# Maintainer: Sebastien Bariteau <numkem@gmail.com>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Sebastien Bariteau <numkem@gmail.com>
 #
 # i3pystatus doesn't have releases; it's rolling release.
 # This package attempts to track recent stable versions, but is updated
@@ -6,14 +8,14 @@
 #
 # This'll be improved at some point to be an automated process.
 
-_pkgrev=0d7156b5b10efc88a32d7bf87ea3d10cbd1e207a
+_pkgrev=e0234c12233903bd7faca96f2f4497fb876191f2
 
 pkgname=i3pystatus
 pkgdesc="i3status replacement written in python for the i3 window manager"
-pkgver=r1721.0d7156b
+pkgver=r1807.e0234c1
 pkgrel=1
 arch=('i686' 'x86_64')
-license=('mit')
+license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 optdepends=('python-pyalsaaudio: For the alsa module.',
@@ -28,7 +30,7 @@ optdepends=('python-pyalsaaudio: For the alsa module.',
             'python-colour: For the pulseaudio module.')
 url="https://github.com/enkore/i3pystatus"
 source=("git+https://github.com/enkore/i3pystatus.git#commit=$_pkgrev")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname}"
@@ -43,4 +45,5 @@ build() {
 package() {
   cd "$srcdir/${pkgname}"
   python setup.py install --prefix=/usr --root="$pkgdir"
+  install -Dm644 MIT-LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 } 
