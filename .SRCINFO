@@ -1,0 +1,15 @@
+pkgbase = hbhc-git
+	pkgdesc = A fast and Open Source Home Baked Hash Cracker for linux Written in Python3
+	pkgver = r17.82d9453
+	pkgrel = 1
+	url = https://github.com/ASHWIN990/hbhc
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python3
+	provides = hbhc
+	source = git+https://github.com/ASHWIN990/hbhc.git
+	md5sums = SKIP
+
+pkgname = hbhc-git
+
