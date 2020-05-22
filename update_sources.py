@@ -5,8 +5,8 @@ import sys
 from requests.compat import urljoin
 import xml.etree.ElementTree as ET
 
-JNLP_SOURCE = 'http://www.jalview.org/webstart/jalview.jnlp'
-BASE_URL = 'http://www.jalview.org/webstart/'
+JNLP_SOURCE = 'https://www.jalview.org/webstart/jalview.jnlp'
+BASE_URL = 'https://www.jalview.org/webstart/'
 
 EXTRA_SOURCES = [
     ("logo.gif", '362790ef6d3e3c537a6d31663a0e7f3ec9664c90cb9dc6df4a80b016f474eaa4'),
