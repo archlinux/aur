@@ -1,6 +1,6 @@
 pkgbase = nicotine-plus-git
 	pkgdesc = A graphical client for the SoulSeek peer-to-peer system
-	pkgver = 1.4.1.r143.g7af728a3
+	pkgver = 1.4.1.r200.gc44f321e
 	pkgrel = 1
 	url = http://nicotine-plus.org
 	arch = any
@@ -25,7 +25,9 @@ pkgbase = nicotine-plus-git
 	conflicts = nicotine+
 	conflicts = nicotine
 	source = git+https://github.com/Nicotine-Plus/nicotine-plus.git
-	sha512sums = SKIP
+	source = https://github.com/Nicotine-Plus/nicotine-plus/pull/159.patch
+	sha256sums = SKIP
+	sha256sums = 8704f91c40cde31b61a83acce7155937c8038aa785847fc78531b84bc2de2ebe
 
 pkgname = nicotine-plus-git
 
