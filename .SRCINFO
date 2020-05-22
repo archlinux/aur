@@ -1,18 +1,18 @@
 pkgbase = thinkgui
 	pkgdesc = GUI toolkit for ThinkPad laptops
-	pkgver = 20150513
-	pkgrel = 3
+	pkgver = r22.8544d61
+	pkgrel = 1
 	url = https://github.com/krzemin/thinkgui
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	depends = qt5-base>=5.4.0
+	depends = qt5-base
 	options = docs
-	source = git://github.com/krzemin/thinkgui.git
+	source = git+https://github.com/krzemin/thinkgui.git
 	source = thinkgui-fix-cpu-permissions.sh
-	md5sums = SKIP
-	md5sums = 74db2ed6fc59f47b50960fe5b7f4d652
+	sha256sums = SKIP
+	sha256sums = 618091a9422cf4e46dab4e03f85fba77181bd266320f4c2e6a0cc8fa3980daaa
 
 pkgname = thinkgui
 
