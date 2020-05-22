@@ -1,22 +1,27 @@
-# Maintainer: Svitozar Cherepii <razotivs@gmail.com>
-pkgname=rvgl-cars-bonus
+# Maintainer: Huki <gk7huki@gmail.com>
+# Contributor: Svitozar Cherepii <razotivs@gmail.com>
+
+pkgname=rvgl-io-cars-bonus
 pkgver=20.0413
-pkgrel=1
-pkgdesc="Additional RVGL cars no longer used for official events."
+pkgrel=2
+pkgdesc="Additional RVGL cars used for special events."
 url='https://rvgl.re-volt.io'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
-optdepends=('rvgl-skins: additional car skins')
-source=("$pkgname-$pkgver.zip::https://distribute.re-volt.io/packs/io_cars_bonus.zip")
-sha256sums=('e8a5f753f291d31180d4aab4cc1ffce446ca3929893f070a86739dc0847b7f99')
-
-prepare() {
-    # Remove conflicting files present in rvgl-cars
-    rm -r cars/minichamp2018
-}
+optdepends=('rvgl-io-skins: additional car skins')
+makedepends=('git')
+conflicts=('rvgl-cars-bonus')
+replaces=('rvgl-cars-bonus')
+groups=('rvgl-community')
+source=("rvgl_io_cars_bonus"::git+https://gitlab.com/re-volt/rvio/bonus_cars.git#tag=${pkgver})
+sha256sums=('SKIP')
 
 package() {
-    find cars -type f -exec \
-        install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
+    cd "$srcdir/rvgl_io_cars_bonus"
+
+    # Remove conflicting files present in cars pack
+    rm -r cars/minichamp2018
+
+    find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
