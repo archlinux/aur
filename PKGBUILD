@@ -3,7 +3,7 @@
 
 pkgname="python-pybars3-git"
 pkgver=0.9.7.r1.g2edd2fa
-pkgrel=3
+pkgrel=1
 pkgdesc="A general object-oriented pattern matcher for Python, based on Alessandro Warth's OMeta."
 
 url="https://github.com/wbond/pybars3"
@@ -30,6 +30,4 @@ check() {
 package() {
 	cd "$pkgname"
 	python setup.py install --root="$pkgdir/" --optimize=1
-
-	# install 
 }
