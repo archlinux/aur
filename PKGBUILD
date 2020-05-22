@@ -1,4 +1,6 @@
-# Maintainer: Aloxaf <aloxafx@gmail.com>
+# Maintainer: Roman Perepelitsa <roman.perepelitsa@gmail.com>
+# Contributor: Aloxaf <aloxafx@gmail.com>
+
 pkgname=gitstatus-git
 pkgver=r1282.0e70dbc
 pkgrel=1
@@ -7,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/romkatv/gitstatus"
 license=('GPL3')
 depends=('glibc')
-makedepends=('git' 'cmake' 'make' 'gcc' 'zsh' 'wget')
+makedepends=('git' 'cmake' 'file' 'make' 'gawk' 'gcc' 'zsh' 'wget')
 install=gitstatus.install
 provides=("gitstatus")
 source=('gitstatus::git+https://github.com/romkatv/gitstatus')
