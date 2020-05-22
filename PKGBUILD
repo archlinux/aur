@@ -1,23 +1,28 @@
-# Maintainer: Svitozar Cherepii <razotivs@gmail.com>
-pkgname=rvgl-skins
+# Maintainer: Huki <gk7huki@gmail.com>
+# Contributor: Svitozar Cherepii <razotivs@gmail.com>
+
+pkgname=rvgl-io-skins
 pkgver=20.0413
-pkgrel=1
-pkgdesc="Additional RVGL skins for default and pack cars."
+pkgrel=2
+pkgdesc="Additional skins for RVGL default and community cars."
 url='https://rvgl.re-volt.io'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
-optdepends=('rvgl-cars: additional cars skins provided for'
-            'rvgl-cars-bonus: additional cars skins provided for')
-source=("$pkgname-$pkgver.zip::https://distribute.re-volt.io/packs/io_skins.zip")
-sha256sums=('f95d9b45569a37c2dcceb624b31d1bcb57799b59b38d2f7620d7645b787ff4a3')
-
-prepare() {
-    # Remove conflicting files present in rvgl-cars
-    rm cars/fd5vector/carlux.bmp cars/phim_sentaro/car-khronos.bmp cars/selsia/carcelicapp.bmp
-}
+optdepends=('rvgl-io-cars: additional cars for official events'
+            'rvgl-io-cars-bonus: additional cars')
+makedepends=('git')
+conflicts=('rvgl-skins')
+replaces=('rvgl-skins')
+groups=('rvgl-community')
+source=("rvgl_io_skins"::git+https://gitlab.com/re-volt/rvio/skins.git#tag=${pkgver})
+sha256sums=('SKIP')
 
 package() {
-    find cars -type f -exec \
-        install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
+    cd "$srcdir/rvgl_io_skins"
+
+    # Remove conflicting files present in cars pack
+    rm cars/fd5vector/carlux.bmp cars/phim_sentaro/car-khronos.bmp cars/selsia/carcelicapp.bmp
+
+    find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
