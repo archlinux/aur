@@ -2,14 +2,14 @@
 # Maintainer: Storm Dragon <storm_dragon@linux-a11y.org>
                                                                                                                                                                 
 pkgname="dkim-git"
-pkgver=r9.dda260a
+pkgver=r10.e1128f0
 pkgrel=1
 pkgdesc="simple dkim tools written in go. Easily sign and verify dkim signatures on emails."
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/driusan/dkim"
 license=('MIT')
 depends=(glibc)
-makedepends=('git' 'go-pie')
+makedepends=('git' 'go')
 source=("dkim::git+https://github.com/driusan/dkim")
 sha512sums=('SKIP')
 
@@ -29,6 +29,7 @@ build() {
   for x in dkimsign dkimverify dkimkeygen ; do
     cd cmd/$x
     go install \
+    -buildmode=pie \
     -gcflags "all=-trimpath=$GOPATH" \
     -asmflags "all=-trimpath=$GOPATH" \
     -ldflags "-extldflags $LDFLAGS" -v
