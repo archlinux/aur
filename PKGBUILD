@@ -3,8 +3,8 @@
 
 _pkgname=fisher
 pkgname=${_pkgname}
-pkgver=3.2.10
-pkgrel=2
+pkgver=3.2.11
+pkgrel=1
 pkgdesc="A package manager for the fish shell"
 arch=(any)
 url="https://github.com/jorgebucaran/fisher"
@@ -14,7 +14,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=${pkgname}.install
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/jorgebucaran/fisher/archive/${pkgver}.tar.gz")
-sha512sums=('3ef7f21b947020521e317fe5996d04e6b730735ab843ce21d0bd0f23884900a036b8996249ea8d187c521067ad8bafbdbba140357bb6d83a85a60e4834590fc0')
+sha512sums=('c645251167514977d0f426db5479a86333941580261c385e3c478d33c6e7a93060c016379976bb65fe69f35de949731ae1a39f9e403266f9756cd2337c7c9d05')
 
 
 package() {
