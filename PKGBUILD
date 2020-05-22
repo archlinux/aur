@@ -1,29 +1,32 @@
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: gilles DOT quenot AT gmail DOT com
-# Generator  : CPANPLUS::Dist::Arch 0.18
-pkgname='perl-pod-constants'
-pkgver='0.17'
-pkgrel='1'
-pkgdesc="Include constants from POD"
-arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl')
-url='http://search.cpan.org/dist/Pod-Constants'
-source=("http://search.cpan.org/CPAN/authors/id/S/SA/SAMV/Pod-Constants-${pkgver}.tar.gz")
-md5sums=('9b3b9a377ef2f7e70d404155fa38059e')
-_dist_dir="Pod-Constants-${pkgver}"
-build() {
-  export PERL_MM_USE_DEFAULT=1
-  { cd "$_dist_dir" &&
-    perl Makefile.PL INSTALLDIRS=vendor &&
-    make &&
-    make test
-  } || return 1;
 
+pkgname=perl-pod-constants
+pkgver=0.19
+pkgrel=1
+pkgdesc="Include constants from POD"
+arch=('any')
+license=('Artistic2.0')
+depends=('perl')
+url="https://git.ieval.ro/?p=pod-constants.git"
+source=("https://www.cpan.org/modules/by-module/Pod/Pod-Constants-${pkgver}.tar.gz")
+sha512sums=('4c7b7ccdede87f0069bf100406de5b2320b5f9cb0363d413e90b419e512d4322114851d78fdd7a1bce63347ee5986ecd397b11579b91eee6e46d9b0a82b0b64a')
+
+build() {
+  cd "${srcdir}/Pod-Constants-${pkgver}"
+
+  perl Makefile.PL NO_PACKLIST=true
+  make
+}
+
+check() {
+  cd "${srcdir}/Pod-Constants-${pkgver}"
+
+  make test
 }
 
 package() {
-    cd "$_dist_dir"
-    find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-    make DESTDIR="$pkgdir" install;
+  cd "${srcdir}/Pod-Constants-${pkgver}"
+
+  make pure_install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 }

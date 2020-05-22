@@ -1,16 +1,13 @@
 pkgbase = perl-pod-constants
 	pkgdesc = Include constants from POD
-	pkgver = 0.17
+	pkgver = 0.19
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Pod-Constants
-	arch = i686
-	arch = x86_64
-	license = PerlArtistic
-	license = GPL
+	url = https://git.ieval.ro/?p=pod-constants.git
+	arch = any
+	license = Artistic2.0
 	depends = perl
-	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/S/SA/SAMV/Pod-Constants-0.17.tar.gz
-	md5sums = 9b3b9a377ef2f7e70d404155fa38059e
+	source = https://www.cpan.org/modules/by-module/Pod/Pod-Constants-0.19.tar.gz
+	sha512sums = 4c7b7ccdede87f0069bf100406de5b2320b5f9cb0363d413e90b419e512d4322114851d78fdd7a1bce63347ee5986ecd397b11579b91eee6e46d9b0a82b0b64a
 
 pkgname = perl-pod-constants
 
