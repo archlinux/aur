@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=84.0.4122.7
+pkgver=84.0.4147.13
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -53,6 +53,7 @@ makedepends=(
              'ninja'
              'python2-protobuf'
              'python2-setuptools'
+             'python2-xcb-proto'
              'python'
              'yasm'
              'nasm'
@@ -147,7 +148,6 @@ _keeplibs=(
            'third_party/angle/third_party/vulkan-loader'
            'third_party/angle/third_party/vulkan-tools'
            'third_party/angle/third_party/vulkan-validation-layers'
-           'third_party/angle/third_party/VulkanMemoryAllocator'
            'third_party/apple_apsl'
            'third_party/axe-core'
            'third_party/blink'
@@ -189,6 +189,8 @@ _keeplibs=(
            'third_party/depot_tools/third_party/six'
            'third_party/devscripts'
            'third_party/devtools-frontend'
+           'third_party/devtools-frontend/src/front_end/third_party/acorn'
+           'third_party/devtools-frontend/src/front_end/third_party/codemirror'
            'third_party/devtools-frontend/src/front_end/third_party/fabricjs'
            'third_party/devtools-frontend/src/front_end/third_party/lighthouse'
            'third_party/devtools-frontend/src/front_end/third_party/wasmparser'
@@ -228,6 +230,7 @@ _keeplibs=(
            'third_party/libxml/chromium'
            'third_party/libyuv'
            'third_party/llvm'
+           'third_party/lottie'
            'third_party/lss'
            'third_party/lzma_sdk'
            'third_party/mako'
@@ -273,6 +276,7 @@ _keeplibs=(
            'third_party/skia/include/third_party/vulkan'
            'third_party/skia/third_party/skcms'
            'third_party/skia/third_party/vulkan'
+           'third_party/skia/third_party/vulkanmemoryallocator'
            'third_party/smhasher'
            'third_party/spirv-headers'
            'third_party/SPIRV-Tools'
@@ -316,7 +320,6 @@ _keeplibs=(
            'third_party/speech-dispatcher'
            'third_party/usb_ids'
            'third_party/xdg-utils'
-           'third_party/yasm/run_yasm.py'
            )
 
 _keeplibs+=(
@@ -351,7 +354,6 @@ _flags=(
         'use_gnome_keyring=false'
         'link_pulseaudio=true'
         'use_sysroot=false'
-        'linux_use_bundled_binutils=false'
         'treat_warnings_as_errors=false'
         'enable_nacl=true'
         'enable_nacl_nonsfi=true'
@@ -402,7 +404,7 @@ _use_system=(
              'opus'
 #              're2'
              'snappy'
-             'yasm'
+#              'yasm'
 #              'zlib'         # NaCL needs it
              )
 
