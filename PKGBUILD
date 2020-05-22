@@ -12,9 +12,9 @@
 
 pkgbase=samba-heimdal
 _pkgbase=samba
-pkgname=('libwbclient-heimdal' 'smbclient-heimdal' 'samba-heimdal')
-pkgver=4.12.2
-pkgrel=3
+pkgname=('smbclient-heimdal' 'samba-heimdal')
+pkgver=4.12.3
+pkgrel=1
 arch=(x86_64)
 url="https://www.samba.org"
 license=('GPL3')
@@ -31,7 +31,7 @@ source=(https://us1.samba.org/samba/ftp/stable/${_pkgbase}-${pkgver}.tar{.gz,.as
         samba.pam
         samba.conf)
 validpgpkeys=('52FBC0B86D954B0843324CDC6F33915B6568B7EA') #Samba Distribution Verification Key <samba-bugs@samba.org>
-sha512sums=('c1d5f62ea2e43c246988aa65c4b690de232f73c0213cbc5d532e43c8cfbea17f1ac92435526b64c9a85c582b29381eecfb57713861efc32f6e6257000c393562'
+sha512sums=('5de66c21db0710880b6e0347ae1eff17ff1881eb926e9a0cf5af9ddc27599cf8daa9ca6ea35b2a0a2158226a38cdf7074b28a51e460a139720c78a522b1a5908'
             'SKIP'
             '2ba0691ded467e4d6e40821f6de58c00f8962209efe2e60284c0c87756ab471c22c3d63b77d506e48c90ed0d852a2a24e41be1d499cf74a73cb99da0b503c858'
             '1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67'
@@ -84,37 +84,15 @@ build() {
   fi
 }
 
-package_libwbclient-heimdal() {
-  pkgdesc="Samba winbind client library (built for Samba with Heimdal)"
-  depends=('glibc' 'libbsd' 'libtevent.so')
-  provides=('libwbclient')
-  conflicts=('libwbclient')
-  # Use samba-pkg as a staging directory for the split packages
-  # (This is so RPATHS and symlinks are generated correctly via
-  # make install, but the otherwise unsplit pieces can be split)
-  _pkgsrc="${srcdir}"/samba-pkg
-  install -d -m755 "${pkgdir}"/usr/lib
-  mv "${_pkgsrc}"/usr/lib/libwbclient*.so* "${pkgdir}"/usr/lib/
-
-  install -d -m755 "${pkgdir}"/usr/lib/samba
-  mv "${_pkgsrc}"/usr/lib/samba/libwinbind-client*.so* "${pkgdir}"/usr/lib/samba/
-  mv "${_pkgsrc}"/usr/lib/samba/libreplace-samba4.so* "${pkgdir}"/usr/lib/samba/
-
-  install -d -m755 "${pkgdir}"/usr/lib/pkgconfig
-  mv "${_pkgsrc}"/usr/lib/pkgconfig/wbclient.pc "${pkgdir}"/usr/lib/pkgconfig/
-
-  install -d -m755 "${pkgdir}"/usr/include/samba-4.0
-  mv "${_pkgsrc}"/usr/include/samba-4.0/wbclient.h "${pkgdir}"/usr/include/samba-4.0/
-}
-
 package_smbclient-heimdal() {
 pkgdesc="Tools to access a server's filespace and printers via SMB (built for Samba with Heimdal)"
-depends=('popt' 'cifs-utils' 'tdb' "libwbclient-heimdal>=$pkgver" 'ldb-heimdal'
+depends=('popt' 'cifs-utils' 'tdb' 'ldb-heimdal'
          'tevent' 'libgcrypt' 'python' 'talloc' 'readline' 'gnutls'
          'libbsd' 'libldap' 'libcups' 'libarchive' 'libnsl' 'jansson'
          'libldb.so' 'libtdb.so' 'libtevent.so' 'libreadline.so')
-provides=('smbclient')
-conflicts=('smbclient')
+provides=('smbclient' 'libwbclient')
+conflicts=('smbclient' 'libwbclient')
+replaces=('libwbclient-heimdal')
 
     _smbclient_bins=('smbclient' 'rpcclient' 'smbspool'
                      'smbtree' 'smbcacls' 'smbcquotas' 'smbget' 'net'
@@ -144,6 +122,7 @@ conflicts=('smbclient')
     install -d -m755 "${pkgdir}"/usr/lib/pkgconfig
     mv "${_pkgsrc}"/usr/lib/pkgconfig/smbclient.pc "${pkgdir}"/usr/lib/pkgconfig/
     mv "${_pkgsrc}"/usr/lib/pkgconfig/netapi.pc "${pkgdir}"/usr/lib/pkgconfig/
+    mv "${_pkgsrc}"/usr/lib/pkgconfig/wbclient.pc "${pkgdir}"/usr/lib/pkgconfig/
 
     install -d -m755 "${pkgdir}"/usr/share/man/man1
     install -d -m755 "${pkgdir}"/usr/share/man/man7
@@ -161,6 +140,8 @@ conflicts=('smbclient')
     install -d -m755 "${pkgdir}"/usr/include/samba-4.0
     mv "${_pkgsrc}"/usr/include/samba-4.0/libsmbclient.h "${pkgdir}"/usr/include/samba-4.0/
     mv "${_pkgsrc}"/usr/include/samba-4.0/netapi.h "${pkgdir}"/usr/include/samba-4.0/
+    mv "${_pkgsrc}"/usr/include/samba-4.0/wbclient.h "${pkgdir}"/usr/include/samba-4.0/
+
 
     mkdir -p "${pkgdir}"/usr/lib/cups/backend
     ln -sf /usr/bin/smbspool "${pkgdir}"/usr/lib/cups/backend/smb
@@ -170,7 +151,7 @@ package_samba-heimdal() {
 pkgdesc="SMB Fileserver and AD Domain server (using internal Heimdal server)"
 depends=('db>=4.7' 'popt' 'libcups' 'libcap>=2.16' 'gnutls>=2.4.1'
          'talloc' 'ldb-heimdal' 'libbsd' 'python' 'iniparser' 'tdb' 'libaio' 'perl-parse-yapp' "smbclient-heimdal>=$pkgver" 'gpgme'
-         'libldb.so' 'libtdb.so' 'libtevent.so')
+         'ceph-libs' 'libldb.so' 'libtdb.so' 'libtevent.so')
 optdepends=('python-dnspython: required for AD DC provisioning'
             'gamin: required for AD DC provisioning')
 provides=('samba')
@@ -216,11 +197,16 @@ sys.path.insert(0, '/usr/lib/python${_pyver}/site-packages')" \
   # spool directory
   install -d -m1777 "${pkgdir}"/var/spool/samba
   
+  rm -rf "${pkgdir}"/run
   rm -rf "${pkgdir}"/var/run
   rm -rf "${pkgdir}"/etc/sysconfig
   
   # copy ldap example
   install -D -m644 "${srcdir}"/samba-${pkgver}/examples/LDAP/samba.schema "${pkgdir}"/usr/share/doc/samba/examples/LDAP/samba.schema
+
+  # Fix waf installing the wrong permissions for sudoers.d
+  chmod 750 ${pkgdir}/etc/sudoers.d
+  chmod 600 ${pkgdir}/etc/sudoers.d/ctdb
 }
 
 # vim: ts=2 sw=2 et:
