@@ -4,7 +4,7 @@
 _pkgbase=intel_nuc_led
 _gitname=intel_nuc_led
 pkgname=${_pkgbase}-nuc8-dkms-git
-pkgver=r44.ef33faf
+pkgver=r45.e06ff57
 pkgrel=1
 pkgdesc="Intel NUC8i[x]HVK LED Control for Linux (DKMS)"
 arch=('x86_64')
