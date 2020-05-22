@@ -1,11 +1,11 @@
---- a/lib/util.js	2020-05-09 10:49:14.898221966 +0200
-+++ b/lib/util.js	2020-05-09 10:49:41.851556843 +0200
+--- a/lib/util.js       2020-05-22 00:47:36.846961336 +0200
++++ b/lib/util.js       2020-05-22 00:49:49.913695175 +0200
 @@ -527,7 +527,7 @@
    },
  
    gclientSync: (reset = false, options = {}) => {
--    let args = ['sync', '--force', '--nohooks', '--with_branch_heads', '--with_tags']
-+    let args = ['sync', '--no-history', '--shallow', '--force', '--nohooks', '--with_branch_heads', '--with_tags']
+-    let args = ['sync', '--force', '--nohooks', '--with_tags', '--reset',
++    let args = ['sync', '--no-history', '--shallow', '--force', '--nohooks', '--with_tags', '--reset',
+                 '--with_branch_heads', '--upstream',
+                 '--revision', 'src/brave@' + config.getProjectRef('brave-core')]
      if (reset)
-       args.push('--upstream')
-     runGClient(args, options)

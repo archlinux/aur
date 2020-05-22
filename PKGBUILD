@@ -26,7 +26,7 @@ fi
 
 _reponame=brave-browser
 pkgname=brave
-pkgver=1.8.112
+pkgver=1.9.72
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -45,33 +45,33 @@ source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'chromium-no-history.patch'
         'brave-launcher'
         'brave-browser.desktop')
-arch_revision=b09cf910e816b3bdf0788197e9f50e5f29f58fc8
+arch_revision=a6a05a03373d7a26f5f344e36db514c9e7627b22
 for Patches in \
-        rename-Relayout-in-DesktopWindowTreeHostPlatform.patch \
-        rebuild-Linux-frame-button-cache-when-activation.patch \
         clean-up-a-call-to-set_utf8.patch \
-        icu67.patch \
-        chromium-widevine.patch \
+        add-missing-algorithm-header-in-crx_install_error.cc.patch \
+        avoid-double-destruction-of-ServiceWorkerObjectHost.patch \
+        chromium-83-gcc-10.patch \
+        make-some-of-blink-custom-iterators-STL-compatible.patch \
         chromium-skia-harmony.patch
 do
   source+=("${Patches}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${Patches}?h=packages/chromium&id=${arch_revision}")
 done
 
 # VAAPI patches from chromium-vaapi in AUR
-#source+=("vaapi-build-fix.patch::https://aur.archlinux.org/cgit/aur.git/plain/vaapi-build-fix.patch?h=chromium-vaapi&id=2421d695f494fd04797ac6eda81e66857664b854"
-#         "vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=2421d695f494fd04797ac6eda81e66857664b854")
+source+=("vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=7c05464a8700b1a6144258320b2b33b352385f77")
 
 sha256sums=('SKIP'
             '2b07eabd8b3d42456d2de44f6dca6cf2e98fa06fc9b91ac27966fca8295c5814'
-            'bfa948c3bdb9a68e1f94587f122ef84a6da240408111c34474df2ac57a2baa7e'
+            '131ed439a0ecb41df4ef6460c98c0a410c035d5eab0093214f627d65cff5bded'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
-            'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
-            '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
             '58c41713eb6fb33b6eef120f4324fa1fb8123b1fbc4ecbe5662f1f9779b9b6af'
-            '5315977307e69d20b3e856d3f8724835b08e02085a4444a5c5cefea83fd7d006'
-            '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
-            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
+            '0e2a78e4aa7272ab0ff4a4c467750e01bad692a026ad9828aaf06d2a9418b9d8'
+            'd793842e9584bf75e3779918297ba0ffa6dd05394ef5b2bf5fb73aa9c86a7e2f'
+            '3e5ba8c0a70a4bc673deec0c61eb2b58f05a4c784cbdb7c8118be1eb6580db6d'
+            '3d7f20e1d2ee7d73ed25e708c0d59a0cb215fcce10a379e3d48a856533c4b0b7'
+            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
+            '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a')
 
 prepare() {
     cd "${_reponame}"
@@ -95,26 +95,32 @@ prepare() {
     msg2 "Apply Chromium patches..."
     cd src/
 
-    # https://crbug.com/1049258
-    patch -Np1 -i "${srcdir}"/rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
-    patch -Np1 -i "${srcdir}"/rebuild-Linux-frame-button-cache-when-activation.patch
+    # https://crbug.com/893950
+    sed -i -e 's/\<xmlMalloc\>/malloc/' -e 's/\<xmlFree\>/free/' \
+        third_party/blink/renderer/core/xml/*.cc \
+        third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
+        third_party/libxml/chromium/*.cc
 
     # https://chromium-review.googlesource.com/c/chromium/src/+/2145261
     patch -Np1 -i "${srcdir}"/clean-up-a-call-to-set_utf8.patch
 
-    # https://crbug.com/v8/10393
-    patch -Np3 -d v8 -i "${srcdir}"/icu67.patch
+    # https://chromium-review.googlesource.com/c/chromium/src/+/2152333
+    patch -Np1 -i "${srcdir}"/add-missing-algorithm-header-in-crx_install_error.cc.patch
 
-    # Load bundled Widevine CDM if available (see chromium-widevine in the AUR)
-    # M79 is supposed to download it as a component but it doesn't seem to work
-    patch -Np1 -i "${srcdir}"/chromium-widevine.patch
+    # https://chromium-review.googlesource.com/c/chromium/src/+/2174199
+    patch -Np1 -i "${srcdir}"/make-some-of-blink-custom-iterators-STL-compatible.patch
+
+    # https://chromium-review.googlesource.com/c/chromium/src/+/2094496
+    patch -Np1 -i "${srcdir}"/avoid-double-destruction-of-ServiceWorkerObjectHost.patch
+
+    # Fixes from Gentoo
+    patch -Np1 -i "${srcdir}"/chromium-83-gcc-10.patch
 
     # https://crbug.com/skia/6663#c10
     patch -Np0 -i "${srcdir}"/chromium-skia-harmony.patch
 
-    # Fix VA-API on Intel and Nvidia
-#    patch -Np1 -i "${srcdir}"/vdpau-support.patch || true
-#    patch -Np1 -i "${srcdir}"/vaapi-build-fix.patch || true
+    # Fix VA-API on Nvidia
+    patch -Np1 -i "${srcdir}"/vdpau-support.patch
 
     # Force script incompatible with Python 3 to use /usr/bin/python2
     sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
