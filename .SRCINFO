@@ -1,6 +1,6 @@
 pkgbase = ahab
 	pkgdesc = Configure, launch, and work in Dockerized environments
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/MichaelDarr/ahab
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = ahab
 	makedepends = go>=1.13
 	depends = docker>=1.19
 	conflicts = ahab-git
-	source = ahab-0.4.tar.gz::https://github.com/MichaelDarr/ahab/archive/v0.4.tar.gz
-	sha256sums = 5ee657b5f2cf01d0427c74cdfcd6c7ee78812cebb767e51aa3d0255a8b899dc0
+	source = ahab-0.5.tar.gz::https://github.com/MichaelDarr/ahab/archive/v0.5.tar.gz
+	sha256sums = 673ebf5b61b964491800b4c24c9a6f777a33460c329bd9266845d547df2b85b3
 
 pkgname = ahab
 
