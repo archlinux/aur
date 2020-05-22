@@ -4,7 +4,7 @@ pkgname=jitsi-meet-stable
 _stable_version=4548
 _stable_tag=stable/jitsi-meet_${_stable_version}
 pkgver=2.0.${_stable_version}
-pkgrel=2
+pkgrel=3
 pkgdesc="Jitsi Meet Stable"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -58,7 +58,7 @@ build() {
 	echo "Jitsi Meet"
 	cd "${srcdir}/jitsi-meet"
 	npm install
-	make
+	make -j1
 	make source-package
 
 	echo "Jitsi Videobridge"
