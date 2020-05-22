@@ -26,7 +26,7 @@ depends=('alsa-lib' 'gcc-libs' 'glibc' 'libdrm' 'libgl' 'libpulse' 'libusb'
          'libxxf86vm' 'mesa' 'openal' 'sdl2' 'wayland' 'zlib'
          'libass.so' 'libavcodec.so' 'libavformat.so' 'libavutil.so'
          'libfreetype.so' 'libswresample.so' 'libswscale.so' 'libudev.so'
-	 'nvidia-cg-toolkit')
+	 'nvidia-cg-toolkit' 'perl-net-dbus')
 makedepends=('git' 'vulkan-icd-loader')
 install=$pkgname.install
 optdepends=('libretro-overlays-git: Collection of overlays'

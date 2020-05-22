@@ -38,6 +38,7 @@ pkgbase = retroarch-git
 	depends = libswscale.so
 	depends = libudev.so
 	depends = nvidia-cg-toolkit
+	depends = perl-net-dbus
 	optdepends = libretro-overlays-git: Collection of overlays
 	optdepends = libretro-shaders-all-git: Collection of shaders
 	optdepends = retroarch-assets-xmb: XMB menu assets
