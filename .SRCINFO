@@ -1,15 +1,19 @@
-pkgbase = rvgl-tracks
-	pkgdesc = Additional RVGL tracks for official events.
+pkgbase = rvgl-io-tracks
+	pkgdesc = Additional RVGL tracks used for official events.
 	pkgver = 20.0413
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rvgl.re-volt.io
 	arch = any
+	groups = rvgl-community
 	license = custom
+	makedepends = git
 	depends = rvgl-bin
-	optdepends = rvgl-loadlevel: custom load screens
-	optdepends = rvgl-music: music for levels
-	source = rvgl-tracks-20.0413.zip::https://distribute.re-volt.io/packs/io_tracks.zip
-	sha256sums = 441401a84ae7f7e8616389ad41e0aa14b7159dfbaeb07a4855ac645c358a5c22
+	optdepends = rvgl-io-loadlevel: custom load screens
+	optdepends = rvgl-io-music: extra music
+	conflicts = rvgl-tracks
+	replaces = rvgl-tracks
+	source = rvgl_io_tracks::git+https://gitlab.com/re-volt/rvio/tracks.git#tag=20.0413
+	sha256sums = SKIP
 
-pkgname = rvgl-tracks
+pkgname = rvgl-io-tracks
 

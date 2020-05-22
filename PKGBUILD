@@ -1,23 +1,28 @@
-# Maintainer: Svitozar Cherepii <razotivs@gmail.com>
-pkgname=rvgl-tracks
+# Maintainer: Huki <gk7huki@gmail.com>
+# Contributor: Svitozar Cherepii <razotivs@gmail.com>
+
+pkgname=rvgl-io-tracks
 pkgver=20.0413
-pkgrel=1
-pkgdesc="Additional RVGL tracks for official events."
+pkgrel=2
+pkgdesc="Additional RVGL tracks used for official events."
 url='https://rvgl.re-volt.io'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
-optdepends=('rvgl-loadlevel: custom load screens'
-            'rvgl-music: music for levels')
-source=("$pkgname-$pkgver.zip::https://distribute.re-volt.io/packs/io_tracks.zip")
-sha256sums=('441401a84ae7f7e8616389ad41e0aa14b7159dfbaeb07a4855ac645c358a5c22')
-
-prepare() {
-    # Remove conflicting file present in rvgl-tracks-bonus
-    rm gfx/playoutside.bmp
-}
+optdepends=('rvgl-io-loadlevel: custom load screens'
+            'rvgl-io-music: extra music')
+makedepends=('git')
+conflicts=('rvgl-tracks')
+replaces=('rvgl-tracks')
+groups=('rvgl-community')
+source=("rvgl_io_tracks"::git+https://gitlab.com/re-volt/rvio/tracks.git#tag=${pkgver})
+sha256sums=('SKIP')
 
 package() {
-    find gfx levels -type f -exec \
-        install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
+    cd "$srcdir/rvgl_io_tracks"
+
+    # Remove conflicting file present in rvgl-tracks-bonus
+    rm gfx/playoutside.bmp
+
+    find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
