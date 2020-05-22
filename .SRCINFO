@@ -1,0 +1,18 @@
+pkgbase = python-mutagen-git
+	pkgdesc = An audio metadata tag reader and writer (python library)
+	pkgver = 1.44.0.r14.g63b4aeb
+	pkgrel = 1
+	url = https://mutagen.readthedocs.io/en/latest/
+	arch = any
+	license = GPL2
+	checkdepends = python-pytest
+	checkdepends = python-hypothesis
+	checkdepends = python-pyflakes
+	checkdepends = python-pycodestyle
+	makedepends = git
+	depends = python-setuptools
+	source = git+https://github.com/quodlibet/mutagen.git
+	sha256sums = SKIP
+
+pkgname = python-mutagen-git
+
