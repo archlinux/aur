@@ -1,11 +1,16 @@
 [Unit]
 Description=dynamic swap manager
+Documentation=man:swapspace(8)
+After=local-fs.target
+Requires=local-fs.target
+After=swap.target
+Requires=swap.target
 
 [Service]
-Type=forking
-PIDFile=/run/swapspace.pid
-ExecStart=/usr/bin/swapspace -d -p /run/swapspace.pid
-ExecStop=/usr/bin/swapspace -e
+Type=simple
+ExecStart=/usr/bin/swapspace
+Restart=always
+RestartSec=30
 
 [Install]
 WantedBy=multi-user.target

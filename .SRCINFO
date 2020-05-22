@@ -1,18 +1,16 @@
 pkgbase = swapspace
 	pkgdesc = A dynamic swap manager
-	pkgver = 1.16.1
+	pkgver = 1.17
 	pkgrel = 1
 	url = https://github.com/Tookmund/Swapspace
 	arch = i686
 	arch = x86_64
 	license = GPL
 	backup = etc/swapspace.conf
-	source = https://github.com/Tookmund/Swapspace/archive/v1.16.1.tar.gz
-	source = fix-prefix.patch
+	source = https://github.com/Tookmund/Swapspace/archive/v1.17.tar.gz
 	source = swapspace.service
-	sha512sums = 57ebedcc533ac30aa3cf56a62737bfd2f6b0d398083558c2664000909156c626ff7daa30c581da7e6e310b8ba586c732828c81e3c7f8088ea18bcc0d52223c5c
-	sha512sums = 3bfca1f4e0d0ff1f31fc83b0f0320a06408fac47543d6d03ddc997fb262cd98d5ab712e6e7ee335ff64894dc71f4283888f5dea9397f96de781f26bd232be46e
-	sha512sums = c7f9e590dcf836353ee452cf4ff6c66bb5e6eb1f03df089ffd367c8bca989f76a796fb3f6dc9fc8d1fe1c482ff3fa06401efa74c9256f0a9710afbb0bd80d77e
+	b2sums = 76a609f898aa6e41c9805498e3ad9a83cd8ab21d66a4df08e4df719cf581ae568f26ea8c023209cc2b6fbd7a8d3b92ad2264269bc610f54e4a1ed689c4ae5f67
+	b2sums = 42690e95a18851248453542ed9d5612a786efd7803a50ef4893d2034727d5e62be7e3d945a63031de5fcaf54bceab89525de464cc5c4a137f23eb713545acfc1
 
 pkgname = swapspace
 
