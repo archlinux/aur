@@ -5,7 +5,7 @@ _name=alice-vision
 #_fragment="#commit=eebc3e4f"
 _fragment="#branch=develop"
 pkgname=${_name}-git
-pkgver=2.2.0.r299.gbb78c6e0a
+pkgver=2.2.0.r491.g88e626786
 pkgrel=1
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ conflicts=("${_name}" geogram uncertainty-framework)
 provides=("${_name}" geogram uncertainty-framework)
 
 
-depends=('alembic' 'boost-libs' 'openimageio' 'flann' 'opengv' 'coin-or-clp' 'google-glog')
+depends=( 'alembic' 'boost-libs' 'coin-or-clp' 'flann' 'google-glog' 'opencv' 'openimageio' 'opengv' )
 depends+=('glu' 'glfw-x11') # geogram deps.
 depends+=('magma' 'ceres-solver') # uncertaintyTE deps.
 makedepends=('ninja' 'boost' 'eigen' 'freetype2' 'gflags' 'doxygen' 'python-sphinx' 'coin-or-coinutils' 'coin-or-lemon' 'git' 'cmake')
@@ -75,7 +75,7 @@ build() {
 
   msg2 "Build geogram library"
   mkdir -p geogram_build
-  cmake -DCMAKE_INSTALL_PREFIX=/ -DGEOGRAM_LIB_ONLY=ON -DGEOGRAM_USE_SYSTEM_GLFW3=ON -DCMAKE_BUILD_TYPE:STRING=Release -DVORPALINE_PLATFORM:STRING=Linux64-gcc-dynamic -G Ninja -S geogram -B geogram_build
+  cmake -DCMAKE_INSTALL_PREFIX=/ -DGEOGRAM_LIB_ONLY=ON -DGEOGRAM_USE_SYSTEM_GLFW3=ON -DCMAKE_BUILD_TYPE:STRING=Release -DVORPALINE_PLATFORM:STRING=Linux64-gcc-dynamic -DGEOGRAM_WITH_LEGACY_NUMERICS=OFF -G Ninja -S geogram -B geogram_build
 # shellcheck disable=SC2030,SC2031,SC2046 # ninja call won't work with shell substitution in quotes.
   ninja $([ -v MAKEFLAGS ] || echo -j1) -C geogram_build
   DESTDIR="${srcdir}/geogram_bin" ninja -C geogram_build install
