@@ -1,7 +1,7 @@
 pkgbase = scantools
 	pkgdesc = scantools is a library and a matching set of command line applications for graphics manipulation, written with a view towards the handling of scanned documents and generation of high-quality PDF files.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cplx.vm.uni-freiburg.de/scantools/
 	arch = x86_64
 	license = GPL
@@ -20,6 +20,7 @@ pkgbase = scantools
 	depends = qpdf
 	depends = qt5-base
 	depends = zlib
+	depends = poppler-qt5
 	source = https://gitlab.com/kebekus/scantools/-/archive/1.0.0/scantools-1.0.0.tar.gz
 	sha256sums = 359d18bf4a35031532e0a7173c291943e63811244105e8bb1c58baebbffe8473
 
