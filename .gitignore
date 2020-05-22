@@ -1,3 +1,4 @@
 *.log
-Popcorn-Time-*-Linux-64.tar.xz
+Popcorn-Time-*-linux64.zip
 popcorntime-bin-*.pkg.tar.xz
+popcorntime-bin-*.pkg.tar.zst
