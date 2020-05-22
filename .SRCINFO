@@ -8,6 +8,7 @@ pkgbase = efc
 	source = efc
 	source = hwmonnumber
 	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = efc
 

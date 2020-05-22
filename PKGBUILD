@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/dus2002/EFC"
 license=(GPL)
 source=("$pkgname" "hwmonnumber")
-sha512sums=('SKIP')
+sha512sums=('SKIP' 'SKIP')
 
 package() {
 	mkdir -p $pkgdir/etc
