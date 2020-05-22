@@ -1,11 +1,12 @@
 pkgbase = vapoursynth-plugin-mvtools_sf-git
 	pkgdesc = Plugin for Vapoursynth: mvtools_sf (GIT version)
-	pkgver = r10_pre.1.g820dd0a
+	pkgver = r10_pre.6.gbc15acb
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=172525
 	arch = x86_64
 	license = GPL2
 	makedepends = git
+	makedepends = meson
 	makedepends = vapoursynth-lib-vsfilterscript-git
 	depends = vapoursynth
 	depends = fftw

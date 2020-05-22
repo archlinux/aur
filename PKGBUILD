@@ -2,7 +2,7 @@
 
 _plug=mvtools_sf
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r10_pre.1.g820dd0a
+pkgver=r10_pre.6.gbc15acb
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -12,6 +12,7 @@ depends=('vapoursynth'
          'fftw'
          )
 makedepends=('git'
+             'meson'
              'vapoursynth-lib-vsfilterscript-git'
               )
 provides=("vapoursynth-plugin-${_plug}")
@@ -25,25 +26,19 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_plug}"
-  sed 's|"Include/Interface.hxx"|<Include/Interface.hxx>|g' -i src/EntryPoint.cxx
-  sed -e 's|"Include/VapourSynth.h"|<VapourSynth.h>|g' \
-      -e 's|"Include/VSHelper.h"|<VSHelper.h>|g' \
-      -i src/*.hxx \
-      -i src/*.h
-  sed 's|"Include/fftw3.h"|<fftw3.h>|g' -i src/DCTFFTW.hpp
+  mkdir -p build
 
-  echo "all:
-	  g++ -c -std=gnu++20 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I/usr/include/vsfilterscript -I./src $(pkg-config --cflags vapoursynth) -o EntryPoint.o src/EntryPoint.cxx
-	  g++ -shared -fPIC ${LDFLAGS} -lstdc++ $(pkg-config --libs vapoursynth fftw3) -o lib${_plug}.so EntryPoint.o" > Makefile
+  sed 's|vapoursynth-mvtools-sf|mvtools_sf|g' -i "${_plug}/meson.build"
 }
 
 build() {
-  cd "${_plug}"
-  make
+  cd build
+  arch-meson "../${_plug}" \
+    --prefix /usr
+
+  ninja
 }
 
 package() {
-  cd "${_plug}"
-  install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
+  DESTDIR="${pkgdir}" ninja -C build install
 }
