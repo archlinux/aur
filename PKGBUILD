@@ -107,7 +107,7 @@ validpgpkeys=(
 )
 md5sums=('1941f86c38e5c81b87dddeb808710b9f'
          'SKIP'
-         '258711197ebfc4c113c5d354e27619da'
+         '4eb842d9ffb559f8e3131c846ab47a74'
          '2cebdad39da582fd6a0c01746c8adb42'
          'b31b27f8a6a8f5fb79a6a6f4e1f07cc4'
          'b10e4c612d5240d66fad8f1c50fe3242'
