@@ -1,7 +1,7 @@
 pkgbase = gtkada
 	pkgdesc = Ada bindings for the Gtk+ library.
-	pkgver = 2019
-	pkgrel = 2
+	pkgver = 2020
+	pkgrel = 1
 	url = https://github.com/AdaCore/gtkada
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = gtkada
 	makedepends = gprbuild
 	depends = gcc-ada
 	depends = gtk3
-	source = https://community.download.adacore.com/v1/eac201014c9d51fb36cb8346cec8e90ec51536d0?filename=gtkada-2019-20190424-19D98-src.tar.gz
-	sha1sums = eac201014c9d51fb36cb8346cec8e90ec51536d0
+	source = gtkada-2020-20200429-19B96-src.tar.gz::https://community.download.adacore.com/v1/96f85c875c161c36e7d0edb19aa4dbddf41ea671?filename=gtkada-2020-20200429-19B96-src.tar.gz
+	sha1sums = 96f85c875c161c36e7d0edb19aa4dbddf41ea671
 
 pkgname = gtkada
 
