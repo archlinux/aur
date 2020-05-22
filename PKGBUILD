@@ -18,32 +18,26 @@
 #
 pkgbase="zfs-linux-rt"
 pkgname=("zfs-linux-rt" "zfs-linux-rt-headers")
-_zfsver="0.8.3"
-_kernelver="5.4.28.19-1"
-_extramodules="5.4.28-rt19-1-rt"
+_zfsver="0.8.4"
+_kernelver="5.6.10.5-2"
+_extramodules="5.6.10-rt5-2-rt"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
 makedepends=("linux-rt-headers=${_kernelver}")
 arch=("x86_64")
 url="https://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz"
-        "linux-5.5-compat-blkg_tryget.patch")
-sha256sums=("545a4897ce30c2d2dd9010a0fdb600a0d3d45805e2387093c473efc03aa9d7fd"
-            "daae58460243c45c2c7505b1d88dcb299ea7d92bcf3f41d2d30bc213000bb1da")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
+sha256sums=("2b988f5777976f09d08083f6bebf6e67219c4c4c183c1f33033fb7e5e5eacafb")
 license=("CDDL")
 depends=("kmod" "zfs-utils=${_zfsver}" "linux-rt=${_kernelver}")
-prepare() {
-    cd "${srcdir}/zfs-${_zfsver}"
-    patch -Np1 -i ${srcdir}/linux-5.5-compat-blkg_tryget.patch
-}
 
 build() {
     cd "${srcdir}/zfs-${_zfsver}"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
-                --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-${_zfsver} --with-config=kernel \
+                --datadir=/usr/share --includedir=/usr/include --with-udevdir=/usr/lib/udev \
+                --libexecdir=/usr/lib --with-config=kernel \
                 --with-linux=/usr/lib/modules/${_extramodules}/build \
                 --with-linux-obj=/usr/lib/modules/${_extramodules}/build
     make
@@ -54,12 +48,9 @@ package_zfs-linux-rt() {
     install=zfs.install
     provides=("zfs" "spl")
     groups=("archzfs-linux-lts")
-    conflicts=("zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc" "spl-dkms" "spl-dkms-git" 'zfs-linux-lts-git' 'zfs-linux-lts-rc' 'spl-linux-lts')
-    replaces=("spl-linux-lts")
+    conflicts=("zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc" "spl-dkms" "spl-dkms-git")
     cd "${srcdir}/zfs-${_zfsver}"
-    make DESTDIR="${pkgdir}" install
-    cp -r "${pkgdir}"/{lib,usr}
-    rm -r "${pkgdir}"/lib
+    make DESTDIR="${pkgdir}" INSTALL_MOD_PATH=/usr install
     # Remove src dir
     rm -r "${pkgdir}"/usr/src
 }

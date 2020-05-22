@@ -1,17 +1,15 @@
 pkgbase = zfs-linux-rt
-	pkgver = 0.8.3_5.4.28.19.1
+	pkgver = 0.8.4_5.6.10.5.2
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-rt-headers=5.4.28.19-1
+	makedepends = linux-rt-headers=5.6.10.5-2
 	depends = kmod
-	depends = zfs-utils=0.8.3
-	depends = linux-rt=5.4.28.19-1
-	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.8.3/zfs-0.8.3.tar.gz
-	source = linux-5.5-compat-blkg_tryget.patch
-	sha256sums = 545a4897ce30c2d2dd9010a0fdb600a0d3d45805e2387093c473efc03aa9d7fd
-	sha256sums = daae58460243c45c2c7505b1d88dcb299ea7d92bcf3f41d2d30bc213000bb1da
+	depends = zfs-utils=0.8.4
+	depends = linux-rt=5.6.10.5-2
+	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.8.4/zfs-0.8.4.tar.gz
+	sha256sums = 2b988f5777976f09d08083f6bebf6e67219c4c4c183c1f33033fb7e5e5eacafb
 
 pkgname = zfs-linux-rt
 	pkgdesc = Kernel modules for the Zettabyte File System.
@@ -24,10 +22,6 @@ pkgname = zfs-linux-rt
 	conflicts = zfs-dkms-rc
 	conflicts = spl-dkms
 	conflicts = spl-dkms-git
-	conflicts = zfs-linux-lts-git
-	conflicts = zfs-linux-lts-rc
-	conflicts = spl-linux-lts
-	replaces = spl-linux-lts
 
 pkgname = zfs-linux-rt-headers
 	pkgdesc = Kernel headers for the Zettabyte File System.
