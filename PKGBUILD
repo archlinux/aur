@@ -1,21 +1,22 @@
-# Maintainer: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
 # Contributor: JD Horelick <jdhore1@gmail.com>
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
 _pkgname=charybdis
 pkgname=charybdis-git
-pkgver=charybdis.3.5.0.r945.g5a77522
+pkgver=charybdis.4.1.2.r160.g458b5d1f
 pkgrel=1
 pkgdesc='A highly scalable IRCv3-compliant IRCd (development version)'
-url='http://atheme.org/project/charybdis'
+url='https://charybdis-ircd.github.io/'
 license=('GPL2')
 options=('!strip')
 install=charybdis.install
-source=('git+https://github.com/charybdis-ircd/charybdis'
+source=('git+https://github.com/charybdis-ircd/charybdis.git'
         'charybdis.service'
         'charybdis.tmpfiles')
 sha256sums=('SKIP'
-            '044f3567ed865365e76581942e1b28ba4f7193dd6c8022616ea0894295272062'
+            'a890d3a4fddd34b475c1c2e5f47f790af3bcebc3539c4a92a7343829fdbce563'
             '2fcc284f060cafa9a6df0b010de44833b248169ab11c6289f54227ab87068c29')
 arch=('i686' 'x86_64')
 depends=('bison' 'flex' 'openssl' 'zlib')

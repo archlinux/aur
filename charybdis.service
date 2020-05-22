@@ -1,12 +1,15 @@
 [Unit]
 Description=Charybdis IRCd
+Requires=network.target
 After=network.target
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/charybdis-ircd
-User=charybdis
 PIDFile=/run/charybdis/ircd.pid
+ExecStart=/usr/bin/charybdis-ircd
+Restart=always
+User=charybdis
+Group=charybdis
 
 [Install]
 WantedBy=multi-user.target
