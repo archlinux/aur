@@ -1,18 +1,24 @@
-# Maintainer: Svitozar Cherepii <razotivs@gmail.com>
-pkgname=rvgl-music
+# Maintainer: Huki <gk7huki@gmail.com>
+# Contributor: Svitozar Cherepii <razotivs@gmail.com>
+
+pkgname=rvgl-io-music
 pkgver=20.0302
-pkgrel=1
-pkgdesc="Extra music for RVGL additional community tracks."
+pkgrel=2
+pkgdesc="Extra music for RVGL community tracks."
 url='https://rvgl.re-volt.io'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
-optdepends=('rvgl-tracks: actual tracks music is used for'
-            'rvgl-tracks-bonus: actual tracks music is used for')
-source=("$pkgname-$pkgver.zip::https://distribute.re-volt.io/packs/io_music.zip")
-sha256sums=('63edebb2fc5a02569d4b46601cc8cdd223ef7c5179fbf4c43f36b51ac6d46796')
+optdepends=('rvgl-io-tracks: additional tracks for official events'
+            'rvgl-io-tracks-bonus: additional tracks')
+makedepends=('git')
+conflicts=('rvgl-music')
+replaces=('rvgl-music')
+groups=('rvgl-community')
+source=("rvgl_io_music"::git+https://gitlab.com/re-volt/rvio/music.git#tag=${pkgver})
+sha256sums=('SKIP')
 
 package() {
-    find music -type f -exec \
-        install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
+    cd "$srcdir/rvgl_io_music"
+    find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
