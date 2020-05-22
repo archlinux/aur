@@ -3,19 +3,21 @@
 
 pkgname=rvgl-soundtrack
 pkgver=18.0327
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="RVGL original Dreamcast soundtrack."
 url='https://rvgl.re-volt.io'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
-provides=('rvgl-soundtrack')
+makedepends=('git')
+conflicts=('rvgl-soundtrack-orig')
 replaces=('rvgl-soundtrack-orig')
-source=("soundtrack.zip::https://distribute.re-volt.io/packs/soundtrack.zip")
-sha256sums=('44b3d9ab4793d69531c5943bac4027fd0cbd60e49ed75db766a56a5a80d32223')
+groups=('rvgl-original')
+source=("rvgl_soundtrack"::git+https://gitlab.com/re-volt/ost.git#tag=${pkgver})
+sha256sums=('SKIP')
 
 package() {
-    find redbook -type f -exec \
-        install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
+    cd "$srcdir/rvgl_soundtrack"
+    find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
