@@ -1,7 +1,7 @@
 pkgbase = libnvidia-container
 	pkgdesc = NVIDIA container runtime library
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/NVIDIA/libnvidia-container
 	arch = x86_64
 	license = Apache
