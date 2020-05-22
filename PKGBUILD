@@ -1,4 +1,3 @@
-# Maintainer: rawkode <rawkode@pm.me>
 # Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 
 _pkgname=buildtools
