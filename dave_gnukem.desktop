@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Dave Gnukem
+Comment=2D scrolling platform shooter inspired by Duke Nukem 1
+Icon=dave_gnukem
+Type=Application
+Exec=dave_gnukem
+Categories=Game;ArcadeGame;
+Encoding=UTF-8
