@@ -3,13 +3,13 @@
 
 pkgname=waifu2x-ncnn-vulkan-git
 _pkgname=waifu2x-ncnn-vulkan
-pkgver=20200414.r1.g23a679c
-pkgrel=2
+pkgver=20200414.r4.g5a4023f
+pkgrel=1
 pkgdesc="waifu2x converter ncnn version, runs fast on intel / amd / nvidia GPU with vulkan"
 url="https://github.com/nihui/waifu2x-ncnn-vulkan"
 license=('MIT')
-depends=('gcc-libs' 'vulkan-icd-loader' 'vulkan-driver')
-makedepends=('ncnn>=20200413' 'git' 'cmake' 'glslang' 'vulkan-headers')
+depends=('vulkan-icd-loader' 'vulkan-driver')
+makedepends=('git' 'cmake' 'glslang' 'vulkan-headers')
 conflicts=('waifu2x-ncnn-vulkan')
 provides=('waifu2x-ncnn-vulkan')
 arch=('i686' 'x86_64')
@@ -27,6 +27,9 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/waifu2x-ncnn-vulkan"
+
+    # init ncnn submodule
+    git submodule update --init --recursive
 
     # Fix default model path
     sed -i 's|path_t model = PATHSTR("models-cunet")|path_t model = PATHSTR("/usr/share/waifu2x-ncnn-vulkan/models-cunet")|' src/main.cpp
