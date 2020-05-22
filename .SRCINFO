@@ -1,6 +1,6 @@
 pkgbase = haskell-haxml
 	pkgdesc = Utilities for manipulating XML documents
-	pkgver = 1.25.3
+	pkgver = 1.25.5
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/HaXml
 	install = haskell-haxml.install
@@ -22,8 +22,8 @@ pkgbase = haskell-haxml
 	provides = CanonicaliseLazy
 	provides = Canonicalise
 	options = strip
-	source = http://hackage.haskell.org/packages/archive/HaXml/1.25.3/HaXml-1.25.3.tar.gz
-	sha1sums = be3626b72e585706d3135bf6d363f86ffac381c6
+	source = https://hackage.haskell.org/packages/archive/HaXml/1.25.5/HaXml-1.25.5.tar.gz
+	sha256sums = cbc51ac4b6128e130f0272a7b42ab464bc865b3c238d6cce6b76e451765c1235
 
 pkgname = haskell-haxml
 
