@@ -1,7 +1,7 @@
 pkgbase = ravenna-alsa-lkm-dkms
 	pkgdesc = A kernel module for ALSA RAVENNA/AES67 Driver
 	pkgver = r106.5a06f0d
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bitbucket.org/MergingTechnologies/ravenna-alsa-lkm
 	install = ravenna-dkms.install
 	arch = x86_64
@@ -14,9 +14,11 @@ pkgbase = ravenna-alsa-lkm-dkms
 	optdepends = linux-lts-headers: Needed for build the module for LTS Arch kernel
 	optdepends = linux-zen-headers: Needed for build the module for ZEN Arch kernel
 	source = git+https://bitbucket.org/MergingTechnologies/ravenna-alsa-lkm.git
+	source = git+https://github.com/bondagit/aes67-linux-daemon.git
 	source = dkms.conf
 	sha256sums = SKIP
-	sha256sums = b8dc1647d50d9e12e482a2cc768b37a48bf7d99bfb895d87767f7faf560cc48a
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ravenna-alsa-lkm-dkms
 
