@@ -63,9 +63,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-bcachefs-ck
-pkgver=5.6.13
-_pkgverpntrel=13
-pkgrel=3
+pkgver=5.6.14
+_pkgverpntrel=14
+pkgrel=1
 _ckpatchversion=2
 _cpusched="MuQSS"
 _sched_yield_type="0"
@@ -105,22 +105,22 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-md5sums=('73fa7a9e7c42a9ab2cc8151d20e8d6b6'
+md5sums=('1941f86c38e5c81b87dddeb808710b9f'
          'SKIP'
          '258711197ebfc4c113c5d354e27619da'
          '2cebdad39da582fd6a0c01746c8adb42'
          'b31b27f8a6a8f5fb79a6a6f4e1f07cc4'
          'b10e4c612d5240d66fad8f1c50fe3242'
-         'c03f428e377dc745d41b8fa0808dd139'
+         '40e097c2afbcc1dceb07f85a7cb63b96'
          'dd4f93989625fab9cdb3d2c3e7e52fcf'
          '75602fa70033aef9cb42f3df16ec2eb3'
          '228b33d0cb13cab162b3e051ec9bb88d'
          '9ed187660600a7884284aa6b3ddb08c6'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+         '54bc6b0448eed1a8f347a10c9ed085cd'
+         'c7cd17a55ba062b374bb3feb34b2be07'
+         '39c4af16066b52a0170b819c96311d43'
+         'a7df6301b2f912db313e5fb33215ac36'
+         '9c10b5efa9f814a0edf5af6dbfd3a1d9')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
