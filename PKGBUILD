@@ -7,7 +7,7 @@
 
 pkgname=google-chrome
 pkgver=83.0.4103.61
-pkgrel=1
+pkgrel=2
 pkgdesc="The popular and trusted web browser by Google (Stable Channel)"
 arch=('x86_64')
 url="https://www.google.com/chrome"
@@ -31,7 +31,7 @@ source=("http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_chan
 	"google-chrome-$_channel.sh")
 sha512sums=('735a75aef147829158645d6e14744ab075331396f68cc4eb8565c17f0753e96066a26172badd7b847f5b570b7cb1c319a67ff299a4f7db77c33a90879aa87c69'
             'a225555c06b7c32f9f2657004558e3f996c981481dbb0d3cd79b1d59fa3f05d591af88399422d3ab29d9446c103e98d567aeafe061d9550817ab6e7eb0498396'
-            'e1a76d6aa17a13325e30329fde5d7acd5f6863c6b4fc8a9b521b1995342447ab71188b1a176b58ed95a409659936544cf4e8cb492e0fda69dabfeae24f02bbf3')
+            '43519ec81d008c9f949ef52b98a718473913e888d99ff6598083e30cd1f07376b5e58a7639fd309ee19056c18eac58cbf6a31bec6bfd2509ebce9fa9d6919743')
 
 package() {
 	msg2 "Extracting the data.tar.xz..."
