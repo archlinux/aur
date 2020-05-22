@@ -4,9 +4,9 @@
 
 pkgname=pycharm-community-eap
 
-_buildver=201.7223.92
-_pkgver=2020.1.1
-_eap=n
+_buildver=201.7846.36
+_pkgver=2020.1.2
+_eap=y
 pkgver="$_pkgver.$_buildver"
 pkgrel=1
 epoch=6
