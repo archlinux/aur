@@ -1,19 +1,23 @@
-# Maintainer: Svitozar Cherepii <razotivs@gmail.com>
-pkgname=rvgl-cars
+# Maintainer: Huki <gk7huki@gmail.com>
+# Contributor: Svitozar Cherepii <razotivs@gmail.com>
+
+pkgname=rvgl-io-cars
 pkgver=20.0413
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional RVGL cars used for official events."
 url='https://rvgl.re-volt.io'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
-optdepends=('rvgl-skins: additional car skins')
-provides=('rvgl-superpros')
-conflicts=('rvgl-superpros')
-source=("$pkgname-$pkgver.zip::https://distribute.re-volt.io/packs/io_cars.zip")
-sha256sums=('bcb6db5469cef57a14dd6bb0ff953b77c94ecb23471f1bfef5292dc40dfcf7a8')
+optdepends=('rvgl-io-skins: additional car skins')
+makedepends=('git')
+conflicts=('rvgl-cars' 'rvgl-superpros')
+replaces=('rvgl-cars' 'rvgl-superpros')
+groups=('rvgl-community')
+source=("rvgl_io_cars"::git+https://gitlab.com/re-volt/rvio/cars.git#tag=${pkgver})
+sha256sums=('SKIP')
 
 package() {
-    find cars -type f -exec \
-        install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
+    cd "$srcdir/rvgl_io_cars"
+    find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }

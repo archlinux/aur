@@ -1,16 +1,20 @@
-pkgbase = rvgl-cars
+pkgbase = rvgl-io-cars
 	pkgdesc = Additional RVGL cars used for official events.
 	pkgver = 20.0413
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rvgl.re-volt.io
 	arch = any
+	groups = rvgl-community
 	license = custom
+	makedepends = git
 	depends = rvgl-bin
-	optdepends = rvgl-skins: additional car skins
-	provides = rvgl-superpros
+	optdepends = rvgl-io-skins: additional car skins
+	conflicts = rvgl-cars
 	conflicts = rvgl-superpros
-	source = rvgl-cars-20.0413.zip::https://distribute.re-volt.io/packs/io_cars.zip
-	sha256sums = bcb6db5469cef57a14dd6bb0ff953b77c94ecb23471f1bfef5292dc40dfcf7a8
+	replaces = rvgl-cars
+	replaces = rvgl-superpros
+	source = rvgl_io_cars::git+https://gitlab.com/re-volt/rvio/cars.git#tag=20.0413
+	sha256sums = SKIP
 
-pkgname = rvgl-cars
+pkgname = rvgl-io-cars
 
