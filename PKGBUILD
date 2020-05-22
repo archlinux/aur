@@ -1,16 +1,21 @@
-# Maintainer: Svitozar Cherepii <razotivs@gmail.com>
+# Maintainer: Huki <gk7huki@gmail.com>
+# Contributor: Svitozar Cherepii <razotivs@gmail.com>
+
 pkgname=rvgl-soundtrack
-pkgver=20.0302
+pkgver=18.0327
 pkgrel=2
-pkgdesc="RVGL community-made sountrack."
+epoch=1
+pkgdesc="RVGL original Dreamcast soundtrack."
 url='https://rvgl.re-volt.io'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
-source=("io_soundtrack.zip::https://distribute.re-volt.io/packs/io_soundtrack.zip")
-sha256sums=('d51e52d23d74d26aa93d8b96035d153ccf8e69f6bc93db7e3b615de060155010')
+provides=('rvgl-soundtrack')
+replaces=('rvgl-soundtrack-orig')
+source=("soundtrack.zip::https://distribute.re-volt.io/packs/soundtrack.zip")
+sha256sums=('44b3d9ab4793d69531c5943bac4027fd0cbd60e49ed75db766a56a5a80d32223')
 
 package() {
-    find redbook music -type f -exec \
+    find redbook -type f -exec \
         install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
