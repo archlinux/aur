@@ -1,8 +1,8 @@
 # Maintainer=alive4ever
 pkgname=libressl-netcat
-pkgver=3.0.2
-pkgrel=1
-arch=('x86_64' 'i686')
+pkgver=3.1.2
+pkgrel=2
+arch=('x86_64')
 pkgdesc="Low level UDP/TCP connection tool with support for TLS protocol"
 url=https://www.libressl.org
 license=('isc' 'custom:Openssl')
@@ -10,21 +10,8 @@ depends=('ca-certificates')
 makedepends=('libbsd')
 provides=('netcat')
 conflicts=('openbsd-netcat' 'gnu-netcat')
-source=("https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz"
-	"https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz.asc")
-sha256sums=('df7b172bf79b957dd27ef36dcaa1fb162562c0e8999e194aa8c1a3df2f15398e'
-            'SKIP')
-
-## To verify the package signature, import the public key manually before
-## building the package.
-# curl -LO https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl.asc 
-# gpg --import ./libressl.asc
-
-## Note that building package should not be run as root. Run the build using
-## standard user, either locally or inside container (systemd-nspawn, docker, or
-## lxc)
-
-validpgpkeys=('A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5') # Brent Cook <bcook@openbsd.org>
+source=("https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz")
+sha256sums=('f88a2f7ea617149a34e40c022d9912963f00eaa6109af421317525e6c978d892')
 
 build() {
 cd $srcdir/libressl-${pkgver}/
