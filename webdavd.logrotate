@@ -1,0 +1,10 @@
+/var/log/webdav-access.log /var/log/webdav-error.log {
+        sharedscripts
+        missingok
+        delaycompress
+        create 640 root adm
+
+        postrotate
+            systemctl restart webdavd
+        endscript
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<server-config xmlns="http://couling.me/webdavd">
+	<server>
+		<listen>
+			<port>8080</port>
+			<encryption>none</encryption>
+		</listen>
+		<rap-binary>/usr/bin/rap</rap-binary>
+		<static-response-dir>/usr/share/webdavd</static-response-dir>
+		<chroot-path>~</chroot-path>
+	</server>
+</server-config>

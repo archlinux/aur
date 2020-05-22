@@ -1,0 +1,12 @@
+[Unit]
+Description=WebDAV file server
+Documentation=man:webdavd(1)
+
+[Service]
+Type=simple
+Environment=statedir=/var/cache/webdavd
+ExecStartPre=/usr/bin/mkdir -p ${statedir}
+ExecStart=/usr/bin/webdavd /etc/webdavd/conf.xml
+
+[Install]
+WantedBy=multi-user.target
