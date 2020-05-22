@@ -1,17 +1,27 @@
 # Mantainer: Daniel Urdiales <daniurdi46@gmail.com>
 
-pkgname=disk-remover
-pkgver=1
+pkgname=qdl-git
+pkgver=760b3dffb03d2b7dfb82c6eac652a092f51c572d
 pkgrel=0
-pkgdesc="A little script that helps you to remove disks"
+pkgdesc="This tool communicates with USB devices of id 05c6:9008 to upload a flash loader and use this to flash images"
 arch=(any)
-url="https://github.com/dus2002/Disk-Remover"
+url="https://git.linaro.org/landing-teams/working/qualcomm/qdl.git"
 license=(GPL)
-source=("$pkgname.desktop" "$pkgname")
-sha512sums=('SKIP' 'SKIP')
+depends=('libxml2')
+source=("git://git.linaro.org/landing-teams/working/qualcomm/qdl.git")
+sha512sums=('SKIP')
+
+prepare() {
+	cd qdl
+	git reset --hard $pkgver
+}
+
+build() {
+	cd qdl
+	make
+}
 
 package() {
-  mkdir -p ${pkgdir}/usr/share/applications
-  cp $pkgname.desktop ${pkgdir}/usr/share/applications
-  cp $pkgname $pkgdir/usr/bin
+	cd qdl
+	make DESTDIR="$pkgdir" install
 }
