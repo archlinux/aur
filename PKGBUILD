@@ -3,8 +3,8 @@
 
 pkgbase="g13"
 pkgname="g13-git"
-pkgver=v1.0.3.beta.r1.g2b39aec
-pkgrel=3
+pkgver=v1.0.4.r0.g0a8d6e8
+pkgrel=1
 pkgdesc="Userspace driver for the Logitech G13 Keyboard"
 arch=('x86_64' 'i686')
 url="https://github.com/khampf/g13"
