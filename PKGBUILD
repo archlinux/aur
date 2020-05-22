@@ -11,7 +11,7 @@ license=("MIT")
 arch=("any")
 provides=("python-pymeta3")
 
-depdends=("python")
+depends=("python")
 makedepends=("python-setuptools")
 
 source=("$pkgname::git+https://github.com/wbond/pymeta3.git")

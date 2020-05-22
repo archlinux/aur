@@ -6,6 +6,7 @@ pkgbase = python-pymeta3-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = python
 	provides = python-pymeta3
 	source = python-pymeta3-git::git+https://github.com/wbond/pymeta3.git
 	md5sums = SKIP
