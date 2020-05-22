@@ -1,28 +1,19 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Balló György <ballogyor+arch@gmail.com>
 
 pkgname=indicator-sound
-pkgver=12.10.1
-pkgrel=5
+pkgver=12.10.2
+pkgrel=1
 pkgdesc='Unified sound menu indicator.'
 arch=('i686' 'x86_64')
 url="https://launchpad.net/${pkgname}"
 license=('GPL')
 depends=('ido' 'libdbusmenu-gtk3' 'libgee06' 'libindicator-gtk3' 'libpulse' 'libnotify')
 makedepends=('intltool' 'vala')
-source=("${url}/${pkgver%.*}/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz"
-        "http://pkgbuild.com/~bgyorgy/sources/${pkgname}-translations-20130310.tar.gz")
-sha256sums=('d3ae4e8a9e2bac6f9098e617364aba1ddca15ee118d5aa89ae85d0a1f3371af6'
-            '7830a7bf49b86f92558ad4bc1499db4e0c8680b0aa31d046262d8169b0bafcd2')
-
-prepare() {
-  cd ${pkgname}-${pkgver}
-
-# Install updated language files
-  rename ${pkgname}- '' ../po/${pkgname}-*.po
-  mv -f -t po ../po/*
-  printf "%s\n" po/*.po | sed -e 's/po\///g' -e 's/\.po//g' >po/LINGUAS
-}
+source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/indicator-sound/${pkgver}+16.04.20160406-0ubuntu1/indicator-sound_${pkgver}+16.04.20160406.orig.tar.gz")
+sha256sums=('832d997edce41495638dd0234a4aed00bd6ccc9550ca3e1552ab909ba245e376')
 
 build() {
   cd ${pkgname}-${pkgver}
