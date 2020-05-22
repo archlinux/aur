@@ -1,7 +1,7 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 
 pkgname=wluma
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 license=('MIT')
 pkgdesc='Automatic brightness adjustment based on screen contents'
@@ -11,7 +11,7 @@ depends=('vulkan-icd-loader' 'vulkan-driver' 'wayland')
 makedepends=('meson' 'ninja' 'vulkan-headers')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/maximbaz/${pkgname}/archive/${pkgver}.tar.gz"
         "https://github.com/maximbaz/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('756f69c49d1988c6a409af7d55931ce60b4bb541e5fd57387e3b15bdd73d8fa3'
+sha256sums=('cc0dd17d6aa87969b0c649353749a75b72312afb94153280f3a212adb80427d8'
             'SKIP')
 validpgpkeys=('EB4F9E5A60D32232BB52150C12C87A28FEAC6B20')
 
