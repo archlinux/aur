@@ -1,16 +1,17 @@
 pkgbase = gnatcoll-xref
 	pkgdesc = GNAT Components Collection - Tool to support parsing *.ali and *.gli files.
-	pkgver = 2019
-	pkgrel = 2
+	pkgver = 2020
+	pkgrel = 1
 	url = https://github.com/AdaCore/gnatcoll-db/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = gprbuild
+	depends = gnatcoll-core
 	depends = gnatcoll-iconv
 	depends = gnatcoll-sqlite
-	source = https://github.com/AdaCore/gnatcoll-db/archive/master.zip
-	sha1sums = eeefdd157ccd2ad62e807ab64eae07bb3f651300
+	source = gnatcoll-db-20.2.tar.gz::https://github.com/AdaCore/gnatcoll-db/archive/20.2.tar.gz
+	sha1sums = cd8e0f62f1fa9bc38f36a9493d20fe46159ce575
 
 pkgname = gnatcoll-xref
 
