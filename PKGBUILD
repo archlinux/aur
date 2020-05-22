@@ -10,15 +10,13 @@ depends=(
 	"mingw-w64-boost"
 	"mingw-w64-openexr"
 	"mingw-w64-libtiff"
+	"mingw-w64-libpng"
+	"mingw-w64-libjpeg-turbo"
 )
 builddepends=("mingw-w64-cmake")
 arch=("any")
 options=(!strip !buildflags staticlibs)
 optdepends=(
-	"mingw-w64-libjpeg-turbo"
-	"mingw-w64-bzip2"
-	"mingw-w64-libpng"
-	"mingw-w64-zlib"
 	"mingw-w64-intel-tbb"
 	"mingw-w64-giflib"
 	"mingw-w64-libwebp"
@@ -26,7 +24,7 @@ optdepends=(
 	"mingw-w64-opencolorio"
 	"mingw-w64-opencv"
 	"mingw-w64-ffmpeg"
-	"mingw-w64-libsquish"
+	"mingw-w64-libsquish: DDS file support"
 )
 sha256sums=(
 	"95b90ba22b73765cbcbd9e11891769c2e78696ad24d4af77ef3f3c8674422401"
