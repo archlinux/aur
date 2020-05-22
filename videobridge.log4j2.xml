@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
     <Properties>
-	    <Property name="log-path">/var/log/jitsi/videobridge</Property>
+	    <Property name="log-path">/var/log/jitsi-videobridge</Property>
         </Properties>
     <Appenders>
         <RollingFile name="RollingFile" fileName="${log-path}/cs.log"

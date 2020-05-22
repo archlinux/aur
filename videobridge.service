@@ -4,12 +4,13 @@ After=network.target
 
 [Service]
 EnvironmentFile=/etc/jitsi/videobridge/config
-User=jitsi-videobridge
-ExecStart=/opt/jitsi/videobridge/jvb.sh --host=${JVB_HOST} --domain=${JVB_HOSTNAME} --port=${JVB_PORT} --secret=${JVB_SECRET} ${JVB_OPTS}
+User=jvb
+ExecStart=/usr/share/jitsi-videobridge/jvb.sh --host=${JVB_HOST} --domain=${JVB_HOSTNAME} --port=${JVB_PORT} --secret=${JVB_SECRET} ${JVB_OPTS}
 WorkingDirectory=~
 StateDirectory=jitsi-videobridge
 StateDirectoryMode=0750
-
+LogsDirectory=jitsi-videobridge
+LogsDirectoryMode=0750
 Restart=on-failure
 
 # Hardening

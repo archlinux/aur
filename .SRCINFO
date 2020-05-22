@@ -1,7 +1,7 @@
 pkgbase = jitsi-meet-stable
 	pkgdesc = Jitsi Meet Stable
 	pkgver = 2.0.4548
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
 	license = Apache
@@ -55,18 +55,18 @@ pkgbase = jitsi-meet-stable
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = da11776c1e823dc893c3cea9e15431c7
+	md5sums = e6d4de29cfe539145e46561b5777abae
 	md5sums = 55fff787b77f6801fabd08ea4c64d566
-	md5sums = 34455146610ba0f451d734a324974eb2
+	md5sums = 174e5d903511efbf7b30a67eca174f24
 	md5sums = 41a92a5b1abe949dd91ee1f5de604431
 	md5sums = a6575eaf6f5ab4505aacbe505c171120
-	md5sums = dd2498f4460ffe3734cefcedbc02f4da
-	md5sums = f62ac7aef622eb407618d4c1ccb8f5b5
+	md5sums = 91bbea367b03828885f6ed4ceea36342
+	md5sums = e8e37cc544d1d71b86d5b576ca36eb8d
 	md5sums = b47f8c06d12ac9590f7356681011cca8
 	md5sums = 2d3dc55845eeb93b8bb7fa2f13e60d6c
-	md5sums = 40b7878973cda4d430838287cc3ae7e4
-	md5sums = 223b1691ffb90f295ccc30a879e86330
-	md5sums = dd97229e09475221c1fe27d713b63b82
+	md5sums = 38582c553d4e3c82f114773719c9124f
+	md5sums = 4566feec4aa70e81f2b822e90fb9691d
+	md5sums = a000f728fe5e4cdecc13b738dd262a3b
 
 pkgname = jitsi-meet-stable
 
