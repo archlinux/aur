@@ -3,8 +3,9 @@
 pkgname=jitsi-meet-stable
 _stable_version=4548
 _stable_tag=stable/jitsi-meet_${_stable_version}
+_stable_suffix=stable-jitsi-meet_${_stable_version}
 pkgver=2.0.${_stable_version}
-pkgrel=3
+pkgrel=4
 pkgdesc="Jitsi Meet Stable"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -15,7 +16,8 @@ conflicts=("jitsi-meet" "jitsi-videobridge" "jicofo" "jitsi-meet-prosody-plugins
 optdepends=("nginx" "prosody" "coturn")
 makedepends=(
 	"binutils" "tar"
-	"git" "nodejs-lts-erbium" "npm" "python2"
+	"git" "python2"
+	"nodejs" "npm"
 	"jdk8-openjdk"
 	"unzip" "maven"
 )
@@ -34,9 +36,9 @@ backup=(
 	"etc/jitsi/videobridge/sip-communicator.properties"
 )
 source=(
-	"jitsi-meet::git+https://github.com/jitsi/jitsi-meet#tag=${_stable_tag}"
-	"jitsi-videobridge::git+https://github.com/jitsi/jitsi-videobridge#tag=${_stable_tag}"
-	"jitsi-jicofo::git+https://github.com/jitsi/jicofo#tag=${_stable_tag}"
+	"jitsi-meet-${_stable_suffix}.tar.gz::https://github.com/jitsi/jitsi-meet/archive/${_stable_tag}.tar.gz"
+	"jicofo-${_stable_suffix}.tar.gz::https://github.com/jitsi/jicofo/archive/${_stable_tag}.tar.gz"
+	"jitsi-videobridge-${_stable_suffix}.tar.gz::https://github.com/jitsi/jitsi-videobridge/archive/${_stable_tag}.tar.gz"
 	"jicofo.config"
 	"jicofo.logging"
 	"jicofo.service"
@@ -56,17 +58,17 @@ _jitsi_jicofo_package=jicofo-1.1-SNAPSHOT
 
 build() {
 	echo "Jitsi Meet"
-	cd "${srcdir}/jitsi-meet"
+	cd "${srcdir}/jitsi-meet-${_stable_suffix}"
 	npm install
 	make -j1
 	make source-package
 
 	echo "Jitsi Videobridge"
-	cd "${srcdir}/jitsi-videobridge"
+	cd "${srcdir}/jitsi-videobridge-${_stable_suffix}"
 	mvn package -DskipTests -Dassembly.skipAssembly=false
 
 	echo "Jitsi jicofo"
-	cd "${srcdir}/jitsi-jicofo"
+	cd "${srcdir}/jicofo-${_stable_suffix}"
 	mvn package -DskipTests -Dassembly.skipAssembly=false
 
 }
@@ -76,21 +78,21 @@ package() {
 
 	echo "Jitsi Meet"
 	install -d "${pkgdir}/usr/share/jitsi-meet"
-        tar xjvf "${srcdir}/jitsi-meet/jitsi-meet.tar.bz2" -C "${pkgdir}/usr/share/jitsi-meet" --strip 1
+        tar xjvf "${srcdir}/jitsi-meet-${_stable_suffix}/jitsi-meet.tar.bz2" -C "${pkgdir}/usr/share/jitsi-meet" --strip 1
         for i in interface_config.js logging_config.js config.js
         do
 		install -Dm644 "${pkgdir}/usr/share/jitsi-meet/${i}" "${pkgdir}/etc/jitsi/meet/${i}"
                 ln -sf "/etc/jitsi/meet/${i}" "${pkgdir}/usr/share/jitsi-meet/${i}"
         done
-        cp -Rv "${srcdir}/jitsi-meet/resources/prosody-plugins" "${pkgdir}/usr/share/jitsi-meet-prosody-plugins"
+        cp -Rv "${srcdir}/jitsi-meet-${_stable_suffix}/resources/prosody-plugins" "${pkgdir}/usr/share/jitsi-meet-prosody-plugins"
 
 	install -d "${pkgdir}/usr/share/doc/jitsi/meet"
-	cp -Rv "${srcdir}/jitsi-meet/doc/debian/jitsi-meet" "${pkgdir}/usr/share/doc/jitsi/meet/web"
-	cp -Rv "${srcdir}/jitsi-meet/doc/debian/jitsi-meet-prosody" "${pkgdir}/usr/share/doc/jitsi/meet/prosody"
-	cp -Rv "${srcdir}/jitsi-meet/doc/debian/jitsi-meet-turn" "${pkgdir}/usr/share/doc/jitsi/meet/turn"
+	cp -Rv "${srcdir}/jitsi-meet-${_stable_suffix}/doc/debian/jitsi-meet" "${pkgdir}/usr/share/doc/jitsi/meet/web"
+	cp -Rv "${srcdir}/jitsi-meet-${_stable_suffix}/doc/debian/jitsi-meet-prosody" "${pkgdir}/usr/share/doc/jitsi/meet/prosody"
+	cp -Rv "${srcdir}/jitsi-meet-${_stable_suffix}/doc/debian/jitsi-meet-turn" "${pkgdir}/usr/share/doc/jitsi/meet/turn"
 
 	echo "Jitsi Videobridge"
-	unzip "${srcdir}/jitsi-videobridge/target/${_jitsi_videobridge_package}-archive.zip" -d "${pkgdir}/usr/share/jitsi-videobridge/"
+	unzip "${srcdir}/jitsi-videobridge-${_stable_suffix}/target/${_jitsi_videobridge_package}-archive.zip" -d "${pkgdir}/usr/share/jitsi-videobridge/"
 	mv "${pkgdir}/usr/share/jitsi-videobridge/${_jitsi_videobridge_package}/"* "${pkgdir}/usr/share/jitsi-videobridge/"
 	rmdir "${pkgdir}/usr/share/jitsi-videobridge/${_jitsi_videobridge_package}"
         install -dm750 "${pkgdir}/etc/jitsi/videobridge"
@@ -102,7 +104,7 @@ package() {
 	install -Dm640 videobridge.service "${pkgdir}/usr/lib/systemd/system/jitsi-videobridge.service"
 
 	echo "Jitsi Jicofo"
-	unzip "${srcdir}/jitsi-jicofo/target/${_jitsi_jicofo_package}-archive.zip" -d "${pkgdir}/usr/share/jicofo/"
+	unzip "${srcdir}/jicofo-${_stable_suffix}/target/${_jitsi_jicofo_package}-archive.zip" -d "${pkgdir}/usr/share/jicofo/"
 	mv "${pkgdir}/usr/share/jicofo/${_jitsi_jicofo_package}/"* "${pkgdir}/usr/share/jicofo/"
 	rmdir "${pkgdir}/usr/share/jicofo/${_jitsi_jicofo_package}"
         install -dm750 "${pkgdir}/etc/jitsi/jicofo"
@@ -120,9 +122,9 @@ package() {
 	find "${pkgdir}/usr/share/jitsi-meet" -type d -exec chmod 755 {} \;
 	chown -R root:root "${pkgdir}"
 }
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
+md5sums=('c3c89157484d207255657584f9ccdd14'
+         '9e36dee75bbc18c6b51e7c57d03d1a63'
+         '5ef864648f331d4acd1f0192ff4da286'
          'e6d4de29cfe539145e46561b5777abae'
          '55fff787b77f6801fabd08ea4c64d566'
          '174e5d903511efbf7b30a67eca174f24'

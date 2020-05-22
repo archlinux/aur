@@ -1,4 +1,4 @@
 *.tar.xz
 pkg/
 src/
-jitsi-*/
+*-stable-jitsi-meet_*.tar.gz

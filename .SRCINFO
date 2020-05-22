@@ -1,16 +1,16 @@
 pkgbase = jitsi-meet-stable
 	pkgdesc = Jitsi Meet Stable
 	pkgver = 2.0.4548
-	pkgrel = 3
+	pkgrel = 4
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
 	license = Apache
 	makedepends = binutils
 	makedepends = tar
 	makedepends = git
-	makedepends = nodejs-lts-erbium
-	makedepends = npm
 	makedepends = python2
+	makedepends = nodejs
+	makedepends = npm
 	makedepends = jdk8-openjdk
 	makedepends = unzip
 	makedepends = maven
@@ -37,9 +37,9 @@ pkgbase = jitsi-meet-stable
 	backup = etc/jitsi/videobridge/logging.properties
 	backup = etc/jitsi/videobridge/callstats-java-sdk.properties
 	backup = etc/jitsi/videobridge/sip-communicator.properties
-	source = jitsi-meet::git+https://github.com/jitsi/jitsi-meet#tag=stable/jitsi-meet_4548
-	source = jitsi-videobridge::git+https://github.com/jitsi/jitsi-videobridge#tag=stable/jitsi-meet_4548
-	source = jitsi-jicofo::git+https://github.com/jitsi/jicofo#tag=stable/jitsi-meet_4548
+	source = jitsi-meet-stable-jitsi-meet_4548.tar.gz::https://github.com/jitsi/jitsi-meet/archive/stable/jitsi-meet_4548.tar.gz
+	source = jicofo-stable-jitsi-meet_4548.tar.gz::https://github.com/jitsi/jicofo/archive/stable/jitsi-meet_4548.tar.gz
+	source = jitsi-videobridge-stable-jitsi-meet_4548.tar.gz::https://github.com/jitsi/jitsi-videobridge/archive/stable/jitsi-meet_4548.tar.gz
 	source = jicofo.config
 	source = jicofo.logging
 	source = jicofo.service
@@ -52,9 +52,9 @@ pkgbase = jitsi-meet-stable
 	source = videobridge.service
 	source = sysusers.conf
 	source = tmpfiles.conf
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = c3c89157484d207255657584f9ccdd14
+	md5sums = 9e36dee75bbc18c6b51e7c57d03d1a63
+	md5sums = 5ef864648f331d4acd1f0192ff4da286
 	md5sums = e6d4de29cfe539145e46561b5777abae
 	md5sums = 55fff787b77f6801fabd08ea4c64d566
 	md5sums = 174e5d903511efbf7b30a67eca174f24
