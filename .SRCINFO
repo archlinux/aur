@@ -1,0 +1,18 @@
+pkgbase = fake-light-sensor-git
+	pkgdesc = Fake light sensor for wluma, write lux from webcam or time based to a file
+	pkgver = master
+	pkgrel = 6
+	url = https://github.com/cyrinux/fake-light-sensor
+	arch = any
+	license = MIT
+	makedepends = git
+	optdepends = wluma
+	optdepends = python-pillow
+	optdepends = ffmpeg
+	provides = fake-light-sensor
+	conflicts = fake-light-sensor
+	source = git://github.com/cyrinux/fake-light-sensor
+	md5sums = SKIP
+
+pkgname = fake-light-sensor-git
+
