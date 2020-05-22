@@ -1,0 +1,60 @@
+From cb54945ee0b28407e06cc15fd982e37e2e56eb6b Mon Sep 17 00:00:00 2001
+From: Kjetil Matheussen <k.s.matheussen@notam02.no>
+Date: Thu, 21 May 2020 09:34:09 +0200
+Subject: [PATCH 6/9] Blocks: Fix undo delete/insert block. It messed up the
+ block order and/or pauses in the sequencer and playlist. Fixes #1250
+
+---
+ common/undo_block_insertdelete.c | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/common/undo_block_insertdelete.c b/common/undo_block_insertdelete.c
+index f5022fb1..eefac56b 100755
+--- a/common/undo_block_insertdelete.c
++++ b/common/undo_block_insertdelete.c
+@@ -108,14 +108,19 @@ void *Undo_Do_Block_Insert(
+           return Undo_Do_Block_Delete(window,wblock,wtrack,realline,pointer);
+ 	}
+ 
+-        SEQUENCER_create_from_state(ubi->sequencer_state, root->song);
+-
+-	ubi->wblock=(struct WBlocks *)ListFindElement1(&window->wblocks->l,ubi->blockpos);
++        hash_t *prev_state = SEQUENCER_get_state();
++        
++	struct WBlocks *deleted_wblock=(struct WBlocks *)ListFindElement1(&window->wblocks->l,ubi->blockpos);
+ 	DeleteBlock(ubi->blockpos);
+ 
++        SEQUENCER_create_from_state(ubi->sequencer_state, root->song);
++
+ 	BS_UpdatePlayList();
+         BS_UpdateBlockList();
+ 
++        ubi->sequencer_state=prev_state;
++        ubi->wblock = deleted_wblock;
++        
+ 	return ubi;
+ }
+ 
+@@ -132,6 +137,8 @@ void *Undo_Do_Block_Delete(
+ 		return Undo_Do_Block_Insert(window,wblock,wtrack,realline,pointer);
+ 	}
+ 
++        hash_t *prev_state = SEQUENCER_get_state();
++        
+ 	InsertBlock_IncBlockNums(ubi->blockpos);
+ 	ListAddElement1(&root->song->blocks,&ubi->wblock->block->l);
+ 	ListAddElement1(&window->wblocks,&ubi->wblock->l);
+@@ -141,7 +148,9 @@ void *Undo_Do_Block_Delete(
+ 	BS_UpdateBlockList();
+ 	BS_UpdatePlayList();
+ 
+-	ubi->wblock=NULL;
++	ubi->wblock=NULL; // In Undo_Do_Block_Delete, we get wblock from ubi->blockpos instead.
++        ubi->sequencer_state=prev_state;
++        
+ 	return ubi;
+ }
+ 
+-- 
+2.26.2
+

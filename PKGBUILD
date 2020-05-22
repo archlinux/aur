@@ -1,10 +1,10 @@
-# Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 # Maintainer: Teteros <teteros at teknik dot io>
+# Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=radium
 pkgver=5.9.98
-pkgrel=1
+pkgrel=2
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(i686 x86_64)
 url=https://users.notam02.no/~kjetism/radium
@@ -28,6 +28,7 @@ depends=(
 )
 makedepends=(
   boost
+  clang
   cmake
   ladspa
   libxcursor
@@ -41,31 +42,35 @@ makedepends=(
 optdepends=(
   'calf-ladspa: Default chorus plugin'
   'ladspa-plugins: Package group for default radium plugins included in binary releases'
+  'python: Used for scheme scripting'
 )
 options=(!strip)
 source=(https://github.com/kmatheussen/radium/archive/$pkgver.tar.gz
-        0001-Internal-Various-compilation-fixes-plus-assert-that-.patch
-        0002-Sequencer-Fix-program-sometimes-crashing-in-debug-mo.patch
-        0003-Linux-Macosx-Fix-compiling-with-newer-bdf.h.patch
-        use-system-libxcb.patch
-        use-system-vstsdk.patch)
+        0001-Linux-Macosx-Fix-compiling-with-newer-bdf.h.patch
+        0002-Build-Add-RADIUM_VST2SDK_PATH-environment-variable.patch
+        0003-Editor-Fix-assertion-window-popping-up-when-assignin.patch
+        0004-MIDI-Don-t-apply-channel-to-MIDI-system-messages-0xf.patch
+        0005-Sequencer-Fix-vertical-seqtrack-scrollbar-not-always.patch
+        0006-Blocks-Fix-undo-delete-insert-block.-It-messed-up-th.patch
+        0007-Linux-Only-use-included-libxcb-if-the-system-version.patch
+        0008-Build-Allow-skipping-libxcb-compile-with-env-vars.patch
+        0009-Build-Switch-to-clang-to-build-libpd-master.patch)
 sha256sums=('3b1b5b9f72536d79561f602f278611979fbc9a8720cd3064c001998a22de9e90'
-            'c658253e13eb5e5dbe44d5e968634da4ea474885bd4ea33b4d7c586b8aa58cc2'
-            'eb6641f77506799eab7f3fadccd5e129fc3a5f1a4cefd099d97dd1918aaa26d8'
-            'b0841d5979936a87b179a5ac8a61f326493b50ddcdb79b10da27870af1b204ab'
-            '6c29e825e06d1c3aec4afd915718b8c46da705d1411a94f7c0f777b888a9b50d'
-            'a1ee3635dd9338e2ea2fc76cddf670fcb046afeba553a12b73158cf0b51a52f6')
+            'cd8a424cbe379ab38eb705d6b56a1e65b67879fee1eb87f7e226b944af9ad3de'
+            '83d90f5418ca7429ed4e3c7ba9392b3bb4191528c2681f076f56ffe6f7617eef'
+            '9baab8d625955070dbf92b37095c34b8b3c7fa80c1838e651f2f1430b5221a34'
+            '4642e56d315d65a8a60f5bc57fabcee5daa1a7fc45feca88a472d8d3cfedda36'
+            '34f9d7e75978e8dffcb4c1f56b0d7f69376037c7c04daa44b8a7cf6b90cb0342'
+            'e3e1ab4936ddbbc37eb4d0da6f6d6b8013aca22afa5944c0148675325a7760b0'
+            '0be52efa89ba74c9f90cdfd5fcc29dbfbeb1f9bae12f59def113f682de84d7f6'
+            'f64abc5bd3eb9373f62702dd58e047e6cad7e5c3774f5a7c1045cc58e05a5111'
+            'd8610fb4e104ea6763777001c614f35ff109da046b9d47b4955a014397368fdf')
 
 prepare() {
   cd radium-$pkgver
 
-  # Use system libxcb 1.13 rather than try to compile it
-  patch -p1 < "$srcdir/use-system-libxcb.patch"
-
-  # Set VST SDK location to steinberg-vst36 rather than look for it in user's home folder
-  patch -p1 < "$srcdir/use-system-vstsdk.patch"
-
-  # Compile fix for gdb9 https://github.com/kmatheussen/radium/issues/1246
+  # Hotfixes for 5.9.98 release suggested by developer, see issue #1250
+  # https://github.com/kmatheussen/radium/issues/1250#issuecomment-631935368
   for commit in "$srcdir"/000?-*.patch; do patch -p1 < "$commit"; done
 
   # Edit new file template and demo songs to be compatible with chorus plugin from calf-ladspa
@@ -75,15 +80,15 @@ prepare() {
 build() {
   cd radium-$pkgver
 
-  RADIUM_QT_VERSION=5 make packages
-  RADIUM_QT_VERSION=5 BUILDTYPE=RELEASE ./build_linux.sh
+  RADIUM_QT_VERSION=5 RADIUM_VST2SDK_PATH=/usr/include/vst36 RADIUM_BUILD_LIBXCB=0 make packages
+  RADIUM_QT_VERSION=5 RADIUM_VST2SDK_PATH=/usr/include/vst36 BUILDTYPE=RELEASE ./build_linux.sh
 }
 
 package() {
   cd radium-$pkgver
 
   # Install radium and its packages to /opt
-  ./install.sh "$pkgdir/opt"
+  RADIUM_INSTALL_LIBXCB=0 ./install.sh "$pkgdir/opt"
 
   # Create startup script according to bin/packages/README
   mkdir -p "$pkgdir/usr/bin"

@@ -1,0 +1,53 @@
+From 67e9f1aeaef762d59b307954895f25727f374dda Mon Sep 17 00:00:00 2001
+From: Teteros <Teteros@users.noreply.github.com>
+Date: Wed, 22 Apr 2020 04:09:31 +0100
+Subject: [PATCH 8/9] Build: Allow skipping libxcb compile with env vars
+
+Commit 0faf13e20d26446defe92c9b68f883892bbf928f allows users to not have
+to use bundled libxcb at runtime but they still have to build it.
+
+With this patch it's possible to pass
+RADIUM_BUILD_LIBXCB=0 to make packages and
+RADIUM_INSTALL_LIBXCB=0 to install.sh
+
+to build without libxcb as well.
+---
+ bin/packages/build.sh |  2 +-
+ install.sh            | 11 +++++++----
+ 2 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/bin/packages/build.sh b/bin/packages/build.sh
+index 49b09d66..77a7820f 100755
+--- a/bin/packages/build.sh
++++ b/bin/packages/build.sh
+@@ -207,7 +207,7 @@ then
+     cd ../
+ fi
+ 
+-if [[ $RADIUM_QT_VERSION == 5 ]]
++if [[ $RADIUM_QT_VERSION == 5 && $RADIUM_BUILD_LIBXCB != 0 ]]
+ then
+ 
+     rm -fr xcb-proto-1.13/
+diff --git a/install.sh b/install.sh
+index 32d520f2..45300678 100755
+--- a/install.sh
++++ b/install.sh
+@@ -104,7 +104,10 @@ rm -f libpds.o
+ cd "$THIS_DIR/bin"
+ 
+ # libxcb
+-cp -a packages/libxcb-1.13 "$TARGET/packages/"
+-cd "$TARGET/packages/libxcb-1.13/src"
+-rm -f *.o
+-cd "$THIS_DIR/bin"
++if [[ $RADIUM_INSTALL_LIBXCB != 0 ]]
++then
++    cp -a packages/libxcb-1.13 "$TARGET/packages/"
++    cd "$TARGET/packages/libxcb-1.13/src"
++    rm -f ./*.o
++    cd "$THIS_DIR/bin"
++fi
+-- 
+2.26.2
+

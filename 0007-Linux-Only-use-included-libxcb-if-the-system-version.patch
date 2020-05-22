@@ -1,0 +1,189 @@
+From 39ca8a945bf8735ce76c9b36078cf4883a5bb412 Mon Sep 17 00:00:00 2001
+From: Kjetil Matheussen <k.s.matheussen@notam02.no>
+Date: Wed, 15 Apr 2020 17:42:14 +0200
+Subject: [PATCH 7/9] Linux: Only use included libxcb if the system-version of
+ libxcb is too old, or don"t exist
+
+---
+ Makefile.Qt               |  3 +++
+ Qt/Qt_Main.cpp            | 21 +++++++++++++++++++--
+ X11/X11_keyboard.cpp      |  3 +--
+ X11/check_recent_libxcb.c | 24 ++++++++++++++++++++++++
+ bin/run_radium_linux.sh   | 18 +++++++++++-------
+ build_linux_common.sh     |  7 ++++---
+ 6 files changed, 62 insertions(+), 14 deletions(-)
+ create mode 100644 X11/check_recent_libxcb.c
+
+diff --git a/Makefile.Qt b/Makefile.Qt
+index 24bf39b0..6f689b85 100755
+--- a/Makefile.Qt
++++ b/Makefile.Qt
+@@ -1377,6 +1377,9 @@ $(T)X11_instrument.o:  $(BUILD_DEPENDENCIES) X11/X11_instrument.c
+ $(T)X11_keyboard.o:  $(BUILD_DEPENDENCIES) X11/X11_keyboard.cpp
+ 	$(CCC2) X11/X11_keyboard.cpp $(QTOPT) -DUSE_QT$(RADIUM_QT_VERSION)
+ 
++bin/radium_check_recent_libxcb: X11/check_recent_libxcb.c
++	$(CC) -Wall $(WERROR) X11/check_recent_libxcb.c -ldl -o bin/radium_check_recent_libxcb
++
+ #X11_MidiProperties.o:  $(BUILD_DEPENDENCIES) X11/X11_MidiProperties.c
+ #	$(CC2) X11/X11_MidiProperties.c $(OPT) 
+ 
+diff --git a/Qt/Qt_Main.cpp b/Qt/Qt_Main.cpp
+index 65798d9c..ad375b14 100755
+--- a/Qt/Qt_Main.cpp
++++ b/Qt/Qt_Main.cpp
+@@ -19,6 +19,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. */
+ #include "../common/includepython.h"
+ 
+ #include <inttypes.h>
++#include <dlfcn.h>
+ 
+ 
+ #include <boost/version.hpp>
+@@ -3667,8 +3668,24 @@ static int gc_has_static_roots_func(
+   {
+     QString name(dlpi_name);
+     if (name.contains("libxcb.so")){
+-      if (!name.contains("bin/packages/libxcb-1.13/src/.libs/")){
+-        fprintf(stderr,"\n\n%c[31mError. A version of libxcb not included with Radium has been dynamically linked into the program. Something is wrong the installation of Radium.\nOlder versions of libxcb (probably before 1.11.1) are unstable with Radium.%c[0m\n\n", 0x1b, 0x1b);
++      bool success = false;
++      
++      void *handle = dlopen(dlpi_name, RTLD_NOW|RTLD_LOCAL);
++      if (handle != NULL) {
++        
++        if (dlsym(handle, "xcb_discard_reply64") != NULL)
++          success = true;
++        
++        dlclose(handle);
++      }
++      
++      if (!success) { //name.contains("/packages/libxcb-1.13/src/.libs/")){
++        fprintf(stderr,
++                "\n\n%c[31mError. A too old version of libxcb has been dynamically linked into the program.\n"
++                "Something is wrong the installation of Radium since a replacement version of libxcb should have been used automatically by the startup script if this is the case.\n"
++                "Older versions of libxcb (probably before 1.11.1) are unstable with Radium.%c[0m\n\n",
++                0x1b, 0x1b);
++        fprintf(stderr, "(\"%s\")\n", name.toUtf8().constData());
+         abort();
+       }
+     }
+diff --git a/X11/X11_keyboard.cpp b/X11/X11_keyboard.cpp
+index 6e981089..9b3a349f 100755
+--- a/X11/X11_keyboard.cpp
++++ b/X11/X11_keyboard.cpp
+@@ -46,7 +46,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. */
+ 
+ #include "../common/OS_system_proc.h"
+ 
+-
+ #ifndef USE_QT5
+ static int keycode_to_keynum[256]; // "A KeyCode represents a physical (or logical) key. KeyCodes lie in the inclusive range [8,255]" (keyboard-encoding.html)
+ #endif
+@@ -263,7 +262,7 @@ static xcb_keysym_t get_sym(xcb_key_press_event_t *event){
+ 
+     if (inited==false){
+       xcb_connection_t *connection = QX11Info::connection();
+-      
++
+       if (xcb_connection_has_error(connection) > 0)
+         GFX_Message(NULL, "Seems like the xcb connection has an error. Keyboard might not work. Error code %d.", xcb_connection_has_error(connection));
+       
+diff --git a/X11/check_recent_libxcb.c b/X11/check_recent_libxcb.c
+new file mode 100644
+index 00000000..a2a9d86a
+--- /dev/null
++++ b/X11/check_recent_libxcb.c
+@@ -0,0 +1,24 @@
++#include <stdlib.h>
++#include <stdio.h>
++#include <dlfcn.h>
++
++int main(void){
++  
++  void *handle = dlopen("libxcb.so.1", RTLD_NOW|RTLD_LOCAL);
++  
++  if (handle==NULL){
++    printf("Could not find libxcb\n");
++    return -1;
++  }
++
++  if (dlsym(handle, "xcb_discard_reply64")==NULL){
++    printf("No xcb_discard_reply64 in libxcb\n");
++    return -2;
++  }
++
++  printf("libxcb is recent enough. We can use it\n");
++
++  dlclose(handle);
++  
++  return 0;
++}
+diff --git a/bin/run_radium_linux.sh b/bin/run_radium_linux.sh
+index 03e0b4da..4c7fd8bd 100755
+--- a/bin/run_radium_linux.sh
++++ b/bin/run_radium_linux.sh
+@@ -2,16 +2,20 @@
+ 
+ set -e
+ 
+-
+ THIS_DIR="$(dirname "$(readlink -f "$0")")"
+-XCB_LIB_DIR="$THIS_DIR"/packages/libxcb-1.13/src/.libs
+ 
+-if ! file "$XCB_LIB_DIR" ; then
+-    echo "Unable to find directory $XCB_LIB_DIR"
+-    exit -1
+-fi
++if ! $THIS_DIR/radium_check_recent_libxcb ; then
+ 
+-export LD_LIBRARY_PATH="$XCB_LIB_DIR"${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
++    XCB_LIB_DIR="$THIS_DIR"/packages/libxcb-1.13/src/.libs
++    
++    if ! file "$XCB_LIB_DIR" ; then
++        echo "Unable to find directory $XCB_LIB_DIR"
++        exit -1
++    fi
++    
++    export LD_LIBRARY_PATH="$XCB_LIB_DIR"${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
++    
++fi
+ 
+ # To avoid buggy qt plugins crashing radium (very common).
+ unset QT_QPA_PLATFORMTHEME
+diff --git a/build_linux_common.sh b/build_linux_common.sh
+index 8004c6a7..514bb084 100755
+--- a/build_linux_common.sh
++++ b/build_linux_common.sh
+@@ -119,7 +119,7 @@ export RTMIDI_CFLAGS="-D__LINUX_ALSA__  -D__RTMIDI_DEBUG__"
+ export RTMIDI_LDFLAGS="-lpthread -lasound -ljack"
+ 
+ #export OS_OPTS="-DTEST_GC"
+-export OS_OPTS="-Werror=array-bounds -msse2 -fomit-frame-pointer -DFOR_LINUX `$PKG --cflags Qt5X11Extras`"
++export OS_OPTS="-Werror=array-bounds -msse2 -fomit-frame-pointer -DFOR_LINUX `$PKG --cflags Qt5X11Extras` " # -Ibin/packages/libxcb-1.13/"
+ #export OS_OPTS="-Werror=array-bounds -march=native"
+ 
+ 
+@@ -186,7 +186,7 @@ fi
+ fi
+ 
+ export OS_JUCE_LDFLAGS="-lasound -pthread -lrt -lX11 -ldl -lXext "
+-export OS_LDFLAGS="$FAUSTLDFLAGS $PDLDFLAGS pluginhost/Builds/Linux/build/libMyPluginHost.a $OS_JUCE_LDFLAGS -llrdf $GCDIR/.libs/libgc.a  $PYTHONLIBPATH $PYTHONLIBNAME bin/packages/libgig/src/.libs/libgig.a bin/packages/fluidsynth-1.1.6/src/.libs/libfluidsynth.a `$PKG --libs dbus-1` `$PKG --libs sndfile` `$PKG --libs samplerate` `$PKG --libs Qt5X11Extras` `$PKG --libs glib-2.0` -lxcb -lxcb-keysyms $RADIUM_BFD_LDFLAGS -lz -liberty -lutil -lgmp -lmpfr -lmpc"
++export OS_LDFLAGS="$FAUSTLDFLAGS $PDLDFLAGS pluginhost/Builds/Linux/build/libMyPluginHost.a $OS_JUCE_LDFLAGS -llrdf $GCDIR/.libs/libgc.a $PYTHONLIBPATH $PYTHONLIBNAME bin/packages/libgig/src/.libs/libgig.a bin/packages/fluidsynth-1.1.6/src/.libs/libfluidsynth.a `$PKG --libs dbus-1` `$PKG --libs sndfile` `$PKG --libs samplerate` `$PKG --libs Qt5X11Extras` `$PKG --libs glib-2.0` -lxcb -lxcb-keysyms $RADIUM_BFD_LDFLAGS -lz -liberty -lutil -lgmp -lmpfr -lmpc"
+ 
+ # 
+ 
+@@ -223,9 +223,10 @@ make buildtype.opt --stop
+ make flagopts.opt --stop
+ make api/radium_proc.h --stop
+ make common/keyboard_sub_ids.h --stop
++make bin/radium_check_recent_libxcb --stop
+ 
+ if [[ $1 == "test" ]] ; then
+-   make test_seqautomation
++    make test_seqautomation
+ else
+     make radium $@ --stop
+ fi
+-- 
+2.26.2
+

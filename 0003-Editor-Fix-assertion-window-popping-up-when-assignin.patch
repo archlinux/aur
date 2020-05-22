@@ -1,0 +1,27 @@
+From fdfc0e0dd12a995aff1195a1ca91e34069e688c3 Mon Sep 17 00:00:00 2001
+From: Kjetil Matheussen <k.s.matheussen@notam02.no>
+Date: Sun, 15 Mar 2020 13:08:33 +0100
+Subject: [PATCH 3/9] Editor: Fix assertion window popping up when assigning
+ track to an audio instrument without any input or output channels.
+
+---
+ api/api_gui.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/api/api_gui.cpp b/api/api_gui.cpp
+index 70e5741b..49bab6c3 100644
+--- a/api/api_gui.cpp
++++ b/api/api_gui.cpp
+@@ -546,7 +546,8 @@ static QQueue<Gui*> g_delayed_resized_guis; // ~Gui removes itself from this one
+       if (_is_input)
+         return plugin->input_volume_peaks;
+ 
+-      R_ASSERT(false);
++      //R_ASSERT(false); // We are here when instrument has no inputs or outputs.
++      
+       return _fallback_peaks;
+     }
+ 
+-- 
+2.26.2
+

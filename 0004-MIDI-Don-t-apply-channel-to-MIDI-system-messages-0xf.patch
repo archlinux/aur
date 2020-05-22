@@ -1,0 +1,26 @@
+From 40a7ab642a5825edb2e4b783d41f7a3343dcd2d1 Mon Sep 17 00:00:00 2001
+From: Kjetil Matheussen <k.s.matheussen@notam02.no>
+Date: Tue, 12 May 2020 12:19:37 +0200
+Subject: [PATCH 4/9] MIDI: Don"t apply channel to MIDI system messages
+ (0xf0->0xff) when using track channel for midi input
+
+---
+ midi/midi_i_input.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/midi/midi_i_input.cpp b/midi/midi_i_input.cpp
+index 7590e994..1f2a02ed 100755
+--- a/midi/midi_i_input.cpp
++++ b/midi/midi_i_input.cpp
+@@ -930,7 +930,7 @@ void RT_MIDI_handle_play_buffer(void){
+     if(through_patch!=NULL || num_playing_patches > 0){
+ 
+       uint8_t byte1 = MIDI_msg_byte1(msg);
+-      if (ATOMIC_GET(g_use_track_channel_for_midi_input)){
++      if (byte1 < 0xf0 && ATOMIC_GET(g_use_track_channel_for_midi_input)){
+         byte1 &= 0xf0;
+         byte1 |= ATOMIC_GET(g_curr_midi_channel);
+       }
+-- 
+2.26.2
+

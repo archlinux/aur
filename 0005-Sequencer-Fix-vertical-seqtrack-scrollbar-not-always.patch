@@ -1,0 +1,67 @@
+From f110c1ed7a4ae9f8e62b798c4c133be1ccd7f1d3 Mon Sep 17 00:00:00 2001
+From: Kjetil Matheussen <k.s.matheussen@notam02.no>
+Date: Tue, 19 May 2020 11:58:32 +0200
+Subject: [PATCH 5/9] Sequencer: Fix vertical seqtrack scrollbar not always
+ working. Bug introduced in 5.9.98.
+
+---
+ Qt/Qt_sequencer.cpp | 7 ++++++-
+ common/nsmtracker.h | 3 ++-
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/Qt/Qt_sequencer.cpp b/Qt/Qt_sequencer.cpp
+index 82713065..c5fa11e1 100644
+--- a/Qt/Qt_sequencer.cpp
++++ b/Qt/Qt_sequencer.cpp
+@@ -2448,6 +2448,7 @@ public:
+         struct SeqTrack *seqtrack=(struct SeqTrack *)root->song->seqtracks.elements[seqtracknum];
+         seqtrack->y2 = prev_y1;
+         seqtrack->y1 = seqtrack->y2 - heights[seqtracknum];
++        seqtrack->has_calculated_coordinates = true;
+         prev_y1 = seqtrack->y1;
+       }
+     }
+@@ -2460,6 +2461,7 @@ public:
+         struct SeqTrack *seqtrack=(struct SeqTrack *)root->song->seqtracks.elements[seqtracknum];
+         seqtrack->y1 = next_y1;
+         seqtrack->y2 = seqtrack->y1 + heights[seqtracknum];
++        seqtrack->has_calculated_coordinates = true;
+         next_y1 = seqtrack->y2;
+       }
+     }
+@@ -2559,7 +2561,7 @@ public:
+ 
+       const struct SeqTrack *seqtrack = (const struct SeqTrack *)root->song->seqtracks.elements[seqtracknum];
+ 
+-      if (seqtrack->y2 > 0 && seqtrack->is_visible){ // if seqtrack->y2==0 it means that position_widgets() haven't been called yet.
++      if (seqtrack->has_calculated_coordinates && seqtrack->is_visible){ // if seqtrack->y2==0 it means that position_widgets() haven't been called yet.
+         
+         R_ASSERT_NON_RELEASE(seqtrack->y2 > seqtrack->y1);
+     
+@@ -3552,6 +3554,9 @@ public:
+         if(seqtrack->is_visible==false)
+           continue;
+         
++        if(seqtrack->has_calculated_coordinates==false)
++          continue;
++        
+         double y1 = scale_double(seqtrack->y1, seqtrack0_y1, seqtrackN_y2, t_y1 + 3, t_y2 - 3);
+         double y2 = scale_double(seqtrack->y2, seqtrack0_y1, seqtrackN_y2, t_y1 + 3, t_y2 - 3);
+ 
+diff --git a/common/nsmtracker.h b/common/nsmtracker.h
+index eff912ad..ebafd20d 100755
+--- a/common/nsmtracker.h
++++ b/common/nsmtracker.h
+@@ -3425,7 +3425,8 @@ struct SeqTrack{
+   double custom_min_height; // divided by system font height
+   double custom_max_height; // divided by system font height
+ 
+-  double y1, y2; // in the sequencer.
++  bool has_calculated_coordinates;
++  double y1, y2; // in the sequencer. Only valid if has_calculated_coordinates is true.
+   
+   // All variables below are only used when for_audiofiles==true.
+   struct Patch *patch; // A "Sequencer audio file recorder/player" audio plugin.
+-- 
+2.26.2
+
