@@ -2,12 +2,13 @@
 
 pkgname=teamspeak2
 pkgver=rc2_2032
-pkgrel=6
+pkgrel=7
 pkgdesc="TeamSpeak is software for quality voice communication via the Internet"
 url="http://www.teamspeak.com/"
 license=('custom')
-depends=('libxext' 'libjpeg6' 'libsm')
-arch=('i686')
+depends_x86_64=('lib32-libxext' 'lib32-libjpeg6-turbo' 'lib32-libsm')
+depends_i686=('libxext' 'libjpeg6' 'libsm')
+arch=('i686' 'x86_64')
 source=('teamspeak2.desktop' \
 'http://dl.4players.de/ts/archives/ts2/releases/ts2_client_rc2_2032.tar.bz2')
 sha256sums=('05f333692bb79d6cfe490c008462c6ffb6058e018f39a9bddb0d40b988e2d69e'
