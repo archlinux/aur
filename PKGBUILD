@@ -7,7 +7,7 @@
 
 pkgname=google-chrome
 pkgver=83.0.4103.61
-pkgrel=2
+pkgrel=1
 pkgdesc="The popular and trusted web browser by Google (Stable Channel)"
 arch=('x86_64')
 url="https://www.google.com/chrome"
