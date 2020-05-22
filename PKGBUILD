@@ -2,7 +2,7 @@
 # Contributor: Tilman Blumenbach <tilman+aur@ax86.net>
 
 pkgname=xcursor-openzone
-pkgver=1.2.8
+pkgver=1.2.9
 pkgrel=1
 pkgdesc="OpenZone X11 cursor theme"
 url='https://www.opendesktop.org/p/999999/'
