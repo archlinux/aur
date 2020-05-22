@@ -1,7 +1,7 @@
 pkgbase = bin32-jdk6
 	pkgdesc = Oracle Java 6 Development Kit (32-bit) (public release - end of support)
 	pkgver = 6u45
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.java.com/en/download/faq/java_6.xml
 	install = bin32-jdk6.install
 	arch = x86_64
