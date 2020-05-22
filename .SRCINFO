@@ -1,16 +1,17 @@
 pkgbase = litecoin-daemon
-	pkgdesc = Peer-to-peer digital currency, official binary release (includes litecoind and litecoin-cli)
-	pkgver = 0.14.2
-	pkgrel = 3
-	url = https://github.com/litecoin-project/litecoin
+	pkgdesc = Peer-to-peer digital currency, official binary release for servers (includes litecoind and litecoin-cli)
+	pkgver = 0.17.1
+	pkgrel = 1
+	url = http://www.litecoin.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = openssl
 	options = !strip
-	conflicts = litecoin-bin
-	source = https://download.litecoin.org/litecoin-0.14.2/linux/litecoin-0.14.2-x86_64-linux-gnu.tar.gz
-	sha256sums = 05f409ee57ce83124f2463a3277dc8d46fca18637052d1021130e4deaca07b3c
+	source_i686 = https://download.litecoin.org/litecoin-0.17.1/linux/litecoin-0.17.1-i686-pc-linux-gnu.tar.gz
+	md5sums_i686 = 9e28e4d172821d485423acbd05655b57
+	source_x86_64 = https://download.litecoin.org/litecoin-0.17.1/linux/litecoin-0.17.1-x86_64-linux-gnu.tar.gz
+	md5sums_x86_64 = a152828cd984c4dda16719aa406609ff
 
 pkgname = litecoin-daemon
 
