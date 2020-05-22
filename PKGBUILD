@@ -1,24 +1,26 @@
-# Maintainer: Giuseppe Borzi <gborzi@ieee.org>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Giuseppe Borzi <gborzi@ieee.org>
 
 pkgname=midori-passwordmanager
 _pkgname=midori
 pkgver=0.3
-_pkgver=0.5.10
-pkgrel=13
+_pkgver=0.5.11
+pkgrel=14
 pkgdesc="A password manager for Midori"
 arch=('i686' 'x86_64')
-url="http://www.midori-browser.org"
+url="https://www.midori-browser.org"
 license=('GPL2')
 depends=('midori' 'gnome-keyring' 'libgnome-keyring')
 makedepends=('python2' 'intltool' 'vala' 'librsvg' 'cmake')
 optdepends=('seahorse: to edit/delete passwords')
-source=("$url/downloads/${_pkgname}_${_pkgver}_all_.tar.bz2" passwordmanager.c passwordmanager.js cmakelist.diff README lpins.c)
-md5sums=('2f250a5015923b6eeca606629e7bf042'
-         '94c6ec8ddd50ca4d226d8413ef85c0f2'
-         'f9a91b8d929d4cb6407a769603fca619'
-         '51c3e704947b0626716ab83e199d06c4'
-         'defadec00ebd02506fb1106f7fe5f2ae'
-         'd11b1f035e4a044e2727ef226db9482b')
+source=("$url/downloads/midori_${_pkgver}_all_.tar.bz2" passwordmanager.c passwordmanager.js cmakelist.diff README lpins.c)
+sha256sums=('ea60fc67b6bbf8bd2ea4651aca2f605a7ef3b83e7ef00f54745b6be5d91dfb04'
+            'ff49ca7fd226dc69c889906d81136bc633141113411021ce658be0118774b88f'
+            '4c1fafdd677c19f410795d66a5c110b5791e17e95644f09c72b79c1172c9cbd9'
+            'c3b2fb8f0caf9fe733b1e0a784ef3c036afed3ee8897513cc3ca6232c584a20b'
+            '76223532d88c8b1ae1582ccf66d94b1c20c7aed4235fb6dbb7d4a3c65934aa50'
+            '8510c40a30b4400f7213a51f39c978db8fbb7130d37296b10ca414f197f8358b')
 build() {
   cd "${srcdir}"
 
