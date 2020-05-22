@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 source PKGBUILD
 V=$(curl --silent "https://api.github.com/repos/jitsi/jitsi-meet/tags" | jq -r '[.[]|select(.name|startswith("stable/jitsi-meet_"))|.name][0][18:]')
 
