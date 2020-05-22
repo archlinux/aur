@@ -1,6 +1,6 @@
 pkgbase = gitstatus-git
 	pkgdesc = 10x faster implementation of `git status` command
-	pkgver = r1281.0127fd2
+	pkgver = r1282.0e70dbc
 	pkgrel = 1
 	url = https://github.com/romkatv/gitstatus
 	install = gitstatus.install

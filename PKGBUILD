@@ -1,6 +1,6 @@
 # Maintainer: Aloxaf <aloxafx@gmail.com>
 pkgname=gitstatus-git
-pkgver=r1281.0127fd2
+pkgver=r1282.0e70dbc
 pkgrel=1
 pkgdesc='10x faster implementation of `git status` command'
 arch=('x86_64')
@@ -28,9 +28,8 @@ build() {
 }
 
 package() {
-  cd "$srcdir/gitstatus"
-  for file in docs/* src/* usrbin/* *; do
-    [[ -d "$file" ]] && continue
-    install -D "$file" "$pkgdir/usr/share/gitstatus/$file"
-  done
+  cd "$srcdir"
+  find gitstatus -path gitstatus/.git -prune \
+    -o '(' -type f -exec install -D '{}' "$pkgdir/usr/share/{}" ';' ')'
 }
+
