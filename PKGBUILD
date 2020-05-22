@@ -2,7 +2,7 @@
 
 pkgname=obs-ndi-git
 _pkgname=obs-ndi
-pkgver=r461.1854143
+pkgver=r482.9f96d80
 pkgrel=1
 pkgdesc="Network A/V in OBS Studio with NewTek's NDI technology"
 arch=('x86_64')
@@ -12,10 +12,8 @@ provides=('obs-ndi')
 conflicts=('obs-ndi' 'obs-ndi-bin')
 depends=('avahi' 'ndi-sdk' 'obs-studio')
 makedepends=('git' 'cmake')
-source=("git+https://github.com/Palakis/obs-ndi.git"
-        "git+https://github.com/obsproject/obs-studio.git")
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+https://github.com/Palakis/obs-ndi.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd ${srcdir}/${_pkgname}
@@ -25,7 +23,7 @@ pkgver() {
 build() {
     cd ${srcdir}/${_pkgname}
 
-    cmake -B build -DLIBOBS_INCLUDE_DIR=${srcdir}/obs-studio/libobs -DCMAKE_INSTALL_PREFIX=/usr
+    cmake -B build -DCMAKE_INSTALL_PREFIX=/usr
     cmake --build build
 }
 
