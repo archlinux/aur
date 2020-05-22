@@ -1,6 +1,6 @@
 pkgbase = stormkit-git
 	pkgdesc = Arthapz personal C++ TooKit
-	pkgver = r39.23206f9
+	pkgver = r47.46c4cc1
 	pkgrel = 1
 	url = https://gitlab.com/Arthapz/stormkit
 	arch = any
@@ -17,6 +17,7 @@ pkgbase = stormkit-git
 	depends = glm
 	depends = fmt
 	depends = vulkan-headers
+	depends = range-v3
 	optdepends = libpng
 	optdepends = libjpeg
 	provides = stormkit

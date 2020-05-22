@@ -1,6 +1,6 @@
 # Maintainer: Arthur LAURENT <arthur.laurent4@gmail.com>
 pkgname='stormkit-git'
-pkgver=r39.23206f9
+pkgver=r47.46c4cc1
 pkgrel=1
 pkgdesc='Arthapz personal C++ TooKit'
 
@@ -9,7 +9,7 @@ url='https://gitlab.com/Arthapz/stormkit'
 license=('MIT')
 
 provides=('stormkit')
-depends=('microsoft-gsl' 'glm' 'fmt' 'vulkan-headers')
+depends=('microsoft-gsl' 'glm' 'fmt' 'vulkan-headers' 'range-v3')
 makedepends=('cmake' 'git' 'ninja' 'meson' 'libxcb' 'xcb-util-keysyms' 'xcb-util-wm' 'xcb-util')
 optdepends=('libpng' 'libjpeg')
 conflicts=('stormkit')
@@ -26,14 +26,6 @@ pkgver() {
 }
 
 prepare() {
-    range="range"
-    if pacman -Qi $range > /dev/null ; then
-    	git clone https://aur.archlinux.org/range-v3-git.git
-    	cd 'range-v3-git'
-    	makepkg -si
-    	cd '../'
-    fi
-
     cd 'stormkit'
     export DESTDIR=/usr
     meson builddir-debug --prefix /usr -Dbuildtype=debug -Denable_examples=false -Dexamples_data_dir='/usr/share/'
@@ -48,7 +40,7 @@ build() {
 
 package() {
     cd 'stormkit'
-    ninja -C builddir-debug install
-    ninja -C builddir-release install
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/stormkit/LICENSE"
+    DESTDIR="${pkgdir}" ninja -C builddir-debug install
+    DESTDIR="${pkgdir}" ninja -C builddir-release install
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/stormkit/LICENSE"
 }
