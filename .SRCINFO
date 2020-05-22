@@ -1,8 +1,8 @@
 pkgbase = rshell-git
 	pkgdesc = KisuYami own shell.
-	pkgver = 2.1.3e1221e51f
+	pkgver = r3.gd47ff9e
 	pkgrel = 1
-	url = www.github.com/KisuYami/RShell
+	url = https://gitlab.com/KisuYami/rshell
 	arch = i686
 	arch = x86_64
 	groups = shell
@@ -13,7 +13,8 @@ pkgbase = rshell-git
 	depends = ncurses
 	depends = readline
 	provides = rshell
-	source = git://github.com/KisuYami/RShell
+	source = https://gitlab.com/KisuYami/RShell/-/archive/master/RShell-master.tar.gz
 	md5sums = SKIP
 
 pkgname = rshell-git
+
