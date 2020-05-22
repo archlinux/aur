@@ -3,7 +3,7 @@
 
 pkgname=tvheadend-git
 _gitname='tvheadend-git'
-pkgver=4.3.r1428.gbef96c5d2
+pkgver=4.3.r1878.ge59b92e9f
 pkgrel=1
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -62,7 +62,13 @@ prepare() {
 build() {
     cd "${srcdir}/${_gitname}"
 
-    ./configure --prefix=/usr --mandir=/usr/share/man/man1 --release \
+    # Work-around for GCC 10
+    export CFLAGS="${CFLAGS} -fcommon"
+
+    ./configure \
+        --prefix=/usr \
+        --mandir=/usr/share/man/man1 \
+        --release \
         --python=python3 \
         --enable-avahi \
         --enable-zlib \
