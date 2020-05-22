@@ -1,0 +1,15 @@
+pkgbase = rvgl-io-clockworks-modern
+	pkgdesc = Additional modern clockwork cars for RVGL.
+	pkgver = 18.0807
+	pkgrel = 1
+	url = https://rvgl.re-volt.io
+	arch = any
+	groups = rvgl-community
+	license = custom
+	makedepends = git
+	depends = rvgl-bin
+	source = rvgl_io_clockworks_modern::git+https://gitlab.com/re-volt/rvio/clockworks_modern.git#tag=18.0807
+	sha256sums = SKIP
+
+pkgname = rvgl-io-clockworks-modern
+
