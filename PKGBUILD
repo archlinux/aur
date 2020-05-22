@@ -1,18 +1,19 @@
-# Maintainer: nerflad <nerflad@gmail.com>
-# Upstream URL: https://github.com/stanfieldr/ghetto-skype
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: nerflad <nerflad@gmail.com>
+
 pkgname=ghetto-skype
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='Web Skype + Tray Icon + Notifications'
 arch=('x86_64')
 url='https://github.com/stanfieldr/ghetto-skype'
-license=('GPLv3')
+license=('GPL3')
 depends=('electron')
 optdepends=('libappindicator-gtk2: Tray Icon support for certain DEs')
 makedepends=('npm' 'python2')
 install=ghetto-skype.install
 source=("https://github.com/stanfieldr/ghetto-skype/archive/v${pkgver}.tar.gz")
-sha256sums=('597ba70f48ee34a1e256aef04ce2403e8bb696e85e6ac15f192ac10c4388325c')
+sha256sums=('35c5a8a2cc964ea09b89ee4a196bbc1aa440be76ce2acc89ab3fd89fa182eb0f')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
