@@ -7,7 +7,6 @@ pkgdesc='FoxyProxy Basic is a simple on/off proxy switcher - basic version'
 url=https://github.com/foxyproxy/firefox-extension
 arch=('any')
 license=('GPL')
-groups=('firefox-addons')
 source=("https://addons.mozilla.org/firefox/downloads/file/3476522/foxyproxy_basic-$pkgver-an+fx.xpi")
 noextract=("${source##*/}")
 sha256sums=('d13888eb30f5779d7b8969d9f2a1735876f4e372acf917459579cb7ce06217a8')

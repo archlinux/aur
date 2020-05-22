@@ -4,7 +4,6 @@ pkgbase = firefox-extension-foxyproxy-basic
 	pkgrel = 1
 	url = https://github.com/foxyproxy/firefox-extension
 	arch = any
-	groups = firefox-addons
 	license = GPL
 	noextract = foxyproxy_basic-7.4.3-an+fx.xpi
 	source = https://addons.mozilla.org/firefox/downloads/file/3476522/foxyproxy_basic-7.4.3-an+fx.xpi
