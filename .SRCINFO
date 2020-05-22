@@ -1,6 +1,6 @@
 pkgbase = rvgl-io-lmstag
 	pkgdesc = Additional Battle Tag and Last Man Standing levels for RVGL.
-	pkgver = 20.0413
+	pkgver = 20.0503
 	pkgrel = 1
 	url = https://rvgl.re-volt.io
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = rvgl-io-lmstag
 	license = custom
 	makedepends = git
 	depends = rvgl-bin
-	source = rvgl_io_lmstag::git+https://gitlab.com/re-volt/rvio/arenas.git#tag=20.0413
+	source = rvgl_io_lmstag::git+https://gitlab.com/re-volt/rvio/arenas.git#tag=20.0503
 	sha256sums = SKIP
 
 pkgname = rvgl-io-lmstag
