@@ -34,4 +34,3 @@ package() {
   find gitstatus -path gitstatus/.git -prune \
     -o '(' -type f -exec install -D '{}' "$pkgdir/usr/share/{}" ';' ')'
 }
-
