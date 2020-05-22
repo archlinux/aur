@@ -1,17 +1,17 @@
 # Maintainer: ml <ml@visu.li>
+# TODO package as plugin
 pkgname=krew
 pkgver=0.3.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Plugin manager for kubectl command-line tool'
-arch=('x86_64' 'aarch64' 'arm' 'arm6h' 'arm7h')
+arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url='https://krew.sigs.k8s.io/'
 license=('Apache')
-depends=('kubectl')
-makedepends=('git' 'go' 'gzip')
+# grep -rF exec.Command
+depends=('kubectl' 'git')
+makedepends=('go' 'gzip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kubernetes-sigs/krew/archive/v${pkgver}.tar.gz")
 sha256sums=('dc96db650fb7f973a6a3fcf6ce35bb6ba1218bca9c3858459d5cacc2c321113c')
-# see build(), check()
-_commit=
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -19,12 +19,12 @@ prepare() {
 }
 
 build() {
+  local _commit=
   _commit=$(zcat "${pkgname}-${pkgver}.tar.gz" | git get-tar-commit-id)
   local -a x=(
     sigs.k8s.io/krew/internal/version.gitCommit="${_commit:?}"
     sigs.k8s.io/krew/internal/version.gitTag="v${pkgver}"
   )
-
   cd "${pkgname}-${pkgver}"
   export CGO_LDFLAGS="$LDFLAGS"
   export CGO_CFLAGS="$CFLAGS"
@@ -36,7 +36,13 @@ build() {
 
 check() {
   cd "${pkgname}-${pkgver}"
-  go test -short ./...
+  # unit- and integrationtests
+  KREW_BINARY="${PWD}/${pkgname}" go test ./...
+  # check that binary includes commit id and pkgver
+  if ! [[ $(grep -Fcm 2 -e "$_commit" -e "v${pkgver}" -- krew) -eq 2 ]]; then
+    echo "commit id ($_commit) or version ($pkgver) not found in the binary" >&2
+    return 1
+  fi
 }
 
 package() {
