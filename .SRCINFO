@@ -8,9 +8,9 @@ pkgbase = getax
 	depends = gnome-vfs
 	depends = java-runtime=8
 	depends = webkitgtk2
-	source = getax-2019-1.04.tar.gz::https://www.getax.ch/getaxpp/2019/getax2019.tar.gz
+	source = getax-2019-1.05.tar.gz::https://www.getax.ch/getaxpp/2019/getax2019.tar.gz
 	source = getax
-	sha256sums = 47afc6e9faca47081c400850526d610fc050931231491ca3ac0446f33c6f1b10
+	sha256sums = 8df18a69051ffb6bdd86c40e8f43a69818232fc3ebcff0b2cfdcd8f29400ac0c
 	sha256sums = a474ed38201b0abc1459ff0ffa37a1fb0e947a135a18e08cb00acadad23488be
 
 pkgname = getax
