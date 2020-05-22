@@ -1,7 +1,7 @@
 # Maintainer: Cédric Connes <cedric.connes@gmail.com>
 
 pkgname=ctrsigcheck-bin
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Parse and verify various file formats used by the Nintendo 3DS, also known as CTR"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -9,18 +9,18 @@ url="https://github.com/connesc/ctrsigcheck"
 license=('ISC')
 provides=('ctrsigcheck')
 conflicts=('ctrsigcheck')
-source_i686=("ctrsigcheck_i686.tar.gz::https://github.com/connesc/ctrsigcheck/releases/download/v$pkgver/ctrsigcheck_${pkgver}_linux_386.tar.gz")
-source_x86_64=("ctrsigcheck_x86_64.tar.gz::https://github.com/connesc/ctrsigcheck/releases/download/v$pkgver/ctrsigcheck_${pkgver}_linux_amd64.tar.gz")
-source_arm=("ctrsigcheck_arm.tar.gz::https://github.com/connesc/ctrsigcheck/releases/download/v$pkgver/ctrsigcheck_${pkgver}_linux_armv5.tar.gz")
-source_armv6h=("ctrsigcheck_armv6h.tar.gz::https://github.com/connesc/ctrsigcheck/releases/download/v$pkgver/ctrsigcheck_${pkgver}_linux_armv6.tar.gz")
-source_armv7h=("ctrsigcheck_armv7h.tar.gz::https://github.com/connesc/ctrsigcheck/releases/download/v$pkgver/ctrsigcheck_${pkgver}_linux_armv7.tar.gz")
-source_aarch64=("ctrsigcheck_aarch64.tar.gz::https://github.com/connesc/ctrsigcheck/releases/download/v$pkgver/ctrsigcheck_${pkgver}_linux_arm64.tar.gz")
-sha256sums_i686=('9294dd550f2e90413e2e8aab09ebcfa1264b6c12dcf8952a1948bf157834ea9b')
-sha256sums_x86_64=('a65f990aae14619e17ef84b01e9dc3cf8c653b1adbef23517ab3f5d0e84afb8d')
-sha256sums_arm=('4be61e15eac2fce4838b58a43dbb5103701fa8d277880be3597b4e13d71ef7dd')
-sha256sums_armv6h=('9173dffe967bb265c93773995e594a246cd9b8163a2dc554d1cfa0ec329c2eda')
-sha256sums_armv7h=('70d39f403de692d6c9df944da6386f0a40adee4a150d4a97a29d884b514802e1')
-sha256sums_aarch64=('23e533a4e7c166020fee127b8d60a214789f6c05ebbfc648f3bff88534af6a76')
+source_i686=("ctrsigcheck_${pkgver}_i686.tar.gz::https://github.com/connesc/ctrsigcheck/releases/download/v$pkgver/ctrsigcheck_${pkgver}_linux_386.tar.gz")
+source_x86_64=("ctrsigcheck_${pkgver}_x86_64.tar.gz::https://github.com/connesc/ctrsigcheck/releases/download/v$pkgver/ctrsigcheck_${pkgver}_linux_amd64.tar.gz")
+source_arm=("ctrsigcheck_${pkgver}_arm.tar.gz::https://github.com/connesc/ctrsigcheck/releases/download/v$pkgver/ctrsigcheck_${pkgver}_linux_armv5.tar.gz")
+source_armv6h=("ctrsigcheck_${pkgver}_armv6h.tar.gz::https://github.com/connesc/ctrsigcheck/releases/download/v$pkgver/ctrsigcheck_${pkgver}_linux_armv6.tar.gz")
+source_armv7h=("ctrsigcheck_${pkgver}_armv7h.tar.gz::https://github.com/connesc/ctrsigcheck/releases/download/v$pkgver/ctrsigcheck_${pkgver}_linux_armv7.tar.gz")
+source_aarch64=("ctrsigcheck_${pkgver}_aarch64.tar.gz::https://github.com/connesc/ctrsigcheck/releases/download/v$pkgver/ctrsigcheck_${pkgver}_linux_arm64.tar.gz")
+sha256sums_i686=('b2cacfe9e93bc13679b920e230733a329c30b9e26a1cb216a6718309b34ae831')
+sha256sums_x86_64=('845714007ee45ed41e26b69de2215bb0c7ebdb3cd791376a12a67c1f623a1f2f')
+sha256sums_arm=('de55337ae1a499d87f8ffb3ebe0e5635ac59407e3d9cc7e8176be9e2f1909d85')
+sha256sums_armv6h=('8f2950ca66dca143716075cb7cac93f42bc284c72ea9c313f2b3ade5491a2ed7')
+sha256sums_armv7h=('446c7590ae601b240f902a26efb67e0930f3edf4d04399e85068e9cfa4070987')
+sha256sums_aarch64=('3127680ae29f4e9ff6f4629a696ad29bb1a258d2fc1f9a51196aaaf416d65540')
 
 package() {
   install -D -m755 ctrsigcheck "$pkgdir/usr/bin/ctrsigcheck"
