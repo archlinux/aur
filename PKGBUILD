@@ -25,6 +25,8 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  sed 's|share/|share/vapoursynth/libs/|g' -i "${_plug}/meson.build"
 }
 
 build() {
