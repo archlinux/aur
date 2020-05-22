@@ -10,7 +10,7 @@ _openj9ver=0.9.0
 _buildvershort=12
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_jdkfullver}b${_buildver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk${_jdkver}"
 arch=('x86_64')
 url="https://adoptopenjdk.net/index.html?variant=openjdk${_jdkver}&jvmVariant=openj9"
@@ -49,7 +49,7 @@ package() {
   ln -s /etc/java${_jdkver}-j9 "${pkgdir}/${_jvmdir}/conf"
   # Man pages
   for f in man/man1/*; do
-    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-openjdk14-j9.1}"
+    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-openjdk9-j9.1}"
   done
   ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
 }
