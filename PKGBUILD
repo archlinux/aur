@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttc-iosevka-etoile
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
 arch=('any')
 url='https://typeof.net/Iosevka/'
@@ -13,6 +13,6 @@ sha256sums=('182a5ef23f208206d34d0cc78a201753a570f10e86836c55801241a0a9e0d69e'
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/${pkgname}
-    install -m644 ${srcdir}/ttc/*.ttc ${pkgdir}/usr/share/fonts/${pkgname}
+    install -m644 ${srcdir}/*.ttc ${pkgdir}/usr/share/fonts/${pkgname}
     install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
 }
