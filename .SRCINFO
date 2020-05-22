@@ -1,0 +1,18 @@
+pkgbase = webdav-daemon
+	pkgdesc = WebDAV server designed to be a replace for SMBA providing access to a system's files without taking ownership of them
+	pkgver = v1.1.r1.bc88ec6
+	pkgrel = 1
+	url = https://github.com/couling/WebDAV-Daemon
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	backup = etc/webdavd/conf.xml
+	backup = etc/logrotate.d/webdavd
+	backup = etc/pam.d/webdavd
+	source = git+https://github.com/couling/WebDAV-Daemon.git
+	source = build-fix.patch
+	md5sums = SKIP
+	md5sums = a2ef51c60c732ed1a152606e1157568a
+
+pkgname = webdav-daemon
+
