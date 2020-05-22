@@ -3,7 +3,7 @@
 # Contributor: SirClueless
 
 pkgname=libtcod
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="Roguelike graphics/utility library"
 arch=('i686' 'x86_64')
@@ -12,17 +12,17 @@ license=('BSD')
 depends=('sdl2')
 makedepends=('python')
 source=("https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('514370f95c00464f23caed2358453ca7')
+md5sums=('909fdab63c4467dd7e73ba2056d8f6e1')
 
 build() {
-   cd "$srcdir/$pkgname-$pkgver/build/autotools"
+   cd "$srcdir/$pkgname-$pkgver/buildsys/autotools"
    autoreconf -i
    ./configure --prefix=/usr
    make
 }
 
 package() {
-   cd "$srcdir/$pkgname-$pkgver/build/autotools"
+   cd "$srcdir/$pkgname-$pkgver/buildsys/autotools"
    make DESTDIR="$pkgdir" install
    
    mkdir -p "$pkgdir/usr/share/licenses/libtcod"
