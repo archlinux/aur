@@ -1,8 +1,9 @@
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-any-moose'
-pkgver='0.26'
+pkgver='0.27'
 pkgrel='1'
 pkgdesc="Use Moose or Mouse modules. (Note Deprecated infavor of Moo)"
 arch=('any')
@@ -11,10 +12,10 @@ options=('!emptydirs')
 depends=('perl-moose' 'perl-mouse')
 makedepends=()
 url='https://metacpan.org/release/Any-Moose'
-source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Any-Moose-0.26.tar.gz')
-md5sums=('f36ed5cc95497e1d4f4f617cc1cce03b')
-sha512sums=('2883a216a76e5c58acea3679e1e20ab5f4646acc62644c40db3688c554730af6836628a0df259efba0a3f3fec6abf9575f53deb70f2acf0d253ba123248e9384')
-_distdir="Any-Moose-0.26"
+source=("https://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Any-Moose-${pkgver}.tar.gz")
+md5sums=('8c5d318ee105c3a556019da537df542f')
+sha512sums=('5c97caf2e64462bae95fc4d5dd41868c01f856bd8f74872985254b7cc6ce0e13b4accad7955047ff5c4013399f7aea2ad6d48ae3592883a3b6cd20c0e4478b7b')
+_distdir="Any-Moose-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -41,6 +42,7 @@ package() {
   make install
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+
 }
 
 # Local Variables:
