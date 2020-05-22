@@ -8,8 +8,9 @@ pkgdesc="Bringing Common Lisp and C++ Together"
 arch=('x86_64')
 url="https://github.com/clasp-developers/clasp"
 license=('LGPL')
-depends=('llvm90' 'clang90')
-makedepends=('git' 'automake' 'cmake' 'boost' 'python' 'zlib' 'ncurses' 'expat' 'libedit' 'sbcl')
+depends=('boost' 'clang90' 'expat' 'gmp' 'libbsd' 'libedit'
+         'libelf' 'libffi' 'llvm90' 'ncurses' 'zlib')
+makedepends=('git' 'python' 'sbcl')
 provides=('cclasp-boehm' 'common-lisp' 'clasp-cl')
 source=('git://github.com/clasp-developers/clasp.git'
 'wscript.config')
