@@ -1,7 +1,7 @@
 pkgbase = laptop-mode-tools
 	pkgdesc = Power Saving tool for Linux
 	pkgver = 1.73.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rickysarraf/laptop-mode-tools/
 	arch = any
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = laptop-mode-tools
 	optdepends = hdparm: hard disk power management
 	optdepends = sdparm: SCSI disk power management
 	optdepends = ethtool: Ethernet support
-	optdepends = wireless_tools: Wi-Fi support
+	optdepends = iw: Wi-Fi support
 	optdepends = xorg-xset: DPMS standby support
 	optdepends = hal: HAL polling support
 	optdepends = python: LMT GUI

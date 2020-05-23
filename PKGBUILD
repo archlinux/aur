@@ -7,7 +7,7 @@
 
 pkgname=laptop-mode-tools
 pkgver=1.73.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Power Saving tool for Linux'
 arch=('any')
 url='https://github.com/rickysarraf/laptop-mode-tools/'
@@ -18,7 +18,7 @@ optdepends=('acpid: ACPI support'
     'hdparm: hard disk power management'
     'sdparm: SCSI disk power management'
     'ethtool: Ethernet support'
-    'wireless_tools: Wi-Fi support'
+    'iw: Wi-Fi support'
     'xorg-xset: DPMS standby support'
     'hal: HAL polling support' # AUR
     'python: LMT GUI'
