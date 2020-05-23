@@ -46,7 +46,7 @@ build() {
 #}
 
 package_harfbuzz-git() {
-  depends=(glib2 freetype2 graphite glib2-2.0.so libfreetype.so libgobject-2.0.so)
+  depends=(glib2 freetype2 graphite libglib2-2.0.so libfreetype.so libgobject-2.0.so)
   optdepends=('cairo: hb-view program')
   provides=(harfbuzz libharfbuzz.so libharfbuzz-subset.so libharfbuzz-gobject.so)
   conflicts=(harfbuzz)
