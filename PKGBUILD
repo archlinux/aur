@@ -1,6 +1,6 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter-git
-pkgver=1.3_64_g8799eb889
+pkgver=1.3_76_g7ab64d5bb
 pkgrel=1
 pkgdesc="Rawconverter ART including blackfoxx-Theme built from latest sources"
 arch=('i686' 'x86_64')
@@ -9,12 +9,17 @@ license=('GPL3')
 depends=('gperftools' 'lensfun' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'desktop-file-utils') 
 makedepends=('pkgconf' 'cmake' 'git' 'gcc' 'hicolor-icon-theme' 'fakeroot')
 conflicts=('art-rawconverter')
-source=("${pkgname}_src::git+https://bitbucket.org/agriggio/art.git#branch=master" "bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip")
-sha256sums=('SKIP' '7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346')
+source=("${pkgname}_src::git+https://bitbucket.org/agriggio/art.git#branch=master" "bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip" "cmakelists.patch")
+sha256sums=('SKIP' '7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346' 'ae3646842985338b700b68987879c3eb8d4483c895e58134bf512fe3df33c39b')
 
 pkgver() {
   cd "$srcdir/${pkgname}_src"
   printf "%s" "$(git describe | sed -r 's/\-/_/g' )" 
+}
+
+prepare() {
+  cd "$srcdir/${pkgname}_src"
+  patch --forward --strip=1 --input="${srcdir}/cmakelists.patch"
 }
 
 build() {
@@ -27,10 +32,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCACHE_NAME_SUFFIX="-git" \
     -DCMAKE_BUILD_TYPE=Release \
-    -DPROC_TARGET_NUMBER="2" \
-    -DENABLE_TCMALLOC="ON" \
-    -DTCMALLOC_LIB_DIR=/usr/lib \
-    -DWITH_LTO="ON"
+    -DPROC_TARGET_NUMBER=2 \
+    -DWITH_LTO="ON" 
 
   NPROC=$(getconf _NPROCESSORS_ONLN)
   make -j${NPROC} 
