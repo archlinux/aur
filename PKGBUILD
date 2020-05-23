@@ -4,7 +4,7 @@
 
 pkgname=dxvk-winelib
 pkgver=1.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, Winelib version'
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
