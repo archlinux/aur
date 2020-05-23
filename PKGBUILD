@@ -10,8 +10,8 @@ url="http://www.freedesktop.org/wiki/Software/HarfBuzz"
 arch=(x86_64)
 license=(MIT)
 depends=(glib2 freetype2 graphite)
-makedepends=(cairo icu gobject-introspection ragel git python)
-checkdepends=(python-fonttools python-setuptools)
+makedepends=(glib2 freetype2 graphite cairo icu gobject-introspection ragel git python)
+#checkdepends=(python-fonttools python-setuptools)
 source=("git+https://github.com/harfbuzz/harfbuzz")
 sha256sums=('SKIP')
 
@@ -46,6 +46,7 @@ build() {
 #}
 
 package_harfbuzz-git() {
+  depends=(glib2 freetype2 graphite glib2-2.0.so libfreetype.so libgobject-2.0.so)
   optdepends=('cairo: hb-view program')
   provides=(harfbuzz libharfbuzz.so libharfbuzz-subset.so libharfbuzz-gobject.so)
   conflicts=(harfbuzz libharfbuzz.so libharfbuzz-subset.so libharfbuzz-gobject.so)
@@ -63,7 +64,7 @@ package_harfbuzz-git() {
 
 package_harfbuzz-icu-git() {
   pkgdesc="$pkgdesc (ICU integration)"
-  depends=(harfbuzz icu)
+  depends=(harfbuzz icu libharfbuzz.so)
   provides=(harfbuzz-icu libharfbuzz-icu.so)
   conflicts=(harfbuzz-icu libharfbuzz-icu.so)
 
