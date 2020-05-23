@@ -1,7 +1,7 @@
 # Maintainer: tuftedocelot <tuftedocelot@fastmail.fm>
 _pkgname=mcabber
 pkgname=${_pkgname}-hg
-pkgver=2210
+pkgver=2347
 pkgrel=1
 pkgdesc="A small Jabber console client, includes features: SSL, PGP, MUC, UTF8, and OTR"
 arch=('i686' 'x86_64')

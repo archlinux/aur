@@ -1,6 +1,6 @@
 pkgbase = mcabber-hg
 	pkgdesc = A small Jabber console client, includes features: SSL, PGP, MUC, UTF8, and OTR
-	pkgver = 2210
+	pkgver = 2347
 	pkgrel = 1
 	url = http://www.mcabber.com
 	arch = i686
