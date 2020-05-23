@@ -1,14 +1,14 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Muhammad Yahya Harlan <muhammad.harlan@binus.ac.id>
 # Contributor: Antoine Lubineau <antoine@lubignon.info>
 
-_downloadid='daf30cc6513c4f4a94af71204b2b6778'
-_referid='8ba75e7093b94407bf5f804d6de39f8d'
+_downloadid='b7ea0c6787dc447bbf4544b584027724'
+_referid='8a60e5ae8c7040c0866f2432acea4e70'
 _siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/80.0.3987.122 \
+                        Chrome/83.0.4103.61 \
                         Safari/537.36"
 _reqjson="{ \
     \"platform\": \"Linux\", \
@@ -55,7 +55,7 @@ DLAGENTS=("https::/usr/bin/curl \
               %u")
 
 pkgname=decklink-sdk
-pkgver=11.5
+pkgver=11.5.1
 pkgrel=1
 epoch=1
 pkgdesc='Blackmagic DeckLink SDK'
@@ -67,16 +67,11 @@ conflicts=('blackmagic-decklink-sdk')
 replaces=('blackmagic-decklink-sdk')
 source=("Blackmagic_DeckLink_SDK_${pkgver}.zip"::"$_srcurl"
         'LICENSE')
-sha256sums=('67d7ce9fbf893b6d3150f70117d1a5142633216b20f1abb10898e468d017a589'
+sha256sums=('60df0abb766c724c5c60cd44f1ff9715725ed79ee0a8e3ffef34c4d24ba5811f'
             'cc90e53ac2ef2442d2d0adfe9214119baa31ec080e75c3b087365efdbccc23df')
 
 package() {
-    # headers
     install -D -m644 "Blackmagic DeckLink SDK ${pkgver}"/Linux/include/* -t "${pkgdir}/usr/include"
-    
-    # documentation
     install -D -m644 "Blackmagic DeckLink SDK ${pkgver}/Blackmagic DeckLink SDK.pdf" -t "${pkgdir}/usr/share/doc/${pkgname}"
-    
-    # license
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
