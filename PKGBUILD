@@ -2,7 +2,7 @@
 
 _pkgname=hbhc
 pkgname=${_pkgname}-git
-pkgver=r17.82d9453
+pkgver=r19.ab97cd6
 pkgrel=1
 pkgdesc="A fast and Open Source Home Baked Hash Cracker for linux Written in Python3"
 arch=('any')
