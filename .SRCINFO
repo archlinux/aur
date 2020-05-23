@@ -1,0 +1,22 @@
+pkgbase = fio-pmdk
+	pkgdesc = Flexible I/O Tester (+engine dev-dax libpmem pmemblk)
+	pkgver = 3.19
+	pkgrel = 1
+	url = https://fio.readthedocs.io/en/latest/
+	arch = x86_64
+	license = GPL
+	depends = curl
+	depends = glusterfs
+	depends = gperftools
+	depends = libaio
+	depends = numactl
+	depends = pmdk
+	optdepends = python2: some python2.7 scripts
+	provides = fio
+	conflicts = fio
+	conflicts = fio-git
+	source = https://brick.kernel.dk/snaps/fio-3.19.tar.gz
+	md5sums = d163747d8f624f9d899d84b0b47bbeb9
+
+pkgname = fio-pmdk
+
