@@ -1,16 +1,17 @@
 # Maintainer: Celogeek <private-4zokpdq6@mrhyde.xyz>
+# Contributor: Celogeek <private-4zokpdq6@mrhyde.xyz>
 
 pkgname=jitsi-meet-stable
 _stable_version=4548
 _stable_tag=stable/jitsi-meet_${_stable_version}
 _stable_suffix=stable-jitsi-meet_${_stable_version}
 pkgver=2.0.${_stable_version}
-pkgrel=6
+pkgrel=7
 pkgdesc="Jitsi Meet Stable"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
-depends=()
+depends=("java-runtime" "bash")
 provides=("jitsi-meet" "jitsi-videobridge" "jicofo" "jitsi-meet-prosody-plugins")
 conflicts=("jitsi-meet" "jitsi-videobridge" "jicofo" "jitsi-meet-prosody-plugins")
 optdepends=("nginx" "prosody" "coturn")
@@ -18,19 +19,22 @@ makedepends=(
         "binutils" "tar"
         "git" "python2"
         "nodejs" "npm"
-        "jdk8-openjdk"
+        "java-environment"
         "unzip" "maven"
 )
 options=('!strip')
 backup=(
-        "etc/jitsi/jicofo/config"
-        "etc/jitsi/jicofo/sip-communicator.properties"
-        "etc/jitsi/meet/interface_config.js"
-        "etc/jitsi/meet/logging_config.js"
-        "etc/jitsi/meet/config.js"
-        "etc/jitsi/videobridge/config"
-        "etc/jitsi/videobridge/callstats-java-sdk.properties"
-        "etc/jitsi/videobridge/sip-communicator.properties"
+  "etc/jitsi/videobridge/config"
+  "etc/jitsi/videobridge/log4j2.xml"
+  "etc/jitsi/videobridge/logging.properties"
+  "etc/jitsi/videobridge/callstats-java-sdk.properties"
+  "etc/jitsi/videobridge/sip-communicator.properties"
+  "etc/jitsi/meet/logging_config.js"
+  "etc/jitsi/meet/config.js"
+  "etc/jitsi/meet/interface_config.js"
+  "etc/jitsi/jicofo/config"
+  "etc/jitsi/jicofo/logging.properties"
+  "etc/jitsi/jicofo/sip-communicator.properties"
 )
 source=(
         "jitsi-meet-${_stable_suffix}.tar.gz::https://github.com/jitsi/jitsi-meet/archive/${_stable_tag}.tar.gz"
@@ -38,10 +42,11 @@ source=(
         "jitsi-videobridge-${_stable_suffix}.tar.gz::https://github.com/jitsi/jitsi-videobridge/archive/${_stable_tag}.tar.gz"
         "jicofo.config"
         "jicofo.service"
-        "jicofo.sip"
-        "videobridge.callstats"
+        "jicofo.sip-communicator.properties"
+        "videobridge.callstats-java-sdk.properties"
         "videobridge.config"
-        "videobridge.sip"
+        "videobridge.sip-communicator.properties"
+        "videobridge.log4j2.xml"
         "videobridge.service"
         "sysusers.conf"
         "tmpfiles.conf"
@@ -108,19 +113,24 @@ package() {
         mv "${pkgdir}/usr/share/${_jitsi_videobridge_package}" "${pkgdir}/usr/share/jitsi-videobridge"
 
         install -dm750 "${pkgdir}/etc/jitsi/videobridge"
-        install -Dm640 videobridge.callstats "${pkgdir}/etc/jitsi/videobridge/callstats-java-sdk.properties"
-        install -Dm640 videobridge.config "${pkgdir}/etc/jitsi/videobridge/config"
-        install -Dm640 videobridge.sip "${pkgdir}/etc/jitsi/videobridge/sip-communicator.properties"
-        install -Dm640 videobridge.service "${pkgdir}/usr/lib/systemd/system/jitsi-videobridge.service"
+	for p in callstats-java-sdk.properties config log4j2.xml sip-communicator.properties
+	do
+		install -Dm640 "videobridge.${p}" "${pkgdir}/etc/jitsi/videobridge/${p}"
+	done
+	install -Dm640 "${srcdir}/jitsi-videobridge-${_stable_suffix}/lib/logging.properties" "${pkgdir}/etc/jitsi/videobridge/logging.properties"
+        install -Dm644 videobridge.service "${pkgdir}/usr/lib/systemd/system/jitsi-videobridge.service"
 
         echo "Jitsi Jicofo"
         unzip "${srcdir}/jicofo-${_stable_suffix}/target/${_jitsi_jicofo_package}-archive.zip" -d "${pkgdir}/usr/share/"
         mv "${pkgdir}/usr/share/${_jitsi_jicofo_package}" "${pkgdir}/usr/share/jicofo"
 
         install -dm750 "${pkgdir}/etc/jitsi/jicofo"
-        install -Dm640 jicofo.config "${pkgdir}/etc/jitsi/jicofo/config"
-        install -Dm640 jicofo.sip "${pkgdir}/etc/jitsi/jicofo/sip-communicator.properties"
-        install -Dm640 jicofo.service "${pkgdir}/usr/lib/systemd/system/jicofo.service"
+        for p in config	sip-communicator.properties
+	do
+		install -Dm640 "jicofo.${p}" "${pkgdir}/etc/jitsi/jicofo/${p}"
+	done
+	install -Dm640 "${srcdir}/jicofo-${_stable_suffix}/lib/logging.properties" "${pkgdir}/etc/jitsi/jicofo/logging.properties"
+        install -Dm644 jicofo.service "${pkgdir}/usr/lib/systemd/system/jicofo.service"
 
         echo "System"
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/jitsi.conf"
@@ -132,12 +142,13 @@ package() {
 sha256sums=('62e5273726fc9b4d07f30548db06d6b87269ca17cd3c7c9d2b6ee9e06eedfccf'
             'cebbd2ad2c4c3b9826123ab8d49c4a11d34f4e91482e3f06af695e17d1133595'
             '6503869e1b7d4180316a0af29c66fae3e4ed1061d7bd6def053902bcc47194d0'
-            'ffba69b658cb8d817936108071f08e02879471953f60db5e968785a78fce771a'
+            'fdd4dee8e2aefa17ecc7b4cddbddd5bf91bb05469a64ab0650846584a90ed3a2'
             'fec1ae03cfe978f53812ae0886dcc5650e637bae5c094762d521dd10234d9788'
-            'a372d4d3f818b88302ebea2bb2a65641d77cc1aad903989891c329e359bb9467'
+            'f295f5f8ee13edd019defc037c60e04c6ea2d30e69cc4a896c010b8570f5efab'
             '00c521a4c226deb3bebb8b4b6b68234283888464b889c705001b3371154fc9f0'
-            '4cd8d1cbc0d0c8c975eafa554183f85a942aa546a75db0de2adcc91ec59e0ee7'
-            '93bf760dd51178b18c9fe3b9edf5124b46e95acbbb15ef25057d733588de71ee'
+            '46f686cd8ea6bb5f1ec6055d2f16cc72db4baf9d90dea234d10e661b50924624'
+            '4144663a2eba50c15c96f7dec5bc6dc85b761ce37d6577c773d4d48da5e69bd0'
+            '9fe70e519caa85471799e90749d390dfba561eb0be13ea1307a5efd777e63382'
             '993a48122151312b064c9b74999d454e2a719335c74fb936eb658336169b98a1'
             'fd7ca06f1cf85a6f7578b006b99c18235b5a7e8319b7e08d40e82ad614d20835'
             '77dd2ca3dab9816aaef54f072a411205ad544a5f8695710d27f84b9898c8ba5c')
