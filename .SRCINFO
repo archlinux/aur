@@ -1,6 +1,6 @@
 pkgbase = m64p
 	pkgdesc = Mupen64Plus with custom plugins and Qt5 GUI
-	pkgver = 20200514
+	pkgver = 20200523
 	pkgrel = 1
 	url = https://m64p.github.io/
 	arch = x86_64
@@ -23,13 +23,12 @@ pkgbase = m64p
 	depends = sdl2_net
 	depends = zlib
 	depends = hicolor-icon-theme
-	provides = mupen64plus
 	provides = mupen64plus-gui
 	provides = mupenplus-video-gliden64
-	conflicts = mupen64plus
 	conflicts = mupen64plus-gui
 	conflicts = mupenplus-video-gliden64
-	source = git+https://github.com/loganmc10/m64p.git#tag=netplayb1
+	conflicts = mupen64plus
+	source = git+https://github.com/loganmc10/m64p.git#commit=a89a751bbfd2b7fe31f23acd3bfb2e41a3a7be2c
 	source = git+https://github.com/m64p/mupen64plus-gui.git
 	source = git+https://github.com/m64p/mupen64plus-audio-sdl2.git
 	source = git+https://github.com/mupen64plus/mupen64plus-rsp-hle.git
@@ -48,8 +47,8 @@ pkgbase = m64p
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 6871b495ace8a9005d93ce3e9103a15111a67793812dd5158072c981c4c3a5a8
-	sha256sums = a999739626fc3e9d0102b65014c436bf4e9039587ccac174334672f3925f4495
+	sha256sums = 9241207664cd3338ae38d02f30f7ae0f3e06c3593a50548d46bca6505181b5c2
+	sha256sums = bfd5ba0be1090bdf3460ff9e3794f79e88320e4417359f06380f7c48da241985
 	sha256sums = 8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808
 
 pkgname = m64p
