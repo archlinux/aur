@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index fe788de34e..4d298e247e 100644
+index fe788de34e..118a167c83 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -76,8 +76,8 @@ coverage-nightly: coverage gnatprove-nightly install install-coverage install-ex
@@ -18,7 +18,7 @@ index fe788de34e..4d298e247e 100644
  	$(MAKE) -C why3 install_spark2014_dev
  	# Create the fake prover scripts to help extract benchmarks.
 -	$(CP) benchmark_script/fake_* install/libexec/spark/bin
-+	$(CP) benchmark_script/fake_* install/lib/spark/bin
++	$(CP) benchmark_script/fake_* ${INSTALLDIR}/lib/spark/bin
  
  install:
  	mkdir -p $(INSTALLDIR)/bin $(CONFIGDIR) $(THEORIESDIR) \
