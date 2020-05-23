@@ -1,0 +1,17 @@
+pkgbase = ros-melodic-panda-moveit-config
+	pkgdesc = Franka Emika Panda MoveIt! Config Package
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = http://wiki.ros.org/panda_moveit_config
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	provides = ros-melodic-panda-moveit-config
+	conflicts = ros-melodic-panda-moveit-config
+	source = ros-melodic-panda-moveit-config-0.7.3.tar.gz::https://github.com/ros-planning/panda_moveit_config/archive/0.7.3.tar.gz
+	sha256sums = 740cf19109e6fb74de9462ff264c4da4f88ac2f0e4d34b76e6d8db30b7a38e3a
+
+pkgname = ros-melodic-panda-moveit-config
+
