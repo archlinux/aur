@@ -1,7 +1,7 @@
 pkgbase = upmpdcli
 	pkgdesc = A UPnP Media Renderer front-end for the Music Player Daemon (MPD)
 	pkgver = 1.4.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.lesbonscomptes.com/upmpdcli/
 	install = upmpdcli.install
 	arch = i686
@@ -41,7 +41,7 @@ pkgbase = upmpdcli
 	backup = etc/upmpdcli.conf
 	source = http://www.lesbonscomptes.com/upmpdcli/downloads/upmpdcli-1.4.10.tar.gz
 	source = upmpdcli.service
-	sha256sums = 55dec356c98e16f00b1e547f9f4a1c03756317102e91982f93eca8cc4eda115e
+	sha256sums = ecb881d7e22dcb064626ea12d1c582de73020f33bade8a3f00fd0c03cfa59da5
 	sha256sums = 53da5e4e40a1987e3c137270b315f8c0ba9521539c563e75e254f48449ce0ae9
 
 pkgname = upmpdcli
