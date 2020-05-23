@@ -1,0 +1,14 @@
+[Unit]
+Description=thanos query
+After=network.target
+
+[Service]
+User=thanos
+Group=thanos
+Restart=on-failure
+EnvironmentFile=-/etc/thanos/query.conf
+ExecStart=/usr/bin/thanos query $QUERY_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

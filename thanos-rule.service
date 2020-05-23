@@ -1,0 +1,14 @@
+[Unit]
+Description=thanos rule
+After=network.target
+
+[Service]
+User=thanos
+Group=thanos
+Restart=on-failure
+EnvironmentFile=-/etc/thanos/rule.conf
+ExecStart=/usr/bin/thanos rule $RULE_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

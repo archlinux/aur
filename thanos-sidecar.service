@@ -1,0 +1,14 @@
+[Unit]
+Description=thanos sidecar
+After=network.target
+
+[Service]
+User=thanos
+Group=thanos
+Restart=on-failure
+EnvironmentFile=-/etc/thanos/sidecar.conf
+ExecStart=/usr/bin/thanos sidecar $SIDECAR_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

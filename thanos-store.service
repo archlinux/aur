@@ -1,0 +1,14 @@
+[Unit]
+Description=thanos store
+After=network.target
+
+[Service]
+User=thanos
+Group=thanos
+Restart=on-failure
+EnvironmentFile=-/etc/thanos/store.conf
+ExecStart=/usr/bin/thanos store $STORE_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

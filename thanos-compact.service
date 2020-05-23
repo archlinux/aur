@@ -1,0 +1,14 @@
+[Unit]
+Description=thanos compact
+After=network.target
+
+[Service]
+User=thanos
+Group=thanos
+Restart=on-failure
+EnvironmentFile=-/etc/thanos/compact.conf
+ExecStart=/usr/bin/thanos compact $COMPACT_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
