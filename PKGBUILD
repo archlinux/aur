@@ -4,7 +4,6 @@
 pkgname=rvgl-soundtrack
 pkgver=18.0327
 pkgrel=3
-epoch=1
 pkgdesc="RVGL original Dreamcast soundtrack."
 url='https://rvgl.re-volt.io'
 arch=('any')

@@ -2,7 +2,6 @@ pkgbase = rvgl-soundtrack
 	pkgdesc = RVGL original Dreamcast soundtrack.
 	pkgver = 18.0327
 	pkgrel = 3
-	epoch = 1
 	url = https://rvgl.re-volt.io
 	arch = any
 	groups = rvgl-original
