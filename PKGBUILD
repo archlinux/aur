@@ -5,7 +5,7 @@
 pkgbase=gpgme
 pkgname=(gpgme qgpgme python-gpgme)
 pkgver=1.13.1
-pkgrel=6
+pkgrel=7
 _python_ver=3.8
 pkgdesc="A C wrapper library for GnuPG"
 arch=('x86_64')
@@ -16,13 +16,6 @@ source=("https://www.gnupg.org/ftp/gcrypt/${pkgbase}/${pkgbase}-${pkgver}.tar.bz
 sha256sums=('c4e30b227682374c23cddc7fdb9324a99694d907e79242a25a4deeedb393be46'
             'SKIP')
 validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
-
-prepare() {
-  cd ${pkgbase}-${pkgver}
-
-  # touch python files for reproducibility
-  find lang/python -name *.py
-}
 
 build() {
   cd ${pkgbase}-${pkgver}
@@ -38,6 +31,9 @@ build() {
   # ensure reproducibility of .pyc files
   touch -d @$SOURCE_DATE_EPOCH lang/python/version.py
   touch -d @$SOURCE_DATE_EPOCH lang/python/python${_python_ver}-gpg/lib.linux-x86_64-${_python_ver}/gpg/gpgme.py
+  
+  # .pyc files will be created if check() is used - generate them here
+  
 }
 
 check() {
@@ -47,6 +43,9 @@ check() {
   sed -i 's#"t-keylist-secret",##' tests/json/t-json.c
 
   make check
+
+  # ensure reproducibilty whether test-suite is run or not
+  find . -name *.pyc -exec rm {} +
 }
 
 package_gpgme() {
