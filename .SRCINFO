@@ -1,0 +1,18 @@
+pkgbase = lldb-mi-git
+	pkgdesc = LLDB's machine interface driver
+	pkgver = r44.c63e730
+	pkgrel = 1
+	url = https://github.com/lldb-tools/lldb-mi
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	depends = lldb
+	depends = llvm
+	provides = lldb-mi
+	conflicts = lldb-mi
+	source = git+https://github.com/lldb-tools/lldb-mi.git
+	md5sums = SKIP
+
+pkgname = lldb-mi-git
+
