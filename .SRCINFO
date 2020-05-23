@@ -1,6 +1,6 @@
 pkgbase = libvirt-git
 	pkgdesc = API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)
-	pkgver = v6.3.0.r98.g144dfe4215
+	pkgver = v6.3.0.r158.gf718709431
 	pkgrel = 1
 	url = http://libvirt.org/
 	install = libvirt.install
@@ -31,6 +31,7 @@ pkgbase = libvirt-git
 	depends = libxml2
 	depends = numactl
 	depends = polkit
+	depends = netcf
 	optdepends = libvirt-storage-gluster: Gluster storage backend
 	optdepends = libvirt-storage-iscsi-direct: iSCSI-direct storage backend
 	optdepends = libvirt-storage-rbd: RBD storage backend
