@@ -3,7 +3,7 @@
 pkgname=torchvision
 pkgdesc='datasets, transforms, and models specific to computer vision (C++ library only)'
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 license=("BSD")
 url='https://github.com/pytorch/vision'
 arch=('x86_64')
@@ -19,6 +19,10 @@ sha512sums=(
 depends=(
 	python
 	python-pytorch
+)
+
+makedepends=(
+	cmake
 )
 
 prepare() {
