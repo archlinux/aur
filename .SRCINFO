@@ -1,0 +1,18 @@
+pkgbase = wluma-als-emulator
+	pkgdesc = Ambient light sensor emulator for wluma
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/cyrinux/wluma-als-emulator
+	arch = any
+	license = MIT
+	depends = wluma
+	optdepends = python-pillow: for webcam strategy,
+	optdepends = ffmpeg: for webcam strategy
+	source = wluma-als-emulator-1.0.0.tar.gz::https://github.com/cyrinux/wluma-als-emulator/archive/1.0.0.tar.gz
+	source = https://github.com/cyrinux/wluma-als-emulator/releases/download/1.0.0/wluma-als-emulator-1.0.0.tar.gz.asc
+	validpgpkeys = 4F7BC1FD97170A79267686A6FC9B1319726657D3
+	sha256sums = 943f5fe76b9c493aa7c033876f4a5c65f8cc7b5d672b90eee682d8419ec666bf
+	sha256sums = SKIP
+
+pkgname = wluma-als-emulator
+
