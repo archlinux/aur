@@ -1,0 +1,7 @@
+*
+!.SRCINFO
+!PKGBUILD
+!.gitignore
+!jitsi-videobridge.service
+!jitsi-videobridge.conf
+!sip-communicator.properties
