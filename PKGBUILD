@@ -1,0 +1,20 @@
+# Maintainer: Silvio Ankermann < silvio at booq dot org >
+
+pkgname=python-drivelib
+pkgver=0.1.4
+pkgrel=1
+pkgdesc='Easy access to the most common Google Drive API calls'
+url='https://github.com/Lykos153/python-drivelib'
+license=('GPLv3+')
+arch=('any')
+depends=('python' 'python-google-api-python-client' 'python-google-auth-oauthlib' 'python-google-auth-httplib2' 'python-google-auth' 'python-oauth2client')
+makedepends=('python-setuptools')
+source=("git+https://github.com/Lykos153/${pkgname}.git#tag=v${pkgver}")
+sha256sums=('SKIP')
+
+
+package() {
+    cd "${srcdir}/${pkgname}"
+
+    python setup.py install --optimize=1 "--root=${pkgdir}"
+}
