@@ -1,14 +1,14 @@
 # Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 pkgname=age-git
 pkgver=v1.0.0.beta2.r35.gc9a35c0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple, modern and secure file encryption tool"
 url="https://github.com/FiloSottile/age"
 license=('custom: BSD')
 provides=('age')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('glibc')
-makedepends=('go-pie' 'git')
+makedepends=('go' 'git')
 source=("${pkgname%-git}::git+$url")
 sha256sums=('SKIP')
 
