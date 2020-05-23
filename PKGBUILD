@@ -1,53 +1,71 @@
-# Maintainer : Michael DeGuzis <mdeguzis@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Contributor:  Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=play-emu-git
-_gitname=Play-Build
-pkgver=r3.462d986
-pkgrel=4
+pkgver=r5687.5fead001
+pkgrel=1
 pkgdesc="Play! is an experimental Playstation 2 emulator."
-arch=('i686' 'x86_64')
-url="https://github.com/jpd002"
-license=('GPL')
-makedepends=('git')
-depends=('boost' 'cmake' 'glew' 'mysql++' 'openal' 
-	 'qt5-base' 'zlib')
-source=('Play-Build::git+https://github.com/jpd002/Play-Build.git'
-	'play-emu.desktop'
-	'play.png')
-md5sums=('SKIP'
-	 '59e7114de681f2f96730697cde4f4595'
-	 '2c6db31d8119437e5af6fa95b4c1fb8f')
+arch=(x86_64)
+url="https://purei.org/"
+license=(MIT)
+depends=(qt5-base openal glew)
+makedepends=(git cmake ninja qt5-x11extras)
+source=("${pkgname%-git}::git+https://github.com/jpd002/Play-"
+        "git+https://github.com/jpd002/Play-Dependencies.git"
+        "git+https://github.com/jpd002/Play--Framework.git"
+        "git+https://github.com/jpd002/Play--CodeGen.git"
+        "git+https://github.com/jpd002/Nuanceur.git"
+        "git+https://github.com/jpd002/boost-cmake.git"
+        "git+https://github.com/rs/SDWebImage.git"
+        "git+https://github.com/gulrak/filesystem.git")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
-
-  cd $_gitname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-
+  cd "${pkgname%-git}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare () {
+  cd "${pkgname%-git}"
 
-  cd $_gitname
   git submodule init
+  git config 'submodule.deps/Dependencies.url' "${srcdir}/Play-Dependencies"
+  git config 'submodule.deps/Framework.url' "${srcdir}/Play--Framework"
+  git config 'submodule.deps/CodeGen.url' "${srcdir}/Play--CodeGen"
+  git config 'submodule.deps/Nuanceur.url' "${srcdir}/Nuanceur"
   git submodule update
 
+  install -d build
+
+  cd "${srcdir}/${pkgname%-git}"/deps/Dependencies
+
+  git submodule init
+  git config 'submodule.boost-cmake.url' "${srcdir}/boost-cmake"
+  git config 'submodule.SDWebImage.url' "${srcdir}/SDWebImage"
+  git config 'submodule.ghc_filesystem.url' "${srcdir}/filesystem"
+  git submodule update
 }
 
 build() {
-
-	cd $_gitname/Play/build_unix
-	./build.sh
-	
+  cd "${pkgname%-git}/build"
+  cmake .. -G"Ninja"
+  cmake --build . --config Release
 }
 
 package() {
-
-	install -d $pkgdir/usr/bin
-	install -d $pkgdir/usr/share/pixmaps
-	install -d $pkgdir/usr/share/applications
-
-	install -m755 $srcdir/$_gitname/Play/build_unix/build-ui/Play-Ui $pkgdir/usr/bin/play-emu
-	install -m755 play.png $pkgdir/usr/share/pixmaps/play.png
-	install -m755 play-emu.desktop $pkgdir/usr/share/applications/play-emu.desktop
-
+  cd "${pkgname%-git}"
+  install -Dm755 build/Source/ui_qt/Play    "${pkgdir}"/usr/bin/play-emu
+  install -D icons/icon.svg                 "${pkgdir}"/usr/share/pixmaps/play.svg
+  install -D installer_unix/Play.desktop    "${pkgdir}"/usr/share/applications/play-emu.desktop
+  install -D License.txt                    "${pkgdir}/usr/share/licenses/${pkgname}"/License.txt
 }
