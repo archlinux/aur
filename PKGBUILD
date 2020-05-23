@@ -1,5 +1,5 @@
 pkgname=mock-core-configs
-pkgver=32.5
+pkgver=32.6
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL2')
 depends=('distribution-gpg-keys>=1.36')
 source=("$url/archive/$_pkgtag.tar.gz")
-md5sums=('bc3de8be17a359a7411bfe6d68e27d86')
+md5sums=('2f34c0ea0840f6a0a60e18fcc7ffc800')
 
 # Uncomment to not package configs for EOLed versions of distributions
 #_without_eol=1
@@ -25,6 +25,7 @@ package() {
 
 	mkdir -p "$pkgdir/"etc/mock
 	install -Dp -m644 etc/mock/*.cfg "$pkgdir/"etc/mock/
+	rm "$pkgdir/"etc/mock/site-defaults.cfg
 
 	mkdir -p "$pkgdir/"etc/mock/templates
 	install -Dp -m644 etc/mock/templates/*.tpl "$pkgdir/"etc/mock/templates/
