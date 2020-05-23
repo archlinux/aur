@@ -1,0 +1,14 @@
+pkgbase = python2-beaker
+	pkgdesc = Caching and sessions WSGI middleware for use with web applications and stand-alone Python scripts and applications
+	pkgver = 1.11.0
+	pkgrel = 4
+	url = https://beaker.readthedocs.io/
+	arch = any
+	license = custom
+	makedepends = python2-setuptools
+	depends = python2-funcsigs
+	source = python2-beaker-1.11.0.tar.gz::https://github.com/bbangert/beaker/archive/1.11.0.tar.gz
+	sha512sums = 0eab9ff40314786e0fb2d31a6b932f355680c193ac5c41de442ee5a3f4d5cf62ae1c30f2948f8e2c89c012bad5e4332a5a72be62c9b1cba0b9f2723afe7e9ae3
+
+pkgname = python2-beaker
+
