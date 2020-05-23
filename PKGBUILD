@@ -1,16 +1,18 @@
 # Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Static_Rocket
 # Contributor: Jose Riha <jose1711 gmail com>
 # Contributor: Sebastian J. Bronner <waschtl@sbronner.com>
 # Contributor: Patrick Jackson <PatrickSJackson gmail com>
 # Contributor: Christoph Vigano <mail@cvigano.de>
 
 pkgname=st-git
-pkgver=0.8.3.r9.g045a0fa
-pkgrel=1
+pkgver=0.8.3.r13.g475a0a3
+pkgrel=2
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
 depends=(libxft)
+makedepends=('ncurses' 'libxext' 'git')
 provides=(st)
 conflicts=(st)
 url=https://st.suckless.org
@@ -23,6 +25,8 @@ sha256sums=(SKIP
 _gitname="st"	    
 _sourcedir="$_gitname"
 _makeopts="--directory=$_sourcedir"
+_gitdir=${pkgname%'-git'}
+_startdir=$PWD
 
 pkgver() {
     cd "${srcdir}/st"
@@ -31,11 +35,14 @@ pkgver() {
 
 prepare() {
 
-	echo 'Applying patches from $startdir if they exist...'
-	if [ -d "${startdir}/patches" ]; then
-	        for patch in ${startdir}/patches/*.diff; do
+patch --directory="$_sourcedir" --strip=0 < terminfo.patch
+
+
+	echo 'Applying patches from $_startdir if they exist...'
+	if [ -d "$_startdir}/patches" ]; then
+	        for patch in $_startdir/patches/*.diff; do
                         echo "Applying $patch ..."
-		        git apply "$patch"
+		        patch -p1 -s -i "$patch"
 		done;
 	fi;
 
