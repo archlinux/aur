@@ -14,7 +14,7 @@ pkgbase = flac-git
 	depends = gcc-libs
 	depends = libogg
 	options = !makeflags
-	source = git://git.xiph.org/flac.git
+	source = git://github.com/xiph/flac.git
 	sha1sums = SKIP
 
 pkgname = flac-git
