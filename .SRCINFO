@@ -1,6 +1,7 @@
 pkgbase = beekeeper-studio-bin
+	pkgdesc = Cross platform SQL editor and database management app for Windows, Linux, and Mac.
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.beekeeperstudio.io/
 	arch = x86_64
 	license = MIT

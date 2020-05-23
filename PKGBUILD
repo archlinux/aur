@@ -2,8 +2,8 @@
 
 pkgname=beekeeper-studio-bin
 pkgver=1.4.0
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="Cross platform SQL editor and database management app for Windows, Linux, and Mac."
 arch=('x86_64')
 url="https://www.beekeeperstudio.io/"
 license=('MIT')
