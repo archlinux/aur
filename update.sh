@@ -6,7 +6,13 @@ echo "Latest Snyk CLI Version: v${latest_version}"
 sed -i "s/^pkgver=.*$/pkgver=${latest_version}/" ./PKGBUILD
 
 if ! git diff --quiet HEAD PKGBUILD; then
-  updpkgsums
+
+  if pacman -Qi pacman-contrib > /dev/null 2>&1; then
+    updpkgsums
+  else
+    echo "Install pacman-contrib with 'pacman -S pacman-contrib'"
+    exit 1
+  fi
 
   makepkg --printsrcinfo > .SRCINFO
 
