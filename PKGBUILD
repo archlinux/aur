@@ -4,10 +4,9 @@ _pkgname=looking-glass
 pkgbase="${_pkgname}-git"
 pkgname=("${_pkgname}-git"
          "${_pkgname}-module-dkms-git"
-         "${_pkgname}-host-git"
          "obs-plugin-${_pkgname}-git")
 epoch=2
-pkgver=B1.r176.g80437c5
+pkgver=B2rc2.r0.gd579705
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.hostfission.com"
@@ -35,7 +34,7 @@ prepare() {
 	cd "${_pkgname}"
 
 	git submodule init
-	git config submodule.LGMP.url "${srcdir}/LGMP"
+	git config submodule.repos/LGMP.url "${srcdir}/LGMP"
 	git config submodule.repos/PureSpice.url "${srcdir}/PureSpice"
 	git submodule update
 
@@ -45,7 +44,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	for b in {client,c-host,obs}; do
+	for b in {client,obs}; do
 		pushd "${b}"
 		cmake -DCMAKE_INSTALL_PREFIX=/usr .
 		make
@@ -55,7 +54,7 @@ build() {
 
 package_looking-glass-git() {
 	pkgdesc="A client application for accessing the LookingGlass IVSHMEM device of a VM"
-	depends=('sdl2_ttf' 'glu' 'nettle' 'fontconfig')
+	depends=('sdl2_ttf' 'glu' 'nettle' 'fontconfig' 'libxi')
 	provides=("${_pkgname}")
 	conflicts=("${_pkgname}")
 
@@ -73,16 +72,6 @@ package_looking-glass-module-dkms-git() {
 	for f in {Makefile,dkms.conf,kvmfr.c}; do
 		install -Dm644 "${f}" "${pkgdir}/usr/src/${pkgbase}-${pkgver}/${f}"
 	done
-}
-
-package_looking-glass-host-git() {
-	pkgdesc="Linux host application for pushing frame data to the LookingGlass IVSHMEM device"
-	depends=('libxcb' 'zlib')
-	provides=("${_pkgname}-host")
-	conflicts=("${_pkgname}-host")
-
-	cd "${srcdir}/${_pkgname}/c-host"
-	make DESTDIR="${pkgdir}" install
 }
 
 package_obs-plugin-looking-glass-git() {
