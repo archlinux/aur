@@ -5,10 +5,10 @@
 pkgname=lib32-alure
 _pkgbasename=alure
 pkgver=1.2
-pkgrel=5
+pkgrel=6
 pkgdesc='Utility library to help manage common tasks with OpenAL applications (32-bit)'
 arch=('x86_64')
-url='http://kcat.strangesoft.net/alure.html'
+url='https://kcat.strangesoft.net/alure.html'
 license=('MIT')
 depends=('lib32-openal' $_pkgbasename)
 makedepends=('cmake' 'lib32-libsndfile' 'lib32-libvorbis' 'lib32-flac'
@@ -18,7 +18,7 @@ optdepends=('lib32-libsndfile: for uncompressed audio support'
             'lib32-flac: for FLAC support'
             'lib32-mpg123: for MPEG support'
             'lib32-fluidsynth: for SoundFont 2 support')
-source=("http://kcat.strangesoft.net/alure-releases/${_pkgbasename}-${pkgver}.tar.bz2"
+source=("https://kcat.strangesoft.net/alure-releases/${_pkgbasename}-${pkgver}.tar.bz2"
         build.patch)
 md5sums=('3088aba074ad02d95ea51e705053b9f5'
          '6a8dfd62ccae920d393b4202736aba46')
@@ -34,6 +34,10 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
+
+  # workaround for recent gcc build issue
+  CXXFLAGS="$CXXFLAGS -fpermissive"
+
   cmake . -DCMAKE_INSTALL_PREFIX=/usr -DLIB_SUFFIX=32 -DDUMB=OFF
   make
 }
