@@ -1,0 +1,18 @@
+pkgbase = dmenu-jacob-git
+	pkgdesc = This Jacob McDonnell's build of dmenu see the repo for more details
+	pkgver = 4.9
+	pkgrel = 1
+	url = https://gitlab.com/Jacob_McDonnell/dmenu.git
+	arch = x86_64
+	arch = i686
+	license = MIT/X Consortium License
+	makedepends = git
+	makedepends = make
+	optdepends = python-pywal
+	provides = dmenu
+	conflicts = dmenu
+	source = git+https://gitlab.com/Jacob_McDonnell/dmenu.git
+	md5sums = SKIP
+
+pkgname = dmenu-jacob-git
+
