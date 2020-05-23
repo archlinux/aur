@@ -1,6 +1,6 @@
 pkgbase = coolq-cqhttp-api-bin
 	pkgdesc = CoolQ 插件实现通过 HTTP 上报事件信息及调用接口
-	pkgver = 4.14.0
+	pkgver = 4.15.0
 	pkgrel = 1
 	url = https://github.com/richardchien/coolq-http-api
 	install = coolq-cqhttp-api.install
@@ -10,7 +10,7 @@ pkgbase = coolq-cqhttp-api-bin
 	depends = coolq
 	provides = coolq-cqhttp-api
 	backup = etc/coolq/app/io.github.richardchien.coolqhttpapi/config.json
-	source = https://github.com/richardchien/coolq-http-api/releases/download/v4.14.0/io.github.richardchien.coolqhttpapi.cpk
+	source = https://github.com/richardchien/coolq-http-api/releases/download/v4.15.0/io.github.richardchien.coolqhttpapi.cpk
 	source = config.json
 	source = tmpfiles.d
 	sha512sums = 19c217ba09af05c4b88377df74913625f1a369a5987f4dabd0bb393c5e0b6092d404f2858414f3ee85debdfe94b48bcd064870770d0483a03b871f45ab8e8ce3
