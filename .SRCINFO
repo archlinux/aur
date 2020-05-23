@@ -1,11 +1,12 @@
 pkgbase = fennel-git
 	pkgdesc = A Lua Lisp language
-	pkgver = r343.bb85b0c
-	pkgrel = 3
+	pkgver = r855.2019aa0
+	pkgrel = 1
 	url = https://github.com/bakpakin/Fennel
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = make
 	depends = lua
 	provides = fennel
 	conflicts = fennel

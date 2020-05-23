@@ -3,15 +3,15 @@
 _lua_version=5.3
 
 pkgname=fennel-git
-pkgver=r343.bb85b0c
-pkgrel=3
+pkgver=r855.2019aa0
+pkgrel=1
 pkgdesc="A Lua Lisp language"
 arch=('x86_64')
 url="https://github.com/bakpakin/Fennel"
 license=('MIT')
 groups=()
 depends=('lua')
-makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git' 'make')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -24,18 +24,19 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-
-# TODO: once tagged releases exist, switch to this
-#	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+	cd "$srcdir/${pkgname%-git}"
+	make fennel fennel.lua fennelview.lua fennelfriend.lua
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
 
-	install -Dm644 "fennel.lua" "fennelview.fnl" \
+	install -Dm644 "fennel.lua" "fennelview.lua" "fennelfriend.lua" \
 		-t "${pkgdir}/usr/lib/lua/${_lua_version}"
-	
 	install -Dm755 "fennel" \
 		"${pkgdir}/usr/bin/fennel"
 }
