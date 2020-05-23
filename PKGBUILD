@@ -1,7 +1,7 @@
 # Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
 
 pkgname=terser
-pkgver=4.6.13
+pkgver=4.7.0
 pkgrel=1
 pkgdesc='JavaScript parser, mangler/compressor and beautifier toolkit for ES6+'
 arch=('any')
@@ -13,17 +13,29 @@ provides=('nodejs-terser')
 conflicts=('nodejs-terser')
 replaces=('nodejs-terser')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('b601aa65d9f7cd8ce1006ace73887c9702b15954116ad869179e82e4f23eb93b')
+sha256sums=('12ecc2f62babdc54e96e0691019a83ea08cd7072a71217d8e672ea211cd62191')
 
 package() {
+  # based on https://wiki.archlinux.org/index.php/Node.js_package_guidelines as of 2020-03-22
   npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
+
+  # Non-deterministic race in npm gives 777 permissions to random directories.
+  # See https://github.com/npm/npm/issues/9359 for details.
   find "$pkgdir/usr" -type d -exec chmod 755 {} +
-  find "$pkgdir" -name package.json -print0 | xargs -0 sed -i '/_where/d'
+
+  # npm gives ownership of ALL FILES to build user
+  # https://bugs.archlinux.org/task/63396
+  chown -R root:root "$pkgdir"
+
+  # fix package containing reference to $srcdir/$pkgdir
+  find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+
   local tmppackage="$(mktemp)"
   local pkgjson="$pkgdir/usr/lib/node_modules/$pkgname/package.json"
   jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
   mv "$tmppackage" "$pkgjson"
   chmod 644 "$pkgjson"
 
+  # package specific
   install -Dm 644 "$srcdir/package/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
