@@ -4,3 +4,7 @@ tags
 config.h
 *.orig
 *.rej
+*.tar.gz
+*.tar.xz
+pkg
+src
