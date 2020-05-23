@@ -5,7 +5,7 @@
 pkgbase=gpgme
 pkgname=(gpgme qgpgme python-gpgme)
 pkgver=1.13.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A C wrapper library for GnuPG"
 arch=('x86_64')
 url='https://www.gnupg.org/related_software/gpgme/'
@@ -15,6 +15,13 @@ source=("https://www.gnupg.org/ftp/gcrypt/${pkgbase}/${pkgbase}-${pkgver}.tar.bz
 sha256sums=('c4e30b227682374c23cddc7fdb9324a99694d907e79242a25a4deeedb393be46'
             'SKIP')
 validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
+
+prepare() {
+  cd ${pkgbase}-${pkgver}
+
+  # touch python sources for reproducibility
+  find lang/python -name *.py -exec touch -d @$SOURCE_DATE_EPOCH {} +
+}
 
 build() {
   cd ${pkgbase}-${pkgver}
@@ -29,6 +36,9 @@ build() {
 
 check() {
   cd ${pkgbase}-${pkgver}
+
+  # this test fails with gnupg (FS#66572)
+  sed -i 's#"t-keylist-secret",##' tests/json/t-json.c
 
   make check
 }
