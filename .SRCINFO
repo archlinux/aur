@@ -1,7 +1,7 @@
 pkgbase = blightmud-git
 	pkgdesc = A terminal mud client written in rust
 	pkgver = 0.1.0.125.gfa39e70
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/liquidityc/blightmud
 	arch = x86_64
 	arch = i686
