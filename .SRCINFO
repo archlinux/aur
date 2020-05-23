@@ -1,0 +1,16 @@
+pkgbase = python-pywatchman
+	pkgdesc = Watchman client for python
+	pkgver = 1.4.1
+	pkgrel = 0
+	url = https://github.com/facebook/watchman
+	arch = x86_64
+	license = Apache
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	optdepends = watchman
+	source = https://pypi.python.org/packages/source/p/pywatchman/pywatchman-1.4.1.tar.gz
+	md5sums = d770d09bd105e83013f63492fce70c6f
+
+pkgname = python-pywatchman
+
