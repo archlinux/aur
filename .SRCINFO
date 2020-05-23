@@ -11,7 +11,7 @@ pkgbase = libdaq-nfqueue
 	depends = libnetfilter_queue
 	provides = libdaq
 	conflicts = libdaq
-	source = https://www.snort.org/downloads/snortplus/daq-2.2.2.tar.gz
+	source = https://www.snort.org/downloads/archive/snortplus/daq-2.2.2.tar.gz
 	md5sums = c61f60674a5f951f0c50faf33a611fee
 
 pkgname = libdaq-nfqueue
