@@ -1,14 +1,14 @@
 _basename=kdiff3
 pkgname=${_basename}-git
-pkgver=1.8.70.r1162.0fa8910
-pkgrel=2
+pkgver=1.8.70.r1305.ab3a79d
+pkgrel=1
 pkgdesc="A KDE file comparator/merge tool"
 arch=('i686' 'x86_64')
 url="https://cgit.kde.org/kdiff3.git"
 license=('GPL')
 depends=('kparts' 'hicolor-icon-theme')
 conflicts=("$_basename" "${_basename}-kf5-git" "${_basename}-qt")
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'kdoctools')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'kdoctools' 'boost')
 source=("git+https://github.com/KDE/kdiff3.git")
 sha512sums=('SKIP')
 
