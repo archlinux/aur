@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gperftools' 'lensfun' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'desktop-file-utils') 
 makedepends=('pkgconf' 'cmake' 'git' 'gcc' 'hicolor-icon-theme' 'fakeroot')
 conflicts=('art-rawconverter-git')
-source=("${pkgname}_${pkgver}::git+https://bitbucket.org/agriggio/art.git#tag=${pkgver}"  "bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip" "cmakelists.patch")
+source=("${pkgname}_${pkgver}::git+https://bitbucket.org/agriggio/art.git#tag=${pkgver}" "bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip" "cmakelists.patch")
 sha256sums=('SKIP' '7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346' 'ae3646842985338b700b68987879c3eb8d4483c895e58134bf512fe3df33c39b')
 
 build() {
@@ -22,8 +22,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DPROC_TARGET_NUMBER="2" \
-    -DENABLE_TCMALLOC="ON" \
-    -DTCMALLOC_LIB_DIR=/usr/lib \
     -DWITH_LTO="ON"
 
   NPROC=$(getconf _NPROCESSORS_ONLN)
@@ -31,7 +29,7 @@ build() {
 }
 
 prepare() {
-  cd "$srcdir/${pkgname}_src"
+  cd "$srcdir/${pkgname}_${pkgver}"
   patch --forward --strip=1 --input="${srcdir}/cmakelists.patch"
 }
 

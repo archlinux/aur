@@ -26,8 +26,10 @@ pkgbase = art-rawconverter
 	conflicts = art-rawconverter-git
 	source = art-rawconverter_1.3::git+https://bitbucket.org/agriggio/art.git#tag=1.3
 	source = bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip
+	source = cmakelists.patch
 	sha256sums = SKIP
 	sha256sums = 7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346
+	sha256sums = ae3646842985338b700b68987879c3eb8d4483c895e58134bf512fe3df33c39b
 
 pkgname = art-rawconverter
 
