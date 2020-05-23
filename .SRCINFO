@@ -1,7 +1,7 @@
 pkgbase = ptags
 	pkgdesc = A parallel universal-ctags wrapper for git repository.
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dalance/ptags
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ptags
 	provides = ptags
 	conflicts = ptags-git
 	source = ptags-0.3.2.zip::https://github.com/dalance/ptags/archive/v0.3.2.zip
-	sha256sums = f270c5195196bee852bbc61f811788685fb85eb8bfb5672bdd41bf430974ac21
+	sha256sums = b78ed1c93822f0dd054c9a6bba25b224bbfd13acaa12dfd50bc71cb56fd2838c
 
 pkgname = ptags
 
