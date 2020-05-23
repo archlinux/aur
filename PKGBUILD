@@ -2,19 +2,27 @@
 # Contributor: Aline Freitas <aline AT alinefreitas DOT com DOT br>
 
 pkgname=mkinitcpio-bluetooth
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="This is an initcpio hook for bluetooth connectivity during boot / in initramfs."
 url="https://github.com/irreleph4nt/mkinitcpio-bluetooth/"
-arch=('x86_64' 'i686')
+arch=(
+  'x86_64'
+  'i686'
+)
 license=('GPLv2')
-depends=('bluez' 'bluez-utils' 'dbus')
+depends=(
+  'bluez'
+  'bluez-utils'
+  'dbus'
+)
+replaces=('mkinitcpio-btinput')
 makedepends=('git')
-source=("git+https://github.com/irreleph4nt/mkinitcpio-bluetooth.git#tag=v${pkgver}")
-md5sums=('SKIP')
+source=("https://github.com/irreleph4nt/mkinitcpio-bluetooth/archive/v${pkgver}.tar.gz")
+md5sums=('a794ec95f1d37a56c824b7adc729ad96')
 
 package() {
-    cd "$srcdir/${pkgname}"  
+    cd "$srcdir/${pkgname}-${pkgver}"
 
     install -Dm644 bluetooth_install "${pkgdir}/usr/lib/initcpio/install/bluetooth"
     install -Dm644 bluetooth_hook "${pkgdir}/usr/lib/initcpio/hooks/bluetooth"
