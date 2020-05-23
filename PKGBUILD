@@ -20,7 +20,7 @@ optdepends=('freerdp: support rdp backend'
 makedepends=('meson' 'wayland-protocols' 'ninja')
 provides=('weston')
 conflicts=('weston')
-source=(#https://wayland.freedesktop.org/releases/$pkgname-$pkgver.tar.xz"{,.sig}
+source=(#"https://wayland.freedesktop.org/releases/weston-$pkgver.tar.xz"{,.sig}
 	"git://anongit.freedesktop.org/wayland/weston"
         '0001-gl-renderer-Add-EGLDevice-enumeration-support.patch'
         '0002-gl-renderer-Add-support-for-EGLDevice-composited-fra.patch'
@@ -29,12 +29,12 @@ source=(#https://wayland.freedesktop.org/releases/$pkgname-$pkgver.tar.xz"{,.sig
         '0005-backend-drm-Add-support-for-EGLDevice-EGLOutput.patch'
         '0006-compositor-Process-stream-attach-requests-with-wl_eg.patch')
 sha256sums=('SKIP'
-            '8d644af0432944ec0c8710f3d31ffdccb8a0661683247743df08915cf9670915'
-            'bbfc35859b4561ddaee39077c1b449c729ce6e691193a64090b44746bc46d587'
-            '0e2616445c720fc23137feffc6148f891648e3ab8a52f6790cf484b0b39d7fe2'
-            '557aa28b89b18c4fb28ea7ab56dd6f3580dbc44d6ae0a983b8b615eab5bf00b1'
-            '36e9d9a317c32e61910465394977c8a35bf94afe97a11e56476ea7ff1e8d708a'
-            'dc64ac1cacac8dea668644a2a64aeaf3123983dcc61bf5b993bbd48dbc4f69ef')
+	    'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
  _basever="$(cat "$_basename/meson.build" | \
@@ -43,7 +43,7 @@ pkgver() {
 }
 
 prepare() {
-    #cd $pkgname-$pkgver
+    #cd weston-$pkgver
     cd weston
 
     patch -Np1 -i "${srcdir}/0001-gl-renderer-Add-EGLDevice-enumeration-support.patch"
@@ -55,7 +55,7 @@ prepare() {
 }
 
 build() {
-    #arch-meson $pkgname-$pkgver build \
+    #arch-meson weston-$pkgver build
     arch-meson "build" "weston"
         -Dbackend-drm-screencast-vaapi=false \
         -Dscreenshare=false -Dbackend-rdp=false -Dshell-ivi=false \
