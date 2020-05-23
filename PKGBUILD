@@ -2,14 +2,14 @@
 # Contributor: andmars <andreas.marschall @ unitybox.de>
 # Contributor: SaThaRiel <sathariel74[at] gmail[dot]com>
 pkgname=angband-git
-pkgver=4.2.0.r308.g14821d4d0
+pkgver=4.2.0.r334.g4aa617b1b
 pkgrel=1
 pkgdesc="A roguelike dungeon-exploration game based on Tolkien's books"
 arch=('i686' 'x86_64')
 url="http://rephial.org/"
 license=('GPL2' 'custom')
 depends=('sdl_image' 'sdl_ttf' 'sdl_mixer')
-makedepends=('git' 'autogen' 'python-docutils')
+makedepends=('git' 'autogen' 'python-docutils' 'clang')
 conflicts=('angband' 'angband-svn')
 source=("$pkgname"::'git+https://github.com/angband/angband.git')
 md5sums=('SKIP')
@@ -28,6 +28,9 @@ prepare() {
 }
 
 build() {
+  # until gcc 10.x bugs are fixed, let's use CLANG instead
+  export CC='clang --target=x86_64-unknown-linux-gnu'
+  export CXX='clang++ --target=x86_64-unknown-linux-gnu'
   cd "$srcdir/$pkgname"
   ./configure \
     --prefix=/usr \
