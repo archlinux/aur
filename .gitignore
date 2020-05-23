@@ -1,0 +1,7 @@
+*
+!.SRCINFO
+!PKGBUILD
+!.gitignore
+!jicofo.service
+!jicofo.conf
+!sip-communicator.properties
