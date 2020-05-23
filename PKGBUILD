@@ -2,8 +2,8 @@
 # Contributor: Michael Straube <straubem@gmx.de>
 
 pkgname=doomretro
-pkgver=3.5.8
-pkgrel=2
+pkgver=3.5.9
+pkgrel=1
 pkgdesc='The classic, refined DOOM source port'
 arch=('x86_64')
 url='http://doomretro.com'
@@ -11,17 +11,11 @@ license=('GPL3')
 depends=('sdl2_image' 'sdl2_mixer')
 makedepends=('cmake')
 optdepends=('timidity++: for music playback')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/bradharding/doomretro/archive/v$pkgver.tar.gz"
-        "0001-Fix-compilation-on-GCC-10.patch")
-sha512sums=('76127772972f6165fd44e53eb9fd38c14afd3a92d474caa9f941e7f159a26cfb3a19e72b837cbae5767dcb4617e89729558c6e5d65f74970b1fd059123ad4eb7'
-            'c2413ad416b1122771566df8c36ce05093ba81756c65a724bab29ec4f8092a6c9b3373034ffdec49cddbee3456dcd2f4405631e5d8b411deb0dd0ab3672a4d48')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/bradharding/doomretro/archive/v$pkgver.tar.gz")
+sha512sums=('84591927dea3660de2c0765cb2af8e1722f713eadbf0e8abbd2b8ef9d4d6146b7fb55211d6a50634bd0290f331546dc03dbc5362a60b4f30cb749545c44d1dd9')
 
 prepare() {
   mkdir -p build
-
-  # remove in the next version, this patch is backported from upstream
-  cd "$pkgname-$pkgver"
-  patch -sp1 < "$srcdir/0001-Fix-compilation-on-GCC-10.patch"
 }
 
 build() {
