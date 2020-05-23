@@ -1,0 +1,18 @@
+[Unit]
+Description=Prometheus Nature Remo E series exporter
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+Group=nobody
+NoNewPrivileges=true
+ProtectHome=true
+ProtectSystem=strict
+Restart=on-failure
+ExecStart=/usr/bin/prometheus-remo-e-exporter
+EnvironmentFile=-/etc/conf.d/prometheus-remo-e-exporter
+
+[Install]
+WantedBy=multi-user.target
+
