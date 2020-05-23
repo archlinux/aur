@@ -11,7 +11,7 @@ makedepends=('python-setuptools' 'python-pillow' 'vala' 'folks')
 depends=('python' 'python-dbus' 'python-gobject' 'python-requests' 'libsecret' 'gnome-keyring')
 optdepends=('gnome-online-accounts' 'gnome-shell' 'bubblemail-gnome-shell' 'folks')
 source=("https://framagit.org/razer/${pkgname}/-/archive/v${pkgver}/${pkgfolder}.tar.bz2")
-sha256sums=('3c317f56c847bf501f15dabe3f7a5a7ec8bd66da57c7a0e945e271b60ead80ec')
+sha256sums=('bca6e283a94f068b217a4191ef1585a839f2d5111adbf426ccc253cf5ff9231c')
 
 build() {
     cd "${srcdir}/${pkgfolder}"
