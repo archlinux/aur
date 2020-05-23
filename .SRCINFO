@@ -1,0 +1,15 @@
+pkgbase = sizeof
+	pkgdesc = Find the size of files and Directory
+	pkgver = 0.37
+	pkgrel = 1
+	url = https://github.com/ASHWIN990/sizeof
+	arch = any
+	license = GPL3
+	depends = python3
+	provides = sizeof
+	source = https://sourceforge.net/projects/posix-sizeof/files/sizeof-0.37.tar.gz
+	md5sums = 692b151888e4253c26beccc04857c378
+	sha256sums = a226227d5aded2499032841b1dab653b3dbacca5f09e37f4ccbf630bfd06f9de
+
+pkgname = sizeof
+
