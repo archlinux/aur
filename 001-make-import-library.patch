@@ -1,0 +1,11 @@
+--- luajit/src/Makefile.orig	2017-05-01 19:05:00.000000000 +0000
++++ luajit/src/Makefile	2020-05-23 13:44:52.010932510 +0000
+@@ -305,7 +305,7 @@
+ TARGET_SYS?= $(HOST_SYS)
+ ifeq (Windows,$(TARGET_SYS))
+   TARGET_STRIP+= --strip-unneeded
+-  TARGET_XSHLDFLAGS= -shared
++  TARGET_XSHLDFLAGS= -shared -Wl,--out-implib,libluajit-${ABIVER}.dll.a
+   TARGET_DYNXLDOPTS=
+ else
+ ifeq (,$(shell $(TARGET_CC) -o /dev/null -c -x c /dev/null -fno-stack-protector 2>/dev/null || echo 1))
