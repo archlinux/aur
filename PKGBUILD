@@ -1,4 +1,5 @@
 pkgname=jitsi-meet
+# https://github.com/jitsi/jitsi-meet/releases/latest
 pkgver=1.0.4074
 _tag="jitsi-meet_4548"
 pkgrel=1
@@ -19,7 +20,7 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/jitsi/jitsi-meet/archive/sta
 md5sums=('c3c89157484d207255657584f9ccdd14')
 
 build() {
-    cd "${srcdir}/${pkgname}-${_tag}"
+    cd "${srcdir}/${pkgname}-stable-${_tag}"
     # this seems to break the package, even though it is the documented way of packaging
     #npm install -g --user root --prefix "$pkgdir/usr"
     npm install
@@ -31,7 +32,7 @@ build() {
 
 package() {
     install -d "${pkgdir}/opt"
-    cp -R "${srcdir}/${pkgname}-${_tag}/" "${pkgdir}/opt/jitsi-meet"
+    cp -R "${srcdir}/${pkgname}-stable-${_tag}/" "${pkgdir}/opt/jitsi-meet"
 
     # get rid of all local references
     find "${pkgdir}" -type f -execdir sed -i "s#$srcdir##g" "{}" \;
