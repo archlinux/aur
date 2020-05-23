@@ -1,7 +1,7 @@
 pkgbase = python2-terminaltables
 	pkgdesc = Generate simple tables in terminals from a nested list of strings, python2 version
 	pkgver = 3.1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/Robpol86/terminaltables
 	arch = any
 	license = MIT

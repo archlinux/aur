@@ -6,7 +6,7 @@
 _pyname=terminaltables
 pkgname=('python2-terminaltables')
 pkgver=3.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Generate simple tables in terminals from a nested list of strings, python2 version"
 arch=('any')
 url="https://github.com/Robpol86/terminaltables"
@@ -18,17 +18,17 @@ source=("${_pyname}-${pkgver}.tar.gz::https://github.com/Robpol86/${_pyname}/arc
 sha512sums=('dc49458652fff8bc6094d316d84c9b8e9fca1a26e3230c0b668bc03ec8528793f4ef024e8032d4a56fbfabfdfd4a1142870f550f0b373ba6a42dd2e3ead3f501')
 
 prepare() {
-  cd ${_pyname}-${pkgver}
+  cd "${_pyname}-${pkgver}"
   sed -i -e s/python/python2/g example*.py
 }
 
 build() {
-  cd ${_pyname}-${pkgver}
+  cd "${_pyname}-${pkgver}"
   python2 setup.py build
 }
 
 package() {
-  cd ${_pyname}-${pkgver}
+  cd "${_pyname}-${pkgver}"
   python2 setup.py install -O1 --root="${pkgdir}" --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
