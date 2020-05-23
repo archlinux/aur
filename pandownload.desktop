@@ -4,5 +4,5 @@ Version=1.0
 Name=PanDownload
 Comment=一款支持全平台的超级快的网盘下载工具，能真正不限速高速下载。
 Exec=/usr/bin/pandownload
-Icon=/home/f_nebula/.icons/IconGroup107.png
+Icon=pandownload
 Terminal=false

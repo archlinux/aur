@@ -3,7 +3,7 @@
 _pkgname=pandownload
 pkgname=${_pkgname}-bin
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="一款支持全平台的超级快的网盘下载工具，能真正不限速高速下载。"
 arch=('any')
 url="http://pandownload.com"
@@ -21,7 +21,7 @@ source=("${_pkgname}-$pkgver.zip::http://pandownload.com/$pkgver"
 options=(!strip)
 install=${pkgname}.install
 sha512sums=('0e4c589a8e5a876418aa2ec6935aaef0d0b0b972afd9699fca59aaf1f9f0b3cdd56af17a19875952f590d12fc0b2505578bc58a297fb79614a010b6eec1772ae'
-            'f92318c37e6ac4ef6a1c4b629a042b6dc1fbaac2188293a1c7afd42c4e674056167193d7bfbaeb041b3989300594ccf46e6ae97cbd7dc9879cca65bf24b6b9a6'
+            '11d63d361a5ae981d59a81fea3943d774a54a0cb4863a0c1fb01ac6be852de9e039830063e924f4b02b89f0c0f605adbbaa3bf04438192d2e39eae922f8d604b'
             'a49ccf546de9ac54c6ae0027f9f3b0191e0293a11d3d183e64a7898af56f0a51332cd9197acf67f74c17e85062d1a6c6880314974c08e53fb5ecd348218a90b6'
             '049dffe543d066b5b6595cf91d6865706a22bfc5f4fe4b582db8f06ce5fab5466ef243b6383daa2f95cdc08e11ca22eb120b863b91fee4005b8bdff6eaa85ab0'
             'da9ecf93218c994e22dc2a79844a3aefa2bda2c97c9524f63980d66b344b8ecd9b28aaaf5811e7998f6e1cde943716545dfad67b83375e4d4e098e233c447a43'
