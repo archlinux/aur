@@ -1,7 +1,7 @@
 pkgbase = git-annex-remote-googledrive
 	pkgdesc = Faster git-annex special remote for Google Drive with support for exports
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Lykos153/git-annex-remote-googledrive
 	arch = any
 	license = GPLv3+
@@ -10,6 +10,7 @@ pkgbase = git-annex-remote-googledrive
 	depends = python-annexremote
 	depends = python-drivelib
 	depends = python-tenacity
+	depends = python-gitpython
 	source = https://github.com/Lykos153/git-annex-remote-googledrive/releases/download/v1.0/git-annex-remote-googledrive-1.0.tar.gz
 	sha256sums = eaaed22d5891c1e0c8379655a31fb672674ad92748f13c28b312135c3af0ee08
 
