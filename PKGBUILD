@@ -49,7 +49,7 @@ package_harfbuzz-git() {
   depends=(glib2 freetype2 graphite glib2-2.0.so libfreetype.so libgobject-2.0.so)
   optdepends=('cairo: hb-view program')
   provides=(harfbuzz libharfbuzz.so libharfbuzz-subset.so libharfbuzz-gobject.so)
-  conflicts=(harfbuzz libharfbuzz.so libharfbuzz-subset.so libharfbuzz-gobject.so)
+  conflicts=(harfbuzz)
 
   cd harfbuzz
   make DESTDIR="$pkgdir" install
@@ -66,7 +66,7 @@ package_harfbuzz-icu-git() {
   pkgdesc="$pkgdesc (ICU integration)"
   depends=(harfbuzz icu libharfbuzz.so)
   provides=(harfbuzz-icu libharfbuzz-icu.so)
-  conflicts=(harfbuzz-icu libharfbuzz-icu.so)
+  conflicts=(harfbuzz-icu)
 
   mv hb-icu/* "$pkgdir"
 
