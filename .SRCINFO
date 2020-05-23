@@ -1,0 +1,11 @@
+pkgbase = beekeeper-studio-bin
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://www.beekeeperstudio.io/
+	arch = x86_64
+	license = MIT
+	source_x86_64 = https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v1.4.0/beekeeper-studio_1.4.0_amd64.deb
+	sha256sums_x86_64 = edf01a3f22258dbd36f9d658c7bfe6127f52f4b072d196547879f63c043c051f
+
+pkgname = beekeeper-studio-bin
+
