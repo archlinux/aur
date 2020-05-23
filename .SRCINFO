@@ -4,7 +4,7 @@ pkgbase = mesa-radv-drivers-git
 	pkgrel = 1
 	url = https://github.com/sparzz/mesa.git
 	arch = x86_64
-	license = GPL
+	license = MIT
 	makedepends = meson
 	makedepends = ninja
 	makedepends = git
@@ -110,7 +110,7 @@ pkgbase = mesa-radv-drivers-git
 	depends = opencl-headers
 	depends = python-evdev
 	provides = mesa-radv-drivers
-	source = https://github.com/sparzz/mesa.git
+	source = mesa::git+https://github.com/sparzz/mesa.git
 	md5sums = SKIP
 
 pkgname = mesa-radv-drivers-git

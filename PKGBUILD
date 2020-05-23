@@ -12,7 +12,7 @@ epoch=
 pkgdesc="mesa-radv-drivers-git"
 arch=(x86_64)
 url="https://github.com/sparzz/mesa.git"
-license=('GPL')
+license=('MIT')
 groups=()
 depends=("spirv-tools"
          "mesa"
@@ -127,7 +127,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/sparzz/mesa.git")
+source=("mesa::git+https://github.com/sparzz/mesa.git")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
@@ -237,10 +237,7 @@ prepare() {
 }
 
 
-
-
 build() {
-	git clone https://github.com/sparzz/mesa.git
 	cd mesa
 	mkdir build
 	sudo meson build/
