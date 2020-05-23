@@ -2,7 +2,7 @@
 
 _pkgname=python-pyqis
 pkgname=${_pkgname}
-pkgver=0.0.1
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Python QIS client for German university information servers"
 arch=(any)
@@ -11,7 +11,7 @@ license=("GPL3")
 depends=("python-requests" "python-beautifulsoup4" "python-lxml")
 makedepends=("git" "python-setuptools")
 source=("${_pkgname}::git+https://gitlab.com/Scrumplex/pyqis.git#tag=${pkgver}")
-sha512sums=(SKIP)
+sha512sums=('SKIP')
 
 build() {
     cd "$_pkgname"
