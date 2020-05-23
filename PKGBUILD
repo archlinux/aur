@@ -1,19 +1,19 @@
 pkgname=stack-client
-pkgver=2.6.2
-pkgrel=3
+pkgver=2.6.4
+pkgrel=1
 pkgdesc="The STACK Client provides file sync to desktop clients."
 arch=('x86_64')
 url='https://www.transip.nl/stack/'
 license=(GPL2)
-depends=('qtkeychain' 'qt5-webengine' 'hicolor-icon-theme' 'xdg-utils')
+depends=('qtkeychain' 'qt5-webengine' 'hicolor-icon-theme' 'xdg-utils' 'libcloudproviders')
 optdepends=('python-nautilus: integration with Nautilus' 'nemo-python: integration with Nemo')
 makedepends=('cmake' 'qt5-tools' 'extra-cmake-modules' 'frameworkintegration')
 conflicts=('stack-client-bin')
 source=("client-v${pkgver}.tar.gz::https://github.com/nextcloud/client/archive/v${pkgver}.tar.gz"
-        "http://mirror.transip.net/stack/software/source/stack-client-source-${pkgver}.20200306.tar.gz"
+        "http://mirror.transip.net/stack/software/source/stack-client-source-${pkgver}.20200506.tar.gz"
         "APPLICATION_NAME.patch")
-sha256sums=('bbcb6593134836226640b108da7ad3db061417681e2d843bc371b1d697fb0551'
-            'd52cbf0ff3370e681b3275ef8004eede0563fff64563afa8de1ba53236024988'
+sha256sums=('aea4dff6bf2a6bd2b783a6175ac2393ffcae2949536b15def7aae4372f0c24ef'
+            'b6dc38ad1830b3b1b99863c853117bd03198bf0c15ecbe06da30b644c5c8f14d'
             '65a37003112bbc07bb372693793ff5a2dba86199d0da845e7203096ecc33c559')
  
 prepare() {
@@ -43,7 +43,7 @@ build() {
         -DQTKEYCHAIN_INCLUDE_DIR=/usr/include/qt5keychain/ \
         -DAPPLICATION_EXECUTABLE=stack-client \
         -DMIRALL_VERSION_SUFFIX= \
-        -DMIRALL_VERSION_BUILD=20200306
+        -DMIRALL_VERSION_BUILD=20200508
   make
 }
  
