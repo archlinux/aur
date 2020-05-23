@@ -1,9 +1,11 @@
+# Maintainer: xiretza <xiretza+aur@gmail.com>
 # Maintainer:  Rod Kay               <charlie5  on #ada at freenode.net>
 # Contributor: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 
 pkgname=libadalang-tools
-pkgver=2019
-pkgrel=2
+_upstream_ver=2020-20200429-1998C
+pkgver=2020
+pkgrel=1
 
 pkgdesc="Libadalang-based tools: gnatpp, gnatmetric and gnatstub"
 url='https://github.com/AdaCore/libadalang-tools'
@@ -13,28 +15,26 @@ license=('GPL')
 depends=('libadalang')
 makedepends=('gprbuild')
 
-source=('https://community.download.adacore.com/v1/6b32f1aa7cc443bcaf268ef13fa46e3b0fdf147d?filename=libadalang-tools-2019-20190517-195C4-src.tar.gz')
-sha1sums=('6b32f1aa7cc443bcaf268ef13fa46e3b0fdf147d')
-
+_checksum=740372d8ffb1e4755a99bead2d78dace904235c0
+source=("${pkgname}-${_upstream_ver}-src.tar.gz::https://community.download.adacore.com/v1/${_checksum}?filename=${pkgname}-${_upstream_ver}-src.tar.gz")
+sha1sums=("$_checksum")
 
 build() 
 {
-    cd "$srcdir/libadalang-tools-2019-20190517-195C4-src"
+    cd "$srcdir/$pkgname-$_upstream_ver-src"
 
-    # In order to build the generated library, Langkit expects the QUEX_PATH to
-    # be set.
-    source /etc/profile.d/quex.sh
-
-    make -j1 BUILD_MODE=prod LIBRARY_TYPE=relocatable
+    gprbuild \
+        -XBUILD_MODE=prod \
+        -XLIBRARY_TYPE=relocatable \
+        -XXMLADA_BUILD=relocatable \
+        -XLALTOOLS_SET=all \
+        -P src/build.gpr -p -j0 \
+        -R -cargs $CFLAGS -largs $LDFLAGS
 }
 
 package()
 {
-    cd "$srcdir/libadalang-tools-2019-20190517-195C4-src"
+    cd "$srcdir/$pkgname-$_upstream_ver-src"
 
-    mkdir -p "$pkgdir/usr/bin"
-    for program in gnatpp gnatmetric gnatstub
-    do
-        install -m755 bin/$program "$pkgdir/usr/bin/"
-    done
+    install -Dm755 -t "$pkgdir/usr/bin/" bin/{gnatpp,gnatmetric,gnatstub}
 }
