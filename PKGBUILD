@@ -20,7 +20,7 @@ build() {
   mkdir build
   cd build
 
-  cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DLOMSE_RUN_TESTS=no \
 	-DCMAKE_BUILD_TYPE=Release "../${_vcsname}-${pkgver}"
 
   make
