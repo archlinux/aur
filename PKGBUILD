@@ -4,12 +4,12 @@ pkgver() {
 	cd "WebDAV-Daemon"
 	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
-pkgrel=2
+pkgrel=3
 pkgdesc="WebDAV server designed to be a replace for SMBA providing access to a system's files without taking ownership of them"
 arch=(x86_64)
 url="https://github.com/couling/WebDAV-Daemon"
 license=('MIT')
-depends=()
+depends=(libmicrohttpd libxml2 pam)
 makedepends=('git')
 backup=('etc/webdavd/conf.xml'
 	'etc/logrotate.d/webdavd'
