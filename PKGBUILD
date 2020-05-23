@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=emulsion
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A fast and minimalistic image viewer"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'hicolor-icon-theme')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver%.*}.tar.gz"
         "emulsion.desktop")
-sha256sums=('c184ee6b1dd4c1db62527ae17c5ea405dd7fc89d5bac61e6419743c4e701609f'
+sha256sums=('66f250edfe1407c0a75fd7977ec994716917b209dc9fccf98e5bde724182917f'
             '7003f0a26dec380e22b2f0fedd044e266663f5a49e2557d6e4dc738933561e40')
 
 build() {
