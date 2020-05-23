@@ -1,7 +1,7 @@
 # Maintainer: Cyrinux <pkgbuilds AT levis DOT name>
 
 pkgname=wluma-als-emulator
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Ambient light sensor emulator for wluma"
 license=(MIT)
@@ -14,8 +14,8 @@ arch=(any)
 depends=('wluma')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
     "${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('943f5fe76b9c493aa7c033876f4a5c65f8cc7b5d672b90eee682d8419ec666bf'
-    'SKIP')
+sha256sums=('cb643dab7cbae5e82df59fbd2cf28fd76b87414fb806e89b37a924358d572fdc'
+            'SKIP')
 validpgpkeys=('4F7BC1FD97170A79267686A6FC9B1319726657D3')
 
 package() {
