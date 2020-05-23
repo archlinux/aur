@@ -1,0 +1,11 @@
+--- cvmfs-2.7.2.orig/cmake/Modules/cvmfs_compiler.cmake	2020-05-23 08:11:11.495698950 +0200
++++ cvmfs-2.7.2/cmake/Modules/cvmfs_compiler.cmake	2020-05-23 08:13:29.977832354 +0200
+@@ -42,7 +42,7 @@
+     OUTPUT_VARIABLE CVMFS_GCC_VERSION
+     ERROR_VARIABLE  CVMFS_GCC_VERSION
+   )
+-  STRING(REGEX REPLACE ".*([0-9]+)\\.[0-9]+\\.[0-9]+.*" "\\1" CVMFS_GCC_MAJOR "${CVMFS_GCC_VERSION}")
++  STRING(REGEX REPLACE ".* ([0-9]+)\\.[0-9]+\\.[0-9]+.*" "\\1" CVMFS_GCC_MAJOR "${CVMFS_GCC_VERSION}")
+   STRING(REGEX REPLACE ".*[0-9]+\\.([0-9]+)\\.[0-9]+.*" "\\1" CVMFS_GCC_MINOR "${CVMFS_GCC_VERSION}")
+   if (${CVMFS_GCC_MAJOR} LESS 4)
+     message (FATAL_ERROR "GCC < 4.1 unsupported")
