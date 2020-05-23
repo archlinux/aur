@@ -2,9 +2,10 @@
 # Contributor: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=ventoy-bin
+_pkgname=ventoy
 provides=(ventoy)
 conflicts=(ventoy)
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc='A new multiboot USB solution (Binary)'
 url='http://www.ventoy.net/'
@@ -13,18 +14,18 @@ license=('GPL3')
 depends=('bash' 'util-linux')
 source=("https://github.com/ventoy/Ventoy/releases/download/v${pkgver}/ventoy-${pkgver}-linux.tar.gz"
         'ventoy')
-sha512sums=('6cbb955edb8daaf9c6395488798fbf6bb3be2b0f195b08a3ad0ca77ace4c296fb15ae4f6277c55249029a27c141aef93f7bd78c12693b0621467ef2af9679581'
+sha512sums=('11b91d2f9d9ea941597e6211b5a2df3f03c08b0aedd9538571a53985fc8484507c0bbc572f3619d19bb4c7b5bf8ad62cc2fe516c9b4353d7d826c9de6c169923'
             '27fef4c8e254863896888cf3e77a39ed377100effc69a4518fe55038069c7c1e8b56f1a79d47d969eda8e5bd90920e93b34dd361aac67be948266d1e7b238dcd')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
 
   msg2 "Patching log.txt stuff..."
   sed -i '/log\.txt/s/.*/true/' tool/ventoy_lib.sh
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
 
   install -Dm644 boot/* -t "$pkgdir"/opt/ventoy/boot/
   install -Dm644 ventoy/* -t "$pkgdir"/opt/ventoy/ventoy/
