@@ -9,7 +9,7 @@ _bldtype=Release
 
 _mozcver=2.23.2815.102
 _fcitxver=2.23.2815.102.1
-_neologddate=20200315
+_neologddate=20200514
 _neologdrel=1
 _ut2mozcver=2.20.2677.102
 _ut2dicver=20171008
@@ -34,8 +34,8 @@ source=(
   add_support_new_japanese_era_for_ut2.patch
   https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitxver}.patch
   https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
-  "https://osdn.net/downloads/users/26/26379/mozcdic-neologd-ut-20200315.1.tar.bz2"
-  "https://osdn.net/downloads/users/26/26381/mozc-ut2-2.20.2677.102.20171008.tar.xz"
+  https://osdn.net/users/trickart/pf/trickart_pkgbuild/dl/mozc-neologd-ut/mozcdic-neologd-ut-${_neologddate}.${_neologdrel}.tar.bz2
+  "https://osdn.net/downloads/users/26/26382/mozc-ut2-2.20.2677.102.20171008.tar.xz"
 )
 
 sha1sums=(
@@ -47,7 +47,7 @@ sha1sums=(
   'fa72a89ac18649816e9717d4468a6145db802625'
   '63a2b10e7d209c6216e2d912b2629efc44c637ea'
   '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d'
-  '220d22043ed6f69c5c85a2a56ef958e512563d1e'
+  'de9e921cadc0a99e25f89fb2be485bf12ae89557'
   '3ac129c9cd843c51a3e0a124a47cfb8eddab2c08'
 )
 
