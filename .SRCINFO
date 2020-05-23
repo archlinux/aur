@@ -1,0 +1,14 @@
+pkgbase = python-multinest
+	pkgdesc = MultiNest is a Bayesian inference tool which calculates the evidence and explores the parameter space which may contain multiple posterior modes and pronounced (curving) degeneracies in moderately high dimensions.
+	pkgver = 3.12
+	pkgrel = 1
+	url = https://github.com/JohannesBuchner/PyMultiNest
+	arch = any
+	license = custom
+	depends = multinest
+	options = !emptydirs
+	source = https://github.com/JohannesBuchner/PyMultiNest/archive/b147515e950cf225befef3f0e26408c672f01979.tar.gz
+	sha256sums = cebd358d24044863560d80e43436414a9341c25a25d572db1851a507ecf59bfc
+
+pkgname = python-multinest
+
