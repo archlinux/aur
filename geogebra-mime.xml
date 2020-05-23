@@ -9,6 +9,7 @@
          <comment xml:lang="hi">जीओ-जेब्रा कार्य-पत्र</comment>
          <comment xml:lang="it">Foglio di lavoro GeoGebra </comment>
          <comment xml:lang="pt-BR">Planilha GeoGebra</comment>
+         <generic-icon name="geogebra"/>
          <sub-class-of type="application/zip"/>
          <glob pattern="*.ggb"/>
   </mime-type>
@@ -21,6 +22,7 @@
          <comment xml:lang="hi">जीओ-जेब्रा साधन</comment>
          <comment xml:lang="it">Strumento GeoGebra</comment>
          <comment xml:lang="pt-BR">Ferramenta GeoGebra</comment>
+         <generic-icon name="geogebra"/>
          <sub-class-of type="application/zip"/>
          <glob pattern="*.ggt"/>
   </mime-type>
