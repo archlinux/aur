@@ -2,14 +2,15 @@ pkgname=jicofo
 # https://github.com/jitsi/jicofo/releases/latest
 pkgver=1.0_567
 _tag="jitsi-meet_4548"
-pkgrel=1
+pkgrel=2
 pkgdesc="JItsi meet COnference FOcus"
 arch=("x86_64")
 url="https://github.com/jitsi/jicofo"
 license=("Apache")
 depends=("java-runtime-headless")
 makedepends=("git" "unzip" "maven")
-backup=("etc/jitsi/jicofo/jicofo.conf")
+backup=("etc/jitsi/jicofo/jicofo.conf"
+        "etc/jitsi/jicofo/sip-communicator.properties")
 source=($pkgname-$pkgver.tar.gz::https://github.com/jitsi/jicofo/archive/stable/${_tag}.tar.gz
         jicofo.service
         jicofo.conf

@@ -1,7 +1,7 @@
 pkgbase = jicofo
 	pkgdesc = JItsi meet COnference FOcus
 	pkgver = 1.0_567
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jitsi/jicofo
 	arch = x86_64
 	license = Apache
@@ -10,6 +10,7 @@ pkgbase = jicofo
 	makedepends = maven
 	depends = java-runtime-headless
 	backup = etc/jitsi/jicofo/jicofo.conf
+	backup = etc/jitsi/jicofo/sip-communicator.properties
 	source = jicofo-1.0_567.tar.gz::https://github.com/jitsi/jicofo/archive/stable/jitsi-meet_4548.tar.gz
 	source = jicofo.service
 	source = jicofo.conf
