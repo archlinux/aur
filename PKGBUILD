@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=sopel
-pkgver=7.0.2
+pkgver=7.0.3
 pkgrel=1
 pkgdesc="An easy-to-use and highly extensible IRC Bot framework (Formerly Willie)"
 arch=('any')
@@ -14,7 +14,7 @@ checkdepends=('python-pytest-runner')
 backup=('etc/sopel.cfg')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sopel-irc/sopel/archive/v$pkgver.tar.gz"
         sopel-ddg-test-fix.patch::https://github.com/sopel-irc/sopel/commit/a687ab706f47a487bf489f6bb32d773033f64f7b.patch)
-sha512sums=('3e96211bc3fb66bd3b41bdba6893e64d31d0ecdc1c8b83300ac79cb7c72eb222423ac718879e6b7556a2ad05f43080bd116539a7dcf8512e43d59598c19b6662'
+sha512sums=('ba49dc8045e0a7bc414503b4252ebb129c27f0f4a2d01997a5d770a048518fb21b9cf3ab00cba7a11ce04a59c837fe3c3a1413dff3071ef6705b5cf45456d153'
             'e6071860acaf31bd0a38390a5e38e76fa8ec144d45e9cf15bb80508a4bd4467eb25dbcbe2036f9e8ce6d14f4d6adce0b89e8e9ea558601f0f47a6c936ac4bbd1')
 
 prepare() {
