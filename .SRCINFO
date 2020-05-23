@@ -1,7 +1,7 @@
 pkgbase = jicofo-git
 	pkgdesc = JItsi Meet COnference FOcus
-	pkgver = r1180.54741839
-	pkgrel = 1
+	pkgver = r1218.39c9f545
+	pkgrel = 2
 	url = https://github.com/jitsi/jicofo
 	arch = x86_64
 	license = Apache
@@ -12,6 +12,7 @@ pkgbase = jicofo-git
 	provides = jicofo
 	conflicts = jicofo
 	backup = etc/jitsi/jicofo/jicofo.conf
+	backup = etc/jitsi/jicofo/sip-communicator.properties
 	source = jicofo-git::git+https://github.com/jitsi/jicofo
 	source = jicofo.conf
 	source = jicofo.service

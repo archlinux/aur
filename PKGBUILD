@@ -1,7 +1,7 @@
 # Maintainer: Martin Rys <rys.pw/#contact_me>
 pkgname=jicofo-git
 pkgver=r1218.39c9f545
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="JItsi Meet COnference FOcus"
 arch=("x86_64")
@@ -15,7 +15,8 @@ optdepends=()
 provides=("jicofo")
 conflicts=("jicofo")
 replaces=()
-backup=("etc/jitsi/jicofo/jicofo.conf")
+backup=("etc/jitsi/jicofo/jicofo.conf"
+        "etc/jitsi/jicofo/sip-communicator.properties")
 options=()
 install=
 changelog=
