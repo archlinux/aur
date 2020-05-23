@@ -1,7 +1,7 @@
 pkgbase = vim-gruvbox-community
 	pkgdesc = gruvbox color scheme for vim
-	pkgver = 2.1.0
-	pkgrel = 3
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/gruvbox-community/gruvbox
 	arch = any
 	groups = vim-plugins
@@ -9,8 +9,8 @@ pkgbase = vim-gruvbox-community
 	depends = vim
 	provides = vim-gruvbox
 	conflicts = vim-gruvbox
-	source = gruvbox-2.1.0.tar.gz::https://github.com/gruvbox-community/gruvbox/archive/v2.1.0.tar.gz
-	sha256sums = 1f6d64c61c9474bc4be548f57ae0f261ea1ad410c91aab417b069fa53bf5aa37
+	source = gruvbox-2.2.0.tar.gz::https://github.com/gruvbox-community/gruvbox/archive/v2.2.0.tar.gz
+	sha256sums = 7f6b7607f2e5bad59c2f5331a187592fc9a05c2dc6ef6aefd38d98dd793fe64c
 
 pkgname = vim-gruvbox-community
 
