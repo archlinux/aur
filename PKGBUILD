@@ -1,6 +1,6 @@
 # Maintainer: Martin Rys <rys.pw/#contact_me>
 pkgname=jicofo-git
-pkgver=r1180.54741839
+pkgver=r1218.39c9f545
 pkgrel=1
 epoch=
 pkgdesc="JItsi Meet COnference FOcus"
@@ -20,8 +20,8 @@ options=()
 install=
 changelog=
 source=($pkgname::git+https://github.com/jitsi/jicofo
-        config
-        service
+        jicofo.conf
+        jicofo.service
         sip-communicator.properties)
 noextract=()
 sha256sums=("SKIP"
@@ -44,7 +44,7 @@ build() {
 package() {
   install -d "${pkgdir}/opt"
   cp -R "${srcdir}/jicofo-git/jicofo-1.1-SNAPSHOT/" "${pkgdir}/opt/jicofo"
-  install -Dm644 service "$pkgdir"/usr/lib/systemd/system/jicofo.service
-  install -Dm644 config "$pkgdir"/etc/jitsi/jicofo/jicofo.conf
+  install -Dm644 jicofo.service "$pkgdir"/usr/lib/systemd/system/jicofo.service
+  install -Dm644 jicofo.conf "$pkgdir"/etc/jitsi/jicofo/jicofo.conf
   install -Dm644 sip-communicator.properties "${pkgdir}"/etc/jitsi/jicofo/sip-communicator.properties
 }
