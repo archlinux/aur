@@ -1,6 +1,6 @@
 pkgbase = muduo
 	pkgdesc = A C++ non-blocking multi-threaded network library
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/chenshuo/muduo
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = muduo
 	makedepends = boost
 	depends = protobuf
 	options = staticlibs
-	source = muduo-2.0.1.tar.gz::https://github.com/chenshuo/muduo/archive/v2.0.1.tar.gz
-	sha256sums = 5f93c17f9f15cd67c3b5bc38dc30479f97031c5c2a953a02433ac519668ccb69
+	source = muduo-2.0.2.tar.gz::https://github.com/chenshuo/muduo/archive/v2.0.2.tar.gz
+	sha256sums = 184d76c003b6b0d3081c35bd683feb708ac4fd48d2f93a23944817bb4d83ca60
 
 pkgname = muduo
 
