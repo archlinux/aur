@@ -3,7 +3,7 @@
 # Maintainer: Tilman Vatteroth <tilman.vatteroth@udo.edu>
 
 pkgname=upmpdcli
-pkgver=1.4.7
+pkgver=1.4.10
 pkgrel=1
 pkgdesc="A UPnP Media Renderer front-end for the Music Player Daemon (MPD)"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
