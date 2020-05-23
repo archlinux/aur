@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=python-dash-daq
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Control components for Dash"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=(python python-dash python-dash-table python-future yarn python-yaml)
 makedepends=(python-setuptools)
 source=(https://github.com/plotly/dash-daq/archive/v${pkgver}.tar.gz)
-sha256sums=('c1716a5821653bd7b2f625077ba1243e59f9458e6ca29560f6b1a99ef60c0b69')
+sha256sums=('a3c37622843bbd2919565ff6ad08c132fa9155b31f8efce2d627ffa619715d21')
 
 
 prepare() {
