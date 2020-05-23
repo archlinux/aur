@@ -5,7 +5,7 @@ pkgver=1.0
 pkgrel=2
 arch=('any')
 source=("black_pycharm_formatter.sh")
-sha256sums=('406e4f3555f3a2527014900a2e4d3dca2eaa4cba772fd5251356d3341b2feb6f')
+sha256sums=('4f7d44257ae59dc0505b291b8ae67309bb466a125adbf6e43b7194efa9a9c540')
 
 package() {
     install -Dm755 $srcdir/black_pycharm_formatter.sh $pkgdir/usr/bin/black_pycharm_formatter.sh
