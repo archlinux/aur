@@ -1,0 +1,20 @@
+pkgbase = python-synphot
+	pkgdesc = Synthetic Photometry using Astropy
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://synphot.readthedocs.io/
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-extension-helpers
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-astropy
+	source = https://files.pythonhosted.org/packages/source/s/synphot/synphot-0.3.tar.gz
+	md5sums = 8b9520396defd1828f4b22eaadaaf8bf
+
+pkgname = python-synphot
+	optdepends = python-matplotlib: Plotting support
+	optdepends = python-specutils: Manipulating spectroscopic data
+
