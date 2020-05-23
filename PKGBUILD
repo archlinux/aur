@@ -5,7 +5,7 @@
 pkgname=cpyrit-cuda
 _pkgname=Pyrit
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The famous WPA precomputed cracker for NVIDIA-CUDA."
 url='https://github.com/JPaulMora/Pyrit'
 arch=('i686' 'x86_64')
@@ -25,7 +25,6 @@ sha256sums=('c610b7e5930e71ef466365418e58ce72f4b7dea5a3398c3296192f0c4a7175aa'
 prepare() {
   cd ${srcdir}/${_pkgname}-${pkgver}
   patch -p1 < "${srcdir}/scapy-2.3.2.patch"
-  sed -e "s|' --host-compilation C'||" -i ${srcdir}/cpyrit-cuda-0.5.0/setup.py
 }
 
 build() {
