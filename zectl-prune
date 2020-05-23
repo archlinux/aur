@@ -59,7 +59,7 @@ zectl_list () {
 # Remove latest prefixed boot env 
 zectl_purge () {
     latest=$(zectl_list | head -n1 | grep "$PREFIX" | awk '{print $1}')
-    zectl destroy "$latest" && print "Destroyed $latest"
+    $BIN destroy "$latest" && print "Destroyed $latest"
 }
 
 # Args
