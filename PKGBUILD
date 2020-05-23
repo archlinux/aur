@@ -4,7 +4,7 @@
 
 pkgname=libwhereami
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Library to report hypervisor information from inside a VM'
 arch=('x86_64')
 url='https://github.com/puppetlabs/libwhereami'
@@ -15,22 +15,18 @@ depends=('boost-libs' 'gcc-libs' 'glibc' 'leatherman' 'leatherman_execution.so'
 makedepends=('boost' 'cmake' 'rapidjson' 'curl')
 checkdepends=('python')
 provides=('libwhereami.so')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('89c54a945264130be0a1d662ee7e1d8756bfa84a603066fb78848049e3972d15ab5849161ca38380a45f7559dc59ed492fc6ea948ac3604096f66c6990582071')
 
 build() {
   cd ${pkgname}-${pkgver}
-
-  mkdir -p build
-  cd build
-
   cmake \
+    -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DENABLE_CXX_WERROR=OFF \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-    -DBUILD_SHARED_LIBS=ON \
-    ..
-  make
+    -DBUILD_SHARED_LIBS=ON
+  make -C build
 }
 
 check() {
