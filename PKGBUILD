@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=airsim
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source simulator for autonomous vehicles built on Unreal Engine /
 Unity, from Microsoft AI & Research"
 url="https://microsoft.github.io/AirSim"
@@ -10,8 +10,14 @@ license=('MIT')
 depends=(unreal-engine rpclib eigen)
 makedepends=(cmake gcc)
 _pkgname=AirSim
-source=("${pkgname}-${pkgver}::https://github.com/microsoft/AirSim/archive/v$pkgver-linux.tar.gz")
-sha256sums=("6a6668aaac30b6942023cfc92cafded0d6fb7715bba1e798556705b95a1ed5c7")
+source=("${pkgname}-${pkgver}::https://github.com/microsoft/AirSim/archive/v$pkgver-linux.tar.gz"
+        "CMakeLists.patch")
+sha256sums=("6a6668aaac30b6942023cfc92cafded0d6fb7715bba1e798556705b95a1ed5c7"
+            "6128b8042c5394cfea443e06da3fad1ce63da84082f1f6a027906026987dfe9c")
+
+prepare() {
+    patch -s -p0 < CMakeLists.patch
+}
 
 build() {
   mkdir -p "$srcdir/${_pkgname}-${pkgver}-linux/cmake/build"
