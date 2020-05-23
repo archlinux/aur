@@ -3,15 +3,15 @@
 
 pkgbase=flac-git
 pkgname=('flac-git' 'flac-doc-git')
-pkgver=r3581.02a9262
+pkgver=v1.3.3.ce6dd6b
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64', 'aarch64')
 url="http://flac.sourceforge.net/"
 license=('BSD' 'GPL')
 depends=('gcc-libs' 'libogg')
 makedepends=('nasm' 'doxygen')
 options=('!makeflags')
-source=(git://git.xiph.org/flac.git)
+source=(git://github.com/xiph/flac.git)
 sha1sums=('SKIP')
 _gitname=flac
 
