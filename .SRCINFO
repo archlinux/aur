@@ -1,0 +1,31 @@
+pkgbase = ros-melodic-force-torque-sensor-controller
+	pkgdesc = ROS - Controller to publish state of force-torque sensors.
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = http://wiki.ros.org/force_torque_sensor_controller
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-hardware-interface
+	makedepends = ros-melodic-controller-interface
+	makedepends = ros-melodic-realtime-tools
+	makedepends = ros-melodic-pluginlib
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-hardware-interface
+	depends = ros-melodic-controller-interface
+	depends = ros-melodic-realtime-tools
+	depends = ros-melodic-pluginlib
+	source = ros-melodic-force-torque-sensor-controller-0.17.0-.tar.gz::https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/force_torque_sensor_controller/0.17.0-.tar.gz
+	sha256sums = 0a2fdc3e336d232f22b3015d8eb29e92daeb43ecb54f7bb46d6c3761600334f1
+
+pkgname = ros-melodic-force-torque-sensor-controller
+
