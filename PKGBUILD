@@ -5,12 +5,12 @@ _reponame=NymphRPC
 pkgver=58
 pkgrel=1
 pkgdesc="Versatile and fast remote procedure call library."
-arch=('x86_64')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/MayaPosch/NymphRPC"
 license=('BSD-3-Clause')
 #TODO check the dependencies
-depends=()
-makedepends=('git' 'poco')
+depends=('poco')
+makedepends=('git')
 source=("git+https://github.com/MayaPosch/NymphRPC.git")
 md5sums=('SKIP')
 provides=('nymphrpc')
