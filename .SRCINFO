@@ -1,0 +1,21 @@
+pkgbase = protonmail-bridge-beta-bin
+	pkgdesc = The Bridge is an application that runs on your computer in the background and seamlessly encrypts and decrypts your mail as it enters and leaves your computer.
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = https://www.protonmail.com/bridge
+	arch = x86_64
+	license = GPLv3
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = libsecret
+	depends = ttf-dejavu
+	optdepends = pass: pass support
+	optdepends = gnome-keyring: gnome-keyring support
+	provides = protonmail-bridge
+	conflicts = protonmail-bridge
+	conflicts = protonmail-bridge-bin
+	source = https://protonmail.com/download/protonmail-bridge_1.2.7-1_amd64.deb
+	sha256sums = 2ed3d699af65ba61def5440597eee58165c5e0b72926bac8cd99d0e976d2b327
+
+pkgname = protonmail-bridge-beta-bin
+
