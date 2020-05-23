@@ -16,16 +16,10 @@ sha256sums=('c4e30b227682374c23cddc7fdb9324a99694d907e79242a25a4deeedb393be46'
             'SKIP')
 validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
 
-prepare() {
-  cd ${pkgbase}-${pkgver}
-
-  # touch python sources for reproducibility
-  find lang/python -name *.py -exec touch -d @$SOURCE_DATE_EPOCH {} +
-}
-
 build() {
   cd ${pkgbase}-${pkgver}
 
+  export PYTHONHASHSEED=0
   ./configure \
     --prefix=/usr \
     --disable-fd-passing \
@@ -74,5 +68,6 @@ package_python-gpgme() {
 
   cd ${pkgbase}-${pkgver}/lang/python
 
+  export PYTHONHASHSEED=0
   make DESTDIR="${pkgdir}" install
 }
