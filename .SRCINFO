@@ -1,6 +1,6 @@
 pkgbase = bslock
 	pkgdesc = A better screen locker for X (a prettier slock fork)
-	pkgver = 0.0.0
+	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/phenax/bslock
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = bslock
 	depends = libxrandr
 	provides = bslock
 	conflicts = bslock
-	source = https://github.com/phenax/bslock/archive/0.0.0.tar.gz
+	source = https://github.com/phenax/bslock/archive/0.0.1.tar.gz
 	md5sums = SKIP
 
 pkgname = bslock

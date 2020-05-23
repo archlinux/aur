@@ -2,7 +2,7 @@
 # Contributor: Sebastian A. Liem <sebastian at liem dot se>
 
 pkgname=bslock
-pkgver=0.0.0
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="A better screen locker for X (a prettier slock fork)"
 arch=('x86_64')
