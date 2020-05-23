@@ -13,7 +13,7 @@ conflicts=('sfk')
 _bin='sfk-linux-64.exe'
 source=("http://stahlworks.com/dev/sfk/$_bin")
 noextract=("$_bin")
-md5sums=('2af001a0bfd9cfe675be2a0d4f2a31b3')
+md5sums=('84972c34612a4afc5ba4b45e366b5c95')
 
 prepare() {
   cp "$_bin" "$srcdir/sfk"
