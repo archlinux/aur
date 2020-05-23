@@ -1,8 +1,8 @@
 # Maintainer: Jacob Wang <jatcwang@gmail.com>
 
 pkgname=jdk-mission-control-bin
-pkgver=20200507142353
-pkgrel=3
+pkgver=20200513083701
+pkgrel=1
 pkgdesc="OpenJDK Mission Control"
 arch=('x86_64')
 license=('UPL')
