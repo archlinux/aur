@@ -6,11 +6,11 @@
 
 pkgname=ddclient-git
 _gitname="${pkgname%-git}"
-pkgver=v3.8.3.r104.gec2acfb
+pkgver=v3.8.3.r317.g7a99919
 pkgrel=1
 
 pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services"
-url="https://github.com/ddclient/ddclient/"
+url="https://github.com/ddclient/ddclient"
 arch=('any')
 license=('GPL2')
 provides=("$_gitname")
@@ -18,15 +18,15 @@ conflicts=("$_gitname")
 
 backup=('etc/ddclient/ddclient.conf')
 
-makedepends=('git')
-depends=('perl-io-socket-ssl' 'perl-digest-sha1' 'net-tools' 'perl-data-validate-ip')
-optdepends=('perl-json-any: needed for cloudflare module')
+depends=('perl-io-socket-inet6' 'perl-io-socket-ssl' 'perl-digest-sha1'
+         'net-tools' 'perl-data-validate-ip')
+optdepends=('smtp-forwarder: email support requires sendmail binary')
 
 source=(git+https://github.com/ddclient/ddclient.git
         ddclient.service)
 
 sha256sums=('SKIP'
-            '0f2f66359de844ca2a0c99f0189879ca1c6b5924f8e07e33cc226680540fa62d')
+            '6133eefbb4315ee2a7b24044ba9c2d5c4f9d19381eab8071415bf4dc73c1cf09')
 
 pkgver() {
   cd "$_gitname"
@@ -34,17 +34,17 @@ pkgver() {
 }
 
 package() {
-  cd "$_gitname"
+  cd ddclient
 
-  install -Dm755 $_gitname "$pkgdir"/usr/bin/$_gitname
-  install -Dm600 sample-etc_$_gitname.conf "$pkgdir"/etc/$_gitname/$_gitname.conf
-  install -d "$pkgdir"/var/cache/$_gitname
-  install -Dm644 "$srcdir"/$_gitname.service "$pkgdir"/usr/lib/systemd/system/$_gitname.service
+  install -Dm755 ddclient "$pkgdir"/usr/bin/$pkgname
+  install -Dm600 sample-etc_ddclient.conf "$pkgdir"/etc/ddclient/ddclient.conf
+  install -d "$pkgdir"/var/cache/ddclient
+  install -Dm644 "$srcdir"/ddclient.service "$pkgdir"/usr/lib/systemd/system/ddclient.service
 
-  install -Dm644 README.cisco "$pkgdir"/usr/share/doc/$_gitname/README.cisco
-  install -Dm644 README.md "$pkgdir"/usr/share/doc/$_gitname/README.md
-  install -Dm644 README.ssl "$pkgdir"/usr/share/doc/$_gitname/README.ssl
-  install -Dm644 sample-etc_cron.d_$_gitname "$pkgdir"/usr/share/doc/$_gitname/sample-etc_cron.d_$_gitname
-  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$_gitname/COPYING
-  install -Dm644 COPYRIGHT "$pkgdir"/usr/share/licenses/$_gitname/COPYRIGHT
+  install -Dm644 README.cisco "$pkgdir"/usr/share/doc/ddclient/README.cisco
+  install -Dm644 README.md "$pkgdir"/usr/share/doc/ddclient/README.md
+  install -Dm644 README.ssl "$pkgdir"/usr/share/doc/ddclient/README.ssl
+  install -Dm644 sample-etc_cron.d_ddclient "$pkgdir"/usr/share/doc/ddclient/sample-etc_cron.d_ddclient
+  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 COPYRIGHT "$pkgdir"/usr/share/licenses/$pkgname/COPYRIGHT
 }

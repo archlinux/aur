@@ -1,23 +1,23 @@
 pkgbase = ddclient-git
 	pkgdesc = Update dynamic DNS entries for accounts on many dynamic DNS services
-	pkgver = v3.8.3.r104.gec2acfb
+	pkgver = v3.8.3.r317.g7a99919
 	pkgrel = 1
-	url = https://github.com/ddclient/ddclient/
+	url = https://github.com/ddclient/ddclient
 	arch = any
 	license = GPL2
-	makedepends = git
+	depends = perl-io-socket-inet6
 	depends = perl-io-socket-ssl
 	depends = perl-digest-sha1
 	depends = net-tools
 	depends = perl-data-validate-ip
-	optdepends = perl-json-any: needed for cloudflare module
+	optdepends = smtp-forwarder: email support requires sendmail binary
 	provides = ddclient
 	conflicts = ddclient
 	backup = etc/ddclient/ddclient.conf
 	source = git+https://github.com/ddclient/ddclient.git
 	source = ddclient.service
 	sha256sums = SKIP
-	sha256sums = 0f2f66359de844ca2a0c99f0189879ca1c6b5924f8e07e33cc226680540fa62d
+	sha256sums = 6133eefbb4315ee2a7b24044ba9c2d5c4f9d19381eab8071415bf4dc73c1cf09
 
 pkgname = ddclient-git
 
