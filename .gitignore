@@ -1,0 +1,6 @@
+*.o
+bslock
+tags
+config.h
+*.orig
+*.rej
