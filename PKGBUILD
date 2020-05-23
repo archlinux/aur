@@ -2,7 +2,7 @@
 
 pkgname=srfetch
 pkgver=7.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="This is modified neofetch script, only for me."
 arch=('any')
 url="https://gitlab.com/justanoobcoder/srfetch.git"
