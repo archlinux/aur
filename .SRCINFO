@@ -1,16 +1,16 @@
 pkgbase = nifi
 	pkgdesc = An easy to use, powerful, and reliable system to process and distribute data.
-	pkgver = 1.10.0
+	pkgver = 1.11.4
 	pkgrel = 1
 	url = https://nifi.apache.org/
 	install = nifi.install
 	arch = x86_64
 	license = Apache
 	depends = java-runtime>=8
-	source = http://mirrors.gigenet.com/apache/nifi/1.10.0/nifi-1.10.0-bin.tar.gz
+	source = http://mirrors.gigenet.com/apache/nifi/1.11.4/nifi-1.11.4-bin.tar.gz
 	source = nifi.service
 	source = nifi.install
-	sha256sums = fd4f0750d18137bb1c21cd0fd5ab8951ccd450e6f673b8988db93ea2ff408288
+	sha256sums = 5bb68014f818f74b475bcd774ce8c446fc20368ec3062c5ef86e4af9b2ba9aef
 	sha256sums = f4ee42958c0f2cd67bba472f96f99b6e8ad06b38222e8ec888c33c92b3f95ec2
 	sha256sums = 20888fc83333b81a90a227cfc6b1517b36b7312f5018bfdb5868caf4197c95a2
 
