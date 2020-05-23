@@ -1,5 +1,5 @@
 pkgbase = python-msoffcrypto-tool
-	pkgver = 4.10.1
+	pkgver = 4.10.2
 	pkgrel = 1
 	url = https://github.com/nolze/msoffcrypto-tool
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-msoffcrypto-tool
 	depends = python-olefile
 	depends = python-cryptography
 	options = !emptydirs
-	source = https://pypi.io/packages/source/m/msoffcrypto-tool/msoffcrypto-tool-4.10.1.tar.gz
-	sha256sums = e6dd01fdb3b44c573dba85b9675e5443520418e17bf8cc0a0f79a3928d3b3963
+	source = https://pypi.io/packages/source/m/msoffcrypto-tool/msoffcrypto-tool-4.10.2.tar.gz
+	sha256sums = beda602d97ca2913a1da697f840290b2dfdf0ee1d60bc230468df1e7de41da98
 
 pkgname = python-msoffcrypto-tool
 
