@@ -4,7 +4,7 @@
 # Modified PKGBUILD from https://aur.archlinux.org/packages/vivaldi-codecs-ffmpeg-extra-bin/
 
 pkgname=vivaldi-codecs-ffmpeg-extra-bin-arm64
-pkgver=81.0.4044.122
+pkgver=81.0.4044.138
 pkgrel=1
 _ubuntuver=18.04.1
 pkgdesc='Prebuilt ffmpeg-codecs package for Vivaldi for arm64'
@@ -20,7 +20,7 @@ conflicts=(
 )
 source=(http://ports.ubuntu.com/ubuntu-ports/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_${pkgver}-0ubuntu0.${_ubuntuver}_arm64.deb
         vivaldi-codecs-ffmpeg-extra-bin.install)
-sha256sums=('3027823d4f96be52f6ad6eebb48452efab3e86e1a05c9a09a3745d416e38176a'
+sha256sums=('7a3b25a2a6b35679b332712d1cd51355a2329310256f8e78876bb2dec123b315'
             'c48d913c6080dbc6477d1d0a099c8ef5eda3959ed4abd6311dc93a338ce0a012')
 install=vivaldi-codecs-ffmpeg-extra-bin.install
 
