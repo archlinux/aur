@@ -3,7 +3,8 @@
 # Contributor: boosterdev@linuxmail.org
 
 pkgname=xdman
-pkgver=2020.7.2.10
+_pkgver=7.2.11
+pkgver=2020.${_pkgver}
 pkgrel=1
 pkgdesc="Xtreme Download Manager is a powerful tool to increase download speed up-to 500%, save videos from video sharing sites and integration with ANY browser."
 arch=('i686' 'x86_64')
@@ -12,11 +13,11 @@ depends=('java-runtime>=11')
 license=('GPL')
 source=(
   'xdman.bin'
-  'https://github.com/subhra74/xdm/releases/download/7.2.10/xdm-setup-7.2.10.tar.xz'
+  "https://github.com/subhra74/xdm/releases/download/${_pkgver}/xdm-setup-${_pkgver}.tar.xz"
 )
 sha256sums=(
   'bb7e28fe2873c3fbaffd9a7448835d4d2a210f7cf136dd683f3bb389f0f03f91'
-  'aa7ca244dc77b32b16f8e416400d316f6d9fcea21d5584c09e7cd488e242c958'
+  '140413651797d97b13c5f1a2f0c528da6e46d3652bd36abd743b1a69dc610438'
 )
 
 prepare () {
