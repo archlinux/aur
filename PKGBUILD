@@ -2,7 +2,7 @@
 pkgname=arch-sign-modules
 _pkgname=Arch-SKM
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Helper scripts for Signed Kernel Modules"
 arch=(x86_64)
 url="https://github.com/itoffshore/Arch-SKM"
@@ -16,8 +16,9 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
-  mkdir -p $pkgdir/usr/{src,bin}
-
+  mkdir -p $pkgdir/usr/{src,bin,share/$pkgname}
+  
   cp -rf certs-local $pkgdir/usr/src/
   cp scripts/* $pkgdir/usr/bin/
+  cp Arch-Linux-PKGBUILD-example $pkgdir/usr/share/$pkgname/PKGBUILD.example
 }
