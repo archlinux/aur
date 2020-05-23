@@ -1,0 +1,15 @@
+pkgbase = rime-pinyin-zhwiki
+	pkgdesc = Fcitx RIME Pinyin Dictionary from zh.wikipedia.org
+	pkgver = 20200501
+	pkgrel = 1
+	url = https://github.com/PinkD/rime-pinyin-zhwiki
+	arch = any
+	license = Apache
+	makedepends = opencc
+	source = https://github.com/PinkD/rime-pinyin-zhwiki/archive/0.1/rime-pinyin-zhwiki-0.1.tar.gz
+	source = https://dumps.wikimedia.org/zhwiki/20200501/zhwiki-20200501-all-titles-in-ns0.gz
+	md5sums = e646e1000a621917f073114c7edc9448
+	md5sums = 4d2ee3cf2637abe67bf1332465f57f45
+
+pkgname = rime-pinyin-zhwiki
+
