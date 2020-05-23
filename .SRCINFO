@@ -1,7 +1,7 @@
 pkgbase = arch-sign-modules
 	pkgdesc = Helper scripts for Signed Kernel Modules
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/itoffshore/Arch-SKM
 	arch = x86_64
 	license = GPL
