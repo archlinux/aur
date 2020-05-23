@@ -2,7 +2,7 @@
 
 pkgname=python-annexremote
 _pkgname=AnnexRemote
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='git annex special remotes made easy'
 url='https://github.com/Lykos153/AnnexRemote'
@@ -11,7 +11,7 @@ arch=('any')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://github.com/Lykos153/AnnexRemote/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('f36702f32313b27c88c66ad5370cf389f576d452976aa66ec5d3289337142bf5')
+sha256sums=('bd3f56920f285d465db150d70d8ac94df1a01cd118e8111176158fcd76724bca')
 
 
 package() {
