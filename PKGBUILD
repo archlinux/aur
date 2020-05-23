@@ -1,7 +1,7 @@
 # Maintainer: gCurse <gcurse at web de>
 
 pkgname=otr-verwaltung3p-dev-git
-pkgver=1.0.0b3.r0.g4ed8b41
+pkgver=1.0.0b3.r2.g2796cc0
 pkgrel=1
 pkgdesc='Manage your onlinetvrecorder.com files: cut, preview cuts, rate cutlists etc.'
 arch=('any')
