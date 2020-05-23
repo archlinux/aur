@@ -3,7 +3,7 @@
 
 _pkgname=vibrantlinux
 pkgname=${_pkgname}
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A tool to automate managing your screen's saturation depending on what programs are running"
 arch=(x86_64)
