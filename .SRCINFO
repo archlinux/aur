@@ -8,12 +8,11 @@ pkgbase = python-daphne
 	makedepends = python-setuptools
 	makedepends = python-pytest-runner
 	depends = python
-	depends = python-django-channels
 	depends = python-asgiref
 	depends = python-twisted
 	depends = python-autobahn
 	optdepends = python-asgi-ipc
-	optdepends = python-django-channels-redis
+	optdepends = python-django-channels
 	source = https://pypi.io/packages/source/d/daphne/daphne-2.5.0.tar.gz
 	sha256sums = 1ca46d7419103958bbc9576fb7ba3b25b053006e22058bc97084ee1a7d44f4ba
 

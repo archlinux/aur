@@ -9,8 +9,8 @@ arch=(any)
 url="https://github.com/django/daphne"
 license=('BSD')
 makedepends=('python-setuptools' 'python-pytest-runner')
-depends=('python' 'python-django-channels' 'python-asgiref' 'python-twisted' 'python-autobahn')
-optdepends=('python-asgi-ipc' 'python-django-channels-redis')
+depends=('python' 'python-asgiref' 'python-twisted' 'python-autobahn')
+optdepends=('python-asgi-ipc' 'python-django-channels')
 source=("https://pypi.io/packages/source/d/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
 sha256sums=('1ca46d7419103958bbc9576fb7ba3b25b053006e22058bc97084ee1a7d44f4ba')
 
