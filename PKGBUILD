@@ -3,27 +3,29 @@
 pkgname=spf-engine
 pkgver=2.9.2
 _pkgver=2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="SPF (Sender Policy Framework) back-end for integration with Postfix and Sendmail"
 arch=('any')
 url="https://launchpad.net/spf-engine"
 license=('Apache' 'GPL2')
-depends=('python>=3.3' 'python-pyspf>=2.0.9' 'python-authres' 'python-pymilter')
+depends=('python>=3.3' 'python-setuptools' 'python-pyspf>=2.0.9' 'python-authres' 'python-pymilter')
 optdepends=('postfix: Postfix integration'
 	    'sendmail: Sendmail integration') 
 conflicts=('python2-postfix-policyd-spf' 'python-postfix-policyd-spf')
 backup=(etc/python-policyd-spf/policyd-spf.conf
 	etc/pyspf-milter/pyspf-milter.conf)
-source=("https://launchpad.net/$pkgname/$_pkgver/$pkgver/+download/$pkgname-$pkgver.tar.gz"
+source=(https://launchpad.net/$pkgname/$_pkgver/$pkgver/+download/$pkgname-$pkgver.tar.gz{,.asc}
 	pyspf-milter.sysusers
 	pyspf-milter.conf
 	pyspf-milter.service
 	own_socketfile-bug-1856391.patch)
 sha256sums=('188a8bc78f1ddb40f1b87a0b6fe2fa78efa0b4cc5d984ff19a53724bb5c28131'
+            'SKIP'
             '1a66a9d8315d95e910f3177123a81a4320ff0c216b286571dcc0a204e6eac0a4'
             '00f29931c8d4e76d026982cba22a7c2d0823cb82052438ec1b71df373e95a485'
             'b9346555aa14e9beff00b522127b08b212bc4535d40591fb3d002a8c9a3f4f68'
             '6108b155534b024b692387c73a17eae5ddf7d261cea126932049a969012f4aca')
+validpgpkeys=('E7729BFFBE85400FEEEE23B178D7DEFB9AD59AF1') # Donald Scott Kitterman <scott@kitterman.com> 
 
 prepare() {
   cd "$pkgname-$pkgver"
