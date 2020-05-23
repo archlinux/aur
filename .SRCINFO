@@ -1,6 +1,6 @@
 pkgbase = littleutils-full
 	pkgdesc = Utilities for compression, file manipulation, text cleanup, and images/PDF optimization (with all features and extras)
-	pkgver = 1.0.43
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = http://littleutils.sourceforge.net/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = littleutils-full
 	depends = bash
 	depends = dash
 	depends = perl
-	depends = python3
+	depends = python
 	depends = gifsicle
 	depends = ghostscript
 	depends = img2pdf
@@ -23,12 +23,13 @@ pkgbase = littleutils-full
 	depends = xz
 	depends = p7zip
 	depends = wget
+	depends = zstd
 	depends = lzma_alone
 	provides = littleutils
 	conflicts = littleutils
 	conflicts = file-rename-utils
-	source = https://sourceforge.net/projects/littleutils/files/littleutils-source/1.0.43/littleutils-1.0.43.tar.xz
-	sha256sums = f6acca3310ac22ef747956d955ca7c3af5707bcb70a4d1df8d159399c2161c14
+	source = https://sourceforge.net/projects/littleutils/files/littleutils-source/1.2.0/littleutils-1.2.0.tar.xz
+	sha256sums = 0c301799445ec906fd56762051044c10642e91e7043d80ebe3758a82b0fea945
 
 pkgname = littleutils-full
 
