@@ -2,36 +2,23 @@
 #
 # namcap incorrectly states that python{,2} are unnecessary deps.
 
-pkgbase=python-factory_boy
-_pkgbase="${pkgbase#python-}"
-pkgname=(python-factory_boy python2-factory_boy)
+pkgname=python-factory_boy
+_pkgname="${pkgname#python-}"
 pkgver=2.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fixtures replacement based on thoughtbot's factory_girl for Ruby."
 arch=(any)
 url='https://github.com/FactoryBoy/factory_boy'
 license=(MIT)
-makedepends=(
-  python-distribute
-  'python-faker>=0.7.0'
-  python2-distribute
-  'python2-faker>=0.7.0'
-)
+depends=('python-faker>=0.7.0')
+makedepends=(python-distribute)
 options=(!emptydirs)
-source=("https://github.com/FactoryBoy/${_pkgbase}/archive/${pkgver}.tar.gz")
+source=("https://github.com/FactoryBoy/${_pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('717c7f865f0228196f8170b09004c05e9576f78211986397abbabff565106c3f')
 
-package_python-factory_boy() {
-  depends=(python-faker)
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_python2-factory_boy() {
-  depends=(python2-faker)
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
