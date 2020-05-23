@@ -3,7 +3,7 @@
 pkgname=torchvision-cuda
 pkgdesc='datasets, transforms, and models specific to computer vision (C++ library only)'
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 license=("BSD")
 url='https://github.com/pytorch/vision'
 arch=('x86_64')
@@ -23,6 +23,10 @@ depends=(
 	python
 	python-pytorch-cuda
 	cuda
+)
+
+makedepends=(
+	cmake
 )
 
 prepare() {

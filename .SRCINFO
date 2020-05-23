@@ -1,10 +1,11 @@
 pkgbase = torchvision-cuda
 	pkgdesc = datasets, transforms, and models specific to computer vision (C++ library only)
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pytorch/vision
 	arch = x86_64
 	license = BSD
+	makedepends = cmake
 	depends = python
 	depends = python-pytorch-cuda
 	depends = cuda
