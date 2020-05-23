@@ -20,7 +20,7 @@ pkgbase = bubblemail
 	optdepends = bubblemail-gnome-shell
 	optdepends = folks
 	source = https://framagit.org/razer/bubblemail/-/archive/v1.0/bubblemail-v1.0.tar.bz2
-	sha256sums = bca6e283a94f068b217a4191ef1585a839f2d5111adbf426ccc253cf5ff9231c
+	sha256sums = cae5e1c1e6e9db2cf80f33462f08117042d32e6f163df0c93d2fca429750623c
 
 pkgname = bubblemail
 
