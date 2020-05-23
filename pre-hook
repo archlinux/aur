@@ -18,5 +18,7 @@ if [ -e modules/"$running_kernel" ] ; then
     exit 0
 fi
 
+mkdir -p modules
+
 # copy with hardlinks, much faster
 cp --archive --link /usr/lib/modules/"$running_kernel" modules/

@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Kotta <jpkotta@gmail.com>
 pkgname=saved-kernel-modules
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Save kernel modules of the running kernel"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ changelog=
 source=(pre-hook post-hook cleanup README
         saved-kernel-modules.service saved-kernel-modules.timer
         50-save-kernel-modules-pre.hook 90-save-kernel-modules-post.hook)
-md5sums=('274488fa3e34c36ab2c163bf21a880be'
-         '947db382e3e874d19a5c05be18193552'
+md5sums=('f821782df7a0588897661a1e2426b96a'
+         'b3266b577aca38b3576452e44e36f513'
          'f71b096bfc811eb7a043e47e39a9a103'
          'f5741018c8b49127af92c78ab89a3412'
          'c1768f4613b5f21ac3d5b5966816b062'

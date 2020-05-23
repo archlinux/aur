@@ -8,7 +8,18 @@ cd /usr/lib/modules/saved-kernel-modules
 
 running_kernel=$(uname -r)
 
-if [ -e modules/"$running_kernel" ] \
-    && [ ! -e /usr/lib/modules/"$running_kernel" ] ; then
+if [ -e modules/"$running_kernel" ] ; then
+    if [ -L /usr/lib/modules/"$running_kernel" ] ; then
+        # symlink already there, do nothing
+        exit 0
+    elif [ -d /usr/lib/modules/"$running_kernel" ] ; then
+        # leftover for some reason, make a backup
+        suffix="bck-$(date -u +%FT%T)"
+        mv /usr/lib/modules/"$running_kernel" \
+           /usr/lib/modules/"$running_kernel-${suffix}"
+        echo "This directory was backed up by saved-kernel-modules, it's probably safe to delete." \
+             >  /usr/lib/modules/"$running_kernel-${suffix}"/DELETE_THIS_DIR
+    fi
+
     ln -s $PWD/modules/"$running_kernel" /usr/lib/modules/"$running_kernel"
 fi
