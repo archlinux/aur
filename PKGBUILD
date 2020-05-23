@@ -1,6 +1,4 @@
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Contributor: Sebastian A. Liem <sebastian at liem dot se>
-
+# Maintainer: Akshay Nair <phenax5@gmail.com>
 pkgname=bslock
 pkgver=0.0.1
 pkgrel=1
