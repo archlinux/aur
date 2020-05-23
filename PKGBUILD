@@ -37,6 +37,7 @@ build() {
   cd "${srcdir}/${_pkgname}-${pkgver//_/-}/native_client"
   make deepspeech SOX_LDFLAGS="-lsox -Wl,-no-undefined"
   make bindings -C python
+  make bindings -C ctcdecode
 }
 
 package_deepspeech() {
@@ -50,5 +51,7 @@ package_python-deepspeech() {
   depends=('deepspeech' 'python-numpy')
   cd "${srcdir}/${_pkgname}-${pkgver//_/-}/native_client"
   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps python/dist/deepspeech*.whl
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ctcdecode/dist/ds_ctcdecoder*.whl
   mv "$pkgdir/usr/bin/deepspeech" "$pkgdir/usr/bin/deepspeech_python"
+  cp -rv "${srcdir}/${_pkgname}-${pkgver//_/-}/training/deepspeech_training" "$pkgdir"`python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
 }
