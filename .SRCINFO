@@ -1,14 +1,15 @@
 pkgbase = cpp-httplib
 	pkgdesc = A C++ header-only HTTP/HTTPS server and client library
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/yhirose/cpp-httplib
 	arch = any
 	license = MIT
+	makedepends = cmake>=3.7
 	optdepends = openssl: https support
 	optdepends = zlib: compression support
-	source = cpp-httplib-0.6.3.tar.gz::https://github.com/yhirose/cpp-httplib/archive/v0.6.3.tar.gz
-	sha512sums = ae2bf37d72d26ba2f80c1d93592e40e931becc68ec3f257b6b811771f097f09ae5da2bf930c5067b06bd3e2886a33a8a004bfff7bf53240eca687bfcaa1d0c7f
+	source = cpp-httplib-0.6.4.tar.gz::https://github.com/yhirose/cpp-httplib/archive/v0.6.4.tar.gz
+	sha512sums = daab9baf86c7a284b5a747c8384d4f42171a531531ae1b2fe549413f4cb36115eb1e84bdb342efb25c7a4347899cecc4d45894b08c37bb84ef178b9fa4d1e7be
 
 pkgname = cpp-httplib
 
