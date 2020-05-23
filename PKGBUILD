@@ -1,7 +1,7 @@
 # Maintainer: Miguel de Val-Borro <miguel dot deval at gmail dot com>
 pkgname=python-synphot
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Synthetic Photometry using Astropy"
 arch=('x86_64')
 url="https://synphot.readthedocs.io/"
@@ -18,7 +18,7 @@ build() {
 
 package() {
     optdepends=('python-matplotlib: Plotting support'
-    		'python-specutils: Manipulating spectroscopic data')
+                'python-specutils: Manipulating spectroscopic data')
     cd ${srcdir}/synphot-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.rst
