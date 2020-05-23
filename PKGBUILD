@@ -5,8 +5,8 @@
 
 pkgname=mesen-s-git
 _pkgname=Mesen-S
-pkgver=0.3.0.r164.g58f37c6
-pkgrel=2
+pkgver=0.4.0.r14.g6d9dc99
+pkgrel=1
 pkgdesc='A cross-platform Super Nintendo emulator'
 arch=('x86_64')
 makedepends=('clang' 'gendesk' 'zip')
