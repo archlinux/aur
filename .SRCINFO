@@ -1,16 +1,19 @@
 pkgbase = uniconvertor
-	pkgdesc = A universal vector graphics translator using sK1 engine.
-	pkgver = 1.1.5
-	pkgrel = 8
-	url = https://sk1project.net/modules.php?name=Products&product=uniconvertor&op=download
+	pkgdesc = Universal vector graphics translator using sK1 engine.
+	pkgver = 2.0rc4
+	pkgrel = 1
+	url = https://sk1project.net/uc2/
 	arch = x86_64
-	license = GPL
-	depends = python2
+	license = GPL3
+	depends = lcms2
+	depends = cairo
+	depends = imagemagick
+	depends = pango
+	depends = python2-cairo
 	depends = python2-pillow
 	depends = python2-reportlab
-	depends = sk1libs
-	source = https://sk1project.net/dc.php?target=uniconvertor-1.1.5.tar.gz
-	md5sums = d1272315a58304ece2ff588834e23f72
+	source = https://downloads.sk1project.net/uniconvertor/2.0rc4/uniconvertor-2.0rc4.tar.gz
+	sha256sums = 98c32fa7255825cb5a395346f77bafa256d78a7b06093dbbb5f612e46371f045
 
 pkgname = uniconvertor
 
