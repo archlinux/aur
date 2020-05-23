@@ -1,14 +1,12 @@
 #!/bin/sh
 
+REMOTE_URL=https://git.archlinux.org/svntogit/community.git
 REMOTE_BRANCH=packages/ddclient
 LOCAL_BRANCH=upstream
-CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
 
-git checkout "$REMOTE_BRANCH"
-git pull
-git branch -f "$LOCAL_BRANCH" "$REMOTE_BRANCH"
-git checkout "$LOCAL_BRANCH"
-git filter-branch -f --subdirectory-filter trunk \
+git fetch "$REMOTE_URL" "$REMOTE_BRANCH"
+git checkout -B "$LOCAL_BRANCH" FETCH_HEAD
+FILTER_BRANCH_SQUELCH_WARNING=1 git filter-branch -f --subdirectory-filter trunk \
 	--tree-filter 'makepkg --printsrcinfo > .SRCINFO || rm .SRCINFO' \
 	--commit-filter '
 		if [ -e .SRCINFO ]
@@ -23,4 +21,4 @@ git filter-branch -f --subdirectory-filter trunk \
 				shift
 			done
 		fi'
-git checkout "$CURRENT_BRANCH"
+git checkout -
