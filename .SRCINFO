@@ -1,7 +1,7 @@
 pkgbase = multinest
 	pkgdesc = MultiNest is a Bayesian inference tool which calculates the evidence and explores the parameter space which may contain multiple posterior modes and pronounced (curving) degeneracies in moderately high dimensions.
 	pkgver = 3.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/farhanferoz/MultiNest
 	arch = any
 	license = custom
