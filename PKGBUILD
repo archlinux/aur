@@ -8,7 +8,7 @@ arch=("any")
 url="https://github.com/vinceliuice/McMojave-cursors"
 license=('GPL')
 source=("https://github.com/vinceliuice/McMojave-cursors/archive/master.zip")
-md5sums=('28010cba022b1418ae2823ab46023d3f')
+md5sums=('0beb30670b7ad4da538a86ab64b88d00')
 
 build() {
 	true
