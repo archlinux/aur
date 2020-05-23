@@ -1,12 +1,12 @@
 # Maintainer: Miguel de Val-Borro <miguel dot deval at gmail dot com>
 pkgname=python-synphot
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Synthetic Photometry using Astropy"
 arch=('x86_64')
 url="https://synphot.readthedocs.io/"
 license=('BSD')
-makedepends=('python-setuptools' 'python-setuptools-scm' 'python-extension-helpers')
+makedepends=('python-setuptools' 'python-setuptools-scm' 'python-extension-helpers' 'python-numpy')
 depends=('python-numpy' 'python-scipy' 'python-astropy')
 source=("https://files.pythonhosted.org/packages/source/s/synphot/synphot-${pkgver}.tar.gz")
 md5sums=('8b9520396defd1828f4b22eaadaaf8bf')

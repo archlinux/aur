@@ -1,13 +1,14 @@
 pkgbase = python-synphot
 	pkgdesc = Synthetic Photometry using Astropy
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://synphot.readthedocs.io/
 	arch = x86_64
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	makedepends = python-extension-helpers
+	makedepends = python-numpy
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-astropy
