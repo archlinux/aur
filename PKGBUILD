@@ -9,7 +9,7 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-gcc-bootstrap
-pkgver=9.3.0
+pkgver=10.1.0
 _mpfrver=4.0.2
 _mpcver=1.1.0
 _gmpver=6.2.0
@@ -19,6 +19,7 @@ arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
 depends=("${_target}-binutils>=2.29-1" 'zlib')
+conflicts=('m68k-elf-gcc')
 options=('!emptydirs' '!distcc' '!strip')
 source=("http://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
         "http://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz.sig"
@@ -28,7 +29,6 @@ source=("http://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
         "http://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz.sig"
         "http://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz"
         "http://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz.sig")
-
         
 sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06
