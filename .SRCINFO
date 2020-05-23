@@ -1,15 +1,16 @@
 pkgbase = fennel
 	pkgdesc = A Lua Lisp language
-	pkgver = 0.3.2
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/bakpakin/Fennel
 	arch = x86_64
 	license = MIT
+	makedepends = make
 	depends = lua
 	provides = fennel
 	conflicts = fennel
-	source = fennel-0.3.2.tar.gz::https://github.com/bakpakin/Fennel/archive/0.3.2.tar.gz
-	sha512sums = 14fe3e2530d7d733c39a457067669ec21e2aa071bdc4de5b787051ebe7af3d276715666ffded3f90cfcb8bd6a19b777130d2b8159ae6991dcdc4bbe4b62b269b
+	source = fennel-0.4.0.tar.gz::https://github.com/bakpakin/Fennel/archive/0.4.0.tar.gz
+	sha512sums = f86da3015680b6a3ea18413480d0c43b37a93e6753dff1fe206a0cf02f5278ab20eca06df32816da6e381a70b28fcc5787a867422d56d4340f2d506a02ff5f71
 
 pkgname = fennel
 
