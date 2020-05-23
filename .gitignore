@@ -1,4 +1,5 @@
 /gitstatus-*.pkg.tar.xz
 /gitstatus-*.tar.gz
+/libgit2-*.tar.gz
 /pkg
 /src
