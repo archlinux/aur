@@ -2,10 +2,10 @@
 
 gitname=htop
 pkgname=${gitname}-git
-pkgver=1077.402e46b
+pkgver=1079.17bad17
 pkgrel=1
 pkgdesc="Interactive text-mode process viewer"
-url="https://github.com/hishamhm/${gitname}"
+url="https://github.com/SoapGentoo/${gitname}"
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('ncurses')
@@ -15,7 +15,7 @@ optdepends=('lsof: list open files for running process'
 provides=('htop')
 conflicts=('htop')
 options=('!emptydirs')
-source=("git+${url}.git")
+source=("git+${url}.git#branch=fix-gcc10")
 sha256sums=('SKIP')
 
 pkgver() {
