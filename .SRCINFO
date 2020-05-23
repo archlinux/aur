@@ -1,19 +1,18 @@
 pkgbase = wluma-als-emulator-git
-	pkgdesc = Light sensor emulator for wluma, write lux from webcam or time based to a file
-	pkgver = master
+	pkgdesc = Ambient light sensor emulator for wluma
+	pkgver = 1.0.0.r0.g406f9d7
 	pkgrel = 1
 	url = https://github.com/cyrinux/wluma-als-emulator
 	arch = any
 	license = MIT
 	makedepends = git
-	optdepends = wluma
-	optdepends = python-pillow
-	optdepends = ffmpeg
+	depends = wluma
+	optdepends = python-pillow: for webcam strategy,
+	optdepends = ffmpeg: for webcam strategy
 	provides = wluma-als-emulator
-	conflicts = fake-light-sensor
-	conflicts = fake-light-sensor-git
-	source = git://github.com/cyrinux/wluma-als-emulator
-	md5sums = SKIP
+	conflicts = wluma-als-emulator
+	source = git+https://github.com/cyrinux/wluma-als-emulator
+	sha256sums = SKIP
 
 pkgname = wluma-als-emulator-git
 

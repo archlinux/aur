@@ -1,29 +1,30 @@
 # Maintainer: Cyrinux <pkgbuilds AT levis DOT name>
 
 pkgname=wluma-als-emulator-git
-_gitname=wluma-als-emulator
-pkgver=master
+_pkgname=${pkgname%-git}
+pkgver=1.0.0.r0.g406f9d7
 pkgrel=1
-pkgdesc="Light sensor emulator for wluma, write lux from webcam or time based to a file"
+pkgdesc="Ambient light sensor emulator for wluma"
 license=(MIT)
-url=https://github.com/cyrinux/wluma-als-emulator
-depends=()
-optdepends=('wluma' 'python-pillow' 'ffmpeg')
+url="https://github.com/cyrinux/${_pkgname}"
+depends=('wluma')
+optdepends=(
+    'python-pillow: for webcam strategy',
+    'ffmpeg: for webcam strategy'
+)
 arch=(any)
 makedepends=('git')
-conflicts=('fake-light-sensor' 'fake-light-sensor-git')
+conflicts=('wluma-als-emulator')
 provides=('wluma-als-emulator')
-source=('git://github.com/cyrinux/wluma-als-emulator')
-md5sums=('SKIP')
+source=("git+${url}")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/wluma-als-emulator"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${_pkgname}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 package() {
-    cd "${srcdir}/wluma-als-emulator"
-    install -D -m0755 \
-        "${srcdir}/wluma-als-emulator/wluma-als-emulator" \
-        "$pkgdir/usr/bin/wluma-als-emulator"
+    cd "${_pkgname}"
+    make install DESTDIR="${pkgdir}"
 }
