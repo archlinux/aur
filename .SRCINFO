@@ -1,0 +1,18 @@
+pkgbase = semgrep-bin
+	pkgdesc = Fast and syntax-aware semantic code pattern search for many languages: like grep but for code
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/returntocorp/semgrep
+	arch = x86_64
+	license = LGPL2.1
+	depends = bash
+	depends = bzip2
+	depends = ncurses5-compat-libs
+	depends = openssl-1.0
+	provides = semgrep
+	options = !strip
+	source = https://github.com/returntocorp/semgrep/releases/download/v0.8.0/semgrep-v0.8.0-ubuntu-16.04.tgz
+	sha256sums = 30c91dcd4297aaf69e7a68c7024a6b21bd5160fce499f11aede6551d346b3f96
+
+pkgname = semgrep-bin
+
