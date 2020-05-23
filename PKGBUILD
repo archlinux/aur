@@ -1,6 +1,6 @@
 # Maintainer: Tommi Helineva <tommi.helineva+aur@gmail.com>
 pkgname=t-lasku
-pkgver=1.26.0
+pkgver=1.26.2
 pkgrel=1
 pkgdesc="A Finnish invoicing software"
 arch=('i686' 'x86_64')
@@ -8,8 +8,8 @@ url="http://helineva.net/t-lasku/"
 license=('BSD')
 depends=('qt5-base' 'qt5-xmlpatterns')
 optdepends=('postgresql-libs')
-sha256sums_x86_64=('44de52b5bd5d4331f844470c0e543f1bd89e321e4ca3d7c4acea600c84deb946')
-sha256sums_i686=('9a273e899a2a53956ca316ec66468e3b34fcde6cb22f03418114fa0ac4d28756')
+sha256sums_x86_64=('8362d850c281e510aa72924d9a88223b6f2a247ea7d935cf976a74df83109f7b')
+sha256sums_i686=('1b91898e72de98a98016df09607bd46a3b82d29bb17916123b406c70d4b23360')
 source_x86_64=("http://helineva.net/t-lasku/t-lasku-$pkgver-amd64.tar.gz")
 source_i686=("http://helineva.net/t-lasku/t-lasku-$pkgver-i386.tar.gz")
 
