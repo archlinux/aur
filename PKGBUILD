@@ -2,7 +2,7 @@
 
 pkgname=wluma-als-emulator-git
 _pkgname=${pkgname%-git}
-pkgver=1.0.0.r0.g406f9d7
+pkgver=1.1.0.r0.g4567ea7
 pkgrel=1
 pkgdesc="Ambient light sensor emulator for wluma"
 license=(MIT)
