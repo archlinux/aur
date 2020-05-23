@@ -11,13 +11,13 @@ _music='sc55' # (sc55/opl3) - update checksums if you change
 
 pkgbase=dxx-rebirth-git
 pkgname=('d1x-rebirth-git' 'd2x-rebirth-git')
-pkgver=0.60.0.beta2.r657.gc088f1538
+pkgver=0.60.0.beta2.r760.g84fb6d499
 pkgrel=1
 pkgdesc='A source port of the Descent and Descent 2 engines (git version)'
 arch=('x86_64')
 url='https://www.dxx-rebirth.com/'
 license=('GPL3' 'custom:Parallax')
-depends=('glu' 'libgl' 'libpng' 'sdl' 'sdl_mixer' 'physfs')
+depends=('glu' 'libgl' 'libpng' 'sdl' 'sdl_image' 'sdl_mixer' 'physfs')
 makedepends=('git' 'scons')
 source=('git+https://github.com/dxx-rebirth/dxx-rebirth.git'
         'https://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa'
@@ -60,20 +60,11 @@ package_d1x-rebirth-git() {
     provides=('d1x-rebirth')
     conflicts=('d1x-rebirth')
     
-    # binary executable
     install -D -m755 dxx-rebirth/build/d1x-rebirth/d1x-rebirth -t "${pkgdir}/usr/bin"
-    
-    # add-ons
-    install -D -m644  d1xr-hires.dxa            -t "${pkgdir}/usr/share/d1x-rebirth"
+    install -D -m644 d1xr-hires.dxa -t "${pkgdir}/usr/share/d1x-rebirth"
     install -D -m644 "d1xr-${_music}-music.dxa" -t "${pkgdir}/usr/share/d1x-rebirth"
-    
-    # desktop file
     install -D -m644 dxx-rebirth/d1x-rebirth/d1x-rebirth.desktop -t "${pkgdir}/usr/share/applications"
-    
-    # icon
     install -D -m644 dxx-rebirth/d1x-rebirth/d1x-rebirth.xpm -t "${pkgdir}/usr/share/pixmaps"
-    
-    # license
     install -D -m644 dxx-rebirth/COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
@@ -82,18 +73,9 @@ package_d2x-rebirth-git() {
     provides=('d2x-rebirth')
     conflicts=('d2x-rebirth')
     
-    # binary executable
     install -D -m755 dxx-rebirth/build/d2x-rebirth/d2x-rebirth -t "${pkgdir}/usr/bin"
-    
-    # add-on
     install -D -m644 "d2xr-${_music}-music.dxa" -t "${pkgdir}/usr/share/d2x-rebirth"
-    
-    # desktop file
     install -D -m644 dxx-rebirth/d2x-rebirth/d2x-rebirth.desktop -t "${pkgdir}/usr/share/applications"
-    
-    # icon
     install -D -m644 dxx-rebirth/d2x-rebirth/d2x-rebirth.xpm -t "${pkgdir}/usr/share/pixmaps"
-    
-    # license
     install -D -m644 dxx-rebirth/COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
