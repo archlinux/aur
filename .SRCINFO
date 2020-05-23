@@ -1,0 +1,17 @@
+pkgbase = slock-jacob-git
+	pkgdesc = This Jacob McDonnell's build of slock see the repo for more details
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://gitlab.com/Jacob_McDonnell/slock.git
+	arch = x86_64
+	arch = i686
+	license = MIT/X Consortium License
+	makedepends = git
+	makedepends = make
+	provides = slock
+	conflicts = slock
+	source = git+https://gitlab.com/Jacob_McDonnell/slock.git
+	md5sums = SKIP
+
+pkgname = slock-jacob-git
+
