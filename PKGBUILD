@@ -5,44 +5,94 @@
 
 set -u
 pkgname='pmacct'
-pkgver='1.7.3'
-pkgrel='1'
+#pkgname+='-git'
+pkgver=1.7.4p1
+_pkgver="${pkgver%%.r[0-9]*}"
+_pkgverb="${_pkgver%%.[a-z]*}"
+_pkgverb="${_pkgverb%%[a-z]*}"
+pkgrel=1
 pkgdesc='Accounting and aggregation toolsuite for IPv4 and IPv6 able to collect data through libpcap, Netlink/ULOG, Netflow and sFlow'
 arch=('i686' 'x86_64')
 url='http://www.pmacct.net/'
 license=('GPL2')
 depends=('libpcap' 'libmariadbclient' 'postgresql-libs' 'sqlite3')
-_verwatch=("${url}" "${url}${pkgname}-\([0-9\.]\+\)\.tar\.gz" 'l')
-source=("${url}${pkgname}-${pkgver}.tar.gz"
-        'pmacctd.rc.d' \
-        'nfacctd.rc.d' \
-        'sfacctd.rc.d' \
-        'uacctd.rc.d')
-sha256sums=('82ca04674a0d6f1ce11dc64d5d44d49bcf923cefff99799359148abb6bfd4f1d'
+_verwatch=("${url}" "${url}${pkgname%-git}-\([0-9\.]\+\)\.tar\.gz" 'l')
+_srcdir="${pkgname%-git}-${_pkgver%%[a-z]*}"
+source=(
+  "${url}${pkgname%-git}-${_pkgver}.tar.gz"
+  'pmacctd.rc.d'
+  'nfacctd.rc.d'
+  'sfacctd.rc.d'
+  'uacctd.rc.d'
+)
+md5sums=('61428c5d1d59bb91f2f948a2cbb96110'
+         '3b9313a756b75b4b571b17693db0ae04'
+         'f732e33cbccba5a492d2ee95b5f88221'
+         '235c1e77690fbe939a69c98dad041203'
+         '9a49065076b645df94e30278052a8796')
+sha256sums=('8a35fdde01a2e34faf7c0d68cb3010bca56667638a6227b02384d015ee9c1335'
             '504b31e1a3ccc6ab9fd56960800e6146cae69c479d1a87a5f491042c382e4384'
             '143e7b83d15df723e2668383efb108e458818b47fdd62a6201b159a5430379e7'
             '990915185774ccb6f167433f1f4a4c415dc60fcaaee2af9d9239dfafefcb8166'
             'dbfd2210e9e96d672483916c3c2dd38a58c1725920823a7221a2a2cd3f43c48a')
 
+if [ "${pkgname%-git}" != "${pkgname}" ]; then
+  _srcdir="${pkgname%-git}"
+  source[0]="${_srcdir}::git://github.com/pmacct/pmacct.git"
+  #source[0]+="#branch=${_pkgverb}"
+  makedepends+=('git')
+  md5sums[0]='SKIP'
+  sha256sums[0]='SKIP'
+  provides=("${pkgname%-git}=${_pkgver}")
+  conflicts=("${pkgname%-git}")
+pkgver() {
+  set -u
+  cd "${_srcdir}"
+  local _gver
+  _gver="$(git describe --long --tags | sed -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g' -e 's:^v::g')"
+  local _clver="$(grep -m1 -hE -e '^[0-9.]{5}[^ ]* +--' 'ChangeLog')"
+  _clver="${_clver%% *}"
+  if [ ! -z "${_clver}" ] && [ "$(vercmp "${_clver}" "${_gver}")" -gt 0 ]; then
+    printf '%s.r%s' "${_clver}" "${_gver##*.r}"
+  else
+    printf '%s' "${_gver}"
+  fi
+  set +u
+}
+elif [ "${_pkgver}" != "${pkgver}" ]; then
+pkgver() {
+  printf '%s' "${_pkgver}"
+}
+fi
+
 build() {
   set -u
-  cd "${pkgname}-${pkgver}"
+  cd "${_srcdir}"
+  if [ ! -s 'configure' ]; then
+    ./autogen.sh
+  fi
   if [ ! -s 'Makefile' ]; then
+    if [ "${_pkgverb}" = '1.7.4' ]; then
+      CFLAGS+=' -fcommon' # gcc-10
+    fi
     ./configure --prefix='/usr' --mandir='/usr/share/man' --sbindir='/usr/bin' --enable-ipv6 --enable-mysql --enable-pgsql --enable-sqlite3 --enable-64bit --enable-threads --enable-jansson
   fi
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  nice make -s -j "${_nproc}"
+  if [ -z "${MAKEFLAGS:=}" ] || [ "${MAKEFLAGS//-j/}" = "${MAKEFLAGS}" ]; then
+    MAKEFLAGS+=" -j${_nproc}"
+  fi
+  nice make -s
   set +u
 }
 
 package() {
   set -u
-  cd "${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  cd "${_srcdir}"
+  make -s -j1 DESTDIR="${pkgdir}" install
 
   # configuration examples
-  install -Dpm644 "${srcdir}/${pkgname}-${pkgver}/examples/pmacctd-imt.conf.example" "${pkgdir}/etc/pmacct/pmacctd.conf"
-  install -Dpm644 "${srcdir}/${pkgname}-${pkgver}/examples"/*.example -t "${pkgdir}/etc/pmacct/examples/"
+  install -Dpm644 'examples/pmacctd-imt.conf.example' "${pkgdir}/etc/pmacct/pmacctd.conf"
+  install -Dpm644 examples/*.example -t "${pkgdir}/etc/pmacct/examples/"
 
   # rc.d scripts
   install -Dpm755 "${srcdir}/sfacctd.rc.d" "${pkgdir}/etc/rc.d/sfacctd"
@@ -52,16 +102,16 @@ package() {
   sed -e 's:/sbin/:/bin/:g' -i "${pkgdir}/etc/rc.d"/*
 
   # sh and sql scripts
-  install -Dpm644 "${srcdir}/${pkgname}-${pkgver}/sql"/*.mysql -t "${pkgdir}/usr/share/pmacct/mysql/"
-  install -Dpm644 "${srcdir}/${pkgname}-${pkgver}/sql"/*.pgsql -t "${pkgdir}/usr/share/pmacct/pgsql/"
-  install -Dpm644 "${srcdir}/${pkgname}-${pkgver}/sql"/*.sqlite3 -t "${pkgdir}/usr/share/pmacct/sqlite3/"
-  #install -Dpm744 "${srcdir}/${pkgname}-${pkgver}/examples"/*.sh -t "${pkgdir}/usr/share/pmacct/sh/"
+  install -Dpm644 sql/*.mysql -t "${pkgdir}/usr/share/pmacct/mysql/"
+  install -Dpm644 sql/*.pgsql -t "${pkgdir}/usr/share/pmacct/pgsql/"
+  install -Dpm644 sql/*.sqlite3 -t "${pkgdir}/usr/share/pmacct/sqlite3/"
+  #install -Dpm744 "/examples"/*.sh -t "${pkgdir}/usr/share/pmacct/sh/"
 
   # documentation
-  install -Dpm644 "${srcdir}/${pkgname}-${pkgver}/sql"/README.* -t "${pkgdir}/usr/share/doc/pmacct/"
-  install -Dpm644 "${srcdir}/${pkgname}-${pkgver}/docs"/* -t "${pkgdir}/usr/share/doc/pmacct/"
+  install -Dpm644 sql/README.* -t "${pkgdir}/usr/share/doc/pmacct/"
+  install -Dpm644 docs/* -t "${pkgdir}/usr/share/doc/pmacct/" || :
   cp -p 'AUTHORS' 'ChangeLog' 'CONFIG-KEYS' 'COPYING' 'QUICKSTART' 'FAQS' 'UPGRADE' -t "${pkgdir}/usr/share/doc/pmacct/"
-  cp -p 'KNOWN-BUGS' 'README' 'TODO' -t "${pkgdir}/usr/share/doc/pmacct/" || :
+  #cp -p 'KNOWN-BUGS' 'README' 'TODO' -t "${pkgdir}/usr/share/doc/pmacct/" || :
   # EXAMPLES changed to QUICKSTART
   set +u
 }
