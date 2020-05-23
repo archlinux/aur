@@ -1,0 +1,31 @@
+pkgbase = ros-melodic-imu-sensor-controller
+	pkgdesc = ROS - Controller to publish state of IMU sensors.
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/ros-controls/ros_controllers/wiki
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-hardware-interface
+	makedepends = ros-melodic-controller-interface
+	makedepends = ros-melodic-sensor-msgs
+	makedepends = ros-melodic-realtime-tools
+	makedepends = ros-melodic-pluginlib
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-hardware-interface
+	depends = ros-melodic-controller-interface
+	depends = ros-melodic-sensor-msgs
+	depends = ros-melodic-realtime-tools
+	depends = ros-melodic-pluginlib
+	source = ros-melodic-imu-sensor-controller-0.17.0-.tar.gz::https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/imu_sensor_controller/0.17.0-.tar.gz
+	sha256sums = 90c09b7742717a9d2e50fef9c83c0020f341581c8eba8ea277c5abeb67e5f651
+
+pkgname = ros-melodic-imu-sensor-controller
+
