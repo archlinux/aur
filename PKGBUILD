@@ -1,6 +1,6 @@
 # Maintainer: Fancy Zhang <springzfx@gmail.com>
 pkgname=cgproxy-git
-pkgver=v0.12.r0.g1fa0d51
+pkgver=v0.13.r0.g0b25b52
 pkgrel=1
 pkgdesc="A transparent proxy program powered by cgroup2 and tproxy"
 arch=('x86_64')
@@ -8,7 +8,8 @@ url="https://github.com/springzfx/cgproxy"
 license=('GPL')
 groups=('')
 makedepends=('cmake' 'nlohmann-json')
-optdepends=('systemd')
+optdepends=('systemd: service manager'
+            'python-bcc: execsnoop for program_proxy/program_noproxy')
 provides=('cgproxy')
 conflicts=('cgproxy')
 
