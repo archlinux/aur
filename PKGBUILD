@@ -52,7 +52,7 @@ build() {
 package_lib32-harfbuzz-git() {
 
   provides=(lib32-harfbuzz libharfbuzz.so libharfbuzz-subset.so libharfbuzz-gobject.so)
-  conflicts=('lib32-harfbuzz')
+  conflicts=(lib32-harfbuzz libharfbuzz.so libharfbuzz-subset.so libharfbuzz-gobject.so)
 
   cd harfbuzz
   make DESTDIR="$pkgdir" install
@@ -71,7 +71,7 @@ package_lib32-harfbuzz-icu-git() {
   pkgdesc="OpenType text shaping engine (32-bit, ICU integration)"
   depends=(lib32-harfbuzz lib32-icu harfbuzz-icu)
   provides=(lib32-harfbuzz-icu libharfbuzz-icu.so)
-  conflicts=('lib32-harfbuzz-icu')
+  conflicts=(lib32-harfbuzz-icu libharfbuzz-icu.so)
 
   mv hb-icu/* "$pkgdir"
 

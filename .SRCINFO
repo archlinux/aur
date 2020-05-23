@@ -26,6 +26,9 @@ pkgname = lib32-harfbuzz-git
 	provides = libharfbuzz-subset.so
 	provides = libharfbuzz-gobject.so
 	conflicts = lib32-harfbuzz
+	conflicts = libharfbuzz.so
+	conflicts = libharfbuzz-subset.so
+	conflicts = libharfbuzz-gobject.so
 
 pkgname = lib32-harfbuzz-icu-git
 	pkgdesc = OpenType text shaping engine (32-bit, ICU integration)
@@ -35,4 +38,5 @@ pkgname = lib32-harfbuzz-icu-git
 	provides = lib32-harfbuzz-icu
 	provides = libharfbuzz-icu.so
 	conflicts = lib32-harfbuzz-icu
+	conflicts = libharfbuzz-icu.so
 
