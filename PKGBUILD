@@ -1,19 +1,19 @@
 # Maintainer: Uwe Koloska <kolewu@koloro.de>
 
 pkgname=liblomse
-pkgver=0.26.0
+_vcsname=lomse
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="A music score renderization/edition library"
 arch=('i686' 'x86_64')
 url="http://www.lenmus.org/en/lomse/intro"
 license=('custom:BSD 2-clause')
 groups=('devel')
-depends=('freetype2')
-makedepends=('cmake' 'unittestpp')
-_vcsname=lomse
+depends=('freetype2' 'fontconfig')
+makedepends=('cmake' 'unittestpp' 'ttf-liberation')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/lenmus/lomse/tar.gz/${pkgver}")
-sha256sums=('d8c36c6297325506a4519feca65639cb5c5586db64aa8dce558ac238770cf653')
+sha256sums=('6ed9e3672a55bde7be3469231043394354ad048ca3d9fd812246496d8aa4ec4d')
 
 build() {
   rm -rf build
