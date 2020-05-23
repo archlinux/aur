@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=2.1
+pkgver=2.2
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -29,15 +29,18 @@ install="$pkgname.install"
 backup=("etc/$pkgname/logging.ini"
         "etc/$pkgname/site-defaults.cfg")
 source=("$url/archive/$_pkgtag.tar.gz"
+        "archlinux-defaults.cfg"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('57ae249a57b13f64fefd5e576df6e847'
+md5sums=('c7c6eca7fe99eb28728a97f5be4d629f'
+         'f64f312dfdca58dc510504041dcc9675'
          'd277502b9a95484594f86231d073dae0'
          '1052fa4db74b59b0c195f4756bd865e8')
 
 _prefix=/usr
 _bindir=$_prefix/bin
 _datadir=$_prefix/share
+_docdir=$_datadir/doc/$pkgname
 _mandir=$_datadir/man
 _sysconfdir=/etc
 
@@ -46,14 +49,10 @@ prepare() {
 
 	cd "$pkgname-$pkgver"
 
-	pushd "$pkgname" >/dev/null
+	sed -e "s|@MOCK_DOCS@|$_docdir|" -i "mock-core-configs/etc/$pkgname/site-defaults.cfg"
 
-	# ArchLinux does not provides gtar symlink
-	sed -e "/config_opts\['tar'\]/ s|.*|config_opts['tar'] = \"bsdtar\"|" \
-	    -e "/config_opts\['plugin_conf'\]\['root_cache_opts'\]\['decompress_program'\]/ s|.*|config_opts['plugin_conf']['root_cache_opts']['decompress_program'] = \"gunzip\"|" \
-	    -i "etc/$pkgname/site-defaults.cfg"
-
-	popd >/dev/null
+	# Apply configuration required for Arch Linux systems
+	cat "$srcdir/archlinux-defaults.cfg" >> "mock-core-configs/etc/$pkgname/site-defaults.cfg"
 }
 
 build() {
@@ -95,6 +94,7 @@ package() {
 
 	mkdir -p "$pkgdir/$_sysconfdir/"mock
 	cp -Rp etc/mock/* "$pkgdir/$_sysconfdir/"mock/
+	cp -p ../mock-core-configs/etc/mock/site-defaults.cfg "$pkgdir/$_sysconfdir/"mock/
 
 	mkdir -p "$pkgdir/$_datadir/"bash-completion/completions
 	cp -Rp etc/bash_completion.d/* "$pkgdir/$_datadir/"bash-completion/completions/
@@ -120,7 +120,8 @@ package() {
 		ln -s /usr/bin/consolehelper "$pkgdir/usr/bin/$pkgname"
 	fi
 
-	install -Dp -m644 docs/mock.cheat "$pkgdir/usr/share/doc/$pkgname/cheat/$pkgname"
+	install -Dp -m644 docs/site-defaults.cfg "$pkgdir/$_docdir/site-defaults.cfg"
+	install -Dp -m644 docs/mock.cheat "$pkgdir/$_docdir/cheat/$pkgname"
 
 	popd >/dev/null
 
