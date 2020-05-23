@@ -1,6 +1,6 @@
 pkgbase = sfk-bin
 	pkgdesc = Swiss File Knife - a command line tools collection
-	pkgver = 1.9.6.2
+	pkgver = 1.9.7.0
 	pkgrel = 1
 	url = http://stahlworks.com/dev/swiss-file-knife.html
 	arch = x86_64

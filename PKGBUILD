@@ -1,6 +1,6 @@
 # Maintainer: Roman Mishin <xtradev (a) yandex (.) ru>
 pkgname=sfk-bin
-pkgver=1.9.6.2
+pkgver=1.9.7.0
 pkgrel=1
 pkgdesc="Swiss File Knife - a command line tools collection"
 arch=('x86_64')
