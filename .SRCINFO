@@ -5,7 +5,6 @@ pkgbase = rime-pinyin-zhwiki
 	url = https://github.com/PinkD/rime-pinyin-zhwiki
 	arch = any
 	license = Apache
-	makedepends = opencc
 	source = https://github.com/PinkD/rime-pinyin-zhwiki/archive/0.2/rime-pinyin-zhwiki-0.2.tar.gz
 	source = https://dumps.wikimedia.org/zhwiki/20200501/zhwiki-20200501-all-titles-in-ns0.gz
 	md5sums = 5686fddf1f2ef2d2cd43994f12d0257f
