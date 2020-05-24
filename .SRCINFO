@@ -9,6 +9,8 @@ pkgbase = libreelec-dvb-firmware-git
 	makedepends = linux-firmware
 	provides = libreelec-dvb-firmware
 	conflicts = libreelec-dvb-firmware
+	conflicts = openelec-dvb-firmware
+	replaces = openelec-dvb-firmware
 	source = git+https://github.com/LibreELEC/dvb-firmware.git
 	md5sums = SKIP
 
