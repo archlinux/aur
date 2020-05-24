@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-joy
+pkgbase = ros-noetic-joy
 	pkgdesc = ROS - ROS driver for a generic Linux joystick.
 	pkgver = 1.13.0
 	pkgrel = 2
@@ -11,18 +11,18 @@ pkgbase = ros-melodic-joy
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-diagnostic-updater
-	makedepends = ros-melodic-roscpp
-	makedepends = ros-melodic-sensor-msgs
-	makedepends = ros-melodic-catkin
+	makedepends = ros-noetic-diagnostic-updater
+	makedepends = ros-noetic-roscpp
+	makedepends = ros-noetic-sensor-msgs
+	makedepends = ros-noetic-catkin
 	makedepends = linuxconsole
-	depends = ros-melodic-diagnostic-updater
-	depends = ros-melodic-roscpp
-	depends = ros-melodic-sensor-msgs
+	depends = ros-noetic-diagnostic-updater
+	depends = ros-noetic-roscpp
+	depends = ros-noetic-sensor-msgs
 	depends = linuxconsole
 	depends = python-empy
-	source = ros-melodic-joy-1.13.0.tar.gz::https://github.com/ros-drivers/joystick_drivers/archive/1.13.0.tar.gz
+	source = ros-noetic-joy-1.13.0.tar.gz::https://github.com/ros-drivers/joystick_drivers/archive/1.13.0.tar.gz
 	sha256sums = bfe0633623f4dc917524198aaea10b1c4603881e736dafb7b652f1af60922ad7
 
-pkgname = ros-melodic-joy
+pkgname = ros-noetic-joy
 
