@@ -1,7 +1,7 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 pkgname=('git-caja-icons-py2')
 _pypi_name=('git_caja_icons')
-pkgver=1.1.1
+pkgver=1.1.3
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/chrisjbillington/git_nautilus_icons"
@@ -12,7 +12,7 @@ makedepends=('python2-setuptools')
 provides=('git-caja-icons-py2')
 conflicts=('git-caja-icons-py2')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_name::1}/$_pypi_name/$_pypi_name-$pkgver.tar.gz")
-sha512sums=('3d3856447edc1fd20dddbb75cafe18aa1eda06fa491ea7b520b425cedcb5fccdf1f6e2322b51214d817492b667e2204fed6a88c5a952b258478fbb7bed7d7f79')
+sha512sums=('fa15b2aae0cc6f7378b3c6c34e024f41ec49bb554f6711db29113d7f051f323ab3eedfd089bdad0a009f057c5ff11bf08184153dce727f4589b1de5b13f378db')
 
 build() {
     cd "${srcdir}/${_pypi_name}-${pkgver}"
