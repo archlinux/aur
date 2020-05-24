@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rqt-robot-dashboard
+pkgbase = ros-noetic-rqt-robot-dashboard
 	pkgdesc = ROS - rqt_robot_dashboard provides an infrastructure for building robot dashboard plugins in rqt.
 	pkgver = 0.5.7
 	pkgrel = 2
@@ -7,18 +7,18 @@ pkgbase = ros-melodic-rqt-robot-dashboard
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-gui-py
-	depends = ros-melodic-diagnostic-msgs
-	depends = ros-melodic-rqt-nav-view
-	depends = ros-melodic-qt-gui
-	depends = ros-melodic-rqt-console
-	depends = ros-melodic-python-qt-binding
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-rospy
-	depends = ros-melodic-rqt-robot-monitor
-	source = ros-melodic-rqt-robot-dashboard-0.5.7.tar.gz::https://github.com/ros-visualization/rqt_robot_dashboard/archive/0.5.7.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-rqt-gui-py
+	depends = ros-noetic-diagnostic-msgs
+	depends = ros-noetic-rqt-nav-view
+	depends = ros-noetic-qt-gui
+	depends = ros-noetic-rqt-console
+	depends = ros-noetic-python-qt-binding
+	depends = ros-noetic-rqt-gui
+	depends = ros-noetic-rospy
+	depends = ros-noetic-rqt-robot-monitor
+	source = ros-noetic-rqt-robot-dashboard-0.5.7.tar.gz::https://github.com/ros-visualization/rqt_robot_dashboard/archive/0.5.7.tar.gz
 	sha256sums = 13b0b3e0ce6a86d06168f79f91a497c207d495361a3c6680255a5d0ab8c6bd8f
 
-pkgname = ros-melodic-rqt-robot-dashboard
+pkgname = ros-noetic-rqt-robot-dashboard
 

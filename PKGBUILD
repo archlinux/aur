@@ -3,7 +3,7 @@
 pkgdesc="ROS - rqt_robot_dashboard provides an infrastructure for building robot dashboard plugins in rqt."
 url='https://wiki.ros.org/rqt_robot_dashboard'
 
-pkgname='ros-melodic-rqt-robot-dashboard'
+pkgname='ros-noetic-rqt-robot-dashboard'
 pkgver='0.5.7'
 _pkgver_patch=0
 arch=('any')
@@ -11,7 +11,7 @@ pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-catkin
+	ros-noetic-catkin
 )
 
 makedepends=(
@@ -21,15 +21,15 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-rqt-gui-py
-	ros-melodic-diagnostic-msgs
-	ros-melodic-rqt-nav-view
-	ros-melodic-qt-gui
-	ros-melodic-rqt-console
-	ros-melodic-python-qt-binding
-	ros-melodic-rqt-gui
-	ros-melodic-rospy
-	ros-melodic-rqt-robot-monitor
+	ros-noetic-rqt-gui-py
+	ros-noetic-diagnostic-msgs
+	ros-noetic-rqt-nav-view
+	ros-noetic-qt-gui
+	ros-noetic-rqt-console
+	ros-noetic-python-qt-binding
+	ros-noetic-rqt-gui
+	ros-noetic-rospy
+	ros-noetic-rqt-robot-monitor
 )
 
 depends=(
@@ -43,24 +43,17 @@ sha256sums=('13b0b3e0ce6a86d06168f79f91a497c207d495361a3c6680255a5d0ab8c6bd8f')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
