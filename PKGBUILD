@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=DescTools
-_cranver=0.99.35
+_cranver=0.99.36
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ depends=('r>=3.6.0' r-mvtnorm r-expm 'r-rcpp>=0.12.10' r-rstudioapi r-bh)
 makedepends=('gcc>=4.8')
 optdepends=(r-vgam r-r.rsp)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('3e463a967352a4b37ae251fdbf977ecf')
+md5sums=('63fbc033f0be7f6eacfe07f899e731d7')
 
 build() {
   cd "${srcdir}"
