@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=joplin-appimg
-pkgver=1.0.207
+pkgver=1.0.216
 pkgrel=0
 pkgdesc="A note taking and to-do application with synchronization capabilities"
 provides=('joplin')
