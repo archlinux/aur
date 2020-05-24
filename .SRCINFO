@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-eigen-stl-containers
+pkgbase = ros-noetic-eigen-stl-containers
 	pkgdesc = ROS - This package provides a set of typedefs that allow using Eigen datatypes in STL containers.
 	pkgver = 0.1.8
 	pkgrel = 3
@@ -7,12 +7,12 @@ pkgbase = ros-melodic-eigen-stl-containers
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-cmake-modules
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-cmake-modules
 	makedepends = eigen3
 	depends = eigen3
-	source = ros-melodic-eigen-stl-containers-0.1.8.tar.gz::https://github.com/ros/eigen_stl_containers/archive/0.1.8.tar.gz
+	source = ros-noetic-eigen-stl-containers-0.1.8.tar.gz::https://github.com/ros/eigen_stl_containers/archive/0.1.8.tar.gz
 	sha256sums = cf1bcd3253aff0eb032f6d74b9b3c322c99f75ee66bd7034daee8bb2d2a422fc
 
-pkgname = ros-melodic-eigen-stl-containers
+pkgname = ros-noetic-eigen-stl-containers
 
