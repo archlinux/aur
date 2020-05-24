@@ -2,6 +2,7 @@ pkgbase = python2-jedi-git
 	pkgdesc = An awesome autocompletion, static analysis and refactoring library for Python
 	pkgver = v0.17.0.r148.2d672d2f
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/davidhalter/jedi
 	arch = any
 	license = MIT

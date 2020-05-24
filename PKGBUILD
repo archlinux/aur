@@ -3,6 +3,7 @@
 
 pkgname=python2-jedi-git
 _gitname=jedi
+epoch=1
 pkgver=v0.17.0.r148.2d672d2f
 pkgrel=1
 pkgdesc="An awesome autocompletion, static analysis and refactoring library for Python"
