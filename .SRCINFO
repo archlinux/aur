@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-slime-ros
+pkgbase = ros-noetic-slime-ros
 	pkgdesc = ROS - Extensions for slime to assist in working with ROS packages.
 	pkgver = 0.4.13
 	pkgrel = 1
@@ -7,13 +7,13 @@ pkgbase = ros-melodic-slime-ros
 	license = Public Domain
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-slime-wrapper
-	depends = ros-melodic-rosemacs
-	depends = ros-melodic-roslisp
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-slime-wrapper
+	depends = ros-noetic-rosemacs
+	depends = ros-noetic-roslisp
 	depends = sbcl
-	source = ros-melodic-slime-ros-0.4.13.tar.gz::https://github.com/code-iai/ros_emacs_utils/archive/0.4.13.tar.gz
+	source = ros-noetic-slime-ros-0.4.13.tar.gz::https://github.com/code-iai/ros_emacs_utils/archive/0.4.13.tar.gz
 	sha256sums = 14c8463b3c354a53659843c82af416a4ff6713747f04da98e8fc39de90c8ec6c
 
-pkgname = ros-melodic-slime-ros
+pkgname = ros-noetic-slime-ros
 
