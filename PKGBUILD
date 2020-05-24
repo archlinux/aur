@@ -3,19 +3,19 @@
 pkgdesc="ROS - control_msgs contains base messages and actions useful for controlling robots."
 url='https://wiki.ros.org/control_msgs'
 
-pkgname='ros-melodic-control-msgs'
+pkgname='ros-noetic-control-msgs'
 pkgver='1.5.0'
 arch=('any')
 pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-trajectory-msgs
-	ros-melodic-catkin
-	ros-melodic-message-generation
-	ros-melodic-std-msgs
-	ros-melodic-actionlib-msgs
-	ros-melodic-geometry-msgs
+	ros-noetic-trajectory-msgs
+	ros-noetic-catkin
+	ros-noetic-message-generation
+	ros-noetic-std-msgs
+	ros-noetic-actionlib-msgs
+	ros-noetic-geometry-msgs
 )
 
 makedepends=(
@@ -25,11 +25,11 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-trajectory-msgs
-	ros-melodic-std-msgs
-	ros-melodic-actionlib-msgs
-	ros-melodic-message-runtime
-	ros-melodic-geometry-msgs
+	ros-noetic-trajectory-msgs
+	ros-noetic-std-msgs
+	ros-noetic-actionlib-msgs
+	ros-noetic-message-runtime
+	ros-noetic-geometry-msgs
 )
 
 depends=(
@@ -43,24 +43,17 @@ sha256sums=('230b0f893d1d57aff482b5672bb6cbadcf9908956a6e986c78d85006472f4dc5')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
