@@ -2,7 +2,7 @@
 
 pkgname=vfio-isolate
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="commandline tool to facilitate CPU core isolation"
 arch=('i686' 'x86_64')
 url="https://pypi.org/project/vfio-isolate"
@@ -22,4 +22,6 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    mkdir -p "$pkgdir/usr/share/zsh/site-functions"  
+    _VFIO_ISOLATE_COMPLETE=source_zsh "$pkgdir/usr/bin/vfio-isolate" > "$pkgdir/usr/share/zsh/site-functions/_vfio-isolate" || true
 }
