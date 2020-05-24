@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-visualization-tutorials
+pkgbase = ros-noetic-visualization-tutorials
 	pkgdesc = ROS - Metapackage referencing tutorials related to rviz and visualization.
 	pkgver = 0.10.3
 	pkgrel = 2
@@ -7,14 +7,14 @@ pkgbase = ros-melodic-visualization-tutorials
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-visualization-marker-tutorials
-	depends = ros-melodic-librviz-tutorial
-	depends = ros-melodic-rviz-plugin-tutorials
-	depends = ros-melodic-interactive-marker-tutorials
-	depends = ros-melodic-rviz-python-tutorial
-	source = ros-melodic-visualization-tutorials-0.10.3.tar.gz::https://github.com/ros-visualization/visualization_tutorials/archive/0.10.3.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-visualization-marker-tutorials
+	depends = ros-noetic-librviz-tutorial
+	depends = ros-noetic-rviz-plugin-tutorials
+	depends = ros-noetic-interactive-marker-tutorials
+	depends = ros-noetic-rviz-python-tutorial
+	source = ros-noetic-visualization-tutorials-0.10.3.tar.gz::https://github.com/ros-visualization/visualization_tutorials/archive/0.10.3.tar.gz
 	sha256sums = a3162d933fea0dd58b99e46fb71ea5d8596ef6e46eaf3a906e4bf20e9ca1bb1c
 
-pkgname = ros-melodic-visualization-tutorials
+pkgname = ros-noetic-visualization-tutorials
 
