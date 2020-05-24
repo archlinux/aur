@@ -3,7 +3,7 @@
 pkgdesc="ROS - Xacro (XML Macros) Xacro is an XML macro language."
 url='https://wiki.ros.org/xacro'
 
-pkgname='ros-melodic-xacro'
+pkgname='ros-noetic-xacro'
 pkgver='1.13.3'
 _pkgver_patch=0
 arch=('any')
@@ -11,8 +11,8 @@ pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-roslint
-	ros-melodic-catkin
+	ros-noetic-roslint
+	ros-noetic-catkin
 )
 
 makedepends=(
@@ -22,7 +22,7 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-roslaunch
+	ros-noetic-roslaunch
 )
 
 depends=(
@@ -36,24 +36,17 @@ sha256sums=('279f294c79c17e881352a09d051378818449bc057ced8a4328b9a101c8d3600a')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
