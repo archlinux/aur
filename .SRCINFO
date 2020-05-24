@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-tuw-multi-robot-msgs
+pkgbase = ros-noetic-tuw-multi-robot-msgs
 	pkgdesc = ROS - The tuw_multi_robot_msgs package.
 	pkgver = 0.0.13
 	pkgrel = 1
@@ -7,17 +7,17 @@ pkgbase = ros-melodic-tuw-multi-robot-msgs
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-message-generation
-	makedepends = ros-melodic-geometry-msgs
-	makedepends = ros-melodic-nav-msgs
-	makedepends = ros-melodic-std-msgs
-	depends = ros-melodic-message-runtime
-	depends = ros-melodic-nav-msgs
-	depends = ros-melodic-geometry-msgs
-	depends = ros-melodic-std-msgs
-	source = ros-melodic-tuw-multi-robot-msgs-0.0.13.tar.gz::https://github.com/tuw-robotics/tuw_msgs/archive/0.0.13.tar.gz
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-message-generation
+	makedepends = ros-noetic-geometry-msgs
+	makedepends = ros-noetic-nav-msgs
+	makedepends = ros-noetic-std-msgs
+	depends = ros-noetic-message-runtime
+	depends = ros-noetic-nav-msgs
+	depends = ros-noetic-geometry-msgs
+	depends = ros-noetic-std-msgs
+	source = ros-noetic-tuw-multi-robot-msgs-0.0.13.tar.gz::https://github.com/tuw-robotics/tuw_msgs/archive/0.0.13.tar.gz
 	sha256sums = b22f12be8014a8855cd179d228ae5312102da4b3d176979f66f13e258cc418b6
 
-pkgname = ros-melodic-tuw-multi-robot-msgs
+pkgname = ros-noetic-tuw-multi-robot-msgs
 
