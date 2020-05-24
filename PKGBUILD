@@ -4,7 +4,7 @@
 
 pkgname=dxvk-winelib
 pkgver=1.6.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, Winelib version'
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
@@ -81,6 +81,7 @@ build() {
         --optimization=3 \
         --strip \
         -Denable_tests=false
+    sed -i 's/-pthread/-lpthread/g' build/x64/build.ninja
     ninja -C "build/x64" -v
 
     meson dxvk "build/x32" \
@@ -91,6 +92,7 @@ build() {
         --optimization=3 \
         --strip \
         -Denable_tests=false
+    sed -i 's/-pthread/-lpthread/g' build/x32/build.ninja
     ninja -C "build/x32" -v
 }
 
