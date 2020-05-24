@@ -1,6 +1,5 @@
-# Maintainer: Jennifer Zhou <0@jezh.me>
 pkgname=tin-summer
-pkgver=1.21.7
+pkgver=1.21.8
 pkgrel=1
 pkgdesc="Find build artifacts that are taking up disk space"
 arch=('x86_64')
@@ -9,6 +8,7 @@ license=('custom:BSD')
 depends=()
 makedepends=('rust' 'cargo')
 provides=('tin-summer')
+conflicts=('mono')
 source=("git+https://github.com/vmchale/tin-summer.git#tag=$pkgver")
 sha512sums=('SKIP')
 
