@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-libviso2
+pkgbase = ros-noetic-libviso2
 	pkgdesc = ROS - Library for visual odometry
 	pkgver = 0.0.1
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = ros-melodic-libviso2
 	source = viso2::git+https://github.com/srv/viso2.git
 	sha256sums = SKIP
 
-pkgname = ros-melodic-libviso2
+pkgname = ros-noetic-libviso2
 
