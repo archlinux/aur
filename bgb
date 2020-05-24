@@ -1,0 +1,2 @@
+#!/bin/sh
+exec wine /usr/lib/bgb/bgb.exe $@
