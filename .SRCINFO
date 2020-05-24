@@ -1,15 +1,18 @@
 pkgbase = bloaty
 	pkgdesc = a size profiler for binaries
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://github.com/google/bloaty
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	depends = gcc-libs
+	depends = re2
+	depends = protobuf
+	depends = capstone
 	options = !emptydirs
-	source = https://github.com/google/bloaty/releases/download/v1.0/bloaty-1.0.tar.bz2
-	sha256sums = e1cf9830ba6c455218fdb50e7a8554ff256da749878acfaf77c032140d7ddde0
+	source = https://github.com/google/bloaty/releases/download/v1.1/bloaty-1.1.tar.bz2
+	sha256sums = a308d8369d5812aba45982e55e7c3db2ea4780b7496a5455792fb3dcba9abd6f
 
 pkgname = bloaty
 
