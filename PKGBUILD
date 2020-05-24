@@ -20,7 +20,7 @@ depends=('ncurses5-compat-libs')
 source=("android-ndk.sh"
         "http://dl.google.com/android/repository/$_pkg-$pkgver-linux-x86_64.zip")
 sha256sums=('159d3690212bbf9bf01751b682784525326d058da364d6832050645eef30bfec'
-            '3f541adbd0330a9205ba12697f6d04ec90752c53d6b622101a2a8a856e816589 ')
+            '3f541adbd0330a9205ba12697f6d04ec90752c53d6b622101a2a8a856e816589')
 
 package() {
   install -d "$pkgdir/opt"
