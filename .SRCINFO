@@ -16,7 +16,6 @@ pkgbase = peazip-qt-bin
 	depends = zpaq
 	depends = lib32-gcc-libs
 	depends = lib32-xz
-	depends = lib32-zlib
 	depends = lib32-libx11
 	optdepends = quad: A ROLZ-based file compressor
 	optdepends = unace: Support for ace files

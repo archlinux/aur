@@ -21,7 +21,6 @@ depends=('lib32-curl'
          'zpaq'
          'lib32-gcc-libs'
          'lib32-xz'
-         'lib32-zlib'
          'lib32-libx11')
 options=('!emptydirs' '!strip')
 optdepends=('quad: A ROLZ-based file compressor' 
