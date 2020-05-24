@@ -1,12 +1,6 @@
 See the full changelog at
 https://git.sr.ht/~krathalan/wtwitch/tree/master/FULLCHANGELOG
 
-1.4.0 (March 06, 2020)
-    Added initial localization for German/Deutsch and Spanish/Español (user
-        contributed translations welcome!)
-    Dramatically sped up many features
-    Code cleanup
-
 1.4.1 (March 07, 2020)
     Fixed an issue where sometimes a streamer returned by the Twitch API would
         be null
@@ -18,3 +12,6 @@ https://git.sr.ht/~krathalan/wtwitch/tree/master/FULLCHANGELOG
     Add OAuth tokens for API requests as required by Twitch:
         https://discuss.dev.twitch.tv/t/requiring-oauth-for-helix-twitch-api-endpoints/23916
     Add support for XDG Base Directory spec
+
+1.5.1 (May 24, 2020)
+    Set OAuth token expiry for 1 day after acquisition
