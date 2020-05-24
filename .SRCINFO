@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-gl-dependency
+pkgbase = ros-noetic-gl-dependency
 	pkgdesc = ROS - This encapsulates the GL dependency for a specific ROS distribution and its Qt version.
 	pkgver = 1.1.0
 	pkgrel = 2
@@ -7,10 +7,10 @@ pkgbase = ros-melodic-gl-dependency
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
+	makedepends = ros-noetic-catkin
 	depends = python-pyqt5
-	source = ros-melodic-gl-dependency-1.1.0.tar.gz::https://github.com/ros-visualization/gl_dependency/archive/1.1.0.tar.gz
+	source = ros-noetic-gl-dependency-1.1.0.tar.gz::https://github.com/ros-visualization/gl_dependency/archive/1.1.0.tar.gz
 	sha256sums = 415d2cddfd1b06ce2937eac2c6ea1b33d3d2606250baf771a0e65d251fc0d336
 
-pkgname = ros-melodic-gl-dependency
+pkgname = ros-noetic-gl-dependency
 
