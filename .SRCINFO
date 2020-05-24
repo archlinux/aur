@@ -1,12 +1,13 @@
 pkgbase = sleuthkit-apfs
-	pkgdesc = File system and media management forensic analysis tools
+	pkgdesc = File system and media management forensic analysis tools with APFS patches
 	pkgver = 4.6.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.sleuthkit.org/sleuthkit
 	arch = x86_64
 	license = GPL2
 	license = CPL
 	license = custom:"IBM Public Licence"
+	makedepends = ant
 	depends = perl
 	depends = libewf
 	depends = sqlite
