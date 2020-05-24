@@ -1,37 +1,30 @@
-# First commit by yw662
-# Manteined by katoitalia
-# Thanks to aorth for his check-firmware-version.sh
+# Maintainer: katoitalia
+# Contributor: yw662
+# Contributor: FabioLolix
+# Contributor: aorth for his check-firmware-version.sh
 
-contenturl=https://cdn.download.clearlinux.org/update
-manifest_file=Manifest.linux-firmware
+pkgname=intel-ucode-clear
+pkgver=33180
+pkgrel=1
+pkgdesc="Intel cpu microcode and i915 firmware used by Clear Linux"
+arch=(x86_64)
+url=""
+license=()
+#provides=(intel-ucode)
+_ucode=f1d12a1788b7c0d81b32375cb4c7d9d13dd8b8edccb381ee3e8addd6fb84f876
+_i915=4dc9995ee42c3d78e54a7b9e193e04c504ba8fff12c9106852dfaedf5083fc3f
+source=("${pkgver}-Manifest.linux-firmware::https://cdn.download.clearlinux.org/update/${pkgver}/Manifest.linux-firmware"
+        "${pkgver}-00-intel-ucode.cpio.tar::https://cdn.download.clearlinux.org/update/${pkgver}/files/${_ucode}.tar"
+        "${pkgver}-i915-firmware.cpio.xz.tar::https://cdn.download.clearlinux.org/update/${pkgver}/files/${_i915}.tar")
+sha256sums=('e3ccb32d8d64e962f5ae277abdce4c3dbea23796120276c71e9fa0ce2cd12a98'
+            'b3caf7ad3dc5995ba96081f5926c6789b70f16c27074080d89ea9589b0eb8d0b'
+            '1a55ff0562ccb3d2b56fc3bf09ea433ad05adc92b21b2c41923ec1b2b4441752')
 
-pkgname="intel-ucode-clear"
-pkgver=32900
-pkgrel=0
-arch=('x86_64')
-
-prepare() {
-    curl -O $contenturl/$pkgver/$manifest_file
-}
 build() {
-    ucode=$(cat $manifest_file | sed -n -re "s/^.*[[:space:]]+([a-f0-9]+)[[:space:]]+$pkgver[[:space:]]+\/usr\/lib\/initrd.d\/00-intel-ucode.cpio$/\1/p")
-    i915=$(cat $manifest_file | sed -n -re "s/^.*[[:space:]]+([a-f0-9]+)[[:space:]]+$pkgver[[:space:]]+\/usr\/lib\/initrd.d\/i915-firmware.cpio.xz$/\1/p")
-
-    curl -O $contenturl/$pkgver/files/$ucode.tar
-    curl -O $contenturl/$pkgver/files/$i915.tar
-    tar -xf $ucode.tar
-    tar -xf $i915.tar
-
-    mv $ucode intel-ucode.cpio
-    mv $i915 i915-firmware.cpio.xz
-
-    rm $ucode.tar
-    rm $i915.tar
+  mv "${_ucode}" intel-ucode.cpio
+  mv "${_i915}" i915-firmware.cpio.xz
 }
 package() {
-    pkgdesc="intel cpu microcode and i915 firmware used by clear linux"
-    provides=("intel-ucode")
-    mkdir -p $pkgdir/boot
-    cp intel-ucode.cpio $pkgdir/boot
-    cp i915-firmware.cpio.xz $pkgdir/boot
+  install -d "${pkgdir}"/boot
+  install -D {intel-ucode.cpio,i915-firmware.cpio.xz} "${pkgdir}"/boot
 }
