@@ -1,11 +1,12 @@
-# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Maintainer:  Iyán Méndez Veiga <me (at) iyanmv (dot) com>
+# Contributor: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Det <nimetonmaili g-mail> 
 
 # check the latest version with:
 # $ curl -sL https://dl.google.com/linux/earth/deb/dists/stable/main/binary-amd64/Packages | grep -Pom1 'Version: \K[^-]*'
 
 pkgname=google-earth-pro
-pkgver=7.3.2.5815
+pkgver=7.3.3.7699
 pkgrel=1
 pkgdesc='3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)'
 arch=('x86_64')
@@ -19,14 +20,13 @@ optdepends=('catalyst-utils: For AMD Catalyst'
 provides=('google-earth')
 options=('!strip' '!emptydirs')
 install="${pkgname}.install"
-#source=("google-earth-pro-stable_${pkgver}_amd64.deb::https://dl.google.com/earth/client/current/google-earth-pro-stable_current_amd64.deb"
 source=("https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stable/google-earth-pro-stable_${pkgver}-r0_amd64.deb"
         'Google-Terms-of-Service.html'::'https://www.google.com/intl/ALL/policies/terms/index.html'
         'Google-Earth-Additional-Terms-of-Service.html'::'https://www.google.com/help/terms_maps.html'
         'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html'::'https://www.google.com/help/legalnotices_maps.html'
         'Google-Privacy-Policy.html'::'https://www.google.com/intl/ALL/policies/privacy/index.html')
 noextract=("google-earth-pro-stable_${pkgver}-r0_amd64.deb")
-sha256sums=('57b6c970609dc2960e9255b08a7ddf3af2581cb7c06ff92d16820269d0b2530d'
+sha256sums=('91658d1b247358cbe3cc75550ea3e80e99730d19988a4f5da622d3e34597ae3d'
             'SKIP'
             'SKIP'
             'SKIP'
