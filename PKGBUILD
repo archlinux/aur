@@ -2,7 +2,7 @@
 # Contributor: Taekyung Kim <Taekyung.Kim.Maths@gmail.com>
 
 _cranname=carData
-_cranver=3.0-3
+_cranver=3.0-4
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
 depends=(r)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('45c0fd2ae8defe348b478032836f31a7')
+md5sums=('e41712fe4583c13f129894150019b014')
 
 build() {
   cd "${srcdir}"
