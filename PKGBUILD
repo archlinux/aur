@@ -5,8 +5,8 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.12.2_14.23.5.2768-10"
-_minecraft_ver_latest="1.14.4"
+_ver="1.12.2_14.23.5.2854-1"
+_minecraft_ver_latest="1.15.2"
 
 IFS="-" read -ra _ver_temp <<< "$_ver"
 IFS="_" read -ra _pkgver_temp <<< "${_ver_temp[0]}"
@@ -50,7 +50,7 @@ sha512sums=('68307c04a8d32a9dec8417209ab49d5fe42c433f61d949847ec2ea0c17d28bdceb3
             'e8dc99ee822bb401dbbae6d4bb768bc60e4a48b7b03b624ffd9efa8a49b9c5adaba2d3e28d78d4bdb740acc874aa13bbb9e99953ac6f7845e9616659e4269f93'
             '8afd9878a14636cbb84bff2a001917c26844204166ecd453dda6d46aa972fa013a9c3e48b2f556c4bda503bc0e6374f5e5afcff6886af62dd84d5db83633b4b1'
             '4cca7835f967987e13fa30dda116aefeff9be4ca2d1e8ba5e8704ac365d385491d577352ab75d06b660963c0b37a0bd35c6d984b48bac50a5818e1df09947112'
-            'fefaabeccd17b98752cbef8bd01f4bce27e351106c256edf6aba92267e0fc4ded36fba089f9b7f5fc2d210e5f7b07bca38d8254a2f4732516720e45a249dc5c2'
+            '5c5ea78192f65b8ce0c995a671109b2643540efc1470b1f9fbdf34b03416559fc666475fa70372489a69eaa372fb556d0b09756d9f1825d882df5bb61a49fe1d'
             '7f158bed6957e5285ce45a480f6a222065af5427bd48481ef24eb770ff540aa67b2d1c1ed976d216db94323017f7c7ee1dfe16e3f222b14189f9823e0b49f0f3'
             '2c9bdefe7d022be139e7aec2e5f1cc1f83ea9d35d2c945e26422e140027b5107ce32c56f0b97e7dbf6b6edb282075df4a18c156a6ed6b064bcb10a3b4481a9aa'
             'c890315962cbc180897094b3558e19ef2452f5ad587bb759e2af1808a86be4c925e7ba767746b2f6b54b24b27d66437593000c7406db5d5dc2824b0fff9775bb')
@@ -117,7 +117,7 @@ fi
 
 prepare() {
 	[ "$_minecraft_ver_minor" = 10 ] && mkdir mods
-	[ "$_minecraft_ver_minor" = 5 ] && unzip fml_libs15.zip -d lib
+	[ "$_minecraft_ver_minor" = 5 ] && unzip -o fml_libs15.zip -d lib
 	java -jar "forge-${_pkgver}-installer.jar" --installServer
 }
 
@@ -133,7 +133,7 @@ package() {
 
 	# Install Forge
 	_forge_jar="forge-${_pkgver}.jar"
-	[ "$_minecraft_ver_minor" -le 12 ] && _forge_jar="forge-${_pkgver}-universal.jar"
+	[ "$_minecraft_ver_minor" -le 11 ] && _forge_jar="forge-${_pkgver}-universal.jar"
 	[ "$_minecraft_ver_minor" = 7 ] && _forge_jar="forge-${_pkgver}-${_minecraft_ver}-universal.jar"
 	[ "$_minecraft_ver_minor" -le 6 ] && _forge_jar="minecraftforge-universal-${_pkgver}.jar"
 
