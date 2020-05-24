@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-eigen-conversions
+pkgbase = ros-noetic-eigen-conversions
 	pkgdesc = ROS - Conversion functions between: - Eigen and KDL - Eigen and geometry_msgs.
 	pkgver = 1.12.0
 	pkgrel = 2
@@ -7,17 +7,17 @@ pkgbase = ros-melodic-eigen-conversions
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-orocos-kdl
-	makedepends = ros-melodic-std-msgs
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-noetic-orocos-kdl
+	makedepends = ros-noetic-std-msgs
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-geometry-msgs
 	makedepends = eigen3
-	depends = ros-melodic-orocos-kdl
-	depends = ros-melodic-std-msgs
-	depends = ros-melodic-geometry-msgs
+	depends = ros-noetic-orocos-kdl
+	depends = ros-noetic-std-msgs
+	depends = ros-noetic-geometry-msgs
 	depends = eigen3
-	source = ros-melodic-eigen-conversions-1.12.0.tar.gz::https://github.com/ros/geometry/archive/1.12.0.tar.gz
+	source = ros-noetic-eigen-conversions-1.12.0.tar.gz::https://github.com/ros/geometry/archive/1.12.0.tar.gz
 	sha256sums = 61a278bdd50e00ea442055d9f70eaf82b5a36916739edca188fa1b71a59507b4
 
-pkgname = ros-melodic-eigen-conversions
+pkgname = ros-noetic-eigen-conversions
 
