@@ -1,0 +1,18 @@
+pkgbase = groffdown
+	pkgdesc = wrapper for creating documents with markdown using groff as backend, because groff is fast and convenient
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/knarkzel/groffdown
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	md5sums = SKIP
+
+pkgname = groffdown
+
