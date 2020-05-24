@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rqt-moveit
+pkgbase = ros-noetic-rqt-moveit
 	pkgdesc = ROS - An rqt-based tool that assists monitoring tasks for MoveIt! motion planner developers and users.
 	pkgver = 0.5.7
 	pkgrel = 2
@@ -7,18 +7,18 @@ pkgbase = ros-melodic-rqt-moveit
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-py-common
-	depends = ros-melodic-rqt-gui-py
-	depends = ros-melodic-rqt-topic
-	depends = ros-melodic-rosnode
-	depends = ros-melodic-rostopic
-	depends = ros-melodic-python-qt-binding
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-sensor-msgs
-	depends = ros-melodic-rospy
-	source = ros-melodic-rqt-moveit-0.5.7.tar.gz::https://github.com/ros-visualization/rqt_moveit/archive/0.5.7.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-rqt-py-common
+	depends = ros-noetic-rqt-gui-py
+	depends = ros-noetic-rqt-topic
+	depends = ros-noetic-rosnode
+	depends = ros-noetic-rostopic
+	depends = ros-noetic-python-qt-binding
+	depends = ros-noetic-rqt-gui
+	depends = ros-noetic-sensor-msgs
+	depends = ros-noetic-rospy
+	source = ros-noetic-rqt-moveit-0.5.7.tar.gz::https://github.com/ros-visualization/rqt_moveit/archive/0.5.7.tar.gz
 	sha256sums = 80430ab344e096ae32caa505fb47f33ad52d77a83578ccb19950d097dee85e06
 
-pkgname = ros-melodic-rqt-moveit
+pkgname = ros-noetic-rqt-moveit
 
