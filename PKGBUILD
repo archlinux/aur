@@ -3,12 +3,13 @@
 # Contributor: Georgios Tsalikis  <aliverius somewhere near tsalikis and a net>
 
 pkgname=gnat-gps
-pkgver=2019
-pkgrel=2
+pkgver=2020
+pkgrel=1
+_gps_version="20.2"
 pkgdesc="GNAT Programming Studio for Ada"
 
 arch=('i686' 'x86_64')
-url="http://libre.adacore.com/libre/tools/gps"
+url="https://github.com/AdaCore/gps"
 license=('GPL')
 
 depends=("clang" "libadalang"
@@ -16,81 +17,80 @@ depends=("clang" "libadalang"
          "gnatcoll-gnatinspect" "gtkada"
          "gnome-icon-theme" "gnome-icon-theme-extras" "gnome-icon-theme-symbolic" 
          "python2-gobject" "python2-jedi")
-makedepends=("gprbuild")
+makedepends=('gprbuild' 'python2-sphinx' 'texlive-latexextra' 'graphviz')
 
-source=(https://github.com/AdaCore/gps/archive/eb0d52567d9e1af49ee3248144442c9fa46bbb55.zip
-        https://community.download.adacore.com/v1/6b32f1aa7cc443bcaf268ef13fa46e3b0fdf147d?filename=libadalang-tools-2019-20190517-195C4-src.tar.gz
-        patch-Makefile.in
-        patch-docs-Makefile.in
-        xref-docgen.adb-patch
-        src_contexts.adb-patch
+_laltools_ver=2020-20200429-1998C
+_laltools_checksum=740372d8ffb1e4755a99bead2d78dace904235c0
+_als_ver=21.0.3
+source=("gps-${_gps_version}.tar.gz::https://github.com/AdaCore/gps/archive/$_gps_version.tar.gz"
+        "ada_language_server-$_als_ver.tar.gz::https://github.com/AdaCore/ada_language_server/archive/$_als_ver.tar.gz"
+        "libadalang-tools-$_laltools_ver-src.tar.gz::https://community.download.adacore.com/v1/$_laltools_checksum?filename=libadalang-tools-$_laltools_ver-src.tar.gz"
+        0001-Use-GPR.Sinput.Reference_Name.patch
+        0002-Ignore-absence-of-version-number-in-user_guide.patch
+        0003-Honour-DESTDIR-in-installation-targets.patch
+        0004-Honour-GPRBUILD_FLAGS-in-cli-Makefile.patch
+        0005-Fix-recursive-make-in-docs.patch
         gps.desktop)
 
-sha1sums=('ed71bc62dc796263a5ba91472be90067d71396cc'
-          '6b32f1aa7cc443bcaf268ef13fa46e3b0fdf147d'
-          '763584d9a931887eff11151310504c02df279224'
-          '60813145324cd5ea9f081648da10cffd99f87586'
-          'e166ed6513465f59f433eac8f759afcd190ab853'
-          'bd80d0f84c128e1e0d6a1aa3ac4b419226a4c616'
-          '1f4ee00408551af23eec12488188016ffee17c72')
-
-gps_version="eb0d52567d9e1af49ee3248144442c9fa46bbb55"
-
+sha1sums=('bd0b5c3d3e1c411d2824f93f59534d783010e65c'
+          'a737b6d7ee2d4a1193f088a0817070e545752dae'
+          "$_laltools_checksum"
+          '7befc021358ada26c6a332e623113b32317bfd8c'
+          '525f0b9d64fecb9c2e669cf64b60548b86c575d9'
+          '4c13859aa25c5142bd5d0fde7b645217ddeccb50'
+          '26f6fac439ec973facccee5412dc4c86b7c6d8c7'
+          '6dd1f880f55c9612a2a67d41e6606df26cd829c6'
+          'b399c7b3a1fe48152da18081def3dced2e74763b')
 
 prepare()
 {
-  cd $srcdir/gps-$gps_version
+  cd "$srcdir/gps-$_gps_version"
 
-  patch -p0 -i ../patch-Makefile.in
-  patch -p0 -i ../patch-docs-Makefile.in
+  patch -p1 < "$srcdir/0001-Use-GPR.Sinput.Reference_Name.patch"
+  patch -p1 < "$srcdir/0002-Ignore-absence-of-version-number-in-user_guide.patch"
+  patch -p1 < "$srcdir/0003-Honour-DESTDIR-in-installation-targets.patch"
+  patch -p1 < "$srcdir/0004-Honour-GPRBUILD_FLAGS-in-cli-Makefile.patch"
+  patch -p1 < "$srcdir/0005-Fix-recursive-make-in-docs.patch"
 
-  patch -p0 -i ../src_contexts.adb-patch
-  patch -p0 -i ../xref-docgen.adb-patch
-
-  ## Force use of python2
-  #
+  # Force use of python2
   rm -fr temp_bin
   mkdir  temp_bin
   ln -s /usr/bin/python2        temp_bin/python
   ln -s /usr/bin/python2-config temp_bin/python-config
+  ln -s /usr/bin/sphinx-build2  temp_bin/sphinx-build
 
-  ## Move lal-tools into the GPS source tree.
-  #
-  rm -fr $srcdir/gps-$gps_version/laltools
-  mv $srcdir/libadalang-tools-2019-20190517-195C4-src $srcdir/gps-$gps_version/laltools
+  # Link libadalang-tools and ada_language_server into the GPS source tree
+  ln -sf "$srcdir/libadalang-tools-$_laltools_ver-src" "$srcdir/gps-$_gps_version/laltools"
+  ln -sf "$srcdir/ada_language_server-$_als_ver" "$srcdir/gps-$_gps_version/ada_language_server"
 }
 
 
 build() 
 {
-  cd $srcdir/gps-$gps_version
+  cd "$srcdir/gps-$_gps_version"
 
   export OS=unix
 
-  ## Force use of python2
-  #
-  export PATH=$srcdir/gps-$gps_version/temp_bin:$PATH
+  # Force use of python2
+  export PATH="$srcdir/gps-$_gps_version/temp_bin:$PATH"
 	
-  export Build=Production
-  ./configure  --prefix=/usr
-  PROCESSORS=5 make
+  ./configure --prefix=/usr
+  make PROCESSORS=0 Build=Production GPRBUILD_FLAGS="-R -cargs $CFLAGS -largs $LDFLAGS -gargs"
+  make -C docs all
 }
 
 
 package() 
 {
-  cd $srcdir/gps-$gps_version
+  cd "$srcdir/gps-$_gps_version"
 
   export OS=unix
 
-  ## Force use of python2
-  #
-  export PATH=$srcdir/gps/temp_bin:$PATH
+  # Force use of python2
+  export PATH="$srcdir/gps-$_gps_version/temp_bin:$PATH"
 
   make DESTDIR="$pkgdir/" install
 
-  ## Add the desktop config.
-  #
-  mkdir -p               $pkgdir/usr/share/applications
-  cp $srcdir/gps.desktop $pkgdir/usr/share/applications
+  # Add the desktop config.
+  install -Dm644 -t "$pkgdir/usr/share/applications/" "$srcdir/gps.desktop"
 }

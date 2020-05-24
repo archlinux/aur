@@ -1,0 +1,28 @@
+From eab7a24b8e74f37d37522263655363e5647497b4 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 24 May 2020 11:22:31 +0200
+Subject: [PATCH 2/5] Ignore absence of version number in user_guide
+
+This was missed in 5b1ce178efb54d8c451c08c8443bbafdea4cacda, "Ignore
+absence of VERSION.txt file."
+---
+ gnatdoc/docs/users_guide/conf.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/gnatdoc/docs/users_guide/conf.py b/gnatdoc/docs/users_guide/conf.py
+index e8f76eaa6c..4076ff8f21 100644
+--- a/gnatdoc/docs/users_guide/conf.py
++++ b/gnatdoc/docs/users_guide/conf.py
+@@ -53,7 +53,8 @@ def get_version():
+     version_file = "../../../VERSION.txt"
+     if os.path.isfile(version_file):
+         return file(version_file).readline()
+-    raise Exception("Cannot find version number")
++    else:
++        return "0.0"
+ 
+ # The version info for the project you're documenting, acts as replacement for
+ # |version| and |release|, also used in various other places throughout the
+-- 
+2.26.2
+
