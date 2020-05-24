@@ -28,6 +28,7 @@ optdepends=(
 	'ttf-opensans: default Open Sans font family'
 )
 conflicts=('kotatogram-desktop' 'kotatogram-desktop-bin')
+provides=('kotatogram-desktop')
 source=("https://github.com/ilya-fedin/kotatogramAUR/releases/download/k${pkgver}-${_pkgrel}/${_pkgname}-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz")
 sha512sums=('aee7ba0bf4b3a30cf6cc5058a7fc4f531e2812594d7eb910e51cda83bb6d66f3cee73cf46de0b98cbf5528c77f0271a890d50d7ebfa725850db6b82f01f66b4a')
 
