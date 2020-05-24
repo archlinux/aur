@@ -6,7 +6,7 @@
 #Maintainer:  sparzz
 pkgname=mesa-radv-drivers-git
 packager=sparzz
-pkgver=20.2.0.2020.05.24.1
+pkgver=20.2.0._devel_alpha
 pkgrel=1
 epoch=
 pkgdesc="provide mesa RADV drivers for AMD card with ACO compiler enable. Update with yay -Sua"
@@ -255,6 +255,8 @@ build() {
 
 package() {
 	sudo DESTDIR="$pkgdir" ninja $NINJAFLAGS -C mesa/build/ install 
+	sudo DESTDIR="$pkgdir" cp mesa/.bashrc_aco /usr/local/etc/
+	
 	cd /usr/local/lib
 	
 	if dir libEGL.so.1.0.0.old; then 
