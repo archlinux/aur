@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rqt-nav-view
+pkgbase = ros-noetic-rqt-nav-view
 	pkgdesc = ROS - rqt_nav_view provides a gui for viewing navigation maps and paths.
 	pkgver = 0.5.7
 	pkgrel = 2
@@ -7,18 +7,18 @@ pkgbase = ros-melodic-rqt-nav-view
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-py-common
-	depends = ros-melodic-rqt-gui-py
-	depends = ros-melodic-qt-gui
-	depends = ros-melodic-tf
-	depends = ros-melodic-nav-msgs
-	depends = ros-melodic-python-qt-binding
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-rospy
-	depends = ros-melodic-geometry-msgs
-	source = ros-melodic-rqt-nav-view-0.5.7.tar.gz::https://github.com/ros-visualization/rqt_nav_view/archive/0.5.7.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-rqt-py-common
+	depends = ros-noetic-rqt-gui-py
+	depends = ros-noetic-qt-gui
+	depends = ros-noetic-tf
+	depends = ros-noetic-nav-msgs
+	depends = ros-noetic-python-qt-binding
+	depends = ros-noetic-rqt-gui
+	depends = ros-noetic-rospy
+	depends = ros-noetic-geometry-msgs
+	source = ros-noetic-rqt-nav-view-0.5.7.tar.gz::https://github.com/ros-visualization/rqt_nav_view/archive/0.5.7.tar.gz
 	sha256sums = 93ee15ffdac90401e7b7ba1386f4b5a5ee7aa9c7e7b55227b7763dc21cf0a7cc
 
-pkgname = ros-melodic-rqt-nav-view
+pkgname = ros-noetic-rqt-nav-view
 
