@@ -3,34 +3,34 @@
 pkgdesc="ROS - USB Video Class camera driver."
 url='https://wiki.ros.org/libuvc_camera'
 
-pkgname='ros-melodic-libuvc-camera'
+pkgname='ros-noetic-libuvc-camera'
 pkgver='0.0.10'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=3
 license=('BSD')
 
-ros_makedepends=(ros-melodic-camera-info-manager
-  ros-melodic-nodelet
-  ros-melodic-roscpp
-  ros-melodic-libuvc
-  ros-melodic-dynamic-reconfigure
-  ros-melodic-sensor-msgs
-  ros-melodic-image-transport
-  ros-melodic-catkin)
+ros_makedepends=(ros-noetic-camera-info-manager
+  ros-noetic-nodelet
+  ros-noetic-roscpp
+  ros-noetic-libuvc
+  ros-noetic-dynamic-reconfigure
+  ros-noetic-sensor-msgs
+  ros-noetic-image-transport
+  ros-noetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-melodic-camera-info-manager
-  ros-melodic-nodelet
-  ros-melodic-roscpp
-  ros-melodic-libuvc
-  ros-melodic-dynamic-reconfigure
-  ros-melodic-sensor-msgs
-  ros-melodic-image-transport)
+ros_depends=(ros-noetic-camera-info-manager
+  ros-noetic-nodelet
+  ros-noetic-roscpp
+  ros-noetic-libuvc
+  ros-noetic-dynamic-reconfigure
+  ros-noetic-sensor-msgs
+  ros-noetic-image-transport)
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
-# _tag=release/melodic/libuvc_camera/${pkgver}-${_pkgver_patch}
+# _tag=release/noetic/libuvc_camera/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-drivers-gbp/libuvc_ros-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
@@ -43,23 +43,19 @@ sha256sums=('33c356df370f548be1dbc1d21a13bf2704b6ea0218f77d3d6f305392266629d3')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-  # fix file that previous script missed.
-  grep -Rl "env python2" ${srcdir}/${_dir} | xargs -r -n 1 -- sed -i 's/env python2/env python3/'
+  grep -Rl "env python2" ${srcdir}/${_dir} | xargs -r -n 1 -- sed -i 's/env python2/env python/'
 
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
