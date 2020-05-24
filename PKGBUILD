@@ -1,6 +1,6 @@
 # Maintainer: Stefan Gehr <stefangehr@protonmail.com>
 pkgname=utqemu-git
-pkgver=r26.cd7bb30
+pkgver=r29.c49d084
 pkgrel=1
 pkgdesc="Ubuntu touch qemu is an easy to use ubuntu touch emulator/virtual machine"
 arch=('any')
