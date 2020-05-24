@@ -6,10 +6,10 @@
 #Maintainer:  sparzz
 pkgname=mesa-radv-drivers-git
 packager=sparzz
-pkgver=20.2.0.2020.05.23.1
+pkgver=20.2.0.2020.05.24
 pkgrel=1
 epoch=
-pkgdesc="mesa-radv-drivers-git"
+pkgdesc="provide mesa RADV drivers for AMD card with ACO compiler enable. Update with yay -Sua"
 arch=(x86_64)
 url="https://github.com/sparzz/mesa.git"
 license=('MIT')
@@ -255,7 +255,6 @@ build() {
 
 package() {
 	sudo DESTDIR="$pkgdir" ninja $NINJAFLAGS -C mesa/build/ install 
-	sudo DESTDIR="pkgdir" cp /.bashrc_aco_enable /usr/local/etc
 	cd /usr/local/lib
 	
 	if dir libEGL.so.1.0.0.old; then 
@@ -357,5 +356,13 @@ package() {
 	if dir libXvMCr600.so.old; then 
 	sudo rm -r libXvMCr600.so.old
 	fi
+
+	# making .bashrc file to enable aco compiler
+
+	cd /usr/
+	cd local/
+	cd etc/
+	sudo touch .bashrc_aco_enable
+	sudo echo "{export RADV_PERFEST=aco}" > .bashrc_aco_enable
 }
 
