@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-perception-pcl
+pkgbase = ros-noetic-perception-pcl
 	pkgdesc = ROS - PCL (Point Cloud Library) ROS interface stack.
 	pkgver = 1.7.0
 	pkgrel = 1
@@ -7,12 +7,12 @@ pkgbase = ros-melodic-perception-pcl
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-pcl-conversions
-	depends = ros-melodic-pcl-ros
-	depends = ros-melodic-pcl-msgs
-	source = ros-melodic-perception-pcl-1.7.0.tar.gz::https://github.com/ros-perception/perception_pcl/archive/1.7.0.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-pcl-conversions
+	depends = ros-noetic-pcl-ros
+	depends = ros-noetic-pcl-msgs
+	source = ros-noetic-perception-pcl-1.7.0.tar.gz::https://github.com/ros-perception/perception_pcl/archive/1.7.0.tar.gz
 	sha256sums = ac821a662e507df7e48cebc0ba02aaa360b8edbd43873fc6f63bc65ec3d12628
 
-pkgname = ros-melodic-perception-pcl
+pkgname = ros-noetic-perception-pcl
 
