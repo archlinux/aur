@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-ros-emacs-utils
+pkgbase = ros-noetic-ros-emacs-utils
 	pkgdesc = ROS - A metapackage of Emacs utils for ROS.
 	pkgver = 0.4.13
 	pkgrel = 1
@@ -7,13 +7,13 @@ pkgbase = ros-melodic-ros-emacs-utils
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-slime-wrapper
-	depends = ros-melodic-slime-ros
-	depends = ros-melodic-rosemacs
-	depends = ros-melodic-roslisp-repl
-	source = ros-melodic-ros-emacs-utils-0.4.13.tar.gz::https://github.com/code-iai/ros_emacs_utils/archive/0.4.13.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-slime-wrapper
+	depends = ros-noetic-slime-ros
+	depends = ros-noetic-rosemacs
+	depends = ros-noetic-roslisp-repl
+	source = ros-noetic-ros-emacs-utils-0.4.13.tar.gz::https://github.com/code-iai/ros_emacs_utils/archive/0.4.13.tar.gz
 	sha256sums = 14c8463b3c354a53659843c82af416a4ff6713747f04da98e8fc39de90c8ec6c
 
-pkgname = ros-melodic-ros-emacs-utils
+pkgname = ros-noetic-ros-emacs-utils
 
