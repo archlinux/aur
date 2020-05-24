@@ -1,8 +1,8 @@
 # Maintainer: Stuart Cardall <developer__at__it-offshore.co.uk>
 pkgname=arch-sign-modules
 _pkgname=Arch-SKM
-pkgver=0.2.1
-pkgrel=4
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="Helper scripts for Signed Kernel Modules"
 arch=(x86_64)
 url="https://github.com/itoffshore/Arch-SKM"
