@@ -1,15 +1,15 @@
 pkgdesc="ROS - This stack provides Python bindings for Qt."
 url='https://wiki.ros.org/python_qt_binding'
 
-pkgname='ros-melodic-python-qt-binding'
+pkgname='ros-noetic-python-qt-binding'
 pkgver='0.4.1'
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-rosbuild
-	ros-melodic-catkin
+	ros-noetic-rosbuild
+	ros-noetic-catkin
 )
 
 makedepends=(
@@ -42,21 +42,17 @@ prepare() {
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
