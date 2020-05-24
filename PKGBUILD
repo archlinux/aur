@@ -3,7 +3,7 @@
 pkgname=python-ipfshttpclient-git
 _reponame=py-ipfs-http-client
 _name=ipfshttpclient
-pkgver=0.4.12
+pkgver=0.4.13.2
 pkgrel=1
 pkgdesc="Python IPFS API client library"
 arch=('any')
@@ -19,7 +19,9 @@ depends=('python'
          'python-six'
         )
 makedepends=('flit')
-checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-ordering' 'python-pytest-mock'
+checkdepends=('python-pytest' 'python-pytest-cid' 'python-pytest-cov'
+		'python-pytest-dependency'
+		'python-pytest-ordering' 'python-pytest-mock'
 	      'python-pytest-localserver' 'python-pluggy' 'python-py'
 	      #python-py-cid # appears to be optional
 )

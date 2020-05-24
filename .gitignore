@@ -4,3 +4,4 @@ src/
 pkg/
 py-ipfs-http-client
 *.tar.xz
+*.pkg.tar.zst

@@ -1,12 +1,14 @@
 pkgbase = python-ipfshttpclient-git
 	pkgdesc = Python IPFS API client library
-	pkgver = 0.4.12
+	pkgver = 0.4.13.2
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/ipfshttpclient
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	checkdepends = python-pytest-cid
 	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-dependency
 	checkdepends = python-pytest-ordering
 	checkdepends = python-pytest-mock
 	checkdepends = python-pytest-localserver
@@ -20,7 +22,7 @@ pkgbase = python-ipfshttpclient-git
 	depends = python-setuptools
 	depends = python-six
 	optdepends = go-ipfs: IPFS daemon
-	provides = python-ipfshttpclient=0.4.12
+	provides = python-ipfshttpclient=0.4.13.2
 	conflicts = python-ipfshttpclient
 	conflicts = python-ipfsapi
 	source = git+https://github.com/ipfs/py-ipfs-http-client
