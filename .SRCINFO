@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-tf2-py
+pkgbase = ros-noetic-tf2-py
 	pkgdesc = ROS - The tf2_py package.
 	pkgver = 0.6.5
 	pkgrel = 3
@@ -7,13 +7,13 @@ pkgbase = ros-melodic-tf2-py
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-tf2
-	makedepends = ros-melodic-rospy
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-tf2
-	depends = ros-melodic-rospy
-	source = ros-melodic-tf2-py-0.6.5.tar.gz::https://github.com/ros/geometry2/archive/0.6.5.tar.gz
+	makedepends = ros-noetic-tf2
+	makedepends = ros-noetic-rospy
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-tf2
+	depends = ros-noetic-rospy
+	source = ros-noetic-tf2-py-0.6.5.tar.gz::https://github.com/ros/geometry2/archive/0.6.5.tar.gz
 	sha256sums = 9a1268621518fc22afd7b12ef1cf30e6901a57b054535924d1d74fd5d267773a
 
-pkgname = ros-melodic-tf2-py
+pkgname = ros-noetic-tf2-py
 
