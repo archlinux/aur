@@ -4,20 +4,20 @@
 # main package repo, but customized to compile a standalone Python
 # module.
 
-_gittag=v2.82
+_gittag=v2.82a
 # _gitcommit=rB5b416ffb848e66238d9646a239840499f98121a9
 
 pkgname=blender-as-py-module
-pkgver=2.82
+pkgver=2.82a
 [[ -n $_gitcommit ]] && pkgver=${pkgver}.git1.${_gitcommit:0:8}
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully integrated 3D graphics creation suite, to be used as Python module. Useful for programmatic/batch rendering."
 arch=('x86_64')
 license=('GPL')
 url="http://www.blender.org"
 depends=('libpng' 'libtiff' 'openexr' 'python' 'desktop-file-utils'
          'python-requests' 'shared-mime-info' 'hicolor-icon-theme'
-         'xdg-utils' 'glew' 'openjpeg' 'python-numpy' 'freetype2'
+         'xdg-utils' 'glew' 'openjpeg2' 'python-numpy' 'freetype2'
          'boost-libs' 'openimageio' 'opencolorio'
          'openshadinglanguage' 'libspnav' 'ptex' 'opensubdiv'
          'log4cplus')
