@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-convex-decomposition
+pkgbase = ros-noetic-convex-decomposition
 	pkgdesc = ROS - Convex Decomposition Tool for Robot Model.
 	pkgver = 0.1.12
 	pkgrel = 2
@@ -7,11 +7,11 @@ pkgbase = ros-melodic-convex-decomposition
 	license = MIT
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
+	makedepends = ros-noetic-catkin
 	makedepends = unzip
 	depends = unzip
-	source = ros-melodic-convex-decomposition-0.1.12.tar.gz::https://github.com/ros/convex_decomposition/archive/0.1.12.tar.gz
+	source = ros-noetic-convex-decomposition-0.1.12.tar.gz::https://github.com/ros/convex_decomposition/archive/0.1.12.tar.gz
 	sha256sums = 01621bace11c1929a2ae252a37763fbe7f56d0cfb651105e992505b96d9fdd4a
 
-pkgname = ros-melodic-convex-decomposition
+pkgname = ros-noetic-convex-decomposition
 
