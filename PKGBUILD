@@ -5,13 +5,13 @@
 
 pkgname=xfwm-axiom-theme
 pkgver=1
-pkgrel=6
+pkgrel=7
 pkgdesc='Inspired by the metacity theme "fresh". Two xfwm themes are included, axiom for bright themes and axiomd for dark themes.'
 arch=(any)
 url="https://www.xfce-look.org/content/show.php/axiom?content=90145"
 depends=('xfwm4')
 license=('GPL')
-source=('https://dl.opendesktop.org/api/files/download/id/1461767736/s/1c611d7853bc748d2b84265b63465eeee5d7e4920151b3bf1773757ecdb17418acb23e88f0b9b331fbe5d8195d9f7259589eeacff9ba10917b0e92c4fdf18280/t/1559435986/lt/download/90145-axiom.tar.gz')
+source=('https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE0NjE3Njc3MzYiLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6IjA2MzA0NmE2MGE2NzhkM2MxNjg2ODFlMzU5NDY3ZDdhNDMwMGUyODQ2YzdmOWFmZWNhNjhhZmRmMDg5ZDYyNTFlYzE1NTVkNWI5YjE2ZTc2MmRiNmZmY2E4ODg3NjVmOTQyY2I4NGM3M2I3MTYzYmM1MGEzOTE4MWI0ODIzZTkwIiwidCI6MTU5MDMzMjU4NSwic3RmcCI6IjZlMTRkMGM1NWEwMmJiMmFmOWQyNjcyOWI4MDMzYzNiIiwic3RpcCI6IjE4Ny4xOTAuMjA5Ljk3In0.j7KFMCn0SQdt0Q08yV-o47CX1K8gd9krL0BIBqxhVts/90145-axiom.tar.gz')
 md5sums=('e9fd9f41f671afa17b3efbf43f0008de')
 
 package() {
