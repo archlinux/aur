@@ -8,13 +8,13 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('429' '493' '579' '983' '798' '1003')
-_merge_requests_to_use=('983' '1124' '1003') # safe pick
+# available MR: ('429' '493' '579' '983' '798' '1003' ' 1267')
+_merge_requests_to_use=('1124' '1003' '1267') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.36.2+1+gb1df6d08a
+pkgver=3.36.2+10+g63fc71f05
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -30,9 +30,11 @@ conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=b1df6d08a51176690c6191f667c1ee39aeae952b  # tags/3.36.2^1
-source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
-sha256sums=('SKIP')
+_commit=63fc71f05bebca6a247db783c3a7672ed574dea7  # tags/3.36.2^10
+source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
+        "fix_clutter_actor_set_allocation_spam.patch")
+sha256sums=('SKIP'
+            '9b2a5c4ab0e8c5e9a54fddc7461a85455055b175af9a7c89b0e16f30a939fa42')
 
 pkgver() {
   cd $pkgname
@@ -49,9 +51,9 @@ pick_mr() {
       elif [ "$3" = "revert" ]; then
         echo "Reverting $1..."
         git revert "$2" --no-commit
-      elif [ "$2" = "patch" ]; then
-        echo "Patching $1..."
-        patch -Np1 -i "$2"
+      elif [ "$3" = "patch" ]; then
+        echo "Patching with $2..."
+        patch -Np1 -i ../"$2"
       else
         echo "ERROR: wrong argument given: $2"
       fi
@@ -129,9 +131,9 @@ prepare() {
   # Title: clutter/text: Check if attributes are equal before applying
   # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/983
   # Type: 1
-  # Status: 2
+  # Status: 1
   # Comment:
-  pick_mr '983'
+  # pick_mr '983'
 
   # Title: Wayland surface fullscreen unredirect
   # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/798
@@ -147,6 +149,12 @@ prepare() {
   # Comment:
   pick_mr '1003'
 
+  # Title: clutter/stage: Use an own flag to prevent relayout reentry in the stage
+  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1266
+  # Type: 3
+  # Status: 2
+  # Comment:
+  pick_mr '1267' 'fix_clutter_actor_set_allocation_spam.patch' 'patch'
 }
 
 build() {
