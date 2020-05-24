@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-dynamic-edt-3d
+pkgbase = ros-noetic-dynamic-edt-3d
 	pkgdesc = ROS - The dynamicEDT3D library implements an inrementally updatable Euclidean distance transform (EDT) in 3D.
 	pkgver = 1.9.0
 	pkgrel = 2
@@ -7,11 +7,11 @@ pkgbase = ros-melodic-dynamic-edt-3d
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-octomap
-	depends = ros-melodic-octomap
-	depends = ros-melodic-catkin
-	source = ros-melodic-dynamic-edt-3d-1.9.0.tar.gz::https://github.com/OctoMap/octomap/archive/v1.9.0.tar.gz
+	makedepends = ros-noetic-octomap
+	depends = ros-noetic-octomap
+	depends = ros-noetic-catkin
+	source = ros-noetic-dynamic-edt-3d-1.9.0.tar.gz::https://github.com/OctoMap/octomap/archive/v1.9.0.tar.gz
 	sha256sums = 5f81c9a8cbc9526b2e725251cd3a829e5222a28201b394314002146d8b9214dd
 
-pkgname = ros-melodic-dynamic-edt-3d
+pkgname = ros-noetic-dynamic-edt-3d
 
