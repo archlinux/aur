@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rqt-publisher
+pkgbase = ros-noetic-rqt-publisher
 	pkgdesc = ROS - rqt_publisher provides a GUI plugin for publishing arbitrary messages with fixed or computed field values.
 	pkgver = 0.4.8
 	pkgrel = 2
@@ -7,17 +7,17 @@ pkgbase = ros-melodic-rqt-publisher
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-py-common
-	depends = ros-melodic-rqt-gui-py
-	depends = ros-melodic-qt-gui-py-common
-	depends = ros-melodic-rosmsg
-	depends = ros-melodic-python-qt-binding
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-roslib
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-rqt-py-common
+	depends = ros-noetic-rqt-gui-py
+	depends = ros-noetic-qt-gui-py-common
+	depends = ros-noetic-rosmsg
+	depends = ros-noetic-python-qt-binding
+	depends = ros-noetic-rqt-gui
+	depends = ros-noetic-roslib
 	depends = python-rospkg
-	source = ros-melodic-rqt-publisher-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_publisher/archive/0.4.8.tar.gz
+	source = ros-noetic-rqt-publisher-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_publisher/archive/0.4.8.tar.gz
 	sha256sums = ee0844e85b264187fac4f6442ff6d443e32d475ddea022a74a08b489d7613a05
 
-pkgname = ros-melodic-rqt-publisher
+pkgname = ros-noetic-rqt-publisher
 
