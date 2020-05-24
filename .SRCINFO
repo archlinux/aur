@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-pid
+pkgbase = ros-noetic-pid
 	pkgdesc = ROS - Launch a PID control node.
 	pkgver = 0.0.24
 	pkgrel = 2
@@ -11,17 +11,17 @@ pkgbase = ros-melodic-pid
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-message-generation
-	makedepends = ros-melodic-roscpp
-	makedepends = ros-melodic-dynamic-reconfigure
-	makedepends = ros-melodic-std-msgs
-	depends = ros-melodic-message-runtime
-	depends = ros-melodic-roscpp
-	depends = ros-melodic-dynamic-reconfigure
-	depends = ros-melodic-std-msgs
-	source = ros-melodic-pid-0.0.24-0.tar.gz::https://github.com/AndyZe/pid-release/archive/release/melodic/pid/0.0.24-0.tar.gz
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-message-generation
+	makedepends = ros-noetic-roscpp
+	makedepends = ros-noetic-dynamic-reconfigure
+	makedepends = ros-noetic-std-msgs
+	depends = ros-noetic-message-runtime
+	depends = ros-noetic-roscpp
+	depends = ros-noetic-dynamic-reconfigure
+	depends = ros-noetic-std-msgs
+	source = ros-noetic-pid-0.0.24-0.tar.gz::https://github.com/AndyZe/pid-release/archive/release/noetic/pid/0.0.24-0.tar.gz
 	sha256sums = 4baac5e9ab0d98621a2820dcb7b76af518507666b7fc23ba7e117a8194366894
 
-pkgname = ros-melodic-pid
+pkgname = ros-noetic-pid
 
