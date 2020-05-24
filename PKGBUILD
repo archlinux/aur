@@ -3,37 +3,37 @@
 pkgdesc="ROS - Message and service data structures."
 url='https://github.com/tuw-robotics/tuw_msgs'
 
-pkgname='ros-melodic-tuw-gazebo-msgs'
+pkgname='ros-noetic-tuw-gazebo-msgs'
 pkgver='0.0.13'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=2
 license=('BSD')
 
-ros_makedepends=(ros-melodic-std-msgs
-  ros-melodic-trajectory-msgs
-  ros-melodic-roscpp
-  ros-melodic-catkin
-  ros-melodic-std-srvs
-  ros-melodic-geometry-msgs
-  ros-melodic-message-generation
-  ros-melodic-sensor-msgs
-  ros-melodic-rospy)
+ros_makedepends=(ros-noetic-std-msgs
+  ros-noetic-trajectory-msgs
+  ros-noetic-roscpp
+  ros-noetic-catkin
+  ros-noetic-std-srvs
+  ros-noetic-geometry-msgs
+  ros-noetic-message-generation
+  ros-noetic-sensor-msgs
+  ros-noetic-rospy)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-melodic-std-msgs
-  ros-melodic-trajectory-msgs
-  ros-melodic-roscpp
-  ros-melodic-std-srvs
-  ros-melodic-geometry-msgs
-  ros-melodic-message-runtime
-  ros-melodic-sensor-msgs
-  ros-melodic-rospy)
+ros_depends=(ros-noetic-std-msgs
+  ros-noetic-trajectory-msgs
+  ros-noetic-roscpp
+  ros-noetic-std-srvs
+  ros-noetic-geometry-msgs
+  ros-noetic-message-runtime
+  ros-noetic-sensor-msgs
+  ros-noetic-rospy)
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
-# _tag=release/melodic/tuw_gazebo_msgs/${pkgver}-${_pkgver_patch}
+# _tag=release/noetic/tuw_gazebo_msgs/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/tuw-robotics/tuw_msgs-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
@@ -46,20 +46,16 @@ sha256sums=('b22f12be8014a8855cd179d228ae5312102da4b3d176979f66f13e258cc418b6')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
