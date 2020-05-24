@@ -1,6 +1,6 @@
 pkgbase = biblesync
 	pkgdesc = multicast shared co-navigation library for Bible programs
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/karlkleinpaste/biblesync
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = biblesync
 	license = custom
 	makedepends = cmake
 	provides = libbiblesync.so
-	source = biblesync-2.0.1.tar.gz::https://github.com/karlkleinpaste/biblesync/archive/2.0.1.tar.gz
-	sha256sums = 953eed0b0ee7e4f8c6c34f7871babed26f03049e4dad5fc222fe3a65811a4d16
+	source = https://github.com/karlkleinpaste/biblesync/releases/download/2.1.0/biblesync-2.1.0.tar.gz
+	sha256sums = 9083fcacc4d85f2b8c3a3254112129c02d940d20db8c0c5bcb6239b115e8d0e8
 
 pkgname = biblesync
 

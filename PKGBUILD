@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=biblesync
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='multicast shared co-navigation library for Bible programs'
 arch=('x86_64' 'i686')
@@ -10,8 +10,8 @@ url="https://github.com/karlkleinpaste/$pkgname"
 license=('custom')
 makedepends=('cmake')
 provides=('libbiblesync.so')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('953eed0b0ee7e4f8c6c34f7871babed26f03049e4dad5fc222fe3a65811a4d16')
+source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('9083fcacc4d85f2b8c3a3254112129c02d940d20db8c0c5bcb6239b115e8d0e8')
 
 build() {
   cd "$pkgname-$pkgver"
