@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rqt-rviz
+pkgbase = ros-noetic-rqt-rviz
 	pkgdesc = ROS - rqt_rviz provides a GUI plugin embedding RViz.
 	pkgver = 0.6.0
 	pkgrel = 3
@@ -11,20 +11,20 @@ pkgbase = ros-melodic-rqt-rviz
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-rviz
-	makedepends = ros-melodic-rqt-gui-cpp
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-rqt-gui
-	makedepends = ros-melodic-pluginlib
+	makedepends = ros-noetic-rviz
+	makedepends = ros-noetic-rqt-gui-cpp
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-rqt-gui
+	makedepends = ros-noetic-pluginlib
 	makedepends = boost
 	makedepends = qt5-base
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-rqt-gui-cpp
-	depends = ros-melodic-rviz
-	depends = ros-melodic-pluginlib
+	depends = ros-noetic-rqt-gui
+	depends = ros-noetic-rqt-gui-cpp
+	depends = ros-noetic-rviz
+	depends = ros-noetic-pluginlib
 	depends = boost
-	source = ros-melodic-rqt-rviz-0.6.0.tar.gz::https://github.com/ros-visualization/rqt_rviz/archive/0.6.0.tar.gz
+	source = ros-noetic-rqt-rviz-0.6.0.tar.gz::https://github.com/ros-visualization/rqt_rviz/archive/0.6.0.tar.gz
 	sha256sums = 5007bf1c30ebe9e68e8ca3a4fa017f81671f1422e55a75b51aaf276ff74bfb0e
 
-pkgname = ros-melodic-rqt-rviz
+pkgname = ros-noetic-rqt-rviz
 
