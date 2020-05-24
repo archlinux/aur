@@ -2,7 +2,7 @@
 
 pkgname=python-ipfshttpclient
 _name=ipfshttpclient
-pkgver=0.4.12
+pkgver=0.4.13.2
 pkgrel=1
 pkgdesc="Python IPFS HTTP client library"
 arch=('any')
@@ -40,4 +40,4 @@ package() {
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
-sha256sums=('0a199a1005fe44bff9da28b5af4785b0b09ca700baac9d1e26718fe23fe89bb7')
+sha256sums=('468d7c72ef309a91cf9c72a477da89f428757b32c30636da7c77a041ca01b2b3')
