@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rqt-srv
+pkgbase = ros-noetic-rqt-srv
 	pkgdesc = ROS - A Python GUI plugin for introspecting available ROS message types.
 	pkgver = 0.4.8
 	pkgrel = 2
@@ -7,14 +7,14 @@ pkgbase = ros-melodic-rqt-srv
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-gui-py
-	depends = ros-melodic-rosmsg
-	depends = ros-melodic-rqt-msg
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-rospy
-	source = ros-melodic-rqt-srv-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_srv/archive/0.4.8.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-rqt-gui-py
+	depends = ros-noetic-rosmsg
+	depends = ros-noetic-rqt-msg
+	depends = ros-noetic-rqt-gui
+	depends = ros-noetic-rospy
+	source = ros-noetic-rqt-srv-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_srv/archive/0.4.8.tar.gz
 	sha256sums = 3e15e172af2b2d3910090b37d1bbbf87d1e4c248ba4d7e9e2071d73761e52ed9
 
-pkgname = ros-melodic-rqt-srv
+pkgname = ros-noetic-rqt-srv
 
