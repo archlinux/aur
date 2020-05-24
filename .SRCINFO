@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-urdfdom-py
+pkgbase = ros-noetic-urdfdom-py
 	pkgdesc = ROS - Python implementation of the URDF parser.
 	pkgver = 0.4.0
 	pkgrel = 2
@@ -7,13 +7,13 @@ pkgbase = ros-melodic-urdfdom-py
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
+	makedepends = ros-noetic-catkin
 	makedepends = python
 	depends = python-yaml
 	depends = python-lxml
 	depends = python
-	source = ros-melodic-urdfdom-py-0.4.0.tar.gz::https://github.com/ros/urdf_parser_py/archive/0.4.0.tar.gz
+	source = ros-noetic-urdfdom-py-0.4.0.tar.gz::https://github.com/ros/urdf_parser_py/archive/0.4.0.tar.gz
 	sha256sums = e04b4bf6da70ffdec9b8be08f5009f57b833edc55e8f688b48a64978fde92ac9
 
-pkgname = ros-melodic-urdfdom-py
+pkgname = ros-noetic-urdfdom-py
 
