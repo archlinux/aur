@@ -2,23 +2,23 @@
 pkgdesc="ROS - Metapackage for moveit plugins."
 url='https://moveit.ros.org'
 
-pkgname='ros-melodic-moveit-plugins'
+pkgname='ros-noetic-moveit-plugins'
 pkgver='1.0.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-melodic-catkin)
+ros_makedepends=(ros-noetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-melodic-moveit-ros-control-interface
-  ros-melodic-moveit-fake-controller-manager
-  ros-melodic-moveit-simple-controller-manager)
+ros_depends=(ros-noetic-moveit-ros-control-interface
+  ros-noetic-moveit-fake-controller-manager
+  ros-noetic-moveit-simple-controller-manager)
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
-# _tag=release/melodic/moveit_plugins/${pkgver}-${_pkgver_patch}
+# _tag=release/noetic/moveit_plugins/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/moveit-release.git"#tag=${_tag})
 # sha256sums=('e4b829684c922a0f6571a28276b6b4dcfbfddb5f9d45acfbe19793cf614d89bb')
@@ -31,24 +31,17 @@ sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_BASENAME=-python3.7m \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
