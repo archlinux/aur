@@ -5,3 +5,5 @@ src/
 pkg/
 *.tar.xz
 XD/
+
+*.pkg.tar.zst
