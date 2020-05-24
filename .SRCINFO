@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rqt-console
+pkgbase = ros-noetic-rqt-console
 	pkgdesc = ROS - rqt_console provides a GUI plugin for displaying and filtering ROS messages.
 	pkgver = 0.4.8
 	pkgrel = 2
@@ -7,17 +7,17 @@ pkgbase = ros-melodic-rqt-console
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-py-common
-	depends = ros-melodic-rqt-gui-py
-	depends = ros-melodic-rqt-logger-level
-	depends = ros-melodic-python-qt-binding
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-rospy
-	depends = ros-melodic-roslib
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-rqt-py-common
+	depends = ros-noetic-rqt-gui-py
+	depends = ros-noetic-rqt-logger-level
+	depends = ros-noetic-python-qt-binding
+	depends = ros-noetic-rqt-gui
+	depends = ros-noetic-rospy
+	depends = ros-noetic-roslib
 	depends = python-rospkg
-	source = ros-melodic-rqt-console-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_console/archive/0.4.8.tar.gz
+	source = ros-noetic-rqt-console-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_console/archive/0.4.8.tar.gz
 	sha256sums = 8c128f3d09f3baebb0999cb7c28f63689f5e415ee2cab21dc94fc3846a151564
 
-pkgname = ros-melodic-rqt-console
+pkgname = ros-noetic-rqt-console
 
