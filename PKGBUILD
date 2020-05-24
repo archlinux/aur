@@ -3,8 +3,8 @@
 
 pkgname=python-oxd-git
 _name=python-oxd
-pkgver=r57.9a85f9a
-pkgrel=1.2
+pkgver=r68.d3f4165
+pkgrel=1.3
 pkgdesc="A CLI for the Oxford Dictionaries website."
 url="https://github.com/mpolidori/python-oxd"
 depends=('python')
