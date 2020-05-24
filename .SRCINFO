@@ -1,0 +1,14 @@
+pkgbase = python-webvtt-py
+	pkgdesc = Read, write and segment WebVTT caption files in Python
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/glut23/webvtt-py
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-docopt
+	source = webvtt-py-0.4.5.tar.gz::https://github.com/glut23/webvtt-py/archive/0.4.5.tar.gz
+	sha512sums = f14202537360bc504414d2771bcecfab9fcfd3c2c60b328ebe403ef2eaf95f3252953601d8c6800874d574f4492ffc385b13d73b63d1ddaea341caf9823f28a0
+
+pkgname = python-webvtt-py
+
