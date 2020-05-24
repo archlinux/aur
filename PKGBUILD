@@ -3,7 +3,7 @@
 pkgdesc="ROS - This rqt plugin succeeds former dynamic_reconfigures GUI (reconfigure_gui), and provides the way to view and edit the parameters that are accessible via dynamic_reconfigure."
 url='https://wiki.ros.org/rqt_reconfigure'
 
-pkgname='ros-melodic-rqt-reconfigure'
+pkgname='ros-noetic-rqt-reconfigure'
 pkgver='0.4.10'
 _pkgver_patch=0
 arch=('any')
@@ -11,7 +11,7 @@ pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-catkin
+	ros-noetic-catkin
 )
 
 makedepends=(
@@ -21,13 +21,13 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-rqt-py-common
-	ros-melodic-rqt-gui-py
-	ros-melodic-dynamic-reconfigure
-	ros-melodic-rqt-console
-	ros-melodic-python-qt-binding
-	ros-melodic-rqt-gui
-	ros-melodic-rospy
+	ros-noetic-rqt-py-common
+	ros-noetic-rqt-gui-py
+	ros-noetic-dynamic-reconfigure
+	ros-noetic-rqt-console
+	ros-noetic-python-qt-binding
+	ros-noetic-rqt-gui
+	ros-noetic-rospy
 )
 
 depends=(
@@ -41,24 +41,17 @@ sha256sums=('f1e295756d77e28afd702c2dbed9459fed6997c312129fc8d57954532a4fd004')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
