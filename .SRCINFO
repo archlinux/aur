@@ -1,18 +1,17 @@
-pkgbase = ros-melodic-slam-gmapping
+pkgbase = ros-noetic-slam-gmapping
 	pkgdesc = ROS - slam_gmapping contains a wrapper around gmapping which provides SLAM capabilities.
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = http://ros.org/wiki/slam_gmapping
 	arch = any
 	license = CreativeCommons-by-nc-sa-2.0
 	makedepends = cmake
-	makedepends = git
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-gmapping
-	depends = ros-melodic-openslam-gmapping
-	source = slam_gmapping::git+https://github.com/ros-gbp/slam_gmapping-release.git#tag=release/melodic/slam_gmapping/1.4.0-1
-	md5sums = SKIP
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-gmapping
+	depends = ros-noetic-openslam-gmapping
+	source = ros-noetic-slam-gmapping-1.4.1.tar.gz::https://github.com/ros-perception/slam_gmapping/archive/1.4.1.tar.gz
+	sha256sums = 28429cf962b5ec2c49556aee73b7f87859c0421bc8c8056e3667e3a2b20591e2
 
-pkgname = ros-melodic-slam-gmapping
+pkgname = ros-noetic-slam-gmapping
 
