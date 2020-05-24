@@ -12,6 +12,7 @@ depends=('gcc-libs')
 md5sums=('SKIP')
 
 build() {
+  cd "$pkgname"
   if command -v rustup > /dev/null 2>&1; then
     RUSTFLAGS="-C target-cpu=native" rustup run stable \
       cargo build --release
@@ -24,6 +25,6 @@ build() {
 }
 
 package() {
-  cd "../"
+  cd "$pkgname"
   install -Dm755 "target/release/groffdown" "$pkgdir/usr/bin/groffdown"
 }
