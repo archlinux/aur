@@ -8,8 +8,8 @@ arch=('x86_64')
 license=('GPL3')
 url='https://github.com/sim590/dpaste'
 source=('git://github.com/sim590/dpaste#tag=0.4.0')
-depends=('gnutls' 'libb64' 'libcurlpp>=0.8.1' 'opendht-git' 'glibmm')
-makedepends=('git' 'nlohmann_json-git')
+depends=('gnutls' 'libb64' 'libcurlpp>=0.8.1' 'opendht' 'glibmm')
+makedepends=('git' 'nlohmann-json-git')
 sha256sums=('SKIP')
 
 prepare () {
