@@ -1,0 +1,20 @@
+post_install() {
+	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+	sudo xdg-desktop-menu install /usr/share/applications/cisco-pt7.desktop
+	sudo xdg-desktop-menu install /usr/share/applications/cisco-ptsa7.desktop
+	sudo update-mime-database /usr/share/mime
+	sudo gtk-update-icon-cache --force /usr/share/icons/gnome
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+	sudo xdg-desktop-menu uninstall /usr/share/applications/cisco-pt7.desktop
+	sudo xdg-desktop-menu uninstall /usr/share/applications/cisco-ptsa7.desktop
+	sudo update-mime-database /usr/share/mime
+	sudo gtk-update-icon-cache --force /usr/share/icons/gnome
+}
+

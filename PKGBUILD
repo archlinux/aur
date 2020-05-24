@@ -7,12 +7,13 @@
 
 pkgname=packettracer
 pkgver=7.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Cisco PacketTracer 7.3.0 installation package"
 arch=( 'x86_64' )
 depends=('openssl-1.0' 'dbus' 'icu' 'glib2' 'libxml2' 'libjpeg-turbo' 'nss')
 options=('!strip' '!emptydirs')
 url="https://www.netacad.com/courses/packet-tracer"
+install=${pkgname}.install
 license=('custom')
 
 source=('local://PacketTracer_730_amd64.deb'
@@ -38,6 +39,7 @@ package() {
 	sed 's/\/opt\/pt/\/opt\/packettracer/' -i "${pkgdir}/usr/share/applications/cisco-ptsa7.desktop"
 	sed -e "\$aCategories=Application;Network;" -i "${pkgdir}/usr/share/applications/cisco-pt7.desktop"
 	sed -e "\$aCategories=Application;Network;" -i "${pkgdir}/usr/share/applications/cisco-ptsa7.desktop"
+	sed -e "\$aNoDisplay=true" -i "${pkgdir}/usr/share/applications/cisco-ptsa7.desktop"
 
 	install -D -m755 "${srcdir}/packettracer.sh" "${pkgdir}/etc/profile.d/packettracer.sh"
 
