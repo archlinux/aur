@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-qwt-dependency
+pkgbase = ros-noetic-qwt-dependency
 	pkgdesc = ROS - This encapsulates the Qwt dependency for a specific ROS distribution and its Qt version.
 	pkgver = 1.1.0
 	pkgrel = 2
@@ -7,9 +7,9 @@ pkgbase = ros-melodic-qwt-dependency
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	source = ros-melodic-qwt-dependency-1.1.0.tar.gz::https://github.com/ros-visualization/qwt_dependency/archive/1.1.0.tar.gz
+	makedepends = ros-noetic-catkin
+	source = ros-noetic-qwt-dependency-1.1.0.tar.gz::https://github.com/ros-visualization/qwt_dependency/archive/1.1.0.tar.gz
 	sha256sums = bb4f0491701c53dd89fc12703fd43715fd1b23f6c66d313f154a26e85e3d2594
 
-pkgname = ros-melodic-qwt-dependency
+pkgname = ros-noetic-qwt-dependency
 
