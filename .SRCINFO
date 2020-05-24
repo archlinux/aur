@@ -1,0 +1,33 @@
+pkgbase = pixelorama-bin
+	pkgdesc = A free & open-source 2D sprite editor, made with the Godot Engine - precompiled binary
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://www.orama-interactive.com/pixelorama
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libpulse
+	depends = alsa-lib
+	depends = libxrandr
+	depends = libglvnd
+	depends = libxcursor
+	depends = libxinerama
+	depends = hicolor-icon-theme
+	provides = pixelorama
+	conflicts = pixelorama
+	conflicts = pixelorama-git
+	source = pixelorama.png
+	source = com.orama_interactive.Pixelorama.appdata.xml
+	source = com.orama_interactive.Pixelorama.desktop
+	source = LICENSE
+	sha256sums = d92715606fb34e1863ecccd929675b742988ae55118146e2d9aee41c650b0933
+	sha256sums = 22098341228acc5940c72a741c2e04804d1373f7f89c282526cfa66adddd94e0
+	sha256sums = 5d9b6e1a44b07bfcfbf4fb3575d30df457571335c0c200f4130af51884f34b99
+	sha256sums = 71f1828c30422206232e07fb511aab07e2295845719b2d0705a881f27fb43949
+	source_i686 = https://github.com/Orama-Interactive/Pixelorama/releases/download/v0.7/Pixelorama.v0.7.Linux.32-bit.zip
+	sha256sums_i686 = 3a7ed5ae486335d3c4d2427e98b87fd5ef7d725b8d8383f10ba99d094e8a5f18
+	source_x86_64 = https://github.com/Orama-Interactive/Pixelorama/releases/download/v0.7/Pixelorama.v0.7.Linux.64-bit.zip
+	sha256sums_x86_64 = bd6bb866ac98ca3d0091bf78cc1617984732a3670a6c2b9859f2b12bf8648ea0
+
+pkgname = pixelorama-bin
+
