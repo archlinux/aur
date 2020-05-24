@@ -8,7 +8,7 @@ url="https://gitlab.com/knarkzel/groffdown"
 license=('MIT')
 makedepends=('rust' 'cargo' 'git')
 depends=('gcc-libs')
-md5sums=('SKIP')
+md5sums=(SKIP)
 
 build() {
   if command -v rustup > /dev/null 2>&1; then
