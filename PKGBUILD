@@ -1,8 +1,8 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 pkgname=('git-nautilus-icons')
 _pypi_name=('git_nautilus_icons')
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.3
+pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/chrisjbillington/git_nautilus_icons"
 license=('BSD 2-Clause "Simplified"')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 provides=('git-nautilus-icons')
 conflicts=('git-nautilus-icons' 'git-nautilus-icons-py2')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_name::1}/$_pypi_name/$_pypi_name-$pkgver.tar.gz")
-sha512sums=('528d915aa2c94dde3b56f9b697434ec9808d72530cc232c34aae8c970fb611be86e1a4ad4ebddbce65af4d5d99e5e8e17e9e42bb5dfafb6f976496e43da1e4bd')
+sha512sums=('e03796f9589a3fe9bd6ed9c3634a8a5a7070a6d11a331cade7f97429e21de9a4385b92922c6253699c70b38458ebe932a99f8b99b7d4f44a923e4282ff0f15f7')
 
 build() {
     cd "${srcdir}/${_pypi_name}-${pkgver}"
