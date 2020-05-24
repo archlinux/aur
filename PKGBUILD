@@ -1,36 +1,36 @@
 pkgdesc="ROS - 3D visualization tool for ROS."
 url='https://wiki.ros.org/rviz'
 
-pkgname='ros-melodic-rviz'
+pkgname='ros-noetic-rviz'
 pkgver='1.13.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=3
 license=('BSD, Creative Commons')
 
 ros_makedepends=(
-	ros-melodic-std-srvs
-	ros-melodic-rosbag
-	ros-melodic-tf
-	ros-melodic-nav-msgs
-	ros-melodic-urdf
-	ros-melodic-python-qt-binding
-	ros-melodic-resource-retriever
-	ros-melodic-laser-geometry
-	ros-melodic-std-msgs
-	ros-melodic-interactive-markers
-	ros-melodic-message-filters
-	ros-melodic-rospy
-	ros-melodic-roslib
-	ros-melodic-image-transport
-	ros-melodic-cmake-modules
-	ros-melodic-catkin
-	ros-melodic-rosconsole
-	ros-melodic-roscpp
-	ros-melodic-visualization-msgs
-	ros-melodic-sensor-msgs
-	ros-melodic-map-msgs
-	ros-melodic-pluginlib
-	ros-melodic-geometry-msgs
+	ros-noetic-std-srvs
+	ros-noetic-rosbag
+	ros-noetic-tf
+	ros-noetic-nav-msgs
+	ros-noetic-urdf
+	ros-noetic-python-qt-binding
+	ros-noetic-resource-retriever
+	ros-noetic-laser-geometry
+	ros-noetic-std-msgs
+	ros-noetic-interactive-markers
+	ros-noetic-message-filters
+	ros-noetic-rospy
+	ros-noetic-roslib
+	ros-noetic-image-transport
+	ros-noetic-cmake-modules
+	ros-noetic-catkin
+	ros-noetic-rosconsole
+	ros-noetic-roscpp
+	ros-noetic-visualization-msgs
+	ros-noetic-sensor-msgs
+	ros-noetic-map-msgs
+	ros-noetic-pluginlib
+	ros-noetic-geometry-msgs
 )
 
 makedepends=(
@@ -48,28 +48,28 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-std-srvs
-	ros-melodic-rosbag
-	ros-melodic-tf
-	ros-melodic-nav-msgs
-	ros-melodic-urdf
-	ros-melodic-python-qt-binding
-	ros-melodic-resource-retriever
-	ros-melodic-laser-geometry
-	ros-melodic-media-export
-	ros-melodic-std-msgs
-	ros-melodic-interactive-markers
-	ros-melodic-message-filters
-	ros-melodic-rospy
-	ros-melodic-roslib
-	ros-melodic-image-transport
-	ros-melodic-rosconsole
-	ros-melodic-roscpp
-	ros-melodic-visualization-msgs
-	ros-melodic-sensor-msgs
-	ros-melodic-map-msgs
-	ros-melodic-pluginlib
-	ros-melodic-geometry-msgs
+	ros-noetic-std-srvs
+	ros-noetic-rosbag
+	ros-noetic-tf
+	ros-noetic-nav-msgs
+	ros-noetic-urdf
+	ros-noetic-python-qt-binding
+	ros-noetic-resource-retriever
+	ros-noetic-laser-geometry
+	ros-noetic-media-export
+	ros-noetic-std-msgs
+	ros-noetic-interactive-markers
+	ros-noetic-message-filters
+	ros-noetic-rospy
+	ros-noetic-roslib
+	ros-noetic-image-transport
+	ros-noetic-rosconsole
+	ros-noetic-roscpp
+	ros-noetic-visualization-msgs
+	ros-noetic-sensor-msgs
+	ros-noetic-map-msgs
+	ros-noetic-pluginlib
+	ros-noetic-geometry-msgs
 )
 
 depends=(
@@ -93,7 +93,7 @@ sha256sums=('d02b797ddddb22844f6d37b19112959774867da95b58ac4a09169747e0c42152')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Fixes OGRE Path issue
 	PKG_CONFIG_PATH=/opt/OGRE-1.9/lib/pkgconfig:$PKG_CONFIG_PATH
@@ -102,15 +102,11 @@ build() {
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 
 	make
