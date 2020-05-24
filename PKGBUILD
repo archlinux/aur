@@ -6,7 +6,7 @@
 #Maintainer:  sparzz
 pkgname=mesa-radv-drivers-git
 packager=sparzz
-pkgver=20.2.0.2020.05.23
+pkgver=20.2.0.2020.05.23.1
 pkgrel=1
 epoch=
 pkgdesc="mesa-radv-drivers-git"
@@ -255,7 +255,7 @@ build() {
 
 package() {
 	sudo DESTDIR="$pkgdir" ninja $NINJAFLAGS -C mesa/build/ install 
-	sudo DESTDIR="pkgdir" cp .bashrc_aco_enable /usr/local/etc
+	sudo DESTDIR="pkgdir" cp /.bashrc_aco_enable /usr/local/etc
 	cd /usr/local/lib
 	
 	if dir libEGL.so.1.0.0.old; then 
