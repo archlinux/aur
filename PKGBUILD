@@ -2,14 +2,14 @@
 # Contributor: fkxxyz <fkxxyz@163.com>
 pkgname=fcitx-baidupinyin
 pkgver=1.0.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Fcitx wrapper for Baidu Pinyin IM engine"
 arch=("x86_64")
 url="https://srfsh.baidu.com/site/guanwang_linux/index.html"
 license=("custom")
 depends=('glibc' 'glib2' 'fcitx-qt5' 'qt5-quickcontrols')
 #Depends shown in .deb: libc6 (>= 2.4), fcitx-bin, fcitx-data (>= 1:4.2.0), fcitx-modules,  libglib2.0-0 (>= 2.12.0), libqt5core5a (>= 5.7.1), qml-module-qtquick-controls (>= 5.5.1)
-#optdepends=('fcitx-qimpanel: input method frontend used in baidupinyin')  # use BDIMSettings instead.
+optdepends=('fcitx-qimpanel: input method frontend used in baidupinyin') 
 install=fcitx-baidupinyin.install
 source=(
     'fcitx-baidupinyin.zip::https://imeres.baidu.com/imeres/ime-res/guanwang/img/Ubuntu_Deepin-fcitx-baidupinyin-64.zip'
@@ -39,10 +39,8 @@ package(){
     cp -r "$pkgdir"/opt/apps/com.baidu.fcitx-baidupinyin/files/* "$pkgdir"/usr/
     sed -i  's|/opt/apps/com.baidu.fcitx-baidupinyin/files/bin/baidu-qimpanel|/usr/bin/baidu-qimpanel|g' "$pkgdir"/usr/bin/bd-qimpanel.watchdog.sh
     
-    # use BDIMSettings as its configtool, if you want to use fcitx-qimpanel, comment this line
-    if [ ! -f '/usr/bin/fcitx-qimpanel-configtool' ]; then
-        mv "$pkgdir"/usr/bin/BDIMSettings "${pkgdir}"/usr/bin/fcitx-qimpanel-configtool
-    fi
+    # change the /opt/apps/... directory string in baidu-qimpanel to /usr/bin
+    sed -i 's|/opt/apps/com.baidu.fcitx-baidupinyin/files/bin/BDIMSettings|/usr/bin/BDIMSettings\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0|g' "$pkgdir"/usr/bin/baidu-qimpanel
     
     # data should be moved to ~/.config/BaiduPY.user manually
     mkdir -p "$pkgdir"/tmp/
