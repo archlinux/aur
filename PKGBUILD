@@ -5,7 +5,7 @@
 
 # Maintainer: Sergio Rosello <alcanalimail at gmail dot com>
 pkgname=screen-desktop
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 epoch=
 pkgdesc="Work together like you’re in the same room. Fast screen sharing with multiplayer control, drawing & video."
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://download.screen.so/desktop-app/linux/${pkgver}/${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm")
 noextract=()
-md5sums=('e82326de069fbb25251ddc16d51ca605')
+md5sums=('f65407ff6f60e0e799a232ad8a7b57d3')
 validpgpkeys=()
 
 package() {
