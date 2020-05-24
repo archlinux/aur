@@ -1,0 +1,19 @@
+pkgbase = python-cid
+	pkgdesc = Self-describing content-addressed identifiers for distributed systems
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/py-cid
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-setuptools
+	depends = python-baseconv
+	depends = python-multibase
+	depends = python-morphys
+	depends = python-pymultihash
+	depends = python-multicodec
+	source = https://pypi.io/packages/source/p/py-cid/py-cid-0.3.0.tar.gz
+	sha256sums = 22f432cc6fb68d12a9c35dbdc92c95484fc49e31dfcb9e0efb0082233c5394e3
+
+pkgname = python-cid
+
