@@ -6,7 +6,7 @@ url='https://www.wiki.ros.org/bondcpp'
 pkgname='ros-noetic-bondcpp'
 pkgver='1.8.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -40,7 +40,7 @@ depends=(
 
 _dir="bond_core-${pkgver}/bondcpp"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/bond_core/archive/${pkgver}.tar.gz")
-sha256sums=('19e683f3c1ce7ec442e0e46708cdf7bbbb48c2a14ca4cbca858609fc1be931c5')
+sha256sums=('b70f0fe5b4979fe2e7390bff9671b2581eefa91f4ac41f4af01eb1f2bef0e1f4')
 
 build() {
 	# Use ROS environment variables.
