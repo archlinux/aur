@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rqt-launch
+pkgbase = ros-noetic-rqt-launch
 	pkgdesc = ROS - This rqt plugin ROS package provides easy view of .launch files.
 	pkgver = 0.4.8
 	pkgrel = 2
@@ -7,17 +7,17 @@ pkgbase = ros-melodic-rqt-launch
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-rqt-py-common
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-py-common
-	depends = ros-melodic-rqt-gui-py
-	depends = ros-melodic-rqt-console
-	depends = ros-melodic-roslaunch
-	depends = ros-melodic-python-qt-binding
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-rospy
-	source = ros-melodic-rqt-launch-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_launch/archive/0.4.8.tar.gz
+	makedepends = ros-noetic-rqt-py-common
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-rqt-py-common
+	depends = ros-noetic-rqt-gui-py
+	depends = ros-noetic-rqt-console
+	depends = ros-noetic-roslaunch
+	depends = ros-noetic-python-qt-binding
+	depends = ros-noetic-rqt-gui
+	depends = ros-noetic-rospy
+	source = ros-noetic-rqt-launch-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_launch/archive/0.4.8.tar.gz
 	sha256sums = 6c3fcde64a2a4458a010ec5dbd7217cf61170ff3a90529ba0d000f43437c2c54
 
-pkgname = ros-melodic-rqt-launch
+pkgname = ros-noetic-rqt-launch
 
