@@ -19,7 +19,6 @@ build() {
     source_dir="${pkgname}-${pkgver}"
     build_dir="${source_dir}/build"
     cmake -B "${build_dir}" -S "${source_dir}" \
-        -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
     cmake --build "${build_dir}" 
