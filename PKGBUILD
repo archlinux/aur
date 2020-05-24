@@ -1,14 +1,14 @@
 pkgdesc="ROS - ROS packages for the Turtlebot3 (meta package)"
 url='https://wiki.ros.org/turtlebot3'
 
-pkgname='ros-melodic-turtlebot3'
+pkgname='ros-noetic-turtlebot3'
 pkgver='1.2.2'
 arch=('any')
 pkgrel=1
 license=('Apache-2.0, BSD')
 
 ros_makedepends=(
-	ros-melodic-catkin
+	ros-noetic-catkin
 )
 
 makedepends=(
@@ -18,12 +18,12 @@ makedepends=(
 )
 
 ros_depends=(
-    ros-melodic-turtlebot3-bringup
-    ros-melodic-turtlebot3-description
-    ros-melodic-turtlebot3-example
-    ros-melodic-turtlebot3-navigation
-    ros-melodic-turtlebot3-slam
-    ros-melodic-turtlebot3-teleop
+    ros-noetic-turtlebot3-bringup
+    ros-noetic-turtlebot3-description
+    ros-noetic-turtlebot3-example
+    ros-noetic-turtlebot3-navigation
+    ros-noetic-turtlebot3-slam
+    ros-noetic-turtlebot3-teleop
 )
 
 depends=(
@@ -37,24 +37,17 @@ sha256sums=('c652438109ea99008f6d2e950e6cb7f6e67653b8daa1079c825b77d9f52a4e1d')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
