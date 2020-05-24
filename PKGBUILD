@@ -255,7 +255,7 @@ build() {
 
 package() {
 	sudo DESTDIR="$pkgdir" ninja $NINJAFLAGS -C mesa/build/ install 
-	
+	sudo DESTDIR="pkgdir" cp .bashrc_aco_enable /usr/local/etc
 	cd /usr/local/lib
 	
 	if dir libEGL.so.1.0.0.old; then 
