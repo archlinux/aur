@@ -13,6 +13,5 @@ depends=('gcc-libs')
 md5sums=('d2e59fd9b1634805ea883f7b1f6ad479')
 
 package() {
-  echo "$pkgdir"
   install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
 }
