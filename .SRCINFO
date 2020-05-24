@@ -1,7 +1,7 @@
 pkgbase = jitsi-meet-stable
 	pkgdesc = Jitsi Meet Stable
 	pkgver = 2.0.4548
-	pkgrel = 9
+	pkgrel = 10
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
 	license = Apache
@@ -70,7 +70,7 @@ pkgbase = jitsi-meet-stable
 	sha256sums = 993a48122151312b064c9b74999d454e2a719335c74fb936eb658336169b98a1
 	sha256sums = fd7ca06f1cf85a6f7578b006b99c18235b5a7e8319b7e08d40e82ad614d20835
 	sha256sums = 77dd2ca3dab9816aaef54f072a411205ad544a5f8695710d27f84b9898c8ba5c
-	sha256sums = d1a7ba7eb140f604eae0421e80df3093944aa5bdbf21781e1a116535411b2472
+	sha256sums = 718e66716d783fc3389b0d06f0f5e7920d6e5186417979f43e81c324ec4d7da5
 
 pkgname = jitsi-meet-stable
 

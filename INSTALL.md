@@ -392,6 +392,14 @@ certbot certonly
 # feed auth.YOUR_DOMAIN
 ```
 
+### Add wasm mimetypes support
+
+in /etc/nginx/mime.types, at the end, before the "}":
+
+```
+application/wasm    				wasm;
+```
+
 5. start nginx
 
 ```
