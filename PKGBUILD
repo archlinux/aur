@@ -3,7 +3,7 @@
 pkgdesc="ROS - rqt_dep provides a GUI plugin for visualizing the ROS dependency graph."
 url='https://wiki.ros.org/rqt_dep'
 
-pkgname='ros-melodic-rqt-dep'
+pkgname='ros-noetic-rqt-dep'
 pkgver='0.4.9'
 _pkgver_patch=0
 arch=('any')
@@ -11,7 +11,7 @@ pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-catkin
+	ros-noetic-catkin
 )
 
 makedepends=(
@@ -21,12 +21,12 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-rqt-gui-py
-	ros-melodic-rqt-graph
-	ros-melodic-qt-gui-py-common
-	ros-melodic-qt-gui
-	ros-melodic-python-qt-binding
-	ros-melodic-qt-dotgraph
+	ros-noetic-rqt-gui-py
+	ros-noetic-rqt-graph
+	ros-noetic-qt-gui-py-common
+	ros-noetic-qt-gui
+	ros-noetic-python-qt-binding
+	ros-noetic-qt-dotgraph
 )
 
 depends=(
@@ -41,24 +41,17 @@ sha256sums=('cc303287625570a5f615576c539fd0e7b13ab3b4d8b8759ad32f1f9e5e3c2b21')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
