@@ -1,8 +1,8 @@
-diff --git a/src/main.cpp b/src/main.cpp
-index 9ba90c1..2cd13dd 100644
---- a/src/main.cpp
-+++ b/src/main.cpp
-@@ -37,7 +37,7 @@
+diff --git a/src/http_client.cpp b/src/http_client.cpp
+index 1864ded..1580bed 100644
+--- a/src/http_client.cpp
++++ b/src/http_client.cpp
+@@ -25,7 +25,7 @@
  #include <curlpp/Options.hpp>
  #include <curlpp/Exception.hpp>
  #include <curlpp/Infos.hpp>
@@ -10,4 +10,4 @@ index 9ba90c1..2cd13dd 100644
 +#include <nlohmann/json.hpp>
  #include <b64/decode.h>
  
- #include "node.h"
+ #include "http_client.h"
