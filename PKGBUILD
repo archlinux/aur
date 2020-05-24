@@ -3,7 +3,7 @@
 pkgname=xow-git
 _pkgname=xow
 pkgver=110
-pkgrel=3
+pkgrel=4
 pkgdesc="Linux driver for the Xbox One wireless dongle"
 arch=(x86_64)
 url=https://github.com/medusalix/xow
