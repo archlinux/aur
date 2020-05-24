@@ -6,7 +6,7 @@
 
 pkgname=flexget
 _pkgname=Flexget
-pkgver=3.1.30
+pkgver=3.1.56
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -58,7 +58,7 @@ makedepends=('python-paver'
 source=("https://github.com/Flexget/Flexget/archive/v${pkgver}.tar.gz"
         'flexget.service'
         'flexget@.service'
-        "http://download.flexget.com/ChangeLog"
+        "http://flexget.com/ChangeLog"
         )
 
 changelog=ChangeLog
@@ -101,7 +101,7 @@ package() {
   install -Dm644 ../flexget.service "${pkgdir}"/usr/lib/systemd/user/flexget.service
 }
 
-sha256sums=('c9e68108652a136d045bd61a868712e36539fc4b1009dd05ff4b2b9a126d92c0'
+sha256sums=('0140852877836b1d4540610f2d3d409876eef1ee4fecd398780ace26ef9615b8'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
