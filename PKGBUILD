@@ -20,11 +20,11 @@ build() {
     build_dir="${source_dir}/build"
     cmake -B "${build_dir}" -S "${source_dir}" \
         -DCMAKE_BUILD_TYPE='Release' \
-        -DCMAKE_INSTALL_PREFIX='${pkdir}/usr' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
     cmake --build "${build_dir}" 
 }
 
 package() {
-    cmake --build "${pkgname}-${pkgver}/build" --target install
+    make -C "${pkgname}-${pkgver}/build" DESTDIR="$pkgdir" install
 }
