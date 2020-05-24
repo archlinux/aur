@@ -1,4 +1,4 @@
-# Maintainer: Jesse Luehrs <doy@tozt.net>
+# Maintainer: Jesse Luehrs <archlinux@tozt.net>
 pkgname=rbw
 pkgver=0.3.2
 pkgrel=1
