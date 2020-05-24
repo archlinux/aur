@@ -3,7 +3,7 @@
 pkgdesc="ROS - image_transport should always be used to subscribe to and publish images."
 url='https://wiki.ros.org/image_transport'
 
-pkgname='ros-melodic-image-transport'
+pkgname='ros-noetic-image-transport'
 pkgver='1.11.13'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
@@ -11,13 +11,13 @@ pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-catkin
-	ros-melodic-rosconsole
-	ros-melodic-roscpp
-	ros-melodic-message-filters
-	ros-melodic-sensor-msgs
-	ros-melodic-pluginlib
-	ros-melodic-roslib
+	ros-noetic-catkin
+	ros-noetic-rosconsole
+	ros-noetic-roscpp
+	ros-noetic-message-filters
+	ros-noetic-sensor-msgs
+	ros-noetic-pluginlib
+	ros-noetic-roslib
 )
 
 makedepends=(
@@ -27,12 +27,12 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-rosconsole
-	ros-melodic-roscpp
-	ros-melodic-message-filters
-	ros-melodic-sensor-msgs
-	ros-melodic-pluginlib
-	ros-melodic-roslib
+	ros-noetic-rosconsole
+	ros-noetic-roscpp
+	ros-noetic-message-filters
+	ros-noetic-sensor-msgs
+	ros-noetic-pluginlib
+	ros-noetic-roslib
 )
 
 depends=(
@@ -46,21 +46,17 @@ sha256sums=('32a2e07724dec6eaaace21eae006274436d70d40bfe205249438570275c43cac')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
