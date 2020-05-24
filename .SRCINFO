@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rqt-logger-level
+pkgbase = ros-noetic-rqt-logger-level
 	pkgdesc = ROS - rqt_logger_level provides a GUI plugin for configuring the logger level of ROS nodes.
 	pkgver = 0.4.8
 	pkgrel = 2
@@ -7,16 +7,16 @@ pkgbase = ros-melodic-rqt-logger-level
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-gui-py
-	depends = ros-melodic-rosservice
-	depends = ros-melodic-rosnode
-	depends = ros-melodic-python-qt-binding
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-rospy
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-rqt-gui-py
+	depends = ros-noetic-rosservice
+	depends = ros-noetic-rosnode
+	depends = ros-noetic-python-qt-binding
+	depends = ros-noetic-rqt-gui
+	depends = ros-noetic-rospy
 	depends = python-rospkg
-	source = ros-melodic-rqt-logger-level-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_logger_level/archive/0.4.8.tar.gz
+	source = ros-noetic-rqt-logger-level-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_logger_level/archive/0.4.8.tar.gz
 	sha256sums = e645a8311a8a461b946a512f7700793c54e2b4d82adddd9328c66f5a86b2fcff
 
-pkgname = ros-melodic-rqt-logger-level
+pkgname = ros-noetic-rqt-logger-level
 
