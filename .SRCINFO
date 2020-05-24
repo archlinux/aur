@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-joy-listener
+pkgbase = ros-noetic-joy-listener
 	pkgdesc = ROS - Translates joy msgs.
 	pkgver = 0.2.4
 	pkgrel = 2
@@ -7,13 +7,13 @@ pkgbase = ros-melodic-joy-listener
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-sensor-msgs
-	makedepends = ros-melodic-rospy
-	depends = ros-melodic-sensor-msgs
-	depends = ros-melodic-rospy
-	source = ros-melodic-joy-listener-0.2.4.tar.gz::https://github.com/DLu/wu_ros_tools/archive/0.2.4.tar.gz
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-sensor-msgs
+	makedepends = ros-noetic-rospy
+	depends = ros-noetic-sensor-msgs
+	depends = ros-noetic-rospy
+	source = ros-noetic-joy-listener-0.2.4.tar.gz::https://github.com/DLu/wu_ros_tools/archive/0.2.4.tar.gz
 	sha256sums = fd0bb39a69302dae5ccfd565277209719a4199644fc8265a2ae7ccedd92c004a
 
-pkgname = ros-melodic-joy-listener
+pkgname = ros-noetic-joy-listener
 
