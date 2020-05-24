@@ -2,8 +2,8 @@
 
 pkgname=openra-kknd-git
 _pkgname=openra-kknd
-pkgver=148.git.5fc5d83
-pkgrel=2
+pkgver=150.git.2635998
+pkgrel=1
 pkgdesc="A Krush, Kill n' Destroy-inspired mod of OpenRA"
 arch=('any')
 url="https://www.kknd-game.com/"
