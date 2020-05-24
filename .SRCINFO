@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-hardware-interface
+pkgbase = ros-noetic-hardware-interface
 	pkgdesc = ROS - Hardware Interface base class.
 	pkgver = 0.15.1
 	pkgrel = 3
@@ -11,12 +11,12 @@ pkgbase = ros-melodic-hardware-interface
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-roscpp
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-rostest
-	depends = ros-melodic-roscpp
-	source = ros-melodic-hardware-interface-0.15.1.tar.gz::https://github.com/ros-controls/ros_control/archive/0.15.1.tar.gz
+	makedepends = ros-noetic-roscpp
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-rostest
+	depends = ros-noetic-roscpp
+	source = ros-noetic-hardware-interface-0.15.1.tar.gz::https://github.com/ros-controls/ros_control/archive/0.15.1.tar.gz
 	sha256sums = adf1a9d1fd10f4d89e91c8279d1278d9cd301767b658c143810479b2d10eedca
 
-pkgname = ros-melodic-hardware-interface
+pkgname = ros-noetic-hardware-interface
 
