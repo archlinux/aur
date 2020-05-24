@@ -4,7 +4,7 @@ pkgdesc="ROS - Message and service data structures for interacting with Gazebo f
 url='https://wiki.ros.org/gazebo_msgs'
 
 pkgname='ros-noetic-gazebo-msgs'
-pkgver='2.8.6'
+pkgver='2.9.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -28,10 +28,8 @@ ros_depends=(ros-noetic-std-msgs
 depends=(${ros_depends[@]})
 
 _dir="gazebo_ros_pkgs-${pkgver}/gazebo_msgs"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz"
-        "spawn_model.patch")
-sha256sums=('df928fbeebd277b8eedf7eb367ab88631de71ef6c552424731eaf855186bc4b4'
-            'a8a83abda169cca6a7709dc618f0b74a270f55ce274ac0108eec5df09f3bb3e8')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz")
+sha256sums=('9fac7aa1e9773aae20cfef1ec062353f91e4546ebd638e1df2e3f8b51f1e0773')
 
 build() {
   # Use ROS environment variables
@@ -49,10 +47,6 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
-
-  # Patch a file after compilation
-  cd "${srcdir}/build/devel/lib/python.8/site-packages/gazebo_msgs/srv/"
-  patch -uN _SpawnModel.py ${srcdir}/../spawn_model.patch || return 1
 }
 
 package() {

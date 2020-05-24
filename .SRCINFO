@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-gazebo-msgs
 	pkgdesc = ROS - Message and service data structures for interacting with Gazebo from ROS.
-	pkgver = 2.8.6
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://wiki.ros.org/gazebo_msgs
 	arch = i686
@@ -24,10 +24,8 @@ pkgbase = ros-noetic-gazebo-msgs
 	depends = ros-noetic-std-srvs
 	depends = ros-noetic-geometry-msgs
 	depends = ros-noetic-message-runtime
-	source = ros-noetic-gazebo-msgs-2.8.6.tar.gz::https://github.com/ros-simulation/gazebo_ros_pkgs/archive/2.8.6.tar.gz
-	source = spawn_model.patch
-	sha256sums = df928fbeebd277b8eedf7eb367ab88631de71ef6c552424731eaf855186bc4b4
-	sha256sums = a8a83abda169cca6a7709dc618f0b74a270f55ce274ac0108eec5df09f3bb3e8
+	source = ros-noetic-gazebo-msgs-2.9.1.tar.gz::https://github.com/ros-simulation/gazebo_ros_pkgs/archive/2.9.1.tar.gz
+	sha256sums = 9fac7aa1e9773aae20cfef1ec062353f91e4546ebd638e1df2e3f8b51f1e0773
 
 pkgname = ros-noetic-gazebo-msgs
 
