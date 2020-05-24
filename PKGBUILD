@@ -8,11 +8,11 @@ pkgdesc="A small binary that displays the status of your pacman mirrorlist in yo
 arch=('x86_64')
 url="https://github.com/doums/milcheck"
 license=('MPL2')
-source=("https://github.com/doums/milcheck/releases/download/v${pkgver}/${_pkgname}")
+source=("$pkgname-$pkgver::https://github.com/doums/milcheck/releases/download/v${pkgver}/${_pkgname}")
 depends=('gcc-libs')
 md5sums=('d2e59fd9b1634805ea883f7b1f6ad479')
 
 package() {
   echo "$pkgdir"
-  install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
 }
