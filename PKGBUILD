@@ -4,8 +4,8 @@
 pkgbase=flac-git
 pkgname=('flac-git' 'flac-doc-git')
 pkgver=v1.3.3.ce6dd6b
-pkgrel=1
-arch=('i686' 'x86_64', 'aarch64')
+pkgrel=2
+arch=('x86_64' 'aarch64')
 url="https://xiph.org/flac/"
 license=('BSD' 'GPL')
 depends=('gcc-libs' 'libogg')
@@ -32,7 +32,7 @@ package_flac-git() {
   pkgdesc="Free Lossless Audio Codec (git version)"
   options=('!docs')
   conflicts=('flac')
-  provides=('flac')
+  provides=('libFLAC.so' 'libFLAC++.so')
 
   cd "$_gitname"
   make DESTDIR="${pkgdir}" install
