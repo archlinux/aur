@@ -2,8 +2,8 @@
 # Contributor: redfish <redfish at galactica.pw>
 
 pkgname=bitcoin-unlimited
-pkgver=1.7.0.0
-_pkgbase=BitcoinUnlimited-bucash${pkgver}
+pkgver=1.8.0.0
+_pkgbase=BitcoinUnlimited-BCHunlimited${pkgver}
 pkgrel=1
 pkgdesc='Bitcoin Unlimited Cash (BCH) versions of Bitcoind, bitcoin-cli, 
 bitcoin-tx, and bitcoin-qt, w/GUI and wallet'
@@ -15,9 +15,15 @@ optdepends=('miniupnpc' 'db4.8' 'qt5-base' 'protobuf' 'qrencode')
 makedepends=('boost' 'qt5-tools')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-unlimited-git' 'bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
-source=("https://github.com/BitcoinUnlimited/BitcoinUnlimited/archive/bucash${pkgver}.tar.gz")
-sha256sums=('667249285d51f0da539132f1e4423739eec8889326fbbb611368dc7dec068f5c')
+source=("https://github.com/BitcoinUnlimited/BitcoinUnlimited/archive/BCHunlimited${pkgver}.tar.gz"
+	include-stack.patch)
 install=$pkgname.install
+
+prepare() {
+  cd "$srcdir/$_pkgbase"
+  # fix compilation error
+  patch -p1 < ../include-stack.patch
+}
 
 build() {
   cd "$srcdir/$_pkgbase"
@@ -45,3 +51,6 @@ package() {
                  "$pkgdir/usr/share/man/man5/bitcoin.conf.5"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
+
+sha256sums=('c18b390348097c27772a9b1857d4646597b178c6c4cc6945c5ee6130ac075b55'
+            '21b21e4f9c541d8412b5125e3d53e943b4794b5247f34f50bb84eaa1757cf9e0')

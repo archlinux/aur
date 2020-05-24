@@ -1,0 +1,10 @@
+--- a/src/unlimited.cpp	2020-05-24 00:01:58.645744803 -0400
++++ b/src/unlimited.cpp	2020-05-24 00:02:03.732479996 -0400
+@@ -54,6 +54,7 @@
+ #include <limits>
+ #include <queue>
+ #include <thread>
++#include <stack>
+ 
+ using namespace std;
+ 
