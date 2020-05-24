@@ -7,7 +7,7 @@ pkgname="${_pkgname}"
 pkgver='0.4'
 pkgrel='1'
 pkgdesc='list and change the configuration of connected FireWire devices. Formerly jujuutils'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 #url="http://code.google.com/p/jujuutils/"
 url="https://github.com/${_gitauth}/${_pkgname}"
 license=('GPL')
@@ -32,7 +32,7 @@ prepare() {
 build() {
   set -u
   cd "${pkgname}-${pkgver}"
-  make -s # -j "$(nproc)" # Too small for parallel make
+  make -s -j1 # -j "$(nproc)" # Too small for parallel make
   set +u
 }
 
