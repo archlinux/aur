@@ -4,7 +4,7 @@
 
 pkgname=glib2-patched-thumbnailer
 pkgver=2.64.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
 arch=(x86_64)
@@ -64,6 +64,7 @@ package() {
   DESTDIR="$pkgdir" meson install -C build
   install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 *.hook
 
+  export PYTHONHASHSEED=0
   python -m compileall -d /usr/share/glib-2.0/codegen \
     "$pkgdir/usr/share/glib-2.0/codegen"
   python -O -m compileall -d /usr/share/glib-2.0/codegen \
