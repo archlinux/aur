@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-ivcon
+pkgbase = ros-noetic-ivcon
 	pkgdesc = ROS - Mesh Conversion Utility Used to generate .iv files from .stl files.
 	pkgver = 0.1.7
 	pkgrel = 2
@@ -7,9 +7,9 @@ pkgbase = ros-melodic-ivcon
 	license = GPL
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	source = ros-melodic-ivcon-0.1.7.tar.gz::https://github.com/ros/ivcon/archive/0.1.7.tar.gz
+	makedepends = ros-noetic-catkin
+	source = ros-noetic-ivcon-0.1.7.tar.gz::https://github.com/ros/ivcon/archive/0.1.7.tar.gz
 	sha256sums = 55b50a0ea6886f031b1b84f3d670e409261821bf10e7ccd315c1c057533ff643
 
-pkgname = ros-melodic-ivcon
+pkgname = ros-noetic-ivcon
 
