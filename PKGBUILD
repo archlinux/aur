@@ -1,15 +1,15 @@
 pkgdesc="ROS - image_geometry contains C++ and Python libraries for interpreting images geometrically."
 url='https://wiki.ros.org/image_geometry'
 
-pkgname='ros-melodic-image-geometry'
+pkgname='ros-noetic-image-geometry'
 pkgver='1.13.0'
 arch=('any')
 pkgrel='3'
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-sensor-msgs
-	ros-melodic-catkin
+	ros-noetic-sensor-msgs
+	ros-noetic-catkin
 )
 
 makedepends=(
@@ -20,7 +20,7 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-sensor-msgs
+	ros-noetic-sensor-msgs
 )
 
 depends=(
@@ -35,21 +35,17 @@ sha256sums=('c8db35dbb6b470cdedb45195f725bc2cfda7f0dc3155e16a5a37e4b48e29fa59')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
