@@ -1,0 +1,14 @@
+pkgbase = audio-m4p
+	pkgdesc = Read-only release history for Audio-M4P
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/gitpan/Audio-M4P
+	arch = any
+	license = GPL-2.0
+	makedepends = git
+	depends = perl
+	source = git+https://github.com/gitpan/Audio-M4P
+	md5sums = SKIP
+
+pkgname = audio-m4p
+
