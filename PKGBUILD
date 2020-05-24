@@ -1,8 +1,9 @@
 # Maintainer: Michael Kuc <michaelkuc6 at gmail dot com>
 # Contributor: Ihor Kalnytskyi <ikalnytskyi at github dot com>
 
-pkgname=termcolor-git
-pkgver=0.1
+_pkgname=termcolor
+pkgname="${_pkgname}-git"
+pkgver=v1.0.1.r22.ga79bf3c
 pkgrel=1
 epoch=
 pkgdesc='Termcolor is a header-only C++ library for printing colored messages to the terminal. Written just for fun with a help of the Force.'
@@ -14,36 +15,43 @@ depends=()
 makedepends=('git' 'cmake')
 checkdepends=()
 optdepends=()
-provides=('termcolor')
+provides=("${_pkgname}")
 conflicts=()
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=("${pkgname}::git+https://github.com/ikalnytskyi/termcolor.git")
+source=("${_pkgname}::git+https://github.com/ikalnytskyi/termcolor.git")
 noextract=()
 validpgpkeys=()
 sha256sums=('SKIP')
 
+pkgver() {
+	cd "${srcdir}/${_pkgname}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
-	# cd "$pkgname
-	:
+	cd "${_pkgname}"
+	mkdir -p build
+	cd build
+	cmake -G 'Unix Makefiles' -DCMAKE_INSTALL_PREFIX=/usr ".."
 }
 
 build() {
-	cd "${pkgname}"
-	cmake .
-	make
+	cd "${_pkgname}/build"
+	cmake --build .
 }
 
-check() {
-	cd "${pkgname}"
-	./test_termcolor
-}
+# check() {
+# 	cd "${pkgname}/build"
+# 	./test_termcolor
+# }
 
 package() {
-	cd "${pkgname}"
-	install -Dm644 "include/termcolor/termcolor.hpp" "${pkgdir}/usr/include/termcolor/termcolor.hpp"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "${_pkgname}"
+	(cd build && make PREFIX=/usr DESTDIR="${pkgdir}/" install)
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm644 README.rst "${pkgdir}/usr/share/doc/${_pkgname}/README.rst"
 }
