@@ -1,9 +1,8 @@
 pkgbase = mpsolve
 	pkgdesc = Multiprecision rootfinder for complex roots of univariate polynomials
-	pkgver = 3.1.7
-	pkgrel = 3
+	pkgver = 3.1.8
+	pkgrel = 1
 	url = http://numpi.dm.unipi.it/software/mpsolve
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = gcc-fortran
@@ -13,10 +12,10 @@ pkgbase = mpsolve
 	optdepends = doxygen: documentation (optional build-time dependency)
 	optdepends = gtk3: Graphical debugger
 	optdepends = octave: Octave bindings
-	optdepends = qt4: Graphical interface xmpsolve
+	optdepends = qt5-base: Graphical interface xmpsolve
 	options = !libtool
-	source = http://numpi.dm.unipi.it/_media/software/mpsolve/mpsolve-3.1.7.tar.bz2
-	sha256sums = 3e3d750ad3acc1f274015d0c418d3d6fadf5ed3aa1fc57680dd38b994d2e8305
+	source = http://numpi.dm.unipi.it/_media/software/mpsolve/mpsolve-3.1.8.tar.bz2
+	sha256sums = 53c39890a1cf4bfe505c5e4835b4b3f2aa56794b17ac59c018f1226f0acd323b
 
 pkgname = mpsolve
 
