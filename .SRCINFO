@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-nav-core
+pkgbase = ros-noetic-nav-core
 	pkgdesc = ROS - This package provides common interfaces for navigation specific robot actions.
 	pkgver = 1.16.2
 	pkgrel = 2
@@ -7,17 +7,17 @@ pkgbase = ros-melodic-nav-core
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-std-msgs
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-costmap-2d
-	makedepends = ros-melodic-tf
-	makedepends = ros-melodic-geometry-msgs
-	depends = ros-melodic-std-msgs
-	depends = ros-melodic-costmap-2d
-	depends = ros-melodic-tf
-	depends = ros-melodic-geometry-msgs
-	source = ros-melodic-nav-core-1.16.2.tar.gz::https://github.com/ros-planning/navigation/archive/1.16.2.tar.gz
+	makedepends = ros-noetic-std-msgs
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-costmap-2d
+	makedepends = ros-noetic-tf
+	makedepends = ros-noetic-geometry-msgs
+	depends = ros-noetic-std-msgs
+	depends = ros-noetic-costmap-2d
+	depends = ros-noetic-tf
+	depends = ros-noetic-geometry-msgs
+	source = ros-noetic-nav-core-1.16.2.tar.gz::https://github.com/ros-planning/navigation/archive/1.16.2.tar.gz
 	sha256sums = d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205
 
-pkgname = ros-melodic-nav-core
+pkgname = ros-noetic-nav-core
 
