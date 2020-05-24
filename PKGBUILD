@@ -1,36 +1,35 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+
 pkgname=tin-summer
 pkgver=1.21.8
-pkgrel=1
-pkgdesc="Find build artifacts that are taking up disk space"
+pkgrel=2
+pkgdesc='Find build artifacts that are taking up disk space'
 arch=('x86_64')
-url="https://github.com/vmchale/tin-summer"
-license=('custom:BSD')
-depends=()
-makedepends=('rust' 'cargo')
-provides=('tin-summer')
+url="https://github.com/vmchale/$pkgname"
+license=('BSD')
+makedepends=('rust')
 conflicts=('mono')
-source=("git+https://github.com/vmchale/tin-summer.git#tag=$pkgver")
-sha512sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('d9a6f4b41c759c291c91348914635243df0f13d38985d398bbb48a39ab4b338c')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    mkdir -p target/completions
+    cargo fetch
+}
 
 build() {
-  cd "$srcdir/$pkgname"
-  which rustup > /dev/null 2>&1 && CARGO="rustup run nightly cargo" || CARGO=cargo
-
-  $CARGO build --release
+    cd "$pkgname-$pkgver"
+    cargo build --release --locked
 }
 
 check() {
-  cd "$srcdir/$pkgname"
-  which rustup > /dev/null 2>&1 && CARGO="rustup run nightly cargo" || CARGO=cargo
-
-  $CARGO check --release
+    cd "$pkgname-$pkgver"
+    cargo check --release --locked
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-
-  install -D -m664 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -D -m755 "target/release/sn" "$pkgdir/usr/bin/sn"
+    cd "$pkgname-$pkgver"
+    install -Dm664 -t "$pkgdir/usr/share/licenses/$pkgname/" "LICENSE"
+    install -Dm755 -t "$pkgdir/usr/bin/" "target/release/sn"
 }
-
-# vim:set ts=2 sw=2 et:
