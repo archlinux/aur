@@ -3,16 +3,16 @@
 pkgdesc="ROS - This contains CvBridge, which converts between ROS Image messages and OpenCV images."
 url='https://wiki.ros.org/cv_bridge'
 
-pkgname='ros-melodic-cv-bridge'
+pkgname='ros-noetic-cv-bridge'
 pkgver='1.13.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=5
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-sensor-msgs
-	ros-melodic-rosconsole
-	ros-melodic-catkin
+	ros-noetic-sensor-msgs
+	ros-noetic-rosconsole
+	ros-noetic-catkin
 )
 
 makedepends=(
@@ -26,8 +26,8 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-sensor-msgs
-	ros-melodic-rosconsole
+	ros-noetic-sensor-msgs
+	ros-noetic-rosconsole
 )
 
 depends=(
@@ -55,21 +55,17 @@ prepare() {
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
