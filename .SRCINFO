@@ -1,7 +1,7 @@
 pkgbase = ssb-server
 	pkgdesc = The gossip and replication server for Secure Scuttlebutt - a distributed social network
 	pkgver = 15.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://scuttlebut.io
 	arch = any
 	license = MIT
@@ -9,7 +9,9 @@ pkgbase = ssb-server
 	depends = npm
 	options = !strip
 	source = https://github.com/ssbc/ssb-server/archive/v15.2.0.tar.gz
+	source = sodium-native.patch
 	sha256sums = b5c8ae6c87035e70b1e7031ce396e132665bbcb93206f94b910519db2764c138
+	sha256sums = 6c11a25664a5cd723ba27da52bfb32fa85c8eb017a697b56dea63da1aba051df
 
 pkgname = ssb-server
 
