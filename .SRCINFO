@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-controller-manager
+pkgbase = ros-noetic-controller-manager
 	pkgdesc = ROS - The controller manager.
 	pkgver = 0.15.1
 	pkgrel = 2
@@ -7,18 +7,18 @@ pkgbase = ros-melodic-controller-manager
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-pluginlib
-	makedepends = ros-melodic-controller-manager-msgs
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-hardware-interface
-	makedepends = ros-melodic-controller-interface
-	makedepends = ros-melodic-rostest
-	depends = ros-melodic-pluginlib
-	depends = ros-melodic-controller-manager-msgs
-	depends = ros-melodic-hardware-interface
-	depends = ros-melodic-controller-interface
-	source = ros-melodic-controller-manager-0.15.1.tar.gz::https://github.com/ros-controls/ros_control/archive/0.15.1.tar.gz
+	makedepends = ros-noetic-pluginlib
+	makedepends = ros-noetic-controller-manager-msgs
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-hardware-interface
+	makedepends = ros-noetic-controller-interface
+	makedepends = ros-noetic-rostest
+	depends = ros-noetic-pluginlib
+	depends = ros-noetic-controller-manager-msgs
+	depends = ros-noetic-hardware-interface
+	depends = ros-noetic-controller-interface
+	source = ros-noetic-controller-manager-0.15.1.tar.gz::https://github.com/ros-controls/ros_control/archive/0.15.1.tar.gz
 	sha256sums = adf1a9d1fd10f4d89e91c8279d1278d9cd301767b658c143810479b2d10eedca
 
-pkgname = ros-melodic-controller-manager
+pkgname = ros-noetic-controller-manager
 
