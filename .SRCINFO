@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rqt-msg
+pkgbase = ros-noetic-rqt-msg
 	pkgdesc = ROS - A Python GUI plugin for introspecting available ROS message types.
 	pkgver = 0.4.8
 	pkgrel = 2
@@ -7,18 +7,18 @@ pkgbase = ros-melodic-rqt-msg
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-py-common
-	depends = ros-melodic-rqt-gui-py
-	depends = ros-melodic-rosmsg
-	depends = ros-melodic-rqt-console
-	depends = ros-melodic-python-qt-binding
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-rospy
-	depends = ros-melodic-roslib
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-rqt-py-common
+	depends = ros-noetic-rqt-gui-py
+	depends = ros-noetic-rosmsg
+	depends = ros-noetic-rqt-console
+	depends = ros-noetic-python-qt-binding
+	depends = ros-noetic-rqt-gui
+	depends = ros-noetic-rospy
+	depends = ros-noetic-roslib
 	depends = python-rospkg
-	source = ros-melodic-rqt-msg-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_msg/archive/0.4.8.tar.gz
+	source = ros-noetic-rqt-msg-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_msg/archive/0.4.8.tar.gz
 	sha256sums = 0f5a928077b9844b7aa558a80c9cc9171c5091868e58f6d0c02a1936c5d74757
 
-pkgname = ros-melodic-rqt-msg
+pkgname = ros-noetic-rqt-msg
 

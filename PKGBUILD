@@ -3,7 +3,7 @@
 pkgdesc="ROS - A Python GUI plugin for introspecting available ROS message types."
 url='https://wiki.ros.org/rqt_msg'
 
-pkgname='ros-melodic-rqt-msg'
+pkgname='ros-noetic-rqt-msg'
 pkgver='0.4.8'
 _pkgver_patch=0
 arch=('any')
@@ -11,7 +11,7 @@ pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-catkin
+	ros-noetic-catkin
 )
 
 makedepends=(
@@ -21,14 +21,14 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-rqt-py-common
-	ros-melodic-rqt-gui-py
-	ros-melodic-rosmsg
-	ros-melodic-rqt-console
-	ros-melodic-python-qt-binding
-	ros-melodic-rqt-gui
-	ros-melodic-rospy
-	ros-melodic-roslib
+	ros-noetic-rqt-py-common
+	ros-noetic-rqt-gui-py
+	ros-noetic-rosmsg
+	ros-noetic-rqt-console
+	ros-noetic-python-qt-binding
+	ros-noetic-rqt-gui
+	ros-noetic-rospy
+	ros-noetic-roslib
 )
 
 depends=(
@@ -43,24 +43,17 @@ sha256sums=('0f5a928077b9844b7aa558a80c9cc9171c5091868e58f6d0c02a1936c5d74757')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
