@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-moveit-experimental
+pkgbase = ros-noetic-moveit-experimental
 	pkgdesc = ROS - experimental packages for moveit
 	pkgver = 1.0.2
 	pkgrel = 2
@@ -16,25 +16,25 @@ pkgbase = ros-melodic-moveit-experimental
 	makedepends = urdfdom
 	makedepends = urdfdom-headers
 	makedepends = console-bridge
-	makedepends = ros-melodic-pluginlib>=1.11.2
-	makedepends = ros-melodic-octomap-msgs
-	makedepends = ros-melodic-moveit-msgs
-	makedepends = ros-melodic-actionlib-msgs
-	makedepends = ros-melodic-geometry-msgs
-	makedepends = ros-melodic-sensor-msgs
-	makedepends = ros-melodic-shape-msgs
-	makedepends = ros-melodic-std-msgs
-	makedepends = ros-melodic-trajectory-msgs
-	makedepends = ros-melodic-visualization-msgs
-	makedepends = ros-melodic-octomap
-	makedepends = ros-melodic-kdl-parser
-	makedepends = ros-melodic-eigen-stl-containers
-	makedepends = ros-melodic-tf2-eigen
-	makedepends = ros-melodic-geometric-shapes>=0.3.4
-	makedepends = ros-melodic-roslib
-	makedepends = ros-melodic-rostime
-	makedepends = ros-melodic-rosconsole
-	makedepends = ros-melodic-moveit-core
+	makedepends = ros-noetic-pluginlib>=1.11.2
+	makedepends = ros-noetic-octomap-msgs
+	makedepends = ros-noetic-moveit-msgs
+	makedepends = ros-noetic-actionlib-msgs
+	makedepends = ros-noetic-geometry-msgs
+	makedepends = ros-noetic-sensor-msgs
+	makedepends = ros-noetic-shape-msgs
+	makedepends = ros-noetic-std-msgs
+	makedepends = ros-noetic-trajectory-msgs
+	makedepends = ros-noetic-visualization-msgs
+	makedepends = ros-noetic-octomap
+	makedepends = ros-noetic-kdl-parser
+	makedepends = ros-noetic-eigen-stl-containers
+	makedepends = ros-noetic-tf2-eigen
+	makedepends = ros-noetic-geometric-shapes>=0.3.4
+	makedepends = ros-noetic-roslib
+	makedepends = ros-noetic-rostime
+	makedepends = ros-noetic-rosconsole
+	makedepends = ros-noetic-moveit-core
 	depends = eigen
 	depends = cmake
 	depends = boost
@@ -42,27 +42,27 @@ pkgbase = ros-melodic-moveit-experimental
 	depends = urdfdom
 	depends = urdfdom-headers
 	depends = console-bridge
-	depends = ros-melodic-pluginlib>=1.11.2
-	depends = ros-melodic-octomap-msgs
-	depends = ros-melodic-moveit-msgs
-	depends = ros-melodic-actionlib-msgs
-	depends = ros-melodic-geometry-msgs
-	depends = ros-melodic-sensor-msgs
-	depends = ros-melodic-shape-msgs
-	depends = ros-melodic-std-msgs
-	depends = ros-melodic-trajectory-msgs
-	depends = ros-melodic-visualization-msgs
-	depends = ros-melodic-octomap
-	depends = ros-melodic-kdl-parser
-	depends = ros-melodic-eigen-stl-containers
-	depends = ros-melodic-tf2-eigen
-	depends = ros-melodic-geometric-shapes>=0.3.4
-	depends = ros-melodic-roslib
-	depends = ros-melodic-rostime
-	depends = ros-melodic-rosconsole
-	depends = ros-melodic-moveit-core
-	source = ros-melodic-moveit-experimental-1.0.2.tar.gz::https://github.com/ros-planning/moveit/archive/1.0.2.tar.gz
+	depends = ros-noetic-pluginlib>=1.11.2
+	depends = ros-noetic-octomap-msgs
+	depends = ros-noetic-moveit-msgs
+	depends = ros-noetic-actionlib-msgs
+	depends = ros-noetic-geometry-msgs
+	depends = ros-noetic-sensor-msgs
+	depends = ros-noetic-shape-msgs
+	depends = ros-noetic-std-msgs
+	depends = ros-noetic-trajectory-msgs
+	depends = ros-noetic-visualization-msgs
+	depends = ros-noetic-octomap
+	depends = ros-noetic-kdl-parser
+	depends = ros-noetic-eigen-stl-containers
+	depends = ros-noetic-tf2-eigen
+	depends = ros-noetic-geometric-shapes>=0.3.4
+	depends = ros-noetic-roslib
+	depends = ros-noetic-rostime
+	depends = ros-noetic-rosconsole
+	depends = ros-noetic-moveit-core
+	source = ros-noetic-moveit-experimental-1.0.2.tar.gz::https://github.com/ros-planning/moveit/archive/1.0.2.tar.gz
 	sha256sums = b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4
 
-pkgname = ros-melodic-moveit-experimental
+pkgname = ros-noetic-moveit-experimental
 
