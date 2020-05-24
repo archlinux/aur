@@ -4,30 +4,25 @@
 # Contributor: pluckypigeon <pluckypigeon@ArchForums.com>
 # Contributor: canton7
 
-_pkgname=get_iplayer
-pkgname=$_pkgname-git
-pkgver=3.17
+pkgname=get_iplayer-git
+pkgver=3.25
 pkgrel=1
 pkgdesc="Download TV and radio programmes from BBC iPlayer"
 arch=('any')
 url="https://github.com/get-iplayer/get_iplayer"
 license=('GPL3')
-
 # perl-libwww is the LWP module
 depends=('perl-json-pp'
          'perl-libwww'
          'perl-lwp-protocol-https'
          'perl-xml-libxml')
-
-optdepends=(
-  'atomicparsley: metadata tagging for MP4 and M4A files'
-  'ffmpeg: convert DASH audio/video, MPEG-TS, FLV files to MP4 and M4A'
-  'perl-mojolicious: reduce cache update time')
-
+optdepends=('atomicparsley: metadata tagging for MP4 and M4A files'
+            'ffmpeg: convert DASH audio/video, MPEG-TS, FLV files to MP4 and M4A'
+            'perl-mojolicious: reduce cache update time')
 makedepends=('git')
-conflicts=($_pkgname)
-provides=($_pkgname)
-source=($pkgname::git://github.com/get-iplayer/get_iplayer.git)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+source=($pkgname::git+$url.git)
 md5sums=('SKIP')
 
 pkgver() {
@@ -43,6 +38,7 @@ package() {
 
   install -Dm644 README.md "$pkgdir/usr/share/doc/get_iplayer/README.md"
 
-  install -Dm644 get_iplayer.1 "$pkgdir/usr/share/man/man1/get_iplayer.1"
+  install -dm755 "$pkgdir/usr/share/man/man1"
+  gzip get_iplayer.1 > "$pkgdir/usr/share/man/man1/get_iplayer.1.gz"
 }
 

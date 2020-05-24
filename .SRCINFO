@@ -1,6 +1,6 @@
 pkgbase = get_iplayer-git
 	pkgdesc = Download TV and radio programmes from BBC iPlayer
-	pkgver = 3.17
+	pkgver = 3.25
 	pkgrel = 1
 	url = https://github.com/get-iplayer/get_iplayer
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = get_iplayer-git
 	optdepends = perl-mojolicious: reduce cache update time
 	provides = get_iplayer
 	conflicts = get_iplayer
-	source = get_iplayer-git::git://github.com/get-iplayer/get_iplayer.git
+	source = get_iplayer-git::git+https://github.com/get-iplayer/get_iplayer.git
 	md5sums = SKIP
 
 pkgname = get_iplayer-git
