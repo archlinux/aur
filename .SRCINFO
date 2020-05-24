@@ -1,0 +1,16 @@
+pkgbase = openrsync-git
+	pkgdesc = BSD-licensed implementation of rsync
+	pkgver = 0.5.0.r111.g8b61216
+	pkgrel = 1
+	url = https://github.com/kristapsdz/openrsync
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = glibc
+	provides = openrsync
+	conflicts = openrsync
+	source = git+https://github.com/kristapsdz/openrsync.git
+	sha256sums = SKIP
+
+pkgname = openrsync-git
+
