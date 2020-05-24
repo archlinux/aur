@@ -1,16 +1,18 @@
 pkgbase = pantum_driver
-	pkgdesc = Pantum M6200-M6500-M6550-M6600-MS6000 Series LINUX Driver V1.4.0
-	pkgver = 1.4.0
+	pkgdesc = Pantum M6200-M6500-M6550-M6600-MS6000 Series LINUX Driver V1.1.5
+	pkgver = 1.1.5
 	pkgrel = 0.1
 	arch = x86_64
 	arch = x86
 	arch = i686
 	arch = i386
+	arch = arm
+	arch = aarch64
 	license = proprietary
 	depends = sane
 	depends = cups
-	source = http://global.pantum.com/global/wp-content/uploads/2016/01/Pantum-M6200-M6500-M6550-M6600-MS6000-Series-LINUX-Driver-V1-4-0-tar.gz
-	md5sums = 9e9d93b83e8e78cd99f8db0a35cc422a
+	source = https://global.pantum.com/global/wp-content/uploads/2017/03/Pantum-Ubuntu-Driver-V1-1-5.tar.gz
+	md5sums = SKIP
 
 pkgname = pantum_driver
 
