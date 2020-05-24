@@ -2,31 +2,31 @@
 pkgdesc="ROS - MoveIt interface to OMPL."
 url='https://moveit.ros.org'
 
-pkgname='ros-melodic-moveit-planners-ompl'
+pkgname='ros-noetic-moveit-planners-ompl'
 pkgver='1.0.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=4
 license=('BSD')
 
-ros_makedepends=(ros-melodic-moveit-core
-  ros-melodic-tf
-  ros-melodic-pluginlib
-  ros-melodic-roscpp
-  ros-melodic-dynamic-reconfigure
-  ros-melodic-moveit-ros-planning
-  ros-melodic-eigen-conversions
-  ros-melodic-moveit-resources
-  ros-melodic-catkin)
+ros_makedepends=(ros-noetic-moveit-core
+  ros-noetic-tf
+  ros-noetic-pluginlib
+  ros-noetic-roscpp
+  ros-noetic-dynamic-reconfigure
+  ros-noetic-moveit-ros-planning
+  ros-noetic-eigen-conversions
+  ros-noetic-moveit-resources
+  ros-noetic-catkin)
 makedepends=('cmake' 'ros-build-tools' 'ompl'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-melodic-moveit-core
-  ros-melodic-tf
-  ros-melodic-pluginlib
-  ros-melodic-roscpp
-  ros-melodic-dynamic-reconfigure
-  ros-melodic-moveit-ros-planning
-  ros-melodic-eigen-conversions)
+ros_depends=(ros-noetic-moveit-core
+  ros-noetic-tf
+  ros-noetic-pluginlib
+  ros-noetic-roscpp
+  ros-noetic-dynamic-reconfigure
+  ros-noetic-moveit-ros-planning
+  ros-noetic-eigen-conversions)
 depends=('ompl' ${ros_depends[@]})
 
 _dir="moveit-${pkgver}/moveit_planners/ompl"
@@ -45,21 +45,17 @@ prepare() {
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
