@@ -1,0 +1,15 @@
+pkgbase = mrwriter-git
+	pkgdesc = Notetaking and blackboard replacement application. Inspired by Xournal. Written in C++/Qt for Linux / Windows / Mac.
+	pkgver = v0.0.6.r9.ge3edf62
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/unruhschuh/MrWriter
+	arch = x86_64
+	license = GPL3
+	provides = mrwriter
+	conflicts = mrwriter
+	source = mrwriter::git+https://github.com/unruhschuh/MrWriter.git
+	md5sums = SKIP
+
+pkgname = mrwriter-git
+
