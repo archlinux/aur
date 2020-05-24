@@ -2,26 +2,26 @@
 pkgdesc="ROS - Holds the action description and relevant messages for the move_base package."
 url='https://wiki.ros.org/move_base_msgs'
 
-pkgname='ros-melodic-move-base-msgs'
+pkgname='ros-noetic-move-base-msgs'
 pkgver='1.13.0'
 arch=('any')
 pkgrel=2
 license=('BSD')
 
-ros_makedepends=(ros-melodic-message-generation
-  ros-melodic-actionlib-msgs
-  ros-melodic-geometry-msgs
-  ros-melodic-catkin)
+ros_makedepends=(ros-noetic-message-generation
+  ros-noetic-actionlib-msgs
+  ros-noetic-geometry-msgs
+  ros-noetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-melodic-message-runtime
-  ros-melodic-actionlib-msgs
-  ros-melodic-geometry-msgs)
+ros_depends=(ros-noetic-message-runtime
+  ros-noetic-actionlib-msgs
+  ros-noetic-geometry-msgs)
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
-# _tag=release/melodic/move_base_msgs/${pkgver}-${_pkgver_patch}
+# _tag=release/noetic/move_base_msgs/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/navigation_msgs-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
@@ -34,24 +34,17 @@ sha256sums=('09bba8fb7a60135183830dec4381cd3187244794aab9759ac50bbc6007e04a61')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_BASENAME=-python3.7m \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
