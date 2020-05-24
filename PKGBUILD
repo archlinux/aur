@@ -3,39 +3,39 @@
 pkgdesc="ROS - This package provides ROS specific hooks for stage."
 url='https://wiki.ros.org/stage_ros'
 
-pkgname='ros-melodic-stage-ros'
+pkgname='ros-noetic-stage-ros'
 pkgver='1.8.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=3
 license=('BSD')
 
-ros_makedepends=(ros-melodic-tf
-  ros-melodic-std-msgs
-  ros-melodic-rostest
-  ros-melodic-stage
-  ros-melodic-catkin
-  ros-melodic-std-srvs
-  ros-melodic-roscpp
-  ros-melodic-nav-msgs
-  ros-melodic-sensor-msgs
-  ros-melodic-geometry-msgs)
+ros_makedepends=(ros-noetic-tf
+  ros-noetic-std-msgs
+  ros-noetic-rostest
+  ros-noetic-stage
+  ros-noetic-catkin
+  ros-noetic-std-srvs
+  ros-noetic-roscpp
+  ros-noetic-nav-msgs
+  ros-noetic-sensor-msgs
+  ros-noetic-geometry-msgs)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost)
 
-ros_depends=(ros-melodic-tf
-  ros-melodic-std-msgs
-  ros-melodic-roscpp
-  ros-melodic-stage
-  ros-melodic-std-srvs
-  ros-melodic-geometry-msgs
-  ros-melodic-nav-msgs
-  ros-melodic-sensor-msgs)
+ros_depends=(ros-noetic-tf
+  ros-noetic-std-msgs
+  ros-noetic-roscpp
+  ros-noetic-stage
+  ros-noetic-std-srvs
+  ros-noetic-geometry-msgs
+  ros-noetic-nav-msgs
+  ros-noetic-sensor-msgs)
 depends=(${ros_depends[@]}
   boost)
 
 # Git version (e.g. for debugging)
-# _tag=release/melodic/stage_ros/${pkgver}-${_pkgver_patch}
+# _tag=release/noetic/stage_ros/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/stage_ros-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
@@ -48,21 +48,17 @@ sha256sums=('21fbe64e3a5f639ce88a69b3ae15eea38a9e2dbeedfb7f9bed21f787706973fb')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
