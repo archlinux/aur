@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-filters
+pkgbase = ros-noetic-filters
 	pkgdesc = ROS - This library provides a standardized interface for processing data as a sequence of filters.
 	pkgver = 1.8.1
 	pkgrel = 3
@@ -11,18 +11,18 @@ pkgbase = ros-melodic-filters
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-rostest
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-rosconsole
-	makedepends = ros-melodic-roscpp
-	makedepends = ros-melodic-pluginlib
-	makedepends = ros-melodic-roslib
-	depends = ros-melodic-pluginlib
-	depends = ros-melodic-rosconsole
-	depends = ros-melodic-roscpp
-	depends = ros-melodic-roslib
-	source = ros-melodic-filters-1.8.1.tar.gz::https://github.com/ros/filters/archive/1.8.1.tar.gz
+	makedepends = ros-noetic-rostest
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-rosconsole
+	makedepends = ros-noetic-roscpp
+	makedepends = ros-noetic-pluginlib
+	makedepends = ros-noetic-roslib
+	depends = ros-noetic-pluginlib
+	depends = ros-noetic-rosconsole
+	depends = ros-noetic-roscpp
+	depends = ros-noetic-roslib
+	source = ros-noetic-filters-1.8.1.tar.gz::https://github.com/ros/filters/archive/1.8.1.tar.gz
 	sha256sums = 647958f9eba1cb304fe0e7899c3ee884b3b748720a41afb1c509ac8badf610c2
 
-pkgname = ros-melodic-filters
+pkgname = ros-noetic-filters
 
