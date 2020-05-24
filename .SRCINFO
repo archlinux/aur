@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rqt-action
+pkgbase = ros-noetic-rqt-action
 	pkgdesc = ROS - rqt_action provides a feature to introspect all available ROS action (from actionlib) types.
 	pkgver = 0.4.9
 	pkgrel = 2
@@ -7,12 +7,12 @@ pkgbase = ros-melodic-rqt-action
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-msg
-	depends = ros-melodic-rqt-py-common
-	depends = ros-melodic-rospy
-	source = ros-melodic-rqt-action-0.4.9.tar.gz::https://github.com/ros-visualization/rqt_action/archive/0.4.9.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-rqt-msg
+	depends = ros-noetic-rqt-py-common
+	depends = ros-noetic-rospy
+	source = ros-noetic-rqt-action-0.4.9.tar.gz::https://github.com/ros-visualization/rqt_action/archive/0.4.9.tar.gz
 	sha256sums = 6f69d38f7770efd6da560c5c95438fbbed25fd2bea06e34421ed6aae2655a46c
 
-pkgname = ros-melodic-rqt-action
+pkgname = ros-noetic-rqt-action
 
