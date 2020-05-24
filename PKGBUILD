@@ -3,7 +3,7 @@
 pkgname=sleuthkit-apfs
 pkgver=4.6.5
 pkgrel=1
-pkgdesc='File system and media management forensic analysis tools'
+pkgdesc='File system and media management forensic analysis tools with APFS patches'
 arch=('x86_64')
 url="https://www.sleuthkit.org/sleuthkit"
 license=('GPL2' 'CPL' 'custom:"IBM Public Licence"')
