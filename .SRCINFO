@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-simulators
+pkgbase = ros-noetic-simulators
 	pkgdesc = ROS - A metapackage to aggregate several packages.
 	pkgver = 1.4.1
 	pkgrel = 2
@@ -7,14 +7,14 @@ pkgbase = ros-melodic-simulators
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-common-plugins
-	depends = ros-melodic-robot
-	depends = ros-melodic-gazebo-ros-pkgs
-	depends = ros-melodic-rqt-robot-plugins
-	depends = ros-melodic-stage-ros
-	source = ros-melodic-simulators-1.4.1.tar.gz::https://github.com/ros/metapackages/archive/1.4.1.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-rqt-common-plugins
+	depends = ros-noetic-robot
+	depends = ros-noetic-gazebo-ros-pkgs
+	depends = ros-noetic-rqt-robot-plugins
+	depends = ros-noetic-stage-ros
+	source = ros-noetic-simulators-1.4.1.tar.gz::https://github.com/ros/metapackages/archive/1.4.1.tar.gz
 	sha256sums = ef1df96c61c9762555174cc1a0e21e05149f74909d27044be0cd10aa065747a1
 
-pkgname = ros-melodic-simulators
+pkgname = ros-noetic-simulators
 
