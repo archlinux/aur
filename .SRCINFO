@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-geometry
+pkgbase = ros-noetic-geometry
 	pkgdesc = ROS - A metapackage for geometry library suite.
 	pkgver = 1.12.0
 	pkgrel = 2
@@ -7,14 +7,14 @@ pkgbase = ros-melodic-geometry
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-angles
-	depends = ros-melodic-kdl-conversions
-	depends = ros-melodic-tf-conversions
-	depends = ros-melodic-eigen-conversions
-	depends = ros-melodic-tf
-	source = ros-melodic-geometry-1.12.0.tar.gz::https://github.com/ros/geometry/archive/1.12.0.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-angles
+	depends = ros-noetic-kdl-conversions
+	depends = ros-noetic-tf-conversions
+	depends = ros-noetic-eigen-conversions
+	depends = ros-noetic-tf
+	source = ros-noetic-geometry-1.12.0.tar.gz::https://github.com/ros/geometry/archive/1.12.0.tar.gz
 	sha256sums = 61a278bdd50e00ea442055d9f70eaf82b5a36916739edca188fa1b71a59507b4
 
-pkgname = ros-melodic-geometry
+pkgname = ros-noetic-geometry
 
