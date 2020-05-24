@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-mavlink
+pkgbase = ros-noetic-mavlink
 	pkgdesc = ROS - MAVLink message marshaling library.
 	pkgver = 2019.9.9
 	pkgrel = 1
@@ -11,10 +11,10 @@ pkgbase = ros-melodic-mavlink
 	makedepends = python-future
 	makedepends = python-distribute
 	makedepends = python
-	depends = ros-melodic-catkin
+	depends = ros-noetic-catkin
 	depends = python
-	source = ros-melodic-mavlink-2019.9.9.tar.gz::https://github.com/mavlink/mavlink-gbp-release/archive/upstream/2019.9.9.tar.gz
+	source = ros-noetic-mavlink-2019.9.9.tar.gz::https://github.com/mavlink/mavlink-gbp-release/archive/upstream/2019.9.9.tar.gz
 	sha256sums = e7cc2097f7283a45f4c3e3ea91c62e98225d2d56170aa45153b755a3be63c5cb
 
-pkgname = ros-melodic-mavlink
+pkgname = ros-noetic-mavlink
 

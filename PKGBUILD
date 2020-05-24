@@ -3,7 +3,7 @@
 pkgdesc="ROS - MAVLink message marshaling library."
 url='https://qgroundcontrol.org/mavlink/'
 
-pkgname='ros-melodic-mavlink'
+pkgname='ros-noetic-mavlink'
 pkgver='2019.9.9'
 arch=('any')
 pkgrel=1
@@ -17,12 +17,12 @@ makedepends=('cmake' 'ros-build-tools'
   python-distribute
   python)
 
-ros_depends=(ros-melodic-catkin)
+ros_depends=(ros-noetic-catkin)
 depends=(${ros_depends[@]}
   python)
 
 # Git version (e.g. for debugging)
-# _tag=release/melodic/mavlink/${pkgver}-${_pkgver_patch}
+# _tag=release/noetic/mavlink/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/mavlink/mavlink-gbp-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
@@ -35,24 +35,17 @@ sha256sums=('e7cc2097f7283a45f4c3e3ea91c62e98225d2d56170aa45153b755a3be63c5cb')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_BASENAME=.cpython-37m \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
