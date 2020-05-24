@@ -3,14 +3,14 @@ can be done without a robot. You can do simple tests using this package on rviz
 without real robots."
 url='https://wiki.ros.org/turtlebot3_fake'
 
-pkgname='ros-melodic-turtlebot3-fake'
+pkgname='ros-noetic-turtlebot3-fake'
 pkgver='1.2.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=2
 license=('Apache-2.0')
 
 ros_makedepends=(
-	ros-melodic-catkin
+	ros-noetic-catkin
 )
 
 makedepends=(
@@ -20,14 +20,14 @@ makedepends=(
 )
 
 ros_depends=(
-    ros-melodic-roscpp
-    ros-melodic-std-msgs
-    ros-melodic-sensor-msgs
-    ros-melodic-geometry-msgs
-    ros-melodic-nav-msgs
-    ros-melodic-tf
-    ros-melodic-turtlebot3-msgs
-    ros-melodic-robot-state-publisher
+    ros-noetic-roscpp
+    ros-noetic-std-msgs
+    ros-noetic-sensor-msgs
+    ros-noetic-geometry-msgs
+    ros-noetic-nav-msgs
+    ros-noetic-tf
+    ros-noetic-turtlebot3-msgs
+    ros-noetic-robot-state-publisher
 )
 
 depends=(
@@ -41,21 +41,17 @@ sha256sums=('6fbb4cf74b9777c3be3a751dd8d638df2570dd4478681b5eadf51dee32f57c5b')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
