@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.6.13
+pkgver=5.6.14
 pkgrel=4
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -28,8 +28,6 @@ arch=(x86_64)
 license=(GPL2)
 makedepends=(
   bc kmod libelf
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
-  git
 )
 options=('!strip')
 _srcname=linux-${pkgver}
@@ -42,28 +40,24 @@ source=(
   "0000-sphinx-workaround.patch"
   "${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/2efb3d95a5e8a14c097d570a61751f36d0be5215.patch"
-  "0002-gcc-plugins-drop-support-for-GCC-4.7.patch::https://github.com/archlinux/linux/commit/5dd873b339bffa037dafd0188375fc13564bbe93.patch"
-  "0003-gcc-common.h-Update-for-GCC-10.patch::https://github.com/archlinux/linux/commit/fbe2e575df0f88daa156069cf66c3db0ebc64e7a.patch"
-  "0004-Makefile-disallow-data-races-on-gcc-10-as-well.patch::https://github.com/archlinux/linux/commit/e33336e058bdd4e109c9131bb13584ccb1b5e15d.patch"
-  "0005-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch::https://github.com/archlinux/linux/commit/53e90d763b7fe8bec6a0c86b6813131cd8e25026.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/29d4e22912c69936a503f521b8eff1b3d5dfd427.patch"
+  "0002-gcc-plugins-drop-support-for-GCC-4.7.patch::https://github.com/archlinux/linux/commit/79b8cfb31b0ee720d99143666235e6df093807d7.patch"
+  "0003-gcc-common.h-Update-for-GCC-10.patch::https://github.com/archlinux/linux/commit/1d492722d03873bcd863da75718ccdbec7660ae9.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('f125d79c8f6974213638787adcad6b575bbd35a05851802fd83f622ec18ff987'
+sha256sums=('33763f3541711e39fa743da45ff9512d54ade61406173f3d267ba4484cec7ea3'
             'SKIP'
             'b97b4b90f51876aaa4fa910e1ce801552f7e086aec3026a64f406581beae791b'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
             '1b95d36635c7dc48ce45a33d6b1f4eb6d34f51600901395d28fd22f28daee8e9'
             '2f56fda0014c54d7ca56156bed31cabe026af04d41162f0d678bef4afa179966'
-            '07a91ff0d35877c8101f00b8c25339c9fb3b6c3c53a974d47a46344861d3459c'
-            '766fbe4f1f1ae001887e0d38e82ab9a7c0fabf1f75df4716c3356c5669f799ed'
-            '2a3a9ce012dc67d66745381297a9263383341693cd5e7097fb5de2b1e520227c'
-            '4c8f34faee5850db098a6bb75211b5947445870c301e2bb46cd49a81fcc60462'
-            '5e4de3bfb203e676dac8c704f77bb8e6fb471f190bc2bdf33f57c5318be0d92a')
+            'c2cfef16d8c9221369d329e50239124c25451df6690793618f72a84ce26cec38'
+            '4703ca02bbd4a596034b0d3c1468d490803428bc385f4a5d7f288a5fc84f091d'
+            '2a5561f732e435ef52912cb72897a2dcbcf354d055f44e8339b959535e6aa729')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -88,17 +82,21 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
+  echo "Setting config..."
+  cp ../config .config
+
   echo "Applying patch ${_bmq_patch}..."
   patch -Np1 -i "$srcdir/${_bmq_patch}"
 
-  echo "Setting config..."
-  cp ../config .config
+  # non-interactively apply ck1 default options
+  # this isn't redundant if we want a clean selection of subarch below
+  make olddefconfig
 
   # https://github.com/graysky2/kernel_gcc_patch
   echo "Applying enable_additional_cpu_optimizations-${_gcc_more_v}..."
   patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
 
-  make prepare
+  make oldconfig
 
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
@@ -111,9 +109,6 @@ prepare() {
       exit
     fi
   fi
-
-  # do not run `make olddefconfig` as it sets default options
-  yes "" | make config >/dev/null
 
   make -s kernelrelease > version
   echo "Prepared ${pkgbase} version $(<version)"
