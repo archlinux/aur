@@ -3,41 +3,41 @@
 pkgdesc="ROS - The wiimote package allows ROS nodes to communicate with a Nintendo Wiimote and its related peripherals, including the Nunchuk, Motion Plus, and (experimentally) the Classic."
 url='https://www.wiki.ros.org/wiimote'
 
-pkgname='ros-melodic-wiimote'
+pkgname='ros-noetic-wiimote'
 pkgver='1.13.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=2
 license=('GPL')
 
-ros_makedepends=(ros-melodic-genmsg
-  ros-melodic-std-msgs
-  ros-melodic-roscpp
-  ros-melodic-catkin
-  ros-melodic-roslib
-  ros-melodic-std-srvs
-  ros-melodic-geometry-msgs
-  ros-melodic-roslint
-  ros-melodic-sensor-msgs
-  ros-melodic-rospy)
+ros_makedepends=(ros-noetic-genmsg
+  ros-noetic-std-msgs
+  ros-noetic-roscpp
+  ros-noetic-catkin
+  ros-noetic-roslib
+  ros-noetic-std-srvs
+  ros-noetic-geometry-msgs
+  ros-noetic-roslint
+  ros-noetic-sensor-msgs
+  ros-noetic-rospy)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   cwiid
   python-numpy)
 
-ros_depends=(ros-melodic-genmsg
-  ros-melodic-std-msgs
-  ros-melodic-roscpp
-  ros-melodic-roslib
-  ros-melodic-std-srvs
-  ros-melodic-geometry-msgs
-  ros-melodic-sensor-msgs
-  ros-melodic-rospy)
+ros_depends=(ros-noetic-genmsg
+  ros-noetic-std-msgs
+  ros-noetic-roscpp
+  ros-noetic-roslib
+  ros-noetic-std-srvs
+  ros-noetic-geometry-msgs
+  ros-noetic-sensor-msgs
+  ros-noetic-rospy)
 depends=(${ros_depends[@]}
   cwiid
   python-numpy)
 
 # Git version (e.g. for debugging)
-# _tag=release/melodic/wiimote/${pkgver}-${_pkgver_patch}
+# _tag=release/noetic/wiimote/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/joystick_drivers-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
@@ -50,21 +50,17 @@ sha256sums=('bfe0633623f4dc917524198aaea10b1c4603881e736dafb7b652f1af60922ad7')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
