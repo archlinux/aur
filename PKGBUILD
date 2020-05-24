@@ -1,4 +1,4 @@
-# Maintainer: Jesse Luehrs <doy@tozt.net>
+# Maintainer: Jesse Luehrs <archlinux@tozt.net>
 pkgname=rbw-bin
 _name=${pkgname%-*}
 pkgver=0.3.2
