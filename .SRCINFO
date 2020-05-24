@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rqt-robot-plugins
+pkgbase = ros-noetic-rqt-robot-plugins
 	pkgdesc = ROS - Metapackage of rqt plugins that are particularly used with robots during its operation.
 	pkgver = 0.5.7
 	pkgrel = 2
@@ -7,18 +7,18 @@ pkgbase = ros-melodic-rqt-robot-plugins
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-tf-tree
-	depends = ros-melodic-rqt-runtime-monitor
-	depends = ros-melodic-rqt-nav-view
-	depends = ros-melodic-rqt-pose-view
-	depends = ros-melodic-rqt-robot-steering
-	depends = ros-melodic-rqt-moveit
-	depends = ros-melodic-rqt-robot-dashboard
-	depends = ros-melodic-rqt-rviz
-	depends = ros-melodic-rqt-robot-monitor
-	source = ros-melodic-rqt-robot-plugins-0.5.7.tar.gz::https://github.com/ros-visualization/rqt_robot_plugins/archive/0.5.7.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-rqt-tf-tree
+	depends = ros-noetic-rqt-runtime-monitor
+	depends = ros-noetic-rqt-nav-view
+	depends = ros-noetic-rqt-pose-view
+	depends = ros-noetic-rqt-robot-steering
+	depends = ros-noetic-rqt-moveit
+	depends = ros-noetic-rqt-robot-dashboard
+	depends = ros-noetic-rqt-rviz
+	depends = ros-noetic-rqt-robot-monitor
+	source = ros-noetic-rqt-robot-plugins-0.5.7.tar.gz::https://github.com/ros-visualization/rqt_robot_plugins/archive/0.5.7.tar.gz
 	sha256sums = 10cc908fdfc5d22aa4924d65ab0e8215805d5e4e45dcf889272dde0b3849cd4c
 
-pkgname = ros-melodic-rqt-robot-plugins
+pkgname = ros-noetic-rqt-robot-plugins
 
