@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-ecl-errors
+pkgbase = ros-noetic-ecl-errors
 	pkgdesc = ROS - This library provides lean and mean error mechanisms.
 	pkgver = 0.61.6
 	pkgrel = 2
@@ -7,13 +7,13 @@ pkgbase = ros-melodic-ecl-errors
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-ecl-license
-	makedepends = ros-melodic-ecl-config
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-ecl-license
-	depends = ros-melodic-ecl-config
-	source = ros-melodic-ecl-errors-0.61.6.tar.gz::https://github.com/stonier/ecl_lite/archive/0.61.6.tar.gz
+	makedepends = ros-noetic-ecl-license
+	makedepends = ros-noetic-ecl-config
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-ecl-license
+	depends = ros-noetic-ecl-config
+	source = ros-noetic-ecl-errors-0.61.6.tar.gz::https://github.com/stonier/ecl_lite/archive/0.61.6.tar.gz
 	sha256sums = b8a02aabecc9a47bde44c83c7e02669e7ce9a3e43f51315b89d10960ed83f3cc
 
-pkgname = ros-melodic-ecl-errors
+pkgname = ros-noetic-ecl-errors
 
