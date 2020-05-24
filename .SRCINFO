@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-kalman-filter
+pkgbase = ros-noetic-kalman-filter
 	pkgdesc = ROS - Simple Kalman Filter in Python.
 	pkgver = 0.2.4
 	pkgrel = 3
@@ -7,11 +7,11 @@ pkgbase = ros-melodic-kalman-filter
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-rospy
-	depends = ros-melodic-rospy
-	source = ros-melodic-kalman-filter-0.2.4.tar.gz::https://github.com/DLu/wu_ros_tools/archive/0.2.4.tar.gz
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-rospy
+	depends = ros-noetic-rospy
+	source = ros-noetic-kalman-filter-0.2.4.tar.gz::https://github.com/DLu/wu_ros_tools/archive/0.2.4.tar.gz
 	sha256sums = fd0bb39a69302dae5ccfd565277209719a4199644fc8265a2ae7ccedd92c004a
 
-pkgname = ros-melodic-kalman-filter
+pkgname = ros-noetic-kalman-filter
 
