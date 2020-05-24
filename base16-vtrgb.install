@@ -1,0 +1,20 @@
+post_install() {
+	# do something here
+    cat <<HELPEOF
+
+1) Do not forget to append the 'setvtrgb' hook to your '/etc/mkinitcpio.conf'
+
+2) configure your desired colorscheme by creating a symlink to '/etc/vtrgb':
+   'ln -sf /usr/share/kbd/consolecolors/base16-tomorrow.vga /etc/vtrgb'
+
+3) Recreate your initramfs, in most cases with 'mkinitcpio -p linux'
+
+HELPEOF
+}
+
+post_remove() {
+    cat <<HELPEOF
+    Do not forget to remove the setvtrgb hook from '/etc/mkinitcpio.conf' and
+    recreate your initcpio image most commonly with 'mkinitcpio -p linux'
+HELPEOF
+}
