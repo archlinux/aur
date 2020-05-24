@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rosserial-python
+pkgbase = ros-noetic-rosserial-python
 	pkgdesc = ROS - A Python-based implementation of the rosserial protocol.
 	pkgver = 0.8.0
 	pkgrel = 1
@@ -7,13 +7,13 @@ pkgbase = ros-melodic-rosserial-python
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
+	makedepends = ros-noetic-catkin
 	depends = python-pyserial
-	depends = ros-melodic-rospy
-	depends = ros-melodic-rosserial-msgs
-	depends = ros-melodic-diagnostic-msgs
-	source = ros-melodic-rosserial-python-0.8.0.tar.gz::https://github.com/ros-drivers/rosserial/archive/0.8.0.tar.gz
+	depends = ros-noetic-rospy
+	depends = ros-noetic-rosserial-msgs
+	depends = ros-noetic-diagnostic-msgs
+	source = ros-noetic-rosserial-python-0.8.0.tar.gz::https://github.com/ros-drivers/rosserial/archive/0.8.0.tar.gz
 	sha256sums = e96cdeb81e1c03fb1c5ad85a740cb0a1a0836c52a24c6a5d97c975084b49d576
 
-pkgname = ros-melodic-rosserial-python
+pkgname = ros-noetic-rosserial-python
 
