@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-laser-pipeline
+pkgbase = ros-noetic-laser-pipeline
 	pkgdesc = ROS - Meta-package of libraries for processing laser data, including converting laser data into 3D representations.
 	pkgver = 1.6.3
 	pkgrel = 2
@@ -7,12 +7,12 @@ pkgbase = ros-melodic-laser-pipeline
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-laser-geometry
-	depends = ros-melodic-laser-assembler
-	depends = ros-melodic-laser-filters
-	source = ros-melodic-laser-pipeline-1.6.3.tar.gz::https://github.com/ros-perception/laser_pipeline/archive/1.6.3.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-laser-geometry
+	depends = ros-noetic-laser-assembler
+	depends = ros-noetic-laser-filters
+	source = ros-noetic-laser-pipeline-1.6.3.tar.gz::https://github.com/ros-perception/laser_pipeline/archive/1.6.3.tar.gz
 	sha256sums = 6af841344ecd0c42808772bf0d8022e4dc6281cb225d37c67999f503111bbfb8
 
-pkgname = ros-melodic-laser-pipeline
+pkgname = ros-noetic-laser-pipeline
 
