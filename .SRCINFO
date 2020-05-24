@@ -1,11 +1,15 @@
 pkgbase = pacman-auto-update
 	pkgdesc = Install a systemd service triggered by a timer to run automatic pacman package updates
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cmuench/pacman-auto-update.git
 	install = pacman-auto-update.install
 	arch = i686
 	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL
 	depends = systemd
 	source = pacman-auto-update.service
