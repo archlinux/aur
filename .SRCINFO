@@ -1,0 +1,25 @@
+pkgbase = pantheon-dock-git
+	pkgdesc = The Pantheon Dock
+	pkgver = r1966.ac87d90
+	pkgrel = 1
+	url = https://github.com/elementary/dock
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = meson
+	makedepends = vala
+	makedepends = gnome-menus
+	makedepends = libdbusmenu-gtk3
+	depends = libgee
+	depends = bamf
+	depends = plank
+	depends = python
+	provides = plank
+	conflicts = plank
+	source = pantheon-dock::git+https://github.com/elementary/dock
+	sha256sums = SKIP
+
+pkgname = pantheon-dock-git
+
