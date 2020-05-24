@@ -6,7 +6,7 @@
 #Maintainer:  sparzz
 pkgname=mesa-radv-drivers-git
 packager=sparzz
-pkgver=1
+pkgver=20.2.0
 pkgrel=1
 epoch=
 pkgdesc="mesa-radv-drivers-git"
@@ -131,6 +131,14 @@ source=("mesa::git+https://github.com/sparzz/mesa.git")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
+
+pkgver() {
+    cd mesa-aco
+    read -r _ver <VERSION
+    echo ${_ver/-/_}.$(git log -n1 --format="%cd" --date=format:%Y%m%d HEAD).$(git rev-parse --short HEAD)
+}
+
+
 
 prepare() {
 	cd /usr/local/lib
