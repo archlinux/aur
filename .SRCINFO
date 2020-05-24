@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rgbd-launch
+pkgbase = ros-noetic-rgbd-launch
 	pkgdesc = ROS - Launch files to open an RGBD device and load all nodelets to convert raw depth/RGB/IR streams to depth images, disparity images, and (registered) point clouds.
 	pkgver = 2.2.2
 	pkgrel = 3
@@ -7,17 +7,17 @@ pkgbase = ros-melodic-rgbd-launch
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-image-proc
-	makedepends = ros-melodic-depth-image-proc
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-tf2-ros
-	makedepends = ros-melodic-nodelet
-	depends = ros-melodic-image-proc
-	depends = ros-melodic-depth-image-proc
-	depends = ros-melodic-tf2-ros
-	depends = ros-melodic-nodelet
-	source = ros-melodic-rgbd-launch-2.2.2.tar.gz::https://github.com/ros-drivers/rgbd_launch/archive/2.2.2.tar.gz
+	makedepends = ros-noetic-image-proc
+	makedepends = ros-noetic-depth-image-proc
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-tf2-ros
+	makedepends = ros-noetic-nodelet
+	depends = ros-noetic-image-proc
+	depends = ros-noetic-depth-image-proc
+	depends = ros-noetic-tf2-ros
+	depends = ros-noetic-nodelet
+	source = ros-noetic-rgbd-launch-2.2.2.tar.gz::https://github.com/ros-drivers/rgbd_launch/archive/2.2.2.tar.gz
 	sha256sums = 2e4bebe8e9f2d9e23f6e0678f6e0f594cd3616f3db0724075bde7219637e6baa
 
-pkgname = ros-melodic-rgbd-launch
+pkgname = ros-noetic-rgbd-launch
 
