@@ -6,12 +6,13 @@
 
 pkgname=onlyoffice-documentserver
 pkgver=5.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
-makedepends=('python' 'python2' 'git' 'p7zip' 'svn' 'qt5-base' 'clang' 'qt5-multimedia' 'pkg' 'ncurses5-compat-libs')
+makedepends=('nodejs-lts-dubnium' 'python' 'python2' 'git' 'p7zip' 'svn' 'qt5-base' 'clang' 'qt5-multimedia' 'pkg' 'ncurses5-compat-libs')
 # python, ncurses5-compat-libs, clang, required for v8
+# Nodejs-dubnium required for nodehun spellchecker
 optdepends=('rabbitmq' 'postgresql' 'nginx')
 license=('AGPL')
 source=("build-tools-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/build_tools/archive/v5.5.3.42.tar.gz"
@@ -53,6 +54,7 @@ sha512sums=('c16f5b4c44c0b880c192c4c10667fb3a7a29f8fe9861ebfcc5bcdab6fa13bfd2f04
 backup=('etc/webapps/onlyoffice/documentserver/production-linux.json'
 	'etc/webapps/onlyoffice/documentserver/default.json')
 install="onlyoffice-documentserver.install"
+options=('!strip')
 
 prepare() {
   cd "${srcdir}"
@@ -63,10 +65,10 @@ prepare() {
   ln -sf /usr/bin/python2 path/python
 
   # Rename source directories
-  for dir in "core-fonts" "core" "dictionaries" "sdkjs-plugins" "sdkjs" "server" "web-apps" "desktop-sdk" "document-server-integration" "DocumentBuilder"
+  for dir in "core" "core-fonts" "dictionaries" "sdkjs" "sdkjs-plugins" "server" "web-apps" "desktop-sdk" "document-server-integration" "DocumentBuilder"
   do
     rm -rf "${dir}"
-    find . -maxdepth 1 -type d -name "${dir}*" -exec mv '{}' ${dir} \;
+    find . -maxdepth 1 -type d -regex "./${dir}-[a-z0-9]*" -exec mv '{}' ${dir} \;
   done
 
   # Configuration for build-tools
@@ -95,8 +97,12 @@ build() {
 }
 
 package() {
-  install -D "${pkgdir}/usr/share/webapps"
-  cp -r "${srcdir}/build_tools-5.5.3.42/out/linux_64/onlyoffice" "${pkgdir}/usr/share/webapps/"
+  install -d "${pkgdir}/usr/share/webapps/onlyoffice"
+  install -d "${pkgdir}/etc/webapps/onlyoffice/documentserver"
+  install -d "${pkgdir}/var/lib/onlyoffice/documentserver"
+  cp -r "${srcdir}/build_tools-5.5.3.42/out/linux_64/onlyoffice/documentserver" "${pkgdir}/usr/share/webapps/onlyoffice/"
+  mv "${pkgdir}/usr/share/webapps/onlyoffice/documentserver/server/Common/config/default.json" "${pkgdir}/etc/webapps/onlyoffice/documentserver/"
+  mv "${pkgdir}/usr/share/webapps/onlyoffice/documentserver/server/Common/config/production-linux.json" "${pkgdir}/etc/webapps/onlyoffice/documentserver/"
 
   install -Dm 644 "${srcdir}/onlyoffice-docservice.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-docservice.service"
   install -Dm 644 "${srcdir}/onlyoffice-fileconverter.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-fileconverter.service"

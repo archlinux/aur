@@ -16,6 +16,7 @@ PrivateDevices=true
 ProtectHome=true
 ProtectSystem=strict
 ReadWritePaths=/var/lib/onlyoffice/documentserver
+ReadWritePaths=/usr/share/webapps/onlyoffice/documentserver
 
 [Install]
 WantedBy=multi-user.target
