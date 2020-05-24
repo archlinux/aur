@@ -3,7 +3,7 @@ Description=PostgreSQL database server
 After=network.target
 
 [Service]
-Type=notify
+Type=forking
 TimeoutSec=120
 User=postgres
 Group=postgres

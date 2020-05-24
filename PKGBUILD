@@ -5,7 +5,7 @@
 pkgbase=postgresql-9.4
 pkgname=('postgresql-libs-9.4' 'postgresql-docs-9.4' 'postgresql-9.4')
 pkgver=9.4.26
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated object-relational DBMS'
 url="https://www.postgresql.org/"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ sha256sums=('f5c014fc4a5c94e8cf11314cbadcade4d84213cfcc82081c9123e1b8847a20b9'
             '5f73b54ca6206bd2c469c507830261ebd167baca074698d8889d769c33f98a31'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
-            '25fb140b90345828dc01a4f286345757e700a47178bab03d217a7a5a79105b57'
+            'b53738c7cb71c5dbb99f39bc3cc67acada06f9b6768a817844adc833750b8cfb'
             'f15418433b7d9a153eea22af58cc64fda462144d7039d1083ae1e2e489cc303a'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
             '4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57')
