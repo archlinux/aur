@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-stage
+pkgbase = ros-noetic-stage
 	pkgdesc = ROS - Mobile robot simulator http://rtvhub.com/Stage.
 	pkgver = 4.3.0
 	pkgrel = 3
@@ -13,13 +13,13 @@ pkgbase = ros-melodic-stage
 	makedepends = libtool
 	makedepends = mesa
 	makedepends = pkg-config
-	depends = ros-melodic-catkin
+	depends = ros-noetic-catkin
 	depends = libjpeg-turbo
 	depends = mesa
 	depends = fltk
 	depends = gtk2
-	source = ros-melodic-stage-4.3.0.tar.gz::https://github.com/rtv/Stage/archive/v4.3.0.tar.gz
+	source = ros-noetic-stage-4.3.0.tar.gz::https://github.com/rtv/Stage/archive/v4.3.0.tar.gz
 	sha256sums = f32cb6887146441fd34671975fa81ea76438ce447bc68a0a6a1b62b5233ad2d6
 
-pkgname = ros-melodic-stage
+pkgname = ros-noetic-stage
 
