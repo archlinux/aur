@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-librviz-tutorial
+pkgbase = ros-noetic-librviz-tutorial
 	pkgdesc = ROS - Tutorial showing how to compile your own C++ program with RViz displays and features.
 	pkgver = 0.10.3
 	pkgrel = 3
@@ -11,15 +11,15 @@ pkgbase = ros-melodic-librviz-tutorial
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-rviz
-	makedepends = ros-melodic-roscpp
-	makedepends = ros-melodic-catkin
+	makedepends = ros-noetic-rviz
+	makedepends = ros-noetic-roscpp
+	makedepends = ros-noetic-catkin
 	makedepends = qt5-base
-	depends = ros-melodic-rviz
-	depends = ros-melodic-roscpp
+	depends = ros-noetic-rviz
+	depends = ros-noetic-roscpp
 	depends = qt5-base
-	source = ros-melodic-librviz-tutorial-0.10.3.tar.gz::https://github.com/ros-visualization/visualization_tutorials/archive/0.10.3.tar.gz
+	source = ros-noetic-librviz-tutorial-0.10.3.tar.gz::https://github.com/ros-visualization/visualization_tutorials/archive/0.10.3.tar.gz
 	sha256sums = a3162d933fea0dd58b99e46fb71ea5d8596ef6e46eaf3a906e4bf20e9ca1bb1c
 
-pkgname = ros-melodic-librviz-tutorial
+pkgname = ros-noetic-librviz-tutorial
 
