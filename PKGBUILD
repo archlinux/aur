@@ -2,9 +2,9 @@
 
 pkgname='shellspec'
 pkgver=0.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc="BDD style unit testing framework for POSIX compliant shell script"
-url="https://github.com/shellspec/$pkgname"
+url="https://shellspec.info"
 license=('MIT')
 
 arch=('any')
@@ -12,7 +12,7 @@ depends=('bash')
 makedepends=()
 
 _distdir="$pkgname-$pkgver"
-source=("$_distdir.tar.gz::$url/archive/${pkgver}.tar.gz")
+source=("$_distdir.tar.gz::https://github.com/shellspec/shellspec/archive/${pkgver}.tar.gz")
 md5sums=('f538fc1bee729f3a2371b411b1054fdb')
 
 check() {
