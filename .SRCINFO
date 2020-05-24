@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-ros-tutorials
+pkgbase = ros-noetic-ros-tutorials
 	pkgdesc = ROS - ros_tutorials contains packages that demonstrate various features of ROS, as well as support packages which help demonstrate those features.
 	pkgver = 0.9.1
 	pkgrel = 2
@@ -11,12 +11,12 @@ pkgbase = ros-melodic-ros-tutorials
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-roscpp-tutorials
-	depends = ros-melodic-rospy-tutorials
-	depends = ros-melodic-turtlesim
-	source = ros-melodic-ros-tutorials-0.9.1.tar.gz::https://github.com/ros/ros_tutorials/archive/0.9.1.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-roscpp-tutorials
+	depends = ros-noetic-rospy-tutorials
+	depends = ros-noetic-turtlesim
+	source = ros-noetic-ros-tutorials-0.9.1.tar.gz::https://github.com/ros/ros_tutorials/archive/0.9.1.tar.gz
 	sha256sums = b39929a2ac912326fc114256e755fff5d0f0e5e5e7c99640d013eb7f916b85f4
 
-pkgname = ros-melodic-ros-tutorials
+pkgname = ros-noetic-ros-tutorials
 

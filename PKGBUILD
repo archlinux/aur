@@ -3,7 +3,7 @@
 pkgdesc="ROS - ros_tutorials contains packages that demonstrate various features of ROS, as well as support packages which help demonstrate those features."
 url='https://www.wiki.ros.org/ros_tutorials'
 
-pkgname='ros-melodic-ros-tutorials'
+pkgname='ros-noetic-ros-tutorials'
 pkgver='0.9.1'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
@@ -11,7 +11,7 @@ pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-catkin
+	ros-noetic-catkin
 )
 
 makedepends=(
@@ -21,9 +21,9 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-roscpp-tutorials
-	ros-melodic-rospy-tutorials
-	ros-melodic-turtlesim
+	ros-noetic-roscpp-tutorials
+	ros-noetic-rospy-tutorials
+	ros-noetic-turtlesim
 )
 
 depends=(
@@ -37,21 +37,17 @@ sha256sums=('b39929a2ac912326fc114256e755fff5d0f0e5e5e7c99640d013eb7f916b85f4')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
