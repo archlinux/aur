@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-interactive-marker-tutorials
+pkgbase = ros-noetic-interactive-marker-tutorials
 	pkgdesc = ROS - The interactive_marker_tutorials package.
 	pkgver = 0.10.3
 	pkgrel = 3
@@ -11,17 +11,17 @@ pkgbase = ros-melodic-interactive-marker-tutorials
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-tf
-	makedepends = ros-melodic-interactive-markers
-	makedepends = ros-melodic-roscpp
-	makedepends = ros-melodic-visualization-msgs
-	depends = ros-melodic-tf
-	depends = ros-melodic-visualization-msgs
-	depends = ros-melodic-interactive-markers
-	depends = ros-melodic-roscpp
-	source = ros-melodic-interactive-marker-tutorials-0.10.3.tar.gz::https://github.com/ros-visualization/visualization_tutorials/archive/0.10.3.tar.gz
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-tf
+	makedepends = ros-noetic-interactive-markers
+	makedepends = ros-noetic-roscpp
+	makedepends = ros-noetic-visualization-msgs
+	depends = ros-noetic-tf
+	depends = ros-noetic-visualization-msgs
+	depends = ros-noetic-interactive-markers
+	depends = ros-noetic-roscpp
+	source = ros-noetic-interactive-marker-tutorials-0.10.3.tar.gz::https://github.com/ros-visualization/visualization_tutorials/archive/0.10.3.tar.gz
 	sha256sums = a3162d933fea0dd58b99e46fb71ea5d8596ef6e46eaf3a906e4bf20e9ca1bb1c
 
-pkgname = ros-melodic-interactive-marker-tutorials
+pkgname = ros-noetic-interactive-marker-tutorials
 
