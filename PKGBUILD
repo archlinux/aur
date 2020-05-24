@@ -4,24 +4,29 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 set -u
-pkgbase='poppler-git'
-pkgname=('poppler-git' 'poppler-glib-git' 'poppler-qt5-git')
-pkgver=0.69.0.r65.ga6f88881
+pkgbase=poppler
+pkgbase+='-git'
+pkgname=('poppler' 'poppler-glib' 'poppler-qt5')
+pkgname=("${pkgname[@]/%/-git}")
+pkgver=0.88.0.r34.g9429aac4
+_pkgver="${pkgver%%.r*}"
 pkgrel=1
-arch=(i686 x86_64)
+arch=(x86_64)
+arch+=('i686' 'aarch64')
 license=('GPL')
 makedepends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'gtk3' 'pkgconfig' 'lcms2' 
              'gobject-introspection' 'icu' 'qt5-base' 'git' 'nss' 'gtk-doc' 'curl' 'poppler-data'
-             'cmake' 'python') 
-makedepends+=('openjpeg2')
+             'cmake' 'python' 'boost')
+#makedepends+=('openjpeg2')
 options=('!emptydirs')
 url="https://poppler.freedesktop.org/"
 source=('git://git.freedesktop.org/git/poppler/poppler'
         'git://git.freedesktop.org/git/poppler/test')
+md5sums=('SKIP'
+         'SKIP')
 sha256sums=('SKIP'
             'SKIP')
-
-_pkgver="${pkgver%%.r*}"
+validpgpkeys=('CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7') # "Albert Astals Cid <aacid@kde.org>"
 
 pkgver() {
   set -u
@@ -45,7 +50,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-    -DENABLE_XPDF_HEADERS=ON \
+    -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
     -DENABLE_GTK_DOC=ON
   make
   set +u
@@ -64,8 +69,10 @@ package_poppler-git() {
   pkgdesc="PDF rendering library based on xpdf 3.0"
   depends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'lcms2' 'nss' 'curl')
   optdepends=('poppler-data: encoding data to display PDF documents containing CJK characters')
-  conflicts=("poppler-qt3<${_pkgver}" "poppler-qt4<${_pkgver}" 'poppler')
-  provides=("poppler=${_pkgver}")
+  provides=('libpoppler.so' 'libpoppler-cpp.so')
+  provides+=("poppler=${_pkgver}")
+  conflicts=("poppler-qt3<${_pkgver}" "poppler-qt4<${_pkgver}")
+  conflicts+=('poppler')
 
   cd poppler
   cd build
@@ -84,7 +91,8 @@ package_poppler-glib-git() {
   pkgdesc="Poppler glib bindings"
   depends=("poppler=${_pkgver}" 'glib2')
   conflicts=('poppler-glib')
-  provides=("poppler-glib=${_pkgver}")
+  provides=('libpoppler-glib.so')
+  provides+=("poppler-glib=${_pkgver}")
 
   cd poppler
   cd build
@@ -102,7 +110,8 @@ package_poppler-qt5-git() {
   pkgdesc="Poppler Qt5 bindings"
   depends=("poppler=${_pkgver}" 'qt5-base')
   conflicts=('poppler-qt5')
-  provides=("poppler-qt5=${_pkgver}")
+  provides=('libpoppler-qt5.so')
+  provides+=("poppler-qt5=${_pkgver}")
 
   cd poppler
   cd build
