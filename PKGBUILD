@@ -1,11 +1,12 @@
 _pkgname="raylib-cpp"
 pkgname=${_pkgname}-git
-pkgver=r62.b72379e
-pkgrel=2
+pkgver=r93.699b1fc
+pkgrel=1
 pkgdesc="raylib-cpp is a C++ wrapper library for raylib, a simple and easy-to-use library to enjoy videogames programming"
 arch=('x86_64')
 url="https://github.com/RobLoach/raylib-cpp"
 license=('MIT')
+makedepends=('rsync')
 depends=('raylib')
 provides=("${_pkgname}")
 conflicts=()
@@ -43,7 +44,7 @@ check() {
 package() {
 	cd "${srcdir}/${_pkgname}"
 	install -m755 -d "${pkgdir}/usr/include/raylib"
-	rsync -rK --chmod 644 "${srcdir}/${_pkgname}/include/raylib" "${pkgdir}/usr/include/"
+	rsync -rK --chmod 644 "${srcdir}/${_pkgname}/include/" "${pkgdir}/usr/include/"
 	install -m644 -D "${srcdir}/raylib-cpp.pc" "${pkgdir}/usr/lib/pkgconfig/raylib-cpp.pc"
 	install -m644 -D "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -m644 -D "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
