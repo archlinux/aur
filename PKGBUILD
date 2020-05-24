@@ -1,7 +1,7 @@
-# Maintainer: Jesse Luehrs <doy@tozt.net>
+# Maintainer: Jesse Luehrs <archlinux@tozt.net>
 pkgname=rbw-git
 _name=${pkgname%-*}
-pkgver=0.2.1
+pkgver=0.3.3
 pkgrel=1
 makedepends=('rust' 'cargo' 'git')
 depends=('pinentry' 'openssl')
