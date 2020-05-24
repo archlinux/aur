@@ -1,7 +1,7 @@
 pkgbase = python-slixmpp
-	pkgdesc = An XMPP library written for Python 3.4 (SleekXMPP asyncio fork)
+	pkgdesc = An XMPP library written for Python 3.7 (SleekXMPP asyncio fork)
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dev.louiz.org/projects/slixmpp
 	arch = i686
 	arch = x86_64
