@@ -3,15 +3,15 @@
 pkgdesc="ROS - mavros_msgs defines messages for MAVROS."
 url='https://wiki.ros.org/mavros_msgs'
 
-pkgname='ros-melodic-mavros-msgs'
+pkgname='ros-noetic-mavros-msgs'
 pkgver='1.0.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('GPLv3, LGPLv3, BSD')
 
 ros_makedepends=(
-  ros-melodic-catkin
-  ros-melodic-message-generation
+  ros-noetic-catkin
+  ros-noetic-message-generation
 )
 
 makedepends=(
@@ -21,11 +21,11 @@ makedepends=(
 )
 
 ros_depends=(
-  ros-melodic-message-runtime
-  ros-melodic-std-msgs
-  ros-melodic-geometry-msgs
-  ros-melodic-sensor-msgs
-  ros-melodic-geographic-msgs
+  ros-noetic-message-runtime
+  ros-noetic-std-msgs
+  ros-noetic-geometry-msgs
+  ros-noetic-sensor-msgs
+  ros-noetic-geographic-msgs
 )
 
 depends=(
@@ -39,21 +39,17 @@ sha256sums=('08c911a3e92990e260ab25715b6605303b1ac52a8de0e3b0f504bcfab6390b0d')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }

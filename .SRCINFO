@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-mavros-msgs
+pkgbase = ros-noetic-mavros-msgs
 	pkgdesc = ROS - mavros_msgs defines messages for MAVROS.
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -11,15 +11,15 @@ pkgbase = ros-melodic-mavros-msgs
 	license = GPLv3, LGPLv3, BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-message-generation
-	depends = ros-melodic-message-runtime
-	depends = ros-melodic-std-msgs
-	depends = ros-melodic-geometry-msgs
-	depends = ros-melodic-sensor-msgs
-	depends = ros-melodic-geographic-msgs
-	source = ros-melodic-mavros-msgs-1.0.0.tar.gz::https://github.com/mavlink/mavros/archive/1.0.0.tar.gz
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-message-generation
+	depends = ros-noetic-message-runtime
+	depends = ros-noetic-std-msgs
+	depends = ros-noetic-geometry-msgs
+	depends = ros-noetic-sensor-msgs
+	depends = ros-noetic-geographic-msgs
+	source = ros-noetic-mavros-msgs-1.0.0.tar.gz::https://github.com/mavlink/mavros/archive/1.0.0.tar.gz
 	sha256sums = 08c911a3e92990e260ab25715b6605303b1ac52a8de0e3b0f504bcfab6390b0d
 
-pkgname = ros-melodic-mavros-msgs
+pkgname = ros-noetic-mavros-msgs
 
