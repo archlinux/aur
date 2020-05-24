@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-geometry-tutorials
+pkgbase = ros-noetic-geometry-tutorials
 	pkgdesc = ROS - Metapackage of geometry tutorials ROS.
 	pkgver = 0.2.2
 	pkgrel = 2
@@ -7,11 +7,11 @@ pkgbase = ros-melodic-geometry-tutorials
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-turtle-tf
-	depends = ros-melodic-turtle-tf2
-	source = ros-melodic-geometry-tutorials-0.2.2.tar.gz::https://github.com/ros/geometry_tutorials/archive/0.2.2.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-turtle-tf
+	depends = ros-noetic-turtle-tf2
+	source = ros-noetic-geometry-tutorials-0.2.2.tar.gz::https://github.com/ros/geometry_tutorials/archive/0.2.2.tar.gz
 	sha256sums = 4b3fdc98bf4cb97ba2f1c40666901fa7d08eb3dfed0d3323de4841de2e3a22cc
 
-pkgname = ros-melodic-geometry-tutorials
+pkgname = ros-noetic-geometry-tutorials
 
