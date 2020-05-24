@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-wu-ros-tools
+pkgbase = ros-noetic-wu-ros-tools
 	pkgdesc = ROS - A collection of tools for making a variety of generic ROS-related tasks easier.
 	pkgver = 0.2.4
 	pkgrel = 2
@@ -7,13 +7,13 @@ pkgbase = ros-melodic-wu-ros-tools
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-easy-markers
-	depends = ros-melodic-kalman-filter
-	depends = ros-melodic-joy-listener
-	depends = ros-melodic-rosbaglive
-	source = ros-melodic-wu-ros-tools-0.2.4.tar.gz::https://github.com/DLu/wu_ros_tools/archive/0.2.4.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-easy-markers
+	depends = ros-noetic-kalman-filter
+	depends = ros-noetic-joy-listener
+	depends = ros-noetic-rosbaglive
+	source = ros-noetic-wu-ros-tools-0.2.4.tar.gz::https://github.com/DLu/wu_ros_tools/archive/0.2.4.tar.gz
 	sha256sums = fd0bb39a69302dae5ccfd565277209719a4199644fc8265a2ae7ccedd92c004a
 
-pkgname = ros-melodic-wu-ros-tools
+pkgname = ros-noetic-wu-ros-tools
 
