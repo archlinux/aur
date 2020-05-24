@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-image-transport-plugins
+pkgbase = ros-noetic-image-transport-plugins
 	pkgdesc = ROS - A set of plugins for publishing and subscribing to sensor_msgs/Image topics in representations other than raw pixel data.
 	pkgver = 1.9.5
 	pkgrel = 2
@@ -7,12 +7,12 @@ pkgbase = ros-melodic-image-transport-plugins
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-compressed-depth-image-transport
-	depends = ros-melodic-compressed-image-transport
-	depends = ros-melodic-theora-image-transport
-	source = ros-melodic-image-transport-plugins-1.9.5.tar.gz::https://github.com/ros-perception/image_transport_plugins/archive/1.9.5.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-compressed-depth-image-transport
+	depends = ros-noetic-compressed-image-transport
+	depends = ros-noetic-theora-image-transport
+	source = ros-noetic-image-transport-plugins-1.9.5.tar.gz::https://github.com/ros-perception/image_transport_plugins/archive/1.9.5.tar.gz
 	sha256sums = 8047bc717c83f04a1b05a7cfe70778d99a82ceb5eb717d480aab19513de0719c
 
-pkgname = ros-melodic-image-transport-plugins
+pkgname = ros-noetic-image-transport-plugins
 
