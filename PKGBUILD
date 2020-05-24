@@ -57,12 +57,12 @@ package() {
     install -Dm755 $srcdir/${_pkgname} $pkgdir/usr/bin/${_pkgname}
     cp -r $srcdir/${_pkgname}.appdata.xml $pkgdir/usr/share/appdata/${_pkgname}.appdata.xml
     cp -r README.md $pkgdir/usr/share/doc/packages/${_pkgname}/README.md
-    mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps
-    for size in 16 32 48 64 128 256; do
+    mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256,512x512}/apps
+    for size in 16 32 48 64 128 256 512; do
       size="${size}x${size}"
-      cp packaging/linux/mod_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${_pkgname}.png"
+      cp packaging/artwork/icon_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${_pkgname}.png"
     done
-    install -Dm644 packaging/linux/mod_256x256.png "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
+    install -Dm644 packaging/artwork/icon_512x512.png "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
     install -Dm644 $srcdir/${_pkgname}.desktop $pkgdir/usr/share/applications/${_pkgname}.desktop
     rm $pkgdir/usr/lib/${_pkgname}/*.sh
 }
