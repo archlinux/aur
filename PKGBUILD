@@ -1,8 +1,8 @@
 # Maintainer: Hezekiah Michael <spiritomb at protonmail dot com>
 
 pkgdesc='A Nextcloud server app providing digital sticky notes to users.'
-pkgname=('nextcloud-app-carnet')
-pkgver=0.20.0
+pkgname=nextcloud-app-carnet
+pkgver=0.22.0
 pkgrel=1
 arch=('any')
 license=('AGPL')
@@ -16,4 +16,5 @@ package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
 	cp -a "${srcdir}/carnet" "${pkgdir}/usr/share/webapps/nextcloud/apps/carnet"
 }
-sha256sums=('a87a45201b0029fa3aa1d2d61ea4de911e676947db21eca9ea6020b911d27bc1')
+
+sha256sums=('3f71ffbdac007491386cd9e9ea93cd8262280cd5046fd1bfae4afcb6f155f4a1')
