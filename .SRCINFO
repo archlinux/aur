@@ -1,7 +1,7 @@
 pkgbase = palemoon
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
 	pkgver = 28.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.palemoon.org/
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = palemoon
 	makedepends = zip
 	makedepends = yasm
 	makedepends = gconf
+	makedepends = gcc8
 	makedepends = libpulse
 	depends = gtk2
 	depends = dbus-glib
@@ -31,7 +32,7 @@ pkgbase = palemoon
 	validpgpkeys = 3059E09144F56804F0FBF4E126B40624BDBFD9F3
 	sha1sums = SKIP
 	sha1sums = SKIP
-	sha1sums = 802731e5af4d117961d3d6fc61bd1e23f69fd384
+	sha1sums = 576882a0b88a3353d07f1db16af7445d4e61bb66
 
 pkgname = palemoon
 
