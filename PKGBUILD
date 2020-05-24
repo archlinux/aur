@@ -3,37 +3,37 @@
 pkgdesc="ROS - The control toolbox contains modules that are useful across all controllers."
 url='https://wiki.ros.org/control_toolbox'
 
-pkgname='ros-melodic-control-toolbox'
+pkgname='ros-noetic-control-toolbox'
 pkgver='1.17.0'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=2
 license=('BSD')
 
-ros_makedepends=(ros-melodic-dynamic-reconfigure
-  ros-melodic-std-msgs
-  ros-melodic-roscpp
-  ros-melodic-catkin
-  ros-melodic-control-msgs
-  ros-melodic-realtime-tools
-  ros-melodic-message-generation
-  ros-melodic-cmake-modules)
+ros_makedepends=(ros-noetic-dynamic-reconfigure
+  ros-noetic-std-msgs
+  ros-noetic-roscpp
+  ros-noetic-catkin
+  ros-noetic-control-msgs
+  ros-noetic-realtime-tools
+  ros-noetic-message-generation
+  ros-noetic-cmake-modules)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   tinyxml)
 
-ros_depends=(ros-melodic-dynamic-reconfigure
-  ros-melodic-std-msgs
-  ros-melodic-message-runtime
-  ros-melodic-roscpp
-  ros-melodic-control-msgs
-  ros-melodic-realtime-tools
-  ros-melodic-cmake-modules)
+ros_depends=(ros-noetic-dynamic-reconfigure
+  ros-noetic-std-msgs
+  ros-noetic-message-runtime
+  ros-noetic-roscpp
+  ros-noetic-control-msgs
+  ros-noetic-realtime-tools
+  ros-noetic-cmake-modules)
 depends=(${ros_depends[@]}
   tinyxml)
 
 # Git version (e.g. for debugging)
-# _tag=release/melodic/control_toolbox/${pkgver}-${_pkgver_patch}
+# _tag=release/noetic/control_toolbox/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/control_toolbox-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
@@ -46,21 +46,17 @@ sha256sums=('f137b29311f2bef60f910d411c43dd123a3c7609f9e438796b80144e19b696c8')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
