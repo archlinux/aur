@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rosemacs
+pkgbase = ros-noetic-rosemacs
 	pkgdesc = ROS - ROS tools for those who live in Emacs.
 	pkgver = 0.4.13
 	pkgrel = 2
@@ -7,10 +7,10 @@ pkgbase = ros-melodic-rosemacs
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
+	makedepends = ros-noetic-catkin
 	depends = emacs
-	source = ros-melodic-rosemacs-0.4.13.tar.gz::https://github.com/code-iai/ros_emacs_utils/archive/0.4.13.tar.gz
+	source = ros-noetic-rosemacs-0.4.13.tar.gz::https://github.com/code-iai/ros_emacs_utils/archive/0.4.13.tar.gz
 	sha256sums = 14c8463b3c354a53659843c82af416a4ff6713747f04da98e8fc39de90c8ec6c
 
-pkgname = ros-melodic-rosemacs
+pkgname = ros-noetic-rosemacs
 
