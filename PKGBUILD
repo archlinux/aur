@@ -6,7 +6,7 @@ _stable_version=4548
 _stable_tag=stable/jitsi-meet_${_stable_version}
 _stable_suffix=stable-jitsi-meet_${_stable_version}
 pkgver=2.0.${_stable_version}
-pkgrel=7
+pkgrel=8
 pkgdesc="Jitsi Meet Stable"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -147,7 +147,7 @@ sha256sums=('62e5273726fc9b4d07f30548db06d6b87269ca17cd3c7c9d2b6ee9e06eedfccf'
             'f295f5f8ee13edd019defc037c60e04c6ea2d30e69cc4a896c010b8570f5efab'
             '00c521a4c226deb3bebb8b4b6b68234283888464b889c705001b3371154fc9f0'
             '46f686cd8ea6bb5f1ec6055d2f16cc72db4baf9d90dea234d10e661b50924624'
-            '4144663a2eba50c15c96f7dec5bc6dc85b761ce37d6577c773d4d48da5e69bd0'
+            'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7'
             '9fe70e519caa85471799e90749d390dfba561eb0be13ea1307a5efd777e63382'
             '993a48122151312b064c9b74999d454e2a719335c74fb936eb658336169b98a1'
             'fd7ca06f1cf85a6f7578b006b99c18235b5a7e8319b7e08d40e82ad614d20835'
