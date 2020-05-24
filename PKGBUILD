@@ -3,26 +3,26 @@
 pkgdesc="ROS - Provides conversions from PCL data types and ROS message types."
 url='https://wiki.ros.org/pcl_conversions'
 
-pkgname='ros-melodic-pcl-conversions'
+pkgname='ros-noetic-pcl-conversions'
 pkgver='1.7.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=2
 license=('BSD')
 
-ros_makedepends=(ros-melodic-catkin)
+ros_makedepends=(ros-noetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-melodic-pcl-msgs
-  ros-melodic-roscpp
-  ros-melodic-sensor-msgs
-  ros-melodic-std-msgs)
+ros_depends=(ros-noetic-pcl-msgs
+  ros-noetic-roscpp
+  ros-noetic-sensor-msgs
+  ros-noetic-std-msgs)
 depends=(${ros_depends[@]}
   eigen3
   pcl)
 
 # Git version (e.g. for debugging)
-# _tag=release/melodic/pcl_conversions/${pkgver}-${_pkgver_patch}
+# _tag=release/noetic/pcl_conversions/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/perception_pcl-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
@@ -35,21 +35,17 @@ sha256sums=('ac821a662e507df7e48cebc0ba02aaa360b8edbd43873fc6f63bc65ec3d12628')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
