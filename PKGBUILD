@@ -1,8 +1,8 @@
 # Maintainer: Alexander Kobel <a-kobel@a-kobel.de>
 
 pkgname=mpsolve-git
-pkgver=3.1.6
-pkgrel=3
+pkgver=3.1.8
+pkgrel=1
 pkgdesc="Multiprecision rootfinder for complex roots of univariate polynomials"
 url="http://numpi.dm.unipi.it/software/mpsolve"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gmp' 'mpfr')
 optdepends=('cython: Python bindings'
             'gtk3: Graphical debugger'
             'octave: Octave bindings'
-            'qt4: Graphical interface xmpsolve')
+            'qt: Graphical interface xmpsolve')
 makedepends=('git' 'gcc-fortran')
 options=(!libtool)
 provides=('mpsolve')
