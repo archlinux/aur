@@ -1,14 +1,14 @@
 pkgbase = firefox-extension-mailvelope
 	pkgdesc = Secure webmail communication based on the OpenPGP standard.
-	pkgver = 4.2.1
+	pkgver = 4.3.2
 	pkgrel = 1
 	url = https://www.mailvelope.com
 	arch = any
 	license = GPL2
 	depends = firefox
-	noextract = mailvelope-4.2.1.xpi
-	source = mailvelope-4.2.1.xpi::https://addons.mozilla.org/firefox/downloads/file/3482061/mailvelope-4.2.1-fx.xpi
-	sha256sums = 4a8ab01ddc2808414da8711d2c0b0a34eb43f3a00e1638ea1ebbbb0bf5d73944
+	noextract = mailvelope-4.3.2.xpi
+	source = mailvelope-4.3.2.xpi::https://addons.mozilla.org/firefox/downloads/file/3576032/mailvelope-4.3.2-fx.xpi
+	sha256sums = 2b2c0956a22a745df0464f826e93fb28a1439894ec3c23baecae068d507dcbae
 
 pkgname = firefox-extension-mailvelope
 
