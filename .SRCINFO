@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-visualization-marker-tutorials
+pkgbase = ros-noetic-visualization-marker-tutorials
 	pkgdesc = ROS - The visulalization_marker_tutorials package.
 	pkgver = 0.10.3
 	pkgrel = 3
@@ -11,13 +11,13 @@ pkgbase = ros-melodic-visualization-marker-tutorials
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-visualization-msgs
-	makedepends = ros-melodic-roscpp
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-visualization-msgs
-	depends = ros-melodic-roscpp
-	source = ros-melodic-visualization-marker-tutorials-0.10.3.tar.gz::https://github.com/ros-visualization/visualization_tutorials/archive/0.10.3.tar.gz
+	makedepends = ros-noetic-visualization-msgs
+	makedepends = ros-noetic-roscpp
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-visualization-msgs
+	depends = ros-noetic-roscpp
+	source = ros-noetic-visualization-marker-tutorials-0.10.3.tar.gz::https://github.com/ros-visualization/visualization_tutorials/archive/0.10.3.tar.gz
 	sha256sums = a3162d933fea0dd58b99e46fb71ea5d8596ef6e46eaf3a906e4bf20e9ca1bb1c
 
-pkgname = ros-melodic-visualization-marker-tutorials
+pkgname = ros-noetic-visualization-marker-tutorials
 
