@@ -2,59 +2,59 @@
 pkgdesc="ROS - The move_base package provides an implementation of an action (see the actionlib package) that, given a goal in the world, will attempt to reach it with a mobile base."
 url='https://wiki.ros.org/move_base'
 
-pkgname='ros-melodic-move-base'
+pkgname='ros-noetic-move-base'
 pkgver='1.16.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=3
 license=('BSD')
 
-ros_makedepends=(ros-melodic-nav-core
-  ros-melodic-tf
-  ros-melodic-catkin
-  ros-melodic-roscpp
-  ros-melodic-geometry-msgs
-  ros-melodic-std-msgs
-  ros-melodic-rotate-recovery
-  ros-melodic-base-local-planner
-  ros-melodic-clear-costmap-recovery
-  ros-melodic-rospy
-  ros-melodic-navfn
-  ros-melodic-costmap-2d
-  ros-melodic-message-generation
-  ros-melodic-std-srvs
-  ros-melodic-actionlib
-  ros-melodic-visualization-msgs
-  ros-melodic-move-base-msgs
-  ros-melodic-cmake-modules
-  ros-melodic-dynamic-reconfigure
-  ros-melodic-nav-msgs
-  ros-melodic-pluginlib)
+ros_makedepends=(ros-noetic-nav-core
+  ros-noetic-tf
+  ros-noetic-catkin
+  ros-noetic-roscpp
+  ros-noetic-geometry-msgs
+  ros-noetic-std-msgs
+  ros-noetic-rotate-recovery
+  ros-noetic-base-local-planner
+  ros-noetic-clear-costmap-recovery
+  ros-noetic-rospy
+  ros-noetic-navfn
+  ros-noetic-costmap-2d
+  ros-noetic-message-generation
+  ros-noetic-std-srvs
+  ros-noetic-actionlib
+  ros-noetic-visualization-msgs
+  ros-noetic-move-base-msgs
+  ros-noetic-cmake-modules
+  ros-noetic-dynamic-reconfigure
+  ros-noetic-nav-msgs
+  ros-noetic-pluginlib)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-melodic-nav-core
-  ros-melodic-navfn
-  ros-melodic-roscpp
-  ros-melodic-geometry-msgs
-  ros-melodic-message-runtime
-  ros-melodic-base-local-planner
-  ros-melodic-clear-costmap-recovery
-  ros-melodic-rospy
-  ros-melodic-std-msgs
-  ros-melodic-costmap-2d
-  ros-melodic-nav-msgs
-  ros-melodic-std-srvs
-  ros-melodic-actionlib
-  ros-melodic-visualization-msgs
-  ros-melodic-move-base-msgs
-  ros-melodic-tf
-  ros-melodic-dynamic-reconfigure
-  ros-melodic-rotate-recovery
-  ros-melodic-pluginlib)
+ros_depends=(ros-noetic-nav-core
+  ros-noetic-navfn
+  ros-noetic-roscpp
+  ros-noetic-geometry-msgs
+  ros-noetic-message-runtime
+  ros-noetic-base-local-planner
+  ros-noetic-clear-costmap-recovery
+  ros-noetic-rospy
+  ros-noetic-std-msgs
+  ros-noetic-costmap-2d
+  ros-noetic-nav-msgs
+  ros-noetic-std-srvs
+  ros-noetic-actionlib
+  ros-noetic-visualization-msgs
+  ros-noetic-move-base-msgs
+  ros-noetic-tf
+  ros-noetic-dynamic-reconfigure
+  ros-noetic-rotate-recovery
+  ros-noetic-pluginlib)
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
-# _tag=release/melodic/move_base/${pkgver}-${_pkgver_patch}
+# _tag=release/noetic/move_base/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
@@ -67,21 +67,17 @@ sha256sums=('d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
