@@ -1,15 +1,15 @@
 pkgbase = firefox-extension-bypass-paywalls
 	pkgdesc = Browser plugin to bypass paywalls on many news sites.
-	pkgver = 1.6.6
+	pkgver = 1.7.2
 	pkgrel = 1
-	url = https://github.com/iamadamdev/bypass-paywalls-firefox/
+	url = https://github.com/iamadamdev/bypass-paywalls-chrome/
 	arch = any
 	license = MIT
 	depends = firefox
 	optdepends = firefox-ublock-origin
 	noextract = ${_plugin_name}-${pkgver}${_plugin_ext}.xpi
-	source = https://github.com/iamadamdev/bypass-paywalls-firefox/releases/download/v1.6.6/bypass_paywalls-1.6.6-an+fx.xpi
-	sha256sums = 100f44a9406799c97cf09baeb8862152e73d1e78717a5823555609b51a0bdeb4
+	source = bypass_paywalls-1.7.2-an+fx.xpi::https://github.com/iamadamdev/bypass-paywalls-chrome/releases/download/v1.7.2/bypass-paywalls-firefox.xpi
+	sha256sums = 5b5aa10fa34445d359214c07421746cba4c60e41726911328b204d13c52ec25b
 
 pkgname = firefox-extension-bypass-paywalls
 
