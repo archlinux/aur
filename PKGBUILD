@@ -2,22 +2,22 @@
 pkgdesc="ROS - Meta package that contains all essential package of MoveIt!."
 url='https://moveit.ros.org'
 
-pkgname='ros-melodic-moveit'
+pkgname='ros-noetic-moveit'
 pkgver='1.0.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-melodic-catkin)
+ros_makedepends=(ros-noetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-melodic-moveit-core
-  ros-melodic-moveit-commander
-  ros-melodic-moveit-setup-assistant
-  ros-melodic-moveit-planners
-  ros-melodic-moveit-plugins
-  ros-melodic-moveit-ros)
+ros_depends=(ros-noetic-moveit-core
+  ros-noetic-moveit-commander
+  ros-noetic-moveit-setup-assistant
+  ros-noetic-moveit-planners
+  ros-noetic-moveit-plugins
+  ros-noetic-moveit-ros)
 depends=(${ros_depends[@]})
 
 _dir="moveit-${pkgver}/moveit"
@@ -27,24 +27,17 @@ sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7.so \
-        -DPYTHON_BASENAME=-python3.7 \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
