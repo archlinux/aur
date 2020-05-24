@@ -3,17 +3,17 @@
 pkgdesc="ROS - Parser for Semantic Robot Description Format (SRDF)."
 url='https://wiki.ros.org/srdfdom'
 
-pkgname='ros-melodic-srdfdom'
+pkgname='ros-noetic-srdfdom'
 pkgver='0.5.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=5
 license=('BSD')
 
-ros_makedepends=(ros-melodic-urdfdom-py
-  ros-melodic-urdf
-  ros-melodic-catkin
-  ros-melodic-cmake-modules
-  ros-melodic-rostest)
+ros_makedepends=(ros-noetic-urdfdom-py
+  ros-noetic-urdf
+  ros-noetic-catkin
+  ros-noetic-cmake-modules
+  ros-noetic-rostest)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost
@@ -21,7 +21,7 @@ makedepends=('cmake' 'ros-build-tools'
   tinyxml
   urdfdom-headers)
 
-ros_depends=(ros-melodic-urdfdom-py)
+ros_depends=(ros-noetic-urdfdom-py)
 depends=(${ros_depends[@]}
   boost
   console-bridge
@@ -35,21 +35,17 @@ sha256sums=('98d585667906da2485dfad67af3ee5df4caab9a5cd9faf5e794c06357a87a9cf')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }

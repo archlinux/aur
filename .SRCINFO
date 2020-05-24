@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-srdfdom
+pkgbase = ros-noetic-srdfdom
 	pkgdesc = ROS - Parser for Semantic Robot Description Format (SRDF).
 	pkgver = 0.5.1
 	pkgrel = 5
@@ -11,22 +11,22 @@ pkgbase = ros-melodic-srdfdom
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-urdfdom-py
-	makedepends = ros-melodic-urdf
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-cmake-modules
-	makedepends = ros-melodic-rostest
+	makedepends = ros-noetic-urdfdom-py
+	makedepends = ros-noetic-urdf
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-cmake-modules
+	makedepends = ros-noetic-rostest
 	makedepends = boost
 	makedepends = console-bridge
 	makedepends = tinyxml
 	makedepends = urdfdom-headers
-	depends = ros-melodic-urdfdom-py
+	depends = ros-noetic-urdfdom-py
 	depends = boost
 	depends = console-bridge
 	depends = tinyxml
 	depends = urdfdom-headers
-	source = ros-melodic-srdfdom-0.5.1.tar.gz::https://github.com/ros-planning/srdfdom/archive/0.5.1.tar.gz
+	source = ros-noetic-srdfdom-0.5.1.tar.gz::https://github.com/ros-planning/srdfdom/archive/0.5.1.tar.gz
 	sha256sums = 98d585667906da2485dfad67af3ee5df4caab9a5cd9faf5e794c06357a87a9cf
 
-pkgname = ros-melodic-srdfdom
+pkgname = ros-noetic-srdfdom
 
