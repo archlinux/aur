@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rospy-tutorials
+pkgbase = ros-noetic-rospy-tutorials
 	pkgdesc = ROS - This package attempts to show the features of ROS python API step-by-step, including using messages, servers, parameters, etc.
 	pkgver = 0.9.1
 	pkgrel = 1
@@ -7,15 +7,15 @@ pkgbase = ros-melodic-rospy-tutorials
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-message-generation
-	makedepends = ros-melodic-std-msgs
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-rostest
-	depends = ros-melodic-message-runtime
-	depends = ros-melodic-rospy
-	depends = ros-melodic-std-msgs
-	source = ros-melodic-rospy-tutorials-0.9.1.tar.gz::https://github.com/ros/ros_tutorials/archive/0.9.1.tar.gz
+	makedepends = ros-noetic-message-generation
+	makedepends = ros-noetic-std-msgs
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-rostest
+	depends = ros-noetic-message-runtime
+	depends = ros-noetic-rospy
+	depends = ros-noetic-std-msgs
+	source = ros-noetic-rospy-tutorials-0.9.1.tar.gz::https://github.com/ros/ros_tutorials/archive/0.9.1.tar.gz
 	sha256sums = b39929a2ac912326fc114256e755fff5d0f0e5e5e7c99640d013eb7f916b85f4
 
-pkgname = ros-melodic-rospy-tutorials
+pkgname = ros-noetic-rospy-tutorials
 
