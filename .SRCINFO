@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rqt-py-console
+pkgbase = ros-noetic-rqt-py-console
 	pkgdesc = ROS - rqt_py_console is a Python GUI plugin providing an interactive Python console.
 	pkgver = 0.4.8
 	pkgrel = 2
@@ -7,16 +7,16 @@ pkgbase = ros-melodic-rqt-py-console
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-gui-py
-	depends = ros-melodic-qt-gui-py-common
-	depends = ros-melodic-qt-gui
-	depends = ros-melodic-python-qt-binding
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-rospy
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-rqt-gui-py
+	depends = ros-noetic-qt-gui-py-common
+	depends = ros-noetic-qt-gui
+	depends = ros-noetic-python-qt-binding
+	depends = ros-noetic-rqt-gui
+	depends = ros-noetic-rospy
 	depends = python-rospkg
-	source = ros-melodic-rqt-py-console-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_py_console/archive/0.4.8.tar.gz
+	source = ros-noetic-rqt-py-console-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_py_console/archive/0.4.8.tar.gz
 	sha256sums = d43380d19b0061e6378735f13c62b9b28a2bbaad6a540735f0512d7f6c163e68
 
-pkgname = ros-melodic-rqt-py-console
+pkgname = ros-noetic-rqt-py-console
 
