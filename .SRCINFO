@@ -9,8 +9,8 @@ pkgbase = sfk-bin
 	depends = gcc-libs
 	provides = sfk
 	conflicts = sfk
-	noextract = sfk-linux-64.exe
-	source = http://stahlworks.com/dev/sfk/sfk-linux-64.exe
+	noextract = sfk197-linux-64.exe
+	source = sfk197-linux-64.exe::https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/1.9.7.0/sfk197-linux-64.exe/download
 	md5sums = 84972c34612a4afc5ba4b45e366b5c95
 
 pkgname = sfk-bin

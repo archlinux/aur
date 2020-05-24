@@ -10,8 +10,8 @@ depends=('gcc-libs')
 makedepends=('awk')
 provides=('sfk')
 conflicts=('sfk')
-_bin='sfk-linux-64.exe'
-source=("http://stahlworks.com/dev/sfk/$_bin")
+_bin='sfk197-linux-64.exe'
+source=("$_bin::https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/$pkgver/$_bin/download")
 noextract=("$_bin")
 md5sums=('84972c34612a4afc5ba4b45e366b5c95')
 
@@ -21,7 +21,7 @@ prepare() {
 }
 
 pkgver() {
-  "$srcdir/sfk" ver -own | awk '{print $5}'
+ "$srcdir/sfk" ver -own | awk '{print $5}'
 }
 
 package() {
