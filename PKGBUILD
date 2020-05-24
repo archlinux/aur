@@ -3,8 +3,9 @@
 
 pkgbase=linux-pf-git
 pkgdesc="Linux pf-kernel (git version)"
-pkgver=5.6.2.r81.gf805c6cf2339c
-_basekernel=5.6
+pkgver=5.6.7.r206.gc8c7518e97f7d
+_kernel_rel=5.6
+_branch=pf-${_kernel_rel}
 _product=linux-pf
 pkgrel=1
 arch=(x86_64)
@@ -12,16 +13,20 @@ url="https://gitlab.com/post-factum/pf-kernel/wikis/README"
 license=(GPL2)
 makedepends=(
   bc kmod libelf
-  xmlto python-sphinx-2 python-sphinx_rtd_theme graphviz imagemagick
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
+options=('!strip')
 _srcname="${pkgbase}"
-source=("${_srcname}::git+https://gitlab.com/post-factum/pf-kernel.git#branch=pf-${_basekernel}"
-	      'config'
-        'pf_defconfig')
+source=(
+  "${_srcname}::git+https://gitlab.com/post-factum/pf-kernel.git#branch=${_branch}"
+  config
+  pf_defconfig
+  sphinx-workaround.patch)
 sha256sums=('SKIP'
-            '6ac452e2124f92747a57c5a50e11ca2f1e8112669845b4431311545c7fd2a36c'
-            '02bd388f03fcdda5ed12e84f4f58f7239a05574755573026f8f1bfc6ce52a46e')
+            'f392c9ecbb5177ea2573aaf22935322940ea2be0366f3fb9c9f861431f4aed21'
+            '02bd388f03fcdda5ed12e84f4f58f7239a05574755573026f8f1bfc6ce52a46e'
+            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
 
 pkgver() {
   cd "${_srcname}"
@@ -38,7 +43,18 @@ prepare() {
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
+  echo "-$pkgrel" > localversion.10-pkgrel
+  echo "${pkgbase#linux}" > localversion.20-pkgname
   # _pfrel=`git describe --abbrev=0 --tags| cut -d'-' -f2|sed 's/pf//g'`
+
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    echo "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
 
   echo "Setting config..."
   cp ../config .config
