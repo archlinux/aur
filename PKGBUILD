@@ -2,44 +2,44 @@
 pkgdesc="ROS - Components of MoveIt that offer visualization."
 url='https://moveit.ros.org'
 
-pkgname='ros-melodic-moveit-ros-visualization'
+pkgname='ros-noetic-moveit-ros-visualization'
 pkgver='1.0.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=2
 license=('BSD')
 
-ros_makedepends=(ros-melodic-object-recognition-msgs
-  ros-melodic-pluginlib
-  ros-melodic-moveit-ros-warehouse
-  ros-melodic-interactive-markers
-  ros-melodic-rospy
-  ros-melodic-roscpp
-  ros-melodic-moveit-ros-planning-interface
-  ros-melodic-rviz
-  ros-melodic-moveit-ros-robot-interaction
-  ros-melodic-geometric-shapes
-  ros-melodic-catkin
-  ros-melodic-moveit-ros-perception)
+ros_makedepends=(ros-noetic-object-recognition-msgs
+  ros-noetic-pluginlib
+  ros-noetic-moveit-ros-warehouse
+  ros-noetic-interactive-markers
+  ros-noetic-rospy
+  ros-noetic-roscpp
+  ros-noetic-moveit-ros-planning-interface
+  ros-noetic-rviz
+  ros-noetic-moveit-ros-robot-interaction
+  ros-noetic-geometric-shapes
+  ros-noetic-catkin
+  ros-noetic-moveit-ros-perception)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen3
   pkg-config)
 
-ros_depends=(ros-melodic-object-recognition-msgs
-  ros-melodic-pluginlib
-  ros-melodic-moveit-ros-warehouse
-  ros-melodic-interactive-markers
-  ros-melodic-rospy
-  ros-melodic-roscpp
-  ros-melodic-moveit-ros-planning-interface
-  ros-melodic-rviz
-  ros-melodic-moveit-ros-robot-interaction
-  ros-melodic-geometric-shapes
-  ros-melodic-moveit-ros-perception)
+ros_depends=(ros-noetic-object-recognition-msgs
+  ros-noetic-pluginlib
+  ros-noetic-moveit-ros-warehouse
+  ros-noetic-interactive-markers
+  ros-noetic-rospy
+  ros-noetic-roscpp
+  ros-noetic-moveit-ros-planning-interface
+  ros-noetic-rviz
+  ros-noetic-moveit-ros-robot-interaction
+  ros-noetic-geometric-shapes
+  ros-noetic-moveit-ros-perception)
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
-# _tag=release/melodic/moveit_ros_visualization/${pkgver}-${_pkgver_patch}
+# _tag=release/noetic/moveit_ros_visualization/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/moveit-release.git"#tag=${_tag})
 # sha256sums=('648a7419c00fa9e0d6575e1d7afa381dfe33cdcfe83348a8145c23801ecb80dd')
@@ -56,21 +56,17 @@ prepare() {
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
