@@ -1,26 +1,26 @@
 pkgdesc="ROS - A simple viewer for ROS image topics."
 url='https://wiki.ros.org/image_view'
 
-pkgname='ros-melodic-image-view'
+pkgname='ros-noetic-image-view'
 pkgver='1.13.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-std-srvs
-	ros-melodic-nodelet
-	ros-melodic-dynamic-reconfigure
-	ros-melodic-stereo-msgs
-	ros-melodic-catkin
-	ros-melodic-cv-bridge
-	ros-melodic-camera-calibration-parsers
-	ros-melodic-message-generation
-	ros-melodic-rosconsole
-	ros-melodic-roscpp
-	ros-melodic-message-filters
-	ros-melodic-sensor-msgs
-	ros-melodic-image-transport
+	ros-noetic-std-srvs
+	ros-noetic-nodelet
+	ros-noetic-dynamic-reconfigure
+	ros-noetic-stereo-msgs
+	ros-noetic-catkin
+	ros-noetic-cv-bridge
+	ros-noetic-camera-calibration-parsers
+	ros-noetic-message-generation
+	ros-noetic-rosconsole
+	ros-noetic-roscpp
+	ros-noetic-message-filters
+	ros-noetic-sensor-msgs
+	ros-noetic-image-transport
 )
 
 makedepends=(
@@ -31,15 +31,15 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-std-srvs
-	ros-melodic-nodelet
-	ros-melodic-dynamic-reconfigure
-	ros-melodic-cv-bridge
-	ros-melodic-camera-calibration-parsers
-	ros-melodic-rosconsole
-	ros-melodic-roscpp
-	ros-melodic-message-filters
-	ros-melodic-image-transport
+	ros-noetic-std-srvs
+	ros-noetic-nodelet
+	ros-noetic-dynamic-reconfigure
+	ros-noetic-cv-bridge
+	ros-noetic-camera-calibration-parsers
+	ros-noetic-rosconsole
+	ros-noetic-roscpp
+	ros-noetic-message-filters
+	ros-noetic-image-transport
 )
 
 depends=(
@@ -62,21 +62,17 @@ prepare() {
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
