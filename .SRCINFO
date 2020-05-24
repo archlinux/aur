@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-roslisp-repl
+pkgbase = ros-noetic-roslisp-repl
 	pkgdesc = ROS - This package provides a script that launches Emacs with Slime (the Superior Lisp Interaction Mode) ready for Lisp development and roslisp.
 	pkgver = 0.4.13
 	pkgrel = 1
@@ -7,14 +7,14 @@ pkgbase = ros-melodic-roslisp-repl
 	license = Public domain
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-slime-ros
-	depends = ros-melodic-slime-wrapper
-	depends = ros-melodic-roslisp
-	depends = ros-melodic-rosemacs
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-slime-ros
+	depends = ros-noetic-slime-wrapper
+	depends = ros-noetic-roslisp
+	depends = ros-noetic-rosemacs
 	depends = sbcl
-	source = ros-melodic-roslisp-repl-0.4.13.tar.gz::https://github.com/code-iai/ros_emacs_utils/archive/0.4.13.tar.gz
+	source = ros-noetic-roslisp-repl-0.4.13.tar.gz::https://github.com/code-iai/ros_emacs_utils/archive/0.4.13.tar.gz
 	sha256sums = 14c8463b3c354a53659843c82af416a4ff6713747f04da98e8fc39de90c8ec6c
 
-pkgname = ros-melodic-roslisp-repl
+pkgname = ros-noetic-roslisp-repl
 

@@ -3,25 +3,25 @@
 pkgdesc="ROS - This package provides a script that launches Emacs with Slime (the Superior Lisp Interaction Mode) ready for Lisp development and roslisp."
 url='https://wiki.ros.org/roslisp_repl'
 
-pkgname='ros-melodic-roslisp-repl'
+pkgname='ros-noetic-roslisp-repl'
 pkgver='0.4.13'
 arch=('any')
 pkgrel=1
 license=('Public domain')
 
-ros_makedepends=(ros-melodic-catkin)
+ros_makedepends=(ros-noetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-melodic-slime-ros
-  ros-melodic-slime-wrapper
-  ros-melodic-roslisp
-  ros-melodic-rosemacs)
+ros_depends=(ros-noetic-slime-ros
+  ros-noetic-slime-wrapper
+  ros-noetic-roslisp
+  ros-noetic-rosemacs)
 depends=(${ros_depends[@]}
   sbcl)
 
 # Git version (e.g. for debugging)
-# _tag=release/melodic/roslisp_repl/${pkgver}-${_pkgver_patch}
+# _tag=release/noetic/roslisp_repl/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/code-iai-release/ros_emacs_utils-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
@@ -34,24 +34,17 @@ sha256sums=('14c8463b3c354a53659843c82af416a4ff6713747f04da98e8fc39de90c8ec6c')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
-        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
