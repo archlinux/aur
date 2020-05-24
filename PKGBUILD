@@ -3,7 +3,7 @@
 pkgdesc="ROS - rqt_gui_cpp enables GUI plugins to use the C++ client library for ROS."
 url='https://wiki.ros.org/rqt_gui_cpp'
 
-pkgname='ros-melodic-rqt-gui-cpp'
+pkgname='ros-noetic-rqt-gui-cpp'
 pkgver='0.5.0'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
@@ -11,11 +11,11 @@ pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-nodelet
-	ros-melodic-catkin
-	ros-melodic-qt-gui
-	ros-melodic-roscpp
-	ros-melodic-qt-gui-cpp
+	ros-noetic-nodelet
+	ros-noetic-catkin
+	ros-noetic-qt-gui
+	ros-noetic-roscpp
+	ros-noetic-qt-gui-cpp
 )
 
 makedepends=(
@@ -26,10 +26,10 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-qt-gui
-	ros-melodic-nodelet
-	ros-melodic-qt-gui-cpp
-	ros-melodic-roscpp
+	ros-noetic-qt-gui
+	ros-noetic-nodelet
+	ros-noetic-qt-gui-cpp
+	ros-noetic-roscpp
 )
 
 depends=(
@@ -43,21 +43,17 @@ sha256sums=('3f62f90db254e111483b9a7cb9d486d0bf07c863b2a987808dc3636ee7004c22')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
