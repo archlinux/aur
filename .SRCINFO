@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-openslam-gmapping
+pkgbase = ros-noetic-openslam-gmapping
 	pkgdesc = ROS - The catkinized verseion of openslam_gmapping package.
 	pkgver = 0.2.1
 	pkgrel = 1
@@ -7,9 +7,9 @@ pkgbase = ros-melodic-openslam-gmapping
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	source = ros-melodic-openslam-gmapping-0.2.1.tar.gz::https://github.com/ros-perception/openslam_gmapping/archive/0.2.1.tar.gz
+	makedepends = ros-noetic-catkin
+	source = ros-noetic-openslam-gmapping-0.2.1.tar.gz::https://github.com/ros-perception/openslam_gmapping/archive/0.2.1.tar.gz
 	sha256sums = 37c07b582eee37109c2dbdc3d76fac1fcfb9acc3ab9b2001d31f98ed89583d94
 
-pkgname = ros-melodic-openslam-gmapping
+pkgname = ros-noetic-openslam-gmapping
 
