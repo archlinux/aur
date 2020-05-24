@@ -1,25 +1,51 @@
+status=/tmp/gitbucket.status
+
 post_install()
 {
+	systemd-sysusers gitbucket.conf
+	systemd-tmpfiles --create gitbucket.conf
+
 	echo ""
 	echo "To start gitbucket, run: systemctl start gitbucket"
 	echo "To enable gitbucket at boot, run: systemctl enable gitbucket"
 	echo ""
 }
 
+pre_upgrade()
+{
+	systemctl is-active gitbucket >$status &&
+	systemctl stop gitbucket ||
+	true
+
+	if [[ -f /etc/gitbucket/gitbucket.opts && ! -f /etc/conf.d/gitbucket ]]; then
+		echo Converting /etc/gitbucket/gitbucket.opts to /etc/conf.d/gitbucket
+		cat /etc/gitbucket/gitbucket.opts |
+		sed 's/#.*//' |
+		sed '/^\s*$/d' |
+		tr '[:lower:]' '[:upper:]' |
+		sed 's/^/GITBUCKET_/' >/etc/conf.d/gitbucket
+		mv /etc/gitbucket/gitbucket.opts /etc/gitbucket/gitbucket.opts.unused
+	fi
+	if [[ -f /var/lib/gitbucket/database.conf && ! -f /etc/gitbucket/database.conf ]]; then
+		echo Moving /var/lib/gitbucket/database.conf to /etc/gitbucket/database.conf
+		mkdir -p /etc/gitbucket
+		mv /var/lib/gitbucket/database.conf /etc/gitbucket/database.conf
+	fi
+}
+
 post_upgrade()
 {
 	systemctl daemon-reload
+
+	[[ $(cat $status) = active ]] &&
+	systemctl start gitbucket ||
+	true
+
+	rm -f /tmp/gitbucket.status
 }
 
 pre_remove()
 {
-	systemctl stop gitbucket
-	systemctl disable gitbucket
-}
-
-post_remove()
-{
-	# cleanup
-	rm -rf /usr/lib/gitbucket
+	systemctl disable --now gitbucket
 }
 

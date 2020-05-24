@@ -1,0 +1,20 @@
+diff -rNc gitbucket-4.33.0-orig/src/main/scala/gitbucket/core/util/DatabaseConfig.scala gitbucket-4.33.0/src/main/scala/gitbucket/core/util/DatabaseConfig.scala
+*** gitbucket-4.33.0-orig/src/main/scala/gitbucket/core/util/DatabaseConfig.scala	2019-12-31 10:18:13.000000000 +0100
+--- gitbucket-4.33.0/src/main/scala/gitbucket/core/util/DatabaseConfig.scala	2020-05-24 01:32:47.170037501 +0200
+***************
+*** 15,21 ****
+  object DatabaseConfig {
+  
+    private lazy val config = {
+!     val file = new File(GitBucketHome, "database.conf")
+      if (!file.exists) {
+        FileUtils.write(
+          file,
+--- 15,21 ----
+  object DatabaseConfig {
+  
+    private lazy val config = {
+!     val file = new File("/etc/gitbucket/database.conf")
+      if (!file.exists) {
+        FileUtils.write(
+          file,

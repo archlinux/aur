@@ -2,37 +2,67 @@
 
 pkgname=gitbucket
 pkgver=4.33.0
-pkgrel=1
+pkgrel=15
 pkgdesc="A Git platform powered by Scala with easy installation, high extensibility & GitHub API compatibility"
 arch=(any)
 url=https://gitbucket.github.io
 license=(AGPL3)
-depends=(jre8-openjdk-headless)
-provides=($pkgname)
-install=$pkgname.install
-backup=(etc/$pkgname/$pkgname.opts)
-source=($pkgname-$pkgver.war::https://github.com/gitbucket/gitbucket/releases/download/$pkgver/$pkgname.war
-
-		$pkgname.sh
-		$pkgname.opts
-		$pkgname.sysusers
-		$pkgname.tmpfiles
-		$pkgname.service
+depends=('java-runtime-headless>=8')
+install=gitbucket.install
+backup=(etc/conf.d/gitbucket
+		etc/gitbucket/database.conf
+		etc/gitbucket/logback.xml
 		)
-noextract=($pkgname-$pkgver.war)
-sha256sums=('35e190ddb7a2f9760d43617d2e6325c2a745ba66061daa3fa95cc9d871423506'
-            '9e676104c506cfcf1c8e7db79fe0331b55726a0530f8ad6ccc33013190535982'
-            '860d2afa0dae857f8ddd3c8de2911a60032e51aa3981b4282d525ec8cbe73638'
+source=(gitbucket-$pkgver.tar.gz::https://github.com/gitbucket/gitbucket/archive/$pkgver.tar.gz
+		10-database.patch
+		database.conf
+		logback.xml
+		gitbucket.conf
+		gitbucket.sysusers
+		gitbucket.tmpfiles
+		gitbucket.service
+		)
+makedepends=(sbt 'java-environment-openjdk>=8')
+sha256sums=('adbc771463debdc8d44d6b72713296093c6bdf5c0db46a98fa2f08df11f75e58'
+            'adf29a3110aadb8268ed7113d7f712a9fb6ff51fa6d64d9e710775aa941fc457'
+            '1ad37bef23b3992356c4140e3e96fc965275a0d7ced5e4a0e64ae37cfcac5fa5'
+            'c6185de1f0d118310e6e91e865c842b96343e4ebdbe8c1d2a16e1d4c270765b1'
+            '0e89640cc21ad01c7a4490fdb04c4ef111ff97343f7e8534863d7a6e080eabde'
             '7839b30fafa179d3712ec4246450fbf56a70130de198da2265d872b76ac0ee0e'
-            'c940b928564af0062b2d0acdec13f58313435eef8f0fa927d9531f73ed601648'
-            '7ca63d855fedfe91078844f3a7d518631b17a9916ba1fbc585c3a4d345aed7ea')
+            '54266df0fcce78bf6e19f2f1364d0444a64fbc161d4c673d871fc7c5707e26ce'
+            'ce6d4b6d24df71e63296cdb69c2cd0a439d860b4fc3633cb87b5c16fe9ec543b')
 
-package() {
-	install -Dm755 $pkgname.sh $pkgdir/usr/lib/$pkgname/$pkgname
-	install -Dm644 $pkgname-$pkgver.war $pkgdir/usr/lib/$pkgname/$pkgname.war
-	install -Dm644 $pkgname.opts $pkgdir/etc/$pkgname/$pkgname.opts
-	install -Dm644 $pkgname.sysusers $pkgdir/usr/lib/sysusers.d/$pkgname.conf
-	install -Dm644 $pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
-	install -Dm644 $pkgname.tmpfiles $pkgdir/usr/lib/tmpfiles.d/$pkgname.conf
+PKGEXT=.pkg.tar
+
+prepare()
+{
+	cd $srcdir/gitbucket-$pkgver
+
+	for s in ${source[@]}; do
+		case $s in
+			*.patch)
+				echo -n Applying patch $s...
+				patch -s -p1 -i ${srcdir}/$s
+				echo ' done'
+			;;
+		esac
+	done
+}
+
+build()
+{
+	cd $srcdir/gitbucket-$pkgver
+	sbt --batch executable
+}
+
+package()
+{
+	install -Dm644 gitbucket-$pkgver/target/executable/gitbucket.war $pkgdir/usr/lib/gitbucket/gitbucket.war
+	install -Dm644 database.conf $pkgdir/etc/gitbucket/database.conf
+	install -Dm644 logback.xml $pkgdir/etc/gitbucket/logback.xml
+	install -Dm644 gitbucket.conf $pkgdir/etc/conf.d/gitbucket
+	install -Dm644 gitbucket.sysusers $pkgdir/usr/lib/sysusers.d/gitbucket.conf
+	install -Dm644 gitbucket.service $pkgdir/usr/lib/systemd/system/gitbucket.service
+	install -Dm644 gitbucket.tmpfiles $pkgdir/usr/lib/tmpfiles.d/gitbucket.conf
 }
 

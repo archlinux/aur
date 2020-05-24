@@ -5,7 +5,12 @@ After=network.target
 [Service]
 User=gitbucket
 Group=gitbucket
-ExecStart=/usr/lib/gitbucket/gitbucket
+EnvironmentFile=/etc/conf.d/gitbucket
+Environment=GITBUCKET_HOME=/var/lib/gitbucket
+Environment=GITBUCKET_TEMPDIR=/var/lib/gitbucket/.tmp
+Environment=GITBUCKET_PLUGINDIR=/var/lib/gitbucket/plugins
+ExecStartPre=/bin/mkdir -p /var/lib/gitbucket/.tmp /var/lib/gitbucket/plugins
+ExecStart=/usr/bin/java -Dlogback.configurationFile=/etc/gitbucket/logback.xml -jar /usr/lib/gitbucket/gitbucket.war
 StandardOutput=file:/var/log/gitbucket/console.log
 StandardError=inherit
 Restart=on-abort

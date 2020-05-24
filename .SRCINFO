@@ -1,27 +1,33 @@
 pkgbase = gitbucket
 	pkgdesc = A Git platform powered by Scala with easy installation, high extensibility & GitHub API compatibility
 	pkgver = 4.33.0
-	pkgrel = 1
+	pkgrel = 15
 	url = https://gitbucket.github.io
 	install = gitbucket.install
 	arch = any
 	license = AGPL3
-	depends = jre8-openjdk-headless
-	provides = gitbucket
-	noextract = gitbucket-4.33.0.war
-	backup = etc/gitbucket/gitbucket.opts
-	source = gitbucket-4.33.0.war::https://github.com/gitbucket/gitbucket/releases/download/4.33.0/gitbucket.war
-	source = gitbucket.sh
-	source = gitbucket.opts
+	makedepends = sbt
+	makedepends = java-environment-openjdk>=8
+	depends = java-runtime-headless>=8
+	backup = etc/conf.d/gitbucket
+	backup = etc/gitbucket/database.conf
+	backup = etc/gitbucket/logback.xml
+	source = gitbucket-4.33.0.tar.gz::https://github.com/gitbucket/gitbucket/archive/4.33.0.tar.gz
+	source = 10-database.patch
+	source = database.conf
+	source = logback.xml
+	source = gitbucket.conf
 	source = gitbucket.sysusers
 	source = gitbucket.tmpfiles
 	source = gitbucket.service
-	sha256sums = 35e190ddb7a2f9760d43617d2e6325c2a745ba66061daa3fa95cc9d871423506
-	sha256sums = 9e676104c506cfcf1c8e7db79fe0331b55726a0530f8ad6ccc33013190535982
-	sha256sums = 860d2afa0dae857f8ddd3c8de2911a60032e51aa3981b4282d525ec8cbe73638
+	sha256sums = adbc771463debdc8d44d6b72713296093c6bdf5c0db46a98fa2f08df11f75e58
+	sha256sums = adf29a3110aadb8268ed7113d7f712a9fb6ff51fa6d64d9e710775aa941fc457
+	sha256sums = 1ad37bef23b3992356c4140e3e96fc965275a0d7ced5e4a0e64ae37cfcac5fa5
+	sha256sums = c6185de1f0d118310e6e91e865c842b96343e4ebdbe8c1d2a16e1d4c270765b1
+	sha256sums = 0e89640cc21ad01c7a4490fdb04c4ef111ff97343f7e8534863d7a6e080eabde
 	sha256sums = 7839b30fafa179d3712ec4246450fbf56a70130de198da2265d872b76ac0ee0e
-	sha256sums = c940b928564af0062b2d0acdec13f58313435eef8f0fa927d9531f73ed601648
-	sha256sums = 7ca63d855fedfe91078844f3a7d518631b17a9916ba1fbc585c3a4d345aed7ea
+	sha256sums = 54266df0fcce78bf6e19f2f1364d0444a64fbc161d4c673d871fc7c5707e26ce
+	sha256sums = ce6d4b6d24df71e63296cdb69c2cd0a439d860b4fc3633cb87b5c16fe9ec543b
 
 pkgname = gitbucket
 
