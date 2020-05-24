@@ -3,13 +3,13 @@
 pkgbase=ivre-git
 _pkgname=ivre
 pkgname=('ivre-git' 'ivre-web-git' 'ivre-docs-git' 'python-ivre-git' 'python2-ivre-git')
-pkgver=0.9.14.dev64
+pkgver=0.9.15.dev44
 pkgrel=1
 pkgdesc='Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...'
 arch=('any')
 url='https://ivre.rocks/'
 license=('GPL3')
-makedepends=('git')
+makedepends=('git' 'python' 'python2')
 source=('git+https://github.com/cea-sec/ivre.git')
 sha512sums=('SKIP')
 
@@ -96,7 +96,6 @@ package_ivre-web-git() {
 
   rm -r "$pkgdir/usr/bin" "$pkgdir/usr/lib" \
      "$pkgdir/usr/share/doc" \
-     "$pkgdir/usr/share/ivre/bro" \
      "$pkgdir/usr/share/ivre/zeek" \
      "$pkgdir/usr/share/ivre/data" \
      "$pkgdir/usr/share/ivre/docker" \
@@ -110,15 +109,15 @@ package_ivre-web-git() {
 }
 
 package_python-ivre-git() {
-  depends=('python' 'python-pymongo' 'python-future')
+  depends=('python' 'python-pymongo' 'python-future' 'python-pyopenssl' 'python-cryptography')
   optdepends=('python-py2neo: experimental flow analysis (Neo4j backend)'
               'python-sqlalchemy: experimental PostgreSQL & SQLite backends'
               'python-psycopg2: experimental PostgreSQL backend'
               'python-elasticsearch: experimental Elasticsearch backend'
               'python-elasticsearch-dsl: experimental Elasticsearch backend'
+              'python-tinydb: experimental file-based backend (no DB server)'
               'python-pillow: trim screenshots on insertion'
               'tesseract: extract words from screenshots on insertion'
-              'python-pycryptodome: extract data from public keys ("ivre getmoduli")'
               'python-scapy: parse PCAP files for ARP inspection (flow analysis)'
               'python-matplotlib: create graphs from command line tools'
               'python-dbus: 3D traceroute graphs'
@@ -141,15 +140,15 @@ package_python-ivre-git() {
 }
 
 package_python2-ivre-git() {
-  depends=('python2' 'python2-pymongo' 'python2-future')
+  depends=('python2' 'python2-pymongo' 'python2-future' 'python2-pyopenssl' 'python2-cryptography')
   optdepends=('python2-py2neo: experimental flow analysis (Neo4j backend)'
               'python2-sqlalchemy: experimental PostgreSQL & SQLite backends'
               'python2-psycopg2: experimental PostgreSQL backend'
               'python2-elasticsearch: experimental Elasticsearch backend'
               'python2-elasticsearch-dsl: experimental Elasticsearch backend'
+              'python2-tinydb: experimental file-based backend (no DB server)'
               'python2-pillow: trim screenshots on insertion'
               'tesseract: extract words from screenshots on insertion'
-              'python2-pycryptodome: extract data from public keys ("ivre getmoduli")'
               'python2-scapy: parse PCAP files for ARP inspection (flow analysis)'
               'python2-matplotlib: create graphs from command line tools'
               'python2-dbus: 3D traceroute graphs'
