@@ -2,7 +2,7 @@
 # Contributor: 1Conan <me@1conan.com>
 
 pkgname=checkra1n
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="checkra1n is a semi-tethered jailbreak, developed primarily by Luca Todesco (qwertyoruiop). It's based on the checkm8 bootrom exploit released by axi0mx. checkra1n supports iOS 12.3 and newer."
 license=('unknown')
@@ -28,9 +28,9 @@ depends=(
 )
 options=('!strip')
 source=(https://assets.checkra.in/debian/checkra1n_${pkgver}_amd64.deb)
-md5sums=('ad771aec22e398797f19e59ef77e2aa5')
-sha1sums=('a287ac0d42ec791a700f6e79ba079e22dddd2f7d')
-sha256sums=('4b806dd241b0854a9c7f620ad2da350356c9985afd928dc57fecf9b5a1c6b0f5')
+md5sums=('214e0e25935d9d2dedc57b5659bcb4a0')
+sha1sums=('d020d0fa2c783f69b50e9e8229831f08e42f7e99')
+sha256sums=('229f93e0771d64455b67b46a7a09f0c7e43601f7e4f17259e520553370945dae')
 
 package() {
   tar -xf data.tar.xz -C "$pkgdir"
