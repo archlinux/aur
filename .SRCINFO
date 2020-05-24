@@ -1,5 +1,5 @@
 pkgbase = gitstatus
-	pkgdesc = 10x faster implementation of `git status` command
+	pkgdesc = Git status for Bash and Zsh prompt
 	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/romkatv/gitstatus

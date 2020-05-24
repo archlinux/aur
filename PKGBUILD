@@ -4,7 +4,7 @@ pkgname=gitstatus
 # Whenever pkgver is updated, _libgit2ver below must also be updated.
 pkgver=1.1.2
 pkgrel=1
-pkgdesc='10x faster implementation of `git status` command'
+pkgdesc='Git status for Bash and Zsh prompt'
 arch=('any')
 url="https://github.com/romkatv/gitstatus"
 license=('GPL3')
