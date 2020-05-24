@@ -6,7 +6,7 @@
 ## Contributor: sowieso <sowieso@dukun.de>
 
 _ver="1.10.2_12.18.3.2185-9"
-_minecraft_ver_latest="1.14.4"
+_minecraft_ver_latest="1.15.2"
 
 IFS="-" read -ra _ver_temp <<< "$_ver"
 IFS="_" read -ra _pkgver_temp <<< "${_ver_temp[0]}"
@@ -119,7 +119,7 @@ fi
 
 prepare() {
 	[ "$_minecraft_ver_minor" = 10 ] && mkdir mods
-	[ "$_minecraft_ver_minor" = 5 ] && unzip fml_libs15.zip -d lib
+	[ "$_minecraft_ver_minor" = 5 ] && unzip -o fml_libs15.zip -d lib
 	java -jar "forge-${_pkgver}-installer.jar" --installServer
 }
 
@@ -135,7 +135,7 @@ package() {
 
 	# Install Forge
 	_forge_jar="forge-${_pkgver}.jar"
-	[ "$_minecraft_ver_minor" -le 12 ] && _forge_jar="forge-${_pkgver}-universal.jar"
+	[ "$_minecraft_ver_minor" -le 11 ] && _forge_jar="forge-${_pkgver}-universal.jar"
 	[ "$_minecraft_ver_minor" = 7 ] && _forge_jar="forge-${_pkgver}-${_minecraft_ver}-universal.jar"
 	[ "$_minecraft_ver_minor" -le 6 ] && _forge_jar="minecraftforge-universal-${_pkgver}.jar"
 
