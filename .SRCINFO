@@ -1,0 +1,19 @@
+pkgbase = zsh-theme-powerlevel10k-bin
+	pkgdesc = Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience.
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = https://github.com/romkatv/powerlevel10k
+	arch = any
+	license = MIT
+	makedepends = zsh
+	depends = zsh
+	optdepends = ttf-meslo-nerd-font-powerlevel10k: terminal font recommended by powerlevel10k
+	optdepends = powerline-fonts: patched fonts for powerline
+	optdepends = awesome-terminal-fonts: icon package
+	provides = zsh-theme-powerlevel10k
+	conflicts = zsh-theme-powerlevel10k
+	source = zsh-theme-powerlevel10k-bin-1.10.1.tar.gz::https://github.com/romkatv/powerlevel10k/archive/v1.10.1.tar.gz
+	sha512sums = 4004d86ad00cec9c23f7f1af1a82708cd17fa7e5aa2eddd5300c7a900aeee8e22e50c687bb45169979c713325ed1b684110de473ff58c4edb3f284133e927cb1
+
+pkgname = zsh-theme-powerlevel10k-bin
+
