@@ -3,7 +3,7 @@
 pkgdesc="ROS - rqt_common_plugins metapackage provides ROS backend graphical tools suite that can be used on/off of robot runtime."
 url='https://wiki.ros.org/rqt_common_plugins'
 
-pkgname='ros-melodic-rqt-common-plugins'
+pkgname='ros-noetic-rqt-common-plugins'
 pkgver='0.4.8'
 _pkgver_patch=0
 arch=('any')
@@ -11,7 +11,7 @@ pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-catkin
+	ros-noetic-catkin
 )
 
 makedepends=(
@@ -21,27 +21,27 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-rqt-bag-plugins
-	ros-melodic-rqt-launch
-	ros-melodic-rqt-action
-	ros-melodic-rqt-msg
-	ros-melodic-rqt-logger-level
-	ros-melodic-rqt-top
-	ros-melodic-rqt-service-caller
-	ros-melodic-rqt-shell
-	ros-melodic-rqt-graph
-	ros-melodic-rqt-topic
-	ros-melodic-rqt-web
-	ros-melodic-rqt-py-common
-	ros-melodic-rqt-bag
-	ros-melodic-rqt-plot
-	ros-melodic-rqt-publisher
-	ros-melodic-rqt-console
-	ros-melodic-rqt-srv
-	ros-melodic-rqt-dep
-	ros-melodic-rqt-image-view
-	ros-melodic-rqt-py-console
-	ros-melodic-rqt-reconfigure
+	ros-noetic-rqt-bag-plugins
+	ros-noetic-rqt-launch
+	ros-noetic-rqt-action
+	ros-noetic-rqt-msg
+	ros-noetic-rqt-logger-level
+	ros-noetic-rqt-top
+	ros-noetic-rqt-service-caller
+	ros-noetic-rqt-shell
+	ros-noetic-rqt-graph
+	ros-noetic-rqt-topic
+	ros-noetic-rqt-web
+	ros-noetic-rqt-py-common
+	ros-noetic-rqt-bag
+	ros-noetic-rqt-plot
+	ros-noetic-rqt-publisher
+	ros-noetic-rqt-console
+	ros-noetic-rqt-srv
+	ros-noetic-rqt-dep
+	ros-noetic-rqt-image-view
+	ros-noetic-rqt-py-console
+	ros-noetic-rqt-reconfigure
 )
 
 depends=(
@@ -55,24 +55,17 @@ sha256sums=('73cba40630e4bb41f1fa2960d5b03925e878ee90ea59bd5117961c231bea9819')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
