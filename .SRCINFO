@@ -1,13 +1,13 @@
 pkgbase = python-trimesh
 	pkgdesc = Trimesh is a pure Python (2.7-3.4+) library for loading and using triangular meshes with an emphasis on watertight surfaces.
-	pkgver = 3.6.38
+	pkgver = 3.6.42
 	pkgrel = 1
 	url = https://github.com/mikedh/trimesh
 	arch = any
 	license = MIT
 	makedepends = python
-	source = https://files.pythonhosted.org/packages/source/t/trimesh/trimesh-3.6.38.tar.gz
-	md5sums = 1b2c78e590893d087f9e1cb395629d25
+	source = https://files.pythonhosted.org/packages/source/t/trimesh/trimesh-3.6.42.tar.gz
+	md5sums = 279414b81baf30f32d0b26df4e357678
 
 pkgname = python-trimesh
 	depends = python-numpy
