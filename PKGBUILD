@@ -3,7 +3,7 @@
 pkgdesc="ROS - turtle_tf2 demonstrates how to write a tf2 broadcaster and listener with the turtlesim."
 url='https://wiki.ros.org/turtle_tf2'
 
-pkgname='ros-melodic-turtle-tf2'
+pkgname='ros-noetic-turtle-tf2'
 pkgver='0.2.2'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
@@ -11,14 +11,14 @@ pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-turtlesim
-	ros-melodic-catkin
-	ros-melodic-std-msgs
-	ros-melodic-tf2-ros
-	ros-melodic-roscpp
-	ros-melodic-tf2
-	ros-melodic-rospy
-	ros-melodic-geometry-msgs
+	ros-noetic-turtlesim
+	ros-noetic-catkin
+	ros-noetic-std-msgs
+	ros-noetic-tf2-ros
+	ros-noetic-roscpp
+	ros-noetic-tf2
+	ros-noetic-rospy
+	ros-noetic-geometry-msgs
 )
 
 makedepends=(
@@ -28,13 +28,13 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-turtlesim
-	ros-melodic-std-msgs
-	ros-melodic-tf2-ros
-	ros-melodic-roscpp
-	ros-melodic-tf2
-	ros-melodic-rospy
-	ros-melodic-geometry-msgs
+	ros-noetic-turtlesim
+	ros-noetic-std-msgs
+	ros-noetic-tf2-ros
+	ros-noetic-roscpp
+	ros-noetic-tf2
+	ros-noetic-rospy
+	ros-noetic-geometry-msgs
 )
 
 depends=(
@@ -48,21 +48,17 @@ sha256sums=('4b3fdc98bf4cb97ba2f1c40666901fa7d08eb3dfed0d3323de4841de2e3a22cc')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
