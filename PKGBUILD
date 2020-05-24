@@ -1,24 +1,18 @@
-# Maintainer: Auteiy <dmitry@auteiy.me>
+# Maintainer: Auteiy <dmitry@synh.me>
 
-pkgname=kotatogram-desktop-bin
-pkgver=1.3.6
-pkgrel=1
-pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts. - Static binaries"
 arch=(x86_64)
-url="https://github.com/kotatogram/kotatogram-desktop"
 license=(GPL3)
+options=("!strip")
+pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts. - Static binaries"
+pkgname=kotatogram-desktop-bin
+pkgrel=4
+pkgver=1.3.6
+url="https://github.com/kotatogram/kotatogram-desktop"
 
 depends=(
-    fontconfig
-    hicolor-icon-theme
-    libdbus
-    libglvnd
-    libsm
-    desktop-file-utils
+    fuse
 )
-makedepends=(
-    chrpath
-)
+
 optdepends=(
     'xdg-desktop-portal: for native file dialogs, do not forget to install one of backends'
     'xdg-utils: for automatic opening of URLs, files and directories in proper applications'
@@ -72,9 +66,6 @@ package() {
 
 	# Program
 	install -Dm755 "$srcdir/Kotatogram/Kotatogram" "$pkgdir/usr/bin/kotatogram-desktop"
-
-	# Remove RPATH informations
-	chrpath --delete "$pkgdir/usr/bin/kotatogram-desktop"
 
 	# Desktop launcher
 	install -Dm644 "$srcdir/icon256-$pkgver-$pkgrel.png" "$pkgdir/usr/share/pixmaps/kotatogram.png"
