@@ -4,7 +4,7 @@ pkgname=openssl
 _ver=1.1.1g
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('x86_64')
 url='https://www.openssl.org'
@@ -46,6 +46,8 @@ check() {
 	patch -p0 -R -i "$srcdir/ca-dir.patch"
 	make test
 	patch -p0 -i "$srcdir/ca-dir.patch"
+	# re-run make to re-generate CA.pl from th patched .in file.
+	make apps/CA.pl
 }
 
 package() {
