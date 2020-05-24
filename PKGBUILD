@@ -6,7 +6,7 @@
 #Maintainer:  sparzz
 pkgname=mesa-radv-drivers-git
 packager=sparzz
-pkgver=20.2.0.2020.05.24
+pkgver=20.2.0.2020.05.24.1
 pkgrel=1
 epoch=
 pkgdesc="provide mesa RADV drivers for AMD card with ACO compiler enable. Update with yay -Sua"
@@ -359,10 +359,6 @@ package() {
 
 	# making .bashrc file to enable aco compiler
 
-	cd /usr/
-	cd local/
-	cd etc/
-	sudo touch .bashrc_aco_enable
-	sudo echo "{export RADV_PERFEST=aco}" > .bashrc_aco_enable
+	sudo cp .bashrc_aco_enable /usr/local/share
 }
 
