@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-tf2
+pkgbase = ros-noetic-tf2
 	pkgdesc = ROS - tf2 is the second generation of the transform library, which lets the user keep track of multiple coordinate frames over time.
 	pkgver = 0.6.5
 	pkgrel = 2
@@ -7,19 +7,19 @@ pkgbase = ros-melodic-tf2
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-rostime
-	makedepends = ros-melodic-tf2-msgs
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-noetic-rostime
+	makedepends = ros-noetic-tf2-msgs
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-geometry-msgs
 	makedepends = console-bridge
-	depends = ros-melodic-rostime
-	depends = ros-melodic-tf2-msgs
-	depends = ros-melodic-geometry-msgs
+	depends = ros-noetic-rostime
+	depends = ros-noetic-tf2-msgs
+	depends = ros-noetic-geometry-msgs
 	depends = console-bridge
-	source = ros-melodic-tf2-0.6.5.tar.gz::https://github.com/ros/geometry2/archive/0.6.5.tar.gz
+	source = ros-noetic-tf2-0.6.5.tar.gz::https://github.com/ros/geometry2/archive/0.6.5.tar.gz
 	source = CMakeLists-signal.patch
 	sha256sums = 9a1268621518fc22afd7b12ef1cf30e6901a57b054535924d1d74fd5d267773a
 	sha256sums = 878047021778a148cac5a2a6f04e8ee45df593f294022db053d42bc7e5692dbd
 
-pkgname = ros-melodic-tf2
+pkgname = ros-noetic-tf2
 
