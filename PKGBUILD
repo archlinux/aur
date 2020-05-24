@@ -2,7 +2,7 @@
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=tilde
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="An intuitive text editor for the terminal."
 arch=('x86_64' 'i686')
@@ -20,7 +20,7 @@ install=''
 changelog=
 source=("http://os.ghalkes.nl/dist/$pkgname-$pkgver.tar.bz2")
 noextract=()
-md5sums=('59cc8418c3f0e69d1cf3e4de2d3c313f')
+md5sums=('c3b39031602f22549a8d504b40cb20db')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
