@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rosserial-msgs
+pkgbase = ros-noetic-rosserial-msgs
 	pkgdesc = ROS - Messages for automatic topic configuration using rosserial.
 	pkgver = 0.8.0
 	pkgrel = 1
@@ -7,11 +7,11 @@ pkgbase = ros-melodic-rosserial-msgs
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-message-generation
-	depends = ros-melodic-message-runtime
-	source = ros-melodic-rosserial-msgs-0.8.0.tar.gz::https://github.com/ros-drivers/rosserial/archive/0.8.0.tar.gz
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-message-generation
+	depends = ros-noetic-message-runtime
+	source = ros-noetic-rosserial-msgs-0.8.0.tar.gz::https://github.com/ros-drivers/rosserial/archive/0.8.0.tar.gz
 	sha256sums = e96cdeb81e1c03fb1c5ad85a740cb0a1a0836c52a24c6a5d97c975084b49d576
 
-pkgname = ros-melodic-rosserial-msgs
+pkgname = ros-noetic-rosserial-msgs
 
