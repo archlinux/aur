@@ -1,7 +1,7 @@
 pkgbase = vfio-isolate
 	pkgdesc = commandline tool to facilitate CPU core isolation
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/vfio-isolate
 	arch = any
 	license = unknown
