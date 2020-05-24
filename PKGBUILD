@@ -17,6 +17,7 @@ sha512sums=('4004d86ad00cec9c23f7f1af1a82708cd17fa7e5aa2eddd5300c7a900aeee8e22e5
 makedepends=('zsh')
 provides=('zsh-theme-powerlevel10k')
 conflicts=('zsh-theme-powerlevel10k')
+install='zsh-theme-powerlevel10k.install'
 
 build() {
   cd "$srcdir/powerlevel10k-${pkgver}"

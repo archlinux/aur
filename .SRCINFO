@@ -3,6 +3,7 @@ pkgbase = zsh-theme-powerlevel10k-bin
 	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://github.com/romkatv/powerlevel10k
+	install = zsh-theme-powerlevel10k.install
 	arch = any
 	license = MIT
 	makedepends = zsh
