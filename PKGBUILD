@@ -6,7 +6,7 @@ _stable_version=4548
 _stable_tag=stable/jitsi-meet_${_stable_version}
 _stable_suffix=stable-jitsi-meet_${_stable_version}
 pkgver=2.0.${_stable_version}
-pkgrel=8
+pkgrel=9
 pkgdesc="Jitsi Meet Stable"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -14,7 +14,7 @@ license=('Apache')
 depends=("java-runtime" "bash")
 provides=("jitsi-meet" "jitsi-videobridge" "jicofo" "jitsi-meet-prosody-plugins")
 conflicts=("jitsi-meet" "jitsi-videobridge" "jicofo" "jitsi-meet-prosody-plugins")
-optdepends=("nginx" "prosody" "coturn")
+optdepends=("nginx" "prosody" "coturn" "lua52" "lua52-sec" "lua52-zlib" "lua52-event")
 makedepends=(
         "binutils" "tar"
         "git" "python2"
@@ -50,6 +50,7 @@ source=(
         "videobridge.service"
         "sysusers.conf"
         "tmpfiles.conf"
+	"INSTALL.md"
 )
 
 _jitsi_videobridge_package=jitsi-videobridge-2.1-SNAPSHOT
@@ -104,6 +105,7 @@ package() {
         cp -Rv "${srcdir}/jitsi-meet-${_stable_suffix}/resources/prosody-plugins" "${pkgdir}/usr/share/jitsi-meet-prosody-plugins"
 
         install -d "${pkgdir}/usr/share/doc/jitsi/meet"
+        install -m644 INSTALL.md "${pkgdir}/usr/share/doc/jitsi/meet/INSTALL.md"
         cp -Rv "${srcdir}/jitsi-meet-${_stable_suffix}/doc/debian/jitsi-meet" "${pkgdir}/usr/share/doc/jitsi/meet/web"
         cp -Rv "${srcdir}/jitsi-meet-${_stable_suffix}/doc/debian/jitsi-meet-prosody" "${pkgdir}/usr/share/doc/jitsi/meet/prosody"
         cp -Rv "${srcdir}/jitsi-meet-${_stable_suffix}/doc/debian/jitsi-meet-turn" "${pkgdir}/usr/share/doc/jitsi/meet/turn"
@@ -151,4 +153,5 @@ sha256sums=('62e5273726fc9b4d07f30548db06d6b87269ca17cd3c7c9d2b6ee9e06eedfccf'
             '9fe70e519caa85471799e90749d390dfba561eb0be13ea1307a5efd777e63382'
             '993a48122151312b064c9b74999d454e2a719335c74fb936eb658336169b98a1'
             'fd7ca06f1cf85a6f7578b006b99c18235b5a7e8319b7e08d40e82ad614d20835'
-            '77dd2ca3dab9816aaef54f072a411205ad544a5f8695710d27f84b9898c8ba5c')
+            '77dd2ca3dab9816aaef54f072a411205ad544a5f8695710d27f84b9898c8ba5c'
+            'd1a7ba7eb140f604eae0421e80df3093944aa5bdbf21781e1a116535411b2472')

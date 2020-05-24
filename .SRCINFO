@@ -1,7 +1,7 @@
 pkgbase = jitsi-meet-stable
 	pkgdesc = Jitsi Meet Stable
 	pkgver = 2.0.4548
-	pkgrel = 8
+	pkgrel = 9
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
 	license = Apache
@@ -19,6 +19,10 @@ pkgbase = jitsi-meet-stable
 	optdepends = nginx
 	optdepends = prosody
 	optdepends = coturn
+	optdepends = lua52
+	optdepends = lua52-sec
+	optdepends = lua52-zlib
+	optdepends = lua52-event
 	provides = jitsi-meet
 	provides = jitsi-videobridge
 	provides = jicofo
@@ -52,6 +56,7 @@ pkgbase = jitsi-meet-stable
 	source = videobridge.service
 	source = sysusers.conf
 	source = tmpfiles.conf
+	source = INSTALL.md
 	sha256sums = 62e5273726fc9b4d07f30548db06d6b87269ca17cd3c7c9d2b6ee9e06eedfccf
 	sha256sums = cebbd2ad2c4c3b9826123ab8d49c4a11d34f4e91482e3f06af695e17d1133595
 	sha256sums = 6503869e1b7d4180316a0af29c66fae3e4ed1061d7bd6def053902bcc47194d0
@@ -65,6 +70,7 @@ pkgbase = jitsi-meet-stable
 	sha256sums = 993a48122151312b064c9b74999d454e2a719335c74fb936eb658336169b98a1
 	sha256sums = fd7ca06f1cf85a6f7578b006b99c18235b5a7e8319b7e08d40e82ad614d20835
 	sha256sums = 77dd2ca3dab9816aaef54f072a411205ad544a5f8695710d27f84b9898c8ba5c
+	sha256sums = d1a7ba7eb140f604eae0421e80df3093944aa5bdbf21781e1a116535411b2472
 
 pkgname = jitsi-meet-stable
 
