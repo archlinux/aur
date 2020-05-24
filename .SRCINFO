@@ -1,0 +1,14 @@
+pkgbase = python-pymultihash
+	pkgdesc = Python implementation of the multihash specification
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pymultihash
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-setuptools
+	source = https://pypi.io/packages/source/p/pymultihash/pymultihash-0.8.2.tar.gz
+	sha256sums = 49c75a1ae9ecc6d22d259064d4597b3685da3f0258f4ded632e03a3a79af215b
+
+pkgname = python-pymultihash
+
