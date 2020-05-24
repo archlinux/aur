@@ -6,7 +6,7 @@ pkgbase = milcheck-bin
 	arch = x86_64
 	license = MPL2
 	depends = gcc-libs
-	source = https://github.com/doums/milcheck/releases/download/v0.1.8/milcheck
+	source = milcheck-bin-0.1.8::https://github.com/doums/milcheck/releases/download/v0.1.8/milcheck
 	md5sums = d2e59fd9b1634805ea883f7b1f6ad479
 
 pkgname = milcheck-bin
