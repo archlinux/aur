@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-smach-ros
+pkgbase = ros-noetic-smach-ros
 	pkgdesc = ROS - The smach_ros package contains extensions for the SMACH library to integrate it tightly with ROS.
 	pkgver = 2.0.1
 	pkgrel = 2
@@ -7,18 +7,18 @@ pkgbase = ros-melodic-smach-ros
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-rostest
-	depends = ros-melodic-std-srvs
-	depends = ros-melodic-smach-msgs
-	depends = ros-melodic-std-msgs
-	depends = ros-melodic-rostopic
-	depends = ros-melodic-actionlib
-	depends = ros-melodic-actionlib-msgs
-	depends = ros-melodic-smach
-	depends = ros-melodic-rospy
-	source = ros-melodic-smach-ros-2.0.1.tar.gz::https://github.com/ros/executive_smach/archive/2.0.1.tar.gz
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-rostest
+	depends = ros-noetic-std-srvs
+	depends = ros-noetic-smach-msgs
+	depends = ros-noetic-std-msgs
+	depends = ros-noetic-rostopic
+	depends = ros-noetic-actionlib
+	depends = ros-noetic-actionlib-msgs
+	depends = ros-noetic-smach
+	depends = ros-noetic-rospy
+	source = ros-noetic-smach-ros-2.0.1.tar.gz::https://github.com/ros/executive_smach/archive/2.0.1.tar.gz
 	sha256sums = 2f7f58064c960fc56de15fdedfd883f62122bd44874787f13c8b4d8a77c45380
 
-pkgname = ros-melodic-smach-ros
+pkgname = ros-noetic-smach-ros
 
