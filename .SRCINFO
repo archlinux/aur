@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-ecl-exceptions
+pkgbase = ros-noetic-ecl-exceptions
 	pkgdesc = ROS - Template based exceptions - these are simple and practical and avoid the proliferation of exception types.
 	pkgver = 0.62.2
 	pkgrel = 1
@@ -7,15 +7,15 @@ pkgbase = ros-melodic-ecl-exceptions
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-ecl-license
-	makedepends = ros-melodic-ecl-errors
-	makedepends = ros-melodic-ecl-config
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-ecl-license
-	depends = ros-melodic-ecl-errors
-	depends = ros-melodic-ecl-config
-	source = ros-melodic-ecl-exceptions-0.62.2.tar.gz::https://github.com/stonier/ecl_core/archive/0.62.2.tar.gz
+	makedepends = ros-noetic-ecl-license
+	makedepends = ros-noetic-ecl-errors
+	makedepends = ros-noetic-ecl-config
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-ecl-license
+	depends = ros-noetic-ecl-errors
+	depends = ros-noetic-ecl-config
+	source = ros-noetic-ecl-exceptions-0.62.2.tar.gz::https://github.com/stonier/ecl_core/archive/0.62.2.tar.gz
 	sha256sums = 69d503109878e3a2c4f5be611fc9609078714899cae15fbf7f58119fdbd61e37
 
-pkgname = ros-melodic-ecl-exceptions
+pkgname = ros-noetic-ecl-exceptions
 
