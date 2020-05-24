@@ -1,8 +1,8 @@
 # Maintainer: Martin Schrodt <martin@schrodt.org>
 
 pkgname=vfio-isolate
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="commandline tool to facilitate CPU core isolation"
 arch=('i686' 'x86_64')
 url="https://pypi.org/project/vfio-isolate"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('unknown')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('9897c424ac9034e8a03b1ad980853750')
+md5sums=('b7779bf963ed7b18d85bb308194a0c28')
 
 build() {
     cd "$pkgname-$pkgver"
