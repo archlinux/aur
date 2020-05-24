@@ -115,7 +115,7 @@ fi
 
 prepare() {
 	[ "$_minecraft_ver_minor" = 10 ] && mkdir mods
-	[ "$_minecraft_ver_minor" = 5 ] && unzip fml_libs15.zip -d lib
+	[ "$_minecraft_ver_minor" = 5 ] && unzip -o fml_libs15.zip -d lib
 	java -jar "forge-${_pkgver}-installer.jar" --installServer
 }
 
@@ -131,7 +131,7 @@ package() {
 
 	# Install Forge
 	_forge_jar="forge-${_pkgver}.jar"
-	[ "$_minecraft_ver_minor" -le 12 ] && _forge_jar="forge-${_pkgver}-universal.jar"
+	[ "$_minecraft_ver_minor" -le 11 ] && _forge_jar="forge-${_pkgver}-universal.jar"
 	[ "$_minecraft_ver_minor" = 7 ] && _forge_jar="forge-${_pkgver}-${_minecraft_ver}-universal.jar"
 	[ "$_minecraft_ver_minor" -le 6 ] && _forge_jar="minecraftforge-universal-${_pkgver}.jar"
 
