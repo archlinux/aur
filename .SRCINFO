@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-pr2-common
+pkgbase = ros-noetic-pr2-common
 	pkgdesc = ROS - Metapackage for various PR2-related ROS packages
 	pkgver = 1.12.4
 	pkgrel = 1
@@ -7,13 +7,13 @@ pkgbase = ros-melodic-pr2-common
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-pr2-msgs
-	depends = ros-melodic-pr2-dashboard-aggregator
-	depends = ros-melodic-pr2-description
-	depends = ros-melodic-pr2-machine
-	source = ros-melodic-pr2-common-1.12.4.tar.gz::https://github.com/pr2/pr2_common/archive/1.12.4.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-pr2-msgs
+	depends = ros-noetic-pr2-dashboard-aggregator
+	depends = ros-noetic-pr2-description
+	depends = ros-noetic-pr2-machine
+	source = ros-noetic-pr2-common-1.12.4.tar.gz::https://github.com/pr2/pr2_common/archive/1.12.4.tar.gz
 	sha256sums = 135c6947f7511bcb3644fa6c0cf5972c309516895737e83f8eeed2b2d069f009
 
-pkgname = ros-melodic-pr2-common
+pkgname = ros-noetic-pr2-common
 
