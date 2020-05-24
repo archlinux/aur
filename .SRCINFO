@@ -26,9 +26,9 @@ pkgbase = liberica-jdk-8-full-bin
 	provides = liberica-jre-8-bin=8u252+9
 	provides = liberica-jre-8-full-bin=8u252+9
 	source_i686 = https://download.bell-sw.com/java/8u252+9/bellsoft-jdk8u252+9-linux-i586-full.tar.gz
-	sha1sums_i686 = eb255630476b7dff132f346539b0b95795ffc2a0
+	sha1sums_i686 = c5f470b99b77ae54b4c1948105a3bb2cb001c145
 	source_x86_64 = https://download.bell-sw.com/java/8u252+9/bellsoft-jdk8u252+9-linux-amd64-full.tar.gz
-	sha1sums_x86_64 = 5bd2bea87e6c7f054f13a531deca1b0622f1cdf7
+	sha1sums_x86_64 = b77f2b6b6f261842b0c1085153dea8199681a3fb
 
 pkgname = liberica-jdk-8-full-bin
 

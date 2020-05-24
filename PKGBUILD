@@ -32,8 +32,8 @@ source_i686=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-linux
 source_x86_64=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-linux-amd64-full.tar.gz)
 
 # Upstream-provided
-sha1sums_i686=('eb255630476b7dff132f346539b0b95795ffc2a0')
-sha1sums_x86_64=('5bd2bea87e6c7f054f13a531deca1b0622f1cdf7')
+sha1sums_i686=('c5f470b99b77ae54b4c1948105a3bb2cb001c145')
+sha1sums_x86_64=('b77f2b6b6f261842b0c1085153dea8199681a3fb')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
