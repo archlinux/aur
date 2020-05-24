@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/romkatv/gitstatus"
 license=('GPL3')
 provides=("gitstatus")
+conflicts=("gitstatus")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/romkatv/gitstatus/archive/v${pkgver}.tar.gz")
 sha512sums=('d046090b6d2e8c56b58e907cbb9dad86609cfaefdea526813978c1c7846178c61cd91fa60b8ca036c4c5b6f55caaa17974c1a23f5055e2b4064ed072a3ba4f7d')
 makedepends=('zsh')
