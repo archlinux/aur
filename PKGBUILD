@@ -2,7 +2,7 @@ pkgdesc="ROS - Low-level build system macros and infrastructure for ROS."
 url='https://www.wiki.ros.org/catkin'
 
 pkgname='ros-noetic-catkin'
-pkgver='0.8.4'
+pkgver='0.8.5'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -13,7 +13,7 @@ ros_makedepends=(
 makedepends=(
 	'cmake'
 	${ros_makedepends[@]}
-	python-catkin_pkg
+	python-catkin-pkg
 	python-empy
 	python
 )
@@ -25,16 +25,16 @@ depends=(
 	${ros_depends[@]}
 	python-nose
 	gtest
-	python-catkin_pkg
+	python-catkin-pkg
 	python-empy
 	gmock
 	python
-	ros-build-tools-py3
+	ros-build-tools
 )
 
 _dir="catkin-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/catkin/archive/${pkgver}.tar.gz")
-sha256sums=('bcb1c06c71c38506aaab891de65a290452cddb872be3928e460e11fd9385c556')
+sha256sums=('2ee64b99d43241673b96451e9b0849e8ce3599494dbaebb70a2f77e06dee3156')
 
 build() {
 	# Use ROS environment variables.
