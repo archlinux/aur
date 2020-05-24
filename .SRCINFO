@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rosbaglive
+pkgbase = ros-noetic-rosbaglive
 	pkgdesc = ROS - Plays rosbags as though they were happening NOW.
 	pkgver = 0.2.4
 	pkgrel = 3
@@ -7,13 +7,13 @@ pkgbase = ros-melodic-rosbaglive
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-rosbag
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-rospy
-	depends = ros-melodic-rosbag
-	depends = ros-melodic-rospy
-	source = ros-melodic-rosbaglive-0.2.4.tar.gz::https://github.com/DLu/wu_ros_tools/archive/0.2.4.tar.gz
+	makedepends = ros-noetic-rosbag
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-rospy
+	depends = ros-noetic-rosbag
+	depends = ros-noetic-rospy
+	source = ros-noetic-rosbaglive-0.2.4.tar.gz::https://github.com/DLu/wu_ros_tools/archive/0.2.4.tar.gz
 	sha256sums = fd0bb39a69302dae5ccfd565277209719a4199644fc8265a2ae7ccedd92c004a
 
-pkgname = ros-melodic-rosbaglive
+pkgname = ros-noetic-rosbaglive
 
