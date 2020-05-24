@@ -1,8 +1,8 @@
 # Maintainer: Michael Kuc <michaelkuc6 at gmail dot com>
 _pkgname=nngpp
 pkgname=${_pkgname}-git
-pkgver=1.1.1133351f54
-pkgrel=2
+pkgver=1.3.00cc5d264
+pkgrel=1
 pkgdesc="C++ wrapper around the nanomsg NNG API "
 arch=('x86_64')
 url="https://github.com/cwzx/nngpp"
