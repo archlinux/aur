@@ -356,9 +356,5 @@ package() {
 	if dir libXvMCr600.so.old; then 
 	sudo rm -r libXvMCr600.so.old
 	fi
-
-	# making .bashrc file to enable aco compiler
-
-	sudo cp .bashrc_aco_enable /usr/local/share
 }
 
