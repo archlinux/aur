@@ -1,22 +1,22 @@
 pkgdesc="ROS - The tuw_object_msgs package."
 url='https://wiki.ros.org/tuw_object_msgs'
 
-pkgname='ros-melodic-tuw-object-msgs'
+pkgname='ros-noetic-tuw-object-msgs'
 pkgver='0.0.13'
 arch=('any')
 pkgrel=2
 license=('BSD')
 
-ros_makedepends=(ros-melodic-catkin
-  ros-melodic-message-generation
-  ros-melodic-geometry-msgs
-  ros-melodic-std-msgs)
+ros_makedepends=(ros-noetic-catkin
+  ros-noetic-message-generation
+  ros-noetic-geometry-msgs
+  ros-noetic-std-msgs)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-melodic-message-runtime
-  ros-melodic-geometry-msgs
-  ros-melodic-std-msgs)
+ros_depends=(ros-noetic-message-runtime
+  ros-noetic-geometry-msgs
+  ros-noetic-std-msgs)
 depends=(${ros_depends[@]})
 
 _dir="tuw_msgs-${pkgver}/tuw_object_msgs"
@@ -26,21 +26,17 @@ sha256sums=('b22f12be8014a8855cd179d228ae5312102da4b3d176979f66f13e258cc418b6')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
