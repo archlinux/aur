@@ -3,7 +3,7 @@
 pkgdesc="ROS -  Contains a node that rotates an image stream in a way that minimizes the angle between a vector in some arbitrary frame and a vector in the camera frame."
 url='https://wiki.ros.org/image_rotate'
 
-pkgname='ros-melodic-image-rotate'
+pkgname='ros-noetic-image-rotate'
 pkgver='1.12.23'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
@@ -11,17 +11,17 @@ pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-tf2-geometry-msgs
-	ros-melodic-nodelet
-	ros-melodic-geometry-msgs
-	ros-melodic-dynamic-reconfigure
-	ros-melodic-cmake-modules
-	ros-melodic-catkin
-	ros-melodic-cv-bridge
-	ros-melodic-tf2-ros
-	ros-melodic-roscpp
-	ros-melodic-tf2
-	ros-melodic-image-transport
+	ros-noetic-tf2-geometry-msgs
+	ros-noetic-nodelet
+	ros-noetic-geometry-msgs
+	ros-noetic-dynamic-reconfigure
+	ros-noetic-cmake-modules
+	ros-noetic-catkin
+	ros-noetic-cv-bridge
+	ros-noetic-tf2-ros
+	ros-noetic-roscpp
+	ros-noetic-tf2
+	ros-noetic-image-transport
 )
 
 makedepends=(
@@ -31,14 +31,14 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-tf2-geometry-msgs
-	ros-melodic-nodelet
-	ros-melodic-dynamic-reconfigure
-	ros-melodic-cv-bridge
-	ros-melodic-tf2-ros
-	ros-melodic-roscpp
-	ros-melodic-tf2
-	ros-melodic-image-transport
+	ros-noetic-tf2-geometry-msgs
+	ros-noetic-nodelet
+	ros-noetic-dynamic-reconfigure
+	ros-noetic-cv-bridge
+	ros-noetic-tf2-ros
+	ros-noetic-roscpp
+	ros-noetic-tf2
+	ros-noetic-image-transport
 )
 
 depends=(
@@ -52,21 +52,17 @@ sha256sums=('0b024f155f79f16982b31951ad0b1bde5440159b0ba6b1128ecbe2e867a2e357')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
