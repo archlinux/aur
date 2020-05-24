@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-ecl-license
+pkgbase = ros-noetic-ecl-license
 	pkgdesc = ROS - Maintains the ecl licenses and also provides an install target for deploying licenses with the ecl libraries.
 	pkgver = 0.61.8
 	pkgrel = 1
@@ -7,9 +7,9 @@ pkgbase = ros-melodic-ecl-license
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	source = ros-melodic-ecl-license-0.61.8.tar.gz::https://github.com/stonier/ecl_tools/archive/0.61.8.tar.gz
+	makedepends = ros-noetic-catkin
+	source = ros-noetic-ecl-license-0.61.8.tar.gz::https://github.com/stonier/ecl_tools/archive/0.61.8.tar.gz
 	sha256sums = 3c7f16efaae81db62dd482b35c60b25bfaa5fed52112347ecaf97a8d10b445f6
 
-pkgname = ros-melodic-ecl-license
+pkgname = ros-noetic-ecl-license
 
