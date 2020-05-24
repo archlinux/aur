@@ -1,0 +1,15 @@
+pkgbase = python-pytest-cid
+	pkgdesc = A wrapper around py-cid for writing tests involving CIDs in datastructures.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pytest_cid
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-setuptools
+	depends = python-cid
+	source = https://pypi.io/packages/source/p/pytest_cid/pytest_cid-1.0.0.tar.gz
+	sha256sums = 61a1c282220ad1ad419cbfce7c33b3a84781be7a9edae9145da924ab2aaccfe8
+
+pkgname = python-pytest-cid
+
