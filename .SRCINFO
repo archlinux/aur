@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-map-msgs
+pkgbase = ros-noetic-map-msgs
 	pkgdesc = ROS - This package defines messages commonly used in mapping packages.
 	pkgver = 1.13.0
 	pkgrel = 2
@@ -7,17 +7,17 @@ pkgbase = ros-melodic-map-msgs
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-message-generation
-	makedepends = ros-melodic-std-msgs
-	makedepends = ros-melodic-nav-msgs
-	makedepends = ros-melodic-sensor-msgs
-	depends = ros-melodic-message-runtime
-	depends = ros-melodic-sensor-msgs
-	depends = ros-melodic-std-msgs
-	depends = ros-melodic-nav-msgs
-	source = ros-melodic-map-msgs-1.13.0.tar.gz::https://github.com/ros-planning/navigation_msgs/archive/1.13.0.tar.gz
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-message-generation
+	makedepends = ros-noetic-std-msgs
+	makedepends = ros-noetic-nav-msgs
+	makedepends = ros-noetic-sensor-msgs
+	depends = ros-noetic-message-runtime
+	depends = ros-noetic-sensor-msgs
+	depends = ros-noetic-std-msgs
+	depends = ros-noetic-nav-msgs
+	source = ros-noetic-map-msgs-1.13.0.tar.gz::https://github.com/ros-planning/navigation_msgs/archive/1.13.0.tar.gz
 	sha256sums = 09bba8fb7a60135183830dec4381cd3187244794aab9759ac50bbc6007e04a61
 
-pkgname = ros-melodic-map-msgs
+pkgname = ros-noetic-map-msgs
 
