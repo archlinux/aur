@@ -2,12 +2,12 @@
 
 pkgname=vfio-isolate
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="commandline tool to facilitate CPU core isolation"
 arch=('i686' 'x86_64')
 url="https://pypi.org/project/vfio-isolate"
 license=('MIT')
-depends=('python3')
+depends=('python' 'python-click' 'python-psutil' 'python-parsimonious')
 makedepends=('python-setuptools')
 license=('unknown')
 arch=('any')
