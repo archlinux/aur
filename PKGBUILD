@@ -2,7 +2,7 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _cranname=tidyr
-_cranver=1.0.3
+_cranver=1.1.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,11 +10,11 @@ pkgdesc="Tidy Messy Data"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
-depends=('r>=3.1' 'r-dplyr>=0.8.2' 'r-ellipsis>=0.1.0' r-glue r-magrittr r-purrr r-rcpp r-rlang r-stringi 'r-tibble>=2.1.1' 'r-tidyselect>=0.2.5' 'r-vctrs>=0.2.0' r-lifecycle)
+depends=('r>=3.1' 'r-dplyr>=0.8.2' 'r-ellipsis>=0.1.0' r-glue r-magrittr r-purrr r-rcpp r-rlang r-stringi 'r-tibble>=2.1.1' 'r-tidyselect>=1.1.0' 'r-vctrs>=0.3.0' r-lifecycle)
 makedepends=(gcc)
 optdepends=(r-covr r-jsonlite r-knitr r-repurrrsive r-rmarkdown r-readr r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('c43dcf8bfb6b212809bf5f2a1a56bb97')
+md5sums=('e2774761359bff7fb21dce25bca5cdc6')
 
 build() {
   cd "${srcdir}"

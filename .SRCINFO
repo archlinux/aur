@@ -1,6 +1,6 @@
 pkgbase = r-tidyr
 	pkgdesc = Tidy Messy Data
-	pkgver = 1.0.3
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tidyr
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = r-tidyr
 	depends = r-rlang
 	depends = r-stringi
 	depends = r-tibble>=2.1.1
-	depends = r-tidyselect>=0.2.5
-	depends = r-vctrs>=0.2.0
+	depends = r-tidyselect>=1.1.0
+	depends = r-vctrs>=0.3.0
 	depends = r-lifecycle
 	optdepends = r-covr
 	optdepends = r-jsonlite
@@ -27,8 +27,8 @@ pkgbase = r-tidyr
 	optdepends = r-rmarkdown
 	optdepends = r-readr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/tidyr_1.0.3.tar.gz
-	md5sums = c43dcf8bfb6b212809bf5f2a1a56bb97
+	source = https://cran.r-project.org/src/contrib/tidyr_1.1.0.tar.gz
+	md5sums = e2774761359bff7fb21dce25bca5cdc6
 
 pkgname = r-tidyr
 
