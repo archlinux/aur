@@ -1,24 +1,16 @@
-# Maintainer: Martchus <martchus@gmx.net>
-
-# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
-# you also find the URL of a binary repository.
-
 _reponame=dvb-firmware
-pkgname=openelec-dvb-firmware-git
-pkgver=113.6d2ec90
+pkgname=libreelec-dvb-firmware-git
+pkgver=147.82f1b52
 pkgrel=1
-pkgdesc="DVB firmware from OpenELEC project (git)"
+pkgdesc="DVB firmware from LibreELEC project (git)"
 arch=('any')
-url="https://github.com/OpenELEC/${_reponame}"
+url="https://github.com/LibreELEC/${_reponame}"
 license=('GPL3')
-conflicts=('openelec-dvb-firmware')
-provides=('openelec-dvb-firmware')
+conflicts=('libreelec-dvb-firmware')
+provides=('libreelec-dvb-firmware')
 makedepends=('git' 'linux-firmware')
-source=("git+https://github.com/OpenELEC/${_reponame}.git")
+source=("git+https://github.com/LibreELEC/${_reponame}.git")
 md5sums=('SKIP')
-
-# linux-firmware is required to make this package to avoid conflicts
-# with files already provided by linux-firmware
 
 pkgver() {
   cd "${srcdir}/${_reponame}"
