@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-ecl-mpl
+pkgbase = ros-noetic-ecl-mpl
 	pkgdesc = ROS - Metaprogramming tools move alot of runtime calculations to be shifted to compile time.
 	pkgver = 0.62.2
 	pkgrel = 1
@@ -7,11 +7,11 @@ pkgbase = ros-melodic-ecl-mpl
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-ecl-license
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-ecl-license
-	source = ros-melodic-ecl-mpl-0.62.2.tar.gz::https://github.com/stonier/ecl_core/archive/0.62.2.tar.gz
+	makedepends = ros-noetic-ecl-license
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-ecl-license
+	source = ros-noetic-ecl-mpl-0.62.2.tar.gz::https://github.com/stonier/ecl_core/archive/0.62.2.tar.gz
 	sha256sums = 69d503109878e3a2c4f5be611fc9609078714899cae15fbf7f58119fdbd61e37
 
-pkgname = ros-melodic-ecl-mpl
+pkgname = ros-noetic-ecl-mpl
 
