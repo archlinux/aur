@@ -2,8 +2,8 @@
 
 pkgbase=postgresql-src-beta
 pkgname=('postgresql-src-beta-libs' 'postgresql-src-beta-docs' 'postgresql-src-beta')
-pkgver=11rc1
-_majorver=11.0
+pkgver=13beta1
+_majorver=13.0
 pkgrel=8
 CFLAGS=`echo $CFLAGS | sed s/-Ofast/-O3/`
 CFLAGS="${CFLAGS} -flto"
@@ -20,17 +20,17 @@ source=(http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar
         postgresql.pam postgresql.logrotate
         postgresql.service 
         postgresql-check-db-dir)
-sha256sums=('608c35369b79a40239663c4213267fd08d3184c3a2cd4d6ff71103ca61930609'
-            '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
+sha256sums=('249ba0d0227d5393b83d397f2543354bfee579276cb1e821e9b7d904a42039e1'
+            '70954ea0a5f68fa39131afa55837c0c29a0b38948030208d909e78f0ed1cc826'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
             'b48fe97f8e43ed0d2041d519119a4dafb70fcae72870951bf4fb7350fe169ac8'
-            '7912aa25937cba9e971c071625e5117638509fe2cf4232e071d18fc53b585500')
+            '981bc15147eaec368fe92386bd208bda2af171d38299a9b89d311330e5dc0d7b')
 
 build() {
   cd "${srcdir}/postgresql-${pkgver}"
 
-  patch -Np1 < ../postgresql-run-socket.patch
+  patch -p0 < ../postgresql-run-socket.patch
 
   ./configure \
     --prefix=/usr \
