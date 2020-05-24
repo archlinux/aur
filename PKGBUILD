@@ -2,7 +2,7 @@
 
 pkgname=python-cmsis-pack-manager
 _pkgname=cmsis-pack-manager
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc='A Python module for handling CMSIS Pack files'
 arch=(any)
@@ -17,15 +17,8 @@ depends=('python'
         )
 
 source=(https://github.com/ARMmbed/${_pkgname}/archive/v${pkgver}.tar.gz
-        0001-cargo-Deps-to-support-rust-v1.41.1.patch
        )
-sha256sums=('34aad5aa198d1c5844f747e484420925789d62eaf0164064193c3a821a1c562a'
-            'bbf4cae10043f66642f4b56db91407ae238873d36be6db46bc573b0e91381407')
-
-prepare() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
-  patch --forward --strip=1 --input="${srcdir}/0001-cargo-Deps-to-support-rust-v1.41.1.patch"
-}
+sha256sums=('3819e97e7d982797c06532cfa87351b4b7db89d7ba76fb5d97f2bc6d373167d7')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
