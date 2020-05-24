@@ -1,30 +1,50 @@
+# Maintainer: David Verelst <david dott verelst hat gmail com>
+# Contributor: xiretza <xiretza+aur@gmail.com>
+
 pkgname=python2-jedi-git
 _gitname=jedi
-pkgver=3964.7b50bb0
+pkgver=v0.17.0.r148.2d672d2f
 pkgrel=1
-pkgdesc="Jedi is an autocompletion tool for Python that can be used in IDEs/editors"
+pkgdesc="An awesome autocompletion, static analysis and refactoring library for Python"
 arch=(any)
 url="https://github.com/davidhalter/jedi"
 license=('MIT')
 depends=('python2')
-makedepends=('git' 'python2-distribute')
-provides=()
-conflicts=()
-replaces=()
-backup=()
+makedepends=('git' 'python2-setuptools')
+provides=('python2-jedi')
+conflicts=('python2-jedi')
 options=(!emptydirs)
-source=('git://github.com/davidhalter/jedi.git')
-# Because the sources are not static, skip Git checksum:
-md5sums=('SKIP')
+source=(git+https://github.com/davidhalter/jedi.git
+        git+https://github.com/davidhalter/typeshed
+        git+https://github.com/typeddjango/django-stubs)
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP')
 
 pkgver() {
-  cd $_gitname
-  # Use the tag of the last commit
-  #git describe --always | sed 's|-|.|g'
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "$srcdir/$_gitname"
+
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+  cd "$srcdir/$_gitname"
+
+  git submodule init
+  git config submodule."jedi/third_party/typeshed".url "${srcdir}/typeshed"
+  git config submodule."jedi/third_party/django-stubs".url "${srcdir}/django-stubs"
+  git submodule update --recursive
+}
+
+build() {
+  cd "$srcdir/$_gitname"
+
+  python2 setup.py build
 }
 
 package() {
-   cd $_gitname
-   python2 setup.py install --root="${pkgdir}" --optimize=1 || exit 1
+  cd "$srcdir/$_gitname"
+
+  python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
