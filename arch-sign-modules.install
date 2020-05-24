@@ -18,7 +18,7 @@ post_install() {
 	local kernel_sign=${dkms_dir}/kernel-sign.conf
 
 	for x in $module_list; do
-		if modinfo $x &>dev/null; then
+		if modinfo $x &>/dev/null; then
 			dkms_link="$dkms_dir/$x.conf"
 			if [ ! -f $dkms_link ]; then
 				echo "Creating DKMS symlink: $kernel_sign => $dkms_link"
