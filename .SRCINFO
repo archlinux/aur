@@ -1,6 +1,6 @@
 pkgbase = gitstatus-git
-	pkgdesc = 10x faster implementation of `git status` command
-	pkgver = r1282.0e70dbc
+	pkgdesc = Git status for Bash and Zsh prompt
+	pkgver = r1284.e164594
 	pkgrel = 1
 	url = https://github.com/romkatv/gitstatus
 	install = gitstatus.install
@@ -16,7 +16,8 @@ pkgbase = gitstatus-git
 	makedepends = wget
 	depends = glibc
 	provides = gitstatus
-	source = gitstatus::git+https://github.com/romkatv/gitstatus
+	conflicts = gitstatus
+	source = gitstatus::git+https://github.com/romkatv/gitstatus.git
 	md5sums = SKIP
 
 pkgname = gitstatus-git

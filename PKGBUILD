@@ -2,9 +2,9 @@
 # Contributor: Aloxaf <aloxafx@gmail.com>
 
 pkgname=gitstatus-git
-pkgver=r1282.0e70dbc
+pkgver=r1284.e164594
 pkgrel=1
-pkgdesc='10x faster implementation of `git status` command'
+pkgdesc='Git status for Bash and Zsh prompt'
 arch=('x86_64')
 url="https://github.com/romkatv/gitstatus"
 license=('GPL3')
@@ -12,7 +12,8 @@ depends=('glibc')
 makedepends=('git' 'cmake' 'file' 'make' 'gawk' 'gcc' 'zsh' 'wget')
 install=gitstatus.install
 provides=("gitstatus")
-source=('gitstatus::git+https://github.com/romkatv/gitstatus')
+conflicts=("gitstatus")
+source=('gitstatus::git+https://github.com/romkatv/gitstatus.git')
 md5sums=('SKIP')
 
 pkgver() {
