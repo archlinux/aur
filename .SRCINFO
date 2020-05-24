@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-webkit-dependency
+pkgbase = ros-noetic-webkit-dependency
 	pkgdesc = ROS - This encapsulates the WebKit dependency for a specific ROS distribution and its Qt version.
 	pkgver = 1.1.0
 	pkgrel = 2
@@ -7,10 +7,10 @@ pkgbase = ros-melodic-webkit-dependency
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
+	makedepends = ros-noetic-catkin
 	depends = python-pyqt5
-	source = ros-melodic-webkit-dependency-1.1.0.tar.gz::https://github.com/ros-visualization/webkit_dependency/archive/1.1.0.tar.gz
+	source = ros-noetic-webkit-dependency-1.1.0.tar.gz::https://github.com/ros-visualization/webkit_dependency/archive/1.1.0.tar.gz
 	sha256sums = 44cafb6c6ddeafdb82d40103d35ffe4b724ef21eca9a77a3ca3ab739f7aa23c6
 
-pkgname = ros-melodic-webkit-dependency
+pkgname = ros-noetic-webkit-dependency
 
