@@ -1,0 +1,14 @@
+pkgbase = saait-git
+	pkgdesc = The most boring static page generator
+	pkgver = 0.7.1.r0.gfd64204
+	pkgrel = 1
+	epoch = 1
+	url = https://codemadness.org/saait.html
+	arch = x86_64
+	license = ISC
+	provides = saait
+	source = saait::git://git.codemadness.org/saait
+	sha256sums = SKIP
+
+pkgname = saait-git
+
