@@ -4,7 +4,7 @@
 # vim: set expandtab ts=2 sw=2:
 
 pkgname=ipget
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="wget for IPFS: retrieve files over IPFS and save them locally."
 arch=('x86_64')
@@ -38,4 +38,4 @@ package() {
   install -D "${srcdir}/${pkgname}-${pkgver}/ipget" "${pkgdir}/usr/bin/ipget"
 }
 
-sha256sums=('a2a5ec2f78cfc1ce739821c6493bffe0f4adac4d283a3cb55391a4c74a5ca41a')
+sha256sums=('ffa3a532f7aad74cb442376590e60bdcceba0cfc115ad72d11400a96f768b11f')
