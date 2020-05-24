@@ -2,8 +2,8 @@
 
 pkgname=clightd
 _gitname=Clightd
-pkgver=4.0
-pkgrel=2
+pkgver=4.1
+pkgrel=1
 pkgdesc="Bus interface to change screen brightness and capture frames from webcam."
 arch=('i686' 'x86_64')
 url="https://github.com/FedeDP/${_gitname}"
@@ -14,7 +14,7 @@ optdepends=('clight: user service to automagically change screen backlight match
 provides=('clightd')
 conflicts=('clightd-git')
 source=("${_gitname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=("b3b2c83d4deb3ebc75ee965d6640009794eec61160a20772932643a9864fb7ba")
+sha256sums=("1f884489faf9bf53d4a92db3f381a8fb06eb37515f026213a316a3285593686d")
 
 prepare() {
     cd "${srcdir}/${_gitname}-${pkgver}"
