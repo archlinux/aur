@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-position-controllers
+pkgbase = ros-noetic-position-controllers
 	pkgdesc = ROS - position_controllers.
 	pkgver = 0.15.0
 	pkgrel = 1
@@ -7,13 +7,13 @@ pkgbase = ros-melodic-position-controllers
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-controller-interface
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-forward-command-controller
-	depends = ros-melodic-controller-interface
-	depends = ros-melodic-forward-command-controller
-	source = ros-melodic-position-controllers-0.15.0.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.15.0.tar.gz
+	makedepends = ros-noetic-controller-interface
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-forward-command-controller
+	depends = ros-noetic-controller-interface
+	depends = ros-noetic-forward-command-controller
+	source = ros-noetic-position-controllers-0.15.0.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.15.0.tar.gz
 	sha256sums = 8c19481a28f394d5bf4372fb05a6c638fa2995614f9b0f82b8213ca32d15a4cf
 
-pkgname = ros-melodic-position-controllers
+pkgname = ros-noetic-position-controllers
 
