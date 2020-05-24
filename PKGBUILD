@@ -1,30 +1,30 @@
 pkgdesc="ROS - This package provides a recovery behavior for the navigation stack that attempts to clear space by performing a 360 degree rotation of the robot."
 url='https://wiki.ros.org/rotate_recovery'
 
-pkgname='ros-melodic-rotate-recovery'
+pkgname='ros-noetic-rotate-recovery'
 pkgver='1.16.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=4
 license=('BSD')
 
-ros_makedepends=(ros-melodic-nav-core
-  ros-melodic-roscpp
-  ros-melodic-base-local-planner
-  ros-melodic-costmap-2d
-  ros-melodic-catkin
-  ros-melodic-cmake-modules
-  ros-melodic-tf
-  ros-melodic-pluginlib)
+ros_makedepends=(ros-noetic-nav-core
+  ros-noetic-roscpp
+  ros-noetic-base-local-planner
+  ros-noetic-costmap-2d
+  ros-noetic-catkin
+  ros-noetic-cmake-modules
+  ros-noetic-tf
+  ros-noetic-pluginlib)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen3)
 
-ros_depends=(ros-melodic-nav-core
-  ros-melodic-tf
-  ros-melodic-pluginlib
-  ros-melodic-roscpp
-  ros-melodic-costmap-2d
-  ros-melodic-tf2-geometry-msgs)
+ros_depends=(ros-noetic-nav-core
+  ros-noetic-tf
+  ros-noetic-pluginlib
+  ros-noetic-roscpp
+  ros-noetic-costmap-2d
+  ros-noetic-tf2-geometry-msgs)
 depends=(${ros_depends[@]}
   eigen3)
 
@@ -35,21 +35,17 @@ sha256sums=('d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
