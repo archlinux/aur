@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-moveit-kinematics
+pkgbase = ros-noetic-moveit-kinematics
 	pkgdesc = ROS - Package for all inverse kinematics solvers in MoveIt!.
 	pkgver = 1.0.2
 	pkgrel = 1
@@ -7,19 +7,19 @@ pkgbase = ros-melodic-moveit-kinematics
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-moveit-core
-	makedepends = ros-melodic-actionlib
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-pluginlib
-	makedepends = ros-melodic-moveit-ros-planning
-	makedepends = ros-melodic-moveit-resources
+	makedepends = ros-noetic-moveit-core
+	makedepends = ros-noetic-actionlib
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-pluginlib
+	makedepends = ros-noetic-moveit-ros-planning
+	makedepends = ros-noetic-moveit-resources
 	makedepends = eigen
-	depends = ros-melodic-moveit-core
-	depends = ros-melodic-actionlib
-	depends = ros-melodic-pluginlib
-	depends = ros-melodic-moveit-ros-planning
-	source = ros-melodic-moveit-kinematics-1.0.2.tar.gz::https://github.com/ros-planning/moveit/archive/1.0.2.tar.gz
+	depends = ros-noetic-moveit-core
+	depends = ros-noetic-actionlib
+	depends = ros-noetic-pluginlib
+	depends = ros-noetic-moveit-ros-planning
+	source = ros-noetic-moveit-kinematics-1.0.2.tar.gz::https://github.com/ros-planning/moveit/archive/1.0.2.tar.gz
 	sha256sums = b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4
 
-pkgname = ros-melodic-moveit-kinematics
+pkgname = ros-noetic-moveit-kinematics
 
