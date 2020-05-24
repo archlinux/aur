@@ -1,0 +1,18 @@
+--- a/src/html2ps-1.0b7/html2ps 2020-05-14 18:50:29.237441617 +0200
++++ b/src/html2ps-1.0b7/html2ps 2020-05-15 11:05:13.434238273 +0200
+@@ -487,6 +487,7 @@
+ $giftopm="giftopnm" if($package{'netpbm'});
+ $giftopm="giftoppm" if($package{'pbmplus'});
+
++use File::Temp qw/ :POSIX /;
+ for(keys %option){eval "\$opt_$_='$option{$_}' if(!defined \$opt_$_)"};
+ die $usage if $opt_h;
+ die "$version\n" if $opt_v;
+@@ -495,7 +496,7 @@
+  if($opt_D && !$package{'Ghostscript'});
+ die "Ghostscript is required to generate cross references\n"
+  if($opt_R && !$package{'Ghostscript'});
+-$tmpname=$posix?POSIX::tmpnam():"h2p_$$";
++$tmpname=$posix?tmpnam():"h2p_$$";
+ ($scr=$tmpname)=~/\w+$/;
+ $tempdir=$`;
