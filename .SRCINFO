@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rqt-robot-monitor
+pkgbase = ros-noetic-rqt-robot-monitor
 	pkgdesc = ROS - rqt_robot_monitor displays diagnostics_agg topics messages that are published by diagnostic_aggregator.
 	pkgver = 0.5.9
 	pkgrel = 1
@@ -7,19 +7,19 @@ pkgbase = ros-melodic-rqt-robot-monitor
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-gui-py
-	depends = ros-melodic-diagnostic-msgs
-	depends = ros-melodic-qt-gui-py-common
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-qt-gui
-	depends = ros-melodic-rqt-bag
-	depends = ros-melodic-python-qt-binding
-	depends = ros-melodic-rqt-py-common
-	depends = ros-melodic-rospy
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-rqt-gui-py
+	depends = ros-noetic-diagnostic-msgs
+	depends = ros-noetic-qt-gui-py-common
+	depends = ros-noetic-rqt-gui
+	depends = ros-noetic-qt-gui
+	depends = ros-noetic-rqt-bag
+	depends = ros-noetic-python-qt-binding
+	depends = ros-noetic-rqt-py-common
+	depends = ros-noetic-rospy
 	depends = python-rospkg
-	source = ros-melodic-rqt-robot-monitor-0.5.9.tar.gz::https://github.com/ros-visualization/rqt_robot_monitor/archive/0.5.9.tar.gz
+	source = ros-noetic-rqt-robot-monitor-0.5.9.tar.gz::https://github.com/ros-visualization/rqt_robot_monitor/archive/0.5.9.tar.gz
 	sha256sums = 11718ae155fb6c60f964b3d9e9616a3b4d1d6fdf9c9732e736ff864ed44c0961
 
-pkgname = ros-melodic-rqt-robot-monitor
+pkgname = ros-noetic-rqt-robot-monitor
 
