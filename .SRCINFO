@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-pr2-dashboard-aggregator
+pkgbase = ros-noetic-pr2-dashboard-aggregator
 	pkgdesc = ROS - A simple script that aggregates all of the topics that a "pr2_dashboard" app might be interested in.
 	pkgver = 1.12.4
 	pkgrel = 1
@@ -7,12 +7,12 @@ pkgbase = ros-melodic-pr2-dashboard-aggregator
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-std-msgs
-	depends = ros-melodic-pr2-msgs
-	depends = ros-melodic-rospy
-	source = ros-melodic-pr2-dashboard-aggregator-1.12.4.tar.gz::https://github.com/pr2/pr2_common/archive/1.12.4.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-std-msgs
+	depends = ros-noetic-pr2-msgs
+	depends = ros-noetic-rospy
+	source = ros-noetic-pr2-dashboard-aggregator-1.12.4.tar.gz::https://github.com/pr2/pr2_common/archive/1.12.4.tar.gz
 	sha256sums = 135c6947f7511bcb3644fa6c0cf5972c309516895737e83f8eeed2b2d069f009
 
-pkgname = ros-melodic-pr2-dashboard-aggregator
+pkgname = ros-noetic-pr2-dashboard-aggregator
 
