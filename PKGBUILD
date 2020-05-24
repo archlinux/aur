@@ -3,21 +3,20 @@
 pkgdesc="ROS - This package provides a C++ interface for camera calibration information."
 url='https://wiki.ros.org/camera_info_manager'
 
-pkgname='ros-melodic-camera-info-manager'
-pkgver='1.11.13'
-_pkgver_patch=0
+pkgname='ros-noetic-camera-info-manager'
+pkgver='1.12.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-rostest
-	ros-melodic-catkin
-	ros-melodic-camera-calibration-parsers
-	ros-melodic-roscpp
-	ros-melodic-image-transport
-	ros-melodic-sensor-msgs
-	ros-melodic-roslib
+	ros-noetic-rostest
+	ros-noetic-catkin
+	ros-noetic-camera-calibration-parsers
+	ros-noetic-roscpp
+	ros-noetic-image-transport
+	ros-noetic-sensor-msgs
+	ros-noetic-roslib
 )
 
 makedepends=(
@@ -28,11 +27,11 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-camera-calibration-parsers
-	ros-melodic-roscpp
-	ros-melodic-image-transport
-	ros-melodic-sensor-msgs
-	ros-melodic-roslib
+	ros-noetic-camera-calibration-parsers
+	ros-noetic-roscpp
+	ros-noetic-image-transport
+	ros-noetic-sensor-msgs
+	ros-noetic-roslib
 )
 
 depends=(
@@ -42,26 +41,22 @@ depends=(
 
 _dir="image_common-${pkgver}/camera_info_manager"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_common/archive/${pkgver}.tar.gz")
-sha256sums=('32a2e07724dec6eaaace21eae006274436d70d40bfe205249438570275c43cac')
+sha256sums=('ba2e3c0beda22a4bb517ffc2d2a8782c564b8f100286043b9782004d1a87de8e')
 
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
