@@ -4,7 +4,7 @@ pkgname=python-vadersentiment
 pkgdesc="VADER (Valence Aware Dictionary and sEntiment Reasoner)"
 url="https://github.com/cjhutto/vaderSentiment"
 
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=0
 
 arch=("any")
@@ -16,7 +16,7 @@ depends=("python")
 # _name=${pkgname#python-}
 _name="vaderSentiment"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=("3eea814596e061f124522065b7b20a775d0a0100972e55620efcf0a1e97ad444ed99138e49ffa2935f736f7a300031030533d8e9cb1c930400588b0bdaa9e3ca")
+sha512sums=("e64e066186d32e9617ccb7eaf29b80c7921d79a7d675f11ebfb7ec41ebb77a43aa9611b1b01bdc9930d3d888a40c7a2c278dd958b8b3328b2b8bfdb2fa38cd77")
 
 build() {
   cd "${srcdir}"/vaderSentiment-$pkgver
