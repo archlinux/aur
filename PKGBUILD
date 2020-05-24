@@ -20,10 +20,6 @@ prepare() {
   chmod  +x  "$srcdir/sfk"
 }
 
-pkgver() {
- "$srcdir/sfk" ver -own | awk '{print $5}'
-}
-
 package() {
   install -DT "$srcdir/sfk" "$pkgdir/usr/bin/sfk"
   install -dm755            "$pkgdir/usr/share/licenses/sfk"
