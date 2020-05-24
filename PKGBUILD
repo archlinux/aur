@@ -3,7 +3,7 @@
 pkgdesc="ROS - rqt_runtime_monitor provides a GUI plugin viewing DiagnosticsArray messages."
 url='https://wiki.ros.org/rqt_runtime_monitor'
 
-pkgname='ros-melodic-rqt-runtime-monitor'
+pkgname='ros-noetic-rqt-runtime-monitor'
 pkgver='0.5.7'
 _pkgver_patch=0
 arch=('any')
@@ -11,7 +11,7 @@ pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-catkin
+	ros-noetic-catkin
 )
 
 makedepends=(
@@ -21,12 +21,12 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-rqt-gui-py
-	ros-melodic-diagnostic-msgs
-	ros-melodic-qt-gui
-	ros-melodic-python-qt-binding
-	ros-melodic-rqt-gui
-	ros-melodic-rospy
+	ros-noetic-rqt-gui-py
+	ros-noetic-diagnostic-msgs
+	ros-noetic-qt-gui
+	ros-noetic-python-qt-binding
+	ros-noetic-rqt-gui
+	ros-noetic-rospy
 )
 
 depends=(
@@ -41,24 +41,17 @@ sha256sums=('48f32cfce4c395f15d7de22d842f93f97fceee72dffe0576b9b8f0ae67b131a0')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
