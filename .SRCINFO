@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-tf2-tools
+pkgbase = ros-noetic-tf2-tools
 	pkgdesc = ROS - tf2_tools.
 	pkgver = 0.6.5
 	pkgrel = 1
@@ -7,15 +7,15 @@ pkgbase = ros-melodic-tf2-tools
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-tf2-msgs
-	makedepends = ros-melodic-tf2
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-tf2-ros
-	depends = ros-melodic-tf2-msgs
-	depends = ros-melodic-tf2
-	depends = ros-melodic-tf2-ros
-	source = ros-melodic-tf2-tools-0.6.5.tar.gz::https://github.com/ros/geometry2/archive/0.6.5.tar.gz
+	makedepends = ros-noetic-tf2-msgs
+	makedepends = ros-noetic-tf2
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-tf2-ros
+	depends = ros-noetic-tf2-msgs
+	depends = ros-noetic-tf2
+	depends = ros-noetic-tf2-ros
+	source = ros-noetic-tf2-tools-0.6.5.tar.gz::https://github.com/ros/geometry2/archive/0.6.5.tar.gz
 	sha256sums = 9a1268621518fc22afd7b12ef1cf30e6901a57b054535924d1d74fd5d267773a
 
-pkgname = ros-melodic-tf2-tools
+pkgname = ros-noetic-tf2-tools
 
