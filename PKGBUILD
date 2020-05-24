@@ -3,15 +3,14 @@
 pkgdesc="ROS - A metapackage to aggregate several packages."
 url='https://github.com/ros/metapackages'
 
-pkgname='ros-melodic-desktop'
-pkgver='1.4.1'
-_pkgver_patch=0
+pkgname='ros-noetic-desktop'
+pkgver='1.5.0'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-catkin
+	ros-noetic-catkin
 )
 
 makedepends=(
@@ -21,15 +20,15 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-angles
-	ros-melodic-common-tutorials
-	ros-melodic-urdf-tutorial
-	ros-melodic-geometry-tutorials
-	ros-melodic-visualization-tutorials
-	ros-melodic-viz
-	ros-melodic-roslint
-	ros-melodic-robot
-	ros-melodic-ros-tutorials
+	ros-noetic-angles
+	ros-noetic-common-tutorials
+	ros-noetic-urdf-tutorial
+	ros-noetic-geometry-tutorials
+	ros-noetic-visualization-tutorials
+	ros-noetic-viz
+	ros-noetic-roslint
+	ros-noetic-robot
+	ros-noetic-ros-tutorials
 )
 
 depends=(
@@ -38,29 +37,22 @@ depends=(
 
 _dir="metapackages-${pkgver}/desktop"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/metapackages/archive/${pkgver}.tar.gz")
-sha256sums=('ef1df96c61c9762555174cc1a0e21e05149f74909d27044be0cd10aa065747a1')
+sha256sums=('5e055b7528d088cf62035d88c78cfd5aefcac2a96d0ce2ac62242f6d6f76d3b0')
 
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
