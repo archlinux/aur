@@ -12,6 +12,7 @@ pkgbase = groffdown
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
+	source = git+https://gitlab.com/knarkzel/groffdown
 	md5sums = SKIP
 
 pkgname = groffdown

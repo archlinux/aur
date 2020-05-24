@@ -5,10 +5,11 @@ pkgrel=1
 pkgdesc="wrapper for creating documents with markdown using groff as backend, because groff is fast and convenient"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://gitlab.com/knarkzel/groffdown"
+source=("git+$url")
 license=('MIT')
 makedepends=('rust' 'cargo' 'git')
 depends=('gcc-libs')
-md5sums=(SKIP)
+md5sums=('SKIP')
 
 build() {
   if command -v rustup > /dev/null 2>&1; then
