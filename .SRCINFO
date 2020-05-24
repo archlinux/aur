@@ -6,7 +6,7 @@ pkgbase = polybar-mullvad-git
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = mullvad-vpn
+	depends = mullvad-vpn-cli
 	source = polybar-mullvad::git+https://github.com/simon1573/polybar-mullvad.git
 	sha256sums = SKIP
 
