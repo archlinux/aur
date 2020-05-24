@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rqt-web
+pkgbase = ros-noetic-rqt-web
 	pkgdesc = ROS - rqt_web is a simple web content viewer for rqt.
 	pkgver = 0.4.8
 	pkgrel = 2
@@ -7,16 +7,16 @@ pkgbase = ros-melodic-rqt-web
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-gui-py
-	depends = ros-melodic-qt-gui
-	depends = ros-melodic-webkit-dependency
-	depends = ros-melodic-python-qt-binding
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-rospy
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-rqt-gui-py
+	depends = ros-noetic-qt-gui
+	depends = ros-noetic-webkit-dependency
+	depends = ros-noetic-python-qt-binding
+	depends = ros-noetic-rqt-gui
+	depends = ros-noetic-rospy
 	depends = python-rospkg
-	source = ros-melodic-rqt-web-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_web/archive/0.4.8.tar.gz
+	source = ros-noetic-rqt-web-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_web/archive/0.4.8.tar.gz
 	sha256sums = fe355496bd9eae53b62ba8866d0694c73de69bca7484d2c548f48789148691c2
 
-pkgname = ros-melodic-rqt-web
+pkgname = ros-noetic-rqt-web
 
