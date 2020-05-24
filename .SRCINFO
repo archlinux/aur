@@ -1,8 +1,8 @@
 pkgbase = pygrid
 	pkgdesc = Quickly place and move windows around the X11 desktop using a grid
 	pkgver = 75da433
-	pkgrel = 1
-	url = https://github.com/mjs7231/pygrid
+	pkgrel = 2
+	url = https://github.com/pkkid/pygrid
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -10,7 +10,7 @@ pkgbase = pygrid
 	depends = python
 	depends = python-gobject
 	depends = python-xlib
-	source = pygrid::git+https://github.com/mjs7231/pygrid.git#commit=75da433fba80e99518ebc351f3cc27cc3c6dfeb0
+	source = pygrid::git+https://github.com/pkkid/pygrid.git#commit=75da433fba80e99518ebc351f3cc27cc3c6dfeb0
 	source = pygrid.desktop
 	sha256sums = SKIP
 	sha256sums = d39d8dae7f8326a41309132101175a36bd042e42f2cfde15cf8c12a69b5ef945

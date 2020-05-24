@@ -2,14 +2,14 @@
 pkgname=pygrid
 pkgver=75da433
 _pkgrevision=75da433fba80e99518ebc351f3cc27cc3c6dfeb0
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly place and move windows around the X11 desktop using a grid"
 arch=('i686' 'x86_64')
-url="https://github.com/mjs7231/pygrid"
+url="https://github.com/pkkid/pygrid"
 license=('GPL2')
 depends=(python python-gobject python-xlib) 
 makedepends=('git')
-source=("${pkgname}::git+https://github.com/mjs7231/${pkgname}.git#commit=${_pkgrevision}"
+source=("${pkgname}::git+https://github.com/pkkid/${pkgname}.git#commit=${_pkgrevision}"
         "pygrid.desktop")
 sha256sums=('SKIP'
             'd39d8dae7f8326a41309132101175a36bd042e42f2cfde15cf8c12a69b5ef945')
