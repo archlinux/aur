@@ -2,7 +2,7 @@
 pkgname=arch-sign-modules
 _pkgname=Arch-SKM
 pkgver=0.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Helper scripts for Signed Kernel Modules"
 arch=(x86_64)
 url="https://github.com/itoffshore/Arch-SKM"
