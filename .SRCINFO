@@ -1,0 +1,18 @@
+pkgbase = mtmigrate
+	pkgdesc = mtmigrate (music torrent migrate) is a tool to help you with migrating your old data to a new torrent swarm.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ThomasColliers/mtmigrate
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	groups = gazelle-tools
+	license = MIT
+	makedepends = rust
+	source = git+https://github.com/ThomasColliers/mtmigrate
+	md5sums = SKIP
+
+pkgname = mtmigrate
+
