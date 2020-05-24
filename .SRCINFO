@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-teleop-twist-keyboard
+pkgbase = ros-noetic-teleop-twist-keyboard
 	pkgdesc = ROS - Generic keyboard teleop for twist robots.
 	pkgver = 0.6.2
 	pkgrel = 2
@@ -7,11 +7,11 @@ pkgbase = ros-melodic-teleop-twist-keyboard
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-geometry-msgs
-	depends = ros-melodic-rospy
-	source = ros-melodic-teleop-twist-keyboard-0.6.2.tar.gz::https://github.com/ros-teleop/teleop_twist_keyboard/archive/0.6.2.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-geometry-msgs
+	depends = ros-noetic-rospy
+	source = ros-noetic-teleop-twist-keyboard-0.6.2.tar.gz::https://github.com/ros-teleop/teleop_twist_keyboard/archive/0.6.2.tar.gz
 	sha256sums = 7c0c2c0ef2f47e52922beeac94c093b54677318397b4415ac78933aca5079b0c
 
-pkgname = ros-melodic-teleop-twist-keyboard
+pkgname = ros-noetic-teleop-twist-keyboard
 
