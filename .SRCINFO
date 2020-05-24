@@ -1,0 +1,13 @@
+pkgbase = noto-fonts-emoji-fontconfig
+	pkgdesc = Noto Sans Emoji as system color emoji font
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://www.reddit.com/r/archlinux/comments/9q8dlj/how_to_better_enable_color_emojis/
+	install = noto-fonts-emoji-fontconfig.install
+	arch = any
+	depends = noto-fonts-emoji
+	source = 75-noto-color-emoji.conf
+	md5sums = 87dbf2f0e455eaaec53c4b000130f75a
+
+pkgname = noto-fonts-emoji-fontconfig
+

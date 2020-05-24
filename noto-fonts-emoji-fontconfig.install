@@ -1,0 +1,15 @@
+_update_fc_cache() {
+  fc-cache > /dev/null
+}
+
+post_install() {
+  _update_fc_cache
+}
+
+post_upgrade() {
+  _update_fc_cache
+}
+
+post_remove() {
+  _update_fc_cache
+}
