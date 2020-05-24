@@ -1,10 +1,6 @@
 post_install() {
-  echo ">>> To activate gitstatus in Bash, add the following line to .bashrc:"
-  echo ">>>   source /usr/share/gitstatus/gitstatus.prompt.sh"
-  echo ">>> To activate gitstatus in Zsh, add the following line to .zshrc:"
-  echo ">>>   source /usr/share/gitstatus/gitstatus.prompt.zsh"
-} 
-
-post_upgrade() {
-  post_install
+  printf '  \033[34m->\033[0m To activate \033[1mgitstatus\033[0m in \033[32mbash\033[0m, add the following line to \033[4m.bashrc\033[0m:\n'
+  printf '  \033[34m->\033[0m   \033[32msource\033[0m \033[4m/usr/share/gitstatus/gitstatus.prompt.sh\033[0m\n'
+  printf '  \033[34m->\033[0m To activate \033[1mgitstatus\033[0m in \033[32mzsh\033[0m, add the following line to \033[4m.zshrc\033[0m:\n'
+  printf '  \033[34m->\033[0m   \033[32msource\033[0m \033[4m/usr/share/gitstatus/gitstatus.prompt.zsh\033[0m\n'
 }
