@@ -2,8 +2,8 @@
 
 pkgname=globalprotect-openconnect
 _gitname=GlobalProtect-openconnect
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A GlobalProtect VPN client (GUI) for Linux based on Openconnect and built with Qt5, supports SAML auth mode."
 arch=(x86_64)
 url="https://github.com/yuezk/${_gitname}"
@@ -13,12 +13,14 @@ makedepends=()
 source=(
 	"${_gitname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 	"https://github.com/itay-grudev/SingleApplication/archive/v3.0.19.tar.gz"
+	"https://github.com/SergiusTheBest/plog/archive/1.1.5.tar.gz"
 )
 
-sha256sums=('SKIP' 'SKIP');
+sha256sums=('93e3e1fc5cd8d329870c7a4229adca371c49ef074a4ee5fcd6d4bf2985173e04' '9405fd259288b2a862e91e5135bccee936f0438e1b32c13603277132309d15e0' '6c80b4701183d2415bec927e1f5ca9b1761b3b5c65d3e09fb29c743e016d5609');
 
 prepare() {
 	mv "$srcdir/SingleApplication-3.0.19" -T "$srcdir/${_gitname}-${pkgver}/singleapplication"
+	mv "$srcdir/plog-1.1.5" -T "$srcdir/${_gitname}-${pkgver}/plog"
 }
 
 build() {
