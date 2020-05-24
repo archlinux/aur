@@ -2,7 +2,7 @@
 
 pkgname=zrepl
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='One-stop ZFS backup & replication solution'
 arch=('x86_64')
 url='https://zrepl.github.io/'
@@ -16,14 +16,15 @@ sha256sums=('df474e70f5a51d84816ee8a06038ded167a7548e547e2d2822c313f088eeeafd')
 zrepl_version="arch-${pkgver}"
 
 build() {
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+
     GO_LDFLAGS="-X github.com/zrepl/zrepl/version.zreplVersion=${zrepl_version}"
+
     cd "${pkgname}-${pkgver}"
     go build \
-        -trimpath \
-        -buildmode=pie \
-        -mod=vendor \
-        -mod=readonly \
-        -modcacherw \
         -ldflags "${GO_LDFLAGS} -extldflags ${LDFLAGS}" \
         -o "${pkgname}" .
 }
