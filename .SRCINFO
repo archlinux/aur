@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-image-common
+pkgbase = ros-noetic-image-common
 	pkgdesc = ROS - Common code for working with images in ROS.
 	pkgver = 1.11.13
 	pkgrel = 2
@@ -7,13 +7,13 @@ pkgbase = ros-melodic-image-common
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-polled-camera
-	depends = ros-melodic-camera-calibration-parsers
-	depends = ros-melodic-camera-info-manager
-	depends = ros-melodic-image-transport
-	source = ros-melodic-image-common-1.11.13.tar.gz::https://github.com/ros-perception/image_common/archive/1.11.13.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-polled-camera
+	depends = ros-noetic-camera-calibration-parsers
+	depends = ros-noetic-camera-info-manager
+	depends = ros-noetic-image-transport
+	source = ros-noetic-image-common-1.11.13.tar.gz::https://github.com/ros-perception/image_common/archive/1.11.13.tar.gz
 	sha256sums = 32a2e07724dec6eaaace21eae006274436d70d40bfe205249438570275c43cac
 
-pkgname = ros-melodic-image-common
+pkgname = ros-noetic-image-common
 
