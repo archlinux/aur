@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal-wlr-git
 	pkgdesc = xdg-desktop-portal backend for wlroots
-	pkgver = v0.1.0.r0.gb82d3fc
+	pkgver = v0.1.0.r1.ga105e0e
 	pkgrel = 1
 	url = https://github.com/emersion/xdg-desktop-portal-wlr
 	arch = x86_64
@@ -16,6 +16,8 @@ pkgbase = xdg-desktop-portal-wlr-git
 	provides = xdg-desktop-portal-wlr
 	provides = xdg-desktop-portal-impl
 	conflicts = xdg-desktop-portal-wlr
+	options = debug
+	options = !strip
 	source = xdg-desktop-portal-wlr-git::git+https://github.com/emersion/xdg-desktop-portal-wlr.git
 	sha512sums = SKIP
 
