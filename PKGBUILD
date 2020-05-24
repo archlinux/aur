@@ -6,7 +6,7 @@
 #Maintainer:  sparzz
 pkgname=mesa-radv-drivers-git
 packager=sparzz
-pkgver=20.2.0
+pkgver=20.2.0.2020.05.23
 pkgrel=1
 epoch=
 pkgdesc="mesa-radv-drivers-git"
