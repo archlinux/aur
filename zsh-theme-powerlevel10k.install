@@ -1,8 +1,4 @@
 post_install() {
-  echo ">>> To activate Powerlevel10k, add the following line to .zshrc:"
-  echo ">>>   source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme"
+  printf '  \033[34m->\033[0m To activate \033[1mPowerlevel10k\033[0m, add the following line to \033[4m.zshrc\033[0m:\n'
+  printf '  \033[34m->\033[0m   \033[32msource\033[0m \033[4m/usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme\033[0m\n'
 } 
-
-post_upgrade() {
-  post_install
-}
