@@ -1,8 +1,8 @@
 pkgbase = upplay
-	pkgdesc = A Qt5 based UPnP audio Control point
-	pkgver = 1.4.2
+	pkgdesc = Qt5 based UPnP audio Control point
+	pkgver = 1.4.4
 	pkgrel = 1
-	url = http://www.lesbonscomptes.com/upplay/
+	url = https://www.lesbonscomptes.com/upplay/
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -11,12 +11,12 @@ pkgbase = upplay
 	arch = aarch64
 	license = GPL2
 	makedepends = qt5-script
-	makedepends = jsoncpp
 	makedepends = qt5-tools
 	depends = libupnpp
 	depends = qt5-webkit
-	source = https://www.lesbonscomptes.com/upplay/downloads/upplay-1.4.2.tar.gz
-	sha256sums = 790adcc4dd427b3dccba0ed8b043baed57f151a5d4242d8ea087aa07f40b3c76
+	depends = jsoncpp
+	source = https://www.lesbonscomptes.com/upplay/downloads/upplay-1.4.4.tar.gz
+	sha256sums = 871f7ae08eba952cb643a04c2a2c2af0cf468eb3896cdb8ba3e5dffc7f2b5adf
 
 pkgname = upplay
 
