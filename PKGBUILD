@@ -1,13 +1,12 @@
 # Maintainer: Nemo <archlinux at captnemo dot in>
 pkgname=screen-desktop-bin
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Low latency videoconferencing & screen sharing with multiplayer drawing & control. Screen is a multiplayer screen sharing app that lets you work together like you’re in the same room."
 arch=('x86_64')
 url="https://screen.so"
 depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'dbus' 'desktop-file-utils' 'expat' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme'  'libcups' 'libnotify' 'libutil-linux' 'libx11' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'nspr' 'nss' 'pango'  'xpra')
 optdepends=('apparmor'
-            'gir1.2-gnomekeyring-1.0'
             'libgnome-keyring'
             'pulseaudio'
             'kde-cli-tools'
@@ -17,7 +16,7 @@ optdepends=('apparmor'
 license=('custom')
 options=('!strip' '!emptydirs')
 source=("https://download.screen.so/desktop-app/linux/${pkgver}/screen-desktop_${pkgver}_amd64.deb")
-sha512sums=('df46c36e335d6099a6127de713cfbe87533184480ee8c63747df281849171ef59afe913a33f101bcb283c09b599ca676849be9928028118bc979c070b60fba7d')
+sha512sums=('54a9205f6af8c3f00c309f23a69225d3052d2ca9040542a4ee4d08b0f3735a320d4751d237068336cf65be34e897a1e0ed6d92e759a696318a6aacd5a94c8712')
 
 package(){
     mkdir -p "${pkgdir}/opt/${pkgname}"
