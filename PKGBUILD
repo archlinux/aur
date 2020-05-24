@@ -2,17 +2,17 @@
 pkgdesc="ROS - map_server provides the map_server ROS Node, which offers map data as a ROS Service."
 url='https://wiki.ros.org/map_server'
 
-pkgname='ros-melodic-map-server'
+pkgname='ros-noetic-map-server'
 pkgver='1.16.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=3
 license=('BSD')
 
-ros_makedepends=(ros-melodic-rostest
-  ros-melodic-tf
-  ros-melodic-nav-msgs
-  ros-melodic-roscpp
-  ros-melodic-catkin)
+ros_makedepends=(ros-noetic-rostest
+  ros-noetic-tf
+  ros-noetic-nav-msgs
+  ros-noetic-roscpp
+  ros-noetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   sdl_image
@@ -20,10 +20,10 @@ makedepends=('cmake' 'ros-build-tools'
   bullet
 )
 
-ros_depends=(ros-melodic-rostest
-  ros-melodic-tf
-  ros-melodic-nav-msgs
-  ros-melodic-roscpp)
+ros_depends=(ros-noetic-rostest
+  ros-noetic-tf
+  ros-noetic-nav-msgs
+  ros-noetic-roscpp)
 depends=(${ros_depends[@]}
   sdl_image
   yaml-cpp)
@@ -36,21 +36,17 @@ sha256sums=('d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
