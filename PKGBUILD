@@ -1,13 +1,13 @@
 # Maintainer: Sosthène Guédon <sosthene.gued@gmail.com>
 pkgname=peertube-viewer-rs
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Peertube command line viewer inspired by youtube-viewer"
 arch=('any')
 url="https://gitlab.com/SostheneGuedon/peertube-viewer-rs" 
 license=('MIT')
 depends=('openssl')
-md5sums=('2979ba192e20f2ca637ae4a71bdf02bf')
+md5sums=('7caa34802cc7290fba337909a86bb860')
 makedepends=(
   'rust'
 )
