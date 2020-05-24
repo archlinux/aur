@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-pluginlib-tutorials
+pkgbase = ros-noetic-pluginlib-tutorials
 	pkgdesc = ROS - The pluginlib_tutorials package.
 	pkgver = 0.1.11
 	pkgrel = 3
@@ -11,13 +11,13 @@ pkgbase = ros-melodic-pluginlib-tutorials
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-pluginlib
-	makedepends = ros-melodic-roscpp
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-pluginlib
-	depends = ros-melodic-roscpp
-	source = ros-melodic-pluginlib-tutorials-0.1.11.tar.gz::https://github.com/ros/common_tutorials/archive/0.1.11.tar.gz
+	makedepends = ros-noetic-pluginlib
+	makedepends = ros-noetic-roscpp
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-pluginlib
+	depends = ros-noetic-roscpp
+	source = ros-noetic-pluginlib-tutorials-0.1.11.tar.gz::https://github.com/ros/common_tutorials/archive/0.1.11.tar.gz
 	sha256sums = e6015c289219df58253809254baa53dbf2f3190b61d77fac2b2fb8b8c12f3ec1
 
-pkgname = ros-melodic-pluginlib-tutorials
+pkgname = ros-noetic-pluginlib-tutorials
 
