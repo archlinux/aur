@@ -1,0 +1,14 @@
+pkgbase = python-multicodec
+	pkgdesc = A self-describing multiformat, wraps other formats with self-description.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/py-multicodec
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-setuptools
+	source = https://pypi.io/packages/source/p/py-multicodec/py-multicodec-0.2.1.tar.gz
+	sha256sums = 83021ffe8c0e272d19b5b86bc5b39efa67c8e9f4735ce6cafdbc1ace767ec647
+
+pkgname = python-multicodec
+
