@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-urdf-tutorial
+pkgbase = ros-noetic-urdf-tutorial
 	pkgdesc = ROS - This package contains a number of URDF tutorials.
 	pkgver = 0.4.0
 	pkgrel = 2
@@ -7,14 +7,14 @@ pkgbase = ros-melodic-urdf-tutorial
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-roslaunch
-	depends = ros-melodic-xacro
-	depends = ros-melodic-joint-state-publisher
-	depends = ros-melodic-rviz
-	depends = ros-melodic-robot-state-publisher
-	source = ros-melodic-urdf-tutorial-0.4.0.tar.gz::https://github.com/ros/urdf_tutorial/archive/0.4.0.tar.gz
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-roslaunch
+	depends = ros-noetic-xacro
+	depends = ros-noetic-joint-state-publisher
+	depends = ros-noetic-rviz
+	depends = ros-noetic-robot-state-publisher
+	source = ros-noetic-urdf-tutorial-0.4.0.tar.gz::https://github.com/ros/urdf_tutorial/archive/0.4.0.tar.gz
 	sha256sums = d918909e6ec039423b434efe44b7a9fa08ea21b43f64c314b985b9c134d9921d
 
-pkgname = ros-melodic-urdf-tutorial
+pkgname = ros-noetic-urdf-tutorial
 
