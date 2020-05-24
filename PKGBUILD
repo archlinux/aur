@@ -1,14 +1,14 @@
 pkgdesc="ROS - image_pipeline fills the gap between getting raw images from a camera driver and higher-level vision processing."
 url='https://wiki.ros.org/image_pipeline'
 
-pkgname='ros-melodic-image-pipeline'
+pkgname='ros-noetic-image-pipeline'
 pkgver='1.14.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-catkin
+	ros-noetic-catkin
 )
 
 makedepends=(
@@ -18,13 +18,13 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-image-rotate
-	ros-melodic-stereo-image-proc
-	ros-melodic-depth-image-proc
-	ros-melodic-image-view
-	ros-melodic-image-proc
-	ros-melodic-image-publisher
-	ros-melodic-camera-calibration
+	ros-noetic-image-rotate
+	ros-noetic-stereo-image-proc
+	ros-noetic-depth-image-proc
+	ros-noetic-image-view
+	ros-noetic-image-proc
+	ros-noetic-image-publisher
+	ros-noetic-camera-calibration
 )
 
 depends=(
@@ -38,21 +38,17 @@ sha256sums=('dcf1336d43c0c03165b76c9419fb7b5a275d0b091e1890b28daf37a02c1326b3')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
