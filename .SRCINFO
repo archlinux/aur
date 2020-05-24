@@ -1,0 +1,31 @@
+pkgbase = ros-noetic-gmapping
+	pkgdesc = ROS - This package contains a ROS wrapper for OpenSlam's Gmapping.
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://wiki.ros.org/gmapping
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	license = Apache 2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-nav-msgs
+	makedepends = ros-noetic-openslam-gmapping
+	makedepends = ros-noetic-roscpp
+	makedepends = ros-noetic-rostest
+	makedepends = ros-noetic-tf
+	makedepends = ros-noetic-nodelet
+	depends = ros-noetic-nav-msgs
+	depends = ros-noetic-openslam-gmapping
+	depends = ros-noetic-roscpp
+	depends = ros-noetic-tf
+	depends = ros-noetic-nodelet
+	source = ros-noetic-gmapping-1.4.1.tar.gz::https://github.com/ros-perception/slam_gmapping/archive/1.4.1.tar.gz
+	sha256sums = 28429cf962b5ec2c49556aee73b7f87859c0421bc8c8056e3667e3a2b20591e2
+
+pkgname = ros-noetic-gmapping
+
