@@ -29,12 +29,12 @@ source=("git+https://github.com/Takios/download-with-kget"
 )
 noextract=()
 sha256sums=("SKIP"
-	    "af886b2595d917054933f8936f2c83f236ee4c56e4994eb5778cc9c51ccc7c05"
+			"af886b2595d917054933f8936f2c83f236ee4c56e4994eb5778cc9c51ccc7c05"
 )
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "${_pkgname}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
