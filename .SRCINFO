@@ -1,7 +1,7 @@
 pkgbase = vercel
 	pkgdesc = The command line interface for Vercel
 	pkgver = 19.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zeit/now
 	arch = any
 	license = MIT

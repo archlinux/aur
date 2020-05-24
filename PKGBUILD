@@ -1,6 +1,6 @@
 pkgname=vercel
 pkgver=19.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The command line interface for Vercel"
 arch=(any)
 url="https://github.com/zeit/now"
@@ -14,10 +14,6 @@ sha256sums=('db57352f617064452a5c71b9c4272ec32d566a9ff5fd8ed8b610e9c754dca7b8')
 # For more info about this package see:
 # https://wiki.archlinux.org/index.php/Node.js_package_guidelines
 package() {
-  # If we don't unlink the binary the script below will fail to run
-  # https://github.com/zeit/now/blob/60c76b32902a73efaff75368e266ae9efac71eb0/packages/now-cli/scripts/preinstall.js
-  sudo unlink /usr/bin/vercel || true
-
   npm install -g --user root --cache "${srcdir}/npm-cache" --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
 
   # Fix permissions
