@@ -9,7 +9,7 @@ url="https://github.com/itoffshore/Arch-SKM"
 license=('GPL')
 install="$pkgname.install"
 source=($pkgname-$pkgver.tar.gz::https://github.com/itoffshore/$_pkgname/archive/$pkgver.tar.gz)
-md5sums=('1c021866e93f0401322f3a1ffccb493f')
+md5sums=('94c3cd5d65c8456ce2d63e4284c6aac4')
 
 build() {
   return 0
