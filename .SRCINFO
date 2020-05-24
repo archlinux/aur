@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-openni2-launch
+pkgbase = ros-noetic-openni2-launch
 	pkgdesc = ROS - Launch files to start the openni2_camera drivers using rgbd_launch.
 	pkgver = 0.4.2
 	pkgrel = 1
@@ -7,15 +7,15 @@ pkgbase = ros-melodic-openni2-launch
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rgbd-launch
-	depends = ros-melodic-openni2-camera
-	depends = ros-melodic-tf
-	depends = ros-melodic-nodelet
-	depends = ros-melodic-depth-image-proc
-	depends = ros-melodic-image-proc
-	source = ros-melodic-openni2-launch-0.4.2.tar.gz::https://github.com/ros-drivers/openni2_camera/archive/0.4.2.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-rgbd-launch
+	depends = ros-noetic-openni2-camera
+	depends = ros-noetic-tf
+	depends = ros-noetic-nodelet
+	depends = ros-noetic-depth-image-proc
+	depends = ros-noetic-image-proc
+	source = ros-noetic-openni2-launch-0.4.2.tar.gz::https://github.com/ros-drivers/openni2_camera/archive/0.4.2.tar.gz
 	sha256sums = 98df75bef6d8865eab33ebeaec6b3bd098ca249b18c0e0459221483d51b0d2ca
 
-pkgname = ros-melodic-openni2-launch
+pkgname = ros-noetic-openni2-launch
 
