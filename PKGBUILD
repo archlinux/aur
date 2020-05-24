@@ -3,19 +3,16 @@
 pkgbase='sublime-music'
 pkgname=('sublime-music')
 _module='sublime-music'
-pkgver='0.9.1'
-pkgrel=3
+pkgver='0.9.2'
+pkgrel=1
 pkgdesc='A native Subsonic/Airsonic/*sonic client for Linux. Build using Python and GTK+.'
 url='https://gitlab.com/sumner/sublime-music'
 depends=(
     'python'
     'python-bottle'
-    'python-dateutil'
     'python-deepdiff'
-    'python-deprecated'
     'python-fuzzywuzzy'
     'python-gobject'
-    'python-keyring'
     'python-levenshtein'
     'python-mpv'
     'python-pychromecast'
@@ -23,6 +20,9 @@ depends=(
     'python-yaml'
     'libnm-glib'
     'libnotify'
+)
+optdepends=(
+    'python-keyring: support for storing passwords in the system keyring'
 )
 makedepends=(
     'python-setuptools'
@@ -32,11 +32,11 @@ makedepends=(
 license=('GPL3')
 arch=('any')
 source=(
-    'https://files.pythonhosted.org/packages/source/s/sublime-music/sublime-music-0.9.1.tar.gz'
-    'logo.zip'
+    'https://files.pythonhosted.org/packages/source/s/sublime-music/sublime-music-0.9.2.tar.gz'
+    'https://gitlab.com/sumner/sublime-music/-/archive/v0.9.2/sublime-music-v0.9.2.tar.gz'
 )
-md5sums=('547c4c6d13101a6478588640de5d2dcd'
-         'bb699422aa5809f785c23dda52035321')
+md5sums=('119080e814e1cc0ed0ba521f65bf50fd'
+         '9a82279c510cc74eeb61d91ef03d6143')
 
 
 build() {
@@ -51,22 +51,26 @@ package() {
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
     popd
 
+    pushd "${_module}-v${pkgver}"
+
     desktop-file-install --dir=${pkgdir}/usr/share/applications sublime-music.desktop
 
-    pushd docs/logo/build
-    install -Dm644 16x16.png ${pkgdir}/usr/share/icons/hicolor/16x16/apps/sublime-music.png
-    install -Dm644 22x22.png ${pkgdir}/usr/share/icons/hicolor/22x22/apps/sublime-music.png
-    install -Dm644 32x32.png ${pkgdir}/usr/share/icons/hicolor/32x32/apps/sublime-music.png
-    install -Dm644 36x36.png ${pkgdir}/usr/share/icons/hicolor/36x36/apps/sublime-music.png
-    install -Dm644 48x48.png ${pkgdir}/usr/share/icons/hicolor/48x48/apps/sublime-music.png
-    install -Dm644 64x64.png ${pkgdir}/usr/share/icons/hicolor/64x64/apps/sublime-music.png
-    install -Dm644 72x72.png ${pkgdir}/usr/share/icons/hicolor/72x72/apps/sublime-music.png
-    install -Dm644 96x96.png ${pkgdir}/usr/share/icons/hicolor/96x96/apps/sublime-music.png
-    install -Dm644 128x128.png ${pkgdir}/usr/share/icons/hicolor/128x128/apps/sublime-music.png
-    install -Dm644 192x192.png ${pkgdir}/usr/share/icons/hicolor/192x192/apps/sublime-music.png
-    install -Dm644 512x512.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/sublime-music.png
-    install -Dm644 1024x1024.png ${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/sublime-music.png
+    pushd logo/rendered
+    install -Dm644 16.png ${pkgdir}/usr/share/icons/hicolor/16x16/apps/sublime-music.png
+    install -Dm644 22.png ${pkgdir}/usr/share/icons/hicolor/22x22/apps/sublime-music.png
+    install -Dm644 32.png ${pkgdir}/usr/share/icons/hicolor/32x32/apps/sublime-music.png
+    install -Dm644 36.png ${pkgdir}/usr/share/icons/hicolor/36x36/apps/sublime-music.png
+    install -Dm644 48.png ${pkgdir}/usr/share/icons/hicolor/48x48/apps/sublime-music.png
+    install -Dm644 64.png ${pkgdir}/usr/share/icons/hicolor/64x64/apps/sublime-music.png
+    install -Dm644 72.png ${pkgdir}/usr/share/icons/hicolor/72x72/apps/sublime-music.png
+    install -Dm644 96.png ${pkgdir}/usr/share/icons/hicolor/96x96/apps/sublime-music.png
+    install -Dm644 128.png ${pkgdir}/usr/share/icons/hicolor/128x128/apps/sublime-music.png
+    install -Dm644 192.png ${pkgdir}/usr/share/icons/hicolor/192x192/apps/sublime-music.png
+    install -Dm644 512.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/sublime-music.png
+    install -Dm644 1024.png ${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/sublime-music.png
     popd
 
-    popd
+    popd  # pkg
+
+    popd  # srcdir
 }
