@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-moveit-ros
+pkgbase = ros-noetic-moveit-ros
 	pkgdesc = ROS - Components of MoveIt that use ROS.
 	pkgver = 1.0.2
 	pkgrel = 1
@@ -7,18 +7,18 @@ pkgbase = ros-melodic-moveit-ros
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-moveit-ros-planning
-	depends = ros-melodic-moveit-ros-move-group
-	depends = ros-melodic-moveit-ros-warehouse
-	depends = ros-melodic-moveit-ros-planning-interface
-	depends = ros-melodic-moveit-ros-visualization
-	depends = ros-melodic-moveit-ros-robot-interaction
-	depends = ros-melodic-moveit-ros-benchmarks
-	depends = ros-melodic-moveit-ros-manipulation
-	depends = ros-melodic-moveit-ros-perception
-	source = ros-melodic-moveit-ros-1.0.2.tar.gz::https://github.com/ros-planning/moveit/archive/1.0.2.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-moveit-ros-planning
+	depends = ros-noetic-moveit-ros-move-group
+	depends = ros-noetic-moveit-ros-warehouse
+	depends = ros-noetic-moveit-ros-planning-interface
+	depends = ros-noetic-moveit-ros-visualization
+	depends = ros-noetic-moveit-ros-robot-interaction
+	depends = ros-noetic-moveit-ros-benchmarks
+	depends = ros-noetic-moveit-ros-manipulation
+	depends = ros-noetic-moveit-ros-perception
+	source = ros-noetic-moveit-ros-1.0.2.tar.gz::https://github.com/ros-planning/moveit/archive/1.0.2.tar.gz
 	sha256sums = b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4
 
-pkgname = ros-melodic-moveit-ros
+pkgname = ros-noetic-moveit-ros
 
