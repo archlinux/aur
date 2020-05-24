@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rqt-top
+pkgbase = ros-noetic-rqt-top
 	pkgdesc = ROS - RQT plugin for monitoring ROS processes.
 	pkgver = 0.4.8
 	pkgrel = 2
@@ -7,14 +7,14 @@ pkgbase = ros-melodic-rqt-top
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-python-qt-binding
-	depends = ros-melodic-rqt-gui
-	depends = ros-melodic-rospy
-	depends = ros-melodic-rqt-gui-py
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-python-qt-binding
+	depends = ros-noetic-rqt-gui
+	depends = ros-noetic-rospy
+	depends = ros-noetic-rqt-gui-py
 	depends = python-psutil
-	source = ros-melodic-rqt-top-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_top/archive/0.4.8.tar.gz
+	source = ros-noetic-rqt-top-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_top/archive/0.4.8.tar.gz
 	sha256sums = 6fa62b8fcb9ebc6d45173aa8a03189625856a26b8672f29518209f1d01b770ab
 
-pkgname = ros-melodic-rqt-top
+pkgname = ros-noetic-rqt-top
 
