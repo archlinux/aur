@@ -133,7 +133,7 @@ md5sums=("SKIP")
 validpgpkeys=()
 
 pkgver() {
-    cd mesa-aco
+    cd mesa
     read -r _ver <VERSION
     echo ${_ver/-/_}.$(git log -n1 --format="%cd" --date=format:%Y%m%d HEAD).$(git rev-parse --short HEAD)
 }
