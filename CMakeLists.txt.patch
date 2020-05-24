@@ -1,0 +1,14 @@
+*** CMakeLists.txt	2020-05-24 11:52:04.720213445 +0100
+--- oCJU4.EDIT/CMakeLists.txt	2020-05-24 13:07:35.738432521 +0100
+***************
+*** 19,22 ****
+          RUNTIME DESTINATION bin
+          LIBRARY DESTINATION lib
+          ARCHIVE DESTINATION lib)
+! install(DIRECTORY include DESTINATION include)
+\ No newline at end of file
+--- 19,22 ----
+          RUNTIME DESTINATION bin
+          LIBRARY DESTINATION lib
+          ARCHIVE DESTINATION lib)
+! install(DIRECTORY include/ DESTINATION include)

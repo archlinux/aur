@@ -1,0 +1,16 @@
+pkgbase = t2b-git
+	pkgdesc = A wicked-powerful text macro language for building binary files.
+	pkgver = 1.0.0.r26.g2aa5c32
+	pkgrel = 1
+	epoch = 1
+	url = https://thosakwe.github.io/t2b/index.html
+	arch = x86_64
+	makedepends = cmake
+	provides = t2b
+	source = t2b::git+https://github.com/thosakwe/t2b.git#commit=2aa5c328dfe48dacdd97e4a09ce35783552b2476
+	source = CMakeLists.txt.patch
+	sha256sums = SKIP
+	sha256sums = 4879b124e17eb49dfc1944a41affb4c27676adfebdb7f183a433dcb7318b7795
+
+pkgname = t2b-git
+
