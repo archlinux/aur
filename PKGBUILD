@@ -13,12 +13,14 @@ pkgver=10.1.0
 _mpfrver=4.0.2
 _mpcver=1.1.0
 _gmpver=6.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
 depends=("${_target}-binutils>=2.29-1" 'zlib')
+makedepends=('m68k-elf-newlib')
+optdepends=('m68k-elf-newlib')
 options=('!emptydirs' '!distcc' '!strip')
 conflicts=("${_target}-gcc-bootstrap")
 replaces=("${_target}-gcc-bootstrap")
