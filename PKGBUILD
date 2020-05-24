@@ -1,10 +1,11 @@
-# Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Maintainer: Yoan Blanc <yoan@dosimple.ch>
+# Contributor: Matthew McGinn <mamcgi@gmail.com>
 # Contributor: Samuel Damashek <samuel.damashek@gmail.com>
 # Based on python33 PKGBUILD (g.schulz)
 
 pkgname=python35
 pkgver=3.5.9
-pkgrel=2
+pkgrel=3
 _pybasever=3.5
 pkgdesc="Next generation of the python high-level scripting language"
 _github_url="none"
@@ -15,10 +16,12 @@ depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'libnsl' 'libtirpc' 'zlib')
 makedepends=('tk' 'sqlite' 'valgrind')
 optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
-source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz nis.patch)
+source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz{,.asc}
+        nis.patch)
 sha256sums=('c24a37c63a67f53bdd09c5f287b5cff8e8b98f857bf348c577d454d3f74db049'
+            'SKIP'
             'd5d3412e120f7369518688dfc512d5ba1ae3b054c35c179013ed91a207770e42')
-
+validgpgkeys=('97FC 712E 4C02 4BBE A48A  61ED 3A5C A953 F73C 700D')
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
@@ -46,7 +49,8 @@ build() {
               --with-valgrind \
               --with-system-expat \
               --with-dbmliborder=gdbm:ndbm \
-              --with-system-ffi
+              --with-system-ffi \
+              --without-ensurepip
 
   make
 }
