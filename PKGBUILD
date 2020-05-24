@@ -2,38 +2,38 @@
 pkgdesc="ROS - Messages, services and actions used by MoveIt."
 url='https://moveit.ros.org'
 
-pkgname='ros-melodic-moveit-msgs'
+pkgname='ros-noetic-moveit-msgs'
 pkgver='0.10.0'
 arch=('any')
 pkgrel=2
 license=('BSD')
 
-ros_makedepends=(ros-melodic-actionlib-msgs
-  ros-melodic-trajectory-msgs
-  ros-melodic-message-generation
-  ros-melodic-octomap-msgs
-  ros-melodic-object-recognition-msgs
-  ros-melodic-geometry-msgs
-  ros-melodic-std-msgs
-  ros-melodic-sensor-msgs
-  ros-melodic-catkin
-  ros-melodic-shape-msgs)
+ros_makedepends=(ros-noetic-actionlib-msgs
+  ros-noetic-trajectory-msgs
+  ros-noetic-message-generation
+  ros-noetic-octomap-msgs
+  ros-noetic-object-recognition-msgs
+  ros-noetic-geometry-msgs
+  ros-noetic-std-msgs
+  ros-noetic-sensor-msgs
+  ros-noetic-catkin
+  ros-noetic-shape-msgs)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-melodic-actionlib-msgs
-  ros-melodic-trajectory-msgs
-  ros-melodic-octomap-msgs
-  ros-melodic-object-recognition-msgs
-  ros-melodic-geometry-msgs
-  ros-melodic-message-runtime
-  ros-melodic-std-msgs
-  ros-melodic-sensor-msgs
-  ros-melodic-shape-msgs)
+ros_depends=(ros-noetic-actionlib-msgs
+  ros-noetic-trajectory-msgs
+  ros-noetic-octomap-msgs
+  ros-noetic-object-recognition-msgs
+  ros-noetic-geometry-msgs
+  ros-noetic-message-runtime
+  ros-noetic-std-msgs
+  ros-noetic-sensor-msgs
+  ros-noetic-shape-msgs)
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
-# _tag=release/melodic/moveit_msgs/${pkgver}-${_pkgver_patch}
+# _tag=release/noetic/moveit_msgs/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/moveit_msgs-release.git"#tag=${_tag})
 # sha256sums=('cf24076ec34f836693b7818e7a36097b50581a66f98518666ebe3f7ba5ef2376')
@@ -46,24 +46,17 @@ sha256sums=('68885eafd4e6fbf9fee33e4cfd85b75ecd7465a29fffc52b3b75a3c1931da6f4')
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_BASENAME=-python3.7m \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
