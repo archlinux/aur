@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-pcl-msgs
+pkgbase = ros-noetic-pcl-msgs
 	pkgdesc = ROS - Package containing PCL (Point Cloud Library)-related ROS messages.
 	pkgver = 0.2.0
 	pkgrel = 2
@@ -7,15 +7,15 @@ pkgbase = ros-melodic-pcl-msgs
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-message-generation
-	makedepends = ros-melodic-sensor-msgs
-	makedepends = ros-melodic-std-msgs
-	depends = ros-melodic-message-runtime
-	depends = ros-melodic-sensor-msgs
-	depends = ros-melodic-std-msgs
-	source = ros-melodic-pcl-msgs-0.2.0.tar.gz::https://github.com/ros-perception/pcl_msgs/archive/0.2.0.tar.gz
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-message-generation
+	makedepends = ros-noetic-sensor-msgs
+	makedepends = ros-noetic-std-msgs
+	depends = ros-noetic-message-runtime
+	depends = ros-noetic-sensor-msgs
+	depends = ros-noetic-std-msgs
+	source = ros-noetic-pcl-msgs-0.2.0.tar.gz::https://github.com/ros-perception/pcl_msgs/archive/0.2.0.tar.gz
 	sha256sums = d02be421db01d22f8555f616b3658682ee60a885cc3dc37668fbc28454f562f8
 
-pkgname = ros-melodic-pcl-msgs
+pkgname = ros-noetic-pcl-msgs
 
