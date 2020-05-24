@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rqt-shell
+pkgbase = ros-noetic-rqt-shell
 	pkgdesc = ROS - rqt_shell is a Python GUI plugin providing an interactive shell.
 	pkgver = 0.4.9
 	pkgrel = 2
@@ -7,15 +7,15 @@ pkgbase = ros-melodic-rqt-shell
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rqt-gui-py
-	depends = ros-melodic-qt-gui-py-common
-	depends = ros-melodic-qt-gui
-	depends = ros-melodic-python-qt-binding
-	depends = ros-melodic-rqt-gui
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-rqt-gui-py
+	depends = ros-noetic-qt-gui-py-common
+	depends = ros-noetic-qt-gui
+	depends = ros-noetic-python-qt-binding
+	depends = ros-noetic-rqt-gui
 	depends = python-rospkg
-	source = ros-melodic-rqt-shell-0.4.9.tar.gz::https://github.com/ros-visualization/rqt_shell/archive/0.4.9.tar.gz
+	source = ros-noetic-rqt-shell-0.4.9.tar.gz::https://github.com/ros-visualization/rqt_shell/archive/0.4.9.tar.gz
 	sha256sums = 4655145edc9d0645894a122e1347cf6611a3102d6b1a24c4429df0812e51eac1
 
-pkgname = ros-melodic-rqt-shell
+pkgname = ros-noetic-rqt-shell
 
