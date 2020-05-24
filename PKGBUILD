@@ -3,7 +3,7 @@
 pkgdesc="ROS - forward_command_controller."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
-pkgname='ros-melodic-forward-command-controller'
+pkgname='ros-noetic-forward-command-controller'
 pkgver='0.15.0'
 _pkgver_patch=0
 arch=('any')
@@ -11,11 +11,11 @@ pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-	ros-melodic-realtime-tools
-	ros-melodic-catkin
-	ros-melodic-hardware-interface
-	ros-melodic-controller-interface
-	ros-melodic-std-msgs
+	ros-noetic-realtime-tools
+	ros-noetic-catkin
+	ros-noetic-hardware-interface
+	ros-noetic-controller-interface
+	ros-noetic-std-msgs
 )
 
 makedepends=(
@@ -25,10 +25,10 @@ makedepends=(
 )
 
 ros_depends=(
-	ros-melodic-controller-interface
-	ros-melodic-realtime-tools
-	ros-melodic-std-msgs
-	ros-melodic-hardware-interface
+	ros-noetic-controller-interface
+	ros-noetic-realtime-tools
+	ros-noetic-std-msgs
+	ros-noetic-hardware-interface
 )
 
 depends=(
@@ -42,24 +42,17 @@ sha256sums=('8c19481a28f394d5bf4372fb05a6c638fa2995614f9b0f82b8213ca32d15a4cf')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
