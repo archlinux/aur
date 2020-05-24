@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-diagnostics
+pkgbase = ros-noetic-diagnostics
 	pkgdesc = ROS - diagnostics.
 	pkgver = 1.9.3
 	pkgrel = 2
@@ -7,14 +7,14 @@ pkgbase = ros-melodic-diagnostics
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-diagnostic-updater
-	depends = ros-melodic-diagnostic-analysis
-	depends = ros-melodic-diagnostic-common-diagnostics
-	depends = ros-melodic-diagnostic-aggregator
-	depends = ros-melodic-self-test
-	source = ros-melodic-diagnostics-1.9.3.tar.gz::https://github.com/ros/diagnostics/archive/1.9.3.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-diagnostic-updater
+	depends = ros-noetic-diagnostic-analysis
+	depends = ros-noetic-diagnostic-common-diagnostics
+	depends = ros-noetic-diagnostic-aggregator
+	depends = ros-noetic-self-test
+	source = ros-noetic-diagnostics-1.9.3.tar.gz::https://github.com/ros/diagnostics/archive/1.9.3.tar.gz
 	sha256sums = 3b2d3bb7bb333b8685fa084e086c00a044803dac41ff58351161440931d23550
 
-pkgname = ros-melodic-diagnostics
+pkgname = ros-noetic-diagnostics
 
