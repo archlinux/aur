@@ -9,7 +9,7 @@ arch=(any)
 url=https://github.com/simon1573/${_pkgname}
 license=('MIT')
 makedepends=(git)
-depends=('mullvad-vpn')
+depends=('mullvad-vpn-cli')
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
