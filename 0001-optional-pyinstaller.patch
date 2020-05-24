@@ -6,10 +6,8 @@ index 17b13ba..83340af 100755
      package_data={
          "": ["*.pyxres", "*.png", "*.gif", "*.dylib", "*.dll", "*.so", "*.exe"]
      },
--    install_requires=["pyinstaller"],
-+    install_requires=[],
 +    extras_require={"packager": ["pyinstaller"]},
-     python_requires=">=3.6.9",
+     python_requires=">=3.6.8",
      entry_points={
          "console_scripts": [
              "pyxeleditor=pyxel.editor:run",
