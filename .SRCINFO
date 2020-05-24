@@ -1,6 +1,6 @@
 pkgbase = dat
 	pkgdesc = Open protocol for distributed peer-to-peer data exchange
-	pkgver = 13.13.1
+	pkgver = 14.0.2
 	pkgrel = 1
 	url = https://datproject.org
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = dat
 	depends = nodejs
 	depends = npm
 	options = !strip
-	source = https://github.com/datproject/dat/archive/v13.13.1.tar.gz
-	sha256sums = 6b9591230f8c12d6a52f3dddb8fa7c1b67723a15f09510178bbb1e748f2f6970
+	source = https://github.com/datproject/dat/archive/v14.0.2.tar.gz
+	sha256sums = 2d7c9a9a435ed9d2a8118496868e65caa60494918e56f2f56d82d74b41c0b67d
 
 pkgname = dat
 
