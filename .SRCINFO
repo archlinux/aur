@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-smach
+pkgbase = ros-noetic-smach
 	pkgdesc = ROS - SMACH is a task-level architecture for rapidly creating complex robot behavior.
 	pkgver = 2.0.1
 	pkgrel = 2
@@ -7,9 +7,9 @@ pkgbase = ros-melodic-smach
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	source = ros-melodic-smach-2.0.1.tar.gz::https://github.com/ros/executive_smach/archive/2.0.1.tar.gz
+	makedepends = ros-noetic-catkin
+	source = ros-noetic-smach-2.0.1.tar.gz::https://github.com/ros/executive_smach/archive/2.0.1.tar.gz
 	sha256sums = 2f7f58064c960fc56de15fdedfd883f62122bd44874787f13c8b4d8a77c45380
 
-pkgname = ros-melodic-smach
+pkgname = ros-noetic-smach
 
