@@ -1,7 +1,7 @@
 # Maintainer: nalquas <nalquas.dev@gmail.com>
 
 pkgname=vokey-git
-pkgver=0.2.0.r0.g487319d
+pkgver=0.3.0.r0.g97a486b
 pkgrel=1
 pkgdesc="Vokey is a voice-based hotkey application."
 arch=('any')
