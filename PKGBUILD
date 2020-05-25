@@ -2,7 +2,7 @@
 
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=vdr-markad
-pkgver=2.0.4
+pkgver=2.1.0
 _logover=ea2e182ec798375f3830f8b794e7408576f139ad
 epoch=1
 _vdrapi=2.4.1
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/kfb77/vdr-plugin-markad/arc
         "$pkgname-logos-1.tar.bz2::https://projects.vdr-developer.org/git/vdr-plugin-markad.git/snapshot/vdr-plugin-markad-$_logover.tar.bz2"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('0c4e2944e94d1b8a8d764f1a9c2eb040a86f460d6c3da7f144ded71246b1d323'
+sha256sums=('23bac0be6c16c9f94c0c6f0f0a9536d32db53d7dc3cfafc50e322da17ce8ff43'
             'c5316bd48ebdb58ecad8bf8de29b2b92337aa8350a4d3340e8383301d4f7719f'
             '5b4f76d1ff31fc2aee847a070954bad1dbf00446c2e99269d9bf8331beb95e24')
 
