@@ -1,14 +1,14 @@
 pkgbase = codecept-bin
 	pkgdesc = The Codeception PHP testing framework (PHP 7 Phar version)
-	pkgver = 4.1.20200323
+	pkgver = 4.1.20200524
 	pkgrel = 1
 	url = https://codeception.com/
 	arch = any
 	license = MIT
 	depends = php>=7.2
-	source = codecept-4.1.20200323.phar::https://codeception.com/releases/4.1.20200323/codecept.phar
+	source = codecept-4.1.20200524.phar::https://codeception.com/releases/4.1.20200524/codecept.phar
 	source = https://raw.githubusercontent.com/Codeception/Codeception/4.0/LICENSE
-	sha256sums = 62b084c087ac115c474ef7b1a14b62eb603181cbf58cb25103c74bd7fb825926
+	sha256sums = 78267afc1003bc02807a76f8cf881f869b7f797e1ad6575c7efab883adccc88d
 	sha256sums = a170b2c91593ab8e55624afcd6b392d8df3e9e914105b1f1e9ea8b8b73aee16f
 
 pkgname = codecept-bin
