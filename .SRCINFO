@@ -1,14 +1,14 @@
 pkgbase = ch341eepromtool
 	pkgdesc = An i2c serial EEPROM programming tool for the WCH CH341A
 	pkgver = 0.5
-	pkgrel = 1
-	url = http://sourceforge.net/projects/ch341eepromtool/
+	pkgrel = 2
+	url = https://github.com/stefanct/ch341eepromtool
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	depends = libusb>=1
-	source = http://sourceforge.net/projects/ch341eepromtool/files/ch341eepromtool_0.5.tar.gz/download
-	md5sums = c3e862001099d8a8ab95e4eccd2e267b
+	source = git+https://github.com/stefanct/ch341eepromtool.git#commit=6b41e07
+	md5sums = SKIP
 
 pkgname = ch341eepromtool
 
