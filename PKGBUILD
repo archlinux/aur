@@ -1,4 +1,6 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
+# Contributor: Adrián Insaurralde <adrianinsaval at gmail dot com>
+
 _pkgname=onedrive_tray
 pkgname=$_pkgname-git
 pkgver=r23.68f5123
