@@ -2,6 +2,6 @@
 
 export _gccver=8.4.0
 export LD_LIBRARY_PATH="/usr/lib/gcc/x86_64-pc-linux-gnu/${_gccver}:$LD_LIBRARY_PATH"
-/opt/amber/bin/pmemd.MPI "$@"
+/opt/amber/bin/pmemd.cuda_SPFP.MPI "$@"
 
 exit 0
