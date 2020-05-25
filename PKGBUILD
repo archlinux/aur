@@ -4,9 +4,9 @@
 
 pkgname=ytop
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI system monitor written in Rust"
-arch=(x86_64)
+arch=('any')
 url="https://github.com/cjbassi/ytop"
 license=("MIT")
 makedepends=("cargo")
