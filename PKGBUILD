@@ -2,7 +2,7 @@
 
 pkgname=khefin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple way to generate password-proteceted secrets from a FIDO2 authenticator with the hmac-secret extension"
 arch=('x86_64')
 url="https://github.com/mjec/khefin"
@@ -28,7 +28,7 @@ install="$pkgname.install"
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  CC=gcc make all -j
+  PREFIX=/ur CC=gcc make all mkinitcpio -j
 }
 
 package() {
