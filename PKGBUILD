@@ -2,85 +2,60 @@ pkgdesc="ROS - 3D visualization tool for ROS."
 url='https://wiki.ros.org/rviz'
 
 pkgname='ros-noetic-rviz'
-pkgver='1.13.7'
+pkgver='1.14.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD, Creative Commons')
 
 ros_makedepends=(
-	ros-noetic-std-srvs
-	ros-noetic-rosbag
-	ros-noetic-tf
-	ros-noetic-nav-msgs
-	ros-noetic-urdf
-	ros-noetic-python-qt-binding
-	ros-noetic-resource-retriever
-	ros-noetic-laser-geometry
-	ros-noetic-std-msgs
-	ros-noetic-interactive-markers
-	ros-noetic-message-filters
-	ros-noetic-rospy
-	ros-noetic-roslib
-	ros-noetic-image-transport
-	ros-noetic-cmake-modules
 	ros-noetic-catkin
-	ros-noetic-rosconsole
-	ros-noetic-roscpp
-	ros-noetic-visualization-msgs
-	ros-noetic-sensor-msgs
-	ros-noetic-map-msgs
-	ros-noetic-pluginlib
-	ros-noetic-geometry-msgs
+	ros-noetic-cmake-modules
+	ros-noetic-message-generation
 )
 
 makedepends=(
 	'cmake'
 	'ros-build-tools'
 	${ros_makedepends[@]}
-	yaml-cpp
 	eigen3
-	ogre-1.9
-	assimp
-	mesa
-	tinyxml2
-	urdfdom-headers
 	qt5-base
+	urdfdom
+	urdfdom-headers
 )
 
 ros_depends=(
-	ros-noetic-std-srvs
-	ros-noetic-rosbag
-	ros-noetic-tf
-	ros-noetic-nav-msgs
-	ros-noetic-urdf
+	ros-noetic-geometry-msgs
+	ros-noetic-image-transport
+	ros-noetic-interactive-markers
+	ros-noetic-laser-geometry
+	ros-noetic-map-msgs
+	ros-noetic-message-filters
+	ros-noetic-pluginlib
 	ros-noetic-python-qt-binding
 	ros-noetic-resource-retriever
-	ros-noetic-laser-geometry
-	ros-noetic-media-export
-	ros-noetic-std-msgs
-	ros-noetic-interactive-markers
-	ros-noetic-message-filters
-	ros-noetic-rospy
-	ros-noetic-roslib
-	ros-noetic-image-transport
+	ros-noetic-rosbag
 	ros-noetic-rosconsole
 	ros-noetic-roscpp
-	ros-noetic-visualization-msgs
+	ros-noetic-roslib
+	ros-noetic-rospy
 	ros-noetic-sensor-msgs
-	ros-noetic-map-msgs
-	ros-noetic-pluginlib
-	ros-noetic-geometry-msgs
+	ros-noetic-std-msgs
+	ros-noetic-std-srvs
+	ros-noetic-tf2-ros
+	ros-noetic-tf2-geometry-msgs
+	ros-noetic-urdf
+	ros-noetic-visualization-msgs
+	ros-noetic-media-export
+    ros-noetic-message-runtime
 )
 
 depends=(
 	${ros_depends[@]}
-	yaml-cpp
-	eigen3
-	ogre-1.9
 	assimp
-	mesa
+	ogre-1.9
 	tinyxml2
-	urdfdom-headers
+	yaml-cpp
+	mesa
 	qt5-base
 	sip
 	python-sip
@@ -88,7 +63,7 @@ depends=(
 
 _dir="rviz-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rviz/archive/${pkgver}.tar.gz")
-sha256sums=('d02b797ddddb22844f6d37b19112959774867da95b58ac4a09169747e0c42152')
+sha256sums=('814d46de171f60a94c028eef7aeab7afcf59f903c1f987430892fcd028affdf5')
 
 build() {
 	# Use ROS environment variables.
