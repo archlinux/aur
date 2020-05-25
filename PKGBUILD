@@ -19,7 +19,7 @@ prepare() {
 }
 
 build() {
-    cd $pkgname-$_pkgver
+    cd "$pkgname-$_pkgver"
     go build \
       -trimpath \
       -buildmode=pie \
@@ -30,12 +30,12 @@ build() {
 }
 
 check() {
-    cd $pkgname-$_pkgver
+    cd "$pkgname-$_pkgver"
     go test ./...
 }
 
 package() {
-    cd $pkgname-$_pkgver
+    cd "$pkgname-$_pkgver"
     install -Dm755 -t "$pkgdir/usr/bin/" age age-keygen
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
