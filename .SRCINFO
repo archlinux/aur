@@ -1,6 +1,6 @@
 pkgbase = shadowsocks-rust
 	pkgdesc = A Rust port of shadowsocks https://shadowsocks.org/
-	pkgver = v1.8.12.alpha.1.28.g98474e2
+	pkgver = v1.8.12.alpha.1.29.g5ef6c88
 	pkgrel = 1
 	url = https://github.com/shadowsocks/shadowsocks-rust
 	arch = any
