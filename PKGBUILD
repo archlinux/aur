@@ -1,6 +1,6 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=libzim
-pkgver=6.1.3
+pkgver=6.1.4
 pkgrel=1
 pkgdesc="Reference implementation of the ZIM specification by the openZIM project"
 license=('GPL2')
@@ -10,7 +10,7 @@ depends=('xapian-core' 'zlib' 'xz' 'icu')
 makedepends=('meson' 'gtest' 'cython' 'python-pytest')
 url='https://github.com/openzim/libzim'
 source=("https://github.com/openzim/libzim/archive/${pkgver}.tar.gz")
-sha256sums=(629b7e4fb9d1dc75e755467362889688b4515d2c7982925c93bb974d04e033f3)
+sha256sums=(e8b75228456a78ce36b1239a2efd6b87589f4227574c31c55a814d390a437d3e)
 
 build() {
 	cd "${pkgname}-${pkgver}"
