@@ -1,0 +1,18 @@
+pkgbase = pd-mapper-git
+	pkgdesc = Qualcomm Protection Domain mapper
+	pkgver = r11.ab5074f
+	pkgrel = 1
+	url = https://github.com/andersson/pd-mapper
+	arch = aarch64
+	groups = qcom-icnss-wlan
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = qrtr
+	provides = pd-mapper
+	source = git://github.com/andersson/pd-mapper.git
+	md5sums = SKIP
+
+pkgname = pd-mapper-git
+
