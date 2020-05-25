@@ -12,6 +12,11 @@ depends=('python' 'python-pip')
 makedepends=('portaudio' 'git')
 optdepends=('python-pyqt5: dependency of bundled anki client' 
 'python-pyqtwebengine: dependency of bundled anki client'
+'python-decorator: dependency of bundled anki client'
+'python-beautifulsoup4: dependency of bundled anki client'
+'python-markdown: dependency of bundled anki client'
+'python-requests: dependency of bundled anki client'
+'python-send2trash: dependency of bundled anki client'
 'libvpx>=1.8.0-1: dependency of bundled anki client'
 'double-conversion>=3.1.4-1: dependency of bundled anki client'
 'qt5-base>=5.12.2-1.1: dependency of bundled anki client'

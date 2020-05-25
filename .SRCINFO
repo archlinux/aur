@@ -7,11 +7,16 @@ pkgbase = anki-sync-server-git
 	arch = any
 	license = GPL
 	makedepends = portaudio
+	makedepends = git
 	depends = python
 	depends = python-pip
-	depends = git
 	optdepends = python-pyqt5: dependency of bundled anki client
 	optdepends = python-pyqtwebengine: dependency of bundled anki client
+	optdepends = python-decorator: dependency of bundled anki client
+	optdepends = python-beautifulsoup4: dependency of bundled anki client
+	optdepends = python-markdown: dependency of bundled anki client
+	optdepends = python-requests: dependency of bundled anki client
+	optdepends = python-send2trash: dependency of bundled anki client
 	optdepends = libvpx>=1.8.0-1: dependency of bundled anki client
 	optdepends = double-conversion>=3.1.4-1: dependency of bundled anki client
 	optdepends = qt5-base>=5.12.2-1.1: dependency of bundled anki client
