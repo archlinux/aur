@@ -1,0 +1,21 @@
+pkgbase = rmtfs-git
+	pkgdesc = Qualcomm Remote Filesystem Service Implementation
+	pkgver = r45.9ef260b
+	pkgrel = 1
+	url = https://github.com/andersson/rmtfs
+	arch = aarch64
+	groups = qcom-icnss-wlan
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = qrtr
+	depends = libudev.so
+	provides = rmtfs
+	source = git://github.com/andersson/rmtfs.git
+	source = udev.rules
+	md5sums = SKIP
+	md5sums = 1e827788992863c3e8562e288f65ee05
+
+pkgname = rmtfs-git
+
