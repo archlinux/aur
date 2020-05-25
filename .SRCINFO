@@ -1,23 +1,23 @@
-pkgbase = ros-melodic-octomap-ros
+pkgbase = ros-noetic-octomap-ros
 	pkgdesc = ROS - octomap_ros provides conversion functions between ROS and OctoMaps native types.
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = http://ros.org/wiki/octomap_ros
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-octomap
-	makedepends = ros-melodic-sensor-msgs
-	makedepends = ros-melodic-octomap-msgs
-	makedepends = ros-melodic-tf
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-octomap
-	depends = ros-melodic-tf
-	depends = ros-melodic-octomap-msgs
-	depends = ros-melodic-sensor-msgs
-	source = ros-melodic-octomap-ros-0.4.0-0.tar.gz::https://github.com/ros-gbp/octomap_ros-release/archive/release/melodic/octomap_ros/0.4.0-0.tar.gz
-	sha256sums = 50dca555a5c7883b74068ae676db17671fa15da854f2985ed4999feff70089fd
+	makedepends = ros-noetic-octomap
+	makedepends = ros-noetic-sensor-msgs
+	makedepends = ros-noetic-octomap-msgs
+	makedepends = ros-noetic-tf
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-octomap
+	depends = ros-noetic-tf
+	depends = ros-noetic-octomap-msgs
+	depends = ros-noetic-sensor-msgs
+	source = ros-noetic-octomap-ros-0.4.1.tar.gz::https://github.com/OctoMap/octomap_ros/archive/0.4.1.tar.gz
+	sha256sums = 188d1623eb02b777f1873d1a69791f20989a2f34dcbd0e9a205399faa5ab7cb2
 
-pkgname = ros-melodic-octomap-ros
+pkgname = ros-noetic-octomap-ros
 
