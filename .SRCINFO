@@ -8,6 +8,7 @@ pkgbase = onedrive_tray-git
 	license = unknown
 	makedepends = git
 	depends = qt5-base
+	depends = onedrive
 	provides = onedrive_tray=r23.68f5123
 	conflicts = onedrive_tray
 	source = git+https://github.com/DanielBorgesOliveira/onedrive_tray.git

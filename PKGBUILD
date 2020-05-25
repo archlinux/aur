@@ -9,7 +9,7 @@ pkgdesc="OneDrive system tray program"
 arch=('i686' 'x86_64')
 url="https://github.com/DanielBorgesOliveira/onedrive_tray"
 license=('unknown')
-depends=('qt5-base' 'onedrive-abraunegg')
+depends=('qt5-base' 'onedrive')
 makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("onedrive_tray=$pkgver")
 conflicts=("onedrive_tray")
