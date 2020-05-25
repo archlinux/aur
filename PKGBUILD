@@ -1,7 +1,7 @@
 # Maintainer: danb <danielbusch1992@googlemail.com>
 
 pkgname=makefontpkg
-pkgver=20160320
+pkgver=20200526
 pkgrel=1
 pkgdesc="Tool for creating packages from TrueType and OpenType fonts"
 arch=(x86_64 i686)
