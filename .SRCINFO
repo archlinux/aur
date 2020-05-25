@@ -1,7 +1,7 @@
 pkgbase = mattermost
 	pkgdesc = Open source Slack-alternative in Golang and React
 	pkgver = 5.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mattermost.com
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = mattermost
 	arch = aarch64
 	license = AGPL
 	license = Apache
-	makedepends = go-pie
+	makedepends = go
 	makedepends = jq
 	makedepends = nodejs
 	makedepends = npm

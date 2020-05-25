@@ -5,12 +5,12 @@
 
 pkgname=mattermost
 pkgver=5.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://mattermost.com'
 license=('AGPL' 'Apache')
-makedepends=('go-pie'
+makedepends=('go'
              'jq'
              'nodejs'
              'npm')
@@ -117,6 +117,7 @@ prepare() {
 build() {
     cd "$srcdir/src/github.com/$pkgname/$pkgname-server"
     export GOPATH="$srcdir" BUILD_NUMBER=$pkgver-$pkgrel
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     make build-linux
     make build-client
     make package
