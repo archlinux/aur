@@ -1,19 +1,5 @@
 pkgbase = eksctl-bin
 	pkgdesc = A simple CLI tool for creating clusters on Amazon's EKS
-	pkgver = 0.19.0
-	pkgrel = 1
-	url = https://eksctl.io
-	arch = x86_64
-	license = Apache
-	depends = kubectl
-	conflicts = eksctl
-	source = https://github.com/weaveworks/eksctl/releases/download/0.19.0/eksctl_Linux_amd64.tar.gz
-	sha256sums = 054bc9231eaf12efb9f30a93edbd90cfd4c52ce68d2138cdaff5d5e53002eb11
-
-pkgname = eksctl-bin
-
-pkgbase = eksctl-bin
-	pkgdesc = A simple CLI tool for creating clusters on Amazon's EKS
 	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://eksctl.io
