@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rotors-gazebo
+pkgbase = ros-noetic-rotors-gazebo
 	pkgdesc = ROS - The rotors_gazebo package
 	pkgver = 2.2.3
 	pkgrel = 1
@@ -11,18 +11,18 @@ pkgbase = ros-melodic-rotors-gazebo
 	license = ASL 2.0
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-gazebo-msgs
-	depends = ros-melodic-gazebo-plugins
-	depends = ros-melodic-geometry-msgs
-	depends = ros-melodic-joy
-	depends = ros-melodic-mav-msgs
-	depends = ros-melodic-roscpp
-	depends = ros-melodic-rotors-gazebo-plugins
-	depends = ros-melodic-sensor-msgs
-	depends = ros-melodic-xacro
-	source = ros-melodic-rotors-gazebo-2.2.3.tar.gz::https://github.com/ethz-asl/rotors_simulator/archive/2.2.3.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-gazebo-msgs
+	depends = ros-noetic-gazebo-plugins
+	depends = ros-noetic-geometry-msgs
+	depends = ros-noetic-joy
+	depends = ros-noetic-mav-msgs
+	depends = ros-noetic-roscpp
+	depends = ros-noetic-rotors-gazebo-plugins
+	depends = ros-noetic-sensor-msgs
+	depends = ros-noetic-xacro
+	source = ros-noetic-rotors-gazebo-2.2.3.tar.gz::https://github.com/ethz-asl/rotors_simulator/archive/2.2.3.tar.gz
 	sha256sums = 46e6be40ebd08ba41a4a532c1774228d240d11aa39ad82f9ab50e445dc4a6f20
 
-pkgname = ros-melodic-rotors-gazebo
+pkgname = ros-noetic-rotors-gazebo
 

@@ -3,14 +3,14 @@
 pkgdesc="ROS - The rotors_gazebo package"
 url='https://wiki.ros.org/rotors_gazebo'
 
-pkgname='ros-melodic-rotors-gazebo'
+pkgname='ros-noetic-rotors-gazebo'
 pkgver='2.2.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('ASL 2.0')
 
 ros_makedepends=(
-    ros-melodic-catkin
+    ros-noetic-catkin
 )
 
 makedepends=(
@@ -20,15 +20,15 @@ makedepends=(
 )
 
 ros_depends=(
-    ros-melodic-gazebo-msgs
-    ros-melodic-gazebo-plugins
-    ros-melodic-geometry-msgs
-    ros-melodic-joy
-    ros-melodic-mav-msgs
-    ros-melodic-roscpp
-    ros-melodic-rotors-gazebo-plugins
-    ros-melodic-sensor-msgs
-    ros-melodic-xacro
+    ros-noetic-gazebo-msgs
+    ros-noetic-gazebo-plugins
+    ros-noetic-geometry-msgs
+    ros-noetic-joy
+    ros-noetic-mav-msgs
+    ros-noetic-roscpp
+    ros-noetic-rotors-gazebo-plugins
+    ros-noetic-sensor-msgs
+    ros-noetic-xacro
 )
 
 depends=(
@@ -42,21 +42,17 @@ sha256sums=('46e6be40ebd08ba41a4a532c1774228d240d11aa39ad82f9ab50e445dc4a6f20')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
