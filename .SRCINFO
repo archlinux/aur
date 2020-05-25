@@ -1,6 +1,6 @@
 pkgbase = foot-git
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/dnkl/foot
 	arch = x86_64
 	license = mit
