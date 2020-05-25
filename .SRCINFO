@@ -1,0 +1,15 @@
+pkgbase = libunwind-sparzz-git
+	pkgdesc = libunwind build
+	pkgver = 1.alpha.test
+	pkgrel = 1
+	url = https://github.com/llvm/llvm-project.git
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	provides = libunwind-sparzz-git
+	source = llvm-project::git+https://github.com/llvm/llvm-project.git
+	md5sums = SKIP
+
+pkgname = libunwind-sparzz-git
+
