@@ -1,7 +1,7 @@
 # Maintainer: Mikhail Swift <mikhail.swift@gmail.com>
 pkgname=lazydocker-git
 _pkgname=lazydocker
-pkgver=0.5.4.r4.gc04867b
+pkgver=0.8.r6.g10617da
 pkgrel=1
 pkgdesc='A simple terminal UI for docker and docker-compose, written in Go with the gocui library.'
 arch=('1686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -21,14 +21,11 @@ pkgver() {
 
 build() {
     cd "${_pkgname}"
-    go build \
-        -gcflags=all=-trimpath=${PWD} \
-        -asmflags=all=-trimpath=${PWD} \
-        -ldflags=-extldflags=-zrelro \
-        -ldflags=-extldflags=-znow \
-        -ldflags "-s -w -X main.version=${pkgver}" \
-        -o ${_pkgname} \
-        main.go
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    go build -o ${_pkgname} -ldflags "-extldflags ${LDFLAGS} -s -w -X main.version=${pkgver}" main.go
 }
 
 package() {

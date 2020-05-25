@@ -1,6 +1,6 @@
 pkgbase = lazydocker-git
 	pkgdesc = A simple terminal UI for docker and docker-compose, written in Go with the gocui library.
-	pkgver = 0.5.4.r4.gc04867b
+	pkgver = 0.8.r6.g10617da
 	pkgrel = 1
 	url = https://github.com/jesseduffield/lazydocker
 	arch = 1686
