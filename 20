@@ -1,0 +1,20 @@
+#%Module1.0
+
+proc ModulesHelp { } {
+        global version
+
+        puts stderr "\tSet up environment for AmberTools package"
+}
+
+module-whatis "AmberTools20 package"
+
+set             AMBERHOME       /opt/ambertools
+set             _gccver         8.4.0
+
+setenv          AMBERHOME       ${AMBERHOME}
+
+prepend-path    PATH            ${AMBERHOME}/bin
+prepend-path    LD_LIBRARY_PATH ${AMBERHOME}/lib
+prepend-path    PERL5LIB        ${AMBERHOME}/lib/perl
+prepend-path    PYTHONPATH      ${AMBERHOME}/lib/python3.8/site-packages
+prepend-path    LD_LIBRARY_PATH /usr/lib/gcc/x86_64-pc-linux-gnu/${_gccver}
