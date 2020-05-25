@@ -116,11 +116,11 @@ md5sums=('1941f86c38e5c81b87dddeb808710b9f'
          '75602fa70033aef9cb42f3df16ec2eb3'
          '228b33d0cb13cab162b3e051ec9bb88d'
          '9ed187660600a7884284aa6b3ddb08c6'
-         '54bc6b0448eed1a8f347a10c9ed085cd'
-         'c7cd17a55ba062b374bb3feb34b2be07'
-         '39c4af16066b52a0170b819c96311d43'
-         'a7df6301b2f912db313e5fb33215ac36'
-         '9c10b5efa9f814a0edf5af6dbfd3a1d9')
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
