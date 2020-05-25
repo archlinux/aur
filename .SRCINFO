@@ -1,6 +1,6 @@
 pkgbase = openturns
 	pkgdesc = Uncertainty treatment library
-	pkgver = 1.15rc1
+	pkgver = 1.15
 	pkgrel = 1
 	url = http://www.openturns.org/
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = openturns
 	depends = dlib
 	depends = coin-or-bonmin
 	backup = etc/openturns/openturns.conf
-	source = https://github.com/openturns/openturns/archive/v1.15rc1.tar.gz
-	sha256sums = c96d1d4c2e06c5a976f09a2557f17bcfeb343f2c4d9c4307592594655e031d55
+	source = https://github.com/openturns/openturns/archive/v1.15.tar.gz
+	sha256sums = 116f30b36f5c1df15cffbbfa4b5dc103d42e746d85d5b9f9c7c3bcc02155934a
 
 pkgname = openturns
 
