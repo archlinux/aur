@@ -3,10 +3,11 @@ pkgbase = kurento-media-server
 	pkgver = 6.13.0
 	pkgrel = 2
 	url = https://github.com/Kurento/kurento-media-server
-	arch = any
+	arch = x86_64
 	license = apache
 	makedepends = kms-cmake-utils
-	makedepends = websocketpp>=0.8.2
+	makedepends = libevent
+	makedepends = websocketpp
 	depends = kms-core
 	depends = boost
 	optdepends = kms-elements
