@@ -17,11 +17,13 @@ sha256sums=('467cb35793c4129e7da68e4c63ef5ee96e9ca43f933c88758e90850f0d6c77b9')
 
 prepare() {
     cd "$pkgname-$pkgver"
+    export GOPATH="$srcdir"
     go mod download
 }
 
 build () {
     cd "$pkgname-$pkgver"
+    export GOPATH="$srcdir"
     go build \
         -trimpath \
         -buildmode=pie \
