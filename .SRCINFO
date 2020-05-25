@@ -1,0 +1,27 @@
+pkgbase = openmpi-gcc8
+	pkgdesc = High performance message passing library (MPI) (built with GCC8)
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = https://www.open-mpi.org
+	arch = x86_64
+	license = custom:OpenMPI
+	makedepends = inetutils
+	makedepends = valgrind
+	makedepends = gcc8-fortran
+	depends = libltdl
+	depends = hwloc
+	depends = openssh
+	depends = zlib
+	depends = libnl
+	depends = gcc8
+	depends = gcc8-libs
+	optdepends = gcc8-fortran: fortran support
+	provides = openmpi=4.0.3
+	conflicts = openmpi
+	options = staticlibs
+	source = https://www.open-mpi.org/software/ompi/v4.0/downloads/openmpi-4.0.3.tar.bz2
+	sha256sums = 1402feced8c3847b3ab8252165b90f7d1fa28c23b6b2ca4632b6e4971267fd03
+	sha512sums = 01f773064c575a0fe6ab081c20c5cf07ba1c9eada5ecfe520d14ce2b9fc6d021d0f56a0159fa354fd6c8e2bb7354a272aa8d0063b351f59251deb56474849acc
+
+pkgname = openmpi-gcc8
+
