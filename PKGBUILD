@@ -21,5 +21,5 @@ build() {
 
 package() {
     cd "$srcdir/zeek-$pkgver"
-    make install
+    make DESTDIR="$pkgdir/" install
 }
