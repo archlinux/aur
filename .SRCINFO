@@ -1,7 +1,7 @@
 pkgbase = java-openjfx-ea-bin
 	pkgdesc = Java OpenJFX 15 Early-Access Build.
-	pkgver = 15rc1
-	pkgrel = 3
+	pkgver = 15rc5
+	pkgrel = 1
 	url = https://openjfx.io/
 	arch = x86_64
 	license = GPL2
@@ -13,12 +13,12 @@ pkgbase = java-openjfx-ea-bin
 	depends = qt5-base
 	provides = java-openjfx=15
 	conflicts = java15-openjfx
-	source = https://download2.gluonhq.com/openjfx/15/openjfx-15-ea+1_linux-x64_bin-sdk.zip
-	source = https://download2.gluonhq.com/openjfx/15/openjfx-15-ea+1_linux-x64_bin-jmods.zip
-	source = https://download2.gluonhq.com/openjfx/15/openjfx-15-ea+1-javadoc.zip
-	sha256sums = d6947ca522d24a30f5f3bd9f21d254cb56680cf19db6095f4a29ba4811bd2686
-	sha256sums = 7ebc9fb28c8e44f5374b59ec6d6d6927655b1d254d08cbfc261a1c33aec19fb5
-	sha256sums = 2e0f3b3c8711ae03293acbe0f104f91c4b076088ea5ce0cb6f0140601fb27ebc
+	source = https://download2.gluonhq.com/openjfx/15/openjfx-15-ea+5_linux-x64_bin-sdk.zip
+	source = https://download2.gluonhq.com/openjfx/15/openjfx-15-ea+5_linux-x64_bin-jmods.zip
+	source = https://download2.gluonhq.com/openjfx/15/openjfx-15-ea+5-javadoc.zip
+	sha256sums = 297ad063b7c3cdfe8095771573ce7a59ab66e4fea7ef74b4a7b9ece29794474b
+	sha256sums = 63a40054191bcae8e39b59cf5f5da0796c6027ddc9690d7c5b8e28fff865d4eb
+	sha256sums = abfc05817fec9e75a7d8218586eebf2086d72e859cc0e7d9d9e56c1be383c729
 
 pkgname = java-openjfx-ea-bin
 
