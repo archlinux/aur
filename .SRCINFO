@@ -1,0 +1,18 @@
+pkgbase = vulkan-validation-layers-git
+	pkgdesc = vulkan extension layer build from source
+	pkgver = 1.2.140.2020.05.25
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/Vulkan-ValidationLayers.git
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	makedepends = glslang-sparzz-git
+	provides = vulkan-validation-layers-git
+	conflicts = vulkan-validation-layers
+	replaces = vulkan-validation-layers
+	source = Vulkan-ValidationLayers::git+https://github.com/KhronosGroup/Vulkan-ValidationLayers.git
+	md5sums = SKIP
+
+pkgname = vulkan-validation-layers-git
+
