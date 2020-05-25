@@ -1,0 +1,21 @@
+pkgbase = dg-git
+	pkgdesc = A program analysis library containing a static backward slicer for LLVM bitcode
+	pkgver = a55a4665
+	pkgrel = 1
+	url = https://github.com/mchalupa/dg
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	depends = llvm
+	depends = clang
+	depends = gcc
+	depends = python
+	provides = llvm-slicer
+	conflicts = llvm-slicer
+	source = git+https://github.com/mchalupa/dg
+	md5sums = SKIP
+
+pkgname = dg-git
+
