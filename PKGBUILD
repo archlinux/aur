@@ -33,11 +33,7 @@ package() {
   for jar in $jars; do
     install -Dm 644 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/lib/${jar}" "${pkgdir}/usr/share/java/${pkgname}/lib/${jar}"
   done
-  # lib/zinc
-  zinc_jars=`ls "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/lib/zinc/"`
-  for zinc_jar in $zinc_jars; do
-    install -Dm 644 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/lib/zinc/${zinc_jar}" "${pkgdir}/usr/share/java/${pkgname}/lib/zinc/${zinc_jar}"
-  done
+
   # results
   install -dm 644 "${pkgdir}/usr/share/java/${pkgname}/results"
   # user-files
