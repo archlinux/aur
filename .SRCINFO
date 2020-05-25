@@ -1,0 +1,17 @@
+pkgbase = qlstatus
+	pkgdesc = Generator of system statistics stream for spectrwm status bar
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/qlem/qlstatus
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = cmake
+	depends = glibc
+	depends = libpulse
+	depends = libnl
+	source = qlstatus-1.0.tar.gz::https://github.com/qlem/qlstatus/archive/v1.0.tar.gz
+	md5sums = 34a9258007dc7ed8f2a4eb680e3db917
+
+pkgname = qlstatus
+
