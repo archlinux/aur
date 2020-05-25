@@ -4,7 +4,7 @@
 
 pkgname=liri-files
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The file manager for Liri"
 arch=("x86_64")
 url="https://github.com/lirios/files"
