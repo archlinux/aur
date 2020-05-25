@@ -23,11 +23,13 @@ package() {
   # bin
   install -Dm 755 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/bin/${_pkgname}.sh" "${pkgdir}/usr/share/java/${pkgname}/bin/${_pkgname}.sh"
   install -Dm 755 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/bin/recorder.sh" "${pkgdir}/usr/share/java/${pkgname}/bin/recorder.sh"
+
   # conf
   confs=`ls "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/conf/"`
   for conf in $confs; do
     install -Dm 644 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/conf/${conf}" "${pkgdir}/usr/share/java/${pkgname}/conf/${conf}"
   done
+
   # lib
   jars=`find "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/lib/" -maxdepth 1 -type f -printf '%f\n'`
   for jar in $jars; do
