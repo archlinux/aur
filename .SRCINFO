@@ -1,6 +1,6 @@
 pkgbase = buildstream-git
 	pkgdesc = Framework for modelling build pipelines in a declarative YAML format
-	pkgver = 1.93.1+22+g0591b0c8b
+	pkgver = 1.93.3+78+g654bf559d
 	pkgrel = 1
 	url = https://buildstream.build
 	arch = any
