@@ -8,6 +8,7 @@ pkgbase = stm32pio
 	makedepends = python3
 	makedepends = python-setuptools
 	depends = python
+	depends = pyside2
 	optdepends = code: for text editing
 	source = stm32pio-1.1.0.tar.gz::https://github.com/kynguyen98/stm32pio/archive/v1.1.0.tar.gz
 	md5sums = SKIP
