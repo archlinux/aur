@@ -1,6 +1,6 @@
 pkgname=kurento-media-server
 pkgver=6.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Kurento WebRTC media server"
 arch=(x86_64)
 url="https://github.com/Kurento/kurento-media-server"
