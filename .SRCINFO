@@ -1,6 +1,6 @@
 pkgbase = mdcat
 	pkgdesc = Sophisticated Markdown rendering for the terminal
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/lunaryorn/mdcat
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = mdcat
 	makedepends = cargo
 	depends = openssl
 	conflicts = mdcat-git
-	source = mdcat-0.17.0.tar.gz::https://github.com/lunaryorn/mdcat/archive/mdcat-0.17.0.tar.gz
-	sha256sums = bccbc4d80747aea61ecc3ffae17c5a14acbb0e80d485ca654c9d8261ceafe1da
+	source = mdcat-0.17.1.tar.gz::https://github.com/lunaryorn/mdcat/archive/mdcat-0.17.1.tar.gz
+	sha256sums = f531447edf7a2433148af15f555f7771756c1cfa7d4c69684e09cb18ab9e89df
 
 pkgname = mdcat
 
