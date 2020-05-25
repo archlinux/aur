@@ -1,5 +1,5 @@
 _npmname=renovate
-_npmver=19.133.11
+_npmver=20.3.1
 pkgname=nodejs-renovate
 pkgver=${_npmver}
 pkgrel=1
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-sha256sums=('757e9fb7da33929173936d7699d28d65e83462539f20d79b9c81a2252ca133df')
+sha256sums=('5458ee9e0c0c61fb1c7adc7e99be316867c46c7b0dec77d9d612e69101104c98')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$_npmname-$_npmver.tgz
