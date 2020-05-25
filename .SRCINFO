@@ -1,8 +1,8 @@
 pkgbase = protonmail-bridge-nogui
 	pkgdesc = Integrate ProtonMail paid account with any program that supports IMAP and SMTP
 	pkgver = 1.2.7.live.1
-	pkgrel = 2
-	url = https://www.protonmail.com/bridge
+	pkgrel = 3
+	url = https://github.com/ProtonMail/proton-bridge
 	arch = x86_64
 	license = GPL3
 	makedepends = go
