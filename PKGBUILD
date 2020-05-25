@@ -21,8 +21,8 @@ validpgpkeys=(
   '6927F7D45F567621E14121DDFD1D670D31F82A81' # Michael Cordover; available from https://keybase.io/mjec/pgp_keys.asc?fingerprint=6927f7d45f567621e14121ddfd1d670d31f82a81
 )
 sha256sums=(
-  '8fc370abcfac0e6beb99ed237e8e7222e51e270ad0b6b8952cce67c83fbd54cd'
-  'b63dffc2a38398faae9d8b0722cbaa6e6c5742bb6b77db29684fddd2f24124ab'
+  '005280dd7c66e7d69be7a9580c1d480e61704f2620b61e85487f0eda747cd6a8'
+  '642ca4c10ed2ab13633f2bc81cb52cbe5acde59ff7e0ca47a1d6fd1f3d0264a2'
 )
 install="$pkgname.install"
 
