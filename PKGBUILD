@@ -4,7 +4,7 @@
 
 pkgname=lib32-dbus-glib
 pkgver=0.110
-pkgrel=1
+pkgrel=2
 pkgdesc='GLib bindings for DBUS'
 arch=('x86_64')
 license=('GPL')
