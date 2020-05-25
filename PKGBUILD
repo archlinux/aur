@@ -1,15 +1,17 @@
-# Maintainer: M A <morealaz at gmail dot com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: M A <morealaz at gmail dot com>
 
 pkgname=java-openjdk-bin
-_majorver=14
-_buildver=36
+_majorver=14.0.1
+_buildver=7
 pkgver=${_majorver}b${_buildver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Java OpenJDK ${_majorver} Oracle Build."
 arch=('x86_64')
 url="http://jdk.java.net/${_majorver}"
 license=('GPL2')
 depends=('java-environment-common' 'java-runtime-common' 'ca-certificates-utils' 'nss')
+conflicts=('jre-openjdk' 'jre-openjdk-headless' 'jdk-openjdk')
 provides=(
     "java-environment=${_majorver}" 
     "java-environment-openjdk=${_majorver}"
@@ -18,9 +20,8 @@ provides=(
     "java-runtime-headless=${_majorver}"
     "java-runtime-headless-openjdk=${_majorver}"
 )
-source=("openjdk-${_majorver}_${_buildver}_linux-x64_bin.tar.gz::https://download.java.net/java/GA/jdk${_majorver}/076bab302c7b4508975440c56f6cc26a/${_buildver}/GPL/openjdk-${_majorver}_linux-x64_bin.tar.gz")
-#source=("https://download.java.net/java/GA/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}_linux-x64_bin.tar.gz")
-sha256sums=('c7006154dfb8b66328c6475447a396feb0042608ee07a96956547f574a911c09')
+source=("openjdk-${_majorver}_${_buildver}_linux-x64_bin.tar.gz::https://download.java.net/java/GA/jdk${_majorver}/664493ef4a6946b186ff29eb326336a2/${_buildver}/GPL/openjdk-${_majorver}_linux-x64_bin.tar.gz")
+sha256sums=('22ce248e0bd69f23028625bede9d1b3080935b68d011eaaf9e241f84d6b9c4cc')
 
 _jvmdir=usr/lib/jvm/java-${_majorver}-openjdk
 
