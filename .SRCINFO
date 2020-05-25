@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-octomap-mapping
+pkgbase = ros-noetic-octomap-mapping
 	pkgdesc = ROS - Mapping tools to be used with the OctoMap library, implementing a 3D occupancy grid mapping.
 	pkgver = 0.6.5
 	pkgrel = 1
@@ -7,10 +7,10 @@ pkgbase = ros-melodic-octomap-mapping
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-octomap-server
-	source = ros-melodic-octomap-mapping-0.6.5.tar.gz::https://github.com/OctoMap/octomap_mapping/archive/0.6.5.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-octomap-server
+	source = ros-noetic-octomap-mapping-0.6.5.tar.gz::https://github.com/OctoMap/octomap_mapping/archive/0.6.5.tar.gz
 	sha256sums = dda5b56259a80ab115f547df7a117140016587ec1fe45602845976a518b3c881
 
-pkgname = ros-melodic-octomap-mapping
+pkgname = ros-noetic-octomap-mapping
 
