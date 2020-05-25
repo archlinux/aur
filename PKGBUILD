@@ -36,9 +36,9 @@ package() {
 
   # results
   install -dm 644 "${pkgdir}/usr/share/java/${pkgname}/results"
+
   # user-files
-  install -dm 644 "${pkgdir}/usr/share/java/${pkgname}/user-files/bodies"
-  install -Dm 644 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/user-files/data/search.csv" "${pkgdir}/usr/share/java/${pkgname}/user-files/data/search.csv"
+  install -Dm 644 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/user-files/resources/search.csv" "${pkgdir}/usr/share/java/${pkgname}/user-files/resources/search.csv"
   install -Dm 644 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/user-files/simulations/computerdatabase/BasicSimulation.scala" "${pkgdir}/usr/share/java/${pkgname}/user-files/simulations/computerdatabase/BasicSimulation.scala"
   scala_files=`ls "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/user-files/simulations/computerdatabase/advanced/"`
   for scala_file in $scala_files; do
