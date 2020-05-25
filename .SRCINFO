@@ -14,8 +14,9 @@ pkgbase = wf-recorder
 	depends = ffmpeg
 	depends = ocl-icd
 	optdepends = slurp: limit recording to a part of the screen
+	conflicts = wf-recorder
 	source = https://github.com/ammen99/wf-recorder/releases/download/v0.2.1/wf-recorder-0.2.1.tar.xz
-	sha256sums = 0d306171a564ed955ff7a48a763ab6f3023f7f1f81f9a8012c46f46075b19b3d
+	sha256sums = bfe51f4f88ba755ac0ad993d00da706496f84e60b53de0ae24fe1c654cfaa376
 
 pkgname = wf-recorder
 

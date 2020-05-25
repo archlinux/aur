@@ -9,6 +9,7 @@ depends=("ffmpeg" "ocl-icd")
 optdepends=(
 	"slurp: limit recording to a part of the screen"
 )
+conflicts=('wf-recorder')
 arch=("i686" "x86_64")
 url='https://github.com/ammen99/wf-recorder'
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
