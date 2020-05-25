@@ -16,10 +16,10 @@ _jdk_update=252
 _jdk_build=1649.2
 pkgver=${_java_ver}.u${_jdk_update}.b${_jdk_build}
 _repo_ver=jb${_java_ver}u${_jdk_update}-b${_jdk_build}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/JetBrains/jdk8u'
-license=('custom')
+license=('GPL2')
 makedepends=('java-environment=8' 'cpio' 'unzip' 'zip' 'gcc8'
              'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib')
 _url_src=https://github.com/JetBrains/jdk8u
