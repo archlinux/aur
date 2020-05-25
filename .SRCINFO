@@ -1,0 +1,18 @@
+pkgbase = ruby-prawn-table
+	pkgdesc = Provides tables for PrawnPDF
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/prawnpdf/prawn-table
+	arch = any
+	license = RUBY
+	license = GPL-2
+	license = GPL-3
+	depends = ruby
+	depends = ruby-prawn
+	noextract = prawn-table-0.2.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/prawn-table-0.2.2.gem
+	sha1sums = 0db902ddbb158fda2a7c2e44ef35b3505f4de4ba
+
+pkgname = ruby-prawn-table
+
