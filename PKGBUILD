@@ -1,7 +1,7 @@
 # Maintainer: Alex Taber & liberodark
 
 pkgname=teamviewer11
-pkgver=11.0.93329
+pkgver=11.0.256402
 pkgrel=1
 pkgdesc='All-In-One Software for Remote Support and Online Meetings'
 arch=('x86_64')
@@ -25,7 +25,7 @@ depends_x86_64=(
 install=teamviewer11.install
 source_x86_64=("http://download.teamviewer.com/download/version_11x/teamviewer_amd64.deb"
                 "https://archive.archlinux.org/packages/l/lib32-freetype2/lib32-freetype2-2.8-2-x86_64.pkg.tar.xz")
-sha256sums_x86_64=('994ae473086d59b99404cea6442b98aad13751b721cedb852384a7599adba57f'
+sha256sums_x86_64=('f2c7258283696651b459699c6e0401781e223eb61f492c149188c82b3c485cfd'
                    '4f39c9bd52579ac5d13980d760a5434fdb0f0638df07d2abca9ea44a779185e3')
 
 prepare() {
