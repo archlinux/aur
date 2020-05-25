@@ -8,8 +8,8 @@ url="https://github.com/tsudoko/anki-sync-server"
 license=('GPL')
 provides=('anki-sync-server')
 conflicts=('anki-sync-server')
-depends=('python' 'python-pip' 'git')
-makedepends=('portaudio')
+depends=('python' 'python-pip')
+makedepends=('portaudio' 'git')
 optdepends=('python-pyqt5: dependency of bundled anki client' 
 'python-pyqtwebengine: dependency of bundled anki client'
 'libvpx>=1.8.0-1: dependency of bundled anki client'
