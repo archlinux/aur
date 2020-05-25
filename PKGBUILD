@@ -3,7 +3,7 @@
 
 pkgname=i-nex
 pkgver=7.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="System information tool like hardinfo, sysinfo"
 arch=('i686' 'x86_64')
 url="http://i-nex.linux.pl/"
@@ -21,9 +21,13 @@ depends=('gambas3-runtime'
          'procps-ng')
 makedepends=('gambas3-devel' 'gcc' 'imagemagick')
 source=("https://github.com/i-nex/I-Nex/archive/${pkgver}.tar.gz"
-        "Fix-error-if-proc-mtrr-doesn-t-exist.patch")
+        "Fix-error-if-proc-mtrr-doesn-t-exist.patch"
+		"Fix-libcpuid-SOVERSION.patch"
+		"Adapt-for-new-libcpuid-structure.patch")
 sha256sums=('81236eb729fbd29b356762c0883fe295cf1181cc7d14f00b1dfcceb517b47960'
-            '5c812da66cf8627e1749722d8e98f0871e6b3dbc30efbce29b785912ff39e96b')
+            '5c812da66cf8627e1749722d8e98f0871e6b3dbc30efbce29b785912ff39e96b'
+            '8cded003e334ac741446dfc5af42087dff031296e8a2ba383ca12f02f3b85fee'
+            'fb286cf3bc0b1104e59219e0ba9a236129b20db52b70cd44d65f578404a93cbe')
 conflicts=('i-nex-git')
 backup=('etc/i-nex/Database/i2c/devices.json'
         'etc/i-nex/Database/A6.json'
@@ -41,6 +45,8 @@ prepare() {
     cd "${srcdir}/I-Nex-${pkgver}"
 
 	patch -Np1 -i "${srcdir}/Fix-error-if-proc-mtrr-doesn-t-exist.patch"
+	patch -Np1 -i "${srcdir}/Fix-libcpuid-SOVERSION.patch"
+	patch -Np1 -i "${srcdir}/Adapt-for-new-libcpuid-structure.patch"
 
     sed -i -e 's|^STATIC.*|STATIC = false|' i-nex.mk
     sed -i -e 's|^UDEV_RULES_DIR.*|UDEV_RULES_DIR = /usr/lib/udev/rules.d|' i-nex.mk
