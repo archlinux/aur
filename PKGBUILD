@@ -3,18 +3,18 @@
 _gemname=solargraph
 pkgname=ruby-solargraph
 pkgver=0.39.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A Ruby language server"
 arch=("any")
 depends=(
-  ruby-maruku
   ruby
   ruby-ast
   ruby-backport
   ruby-e2mmap
   ruby-jaro_winkler
-  ruby-nokogiri
+  ruby-maruku
   ruby-mini_portile2
+  ruby-nokogiri
   ruby-parser
   ruby-reverse_markdown
   ruby-rubocop
