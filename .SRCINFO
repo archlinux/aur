@@ -1,0 +1,15 @@
+pkgbase = vulkan-extensionlayer-sparzz-git
+	pkgdesc = vulkan extension layer build from source
+	pkgver = 1.2.140.2020.05.25
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/Vulkan-ExtensionLayer.git
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	provides = vulkan-extensionlayer-sparzz-git
+	source = Vulkan-ExtensionLayer::git+https://github.com/KhronosGroup/Vulkan-ExtensionLayer.git
+	md5sums = SKIP
+
+pkgname = vulkan-extensionlayer-sparzz-git
+
