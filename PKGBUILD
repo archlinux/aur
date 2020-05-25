@@ -3,7 +3,7 @@
 
 pkgname=fcitx-table-extra
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Extra tables for Fcitx, including Boshiamy, Zhengma, Cangjie3, Cangjie5'
 arch=('any')
 url="https://github.com/fcitx/fcitx-table-extra"
