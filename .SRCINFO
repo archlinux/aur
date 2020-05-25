@@ -1,0 +1,19 @@
+pkgbase = ruby-prawn-templates
+	pkgdesc = Allows using PDFs as templates in Prawn.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/prawnpdf/prawn-templates
+	arch = any
+	license = Nonstandard
+	license = GPL-2.0
+	license = GPL-3.0
+	depends = ruby
+	depends = ruby-pdf-reader
+	depends = ruby-prawn
+	noextract = prawn-templates-0.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/prawn-templates-0.1.2.gem
+	sha1sums = 9c6f4cb788f5c95cf3cb940eabb8bd7e277688b3
+
+pkgname = ruby-prawn-templates
+
