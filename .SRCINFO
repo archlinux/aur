@@ -1,0 +1,20 @@
+pkgbase = rpi-eeprom-git
+	pkgdesc = Raspberry Pi4 boot EEPROM updater, latest git version
+	pkgver = r157.ad18a5b
+	pkgrel = 1
+	url = http://github.com/raspberrypi/rpi-eeprom
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = custom
+	depends = python
+	optdepends = raspberrypi-firmware
+	optdepends = raspberrypi-userland-aarch64
+	conflicts = rpi-eeprom
+	options = !strip
+	backup = etc/default/rpi-eeprom-update
+	source = git+https://github.com/raspberrypi/rpi-eeprom.git
+	md5sums = SKIP
+
+pkgname = rpi-eeprom-git
+
