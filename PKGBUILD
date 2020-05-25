@@ -5,7 +5,7 @@
 
 pkgname=horst
 pkgver=5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A small, lightweight IEEE802.11 wireless LAN analyzer with a text interface'
 arch=("x86_64")
 url='https://github.com/br101/horst'
