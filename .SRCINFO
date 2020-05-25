@@ -1,0 +1,17 @@
+pkgbase = glslang-sparzz-git
+	pkgdesc = glslang build from source
+	pkgver = 8.13.3743.2020.05.25
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/glslang.git
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	provides = glslang-sparzz-git
+	conflicts = glslang
+	replaces = glslang
+	source = glslang::git+https://github.com/KhronosGroup/glslang.git
+	md5sums = SKIP
+
+pkgname = glslang-sparzz-git
+
