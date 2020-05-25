@@ -1,4 +1,5 @@
-# Maintainer: grimsock <lord.grimsock at gmail dot com>
+# Maintainer: chrism <christoph.mertz at googlemail dot com>
+# Contributor: grimsock <lord.grimsock at gmail dot com>
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 
 pkgname=gatling-stress-tool # Name collision with https://aur.archlinux.org/packages.php?ID=7159
