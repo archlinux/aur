@@ -16,8 +16,15 @@
 
 
 pkgname=protonmail-bridge-nogui
-pkgver=1.2.7
+
+_pkgver=1.2.7
+_rev="live.1"
+_srcver="$_pkgver"-"$_rev"
+_srcname=proton-bridge-"$_srcver"
+
+pkgver="$_pkgver"."$_rev"
 pkgrel=1
+
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
 url="https://www.protonmail.com/bridge"
@@ -30,13 +37,13 @@ optdepends=(
 )
 conflicts=('protonmail-bridge-bin' 'protonmail-bridge')
 options=('!emptydirs' '!strip')
-source=("git://github.com/ProtonMail/proton-bridge.git"
+source=("$_srcname.tar.gz::https://github.com/ProtonMail/proton-bridge/archive/v"$_srcver".tar.gz"
 	"bridge.service")
-sha256sums=('SKIP'
+sha256sums=('5a4c19b769cd72097507de6840b79e56d37fa6a54cf7269d4fec28c05016ca45'
             '6b2fd1e042b55dc6d0ffe5eb44e82ffd233452b4571ef571132600e7ec0d5d82')
 
 prepare() {
-    cd "${srcdir}"/proton-bridge/
+    cd "${srcdir}"/"$_srcname"/
     export PATH=$PATH:$(go env GOPATH)/bin/
     make clean
     make build-nogui
@@ -44,7 +51,7 @@ prepare() {
 
 package() {
     install -Dm644 "${srcdir}"/bridge.service -t "${pkgdir}"/usr/lib/systemd/user/
-    cd "${srcdir}"/proton-bridge/
+    cd "${srcdir}"/"$_srcname"/
     install -Dm644 ./LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
     install -Dm644 ./Changelog.md -t "${pkgdir}"/usr/share/doc/"${pkgbame}"/
     install -Dm755 ./Desktop-Bridge "${pkgdir}"/usr/bin/protonmail-bridge
