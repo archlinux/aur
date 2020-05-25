@@ -10,6 +10,10 @@ pkgdesc='A development tool that is primarily used to create graphical adventure
 arch=('x86_64')
 url='https://github.com/adventuregamestudio/ags'
 license=('Artistic2.0')
+# ags depends on Allegro 4 and do not have plans to upgrade - they intend to replace Allegro entirely with SDL.
+# https://github.com/adventuregamestudio/ags/issues/403
+# https://github.com/adventuregamestudio/ags/issues/762
+# https://github.com/adventuregamestudio/ags/issues/1051#issuecomment-602217650
 depends=('dumb-a4' 'libtheora' 'freetype2')
 makedepends=('cmake' 'wxgtk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adventuregamestudio/ags/archive/v.$pkgver.tar.gz"
