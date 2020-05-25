@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-dev
 _pkgname=gnome-shell
-pkgver=3.35.91
+pkgver=3.37.1
 pkgrel=1
 pkgdesc="Next generation desktop shell"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
