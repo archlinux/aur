@@ -1,0 +1,12 @@
+diff -ur trousers-0.3.14/src/tspi/obj_policy.c trousers-0.3.14-new/src/tspi/obj_policy.c
+--- trousers-0.3.14/src/tspi/obj_policy.c	2014-07-23 12:42:44.000000000 -0700
++++ trousers-0.3.14-new/src/tspi/obj_policy.c	2019-05-27 13:29:56.720899059 -0700
+@@ -984,7 +984,7 @@
+ 					      policy->popupString,
+ 					      policy->Secret)))
+ 			goto done;
+-			policy->SecretSet = TRUE;
++		policy->SecretSet = TRUE;
+ 	}	
+ 	memcpy(secret, policy->Secret, TPM_SHA1_160_HASH_LEN);
+ 	*mode = policy->SecretMode;

@@ -1,0 +1,11 @@
+diff -ur a/src/tspi/obj_context.c b/src/tspi/obj_context.c
+--- a/src/tspi/obj_context.c	2014-11-03 12:31:55.000000000 -0700
++++ b/src/tspi/obj_context.c	2018-08-10 11:02:02.246962638 -0700
+@@ -276,6 +276,7 @@
+     context->machineName = (BYTE *)calloc(1, len);
+     if (context->machineName == NULL) {
+         LogError("malloc of %u bytes failed.", len);
++	obj_list_put(&context_list);
+         return TSPERR(TSS_E_OUTOFMEMORY);
+     }
+     memcpy(context->machineName, name, len);

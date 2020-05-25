@@ -1,0 +1,18 @@
+diff -ur trousers-0.3.14/src/tspi/tspi_key.c trousers-0.3.14-new/src/tspi/tspi_key.c
+--- trousers-0.3.14/src/tspi/tspi_key.c	2014-07-23 12:42:45.000000000 -0700
++++ trousers-0.3.14-new/src/tspi/tspi_key.c	2019-05-27 13:44:42.366735438 -0700
+@@ -370,10 +370,10 @@
+ 	/* get the key to be wrapped's private key */
+ 	if ((result = obj_rsakey_get_priv_blob(hKey, &keyPrivBlobLen, &keyPrivBlob)))
+ 		goto done;
+-    /* verify if its under the maximum size, according to the
+-     * TPM_STORE_ASYMKEY specification */
+-    if (keyPrivBlobLen > TPM_STORE_PRIVKEY_LEN)
+-        return TSPERR(TSS_E_ENC_INVALID_LENGTH);
++	/* verify if its under the maximum size, according to the
++	 * TPM_STORE_ASYMKEY specification */
++	if (keyPrivBlobLen > TPM_STORE_PRIVKEY_LEN)
++		return TSPERR(TSS_E_ENC_INVALID_LENGTH);
+ 
+ 	/* get the key to be wrapped's blob */
+ 	if ((result = obj_rsakey_get_blob(hKey, &keyBlobLen, &keyBlob)))
