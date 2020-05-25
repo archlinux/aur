@@ -16,6 +16,7 @@ license=('GPL' 'custom')
 depends=('gmp' 'perl' 'iproute2')
 optdepends=('python')
 makedepends=('flex' 'bison')
+#makedepends+=('xmlto' 'docbook-xsl')
 conflicts=('ipsec-tools' 'strongswan')
 backup=(
   'etc/ipsec.conf'
@@ -50,12 +51,22 @@ prepare() {
 
   # Replace invalid init script paths with systemd script path
   sed -e 's/^INC_RCDIRS.*/INC_RCDIRS\?\=\/usr\/lib\/systemd\/scripts/' -i 'Makefile.inc'
+
   set +u
 }
 
 build() {
   set -u
   cd "${_srcdir}"
+
+  if :; then
+    # No evidence that hostname is called during build
+    ln -sf '/usr/bin/false' 'hostname'
+    # man pages are the same with or without xmlto
+    ln -sf '/usr/bin/false' 'xmlto'
+    export PATH="${PWD}:${PATH}"
+  fi
+
   if [ "${pkgver}" = '2.6.51.5' ]; then
     CFLAGS+=' -fcommon'
   fi
@@ -70,7 +81,7 @@ package() {
   # Pre-create init script directory
   mkdir -p "${pkgdir}/usr/lib/systemd/scripts"
 
-  make DESTDIR="${pkgdir}" install
+  make -j1 DESTDIR="${pkgdir}" XMLTO= install
 
   # Change permissions in /var
   mv "${pkgdir}/var/run" "${pkgdir}/"
@@ -78,10 +89,10 @@ package() {
   chmod 700 "${pkgdir}/run/pluto"
 
   # Copy License
-  install -Dpm644 LICENSE "${pkgdir}/usr/share/licenses/openswan/LICENSE"
+  install -Dpm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/openswan/"
 
   # Install service unit
-  install -Dpm644 "${srcdir}/openswan.service" "${pkgdir}/usr/lib/systemd/system/openswan.service"
+  install -Dpm644 "${srcdir}/openswan.service" -t "${pkgdir}/usr/lib/systemd/system/"
 
   # fix manpages
   mv "${pkgdir}/usr/man" "${pkgdir}/usr/share/"
