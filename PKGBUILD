@@ -1,21 +1,25 @@
 # Maintainer: David P. <megver83@parabola.nu>
 
-_replacesarchkernel=('linux-libre') # '%' gets replaced with kernel suffix
+# NOTE: This PKGBUILD will only work with Hyperbola GNU/Linux-libre. Not Parabola, not Arch.
+# I made this package for users who need a 5.x kernel, but still want LTS software.
+# It is made for the old mkinitcpio version that is shipped in Hyperbola. This PKGBUILD aims
+# to be simple and minimalist, so it doesn't come with the -docs package (which produced errors
+# when building, as I was told by some 'hyperusers' :P) and it is available only for x86_64
+
+_replacesarchkernel=() # '%' gets replaced with kernel suffix
 _replacesoldkernels=() # '%' gets replaced with kernel suffix
 _replacesoldmodules=() # '%' gets replaced with kernel suffix
 
 pkgbase=linux-libre-hyperbola
-pkgver=5.4.12
+pkgver=5.4.42
 pkgrel=1
-pkgdesc='Linux-libre Stable'
+pkgdesc='Linux-libre 5.4 LTS'
 url='https://linux-libre.fsfla.org/'
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
   bc kmod libelf
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
 )
-makedepends_armv7h=(uboot-tools vboot-utils dtc) # required by linux-libre-chromebook
 options=('!strip')
 _srcname=linux-5.4
 source=(
@@ -36,11 +40,10 @@ source=(
 )
 validpgpkeys=(
   '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
-  '6DB9C4B4F0D8C0DC432CF6E4227CA7C556B2BA78' # David P.
 )
 sha512sums=('0d0915133864eb031adfc6700066147dcf3e768a50a31c39754950c95ef4fd322dc701cd50af49c403ef0325adfcb07e354d5e46c1be3dcdd719a7a55c963f37'
             'SKIP'
-            '9d2311e9bebc81dbd2032dd87a9f64290bd3a406701a7a83785897230c0cdc679e75fb8b5b4dc0b9bb54f5105d3101f7fcda4296a14e62f026d4882361447e1c'
+            '278f12bb0a8e9a0628d6e7e8d1c1a541cf0a83f68a8c237334c5198a1970f006d7b695bae6c0813335f069946d5aa35f37114daf1f9ef888e4bfc575387d6df8'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -98,16 +101,15 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules htmldocs
+  make all
 }
 
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
-  depends=(coreutils kmod mkinitcpio)
-  optdepends=('crda: to set the correct wireless channels of your country'
-              'linux-libre-firmware: firmware images needed for some devices')
-  provides=("${_replacesarchkernel[@]/%/=$pkgver}")
-  conflicts=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
+  depends=(coreutils kmod 'mkinitcpio=<25')
+  optdepends=('crda: to set the correct wireless channels of your country')
+  provides=("${_replacesarchkernel[@]/%/=$pkgver}" WIREGUARD-MODULE)
+  conflicts=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}" wireguard-dkms)
   replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=linux.install
@@ -122,19 +124,16 @@ _package() {
   echo "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir" modules_install
 
-  # install mkinitcpio preset file for kernel
+  echo "Install mkinitcpio preset file for kernel..."
   sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
     install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
-  # install pacman hook for initramfs regeneration
+  echo "Install pacman hook for initramfs regeneration..."
   sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/90-linux.hook" |
     install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -210,37 +209,9 @@ _package-headers() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
-_package-docs() {
-  pkgdesc="Documentation for the $pkgdesc kernel"
-  provides=("${_replacesarchkernel[@]/%/-docs=$pkgver}")
-  conflicts=("${_replacesarchkernel[@]/%/-docs}" "${_replacesoldkernels[@]/%/-docs}")
-  replaces=("${_replacesarchkernel[@]/%/-docs}" "${_replacesoldkernels[@]/%/-docs}")
-
-  cd $_srcname
-  local builddir="$pkgdir/lib/modules/$(<version)/build"
-
-  echo "Installing documentation..."
-  local src dst
-  while read -rd '' src; do
-    dst="${src#Documentation/}"
-    dst="$builddir/Documentation/${dst#output/}"
-    install -Dm644 "$src" "$dst"
-  done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
-
-  echo "Adding symlink..."
-  mkdir -p "$pkgdir/usr/share/doc"
-  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
-}
-
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+pkgname=("$pkgbase" "$pkgbase-headers")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")

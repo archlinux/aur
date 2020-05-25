@@ -1,6 +1,6 @@
 pkgbase = linux-libre-hyperbola
-	pkgdesc = Linux-libre Stable
-	pkgver = 5.4.12
+	pkgdesc = Linux-libre 5.4 LTS
+	pkgver = 5.4.42
 	pkgrel = 1
 	url = https://linux-libre.fsfla.org/
 	arch = x86_64
@@ -8,16 +8,11 @@ pkgbase = linux-libre-hyperbola
 	makedepends = bc
 	makedepends = kmod
 	makedepends = libelf
-	makedepends = xmlto
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
-	makedepends = graphviz
-	makedepends = imagemagick
 	options = !strip
 	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/5.4-gnu/linux-libre-5.4-gnu.tar.xz
 	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/5.4-gnu/linux-libre-5.4-gnu.tar.xz.sign
-	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/5.4.12-gnu/patch-5.4-gnu-5.4.12-gnu.xz
-	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/5.4.12-gnu/patch-5.4-gnu-5.4.12-gnu.xz.sign
+	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/5.4.42-gnu/patch-5.4-gnu-5.4.42-gnu.xz
+	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/5.4.42-gnu/patch-5.4-gnu-5.4.42-gnu.xz.sign
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm
@@ -30,10 +25,9 @@ pkgbase = linux-libre-hyperbola
 	source = 0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch
 	source = 0002-fix-Atmel-maXTouch-touchscreen-support.patch
 	validpgpkeys = 474402C8C582DAFBE389C427BCB7CF877E7D47A7
-	validpgpkeys = 6DB9C4B4F0D8C0DC432CF6E4227CA7C556B2BA78
 	sha512sums = 0d0915133864eb031adfc6700066147dcf3e768a50a31c39754950c95ef4fd322dc701cd50af49c403ef0325adfcb07e354d5e46c1be3dcdd719a7a55c963f37
 	sha512sums = SKIP
-	sha512sums = 9d2311e9bebc81dbd2032dd87a9f64290bd3a406701a7a83785897230c0cdc679e75fb8b5b4dc0b9bb54f5105d3101f7fcda4296a14e62f026d4882361447e1c
+	sha512sums = 278f12bb0a8e9a0628d6e7e8d1c1a541cf0a83f68a8c237334c5198a1970f006d7b695bae6c0813335f069946d5aa35f37114daf1f9ef888e4bfc575387d6df8
 	sha512sums = SKIP
 	sha512sums = 13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3
 	sha512sums = SKIP
@@ -48,27 +42,20 @@ pkgbase = linux-libre-hyperbola
 	sha512sums = b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168
 
 pkgname = linux-libre-hyperbola
-	pkgdesc = The Linux-libre Stable kernel and modules
+	pkgdesc = The Linux-libre 5.4 LTS kernel and modules
 	install = linux.install
 	depends = coreutils
 	depends = kmod
-	depends = mkinitcpio
+	depends = mkinitcpio=<25
 	optdepends = crda: to set the correct wireless channels of your country
-	optdepends = linux-libre-firmware: firmware images needed for some devices
-	provides = linux-libre=5.4.12
-	conflicts = linux-libre
-	replaces = linux-libre
+	provides = WIREGUARD-MODULE
+	conflicts = wireguard-dkms
+	replaces = 
 	backup = etc/mkinitcpio.d/linux-libre-hyperbola.preset
 
 pkgname = linux-libre-hyperbola-headers
-	pkgdesc = Headers and scripts for building modules for the Linux-libre Stable kernel
-	provides = linux-libre-headers=5.4.12
-	conflicts = linux-libre-headers
-	replaces = linux-libre-headers
-
-pkgname = linux-libre-hyperbola-docs
-	pkgdesc = Documentation for the Linux-libre Stable kernel
-	provides = linux-libre-docs=5.4.12
-	conflicts = linux-libre-docs
-	replaces = linux-libre-docs
+	pkgdesc = Headers and scripts for building modules for the Linux-libre 5.4 LTS kernel
+	provides = 
+	conflicts = 
+	replaces = 
 
