@@ -6,7 +6,7 @@
 _pkgbasename=gtk2
 pkgname=lib32-$_pkgbasename
 pkgver=2.24.32
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject-based multi-platform GUI toolkit (legacy) (32-bit)"
 arch=('x86_64')
 url="https://www.gtk.org/"
