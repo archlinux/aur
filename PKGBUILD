@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=rversions
-_cranver=2.0.1
+_cranver=2.0.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(r r-curl 'r-xml2>=1.0.0')
 optdepends=(r-mockery r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('8898ede7ad763a8fa28e0cea25307bc8')
+md5sums=('e532a140027e254f1c8971a7be542aef')
 
 build() {
   cd "${srcdir}"
