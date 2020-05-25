@@ -1,0 +1,12 @@
+diff -aur --color libAfterImage-1.20-old/Makefile.in libAfterImage-1.20-new/Makefile.in
+--- libAfterImage-1.20-old/Makefile.in	2020-05-25 17:48:04.321292472 +0300
++++ libAfterImage-1.20-new/Makefile.in	2020-05-25 17:48:30.511292257 +0300
+@@ -398,7 +398,7 @@
+ 
+ $(LIB_SHARED).$(LIBVER): $(LIB_OBJS) $(LIB_INCS) config.h
+ 	$(CC) -shared -Wl,-soname,$(LIB_SHARED).$(LIBVERMAJOR) -o $(LIB_SHARED).$(LIBVER) \
+-	 $(LIB_OBJS)
++	 $(LIB_OBJS) ${USER_LD_FLAGS}
+ 
+ install.man:
+ 		@if [ -d doc/man ] ; then \

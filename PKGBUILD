@@ -4,7 +4,7 @@
 
 pkgname=libafterimage
 pkgver=1.20
-pkgrel=3
+pkgrel=4
 pkgdesc="Generic image manipulation library"
 url="http://www.afterstep.org/afterimage"
 license=('GPL')
@@ -12,10 +12,12 @@ depends=('librsvg')
 arch=('x86_64')
 source=("https://downloads.sourceforge.net/project/afterstep/libAfterImage/$pkgver/libAfterImage-$pkgver.tar.bz2"
         libafterimage-libpng15.patch
+        libafterimage-ldflags.patch
         header-install.patch)
-md5sums=('17a0ab8a2e6b253f222934418705963e'
-         'bdb49e626cb91b2c218193f3d36c9f91'
-         'c4f8b94d9a7dda3e3e55420747b1b5ca')
+sha256sums=('6e233253f4d1dd22dfce9f9a245cc036d814fc99ba7f6732f4e345de62cfe458'
+            'bbf95bcddc4c48dcde88745dc9cb772ca53b625e8e466b9d565e4183ce71dbe3'
+            'b7e1b16af975b4f3b66fd91ca1244d4fc44db398027f2829ad24882b79b882b8'
+            '6e1c5fd8acbbbc1c83f0ca490f08b7602d37a2295cb4741eef6f3b88fb638203')
 
 prepare() {
   cd libAfterImage-$pkgver
@@ -25,11 +27,18 @@ prepare() {
 
   # Apply Gentoo's libpng15 patch
   patch < ../libafterimage-libpng15.patch
+
+  # Make sure LDFLAGS are passed to lib
+  patch < ../libafterimage-ldflags.patch
 }
 
 build() {
   cd libAfterImage-$pkgver
 
+  CPPFLAGS="${CPPFLAGS}" \
+  CFLAGS="${CFLAGS}" \
+  CXXFLAGS="${CXXFLAGS}" \
+  LDFLAGS="${LDFLAGS}" \
   ./configure --prefix=/usr --mandir=/usr/share/man \
               --enable-sharedlibs --disable-staticlibs
 
