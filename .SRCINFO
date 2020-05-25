@@ -1,5 +1,5 @@
 pkgbase = qlstatus
-	pkgdesc = Generator of system statistics stream for spectrwm status bar
+	pkgdesc = A stream generator of system statistics for spectrwm status bar
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/qlem/qlstatus
