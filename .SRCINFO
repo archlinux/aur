@@ -1,0 +1,19 @@
+pkgbase = ruby-prawn
+	pkgdesc = A fast and nimble PDF generator for Ruby
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = http://prawnpdf.org
+	arch = any
+	license = PRAWN
+	license = GPL-2.0
+	license = GPL-3.0
+	depends = ruby
+	depends = ruby-ttfunk-1.5
+	depends = ruby-pdf-core-0.7
+	noextract = prawn-2.2.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/prawn-2.2.2.gem
+	sha1sums = 0f714088c390b029e09460b0f3c480e43ddc3772
+
+pkgname = ruby-prawn
+
