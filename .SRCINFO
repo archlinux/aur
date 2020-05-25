@@ -1,0 +1,21 @@
+pkgbase = opencryptoki-git
+        pkgdesc = PKCS11 implementation for Linux
+        pkgver = v3.13.0.r57.ga4991809
+        pkgrel = 1
+        url = https://github.com/opencryptoki/opencryptoki
+        arch = i686
+        arch = x86_64
+        license = CPL
+        makedepends = expect
+        depends = openssl
+        depends = trousers
+        provides = opencryptoki
+        source = git://github.com/opencryptoki/opencryptoki.git
+        source = opencryptoki.sysusers.conf
+        source = opencryptoki.tmpfiles.conf
+        sha256sums = SKIP
+        sha256sums = 6c96a96f7df9279fa62c6aab4231116fd0db0fbe0a88b661b5d1a7451b0e9a39
+        sha256sums = e315fc996a1f416efd34f6f3e3149378118cded0da9f8a919e9501ea8db90fac
+
+pkgname = opencryptoki-git
+
