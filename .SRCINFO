@@ -1,0 +1,19 @@
+pkgbase = ruby-ttfunk-1.5
+	pkgdesc = TrueType Font Metrics Parser
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://prawnpdf.org
+	arch = any
+	license = Nonstandard
+	license = GPL-2.0
+	license = GPL-3.0
+	depends = ruby
+	provides = ruby-ttfunk
+	conflicts = ruby-ttfunk
+	noextract = ttfunk-1.5.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ttfunk-1.5.1.gem
+	sha1sums = f8231c2fbc71c249195df2cdefeaafd7270fe2da
+
+pkgname = ruby-ttfunk-1.5
+
