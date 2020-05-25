@@ -2,7 +2,7 @@
 
 pkgname=fcitx-sayura
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Sinhala Transe IME engine for fcitx."
 arch=('x86_64')
 url="https://github.com/fcitx/fcitx-sayura"
