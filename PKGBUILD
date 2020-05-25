@@ -2,7 +2,7 @@
 
 pkgname=fcitx-m17n
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Fcitx Wrapper for m17n"
 arch=('x86_64')
 url="https://github.com/fcitx/fcitx-m17n"
