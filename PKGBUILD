@@ -3,7 +3,7 @@
 # Maintainer: Kevin Baxmann <kvbx@kvbx.de>
 
 pkgname=micronaut
-pkgver=1.2.9
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Application Framework"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/micronaut-projects/micronaut-core"
 license=(Apache)
 depends=('java-environment>=8')
 source=(https://github.com/micronaut-projects/micronaut-core/archive/v${pkgver}.tar.gz)
-sha512sums=('e235a8d75b36d648704e140682b7e0e0a93adfcc664b5276bce9966601536c068c75bebab1619731e093917918a11bfc80f3f96a390a67dd0c1c3cd378528272')
+sha512sums=('e3d84e36157eb6b9156d0037a415f6c748b63bcf94ad610b58a1384b977feee728bd94ef520a59fcc3096350c6cef1702bdcc4a6beb0053bd5f701f231c9c43b')
 
 build() {
 
@@ -20,7 +20,7 @@ build() {
       tput bold
       echo
       echo "Building may have failed due to an incompatible JDK."
-      echo "Please set JAVA_HOME to a JDK compatible with gradle 4.6."
+      echo "Please set JAVA_HOME to a JDK compatible with gradle 6.1 (between 8 and 13)."
       echo "(e.g. install 'jdk8-openjdk' and run 'archlinux-java set java-8-openjdk')"
       echo "After building the package you may set it back to a newer version"
       echo

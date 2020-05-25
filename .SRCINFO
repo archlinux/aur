@@ -7,7 +7,7 @@ pkgbase = micronaut
 	license = Apache
 	depends = java-environment>=8
 	source = https://github.com/micronaut-projects/micronaut-core/archive/v1.2.9.tar.gz
-	sha512sums = e235a8d75b36d648704e140682b7e0e0a93adfcc664b5276bce9966601536c068c75bebab1619731e093917918a11bfc80f3f96a390a67dd0c1c3cd378528272
+	sha512sums = e3d84e36157eb6b9156d0037a415f6c748b63bcf94ad610b58a1384b977feee728bd94ef520a59fcc3096350c6cef1702bdcc4a6beb0053bd5f701f231c9c43b
 
 pkgname = micronaut
 
