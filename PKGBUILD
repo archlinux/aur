@@ -2,7 +2,7 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=jlink-software-and-documentation
-pkgver=6.72e
+pkgver=6.80
 pkgrel=0
 epoch=27
 pkgdesc="Segger JLink software & documentation pack for Linux"
@@ -13,8 +13,8 @@ depends=('glibc' 'libudev0-shim')
 source_x86_64=("JLink_Linux_${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_x86_64.tgz")
 source_i686=("JLink_Linux_${pkgver/./}_i686.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_i386.tgz")
 source=("99-jlink.rules.patch")
-md5sums_i686=('ae81159df7ae2feb7f7171fc02f0cf28')
-md5sums_x86_64=('f2ae6fb9b0c967f68fab67ee013de881')
+md5sums_i686=('70d5de1d88e08796c242e5e315d5fadb')
+md5sums_x86_64=('515a92a253f4f840251a80106adb2b73')
 md5sums=('a57d93b791581c1f36e4c672303bb85d')
 install=$pkgname.install
 url="https://www.segger.com/jlink-software.html"
