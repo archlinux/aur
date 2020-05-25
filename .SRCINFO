@@ -1,0 +1,19 @@
+pkgbase = qrtr-git
+	pkgdesc = Userspace reference for net/qrtr in the Linux kernel
+	pkgver = r86.7bd5cf3
+	pkgrel = 1
+	url = https://github.com/andersson/qrtr
+	arch = aarch64
+	groups = qcom-icnss-wlan
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = linux-headers
+	depends = glibc
+	provides = qrtr
+	source = git://github.com/andersson/qrtr.git
+	md5sums = SKIP
+
+pkgname = qrtr-git
+
