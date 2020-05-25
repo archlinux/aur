@@ -20,26 +20,28 @@ sha256sums=('65773f3aefafe4e006d9201d30bf3cf37ae9b6e72314b70ed4c3f719f5f00b89'
             '6124d91ec20c2d495cf9b2867027251c12db478da4429982d7794a356d56aebf')
 
 package() {
-  install -Dm 755 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/bin/${_pkgname}.sh" "${pkgdir}/usr/share/java/${pkgname}/bin/${_pkgname}.sh"
-  install -Dm 755 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/bin/recorder.sh" "${pkgdir}/usr/share/java/${pkgname}/bin/recorder.sh"
+  srcbase="${srcbase}"
 
-  confs=$(ls "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/conf/")
+  install -Dm 755 "${srcbase}/bin/${_pkgname}.sh" "${pkgdir}/usr/share/java/${pkgname}/bin/${_pkgname}.sh"
+  install -Dm 755 "${srcbase}/bin/recorder.sh" "${pkgdir}/usr/share/java/${pkgname}/bin/recorder.sh"
+
+  confs=$(ls "${srcbase}/conf/")
   for conf in $confs; do
-    install -Dm 644 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/conf/${conf}" "${pkgdir}/usr/share/java/${pkgname}/conf/${conf}"
+    install -Dm 644 "${srcbase}/conf/${conf}" "${pkgdir}/usr/share/java/${pkgname}/conf/${conf}"
   done
 
-  jars=$(find "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/lib/" -maxdepth 1 -type f -printf '%f\n')
+  jars=$(find "${srcbase}/lib/" -maxdepth 1 -type f -printf '%f\n')
   for jar in $jars; do
-    install -Dm 644 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/lib/${jar}" "${pkgdir}/usr/share/java/${pkgname}/lib/${jar}"
+    install -Dm 644 "${srcbase}/lib/${jar}" "${pkgdir}/usr/share/java/${pkgname}/lib/${jar}"
   done
 
   install -dm 644 "${pkgdir}/usr/share/java/${pkgname}/results"
 
-  install -Dm 644 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/user-files/resources/search.csv" "${pkgdir}/usr/share/java/${pkgname}/user-files/resources/search.csv"
-  install -Dm 644 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/user-files/simulations/computerdatabase/BasicSimulation.scala" "${pkgdir}/usr/share/java/${pkgname}/user-files/simulations/computerdatabase/BasicSimulation.scala"
-  scala_files=$(ls "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/user-files/simulations/computerdatabase/advanced/")
+  install -Dm 644 "${srcbase}/user-files/resources/search.csv" "${pkgdir}/usr/share/java/${pkgname}/user-files/resources/search.csv"
+  install -Dm 644 "${srcbase}/user-files/simulations/computerdatabase/BasicSimulation.scala" "${pkgdir}/usr/share/java/${pkgname}/user-files/simulations/computerdatabase/BasicSimulation.scala"
+  scala_files=$(ls "${srcbase}/user-files/simulations/computerdatabase/advanced/")
   for scala_file in $scala_files; do
-    install -Dm 644 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/user-files/simulations/computerdatabase/advanced/${scala_file}" "${pkgdir}/usr/share/java/${pkgname}/user-files/simulations/computerdatabase/advanced/${scala_file}"
+    install -Dm 644 "${srcbase}/user-files/simulations/computerdatabase/advanced/${scala_file}" "${pkgdir}/usr/share/java/${pkgname}/user-files/simulations/computerdatabase/advanced/${scala_file}"
   done
 
   install -Dm 755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
