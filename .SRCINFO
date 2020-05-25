@@ -1,7 +1,7 @@
 pkgbase = fcitx-baidupinyin
 	pkgdesc = Fcitx wrapper for Baidu Pinyin IM engine
 	pkgver = 1.0.1.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://srfsh.baidu.com/site/guanwang_linux/index.html
 	install = fcitx-baidupinyin.install
 	arch = x86_64

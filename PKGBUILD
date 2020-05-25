@@ -2,7 +2,7 @@
 # Contributor: fkxxyz <fkxxyz@163.com>
 pkgname=fcitx-baidupinyin
 pkgver=1.0.1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Fcitx wrapper for Baidu Pinyin IM engine"
 arch=("x86_64")
 url="https://srfsh.baidu.com/site/guanwang_linux/index.html"
@@ -28,17 +28,16 @@ package(){
     mv "$pkgdir"/opt/apps/com.baidu.fcitx-baidupinyin/entries/applications/fcitx-ui-baidu-qimpanel.desktop "$pkgdir"/etc/xdg/autostart/fcitx-baidupinyin.desktop
     sed -i  's|/opt/apps/com.baidu.fcitx-baidupinyin/files/bin/bd-qimpanel.watchdog.sh|/usr/bin/bd-qimpanel.watchdog.sh|g' "$pkgdir"/etc/xdg/autostart/fcitx-baidupinyin.desktop
     sed -i 's|Icon=baidu|Icon=fcitx-baidupinyin|g' "$pkgdir"/etc/xdg/autostart/fcitx-baidupinyin.desktop
-    cp -r  "$pkgdir"/opt/apps/com.baidu.fcitx-baidupinyin/entries/icons "$pkgdir"/usr/share/
     
-    # nowhere to put fcitx-baidupinyin.mo for fuzzy pinyin, just delete, works fine. location : "$pkgdir"/opt/apps/com.baidu.fcitx-baidupinyin/entries/locale/zh_CN/LC_MESSAGES/fcitx-baidupinyin.mo
-    rm -r "$pkgdir"/opt/apps/com.baidu.fcitx-baidupinyin/entries 
+    cp -r  "$pkgdir"/opt/apps/com.baidu.fcitx-baidupinyin/entries/icons "$pkgdir"/usr/share/
+    cp -r "$pkgdir"/opt/apps/com.baidu.fcitx-baidupinyin/entries/locale "$pkgdir"/usr/share/
     
     mkdir -p "$pkgdir"/usr/lib/fcitx/
     mv "$pkgdir"/opt/apps/com.baidu.fcitx-baidupinyin/files/lib/fcitx*  "$pkgdir"/usr/lib/fcitx/
     cp -r "$pkgdir"/opt/apps/com.baidu.fcitx-baidupinyin/files/* "$pkgdir"/usr/
     sed -i  's|/opt/apps/com.baidu.fcitx-baidupinyin/files/bin/baidu-qimpanel|/usr/bin/baidu-qimpanel|g' "$pkgdir"/usr/bin/bd-qimpanel.watchdog.sh
     
-    # change the /opt/apps/... directory string in baidu-qimpanel to /usr/bin
+    # change the /opt/apps/... directory string in baidu-qimpanel to /usr/bin, add \x0 to make the strings be of the same length
     sed -i 's|/opt/apps/com.baidu.fcitx-baidupinyin/files/bin/BDIMSettings|/usr/bin/BDIMSettings\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0|g' "$pkgdir"/usr/bin/baidu-qimpanel
     
     # data should be moved to ~/.config/BaiduPY.user manually
@@ -46,9 +45,9 @@ package(){
     mv "$pkgdir"/usr/share/data "$pkgdir"/tmp
     
     # install license
-    install -Dm644 "${srcdir}/LICENSE"  "${pkgdir}/usr/share/licenses/fcitx-baidupinyin/license.html"
+    install -Dm644 "${srcdir}/LICENSE"  "${pkgdir}/usr/share/licenses/fcitx-baidupinyin/LICENSE"
     # clean up unused files
-    rm -rf "$pkgdir"/opt/apps
+    rm -rf "$pkgdir"/opt
     rm -rf "$pkgdir"/usr/lib/*-linux-gnu
     rm -r "$pkgdir"/fcitx-baidupinyin.deb
     rm  "$pkgdir"/usr/bin/BDIMWizard
