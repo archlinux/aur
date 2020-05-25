@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rotors-evaluation
+pkgbase = ros-noetic-rotors-evaluation
 	pkgdesc = ROS - The dataset evaluation package for the RotorS simulator.
 	pkgver = 2.2.3
 	pkgrel = 1
@@ -11,10 +11,10 @@ pkgbase = ros-melodic-rotors-evaluation
 	license = ASL 2.0
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rospy
-	source = ros-melodic-rotors-evaluation-2.2.3.tar.gz::https://github.com/ethz-asl/rotors_simulator/archive/2.2.3.tar.gz
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-rospy
+	source = ros-noetic-rotors-evaluation-2.2.3.tar.gz::https://github.com/ethz-asl/rotors_simulator/archive/2.2.3.tar.gz
 	sha256sums = 46e6be40ebd08ba41a4a532c1774228d240d11aa39ad82f9ab50e445dc4a6f20
 
-pkgname = ros-melodic-rotors-evaluation
+pkgname = ros-noetic-rotors-evaluation
 
