@@ -3,7 +3,7 @@
 
 pkgname=gatling-stress-tool # Name collision with https://aur.archlinux.org/packages.php?ID=7159
 _pkgname=gatling
-pkgver=2.3.1
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Open-source load testing framework based on Scala, Akka and Netty"
 arch=(any)
@@ -15,7 +15,7 @@ backup=(usr/share/java/${pkgname}/conf/{application,gatling,recorder}.conf
 source=("https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/${pkgver}/gatling-charts-highcharts-bundle-${pkgver}-bundle.zip"
         "gatling"
         "gatling-recorder")
-sha256sums=('d9a3ca2c29f8886cde14fb0e2bcaf880d3eeb22c271128fead5fcadabb98398b'
+sha256sums=('65773f3aefafe4e006d9201d30bf3cf37ae9b6e72314b70ed4c3f719f5f00b89'
             'b537f7c31f0fe66b291f30e05498c7412e01bf4572abaea0a07823b2cf4f07d9'
             '6124d91ec20c2d495cf9b2867027251c12db478da4429982d7794a356d56aebf')
 
