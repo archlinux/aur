@@ -1,5 +1,4 @@
 pkg/
 src/
-*.pkg.tar*
-protonmail-bridge*.deb
-proton-bridge/
+*.tar.gz
+*.tar.xz
