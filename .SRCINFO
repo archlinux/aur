@@ -1,0 +1,17 @@
+pkgbase = vulkan-headers-sparzz-git
+	pkgdesc = vulkan headers build from source
+	pkgver = 1.2.141.2020.05.25
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/Vulkan-Headers.git
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	provides = vulkan-headers-sparzz-git
+	conflicts = vulkan-headers
+	replaces = vulkan-headers
+	source = Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
+	md5sums = SKIP
+
+pkgname = vulkan-headers-sparzz-git
+
