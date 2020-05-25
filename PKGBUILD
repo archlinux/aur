@@ -2,7 +2,7 @@
 
 pkgname=typemute
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Mute yourself while typing'
 arch=(i686 x86_64)
 url='https://github.com/cherti/typemute'
@@ -19,6 +19,8 @@ build() {
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	GOPATH=$(pwd)
+	go get -u "github.com/sqp/pulseaudio"
 	go build typemute.go
 }
 
