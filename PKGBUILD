@@ -4,9 +4,9 @@
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 # Contributor: Martchus <martchus@gmx.net>
 pkgname=mingw-w64-glib2
-pkgver=2.64.2
+pkgver=2.64.3
 pkgrel=1
-_commit=e264e6fcf7f5199e137314b0d1ebca7648613148  # tags/2.64.2^0
+_commit=af1edc1c338d9a8b2a99bdd0e6cc6bede51f40b4  # tags/2.64.3^0
 arch=(any)
 pkgdesc="Low level core library (mingw-w64)"
 depends=(mingw-w64-libffi mingw-w64-pcre mingw-w64-gettext mingw-w64-zlib)
@@ -45,7 +45,6 @@ build() {
       --default-library both ..
     ninja
   done
-
 }
 
 package() {
