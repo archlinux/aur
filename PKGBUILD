@@ -1,6 +1,6 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=buildbox-common
-pkgver=0.0.5
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Shared protocol-buffer definitions and various helper functions"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('grpc' 'gtest' 'gmock')
 makedepends=('cmake')
 source=("https://gitlab.com/BuildGrid/buildbox/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('63fbd3ed7c56dd27cf6dc9cbb900ad67affacdbdf46486946a2945cca3190b72')
+sha256sums=('db7dfbde67a62aafc915e32422fd2460cc6f3da3562825aeab5a4decafc017c1')
 
 build() {
     [ -d build ] && rm -rf build; mkdir build
@@ -23,7 +23,7 @@ build() {
 # Fails on merklize
 check() {
     cd build
-    make -k test || true
+    make -k test
 }
 
 package() {
