@@ -5,7 +5,7 @@
 
 pkgname=python35
 pkgver=3.5.9
-pkgrel=3
+pkgrel=4
 _pybasever=3.5
 pkgdesc="Next generation of the python high-level scripting language"
 _github_url="none"
@@ -21,7 +21,7 @@ source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz{,.as
 sha256sums=('c24a37c63a67f53bdd09c5f287b5cff8e8b98f857bf348c577d454d3f74db049'
             'SKIP'
             'd5d3412e120f7369518688dfc512d5ba1ae3b054c35c179013ed91a207770e42')
-validgpgkeys=('97FC 712E 4C02 4BBE A48A  61ED 3A5C A953 F73C 700D')
+validpgpkeys=('97FC712E4C024BBEA48A61ED3A5CA953F73C700D')
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
