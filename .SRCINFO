@@ -34,9 +34,10 @@ pkgbase = gnome-shell-dev
 	depends = unzip
 	depends = gstreamer
 	depends = libibus
+	depends = bash-completion
 	optdepends = gnome-control-center: System settings
 	optdepends = evolution-data-server: Evolution calendar integration
-	provides = gnome-shell
+	provides = gnome-shell=3.35.91
 	conflicts = gnome-shell
 	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git
 	sha256sums = SKIP
