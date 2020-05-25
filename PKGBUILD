@@ -9,7 +9,7 @@
 pkgname=librepcb
 pkgver=0.1.4
 _pkgver=${pkgver/_/-}
-pkgrel=2
+pkgrel=3
 pkgdesc="A free EDA software to develop printed circuit boards"
 arch=('x86_64' 'i686')
 url="http://librepcb.org/"
@@ -29,7 +29,7 @@ validpgpkeys=('D6F9AF572228C5BCD6B538407EF3061F5C8D5E25')
 build() {
   cd "${srcdir}/librepcb-${_pkgver}/"
   mkdir -p build && cd build
-  qmake -r ../librepcb.pro PREFIX="${pkgdir}/usr"
+  qmake -r ../librepcb.pro CONFIG+=release PREFIX="${pkgdir}/usr"
   make
 }
 
