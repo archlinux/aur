@@ -3,7 +3,7 @@ pkgname=azure-sphere-sdk
 pkgmajor=20
 pkgminor=04
 pkgver=${pkgmajor}.${pkgminor}
-pkgrel=1
+pkgrel=2
 pkgdesc="Azure Sphere SDK Preview for Linux"
 arch=('x86_64')
 url="https://aka.ms/AzureSphereSDK"
@@ -36,7 +36,7 @@ build() {
   chmod 755 "${srcdir}"/azurespheresdk/Tools/azsphere_slattach
   chmod 755 "${srcdir}"/azurespheresdk/Tools/azsphere_connect.sh
 
-  for sysroot in `ls ${srcdir/azurespheresdk/Sysroots/`; do
+  for sysroot in `ls ${srcdir}/azurespheresdk/Sysroots/`; do
     chmod 755 "${srcdir}"/azurespheresdk/Sysroots/"${sysroot}"/tools/exp23-appsdk-linux-blanca.sh
     "${srcdir}"/azurespheresdk/Sysroots/"${sysroot}"/tools/exp23-appsdk-linux-blanca.sh -d "${srcdir}"/azurespheresdk/Sysroots/"${sysroot}"/tools/ -y
   done
@@ -54,8 +54,8 @@ package() {
   done
 
   mkdir -p "${pkgdir}"/usr/bin
-  for i in azsphere azsphere_connect.sh azsphere_slattach; do
-    ln -s ../../opt/azurespheresdk/Tools/"$i" "${pkgdir}"/usr/bin/"$i"
-  done
+  ln -s ../../opt/azurespheresdk/Tools/azsphere "${pkgdir}"/usr/bin/azsphere
+  ln -s ../../opt/azurespheresdk/Tools/azsphere_connect.sh "${pkgdir}"/usr/bin/azsphere_connect.sh
+  ln -s ../../opt/azurespheresdk/Tools/azsphere_slattach "${pkgdir}"/usr/bin/azsphere_slattach
 }
 

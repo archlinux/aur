@@ -1,7 +1,7 @@
 pkgbase = azure-sphere-sdk
 	pkgdesc = Azure Sphere SDK Preview for Linux
 	pkgver = 20.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aka.ms/AzureSphereSDK
 	install = azure-sphere-sdk.install
 	arch = x86_64
