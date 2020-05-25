@@ -1,6 +1,6 @@
 pkgname=mwoffliner
 pkgver=1.10.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Mediawiki/Parsoid HTML snapshot utility and ZIM file builder"
 arch=(any)
 url="https://github.com/openzim/mwoffliner#readme"
