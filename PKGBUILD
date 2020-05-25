@@ -3,7 +3,7 @@
 pkgname=snappy-player
 _pkgname=snappy
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Powerful media player with a minimalistic interface"
 arch=('x86_64')
 url="https://wiki.gnome.org/Apps/Snappy"
