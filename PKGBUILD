@@ -14,14 +14,11 @@ pkgname=(
   java-openjfx-doc
   java-openjfx-src
 )
-_majorver=13
+_majorver=14
 _minorver=0
-_securityver=0
-_updatever=14
-#pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
-pkgver=${_majorver}.u${_updatever}
-#_hg_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
-_hg_tag=${_majorver}+${_updatever}
+_securityver=2
+_updatever=0
+pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 pkgrel=1
 pkgdesc="Java OpenJFX ${_majorver} client application platform (open-source implementation of JavaFX)"
 arch=(x86_64)
@@ -53,27 +50,30 @@ makedepends=(
   zip
 )
 source=(
-  ${pkgbase}-${_hg_tag}::https://hg.openjdk.java.net/openjfx/${_majorver}-dev/rt/archive/${_hg_tag}.tar.bz2
+  ${pkgbase}-${pkgver//.u/+}::https://github.com/openjdk/jfx/archive/${pkgver//.u/+}/jfx-${pkgver//.u/+}.tar.gz
   gradle.properties
   java-openjfx-flags.patch
   java-openjfx-no-xlocale.patch
+  java-openjfx-gstreamer-lite-gcc10-compat.patch
 )
-sha256sums=('9958e615818c526250c36059ae6ba0c7523e192193c8b5d5ca672ebcd498f1ca'
+sha256sums=('4ed624e2a0c464526af50fae3115bca34357bc5d3bbe6e4bb608994dd9094a10'
             '2622aa35d733cc69f4421f1cd053bf425e89f93141cb52c9f016a9b425fc0cb6'
             'e76f202e8163a9a6e02138987bfc344a66f70aa30b8b699c6bdb41eec31c1465'
-            '220c63396561867a6d07ae81b6390160d8f91502587e4873998e3b7a83793a1c')
+            '220c63396561867a6d07ae81b6390160d8f91502587e4873998e3b7a83793a1c'
+            'd7f9db86854b1cb8ab973c2ff255e51a637b9c24af30144182202d33f01a9434')
 
 prepare() {
-  cd rt-${pkgver//.u/+}
+  cd jfx-${pkgver//.u/-}
 
   ln -sf ../gradle.properties .
   patch -Np1 -i ../java-openjfx-flags.patch
   patch -Np1 -i ../java-openjfx-no-xlocale.patch
+  patch -Np1 -i ../java-openjfx-gstreamer-lite-gcc10-compat.patch
   sed 's|, "-Werror"||g' -i buildSrc/linux.gradle
 }
 
 build() {
-  cd rt-${pkgver//.u/+}
+  cd jfx-${pkgver//.u/-}
 
   gradle zips
 }
@@ -102,7 +102,7 @@ package_java-openjfx() {
     webkit2gtk
   )
 
-  cd rt-${pkgver//.u/+}
+  cd jfx-${pkgver//.u/-}
 
   install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-${_majorver}-openjdk,share/licenses}
   cp -dr --no-preserve=ownership build/sdk/lib "${pkgdir}"/usr/lib/jvm/java-${_majorver}-openjdk/
@@ -112,7 +112,7 @@ package_java-openjfx() {
 }
 
 package_java-openjfx-doc() {
-  cd rt-${pkgver//.u/+}
+  cd jfx-${pkgver//.u/-}
 
   install -dm 755 "${pkgdir}"/usr/share/{doc,licenses}
   cp -dr --no-preserve=ownership build/javadoc "${pkgdir}"/usr/share/doc/java-openjfx
@@ -120,7 +120,7 @@ package_java-openjfx-doc() {
 }
 
 package_java-openjfx-src() {
-  cd rt-${pkgver//.u/+}
+  cd jfx-${pkgver//.u/-}
 
   install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-${_majorver}-openjdk,share/licenses}
   install -m 644 build/sdk/lib/src.zip "${pkgdir}"/usr/lib/jvm/java-${_majorver}-openjdk/javafx-src.zip
