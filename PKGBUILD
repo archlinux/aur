@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.0.r29.94e163588
+pkgver=1.7.0.r55.2b115d031
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -14,6 +14,7 @@ license=(
   LGPL2.1
   LGPL3
 )
+
 depends=(
   lib32-libaio
   lib32-libjpeg-turbo
@@ -49,7 +50,7 @@ prepare() {
 
 build() {
   cd build
-  
+
   cmake ../pcsx2 \
     -DCMAKE_TOOLCHAIN_FILE=cmake/linux-compiler-i386-multilib.cmake \
     -DCMAKE_BUILD_TYPE=Release \
@@ -58,7 +59,7 @@ build() {
     -DPLUGIN_DIR=/usr/lib32/pcsx2 \
     -DGAMEINDEX_DIR=/usr/share/pcsx2 \
     -DPACKAGE_MODE=ON \
-    -DXDG_STD=ON
+    -DXDG_STD=TRUE
   make
 }
 
