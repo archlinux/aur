@@ -3,7 +3,7 @@
 
 pkgname=mp3info
 pkgver=0.8.5a
-pkgrel=7
+pkgrel=8
 pkgdesc="An MP3 technical info viewer and ID3 1.x tag editor"
 arch=('x86_64')
 url="https://ibiblio.org/mp3info/"
