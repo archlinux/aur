@@ -5,10 +5,10 @@
 
 pkgname=ytop-git
 _pkgname=${pkgname%-git}
-pkgver=r101.115fb7f
-pkgrel=2
+pkgver=r228.dd3d53e
+pkgrel=1
 pkgdesc="A TUI system monitor written in Rust"
-arch=(x86_64)
+arch=('any')
 url="https://github.com/cjbassi/ytop"
 license=("MIT")
 makedepends=("git" "cargo")
