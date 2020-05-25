@@ -9,7 +9,7 @@ pkgver() {
   cd "${pkgname%-git}"
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r730.89f8ae6
+pkgver=r735.8f8a3d4
 pkgrel=2
 
 pkgdesc='Configure neomutt, isync, getmail and msmtp with pass for passwords'
@@ -21,7 +21,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'mutt-wizard')
 
 makedepends=('git')
-depends=('neomutt' 'isync' 'getmail' 'msmtp' 'notmuch-runtime' 'pass' 'urlscan')
+depends=('neomutt' 'isync' 'getmail-python3' 'msmtp' 'notmuch-runtime' 'pass' 'urlscan')
 optdepends=('imagemagick: view images inside of the neomutt TUI'
             'w3m: view HTML email and images inside of the neomutt TUI'
             'lynx: view HTML email inside of the neomutt TUI'
