@@ -24,7 +24,6 @@ pkgver() {
 prepare() {
   cd multipass
   git submodule update --init --recursive
-  sed -i "24 a #include <string>" include/multipass/ip_address.h #Build error fix
 }
 
 build() {
@@ -38,4 +37,4 @@ build() {
 package() {
   cd multipass/build
   make DESTDIR="${pkgdir}" install
-}
+}                                                                                                               
