@@ -2,7 +2,7 @@
 
 pkgname=fcitx-table-other
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides some other tables for Fcitx, fork from ibus-table-others, scim-tables.'
 arch=('any')
 url="https://github.com/fcitx/fcitx-table-other"
