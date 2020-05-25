@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rotors-control
+pkgbase = ros-noetic-rotors-control
 	pkgdesc = ROS - RotorS control package
 	pkgver = 2.2.3
 	pkgrel = 1
@@ -11,16 +11,16 @@ pkgbase = ros-melodic-rotors-control
 	license = ASL 2.0
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-cmake-modules
-	depends = ros-melodic-dynamic-reconfigure
-	depends = ros-melodic-geometry-msgs
-	depends = ros-melodic-mav-msgs
-	depends = ros-melodic-nav-msgs
-	depends = ros-melodic-roscpp
-	depends = ros-melodic-sensor-msgs
-	source = ros-melodic-rotors-control-2.2.3.tar.gz::https://github.com/ethz-asl/rotors_simulator/archive/2.2.3.tar.gz
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-cmake-modules
+	depends = ros-noetic-dynamic-reconfigure
+	depends = ros-noetic-geometry-msgs
+	depends = ros-noetic-mav-msgs
+	depends = ros-noetic-nav-msgs
+	depends = ros-noetic-roscpp
+	depends = ros-noetic-sensor-msgs
+	source = ros-noetic-rotors-control-2.2.3.tar.gz::https://github.com/ethz-asl/rotors_simulator/archive/2.2.3.tar.gz
 	sha256sums = 46e6be40ebd08ba41a4a532c1774228d240d11aa39ad82f9ab50e445dc4a6f20
 
-pkgname = ros-melodic-rotors-control
+pkgname = ros-noetic-rotors-control
 
