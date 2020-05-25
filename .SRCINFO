@@ -1,6 +1,6 @@
 pkgbase = java8-openjdk-jetbrains
-	pkgver = 8.u202.b1483.37
-	pkgrel = 2
+	pkgver = 8.u252.b1649.2
+	pkgrel = 1
 	url = https://github.com/JetBrains/jdk8u
 	arch = x86_64
 	license = custom
@@ -14,22 +14,22 @@ pkgbase = java8-openjdk-jetbrains
 	makedepends = fontconfig
 	makedepends = libcups
 	makedepends = alsa-lib
-	source = jdk8u-jb8u202-b1483.37.tar.gz::https://github.com/JetBrains/jdk8u/archive/jb8u202-b1483.37.tar.gz
-	source = corba-jb8u202-b1483.37.tar.gz::https://github.com/JetBrains/jdk8u_corba/archive/jb8u202-b1483.37.tar.gz
-	source = hotspot-jb8u202-b1483.37.tar.gz::https://github.com/JetBrains/jdk8u_hotspot/archive/jb8u202-b1483.37.tar.gz
-	source = jdk-jb8u202-b1483.37.tar.gz::https://github.com/JetBrains/jdk8u_jdk/archive/jb8u202-b1483.37.tar.gz
-	source = jaxws-jb8u202-b1483.37.tar.gz::https://github.com/JetBrains/jdk8u_jaxws/archive/jb8u202-b1483.37.tar.gz
-	source = jaxp-jb8u202-b1483.37.tar.gz::https://github.com/JetBrains/jdk8u_jaxp/archive/jb8u202-b1483.37.tar.gz
-	source = langtools-jb8u202-b1483.37.tar.gz::https://github.com/JetBrains/jdk8u_langtools/archive/jb8u202-b1483.37.tar.gz
-	source = nashorn-jb8u202-b1483.37.tar.gz::https://github.com/JetBrains/jdk8u_nashorn/archive/jb8u202-b1483.37.tar.gz
-	sha256sums = d132af8f137c02a3faef8e4a032112a5f727cb0d5b156c631890e82e3ac63dcf
-	sha256sums = c77163362c04f03e62c7f97d3dbe95365759229a5b13da76efa6c0251cf6c762
-	sha256sums = a67dfa1dce8704d426af4b1039deae915a841f2c4212ee938a88c11631334988
-	sha256sums = 8c738923146e205d662f973be1fdaace52e0c39e4fef3e986b32a48be6d3ca84
-	sha256sums = 7fba5b83f2cd2faca73ee65bce3b951a29601f34e9c1eac653ee4af10b79b95f
-	sha256sums = 21cb5f986236566bfd7555be87b56280d23020bf8e5ad8d4031f0c6a5883356b
-	sha256sums = 549a808846db98e6746bd4b95fdc8b70483e4baa1e3fc5eaa341dcec2ac65f2a
-	sha256sums = 4e962e58c989c20d5dc0c3ecd177b361aac132db2fb79dba06c38e9be8c5f777
+	source = jdk8u-jb8u252-b1649.2.tar.gz::https://github.com/JetBrains/jdk8u/archive/jb8u252-b1649.2.tar.gz
+	source = corba-jb8u252-b1649.2.tar.gz::https://github.com/JetBrains/jdk8u_corba/archive/jb8u252-b1649.2.tar.gz
+	source = hotspot-jb8u252-b1649.2.tar.gz::https://github.com/JetBrains/jdk8u_hotspot/archive/jb8u252-b1649.2.tar.gz
+	source = jdk-jb8u252-b1649.2.tar.gz::https://github.com/JetBrains/jdk8u_jdk/archive/jb8u252-b1649.2.tar.gz
+	source = jaxws-jb8u252-b1649.2.tar.gz::https://github.com/JetBrains/jdk8u_jaxws/archive/jb8u252-b1649.2.tar.gz
+	source = jaxp-jb8u252-b1649.2.tar.gz::https://github.com/JetBrains/jdk8u_jaxp/archive/jb8u252-b1649.2.tar.gz
+	source = langtools-jb8u252-b1649.2.tar.gz::https://github.com/JetBrains/jdk8u_langtools/archive/jb8u252-b1649.2.tar.gz
+	source = nashorn-jb8u252-b1649.2.tar.gz::https://github.com/JetBrains/jdk8u_nashorn/archive/jb8u252-b1649.2.tar.gz
+	sha256sums = edb30352909aa4d093fb8764633f1a3ac3c20e9f092f2d37cdcb9d51c6b1df90
+	sha256sums = a12d12ee45ea2873be3b0079d71aac7406816e1cfa3c7e4aea8d2451e91174e2
+	sha256sums = dad4c941e0f6e85f78b517b92e496746fd4f316229950eacd4949abcb2a00f2f
+	sha256sums = 9661b1833607c962c68478672f8696a15248f877b981f468f3c3b0a81dbc23d0
+	sha256sums = 36a3f5661814279295ccf4912e0ecfcb138877fe7aab184af1eca271d63b142d
+	sha256sums = af9d4da31cfd43387ab9c93f6e48a9d33d92df837d4af140ce026d76fc30d210
+	sha256sums = 9214e597c1b6b28b413379d4e2528d461bcd87627e6ee9ca2cce4c702f5a9343
+	sha256sums = 18c1d98162fc0f8ede2e7dd6f745df27d2833901065763abaa3e0191812e2588
 
 pkgname = jre8-openjdk-jetbrains-headless
 	pkgdesc = OpenJDK Java 8 headless runtime environment (with JetBrains patches)
@@ -46,7 +46,7 @@ pkgname = jre8-openjdk-jetbrains-headless
 pkgname = jre8-openjdk-jetbrains
 	pkgdesc = OpenJDK Java 8 full runtime environment (with JetBrains patches)
 	install = install_jre8-openjdk-jetbrains.sh
-	depends = jre8-openjdk-jetbrains-headless=8.u202.b1483.37-2
+	depends = jre8-openjdk-jetbrains-headless=8.u252.b1649.2-1
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	optdepends = icedtea-web: web browser plugin + Java Web Start
@@ -61,7 +61,7 @@ pkgname = jdk8-openjdk-jetbrains
 	pkgdesc = OpenJDK Java 8 development kit (with JetBrains patches)
 	install = install_jdk8-openjdk-jetbrains.sh
 	depends = java-environment-common
-	depends = jre8-openjdk-jetbrains=8.u202.b1483.37-2
+	depends = jre8-openjdk-jetbrains=8.u252.b1649.2-1
 	provides = java-environment=8
 	provides = java-environment-openjdk=8
 	provides = java-environment-openjdk-jetbrains=8

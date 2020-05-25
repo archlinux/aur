@@ -1,4 +1,5 @@
-# Maintainer: Guillaume ALAUX <guillaume@archlinux.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Guillaume ALAUX <guillaume@archlinux.org>
 # Contributor: Boyan Ding <stu_dby@126.com>
 
 # TODO
@@ -11,11 +12,11 @@ pkgname=('jre8-openjdk-jetbrains-headless' 'jre8-openjdk-jetbrains' 'jdk8-openjd
 pkgbase=java8-openjdk-jetbrains
 _java_ver=8
 # Found @ https://github.com/JetBrains/jdk8u/releases
-_jdk_update=202
-_jdk_build=1483.37
+_jdk_update=252
+_jdk_build=1649.2
 pkgver=${_java_ver}.u${_jdk_update}.b${_jdk_build}
 _repo_ver=jb${_java_ver}u${_jdk_update}-b${_jdk_build}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/JetBrains/jdk8u'
 license=('custom')
@@ -31,14 +32,14 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         langtools-${_repo_ver}.tar.gz::${_url_src}_langtools/archive/${_repo_ver}.tar.gz
         nashorn-${_repo_ver}.tar.gz::${_url_src}_nashorn/archive/${_repo_ver}.tar.gz)
 
-sha256sums=('d132af8f137c02a3faef8e4a032112a5f727cb0d5b156c631890e82e3ac63dcf'
-            'c77163362c04f03e62c7f97d3dbe95365759229a5b13da76efa6c0251cf6c762'
-            'a67dfa1dce8704d426af4b1039deae915a841f2c4212ee938a88c11631334988'
-            '8c738923146e205d662f973be1fdaace52e0c39e4fef3e986b32a48be6d3ca84'
-            '7fba5b83f2cd2faca73ee65bce3b951a29601f34e9c1eac653ee4af10b79b95f'
-            '21cb5f986236566bfd7555be87b56280d23020bf8e5ad8d4031f0c6a5883356b'
-            '549a808846db98e6746bd4b95fdc8b70483e4baa1e3fc5eaa341dcec2ac65f2a'
-            '4e962e58c989c20d5dc0c3ecd177b361aac132db2fb79dba06c38e9be8c5f777')
+sha256sums=('edb30352909aa4d093fb8764633f1a3ac3c20e9f092f2d37cdcb9d51c6b1df90'
+            'a12d12ee45ea2873be3b0079d71aac7406816e1cfa3c7e4aea8d2451e91174e2'
+            'dad4c941e0f6e85f78b517b92e496746fd4f316229950eacd4949abcb2a00f2f'
+            '9661b1833607c962c68478672f8696a15248f877b981f468f3c3b0a81dbc23d0'
+            '36a3f5661814279295ccf4912e0ecfcb138877fe7aab184af1eca271d63b142d'
+            'af9d4da31cfd43387ab9c93f6e48a9d33d92df837d4af140ce026d76fc30d210'
+            '9214e597c1b6b28b413379d4e2528d461bcd87627e6ee9ca2cce4c702f5a9343'
+            '18c1d98162fc0f8ede2e7dd6f745df27d2833901065763abaa3e0191812e2588')
 
 case "${CARCH}" in
   'x86_64') _JARCH=amd64 ; _DOC_ARCH=x86_64 ;;
