@@ -6,7 +6,7 @@
 
 pkgname=ttf-ms-fonts
 pkgver=2.0
-pkgrel=11
+pkgrel=12
 pkgdesc='Core TTF Fonts from Microsoft'
 arch=('any')
 url="http://corefonts.sourceforge.net"
@@ -23,7 +23,7 @@ _files=('andale32.exe'
         'trebuc32.exe'
         'verdan32.exe'
         'webdin32.exe')
-_dlpath="https://downloads.sourceforge.net/corefonts"
+_dlpath="https://downloads.sourceforge.net/project/corefonts/the%20fonts/final"
 source=("${_files[@]/#/$_dlpath/}")
 sha256sums=('0524fe42951adc3a7eb870e32f0920313c71f170c859b5f770d82b4ee111e970'
             '85297a4d146e9c87ac6f74822734bdee5f4b2a722d7eaa584b7f2cbf76f478f6'
