@@ -19,8 +19,8 @@ pkgbase = khefin
 	source = https://github.com/mjec/khefin/archive/v0.5.0.tar.gz
 	source = https://github.com/mjec/khefin/releases/download/v0.5.0/v0.5.0.tar.gz.sig
 	validpgpkeys = 6927F7D45F567621E14121DDFD1D670D31F82A81
-	sha256sums = 8fc370abcfac0e6beb99ed237e8e7222e51e270ad0b6b8952cce67c83fbd54cd
-	sha256sums = b63dffc2a38398faae9d8b0722cbaa6e6c5742bb6b77db29684fddd2f24124ab
+	sha256sums = 005280dd7c66e7d69be7a9580c1d480e61704f2620b61e85487f0eda747cd6a8
+	sha256sums = 642ca4c10ed2ab13633f2bc81cb52cbe5acde59ff7e0ca47a1d6fd1f3d0264a2
 
 pkgname = khefin
 
