@@ -10,7 +10,7 @@ url="http://ambermd.org/"
 license=(GPL LGPL)
 arch=(x86_64)
 depends=(zlib bzip2 gcc8-libs gcc8-fortran tk libx11 libxext blas lapack python python-numpy python-scipy python-matplotlib python-setuptools perl perl-chemistry-mol)
-makedepends=('cmake>=3.8.1' make gcc8 gcc8-fortran flex bison patch tcsh imake openmpi-gcc8 'cuda>=7.5')
+makedepends=('cmake>=3.8.1' make gcc8 flex bison patch tcsh imake openmpi-gcc8 'cuda>=7.5')
 optdepends=('openmpi-gcc8: MPI support'
             'cuda: GPU acceleration support'
             'plumed: metadynamics support'

@@ -9,7 +9,6 @@ pkgbase = ambertools
 	makedepends = cmake>=3.8.1
 	makedepends = make
 	makedepends = gcc8
-	makedepends = gcc8-fortran
 	makedepends = flex
 	makedepends = bison
 	makedepends = patch
