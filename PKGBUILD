@@ -8,7 +8,7 @@
 set -u
 pkgname='openswan'
 pkgver='2.6.51.5'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Open Source implementation of IPsec for Linux'
 arch=('i686' 'x86_64')
 url='https://www.openswan.org'
@@ -56,6 +56,9 @@ prepare() {
 build() {
   set -u
   cd "${_srcdir}"
+  if [ "${pkgver}" = '2.6.51.5' ]; then
+    CFLAGS+=' -fcommon'
+  fi
   make USE_XAUTH='true' USE_OBJDIR='true' programs
   set +u
 }
