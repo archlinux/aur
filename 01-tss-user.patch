@@ -1,0 +1,36 @@
+Author: Daniel Baumann <daniel@debian.org>
+Author: Pierre Chifflier <pollux@debian.org>
+Description: Avoiding chown/chmod for tss user at build-time.
+ Note that we do not use NOUSERCHECK or --enable-usercheck=no,
+ since these are also used in the sources and will change the
+ binary.
+
+Index: trousers/dist/Makefile.am
+===================================================================
+--- trousers.orig/dist/Makefile.am
++++ trousers/dist/Makefile.am
+@@ -3,24 +3,10 @@ EXTRA_DIST = system.data.auth system.dat
+ 
+ install: install-exec-hook
+ 	if test ! -e ${DESTDIR}/@sysconfdir@/tcsd.conf; then mkdir -p ${DESTDIR}/@sysconfdir@ && cp tcsd.conf ${DESTDIR}/@sysconfdir@; fi
+-if !NOUSERCHECK
+-	/bin/chown tss:tss ${DESTDIR}/@sysconfdir@/tcsd.conf || true
+-	/bin/chmod 0600 ${DESTDIR}/@sysconfdir@/tcsd.conf
+-endif
+ 
+ install-exec-hook:
+ 	/bin/sh -c 'if [ ! -e ${DESTDIR}/@localstatedir@/lib/tpm ];then mkdir -p ${DESTDIR}/@localstatedir@/lib/tpm; fi'
+-if !NOUSERCHECK
+-	/usr/sbin/groupadd tss || true
+-	/usr/sbin/useradd -r tss -g tss || true
+-	/bin/chown tss:tss ${DESTDIR}/@localstatedir@/lib/tpm || true
+-	/bin/chmod 0700 ${DESTDIR}/@localstatedir@/lib/tpm
+-endif
+ 
+ uninstall-hook:
+ 	rm ${DESTDIR}/@sysconfdir@/tcsd.conf
+ 	rmdir ${DESTDIR}/@localstatedir@/lib/tpm
+-if !NOUSERCHECK
+-	/usr/sbin/userdel tss || true
+-	/usr/sbin/groupdel tss || true
+-endif
