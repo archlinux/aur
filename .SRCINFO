@@ -1,7 +1,7 @@
 pkgbase = kiwix-lib
 	pkgdesc = Library providing the Kiwix software core
 	pkgver = 9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kiwix/kiwix-lib
 	arch = armv7h
 	arch = i686
