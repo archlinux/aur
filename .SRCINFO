@@ -15,6 +15,7 @@ pkgbase = fancontrol-kcm-git
 	depends = kdeclarative
 	depends = ki18n
 	depends = kpackage
+	depends = gettext
 	provides = fancontrol-kcm
 	conflicts = fancontrol-kcm
 	source = git://github.com/Maldela/fancontrol-gui.git
