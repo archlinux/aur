@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 docker run --rm -v "$PWD:/build" archlinux/base bash -c "
     pacman -Syu --noconfirm base-devel pacman-contrib;
     useradd -u $UID -m build;
