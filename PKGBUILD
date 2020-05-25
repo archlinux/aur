@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/Nudin/getrid"
 license=('GPL')
 depends=('python' 'python-urwid' 'pacgraph')
-source=('git+https://github.com/Nudin/getrid.git')
+source=('$pkgname::git+https://github.com/Nudin/getrid.git')
 md5sums=('SKIP')
 
 package() {
