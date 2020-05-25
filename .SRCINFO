@@ -1,11 +1,11 @@
 pkgbase = node-prune
 	pkgdesc = Remove unnecessary files from node_modules
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tj/node-prune
 	arch = x86_64
 	license = MIT
-	makedepends = go-pie
+	makedepends = go
 	source = node-prune-1.1.0.tar.gz::https://github.com/tj/node-prune/archive/v1.1.0.tar.gz
 	sha256sums = 77739f945de5157efc3bafa7affb7b88dcc64bae42495158dabc2673c417192c
 

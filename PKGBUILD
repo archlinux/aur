@@ -3,12 +3,12 @@
 
 pkgname=node-prune
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Remove unnecessary files from node_modules'
 arch=('x86_64')
 url="https://github.com/tj/$pkgname"
 license=('MIT')
-makedepends=('go-pie')
+makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('77739f945de5157efc3bafa7affb7b88dcc64bae42495158dabc2673c417192c')
 
@@ -20,12 +20,18 @@ prepare() {
 
 build() {
     cd "$pkgname-$pkgver"
-    go build -trimpath .
+    go build \
+        -trimpath \
+        -buildmode=pie \
+        -mod=readonly \
+        -modcacherw \
+        -ldflags "-extldflags ${LDFLAGS}" \
+        .
 }
 
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 -t "$pkgdir/usr/bin/" "$pkgname"
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" {History,Readme}.md
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" {History,Readme}.md
 }
