@@ -1,0 +1,17 @@
+pkgbase = typemute
+	pkgdesc = Mute yourself while typing
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/cherti/typemute
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = go
+	depends = sudo
+	depends = expect
+	depends = libinput
+	source = https://github.com/cherti/typemute/archive/v0.1.tar.gz
+	sha256sums = 490c70405876dc5b92e9a8498bc53a2093a75903054a40260ce49366ecb7f27f
+
+pkgname = typemute
+
