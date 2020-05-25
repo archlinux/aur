@@ -6,12 +6,11 @@ pkgver=r86.2c65c9369900391717373e1e0263753740ca7fa2
 pkgrel=1
 pkgdesc="gitlab command line interface (patched fork)"
 arch=('x86_64')
-url="https://github.com/numa08/$pkgname"
+url="https://github.com/diegostamigni/$pkgname"
 license=('MIT')
-makedepends=('go' 'libgit2')
 depends=('libgit2')
-options=('!strip' '!emptydirs')
-source=("https://github.com/diegostamigni/$pkgname/archive/${pkgver#r*.}.zip")
+makedepends=('go')
+source=("$pkgname-${pkgver#r*.}.zip::$url/archive/${pkgver#r*.}.zip")
 sha256sums=('f1afad863c4af9ff23c4f7346975ab1b9e9e0d396b63f5f8c62b0ac8bc185969')
 
 prepare() {
@@ -23,13 +22,16 @@ prepare() {
 
 build() {
     cd "$pkgname-${pkgver#r*.}"
-
-    GOPATH="$srcdir" go build
+    export GOPATH="$srcdir"
+    go build \
+        -trimpath \
+        -buildmode=pie \
+        -ldflags "-extldflags ${LDFLAGS}" \
+        .
 }
 
 package() {
     cd "$pkgname-${pkgver#r*.}"
-
     install -Dm755 "$pkgname-${pkgver#r*.}" "$pkgdir/usr/bin/git-lab"
-    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
 }

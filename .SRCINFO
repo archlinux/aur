@@ -2,15 +2,12 @@ pkgbase = git-gitlab
 	pkgdesc = gitlab command line interface (patched fork)
 	pkgver = r86.2c65c9369900391717373e1e0263753740ca7fa2
 	pkgrel = 1
-	url = https://github.com/numa08/git-gitlab
+	url = https://github.com/diegostamigni/git-gitlab
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	makedepends = libgit2
 	depends = libgit2
-	options = !strip
-	options = !emptydirs
-	source = https://github.com/diegostamigni/git-gitlab/archive/2c65c9369900391717373e1e0263753740ca7fa2.zip
+	source = git-gitlab-2c65c9369900391717373e1e0263753740ca7fa2.zip::https://github.com/diegostamigni/git-gitlab/archive/2c65c9369900391717373e1e0263753740ca7fa2.zip
 	sha256sums = f1afad863c4af9ff23c4f7346975ab1b9e9e0d396b63f5f8c62b0ac8bc185969
 
 pkgname = git-gitlab
