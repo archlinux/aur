@@ -2,7 +2,7 @@
 pkgname=mekhq
 pkgver=0.46.1
 _pkgver=
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="MekHQ is a java helper program for the MegaMek game that allows users to load a list of entities from an XML file, perform repairs and customizations, and then save the new entities to another XML file that can be loaded into MegaMek."
 
@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/MegaMek/mekhq"
 license=('GPL')
 groups=()
-depends=('jdk13-openjdk')
+depends=('jdk-openjdk')
 provides=('megamek')
 conflicts=('megamek')
 
