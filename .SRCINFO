@@ -1,7 +1,7 @@
 pkgbase = wluma-als-emulator-git
 	pkgdesc = Ambient light sensor emulator for wluma
 	pkgver = 1.0.0.r11.ga7afd79
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cyrinux/wluma-als-emulator
 	arch = any
 	license = MIT
