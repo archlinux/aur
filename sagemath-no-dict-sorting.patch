@@ -2720,7 +2720,7 @@ index e00570bc2c..50b1178323 100644
          """
          n = self.order()
 diff --git a/src/sage/graphs/graph.py b/src/sage/graphs/graph.py
-index c46dde0a40..6043454e5f 100644
+index cda883c703..a0e45092d5 100644
 --- a/src/sage/graphs/graph.py
 +++ b/src/sage/graphs/graph.py
 @@ -3820,7 +3820,7 @@ class Graph(GenericGraph):
@@ -3670,39 +3670,6 @@ index 747f5dcda7..65ef9d9e95 100644
  
      """
      result = { "required"  : [],
-diff --git a/src/sage/misc/package.py b/src/sage/misc/package.py
-index 2b1106cdc4..7c5e519bfa 100644
---- a/src/sage/misc/package.py
-+++ b/src/sage/misc/package.py
-@@ -198,18 +198,21 @@ def list_packages(*pkg_types, **opts):
-          'zn_poly',
-          'zope_interface']
-         sage: L['ppl']  # optional - build
--        {'installed': True,
-+        {'name': 'ppl',
-+         'type': 'standard',
-+         'source': 'normal',
-          'installed_version': '...',
--         'remote_version': '...',
--         'type': 'standard'}
-+         'installed': True,
-+         'remote_version': '...'}
- 
-         sage: L = list_packages(pkg_sources=['pip'], local=True)  # optional - build
-         sage: L['beautifulsoup4']                    # optional - build
--        {'installed': ...,
--         'installed_version': ...,
--         'remote_version': None,
-+        {'name': 'beautifulsoup4',
-+         'type': 'optional',
-          'source': 'pip',
--         'type': 'optional'}
-+         'installed_version': ...,
-+         'installed': False,
-+         'remote_version': None}
- 
-         sage: L = list_packages(pkg_sources=['pip'])   # optional - build internet
-         sage: L['beautifulsoup4']         # optional - build internet
 diff --git a/src/sage/modular/arithgroup/arithgroup_perm.py b/src/sage/modular/arithgroup/arithgroup_perm.py
 index 6559327295..7a2bec3b04 100644
 --- a/src/sage/modular/arithgroup/arithgroup_perm.py
@@ -4308,10 +4275,10 @@ index e5e92420a2..83fa565962 100644
              sage: g = f^2 + f - 2; g
              3*s + 3*t + s^2 + 5*s*t + t^2 + O(s, t)^3
 diff --git a/src/sage/rings/number_field/S_unit_solver.py b/src/sage/rings/number_field/S_unit_solver.py
-index 7612ed0ddc..38f4d81746 100644
+index 02160e9930..646a24f56c 100644
 --- a/src/sage/rings/number_field/S_unit_solver.py
 +++ b/src/sage/rings/number_field/S_unit_solver.py
-@@ -1597,7 +1597,7 @@ def clean_rfv_dict(rfv_dictionary):
+@@ -1596,7 +1596,7 @@ def clean_rfv_dict(rfv_dictionary):
          sage: len(rfv_dict)
          4
          sage: rfv_dict
@@ -4320,7 +4287,7 @@ index 7612ed0ddc..38f4d81746 100644
      """
  
      for a, val in list(rfv_dictionary.items()):
-@@ -1761,31 +1761,31 @@ def construct_comp_exp_vec(rfv_to_ev_dict, q):
+@@ -1760,31 +1760,31 @@ def construct_comp_exp_vec(rfv_to_ev_dict, q):
          sage: from sage.rings.number_field.S_unit_solver import construct_comp_exp_vec
          sage: rfv_to_ev_dict = {(6, 6): [(3, 0)], (5, 6): [(1, 2)], (5, 4): [(5, 3)], (6, 2): [(5, 5)], (2, 5): [(0, 1)], (5, 5): [(3, 4)], (4, 4): [(0, 2)], (6, 3): [(1, 4)], (3, 6): [(5, 4)], (2, 2): [(0, 4)], (3, 5): [(1, 0)], (6, 4): [(1, 1)], (3, 2): [(1, 3)], (2, 6): [(4, 5)], (4, 5): [(4, 3)], (2, 3): [(2, 3)], (4, 2): [(4, 0)], (6, 5): [(5, 2)], (3, 3): [(3, 2)], (5, 3): [(5, 0)], (4, 6): [(2, 1)], (3, 4): [(3, 5)], (4, 3): [(0, 5)], (5, 2): [(3, 1)], (2, 4): [(2, 0)]}
          sage: construct_comp_exp_vec(rfv_to_ev_dict, 7)
@@ -4406,7 +4373,7 @@ index 6bac81e277..3c5892f9b8 100644
          try:
              return self.__stats
 diff --git a/src/sage/rings/polynomial/laurent_polynomial.pyx b/src/sage/rings/polynomial/laurent_polynomial.pyx
-index bed2266fad..597be70bda 100644
+index 17904ad8b1..b356714dba 100644
 --- a/src/sage/rings/polynomial/laurent_polynomial.pyx
 +++ b/src/sage/rings/polynomial/laurent_polynomial.pyx
 @@ -2148,7 +2148,7 @@ cdef class LaurentPolynomial_mpair(LaurentPolynomial):
@@ -4419,7 +4386,7 @@ index bed2266fad..597be70bda 100644
          cdef dict D = <dict> self._poly._mpoly_dict_recursive(self._parent.variable_names(),
                                                                self._parent.base_ring())
 diff --git a/src/sage/rings/polynomial/multi_polynomial.pyx b/src/sage/rings/polynomial/multi_polynomial.pyx
-index 34762d8de4..9b3fd022f0 100644
+index 7000594fdf..13e3b80e39 100644
 --- a/src/sage/rings/polynomial/multi_polynomial.pyx
 +++ b/src/sage/rings/polynomial/multi_polynomial.pyx
 @@ -504,7 +504,7 @@ cdef class MPolynomial(CommutativeRingElement):
@@ -4432,10 +4399,10 @@ index 34762d8de4..9b3fd022f0 100644
          TESTS::
  
 diff --git a/src/sage/rings/polynomial/multi_polynomial_ideal.py b/src/sage/rings/polynomial/multi_polynomial_ideal.py
-index cc587596dd..456fa3ecf5 100644
+index 35c2374fbc..5f3deeb69c 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_ideal.py
 +++ b/src/sage/rings/polynomial/multi_polynomial_ideal.py
-@@ -3641,11 +3641,11 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
+@@ -3678,11 +3678,11 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
  
              sage: loads(dumps(I)).__getstate__()
              (Monoid of ideals of Multivariate Polynomial Ring in x, y over Finite Field of size 32003,
@@ -4477,7 +4444,7 @@ index 42001d4fcf..e1a0dad01b 100644
          cdef poly *p
          cdef ring *r
 diff --git a/src/sage/rings/polynomial/polydict.pyx b/src/sage/rings/polynomial/polydict.pyx
-index 277eaf1844..67ebd2515f 100644
+index f86c7c7990..ad624ed901 100644
 --- a/src/sage/rings/polynomial/polydict.pyx
 +++ b/src/sage/rings/polynomial/polydict.pyx
 @@ -285,7 +285,7 @@ cdef class PolyDict:

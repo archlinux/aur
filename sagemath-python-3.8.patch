@@ -1,3 +1,34 @@
+diff --git a/src/sage/doctest/forker.py b/src/sage/doctest/forker.py
+index c91a49c06b..9fb9364b8c 100644
+--- a/src/sage/doctest/forker.py
++++ b/src/sage/doctest/forker.py
+@@ -1068,7 +1068,7 @@ class SageDocTestRunner(doctest.DocTestRunner, object):
+             False
+             sage: doctests, extras = FDS.create_doctests(globs)
+             sage: ex0 = doctests[0].examples[0]
+-            sage: compiler = lambda ex: compile(ex.source, '<doctest sage.doctest.forker[0]>', 'single', 32768, 1)
++            sage: compiler = lambda ex: compile(ex.source, '<doctest sage.doctest.forker[0]>', 'single', 524288, 1)
+             sage: DTR.compile_and_execute(ex0, compiler, globs)
+             1764
+             sage: globs['doctest_var']
+@@ -1081,7 +1081,7 @@ class SageDocTestRunner(doctest.DocTestRunner, object):
+         Now we can execute some more doctests to see the dependencies. ::
+ 
+             sage: ex1 = doctests[0].examples[1]
+-            sage: compiler = lambda ex:compile(ex.source, '<doctest sage.doctest.forker[1]>', 'single', 32768, 1)
++            sage: compiler = lambda ex:compile(ex.source, '<doctest sage.doctest.forker[1]>', 'single', 524288, 1)
+             sage: DTR.compile_and_execute(ex1, compiler, globs)
+             sage: sorted(list(globs.set))
+             ['R', 'a']
+@@ -1093,7 +1093,7 @@ class SageDocTestRunner(doctest.DocTestRunner, object):
+         ::
+ 
+             sage: ex2 = doctests[0].examples[2]
+-            sage: compiler = lambda ex:compile(ex.source, '<doctest sage.doctest.forker[2]>', 'single', 32768, 1)
++            sage: compiler = lambda ex:compile(ex.source, '<doctest sage.doctest.forker[2]>', 'single', 524288, 1)
+             sage: DTR.compile_and_execute(ex2, compiler, globs)
+             a + 42
+             sage: list(globs.set)
 diff --git a/src/sage/algebras/lie_algebras/structure_coefficients.py b/src/sage/algebras/lie_algebras/structure_coefficients.py
 index d1d7c2ed98..c32f29448c 100644
 --- a/src/sage/algebras/lie_algebras/structure_coefficients.py
@@ -488,7 +519,7 @@ index 99ad85b695..4d2642366a 100644
              ]
          """
          alg = kwds.get('algorithm', None)
-@@ -3672,13 +3672,13 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
+@@ -3749,13 +3749,13 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
              sage: P.<x,y,z> = ProjectiveSpace(K,2)
              sage: f = DynamicalSystem_projective([x^2+z^2, y^2+x^2, z^2+y^2])
              sage: f.preperiodic_points(0,1)
@@ -509,7 +540,7 @@ index 99ad85b695..4d2642366a 100644
  
          ::
  
-@@ -3893,13 +3893,13 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
+@@ -3970,13 +3970,13 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
              sage: P.<x,y,z> = ProjectiveSpace(K,2)
              sage: f = DynamicalSystem_projective([x^2+z^2, y^2+x^2, z^2+y^2])
              sage: f.periodic_points(1)
@@ -528,7 +559,7 @@ index 99ad85b695..4d2642366a 100644
  
          ::
  
-@@ -5497,7 +5497,7 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
+@@ -5573,7 +5573,7 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
              sage: f.rational_periodic_points()
              doctest:warning
              ...
@@ -537,7 +568,7 @@ index 99ad85b695..4d2642366a 100644
          """
          from sage.misc.superseded import deprecation
          deprecation(28109, "use sage.dynamics.arithmetic_dynamics.projective_ds.all_periodic_points instead")
-@@ -5941,8 +5941,8 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
+@@ -6017,8 +6017,8 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
               (w^2 + w - 25/16 : 1),
               (-w : 1),
               (-w^2 + 29/16 : 1),
@@ -547,7 +578,7 @@ index 99ad85b695..4d2642366a 100644
               (-w^2 + 21/16 : 1),
               (w^2 - 21/16 : 1),
               (w^2 + w - 33/16 : 1),
-@@ -6070,8 +6070,8 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
+@@ -6146,8 +6146,8 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
              sage: g = f.conjugate(m)
              sage: f.conjugating_set(g) # long time
              [
@@ -758,7 +789,7 @@ diff --git a/src/sage/geometry/polyhedron/library.py b/src/sage/geometry/polyhed
 index d66997fc95..57a039d4d6 100644
 --- a/src/sage/geometry/polyhedron/library.py
 +++ b/src/sage/geometry/polyhedron/library.py
-@@ -2287,12 +2287,12 @@ class Polytopes():
+@@ -2603,12 +2603,12 @@ class Polytopes():
  
              sage: perm_a2_reg = polytopes.generalized_permutahedron(['A',2],regular=True)
              sage: perm_a2_reg.vertices()
@@ -775,7 +806,7 @@ index d66997fc95..57a039d4d6 100644
              sage: perm_a2_reg.is_inscribed()
              True
              sage: perm_a3_reg = polytopes.generalized_permutahedron(['A',3],regular=True)
-@@ -2304,20 +2304,20 @@ class Polytopes():
+@@ -2620,20 +2620,20 @@ class Polytopes():
              sage: perm_a2_inexact = polytopes.generalized_permutahedron(['A',2],exact=False)
              sage: perm_a2_inexact.vertices()
              (A vertex at (0.0, 1.0),
@@ -832,7 +863,7 @@ diff --git a/src/sage/graphs/generic_graph.py b/src/sage/graphs/generic_graph.py
 index 9f7e1f418e..0ec459e7d3 100644
 --- a/src/sage/graphs/generic_graph.py
 +++ b/src/sage/graphs/generic_graph.py
-@@ -5211,7 +5211,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5209,7 +5209,7 @@ class GenericGraph(GenericGraph_pyx):
          This method is deprecated since Sage-4.4.1.alpha2. Please use instead:
  
              sage: g.layout(layout = "planar", save_pos = True)
@@ -841,7 +872,7 @@ index 9f7e1f418e..0ec459e7d3 100644
          """
          deprecation(24494, 'This method is replaced by the method layout. '
                             'Please use layout(layout="planar", save_pos=True) '
-@@ -5265,25 +5265,25 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5263,25 +5263,25 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: g = graphs.PathGraph(10)
              sage: g.layout(layout='planar', save_pos=True, test=True)
@@ -880,7 +911,7 @@ index 9f7e1f418e..0ec459e7d3 100644
              sage: g = graphs.CompleteGraph(5)
              sage: g.layout(layout='planar', save_pos=True, test=True, set_embedding=True)
              Traceback (most recent call last):
-@@ -5809,17 +5809,17 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5900,17 +5900,17 @@ class GenericGraph(GenericGraph_pyx):
              sage: T = graphs.TetrahedralGraph()
              sage: T.faces({0: [1, 3, 2], 1: [0, 2, 3], 2: [0, 3, 1], 3: [0, 1, 2]})
              [[(0, 1), (1, 2), (2, 0)],
@@ -908,7 +939,7 @@ diff --git a/src/sage/graphs/graph.py b/src/sage/graphs/graph.py
 index cab8faa833..9f00d87eb4 100644
 --- a/src/sage/graphs/graph.py
 +++ b/src/sage/graphs/graph.py
-@@ -6770,7 +6770,7 @@ class Graph(GenericGraph):
+@@ -6780,7 +6780,7 @@ class Graph(GenericGraph):
              sage: all(F.degree(u) == len(cliques) for u,cliques in d.items())
              True
              sage: F.cliques_containing_vertex(vertices=[(0, 1)])
@@ -917,7 +948,7 @@ index cab8faa833..9f00d87eb4 100644
  
          """
          import networkx
-@@ -7147,7 +7147,7 @@ class Graph(GenericGraph):
+@@ -7157,7 +7157,7 @@ class Graph(GenericGraph):
          Vertices may be arbitrary --- check that :trac:`24898` is fixed::
  
              sage: Graph({(1,2):[(2,3)],(2,3):[(1,2)]}).modular_decomposition()
@@ -1001,7 +1032,7 @@ index dc11b61e4d..24090589d4 100644
  
          sage: g = graphs.PathGraph(3)
          sage: g.is_planar(set_embedding=True)
-@@ -157,7 +157,7 @@ def _normal_label(g, comb_emb, external_face):
+@@ -177,7 +177,7 @@ def _normal_label(g, comb_emb, external_face):
          True
          sage: faces = g.faces(g._embedding)
          sage: _triangulate(g, g._embedding)
@@ -1010,7 +1041,7 @@ index dc11b61e4d..24090589d4 100644
          sage: tn = _normal_label(g, g._embedding, faces[0])
          sage: _realizer(g, tn)
          ({0: [<sage.graphs.schnyder.TreeNode object at ...>]},
-@@ -381,7 +381,7 @@ def _realizer(g, x, example=False):
+@@ -401,7 +401,7 @@ def _realizer(g, x, example=False):
          True
          sage: faces = g.faces(g._embedding)
          sage: _triangulate(g, g._embedding)
@@ -1019,7 +1050,7 @@ index dc11b61e4d..24090589d4 100644
          sage: tn = _normal_label(g, g._embedding, faces[0])
          sage: _realizer(g, tn)
          ({0: [<sage.graphs.schnyder.TreeNode object at ...>]},
-@@ -468,12 +468,12 @@ def _compute_coordinates(g, x):
+@@ -488,12 +488,12 @@ def _compute_coordinates(g, x):
          True
          sage: faces = g.faces(g._embedding)
          sage: _triangulate(g, g._embedding)

@@ -642,7 +642,7 @@ index 962205f..1c9a81d 100644
  
          The ideals must share the same ring::
  
-@@ -4005,9 +4005,9 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
+@@ -4106,9 +4106,9 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
              sage: P.<a,b,c> = PolynomialRing(ZZ,3)
              sage: I = P * (a + 2*b + 2*c - 1, a^2 - a + 2*b^2 + 2*c^2, 2*a*b + 2*b*c - b)
              sage: I.groebner_basis()

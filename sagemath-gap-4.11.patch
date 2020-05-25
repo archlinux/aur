@@ -167,7 +167,7 @@ diff --git a/src/sage/groups/perm_gps/permgroup.py b/src/sage/groups/perm_gps/pe
 index 8512b01122..245fdd868b 100644
 --- a/src/sage/groups/perm_gps/permgroup.py
 +++ b/src/sage/groups/perm_gps/permgroup.py
-@@ -840,7 +840,7 @@ class PermutationGroup_generic(FiniteGroup):
+@@ -852,7 +852,7 @@ class PermutationGroup_generic(FiniteGroup):
             sage: f=PG._coerce_map_from_(MG)
             sage: mg = MG.an_element()
             sage: p = f(mg); p
@@ -176,7 +176,7 @@ index 8512b01122..245fdd868b 100644
             sage: PG(p._gap_()) == p
             True
  
-@@ -889,9 +889,9 @@ class PermutationGroup_generic(FiniteGroup):
+@@ -901,9 +901,9 @@ class PermutationGroup_generic(FiniteGroup):
              False
              sage: g1, g2, g3 = G.gens()
              sage: P(g1*g2)
