@@ -17,13 +17,29 @@ pkgver() {
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    sed -i 's/\.\/gdb_pince\/gdb.*\/bin\/gdb/\/usr\/bin\/gdb/g' libPINCE/type_defs.py
-    sed -i 's/\ssudo python3 PINCE.py/cd \/usr\/share\/PINCE \&\& sudo python3 PINCE.py/' PINCE.sh
-    sed -i 's/OS=.*/OS="Arch"/' PINCE.sh
-    install -d "$pkgdir/usr/bin"
-    install PINCE.sh "$pkgdir/usr/bin/pince"
-    install -d "$pkgdir/usr/share/PINCE"
-    install PINCE.py COPYING AUTHORS THANKS "$pkgdir/usr/share/PINCE"
-    cp -r GUI libPINCE media "$pkgdir/usr/share/PINCE"
+  cd "$srcdir/$pkgname"
+
+  # Compile and copy libscanmem dependencies.
+  git submodule update --init --recursive
+  mkdir -p libPINCE/libscanmem
+
+  cd scanmem
+  sh autogen.sh
+  ./configure --prefix="$pkgdir/usr"
+  make libscanmem.la
+  cp --preserve .libs/libscanmem.so ../libPINCE/libscanmem/libscanmem.so
+  cp --preserve gui/scanmem.py ../libPINCE/libscanmem
+  cp --preserve gui/misc.py ../libPINCE/libscanmem
+  cd ..
+
+  sed -i 's/import misc/from \. import misc/g' libPINCE/libscanmem/scanmem.py
+  sed -i 's/\.\/gdb_pince\/gdb.*\/bin\/gdb/\/usr\/bin\/gdb/g' libPINCE/type_defs.py
+  sed -i 's/\ssudo python3 PINCE.py/cd \/usr\/share\/PINCE \&\& sudo python3 PINCE.py/' PINCE.sh
+  sed -i 's/OS=.*/OS="Arch"/' PINCE.sh
+
+  install -d "$pkgdir/usr/bin"
+  install PINCE.sh "$pkgdir/usr/bin/pince"
+  install -d "$pkgdir/usr/share/PINCE"
+  install PINCE.py COPYING AUTHORS THANKS "$pkgdir/usr/share/PINCE"
+  cp -r GUI libPINCE media "$pkgdir/usr/share/PINCE"
 }
