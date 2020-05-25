@@ -1,41 +1,43 @@
-# Maintainer: birdflesh <antkoul at gmail dot com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: birdflesh <antkoul at gmail dot com>
 # Contributor: Army <uli.armbruster@gmail.com>
 # Contributor: Thayer Williams <thayer@archlinux.org>
 # Contributor: dale <dale@archlinux.org>
 
 pkgname=ttf-ms-fonts
 pkgver=2.0
-pkgrel=10
-pkgdesc="Core TTF Fonts from Microsoft"
+pkgrel=11
+pkgdesc='Core TTF Fonts from Microsoft'
 arch=('any')
-url="http://corefonts.sourceforge.net/"
-license=('custom:microsoft')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-makedepends=('libarchive>=3.0.2')
+url="http://corefonts.sourceforge.net"
+license=('custom:Microsoft')
 provides=('ttf-font')
-_sfpath="http://downloads.sourceforge.net/corefonts"
-source=($_sfpath/andale32.exe $_sfpath/arial32.exe  $_sfpath/arialb32.exe
-        $_sfpath/comic32.exe  $_sfpath/courie32.exe $_sfpath/georgi32.exe
-        $_sfpath/impact32.exe $_sfpath/times32.exe  $_sfpath/trebuc32.exe
-        $_sfpath/verdan32.exe $_sfpath/webdin32.exe)
-md5sums=('cbdc2fdd7d2ed0832795e86a8b9ee19a'
-         '9637df0e91703179f0723ec095a36cb5'
-         'c9089ae0c3b3d0d8c4b0a95979bb9ff0'
-         '2b30de40bb5e803a0452c7715fc835d1'
-         '4e412c772294403ab62fb2d247d85c60'
-         '4d90016026e2da447593b41a8d8fa8bd'
-         '7907c7dd6684e9bade91cff82683d9d7'
-         'ed39c8ef91b9fb80f76f702568291bd5'
-         '0d7ea16cac6261f8513a061fbfcdb2b5'
-         '12d2a75f8156e10607be1eaa8e8ef120'
-         '230a1d13a365b22815f502eb24d9149b')
+_files=('andale32.exe'
+        'arial32.exe'
+        'arialb32.exe'
+        'comic32.exe'
+        'courie32.exe'
+        'georgi32.exe'
+        'impact32.exe'
+        'times32.exe'
+        'trebuc32.exe'
+        'verdan32.exe'
+        'webdin32.exe')
+_dlpath="https://downloads.sourceforge.net/corefonts"
+source=("${_files[@]/#/$_dlpath/}")
+sha256sums=('0524fe42951adc3a7eb870e32f0920313c71f170c859b5f770d82b4ee111e970'
+            '85297a4d146e9c87ac6f74822734bdee5f4b2a722d7eaa584b7f2cbf76f478f6'
+            'a425f0ffb6a1a5ede5b979ed6177f4f4f4fdef6ae7c302a7b7720ef332fec0a8'
+            '9c6df3feefde26d4e41d4a4fe5db2a89f9123a772594d7f59afd062625cd204e'
+            'bb511d861655dde879ae552eb86b134d6fae67cb58502e6ff73ec5d9151f3384'
+            '2c2c7dcda6606ea5cf08918fb7cd3f3359e9e84338dc690013f20cd42e930301'
+            '6061ef3b7401d9642f5dfdb5f2b376aa14663f6275e60a51207ad4facf2fccfb'
+            'db56595ec6ef5d3de5c24994f001f03b2a13e37cee27bc25c58f6f43e8f807ab'
+            '5a690d9bb8510be1b8b4fe49f1f2319651fe51bbe54775ddddd8ef0bd07fdac9'
+            'c1cb61255e363166794e47664e2f21af8e3a26cb6346eb8d2ae2fa85dd5aad96'
+            '64595b5abc1080fba8610c5c34fab5863408e806aafe84653ca8575bed17d75a')
 
-package() { 
-  install -dm755 "$pkgdir/usr/share/fonts/TTF"
-
-  for font in *.{ttf,TTF}; do
-    install -m644 $font "$pkgdir/usr/share/fonts/TTF/$(echo $font|tr A-Z a-z)"
-  done
-
-  install -Dm644 Licen.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package() {
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" *.ttf *.TTF
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" Licen.TXT
 }
