@@ -1,6 +1,6 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=buildbox-casd
-pkgver=0.0.5
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Local cache and proxy for remote CAS servers"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('buildbox-common')
 makedepends=('cmake' )
 source=("https://gitlab.com/BuildGrid/buildbox/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('cff100b0afcd013f43757a1a9a2e0fdf03894bf0680592d1f3b643c26ea29698')
+sha256sums=('48613dfef451291f447c9c7c7ad7ea29b3ea1e35ce25d47771c1761d9985eda3')
 
 build() {
     [ -d build ] && rm -rf build; mkdir build
