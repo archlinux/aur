@@ -1,4 +1,5 @@
-# Maintainer: Guillaume ALAUX <guillaume@archlinux.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Guillaume ALAUX <guillaume@archlinux.org>
 # Contributor: Boyan Ding <stu_dby@126.com>
 
 # TODO
@@ -10,7 +11,7 @@
 pkgname=('jre8-openjdk-shenandoah-headless' 'jre8-openjdk-shenandoah' 'jdk8-openjdk-shenandoah' 'openjdk8-shenandoah-src' 'openjdk8-shenandoah-doc')
 pkgbase=java8-openjdk-shenandoah
 _java_ver=8
-_jdk_update=222
+_jdk_update=262
 _jdk_build=02
 _repo_ver=aarch64-shenandoah-jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgrel=1
@@ -30,14 +31,14 @@ source=("jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz"
         "langtools-${_repo_ver}.tar.gz::${_url_src}/langtools/archive/${_repo_ver}.tar.gz"
         "nashorn-${_repo_ver}.tar.gz::${_url_src}/nashorn/archive/${_repo_ver}.tar.gz")
 
-sha256sums=('78f90dce375b9e84e8695b802ce8619458bec086e568e7443c8a3e9d2b748f38'
-            '4ace1b4919225722b3cdf6fc378f5a9965d40db289d84b11a4f36ab81ab39fd6'
-            '736b9206b9e52ed8ee439cfcacd981f6b2a6e0f4d75d590b34373046744010bc'
-            '02e94e4998676fa54b54171be2f3ba5d56ba29c695dc73b261a6c0a0936c5e26'
-            '334ce2d600d684abd2f2a37cd593c046d2f1dfe1df7214f72b041b93b9f0277c'
-            'ec3576aa040bd2c527b34d1a2a2b4ec0c718af34a00c0b586af91223d1206874'
-            '36dc7340ae4aed80159b21ab95b0de79d5a266e988ab19c668c502b561b17593'
-            '53d2d7396160d39850aeb06e552b8dcb1d88eaa3c3071917c1e8bb5c96b3c14f')
+sha256sums=('0bda934299f7c5cde64dcfb096269bab926ab67ced34339b09cc760596807224'
+            'f8a993291e88193533660297ceddb73b11967731c233df5d50534f59cf5cd8ad'
+            '69c0a61f650a9acb7e6e07947a005e151433698b05956c232aca5e19ac27989c'
+            '3fd6b3af79ba1b396c775bc89f9855d5e38bce4893cf76e05ef407bea0e5d308'
+            'dc796608cc2838cb3097d777ce84ce8776205c7d5cb4f9e35501e9d04c6ef6d2'
+            'f724f62bf2fe2058aebd4fdf6596fe3fe3f1d7e9c926a1bd22e9d3195aa627df'
+            '6d446b9d28199972e55fde509ebfa8585cf968bb77b1d72abed6defd9126639a'
+            'a067a3de924f16cd96190e9bc535947e230d2a197a092d2b4afac4ecedd66c28')
 
 case "${CARCH}" in
   'x86_64') _JARCH=amd64 ; _DOC_ARCH=x86_64 ;;
