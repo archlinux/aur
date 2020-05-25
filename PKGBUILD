@@ -2,10 +2,9 @@
 # Contributor: Frank Siegert <frank dot siegert at googlemail dot com>
 pkgname=hepmc
 pkgver=2.06.10
-pkgrel=6
+pkgrel=7
 pkgdesc="A particle physics package for storing collision events from Monte Carlo generators"
 arch=('x86_64')
-url="http://lcgapp.cern.ch/project/simu/HepMC/"
 url="http://hepmc.web.cern.ch/"
 license=('GPL2')
 depends=('bash')
