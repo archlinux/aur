@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p
-pkgver=20200523
+pkgver=20200525
 pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI'
 arch=('x86_64')
@@ -11,9 +11,9 @@ depends=('freetype2' 'glu' 'hidapi' 'libgl' 'libpng' 'libsamplerate'
          'minizip' 'p7zip' 'qt5-base' 'qt5-websockets' 'sdl2' 'sdl2_net'
          'zlib' 'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'nasm' 'icoutils')
-provides=('mupen64plus-gui' 'mupenplus-video-gliden64')
-conflicts=('mupen64plus-gui' 'mupenplus-video-gliden64' 'mupen64plus')
-_commit=a89a751bbfd2b7fe31f23acd3bfb2e41a3a7be2c
+provides=('mupen64plus-gui' 'mupen64plus-video-gliden64')
+conflicts=('mupen64plus-gui' 'mupen64plus-video-gliden64' 'mupen64plus')
+_commit=b5cbdf8173649ec18ac76ff402e0a93313fecc58
 source=("git+https://github.com/loganmc10/m64p.git#commit=${_commit}"
         'git+https://github.com/m64p/mupen64plus-gui.git'
         'git+https://github.com/m64p/mupen64plus-audio-sdl2.git'
