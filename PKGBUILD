@@ -15,7 +15,7 @@ optdepends=('hub')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("https://github.com/zaquestion/${pkgname%-bin}/releases/download/v$pkgver/lab_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('d7d91e03f1030a740d440abaa0dc48eb54029807b921dad6b497c2641f54b295f916892a623286f39f53468a2477c327f51794b82dd55c763b62fd62b1bd0db9')
+sha256sums=('abba37f6808daba347650b44249ef4793c849cc90a6b020a51e71dcfa3d34b99')
 
 build () {
     ./lab completion bash > completion.bash
