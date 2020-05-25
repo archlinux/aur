@@ -2,7 +2,7 @@
 
 pkgname=fcitx-configtool
 pkgver=0.4.10
-pkgrel=3
+pkgrel=4
 pkgdesc="GTK based config tool for Fcitx"
 arch=('x86_64')
 url="http://fcitx.googlecode.com/"
