@@ -35,6 +35,7 @@ pkgbase = gnome-shell-dev
 	depends = gstreamer
 	depends = libibus
 	depends = bash-completion
+	depends = gnome-autoar
 	optdepends = gnome-control-center: System settings
 	optdepends = evolution-data-server: Evolution calendar integration
 	provides = gnome-shell=3.37.1
