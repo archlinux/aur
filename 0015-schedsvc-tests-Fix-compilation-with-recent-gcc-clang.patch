@@ -1,0 +1,129 @@
+From 85fa39ac5e307904378bbee903c87ac230bce52e Mon Sep 17 00:00:00 2001
+From: Dmitry Timoshkov <dmitry@baikal.ru>
+Date: Wed, 15 Apr 2020 21:43:42 +0800
+Subject: [PATCH 15/15] schedsvc/tests: Fix compilation with recent gcc/clang
+ versions.
+
+Signed-off-by: Dmitry Timoshkov <dmitry@baikal.ru>
+Signed-off-by: Alexandre Julliard <julliard@winehq.org>
+---
+ dlls/schedsvc/tests/atsvcapi.c | 6 +++---
+ dlls/schedsvc/tests/rpcapi.c   | 6 +++---
+ dlls/taskschd/task.c           | 4 ++--
+ include/wine/atsvc.idl         | 2 +-
+ include/wine/schrpc.idl        | 2 +-
+ 5 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/dlls/schedsvc/tests/atsvcapi.c b/dlls/schedsvc/tests/atsvcapi.c
+index d7d48a122c..f10c9d0723 100644
+--- a/dlls/schedsvc/tests/atsvcapi.c
++++ b/dlls/schedsvc/tests/atsvcapi.c
+@@ -31,7 +31,7 @@
+ #define JOB_ADD_CURRENT_DATE 0x08
+ #define JOB_NONINTERACTIVE   0x10
+ 
+-extern handle_t rpc_handle;
++extern handle_t atsvc_handle;
+ 
+ static int test_failures, test_skipped;
+ 
+@@ -69,7 +69,7 @@ START_TEST(atsvcapi)
+ 
+     hr = RpcStringBindingComposeA(NULL, ncalrpc, NULL, NULL, NULL, &binding_str);
+     ok(hr == RPC_S_OK, "RpcStringBindingCompose error %#x\n", hr);
+-    hr = RpcBindingFromStringBindingA(binding_str, &rpc_handle);
++    hr = RpcBindingFromStringBindingA(binding_str, &atsvc_handle);
+     ok(hr == RPC_S_OK, "RpcBindingFromStringBinding error %#x\n", hr);
+     hr = RpcStringFreeA(&binding_str);
+     ok(hr == RPC_S_OK, "RpcStringFree error %#x\n", hr);
+@@ -173,7 +173,7 @@ skip_tests_delete:
+ skip_tests:
+     SetUnhandledExceptionFilter(old_exception_filter);
+ 
+-    hr = RpcBindingFree(&rpc_handle);
++    hr = RpcBindingFree(&atsvc_handle);
+     ok(hr == RPC_S_OK, "RpcBindingFree error %#x\n", hr);
+ }
+ 
+diff --git a/dlls/schedsvc/tests/rpcapi.c b/dlls/schedsvc/tests/rpcapi.c
+index 9d9557fe1c..b791a047dc 100644
+--- a/dlls/schedsvc/tests/rpcapi.c
++++ b/dlls/schedsvc/tests/rpcapi.c
+@@ -25,7 +25,7 @@
+ 
+ #include "wine/test.h"
+ 
+-extern handle_t rpc_handle;
++extern handle_t schrpc_handle;
+ 
+ static LONG CALLBACK rpc_exception_filter(EXCEPTION_POINTERS *ptrs)
+ {
+@@ -103,7 +103,7 @@ START_TEST(rpcapi)
+ 
+     hr = RpcStringBindingComposeA(NULL, ncalrpc, NULL, NULL, NULL, &binding_str);
+     ok(hr == RPC_S_OK, "RpcStringBindingCompose error %#x\n", hr);
+-    hr = RpcBindingFromStringBindingA(binding_str, &rpc_handle);
++    hr = RpcBindingFromStringBindingA(binding_str, &schrpc_handle);
+     ok(hr == RPC_S_OK, "RpcBindingFromStringBinding error %#x\n", hr);
+     hr = RpcStringFreeA(&binding_str);
+     ok(hr == RPC_S_OK, "RpcStringFree error %#x\n", hr);
+@@ -537,7 +537,7 @@ todo_wine
+         MIDL_user_free(path);
+     }
+ 
+-    hr = RpcBindingFree(&rpc_handle);
++    hr = RpcBindingFree(&schrpc_handle);
+     ok(hr == RPC_S_OK, "RpcBindingFree error %#x\n", hr);
+ }
+ 
+diff --git a/dlls/taskschd/task.c b/dlls/taskschd/task.c
+index b75cfff8af..8d81a18b3f 100644
+--- a/dlls/taskschd/task.c
++++ b/dlls/taskschd/task.c
+@@ -3843,7 +3843,7 @@ static HRESULT WINAPI TaskService_Connect(ITaskService *iface, VARIANT server, V
+     DWORD len;
+     HRESULT hr;
+     RPC_WSTR binding_str;
+-    extern handle_t rpc_handle;
++    extern handle_t schrpc_handle;
+ 
+     TRACE("%p,%s,%s,%s,%s\n", iface, debugstr_variant(&server), debugstr_variant(&user),
+           debugstr_variant(&domain), debugstr_variant(&password));
+@@ -3882,7 +3882,7 @@ static HRESULT WINAPI TaskService_Connect(ITaskService *iface, VARIANT server, V
+ 
+     hr = RpcStringBindingComposeW(NULL, ncalrpc, NULL, NULL, NULL, &binding_str);
+     if (hr != RPC_S_OK) return hr;
+-    hr = RpcBindingFromStringBindingW(binding_str, &rpc_handle);
++    hr = RpcBindingFromStringBindingW(binding_str, &schrpc_handle);
+     RpcStringFreeW(&binding_str);
+     if (hr != RPC_S_OK) return hr;
+ 
+diff --git a/include/wine/atsvc.idl b/include/wine/atsvc.idl
+index e95e6cf110..5e7121d016 100644
+--- a/include/wine/atsvc.idl
++++ b/include/wine/atsvc.idl
+@@ -23,7 +23,7 @@ import "ocidl.idl";
+ 
+ [
+     uuid(1ff70682-0a51-30e8-076d-740be8cee98b),
+-    implicit_handle(handle_t rpc_handle),
++    implicit_handle(handle_t atsvc_handle),
+     version(1.0),
+     pointer_default(unique)
+ ]
+diff --git a/include/wine/schrpc.idl b/include/wine/schrpc.idl
+index 4af709d8dd..944f283081 100644
+--- a/include/wine/schrpc.idl
++++ b/include/wine/schrpc.idl
+@@ -26,7 +26,7 @@ import "ocidl.idl";
+ 
+ [
+     uuid(86d35949-83c9-4044-b424-db363231fd0c),
+-    implicit_handle(handle_t rpc_handle),
++    implicit_handle(handle_t schrpc_handle),
+     version(1.0),
+     pointer_default(unique)
+ ]
+-- 
+2.26.2
+

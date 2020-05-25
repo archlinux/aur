@@ -1,0 +1,33 @@
+From 4ed8ec7b19ae8ddce24b71b772af2d5079df1cfa Mon Sep 17 00:00:00 2001
+From: Michael Cronenworth <mike@cchtml.com>
+Date: Thu, 23 Jan 2020 17:05:20 -0600
+Subject: [PATCH 04/15] dsound: Global variable compatibility update for gcc
+ 10.
+
+Signed-off-by: Michael Cronenworth <mike@cchtml.com>
+Signed-off-by: Andrew Eikum <aeikum@codeweavers.com>
+Signed-off-by: Alexandre Julliard <julliard@winehq.org>
+---
+ dlls/dsound/dsound_private.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/dlls/dsound/dsound_private.h b/dlls/dsound/dsound_private.h
+index 69c4a2f390..930c3e92ec 100644
+--- a/dlls/dsound/dsound_private.h
++++ b/dlls/dsound/dsound_private.h
+@@ -188,9 +188,9 @@ HRESULT IDirectSoundBufferImpl_Duplicate(
+     IDirectSoundBufferImpl **ppdsb,
+     IDirectSoundBufferImpl *pdsb) DECLSPEC_HIDDEN;
+ void secondarybuffer_destroy(IDirectSoundBufferImpl *This) DECLSPEC_HIDDEN;
+-const IDirectSound3DListenerVtbl ds3dlvt DECLSPEC_HIDDEN;
+-const IDirectSound3DBufferVtbl ds3dbvt DECLSPEC_HIDDEN;
+-const IKsPropertySetVtbl iksbvt DECLSPEC_HIDDEN;
++extern const IDirectSound3DListenerVtbl ds3dlvt DECLSPEC_HIDDEN;
++extern const IDirectSound3DBufferVtbl ds3dbvt DECLSPEC_HIDDEN;
++extern const IKsPropertySetVtbl iksbvt DECLSPEC_HIDDEN;
+ 
+ HRESULT IKsPrivatePropertySetImpl_Create(REFIID riid, void **ppv) DECLSPEC_HIDDEN;
+ 
+-- 
+2.26.2
+

@@ -1,0 +1,28 @@
+From 86f5e75a30e10e691c08d7eb88f76f2313b79440 Mon Sep 17 00:00:00 2001
+From: Michael Cronenworth <mike@cchtml.com>
+Date: Thu, 23 Jan 2020 17:05:19 -0600
+Subject: [PATCH 03/15] crypt32: Global variable compatibility update for gcc
+ 10.
+
+Signed-off-by: Michael Cronenworth <mike@cchtml.com>
+Signed-off-by: Alexandre Julliard <julliard@winehq.org>
+---
+ dlls/crypt32/crypt32_private.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dlls/crypt32/crypt32_private.h b/dlls/crypt32/crypt32_private.h
+index 3d0129e7d4..d92eb1a157 100644
+--- a/dlls/crypt32/crypt32_private.h
++++ b/dlls/crypt32/crypt32_private.h
+@@ -152,7 +152,7 @@ BOOL WINAPI CRYPT_AsnEncodePubKeyInfoNoNull(DWORD dwCertEncodingType,
+  */
+ HCRYPTPROV WINAPI I_CryptGetDefaultCryptProv(ALG_ID);
+ 
+-HINSTANCE hInstance DECLSPEC_HIDDEN;
++extern HINSTANCE hInstance DECLSPEC_HIDDEN;
+ 
+ void crypt_oid_init(void) DECLSPEC_HIDDEN;
+ void crypt_oid_free(void) DECLSPEC_HIDDEN;
+-- 
+2.26.2
+

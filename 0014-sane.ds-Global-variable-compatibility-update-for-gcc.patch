@@ -1,0 +1,72 @@
+From 5bca9742ab71828c297e23fb1513a21bbd0ea0fb Mon Sep 17 00:00:00 2001
+From: Michael Cronenworth <mike@cchtml.com>
+Date: Thu, 23 Jan 2020 17:05:24 -0600
+Subject: [PATCH 14/15] sane.ds: Global variable compatibility update for gcc
+ 10.
+
+Signed-off-by: Michael Cronenworth <mike@cchtml.com>
+Signed-off-by: Alexandre Julliard <julliard@winehq.org>
+---
+ dlls/sane.ds/sane_i.h    |  6 ++++--
+ dlls/sane.ds/sane_main.c | 18 ++++++++++++++++++
+ 2 files changed, 22 insertions(+), 2 deletions(-)
+
+diff --git a/dlls/sane.ds/sane_i.h b/dlls/sane.ds/sane_i.h
+index 941e8b9e1b..9351bdc222 100644
+--- a/dlls/sane.ds/sane_i.h
++++ b/dlls/sane.ds/sane_i.h
+@@ -36,7 +36,7 @@
+ #include "twain.h"
+ 
+ #ifdef SONAME_LIBSANE
+-#define MAKE_FUNCPTR(f) typeof(f) * p##f DECLSPEC_HIDDEN;
++#define MAKE_FUNCPTR(f) extern typeof(f) * p##f DECLSPEC_HIDDEN;
+ MAKE_FUNCPTR(sane_init)
+ MAKE_FUNCPTR(sane_exit)
+ MAKE_FUNCPTR(sane_get_devices)
+@@ -84,7 +84,9 @@ struct tagActiveDS
+     TW_FIX32            defaultXResolution;
+     BOOL                YResolutionSet;
+     TW_FIX32            defaultYResolution;
+-} activeDS DECLSPEC_HIDDEN;
++};
++
++extern struct tagActiveDS activeDS DECLSPEC_HIDDEN;
+ 
+ /* Helper functions */
+ extern TW_UINT16 SANE_SaneCapability (pTW_CAPABILITY pCapability, TW_UINT16 action) DECLSPEC_HIDDEN;
+diff --git a/dlls/sane.ds/sane_main.c b/dlls/sane.ds/sane_main.c
+index 7af0a2321a..0cf211d098 100644
+--- a/dlls/sane.ds/sane_main.c
++++ b/dlls/sane.ds/sane_main.c
+@@ -30,9 +30,27 @@
+ 
+ WINE_DEFAULT_DEBUG_CHANNEL(twain);
+ 
++struct tagActiveDS activeDS;
++
+ DSMENTRYPROC SANE_dsmentry;
+ 
+ #ifdef SONAME_LIBSANE
++#define MAKE_FUNCPTR(f) typeof(f) * p##f;
++MAKE_FUNCPTR(sane_init)
++MAKE_FUNCPTR(sane_exit)
++MAKE_FUNCPTR(sane_get_devices)
++MAKE_FUNCPTR(sane_open)
++MAKE_FUNCPTR(sane_close)
++MAKE_FUNCPTR(sane_get_option_descriptor)
++MAKE_FUNCPTR(sane_control_option)
++MAKE_FUNCPTR(sane_get_parameters)
++MAKE_FUNCPTR(sane_start)
++MAKE_FUNCPTR(sane_read)
++MAKE_FUNCPTR(sane_cancel)
++MAKE_FUNCPTR(sane_set_io_mode)
++MAKE_FUNCPTR(sane_get_select_fd)
++MAKE_FUNCPTR(sane_strstatus)
++#undef MAKE_FUNCPTR
+ 
+ HINSTANCE SANE_instance;
+ 
+-- 
+2.26.2
+

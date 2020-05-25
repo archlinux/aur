@@ -1,0 +1,50 @@
+From 3304bad49c12f996e5bc236a2d94b88914279c48 Mon Sep 17 00:00:00 2001
+From: Michael Cronenworth <mike@cchtml.com>
+Date: Thu, 23 Jan 2020 17:05:26 -0600
+Subject: [PATCH 10/15] twain_32: Global variable compatibility update for gcc
+ 10.
+
+Signed-off-by: Michael Cronenworth <mike@cchtml.com>
+Signed-off-by: Alexandre Julliard <julliard@winehq.org>
+---
+ dlls/twain_32/twain32_main.c | 4 +++-
+ dlls/twain_32/twain_i.h      | 6 +++---
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/dlls/twain_32/twain32_main.c b/dlls/twain_32/twain32_main.c
+index b1beb96958..0f8ee14430 100644
+--- a/dlls/twain_32/twain32_main.c
++++ b/dlls/twain_32/twain32_main.c
+@@ -29,7 +29,9 @@
+ 
+ WINE_DEFAULT_DEBUG_CHANNEL(twain);
+ 
+-extern HINSTANCE DSM_hinstance;
++TW_UINT16 DSM_twCC;
++activeDS *activeSources;
++HINSTANCE DSM_hinstance;
+ 
+ BOOL WINAPI DllMain (HINSTANCE hinstance, DWORD reason, LPVOID reserved)
+ {
+diff --git a/dlls/twain_32/twain_i.h b/dlls/twain_32/twain_i.h
+index 7939d233bb..ad513458cd 100644
+--- a/dlls/twain_32/twain_i.h
++++ b/dlls/twain_32/twain_i.h
+@@ -45,11 +45,11 @@ typedef struct tagActiveDS
+     HWND                event_window;
+ } activeDS;
+ 
+-TW_UINT16 DSM_twCC DECLSPEC_HIDDEN;             /* current condition code of Source Manager */
++extern TW_UINT16 DSM_twCC DECLSPEC_HIDDEN;             /* current condition code of Source Manager */
+ 
+-activeDS *activeSources DECLSPEC_HIDDEN;	/* list of active data sources */
++extern activeDS *activeSources DECLSPEC_HIDDEN;	/* list of active data sources */
+ 
+-HINSTANCE DSM_hinstance DECLSPEC_HIDDEN;
++extern HINSTANCE DSM_hinstance DECLSPEC_HIDDEN;
+ 
+ /* Implementation of operation triplets (From Application to Source Manager) */
+ extern TW_UINT16 TWAIN_CloseDS
+-- 
+2.26.2
+

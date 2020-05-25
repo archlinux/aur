@@ -1,0 +1,44 @@
+From 9c2e60675e7c39ba1d73069c5d4c6740eae4fcbb Mon Sep 17 00:00:00 2001
+From: Michael Cronenworth <mike@cchtml.com>
+Date: Thu, 23 Jan 2020 17:05:21 -0600
+Subject: [PATCH 13/15] gphoto2.ds: Global variable compatibility update for
+ gcc 10.
+
+Signed-off-by: Michael Cronenworth <mike@cchtml.com>
+Signed-off-by: Alexandre Julliard <julliard@winehq.org>
+---
+ dlls/gphoto2.ds/gphoto2_i.h    | 4 +++-
+ dlls/gphoto2.ds/gphoto2_main.c | 2 ++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/dlls/gphoto2.ds/gphoto2_i.h b/dlls/gphoto2.ds/gphoto2_i.h
+index 9ab8bbbf33..4171fcae4f 100644
+--- a/dlls/gphoto2.ds/gphoto2_i.h
++++ b/dlls/gphoto2.ds/gphoto2_i.h
+@@ -100,7 +100,9 @@ struct tagActiveDS
+     struct jpeg_decompress_struct	jd;
+     struct jpeg_error_mgr		jerr;
+ #endif
+-} activeDS DECLSPEC_HIDDEN;
++};
++
++extern struct tagActiveDS activeDS DECLSPEC_HIDDEN;
+ 
+ /* Helper functions */
+ extern TW_UINT16 GPHOTO2_SaneCapability (pTW_CAPABILITY pCapability, TW_UINT16 action) DECLSPEC_HIDDEN;
+diff --git a/dlls/gphoto2.ds/gphoto2_main.c b/dlls/gphoto2.ds/gphoto2_main.c
+index 28100414cc..4d71c89e2e 100644
+--- a/dlls/gphoto2.ds/gphoto2_main.c
++++ b/dlls/gphoto2.ds/gphoto2_main.c
+@@ -33,6 +33,8 @@
+ 
+ WINE_DEFAULT_DEBUG_CHANNEL(twain);
+ 
++struct tagActiveDS activeDS;
++
+ DSMENTRYPROC GPHOTO2_dsmentry;
+ 
+ #ifdef HAVE_GPHOTO2
+-- 
+2.26.2
+

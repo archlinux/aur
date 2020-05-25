@@ -1,0 +1,32 @@
+From 7e210f15577c25e6b90ce523b4db63d972172e3a Mon Sep 17 00:00:00 2001
+From: Gerald Pfeifer <gerald@pfeifer.com>
+Date: Thu, 23 Jan 2020 23:09:00 +0100
+Subject: [PATCH 01/15] winedump: Add a default case to numeric_leaf().
+
+This addresses two warnings issues by GCC 10 (currently in development
+stage 4, so this is unlikely to change):
+
+msc.c:687:9: warning: 'value' may be used uninitialized in this function
+msc.c:301:13: warning: 'value' may be used uninitialized in this function
+
+Signed-off-by: Gerald Pfeifer <gerald@pfeifer.com>
+Signed-off-by: Alexandre Julliard <julliard@winehq.org>
+---
+ tools/winedump/msc.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tools/winedump/msc.c b/tools/winedump/msc.c
+index fbe7f9e541..6843f899b1 100644
+--- a/tools/winedump/msc.c
++++ b/tools/winedump/msc.c
+@@ -206,6 +206,7 @@ static int numeric_leaf(int* value, const unsigned short int* leaf)
+     {
+     case fv_integer: *value = fv.v.i; break;
+     case fv_longlong: *value = (unsigned)fv.v.llu; printf("bad conversion\n"); break;
++    default: assert( 0 ); *value = 0;
+     }
+     return len;
+ }
+-- 
+2.26.2
+
