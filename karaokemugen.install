@@ -9,6 +9,6 @@ post_upgrade() {
 }
 
 post_remove() {
-    echo "The media files downloaded are still in the directory you set (/opt/karaokemugen/app by default)."
+    echo "The media files downloaded are still in the directory you set (~/KaraokeMugen/ by default)."
     echo "Delete them to free space if you want."
 }

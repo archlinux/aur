@@ -12,11 +12,12 @@
 
 check_postgres() {
     sudo -u postgres -g postgres pg_ctl status -D /var/lib/postgres/data &> /dev/null
-    if [ $? -eq 4 ]; then
+    EXIT_STATUS=$?
+    if [ $EXIT_STATUS -eq 4 ]; then
         echo -e "${_COL_YELLOW_}Postgres is not initialized, initializing..."
         sudo -H -u postgres -g postgres initdb -D /var/lib/postgres/data
         check_postgres
-    elif [ $? -eq 3 ]; then
+    elif [ $EXIT_STATUS -eq 3 ]; then
         echo -e "${_COL_YELLOW_}Postgres is not running, starting..."
         sudo systemctl restart postgresql
         check_postgres
@@ -53,57 +54,6 @@ setup_postgres() {
     sudo -u postgres -g postgres -H -- psql -c "CREATE USER karaokemugen_app WITH ENCRYPTED PASSWORD 'musubi'; GRANT ALL PRIVILEGES ON DATABASE karaokemugen_app TO karaokemugen_app;"
     sudo -u postgres -g postgres -H -- psql -d karaokemugen_app -c "CREATE EXTENSION unaccent;"
     echo -e "${_COL_GREEN_}karaokemugen_app database created!"
-}
-
-apply_config() {
-    # TODO : interactively ask for some options (location of medias, etc...)
-    sudo tee /opt/karaokemugen/config.yml > /dev/null <<EOT
-App:
-  JwtSecret: $(uuid)
-System:
-  Binaries:
-    Postgres:
-      Linux: /usr/bin/
-EOT
-}
-
-create_system_user() {
-    if grep -q "^karaokemugen:" /etc/passwd; then
-        echo -e "${_BEGIN_}Using the existing ${_COL_YELLOW_}karaokemugen${_COL_BBLUE_} system user..."
-    else
-        echo -e "${_BEGIN_}Creating ${_COL_YELLOW_}karaokemugen${_COL_BBLUE_} system user..."
-        if grep -q "^karaokemugen:" /etc/groups; then
-            sudo useradd -g karaokemugen -M -d /opt/karaokemugen karaokemugen
-        else
-            sudo useradd -G audio -U -M -d /opt/karaokemugen karaokemugen
-        fi
-    fi
-}
-
-add_user_to_group() {
-    echo -e "${_BEGIN_}Adding you (${_COL_YELLOW_}$USER${_COL_BBLUE_}) to ${_COL_YELLOW_}karaokemugen${_COL_BBLUE_} group..."
-    if grep -q "^karaokemugen:" /etc/group; then
-        sudo usermod -a -G karaokemugen $USER
-        echo -e "${_COL_GREEN_}Successfully added ${_COL_YELLOW_}$USER${_COL_GREEN_} to ${_COL_YELLOW_}karaokemugen${_COL_GREEN_} group"
-    else
-        echo -e "${_BEGIN_}You need first to install Karaoke Mugen by executing ${_COL_YELLOW_}\`karaokemugen-install\`${_COL_BBLUE_}."
-        exit 1
-    fi
-}
-
-setup_pulsesocket() {
-    echo -e "${_BEGIN_}Creating a PulseAudio socket for sound..."
-    if grep -q "load-module module-native-protocol-unix auth-anonymous=1 socket=/tmp/pulseaudio" /etc/pulse/default.pa; then
-        # Already insalled
-        echo -e "${_COL_YELLOW_}PulseAudio socket is already exsiting. Skipping"
-    else
-        sudo tee -a /etc/pulse/default.pa > /dev/null <<EOF
-
-# Karaoke Mugen AUR Package workaround
-load-module module-native-protocol-unix auth-anonymous=1 socket=/tmp/pulseaudio
-EOF
-        echo -e "${_COL_GREEN_}PulseAudio socket created."
-    fi
 }
 
 # use colors only if we have them
@@ -148,9 +98,5 @@ check_mugen
 
 setup_postgres
 
-create_system_user
-add_user_to_group
-sudo chown -R karaokemugen:karaokemugen /opt/karaokemugen
-
-apply_config
+echo -e "${_BEGIN_}Done! Go ahead and launch Karaoke Mugen using the desktop entry"
 
