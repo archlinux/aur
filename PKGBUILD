@@ -9,7 +9,7 @@ pkgdesc="Biomolecular simulation package (tools only)"
 url="http://ambermd.org/"
 license=(GPL LGPL)
 arch=(x86_64)
-depends=(zlib bzip2 gcc8-libs tk libx11 libxext blas lapack python python-numpy python-scipy python-matplotlib python-setuptools perl perl-chemistry-mol)
+depends=(zlib bzip2 gcc8-libs gcc8-fortran tk libx11 libxext blas lapack python python-numpy python-scipy python-matplotlib python-setuptools perl perl-chemistry-mol)
 makedepends=('cmake>=3.8.1' make gcc8 gcc8-fortran flex bison patch tcsh imake openmpi-gcc8 'cuda>=7.5')
 optdepends=('openmpi-gcc8: MPI support'
             'cuda: GPU acceleration support'
@@ -31,8 +31,6 @@ sha256sums=('b1e1f8f277c54e88abc9f590e788bbb2f7a49bcff5e8d8a6eacfaf332a4890f9'
             'a72bf10dbd55807c62e619b269aadbfa1ffdf89a2ac4aaaa9f4a969c48dbf501'
             '68a6461768f25977f106caa697589f05ba2bb2283f213178f6ebbbb696d57a28'
             '515dc145b062b7f8af87031fe7bbdec8f60482d03aef86a5da7308a6a0e7d34d')
-
-PKGEXT=".pkg.tar"
 
 prepare() {
   cd ${srcdir}/amber${_releasever}_src
