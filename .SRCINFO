@@ -1,5 +1,5 @@
 pkgbase = fcitx-mozc-neologd-ut
-	pkgver = 2.23.2815.102.20200514
+	pkgver = 2.23.2815.102.20200521
 	pkgrel = 1
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = i686
@@ -22,17 +22,17 @@ pkgbase = fcitx-mozc-neologd-ut
 	makedepends = unzip
 	depends = protobuf
 	source = mozc-2.23.2815.102+dfsg.tar.xz::http://ftp.jp.debian.org/debian/pool/main/m/mozc/mozc_2.23.2815.102+dfsg.orig.tar.xz
-	source = japanese_usage_dictionary::git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=
-	source = fix-build-with-gcc8.patch::https://salsa.debian.org/debian/mozc/raw/master/debian/patches/Fix-build-with-gcc8.patch
-	source = mozc-2.23.2815.102-python-3.patch::https://github.com/google/mozc/files/4048079/mozc-2.23.2815.102-python-3.patch.txt
-	source = add_support_new_japanese_era.patch::https://salsa.debian.org/debian/mozc/raw/master/debian/patches/add_support_new_japanese_era.patch
+	source = usage_dict.txt.patch::https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/usage_dict.txt.patch
+	source = fix-build-with-gcc8.patch::https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/Fix-build-with-gcc8.patch
+	source = change-from-python2-code-to-python3.patch::https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/Change-from-python2-code-to-python3.patch
+	source = add_support_new_japanese_era.patch::https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/add_support_new_japanese_era.patch
 	source = https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-2.23.2815.102.1.patch
 	source = https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
-	source = https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F26%2F26401%2Fmozcdic-neologd-ut-20200514.1.tar.bz2
+	source = https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F26%2F26416%2Fmozcdic-neologd-ut-20200521.1.tar.bz2
 	sha1sums = 7e0a39ffd5ea68ecadb792fc521c16b5be1f25cb
-	sha1sums = SKIP
+	sha1sums = c6f5aac79c7e98fbda96de251d8f0d0787344ca9
 	sha1sums = 4fe935b5c2d316119cf8957b6518b3b5e7bf6ecf
-	sha1sums = 1b281471dac2eeab6d9ad7c47e3929e1ac402344
+	sha1sums = SKIP
 	sha1sums = 13f8fbbc768d5042fb55d877acf2a73fc8b5e3f0
 	sha1sums = 63a2b10e7d209c6216e2d912b2629efc44c637ea
 	sha1sums = 883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d
@@ -56,7 +56,7 @@ pkgname = fcitx-mozc-neologd-ut
 	pkgdesc = Fcitx engine module for Mozc
 	arch = i686
 	arch = x86_64
-	depends = mozc-neologd-ut=2.23.2815.102.20200514
+	depends = mozc-neologd-ut=2.23.2815.102.20200521
 	depends = fcitx
 	replaces = fcitx-mozc
 	replaces = fcitx-mozc-ut2

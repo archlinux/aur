@@ -8,7 +8,7 @@ _bldtype=Release
 
 _mozcver=2.23.2815.102
 _fcitxver=2.23.2815.102.1
-_neologddate=20200514
+_neologddate=20200521
 pkgver=${_mozcver}.${_neologddate}
 pkgrel=1
 
@@ -22,20 +22,20 @@ makedepends=('clang' 'gyp' 'protobuf' 'ninja' 'pkg-config' 'python' 'curl' 'gtk2
 
 source=(
   mozc-${_mozcver}+dfsg.tar.xz::http://ftp.jp.debian.org/debian/pool/main/m/mozc/mozc_${_mozcver}+dfsg.orig.tar.xz
-  japanese_usage_dictionary::git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=${_japanese_usage_dictionary_rev}
-  fix-build-with-gcc8.patch::https://salsa.debian.org/debian/mozc/raw/master/debian/patches/Fix-build-with-gcc8.patch
-  mozc-2.23.2815.102-python-3.patch::https://github.com/google/mozc/files/4048079/mozc-2.23.2815.102-python-3.patch.txt
-  add_support_new_japanese_era.patch::https://salsa.debian.org/debian/mozc/raw/master/debian/patches/add_support_new_japanese_era.patch
+  usage_dict.txt.patch::https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/usage_dict.txt.patch
+  fix-build-with-gcc8.patch::https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/Fix-build-with-gcc8.patch
+  change-from-python2-code-to-python3.patch::https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/Change-from-python2-code-to-python3.patch
+  add_support_new_japanese_era.patch::https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/add_support_new_japanese_era.patch
   https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitxver}.patch
   https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
-  "https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F26%2F26401%2Fmozcdic-neologd-ut-20200514.1.tar.bz2"
+  "https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F26%2F26416%2Fmozcdic-neologd-ut-20200521.1.tar.bz2"
 )
 
 sha1sums=(
   '7e0a39ffd5ea68ecadb792fc521c16b5be1f25cb'
-  'SKIP'
+  'c6f5aac79c7e98fbda96de251d8f0d0787344ca9'
   '4fe935b5c2d316119cf8957b6518b3b5e7bf6ecf'
-  '1b281471dac2eeab6d9ad7c47e3929e1ac402344'
+  'SKIP'
   '13f8fbbc768d5042fb55d877acf2a73fc8b5e3f0'
   '63a2b10e7d209c6216e2d912b2629efc44c637ea'
   '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d'
@@ -44,12 +44,11 @@ sha1sums=(
 
 prepare() {
   cd mozc-${_mozcver}+dfsg
+  patch -Np1 -i ${srcdir}/usage_dict.txt.patch
   patch -Np1 -i ${srcdir}/fix-build-with-gcc8.patch
-  patch -Np1 -i ${srcdir}/mozc-2.23.2815.102-python-3.patch
+  patch -Np1 -i ${srcdir}/change-from-python2-code-to-python3.patch
   patch -Np1 -i ${srcdir}/add_support_new_japanese_era.patch
   patch -Np1 -i ${srcdir}/fcitx-mozc-${_fcitxver}.patch
-  mkdir -p src/third_party/
-  cp -a ${srcdir}/japanese_usage_dictionary src/third_party/
   cat ${srcdir}/mozcdic-neologd-ut-${_neologddate}.${pkgrel}/mozcdic-*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
 }
 
