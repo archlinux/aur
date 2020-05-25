@@ -1,4 +1,4 @@
-# Maintainer: Jguer <joaogg3@gmail.com>
+# Maintainer: Max Christian Pohle <webmaster@coderonline.de>
 pkgname=base16-vtrgb
 pkgver=2020_05_25
 pkgrel=1

@@ -1,6 +1,6 @@
 pkgbase = base16-vtrgb
 	pkgdesc = base16 color schemes available for the virtual terminal (vt, tty)
-	pkgver = 2020_05_24
+	pkgver = 2020_05_25
 	pkgrel = 1
 	url = https://github.com/coderonline/base16-vtrgb
 	install = base16-vtrgb.install
@@ -10,8 +10,8 @@ pkgbase = base16-vtrgb
 	depends = kbd
 	depends = mkinitcpio
 	backup = etc/vtrgb
-	source = base16-vtrgb-2020_05_24.tar.gz::https://github.com/coderonline/base16-vtrgb/archive/2020-05-24.tar.gz
-	sha256sums = b7b1c9906b219ee7b4c7b6f34585dc50b8d1ffa3378826c287f20cc7af99b594
+	source = base16-vtrgb-2020_05_25.tar.gz::https://github.com/coderonline/base16-vtrgb/archive/2020-05-25.tar.gz
+	sha256sums = afc1a825f1683de5aa1be1c0d4f56ab1694afbf7bdcac184bb57bcab5e79c23d
 
 pkgname = base16-vtrgb
 
