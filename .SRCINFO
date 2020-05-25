@@ -1,6 +1,6 @@
 pkgbase = xfce4-sysinfo
 	pkgdesc = A tool to show systeminformation in xfce
-	pkgver = 33.1f281f6
+	pkgver = 118.3116d1a
 	pkgrel = 1
 	url = https://github.com/lxgr-linux/xfce4-sysinfo
 	arch = any
