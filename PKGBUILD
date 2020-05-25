@@ -3,7 +3,7 @@
 
 pkgname=lib32-slang
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='S-Lang is a powerful interpreted language'
 arch=('x86_64')
 url='https://www.jedsoft.org/slang/'
