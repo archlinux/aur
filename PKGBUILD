@@ -1,7 +1,7 @@
 # Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
 
 pkgname="gr-framework-git"
-pkgver="0.49.0.r57.g219b7a2f"
+pkgver="0.49.0.r59.g78aa39c3"
 pkgrel="1"
 pkgdesc="A universal framework for cross-platform visualization applications."
 arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
