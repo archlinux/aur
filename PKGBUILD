@@ -43,7 +43,7 @@ build() {
 
   export AMBER_PREFIX="${srcdir}"
 
-  CC=gcc-8 CXX=g++-8 FC=gfortran-8 cmake $AMBER_PREFIX/amber20_src \
+  CC=gcc-8 CXX=g++-8 FC=gfortran-8 cmake $AMBER_PREFIX/amber${_releasever}_src \
       -DCMAKE_INSTALL_PREFIX=/opt/amber \
       -DCOMPILER=MANUAL  \
       -DMPI=TRUE -DCUDA=TRUE \
@@ -80,8 +80,8 @@ package() {
   find ${pkgdir}/opt/amber/lib -name "*.pyc" -type f -delete
 
   # fix buildroot traces
-  sed -i "s#${srcdir}/amber${pkgver}_src/build/AmberTools/src/xblas/build#/opt/amber/lib#" ${pkgdir}/opt/amber/config.h
-  sed -i "s#${srcdir}/amber${pkgver}_src/build/AmberTools/src/xblas/build#/opt/amber/lib#" ${pkgdir}/opt/amber/AmberTools/src/config.h
-  sed -i "s#${srcdir}/amber${pkgver}_src/build#/opt/amber#" ${pkgdir}/opt/amber/config.h
-  sed -i "s#${srcdir}/amber${pkgver}_src/build#/opt/amber#" ${pkgdir}/opt/amber/AmberTools/src/config.h
+  sed -i "s#${srcdir}/amber${_releasever}_src/build/AmberTools/src/xblas/build#/opt/amber/lib#" ${pkgdir}/opt/amber/config.h
+  sed -i "s#${srcdir}/amber${_releasever}_src/build/AmberTools/src/xblas/build#/opt/amber/lib#" ${pkgdir}/opt/amber/AmberTools/src/config.h
+  sed -i "s#${srcdir}/amber${_releasever}_src/build#/opt/amber#" ${pkgdir}/opt/amber/config.h
+  sed -i "s#${srcdir}/amber${_releasever}_src/build#/opt/amber#" ${pkgdir}/opt/amber/AmberTools/src/config.h
 }
