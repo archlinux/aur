@@ -1,15 +1,10 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 #Maintainer:  sparzz
 pkgname=radv-git
 packager=sparzz
-pkgver=20.2.0.2020.05.24
+pkgver=20.2.0_devel
 pkgrel=1
 epoch=
-pkgdesc="Provide mesa RADV drivers for AMD card . Update with yay -Sua"
+pkgdesc="Provide mesa RADV drivers for AMD card . Update with yay -Sua. If you want to enable th ACO compiler go to your .bashrc file and add this line : export RADV_PERFTEST=aco."
 arch=(x86_64)
 url="https://github.com/sparzz/mesa.git"
 license=('MIT')
@@ -121,8 +116,8 @@ makedepends=("meson"
 checkdepends=()
 optdepends=()
 provides=(radv-git)
-conflicts=()
-replaces=()
+conflicts=(mesa-radv-drivers-git)
+replaces=(mesa-radv-drivers-git)
 backup=()
 options=()
 install=
@@ -133,14 +128,16 @@ md5sums=("SKIP")
 validpgpkeys=()
 
 pkgver() {
-    cd mesa
-    read -r _ver <VERSION
-    echo ${_ver/-/_}.$(git log -n1 --format="%cd" --date=format:%Y%m%d HEAD).$(git rev-parse --short HEAD)
+	cd "${_pkgname}"
+    printf "20.2.0_devel.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 
-
 prepare() {
+
+    # little patch to remove unwanted backup file created by the build
+    # wil investigate for that soon 
+
 	cd /usr/local/lib
 	
 	if dir libEGL.so.1.0.0.old; then 
@@ -255,6 +252,11 @@ build() {
 
 package() {
 	sudo DESTDIR="$pkgdir" ninja $NINJAFLAGS -C mesa/build/ install 
+	
+	# little patch to remove backup files created by the build
+	# will investigate for that soon
+	
+	
 	cd /usr/local/lib
 	
 	if dir libEGL.so.1.0.0.old; then 

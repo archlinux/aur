@@ -1,6 +1,6 @@
 pkgbase = radv-git
-	pkgdesc = Provide mesa RADV drivers for AMD. Update with yay -Sua
-	pkgver = 20.2.0.2020.05.24
+	pkgdesc = Provide mesa RADV drivers for AMD card . Update with yay -Sua. If you want to enable th ACO compiler go to your .bashrc file and add this line : export RADV_PERFTEST=aco.
+	pkgver = 20.2.0_devel
 	pkgrel = 1
 	url = https://github.com/sparzz/mesa.git
 	arch = x86_64
@@ -110,7 +110,10 @@ pkgbase = radv-git
 	depends = opencl-headers
 	depends = python-evdev
 	provides = radv-git
+	conflicts = mesa-radv-drivers-git
+	replaces = mesa-radv-drivers-git
 	source = mesa::git+https://github.com/sparzz/mesa.git
 	md5sums = SKIP
+
 pkgname = radv-git
 
