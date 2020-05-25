@@ -2,7 +2,7 @@
 
 _pkgname='mtail'
 pkgname="${_pkgname}-bin"
-_pkgver=v3.0.0-rc34
+_pkgver=v3.0.0-rc35
 pkgver="${_pkgver//-/_}"
 pkgrel=2
 pkgdesc='extract whitebox monitoring data from application logs for collection in a timeseries database'
@@ -12,7 +12,7 @@ license=('Apache')
 conflicts=("${_pkgname}")
 source=("https://github.com/google/mtail/releases/download/${_pkgver}/${_pkgname}_${_pkgver}_linux_amd64"
 	"https://raw.githubusercontent.com/google/mtail/master/LICENSE")
-sha256sums=('80a48ff6e983186d28589cd5ab21139b194084f5406341b169e2ca75b4d2174d'
+sha256sums=('f2b4a8e8db6c06b8fa1d17c71334fc5a7e5e9bc4c8d60a9560b664b30218b6ac'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
 
 package() {
