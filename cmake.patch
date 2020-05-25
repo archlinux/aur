@@ -1,35 +1,11 @@
 diff -ruN aom/build/cmake/aom_configure.cmake patched/build/cmake/aom_configure.cmake
---- aom/build/cmake/aom_configure.cmake	2018-08-02 01:45:38.436874872 +0200
-+++ patched/build/cmake/aom_configure.cmake	2018-08-02 01:46:00.337297842 +0200
-@@ -64,6 +64,7 @@
-                 "      CMAKE_GENERATOR=${CMAKE_GENERATOR}\n")
+--- aom/build/cmake/aom_configure.cmake	2020-05-25 10:32:02.443333045 +0200
++++ patched/build/cmake/aom_configure.cmake	2020-05-25 10:37:34.206666378 +0200
+@@ -67,6 +67,7 @@
+                     "      CMAKE_GENERATOR=${CMAKE_GENERATOR}\n")
      endif()
-   elseif("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "i386" OR
-+         "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "i686" OR
-          "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86")
+   elseif("${cpu_lowercase}" STREQUAL "i386"
++         OR "${cpu_lowercase}" STREQUAL "i686"
+          OR "${cpu_lowercase}" STREQUAL "x86")
      set(AOM_TARGET_CPU "x86")
-   elseif("${CMAKE_SYSTEM_PROCESSOR}" MATCHES "^arm" OR
-diff -ruN aom/build/cmake/exports.cmake patched/build/cmake/exports.cmake
---- aom/build/cmake/exports.cmake	2018-08-02 01:45:38.436874872 +0200
-+++ patched/build/cmake/exports.cmake	2018-08-02 01:46:58.678424406 +0200
-@@ -47,7 +47,7 @@
-     set_property(TARGET aom APPEND_STRING
-                  PROPERTY LINK_FLAGS "-exported_symbols_list ${aom_sym_file}")
-   elseif(WIN32)
--    message(FATAL_ERROR "Windows DLL builds not supported yet.")
-+    #message(FATAL_ERROR "Windows DLL builds not supported yet.")
-     if(NOT MSVC)
-       set_property(TARGET aom APPEND_STRING
-                    PROPERTY LINK_FLAGS "-Wl,--version-script ${aom_sym_file}")
-diff -ruN aom/build/cmake/generate_exports.cmake patched/build/cmake/generate_exports.cmake
---- aom/build/cmake/generate_exports.cmake	2018-08-02 01:45:38.436874872 +0200
-+++ patched/build/cmake/generate_exports.cmake	2018-08-02 01:46:00.337297842 +0200
-@@ -35,7 +35,7 @@
- 
- if("${AOM_TARGET_SYSTEM}" STREQUAL "Darwin")
-   file(REMOVE "${aom_sym_file}")
--elseif("${AOM_TARGET_SYSTEM}" MATCHES "Windows\|MSYS")
-+elseif("${AOM_TARGET_SYSTEM}" MATCHES "Windows\|MSYS" AND AOM_MSVC)
-   file(WRITE "${aom_sym_file}" "LIBRARY libaom INITINSTANCE TERMINSTANCE\n"
-              "DATA MULTIPLE NONSHARED\n" "EXPORTS\n")
- else()
+   elseif("${cpu_lowercase}" MATCHES "^arm"
