@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-git
 	pkgdesc = Next generation desktop shell
-	pkgver = 3.35.91+109+g648179a2d
+	pkgver = 3.37.1+80+g71b3b03b2
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-shell
@@ -36,6 +36,7 @@ pkgbase = gnome-shell-git
 	depends = gstreamer
 	depends = libibus
 	depends = gnome-desktop-git
+	depends = bash-completion
 	optdepends = gnome-control-center: System settings
 	optdepends = evolution-data-server: Evolution calendar integration
 	provides = gnome-shell
