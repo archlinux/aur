@@ -1,0 +1,19 @@
+pkgbase = dumb-a4
+	pkgdesc = IT, XM, S3M and MOD player library (for legacy Allegro 4)
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = http://dumb.sourceforge.net/
+	arch = x86_64
+	license = custom:dumb
+	license = GPL
+	makedepends = allegro4
+	makedepends = cmake
+	makedepends = ninja
+	depends = allegro4
+	provides = dumb
+	conflicts = dumb
+	source = dumb-a4-2.0.3.tar.gz::https://github.com/kode54/dumb/archive/2.0.3.tar.gz
+	sha256sums = 99bfac926aeb8d476562303312d9f47fd05b43803050cd889b44da34a9b2a4f9
+
+pkgname = dumb-a4
+
