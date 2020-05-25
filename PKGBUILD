@@ -3,14 +3,14 @@
 
 _srcname=fancontrol-gui
 pkgname=fancontrol-kcm-git
-pkgver=v0.6.r67.gad73814
+pkgver=v0.8.r15.gb7c65b3
 pkgrel=1
 pkgdesc="KCM for the fancontrol script and systemd service"
 arch=('i686' 'x86_64')
 url="https://github.com/Maldela/Fancontrol-GUI"
 license=('GPL2')
-depends=('fancontrol-gui-git' 'kcmutils')
-makedepends=('git' 'cmake' 'extra-cmake-modules')
+depends=('fancontrol-gui-git' 'qt5-base' 'kcoreaddons' 'kdeclarative' 'ki18n' 'kpackage')
+makedepends=('git' 'extra-cmake-modules' 'kcmutils')
 provides=('fancontrol-kcm')
 conflicts=('fancontrol-kcm')
 source=('git://github.com/Maldela/fancontrol-gui.git')
