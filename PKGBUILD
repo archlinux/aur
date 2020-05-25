@@ -4,7 +4,7 @@
 pkgname=php-phalcon
 _pkgname=cphalcon
 pkgver=4.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Web framework delivered as a C-extension for PHP"
 url="http://phalconphp.com"
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ depends=('php>=7.0')
 makedepends=('gcc')
 backup=('etc/php/conf.d/phalcon.ini')
 source=("https://github.com/phalcon/cphalcon/archive/v$pkgver.zip")
-sha256sums=('7214974d78fcde7b3c3ebc59f89d5a52b33a842cc1a388aeaa5ab03346438ba9')
+sha256sums=('0bbb889457a4aaf717bafc33666111a6c121ad5aeda9fb28a707c9abf0214064')
 
 build() {  
   cd "$srcdir/$_pkgname-$pkgver/build/php7/$_arch"
