@@ -1,14 +1,14 @@
 pkgbase = getrid-git
 	pkgdesc = Terminal user interface to decide which packages to keep and which to get rid of
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nudin/getrid
 	arch = any
 	license = GPL
 	depends = python
 	depends = python-urwid
 	depends = pacgraph
-	source = git+https://github.com/Nudin/getrid.git
+	source = $pkgname::git+https://github.com/Nudin/getrid.git
 	md5sums = SKIP
 
 pkgname = getrid-git
