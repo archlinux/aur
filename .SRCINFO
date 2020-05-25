@@ -1,6 +1,6 @@
 pkgbase = wluma-als-emulator-git
 	pkgdesc = Ambient light sensor emulator for wluma
-	pkgver = 1.0.0.r11.ga7afd79
+	pkgver = 1.0.0.r12.g4116c17
 	pkgrel = 2
 	url = https://github.com/cyrinux/wluma-als-emulator
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = wluma-als-emulator-git
 	optdepends = ffmpeg: for webcam strategy
 	provides = wluma-als-emulator
 	conflicts = wluma-als-emulator
-	source = git+https://github.com/cyrinux/wluma-als-emulator#branch=develop
+	source = git+https://github.com/cyrinux/wluma-als-emulator
 	sha256sums = SKIP
 
 pkgname = wluma-als-emulator-git
