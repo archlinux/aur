@@ -4,7 +4,7 @@
 
 pkgname=vim-easymotion
 pkgver=3.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Vim motion on speed'
 url='https://github.com/easymotion/vim-easymotion'
 arch=('any')
