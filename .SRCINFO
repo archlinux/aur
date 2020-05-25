@@ -1,7 +1,7 @@
 pkgbase = lib32-dav1d
 	pkgdesc = AV1 cross-platform decoder focused on speed and correctness (32 bit)
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.videolan.org/videolan/dav1d/
 	arch = x86_64
 	license = BSD
@@ -15,7 +15,7 @@ pkgbase = lib32-dav1d
 	depends = lib32-vulkan-icd-loader
 	provides = libdav1d.so
 	source = https://downloads.videolan.org/pub/videolan/dav1d/0.7.0/dav1d-0.7.0.tar.xz
-	source = https://downloads.videolan.org/pub/videolan/dav1d/0.7.0/dav1d-0.7.0.tar.xz.sha256sum
+	source = https://downloads.videolan.org/pub/videolan/dav1d/0.7.0/dav1d-0.7.0.tar.xz.asc
 	validpgpkeys = 65F7C6B4206BD057A7EB73787180713BE58D1ADC
 	sha512sums = a2c6981ba5ad5ffe8382e32d6afb943fdd3ee2801751e4d84718171ccaeeef28ae4822b2ae282b301f4806351526cd83aa72b2535fa3a99ec534996458508521
 	sha512sums = SKIP
