@@ -30,4 +30,8 @@ package() {
 
 	install -Dm644 "README.md" "${doc_path}/README.md"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
+
+  mkdir -p "$pkgdir/usr/share/man/man1"
+  install -g 0 -o 0 -m 0644 "tekstowo.1" "$pkgdir/usr/share/man/man1/"
+  gzip "$pkgdir/usr/share/man/man1/tekstowo.1"
 }
