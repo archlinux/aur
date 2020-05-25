@@ -1,0 +1,14 @@
+post_install() {
+    echo "TIP: This package ships with tools to help you with Karaoke Mugen installation"
+    echo "- karaokemugen-install interactively creates the initial configuration and helps you with database setup."
+    echo "- karaokemugen launches the app with Electron UI."
+}
+
+post_upgrade() {
+    echo "You may need to run karaokemugen-install again. Keep that in mind."
+}
+
+post_remove() {
+    echo "The media files downloaded are still in the directory you set (~/KaraokeMugen/ by default)."
+    echo "Delete them to free space if you want."
+}
