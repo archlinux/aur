@@ -1,19 +1,30 @@
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Grey Christoforo <first name at last name dot net>
-pkgname=r-xvector
-_bc_name=XVector
-pkgver=0.26.0
+
+_bcname=XVector
+_bcver=0.28.0
+pkgname=r-${_bcname,,}
+pkgver=${_bcver//[:-]/.}
 pkgrel=1
-pkgdesc="Representation and manipulation of external sequences"
-url="https://bioconductor.org/packages/release/bioc/html/XVector.html"
-arch=("x86_64")
-license=('Artistic-2.0')
-depends=('r' 'r-biocgenerics' 'r-s4vectors' 'r-iranges' 'r-zlibbioc')
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bc_name}_${pkgver}.tar.gz")
-sha1sums=('3407297a685f182c9fd34fbaa988ffc8e183872e')
+pkgdesc="Foundation of external vector representation and manipulation in Bioconductor"
+arch=(i686 x86_64)
+url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
+license=(Artistic-2.0)
+depends=('r>=2.8.0' 'r-biocgenerics>=0.19.2' 'r-s4vectors>=0.25.14' 'r-iranges>=2.21.6' r-zlibbioc)
+makedepends=(gcc)
+optdepends=(r-biostrings r-drosophila2probe r-runit)
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
+md5sums=('7053fb56a45728eafe5126073ddcbfe1')
+
+build() {
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l ${srcdir}
+}
 
 package() {
- mkdir -p $pkgdir/usr/lib/R/library
- cd $srcdir
+  cd "${srcdir}"
 
- R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_bc_name}
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_bcname}" "${pkgdir}/usr/lib/R/library"
 }
