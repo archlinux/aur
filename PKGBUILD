@@ -5,7 +5,7 @@ license=(GPL3)
 options=("!strip")
 pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts. - Static binaries"
 pkgname=kotatogram-desktop-bin
-pkgrel=4
+pkgrel=6
 pkgver=1.3.6
 url="https://github.com/kotatogram/kotatogram-desktop"
 
