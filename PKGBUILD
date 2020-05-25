@@ -1,48 +1,75 @@
 # Maintainer: Christian Rebischke <chris.rebischke@archlinux.org>
 # Contributor: Jeff Henson <jeff@henson.io>
 # Contributor: Ron Asimi <ron dot asimi at gmail dot com>
+# Contributor: Roman Perepelitsa <roman.perepelitsa@gmail.com>
 
 pkgname=zsh-theme-powerlevel10k
-pkgver=1.8.0
+# Whenever pkgver is updated, _libgit2ver below must also be updated.
+pkgver=1.10.1
+_libgit2ver="tag-005f77dca6dbe8788e55139fa1199fc94cc04f9a"
 pkgrel=1
 pkgdesc="Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience."
-arch=('any')
+arch=('x86_64')
 url='https://github.com/romkatv/powerlevel10k'
 license=('MIT')
-depends=('zsh')
-conflicts=('zsh-theme-powerlevel9k')
+makedepends=('git' 'cmake')
+depends=('glibc' 'zsh')
 optdepends=(
   'powerline-fonts: patched fonts for powerline'
   'awesome-terminal-fonts: icon package'
-  'acpi: battery monitoring'
-  'git: status of repository'
-  'mercurial: status of repository'
-  'systemd: virtualization detection'
-  'openssh: ssh detection'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/romkatv/powerlevel10k/archive/v${pkgver}.tar.gz")
-sha512sums=('a6689be840d63b3ae59f9cd521e8a061d631a592d738ecea4d09e0b9cd6eaee241bda093439e02fece35da40001aab05cef822db92ac4b6fa96e6ccb68e73ac4')
+# _libgit2ver depends on pkgver. They must be updated together. See libgit2_version in:
+# https://raw.githubusercontent.com/romkatv/powerlevel10k/v${pkgver}/gitstatus/build.info
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/romkatv/powerlevel10k/archive/v${pkgver}.tar.gz"
+  "libgit2-${_libgit2ver}.tar.gz::https://github.com/romkatv/libgit2/archive/${_libgit2ver}.tar.gz")
+sha512sums=(
+  '4004d86ad00cec9c23f7f1af1a82708cd17fa7e5aa2eddd5300c7a900aeee8e22e50c687bb45169979c713325ed1b684110de473ff58c4edb3f284133e927cb1'
+  '1f4ff3844c19cc9fc9857191075cfdda4cf01797b86cfa9fd29ac2a8baf47051211d533fd72f2d273f8ce7c625b59dd965557d8295af084208cc7fb26ba81a34')
+replaces=('zsh-theme-powerlevel9k')
 
-package()
-{
-  cd "${srcdir}/powerlevel10k-${pkgver}"
+build() {
+  cd "${srcdir}/libgit2-${_libgit2ver}"
+  cmake \
+   -DCMAKE_BUILD_TYPE=Release \
+   -DZERO_NSEC=ON \
+   -DTHREADSAFE=ON \
+   -DUSE_BUNDLED_ZLIB=ON \
+   -DREGEX_BACKEND=builtin \
+   -DUSE_HTTP_PARSER=builtin \
+   -DUSE_SSH=OFF \
+   -DUSE_HTTPS=OFF \
+   -DBUILD_CLAR=OFF \
+   -DUSE_GSSAPI=OFF \
+   -DUSE_NTLMCLIENT=OFF \
+   -DBUILD_SHARED_LIBS=OFF \
+   -DENABLE_REPRODUCIBLE_BUILDS=ON \
+   .
+  make
 
-  # Install license
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # build gitstatus
+  cd "$srcdir/powerlevel10k-${pkgver}/gitstatus"
+  export CXXFLAGS+=" -I${srcdir}/libgit2-${_libgit2ver}/include -DGITSTATUS_ZERO_NSEC -D_GNU_SOURCE"
+  export LDFLAGS+=" -L${srcdir}/libgit2-${_libgit2ver}"
+  make
+}
 
-  # Install Documentation
-  install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
-  # Install the theme
-  install -D -m644 powerlevel10k.zsh-theme "${pkgdir}/usr/share/${pkgname}/powerlevel10k.zsh-theme"
-  install -D -m644 powerlevel9k.zsh-theme "${pkgdir}/usr/share/${pkgname}/powerlevel9k.zsh-theme"
-
-  # Install the utilities
-  install -D -m755 prompt_powerlevel10k_setup "${pkgdir}/usr/share/${pkgname}/prompt_powerlevel10k_setup"
-  install -D -m755 prompt_powerlevel9k_setup "${pkgdir}/usr/share/${pkgname}/prompt_powerlevel9k_setup"
-  install -d "${pkgdir}/usr/share/${pkgname}/config"
-  cp -R config "${pkgdir}/usr/share/${pkgname}/"
-  install -d "${pkgdir}/usr/share/${pkgname}/gitstatus/bin"
-  cp -R gitstatus "${pkgdir}/usr/share/${pkgname}/"
-  cp -R internal "${pkgdir}/usr/share/${pkgname}/"
+package() {
+  cd "$srcdir/powerlevel10k-${pkgver}"
+  find . -type f -exec install -D '{}' "$pkgdir/usr/share/zsh-theme-powerlevel10k/{}" ';'
+  rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/obj"
+  rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/.gitignore"
+  rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/.gitattributes"
+  rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/src"
+  rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/build"
+  rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/build.info"
+  rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/install"
+  rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/install.info"
+  rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/deps"
+  rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/Makefile"
+  rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/mbuild"
+  mv "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/usrbin/"{gitstatusd,gitstatusd-linux-x86_64}
+  for file in *.zsh-theme internal/*.zsh gitstatus/*.zsh gitstatus/install; do
+    zsh -fc "emulate zsh -o no_aliases && zcompile -R -- $file.zwc $file"
+  done
 }
