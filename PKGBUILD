@@ -4,37 +4,39 @@
 
 pkgname=lab
 pkgver=0.17.2
-pkgrel=3
-pkgdesc="A hub-like tool for GitLab (tagged release)"
+pkgrel=4
+pkgdesc='A hub-like tool for GitLab (tagged release)'
 arch=('x86_64')
-url="https://zaquestion.github.io/lab/"
+url="https://zaquestion.github.io/$pkgname"
 license=('custom:Unlicense')
 depends=('git')
 optdepends=('hub')
 makedepends=('go')
-conflicts=("$pkgname-git" "$pkgname-bin")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zaquestion/lab/archive/v$pkgver.tar.gz")
-sha512sums=('a35dc286b3eca61f2bed8bdea485181a428d50e6584f209a74d92267956e104cb8d37844cb43d5c2422845630db2fea6d37cb99884a705bdfeba88b29ecb195e')
+sha256sums=('467cb35793c4129e7da68e4c63ef5ee96e9ca43f933c88758e90850f0d6c77b9')
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     go mod download
 }
 
 build () {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     go build \
-        -gcflags "all=-trimpath=$PWD" \
-        -asmflags "all=-trimpath=$PWD" \
-        -ldflags "-extldflags $LDFLAGS -X main.version=$pkgver"
+        -trimpath \
+        -buildmode=pie \
+        -mod=readonly \
+        -modcacherw \
+        -ldflags "-extldflags ${LDFLAGS} -X main.version=$pkgver" \
+        .
     ./lab completion bash > completion.bash
     ./lab completion zsh > completion.zsh
 }
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"/LICENSE
-    install -Dm755 lab "$pkgdir"/usr/bin/lab
+    install -Dm755 -t "$pkgdir/usr/bin/" $pkgname
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
     install -Dm644 completion.bash "$pkgdir/usr/share/bash-completion/completions/lab"
     install -Dm644 completion.zsh "$pkgdir/usr/share/zsh/site-functions/_lab"
 }
