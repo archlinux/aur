@@ -3,13 +3,13 @@
 
 _srcname=fancontrol-gui
 pkgname=fancontrol-plasmoid-git
-pkgver=v0.6.r67.gad73814
+pkgver=v0.8.r15.gb7c65b3
 pkgrel=1
 pkgdesc="Plasmoid for the fancontrol script and systemd service"
 arch=('i686' 'x86_64')
 url="https://github.com/Maldela/Fancontrol-GUI"
 license=('GPL2')
-depends=('fancontrol-gui-git' 'plasma-framework')
+depends=('fancontrol-gui-git' 'plasma-framework' 'gettext')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
 provides=('fancontrol-plasmoid')
 conflicts=('fancontrol-plasmoid')
@@ -43,7 +43,7 @@ build() {
         -DBUILD_KCM=off \
         -DBUILD_HELPER=off \
         -DINSTALL_SHARED=off \
-        -DINSTALL_PLASMOID=on \
+        -DBUILD_PLASMOID=on \
         -DKDE_INSTALL_USE_QT_SYS_PATHS=on
   make
 }
