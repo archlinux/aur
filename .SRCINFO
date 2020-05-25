@@ -1,6 +1,6 @@
 pkgbase = fcitx-mozc-neologd-ut+ut2
-	pkgver = 2.23.2815.102.20200514.20171008
-	pkgrel = 3
+	pkgver = 2.23.2815.102.20200521.20171008
+	pkgrel = 1
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = i686
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = fcitx-mozc-neologd-ut+ut2
 	source = add_support_new_japanese_era_for_ut2.patch
 	source = https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-2.23.2815.102.1.patch
 	source = https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
-	source = https://osdn.net/users/trickart/pf/trickart_pkgbuild/dl/mozc-neologd-ut/mozcdic-neologd-ut-20200514.1.tar.bz2
+	source = https://osdn.net/users/trickart/pf/trickart_pkgbuild/dl/mozc-neologd-ut/mozcdic-neologd-ut-20200521.1.tar.bz2
 	source = https://osdn.net/downloads/users/26/26381/mozc-ut2-2.20.2677.102.20171008.tar.xz
 	sha1sums = 7e0a39ffd5ea68ecadb792fc521c16b5be1f25cb
 	sha1sums = SKIP
@@ -39,7 +39,7 @@ pkgbase = fcitx-mozc-neologd-ut+ut2
 	sha1sums = fa72a89ac18649816e9717d4468a6145db802625
 	sha1sums = 63a2b10e7d209c6216e2d912b2629efc44c637ea
 	sha1sums = 883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d
-	sha1sums = de9e921cadc0a99e25f89fb2be485bf12ae89557
+	sha1sums = c09d1da0445868474ed0dae2b580d17dbc2f5364
 	sha1sums = 3ac129c9cd843c51a3e0a124a47cfb8eddab2c08
 
 pkgname = mozc-neologd-ut+ut2
@@ -60,7 +60,7 @@ pkgname = fcitx-mozc-neologd-ut+ut2
 	pkgdesc = Fcitx engine module for Mozc
 	arch = i686
 	arch = x86_64
-	depends = mozc-neologd-ut+ut2=2.23.2815.102.20200514.20171008
+	depends = mozc-neologd-ut+ut2=2.23.2815.102.20200521.20171008
 	depends = fcitx
 	replaces = fcitx-mozc
 	replaces = fcitx-mozc-ut2

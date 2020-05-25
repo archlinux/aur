@@ -9,12 +9,12 @@ _bldtype=Release
 
 _mozcver=2.23.2815.102
 _fcitxver=2.23.2815.102.1
-_neologddate=20200514
+_neologddate=20200521
 _neologdrel=1
 _ut2mozcver=2.20.2677.102
 _ut2dicver=20171008
 pkgver=${_mozcver}.${_neologddate}.${_ut2dicver}
-pkgrel=3
+pkgrel=1
 
 pkgbase=fcitx-mozc-neologd-ut+ut2
 pkgname=fcitx-mozc-neologd-ut+ut2
@@ -47,7 +47,7 @@ sha1sums=(
   'fa72a89ac18649816e9717d4468a6145db802625'
   '63a2b10e7d209c6216e2d912b2629efc44c637ea'
   '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d'
-  'de9e921cadc0a99e25f89fb2be485bf12ae89557'
+  'c09d1da0445868474ed0dae2b580d17dbc2f5364'
   '3ac129c9cd843c51a3e0a124a47cfb8eddab2c08'
 )
 
