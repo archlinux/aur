@@ -1,0 +1,14 @@
+pkgbase = vulkan-loader-git
+	pkgdesc = vulkan loader build from source
+	pkgver = 1.2.140.2020.05.25
+	pkgrel = 1
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	provides = vulkan-loader-git
+	source = Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
+	md5sums = SKIP
+
+pkgname = vulkan-loader-git
+
