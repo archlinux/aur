@@ -1,14 +1,14 @@
 pkgbase = pretty-exec-bin
 	pkgdesc = Opinionated code formatter for TypeScript and JavaScript
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 0
 	url = https://github.com/KSXGitHub/pretty-exec
 	arch = x86_64
 	license = MIT
 	conflicts = pretty-exec
-	source = pretty-exec-79d84a218e9cba32f53ffb56505460595069db56::https://github.com/KSXGitHub/pretty-exec/releases/download/0.0.2/pretty-exec-x86_64-unknown-linux-gnu
+	source = pretty-exec-622d643f4f2f6a1557457114161cdd81d478128f::https://github.com/KSXGitHub/pretty-exec/releases/download/0.0.3/pretty-exec-x86_64-unknown-linux-gnu
 	source = https://raw.githubusercontent.com/KSXGitHub/pretty-exec/master/LICENSE.md
-	sha1sums = 79d84a218e9cba32f53ffb56505460595069db56
+	sha1sums = 622d643f4f2f6a1557457114161cdd81d478128f
 	sha1sums = SKIP
 
 pkgname = pretty-exec-bin
