@@ -14,7 +14,7 @@ _neologdrel=1
 _ut2mozcver=2.20.2677.102
 _ut2dicver=20171008
 pkgver=${_mozcver}.${_neologddate}.${_ut2dicver}
-pkgrel=2
+pkgrel=3
 
 pkgbase=fcitx-mozc-neologd-ut+ut2
 pkgname=fcitx-mozc-neologd-ut+ut2
@@ -35,7 +35,7 @@ source=(
   https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitxver}.patch
   https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
   https://osdn.net/users/trickart/pf/trickart_pkgbuild/dl/mozc-neologd-ut/mozcdic-neologd-ut-${_neologddate}.${_neologdrel}.tar.bz2
-  "https://osdn.net/downloads/users/26/26382/mozc-ut2-2.20.2677.102.20171008.tar.xz"
+  "https://osdn.net/downloads/users/26/26381/mozc-ut2-2.20.2677.102.20171008.tar.xz"
 )
 
 sha1sums=(
