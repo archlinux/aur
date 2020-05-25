@@ -1,0 +1,18 @@
+pkgbase = ruby-css_parser-1.6
+	pkgdesc = Ruby CSS parser.
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/premailer/css_parser
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-addressable
+	provides = ruby-css_parser
+	conflicts = ruby-css_parser
+	noextract = css_parser-1.6.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/css_parser-1.6.0.gem
+	sha1sums = 0635fd837668266ec5d1916fc2251ea66273da37
+
+pkgname = ruby-css_parser-1.6
+
