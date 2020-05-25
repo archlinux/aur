@@ -44,7 +44,6 @@ prepare() {
     git submodule init
     git config submodule.src/lib.url $srcdir/${pkgname%-git}-lib
     git submodule update
-    patch --forward -p1 -i '../database-tweak.diff'
 }
 
 build() {
