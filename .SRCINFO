@@ -1,5 +1,5 @@
 pkgbase = libcxx-sparzz-git
-	pkgdesc = llvm build
+	pkgdesc = libcxx build from llvm github
 	pkgver = 1.alpha.test
 	pkgrel = 1
 	url = https://github.com/llvm/llvm-project.git
