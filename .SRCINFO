@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rotors-description
+pkgbase = ros-noetic-rotors-description
 	pkgdesc = ROS - The rotors_description package provides URDF modles of the AscTec multicopters.
 	pkgver = 2.2.3
 	pkgrel = 1
@@ -11,9 +11,9 @@ pkgbase = ros-melodic-rotors-description
 	license = ASL 2.0
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	source = ros-melodic-rotors-description-2.2.3.tar.gz::https://github.com/ethz-asl/rotors_simulator/archive/2.2.3.tar.gz
+	makedepends = ros-noetic-catkin
+	source = ros-noetic-rotors-description-2.2.3.tar.gz::https://github.com/ethz-asl/rotors_simulator/archive/2.2.3.tar.gz
 	sha256sums = 46e6be40ebd08ba41a4a532c1774228d240d11aa39ad82f9ab50e445dc4a6f20
 
-pkgname = ros-melodic-rotors-description
+pkgname = ros-noetic-rotors-description
 
