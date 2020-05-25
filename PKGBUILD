@@ -23,7 +23,7 @@ _srcver="$_pkgver"-"$_rev"
 _srcname=proton-bridge-"$_srcver"
 
 pkgver="$_pkgver"."$_rev"
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
