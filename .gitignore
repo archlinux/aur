@@ -1,0 +1,4 @@
+*.tar.gz
+comby-*.pkg*
+pkg/
+src/
