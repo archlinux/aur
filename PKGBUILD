@@ -1,33 +1,33 @@
-# Maintainer: Jason Stryker <public at jasonstryker dot com>
+# Maintainer: Max Weber <abex at runelite dot net>
+# Contributor: Jason Stryker <public at jasonstryker dot com>
 
 pkgname=runelite-launcher
-pkgver=2.1.0
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Open source Old School RuneScape client. (Launcher with auto-update)"
+url='https://runelite.net/'
 arch=(any)
 license=('BSD')
-url="https://github.com/runelite/launcher"
-depends=('java-environment>=11')
-optdepends=('gvfs: enable links')
-makedepends=('maven' 'imagemagick')
-source=("${url}/archive/${pkgver}.tar.gz"
-        runelite-launcher.desktop)
-sha512sums=('a1e06ca8be7ca08c33f1408bb61449ff3c0106f4cf985201d8e666d4304a52f163ec413a428da992ac1ee4b731002d1b7f92d9e785cdb31d9999bdeb6920dfa0'
-            'db548f7e675a1aabc8a97d40dc3f8f59f14fe55826e80faf95df1c957b6ae0cc40514998141a0e7fb5eb456a53a1fd298ea31cb97b6584487147ada7190668b7')
-
-build() {
-    cd ${srcdir}/launcher-${pkgver}
-
-    sed -i 's/http:\/\/repo1.maven.org/https:\/\/repo1.maven.org/g' pom.xml
-
-    mvn clean package -DskipTests=true
-    
-    convert runelite.ico runelite.png
-}
+depends=(
+    'java-runtime>=11'
+    'ttf-font')
+optdepends=(
+    'gvfs: enable links'
+    'libnotify: native tray notifications')
+makedepends=()
+source=("https://github.com/runelite/launcher/releases/download/${pkgver}/RuneLite.jar"
+    "https://raw.githubusercontent.com/runelite/launcher/${pkgver}/LICENSE"
+    "https://raw.githubusercontent.com/runelite/launcher/${pkgver}/appimage/runelite.png"
+    runelite-launcher.desktop)
+noextract=('RuneLite.jar')
+sha256sums=('92269b5e3f6bbb64c3a38131faf9c560947354dbd3f789b02c2f7713dae2ea04'
+    '1487fb5a1804002fd63fe8c01c75258c148fbfa0e2c5d9e97056f9fcd607c0ad'
+    '81cb6ce7d8c4b9154e9840ab9d2938d0e6234f227049f004cacf90724f95cc11'
+    'SKIP')
 
 package() {
     install -D -m644 \
-        "${srcdir}/launcher-${pkgver}/target/RuneLite.jar" \
+        "${srcdir}/RuneLite.jar" \
         "${pkgdir}/usr/share/runelite-launcher/Launcher.jar"
 
     install -D -m644 \
@@ -35,11 +35,11 @@ package() {
         "${pkgdir}/usr/share/applications/runelite-launcher.desktop"
 
     install -D -m644 \
-        "${srcdir}/launcher-${pkgver}/runelite-4.png" \
+        "${srcdir}/runelite.png" \
         "${pkgdir}/usr/share/pixmaps/runelite-launcher.png"
 
     install -D -m644 \
-        "${srcdir}/launcher-${pkgver}/LICENSE" \
+        "${srcdir}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}"
 
     install -D -m755 \

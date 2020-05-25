@@ -1,3 +1,6 @@
 pkg/
 src/
 *.tar*
+RuneLite.jar
+runelite.png
+LICENSE
