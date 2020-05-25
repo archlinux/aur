@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot' 'foot-terminfo')
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
@@ -24,7 +24,12 @@ build() {
   ln -sf ../../fcft .
   popd
 
-  meson --prefix=/usr --buildtype=release --wrap-mode=forcefallback -Db_lto=true -Dc_args="-Wno-missing-profile" . build
+  # makepkg uses -O2 by default, but we *really* want -O3
+  # -Wno-missing-profile since we're not exercising everything when doing PGO builds
+  # -fno-plt because performance (this is the default in makepkg anyway)
+  export CFLAGS+=" -O3 -Wno-missing-profile -fno-plt"
+
+  meson --prefix=/usr --buildtype=release --wrap-mode=forcefallback -Db_lto=true . build
 
   if [[ -v WAYLAND_DISPLAY ]]; then
     meson configure -Db_pgo=generate build
