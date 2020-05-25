@@ -2,9 +2,7 @@
 # Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=rstudio-desktop
-pkgver=1.2.5042
-_gwtver=2.8.1
-_ginver=2.1.2
+pkgver=1.3.959
 _clangver=3.6.1
 pkgrel=1
 pkgdesc="Open source and enterprise-ready professional software for the R community"
@@ -23,23 +21,17 @@ optdepends=(pandoc)
 # java-environment=8 prevents:
 #    [ERROR] Hint: Check that your module inherits 'com.google.gwt.core.Core'
 #    either directly or indirectly (most often by inheriting module 'com.google.gwt.user.User')
-makedepends=('cmake>=3.4.3' 'boost>=1.69' 'java-environment=8' 'patchelf>=0.9' apache-ant openssl pam)
+makedepends=('cmake>=3.4.3' 'boost>=1.69' 'java-environment=8' 'patchelf>=0.9' apache-ant openssl pam r-testthat)
 conflicts=(rstudio-desktop-bin rstudio-desktop-git rstudio-desktop-preview-bin)
 source=(
 	"rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/tarball/v$pkgver"
-	"https://s3.amazonaws.com/rstudio-buildtools/gin-$_ginver.zip"
-	"https://s3.amazonaws.com/rstudio-buildtools/gwt-$_gwtver.zip"
 	'https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip'
-	'boost-1.70.patch::https://github.com/rstudio/rstudio/commit/217ce0962734ae85621fd82f0eed86129c991a79.patch'
 	'r-nosave.patch::https://github.com/rstudio/rstudio/commit/60dd6e3cd349cc208e33a12635378a1e338f8efc.patch'
 )
 noextract=('core-dictionaries.zip' "gin-$_ginver.zip")
 sha256sums=(
-	'4982e9dbd17cce0fcffd2a61162445f5e361dc75ca745da34b4b3f3ade3c4a22'
-	'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
-	'0b7af89fdadb4ec51cdb400ace94637d6fe9ffa401b168e2c3d372392a00a0a7'
+	'7c8da3cfa69c2c18795c2bcd07bc1279556280305b290be6f065fd695c075843'
 	'4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494'
-	'd252111e28a7de8602b4df1f66b36dded260061f094b504895e5c789f8681091'
 	'88d6924605de8d9e50c545bbf1e18a1146db8756be3d65e3e47e7cc1f7f324be'
 )
 
@@ -58,13 +50,6 @@ _check_version() {
 	fi
 }
 
-prepare() {
-	cd "$srcdir/$_pkgname-$_pkgname-"*
-	_check_version GIN_VER     $_ginver 'dependencies/common/install-gwt' || exit 1
-	_check_version GWT_SDK_VER $_gwtver 'dependencies/common/install-gwt' || exit 1
-	unzip -o "$srcdir/gin-$_ginver.zip" -d "../gin-$_ginver"
-}
-
 build() {
 	if [[ $(archlinux-java get) != 'java-8'* ]]; then
 		echo 'You need to have Java 8 active when building this package.' >&2
@@ -73,18 +58,13 @@ build() {
 	fi
 	cd "$srcdir/$_pkgname-$_pkgname-"*
 	
-	install -d src/gwt/lib/{gin/$_ginver,gwt/$_gwtver}
-	
-	cp -r "$srcdir/gin-$_ginver/"* "src/gwt/lib/gin/$_ginver"
-	cp -r "$srcdir/gwt-$_gwtver/"* "src/gwt/lib/gwt/$_gwtver"
-	
 	(
 		cd 'dependencies/common'
 		install -d dictionaries libclang/{3.5,builtin-headers}
 		
 		unzip -qfod 'dictionaries' "$srcdir/core-dictionaries.zip"
 		
-		ln -sfT '/usr/share/mathjax'                mathjax-26
+		ln -sfT '/usr/share/mathjax'                mathjax-27
 		ln -sfT '/usr/bin'                          pandoc
 		ln -sfT '/usr/lib/libclang.so'              libclang/3.5/libclang.so
 		ln -sfT "/usr/lib/clang/$_clangver/include" libclang/builtin-headers/3.5
@@ -96,10 +76,9 @@ build() {
 	
 	# The previous comparison doesn’t seem to work with Boost_VERSION being 1.71.0
 	sed -i 's/Boost_VERSION LESS 106900/Boost_VERSION VERSION_LESS 1.69.0/g' src/cpp/CMakeLists.txt
-	# The second boost 1.71 problem: tcp::resolver::get_io_service got removed
-	patch -p1 <'../boost-1.70.patch'
 	# Prepare file so the patch works, then patch RSlave→RNoSave
-	sed -i 's/2009-12/2009-19/g' src/cpp/r/session/REmbeddedPosix.cpp
+	sed -i 's/RStudio, PBC/RStudio, Inc./g' src/cpp/r/config.h.in
+	sed -i 's/RStudio, PBC/RStudio, Inc./g' src/cpp/r/session/REmbeddedPosix.cpp
 	patch -p1 <'../r-nosave.patch'
 	
 	# Prevent java error: “Could not lock User prefs. Lock file access denied.”
