@@ -48,7 +48,7 @@ _makenconfig=
 #  31. Intel Tiger Lake (MTIGERLAKE)
 #  32. Generic-x86-64 (GENERIC_CPU)
 #  33. Native optimizations autodetected by GCC (MNATIVE)
-_subarch=23
+_subarch=
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
@@ -63,8 +63,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-mainline-bcachefs
-pkgver=5.6.13
-_sublevel=13
+pkgver=5.6.14
+_sublevel=14
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/bcachefs"
@@ -93,13 +93,13 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-md5sums=('73fa7a9e7c42a9ab2cc8151d20e8d6b6'
+md5sums=('1941f86c38e5c81b87dddeb808710b9f'
          'SKIP'
-         '5905b0ae84fd23e391104c271a1757e6'
+         'b93393f3e437c3b43f0eb9f446a95b02'
          '2cebdad39da582fd6a0c01746c8adb42'
          'b31b27f8a6a8f5fb79a6a6f4e1f07cc4'
          'b10e4c612d5240d66fad8f1c50fe3242'
-         'c03f428e377dc745d41b8fa0808dd139'
+         '40e097c2afbcc1dceb07f85a7cb63b96'
          '228b33d0cb13cab162b3e051ec9bb88d'
          '9ed187660600a7884284aa6b3ddb08c6')
 

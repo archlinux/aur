@@ -1,15 +1,15 @@
 pkgbase = linux-mainline-bcachefs
-	pkgver = 5.6.13
+	pkgver = 5.6.14
 	pkgrel = 1
-	url = https://wiki.archlinux.org/index.php/Linux-ck
+	url = https://wiki.archlinux.org/index.php/bcachefs
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
 	makedepends = kmod
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.13.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.13.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.14.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.14.tar.sign
 	source = config
 	source = 0000-sphinx-workaround.patch
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
@@ -19,13 +19,13 @@ pkgbase = linux-mainline-bcachefs
 	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux56-tkg/linux56-tkg-patches/0008-5.6-bcachefs.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	md5sums = 73fa7a9e7c42a9ab2cc8151d20e8d6b6
+	md5sums = 1941f86c38e5c81b87dddeb808710b9f
 	md5sums = SKIP
-	md5sums = 944f5600187817d7a80138ef786aced8
+	md5sums = b93393f3e437c3b43f0eb9f446a95b02
 	md5sums = 2cebdad39da582fd6a0c01746c8adb42
 	md5sums = b31b27f8a6a8f5fb79a6a6f4e1f07cc4
 	md5sums = b10e4c612d5240d66fad8f1c50fe3242
-	md5sums = c03f428e377dc745d41b8fa0808dd139
+	md5sums = 40e097c2afbcc1dceb07f85a7cb63b96
 	md5sums = 228b33d0cb13cab162b3e051ec9bb88d
 	md5sums = 9ed187660600a7884284aa6b3ddb08c6
 
@@ -36,11 +36,11 @@ pkgname = linux-mainline-bcachefs
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-mainline-bcachefs=5.6.13
+	provides = linux-mainline-bcachefs=5.6.14
 
 pkgname = linux-mainline-bcachefs-headers
 	pkgdesc = Headers and scripts for building modules for Linux-mainline-bcachefs kernel
 	depends = linux-mainline-bcachefs
-	provides = linux-mainline-bcachefs-headers=5.6.13
-	provides = linux-headers=5.6.13
+	provides = linux-mainline-bcachefs-headers=5.6.14
+	provides = linux-headers=5.6.14
 
