@@ -37,6 +37,7 @@ pkgbase = gnome-shell-git
 	depends = libibus
 	depends = gnome-desktop-git
 	depends = bash-completion
+	depends = gnome-autoar
 	optdepends = gnome-control-center: System settings
 	optdepends = evolution-data-server: Evolution calendar integration
 	provides = gnome-shell
