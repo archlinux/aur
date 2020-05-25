@@ -3,7 +3,7 @@
 
 pkgname=liri-terminal
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal for Liri"
 arch=("x86_64")
 url="https://github.com/lirios/terminal"
