@@ -1,7 +1,7 @@
 pkgbase = jdk11-openjdk-dcevm
 	pkgdesc = OpenJDK Java 11 development kit with DCEVM patches (Trava build)
-	pkgver = 11.0.5.u5
-	pkgrel = 3
+	pkgver = 11.0.7.u1
+	pkgrel = 1
 	url = https://github.com/TravaOpenJDK/trava-jdk-11-dcevm
 	install = install_jdk11-openjdk-dcevm.sh
 	arch = x86_64
@@ -16,18 +16,18 @@ pkgbase = jdk11-openjdk-dcevm
 	optdepends = gtk3: for the Gtk+ 3 look and feel
 	provides = java-runtime-headless=11
 	provides = java-runtime-headless-openjdk=11
-	provides = jre11-openjdk-headless=11.0.5.u5
-	provides = jre-openjdk-headless=11.0.5.u5
+	provides = jre11-openjdk-headless=11.0.7.u1
+	provides = jre-openjdk-headless=11.0.7.u1
 	provides = java-runtime=11
 	provides = java-runtime-openjdk=11
-	provides = jre11-openjdk=11.0.5.u5
-	provides = jre-openjdk=11.0.5.u5
+	provides = jre11-openjdk=11.0.7.u1
+	provides = jre-openjdk=11.0.7.u1
 	provides = java-environment=11
 	provides = java-environment-openjdk=11
-	provides = jdk11-openjdk=11.0.5.u5
-	provides = jdk-openjdk=11.0.5.u5
-	provides = openjdk11-src=11.0.5.u5
-	provides = openjdk-src=11.0.5.u5
+	provides = jdk11-openjdk=11.0.7.u1
+	provides = jdk-openjdk=11.0.7.u1
+	provides = openjdk11-src=11.0.7.u1
+	provides = openjdk-src=11.0.7.u1
 	backup = etc/jdk11-openjdk-dcevm/net.properties
 	backup = etc/jdk11-openjdk-dcevm/logging.properties
 	backup = etc/jdk11-openjdk-dcevm/security/java.security
@@ -42,11 +42,11 @@ pkgbase = jdk11-openjdk-dcevm
 	backup = etc/jdk11-openjdk-dcevm/management/jmxremote.access
 	backup = etc/jdk11-openjdk-dcevm/management/jmxremote.password.template
 	backup = etc/jdk11-openjdk-dcevm/sound.properties
-	source = https://github.com/TravaOpenJDK/trava-jdk-11-dcevm/releases/download/dcevm-11.0.5+5/java11-openjdk-dcevm-linux.tar.gz
+	source = java11-openjdk-dcevm-11.0.7+1.tar.gz::https://github.com/TravaOpenJDK/trava-jdk-11-dcevm/releases/download/dcevm-11.0.7+1/java11-openjdk-dcevm-linux.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = f732a96d7e34068d52016f6d666d2f52ab66564c01175c8a3e6c27d50dd3bd31
+	sha256sums = 0f91ac2f31ccd1a13bbbfd2bd84d3dee2170d3befd8aeaa30f00256553cf3515
 	sha256sums = 428325db0d1483e73bf075fa6ef06c7a50dcbf452651751e93c4c0cb018c127a
 	sha256sums = a51ea0dc28347d43175832546454cf13b8c453408c4439df962a157f4af7e81c
 	sha256sums = bba0bbf1cef35199c7e6fc0531142d15c2a1231f4c9d9c292316d0d415eae148

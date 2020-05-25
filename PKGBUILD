@@ -4,11 +4,11 @@
 
 _majorver=11
 _minorver=0
-_securityver=5
-_updatever=5
+_securityver=7
+_updatever=1
 _tag_ver="${_majorver}.${_minorver}.${_securityver}+${_updatever}"
 pkgver="${_majorver}.${_minorver}.${_securityver}.u${_updatever}"
-pkgrel=3
+pkgrel=1
 
 pkgname='jdk11-openjdk-dcevm'
 pkgdesc='OpenJDK Java 11 development kit with DCEVM patches (Trava build)'
@@ -60,14 +60,14 @@ backup=(
 install='install_jdk11-openjdk-dcevm.sh'
 
 source=(
-  https://github.com/TravaOpenJDK/trava-jdk-11-dcevm/releases/download/dcevm-${_tag_ver}/java11-openjdk-dcevm-linux.tar.gz
+  java11-openjdk-dcevm-${_tag_ver}.tar.gz::https://github.com/TravaOpenJDK/trava-jdk-11-dcevm/releases/download/dcevm-${_tag_ver}/java11-openjdk-dcevm-linux.tar.gz
   freedesktop-java.desktop
   freedesktop-jconsole.desktop
   freedesktop-jshell.desktop
 )
 
 sha256sums=(
-  'f732a96d7e34068d52016f6d666d2f52ab66564c01175c8a3e6c27d50dd3bd31'
+  '0f91ac2f31ccd1a13bbbfd2bd84d3dee2170d3befd8aeaa30f00256553cf3515'
   '428325db0d1483e73bf075fa6ef06c7a50dcbf452651751e93c4c0cb018c127a'
   'a51ea0dc28347d43175832546454cf13b8c453408c4439df962a157f4af7e81c'
   'bba0bbf1cef35199c7e6fc0531142d15c2a1231f4c9d9c292316d0d415eae148'
@@ -109,5 +109,4 @@ package() {
       "${srcdir}/freedesktop-${f}.desktop" \
       "${pkgdir}/usr/share/applications/${f}-${pkgname}.desktop"
   done
-
 }
