@@ -1,0 +1,17 @@
+pkgbase = tekstowo-git
+	pkgdesc = Find lyrics and translation for a song using tekstowo.pl
+	pkgver = 0.1.r0.54eb87b
+	pkgrel = 1
+	url = https://github.com/samedamci/tekstowo
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python3
+	provides = tekstowo
+	conflicts = tekstowo
+	replaces = tekstowo
+	source = git+https://github.com/samedamci/tekstowo.git
+	md5sums = SKIP
+
+pkgname = tekstowo-git
+
