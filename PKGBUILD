@@ -4,7 +4,7 @@
 
 pkgname=incron
 pkgver=0.5.12
-pkgrel=3
+pkgrel=4
 _commit=f45c2f5ac4baea99b48e99a713d1f4ec1854aa76
 pkgdesc="Like the regular cron but is driven by filesystem events instead of time periods"
 arch=('x86_64')
