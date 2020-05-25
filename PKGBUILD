@@ -4,7 +4,7 @@
 
 pkgname=gnome-icon-theme-extras
 pkgver=3.12.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Extra GNOME icons for specific devices and file types'
 arch=('any')
 depends=('gtk-update-icon-cache' 'hicolor-icon-theme')
