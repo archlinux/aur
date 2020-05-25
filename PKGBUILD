@@ -2,7 +2,7 @@
 
 pkgname=runelite-launcher-appimage
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source Old School RuneScape client. (AppImage Launcher)'
 arch=('x86_64')
 license=('BSD')
@@ -17,6 +17,8 @@ optdepends=('gvfs: enable links')
 conflicts=('runelite-launcher')
 
 prepare() {
+    # Remove old extracted appimage to prevent extract error
+    rm -rf squashfs-root
     chmod +x ${_appimage}
     ./${_appimage} --appimage-extract > /dev/null
 }
