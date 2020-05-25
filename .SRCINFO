@@ -1,0 +1,18 @@
+pkgbase = tqftpserv-git
+	pkgdesc = Trivial File Transfer Protocol server over AF_QIPCRTR
+	pkgver = r12.783425b
+	pkgrel = 1
+	url = https://github.com/andersson/tqftpserv
+	arch = aarch64
+	groups = qcom-icnss-wlan
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = qrtr
+	provides = tqftpserv
+	source = git://github.com/andersson/tqftpserv.git
+	md5sums = SKIP
+
+pkgname = tqftpserv-git
+
