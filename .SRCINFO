@@ -1,6 +1,6 @@
 pkgbase = azure-sphere-sdk
 	pkgdesc = Azure Sphere SDK Preview for Linux
-	pkgver = 20.01
+	pkgver = 20.04
 	pkgrel = 1
 	url = https://aka.ms/AzureSphereSDK
 	install = azure-sphere-sdk.install
@@ -16,10 +16,10 @@ pkgbase = azure-sphere-sdk
 	optdepends = code: for software development
 	options = !strip
 	options = staticlibs
-	source = azure-sphere-sdk-20.01.tar.gz::https://software-download.microsoft.com/download/pr/Azure_Sphere_SDK_Bundle_20_01.tar.gz
+	source = azure-sphere-sdk-20.04.tar.gz::https://software-download.microsoft.com/download/pr/Azure_Sphere_SDK_Bundle_20_04.tar.gz
 	source = azure-sphere-sdk.udev
 	source = azure-sphere-sdk.sysusers
-	sha256sums = c7a8fabdada37e5a4d3b46aa236ddf7612b9fd8e1d90409d2169f085af9fc201
+	sha256sums = e6c6889645386d26ac9604abbbeaaf0930bee831903b589dd647fa8313690e0a
 	sha256sums = 649ec04bdd0c052838bf3364fdd32313264891c4f7f60039cb644ef79c3c589f
 	sha256sums = 323c5e51b6bcf92c7e024cfd6bd6843cb57531317c6ef887b1bced81e920d43e
 
