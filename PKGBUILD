@@ -10,7 +10,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs
          python-buildbot-wsgi-dashboards python-buildbot-badges)
 pkgver=2.7.0
 _bb_contrib_commit=ada3c8f30ca7e1b6bb260e2e5971053fbd254333
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
@@ -28,13 +28,15 @@ source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbo
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "pygments-2.5.diff"
         "sphinx-issue7139.diff"
-        "sphinx-3.0.patch")
+        "sphinx-3.0.patch"
+        "reproducible-html.diff")
 sha256sums=('8b0ce7d332c5013517bf3bbcc70638d16c8ded8c099770bfbc8126332ff3016a'
             'SKIP'
             'SKIP'
             'aab7437b4db78fd07971b875db0cdb9af4e4807ae8c0b7d5d4bae5ae03074ec2'
             '44753dd07bef78105528d371a053594fd7a24922e23a2841d67ff44c764224b6'
-            '148410975575748984de7ae7d013135899bc522a56b7b678df3ac9bb55321f6f')
+            '148410975575748984de7ae7d013135899bc522a56b7b678df3ac9bb55321f6f'
+            'b921d29994eff3af134ca1b37acf291a6a95f5da35a2a4f885557adcca22f864')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt> (@p12tic on GitHub)
@@ -45,6 +47,7 @@ prepare() {
   patch -Np1 -i ../pygments-2.5.diff
   patch -Np1 -i ../sphinx-issue7139.diff
   patch -Np1 -i ../sphinx-3.0.patch
+  patch -Np1 -i ../reproducible-html.diff
 
   # HACK: do not use virtualenv
   sed -i -e 's#frontend_deps:.*#frontend_deps:#' Makefile
