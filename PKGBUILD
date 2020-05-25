@@ -25,13 +25,13 @@ package() {
   install -Dm 755 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/bin/recorder.sh" "${pkgdir}/usr/share/java/${pkgname}/bin/recorder.sh"
 
   # conf
-  confs=`ls "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/conf/"`
+  confs=$(ls "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/conf/")
   for conf in $confs; do
     install -Dm 644 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/conf/${conf}" "${pkgdir}/usr/share/java/${pkgname}/conf/${conf}"
   done
 
   # lib
-  jars=`find "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/lib/" -maxdepth 1 -type f -printf '%f\n'`
+  jars=$(find "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/lib/" -maxdepth 1 -type f -printf '%f\n')
   for jar in $jars; do
     install -Dm 644 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/lib/${jar}" "${pkgdir}/usr/share/java/${pkgname}/lib/${jar}"
   done
@@ -42,7 +42,7 @@ package() {
   # user-files
   install -Dm 644 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/user-files/resources/search.csv" "${pkgdir}/usr/share/java/${pkgname}/user-files/resources/search.csv"
   install -Dm 644 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/user-files/simulations/computerdatabase/BasicSimulation.scala" "${pkgdir}/usr/share/java/${pkgname}/user-files/simulations/computerdatabase/BasicSimulation.scala"
-  scala_files=`ls "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/user-files/simulations/computerdatabase/advanced/"`
+  scala_files=$(ls "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/user-files/simulations/computerdatabase/advanced/")
   for scala_file in $scala_files; do
     install -Dm 644 "${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}/user-files/simulations/computerdatabase/advanced/${scala_file}" "${pkgdir}/usr/share/java/${pkgname}/user-files/simulations/computerdatabase/advanced/${scala_file}"
   done
