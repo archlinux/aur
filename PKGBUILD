@@ -20,7 +20,7 @@ sha256sums=('65773f3aefafe4e006d9201d30bf3cf37ae9b6e72314b70ed4c3f719f5f00b89'
             '6124d91ec20c2d495cf9b2867027251c12db478da4429982d7794a356d56aebf')
 
 package() {
-  srcbase="${srcbase}"
+  srcbase="${srcdir}/${_pkgname}-charts-highcharts-bundle-${pkgver}"
 
   install -Dm 755 "${srcbase}/bin/${_pkgname}.sh" "${pkgdir}/usr/share/java/${pkgname}/bin/${_pkgname}.sh"
   install -Dm 755 "${srcbase}/bin/recorder.sh" "${pkgdir}/usr/share/java/${pkgname}/bin/recorder.sh"
