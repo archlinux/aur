@@ -53,6 +53,8 @@ build() {
       -DFORCE_DISABLE_LIBS="plumed" \
       -DFORCE_INTERNAL_LIBS="arpack;xblas;netcdf;netcdf-fortran;pnetcdf;fftw;boost;mpi4py" \
       2>&1 | tee cmake.log
+
+  make
 }
 
 package() {
