@@ -1,4 +1,4 @@
-export AMBERHOME="/opt/ambertools"
+export AMBERHOME="/opt/amber"
 export PATH="${AMBERHOME}/bin:${PATH}"
 
 if [ -z "${LD_LIBRARY_PATH}" ]; then

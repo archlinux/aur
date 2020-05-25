@@ -8,7 +8,7 @@ proc ModulesHelp { } {
 
 module-whatis "AmberTools20 package"
 
-set             AMBERHOME       /opt/ambertools
+set             AMBERHOME       /opt/amber
 set             _gccver         8.4.0
 
 setenv          AMBERHOME       ${AMBERHOME}
