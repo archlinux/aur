@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-mav-planning-msgs
+pkgbase = ros-noetic-mav-planning-msgs
 	pkgdesc = ROS - Messages specific to MAV planning, especially polynomial.
 	pkgver = 3.3.2
 	pkgrel = 1
@@ -11,18 +11,18 @@ pkgbase = ros-melodic-mav-planning-msgs
 	license = ASL 2.0
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-cmake-modules
-	depends = ros-melodic-mav-msgs
-	depends = ros-melodic-message-generation
-	depends = ros-melodic-message-runtime
-	depends = ros-melodic-trajectory-msgs
-	depends = ros-melodic-geometry-msgs
-	depends = ros-melodic-sensor-msgs
-	depends = ros-melodic-std-msgs
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-cmake-modules
+	depends = ros-noetic-mav-msgs
+	depends = ros-noetic-message-generation
+	depends = ros-noetic-message-runtime
+	depends = ros-noetic-trajectory-msgs
+	depends = ros-noetic-geometry-msgs
+	depends = ros-noetic-sensor-msgs
+	depends = ros-noetic-std-msgs
 	depends = eigen
-	source = ros-melodic-mav-planning-msgs-3.3.2.tar.gz::https://github.com/ethz-asl/mav_comm/archive/3.3.2.tar.gz
+	source = ros-noetic-mav-planning-msgs-3.3.2.tar.gz::https://github.com/ethz-asl/mav_comm/archive/3.3.2.tar.gz
 	sha256sums = 5c24fd711d32a024d226707aca6e18ed31e5ebd01e5bfe725098d07619223459
 
-pkgname = ros-melodic-mav-planning-msgs
+pkgname = ros-noetic-mav-planning-msgs
 
