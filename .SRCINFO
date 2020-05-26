@@ -1,15 +1,15 @@
 pkgbase = glslang-sparzz-git
-	pkgdesc = glslang build from source
-	pkgver = 8.13.3743.2020.05.25
+	pkgdesc = glslang build from source. For better install instructions visit my GitHub page https://github.com/sparzz/vulkan-arch-aur it will provide the install order instruction for Vulkan API. Almost all the Vulkan packages from my AUR requires glslang
+	pkgver = 8.13.3743.2020.05.26
 	pkgrel = 1
-	url = https://github.com/KhronosGroup/glslang.git
+	url = https://github.com/sparzz/vulkan-arch-aur
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	makedepends = git
+	makedepends = make
+	depends = yay
 	provides = glslang-sparzz-git
-	conflicts = glslang
-	replaces = glslang
 	source = glslang::git+https://github.com/KhronosGroup/glslang.git
 	md5sums = SKIP
 

@@ -5,22 +5,23 @@
 
 # Maintainer: sparzz
 pkgname=glslang-sparzz-git
-pkgver=8.13.3743.2020.05.25
+pkgver=8.13.3743.2020.05.26
 pkgrel=1
 epoch=
-pkgdesc="glslang build from source"
+pkgdesc="glslang build from source. For better install instructions visit my GitHub page https://github.com/sparzz/vulkan-arch-aur it will provide the install order instruction for Vulkan API. Almost all the Vulkan packages from my AUR requires glslang"
 arch=(x86_64)
-url="https://github.com/KhronosGroup/glslang.git"
+url="https://github.com/sparzz/vulkan-arch-aur"
 license=('Apache')
 groups=()
-depends=()
+depends=("yay")
 makedepends=("cmake"
-            "git")
+            "git"
+            "make")
 checkdepends=()
 optdepends=()
 provides=(glslang-sparzz-git)
-conflicts=(glslang)
-replaces=(glslang)
+conflicts=()
+replaces=()
 backup=()
 options=()
 install=
