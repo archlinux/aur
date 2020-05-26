@@ -1,0 +1,12 @@
+diff --git i/gio/tests/meson.build w/gio/tests/meson.build
+index 65f43e267..3bd66bf60 100644
+--- i/gio/tests/meson.build
++++ w/gio/tests/meson.build
+@@ -598,6 +598,7 @@ if not meson.is_cross_build() or meson.has_exe_wrapper()
+                  '-r',
+                  '-b','binary',
+                  '@INPUT@',
++                 '--oformat', 'elf32-i386',
+                  '-o','@OUTPUT@'])
+ 
+     # Rename symbol to match the one in the C file
