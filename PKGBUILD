@@ -32,10 +32,12 @@ validpgpkeys=(  # https://raw.githubusercontent.com/helm/helm/master/KEYS
 
 sha256sums=('SKIP')
 
-[ "${CARCH}" = "x86_64" ] && _CARCH=amd64 && sha256sums+=('4afe48da420e4c3adcccf8484f27991834e3a3838668103199f274f4fa6f2df2')
-[ "${CARCH}" = "aarch64" ] && _CARCH=arm64 && sha256sums+=('966f47419571c28e923481413553956b05f682f7486fb47a32c62adcf3c4c5f1')
-echo ${CARCH} | grep -E '^arm' &>/dev/null && _CARCH=arm && sha256sums+=('390bff179dae4e8dcf829d83e326b8b461a08525a70c91d7cf69e071c5fe684f')
-echo ${CARCH} | grep -E '^i(4|6)86$' &>/dev/null && _CARCH=386 && sha256sums+=('ee716f2c86ace7735a726ad564a101fff32c74a1d23b45a2274ce090ed120877')
+case "${CARCH}" in
+  x86_64)    _CARCH=amd64 && sha256sums+=('4afe48da420e4c3adcccf8484f27991834e3a3838668103199f274f4fa6f2df2');;
+  aarch64)   _CARCH=arm64 && sha256sums+=('966f47419571c28e923481413553956b05f682f7486fb47a32c62adcf3c4c5f1');;
+  arm*)      _CARCH=arm && sha256sums+=('390bff179dae4e8dcf829d83e326b8b461a08525a70c91d7cf69e071c5fe684f');;
+  i486|i686) _CARCH=386 && sha256sums+=('ee716f2c86ace7735a726ad564a101fff32c74a1d23b45a2274ce090ed120877');;
+esac
 
 source=(
   "https://github.com/helm/helm/releases/download/v${pkgver}/helm-v${pkgver}-linux-${_CARCH}.tar.gz.asc"
