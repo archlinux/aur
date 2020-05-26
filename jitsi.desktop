@@ -5,6 +5,9 @@ GenericName=jitsi
 Comment=VoIP and Instant Messaging client
 Icon=jitsi
 Type=Application
-Categories=Network
-Exec=jitsi
+Exec=jitsi %u
 Terminal=false
+Keywords=chat;messaging;im;voip;video;call;conference;
+Categories=Network;InstantMessaging;Chat;Telephony;VideoConference;Java;
+MimeType=x-scheme-handler/sip;x-scheme-handler/xmpp;x-scheme-handler/tel;
+X-PulseAudio-Properties=media.role=phone
