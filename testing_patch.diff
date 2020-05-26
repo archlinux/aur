@@ -1,0 +1,20 @@
+diff --git a/testing/CMakeLists.txt b/testing/CMakeLists.txt
+index 57a12d203..0d54841a9 100644
+--- a/testing/CMakeLists.txt
++++ b/testing/CMakeLists.txt
+@@ -29,7 +29,6 @@ if (${Qt5Core_FOUND})
+         add_subdirectory(networkmanager)
+         add_subdirectory(hashstorage)
+         add_subdirectory(blockvalidation)
+-        add_subdirectory(api)
+ 
+         find_package(Qt5Network)
+         if (${Qt5Network_FOUND})
+@@ -47,7 +46,6 @@ if (${Qt5Core_FOUND})
+             test_networkmanager
+             test_hashstorage
+             test_blockvalidation
+-            test_api
+             ${testHttp}
+         )
+     else ()

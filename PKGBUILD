@@ -1,12 +1,12 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee
-pkgver=2020.03.3
+pkgver=2020.04.1
 pkgrel=1
 pkgdesc="Flowee Bitcoin products"
 arch=('x86_64')
 url="https://flowee.org/"
-license=('GPL')
+license=('GPL3')
 depends=('boost-libs' 'libevent' 'openssl')
 makedepends=('boost' 'cmake' 'pkgconf')
 optdepends=('miniupnpc')
@@ -16,14 +16,17 @@ install=flowee.install
 source=("https://gitlab.com/FloweeTheHub/thehub/-/archive/$pkgver/thehub-$pkgver.tar.gz"
     "flowee.logrotate"
     "flowee.conf"
+    "testing_patch.diff"
     "logs.conf")
 
-sha256sums=("5c5eab5d268b3405924c4fb1980124ebdf3cb7586c97e08b4337ed41e9815e4f"
+sha256sums=("0ce651e4fe2b68339629888f31846bdde889b9013b67425177379c356a579bef"
     "aff02b3312c88113fe7316152c15f1545233dc8c2062ee8c36d2dbcad4a9f5bf"
     "bc14acf0d1b4064553756a1e81c0b943e842296f2a2af6442e480b846392e6bc"
+    "b03221ef5cd56f22c6755bc617a8caed39a1dd603c0cc0fee8c05b53c4ddbdfe"
     "2c94fbbccd6981a22951e4696f72d26aa0b5f7ea32aa48e46a0b6ded909fc3db")
 
 build() {
+  (cd thehub-$pkgver && patch -p1 -i ../testing_patch.diff)
   mkdir -p build
   cd build
   cmake -Dbuild_tests=true -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ ../thehub-$pkgver
