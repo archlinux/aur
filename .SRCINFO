@@ -1,0 +1,15 @@
+pkgbase = fabric1
+	pkgdesc = Python library and command-line tool designed to streamline deploying applications or performing system administration tasks via the SSH protocol
+	pkgver = 1.14.1
+	pkgrel = 1
+	url = https://www.fabfile.org/
+	arch = any
+	license = BSD
+	depends = python2-setuptools
+	depends = python2-paramiko
+	conflicts = fabric
+	source = https://github.com/fabric/fabric/archive/1.14.1/fabric1-1.14.1.tar.gz
+	sha512sums = 1daffe8875fb13b5496cbc7e8ca65185a2151a52ad9319d0cb2250432fc43092ff87b017ecd9b77f529f0104b842ec01e0fc99789e0f8b82955a44c9a150df98
+
+pkgname = fabric1
+
