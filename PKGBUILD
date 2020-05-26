@@ -2,7 +2,7 @@
 
 pkgname='tabs-app'
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Persistent and separate browser tabs in one window'
 arch=('x86_64')
 url='https://gitlab.com/ArisuOngaku/tabs'
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
   cd "$srcdir/tabs-src" || exit 1
-  yarn build-arch
+  yarn compile && yarn electron-builder -l dir
 }
 
 package() {
@@ -34,7 +34,7 @@ package() {
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-  install -Dm644 "$srcdir/tabs-src/resources/logo.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+  install -Dm644 "$srcdir/tabs-src/resources/images/logo.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
 
   mkdir -p "$pkgdir/opt/$pkgname"
   cp -dr --no-preserve=ownership "$srcdir/tabs-src/dist/linux-unpacked/." "$pkgdir/opt/$pkgname/"
