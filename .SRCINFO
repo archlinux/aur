@@ -1,12 +1,14 @@
 pkgbase = snage-bin
 	pkgdesc = A tool for managing change logs.
 	pkgver = 0.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FACT-Finder/snage
 	arch = any
 	license = MIT
 	makedepends = yarn
 	depends = nodejs
+	provides = snage
+	conflicts = snage
 	options = !strip
 	source = snage-0.0.13.tar.gz::https://registry.npmjs.org/snage/-/snage-0.0.13.tgz
 	source = snage-0.0.13-src.tar.gz::https://github.com/FACT-Finder/snage/archive/v0.0.13.tar.gz
