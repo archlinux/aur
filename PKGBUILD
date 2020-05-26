@@ -103,6 +103,7 @@ prepare() {
   git cherry-pick -n dc0806dd25882f41f6085c8356712f95fded56c7
 
   patch -Np1 -i "${srcdir}/vmaf-model-path.patch"
+  patch -Np1 -i "${srcdir}/0001-Revert-lavd-Remove-libndi_newtek.patch"
 }
 
 build() {
