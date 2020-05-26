@@ -3,8 +3,8 @@
 # Based on UMS PKGBUILD
 
 pkgname=ums-headless
-pkgver=9.4.3
-pkgrel=2
+pkgver=9.5.0
+pkgrel=1
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server for headless systems."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'armv6h' 'arm')
 url="https://www.universalmediaserver.com/"
@@ -21,25 +21,25 @@ optdepends_x86_64=("dcraw: thumbnails creation support"
 backup=(opt/ums/UMS.conf \
         opt/ums/WEB.conf)
 conflicts=('ums')
-source_x86_64=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/${pkgver}/UMS-${pkgver}-x86_64.tgz")
 source_i686=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/${pkgver}/UMS-${pkgver}-x86.tgz")
-source_armv7h=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/${pkgver}/UMS-${pkgver}-armhf.tgz")
-source_armv6h=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/${pkgver}/UMS-${pkgver}-armhf.tgz")
+source_x86_64=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/${pkgver}/UMS-${pkgver}-x86_64.tgz")
 source_aarch64=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/${pkgver}/UMS-${pkgver}-arm64.tgz")
 source_arm=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/${pkgver}/UMS-${pkgver}-armel.tgz")
-
+source_armv6h=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/${pkgver}/UMS-${pkgver}-armhf.tgz")
+source_armv7h=(${source_armv6h})
 source=('ums.desktop'
         'ums.service'
         'ums.timer')
+
 sha256sums=('0cdadbabef215b6539e56755147a8f626d9f1fadfb85e2e5b7f7f1b66f1cdef9'
             '1f6efefa58dde9148396bd9236a6985db0fa27f1c767067b52bfae1832f32284'
             '7fd36db71f39fde3d515c697101190f979b308d910b3c4210b90422669683ab0')
-sha256sums_i686=('e042ebff51c16a0496066b6f92ea1363cd87a1bef15be694b63ffe02a35f72f5')
-sha256sums_x86_64=('b5937574edf9e1a673edddd44fc2f724fa847449c55d4f96cdd68e62d7279459')
-sha256sums_armv7h=('5134f5a15eba5b36b7d7a6770959e3b5890a3b254976164b6c5288ee2833e0c1')
-sha256sums_aarch64=('2d26b6f8b79a59c8b72dab679f8fa82d532cb7406e5227e747e602f539b67e35')
-sha256sums_armv6h=('5134f5a15eba5b36b7d7a6770959e3b5890a3b254976164b6c5288ee2833e0c1')
-sha256sums_arm=('6bab92aa6520fcdc1d9ab013dbeeafc3e260b18fa3af36ea356277941af91d7e')
+sha256sums_i686=('5e8141ad1ab06c0d0c66d3ef71a0cb3d7bd9b1bf900a546d024c9461d445bce1')
+sha256sums_x86_64=('7dfe802a82a617b3578f20c1972aa51c9ebe6ce587740e58d35d0be270a7c6a2')
+sha256sums_armv7h=('ed348126999cddaa75055a8464f900efc9f9263704d622cb6660a1bb4b4668a4')
+sha256sums_aarch64=('4dd932d4abf11b6006219f84aa3c3c8ebea82aceca158ecd887dcbcd66a70705')
+sha256sums_armv6h=('ed348126999cddaa75055a8464f900efc9f9263704d622cb6660a1bb4b4668a4')
+sha256sums_arm=('97ebdedb29951aa3ae8142dfe4a7a99bdc4c45e8fbf0d1025abbbea331307e7c')
 
 package() {
   mkdir -p ${pkgdir}/opt/ums
