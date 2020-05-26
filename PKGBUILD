@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-openh264
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="OpenH264 is a codec library which supports H.264 encoding and decoding (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ depends=('mingw-w64-gcc')
 makedepends=('nasm' 'mingw-w64-make')
 options=(!strip !buildflags staticlibs)
 source=("https://github.com/cisco/openh264/archive/v${pkgver}.tar.gz")
-sha256sums=('27f185d478066bad0c8837f4554cd8d69cca1d55d5f3dc6a43a8cef1fe6c005f')
+sha256sums=('af173e90fce65f80722fa894e1af0d6b07572292e76de7b65273df4c0a8be678')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -49,6 +49,9 @@ package() {
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
     ${_arch}-strip --strip-all "$pkgdir"/usr/${_arch}/bin/*.exe
+    if [[ $NO_EXECUTABLES ]]; then
+      find "${pkgdir}/usr/${_arch}" -name '*.exe' -delete
+    fi
   done
 }
 
