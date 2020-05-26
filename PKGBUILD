@@ -1,8 +1,8 @@
 # Author: Artemii Sudakov <finziyr@yandex.ru>
 pkgname=rvrspkg
 pkgver=1.0
-pkgrel=1
-pkgdesc="Creates a package for Linux using the already installed package and its binary files"
+pkgrel=2
+pkgdesc="Creates a package for Arch Linux using the installed package and its binary files"
 arch=('any')
 url="https://github.com/BiteDasher/rvrspkg"
 license=('MIT')
