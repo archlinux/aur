@@ -1,6 +1,6 @@
 pkgbase = explain
 	pkgdesc = Transform postgresql explain to a graph
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/sanpii/explain
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = explain
 	makedepends = cargo
 	optdepends = graphviz
 	optdepends = postgresql
-	source = https://github.com/sanpii/explain/archive/1.1.0.tar.gz
-	sha256sums = 6f9cb15d816b2421f2eaf2d0c27f55a9d741f79d58056ce2aed6ada9ad5c5934
+	source = https://github.com/sanpii/explain/archive/1.2.0.tar.gz
+	sha256sums = 2c5057a9a1ed4a85f5ddc86a7b8d96b57e2be16d178a272956ee115e6b0b319e
 
 pkgname = explain
 
