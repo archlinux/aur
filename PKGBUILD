@@ -1,8 +1,8 @@
 # Maintainer: Martin Pugh <martin at parity dot io>
 pkgname=polkadot
 pkgdesc="Polkadot Node Implementation"
-pkgrel=2
-pkgver=0.7.33
+pkgrel=1
+pkgver=0.8.0
 arch=('x86_64')
 url="https://github.com/paritytech/${pkgname}"
 license=('GPL3')
