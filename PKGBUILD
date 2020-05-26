@@ -1,6 +1,6 @@
 # Maintainer: Flat <flat@imo.uto.moe>
 pkgname=imgbrd-grabber-git
-pkgver=v7.2.1.r154.eb96e1ef
+pkgver=v7.2.1.r202.096c955c
 pkgrel=1
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('i686' 'x86_64')
@@ -42,7 +42,7 @@ build() {
     cd "$srcdir/build"
 
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
-    "$srcdir/${pkgname%-git}"
+    "$srcdir/${pkgname%-git}/src"
     make
 }
 
