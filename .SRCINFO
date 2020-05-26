@@ -1,6 +1,6 @@
 pkgbase = systemd-cdown-git
 	pkgdesc = systemd (git version)
-	pkgver = 243.r551.g98647fa0fa
+	pkgver = 245.r630.g842a362c3a
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -34,6 +34,7 @@ pkgbase = systemd-cdown-git
 	makedepends = kexec-tools
 	makedepends = libxkbcommon
 	makedepends = bash-completion
+	makedepends = p11-kit
 	options = !strip
 	source = git+https://github.com/cdown/systemd#branch=cdowntest
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
@@ -89,7 +90,7 @@ pkgname = systemd-cdown-git
 	depends = hwids
 	depends = libcap
 	depends = libgcrypt
-	depends = systemd-cdown-libs-git
+	depends = systemd-libs
 	depends = libidn2
 	depends = libidn2.so
 	depends = lz4
@@ -100,21 +101,22 @@ pkgname = systemd-cdown-git
 	depends = xz
 	depends = pcre2
 	depends = audit
+	depends = libp11-kit
 	optdepends = libmicrohttpd: remote journald capabilities
 	optdepends = quota-tools: kernel-level quota management
-	optdepends = systemd-cdown-sysvcompat-git: symlink package to provide sysvinit binaries
+	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	optdepends = curl: machinectl pull-tar and pull-raw
-	provides = systemd=243.r551.g98647fa0fa
 	provides = nss-myhostname
-	provides = systemd-tools=243.r551.g98647fa0fa
-	provides = udev=243.r551.g98647fa0fa
-	conflicts = systemd
+	provides = systemd-tools=245.r630.g842a362c3a
+	provides = udev=245.r630.g842a362c3a
+	provides = systemd=245.r630.g842a362c3a
 	conflicts = nss-myhostname
-	conflicts = systemd-cdown-tools
+	conflicts = systemd-tools
 	conflicts = udev
+	conflicts = systemd
 	replaces = nss-myhostname
-	replaces = systemd-cdown-tools
+	replaces = systemd-tools
 	replaces = udev
 	backup = etc/pam.d/systemd-user
 	backup = etc/systemd/coredump.conf
@@ -138,29 +140,29 @@ pkgname = systemd-cdown-libs-git
 	depends = libgcrypt
 	depends = lz4
 	depends = xz
-	provides = systemd-libs
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
-	conflicts = systemd-libs
+	provides = systemd-libs
 	conflicts = libsystemd
+	conflicts = systemd-libs
 	replaces = libsystemd
 
 pkgname = systemd-cdown-resolvconf-git
 	pkgdesc = systemd resolvconf replacement (for use with systemd-resolved, git version)
 	license = LGPL2.1
 	depends = systemd-cdown-git
-	provides = systemd-resolvconf
 	provides = openresolv
 	provides = resolvconf
-	conflicts = systemd-resolvconf
+	provides = systemd-resolvconf
 	conflicts = openresolv
+	conflicts = systemd-resolvconf
 
 pkgname = systemd-cdown-sysvcompat-git
 	pkgdesc = sysvinit compat for systemd (git version)
 	license = GPL2
 	depends = systemd-cdown-git
 	provides = systemd-sysvcompat
-	conflicts = systemd-sysvcompat
 	conflicts = sysvinit
+	conflicts = systemd-sysvcompat
 
