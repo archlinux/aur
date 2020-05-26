@@ -13,7 +13,10 @@ arch=(x86_64)
 url="https://github.com/sparzz/vulkan-arch-aur"
 license=('Apache')
 groups=()
-depends=("yay")
+depends=("yay"
+        "glslang-sparzz-git"
+        "make"
+        "cmake")
 makedepends=("cmake"
             "git"
             "make"
