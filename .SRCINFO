@@ -1,6 +1,6 @@
 pkgbase = vulkan-tools-git
 	pkgdesc = vulkan tools build directly from KhronosGroup github. This build provide the most recent vulkan-tools package
-	pkgver = 1.2.140_final_1
+	pkgver = 1.2.140_final_2
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/Vulkan-Tools.git
 	arch = x86_64

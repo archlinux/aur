@@ -5,7 +5,7 @@
 
 # Maintainer: sparzz
 pkgname=vulkan-tools-git
-pkgver=1.2.140_final_1
+pkgver=1.2.140_final_2
 pkgrel=1
 epoch=
 pkgdesc="vulkan tools build directly from KhronosGroup github. This build provide the most recent vulkan-tools package"
@@ -36,7 +36,7 @@ validpgpkeys=()
 
 
 package() {
-	cmake setuo Vulkan-Tools \
+	cmake setup Vulkan-Tools \
 	-DVULKAN_VALIDATIONLAYERS_INSTALL_DIR=/usr/local/lib \
 	-DVULKAN_VALIDATIONLAYERS_INSTALL_DIR=/usr/local/share/vulkan/explicit_layer.d \
 	-DSPIRV_HEADERS_INSTALL_DIR=/usr/local/lib/cmake/SPIRV-Headers \
