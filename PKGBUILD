@@ -3,7 +3,7 @@
 
 pkgname=iranian-fonts
 pkgver=20140118
-pkgrel=1
+pkgrel=2
 pkgdesc="Iranian-Sans and Iranian-Serif Persian font family."
 url="https://fontlibrary.org/en/font/iranian-gui-fonts"
 arch=(any)
