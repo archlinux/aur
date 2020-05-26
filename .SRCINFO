@@ -8,9 +8,9 @@ pkgbase = vulkan-validation-layers-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = glslang-sparzz-git
+	makedepends = vulkan-loader-git
+	makedepends = vulkan-headers-sparzz-git
 	provides = vulkan-validation-layers-git
-	conflicts = vulkan-validation-layers
-	replaces = vulkan-validation-layers
 	source = Vulkan-ValidationLayers::git+https://github.com/KhronosGroup/Vulkan-ValidationLayers.git
 	md5sums = SKIP
 
