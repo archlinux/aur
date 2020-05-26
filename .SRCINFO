@@ -1,7 +1,7 @@
 pkgbase = motrix-git
 	pkgdesc = A full-featured download manager
 	pkgver = 1.5.13.r0.g402185e
-	pkgrel = 1
+	pkgrel = 3
 	url = https://motrix.app/
 	arch = any
 	license = MIT
