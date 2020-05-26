@@ -1,7 +1,7 @@
 pkgbase = rvrspkg
-	pkgdesc = Creates a package for Linux using the already installed package and its binary files
+	pkgdesc = Creates a package for Arch Linux using the installed package and its binary files
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BiteDasher/rvrspkg
 	arch = any
 	license = MIT
