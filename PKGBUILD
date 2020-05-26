@@ -4,7 +4,7 @@ _pkgbase=faudio-wrappers
 _gitname=FAudio
 pkgbase=${_pkgbase}-git
 pkgname=("${_pkgbase}-win32-git" "${_pkgbase}-win64-git")
-pkgver=19.05.r13.g3dd4e04
+pkgver=20.05.r4.g945266a
 pkgrel=1
 pkgdesc="XAudio2 reimplementation (Windows DLLs)"
 arch=(i686 x86_64)
@@ -13,13 +13,20 @@ license=('custom:zlib')
 depends=('wine' 'winetricks')
 makedepends=('git' 'mingw-w64-gcc' 'mingw-w64-sdl2' 'mingw-w64-ffmpeg')
 source=('git+https://github.com/FNA-XNA/FAudio'
+        'fix-sdl2-config.patch'
         'setup_faudio_aur.verb')
 sha256sums=('SKIP'
+            '9712ee4060f5235388e1f709e1629321915e4941772bf5594c05545b10a96e00'
             '78d4146056bb8b50833580aeacf868040ee36854716c499f5039de1952fb9ca8')
 
 pkgver() {
   cd "$srcdir/${_gitname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$srcdir/${_gitname}"
+  patch -p1 -i ../fix-sdl2-config.patch
 }
 
 _build_faudio-wrappers() {

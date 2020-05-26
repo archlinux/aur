@@ -1,6 +1,6 @@
 pkgbase = faudio-wrappers-git
 	pkgdesc = XAudio2 reimplementation (Windows DLLs)
-	pkgver = 19.05.r13.g3dd4e04
+	pkgver = 20.05.r4.g945266a
 	pkgrel = 1
 	url = https://github.com/FNA-XNA/FAudio/
 	arch = i686
@@ -13,8 +13,10 @@ pkgbase = faudio-wrappers-git
 	depends = wine
 	depends = winetricks
 	source = git+https://github.com/FNA-XNA/FAudio
+	source = fix-sdl2-config.patch
 	source = setup_faudio_aur.verb
 	sha256sums = SKIP
+	sha256sums = 9712ee4060f5235388e1f709e1629321915e4941772bf5594c05545b10a96e00
 	sha256sums = 78d4146056bb8b50833580aeacf868040ee36854716c499f5039de1952fb9ca8
 
 pkgname = faudio-wrappers-win32-git

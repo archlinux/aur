@@ -1,0 +1,17 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 043fb0b..316c238 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -176,7 +176,11 @@ else()
+ 	find_package(SDL2 CONFIG)
+ 	if (TARGET SDL2::SDL2)
+ 		message(STATUS "using TARGET SDL2::SDL2")
+-		target_link_libraries(FAudio PUBLIC SDL2::SDL2)
++		get_target_property(sdl2_location SDL2::SDL2 LOCATION)
++		get_target_property(sdl2_link_libs SDL2::SDL2 INTERFACE_LINK_LIBRARIES)
++		get_target_property(sdl2_include_dirs SDL2::SDL2 INTERFACE_INCLUDE_DIRECTORIES)
++		target_link_libraries(FAudio PUBLIC ${sdl2_location} ${sdl2_link_libs})
++		target_include_directories(FAudio PUBLIC ${sdl2_include_dirs})
+ 		if(INSTALL_MINGW_DEPENDENCIES)
+ 			install_shared_libs(TARGETS SDL2::SDL2 DESTINATION bin NO_INSTALL_SYMLINKS REQUIRED)
+ 		endif()
