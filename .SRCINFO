@@ -1,0 +1,16 @@
+pkgbase = lib-fast-winding-number
+	pkgdesc = Code for fast approximate generalized winding number (solid angle) computation for triangle soups
+	pkgver = 20181123
+	pkgrel = 1
+	url = https://github.com/PyMesh/WindingNumber/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = intel-tbb
+	provides = lib-fast-winding-number
+	source = git+https://github.com/PyMesh/WindingNumber.git
+	md5sums = SKIP
+
+pkgname = lib-fast-winding-number
+
