@@ -4,7 +4,7 @@
 _pkgname="saturnon"
 pkgname="$_pkgname"-git
 pkgver=0.36.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Treeview based file browser"
 arch=('any')
 url="https://gitlab.com/TheDalaiAlpaca/saturnon"
@@ -21,18 +21,14 @@ source=("https://gitlab.com/TheDalaiAlpaca/$_pkgname/-/archive/$pkgver/$_pkgname
 
 package() {
 	cd "$_pkgname-$pkgver"
-
-	mkdir -p "$pkgdir/usr/bin"
-	mkdir -p "$pkgdir/etc/saturnon"
-	mkdir -p "$pkgdir/usr/share/saturnon"
 	
-	install -m 755 -t "$pkgdir/usr/bin"            "saturnon"
+	install -Dm755 -t "$pkgdir/usr/bin"            "saturnon"
 
-	install -m 644 -t "$pkgdir/etc/saturnon"       "conf/default.conf"
-	install -m 644 -t "$pkgdir/etc/saturnon"       "conf/music.conf"
-	install -m 644 -t "$pkgdir/etc/saturnon"       "conf/youtube.conf"
+	install -Dm644 -t "$pkgdir/etc/saturnon"       "conf/default.conf"
+	install -Dm644 -t "$pkgdir/etc/saturnon"       "conf/music.conf"
+	install -Dm644 -t "$pkgdir/etc/saturnon"       "conf/youtube.conf"
 
-	install -m 755 -t "$pkgdir/usr/share/saturnon" "scripts/subscribe"
-	install -m 755 -t "$pkgdir/usr/share/saturnon" "scripts/refresh"
+	install -Dm755 -t "$pkgdir/usr/share/saturnon" "scripts/subscribe"
+	install -Dm755 -t "$pkgdir/usr/share/saturnon" "scripts/refresh"
 
 }

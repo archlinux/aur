@@ -1,7 +1,7 @@
 pkgbase = saturnon-git
 	pkgdesc = Treeview based file browser
 	pkgver = 0.36.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/TheDalaiAlpaca/saturnon
 	arch = any
 	license = GPL3
