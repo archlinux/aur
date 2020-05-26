@@ -1,14 +1,14 @@
 pkgbase = pretty-exec-bin
 	pkgdesc = Print command and execute it
-	pkgver = 0.0.10
+	pkgver = 0.0.11
 	pkgrel = 0
 	url = https://github.com/KSXGitHub/pretty-exec
 	arch = x86_64
 	license = MIT
 	conflicts = pretty-exec
-	source = pretty-exec-02e3650cff97697e737c07620e4d630e4df2982e::https://github.com/KSXGitHub/pretty-exec/releases/download/0.0.10/pretty-exec-x86_64-unknown-linux-gnu
+	source = pretty-exec-7a8d809747773f07a7c45f82513b2a8923da066a::https://github.com/KSXGitHub/pretty-exec/releases/download/0.0.11/pretty-exec-x86_64-unknown-linux-gnu
 	source = https://raw.githubusercontent.com/KSXGitHub/pretty-exec/master/LICENSE.md
-	sha1sums = 02e3650cff97697e737c07620e4d630e4df2982e
+	sha1sums = 7a8d809747773f07a7c45f82513b2a8923da066a
 	sha1sums = SKIP
 
 pkgname = pretty-exec-bin
