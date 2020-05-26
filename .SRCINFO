@@ -7,7 +7,7 @@ pkgbase = java-openjfx-bin
 	license = GPL2
 	depends = ffmpeg
 	depends = gstreamer
-	depends = java-openjdk-bin
+	depends = java-environment>=11
 	depends = libxtst
 	depends = qt5-base
 	depends = webkit2gtk
