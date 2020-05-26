@@ -7,7 +7,7 @@
 pkgname=ddclient-git
 _gitname="${pkgname%-git}"
 pkgver=v3.8.3.r317.g7a99919
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services"
 url="https://github.com/ddclient/ddclient"
@@ -34,6 +34,10 @@ pkgver() {
 }
 
 package() {
+  # hack so that we can merge in changes from upstream without changing all the
+  # $pkgname to $_gitname
+  pkgname="$_gitname"
+
   cd ddclient
 
   install -Dm755 ddclient "$pkgdir"/usr/bin/$pkgname

@@ -1,7 +1,7 @@
 pkgbase = ddclient-git
 	pkgdesc = Update dynamic DNS entries for accounts on many dynamic DNS services
 	pkgver = v3.8.3.r317.g7a99919
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ddclient/ddclient
 	arch = any
 	license = GPL2
