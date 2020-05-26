@@ -31,30 +31,30 @@ sha512sums=(
 )
 
 build() {
-	cmake \
+    cmake \
         -DSTATIC_BUILD=OFF \
-		-DALLOW_DOWNLOADS=ON \
+        -DALLOW_DOWNLOADS=ON \
         -DUSE_SYSTEM_CIVETWEB=OFF \
         -DBoost_NO_BOOST_CMAKE=ON \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-H"${srcdir}"/Orthanc-"${pkgver}" \
-		-B"${srcdir}"/build
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -H"${srcdir}"/Orthanc-"${pkgver}" \
+        -B"${srcdir}"/build
 
-	cmake --build "${srcdir}"/build
-	cmake --build "${srcdir}"/build --target doc
+    cmake --build "${srcdir}"/build
+    cmake --build "${srcdir}"/build --target doc
 }
 
 check() {
-	cd "${srcdir}"/build
-	./UnitTests
+    cd "${srcdir}"/build
+    ./UnitTests
 }
 
 package() {
-	cmake --build "${srcdir}"/build --target install -- DESTDIR="${pkgdir}"
-	mkdir -p ${pkgdir}/usr/bin
-	mv "${pkgdir}"/usr/sbin/* ${pkgdir}/usr/bin
-	rmdir "${pkgdir}"/usr/sbin
+    cmake --build "${srcdir}"/build --target install -- DESTDIR="${pkgdir}"
+    mkdir -p ${pkgdir}/usr/bin
+    mv "${pkgdir}"/usr/sbin/* ${pkgdir}/usr/bin
+    rmdir "${pkgdir}"/usr/sbin
 
     # Systemd
     install -Dm644 "${pkgname}".service -t "${pkgdir}"/usr/lib/systemd/system/
