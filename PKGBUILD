@@ -5,15 +5,15 @@
 
 # Maintainer: sparzz
 pkgname=spirv-headers-sparzz-git
-pkgver=1.5.3.2020.05.25
+pkgver=1.5.3.2020.05.26
 pkgrel=1
 epoch=
-pkgdesc="spirv headers from source"
+pkgdesc="SPIR-V Headers build from source. My Vulkan packages from the AUR depends on this package. For install instruction and order of the of the install visit my GitHub page --> https://github.com/sparzz/vulkan-arch-aur  "
 arch=(x86_64)
-url="https://github.com/KhronosGroup/SPIRV-Headers.git"
+url="https://github.com/sparzz/vulkan-arch-aur"
 license=('Apache')
 groups=()
-depends=()
+depends=("yay")
 makedepends=("cmake"
             "git")
 checkdepends=()
