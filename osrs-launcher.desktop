@@ -3,5 +3,5 @@ Name=OldSchool RuneScape
 Exec=osrs-launcher %u
 Icon=osrs-launcher
 Type=Application
-Categories=Games;
+Categories=Game;
 MimeType=x-scheme-handler/jagex-jav;
