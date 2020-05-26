@@ -8,7 +8,7 @@ pkgdesc="Java OpenJFX ${_majorver} client application platform (Gluon build)."
 arch=('x86_64')
 url='https://openjfx.io/'
 license=('GPL2')
-depends=('ffmpeg' 'gstreamer' 'java-openjdk-bin' 'libxtst' 'qt5-base' 'webkit2gtk')
+depends=('ffmpeg' 'gstreamer' 'java-environment>=11' 'libxtst' 'qt5-base' 'webkit2gtk')
 provides=("java-openjfx=${_majorver}")
 conflicts=("java${_majorver}-openjfx")
 source=("https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}_linux-x64_bin-sdk.zip"
