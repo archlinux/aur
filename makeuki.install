@@ -1,0 +1,8 @@
+pre_install() {
+    mkdir /etc/mkinitcpio.d/old
+    mv -vf /etc/mkinitcpio.d/*.preset /etc/mkinitcpio.d/old
+}
+post_remove() {
+    mv -vf /etc/mkinitcpio.d/old/* /etc/mkinitcpio.d/
+    rm -rf /etc/mkinitcpio.d/old
+}

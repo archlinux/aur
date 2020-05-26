@@ -1,0 +1,14 @@
+pkgbase = makeuki
+	pkgdesc = A script that simplifies the creation of unified kernel images.
+	pkgver = v1.0
+	pkgrel = 1
+	install = makeuki.install
+	arch = any
+	license = GPL3
+	depends = jq
+	depends = mkinitcpio
+	source = makeuki.tar.gz
+	sha256sums = 89a9ab5cde8c979f26fb797b5e66f53f944e0e4e1e14e86d8cc1a22fa4678bf3
+
+pkgname = makeuki
+
