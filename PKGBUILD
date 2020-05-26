@@ -1,12 +1,13 @@
 # $Id: PKGBUILD 127137 2015-02-04 23:02:34Z bluewind $
-# Maintainer: Daniel Wallace <danielwallace at code gtmanfred com>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Daniel Wallace <danielwallace at code gtmanfred com>
 # Contributor: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
 # Contributor: Krzysztof Raczkowski <raczkow@gnu-tech.pl>
 
 pkgbase=xe-guest-utilities
 pkgname=('xe-guest-utilities' 'xenstore')
 pkgver=6.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Citrix XenServer Tools"
 arch=('i686' 'x86_64')
 url="http://citrix.com/English/ps2/products/product.asp?contentID=683148&ntref=hp_nav_US"
@@ -33,7 +34,7 @@ prepare(){
 
 build() {
   export CC=gcc
-  CFLAGS='-Wall -Wstrict-prototypes -Wno-unused-local-typedefs -Wno-sizeof-pointer-memaccess -Wno-maybe-uninitialized'
+  CFLAGS='-Wall -Wstrict-prototypes -Wno-unused-local-typedefs -Wno-sizeof-pointer-memaccess -Wno-maybe-uninitialized -Wno-stringop-truncation -Xlinker "--allow-multiple-definition"'
   export CFLAGS
   export PYTHON=python2
   cd "$srcdir/uclibc-sources"

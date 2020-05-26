@@ -1,7 +1,7 @@
 pkgbase = xe-guest-utilities
 	pkgdesc = Citrix XenServer Tools
 	pkgver = 6.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://citrix.com/English/ps2/products/product.asp?contentID=683148&ntref=hp_nav_US
 	arch = i686
 	arch = x86_64
