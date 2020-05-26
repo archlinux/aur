@@ -41,6 +41,6 @@ validpgpkeys=()
 
 
 package() {
-	cmake -DVULKAN_HEADERS_INSTALL_DIR=/usr/local/include/vulkan -DVULKAN_REGISTRY_INSTALL_DIR=/usr/local/share/vulkan/registry Vulkan-ExtensionLayer
+	cmake -DVULKAN_HEADERS_INSTALL_DIR=/usr/local/include/vulkan -DVULKAN_REGISTRY_INSTALL_DIR=/usr/local/share/vulkan/registry -DVulkanRegistry_INSTALL_DIR=/usr/local/share/vulkan/registry -DSPIRV_HEADERS_INSTALL_DIR=/usr/local/include/spirv -DGLSLANG_INSTALL_DIR=/usr/local/bin -DVULKAN_HEADERS_INSTALL_DIR_=/usr/local/share/vulkan/registry ExtensionLayer
 	make DESTDIR="$pkgdir" install
 }
