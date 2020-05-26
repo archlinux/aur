@@ -1,7 +1,7 @@
 # Maintainer: <https://aur.archlinux.org/user/vorbote>
 ED=gvim
 pkgname=vim-vi
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Replace heirloom vi from core with (g)vim using symlinks."
 arch=('any')
