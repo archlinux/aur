@@ -1,0 +1,18 @@
+pkgbase = kdisplay-kwinft
+	pkgver = 5.19.0_beta
+	pkgrel = 1
+	url = https://gitlab.com/kwinft/kdisplay
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	depends = kxmlgui
+	depends = disman
+	depends = qt5-graphicaleffects
+	depends = hicolor-icon-theme
+	provides = kdisplay
+	conflicts = kscreen
+	source = https://gitlab.com/kwinft/kdisplay/-/archive/kdisplay@5.19.0-beta.0/kdisplay-kdisplay@5.19.0-beta.0.tar.gz
+	md5sums = c707886bca317f7df3ecbc49eeb02b81
+
+pkgname = kdisplay-kwinft
+
