@@ -14,7 +14,7 @@ depends=('ncurses' 'make')
 makedepends=('git' 'flex' 'bison' 'gperf' 'help2man' 'unzip' 'lzip')
 provides=('crosstool-ng')
 conflicts=('crosstool-ng')
-source=('git://github.com/crosstool-ng/crosstool-ng')
+source=('git+https://github.com/crosstool-ng/crosstool-ng')
 md5sums=('SKIP')
 
 pkgver() {

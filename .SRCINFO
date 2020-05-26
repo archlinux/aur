@@ -18,7 +18,7 @@ pkgbase = crosstool-ng-git
 	depends = make
 	provides = crosstool-ng
 	conflicts = crosstool-ng
-	source = git://github.com/crosstool-ng/crosstool-ng
+	source = git+https://github.com/crosstool-ng/crosstool-ng
 	md5sums = SKIP
 
 pkgname = crosstool-ng-git
