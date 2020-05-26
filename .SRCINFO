@@ -1,6 +1,6 @@
 pkgbase = new-ospgl-git
 	pkgdesc = Open Space Program
-	pkgver = 1
+	pkgver = ospm+test+59+g05f879e
 	pkgrel = 1
 	epoch = 1
 	url = https://www.openspaceprogram.org/
