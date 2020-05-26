@@ -2,7 +2,7 @@
 
 pkgname=github-cli
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The GitHub CLI"
 arch=("x86_64")
 url="https://github.com/cli/cli"
@@ -18,6 +18,9 @@ build() {
     go build \
         -trimpath \
         -ldflags "-extldflags ${LDFLAGS} -X github.com/cli/cli/command.Version=v${pkgver} -X github.com/cli/cli/command.BuildDate=$(date +%Y-%m-%d)" -o "bin/gh" ./cmd/gh
+
+    # Generate manpage
+    go run ./cmd/gen-docs --man-page --doc-path ./share/man/man1/
 
     # Build shell completion files
     mkdir ./_completions
@@ -35,4 +38,9 @@ package() {
     install -Dm644 "_completions/bash" "${pkgdir}/usr/share/bash-completion/completions/gh"
     install -Dm644 "_completions/zsh" "${pkgdir}/usr/share/zsh/site-functions/_gh"
     install -Dm644 "_completions/fish" "${pkgdir}/usr/share/fish/vendor_completions.d/gh.fish"
+
+    mkdir -p -m755 ${pkgdir}/usr/share/man/man1
+    for file in share/man/man1/*; do
+        install -Dm644 "$file" "${pkgdir}/usr/share/man/man1/"
+    done
 }
