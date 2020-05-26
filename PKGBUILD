@@ -3,7 +3,7 @@
 
 pkgname=tanha-fonts
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful Persian font based on Samim and Vazir font."
 url="https://github.com/rastikerdar/tanha-font"
 arch=(any)
