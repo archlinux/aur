@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=kubecfg
-pkgver=0.13.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="A tool for managing complex enterprise Kubernetes environments as code"
 url="https://github.com/bitnami/kubecfg"
