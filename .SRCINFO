@@ -1,0 +1,15 @@
+pkgbase = rvrspkg
+	pkgdesc = Creates a package for Linux using the already installed package and its binary files
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/BiteDasher/rvrspkg
+	arch = any
+	license = MIT
+	depends = bash
+	depends = coreutils
+	depends = pacman-contrib
+	source = rvrspkg-1.0.tar.gz::https://github.com/BiteDasher/rvrspkg/archive/1.0.tar.gz
+	sha256sums = ea5bbfe977f2ad6fb76cb93214e21412746789f424c1148490c18e84de71a428
+
+pkgname = rvrspkg
+
