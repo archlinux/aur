@@ -2,7 +2,7 @@
 
 pkgname=ttf-x2
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free fonts with support for Persian, Arabic, Urdu, Pashto, Dari, Uzbek, Kurdish, Uighur, old Turkish (Ottoman) and modern Turkish (Roman)."
 arch=('any')
 url="http://wiki.irmug.com/index.php?title=X_Series_2"
