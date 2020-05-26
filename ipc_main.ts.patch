@@ -1,9 +1,9 @@
-@@ -82,7 +82,7 @@
+@@ -91,7 +91,7 @@
        });
    });
  
--  onMessageFromBrowserWindow('minimize-me', () => withHomeWindow(w => w.hide()));
+-  onMessageFromBrowserWindow('minimize-me', () => withHomeWindow((w) => w.hide()));
 +  onMessageFromBrowserWindow('minimize-me', () => withHomeWindow(w => w.minimize()));
  
-   onMessageFromBrowserWindow('open-link', link => {
-     shell.openExternal(link).catch(err => {
+   onMessageFromBrowserWindow('open-link', (link) => {
+     shell.openExternal(link).catch((err) => {
