@@ -41,6 +41,6 @@ validpgpkeys=()
 
 
 package() {
-	cmake SPIRV-Headers
+	cmake -DGLSLANG_INSTALL_DIR=/usr/local/bin SPIRV-Headers
 	make DESTDIR="$pkgdir" install
 }
