@@ -1,24 +1,24 @@
 # Maintainer: Colin Woodbury <colin@fosskers.ca>
 pkgname=aura
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure package manager for Arch Linux and the AUR"
 url="https://github.com/fosskers/aura"
 license=('GPL-3')
 arch=('x86_64')
 depends=('gmp' 'pacman' 'git')
-makedepends=('stack-bin')
+makedepends=('stack' 'ghc')
 optdepends=('bash-completion: for bash completions')
 provides=('aura')
 conflicts=('aura-bin' 'aura-git')
 options=('strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('486123b3c12fa52cd1e1d74e2dfbb9c722fe69e462db774a9f82d7cd5146c5ba')
+md5sums=('24e5c028a86c4599a5212b16351a48a4')
 
 build() {
   cd "$pkgname-$pkgver"
   stack clean "$pkgname"
-  stack build --pedantic "$pkgname"
+  stack build --system-ghc --pedantic "$pkgname"
 }
 
 package() {
