@@ -3,7 +3,7 @@
 
 pkgname=sina-fonts
 pkgver=20141022
-pkgrel=1
+pkgrel=2
 pkgdesc="Sina Pardazesh Co. Persian font series."
 url="http://www.sinapardazesh.ir/"
 arch=(any)
