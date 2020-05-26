@@ -1,14 +1,14 @@
 pkgbase = ide65xx
 	pkgdesc = IDE for 6502, 6510, C64 projects uses Kick Assembler
-	pkgver = 0.1Beta
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://sites.google.com/view/ide65xx
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
-	source = https://github.com/emartisoft/IDE65XX/archive/0.1Beta.tar.gz
-	md5sums = 9f1e9350b362e81a6870c5e4c175a6d6
+	source = https://github.com/emartisoft/IDE65XX/archive/0.1.1.tar.gz
+	md5sums = f72f4c20f2bee83aab70f82cd8992abe
 
 pkgname = ide65xx
 
