@@ -1,7 +1,7 @@
 pkgbase = istio-bin
 	pkgdesc = An open platform to connect, manage, and secure microservices
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://istio.io
 	arch = x86_64
 	license = Apache

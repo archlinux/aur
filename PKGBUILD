@@ -4,7 +4,7 @@
 _pkgname='istio'
 pkgname="${_pkgname}-bin"
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An open platform to connect, manage, and secure microservices'
 arch=('x86_64')
 url='https://istio.io'
@@ -25,7 +25,7 @@ package() {
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
   install -d "${pkgdir}/usr/share/${_pkgname}"
-  for d in install samples tools; do
+  for d in manifests samples tools; do
     cp -R "${d}" "${pkgdir}/usr/share/${_pkgname}/"
   done
 }
