@@ -3,7 +3,7 @@
 pkgname=wluma-als-emulator-git
 _pkgname=${pkgname%-git}
 pkgver=1.1.0.r18.gf7f93a4
-pkgrel=1
+pkgrel=2
 pkgdesc="Ambient light sensor emulator for wluma"
 license=(MIT)
 url="https://github.com/cyrinux/${_pkgname}"
