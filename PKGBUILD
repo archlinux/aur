@@ -1,15 +1,17 @@
-# Maintainer: Rikard Falkeborn <rikard.falkeborn@gmail.com>
+# Maintainer: mrxx <mrxx at cyberhome dot at>
+# Contributor: Rikard Falkeborn <rikard.falkeborn at gmail dot com>
+
 pkgname=sensors-lxpanel-plugin
-pkgver=1.7
-pkgrel=3
+pkgver=1.8
+pkgrel=1
 pkgdesc="Monitor temperature/voltages/fan speeds in LXDE through lm-sensors."
 arch=('i686' 'x86_64')
 url="http://danamlund.dk/sensors_lxpanel_plugin"
 license=('GPL2')
 groups=(lxde)
 depends=('lm_sensors' 'lxpanel')
-source=("https://danamlund.dk/sensors_lxpanel_plugin/$pkgname-$pkgver.tar.gz")
-md5sums=('a39c8b0316b1d6e955ea8426acaa83de')
+source=("https://github.com/danamlund/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('a921b5ad472f69c6e0534ba916b0bee0089b34571e438b4ccb5de576f9001fb8')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
