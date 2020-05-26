@@ -5,7 +5,7 @@
 
 # Maintainer: sparzz
 pkgname=vulkan-validation-layers-git
-pkgver=1.2.140.2020.05.26.1
+pkgver=1.2.140_final_1
 pkgrel=1
 epoch=
 pkgdesc="vulkan validation layers build from source"
@@ -40,6 +40,14 @@ validpgpkeys=()
 
 
 package() {
-	cmake -DGLSLANG_INSTALL_DIR=usr/local/bin/ -DVULKAN_HEADERS_INSTALL_DIR=/usr/local/include/ -DVULKAN_HEADERS_INSTALL_DIR=/usr/local/share/vulkan/registry -DSPIRV_HEADERS_INSTALL_DIR=/usr/local/include/spirv -DVulkanRegistry_DIR=/usr/local/share/vulkan/registry Vulkan-ValidationLayers
+	cmake setup Vulkan-ValidationLayers \
+	-DGLSLANG_INSTALL_DIR=/usr/local/bin \
+	-DVULKAN_HEADERS_INSTALL_DIR=/usr/local/share/vulkan/registry \
+	-DVULKAN_HEADERS_INSTALL_DIR=/usr/local/include/vulkan \
+	-DVulkanRegistry_DIR=/usr/local/share/vulkan/registry \
+	-DSPIRV_HEADERS_INSTALL_DIR=/usr/local/include/spirv \
+	-DSPIRV_HEADERS_INSTALL_DIR=/usr/local/lib/cmake/SPIRV-Headers \
+	-DVULKAN_LOADER_INSTALL_DIR=/usr/local/lib \
+	cmake configure Vulkan-ValidationLayers
 	make DESTDIR="$pkgdir" install
 }
