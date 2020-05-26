@@ -1,0 +1,13 @@
+pkgbase = interception-dual-function-keys
+	pkgdesc = Dual function keys: tap for one key, hold for another.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/interception/linux/plugins/dual-function-keys/
+	arch = x86_64
+	license = MIT
+	depends = interception-tools
+	source = interception-dual-function-keys-1.0.0.tar.gz::https://gitlab.com/interception/linux/plugins/dual-function-keys/repository/archive.tar.gz?ref=1.0.0
+	md5sums = d47da2941f18e5b0d3d4e4492ae08648
+
+pkgname = interception-dual-function-keys
+
