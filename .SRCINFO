@@ -1,6 +1,6 @@
 pkgbase = soldat-git
 	pkgdesc = Unique 2D (side-view) multiplayer action game.
-	pkgver = 1.18.1.g9c8d032
+	pkgver = 1.8.1.g9c8d032
 	pkgrel = 1
 	url = https://github.com/Soldat/soldat
 	arch = x86_64
