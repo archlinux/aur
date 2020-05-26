@@ -1,6 +1,6 @@
 # Maintainer: David Peter <mail@david-peter.de>
 pkgname=dbg-macro
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A C++ macro for printf-style debugging fans."
 arch=(any)

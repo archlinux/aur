@@ -1,13 +1,13 @@
 pkgbase = dbg-macro
 	pkgdesc = A C++ macro for printf-style debugging fans.
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/sharkdp/dbg-macro
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	source = git+https://github.com/sharkdp/dbg-macro/#tag=v0.3.0
+	source = git+https://github.com/sharkdp/dbg-macro/#tag=v0.4.0
 	source = git+https://github.com/catchorg/Catch2#tag=v2.11.1
 	md5sums = SKIP
 	md5sums = SKIP
