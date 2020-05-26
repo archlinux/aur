@@ -8,8 +8,6 @@ pkgbase = vulkan-headers-sparzz-git
 	makedepends = cmake
 	makedepends = git
 	provides = vulkan-headers-sparzz-git
-	conflicts = vulkan-headers
-	replaces = vulkan-headers
 	source = Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	md5sums = SKIP
 
