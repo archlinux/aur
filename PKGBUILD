@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-websockets
-_qtver=5.14.2
+_qtver=5.15.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('f06e62b18313fe1b40a35566e79645de4a8e7ac9f7717d1d98a06c5b49afca84')
+sha256sums=('87c2f6542778f9b65b3f208740c1d0db643fd0bede21404b9abb265355da5092')
 
 prepare() {
   mkdir -p build
