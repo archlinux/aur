@@ -6,7 +6,8 @@ pkgbase = cdf-nasa
 	arch = x86_64
 	license = unknown
 	source = https://spdf.sci.gsfc.nasa.gov/pub/software/cdf/dist/cdf37_1/linux/cdf37_1-dist-all.tar.gz 
-	md5sums = 0f434ffbb7f6ffe39b2bb20c5a940aee 
+	md5sums = 0f434ffbb7f6ffe39b2bb20c5a940aee
+        md5sums = 9fc2c368fb7d0700d28cdb9a2280891d
 
 pkgname = cdf-nasa
 
