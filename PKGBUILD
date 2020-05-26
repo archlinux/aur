@@ -37,6 +37,6 @@ validpgpkeys=()
 
 
 package() {
-	cmake -DGLSLANG_INSTALL_DIR=usr/local/bin/ Vulkan-ExtensionLayer
+	cmake -DGLSLANG_INSTALL_DIR=usr/local/bin/ Vulkan-ValidationLayers
 	make DESTDIR="$pkgdir" install
 }
