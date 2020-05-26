@@ -1,9 +1,8 @@
 pkgbase = qt5-styleplugins
 	pkgdesc = Additional style plugins for Qt5
 	pkgver = 5.0.0.20170311
-	pkgrel = 11
-	url = https://code.qt.io/cgit/qt/qtstyleplugins
-	install = install.sh
+	pkgrel = 20
+	url = https://github.com/qt/qtstyleplugins
 	arch = x86_64
 	license = LGPL
 	depends = qt5-base
