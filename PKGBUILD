@@ -13,6 +13,11 @@ sha256sums=('530191f7ed1365ea2545a8eccfdd4bf348771259a45ad117dfe8aa6d49d070d1')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
     make hr man
 }
 
