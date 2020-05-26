@@ -17,8 +17,8 @@ _pkgver_upstream="$_pkgver_tag$_pkgver_suffix"
 #
 # $ curl -sSf "https://api.github.com/repos/ephtracy/ephtracy.github.io/releases/tags/$_pkgver_tag" | jq '.assets|map(select(.name|contains("win64")))[0].updated_at|fromdate|strftime("%Y%m%d")'
 #
-# If multiple releases happened on the same day, set $_pkgver_uniqueness to '.1', then '.2' etc.
-_pkgver_date='20200515'
+# If multiple releases happen on the same day, set $_pkgver_uniqueness to '.2', then '.3' etc.
+_pkgver_date='20200526'
 _pkgver_uniqueness='' # Don't forget to reset to '' when date changes.
 
 # Git tag associated with the release where the latest Intel Open Image Denoiser plugin archive is.
@@ -40,7 +40,7 @@ source=("$pkgname-$pkgver.zip::https://github.com/ephtracy/ephtracy.github.io/re
 license=('custom')
 depends=(wine)
 makedepends=(icoutils)
-sha512sums=('58f260426975eaab1883d34a4cf63b938ffc37ca64632de14a55aa2255213792a7c2be61300739d813a14d71eec1b2f2a3bf7715e2c65696d182f2d9e753dfbb'
+sha512sums=('df136eca0c7f17f25d6faff6880568d4739d56279b0f356a872b6d45d2583eeb65535cb8090d56e94ca494e1fd36b1242ccd638e0b0ca35d60021f054458781a'
             '23fe26a26dad536810a21fda5565c97d520961b63d06ed5e3aae170a5c636a3c202c9ab40ce80486ff6fca5d34e3ab1a48cabedc43ad678236b4e4abbc0ab67a'
             '7bd5cfc10ed31851e76de7080c08d350a88488b3d8e878f4656970e097d04b00c98bf235a57b154844cba1db04f8092b0c5604f4b11ca787323bbbbc47dc3f5c'
             '0872398e0d52df23a4910c3c5257f073f96bbf06db197ebdaf59598ca39d1351c6412598ac46b1eb24ba2a47db8ce7d804d227dc847260c8dbd6213396e816c1'
