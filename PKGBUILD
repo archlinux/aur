@@ -48,7 +48,9 @@ fi
 
 pkgname=firefox-beta
 _pkgname=firefox
-pkgver=77.0b9
+pkgver=77.0rc1
+_major=${pkgver/rc*}
+_build=${pkgver/*rc}
 _pkgver=77.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta"
@@ -70,10 +72,16 @@ conflicts=('firefox-beta-bin')
 options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/$_pkgname-$pkgver.source.tar.xz{,.asc}
         $pkgname.desktop)
-sha256sums=('75b0929001c10b8f7d6c7388c4c3d497f7f12f58d8c7bc0a4396bed33f4fc2b9'
+sha256sums=('df8fc50fa360b10de8076aa5409d6d97f361669d802e90d51651836d1d9ec348'
             'SKIP'
             'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
+
+# RC
+if [[ $_build = ? ]]; then
+  source[0]="firefox-$pkgver.source.tar.xz::https://ftp.mozilla.org/pub/firefox/candidates/$_major-candidates/build$_build/source/firefox-$_major.source.tar.xz"
+  source[1]="firefox-$pkgver.source.tar.xz.asc::https://ftp.mozilla.org/pub/firefox/candidates/$_major-candidates/build$_build/source/firefox-$_major.source.tar.xz.asc"
+fi
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
