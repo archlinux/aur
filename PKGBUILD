@@ -1,3 +1,4 @@
+# Maintainer: Vincent Grande <shoober420@gmail.com>
 # Maintainer: Aaron Plattner <aplattner@nvidia.com>
 # Maintainer: Miguel A. Vico <mvicomoya@nvidia.com>
 # Contributor: Eric Toombs
