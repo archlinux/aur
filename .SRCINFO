@@ -1,6 +1,6 @@
 pkgbase = gr-osmosdr-xtrx-git
 	pkgdesc = gr-osmosdr distribution with XTRX support
-	pkgver = r434.44ed8d7
+	pkgver = r435.778cf41
 	pkgrel = 1
 	url = https://github.com/xtrx-sdr/gr-osmosdr
 	arch = i686
@@ -30,9 +30,7 @@ pkgbase = gr-osmosdr-xtrx-git
 	conflicts = gnuradio-osmosdr
 	conflicts = gnuradio-osmosdr-gqrx-git
 	source = git+https://github.com/xtrx-sdr/gr-osmosdr.git
-	source = 0001-Replace-xtrx_open_list-call-with-xtrx_open_string.patch
 	md5sums = SKIP
-	md5sums = 7119290e2132e355074d6bade1c67e30
 
 pkgname = gr-osmosdr-xtrx-git
 

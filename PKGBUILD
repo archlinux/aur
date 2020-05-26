@@ -1,6 +1,6 @@
 # Maintainer: lain <aur@hacktheinter.net>
 pkgname=gr-osmosdr-xtrx-git
-pkgver=r434.44ed8d7
+pkgver=r435.778cf41
 pkgrel=1
 pkgdesc="gr-osmosdr distribution with XTRX support"
 provides=("${pkgname%-git}" 'gr-osmosdr' 'gnuradio-osmosdr')
@@ -13,7 +13,7 @@ conflicts=(
 )
 arch=('i686' 'x86_64' 'arm')
 url='https://github.com/xtrx-sdr/gr-osmosdr'
-md5sums=('SKIP' '7119290e2132e355074d6bade1c67e30')
+md5sums=('SKIP')
 license=('GPL3')
 depends=(
   'gnuradio'
@@ -33,17 +33,11 @@ optdepends=(
 makedepends=('git' 'cmake' 'boost')
 source=(
   'git+https://github.com/xtrx-sdr/gr-osmosdr.git'
-  0001-Replace-xtrx_open_list-call-with-xtrx_open_string.patch
 )
 
 pkgver() {
   cd gr-osmosdr
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd gr-osmosdr
-  git am -k "${srcdir}/0001-Replace-xtrx_open_list-call-with-xtrx_open_string.patch"
 }
 
 build() {
