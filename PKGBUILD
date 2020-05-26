@@ -6,7 +6,7 @@ pkgname=("${_pkgname}-git"
          "${_pkgname}-module-dkms-git"
          "obs-plugin-${_pkgname}-git")
 epoch=2
-pkgver=B2rc2.r0.gd579705
+pkgver=B2rc2.r2.g667ab98
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.hostfission.com"
@@ -15,12 +15,10 @@ license=('GPL2')
 makedepends=('cmake' 'git' 'sdl2_ttf' 'glu' 'fontconfig' 'spice-protocol' 'libxi' 'obs-studio')
 source=("${_pkgname}::git+https://github.com/gnif/LookingGlass.git"
         "LGMP::git+https://github.com/gnif/LGMP.git"
-        "PureSpice::git+https://github.com/gnif/PureSpice.git"
-        "https://github.com/gnif/LookingGlass/pull/246.diff")
+        "PureSpice::git+https://github.com/gnif/PureSpice.git")
 sha512sums=('SKIP'
             'SKIP'
-            'SKIP'
-            '5f26f385aaa0a518e12ea5919c009d39d771f2bb1676126e7fd57b46e0eddb1da77bd03db542d699f7ffc69144f166c456afedfa19f77f5a114b2393b1f0e6b8')
+            'SKIP')
 install="${pkgbase}.install"
 
 pkgver() {
@@ -37,9 +35,6 @@ prepare() {
 	git config submodule.repos/LGMP.url "${srcdir}/LGMP"
 	git config submodule.repos/PureSpice.url "${srcdir}/PureSpice"
 	git submodule update
-
-	# PR-246: [host] xcb: Fixed CaptureInterface definition
-	patch -p1 < "${srcdir}/246.diff"
 }
 
 build() {
