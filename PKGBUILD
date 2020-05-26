@@ -1,13 +1,13 @@
 pkgname=blhelisuite32-bin
 _pkgname=blhelisuite32
-pkgver=1.0.0.1
+pkgver=1.0.0.3
 pkgrel=1
 pkgdesc="Configuration tool for BLHeli_32 based ESCs"
 arch=('x86_64')
 url="https://github.com/bitdump/BLHeli/tree/master/BLHeli_32%20ARM"
 
-source=("BLHeliSuite32xLinux64_1001.zip::https://drive.google.com/uc?id=1MKgQU38-iwjHcFTFgnEQjffjfW3pufHj&export=download")
-sha256sums=('7bba6132047601c5035ecff2e92a186c1943086faadc56ac835ce9a71d71fda6')
+source=("BLHeliSuite32xLinux64_1003.zip::https://drive.google.com/uc?id=17evEFx4o2kFkVeQ7zTC3EH9OTe4SPSWw&export=download")
+sha256sums=('67abe7bbe41910c1f9dc63c5995ae1b1855fe3c335906a50b9ac7dae530af3cc')
 
 options=(!strip)
 license=('unknown')
