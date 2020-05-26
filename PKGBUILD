@@ -13,7 +13,7 @@ _buildjd='b08'
 _buildfx='b08'
 _hash='3d5a2bb8f8d4428bbe94aed7ec7ae784'
 pkgver="${_major}u${_minor}"
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Documentation for Oracle Java ${_major} Development Kit"
 arch=('any')
 url='http://www.oracle.com/technetwork/java/javase/downloads/index.html'
@@ -26,14 +26,14 @@ source=(
   'LICENSE-Documentation.txt'
   'LICENSE-Oracle-Legal-Notices.txt'
 )
-sha256sums=('5896d516c1bd413478545ad0f8866ace'
-         '2c6646773c33e0dae2fe42a11b39f319'
-         '4d54057ca75b691366977dab2277e869'
-         '3137397f4dba13f4a79157819af583a3')
-sha512sums=('c1a3e31cc0250a573c7103b45167787c213bd0c64a3627d42f6101a625d6aa9f'
+sha256sums=('c1a3e31cc0250a573c7103b45167787c213bd0c64a3627d42f6101a625d6aa9f'
             '8b8930a0f7855403d1d6d2f1e20dae993cf251cd2bf50c0cc653e70c26a38319'
             '14dc1953902010f7b48891e795183b39c048b19881815eec6a57cf3d62631ab7'
             '99e666088f11baacfe1816747e69441a7002e024ac0d7a4ca4092c6cb2658c9f')
+sha512sums=('bf24cbe1e538b6fa6d423065d31869a7dea867ad363950c36a4bbeb3abeeae69aac18fbee251d2da420056976402289cbdb80cf2e5fcf88f3063b7d98d61c8cb'
+            'c18df3cc880df2c6ca5a5ef489b46b18a7ab8e495b4073bcf7ca9c8bbca5e6e1b67fb55456cd84f5edd341b772253597b2b0268bc3a0c6cae6f387b5267f8c42'
+            '16ec94fa0739547af03192be3bc4ba74888fc0f3c1fefb2a1be3e0801f52f62af438dab91669a1598da30eb45e0ce2d9694e5fc106c77a42411828c4b29cf751'
+            '5137995bf26bbae92d5e33107a1c90ec88ea67bd3b22d28166e3c47cece04c67685f012fec2c61e41be86e07842b93ec1f72a4e05d47111b0f21de060c3b09ad')
 
 DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 
