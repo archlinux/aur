@@ -48,13 +48,13 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=5.6
-_minor=10
-_rtver=5
+_minor=14
+_rtver=6
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=9
+pkgrel=1
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -83,12 +83,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v11-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0002-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0003-gcc-plugins-drop-support-for-GCC-4.7.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0004-gcc-common.h-Update-for-GCC-10.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0005-Makefile-disallow-data-races-on-gcc-10-as-well.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0006-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch"
+        "${_lucjanpath}/arch-patches-v14-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v14-sep/0002-gcc-plugins-drop-support-for-GCC-4.7.patch"
+        "${_lucjanpath}/arch-patches-v14-sep/0003-gcc-common.h-Update-for-GCC-10.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -334,21 +331,18 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('a2cf161a8f79e1d596cbe6e255b3b70fd5fd8cc27d4213a8bfd07f90afc26c40c70c9650224d074055df9c81a27ce70fc2bf4288acf3e69e6b51358d51acbf43'
+sha512sums=('fe19ad3165ae46f1511e39c495ba1a5a304ea3f69a169debe27026e0c888a4766b1618c76aee2279ba6fb0316cb731fdcd8ad5f9ac8dc1d4058573bd5dc00cd0'
             'SKIP'
-            '6aaa1ee6ea648ce72d6c833aa3eb44e05013fbd253f8c1b6be79c9b10ce7b2bb79eb855539aa6f280e26c9e9973f814ddd45882dd8353b6eb9219eb66fcad0c5'
+            '82f30252a56a5a46cda53f631be0f2ab8e9689722581ed45c9d9c0ae72306c3b21d8c16cd37acbb29ef117f4cdcfb42bb7a29e14483989e593e8b41cb9f31e73'
             'SKIP'
             '31141f3afa388dbfc7a0a1c0a7b7fc58a6824befea1fc044eb76fc0e6d4c55f249e3e0f7e63c0697ba736dc902d85128c0d78eeffe8eca3c207a573664c74514'
             '1962d021d48236f287736383acac9176e6f992cf980b5c66c1ba006288b1f2039c02caa81ebf44e99edc0dcaf09160a3fe8e4aece7541b09ec5f30cd8d834dc5'
             '9c71d44a84a2cbe16af1328ab11b9733218a26eda23e6643fcf1daebf368bcd5ff2502ffd77f7b6b300b943e87f1d9e787ffb48f3705fba6daa8b49094fb9f2d'
-            '5c447506bfbce039987db39a495d644832dd360025ae3d49979cd2467c080ad2c9ccb382ff1f6a0bc43957746c3ee35858282481a80a0a0c21db01986cd8b9bd'
-            'f5dcb80af6b8bb40157bed9fe2549e0748fb26bf0c9c18a01da0f1b1e049249d2cdc2966b8deb3c440b608385bdc01a3365842d933f9237c3d78569466ddc800'
-            'c70ba846adb911dce879853f860d283d350f08e190a7e62023281b813cb2491f30bee53fc05fbcd74867e0788f96651fbb4337a3ae2321e695bab77ada328e75'
-            'c08b019d0885755f7cd95eb6d4f6c7bdc4157115906f4aff98857144169073f0047cc8627c4eda57959f9b4086b0bc197852219087ad19d4babf45a9c0d3e088'
-            'c19f293006985564d6a3d375629af924d4ae9103090658c9cd2289f14b516ac89f3569b8946a4b4b853b836dacaf16368315f5eb019d9d120e9a4a62ff50593e'
-            'bbe8f44ea6fe1c4ee5a35c277e9983c5f8f8dffc16d1dcb2234b5e6001c5346e72ef1ea47b239ff5e8a4dc14097da7155243011c9f05d949a87dd8b8b717d050'
+            '399b42510f4ebed27b8e18f7940edc26fdd5b9d6add8dfa05170776edce84baf9800e5d7c321e4cf2e8e7885381606be1f30e097ef2d658154b52b6e1ae6a0e6'
+            'fd366ee8567af46bf0d1d96af101d26815260a8d8ff8145dcee7cf44e11b6c238601e99e6624e421042399bb73698a947c499cfce1bd6150df3be7218fb24cdd'
+            'ab35f9f5355a18543f19574bdd04b62e8aae2fe4355ae1a24d29f3121fe18ec4edc130d2eca77ec68a03d694ddb549e13d0abf36cea986171bdcd8f213333cde'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
-            '2e750276964622bfcc626ec96d93a2cc623eb452a66c47308b8cd921908cca771966068e051b92117aebb5701a6360b6a8ae497cd294f1e143365f7df34a8540')
+            '2a489d1164f0ced747a510d5f6adb07a4b48fba3524701dc4af08b6825ccccf70a37bd53a1fb9b663efb547c6dc0d90baf2c9611f1d335e923d6d1d19de2aa24')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
