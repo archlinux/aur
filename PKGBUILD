@@ -8,6 +8,8 @@ arch=(any)
 url="https://github.com/FACT-Finder/snage"
 license=('MIT')
 depends=('nodejs')
+provides=('snage')
+conflicts=('snage')
 makedepends=('yarn')
 
 source=("snage-$pkgver.tar.gz::https://registry.npmjs.org/snage/-/snage-$pkgver.tgz"
