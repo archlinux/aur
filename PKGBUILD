@@ -39,8 +39,6 @@ package () {
   install -Dm644 "$srcdir/minecraft-launcher.desktop"    "$pkgdir/usr/share/applications/minecraft-launcher.desktop"
 
   cp -Rv "$srcdir/minecraft-launcher" "$pkgdir/opt/$pkgname"
-  rm -rf "$pkgdir/opt/$pkgname/lib/"
-  rm -rf "$pkgdir/opt/$pkgname/include/"
   ln -s "/opt/$pkgname/minecraft-launcher" "$pkgdir/usr/bin/$pkgname"
 
 }
