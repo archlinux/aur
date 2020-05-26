@@ -1,7 +1,7 @@
 # Maintainer: sh1213 <shumer1213 at gmail>
 
 pkgname=cnping-git
-pkgver=r163.16aac94
+pkgver=r172.50efba0
 pkgrel=1
 pkgdesc="Minimal Graphical IPV4 Ping Tool by CNLohr"
 arch=('i686' 'x86_64')
@@ -22,13 +22,18 @@ pkgver() {
   )
 }
 
+prepare() {
+  cd "$srcdir/$_gitname"
+  git submodule update --init --recursive
+}
+
 build() {
-	cd "$srcdir/$_gitname"
-	make
+  cd "$srcdir/$_gitname"
+  make
 }
 
 package() {
-	cd "$srcdir/$_gitname"
-        install -D -m4755 cnping "$pkgdir/usr/bin/cnping"
-        install -D -m644 LICENSE "$pkgdir/usr/share/licenses/cnping-git/LICENSE"
+  cd "$srcdir/$_gitname"
+  install -D -m4755 cnping "$pkgdir/usr/bin/cnping"
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/cnping-git/LICENSE"
 }

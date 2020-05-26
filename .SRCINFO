@@ -1,6 +1,6 @@
 pkgbase = cnping-git
 	pkgdesc = Minimal Graphical IPV4 Ping Tool by CNLohr
-	pkgver = r163.16aac94
+	pkgver = r172.50efba0
 	pkgrel = 1
 	url = https://github.com/cntools/cnping
 	arch = i686
