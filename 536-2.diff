@@ -1,0 +1,32 @@
+--- a/src/st/st-theme.c
++++ b/src/st/st-theme.c
+@@ -303,16 +303,16 @@
+                             GFile      *file)
+ {
+   CRStyleSheet *stylesheet;
++  StyleSheetData *stylesheet_data;
+ 
+   stylesheet = g_hash_table_lookup (theme->stylesheets_by_file, file);
+-  if (!stylesheet)
++  if (!stylesheet || !stylesheet->app_data)
+     return;
+ 
+-  if (!g_slist_find (theme->custom_stylesheets, stylesheet))
++  stylesheet_data = stylesheet->app_data;
++  if (!stylesheet_data->extension_stylesheet)
+     return;
+ 
+-  theme->custom_stylesheets = g_slist_remove (theme->custom_stylesheets, stylesheet);
+-
+   g_signal_emit (theme, signals[STYLESHEETS_CHANGED], 0);
+ 
+   /* We need to remove the entry from the hashtable after emitting the signal
+@@ -320,8 +320,6 @@
+    * _st_theme_resolve_url() during the signal emission.
+    */
+   g_hash_table_remove (theme->stylesheets_by_file, file);
+-  g_hash_table_remove (theme->files_by_stylesheet, stylesheet);
+-  cr_stylesheet_unref (stylesheet);
+ }
+ 
+ /**

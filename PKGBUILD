@@ -15,7 +15,7 @@ _merge_requests_to_use=() # safe pick
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=3.36.2+46+gb148a8bc6
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -113,7 +113,16 @@ prepare() {
   # Type: 2
   # Status: 1
   # Comment: Crash fix for st_theme_get_custom_stylesheets
-  pick_mr '536'
+  # pick_mr '536'
+  for mr in "${_merge_requests_to_use[@]}"; do
+    if [ "536" = "$mr" ]; then
+      echo "Downloading then Merging 536..."
+      curl -O "https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/536.diff"
+      patch -Np1 -i 536.diff || true
+      patch -Np1 -i ../../536-2.diff # dirty fix
+      break
+    fi
+  done
 
   # Title: Some fixes for setting key focus of the closeDialog
   # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/786
