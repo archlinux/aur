@@ -14,7 +14,9 @@ url="https://github.com/sparzz/vulkan-arch-aur"
 license=('Apache')
 groups=()
 depends=("yay"
-        "glslang-sparzz-git")
+        "glslang-sparzz-git"
+        "vulkan-headers-sparzz-git"
+        "spirv-headers-sparzz-git")
 makedepends=("cmake"
             "git"
             "make"
