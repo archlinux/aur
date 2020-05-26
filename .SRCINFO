@@ -15,7 +15,7 @@ pkgbase = rexgen-git-gcc10
         source = rexgen-git-gcc10::git+https://github.com/teeshop/rexgen.git
         source = gcc10-fix.patch
         sha256sums = SKIP
-        sha256sums = 4bfae7d620d0a4d4000d15725dc22107f5226f821a1b45225b1d8de0b8d85e70
+        sha256sums = 1ab2daa96d91bd101c416a06ef4f4b878557571c762634bf7ca6d16be18433a7
 
 pkgname = rexgen-git-gcc10
 
