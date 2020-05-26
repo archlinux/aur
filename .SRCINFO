@@ -1,16 +1,19 @@
 pkgbase = gtk-theme-plano
 	pkgdesc = flat GTK+ theme
-	pkgver = 3.34.2
+	pkgver = 3.36.1
 	pkgrel = 1
 	url = https://github.com/lassekongo83/plano-theme
 	arch = any
 	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	makedepends = sassc
 	depends = gtk-engines
 	optdepends = ttf-roboto: for the GNOME shell theme
 	optdepends = gtk-engine-murrine: for the GTK2 theme
 	conflicts = gtk-theme-plano-git
-	source = plano-theme-3.34.2.tar.gz::https://github.com/lassekongo83/plano-theme/archive/v3.34-2.tar.gz
-	sha256sums = d94556d38b52f0444f712ddd8356e9b7a5338c95c79bd6203e328e15be1214ed
+	source = plano-theme-3.36.1.tar.gz::https://github.com/lassekongo83/plano-theme/archive/v3.36-1.tar.gz
+	sha256sums = ccf659111218cd0f2d3c59eee635ce70fddfff56eb09f9177452e34512e44c7a
 
 pkgname = gtk-theme-plano
 
