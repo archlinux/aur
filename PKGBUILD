@@ -15,7 +15,8 @@ license=('Apache')
 groups=()
 depends=()
 makedepends=("cmake"
-            "git")
+            "git"
+            "vulkan-headers-sparzz-git")
 checkdepends=()
 optdepends=()
 provides=(vulkan-loader-git)
@@ -36,6 +37,6 @@ validpgpkeys=()
 
 
 package() {
-	cmake -DVULKAN_HEADERS_INSTALL_DIR=/usr/local/include/vulkan/ Vulkan-Loader
+	cmake -DVULKAN_HEADERS_INSTALL_DIR=/usr/local/share/vulkan/registry/ Vulkan-Loader
 	make DESTDIR="$pkgdir" install
 }

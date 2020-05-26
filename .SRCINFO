@@ -6,6 +6,7 @@ pkgbase = vulkan-loader-git
 	license = Apache
 	makedepends = cmake
 	makedepends = git
+	makedepends = vulkan-headers-sparzz-git
 	provides = vulkan-loader-git
 	source = Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
 	md5sums = SKIP
