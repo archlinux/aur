@@ -14,7 +14,8 @@ makedepends=('cmake>=3.8.1' make gcc8 flex bison patch tcsh imake openmpi-gcc8 '
 optdepends=('openmpi-gcc8: MPI support'
             'cuda: GPU acceleration support'
             'plumed: metadynamics support'
-            'plumed-mpi: metadynamics support with MPI')
+            'plumed-mpi: metadynamics support with MPI'
+            'vmd: visualize trajectories')
 options=(staticlibs !buildflags)
 
 # Due to licensing issues you must register and download AmberTools package from AmberMD url and put it in directory with PKGBUILD.
@@ -45,14 +46,14 @@ build() {
 
   CC=gcc-8 CXX=g++-8 FC=gfortran-8 cmake $AMBER_PREFIX/amber${pkgver}_src \
       -DCMAKE_INSTALL_PREFIX=/opt/amber \
-	  -DCOMPILER=MANUAL  \
-	  -DMPI=TRUE -DCUDA=TRUE \
-	  -DOPENMP=TRUE \
-	  -DINSTALL_TESTS=TRUE \
-	  -DDOWNLOAD_MINICONDA=FALSE \
-	  -DFORCE_DISABLE_LIBS="plumed" \
-	  -DFORCE_INTERNAL_LIBS="arpack;xblas;netcdf;netcdf-fortran;pnetcdf;fftw;boost;mpi4py" \
-	  2>&1 | tee cmake.log
+      -DCOMPILER=MANUAL  \
+      -DMPI=TRUE -DCUDA=TRUE \
+      -DOPENMP=TRUE \
+      -DINSTALL_TESTS=FALSE \
+      -DDOWNLOAD_MINICONDA=FALSE \
+      -DFORCE_DISABLE_LIBS="plumed" \
+      -DFORCE_INTERNAL_LIBS="arpack;xblas;netcdf;netcdf-fortran;pnetcdf;fftw;boost;mpi4py" \
+      2>&1 | tee cmake.log
 
   cd src
   make
@@ -61,6 +62,7 @@ build() {
 package() {
   mkdir -p ${pkgdir}/opt/amber
 
+  # install stuff
   cd ${srcdir}/amber${pkgver}_src/build/src
   make DESTDIR=${pkgdir} install
 

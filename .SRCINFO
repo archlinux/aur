@@ -20,6 +20,7 @@ pkgbase = pmemd
 	optdepends = cuda: GPU acceleration support
 	optdepends = plumed: metadynamics support
 	optdepends = plumed-mpi: metadynamics support with MPI
+	optdepends = vmd: visualize trajectories
 	options = staticlibs
 	options = !buildflags
 	source = local://AmberTools20.tar.bz2
