@@ -1,0 +1,18 @@
+pkgbase = disman-kwinft
+	pkgver = 5.19.0_beta
+	pkgrel = 1
+	url = https://gitlab.com/kwinft/disman
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	depends = kxmlgui
+	depends = libkscreen-git
+	depends = qt5-graphicaleffects
+	depends = hicolor-icon-theme
+	provides = disman
+	conflicts = disman
+	source = https://gitlab.com/kwinft/disman/-/archive/disman@0.519.0-beta.0/disman-disman@0.519.0-beta.0.tar.gz
+	md5sums = 5f19ba9e3ab6362a72e24f2c3973fd6f
+
+pkgname = disman-kwinft
+
