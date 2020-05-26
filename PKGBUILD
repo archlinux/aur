@@ -15,7 +15,9 @@ license=('Apache')
 groups=()
 depends=("yay")
 makedepends=("cmake"
-            "git")
+            "git"
+            "make"
+            "glslang-sparzz-git")
 checkdepends=()
 optdepends=()
 provides=(spirv-headers-sparzz-git)
