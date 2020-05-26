@@ -2,8 +2,8 @@
 
 pkgname=wluma-als-emulator-git
 _pkgname=${pkgname%-git}
-pkgver=1.0.0.r12.g4116c17
-pkgrel=2
+pkgver=1.1.0.r18.gf7f93a4
+pkgrel=1
 pkgdesc="Ambient light sensor emulator for wluma"
 license=(MIT)
 url="https://github.com/cyrinux/${_pkgname}"
@@ -32,5 +32,5 @@ build() {
 
 package() {
     cd "${_pkgname}"
-    make install DESTDIR="${pkgdir}"
+    make package DESTDIR="${pkgdir}"
 }
