@@ -1,6 +1,6 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=mpv-quack
-pkgver=0.1
+pkgver=r4.1c87f36
 pkgrel=1
 epoch=
 pkgdesc="mpv script for temporarily reducing audio volume after seeking"
@@ -23,6 +23,16 @@ source=("git+https://github.com/CounterPillow/mpv-quack")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
+
+
+pkgver() {
+  cd "$pkgname"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
+
 
 prepare() {
 	cd "$pkgname"
