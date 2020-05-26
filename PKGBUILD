@@ -2,7 +2,7 @@
 
 pkgname=arsenic
 pkgver=2.7
-pkgrel=2
+pkgrel=1
 pkgdesc="Qt5 app for encrypt files and text with triple encryption"
 arch=('x86_64')
 url="https://github.com/Antidote1911/${pkgname}"

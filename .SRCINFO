@@ -1,7 +1,7 @@
 pkgbase = arsenic
 	pkgdesc = Qt5 app for encrypt files and text with triple encryption
 	pkgver = 2.7
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/Antidote1911/arsenic
 	arch = x86_64
 	license = GPL
