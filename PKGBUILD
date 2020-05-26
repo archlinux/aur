@@ -2,7 +2,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=persian-hm-ftx-fonts
 pkgver=3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Persian font series derived from X Series 2, Metafont and FarsiTeX fonts with Kashida feature."
 url="https://bitbucket.org/dma8hm1334"
 arch=(any)
