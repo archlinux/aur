@@ -5,7 +5,7 @@
 
 # Maintainer: sparzz
 pkgname=vulkan-headers-sparzz-git
-pkgver=1.2.141.2020.05.26
+pkgver=1.2.141.2020.05.26.2
 pkgrel=1
 epoch=
 pkgdesc="Vulkan Headers build from source. My oder Vulkan packages from the AUR depends on this packages. For install instruction and the order of install visit my GitHub page ----> https://github.com/sparzz/vulkan-arch-aur"
@@ -40,6 +40,6 @@ validpgpkeys=()
 
 
 package() {
-	cmake -DSPIRV_HEADERS_INSTALL_DIR=/usr/local/include/spirv -DGLSLANG_INSTALL_DIR=/usr/local/bin Vulkan-Headers
+	cmake -DSPIRV_HEADERS_INSTALL_DIR=/usr/local/include/spirv -DGLSLANG_INSTALL_DIR=/usr/local/bin -DSpirvHeaders_DIR=/usr/local/include/spirv -DGlslang_DIR=/usr/local/bin Vulkan-Headers 
 	make DESTDIR="$pkgdir" install
 }
