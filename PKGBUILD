@@ -1,36 +1,27 @@
 # Maintainer: X0rg
 
 pkgname=libcpuid
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A small C library for x86 CPU detection and feature extraction"
 arch=('i686' 'x86_64')
 url="http://libcpuid.sourceforge.net"
 license=('BSD')
 depends=('glibc')
-makedepends=('git' 'doxygen')
+makedepends=('git' 'cmake' 'ninja' 'doxygen')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/anrieff/libcpuid/archive/v$pkgver.tar.gz")
-sha512sums=('2644d6f6c12f7290f2b562726fa66becb77f0ebcc415bac41458513b9f1b5b5a9afdaa5e68a6766b7fe3d7e242ada3c42ecae61ff111dc1f118e56a4edc3abb2')
+sha512sums=('c98f4a95e111da5a4ac54d6f6e25c882f01e6984fcf2f8c1d1c8437cac54ea057233aab05a19c4a1ffa800d54aebf089ca8be6b26b89ff625df382a2984ee462')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	msg2 "Run 'libtoolize'..."
-	libtoolize
+	msg2 "Generate build system..."
+	cmake -S "$srcdir/$pkgname-$pkgver" -B build -GNinja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr
 
-	msg2 "Run 'autoreconf --install'..."
-	autoreconf --install
-
-	msg2 "Run './configure'..."
-	./configure --prefix=/usr
-
-	msg2 "Run 'make'..."
-	make
+	msg2 "Build..."
+	cmake --build build
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" install
-
-	msg2 "Install license..."
-	install -Dvm644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+	msg2 "Install..."
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dvm644 "$srcdir/$pkgname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
