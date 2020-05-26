@@ -1,0 +1,17 @@
+pkgbase = flowee-pay
+	pkgdesc = Flowee Payment solution
+	pkgver = 2020.04.1
+	pkgrel = 1
+	url = https://flowee.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	makedepends = cmake
+	depends = flowee-hub
+	depends = qt5-base
+	provides = flowee-pay
+	source = git+https://gitlab.com/FloweeTheHub/pay.git#branch=master
+	sha256sums = SKIP
+
+pkgname = flowee-pay
+
