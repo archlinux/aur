@@ -80,7 +80,7 @@ So p2p will look like:
         enabled: true,
         useStunTurn: true,
         stunServers: [
-            { urls: 'stun:jitsi-meet.example.com:4446' },
+            { urls: 'stun:jitsi-meet.example.com:3478' },
             //{ urls: 'stun:meet-jit-si-turnrelay.jitsi.net:443' }
         ],
         preferH264: true
@@ -152,7 +152,17 @@ plugin_paths = { "/usr/share/jitsi-meet-prosody-plugins/" }
 
 2. b. Change "focusUser" to "focus"
 
-3. Set a random password to "turncredentials_secret"
+3. Set a random password to "turncredentials_secret" and credential host/port
+
+```
+turncredentials_secret = "YOUR_TURN_CREDENTIAL";
+
+turncredentials = {
+  { type = "stun", host = "YOUR_DOMAIN", port = "3478" },
+  { type = "turn", host = "YOUR_DOMAIN", port = "3478", transport = "udp" },
+  { type = "turns", host = "YOUR_DOMAIN", port = "3478", transport = "tcp" }
+};
+```
 
 4. Replace the focus password in the Component "focus.YOUR_DOMAIN" with the jicofo config "JICOFO_SECRET"
 
@@ -291,30 +301,32 @@ cp /usr/share/doc/jitsi/meet/turn/turnserver.conf /etc/turnserver/turnserver.con
 cert=/etc/turnserver/certs/cert.pem
 pkey=/etc/turnserver/certs/pkey.pem
 ```
-4. [optional] listen only port 4446, remove external-ip
 
-```
-no-tls
-no-dtls
-no-tcp
-listening-port=4446
-```
+4. limit turn, increase security
 
 Your config should look like:
 ```
 use-auth-secret
-keep-address-family
-static-auth-secret=YOUR_PROSODY_TURN_CREDENTIAL
+static-auth-secret=YOUR_TURN_CREDENTIAL_IN_PROSODY
 realm=YOUR_DOMAIN
 cert=/etc/turnserver/certs/cert.pem
 pkey=/etc/turnserver/certs/pkey.pem
-
-no-tls
-no-dtls
-no-tcp
-listening-port=4446
-
 syslog
+pidfile=/run/turnserver/turnserver.pid
+no-cli
+keep-address-family
+
+listening-ip=PUBLIC_IPV4_OF_YOUR_SERVER
+listening-ip=PUBLIC_IPV6_OF_YOUR_SERVER
+relay-ip=PUBLIC_IPV4_OF_YOUR_SERVER
+relay-ip=PUBLIC_IPV6_OF_YOUR_SERVER
+
+no-multicast-peers
+mobility
+stale-nonce
+
+no-sslv3
+no-tlsv1
 ```
 
 Then you need to copy your SSL for turnserver:
@@ -339,7 +351,7 @@ In order to test p2p turn, you can force it in the jitsi config:
         enabled: true,
         useStunTurn: true,
         stunServers: [
-            { urls: 'stun:YOUR_DOMAIN:4446' },
+            { urls: 'stun:YOUR_DOMAIN:3478' },
         ],
         iceTransportPolicy: 'relay', // this parameters force the turn mode
         preferH264: true

@@ -6,7 +6,7 @@ _stable_version=4548
 _stable_tag=stable/jitsi-meet_${_stable_version}
 _stable_suffix=stable-jitsi-meet_${_stable_version}
 pkgver=2.0.${_stable_version}
-pkgrel=10
+pkgrel=11
 pkgdesc="Jitsi Meet Stable"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -51,6 +51,7 @@ source=(
         "sysusers.conf"
         "tmpfiles.conf"
 	"INSTALL.md"
+	"sysctl"
 )
 
 _jitsi_videobridge_package=jitsi-videobridge-2.1-SNAPSHOT
@@ -137,6 +138,7 @@ package() {
         echo "System"
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/jitsi.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/jitsi.conf"
+	install -Dm644 "sysctl" "${pkgdir}/etc/sysctl.d/jitsi-videobridge.conf"
 
         echo "Fixing"
         chown -R root:root "${pkgdir}"
@@ -154,4 +156,5 @@ sha256sums=('62e5273726fc9b4d07f30548db06d6b87269ca17cd3c7c9d2b6ee9e06eedfccf'
             '993a48122151312b064c9b74999d454e2a719335c74fb936eb658336169b98a1'
             'fd7ca06f1cf85a6f7578b006b99c18235b5a7e8319b7e08d40e82ad614d20835'
             '77dd2ca3dab9816aaef54f072a411205ad544a5f8695710d27f84b9898c8ba5c'
-            '718e66716d783fc3389b0d06f0f5e7920d6e5186417979f43e81c324ec4d7da5')
+            '5790339f823d1040480cad3bc04eab8f06112271e9b6c6fb3a090176b1a1e815'
+            '192ebadf43c9b0bc22b3bdbc2b8f440aaf302fce919ccef43b62fa74bf34a14d')
