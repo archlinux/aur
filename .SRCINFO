@@ -1,7 +1,7 @@
 pkgbase = ibus-libzhuyin
 	pkgdesc = New Zhuyin engine based on libzhuyin for IBus
 	pkgver = 1.9.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/libzhuyin/ibus-libzhuyin
 	arch = x86_64
 	license = GPL2
