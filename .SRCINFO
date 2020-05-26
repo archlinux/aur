@@ -11,6 +11,7 @@ pkgbase = vulkan-headers-sparzz-git
 	makedepends = make
 	depends = yay
 	depends = glslang-sparzz-git
+	depends = spirv-headers-sparzz-git
 	provides = vulkan-headers-sparzz-git
 	source = Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	md5sums = SKIP
