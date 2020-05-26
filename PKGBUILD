@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('boost-libs' 'libevent' 'openssl')
 makedepends=('boost' 'cmake' 'pkgconf')
 optdepends=('miniupnpc')
-provides=('flowee-hub')
+provides=('flowee-hub' 'flowee-libs')
 backup=("etc/flowee/flowee.conf")
 install=flowee.install
 source=("https://gitlab.com/FloweeTheHub/thehub/-/archive/$pkgver/thehub-$pkgver.tar.gz"
@@ -29,7 +29,7 @@ build() {
   (cd thehub-$pkgver && patch -p1 -i ../testing_patch.diff)
   mkdir -p build
   cd build
-  cmake -Dbuild_tests=true -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ ../thehub-$pkgver
+  cmake -Denable_gui=false -Dbuild_tests=true -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ ../thehub-$pkgver
   make
 }
 

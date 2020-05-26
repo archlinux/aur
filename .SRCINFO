@@ -14,6 +14,7 @@ pkgbase = flowee
 	depends = openssl
 	optdepends = miniupnpc
 	provides = flowee-hub
+	provides = flowee-libs
 	backup = etc/flowee/flowee.conf
 	source = https://gitlab.com/FloweeTheHub/thehub/-/archive/2020.04.1/thehub-2020.04.1.tar.gz
 	source = flowee.logrotate
