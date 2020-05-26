@@ -1,7 +1,7 @@
 # Maintainer: Aaron J Graves <linux@ajgraves.com>
 pkgname=criptext-bin
 pkgver=0.29.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Official Criptext encrypted email client'
 arch=('x86_64')
 url='https://criptext.com/'
@@ -12,8 +12,7 @@ depends=('electron' 'libsecret')
 optdepends=('org.freedesktop.secrets: for storing passwords'
             'gnome-keyring: for storing passwords in GNOME Keyring')
 options=(!strip)
-_srcimage="Criptext-${pkgver}.AppImage"
-source=("https://cdn.criptext.com/Criptext-Email-Desktop/linux/${_srcimage}"
+source=("${pkgname%-bin}-${pkgver}-${pkgrel}.AppImage::https://cdn.criptext.com/Criptext-Email-Desktop/linux/Criptext-${pkgver}.AppImage"
 	"criptext"
 	"LICENSE")
 sha512sums=('b93c0c5681ba12dbef236efc780087f39f8bf9a2c897f006dd9a0e2beffabbaeb27b02527f6e064fa6e6e8e512b11d40f580564ed365793fd98a1894d38d120f'
@@ -21,8 +20,8 @@ sha512sums=('b93c0c5681ba12dbef236efc780087f39f8bf9a2c897f006dd9a0e2beffabbaeb27
 	    'aee80b1f9f7f4a8a00dcf6e6ce6c41988dcaedc4de19d9d04460cbfb05d99829ffe8f9d038468eabbfba4d65b38e8dbef5ecf5eb8a1b891d9839cda6c48ee957')
 
 prepare() {
-  chmod +x ${srcdir}/${_srcimage}
-  ${srcdir}/${_srcimage} --appimage-extract
+  chmod +x ${srcdir}/${pkgname%-bin}-${pkgver}-${pkgrel}.AppImage
+  ${srcdir}/${pkgname%-bin}-${pkgver}-${pkgrel}.AppImage --appimage-extract
 
   # Update .desktop file
   sed -i 's|Exec=AppRun|Exec=/usr/bin/criptext|g' \

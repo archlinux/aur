@@ -1,7 +1,7 @@
 pkgbase = criptext-bin
 	pkgdesc = Official Criptext encrypted email client
 	pkgver = 0.29.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://criptext.com/
 	arch = x86_64
 	license = GPL2
@@ -12,7 +12,7 @@ pkgbase = criptext-bin
 	provides = criptext-bin
 	conflicts = criptext-bin
 	options = !strip
-	source = https://cdn.criptext.com/Criptext-Email-Desktop/linux/Criptext-0.29.0.AppImage
+	source = criptext-0.29.0-3.AppImage::https://cdn.criptext.com/Criptext-Email-Desktop/linux/Criptext-0.29.0.AppImage
 	source = criptext
 	source = LICENSE
 	sha512sums = b93c0c5681ba12dbef236efc780087f39f8bf9a2c897f006dd9a0e2beffabbaeb27b02527f6e064fa6e6e8e512b11d40f580564ed365793fd98a1894d38d120f
