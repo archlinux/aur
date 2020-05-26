@@ -1,7 +1,7 @@
 # Maintainer: Alireza Ayinmehr <alireza.darksun@gmail.com>
 
 pkgname="flat-remix-git"
-pkgver=VERSION
+pkgver="r753.af8ddf0c"
 pkgrel=1
 pkgdesc="Flat remix is a pretty simple icon theme inspired on material design."
 arch=('any')
