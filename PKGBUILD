@@ -40,6 +40,6 @@ validpgpkeys=()
 
 
 package() {
-	cmake -DGLSLANG_INSTALL_DIR=usr/local/bin/ -DVULKAN_HEADERS_INSTALL_DIR=/usr/local/include/ -DVulkanRegistry_DIR=/usr/local/share/vulkan/registry/ Vulkan-ValidationLayers
+	cmake -DGLSLANG_INSTALL_DIR=usr/local/bin/ -DVULKAN_HEADERS_INSTALL_DIR=/usr/local/include/ -DVULKAN_HEADERS_INSTALL_DIR=/usr/local/share/vulkan/registry -DVULKAN_LOADER_INSTALL_DIR=/usr/local/lib -DSPIRV_HEADERS_INSTALL_DIR=/usr/local/include/spirv Vulkan-ValidationLayers
 	make DESTDIR="$pkgdir" install
 }
