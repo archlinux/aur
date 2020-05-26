@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/shadowsocks/shadowsocks-rust'
 license=('MIT')
 depends=('openssl')
-makedepends=('cargo' 'openssl' 'libsodium')
+makedepends=('cargo' 'libsodium')
 source=(
     "git+https://github.com/shadowsocks/${pkgname}.git"
 	'shadowsocks-rust@.service'

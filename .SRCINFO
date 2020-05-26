@@ -6,7 +6,6 @@ pkgbase = shadowsocks-rust
 	arch = any
 	license = MIT
 	makedepends = cargo
-	makedepends = openssl
 	makedepends = libsodium
 	depends = openssl
 	source = git+https://github.com/shadowsocks/shadowsocks-rust.git
