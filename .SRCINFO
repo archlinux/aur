@@ -1,0 +1,19 @@
+pkgbase = intel-hybrid-codec-driver-gcc10
+        pkgdesc = Libva support for partially hardware accelerated encode and decode on Haswell and newer
+        pkgver = 2.0.0.r169.edead0c
+        pkgrel = 3
+        url = https://01.org/linuxmedia/vaapi
+        install = intel-hybrid-codec-driver.install
+        arch = x86_64
+        license = MIT
+        makedepends = git
+        depends = libva
+        depends = libcmrt
+        optdepends = libva-intel-driver-hybrid: To be able to use the full hw codecs with hybrid codecs
+        provides = intel-hybrid-codec-driver
+        source = intel-hybrid-driver::git+https://github.com/01org/intel-hybrid-driver.git
+        source = gcc10-fix.patch
+        sha256sums = SKIP
+        sha256sums = 90c01a1771f90007b001057edd4ada66751e54ccc380b3d87672694ab7ea92cb
+
+pkgname = intel-hybrid-codec-driver-gcc10

@@ -1,0 +1,12 @@
+post_upgrade() {
+	if [ $(vercmp $2 '2.0.0.r169.edead0c-1') -le 0 ]
+	then
+	    cat<<'EOF'
+## NOTE ##
+Due to a bug this package no longer provides support for using vaapi via X11.
+Apps configured to use vaapi in this way (e.g. VLC, MPV) should be changed to
+use vaapi via DRM.
+
+EOF
+    fi
+}
