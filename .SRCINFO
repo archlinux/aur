@@ -1,0 +1,37 @@
+pkgbase = spotify-bin
+	pkgdesc = Spotify client - listen to your music anywhere anytime
+	pkgver = 1.1.26.501.gbe11e53b
+	pkgrel = 1
+	url = https://www.spotify.com/us/download/linux/
+	install = spotify-bin.install
+	arch = any
+	license = custom
+	depends = alsa-lib
+	depends = atk
+	depends = at-spi2-atk
+	depends = cairo
+	depends = desktop-file-utils
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = gconf
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk2
+	depends = curl
+	depends = libx11
+	depends = libxss
+	depends = libxtst
+	depends = openssl
+	depends = pango
+	depends = syslog-ng
+	depends = xdg-utils
+	depends = zlib
+	depends = hicolor-icon-theme
+	optdepends = ffmpeg: extra audio and video codecs
+	source = https://www.dropbox.com/s/tp5blzfx0sxbwex/sources.tar.zst?dl=1
+	sha1sums = 9cdfe1ee1969c10c130695f90814331e273eee61
+
+pkgname = spotify-bin
+

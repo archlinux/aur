@@ -1,0 +1,104 @@
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	#
+	# Copyright (c) 2015 Spotify AB
+	#
+	# This script registers menus and icons. It should be run from the top-level
+	# folder of the uncompressed Spotify distribution. Since this script is also run
+	# as a post-install task for the debian package, it will attempt to run relative
+	# to /usr/share/spotify if this path is available.
+
+	spotifyPath=$PWD
+	if [ -e /usr/share/spotify ]; then
+	  spotifyPath=/usr/share/spotify
+	fi
+
+	# Add icons to the system icon folders
+	XDG_ICON_RESOURCE="$(command -v xdg-icon-resource 2> /dev/null)"
+	if [ ! -x "$XDG_ICON_RESOURCE" ]; then
+	  echo "Error: Could not find xdg-icon-resource" >&2
+	  exit 1
+	fi
+
+	for icon in "$spotifyPath"/icons/spotify-linux-*.png; do
+	  [ -e "$icon" ] || break
+	  size="${icon##*/spotify-linux-}"
+	  "$XDG_ICON_RESOURCE" install --noupdate --size "${size%.png}" "$icon" "spotify-client"
+	done
+	"$XDG_ICON_RESOURCE" forceupdate
+
+	# Add an entry to the system menu
+	XDG_DESKTOP_MENU="$(command -v xdg-desktop-menu 2> /dev/null)"
+	UPDATE_MENUS="$(command -v update-mime-database usr/share/mime &> /dev/null 2> /dev/null)"
+	if [ ! -x "$XDG_DESKTOP_MENU" ]; then
+	  echo "Error: Could not find xdg-desktop-menu" >&2
+	  exit 1
+	fi
+
+	# It seems the desktop file has to match the MPris name. We don't want to
+	# change that, so we use --novendor here instead.
+	"$XDG_DESKTOP_MENU" install --novendor "$spotifyPath/spotify.desktop"
+	if [ -x "$UPDATE_MENUS" ]; then
+	  "$UPDATE_MENUS"
+	fi
+
+	APT_TRUSTED=/etc/apt/trusted.gpg.d
+	if [ -d $APT_TRUSTED ]; then
+	    for keyPath in "$spotifyPath"/apt-keys/*.gpg; do
+	      keyFileName=$(basename "$keyPath")
+	      if [ ! -e "$APT_TRUSTED/$keyFileName" ]; then
+	          cp "$keyPath" "$APT_TRUSTED/"
+	          chmod 644 "$APT_TRUSTED/$keyFileName"
+	      fi
+	    done
+	fi
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	#
+	# Copyright (c) 2015 Spotify AB
+	#
+	# This script unregisters menus and icons. It should be run from the top-level
+	# folder of the uncompressed Spotify distribution.
+
+	spotifyPath=$PWD
+	if [ -e /usr/share/spotify ]; then
+	  spotifyPath=/usr/share/spotify
+	fi
+
+	# Remove icons from the system icon folders
+	XDG_ICON_RESOURCE="$(command -v xdg-icon-resource 2> /dev/null)"
+	if [ ! -x "$XDG_ICON_RESOURCE" ]; then
+	  echo "Error: Could not find xdg-icon-resource" >&2
+	  exit 1
+	fi
+
+	for icon in "$spotifyPath"/icons/spotify-linux-*.png; do
+	  [ -e "$icon" ] || break
+	  size="${icon##*/spotify-linux-}"
+	  "$XDG_ICON_RESOURCE" uninstall --noupdate --size "${size%.png}" "$icon" "spotify-client"
+	done
+	"$XDG_ICON_RESOURCE" forceupdate
+
+	# Remove the entry from the system menu
+	XDG_DESKTOP_MENU="$(command -v xdg-desktop-menu 2> /dev/null)"
+	UPDATE_MENUS="$(command -v update-mime-database usr/share/mime &> /dev/null 2> /dev/null)"
+	if [ ! -x "$XDG_DESKTOP_MENU" ]; then
+	  echo "Error: Could not find xdg-desktop-menu" >&2
+	  exit 1
+	fi
+
+	"$XDG_DESKTOP_MENU" uninstall --novendor "spotify.desktop"
+	if [ -x "$UPDATE_MENUS" ]; then
+	  "$UPDATE_MENUS"
+	fi
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	update-desktop-database -q
+}
