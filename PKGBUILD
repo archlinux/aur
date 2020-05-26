@@ -5,7 +5,7 @@
 
 # Maintainer: sparzz
 pkgname=vulkan-tools-git
-pkgver=1.2.140_final_2
+pkgver=1.2.140_final_3
 pkgrel=1
 epoch=
 pkgdesc="vulkan tools build directly from KhronosGroup github. This build provide the most recent vulkan-tools package"
@@ -19,8 +19,8 @@ makedepends=("cmake"
 checkdepends=()
 optdepends=()
 provides=(vulkan-tools-git)
-conflicts=(vulkan-tools)
-replaces=(vulkan-tools)
+conflicts=()
+replaces=()
 backup=()
 options=()
 install=
