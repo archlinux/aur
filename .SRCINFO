@@ -1,6 +1,6 @@
 pkgbase = popsql
 	pkgdesc = Collaborative SQL editor to write, run, and share queries instantly
-	pkgver = 0.9.0
+	pkgver = 0.10.6
 	pkgrel = 1
 	url = https://popsql.io
 	install = popsql.install
@@ -16,8 +16,8 @@ pkgbase = popsql
 	optdepends = libappindicator-gtk2: System Tray support
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = popsql-0.9.0-1.deb::https://get.popsql.io/download/linux_deb_64
-	sha512sums_x86_64 = 78e2a566a2ef680e1cf2a300e99a9f3c4e00b110b2c52d9154979474cd06f455d505e93a75dd4cd1759492c48c99f05f5e214a3a28ccccbeece1787004b41f47
+	source_x86_64 = popsql-0.10.6-1.deb::https://get.popsql.com/download/debian
+	sha512sums_x86_64 = eb032f9bc9d8a738c43414ecb2375a0a6882d091879825936c9e42cf697c8080cebfba5dfb43468dbf449c6d81202990951b6d256bc151ed170a1a928effbe44
 
 pkgname = popsql
 
