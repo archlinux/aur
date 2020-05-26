@@ -8,35 +8,31 @@
 # Contributor: Baurzhan Muftakhidinov <baurthefirst (at) gmail (dot) com>
 
 _pkgname=pyparted
-pkgbase=python-${_pkgname}
-pkgname=(python-${_pkgname} python2-${_pkgname})
-pkgver=3.11.3
+pkgname=python-${_pkgname}
+pkgver=3.11.6
 pkgrel=1
 pkgdesc="Python module for GNU parted"
-url="https://github.com/rhinstaller/pyparted"
+url="https://github.com/dcantrell/pyparted"
 arch=('i686' 'x86_64')
 license=('GPL2')
-makedepends=('pkg-config' 'python' 'python2' 'parted>=3.0')
+makedepends=('pkg-config' 'python>=3.5' 'parted>=3.0')
 conflicts=('pyparted-git')
 replaces=('pyparted')
 source=("https://github.com/dcantrell/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('861869d286ddca64e536851a992608e5c9482f55a2978c93386a167e73d05effa3ad80495a9b81af6973ee6770b9d6ef693e133fe086073698e8e02aa5ee5931')
+sha512sums=('6be03c0e44d474088ad5e432fdea077a8f1379877d09c1ff234e38b58067b5d2538fe3607af747bb8c917e3118766d528e07bdce1837e9d5a0ab908b9731173c')
 
-package_python-pyparted() {
-  pkgdesc="Python module for GNU parted - python 3.x pkg"
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build
+}
+
+package() {
   depends=('python' 'parted>=3.0')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python3 setup.py build
-  python3 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm755 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm755 AUTHORS "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
+  install -Dm755 TODO "${pkgdir}/usr/share/doc/${pkgname}/TODO"
+  install -Dm755 README "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
-
-package_python2-pyparted() {
-  pkgdesc="Python module for GNU parted - python 2.x pkg"
-  depends=('python2' 'parted>=3.0')
-
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python2 setup.py build
-  python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-}
-
