@@ -8,6 +8,7 @@ pkgbase = vulkan-extensionlayer-sparzz-git
 	makedepends = cmake
 	makedepends = git
 	depends = yay
+	depends = glslang-sparzz-git
 	provides = vulkan-extensionlayer-sparzz-git
 	source = Vulkan-ExtensionLayer::git+https://github.com/KhronosGroup/Vulkan-ExtensionLayer.git
 	md5sums = SKIP
