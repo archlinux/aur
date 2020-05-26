@@ -11,6 +11,7 @@ pkgbase = vulkan-validation-layers-git
 	makedepends = vulkan-loader-git
 	makedepends = vulkan-headers-sparzz-git
 	makedepends = spirv-headers
+	makedepends = spirv-headers-sparzz-git
 	provides = vulkan-validation-layers-git
 	source = Vulkan-ValidationLayers::git+https://github.com/KhronosGroup/Vulkan-ValidationLayers.git
 	md5sums = SKIP

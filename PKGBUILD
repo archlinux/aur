@@ -19,7 +19,8 @@ makedepends=("cmake"
             "glslang-sparzz-git"
             "vulkan-loader-git"
             "vulkan-headers-sparzz-git"
-            "spirv-headers")
+            "spirv-headers"
+            "spirv-headers-sparzz-git")
 checkdepends=()
 optdepends=()
 provides=(vulkan-validation-layers-git)
