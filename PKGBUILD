@@ -1,4 +1,4 @@
-# Maintainer: Michael Cordover <fido2-hmac-secret@mjec.net>
+# Maintainer: Michael Cordover <khefin@mjec.net>
 
 pkgname=khefin
 pkgver=0.5.0
