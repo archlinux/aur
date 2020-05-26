@@ -1,6 +1,6 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Maintainer: Guillaume Alaux <guillaume@archlinux.org>
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Guillaume Alaux <guillaume@archlinux.org>
 # Contributor: William Gathoye <william + archlinux at gathoye dot be>
 # Contributor: Emanuel Couto <emanuel dot amaral dot couto at gmail dot com>
 # Contributor: Richard Jackson <rdjack21 at gmail dot com>
@@ -19,7 +19,7 @@ _minorver=0
 _securityver=2
 _updatever=0
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
-pkgrel=1
+pkgrel=2
 pkgdesc="Java OpenJFX ${_majorver} client application platform (open-source implementation of JavaFX)"
 arch=(x86_64)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -42,7 +42,7 @@ makedepends=(
   libx11
   libxtst
   pango
-  python2
+  python
   qt5-base
   ruby
   unzip
@@ -95,7 +95,6 @@ package_java-openjfx() {
     libx11
     libxtst
     pango
-    python2
     qt5-base
     ruby
     unzip
