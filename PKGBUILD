@@ -3,8 +3,8 @@
 # Contributor: Filip Brcic <brcha at gna dot org>
 
 pkgname=mingw-w64-sqlite
-_amalgamationver=3310100
-pkgver=3.31.1
+_amalgamationver=3320000
+pkgver=3.32.0
 pkgrel=1
 pkgdesc="A C library that implements an SQL database engine (mingw-w64)"
 arch=('any')
@@ -15,7 +15,7 @@ options=('!buildflags' '!strip' 'staticlibs')
 license=('custom:Public Domain')
 url="https://www.sqlite.org/"
 source=("https://www.sqlite.org/2020/sqlite-autoconf-${_amalgamationver}.tar.gz")
-sha256sums=('62284efebc05a76f909c580ffa5c008a7d22a1287285d68b7825a2b6b51949ae')
+sha256sums=('598317fd74f5dcc8921949c47665b9e512d0d9c6a445a2e843430f04dc10bda4')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
