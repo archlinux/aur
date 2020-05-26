@@ -4,7 +4,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seahub
-pkgver=7.1.3
+pkgver=7.1.4
 pkgrel=1
 pkgdesc='The web frontend for seafile server'
 arch=('any')
@@ -29,6 +29,7 @@ depends=(
     'python-pillow'
     'python-pyjwt'
     'python-pycryptodome'
+    'python-requests-oauthlib'
     'python-django-ranged-response'
 )
 optdepends=(
@@ -38,15 +39,13 @@ optdepends=(
 )
 source=(
     "$pkgname-$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz"
-    'django-1.11.25.tar.gz::https://www.djangoproject.com/m/releases/1.11/Django-1.11.25.tar.gz'
+    'django-1.11.29.tar.gz::https://media.djangoproject.com/releases/1.11/Django-1.11.29.tar.gz'
     'nginx.example.conf'
-    'fix_shared_link.diff'
 )
 sha256sums=(
-    'a2cf1ad1ff357b06c112f3f80e2e4a2ef109813496c96afc309449f6915e8797'
-    '5314e8586285d532b7aa5c6d763b0248d9a977a37efec86d30f0212b82e8ef66'
+    '921ef4373311c06c1192975a294d7d38c12ac34381a7df19542391fc1d810baf'
+    '4200aefb6678019a0acf0005cd14cfce3a5e6b9b90d06145fcdd2e474ad4329c'
     '461591ba500d012523d6fdecbcc230461f6fd8d708b92eefdedc8b93b1542171'
-    'dc204f762244828933c07905397018d4f4c00918c78f885ede65aae4e93366f1'
 )
 options=('!strip')
 
@@ -60,7 +59,6 @@ prepare() {
         "$(find . -name \*.pyc)"
 
     sed -i -E "/SEAFILE_VERSION/s/[0-9.]+/$pkgver/" ./seahub/settings.py
-    patch -p1 -i "$srcdir/fix_shared_link.diff"
 }
 
 build() {
@@ -78,7 +76,7 @@ package() {
     install -dm755 "$pkgdir/usr/share/seafile-server/seahub"
     cp -r -p "./"* "$pkgdir/usr/share/seafile-server/seahub/"
 
-    cd "$srcdir/Django-1.11.25"
+    cd "$srcdir/Django-1.11.29"
     python setup.py install \
         --root="$pkgdir" --optimize=1 \
         --install-lib "usr/share/seafile-server/$pkgname/thirdpart"
