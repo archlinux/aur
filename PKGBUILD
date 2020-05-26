@@ -8,7 +8,7 @@ pkgname=vulkan-loader-git
 pkgver=1.2.140.2020.05.25
 pkgrel=1
 epoch=
-pkgdesc="vulkan loader build from source"
+pkgdesc="Vulkan loader build from source. Depends on vulkan headers from my aur repo. Even if the default vulkan-headers is installed on your system this build will take my package automaticly"
 arch=(x86_64)
 url=""
 license=('Apache')
@@ -43,6 +43,6 @@ validpgpkeys=()
 
 
 package() {
-	cmake -DVULKAN_HEADERS_INSTALL_DIR=/usr/local/share/vulkan/registry -DVULKAN_HEADERS_INSTALL_DIR=/usr/local/include/vulkan -DGLSLANG_INSTALL_DIR=/usr/local/bin -DSPIRV_HEADERS_INSTALL_DIR=/usr/local/include/spirv Vulkan-Loader
+	cmake -DGLSLANG_INSTALL_DIR=/usr/local/bin -DSPIRV_HEADERS_INSTALL_DIR=/usr/local/include/spirv Vulkan-Loader
 	make DESTDIR="$pkgdir" install
 }
