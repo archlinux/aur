@@ -1,16 +1,16 @@
 # Maintainer: Jonas 'cherti' Große Sundrup <aur@letopolis.de>
 
 pkgname=typemute
-pkgver=0.2
-pkgrel=2
+pkgver=0.3
+pkgrel=1
 pkgdesc='Mute yourself while typing'
 arch=(i686 x86_64)
 url='https://github.com/cherti/typemute'
 license=('GPLv3')
 depends=('sudo' 'expect' 'libinput' 'libpulse')
 makedepends=('go')
-source=('https://github.com/cherti/typemute/archive/v0.2.tar.gz')
-sha256sums=('3c127424452388c92a05bab2327f17b02d7471df8624910a120637b7d92a73af')
+source=('https://github.com/cherti/typemute/archive/v0.3.tar.gz')
+sha256sums=('71417de4088f5ce1c56f476e582698a0a77ec7f80cdfd0b6e799c20712ac29ba')
 
 build() {
 	cd "$pkgname-$pkgver"
