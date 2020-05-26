@@ -8,7 +8,7 @@ pkgver=${_bcver//[:-]/.}
 pkgrel=1
 pkgdesc="Species and taxonomy ID look up tables used by GenomeInfoDb"
 arch=(any)
-url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
+url="https://bioconductor.org/packages/release/data/annotation/html/${_bcname}.html"
 license=(Artistic-2.0)
 depends=('r>=3.5.0')
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_bcname}_${_bcver}.tar.gz")
