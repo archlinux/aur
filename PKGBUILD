@@ -2,11 +2,11 @@
 # Contributor: Celogeek <private-4zokpdq6@mrhyde.xyz>
 
 pkgname=jitsi-meet-stable
-_stable_version=4548
+_stable_version=4627
 _stable_tag=stable/jitsi-meet_${_stable_version}
 _stable_suffix=stable-jitsi-meet_${_stable_version}
 pkgver=2.0.${_stable_version}
-pkgrel=11
+pkgrel=1
 pkgdesc="Jitsi Meet Stable"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -143,9 +143,9 @@ package() {
         echo "Fixing"
         chown -R root:root "${pkgdir}"
 }
-sha256sums=('62e5273726fc9b4d07f30548db06d6b87269ca17cd3c7c9d2b6ee9e06eedfccf'
-            'cebbd2ad2c4c3b9826123ab8d49c4a11d34f4e91482e3f06af695e17d1133595'
-            '6503869e1b7d4180316a0af29c66fae3e4ed1061d7bd6def053902bcc47194d0'
+sha256sums=('0c4a44205cf8e646d2423bfbff2e368128c31ccf1420bf622e25e915d52ed0e6'
+            'eaf298ee6c7c8e394ff58075e8f5f3d5791952ed2b6a1cac5596dad34113736d'
+            'a9f57668426341ddc74518e0442b8514841898bef45e1f22c9252ac593d567a0'
             'fdd4dee8e2aefa17ecc7b4cddbddd5bf91bb05469a64ab0650846584a90ed3a2'
             'fec1ae03cfe978f53812ae0886dcc5650e637bae5c094762d521dd10234d9788'
             'f295f5f8ee13edd019defc037c60e04c6ea2d30e69cc4a896c010b8570f5efab'
