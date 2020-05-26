@@ -2,13 +2,13 @@
 
 pkgname="sauce-finder-git"
 _pkgname="sauce-finder"
-pkgver=v2.2.2.r14.g1322cd4
+pkgver=v2.2.3.r0.g97164ee
 pkgrel=1
 pkgdesc="Python script to find sauce for anime images"
 arch=('any')
 url="https://gitlab.com/miicat/$_pkgname"
 license=('gpl3')
-depends=('python-requests' 'python-click' 'python-validators' 'python-prompt_toolkit')
+depends=('python-requests' 'python-click' 'python-validators')
 provides=('sauce-finder')
 source=("${_pkgname}::git+https://gitlab.com/miicat/${_pkgname}")
 md5sums=('SKIP')
