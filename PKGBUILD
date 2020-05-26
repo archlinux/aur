@@ -36,6 +36,6 @@ validpgpkeys=()
 
 
 package() {
-	cmake Vulkan-Loader
+	cmake -DVULKAN_HEADERS_INSTALL_DIR=/usr/local/include/vulkan/ Vulkan-Loader
 	make DESTDIR="$pkgdir" install
 }
