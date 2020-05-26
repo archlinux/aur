@@ -3,7 +3,7 @@
 pkgbase=python-matrix-synapse-ldap3
 pkgname=(python-matrix-synapse-ldap3)
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='An LDAP3 auth provider for Synapse'
 license=('Apache')
 arch=('any')
@@ -19,6 +19,7 @@ build() {
 
 package_python-matrix-synapse-ldap3() {
 	depends=('python' 'python-twisted' 'python-ldap3' 'python-service-identity')
+	replaces=('python2-matrix-synapse-ldap3')
 
 	cd "matrix-synapse-ldap3-${pkgver}"
 	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
