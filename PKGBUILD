@@ -2,7 +2,7 @@
 
 _pkgname=vibrant
 pkgname=${_pkgname}-git
-pkgver=0.0.1.r0.g4c50968
+pkgver=0.0.2.r0.g166e28b
 pkgrel=1
 pkgdesc="A simple library to adjust color saturation of X11 outputs."
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://gitlab.com/Scrumplex/vibrant"
 license=("GPL3" "custom:MIT")
 depends=("libdrm" "libxrandr")
 makedepends=("git" "cmake")
-provides=($_pkgname)
+provides=($_pkgname "libvibrant.so")
 conflicts=($_pkgname)
 source=("${_pkgname}::git+https://gitlab.com/Scrumplex/vibrant.git")
 sha512sums=('SKIP')
