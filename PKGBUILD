@@ -1,7 +1,7 @@
 # Maintainer: Senya <senya at riseup.net>
 pkgname=crowdin-cli
-pkgver=3.1.13.r3.g0911157
-pkgrel=2
+pkgver=3.1.13
+pkgrel=1
 pkgdesc="Command line tool that allows you to manage and synchronize localization resources with your Crowdin project"
 url="https://support.crowdin.com/cli-tool/"
 license=('MIT')
@@ -9,16 +9,12 @@ depends=('java-runtime>=8')
 makedepends=('git' 'java-environment>=8' 'gradle' 'grep' 'awk')
 conflicts=('crowdin-cli-bin')
 arch=('any')
-md5sums=('SKIP')
+md5sums=('SKIP' 'b018bcf51df64a8e68450cd7ac0e3838')
 
 source=(
-  'git+https://github.com/crowdin/crowdin-cli.git#branch=cli3'
+  "git+https://github.com/crowdin/crowdin-cli.git#tag=$pkgver"
+  'crowdin'
 )
-
-pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 build() {
   cd "$srcdir/$pkgname"
