@@ -7,7 +7,7 @@ pkgdesc="Flowee Payment solution"
 arch=('x86_64')
 url="https://flowee.org/"
 license=('GPL3')
-depends=('flowee-hub' 'qt5-base')
+depends=('flowee-libs' 'qt5-base')
 makedepends=('boost' 'cmake')
 provides=('flowee-pay')
 source=("git+https://gitlab.com/FloweeTheHub/pay.git#branch=master")

@@ -7,7 +7,7 @@ pkgbase = flowee-pay-git
 	license = GPL3
 	makedepends = boost
 	makedepends = cmake
-	depends = flowee-hub
+	depends = flowee-libs
 	depends = qt5-base
 	provides = flowee-pay
 	source = git+https://gitlab.com/FloweeTheHub/pay.git#branch=master
