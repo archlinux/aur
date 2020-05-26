@@ -1,0 +1,14 @@
+pkgbase = arch-texdoc-git
+	pkgdesc = Drop-in replacement of texdoc for Arch Linux using online documents
+	pkgver = r3.5fe70bf
+	pkgrel = 1
+	url = https://github.com/haha662/arch-texdoc
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	source = arch-texdoc-git::git+https://github.com/haha662/arch-texdoc.git
+	sha256sums = SKIP
+
+pkgname = arch-texdoc-git
+
