@@ -1,7 +1,7 @@
 pkgbase = i-nex
 	pkgdesc = System information tool like hardinfo, sysinfo
 	pkgver = 7.6.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://i-nex.linux.pl/
 	arch = i686
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = i-nex
 	source = Adapt-for-new-libcpuid-structure.patch
 	sha256sums = 81236eb729fbd29b356762c0883fe295cf1181cc7d14f00b1dfcceb517b47960
 	sha256sums = 5c812da66cf8627e1749722d8e98f0871e6b3dbc30efbce29b785912ff39e96b
-	sha256sums = 8cded003e334ac741446dfc5af42087dff031296e8a2ba383ca12f02f3b85fee
+	sha256sums = a6cee05fcf07c2d2ddbabd4012a3975178c07e0f9d1e876425567d9504eb99cd
 	sha256sums = fb286cf3bc0b1104e59219e0ba9a236129b20db52b70cd44d65f578404a93cbe
 
 pkgname = i-nex

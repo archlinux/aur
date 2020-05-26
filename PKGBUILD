@@ -3,7 +3,7 @@
 
 pkgname=i-nex
 pkgver=7.6.1
-pkgrel=4
+pkgrel=5
 pkgdesc="System information tool like hardinfo, sysinfo"
 arch=('i686' 'x86_64')
 url="http://i-nex.linux.pl/"
@@ -26,7 +26,7 @@ source=("https://github.com/i-nex/I-Nex/archive/${pkgver}.tar.gz"
 		"Adapt-for-new-libcpuid-structure.patch")
 sha256sums=('81236eb729fbd29b356762c0883fe295cf1181cc7d14f00b1dfcceb517b47960'
             '5c812da66cf8627e1749722d8e98f0871e6b3dbc30efbce29b785912ff39e96b'
-            '8cded003e334ac741446dfc5af42087dff031296e8a2ba383ca12f02f3b85fee'
+            'a6cee05fcf07c2d2ddbabd4012a3975178c07e0f9d1e876425567d9504eb99cd'
             'fb286cf3bc0b1104e59219e0ba9a236129b20db52b70cd44d65f578404a93cbe')
 conflicts=('i-nex-git')
 backup=('etc/i-nex/Database/i2c/devices.json'
