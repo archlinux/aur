@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=xiphos-git
-pkgver=4.2.1
+pkgver=4.2.1.r2.gffd7b7c
 pkgrel=1
 epoch=1
 pkgdesc='A Bible study tool for GTK3'
@@ -11,7 +11,6 @@ url='http://xiphos.org'
 license=('GPL2')
 depends=('biblesync'
          'gtkhtml4'
-         'libbiblesync.so'
          'minizip'
          'sword'
          'webkit2gtk')
