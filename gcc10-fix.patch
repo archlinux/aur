@@ -1,0 +1,10 @@
+--- intel-vaapi-driver/src/gen9_hevc_enc_kernels_binary.h       2020-05-26 23:45:29.954037625 +0100
++++ intel-vaapi-driver-new/src/gen9_hevc_enc_kernels_binary.h   2020-05-26 23:44:08.706934073 +0100
+@@ -31,6 +31,6 @@
+ 
+ #define GEN9_HEVC_ENC_KERNEL_SIZE 149296
+ 
+-const unsigned int gen9_hevc_encoder_kernels[GEN9_HEVC_ENC_KERNEL_SIZE];
++extern const unsigned int gen9_hevc_encoder_kernels[GEN9_HEVC_ENC_KERNEL_SIZE];
+ 
+ #endif
