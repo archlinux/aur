@@ -1,14 +1,20 @@
 pkgbase = penlog
-	pkgdesc = Tooling around the penlog logging format
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Fraunhofer-AISEC/penlog
 	arch = x86_64
-	license = GPL
 	makedepends = go
 	makedepends = asciidoctor
-	source = penlog-0.1.0.tar.gz::https://github.com/Fraunhofer-AISEC/penlog/archive/v0.1.0.tar.gz
-	sha256sums = 49bbacce09a32cd9c66e8054374456adbc79b8592312f82dda519238c1607bcf
+	makedepends = python-setuptools
+	source = penlog-0.1.1.tar.gz::https://github.com/Fraunhofer-AISEC/penlog/archive/v0.1.1.tar.gz
+	sha256sums = 0e971b6166c830459dd68b8ce05b28ea66b7a3c2db7305b428b0728fcd50c632
 
 pkgname = penlog
+	pkgdesc = Tooling around the penlog logging format
+	license = GPL
+
+pkgname = python-penlog
+	pkgdesc = A python library implementing the penlog format
+	arch = any
+	depends = python
 
