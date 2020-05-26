@@ -1,7 +1,7 @@
 pkgbase = srfetch
 	pkgdesc = This is modified neofetch script, only for me.
 	pkgver = 7.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gitlab.com/justanoobcoder/srfetch.git
 	arch = any
 	license = MIT
