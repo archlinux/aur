@@ -2,7 +2,7 @@
 # Sat May  22 10:19:33 UTC 2020
 pkgbase = flac-git
 	pkgver = v1.3.3.ce6dd6b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://xiph.org/flac/
 	arch = x86_64
 	arch = aarch64
@@ -18,6 +18,7 @@ pkgbase = flac-git
 
 pkgname = flac-git
 	pkgdesc = Free Lossless Audio Codec (git version)
+	provides = flac
 	provides = libFLAC.so
 	provides = libFLAC++.so
 	conflicts = flac
