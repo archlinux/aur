@@ -1,7 +1,7 @@
 # Maintainer: FACT-Finder <ff-dev@omikron.net>
 
 pkgname=snage
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 pkgdesc="A tool for managing change logs."
 arch=(any)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('yarn')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FACT-Finder/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('59fe8b5d74d431936ddf5bbea81a42cfe7ac5618e2a2619323a2583949006211')
+sha256sums=('64e9422097c2485b31c0af5f856470af129af203ffdeb7981e3dbdf4bb3e5260')
 options=(!strip)
 
 package() {
@@ -20,7 +20,7 @@ package() {
 
   install -d "$pkgdir/usr/lib/$pkgname"
   cd "$pkgdir/usr/lib/$pkgname"
-  cp -a "$srcdir/$pkgname-$pkgver/packages/snage/build/." .
+  cp -a "$srcdir/$pkgname-$pkgver/packages/snage/build/npm/." .
 
   chmod +x "snage.js"
 
