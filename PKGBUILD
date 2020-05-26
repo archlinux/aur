@@ -17,7 +17,8 @@ depends=("yay"
         "glslang-sparzz-git")
 makedepends=("cmake"
             "git"
-            "make")
+            "make"
+            "vulkan-headers-sparzz-git")
 checkdepends=()
 optdepends=()
 provides=(vulkan-extensionlayer-sparzz-git)
@@ -38,6 +39,6 @@ validpgpkeys=()
 
 
 package() {
-	cmake Vulkan-ExtensionLayer
+	cmake -DVULKAN_HEADERS_INSTALL_DIR=/usr/local/include/vulkan -DVULKAN_REGISTRY_INSTALL_DIR=/usr/local/share/vulkan/registry Vulkan-ExtensionLayer
 	make DESTDIR="$pkgdir" install
 }
