@@ -1,5 +1,8 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
+# Before running makepkg, you must do this (as normal user):
+# curl https://getfedora.org/static/fedora.gpg | gpg --import
+
 _pkgname=fcct
 pkgname=fcct-bin
 pkgver=0.5.0
