@@ -7,3 +7,12 @@
  
    onMessageFromBrowserWindow('open-link', (link) => {
      shell.openExternal(link).catch((err) => {
+@@ -377,7 +377,7 @@
+ 
+   onMessageFromBrowserWindow('set-log-path', () => {
+     dialog
+-      .showOpenDialog({properties: ['openFile'], filters: [{name: 'output_*', extensions: ['txt']}]})
++      .showOpenDialog({properties: ['openFile'], filters: [{name: 'Player', extensions: ['log']}]})
+       .then((log) => {
+         if (!log.canceled && log.filePaths[0]) {
+           settingsStore.get().logPath = log.filePaths[0];
