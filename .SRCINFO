@@ -1,7 +1,7 @@
 pkgbase = lib32-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (32 bit)
-	pkgver = 4.2.2
-	pkgrel = 7
+	pkgver = 4.2.3
+	pkgrel = 1
 	epoch = 1
 	url = http://ffmpeg.org/
 	arch = x86_64
@@ -67,7 +67,7 @@ pkgbase = lib32-ffmpeg
 	provides = libpostproc.so
 	provides = libswresample.so
 	provides = libswscale.so
-	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=n4.2.2
+	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=n4.2.3
 	source = vmaf-model-path.patch
 	validpgpkeys = FCF986EA15E6E293A5644F10B4322F04D67658D8
 	sha256sums = SKIP

@@ -6,8 +6,8 @@
 
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
-pkgver=4.2.2
-pkgrel=7
+pkgver=4.2.3
+pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -103,7 +103,7 @@ prepare() {
   # Patching if needed
   git cherry-pick -n dc0806dd25882f41f6085c8356712f95fded56c7
 
-  patch -Np1 -i "${srcdir}/vmaf-model-path.patch"
+  patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
 }
 
 build() {
@@ -119,6 +119,7 @@ build() {
     --disable-debug \
     --disable-static \
     --disable-stripping \
+    --enable-avisynth \
     --enable-fontconfig \
     --enable-gmp \
     --enable-gnutls \
@@ -172,5 +173,13 @@ package() {
   cd ${_pkgbasename}
 
   make DESTDIR="${pkgdir}" install
-  rm -r "$pkgdir"/usr/{include,share,bin}
+
+  # Keep files in bin since this is not a library only package. 
+  # Use the same naming scheme as proposed in Arch's wiki:  https://wiki.archlinux.org/index.php/32-bit_package_guidelines
+  # which is "--program-suffix="-32" with Autoconf
+  for i in "${pkgdir}/usr/bin/"*; do
+    mv "$i" "$i"-32
+  done
+
+  rm -r "${pkgdir}"/usr/{include,share}
 }
