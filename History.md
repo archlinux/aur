@@ -1,4 +1,110 @@
 
+uuu_1.3.191 / 2020-05-08
+========================
+
+  * Added missed license header
+  * Workaround problem: some data pattern affect download at some win10
+  * Drop std:: from source files
+  * Make applicable function const and/or noexcept
+  * Make allocation ways enum scoped and var private
+  * Make more parameters const-ref
+  * Add override specifiers in buffer.cpp
+  * Replace all NULL by nullptr
+  * Reduce dependencies of fastboot.h
+  * Drop dependency of hidreport.h on trans.h
+  * Drop dependency of sdp.h on hidreport.h & trans.h
+  * Reduce include directives of zip.h
+  * Drop liberror.h include from sparse.h
+  * Drop dependency of cmd.h on config.h
+  * Minor polishing for tar.h
+  * Move Backfile declaration into own header
+  * Attempt at fixing compilation fail on Ubuntu 16.04
+  * Reduce includes of buffer.h
+  * Move non-trivial FileBuffer functions into source
+  * Move functions from trans.h to trans.cpp
+  * Move functions from sdp.h to sdp.cpp
+  * Move functions from zip.h to zip.cpp
+  * Minor polishing for sparse.h
+  * Move non-trivial SparseFile functions into source
+  * Move non-trivial functions from fat.h to fat.cpp
+  * Move non-trivial functions from cmd.h to cmd.cpp
+  * Add hipreport.cpp to VS files
+  * Parameter type of HIDReport::set_out_package_size
+  * Unify str->unsigned conversion functions
+  * Minor polishing for HIDReport
+  * Polish HIDReport header
+  * Reduce HIDReport variable accessibility
+  * Make use of modern initialization to drop init fun
+  * Remove HIDReport default constructor
+  * Move non-trivial HIDReport functions to source
+  * Silence clang code model warnings
+  * Add and use safe str->uint16_t conversion function
+  * Get rid of warnings concerning terminal color strs
+  * nand:  fix fail if uboot have not defined nandfit_part
+  * update 7D ROM free memory address
+
+uuu_1.3.171 / 2020-04-20
+========================
+
+  * skip build when create tag
+
+uuu_1.3.169 / 2020-04-20
+========================
+
+  * fix directory structure in tarbal
+
+uuu_1.3.167 / 2020-04-15
+========================
+
+  * Added zip support
+  * remove reduntant uuu-source
+  * use name uuu_source-<version number>.tar.gz
+  * Added deploy source.tar.gz
+  * add .tarball_version to source tar
+  * Fixed missed HEAD
+  * First try create tar.gz by CI system
+  * Fix compiler error on Windows
+  * Use constexpr variables instead of preprocessor
+  * Improve headers and use forward declaration
+  * Use default member initializer and member ini list
+  * Make parameter const-ref
+  * Modernize SDPSCmd
+  * Make g_RomInfo a constexpr std::array
+  * Constify cmd members of Fastboot command classes
+  * Modernize further Fastboot CmdBase descendants
+  * Modernize FastBoot
+  * Various modernizations to configuration impl
+  * Minor adjustments for configuration classes
+  * Make const-ref where applicable
+  * Modernize CmdBase descendants in cmd.h
+  * Modernize TransBase and its descendants
+  * Modernize CmdBase
+  * Make Param's type enumeration scoped
+  * Modernize Param
+  * Modernize CmdCtx and CmdUsbCtx
+  * Modernize ConfigItem
+  * Modernize EPInfo
+  * Set CMAKE_CXX_STANDARD to "14"
+  * libuuu: add missing fastboot Boundary Devices IDs
+
+uuu_1.3.154 / 2020-03-13
+========================
+
+  * libuuu: allow to build without git
+  * libuuu: fastboot: use sparse only if max-download-size is available
+  * libuuu: fastboot: fix oem command separator
+  * Fix crash when download bz2 file
+  * fix linux build failure because UINT64
+  * ffu basic download
+  * libuuu: add Boundary Devices USB ids
+  * Added basic fastboot logical partition support
+  * README: add libssl-dev to required packages
+
+uuu_1.3.136 / 2020-02-19
+========================
+
+  * Batter handle image which included V2X containter
+
 uuu_1.3.134 / 2020-02-17
 ========================
 

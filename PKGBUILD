@@ -1,8 +1,8 @@
 # Maintainer: Theowhy <aur.theowhy@shizoku.fr>
 # Contributor: jpkotta
 pkgname=mfgtools
-pkgver=1.3.134
-pkgrel=2
+pkgver=1.3.191
+pkgrel=1
 pkgdesc="Freescale/NXP I.MX Chip image deploy tools"
 arch=(x86_64)
 url="https://github.com/NXPmicro/mfgtools"
