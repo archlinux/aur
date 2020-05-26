@@ -5,7 +5,7 @@
 
 # Maintainer: sparzz
 pkgname=vulkan-validation-layers-git
-pkgver=1.2.140.2020.05.25
+pkgver=1.2.140.2020.05.26
 pkgrel=1
 epoch=
 pkgdesc="vulkan validaiton layers build from source"
