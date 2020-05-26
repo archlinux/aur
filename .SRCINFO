@@ -1,0 +1,24 @@
+pkgbase = kdisplay-git
+	pkgdesc = App and daemon for display managing by KWinFT project, forked from KDE's KScreen
+	pkgver = r1278.6622e4c
+	pkgrel = 1
+	url = https://gitlab.com/kwinft/kdisplay
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = plasma-framework
+	makedepends = kcmutils
+	depends = disman-git
+	depends = kdeclarative
+	depends = qt5-graphicaleffects
+	depends = qt5-sensors
+	provides = kdisplay
+	conflicts = kdisplay
+	conflicts = kscreen
+	replaces = kscreen
+	source = git+https://gitlab.com/kwinft/kdisplay.git
+	md5sums = SKIP
+
+pkgname = kdisplay-git
+
