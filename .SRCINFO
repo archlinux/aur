@@ -10,7 +10,7 @@ pkgbase = dxtime
 	makedepends = cmake
 	depends = wxgtk2
 	source = http://downloads.sourceforge.net/sourceforge/dxtime/dxtime-1.2.2.tar.gz
-	md5sums = 48828808460fe72eeee16677bc8a5999
+	md5sums = b4d8d6e9935e4c996bd371042fe91838
 
 pkgname = dxtime
 

@@ -11,7 +11,7 @@ depends=('wxgtk2')
 makedepends=('cmake')
 install=${pkgname}.install
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('48828808460fe72eeee16677bc8a5999')
+md5sums=('b4d8d6e9935e4c996bd371042fe91838')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
