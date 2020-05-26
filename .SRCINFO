@@ -1,6 +1,6 @@
 pkgbase = vulkan-loader-git
 	pkgdesc = Vulkan loader build from source. Depends on vulkan headers from my aur repo. Even if the default vulkan-headers is installed on your system this build will take my package automaticly
-	pkgver = 1.2.140.2020.05.25
+	pkgver = 1.2.140_final_1
 	pkgrel = 1
 	arch = x86_64
 	license = Apache
