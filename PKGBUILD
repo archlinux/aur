@@ -1,8 +1,8 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 pkgname=yade
 pkgver=2020.01a
-pkgrel=2
-pkgdesc="An Open Source Discrete Element Method"
+pkgrel=3
+pkgdesc="Yade project, free software for particle based simulations"
 arch=("x86_64")
 url='https://yade-dem.org/doc/index.html'
 license=('GPL2')
@@ -45,16 +45,19 @@ prepare(){
     cd "$srcdir"
     mv trunk-${pkgver} trunk 
     mkdir build 
+    # correct cuda and clp path
+    sed -i 's|/usr/local/cuda/lib64|/opt/cuda/lib64|g' trunk/cMake/FindCuBlas.cmake
+    sed -i 's|/usr/lib/x86_64-linux-gnu|/usr/lib|g' trunk/cMake/FindCLP.cmake
 }
 build(){
     # WARNING: Package contains reference to $srcdir, but all to "$srcdir"/trunk, I think it's safe. 
     # Anyway, I still want to deal with this, but need help.
-    cd "$srcdir"/build
+    cd build
     cmake ../trunk \
-        -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
-        -DENABLE_SPH=ON   -DENABLE_PROFILING=ON  -DCHOLMOD_GPU=ON -DENABLE_PYTHON3=ON -DENABLE_LIQMIGRATION=ON -DENABLE_MASK_ARBITRARY=ON  -DNOSUFFIX=ON \
-        -DENABLE_USEFUL_ERRORS=OFF # or build will fail！
-    make -j10
+        -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DNOSUFFIX=ON -DENABLE_PYTHON3=ON \
+        -DENABLE_SPH=ON   -DENABLE_PROFILING=ON  -DCHOLMOD_GPU=OFF  -DENABLE_LIQMIGRATION=ON -DENABLE_MASK_ARBITRARY=ON -DENABLE_DEFORM=ON -DVECTORIZE=ON -DENABLE_OAR=ON \
+        -DENABLE_USEFUL_ERRORS=OFF -DENABLE_POTENTIAL_BLOCKS=OFF # or build will fail！ comment the line above to compile with almost default configuration
+    make
 }
 
 package(){

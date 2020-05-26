@@ -1,7 +1,7 @@
 pkgbase = yade
-	pkgdesc = An Open Source Discrete Element Method
+	pkgdesc = Yade project, free software for particle based simulations
 	pkgver = 2020.01a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://yade-dem.org/doc/index.html
 	arch = x86_64
 	license = GPL2
