@@ -6,7 +6,7 @@
 # Contributor: The_Decryptor
 
 pkgname=h2o-git
-pkgver=2.2.0.2479
+pkgver=2.2.0.2990
 pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ sha256sums=('SKIP'
 '4c61bfb0faca87219ea587326c467b95acb25555b53d1a421ffa3c8a9296ee2c'
 'c00c878e8bedb3d9d5440fc9f58d349e1004612f4c349326cb06bbb1fa6bec27'
 '042f965e182b80693015839a9d0278ae73fae5d5d09d8bf6d0e6a39a8c4393bd'
-'643b270ab0ad5854b69647e416d1582d457fa1ef6aec90ee961e275342dcfda4'
+'73cbf81366c075fb89795ca376f82b82930c13e59da025c5c32d9e44c231f13e'
 'ca9da403a8cdbd2594ba1b7261af119e56772d71ebbf0045bf7aa2d07d88118b'
 '7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62')
 backup=('etc/h2o.conf')

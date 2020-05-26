@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 02381eb7..762026b7 100644
+index 41832bf1..56bdad26 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -166,7 +166,6 @@ INCLUDE_DIRECTORIES(
+@@ -174,7 +174,6 @@ INCLUDE_DIRECTORIES(
      deps/picotls/deps/micro-ecc
      deps/picotls/include
      deps/quicly/include
@@ -10,7 +10,7 @@ index 02381eb7..762026b7 100644
      deps/yoml
      ${CMAKE_CURRENT_BINARY_DIR})
  
-@@ -236,16 +235,6 @@ ENDIF(NOT CMAKE_BUILD_TYPE)
+@@ -266,16 +265,6 @@ ENDIF(NOT CMAKE_BUILD_TYPE)
  SET(CMAKE_C_FLAGS_DEBUG  "-O0")
  SET(CMAKE_C_FLAGS_RELEASE  "-O2")
  
@@ -26,16 +26,17 @@ index 02381eb7..762026b7 100644
 -
  SET(BROTLI_SOURCE_FILES
      deps/brotli/c/common/dictionary.c
-     deps/brotli/c/enc/backward_references.c
-@@ -265,6 +254,7 @@ SET(BROTLI_SOURCE_FILES
+     deps/brotli/c/dec/bit_reader.c
+@@ -299,6 +288,8 @@ SET(BROTLI_SOURCE_FILES
      deps/brotli/c/enc/metablock.c
      deps/brotli/c/enc/static_dict.c
      deps/brotli/c/enc/utf8_util.c
 +    deps/brotli/c/enc/encoder_dict.c
++    deps/brotli/c/common/transform.c
      lib/handler/compress/brotli.c)
  
  SET(LIB_SOURCE_FILES
-@@ -410,7 +400,6 @@ ENDIF ()
+@@ -445,7 +436,6 @@ ENDIF ()
  
  SET(UNIT_TEST_SOURCE_FILES
      ${LIB_SOURCE_FILES}
@@ -43,7 +44,7 @@ index 02381eb7..762026b7 100644
      ${BROTLI_SOURCE_FILES}
      deps/picotest/picotest.c
      t/00unit/test.c
-@@ -477,7 +466,6 @@ LIST(REMOVE_ITEM UNIT_TEST_SOURCE_FILES
+@@ -514,7 +504,6 @@ LIST(REMOVE_ITEM UNIT_TEST_SOURCE_FILES
  
  SET(FUZZED_SOURCE_FILES
      ${LIB_SOURCE_FILES}
@@ -51,7 +52,7 @@ index 02381eb7..762026b7 100644
      ${BROTLI_SOURCE_FILES})
  
  SET(EXTRA_LIBS ${EXTRA_LIBS} m ${CMAKE_THREAD_LIBS_INIT})
-@@ -593,7 +581,6 @@ ENDIF()
+@@ -638,7 +627,6 @@ ENDIF()
  # standalone server directly links to libh2o using evloop
  SET(STANDALONE_SOURCE_FILES
      ${LIB_SOURCE_FILES}
@@ -59,7 +60,7 @@ index 02381eb7..762026b7 100644
      ${BROTLI_SOURCE_FILES}
      deps/neverbleed/neverbleed.c
      src/main.c
-@@ -621,7 +608,7 @@ ENDIF (WITH_MRUBY)
+@@ -666,7 +654,7 @@ ENDIF (WITH_MRUBY)
  ADD_EXECUTABLE(h2o ${STANDALONE_SOURCE_FILES})
  SET_TARGET_PROPERTIES(h2o PROPERTIES COMPILE_FLAGS ${STANDALONE_COMPILE_FLAGS})
  TARGET_INCLUDE_DIRECTORIES(h2o PUBLIC ${OPENSSL_INCLUDE_DIR})
