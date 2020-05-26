@@ -1,6 +1,6 @@
 pkgbase = transmission-cmake
-	pkgver = 2.94
-	pkgrel = 3
+	pkgver = 3.00
+	pkgrel = 1
 	url = http://www.transmissionbt.com/
 	arch = i686
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = transmission-cmake
 	makedepends = libutp
 	makedepends = libnatpmp
 	options = !buildflags
-	source = git+https://github.com/transmission/transmission#tag=2.94
+	source = git+https://github.com/transmission/transmission#tag=3.00
 	source = transmission-cmake-cli.sysusers
 	source = transmission-cmake-cli.tmpfiles
 	sha256sums = SKIP

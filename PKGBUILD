@@ -1,8 +1,8 @@
 # Maintainer : Solomon Choina <shlomochoina@gmail.com>
 pkgbase=transmission-cmake
 pkgname=(transmission-cmake-cli transmission-cmake-gtk transmission-cmake-qt libtransmission)
-pkgver=2.94
-pkgrel=3
+pkgver=3.00
+pkgrel=1
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url="http://www.transmissionbt.com/"
 license=(MIT)
@@ -18,6 +18,7 @@ sha256sums=('SKIP'
 prepare() {
   cd transmission
   sed -i '/^Icon=/ s/$/-qt/' qt/transmission-qt.desktop
+  git submodule update --init --recursive
   cd ..
   if [[ -d build ]]; then
     rm -rf build
@@ -28,7 +29,7 @@ prepare() {
 build() {
   cd build
   
-  cmake ../transmission -DCMAKE_INSTALL_PREFIX="/usr" -DLIB_INSTALL_DIR='/usr/lib' -DCMAKE_INSTAL_LIBDIR="/usr/lib" -DINSTALL_LIB=ON -DENABLE_UTP=ON  -DBUILD_TESTING=ON -DUSE_QT5=ON -DENABLE_CLI=ON -DENABLE_DAEMON=ON  -DCMAKE_BUILD_TYPE=Release -DUSE_SYSTEM_UTP=ON
+  cmake ../transmission -DCMAKE_INSTALL_PREFIX="/usr" -DLIB_INSTALL_DIR='/usr/lib' -DCMAKE_INSTAL_LIBDIR="/usr/lib" -DINSTALL_LIB=ON -DENABLE_UTP=ON  -DENABLE_QT=ON -DENABLE_CLI=ON -DENABLE_DAEMON=ON  -DCMAKE_BUILD_TYPE=Release -DUSE_SYSTEM_UTP=ON
   make
 }
 
