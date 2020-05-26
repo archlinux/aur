@@ -1,7 +1,7 @@
 pkgbase = vibrant
 	pkgdesc = A simple library to adjust color saturation of X11 outputs.
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Scrumplex/vibrant
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = vibrant
 	depends = libdrm
 	depends = libxrandr
 	provides = vibrant
+	provides = libvibrant.so=0-64
 	conflicts = vibrant
 	source = vibrant::git+https://gitlab.com/Scrumplex/vibrant.git#tag=0.0.2
 	sha512sums = SKIP
