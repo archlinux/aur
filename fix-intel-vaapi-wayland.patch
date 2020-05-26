@@ -1,0 +1,21 @@
+--- a/ui/gl/gl_image_native_pixmap.cc
++++ b/ui/gl/gl_image_native_pixmap.cc
+@@ -288,6 +288,8 @@
+                                std::move(scoped_fd));
+   }
+
++  handle.planes[0].size = size_.GetArea();
++
+   return handle;
+ #endif  // !defined(OS_FUCHSIA)
+ }
+--- a/gpu/command_buffer/service/error_state.cc
++++ b/gpu/command_buffer/service/error_state.cc
+@@ -115,6 +115,8 @@
+     // buffer.
+     error = GL_NO_ERROR;
+   }
++  if (error == GL_INVALID_ENUM)
++    error = GL_NO_ERROR;
+   return error;
+ }
