@@ -13,7 +13,7 @@ depends=('python')
 optdepends=()
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('6ed00e421e4ff5ebe1bb91b0add168ef89cf2afbdff1e0cef91633dd338569c8')
+sha256sums=('30b90cf43da5ed1a8cd08bb23ee90fb9930b534856672906541cac014fed1baf')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
