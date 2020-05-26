@@ -1,12 +1,14 @@
 pkgbase = vulkan-headers-sparzz-git
-	pkgdesc = vulkan headers build from source
-	pkgver = 1.2.141.2020.05.25
+	pkgdesc = Vulkan Headers build from source. My oder Vulkan packages from the AUR depends on this packages. For install instruction and the order of install visit my GitHub page ----> https://github.com/sparzz/vulkan-arch-aur
+	pkgver = 1.2.141.2020.05.26
 	pkgrel = 1
-	url = https://github.com/KhronosGroup/Vulkan-Headers.git
+	url = https://github.com/sparzz/vulkan-arch-aur
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	makedepends = git
+	makedepends = glslang-sparzz-git
+	depends = yay
 	provides = vulkan-headers-sparzz-git
 	source = Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	md5sums = SKIP
