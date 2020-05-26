@@ -13,9 +13,9 @@ url='http://www.canon-europe.com/Support/Consumer_Products/products/Fax__Multifu
 arch=('i686' 'x86_64')
 license=('custom')
 install="${pkgname}.install"
-if [[ ${CARCH} = 'x86_64' ]]; then
+if [ ${CARCH} = 'x86_64' ]; then
   depends=('lib32-popt' 'lib32-libpng12' 'lib32-libusb-compat' 'lib32-libtiff4' 'lib32-libxml2' 'lib32-gtk2' 'cups')
-elif [[ ${CARCH} = 'i686' ]]; then
+elif [ ${CARCH} = 'i686' ]; then
   depends=('popt' 'libpng12' 'libusb-compat' 'libtiff4' 'libxml2' 'gtk2' 'cups')
 fi
 makedepends=('deb2targz' 'sed')
