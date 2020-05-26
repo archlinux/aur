@@ -11,7 +11,7 @@ license=('custom:CC0')
 provides=('mkp224o')
 depends=('libsodium')
 
-source=(https://github.com/cathugger/${pkgname}/archive/v${pkgver}.tar.gz)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cathugger/${pkgname}/archive/v${pkgver}.tar.gz")
 
 sha256sums=('1bdc2b838ed53d62f62652e0b46d2632fad7ed703c65a00a96ad1b4547d74173')
 
