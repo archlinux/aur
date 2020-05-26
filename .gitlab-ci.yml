@@ -4,7 +4,7 @@ mksrcinfo:
   before_script:
     - groupadd -r makepkg
     - useradd -u 1000 -g makepkg -m makepkg
-    - pacman -Sy --noconfirm base base-devel
+    - pacman -Sy --noconfirm base base-devel git
   script:
     - su makepkg -- makepkg --printsrcinfo
 
