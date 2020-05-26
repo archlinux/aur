@@ -1,6 +1,6 @@
 pkgname=mtgaprotracker
 _pkgname=mtgap
-pkgver=2.0.46
+pkgver=2.0.47
 pkgrel=1
 pkgdesc="Automatically uploads collection, decks, battles, draft and inventory from your Magic: The Gathering Arena client"
 
@@ -14,11 +14,11 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Razviar/mtgap/archive/v
 	"home.html.patch"
 	"ipc_main.ts.patch"
 	"main_window.ts.patch")
-sha256sums=('cad234e5c691b5aed78b67699eb6be5194bb2ea5d2fc442341cf608debf70967' 
+sha256sums=('aa0fd34dbb763c621b7e8dbf1353c43bcfbfda887b7f0d9b671f7e0fe231cdf3' 
 	    '93dfa25b7da8394dce436a67b600bc06bb7576daa62bdabe6e48f2bf8c9e1436'
 	    '145aa9f5ccb104f5b93cccbe5221755299abcdf02d4cd4d635e5038bfca63048'
 	    '5edc0ef1c18ee3f92487024460a60193834bb2fdd23b1f7b03d0acdd460f41a3'
-	    '5aa2cb1d6d6fda1cb8be156f7a1e7419c5f14b7693a30d069201558689787e2c'
+	    '744f7e4ffc03307a1c994acb2de079cecd4085e0ed540365406a4115c0d507db'
 	    '424fc6ae2b2c824744c25e02f58ac0ec6f63f43c168e022dccd75d8974eb7643')
 
 prepare() {
@@ -32,15 +32,15 @@ prepare() {
   yarn install
   yarn add @electron-forge/cli
   yarn add @electron-forge/plugin-webpack
+  patch -u src/windows/home/home.html < "${srcdir}/home.html.patch"
+  patch -u src/app/ipc_main.ts < "${srcdir}/ipc_main.ts.patch"
+  patch -u src/app/main_window.ts < "${srcdir}/main_window.ts.patch"
   
 
 }
 
 build(){
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	patch -u src/windows/home/home.html < "${srcdir}/home.html.patch"
-	patch -u src/app/ipc_main.ts < "${srcdir}/ipc_main.ts.patch"
-	patch -u src/app/main_window.ts < "${srcdir}/main_window.ts.patch"
 	yarn run package 
 }
 
