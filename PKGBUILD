@@ -7,7 +7,7 @@ pkgname=zsh-theme-powerlevel10k
 # Whenever pkgver is updated, _libgit2ver below must also be updated.
 pkgver=1.10.1
 _libgit2ver="tag-005f77dca6dbe8788e55139fa1199fc94cc04f9a"
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience."
 arch=('x86_64')
 url='https://github.com/romkatv/powerlevel10k'
@@ -57,18 +57,20 @@ build() {
 package() {
   cd "$srcdir/powerlevel10k-${pkgver}"
   find . -type f -exec install -D '{}' "$pkgdir/usr/share/zsh-theme-powerlevel10k/{}" ';'
+  # delete unnecessary files. See also: https://bugs.archlinux.org/task/66737
   rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/obj"
   rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/.gitignore"
   rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/.gitattributes"
   rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/src"
   rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/build"
-  rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/build.info"
-  rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/install"
-  rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/install.info"
   rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/deps"
   rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/Makefile"
   rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/mbuild"
+  # unfortunetaly this is necessary. Otherwise gitstatus/install will try to
+  # sideload the gitstatus binary and place it in $HOME/.cache/gitstatus/
   mv "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/usrbin/"{gitstatusd,gitstatusd-linux-x86_64}
+  # make sure to apply zsh compiling on files in pkgdir
+  cd "${pkgdir}/usr/share/zsh-theme-powerlevel10k/"
   for file in *.zsh-theme internal/*.zsh gitstatus/*.zsh gitstatus/install; do
     zsh -fc "emulate zsh -o no_aliases && zcompile -R -- $file.zwc $file"
   done
