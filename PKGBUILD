@@ -13,7 +13,13 @@ arch=(x86_64)
 url=""
 license=('Apache')
 groups=()
-depends=()
+depends=("vulkan-headers-sparzz-git"
+        "vulkan-extensionlayer-sparzz-git"
+        "spirv-headers-sparzz-git"
+        "glslang-sparzz-git"
+        "make"
+        "cmake"
+        "git")
 makedepends=("cmake"
             "git"
             "vulkan-headers-sparzz-git")
@@ -37,6 +43,6 @@ validpgpkeys=()
 
 
 package() {
-	cmake Vulkan-Loader
+	cmake -DVULKAN_HEADERS_INSTALL_DIR=/usr/local/share/vulkan/registry -DVULKAN_HEADERS_INSTALL_DIR=/usr/local/include/vulkan -DGLSLANG_INSTALL_DIR=/usr/local/bin -DSPIRV_HEADERS_INSTALL_DIR=/usr/local/include/spirv Vulkan-Loader
 	make DESTDIR="$pkgdir" install
 }
