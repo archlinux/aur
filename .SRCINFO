@@ -1,7 +1,7 @@
 pkgbase = byte
 	pkgdesc = A Music Player designed for elementary OS
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/alainm23/byte
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,8 @@ pkgbase = byte
 	depends = gst-plugins-base-libs
 	depends = gtk-theme-elementary
 	depends = taglib
-	source = https://github.com/alainm23/byte/archive/0.3.1.tar.gz
-	sha256sums = a55449f7869b999517495154bdb31474e9b04c1e30ba8f8b8b0f6eef6306527c
+	source = byte-0.4.1.tar.gz::https://github.com/alainm23/byte/archive/0.4.1.tar.gz
+	sha256sums = c5b06be1d53ebcc42e8a996a6ea96f021a90b58fc128d6f5a9992fa57b8c9618
 
 pkgname = byte
+
