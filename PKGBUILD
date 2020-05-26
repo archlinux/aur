@@ -2,7 +2,7 @@
 
 pkgbase=python-confight
 pkgname=(python-confight python2-confight)
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='One simple way of parsing configs.'
 arch=('any')
@@ -14,7 +14,7 @@ source=(
   "LICENSE.txt"
 )
 md5sums=(
-  '15ded1a84915cb65201425e1679bfbdf'
+  '286c815e2ff36d1c74382e464c5d2d6d'
   'b62f1a403a498f2bc2240d7e85eceafe'
 )
 
