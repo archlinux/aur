@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "${_pkgname}"
   ./autogen.sh --prefix=/usr \
-    --with-cinnamon=4.4 \
+    --with-cinnamon=4.6 \
     --with-gnome-shell=3.36 \
     --with-gtk3=3.24
   make
@@ -33,7 +33,7 @@ build() {
 
   cd "${_pkgname}-solid"
   ./autogen.sh --prefix=/usr \
-    --with-cinnamon=4.4 \
+    --with-cinnamon=4.6 \
     --with-gnome-shell=3.36 \
     --with-gtk3=3.24 \
     --disable-transparency
