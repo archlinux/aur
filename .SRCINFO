@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-rosbag
 	pkgdesc = ROS - This is a set of tools for recording from and playing back to ROS topics.
-	pkgver = 1.15.4
+	pkgver = 1.15.6
 	pkgrel = 1
 	url = https://wiki.ros.org/rosbag
 	arch = i686
@@ -35,9 +35,9 @@ pkgbase = ros-noetic-rosbag
 	depends = python-rospkg
 	depends = boost
 	depends = python-gnupg
-	depends = python-crypto
-	source = ros-noetic-rosbag-1.15.4.tar.gz::https://github.com/ros/ros_comm/archive/1.15.4.tar.gz
-	sha256sums = d5c96a81e0c8554b77666bca5dcc68e03083a761a117038ff9b65f9643751c9e
+	depends = python-pycryptodomex
+	source = ros-noetic-rosbag-1.15.6.tar.gz::https://github.com/ros/ros_comm/archive/1.15.6.tar.gz
+	sha256sums = 0a6322176111088f2bfdc26b34189b5a5f1b476a925c08711cc7aaa13ac09de6
 
 pkgname = ros-noetic-rosbag
 
