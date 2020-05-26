@@ -2,7 +2,7 @@
 
 pkgname=snage-bin
 pkgver=0.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for managing change logs."
 arch=(any)
 url="https://github.com/FACT-Finder/snage"
