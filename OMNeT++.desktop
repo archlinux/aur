@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=OMNeT++
+Coment=OMNeT++ Discrete Event Simulator. OMNeT++ is an extensible, modular, component-based C++ simulation library and framework, primarily for building network simulators: QT version
+Exec=omnetpp
+Icon=/opt/omnetpp/doc/manual/omnetpp.png
+Terminal=false
+StartupNotify=false
+Categories=Development;IDE;
