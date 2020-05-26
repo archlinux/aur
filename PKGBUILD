@@ -1,7 +1,7 @@
 # Maintainer: Steven Huang <s@stvhuang.me>
 pkgname=libtorch
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PyTorch C++ API"
 arch=('x86_64')
 url="https://pytorch.org/cppdocs/"
@@ -20,7 +20,7 @@ sha256sums=(
     '0efdd4e709ab11088fa75f0501c19b0e294404231442bab1d1fb953924feb6b5'
 )
 
-prepare () {
+prepare() {
     # https://github.com/pytorch/pytorch/issues/15476
     sed -i -e 's/\/usr\/local\/cuda/\/opt\/cuda/g' ${srcdir}/libtorch/share/cmake/Caffe2/Caffe2Targets.cmake
 }
