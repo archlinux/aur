@@ -5,7 +5,7 @@
 
 # Maintainer: sparzz
 pkgname=vulkan-tools-git
-pkgver=1.2.140.2020.05.25
+pkgver=1.2.140_final_1
 pkgrel=1
 epoch=
 pkgdesc="vulkan tools build directly from KhronosGroup github. This build provide the most recent vulkan-tools package"
@@ -36,6 +36,16 @@ validpgpkeys=()
 
 
 package() {
-	cmake Vulkan-Tools
+	cmake setuo Vulkan-Tools \
+	-DVULKAN_VALIDATIONLAYERS_INSTALL_DIR=/usr/local/lib \
+	-DVULKAN_VALIDATIONLAYERS_INSTALL_DIR=/usr/local/share/vulkan/explicit_layer.d \
+	-DSPIRV_HEADERS_INSTALL_DIR=/usr/local/lib/cmake/SPIRV-Headers \
+	-DSPIRV_HEADERS_INSTALL_DIR=/usr/local/include/spirv \
+	-DVulkanRegistry_DIR=/usr/local/share/vulkan/registry \
+	-DVULKAN_LOADER_INSTALL_DIR=/usr/local/lib \
+	-DVULKAN_HEADERS_INSTALL_DIR=/usr/local/include/vulkan \
+	-DVULKAN_HEADERS_INSTALL_DIR=/usr/local/share/vulkan/registry \
+	-DGLSLANG_INSTALL_DIR=/usr/local/bin \
+	cmake configure Vulkan-Tools
 	make DESTDIR="$pkgdir" install
 }
