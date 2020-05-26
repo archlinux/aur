@@ -1,8 +1,8 @@
-# Maintainer: tytan652 <tytan652 at tytanium dot xyz>
+# Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=ffmpeg-ndi
 pkgver=4.2.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Complete solution to record, convert and stream audio and video with NDI added and enabled'
 arch=(x86_64)
 url=https://ffmpeg.org/
@@ -55,7 +55,9 @@ depends=(
   opus
   sdl2
   speex
+  srt
   v4l-utils
+  vmaf
   xz
   zlib
   ndi-sdk
@@ -69,6 +71,7 @@ makedepends=(
 optdepends=(
   'intel-media-sdk: Intel QuickSync support'
   'ladspa: LADSPA filters'
+  'nvidia-utils: Nvidia NVDEC/NVENC support'
 )
 provides=(
   ffmpeg
@@ -81,9 +84,12 @@ provides=(
   libswresample.so
   libswscale.so
 )
-conflicts=(ffmpeg)
-source=(git+https://framagit.org/tytan652/ffmpeg.git#tag=192d1d34eb3668fa27f433e96036340e1e5077a0)
-sha256sums=(SKIP)
+source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=192d1d34eb3668fa27f433e96036340e1e5077a0
+        vmaf-model-path.patch
+        0001-Revert-lavd-Remove-libndi_newtek.patch)
+sha256sums=('SKIP'
+            '8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d'
+            '7a6ac8aa7d4183b810d13a6c75e80f451c6efbf251589d89049e245b45fdb9ae')
 
 pkgver() {
   cd ffmpeg
@@ -95,7 +101,8 @@ prepare() {
   cd ffmpeg
 
   git cherry-pick -n dc0806dd25882f41f6085c8356712f95fded56c7
-  git cherry-pick -n 358caf006cdfd64225a552fb957a41a2d4e2a78b
+
+  patch -Np1 -i "${srcdir}/vmaf-model-path.patch"
 }
 
 build() {
@@ -131,10 +138,12 @@ build() {
     --enable-libpulse \
     --enable-libsoxr \
     --enable-libspeex \
+    --enable-libsrt \
     --enable-libssh \
     --enable-libtheora \
     --enable-libv4l2 \
     --enable-libvidstab \
+    --enable-libvmaf \
     --enable-libvorbis \
     --enable-libvpx \
     --enable-libwebp \

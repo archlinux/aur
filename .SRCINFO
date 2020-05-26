@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-ndi
 	pkgdesc = Complete solution to record, convert and stream audio and video with NDI added and enabled
 	pkgver = 4.2.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://ffmpeg.org/
 	arch = x86_64
 	license = GPL3
@@ -56,12 +56,15 @@ pkgbase = ffmpeg-ndi
 	depends = opus
 	depends = sdl2
 	depends = speex
+	depends = srt
 	depends = v4l-utils
+	depends = vmaf
 	depends = xz
 	depends = zlib
 	depends = ndi-sdk
 	optdepends = intel-media-sdk: Intel QuickSync support
 	optdepends = ladspa: LADSPA filters
+	optdepends = nvidia-utils: Nvidia NVDEC/NVENC support
 	provides = ffmpeg
 	provides = libavcodec.so
 	provides = libavdevice.so
@@ -71,9 +74,12 @@ pkgbase = ffmpeg-ndi
 	provides = libpostproc.so
 	provides = libswresample.so
 	provides = libswscale.so
-	conflicts = ffmpeg
-	source = git+https://framagit.org/tytan652/ffmpeg.git#tag=192d1d34eb3668fa27f433e96036340e1e5077a0
+	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=192d1d34eb3668fa27f433e96036340e1e5077a0
+	source = vmaf-model-path.patch
+	source = 0001-Revert-lavd-Remove-libndi_newtek.patch
 	sha256sums = SKIP
+	sha256sums = 8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d
+	sha256sums = 7a6ac8aa7d4183b810d13a6c75e80f451c6efbf251589d89049e245b45fdb9ae
 
 pkgname = ffmpeg-ndi
 

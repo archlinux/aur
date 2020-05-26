@@ -1,0 +1,918 @@
+From 52596633348aaeb49af0b9c0fc783264e318217a Mon Sep 17 00:00:00 2001
+From: tytan652 <tytan652@tytanium.xyz>
+Date: Tue, 26 May 2020 13:53:37 +0200
+Subject: [PATCH] Revert "lavd: Remove libndi_newtek"
+
+This reverts commit 4b32f8b3ebfa011fcc5991bcaa97c3f5b61b49ad.
+---
+ configure                          |   7 +
+ doc/indevs.texi                    |  65 ++++++
+ doc/outdevs.texi                   |  45 ++++
+ libavdevice/Makefile               |   4 +
+ libavdevice/alldevices.c           |   2 +
+ libavdevice/libndi_newtek_common.h |  30 +++
+ libavdevice/libndi_newtek_dec.c    | 342 +++++++++++++++++++++++++++++
+ libavdevice/libndi_newtek_enc.c    | 299 +++++++++++++++++++++++++
+ 8 files changed, 794 insertions(+)
+ create mode 100644 libavdevice/libndi_newtek_common.h
+ create mode 100644 libavdevice/libndi_newtek_dec.c
+ create mode 100644 libavdevice/libndi_newtek_enc.c
+
+diff --git a/configure b/configure
+index 34c2adb4a4..af23460bbb 100755
+--- a/configure
++++ b/configure
+@@ -298,6 +298,7 @@ External library support:
+   --enable-lv2             enable LV2 audio filtering [no]
+   --disable-lzma           disable lzma [autodetect]
+   --enable-decklink        enable Blackmagic DeckLink I/O support [no]
++  --enable-libndi_newtek   enable Newteck NDI I/O support [no]
+   --enable-mbedtls         enable mbedTLS, needed for https support
+                            if openssl, gnutls or libtls is not used [no]
+   --enable-mediacodec      enable Android MediaCodec support [no]
+@@ -1723,6 +1724,7 @@ EXTERNAL_LIBRARY_GPL_LIST="
+ 
+ EXTERNAL_LIBRARY_NONFREE_LIST="
+     decklink
++    libndi_newtek
+     libfdk_aac
+     openssl
+     libtls
+@@ -3317,6 +3319,10 @@ decklink_indev_extralibs="-lstdc++"
+ decklink_outdev_deps="decklink threads"
+ decklink_outdev_suggest="libklvanc"
+ decklink_outdev_extralibs="-lstdc++"
++libndi_newtek_indev_deps="libndi_newtek"
++libndi_newtek_indev_extralibs="-lndi"
++libndi_newtek_outdev_deps="libndi_newtek"
++libndi_newtek_outdev_extralibs="-lndi"
+ dshow_indev_deps="IBaseFilter"
+ dshow_indev_extralibs="-lpsapi -lole32 -lstrmiids -luuid -loleaut32 -lshlwapi"
+ fbdev_indev_deps="linux_fb_h"
+@@ -6177,6 +6183,7 @@ enabled cuda_nvcc         && { check_nvcc cuda_nvcc || die "ERROR: failed checki
+ enabled chromaprint       && require chromaprint chromaprint.h chromaprint_get_version -lchromaprint
+ enabled decklink          && { require_headers DeckLinkAPI.h &&
+                                { test_cpp_condition DeckLinkAPIVersion.h "BLACKMAGIC_DECKLINK_API_VERSION >= 0x0a090500" || die "ERROR: Decklink API version must be >= 10.9.5."; } }
++enabled libndi_newtek     && require_headers Processing.NDI.Lib.h
+ enabled frei0r            && require_headers "frei0r.h dlfcn.h"
+ enabled gmp               && require gmp gmp.h mpz_export -lgmp
+ enabled gnutls            && require_pkg_config gnutls gnutls gnutls/gnutls.h gnutls_global_init
+diff --git a/doc/indevs.texi b/doc/indevs.texi
+index 14595774f3..9f67410ced 100644
+--- a/doc/indevs.texi
++++ b/doc/indevs.texi
+@@ -1083,6 +1083,71 @@ Set the video size given as a string such as @code{640x480} or @code{hd720}.
+ Default is @code{qvga}.
+ @end table
+ 
++@section libndi_newtek
++
++The libndi_newtek input device provides capture capabilities for using NDI (Network
++Device Interface, standard created by NewTek).
++
++Input filename is a NDI source name that could be found by sending -find_sources 1
++to command line - it has no specific syntax but human-readable formatted.
++
++To enable this input device, you need the NDI SDK and you
++need to configure with the appropriate @code{--extra-cflags}
++and @code{--extra-ldflags}.
++
++@subsection Options
++
++@table @option
++
++@item find_sources
++If set to @option{true}, print a list of found/available NDI sources and exit.
++Defaults to @option{false}.
++
++@item wait_sources
++Override time to wait until the number of online sources have changed.
++Defaults to @option{0.5}.
++
++@item allow_video_fields
++When this flag is @option{false}, all video that you receive will be progressive.
++Defaults to @option{true}.
++
++@item extra_ips
++If is set to list of comma separated ip addresses, scan for sources not only
++using mDNS but also use unicast ip addresses specified by this list.
++
++@end table
++
++@subsection Examples
++
++@itemize
++
++@item
++List input devices:
++@example
++ffmpeg -f libndi_newtek -find_sources 1 -i dummy
++@end example
++
++@item
++List local and remote input devices:
++@example
++ffmpeg -f libndi_newtek -extra_ips "192.168.10.10" -find_sources 1 -i dummy
++@end example
++
++@item
++Restream to NDI:
++@example
++ffmpeg -f libndi_newtek -i "DEV-5.INTERNAL.M1STEREO.TV (NDI_SOURCE_NAME_1)" -f libndi_newtek -y NDI_SOURCE_NAME_2
++@end example
++
++@item
++Restream remote NDI to local NDI:
++@example
++ffmpeg -f libndi_newtek -extra_ips "192.168.10.10" -i "DEV-5.REMOTE.M1STEREO.TV (NDI_SOURCE_NAME_1)" -f libndi_newtek -y NDI_SOURCE_NAME_2
++@end example
++
++
++@end itemize
++
+ @section openal
+ 
+ The OpenAL input device provides audio capture on all systems with a
+diff --git a/doc/outdevs.texi b/doc/outdevs.texi
+index c96d2d0e43..1fd83c28cc 100644
+--- a/doc/outdevs.texi
++++ b/doc/outdevs.texi
+@@ -220,6 +220,51 @@ ffmpeg -re -i INPUT -c:v rawvideo -pix_fmt bgra -f fbdev /dev/fb0
+ 
+ See also @url{http://linux-fbdev.sourceforge.net/}, and fbset(1).
+ 
++@section libndi_newtek
++
++The libndi_newtek output device provides playback capabilities for using NDI (Network
++Device Interface, standard created by NewTek).
++
++Output filename is a NDI name.
++
++To enable this output device, you need the NDI SDK and you
++need to configure with the appropriate @code{--extra-cflags}
++and @code{--extra-ldflags}.
++
++NDI uses uyvy422 pixel format natively, but also supports bgra, bgr0, rgba and
++rgb0.
++
++@subsection Options
++
++@table @option
++
++@item reference_level
++The audio reference level in dB. This specifies how many dB above the
++reference level (+4dBU) is the full range of 16 bit audio.
++Defaults to @option{0}.
++
++@item clock_video
++These specify whether video "clock" themselves.
++Defaults to @option{false}.
++
++@item clock_audio
++These specify whether audio "clock" themselves.
++Defaults to @option{false}.
++
++@end table
++
++@subsection Examples
++
++@itemize
++
++@item
++Play video clip:
++@example
++ffmpeg -i "udp://@@239.1.1.1:10480?fifo_size=1000000&overrun_nonfatal=1" -vf "scale=720:576,fps=fps=25,setdar=dar=16/9,format=pix_fmts=uyvy422" -f libndi_newtek NEW_NDI1
++@end example
++
++@end itemize
++
+ @section opengl
+ OpenGL output device.
+ 
+diff --git a/libavdevice/Makefile b/libavdevice/Makefile
+index 6ea62b914e..f11a6f2a86 100644
+--- a/libavdevice/Makefile
++++ b/libavdevice/Makefile
+@@ -20,6 +20,8 @@ OBJS-$(CONFIG_BKTR_INDEV)                += bktr.o
+ OBJS-$(CONFIG_CACA_OUTDEV)               += caca.o
+ OBJS-$(CONFIG_DECKLINK_OUTDEV)           += decklink_enc.o decklink_enc_c.o decklink_common.o
+ OBJS-$(CONFIG_DECKLINK_INDEV)            += decklink_dec.o decklink_dec_c.o decklink_common.o
++OBJS-$(CONFIG_LIBNDI_NEWTEK_OUTDEV)      += libndi_newtek_enc.o
++OBJS-$(CONFIG_LIBNDI_NEWTEK_INDEV)       += libndi_newtek_dec.o
+ OBJS-$(CONFIG_DSHOW_INDEV)               += dshow_crossbar.o dshow.o dshow_enummediatypes.o \
+                                             dshow_enumpins.o dshow_filter.o \
+                                             dshow_pin.o dshow_common.o
+@@ -59,6 +61,8 @@ SLIBOBJS-$(HAVE_GNU_WINDRES)             += avdeviceres.o
+ SKIPHEADERS                              += decklink_common.h
+ SKIPHEADERS-$(CONFIG_DECKLINK)           += decklink_enc.h decklink_dec.h \
+                                             decklink_common_c.h
++SKIPHEADERS-$(CONFIG_LIBNDI_NEWTEK_INDEV) += libndi_newtek_common.h
++SKIPHEADERS-$(CONFIG_LIBNDI_NEWTEK_OUTDEV) += libndi_newtek_common.h
+ SKIPHEADERS-$(CONFIG_DSHOW_INDEV)        += dshow_capture.h
+ SKIPHEADERS-$(CONFIG_FBDEV_INDEV)        += fbdev_common.h
+ SKIPHEADERS-$(CONFIG_FBDEV_OUTDEV)       += fbdev_common.h
+diff --git a/libavdevice/alldevices.c b/libavdevice/alldevices.c
+index 8633433254..adde749ce1 100644
+--- a/libavdevice/alldevices.c
++++ b/libavdevice/alldevices.c
+@@ -32,6 +32,8 @@ extern AVInputFormat  ff_bktr_demuxer;
+ extern AVOutputFormat ff_caca_muxer;
+ extern AVInputFormat  ff_decklink_demuxer;
+ extern AVOutputFormat ff_decklink_muxer;
++extern AVInputFormat  ff_libndi_newtek_demuxer;
++extern AVOutputFormat ff_libndi_newtek_muxer;
+ extern AVInputFormat  ff_dshow_demuxer;
+ extern AVInputFormat  ff_fbdev_demuxer;
+ extern AVOutputFormat ff_fbdev_muxer;
+diff --git a/libavdevice/libndi_newtek_common.h b/libavdevice/libndi_newtek_common.h
+new file mode 100644
+index 0000000000..899031707d
+--- /dev/null
++++ b/libavdevice/libndi_newtek_common.h
+@@ -0,0 +1,30 @@
++/*
++ * NewTek NDI common code
++ * Copyright (c) 2017 Maksym Veremeyenko
++ *
++ * This file is part of FFmpeg.
++ *
++ * FFmpeg is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * FFmpeg is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with FFmpeg; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
++ */
++
++#ifndef AVDEVICE_LIBNDI_NEWTEK_COMMON_H
++#define AVDEVICE_LIBNDI_NEWTEK_COMMON_H
++
++#include <Processing.NDI.Lib.h>
++
++#define NDI_TIME_BASE 10000000
++#define NDI_TIME_BASE_Q (AVRational){1, NDI_TIME_BASE}
++
++#endif
+diff --git a/libavdevice/libndi_newtek_dec.c b/libavdevice/libndi_newtek_dec.c
+new file mode 100644
+index 0000000000..d2d5648c4b
+--- /dev/null
++++ b/libavdevice/libndi_newtek_dec.c
+@@ -0,0 +1,342 @@
++/*
++ * Newtek NDI input
++ * Copyright (c) 2017 Maksym Veremeyenko
++ *
++ * This file is part of FFmpeg.
++ *
++ * FFmpeg is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * FFmpeg is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with FFmpeg; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
++ */
++
++#include "libavformat/avformat.h"
++#include "libavformat/internal.h"
++#include "libavutil/opt.h"
++#include "libavutil/imgutils.h"
++
++#include "libndi_newtek_common.h"
++
++struct NDIContext {
++    const AVClass *cclass;
++
++    /* Options */
++    int find_sources;
++    int64_t wait_sources;
++    int allow_video_fields;
++    char *extra_ips;
++
++    /* Runtime */
++    NDIlib_recv_create_t *recv;
++    NDIlib_find_instance_t ndi_find;
++
++    /* Streams */
++    AVStream *video_st, *audio_st;
++};
++
++static int ndi_set_video_packet(AVFormatContext *avctx, NDIlib_video_frame_t *v, AVPacket *pkt)
++{
++    int ret;
++    struct NDIContext *ctx = avctx->priv_data;
++
++    ret = av_new_packet(pkt, v->yres * v->line_stride_in_bytes);
++    if (ret < 0)
++        return ret;
++
++    pkt->dts = pkt->pts = av_rescale_q(v->timecode, NDI_TIME_BASE_Q, ctx->video_st->time_base);
++    pkt->duration = av_rescale_q(1, (AVRational){v->frame_rate_D, v->frame_rate_N}, ctx->video_st->time_base);
++
++    av_log(avctx, AV_LOG_DEBUG, "%s: pkt->dts = pkt->pts = %"PRId64", duration=%"PRId64", timecode=%"PRId64"\n",
++        __func__, pkt->dts, pkt->duration, v->timecode);
++
++    pkt->flags         |= AV_PKT_FLAG_KEY;
++    pkt->stream_index   = ctx->video_st->index;
++
++    memcpy(pkt->data, v->p_data, pkt->size);
++
++    return 0;
++}
++
++static int ndi_set_audio_packet(AVFormatContext *avctx, NDIlib_audio_frame_t *a, AVPacket *pkt)
++{
++    int ret;
++    struct NDIContext *ctx = avctx->priv_data;
++
++    NDIlib_audio_frame_interleaved_16s_t dst;
++
++    ret = av_new_packet(pkt, 2 * a->no_samples * a->no_channels);
++    if (ret < 0)
++        return ret;
++
++    pkt->dts = pkt->pts = av_rescale_q(a->timecode, NDI_TIME_BASE_Q, ctx->audio_st->time_base);
++    pkt->duration = av_rescale_q(1, (AVRational){a->no_samples, a->sample_rate}, ctx->audio_st->time_base);
++
++    av_log(avctx, AV_LOG_DEBUG, "%s: pkt->dts = pkt->pts = %"PRId64", duration=%"PRId64", timecode=%"PRId64"\n",
++        __func__, pkt->dts, pkt->duration, a->timecode);
++
++    pkt->flags       |= AV_PKT_FLAG_KEY;
++    pkt->stream_index = ctx->audio_st->index;
++
++    dst.reference_level = 0;
++    dst.p_data = (short *)pkt->data;
++    NDIlib_util_audio_to_interleaved_16s(a, &dst);
++
++    return 0;
++}
++
++static int ndi_find_sources(AVFormatContext *avctx, const char *name, NDIlib_source_t *source_to_connect_to)
++{
++    int j = AVERROR(ENODEV);
++    unsigned int n, i;
++    struct NDIContext *ctx = avctx->priv_data;
++    const NDIlib_source_t *ndi_srcs = NULL;
++    const NDIlib_find_create_t find_create_desc = { .show_local_sources = true,
++        .p_groups = NULL, .p_extra_ips = ctx->extra_ips };
++
++    if (!ctx->ndi_find)
++        ctx->ndi_find = NDIlib_find_create2(&find_create_desc);
++    if (!ctx->ndi_find) {
++        av_log(avctx, AV_LOG_ERROR, "NDIlib_find_create failed.\n");
++        return AVERROR(EIO);
++    }
++
++    while (1)
++    {
++        int f, t = ctx->wait_sources / 1000;
++        av_log(avctx, AV_LOG_DEBUG, "Waiting for sources %d miliseconds\n", t);
++        f = NDIlib_find_wait_for_sources(ctx->ndi_find, t);
++        av_log(avctx, AV_LOG_DEBUG, "NDIlib_find_wait_for_sources returns %d\n", f);
++        if (!f)
++            break;
++    };
++
++    ndi_srcs = NDIlib_find_get_current_sources(ctx->ndi_find, &n);
++
++    if (ctx->find_sources)
++        av_log(avctx, AV_LOG_INFO, "Found %d NDI sources:\n", n);
++
++    for (i = 0; i < n; i++) {
++        if (ctx->find_sources)
++            av_log(avctx, AV_LOG_INFO, "\t'%s'\t'%s'\n", ndi_srcs[i].p_ndi_name, ndi_srcs[i].p_ip_address);
++
++        if (!strcmp(name, ndi_srcs[i].p_ndi_name)) {
++            *source_to_connect_to = ndi_srcs[i];
++            j = i;
++        }
++    }
++
++    return j;
++}
++
++static int ndi_read_header(AVFormatContext *avctx)
++{
++    int ret;
++    NDIlib_recv_create_t recv_create_desc;
++    const NDIlib_tally_t tally_state = { .on_program = true, .on_preview = false };
++    struct NDIContext *ctx = avctx->priv_data;
++
++    if (!NDIlib_initialize()) {
++        av_log(avctx, AV_LOG_ERROR, "NDIlib_initialize failed.\n");
++        return AVERROR_EXTERNAL;
++    }
++
++    /* Find available sources. */
++    ret = ndi_find_sources(avctx, avctx->url, &recv_create_desc.source_to_connect_to);
++    if (ctx->find_sources) {
++        return AVERROR_EXIT;
++    }
++    if (ret < 0)
++        return ret;
++
++    /* Create receiver description */
++    recv_create_desc.color_format = NDIlib_recv_color_format_e_UYVY_RGBA;
++    recv_create_desc.bandwidth = NDIlib_recv_bandwidth_highest;
++    recv_create_desc.allow_video_fields = ctx->allow_video_fields;
++
++    /* Create the receiver */
++    ctx->recv = NDIlib_recv_create(&recv_create_desc);
++    if (!ctx->recv) {
++        av_log(avctx, AV_LOG_ERROR, "NDIlib_recv_create2 failed.\n");
++        return AVERROR(EIO);
++    }
++
++    /* Set tally */
++    NDIlib_recv_set_tally(ctx->recv, &tally_state);
++
++    avctx->ctx_flags |= AVFMTCTX_NOHEADER;
++
++    return 0;
++}
++
++static int ndi_create_video_stream(AVFormatContext *avctx, NDIlib_video_frame_t *v)
++{
++    AVStream *st;
++    AVRational tmp;
++    struct NDIContext *ctx = avctx->priv_data;
++
++    st = avformat_new_stream(avctx, NULL);
++    if (!st) {
++        av_log(avctx, AV_LOG_ERROR, "Cannot add video stream\n");
++        return AVERROR(ENOMEM);
++    }
++
++    st->time_base                   = NDI_TIME_BASE_Q;
++    st->r_frame_rate                = av_make_q(v->frame_rate_N, v->frame_rate_D);
++
++    tmp = av_mul_q(av_d2q(v->picture_aspect_ratio, INT_MAX), (AVRational){v->yres, v->xres});
++    av_reduce(&st->sample_aspect_ratio.num, &st->sample_aspect_ratio.den, tmp.num, tmp.den, 1000);
++    st->codecpar->sample_aspect_ratio = st->sample_aspect_ratio;
++
++    st->codecpar->codec_type        = AVMEDIA_TYPE_VIDEO;
++    st->codecpar->width             = v->xres;
++    st->codecpar->height            = v->yres;
++    st->codecpar->codec_id          = AV_CODEC_ID_RAWVIDEO;
++    st->codecpar->bit_rate          = av_rescale(v->xres * v->yres * 16, v->frame_rate_N, v->frame_rate_D);
++    st->codecpar->field_order       = v->frame_format_type == NDIlib_frame_format_type_progressive
++        ? AV_FIELD_PROGRESSIVE : AV_FIELD_TT;
++
++    if (NDIlib_FourCC_type_UYVY == v->FourCC || NDIlib_FourCC_type_UYVA == v->FourCC) {
++        st->codecpar->format        = AV_PIX_FMT_UYVY422;
++        st->codecpar->codec_tag     = MKTAG('U', 'Y', 'V', 'Y');
++        if (NDIlib_FourCC_type_UYVA == v->FourCC)
++            av_log(avctx, AV_LOG_WARNING, "Alpha channel ignored\n");
++    } else if (NDIlib_FourCC_type_BGRA == v->FourCC) {
++        st->codecpar->format        = AV_PIX_FMT_BGRA;
++        st->codecpar->codec_tag     = MKTAG('B', 'G', 'R', 'A');
++    } else if (NDIlib_FourCC_type_BGRX == v->FourCC) {
++        st->codecpar->format        = AV_PIX_FMT_BGR0;
++        st->codecpar->codec_tag     = MKTAG('B', 'G', 'R', '0');
++    } else if (NDIlib_FourCC_type_RGBA == v->FourCC) {
++        st->codecpar->format        = AV_PIX_FMT_RGBA;
++        st->codecpar->codec_tag     = MKTAG('R', 'G', 'B', 'A');
++    } else if (NDIlib_FourCC_type_RGBX == v->FourCC) {
++        st->codecpar->format        = AV_PIX_FMT_RGB0;
++        st->codecpar->codec_tag     = MKTAG('R', 'G', 'B', '0');
++    } else {
++        av_log(avctx, AV_LOG_ERROR, "Unsupported video stream format, v->FourCC=%d\n", v->FourCC);
++        return AVERROR(EINVAL);
++    }
++
++    avpriv_set_pts_info(st, 64, 1, NDI_TIME_BASE);
++
++    ctx->video_st = st;
++
++    return 0;
++}
++
++static int ndi_create_audio_stream(AVFormatContext *avctx, NDIlib_audio_frame_t *a)
++{
++    AVStream *st;
++    struct NDIContext *ctx = avctx->priv_data;
++
++    st = avformat_new_stream(avctx, NULL);
++    if (!st) {
++        av_log(avctx, AV_LOG_ERROR, "Cannot add audio stream\n");
++        return AVERROR(ENOMEM);
++    }
++
++    st->codecpar->codec_type        = AVMEDIA_TYPE_AUDIO;
++    st->codecpar->codec_id          = AV_CODEC_ID_PCM_S16LE;
++    st->codecpar->sample_rate       = a->sample_rate;
++    st->codecpar->channels          = a->no_channels;
++
++    avpriv_set_pts_info(st, 64, 1, NDI_TIME_BASE);
++
++    ctx->audio_st = st;
++
++    return 0;
++}
++
++static int ndi_read_packet(AVFormatContext *avctx, AVPacket *pkt)
++{
++    int ret = 0;
++    struct NDIContext *ctx = avctx->priv_data;
++
++    while (!ret) {
++        NDIlib_video_frame_t v;
++        NDIlib_audio_frame_t a;
++        NDIlib_metadata_frame_t m;
++        NDIlib_frame_type_e t;
++
++        av_log(avctx, AV_LOG_DEBUG, "NDIlib_recv_capture...\n");
++        t = NDIlib_recv_capture(ctx->recv, &v, &a, &m, 40);
++        av_log(avctx, AV_LOG_DEBUG, "NDIlib_recv_capture=%d\n", t);
++
++        if (t == NDIlib_frame_type_video) {
++            if (!ctx->video_st)
++                ret = ndi_create_video_stream(avctx, &v);
++            if (!ret)
++                ret = ndi_set_video_packet(avctx, &v, pkt);
++            NDIlib_recv_free_video(ctx->recv, &v);
++            break;
++        }
++        else if (t == NDIlib_frame_type_audio) {
++            if (!ctx->audio_st)
++                ret = ndi_create_audio_stream(avctx, &a);
++            if (!ret)
++                ret = ndi_set_audio_packet(avctx, &a, pkt);
++            NDIlib_recv_free_audio(ctx->recv, &a);
++            break;
++        }
++        else if (t == NDIlib_frame_type_metadata)
++            NDIlib_recv_free_metadata(ctx->recv, &m);
++        else if (t == NDIlib_frame_type_error){
++            av_log(avctx, AV_LOG_ERROR, "NDIlib_recv_capture failed with error\n");
++            ret = AVERROR(EIO);
++        }
++    };
++
++    return ret;
++}
++
++static int ndi_read_close(AVFormatContext *avctx)
++{
++    struct NDIContext *ctx = (struct NDIContext *)avctx->priv_data;
++
++    if (ctx->recv)
++        NDIlib_recv_destroy(ctx->recv);
++
++    if (ctx->ndi_find)
++        NDIlib_find_destroy(ctx->ndi_find);
++
++    return 0;
++}
++
++#define OFFSET(x) offsetof(struct NDIContext, x)
++#define DEC AV_OPT_FLAG_DECODING_PARAM
++
++static const AVOption options[] = {
++    { "find_sources", "Find available sources"  , OFFSET(find_sources), AV_OPT_TYPE_BOOL, { .i64 = 0 }, 0, 1, DEC },
++    { "wait_sources", "Time to wait until the number of online sources have changed"  , OFFSET(wait_sources), AV_OPT_TYPE_DURATION, { .i64 = 1000000 }, 100000, 20000000, DEC },
++    { "allow_video_fields", "When this flag is FALSE, all video that you receive will be progressive"  , OFFSET(allow_video_fields), AV_OPT_TYPE_BOOL, { .i64 = 1 }, 0, 1, DEC },
++    { "extra_ips", "List of comma separated ip addresses to scan for remote sources",       OFFSET(extra_ips), AV_OPT_TYPE_STRING, {.str = NULL }, 0, 0, DEC },
++    { NULL },
++};
++
++static const AVClass libndi_newtek_demuxer_class = {
++    .class_name = "NDI demuxer",
++    .item_name  = av_default_item_name,
++    .option     = options,
++    .version    = LIBAVUTIL_VERSION_INT,
++    .category   = AV_CLASS_CATEGORY_DEVICE_VIDEO_INPUT,
++};
++
++AVInputFormat ff_libndi_newtek_demuxer = {
++    .name           = "libndi_newtek",
++    .long_name      = NULL_IF_CONFIG_SMALL("Network Device Interface (NDI) input using NewTek library"),
++    .flags          = AVFMT_NOFILE,
++    .priv_class     = &libndi_newtek_demuxer_class,
++    .priv_data_size = sizeof(struct NDIContext),
++    .read_header   = ndi_read_header,
++    .read_packet   = ndi_read_packet,
++    .read_close    = ndi_read_close,
++};
+diff --git a/libavdevice/libndi_newtek_enc.c b/libavdevice/libndi_newtek_enc.c
+new file mode 100644
+index 0000000000..f3603f5a3a
+--- /dev/null
++++ b/libavdevice/libndi_newtek_enc.c
+@@ -0,0 +1,299 @@
++/*
++ * NewTek NDI output
++ * Copyright (c) 2017 Maksym Veremeyenko
++ *
++ * This file is part of FFmpeg.
++ *
++ * FFmpeg is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * FFmpeg is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with FFmpeg; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
++ */
++
++#include "libavformat/avformat.h"
++#include "libavformat/internal.h"
++#include "libavutil/opt.h"
++#include "libavutil/imgutils.h"
++
++#include "libndi_newtek_common.h"
++
++struct NDIContext {
++    const AVClass *cclass;
++
++    /* Options */
++    int reference_level;
++    int clock_video, clock_audio;
++
++    NDIlib_video_frame_t *video;
++    NDIlib_audio_frame_interleaved_16s_t *audio;
++    NDIlib_send_instance_t ndi_send;
++    AVFrame *last_avframe;
++};
++
++static int ndi_write_trailer(AVFormatContext *avctx)
++{
++    struct NDIContext *ctx = avctx->priv_data;
++
++    if (ctx->ndi_send) {
++        NDIlib_send_destroy(ctx->ndi_send);
++        av_frame_free(&ctx->last_avframe);
++    }
++
++    av_freep(&ctx->video);
++    av_freep(&ctx->audio);
++
++    return 0;
++}
++
++static int ndi_write_video_packet(AVFormatContext *avctx, AVStream *st, AVPacket *pkt)
++{
++    struct NDIContext *ctx = avctx->priv_data;
++    AVFrame *avframe, *tmp = (AVFrame *)pkt->data;
++
++    if (tmp->format != AV_PIX_FMT_UYVY422 && tmp->format != AV_PIX_FMT_BGRA &&
++        tmp->format != AV_PIX_FMT_BGR0 && tmp->format != AV_PIX_FMT_RGBA &&
++        tmp->format != AV_PIX_FMT_RGB0) {
++        av_log(avctx, AV_LOG_ERROR, "Got a frame with invalid pixel format.\n");
++        return AVERROR(EINVAL);
++    }
++
++    if (tmp->linesize[0] < 0) {
++        av_log(avctx, AV_LOG_ERROR, "Got a frame with negative linesize.\n");
++        return AVERROR(EINVAL);
++    }
++
++    if (tmp->width  != ctx->video->xres ||
++        tmp->height != ctx->video->yres) {
++        av_log(avctx, AV_LOG_ERROR, "Got a frame with invalid dimension.\n");
++        av_log(avctx, AV_LOG_ERROR, "tmp->width=%d, tmp->height=%d, ctx->video->xres=%d, ctx->video->yres=%d\n",
++            tmp->width, tmp->height, ctx->video->xres, ctx->video->yres);
++        return AVERROR(EINVAL);
++    }
++
++    avframe = av_frame_clone(tmp);
++    if (!avframe)
++        return AVERROR(ENOMEM);
++
++    ctx->video->timecode = av_rescale_q(pkt->pts, st->time_base, NDI_TIME_BASE_Q);
++
++    ctx->video->line_stride_in_bytes = avframe->linesize[0];
++    ctx->video->p_data = (void *)(avframe->data[0]);
++
++    av_log(avctx, AV_LOG_DEBUG, "%s: pkt->pts=%"PRId64", timecode=%"PRId64", st->time_base=%d/%d\n",
++        __func__, pkt->pts, ctx->video->timecode, st->time_base.num, st->time_base.den);
++
++    /* asynchronous for one frame, but will block if a second frame
++        is given before the first one has been sent */
++    NDIlib_send_send_video_async(ctx->ndi_send, ctx->video);
++
++    av_frame_free(&ctx->last_avframe);
++    ctx->last_avframe = avframe;
++
++    return 0;
++}
++
++static int ndi_write_audio_packet(AVFormatContext *avctx, AVStream *st, AVPacket *pkt)
++{
++    struct NDIContext *ctx = avctx->priv_data;
++
++    ctx->audio->p_data = (short *)pkt->data;
++    ctx->audio->timecode = av_rescale_q(pkt->pts, st->time_base, NDI_TIME_BASE_Q);
++    ctx->audio->no_samples = pkt->size / (ctx->audio->no_channels << 1);
++
++    av_log(avctx, AV_LOG_DEBUG, "%s: pkt->pts=%"PRId64", timecode=%"PRId64", st->time_base=%d/%d\n",
++        __func__, pkt->pts, ctx->audio->timecode, st->time_base.num, st->time_base.den);
++
++    NDIlib_util_send_send_audio_interleaved_16s(ctx->ndi_send, ctx->audio);
++
++    return 0;
++}
++
++static int ndi_write_packet(AVFormatContext *avctx, AVPacket *pkt)
++{
++    AVStream *st = avctx->streams[pkt->stream_index];
++
++    if      (st->codecpar->codec_type == AVMEDIA_TYPE_VIDEO)
++        return ndi_write_video_packet(avctx, st, pkt);
++    else if (st->codecpar->codec_type == AVMEDIA_TYPE_AUDIO)
++        return ndi_write_audio_packet(avctx, st, pkt);
++
++    return AVERROR_BUG;
++}
++
++static int ndi_setup_audio(AVFormatContext *avctx, AVStream *st)
++{
++    struct NDIContext *ctx = avctx->priv_data;
++    AVCodecParameters *c = st->codecpar;
++
++    if (ctx->audio) {
++        av_log(avctx, AV_LOG_ERROR, "Only one audio stream is supported!\n");
++        return AVERROR(EINVAL);
++    }
++
++    ctx->audio = av_mallocz(sizeof(NDIlib_audio_frame_interleaved_16s_t));
++    if (!ctx->audio)
++        return AVERROR(ENOMEM);
++
++    ctx->audio->sample_rate = c->sample_rate;
++    ctx->audio->no_channels = c->channels;
++    ctx->audio->reference_level = ctx->reference_level;
++
++    avpriv_set_pts_info(st, 64, 1, NDI_TIME_BASE);
++
++    return 0;
++}
++
++static int ndi_setup_video(AVFormatContext *avctx, AVStream *st)
++{
++    struct NDIContext *ctx = avctx->priv_data;
++    AVCodecParameters *c = st->codecpar;
++
++    if (ctx->video) {
++        av_log(avctx, AV_LOG_ERROR, "Only one video stream is supported!\n");
++        return AVERROR(EINVAL);
++    }
++
++    if (c->codec_id != AV_CODEC_ID_WRAPPED_AVFRAME) {
++        av_log(avctx, AV_LOG_ERROR, "Unsupported codec format!"
++               " Only AV_CODEC_ID_WRAPPED_AVFRAME is supported (-vcodec wrapped_avframe).\n");
++        return AVERROR(EINVAL);
++    }
++
++    if (c->format != AV_PIX_FMT_UYVY422 && c->format != AV_PIX_FMT_BGRA &&
++        c->format != AV_PIX_FMT_BGR0 && c->format != AV_PIX_FMT_RGBA &&
++        c->format != AV_PIX_FMT_RGB0) {
++        av_log(avctx, AV_LOG_ERROR, "Unsupported pixel format!"
++               " Only AV_PIX_FMT_UYVY422, AV_PIX_FMT_BGRA, AV_PIX_FMT_BGR0,"
++               " AV_PIX_FMT_RGBA, AV_PIX_FMT_RGB0 is supported.\n");
++        return AVERROR(EINVAL);
++    }
++
++    if (c->field_order == AV_FIELD_BB || c->field_order == AV_FIELD_BT) {
++        av_log(avctx, AV_LOG_ERROR, "Lower field-first disallowed");
++        return AVERROR(EINVAL);
++    }
++
++    ctx->video = av_mallocz(sizeof(NDIlib_video_frame_t));
++    if (!ctx->video)
++        return AVERROR(ENOMEM);
++
++    switch(c->format) {
++        case AV_PIX_FMT_UYVY422:
++            ctx->video->FourCC = NDIlib_FourCC_type_UYVY;
++            break;
++        case AV_PIX_FMT_BGRA:
++            ctx->video->FourCC = NDIlib_FourCC_type_BGRA;
++            break;
++        case AV_PIX_FMT_BGR0:
++            ctx->video->FourCC = NDIlib_FourCC_type_BGRX;
++            break;
++        case AV_PIX_FMT_RGBA:
++            ctx->video->FourCC = NDIlib_FourCC_type_RGBA;
++            break;
++        case AV_PIX_FMT_RGB0:
++            ctx->video->FourCC = NDIlib_FourCC_type_RGBX;
++            break;
++    }
++
++    ctx->video->xres = c->width;
++    ctx->video->yres = c->height;
++    ctx->video->frame_rate_N = st->avg_frame_rate.num;
++    ctx->video->frame_rate_D = st->avg_frame_rate.den;
++    ctx->video->frame_format_type = c->field_order == AV_FIELD_PROGRESSIVE
++        ? NDIlib_frame_format_type_progressive
++        : NDIlib_frame_format_type_interleaved;
++
++    if (st->sample_aspect_ratio.num) {
++        AVRational display_aspect_ratio;
++        av_reduce(&display_aspect_ratio.num, &display_aspect_ratio.den,
++                  st->codecpar->width  * (int64_t)st->sample_aspect_ratio.num,
++                  st->codecpar->height * (int64_t)st->sample_aspect_ratio.den,
++                  1024 * 1024);
++        ctx->video->picture_aspect_ratio = av_q2d(display_aspect_ratio);
++    }
++    else
++        ctx->video->picture_aspect_ratio = (double)st->codecpar->width/st->codecpar->height;
++
++    avpriv_set_pts_info(st, 64, 1, NDI_TIME_BASE);
++
++    return 0;
++}
++
++static int ndi_write_header(AVFormatContext *avctx)
++{
++    int ret = 0;
++    unsigned int n;
++    struct NDIContext *ctx = avctx->priv_data;
++    const NDIlib_send_create_t ndi_send_desc = { .p_ndi_name = avctx->url,
++        .p_groups = NULL, .clock_video = ctx->clock_video, .clock_audio = ctx->clock_audio };
++
++    if (!NDIlib_initialize()) {
++        av_log(avctx, AV_LOG_ERROR, "NDIlib_initialize failed.\n");
++        return AVERROR_EXTERNAL;
++    }
++
++    /* check if streams compatible */
++    for (n = 0; n < avctx->nb_streams; n++) {
++        AVStream *st = avctx->streams[n];
++        AVCodecParameters *c = st->codecpar;
++        if        (c->codec_type == AVMEDIA_TYPE_AUDIO) {
++            if ((ret = ndi_setup_audio(avctx, st)))
++                goto error;
++        } else if (c->codec_type == AVMEDIA_TYPE_VIDEO) {
++            if ((ret = ndi_setup_video(avctx, st)))
++                goto error;
++        } else {
++            av_log(avctx, AV_LOG_ERROR, "Unsupported stream type.\n");
++            ret = AVERROR(EINVAL);
++            goto error;
++        }
++    }
++
++    ctx->ndi_send = NDIlib_send_create(&ndi_send_desc);
++    if (!ctx->ndi_send) {
++        av_log(avctx, AV_LOG_ERROR, "Failed to create NDI output %s\n", avctx->url);
++        ret = AVERROR_EXTERNAL;
++    }
++
++error:
++    return ret;
++}
++
++#define OFFSET(x) offsetof(struct NDIContext, x)
++static const AVOption options[] = {
++    { "reference_level", "The audio reference level in dB"  , OFFSET(reference_level), AV_OPT_TYPE_INT, { .i64 = 0 }, -20, 20, AV_OPT_FLAG_ENCODING_PARAM | AV_OPT_FLAG_AUDIO_PARAM},
++    { "clock_video", "These specify whether video 'clock' themselves"  , OFFSET(clock_video), AV_OPT_TYPE_BOOL, { .i64 = 0 }, 0, 1, AV_OPT_FLAG_ENCODING_PARAM | AV_OPT_FLAG_VIDEO_PARAM },
++    { "clock_audio", "These specify whether audio 'clock' themselves"  , OFFSET(clock_audio), AV_OPT_TYPE_BOOL, { .i64 = 0 }, 0, 1, AV_OPT_FLAG_ENCODING_PARAM | AV_OPT_FLAG_AUDIO_PARAM },
++    { NULL },
++};
++
++static const AVClass libndi_newtek_muxer_class = {
++    .class_name = "NDI muxer",
++    .item_name  = av_default_item_name,
++    .option     = options,
++    .version    = LIBAVUTIL_VERSION_INT,
++    .category   = AV_CLASS_CATEGORY_DEVICE_VIDEO_OUTPUT,
++};
++
++AVOutputFormat ff_libndi_newtek_muxer = {
++    .name           = "libndi_newtek",
++    .long_name      = NULL_IF_CONFIG_SMALL("Network Device Interface (NDI) output using NewTek library"),
++    .audio_codec    = AV_CODEC_ID_PCM_S16LE,
++    .video_codec    = AV_CODEC_ID_WRAPPED_AVFRAME,
++    .subtitle_codec = AV_CODEC_ID_NONE,
++    .flags          = AVFMT_NOFILE,
++    .priv_class     = &libndi_newtek_muxer_class,
++    .priv_data_size = sizeof(struct NDIContext),
++    .write_header   = ndi_write_header,
++    .write_packet   = ndi_write_packet,
++    .write_trailer  = ndi_write_trailer,
++};
+-- 
+2.26.2
+
