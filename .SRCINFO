@@ -1,0 +1,12 @@
+pkgbase = ttf-cmu-serif
+	pkgdesc = CMU Serif
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://fontlibrary.org/en/font/cmu-serif
+	arch = any
+	license = OFL
+	source = https://fontlibrary.org/assets/downloads/cmu-serif/59c4efc3fa08079ca44060ca808c8f58/cmu-serif.zip
+	sha256sums = 1e9faf3b1a054cd94507469eeda2a3acab1774bb4768b1585e2bdf4558e3c633
+
+pkgname = ttf-cmu-serif
+
