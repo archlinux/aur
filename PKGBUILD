@@ -7,7 +7,7 @@ pkgname=zsh-theme-powerlevel10k
 # Whenever pkgver is updated, _libgit2ver below must also be updated.
 pkgver=1.10.1
 _libgit2ver="tag-005f77dca6dbe8788e55139fa1199fc94cc04f9a"
-pkgrel=2
+pkgrel=3
 pkgdesc="Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience."
 arch=('x86_64')
 url='https://github.com/romkatv/powerlevel10k'
@@ -31,7 +31,6 @@ replaces=('zsh-theme-powerlevel9k')
 build() {
   cd "${srcdir}/libgit2-${_libgit2ver}"
   cmake \
-   -DCMAKE_BUILD_TYPE=Release \
    -DZERO_NSEC=ON \
    -DTHREADSAFE=ON \
    -DUSE_BUNDLED_ZLIB=ON \
@@ -66,6 +65,10 @@ package() {
   rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/deps"
   rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/Makefile"
   rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/mbuild"
+  rm "${pkgdir}/usr/share/zsh-theme-powerlevel10k/.gitattributes"
+  rm "${pkgdir}/usr/share/zsh-theme-powerlevel10k/.gitignore"
+  rm "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/.clang-format"
+  rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/.vscode/"
   # unfortunetaly this is necessary. Otherwise gitstatus/install will try to
   # sideload the gitstatus binary and place it in $HOME/.cache/gitstatus/
   mv "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/usrbin/"{gitstatusd,gitstatusd-linux-x86_64}
