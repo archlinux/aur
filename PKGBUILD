@@ -3,7 +3,7 @@
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
 pkgname=nicotine-plus-git
-pkgver=1.4.1.r293.gfcfcd66d
+pkgver=1.4.3.2.r2403.5b28af9e
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
@@ -25,7 +25,8 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	printf "%s.r%s.%s" "$(head -n 1 debian/changelog | cut -d'(' -f 2 | cut -d')' -f 1 | \
+		sed 's/-/./')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
