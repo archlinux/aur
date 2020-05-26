@@ -18,7 +18,8 @@ makedepends=("cmake"
             "git"
             "glslang-sparzz-git"
             "vulkan-loader-git"
-            "vulkan-headers-sparzz-git")
+            "vulkan-headers-sparzz-git"
+            "spirv-headers")
 checkdepends=()
 optdepends=()
 provides=(vulkan-validation-layers-git)
@@ -39,6 +40,6 @@ validpgpkeys=()
 
 
 package() {
-	cmake -DGLSLANG_INSTALL_DIR=usr/local/bin/ -DVULKAN_HEADERS_INSTALL_DIR=/usr/local/include/ Vulkan-ValidationLayers
+	cmake -DGLSLANG_INSTALL_DIR=usr/local/bin/ -DVULKAN_HEADERS_INSTALL_DIR=/usr/local/include/ -DVulkanRegistry_DIR=/usr/local/share/vulkan/registry/ Vulkan-ValidationLayers
 	make DESTDIR="$pkgdir" install
 }
