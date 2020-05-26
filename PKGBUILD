@@ -2,16 +2,16 @@
 # Contributor: Tarn Burton <twburton at gmail dot com>
 
 pkgname=quex
-pkgver=0.70.0
+pkgver=0.71.0
 pkgrel=1
 pkgdesc="Generator of lexical analyzers in C and C++. Unicode Supported."
 arch=('any')
 url="http://quex.org/"
 license=('LGPL')
 provides=('quex' 'quex-for_libadalang')
-depends=('python2')
+depends=('python')
 source=("https://downloads.sourceforge.net/quex/quex-${pkgver}.zip")
-sha256sums=('47b2aa1193c8bebb1471a94afe4944b1e9e689f723dc8ef953e63c02173d00d9')
+sha256sums=('2e8df936f1daea1367f58aabea92e05136f439eea3cd6cbea96c6af1969e4901')
 
 package() {
   mkdir -p "${pkgdir}/usr/lib"
@@ -19,7 +19,8 @@ package() {
 
   cp -rf "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/lib"
 
-  sed -s "s|#! /usr/bin/env python|#! /usr/bin/env python2|g" -i "${pkgdir}/usr/lib/${pkgname}-${pkgver}/quex-exe.py"
+  # No longer needed as of version 0.71.0
+  # sed -s "s|#! /usr/bin/env python|#! /usr/bin/env python2|g" -i "${pkgdir}/usr/lib/${pkgname}-${pkgver}/quex-exe.py"
 
   # Install profile.d script to set QUEX_PATH.
 
