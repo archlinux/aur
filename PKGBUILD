@@ -16,7 +16,8 @@ groups=()
 depends=("yay")
 makedepends=("cmake"
             "git"
-            "glslang-sparzz-git")
+            "glslang-sparzz-git"
+            "make")
 checkdepends=()
 optdepends=()
 provides=(vulkan-headers-sparzz-git)

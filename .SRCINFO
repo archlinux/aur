@@ -8,6 +8,7 @@ pkgbase = vulkan-headers-sparzz-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = glslang-sparzz-git
+	makedepends = make
 	depends = yay
 	provides = vulkan-headers-sparzz-git
 	source = Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
