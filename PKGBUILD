@@ -25,13 +25,15 @@ source=("local://AmberTools${pkgver}.tar.bz2"
         "${pkgver}"
         "sander"
         "sander.MPI"
-        "sander.OMP")
+        "sander.OMP"
+        ".version")
 sha256sums=('b1e1f8f277c54e88abc9f590e788bbb2f7a49bcff5e8d8a6eacfaf332a4890f9'
             '80e5c6538859f35e38ba4f2cdd877a4bb5e09aa524474e31291a5b840508b808'
             '2975cbdd087def9a982d09d15207dd32fa9b7c439ddab3c365ee7fee70823cba'
             'e6de44446d88c53155853bd8346a357cc6e58bcbffad47bd514ed0ce07b07143'
             'bb1c26e67c7926a2247f0f16112fe4ed3fcc687397c801dc32ceaea16a6af680'
-            '5c7b10ae5690b8b161f2b1815bbd926481753781f149ea825e8c07fe4a284312')
+            '5c7b10ae5690b8b161f2b1815bbd926481753781f149ea825e8c07fe4a284312'
+            '0736c740ec86bbe1545df3b66566d6fcffdd78368e457bb96fca2501d124de18')
 
 prepare() {
   cd ${srcdir}/amber${_releasever}_src
@@ -71,6 +73,7 @@ package() {
 
   # install other stuff
   install -Dm644 ${srcdir}/${pkgver} ${pkgdir}/opt/amber/share/modulefiles/ambertools/${pkgver}
+  install -Dm644 ${srcdir}/.version ${pkgdir}/opt/amber/share/modulefiles/ambertools/.version
 
   # install wrappers
   install -Dm755 ${srcdir}/sander ${pkgdir}/usr/bin/sander
