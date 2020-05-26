@@ -8,7 +8,7 @@ pkgbase = mkp224o
 	license = custom:CC0
 	depends = libsodium
 	provides = mkp224o
-	source = https://github.com/cathugger/mkp224o/archive/v1.5.0.tar.gz
+	source = mkp224o-1.5.0.tar.gz::https://github.com/cathugger/mkp224o/archive/v1.5.0.tar.gz
 	sha256sums = 1bdc2b838ed53d62f62652e0b46d2632fad7ed703c65a00a96ad1b4547d74173
 
 pkgname = mkp224o
