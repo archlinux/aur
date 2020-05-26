@@ -1,0 +1,21 @@
+pkgbase = disman-git
+	pkgdesc = Qt/C++ display management library by KWinFT project ~ forked from KDE libkscreen
+	pkgver = r1538.0c6de05
+	pkgrel = 1
+	url = https://gitlab.com/kwinft/disman
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = qt5-x11extras
+	depends = libxrandr
+	depends = kwayland
+	depends = wrapland
+	provides = disman
+	conflicts = disman
+	source = git+https://gitlab.com/kwinft/disman.git
+	md5sums = SKIP
+
+pkgname = disman-git
+
