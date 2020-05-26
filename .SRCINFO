@@ -9,7 +9,7 @@ pkgbase = gamenetworkingsockets-git
 	makedepends = ninja
 	depends = protobuf
 	depends = openssl
-	provides = libGameNetworkingSockets.so
+	provides = gamenetworkingsockets
 	source = gamenetworkingsockets-git::git+https://github.com/ValveSoftware/GameNetworkingSockets.git
 	md5sums = SKIP
 
