@@ -1,0 +1,12 @@
+pkgbase = ttf-cmu-concrete
+	pkgdesc = CMU Concrete
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://fontlibrary.org/en/font/cmu-concrete
+	arch = any
+	license = OFL
+	source = https://fontlibrary.org/assets/downloads/cmu-concrete/4dc4d9812272fbd7cb913c389a001c50/cmu-concrete.zip
+	sha256sums = b090d97ad5c76375fcdc22b0f42004570729b356105f4d08e86d1920e63e662b
+
+pkgname = ttf-cmu-concrete
+
