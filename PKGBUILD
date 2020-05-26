@@ -24,13 +24,16 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://spdf.sci.gsfc.nasa.gov/pub/software/cdf/dist/cdf37_1/linux/cdf37_1-dist-all.tar.gz")
+source=("https://spdf.sci.gsfc.nasa.gov/pub/software/cdf/dist/cdf37_1/linux/cdf37_1-dist-all.tar.gz" "cdf37_1a-dist.patch")
 noextract=()
-md5sums=("0f434ffbb7f6ffe39b2bb20c5a940aee")
+md5sums=('0f434ffbb7f6ffe39b2bb20c5a940aee'
+         '9fc2c368fb7d0700d28cdb9a2280891d')
 validpgpkeys=()
 
-#prepare() {
-#}
+prepare() {
+        cd cdf37_1-dist
+        patch --strip=1 --input=../cdf37_1a-dist.patch
+}
 
 build() {
 	cd cdf37_1-dist 
