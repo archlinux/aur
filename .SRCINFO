@@ -1,0 +1,13 @@
+pkgbase = knative-client-bin
+	pkgdesc = Knative developer experience, docs, reference Knative CLI implementation
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/knative/client
+	arch = x86_64
+	license = apache
+	provides = kn
+	source = kn-0.14.0::https://github.com/knative/client/releases/download/v0.14.0/kn-linux-amd64
+	sha256sums = 4dcc7afd657cf246b5fb6ccd18530a86d30607c024ecd9c4ef5be58e3822f339
+
+pkgname = knative-client-bin
+
