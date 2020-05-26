@@ -1,6 +1,6 @@
 pkgbase = dwm-syaoran-git
 	pkgdesc = This is my dwm (dynamic window manager) build.
-	pkgver = 6.2.r18.10df9f1
+	pkgver = 6.2.r30.9aed4d2
 	pkgrel = 1
 	url = https://gitlab.com/justanoobcoder/dwm-syaoran.git
 	arch = any
