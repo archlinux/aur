@@ -5,7 +5,7 @@
 
 # Maintainer: sparzz
 pkgname=vulkan-extensionlayer-sparzz-git
-pkgver=1.2.140.2020.05.26.3
+pkgver=1.2.140._final
 pkgrel=1
 epoch=
 pkgdesc="Vulkan ExtensionLayer build from source. My oder Vulkan packages from the AUR depends on this packages. For install instruction and the order of install visit my GitHub page ----> https://github.com/sparzz/vulkan-arch-aur"
@@ -41,6 +41,13 @@ validpgpkeys=()
 
 
 package() {
-	cmake -DVulkanRegistry_DIR=/usr/local/share/vulkan/registry Vulkan-ExtensionLayer
+	cmake Vulkan-ExtensionLayer \
+        -DVulkanRegistry_DIR=/usr/local/share/vulkan/registry \
+        -DGLSLANG_INSTALL_DIR=/usr/local/bin \
+        -DVULKAN_HEADERS_INSTALL_DIR=/usr/local/share/vulkan \
+        -DVULKAN_HEADERS_INSTALL_DIR=/usr/local/include \
+        -DSPIRV_HEADERS_INSTALL_DIR=/usr/local/include/spirv \
+        -DSPIRV_HEADERS_INSTALL_DIR=/usr/local/lib/cmake/SPIRV-Headers \
+        cmake configue Vulkan-ExtensionLayer 
 	make DESTDIR="$pkgdir" install
 }
