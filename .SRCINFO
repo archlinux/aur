@@ -7,6 +7,7 @@ pkgbase = vulkan-extensionlayer-sparzz-git
 	license = Apache
 	makedepends = cmake
 	makedepends = git
+	makedepends = make
 	depends = yay
 	depends = glslang-sparzz-git
 	provides = vulkan-extensionlayer-sparzz-git

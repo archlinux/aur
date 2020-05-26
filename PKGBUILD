@@ -16,7 +16,8 @@ groups=()
 depends=("yay"
         "glslang-sparzz-git")
 makedepends=("cmake"
-            "git")
+            "git"
+            "make")
 checkdepends=()
 optdepends=()
 provides=(vulkan-extensionlayer-sparzz-git)
