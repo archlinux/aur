@@ -1,6 +1,6 @@
 pkgbase = jrnl
 	pkgdesc = A simple command line journal application that stores your journal in a plain text file
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://jrnl.sh
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = jrnl
 	depends = python-keyring>=19.0
 	depends = python-keyring<22.0
 	depends = python-pytz>=2019.1
-	depends = python-pytz<2020.0
+	depends = python-pytz<2021.0
 	depends = python-tzlocal>1.5
 	depends = python-tzlocal<3.0
 	depends = python-asteval>=0.9.14
@@ -31,8 +31,8 @@ pkgbase = jrnl
 	depends = python-yaml<6.0
 	depends = python-ansiwrap>=0.8.4
 	depends = python-ansiwrap<1.0
-	source = https://pypi.python.org/packages/source/j/jrnl/jrnl-2.4.1.tar.gz
-	sha256sums = d1198a50d28adce63713c065737840e0a76cd85a4b4f455914a9069ad0cb973f
+	source = https://pypi.python.org/packages/source/j/jrnl/jrnl-2.4.2.tar.gz
+	sha256sums = 1d13a635c7bff42a9b833a56f47ac5086eb4ed8d3d91e5a7b96ef05f4d82a616
 
 pkgname = jrnl
 
