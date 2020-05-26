@@ -4,10 +4,9 @@ mksrcinfo:
   before_script:
     - groupadd -r makepkg
     - useradd -u 1000 -g makepkg -m makepkg
-    - su -u makepkg makepkg --printsrcinfo
     - pacman -Sy --noconfirm base base-devel
   script:
-    - makepkg -- makepkg --printsrcinfo
+    - su makepkg -- makepkg --printsrcinfo
 
 publish:
   image: archlinux:latest
