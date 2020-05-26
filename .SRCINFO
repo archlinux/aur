@@ -1,12 +1,12 @@
 pkgbase = hosts
 	pkgdesc = A command line tool for managing hosts file entries.
-	pkgver = 3.1.0
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://github.com/alphabetum/hosts
 	arch = x86_64
 	license = MIT
-	source = hosts-3.1.0.tar.gz::https://github.com/alphabetum/hosts/archive/3.1.0.tar.gz
-	sha256sums = 01b5671313ef21dbaf58828257be2f217d4e8bf08c989f07a12f01a2757971bc
+	source = hosts-3.5.1.tar.gz::https://github.com/alphabetum/hosts/archive/3.5.1.tar.gz
+	sha256sums = 7d68bf2e717be95d945bca56fca6a52c85b74e4e122e93a8b0d6eb849a748344
 
 pkgname = hosts
 
