@@ -22,13 +22,16 @@ pkgver() {
   git describe --tags | sed 's/^v//;s/-/./g'
 }
 
-package() {
+build() {
   cd "$srcdir/$pkgname"
   mkdir -p build;
   cd build;
   cmake -G Ninja ..
   ninja
+}
 
-  install -D -m644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm 644 "src/libGameNetworkingSockets.so" -t "$pkgdir/usr/lib";
+package() {
+  cd "$srcdir/$pkgname"
+  install -D -m644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 "build/src/libGameNetworkingSockets.so" -t "$pkgdir/usr/lib"
 }
