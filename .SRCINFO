@@ -1,6 +1,6 @@
 pkgbase = libcpuid-git
 	pkgdesc = A small C library for x86 CPU detection and feature extraction
-	pkgver = 0.4.1.r66.g1a00dac
+	pkgver = 0.5.0.r0.g5da90c9
 	pkgrel = 1
 	epoch = 2
 	url = http://libcpuid.sourceforge.net

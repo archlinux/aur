@@ -4,7 +4,7 @@
 _pkgname=libcpuid
 pkgname=$_pkgname-git
 epoch=2
-pkgver=0.4.1.r66.g1a00dac
+pkgver=0.5.0.r0.g5da90c9
 pkgrel=1
 pkgdesc="A small C library for x86 CPU detection and feature extraction"
 arch=('i686' 'x86_64')
