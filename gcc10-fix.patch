@@ -1,0 +1,10 @@
+--- rexgen-git-gcc10/src/librexgen/iterator/iterator.h  2020-05-26 13:39:07.009007028 +0100
++++ rexgen-git-gcc10-new/src/librexgen/iterator/iterator.h      2020-05-26 13:40:20.772540516 +0100
+@@ -27,6 +27,7 @@
+ #include <librexgen/state/serializablestate.h>
+ #include <librexgen/state/invaliditeratoridexception.h>
+ #include <memory>
++#include <stdexcept>
+ 
+ #ifdef __cplusplus
+ namespace rexgen {
