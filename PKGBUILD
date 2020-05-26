@@ -1,43 +1,61 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
-_pkgname=vibrant
-pkgname=${_pkgname}-git
-pkgver=0.0.2.r0.g166e28b
+pkgbase=vibrant-git
+pkgname=(libvibrant-git vibrant-cli-git)
+pkgver=0.0.2.r4.g01b9f63
 pkgrel=1
 pkgdesc="A simple library to adjust color saturation of X11 outputs."
 arch=(x86_64)
 url="https://gitlab.com/Scrumplex/vibrant"
 license=("GPL3" "custom:MIT")
-depends=("libdrm" "libxrandr")
 makedepends=("git" "cmake")
-provides=($_pkgname "libvibrant.so")
-conflicts=($_pkgname)
-source=("${_pkgname}::git+https://gitlab.com/Scrumplex/vibrant.git")
+source=("${pkgbase}::git+https://gitlab.com/Scrumplex/vibrant.git")
 sha512sums=('SKIP')
 
 
 pkgver() {
-    cd "$_pkgname"
+    cd "$pkgbase"
 
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
 
-    cmake -B build -S "$_pkgname" \
+    cmake -B build -S "$pkgbase" \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
     make -C build
 }
 
-package() {
+package_libvibrant-git() {
+    provides=("libvibrant" "libvibrant.so")
+    conflicts=("vibrant" "libvibrant")
+    depends=("libdrm" "libxrandr")
 
-    make -C build DESTDIR="$pkgdir" install
+    cd "build"
 
-    cd "$_pkgname"
+    env DESTDIR="$pkgdir" cmake -DCOMPONENT=lib -P cmake_install.cmake
+
+    cd "../$pkgbase"
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}
+
+package_vibrant-cli-git() {
+    provides=("vibrant-cli")
+    conflicts=("vibrant" "vibrant-cli")
+    depends=("libvibrant.so")
+
+    cd "build"
+
+    env DESTDIR="$pkgdir" cmake -DCOMPONENT=cli -P cmake_install.cmake
+
+    cd "../$pkgbase"
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
