@@ -13,6 +13,7 @@ pkgbase = flowee-git
 	depends = libevent
 	depends = openssl
 	provides = flowee-hub
++	provides = flowee-libs
 	backup = etc/flowee/flowee.conf
 	source = git+https://gitlab.com/FloweeTheHub/thehub.git#branch=master
 	source = flowee.logrotate
