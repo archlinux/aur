@@ -1,7 +1,7 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 # TODO improve installation per https://wiki.archlinux.org/index.php/Java_package_guidelines – several of the dependencies have their own packages
 pkgname=apache-jena
-pkgver=3.14.0
+pkgver=3.15.0
 pkgrel=1
 pkgdesc='Java framework for building Semantic Web and Linked Data applications'
 arch=('any')
@@ -9,14 +9,14 @@ url='https://jena.apache.org/'
 license=('Apache')
 depends=('java-runtime')
 source=("http://www-us.apache.org/dist/${pkgname/apache-/}/binaries/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('ba2e966df3ff2c8727b02f95771aa9f9953687fadbd51a95fff3709bb342ca64c1ac54bc25c9e24432b038c14737979c48fad5885e5841d6c15cc4967859b037')
+sha512sums=('56091cb84ce1d5f2a7441b63f077393b28bc56485be31aaf77b54754e1b1ce4f8df638e08fd4838c8feda42b7eafc3b36281c10520b107522bfeeb70f4af25c7')
 
 package() {
     cd "$pkgname-$pkgver"
     mkdir -p "$pkgdir/opt/${pkgname}/" "$pkgdir/usr/bin/"
 
     # install most files in /opt (yes, I know, I know :/ see TODO at the top)
-    cp -r -t "$pkgdir/opt/${pkgname}/" bin/ lib/ LICENSE NOTICE README jena-log4j.properties
+    cp -r -t "$pkgdir/opt/${pkgname}/" bin/ lib/ LICENSE NOTICE README log4j2.properties
 
     # symlink binaries into /usr/bin
     cd bin
