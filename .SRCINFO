@@ -1,0 +1,12 @@
+pkgbase = ttf-cmu-bright
+	pkgdesc = CMU Bright
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://fontlibrary.org/en/font/cmu-bright
+	arch = any
+	license = OFL
+	source = https://fontlibrary.org/assets/downloads/cmu-bright/89df0df002bd3fe4185cc5d8f98a124c/cmu-bright.zip
+	sha256sums = f5cb3bfd52c2025ec3dd7342650583bd7ab9aa3c1528c3e0eb67f6177c207a2c
+
+pkgname = ttf-cmu-bright
+
