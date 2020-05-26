@@ -1,14 +1,14 @@
 pkgbase = penlog
 	pkgdesc = Tooling around the penlog logging format
-	pkgver = 1
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/Fraunhofer-AISEC/penlog
 	arch = x86_64
 	license = GPL
 	makedepends = go
 	makedepends = asciidoctor
-	source = penlog-v1.tar.gz::https://github.com/Fraunhofer-AISEC/penlog/archive/v1.tar.gz
-	sha256sums = 530191f7ed1365ea2545a8eccfdd4bf348771259a45ad117dfe8aa6d49d070d1
+	source = penlog-0.1.0.tar.gz::https://github.com/Fraunhofer-AISEC/penlog/archive/v0.1.0.tar.gz
+	sha256sums = 49bbacce09a32cd9c66e8054374456adbc79b8592312f82dda519238c1607bcf
 
 pkgname = penlog
 

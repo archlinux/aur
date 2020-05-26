@@ -1,7 +1,7 @@
 # Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=penlog
-pkgver=1
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Tooling around the penlog logging format"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/Fraunhofer-AISEC/penlog'
 license=('GPL')
 makedepends=('go' 'asciidoctor')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Fraunhofer-AISEC/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('530191f7ed1365ea2545a8eccfdd4bf348771259a45ad117dfe8aa6d49d070d1')
+sha256sums=('49bbacce09a32cd9c66e8054374456adbc79b8592312f82dda519238c1607bcf')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
