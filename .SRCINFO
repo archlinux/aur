@@ -1,6 +1,6 @@
 pkgbase = hsd-git
 	pkgdesc = Handshake decentralized naming system Daemon & Full Node
-	pkgver = 2.1.3.23.ged53f5f8
+	pkgver = 2.1.5.56.g22be7faa
 	pkgrel = 1
 	url = http://handshake.org/
 	arch = i686

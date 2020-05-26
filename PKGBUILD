@@ -4,7 +4,7 @@
 # Upstream: https://github.com/handshake-org/hsd
 
 pkgname=hsd-git
-pkgver=2.1.3.23.ged53f5f8
+pkgver=2.1.5.56.g22be7faa
 pkgrel=1
 pkgdesc='Handshake decentralized naming system Daemon & Full Node'
 arch=('i686' 'x86_64')
