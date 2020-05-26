@@ -12,7 +12,7 @@ publish:
   image: archlinux:latest
   stage: deploy
   before_script:
-    - pacman -Sy git
+    - pacman -S --refresh --noconfirm git
   script:
     - git remote add aur ssh://aur@aur.archlinux.org/$CI_PROJECT_NAME
     - git push aur master
