@@ -3,7 +3,7 @@
 pkgbase=arc-gtk-theme-jnsh-git
 _pkgname=arc-theme
 pkgname=('arc-gtk-theme-jnsh-git' 'arc-solid-gtk-theme-jnsh-git')
-pkgver=r1022.c1f2175
+pkgver=20200513.r1.g6330549
 pkgrel=1
 pkgdesc="A flat theme suite with transparent elements. Fork maintained by jnsh."
 arch=('any')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
