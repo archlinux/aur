@@ -1,19 +1,26 @@
 # Maintainer: Poppy Schmo <poppyschmo at users dot noreply.github.com>
 pkgname=chromebook_keyboard_backlight_driver-dkms
 _pkgbase=${pkgname%-*}
+# XXX as noted on the wiki page for VCS_package_guidelines, "if there are no
+# public releases and no repository tags then zero could be used as a release
+# number or you can drop RELEASE completely." Rather than doing either, the
+# above acknowledgement (that 1.0 is totally wrong) will have to suffice.
 pkgver=1.0r24.g39568fa
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Keyboard backlight driver for various chromebook models"
-arch=(i686 x86_64)
+arch=(x86_64)
 url="https://github.com/corcoran/chromebook_keyboard_backlight_driver"
+# The source repo does not contain a license, but its upstream is GPL2:
+# https://github.com/brocktice/pixel_linux/blob/pixel/COPYING
 license=(GPL)
 depends=(dkms)
-makedepends=(linux-headers)
 provides=("$pkgname")
 conflicts=("$_pkgbase")
 install=${pkgname}.install
-source=("git://github.com/corcoran/chromebook_keyboard_backlight_driver.git")
+_commit=39568facbc8440d84e4bfbd9cc380106ddc2b436
+_baseurl=git+https://github.com/corcoran/chromebook_keyboard_backlight_driver.git
+source=("$_baseurl#commit=$_commit")
 md5sums=(SKIP)
 
 
@@ -42,7 +49,7 @@ package() {
     local _conf=chromebook_keyboard_backlight_driver.conf
     { echo "# Modules for $pkgname"
         printf '%s\n' "${_modules[@]}"; } > "$_conf"
-    install -Dm 644  "$_conf" "$pkgdir/etc/modules-load.d/$_conf"
+    install -Dm 644 "$_conf" "$pkgdir/etc/modules-load.d/$_conf"
     #
     make clean
     install -dm 755 "$pkgdir/usr/src/$_pkgbase-$pkgver"
@@ -50,5 +57,4 @@ package() {
     sed -e "s/^PACKAGE_NAME=.*$/PACKAGE_NAME=$_pkgbase/" \
         -e "s/^PACKAGE_VERSION=.*$/PACKAGE_VERSION=$pkgver/" \
         -i "$pkgdir/usr/src/$_pkgbase-$pkgver/dkms.conf"
-    #
 }
