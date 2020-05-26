@@ -40,6 +40,6 @@ validpgpkeys=()
 
 
 package() {
-	cmake Vulkan-Headers
+	cmake -DSPIRV_HEADERS_INSTALL_DIR=/usr/local/include/spirv -DGLSLANG_INSTALL_DIR=/usr/local/bin Vulkan-Headers
 	make DESTDIR="$pkgdir" install
 }
