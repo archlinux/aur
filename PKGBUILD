@@ -165,7 +165,7 @@ package_systemd-cdown-git() {
   rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8
 
   # executable (symlinks) shipped with systemd-sysvcompat
-  rm "$pkgdir"/usr/bin/{halt,init,poweroff,reboot,runlevel,shutdown,telinit}
+  rm "$pkgdir"/usr/bin/{halt,init,poweroff,reboot,shutdown}
 
   # files shipped with systemd-resolvconf
   rm "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
