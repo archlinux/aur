@@ -36,6 +36,7 @@ pkgbase = ambertools
 	optdepends = cuda: GPU acceleration support
 	optdepends = plumed: metadynamics support
 	optdepends = plumed-mpi: metadynamics support with MPI
+	optdepends = vmd: visualize trajectories
 	optdepends = env-modules-tcl: modulefile support
 	options = staticlibs
 	options = !buildflags

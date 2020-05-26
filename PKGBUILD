@@ -15,6 +15,7 @@ optdepends=('openmpi-gcc8: MPI support'
             'cuda: GPU acceleration support'
             'plumed: metadynamics support'
             'plumed-mpi: metadynamics support with MPI'
+            'vmd: visualize trajectories'
             'env-modules-tcl: modulefile support')
 options=(staticlibs !buildflags)
 
@@ -48,7 +49,7 @@ build() {
       -DCOMPILER=MANUAL  \
       -DMPI=TRUE -DCUDA=TRUE \
       -DOPENMP=TRUE \
-      -DINSTALL_TESTS=TRUE \
+      -DINSTALL_TESTS=FALSE \
       -DDOWNLOAD_MINICONDA=FALSE \
       -DFORCE_DISABLE_LIBS="plumed" \
       -DFORCE_INTERNAL_LIBS="arpack;xblas;netcdf;netcdf-fortran;pnetcdf;fftw;boost;mpi4py" \
@@ -60,12 +61,12 @@ build() {
 package() {
   mkdir -p ${pkgdir}/opt/amber
 
+  # install stuff
   cd ${srcdir}/amber${_releasever}_src/build
   make DESTDIR=${pkgdir} install
 
-  cd ${pkgdir}/opt/amber
-
   # install environment config file
+  cd ${pkgdir}/opt/amber
   install -Dm755 ${srcdir}/amber.sh ./amber.sh
 
   # install other stuff
@@ -86,4 +87,6 @@ package() {
   sed -i "s#${srcdir}/amber${_releasever}_src/build/AmberTools/src/xblas/build#/opt/amber/lib#" ${pkgdir}/opt/amber/AmberTools/src/config.h
   sed -i "s#${srcdir}/amber${_releasever}_src/build#/opt/amber#" ${pkgdir}/opt/amber/config.h
   sed -i "s#${srcdir}/amber${_releasever}_src/build#/opt/amber#" ${pkgdir}/opt/amber/AmberTools/src/config.h
+  sed -i "s#${srcdir}/amber${_releasever}_src#/opt/amber#" ${pkgdir}/opt/amber/config.h
+  sed -i "s#${srcdir}/amber${_releasever}_src#/opt/amber#" ${pkgdir}/opt/amber/AmberTools/src/config.h
 }
