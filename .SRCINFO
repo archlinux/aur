@@ -7,8 +7,6 @@ pkgbase = vulkan-loader-git
 	makedepends = cmake
 	makedepends = git
 	provides = vulkan-loader-git
-	conflicts = vulkan-icd-loader
-	replaces = vulkan-icd-loader
 	source = Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
 	md5sums = SKIP
 
