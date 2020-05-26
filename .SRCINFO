@@ -1,0 +1,22 @@
+pkgbase = soldat-git
+	pkgdesc = Unique 2D (side-view) multiplayer action game.
+	pkgver = 1.18.1.g9c8d032
+	pkgrel = 1
+	url = https://github.com/Soldat/soldat
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = fpc
+	depends = sdl2
+	depends = openal
+	depends = freetype2
+	depends = physfs
+	depends = libGameNetworkingSockets.so
+	provides = soldat
+	source = soldat-git::git+https://github.com/Soldat/soldat.git
+	source = soldat-base::git+https://github.com/Soldat/base.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = soldat-git
+
