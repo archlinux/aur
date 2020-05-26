@@ -1,14 +1,20 @@
 pkgbase = buffalo-bin
 	pkgdesc = A Go web development eco-system, designed to make your project easier.
-	pkgver = 0.16.8
+	pkgver = 0.16.9
 	pkgrel = 2
 	url = https://github.com/gobuffalo/buffalo/
 	arch = x86_64
 	license = MIT
 	makedepends = tar
-	conflicts = buffalo
-	source = buffalo-bin-0.16.8.tar.gz::https://github.com/gobuffalo/buffalo/releases/download/v0.16.8/buffalo_0.16.8_Linux_x86_64.tar.gz
-	sha256sums = 77ade8c844d19d40bdece33366902df1b8c9cdde74632d7062621cc81d1a6094
+	depends = go>=1.13
+	optdepends = nodejs>=8: frontend
+	optdepends = npm: asset pipeline
+	optdepends = yarn: frontend dependency management
+	optdepends = gcc: for building sqlite3 support
+	optdepends = git: for VCS support
+	conflicts = buffalo-git
+	source = buffalo-bin-0.16.9.tar.gz::https://github.com/gobuffalo/buffalo/releases/download/v0.16.9/buffalo_0.16.9_Linux_x86_64.tar.gz
+	sha256sums = f716b4d818bdb6e5af1a0071a9b99ee2db093908bd45d4bfe02077be433c35f6
 
 pkgname = buffalo-bin
 
