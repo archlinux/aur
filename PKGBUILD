@@ -5,7 +5,7 @@
 
 # Maintainer: sparzz
 pkgname=vulkan-extensionlayer-sparzz-git
-pkgver=1.2.140.2020.05.26.2
+pkgver=1.2.140.2020.05.26.3
 pkgrel=1
 epoch=
 pkgdesc="Vulkan ExtensionLayer build from source. My oder Vulkan packages from the AUR depends on this packages. For install instruction and the order of install visit my GitHub page ----> https://github.com/sparzz/vulkan-arch-aur"
