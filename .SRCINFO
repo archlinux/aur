@@ -1,0 +1,13 @@
+pkgbase = mpv-quack
+	pkgdesc = mpv script for temporarily reducing audio volume after seeking
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/CounterPillow/mpv-quack
+	arch = any
+	license = GPL3
+	depends = mpv
+	source = git+https://github.com/CounterPillow/mpv-quack
+	md5sums = SKIP
+
+pkgname = mpv-quack
+
