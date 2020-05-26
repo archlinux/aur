@@ -1,6 +1,6 @@
 pkgbase = sysprof-git
 	pkgdesc = Kernel based performance profiler
-	pkgver = 3.35.92
+	pkgver = 3.36.0+29+g32185d8
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Sysprof
 	arch = x86_64
@@ -13,7 +13,10 @@ pkgbase = sysprof-git
 	depends = polkit
 	depends = libdazzle
 	provides = sysprof
+	provides = sysprof2-git
 	conflicts = sysprof
+	conflicts = sysprof2-git
+	replaces = sysprof2-git
 	source = git+https://gitlab.gnome.org/GNOME/sysprof.git
 	sha256sums = SKIP
 

@@ -2,7 +2,7 @@
 
 pkgname=sysprof-git
 _pkgname=sysprof
-pkgver=3.35.92
+pkgver=3.36.0+29+g32185d8
 pkgrel=1
 pkgdesc="Kernel based performance profiler"
 url="https://wiki.gnome.org/Apps/Sysprof"
@@ -13,8 +13,9 @@ makedepends=(yelp-tools git meson)
 groups=(gnome-extra)
 source=("git+https://gitlab.gnome.org/GNOME/sysprof.git")
 sha256sums=('SKIP')
-provides=(sysprof)
-conflicts=(sysprof)
+provides=(sysprof sysprof2-git)
+conflicts=(sysprof sysprof2-git)
+replaces=(sysprof2-git)
 
 pkgver() {
   cd $_pkgname
