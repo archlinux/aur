@@ -2,7 +2,7 @@
 # Orginally Packaged By: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=rasdaemon
 pkgver=0.6.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Logging daemon for Platform Reliability, Availability and Serviceability (RAS), replacing mcelog"
 arch=(i686 x86_64)
 url="https://www.infradead.org/~mchehab/rasdaemon/"
@@ -39,7 +39,6 @@ build() {
     --enable-non-standard   \
     --enable-devlink        \
     --enable-diskerror      \
-    --enable-abrt-report    \
     --enable-sqlite3        \
     ;
   make
