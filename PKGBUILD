@@ -3,7 +3,7 @@
 # Upstream: https://github.com/Soldat/soldat
 
 pkgname=('soldat-git')
-installdir='/usr/share'
+_installdir='/usr/share/soldat'
 pkgver=1.8.1.g9c8d032
 pkgrel=1
 pkgdesc="Unique 2D (side-view) multiplayer action game."
@@ -24,7 +24,7 @@ pkgver() {
   echo "1.8.$(git rev-list --count master).g$(git describe --always)"
 }
 
-package() {
+build() {
   # compile assets
   cd "$srcdir/soldat-base"
   chmod +x create_smod.sh
@@ -38,25 +38,27 @@ package() {
   cd libs/stb; make; cd ../..;
   make linux_x86_64; cd ..;
 
-  # copy files
-  install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
-  install -Dm 655 "server/build/soldatserver_x64" -t "$pkgdir/$installdir/$pkgname";
-  install -Dm 655 "client/build/soldat_x64" -t "$pkgdir/$installdir/$pkgname";
-  install -Dm 644 "client/build/libstb.so" -t "$pkgdir/$installdir/$pkgname";
-  install -Dm 644 "$srcdir/soldat-base/soldat.smod" -t "$pkgdir/$installdir/$pkgname";
-  install -Dm 644 "$srcdir/soldat-base/client/play-regular.ttf" -t "$pkgdir/$installdir/$pkgname";
-
   # create bins
   cat <<EOF > soldat
 #!/usr/bin/env sh
-$installdir/$pkgname/soldat_x64 -fs_portable 0 \$@
+$_installdir/soldat_x64 -fs_portable 0 \$@
 EOF
 
   # HACK: fs_portable doesnt work on the server =/
   cat <<EOF > soldatserver
 #!/usr/bin/env sh
-$installdir/$pkgname/soldatserver_x64 -fs_userpath ~/.local/share/Soldat/Soldat \$@
+$_installdir/soldatserver_x64 -fs_userpath ~/.local/share/Soldat/Soldat \$@
 EOF
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  install -D -m644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 655 "server/build/soldatserver_x64" -t "$pkgdir/$_installdir";
+  install -Dm 655 "client/build/soldat_x64" -t "$pkgdir/$_installdir";
+  install -Dm 644 "client/build/libstb.so" -t "$pkgdir/$_installdir";
+  install -Dm 644 "$srcdir/soldat-base/soldat.smod" -t "$pkgdir/$_installdir";
+  install -Dm 644 "$srcdir/soldat-base/client/play-regular.ttf" -t "$pkgdir/$_installdir";
   install -Dm 655 "soldat" -t "$pkgdir/usr/bin";
   install -Dm 655 "soldatserver" -t "$pkgdir/usr/bin";
 }
