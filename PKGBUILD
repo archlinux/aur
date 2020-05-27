@@ -12,7 +12,7 @@ _replacesoldmodules=() # '%' gets replaced with kernel suffix
 
 pkgbase=linux-libre-hyperbola
 pkgver=5.4.42
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-libre 5.4 LTS'
 url='https://linux-libre.fsfla.org/'
 arch=(x86_64)
