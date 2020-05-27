@@ -1,40 +1,45 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
-_gitname=kcontacts
-pkgname=$_gitname-git
-pkgver=r2500.ccce04a
+_pkgname=kcontacts
+pkgname=$_pkgname-git
+pkgver=r3166.e47750b7
 pkgrel=1
 pkgdesc="Address book API for KDE"
-arch=('i686' 'x86_64')
-url="https://projects.kde.org/projects/kde/pim/$_gitname"
-license=('LGPL')
-depends=('kcoreaddons' 'kconfig' 'ki18n' 'kcodecs')
-makedepends=('extra-cmake-modules-git' 'git' 'python')
-conflicts=("$_gitname")
-provides=("$_gitname")
-source=("git://anongit.kde.org/$_gitname.git")
-md5sums=('SKIP')
+arch=(i686 x86_64)
+url="https://community.kde.org/Frameworks"
+license=(LGPL)
+depends=(kcoreaddons kconfig ki18n kcodecs iso-codes)
+makedepends=(extra-cmake-modules git doxygen qt5-tools qt5-doc)
+conflicts=("$_pkgname")
+provides=("$_pkgname")
+source=("git+https://github.com/KDE/$_pkgname.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
+  cd $srcdir/$_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
+  cd $srcdir/$_pkgname
   mkdir -p build
 }
 
 build() {
-  cd build
-  cmake ../$_gitname \
+  cd $srcdir/$_pkgname/build
+  cmake ../ \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
   make
 }
 
 package() {
-  cd build
+  cd $srcdir/$_pkgname/build
   make DESTDIR="$pkgdir" install
+  install -Dm644 ../COPYING.LIB "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+
 }
