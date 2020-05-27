@@ -32,6 +32,11 @@ if [ -f "/usr/lib/libfftw3_mpi.so" ]; then
 	CONFOPTS="${CONFOPTS} --with-fftw=1"
 fi
 
+# Add triangle support
+#if [ -f "/usr/lib/libtriangle.so" ]; then
+#	CONFOPTS="${CONFOPTS} --with-triangle=1"
+#fi
+
 # Add hdf5 support
 if [[ "$(h5stat -V)" ]]; then
 	CONFOPTS="${CONFOPTS} --with-hdf5=1"

@@ -3,7 +3,7 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
-pkgver=3.13.0
+pkgver=3.13.1
 pkgrel=2
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
@@ -17,22 +17,23 @@ options=(staticlibs)
 depends=('python' 'openmpi' 'boost' 'lapack')
 makedepends=('gcc' 'gcc-fortran' 'cmake')
 optdepends=('trilinos: support for trilinos'
-  'ptscotch: support for ptscotch parallel graph partitioning library'
+  'ptscotch: support for ptscotch sequential and parallel graph partitioning library'
   'parmetis: support for parmetis parallel graph partitioning library'
   'metis: support for metis graph partitioning library'
   'pastix: support for the pastix solver'
   'superlu: support for the superlu sparse solver'
   'hypre: support for the hypre sparse system solver'
-  'hdf5: support for the parallel version of hdf5'
+  'hdf5-openmpi: support for the parallel version of HDF5'
   'mumps: support for the mumps sparse solver'
-  'fftw: support for the fftw fast Fourier transform'
+  'fftw: support for the FFTW fast Fourier transform'
+  #'triangle: support for the two-dimensional quality mesh generator and Delaunay triangulator'
   'suitesparse: support for the suitesparse sparse matrix libraries'
   )
 install=petsc.install
 source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-lite-${pkgver/_/-}.tar.gz
         test_optdepends.sh)
-sha256sums=('f0ea543a54145c5d1387e25b121c3fd1b1ca834032c5a33f6f1d929e95bdf0e5'
-            'f127806175b681f4e9cb64aeba4f3fabd9eb92ef945f5542677b255cb3d85913')
+sha256sums=('74a895e44e2ff1146838aaccb7613e7626d99e0eed64ca032c87c72d084efac3'
+            'f67901cec213c346481b6c9a56080dee9ee00a3852e46da9f35e933a11870623')
 
 _install_dir=/opt/petsc/${_config}
 _petsc_arch="arch-${_config}"
@@ -45,7 +46,8 @@ build() {
   unset PETSC_ARCH
   export PETSC_DIR=${_build_dir}
 
-  CONFOPTS="--with-shared-libraries=1 --COPTFLAGS=-O3 --CXXOPTFLAGS=-O3 --FOPTFLAGS=-O3"
+  CONFOPTS="--with-shared-libraries=1 --COPTFLAGS=-O3 --CXXOPTFLAGS=-O3 --FOPTFLAGS=-O3 \
+            --with-cc=$(which mpicc) --with-cxx=$(which mpicxx) --with-fc=$(which mpifort)"
   CONFOPTS="${CONFOPTS} $(sh ${srcdir}/test_optdepends.sh)"
 
   echo ${CONFOPTS}
