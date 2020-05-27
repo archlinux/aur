@@ -2,7 +2,8 @@
 # Contributor: Kyle Laker <kyle@laker.email>
 
 pkgname=warpinator
-pkgver=1.0.3
+pkgver=1.0.4
+_pkgver=ulyana
 pkgrel=1
 pkgdesc="Allows simple local network file sharing"
 arch=("x86_64")
@@ -26,13 +27,13 @@ makedepends=(
     polkit
     python-grpcio-tools
 )
-optdepends=('gufw: Configure firewall rules')
+optdepends=('ufw: Configure firewall rules')
 conflicts=(
     lm-warp
     warpinator-git
 )
-source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('5476a625e88fa5a6be73d0ba07d0a22a4b6737d029499d5c6787f8f1fc894720')
+source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}+${_pkgver}.tar.xz")
+sha256sums=('b41da05d4a5dd59072b3ce8b189a2e78d298ce71a72d436e47584380a14c4ad3')
 
 prepare() {
 	cd "$srcdir/warp"
