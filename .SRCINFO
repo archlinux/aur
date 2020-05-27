@@ -1,15 +1,15 @@
 pkgbase = rvrspkg
 	pkgdesc = Creates a package for Arch Linux using the installed package and its binary files
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/BiteDasher/rvrspkg
 	arch = any
 	license = MIT
 	depends = bash
 	depends = coreutils
-	depends = pacman-contrib
-	source = rvrspkg-1.1.tar.gz::https://github.com/BiteDasher/rvrspkg/archive/1.1.tar.gz
-	sha256sums = 276f076ca5bbc95b78688b10a6f4c3490b542dfc630467ccc306391fe99ea1b5
+	depends = sed
+	source = rvrspkg-1.2.tar.gz::https://github.com/BiteDasher/rvrspkg/archive/1.2.tar.gz
+	sha256sums = 9dca093ed291c1d4741592ae73b354875886f0d84a49ee09df3c60ae99b5b304
 
 pkgname = rvrspkg
 
