@@ -1,13 +1,14 @@
 pkgbase = dwm-syaoran-git
 	pkgdesc = This is my dwm (dynamic window manager) build.
 	pkgver = 6.2.r32.93ee651
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/justanoobcoder/dwm-syaoran.git
 	arch = any
 	license = MIT
 	makedepends = make
 	depends = libx11
 	depends = st-syaoran-git
+	depends = dwmblocks-syaoran-git
 	depends = libxinerama
 	depends = libxft-bgra-git
 	depends = ttf-liberation

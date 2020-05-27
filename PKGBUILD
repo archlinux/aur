@@ -2,13 +2,13 @@
 pkgname=dwm-syaoran-git
 _dir=dwm-syaoran
 pkgver=6.2.r32.93ee651
-pkgrel=1
+pkgrel=2
 pkgdesc="This is my dwm (dynamic window manager) build."
 arch=('any')
 url="https://gitlab.com/justanoobcoder/dwm-syaoran.git"
 license=('MIT')
 groups=()
-depends=(libx11 st-syaoran-git libxinerama libxft-bgra-git ttf-liberation ttf-font-awesome noto-fonts-emoji freetype2 dmenu pacman-contrib ibus)
+depends=(libx11 st-syaoran-git dwmblocks-syaoran-git libxinerama libxft-bgra-git ttf-liberation ttf-font-awesome noto-fonts-emoji freetype2 dmenu pacman-contrib ibus)
 makedepends=(make)
 checkdepends=()
 optdepends=(scrcast-git)
