@@ -5,7 +5,7 @@
 
 # Maintainer: sparzz
 pkgname=vulkan-headers-sparzz-git
-pkgver=1.2.141_final_1
+pkgver=1.2.141_2020.05.27
 pkgrel=1
 epoch=
 pkgdesc="Vulkan Headers build from source. My oder Vulkan packages from the AUR depends on this packages. For install instruction and the order of install visit my GitHub page ----> https://github.com/sparzz/vulkan-arch-aur"
