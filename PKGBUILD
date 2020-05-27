@@ -2,7 +2,7 @@
 
 pkgname=bgb
 pkgver=1.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Game Boy emulator with advanced debugger'
 arch=(x86_64)
 url=https://bgb.bircd.org

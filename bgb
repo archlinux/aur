@@ -1,2 +1,19 @@
 #!/bin/sh
-exec wine /usr/lib/bgb/bgb.exe $@
+set -e
+
+BGB_EXE=/usr/lib/bgb/bgb.exe
+BGB_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/bgb"
+BGB_CONFIG="$BGB_CONFIG_DIR/bgb.ini"
+
+mkdir -p "$BGB_CONFIG_DIR"
+
+tmp="$(mktemp -d)"
+cp -t "$tmp" "$BGB_EXE"
+if [ -e "$BGB_CONFIG" ]; then
+	cp -t "$tmp" "$BGB_CONFIG"
+fi
+
+wine "$tmp/$(basename "$BGB_EXE")" $@
+
+cp -t "$BGB_CONFIG_DIR" "$tmp/$(basename "$BGB_CONFIG")"
+rm -r "$tmp"
