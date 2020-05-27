@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _major=5.6
-_minor=14
+_minor=15
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -78,9 +78,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v14-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v14-sep/0002-gcc-plugins-drop-support-for-GCC-4.7.patch"
-        "${_lucjanpath}/arch-patches-v14-sep/0003-gcc-common.h-Update-for-GCC-10.patch"
+        "${_lucjanpath}/arch-patches-v16-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v16-sep/0002-gcc-plugins-drop-support-for-GCC-4.7.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -323,14 +322,13 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('fe19ad3165ae46f1511e39c495ba1a5a304ea3f69a169debe27026e0c888a4766b1618c76aee2279ba6fb0316cb731fdcd8ad5f9ac8dc1d4058573bd5dc00cd0'
+sha512sums=('fb87f0857b242cda7137b8ef32431f14f48ab9349cbf964b06d07ccbb81d1d4683e33c2b629fb41edf6d0c32c412069397b85683654ee632a9539c764fd9e7a2'
             'SKIP'
             '31141f3afa388dbfc7a0a1c0a7b7fc58a6824befea1fc044eb76fc0e6d4c55f249e3e0f7e63c0697ba736dc902d85128c0d78eeffe8eca3c207a573664c74514'
             '1962d021d48236f287736383acac9176e6f992cf980b5c66c1ba006288b1f2039c02caa81ebf44e99edc0dcaf09160a3fe8e4aece7541b09ec5f30cd8d834dc5'
             '9c71d44a84a2cbe16af1328ab11b9733218a26eda23e6643fcf1daebf368bcd5ff2502ffd77f7b6b300b943e87f1d9e787ffb48f3705fba6daa8b49094fb9f2d'
-            '399b42510f4ebed27b8e18f7940edc26fdd5b9d6add8dfa05170776edce84baf9800e5d7c321e4cf2e8e7885381606be1f30e097ef2d658154b52b6e1ae6a0e6'
-            'fd366ee8567af46bf0d1d96af101d26815260a8d8ff8145dcee7cf44e11b6c238601e99e6624e421042399bb73698a947c499cfce1bd6150df3be7218fb24cdd'
-            'ab35f9f5355a18543f19574bdd04b62e8aae2fe4355ae1a24d29f3121fe18ec4edc130d2eca77ec68a03d694ddb549e13d0abf36cea986171bdcd8f213333cde'
+            '8c0ca7ab292e6f1a75fd4ae0de797259bf68a5f1512b9f0c905250446ebb924531589d4b8d4d9d7fb1cdd65658b32a8528a7fb7056947d7b31bdc87b4e424752'
+            '4ef82534e202188bec24232a60af73d48870c7f0b3403ec821b132c38cdccc9917037d74dd94cbcbc6be70cf45006e7ace928c32623cecb5289251c2eb4ea1d8'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             '94c3b65a9b83620bc6af5cd31c0f4351dfd6d8a9d18cc03d3bf590512f0c8c4d7cfe43a08d7a2edc1799c3a81f02046702ef6b6e773db02df0a9859f8160fe98')
 
