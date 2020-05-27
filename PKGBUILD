@@ -7,8 +7,8 @@ pkgver() {
   cd "$srcdir/${pkgname%-git}"
   printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r713.g4542f27
-pkgrel=1
+pkgver=r774.ge69a7ad
+pkgrel=2
 
 pkgdesc='A simple interface to auto-configure neomutt and isync with safe passwords'
 arch=('x86_64')
@@ -36,7 +36,6 @@ optdepends=('imagemagick: view images inside of the neomutt TUI'
 options=('zipman')
 
 install="${pkgname%-git}.install"
-changelog=CHANGELOG.md
 source=("git+$url")
 sha256sums=('SKIP')
 
