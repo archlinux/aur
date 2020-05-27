@@ -2,6 +2,12 @@ pre_install() {
     mkdir /etc/mkinitcpio.d/old
     mv -vf /etc/mkinitcpio.d/*.preset /etc/mkinitcpio.d/old
 }
+post_install(){
+    [ -f /etc/makeuki/makeuki.conf ] || cp /etc/makeuki/makeuki.conf.default /etc/makeuki/makeuki.conf
+}
+post_upgrade(){
+    [ -f /etc/makeuki/makeuki.conf ] || cp /etc/makeuki/makeuki.conf.default /etc/makeuki/makeuki.conf
+}
 post_remove() {
     mv -vf /etc/mkinitcpio.d/old/* /etc/mkinitcpio.d/
     rm -rf /etc/mkinitcpio.d/old
