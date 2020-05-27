@@ -11,7 +11,7 @@ source=("$pkgname-$pkgver.zip::https://bgb.bircd.org/bgb.zip"
         $pkgname)
 noextract=("$pkgname-$pkgver.zip")
 md5sums=('15b8b380c45f8cbe9e598f7224fd341e'
-         'c5f34b057c0c5452011dc13b3c60fe94')
+         '4d4059bc274aa50619dc82fc749af9f3')
 
 prepare() {
     cd "$srcdir"
