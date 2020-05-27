@@ -5,7 +5,7 @@
 
 # Maintainer: sparzz
 pkgname=vulkan-validation-layers-git
-pkgver=1.2.140_2020.05.27_r
+pkgver=1.2.140_2020.05.27_r2
 pkgrel=1
 epoch=
 pkgdesc="vulkan validation layers build from source. My oder Vulkan packages from the AUR depends on this packages. For install instruction and the order of install visit my GitHub page ----> https://github.com/sparzz/vulkan-arch-aur"
@@ -13,7 +13,11 @@ arch=(x86_64)
 url="https://github.com/sparzz/vulkan-arch-aur"
 license=('Apache')
 groups=()
-depends=()
+depends=("glslang-sparzz-git"
+        "yay"
+        "spirv-headers-sparzz-git"
+        "vulkan-loader-git"
+        "vulkan-headers-sparzz-git")
 makedepends=("cmake"
             "git"
             "glslang-sparzz-git"
