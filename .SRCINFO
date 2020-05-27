@@ -1,16 +1,16 @@
 pkgbase = sensu-go-backend
 	pkgdesc = Sensu Go Backend
-	pkgver = 5.20.1
+	pkgver = 5.20.2
 	pkgrel = 1
 	url = https://sensu.io
 	arch = x86_64
 	license = MIT
 	provides = sensu-backend
 	conflicts = sensu-backend
-	source = sensu-go-backend-5.20.1-12427_amd64.deb::https://packagecloud.io/sensu/stable/packages/debian/buster/sensu-go-backend_5.20.1-12427_amd64.deb/download.deb
+	source = sensu-go-backend-5.20.2-12959_amd64.deb::https://packagecloud.io/sensu/stable/packages/debian/buster/sensu-go-backend_5.20.2-12959_amd64.deb/download.deb
 	source = sensu.sysusers
 	source = sensu.tmpfiles
-	sha1sums = b952b5909f2a097e1152108a17512ab8993ededf
+	sha1sums = 15110d097f4fa5639c25255e412009c360669634
 	sha1sums = 054c2cfb7b2c4e6900fe79620b40fd060dbc0d8a
 	sha1sums = 9cca06fcbb23d5618382cc14e4ab4cc73c1f91fa
 
