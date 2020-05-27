@@ -5,6 +5,7 @@ pkgbase = soldat-git
 	url = https://github.com/Soldat/soldat
 	arch = x86_64
 	license = MIT
+	license = custom:Shareware assets
 	makedepends = make
 	makedepends = fpc
 	makedepends = zip
