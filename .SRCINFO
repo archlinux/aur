@@ -1,6 +1,6 @@
 pkgbase = gegl-git
 	pkgdesc = Graph based image processing framework
-	pkgver = 0.4.23.r9877.208f6b130
+	pkgver = 0.4.23.r10019.d528f1541
 	pkgrel = 1
 	url = https://www.gegl.org
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = gegl-git
 	makedepends = python-gobject
 	makedepends = suitesparse
 	makedepends = gobject-introspection
-	depends = babl>=0.1.74
+	depends = babl>=0.1.76
 	depends = libspiro
 	depends = json-glib
 	depends = sdl2
