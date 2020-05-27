@@ -2,9 +2,9 @@
 
 pkgbase=linux-amd
 _srcname=linux
-gitver=v5.6.14
-pkgver=5.6.v.14
-pkgrel=4
+gitver=v5.6.15
+pkgver=5.6.v.15
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -26,7 +26,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'c5a2d4c63128c8ab8758068a44081ccd31d1738b3d1d30f0c124f08610f62f52'
+            'cc2b25d87dfbe2c2a2c83c334530e0fd51239b29047b8c401bcb39ab6bf41b8d'
             #.preset file
             '71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08'
             #patch gentoo
@@ -55,8 +55,8 @@ prepare() {
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  # Implement all packaged patches.
-  git apply ../*.patch
+  # Implement all packaged patches. Ignore errors.
+  git apply ../*.patch || echo "ERROR: something went wrong with a gitpatch. Advancing anyway."
 
   # get kernel version
   yes "" | make prepare
