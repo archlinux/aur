@@ -17,10 +17,14 @@ pkgbase = jicofo-git
 	source = jicofo.conf
 	source = jicofo.service
 	source = sip-communicator.properties
+	source = sysusers.conf
+	source = tmpfiles.conf
 	sha256sums = SKIP
 	sha256sums = 3a558324a17011cf48e033ce265d45cc06a0b53e009984e841496f1cd4d7519d
-	sha256sums = a28d21abcbb58ac50c974aba04360c3307a37074b420e40abd016e9d9adddd85
+	sha256sums = 82937c73200a38326e4362fcf0cbc27ad710a0c0c5708e5f84815d10dfd86a86
 	sha256sums = ed3a2c91d3f6c92f3aeae4dd852f04196ed57cc0c8a33da3bae6c1fb26b88294
+	sha256sums = 0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440
+	sha256sums = b4ed1528f804056b43d47a8214f2ed853b31a8cedbafb96c26fae556df554be8
 
 pkgname = jicofo-git
 

@@ -5,3 +5,5 @@
 !jicofo.service
 !jicofo.conf
 !sip-communicator.properties
+!sysusers.conf
+!tmpfiles.conf
