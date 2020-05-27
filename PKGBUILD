@@ -2,7 +2,7 @@
 
 pkgname=yabridge-git
 _pkgname=yabridge
-pkgver=1.1.2.r7.g33e5d2b
+pkgver=1.1.4.r80.gce35124
 pkgrel=1
 pkgdesc="Yet Another VST bridge, run Windows VST2 plugins under Linux"
 arch=('x86_64')
@@ -35,8 +35,8 @@ package() {
   cd "$_pkgname/build"
 
   install -dm755 "${pkgdir}"/usr/bin
-  install yabridge-host.exe{,.so} "${pkgdir}"/usr/bin
-  install yabridge-host-32.exe{,.so} "${pkgdir}"/usr/bin
+  install yabridge-{host,group}.exe{,.so} "${pkgdir}"/usr/bin
+  install yabridge-{host,group}-32.exe{,.so} "${pkgdir}"/usr/bin
 
   install -dm755 "${pkgdir}"/usr/lib
   install libyabridge.so "${pkgdir}"/usr/lib
