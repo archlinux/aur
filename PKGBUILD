@@ -2,7 +2,7 @@
 # Contributor: Fabio Loli
 # Contributor: Adam Rutkowski
 pkgname=liquidctl-git
-pkgver=1.3.3.r46.9a8d3a0
+pkgver=1.3.3.r68.89b9f00
 pkgrel=1
 pkgdesc="Cross-platform tool and drivers for liquid coolers and other devices"
 arch=('any')
@@ -31,4 +31,5 @@ package() {
 	cd "$srcdir/$pkgname"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 liquidctl.8 "$pkgdir/usr/share/man/man8/liquidctl.8"
+	install -Dm644 extra/71-liquidctl.rules "$pkgdir/usr/lib/udev/rules.d/71-liquidctl.rules"
 }
