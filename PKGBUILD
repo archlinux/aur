@@ -2,7 +2,7 @@
 
 pkgname=nodejs-neovim
 _npmname=neovim
-pkgver=4.8.0
+pkgver=4.9.0
 pkgrel=1
 pkgdesc="Nvim Node.js client and plugin host"
 arch=("any")
@@ -12,7 +12,8 @@ depends=("nodejs")
 makedepends=("npm" "jq")
 optdepends=()
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha256sums=('a1d4f4a569c55e43467fe952269100b5d3eebdf6f4ba30d4db5fea604218fe36')
+sha256sums=('0ec8ae2bcdc431563090914263be2700c477b2a9908171b3074d80a3f1044db0')
+noextract=("$_npmname-$pkgver.tgz")
 
 package() {
 	npm install -g --user root --cache "${srcdir}/npm-cache" --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
