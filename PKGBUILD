@@ -5,10 +5,10 @@
 
 # Maintainer: sparzz
 pkgname=vulkan-loader-git
-pkgver=1.2.140_final_1
+pkgver=1.2.141_2020.05.27
 pkgrel=1
 epoch=
-pkgdesc="Vulkan loader build from source. Depends on vulkan headers from my aur repo. Even if the default vulkan-headers is installed on your system this build will take my package automaticly"
+pkgdesc="Vulkan loader build from source. Depends on vulkan headers from my aur repo.  For install instruction and the order of install visit my GitHub page ----> https://github.com/sparzz/vulkan-arch-aur"
 arch=(x86_64)
 url=""
 license=('Apache')
@@ -50,6 +50,8 @@ package() {
 	-DVulkanRegistry_DIR=/usr/local/share/vulkan/registry \
 	-DSPIRV_HEADERS_INSTALL_DIR=/usr/local/include/spirv \
 	-DSPIRV_HEADERS_INSTALL_DIR=/usr/local/lib/cmake/SPIRV-Headers \
+	-DVulkanHeaders_INCLUDE_DIRS=/usr/local/share/vulkan/registry \
+    -DVulkanHeaders_INCLUDE_DIRS=/usr/local/include/vulkan \
 	cmake configure Vulkan-Loader 
 	make DESTDIR="$pkgdir" install
 }
