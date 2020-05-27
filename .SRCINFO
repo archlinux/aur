@@ -1,18 +1,19 @@
 pkgbase = msitools-git
-	pkgdesc = Set of programs to inspect and build Windows Installer (.MSI) files
-	pkgver = r694.c7b6840
+	pkgdesc = Set of programs to inspect and build Windows Installer (.MSI) files (Git)
+	pkgver = r825.7ac1e76
 	pkgrel = 1
 	url = https://wiki.gnome.org/msitools
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
+	makedepends = git
 	makedepends = vala
 	depends = libgsf
 	depends = gcab
 	provides = msitools
 	conflicts = msitools
-	source = git+https://github.com/GNOME/msitools
+	source = git+https://github.com/GNOME/msitools.git
 	sha256sums = SKIP
 
 pkgname = msitools-git
