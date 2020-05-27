@@ -1,0 +1,16 @@
+pkgbase = idris2-git
+	pkgdesc = Funtional Programming Lanugage with Dependent Types
+	pkgver = 0.2.0.r30.g8b062f4
+	pkgrel = 1
+	url = https://www.idris-lang.org/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = chez-scheme
+	provides = idris2
+	conflicts = idris2
+	source = git+https://github.com/idris-lang/idris2.git
+	md5sums = SKIP
+
+pkgname = idris2-git
+
