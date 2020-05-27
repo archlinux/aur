@@ -4,7 +4,7 @@ pkgname=jitsi-videobridge
 # https://github.com/jitsi/jitsi-videobridge/releases/latest
 pkgver=2.1_202_g5f9377b9
 _tag="jitsi-meet_4627"
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Videobridge for Jitsi Meet"
 arch=("x86_64")
@@ -30,7 +30,7 @@ source=(${pkgname}-${pkgver}-${_tag}.tar.gz::https://github.com/jitsi/jitsi-vide
 noextract=()
 sha256sums=('a9f57668426341ddc74518e0442b8514841898bef45e1f22c9252ac593d567a0'
             'd2746be91f361557343398b9544233f1482d60c6117db4ecaa7c7851cd347b50'
-            '4d68d857e76e38c9379573143a60eab681b721543f8515edad95530f95d4384a'
+            'cad8d0dd61350201627ac209a1bfdec907e5ddc98b171a39c8e454f7fe9290dd'
             '2b7679218752c0435a1496306b447d72aafaf5b671b6eef63e58c83a67638ced')
 validpgpkeys=()
 
@@ -41,8 +41,8 @@ build() {
 }
 
 package() {
-    install -d "${pkgdir}/opt"
-    cp -R "${srcdir}/${pkgname}-stable-${_tag}/jitsi-videobridge-2.1-SNAPSHOT/" "${pkgdir}/opt/jitsi-videobridge"
+    install -d "${pkgdir}/usr/share"
+    cp -R "${srcdir}/${pkgname}-stable-${_tag}/jitsi-videobridge-2.1-SNAPSHOT/" "${pkgdir}/usr/share/jitsi-videobridge"
     install -Dm644 jitsi-videobridge.service "${pkgdir}"/usr/lib/systemd/system/jitsi-videobridge.service
     install -Dm644 jitsi-videobridge.conf "${pkgdir}"/etc/jitsi/videobridge/jitsi-videobridge.conf
     install -Dm644 sip-communicator.properties "${pkgdir}"/etc/jitsi/videobridge/sip-communicator.properties
