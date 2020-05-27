@@ -12,7 +12,7 @@ groups=('qownnotes')
 depends=('qt5-base' 'qt5-svg' 'qt5-declarative' 'openssl' 'qt5-xmlpatterns' 'qt5-websockets' 'qt5-x11extras' 'aspell')
 makedepends=('qt5-tools')
 source=("https://download.tuxfamily.org/${pkgname}/src/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('5d764ba364f4afa7bf2908fdb59e09538b7050a59a76bc82a5b9b53757229554')
+sha256sums=('7a97f0842d858dc9da4962236542de29d2c43ef22751c5176117b86239b78065')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
