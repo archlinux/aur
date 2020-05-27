@@ -1,0 +1,32 @@
+pkgbase = codegrade-fs-electron
+	pkgdesc = Electron frontend for the CodeGrade filesystem
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://codegrade.com
+	install = codegrade-fs-electron.install
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = npm
+	makedepends = python
+	depends = python-codegrade-fs
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = http-parser
+	depends = libevent
+	depends = libvpx
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
+	depends = libnotify
+	depends = libappindicator-gtk2
+	depends = libappindicator-gtk3
+	source = codegrade-fs-electron-1.1.2::git+https://github.com/CodeGra-de/CodeGra.fs.git#commit=50d99b53fe6043382ed514377394f73d6335191f
+	sha256sums = SKIP
+
+pkgname = codegrade-fs-electron
+

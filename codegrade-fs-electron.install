@@ -1,0 +1,9 @@
+post_install() {
+    # Link to the binary
+    ln -sf '/opt/CodeGrade Filesystem/codegrade-fs' '/usr/local/bin/codegrade-fs'
+}
+
+post_remove() {
+    # Delete the link to the binary
+    rm -f '/usr/local/bin/codegrade-fs'
+}
