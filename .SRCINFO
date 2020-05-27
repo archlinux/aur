@@ -1,8 +1,8 @@
 pkgbase = python-sphinx-gallery
 	pkgdesc = Sphinx extension to automatically generate an examples gallery
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
-	url = http://sphinx-gallery.readthedocs.io/
+	url = http://sphinx-gallery.github.io
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -12,8 +12,8 @@ pkgbase = python-sphinx-gallery
 	checkdepends = python-sphinx
 	checkdepends = python-joblib
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-gallery/sphinx-gallery-0.6.2.tar.gz
-	md5sums = 73584c81a5a2ef794d4055a3132bcc90
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-gallery/sphinx-gallery-0.7.0.tar.gz
+	md5sums = bb9944c614810551c424798556ba8230
 
 pkgname = python-sphinx-gallery
 	depends = python-sphinx>=1.8.3
