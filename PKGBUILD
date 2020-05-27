@@ -3,7 +3,7 @@
 
 pkgbase=linux-rt
 _pkgver=5.6.14
-_rtpatchver=6
+_rtpatchver=7
 pkgver="${_pkgver}.${_rtpatchver}"
 pkgrel=1
 pkgdesc='Linux RT'
@@ -34,7 +34,7 @@ validpgpkeys=(
 )
 sha256sums=('33763f3541711e39fa743da45ff9512d54ade61406173f3d267ba4484cec7ea3'
             'SKIP'
-            'fd1c48c3a0b0a744b11d0c1a39b1a0261f20ab91cc9e0a716d5cdfe44a4c3e6e'
+            '95566473def743f299c7128b95a77ced63eb21a72052706ba968a1ec11cac7fb'
             'SKIP'
             '45759066cd533e989e99ec51c3b14734e4c7020795edd9e371e28599a872d1d3'
             'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85'
