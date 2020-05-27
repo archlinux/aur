@@ -1,0 +1,27 @@
+pkgbase = libressl-latest
+	pkgdesc = A version of the TLS/crypto stack forked from OpenSSL, with goals of modernizing the codebase, improving security, and applying best practice development processes
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://www.libressl.org/
+	arch = i686
+	arch = x86_64
+	license = OpenSSL
+	depends = glibc
+	optdepends = ca-certificates
+	provides = openssl
+	provides = openssl-1.0
+	conflicts = openssl
+	conflicts = openssl-1.0
+	replaces = openssl
+	replaces = openssl-1.0
+	backup = etc/ssl/openssl.cnf
+	source = https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.1.2.tar.gz
+	source = https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.1.2.tar.gz.asc
+	source = libressl-dummy-rand-egd.patch
+	validpgpkeys = A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5
+	sha512sums = b024c5661777daa73feff7085ce7be76a2e766d2f3cb5ca35c208c471e5651a365252758ca36782e20cdfb2bc8171919a08ad592420878a5c95fbe646f5288c8
+	sha512sums = SKIP
+	sha512sums = 6dbf61a66d41383027c91133a5cd473054bba6b1f41e6290663bf7a2c662b7fc2422eb45d1d60687938a6810d2c836b5cb5d181574acbba46ef887a2724b39f2
+
+pkgname = libressl-latest
+

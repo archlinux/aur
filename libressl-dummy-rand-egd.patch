@@ -1,0 +1,33 @@
+diff --git a/crypto/rand/rand_lib.c b/crypto/rand/rand_lib.c
+index 8342a55..9fd581d 100644
+--- a/crypto/rand/rand_lib.c
++++ b/crypto/rand/rand_lib.c
+@@ -98,3 +98,15 @@ RAND_pseudo_bytes(unsigned char *buf, int num)
+ 		arc4random_buf(buf, num);
+ 	return 1;
+ }
++
++int
++RAND_egd(const char *path)
++{
++	return -1;
++}
++
++int
++RAND_egd_bytes(const char *path, int bytes)
++{
++	return -1;
++}
+diff --git a/include/openssl/rand.h b/include/openssl/rand.h
+index fcb2e92..b1ebf02 100644
+--- a/include/openssl/rand.h
++++ b/include/openssl/rand.h
+@@ -98,6 +98,8 @@ int  RAND_load_file(const char *file, long max_bytes);
+ int  RAND_write_file(const char *file);
+ const char *RAND_file_name(char *file, size_t num);
+ int RAND_status(void);
++int RAND_egd(const char *path);
++int RAND_egd_bytes(const char *path,int bytes);
+ int RAND_poll(void);
+ #endif
+ 
