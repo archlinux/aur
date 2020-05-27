@@ -8,13 +8,15 @@ url="https://github.com/dakyskye/dxhd"
 license=('MIT')
 depends=('go')
 makedepends=('git')
+provides=('dxhd')
+conflicts=('dxhd-bin')
 source=("$pkgname::git+https://github.com/dakyskye/dxhd.git")
 md5sums=('SKIP')
 
 
 build() {
 	cd "$pkgname"
-	CGO_ENABLED=0 go build -o $pkgname .
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o $pkgname .
 }
 
 package() {
