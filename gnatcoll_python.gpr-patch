@@ -1,0 +1,11 @@
+--- gnatcoll_python.gpr	2020-05-27 08:29:56.584766613 +1000
++++ gnatcoll_python.gpr-new	2020-05-27 08:30:14.718689892 +1000
+@@ -73,7 +73,7 @@
+          when "PROD" =>
+             --  Do not use -gnatwe for production mode
+             for Switches ("Ada") use ("-O2", "-gnatn", "-gnatwaCJ");
+-            for Switches ("C") use ("-O2", "-Wunreachable-code") & Split(Python_CFLAGS, " ");
++            for Switches ("C") use ("-O2", "-Wunreachable-code", "-fPIC") & Split(Python_CFLAGS, " ");
+       end case;
+    end Compiler;
+ 

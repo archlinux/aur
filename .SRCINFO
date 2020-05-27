@@ -1,7 +1,7 @@
 pkgbase = gnatcoll-python
 	pkgdesc = GNAT Components Collection - interface to the python interpreter.
-	pkgver = 2019
-	pkgrel = 2
+	pkgver = 2020
+	pkgrel = 1
 	url = https://github.com/AdaCore/gnatcoll-bindings/
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = gnatcoll-python
 	makedepends = gprbuild
 	depends = python2
 	depends = gnatcoll-core
-	source = https://community.download.adacore.com/v1/964ece4f78755a2fb3c1c84cec2c375cda66bd98?filename=gnatcoll-bindings-2019-20190430-1928C-src.tar.gz
-	source = setup.py-patch
-	sha1sums = 964ece4f78755a2fb3c1c84cec2c375cda66bd98
-	sha1sums = 92d80368c81b0e9eef3f9ab7e0fcc5da61b532e9
+	source = https://community.download.adacore.com/v1/3c54db553121bf88877e2f56ac4fca36765186eb?filename=$bindings_src.tar.gz
+	source = gnatcoll_python.gpr-patch
+	sha1sums = 3c54db553121bf88877e2f56ac4fca36765186eb
+	sha1sums = 2cdbc553ec055f023f127117e4481266bbfcfe30
 
 pkgname = gnatcoll-python
 

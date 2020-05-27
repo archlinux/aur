@@ -1,8 +1,8 @@
 # Maintainer: Rod Kay <charlie5 on #ada at freenode.net>
 
 pkgname=gnatcoll-python
-pkgver=2019
-pkgrel=2
+pkgver=2020
+pkgrel=1
 
 pkgdesc='GNAT Components Collection - interface to the python interpreter.'
 url='https://github.com/AdaCore/gnatcoll-bindings/'
@@ -12,25 +12,30 @@ license=('GPL')
 depends=('python2' 'gnatcoll-core')
 makedepends=('gprbuild')
 
-source=('https://community.download.adacore.com/v1/964ece4f78755a2fb3c1c84cec2c375cda66bd98?filename=gnatcoll-bindings-2019-20190430-1928C-src.tar.gz'
-        'setup.py-patch')
-sha1sums=('964ece4f78755a2fb3c1c84cec2c375cda66bd98'
-          '92d80368c81b0e9eef3f9ab7e0fcc5da61b532e9')
+bindings_src=gnatcoll-bindings-20.0-20191009-1B2EA-src
+
+source=('https://community.download.adacore.com/v1/3c54db553121bf88877e2f56ac4fca36765186eb?filename=$bindings_src.tar.gz'
+        'gnatcoll_python.gpr-patch')
+        
+sha1sums=('3c54db553121bf88877e2f56ac4fca36765186eb'
+          '2cdbc553ec055f023f127117e4481266bbfcfe30')
 
 prepare()
 {
-    cd "$srcdir/gnatcoll-bindings-2019-20190430-1928C-src/python"
-    patch -Np0 -i "$srcdir"/setup.py-patch
+    cd "$srcdir/$bindings_src/python"
+    patch -Np0 -i "$srcdir"/gnatcoll_python.gpr-patch
 }
+
 
 build()
 {
-    cd "$srcdir/gnatcoll-bindings-2019-20190430-1928C-src/python"
+    cd "$srcdir/$bindings_src/python"
     python2 setup.py build -j1 --prefix=/usr
 }
 
+
 package()
 {
-    cd "$srcdir/gnatcoll-bindings-2019-20190430-1928C-src/python"
+    cd "$srcdir/$bindings_src/python"
     python2 setup.py install --prefix="$pkgdir/usr"
 }
