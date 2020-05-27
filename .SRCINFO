@@ -1,5 +1,5 @@
 pkgbase = linux-nitrous-fire
-	pkgver = 5.6.14
+	pkgver = 5.6.15
 	pkgrel = 2
 	url = https://gitlab.com/xdevs23/linux-nitrous
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = linux-nitrous-fire
 	makedepends = libelf
 	makedepends = coreutils
 	options = !strip
-	source = git+https://gitlab.com/xdevs23/linux-nitrous.git#tag=v5.6.14-2
+	source = git+https://gitlab.com/xdevs23/linux-nitrous.git#tag=v5.6.15-2
 	source = linux-nitrous-fire.preset
 	sha256sums = SKIP
 	sha256sums = 5c5305e210d83ca015b2272d82c4fbc51a690984a34bfca7922d8c0818b1772b
