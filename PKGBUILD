@@ -2,7 +2,7 @@
 pkgname='hlsdl'
 pkgver='0.27'
 _commit='cbf4301a912a3c0bbb418bd92b861f390f9c519c'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='C program to download VoD HLS (.m3u8) files'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/selsta/$pkgname"
@@ -15,6 +15,8 @@ _sourcedirectory="$pkgname-$_commit"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
+	# see https://bbs.archlinux.org/viewtopic.php?id=255727
+	CFLAGS="$CFLAGS -fcommon"
 	make
 }
 
