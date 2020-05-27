@@ -1,6 +1,6 @@
 pkgbase = getmail-python3-git
 	pkgdesc = POP3 mail retriever with reliable Maildir and command delivery; Python 3 port
-	pkgver = 6.00.r20.517297d
+	pkgver = 6.00.r21.b25297b
 	pkgrel = 1
 	url = https://github.com/rpuntaie/getmail
 	changelog = CHANGELOG

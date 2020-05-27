@@ -11,7 +11,7 @@ pkgver() {
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
 }
-pkgver=6.00.r20.517297d
+pkgver=6.00.r21.b25297b
 pkgrel=1
 
 pkgdesc='POP3 mail retriever with reliable Maildir and command delivery; Python 3 port'
@@ -29,11 +29,6 @@ changelog=CHANGELOG
 source=("git+$url.git")
 sha256sums=('SKIP')
 
-
-prepare() {
-  cd "$_pkgname"
-  sed -i '/getmail\.spec/d' setup.py MANIFEST.in
-}
 
 build() {
   cd "$_pkgname"
