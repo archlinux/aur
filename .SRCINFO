@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-ndi
 	pkgdesc = Complete solution to record, convert and stream audio and video with NDI added and enabled
 	pkgver = 4.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ffmpeg.org/
 	arch = x86_64
 	license = GPL3

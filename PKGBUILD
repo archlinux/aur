@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-ndi
 pkgver=4.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video with NDI added and enabled'
 arch=(x86_64)
 url=https://ffmpeg.org/
@@ -101,6 +101,10 @@ pkgver() {
 
 prepare() {
   cd ffmpeg
+
+  # lavf/mp3dec: don't adjust start time; packets are not adjusted
+  # https://crbug.com/1062037
+  git cherry-pick -n 460132c9980f8a1f501a1f69477bca49e1641233
 
   patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
   patch -Np1 -i "${srcdir}/0001-Revert-lavd-Remove-libndi_newtek.patch"
