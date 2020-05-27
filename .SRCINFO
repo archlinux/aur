@@ -1,6 +1,6 @@
 pkgbase = spirv-tools-sparzz-git
 	pkgdesc = SPIR-V Tools build from source. My Vulkan packages from the AUR depends on this package. For install instruction and order of the of the install visit my GitHub page --> https://github.com/sparzz/vulkan-arch-aur
-	pkgver = 2020.05.26_r3
+	pkgver = 2020.05.26_r4
 	pkgrel = 1
 	url = https://github.com/sparzz/vulkan-arch-aur
 	arch = x86_64
