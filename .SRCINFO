@@ -1,14 +1,14 @@
 pkgbase = sensu-go-cli
 	pkgdesc = Sensu Go CLI
-	pkgver = 5.20.1
+	pkgver = 5.20.2
 	pkgrel = 1
 	url = https://sensu.io
 	arch = x86_64
 	license = MIT
 	provides = sensu-cli
 	conflicts = sensu-cli
-	source = sensu-go-cli-5.20.1-12427_amd64.deb::https://packagecloud.io/sensu/stable/packages/debian/buster/sensu-go-cli_5.20.1-12427_amd64.deb/download.deb
-	sha1sums = 80bcb2ba4a947c0126782cc28bd732d35689b1d9
+	source = sensu-go-cli-5.20.2-12959_amd64.deb::https://packagecloud.io/sensu/stable/packages/debian/buster/sensu-go-cli_5.20.2-12959_amd64.deb/download.deb
+	sha1sums = 3fb74ed7b9e08e960c8e2f08aa22e3ca964a21f8
 
 pkgname = sensu-go-cli
 
