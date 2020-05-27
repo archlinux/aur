@@ -1,4 +1,4 @@
-pkgbase = silitune-git
+pkgbase = silitune
 	pkgdesc = A battery saver, undervolting tuner and CPU manager with GUI
 	pkgver = 1.1
 	pkgrel = 1
@@ -14,5 +14,5 @@ pkgbase = silitune-git
 	source = silitune::git+https://github.com/ustcpetergu/SiliTune
 	md5sums = SKIP
 
-pkgname = silitune-git
+pkgname = silitune
 

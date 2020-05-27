@@ -1,6 +1,6 @@
 # Maintainer: ustcpetergu <ustcymgu@gmail.com>
-pkgname=silitune-git
-pkgver=1.1
+pkgname=silitune
+pkgver=r36.3325994
 pkgrel=1
 pkgdesc="A battery saver, undervolting tuner and CPU manager with GUI"
 arch=('x86_64')
@@ -22,7 +22,7 @@ noextract=()
 md5sums=('SKIP') #autofill using updpkgsums
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname}"
 
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
@@ -36,7 +36,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname}"
 
   install -D ./silitune.conf "$pkgdir/etc/silitune.conf"
   install -D -m755 ./silitune.py "$pkgdir/usr/bin/silitune"
