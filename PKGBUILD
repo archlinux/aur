@@ -3,7 +3,7 @@
 
 pkgname=jamulus
 _pkgname=Jamulus
-pkgver=3.5.4
+pkgver=3.5.5
 pkgrel=1
 pkgdesc="Internet jam session software"
 arch=('x86_64')
@@ -26,4 +26,4 @@ package() {
   install -Dm644 src/res/fronticon.png $pkgdir/usr/share/pixmaps/jamulus.png
 }
 
-sha1sums=('bee4543c0400863e5cd8d08df16e0356286444d0')
+sha1sums=('2bb566b8505d418526f61d0672dcb4fd168e5dd3')
