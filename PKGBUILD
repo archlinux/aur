@@ -25,5 +25,5 @@ package() {
 
   install -d "$pkgdir/usr/bin"
   ln -s "/usr/lib/snage/snage.js" "$pkgdir/usr/bin/snage"
-  install -Dm644 -t "$pkgdir/usr/share/licenses/snage" "$srcdir/snage-$pkgver/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/snage-bin" "$srcdir/snage-$pkgver/LICENSE"
 }
