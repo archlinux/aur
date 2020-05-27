@@ -1,38 +1,43 @@
 pkgbase = gobject-introspection-git
-	pkgdesc = GObject Introspection
-	pkgver = 1.45.2.3354.fb91f7e
+	pkgdesc = Introspection system for GObject-based libraries (Git)
+	pkgver = 1.64.0+47+ge7c17469
 	pkgrel = 1
 	epoch = 1
-	url = http://live.gnome.org/GObjectIntrospection/
+	url = https://wiki.gnome.org/Projects/GObjectIntrospection
 	arch = x86_64
 	arch = i686
 	license = LGPL
 	license = GPL
-	makedepends = git
-	makedepends = pkgconfig
-	makedepends = autoconf
-	makedepends = gtk-doc
-	makedepends = gnome-common-git
-	makedepends = bison
 	makedepends = cairo
-	makedepends = mesa
-	makedepends = flex
-	depends = glib2-git
-	depends = python2
-	depends = python2-mako
-	provides = gobject-introspection=1.45.2.3354.fb91f7e
-	provides = gobject-introspection-runtime=1.45.2.3354.fb91f7e
+	makedepends = git
+	makedepends = gtk-doc
+	makedepends = python-sphinx
+	makedepends = meson
+	depends = python-mako
+	depends = python-markdown
+	provides = gobject-introspection=1.64.0+47+ge7c17469
+	provides = gobject-introspection-runtime=1.64.0+47+ge7c17469
 	conflicts = gobject-introspection
 	conflicts = gobject-introspection-svn
 	conflicts = gobject-introspection-runtime
 	replaces = gobject-introspection-svn
-	options = !makeflags
-	options = docs
-	options = !libtool
-	options = strip
-	options = debug
-	source = git+git://git.gnome.org/gobject-introspection
-	md5sums = SKIP
+	replaces = gobject-introspection
+	options = !emptydirs
+	source = git+https://gitlab.gnome.org/GNOME/gobject-introspection.git
+	source = git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=2.64.1
+	validpgpkeys = 923B7025EE03C1C59F42684CF0942E894B2EAFA0
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = gobject-introspection-git
+	depends = python-mako
+	depends = python-markdown
+	depends = gobject-introspection-runtime-git=1.64.0+47+ge7c17469-1
+
+pkgname = gobject-introspection-runtime-git
+	pkgdesc = Introspection system for GObject-based libraries (Git) (runtime library)
+	depends = glib2
+	provides = gobject-introspection=1.64.0+47+ge7c17469
+	provides = gobject-introspection-runtime=1.64.0+47+ge7c17469
+	provides = libgirepository-1.0.so
 

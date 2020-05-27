@@ -1,50 +1,67 @@
-# Maintainer: Joao Cordeiro <jlcordeiro at gmail dot com>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Joao Cordeiro <jlcordeiro at gmail dot com>
 # Contributor: <arsenm2@rpi.edu>
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 
 _pkgname=gobject-introspection
-pkgname="${_pkgname}-git"
-pkgver=1.45.2.3354.fb91f7e
+pkgbase="${_pkgname}-git"
+pkgname=(${_pkgname}-git ${_pkgname}-runtime-git)
+pkgver=1.64.0+47+ge7c17469
 pkgrel=1
-pkgdesc="GObject Introspection"
 epoch=1
+pkgdesc="Introspection system for GObject-based libraries (Git)"
+url="https://wiki.gnome.org/Projects/GObjectIntrospection"
 arch=('x86_64' 'i686')
 license=('LGPL' 'GPL')
-url="http://live.gnome.org/GObjectIntrospection/"
-depends=("glib2-git" 'python2' 'python2-mako')
-makedepends=('git' 'pkgconfig' 'autoconf' 'gtk-doc' 'gnome-common-git'
-  'bison' 'cairo' 'mesa' 'flex')
+depends=(python-mako python-markdown)
+_glibver=2.64.1
+makedepends=(cairo git gtk-doc python-sphinx meson)
 provides=("gobject-introspection=${pkgver}" "gobject-introspection-runtime=${pkgver}")
 conflicts=('gobject-introspection' 'gobject-introspection-svn' "gobject-introspection-runtime")
-replaces=('gobject-introspection-svn')
-options=(!makeflags docs !libtool strip debug)
+replaces=('gobject-introspection-svn' 'gobject-introspection')
+options=(!emptydirs)
+source=("git+https://gitlab.gnome.org/GNOME/gobject-introspection.git"
+        "git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=$_glibver")
+sha512sums=('SKIP'
+            'SKIP')
+validpgpkeys=('923B7025EE03C1C59F42684CF0942E894B2EAFA0') # Philip Withnall <philip@tecnocode.co.uk>
 
-source=("git+git://git.gnome.org/$_pkgname")
-md5sums=("SKIP")
 
-subver() {
-  PREFIX="m4_define(gi_$1_version, "
-  echo $(grep "$PREFIX" configure.ac | eval sed "'s/$PREFIX//'" | sed 's/)//')
-}
- 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  hash=$(git log --pretty=format:'%h' -n 1)
-  revision=$(git rev-list --count HEAD)
-  echo $(subver major).$(subver minor).$(subver micro).$revision.$hash
+  cd $srcdir/$_pkgname
+  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
   cd "$srcdir/$_pkgname"
-  export PYTHON=/usr/bin/python2
-  ./autogen.sh --prefix=/usr --disable-static --enable-doctool
-  make
+  arch-meson $_pkgname build \
+    -D gtk_doc=true \
+    -D glib_src_dir="$srcdir/glib"
+  ninja -C build
 }
 
-package() {
-  cd "$srcdir/$_pkgname"
-  make DESTDIR="$pkgdir" install
+check() {
+  meson test -C build
+}
 
-  sed -i '1s|#!/usr/bin/env python$|&2|' \
-    "$pkgdir"/usr/lib/gobject-introspection/giscanner/*.py
+package_gobject-introspection-git() {
+  depends+=("gobject-introspection-runtime-git=$pkgver-$pkgrel")
+
+  DESTDIR="$pkgdir" meson install -C build
+
+  python -m compileall -d /usr/lib/$_pkgname "$pkgdir/usr/lib/$_pkgname"
+  python -O -m compileall -d /usr/lib/$_pkgname "$pkgdir/usr/lib/$_pkgname"
+
+### Split runtime
+  mkdir -p "$srcdir/runtime/lib"
+  mv "$pkgdir"/usr/lib/{lib*,girepository-*} "$srcdir/runtime/lib"
+}
+
+package_gobject-introspection-runtime-git() {
+  pkgdesc+=" (runtime library)"
+  depends=(glib2)
+  provides+=(libgirepository-1.0.so)
+
+  mv "$srcdir/runtime" "$pkgdir/usr"
 }
