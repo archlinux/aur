@@ -1,41 +1,44 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=frameworkintegration-git
-pkgver=r234.3ebe689
+_pkgname=frameworkintegration
+pkgname=$_pkgname-git
+pkgver=r519.b8098a8
 pkgrel=1
 pkgdesc='Framework providing components to allow applications to integrate with a KDE Workspace'
 arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/frameworks/frameworkintegration'
+url='https://community.kde.org/Frameworks'
 license=('LGPL')
-depends=('kio-git' 'noto-fonts' 'libxcursor')
-makedepends=('extra-cmake-modules-git' 'git')
+depends=(kpackage knewstuff)
+makedepends=(extra-cmake-modules appstream-qt git packagekit-qt5)
 groups=('kf5')
-conflicts=(frameworkintegration)
-provides=(frameworkintegration)
-source=('git://anongit.kde.org/frameworkintegration.git')
-md5sums=('SKIP')
+conflicts=("$_pkgname")
+provides=("$_pkgname")
+source=("git+https://github.com/KDE/$_pkgname.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd frameworkintegration
+  cd $srcdir/$_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
+  cd $srcdir/$_pkgname
   mkdir -p build
 }
 
 build() {
-  cd build
-  cmake ../frameworkintegration \
+  cd $srcdir/$_pkgname/build
+  cmake ../ \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
 }
 
 package() {
-  cd build
+  cd $srcdir/$_pkgname/build
   make DESTDIR="$pkgdir" install
+  install -Dm644 ../COPYING.LIB "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
