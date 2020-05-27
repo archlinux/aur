@@ -4,6 +4,7 @@ progName="foobar2000"
 progRealPath="/usr/share/$progName"
 progHome="$HOME/.$progName"
 progBin="$progName.exe"
+progPrefix="$HOME/.local/share/wineprefixes/$progName"
 
 # Symlink stuff
 mkdir -p "$progHome" || exit 1
@@ -24,4 +25,5 @@ for arg; do
     fi
 done
 
-wine "$progHome/$progBin" "${args[@]}"
+# wine "$progHome/$progBin" "${args[@]}"
+WINEPREFIX="$progPrefix" wine "$progHome/$progBin" "${args[@]}"
