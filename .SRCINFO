@@ -1,6 +1,6 @@
 pkgbase = sge
 	pkgdesc = Son of Grid Engine/Sun Grid Engine
-	pkgver = 20200103
+	pkgver = 20200527
 	pkgrel = 1
 	url = https://arc.liv.ac.uk/downloads/SGE/releases/8.1.9/
 	install = sge.install
