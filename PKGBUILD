@@ -8,12 +8,12 @@
 pkgbase=akonadi-qt4
 pkgname=(libakonadi-qt4 akonadi-qt4)
 pkgver=1.13.0
-pkgrel=16
+pkgrel=17
 pkgdesc="PIM layer, which provides an asynchronous API to access all kind of PIM data (Qt4 version)"
 arch=('x86_64')
 url='https://kontact.kde.org'
 license=('LGPL')
-makedepends=(extra-cmake-modules postgresql qt5-tools boost kitemmodels kaccounts-integration mariadb qt4 lixslt)
+makedepends=(extra-cmake-modules postgresql qt5-tools boost kitemmodels kaccounts-integration mariadb qt4 libxslt)
 provides=('akonadi')
 conflicts=('akonadi' 'akonadi-contacts')
 source=("https://download.kde.org/stable/akonadi/src/akonadi-${pkgver}.tar.bz2"

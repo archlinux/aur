@@ -1,7 +1,7 @@
 pkgbase = akonadi-qt4
 	pkgdesc = PIM layer, which provides an asynchronous API to access all kind of PIM data (Qt4 version)
 	pkgver = 1.13.0
-	pkgrel = 16
+	pkgrel = 17
 	url = https://kontact.kde.org
 	arch = x86_64
 	license = LGPL
@@ -13,7 +13,7 @@ pkgbase = akonadi-qt4
 	makedepends = kaccounts-integration
 	makedepends = mariadb
 	makedepends = qt4
-	makedepends = lixslt
+	makedepends = libxslt
 	provides = akonadi
 	conflicts = akonadi
 	conflicts = akonadi-contacts
