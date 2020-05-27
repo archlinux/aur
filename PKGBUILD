@@ -13,5 +13,5 @@ md5sums=('SKIP')
 
 
 package() {
-	install -Dt "/usr/bin/" "dxhd"
+	sudo install -Dt "/usr/bin/" "dxhd"
 }
