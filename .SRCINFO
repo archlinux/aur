@@ -1,6 +1,6 @@
 pkgbase = spirv-headers-sparzz-git
 	pkgdesc = SPIR-V Headers build from source. My Vulkan packages from the AUR depends on this package. For install instruction and order of the of the install visit my GitHub page --> https://github.com/sparzz/vulkan-arch-aur
-	pkgver = 1.5.3_2020.05.27
+	pkgver = 1.5.3_2020.05.27.r1
 	pkgrel = 1
 	url = https://github.com/sparzz/vulkan-arch-aur
 	arch = x86_64
@@ -8,9 +8,7 @@ pkgbase = spirv-headers-sparzz-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = make
-	makedepends = glslang-sparzz-git
 	depends = yay
-	depends = glslang-sparzz-git
 	depends = make
 	depends = cmake
 	provides = spirv-headers-sparzz-git
