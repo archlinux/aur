@@ -21,7 +21,7 @@ md5sums=('SKIP' 'SKIP')
 pkgver() {
   cd $pkgname
   # git describe --tags | sed 's/^v//;s/-/./g'
-  echo "1.8.$(git rev-list --count master).g$(git describe --always)"
+  echo "1.8.0.$(git rev-list --count master).g$(git describe --always)"
 }
 
 build() {
