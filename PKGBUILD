@@ -1,42 +1,42 @@
-# Maintainer: Mladen Pejaković 
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Mladen Pejaković 
 
 pkgname=sweeper-frameworks-git
-pkgver=r328.37cb09f
+pkgver=r487.4ab73f4
 pkgrel=1
 pkgdesc='System Cleaner'
+url='https://kde.org/applications/utilities/sweeper'
 arch=(i686 x86_64)
-url='https://www.kde.org/applications/utilities/sweeper'
-license=(GPL)
-depends=('kdelibs4support' 'kinit')
-makedepends=('extra-cmake-modules' 'kdoctools')
+license=(GPL LGPL FDL)
+depends=(kactivities-stats kio)
+makedepends=(extra-cmake-modules kdoctools)
+groups=(kde-applications kde-utilities)
 conflicts=('kdeutils-sweeper' 'sweeper')
 replaces=('kdeutils-sweeper')
 provides=('sweeper')
-groups=('kde-applications' 'kdeutils')
-source=("git://anongit.kde.org/sweeper.git#branch=frameworks")
+source=("git+https://github.com/KDE/sweeper.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd sweeper
+  cd $srcdir/sweeper
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
+  cd $srcdir/sweeper
   mkdir -p build
 }
 
 build() { 
-  cd build
-  cmake ../sweeper \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_TESTING=OFF \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+  cd $srcdir/sweeper/build
+  cmake ../ \
+    -DBUILD_TESTING=OFF
   make
 }
 
 package() {
-  cd build
+  cd $srcdir/sweeper/build
   make DESTDIR="$pkgdir" install
+  install -Dm644 ../COPYING.LIB "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
