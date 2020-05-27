@@ -17,12 +17,12 @@ source=('git+git://github.com/grwlf/xkb-switch')
 sha1sums=('SKIP')
 
 build() {
-	cd xkb-switch
-	cmake -DCMAKE_INSTALL_PREFIX=/usr .
-	make
+    cd xkb-switch
+    cmake -DCMAKE_INSTALL_PREFIX=/usr .
+    make
 }
 
 package() {
-	cd xkb-switch
-	make DESTDIR="$pkgdir/" install
+    cd xkb-switch
+    make DESTDIR="$pkgdir/" install
 }
