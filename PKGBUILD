@@ -1,12 +1,12 @@
 #Maintainer:  sparzz
 pkgname=radv-git
 packager=sparzz
-pkgver=20.2.0_devel
+pkgver=20.2.0_devel.2020.05.27
 pkgrel=1
 epoch=
-pkgdesc="Provide mesa RADV drivers for AMD card . Update with yay -Sua. If you want to enable th ACO compiler go to your .bashrc file and add this line : export RADV_PERFTEST=aco."
+pkgdesc="Provide mesa RADV drivers for AMD card . Update with yay -Sua. If you want to enable th ACO compiler go to your .bashrc file and add this line : export RADV_PERFTEST=aco. Depends on my vulkan aur repos. It provide the most recent Vulkan API. "
 arch=(x86_64)
-url="https://github.com/sparzz/mesa.git"
+url="https://github.com/mesa3d/mesa"
 license=('MIT')
 groups=()
 depends=("spirv-tools"
@@ -90,7 +90,15 @@ depends=("spirv-tools"
          "libxrandr"
          "xorg-xrandr"
          "opencl-headers"
-         "python-evdev")
+         "python-evdev"
+         "yay"
+         "vulkan-tools-git"
+         "vulkan-validation-layers-git"
+         "vulkan-loader-git"
+         "spirv-headers-sparzz-git"
+         "vulkan-headers-sparzz-git"
+         "vulkan-extensionlayer-sparzz-git"
+         "glslang-sparzz-git")
 makedepends=("meson"
             "ninja"
             "git"
@@ -110,7 +118,7 @@ makedepends=("meson"
             "vulkan-validation-layers"
             "lib32-vulkan-icd-loader"
             "lib32-vulkan-validation-layers"
-             "python"
+            "python"
             "python-appdirs"
             "python-mako")
 checkdepends=()
@@ -122,16 +130,16 @@ backup=()
 options=()
 install=
 changelog=
-source=("mesa::git+https://github.com/sparzz/mesa.git")
+source=("mesa::git+https://github.com/mesa3d/mesa.git")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
 
 pkgver() {
-	cd "${_pkgname}"
-    printf "20.2.0_devel.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd mesa
+    read -r _ver <VERSION
+    echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
-
 
 prepare() {
 
