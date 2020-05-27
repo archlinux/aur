@@ -2,7 +2,7 @@
 
 pkgname=linux-wifi-hotspot
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Create virtual wifi hotspot using same wifi card which is connected to an AP + many features (a GUI tool)'
 arch=('x86_64')
 url='https://github.com/lakinduakash/linux-wifi-hotspot'
