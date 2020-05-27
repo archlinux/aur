@@ -14,7 +14,6 @@ optdepends=('chromium: used to log into captive portal'
 options=('!strip')
 license=('MIT')
 makedepends=('go' 'git')
-depends=('google-chrome')
 source=('git+https://github.com/FiloSottile/captive-browser.git')
 sha512sums=('SKIP')
 

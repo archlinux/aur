@@ -9,7 +9,6 @@ pkgbase = captive-browser-git
 	license = MIT
 	makedepends = go
 	makedepends = git
-	depends = google-chrome
 	optdepends = chromium: used to log into captive portal
 	optdepends = google-chrome: used to log into captive portal
 	provides = captive-browser
