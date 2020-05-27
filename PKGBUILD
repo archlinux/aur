@@ -1,7 +1,6 @@
-# Maintainer: Nicky Heinimann <nicky.heinimann@posteo.de> 
 
 pkgname=indicator-sound-switcher
-pkgver=2.3.0
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="Sound input/output selector indicator for Ubuntu/Unity"
 arch=('any')
@@ -17,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/yktoo/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('fec36f3c8eb3552ca7819148feda6d3fb12ae521402504b0649c21d56cdde6d1')
+sha256sums=('0b73d88954f4d6f91b0a6ff3ada9fc788897db20a0129bc7524c8ac4f4c717d5')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
