@@ -5,7 +5,6 @@ pkgbase = snage-bin
 	url = https://github.com/FACT-Finder/snage
 	arch = any
 	license = MIT
-	makedepends = yarn
 	depends = nodejs
 	provides = snage
 	conflicts = snage

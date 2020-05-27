@@ -10,7 +10,6 @@ license=('MIT')
 depends=('nodejs')
 provides=('snage')
 conflicts=('snage')
-makedepends=('yarn')
 
 source=("snage-$pkgver.tar.gz::https://github.com/FACT-Finder/snage/releases/download/v$pkgver/snage-$pkgver.tar.gz")
 sha256sums=('6593e82131b0f1427186163b235511318ac5662a85feaaf3877376a3b190118f')
