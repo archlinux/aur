@@ -7,7 +7,7 @@
 
 pkgname=python3.6
 pkgver=3.6.6
-pkgrel=1
+pkgrel=2
 _pybasever=3.6
 pkgdesc="Next generation of the python high-level scripting language"
 arch=('x86_64')
