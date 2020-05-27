@@ -51,10 +51,8 @@ prepare() {
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
-  printf "%d.%d.%d.r%s.%s" \
-    $(grep -Po '^#define GEGL_MAJOR_VERSION \K[0-9]*$' ${srcdir}/build/config.h) \
-    $(grep -Po '^#define GEGL_MINOR_VERSION \K[0-9]*$' ${srcdir}/build/config.h) \
-    $(grep -Po '^#define GEGL_MICRO_VERSION \K[0-9]*$' ${srcdir}/build/config.h) \
+  printf "%s.r%s.%s" \
+    $(grep -ozP "(?s)^project\('gegl'.*?version: *'\K[\d.]*" meson.build|tr '\0' '\n') \
     $(git rev-list --count HEAD) \
     $(git rev-parse --short HEAD)
 }
@@ -68,3 +66,4 @@ package() {
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/build" install
 }
 
+# vim: tabstop=2 expandtab
