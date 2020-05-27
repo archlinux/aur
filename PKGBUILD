@@ -1,7 +1,8 @@
 # Maintainer: Kevin Kaland < kevin at wizone dot solutions >
 
 _name="ddev"
-_version="1.14.2"
+_version="1.15"
+_versionsuffix="alpha1"
 _downloadver=$_version
 pkgname="$_name-edge-bin"
 pkgver="$_version"_"$_versionsuffix"
@@ -13,8 +14,8 @@ license=('Apache')
 provides=("$_name")
 depends=('docker' 'docker-compose')
 optdepends=('bash-completion: subcommand completion support')
-source=("https://github.com/drud/ddev/releases/download/v$_downloadver/ddev_linux.v$_downloadver.tar.gz")
-sha256sums=("4d1082b5ac67829347bb8029582ef4719f2e916946cff7ad4b48042ada710e37")
+source=("https://github.com/drud/ddev/releases/download/v$_downloadver-$_versionsuffix/ddev_linux.v$_downloadver-$_versionsuffix.tar.gz")
+sha256sums=("a4dfe06be1abe398dca0dc07ace412ccd89ecf0d896eee83ef507ba03e122260")
 
 package() {
 	install -D -m 0755 ddev "$pkgdir/usr/bin/ddev"
