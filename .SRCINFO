@@ -24,13 +24,12 @@ pkgbase = petsc
 	optdepends = hdf5-openmpi: support for the parallel version of HDF5
 	optdepends = mumps: support for the mumps sparse solver
 	optdepends = fftw: support for the FFTW fast Fourier transform
-	optdepends = triangle: support for the two-dimensional quality mesh generator and Delaunay triangulator
 	optdepends = suitesparse: support for the suitesparse sparse matrix libraries
 	options = staticlibs
 	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-lite-3.13.1.tar.gz
 	source = test_optdepends.sh
 	sha256sums = 74a895e44e2ff1146838aaccb7613e7626d99e0eed64ca032c87c72d084efac3
-	sha256sums = f67901cec213c346481b6c9a56080dee9ee00a3852e46da9f35e933a11870623
+	sha256sums = 207f3c8107698f572f4075422bd069859c6a69b6bf92183d977dc802da323e18
 
 pkgname = petsc
 
