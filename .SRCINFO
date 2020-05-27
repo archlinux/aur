@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-catkin
 	pkgdesc = ROS - Low-level build system macros and infrastructure for ROS.
 	pkgver = 0.8.5
-	pkgrel = 1
-	url = https://www.wiki.ros.org/catkin
+	pkgrel = 2
+	url = https://wiki.ros.org/catkin
 	arch = any
 	license = BSD
 	makedepends = cmake
