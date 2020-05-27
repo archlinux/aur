@@ -6,5 +6,5 @@ Exec=openrgb
 Icon=openrgb
 Terminal=false
 Type=Application
-Categories=Settings;
+Categories=Settings;System;
 StartupNotify=false
