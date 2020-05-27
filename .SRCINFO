@@ -6,7 +6,9 @@ pkgbase = qt-logout
 	arch = any
 	license = GNU General Public License v3.0
 	makedepends = python-pyqt5
+	makedepends = betterlockscreen
 	source = https://github.com/TheCynicalTeam/qt-logout/archive/1.0.0-1.tar.gz
 	sha256sums = 4cc6d65bfb71480dde5d9d23b64df63fed3805a6b6dc6b30b4cee8db3f35c9c5
 
 pkgname = qt-logout
+
