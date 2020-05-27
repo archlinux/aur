@@ -8,6 +8,7 @@ arch=(any)
 url="https://github.com/FACT-Finder/snage"
 license=('MIT')
 depends=('nodejs')
+optdepends=('git: git-version provider')
 provides=('snage')
 conflicts=('snage')
 

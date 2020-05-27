@@ -6,6 +6,7 @@ pkgbase = snage-bin
 	arch = any
 	license = MIT
 	depends = nodejs
+	optdepends = git: git-version provider
 	provides = snage
 	conflicts = snage
 	options = !strip
