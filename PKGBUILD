@@ -22,7 +22,9 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DPROC_TARGET_NUMBER="2" \
-    -DWITH_LTO="ON"
+    -DWITH_LTO="ON" \
+    -DENABLE_TCMALLOC="ON" \
+    -DTCMALLOC_LIB_DIR=/usr/lib
 
   NPROC=$(getconf _NPROCESSORS_ONLN)
   make -j${NPROC} 
