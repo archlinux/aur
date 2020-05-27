@@ -2,9 +2,9 @@
 
 # NOTE: This PKGBUILD will only work with Hyperbola GNU/Linux-libre. Not Parabola, not Arch.
 # I made this package for users who need a 5.x kernel, but still want LTS software.
-# It is made for the old mkinitcpio version that is shipped in Hyperbola. This PKGBUILD aims
-# to be simple and minimalist, so it doesn't come with the -docs package (which produced errors
-# when building, as I was told by some 'hyperusers' :P) and it is available only for x86_64
+# It is made for the old mkinitcpio version that is shipped in Hyperbola and follows the FHS.
+# This PKGBUILD aims to be simple and minimalist, so it doesn't come with the -docs package
+# (which produced errors when building, as I was told by some 'hyperusers' :P)
 
 _replacesarchkernel=() # '%' gets replaced with kernel suffix
 _replacesoldkernels=() # '%' gets replaced with kernel suffix
@@ -16,7 +16,7 @@ pkgrel=1
 pkgdesc='Linux-libre 5.4 LTS'
 url='https://linux-libre.fsfla.org/'
 arch=(x86_64)
-license=(GPL2)
+license=(GPL-2)
 makedepends=(
   bc kmod libelf
 )
@@ -25,7 +25,7 @@ _srcname=linux-5.4
 source=(
   "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_srcname##*-}-gnu/linux-libre-${_srcname##*-}-gnu.tar.xz"{,.sign}
   "https://linux-libre.fsfla.org/pub/linux-libre/releases/$pkgver-gnu/patch-${_srcname##*-}-gnu-$pkgver-gnu.xz"{,.sign}
-  "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_"{clut224.ppm,vga16.ppm,mono.pbm}{,.sig}
+  "https://git.hyperbola.info:50100/culture/linux-libre_logos.git/plain/logo_linux_"{clut224.ppm,vga16.ppm,mono.pbm}{,.sig}
   config         # the main kernel config file
   linux.preset   # standard config files for mkinitcpio ramdisk
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -40,6 +40,7 @@ source=(
 )
 validpgpkeys=(
   '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
+  '684D54A189305A9CC95446D36B888913DDB59515' # Márcio Silva
 )
 sha512sums=('0d0915133864eb031adfc6700066147dcf3e768a50a31c39754950c95ef4fd322dc701cd50af49c403ef0325adfcb07e354d5e46c1be3dcdd719a7a55c963f37'
             'SKIP'
@@ -54,8 +55,8 @@ sha512sums=('0d0915133864eb031adfc6700066147dcf3e768a50a31c39754950c95ef4fd322dc
             'a923bb36ff24d3f2326b0b6bccb8cdfe2ed2ab2acdae17dfcaf9beb269995a52bfba751ad7e616544ef4b98dd9487a66fe04dae2ec2e7d724f8ac47382ee71bd'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             '38ddc517f33fe41dec63b31313a82e0e8c05788e9db5e448d23a01605c50fe3422927cfd902e81c3b0eae17502db06f48e7f713e1ba1c9c76fd26f1473b02983'
-            '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
-            'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168')
+            '6a87c0bb2a2f352917eab8a029a89ee1a504b41d73ae536be1d508248e0f280b586e1cf2669cd6501a392d97e1963a806545a1635be9de446e0c9affe61ee56f'
+            'c7776361aafe2cec753fdda96eca5c1f4460cb78fb4dfe3d78e92f68387ec80bd1a4d83362af40b33c05e1501f31c83b1ef6115c790f8bf9d6ecd5642b829af8')
 
 _replacesarchkernel=("${_replacesarchkernel[@]/\%/${pkgbase#linux-libre}}")
 _replacesoldkernels=("${_replacesoldkernels[@]/\%/${pkgbase#linux-libre}}")
@@ -125,12 +126,12 @@ _package() {
   make INSTALL_MOD_PATH="$pkgdir" modules_install
 
   echo "Install mkinitcpio preset file for kernel..."
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
-    install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  sed "s|%PKGBASE%|$pkgbase|g" "$srcdir/linux.preset" |
+    install -D -m644 /dev/stdin "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
 
   echo "Install pacman hook for initramfs regeneration..."
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/90-linux.hook" |
-    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+  sed "s|%PKGBASE%|$pkgbase|g" "$srcdir/90-linux.hook" |
+    install -D -m644 /dev/stdin "$pkgdir/usr/share/libalpm/hooks/90-$pkgbase.hook"
 
   # remove build and source links
   rm "$modulesdir"/{source,build}

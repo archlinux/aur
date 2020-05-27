@@ -23,12 +23,12 @@ Signed-off-by: mytbk <mytbk920423@gmail.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/input/touchscreen/atmel_mxt_ts.c b/drivers/input/touchscreen/atmel_mxt_ts.c
-index 726a83e..d818834 100644
+index 9f2967b..45db7fd 100644
 --- a/drivers/input/touchscreen/atmel_mxt_ts.c
 +++ b/drivers/input/touchscreen/atmel_mxt_ts.c
-@@ -1989,7 +1989,7 @@ static int mxt_initialize(struct mxt_data *data)
+@@ -2142,7 +2142,7 @@ static int mxt_initialize(struct mxt_data *data)
  	if (error)
- 		goto err_free_object_table;
+ 		return error;
  
 -	error = reject_firmware_nowait(THIS_MODULE, true, MXT_CFG_NAME,
 +	error = request_firmware_nowait(THIS_MODULE, true, MXT_CFG_NAME,

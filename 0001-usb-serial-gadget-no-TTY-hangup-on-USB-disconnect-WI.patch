@@ -17,10 +17,10 @@ Signed-off-by: Kyösti Mälkki <kyosti.malkki@gmail.com>
  1 file changed, 5 insertions(+)
 
 diff --git a/drivers/usb/gadget/function/u_serial.c b/drivers/usb/gadget/function/u_serial.c
-index b369292..d156a28 100644
+index 038c445..996f70b 100644
 --- a/drivers/usb/gadget/function/u_serial.c
 +++ b/drivers/usb/gadget/function/u_serial.c
-@@ -1258,8 +1258,13 @@ void gserial_disconnect(struct gserial *gser)
+@@ -1370,8 +1370,13 @@ void gserial_disconnect(struct gserial *gser)
  	gser->ioport = NULL;
  	if (port->port.count > 0 || port->openclose) {
  		wake_up_interruptible(&port->drain_wait);
