@@ -3,7 +3,7 @@
 
 pkgname=scalapack
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="subset of scalable LAPACK routines redesigned for distributed memory MIMD parallel computers."
 url="http://www.netlib.org/scalapack/"
@@ -36,6 +36,7 @@ build() {
 	-DBUILD_SHARED_LIBS=ON \
 	-DCMAKE_BUILD_TYPE:STRING=Release \
 	-DCMAKE_CXX_COMPILER=/usr/bin/mpic++ \
+	-DCMAKE_Fortran_FLAGS="-fallow-argument-mismatch" \
 	-DCMAKE_C_COMPILER=/usr/bin/mpicc
     make
 }
