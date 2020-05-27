@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-actionlib-tutorials
 	pkgdesc = ROS - The actionlib_tutorials package.
 	pkgver = 0.1.12
-	pkgrel = 1
-	url = https://www.wiki.ros.org/actionlib/Tutorials
+	pkgrel = 2
+	url = https://wiki.ros.org/actionlib/Tutorials
 	arch = i686
 	arch = x86_64
 	arch = aarch64

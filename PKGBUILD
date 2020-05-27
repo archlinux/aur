@@ -1,12 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - The actionlib_tutorials package."
-url='https://www.wiki.ros.org/actionlib/Tutorials'
+url='https://wiki.ros.org/actionlib/Tutorials'
 
 pkgname='ros-noetic-actionlib-tutorials'
 pkgver='0.1.12'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
