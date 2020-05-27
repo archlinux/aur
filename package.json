@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "name": "Gmail",
+  "version": "1.1.0",
+  "description": "Gmail packaged as Electron app",
+  "author": "Felix Gnass <fgnass@gmail.com>",
+  "repository": "https://github.com/fgnass/gmail-app",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "pack-icons": "iconutil -c icns icon.iconset",
+    "pack-osx": "electron-packager . --out=dist --prune --asar --overwrite --platform=darwin --arch=x64 --icon=icon.icns",
+    "pack-linux": "electron-packager . --out=dist --prune --asar --overwrite --platform=linux --arch=x64 --icon=icon.icns",
+    "install-osx": "npm run pack-osx && cp -r dist/Gmail-darwin-x64/Gmail.app /Applications"
+  },
+  "license": "Unlicense",
+  "devDependencies": {
+    "electron": "^5.0.7",
+    "electron-packager": "^14.0.2"
+  }
+}

@@ -1,0 +1,27 @@
+pkgbase = gmail-app-git
+	pkgdesc = Google GMail packaged as Electron app
+	pkgver = 4.c746b87
+	pkgrel = 1
+	url = https://github.com/fgnass/gmail-app
+	arch = any
+	license = custom:UNLICENSE
+	makedepends = git
+	makedepends = npm
+	makedepends = gendesk
+	depends = alsa-lib
+	depends = gconf
+	depends = gtk2
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	provides = inbox-app
+	conflicts = inbox-app
+	source = git+https://github.com/fgnass/gmail-app.git
+	source = package.json
+	sha256sums = SKIP
+	sha256sums = 1a0128814b61bee125247409e6393ec17e56ca62707b730f72290c89c2886107
+
+pkgname = gmail-app-git
+
