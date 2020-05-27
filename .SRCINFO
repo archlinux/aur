@@ -1,6 +1,6 @@
 pkgbase = python-httpx
 	pkgdesc = The next generation HTTP client.
-	pkgver = 0.13.1
+	pkgver = 0.13.2
 	pkgrel = 1
 	url = https://github.com/encode/httpx
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = python-httpx
 	depends = python-rfc3986
 	depends = python-sniffio
 	optdepends = python-brotlipy: decoding for "brotli" compressed responses
-	source = https://files.pythonhosted.org/packages/source/h/httpx/httpx-0.13.1.tar.gz
-	sha256sums = d90cc7930bb3be2522c398038a07010b7830a8d9a5d9b91cdcaedea79290e9b9
+	source = https://files.pythonhosted.org/packages/source/h/httpx/httpx-0.13.2.tar.gz
+	sha256sums = 4387a6601839fb71f5aea57042e6b476f24ca118cc05c55f1e52ed8baaf0a45f
 
 pkgname = python-httpx
 
