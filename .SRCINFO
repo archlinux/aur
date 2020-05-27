@@ -1,7 +1,7 @@
 pkgbase = st-kian-git
 	pkgdesc = A customized version of st by Kian Kasad
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/kdkasad/st.git
 	arch = any
 	license = MIT

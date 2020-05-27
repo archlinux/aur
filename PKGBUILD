@@ -1,7 +1,7 @@
 # Maintainer: Kian Kasad <kdkasad@gmail.com>
 pkgname=st-kian-git
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A customized version of st by Kian Kasad"
 arch=('any')
 url="https://gitlab.com/kdkasad/st.git"
