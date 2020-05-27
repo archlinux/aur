@@ -5,7 +5,7 @@
 
 # Maintainer: sparzz
 pkgname=vulkan-tools-git
-pkgver=1.2.140_final_3
+pkgver=1.2.140_2020.05.27.r1
 pkgrel=1
 epoch=
 pkgdesc="vulkan tools build directly from KhronosGroup github. This build provide the most recent vulkan-tools package"
@@ -42,6 +42,7 @@ package() {
 	-DSPIRV_HEADERS_INSTALL_DIR=/usr/local/lib/cmake/SPIRV-Headers \
 	-DSPIRV_HEADERS_INSTALL_DIR=/usr/local/include/spirv \
 	-DVulkanRegistry_DIR=/usr/local/share/vulkan/registry \
+	-DVULKAN_LOADER_DIR=/usr/local/lib/pkgconfig \
 	-DVULKAN_LOADER_INSTALL_DIR=/usr/local/lib \
 	-DVULKAN_HEADERS_INSTALL_DIR=/usr/local/include/vulkan \
 	-DVULKAN_HEADERS_INSTALL_DIR=/usr/local/share/vulkan/registry \
