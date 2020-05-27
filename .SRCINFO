@@ -3,6 +3,7 @@ pkgbase = mpv-quack
 	pkgver = r4.1c87f36
 	pkgrel = 1
 	url = https://github.com/CounterPillow/mpv-quack
+	install = quack.install
 	arch = any
 	license = GPL3
 	depends = mpv

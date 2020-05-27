@@ -1,0 +1,2 @@
+echo Now a symlink is required
+echo ln -s /usr/share/mpv/scripts/quack.lua ~/.config/mpv/scripts
