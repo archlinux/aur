@@ -1,5 +1,5 @@
 pkgname=brainworkshop
-pkgver=5.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Brain Workshop is a free open-source version of the Dual N-Back mental exercise"
 arch=('any')
@@ -10,12 +10,9 @@ install='brainworkshop.install'
 source=("https://github.com/samcv/brainworkshop/archive/v${pkgver}.tar.gz"
         brainworkshop.sh
         brainworkshop.desktop)
-sha256sums=('06844b8dbfc56ddfe4271457e78b915d2d30828a6047738666760684da7dbbfa'
+sha256sums=('a82bb63403b0cdf0caa8f544642eafcaa25b07a10d53bcc60196c2991073d164'
             '13b70c017b98586e32e14b498bbe56e36ee067b4904030d1fcdd7f4a6779db29'
             '1e645c18ce0648f82285da25a5bbbad1e63e282bfe9d5c31329eb9d04c23f21c')
-prepare () {
-  cd "${srcdir}/brainworkshop-${pkgver}"
-}
 
 package() {
   #Data
