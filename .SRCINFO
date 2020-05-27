@@ -1,0 +1,19 @@
+pkgbase = toppler-levels-darcs
+	pkgdesc = Provides the levels ("towers") of the game "toppler" as stand-alone mission files (one file mission per tower).
+	pkgver = 1.1.6+r37.d20121219
+	pkgrel = 1
+	url = http://toppler.sourceforge.net/
+	arch = any
+	license = GPL
+	makedepends = awk
+	makedepends = darcs
+	makedepends = sdl_mixer
+	makedepends = zlib
+	optdepends = toppler: To actually play the game.
+	provides = toppler-levels=1.1.6+r37.d20121219
+	provides = toppler-levels-git=1.1.6+r37.d20121219
+	conflicts = toppler-levels
+	conflicts = toppler-levels-git
+
+pkgname = toppler-levels-darcs
+
