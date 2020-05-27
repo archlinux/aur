@@ -3,8 +3,8 @@
 # Contributor: DeaDDooMER <deaddoomer@deadsoftware.ru>
 
 pkgname=xkb-switch-git
-pkgver=20171117
-pkgrel=4
+pkgver=1.6.0.r12.gba0ee5d
+pkgrel=1
 pkgdesc='Program that allows to query and change the XKB layout state'
 arch=('i686' 'x86_64')
 url='https://github.com/grwlf/xkb-switch'
@@ -15,6 +15,11 @@ conflicts=('xkb-switch')
 makedepends=('git' 'cmake')
 source=('git+git://github.com/grwlf/xkb-switch')
 sha1sums=('SKIP')
+
+pkgver() {
+    cd xkb-switch
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
     cd xkb-switch
