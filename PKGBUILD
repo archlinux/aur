@@ -3,7 +3,7 @@
 
 pkgname=warpinator
 pkgver=1.0.4
-_pkgver=ulyana
+#_pkgver=ulyana
 pkgrel=1
 pkgdesc="Allows simple local network file sharing"
 arch=("x86_64")
@@ -32,7 +32,7 @@ conflicts=(
     lm-warp
     warpinator-git
 )
-source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}+${_pkgver}.tar.xz")
+source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
 sha256sums=('b41da05d4a5dd59072b3ce8b189a2e78d298ce71a72d436e47584380a14c4ad3')
 
 prepare() {
