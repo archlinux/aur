@@ -1,7 +1,7 @@
 # Maintainer: Lasha Kanteladze <kanteladzelasha339@gmail.com>
 pkgname=dxhd-git
-pkgver=25.05.2020
-pkgrel=1
+pkgver=master
+pkgrel=0
 pkgdesc="An X11 Hotkey Daemon"
 arch=('x86_64')
 url="https://github.com/dakyskye/dxhd"
