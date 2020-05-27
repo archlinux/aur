@@ -27,7 +27,7 @@ provides=(kdisplay)
 conflicts=(kdisplay kscreen)
 replaces=(kscreen)
 source=("git+https://gitlab.com/kwinft/kdisplay.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/kdisplay"
