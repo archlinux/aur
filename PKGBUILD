@@ -2,7 +2,7 @@
 _pkgname='hlsdl'
 pkgname="$_pkgname-git"
 pkgver='0.27.r186.gcbf4301'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='C program to download VoD HLS (.m3u8) files - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/selsta/$_pkgname"
@@ -23,6 +23,8 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
+	# see https://bbs.archlinux.org/viewtopic.php?id=255727
+	CFLAGS="$CFLAGS -fcommon"
 	make
 }
 
