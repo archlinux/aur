@@ -2,12 +2,13 @@
 
 pkgname=snage
 pkgver=0.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for managing change logs."
 arch=(any)
 url="https://github.com/FACT-Finder/snage"
 license=('MIT')
 depends=('nodejs')
+optdepends=('git: git-version provider')
 makedepends=('yarn')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FACT-Finder/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('64e9422097c2485b31c0af5f856470af129af203ffdeb7981e3dbdf4bb3e5260')
