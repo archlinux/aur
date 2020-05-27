@@ -1,14 +1,15 @@
 pkgbase = ttf-consolas-ligaturized
-	pkgdesc = Standard Consolas font with FiraCode ligatures.
-	pkgver = 1.0.0
+	pkgdesc = Standard Consolas font with FiraCode ligatures. Versions 1 and 2 are included
+	pkgver = 2
 	pkgrel = 1
+	url = https://github.com/somq/consolas-ligaturized
 	arch = any
 	license = CUSTOM
 	depends = fontconfig
 	depends = xorg-font-utils
 	depends = xorg-mkfontdir
-	source = https://github.com/somq/consolas-ligaturized/archive/1.0.0.tar.gz
-	sha256sums = 92bab70e3881b45260be620fbffaf8acb1f9017f108ff06353b1e195649eef7d
+	source = https://github.com/somq/consolas-ligaturized/archive/2.tar.gz
+	sha256sums = 968eaab67578feae22f09e894e4b36f2ef0f13a777ff9f43d11e10bda4b640e7
 
 pkgname = ttf-consolas-ligaturized
 
