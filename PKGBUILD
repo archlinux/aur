@@ -1,12 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - A bond allows two processes, A and B, to know when the other has terminated, either cleanly or by crashing."
-url='https://www.wiki.ros.org/bond'
+url='https://wiki.ros.org/bond'
 
 pkgname='ros-noetic-bond'
 pkgver='1.8.5'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
