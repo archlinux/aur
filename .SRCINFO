@@ -1,6 +1,6 @@
 pkgbase = python-distributed
 	pkgdesc = Python library for distributed computing
-	pkgver = 2.16.0
+	pkgver = 2.17.0
 	pkgrel = 1
 	url = https://distributed.dask.org/
 	arch = any
@@ -34,8 +34,8 @@ pkgbase = python-distributed
 	optdepends = python-asyncssh: Computing cluster using SSH communication
 	optdepends = python-pytorch: Support for tensors and dynamic neural networks
 	optdepends = python-ipywidgets: Extra widgets in diagnostic pages
-	source = https://files.pythonhosted.org/packages/source/d/distributed/distributed-2.16.0.tar.gz
-	sha256sums = 28eb0faea4783f424956b073afa2677b9a13a0cc83ffcc1b1d424fabd98f17e9
+	source = https://files.pythonhosted.org/packages/source/d/distributed/distributed-2.17.0.tar.gz
+	sha256sums = 8b6f8a28eb32ad93f33bd34141fcaf2e437ef5bda900347e8384b332c7f233a3
 
 pkgname = python-distributed
 
