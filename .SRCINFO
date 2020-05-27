@@ -9,7 +9,7 @@ pkgbase = bgb
 	source = bgb-1.5.8.zip::https://bgb.bircd.org/bgb.zip
 	source = bgb
 	md5sums = 15b8b380c45f8cbe9e598f7224fd341e
-	md5sums = c5f34b057c0c5452011dc13b3c60fe94
+	md5sums = 4d4059bc274aa50619dc82fc749af9f3
 
 pkgname = bgb
 
