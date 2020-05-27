@@ -1,5 +1,6 @@
-# Maintainer: Doron Behar <doron.behar@gmail.com>
-# Contributer: DeaDDooMER <deaddoomer@deadsoftware.ru>
+# Maintainer: Orestis Floros <orestisflo@gmail.com>
+# Contributor: Doron Behar <doron.behar@gmail.com>
+# Contributor: DeaDDooMER <deaddoomer@deadsoftware.ru>
 
 pkgname=xkb-switch-git
 pkgver=20171117
