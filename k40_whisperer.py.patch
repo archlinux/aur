@@ -1,4 +1,4 @@
-507,510c507,510
+512,515c512,515
 <             self.left_image  = self.Imaging_Free(Image.open("left.png"),bg=None)
 <             self.right_image = self.Imaging_Free(Image.open("right.png"),bg=None)
 <             self.up_image    = self.Imaging_Free(Image.open("up.png"),bg=None)
@@ -8,7 +8,7 @@
 >             self.right_image = self.Imaging_Free(Image.open("/usr/lib/k40whisperer/right.png"),bg=None)
 >             self.up_image    = self.Imaging_Free(Image.open("/usr/lib/k40whisperer/up.png"),bg=None)
 >             self.down_image  = self.Imaging_Free(Image.open("/usr/lib/k40whisperer/down.png"),bg=None)
-517,521c517,521
+522,526c522,526
 <             self.UL_image  = self.Imaging_Free(Image.open("UL.png"),bg=None)
 <             self.UR_image  = self.Imaging_Free(Image.open("UR.png"),bg=None)
 <             self.LR_image  = self.Imaging_Free(Image.open("LR.png"),bg=None)
