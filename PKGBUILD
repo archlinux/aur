@@ -1,8 +1,8 @@
 # Maintainer  : Chris Billington <chrisjbillington@gmail.com>
 pkgname=python-mkl-random-bin
 _pkgname=mkl_random
-_pkgver=1.1.0
-_build=py38h962f231_0
+_pkgver=1.1.1
+_build=py38h0573a6f_0
 _build_number=0
 pkgver="${_pkgver}.${_build_number}.${_build//_/.}"
 pkgrel=1
@@ -14,7 +14,7 @@ provides=('python-mkl-random')
 conflicts=('python-mkl-random')
 depends=('python-mkl-service' 'python-numpy')
 source=("https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${_pkgver}-${_build}.tar.bz2")
-sha256sums=('1e8c787e024794de66f4dc272867a01f0afd34387f6c1e7f0572d3368fb962e5')
+sha256sums=('b949323969ac27374f1f324ef55e0a06e07ebf35463cf40d950f6fa82df2a96e')
 
 package() {
   mkdir "${pkgdir}/usr"
