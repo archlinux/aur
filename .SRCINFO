@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-image-transport
 	pkgdesc = ROS - image_transport should always be used to subscribe to and publish images.
-	pkgver = 1.11.13
-	pkgrel = 3
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://wiki.ros.org/image_transport
 	arch = i686
 	arch = x86_64
@@ -24,8 +24,8 @@ pkgbase = ros-noetic-image-transport
 	depends = ros-noetic-sensor-msgs
 	depends = ros-noetic-pluginlib
 	depends = ros-noetic-roslib
-	source = ros-noetic-image-transport-1.11.13.tar.gz::https://github.com/ros-perception/image_common/archive/1.11.13.tar.gz
-	sha256sums = 32a2e07724dec6eaaace21eae006274436d70d40bfe205249438570275c43cac
+	source = ros-noetic-image-transport-1.12.0.tar.gz::https://github.com/ros-perception/image_common/archive/1.12.0.tar.gz
+	sha256sums = ba2e3c0beda22a4bb517ffc2d2a8782c564b8f100286043b9782004d1a87de8e
 
 pkgname = ros-noetic-image-transport
 
