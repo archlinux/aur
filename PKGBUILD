@@ -3,9 +3,9 @@
 # Headless by: K900 <me@0upti.me>
 
 pkgname=qt5-base-headless
-_qtver=5.14.2
+_qtver=5.15.0
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url='https://www.qt.io/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -23,7 +23,7 @@ provides=('qt5-base')
 _pkgfqn="qtbase-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
 	qt5-base-cflags.patch)
-sha256sums=('48b9e79220941665a9dd827548c6428f7aa3052ccba8f4f7e039a94aa1d2b28a'
+sha256sums=('9e7af10aece15fa9500369efde69cb220eee8ec3a6818afe01ce1e7d484824c5'
 	    'cf707cd970650f8b60f8897692b36708ded9ba116723ec8fcd885576783fe85c')
 
 prepare() {
