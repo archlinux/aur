@@ -1,10 +1,11 @@
 pkgbase = intel-opencl-sdk
 	pkgdesc = Intel SDK for OpenCL Applications
 	pkgver = 2020.1.395
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.intel.com/en-us/intel-opencl/download
 	arch = x86_64
 	license = custom:intel
+	depends = cpio
 	depends = opencl-icd-loader
 	depends = libpng12
 	depends = opencl-headers

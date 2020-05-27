@@ -6,12 +6,12 @@
 
 pkgname=intel-opencl-sdk
 pkgver=2020.1.395
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel SDK for OpenCL Applications"
 arch=('x86_64')
 url="https://software.intel.com/en-us/intel-opencl/download"
 license=('custom:intel')
-depends=('opencl-icd-loader' 'libpng12' 'opencl-headers')
+depends=('cpio' 'opencl-icd-loader' 'libpng12' 'opencl-headers')
 optdepends=('intel-opencl-runtime: OpenCL runtime for Intel Core and Xeon processors')
 source=(http://registrationcenter-download.intel.com/akdlm/irc_nas/vcp/16625/intel_sdk_for_opencl_applications_${pkgver}.tar.gz)
 sha256sums=('4b8a1e39888e9fb13f717ea6f91aaf6ae8677043ff59a95767fb2f5d10f73850')
