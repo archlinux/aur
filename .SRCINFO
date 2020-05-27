@@ -1,0 +1,19 @@
+pkgbase = confluence-companion-linux
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/schorschii/companion-linux
+	install = confluence-companion-linux.install
+	arch = any
+	license = GPL
+	depends = python-websockets
+	depends = python-distutils-extra
+	depends = python-pyinotify
+	depends = python-wxpython
+	provides = confluence-companion
+	source = confluence-companion-linux-0.5.tar.gz::https://github.com/schorschii/companion-linux/archive/v0.5.tar.gz
+	source = confluence-companion.service
+	sha256sums = bd2d9e7031ec1618f26b5aca33dda79f5e483816c814d2e19e96e31601d85d09
+	sha256sums = b1032345db6755f2217c4156cf7fd28b539947bd82ea9528f7592ef0447563f8
+
+pkgname = confluence-companion-linux
+
