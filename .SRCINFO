@@ -1,13 +1,12 @@
 pkgbase = nvidia-container-toolkit
 	pkgdesc = NVIDIA container runtime toolkit
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NVIDIA/container-toolkit
 	arch = x86_64
 	license = BSD
 	makedepends = go
 	depends = libnvidia-container-tools
-	depends = docker>=1:19.03
 	conflicts = nvidia-container-runtime-hook
 	conflicts = nvidia-container-runtime<2.0.0
 	replaces = nvidia-container-runtime-hook
