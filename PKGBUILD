@@ -3,14 +3,14 @@
 pkgname=python-django-channels
 _pypi_pkgname=channels
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Developer-friendly asynchrony for Django"
 arch=(any)
 url="http://github.com/django/channels"
 license=('BSD')
 makedepends=('python-setuptools')
-depends=('python' 'python-django' 'python-asgiref')
-optdepends=('python-daphne')
+depends=('python' 'python-django' 'python-asgiref' 'python-daphne')
+optdepends=()
 source=("https://pypi.io/packages/source/c/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
 sha256sums=('08e756406d7165cb32f6fc3090c0643f41ca9f7e0f7fada0b31194662f20f414')
 
