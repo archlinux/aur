@@ -2,7 +2,7 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=matrix-synapse-git
-pkgver=1.4.0rc1.r45.ga5166e4d5
+pkgver=1.14.0rc1.r2.g98483890e
 pkgrel=1
 
 pkgdesc="Matrix reference homeserver"
@@ -28,7 +28,7 @@ checkdepends=('python-lxml' 'python-mock' 'python-parameterized')
 optdepends=('python-psycopg2: PostgreSQL support'
             'python-lxml: URL previewing')
 
-source=("git://github.com/matrix-org/synapse.git#branch=develop"
+source=("git+https://github.com/matrix-org/synapse.git#branch=develop"
         'synapse.service'
         'sysusers-synapse.conf')
 
