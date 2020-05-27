@@ -4,7 +4,7 @@
 
 pkgname=('soldat-git')
 _installdir='/usr/share/soldat'
-pkgver=1.8.1.g9c8d032
+pkgver=1.8.0.1.g9c8d032
 pkgrel=1
 pkgdesc="Unique 2D (side-view) multiplayer action game."
 arch=('x86_64')
