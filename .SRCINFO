@@ -1,6 +1,6 @@
 pkgbase = ruby-rubocop
 	pkgdesc = Automatic Ruby code style checking tool.
-	pkgver = 0.79.0
+	pkgver = 0.84.0
 	pkgrel = 1
 	url = https://rubocop.readthedocs.io
 	arch = any
@@ -15,10 +15,10 @@ pkgbase = ruby-rubocop
 	depends = ruby-rainbow
 	depends = ruby-ruby-progressbar
 	depends = ruby-unicode-display_width
-	noextract = rubocop-0.79.0.gem
+	noextract = rubocop-0.84.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/rubocop-0.79.0.gem
-	sha256sums = 325b331102897bd19d08f4e4d18dde806f24cbf5768110663ae16fab1f17a792
+	source = https://rubygems.org/downloads/rubocop-0.84.0.gem
+	sha256sums = 069f1497ef67aefa360a80aef66375fab2941b85dd09a2a68dcaab3d17a4e5c6
 
 pkgname = ruby-rubocop
 
