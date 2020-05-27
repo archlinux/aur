@@ -1,14 +1,13 @@
-pkgname='vault-bin'
-pkgdesc='A tool for managing secrets'
-pkgver='1.4.2'
+# Maintainer: Oscar Garcia Amor <ogarcia@connectical.com>
+
+pkgbase=vault-bin
+pkgname=('vault-bin' 'vault-cli-bin')
+pkgver=1.4.2
 pkgrel=1
 url='https://vaultproject.io/'
 license=('MPL')
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 depends=('glibc')
-conflicts=('vault' 'vault-git')
-install='vault.install'
-backup=('etc/vault.hcl')
 source=('vault.tmpfiles'
         'vault.sysusers'
         'vault.service'
@@ -28,7 +27,12 @@ sha256sums_x86_64=('f2bca89cbffb8710265eb03bc9452cc316b03338c411ba8453ffe7419390
 sha256sums_armv7h=('c736ee6a3cc110157ef7473edf24c8692e6f5c57e68edbe1963971e9c22094a7')
 sha256sums_aarch64=('bb198bd161479fe0eee649bc6dd2aa82735009bd4f8c341e0676f9112e2376f7')
 
-package () {
+package_vault-bin () {
+  pkgdesc='A tool for managing secrets'
+  conflicts=('vault' 'vault-git' 'vault-cli-bin')
+  install='vault.install'
+  backup=('etc/vault.hcl')
+
   install -Dm755 vault "${pkgdir}/usr/bin/vault"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${srcdir}/vault.hcl" "${pkgdir}/etc/vault.hcl"
@@ -38,4 +42,12 @@ package () {
     "${pkgdir}/usr/lib/sysusers.d/vault.conf"
   install -Dm644 "${srcdir}/vault.tmpfiles" \
     "${pkgdir}/usr/lib/tmpfiles.d/vault.conf"
+}
+
+package_vault-cli-bin () {
+  pkgdesc='A tool for managing secrets (CLI Only)'
+  conflicts=('vault' 'vault-git' 'vault-bin')
+
+  install -Dm755 vault "${pkgdir}/usr/bin/vault"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

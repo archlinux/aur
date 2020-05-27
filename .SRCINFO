@@ -1,18 +1,13 @@
 pkgbase = vault-bin
-	pkgdesc = A tool for managing secrets
 	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://vaultproject.io/
-	install = vault.install
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = MPL
 	depends = glibc
-	conflicts = vault
-	conflicts = vault-git
-	backup = etc/vault.hcl
 	source = vault.tmpfiles
 	source = vault.sysusers
 	source = vault.service
@@ -33,4 +28,16 @@ pkgbase = vault-bin
 	sha256sums_aarch64 = bb198bd161479fe0eee649bc6dd2aa82735009bd4f8c341e0676f9112e2376f7
 
 pkgname = vault-bin
+	pkgdesc = A tool for managing secrets
+	install = vault.install
+	conflicts = vault
+	conflicts = vault-git
+	conflicts = vault-cli-bin
+	backup = etc/vault.hcl
+
+pkgname = vault-cli-bin
+	pkgdesc = A tool for managing secrets (CLI Only)
+	conflicts = vault
+	conflicts = vault-git
+	conflicts = vault-bin
 
