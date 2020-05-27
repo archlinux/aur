@@ -2,9 +2,9 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-gitver=v5.4.42
-pkgver=5.4.v.42
-pkgrel=4
+gitver=v5.4.43
+pkgver=5.4.v.43
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -27,7 +27,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '4cdbcea39c5d5e2d742dd916b37ba4435583e4145666fe559bfcf78694e0046c'
+            '8a4141645460df0fce041c5a62dc30ff0077dceb837589ca23e29f614330f255'
             #.preset file
             '0ac0cf410b0f3eeaa07d41505613e118ea59e01144e905f2dc0a808379f87e87'
             #patch file
@@ -56,8 +56,8 @@ prepare() {
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  # Implement all packaged patches.
-  git apply ../*.patch
+  # Implement all packaged patches. Ignore errors.
+  git apply ../*.patch || echo "ERROR: something went wrong with a gitpatch. Advancing anyway."
 
   # get kernel version
   yes "" | make prepare
