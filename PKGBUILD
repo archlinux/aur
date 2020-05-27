@@ -10,9 +10,8 @@ url='https://github.com/jazzsewera/wallsch'
 source=('git+https://github.com/jazzsewera/wallsch.git')
 license=('custom:MPL2')
 makedepends=('python-setuptools')
-depends=('python' 'python-apscheduler' 'python-tzlocal' 'python-pyro' 'python-suntime')
-optdepends=('i3lock: for screen locking support'
-            'nitrogen: for displaying wallpapers if none is installed')
+depends=('python' 'python-apscheduler' 'python-tzlocal' 'python-pyro' 'python-suntime' 'nitrogen')
+optdepends=('i3lock: for screen locking support')
 sha256sums=('SKIP')
 
 pkgver() {
