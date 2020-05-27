@@ -1,6 +1,6 @@
 pkgbase = st-kian-git
 	pkgdesc = A customized version of st by Kian Kasad
-	pkgver = 0.8.3.r6.34bf900
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://gitlab.com/kdkasad/st.git
 	arch = any
