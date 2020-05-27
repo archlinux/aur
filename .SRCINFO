@@ -4,10 +4,9 @@ pkgbase = qt-logout
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/qt-logout
 	arch = any
-	license = MIT
+	license = GNU General Public License v3.0
 	makedepends = python-pyqt5
 	source = https://github.com/TheCynicalTeam/qt-logout/archive/1.0.0-1.tar.gz
 	sha256sums = 5b5f85caefcfb08c3b6a79afc076399825b061958f3aac2246b08d94992e801a
 
 pkgname = qt-logout
-
