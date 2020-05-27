@@ -1,0 +1,42 @@
+From b6453a73f2651621fc2be591acf12952dfd3b15e Mon Sep 17 00:00:00 2001
+From: Maciej Mrozowski <reavertm@gmail.com>
+Date: Sun, 9 Feb 2020 03:33:09 +0100
+Subject: [PATCH] Fix compilation with -fno-common
+
+Fix compilation with -fno-common, default in upcoming gcc-10
+Also see https://bugs.gentoo.org/708686
+---
+ test/manual/userconfig.h | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/test/manual/userconfig.h b/test/manual/userconfig.h
+index 70043e32..5be80c6f 100644
+--- a/test/manual/userconfig.h
++++ b/test/manual/userconfig.h
+@@ -19,16 +19,16 @@
+ #ifndef USERCONFIG_H
+ #define USERCONFIG_H
+ 
+-unsigned int config_uin;
+-char *config_password;
+-unsigned int config_peer;
+-char *config_file;
+-char *config_dir;
+-unsigned int config_size;
+-unsigned long config_ip;
+-unsigned int config_port;
+-char *config_server;
+-char *config_proxy;
++extern unsigned int config_uin;
++extern char *config_password;
++extern unsigned int config_peer;
++extern char *config_file;
++extern char *config_dir;
++extern unsigned int config_size;
++extern unsigned long config_ip;
++extern unsigned int config_port;
++extern char *config_server;
++extern char *config_proxy;
+ 
+ int config_read(void);
+ void config_free(void);
