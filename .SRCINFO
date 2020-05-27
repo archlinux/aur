@@ -1,19 +1,22 @@
 pkgbase = kde-syndication-git
 	pkgdesc = RSS/Atom parser library
-	pkgver = r542.cdc0e3f
+	pkgver = r766.4e90576
 	pkgrel = 1
-	url = https://projects.kde.org/projects/kde/pim/syndication
+	url = https://community.kde.org/Frameworks
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = extra-cmake-modules-git
+	makedepends = extra-cmake-modules
+	makedepends = doxygen
 	makedepends = git
-	makedepends = python
-	depends = kio
+	makedepends = qt5-tools
+	makedepends = qt5-doc
+	depends = kcodecs
 	provides = kde-syndication
+	provides = syndication
 	conflicts = kde-syndication
-	source = git://anongit.kde.org/syndication.git
-	md5sums = SKIP
+	source = git+https://github.com/KDE/syndication.git
+	sha256sums = SKIP
 
 pkgname = kde-syndication-git
 

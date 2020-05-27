@@ -1,40 +1,42 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
-_gitname=syndication
-pkgname=kde-$_gitname-git
-pkgver=r542.cdc0e3f
+_pkgname=syndication
+pkgname=kde-$_pkgname-git
+pkgver=r766.4e90576
 pkgrel=1
 pkgdesc="RSS/Atom parser library"
 arch=('i686' 'x86_64')
-url="https://projects.kde.org/projects/kde/pim/$_gitname"
+url="https://community.kde.org/Frameworks"
 license=('LGPL')
-depends=('kio')
-makedepends=('extra-cmake-modules-git' 'git' 'python')
-conflicts=("kde-$_gitname")
-provides=("kde-$_gitname")
-source=("git://anongit.kde.org/$_gitname.git")
-md5sums=('SKIP')
+depends=(kcodecs)
+makedepends=(extra-cmake-modules doxygen git qt5-tools qt5-doc)
+conflicts=("kde-$_pkgname")
+provides=("kde-$_pkgname" "syndication")
+source=("git+https://github.com/KDE/$_pkgname.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
+  cd $srcdir/$_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
+  cd $srcdir/$_pkgname
   mkdir -p build
 }
 
 build() {
-  cd build
-  cmake ../$_gitname \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+  cd $srcdir/$_pkgname/build
+  cmake ../ \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
   make
 }
 
 package() {
-  cd build
+  cd $srcdir/$_pkgname/build
   make DESTDIR="$pkgdir" install
+  install -Dm644 ../COPYING.LIB "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
