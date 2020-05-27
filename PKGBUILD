@@ -1,5 +1,6 @@
 # $Id$
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
@@ -7,12 +8,12 @@
 pkgbase=akonadi-qt4
 pkgname=(libakonadi-qt4 akonadi-qt4)
 pkgver=1.13.0
-pkgrel=15
+pkgrel=16
 pkgdesc="PIM layer, which provides an asynchronous API to access all kind of PIM data (Qt4 version)"
 arch=('x86_64')
-url='http://community.kde.org/KDE_PIM/Akonadi'
+url='https://kontact.kde.org'
 license=('LGPL')
-makedepends=('cmake' 'automoc4' 'boost' 'postgresql' 'mariadb' 'qt4' 'libxslt')
+makedepends=(extra-cmake-modules postgresql qt5-tools boost kitemmodels kaccounts-integration mariadb qt4 lixslt)
 provides=('akonadi')
 conflicts=('akonadi' 'akonadi-contacts')
 source=("https://download.kde.org/stable/akonadi/src/akonadi-${pkgver}.tar.bz2"
@@ -35,7 +36,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DINSTALL_QSQLITE_IN_QT_PREFIX=TRUE \
     -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
-    -DWITH_SOPRANO=OFF
+    -DWITH_SOPRANO=OFF \
+    -DBUILD_TESTING=OFF
   make
 }
 
@@ -53,6 +55,7 @@ package_libakonadi-qt4() {
 
 package_akonadi-qt4() {
   depends=(libakonadi-qt4 boost-libs mariadb)
+  optdepends=('postgresql: PostgreSQL backend')
   conflicts=(akonadi)
   replaces=('akonadi<15')
 
