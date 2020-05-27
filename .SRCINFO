@@ -1,6 +1,6 @@
 pkgbase = cryo
 	pkgdesc = A visual file manager with p2p file transfers
-	pkgver = 0.5.3
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://cryonet.io
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = cryo
 	depends = libsodium
 	depends = libraw
 	depends = sqlite
-	source_x86_64 = cryo-0.5.3-x86_64.deb::https://cryonet.io/downloads/linux/cryo_0.5.3_amd64.deb
-	source_x86_64 = cryo-0.5.3-x86_64.deb.sig::https://cryonet.io/downloads/linux/cryo_0.5.3_amd64.deb.sig
-	sha256sums_x86_64 = 1ba629f9d3be7c96fa60512f31e5c8b4ee41c5a339480c7469129b0c78602e47
-	sha256sums_x86_64 = 8f62b1a9cc7a4b3cfdc461cbacb263c8799659b927bf9ec2cd53054c6708a5d0
+	source_x86_64 = cryo-0.5.5-x86_64.deb::https://cryonet.io/downloads/linux/cryo_0.5.5_amd64.deb
+	source_x86_64 = cryo-0.5.5-x86_64.deb.sig::https://cryonet.io/downloads/linux/cryo_0.5.5_amd64.deb.sig
+	sha256sums_x86_64 = ee9974c9ab153b2cb0e8b656a3238cf3f5fe99490abc4c0dec48424c9883a343
+	sha256sums_x86_64 = e20f030c970e495d4cea38ad642d13c04f2b9bf10e8fe68e1c7d5f6ecf2a1daf
 
 pkgname = cryo
 
