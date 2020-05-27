@@ -49,6 +49,18 @@ EOF
 #!/usr/bin/env sh
 $_installdir/soldatserver_x64 -fs_userpath ~/.local/share/Soldat/Soldat \$@
 EOF
+
+  # create desktop file
+  cat <<EOF > soldat.desktop
+[Desktop Entry]
+Type=Application
+Name=Soldat
+Exec=soldat -joinurl %u
+Icon=$_installdir/soldat.ico
+StartupNotify=false
+Terminal=false
+MimeType=x-scheme-handler/soldat;
+EOF
 }
 
 package() {
@@ -57,8 +69,10 @@ package() {
   install -Dm 655 "server/build/soldatserver_x64" -t "$pkgdir/$_installdir";
   install -Dm 655 "client/build/soldat_x64" -t "$pkgdir/$_installdir";
   install -Dm 644 "client/build/libstb.so" -t "$pkgdir/$_installdir";
+  install -Dm 644 "client/media/soldat.ico" -t "$pkgdir/$_installdir";
   install -Dm 644 "$srcdir/soldat-base/soldat.smod" -t "$pkgdir/$_installdir";
   install -Dm 644 "$srcdir/soldat-base/client/play-regular.ttf" -t "$pkgdir/$_installdir";
   install -Dm 655 "soldat" -t "$pkgdir/usr/bin";
   install -Dm 655 "soldatserver" -t "$pkgdir/usr/bin";
+  install -Dm 655 "soldat.desktop" -t "$pkgdir/usr/share/applications";
 }
