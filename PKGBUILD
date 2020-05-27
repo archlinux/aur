@@ -5,7 +5,7 @@
 
 # Maintainer: sparzz
 pkgname=spirv-headers-sparzz-git
-pkgver=1.5.3_final_1
+pkgver=1.5.3_2020.05.27
 pkgrel=1
 epoch=
 pkgdesc="SPIR-V Headers build from source. My Vulkan packages from the AUR depends on this package. For install instruction and order of the of the install visit my GitHub page --> https://github.com/sparzz/vulkan-arch-aur  "
