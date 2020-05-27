@@ -1,6 +1,6 @@
 pkgbase = feedbackd
 	pkgdesc = A daemon to provide haptic feedback on events
-	pkgver = 0.0.0+git20200420
+	pkgver = 0.0.0+git20200527
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/feedbackd
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = feedbackd
 	provides = libfeedback
 	provides = purism-feedbackd
 	provides = purism-libfeedback
-	source = https://source.puri.sm/Librem5/feedbackd/-/archive/v0.0.0+git20200420/feedbackd-v0.0.0+git20200420.tar.gz
-	sha256sums = 4c50d72654b6716fd12843ad4e9460a4020bbd1ced958c211c06b0f48bebe49f
+	source = https://source.puri.sm/Librem5/feedbackd/-/archive/v0.0.0+git20200527/feedbackd-v0.0.0+git20200527.tar.gz
+	sha256sums = 51d244041e4df61d819ec40ea1a0c91fc8bc7638a4bc995dc96455371ceb328d
 
 pkgname = feedbackd
 
