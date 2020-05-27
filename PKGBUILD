@@ -4,15 +4,16 @@ pkgdesc="ROS - This contains CvBridge, which converts between ROS Image messages
 url='https://wiki.ros.org/cv_bridge'
 
 pkgname='ros-noetic-cv-bridge'
-pkgver='1.13.0'
+pkgver='1.15.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=5
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-	ros-noetic-sensor-msgs
-	ros-noetic-rosconsole
 	ros-noetic-catkin
+	ros-noetic-rosconsole
+	ros-noetic-sensor-msgs
+    ros-noetic-rostest
 )
 
 makedepends=(
@@ -20,37 +21,28 @@ makedepends=(
 	'ros-build-tools'
 	${ros_makedepends[@]}
 	boost
+	opencv
 	python
-	python-numpy
-	opencv3-opt
+    python-opencv-python
+    python-numpy
 )
 
 ros_depends=(
-	ros-noetic-sensor-msgs
 	ros-noetic-rosconsole
+	ros-noetic-sensor-msgs
 )
 
 depends=(
 	${ros_depends[@]}
 	boost
+    opencv
 	python
-	python-numpy
-	opencv3-opt
+	python-opencv-python
 )
 
 _dir="vision_opencv-${pkgver}/cv_bridge"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/vision_opencv/archive/${pkgver}.tar.gz"
-  "endian-fix.patch"
-  "boost-fix.patch")
-sha256sums=('c8db35dbb6b470cdedb45195f725bc2cfda7f0dc3155e16a5a37e4b48e29fa59'
-  'bc06dbe12f26015c6bce73b2c95123851415d5662c17ef87267737dd433bb22b'
-  '50658e5e213df03fa68c51bb399f541699cd022dac4ca68cfcdc19561bcea087')
-
-prepare() {
-  cd "${srcdir}/${_dir}"
-  patch -uN src/module.hpp ../../../endian-fix.patch || return 1
-  patch -uN CMakeLists.txt ../../../boost-fix.patch || return 1
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/vision_opencv/archive/${pkgver}.tar.gz")
+sha256sums=('dc7faaefeb6dfacbea9479e074a544c9f4df690e0b6910155df8542507b5604c')
 
 build() {
 	# Use ROS environment variables.
