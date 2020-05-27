@@ -16,8 +16,9 @@ optdepends=('jack: for smjack and smsampleedit'
             'qt5-base: for sminspector and smsampleedit')
 provides=('libspectmorphjack.so' 'libspectmorphgui.so' 'libspectmorphglui.so'
 'libspectmorph.so')
-source=("http://www.spectmorph.org/files/releases/${pkgname}-${pkgver}.tar.bz2"
-        "http://spectmorph.org/files/instruments/${pkgname}-instruments-${pkgver}.tar.xz")
+conflicts=(spectmorph)
+source=("http://www.spectmorph.org/files/releases/spectmorph-${pkgver}.tar.bz2"
+        "http://spectmorph.org/files/instruments/spectmorph-instruments-${pkgver}.tar.xz")
 sha512sums=('db5770266d1cdcb1dc64c369fc8ea9580741a8d7d766e3c298fdf175db4cf5daf2abb55213e3f6e9a93f42e103c86eb3b3dce10f2e945441c3048e847c811b01'
             '7cfb94b312a9d3f73dd0c87185cd398fdb3373ee4ec2e904033a1cbaa43296cd43a247dd81365cecd07609354c0bbd15cf2ee379fb36b890736f0cff1e7bc689')
 
@@ -49,8 +50,8 @@ package() {
   make DESTDIR="$pkgdir/" install
   # standard instruments
   install -vDm 644 ../instruments/standard/* \
-    -t "${pkgdir}/usr/share/${pkgname}/instruments/standard/"
+    -t "${pkgdir}/usr/share/spectmorph/instruments/standard/"
   # docs
   install -vDm 644 {AUTHORS,DESIGN,NEWS,README.md,TODO} \
-    -t "${pkgdir}/usr/share/doc/${pkgname}/"
+    -t "${pkgdir}/usr/share/doc/spectmorph/"
 }
