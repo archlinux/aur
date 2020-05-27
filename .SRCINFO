@@ -1,0 +1,13 @@
+pkgbase = kube-capacity
+	pkgdesc = A simple CLI that provides an overview of the resource requests, limits, and utilization in a Kubernetes cluster
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/robscott/kube-capacity
+	arch = x86_64
+	license = Apache-2.0
+	options = !strip
+	source = https://github.com/robscott/kube-capacity/releases/download/0.4.0/kube-capacity_0.4.0_Linux_x86_64.tar.gz
+	sha256sums = 5784b819447d823d29622084d86d2e5eca51f7c1c016db0ae17457a7d24c6cd1
+
+pkgname = kube-capacity
+
