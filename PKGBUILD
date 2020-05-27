@@ -16,7 +16,7 @@ depends=("clang" "libadalang"
          "gnatcoll-xref" "gnatcoll-python" "gnatcoll-db2ada"
          "gnatcoll-gnatinspect" "gtkada"
          "gnome-icon-theme" "gnome-icon-theme-extras" "gnome-icon-theme-symbolic" 
-         "python2-gobject" "python2-jedi")
+         "python2-gobject")
 makedepends=('gprbuild' 'python2-sphinx' 'texlive-latexextra' 'graphviz')
 
 _laltools_ver=2020-20200429-1998C

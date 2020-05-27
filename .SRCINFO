@@ -21,7 +21,6 @@ pkgbase = gnat-gps
 	depends = gnome-icon-theme-extras
 	depends = gnome-icon-theme-symbolic
 	depends = python2-gobject
-	depends = python2-jedi
 	source = gps-20.2.tar.gz::https://github.com/AdaCore/gps/archive/20.2.tar.gz
 	source = ada_language_server-21.0.3.tar.gz::https://github.com/AdaCore/ada_language_server/archive/21.0.3.tar.gz
 	source = libadalang-tools-2020-20200429-1998C-src.tar.gz::https://community.download.adacore.com/v1/740372d8ffb1e4755a99bead2d78dace904235c0?filename=libadalang-tools-2020-20200429-1998C-src.tar.gz
