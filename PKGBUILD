@@ -1,17 +1,17 @@
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 
 pkgname=outwiker
-pkgver=1.8.1
+pkgver=2.0.0
 pkgrel=1
 arch=('any')
 pkgdesc="Outliner and personal wiki with keeping the tree of notes in the form of directories on a disk"
 url="http://jenyay.net/Outwiker/English"
 license=('GPL3')
-depends=('python2' 'wxpython2.8' 'pywebkitgtk' 'python2-pillow')
-optdepends=('mimetex: rendering of formulas'
-            'python-gnomeprint: printing non-latin symbols')
+depends=('python2' 'wxpython2.8' 'pywebkitgtk' 'python2-pillow' 'python2-pyenchant')
+optdepends=('mimetex: rendering of formulas')
 conflicts=('outwiker-git')
-source=("outwiker.deb::https://launchpad.net/~outwiker-team/+archive/ubuntu/ppa/+files/outwiker_1.8.1%2B752%7Etrusty_all.deb")
-sha1sums=('f876cf2723162148508f1cf791e3069f27885b10')
+source=("outwiker.deb::https://launchpad.net/~outwiker-team/+archive/ubuntu/ppa/+files/outwiker_2.0.0+822~zesty_all.deb");
+sha256sums=('4d0dd13dce875ebfe359818e9a3bec127f6af53f21100138e5fbd8caf9cc9021')
 
 package() {
 	ar x outwiker.deb
