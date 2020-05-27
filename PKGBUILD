@@ -1,12 +1,13 @@
 # Maintainer: Syaoran Code <syaorancode@gmail.com>
 pkgname=dwmblocks-syaoran-git
-pkgver=0.1r1.c2bc30a
+_dir=dwmblocks-syaoran
+pkgver=0.1r5.af88124
 pkgrel=1
 epoch=
 pkgdesc="dwmblocks for dwm"
 arch=(x86_64)
-url="https://gitlab.com/justanoobcoder/dwmblocks.git"
-license=('MIT')
+url="https://gitlab.com/justanoobcoder/dwmblocks-syaoran.git"
+license=('GPL')
 groups=()
 depends=(libx11 libxft-bgra-git bc pacman-contrib)
 makedepends=(make)
@@ -25,18 +26,20 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-    cd "dwmblocks"
+    cd "$_dir"
     printf "0.1r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "dwmblocks"
-	make > /dev/null
+	cd "$_dir"
+	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-	cd "dwmblocks"
-	make DESTDIR="$pkgdir/" install
+	cd "$_dir"
+    mkdir -p ${pkgdir}/opt/${pkgname}
+    cp -rf * ${pkgdir}/opt/${pkgname}
+	make PREFIX=/usr DESTDIR="$pkgdir/" install
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
