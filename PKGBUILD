@@ -3,7 +3,7 @@
 pkgname=python-mqttools
 pkgver=0.35.0
 pkgrel=1
-pkgdesc="MQTT tools in Python 3.7 and later"
+pkgdesc="MQTT version 5.0 client and broker using asyncio"
 url="https://github.com/eerimoq/mqttools"
 license=('MIT')
 arch=("any")
