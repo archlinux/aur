@@ -10,20 +10,20 @@ makedepends=('cargo'
 			 'cmake')
 depends=('qt5-base'
      	 'polkit')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PonasKovas/netctl-tray/archive/${pkgver}.tar.gz")
+source=("netctl-tray-${pkgver}.tar.gz::https://github.com/PonasKovas/netctl-tray/archive/${pkgver}.tar.gz")
 md5sums=('6764bc400a56ddcd136fb56c1fdf9749')
 
 build () {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/netctl-tray-$pkgver"
   RUSTUP_TOOLCHAIN=nightly \
     cargo build --release --locked --features "auto"
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 target/release/netctl-tray "${pkgdir}/usr/bin/netctl-tray"
-  install -d "${pkgdir}/usr/share/netctl-tray/"
-  install -Dm644 assets/* "${pkgdir}/usr/share/netctl-tray/"
+  cd "$srcdir/netctl-tray-$pkgver"
+  install -Dm755 target/release/netctl-tray "${pkgdir}/usr/bin/netctl-tray-auto"
+  install -d "${pkgdir}/usr/share/netctl-tray-auto/"
+  install -Dm644 assets/* "${pkgdir}/usr/share/netctl-tray-auto/"
   install -dm0750 "${pkgdir}/usr/share/polkit-1/rules.d/"
-  install -Dm0644 scripts/netctl-tray.rules "${pkgdir}/usr/share/polkit-1/rules.d/netctltray.rules"
+  install -Dm0644 scripts/netctl-tray.rules "${pkgdir}/usr/share/polkit-1/rules.d/netctltrayauto.rules"
 }

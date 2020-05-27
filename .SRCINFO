@@ -9,7 +9,7 @@ pkgbase = netctl-tray-auto
 	makedepends = cmake
 	depends = qt5-base
 	depends = polkit
-	source = netctl-tray-auto-0.2.0.tar.gz::https://github.com/PonasKovas/netctl-tray/archive/0.2.0.tar.gz
+	source = netctl-tray-0.2.0.tar.gz::https://github.com/PonasKovas/netctl-tray/archive/0.2.0.tar.gz
 	md5sums = 6764bc400a56ddcd136fb56c1fdf9749
 
 pkgname = netctl-tray-auto
