@@ -11,8 +11,8 @@ pkgbase = wallsch-git
 	depends = python-tzlocal
 	depends = python-pyro
 	depends = python-suntime
+	depends = nitrogen
 	optdepends = i3lock: for screen locking support
-	optdepends = nitrogen: for displaying wallpapers if none is installed
 	source = git+https://github.com/jazzsewera/wallsch.git
 	sha256sums = SKIP
 
