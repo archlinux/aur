@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-bondpy
 	pkgdesc = ROS - Python implementation of bond, a mechanism for checking when another process has terminated.
-	pkgver = 1.8.3
-	pkgrel = 3
+	pkgver = 1.8.5
+	pkgrel = 1
 	url = https://wiki.ros.org/bondpy
 	arch = any
 	license = BSD
@@ -14,8 +14,8 @@ pkgbase = ros-noetic-bondpy
 	depends = ros-noetic-smclib
 	depends = ros-noetic-rospy
 	depends = util-linux
-	source = ros-noetic-bondpy-1.8.3.tar.gz::https://github.com/ros/bond_core/archive/1.8.3.tar.gz
-	sha256sums = 9f2bd791abc0356f47235db7e2b042479e6a091cf2cd969d0918a8e0c76b632d
+	source = ros-noetic-bondpy-1.8.5.tar.gz::https://github.com/ros/bond_core/archive/1.8.5.tar.gz
+	sha256sums = b70f0fe5b4979fe2e7390bff9671b2581eefa91f4ac41f4af01eb1f2bef0e1f4
 
 pkgname = ros-noetic-bondpy
 
