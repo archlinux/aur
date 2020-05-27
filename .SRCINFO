@@ -1,7 +1,7 @@
 pkgbase = gobject-introspection-git
 	pkgdesc = Introspection system for GObject-based libraries (Git)
 	pkgver = 1.64.0+47+ge7c17469
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GObjectIntrospection
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = gobject-introspection-git
 pkgname = gobject-introspection-git
 	depends = python-mako
 	depends = python-markdown
-	depends = gobject-introspection-runtime-git=1.64.0+47+ge7c17469-1
+	depends = gobject-introspection-runtime-git=1.64.0+47+ge7c17469-2
 
 pkgname = gobject-introspection-runtime-git
 	pkgdesc = Introspection system for GObject-based libraries (Git) (runtime library)

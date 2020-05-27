@@ -8,7 +8,7 @@ _pkgname=gobject-introspection
 pkgbase="${_pkgname}-git"
 pkgname=(${_pkgname}-git ${_pkgname}-runtime-git)
 pkgver=1.64.0+47+ge7c17469
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Introspection system for GObject-based libraries (Git)"
 url="https://wiki.gnome.org/Projects/GObjectIntrospection"
@@ -35,20 +35,20 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  arch-meson $_pkgname build \
+  arch-meson $srcdir/$_pkgname build \
     -D gtk_doc=true \
     -D glib_src_dir="$srcdir/glib"
   ninja -C build
 }
 
 check() {
-  meson test -C build
+  meson test -C $srcdir/$_pkgname/build
 }
 
 package_gobject-introspection-git() {
   depends+=("gobject-introspection-runtime-git=$pkgver-$pkgrel")
 
-  DESTDIR="$pkgdir" meson install -C build
+  DESTDIR="$pkgdir" meson install -C $srcdir/$_pkgname/build
 
   python -m compileall -d /usr/lib/$_pkgname "$pkgdir/usr/lib/$_pkgname"
   python -O -m compileall -d /usr/lib/$_pkgname "$pkgdir/usr/lib/$_pkgname"
