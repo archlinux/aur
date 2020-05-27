@@ -9,7 +9,7 @@ pkgdesc="OpenType text shaping engine"
 url="http://www.freedesktop.org/wiki/Software/HarfBuzz"
 arch=(x86_64)
 license=(MIT)
-depends=(glib2 freetype2 graphite)
+depends=(freetype2 graphite)
 makedepends=(glib2 freetype2 graphite cairo icu gobject-introspection ragel git python)
 #checkdepends=(python-fonttools python-setuptools)
 source=("git+https://github.com/harfbuzz/harfbuzz")
@@ -46,7 +46,7 @@ build() {
 #}
 
 package_harfbuzz-git() {
-  depends=(glib2 freetype2 graphite libglib-2.0.so libfreetype.so libgobject-2.0.so)
+  depends=(freetype2 graphite)
   optdepends=('cairo: hb-view program')
   provides=(harfbuzz libharfbuzz.so libharfbuzz-subset.so libharfbuzz-gobject.so)
   conflicts=(harfbuzz)
