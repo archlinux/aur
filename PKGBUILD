@@ -2,7 +2,7 @@
 
 pkgname=cpeditor-git
 _pkgname=cpeditor
-pkgver=6.4.5.r37.g936afae
+pkgver=6.4.5.r38.g88da1f4
 pkgrel=1
 pkgdesc='The editor for competitive programming'
 arch=('x86_64')
@@ -30,30 +30,30 @@ source=('git://github.com/cpeditor/cpeditor.git'
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-	cd $_pkgname
+	cd "$_pkgname"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd $_pkgname
+	cd "$_pkgname"
 	git submodule init
 
-	git config submodule.third_party/QCodeEditor.url $srcdir/QCodeEditor
-	git config submodule.third_party/QtFindReplaceDialog.url $srcdir/QtFindReplaceDialog
-	git config submodule.third_party/lsp-cpp.url $srcdir/lsp-cpp
-	git config submodule.third_party/singleapplication.url $srcdir/singleapplication
-	git config submodule.third_party/testlib.url $srcdir/testlib
+	git config submodule.third_party/QCodeEditor.url "$srcdir/QCodeEditor"
+	git config submodule.third_party/QtFindReplaceDialog.url "$srcdir/QtFindReplaceDialog"
+	git config submodule.third_party/lsp-cpp.url "$srcdir/lsp-cpp"
+	git config submodule.third_party/singleapplication.url "$srcdir/singleapplication"
+	git config submodule.third_party/testlib.url "$srcdir/testlib"
 
 	git submodule update
 }
 
 build() {
-	cd $_pkgname
+	cd "$_pkgname"
 	cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=/usr
 	cmake --build build -j$(nproc)
 }
 
 package() {
-	cd $_pkgname/build
+	cd "$_pkgname/build"
 	make DESTDIR="$pkgdir" install
 }
