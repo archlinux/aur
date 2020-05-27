@@ -1,0 +1,16 @@
+pkgbase = python-mqttools
+	pkgdesc = MQTT tools in Python 3.7 and later
+	pkgver = 0.35.0
+	pkgrel = 1
+	url = https://github.com/eerimoq/mqttools
+	arch = any
+	license = MIT
+	makedepends = python
+	depends = python
+	depends = python-bitstruct
+	depends = python-humanfriendly
+	source = mqttools-0.35.0.tar.gz::https://github.com/eerimoq/mqttools/archive/0.35.0.tar.gz
+	sha256sums = cbdbcbb4809f72c7287113d8812f2404aa571effe71e45ae1dbef03d10047778
+
+pkgname = python-mqttools
+
