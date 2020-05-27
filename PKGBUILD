@@ -4,35 +4,38 @@
 
 pkgbase=transmission-sequential
 pkgname=(transmission-sequential-cli transmission-sequential-gtk transmission-sequential-qt)
-pkgver=2.94
-pkgrel=2
+pkgver=3.00
+pkgrel=1
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url="http://www.transmissionbt.com/"
 license=(MIT)
 makedepends=(gtk3 intltool curl qt5-base libevent systemd qt5-tools)
 provides=(transmission-cli)
 conflicts=(transmission-cli)
-source=("https://github.com/Mikayex/transmission/archive/${pkgver}-seq.tar.gz"
-        transmission-2.90-libsystemd.patch
+source=(https://github.com/Mikayex/transmission/archive/${pkgver}-seq.tar.gz
+        https://github.com/transmission/transmission-releases/raw/master/transmission-${pkgver}.tar.xz
         transmission-sequential-cli.sysusers
         transmission-sequential-cli.tmpfiles)
-sha256sums=('220ba1b500d13c36ed1e55e90bb2c3d6d4babddcae3b7df08a374617af1b5670'
-            '9f8f4bb532e0e46776dbd90e75557364f495ec95896ee35900ea222d69bda411'
+sha256sums=('5e6169d7756de25780f00af2b312c303a054fcda5df2b3300c1d5dc48e3a8107'
+            '9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2'
             '641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2'
             '1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451')
 
 prepare() {
+  #Copy third party files from official source package
+  cp -r transmission-$pkgver/third-party/ transmission-$pkgver-seq
+
   cd transmission-$pkgver-seq
-  patch -p1 -i "$srcdir/transmission-2.90-libsystemd.patch"
 
   rm -f m4/glib-gettext.m4
+  AUTOGEN_SUBDIR_MODE=1 ./autogen.sh
+
   sed -i '/^Icon=/ s/$/-qt/' qt/transmission-qt.desktop
 }
 
 build() {
   cd transmission-$pkgver-seq
-  ./autogen.sh --prefix=/usr
-  #./autogen.sh --prefix=/usr --without-gtk
+  ./configure --prefix=/usr
   make
 
   cd qt
@@ -63,7 +66,7 @@ package_transmission-sequential-cli() {
 package_transmission-sequential-gtk() {
   pkgdesc="Fast, easy, and free BitTorrent client (GTK+ GUI) (+sequential patch)"
   depends=(curl libevent gtk3 desktop-file-utils hicolor-icon-theme)
-  optdepends=('notification-daemon: Desktop notification support'
+  optdepends=('libnotify: Desktop notification support'
   	      'transmission-sequential-cli: daemon and web support')
   provides=(transmission-gtk)
   conflicts=(transmission-gtk)
