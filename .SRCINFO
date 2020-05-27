@@ -1,0 +1,22 @@
+pkgbase = pleroma
+	pkgdesc = The Pleroma Server (ActivityPub Compatible)
+	pkgver = 2.0.5
+	pkgrel = 1
+	install = pleroma.install
+	arch = x86_64
+	arch = aarch64
+	arch = armv7l
+	license = GPL
+	makedepends = unzip
+	makedepends = curl
+	depends = ncurses
+	depends = postgresql
+	provides = pleroma
+	conflicts = pleroma-git
+	source = pleroma.zip::https://git.pleroma.social/api/v4/projects/2/jobs/artifacts/stable/download?job=amd64
+	source = pleroma.sysusers
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = pleroma
+

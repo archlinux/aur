@@ -1,0 +1,47 @@
+post_install() {
+  	if [ ! -d '/opt/pleroma' ]; then
+    	mkdir -p '/opt/pleroma'
+  	fi
+
+  	if ! getent group pleroma >/dev/null; then
+    	groupadd pleroma
+  	fi
+
+	if ! getent passwd pleroma >/dev/null; then
+		useradd -c 'Pleroma User' -g pleroma -d '/opt/pleroma' -s /bin/bash pleroma
+    	passwd -l pleroma >/dev/null
+	fi
+
+	if [ ! -d '/var/lib/pleroma/uploads' ]; then
+    	mkdir -p '/var/lib/pleroma/uploads'
+  	fi
+
+	if [ ! -d '/var/lib/pleroma/static' ]; then
+    	mkdir -p '/var/lib/pleroma/static'
+  	fi
+
+	if [ ! -d '/var/lib/pleroma/static' ]; then
+    	mkdir -p '/var/lib/pleroma/static'
+  	fi
+
+	if [ ! -d '/etc/pleroma' ]; then
+    	mkdir -p '/etc/pleroma'
+  	fi
+
+	chown -R pleroma '/opt/pleroma'
+	chown -R pleroma '/var/lib/pleroma'
+	chown -R pleroma /etc/pleroma
+
+	printf "\n"
+	printf "The user should run the following commands\n\n"
+
+	printf '>>> sudo -Hu pleroma -s /bin/bash /opt/pleroma/bin/pleroma_ctl instance gen --output /etc/pleroma/config.exs --output-psql /tmp/setup_db.psql\n'
+	printf '>>> sudo -Hu postgres -s /bin/bash psql -f /tmp/setup_db.psql\n'
+	printf '>>> sudo -Hu pleroma -s /bin/bash /opt/pleroma/bin/pleroma_ctl migrate\n\n'
+
+	printf 'To set up NGINX and LetsEncrypt install nginx/certbot and see https://docs-develop.pleroma.social/backend/installation/otp_en/#setting-up-nginx-and-getting-lets-encrypt-ssl-certificaties\n'
+}
+
+post_upgrade() {
+  post_install $1
+}
