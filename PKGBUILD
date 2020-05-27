@@ -1,6 +1,6 @@
-# Maintainer: Bruce Zhang, krasjet
+# Maintainer: Bruce Zhang
 pkgname=fontbase
-pkgver=2.10.3
+pkgver=2.11.3
 pkgrel=1
 pkgdesc="FontBase is the font manager of the new generation, built by designers, for designers."
 arch=('x86_64' 'i686')
@@ -8,8 +8,8 @@ url="https://fontba.se/"
 license=('custom:FontBase')
 depends=('electron')
 makedepends=('p7zip')
-source=("$pkgname-$pkgver.AppImage::https://releases.fontba.se/linux/FontBase-$pkgver.AppImage")
-md5sums=('68410034d44ae508a6d29a0bbf308c3e')
+source=("$pkgname-$pkgver.AppImage::http://releases.fontba.se/linux/FontBase-$pkgver.AppImage")
+md5sums=('f4eea68f860f17f6e338c632299b38dc')
 
 prepare() {
 	mkdir -p "$pkgname"
@@ -17,7 +17,7 @@ prepare() {
 	7z x "$srcdir/$pkgname-$pkgver.AppImage"
 	echo "https://fontba.se/legal/terms" > "$srcdir/COPYRIGHT"
 
-	sed -i 's/Exec=AppRun/Exec=fontbase/' fontbase.desktop
+	sed -i 's/Exec=AppRun/Exec=fontbase/' fontbase-app.desktop
 }
 
 package() {
@@ -35,7 +35,7 @@ exec electron /usr/share/fontbase/app.asar \$@
 	install -Dm755 "$srcdir/fontbase.sh" "$pkgdir/usr/bin/fontbase"
 
 	# Install desktop file
-	install -Dm644 "$srcdir/$pkgname/fontbase.desktop" "$pkgdir/usr/share/applications/fontbase.desktop"
+	install -Dm644 "$srcdir/$pkgname/fontbase-app.desktop" "$pkgdir/usr/share/applications/fontbase.desktop"
 
 	# Install license
 	install -Dm644 "$srcdir/COPYRIGHT" "$pkgdir/usr/share/licenses/fontbase/COPYRIGHT"
