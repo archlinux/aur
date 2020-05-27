@@ -1,6 +1,6 @@
 pkgbase = gocode-git
 	pkgdesc = An autocompletion daemon for the Go programming language
-	pkgver = 637.10c1e59
+	pkgver = r785.5bee97b
 	pkgrel = 1
 	url = https://github.com/nsf/gocode
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = gocode-git
 	license = MIT
 	makedepends = git
 	depends = go
-	optdepends = auto-complete: emacs autocompletion
-	source = git+https://github.com/nsf/gocode
-	md5sums = SKIP
+	conflicts = liteide
+	source = git+https://github.com/nsf/gocode.git
+	sha256sums = SKIP
 
 pkgname = gocode-git
 
