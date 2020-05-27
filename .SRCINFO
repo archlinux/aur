@@ -1,17 +1,17 @@
 pkgbase = xcb-proto-git
 	pkgdesc = XML-XCB protocol descriptions
-	pkgver = 1.11.r93.gfef8a4c
+	pkgver = xcb.rproto.1.14.1.g2b3559c
 	pkgrel = 1
-	url = http://xcb.freedesktop.org/
+	url = https://xcb.freedesktop.org/
 	arch = any
 	license = custom
 	makedepends = git
 	makedepends = python
 	makedepends = libxml2
-	provides = xcb-proto=1.11.r93.gfef8a4c
+	provides = xcb-proto=xcb.rproto.1.14.1.g2b3559c
 	conflicts = xcb-proto
-	source = xcb-proto-git::git://git.freedesktop.org/git/xcb/proto
-	sha256sums = SKIP
+	source = xcb-proto-git::git+https://gitlab.freedesktop.org/xorg/proto/xcbproto.git
+	sha512sums = SKIP
 
 pkgname = xcb-proto-git
 
