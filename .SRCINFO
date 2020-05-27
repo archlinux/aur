@@ -1,7 +1,7 @@
 pkgbase = aqemu
 	pkgdesc = QEMU GUI written in Qt5
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tobimensch/aqemu
 	arch = i686
 	arch = x86_64
