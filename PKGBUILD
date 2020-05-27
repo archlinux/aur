@@ -2,7 +2,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=pyside2
-_qtver=5.14.2.1
+_qtver=5.15.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -12,7 +12,8 @@ pkgdesc='Enables the use of Qt5 APIs in Python applications'
 depends=(python-shiboken2 qt5-declarative)
 makedepends=(shiboken2 cmake
              qt5-multimedia qt5-tools qt5-sensors qt5-charts qt5-webengine qt5-datavis3d
-             qt5-websockets qt5-speech qt5-3d qt5-svg qt5-script qt5-scxml qt5-x11extras qt5-remoteobjects)
+             qt5-websockets qt5-speech qt5-3d qt5-svg qt5-script qt5-scxml qt5-x11extras
+             qt5-quickcontrols2 qt5-serialport qt5-remoteobjects)
 optdepends=('qt5-svg: QtSvg bindings'
             'qt5-script: QtScript bindings'
             'qt5-speech: QtTextToSpeech bindings'
@@ -25,14 +26,16 @@ optdepends=('qt5-svg: QtSvg bindings'
             'qt5-x11extras: QtX11Extras bindings'
             'qt5-charts: QtCharts bindings'
             'qt5-tools: QtHelp bindings'
-            'qt5-remoteobjects: QtRemoteObjects bindings')
+            'qt5-remoteobjects: QtRemoteObjects bindings'
+            'qt5-serialport: QtSerialPort bindings'
+            'qt5-quickcontrols2: QtQuickControls2 bindings')
 groups=(qt qt5)
 conflicts=(python-pyside2)
 provides=(python-pyside2)
 replaces=(python-pyside2)
-_pkgfqn=pyside-setup-opensource-src-${_qtver%.*}
+_pkgfqn=pyside-setup-opensource-src-$_qtver
 source=("https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz")
-sha256sums=('11f48956208a487dabf6f531e60fb88ad0e48f2979cfc9e79c1c986387c491fa')
+sha256sums=('f1cdee53de3b76e22c1117a014a91ed95ac16e4760776f4f12dc38cd5a7b6b68')
 
 prepare() {
   mkdir -p build
