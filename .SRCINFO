@@ -1,20 +1,20 @@
 pkgbase = kapidox-git
 	pkgdesc = Frameworks API Documentation Tools
-	pkgver = r159.f7011be
+	pkgver = r474.525886b
 	pkgrel = 1
-	url = https://projects.kde.org/projects/frameworks/kapidox
+	url = https://community.kde.org/Frameworks
 	arch = any
 	groups = kf5
 	license = LGPL
-	makedepends = extra-cmake-modules-git
-	makedepends = qt5-base
+	makedepends = cmake
 	makedepends = git
-	makedepends = python
-	optdepends = python: for depdiagram-generate
+	makedepends = qt5-base
+	depends = python-jinja
+	depends = python-yaml
 	provides = kapidox
 	conflicts = kapidox
-	source = git://anongit.kde.org/kapidox.git
-	md5sums = SKIP
+	source = git+https://github.com/KDE/kapidox.git
+	sha256sums = SKIP
 
 pkgname = kapidox-git
 
