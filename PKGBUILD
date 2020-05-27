@@ -3,7 +3,7 @@
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: xaw <xawl.ch@gmail.com>
 pkgname=cwm
-pkgver=6.6
+pkgver=6.7
 pkgrel=1
 pkgdesc="OpenBSD fork of calmwm, a clean and lightweight window manager"
 arch=('i686' 'x86_64')
@@ -27,4 +27,3 @@ package() {
   install -Dm644 "${srcdir}/cwm.desktop" "${pkgdir}/usr/share/xsessions/cwm.desktop"
   install -Dm644 <(sed -n '/Copyright/,/PERFORMANCE/p' <calmwm.c) "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
