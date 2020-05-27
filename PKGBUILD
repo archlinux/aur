@@ -1,7 +1,7 @@
 # Maintainer: Syaoran Code <syaorancode@gmail.com>
 pkgname=dwmblocks-syaoran-git
 _dir=dwmblocks-syaoran
-pkgver=0.1r5.af88124
+pkgver=0.1r9.1c1a0df
 pkgrel=1
 epoch=
 pkgdesc="dwmblocks for dwm"
@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://gitlab.com/justanoobcoder/dwmblocks-syaoran.git"
 license=('GPL')
 groups=()
-depends=(libx11 libxft-bgra-git bc pacman-contrib)
+depends=(libx11 libxft-bgra-git bc pacman-contrib networkmanager pulseaudio pulseaudio-alsa alsa-utils ibus ibus-bamboo)
 makedepends=(make)
 checkdepends=()
 optdepends=()
