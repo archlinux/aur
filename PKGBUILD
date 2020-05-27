@@ -1,7 +1,7 @@
-# Maintainer: Ainola
+# Maintainer: Brett Cornwall <ainola@archlinux.org>
 
 pkgname=python-image
-pkgver=1.5.29
+pkgver=1.5.32
 pkgrel=1
 pkgdesc="Django application that provides editing for images and videos"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 depends=('python-pillow' 'python-requests' 'python-django')
 optdepends=('ffmpeg: For video thumbnails')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/i/image/image-$pkgver.tar.gz")
-sha256sums=('4960226156fe7d3c7f2e8db5efe3deda58481a46daa7a1c26fbc0fa1f5654cc4')
+sha256sums=('4e0f4926fd5abc6b7c66142798cb381b36d8f18f3b9a553930defe7f4991e43b')
 
 build() {
     cd "image-$pkgver"
