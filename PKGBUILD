@@ -51,7 +51,7 @@ package() {
 	-DSPIRV_HEADERS_INSTALL_DIR=/usr/local/include/spirv \
 	-DSPIRV_HEADERS_INSTALL_DIR=/usr/local/lib/cmake/SPIRV-Headers \
 	-DVulkanHeaders_INCLUDE_DIRS=/usr/local/share/vulkan/registry \
-    -DVulkanHeaders_INCLUDE_DIRS=/usr/local/include/vulkan \
+	-DVulkanHeaders_INCLUDE_DIRS=/usr/local/include/vulkan \
 	cmake configure Vulkan-Loader 
 	make DESTDIR="$pkgdir" install
 }
