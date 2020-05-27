@@ -34,10 +34,10 @@ noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
 
+# cmake configure Vulkan-ValidationLayers
 
-
-
-
+# -DVulkanHeaders_INCLUDE_DIRS=/usr/local/include/vulkan \
+# https://github.com/KhronosGroup/Vulkan-ValidationLayers.git
 
 package() {
 	cmake setup Vulkan-ValidationLayers \
@@ -48,8 +48,8 @@ package() {
 	-DSPIRV_HEADERS_INSTALL_DIR=/usr/local/include/spirv \
 	-DSPIRV_HEADERS_INSTALL_DIR=/usr/local/lib/cmake/SPIRV-Headers \
 	-DVULKAN_LOADER_INSTALL_DIR=/usr/local/lib \
-	-DVulkanHeaders_INCLUDE_DIRS=/usr/local/share/vulkan/registry \    
 	-DVulkanHeaders_INCLUDE_DIRS=/usr/local/include/vulkan \
+	-DVulkanHeaders_INCLUDE_DIRS=/usr/local/share/vulkan/registry \
 	cmake configure Vulkan-ValidationLayers
 	make DESTDIR="$pkgdir" install
 }
