@@ -17,7 +17,7 @@ pkgbase = r-dbplyr
 	depends = r-rlang>=0.2.0
 	depends = r-tibble>=1.4.2
 	depends = r-tidyselect>=0.2.4
-	depends = r-blob>=1.3.0
+	depends = r-blob>=1.2.0
 	optdepends = r-bit64
 	optdepends = r-covr
 	optdepends = r-knitr
