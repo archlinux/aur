@@ -7,8 +7,8 @@ pkgver=9.5.1
 pkgrel=1
 _pkgfixver=$pkgver
 
-_commit='bb9c219fd6c34e5d160ed179f1e38e321c39794d'
-sha256sums=('e2064148c442c6449ddffaa1b6013734658059d4958e5325eff1780f4cce72fa')
+_commit='423f9af2ff6d26287a9d275f72947d58c9b600d4'
+sha256sums=('7e442361ceb22df64010d67c7fe65c38877a2dfb022afacfa805dd08eda45544')
 
 pkgdesc="Tray icon using appindicator which feets better in KDE"
 depends=('pamac' 'libappindicator-gtk3')
