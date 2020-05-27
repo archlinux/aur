@@ -5,7 +5,7 @@ _pkgname="${_pkgbase}-levels"
 pkgname="${_pkgname}-darcs"
 _pkgver=latest
 pkgver=1.1.6+r37.d20121219
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides the levels ("towers") of the game "toppler" as stand-alone mission files (one file mission per tower).'
 arch=('any')
 url="http://toppler.sourceforge.net/"
@@ -103,12 +103,13 @@ build() {
 
 package() {
   cd "${srcdir}/levels"
-  for _mission in *.ttm; do
-    install -D -m644 -v "${_mission}" "${pkgdir}/usr/share/toppler/${_mission}"
-  done
+  # FIXME: Currently, missions created by `cremission` are broken, so do not install them.
+  #for _mission in *.ttm; do
+  #  install -D -m644 -v "${_mission}" "${pkgdir}/usr/share/toppler/${_mission}"
+  #done
   find [a-zA-Z]* -maxdepth 0 -type d | while read _mission; do
     find "${_mission}" -maxdepth 1 -mindepth 1 -type f | while read _tower; do
-      install -D -m644 -v "${_tower}" "${pkgdir}/usr/share/doc/${_pkgbase}/levels/${_mission}/${_tower}"
+      install -D -m644 -v "${_tower}" "${pkgdir}/usr/share/doc/${_pkgbase}/levels/${_mission}/$(basename ${_tower})"
     done
   done
   for _docfile in key.txt; do

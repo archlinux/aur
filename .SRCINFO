@@ -1,7 +1,7 @@
 pkgbase = toppler-levels-darcs
 	pkgdesc = Provides the levels ("towers") of the game "toppler" as stand-alone mission files (one file mission per tower).
 	pkgver = 1.1.6+r37.d20121219
-	pkgrel = 1
+	pkgrel = 2
 	url = http://toppler.sourceforge.net/
 	arch = any
 	license = GPL
