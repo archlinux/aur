@@ -1,0 +1,16 @@
+pkgbase = netctl-tray-auto
+	pkgdesc = A lightweight netctl tray app with notifications (netctl-auto)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/PonasKovas/netctl-tray
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = cmake
+	depends = qt5-base
+	depends = polkit
+	source = netctl-tray-auto-0.2.0.tar.gz::https://github.com/PonasKovas/netctl-tray/archive/0.2.0.tar.gz
+	md5sums = e3494cc903bd37e5f19a0eb4cd5bfbc9
+
+pkgname = netctl-tray-auto
+
