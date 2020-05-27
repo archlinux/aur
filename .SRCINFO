@@ -1,6 +1,6 @@
 pkgbase = ibm-tss
 	pkgdesc = A user space TSS for TPM 2.0 by IBM
-	pkgver = 1.3.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	epoch = 1
 	url = https://sourceforge.net/projects/ibmtpm20tss/
@@ -8,7 +8,7 @@ pkgbase = ibm-tss
 	arch = x86_64
 	license = BSD
 	depends = openssl
-	source = ibm-tss::git+https://git.code.sf.net/p/ibmtpm20tss/tss#commit=0646214dd54e6a25984024697201f2b6006f7f17
+	source = ibm-tss::git+https://git.code.sf.net/p/ibmtpm20tss/tss#commit=aa6c6ec83793ba21782033c03439977c26d3cc87
 	sha256sums = SKIP
 
 pkgname = ibm-tss
