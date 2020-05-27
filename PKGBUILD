@@ -1,8 +1,8 @@
 # Maintainer: Adrien Gallouët <adrien@gallouet.fr>
 pkgname=secret
-pkgver=0.5
+pkgver=0.7
 pkgrel=1
-pkgdesc="A simple and tiny tool that will help you keep your little secrets"
+pkgdesc="A tiny secret store to keep your little secrets"
 arch=('x86_64')
 url="https://github.com/angt/secret"
 license=('BSD')
