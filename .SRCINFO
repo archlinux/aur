@@ -1,6 +1,6 @@
 pkgbase = vim-vi
 	pkgdesc = Replace heirloom vi from core with (g)vim using symlinks.
-	pkgver = 3
+	pkgver = 4
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/vim-vi
 	arch = any
