@@ -5,27 +5,28 @@
 pkgbase=transmission-sequential
 pkgname=(transmission-sequential-cli transmission-sequential-gtk transmission-sequential-qt)
 pkgver=3.00
-pkgrel=1
+pkgrel=2
+_seqpatch=1
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url="http://www.transmissionbt.com/"
 license=(MIT)
 makedepends=(gtk3 intltool curl qt5-base libevent systemd qt5-tools)
 provides=(transmission-cli)
 conflicts=(transmission-cli)
-source=(https://github.com/Mikayex/transmission/archive/${pkgver}-seq.tar.gz
+source=(https://github.com/Mikayex/transmission/archive/${pkgver}-seq${_seqpatch}.tar.gz
         https://github.com/transmission/transmission-releases/raw/master/transmission-${pkgver}.tar.xz
         transmission-sequential-cli.sysusers
         transmission-sequential-cli.tmpfiles)
-sha256sums=('5e6169d7756de25780f00af2b312c303a054fcda5df2b3300c1d5dc48e3a8107'
+sha256sums=('fc74e0d7879cc79e43d85ae374233bb4530ab14d6cddafe593a81a95005b4258'
             '9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2'
             '641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2'
             '1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451')
 
 prepare() {
   #Copy third party files from official source package
-  cp -r transmission-$pkgver/third-party/ transmission-$pkgver-seq
+  cp -r transmission-$pkgver/third-party/ transmission-$pkgver-seq${_seqpatch}
 
-  cd transmission-$pkgver-seq
+  cd transmission-$pkgver-seq${_seqpatch}
 
   rm -f m4/glib-gettext.m4
   AUTOGEN_SUBDIR_MODE=1 ./autogen.sh
@@ -34,7 +35,7 @@ prepare() {
 }
 
 build() {
-  cd transmission-$pkgver-seq
+  cd transmission-$pkgver-seq${_seqpatch}
   ./configure --prefix=/usr
   make
 
@@ -50,7 +51,7 @@ package_transmission-sequential-cli() {
   provides=(transmission-cli)
   conflicts=(transmission-cli)
 
-  cd transmission-$pkgver-seq
+  cd transmission-$pkgver-seq${_seqpatch}
 
   for dir in daemon cli web utils
   do
@@ -71,7 +72,7 @@ package_transmission-sequential-gtk() {
   provides=(transmission-gtk)
   conflicts=(transmission-gtk)
 
-  cd transmission-$pkgver-seq
+  cd transmission-$pkgver-seq${_seqpatch}
 
   make -C gtk DESTDIR="$pkgdir" install
   make -C po DESTDIR="$pkgdir" install
@@ -85,7 +86,7 @@ package_transmission-sequential-qt() {
   provides=(transmission-qt)
   conflicts=(transmission-qt)
 
-  cd transmission-$pkgver-seq
+  cd transmission-$pkgver-seq${_seqpatch}
 
   make -C qt INSTALL_ROOT="$pkgdir"/usr install
 
