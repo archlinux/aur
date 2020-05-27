@@ -13,8 +13,7 @@ depends=('gtk3' 'python-cryptography' 'python-gobject' 'python-grpcio'
 makedepends=('git' 'meson' 'python-grpcio-tools' 'gobject-introspection' 'polkit')
 optdepends=('ufw: Configure firewall rules')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" 'lm-warp')
-replaces=('lm-warp')
+conflicts=("${pkgname%-git}")
 source=('git+https://github.com/linuxmint/warp.git')
 sha256sums=('SKIP')
 

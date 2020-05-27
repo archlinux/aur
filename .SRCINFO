@@ -23,8 +23,6 @@ pkgbase = warpinator-git
 	optdepends = ufw: Configure firewall rules
 	provides = warpinator
 	conflicts = warpinator
-	conflicts = lm-warp
-	replaces = lm-warp
 	source = git+https://github.com/linuxmint/warp.git
 	sha256sums = SKIP
 
