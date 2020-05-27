@@ -1,12 +1,13 @@
 pkgbase = silitune
 	pkgdesc = A battery saver, undervolting tuner and CPU manager with GUI
-	pkgver = 1.1
+	pkgver = r36.3325994
 	pkgrel = 1
 	url = https://github.com/ustcpetergu/silitune
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = intel-undervolt
+	depends = tlp
 	depends = python-pyqt5
 	depends = python-matplotlib
 	depends = gksu
