@@ -15,7 +15,7 @@ if [[ "${arg}" == "--init" ]]; then
 	cp --update --recursive --symbolic-link --verbose "${pkgdir}/"* "${pkguser}/"
 
 	echo "Initializing wineprefixe for materialize..."
-	winetricks -q prefix=${pkgname} arch=64 win10 dxvk160 vcrun2019 corefonts
+	winetricks -q prefix=${pkgname} arch=64 win10 dxvk170 vcrun2019 corefonts
 	if [[ $? -ne 0 ]]; then
 		echo 'The initialization failed. Try running "materialize-bin --annihilate" and rerun "materialize-bin --init".'
 		exit 1
