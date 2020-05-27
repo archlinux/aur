@@ -1,7 +1,7 @@
 pkgbase = dxhd-git
 	pkgdesc = An X11 Hotkey Daemon
-	pkgver = 25.05.2020
-	pkgrel = 1
+	pkgver = master
+	pkgrel = 0
 	url = https://github.com/dakyskye/dxhd
 	arch = x86_64
 	license = MIT
