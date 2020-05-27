@@ -2,7 +2,7 @@
 # Author: Matthias Blaicher <matthias at blaicher dot com>
 
 pkgname=disman-git
-pkgver=r1538.0c6de05
+pkgver=0.519.0.beta.0.r6.g231fc34
 pkgrel=1
 pkgdesc='Qt/C++ display management library by KWinFT project ~ forked from KDE libkscreen'
 arch=(
@@ -24,12 +24,12 @@ makedepends=(
 provides=(disman)
 conflicts=(disman)
 source=('git+https://gitlab.com/kwinft/disman.git')
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/disman"
     
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed "s/^disman\@//;s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 prepare() {
