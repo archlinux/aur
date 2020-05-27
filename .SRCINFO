@@ -1,14 +1,16 @@
 pkgbase = pyenv-git
-	pkgdesc = Simple Python version management
-	pkgver = 1.2.16.r5.g7097f820
-	pkgrel = 2
+	pkgdesc = Easily switch between multiple versions of Python (Git)
+	pkgver = 1.2.18.r19.gcf81e5a0
+	pkgrel = 1
 	url = https://github.com/pyenv/pyenv
 	arch = any
 	license = MIT
+	depends = bash
+	depends = git
 	provides = pyenv
 	conflicts = pyenv
-	source = git+https://github.com/pyenv/pyenv
-	md5sums = SKIP
+	source = git+https://github.com/pyenv/pyenv.git
+	sha512sums = SKIP
 
 pkgname = pyenv-git
 
