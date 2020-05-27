@@ -1,0 +1,23 @@
+pkgbase = thermald-git-gcc10
+	pkgdesc = The Linux Thermal Daemon program from 01.org
+	pkgver = v2.1.r2.g3f3cdc3
+	pkgrel = 1
+	url = https://01.org/linux-thermal-daemon
+	arch = x86_64
+	license = GPL2
+	makedepends = systemd
+	makedepends = python
+	makedepends = autoconf-archive
+	depends = dbus-glib
+	depends = libxml2
+	provides = thermald
+	conflicts = thermald
+	source = thermald-git-gcc10::git://github.com/intel/thermal_daemon
+	source = modules-load-thermald.conf
+	source = uninitialized_vars-fix.patch
+	sha256sums = SKIP
+	sha256sums = 0155e1eb459306d251a5a049ffc6c11e144fa8caa75901ac5fa20bd52e05d515
+	sha256sums = fa71590c04cb0d1cd3db2d543f2402d887e7b12708f00a3af3005b1a000444df
+
+pkgname = thermald-git-gcc10
+

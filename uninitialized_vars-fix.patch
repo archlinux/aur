@@ -1,0 +1,13 @@
+--- thermal_daemon-2.1/src/thd_cpu_default_binding.cpp	2020-04-24 23:47:35.000000000 +0100
++++ thermal_daemon-2.1-new/src/thd_cpu_default_binding.cpp	2020-05-27 11:50:39.108623588 +0100
+@@ -187,8 +187,8 @@
+ }
+ 
+ bool cthd_cpu_default_binding::check_cpu_load() {
+-	unsigned int max_power;
+-	unsigned int min_power;
++	unsigned int max_power=0;
++	unsigned int min_power=0;
+ 	unsigned int power;
+ 
+ 	power = thd_engine->rapl_power_meter.rapl_action_get_power(PACKAGE,
