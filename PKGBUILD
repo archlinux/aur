@@ -1,42 +1,47 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Timothée Ravier <tim@siosm.fr>
 
+_pkgname=modemmanager-qt
 pkgname=modemmanager-qt-git
-pkgver=r265.5e1184d
+pkgver=r457.70e7a3a
 pkgrel=1
-pkgdesc='Qt-only wrapper for ModemManager DBus API'
+pkgdesc='Qt wrapper for ModemManager DBus API'
 arch=(i686 x86_64)
-url='https://projects.kde.org/projects/extragear/libs/libnm-qt'
+url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(modemmanager qt5-base)
-makedepends=(extra-cmake-modules-git git)
+makedepends=(extra-cmake-modules doxygen git qt5-tools qt5-doc)
+groups=(kf5)
 conflicts=(libmm-qt5 libmm-qt-git modemmanager-qt)
 provides=(modemmanager-qt)
 replaces=(libmm-qt-git)
-source=("git://anongit.kde.org/modemmanager-qt.git")
+source=("git+https://github.com/KDE/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd modemmanager-qt
+  cd $srcdir/$_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
+  cd $srcdir/$_pkgname
   mkdir -p build
 }
 
 build() {
-  cd build
-  cmake ../modemmanager-qt \
+  cd $srcdir/$_pkgname/build
+  cmake ../ \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+    -DBUILD_TESTING=OFF
   make
 }
 
 package() {
-  cd build
+  cd $srcdir/$_pkgname/build
   make DESTDIR="$pkgdir" install
+  install -Dm644 ../COPYING.LIB "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
