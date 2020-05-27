@@ -37,7 +37,7 @@ build () {
         -buildmode=pie \
         -mod=readonly \
         -modcacherw \
-        -ldflags "-extldflags ${LDFLAGS} -X main.version=$pkgver" \
+        -ldflags "-extldflags \"$LDFLAGS\" -X main.version=$pkgver" \
         .
     ./lab completion bash > completion.bash
     ./lab completion zsh > completion.zsh
