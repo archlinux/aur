@@ -5,7 +5,7 @@
 
 # Maintainer: sparzz
 pkgname=spirv-tools-sparzz-git
-pkgver=2020.05.26
+pkgver=2020.05.26_r1
 pkgrel=1
 epoch=
 pkgdesc="SPIR-V Tools build from source. My Vulkan packages from the AUR depends on this package. For install instruction and order of the of the install visit my GitHub page --> https://github.com/sparzz/vulkan-arch-aur  "
@@ -51,6 +51,7 @@ prepare() {
 
 package() {
 	cmake setup SPIRV-Tools \
+	-DCMAKE_BUILD_TYPE=Release \
 	-DGLSLANG_INSTALL_DIR=/usr/local/bin \
 	-DSPIRV-Headers_SOURCE_DIR=/usr/local/include/spirv \
 	-DSPIRV-Headers_SOURCE_DIR=/usr/local/lib/cmake/SPIRV-Headers \
