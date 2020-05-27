@@ -25,7 +25,7 @@ build() {
       -buildmode=pie \
       -mod=readonly \
       -modcacherw \
-      -ldflags "-extldflags $LDFLAGS" \
+      -ldflags "-extldflags \"$LDFLAGS\"" \
       -o . ./...
 }
 
