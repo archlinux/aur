@@ -2,10 +2,10 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgbase=linux-rt
-_pkgver=5.6.10
-_rtpatchver=5
+_pkgver=5.6.14
+_rtpatchver=6
 pkgver="${_pkgver}.${_rtpatchver}"
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux RT'
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
@@ -22,11 +22,8 @@ source=(
   config
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   sphinx-workaround.patch
-  0001-kvm-ioapic-Restrict-lazy-EOI-update-to-edge-triggere.patch
   0002-gcc-plugins-drop-support-for-GCC-4.7.patch
-  0003-gcc-common.h-Update-for-GCC-10.patch
-  0004-Makefile-disallow-data-races-on-gcc-10-as-well.patch
-  0005-x86-Fix-early-boot-crash-on-gcc-10-next-try.patch)
+  0003-gcc-common.h-Update-for-GCC-10.patch)
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
@@ -35,18 +32,15 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('7bdc96827a9db8de79cd13d74a1c5fe8915674f793e592387f2903cb225801b9'
+sha256sums=('33763f3541711e39fa743da45ff9512d54ade61406173f3d267ba4484cec7ea3'
             'SKIP'
-            'f712f8225069bc2cc6cf5080724483dff871fb5bdf41bdeeeb00a0087a28c116'
+            'fd1c48c3a0b0a744b11d0c1a39b1a0261f20ab91cc9e0a716d5cdfe44a4c3e6e'
             'SKIP'
-            'd7203e4d164a7040de524227a072ae3d5155cffb905762af9e12ae224b131245'
+            '45759066cd533e989e99ec51c3b14734e4c7020795edd9e371e28599a872d1d3'
             'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '2776ca0b3ca95347518b146aab54fb564d138dfc7310c48141bed6cea98a8a07'
             '96ff333774c0a8686c41610364f13e5244946c86e3e12e841e1bbd0d9f33c788'
-            '523280e5d125a19af537ee88a531b56a049f3daeb713da473d244eb423f6125f'
-            '7462399703b4017aae39178991775beedd20269100e907c5f0cea3f78e5d825b'
-            '585a1320b0c7e42a4ed152bb671288ce992271a4a52a6fffcae5ecaf805ecbce')
+            '523280e5d125a19af537ee88a531b56a049f3daeb713da473d244eb423f6125f')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
