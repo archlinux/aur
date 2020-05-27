@@ -1,7 +1,7 @@
 pkgbase = linux-clear-current
 	pkgdesc = Clear Linux current
 	pkgver = 5.7.0.rc7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux-current
 	arch = x86_64
 	license = GPL2
@@ -13,7 +13,7 @@ pkgbase = linux-clear-current
 	makedepends = xmlto
 	options = !strip
 	source = https://git.kernel.org/torvalds/t/linux-5.7-rc7.tar.gz
-	source = clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=5.7.0.rc4-27
+	source = clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=5.7.0.rc7-29
 	source = https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/d7d7850e2b5cab8fd5170992b8f5a9330b350823/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.7+.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
