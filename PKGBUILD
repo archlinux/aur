@@ -23,12 +23,12 @@ sha512sums=('db5770266d1cdcb1dc64c369fc8ea9580741a8d7d766e3c298fdf175db4cf5daf2a
             '7cfb94b312a9d3f73dd0c87185cd398fdb3373ee4ec2e904033a1cbaa43296cd43a247dd81365cecd07609354c0bbd15cf2ee379fb36b890736f0cff1e7bc689')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "spectmorph-$pkgver"
   autoreconf -vfi
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "spectmorph-$pkgver"
   ./configure --prefix=/usr \
               --with-lv2 \
               --without-jack \
@@ -37,7 +37,7 @@ build() {
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "spectmorph-$pkgver"
   cp -v lv2/.libs/*.so lv2/
   LV2_PATH="${PWD}" lv2lint "http://spectmorph.org/plugins/spectmorph" || echo "Known failing tests: https://github.com/swesterfeld/spectmorph/issues/8"
   rm -v lv2/*.so
@@ -46,7 +46,7 @@ check() {
 package() {
   depends+=('libfftw3f.so' 'libfftw3f_threads.so' 'libfreetype.so'
   'libsndfile.so')
-  cd "$pkgname-$pkgver"
+  cd "spectmorph-$pkgver"
   make DESTDIR="$pkgdir/" install
   # standard instruments
   install -vDm 644 ../instruments/standard/* \
