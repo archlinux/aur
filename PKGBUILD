@@ -1,12 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - C++ implementation of bond, a mechanism for checking when another process has terminated."
-url='https://www.wiki.ros.org/bondcpp'
+url='https://wiki.ros.org/bondcpp'
 
 pkgname='ros-noetic-bondcpp'
 pkgver='1.8.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
