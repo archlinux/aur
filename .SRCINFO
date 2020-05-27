@@ -1,7 +1,7 @@
 pkgbase = geogram
 	pkgdesc = Library of geometric algorithms. It includes a simple yet efficient Mesh data structure.
 	pkgver = 1.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://alice.loria.fr/index.php/software.html
 	arch = i686
 	arch = x86_64
