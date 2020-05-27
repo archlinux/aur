@@ -3,8 +3,8 @@
 # Contributor: Bailey Fox <bfox200012@gmail.com>
 
 pkgname=meanalyzer-git
-pkgver=1.123.0.r194.r0.g68742e1
-pkgrel=3
+pkgver=1.135.0.r196.r0.g0d77851
+pkgrel=1
 pkgdesc='Intel Management Engine firmware analysis tool'
 arch=('any')
 url='https://github.com/platomav/MEAnalyzer'
@@ -13,11 +13,11 @@ license=('GPL3')
 depends=('python-colorama' 'python-crccheck' 'python-pltable-git')
 makedepends=('dos2unix' 'git')
 source=("${pkgname}::git+${url}#branch=${_branch}"
-        'db-location.patch'
-        'change-mea_dir.patch')
+        'change-mea_dir.patch'
+        'db-location.patch')
 sha256sums=('SKIP'
-            '5cadc65438f96ddd3be6e9ef8e5e61904cce093331c2e140a7f1ad635e259481'
-            'da169c2384682e5c0b4634ed8d8d1a589ae099d73aa97e95f1c8a63fe2c7c1c9')
+            '879049a04596e87362e32bbc890dc7f6c9ad67ed59ec3fc1502a4265cdf7d58e'
+            '80e0afb63393a1b6bcff85caf378058bff2f6cfe8fbc23835a555bf682cdc83b')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"

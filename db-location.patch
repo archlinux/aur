@@ -1,6 +1,6 @@
---- MEA.py	2019-06-23 01:19:51.808627020 -0500
-+++ MEA.py	2019-06-23 01:19:19.000000000 -0500
-@@ -6236,7 +6236,7 @@
+--- MEA.py
++++ MEA.py
+@@ -7654,7 +7654,7 @@ def cse_huffman_dictionary_load(cse_variant, cse_major, cse_minor, verbosity) :
  	HUFFMAN_SYMBOLS = {}
  	HUFFMAN_UNKNOWNS = {}
  	mapping_types = {'code' : 0x20, 'data' : 0x60}
@@ -8,13 +8,13 @@
 +	huffman_dict = '/usr/lib/meanalyzer/Huffman.dat'
  	
  	# Check if Huffman dictionary version is supported
- 	if (cse_variant, cse_major) in [('CSME', 11), ('CSSPS', 4)] : dict_version = 11
-@@ -7195,7 +7195,7 @@
+ 	if (cse_variant,cse_major) in [('CSME',11),('CSSPS',4)] or (cse_variant,cse_major,cse_minor) in [('CSME',14,5)] : dict_version = 11
+@@ -9011,7 +9011,7 @@ mea_dir = get_script_dir()
  arg_num = len(sys.argv)
  
  # Set dependencies paths
--db_path = os.path.join(mea_dir, 'MEA.dat')
-+db_path = '/usr/lib/meanalyzer/MEA.dat'
+-mea_db_path = os.path.join(mea_dir, 'MEA.dat')
++mea_db_path = '/usr/lib/meanalyzer/MEA.dat'
  
  # Check if dependencies exist
- depend_db = os.path.isfile(db_path)
+ depend_db = os.path.isfile(mea_db_path)
