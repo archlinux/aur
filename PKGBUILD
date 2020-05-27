@@ -6,6 +6,7 @@ pkgdesc="An X11 Hotkey Daemon"
 arch=('x86_64')
 url="https://github.com/dakyskye/dxhd"
 license=('MIT')
+depends=('util-linux')
 provides=('dxhd')
 conflicts=('dxhd-git')
 source=("https://github.com/dakyskye/dxhd/releases/download/$pkgver/dxhd")
