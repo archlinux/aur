@@ -6,13 +6,13 @@
 
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
-arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
-url='http://ffmpeg.org/'
-license=('GPL3')
+arch=(i686 x86_64 armv7h armv6h aarch64)
+url=https://ffmpeg.org/
+license=(GPL3)
 depends=(
   aom
   bzip2
@@ -60,7 +60,7 @@ provides=(
 )
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('cb754255ab0ee2ea5f66f8850e1bd6ad5cac1cd855d0a2f4990fb8c668b0d29c')
+sha256sums=('9df6c90aed1337634c1fb026fb01c154c29c82a64ea71291ff2da9aacb9aad31')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -76,6 +76,7 @@ build() {
     --disable-debug \
     --disable-static \
     --disable-stripping \
+    --disable-avisynth \
     --disable-fontconfig \
     --enable-gmp \
     --enable-gnutls \
@@ -101,10 +102,12 @@ build() {
     --disable-libpulse \
     --disable-libsoxr \
     --enable-libspeex \
+    --disable-libsrt \
     --disable-libssh \
     --enable-libtheora \
     --enable-libv4l2 \
     --disable-libvidstab \
+    --disable-libvmaf
     --enable-libvorbis \
     --enable-libvpx \
     --enable-libwebp \
