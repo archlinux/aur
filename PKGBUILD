@@ -5,7 +5,7 @@
 
 # Maintainer: sparzz
 pkgname=spirv-tools-sparzz-git
-pkgver=2020.05.26_r4
+pkgver=2020.05.26_r5
 pkgrel=1
 epoch=
 pkgdesc="SPIR-V Tools build from source. My Vulkan packages from the AUR depends on this package. For install instruction and order of the of the install visit my GitHub page --> https://github.com/sparzz/vulkan-arch-aur  "
@@ -25,7 +25,7 @@ makedepends=("cmake"
             "spirv-headers-sparzz-git")
 checkdepends=()
 optdepends=()
-provides=(spirv-headers-sparzz-git)
+provides=(spirv-tools-sparzz-git)
 conflicts=()
 replaces=()
 backup=()
@@ -51,13 +51,13 @@ prepare() {
 
 package() {
 	cmake setup SPIRV-Tools \
-	-DSPIRV_WERROR=Off \
-	-DBUILD_SHARED_LIBS=ON \
 	-DSPIRV-Headers_SOURCE_DIR=${srdir}/SPIRV-Tools/external \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DGLSLANG_INSTALL_DIR=/usr/local/bin \
 	-DSPIRV-Headers_SOURCE_DIR=/usr/local/include/spirv \
 	-DSPIRV-Headers_SOURCE_DIR=/usr/local/lib/cmake/SPIRV-Headers \
+	-DSPIRV_HEADERS_INSTALL_DIR=/usr/local/include/spirv \
+	-DSPIRV_HEADERS_INSTALL_DIR=/usr/local/lib/cmake/SPIRV-Headers \
 	cmake configure -silent SPIRV-Tools
 	make -silent DESTDIR="$pkgdir" install
 }
