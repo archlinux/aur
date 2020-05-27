@@ -21,13 +21,10 @@ optdepends=('python-setuptools'
             'mpdecimal: for decimal'
             'xz: for lzma'
             'tk: for tkinter')
-provides=('python3')
 source=("https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
         dont-make-libpython-readonly.patch)
 sha512sums=('c71f87c5906e770322a14cacad228655659f782207db826320449d12bf86091c3662f317e1773158dec52f8b052eaedfb4c03b561cc2a6cfcd381597fd2d2b04'
             'SKIP')
-validpgpkeys=('0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D')  # Ned Deily (Python release signing key) <nad@python.org>
-
 prepare() {
   cd Python-${pkgver}
 

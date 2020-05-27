@@ -26,10 +26,8 @@ pkgbase = python3.6
 	optdepends = mpdecimal: for decimal
 	optdepends = xz: for lzma
 	optdepends = tk: for tkinter
-	provides = python3
 	source = https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tar.xz
 	source = dont-make-libpython-readonly.patch
-	validpgpkeys = 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
 	sha512sums = c71f87c5906e770322a14cacad228655659f782207db826320449d12bf86091c3662f317e1773158dec52f8b052eaedfb4c03b561cc2a6cfcd381597fd2d2b04
 	sha512sums = SKIP
 
