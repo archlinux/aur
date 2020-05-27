@@ -1,7 +1,7 @@
 # Maintainer: Martin Rys <rys.pw/#contact_me>
 pkgname=jicofo-git
 pkgver=r1219.39c3c5d0
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="JItsi Meet COnference FOcus"
 arch=("x86_64")

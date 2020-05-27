@@ -1,7 +1,7 @@
 pkgbase = jicofo-git
 	pkgdesc = JItsi Meet COnference FOcus
 	pkgver = r1219.39c3c5d0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/jitsi/jicofo
 	arch = x86_64
 	license = Apache
