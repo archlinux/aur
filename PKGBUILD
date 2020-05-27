@@ -6,7 +6,7 @@
 _gemname=jekyll
 pkgname=$_gemname
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, blog aware, static site generator.'
 arch=('any')
 url='https://github.com/jekyll/jekyll'
@@ -43,7 +43,7 @@ sha256sums=('39198e5099b8fed89cdfce312ec2897a2bd152effde61a9147d8eff8c9f4af44')
 prepare() {
   cd ${_gemname}-${pkgver}
   sed -r 's|~>|>=|g' -i ${_gemname}.gemspec # don't give a fuck about rubys bla bla
-  sed 's|git ls-files -z|find -type f -print0\|sed "s,\\\\./,,g"|' -i ${_gemname}.gemspec
+  sed 's|git ls-files|find -type f\|sed "s,\\\\./,,g"|' -i ${_gemname}.gemspec
 }
 
 build() {
