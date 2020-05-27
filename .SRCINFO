@@ -1,0 +1,19 @@
+pkgbase = dwmblocks-syaoran-git
+	pkgdesc = dwmblocks for dwm
+	pkgver = 0.1r1.c2bc30a
+	pkgrel = 1
+	url = https://gitlab.com/justanoobcoder/dwmblocks.git
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	depends = libx11
+	depends = libxft-bgra-git
+	depends = bc
+	depends = pacman-contrib
+	provides = dwmblocks
+	conflicts = dwmblocks
+	source = git+https://gitlab.com/justanoobcoder/dwmblocks.git
+	md5sums = SKIP
+
+pkgname = dwmblocks-syaoran-git
+
