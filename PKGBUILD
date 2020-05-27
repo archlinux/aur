@@ -1,9 +1,10 @@
-# Maintainer: willemw <willemw12@gmail.com>
+# Maintainer: Yevhenii Kolesnikov <sigexp.acc@gmail.com>
+# Contributor: willemw <willemw12@gmail.com>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 # Contributor: rabyte <rabyteNOSPAM_at_moonblade.dot.org>
 
 _pkgname=libtremor
-pkgname=$_pkgname-svn
+pkgname=$_pkgname-git
 pkgver=r19674
 pkgrel=1
 pkgdesc="Integer-only, fully Ogg Vorbis compliant software decoder library"
@@ -11,17 +12,16 @@ arch=('x86_64')
 url="http://www.xiph.org/vorbis/"
 license=('BSD')
 depends=('libogg')
-makedepends=('subversion')
+makedepends=('git')
 provides=($_pkgname)
-conflicts=($_pkgname)
+conflicts=("${_pkgname}" "${_pkgname-svn}-svn")
 options=('!libtool')
-source=($pkgname::svn+https://svn.xiph.org/trunk/Tremor)
+source=($pkgname::git+https://gitlab.xiph.org/xiph/tremor.git)
 md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  local ver="$(svnversion)"
-  printf "r%s" "${ver//[[:alpha:]]}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
