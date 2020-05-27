@@ -9,7 +9,7 @@ url="https://github.com/TheCynicalTeam/$pkgname"
 license=('GNU General Public License v3.0')
 makedepends=('python-pyqt5')
 source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=('5b5f85caefcfb08c3b6a79afc076399825b061958f3aac2246b08d94992e801a')
+sha256sums=('4cc6d65bfb71480dde5d9d23b64df63fed3805a6b6dc6b30b4cee8db3f35c9c5')
 
 package() {
   cp -a $srcdir/$pkgname-$pkgver-$pkgrel/etc $pkgdir/etc
