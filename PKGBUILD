@@ -1,7 +1,7 @@
 # Maintainer: Ponas <mykolas.peteraitis@gmail.com>
 pkgname="netctl-tray"
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight netctl tray app with notifications"
 arch=('x86_64')
 url="https://github.com/PonasKovas/netctl-tray"
@@ -15,7 +15,7 @@ md5sums=('e3494cc903bd37e5f19a0eb4cd5bfbc9')
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
-  RUSTUP_TOOLCHAIN=stable \
+  RUSTUP_TOOLCHAIN=nightly \
     cargo build --release --locked
 }
 
