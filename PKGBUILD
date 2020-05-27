@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdisplay-git
-pkgver=r1278.6622e4c
+pkgver=5.19.0.beta.0.r1.g6622e4c
 pkgrel=1
 pkgdesc="App and daemon for display managing by KWinFT project, forked from KDE's KScreen"
 arch=(
@@ -32,7 +32,7 @@ md5sums=('SKIP')
 pkgver() {
     cd "$srcdir/kdisplay"
     
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed "s/^kdisplay\@//;s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 prepare() {
