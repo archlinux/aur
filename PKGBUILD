@@ -2,14 +2,14 @@
 
 _pkgname=xfce4-settings
 pkgname=${_pkgname}-devel
-pkgver=4.15.0
+pkgver=4.15.1
 pkgrel=1
 pkgdesc="Settings manager for xfce"
 arch=('i686' 'x86_64')
 url="https://www.xfce.org/"
 license=('GPL2')
 groups=('xfce4-devel')
-depends=('exo' 'garcon' 'libxfce4ui>=4.15.1' 'xfconf' 'libnotify' 'colord'
+depends=('exo>=4.15.1' 'garcon' 'libxfce4ui>=4.15.1' 'xfconf' 'libnotify' 'colord'
          'libxklavier' 'adwaita-icon-theme' 'gnome-themes-extra')
 makedepends=('intltool')
 optdepends=('libcanberra: for sound control')
@@ -17,7 +17,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2"
         'default-xsettings-xml.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/default-xsettings-xml.patch?h=packages/xfce4-settings')
-sha256sums=('ff3a97ca85943566d2adb6a132bbac913933419b3e95f4595e81c9381f22e816'
+sha256sums=('00ef2783d90a3779d1e75a4c5d4a9e43f958b949b6f711800a17f2d2e4123c2f'
             '8e9a6c70ab0ceb5d91b637dc290768f8a47edb5d7b6e2eebc4459dbc4ee040d7')
 
 prepare() {

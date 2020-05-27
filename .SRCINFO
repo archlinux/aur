@@ -1,6 +1,6 @@
 pkgbase = xfce4-settings-devel
 	pkgdesc = Settings manager for xfce
-	pkgver = 4.15.0
+	pkgver = 4.15.1
 	pkgrel = 1
 	url = https://www.xfce.org/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = xfce4-settings-devel
 	groups = xfce4-devel
 	license = GPL2
 	makedepends = intltool
-	depends = exo
+	depends = exo>=4.15.1
 	depends = garcon
 	depends = libxfce4ui>=4.15.1
 	depends = xfconf
@@ -18,11 +18,11 @@ pkgbase = xfce4-settings-devel
 	depends = adwaita-icon-theme
 	depends = gnome-themes-extra
 	optdepends = libcanberra: for sound control
-	provides = xfce4-settings=4.15.0
+	provides = xfce4-settings=4.15.1
 	conflicts = xfce4-settings
-	source = https://archive.xfce.org/src/xfce/xfce4-settings/4.15/xfce4-settings-4.15.0.tar.bz2
+	source = https://archive.xfce.org/src/xfce/xfce4-settings/4.15/xfce4-settings-4.15.1.tar.bz2
 	source = default-xsettings-xml.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/default-xsettings-xml.patch?h=packages/xfce4-settings
-	sha256sums = ff3a97ca85943566d2adb6a132bbac913933419b3e95f4595e81c9381f22e816
+	sha256sums = 00ef2783d90a3779d1e75a4c5d4a9e43f958b949b6f711800a17f2d2e4123c2f
 	sha256sums = 8e9a6c70ab0ceb5d91b637dc290768f8a47edb5d7b6e2eebc4459dbc4ee040d7
 
 pkgname = xfce4-settings-devel
