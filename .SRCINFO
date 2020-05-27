@@ -1,20 +1,22 @@
 pkgbase = kimageformats-git
-	pkgdesc = KImageFormats
-	pkgver = r67.6b72930
+	pkgdesc = Image format plugins for Qt5
+	pkgver = r273.51d0b2a
 	pkgrel = 1
-	url = https://projects.kde.org/projects/frameworks/kimageformats
+	url = https://community.kde.org/Frameworks
 	arch = i686
 	arch = x86_64
 	groups = kf5
 	license = LGPL
-	makedepends = extra-cmake-modules-git
+	makedepends = extra-cmake-modules
 	makedepends = git
+	makedepends = karchive
 	depends = qt5-base
 	depends = openexr
+	optdepends = karchive: plugin for Krita and OpenRaster images
 	provides = kimageformats
 	conflicts = kimageformats
-	source = git://anongit.kde.org/kimageformats.git
-	md5sums = SKIP
+	source = git+https://github.com/KDE/kimageformats.git
+	sha256sums = SKIP
 
 pkgname = kimageformats-git
 
