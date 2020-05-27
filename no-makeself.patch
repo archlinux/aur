@@ -1,0 +1,11 @@
+diff -aur clean/veracrypt/src/Main/Main.make src/veracrypt/src/Main/Main.make
+--- clean/Main/Main.make	2014-10-14 19:12:32.000000000 +0300
++++ src/Main/Main.make		2014-10-14 19:13:27.330705412 +0300
+@@ -206,7 +206,6 @@
+ 	rm -fr $(BASE_DIR)/Setup/Linux/packaging
+ 	mkdir -p $(BASE_DIR)/Setup/Linux/packaging
+ 	cp $(INTERNAL_INSTALLER_NAME) $(BASE_DIR)/Setup/Linux/packaging/.
+-	makeself $(BASE_DIR)/Setup/Linux/packaging $(BASE_DIR)/Setup/Linux/$(INSTALLER_NAME) "VeraCrypt $(TC_VERSION) Installer" ./$(INTERNAL_INSTALLER_NAME)
+ 
+ endif
+ 
