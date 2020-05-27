@@ -1,0 +1,13 @@
+pkgbase = otf-daggersquare
+	pkgdesc = Geometrical display sans font with a techno style
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.1001fonts.com/daggersquare-font.html
+	arch = any
+	license = custom:FFC
+	provides = DAGGERSQUARE
+	source = https://dl.1001fonts.com/daggersquare.zip
+	sha256sums = 6136a835e22816221034bf07edd05d4a91e9133da4158e4cdf34e32688640fa2
+
+pkgname = otf-daggersquare
+
