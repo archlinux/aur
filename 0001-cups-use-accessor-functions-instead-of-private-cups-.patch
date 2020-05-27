@@ -1,0 +1,111 @@
+From 6a77c7c283b83cbcc9cbfab59710023cd09da3ed Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=B6rg=20Thalheim?= <joerg@thalheim.io>
+Date: Fri, 20 Dec 2019 13:43:33 +0000
+Subject: [PATCH] cups: use accessor functions instead of private cups fields
+
+Cups has made some structures private. https://github.com/apple/cups/commit/0fb02fb9cef39fd0b0c838f11af21d99fe5eab9b#diff-a299fb5293cedc8102f5963e50fbe22c
+Update the code to use accessor functions instead.
+---
+ cups/cups.c  | 25 ++++++++++++++-----------
+ cups/cups.go | 12 ++++++------
+ 2 files changed, 20 insertions(+), 17 deletions(-)
+
+diff --git a/cups/cups.c b/cups/cups.c
+index 4f0b583..853cdb8 100644
+--- a/cups/cups.c
++++ b/cups/cups.c
+@@ -39,41 +39,44 @@ void freeStringArrayAndStrings(char **stringArray, int size) {
+ // getIPPRequestStatusCode gets the status_code field.
+ // This field is not visible to cgo (don't know why).
+ ipp_status_t getIPPRequestStatusCode(ipp_t *ipp) {
+-	return ipp->request.status.status_code;
++
++	return ippGetStatusCode(ipp);
+ }
+ 
+ // getAttributeDateValue gets the ith date value from attr.
+ const ipp_uchar_t *getAttributeDateValue(ipp_attribute_t *attr, int i) {
+-	return attr->values[i].date;
++	return ippGetDate(attr,i);
+ }
+ 
+ // getAttributeIntegerValue gets the ith integer value from attr.
+ int getAttributeIntegerValue(ipp_attribute_t *attr, int i) {
+-	return attr->values[i].integer;
++	return ippGetInteger(attr,i);
+ }
+ 
+ // getAttributeStringValue gets the ith string value from attr.
+ const char *getAttributeStringValue(ipp_attribute_t *attr, int i) {
+-	return attr->values[i].string.text;
++	return ippGetString(attr,i,NULL);
+ }
+ 
+ // getAttributeValueRange gets the ith range value from attr.
+ void getAttributeValueRange(ipp_attribute_t *attr, int i, int *lower,
+ 		int *upper) {
+-	*lower = attr->values[i].range.lower;
+-	*upper = attr->values[i].range.upper;
++	*lower = ippGetRange(attr,i,upper);
+ }
+ 
+ // getAttributeValueResolution gets the ith resolution value from attr.
+ // The values returned are always "per inch" not "per centimeter".
+ void getAttributeValueResolution(ipp_attribute_t *attr, int i, int *xres,
+ 		int *yres) {
+-	if (IPP_RES_PER_CM == attr->values[i].resolution.units) {
+-		*xres = attr->values[i].resolution.xres * 2.54;
+-		*yres = attr->values[i].resolution.yres * 2.54;
++	int yreslocal;
++	ipp_res_t unitslocal;
++	int xreslocal = ippGetResolution(attr,i,&yreslocal,&unitslocal);
++	if (IPP_RES_PER_CM == unitslocal) {
++		*xres = xreslocal * 2.54;
++		*yres = yreslocal * 2.54;
+ 	} else {
+-		*xres = attr->values[i].resolution.xres;
+-		*yres = attr->values[i].resolution.yres;
++		*xres = xreslocal;
++		*yres = yreslocal;
+ 	}
+ }
+ 
+diff --git a/cups/cups.go b/cups/cups.go
+index efa3361..1826e83 100644
+--- a/cups/cups.go
++++ b/cups/cups.go
+@@ -240,13 +240,13 @@ func (c *CUPS) GetPrinters() ([]lib.Printer, error) {
+ func (c *CUPS) responseToPrinters(response *C.ipp_t) []lib.Printer {
+ 	printers := make([]lib.Printer, 0, 1)
+ 
+-	for a := response.attrs; a != nil; a = a.next {
+-		if a.group_tag != C.IPP_TAG_PRINTER {
++	for a := C.ippFirstAttribute(response); a != nil; a = C.ippNextAttribute(response) {
++		if C.ippGetGroupTag(a) != C.IPP_TAG_PRINTER {
+ 			continue
+ 		}
+ 
+ 		attributes := make([]*C.ipp_attribute_t, 0, C.int(len(c.printerAttributes)))
+-		for ; a != nil && a.group_tag == C.IPP_TAG_PRINTER; a = a.next {
++		for ; a != nil && C.ippGetGroupTag(a) == C.IPP_TAG_PRINTER; a = C.ippNextAttribute(response) {
+ 			attributes = append(attributes, a)
+ 		}
+ 		mAttributes := attributesToMap(attributes)
+@@ -562,11 +562,11 @@ func attributesToMap(attributes []*C.ipp_attribute_t) map[string][]string {
+ 	m := make(map[string][]string)
+ 
+ 	for _, a := range attributes {
+-		key := C.GoString(a.name)
+-		count := int(a.num_values)
++		key := C.GoString(C.ippGetName(a))
++		count := int(C.ippGetCount(a))
+ 		values := make([]string, count)
+ 
+-		switch a.value_tag {
++		switch C.ippGetValueTag(a) {
+ 		case C.IPP_TAG_NOVALUE, C.IPP_TAG_NOTSETTABLE:
+ 			// No value means no value.
+ 
+-- 
+2.26.2
+
