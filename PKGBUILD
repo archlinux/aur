@@ -2,7 +2,7 @@
 
 pkgname=snage-bin
 pkgver=0.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for managing change logs."
 arch=(any)
 url="https://github.com/FACT-Finder/snage"
@@ -12,16 +12,14 @@ provides=('snage')
 conflicts=('snage')
 makedepends=('yarn')
 
-source=("snage-$pkgver.tar.gz::https://registry.npmjs.org/snage/-/snage-$pkgver.tgz"
-        "snage-$pkgver-src.tar.gz::https://github.com/FACT-Finder/snage/archive/v$pkgver.tar.gz")
-sha256sums=('b529772157419343e8e890e641ed6b66cdda8fab3ad2534f1c44b8cf283ba1cb'
-            '64e9422097c2485b31c0af5f856470af129af203ffdeb7981e3dbdf4bb3e5260')
+source=("snage-$pkgver.tar.gz::https://github.com/FACT-Finder/snage/releases/download/v$pkgver/snage-$pkgver.tar.gz")
+sha256sums=('6593e82131b0f1427186163b235511318ac5662a85feaaf3877376a3b190118f')
 options=(!strip)
 
 package() {
   install -d "$pkgdir/usr/lib/snage"
   cd "$pkgdir/usr/lib/snage"
-  cp -a "$srcdir/package/build/npm/." .
+  cp -a "$srcdir/snage-$pkgver/." .
 
   chmod +x "snage.js"
 
