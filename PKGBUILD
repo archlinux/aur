@@ -1,23 +1,27 @@
+# Maintainer: lilac <lilac@build.archlinuxcn.org>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: wenLiangcan <boxeed at gmail dot com>
-# Maintainer: hexchain <i at hexchain.org>
+# Contributor: hexchain <i at hexchain.org>
 
 pkgname=iease-music-git
 _pkgname=iease-music
-pkgver=171.026f721
-pkgrel=3
-pkgdesc="A lean snippet manager based on GitHub Gist"
+pkgver=613.a09864b
+pkgrel=1
+pkgdesc='Elegant neteaseMusic desktop app, Rock with NeteaseMusic.'
 arch=('x86_64')
 url="https://github.com/trazyn/ieaseMusic"
 license=('MIT')
-depends=('electron' 'nodejs' 'libxtst' 'gtk2' 'gconf' 'libxss' 'nss' 'python' 'alsa-lib' 'java-environment')
+depends=('gconf' 'libnotify' 'nss' 'libxss' 'libappindicator-gtk3' 'libxtst')
 makedepends=('git' 'npm')
 provides=('iease-music')
 conflicts=('iease-music')
-source=(
-    "$_pkgname::git://github.com/trazyn/ieaseMusic.git"
-    'iease-music.desktop'
-    'iease-music.sh'
+source=("$_pkgname::git://github.com/trazyn/ieaseMusic.git"
+	'iease-music.desktop'
+	'iease-music.sh'
 )
+md5sums=('SKIP'
+         '856fa5e3681d14e083161e3a97e31e38'
+         '7034439d650b4a3828cd10e8287e969a')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -25,33 +29,27 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
-    sed -i 's/^.*"electron".*$//;s/^.*"electron-builder".*$//' package.json
-    npm install
+  cd "$srcdir/$_pkgname"
+  sed -i 's/^.*"electron".*$//;s/^.*"electron-builder".*$//' package.json
+  npm install
 }
 
 package() {
-    cd "$srcdir"
-    install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications/"
+  cd "$srcdir"
+  install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications/"
 
-    cd "$srcdir/$_pkgname"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/$_pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     	
-    for size in 16 24 32 48 64 96 128 256; do
-        target="$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/"
-        mkdir -p $target
-        install -Dm644 "resource/${size}x${size}.png" "$target/$_pkgname.png"
-    done
+  for size in 16 24 32 48 64 96 128 256; do
+      target="$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/"
+      mkdir -p $target
+      install -Dm644 "resource/${size}x${size}.png" "$target/$_pkgname.png"
+  done
 
-    cd "$srcdir/$_pkgname/"
-    mkdir -p "$pkgdir/opt/ieaseMusic/"
-    cp -r --no-preserve='ownership' -- * "$pkgdir/opt/ieaseMusic/"
-    install -Dm755 "$srcdir/$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
+  cd "$srcdir/$_pkgname/"
+  mkdir -p "$pkgdir/opt/ieaseMusic/"
+  cp -r --no-preserve='ownership' -- * "$pkgdir/opt/ieaseMusic/"
+  install -Dm755 "$srcdir/$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
 }
-
-sha256sums=('SKIP'
-            'bd7a9e09f8adcb6091a32fbd29cebbe13f10390cac951a2b12997a42b7be1dba'
-            '903d9fc1e891b09ef7a6e2d997ff597e00587c70f3cdaf2ee0508dfe9385692c')
-
-
