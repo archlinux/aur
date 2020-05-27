@@ -1,3 +1,4 @@
+#!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # shellcheck disable=SC2034,SC2164 # mask unused variable warning, mask cd without fallback warning.
 
@@ -5,7 +6,7 @@ _name=alice-vision
 #_fragment="#commit=eebc3e4f"
 _fragment="#branch=develop"
 pkgname=${_name}-git
-pkgver=2.2.0.r491.g88e626786
+pkgver=2.2.0.r493.g7c3126466
 pkgrel=1
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
@@ -25,10 +26,10 @@ source=("${pkgname}::git+https://github.com/alicevision/AliceVision.git${_fragme
         "geogram::git+https://github.com/alicevision/geogram.git"
         "submodule.patch"
         )
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'eb62c8be5a0d7ce537a928314c9d0028')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'ddbe76933cea0300b577095afa7459113a2d2ef02d4f300424261165ad9dee22')
 
 # shellcheck disable=SC2191 # mask \= warning.
 _CMAKE_FLAGS=(
@@ -75,7 +76,7 @@ build() {
 
   msg2 "Build geogram library"
   mkdir -p geogram_build
-  cmake -DCMAKE_INSTALL_PREFIX=/ -DGEOGRAM_LIB_ONLY=ON -DGEOGRAM_USE_SYSTEM_GLFW3=ON -DCMAKE_BUILD_TYPE:STRING=Release -DVORPALINE_PLATFORM:STRING=Linux64-gcc-dynamic -DGEOGRAM_WITH_LEGACY_NUMERICS=OFF -G Ninja -S geogram -B geogram_build
+  CFLAGS+=" -fcommon" cmake -DCMAKE_INSTALL_PREFIX=/ -DGEOGRAM_LIB_ONLY=ON -DGEOGRAM_USE_SYSTEM_GLFW3=ON -DCMAKE_BUILD_TYPE:STRING=Release -DVORPALINE_PLATFORM:STRING=Linux64-gcc-dynamic -G Ninja -S geogram -B geogram_build
 # shellcheck disable=SC2030,SC2031,SC2046 # ninja call won't work with shell substitution in quotes.
   ninja $([ -v MAKEFLAGS ] || echo -j1) -C geogram_build
   DESTDIR="${srcdir}/geogram_bin" ninja -C geogram_build install
