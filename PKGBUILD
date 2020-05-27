@@ -5,17 +5,23 @@
 
 # Maintainer: sparzz
 pkgname=vulkan-tools-git
-pkgver=1.2.140_2020.05.27.r1
+pkgver=1.2.140_2020.05.27.r2
 pkgrel=1
 epoch=
-pkgdesc="vulkan tools build directly from KhronosGroup github. This build provide the most recent vulkan-tools package"
+pkgdesc="Vulkan-tools build from source. My Vulkan packages from the AUR depends on this package. For install instruction and order of the of the install visit my GitHub page --> https://github.com/sparzz/vulkan-arch-aur"
 arch=(x86_64)
 url="https://github.com/KhronosGroup/Vulkan-Tools.git"
 license=('Apache')
 groups=()
 depends=()
 makedepends=("cmake"
-            "git")
+            "git"
+            "spirv-headers-sparzz-git"
+            "vulkan-validation-layers-git"
+            "vulkan-loader-git"
+            "vulkan-headers-sparzz-git"
+            "vulkan-extensionlayer-sparzz-git"
+            "glslang-sparzz-git")
 checkdepends=()
 optdepends=()
 provides=(vulkan-tools-git)
