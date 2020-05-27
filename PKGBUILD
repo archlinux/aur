@@ -64,6 +64,8 @@ prepare() {
   cd mozilla-unified
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1635764
+  hg export -r fae8aeba1a70 | patch -Rp1
+  #
   hg export -r c413912c4f0e | patch -Rp1
   hg export -r 943fe6210744 | patch -Rp1
   hg export -r dc731fd750fc | patch -Rp1
