@@ -1,0 +1,13 @@
+pkgbase = spotbugs
+	pkgdesc = SpotBugs is FindBugs' successor. A tool for static analysis to look for bugs in Java code.
+	pkgver = 4.0.3
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = jq
+	makedepends = curl
+
+pkgname = spotbugs
+
