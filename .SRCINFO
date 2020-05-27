@@ -1,7 +1,7 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
-	pkgver = 5.6.14
-	pkgrel = 2
+	pkgver = 5.6.15
+	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -14,7 +14,7 @@ pkgbase = linux-clear
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.6.14.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.6.15.xz
 	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.6.14-955
 	source = enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.4-5.6_v1.patch
 	source = pci-enable-overrides-for-missing-acs-capabilities.patch
@@ -23,7 +23,7 @@ pkgbase = linux-clear
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622
 	sha256sums = SKIP
-	sha256sums = 07e737cfdc79382dc259c4844a150d8d72ebbcdc9d7e03a9503f8f8e19f1aea4
+	sha256sums = 995f3a824d7ee90b137fc22af9b5e2b7d0b1f9f81b51bfb01bfc284bf9109e34
 	sha256sums = SKIP
 	sha256sums = c650fc6ff773e99dbc1fda9411b10b06513c5161791106c44d5a11dbcf6420f9
 	sha256sums = 2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e
