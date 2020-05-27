@@ -1,6 +1,6 @@
 pkgbase = kapp-bin
 	pkgdesc = kapp is a simple deployment tool focused on the concept of 'Kubernetes application' — a set of resources with the same label
-	pkgver = 0.27.0
+	pkgver = 0.28.0
 	pkgrel = 1
 	url = https://get-kapp.io/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = kapp-bin
 	license = apache
 	provides = kapp
 	conflicts = kapp
-	source = kapp-linux-amd64-v0.27.0::https://github.com/k14s/kapp/releases/download/v0.27.0/kapp-linux-amd64
-	sha256sums = 01487d351bd1e0aac8961ab28a27bd3cb7239b587154e2bb4a10a2bdafa2b9bb
+	source = kapp-linux-amd64-v0.28.0::https://github.com/k14s/kapp/releases/download/v0.28.0/kapp-linux-amd64
+	sha256sums = 68af97af76fd3dfb94ec8c2e98e00b8fec3d8d2dc17487601ab00692a358a479
 
 pkgname = kapp-bin
 
