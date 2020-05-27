@@ -11,7 +11,7 @@ makedepends=('cargo'
 depends=('qt5-base'
      	 'polkit')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PonasKovas/netctl-tray/archive/${pkgver}.tar.gz")
-md5sums=('e3494cc903bd37e5f19a0eb4cd5bfbc9')
+md5sums=('6764bc400a56ddcd136fb56c1fdf9749')
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
