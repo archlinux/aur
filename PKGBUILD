@@ -1,53 +1,69 @@
-# Maintainer: Étienne Deparis <etienne [at] depar [dot] is>
+# Maintainer:
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: eolianoe <eolianoe [at] googlemail [dot] com>
+# Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
+# Contributor: Thomas Weißschuh <thomas t-8ch de>
+# Contributor: Étienne Deparis <etienne [at] depar [dot] is>
+# Contributor: Daniel M. Capella <polyzen@archlinux.info>
 
 pkgname=khal-git
-_gitname=khal
-pkgver=0.9.6.dev2+g119d44c
+_pkgname=khal
+pkgver=0.10.2.dev55+ga401ef2
 pkgrel=1
-pkgdesc="Command line CalDav client"
-license=("MIT")
-url="http://lostpackets.de/khal/"
-depends=('python-urwid' 'python-xdg' 'vdirsyncer' 'python-dateutil'
-         'python-configobj' 'python-tzlocal' 'python-icalendar'
-         'sqlite' 'python-pkginfo')
-makedepends=('python-setuptools' 'python-setuptools-scm'
-             'git' 'python-sphinxcontrib-newsfeed')
-optdepends=('python-setproctitle: Display a clearer name in your process list')
-source=("${_gitname}::git+https://github.com/geier/khal.git")
-md5sums=('SKIP')
-install='khal.install'
+pkgdesc='CLI calendar application build around CalDAV (Git)'
+arch=('any')
+url="https://lostpackets.de/khal/"
+license=('MIT')
+makedepends=('git' 'python-setuptools-scm' 'python-sphinxcontrib-newsfeed')
+depends=('python-atomicwrites' 'python-click' 'python-click-log'
+'python-configobj' 'python-dateutil' 'python-icalendar' 'python-pytz'
+'python-setuptools' 'python-tzlocal' 'python-urwid' 'python-xdg')
+optdepends=('python-setproctitle: Set process name'
+            'vdirsyncer: Synchronize CalDAV calendars')
+checkdepends=('python-pytest' 'python-freezegun' 'vdirsyncer')
+source=("${_pkgname}::git+https://github.com/geier/khal.git")
+sha256sums=('SKIP')
 provides=('khal')
 conflicts=('khal')
-arch=('any')
 options=(!emptydirs)
 
 pkgver() {
-  cd "$srcdir/${_gitname}/"
+  cd "$srcdir/${_pkgname}"
   python setup.py --version
 }
 
 build() {
-  cd "$srcdir/${_gitname}/"
+  cd "$srcdir/${_pkgname}"
   python setup.py build
+  make -C doc man PYTHONPATH="${PWD}"
+}
 
-  cd "$srcdir/${_gitname}/doc"
-  PYTHONPATH="$srcdir/khal" make man
+check() {
+  cd "$srcdir/${_pkgname}"
+  pytest -v \
+    || echo "Tests from hell: https://github.com/pimutils/khal/issues/860"
 }
 
 package() {
-  cd "$srcdir/${_gitname}/"
-  python setup.py install --root=$pkgdir
-
-  install -D -m644 khal.conf.sample "${pkgdir}/usr/share/doc/${_gitname}/examples/khal.conf"
-  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
-  install -D -m644 AUTHORS.txt "${pkgdir}/usr/share/licenses/${_gitname}/AUTHORS"
-
-  install -D -m644 doc/build/man/khal.1 "${pkgdir}/usr/share/man/man1/khal.1"
-  install -Dm 755 "bin/khal" "$pkgdir/usr/bin/khal"
-  install -Dm 755 "bin/ikhal" "$pkgdir/usr/bin/ikhal"
-
-  # You can comment the following to disable zsh completion (if you do
-  # not plan to use zsh for example)
-  install -D -m644 misc/__khal "${pkgdir}/usr/share/zsh/site-functions/_khal"
+  cd "$srcdir/${_pkgname}"
+  python setup.py install --skip-build \
+    --optimize=1 \
+    --prefix=/usr \
+    --root="${pkgdir}"
+  # executables
+  install -vDm 755 bin/{i,}"${_pkgname}" -t "$pkgdir/usr/bin/"
+  # configuration
+  install -vDm 644 "${_pkgname}.conf.sample" \
+    "${pkgdir}/usr/share/doc/${_pkgname}/examples/${_pkgname}.conf"
+  # man page
+  install -vDm 644 doc/build/man/${_pkgname}.1 \
+    -t "${pkgdir}/usr/share/man/man1/"
+  # zsh completion
+  install -vDm 644 "misc/__${_pkgname}" \
+    "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+  # license
+  install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+  # docs
+  install -vDm 644 {AUTHORS.txt,{CHANGELOG,CONTRIBUTING,README}.rst} \
+    -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
