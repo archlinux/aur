@@ -34,7 +34,7 @@ build() {
         -buildmode=pie \
         -mod=readonly \
         -modcacherw \
-        -ldflags "-extldflags $LDFLAGS -X main.VERSION=$pkgver" \
+        -ldflags "-extldflags \"$LDFLAGS\" -X main.VERSION=$pkgver" \
         .
 }
 
