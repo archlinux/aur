@@ -1,7 +1,7 @@
 pkgbase = ncmines-git
 	pkgdesc = Terminal-based ncurses
-	pkgver = v1.0.0
-	pkgrel = 1
+	pkgver = v1.0.1
+	pkgrel = 3
 	url = https://github.com/PurpleUltraViolet/ncmines
 	arch = i686
 	arch = x86_64
