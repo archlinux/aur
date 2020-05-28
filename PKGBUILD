@@ -3,8 +3,8 @@
 pkgname=chocolate-doom
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
 pkgver=3.0.0
-pkgrel=5
-arch=('i686' 'x86_64')
+pkgrel=6
+arch=('i686' 'x86_64' 'aarch64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
 install=chocolate-doom.install

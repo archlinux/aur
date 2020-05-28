@@ -1,11 +1,12 @@
 pkgbase = chocolate-doom
 	pkgdesc = Historically-accurate Doom, Heretic, Hexen, and Strife ports.
 	pkgver = 3.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.chocolate-doom.org/
 	install = chocolate-doom.install
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	makedepends = python
 	depends = libpng
