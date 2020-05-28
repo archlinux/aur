@@ -1,6 +1,6 @@
 pkgbase = rofi-search-git
 	pkgdesc = Search engine plugin for rofi
-	pkgver = r18.535856f
+	pkgver = r24.adb44cf
 	pkgrel = 1
 	url = https://github.com/fogine/rofi-search
 	arch = any
