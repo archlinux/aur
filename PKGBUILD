@@ -8,7 +8,7 @@ pkgver=1.6.1
 pkgrel=4
 pkgdesc='A data analysis library that is optimized for humans instead of machines'
 arch=('any')
-url='http://agate.readthedocs.org/'
+url='https://agate.readthedocs.org/'
 license=('MIT')
 depends=(
     'python'
