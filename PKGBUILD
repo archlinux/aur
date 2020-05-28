@@ -1,13 +1,12 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - The dynamicEDT3D library implements an inrementally updatable Euclidean distance transform (EDT) in 3D."
-url='https://octomaphub.io'
+url='https://wiki.ros.org/dynamic_edt_3d'
 
 pkgname='ros-noetic-dynamic-edt-3d'
-pkgver='1.9.0'
-_pkgver_patch=1
-arch=('any')
-pkgrel=2
+pkgver='1.9.5'
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-noetic-octomap)
@@ -18,16 +17,9 @@ ros_depends=(ros-noetic-octomap
   ros-noetic-catkin)
 depends=(${ros_depends[@]})
 
-# Git version (e.g. for debugging)
-# _tag=release/noetic/dynamic_edt_3d/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/octomap-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="octomap-${pkgver}/dynamicEDT3D"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/OctoMap/octomap/archive/v${pkgver}.tar.gz")
-sha256sums=('5f81c9a8cbc9526b2e725251cd3a829e5222a28201b394314002146d8b9214dd')
+sha256sums=('adf87320c4c830c0fd85fe8d913d8aa174e2f72d0ea64c917599a50a561092b6')
 
 build() {
   # Use ROS environment variables
@@ -42,7 +34,7 @@ build() {
   cmake ${srcdir}/${_dir} \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }

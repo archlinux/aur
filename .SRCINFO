@@ -1,17 +1,21 @@
 pkgbase = ros-noetic-dynamic-edt-3d
 	pkgdesc = ROS - The dynamicEDT3D library implements an inrementally updatable Euclidean distance transform (EDT) in 3D.
-	pkgver = 1.9.0
-	pkgrel = 2
-	url = https://octomaphub.io
-	arch = any
+	pkgver = 1.9.5
+	pkgrel = 1
+	url = https://wiki.ros.org/dynamic_edt_3d
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-noetic-octomap
 	depends = ros-noetic-octomap
 	depends = ros-noetic-catkin
-	source = ros-noetic-dynamic-edt-3d-1.9.0.tar.gz::https://github.com/OctoMap/octomap/archive/v1.9.0.tar.gz
-	sha256sums = 5f81c9a8cbc9526b2e725251cd3a829e5222a28201b394314002146d8b9214dd
+	source = ros-noetic-dynamic-edt-3d-1.9.5.tar.gz::https://github.com/OctoMap/octomap/archive/v1.9.5.tar.gz
+	sha256sums = adf87320c4c830c0fd85fe8d913d8aa174e2f72d0ea64c917599a50a561092b6
 
 pkgname = ros-noetic-dynamic-edt-3d
 
