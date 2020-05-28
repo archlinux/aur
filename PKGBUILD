@@ -1,5 +1,5 @@
 pkgname=zola-bin
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="An opinionated static site generator - Precompiled binary from official repository"
 arch=('any')
@@ -9,7 +9,7 @@ provides=('zola')
 conflicts=('zola')
 
 source=("https://github.com/getzola/zola/releases/download/v${pkgver}/${pkgname/-bin}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('7bce21ad56d0cab213b5b9188076b93d9d130b9b046cd118305dc2b9b43b84b8')
+sha256sums=('8afe40edff5e995afdc132e02442d24eb633ef4b6e81913d69cf97f17905b9c3')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname/-bin}" "${pkgdir}/usr/bin/${pkgname/-bin}"
