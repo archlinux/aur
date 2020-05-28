@@ -2,16 +2,18 @@
 
 pkgname=otf-exo
 pkgver=2.0
-pkgrel=7
+# This font is sometimes updated but stays at "2.0". It has been updated at
+# least twice since 2.0 and the most recent change was with pkgrel 7.
+pkgrel=8
 pkgdesc='A geometric sans serif font with a technological feel'
 arch=('any')
-url='http://ndiscovered.com/'
+url='https://www.ndiscover.com/exo-2-0/'
 license=('OFL')
 depends=('fontconfig' 'xorg-mkfontdir')
-source=('http://ndiscovered.com/archives/exo-2.zip')
-md5sums=('64462f43a098c80e6f84f5ef21c431b2')
-sha256sums=('6e5902c7eb57ad05a816464d43a404049d2e37c8add9c8d5eac121ddadcd7669')
+source=('https://www.ndiscover.com/wp-content/themes/barrel-child/fonts/demo/exo2/Exo2.zip')
+md5sums=('4d3f183eb4267dcec715d45c872c2a36')
+sha256sums=('646958d276e88ae9d92a7c1e2e026ed956cd0b59b64f34d8b8a102c43e50e48a')
 
 package() {
-  install -Dm644 -t "${pkgdir}/usr/share/fonts/OTF" "${srcdir}"/Exo2-*.otf
+  install -Dm644 -t "${pkgdir}/usr/share/fonts/OTF" "${srcdir}/Exo 2.0"/*.otf
 }
