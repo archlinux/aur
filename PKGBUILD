@@ -1,4 +1,5 @@
-# Maintainer:  Caleb Maclennan <caleb@alerque.com>
+# Maintainer:
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: coderkun <olli@derkun.de>
 
 _upname=RSSOwl
