@@ -1,8 +1,10 @@
-# Maintainer: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 # Contributor: bohoomil <@zoho.com>
 
 pkgname=ttf-vollkorn-ibx
-pkgdesc="Vollkorn typeface by Friedrich Althausen. TrueType version."
+pkgdesc="Vollkorn typeface by Friedrich Althausen. TrueType version"
 url=http://vollkorn-typeface.com/
 license=('custom:OFL')
 pkgver=3.005
