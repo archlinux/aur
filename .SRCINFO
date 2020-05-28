@@ -10,7 +10,7 @@ pkgbase = teamocil
 	depends = ruby
 	depends = tmux
 	noextract = teamocil-1.4.2.gem
-	source = http://rubygems.org/downloads/teamocil-1.4.2.gem
+	source = https://rubygems.org/downloads/teamocil-1.4.2.gem
 	sha256sums = 221bf0b600e0a277c98befbecea8a454ee87dbd1c7e8767a2f64dda8dc18aed0
 
 pkgname = teamocil

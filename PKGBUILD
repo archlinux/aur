@@ -10,7 +10,7 @@ url='https://github.com/remi/teamocil'
 license=('MIT')
 depends=('ruby' 'tmux')
 makedepends=('rubygems' 'ruby-rdoc')
-source=("http://rubygems.org/downloads/$pkgname-$pkgver.gem")
+source=("https://rubygems.org/downloads/$pkgname-$pkgver.gem")
 sha256sums=('221bf0b600e0a277c98befbecea8a454ee87dbd1c7e8767a2f64dda8dc18aed0')
 noextract=("${source[@]##*/}")
 
