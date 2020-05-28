@@ -1,7 +1,7 @@
 pkgbase = pixelorama-bin
 	pkgdesc = A free & open-source 2D sprite editor, made with the Godot Engine - precompiled binary
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.orama-interactive.com/pixelorama
 	arch = i686
 	arch = x86_64
