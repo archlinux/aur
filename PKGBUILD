@@ -7,7 +7,7 @@ pkgver=0.5.4
 pkgrel=2
 pkgdesc='Adds SQL read/write support to agate'
 arch=('any')
-url='http://agate-sql.readthedocs.org/'
+url='https://agate-sql.readthedocs.org/'
 license=('MIT')
 depends=(
     'python'
