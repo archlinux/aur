@@ -1,10 +1,10 @@
 [Desktop Entry]
-Name=Riot
+Name=Riot-Desktop
 Comment=A feature-rich client for Matrix.org
-Exec="/usr/bin/riot-desktop"
+Exec=/usr/bin/riot-desktop %u
 Terminal=false
 Type=Application
 Icon=riot
-StartupWMClass="Riot"
+StartupWMClass=Riot
 Categories=Network;InstantMessaging;Chat;IRCClient
-
+MimeType=x-scheme-handler/riot;
