@@ -2,14 +2,14 @@ pkgbase = perl-hash-merge-simple
 	pkgdesc = Recursively merge two or more hashes, simply
 	pkgver = 0.051
 	pkgrel = 2
-	url = http://search.cpan.org/dist/Hash-Merge-Simple
+	url = https://search.cpan.org/dist/Hash-Merge-Simple
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	checkdepends = perl-test-most
 	depends = perl-clone
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RO/ROKR/Hash-Merge-Simple-0.051.tar.gz
+	source = https://search.cpan.org/CPAN/authors/id/R/RO/ROKR/Hash-Merge-Simple-0.051.tar.gz
 	sha256sums = 1c56327873d2f04d5722777f044863d968910466997740d55a754071c6287b73
 
 pkgname = perl-hash-merge-simple

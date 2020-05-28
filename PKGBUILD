@@ -12,8 +12,8 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-clone')
 checkdepends=('perl-test-most')
-url="http://search.cpan.org/dist/$_pkgname"
-source=("http://search.cpan.org/CPAN/authors/id/R/RO/ROKR/$_pkgname-$pkgver.tar.gz")
+url="https://search.cpan.org/dist/$_pkgname"
+source=("https://search.cpan.org/CPAN/authors/id/R/RO/ROKR/$_pkgname-$pkgver.tar.gz")
 sha256sums=('1c56327873d2f04d5722777f044863d968910466997740d55a754071c6287b73')
 
 build() {
