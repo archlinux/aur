@@ -6,7 +6,7 @@
 # Contributor: Christopher Arndt <aur at chrisarndt.de>
 
 pkgname=ardour-git
-pkgver=6.0.rc1.r142.g551be058f2
+pkgver=6.0.r15.g3e6295f538
 pkgrel=1
 pkgdesc="A multichannel hard disk recorder and digital audio workstation"
 arch=('i686' 'x86_64')
