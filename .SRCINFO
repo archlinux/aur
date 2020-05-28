@@ -1,7 +1,7 @@
 pkgbase = helm-secrets
 	pkgdesc = Helm plugin to manage secrets with Git workflow and store them anywhere
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zendesk/helm-secrets
 	install = helm-secrets.install
 	arch = any
