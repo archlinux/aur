@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-tf
 	pkgdesc = ROS - tf is a package that lets the user keep track of multiple coordinate frames over time.
-	pkgver = 1.12.0
-	pkgrel = 3
-	url = https://github.com/ros/geometry
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = https://wiki.ros.org/tf
 	arch = i686
 	arch = x86_64
 	arch = aarch64
@@ -32,10 +32,8 @@ pkgbase = ros-noetic-tf
 	depends = ros-noetic-sensor-msgs
 	depends = ros-noetic-geometry-msgs
 	depends = graphviz
-	source = ros-noetic-tf-1.12.0.tar.gz::https://github.com/ros/geometry/archive/1.12.0.tar.gz
-	source = CMakeLists-signal.patch
-	sha256sums = 61a278bdd50e00ea442055d9f70eaf82b5a36916739edca188fa1b71a59507b4
-	sha256sums = ab139685eaa571c7e1b3ef527bb9ef367ba05ab7f859602a5d6ed59359459e2d
+	source = ros-noetic-tf-1.13.1.tar.gz::https://github.com/ros/geometry/archive/1.13.1.tar.gz
+	sha256sums = c9845547238c7f305bd47af10f072184fea76050cbca021e77d43890fe996e4c
 
 pkgname = ros-noetic-tf
 
