@@ -1,4 +1,6 @@
-# Maintainer: bohoomil <@zoho.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Contributor: bohoomil <@zoho.com>
 
 pkgname=ttf-unfonts-core-ibx
 _name=un-fonts-core
@@ -7,7 +9,7 @@ _pkgrev=080608
 pkgrel=1
 _realver=2607
 depends=('fontconfig')
-pkgdesc="Un Core family of Korean TrueType fonts."
+pkgdesc="Un Core family of Korean TrueType fonts"
 url="http://kldp.net/projects/unfonts/"
 arch=('any')
 groups=('infinality-bundle-fonts-extra')
