@@ -2,8 +2,8 @@
 
 pkgname=guessica
 pkgver=0.0.2
-pkgrel=1
-pkgdesc='Small, fast and VT100-compatible text editor'
+pkgrel=2
+pkgdesc='Update a PKGBUILD file by guessing the latest version number and finding the latest git tag and hash online'
 arch=(x86_64)
 url='https://github.com/xyproto/guessica'
 license=(BSD)
