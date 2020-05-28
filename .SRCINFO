@@ -1,11 +1,12 @@
 pkgbase = i3pystatus
 	pkgdesc = i3status replacement written in python for the i3 window manager
 	pkgver = r1807.e0234c1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/enkore/i3pystatus
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	optdepends = python-pyalsaaudio: For the alsa module.,
