@@ -1,14 +1,14 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=cupholder
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Eject the CD tray (locally or remotely)'
 arch=(x86_64)
 url='https://github.com/xyproto/cupholder'
 license=(BSD)
 makedepends=(git go-pie)
-source=("git+$url#commit=fd464f919b5a2371e5cdbb627f28d933e89637d9") # tag: v1.0.0
+source=("git+$url#commit=8a78d2455627909731b16b7a89e903fcdbf6731d") # tag: v1.1.0
 sha256sums=('SKIP')
 options=(!strip)
 
