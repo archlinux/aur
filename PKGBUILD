@@ -5,8 +5,8 @@
 
 _pkgname=v4l2loopback-dc
 pkgname=${_pkgname}-dkms
-_pkgver=6c7b273bd20b23a5b1074d5af30f0a13ce3d6065
-pkgver=6.7.5.6c7b273
+pkgver=1.1
+epoch=1
 pkgrel=1
 pkgdesc='A kernel module for droidcam'
 arch=('x86_64')
@@ -16,11 +16,11 @@ depends=('dkms')
 optdepends=('v4l-utils: Userspace tools and conversion library for Video 4 Linux')
 backup=("etc/modprobe.d/${_pkgname}.conf")
 source=("dkms.conf"
-        "droidcam.zip::https://github.com/aramg/droidcam/archive/${_pkgver}.zip"
+        "droidcam.zip::https://github.com/aramg/droidcam/archive/v${pkgver}.zip"
 )
 
 sha512sums=('27848dc6825c965c0aaac8e86220c3916ba20df6d941f5f05caecbf9c329ee744ee883bd2638ba58fe0dc3f40a8ae804dafbfbbe2efc23237e2b5450606cb78d'
-            '0bc9d1223fe598f90cb537f9978bf35410248b366e0e3a9ea4815fbcb5a99e8fed8fe00833dacb678f3f125f7614e011276ae3835f91e50f78da87131bd381b8')
+            'f02a76eb5323b62db9a54107a42e2150e2dfc27ab0acb5600ec0ed09e0512c2b7a21dd2105125d4f4d482348c807bf87f2d96131ce5b46e89d60a3b6f67d3a53')
 
 prepare() {
   # Generate the module loading configuration files
@@ -40,7 +40,7 @@ package() {
   install -Dm644 "${_pkgname}.modprobe.conf" "$pkgdir/etc/modprobe.d/${_pkgname}.conf"
 
   # Install module source
-  cd droidcam-${_pkgver}/linux/v4l2loopback
+  cd droidcam-${pkgver}/linux/v4l2loopback
 
   for d in $(find . -type d); do
     install -dm755 "${install_dir}/$d"
