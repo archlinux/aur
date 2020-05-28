@@ -1,7 +1,7 @@
 pkgbase = canon-pixma-mx870-complete
 	pkgdesc = Complete stand alone driver set (printing and scanning) for Canon Pixma MX870
 	pkgver = 3.30
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.usa.canon.com/internet/portal/us/home/support/details/printers/support-inkjet-printer/mx-series/pixma-mx870
 	install = canon-pixma-mx870-complete.install
 	arch = i686
@@ -23,18 +23,18 @@ pkgbase = canon-pixma-mx870-complete
 	depends_i686 = libtiff4
 	depends_i686 = libxml2
 	depends_i686 = gtk2
-	optdepends_i686 = gtk-engines: nicer UI
-	optdepends_i686 = libcanberra: nicer UI
-	optdepends_i686 = at-spi2-atk: nicer UI
+	optdepends_i686 = gtk-engines: nicer ScanGear MP UI
+	optdepends_i686 = libcanberra: nicer ScanGear MP UI
+	optdepends_i686 = at-spi2-atk: nicer ScanGear MP UI
 	depends_x86_64 = lib32-popt
 	depends_x86_64 = lib32-libpng12
 	depends_x86_64 = lib32-libusb-compat
 	depends_x86_64 = lib32-libtiff4
 	depends_x86_64 = lib32-libxml2
 	depends_x86_64 = lib32-gtk2
-	optdepends_x86_64 = lib32-gtk-engines: nicer UI
-	optdepends_x86_64 = lib32-libcanberra: nicer UI
-	optdepends_x86_64 = lib32-at-spi2-atk: nicer UI
+	optdepends_x86_64 = lib32-gtk-engines: nicer ScanGear MP UI
+	optdepends_x86_64 = lib32-libcanberra: nicer ScanGear MP UI
+	optdepends_x86_64 = lib32-at-spi2-atk: nicer ScanGear MP UI
 
 pkgname = canon-pixma-mx870-complete
 

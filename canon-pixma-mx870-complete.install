@@ -2,7 +2,6 @@
 
 post_install() {
 ## cnijfilter-mx870series section
-	gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
 
 	CNIJ_PKG_INFO=cnijfilter-mx870-367
 
@@ -13,7 +12,7 @@ post_install() {
 	_cups_path2=/usr/share/cups/model
 	ppd_name=canon${model_name}.ppd
 
-	if [ -x /usr/bin/ldconfig ]; then
+	if [ -x /sbin/ldconfig ]; then
 		/sbin/ldconfig
 	fi
 
@@ -22,18 +21,11 @@ post_install() {
 		mkdir ${_cups_path2}
 	fi
 	ln -fs ${_cups_path1}/${ppd_name} ${_cups_path2}/${ppd_name}
-	update-desktop-database -q
-
 	
 ## scangearmp-common section
-	gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
 
 	_gimp2dir1=/usr/lib32/gimp/2.0/plug-ins
 	_gimp2dir2=/usr/lib/gimp/2.0/plug-ins
-
-	if [ -x /usr/bin/ldconfig ]; then
-		/sbin/ldconfig
-	fi
 
 	# Make symbolic link for GIMP-plug-in
 	if [ -d ${_gimp2dir1} ]; then
@@ -42,13 +34,6 @@ post_install() {
 		ln -fs /usr/bin/scangearmp ${_gimp2dir2}/scangearmp
 	fi
 
-	# Reload udev rules
-	if [ -x /usr/bin/udevadm ]; then
-		/sbin/udevadm control --reload-rules 2> /dev/null
-		/sbin/udevadm trigger --action=add --subsystem-match=usb 2> /dev/null
-	fi
-
-	update-desktop-database -q
 }
 
 post_upgrade() {
@@ -57,9 +42,10 @@ post_upgrade() {
 
 post_remove() {
 ## cnijfilter-common section
-	if [ -x /usr/bin/ldconfig ]; then
+
+	if [ -x /sbin/ldconfig ]; then
 		/sbin/ldconfig
-	fi
+        fi
 
 	# Remove cnbp* libs
 	for LIBS in libcnnet; do
@@ -73,7 +59,6 @@ post_remove() {
 
 
 ## cnijfilter-mx870series section
-	gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
 
 	CNIJ_PKG_INFO=cnijfilter-mx870-367
 
@@ -82,10 +67,6 @@ post_remove() {
 
 	_cups_path2=/usr/share/cups/model
 	ppd_name=canon${model_name}.ppd
-
-	if [ -x /usr/bin/ldconfig ]; then
-		/sbin/ldconfig
-	fi
 
 	# Remove cnbp* libs
 	for LIBS in libcnbpcmcm libcnbpcnclapi libcnbpcnclbjcmd libcnbpcnclui libcnbpess libcnbpo; do
@@ -103,11 +84,9 @@ post_remove() {
 
 	# Remove symbolic link for ppd
 	unlink ${_cups_path2}/${ppd_name}
-	update-desktop-database -q
 
 	
 ## scangearmp-common section
-	gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
 
 	_gimp2dir1=/usr/lib32/gimp/2.0/plug-ins
 	_gimp2dir2=/usr/lib/gimp/2.0/plug-ins
@@ -128,17 +107,12 @@ post_remove() {
 
 	# Remove sgmp_setting files
 	rm -f /tmp/canon_sgmp_setting*.*
-	update-desktop-database -q
 
 	
 ## scangearmp-mx870series section
 	SCAN_PKG_INFO=scangearmp-870-367
 
 	model_num=$(echo ${SCAN_PKG_INFO} | cut -d- -f3)
-
-	if [ -x /usr/bin/ldconfig ]; then
-		/sbin/ldconfig
-	fi
 
 	# Remove cncp* libs
 	for LIBS in libcncpmsimg libcncpmslld; do
@@ -150,11 +124,4 @@ post_remove() {
 		fi	
 	done
 
-	# Remove .desktop file and icon
-	if [ -f /usr/share/applications/canon-pixma-mx870-complete-scangearmp.desktop ]; then
-		rm -f /usr/share/applications/canon-pixma-mx870-complete-scangearmp.desktop
-	fi
-	if [ -f /usr/share/pixmaps/canon-pixma-mx870-complete-scangearmp-icon.png ]; then
-		rm -f /usr/share/pixmaps/canon-pixma-mx870-complete-scangearmp-icon.png
-	fi
 }
