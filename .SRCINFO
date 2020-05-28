@@ -1,0 +1,21 @@
+pkgbase = minder
+	pkgdesc = Mind-mapping application
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/phase1geo/Minder
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = ninja
+	makedepends = python-setuptools
+	makedepends = meson
+	makedepends = vala
+	depends = discount
+	depends = granite
+	depends = gtksourceview3
+	depends = libarchive
+	source = minder-1.8.0.tar.gz::https://github.com/phase1geo/Minder/archive/1.8.0.tar.gz
+	sha256sums = 0cfa00f75c1f43445965428abb450a6b279276a23e7346b6184ec24086b2aedb
+
+pkgname = minder
+
