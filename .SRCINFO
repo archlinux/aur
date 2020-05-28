@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-mav-planning-msgs
 	pkgdesc = ROS - Messages specific to MAV planning, especially polynomial.
 	pkgver = 3.3.2
-	pkgrel = 1
-	url = https://wiki.ros.org/mav_planning_msgs
+	pkgrel = 2
+	url = https://wiki.ros.org/mav_comm
 	arch = i686
 	arch = x86_64
 	arch = aarch64
