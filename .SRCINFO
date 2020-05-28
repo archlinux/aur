@@ -1,7 +1,7 @@
 pkgbase = linux-aufs
 	pkgdesc = Linux AUFS
 	pkgver = 5.6.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sfjro/aufs5-standalone
 	arch = x86_64
 	license = GPL2
@@ -30,7 +30,7 @@ pkgbase = linux-aufs
 	sha512sums = 8c0ca7ab292e6f1a75fd4ae0de797259bf68a5f1512b9f0c905250446ebb924531589d4b8d4d9d7fb1cdd65658b32a8528a7fb7056947d7b31bdc87b4e424752
 	sha512sums = 4ef82534e202188bec24232a60af73d48870c7f0b3403ec821b132c38cdccc9917037d74dd94cbcbc6be70cf45006e7ace928c32623cecb5289251c2eb4ea1d8
 	sha512sums = 98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be
-	sha512sums = 55e3aa1888169c3e6ebe720f02dc964eaf2c172f7215fbaf8e1d0b524bb6971e6c9117c8a943d4f43674fd5acbdd5f90b50e40f0240d9c27183d8208c5de76c2
+	sha512sums = 1f5f5183961a1b313b41c3c405e794797dd0a1f60a407f912969d0d9f19e87e7c492bf5466f33b614191e90b00dd4152eb7e297749c6fca2bdaf5fd32b3d0c8e
 
 pkgname = linux-aufs
 	pkgdesc = The Linux AUFS kernel and modules
