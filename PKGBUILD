@@ -1,11 +1,13 @@
-# Maintainer: bohoomil <@zoho.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Contributor: bohoomil <@zoho.com>
+
 pkgname=ttf-pfennig-ibx
 pkgver=20120410
 pkgrel=5
 _sub=8b5fa73ca4cf4cfa42d21b9f73f6060b
 depends=('fontconfig')
-pkgdesc="Pfennig is a humanist sans-serif font with support for Latin, Cyrillic, Greek and Hebrew character sets."
+pkgdesc="A humanist sans-serif font with support for Latin, Cyrillic, Greek and Hebrew"
 url="http://openfontlibrary.org/"
 arch=('any')
 license=('custom:OFL')
