@@ -2,11 +2,10 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 
 _svt_hevc_ver='1.4.3'
-_svt_av1_ver='0.8.0'
-_svt_vp9_ver='0.1.0'
+_svt_av1_ver='0.8.3'
 
 pkgname=ffmpeg-intel-full-git
-pkgver=4.3.r97298.g9f4054a0cb
+pkgver=4.3.r97777.g3b5a36c56d
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for intel; git version) (based on dbermond package)'
 arch=('x86_64')
@@ -46,22 +45,19 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         "ffmpeg-full-git-add-svt-hevc-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         "ffmpeg-full-git-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "ffmpeg-full-git-add-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v${_svt_av1_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch"
-        "ffmpeg-full-git-add-svt-vp9-${_svt_vp9_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/v${_svt_vp9_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-vp9-with-svt-hevc-av1.patch"
         'LICENSE')
 sha256sums=('SKIP'
             '878757eb6d7072521caaeb71f1453ec3fc0f91a12936ef302e1625184787c6a6'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
-            'efbe348e0dad6b5f9fc501a34ff8304d82c2745ec9ac952e72f8549775c2fe78'
-            '7690a4f6bdc4a57e35c7ff5b6e87f2fe6d056d452eff9e767eaccff41832f4d7'
+            'd371366ceda9233c1b9a60c680878f567861b675605a8dae5c275d633c51ba9f'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
-   # add svt codec support for hevc, av1 and vp9
-    rm -f ffmpeg/libavcodec/libsvt_{hevc,av1,vp9}.c
+   # add svt codec support for hevc and av1
+    rm -f ffmpeg/libavcodec/libsvt_{hevc,av1}.c
     patch -d ffmpeg -Np1 -i "${srcdir}/ffmpeg-full-git-add-svt-hevc-${_svt_hevc_ver}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/ffmpeg-full-git-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/ffmpeg-full-git-add-svt-av1-${_svt_av1_ver}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/ffmpeg-full-git-add-svt-vp9-${_svt_vp9_ver}.patch"
 }
 
 pkgver() {
@@ -153,7 +149,6 @@ build() {
         --enable-libssh \
         --enable-libsvthevc \
         --enable-libsvtav1 \
-        --enable-libsvtvp9 \
         --enable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
