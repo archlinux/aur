@@ -1,6 +1,6 @@
 pkgbase = cinnamon-slim
 	pkgdesc = Innovative Linux desktop. Slim version.
-	pkgver = 4.6.1
+	pkgver = 4.6.2
 	pkgrel = 1
 	url = https://github.com/linuxmint/cinnamon
 	arch = x86_64
@@ -45,11 +45,11 @@ pkgbase = cinnamon-slim
 	optdepends = gnome-panel: fallback mode
 	optdepends = metacity: fallback mode
 	optdepends = system-config-printer: printer settings
-	provides = cinnamon=4.6.1
+	provides = cinnamon=4.6.2
 	conflicts = cinnamon
 	replaces = cinnamon
 	options = !emptydirs
-	source = git+https://github.com/linuxmint/cinnamon.git#commit=0873eafaf19a2cbc1f66461276972742936ffe71
+	source = git+https://github.com/linuxmint/cinnamon.git#commit=c6c926d225b621e025f15ffe83f9088d41edba9c
 	source = 0001-cinnamon-settings-don-t-rely-on-the-presence-of-cinn.patch
 	source = set_wheel.diff
 	source = default-theme.patch
