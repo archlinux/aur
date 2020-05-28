@@ -4,7 +4,7 @@
 pkgname=gmt6
 _pkgname=gmt
 pkgver=6.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Generic Mapping Tools: Tools for manipulating and plotting geographic and Cartesian data"
 arch=(x86_64)
 url="https://www.generic-mapping-tools.org"
@@ -22,11 +22,14 @@ install='gmt.install'
 #source=("ftp://ftp.star.nesdis.noaa.gov/pub/sod/lsa/gmt/${_pkgname}-${pkgver}-src.tar.xz")
 #source=("ftp://ftp.iris.washington.edu/pub/gmt/${_pkgname}-${pkgver}-src.tar.xz")
 #source=("ftp://ftp.iag.usp.br/pub/gmt/${_pkgname}-${pkgver}-src.tar.xz")
-source=("https://github.com/GenericMappingTools/gmt/releases/download/${pkgver}/${_pkgname}-${pkgver}-src.tar.xz")
-sha256sums=('8b91af18775a90968cdf369b659c289ded5b6cb2719c8c58294499ba2799b650')
+source=("https://github.com/GenericMappingTools/gmt/releases/download/${pkgver}/${_pkgname}-${pkgver}-src.tar.xz"
+        "https://github.com/GenericMappingTools/gmt/commit/2e159324ecfa38093c72119f62e9edb72f6f7424.patch")
+sha512sums=('9719c8e3206a1c2b8ed05816e728549099c73673ae0c03fb3fbbb984bc7e0b20154ac93f6a74ed8e442d07636aba517818520cec41d4ffab1859e8fdb3435db2'
+            '0ac53589b116a55b84879d3e6f7c6f119b3bee616e909c6ca01c8d20a7ed3015cda0b14444aa1c2679b2e9fa686250629768e32c76553c4d919a98c92ff2ea7c')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
+  patch --forward --strip=1 --input="${srcdir}/2e159324ecfa38093c72119f62e9edb72f6f7424.patch"
   rm -fr build && mkdir build
 }
 
