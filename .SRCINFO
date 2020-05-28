@@ -1,6 +1,6 @@
 pkgbase = ultrastardx-git
 	pkgdesc = Free and open source karaoke game. (GIT)
-	pkgver = r955.b35bba82
+	pkgver = r963.1ba4ac57
 	pkgrel = 1
 	url = http://usdx.eu/
 	arch = i686

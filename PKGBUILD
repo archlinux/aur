@@ -5,7 +5,7 @@
 # Contributor: Mitmischer
 
 pkgname=ultrastardx-git
-pkgver=r955.b35bba82
+pkgver=r963.1ba4ac57
 pkgrel=1
 pkgdesc='Free and open source karaoke game. (GIT)'
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/USDX"
-  ./configure --prefix=/usr --enable-debug
+  ./configure --prefix=/usr --without-portaudio
   make LDFLAGS="-O1 --sort-common --as-needed -z relro"
   gendesk -f -n --pkgname ultrastardx --name "UltraStar Deluxe" --exec "ultrastardx" --pkgdesc "Karaoke game" --categories 'Games'
 }
