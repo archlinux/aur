@@ -1,5 +1,5 @@
 pkgbase = ttf-source-sans-pro-ibx
-	pkgdesc = A set of OpenType fonts designed for user interfaces. TrueType version.
+	pkgdesc = A set of OpenType fonts designed for user interfaces
 	pkgver = 3.006
 	pkgrel = 1
 	url = http://www.adobe.com/

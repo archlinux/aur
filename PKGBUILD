@@ -1,10 +1,12 @@
-# Maintainer: bohoomil <@zoho.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Contributor: bohoomil <@zoho.com>
+
 pkgname=ttf-source-sans-pro-ibx
 pkgver=3.006
 pkgrel=1
 depends=('fontconfig')
-pkgdesc="A set of OpenType fonts designed for user interfaces. TrueType version."
+pkgdesc="A set of OpenType fonts designed for user interfaces"
 url="http://www.adobe.com/"
 arch=('any')
 license=('custom:OFL')
