@@ -1,13 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - diagnostic_aggregator."
-url='https://www.wiki.ros.org/diagnostic_aggregator'
+url='https://wiki.ros.org/diagnostic_aggregator'
 
 pkgname='ros-noetic-diagnostic-aggregator'
-pkgver='1.9.3'
-_pkgver_patch=0
+pkgver='1.9.4'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -44,7 +43,7 @@ depends=(
 
 _dir="diagnostics-${pkgver}/diagnostic_aggregator"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/diagnostics/archive/${pkgver}.tar.gz")
-sha256sums=('3b2d3bb7bb333b8685fa084e086c00a044803dac41ff58351161440931d23550')
+sha256sums=('dd79d80436622c839132d0fe591c9d2edb1492aae8ba2af4a6d1c7f112e9abb6')
 
 build() {
 	# Use ROS environment variables.
