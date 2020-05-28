@@ -1,11 +1,13 @@
-# Maintainer: bohoomil <@zoho.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Contributor: bohoomil <@zoho.com>
 
 pkgbase=ttf-sinkin-sans-ibx
 pkgname=('otf-sinkin-sans-ibx' 'ttf-sinkin-sans-ibx')
 pkgver=1.1
 pkgrel=6
 depends=('fontconfig')
-pkgdesc="Sinkin Sans is a simple, pleasant, luxuriously proportioned and easy to read sans-serif."
+pkgdesc="A simple, pleasant, luxuriously proportioned and easy to read sans-serif"
 url="http://www.k-type.com/"
 arch=('any')
 groups=('infinality-bundle-fonts-extra')
