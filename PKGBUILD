@@ -1,8 +1,8 @@
 # Submitter: Kuan-Yen Chou <forendef2846@gmail.com>
 
 pkgname=onos
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.3.0
+pkgrel=1
 pkgdesc='Open Network Operating System'
 arch=('any')
 url='https://onosproject.org'
@@ -11,8 +11,8 @@ depends=('jdk8-openjdk' 'curl')
 install=onos.install
 source=("https://repo1.maven.org/maven2/org/onosproject/onos-releases/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "onos.service")
-sha256sums=('20f4d6cb88a912939ee628629a35e7870026264d178937c5f82947d3f9045fbe'
-            '4837f3e924c5806a0095f013099e2f8c959389d1c3c57820c512cfe7d2e14fbd')
+sha512sums=('aed29302378947d3e6a7f983548e658778c58c758d32e171464735c8cbb468aef8ec076ff6d9e7b9910558ee04aea9ce2788cb3384fb95707cd771346b524cc7'
+            'd8ce4939dda326ebdb4c98d0dd03cded42fe0b64ef004f1a1de5dd74942724991e3c481dd400aea6f310f3804a83a0995c65ad4962f97004dd6ebb2095f5684b')
 
 package() {
     mkdir -p "$pkgdir/opt"
