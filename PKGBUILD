@@ -15,6 +15,13 @@ source=("git+https://github.com/ThomasLeister/${pkgname}.git#tag=v${pkgver}"
 sha256sums=('SKIP'
             '3f64c61eb4bd0d801c8a24d4bf3eae1e04c82ade000d363081d0d673eaaabe9f')
 
+prepare() {
+    cd "${pkgname}"
+    if [ ! -e go.mod ]; then
+    	go mod init prosody-filer
+    fi
+}
+
 build() {
     cd "${pkgname}"
     export GOFLAGS="-trimpath"
