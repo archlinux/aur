@@ -9,7 +9,7 @@ pkgver=$_pkgver.2.2
 pkgrel=1
 pkgdesc='Review, annotate, and edit PDF Documents'
 arch=('x86_64' 'i686')
-url='http://www.qoppa.com/pdfstudio/'
+url='https://www.qoppa.com/pdfstudio/'
 license=('custom')
 depends=('java-runtime>=6')
 source=("${pkgname%-bin}.desktop"
