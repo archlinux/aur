@@ -52,7 +52,7 @@ pkgver=5.20141024
 pkgrel=0
 pkgdesc='manage files with git, without checking their contents into git'
 arch=('i686' 'x86_64')
-url="http://git-annex.branchable.com/"
+url='https://git-annex.branchable.com/'
 license=(GPL3)
 depends=(
          curl
