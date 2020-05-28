@@ -1,0 +1,8 @@
+--- a/rating.c	2019-06-06 15:56:03.000000000 +0200
++++ b/rating.c	2020-05-28 17:48:35.171091539 +0200
+@@ -1,4 +1,4 @@
+-#include <deadbeef.h>
++#include <deadbeef/deadbeef.h>
+ #include <string.h>
+ #include <stdlib.h>
+ 

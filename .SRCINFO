@@ -1,14 +1,18 @@
 pkgbase = deadbeef-plugin-rating
-	pkgdesc = rate song(s) by editing the metadata tag rating
+	pkgdesc = rate songs by editing the metadata tag: rating
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/splushii/deadbeef-rating
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = deadbeef
 	source = deadbeef-rating-1.2.tar.gz::https://github.com/splushii/deadbeef-rating/archive/1.2.tar.gz
+	source = fix-path_for_include_deadbeef_h.patch
+	source = Makefile
 	sha256sums = 2017bdd563c4f46a9af2d349ac8676b461969824ad1254cd653c7e70dcabff19
+	sha256sums = 1c99aab7c07fd129cebe4fb6a768ce729248e0e742f5a03223f8a830a8e17ab3
+	sha256sums = a98bc49c1899f533707859b92fa54211fdc7576e2e89146605caf0eab16746f4
 
 pkgname = deadbeef-plugin-rating
 
