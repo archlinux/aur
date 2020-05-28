@@ -1,9 +1,13 @@
 pkgbase = ros-noetic-diagnostic-analysis
 	pkgdesc = ROS - The diagnostic_analysis package can convert a log of diagnostics data into a series of CSV files.
-	pkgver = 1.9.3
-	pkgrel = 2
-	url = https://www.wiki.ros.org/diagnostics_analysis
-	arch = any
+	pkgver = 1.9.4
+	pkgrel = 1
+	url = https://wiki.ros.org/diagnostics_analysis
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
@@ -15,8 +19,8 @@ pkgbase = ros-noetic-diagnostic-analysis
 	depends = ros-noetic-roslib
 	depends = ros-noetic-rosbag
 	depends = ros-noetic-diagnostic-msgs
-	source = ros-noetic-diagnostic-analysis-1.9.3.tar.gz::https://github.com/ros/diagnostics/archive/1.9.3.tar.gz
-	sha256sums = 3b2d3bb7bb333b8685fa084e086c00a044803dac41ff58351161440931d23550
+	source = ros-noetic-diagnostic-analysis-1.9.4.tar.gz::https://github.com/ros/diagnostics/archive/1.9.4.tar.gz
+	sha256sums = dd79d80436622c839132d0fe591c9d2edb1492aae8ba2af4a6d1c7f112e9abb6
 
 pkgname = ros-noetic-diagnostic-analysis
 
