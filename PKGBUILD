@@ -8,7 +8,7 @@ pkgver=0.9.5
 pkgrel=1
 pkgdesc="Janus WebRTC Server"
 arch=('x86_64' 'i686')
-url='http://janus.conf.meetecho.com'
+url='https://janus.conf.meetecho.com'
 license=('GPL3')
 depends=('glib2'
          'jansson'
