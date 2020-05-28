@@ -1,23 +1,28 @@
 # Maintainer: Chris <christopher.r.mullins g-mail>
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
+# Contributor: Thiago Franco de Moraes <totonixsame@gmail.com>
 
 pkgname=gdcm
-pkgver=3.0.0
-pkgrel=12
+pkgver=3.0.6
+pkgrel=1
 pkgdesc='a C++ library for DICOM medical files'
 arch=('i686' 'x86_64')
 url='http://gdcm.sourceforge.net'
 license=('BSD')
-optdepends=('python2: python bindings'
+optdepends=('python: python bindings'
             'java-runtime: java bindings'
             'vtk: vtk bindings'
             'swig: generate python wrappers')
 makedepends=('cmake'
-             'openjpeg2')
-source=("http://sourceforge.net/projects/gdcm/files/gdcm%203.x/GDCM%20$pkgver/gdcm-$pkgver.tar.gz")
-sha512sums=('8fa6c25b6cde41aeb0293fdb3cfbd08dc13915303450f679fb5fd832bb611108d262849d8c7fed130974f9c69d7247011a2af6950095313fb86f0d794e832511')
+             'openjpeg2'
+             'python'
+             'swig')
+source=("https://github.com/malaterre/GDCM/archive/v$pkgver.tar.gz")
+sha512sums=('d5ea0a7419372dfd03ace014e116738b369acdebe82e6314e39f9bef33480525b03f7028d2c12260d6152e3817ef8ac061d8a0ed9aff5d8f39256c87d17b76d6')
 
 build() {
+  pysitepackages=$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')
+  echo $pysitepackages
   cd "$srcdir"
   mkdir -p build && cd build
   cmake \
@@ -27,12 +32,14 @@ build() {
     -DCMAKE_BUILD_TYPE:STRING=Release \
     -DGDCM_BUILD_DOCBOOK_MANPAGES:BOOL=OFF \
     -DGDCM_USE_SYSTEM_OPENJPEG:BOOL=ON \
-    ../"$pkgname-$pkgver" 
+    -DGDCM_WRAP_PYTHON:BOOL=ON \
+    -DGDCM_INSTALL_PYTHONMODULE_DIR:STRING="$pysitepackages" \
+    ../"GDCM-$pkgver"
     make
 }
 
 package() {
-  cd "$srcdir"/"$pkgname-$pkgver"
+  cd "$srcdir"/"GDCM-$pkgver"
   install -Dm644 Copyright.txt "$pkgdir"/usr/share/licenses/"$pkgname"/COPYING
 
   cd "$srcdir"/build
