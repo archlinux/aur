@@ -1,10 +1,12 @@
-# Maintainer: bohoomil <@zoho.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Contributor: bohoomil <@zoho.com>
 
 pkgname=ttf-sorts-mill-goudy-ibx
 pkgver=3.1
 pkgrel=9
 depends=('fontconfig')
-pkgdesc="A modern revival of Goudy Oldstyle and Italic. TrueType version."
+pkgdesc="A modern revival of Goudy Oldstyle and Italic"
 url="http://crudfactory.com/"
 arch=('any')
 groups=('infinality-bundle-fonts-extra')
