@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helm-s3
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Helm plugin that allows to use AWS S3 as a [private] chart repository'
 arch=('x86_64')
 url='https://github.com/hypnoglow/helm-s3'
@@ -37,7 +37,7 @@ check() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -Dm755 bin/helms3 -t "${pkgdir}/usr/lib/helm/plugins/${pkgname}/bin"
-  install -m644 plugin.yaml -t "${pkgdir}/usr/lib/helm/plugins/${pkgname}"
+  install -Dm755 bin/helms3 -t "${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}/bin"
+  install -m644 plugin.yaml -t "${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
