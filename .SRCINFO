@@ -1,6 +1,6 @@
 pkgbase = sentry-cli
 	pkgdesc = A command line utility to work with Sentry
-	pkgver = 1.52.3
+	pkgver = 1.53.0
 	pkgrel = 1
 	url = https://docs.sentry.io/cli/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = sentry-cli
 	makedepends = cargo
 	depends = gcc-libs
 	depends = zlib
-	source = sentry-cli-1.52.3.tar.gz::https://github.com/getsentry/sentry-cli/archive/1.52.3.tar.gz
-	sha256sums = 9b1916d3a72bd6450230bba29871ac661e56ca5cb75e4ffd7ad33fd6a04d9d8f
+	source = sentry-cli-1.53.0.tar.gz::https://github.com/getsentry/sentry-cli/archive/1.53.0.tar.gz
+	sha256sums = 6f164f306ae02a1d4acc88e44f709a9593120ba4058d1cd696afbb205e4a362e
 
 pkgname = sentry-cli
 
