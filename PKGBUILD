@@ -1,10 +1,12 @@
-# Maintainer: bohoomil <@zoho.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Contributor: bohoomil <@zoho.com>
 
 pkgname=ttf-playfair-display-ibx
 pkgver=1.002
 pkgrel=3
 depends=('fontconfig')
-pkgdesc="An Open Source typeface family for display and titling use."
+pkgdesc="An Open Source typeface family for display and titling use"
 url="http://www.forthehearts.net/"
 arch=('any')
 groups=('infinality-bundle-fonts-extra')
