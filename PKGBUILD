@@ -1,10 +1,12 @@
-# Maintainer: bohoomil <@zoho.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Contributor: bohoomil <@zoho.com>
 
 pkgname=ttf-triod-postnaja-ibx
 pkgver=20110805
 pkgrel=7
 depends=('fontconfig')
-pkgdesc="Triod Postnaja attempts to mimic the typefaces used to publish Old Church Slavonic service books."
+pkgdesc="Attempts to mimic the typefaces used to publish Old Church Slavonic service books"
 url="http://openfontlibrary.org/en/font/triod-postnaja"
 arch=('any')
 groups=('infinality-bundle-fonts-extra')
