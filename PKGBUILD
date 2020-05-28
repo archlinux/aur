@@ -1,14 +1,11 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
-#
-# Any suggestions welcome; please submit paches via Github:
-# https://github.com/alerque/aur/tree/master/freecheck-git
 
 pkgname=freecheck-git
 pkgver=0.30_6_g5f80e5a
 pkgrel=1
 _branch=devel
 url=https://github.com/alerque/"${pkgname%-git}"
-pkgdesc='A blank check printer that adds MICR codes and check templates to blank stock.'
+pkgdesc='A blank check printer that adds MICR codes and check templates to blank stock'
 arch=('any')
 license=('GPL2')
 provides=("${pkgname%-git}")
