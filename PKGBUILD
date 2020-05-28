@@ -30,8 +30,7 @@ package_sensual-kde-theme-git() {
     install -d "$pkgdir/usr/share/plasma/look-and-feel/"
     cd "$srcdir/$pkgbase/Sensual-Global"
     find "Sensual-Dark-Global" -type f | while read -r f; do
-        f1="$(sed 's/^\(Sensual-Dark\)-Global/\1/' <<< "$f")"
-        install -Dm644 "$f" "$pkgdir/usr/share/plasma/look-and-feel/$f1"
+        install -Dm644 "$f" "$pkgdir/usr/share/plasma/look-and-feel/$f"
     done
 
     # main theme
@@ -50,14 +49,12 @@ package_sensual-kde-theme-git() {
     # Aurorae
     cd "$srcdir/$pkgbase/Sensual-Aurorae/Sensual-Aurorae"
     find "Sensual-Aurorae" -type f | while read -r f; do
-        f1="$(sed 's/^\(Sensual\)-Aurorae/\1/' <<< "$f")"
-        install -Dm644 "$f" "$pkgdir/usr/share/aurorae/themes/$f1"
+        install -Dm644 "$f" "$pkgdir/usr/share/aurorae/themes/$f"
     done
     # Aurorae v.2
     cd "$srcdir/$pkgbase/Sensual-Aurorae/Sensual-Aurorae-v.2"
     find "Sensual-Aurorae-v.2" -type f | while read -r f; do
-        f1="$(sed 's/^\(Sensual\)-Aurorae-v\.2/\1-v.2/' <<< "$f")"
-        install -Dm644 "$f" "$pkgdir/usr/share/aurorae/themes/$f1"
+        install -Dm644 "$f" "$pkgdir/usr/share/aurorae/themes/$f"
     done
 
     # wallpapers
@@ -74,8 +71,7 @@ package_sensual-kvantum-theme-git() {
     install -d "$pkgdir/usr/share/Kvantum/"
     cd "$srcdir/$pkgbase/Sensual-Kvantum"
     find "SensualKvantum" -type f | while read -r f; do
-        f1="$(sed 's/^\(Sensual\)Kvantum/\1/' <<< "$f")"
-        install -Dm644 "$f" "$pkgdir/usr/share/Kvantum/$f1"
+        install -Dm644 "$f" "$pkgdir/usr/share/Kvantum/$f"
     done
 }
 
@@ -85,8 +81,7 @@ package_sensual-breeze-git() {
     install -d "$pkgdir/usr/share/themes/"
     cd "$srcdir/$pkgbase"
     find "Sensual-Breeze-GTK-3" -type f | while read -r f; do
-        f1="$(sed 's/^\(Sensual-Breeze\)-GTK-3/\1/' <<< "$f")"
-        install -Dm644 "$f" "$pkgdir/usr/share/themes/$f1"
+        install -Dm644 "$f" "$pkgdir/usr/share/themes/$f"
     done
 }
 
@@ -108,7 +103,6 @@ package_sensual-sddm-theme-git() {
     install -d "$pkgdir/usr/share/sddm/themes/"
     cd "$srcdir/$pkgbase/Sensual-SDDM"
     find "Sensual-SDDM" -type f | while read -r f; do
-        f1="$(sed 's/^\(Sensual\)-SDDM/\1/' <<< "$f")"
-        install -Dm644 "$f" "$pkgdir/usr/share/sddm/themes/$f1"
+        install -Dm644 "$f" "$pkgdir/usr/share/sddm/themes/$f"
     done
 }
