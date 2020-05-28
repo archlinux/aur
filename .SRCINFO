@@ -1,6 +1,6 @@
 pkgbase = perl-dist-zilla
 	pkgdesc = distribution builder; installer not included!
-	pkgver = 6.012
+	pkgver = 6.014
 	pkgrel = 1
 	url = https://metacpan.org/release/Dist-Zilla
 	arch = any
@@ -20,9 +20,8 @@ pkgbase = perl-dist-zilla
 	depends = perl-config-mvp-reader-ini>=2.101461
 	depends = perl-data-section>=0.200002
 	depends = perl-datetime>=0.44
-	depends = perl-file-copy-recursive>=0
+	depends = perl-file-copy-recursive>=0.41
 	depends = perl-file-find-rule>=0
-	depends = perl-file-homedir>=0
 	depends = perl-file-sharedir>=0
 	depends = perl-file-sharedir-install>=0.03
 	depends = perl-file-pushd>=0
@@ -40,9 +39,7 @@ pkgbase = perl-dist-zilla
 	depends = perl-params-util>=0
 	depends = perl-path-tiny>=0.052
 	depends = perl-perl-prereqscanner>=1.016
-	depends = perl-pod-eventual>=0.091480
-	depends = perl-scalar-list-utils>=0
-	depends = perl-software-license>=0.101370
+	depends = perl-software-license>=0.103014
 	depends = perl-string-formatter>=0.100680
 	depends = perl-string-rewriteprefix>=0.006
 	depends = perl-sub-exporter>=0
@@ -60,8 +57,8 @@ pkgbase = perl-dist-zilla
 	optdepends = perl-ppi-xs>=0: Minor XS acceleration for PPI
 	optdepends = perl-term-readline-gnu>=0: GNU Readline XS library wrapper
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Dist-Zilla-6.012.tar.gz
-	md5sums = b09b7a57f5fcb6513a8e4d290602da25
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Dist-Zilla-6.014.tar.gz
+	md5sums = 1125080dd71eb2f9d07a873e958235a8
 
 pkgname = perl-dist-zilla
 

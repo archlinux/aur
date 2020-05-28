@@ -2,7 +2,7 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 _distname=Dist-Zilla
 pkgname=perl-dist-zilla
-pkgver=6.012
+pkgver=6.014
 pkgrel=1
 pkgdesc="distribution builder; installer not included!"
 arch=('any')
@@ -18,9 +18,8 @@ depends=('perl>=5.14.0'
          'perl-config-mvp-reader-ini>=2.101461'
          'perl-data-section>=0.200002'
          'perl-datetime>=0.44'
-         'perl-file-copy-recursive>=0'
+         'perl-file-copy-recursive>=0.41'
          'perl-file-find-rule>=0'
-         'perl-file-homedir>=0'
          'perl-file-sharedir>=0'
          'perl-file-sharedir-install>=0.03'
          'perl-file-pushd>=0'
@@ -38,9 +37,7 @@ depends=('perl>=5.14.0'
          'perl-params-util>=0'
          'perl-path-tiny>=0.052'
          'perl-perl-prereqscanner>=1.016'
-         'perl-pod-eventual>=0.091480'
-         'perl-scalar-list-utils>=0'
-         'perl-software-license>=0.101370'
+         'perl-software-license>=0.103014'
          'perl-string-formatter>=0.100680'
          'perl-string-rewriteprefix>=0.006'
          'perl-sub-exporter>=0'
@@ -64,7 +61,7 @@ optdepends=('perl-archive-tar-wrapper>=0.15: API wrapper around the tar utility'
             'perl-term-readline-gnu>=0: GNU Readline XS library wrapper')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/$_distname-$pkgver.tar.gz")
-md5sums=('b09b7a57f5fcb6513a8e4d290602da25')
+md5sums=('1125080dd71eb2f9d07a873e958235a8')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
