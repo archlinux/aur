@@ -1,8 +1,8 @@
 # Maintainer: Yoan Blanc <yoan@dosimple.ch>
 
 pkgname='eclint'
-pkgver=v0.2.2
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc='EditorConfig linter'
 url='https://gitlab.com/greut/eclint'
 arch=('x86_64' 'i686')
@@ -10,30 +10,32 @@ license=('MIT')
 
 depends=('glibc')
 makedepends=('git' 'go' 'gzip')
-source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/greut/eclint/-/archive/${pkgver}/eclint-${pkgver}.tar.gz")
-noextract=("${pkgname}-${pkgver}.tar.gz.sig")
-sha256sums=('5f127f7a722fef34c6d842c949d6489f87072be2ef378dae988c5bd68523e5fe')
-validgpgkeys=('9E2D 407E AFEE 5086 3F42 B9D1 6058 CF45 7429 8812')
+source=(
+  "${url}/uploads/e4266c2a6fe9fab19490d864e5432c20/eclint-${pkgver}.tar.gz"
+  "${url}/uploads/6b4e491e638d375a72c78ff047184d60/eclint-${pkgver}.tar.gz.sig"
+)
+sha256sums=(
+  'ff094d00951f644bed9c4297a3f83daa9aa1468ab79a19c6e5dc0438a5666d8e'
+  '67d983fe5b80c84ef0b90ddd01e1b33359f50d60724e6a547c9bf7fad0f02506'
+)
+validpgpkeys=('9E2D407EAFEE50863F42B9D16058CF4574298812')
 
 build() {
   export CGO_LDFLAGS="$LDFLAGS"
   export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
   _commit=$(zcat "${pkgname}-${pkgver}.tar.gz" | git get-tar-commit-id)
   _flags=(
-    -X=main.version=$pkgver
+    -X=main.version=v$pkgver
     -X=main.commit=${_commit::7}
     -X=main.date=$(date -u -d "@${SOURCE_DATE_EPOCH}" +'%FT%TZ')
   )
-  cd "${pkgname}-${pkgver}"
   go build -o "$pkgname" -ldflags="${_flags[*]}" ./cmd/"$pkgname"
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
   go test -v ./...
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
   install -Dm755 "$pkgname" "$pkgdir"/usr/bin/"$pkgname"
 }
