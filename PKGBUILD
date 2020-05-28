@@ -1,19 +1,19 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.29.4
+pkgver=2.29.5
 pkgrel=1
 pkgdesc='Small, fast and VT100-compatible text editor'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
 makedepends=(git go-pie)
-source=("git+$url#commit=1cd4924b44cbf5bd2666f1d321f878aed55ad19d") # tag: 2.29.4
+source=("git+$url#commit=07d440ec0a50122379b6dbd8f6a88961fbb35bfb") # tag: 2.29.5
 sha256sums=('SKIP')
 options=(!strip)
 
 build() {
-  cd "$pkgname"
+  cd $pkgname
 
   # Using gccgo and upx gives a smaller size
   #go build -buildmode=pie -gccgoflags="-s -w $LDFLAGS" && upx o
@@ -22,8 +22,8 @@ build() {
 }
 
 package() {
-  install -Dm755 $pkgname/o "$pkgdir/usr/bin/o"
-  install -Dm644 $pkgname/o.1 "$pkgdir/usr/share/man/man1/o.1"
+  install -Dm755 $pkgname/$pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 $pkgname/$pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
   install -Dm644 $pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
