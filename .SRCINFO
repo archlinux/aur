@@ -1,7 +1,7 @@
 pkgbase = wlroots-hidpi-git
 	pkgdesc = Modular Wayland compositor library, with XWayland HiDPI
 	pkgver = 0.10.0.r158.g5e0ef70c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/swaywm/wlroots
 	arch = x86_64
 	license = custom:MIT
