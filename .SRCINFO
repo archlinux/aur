@@ -1,0 +1,21 @@
+pkgbase = protobuf25
+	pkgdesc = Protocol Buffers
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/google/protobuf/
+	arch = x86_64
+	license = BSD
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	depends = gcc-libs
+	depends = zlib
+	provides = protobuf
+	conflicts = protobuf
+	source = https://github.com/protocolbuffers/protobuf/archive/v2.5.0.tar.gz
+	source = gtest.diff
+	sha512sums = 0128d810b5517fbb801b263146ccc673516c7dfe665e33da35ce81f1589b35d15c7c4440d22a2151533dcb88e19a1ea1749f6a7d0a91e8484943c2ae0c7bdb24
+	sha512sums = eafa8296c6a66dcd411196937d0a240f04f97d79a9c529bcb07142f1a86b98bc098430f7fac6994d4b532a70cffe5b1989b15a62dc344e3d68d00f5c3a3c9321
+
+pkgname = protobuf25
+

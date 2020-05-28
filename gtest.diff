@@ -1,0 +1,15 @@
+diff --git a/autogen.sh b/autogen.sh
+index c3e026d..72544c7 100755
+--- a/autogen.sh
++++ b/autogen.sh
+@@ -19,8 +19,8 @@ fi
+ # directory is set up as an SVN external.
+ if test ! -e gtest; then
+   echo "Google Test not present.  Fetching gtest-1.5.0 from the web..."
+-  curl http://googletest.googlecode.com/files/gtest-1.5.0.tar.bz2 | tar jx
+-  mv gtest-1.5.0 gtest
++  curl -L https://github.com/google/googletest/archive/release-1.5.0.tar.gz | tar zx
++  mv googletest-release-1.5.0 gtest
+ fi
+
+ set -ex
