@@ -2,8 +2,8 @@
 # Maintainer: Anmol Sethi <anmol@coder.com>
 
 pkgname=code-server
-pkgver=3.3.1
-pkgrel=3
+pkgver=3.4.0
+pkgrel=1
 pkgdesc="VS Code in the browser"
 arch=("x86_64" "aarch64")
 url="https://github.com/cdr/code-server"
@@ -20,8 +20,8 @@ source_aarch64=(
   "${url}/releases/download/v$pkgver/$release_name-arm64.tar.gz"
 )
 sha512sums=('7040df09c7404a56dbbb32e09d04ead3b622773520feae19c6710656cef46ca5d79b1972bfebb931e309e495d041b9938cd6a51c39fc0f8f6133dfe711be9280')
-sha512sums_x86_64=('1589d6c5ebac18d0a46e2a22b6d6070b64f80fd2a3c407acd10f5c8f26adae9b17bc9fd977711cbdbc5c67f0753d2c621d8cddd03509e867b4fa532352f85308')
-sha512sums_aarch64=('87b6a7a11cee5f74fba5e8b66686732c2d49bd9f7582d7716642e1fbb253c137d9995b7e56591f53e010eb8abc447bd0014b25dfb07e96f0ca97064787d46003')
+sha512sums_x86_64=('e62779861d598c0a88916f31134161924f59e3fe9812688f1591280543c22533cb75c253e102245e7fb6e1cf00032e34f5ba3418b946d8370e2ab040bf87c5ff')
+sha512sums_aarch64=('3eaa6f7b0506d8a81cd6337bcd5487628e01d6967c33468529bb1a7164fb3276f2b19afbb1b70fcc93e25deafd675fff3b8a9e2c0856173da36aa009178e06df')
 
 package() {
   if [[ $(uname -m) == x86_64 ]]; then
