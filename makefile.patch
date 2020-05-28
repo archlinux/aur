@@ -1,12 +1,12 @@
 diff --git a/Makefile b/Makefile
-index 0c075e06..2c3e5e9e 100644
+index b35dc913..3e8c2b45 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -834,7 +834,6 @@ host_tools: utils futil tests
- 
- .PHONY: host_stuff
- host_stuff: utillib hostlib \
+@@ -324,7 +324,6 @@ export BUILD_RUN
+ .PHONY: all
+ all: fwlib futil utillib hostlib cgpt tlcl \
+ 	$(if ${SDK_BUILD},utils_sdk,utils_board) \
 -	$(if $(filter x86_64,${ARCH}),fuzzers) \
- 	$(if ${NO_BUILD_TOOLS},,cgpt host_tools)
+ 	$(if ${COV},coverage)
  
- .PHONY: clean
+ ##############################################################################
