@@ -1,7 +1,7 @@
 pkgbase = helm-diff
 	pkgdesc = Helm plugin that shows a diff explaining what a helm upgrade would change
 	pkgver = 3.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/databus23/helm-diff
 	install = helm-diff.install
 	arch = x86_64

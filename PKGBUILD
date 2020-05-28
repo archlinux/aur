@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helm-diff
 pkgver=3.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Helm plugin that shows a diff explaining what a helm upgrade would change'
 arch=('x86_64')
 url='https://github.com/databus23/helm-diff'
@@ -43,6 +43,6 @@ check() {
 package() {
   cd "${pkgname}-${pkgver}"
   # /usr/lib/helm/plugins is my own choice and not a standard. feedback welcome
-  install -Dm755 bin/diff -t "${pkgdir}/usr/lib/helm/plugins/${pkgname}/bin"
-  install -m644 plugin.yaml -t "${pkgdir}/usr/lib/helm/plugins/${pkgname}"
+  install -Dm755 bin/diff -t "${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}/bin"
+  install -m644 plugin.yaml -t "${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}"
 }
