@@ -1,9 +1,0 @@
-diff --git a/src/meshlabplugins/filter_voronoi/filter_voronoi.pro b/src/meshlabplugins/filter_voronoi/filter_voronoi.pro
-index 423f1573..03b83a33 100644
---- a/src/meshlabplugins/filter_voronoi/filter_voronoi.pro
-+++ b/src/meshlabplugins/filter_voronoi/filter_voronoi.pro
-@@ -8,3 +8,4 @@ TARGET        = filter_voronoi
- #PRE_TARGETDEPS += filter_voronoi.xml
- 
- macx:QMAKE_POST_LINK = "rsync -u "$$TARGET".xml ../../distrib/plugins/"$$TARGET".xml; rsync -u ../../distrib/plugins/"$$TARGET".xml "$$TARGET".xml"
-+linux:QMAKE_POST_LINK = "cp "$$_PRO_FILE_PWD_/$$TARGET".xml ../../distrib/plugins/"$$TARGET".xml; cd ../../distrib/plugins/ ; ln -sf "$$TARGET".xml lib"$$TARGET".xml"

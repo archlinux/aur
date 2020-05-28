@@ -1,9 +1,0 @@
-diff --git a/src/meshlabplugins/filter_mutualinfoxml/filter_mutualinfoxml.pro b/src/meshlabplugins/filter_mutualinfoxml/filter_mutualinfoxml.pro
-index f3eabaa7..a65c0cce 100644
---- a/src/meshlabplugins/filter_mutualinfoxml/filter_mutualinfoxml.pro
-+++ b/src/meshlabplugins/filter_mutualinfoxml/filter_mutualinfoxml.pro
-@@ -21,3 +21,4 @@ SOURCES       += filter_mutualinfo.cpp \
- TARGET        = filter_mutualinfo
- 
- macx:QMAKE_POST_LINK = "cp "$$_PRO_FILE_PWD_/$$TARGET".xml ../../distrib/plugins/"$$TARGET".xml"
-+linux:QMAKE_POST_LINK = "cp "$$_PRO_FILE_PWD_/$$TARGET".xml ../../distrib/plugins/"$$TARGET".xml; cd ../../distrib/plugins/ ; ln -sf "$$TARGET".xml lib"$$TARGET".xml"
