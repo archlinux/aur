@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helm-2to3
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Migrates and cleans up Helm v2 configuration and releases in-place to Helm v3'
 arch=('x86_64' 'aarch64')
 url='https://github.com/helm/helm-2to3'

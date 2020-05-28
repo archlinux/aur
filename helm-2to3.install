@@ -2,5 +2,3 @@ post_install() {
   echo "Run the following command to finish plugin installation:"
   echo -e "\thelm plugin install /usr/lib/helm/plugins/2to3"
 }
-
-post_upgrade() { post_install; }
