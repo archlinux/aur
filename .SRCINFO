@@ -1,5 +1,5 @@
 pkgbase = lua-zlib
-	pkgdesc = Simple streaming interface to zlib for Lua.
+	pkgdesc = Simple streaming interface to zlib for Lua
 	pkgver = 1.2
 	pkgrel = 1
 	epoch = 1
