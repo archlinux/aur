@@ -3,4 +3,5 @@
 /qtextpad/
 qtextpad-*.tar.gz
 *.pkg.tar.xz
+*.pkg.tar.zst
 *.src.tar.gz
