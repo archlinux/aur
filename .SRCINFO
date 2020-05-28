@@ -7,7 +7,7 @@ pkgbase = purity
 	arch = x86_64
 	license = GPL
 	makedepends = make
-	makedepends = svn
+	makedepends = mercurial
 	optdepends = zenity: allow using purity-zen to choose graphically the map
 	noextract = core.pk3
 	noextract = map0.pk3
@@ -16,10 +16,12 @@ pkgbase = purity
 	source = http://vectorpoem.com/purity/latest_content/map0.pk3
 	source = http://vectorpoem.com/purity/latest_content/vm.pk3
 	source = purity-zen
+	source = hg+https://bitbucket.org/JPLeBreton/purity
 	md5sums = 4f5b6af36a738a54570f21fb24177edd
 	md5sums = b7f5730e443ea5c066d7ef67bce09892
 	md5sums = 8396c0dfe49c31ff866800837bf80d9d
 	md5sums = 8361d4586bf2c0dd1a31edddf8b70d89
+	md5sums = SKIP
 
 pkgname = purity
 
