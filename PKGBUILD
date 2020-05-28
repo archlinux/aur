@@ -2,7 +2,7 @@
 
 _name=flake8-bugbear
 pkgname=python-flake8-bugbear
-pkgver=19.3.0
+pkgver=20.1.4
 pkgrel=1
 pkgdesc='Plugin for Flake8 finding likely bugs and design problems in your program'
 arch=('any')
