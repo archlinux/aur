@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+​<component type="desktop">
+​  <id>owon-vds-tiny</id>
+​  <name>OWON VDS1022 Oscilloscope</name>
+​  <summary>Application for the OWON VDS1022 oscilloscope</summary>
+​  <description><p>Unofficial release with a few fixes and improvements:
+ * New shortcuts: single trigger, trigger level, offsets, coupling, inversion, reset ...
+ * Disabled annoying dock animations
+ * Disabled leave/stop confirmation while recording/playing
+ * ...</p></description>
+​  <launchable type="desktop-id">owon-vds-tiny.desktop</launchable>
+​  <url type="homepage">https://github.com/florentbr/Owon-VDS1022</url>
+​  <provides><binary>owon-vds-tiny</binary></provides>
+  <update_contact>florentbr@gmail.com</update_contact>
+​</component>

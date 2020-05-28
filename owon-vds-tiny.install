@@ -1,0 +1,20 @@
+pre_install () {
+    rm -f \"/etc/udev/rules.d/*owon*.rules\"
+    rm -f \"$PK_USER_DIR/preferences*\"
+}
+post_install () {
+    udevadm control --reload-rules
+    udevadm trigger
+}
+post_remove () {
+    rm -rf \"$PK_USER_DIR\"
+}
+pre_upgrade () {
+    rm -f \"/etc/udev/rules.d/*owon*.rules\"
+    rm -f \"$PK_USER_DIR/preferences*\"
+}
+post_upgrade () {
+    udevadm control --reload-rules
+    udevadm trigger
+}
+
