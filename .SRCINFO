@@ -1,0 +1,25 @@
+pkgbase = libfranka
+	pkgdesc = C++ library for Franka Emika research robots
+	pkgver = 0.8.0
+	pkgrel = 2
+	url = http://wiki.ros.org/libfranka
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = Apache
+	makedepends = cmake
+	depends = eigen
+	depends = poco
+	provides = libfranka
+	conflicts = libfranka
+	source = git+https://github.com/frankaemika/libfranka-common.git
+	source = git+https://github.com/frankaemika/libfranka.git#tag=0.8.0
+	source = fix_missing_includes.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = libfranka
+

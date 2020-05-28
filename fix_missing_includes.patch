@@ -1,0 +1,24 @@
+diff --git a/include/franka/control_tools.h b/include/franka/control_tools.h
+index dc5017c..0bd2c30 100644
+--- a/include/franka/control_tools.h
++++ b/include/franka/control_tools.h
+@@ -4,6 +4,7 @@
+ 
+ #include <array>
+ #include <cmath>
++#include <string>
+ 
+ /**
+  * @file control_tools.h
+diff --git a/src/control_types.cpp b/src/control_types.cpp
+index 046062e..0c6bd58 100644
+--- a/src/control_types.cpp
++++ b/src/control_types.cpp
+@@ -3,6 +3,7 @@
+ #include <type_traits>
+ 
+ #include <franka/control_types.h>
++#include <stdexcept>
+ 
+ namespace franka {
+ 
