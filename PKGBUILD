@@ -1,6 +1,6 @@
 # Maintainer: TheBitStick <the at bitstick dot rip>
 pkgname=tsubasa
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Script for sharing screenshots and/or status updates"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('git')
 provides=('tsubasa')
 conflicts=('tsubasa')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('27135bc4715c85ca21a6daa7f2bee2f330196501632c6dc7250a05bd4e17f9b065f9d4f672c367aea41ff5b9adb392ad78a3a2988934a05b9a838cf7f62f2e7d')
+sha512sums=('d8892757d2cdf51635904a809accdc431e8c3a0e75b1ee996cfd05c12277d5332bcea1ffbdd3dc8a6109dfed0faab9a0f8af689f89716035fd0321dfa08bc3f1')
 
 package() {
 	cd "$pkgname-$pkgver"
