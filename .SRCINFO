@@ -1,15 +1,15 @@
 pkgbase = php-recode
 	pkgdesc = PHP recode extension
-	pkgver = 7.2.12
+	pkgver = 7.3.18
 	pkgrel = 1
 	url = http://www.php.net/recode
 	arch = i686
 	arch = x86_64
 	license = PHP
-	depends = php
+	depends = php>7.4.0
 	depends = recode
-	source = https://php.net/distributions/php-7.2.12.tar.xz
-	sha512sums = bbeaed1278d0d2f1ecb2249dab1ebaab1489ef43be0797dac57d8b523d8e5d284166e6cbf52095f5d34eef447fbdeb0c6916caaa5770221a180ec064f4ffcad8
+	source = https://php.net/distributions/php-7.3.18.tar.xz
+	sha512sums = e626091c835f6d165ff48ae3be8ddf7a66b0a320c6d77dc98fb73235d560814c180112a9e5478a5b3b6bb01ed99a50f8025fdc3d1ef80cca59e04ac248f9b0bf
 
 pkgname = php-recode
 
