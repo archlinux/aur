@@ -1,12 +1,14 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: Philacorns <opuspace@gmail.com>
-# Maintainer: bohoomil <@zoho.com>
+# Contributor: bohoomil <@zoho.com>
 
 pkgname=ttf-wqy-microhei-ibx
 _name=wqy-microhei
 pkgver=0.2.0_beta
 pkgrel=11
-pkgdesc="A Sans-Serif style high quality CJK outline font."
+pkgdesc="A Sans-Serif style high quality CJK outline font"
 arch=('any')
 license=(GPL3,Apache,custom:"font embedding exception")
 groups=('infinality-bundle-fonts-extra')
