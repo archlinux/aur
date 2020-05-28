@@ -2,7 +2,7 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-hidpi-git
 pkgver=0.10.0.r158.g5e0ef70c
-pkgrel=1
+pkgrel=2
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library, with XWayland HiDPI'
 url=https://github.com/swaywm/wlroots
@@ -19,7 +19,7 @@ source=("${pkgname}::git+${url}"
        )
 sha512sums=('SKIP'
             # 'c8f316ebffaf6ad0991afc0091c0a1dec69c29ec7a2e8c5c5cf260d9919e11b1040da9006028aac5e1883fb788927c4bccef05629bf3db2b3c2374e33c6482f2'
-            '0d48afed05b4cc7d7f8542043bbb7be915b7d2c5a7db165a5ebdb12d9df0c67dad87e26d1e4889a46eb976a6766275ca0575f05a1e14a592c65587c309294cd7'
+            'a0f6051cef3670d0f007407d80e3f6635da4c32c99d320ea33ff9d69225ad6a102f76349450b7ddd0526b9cc4c682ab0bb681f98a26ba940e50ea38ef2a8b243'
            )
 
 pkgver () {
