@@ -1,13 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Theora_image_transport provides a plugin to image_transport for transparently sending an image stream encoded with the Theora codec."
-url='https://www.wiki.ros.org/image_transport_plugins'
+url='https://wiki.ros.org/image_transport_plugins'
 
 pkgname='ros-noetic-theora-image-transport'
-pkgver='1.9.5'
-_pkgver_patch=0
-arch=('any')
-pkgrel=2
+pkgver='1.14.0'
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -47,7 +46,7 @@ depends=(
 
 _dir="image_transport_plugins-${pkgver}/theora_image_transport"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_transport_plugins/archive/${pkgver}.tar.gz")
-sha256sums=('8047bc717c83f04a1b05a7cfe70778d99a82ceb5eb717d480aab19513de0719c')
+sha256sums=('eed856edeb26c66c1e1730a8c8b26ea6dec03d2f9a3c6db0462767106f9e73d8')
 
 build() {
 	# Use ROS environment variables.
