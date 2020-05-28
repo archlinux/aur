@@ -1,6 +1,6 @@
 pkgbase = zola
 	pkgdesc = An opinionated static site generator
-	pkgver = 0.10.1
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/getzola/zola
 	arch = x86_64
@@ -9,9 +9,8 @@ pkgbase = zola
 	makedepends = cmake
 	makedepends = git
 	depends = libsass
-	depends = openssl
-	source = zola-0.10.1.tar.gz::https://github.com/getzola/zola/archive/v0.10.1.tar.gz
-	sha256sums = cf5992e935d2f236985b57f357bb6e6738e83b13b0ae50278da66382a0af106c
+	source = zola-0.11.0.tar.gz::https://github.com/getzola/zola/archive/v0.11.0.tar.gz
+	sha256sums = 09840a55d13a81a7a04767d01e5e44cc3710e79c78f43f0ebde4a6a17e0728ca
 
 pkgname = zola
 
