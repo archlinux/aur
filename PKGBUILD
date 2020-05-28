@@ -1,10 +1,12 @@
-# Maintainer: bohoomil <@zoho.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: bohoomil <@zoho.com>
 
 pkgname=otf-tex-gyre-ib
 pkgver=2.005
 pkgrel=8
 depends=('fontconfig')
-pkgdesc="The TeX Gyre (TG) Collection of Fonts."
+pkgdesc="The TeX Gyre (TG) Collection of Fonts"
 groups=('infinality-bundle-fonts')
 url="http://www.gust.org.pl/projects/e-foundry/tex-gyre/"
 arch=('any')
