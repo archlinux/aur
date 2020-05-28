@@ -1,5 +1,5 @@
 pkgbase = freecheck
-	pkgdesc = A blank check printer that adds MICR codes and check templates to blank stock.
+	pkgdesc = A blank check printer that adds MICR codes and check templates to blank stock
 	pkgver = 0.30
 	pkgrel = 4
 	url = https://github.com/alerque/freecheck
