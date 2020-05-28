@@ -2,7 +2,7 @@
 _pkgname=Pixelorama
 pkgname=pixelorama-bin
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A free & open-source 2D sprite editor, made with the Godot Engine - precompiled binary"
 arch=('i686' 'x86_64')
 url="https://www.orama-interactive.com/pixelorama"
@@ -34,7 +34,8 @@ package() {
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$srcdir/pixelorama.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps"
 
-  chmod +x ${pkgdir}/opt/${pkgname}/{*.so,${_pkgname}.x86*}
+  test "${CARCH}" == 'x86_64' && _pkgarch='x86_64' || _pkgarch='x86'
+  chmod +x ${pkgdir}/opt/${pkgname}/{*.so,${_pkgname}.${_pkgarch}}
 
-  ln -s /opt/${pkgname}/${_pkgname}.x86* "$pkgdir/usr/bin/pixelorama"
+  ln -s /opt/${pkgname}/${_pkgname}.${_pkgarch} "$pkgdir/usr/bin/pixelorama"
 }
