@@ -1,11 +1,11 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=5.7-GE-1-MF
+_srctag=5.9-GE-1-NR
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
-_monover=5.0.0
-pkgrel=4
+_monover=5.0.1
+pkgrel=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -106,6 +106,7 @@ source=(
     protonfixes-gloriouseggroll::git+https://github.com/gloriouseggroll/protonfixes.git
     glib::git+https://gitlab.gnome.org/GNOME/glib.git
     gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
+    gst-orc::git+https://gitlab.freedesktop.org/gstreamer/orc.git
     gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
     gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
     gst-plugins-bad::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git
@@ -140,9 +141,10 @@ sha256sums=(
     SKIP
     SKIP
     SKIP
-    'd1d116c15970f6d292e37c38cc5d95d60ba2d12ba8619b5edcbd4c5977b1b804'
-    'c5f3a67ed393c1e54fb1d0b40eb754f97cac3e231ee1dc22ccc212c3b5d22921'
-    'ce7a59545f5a077e8f93684eddfdad39df807ffeb3a39d6054ca5d1c61644b04'
+    SKIP
+    'c899f176cbb7b1c411abbc103e17ae05702df21a502534c6f71c891ebde7b604'
+    '3e4e609198d20ad2fef479ffca96120223df03581b489b0390f27c44075011ff'
+    'b3013734f6c551bb669b6236ccdc0c38dde25b946b1b518e77c9b2a6adfb1166'
     '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
     'bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98'
 )
@@ -165,7 +167,7 @@ prepare() {
         git submodule update "${submodule}"
     done
 
-    for submodule in gstreamer gst-{plugins-{base,good,bad,ugly},libav} glib; do
+    for submodule in gstreamer gst-{plugins-{base,good,bad,ugly},libav,orc} glib; do
         git submodule init "${submodule}"
         git config submodule."${submodule}".url ../"${submodule#*/}"
         git submodule update "${submodule}"
