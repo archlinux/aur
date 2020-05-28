@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helm-2to3
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Migrates and cleans up Helm v2 configuration and releases in-place to Helm v3'
 arch=('x86_64' 'aarch64')
 url='https://github.com/helm/helm-2to3'
@@ -33,6 +33,6 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -Dm755 bin/2to3 -t "${pkgdir}/usr/lib/helm/plugins/${pkgname}/bin"
-  install -m644 {completion,plugin}.yaml -t "${pkgdir}/usr/lib/helm/plugins/${pkgname}"
+  install -Dm755 bin/2to3 -t "${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}/bin"
+  install -m644 {completion,plugin}.yaml -t "${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}"
 }
