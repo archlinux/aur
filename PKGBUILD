@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=kiwix-tools
 pkgver=3.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="kiwix command line tools"
 license=('GPL3')
 arch=('armv7h' 'i686' 'x86_64')
