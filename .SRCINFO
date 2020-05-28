@@ -4,15 +4,10 @@ pkgbase = srrdb-terminal-client
 	pkgrel = 1
 	url = https://github.com/hashworks/srrdb-Terminal-Client
 	changelog = CHANGELOG
-	arch = i686
 	arch = x86_64
 	license = GPL3
-	source = LICENSE
-	md5sums = 84dcc94da3adb52b53ae4fa38fe49e5d
-	source_i686 = https://github.com/hashworks/srrdb-Terminal-Client/releases/download/v1.1.4/srrdb-linux-386.tar.gz
-	md5sums_i686 = 26c057ec7e4a0279f9471f4e3bccf8f4
-	source_x86_64 = https://github.com/hashworks/srrdb-Terminal-Client/releases/download/v1.1.4/srrdb-linux-amd64.tar.gz
-	md5sums_x86_64 = db1ab55948a69264895791bfccf4d6a7
+	source = https://github.com/hashworks/srrdb-Terminal-Client/releases/download/v1.1.4/srrdb-linux-amd64.tar.gz
+	md5sums = db1ab55948a69264895791bfccf4d6a7
 
 pkgname = srrdb-terminal-client
 
