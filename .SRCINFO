@@ -1,7 +1,7 @@
 pkgbase = helm-push
 	pkgdesc = Helm plugin to pushing charts to chartmuseum
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chartmuseum/helm-push
 	install = helm-push.install
 	arch = x86_64

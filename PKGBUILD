@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helm-push
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Helm plugin to pushing charts to chartmuseum'
 arch=('x86_64')
 url='https://github.com/chartmuseum/helm-push'
@@ -32,6 +32,6 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -Dm755 bin/helmpush -t "${pkgdir}/usr/lib/helm/plugins/${pkgname}/bin"
-  install -m644 plugin.yaml -t "${pkgdir}/usr/lib/helm/plugins/${pkgname}"
+  install -Dm755 bin/helmpush -t "${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}/bin"
+  install -m644 plugin.yaml -t "${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}"
 }
