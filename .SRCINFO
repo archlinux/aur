@@ -6,6 +6,8 @@ pkgbase = jobber-bin
 	install = .install
 	arch = x86_64
 	license = MIT
+	provides = jobber
+	conflicts = jobber
 	source = https://github.com/dshearer/jobber/releases/download/v1.4.0/jobber-1.4.0-1.el7.x86_64.rpm
 	md5sums = 8741abd53187b54e6f92fbcd0ca3afe3
 
