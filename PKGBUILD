@@ -2,9 +2,9 @@
 
 pkgname=grocy
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="web-based self-hosted groceries & household management solution for your home"
-depends=('php' 'php-sqlite')
+depends=('php' 'php-sqlite' 'php-gd')
 license=('MIT')
 arch=('any')
 url="https://grocy.info/"
