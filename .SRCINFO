@@ -1,14 +1,13 @@
 pkgbase = scantool
 	pkgdesc = OBD-II vehicle diagnostic scanner
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/kees/scantool
-	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = allegro4
-	source = https://github.com/kees/scantool/archive/v2.0.tar.gz
-	sha256sums = b47d5a5f02bda5d2102292e23b0e31178046689fbd651239faddac61c29caf45
+	source = https://github.com/kees/scantool/archive/v2.1.tar.gz
+	sha256sums = ce949dac4a11f1c2a11ca8437552dc9673d98c5c3993cd313bafcac06f7469de
 
 pkgname = scantool
 
