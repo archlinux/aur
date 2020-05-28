@@ -4,7 +4,7 @@
 pkgname=cups-xerox-workcentre-3025
 pkgver=1.0_25
 pkgrel=2
-pkgdesc='Xerox WorkCentre 3025 printer driver for CUPS.'
+pkgdesc='Xerox WorkCentre 3025 printer driver for CUPS'
 url='https://www.support.xerox.com/support/workcentre-3025'
 arch=('x86_64')
 license=('custom')
