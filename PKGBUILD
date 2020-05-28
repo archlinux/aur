@@ -1,4 +1,4 @@
-# Maintainer: Samuel Walladge <aur @ swalladge dot net>
+# Contributor: Samuel Walladge <aur @ swalladge dot net>
 # Contributor: Asger Weirsøe <asger@weirsoe.dk>
 # Contributer: Alex Garcia <thekyz@gmail.com>
 pkgname=jobber-bin
