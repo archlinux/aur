@@ -1,5 +1,5 @@
 pkgbase = ttf-droid-family-ib
-	pkgdesc = General-purpose fonts released by Google as part of Android. Includes additional monospaced variants with dotted and slashed zeros.
+	pkgdesc = General-purpose fonts released by Google as part of Android, plus monospaced variants
 	pkgver = 20121017
 	pkgrel = 13
 	url = http://code.google.com/android/
