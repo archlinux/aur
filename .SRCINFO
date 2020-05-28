@@ -14,9 +14,9 @@ pkgbase = prince-books-bin
 	backup = etc/prince-books/license.dat
 	source = prince-books.sh
 	sha256sums = a963e51d3c414d2969c71ce66b2db0a72dede11401c62dc2befa8b870cd01284
-	source_x86_64 = http://www.princexml.com/download/prince-books-20191125-linux-generic-x86_64.tar.gz
+	source_x86_64 = https://www.princexml.com/download/prince-books-20191125-linux-generic-x86_64.tar.gz
 	sha256sums_x86_64 = 294ef279e00736fe4c7fc6bb262793f2bd0e602a74d78ba785b09cd6aa3f1b63
-	source_i686 = http://www.princexml.com/download/prince-books-20191125-linux-generic-i686.tar.gz
+	source_i686 = https://www.princexml.com/download/prince-books-20191125-linux-generic-i686.tar.gz
 	sha256sums_i686 = c41d290153d354548869c77b3f6235fee406daa41bbc5461e58946c2af27132c
 
 pkgname = prince-books-bin
