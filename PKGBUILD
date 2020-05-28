@@ -5,7 +5,7 @@ pkgver=0.97
 pkgrel=5
 pkgdesc='STUN Server and Client'
 url='https://sourceforge.net/projects/stun/'
-source=("http://downloads.sourceforge.net/project/stun/stun/$pkgver/$pkgname-$pkgver.tgz"
+source=("https://downloads.sourceforge.net/project/stun/stun/$pkgver/$pkgname-$pkgver.tgz"
         'fix_non_i386.patch')
 conflicts=('libnice')
 arch=('x86_64')
