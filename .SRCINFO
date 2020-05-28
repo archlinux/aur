@@ -1,9 +1,13 @@
 pkgbase = ros-noetic-mavlink
 	pkgdesc = ROS - MAVLink message marshaling library.
-	pkgver = 2019.9.9
+	pkgver = 2020.5.21
 	pkgrel = 1
-	url = https://qgroundcontrol.org/mavlink/
-	arch = any
+	url = https://wiki.ros.org/mavlink
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = LGPLv3
 	makedepends = cmake
 	makedepends = ros-build-tools
@@ -13,8 +17,8 @@ pkgbase = ros-noetic-mavlink
 	makedepends = python
 	depends = ros-noetic-catkin
 	depends = python
-	source = ros-noetic-mavlink-2019.9.9.tar.gz::https://github.com/mavlink/mavlink-gbp-release/archive/upstream/2019.9.9.tar.gz
-	sha256sums = e7cc2097f7283a45f4c3e3ea91c62e98225d2d56170aa45153b755a3be63c5cb
+	source = ros-noetic-mavlink-2020.5.21.tar.gz::https://github.com/mavlink/mavlink-gbp-release/archive/upstream/2020.5.21.tar.gz
+	sha256sums = c6e66e2353f6e6f86de6851c258c97fe68468d9b1545cd116bd2606f62497942
 
 pkgname = ros-noetic-mavlink
 
