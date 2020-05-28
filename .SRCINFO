@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-rotors-hil-interface
 	pkgdesc = ROS - RotorS Hardware-in-the-loop interface package
 	pkgver = 2.2.3
-	pkgrel = 1
-	url = https://wiki.ros.org/rotors_hil_interface
+	pkgrel = 2
+	url = https://wiki.ros.org/rotors_simulator
 	arch = i686
 	arch = x86_64
 	arch = aarch64
