@@ -1,5 +1,7 @@
+# Maintainer: Simon Hauser <Simon-Hauser@outlook.de>
+
 pkgname=premake-git
-pkgver=5.0.alpha2.r1193.g911cb20d
+pkgver=5.0.0.alpha15.r13.g5bb0bef4
 pkgrel=1
 pkgdesc='Simple build configuration and project generation tool using Lua'
 arch=(i686 x86_64)
@@ -13,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd premake-core
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//'
 }
 
 prepare() {
