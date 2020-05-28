@@ -4,9 +4,9 @@ pkgdesc="ROS - Provides nodes to assemble point clouds from either LaserScan or 
 url='https://wiki.ros.org/laser_assembler'
 
 pkgname='ros-noetic-laser-assembler'
-pkgver='1.7.6'
+pkgver='1.7.8'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -44,15 +44,8 @@ depends=(
 )
 
 _dir="laser_assembler-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/laser_assembler/archive/${pkgver}.tar.gz"
-  CMakeLists-signal.patch)
-sha256sums=('f9b5c23f7eac7406dd3d0e4a095864335b18a25611fd28f3279763339d7bd94f'
-            '1c050096b3e5edf41da7ef88db915f5690f5b6903e7d46c65a1655204f49039c')
-
-prepare() {
-  cd "${srcdir}/${_dir}"
-  patch -uN CMakeLists.txt ../../CMakeLists-signal.patch || return 1
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/laser_assembler/archive/${pkgver}.tar.gz")
+sha256sums=('cf2e8649f6df73d63c5ff0a65dea8cf21ce3f644ce47c7955a165a94d3a1ded9')
 
 build() {
 	# Use ROS environment variables.

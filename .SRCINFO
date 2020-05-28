@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-laser-assembler
 	pkgdesc = ROS - Provides nodes to assemble point clouds from either LaserScan or PointCloud messages.
-	pkgver = 1.7.6
-	pkgrel = 3
+	pkgver = 1.7.8
+	pkgrel = 1
 	url = https://wiki.ros.org/laser_assembler
 	arch = i686
 	arch = x86_64
@@ -29,10 +29,8 @@ pkgbase = ros-noetic-laser-assembler
 	depends = ros-noetic-message-runtime
 	depends = ros-noetic-sensor-msgs
 	depends = ros-noetic-pluginlib
-	source = ros-noetic-laser-assembler-1.7.6.tar.gz::https://github.com/ros-perception/laser_assembler/archive/1.7.6.tar.gz
-	source = CMakeLists-signal.patch
-	sha256sums = f9b5c23f7eac7406dd3d0e4a095864335b18a25611fd28f3279763339d7bd94f
-	sha256sums = 1c050096b3e5edf41da7ef88db915f5690f5b6903e7d46c65a1655204f49039c
+	source = ros-noetic-laser-assembler-1.7.8.tar.gz::https://github.com/ros-perception/laser_assembler/archive/1.7.8.tar.gz
+	sha256sums = cf2e8649f6df73d63c5ff0a65dea8cf21ce3f644ce47c7955a165a94d3a1ded9
 
 pkgname = ros-noetic-laser-assembler
 
