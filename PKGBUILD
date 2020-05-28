@@ -1,17 +1,17 @@
 # Maintainer: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
+_distname=Compress-BGZF
 pkgname=perl-compress-bgzf
-pkgver=0.005
+pkgver=0.006
 pkgrel=1
 pkgdesc="Read/write blocked GZIP (BGZF) files"
 arch=('any')
-url='https://metacpan.org/pod/Compress::BGZF'
 license=('PerlArtistic' 'GPL')
 depends=('perl>=5.012')
 makedepends=()
 options=('!emptydirs')
-source=('http://search.cpan.org/CPAN/authors/id/V/VO/VOLKENING/Compress-BGZF-0.005.tar.gz')
-md5sums=('1ed412dc27cc43bd2aa6750c220b9fca')
-_distdir="Compress-BGZF-$pkgver"
+url="https://metacpan.org/release/$_distname"
+source=("http://search.cpan.org/CPAN/authors/id/V/VO/VOLKENING/$_distname-$pkgver.tar.gz")
+md5sums=('3a2f796f65efb09f9dc5e2db723b9ebd')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -20,22 +20,22 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
+    cd "$_distname-$pkgver"
+    /usr/bin/perl Build.PL
+    /usr/bin/perl Build
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd "$_distname-$pkgver"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
+    /usr/bin/perl Build test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  make install
+  cd "$_distname-$pkgver"
+  /usr/bin/perl Build install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 

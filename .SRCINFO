@@ -1,15 +1,15 @@
 pkgbase = perl-compress-bgzf
 	pkgdesc = Read/write blocked GZIP (BGZF) files
-	pkgver = 0.005
+	pkgver = 0.006
 	pkgrel = 1
-	url = https://metacpan.org/pod/Compress::BGZF
+	url = https://metacpan.org/release/Compress-BGZF
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl>=5.012
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/V/VO/VOLKENING/Compress-BGZF-0.005.tar.gz
-	md5sums = 1ed412dc27cc43bd2aa6750c220b9fca
+	source = http://search.cpan.org/CPAN/authors/id/V/VO/VOLKENING/Compress-BGZF-0.006.tar.gz
+	md5sums = 3a2f796f65efb09f9dc5e2db723b9ebd
 
 pkgname = perl-compress-bgzf
 
