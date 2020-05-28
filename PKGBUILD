@@ -1,40 +1,41 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer:
+# Contributor: Felix Golatofsk <contact@xdfr.de>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
-_gitname=kidentitymanagement
-pkgname=$_gitname-git
-pkgver=r3317.76fe915
+_pkgname=kidentitymanagement
+pkgname=$_pkgname-git
+pkgver=r3678.e41aac31
 pkgrel=1
 pkgdesc="KDE PIM libraries"
-arch=('i686' 'x86_64')
-url="https://projects.kde.org/projects/kde/pim/$_gitname"
-license=('LGPL')
-depends=('kpimtextedit-git')
-makedepends=('extra-cmake-modules-git' 'git' 'python')
-conflicts=("$_gitname")
-provides=("$_gitname")
-source=("git://anongit.kde.org/$_gitname.git")
-md5sums=('SKIP')
+arch=(i686 x86_64)
+url="https://kontact.kde.org"
+license=(LGPL)
+depends=(kpimtextedit)
+makedepends=(extra-cmake-modules git)
+conflicts=("$_pkgname")
+provides=("$_pkgname")
+source=("git+https://github.com/KDE/$_pkgname.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
+  cd $srcdir/$_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
+  cd $srcdir/$_pkgname
   mkdir -p build
 }
 
 build() {
-  cd build
-  cmake ../$_gitname \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+  cd $srcdir/$_pkgname/build
+  cmake ../ \
+    -DBUILD_TESTING=OFF
   make
 }
 
 package() {
-  cd build
+  cd $srcdir/$_pkgname/build
   make DESTDIR="$pkgdir" install
+  install -Dm644 ../COPYING.LIB "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
