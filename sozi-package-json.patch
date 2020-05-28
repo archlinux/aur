@@ -1,12 +1,14 @@
-37,38c37,38
-<     "grunt-install-dependencies": "senshu/grunt-install-dependencies",
-<     "grunt-jspot": "senshu/grunt-jspot",
+39c39
+<     "grunt-install-dependencies": "github:senshu/grunt-install-dependencies",
 ---
 >     "grunt-install-dependencies": "*",
+41c41
+<     "grunt-jspot": "github:senshu/grunt-jspot",
+---
 >     "grunt-jspot": "*",
-40,41c40,41
-<     "grunt-po2json": "rockykitamura/grunt-po2json",
-<     "grunt-rename": "senshu/grunt-rename",
+43,44c43,44
+<     "grunt-po2json": "github:rockykitamura/grunt-po2json",
+<     "grunt-rename": "github:senshu/grunt-rename",
 ---
 >     "grunt-po2json": "*",
 >     "grunt-rename": "*",

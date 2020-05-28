@@ -37,7 +37,7 @@ onlinebestmatch() {
   local semverspec="$2";
 
   if echo "$semverspec" | grep -q '/'; then
-    local fullname="${package}-$(echo "$semverspec" | cut -d/ -f1).zip"
+    local fullname="${package}-$(echo "$semverspec" | cut -d/ -f1 | gawk -F'github:' '{ print $2; }').zip"
     if [ -f "$depspath/$fullname" ]; then
       mv "$depspath/$fullname" "$targetdepspath/"
     elif [ ! -f "$targetdepspath/$fullname" ]; then
@@ -59,17 +59,21 @@ onlinebestmatch() {
 
     local url=$(echo $json | jq -r '.dist.tarball');
     local shasum=$(echo $json | jq -r '.dist.shasum');
-    local name=$(echo "$url" | gawk -F'/' '{ print $NF }')
+    local name="${package/\//\#}-${latestversion}.tgz"
 
     if ! grep -q "$shasum" "$targetdepspath/sha1sumslist"; then
-      echo "$url" >> "$targetdepspath/sourcelist"
+      if echo "$package" | grep -q "/"; then
+        echo "$name::$url" >> "$targetdepspath/sourcelist"
+      else
+        echo "$url" >> "$targetdepspath/sourcelist"
+      fi
       echo "$shasum" >> "$targetdepspath/sha1sumslist"
       echo "$name" >> "$targetdepspath/noextractlist"
       if [ -f "$depspath/$name" ]; then
         mv "$depspath/$name" "$targetdepspath/"
       else
         cd "$targetdepspath/"
-        wget "$url"
+        wget -O "$name" "$url"
       fi
     fi
     echo "$name"

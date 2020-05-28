@@ -2,7 +2,7 @@
     "platforms": [
         "linux-ia32"
     ],
-    "electronVersion": "3.0.2",
+    "electronVersion": "6.1.4",
     "installable": [
         "linux"
     ]
