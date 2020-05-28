@@ -1,7 +1,7 @@
 pkgbase = openframeworks
 	pkgdesc = An open source C++ toolkit for creative coding.
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openframeworks.cc/
 	install = openframeworks.install
 	arch = x86_64
@@ -35,9 +35,11 @@ pkgbase = openframeworks
 	options = !strip
 	source = openal_fix.patch
 	source = of-make-workspace
+	source = make_4.3_error_fix.patch
 	source = https://openframeworks.cc/versions/v0.11.0/of_v0.11.0_linux64gcc6_release.tar.gz
 	sha256sums = 3e04a8ff4da53e813c0d20b87d5f2231a10767b3a0960af46b0902812b616734
 	sha256sums = b4fc38288595df566f770018d871970fb13fb2ad4af7e9e5cddc60288f338806
+	sha256sums = 04998e54ad640c2c7d397d9d654c6cb266703e23674f03d40049b522dd0915bf
 	sha256sums = 513cee3ce081e79fdc1a942af09869145fff3d7addeee0a76cef26fbc3ae69b1
 
 pkgname = openframeworks

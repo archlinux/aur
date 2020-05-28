@@ -4,7 +4,7 @@ DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 pkgname=openframeworks
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source C++ toolkit for creative coding."
 url="http://openframeworks.cc/"
 arch=('x86_64')
@@ -16,9 +16,11 @@ install=openframeworks.install
 source=(
   "openal_fix.patch"
   "of-make-workspace"
+  "make_4.3_error_fix.patch"
   "https://openframeworks.cc/versions/v${pkgver}/of_v${pkgver}_linux64gcc6_release.tar.gz")
 sha256sums=('3e04a8ff4da53e813c0d20b87d5f2231a10767b3a0960af46b0902812b616734'
             'b4fc38288595df566f770018d871970fb13fb2ad4af7e9e5cddc60288f338806'
+            '04998e54ad640c2c7d397d9d654c6cb266703e23674f03d40049b522dd0915bf'
             '513cee3ce081e79fdc1a942af09869145fff3d7addeee0a76cef26fbc3ae69b1')
 
 _name="of_v${pkgver}_linux64gcc6_release"
@@ -26,13 +28,18 @@ _name="of_v${pkgver}_linux64gcc6_release"
 prepare() {
   cd ${srcdir}
 
-  msg2 "Applying patch for openAL..."
-  # copy patch
+  # copy patches
   cp openal_fix.patch ${_name}
-  
-  # apply patch
+  cp make_4.3_error_fix.patch ${_name}
+
+  # apply patches
   cd ${_name}
+
+  msg2 "Applying patch for openAL..."
   patch -p0 < openal_fix.patch 
+
+  msg2 "Applying patch for Make 4.3..."
+  patch -p0 < make_4.3_error_fix.patch
   
   export OF_ROOT=${srcdir}/${_name}
   export LC_ALL=C
