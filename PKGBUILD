@@ -1,11 +1,11 @@
-# Maintainer: Viachaslau Khalikin <khalikin'at'yandex.by>
+# Maintainer: Viachaslau Khalikin <khalikin'at'yandex'>
 
 pkgname='freedroidrpg-git'
-pkgver=r7402.66afd54be
+pkgver=1.0rc2.r20.g642f6a95a
 pkgrel=1
 arch=('x86_64')
-depends=('sdl_mixer' 'sdl_image' 'sdl_gfx' 'libogg' 'libvorbis' 'libgl' 'hicolor-icon-theme' 'glu' 'glew')
-makedepends=('git' 'mesa' 'autoconf' 'gettext' 'automake')
+depends=('sdl_mixer' 'sdl_image' 'sdl_gfx' 'hicolor-icon-theme' 'glew')
+makedepends=('git' 'mesa')
 optdepends=('python' 'lua' 'espeak')
 pkgdesc="a mature science fiction role playing game set in the future"
 url="http://www.freedroid.org"
@@ -17,7 +17,7 @@ provides=('freedroidrpg')
 
 pkgver() {
   cd $pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/-/.r/;s/-/./'
 }
 
 build() {
