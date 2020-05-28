@@ -2,14 +2,13 @@
 # TODO add test. update to HEAD
 pkgname=helm-secrets
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Helm plugin to manage secrets with Git workflow and store them anywhere'
 arch=('any')
 url='https://github.com/zendesk/helm-secrets'
 license=('Apache')
 install=helm-secrets.install
-depends=('helm' 'bash')
-optdepends=('sops')
+depends=('bash' 'helm' 'sops')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('282b3ebd60f726c25194451489b048de56cee2c75ade6d3242cee956fec3026d')
 
