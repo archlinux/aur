@@ -8,12 +8,12 @@ pkgrel=8
 depends=('fontconfig')
 pkgdesc="The TeX Gyre (TG) Collection of Fonts"
 groups=('infinality-bundle-fonts')
-url="http://www.gust.org.pl/projects/e-foundry/tex-gyre/"
+url="https://www.gust.org.pl/projects/e-foundry/tex-gyre/"
 arch=('any')
-license=('GFL')
+license=('custom:GFL')
 conflicts=('otf-texgyre' 'tex-gyre-fonts' 't1-tex-gyre-ib')
 replaces=('t1-tex-gyre-ib')
-source=("http://www.gust.org.pl/projects/e-foundry/tex-gyre/whole/tg-${pkgver}otf.zip"
+source=("https://www.gust.org.pl/projects/e-foundry/tex-gyre/whole/tg-${pkgver}otf.zip"
         GFL.txt
         45-tex-gyre.conf
         90-non-tt-tex-gyre.conf)
