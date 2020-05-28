@@ -2,7 +2,7 @@
 _srcname=clasp
 pkgname=clasp-cl
 pkgname=clasp-cl-git
-pkgver=0.4.2.r2620.g76184bf74
+pkgver=0.4.2.r2622.g76497613a
 pkgrel=1
 pkgdesc="Bringing Common Lisp and C++ Together"
 arch=('x86_64')
@@ -33,4 +33,5 @@ build() {
 package() {
   cd "$_srcname/"
   ./waf install_cboehm --destdir "$pkgdir"
+  echo "PATH=$PATH:/opt/clasp/bin" > "$pkgdir/etc/environment.d/70-clasp-cl-git.conf"
 }
