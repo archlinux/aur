@@ -10,7 +10,7 @@ arch=('any')
 url='https://metacpan.org/release/Test-Most'
 license=('PerlArtistic' 'GPL')
 depends=('perl-exception-class' 'perl-test-deep' 'perl-test-differences' 'perl-test-exception' 'perl-test-warn')
-source=("http://search.cpan.org/CPAN/authors/id/O/OV/OVID/$_distname-$pkgver.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/O/OV/OVID/$_distname-$pkgver.tar.gz")
 sha256sums=('533370141eb9f18cf4ac380f6ded2ab57802a6e184008a80fd2304bfcc474fc7')
 
 build() {

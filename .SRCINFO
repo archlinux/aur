@@ -11,7 +11,7 @@ pkgbase = perl-test-most
 	depends = perl-test-differences
 	depends = perl-test-exception
 	depends = perl-test-warn
-	source = http://search.cpan.org/CPAN/authors/id/O/OV/OVID/Test-Most-0.37.tar.gz
+	source = https://search.cpan.org/CPAN/authors/id/O/OV/OVID/Test-Most-0.37.tar.gz
 	sha256sums = 533370141eb9f18cf4ac380f6ded2ab57802a6e184008a80fd2304bfcc474fc7
 
 pkgname = perl-test-most
