@@ -1,6 +1,6 @@
 pkgbase = c2ffi-git
 	pkgdesc = Clang-based FFI wrapper generator
-	pkgver = r175.15fda06
+	pkgver = r182.a2d1f66
 	pkgrel = 1
 	url = https://github.com/rpav/c2ffi
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = c2ffi-git
 	depends = xz
 	provides = c2ffi
 	conflicts = c2ffi
-	source = git+https://github.com/rpav/c2ffi#branch=llvm-9.0.0
+	source = git+https://github.com/rpav/c2ffi#branch=llvm-10.0.0
 	md5sums = SKIP
 
 pkgname = c2ffi-git
