@@ -1,0 +1,13 @@
+diff --git a/thrift-0.9.3/lib/cpp/src/thrift/transport/TSSLSocket.cpp b/thrift-0.9.3/lib/cpp/src/thrift/transport/TSSLSocket.cpp
+index 98c5326..cb8ef6e 100644
+--- a/thrift-0.9.3/lib/cpp/src/thrift/transport/TSSLSocket.cpp
++++ b/thrift-0.9.3/lib/cpp/src/thrift/transport/TSSLSocket.cpp
+@@ -140,7 +140,7 @@ SSLContext::SSLContext(const SSLProtocol& protocol) {
+   if (protocol == SSLTLS) {
+     ctx_ = SSL_CTX_new(SSLv23_method());
+   } else if (protocol == SSLv3) {
+-    ctx_ = SSL_CTX_new(SSLv3_method());
++    ctx_ = SSL_CTX_new(SSLv23_method());
+   } else if (protocol == TLSv1_0) {
+     ctx_ = SSL_CTX_new(TLSv1_method());
+   } else if (protocol == TLSv1_1) {

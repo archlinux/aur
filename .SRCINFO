@@ -1,0 +1,23 @@
+pkgbase = thrift-0.9
+	pkgdesc = Scalable cross-language services framework for IPC/RPC
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = http://thrift.apache.org/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = qt5-base
+	makedepends = boost
+	makedepends = libevent
+	depends = gcc-libs
+	depends = openssl
+	optdepends = qt5-base: TQTcpServer support
+	source = https://github.com/apache/thrift/archive/0.9.3.tar.gz
+	source = sslv23.patch
+	source = THRIFT-3576.patch
+	sha512sums = 743131b276155c2d178404e190bdebcc12cedf42956f3d83177ebb4e4b85768b111a999dcf054594e92c120431323769a9641fc2ff2efade983191afd0786c2c
+	sha512sums = bb84c9b14ad01c220c79305ec0661d9a5674a0f98ad0608afa5729b92bea82892c436d09c5e83270a00780b3264260d64b7b49f4ef02fbebc5fc09d4dd2a37c9
+	sha512sums = 6a091887f7d9dede834ca8b53af6df44b6dd6c73fc3a8615dc78f3fca405a6c9975d8dd138878603eb9d64350ad81fc08c8719dff3db045363852f57de866587
+
+pkgname = thrift-0.9
+

@@ -1,0 +1,23 @@
+From c261c69d4e64455b912524b6df603be0f169d29c Mon Sep 17 00:00:00 2001
+From: Nobuaki Sukegawa <nsuke@apache.org>
+Date: Sat, 23 Jan 2016 22:45:20 +0900
+Subject: [PATCH] THRIFT-3576 Boost test --log_format arg does not accept
+ lowercase
+
+---
+ lib/cpp/test/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/cpp/test/Makefile.am b/lib/cpp/test/Makefile.am
+index 1895afc..61865de 100755
+--- a/lib/cpp/test/Makefile.am
++++ b/lib/cpp/test/Makefile.am
+@@ -101,7 +101,7 @@ endif
+ TESTS_ENVIRONMENT= \
+ 	BOOST_TEST_LOG_SINK=tests.xml \
+ 	BOOST_TEST_LOG_LEVEL=test_suite \
+-	BOOST_TEST_LOG_FORMAT=xml
++	BOOST_TEST_LOG_FORMAT=XML
+
+ TESTS = \
+ 	$(check_PROGRAMS)
