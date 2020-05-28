@@ -1,0 +1,15 @@
+pkgbase = sssteg
+	pkgdesc = Hide secrets across multiple files with secret sharing and steganography.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://danielbertalan.dev/sssteg
+	arch = any
+	license = GPL3
+	depends = ssss
+	depends = steghide
+	source = sssteg-0.1.tar.gz::https://github.com/BertalanD/sssteg/archive/v0.1.tar.gz
+	validpgpkeys = 9B787C055C7AE4AEADB957B637DAA2139C04C1C0
+	sha256sums = 939d8b759f0ef10237aaec95f1a32003b25e4a0121bc08905d17fc23106a062d
+
+pkgname = sssteg
+
