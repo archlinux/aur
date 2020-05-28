@@ -1,9 +1,13 @@
 pkgbase = ros-noetic-compressed-image-transport
 	pkgdesc = ROS - Compressed_image_transport provides a plugin to image_transport for transparently sending images encoded as JPEG or PNG.
-	pkgver = 1.9.5
-	pkgrel = 2
-	url = https://www.wiki.ros.org/image_transport_plugins
-	arch = any
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://wiki.ros.org/image_transport_plugins
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
@@ -14,8 +18,8 @@ pkgbase = ros-noetic-compressed-image-transport
 	depends = ros-noetic-cv-bridge
 	depends = ros-noetic-dynamic-reconfigure
 	depends = ros-noetic-image-transport
-	source = ros-noetic-compressed-image-transport-1.9.5.tar.gz::https://github.com/ros-perception/image_transport_plugins/archive/1.9.5.tar.gz
-	sha256sums = 8047bc717c83f04a1b05a7cfe70778d99a82ceb5eb717d480aab19513de0719c
+	source = ros-noetic-compressed-image-transport-1.14.0.tar.gz::https://github.com/ros-perception/image_transport_plugins/archive/1.14.0.tar.gz
+	sha256sums = eed856edeb26c66c1e1730a8c8b26ea6dec03d2f9a3c6db0462767106f9e73d8
 
 pkgname = ros-noetic-compressed-image-transport
 
