@@ -12,8 +12,8 @@
 
 pkgname=mesa-aco-git
 pkgdesc="Mesa with the ACO compiler patchset, git version"
-pkgver=20.1.0_rc1.20200502.3968b9381f8
-pkgrel=9
+pkgver=20.1.0_rc4.20200527.648768b32a6
+pkgrel=10
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio' 'libxrandr'
@@ -42,12 +42,12 @@ license=('custom')
 source=('mesa-aco::git+https://github.com/daniel-schuermann/mesa'
         'LICENSE'
         'mesa-headers.patch'
-)
+        '0001-spirv-radv-anv-implement-no-op-VK_GOOGLE_user_type.patch')
 
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            'f83d52292f9b5144fc2f5b568cfb1d4bdebd37b877d34d9002335d79f66612123001c36a9615ed13f474771002672f2a445a89f3220d16b962e17087b6111644')
-
+            'f83d52292f9b5144fc2f5b568cfb1d4bdebd37b877d34d9002335d79f66612123001c36a9615ed13f474771002672f2a445a89f3220d16b962e17087b6111644'
+            '0bbc44131ba0f682caa9da0d61497272768ca98655e1df698580aee8fa66a61ed33193281e5ede8953b541cfd6a68c6c9cd51ff5c445830a21a5cb0dc8d7c09d')
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
@@ -124,6 +124,11 @@ prepare() {
     # Apply this until ACO is rebased and contains it
     if ! git show b57fa7ca49f7ddb67ac47f392de05af388e73565 &>/dev/null; then
       patch -Np1 -i "$srcdir"/mesa-headers.patch
+    fi
+
+    # Path of Exile fix, similarly pull forward until ACO rebase
+    if ! git show 10c4a7cf59733ae2058a76b880ea0767a59dad4f &>/dev/null; then
+      patch -Np1 -i "$srcdir"/0001-spirv-radv-anv-implement-no-op-VK_GOOGLE_user_type.patch
     fi
 }
 
