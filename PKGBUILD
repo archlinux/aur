@@ -11,7 +11,8 @@ sha256sums=('ce949dac4a11f1c2a11ca8437552dc9673d98c5c3993cd313bafcac06f7469de')
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
-  make CPPFLAGS="-fcommon"
+  curl -L https://github.com/kees/scantool/pull/3.patch | patch -p1
+  make
 }
 
 package () {
