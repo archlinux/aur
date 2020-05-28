@@ -1,0 +1,18 @@
+pkgbase = proctal-git
+	pkgdesc = A tool for modding programs on Linux at runtime.
+	pkgver = r493.2b794f1
+	pkgrel = 1
+	url = https://github.com/daniel-araujo/proctal
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = autoconf
+	makedepends = php
+	optdepends = keystone: to compile assembly language
+	optdepends = capstone: to decompile bytecode into assembly
+	source = git+https://github.com/daniel-araujo/proctal.git
+	md5sums = SKIP
+
+pkgname = proctal-git
+
