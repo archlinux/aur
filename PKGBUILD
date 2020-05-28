@@ -8,7 +8,7 @@ pkgver=0.2.1
 pkgrel=2
 pkgdesc="Adds read support for dbf files to agate"
 arch=('any')
-url='http://agate-dbf.readthedocs.org/'
+url='https://agate-dbf.readthedocs.org/'
 license=('MIT')
 depends=(
     'python'
