@@ -1,10 +1,12 @@
-# Maintainer: bohoomil <@zoho.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Contributor: bohoomil <@zoho.com>
+
 pkgname=ttf-sansation-ibx
 pkgver=1.31
 pkgrel=5
 depends=('fontconfig')
-pkgdesc="Sansation is a sans-serif typeface by Bernd Montag, perfect both for headings and paragraphs."
+pkgdesc="A sans-serif typeface by Bernd Montag, perfect both for headings and paragraphs"
 url="http://www.dafont.com/"
 arch=('any')
 groups=('infinality-bundle-fonts-extra')
