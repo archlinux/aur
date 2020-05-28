@@ -1,6 +1,6 @@
 pkgbase = python-nexpy
 	pkgdesc = NeXpy: A Python GUI to analyze NeXus data
-	pkgver = 0.12.2
+	pkgver = 0.12.5
 	pkgrel = 1
 	url = http://nexpy.github.io/nexpy
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-nexpy
 	depends = jupyter
 	depends = python-matplotlib
 	depends = python-ansi2html
-	source = https://github.com/nexpy/nexpy/archive/v0.12.2.tar.gz
-	md5sums = 6135a785b5b0f9afa2143c53acd09947
+	source = https://github.com/nexpy/nexpy/archive/v0.12.5.tar.gz
+	md5sums = dcad442c7ad3cca3cea08674752642be
 
 pkgname = python-nexpy
 
