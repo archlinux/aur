@@ -2,7 +2,7 @@ pkgbase = font-manager-git
 	pkgdesc = A simple font management application for GTK+ Desktop Environments
 	pkgver = 0.7.5.r0.gdaf9d39
 	pkgrel = 1
-	url = http://fontmanager.github.io
+	url = https://fontmanager.github.io
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -17,7 +17,7 @@ pkgbase = font-manager-git
 	optdepends = file-roller
 	provides = font-manager
 	conflicts = font-manager
-	source = font-manager-git::git://github.com/FontManager/master.git#branch=master
+	source = font-manager-git::git+https://github.com/FontManager/master.git#branch=master
 	sha256sums = SKIP
 
 pkgname = font-manager-git

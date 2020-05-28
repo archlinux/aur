@@ -9,7 +9,7 @@ _branch=master
 pkgver=0.7.5.r0.gdaf9d39
 pkgrel=1
 pkgdesc='A simple font management application for GTK+ Desktop Environments'
-url='http://fontmanager.github.io'
+url='https://fontmanager.github.io'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libxml2' 'sqlite')
@@ -17,7 +17,7 @@ optdepends=('file-roller')
 makedepends=('git' 'yelp-tools' 'gobject-introspection' 'vala' 'meson' 'ninja')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("$pkgname::git://github.com/FontManager/master.git#branch=$_branch")
+source=("$pkgname::git+https://github.com/FontManager/master.git#branch=$_branch")
 sha256sums=('SKIP')
 
 pkgver() {
