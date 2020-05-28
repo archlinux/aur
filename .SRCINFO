@@ -1,12 +1,12 @@
 pkgbase = ec2-metadata
-	pkgdesc = A simple bash script that uses curl to query the EC2 instance Metadata from within a running EC2 instance
+	pkgdesc = Query the EC2 instance Metadata from within a running instance
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://aws.amazon.com/code/ec2-instance-metadata-query-tool/
 	arch = any
 	license = Apache
 	depends = curl
-	source = http://s3.amazonaws.com/ec2metadata/ec2-metadata
+	source = https://s3.amazonaws.com/ec2metadata/ec2-metadata
 	sha256sums = e320585b2455a879f201c6a0cc381a5b645ce1bd851c7946e12dc6513c07769d
 
 pkgname = ec2-metadata
