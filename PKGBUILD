@@ -9,7 +9,7 @@ url="https://github.com/TheCynicalTeam/$pkgname"
 license=('GNU General Public License v3.0')
 depends=('python-pyqt5' 'betterlockscreen')
 source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=('4cc6d65bfb71480dde5d9d23b64df63fed3805a6b6dc6b30b4cee8db3f35c9c5')
+sha256sums=('b07ae40741dfa3e76f3291a795a25d978962ce077a9e9bdebbd91cc248bd5ee2')
 
 package() {
   cp -a $srcdir/$pkgname-$pkgver-$pkgrel/etc $pkgdir/etc
