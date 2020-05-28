@@ -1,13 +1,15 @@
 pkgbase = jama
 	pkgdesc = C++ Linear Algebra Library based on TNT
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://math.nist.gov/tnt
 	arch = any
 	license = custom
 	depends = tnt
 	source = https://math.nist.gov/tnt/jama125.zip
+	source = tnt-include-fix.patch
 	md5sums = 7a5acf6031cf35a6bb15a0fe1f70ed34
+	md5sums = 1d31f1962c081181a26033575a313dfc
 
 pkgname = jama
 

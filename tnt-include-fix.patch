@@ -1,0 +1,64 @@
+diff -u --color -urt jama.orig/jama_eig.h jama/jama_eig.h
+--- jama.orig/jama_eig.h	2004-10-15 23:07:11.000000000 +0200
++++ jama/jama_eig.h	2020-05-28 09:28:04.264084747 +0200
+@@ -2,9 +2,9 @@
+ #define JAMA_EIG_H
+ 
+ 
+-#include "tnt_array1d.h"
+-#include "tnt_array2d.h"
+-#include "tnt_math_utils.h"
++#include <tnt/tnt_array1d.h>
++#include <tnt/tnt_array2d.h>
++#include <tnt/tnt_math_utils.h>
+ 
+ #include <algorithm>
+ // for min(), max() below
+diff -u --color -urt jama.orig/jama_lu.h jama/jama_lu.h
+--- jama.orig/jama_lu.h	2004-11-16 20:28:42.000000000 +0100
++++ jama/jama_lu.h	2020-05-28 09:28:12.657434371 +0200
+@@ -1,7 +1,7 @@
+ #ifndef JAMA_LU_H
+ #define JAMA_LU_H
+ 
+-#include "tnt.h"
++#include <tnt/tnt.h>
+ #include <algorithm>
+ //for min(), max() below
+ 
+diff -u --color -urt jama.orig/jama_qr.h jama/jama_qr.h
+--- jama.orig/jama_qr.h	2005-06-03 19:46:33.000000000 +0200
++++ jama/jama_qr.h	2020-05-28 09:28:32.810806664 +0200
+@@ -1,9 +1,9 @@
+ #ifndef JAMA_QR_H
+ #define JAMA_QR_H
+ 
+-#include "tnt_array1d.h"
+-#include "tnt_array2d.h"
+-#include "tnt_math_utils.h"
++#include <tnt/tnt_array1d.h>
++#include <tnt/tnt_array2d.h>
++#include <tnt/tnt_math_utils.h>
+ 
+ namespace JAMA
+ {
+diff -u --color -urt jama.orig/jama_svd.h jama/jama_svd.h
+--- jama.orig/jama_svd.h	2007-05-03 17:07:49.000000000 +0200
++++ jama/jama_svd.h	2020-05-28 09:28:47.970835840 +0200
+@@ -2,11 +2,11 @@
+ #define JAMA_SVD_H
+ 
+ 
+-#include "tnt_array1d.h"
+-#include "tnt_array1d_utils.h"
+-#include "tnt_array2d.h"
+-#include "tnt_array2d_utils.h"
+-#include "tnt_math_utils.h"
++#include <tnt/tnt_array1d.h>
++#include <tnt/tnt_array1d_utils.h>
++#include <tnt/tnt_array2d.h>
++#include <tnt/tnt_array2d_utils.h>
++#include <tnt/tnt_math_utils.h>
+ 
+ #include <algorithm>
+ // for min(), max() below
