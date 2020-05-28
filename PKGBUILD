@@ -8,7 +8,7 @@ pkgdesc="A simple tool to calculate the overall performance of an investment por
 arch=('x86_64')
 url="https://www.portfolio-performance.info"
 options=('!strip')
-depends=()
+depends=('jre11-openjdk')
 
 source=(
     portfolio_$pkgver.tar.gz::"https://github.com/buchen/portfolio/releases/download/${pkgver}/PortfolioPerformance-${pkgver}-linux.gtk.x86_64.tar.gz"
