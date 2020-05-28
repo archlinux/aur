@@ -9,6 +9,7 @@ arch=('any')
 url=https://github.com/PyCQA/flake8-bugbear
 license=('MIT')
 depends=('flake8' 'python-attrs' 'python-setuptools')
+# checkdepends=('python-hypothesis')  XXX: Other checkdepends are not packaged.
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha512sums=('56c41393dbc36abc1fa71f6f8b7aebc0d69ac9f95ee92726655930cb5178c3c32a3ee69c9100d1dcb441eea5dd32877e668e0ae44e0ad1fe40b7694d7070e983')
 
@@ -17,10 +18,10 @@ build() {
   python setup.py build
 }
 
-check() {
-  cd $_name-$pkgver
-  python -m tests.test_bugbear
-}
+# check() {
+#   cd $_name-$pkgver
+#   python -m tests.test_bugbear
+# }
 
 package() {
   cd $_name-$pkgver
