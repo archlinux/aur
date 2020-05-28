@@ -1,0 +1,13 @@
+pkgbase = alif
+	pkgdesc = The Alif Arabic Programming Language - لغة البرمجة العربية ألف
+	pkgver = 2.0.12
+	pkgrel = 0
+	url = https://www.aliflang.org/
+	arch = x86_64
+	license = GPL3
+	depends = boost
+	source = https://github.com/sulimanp/alif/archive/master.zip
+	md5sums = 77ae18782dea5b6cbef90b026e731cc5
+
+pkgname = alif
+
