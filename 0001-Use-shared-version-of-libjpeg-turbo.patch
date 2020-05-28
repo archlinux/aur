@@ -1,42 +1,34 @@
-From 9dc735727f5ae73ffb2d9b29fe079d0b0b4a7245 Mon Sep 17 00:00:00 2001
+From 7796485f7fd696f9e6b78b77eee65fc142be16f0 Mon Sep 17 00:00:00 2001
 From: Mateusz Gozdek <mgozdekof@gmail.com>
-Date: Tue, 5 May 2020 12:06:57 +0200
+Date: Thu, 28 May 2020 09:32:03 +0200
 Subject: [PATCH] Use shared version of libjpeg-turbo
-
-As Arch Linux does not provide static library file.
 
 Signed-off-by: Mateusz Gozdek <mgozdekof@gmail.com>
 ---
- linux/Makefile | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ linux/Makefile | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-diff --git a/linux/Makefile b/linux/Makefile
-index 6995c18..a45957d 100644
---- a/linux/Makefile
-+++ b/linux/Makefile
-@@ -8,8 +8,7 @@
+diff --git linux/Makefile linux/Makefile
+index 0072361..9ccf019 100644
+--- linux/Makefile
++++ linux/Makefile
+@@ -6,15 +6,11 @@
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ # Use at your own risk. See README file for more details.
  
+-JPEG_DIR ?= /opt/libjpeg-turbo
+-JPEG_INCLUDE ?= $(JPEG_DIR)/include
+-JPEG_LIB ?= $(JPEG_DIR)/lib`getconf LONG_BIT`
+-
  CC    = -no-pie
  GTK   = `pkg-config --libs --cflags gtk+-2.0` `pkg-config --libs x11`
--LIBS  = `pkg-config --libs --cflags libswscale libavutil`
--JPEG  = -I/opt/libjpeg-turbo/include /opt/libjpeg-turbo/lib`getconf LONG_BIT`/libturbojpeg.a
-+LIBS  = `pkg-config --libs --cflags libswscale libavutil libturbojpeg`
- SRC      = src/connection.c src/decoder.c
+ LIBAV = `pkg-config --libs --cflags libswscale libavutil`
+ LIBS  =  -lspeex -lasound -lpthread -lm
+-JPEG  = -I$(JPEG_INCLUDE) $(JPEG_LIB)/libturbojpeg.a
++JPEG  = `pkg-config --libs --cflags libturbojpeg`
+ SRC      = src/connection.c src/settings.c src/decoder*.c src/av.c src/adb.c
  NO_WARN  = -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast
  
-@@ -23,10 +22,10 @@ endif
- all: droidcam-cli droidcam
- 
- droidcam-cli: src/droidcam-cli.c $(SRC)
--	gcc -Wall $(CC) $(NO_WARN) $^        $(JPEG) $(LIBS) -lm -o droidcam-cli
-+	gcc -Wall $(CC) $(NO_WARN) $^        $(LIBS) -lm -o droidcam-cli
- 
- droidcam: src/droidcam.c $(SRC)
--	gcc -Wall $(CC) $(NO_WARN) $^ $(GTK) $(JPEG) $(LIBS) -lm -o droidcam
-+	gcc -Wall $(CC) $(NO_WARN) $^ $(GTK) $(LIBS) -lm -o droidcam
- 
- clean:
- 	rm droidcam || true
 -- 
 2.26.2
 
