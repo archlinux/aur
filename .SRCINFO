@@ -1,12 +1,14 @@
 pkgbase = jobber
-	pkgdesc = jobber
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgdesc = An alternative to cron, with sophisticated status-reporting and error-handling
+	pkgver = 1.4.3
+	pkgrel = 1
 	url = http://dshearer.github.io/jobber/
-	install = .install
 	arch = x86_64
 	license = MIT
-	source = https://github.com/dshearer/jobber/releases/download/v1.4.0/jobber-1.4.0-1.el7.x86_64.rpm
-        md5sums = 8741abd53187b54e6f92fbcd0ca3afe39
+	makedepends = go
+	depends = glibc
+	source = jobber-1.4.3.tar.gz::https://github.com/dshearer/jobber/archive/v1.4.3.tar.gz
+	sha256sums = 14efd9e088e4b3e1e4018fb8cd3161cc43da7941261b31c3e90d630545b305db
 
 pkgname = jobber
+
