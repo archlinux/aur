@@ -25,6 +25,7 @@ sha256sums_arm=(
 options=(!strip)
 
 package() {
+    mkdir -p "${pkgdir}/usr/bin"
     cd "${srcdir}/teleport"
     install -m755 -t "${pkgdir}/usr/bin/" tctl tsh
 }
