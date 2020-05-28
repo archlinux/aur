@@ -2,7 +2,7 @@
 
 pkgname=o
 pkgver=2.29.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Small, fast and VT100-compatible text editor'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
@@ -11,13 +11,25 @@ makedepends=(git go-pie)
 source=("git+$url#commit=07d440ec0a50122379b6dbd8f6a88961fbb35bfb") # tag: 2.29.5
 sha256sums=('SKIP')
 options=(!strip)
+optdepends=('cxx: for compiling C++'
+            'brittany: for formatting Haskell'
+            'clang: for formatting C++ code with clang-format'
+            'rustup: for compiling and formatting Rust'
+            'zig: for compiling and formatting Zig'
+            'v: for compiling and formatting V'
+            'ghc: for compiling Haskell'
+            'ocaml: for compiling and formatting OCaml'
+            'autopep8: for formatting Python'
+            'scdoc: for writing man pages'
+            'asciidoctor: for writing man pages'
+            'pandoc: for exporting Markdown to PDF'
+            'guessica: for updating PKGBUILD files')
 
 build() {
   cd $pkgname
 
   # Using gccgo and upx gives a smaller size
   #go build -buildmode=pie -gccgoflags="-s -w $LDFLAGS" && upx o
-
   go build -buildmode=pie -gcflags="all=-trimpath=$PWD" -asmflags "all=-trimpath=$PWD" -ldflags "-s -w -extldflags $LDFLAGS"
 }
 
