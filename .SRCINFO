@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-interactive-markers
 	pkgdesc = ROS - 3D interactive marker communication library for RViz and similar tools.
-	pkgver = 1.11.4
-	pkgrel = 3
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://wiki.ros.org/interactive_markers
 	arch = i686
 	arch = x86_64
@@ -26,8 +26,8 @@ pkgbase = ros-noetic-interactive-markers
 	depends = ros-noetic-roscpp
 	depends = ros-noetic-visualization-msgs
 	depends = ros-noetic-rospy
-	source = ros-noetic-interactive-markers-1.11.4.tar.gz::https://github.com/ros-visualization/interactive_markers/archive/1.11.4.tar.gz
-	sha256sums = 33319252510cae10a8a2e2af5ac104f33ebb0b2f5ae8d9ab9649b5dc9ee34a7a
+	source = ros-noetic-interactive-markers-1.12.0.tar.gz::https://github.com/ros-visualization/interactive_markers/archive/1.12.0.tar.gz
+	sha256sums = 16623384766c34173a886bfeef5b6c7bccd5625f879df214bff01aae8043cfc0
 
 pkgname = ros-noetic-interactive-markers
 

@@ -4,10 +4,9 @@ pkgdesc="ROS - 3D interactive marker communication library for RViz and similar 
 url='https://wiki.ros.org/interactive_markers'
 
 pkgname='ros-noetic-interactive-markers'
-pkgver='1.11.4'
-_pkgver_patch=0
+pkgver='1.12.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -43,7 +42,7 @@ depends=(
 
 _dir="interactive_markers-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/interactive_markers/archive/${pkgver}.tar.gz")
-sha256sums=('33319252510cae10a8a2e2af5ac104f33ebb0b2f5ae8d9ab9649b5dc9ee34a7a')
+sha256sums=('16623384766c34173a886bfeef5b6c7bccd5625f879df214bff01aae8043cfc0')
 
 build() {
 	# Use ROS environment variables.
