@@ -7,8 +7,8 @@ pkgdesc="PDF and image viewer for the Linux framebuffer"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/jichu4n/jfbview"
 license=('Apache')
-makedepends=('cmake' 'mesa' 'glu' 'libxi' 'libxrandr')
-depends=('ncurses' 'imlib2')
+makedepends=('cmake')
+depends=('ncurses' 'imlib2' 'libjpeg-turbo')
 conflicts=('jfbpdf' 'jfbview')
 replaces=('jfbpdf' 'jfbview')
 source=("git+${url}.git")
@@ -28,6 +28,7 @@ prepare() {
 build(){
   cd "${srcdir}/${_pkgname}"
   cmake -H. -Bbuild \
+      -DBUILD_TESTING=OFF \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
