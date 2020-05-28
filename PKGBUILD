@@ -1,10 +1,12 @@
-# Maintainer: bohoomil <@zoho.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: bohoomil <@zoho.com>
 
 pkgname=ttf-carlito-ib
 pkgver=20140820
 pkgrel=1
 depends=('fontconfig')
-pkgdesc="Carlito is a sans-serif font metrically compatible with Calibri."
+pkgdesc="A sans-serif font metrically compatible with Calibri"
 url="https://code.google.com/p/chromium/issues/detail?id=280557"
 arch=('any')
 groups=('infinality-bundle-fonts')
