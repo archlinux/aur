@@ -1,0 +1,33 @@
+pkgbase = sensual-git
+	pkgdesc = Sensual theme for Plasma desktop
+	pkgver = r555.52b16a2
+	pkgrel = 1
+	url = https://github.com/L4ki/Sensual-Theme.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = sensual-git::git+https://github.com/L4ki/Sensual-Theme.git
+	md5sums = SKIP
+
+pkgname = sensual-kde-theme-git
+	optdepends = sensual-kvantum-theme-git: Sensual theme for Kvantum Qt style (recommended)
+	optdepends = sensual-breeze-git: Matching GTK theme
+	optdepends = sensual-breeze-icons-git: Default icons
+	optdepends = breeze-chameleon-icons: Alternative icons
+	optdepends = sensual-sddm-theme-git: Matching SDDM theme
+
+pkgname = sensual-kvantum-theme-git
+	pkgdesc = Sensual Breeze theme for Kvantum
+
+pkgname = sensual-breeze-git
+	pkgdesc = Sensual Breeze theme for GTK 2/3
+
+pkgname = sensual-breeze-icons-git
+	pkgdesc = Sensual Breeze icons
+	depends = gtk-update-icon-cache
+
+pkgname = sensual-sddm-theme-git
+	pkgdesc = Sensual theme for SDDM
+	depends = sddm
+
