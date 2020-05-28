@@ -2,7 +2,7 @@
 
 pkgname=spiceamp-git
 pkgver=1.0.r0.g05cd6b7
-pkgrel=1
+pkgrel=2
 pkgdesc="Non-realtime high realistic software guitar processor. Works with *.wav files as input and output. It uses ngspice for electric circuit simulation and FFT convolver with Impulse Response *.wav file for cabinet simulation."
 arch=('x86_64')
 url="https://github.com/olegkapitonov/spiceAmp"
@@ -11,6 +11,7 @@ groups=()
 depends=(
 'fftw' 'zita-resampler'
 'qt5-base' 'qt5-tools' 'gsl'
+'ngspice'
 )
 makedepends=('git' 'meson' 'gcc')
 provides=("${pkgname%-*}")
