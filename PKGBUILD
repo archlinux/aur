@@ -3,13 +3,13 @@
 # WARNING: Unfinished, aguilas has a lot of stuff in the makefile that needs
 # fixing (e.g. hard coded Debian paths) before this should be released. The
 # upstream development branch has some action so I'm waiting to package that,
-# but this 1.x branch should probably never be installed/runt .
+# but this 1.x branch should probably never be installed/run.
 
 pkgname=aguilas
 pkgver=1.0.2
 pkgrel=0
 url='https://github.com/LuisAlejandro/aguilas'
-pkgdesc='An LDAP user manager and password self-service webaapp.'
+pkgdesc='An LDAP user manager and password self-service webaapp'
 arch=('any')
 license=('GPL3')
 #depends=('php' 'php-mcrypt' 'php-gd' 'php-ldap' 'php-suhosin' 'smtp-forwarder' 'mailx')

@@ -1,5 +1,5 @@
 pkgbase = aguilas
-	pkgdesc = An LDAP user manager and password self-service webaapp.
+	pkgdesc = An LDAP user manager and password self-service webaapp
 	pkgver = 1.0.2
 	pkgrel = 0
 	url = https://github.com/LuisAlejandro/aguilas
