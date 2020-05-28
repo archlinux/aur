@@ -7,7 +7,7 @@ pkgdesc='Logout script for qt5'
 arch=('any')
 url="https://github.com/TheCynicalTeam/$pkgname"
 license=('GNU General Public License v3.0')
-depends=('python-pyqt5' 'betterlockscreen')
+depends=('python-pyqt5' 'betterlockscreen0' 'gtk-engine-murrine')
 source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
 sha256sums=('bfe854915e42d568c232dd9261173fe7afacb0446523a13c9efb3cc6c3f8f51b')
 
