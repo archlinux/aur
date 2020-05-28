@@ -1,6 +1,6 @@
 pkgbase = python-jmclient-git
 	pkgdesc = JoinMarket library for client protocol
-	pkgver = 0.6.1.r91.ga050a89
+	pkgver = 0.6.2.r59.gce35dee
 	pkgrel = 1
 	url = https://github.com/JoinMarket-Org/joinmarket-clientserver/tree/master/jmclient
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = python-jmclient-git
 	depends = python-argon2_cffi
 	depends = python-bencoder-pyx
 	depends = python-pyaes
+	depends = python-urldecode
 	source = python-jmclient-git::git+https://github.com/JoinMarket-Org/joinmarket-clientserver.git
 	sha256sums = SKIP
 
