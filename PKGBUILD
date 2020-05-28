@@ -1,10 +1,12 @@
-# Maintainer: bohoomil <@zoho.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Contributor: bohoomil <@zoho.com>
 
 pkgname=ttf-vlgothic-ibx
 pkgver=20141206
 pkgrel=1
 depends=('fontconfig')
-pkgdesc="Japanese VL Gothic font family."
+pkgdesc="Japanese VL Gothic font family"
 url="http://vlgothic.dicey.org/"
 arch=('any')
 groups=('infinality-bundle-fonts-extra')
