@@ -1,19 +1,20 @@
 # Maintainer: Arley Henostroza <arllk10[at]gmail[dot]com>
+# Contibutor: facekapow
 
 pkgname=genie-systemd
 _pkgname=genie
-pkgver=1.20
+pkgver=1.23
 pkgrel=3
 pkgdesc="A quick way into a systemd \"bottle\" for WSL"
 arch=('x86_64')
 url="https://github.com/arkane-systems/genie"
 license=('custom:The Unlicense')
-depends=('daemonize' 'dotnet-runtime>=3.0' 'dotnet-host>=3.0' 'hostess' 'inetutils')
+depends=('daemonize' 'dotnet-runtime>=3.0' 'dotnet-host>=3.0' 'inetutils')
 conflicts=('genie-systemd')
 provides=('genie-systemd')
 source=("${url}/releases/download/${pkgver}/${_pkgname}.tar.gz"
         'LICENSE')
-sha256sums=('dcb278922e0c0c13d0e3134cbfbbc30837b7bdb20895e55c3e1ef41ee7ddf77f'
+sha256sums=('fbbd633b31cbc2cc8662ee47643e6b7c8ace8a1f296c0faab59bc10b6446de64'
             '88d9b4eb60579c191ec391ca04c16130572d7eedc4a86daa58bf28c6e14c9bcd')
 
 prepare() {
