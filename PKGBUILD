@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helm-edit
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Helm plugin to edit releases'
 arch=('x86_64')
 url='https://github.com/mstrzele/helm-edit'
@@ -32,7 +32,7 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -Dm755 helm-edit -t "${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}/bin"
+  install -Dm755 helm-edit -t "${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}"
   install -m644 plugin.yaml -t "${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}"
   install -m755 plugin.complete -t "${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"

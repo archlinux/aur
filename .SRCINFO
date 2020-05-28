@@ -1,7 +1,7 @@
 pkgbase = helm-edit
 	pkgdesc = Helm plugin to edit releases
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mstrzele/helm-edit
 	install = helm-edit.install
 	arch = x86_64
