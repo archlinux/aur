@@ -3,7 +3,7 @@
 pkgname=llvm90
 pkgdesc="LLVM compiler toolchain, version 9.0.1"
 pkgver=9.0.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
@@ -37,4 +37,7 @@ package() {
   DESTDIR="$pkgdir" make install
 
   install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  mkdir -p "$pkgdir/etc/ld.so.conf.d/"
+  echo "/opt/llvm/lib" > "$pkgdir/etc/ld.so.conf.d/70-llvm90.conf"
 }
