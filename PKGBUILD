@@ -8,11 +8,11 @@ pkgver=0.11
 pkgrel=5
 pkgdesc="Alternative to Test::More::use_ok"
 arch=('any')
-url="http://search.mcpan.org/dist/$_distname"
+url="https://search.mcpan.org/dist/$_distname"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.8.9')
 options=(!emptydirs)
-source=("http://search.cpan.org/CPAN/authors/id/A/AU/AUDREYT/$_distname-$pkgver.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/A/AU/AUDREYT/$_distname-$pkgver.tar.gz")
 sha256sums=('8410438a2acf127bffcf1ab92205b747a615b487e80a48e8c3d0bb9fa0dbb2a8')
 
 build() {
