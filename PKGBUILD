@@ -1,9 +1,11 @@
-# Submitter: Jochen Schalanda <jochen+aur AT schalanda.aname>
-# Maintainer: McNoggins <gagnon88 AT gmail DOT com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: McNoggins <gagnon88 AT gmail DOT com>
+# Contributor: Jochen Schalanda <jochen+aur AT schalanda.aname>
+
 pkgname=travis-lint
 pkgver=2.0.0
 pkgrel=1
-pkgdesc='travis-lint is a tool that check your .travis.yml for possible issues, deprecations and so on.'
+pkgdesc='A tool that check your .travis.yml for possible issues, deprecations, and so on'
 arch=(any)
 url='https://github.com/travis-ci/travis-lint'
 license=("MIT")
