@@ -1,11 +1,13 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Michal Krenek <mikos@sg1.cz>
-# Maintainer: bohoomil <@zoho.com>
+# Contributor: bohoomil <@zoho.com>
 
 pkgname=ttf-dejavu-ib
 pkgver=2.37
 pkgrel=2
-pkgdesc="Font family based on the Bitstream Vera Fonts with a wider range of characters. Re-packed for infinality-bundle-fonts. TrueType version."
+pkgdesc="Font family based on the Bitstream Vera Fonts with a wider range of characters"
 url="http://dejavu-fonts.org/wiki/Main_Page"
 arch=('any')
 depends=('fontconfig')
