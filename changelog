@@ -1,3 +1,16 @@
+Proton-5.8-GE-1-NR
+
+This pre-release has yet more media foundation work added. I'm tagging it as a pre-release because I've had to disable some things in order for a few new games to work.
+
+-Fullscreen hack was found to be the cause of Mortal Kombat 11 not working. This also requires a few other patches to be disabled such as some additional vulkan patches and raw input, as well as the Sekiro patch. Fullscreen hack used to work with this game, so this is just a temporary disable until I can figure out what in the patchset is causing MK11 to not work.
+-Spyro audio is fully working now
+-BL3 Markus intro has audio issues still but is skippable
+-Soul Calibur VI freezes at the intro screen currently due to an issue with SAR audio.
+-Seven actually launches now. Audio for intro movie plays but shows black screen. New game results in crash, again due to SAR audio.
+-PC Building Simulator no longer freezes when running 3dmark on low settings. It just skips the video.
+This is -very- much a pre-release specifically for MK11. With MK11's new expansion just released I wanted to get this out there because it not only allows MK11 to run with gamepad support, but also Injustice 2.
+I have not tested, but from other sources I'm informed MK11's online mode still does -not- currently work.
+
 Proton-5.8-GE-2-MF
 
 This is an update to 5.8-GE-1 in regards to media foundation work:
