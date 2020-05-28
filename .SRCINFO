@@ -1,5 +1,5 @@
 pkgbase = python-hamster-lib-git
-	pkgdesc = A library for common timetracking functionality.
+	pkgdesc = A library for common timetracking functionality
 	pkgver = 0.13.1.r20.gbc34c82
 	pkgrel = 1
 	url = https://github.com/projecthamster/hamster-lib
