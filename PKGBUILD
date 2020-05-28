@@ -10,7 +10,7 @@ url=https://github.com/PyCQA/flake8-bugbear
 license=('MIT')
 depends=('flake8' 'python-attrs' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('36e754431318cff665457d6c5e5d60a22b16b124a54478d6336258d8d5db97eb9b6bac45b0f8f0d728d3b3f66447fae4be4c80c107deb55b6d1e7e739b42c4d8')
+sha512sums=('56c41393dbc36abc1fa71f6f8b7aebc0d69ac9f95ee92726655930cb5178c3c32a3ee69c9100d1dcb441eea5dd32877e668e0ae44e0ad1fe40b7694d7070e983')
 
 build() {
   cd $_name-$pkgver
