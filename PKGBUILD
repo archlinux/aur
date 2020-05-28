@@ -4,7 +4,7 @@ url='https://wiki.ros.org/moveit_ros_planning_interface'
 pkgname='ros-noetic-moveit-ros-planning-interface'
 pkgver='1.0.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-noetic-tf-conversions
@@ -43,9 +43,9 @@ depends=(${ros_depends[@]}
 
 _dir="moveit-${pkgver}/moveit_ros/planning_interface"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz"
-        "eigenpy.patch"::"https://patch-diff.githubusercontent.com/raw/ros-planning/moveit/pull/2117.patch")
+        "eigenpy.patch"::"https://patch-diff.githubusercontent.com/raw/ros-planning/moveit/pull/2118.patch")
 sha256sums=('b0ac91cd4c4dc29d9bd5e3885a1a457252495b3f2bedb46ddfe04154f5ac2358'
-            '9b678848cd2614cf1155bfead3bd0d54d671cb1c9df5ec73b9b5ad2ad1cd1563')
+            '8854bafb15d949dda576e388ff062e326e7a8a84e910571745bcc26552fd8ee2')
 
 prepare() {
     cd moveit-${pkgver}
