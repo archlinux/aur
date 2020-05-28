@@ -1,5 +1,7 @@
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: JJDaNiMoTh <jjdanimoth.aur@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: JJDaNiMoTh <jjdanimoth.aur@gmail.com>
 # Contributor: zlowly <zlowly [at] archlinux.org>
 # Contributor: bohoomil <@zoho.com>
 
@@ -7,7 +9,7 @@ pkgname=ttf-wqy-zenhei-ibx
 _name=wqy-zenhei
 pkgver=0.9.45
 pkgrel=7
-pkgdesc="A Hei Ti Style (sans-serif) Chinese Outline Font."
+pkgdesc="A Hei Ti Style (sans-serif) Chinese Outline Font"
 arch=('any')
 license=(GPL2,custom:"font embedding exception")
 url="http://wenq.org/enindex.cgi"
