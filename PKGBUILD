@@ -1,72 +1,69 @@
-# Maintainer: bohoomil <@zoho.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Contributor: bohoomil <@zoho.com>
 
-pkgbase=ttf-yanone-kaffeesatz-ibx
-pkgname=('otf-yanone-kaffeesatz-ibx' 'ttf-yanone-kaffeesatz-ibx')
-pkgver=1.002
-pkgrel=5
-depends=('fontconfig')
-pkgdesc="Yanone Kaffeesatz was first published in 2004. Its Bold is reminiscent of 1920s coffee house typography, while the rather thin fonts bridge the gap to present times."
-url="http://www.yanone.de/"
+_font=yanone-kaffeesatz
+pkgbase=$_font-font
+pkgname=({otf,ttf}-$_font{,-infinality})
+pkgver=2.001
+_sha=342dc8badffc187b2116099c5060e46c81eaf80d
+pkgrel=1
+pkgdesc='Reminiscent of 1920s coffee house typography, bridges the gap to present times'
+url='https://www.yanone.de/fonts/kaffeesatz'
 arch=('any')
-license=('custom:OFL')
-groups=('infinality-bundle-fonts-extra')
-# https://www.fontsquirrel.com/fonts/yanone-kaffeesatz
-source=(git://github.com/alexeiva/yanone-kaffeesatz.git
-        45-yanone-kaffeesatz.conf
-        90-non-tt-yanone-kaffeesatz.conf
-        90-tt-yanone-kaffeesatz.conf)
-sha1sums=('SKIP'
-          '76df22b5dbc02abda1bbc6c887d848958695be9c'
-          '4cc8a9806bb0718c09ccc987a981fc427671c155'
-          'c83a6771a50d2b7c95e7fb872725ce430beb1bd9')
+license=('OFL')
+makedepends=('git')
+source=("git+https://github.com/alexeiva/$_font.git#tag=$sha"
+        "45-$_font.conf"
+        "90-non-tt-$_font.conf"
+        "90-tt-$_font.conf")
+sha256sums=('SKIP'
+            '501ba2f942d261f39b2e41573407ece4214cbe99f44a34ee9235d4c98c079b21'
+            '82cfa4d8d6ab06d97b3d2e39d5631154c153dd29bc747669d05e5039d217943f'
+            '6b7bc5cd5c13770e073c1d49da13bd5df98a88916acb2dadbfb07aeb636c50c9')
 
-package_otf-yanone-kaffeesatz-ibx(){
-  pkgdesc="Yanone Kaffeesatz was first published in 2004. Its Bold is reminiscent of 1920s coffee house typography, while the rather thin fonts bridge the gap to present times. OpenType version."
-  conflicts=('otf-yanone-kaffeesatz' 'ttf-yanone-kaffeesatz-ibx' 'ttf-yanone_kaffeesatz_zerohack')
-  replaces=('otf-yanone-kaffeesatz')
-
-  cd "${srcdir}/yanone-kaffeesatz"
-
-  install -d -m755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
-  install -m644 OFL.txt "${pkgdir}"/usr/share/licenses/"${pkgname}/COPYING"
-
-  install -d -m755 "${pkgdir}"/usr/share/fonts/"${pkgname}"
-  install -m644 fonts/otf/*.otf "${pkgdir}"/usr/share/fonts/"${pkgname}"
-
-  cd "${srcdir}"
-  install -m755 -d "${pkgdir}"/etc/fonts/conf.avail
-  install -m755 -d "${pkgdir}"/etc/fonts/conf.d
-  install -m644 45-yanone-kaffeesatz.conf \
-    "${pkgdir}"/etc/fonts/conf.avail/45-yanone-kaffeesatz.conf
-  install -m644 90-non-tt-yanone-kaffeesatz.conf \
-    "${pkgdir}"/etc/fonts/conf.avail/90-non-tt-yanone-kaffeesatz.conf
-
-  cd "${pkgdir}"/etc/fonts/conf.d
-  ln -s ../conf.avail/45-yanone-kaffeesatz.conf .
-  ln -s ../conf.avail/90-non-tt-yanone-kaffeesatz.conf .
+package_otf-yanone-kaffeesatz() {
+    provides=("$pkgbase")
+    conflicts=("$pkgname-ibx<2")
+    pkgdesc+=' (OTF)'
+    cd "$_font"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" fonts/otf/*.otf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt CONTRIBUTORS.txt
+    install -Dm644 -t "$pkgdir/usr/share/docs/$pkgname/" AUTHORS.txt README.md
 }
 
-package_ttf-yanone-kaffeesatz-ibx(){
-  pkgdesc="Yanone Kaffeesatz was first published in 2004. Its Bold is reminiscent of 1920s coffee house typography, while the rather thin fonts bridge the gap to present times. TruenType version."
-  conflicts=('otf-yanone-kaffeesatz' 'otf-yanone-kaffeesatz-ibx' 'ttf-yanone_kaffeesatz_zerohack')
+package_ttf-yanone-kaffeesatz() {
+    provides=("$pkgbase")
+    conflicts=("$pkgname-ibx<2")
+    pkgdesc+=' (TTF)'
+    cd "$_font"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" fonts/ttf/*.ttf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt CONTRIBUTORS.txt
+    install -Dm644 -t "$pkgdir/usr/share/docs/$pkgname/" AUTHORS.txt README.md
+}
 
-  cd "${srcdir}/yanone-kaffeesatz"
+package_otf-yanone-kaffeesatz-infinality() {
+    provides=("otf-$_font-ibx")
+    replaces=("otf-$_font-ibx")
+    confilts=("ttf-$_font-infinality")
+    groups=('infinality-bundle-fonts-extra')
+    pkgdesc+=' (OTF infinality configuration files)'
+    depends=("${pkgname%-infinality}")
+    install -Dm644 -t "$pkgdir/etc/fonts/conf.avail/" 45-yanone-kaffeesatz.conf 90-non-tt-yanone-kaffeesatz.conf
+    install -dm755 "$pkgdir/etc/fonts/conf.d"
+    cd "$pkgdir/etc/fonts/conf.d"
+    ln -sf ../conf.avail/*.conf .
+}
 
-  install -d -m755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
-  install -m644 OFL.txt "${pkgdir}"/usr/share/licenses/"${pkgname}/COPYING"
-
-  install -d -m755 "${pkgdir}"/usr/share/fonts/"${pkgname}"
-  install -m644 fonts/ttf/*.ttf "${pkgdir}"/usr/share/fonts/"${pkgname}"
-
-  cd "${srcdir}"
-  install -m755 -d "${pkgdir}"/etc/fonts/conf.avail
-  install -m755 -d "${pkgdir}"/etc/fonts/conf.d
-  install -m644 45-yanone-kaffeesatz.conf \
-    "${pkgdir}"/etc/fonts/conf.avail/45-yanone-kaffeesatz.conf
-  install -m644 90-tt-yanone-kaffeesatz.conf \
-    "${pkgdir}"/etc/fonts/conf.avail/90-tt-yanone-kaffeesatz.conf
-
-  cd "${pkgdir}"/etc/fonts/conf.d
-  ln -s ../conf.avail/45-yanone-kaffeesatz.conf .
-  ln -s ../conf.avail/90-tt-yanone-kaffeesatz.conf .
+package_ttf-yanone-kaffeesatz-infinality() {
+    provides=("ttf-$_font-ibx")
+    replaces=("ttf-$_font-ibx")
+    confilts=("otf-$_font-infinality")
+    groups=('infinality-bundle-fonts-extra')
+    pkgdesc+=' (TTF infinality configuration files)'
+    depends=("${pkgname%-infinality}")
+    install -Dm644 -t "$pkgdir/etc/fonts/conf.avail/" 45-yanone-kaffeesatz.conf 90-tt-yanone-kaffeesatz.conf
+    install -dm755 "$pkgdir/etc/fonts/conf.d"
+    cd "$pkgdir/etc/fonts/conf.d"
+    ln -sf ../conf.avail/*.conf .
 }
