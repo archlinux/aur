@@ -55,6 +55,7 @@ pkgbase = lv2-plugins-aur-meta
 	depends = yoshimi
 	depends = zplugins.lv2-git
 	depends = zyn-fusion
+	depends = raul-git
 
 pkgname = lv2-plugins-aur-meta
 
