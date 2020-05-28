@@ -1,0 +1,35 @@
+pkgbase = domino-chain
+	pkgdesc = Clone of the puzzle game Pushover (Amiga).
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://domino-chain.gitlab.io/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	makedepends = git
+	makedepends = gnu-free-fonts
+	makedepends = imagemagick
+	makedepends = povray
+	makedepends = shellcheck
+	depends = boost-libs
+	depends = fribidi
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libpng
+	depends = lua52
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	depends = zlib
+	source = domino-chain::git+https://gitlab.com/domino-chain/domino-chain.gitlab.io.git#tag=1.1
+	source = path-to-fonts.patch
+	source = domino-chain.desktop
+	md5sums = SKIP
+	md5sums = f02b1107acd16f962eee2d8aa8fb6875
+	md5sums = 4ac36ca43ea455b5c251ec4558d83162
+
+pkgname = domino-chain
+

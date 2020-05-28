@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Domino-chain
+Comment=Clone of the puzzle game pushover (Amiga)
+Exec=domino-chain
+Icon=/usr/share/icons/hicolor/64x64/apps/domino-chain.png
+Categories=Game;PuzzleGame;
+Terminal=false
