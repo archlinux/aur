@@ -1,0 +1,16 @@
+pkgbase = pwncat-git
+	pkgdesc = Netcat on steroids with Firewall, IDS/IPS evasion, bind and reverse shell, self-injecting shell and port forwarding magic - and its fully scriptable with Python (PSE)
+	pkgver = 0.0.22.alpha.r0.gf0e70d6
+	pkgrel = 1
+	url = https://cytopia.github.io/pwncat
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	provides = pwncat
+	source = git+https://github.com/cytopia/pwncat
+	sha256sums = SKIP
+
+pkgname = pwncat-git
+
