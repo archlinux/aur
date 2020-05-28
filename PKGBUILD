@@ -7,14 +7,14 @@ pkgname=etcher-git
 _pkgname=etcher
 _pkgver=1.5.80
 _branch=master
-pkgver=1.5.80.r0.g7c4f4cac
+pkgver=1.5.94.r0.g8513d63a
 pkgrel=1
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
 arch=(x86_64)
 _github_url='https://github.com/balena-io/etcher'
 url='https://etcher.io'
 license=(Apache)
-depends=("electron7" "gtk3" "libxtst" "libxss" "nss" "alsa-lib" "nodejs" "glib2" "polkit" "libusb")
+depends=("electron9-bin" "gtk3" "libxtst" "libxss" "nss" "alsa-lib" "nodejs" "glib2" "polkit" "libusb")
 makedepends=("npm" "python2" "git" "jq")
 optdepends=("libnotify: for notifications")
 conflicts=("${_pkgname}"
@@ -27,7 +27,7 @@ source=("${_pkgname}::git+https://github.com/balena-io/${_pkgname}.git#branch=${
         "${pkgname}-electron.desktop"
         )
 sha256sums=('SKIP'
-            'f9c0f4c3625852fffaa172bb0cc26cbd6567de5ace1f9a8f3da37073996f6a93'
+            '7bae4faf4322d7cefc1f9bf67eafd4cea96581f03c3711405c54cedbdd74b06b'
             'd23e62375aa83a57bfeebbbd7bde09a7d1917deaee78c9e4d3bdf26e1a47870f')
 
 pkgver() {
