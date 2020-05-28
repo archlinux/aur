@@ -1,0 +1,16 @@
+pkgbase = helm-edit
+	pkgdesc = Helm plugin to edit releases
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/mstrzele/helm-edit
+	install = helm-edit.install
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = bash
+	depends = helm>=3.0.0
+	source = helm-edit-0.4.0.tar.gz::https://github.com/mstrzele/helm-edit/archive/v0.4.0.tar.gz
+	sha256sums = 97a0bb6573f886738665de6c3ff355debf541378dfe01443bf456bc60778c6aa
+
+pkgname = helm-edit
+
