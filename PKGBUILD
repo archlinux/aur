@@ -1,4 +1,6 @@
-# Maintainer: bohoomil <@zoho.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Contributor: bohoomil <@zoho.com>
 
 pkgname=ttf-source-code-pro-ibx
 pkgver=2.030ro+1.050it
@@ -6,7 +8,7 @@ _relver=2.030R-ro/1.050R-it
 _tarver=${_relver//\//-}
 pkgrel=1
 depends=('fontconfig')
-pkgdesc="A set of OpenType fonts designed for user interfaces. TrueType version."
+pkgdesc="A set of OpenType fonts designed for user interfaces"
 url="http://www.adobe.com/"
 arch=('any')
 license=('custom:OFL')
