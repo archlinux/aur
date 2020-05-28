@@ -1,7 +1,7 @@
 # Maintainer: PurpleUltraViolet <purple.ultraviolet616@gmail.com>
 
 pkgname=ncmines-git
-pkgver=v1.0.0
+pkgver=v1.0.1.r0.c65f90d
 pkgrel=1
 pkgdesc="Terminal-based ncurses"
 arch=('i686' 'x86_64')
