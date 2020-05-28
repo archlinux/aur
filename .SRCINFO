@@ -1,0 +1,30 @@
+pkgbase = tubeamp-designer-git
+	pkgdesc = Standalone software guitar processor, editor of *.tapf profile files for tubeAmp (KPP) and guitar amp profiler.
+	pkgver = 1.2.r0.g227b034
+	pkgrel = 1
+	url = https://github.com/olegkapitonov/tubeAmp-Designer
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = lv2
+	makedepends = boost
+	makedepends = meson
+	makedepends = faust
+	makedepends = xcb-util
+	makedepends = xcb-util-wm
+	depends = cairo
+	depends = fftw
+	depends = zenity
+	depends = zita-convolver
+	depends = zita-resampler
+	depends = qt5-base
+	depends = qt5-tools
+	depends = jack
+	depends = gsl
+	provides = tubeamp-designer
+	conflicts = tubeamp-designer
+	source = tubeamp-designer::git+https://github.com/olegkapitonov/tubeAmp-Designer
+	md5sums = SKIP
+
+pkgname = tubeamp-designer-git
+
