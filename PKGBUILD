@@ -46,8 +46,8 @@ prepare() {
   SVG="all-assets.svg"
   for FILE in $(cat all-assets.txt)
   do
-    inkscape "${SVG}" -i "EXP-${FILE}" -e "${FILE}.png"
-    inkscape "${SVG}" -i "EXP-${FILE}" -d 192 -e "${FILE}@2.png"
+    inkscape "${SVG}" -i "EXP-${FILE}" -o "${FILE}.png"
+    inkscape "${SVG}" -i "EXP-${FILE}" -d 192 -o "${FILE}@2.png"
   done
 }
 
