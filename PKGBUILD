@@ -2,7 +2,7 @@
 
 _pkgname=lotus
 pkgname=$_pkgname-git
-pkgver=0.2.10.r1023.g1120298b0
+pkgver=0.3.0.r135.g2632621f7
 pkgrel=1
 pkgdesc='Filecoin client in Go'
 arch=('x86_64')

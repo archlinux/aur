@@ -1,6 +1,6 @@
 pkgbase = lotus-git
 	pkgdesc = Filecoin client in Go
-	pkgver = 0.2.10.r1023.g1120298b0
+	pkgver = 0.3.0.r135.g2632621f7
 	pkgrel = 1
 	url = https://github.com/filecoin-project/lotus
 	arch = x86_64
