@@ -2,7 +2,7 @@ pkgbase = csvkit-git
 	pkgdesc = A suite of utilities for converting to and working with CSV
 	pkgver = 1.0.4.r29.g9b76055
 	pkgrel = 1
-	url = http://csvkit.readthedocs.org
+	url = https://csvkit.readthedocs.org
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
@@ -22,7 +22,7 @@ pkgbase = csvkit-git
 	optdepends = ipython: nicer command-line for csvpy utility
 	provides = csvkit
 	conflicts = csvkit
-	source = csvkit-git::git://github.com/wireservice/csvkit.git
+	source = csvkit-git::git+https://github.com/wireservice/csvkit.git
 	sha256sums = SKIP
 
 pkgname = csvkit-git

@@ -9,7 +9,7 @@ pkgver=1.0.4.r29.g9b76055
 pkgrel=1
 pkgdesc='A suite of utilities for converting to and working with CSV'
 arch=('any')
-url='http://csvkit.readthedocs.org'
+url='https://csvkit.readthedocs.org'
 license=('MIT')
 depends=(
     'python'
@@ -34,7 +34,7 @@ makedepends=(
   )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("$pkgname::git://github.com/wireservice/${pkgname/-/.}")
+source=("$pkgname::git+https://github.com/wireservice/${pkgname/-/.}")
 sha256sums=('SKIP')
 
 pkgver() {
