@@ -11,7 +11,7 @@ pkgbase = lotus-git
 	makedepends = git
 	depends = ocl-icd
 	depends = gcc-libs
-	source = git+https://github.com/filecoin-project/lotus.git#branch=testnet/3
+	source = git+https://github.com/filecoin-project/lotus.git
 	b2sums = SKIP
 
 pkgname = lotus-git

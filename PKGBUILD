@@ -10,7 +10,7 @@ url="https://github.com/filecoin-project/$_pkgname"
 license=('MIT' 'APACHE')
 makedepends=('go' 'gcc' 'git')
 depends=('ocl-icd' 'gcc-libs')
-source=("git+${url}.git#branch=testnet/3")
+source=("git+${url}.git")
 b2sums=('SKIP')
 
 
@@ -48,4 +48,9 @@ package() {
 
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
   install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
+
+  install -Dm 0644 scripts/lotus-daemon.service "$pkgdir/usr/lib/systemd/system/lotus-daemon.service"
+  install -Dm 0644 scripts/lotus-miner.service "$pkgdir/usr/lib/systemd/system/lotus-miner.service"
 }
+
+# vim: set expandtab ts=2 sw=2:
