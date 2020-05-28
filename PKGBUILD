@@ -1,6 +1,6 @@
 # Maintainer: Bart De Roy <de dot roy dot bart at gmail dot com>
 pkgname=pistol-git
-pkgver=0.0.3.r1.gb645d21
+pkgver=0.1.1.r2.gca4dcbb
 pkgrel=1
 pkgdesc='General purpose file previewer'
 arch=('x86_64')
@@ -31,6 +31,10 @@ build() {
 package() {
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/$pkgname/LICENSE"
   install -Dm755 "$srcdir/bin/pistol" "$pkgdir/usr/bin/pistol"
+}
+
+post_upgrade() {
+  echo "Please replace every occurrence of %s with %pistol-filename% in your pistol.conf file if you haven't already done so."
 }
 
 warn_build_references() {
