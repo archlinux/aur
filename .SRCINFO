@@ -1,5 +1,5 @@
 pkgbase = python-hamster-gtk-git
-	pkgdesc = [In heavy development] A GTK interface to the hamster time tracker.
+	pkgdesc = A GTK interface to the hamster time tracker
 	pkgver = 0.11.0.r105.g6b5d106
 	pkgrel = 1
 	url = https://github.com/projecthamster/hamster-gtk
