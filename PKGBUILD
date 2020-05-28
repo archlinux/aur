@@ -1,9 +1,10 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Contributor: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: fanningert <thomas@fanninger.at>
 
 pkgname=glide
 pkgver=0.13.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Dependency management and vendoring for Go projects'
 arch=('x86_64')
 url='https://github.com/Masterminds/glide'
@@ -15,26 +16,25 @@ source=("git+$url#tag=v$pkgver")
 md5sums=('SKIP')
 
 prepare() {
-  mkdir -p build/go && cd build/go
-  for f in "/usr/lib/go/"*; do ln -s "$f"; done
-  rm pkg && mkdir pkg && cd pkg
-  for f in "/usr/lib/go/pkg/"*; do ln -s "$f"; done
-  export GOPATH="$srcdir/build"
-  export GOROOT="$GOPATH/go"
-  mkdir -p "$GOPATH/src/${url#https://}"
-  mv "$srcdir/$pkgname"/* "$GOPATH/src/${url#https://}"
+  export GOPATH="$srcdir/go"
+  _gosrc="$GOPATH/src/${url#https://}"
+  rm -rf "$GOPATH"
+  mkdir -p "${_gosrc%/*}"
+  mv -T glide "$_gosrc"
 }
 
 build() {
+  export GOPATH="$srcdir/go"
   cd "$GOPATH/src/${url#https://}"
 
   go build -o glide -ldflags "-X main.version=$pkgver" glide.go
 }
 
 package() {
+  export GOPATH="$srcdir/go"
   cd "$GOPATH/src/${url#https://}"
 
-  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 glide "$pkgdir/usr/bin/glide"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
