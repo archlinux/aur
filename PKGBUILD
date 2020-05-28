@@ -1,4 +1,4 @@
-# Maintainer: Kuan-Yen Chou <ckuanyen at vmware dot com>
+# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=protobuf25
 pkgver=2.5.0
