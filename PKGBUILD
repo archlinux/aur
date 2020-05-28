@@ -7,11 +7,11 @@ pkgver=1.001
 pkgrel=6
 depends=('fontconfig')
 pkgdesc="An open source multiscript web-font"
-url="http://alef.hagilda.com/"
+url="https://alef.hagilda.com/"
 arch=('any')
 license=('custom:OFL')
 groups=('infinality-bundle-fonts-extra')
-source=("http://alef.hagilda.com/Alef.zip"
+source=("https://alef.hagilda.com/Alef.zip"
         40-alef.conf
         90-tt-alef.conf)
 sha1sums=('7516804f6b3db78d0251159142a8c7904bbf4e82'
