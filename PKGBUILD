@@ -1,12 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - tf2 is the second generation of the transform library, which lets the user keep track of multiple coordinate frames over time."
-url='https://www.wiki.ros.org/tf2'
+url='https://wiki.ros.org/tf2'
 
 pkgname='ros-noetic-tf2'
-pkgver='0.6.5'
-arch=('any')
-pkgrel=2
+pkgver='0.7.1'
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -35,15 +35,8 @@ depends=(
 )
 
 _dir="geometry2-${pkgver}/tf2"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry2/archive/${pkgver}.tar.gz"
-         CMakeLists-signal.patch)
-sha256sums=('9a1268621518fc22afd7b12ef1cf30e6901a57b054535924d1d74fd5d267773a'
-            '878047021778a148cac5a2a6f04e8ee45df593f294022db053d42bc7e5692dbd')
-
-prepare() {
-  cd "${srcdir}/${_dir}"
-  patch -uN CMakeLists.txt "${srcdir}/CMakeLists-signal.patch" || return 1
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry2/archive/${pkgver}.tar.gz")
+sha256sums=('552aaa6b11cb1ea0bff3f6b3b354a3439b4a27a4289c26957e13b034027bbb0e')
 
 build() {
 	# Use ROS environment variables.
