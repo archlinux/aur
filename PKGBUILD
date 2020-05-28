@@ -1,12 +1,12 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Packages for interfacing ROS with OpenCV, a library of programming functions for real time computer vision."
-url='https://www.wiki.ros.org/vision_opencv'
+url='https://wiki.ros.org/vision_opencv'
 
 pkgname='ros-noetic-vision-opencv'
-pkgver='1.13.0'
-arch=('any')
-pkgrel=2
+pkgver='1.15.0'
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-noetic-catkin)
@@ -17,16 +17,9 @@ ros_depends=(ros-noetic-cv-bridge
   ros-noetic-image-geometry)
 depends=(${ros_depends[@]})
 
-# Git version (e.g. for debugging)
-# _tag=release/noetic/vision_opencv/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/vision_opencv-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="vision_opencv-${pkgver}/vision_opencv"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/vision_opencv/archive/${pkgver}.tar.gz")
-sha256sums=('c8db35dbb6b470cdedb45195f725bc2cfda7f0dc3155e16a5a37e4b48e29fa59')
+sha256sums=('dc7faaefeb6dfacbea9479e074a544c9f4df690e0b6910155df8542507b5604c')
 
 build() {
   # Use ROS environment variables
