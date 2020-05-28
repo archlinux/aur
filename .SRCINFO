@@ -1,0 +1,15 @@
+pkgbase = kicad-interactive-html-bom-plugin
+	pkgdesc = Interactive HTML BOM generation plugin for KiCAD
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://github.com/openscopeproject/InteractiveHtmlBom
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = kicad
+	source = https://github.com/openscopeproject/InteractiveHtmlBom/archive/v2.3.tar.gz
+	md5sums = 38e9e1cab71deb772a5dfa81331db1e0
+	sha256sums = 735f03b8072a7600f0b9abb71f6818f6252a15bd687b9830e0e0f400e5c7eb6a
+
+pkgname = kicad-interactive-html-bom-plugin
+
