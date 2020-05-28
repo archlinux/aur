@@ -1,9 +1,13 @@
 pkgbase = ros-noetic-image-common
 	pkgdesc = ROS - Common code for working with images in ROS.
-	pkgver = 1.11.13
-	pkgrel = 2
-	url = https://www.wiki.ros.org/image_common
-	arch = any
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://wiki.ros.org/image_common
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
@@ -12,8 +16,8 @@ pkgbase = ros-noetic-image-common
 	depends = ros-noetic-camera-calibration-parsers
 	depends = ros-noetic-camera-info-manager
 	depends = ros-noetic-image-transport
-	source = ros-noetic-image-common-1.11.13.tar.gz::https://github.com/ros-perception/image_common/archive/1.11.13.tar.gz
-	sha256sums = 32a2e07724dec6eaaace21eae006274436d70d40bfe205249438570275c43cac
+	source = ros-noetic-image-common-1.12.0.tar.gz::https://github.com/ros-perception/image_common/archive/1.12.0.tar.gz
+	sha256sums = ba2e3c0beda22a4bb517ffc2d2a8782c564b8f100286043b9782004d1a87de8e
 
 pkgname = ros-noetic-image-common
 
