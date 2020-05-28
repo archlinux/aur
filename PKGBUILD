@@ -6,7 +6,7 @@
 pkgname=python-poppler-qt5
 pkgver=0.75.0
 pkgrel=4
-pkgdesc='Python binding to libpoppler-qt5.'
+pkgdesc='Python binding to libpoppler-qt5'
 arch=('any')
 url="https://github.com/frescobaldi/$pkgname"
 license=('LGPL')

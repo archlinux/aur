@@ -1,5 +1,5 @@
 pkgbase = python-poppler-qt5
-	pkgdesc = Python binding to libpoppler-qt5.
+	pkgdesc = Python binding to libpoppler-qt5
 	pkgver = 0.75.0
 	pkgrel = 4
 	url = https://github.com/frescobaldi/python-poppler-qt5
