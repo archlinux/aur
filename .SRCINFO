@@ -2,20 +2,18 @@ pkgbase = kcalutils-git
 	pkgdesc = The KDE calendar utility library
 	pkgver = r276.fba760a
 	pkgrel = 1
-	url = https://projects.kde.org/projects/kde/pim/kcalutils
+	url = https://kontact.kde.org
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = extra-cmake-modules-git
+	makedepends = extra-cmake-modules
 	makedepends = git
-	makedepends = python
-	makedepends = boost
-	depends = kcalcore-git
-	depends = kidentitymanagement-git
+	depends = kcalendarcore
+	depends = kidentitymanagement
 	provides = kcalutils
 	conflicts = kcalutils
-	source = git://anongit.kde.org/kcalutils.git
-	md5sums = SKIP
+	source = git+https://github.com/KDE/kcalutils.git
+	sha256sums = SKIP
 
 pkgname = kcalutils-git
 
