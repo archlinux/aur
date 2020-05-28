@@ -1,8 +1,8 @@
 # Maintainer: Hildigerr Vergaray <Maintainer at YmirSystems dot com>
 
 pkgname=mtag-git
-pkgver=0.1.0
-pkgrel=0
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="Music file tag manipulator"
 arch=('i686' 'x86_64')
 url="https://github.com/hildigerr/mtag"
@@ -21,7 +21,7 @@ sha256sums=(
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  git describe --tags
+  grep version mtag.cpp | head -n 1 | cut -d\" -f 2
 }
 
 build() {
