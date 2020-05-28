@@ -1,10 +1,12 @@
-# Maintainer: bohoomil <@zoho.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Contributor: bohoomil <@zoho.com>
 
 pkgname=ttf-source-serif-pro-ibx
 pkgver=3.001
 pkgrel=1
 depends=('fontconfig')
-pkgdesc="Source Serif Pro is a serif typeface in the transitional style, designed to complement Source Sans. TrueType version."
+pkgdesc="A serif typeface in the transitional style, designed to complement Source Sans"
 url="http://www.adobe.com/"
 arch=('any')
 license=('custom:OFL')

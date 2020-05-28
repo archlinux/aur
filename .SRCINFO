@@ -1,5 +1,5 @@
 pkgbase = ttf-source-serif-pro-ibx
-	pkgdesc = Source Serif Pro is a serif typeface in the transitional style, designed to complement Source Sans. TrueType version.
+	pkgdesc = A serif typeface in the transitional style, designed to complement Source Sans
 	pkgver = 3.001
 	pkgrel = 1
 	url = http://www.adobe.com/
