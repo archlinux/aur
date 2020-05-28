@@ -1,10 +1,12 @@
-# Maintainer: bohoomil <@zoho.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: bohoomil <@zoho.com>
 
 pkgname=ttf-alef-ibx
 pkgver=1.001
 pkgrel=6
 depends=('fontconfig')
-pkgdesc="Alef is an open source multiscript web-font."
+pkgdesc="An open source multiscript web-font"
 url="http://alef.hagilda.com/"
 arch=('any')
 license=('custom:OFL')
