@@ -1,7 +1,7 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=omphalos
-pkgver=0.99.11
+pkgver=0.99.12
 pkgrel=1
 pkgdesc="Network enumeration and domination"
 url="https://nick-black.com/dankwiki/index.php/Omphalos"
@@ -30,4 +30,4 @@ package() {
   install -m 0644 -D -t "$pkgdir/usr/share/omphalos" usb.ids ieee-oui.txt
 }
 
-sha256sums=('9de36a8d1301e8a84dbf19111ccb0e8306fe0555a3460ded4120d125861a69dd')
+sha256sums=('90966bd48f0e91c3966189a6ac928b93b2063f69159d346b111d5b92f4447f2c')
