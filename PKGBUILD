@@ -1,12 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - The rqt_rotors package"
-url='https://wiki.ros.org/rqt_rotors'
+url='https://wiki.ros.org/rotors_simulator'
 
 pkgname='ros-noetic-rqt-rotors'
 pkgver='2.2.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('ASL 2.0')
 
 ros_makedepends=(
