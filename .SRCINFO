@@ -1,5 +1,5 @@
 pkgbase = ttf-iosevka-ibx
-	pkgdesc = A programmer's typeface.
+	pkgdesc = A programmer's typeface
 	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/be5invis/Iosevka

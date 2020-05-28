@@ -1,11 +1,13 @@
-# Maintainer: bohoomil <@zoho.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Contributor: bohoomil <@zoho.com>
+
 pkgname=ttf-iosevka-ibx
 pkgver=3.0.0
 _rc=rc.1
 pkgrel=1
 depends=('fontconfig')
-pkgdesc="A programmer's typeface."
+pkgdesc="A programmer's typeface"
 url="https://github.com/be5invis/Iosevka"
 arch=('any')
 groups=('infinality-bundle-fonts-extra')
