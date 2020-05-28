@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rviz'
 pkgname='ros-noetic-rviz'
 pkgver='1.14.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD, Creative Commons')
 
 ros_makedepends=(
@@ -69,9 +69,6 @@ build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
 	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
-
-	# Fixes OGRE Path issue
-	PKG_CONFIG_PATH=/opt/OGRE-1.9/lib/pkgconfig:$PKG_CONFIG_PATH
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
