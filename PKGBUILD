@@ -19,11 +19,11 @@
 pkgbase="zfs-linux-rt"
 pkgname=("zfs-linux-rt" "zfs-linux-rt-headers")
 _zfsver="0.8.4"
-_kernelver="5.6.10.5-2"
-_extramodules="5.6.10-rt5-2-rt"
+_kernelver="5.6.14.7-1"
+_extramodules="5.6.14-rt7-1-rt"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
-pkgrel=2
+pkgrel=1
 makedepends=("linux-rt-headers=${_kernelver}")
 arch=("x86_64")
 url="https://zfsonlinux.org/"
