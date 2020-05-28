@@ -1,20 +1,18 @@
 pkgbase = kmbox-git
 	pkgdesc = Library for accessing mail storages in MBox format
-	pkgver = r199.cf613b9
+	pkgver = r433.8569cdf
 	pkgrel = 1
-	url = https://projects.kde.org/projects/kde/pim/kmbox
+	url = https://kontact.kde.org
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = extra-cmake-modules-git
+	makedepends = extra-cmake-modules
 	makedepends = git
-	makedepends = python
-	makedepends = boost
-	depends = kmime-git
+	depends = kmime
 	provides = kmbox
 	conflicts = kmbox
-	source = git://anongit.kde.org/kmbox.git
-	md5sums = SKIP
+	source = git+https://github.com/KDE/kmbox.git
+	sha256sums = SKIP
 
 pkgname = kmbox-git
 
