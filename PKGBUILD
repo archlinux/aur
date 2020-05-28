@@ -1,7 +1,7 @@
 # Maintainer: Justin Milam <jsmilam at gmail dot com>
 pkgname=sngrep
-pkgver=1.4.6
-pkgrel=2
+pkgver=1.4.7
+pkgrel=1
 pkgdesc="A tool for displaying SIP call message flows from a terminal"
 arch=('x86_64' 'i386')
 url="https://github.com/irontec/sngrep"
