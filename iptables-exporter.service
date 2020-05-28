@@ -1,0 +1,17 @@
+[Unit]
+Description=iptables exporter for Prometheus
+After=network.target
+
+[Service]
+User=nobody
+Group=nobody
+NoNewPrivileges=true
+ProtectHome=true
+ProtectSystem=strict
+CapabilityBoundingSet=CAP_DAC_READ_SEARCH CAP_NET_ADMIN CAP_NET_RAW
+AmbientCapabilities=CAP_DAC_READ_SEARCH CAP_NET_ADMIN CAP_NET_RAW
+Restart=on-failure
+ExecStart=/usr/bin/iptables_exporter
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+pkgbase = iptables-exporter-bin
+	pkgdesc = Prometheus exporter for iptables metrics (binary, not built from source)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/retailnext/iptables_exporter
+	arch = x86_64
+	license = Apache
+	provides = iptables-exporter
+	conflicts = iptables-exporter
+	source = iptables-exporter.service
+	md5sums = 7697c3ce8640e1e4c2b077c40bc09571
+	source_x86_64 = https://github.com/retailnext/iptables_exporter/releases/download/v0.1.0/iptables_exporter-0.1.0.linux-amd64.tar.gz
+	md5sums_x86_64 = 1ed90b84cd9579b9ac7e8a9737492199
+
+pkgname = iptables-exporter-bin
+
