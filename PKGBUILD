@@ -9,7 +9,7 @@
 # This PKGBUILD is based on the official Arch cmake package.
 
 pkgname=cmake-git
-pkgver=3.17.0.659.gff4388e90b
+pkgver=3.17.3.1287.g04b9b2b5f3
 pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
@@ -17,12 +17,14 @@ url="http://www.cmake.org/"
 license=('custom')
 conflicts=('cmake')
 provides=('cmake')
-depends=('curl' 'libarchive' 'shared-mime-info' 'jsoncpp' 'rhash' 'libuv')
+depends=('curl' 'libarchive' 'shared-mime-info' 'jsoncpp' 'libjsoncpp.so' 'libuv' 'rhash')
 makedepends=('qt5-base' 'python-sphinx' 'git' 'ncurses' 'emacs')
 optdepends=('qt5-base: cmake-gui'
             'libxkbcommon-x11: cmake-gui')
-source=('git+https://gitlab.kitware.com/cmake/cmake.git')
-md5sums=('SKIP')
+source=('git+https://gitlab.kitware.com/cmake/cmake.git'
+        'cmake-cppflags.patch')
+md5sums=('SKIP'
+         'd7316e540d07e0a7ebce75951a7b2697')
 shortver=$(printf "${pkgver}" | sed 's/\([0-9]\+\.[0-9]\+\)\..*/\1/')
 
 pkgver() {
@@ -32,6 +34,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/cmake"
+    patch -p1 -i ../cmake-cppflags.patch # Honor CPPFLAGS https://gitlab.kitware.com/cmake/cmake/issues/12928
 }
 
 build() {
@@ -69,4 +72,8 @@ package() {
 
   install -Dm644 Copyright.txt \
     "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+
+  # install bash completions
+  mkdir -p "$pkgdir"/usr/share/bash-completion/completions
+  ln -s /usr/share/cmake-${shortver}/completions/{cmake,cpack,ctest} "$pkgdir"/usr/share/bash-completion/completions
 }
