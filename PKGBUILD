@@ -1,10 +1,12 @@
-# Maintainer: bohoomil <@zoho.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Contributor: bohoomil <@zoho.com>
+
 pkgname=ttf-signika-family-ib
 pkgver=1.0001
 pkgrel=9
 depends=('fontconfig')
-pkgdesc="Signika is a sans-serif with a gentle character, developed for wayfinding, signage, and other media where clarity of information is required. TrueType version."
+pkgdesc="A sans-serif developed for wayfinding, signage, and other media prioritizing clarity"
 groups=('infinality-bundle-fonts-extra')
 conflicts=('ttf-google-webfonts-git' 'otf-signika-family-ib')
 replaces=('otf-signika-family-ib' 'ttf-signika-family-ibx')

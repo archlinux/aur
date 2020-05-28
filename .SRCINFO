@@ -1,5 +1,5 @@
 pkgbase = ttf-signika-family-ib
-	pkgdesc = Signika is a sans-serif with a gentle character, developed for wayfinding, signage, and other media where clarity of information is required. TrueType version.
+	pkgdesc = A sans-serif developed for wayfinding, signage, and other media prioritizing clarity
 	pkgver = 1.0001
 	pkgrel = 9
 	url = http://fontfabric.com/signika-font/
