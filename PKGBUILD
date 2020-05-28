@@ -1,11 +1,13 @@
-# Maintainer: bohoomil <@zoho.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: bohoomil <@zoho.com>
 
 pkgname=ttf-caladea-ib
 pkgver=20140817
 pkgrel=1
 _tarname=crosextrafonts
 depends=('fontconfig')
-pkgdesc="Caladeo is a serif font metrically compatible with Cambria."
+pkgdesc="A serif font metrically compatible with Cambria"
 url="https://code.google.com/p/chromium/issues/detail?id=168879"
 arch=('any')
 groups=('infinality-bundle-fonts')
