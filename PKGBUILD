@@ -4,7 +4,7 @@
 
 _pkgname=kcalutils
 pkgname=$_pkgname-git
-pkgver=r276.fba760a
+pkgver=r723.715a0b0cf
 pkgrel=1
 pkgdesc="The KDE calendar utility library"
 arch=(i686 x86_64)
