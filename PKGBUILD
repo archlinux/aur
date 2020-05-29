@@ -2,7 +2,7 @@
 
 _pkgname=htop
 pkgname=${_pkgname}-vim-git
-pkgver=997.f37a050
+pkgver=1077.402e46b
 pkgrel=1
 pkgdesc="Interactive text-mode process viewer. Patched for vim keybindings"
 url="https://github.com/hishamhm/${_pkgname}"
@@ -18,7 +18,7 @@ options=('!emptydirs')
 source=("git+${url}.git"
         'vim-keybindings.patch')
 sha256sums=('SKIP'
-            '2a5ca32899e901956068f8a0f4f7532486faba1d1b34103d8f9e588e99037053')
+            'ab1df29dc5a73d8e723137ffc767d2592e6024b6a6ffeb13e7c967f04008a255')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -41,6 +41,7 @@ prepare() {
     sed -i 's|python|python2|' scripts/MakeHeader.py
 
     ./configure \
+        CFLAGS="-O2 -fno-common" \
         --prefix=/usr \
         --enable-unicode \
         --enable-openvz \
