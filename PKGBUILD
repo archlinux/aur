@@ -34,7 +34,7 @@ prepare() {
   echo "Creating desktop file"
   gendesk -f -n --pkgname ${pkgname} \
     --pkgdesc "${pkgdesc}" \
-    --categories=GTK;GNOME;X-GNOME-NetworkSettings;Network; \
+    --categories="GTK;GNOME;X-GNOME-NetworkSettings;Network;" \
     --icon "${_pkgname}" \
     --exec "litemanager"
 	
