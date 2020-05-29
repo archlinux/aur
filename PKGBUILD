@@ -1,6 +1,6 @@
 pkgname=spark2014-git
 pkgver=0.3.draft.r19318.g3559419bef
-pkgrel=3
+pkgrel=4
 
 pkgdesc='formally defined programming language based on ada (gnat fsf)'
 url='https://www.spark-2014.org'
@@ -9,9 +9,9 @@ license=('GPL')
 
 options=('!makeflags')
 
-depends=('gprbuild' 'python2')
-makedepends=('git' 'coq' 'gnatcoll-core' 'gprbuild' 'ocaml-num' 'ocaml-menhir'
-             'ocaml-ocamlgraph' 'ocaml-zarith' 'ocaml-zip'
+depends=('python2')
+makedepends=('git' 'gprbuild' 'coq' 'gnatcoll-core' 'gprbuild' 'ocaml-num'
+             'ocaml-menhir' 'ocaml-ocamlgraph' 'ocaml-zarith' 'ocaml-zip'
              'ocaml-ocplib-simplex' 'python-sphinx')
 optdepends=('alt-ergo: alternative prover'
             'z3: alternative prover'
