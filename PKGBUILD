@@ -1,7 +1,7 @@
 # Maintainer: somekool <somekool _ at _ gmail _ dot _com>
 
 pkgname=netvirt-agent-beta-git
-srcgiturl=https://github.com/netvirt/netvirt
+srcgiturl=https://github.com/mathieujobin/netvirt
 pkgver=v2.0.2b
 pkgrel=1
 pkgdesc="NetVirt is an open source network virtualization platform (NVP)."
@@ -30,7 +30,7 @@ pkgver() {
 prepare() {
   cd ${srcdir}/${pkgname}
   set -e
-  #git checkout proto1.2
+  git checkout patch-1
   git submodule update --init --recursive
 
   pushd tapcfg

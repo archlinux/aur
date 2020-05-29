@@ -13,7 +13,7 @@ pkgbase = netvirt-agent-beta-git
 	depends = curl
 	depends = libevent
 	depends = openssl
-	source = netvirt-agent-git::git+https://github.com/netvirt/netvirt.git
+	source = netvirt-agent-beta-git::git+https://github.com/mathieujobin/netvirt.git
 	md5sums = SKIP
 
 pkgname = netvirt-agent-beta-git
