@@ -21,7 +21,8 @@ pkgver() {
 
 prepare() {
     cd "${pkgname%-git}"
-    rustup install --no-self-update nightly
+    rustup toolchain list | grep -q '^nightly' ||
+        rustup install --no-self-update nightly
     cargo +nightly fetch
 }
 
