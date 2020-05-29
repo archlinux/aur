@@ -1,7 +1,7 @@
 pkgbase = protoc-gen-go-grpc
 	pkgdesc = The Go language implementation of gRPC
 	pkgver = 1.24.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/grpc/grpc-go
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = protoc-gen-go-grpc
 	makedepends = go
 	makedepends = git
 	makedepends = zip
+	depends = protoc-gen-go
 	source = https://github.com/grpc/grpc-go/archive/master.zip
 	sha256sums = SKIP
 
