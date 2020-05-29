@@ -3,7 +3,7 @@ pkgbase = way-cooler-git
 	pkgver = 0.8.0.r661.ge50ffca0
 	pkgrel = 1
 	epoch = 1
-	url = http://way-cooler.org/
+	url = https://way-cooler.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -21,10 +21,10 @@ pkgbase = way-cooler-git
 	provides = way-cooler
 	conflicts = way-cooler
 	backup = etc/way-cooler/rc.lua
-	source = way-cooler-git::git+https://github.com/Immington-Industries/way-cooler.git
+	source = way-cooler-git::git+https://github.com/way-cooler/way-cooler.git
 	source = 0001-wlroots-needs-to-be-dynamic.patch
-	md5sums = SKIP
-	md5sums = 0aa8ef19bbe4d66d5dd6d796498ab8e2
+	sha256sums = SKIP
+	sha256sums = 7ce23d224e5979f0f24383cd4e90a8357541d2b8bf3fef11fc241b0fef3d0db2
 
 pkgname = way-cooler-git
 

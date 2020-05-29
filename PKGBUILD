@@ -5,9 +5,9 @@ pkgname=way-cooler-git
 pkgver=0.8.0.r661.ge50ffca0
 pkgrel=1
 epoch=1
-pkgdesc="Customizeable Wayland compositor written in Rust"
+pkgdesc='Customizeable Wayland compositor written in Rust'
 arch=('i686' 'x86_64')
-url="http://way-cooler.org/"
+url='https://way-cooler.org/'
 license=('MIT')
 depends=('lua' 'wlroots')
 makedepends=('cargo' 'rust' 'git' 'meson' 'ninja')
@@ -15,17 +15,18 @@ optdepends=('awesome-way-cooler: wayland compatable awesome fork'
             'weston: default terminal emulator'
             'dmenu: default launcher'
             'way-cooler-bg: draws a background for Way Cooler')
-provides=('way-cooler')
-conflicts=('way-cooler')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 backup=('etc/way-cooler/rc.lua')
-source=("$pkgname::git+https://github.com/Immington-Industries/way-cooler.git"
-        "0001-wlroots-needs-to-be-dynamic.patch")
-md5sums=('SKIP'
-         '0aa8ef19bbe4d66d5dd6d796498ab8e2')
+source=("$pkgname::git+https://github.com/way-cooler/way-cooler.git"
+        '0001-wlroots-needs-to-be-dynamic.patch')
+sha256sums=('SKIP'
+            '7ce23d224e5979f0f24383cd4e90a8357541d2b8bf3fef11fc241b0fef3d0db2')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abrev=7 |
+    sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
