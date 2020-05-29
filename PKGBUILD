@@ -12,7 +12,7 @@
 pkgbase=lvm2-noudev
 pkgname=('lvm2-noudev' 'device-mapper-noudev')
 pkgver=2.02.187
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://sourceware.org/lvm2/'
 license=('GPL2' 'LGPL2.1')
@@ -96,7 +96,8 @@ package_device-mapper-noudev() {
   url="http://sourceware.org/dm/"
   depends=('glibc')
   conflicts=('device-mapper')
-  provides=("device-mapper=$pkgver")
+  provides=("device-mapper=$pkgver" 'libdevmapper.so'
+    'libdevmapper-event.so')
 
   cd lvm2/
 
