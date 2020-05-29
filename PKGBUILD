@@ -11,7 +11,7 @@ pkgver=17.4.0
 pkgrel=1
 pkgdesc='A complete PBX solution'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
-url='http://www.asterisk.org'
+url='https://www.asterisk.org'
 license=('GPL')
 depends=('alsa-lib'
          'curl'
