@@ -1,6 +1,6 @@
 pkgbase = stilo-themes-git
 	pkgdesc = Minimalistic GTK themes
-	pkgver = 3.34.1.r7.g730fbea
+	pkgver = 3.36.2.r2.g70ef81f
 	pkgrel = 1
 	url = https://github.com/lassekongo83/stilo-themes
 	arch = any
@@ -13,7 +13,8 @@ pkgbase = stilo-themes-git
 	optdepends = ttf-roboto: The recommended font
 	provides = stilo-themes
 	conflicts = stilo-themes
-	source = git+https://github.com/lassekongo83/stilo-themes
+	options = !strip
+	source = git+https://github.com/lassekongo83/stilo-themes.git
 	sha256sums = SKIP
 
 pkgname = stilo-themes-git
