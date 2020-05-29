@@ -7,6 +7,7 @@ pkgdesc="Unleash you keyboard shorcuts"
 arch=('any')
 url='https://hyperkeys.xureilab.com'
 license=('GPL3')
+provides=('hyperkeys')
 depends=('zlib')
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")

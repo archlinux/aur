@@ -6,6 +6,7 @@ pkgbase = hyperkeys-bin
 	arch = any
 	license = GPL3
 	depends = zlib
+	provides = hyperkeys
 	noextract = hyperkeys-bin-1.1.7.AppImage
 	options = !strip
 	source = hyperkeys-bin-1.1.7.AppImage::https://github.com/xurei/hyperkeys/releases/download/v1.1.7/HyperKeys-1.1.7.AppImage
