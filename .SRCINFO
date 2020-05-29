@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gdb
 	pkgdesc = The GNU Debugger (mingw-w64)
-	pkgver = 9.1
+	pkgver = 9.2
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = mingw-w64-gdb
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = http://ftp.gnu.org/gnu/gdb/gdb-9.1.tar.xz
-	sha256sums = 699e0ec832fdd2f21c8266171ea5bf44024bd05164fdf064e4d10cc4cf0d1737
+	source = http://ftp.gnu.org/gnu/gdb/gdb-9.2.tar.xz
+	sha256sums = 360cd7ae79b776988e89d8f9a01c985d0b1fa21c767a4295e5f88cb49175c555
 
 pkgname = mingw-w64-gdb
 
