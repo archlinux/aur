@@ -4,7 +4,7 @@ _pkgname='sde'
 pkgname='intel-sde'
 _pkgver="8.50.0-2020-03-26-lin"
 pkgver='8.50.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Intel Software Development Emulator'
 arch=('x86_64')
 url='https://software.intel.com/en-us/articles/intel-software-development-emulator/'
@@ -13,16 +13,10 @@ depends=('python' 'lib32-glibc')
 makedepends=('python-mechanicalsoup')
 optdepends=()
 
-_downloader=intel-sde-downloader.py
-DLAGENTS+=("intel-http-accept::/usr/bin/python ./${_downloader}")
-
-
 _source="${_pkgname}-external-${_pkgver}.tar.bz2"
 source=(
-  "https://raw.githubusercontent.com/marehr/intel-sde-downloader/8f5aa99e0809237b8d006ae8f12b7c87ea5190b3/${_downloader}"
-  "intel-http-accept://${_source}")
+  "http://software.intel.com/content/dam/develop/external/us/en/protected/${_source}")
 sha256sums=(
-  "df9b785b44046421644839015de794a8f2ea84605062ff687610925d0947efb3"
   "ecabeb26c3b35cfe72b6ba017b1ba1849516b4b077c2b59e730a0fdf00324be4")
 
 package() {
