@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-ffmpeg"
 license=('LGPL2.1')
 depends=('ocaml' 'ffmpeg')
-makedepends=('dune')
+makedepends=('dune' 'git')
 options=('!strip' '!makeflags')
 source=("$pkgname::git+https://github.com/savonet/ocaml-ffmpeg")
 
