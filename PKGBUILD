@@ -59,10 +59,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.6.14.arch1.r903039.e1f6739c4a9f
+pkgver=v5.6.15.arch1.r903053.826b05af2cd6
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=v5.6.14.arch1
+_srcver_tag=v5.6.15.arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -84,7 +84,7 @@ _repo_url="https://github.com/koverstreet/$_reponame"
 
 _reponame_gcc_patch="kernel_gcc_patch"
 _repo_url_gcc_patch="https://github.com/graysky2/$_reponame_gcc_patch"
-_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
+_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.5-v5.6.patch"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
@@ -100,7 +100,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '425a1d776bac261cf8df8097cda1279445a9dba2e8eed8f9e2af4d7f7bcd414b60108d6914df18fd8106e099b3f450758b02f78afc78ee2799f0468fff48df7c'
+            '7bce59dcbfce1850f31194974be7b300bce49a2da9205b213d1da57657f5acbfa38bba3b6daa8a25cfd814b13e87edd46664d88f80ef694a1cd219dfee37c3cd'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be')
 
 export KBUILD_BUILD_HOST=archlinux
