@@ -6,6 +6,7 @@ pkgbase = yo
 	arch = any
 	license = MIT
 	makedepends = npm
+	makedepends = jq
 	depends = nodejs
 	noextract = yo-3.1.1.tar.gz
 	source = yo-3.1.1.tar.gz::https://github.com/yeoman/yo/archive/v3.1.1.tar.gz
