@@ -10,6 +10,7 @@ url="http://playmorepromode.org"
 license=('custom')
 arch=('any')
 depends=('quake3')
+conflicts=('quake3-cpma')
 source=('https://cdn.playmorepromode.com/files/cpma-mappack-full.zip')
 sha256sums=('5db933fc92c41f2e0941ab65725586d4d0c30fe84727427bb6b265e4d941a226')
 
