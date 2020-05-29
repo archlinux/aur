@@ -1,0 +1,18 @@
+pkgbase = knightos-kcc-git
+	pkgdesc = A C compiler for z80 systems
+	pkgver = 4.0.0.r5.gefd439995
+	pkgrel = 1
+	url = https://github.com/KnightOS/kcc
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = asciidoc
+	depends = scas
+	depends = boost
+	provides = knightos-kcc
+	conflicts = knightos-kcc
+	source = kcc::git+https://github.com/KnightOS/kcc
+	sha256sums = SKIP
+
+pkgname = knightos-kcc-git
+
