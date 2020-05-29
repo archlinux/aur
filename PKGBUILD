@@ -1,6 +1,6 @@
 # Maintainer: somekool <somekool _ at _ gmail _ dot _com>
 
-pkgname=netvirt-agent-beta-git
+pkgname=netvirt-agent-git
 srcgiturl=https://github.com/mathieujobin/netvirt
 pkgver=v2.0.2b
 pkgrel=1
