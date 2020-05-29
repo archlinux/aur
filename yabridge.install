@@ -1,0 +1,7 @@
+post_upgrade() {
+  cat <<EOF
+If you are upgrading from a previous version of yabridge and you have made
+copies of 'libyabridge.so', then you should not forget to replace those copies
+with new ones.
+EOF
+}
