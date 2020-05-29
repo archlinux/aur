@@ -5,14 +5,14 @@
 
 pkgname="turbovnc"
 pkgdesc="An optimized version of TightVNC"
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.turbovnc.org/"
 license=('GPL')
 makedepends=('cmake' 'rsync')
 depends=('libxaw' 'libxt' 'libxi' 'libxcursor' 'libjpeg-turbo' 'java-environment>=8' 'openssl-1.0')
-sha256sums=('821da48c3422e71c5b2cae338058e720078ec74c55c466e5cf90d8e5cc91b2bf'
+sha256sums=('eae0bbd9ef17835121a8a4ff287bc64d556749eb85e18ada64532128e154e7ff'
             'ccadf1fc708fad601e6113464d6c533a629f6dc9116f6071347cd0b465c1f48b')
 conflicts=('turbovnc-bin' 'tigervnc' 'tigervnc-svn' 'tightvnc')
 replaces=('turbovnc-bin')
