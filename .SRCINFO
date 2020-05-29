@@ -1,7 +1,7 @@
 pkgbase = printer-driver-ptouch
-	pkgdesc = printer driver Brother P-touch label printers
-	pkgver = 1.4.2
-	pkgrel = 4
+	pkgdesc = P-Touch PT-series and QL-series printer driver for Linux (under CUPS)
+	pkgver = 1.5.1
+	pkgrel = 1
 	url = https://github.com/philpem/printer-driver-ptouch
 	arch = i686
 	arch = x86_64
@@ -10,13 +10,8 @@ pkgbase = printer-driver-ptouch
 	makedepends = libcups
 	makedepends = foomatic-db-engine
 	depends = ghostscript
-	depends = foomatic-db
-	source = https://github.com/philpem/printer-driver-ptouch/archive/5fe72de0577215eb04a6fcbe49b24bcf5e228dec.tar.gz
-	source = Add-include-cups-ppd.h.patch
-	source = Add-PT-2430PC.patch
-	sha256sums = d12c4cdd57013536e2803a8d9579cb2260c29a225ac23c7868016549c3d6b06b
-	sha256sums = 22721f6f371114f8725b70cc2877276bce1a38eb9680dcaa7d268eba990e8b4c
-	sha256sums = 363313b9cce5a223ab4a72e7423f32d73b17bafc334454a99da8c0c1363983ca
+	source = printer-driver-ptouch-1.5.1.tar.gz::https://github.com/philpem/printer-driver-ptouch/archive/v1.5.1.tar.gz
+	sha256sums = 92de714d5b0103a7216812b4a497edeb879405fa57acace65e2c7b226e9e71de
 
 pkgname = printer-driver-ptouch
 
