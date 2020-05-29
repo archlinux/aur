@@ -1,0 +1,14 @@
+pkgbase = rossa-bin
+	pkgdesc = Attempt to create a SimpleHTTPServer in Rust. Also inspired by gossa.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/rednithin/rossa
+	arch = any
+	license = MIT
+	provides = rossa
+	conflicts = rossa
+	source = https://github.com/rednithin/rossa/releases/download/v0.1.1/rossa.tar.gz
+	sha256sums = a8a36fd35506b86ae1dc3e90ed909c33c0d20afd929b129ac60a013ec064b228
+
+pkgname = rossa-bin
+
