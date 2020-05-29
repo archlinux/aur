@@ -1,7 +1,7 @@
 pkgbase = jfbview
 	pkgdesc = PDF and image viewer for the Linux framebuffer
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jichu4n/jfbview
 	arch = i686
 	arch = x86_64
@@ -14,9 +14,7 @@ pkgbase = jfbview
 	depends = imlib2
 	depends = libjpeg-turbo
 	conflicts = jfbpdf
-	conflicts = jfbview
 	replaces = jfbpdf
-	replaces = jfbview
 	source = https://github.com/jichu4n/jfbview/releases/download/0.6.0/jfbview-0.6.0-full-source.zip
 	md5sums = ac41da35a97c008424662d7dc489b841
 
