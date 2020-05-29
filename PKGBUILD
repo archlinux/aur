@@ -1,6 +1,6 @@
 # Maintainer: Adrien Gallouët <adrien@gallouet.fr>
 pkgname=secret
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="A tiny secret store to keep your little secrets"
 arch=('x86_64')
