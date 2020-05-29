@@ -2,7 +2,7 @@
 
 pkgname="deemix-pyweb-git"
 _pkgname="deemix-pyweb"
-pkgver=r106.10f3d17
+pkgver=r107.df4f93f
 pkgrel=1
 pkgdesc="This is a pywebview wrapper for deemix-webui"
 arch=('any')
@@ -28,6 +28,9 @@ package() {
 	
 	chmod +x "${pkgdir}/usr/lib/${_pkgname}/server.py"
 	chmod +x "${pkgdir}/usr/lib/${_pkgname}/deemix_gui.py"
+	
+	install -dm755 "${pkgdir}/usr/share/applications/"
+	ln -s  "/usr/lib/${_pkgname}/deemix-pyweb.desktop" "${pkgdir}/usr/share/applications/deemix-pyweb.desktop"
 	
 	install -dm755 "${pkgdir}/usr/bin"
     ln -s "/usr/lib/${_pkgname}/server.py" "${pkgdir}/usr/bin/${_pkgname}-server"
