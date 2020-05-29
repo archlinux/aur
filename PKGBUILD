@@ -1,8 +1,8 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer-pro
-_debpkgver=4.5.0-10
-pkgver=4.5.0
+_debpkgver=4.6.0-11
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="Professional high-end audio file converter, recorder and player"
 arch=('x86_64')
