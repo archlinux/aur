@@ -1,7 +1,7 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=softmaker-office-2021-bin
-pkgver=2021.1010
+pkgver=2021.1012
 pkgrel=1
 pkgdesc="Proprietary office suite; word processing, spreadsheets, presentations (BETA)"
 url="https://www.softmaker.com"
@@ -26,7 +26,7 @@ md5sums=('099706015d0caf75c2b84a577344b0bd'
          'e1ddaf11756afede521fad32ab5207cd'
          '35c13675d6e89033c1897ca2457c70c2'
          'dd7564d0b83052bf59086391347bebd8')
-md5sums_x86_64=('158ef17392b094129aa81e5dd3e61aa2')
+md5sums_x86_64=('8bae49aee7e0e59e5d5368306745e798')
 sha512sums=('f29dba6cf303e4b2c9e45f039f1793eb838a0bc9d623a4fc1b009fdb0021ccd8c6396a41d2420c0924f4d635fbf330748ec6238573d88d9b0599bd24f7f28d2e'
             'fecf6db647218fe8b2c0288675db225ca992e7e245a06a9d442a3674418f94730a782baeddf9eb482447432bd9543ba60ddaa471a80b56741b4a55c4edac3dc0'
             'b0a1a665a7affae304a34b453dac9b4a8ef2ac17b64e8fe701900f954b494daf0c75a7e62cc53e1b70becc5a3320e372c208787655965c2244d7824a939b5d3f'
@@ -35,11 +35,13 @@ sha512sums=('f29dba6cf303e4b2c9e45f039f1793eb838a0bc9d623a4fc1b009fdb0021ccd8c63
             '1677ab6b31683f55bc0b144b787968729048bc4cd66e3e4e334c935488c64bab6baa92258d90ef0dac9fc2b7ec3ae5dd0cf451c63954b07f2d885c4e15937dc4'
             '334d90369b026ef773b7c778ca2fb09e38cae5cb64be0f9bd200010f149364c742f9ac991d597df0a71ee14c082c2fd2fa327df2ef85c6e4693c7e5da8cb14c1'
             '02245e32c6cdaaedaa255d11c94b0948abf3e12b04cb8bf6f799bfb11cea1cf432890bb8ef8a6b1b28038e09339f33a79d3f590fd2bf5bb29b059c3269e2830d')
-sha512sums_x86_64=('ddd8266146b658660332ec607eed978ea2c621dbe4c076b12040277a8dd79fc9cf8e43b2cf097cc0874b703635549c8badcf84a5d1a57ad832ec871f7e0178cc')
+sha512sums_x86_64=('2c3b20e0898e0712ca5f9eaf9f8b9b0c2232e0a25aa27213c4d829c1acf2d1595862f124c11f545b7015ff52570ddc1ca3f182b53ec4b363d3230a79064e9326')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/office2021"
   bsdtar xf "${srcdir}/office2021.tar.lzma" -C "${pkgdir}/usr/share/office2021"
+  # fix ownership
+  chown -R root:root "${pkgdir}"
 
   install -Dm 755 -t "${pkgdir}/usr/bin" "${srcdir}/planmaker21" "${srcdir}/presentations21" "${srcdir}/textmaker21"
   for size in 16 32 48 64 128 256 512; do
