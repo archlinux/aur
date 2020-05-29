@@ -1,6 +1,6 @@
 pkgbase = dmenu-tiyn-git
 	pkgdesc = This is the dmenu build of tiyn. It includes the border, center and password patches.
-	pkgver = 4.9.r12.446fd55
+	pkgver = 4.9
 	pkgrel = 1
 	url = https://github.com/tiyn/dmenu
 	arch = x86_64
