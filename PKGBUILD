@@ -5,33 +5,28 @@
 # Contributor: Thor K. H. <thor alfakrøll roht dott no>
 
 pkgname=csvkit-git
-pkgver=1.0.4.r29.g9b76055
+pkgver=1.0.5.r1.g178eb76
 pkgrel=1
 pkgdesc='A suite of utilities for converting to and working with CSV'
 arch=('any')
 url='https://csvkit.readthedocs.org'
 license=('MIT')
-depends=(
-    'python'
-    'python-agate-dbf>=0.2.0'
-    'python-agate-excel>=0.2.2'
-    'python-agate-sql>=0.5.3'
-    'python-agate>=1.6.1'
-    'python-babel'
-    'python-dateutil'
-    'python-openpyxl'
-    'python-six>=1.6.1'
-    'python-sphinx_rtd_theme>=0.1.6'
-    'python-sqlalchemy'
-    'python-xlrd'
-  )
-optdepends=(
-    'ipython: nicer command-line for csvpy utility'
-  )
-makedepends=(
-    'python-setuptools'
-    'python-sphinx>=1.2.2'
-  )
+depends=('python'
+         'python-agate-dbf>=0.2.0'
+         'python-agate-excel>=0.2.2'
+         'python-agate-sql>=0.5.3'
+         'python-agate>=1.6.1'
+         'python-babel'
+         'python-dateutil'
+         'python-openpyxl'
+         'python-six'
+         'python-sphinx_rtd_theme'
+         'python-sqlalchemy'
+         'python-xlrd')
+optdepends=('ipython: nicer command-line for csvpy utility')
+makedepends=('git'
+             'python-setuptools'
+             'python-sphinx')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+https://github.com/wireservice/${pkgname/-/.}")
