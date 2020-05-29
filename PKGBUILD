@@ -1,36 +1,26 @@
 # Maintainer: oliver at first.in-berlin.de
 # Former Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Mildred <silkensedai@online.fr>
+# Contributor: hpmachining <aur at hpminc dot com>
 
 pkgname=omake
-pkgver=0.9.8.6_0.rc1
-pkgrel=5
+pkgver=0.10.3
+pkgrel=1
 pkgdesc="A build system designed for scalability and portability"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://omake.metaprl.org/index.html"
 license=('GPL2')
-depends=('readline' 'gamin')
-makedepends=('make' 'ocaml' 'patch')
-source=(http://pkgs.fedoraproject.org/repo/pkgs/ocaml-omake/omake-0.9.8.6-0.rc1.tar.gz/fe39a476ef4e33b7ba2ca77a6bcaded2/omake-0.9.8.6-0.rc1.tar.gz
-        disable-warnings.patch)
-
-prepare() {
-  cd "$srcdir/$pkgname-${pkgver%_*}"
-
-  patch -Np0 -i "$srcdir/disable-warnings.patch"
-}
+makedepends=('ocaml')
+source=(http://download.camlcity.org/download/omake-$pkgver.tar.gz)
+sha256sums=('ff3107e9459615ea6526309c533b04815eef60692a20dcd3a6169f5860786d1d')
 
 build() {
-  cd "$srcdir/$pkgname-${pkgver%_*}"
-
-  make bootstrap
-  make PREFIX=/usr all
+  cd "$pkgname-$pkgver"
+  ./configure -prefix=/usr
+  make all
 }
 
 package() {
-  cd "$srcdir/$pkgname-${pkgver%_*}"
-  make PREFIX=/usr INSTALL_ROOT="$pkgdir" install
+  cd "$pkgname-$pkgver"
+  make INSTALL_ROOT="$pkgdir" install
 }
-
-md5sums=('fe39a476ef4e33b7ba2ca77a6bcaded2'
-         '36633380e0c64235ee0fbfea2386f254')
