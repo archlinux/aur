@@ -1,13 +1,13 @@
 # Maintainer: Avahe Kellenberger <avahe@protonmail.ch>
 pkgname='nimdow-bin'
-pkgver='0.4.4'
+pkgver='0.4.5'
 pkgrel='0'
 pkgdesc="Tiling Window Manager written in Nim"
 arch=('x86_64')
 url="https://github.com/avahe-kellenberger/nimdow"
 license=('GPL2')
 source=("$url/releases/download/v$pkgver/nimdow")
-md5sums=('876bdcf86c86fa9dff193ae454272263')
+md5sums=('9f3b3640073839318fb9d1270f5d63e4')
 
 install_default_config() {
   if [ -f "${XDG_CONFIG_HOME}/nimdow/config.toml" ] ||
