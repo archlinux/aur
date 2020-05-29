@@ -2,20 +2,20 @@
 
 pkgname=comrak-git
 pkgver=0.7.0.r17.g500d73f
-pkgrel=1
+pkgrel=2
 pkgdesc='CommonMark + GFM compatible Markdown parser and renderer'
 arch=('x86_64' 'i686')
 url="https://github.com/kivikakk/${pkgname%-git}"
 license=('MIT' 'custom')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-makedepends=('cargo' 'rust')
+makedepends=('cargo' 'git' 'rust')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${pkgname%-git}"
-    git describe --tags --abbrev=7 HEAD |
+    git describe --always --tags --abbrev=7 HEAD |
         sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
