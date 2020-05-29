@@ -5,7 +5,7 @@ pkgbase=cryptodev-linux
 pkgname=(cryptodev-linux cryptodev-linux-dkms)
 pkgdesc="cryptodev Linux module"
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 url='http://cryptodev-linux.org/'
 license=("GPL")
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -49,7 +49,7 @@ package_cryptodev-linux-dkms() {
 
   cd "${srcdir}/${pkgbase}-${pkgbase}-${pkgver}"
   install -d "${pkgdir}/usr/src/${pkgbase}-${pkgver}/"
-  cp -r "${srcdir}/${pkgbase}-${pkgbase}-${pkgver}/"* "${pkgdir}/usr/src/${pkgbase}-${pkgver}/"
+  cp -r ./* "${pkgdir}/usr/src/${pkgbase}-${pkgver}/"
 
   # TODO: Is there some better way to avoid copying the files created
   #       during the build process to the DKMS folder?
