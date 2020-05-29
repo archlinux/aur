@@ -4,13 +4,13 @@
 
 pkgname=scanbd
 pkgver=1.5.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Scanner button daemon looking for scanner button pressed"
 arch=('x86_64')
 url="http://scanbd.sourceforge.net/"
 license=('GPL2')
 depends=('sane' 'confuse')
-source=("https://downloads.sourceforge.net/scanbd/scanbd-$pkgver.tgz" "strcpy-bounds.patch")
+source=("https://downloads.sourceforge.net/scanbd/scanbd-$pkgver.tgz" "string-bounds.patch")
 sha256sums=('b69ca5a474b81516d19c38082d949363c243df9ab9742315aaae499723267e5f' 'SKIP')
 backup=('etc/scanbd/scanbd.conf')
 
@@ -37,7 +37,7 @@ prepare() {
     sed -i 's@\(debug-level =\)7$@\1 2@' conf/scanbd.conf
     sed -i 's@\(SANE_CONFIG_DIR=\)\(/etc/scanbd\)@\1\2/sane.d@' conf/scanbd.conf
 
-    patch --forward --strip=1 --input="${srcdir}/strcpy-bounds.patch"
+    patch --forward --strip=1 --input="${srcdir}/string-bounds.patch"
 }
 
 build() {

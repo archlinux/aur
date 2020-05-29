@@ -1,0 +1,140 @@
+diff --git a/src/scanbd/config.c b/src/scanbd/config.c
+index 7fa9c2d..9399333 100644
+--- a/src/scanbd/config.c
++++ b/src/scanbd/config.c
+@@ -102,8 +102,8 @@ void cfg_do_parse(const char *config_file_name) {
+         cfg = NULL;
+     }
+ 
+-    char wd[PATH_MAX] = {};
+-    char config_file[PATH_MAX] = {};
++    char wd[PATH_MAX+1] = {};
++    char config_file[PATH_MAX+1] = {};
+     char* scanbd_conf_dir = NULL;
+ 
+     // get current directory
+@@ -148,7 +148,7 @@ void cfg_do_parse(const char *config_file_name) {
+ 
+ char *make_script_path_abs(const char *script) {
+ 
+-    char* script_abs = malloc(PATH_MAX);
++    char* script_abs = malloc(PATH_MAX+1);
+     assert(script_abs);
+     strncpy(script_abs, SCANBD_NULL_STRING, PATH_MAX);
+ 
+diff --git a/src/scanbd/dbus.c b/src/scanbd/dbus.c
+index 428980c..33de735 100644
+--- a/src/scanbd/dbus.c
++++ b/src/scanbd/dbus.c
+@@ -196,8 +196,8 @@ static void hook_device_ex(const char *param, const char *action_name, const cha
+         e += 1;
+     }
+     else {
+-        char buf[PATH_MAX];
+-        char* ptr = getcwd(buf, PATH_MAX - 1);
++        char buf[PATH_MAX+1];
++        char* ptr = getcwd(buf, PATH_MAX);
+         if (!ptr) {
+             slog(SLOG_ERROR, "can't get pwd");
+         }
+@@ -751,7 +751,7 @@ bool dbus_init(void) {
+         return false;
+     }
+ #else
+-    char match[PATH_MAX] = {};
++    char match[PATH_MAX+1] = {};
+     snprintf(match, PATH_MAX, "type='signal',interface='%s'", DBUS_HAL_INTERFACE);
+     slog(SLOG_ERROR, "dbus match %s", match);
+     dbus_bus_add_match(conn, match, &dbus_error);
+diff --git a/src/scanbd/sane.c b/src/scanbd/sane.c
+index b031904..48691c6 100644
+--- a/src/scanbd/sane.c
++++ b/src/scanbd/sane.c
+@@ -957,8 +957,8 @@ static void* sane_poll(void* arg) {
+                     e += 1;
+                 }
+                 else {
+-                    char buf[PATH_MAX];
+-                    char* ptr = getcwd(buf, PATH_MAX - 1);
++                    char buf[PATH_MAX+1];
++                    char* ptr = getcwd(buf, PATH_MAX);
+                     if (!ptr) {
+                         slog(SLOG_ERROR, "can't get pwd");
+                     }
+diff --git a/src/scanbd/scanbd.c b/src/scanbd/scanbd.c
+index feb73ae..3c8902c 100644
+--- a/src/scanbd/scanbd.c
++++ b/src/scanbd/scanbd.c
+@@ -350,7 +350,7 @@ int main(int argc, char** argv) {
+     }
+ 
+     // We do this here as debugging is only completely initialized here
+-    char prog_path[PATH_MAX] = "";
++    char prog_path[PATH_MAX+1] = "";
+     strncpy(prog_path, argv[0], PATH_MAX); 
+     char *my_name = basename(prog_path);
+     if ( strncmp(my_name, NAME_MANAGER_MODE, PATH_MAX) == 0 ) {
+diff --git a/src/scanbd/scanbuttond_loader.c b/src/scanbd/scanbuttond_loader.c
+index 857834a..06b13f6 100644
+--- a/src/scanbd/scanbuttond_loader.c
++++ b/src/scanbd/scanbuttond_loader.c
+@@ -29,11 +29,11 @@
+ // this file is basicly the same as loader.c from the scanbuttond-project,
+ // but modified to meet the needs of scanbd
+ 
+-static char lib_dir[PATH_MAX] = SCANBD_NULL_STRING;
++static char lib_dir[PATH_MAX+1] = SCANBD_NULL_STRING;
+ 
+ int scanbtnd_init() {
+     char *backends_dir = NULL;
+-    char backends_dir_abs[PATH_MAX] = SCANBD_NULL_STRING;
++    char backends_dir_abs[PATH_MAX+1] = SCANBD_NULL_STRING;
+ 
+     backends_dir = cfg_getstr(cfg_getsec(cfg, C_GLOBAL), C_SCANBUTTONS_BACKENDS_DIR);
+     if ( backends_dir && (backends_dir[0] != '/')) {
+@@ -83,7 +83,7 @@ backend_t* scanbtnd_load_backend(const char* filename){
+     const char* error;
+     void* dll_handle;
+ 
+-    char dll_path[PATH_MAX];
++    char dll_path[PATH_MAX+1];
+     strncpy(dll_path, lib_dir, PATH_MAX);
+     strncat(dll_path, "/", PATH_MAX - strlen(dll_path));
+     strncat(dll_path, filename, PATH_MAX - strlen(dll_path));
+diff --git a/src/scanbd/scanbuttond_wrapper.c b/src/scanbd/scanbuttond_wrapper.c
+index 02b7162..6bbb289 100644
+--- a/src/scanbd/scanbuttond_wrapper.c
++++ b/src/scanbd/scanbuttond_wrapper.c
+@@ -605,8 +605,8 @@ void* scbtn_poll(void* arg) {
+                     e += 1;
+                 }
+                 else {
+-                    char buf[PATH_MAX];
+-                    char* ptr = getcwd(buf, PATH_MAX - 1);
++                    char buf[PATH_MAX+1];
++                    char* ptr = getcwd(buf, PATH_MAX);
+                     if (!ptr) {
+                         slog(SLOG_ERROR, "can't get pwd");
+                     }
+diff --git a/src/scanbd/slog.c b/src/scanbd/slog.c
+index 09fe1de..17b04a3 100644
+--- a/src/scanbd/slog.c
++++ b/src/scanbd/slog.c
+@@ -26,7 +26,7 @@
+ bool debug = false;
+ unsigned int debug_level = 0;
+ 
+-static char lpre[LINE_MAX] = "";
++static char lpre[LINE_MAX+1] = "";
+ static int isInitialized = 0;
+ 
+ void slog_init(const char *string) {
+@@ -37,7 +37,7 @@ void slog_init(const char *string) {
+ void
+ slog(unsigned int level, const char *format, ...) {
+     va_list	ap;
+-    char	buffer[LINE_MAX] = "";
++    char	buffer[LINE_MAX+1] = "";
+ 
+     if (isInitialized == 0) {
+         slog_init("");
