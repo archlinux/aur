@@ -21,7 +21,6 @@ optdepends=('desktop-file-utils: desktop entries'
 makedepends=('python')
 makedepends_i686=('nasm')
 makedepends_x86_64=('yasm')
-#options=(!makeflags)
 install='p7zip-gui.install'
 source=("https://downloads.sourceforge.net/project/p7zip/p7zip/${pkgver}/p7zip_${pkgver}_src_all.tar.bz2"
         'https://src.fedoraproject.org/rpms/p7zip/raw/master/f/14-Fix-g++-warning.patch'
