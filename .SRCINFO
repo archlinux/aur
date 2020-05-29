@@ -1,0 +1,15 @@
+pkgbase = hyperkeys-bin
+	pkgdesc = Unleash you keyboard shorcuts
+	pkgver = 1.1.7
+	pkgrel = 1
+	url = https://hyperkeys.xureilab.com
+	arch = any
+	license = GPL3
+	depends = zlib
+	noextract = hyperkeys-bin-1.1.7.AppImage
+	options = !strip
+	source = hyperkeys-bin-1.1.7.AppImage::https://github.com/xurei/hyperkeys/releases/download/v1.1.7/HyperKeys-1.1.7.AppImage
+	sha256sums = 21391eda00318d1397b14b736d10f6619af84385281a7fa10699c06ad8a016ae
+
+pkgname = hyperkeys-bin
+
