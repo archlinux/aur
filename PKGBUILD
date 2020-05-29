@@ -1,7 +1,7 @@
 # Maintainer:F43nd1r <support@faendir.com>
 
 pkgname=ts3audiobot
-pkgver=0.11.1
+pkgver=0.11.3
 pkgrel=1
 epoch=
 pkgdesc="ts3 audio bot by splamy"
