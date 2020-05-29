@@ -3,30 +3,30 @@
 
 pkgname=libsigrok
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Client software that supports various hardware logic analyzers, core library'
 arch=('x86_64')
 url='https://www.sigrok.org/wiki/Libsigrok'
 license=('GPL3')
 depends=('libftdi' 'libserialport' 'glibmm' 'libzip' 'libieee1284')
-makedepends=('cmake' 'doxygen' 'ruby' 'jdk8-openjdk' 'swig3' 'python' 'pygobject-devel' 'python-numpy' 'python-setuptools')
+makedepends=('cmake' 'doxygen' 'ruby' 'jdk8-openjdk' 'swig' 'python' 'pygobject-devel' 'python-numpy' 'python-setuptools')
 optdepends=('python' 'ruby' 'jdk8-openjdk'
             'sigrok-firmware-fx2lafw: Cypress FX2-based device support')
-source=("https://sigrok.org/download/source/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('cf673dad6280302d69050c29490621f66c6d6a73932d019a53ec3501316d3f2e23e7667a04f866dbe6ed73f86a63de73d2173e2b6cea563631d705e06f887092')
+source=("https://sigrok.org/download/source/$pkgname/$pkgname-$pkgver.tar.gz"
+        "fix_swig4_java_bindings.patch")
+sha512sums=('cf673dad6280302d69050c29490621f66c6d6a73932d019a53ec3501316d3f2e23e7667a04f866dbe6ed73f86a63de73d2173e2b6cea563631d705e06f887092'
+            '0e6bdddb2dcc03d76e5d16708bb127ec8a9207fba0e04b436ac92e370618cc0b1bc9d3e2c86a0878783626f2a8b59961c3a1a52a1e180e69005e3585e5766a89')
 
 prepare() {
   cd $pkgname-$pkgver
-  # Build with swig 3 due to 
-  #   https://sigrok.org/bugzilla/show_bug.cgi?id=1527
-  #   https://github.com/swig/swig/issues/1689
-  sed -e 's|swig3.0|swig-3|g' -i configure
+  patch -p1 < ../fix_swig4_java_bindings.patch # https://sigrok.org/bugzilla/show_bug.cgi?id=1527
 }
 
 build() {
   cd $pkgname-$pkgver
 
- ./configure --prefix=/usr
+  # Ruby bindings do not build with SWIG4 https://sigrok.org/bugzilla/show_bug.cgi?id=1526
+  ./configure --prefix=/usr --disable-ruby
 
   make
 }
