@@ -1,8 +1,8 @@
 pkgbase = python-plotly
 	pkgdesc = An open-source, interactive graphing library
-	pkgver = 4.7.1
+	pkgver = 4.8.1
 	pkgrel = 1
-	url = https://plot.ly/python/
+	url = https://github.com/plotly/plotly.py
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
@@ -13,8 +13,8 @@ pkgbase = python-plotly
 	depends = python-retrying
 	optdepends = ipython
 	optdepends = python-ipywidgets
-	source = https://github.com/plotly/plotly.py/archive/v4.7.1.tar.gz
-	md5sums = 2dfdea10f5b1d2254bb052d8822e5b7d
+	source = https://github.com/plotly/plotly.py/archive/v4.8.1.tar.gz
+	md5sums = da6296bd75eb5db022e6d92eb5ff27b2
 
 pkgname = python-plotly
 
