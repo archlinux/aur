@@ -1,8 +1,8 @@
-pkgbase = alacritty-git
+pkgbase = alacritty-ligatures
 	pkgdesc = A cross-platform, GPU-accelerated terminal emulator
-	pkgver = 0.5.0.1500.g1a8cd172
+	pkgver = 0.5.0.1534.g3183b7d
 	pkgrel = 1
-	url = https://github.com/jwilm/alacritty
+	url = https://github.com/alacritty/alacritty
 	arch = x86_64
 	arch = i686
 	license = Apache
@@ -23,8 +23,8 @@ pkgbase = alacritty-git
 	depends = libxrandr
 	provides = alacritty
 	conflicts = alacritty
-	source = alacritty::git+https://github.com/jwilm/alacritty.git
+	source = alacritty::git+https://github.com/Philipp-M/alacritty.git#branch=continue-font-ligatures
 	sha256sums = SKIP
 
-pkgname = alacritty-git
+pkgname = alacritty-ligatures
 
