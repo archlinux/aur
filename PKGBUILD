@@ -3,10 +3,10 @@
 
 pkgname=csvkit
 pkgver=1.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc='A suite of utilities for converting to and working with CSV'
 arch=('any')
-url='http://csvkit.readthedocs.org'
+url='https://csvkit.readthedocs.org'
 license=('MIT')
 depends=('python'
          'python-agate-dbf>=0.2.0'
@@ -16,13 +16,13 @@ depends=('python'
          'python-babel'
          'python-dateutil'
          'python-openpyxl'
-         'python-six>=1.6.1'
-         'python-sphinx_rtd_theme>=0.1.6'
+         'python-six'
+         'python-sphinx_rtd_theme'
          'python-sqlalchemy'
          'python-xlrd')
 optdepends=('ipython: nicer command-line for csvpy utility')
 makedepends=('python-setuptools'
-             'python-sphinx>=1.2.2')
+             'python-sphinx')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wireservice/csvkit/archive/$pkgver.tar.gz")
 sha256sums=('dc9ca3f05d26ddf8a1243b91354a7e7e1b43bb602bdf98e2c90980b1921f7813')
 
