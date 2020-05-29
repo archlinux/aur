@@ -20,8 +20,9 @@ depends=(
 )
 makedepends=(
     extra-cmake-modules
-    plasma-framework
     kcmutils
+    ninja
+    plasma-framework
 )
 provides=(kdisplay)
 conflicts=(kdisplay kscreen)
