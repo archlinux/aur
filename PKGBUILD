@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p
-pkgver=20200525
+pkgver=20200526
 pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('freetype2' 'glu' 'hidapi' 'libgl' 'libpng' 'libsamplerate'
 makedepends=('git' 'cmake' 'nasm' 'icoutils')
 provides=('mupen64plus-gui' 'mupen64plus-video-gliden64')
 conflicts=('mupen64plus-gui' 'mupen64plus-video-gliden64' 'mupen64plus')
-_commit=b5cbdf8173649ec18ac76ff402e0a93313fecc58
+_commit=19fd445e74a2d9672c13cee6df8798f2225f9fc8
 source=("git+https://github.com/loganmc10/m64p.git#commit=${_commit}"
         'git+https://github.com/m64p/mupen64plus-gui.git'
         'git+https://github.com/m64p/mupen64plus-audio-sdl2.git'
@@ -47,6 +47,7 @@ prepare() {
     git -C m64p config --local submodule.mupen64plus-input-qt.url   "${srcdir}/mupen64plus-input-qt"
     git -C m64p config --local submodule.mupen64plus-input-raphnetraw.url "${srcdir}/mupen64plus-input-raphnetraw-loganmc10"
     git -C m64p submodule update
+    icotool -x mupen64plus-gui/mupen64plus.ico
     patch -d m64p -Np1 -i "${srcdir}/010-m64p-remove-build-jobs-limitation.patch"
     patch -d m64p -Np1 -i "${srcdir}/020-m64p-enable-optimizations.patch"
 }
@@ -58,29 +59,23 @@ build() {
 
 package() {
     # mupen64plus-gui
-    install -D -m755 m64p/mupen64plus/mupen64plus-gui -t "${pkgdir}/usr/bin"
-    install -D -m644 m64p.desktop -t "${pkgdir}/usr/share/applications"
-    icotool -x mupen64plus-gui/mupen64plus.ico
-    local _count='1'
-    local _depth
     local _file
     local _res
+    install -D -m755 m64p/mupen64plus/mupen64plus-gui -t "${pkgdir}/usr/bin"
+    install -D -m644 m64p.desktop -t "${pkgdir}/usr/share/applications"
     while read -r -d '' _file
     do
-        _depth="$(printf '%s' "$_file" | sed 's/\.png$//;s/^.*x//' )"
         _res="$(printf '%s' "$_file" | sed 's/\.png$//;s/^.*_//;s/x.*$//')"
-        install -D -m644 "mupen64plus_${_count}_${_res}x${_res}x${_depth}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/mupen64plus.png"
-        _count="$((_count + 1))"
-    done < <(find -maxdepth 1 -type f -name 'mupen64plus_*_*x*x*.png' -print0 | sort -z)
+        install -D -m644 "$_file" "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/mupen64plus.png"
+    done < <(find -maxdepth 1 -type f -name 'mupen64plus_*_*x*x*.png' -print0)
     
     # mupen64plus components
     local _component
+    local _sover
     for _component in core audio-sdl2 input-raphnetraw rsp-hle
     do
         make -C "m64p/mupen64plus-${_component}/projects/unix" DESTDIR="$pkgdir" PREFIX='/usr' LDCONFIG='true' install
     done
-    local _sover
     _sover="$(find "${pkgdir}/usr/lib" -type f -name 'libmupen64plus.so.*.*.*' | sed 's/^.*\.so\.//')"
     ln -s "libmupen64plus.so.${_sover}" "${pkgdir}/usr/lib/libmupen64plus.so"
     
