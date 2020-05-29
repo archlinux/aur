@@ -44,13 +44,12 @@ build() {
 }
 
 package() {
-echo
-  install -Dm755 -t "${pkgdir}/usr/lib/${pkgname}" "$_pkgname/build/"*
+  install -Dm755 -t "$pkgdir/usr/lib/$_pkgname" "$_pkgname/build/"*
   install -dm750 "$pkgdir/etc/$_pkgname"
   install -Dm644 -t "$pkgdir/etc/$_pkgname" config
   install -Dm644 "service" $pkgdir/usr/lib/systemd/system/$_pkgname.service
-  install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/$_pkgname.conf"
-  install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/$_pkgname.conf"
+  install -Dm644 "sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+  install -Dm644 "tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
 }
 sha256sums=('SKIP'
             'ab8a048d0d3898e0e0e3db59a8973d0c63f291af170fbed634102f2d5ef98971'
