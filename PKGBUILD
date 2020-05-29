@@ -45,7 +45,7 @@ package() {
   install -d "${pkgdir}/" "$pkgdir/opt/${_pkgname}"
   install -Dm755 "${srcdir}/LiteManager" "$pkgdir/opt/litemanager/litemanager"
   mkdir -p $pkgdir/usr/bin
-  ln -s "/opt/litemanager/LiteManager" "$pkgdir/usr/bin/litemanager"
+  ln -s "/opt/litemanager/litemanager" "$pkgdir/usr/bin/litemanager"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   #install -Dm644 "${srcdir}/${pkgname}.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
 }
