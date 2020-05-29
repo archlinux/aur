@@ -1,6 +1,6 @@
 pkgbase = indistarter
 	pkgdesc = A simple program to run a INDI server
-	pkgver = 2.0.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://sourceforge.net/projects/indistarter
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = indistarter
 	depends = glib2
 	depends = pango
 	provides = indistarter
-	source = https://sourceforge.net/projects/indistarter/files/indistarter-2.0.0/indistarter-2.0.0-140-linux_x86_64.tar.xz
-	md5sums = 2a418bfbb8c938f4fbaaf2387ed88f39
+	source = https://sourceforge.net/projects/indistarter/files/indistarter-2.3.0/indistarter-2.3.0-159-linux_x86_64.tar.xz
+	md5sums = 5d1e1aa32fdea04cbce5be4143c0b015
 
 pkgname = indistarter
 
