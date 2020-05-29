@@ -39,25 +39,25 @@ prepare() {
 build() {
     cd $srcdir/d2
     make version VERSION="${pkgver}"
-    make
+    make core
 }
 
 package() {
     cd $srcdir/d2
     mkdir -p $pkgdir/usr/{lib/${_pkgname}/mods,bin,share/pixmaps,share/doc/packages/openra-d2,share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/openra-d2
-    cp -r engine/{glsl,lua,AUTHORS,COPYING,*.dll*,GeoLite2-Country.mmdb.gz,'global mix database.dat',launch-dedicated.sh,launch-game.sh,OpenRA.Game.exe,OpenRA.Server.exe,OpenRA.Utility.exe,VERSION} $pkgdir/usr/lib/openra-d2
+    cp -r engine/{glsl,lua,AUTHORS,COPYING,*.dll*,'global mix database.dat',launch-dedicated.sh,launch-game.sh,OpenRA.Game.exe,OpenRA.Server.exe,OpenRA.Utility.exe,VERSION} $pkgdir/usr/lib/openra-d2
     cp -r mods/d2 $pkgdir/usr/lib/${_pkgname}/mods
     cp -r engine/mods/{common,modcontent,d2k,cnc,ra} $pkgdir/usr/lib/${_pkgname}/mods
     install -Dm755 $srcdir/openra-d2 $pkgdir/usr/bin/openra-d2
     cp -r $srcdir/openra-d2.appdata.xml $pkgdir/usr/share/appdata/openra-d2.appdata.xml
     cp -r README.md $pkgdir/usr/share/doc/packages/${_pkgname}/README.md
-    ln -sf /usr/lib/${_pkgname}/mods/d2/icon.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
+    ln -sf /usr/share/icons/hicolor/512x512/apps/${_pkgname}.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
     install -Dm644 $srcdir/openra-d2.desktop $pkgdir/usr/share/applications/openra-d2.desktop
-#    mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,134x134,256x256}/apps
-#    for size in 16 32 48 64 134 256; do
-#      size="${size}x${size}"
-#      cp packaging/linux/mod_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/openra-d2.png"
-#    done
+    mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256,512x512}/apps
+    for size in 16 32 48 64 128 256 512; do
+      size="${size}x${size}"
+      cp packaging/artwork/icon_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/openra-d2.png"
+    done
     rm $pkgdir/usr/lib/${_pkgname}/*.sh
 }
