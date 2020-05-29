@@ -1,7 +1,7 @@
 pkgbase = cryptodev-linux
 	pkgdesc = cryptodev Linux module
 	pkgver = 1.10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cryptodev-linux.org/
 	install = cryptodev-linux.install
 	arch = i686

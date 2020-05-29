@@ -5,7 +5,7 @@ pkgbase=cryptodev-linux
 pkgname=(cryptodev-linux cryptodev-linux-dkms)
 pkgdesc="cryptodev Linux module"
 pkgver=1.10
-pkgrel=2
+pkgrel=3
 url='http://cryptodev-linux.org/'
 license=("GPL")
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgbase}-${pkgver}"
-  make
+  make KERNEL_DIR=/usr/src/linux
 }
 
 package_cryptodev-linux() {
@@ -39,7 +39,7 @@ package_cryptodev-linux() {
   depends=('linux')
 
   cd "${srcdir}/${pkgbase}-${pkgbase}-${pkgver}"
-  make INSTALL_MOD_PATH="${pkgdir}"/usr DESTDIR="${pkgdir}" PREFIX="${pkgdir}" install
+  make INSTALL_MOD_PATH="${pkgdir}"/usr DESTDIR="${pkgdir}" PREFIX="${pkgdir}" KERNEL_DIR=/usr/src/linux install
   rm -Rf "${pkgdir}"/usr/lib/modules/*/modules.*
 }
 
