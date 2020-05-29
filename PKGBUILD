@@ -24,6 +24,8 @@ depends=('python-setuptools'
          'python-tabulate'
          'python-pyelftools'
          'python-marshmallow')
+optdepends=('python-click-completion: for shell completions'
+           'python-shellingham: for shell completions')
 conflicts=('platformio-git')
 source=("https://github.com/platformio/platformio-core/archive/v${pkgver}.tar.gz")
 sha256sums=('8c0cf78f855ba0ddc629176c900706fa2d2a0c2d92053e9a6a02f7e86f770725')
