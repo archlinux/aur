@@ -2,7 +2,7 @@
 _lang=swe-deu
 _pkgname=dict-freedict-${_lang}
 pkgname=${_pkgname}-bin
-pkgver=2018.09.13
+pkgver=2020.02.08
 pkgrel=1
 pkgdesc="Swedish -> German dictionary for dictd et al. from Freedict.org"
 arch=('any')
@@ -13,7 +13,7 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 install=${pkgname}.install
 source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}/freedict-${_lang}-${pkgver}.dictd.tar.xz")
-sha256sums=('65f3638e7c2070fbae0523aa8698918cb17f9a6616b865f0676372b43f0fd073')
+sha256sums=(d05c37cda7c0ab4245e1ef28d83bebe9e8a9c23daea67cf7f3df54ae82bacbb2)
 
 package()
 {
