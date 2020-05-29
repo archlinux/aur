@@ -6,7 +6,7 @@
 pkgname=mailwizard
 
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Configure neomutt, isync, getmail and msmtp with pass for passwords'
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('GPL3')
 
 conflicts=('mutt-wizard')
 
-depends=('neomutt' 'isync' 'getmail-python3' 'msmtp' 'notmuch-runtime' 'pass' 'urlscan')
+depends=('neomutt' 'isync' 'getmail-python3-git' 'msmtp' 'notmuch-runtime' 'pass' 'urlscan')
 optdepends=('imagemagick: view images inside of the neomutt TUI'
             'w3m: view HTML email and images inside of the neomutt TUI'
             'lynx: view HTML email inside of the neomutt TUI'
