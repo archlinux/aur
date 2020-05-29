@@ -1,7 +1,7 @@
 # Maintainer: Rhys Perry <rhysperry111 AT gmail DOT com>
 # Based off of: mako-git
 pkgname=mako-animated-git
-_pkgname=mako
+_pkgname=mako-animated
 pkgver=devel
 pkgrel=1
 license=('MIT')
