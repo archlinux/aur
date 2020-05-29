@@ -1,27 +1,5 @@
 pkgbase = yacreader-bin
-	pkgdesc = A comic reader for cross-platform reading and managing your digital comic collection.(using rpm package to speed up installation.) -
-	pkgver = 9.6.2.1909283
-	pkgrel = 7.17
-	url = http://www.yacreader.com
-	arch = x86_64
-	license = GPL3
-	depends = libunarr
-	depends = qt5-base
-	depends = qt5-multimedia
-	depends = poppler-qt5
-	provides = yacreader
-	provides = yacreader-nopdf
-	conflicts = yacreader
-	conflicts = yacreader-nopdf
-	replaces = yacreader
-	replaces = yacreader-nopdf
-	source = https://download.opensuse.org/repositories/home:/selmf:/yacreader-rpm/Fedora_Rawhide/x86_64/yacreader-9.6.2.1909283-7.17.x86_64.rpm
-	sha256sums = 574723603740ca174784a56cec9c51ca59d797a05868253499265946caf7d2b4
-
-pkgname = yacreader-bin
-
-pkgbase = yacreader-bin
-	pkgdesc = A comic reader for cross-platform reading and managing your digital comic collection.(using rpm package to speed up installation.) -
+	pkgdesc = A comic reader for cross-platform reading and managing your digital comic collection.(using rpm package to speed up installation.)
 	pkgver = 9.6.2.1909283
 	pkgrel = 7.23
 	url = http://www.yacreader.com
