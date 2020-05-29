@@ -5,6 +5,7 @@ pkgbase = deemix-git
 	url = https://notabug.org/RemixDev/deemix
 	arch = any
 	license = gpl3
+	makedepends = git
 	depends = python>=3.6
 	depends = python-click
 	depends = python-pycryptodomex
