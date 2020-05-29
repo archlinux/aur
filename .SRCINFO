@@ -1,13 +1,13 @@
 pkgbase = ocaml-alsa
 	pkgdesc = OCaml ALSA bindings
 	pkgver = 0.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/savonet/ocaml-alsa
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = dune
-	makedepends = dune-configurator
+	makedepends = git
 	depends = ocaml
 	depends = alsa-lib
 	options = !strip
