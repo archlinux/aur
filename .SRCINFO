@@ -1,15 +1,17 @@
 pkgbase = java8-openjdk-hsdis
 	pkgdesc = Disassembler for HotSpot
 	pkgver = 8.u242
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openjdk.java.net/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	source = hotspot-jdk8u242-b08.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/archive/jdk8u242-b08.tar.gz
-	source = http://ftp.gnu.org/gnu/binutils/binutils-2.31.tar.bz2
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.bz2
+	source = binutils-compat.patch
 	sha256sums = 8b799f2ef8e804110aa6ccd23fc46a04047141f7f8ad32936a6fc66f828b24a2
-	sha256sums = 2c49536b1ca6b8900531b9e34f211a81caf9bf85b1a71f82b81ae32fcd8ffe19
+	sha256sums = 89f010078b6cf69c23c27897d686055ab89b198dddf819efb0a4f2c38a0b36e6
+	sha256sums = 1ce6f6dccf01aa7172f2a600384244ac7bc91a9cf1bcaa0a9d4e453c775357f5
 
 pkgname = java8-openjdk-hsdis
 
