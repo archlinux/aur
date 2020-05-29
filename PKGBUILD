@@ -9,7 +9,7 @@ license=("EULA")
 groups=("base-devel")
 source=("https://download.brother.com/welcome/dlf103813/mfcj1300dwpdrv-1.0.5-0.i386.deb")
 md5sums=("c260230993837cff7447e0c101bcb5a0")
-depends=(lib32-glibc)
+depends=(lib32-glibc brscan4)
 
 pkgver() {    
     printf "%s" $pkgver    
