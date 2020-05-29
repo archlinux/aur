@@ -13,14 +13,14 @@ optdepends=('git: git support')
 options=(!strip) #to speed up build
 
 source=(
-  "theia-electron"
+  "theia-electron.sh"
   "package.json"
   "theia-electron.desktop"
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/logo/theia.svg"
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE"
 )
-md5sums=('c022f460c0d928df6c1ece9d3044b008'
-         '8206f2b4d44b2ad98d0e43cc2055377c'
+md5sums=('5a26cc7b1b461bec8533266dbe64c87e'
+         'd254be29e8f55f78d8f8d5d4801403d8'
          'b316dead79fa33f45c8d689a1c940dab'
          '1dde0e422484895d3509f4ee9bb8d980'
          '6befbd553f609c8f4e48805013bc71c7')
@@ -36,15 +36,14 @@ package() {
   # Create directory
   install -dm 755 "$pkgdir"/usr/lib/$pkgname
 
-  # Source code (symlinks are not dereferenced)
+  # Source code (symlinks are not dereferenced) and plugins
   cp -r --no-preserve=ownership --preserve=mode \
-      src-gen lib node_modules \
+      src-gen lib node_modules package.json \
+      plugins \
       "$pkgdir/usr/lib/$pkgname/"
-  # package.json (should be dereferenced)
-  install -Dm644 package.json "$pkgdir/usr/lib/$pkgname/"
 
   # Executable
-  install -Dm755 theia-electron "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 theia-electron.sh "$pkgdir/usr/bin/$pkgname"
   # Desktop file
   install -Dm644 theia-electron.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
   # Icon
