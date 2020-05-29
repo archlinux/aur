@@ -34,7 +34,7 @@ prepare() {
   echo "Creating desktop file"
   gendesk -f -n --pkgname ${pkgname} \
     --pkgdesc "${pkgdesc}" \
-    --categories "Graphics;" \
+    --categories "internet;" \
     --icon "${_pkgname}" \
     --exec "litemanager"
 	
@@ -42,7 +42,7 @@ prepare() {
 
 
 package() {
-  install -d "${pkgdir}/" "$pkgdir/opt/${_pkgname}"
+  install -d "${pkgdir}/" "$pkgdir/opt/${pkgname}"
   install -Dm755 "${srcdir}/LiteManager" "$pkgdir/opt/litemanager/litemanager"
   mkdir -p $pkgdir/usr/bin
   ln -s "/opt/litemanager/litemanager" "$pkgdir/usr/bin/litemanager"
