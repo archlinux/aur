@@ -1,0 +1,18 @@
+pkgbase = symphonium-git
+	pkgdesc = A tool to help learning the piano
+	pkgver = r20.605da36
+	pkgrel = 1
+	url = https://symphonium.net
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-base
+	depends = hicolor-icon-theme
+	depends = qt5-base
+	depends = timidity++
+	provides = symphonium
+	source = git+https://github.com/ttdm/Symphonium
+	sha256sums = SKIP
+
+pkgname = symphonium-git
+
