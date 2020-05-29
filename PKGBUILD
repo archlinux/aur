@@ -6,8 +6,8 @@ pkgrel=1
 pkgdesc="Google SafeBrowsing API"
 url="https://github.com/google/safebrowsing/"
 license=('Apache')
-provides=('google-safebrowsing-api-git')
-conflicts=('google-safebrowsing-api-git')
+provides=($_pkgname)
+conflicts=($_pkgname)
 source=(
   "$_pkgname::git+https://github.com/google/safebrowsing.git"
   "service"
