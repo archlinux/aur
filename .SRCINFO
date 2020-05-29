@@ -5,6 +5,7 @@ pkgbase = deemix-pyweb-git
 	url = https://notabug.org/RemixDev/deemix-pyweb
 	arch = any
 	license = gpl3
+	makedepends = git
 	depends = python>=3.6
 	depends = deemix
 	depends = python-flask
