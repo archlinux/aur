@@ -2,7 +2,7 @@
 # Contributor: brikler
 
 pkgname=fwts-git
-pkgver=4336.f4063ed2
+pkgver=4543.6e3dafde
 pkgrel=1
 pkgdesc="The FirmWare Test Suite is a tool to do automatic testing of a PC's firmware"
 arch=('i686' 'x86_64')

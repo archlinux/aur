@@ -1,6 +1,6 @@
 pkgbase = fwts-git
 	pkgdesc = The FirmWare Test Suite is a tool to do automatic testing of a PC's firmware
-	pkgver = 4336.f4063ed2
+	pkgver = 4543.6e3dafde
 	pkgrel = 1
 	url = http://smackerelofopinion.blogspot.com/2010/08/firmware-test-suite-biosacpi-health.html
 	arch = i686
