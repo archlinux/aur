@@ -1,15 +1,15 @@
 # Maintainer: robertfoster
 
 pkgname=python2-pynacl-git
-pkgver=1.0.1.r16.g42ef7df
+pkgver=1.4.0.r4.g44fb453
 pkgrel=1
 pkgdesc='A simple ctypes based python binding to libsodium'
 arch=('any')
 url='http://libnacl.readthedocs.org'
 license=('APACHE')
 makedepends=(git python-setuptools python2-setuptools libsodium)
-conflicts=('python2-libnacl')
 replaces=('python2-libnacl')
+provides=('python2-pynacl')
 source=("$pkgname::git+https://github.com/pyca/pynacl.git")
 
 package() {
@@ -18,7 +18,7 @@ package() {
 }
 
 pkgver() {
-  cd $pkgname
+  cd "$srcdir/$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
