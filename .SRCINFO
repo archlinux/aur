@@ -5,6 +5,7 @@ pkgbase = python-matplotlib-venn
 	url = https://pypi.python.org/pypi/matplotlib-venn
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python-numpy
 	depends = python-matplotlib
 	depends = python-scipy

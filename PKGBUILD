@@ -11,6 +11,7 @@ url="https://pypi.python.org/pypi/matplotlib-venn"
 _github_url="https://github.com/konstantint/matplotlib-venn"
 license=('MIT')
 depends=('python-numpy' 'python-matplotlib' 'python-scipy')
+makedepends=('python-setuptools')
 source=(https://pypi.python.org/packages/source/m/matplotlib-venn/${_upstream_pkgname}-${pkgver}.zip)
 md5sums=('7c2f2baad242388147988f054023568e')
 
