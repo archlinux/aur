@@ -23,8 +23,8 @@ pkgver() {
 build() {
     cd "$srcdir/phonesim"
     echo "--- Starting PKGBUILD logs ---"
-    git checkout $(git describe) # --abbrev=0 --tags)
-    echo "[BUILD] Checking-out master->$(git describe --abbrev=0 --tags)"
+    git checkout $(git describe --long)
+    echo "[BUILD] Checking-out master->$(git describe --long)"
     ./bootstrap-configure
     make
 }
