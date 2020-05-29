@@ -11,7 +11,7 @@ _enable_gcc_more_v="y"
 # Optionally select a sub architecture by number if building in a clean chroot
 # Leaving this entry blank will require user interaction during the build
 # which will cause a failure to build if using makechrootpkg. Note that the
-# generic (default) option is 30.
+# generic (default) option is 32.
 #
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
@@ -42,8 +42,10 @@ _enable_gcc_more_v="y"
 #  27. Intel Cannon Lake (MCANNONLAKE)
 #  28. Intel Ice Lake (MICELAKE)
 #  29. Intel Cascade Lake (MCASCADELAKE)
-#  30. Generic-x86-64 (GENERIC_CPU)
-#  31. Native optimizations autodetected by GCC (MNATIVE)
+#  30. Intel Cooper Lake (MCOOPERLAKE)
+#  31. Intel Tiger Lake (MTIGERLAKE)
+#  32. Generic-x86-64 (GENERIC_CPU)
+#  33. Native optimizations autodetected by GCC (MNATIVE)
 _subarch=
 
 # Compile ONLY used modules to VASTLY reduce the number of modules built
@@ -61,21 +63,22 @@ _localmodcfg=
 _major=4.19
 _minor=125
 _srcname=linux-${_major}
-_clr=${_major}.124-141
+_clr=${_major}.125-142
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux lts2018'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2018"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
+_gcc_more_v='20200527'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${_major}.tar".{xz,sign}
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
   "${pkgbase}::git+https://github.com/clearlinux-pkgs/linux-lts2018.git#tag=${_clr}"
-  'https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/74137a6a0159825b9692866578dc64b2b7a330e8/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v4.19-v5.4.patch'
+  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -135,6 +138,9 @@ prepare() {
                        --module-after SND_OSSEMUL SND_MIXER_OSS \
                        --module-after SND_MIXER_OSS SND_PCM_OSS \
                        --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS
+
+        # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
+        scripts/config --enable SECTION_MISMATCH_WARN_ONLY
 
         # Security options
         scripts/config --enable SECURITY_SELINUX \
@@ -317,7 +323,7 @@ sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
             '431bb92390eb5a960e0e2084957aff078662d340f597f38bbfb0316302c31cff'
             'SKIP'
-            '0b785030b616844da50dc0e26d24671066334937be5a6a75e76d5ac65ba02477')
+            '8255e6b6e0bdcd66a73d917b56cf2cccdd1c3f4b3621891cfffc203404a5b6dc')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
