@@ -1,7 +1,7 @@
 pkgbase = ocaml-stdint-git
 	pkgdesc = Various signed and unsigned integers for OCaml
-	pkgver = 20180606
-	pkgrel = 2
+	pkgver = 20200208
+	pkgrel = 3
 	url = https://github.com/andrenth/ocaml-stdint
 	arch = i686
 	arch = x86_64
