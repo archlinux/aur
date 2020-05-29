@@ -1,6 +1,6 @@
 pkgbase = python-guessit
 	pkgdesc = A library for guessing information from video files.
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/guessit
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-guessit
 	depends = python-dateutil
 	depends = python-rebulk
 	conflicts = python-guessit-git
-	source = https://github.com/guessit-io/guessit/archive/3.1.0.tar.gz
-	sha256sums = 675b723ce0ae9e9a4d60d5ab401728a6d807344dc81eb90013eef193330ca793
+	source = https://github.com/guessit-io/guessit/archive/3.1.1.tar.gz
+	sha256sums = dccb66d6d80963382753e9a456a28f8f7da10b9932e96e42bccc74a081cd2e8c
 
 pkgname = python-guessit
 
