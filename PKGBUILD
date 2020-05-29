@@ -6,7 +6,7 @@
 
 pkgname='electron-cash-git'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.0.13.dev1.r19.ge16d90887
+pkgver=4.0.15.r0.g21a254aa9
 pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
@@ -51,17 +51,8 @@ optdepends=(
 )
 provides=("${pkgname/-git/}")
 conflicts=("${pkgname/-git/}")
-source=("${pkgname}::git+https://github.com/Electron-Cash/Electron-Cash.git"
-        "tox.ini.patch")
-sha256sums=('SKIP'
-            '39c85a1eec8fcdc7fa80d47ff464e023b092cc623dce7fd6f42abe547c017ecb')
-
-prepare() {
-  cd "${pkgname}"
-
-  # Patch tox.ini to use the latest pip
-  patch --forward --strip=1 --input="${srcdir}/tox.ini.patch"
-}
+source=("${pkgname}::git+https://github.com/Electron-Cash/Electron-Cash.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
