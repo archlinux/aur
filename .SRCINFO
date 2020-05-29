@@ -1,0 +1,29 @@
+pkgbase = knemo
+	pkgdesc = The KDE Network Monitor
+	pkgver = 0.7.7.git20151003
+	pkgrel = 4
+	url = https://www.linux-apps.com/content/show.php?content=12956
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = kcmutils
+	makedepends = plasma-framework
+	makedepends = kdoctools
+	makedepends = git
+	makedepends = kdesignerplugin
+	makedepends = kinit
+	depends = kdelibs4support
+	depends = libksysguard
+	depends = knotifyconfig
+	depends = wireless_tools
+	depends = iw
+	depends = plasma-framework
+	depends = hicolor-icon-theme
+	options = libtool
+	source = git://git.kde.org/knemo.git#commit=f3afe2e4b6f091f21a64905965abafd2ef46826d
+	source = knemo-gcc6.patch
+	sha256sums = SKIP
+	sha256sums = 5da88c3c60bf7ab924c85ee2c1159a12d4c376ad726eab784972abc36295a4fc
+
+pkgname = knemo
+
