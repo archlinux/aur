@@ -32,6 +32,11 @@ build() {
 	cargo build --release
 }
 
+check() {
+	cd $pkgname
+	cargo test
+}
+
 package() {
 	cd $pkgname
 	install -D -m755 "$srcdir/$pkgname/target/release/blightmud" "$pkgdir/usr/bin/blightmud"

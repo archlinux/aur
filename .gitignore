@@ -1,2 +1,4 @@
 /blightmud-git/
 /src/
+/pkg/
+*.tar.xz
