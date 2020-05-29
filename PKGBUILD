@@ -15,12 +15,14 @@ options=(!strip) #to speed up build
 source=(
   "theia-electron.sh"
   "package.json"
+  ".yarnclean"
   "theia-electron.desktop"
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/logo/theia.svg"
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE"
 )
 md5sums=('5a26cc7b1b461bec8533266dbe64c87e'
          'd254be29e8f55f78d8f8d5d4801403d8'
+         '54b30057095cf131ec7296b0d0bd2046'
          'b316dead79fa33f45c8d689a1c940dab'
          '1dde0e422484895d3509f4ee9bb8d980'
          '6befbd553f609c8f4e48805013bc71c7')
