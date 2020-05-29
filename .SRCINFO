@@ -1,6 +1,6 @@
 pkgbase = afdko-git
-	pkgdesc = Tools used by Adobe font developers for wrapping up PostScript fonts as OpenType/CFF font files
-	pkgver = 3.2.0.r23.gbbedb0e
+	pkgdesc = Adobe Font Development Kit for OpenType
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/adobe-type-tools/afdko
 	arch = x86_64
@@ -17,11 +17,13 @@ pkgbase = afdko-git
 	depends = python-fontmath
 	depends = python-fontparts
 	depends = python-fontpens
+	depends = python-fonttools>=4.8.1
 	depends = python-fs
 	depends = python-lxml
-	depends = python-mutatormath
-	depends = python-ufonormalizer
+	depends = python-mutatormath>=3.0.1
+	depends = python-ufonormalizer>=0.4.1
 	depends = python-ufoprocessor
+	depends = python-unicodedata2
 	depends = python-zopfli
 	provides = afdko
 	conflicts = afdko
