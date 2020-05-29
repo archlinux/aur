@@ -8,8 +8,10 @@ pkgbase = tla-toolbox
 	depends = java-runtime
 	source = https://github.com/tlaplus/tlaplus/releases/download/v1.7.0/TLAToolbox-1.7.0-linux.gtk.x86_64.zip
 	source = tla-toolbox.desktop
+	source = icon.png
 	sha256sums = a91c7d93ba7ecd490aed05da5988c7b6299ae279e0fbdbc97e34cdc642483f67
 	sha256sums = 900b0d2e03a7254faa108653aee50f1107b249c41e40d66655f7fdb12d4a5c82
+	sha256sums = 51dbb6724fa7ff5167067dce68dd6b577a2401a47a37120a9879f0afd85ff7c9
 
 pkgname = tla-toolbox
 
