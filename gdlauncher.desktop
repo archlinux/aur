@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=GDLauncher
-Comment=GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience
-Exec=/opt/gdlauncher/gdlauncher
-Terminal=false
-Type=Application
-Icon=gdlauncher
-StartupWMClass=GDLauncher
-Categories=Game;
