@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.7
+Type=Application
+Name=TLA+ Toolbox
+Exec=tla-toolbox
+Icon=tla-toolbox
+Comment=The TLA Toolbox is an IDE (integrated development environment) for the TLA+ tools.
+Categories=Development;Formal Methods
+Terminal=false
+MimeType=application/x-extension-iml;
