@@ -1,13 +1,13 @@
 # Maintainer: robertfoster
 pkgname=ocaml-fdkaac-git
 pkgver=r80.cc4245a
-pkgrel=1
+pkgrel=2
 pkgdesc="OCaml binding for the fdk-aac library"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-fdkaac"
 license=('GPL')
 depends=('ocaml' 'libfdk-aac')
-makedepends=('dune' 'dune-configurator')
+makedepends=('dune' 'git')
 options=('!strip' '!makeflags')
 source=("${pkgname}::git+https://github.com/savonet/ocaml-fdkaac.git")
 
