@@ -1,7 +1,7 @@
 pkgbase = google-safebrowsing-api-git
 	pkgdesc = Google SafeBrowsing API
 	pkgver = r53.bbf0d20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/safebrowsing/
 	arch = x86_64
 	license = Apache

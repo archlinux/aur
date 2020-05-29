@@ -2,7 +2,7 @@
 _pkgname=google-safebrowsing-api
 pkgname=${_pkgname}-git
 pkgver=r53.bbf0d20
-pkgrel=1
+pkgrel=2
 pkgdesc="Google SafeBrowsing API"
 url="https://github.com/google/safebrowsing/"
 license=('Apache')
