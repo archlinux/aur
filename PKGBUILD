@@ -5,13 +5,14 @@
 
 pkgname=droidcam
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A tool for using your android device as a wireless/usb webcam'
 arch=('x86_64')
 url="https://www.dev47apps.com/${pkgname}/linuxx"
 license=('GPL')
-depends=('v4l2loopback-dc-dkms')
+depends=('v4l2loopback-dc-dkms' 'alsa-lib' 'libjpeg-turbo' 'ffmpeg')
+makedepends=('gtk2')
 optdepends=('gtk2: use GUI version in addition to CLI interface' )
 
 source=("${pkgname}.desktop"

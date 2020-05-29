@@ -1,12 +1,16 @@
 pkgbase = droidcam
 	pkgdesc = A tool for using your android device as a wireless/usb webcam
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.dev47apps.com/droidcam/linuxx
 	arch = x86_64
 	license = GPL
+	makedepends = gtk2
 	depends = v4l2loopback-dc-dkms
+	depends = alsa-lib
+	depends = libjpeg-turbo
+	depends = ffmpeg
 	optdepends = gtk2: use GUI version in addition to CLI interface
 	source = droidcam.desktop
 	source = 0001-Use-shared-version-of-libjpeg-turbo.patch
