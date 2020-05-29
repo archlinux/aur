@@ -1,10 +1,6 @@
 See the full changelog at
 https://git.sr.ht/~krathalan/wtwitch/tree/master/FULLCHANGELOG
 
-1.4.1 (March 07, 2020)
-    Fixed an issue where sometimes a streamer returned by the Twitch API would
-        be null
-
 1.4.2 (March 19, 2020)
     Fixed an "unbound variable" issue when a user had no subscriptions
 
@@ -15,3 +11,6 @@ https://git.sr.ht/~krathalan/wtwitch/tree/master/FULLCHANGELOG
 
 1.5.1 (May 24, 2020)
     Set OAuth token expiry for 1 day after acquisition
+
+1.6.0 (May 28, 2020)
+    Add French translation patch from Léo Villeveygoux
