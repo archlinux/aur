@@ -1,5 +1,12 @@
-package:
+package: clean
 	makepkg
+
+update: clean updatechecksums srcinfo
+		updpkgsums
+
+updatechecksums:
+	updpkgsums
+
 
 srcinfo: .SRCINFO
 
