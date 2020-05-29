@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://github.com/plotly/plotly.py/archive/v${pkgver}.tar.gz")
-md5sums=('da6296bd75eb5db022e6d92eb5ff27b2')
+sha256sums=('7f85fa498bb40a373f8eb75933eb47add578f81feea5b3ed2619b5cc6817f145')
 
 build() {
   cd plotly.py-${pkgver}/packages/python/plotly
