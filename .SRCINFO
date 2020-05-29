@@ -1,6 +1,6 @@
 pkgbase = geekbench
 	pkgdesc = A cross-platform benchmark that measures processor and memory performance
-	pkgver = 5.1.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = http://www.primatelabs.ca/geekbench/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = geekbench
 	depends = gcc-libs
 	conflicts = geekbench227
 	options = !strip
-	source = http://cdn.geekbench.com/Geekbench-5.1.0-Linux.tar.gz
-	md5sums = 9781a829942ab2df127da734bf56181a
+	source = http://cdn.geekbench.com/Geekbench-5.1.1-Linux.tar.gz
+	md5sums = 2ed522222271269c1c4699cdfd78b054
 
 pkgname = geekbench
 
