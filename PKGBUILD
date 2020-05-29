@@ -1,7 +1,7 @@
 # Maintainer: Philipp Hochmann <phil.hochmann[ät]gmail[dot]com>
 pkgname=ccalc
-pkgver=1.5.1
-pkgrel=1
+pkgver=1.5.2
+pkgrel=0
 epoch=
 pkgdesc="Scientific calculator in which you can define new functions and constants"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/PhilippHochmann/ccalc"
 license=('GPL3')
 groups=()
 depends=('readline')
-makedepends=()
+makedepends=('make' 'gcc')
 checkdepends=()
 optdepends=()
 provides=()
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('867a3280c9c296606a7eb7c016264c16')
+md5sums=('765a182c42169f52b09b213cef55db50')
 validpgpkeys=()
 
 prepare() {
@@ -29,23 +29,12 @@ prepare() {
 }
 
 build() {
-	# - - - - - - - Build configuration - - - - - - -
-	use_readline=true
-	# - - - - - - - - - - - - - - - - - - - - - - - -
-
-	LFLAGS="-lm"
-	DEFINES=""
-	CFLAGS="-std=c99 -Wall -Wextra -Werror -pedantic"
-	FILES="src/*/*.c src/*.c"
-	BIN="ccalc"
-
-	if [ "$use_readline" = true ]; then
-		LFLAGS="$LFLAGS -lreadline"
-		DEFINES="$DEFINES -DUSE_READLINE"
-	fi
-
 	cd "$pkgname-$pkgver"
-	gcc $DEFINES -O3 $CFLAGS $FILES -o $BIN $LFLAGS
+	make
+	if [ $? -eq 0 ]; then
+		mv bin/release/ccalc .
+		make clean
+	fi
 }
 
 check() {
