@@ -56,7 +56,7 @@ depends+=("${_lua_deps[@]/#/lua-}"
           "${_python_deps[@]/#/python-}")
 makedepends=('rust' 'cargo')
 provides=("${pkgname%-git}")
-conflicts=("${provides[@]}")
+conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
