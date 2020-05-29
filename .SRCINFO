@@ -1,7 +1,7 @@
 pkgbase = knemo
 	pkgdesc = The KDE Network Monitor
 	pkgver = 0.7.7.git20151003
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.linux-apps.com/content/show.php?content=12956
 	arch = x86_64
 	license = GPL

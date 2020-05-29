@@ -1,11 +1,12 @@
-# Maintainer: Laurent Carlier <lordheavym@gmail.com>
+# Maintainer: João Figueiredo <jf dot mundox at gmail dot com> (29/05/2020)
+# Contributor: Laurent Carlier <lordheavym@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Stefano Zamprogno <stefano dot zamprogno at gmail dot com>
 
 pkgname=knemo
 pkgver=0.7.7.git20151003
-pkgrel=4
+pkgrel=5
 pkgdesc="The KDE Network Monitor"
 arch=('x86_64')
 url="https://www.linux-apps.com/content/show.php?content=12956"
