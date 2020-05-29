@@ -1,6 +1,6 @@
 pkgbase = soundcloud-dl-git
 	pkgdesc = Souncloud music downloader
-	pkgver = v1.3.3b1.r128.g7f0b1c9
+	pkgver = v1.3.3b1.r156.gb0a164f
 	pkgrel = 1
 	url = https://github.com/flyingrub/scdl
 	arch = any
