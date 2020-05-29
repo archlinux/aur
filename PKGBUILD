@@ -6,7 +6,7 @@
 pkgname=soulseekqt
 pkgver=20180130
 _pkgver=2018-1-30
-pkgrel=10
+pkgrel=11
 pkgdesc="A desktop client for the Soulseek peer-to-peer file sharing network"
 arch=('x86_64')
 url="http://www.soulseekqt.net/news/"
@@ -20,28 +20,28 @@ source=("https://www.slsknet.org/SoulseekQt/Linux/SoulseekQt-${_pkgver}-64bit-ap
 options=("!strip")
 
 prepare() {
-    cd $srcdir
+    cd "$srcdir"
     msg2 "Extraction..."
-    ./SoulseekQt-${_pkgver}-64bit.AppImage  --appimage-extract
+    ./"SoulseekQt-${_pkgver}-64bit.AppImage"  --appimage-extract
     
     msg2 "Compiling libselinux.so.1 fakelib"
     gcc -s -shared -o libselinux.so.1 -Wl,-soname,libselinux.so.1 selinux-mock.c
 }
 
 package() {
-    cd $srcdir
-    mkdir -p $pkgdir/opt/
-    cp -r squashfs-root $pkgdir/opt/$pkgname
+    cd "$srcdir"
+    mkdir -p "$pkgdir/opt/"
+    cp -r squashfs-root "$pkgdir/opt/$pkgname"
     install -vDm755 soulseekqt.sh "$pkgdir/usr/bin/$pkgname"
     install -vDm755 libselinux.so.1 "$pkgdir/opt/soulseekqt/lib/libselinux.so.1"
     install -vDm644 squashfs-root/soulseek.png "$pkgdir/usr/share/pixmaps/soulseek.png"
     install -vDm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
     
     msg2 "Cleanup"
-    chmod 755 -R $pkgdir/opt/$pkgname
+    chmod 755 -R "$pkgdir/opt/$pkgname"
     # This fix context menu on right click in search results
-    rm $pkgdir/opt/$pkgname/lib/libfreetype.so.6
-    rm -rf $pkgdir/opt/soulseekqt/{AppRun,default.desktop,soulseek.png,*.AppImage}
+    rm "$pkgdir/opt/$pkgname/lib/libfreetype.so.6"
+    rm -rf "$pkgdir/opt/soulseekqt/{AppRun,default.desktop,soulseek.png,*.AppImage}"
 }
 
 md5sums=('1d98331893bc9b9d45ba34f6523353ab'
