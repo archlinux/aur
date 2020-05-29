@@ -12,14 +12,15 @@ arch=(
 url='https://gitlab.com/kwinft/disman'
 license=(LGPL)
 depends=(
-    qt5-x11extras
-    libxrandr
     kwayland
+    libxrandr
+    qt5-x11extras
     wrapland
 )
 makedepends=(
     extra-cmake-modules
     git
+    ninja
 )
 provides=(disman)
 conflicts=(disman)
