@@ -1,6 +1,6 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=downlords-faf-client
-pkgver=1.1.2
+pkgver=1.1.7
 _pkgver_major=$(echo $pkgver | cut -d . -f 1)
 _pkgver_minor=$(echo $pkgver | cut -d . -f 2)
 _pkgver_tag=$(echo $pkgver | cut -d . -f 3)
@@ -18,7 +18,7 @@ license=('MIT')
 groups=()
 checkdepends=()
 optdepends=()
-depends=('jre10-openjdk')
+depends=('jre11-openjdk')
 makedepends=('jq')
 replaces=()
 backup=()
@@ -26,10 +26,10 @@ options=()
 install=
 changelog=
 source=("https://github.com/FAForever/downlords-faf-client/releases/download/v$_pkgver/$_filename" "https://github.com/FAForever/downlords-faf-client/raw/develop/src/media/appicon/128.png" 'DownlordsFafClient.desktop' 'downlords-faf-client')
-sha256sums=('512f3b5fb0538c7465dbdfb86f531cc1a0f5c1ba624af975429832ce84a8ac94'
+sha256sums=('0fb9ecc93ee4f576684a6b81235012eee395b66bcf66e889ee701aa642726db4'
             '2a5803ca2dd463aa4b53d79cff7f30e3aa7beb0d874b39c8ef59e679fbde9d3d'
             '3fd2b21da9de9f9c02dd89ee07f49c559dbb2de15f4e86a9b31f6353f608ffa6'
-            '761e1b02c9075f2bd6428d5293f64ea4c8825dc35439a1acb8a4475a9b85f0e7')
+            '8e3ce2f65aefc16fccf9f9ec3e1a96c954710faa38b23b81dd298f79e6760bd7')
 noextract=()
 validpgpkeys=()
 
