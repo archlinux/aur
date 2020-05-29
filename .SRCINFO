@@ -20,4 +20,3 @@ pkgbase = yay-git
 	sha256sums = SKIP
 
 pkgname = yay-git
-
