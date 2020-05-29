@@ -1,4 +1,4 @@
-# Maintainer: Dany Marcoux <danymarcoux+archlinux@gmail.com>
+# Maintainer: Christopher Scott <christopher.scott@mckean.co>
 
 pkgname=tag-ag
 pkgver=v1.4.0
