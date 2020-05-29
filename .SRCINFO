@@ -9,6 +9,7 @@ pkgbase = google-safebrowsing-api-git
 	makedepends = go
 	depends = glibc
 	provides = google-safebrowsing-api-git
+	conflicts = google-safebrowsing-api-git
 	backup = etc/google-safebrowsing-api/config
 	source = google-safebrowsing-api::git+https://github.com/google/safebrowsing.git
 	source = service
