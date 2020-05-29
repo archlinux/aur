@@ -4,13 +4,13 @@ _pkgname='sde'
 pkgname='intel-sde'
 _pkgver="8.50.0-2020-03-26-lin"
 pkgver='8.50.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Intel Software Development Emulator'
 arch=('x86_64')
 url='https://software.intel.com/en-us/articles/intel-software-development-emulator/'
 license=('custom')
-depends=('python' 'lib32-glibc')
-makedepends=('python-mechanicalsoup')
+depends=('lib32-glibc')
+makedepends=()
 optdepends=()
 
 _source="${_pkgname}-external-${_pkgver}.tar.bz2"
