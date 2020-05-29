@@ -1,0 +1,20 @@
+pkgbase = trx
+	pkgdesc = Realtime audio over IP
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://www.pogo.org.uk/~mark/trx/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = opus
+	depends = alsa-lib
+	depends = ortp
+	depends = bctoolbox
+	provides = trx
+	source = http://www.pogo.org.uk/~mark/trx/releases/trx-0.5.tar.gz
+	source = arch-makefile.patch
+	sha512sums = a374fb2c1ae42a695ae76433d5201cee1b31839fa0b7f8e4b72d5f89bad5f19d412ca69f8067d7a134e23945fca5a28911147782d00de048d080c9d7f3281dad
+	sha512sums = SKIP
+
+pkgname = trx
+

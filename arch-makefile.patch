@@ -1,0 +1,13 @@
+--- Makefile	2020-01-04 12:31:45.000000000 +0100
++++ Makefile	2020-05-29 20:19:36.735498365 +0200
+@@ -12,8 +12,9 @@
+ LDLIBS_ASOUND ?= -lasound
+ LDLIBS_OPUS ?= -lopus
+ LDLIBS_ORTP ?= -lortp
++LDLIBS_BCTOOLBOX ?= -lbctoolbox
+ 
+-LDLIBS += $(LDLIBS_ASOUND) $(LDLIBS_OPUS) $(LDLIBS_ORTP)
++LDLIBS += $(LDLIBS_ASOUND) $(LDLIBS_OPUS) $(LDLIBS_ORTP) $(LDLIBS_BCTOOLBOX)
+ 
+ .PHONY:		all install dist clean
+ 
