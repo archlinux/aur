@@ -1,6 +1,6 @@
 pkgbase = rbw-bin
 	pkgdesc = unofficial bitwarden cli
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://git.tozt.net/rbw
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = rbw-bin
 	provides = rbw
 	conflicts = rbw-git
 	conflicts = rbw
-	source = https://git.tozt.net/rbw/releases/deb/rbw_0.4.0_amd64.deb
-	sha256sums = 70d7009779fe8a2ad30c817081074ad25fba695694279309513fb546ef2facfd
+	source = https://git.tozt.net/rbw/releases/deb/rbw_0.4.1_amd64.deb
+	sha256sums = 9a2c0a8f6301b989aa66ac034c8e1180100eb98c1ed89d521502e2f1c22a4e0c
 
 pkgname = rbw-bin
 
