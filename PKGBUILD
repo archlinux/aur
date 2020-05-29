@@ -1,6 +1,6 @@
 # Maintainer: lomonosow <lomonosow93@gmail.com>
 pkgname=secureboot
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="This package contains script, which helps to manage secureboot. It can generate keys, enroll it to UEFI and sign images"
 arch=('any')

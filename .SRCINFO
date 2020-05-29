@@ -1,6 +1,6 @@
 pkgbase = secureboot
 	pkgdesc = This package contains script, which helps to manage secureboot. It can generate keys, enroll it to UEFI and sign images
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/lomonosow/secureboot
 	install = secureboot.install
@@ -11,7 +11,7 @@ pkgbase = secureboot
 	depends = efitools
 	depends = util-linux
 	depends = sbsigntools
-	source = secureboot-0.1.1.tar.gz::https://github.com/lomonosow/secureboot/archive/0.1.1.tar.gz
+	source = secureboot-0.1.2.tar.gz::https://github.com/lomonosow/secureboot/archive/0.1.2.tar.gz
 	sha512sums = 85d0bb4260dc0ed744bacb8468121e03c9c47f7fd3cf04f99a36f9fde79476b9cd418d7d4ce157633bb84f85b7da7649255396b27b3b07647106243c2c50b4d9
 
 pkgname = secureboot
