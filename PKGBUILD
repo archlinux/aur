@@ -1,7 +1,7 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-vfio-lts
-pkgver=5.4.42
+pkgver=5.4.43
 pkgrel=1
 pkgdesc='LTS Linux VFIO'
 url="https://www.kernel.org/"
@@ -17,7 +17,6 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-gcc-common.h-Update-for-GCC-10.patch
   sphinx-workaround.patch
   add-acs-overrides.patch
   i915-vga-arbiter.patch
@@ -27,11 +26,10 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('4e431b7c0266a07b76fdb77f8917ad681f0fa34ffba0eb8a172b67f7ef57bc31'
+sha256sums=('2667b90a42d42557aca9e3d37bba1b4e71809b9523958e6870ada311c4790744'
             'SKIP'
-            '8b202067f6f0adbe2f8d4290624005f4fa1fff32aaa42f979c9ab03f6b74b62f'
+            'd20936f94b29f3e86513108ab772ef4778a8cb95ec7cd44519523a6eea40aa5d'
             'bdd05caf94135898bceac0a9d14ec6b1b458dba162d00efd46a292fe97f2679b'
-            'bdfd9d472790f1f417459c6c4f16f492140e772f0f3e502c5e915f581cf7d75a'
             'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e'
             '6ebc19f8cdd608a97f8fa6a0a815ac142b88e18dd476bc2851b2771e3aa9522d'
             '50880279bab5793c89a6823d751d3c84ead5efd5c4c0d38b921a14061fc0d336')
