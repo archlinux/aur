@@ -7,10 +7,10 @@ pkgbase = brother-mfc-j1300dw
 	arch = x86_64
 	groups = base-devel
 	license = EULA
-	depends = lib32-glibc
-	depends = brscan4
+	optdepends = brscan4
 	source = https://download.brother.com/welcome/dlf103813/mfcj1300dwpdrv-1.0.5-0.i386.deb
 	md5sums = c260230993837cff7447e0c101bcb5a0
+	depends_x86_64 = lib32-glibc
 
 pkgname = brother-mfc-j1300dw
 
