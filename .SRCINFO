@@ -1,0 +1,18 @@
+pkgbase = simplest-file-renamer-bin
+	pkgdesc = Rename your files quickly and easily
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/whyboris/Simplest-File-Renamer
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	provides = simplest-file-renamer
+	noextract = simplest-file-renamer-bin-1.0.0.AppImage
+	options = !strip
+	source = simplest-file-renamer-bin-1.0.0.AppImage::https://github.com/whyboris/Simplest-File-Renamer/releases/download/v1.0.0/Simplest.File.Renamer-1.0.0.AppImage
+	source = LICENSE::https://github.com/whyboris/Simplest-File-Renamer/raw/master/LICENSE
+	sha256sums = ee8d258a22da54055a6fb851884664ecbe4ca01234e6e81faf61eb9b2ba3c044
+	sha256sums = 52debcb7a9763131668b36c7a61730979cb67975b8b4004a12c62915221e836f
+
+pkgname = simplest-file-renamer-bin
+
