@@ -2,7 +2,7 @@
 
 _pkgname=tipctl
 pkgname=tipctl-bin
-pkgver=6.0.5
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="The command line interface for the TransIP API"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://www.transip.nl/developers/"
 license=('Apache')
 depends=('php')
 source=("${_pkgname}-${pkgver}.phar::https://github.com/transip/${_pkgname}/releases/download/v${pkgver}/${_pkgname}.phar")
-sha512sums=('0d7bc277b40d6f2ab92f7409b01e5ae6eac3dbb8e7dc1079d8e4d92e2cf746540cba980868b1c77e6b2c7c309f508cd2d4824c3c4087614ddab5ddd401582d34')
+sha512sums=('c09be6c4458882cb5de794741d9f72900459846aa4f992d55c99cf6d5c099e61529900a3a982c5922ad5ff204802d9aeee5d1dce6967c8a1a8bb28fb909634b9')
 
 package() {
 	install -Dm755 "${_pkgname}-${pkgver}.phar" "${pkgdir}/usr/bin/${_pkgname}"
