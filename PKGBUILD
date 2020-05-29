@@ -11,7 +11,7 @@ _enable_gcc_more_v="y"
 # Optionally select a sub architecture by number if building in a clean chroot
 # Leaving this entry blank will require user interaction during the build
 # which will cause a failure to build if using makechrootpkg. Note that the
-# generic (default) option is 30.
+# generic (default) option is 32.
 #
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
@@ -42,8 +42,10 @@ _enable_gcc_more_v="y"
 #  27. Intel Cannon Lake (MCANNONLAKE)
 #  28. Intel Ice Lake (MICELAKE)
 #  29. Intel Cascade Lake (MCASCADELAKE)
-#  30. Generic-x86-64 (GENERIC_CPU)
-#  31. Native optimizations autodetected by GCC (MNATIVE)
+#  30. Intel Cooper Lake (MCOOPERLAKE)
+#  31. Intel Tiger Lake (MTIGERLAKE)
+#  32. Generic-x86-64 (GENERIC_CPU)
+#  33. Native optimizations autodetected by GCC (MNATIVE)
 _subarch=
 
 # Compile ONLY used modules to VASTLY reduce the number of modules built
@@ -65,17 +67,18 @@ _srcname=linux-${_major}-rc${_rc}
 _clr=${_major}.0.rc7-29
 pkgbase=linux-clear-current
 pkgver=${_major}.${_minor}.rc${_rc}
-pkgrel=2
+pkgrel=3
 pkgdesc='Clear Linux current'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-current"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
+_gcc_more_v='20200527'
 source=(
   "https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
   "clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=${_clr}"
-  'https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/d7d7850e2b5cab8fd5170992b8f5a9330b350823/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.7+.patch'
+  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -132,6 +135,9 @@ prepare() {
                        --module-after SND_MIXER_OSS SND_PCM_OSS \
                        --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS
 
+        # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
+        scripts/config --enable SECTION_MISMATCH_WARN_ONLY
+
         # Security options
         scripts/config --enable SECURITY_SELINUX \
                        --enable-after SECURITY_SELINUX SECURITY_SELINUX_BOOTPARAM \
@@ -152,7 +158,7 @@ prepare() {
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
         echo "Applying enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.7+.patch ..."
-        patch -Np1 -i "$srcdir/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.7+.patch"
+        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.7+.patch"
         fi
 
     ### Get kernel version
@@ -309,7 +315,7 @@ done
 
 sha256sums=('a65ccee5e098c62bce7a053c322b3eba96904561a785e42c46b76069b323dc87'
             'SKIP'
-            '0ff24d6c053d23e06b1aceb654100a5d0a14f57f2ba7b65ff84d5a9448f0798c')
+            '8255e6b6e0bdcd66a73d917b56cf2cccdd1c3f4b3621891cfffc203404a5b6dc')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
