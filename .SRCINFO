@@ -1,6 +1,6 @@
 pkgbase = m64p-git
 	pkgdesc = Mupen64Plus with custom plugins and Qt5 GUI (git version)
-	pkgver = r139.gb5cbdf8
+	pkgver = r140.g19fd445
 	pkgrel = 1
 	url = https://m64p.github.io/
 	arch = x86_64
