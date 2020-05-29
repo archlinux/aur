@@ -1,6 +1,6 @@
 pkgbase = tilt
 	pkgdesc = Local Kubernetes development with no stress
-	pkgver = 0.13.6
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/windmilleng/tilt
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = tilt
 	makedepends = yarn
 	optdepends = kubectl
 	conflicts = tilt-bin
-	source = tilt-0.13.6.tar.gz::https://github.com/windmilleng/tilt/archive/v0.13.6.tar.gz
-	sha256sums = a31f13a6bdd42bc629a5357363a7601fc036e7d8bc6a169b9d82667efe689115
+	source = tilt-0.14.1.tar.gz::https://github.com/windmilleng/tilt/archive/v0.14.1.tar.gz
+	sha256sums = 2055b7790c392c9cb5a50a3183349729c33d5dc95d3bd57bee20ded9c0de45d0
 
 pkgname = tilt
 
