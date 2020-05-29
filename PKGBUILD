@@ -1,7 +1,7 @@
 # Maintainer: Edward Wawrzynek <edward@wawrzynek.com>
 
 pkgname=xrcsimulator
-pkgver=4.7c
+pkgver=4.7d
 _code_pkgver=4.7
 pkgrel=1
 pkgdesc="FIRST Tech Challenge, FIRST Robotics Competition, and VEX Simulator"
@@ -13,7 +13,7 @@ optdepends=('openvr: For VR support')
 replaces=('ftcfrcsimulator')
 
 source=(
-	"${pkgname}-${pkgver}.zip::http://xrcsimulator.org/?smd_process_download=1&download_id=963"
+	"${pkgname}-${pkgver}.zip::http://xrcsimulator.org/?smd_process_download=1&download_id=998"
 	"xrcsimulator.desktop"
 	"16x16.png"
 	"24x24.png"
@@ -25,7 +25,7 @@ source=(
 )
 
 sha1sums=(
-	"ee71ef51389dc4649acf2f07f1a3cc3fc955fb95"
+	"11235d366487b8e48a64d78345675b0fcdab913b"
 	"07ee699a267425f01c7e28c2369ba6521bd515ec"
 	"7a0283d47e945b66a82dcbd11bdd10a6406dd027"
 	"deb5297344427dd07d8044543f1c023b0c4c001c"
