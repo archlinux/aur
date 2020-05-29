@@ -1,16 +1,17 @@
 pkgbase = fdiff-git
 	pkgdesc = An OpenType table diff tool for fonts based on the fontTools TTX format
-	pkgver = v1.0.2.r8.g4961155
-	pkgrel = 2
+	pkgver = 2.0.0.r7.g970008d
+	pkgrel = 1
 	url = https://github.com/source-foundry/fdiff
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-aiodns
 	depends = python-aiofiles
 	depends = python-aiohttp
-	depends = python-fonttools>=4.8.1
+	depends = python-fonttools
 	provides = fdiff
 	conflicts = fdiff
 	source = fdiff-git::git+https://github.com/source-foundry/fdiff.git
