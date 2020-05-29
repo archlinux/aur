@@ -16,9 +16,17 @@ pkgbase = cryptodev-linux
 	source = https://github.com/cryptodev-linux/cryptodev-linux/archive/cryptodev-linux-1.10.tar.gz
 	source = https://github.com/cryptodev-linux/cryptodev-linux/commit/f971e0cd4a0ebe59fb2e8e17240399bf6901b09b.patch
 	source = https://github.com/cryptodev-linux/cryptodev-linux/commit/98b163a23f6b9fbdc18c3644cf94a75cdcd0cc80.patch
+	source = dkms.conf
 	sha256sums = 833ab7c5c88d2b700a7c702a151254c089a3058886a63cc7d12630e364b8ea83
 	sha256sums = 66bb2786fcc5d05d5877280c797dee9a835a1ca87c5a78d400cd8310c738a4e6
 	sha256sums = a536b375e59cc39119082a0cb30e8463e3df5094028652a49640e7d1baebc92f
+	sha256sums = 4c762bbea27edeb283d44af37be2faf2df21312853b200e6b93319d563f51d86
 
 pkgname = cryptodev-linux
+	pkgdesc = cryptodev Linux module
+	depends = linux
+
+pkgname = cryptodev-linux-dkms
+	pkgdesc = cryptodev Linux module sources
+	depends = dkms
 
