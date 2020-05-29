@@ -1,7 +1,7 @@
 # Maintainer: lomonosow <lomonosow93@gmail.com>
 pkgname=secureboot
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="This package contains script, which helps to manage secureboot. It can generate keys, enroll it to UEFI and sign images"
 arch=('any')
 url="https://github.com/lomonosow/secureboot"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('bash' 'openssl' 'efitools' 'util-linux' 'sbsigntools')
 install=$pkgname.install
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('85d0bb4260dc0ed744bacb8468121e03c9c47f7fd3cf04f99a36f9fde79476b9cd418d7d4ce157633bb84f85b7da7649255396b27b3b07647106243c2c50b4d9')
+sha512sums=('9f79a49cd4ff6f8f86b658efad1d97bf2a8f5a4e1d37a286b6550852ac22109d98cf370f94f51c3a9edba5557401b543036501f5251b9b51a858b4ce36da5d8e')
 
 
 package() {
