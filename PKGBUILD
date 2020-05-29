@@ -11,7 +11,7 @@ _enable_gcc_more_v="y"
 # Optionally select a sub architecture by number if building in a clean chroot
 # Leaving this entry blank will require user interaction during the build
 # which will cause a failure to build if using makechrootpkg. Note that the
-# generic (default) option is 30.
+# generic (default) option is 32.
 #
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
@@ -42,8 +42,10 @@ _enable_gcc_more_v="y"
 #  27. Intel Cannon Lake (MCANNONLAKE)
 #  28. Intel Ice Lake (MICELAKE)
 #  29. Intel Cascade Lake (MCASCADELAKE)
-#  30. Generic-x86-64 (GENERIC_CPU)
-#  31. Native optimizations autodetected by GCC (MNATIVE)
+#  30. Intel Cooper Lake (MCOOPERLAKE)
+#  31. Intel Tiger Lake (MTIGERLAKE)
+#  32. Generic-x86-64 (GENERIC_CPU)
+#  33. Native optimizations autodetected by GCC (MNATIVE)
 _subarch=
 
 # Compile ONLY used modules to VASTLY reduce the number of modules built
@@ -59,24 +61,26 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=176
+_minor=182
 _srcname=linux-${_major}
-_clr=${_major}.176-105
+_clr=${_major}.180-109
 pkgbase=linux-clear-lts2017
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc='Clear Linux lts2017'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2017"
 license=('GPL2')
 makedepends=('bc' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20190822'
+_wrg_snap='1.0.20200520'
+_gcc_more_v='20200527'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${_major}.tar".{xz,sign}
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
   "${pkgbase}::git+https://github.com/clearlinux-pkgs/linux-lts2017.git#tag=${_clr}"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
+  "https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-${_wrg_snap}.tar.xz"
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -97,10 +101,14 @@ prepare() {
         echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        for i in $(grep '^Patch' ${srcdir}/${pkgbase}/linux-lts2017.spec | grep -Ev '^Patch0127' | sed -n 's/.*: //p'); do
+        for i in $(grep '^Patch' ${srcdir}/${pkgbase}/linux-lts2017.spec | grep -Ev '^Patch0127|^Patch1001' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/${pkgbase}/${i}"
         done
+
+    ### Link the WireGuard source directory into the kernel tree
+        echo "Adding the WireGuard source directory..."
+        "${srcdir}/wireguard-linux-compat-${_wrg_snap}/kernel-tree-scripts/jury-rig.sh" ./
 
     ### Setting config
         echo "Setting config..."
@@ -134,6 +142,9 @@ prepare() {
                        --module-after SND_MIXER_OSS SND_PCM_OSS \
                        --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS
 
+        # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
+        scripts/config --enable SECTION_MISMATCH_WARN_ONLY
+
         # Security options
         scripts/config --enable SECURITY_SELINUX \
                        --enable-after SECURITY_SELINUX SECURITY_SELINUX_BOOTPARAM \
@@ -152,8 +163,8 @@ prepare() {
     ### Patch source to unlock additional gcc CPU optimizations
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
-        echo "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
-        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
+        echo "Applying enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v4.19-v5.4.patch ..."
+        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v4.19-v5.4.patch"
         fi
 
     ### Get kernel version
@@ -319,9 +330,10 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '7d54ac0c9954c70771ef10f4926f5a5e2658b0bbc73612778c82163c02d309cf'
+            '9f9f998f52b0141b01485993d5a44c1d94010ccd4718008b77443751f6c18cb5'
             'SKIP'
-            '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
+            '8255e6b6e0bdcd66a73d917b56cf2cccdd1c3f4b3621891cfffc203404a5b6dc'
+            '16e7ae4bef734b243428eea07f3b3c3d4721880c3ea8eb8f98628fd6ae5b77c3')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
