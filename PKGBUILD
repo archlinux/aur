@@ -1,9 +1,10 @@
-# Maintainer:  Marcin Wieczorek <marcin@marcin.co>
+# Maintainer: Marcin Wieczorek <marcin@marcin.co>
+# Maintainer: Chester Wisniewski <chetw@zuzax.com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Witit Sujjapong <switit@gmail.com>
 
 pkgname=invoiceplane
-pkgver=1.5.10
+pkgver=1.5.11
 pkgrel=1
 pkgdesc="Self hosted invoicing for freelancers and small businesses"
 arch=('any')
@@ -11,11 +12,13 @@ url="https://invoiceplane.com/"
 license=('MIT')
 depends=('php')
 #optdepends=('php-mysql: for MySQL database support')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/InvoicePlane/InvoicePlane/archive/v${pkgver}.tar.gz")
-sha256sums=('8b71dc4c4cfc6e3ebed89db8486c830e49aec0b25989df70c02a8e98cef6240a')
+source=("${pkgname}-${pkgver}.zip::https://www.invoiceplane.org/download/v${pkgver}")
+sha256sums=('4de189ee5a0c8b57c075d9b6d48cf2ebbd8802c504fd57dc91634da26f07ef8c')
 
 package() {
-    install -d "${pkgdir}/usr/share/webapps"
-    cp -a "InvoicePlane-${pkgver}" "${pkgdir}/usr/share/webapps/invoiceplane"
-    install -Dm644 "InvoicePlane-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd ${srcdir}
+    install -dm755 "${pkgdir}/usr/share/webapps/invoiceplane" 
+    rm "${pkgname}-${pkgver}.zip"
+    install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cp -a * "${pkgdir}/usr/share/webapps/invoiceplane"
 }
