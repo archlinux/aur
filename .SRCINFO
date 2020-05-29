@@ -1,0 +1,25 @@
+pkgbase = google-safebrowsing-api-git
+	pkgdesc = Google SafeBrowsing API
+	pkgver = r53.bbf0d20
+	pkgrel = 1
+	url = https://github.com/google/safebrowsing/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = google-safebrowsing-api-git
+	backup = etc/google-safebrowsing-api/config
+	source = google-safebrowsing-api::git+https://github.com/google/safebrowsing.git
+	source = service
+	source = config
+	source = sysusers.conf
+	source = tmpfiles.conf
+	sha256sums = SKIP
+	sha256sums = ab8a048d0d3898e0e0e3db59a8973d0c63f291af170fbed634102f2d5ef98971
+	sha256sums = 67a1ecce83116dc1c1f5d969afe14c620dd0f421969648ecd26a88fa8b6cfd39
+	sha256sums = f20894460878cb4095ece82cad222e0bac59f2a7a3f9c47f7622afce20e9f70c
+	sha256sums = f275f9f9127f5ae7a527a7ef88dcb31711e9e2ec6944d5769286764de440dcbd
+
+pkgname = google-safebrowsing-api-git
+
