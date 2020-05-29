@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=reposurgeon
-pkgver=4.9
+pkgver=4.10
 pkgrel=1
 pkgdesc="Performs surgery on version control repositories."
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('bitkeeper'
             'src'
             'subversion')
 source=("https://gitlab.com/esr/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('d47a2ef39686a927e039e947df14c02806f83a02cd469d9ab08f9e9b1974134ceda7171dd23b15507aed100777ea6b866b248735f26fcfc0d05b54925218bb80')
+b2sums=('fd75132caf755e05d8af2ccdf326315f0dfc25dd8711c0f84f06a0cab835887db468868a51f2fd8d579371804924f06ceff248ed335bfb61dd4f06b2221c4ce5')
 
 prepare() {
   cd "$pkgbase-$pkgver"
@@ -35,10 +35,11 @@ prepare() {
 build() {
   cd "$pkgbase-$pkgver"
 
+  # Use -j1 so reposurgeon always gets built before options.adoc is needed
   if [ "$(go version | grep gccgo)" ]; then
-    make GOFLAGS=""
+    make GOFLAGS="" -j1
   else
-    make
+    make -j1
   fi
 }
 
