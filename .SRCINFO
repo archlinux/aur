@@ -10,7 +10,6 @@ pkgbase = dwm-syaoran-git
 	depends = st-syaoran-git
 	depends = dwmblocks-syaoran-git
 	depends = libxinerama
-	depends = libxft-bgra-git
 	depends = ttf-liberation
 	depends = ttf-font-awesome
 	depends = noto-fonts-emoji
