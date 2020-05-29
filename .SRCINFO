@@ -1,0 +1,18 @@
+pkgbase = xxh-git
+	pkgdesc = Bring your favorite shell wherever you go through the ssh
+	pkgver = 0.8.3.r3.g7bb749f
+	pkgrel = 1
+	url = https://github.com/xxh/xxh
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = openssh
+	provides = xxh
+	conflicts = xxh
+	source = git+https://github.com/xxh/xxh.git
+	sha256sums = SKIP
+
+pkgname = xxh-git
+
