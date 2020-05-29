@@ -9,7 +9,6 @@ pkgbase = st-syaoran-git
 	makedepends = ncurses
 	makedepends = libxext
 	makedepends = git
-	depends = libxft-bgra-git
 	depends = ttf-liberation
 	depends = dmenu
 	optdepends = picom
