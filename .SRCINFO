@@ -1,7 +1,7 @@
 pkgbase = sikulixide-bin
 	pkgdesc = Automates anything you see on the screen of your desktop computer
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sikulix.com
 	arch = any
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = sikulixide-bin
 	depends = tesseract
 	depends = jython
 	depends = jruby
+	depends = opencv-java
 	provides = sikulixide
 	provides = sikulix
 	noextract = sikulixide-bin-2.0.4.jar

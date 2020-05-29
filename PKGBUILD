@@ -2,7 +2,7 @@
 
 pkgname=sikulixide-bin
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Automates anything you see on the screen of your desktop computer'
 arch=('any')
 url='http://sikulix.com'
@@ -11,7 +11,8 @@ depends=('java-environment>=8'
          'opencv'
          'tesseract'
          'jython'
-         'jruby')
+         'jruby'
+         'opencv-java')
 makedepends=('unzip' 'gendesk')
 provides=('sikulixide' 'sikulix')
 source=("${pkgname}-${pkgver}.jar::https://launchpad.net/sikuli/sikulix/${pkgver}/+download/sikulixide-${pkgver}.jar"
